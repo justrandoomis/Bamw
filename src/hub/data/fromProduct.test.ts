@@ -203,6 +203,18 @@ describe("gameFromProduct trailer", () => {
   });
 });
 
+describe("gameFromProduct user score", () => {
+  it("halves an imported 0-10 player score into the site's 5-star scale", () => {
+    const game = gameFromProduct({ id: "u1", title: "T", userScore: 8.1 }, "ar");
+    expect(game.userScore).toBe(4.1);
+  });
+
+  it("keeps a native 0-5 aggregate untouched", () => {
+    const game = gameFromProduct({ id: "u2", title: "T", userScore: 4.4 }, "ar");
+    expect(game.userScore).toBe(4.4);
+  });
+});
+
 describe("gameFromProduct languages", () => {
   it("reads the array-valued audio/text language fields the importer writes", () => {
     const game = gameFromProduct(

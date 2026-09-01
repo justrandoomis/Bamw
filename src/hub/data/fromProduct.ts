@@ -1435,7 +1435,14 @@ export function gameFromProduct(
 
   const metacritic = num(p["metacriticRating"]);
   const opencritic = num(p["opencriticRating"]);
-  const userScore = num(p["userScore"]);
+  /*
+    The import schema stores the player score on a 0-10 scale ("تقييم اللاعبين
+    (0-10)"), while the hub's star widgets — and the site's own review
+    aggregate — are out of 5. An imported 8.1 rendered as "8.1 / 5". Anything
+    above 5 can only be the 10-point scale, so it is halved into the site's.
+  */
+  const rawUserScore = num(p["userScore"]);
+  const userScore = rawUserScore > 5 ? Math.round((rawUserScore / 2) * 10) / 10 : rawUserScore;
 
   const dataSourceRows = rows(p["dataSources"] || p["sources"]);
 
