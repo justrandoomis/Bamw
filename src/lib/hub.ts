@@ -76,6 +76,19 @@ export const slugify = (s: string) =>
 
 /** Splits a textarea field into trimmed lines. */
 export function lines(v: unknown): string[] {
+  /*
+    Repeatable import fields (audio_language, text_language, …) are stored as
+    arrays, not newline-joined text. `str(array)` is "", so reading them here
+    silently emptied the languages section on every game page. An array is
+    flattened item by item; each item may itself carry several comma-separated
+    values.
+  */
+  if (Array.isArray(v)) {
+    return v
+      .flatMap((item) => lines(item))
+      .map((s) => s.trim())
+      .filter(Boolean);
+  }
   return str(v)
     .split(/\r?\n|،|;/)
     .map((s) => s.trim())

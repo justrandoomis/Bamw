@@ -177,3 +177,45 @@ describe("gameFromProduct Timeline and Similar Games", () => {
     expect(game.id).toBe("corrupted-game");
   });
 });
+
+describe("gameFromProduct languages", () => {
+  it("reads the array-valued audio/text language fields the importer writes", () => {
+    const game = gameFromProduct(
+      {
+        id: "g1",
+        title: "Game",
+        languagesAudio: ["English, Japanese"],
+        languagesText: ["English", "Arabic"],
+      },
+      "ar",
+    );
+    const names = (game.languages ?? []).map((l) => l.name).sort();
+    expect(names).toEqual(["Arabic", "English", "Japanese"]);
+    const english = game.languages?.find((l) => l.name === "English");
+    expect(english?.channels).toContain("audio");
+    expect(english?.channels).toContain("subtitles");
+  });
+
+  it("falls back to the free-text supported languages list", () => {
+    const game = gameFromProduct(
+      { id: "g2", title: "Game", supportedLanguages: "English, French, German" },
+      "ar",
+    );
+    expect((game.languages ?? []).map((l) => l.name)).toEqual(["English", "French", "German"]);
+    expect(game.languages?.[0]?.channels).toEqual(["interface"]);
+  });
+
+  it("does not render referral sentences as languages", () => {
+    const game = gameFromProduct(
+      {
+        id: "g3",
+        title: "Game",
+        languagesAudio: [
+          "Audio language availability varies by title and region; see official product information",
+        ],
+      },
+      "ar",
+    );
+    expect(game.languages).toBeUndefined();
+  });
+});
