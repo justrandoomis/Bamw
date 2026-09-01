@@ -13,7 +13,7 @@ release_date=2025-04-24
 release_status=Released
 status=Active
 developer=Too Kyo Games / Media.Vision
-publisher=Aniplex / XSEED Games
+publisher=Marvelous (XSEED Games) — Aniplex in Japan
 genre.1=Adventure
 genres.1=Adventure
 genre.2=Simulation
@@ -108,12 +108,12 @@ gallery.6.description=The Hundred Line: Last Defense Academy gameplay / world me
 gallery.6.image=https://img-eshop.cdn.nintendo.net/i/9e62a5b98efc5f61610661ffc41cc2ad906fdb0469fe504811807ed2dcfe6912.jpg
 trailer_url=https://video.fastly.steamstatic.com/store_trailers/257032183/movie_max_vp9.webm?t=1718760084
 supported_languages_raw=Japanese, English
-text_language.1=English
-text_language.2=Japanese
-text_language.3=Regional store language support may vary
-audio_language.1=Japanese voice
-audio_language.2=English text support
-audio_language.3=Music and sound effects
+text_language.1=Japanese
+text_language.2=English
+text_language.3=
+audio_language.1=Japanese
+audio_language.2=
+audio_language.3=
 supported_play_mode.1=TV mode
 supported_play_mode.2=Tabletop mode
 supported_play_mode.3=Handheld mode
@@ -466,3 +466,5 @@ device_performance.2.performance_notes<<EOF
 Backward-compatible Switch software on Switch 2; exact rendering resolution/FPS is not officially published in the product listing.
 EOF
 upgrade_price=0
+
+overview_tagline=Enroll in the Last Defense Academy and save humanity from despair!
