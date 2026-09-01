@@ -401,3 +401,6 @@ device_performance.2.performance_notes<<EOF
 Backward-compatible Switch software; this is not a native Switch 2 edition.
 EOF
 upgrade_price=0
+
+trailer_url=https://www.youtube.com/watch?v=o3V-GvvzjE4
+overview_tagline=The World's Game — updated kits, clubs and squads on legacy gameplay

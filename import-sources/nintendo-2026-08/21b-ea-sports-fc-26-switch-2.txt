@@ -388,3 +388,9 @@ device_performance.2.performance_notes<<EOF
 This file is for the Switch 2 edition.
 EOF
 upgrade_price=0
+
+metacritic_score=78
+metacritic=78
+metacritic_url=https://www.metacritic.com/game/ea-sports-fc-26/critic-reviews/?platform=nintendo-switch-2
+trailer_url=https://www.youtube.com/watch?v=TSi0iJYSQ24
+overview_tagline=The Club is Yours

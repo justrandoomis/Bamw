@@ -375,3 +375,5 @@ device_performance.2.performance_notes<<EOF
 Backward compatibility does not convert the cloud release into a native Switch 2 version.
 EOF
 upgrade_price=0
+
+overview_tagline=The KINGDOM HEARTS saga — three collections, ten experiences, one cloud bundle.

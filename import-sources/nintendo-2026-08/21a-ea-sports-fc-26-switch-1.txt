@@ -23,9 +23,9 @@ players_count=Single system (1-4) / Local wireless and online multiplayer depend
 players=Single system (1-4) / Local wireless and online multiplayer depending on mode
 player_count=Single system (1-4) / Local wireless and online multiplayer depending on mode
 age_rating=ESRB E / PEGI 3
-game_size_gb=40.0
-size=40.0 GB
-size_gb=40.0
+game_size_gb=30.9
+size=30.9 GB
+size_gb=30.9
 price=2500
 price_iqd=2500
 price_usd=59.99
@@ -217,8 +217,8 @@ studio_website=https://www.nintendo.com/en-au/Games/Nintendo-Switch-games/EA-SPO
 studio_location=See publisher/developer profile
 source.1.name=Official Nintendo / publisher product page
 source.1.url=https://www.nintendo.com/en-au/Games/Nintendo-Switch-games/EA-SPORTS-FC-26-2875008.html
-storage_download_size_gb=40.0
-storage_required_space_gb=40.0
+storage_download_size_gb=30.9
+storage_required_space_gb=30.9
 storage_micro_sd_recommended=true
 storage_notes<<EOF
 Storage requirements follow the official product listing where a final numeric size is published; upcoming titles may require a later refresh when final size is posted.
@@ -388,3 +388,6 @@ device_performance.2.performance_notes<<EOF
 Backward-compatible Switch software; this is not a native Switch 2 edition.
 EOF
 upgrade_price=0
+
+trailer_url=https://www.youtube.com/watch?v=TSi0iJYSQ24
+overview_tagline=The Club is Yours

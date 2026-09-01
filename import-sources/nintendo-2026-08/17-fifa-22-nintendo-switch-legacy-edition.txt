@@ -401,3 +401,6 @@ device_performance.2.performance_notes<<EOF
 Backward-compatible Switch software; this is not a native Switch 2 edition.
 EOF
 upgrade_price=0
+
+trailer_url=https://www.youtube.com/watch?v=o1igaMv46SY
+overview_tagline=Powered by Football — Legacy Edition with updated squads and kits

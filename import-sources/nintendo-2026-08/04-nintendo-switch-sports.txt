@@ -86,9 +86,9 @@ cover=https://assets.nintendo.com/image/upload/ar_16:9,c_fill,g_auto,w_1600/f_au
 cover_url=https://assets.nintendo.com/image/upload/ar_16:9,c_fill,g_auto,w_1600/f_auto/q_auto/dpr_1.5/store/software/switch/70010000049931/ee756f617f2e59e7cb4e09fccda40dfebfed6aaa94f1164f4fed8f6d38253f28
 cover_texture_url=
 box_back_url=
-supported_languages_raw=Official supported language list varies by region; see the publisher page linked in Sources.
-text_language.1=See official supported languages on the linked Nintendo/publisher product page
-audio_language.1=Audio language availability varies by title and region; see official product information
+supported_languages_raw=Japanese, English, Spanish, French, German, Italian, Dutch, Portuguese, Russian, Korean, Chinese (Simplified), Chinese (Traditional)
+text_language.1=Japanese
+audio_language.1=
 tv_mode=true
 tabletop_mode=true
 handheld_mode=false
@@ -405,3 +405,17 @@ device_performance.2.performance_notes<<EOF
 Backward-compatible Nintendo Switch software. Handheld mode remains unsupported because the original title requires detached Joy-Con use.
 EOF
 upgrade_price=0
+
+trailer_url=https://www.youtube.com/watch?v=TZ16-1YIRAc
+overview_tagline=Swing, kick, bowl, and spike - motion-controlled sports fun for everyone.
+text_language.2=English
+text_language.3=Spanish
+text_language.4=French
+text_language.5=German
+text_language.6=Italian
+text_language.7=Dutch
+text_language.8=Portuguese
+text_language.9=Russian
+text_language.10=Korean
+text_language.11=Simplified Chinese
+text_language.12=Traditional Chinese

@@ -25,7 +25,7 @@ genres.4=Stealth
 series_name=Stray
 players_count=Single system (1)
 players=Single system (1)
-age_rating=ESRB T / PEGI 12
+age_rating=ESRB E10+ (Everyone 10+) — Fantasy Violence, Mild Language
 metacritic_score=83
 metacritic=83
 opencritic_score=84
@@ -111,7 +111,7 @@ switch_2_exclusive=false
 nintendo_notes<<EOF
 Platform and package information verified against the official product/source page for Stray.
 EOF
-overview_tagline=See a forgotten cybercity through the eyes of a cat.
+overview_tagline=Lost, alone and separated from family, a stray cat must untangle an ancient mystery to escape a long-forgotten city.
 overview_suitable_for.1=Fans of the listed genres
 overview_suitable_for.2=Players who value the game’s core mechanics
 overview_suitable_for.3=Players looking for this platform version
@@ -339,3 +339,21 @@ source.1.name=Official product / publisher page
 source.1.url=https://www.nintendo.com/us/store/products/stray-switch/
 source.2.name=Metacritic
 source.2.url=https://www.metacritic.com/search/stray/
+
+metacritic_url=https://www.metacritic.com/game/stray/critic-reviews/?platform=nintendo-switch
+verdict_score=8.3
+supported_languages_raw=English, French, German, Italian, Spanish, Japanese, Korean, Simplified Chinese, Traditional Chinese
+text_language.1=English
+text_language.2=French
+text_language.3=German
+text_language.4=Italian
+text_language.5=Spanish
+text_language.6=Japanese
+text_language.7=Korean
+text_language.8=Simplified Chinese
+text_language.9=Traditional Chinese
+storage_download_size_gb=5.7
+storage_required_space_gb=5.7
+completion_main_story_hours=5.0
+completion_story_plus_dlc_hours=7.0
+completion_100_percent_hours=10.0

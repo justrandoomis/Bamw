@@ -463,3 +463,5 @@ device_performance.2.performance_notes<<EOF
 This file represents the native Nintendo Switch 2 Remastered product. The original Nintendo Switch Complete Edition is a separate product file.
 EOF
 upgrade_price=0
+
+overview_tagline=Geralt's most awarded adventure, rebuilt for Nintendo Switch 2.
