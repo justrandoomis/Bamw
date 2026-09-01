@@ -384,6 +384,40 @@ export default function AdminProductEditor({
   // while the schema-driven tabbed editor is the active hardware surface.
   const showLegacyHardwareEditor = false;
 
+  /*
+    The Device Performance selector needs the hardware catalogue, but the
+    dashboard hands over the paginated rows of whichever section is open —
+    inside the games section that page holds no hardware at all, so the
+    selector claimed no Hardware Product exists. When the passed list is
+    empty, ask the endpoint for the hardware section directly.
+  */
+  const [fetchedHardware, setFetchedHardware] = useState<any[]>([]);
+  const passedHardwareCount = hardwareProducts.length;
+  useEffect(() => {
+    if (categoryType !== "game" || passedHardwareCount > 0) return;
+    const controller = new AbortController();
+    void (async () => {
+      try {
+        const res = await fetch("/api/admin/products?category=hardware&limit=100", {
+          credentials: "include",
+          signal: controller.signal,
+        });
+        if (!res.ok) return;
+        const data: any = await res.json().catch(() => null);
+        const items = Array.isArray(data?.items)
+          ? data.items
+          : Array.isArray(data?.products)
+            ? data.products
+            : [];
+        if (!controller.signal.aborted && items.length) setFetchedHardware(items);
+      } catch {
+        // The selector keeps its "add a hardware product" hint as the fallback.
+      }
+    })();
+    return () => controller.abort();
+  }, [categoryType, passedHardwareCount]);
+  const availableHardware = passedHardwareCount > 0 ? hardwareProducts : fetchedHardware;
+
   const activeSchema = schemaForSection(categoryType) || detectSchema(formData);
 
   /*
@@ -1459,7 +1493,7 @@ export default function AdminProductEditor({
             value={formData.devicePerformance}
             platform={formData.platform}
             requiresSwitch2={productSupportsSwitch2(formData)}
-            hardwareProducts={hardwareProducts}
+            hardwareProducts={availableHardware}
             onChange={(records) => handleChange("devicePerformance", records)}
           />
         )}

@@ -1,3 +1,4 @@
+import { useEffect, useRef } from "react";
 import { Plus, Trash2, Tv, Smartphone, ShieldCheck } from "lucide-react";
 
 import {
@@ -206,6 +207,24 @@ export function GamePerformanceEditor({
       },
     ]);
   };
+
+  /*
+    Every game in the store runs on Nintendo Switch 2, so a game with no
+    device rows seeds one for it instead of making the admin click Add
+    Device and pick the same console on every product. Guarded by a ref so
+    a deliberately emptied list is not refilled.
+  */
+  const seededRef = useRef(false);
+  const hasRecords = records.length > 0;
+  const hasHardware = hardwareProducts.length > 0;
+  useEffect(() => {
+    if (seededRef.current || hasRecords || !hasHardware) return;
+    seededRef.current = true;
+    add();
+    // `add` is recreated per render; the primitive guards make this effect
+    // fire exactly once, when the hardware list first arrives.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [hasRecords, hasHardware]);
 
   return (
     <section className="rounded-xl border border-red-500/25 bg-card p-5 shadow-sm">
