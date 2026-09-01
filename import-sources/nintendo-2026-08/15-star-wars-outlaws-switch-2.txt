@@ -306,3 +306,10 @@ source.1.name=Official product / publisher page
 source.1.url=https://news.ubisoft.com/en-us/article/5yG2lSsv3rvVH2J1zhHRY0/star-wars-outlaws-now-available-on-nintendo-switch-2
 source.2.name=Metacritic
 source.2.url=https://www.metacritic.com/search/star-wars-outlaws/
+
+dlc.1.title=Wild Card
+dlc.1.description=Story pack: Kay is hired to infiltrate a high-stakes Sabacc tournament, featuring Lando Calrissian.
+dlc.1.release_date=2024-11-21
+dlc.2.title=A Pirate's Fortune
+dlc.2.description=Story pack: Kay teams up with veteran pirate Hondo Ohnaka against the Khepi raiders.
+dlc.2.release_date=2025-05-15
