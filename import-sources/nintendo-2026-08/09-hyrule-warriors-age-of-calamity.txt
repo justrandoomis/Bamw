@@ -33,9 +33,9 @@ opencritic=80
 user_score=8.1
 userscore=8.1
 user_rating=8.1
-game_size_gb=10.6
-size=10.6 GB
-size_gb=10.6
+game_size_gb=11.1
+size=11.1 GB
+size_gb=11.1
 price=16500
 price_iqd=16500
 price_usd=59.99
@@ -71,28 +71,36 @@ EOF
 description_ar<<EOF
 لعبة أكشن جماعية بأسلوب موسو تعود إلى زمن ما قبل أحداث Breath of the Wild، مع شخصيات الأبطال ومعارك واسعة ومهام ساحة قتال ومحتوى إضافي عبر Expansion Pass.
 EOF
-front_cover_image=
+front_cover_image=https://img-eshop.cdn.nintendo.net/i/9eb5a62527c0783cf7cf72b7144f6abe53c2c25264a5a62258e21650830d8b40.jpg
 cartridge_image=
 cartridge=
 cartridge_url=
-box_front_url=
+box_front_url=https://img-eshop.cdn.nintendo.net/i/9eb5a62527c0783cf7cf72b7144f6abe53c2c25264a5a62258e21650830d8b40.jpg
 nintendo_card_image=
 square_game_image=
-main_image=
-image=
-image_url=
-cover_image=
+main_image=https://img-eshop.cdn.nintendo.net/i/9eb5a62527c0783cf7cf72b7144f6abe53c2c25264a5a62258e21650830d8b40.jpg
+image=https://img-eshop.cdn.nintendo.net/i/9eb5a62527c0783cf7cf72b7144f6abe53c2c25264a5a62258e21650830d8b40.jpg
+image_url=https://img-eshop.cdn.nintendo.net/i/9eb5a62527c0783cf7cf72b7144f6abe53c2c25264a5a62258e21650830d8b40.jpg
+cover_image=https://img-eshop.cdn.nintendo.net/i/9eb5a62527c0783cf7cf72b7144f6abe53c2c25264a5a62258e21650830d8b40.jpg
 cover=
 cover_url=
 cover_texture_url=
 box_back_url=
-supported_languages_raw=Japanese / British English / French / German / Italian / Spanish / Korean / Dutch / Simplified Chinese / Latin American Spanish / Canadian French / Traditional Chinese / American English
-text_language.1=Japanese / English
-text_language.2=French / German / Italian / Spanish / Dutch
-text_language.3=Korean / Simplified Chinese / Traditional Chinese
+supported_languages_raw=Japanese, English, French, German, Spanish, Italian, Dutch, Russian, Korean, Simplified Chinese, Traditional Chinese
+text_language.1=Japanese
+text_language.2=English
+text_language.3=French
+text_language.4=German
+text_language.5=Spanish
+text_language.6=Italian
+text_language.7=Dutch
+text_language.8=Russian
+text_language.9=Korean
+text_language.10=Simplified Chinese
+text_language.11=Traditional Chinese
 audio_language.1=Music / sound effects
 audio_language.2=Character vocalizations where applicable
-audio_language.3=No full language-selectable dub beyond the shipped release build information
+audio_language.3=
 tv_mode=true
 tabletop_mode=true
 handheld_mode=true
@@ -259,8 +267,8 @@ source.3.name=Metacritic
 source.3.url=https://www.metacritic.com/game/hyrule-warriors-age-of-calamity/
 source.4.name=OpenCritic
 source.4.url=https://opencritic.com/game/10284/hyrule-warriors-age-of-calamity
-storage_download_size_gb=10.6
-storage_required_space_gb=10.6
+storage_download_size_gb=11.1
+storage_required_space_gb=11.1
 storage_micro_sd_recommended=true
 storage_notes<<EOF
 Nintendo lists the base game at roughly 10.6 GB. Extra content from the Expansion Pass is handled as downloadable expansion content.
@@ -441,3 +449,7 @@ device_performance.2.source_url=https://www.nintendo.com/us/store/products/hyrul
 device_performance.2.performance_notes<<EOF
 Nintendo lists the original title as supported on Nintendo Switch 2. This extraction records a compatibility profile consistent with the original release.
 EOF
+
+trailer_url=https://www.youtube.com/watch?v=uDMWRRAEogs
+overview_tagline=Join the struggle that brought Hyrule to its knees.
+banner_image=https://img-eshop.cdn.nintendo.net/i/1123ea0e4079a8aaa32187dcaa94b8ef407e028f9b6b8d5ff944bd750f1ce347.jpg

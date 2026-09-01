@@ -33,9 +33,9 @@ opencritic=86
 user_score=8.4
 userscore=8.4
 user_rating=8.4
-game_size_gb=6.0
-size=6.0 GB
-size_gb=6.0
+game_size_gb=5.6
+size=5.6 GB
+size_gb=5.6
 price=14250
 price_iqd=14250
 price_usd=59.99
@@ -71,28 +71,36 @@ EOF
 description_ar<<EOF
 مغامرة جديدة من منظور علوي تتصدرها الأميرة زيلدا، وتعتمد على قدرة Echoes لصنع أشياء ومخلوقات تساعد في حل الألغاز والتنقل والقتال بطرق غير مباشرة.
 EOF
-front_cover_image=
+front_cover_image=https://img-eshop.cdn.nintendo.net/i/2dc088f59a77a690046661216ae33948dc72dfe91675cf19d7d7ac757856bfc1.jpg
 cartridge_image=
 cartridge=
 cartridge_url=
-box_front_url=
+box_front_url=https://img-eshop.cdn.nintendo.net/i/2dc088f59a77a690046661216ae33948dc72dfe91675cf19d7d7ac757856bfc1.jpg
 nintendo_card_image=
 square_game_image=
-main_image=
-image=
-image_url=
-cover_image=
+main_image=https://img-eshop.cdn.nintendo.net/i/2dc088f59a77a690046661216ae33948dc72dfe91675cf19d7d7ac757856bfc1.jpg
+image=https://img-eshop.cdn.nintendo.net/i/2dc088f59a77a690046661216ae33948dc72dfe91675cf19d7d7ac757856bfc1.jpg
+image_url=https://img-eshop.cdn.nintendo.net/i/2dc088f59a77a690046661216ae33948dc72dfe91675cf19d7d7ac757856bfc1.jpg
+cover_image=https://img-eshop.cdn.nintendo.net/i/2dc088f59a77a690046661216ae33948dc72dfe91675cf19d7d7ac757856bfc1.jpg
 cover=
 cover_url=
 cover_texture_url=
 box_back_url=
-supported_languages_raw=Japanese / British English / French / German / Italian / Spanish / Korean / Dutch / Simplified Chinese / Latin American Spanish / Canadian French / Traditional Chinese / American English
-text_language.1=Japanese / English
-text_language.2=French / German / Italian / Spanish / Dutch
-text_language.3=Korean / Simplified Chinese / Traditional Chinese
+supported_languages_raw=Japanese, English, French, German, Spanish, Italian, Dutch, Russian, Korean, Simplified Chinese, Traditional Chinese
+text_language.1=Japanese
+text_language.2=English
+text_language.3=French
+text_language.4=German
+text_language.5=Spanish
+text_language.6=Italian
+text_language.7=Dutch
+text_language.8=Russian
+text_language.9=Korean
+text_language.10=Simplified Chinese
+text_language.11=Traditional Chinese
 audio_language.1=Music / sound effects
 audio_language.2=Character vocalizations where applicable
-audio_language.3=No full language-selectable dub beyond the shipped release build information
+audio_language.3=
 tv_mode=true
 tabletop_mode=true
 handheld_mode=true
@@ -243,8 +251,8 @@ source.2.name=Metacritic
 source.2.url=https://www.metacritic.com/game/the-legend-of-zelda-echoes-of-wisdom/
 source.3.name=OpenCritic
 source.3.url=https://opencritic.com/game/17371/the-legend-of-zelda-echoes-of-wisdom
-storage_download_size_gb=6.0
-storage_required_space_gb=6.0
+storage_download_size_gb=5.6
+storage_required_space_gb=5.6
 storage_micro_sd_recommended=false
 storage_notes<<EOF
 The recorded size for Echoes of Wisdom is approximately 6.0 GB.
@@ -408,3 +416,7 @@ device_performance.2.source_url=https://www.nintendo.com/us/store/products/the-l
 device_performance.2.performance_notes<<EOF
 Nintendo lists the original game as supported on Nintendo Switch 2. This extraction records a compatibility profile consistent with the original release.
 EOF
+
+trailer_url=https://www.youtube.com/watch?v=94RTrH2erPE
+overview_tagline=It's up to Princess Zelda to save her kingdom in a brand-new Legend of Zelda adventure
+banner_image=https://img-eshop.cdn.nintendo.net/i/e3a49cf14180cec09c515595fb7121b048a0f8327eae2d248909d0f0c64a9dc9.jpg

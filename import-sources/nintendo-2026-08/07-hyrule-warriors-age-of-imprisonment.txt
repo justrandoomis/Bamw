@@ -25,12 +25,12 @@ players_count=Single system (1-2)
 players=Single system (1-2)
 player_count=Single system (1-2)
 age_rating=ESRB T (Teen) — Fantasy Violence
-metacritic_score=79
-metacritic=79
+metacritic_score=78
+metacritic=78
 metacritic_url=https://www.metacritic.com/game/hyrule-warriors-age-of-imprisonment/
-game_size_gb=43.5
-size=43.5 GB
-size_gb=43.5
+game_size_gb=42.8
+size=42.8 GB
+size_gb=42.8
 price=25000
 price_iqd=25000
 price_usd=69.99
@@ -201,8 +201,8 @@ faq.5.question=Why keep it separate from Age of Calamity?
 faq.5.answer<<EOF
 It is a different game, a different story chapter, and a different platform entry, so combining them would create inaccurate storefront data.
 EOF
-verdict_score=7.9
-verdict_pro.1=Best-reviewed entry in the Hyrule Warriors series (Metacritic 79)
+verdict_score=7.8
+verdict_pro.1=Best-reviewed entry in the Hyrule Warriors series (Metacritic 78)
 verdict_pro.2=Combat praised as the deepest and most rewarding in the spin-off line
 verdict_pro.3=Tells the Imprisoning War story behind Tears of the Kingdom
 verdict_pro.4=Runs natively on Nintendo Switch 2 with HDR support
@@ -213,7 +213,7 @@ verdict_con.3=Large 43.5 GB download for a spin-off entry
 verdict_con.4=No Nintendo Switch 1 version exists
 verdict_con.5=Genre appeal is narrower than mainline Zelda adventures
 review.1.source=Metacritic
-review.1.score=79/100
+review.1.score=78/100
 review.1.url=https://www.metacritic.com/game/hyrule-warriors-age-of-imprisonment/
 timeline.1.date=2025-11-06
 timeline.1.title=Released worldwide on Nintendo Switch 2
@@ -226,8 +226,8 @@ source.1.name=Nintendo official product page
 source.1.url=https://www.nintendo.com/us/store/products/hyrule-warriors-age-of-imprisonment-switch-2/
 source.2.name=Nintendo store ecosystem listing
 source.2.url=https://www.nintendo.com/us/store/products/hyrule-warriors-age-of-calamity-switch/
-storage_download_size_gb=43.5
-storage_required_space_gb=43.5
+storage_download_size_gb=42.8
+storage_required_space_gb=42.8
 storage_micro_sd_recommended=true
 storage_notes<<EOF
 Because the title is upcoming, the recorded storage profile remains provisional and can be refreshed after Nintendo publishes final installation data.
@@ -391,3 +391,6 @@ device_performance.2.source_url=https://www.nintendo.com/us/store/products/hyrul
 device_performance.2.performance_notes<<EOF
 No Nintendo Switch 1 version is tracked by this import entry. The game is positioned as a Nintendo Switch 2 title.
 EOF
+
+trailer_url=https://www.youtube.com/watch?v=9pbyF3zpSgc
+overview_tagline=Fight for Hyrule's future alongside Princess Zelda in the age of the Imprisoning War
