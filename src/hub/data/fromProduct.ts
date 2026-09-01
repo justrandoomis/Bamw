@@ -149,7 +149,14 @@ function buildMedia(p: Record<string, unknown>, locale: "ar" | "en") {
   ].filter((img) => img.url);
 
   const videoRows = rows(p["videos"]);
-  const trailerUrl = str(p["trailerUrl"]);
+  /*
+    The import schema stores `trailer_url=` under `youtubeTrailer` (and the
+    admin form edits that same field); `trailerUrl` only ever existed on legacy
+    records. Reading just the legacy name left the trailer card empty on every
+    imported game while the URL sat in the document.
+  */
+  const trailerUrl =
+    str(p["trailerUrl"]) || str(p["youtubeTrailer"]) || str(p["trailer_url"]);
   const videos: GameVideo[] = [
     ...(trailerUrl
       ? [

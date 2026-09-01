@@ -178,6 +178,31 @@ describe("gameFromProduct Timeline and Similar Games", () => {
   });
 });
 
+describe("gameFromProduct trailer", () => {
+  it("reads the youtubeTrailer field the import schema and admin form write", () => {
+    const game = gameFromProduct(
+      { id: "t1", title: "T", youtubeTrailer: "https://www.youtube.com/watch?v=abcdefgh123" },
+      "ar",
+    );
+    expect(game.videos?.length).toBe(1);
+    expect(game.videos?.[0]?.kind).toBe("trailer");
+    expect(game.videos?.[0]?.embedUrl).toContain("abcdefgh123");
+  });
+
+  it("still reads the legacy trailerUrl field first", () => {
+    const game = gameFromProduct(
+      {
+        id: "t2",
+        title: "T",
+        trailerUrl: "https://www.youtube.com/watch?v=legacy12345",
+        youtubeTrailer: "https://www.youtube.com/watch?v=newer123456",
+      },
+      "ar",
+    );
+    expect(game.videos?.[0]?.embedUrl).toContain("legacy12345");
+  });
+});
+
 describe("gameFromProduct languages", () => {
   it("reads the array-valued audio/text language fields the importer writes", () => {
     const game = gameFromProduct(
