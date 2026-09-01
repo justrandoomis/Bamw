@@ -209,9 +209,9 @@ performance_tv_resolution=1080p
 performance_handheld_resolution=720p
 performance_fps=60
 performance_hdr=false
-main_story_hours=Infinite
-completion_main_story_hours=Infinite
-completion_story_plus_dlc_hours=Infinite
+main_story_hours=
+completion_main_story_hours=
+completion_story_plus_dlc_hours=
 faq.1.question=Is this the old Nintendo Switch Edition?
 faq.1.answer<<EOF
 No. This is the current Bedrock Minecraft product that replaced the older 2017 Switch Edition in June 2018.
