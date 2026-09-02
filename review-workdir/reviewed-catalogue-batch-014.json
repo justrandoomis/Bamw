@@ -1,0 +1,51 @@
+{
+ "batch": "014",
+ "apply": false,
+ "games": [
+  {
+   "id": "prd_5e7f25795b9c47eb",
+   "slug": "mario-kart-8-deluxe-switch",
+   "baseHash": "f89f951c7eab5b28dca7d1d8a2d59fd04f610617d4b98ad182da4f2863c8efa1",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  },
+  {
+   "id": "prd_34be2de35cbe4d6b",
+   "slug": "mario-kart-world",
+   "baseHash": "9abc530488384a65cd9d91c67dc3e5523f50d38eb9213e665c4070214d3bddaf",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  },
+  {
+   "id": "prd_40524f52f17144d3",
+   "slug": "mario-party-superstars-switch",
+   "baseHash": "129d74646237c41af2df6c4023f71a32c1d4bb7dc482ba6b2d185d8e33ab7afc",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  },
+  {
+   "id": "prd_2421082de71c4b0e",
+   "slug": "mario-rabbids-kingdom-battle-switch-1",
+   "baseHash": "140ed7794e6e0a96d4d222ea7f20d8aff532facb5bff7a2e197d2ce66ddfd20a",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  },
+  {
+   "id": "prd_1083d6f5b5454571",
+   "slug": "mario-rabbids-sparks-of-hope-switch",
+   "baseHash": "978c14fd51e21604dc4608a63c32b26e08aa86e23c33ab4e383f6f48c5f6cff0",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  }
+ ]
+}

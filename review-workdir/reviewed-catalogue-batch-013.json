@@ -1,6 +1,6 @@
 {
  "batch": "013",
- "apply": true,
+ "apply": false,
  "games": [
   {
    "id": "prd_2b0afd3037524c80",
@@ -180,6 +180,101 @@
     "guaranteeStatus"
    ],
    "notes": "Six image roles were dead R2 references on this visible product. Rebuilt from the six working official eShop CDN galleries: the clean no-HUD beauty shot (verified visually) becomes cover and listing image, two gameplay shots become the banners, and the remaining three stay in the gallery — no duplication, everything re-verified at apply. The broken square-card reference removed (no verified square source). The Switch-2-badged 60 fps record becomes an honest not-published platform record — Nintendo publishes no figures and the stored numbers were unsourced. Genuine box, launchbox box copy and full wrap verified working. Contamination removed."
+  }
+ ],
+ "appliedAt": "2026-09-02T03:13:22.476Z",
+ "results": [
+  {
+   "id": "prd_2b0afd3037524c80",
+   "action": "APPLIED",
+   "changed": [
+    "size",
+    "downloadSizeGb"
+   ],
+   "removed": [
+    "youtubeTrailer",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ]
+  },
+  {
+   "id": "prd_d598766205db4786",
+   "action": "APPLIED",
+   "changed": [
+    "devicePerformance"
+   ],
+   "removed": [
+    "metacriticRating",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ]
+  },
+  {
+   "id": "prd_ca9a9392db394624",
+   "action": "APPLIED",
+   "changed": [],
+   "removed": [
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ]
+  },
+  {
+   "id": "prd_481cc6fd338e4617",
+   "action": "APPLIED",
+   "changed": [
+    "devicePerformance"
+   ],
+   "removed": [
+    "box_front_url"
+   ]
+  },
+  {
+   "id": "prd_c666e66b286c4d03",
+   "action": "APPLIED",
+   "changed": [
+    "coverImage",
+    "image",
+    "bannerImages",
+    "galleryImages",
+    "devicePerformance"
+   ],
+   "removed": [
+    "nintendoCardImage",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ]
   }
  ]
 }

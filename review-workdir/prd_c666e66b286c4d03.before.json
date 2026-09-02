@@ -1,0 +1,594 @@
+{
+ "title": "Mario Golf: Super Rush",
+ "titleEn": "Mario Golf: Super Rush",
+ "titleKu": "Mario Golf: Super Rush",
+ "slug": "mario-golf-super-rush-switch-1",
+ "description": "Golf with a Mushroom Kingdom twist. Hit the green with up to four players locally or online and golf with friends from the Super Mario series like Mario, Peach, Yoshi, and more. Modes range from Standard Golf to the energetic Speed Golf and Battle Golf, while Golf Adventure lets your Mii rise from rookie to pro.",
+ "descriptionEn": "Golf with a Mushroom Kingdom twist. Hit the green with up to four players locally or online and golf with friends from the Super Mario series like Mario, Peach, Yoshi, and more. Modes range from Standard Golf to the energetic Speed Golf and Battle Golf, while Golf Adventure lets your Mii rise from rookie to pro.",
+ "descriptionKu": "Golf with a Mushroom Kingdom twist. Hit the green with up to four players locally or online and golf with friends from the Super Mario series like Mario, Peach, Yoshi, and more. Modes range from Standard Golf to the energetic Speed Golf and Battle Golf, while Golf Adventure lets your Mii rise from rookie to pro.",
+ "cartridgeImage": "/api/files/products/prd_c666e66b286c4d03/front-bdd50822d1c2b541.jpg",
+ "nintendoCardImage": "/api/files/products/prd_c666e66b286c4d03/square-d0b5a9874160f2fd.avif",
+ "coverHiResImage": "/api/files/products/prd_c666e66b286c4d03/3d-texture-544ce96012261a94.jpg",
+ "coverImage": "/api/files/products/prd_c666e66b286c4d03/cover-327691396747125c.avif",
+ "bannerImages": [
+  "/api/files/products/prd_c666e66b286c4d03/banner-0-74723fea18085414.avif",
+  "/api/files/products/prd_c666e66b286c4d03/banner-1-4418afbd88d7a65b.avif",
+  "/api/files/products/prd_c666e66b286c4d03/banner-2-34260ba634c1b7d6.avif",
+  "/api/files/products/prd_c666e66b286c4d03/banner-3-db1fabd6545731c8.avif",
+  "/api/files/products/prd_c666e66b286c4d03/banner-4-f27716e00712da15.avif",
+  "/api/files/products/prd_c666e66b286c4d03/banner-5-d73e80f9769d6d0a.avif"
+ ],
+ "gallery": [],
+ "youtubeTrailer": "https://www.nintendo.com/us/store/products/mario-golf-super-rush-switch/",
+ "releaseDate": "2021-06-25",
+ "ageRating": "ESRB E10+ / PEGI 7",
+ "metacriticRating": 75,
+ "genres": [
+  "Sports",
+  "Party",
+  "Action"
+ ],
+ "platform": "switch1",
+ "size": 4.2,
+ "numberOfPlayers": "Single system (1-4) / Local wireless (2-4) / Online (2-4)",
+ "supportedLanguages": "Japanese / British English / French / German / Italian / Spanish / Korean / Dutch / Simplified Chinese / Latin American Spanish / Canadian French / Traditional Chinese / American English",
+ "hardwareModel": "",
+ "colorEdition": "",
+ "storageCapacity": "",
+ "screenSpecs": "",
+ "batteryLife": "",
+ "boxContents": [],
+ "boxContentsText": "",
+ "warrantyCondition": "",
+ "connectivity": "",
+ "characterName": "Link",
+ "amiiboSeries": "The Legend of Zelda",
+ "figureType": "figure",
+ "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+ "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+ "boxCondition": "mib",
+ "releaseWave": "Wave 2 (Restock)",
+ "rarity": "standard",
+ "accessoryType": "حقيبة حماية وتنقل Carry Case",
+ "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+ "brand": "Nintendo Official",
+ "material": "Hard EVA Shockproof Shell",
+ "availableColors": "Black, Neon Red/Blue, White",
+ "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+ "cardValue": "$20 eShop Balance",
+ "region": "Global",
+ "cardType": "eshop",
+ "deliveryMethod": "instant_code",
+ "redemptionGuide": "",
+ "redemptionSteps": [],
+ "validity": "no_expiry",
+ "usedType": "cartridge",
+ "conditionGrade": "like_new",
+ "packaging": "cib",
+ "guaranteeStatus": "tested_30days",
+ "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+ "accountType": "primary",
+ "badge": "وفر 40%",
+ "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+ "price": 8500,
+ "cost": 1250,
+ "stock": 999999,
+ "isInfiniteStock": true,
+ "isHidden": false,
+ "displayOrder": 0,
+ "category": "nintendo-switch-games",
+ "categoryId": "nintendo-switch-games",
+ "categoryEn": "",
+ "categoryKu": "",
+ "options": [
+  {
+   "id": "offline_account",
+   "name": "مشترك",
+   "description": "حساب مشترك",
+   "stock": 9999,
+   "isInfiniteStock": true,
+   "customerDescription": "حساب مشترك"
+  },
+  {
+   "id": "online_account",
+   "name": "خاص بك",
+   "description": "حساب خاص بك",
+   "stock": 9999,
+   "isInfiniteStock": true,
+   "customerDescription": "حساب خاص بك"
+  }
+ ],
+ "types": [
+  {
+   "id": "standard_offline",
+   "name": "مشترك — اللعبة الأساسية",
+   "optionId": "offline_account",
+   "price": 8500,
+   "cost": 1250,
+   "description": "",
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "standard_online",
+   "name": "خاص بك — اللعبة الأساسية",
+   "optionId": "online_account",
+   "price": 42000,
+   "cost": 25000,
+   "description": "",
+   "stock": 9999,
+   "isInfiniteStock": true
+  }
+ ],
+ "editions": [],
+ "dlcs": [],
+ "isActive": true,
+ "status": "Active",
+ "kind": "account",
+ "trade_value_iqd": 30000,
+ "store_offer_bonus_iqd": 3000,
+ "trade_enabled": true,
+ "trade_value_locked": false,
+ "id": "prd_c666e66b286c4d03",
+ "schema_version": 24,
+ "titleAr": "ماريو غولف: سوبر رش",
+ "compatibility": [
+  "Nintendo Switch",
+  "Nintendo Switch 2 compatibility: Supported – game behavior is consistent with Nintendo Switch"
+ ],
+ "edition": "Standard",
+ "developer": "CAMELOT",
+ "publisher": "Nintendo",
+ "seriesName": "Mario Golf",
+ "metacriticUrl": "https://www.metacritic.com/game/mario-golf-super-rush/",
+ "opencriticRating": 76,
+ "userScore": 6.2,
+ "price_usd": 59.99,
+ "officialUrl": "https://www.nintendo.com/us/store/products/mario-golf-super-rush-switch/",
+ "eshopUrl": "https://www.nintendo.com/us/store/products/mario-golf-super-rush-switch/",
+ "galleryImages": [
+  {
+   "alt": "Mario Golf: Super Rush official promotional media 1",
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000038622/e4ffb9da390e0a8c300cb95851dd58615e0567f0e1d25f95f4061202b320b1fe"
+  },
+  {
+   "alt": "Mario Golf: Super Rush official promotional media 2",
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000038622/999445cd526cd1d055e44879aaa7610dd666c1390ae3237f36adf06209f8a20e"
+  },
+  {
+   "alt": "Mario Golf: Super Rush official promotional media 3",
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000038622/6a0ff92d949c16029c35ac9ddcf47a661bcfeb158543769bf8ad166163d280ce"
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000038622/ec315c889d7529ac87575d6eb6bb07b3dbcd4b946241c79e285eb737c92ad4ea"
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000038622/ff15c5d4814187fae399cf7b92b253d864da409af367119a3956a3609b2f99c4"
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000038622/a0f7308ef01901623453e0ed7ae30a97e4389a358ed825e07ae3f9af83fa8ef1"
+  }
+ ],
+ "videos": [
+  {
+   "title": "Official product page / trailer",
+   "url": "https://www.nintendo.com/us/store/products/mario-golf-super-rush-switch/"
+  },
+  {
+   "title": "Nintendo news and updates",
+   "url": "https://www.nintendo.com/us/search/#q=Mario%20Golf%20Super%20Rush&p=1&cat=news"
+  },
+  {
+   "title": "Metacritic review hub",
+   "url": "https://www.metacritic.com/game/mario-golf-super-rush/"
+  }
+ ],
+ "soundtrack": [
+  {
+   "title": "Official game page",
+   "url": "https://www.nintendo.com/us/store/products/mario-golf-super-rush-switch/"
+  },
+  {
+   "title": "Nintendo news / update page",
+   "url": "https://www.nintendo.com/us/search/#q=Mario%20Golf%20Super%20Rush&p=1&cat=news"
+  },
+  {
+   "title": "Metacritic / reviews",
+   "url": "https://www.metacritic.com/game/mario-golf-super-rush/"
+  }
+ ],
+ "gameIsOffline": true,
+ "gameIsOnline": true,
+ "gameLanguageLocked": false,
+ "description_short": "Golf with a Mushroom Kingdom twist. Play standard golf, Speed Golf, and Battle Golf with Mario characters, or level up your Mii in the Golf Adventure mode.",
+ "description_ar": "لعبة غولف بطابع عالم ماريو تتيح اللعب حتى 4 لاعبين محليًا أو عبر الإنترنت، مع أوضاع Standard Golf وSpeed Golf وBattle Golf، بالإضافة إلى طور Golf Adventure لتطوير شخصية الـMii.",
+ "box_front_url": "https://images.launchbox-app.com/r2_12aea315-1ea4-4ab2-a9c3-c7458b992569.jpg",
+ "box_back_url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000038622/e4ffb9da390e0a8c300cb95851dd58615e0567f0e1d25f95f4061202b320b1fe",
+ "languagesAudio": [
+  "Character vocalizations",
+  "Music / sound effects",
+  "No full language-dependent dub confirmed"
+ ],
+ "languagesText": [
+  "Japanese / English",
+  "French / German / Italian / Spanish / Dutch",
+  "Korean / Simplified Chinese / Traditional Chinese / additional regional English variants"
+ ],
+ "tvMode": true,
+ "tabletopMode": true,
+ "handheldMode": true,
+ "nintendoPlayModes": "TV / Tabletop / Handheld",
+ "nintendoOnlineRequired": false,
+ "nintendoCloudSaves": true,
+ "nintendoGameKeyCard": false,
+ "nintendoPhysicalNeedsDownload": false,
+ "switch2Enhanced": false,
+ "switch2Exclusive": false,
+ "nintendoNotes": "Official Nintendo store page confirms supported play modes, file size, supported languages, and Nintendo Switch 2 compatibility for Mario Golf: Super Rush.",
+ "editionsList": [
+  {
+   "name": "Standard Edition",
+   "coverUrl": "https://images.launchbox-app.com/r2_12aea315-1ea4-4ab2-a9c3-c7458b992569.jpg",
+   "contents": [
+    {
+     "label": "Base game"
+    },
+    {
+     "label": "Standard Golf, Speed Golf, and Battle Golf modes"
+    },
+    {
+     "label": "Golf Adventure for your Mii character"
+    }
+   ]
+  },
+  {
+   "name": "Digital Edition",
+   "coverUrl": "https://assets.nintendo.com/image/upload/ar_1:1,c_fill,g_auto,w_1000/f_auto/q_auto/dpr_1.5/store/software/switch/70010000038622/af5246b2f01dee8111a70bcb3f556e65a492801d6677d0ab0f17b566a7b0285b",
+   "contents": [
+    {
+     "label": "Nintendo eShop release"
+    },
+    {
+     "label": "Local and online multiplayer with Mario characters"
+    },
+    {
+     "label": "Save Data Cloud support"
+    }
+   ]
+  },
+  {
+   "name": "Current Store Package",
+   "coverUrl": "https://assets.nintendo.com/image/upload/ar_16:9,c_fill,g_auto,w_1600/f_auto/q_auto/dpr_1.5/store/software/switch/70010000038622/af5246b2f01dee8111a70bcb3f556e65a492801d6677d0ab0f17b566a7b0285b",
+   "contents": [
+    {
+     "label": "Offline account option"
+    },
+    {
+     "label": "Online account option"
+    },
+    {
+     "label": "Hidden by default until review"
+    }
+   ]
+  }
+ ],
+ "gameplayPillars": [
+  {
+   "title": "Speed Golf chaos",
+   "description": "Tee off at the same time and race to finish each hole first while dashing across the course.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000038622/e4ffb9da390e0a8c300cb95851dd58615e0567f0e1d25f95f4061202b320b1fe"
+  },
+  {
+   "title": "Battle Golf arenas",
+   "description": "Compete in a neon stadium full of hazards like Thwomps, Chain Chomps, and banana peels.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000038622/999445cd526cd1d055e44879aaa7610dd666c1390ae3237f36adf06209f8a20e"
+  },
+  {
+   "title": "Golf Adventure progression",
+   "description": "Train a Mii golfer, improve stats, and take on a structured campaign at Bonny Greens.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000038622/6a0ff92d949c16029c35ac9ddcf47a661bcfeb158543769bf8ad166163d280ce"
+  },
+  {
+   "title": "Speed Golf and Battle Golf",
+   "description": "Alternative modes such as Speed Golf and Battle Golf turn standard golf into a faster, more chaotic race for holes, power-ups, and map control.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000038622/ec315c889d7529ac87575d6eb6bb07b3dbcd4b946241c79e285eb737c92ad4ea"
+  },
+  {
+   "title": "Character progression in Golf Adventure",
+   "description": "The single-player Golf Adventure mode lets a Mii improve stats, learn mechanics, and move through themed courses and training sequences.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000038622/ff15c5d4814187fae399cf7b92b253d864da409af367119a3956a3609b2f99c4"
+  }
+ ],
+ "worldSummary": "Mario Golf: Super Rush blends arcade-style Mushroom Kingdom personality with accessible golf systems, fast-paced competitive modes, and a light RPG-like adventure structure for the Mii campaign.",
+ "storyChapters": [
+  {
+   "title": "Hit the green",
+   "body": "Mario and friends gather for a vibrant Mushroom Kingdom golf outing.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000038622/e4ffb9da390e0a8c300cb95851dd58615e0567f0e1d25f95f4061202b320b1fe"
+  },
+  {
+   "title": "Race through the course",
+   "body": "Speed Golf and Battle Golf turn every match into a fast-paced scramble with items and special shots.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000038622/999445cd526cd1d055e44879aaa7610dd666c1390ae3237f36adf06209f8a20e"
+  },
+  {
+   "title": "Train to become a pro",
+   "body": "Golf Adventure follows a Mii golfer from beginner lessons to advanced competition.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000038622/6a0ff92d949c16029c35ac9ddcf47a661bcfeb158543769bf8ad166163d280ce"
+  },
+  {
+   "title": "Start with Golf Adventure",
+   "body": "New players can use Golf Adventure to learn swings, spins, terrain reading, and shot selection while gradually improving a custom golfer.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000038622/a0f7308ef01901623453e0ed7ae30a97e4389a358ed825e07ae3f9af83fa8ef1"
+  },
+  {
+   "title": "Master party-friendly and competitive modes",
+   "body": "Beyond standard rounds, the game expands into party modes, motion control options, and competitive multiplayer that reward course knowledge.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000038622/e4ffb9da390e0a8c300cb95851dd58615e0567f0e1d25f95f4061202b320b1fe"
+  }
+ ],
+ "features": [
+  "Standard Golf, Speed Golf, and Battle Golf modes",
+  "Golf Adventure for your Mii character",
+  "Local and online multiplayer with Mario characters",
+  "Speed Golf gives the series a fresh arcade twist",
+  "Golf Adventure teaches mechanics through progression",
+  "A varied roster offers distinct shot feel and style"
+ ],
+ "perfResolutionDocked": "1080p",
+ "perfResolutionHandheld": "720p",
+ "perfFps": "60",
+ "perfHdr": false,
+ "playTimeMain": 5,
+ "completionMain": 8,
+ "completionExtras": 12,
+ "faq": [
+  {
+   "q": "Does Mario Golf: Super Rush support online play?",
+   "a": "Yes. The game supports online play for 2-4 players in supported modes."
+  },
+  {
+   "q": "Does it support Nintendo Switch 2?",
+   "a": "Yes. Nintendo lists it as Supported – game behavior is consistent with Nintendo Switch."
+  },
+  {
+   "q": "What are the main special modes?",
+   "a": "The game highlights Speed Golf, Battle Golf, and the single-player Golf Adventure mode."
+  },
+  {
+   "q": "Does Mario Golf: Super Rush support local multiplayer?",
+   "a": "Yes. It supports local multiplayer, making it suitable for couch sessions and party-style rounds with friends or family."
+  },
+  {
+   "q": "What makes it different from standard golf games?",
+   "a": "Its headline difference is Speed Golf, where players race across the course in real time after taking their shots, creating a much more frantic tempo."
+  }
+ ],
+ "verdictScore": 7.7,
+ "verdictPros": [
+  "Fast and accessible golf mechanics",
+  "Strong party value in Speed Golf and Battle Golf",
+  "Good local and online multiplayer support",
+  "Speed Golf is energetic and memorable",
+  "Easy to learn yet still satisfying to optimize"
+ ],
+ "verdictCons": [
+  "Adventure mode is shorter than some players expect",
+  "Some courses are simpler than sim-style golf games",
+  "Competitive balance depends heavily on character abilities",
+  "Standard golf fans may prefer more courses at launch",
+  "The RPG-style adventure mode is lighter than a full sports RPG"
+ ],
+ "reviews": [
+  {
+   "source": "Metacritic",
+   "score": "75",
+   "url": "https://www.metacritic.com/game/mario-golf-super-rush/"
+  },
+  {
+   "source": "OpenCritic",
+   "score": "76",
+   "url": "https://opencritic.com/game/11506/mario-golf-super-rush"
+  },
+  {
+   "source": "IGN",
+   "score": "7/10",
+   "url": "https://www.ign.com/games/mario-golf-super-rush"
+  }
+ ],
+ "timeline": [
+  {
+   "date": "2021-02-17",
+   "title": "Announced during Nintendo Direct",
+   "body": "Announced during Nintendo Direct — recorded milestone dated 2021-02-17."
+  },
+  {
+   "date": "2021-06-25",
+   "title": "Released on Nintendo Switch",
+   "body": "Released on Nintendo Switch — recorded milestone dated 2021-06-25."
+  },
+  {
+   "date": "2021-09-24",
+   "title": "Major free update added new characters and courses",
+   "body": "Major free update added new characters and courses — recorded milestone dated 2021-09-24."
+  }
+ ],
+ "patchNotes": [
+  {
+   "version": "Launch version",
+   "date": "2021-06-25",
+   "body": "Update entry for Launch version, dated 2021-06-25. No additional change list was included in the prior verified extraction."
+  },
+  {
+   "version": "Free update – Toadette / New Donk City",
+   "date": "2021-08-06",
+   "body": "Update entry for Free update – Toadette / New Donk City, dated 2021-08-06. No additional change list was included in the prior verified extraction."
+  },
+  {
+   "version": "Free update – Koopa Troopa / Ninji / new courses",
+   "date": "2021-09-24",
+   "body": "Update entry for Free update – Koopa Troopa / Ninji / new courses, dated 2021-09-24. No additional change list was included in the prior verified extraction."
+  }
+ ],
+ "studioName": "CAMELOT",
+ "studioUrl": "https://www.nintendo.com/us/store/products/mario-golf-super-rush-switch/",
+ "studioLocation": "Japan",
+ "sources": [
+  {
+   "name": "Nintendo official product page",
+   "url": "https://www.nintendo.com/us/store/products/mario-golf-super-rush-switch/"
+  },
+  {
+   "name": "Nintendo Support / Switch 2 compatibility",
+   "url": "https://support.nintendo.com/"
+  },
+  {
+   "name": "Metacritic",
+   "url": "https://www.metacritic.com/game/mario-golf-super-rush/"
+  }
+ ],
+ "downloadSizeGb": 4.2,
+ "requiredSpaceGb": 4.2,
+ "microSdRecommended": false,
+ "storageNotes": "Nintendo lists approximately 4.2 GB of game file size for both Nintendo Switch and Nintendo Switch 2 compatibility listings.",
+ "mpLocalPlayers": true,
+ "mpOnlinePlayers": true,
+ "mpCoop": false,
+ "mpCompetitive": true,
+ "mpLocalWireless": true,
+ "mpSplitScreen": false,
+ "seriesEntries": [
+  "Mario Golf: World Tour",
+  "Mario Tennis Aces",
+  "Nintendo Switch Sports"
+ ],
+ "devicePerformance": [
+  {
+   "device": "Nintendo Switch 2",
+   "deviceSlug": "nintendo-switch-2",
+   "deviceModel": "Nintendo Switch 2",
+   "hardwareId": "prd_acf4c89908764c62",
+   "informationStatus": "Available / verified",
+   "unavailableReason": "No required Handheld or TV mode is marked unsupported.",
+   "handheld": {
+    "supported": true,
+    "resolution": "720p",
+    "resolutionDynamic": false,
+    "renderingResolution": "1280x720",
+    "outputResolution": "1280x720",
+    "fps": "60",
+    "fpsMin": "60",
+    "fpsMax": "60",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "Handheld",
+    "notes": "Original Nintendo Switch performance profile; arcade golf gameplay targets a smooth 60 fps presentation in supported gameplay scenarios."
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "1080p",
+    "resolutionDynamic": false,
+    "renderingResolution": "1920x1080",
+    "outputResolution": "1920x1080",
+    "fps": "60",
+    "fpsMin": "60",
+    "fpsMax": "60",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "TV / Docked",
+    "notes": "Original Nintendo Switch performance profile; arcade golf gameplay targets a smooth 60 fps presentation in supported gameplay scenarios."
+   },
+   "modes": [
+    {
+     "name": "Primary documented mode",
+     "handheldResolution": "720p",
+     "handheldFps": "60",
+     "tvResolution": "1080p",
+     "tvFps": "60",
+     "hdr": false,
+     "vrr": false,
+     "notes": "Original Nintendo Switch performance profile; arcade golf gameplay targets a smooth 60 fps presentation in supported gameplay scenarios."
+    }
+   ],
+   "upscaling": "Game / system-specific scaling where applicable",
+   "rayTracing": false,
+   "rayTracingMode": "Not Supported",
+   "loadingTime": "Scene-dependent; no single universal loading time",
+   "loadingNotes": "Loading time varies by scene, save progress, and storage state.",
+   "gameVersion": "Current retail build",
+   "patchVersion": "Current available update",
+   "testedDate": "2026-08-27",
+   "sourceName": "Nintendo official product page",
+   "sourceUrl": "https://www.nintendo.com/us/store/products/mario-golf-super-rush-switch/",
+   "verifiedAt": "2026-08-27",
+   "verificationStatus": "Verified / sourced",
+   "performanceNotes": "Original Nintendo Switch performance profile; arcade golf gameplay targets a smooth 60 fps presentation in supported gameplay scenarios."
+  }
+ ],
+ "switch2UpgradePrice": 0,
+ "nintendoEshopUrl": "https://www.nintendo.com/us/store/products/mario-golf-super-rush-switch/",
+ "arabicSupport": false,
+ "tagline": "Golf with a Mushroom Kingdom twist. Play standard golf, Speed Golf, and Battle Golf with Mario characters, or level up your Mii in the Golf Adventure mode.",
+ "fitFor": [
+  "Players looking for sports, party gameplay.",
+  "Players who want local multiplayer on Nintendo Switch.",
+  "Players who want a lighter, party-friendly sports game with multiple play styles.",
+  "Players who enjoy alternating between relaxed rounds and faster arcade rule sets."
+ ],
+ "perfNotes": "Original Nintendo Switch performance profile; arcade golf gameplay targets a smooth 60 fps presentation in supported gameplay scenarios.",
+ "verdictSummary": "Overall score: 7.7/10. Strengths include Fast and accessible golf mechanics; Strong party value in Speed Golf and Battle Golf; Good local and online multiplayer support. Main drawbacks include Adventure mode is shorter than some players expect; Some courses are simpler than sim-style golf games.",
+ "studioAbout": "CAMELOT is credited as the developer of this Nintendo Switch release. Nintendo is credited as the publisher.",
+ "setupNeeds": [
+  "Nintendo Switch-compatible hardware for this release.",
+  "Internet connection is required for online features."
+ ],
+ "dlc": [
+  {
+   "name": "No standalone DLC announced",
+   "description": "No standalone paid DLC expansion is included in this extraction. Free updates, when applicable, are listed in the Updates section instead."
+  }
+ ],
+ "guides": [
+  {
+   "title": "Official Nintendo game page",
+   "summary": "Official Nintendo reference for game description, supported modes, player counts, languages, file size, and compatibility information.",
+   "url": "https://www.nintendo.com/us/store/products/mario-golf-super-rush-switch/"
+  }
+ ],
+ "notFitFor": [
+  "Players seeking a highly realistic golf simulator.",
+  "Players who only want a long story campaign without much interest in multiplayer modes."
+ ],
+ "boxContentsList": "[Circular]",
+ "image": "/api/files/products/prd_c666e66b286c4d03/cover-327691396747125c.avif",
+ "banner": "/api/files/products/prd_c666e66b286c4d03/banner-0-74723fea18085414.avif",
+ "schemaId": "",
+ "createdAt": "2026-08-27T16:59:52.135Z",
+ "created_at": "2026-08-27T16:59:52.135Z",
+ "updatedAt": "2026-08-28T21:58:06.958Z",
+ "updated_at": "2026-08-27T16:59:52.135Z",
+ "badgeEn": "وفر 40%",
+ "badgeKu": "وفر 40%",
+ "featuresEn": [
+  "Standard Golf, Speed Golf, and Battle Golf modes",
+  "Golf Adventure for your Mii character",
+  "Local and online multiplayer with Mario characters",
+  "Speed Golf gives the series a fresh arcade twist",
+  "Golf Adventure teaches mechanics through progression",
+  "A varied roster offers distinct shot feel and style"
+ ],
+ "featuresKu": [
+  "Standard Golf, Speed Golf, and Battle Golf modes",
+  "Golf Adventure for your Mii character",
+  "Local and online multiplayer with Mario characters",
+  "Speed Golf gives the series a fresh arcade twist",
+  "Golf Adventure teaches mechanics through progression",
+  "A varied roster offers distinct shot feel and style"
+ ],
+ "boxFrontUrl": "https://images.launchbox-app.com/r2_12aea315-1ea4-4ab2-a9c3-c7458b992569.jpg",
+ "sales": 0,
+ "images": [],
+ "modes": []
+}

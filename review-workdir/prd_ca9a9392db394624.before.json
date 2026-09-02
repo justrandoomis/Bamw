@@ -1,0 +1,485 @@
+{
+ "id": "prd_ca9a9392db394624",
+ "title": "Little Nightmares III",
+ "titleEn": "Little Nightmares III",
+ "titleKu": "Little Nightmares III",
+ "slug": "little-nightmares-iii-switch1-switch2",
+ "description": "Little Nightmares III follows Low and Alone, two children trapped in the Spiral, a cluster of disturbing locations within the Nowhere. Their goal is to survive its residents, solve environmental puzzles and find a path out.\n\nThe game can be played solo with an AI companion or with a friend through online co-op on the same platform. Low uses a bow and Alone uses a wrench, giving the pair different ways to interact with threats, mechanisms and environmental obstacles. Friend’s Pass allows one owner to invite another player on the same platform into online co-op.",
+ "descriptionEn": "Little Nightmares III follows Low and Alone, two children trapped in the Spiral, a cluster of disturbing locations within the Nowhere. Their goal is to survive its residents, solve environmental puzzles and find a path out.\n\nThe game can be played solo with an AI companion or with a friend through online co-op on the same platform. Low uses a bow and Alone uses a wrench, giving the pair different ways to interact with threats, mechanisms and environmental obstacles. Friend’s Pass allows one owner to invite another player on the same platform into online co-op.",
+ "descriptionKu": "Little Nightmares III follows Low and Alone, two children trapped in the Spiral, a cluster of disturbing locations within the Nowhere. Their goal is to survive its residents, solve environmental puzzles and find a path out.\n\nThe game can be played solo with an AI companion or with a friend through online co-op on the same platform. Low uses a bow and Alone uses a wrench, giving the pair different ways to interact with threats, mechanisms and environmental obstacles. Friend’s Pass allows one owner to invite another player on the same platform into online co-op.",
+ "cartridgeImage": "/api/files/products/prd_ca9a9392db394624/cartridgeImage-5f41e361af0596cb.webp",
+ "nintendoCardImage": "/api/files/products/prd_ca9a9392db394624/nintendoCardImage-033383c830f18e52.webp",
+ "coverHiResImage": "",
+ "coverImage": "/api/files/products/prd_ca9a9392db394624/coverImage-3bd981ce0ab28267.webp",
+ "bannerImages": [
+  "/api/files/products/prd_ca9a9392db394624/bannerImages-d068b3866cfb6684.webp",
+  "/api/files/products/prd_ca9a9392db394624/bannerImages-aa7cb8c475910ec1.webp"
+ ],
+ "gallery": [],
+ "youtubeTrailer": "https://www.youtube.com/watch?v=K9OREMjtjrU",
+ "releaseDate": "2025-10-10",
+ "ageRating": "PEGI 16",
+ "metacriticRating": 69,
+ "genres": [
+  "Horror",
+  "Adventure",
+  "Puzzle"
+ ],
+ "platform": "both",
+ "size": 9.6,
+ "numberOfPlayers": "2",
+ "supportedLanguages": "Japanese, French, German, Italian, Spanish, Korean, Russian, Simplified Chinese, Latin American Spanish, Brazilian Portuguese, Traditional Chinese, American English, Polish, Thai",
+ "hardwareModel": "",
+ "colorEdition": "",
+ "storageCapacity": "",
+ "screenSpecs": "",
+ "batteryLife": "",
+ "boxContents": [],
+ "boxContentsText": "",
+ "warrantyCondition": "",
+ "connectivity": "",
+ "characterName": "Link",
+ "amiiboSeries": "The Legend of Zelda",
+ "figureType": "figure",
+ "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+ "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+ "boxCondition": "mib",
+ "releaseWave": "Wave 2 (Restock)",
+ "rarity": "standard",
+ "accessoryType": "حقيبة حماية وتنقل Carry Case",
+ "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+ "brand": "Nintendo Official",
+ "material": "Hard EVA Shockproof Shell",
+ "availableColors": "Black, Neon Red/Blue, White",
+ "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+ "cardValue": "$20 eShop Balance",
+ "region": "US",
+ "cardType": "eshop",
+ "deliveryMethod": "instant_code",
+ "redemptionGuide": "",
+ "redemptionSteps": [],
+ "validity": "no_expiry",
+ "usedType": "cartridge",
+ "conditionGrade": "like_new",
+ "packaging": "cib",
+ "guaranteeStatus": "tested_30days",
+ "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+ "accountType": "primary",
+ "badge": "وفر 40%",
+ "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+ "price": 9000,
+ "cost": 1500,
+ "stock": 999999,
+ "isInfiniteStock": true,
+ "isHidden": false,
+ "displayOrder": 0,
+ "category": "nintendo-switch-games",
+ "categoryId": "nintendo-switch-games",
+ "categoryEn": "",
+ "categoryKu": "",
+ "options": [
+  {
+   "id": "offline_account",
+   "name": "Offline Account",
+   "description": "Account delivery option intended for offline-account use.",
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_account",
+   "name": "Online Account",
+   "description": "Account delivery option intended for online-account use where the game supports online features.",
+   "isInfiniteStock": true
+  }
+ ],
+ "types": [
+  {
+   "id": "switch1_standard_offline",
+   "name": "Nintendo Switch - Standard",
+   "optionId": "offline_account",
+   "price": "9000",
+   "cost": 1500,
+   "description": "Nintendo Switch supplier 普通版 mapped to Offline / Standard. Cost ¥7.78 -> 1,500 IQD after fixed conversion and floor rounding.",
+   "isInfiniteStock": true
+  },
+  {
+   "id": "switch1_dlc_offline",
+   "name": "Nintendo Switch - DLC",
+   "optionId": "offline_account",
+   "price": "10000",
+   "cost": 2500,
+   "description": "Nintendo Switch supplier 特典版 mapped to Offline / DLC. Cost ¥11.70 -> 2,500 IQD.",
+   "isInfiniteStock": true
+  },
+  {
+   "id": "switch1_standard_online",
+   "name": "Nintendo Switch - Standard",
+   "optionId": "online_account",
+   "price": 27500,
+   "cost": 16500,
+   "description": "Nintendo Switch supplier 标准版 mapped to Online / Standard. Cost ¥75.40 -> 16,500 IQD.",
+   "isInfiniteStock": true
+  },
+  {
+   "id": "switch1_dlc_online",
+   "name": "Nintendo Switch - DLC",
+   "optionId": "online_account",
+   "price": 38000,
+   "cost": 25000,
+   "description": "Nintendo Switch supplier 豪华版 mapped to Online / DLC. Cost ¥114.60 -> 25,000 IQD.",
+   "isInfiniteStock": true
+  },
+  {
+   "cost": 1250,
+   "description": "Nintendo Switch 2 supplier 普通版 mapped to Offline / Standard. Cost ¥6.80 -> 1,250 IQD.",
+   "id": "switch2_standard_offline",
+   "isInfiniteStock": true,
+   "name": "Nintendo Switch 2 - Standard",
+   "optionId": "offline_account",
+   "price": "10000"
+  },
+  {
+   "cost": 2000,
+   "description": "Nintendo Switch 2 supplier 特典版 mapped to Offline / DLC. Cost ¥9.74 -> 2,000 IQD.",
+   "id": "switch2_dlc_offline",
+   "isInfiniteStock": true,
+   "name": "Nintendo Switch 2 - DLC",
+   "optionId": "offline_account",
+   "price": "11000"
+  },
+  {
+   "cost": 14250,
+   "description": "Nintendo Switch 2 supplier 标准版 mapped to Online / Standard. Cost ¥65.60 -> 14,250 IQD.",
+   "id": "switch2_standard_online",
+   "isInfiniteStock": true,
+   "name": "Nintendo Switch 2 - Standard",
+   "optionId": "online_account",
+   "price": 27500
+  },
+  {
+   "cost": 18500,
+   "description": "Nintendo Switch 2 supplier 豪华版 mapped to Online / DLC. Cost ¥85.20 -> 18,500 IQD.",
+   "id": "switch2_dlc_online",
+   "isInfiniteStock": true,
+   "name": "Nintendo Switch 2 - DLC",
+   "optionId": "online_account",
+   "price": 32500
+  }
+ ],
+ "editions": [],
+ "dlcs": [],
+ "isActive": true,
+ "status": "active",
+ "kind": "account",
+ "trade_value_iqd": 0,
+ "store_offer_bonus_iqd": 0,
+ "trade_enabled": true,
+ "trade_value_locked": false,
+ "schema_version": 21,
+ "compatibility": [
+  "Nintendo Switch",
+  "Nintendo Switch 2"
+ ],
+ "edition": "Standard",
+ "developer": "Supermassive Games",
+ "publisher": "BANDAI NAMCO Entertainment",
+ "metacriticUrl": "https://www.metacritic.com/game/little-nightmares-iii/critic-reviews/?platform=nintendo-switch-2",
+ "opencriticRating": 71,
+ "userScore": 5.7,
+ "officialUrl": "https://www.bandainamcoent.com/games/little-nightmares-3",
+ "eshopUrl": "https://www.bandainamcoent.com/games/little-nightmares-3",
+ "gameIsOffline": true,
+ "gameIsOnline": true,
+ "description_short": "Low and Alone travel through the Spiral in an atmospheric horror puzzle-platformer playable solo with an AI companion or in two-player online co-op.",
+ "description_ar": "مغامرة رعب وألغاز تتابع Low وAlone أثناء محاولتهما الهروب من عالم Spiral، ويمكن لعبها فرديًا مع رفيق يتحكم به الذكاء الاصطناعي أو بتعاون أونلاين بين لاعبين على المنصة نفسها.",
+ "videos": [
+  {
+   "title": "Little Nightmares III — Official Trailer",
+   "url": "https://www.youtube.com/watch?v=K9OREMjtjrU"
+  }
+ ],
+ "nintendoEshopUrl": "https://www.bandainamcoent.com/games/little-nightmares-3",
+ "nintendoOnlineRequired": false,
+ "nintendoCloudSaves": true,
+ "tvMode": true,
+ "tabletopMode": true,
+ "handheldMode": true,
+ "nintendoPlayModes": "TV Mode, Tabletop Mode, Handheld Mode",
+ "nintendoNotes": "Nintendo lists separate Nintendo Switch and Nintendo Switch 2 versions, with Simplified Chinese support. The Switch 2 version is approximately 9.6 GB. Cooperative play is online for two players; solo play uses an AI companion. Supplier four-tier listings are mapped to Standard/DLC variants per the store rule. No Full Wrap was verified, so 3D texture fields remain blank.",
+ "switch2Exclusive": false,
+ "tagline": "Escape the Spiral as Low and Alone, combining their bow and wrench to survive grotesque threats, environmental puzzles and online cooperative challenges.",
+ "fitFor": [
+  "Players who enjoy atmospheric horror, environmental storytelling and puzzle-platforming.",
+  "Players who want a Little Nightmares adventure designed around two complementary characters.",
+  "Friends who want online cooperative play on the same platform."
+ ],
+ "notFitFor": [
+  "Players specifically seeking couch co-op; cooperative multiplayer is online rather than local split-screen.",
+  "Players who dislike stealth, chase sequences or deliberately unsettling horror imagery.",
+  "Players looking for a long open-world campaign; the game is a focused, linear horror adventure."
+ ],
+ "playTimeMain": 6,
+ "playTimeFull": 10.5,
+ "gameplayPillars": [
+  {
+   "title": "Two Complementary Survivors",
+   "description": "Low carries a bow for ranged interactions while Alone uses a wrench for mechanisms and close-range environmental actions."
+  },
+  {
+   "title": "Puzzles, Stealth and Chases",
+   "description": "Progress relies on reading the environment, avoiding or outsmarting larger threats and coordinating actions when playing cooperatively."
+  },
+  {
+   "title": "Atmospheric Horror",
+   "description": "Scale, sound, lighting and grotesque residents create tension without turning the game into a traditional combat-heavy horror title."
+  }
+ ],
+ "worldSummary": "The Spiral is a cluster of eerie locations within the Nowhere, connected by the journey of Low and Alone. Each area combines oversized architecture, hostile inhabitants and environmental storytelling that makes the children feel physically vulnerable. The setting continues the Little Nightmares tradition of communicating much of its history through spaces, props and creatures rather than direct exposition.",
+ "storyChapters": [
+  {
+   "title": "Low and Alone in the Spiral",
+   "body": "The two children are trapped in the Spiral and search for a way out while confronting the disturbing places and residents within it."
+  },
+  {
+   "title": "Surviving Together",
+   "body": "Their distinct tools become essential to traversal and puzzles as the route becomes more dangerous, whether Alone is controlled by AI or another player."
+  },
+  {
+   "title": "Toward an Escape",
+   "body": "Later sections deepen the series’ themes of vulnerability and the Nowhere while pushing the pair through more demanding encounters; endgame spoilers are omitted."
+  }
+ ],
+ "galleryImages": [
+  {
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000098638/58559f9ee8a60691d308867b6050face5205be59235141c26d82420da9327a17",
+   "alt": "Official Nintendo gameplay screenshot for Little Nightmares III."
+  }
+ ],
+ "features": [
+  "Play as Low and Alone, two children trying to escape the Spiral within the wider Nowhere setting.",
+  "Low’s bow and Alone’s wrench provide complementary tools for environmental interaction, puzzles and survival.",
+  "The full campaign can be played solo with an AI companion or in online co-op with another player.",
+  "Stealth, platforming, environmental puzzles and chase sequences remain central to the Little Nightmares formula.",
+  "A Friend’s Pass allows supported co-op access without requiring the second player to own the full game.",
+  "The Backstage, released in June 2026, is an additional story chapter included in the Secrets of the Spiral Season Pass."
+ ],
+ "perfResolutionDocked": "~1189p render, upscaled to ~2016p output on Switch 2",
+ "perfResolutionHandheld": "1080p dynamic on Switch 2",
+ "perfFps": "30 FPS target on Nintendo Switch 2",
+ "perfNotes": "A Nintendo Life launch review of the Switch 2 version describes it as targeting 30 FPS with soft/grainy visuals, micro-stutters and frame drops during heavier action. Exact verified rendering resolutions were not published in the sources used, so those fields are left blank.",
+ "devicePerformance": [
+  {
+   "device": "Nintendo Switch 2",
+   "deviceSlug": "nintendo-switch-2",
+   "deviceModel": "Nintendo Switch 2",
+   "informationStatus": "verified",
+   "handheld": {
+    "supported": true,
+    "resolution": "1080p dynamic",
+    "resolutionDynamic": true,
+    "renderingResolution": "dynamic, up to 1080p",
+    "outputResolution": "1080p",
+    "fps": "30",
+    "fpsMin": "below 30 in stress scenes",
+    "fpsMax": "30",
+    "mode": "Launch build",
+    "notes": "Launch review reports a 30 FPS target with soft presentation and micro-stutters; exact handheld rendering resolution was not verified."
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "~1189p render / ~2016p upscaled output",
+    "resolutionDynamic": true,
+    "renderingResolution": "~1189p common",
+    "outputResolution": "~2016p upscaled",
+    "fps": "30",
+    "fpsMin": "below 30 in stress scenes",
+    "fpsMax": "30",
+    "mode": "Launch build",
+    "notes": "Launch review reports a 30 FPS target and visible frame drops in demanding sequences; exact TV rendering resolution was not verified."
+   },
+   "sourceName": "ElAnalistaDeBits technical comparison + Nintendo Life review",
+   "sourceUrl": "https://www.youtube.com/watch?v=g_VtzT81mAc",
+   "verifiedAt": "2026-08-25",
+   "verificationStatus": "verified",
+   "performanceNotes": "Switch 2 uses one 30 FPS profile. Technical demo analysis reports ~1189p common rendering upscaled to ~2016p docked and up to 1080p dynamic handheld; final reviews report micro-stutter/frame drops at launch."
+  }
+ ],
+ "downloadSizeGb": 9.6,
+ "arabicSupport": false,
+ "mpLocalPlayers": false,
+ "mpOnlinePlayers": true,
+ "mpCoop": true,
+ "mpCompetitive": false,
+ "mpSplitScreen": false,
+ "mpLocalWireless": false,
+ "dlc": [
+  {
+   "name": "Secrets of The Spiral - Expansion Pass",
+   "description": "Official expansion pass for additional Little Nightmares III content."
+  },
+  {
+   "name": "The Backstage",
+   "description": "First additional story chapter released in 2026."
+  },
+  {
+   "name": "Second Additional Chapter",
+   "description": "Second additional chapter announced for release in 2026."
+  }
+ ],
+ "guides": [
+  {
+   "title": "Nintendo — Little Nightmares III Switch 2",
+   "summary": "Official Nintendo Switch 2 product information.",
+   "url": "https://www.nintendo.com/us/store/products/little-nightmares-iii-switch-2/"
+  },
+  {
+   "title": "Bandai Namco — Little Nightmares III",
+   "summary": "Official publisher game page with story, characters and DLC information.",
+   "url": "https://www.bandainamcoent.com/games/little-nightmares-3"
+  },
+  {
+   "title": "Nintendo Life — Switch 2 Review",
+   "summary": "Platform-specific review used as a performance cross-check.",
+   "url": "https://www.nintendolife.com/reviews/nintendo-switch-2/little-nightmares-iii"
+  }
+ ],
+ "completionMain": 6,
+ "completionExtras": 6,
+ "completionAll": 10.5,
+ "faq": [
+  {
+   "q": "Does Little Nightmares III support co-op?",
+   "a": "Yes. It supports two-player online co-op on the same platform, while solo players are accompanied by an AI-controlled partner."
+  },
+  {
+   "q": "Is there couch co-op?",
+   "a": "No. The cooperative mode is online; there is no local split-screen campaign."
+  },
+  {
+   "q": "Does the game have paid additional content?",
+   "a": "Yes. Official additional content includes the Secrets of The Spiral Expansion Pass and additional story chapters/costume content."
+  }
+ ],
+ "verdictScore": 6.9,
+ "verdictSummary": "Score note: 6.9/10 is a direct normalization of the current 69/100 Metacritic aggregate for the Nintendo listing; it is not a separately invented store rating.\n\nLittle Nightmares III keeps the series’ disturbing environmental style while making two-character cooperation central to puzzles and traversal. Its strongest new idea is online co-op, while the lack of couch co-op and modest Switch 2 launch performance are important limitations.",
+ "verdictPros": [
+  "Strong atmosphere and environmental art direction.",
+  "Complementary character tools create useful cooperative interactions.",
+  "Online co-op adds a genuinely new way to experience the series."
+ ],
+ "verdictCons": [
+  "No couch co-op despite the two-character design.",
+  "Switch 2 launch performance targets 30 FPS and can show dips/stutter.",
+  "Focused campaign length may feel short to players seeking a large adventure."
+ ],
+ "reviews": [
+  {
+   "source": "Metacritic — Nintendo listing",
+   "score": "69/100",
+   "quote": "Current critic aggregate for the relevant Nintendo listing: 69/100. This is an external aggregate, not a BANANTO-created review score.",
+   "url": "https://www.dekudeals.com/items/little-nightmares-iii"
+  },
+  {
+   "url": "https://www.dekudeals.com/items/little-nightmares-iii",
+   "source": "OpenCritic",
+   "score": "71/100",
+   "quote": "OpenCritic aggregate recorded at 71/100. Where OpenCritic groups platforms, this value represents the published aggregate rather than a fabricated platform-specific score."
+  },
+  {
+   "source": "Metacritic User Score",
+   "score": "5.7/10",
+   "quote": "Current Metacritic user score shown with the listing: 5.7/10. User scores can change over time as additional ratings are submitted.",
+   "url": "https://www.dekudeals.com/items/little-nightmares-iii"
+  }
+ ],
+ "timeline": [
+  null,
+  {
+   "date": "2026",
+   "title": "The Backstage Additional Chapter",
+   "body": "The first additional story chapter from the expansion content became available during 2026."
+  },
+  {
+   "date": "2026",
+   "title": "Second Additional Chapter",
+   "body": "A second additional story chapter was announced for the expansion schedule."
+  }
+ ],
+ "setupNeeds": [
+  "Nintendo Switch or Nintendo Switch 2, depending on the purchased platform version.",
+  "Approximately 9.0 GB on Nintendo Switch or 9.6 GB on Nintendo Switch 2 for the base digital game.",
+  "Internet access and Nintendo Switch Online are required for online co-op."
+ ],
+ "sources": [
+  {
+   "name": "Nintendo — Little Nightmares III Switch 2",
+   "url": "https://www.nintendo.com/us/store/products/little-nightmares-iii-switch-2/"
+  },
+  {
+   "name": "Bandai Namco — Little Nightmares III",
+   "url": "https://www.bandainamcoent.com/games/little-nightmares-3"
+  },
+  {
+   "name": "LaunchBox Games Database — media reference",
+   "url": "https://gamesdb.launchbox-app.com/"
+  },
+  {
+   "name": "Deku Deals — Nintendo version scores and completion data",
+   "url": "https://www.dekudeals.com/items/little-nightmares-iii"
+  },
+  {
+   "name": "Deku Deals — The Backstage DLC listing",
+   "url": "https://www.dekudeals.com/items/little-nightmares-iii-first-additional-chapter"
+  },
+  {
+   "name": "Apple Music — Orrery from the original game soundtrack",
+   "url": "https://music.apple.com/gb/song/1842906092"
+  }
+ ],
+ "soundtrack": [
+  {
+   "title": "Orrery",
+   "url": "https://music.apple.com/gb/song/1842906092"
+  },
+  {
+   "title": "Porcelain in the Rubble"
+  },
+  {
+   "title": "Original game soundtrack — Hugo Long, Alistair Kerley & Frankie Harper"
+  }
+ ],
+ "seriesName": "Little Nightmares",
+ "seriesEntries": [
+  "Little Nightmares",
+  "Little Nightmares II",
+  "Little Nightmares III"
+ ],
+ "studioName": "Supermassive Games",
+ "studioUrl": "https://www.supermassivegames.com/",
+ "studioLocation": "Guildford, United Kingdom",
+ "studioAbout": "Supermassive Games developed Little Nightmares III for Bandai Namco, extending the series’ puzzle-platforming horror formula with Low and Alone and a full online cooperative option.",
+ "boxContentsList": "[Circular]",
+ "image": "/api/files/products/prd_ca9a9392db394624/image-3bd981ce0ab28267.webp",
+ "banner": "/api/files/products/prd_ca9a9392db394624/banner-d068b3866cfb6684.webp",
+ "schemaId": "",
+ "badgeEn": "وفر 40%",
+ "badgeKu": "وفر 40%",
+ "featuresEn": [
+  "Play as Low and Alone, two children trying to escape the Spiral within the wider Nowhere setting.",
+  "Low’s bow and Alone’s wrench provide complementary tools for environmental interaction, puzzles and survival.",
+  "The full campaign can be played solo with an AI companion or in online co-op with another player.",
+  "Stealth, platforming, environmental puzzles and chase sequences remain central to the Little Nightmares formula.",
+  "A Friend’s Pass allows supported co-op access without requiring the second player to own the full game.",
+  "The Backstage, released in June 2026, is an additional story chapter included in the Secrets of the Spiral Season Pass."
+ ],
+ "featuresKu": [
+  "Play as Low and Alone, two children trying to escape the Spiral within the wider Nowhere setting.",
+  "Low’s bow and Alone’s wrench provide complementary tools for environmental interaction, puzzles and survival.",
+  "The full campaign can be played solo with an AI companion or in online co-op with another player.",
+  "Stealth, platforming, environmental puzzles and chase sequences remain central to the Little Nightmares formula.",
+  "A Friend’s Pass allows supported co-op access without requiring the second player to own the full game.",
+  "The Backstage, released in June 2026, is an additional story chapter included in the Secrets of the Spiral Season Pass."
+ ],
+ "sales": 0,
+ "images": [],
+ "modes": []
+}
