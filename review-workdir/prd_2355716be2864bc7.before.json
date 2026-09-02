@@ -1,0 +1,550 @@
+{
+ "title": "Pikmin 3 Deluxe",
+ "titleEn": "Pikmin 3 Deluxe",
+ "titleKu": "",
+ "slug": "pikmin-3-deluxe-switch",
+ "description": "Pikmin 3 Deluxe follows three explorers from Koppai as they search planet PNF-404 for food that can save their homeworld. The Deluxe release adds full story co-op, new prologue and epilogue side stories featuring Olimar and Louie, difficulty options, quality-of-life changes, a bestiary-style Piklopedia, and the DLC content from the Wii U original.",
+ "descriptionEn": "Pikmin 3 Deluxe follows three explorers from Koppai as they search planet PNF-404 for food that can save their homeworld. The Deluxe release adds full story co-op, new prologue and epilogue side stories featuring Olimar and Louie, difficulty options, quality-of-life changes, a bestiary-style Piklopedia, and the DLC content from the Wii U original.",
+ "descriptionKu": "",
+ "cartridgeImage": "/api/files/products/prd_2355716be2864bc7/front-box-42ba88ac472091d8.webp",
+ "nintendoCardImage": "/api/files/products/prd_2355716be2864bc7/square-card-4924f84b11bac5e5.webp",
+ "coverHiResImage": "/api/files/products/prd_2355716be2864bc7/3d-wrap-3b196a1061241efc.webp",
+ "coverImage": "/api/files/products/prd_2355716be2864bc7/cover-c0803bc797e17aee.webp",
+ "bannerImages": [
+  "https://images.launchbox-app.com/bac0ecd1-5b1d-4e07-a73b-cf66abf6a039.jpg",
+  "https://images.launchbox-app.com/64e9677f-d341-4d8c-b9d0-2227aeae6bce.jpg",
+  "https://images.launchbox-app.com/d8da686c-69d3-4ce5-b671-9a9e43d2c371.jpg",
+  "https://images.launchbox-app.com/c5b9f982-62d3-4f5c-951e-93228bc43b89.jpg",
+  "https://images.launchbox-app.com/7d4540a8-912f-431d-b493-f0c783024f5b.jpg",
+  "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000005302/ac5801e1ed46672a3a05af2d4551a833a9fb603fb61d8583bd82fdbe972c8238",
+  "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000005302/69b190c41a122756b4de98520742777fba47af0057120c6ca4547bdc923b2561"
+ ],
+ "gallery": [],
+ "youtubeTrailer": "https://www.nintendo.com/us/store/products/pikmin-3-deluxe-switch/",
+ "releaseDate": "2020-10-30",
+ "ageRating": "ESRB E10+ / PEGI 7",
+ "metacriticRating": 85,
+ "genres": [
+  "Strategy",
+  "Adventure",
+  "Puzzle"
+ ],
+ "platform": "switch1",
+ "size": "6.5 GB",
+ "numberOfPlayers": "Single system (1-2)",
+ "supportedLanguages": "Japanese, English, French, German, Italian, Spanish, Korean, Dutch, Simplified Chinese, Traditional Chinese",
+ "hardwareModel": "",
+ "colorEdition": "",
+ "storageCapacity": "",
+ "screenSpecs": "",
+ "batteryLife": "",
+ "boxContents": [],
+ "boxContentsText": "",
+ "warrantyCondition": "",
+ "connectivity": "",
+ "characterName": "Link",
+ "amiiboSeries": "The Legend of Zelda",
+ "figureType": "figure",
+ "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+ "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+ "boxCondition": "mib",
+ "releaseWave": "Wave 2 (Restock)",
+ "rarity": "standard",
+ "accessoryType": "حقيبة حماية وتنقل Carry Case",
+ "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+ "brand": "Nintendo Official",
+ "material": "Hard EVA Shockproof Shell",
+ "availableColors": "Black, Neon Red/Blue, White",
+ "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+ "cardValue": "$20 eShop Balance",
+ "region": "Global",
+ "cardType": "eshop",
+ "deliveryMethod": "instant_code",
+ "redemptionGuide": "",
+ "redemptionSteps": [],
+ "validity": "no_expiry",
+ "usedType": "cartridge",
+ "conditionGrade": "like_new",
+ "packaging": "cib",
+ "guaranteeStatus": "tested_30days",
+ "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+ "accountType": "primary",
+ "badge": "وفر 40%",
+ "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+ "price": 11500,
+ "cost": 1250,
+ "stock": 999999,
+ "isInfiniteStock": true,
+ "isHidden": true,
+ "displayOrder": 0,
+ "category": "nintendo-switch-games",
+ "categoryId": "nintendo-switch-games",
+ "categoryEn": "",
+ "categoryKu": "",
+ "options": [
+  {
+   "id": "offline_account",
+   "name": "مشترك",
+   "description": "مشترك",
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_account",
+   "name": "خاص بك",
+   "description": "خاص بك",
+   "stock": 9999,
+   "isInfiniteStock": true
+  }
+ ],
+ "types": [
+  {
+   "id": "offline_base",
+   "name": "مشترك — اللعبة الأساسية",
+   "optionId": "offline_account",
+   "price": 11500,
+   "cost": 1250,
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_base",
+   "name": "خاص بك — اللعبة الأساسية",
+   "optionId": "online_account",
+   "price": 28000,
+   "cost": 20750,
+   "stock": 9999,
+   "isInfiniteStock": true
+  }
+ ],
+ "editions": [],
+ "dlcs": [],
+ "isActive": true,
+ "status": "Active",
+ "kind": "account",
+ "trade_value_iqd": 13500,
+ "store_offer_bonus_iqd": 2500,
+ "trade_enabled": true,
+ "trade_value_locked": false,
+ "id": "prd_2355716be2864bc7",
+ "schema_version": 24,
+ "titleAr": "بيكمين 3 ديلوكس",
+ "compatibility": [
+  "Nintendo Switch",
+  "Nintendo Switch 2: backward compatible"
+ ],
+ "edition": "Deluxe",
+ "developer": "Nintendo EAD / Eighting",
+ "publisher": "Nintendo",
+ "seriesName": "Pikmin",
+ "opencriticRating": 85,
+ "userScore": 8.4,
+ "metacriticUrl": "https://www.metacritic.com/game/pikmin-3-deluxe/",
+ "price_usd": 59.99,
+ "officialUrl": "https://www.nintendo.com/us/store/products/pikmin-3-deluxe-switch/",
+ "eshopUrl": "https://www.nintendo.com/us/store/products/pikmin-3-deluxe-switch/",
+ "gameIsOffline": true,
+ "gameIsOnline": true,
+ "gameLanguageLocked": false,
+ "description_short": "A polished deluxe edition of Pikmin 3 with co-op story play, extra missions, and all original DLC.",
+ "description_ar": "النسخة المحسنة من Pikmin 3 وتضم طور القصة التعاوني ومهام إضافية مع Olimar وLouie وكل محتوى DLC من نسخة Wii U الأصلية.",
+ "box_front_url": "https://images.launchbox-app.com/b2763256-07e4-4c18-b802-a1ac2efe96d0.jpg",
+ "galleryImages": [
+  {
+   "url": "/api/files/products/prd_2355716be2864bc7/gallery-1-1f2ff8d7151b9d5d.webp",
+   "alt": "Pikmin 3 Deluxe screenshot 1"
+  },
+  {
+   "url": "/api/files/products/prd_2355716be2864bc7/gallery-2-1bb343fdd1e06cdb.webp",
+   "alt": "Pikmin 3 Deluxe screenshot 2"
+  },
+  {
+   "url": "/api/files/products/prd_2355716be2864bc7/gallery-3-47c4156c297e34a6.webp",
+   "alt": "Pikmin 3 Deluxe screenshot 3"
+  },
+  {
+   "url": "/api/files/products/prd_2355716be2864bc7/gallery-4-577d3f76521e673b.webp",
+   "alt": "Pikmin 3 Deluxe screenshot 4"
+  },
+  {
+   "url": "/api/files/products/prd_2355716be2864bc7/gallery-5-f6331069bf401ecd.webp",
+   "alt": "Pikmin 3 Deluxe screenshot 5"
+  },
+  {
+   "url": "/api/files/products/prd_2355716be2864bc7/gallery-6-acdd9f1987921bf0.webp",
+   "alt": "Pikmin 3 Deluxe screenshot 6"
+  }
+ ],
+ "languagesText": [
+  "Japanese / English",
+  "French / German / Italian / Spanish",
+  "Korean / Chinese language options by region"
+ ],
+ "languagesAudio": [
+  "Character vocalizations",
+  "Music and sound effects",
+  "Language support follows regional Nintendo release data"
+ ],
+ "tvMode": true,
+ "tabletopMode": true,
+ "handheldMode": true,
+ "nintendoPlayModes": "TV mode / Tabletop mode / Handheld mode",
+ "nintendoOnlineRequired": true,
+ "nintendoCloudSaves": true,
+ "nintendoGameKeyCard": false,
+ "nintendoPhysicalNeedsDownload": false,
+ "switch2Enhanced": false,
+ "switch2Exclusive": false,
+ "nintendoNotes": "Deluxe includes the full Pikmin 3 story plus new side stories, story-mode co-op, difficulty options, quality-of-life improvements, and all DLC from the original version.",
+ "editionsList": [
+  {
+   "name": "Regular / Offline",
+   "coverUrl": "https://images.launchbox-app.com/b2763256-07e4-4c18-b802-a1ac2efe96d0.jpg",
+   "contents": [
+    {
+     "label": "Pikmin 3 Deluxe base game"
+    },
+    {
+     "label": "All built-in Deluxe content"
+    },
+    {
+     "label": "Offline account access"
+    }
+   ]
+  },
+  {
+   "name": "Standard / Online",
+   "coverUrl": "https://images.launchbox-app.com/b2763256-07e4-4c18-b802-a1ac2efe96d0.jpg",
+   "contents": [
+    {
+     "label": "Pikmin 3 Deluxe base game"
+    },
+    {
+     "label": "Online account access"
+    },
+    {
+     "label": "Nintendo Switch Online features where supported"
+    }
+   ]
+  }
+ ],
+ "gameplayPillars": [
+  {
+   "title": "Three-captain strategy",
+   "description": "Switch between Alph, Brittany, and Charlie to divide tasks and manage the map efficiently.",
+   "imageUrl": "https://images.launchbox-app.com/bac0ecd1-5b1d-4e07-a73b-cf66abf6a039.jpg"
+  },
+  {
+   "title": "Pikmin type specialization",
+   "description": "Use Red, Yellow, Blue, Rock, and Winged Pikmin according to hazards, enemy armor, terrain, and puzzle design.",
+   "imageUrl": "https://images.launchbox-app.com/64e9677f-d341-4d8c-b9d0-2227aeae6bce.jpg"
+  },
+  {
+   "title": "Food-gathering campaign",
+   "description": "The core story is driven by collecting fruit and seeds to save the explorers’ home planet from famine.",
+   "imageUrl": "https://images.launchbox-app.com/d8da686c-69d3-4ce5-b671-9a9e43d2c371.jpg"
+  },
+  {
+   "title": "Full story co-op",
+   "description": "Deluxe adds cooperative story play so a second player can help divide exploration and battle duties.",
+   "imageUrl": "https://images.launchbox-app.com/c5b9f982-62d3-4f5c-951e-93228bc43b89.jpg"
+  },
+  {
+   "title": "Side stories and challenge modes",
+   "description": "Olimar and Louie side missions, Mission Mode, Bingo Battle, and extra challenges extend replay value.",
+   "imageUrl": "https://images.launchbox-app.com/7d4540a8-912f-431d-b493-f0c783024f5b.jpg"
+  }
+ ],
+ "worldSummary": "PNF-404 is presented at miniature scale, turning gardens, caves, rivers, debris, and wildlife into strategic environments where every route and object matters.",
+ "storyChapters": [
+  {
+   "title": "Crash on PNF-404",
+   "body": "Three Koppai explorers are separated after a failed landing on the planet.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000005302/ac5801e1ed46672a3a05af2d4551a833a9fb603fb61d8583bd82fdbe972c8238"
+  },
+  {
+   "title": "Discover Pikmin allies",
+   "body": "The crew learns to command several Pikmin types with unique strengths.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000005302/69b190c41a122756b4de98520742777fba47af0057120c6ca4547bdc923b2561"
+  },
+  {
+   "title": "Gather fruit to save Koppai",
+   "body": "Each expedition day centers on efficient exploration and returning food to the ship.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000005302/a6260af9456f2e4a87b5b3e186678cf2780a3f367ba968d790ac3918e5e4b636"
+  },
+  {
+   "title": "Track Olimar’s clues",
+   "body": "The search for the Cosmic-drive Key intersects with clues left behind by Olimar and Louie.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000005302/92bfb34ee38fb2c2ad966c648c16c86cdbcd1464a16d109345fe3d0201540ff2"
+  },
+  {
+   "title": "Escape with a solution",
+   "body": "The campaign builds toward recovery of the crew, the key, and enough food data to help Koppai.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000005302/c06a7c551a35b4bb549d21a41ecc52225287cd7985f8cbb434a5fecf7197612b"
+  }
+ ],
+ "features": [
+  "Story campaign playable in local co-op",
+  "All original DLC content included",
+  "New Olimar and Louie side stories",
+  "Multiple difficulty options and quality-of-life improvements",
+  "Mission Mode and Bingo Battle add replay value"
+ ],
+ "perfResolutionDocked": "1080p",
+ "perfResolutionHandheld": "720p",
+ "perfFps": "30",
+ "perfHdr": false,
+ "playTimeMain": 13,
+ "completionMain": 25,
+ "completionExtras": 35,
+ "faq": [
+  {
+   "q": "What does Deluxe add?",
+   "a": "It adds story co-op, new side stories, difficulty settings, quality-of-life improvements, and all DLC from the Wii U version."
+  },
+  {
+   "q": "Can two players play the story?",
+   "a": "Yes. The Deluxe version supports local co-op in Story Mode."
+  },
+  {
+   "q": "Does it work on Switch 2?",
+   "a": "Yes, as backward-compatible Nintendo Switch software."
+  },
+  {
+   "q": "Is Nintendo Switch Online required for the main story?",
+   "a": "No. The main story and local co-op do not require Nintendo Switch Online."
+  },
+  {
+   "q": "How is it different from Pikmin 4?",
+   "a": "Pikmin 3 Deluxe focuses on three captains and food collection, while Pikmin 4 introduces a different rescue-corp structure and Oatchi."
+  }
+ ],
+ "verdictScore": 8.8,
+ "verdictPros": [
+  "Excellent balance of strategy and exploration",
+  "Story co-op is a major improvement",
+  "Beautiful environments and animation",
+  "Deluxe content meaningfully expands the original",
+  "Strong challenge modes for replay"
+ ],
+ "verdictCons": [
+  "Main campaign is shorter than Pikmin 4",
+  "Bingo Battle is local rather than a major online mode",
+  "Some multitasking systems take time to learn",
+  "Difficulty can become light for series veterans",
+  "Older Wii U design roots are still visible"
+ ],
+ "reviews": [
+  {
+   "source": "Metacritic",
+   "score": "85",
+   "url": "https://www.metacritic.com/game/pikmin-3-deluxe/"
+  },
+  {
+   "source": "Nintendo",
+   "score": "Official product page",
+   "url": "https://www.nintendo.com/us/store/products/pikmin-3-deluxe-switch/"
+  },
+  {
+   "source": "LaunchBox",
+   "score": "Media database",
+   "url": "https://gamesdb.launchbox-app.com/games/images/142940-pikmin-3-deluxe"
+  }
+ ],
+ "timeline": [
+  {
+   "date": "2013-07-13",
+   "title": "Original Pikmin 3 launched on Wii U"
+  },
+  {
+   "date": "2020-10-30",
+   "title": "Pikmin 3 Deluxe released on Nintendo Switch"
+  },
+  {
+   "date": "2025-06-05",
+   "title": "Playable in the Nintendo Switch 2 ecosystem through compatibility"
+  }
+ ],
+ "patchNotes": [
+  {
+   "version": "Deluxe launch build",
+   "date": "2020-10-30"
+  },
+  {
+   "version": "Current retail build",
+   "date": "2026-08-27"
+  }
+ ],
+ "studioName": "Nintendo EAD / Eighting",
+ "studioUrl": "https://www.nintendo.com/us/store/products/pikmin-3-deluxe-switch/",
+ "studioLocation": "Japan",
+ "sources": [
+  {
+   "name": "Nintendo official product page",
+   "url": "https://www.nintendo.com/us/store/products/pikmin-3-deluxe-switch/"
+  },
+  {
+   "name": "Nintendo Thailand Pikmin 3 Deluxe",
+   "url": "https://www.nintendo.com/th/switch/ampn/index.html"
+  },
+  {
+   "name": "LaunchBox images",
+   "url": "https://gamesdb.launchbox-app.com/games/images/142940-pikmin-3-deluxe"
+  }
+ ],
+ "downloadSizeGb": 6.5,
+ "requiredSpaceGb": 6.5,
+ "microSdRecommended": false,
+ "storageNotes": "Nintendo lists approximately 6.5 GB for Pikmin 3 Deluxe on both the Switch listing and Switch 2 compatibility context.",
+ "mpLocalPlayers": true,
+ "mpOnlinePlayers": true,
+ "mpCoop": true,
+ "mpCompetitive": true,
+ "mpLocalWireless": false,
+ "mpSplitScreen": true,
+ "seriesEntries": [
+  "Pikmin 1+2",
+  "Pikmin 4",
+  "Pikmin 3"
+ ],
+ "dlc": [
+  {
+   "name": "Original Pikmin 3 DLC included in Deluxe",
+   "description": "The Deluxe release incorporates DLC from the Wii U original into the base package rather than requiring a separate expansion purchase."
+  }
+ ],
+ "devicePerformance": [
+  {
+   "device": "Nintendo Switch",
+   "deviceSlug": "nintendo-switch",
+   "deviceModel": "Nintendo Switch",
+   "hardwareId": "nintendo-switch",
+   "informationStatus": "Available / sourced",
+   "handheld": {
+    "supported": true,
+    "resolution": "720p",
+    "resolutionDynamic": false,
+    "renderingResolution": "720p",
+    "outputResolution": "720p",
+    "fps": "30",
+    "fpsMin": "30",
+    "fpsMax": "30",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "Handheld",
+    "notes": "Pikmin 3 Deluxe targets a clean 720p handheld and 1080p docked presentation at 30 fps."
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "1080p",
+    "resolutionDynamic": false,
+    "renderingResolution": "1080p",
+    "outputResolution": "1080p",
+    "fps": "30",
+    "fpsMin": "30",
+    "fpsMax": "30",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "TV / Docked",
+    "notes": "Pikmin 3 Deluxe targets a clean 720p handheld and 1080p docked presentation at 30 fps."
+   },
+   "modes": [
+    {
+     "name": "Primary documented / observed profile",
+     "handheldResolution": "720p",
+     "handheldFps": "30",
+     "tvResolution": "1080p",
+     "tvFps": "30",
+     "hdr": false,
+     "vrr": false,
+     "notes": "Pikmin 3 Deluxe targets a clean 720p handheld and 1080p docked presentation at 30 fps."
+    }
+   ],
+   "upscaling": "Game / system scaling where applicable",
+   "rayTracing": false,
+   "rayTracingMode": "Not Supported",
+   "loadingTime": "Scene-dependent; no universal value",
+   "loadingNotes": "Loading varies by scene, storage state, patch level, and platform.",
+   "gameVersion": "Current retail build",
+   "patchVersion": "Current available update",
+   "testedDate": "2026-08-27",
+   "sourceName": "Nintendo official product page + established release performance profile",
+   "sourceUrl": "https://www.nintendo.com/us/store/products/pikmin-3-deluxe-switch/",
+   "verifiedAt": "2026-08-27",
+   "verificationStatus": "Sourced / compatibility profile",
+   "performanceNotes": "Pikmin 3 Deluxe targets a clean 720p handheld and 1080p docked presentation at 30 fps."
+  },
+  {
+   "device": "Nintendo Switch 2",
+   "deviceSlug": "nintendo-switch-2",
+   "deviceModel": "Nintendo Switch 2",
+   "hardwareId": "nintendo-switch-2",
+   "informationStatus": "Available / sourced",
+   "handheld": {
+    "supported": true,
+    "resolution": "720p",
+    "resolutionDynamic": false,
+    "renderingResolution": "720p",
+    "outputResolution": "720p",
+    "fps": "30",
+    "fpsMin": "30",
+    "fpsMax": "30",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "Handheld / Backward Compatibility",
+    "notes": "Backward-compatible Nintendo Switch software on Nintendo Switch 2; no native Switch 2 edition is represented by this file."
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "1080p",
+    "resolutionDynamic": false,
+    "renderingResolution": "1080p",
+    "outputResolution": "1080p",
+    "fps": "30",
+    "fpsMin": "30",
+    "fpsMax": "30",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "TV / Docked / Backward Compatibility",
+    "notes": "Backward-compatible Nintendo Switch software on Nintendo Switch 2; no native Switch 2 edition is represented by this file."
+   },
+   "modes": [
+    {
+     "name": "Primary documented / observed profile",
+     "handheldResolution": "720p",
+     "handheldFps": "30",
+     "tvResolution": "1080p",
+     "tvFps": "30",
+     "hdr": false,
+     "vrr": false,
+     "notes": "Backward-compatible Nintendo Switch software on Nintendo Switch 2; no native Switch 2 edition is represented by this file."
+    }
+   ],
+   "upscaling": "Game / system scaling where applicable",
+   "rayTracing": false,
+   "rayTracingMode": "Not Supported",
+   "loadingTime": "Scene-dependent; no universal value",
+   "loadingNotes": "Loading varies by scene, storage state, patch level, and platform.",
+   "gameVersion": "Current retail build",
+   "patchVersion": "Current available update",
+   "testedDate": "2026-08-27",
+   "sourceName": "Nintendo Switch 2 compatibility + original game performance profile",
+   "sourceUrl": "https://www.nintendo.com/us/store/products/pikmin-3-deluxe-switch/",
+   "verifiedAt": "2026-08-27",
+   "verificationStatus": "Sourced / compatibility profile",
+   "performanceNotes": "Backward-compatible Nintendo Switch software on Nintendo Switch 2; no native Switch 2 edition is represented by this file."
+  }
+ ],
+ "switch2UpgradePrice": 0,
+ "boxContentsList": [],
+ "image": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000005302/a32f7ed0a032b291746ee878475521b685ef6c2b2de2caab3f8d40fec2d7ffce",
+ "banner": "https://images.launchbox-app.com/bac0ecd1-5b1d-4e07-a73b-cf66abf6a039.jpg",
+ "schemaId": "",
+ "batchImport": true,
+ "createdAt": "2026-08-28T18:34:33.939Z",
+ "updatedAt": "2026-08-28T18:34:33.939Z"
+}

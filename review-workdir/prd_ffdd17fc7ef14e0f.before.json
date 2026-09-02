@@ -1,0 +1,545 @@
+{
+ "title": "Pikmin 4",
+ "titleEn": "Pikmin 4",
+ "titleKu": "",
+ "slug": "pikmin-4-switch",
+ "description": "Pikmin 4 expands Nintendo’s miniature strategy-adventure formula with a customizable Rescue Corps rookie, the canine companion Oatchi, Ice Pikmin, Glow Pikmin, deeper cave expeditions, nighttime missions, and Dandori challenges. It is designed to be accessible to newcomers while giving series veterans a large campaign with layered exploration and postgame content.",
+ "descriptionEn": "Pikmin 4 expands Nintendo’s miniature strategy-adventure formula with a customizable Rescue Corps rookie, the canine companion Oatchi, Ice Pikmin, Glow Pikmin, deeper cave expeditions, nighttime missions, and Dandori challenges. It is designed to be accessible to newcomers while giving series veterans a large campaign with layered exploration and postgame content.",
+ "descriptionKu": "",
+ "cartridgeImage": "/api/files/products/prd_ffdd17fc7ef14e0f/front-box-517f08875a811326.webp",
+ "nintendoCardImage": "/api/files/products/prd_ffdd17fc7ef14e0f/square-card-8ac59da7e965f087.webp",
+ "coverHiResImage": "/api/files/products/prd_ffdd17fc7ef14e0f/3d-wrap-32b54e4799001809.webp",
+ "coverImage": "/api/files/products/prd_ffdd17fc7ef14e0f/cover-b3891427157601b1.webp",
+ "bannerImages": [
+  "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/My%20Nintendo%20Store/EN-US/Nintendo%20Switch%20Software/pikmin-4-117531/117531-117532-pikmin-4-ss-1-1280x720",
+  "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/My%20Nintendo%20Store/EN-US/Nintendo%20Switch%20Software/pikmin-4-117531/117531-117532-pikmin-4-ss-2-1280x720",
+  "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/My%20Nintendo%20Store/EN-US/Nintendo%20Switch%20Software/pikmin-4-117531/117531-117532-pikmin-4-ss-3-1280x720",
+  "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/My%20Nintendo%20Store/EN-US/Nintendo%20Switch%20Software/pikmin-4-117531/117531-117532-pikmin-4-ss-4-1280x720",
+  "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/My%20Nintendo%20Store/EN-US/Nintendo%20Switch%20Software/pikmin-4-117531/117531-117532-pikmin-4-ss-5-1280x720",
+  "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/My%20Nintendo%20Store/EN-US/Nintendo%20Switch%20Software/pikmin-4-117531/117531-117532-pikmin-4-ss-6-1280x720"
+ ],
+ "gallery": [],
+ "youtubeTrailer": "https://www.nintendo.com/us/store/products/pikmin-4-117531/",
+ "releaseDate": "2023-07-21",
+ "ageRating": "ESRB E10+ / PEGI 7",
+ "metacriticRating": 87,
+ "genres": [
+  "Strategy",
+  "Adventure",
+  "Puzzle"
+ ],
+ "platform": "switch1",
+ "size": "10.4 GB",
+ "numberOfPlayers": "Single system (1-2)",
+ "supportedLanguages": "Japanese, English, French, German, Italian, Spanish, Korean, Dutch, Simplified Chinese, Traditional Chinese",
+ "hardwareModel": "",
+ "colorEdition": "",
+ "storageCapacity": "",
+ "screenSpecs": "",
+ "batteryLife": "",
+ "boxContents": [],
+ "boxContentsText": "",
+ "warrantyCondition": "",
+ "connectivity": "",
+ "characterName": "Link",
+ "amiiboSeries": "The Legend of Zelda",
+ "figureType": "figure",
+ "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+ "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+ "boxCondition": "mib",
+ "releaseWave": "Wave 2 (Restock)",
+ "rarity": "standard",
+ "accessoryType": "حقيبة حماية وتنقل Carry Case",
+ "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+ "brand": "Nintendo Official",
+ "material": "Hard EVA Shockproof Shell",
+ "availableColors": "Black, Neon Red/Blue, White",
+ "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+ "cardValue": "$20 eShop Balance",
+ "region": "Global",
+ "cardType": "eshop",
+ "deliveryMethod": "instant_code",
+ "redemptionGuide": "",
+ "redemptionSteps": [],
+ "validity": "no_expiry",
+ "usedType": "cartridge",
+ "conditionGrade": "like_new",
+ "packaging": "cib",
+ "guaranteeStatus": "tested_30days",
+ "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+ "accountType": "primary",
+ "badge": "وفر 40%",
+ "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+ "price": 15000,
+ "cost": 2000,
+ "stock": 999999,
+ "isInfiniteStock": true,
+ "isHidden": true,
+ "displayOrder": 0,
+ "category": "nintendo-switch-games",
+ "categoryId": "nintendo-switch-games",
+ "categoryEn": "",
+ "categoryKu": "",
+ "options": [
+  {
+   "id": "offline_account",
+   "name": "مشترك",
+   "description": "مشترك",
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_account",
+   "name": "خاص بك",
+   "description": "خاص بك",
+   "stock": 9999,
+   "isInfiniteStock": true
+  }
+ ],
+ "types": [
+  {
+   "id": "offline_base",
+   "name": "مشترك — اللعبة الأساسية",
+   "optionId": "offline_account",
+   "price": 15000,
+   "cost": 2000,
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_base",
+   "name": "خاص بك — اللعبة الأساسية",
+   "optionId": "online_account",
+   "price": 36250,
+   "cost": 25000,
+   "stock": 9999,
+   "isInfiniteStock": true
+  }
+ ],
+ "editions": [],
+ "dlcs": [],
+ "isActive": true,
+ "status": "Active",
+ "kind": "account",
+ "trade_value_iqd": 16500,
+ "store_offer_bonus_iqd": 3000,
+ "trade_enabled": true,
+ "trade_value_locked": false,
+ "id": "prd_ffdd17fc7ef14e0f",
+ "schema_version": 24,
+ "titleAr": "بيكمين 4",
+ "compatibility": [
+  "Nintendo Switch",
+  "Nintendo Switch 2: backward compatible"
+ ],
+ "edition": "Standard",
+ "developer": "Nintendo / Eighting",
+ "publisher": "Nintendo",
+ "seriesName": "Pikmin",
+ "opencriticRating": 87,
+ "userScore": 8.7,
+ "metacriticUrl": "https://www.metacritic.com/game/pikmin-4/",
+ "price_usd": 59.99,
+ "officialUrl": "https://www.nintendo.com/us/store/products/pikmin-4-117531/",
+ "eshopUrl": "https://www.nintendo.com/us/store/products/pikmin-4-117531/",
+ "gameIsOffline": true,
+ "gameIsOnline": false,
+ "gameLanguageLocked": false,
+ "description_short": "Lead a Rescue Corps rookie and Oatchi through a rich miniature world filled with new Pikmin, caves, treasures, and Dandori challenges.",
+ "description_ar": "جزء كبير ومطور من سلسلة Pikmin يقدم Oatchi وIce Pikmin وGlow Pikmin والكهوف والمهمات الليلية وتحديات Dandori مع حملة طويلة وغنية بالاستكشاف.",
+ "box_front_url": "https://images.launchbox-app.com/r2_3ef65b28-9d80-4b0a-9a67-95e06f28a0a8.jpg",
+ "galleryImages": [
+  {
+   "url": "/api/files/products/prd_ffdd17fc7ef14e0f/gallery-1-405e5c4c58987c60.webp",
+   "alt": "Pikmin 4 screenshot 1"
+  },
+  {
+   "url": "/api/files/products/prd_ffdd17fc7ef14e0f/gallery-2-1a48da75d47e4e19.webp",
+   "alt": "Pikmin 4 screenshot 2"
+  },
+  {
+   "url": "/api/files/products/prd_ffdd17fc7ef14e0f/gallery-3-61bc384e451470ca.webp",
+   "alt": "Pikmin 4 screenshot 3"
+  },
+  {
+   "url": "/api/files/products/prd_ffdd17fc7ef14e0f/gallery-4-ac0cb3697193b33e.webp",
+   "alt": "Pikmin 4 screenshot 4"
+  },
+  {
+   "url": "/api/files/products/prd_ffdd17fc7ef14e0f/gallery-5-29d5670638c32cb6.webp",
+   "alt": "Pikmin 4 screenshot 5"
+  },
+  {
+   "url": "/api/files/products/prd_ffdd17fc7ef14e0f/gallery-6-04abc410cc834a8a.webp",
+   "alt": "Pikmin 4 screenshot 6"
+  }
+ ],
+ "languagesText": [
+  "Japanese / English",
+  "French / German / Italian / Spanish",
+  "Korean / Simplified Chinese / Traditional Chinese"
+ ],
+ "languagesAudio": [
+  "Character vocalizations",
+  "Music and sound effects",
+  "Regional language support follows Nintendo release data"
+ ],
+ "tvMode": true,
+ "tabletopMode": true,
+ "handheldMode": true,
+ "nintendoPlayModes": "TV mode / Tabletop mode / Handheld mode",
+ "nintendoOnlineRequired": false,
+ "nintendoCloudSaves": true,
+ "nintendoGameKeyCard": false,
+ "nintendoPhysicalNeedsDownload": false,
+ "switch2Enhanced": false,
+ "switch2Exclusive": false,
+ "nintendoNotes": "Pikmin 4 is a Nintendo Switch game and is playable on Nintendo Switch 2 through compatibility. No separate Switch 2 Edition is used in this file.",
+ "editionsList": [
+  {
+   "name": "Regular / Offline",
+   "coverUrl": "https://images.launchbox-app.com/r2_3ef65b28-9d80-4b0a-9a67-95e06f28a0a8.jpg",
+   "contents": [
+    {
+     "label": "Pikmin 4 base game"
+    },
+    {
+     "label": "Offline account access"
+    },
+    {
+     "label": "Full Rescue Corps campaign"
+    }
+   ]
+  },
+  {
+   "name": "Standard / Online",
+   "coverUrl": "https://images.launchbox-app.com/r2_3ef65b28-9d80-4b0a-9a67-95e06f28a0a8.jpg",
+   "contents": [
+    {
+     "label": "Pikmin 4 base game"
+    },
+    {
+     "label": "Online account access"
+    },
+    {
+     "label": "Full Rescue Corps campaign"
+    }
+   ]
+  }
+ ],
+ "gameplayPillars": [
+  {
+   "title": "Oatchi companion systems",
+   "description": "Ride Oatchi, command him independently, carry heavy objects, battle creatures, and upgrade his skills.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/My%20Nintendo%20Store/EN-US/Nintendo%20Switch%20Software/pikmin-4-117531/117531-117532-pikmin-4-ss-1-1280x720"
+  },
+  {
+   "title": "New Pikmin types",
+   "description": "Ice Pikmin can freeze water and enemies, while Glow Pikmin appear in nighttime expeditions.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/My%20Nintendo%20Store/EN-US/Nintendo%20Switch%20Software/pikmin-4-117531/117531-117532-pikmin-4-ss-2-1280x720"
+  },
+  {
+   "title": "Caves and layered exploration",
+   "description": "Caves return with multi-level structures, treasure hunts, hazards, bosses, and flexible planning.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/My%20Nintendo%20Store/EN-US/Nintendo%20Switch%20Software/pikmin-4-117531/117531-117532-pikmin-4-ss-3-1280x720"
+  },
+  {
+   "title": "Dandori efficiency challenges",
+   "description": "Timed challenges test route planning, task division, resource gathering, and tactical speed.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/My%20Nintendo%20Store/EN-US/Nintendo%20Switch%20Software/pikmin-4-117531/117531-117532-pikmin-4-ss-4-1280x720"
+  },
+  {
+   "title": "Night expeditions",
+   "description": "Defend Lumiknolls after dark using Glow Pikmin in a different style of mission from daytime exploration.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/My%20Nintendo%20Store/EN-US/Nintendo%20Switch%20Software/pikmin-4-117531/117531-117532-pikmin-4-ss-5-1280x720"
+  }
+ ],
+ "worldSummary": "The game transforms ordinary human environments into enormous miniature landscapes, including gardens, interiors, caves, beaches, and nighttime zones full of hidden treasures and creatures.",
+ "storyChapters": [
+  {
+   "title": "Join the Rescue Corps",
+   "body": "A new recruit arrives to help a rescue mission after Captain Olimar and other castaways become stranded.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/My%20Nintendo%20Store/EN-US/Nintendo%20Switch%20Software/pikmin-4-117531/117531-117532-pikmin-4-ss-1-1280x720"
+  },
+  {
+   "title": "Meet and train Oatchi",
+   "body": "The Rescue Pup becomes central to carrying, fighting, exploration, and puzzle solving.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/My%20Nintendo%20Store/EN-US/Nintendo%20Switch%20Software/pikmin-4-117531/117531-117532-pikmin-4-ss-2-1280x720"
+  },
+  {
+   "title": "Recover castaways and treasure",
+   "body": "Every area contains stranded people, resources, and treasures that expand the Rescue Corps’ capabilities.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/My%20Nintendo%20Store/EN-US/Nintendo%20Switch%20Software/pikmin-4-117531/117531-117532-pikmin-4-ss-3-1280x720"
+  },
+  {
+   "title": "Explore caves and night missions",
+   "body": "The campaign layers conventional daytime maps with caves and defensive nighttime expeditions.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/My%20Nintendo%20Store/EN-US/Nintendo%20Switch%20Software/pikmin-4-117531/117531-117532-pikmin-4-ss-4-1280x720"
+  },
+  {
+   "title": "Push into the late rescue operation",
+   "body": "New zones, Dandori challenges, and post-story objectives significantly extend the adventure beyond the early rescue goal.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/My%20Nintendo%20Store/EN-US/Nintendo%20Switch%20Software/pikmin-4-117531/117531-117532-pikmin-4-ss-5-1280x720"
+  }
+ ],
+ "features": [
+  "Oatchi changes traversal and strategy dramatically",
+  "Ice and Glow Pikmin add new tactical roles",
+  "Caves and nighttime missions diversify exploration",
+  "Large campaign with extensive postgame content",
+  "Excellent onboarding for new Pikmin players"
+ ],
+ "perfResolutionDocked": "1080p",
+ "perfResolutionHandheld": "720p",
+ "perfFps": "30",
+ "perfHdr": false,
+ "playTimeMain": 18,
+ "completionMain": 35,
+ "completionExtras": 50,
+ "faq": [
+  {
+   "q": "Is Pikmin 4 good for newcomers?",
+   "a": "Yes. Tutorials, Oatchi, rewind features, and gradual system introductions make it one of the easiest entries to start with."
+  },
+  {
+   "q": "Can Oatchi be upgraded?",
+   "a": "Yes. Oatchi gains skills and upgrades that improve carrying, combat, traversal, and independent task handling."
+  },
+  {
+   "q": "Is there multiplayer?",
+   "a": "The game includes local two-player support elements and Dandori content, but it is primarily structured as a single-player adventure."
+  },
+  {
+   "q": "Does it run on Switch 2?",
+   "a": "Yes, through Nintendo Switch backward compatibility."
+  },
+  {
+   "q": "Does it require DLC?",
+   "a": "No major paid expansion pass is required for the core Pikmin 4 experience."
+  }
+ ],
+ "verdictScore": 9.1,
+ "verdictPros": [
+  "Deepest and most approachable Pikmin campaign",
+  "Oatchi is useful without replacing Pikmin strategy",
+  "Large amount of content and postgame objectives",
+  "Beautiful miniature environments",
+  "Dandori systems reward mastery"
+ ],
+ "verdictCons": [
+  "Some early sections are very forgiving",
+  "Secondary-player support is limited compared with full co-op",
+  "Veterans may miss aspects of Pikmin 3’s captain multitasking",
+  "Treasure cleanup can become completionist-heavy",
+  "No native Switch 2 visual edition"
+ ],
+ "reviews": [
+  {
+   "source": "Metacritic",
+   "score": "87",
+   "url": "https://www.metacritic.com/game/pikmin-4/"
+  },
+  {
+   "source": "Nintendo",
+   "score": "Official product page",
+   "url": "https://www.nintendo.com/us/store/products/pikmin-4-117531/"
+  },
+  {
+   "source": "LaunchBox",
+   "score": "Media database",
+   "url": "https://gamesdb.launchbox-app.com/games/images/165521-pikmin-4"
+  }
+ ],
+ "timeline": [
+  {
+   "date": "2023-07-21",
+   "title": "Pikmin 4 released on Nintendo Switch"
+  },
+  {
+   "date": "2025-06-05",
+   "title": "Playable in Nintendo Switch 2 ecosystem through compatibility"
+  }
+ ],
+ "patchNotes": [
+  {
+   "version": "Launch version",
+   "date": "2023-07-21"
+  },
+  {
+   "version": "Current retail build",
+   "date": "2026-08-27"
+  }
+ ],
+ "studioName": "Nintendo / Eighting",
+ "studioUrl": "https://www.nintendo.com/us/store/products/pikmin-4-117531/",
+ "studioLocation": "Japan",
+ "sources": [
+  {
+   "name": "Nintendo official product page",
+   "url": "https://www.nintendo.com/us/store/products/pikmin-4-117531/"
+  },
+  {
+   "name": "Nintendo Store UK",
+   "url": "https://store.nintendo.com/en-gb/pikmin-4-000000000010011913"
+  },
+  {
+   "name": "LaunchBox images",
+   "url": "https://gamesdb.launchbox-app.com/games/images/165521-pikmin-4"
+  }
+ ],
+ "downloadSizeGb": 10.4,
+ "requiredSpaceGb": 10.4,
+ "microSdRecommended": true,
+ "storageNotes": "Nintendo’s digital listing is roughly 10 GB class; exact installed size can vary slightly by region and update.",
+ "mpLocalPlayers": true,
+ "mpOnlinePlayers": false,
+ "mpCoop": true,
+ "mpCompetitive": true,
+ "mpLocalWireless": false,
+ "mpSplitScreen": false,
+ "seriesEntries": [
+  "Pikmin 3 Deluxe",
+  "Pikmin 1+2",
+  "Hey! Pikmin"
+ ],
+ "dlc": [
+  {
+   "name": "No separate expansion pass required",
+   "description": "The core Pikmin 4 product is sold as a complete base game entry in this import."
+  }
+ ],
+ "devicePerformance": [
+  {
+   "device": "Nintendo Switch",
+   "deviceSlug": "nintendo-switch",
+   "deviceModel": "Nintendo Switch",
+   "hardwareId": "nintendo-switch",
+   "informationStatus": "Available / sourced",
+   "handheld": {
+    "supported": true,
+    "resolution": "720p",
+    "resolutionDynamic": false,
+    "renderingResolution": "720p",
+    "outputResolution": "720p",
+    "fps": "30",
+    "fpsMin": "30",
+    "fpsMax": "30",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "Handheld",
+    "notes": "Pikmin 4 uses a 30 fps presentation with a 720p handheld / 1080p-class docked profile."
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "1080p",
+    "resolutionDynamic": false,
+    "renderingResolution": "1080p",
+    "outputResolution": "1080p",
+    "fps": "30",
+    "fpsMin": "30",
+    "fpsMax": "30",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "TV / Docked",
+    "notes": "Pikmin 4 uses a 30 fps presentation with a 720p handheld / 1080p-class docked profile."
+   },
+   "modes": [
+    {
+     "name": "Primary documented / observed profile",
+     "handheldResolution": "720p",
+     "handheldFps": "30",
+     "tvResolution": "1080p",
+     "tvFps": "30",
+     "hdr": false,
+     "vrr": false,
+     "notes": "Pikmin 4 uses a 30 fps presentation with a 720p handheld / 1080p-class docked profile."
+    }
+   ],
+   "upscaling": "Game / system scaling where applicable",
+   "rayTracing": false,
+   "rayTracingMode": "Not Supported",
+   "loadingTime": "Scene-dependent; no universal value",
+   "loadingNotes": "Loading varies by scene, storage state, patch level, and platform.",
+   "gameVersion": "Current retail build",
+   "patchVersion": "Current available update",
+   "testedDate": "2026-08-27",
+   "sourceName": "Nintendo official product page + established release performance profile",
+   "sourceUrl": "https://www.nintendo.com/us/store/products/pikmin-4-117531/",
+   "verifiedAt": "2026-08-27",
+   "verificationStatus": "Sourced / compatibility profile",
+   "performanceNotes": "Pikmin 4 uses a 30 fps presentation with a 720p handheld / 1080p-class docked profile."
+  },
+  {
+   "device": "Nintendo Switch 2",
+   "deviceSlug": "nintendo-switch-2",
+   "deviceModel": "Nintendo Switch 2",
+   "hardwareId": "nintendo-switch-2",
+   "informationStatus": "Available / sourced",
+   "handheld": {
+    "supported": true,
+    "resolution": "720p",
+    "resolutionDynamic": false,
+    "renderingResolution": "720p",
+    "outputResolution": "720p",
+    "fps": "30",
+    "fpsMin": "30",
+    "fpsMax": "30",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "Handheld / Backward Compatibility",
+    "notes": "Backward-compatible Nintendo Switch software on Nintendo Switch 2; no native Switch 2 edition is represented by this file."
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "1080p",
+    "resolutionDynamic": false,
+    "renderingResolution": "1080p",
+    "outputResolution": "1080p",
+    "fps": "30",
+    "fpsMin": "30",
+    "fpsMax": "30",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "TV / Docked / Backward Compatibility",
+    "notes": "Backward-compatible Nintendo Switch software on Nintendo Switch 2; no native Switch 2 edition is represented by this file."
+   },
+   "modes": [
+    {
+     "name": "Primary documented / observed profile",
+     "handheldResolution": "720p",
+     "handheldFps": "30",
+     "tvResolution": "1080p",
+     "tvFps": "30",
+     "hdr": false,
+     "vrr": false,
+     "notes": "Backward-compatible Nintendo Switch software on Nintendo Switch 2; no native Switch 2 edition is represented by this file."
+    }
+   ],
+   "upscaling": "Game / system scaling where applicable",
+   "rayTracing": false,
+   "rayTracingMode": "Not Supported",
+   "loadingTime": "Scene-dependent; no universal value",
+   "loadingNotes": "Loading varies by scene, storage state, patch level, and platform.",
+   "gameVersion": "Current retail build",
+   "patchVersion": "Current available update",
+   "testedDate": "2026-08-27",
+   "sourceName": "Nintendo Switch 2 compatibility + original game performance profile",
+   "sourceUrl": "https://www.nintendo.com/us/store/products/pikmin-4-117531/",
+   "verifiedAt": "2026-08-27",
+   "verificationStatus": "Sourced / compatibility profile",
+   "performanceNotes": "Backward-compatible Nintendo Switch software on Nintendo Switch 2; no native Switch 2 edition is represented by this file."
+  }
+ ],
+ "switch2UpgradePrice": 0,
+ "boxContentsList": [],
+ "image": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/My%20Nintendo%20Store/EN-US/Nintendo%20Switch%20Software/pikmin-4-117531/117531-pikmin-4-1200x675",
+ "banner": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/My%20Nintendo%20Store/EN-US/Nintendo%20Switch%20Software/pikmin-4-117531/117531-117532-pikmin-4-ss-1-1280x720",
+ "schemaId": "",
+ "batchImport": true,
+ "createdAt": "2026-08-28T18:35:34.534Z",
+ "updatedAt": "2026-08-28T18:35:34.534Z"
+}

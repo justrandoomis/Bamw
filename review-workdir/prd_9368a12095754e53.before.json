@@ -1,0 +1,540 @@
+{
+ "title": "Persona 5 Tactica",
+ "titleEn": "Persona 5 Tactica",
+ "titleKu": "Persona 5 Tactica",
+ "slug": "persona-5-tactica",
+ "description": "Persona 5 Tactica is a turn-based tactical RPG starring the Phantom Thieves. After the group is pulled into a strange realm ruled by oppressive Legionnaires, revolutionary Erina offers an alliance. Battles combine cover, positioning, ranged attacks, Persona skills, knockdowns and Triple Threat attacks in compact tactical arenas.",
+ "descriptionEn": "Persona 5 Tactica is a turn-based tactical RPG starring the Phantom Thieves. After the group is pulled into a strange realm ruled by oppressive Legionnaires, revolutionary Erina offers an alliance. Battles combine cover, positioning, ranged attacks, Persona skills, knockdowns and Triple Threat attacks in compact tactical arenas.",
+ "descriptionKu": "Persona 5 Tactica is a turn-based tactical RPG starring the Phantom Thieves. After the group is pulled into a strange realm ruled by oppressive Legionnaires, revolutionary Erina offers an alliance. Battles combine cover, positioning, ranged attacks, Persona skills, knockdowns and Triple Threat attacks in compact tactical arenas.",
+ "cartridgeImage": "/api/files/products/prd_9368a12095754e53/front-ec9a822b477cf69c.jpg",
+ "nintendoCardImage": "/api/files/products/prd_9368a12095754e53/square-6e75ba91b7b89811.jpg",
+ "coverHiResImage": "/api/files/products/prd_9368a12095754e53/3d-texture-c275190ad9899fa1.jpg",
+ "coverImage": "/api/files/products/prd_9368a12095754e53/cover-9402c87258776a74.jpg",
+ "bannerImages": [
+  "/api/files/products/prd_9368a12095754e53/banner-0-68086858967d3fe1.avif",
+  "/api/files/products/prd_9368a12095754e53/banner-1-fa6fd71ddd80f3ae.avif",
+  "/api/files/products/prd_9368a12095754e53/banner-2-ef1eb66c5da48560.avif",
+  "/api/files/products/prd_9368a12095754e53/banner-3-ce5e3d5b810d6bbd.avif",
+  "/api/files/products/prd_9368a12095754e53/banner-4-9e002c78b06d9ecb.avif",
+  "/api/files/products/prd_9368a12095754e53/banner-5-90f140c497d3bf82.avif",
+  "/api/files/products/prd_9368a12095754e53/banner-6-2a8435a9367c3514.avif"
+ ],
+ "gallery": [],
+ "youtubeTrailer": "https://www.youtube.com/watch?v=SacQ63RKLds",
+ "releaseDate": "2023-11-17",
+ "ageRating": "ESRB Teen",
+ "metacriticRating": 79,
+ "genres": [
+  "Tactical RPG",
+  "Strategy",
+  "Role-Playing",
+  "Turn-Based Tactics",
+  "Adventure"
+ ],
+ "platform": "switch1",
+ "size": 7.3,
+ "numberOfPlayers": "1",
+ "supportedLanguages": "Supplier SKU: Simplified Chinese. Nintendo US listing: Japanese, French, German, Italian, Spanish, Russian, Brazilian Portuguese and American English. Language availability is region-dependent.",
+ "hardwareModel": "",
+ "colorEdition": "",
+ "storageCapacity": "",
+ "screenSpecs": "",
+ "batteryLife": "",
+ "boxContents": [],
+ "boxContentsText": "",
+ "warrantyCondition": "",
+ "connectivity": "",
+ "characterName": "Link",
+ "amiiboSeries": "The Legend of Zelda",
+ "figureType": "figure",
+ "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+ "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+ "boxCondition": "mib",
+ "releaseWave": "Wave 2 (Restock)",
+ "rarity": "standard",
+ "accessoryType": "حقيبة حماية وتنقل Carry Case",
+ "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+ "brand": "Nintendo Official",
+ "material": "Hard EVA Shockproof Shell",
+ "availableColors": "Black, Neon Red/Blue, White",
+ "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+ "cardValue": "$20 eShop Balance",
+ "region": "Global / region-dependent",
+ "cardType": "eshop",
+ "deliveryMethod": "instant_code",
+ "redemptionGuide": "",
+ "redemptionSteps": [],
+ "validity": "no_expiry",
+ "usedType": "cartridge",
+ "conditionGrade": "like_new",
+ "packaging": "cib",
+ "guaranteeStatus": "tested_30days",
+ "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+ "accountType": "primary",
+ "badge": "وفر 40%",
+ "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+ "price": 8500,
+ "cost": 1250,
+ "stock": 999999,
+ "isInfiniteStock": true,
+ "isHidden": false,
+ "displayOrder": 0,
+ "category": "nintendo-switch-games",
+ "categoryId": "nintendo-switch-games",
+ "categoryEn": "",
+ "categoryKu": "",
+ "options": [
+  {
+   "id": "offline_account",
+   "name": "Offline Account",
+   "description": "Offline account access from the supplier listing.",
+   "stock": 999999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_account",
+   "name": "Online Account",
+   "description": "Online account access from the supplier listing.",
+   "stock": 999999,
+   "isInfiniteStock": true
+  }
+ ],
+ "types": [
+  {
+   "id": "standard_offline",
+   "name": "Standard Offline",
+   "optionId": "offline_account",
+   "price": 8500,
+   "cost": 1250,
+   "description": "Supplier Regular / 普通版; ¥6.8 converted to IQD at 1 CNY = 220 IQD, rounded down to nearest 250.",
+   "stock": 999999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "dlc_offline",
+   "name": "DLC Offline",
+   "optionId": "offline_account",
+   "price": 11000,
+   "cost": 2250,
+   "description": "Supplier Special / 特典版; interpreted under the established 4-variant rule as Offline + DLC.",
+   "stock": 999999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "standard_online",
+   "name": "Standard Online",
+   "optionId": "online_account",
+   "price": "22000",
+   "cost": 10000,
+   "description": "Supplier Standard / 标准版; online account standard tier.",
+   "stock": 999999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "dlc_online",
+   "name": "DLC Online",
+   "optionId": "online_account",
+   "price": "25000",
+   "cost": 12250,
+   "description": "Supplier Deluxe / 豪华版; interpreted under the established 4-variant rule as Online + DLC.",
+   "stock": 999999,
+   "isInfiniteStock": true
+  }
+ ],
+ "editions": [],
+ "dlcs": [],
+ "isActive": true,
+ "status": "active",
+ "kind": "account",
+ "trade_value_iqd": 0,
+ "store_offer_bonus_iqd": 0,
+ "trade_enabled": true,
+ "trade_value_locked": false,
+ "id": "prd_9368a12095754e53",
+ "schema_version": 1,
+ "titleAr": "بيرسونا 5 تاكتيكا",
+ "compatibility": [
+  "Nintendo Switch",
+  "Nintendo Switch 2 (backward compatibility)",
+  "Nintendo Switch Lite"
+ ],
+ "edition": "Standard",
+ "developer": "P-Studio / ATLUS",
+ "publisher": "SEGA",
+ "metacriticUrl": "https://www.metacritic.com/game/persona-5-tactica/",
+ "opencriticRating": 77,
+ "userScore": 7.1,
+ "price_usd": 59.99,
+ "officialUrl": "https://www.nintendo.com/us/store/products/persona-5-tactica-switch/",
+ "eshopUrl": "https://www.nintendo.com/us/store/products/persona-5-tactica-switch/",
+ "gameIsOffline": true,
+ "gameIsOnline": false,
+ "description_short": "A stylish turn-based tactical RPG that sends the Phantom Thieves into a revolutionary conflict in a strange occupied realm.",
+ "description_ar": "لعبة تقمص أدوار تكتيكية بنظام أدوار من عالم Persona 5. ينتقل اللصوص الأشباح إلى عالم غريب تسيطر عليه قوات Legionnaires، ويتحالفون مع الثورية Erina. يعتمد القتال على التموضع والغطاء والأسلحة والـPersona والهجمات الجماعية التكتيكية.",
+ "box_front_url": "https://images.launchbox-app.com/2a354e74-f39f-4227-89da-e6db777277f1.jpg",
+ "box_back_url": "https://images.launchbox-app.com/0a2b74ac-6b77-44a5-a24e-7ae64cc11d1a.jpg",
+ "videos": [
+  {
+   "title": "Persona 5 Tactica — Nintendo Switch trailer",
+   "url": "https://www.youtube.com/watch?v=SacQ63RKLds"
+  },
+  {
+   "title": "Persona 5 Tactica — Launch trailer / gameplay",
+   "url": "https://www.youtube.com/watch?v=Z5aBbuInWvs"
+  },
+  {
+   "title": "Persona 5 Tactica — Official ATLUS site",
+   "url": "https://persona.atlus.com/p5t/"
+  }
+ ],
+ "nintendoEshopUrl": "https://www.nintendo.com/us/store/products/persona-5-tactica-switch/",
+ "nintendoOnlineRequired": false,
+ "nintendoCloudSaves": true,
+ "nintendoGameKeyCard": false,
+ "tvMode": true,
+ "tabletopMode": true,
+ "handheldMode": true,
+ "nintendoPlayModes": "TV / Tabletop / Handheld",
+ "nintendoNotes": "Native Nintendo Switch release. Nintendo’s US listing does not list Chinese among its Western supported-language set, while the supplier SKU supplied by the user is explicitly marked Simplified Chinese; that supplier language is preserved as regional SKU information rather than generalized to every eShop region. Nintendo Switch 2 support is backward compatibility, not a native Switch 2 Edition.",
+ "switch2Enhanced": false,
+ "switch2Exclusive": false,
+ "switch2Features": [
+  "Official Nintendo Switch 2 backward compatibility",
+  "No native Switch 2 Edition",
+  "Original 30 fps game target retained",
+  "Faster loading reported in backward-compatibility testing"
+ ],
+ "tagline": "Ignite your heart—an emotional uprising begins.",
+ "fitFor": [
+  "Persona 5 fans who want a new side story",
+  "Players who enjoy tactical RPGs",
+  "Players who like compact turn-based battle maps",
+  "Players who enjoy team-building and Persona customization"
+ ],
+ "notFitFor": [
+  "Players seeking Persona’s full calendar/social-simulation structure",
+  "Players wanting real-time action combat",
+  "Players who dislike grid-based tactics",
+  "Players requiring a native Switch 2 graphics edition"
+ ],
+ "playTimeMain": 24,
+ "playTimeFull": 40,
+ "editionsList": [
+  {
+   "name": "Persona 5 Tactica — Standard / Digital Deluxe content ecosystem",
+   "coverUrl": "https://images.launchbox-app.com/2a354e74-f39f-4227-89da-e6db777277f1.jpg",
+   "contents": [
+    {
+     "label": "Base game"
+    },
+    {
+     "label": "Optional Repaint Your Heart Challenge Pack"
+    },
+    {
+     "label": "Optional Persona/weapon DLC packs"
+    }
+   ]
+  }
+ ],
+ "gameplayPillars": [
+  {
+   "title": "Tactical Positioning",
+   "description": "Use cover, lines of sight, elevation and movement ranges to create safe angles and expose enemies.",
+   "imageUrl": "https://images.launchbox-app.com/b885ba0b-74d5-4dfa-91e9-486b0e86fef1.jpg"
+  },
+  {
+   "title": "Persona Combat",
+   "description": "Use Persona skills and elemental effects alongside guns and melee attacks to control the battlefield.",
+   "imageUrl": "https://images.launchbox-app.com/75f6b0d9-bc92-41b3-9727-2f91c2198656.jpg"
+  },
+  {
+   "title": "Triple Threat",
+   "description": "Surround downed enemies with three allies to trigger a large stylish area attack.",
+   "imageUrl": "https://images.launchbox-app.com/651223eb-17a9-4283-8e45-78724f854381.jpg"
+  },
+  {
+   "title": "Build Your Squad",
+   "description": "Choose Phantom Thieves, Sub-Personas and skills to shape a flexible tactical team.",
+   "imageUrl": "https://images.launchbox-app.com/8c923b15-1948-4a25-bbfe-f451962a5197.jpg"
+  }
+ ],
+ "worldSummary": "The Phantom Thieves are transported into a realm shaped by authoritarian rule and revolution. Erina becomes their guide and ally as they move between Kingdoms, confront rulers and uncover the truth behind the world and Toshiro Kasukabe’s connection to it.",
+ "storyChapters": [
+  {
+   "title": "A Strange Kingdom",
+   "body": "The Phantom Thieves are pulled into an unfamiliar realm ruled by Legionnaires.",
+   "imageUrl": "https://images.launchbox-app.com/b885ba0b-74d5-4dfa-91e9-486b0e86fef1.jpg"
+  },
+  {
+   "title": "Erina’s Revolution",
+   "body": "A revolutionary named Erina rescues the group and asks them to help overthrow oppression.",
+   "imageUrl": "https://images.launchbox-app.com/75f6b0d9-bc92-41b3-9727-2f91c2198656.jpg"
+  },
+  {
+   "title": "Toshiro’s Connection",
+   "body": "Diet member Toshiro Kasukabe becomes central to the mystery behind the Kingdoms and their rulers.",
+   "imageUrl": "https://images.launchbox-app.com/651223eb-17a9-4283-8e45-78724f854381.jpg"
+  },
+  {
+   "title": "Repaint Your Heart",
+   "body": "The DLC challenge storyline adds additional tactical scenarios and returning Persona 5 characters.",
+   "imageUrl": "https://images.launchbox-app.com/8c923b15-1948-4a25-bbfe-f451962a5197.jpg"
+  }
+ ],
+ "galleryImages": [
+  {
+   "url": "https://images.launchbox-app.com/b885ba0b-74d5-4dfa-91e9-486b0e86fef1.jpg",
+   "alt": "High-resolution Phantom Thieves battle scene"
+  },
+  {
+   "url": "https://images.launchbox-app.com/75f6b0d9-bc92-41b3-9727-2f91c2198656.jpg",
+   "alt": "High-resolution tactical battlefield scene"
+  },
+  {
+   "url": "https://images.launchbox-app.com/651223eb-17a9-4283-8e45-78724f854381.jpg",
+   "alt": "High-resolution tactical combat screenshot"
+  },
+  {
+   "url": "https://images.launchbox-app.com/8c923b15-1948-4a25-bbfe-f451962a5197.jpg",
+   "alt": "High-resolution story/dialogue screenshot"
+  },
+  {
+   "url": "https://images.launchbox-app.com/3679e523-cf77-4566-8413-b68631feeed0.jpg",
+   "alt": "High-resolution Persona 5 Tactica gameplay screenshot"
+  },
+  {
+   "url": "https://images.launchbox-app.com/cfffef2d-fbab-4047-bd74-a40d9d1e75e5.jpg",
+   "alt": "High-resolution combat interface screenshot"
+  },
+  {
+   "url": "https://images.launchbox-app.com/3e1af7b1-1031-4b9b-b0fd-d39871fe8256.jpg",
+   "alt": "Persona 5 Tactica key art / background"
+  },
+  {
+   "url": "https://images.launchbox-app.com/2346628d-8e01-43c0-abc1-b4c742b192cd.jpg",
+   "alt": "High-resolution Persona 5 Tactica gameplay screenshot"
+  }
+ ],
+ "features": [
+  "Grid-based tactical battles with cover and elevation",
+  "Persona skills, guns and melee attacks",
+  "Triple Threat all-out attacks",
+  "Knockdown and One More tactical chaining",
+  "Team composition and Persona customization",
+  "Original Persona 5 side story with new characters"
+ ],
+ "perfFps": "30",
+ "perfHdr": false,
+ "perfNotes": "Nintendo Switch gameplay targets 30 fps. Switch 2 backward compatibility improves loading substantially in available testing, but this file does not invent a native Switch 2 resolution or graphics mode.",
+ "devicePerformance": [
+  {
+   "device": "Nintendo Switch 2",
+   "deviceSlug": "nintendo-switch-2",
+   "deviceModel": "Nintendo Switch 2",
+   "hardwareId": "prd_acf4c89908764c62",
+   "informationStatus": "official backward compatibility; tested on Nintendo Switch 2; no native Switch 2 Edition",
+   "handheld": {
+    "supported": true,
+    "resolution": "Sub-1080p (Handheld Mode Boost / backward-compatible Switch rendering profile)",
+    "fps": "30",
+    "hdr": false,
+    "vrr": false,
+    "mode": "Backward compatibility",
+    "notes": "The Nintendo Switch version is supported through backward compatibility. No native Switch 2 Edition or graphics patch is asserted here. Resolution fields are intentionally left blank unless a measured Switch 2 result was verified."
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "Sub-1080p (backward-compatible Nintendo Switch docked rendering profile)",
+    "fps": "30",
+    "hdr": false,
+    "vrr": false,
+    "mode": "Backward compatibility",
+    "notes": "The Nintendo Switch version is supported through backward compatibility. No native Switch 2 Edition or graphics patch is asserted here. Resolution fields are intentionally left blank unless a measured Switch 2 result was verified."
+   },
+   "rayTracing": false,
+   "loadingNotes": "Backward-compatibility testing reports materially shorter loading times while retaining the original game profile.",
+   "sourceName": "Nintendo official compatibility + RPG Site Switch 2 backward-compatibility testing",
+   "sourceUrl": "https://www.rpgsite.net/feature/18079-persona-5-royal-nintendo-switch-2-performance-graphics-upgrade-p4g-p5-strikers-tactica-p3p-arena-ultimax",
+   "verificationStatus": "verified / backward-compatible / 30 fps target confirmed",
+   "performanceNotes": "The Nintendo Switch version is supported through backward compatibility. No native Switch 2 Edition or graphics patch is asserted here. Resolution fields are intentionally left blank unless a measured Switch 2 result was verified."
+  }
+ ],
+ "downloadSizeGb": 7.3,
+ "requiredSpaceGb": 7.3,
+ "microSdRecommended": false,
+ "storageNotes": "Official/reliable listing reports approximately 7.3 GB for the Nintendo Switch download. Leave additional free space for save data and future updates.",
+ "languagesAudio": [
+  "English",
+  "Japanese"
+ ],
+ "languagesText": [
+  "Chinese (Simplified) — supplier regional SKU",
+  "English",
+  "Japanese",
+  "French",
+  "German",
+  "Italian",
+  "Spanish",
+  "Portuguese (Brazil)",
+  "Russian"
+ ],
+ "arabicSupport": false,
+ "mpLocalPlayers": false,
+ "mpOnlinePlayers": false,
+ "mpCoop": false,
+ "mpCompetitive": false,
+ "mpSplitScreen": false,
+ "mpLocalWireless": false,
+ "dlc": [
+  {
+   "name": "Repaint Your Heart Challenge Pack",
+   "description": "Additional challenge-story content featuring extra tactical battles and returning characters."
+  },
+  {
+   "name": "Weapon Pack",
+   "description": "Optional weapon-content pack for the playable roster."
+  },
+  {
+   "name": "Picaro Summoning Pack + Raoul Persona",
+   "description": "Adds additional Picaro Personas and Raoul-related Persona content."
+  },
+  {
+   "name": "Orpheus Picaro & Izanagi Picaro",
+   "description": "Additional Persona summoning content associated with the game’s DLC catalog."
+  }
+ ],
+ "completionMain": 24,
+ "completionExtras": 30.5,
+ "completionAll": 40,
+ "faq": [
+  {
+   "q": "Does Persona 5 Tactica work on Nintendo Switch 2?",
+   "a": "Yes through backward compatibility where Nintendo marks the Nintendo Switch release as supported. This file does not classify it as a native Nintendo Switch 2 Edition."
+  },
+  {
+   "q": "What language is the supplier version of Persona 5 Tactica?",
+   "a": "Supplier listing language supplied by the user: Simplified Chinese. Official/regional language details are preserved separately in supported_languages_raw and nintendo_notes so the supplier SKU is not generalized to every region."
+  },
+  {
+   "q": "Is Persona 5 Tactica multiplayer?",
+   "a": "The main game is single-player; no multiplayer mode is asserted in this file."
+  },
+  {
+   "q": "Why are some Switch 2 performance resolution fields blank for Persona 5 Tactica?",
+   "a": "Because exact measured Switch 2 backward-compatibility rendering values were not verified. The template is intentionally left blank rather than filled with hardware maximums or guesses."
+  }
+ ],
+ "verdictScore": 8,
+ "verdictSummary": "A focused, stylish tactical spin-off that adapts Persona 5’s identity to compact strategy battles. It is strongest for players who want more Phantom Thieves and turn-based tactics rather than the social-calendar structure of the mainline RPG.",
+ "reviews": [
+  {
+   "source": "Metacritic",
+   "score": "79/100",
+   "quote": "Aggregate critic score recorded for the game.",
+   "url": "https://www.metacritic.com/game/persona-5-tactica/"
+  },
+  {
+   "source": "OpenCritic",
+   "score": "77/100",
+   "quote": "Aggregate review score recorded for the game.",
+   "url": "https://opencritic.com/game/15420/persona-5-tactica"
+  },
+  {
+   "source": "Deku Deals user/aggregate metadata",
+   "score": "7.1/10",
+   "quote": "User-score metadata shown alongside the game’s aggregate data.",
+   "url": "https://www.dekudeals.com/items/persona-5-tactica"
+  }
+ ],
+ "timeline": [
+  {
+   "date": "2023-06-11",
+   "title": "Persona 5 Tactica announced",
+   "body": "The tactical Persona 5 spin-off was publicly revealed for a 2023 release."
+  },
+  {
+   "date": "2023-11-17",
+   "title": "Nintendo Switch release",
+   "body": "Persona 5 Tactica launched on Nintendo Switch and other platforms."
+  },
+  {
+   "date": "2023-11-17",
+   "title": "DLC available",
+   "body": "Digital Deluxe and launch-period DLC content became available alongside the base game."
+  }
+ ],
+ "seriesName": "Persona",
+ "seriesEntries": [
+  "Persona 5 Royal",
+  "Persona 5 Strikers",
+  "Persona 4 Golden",
+  "Persona 3 Portable",
+  "Persona 3 Reload"
+ ],
+ "studioName": "P-Studio / ATLUS",
+ "studioUrl": "https://persona.atlus.com/p5t/",
+ "studioLocation": "Tokyo, Japan",
+ "studioAbout": "P-Studio is ATLUS’s Persona-focused development group, responsible for major Persona titles and related spin-offs.",
+ "setupNeeds": [
+  "Nintendo Switch family system",
+  "Nintendo Account for eShop purchase/download",
+  "Nintendo Switch Online for cloud-save backup where applicable",
+  "Sufficient storage for approximately 7.3 GB plus updates"
+ ],
+ "sources": [
+  {
+   "name": "Nintendo — Persona 5 Tactica",
+   "url": "https://www.nintendo.com/us/store/products/persona-5-tactica-switch/"
+  },
+  {
+   "name": "ATLUS — Persona 5 Tactica official site",
+   "url": "https://persona.atlus.com/p5t/"
+  },
+  {
+   "name": "Deku Deals — metadata / aggregate scores",
+   "url": "https://www.dekudeals.com/items/persona-5-tactica"
+  },
+  {
+   "name": "LaunchBox — Nintendo Switch media",
+   "url": "https://gamesdb.launchbox-app.com/games/images/374526-persona-5-tactica"
+  },
+  {
+   "name": "LaunchBox — high-resolution game media",
+   "url": "https://gamesdb.launchbox-app.com/games/images/374779-persona-5-tactica"
+  },
+  {
+   "name": "RPG Site — Switch 2 backward compatibility testing",
+   "url": "https://www.rpgsite.net/feature/18157-nintendo-switch-2-backwards-compatibility-testing-major-jrpgs-tested"
+  }
+ ],
+ "boxContentsList": "[Circular]",
+ "image": "/api/files/products/prd_9368a12095754e53/cover-9402c87258776a74.jpg",
+ "banner": "/api/files/products/prd_9368a12095754e53/banner-0-68086858967d3fe1.avif",
+ "schemaId": "",
+ "createdAt": "2026-08-26T22:24:21.124Z",
+ "created_at": "2026-08-26T22:24:21.124Z",
+ "updatedAt": "2026-08-26T22:24:21.124Z",
+ "updated_at": "2026-08-26T22:24:21.124Z",
+ "badgeEn": "وفر 40%",
+ "badgeKu": "وفر 40%",
+ "featuresEn": [
+  "Grid-based tactical battles with cover and elevation",
+  "Persona skills, guns and melee attacks",
+  "Triple Threat all-out attacks",
+  "Knockdown and One More tactical chaining",
+  "Team composition and Persona customization",
+  "Original Persona 5 side story with new characters"
+ ],
+ "featuresKu": [
+  "Grid-based tactical battles with cover and elevation",
+  "Persona skills, guns and melee attacks",
+  "Triple Threat all-out attacks",
+  "Knockdown and One More tactical chaining",
+  "Team composition and Persona customization",
+  "Original Persona 5 side story with new characters"
+ ],
+ "boxFrontUrl": "https://images.launchbox-app.com/2a354e74-f39f-4227-89da-e6db777277f1.jpg",
+ "sales": 0,
+ "images": [],
+ "modes": []
+}

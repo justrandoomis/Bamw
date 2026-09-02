@@ -1,0 +1,48 @@
+{
+ "batch": "020",
+ "apply": false,
+ "games": [
+  {
+   "id": "prd_9697d218d8874340",
+   "slug": "pokemon-pokopia",
+   "baseHash": "74997efc22d6e1fce18067bae7a1d660eb09a7978ef32211fae2c099483a37e3",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  },
+  {
+   "id": "prd_6e23a34819ac4bc6",
+   "slug": "pragmata",
+   "baseHash": "08d7f35ae28d2f6c28b8cd1d77f9dd8618f316af70fbde735e5c498715c0a44f",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  },
+  {
+   "id": "prd_045678e2e2c04cc7",
+   "baseHash": "0f2d6dfd6c5cdddc252cdbc7ea705a2722edcb56d55590a13d5630ea84981bab",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  },
+  {
+   "id": "prd_07ad22877d9942d2",
+   "baseHash": "b6f29fc2a512b37352b4d78d027400618ebab9cae04d8c40120f2252c4fc68a8",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  },
+  {
+   "id": "prd_0cc8d009345f4ea0",
+   "baseHash": "fbcc982f3c55033a2ec160f0ca662fc39287af3db890f0542b5d8dad23502b58",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  }
+ ]
+}

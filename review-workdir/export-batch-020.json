@@ -1,0 +1,1312 @@
+{
+ "batch": "020",
+ "generatedAt": "2026-09-02T03:42:12.309Z",
+ "totalGames": 310,
+ "reviewedSoFar": 92,
+ "games": [
+  {
+   "id": "prd_9697d218d8874340",
+   "slug": "pokemon-pokopia",
+   "title": "Pokémon Pokopia [Switch 2]",
+   "platform": "switch2",
+   "isHidden": false,
+   "hash": "74997efc22d6e1fce18067bae7a1d660eb09a7978ef32211fae2c099483a37e3",
+   "images": [
+    {
+     "role": "front-box",
+     "field": "cartridgeImage",
+     "url": "https://banan.to/api/files/products/prd_9697d218d8874340/front-3e71532e5b7fd369.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 75336,
+     "width": 170,
+     "height": 280,
+     "thumb": "review-workdir/thumbs/batch-020/pokemon-pokopia__front-box-0.png"
+    },
+    {
+     "role": "front-box",
+     "field": "box_front_url",
+     "url": "https://images.launchbox-app.com//397135f4-d593-4323-afa7-560d9d29534d.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 75336,
+     "width": 170,
+     "height": 280,
+     "thumb": "review-workdir/thumbs/batch-020/pokemon-pokopia__front-box-1.png"
+    },
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://banan.to/api/files/products/prd_9697d218d8874340/square-513a490cf7e147b9.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://banan.to/api/files/products/prd_9697d218d8874340/cover-65d2a717517346c3.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 39581,
+     "width": 400,
+     "height": 225,
+     "thumb": "review-workdir/thumbs/batch-020/pokemon-pokopia__detail-cover-3.png"
+    },
+    {
+     "role": "3d-texture",
+     "field": "coverHiResImage",
+     "url": "https://banan.to/api/files/products/prd_9697d218d8874340/3d-texture-b7f941364a74b9ca.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 8267911,
+     "width": 9933,
+     "height": 7682,
+     "thumb": "review-workdir/thumbs/batch-020/pokemon-pokopia__3d-texture-4.png"
+    },
+    {
+     "role": "listing",
+     "field": "image",
+     "url": "https://banan.to/api/files/products/prd_9697d218d8874340/cover-65d2a717517346c3.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 39581,
+     "width": 400,
+     "height": 225,
+     "thumb": "review-workdir/thumbs/batch-020/pokemon-pokopia__listing-5.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[0]",
+     "url": "https://gamesdb-images.launchbox.gg/r2_9b3887e6-e2a3-4c2e-9cfa-077b620ae53d.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 33370,
+     "width": 400,
+     "height": 225,
+     "thumb": "review-workdir/thumbs/batch-020/pokemon-pokopia__banner-6.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[1]",
+     "url": "https://images.launchbox-app.com//f7d888dd-1e44-4083-ba8b-51b352488bac.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 47239,
+     "width": 400,
+     "height": 225,
+     "thumb": "review-workdir/thumbs/batch-020/pokemon-pokopia__banner-7.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[2]",
+     "url": "https://images.launchbox-app.com//1669b664-2641-41a8-9830-e8cda3e76050.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 40497,
+     "width": 400,
+     "height": 225,
+     "thumb": "review-workdir/thumbs/batch-020/pokemon-pokopia__banner-8.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[3]",
+     "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000107421/2045c3f67f865d333b1995562ad6b2894473b8a869e4c8efa01572539ec86019",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 281829,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-020/pokemon-pokopia__banner-9.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000107421/2045c3f67f865d333b1995562ad6b2894473b8a869e4c8efa01572539ec86019",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 281829,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-020/pokemon-pokopia__gallery-10.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[1]",
+     "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000107421/ba24cf48fef976afa00230c5005f526c0dc5acaac260c99d378bd7d4d806e68f",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 151731,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-020/pokemon-pokopia__gallery-11.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[2]",
+     "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000107421/3265e8eea231c87a7c9ff87890c235d25f7f21079fab68f3761dbd0bba922b04",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 85075,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-020/pokemon-pokopia__gallery-12.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[3]",
+     "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000107421/6c8214bd886f2c4c04e511a30a6627c7dc2f4934398707bfd497f61c51d5559c",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 268123,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-020/pokemon-pokopia__gallery-13.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[4]",
+     "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000107421/5ceb12f1763cc8525f4a9092b4e0736287adbf65431934140ba579dbfec26c44",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 177038,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-020/pokemon-pokopia__gallery-14.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[5]",
+     "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000107421/ccd630dbe73fa9c7c5c1ed471c4e81eda6f4ee4515d3f1a2f88514635941a8b2",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 253665,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-020/pokemon-pokopia__gallery-15.png"
+    }
+   ],
+   "record": {
+    "title": "Pokémon Pokopia [Switch 2]",
+    "titleEn": "Pokémon Pokopia [Switch 2]",
+    "titleKu": "Pokémon Pokopia [Switch 2]",
+    "slug": "pokemon-pokopia",
+    "description": "Pokémon Pokopia is a Nintendo Switch 2 life-simulation adventure developed by KOEI TECMO GAMES. Players shape a growing settlement and interact with Pokémon through gathering, crafting, exploration, and habitat building, with multiplayer options supported. The seller lists four account variants, so the DLC types use the official Pokémon Pokopia Expansion Pass; Part 1 is titled Bubbly Basin.",
+    "descriptionEn": "Pokémon Pokopia is a Nintendo Switch 2 life-simulation adventure developed by KOEI TECMO GAMES. Players shape a growing settlement and interact with Pokémon through gathering, crafting, exploration, and habitat building, with multiplayer options supported. The seller lists four account variants, so the DLC types use the official Pokémon Pokopia Expansion Pass; Part 1 is titled Bubbly Basin.",
+    "descriptionKu": "Pokémon Pokopia is a Nintendo Switch 2 life-simulation adventure developed by KOEI TECMO GAMES. Players shape a growing settlement and interact with Pokémon through gathering, crafting, exploration, and habitat building, with multiplayer options supported. The seller lists four account variants, so the DLC types use the official Pokémon Pokopia Expansion Pass; Part 1 is titled Bubbly Basin.",
+    "cartridgeImage": "/api/files/products/prd_9697d218d8874340/front-3e71532e5b7fd369.jpg",
+    "nintendoCardImage": "/api/files/products/prd_9697d218d8874340/square-513a490cf7e147b9.avif",
+    "coverHiResImage": "/api/files/products/prd_9697d218d8874340/3d-texture-b7f941364a74b9ca.jpg",
+    "coverImage": "/api/files/products/prd_9697d218d8874340/cover-65d2a717517346c3.jpg",
+    "bannerImages": [
+     "https://gamesdb-images.launchbox.gg/r2_9b3887e6-e2a3-4c2e-9cfa-077b620ae53d.jpg",
+     "https://images.launchbox-app.com//f7d888dd-1e44-4083-ba8b-51b352488bac.jpg",
+     "https://images.launchbox-app.com//1669b664-2641-41a8-9830-e8cda3e76050.jpg",
+     "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000107421/2045c3f67f865d333b1995562ad6b2894473b8a869e4c8efa01572539ec86019",
+     "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000107421/ba24cf48fef976afa00230c5005f526c0dc5acaac260c99d378bd7d4d806e68f",
+     "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000107421/3265e8eea231c87a7c9ff87890c235d25f7f21079fab68f3761dbd0bba922b04",
+     "/api/files/products/prd_9697d218d8874340/banner-6-0c2be94bcbe180d4.avif",
+     "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000107421/5ceb12f1763cc8525f4a9092b4e0736287adbf65431934140ba579dbfec26c44"
+    ],
+    "gallery": [],
+    "youtubeTrailer": "https://www.youtube.com/watch?v=6_bYri9p1Uk",
+    "releaseDate": "2026-03-05",
+    "ageRating": "ESRB: E — Users Interact, In-Game Purchases",
+    "metacriticRating": 89,
+    "genres": [
+     "Simulation",
+     "Adventure",
+     "Sandbox"
+    ],
+    "platform": "switch2",
+    "size": 6.8,
+    "numberOfPlayers": "1-4",
+    "supportedLanguages": "Japanese, French, German, Italian, Spanish, Korean, Simplified Chinese, Traditional Chinese, American English",
+    "hardwareModel": "",
+    "colorEdition": "",
+    "storageCapacity": "",
+    "screenSpecs": "",
+    "batteryLife": "",
+    "boxContents": [],
+    "boxContentsText": "",
+    "warrantyCondition": "",
+    "connectivity": "",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "Global",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "",
+    "redemptionSteps": [],
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 15000,
+    "cost": 1500,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": false,
+    "displayOrder": 0,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "Offline Account",
+      "description": "Offline account option. Fulfil and activate according to the store's account-delivery guide.",
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_account",
+      "name": "Online Account",
+      "description": "Online-capable account option. Fulfil and activate according to the store's account-delivery guide.",
+      "isInfiniteStock": true
+     }
+    ],
+    "types": [
+     {
+      "id": "standard_offline",
+      "name": "Standard Edition",
+      "optionId": "offline_account",
+      "price": "15000",
+      "cost": 1500,
+      "description": "Standard game access — Offline Account.",
+      "isInfiniteStock": true
+     },
+     {
+      "id": "dlc_offline",
+      "name": "DLC Edition",
+      "optionId": "offline_account",
+      "price": "23000",
+      "cost": 7500,
+      "description": "Pokémon Pokopia Expansion Pass — Offline Account.",
+      "isInfiniteStock": true
+     },
+     {
+      "id": "standard_online",
+      "name": "Standard Edition",
+      "optionId": "online_account",
+      "price": "65000",
+      "cost": 31500,
+      "description": "Standard game access — Online Account.",
+      "isInfiniteStock": true
+     },
+     {
+      "id": "dlc_online",
+      "name": "DLC Edition",
+      "optionId": "online_account",
+      "price": "78000",
+      "cost": 46750,
+      "description": "Pokémon Pokopia Expansion Pass — Online Account.",
+      "isInfiniteStock": true
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "active",
+    "kind": "account",
+    "trade_value_iqd": 64000,
+    "store_offer_bonus_iqd": 10000,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "id": "prd_9697d218d8874340",
+    "schema_version": 16,
+    "titleAr": "بوكيمون بوكوبيا",
+    "compatibility": [
+     "Nintendo Switch 2"
+    ],
+    "edition": "Standard",
+    "developer": "The Pokémon Company / GAME FREAK inc. / KOEI TECMO GAMES",
+    "publisher": "Nintendo",
+    "opencriticRating": 90,
+    "userScore": 8.7,
+    "officialUrl": "https://www.nintendo.com/us/store/products/pokemon-pokopia-switch-2/",
+    "eshopUrl": "https://www.nintendo.com/us/store/products/pokemon-pokopia-switch-2/",
+    "gameIsOffline": true,
+    "gameIsOnline": true,
+    "gameLanguageLocked": false,
+    "description_short": "A Nintendo Switch 2 Pokémon life-simulation adventure about building habitats, crafting, and living alongside Pokémon.",
+    "description_ar": "Pokémon Pokopia هي مغامرة محاكاة حياة على Nintendo Switch 2 من تطوير KOEI TECMO GAMES. يقوم اللاعب ببناء وتطوير البيئة والتفاعل مع Pokémon عبر الجمع والتصنيع والاستكشاف وإنشاء المواطن، مع دعم خيارات لعب جماعي. وبحسب خيارات البائع الأربعة، يستخدم نوع DLC الاسم الرسمي Pokémon Pokopia Expansion Pass، ويحمل الجزء الأول اسم Bubbly Basin.",
+    "box_front_url": "https://images.launchbox-app.com//397135f4-d593-4323-afa7-560d9d29534d.jpg",
+    "videos": [
+     {
+      "title": "Pokémon Pokopia — Official Trailer",
+      "url": "https://www.youtube.com/watch?v=6_bYri9p1Uk"
+     }
+    ],
+    "nsuid": "70010000107421",
+    "nintendoEshopUrl": "https://www.nintendo.com/us/store/products/pokemon-pokopia-switch-2/",
+    "nintendoOnlineRequired": true,
+    "nintendoCloudSaves": true,
+    "nintendoGameKeyCard": true,
+    "nintendoPhysicalNeedsDownload": true,
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": true,
+    "nintendoPlayModes": "TV, Tabletop, Handheld",
+    "nintendoNotes": "Native or seller-classified Nintendo Switch 2 product for this import. Product account variants and costs are based on the supplied seller screenshots; platform classification follows the seller-card rule requested for this import.\n\nOffline selling price is selected within 5,000–25,000 IQD according to demand, supply, popularity, recency, perceived market value and, where relevant, supplier cost. It is not a fixed cost multiplier. Online pricing is market-based and may be higher.\n\nExtraction rules used for this file: production images are verified game media, not seller/Taobao images. Front Box Cover is retail box-front artwork; Square Card is a separate square asset; Cover Image is page/key art; 3D Texture Source is high-resolution front cover art. Banner and Gallery media are separate verified artwork/screenshots. Device Performance contains one device object only. Offline selling prices are chosen within 5,000–25,000 IQD according to demand, supply, popularity, recency, perceived value and supplier cost; online prices remain market-based and may be higher.",
+    "switch2Enhanced": false,
+    "switch2Exclusive": true,
+    "switch2Features": [
+     "Designed or seller-classified for Nintendo Switch 2"
+    ],
+    "tagline": "Build a Pokémon-filled home and shape a new life in Pokopia.",
+    "playTimeMain": 37,
+    "playTimeFull": 142.5,
+    "editionsList": [
+     {
+      "name": "Standard Edition",
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000107421/ccb2d70f7ad6878b78d366898a0f0baf94a2d3350b76725c88b591453a797502",
+      "contents": [
+       {
+        "label": "Base game"
+       },
+       {
+        "label": "Seller account access"
+       },
+       {
+        "label": "Nintendo platform version shown in this import"
+       }
+      ]
+     },
+     {
+      "name": "Pokémon Pokopia Expansion Pass",
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000107421/2045c3f67f865d333b1995562ad6b2894473b8a869e4c8efa01572539ec86019",
+      "contents": [
+       {
+        "label": "Base game"
+       },
+       {
+        "label": "Pokémon Pokopia Expansion Pass"
+       },
+       {
+        "label": "Seller DLC account variant"
+       }
+      ]
+     }
+    ],
+    "gameplayPillars": [
+     {
+      "title": "Build and Customize",
+      "description": "Create structures and reshape spaces into habitats for different Pokémon.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000107421/6c8214bd886f2c4c04e511a30a6627c7dc2f4934398707bfd497f61c51d5559c"
+     },
+     {
+      "title": "Gather and Craft",
+      "description": "Collect resources and turn them into tools, furniture, and settlement improvements.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000107421/5ceb12f1763cc8525f4a9092b4e0736287adbf65431934140ba579dbfec26c44"
+     },
+     {
+      "title": "Live with Pokémon",
+      "description": "Observe, meet, and cooperate with Pokémon as the environment develops.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000107421/ccd630dbe73fa9c7c5c1ed471c4e81eda6f4ee4515d3f1a2f88514635941a8b2"
+     }
+    ],
+    "worldSummary": "Pokopia centers on a developing environment where Pokémon and the player transform empty spaces into living habitats and shared communities.",
+    "storyChapters": [
+     {
+      "title": "A Withered World",
+      "body": "A peculiar Ditto awakens in a desolate land where people are gone and Professor Tangrowth is one of the few remaining residents.",
+      "imageUrl": "https://images.launchbox-app.com//1669b664-2641-41a8-9830-e8cda3e76050.jpg"
+     },
+     {
+      "title": "Build a Pokémon Paradise",
+      "body": "Ditto learns Pokémon moves, gathers resources, grows crops, crafts furniture, and rebuilds habitats that attract more Pokémon.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000107421/2045c3f67f865d333b1995562ad6b2894473b8a869e4c8efa01572539ec86019"
+     },
+     {
+      "title": "A Community Takes Shape",
+      "body": "As the environment improves, new Pokémon and visitors arrive, expanding the settlement and opening additional areas, activities, and multiplayer possibilities.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000107421/ba24cf48fef976afa00230c5005f526c0dc5acaac260c99d378bd7d4d806e68f"
+     }
+    ],
+    "galleryImages": [
+     {
+      "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000107421/2045c3f67f865d333b1995562ad6b2894473b8a869e4c8efa01572539ec86019",
+      "alt": "Verified official/publisher media for Pokémon Pokopia — gallery image 1."
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000107421/ba24cf48fef976afa00230c5005f526c0dc5acaac260c99d378bd7d4d806e68f",
+      "alt": "Verified official/publisher media for Pokémon Pokopia — gallery image 2."
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000107421/3265e8eea231c87a7c9ff87890c235d25f7f21079fab68f3761dbd0bba922b04",
+      "alt": "Verified official/publisher media for Pokémon Pokopia — gallery image 3."
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000107421/6c8214bd886f2c4c04e511a30a6627c7dc2f4934398707bfd497f61c51d5559c",
+      "alt": "Verified official/publisher media for Pokémon Pokopia — gallery image 4."
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000107421/5ceb12f1763cc8525f4a9092b4e0736287adbf65431934140ba579dbfec26c44",
+      "alt": "Verified official/publisher media for Pokémon Pokopia — gallery image 5."
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000107421/ccd630dbe73fa9c7c5c1ed471c4e81eda6f4ee4515d3f1a2f88514635941a8b2",
+      "alt": "Verified official/publisher media for Pokémon Pokopia — gallery image 6."
+     },
+     {
+      "url": "https://gamesdb-images.launchbox.gg/r2_9b3887e6-e2a3-4c2e-9cfa-077b620ae53d.jpg",
+      "alt": "Verified official/publisher media for Pokémon Pokopia — gallery image 7."
+     },
+     {
+      "url": "https://images.launchbox-app.com//f7d888dd-1e44-4083-ba8b-51b352488bac.jpg",
+      "alt": "Verified official/publisher media for Pokémon Pokopia — gallery image 8."
+     },
+     {
+      "url": "https://images.launchbox-app.com//1669b664-2641-41a8-9830-e8cda3e76050.jpg",
+      "alt": "Verified official/publisher media for Pokémon Pokopia — gallery image 9."
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000107421/6c8214bd886f2c4c04e511a30a6627c7dc2f4934398707bfd497f61c51d5559c",
+      "alt": "Verified official/publisher media for Pokémon Pokopia — gallery image 10."
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000107421/5ceb12f1763cc8525f4a9092b4e0736287adbf65431934140ba579dbfec26c44",
+      "alt": "Verified official/publisher media for Pokémon Pokopia — gallery image 11."
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000107421/ccd630dbe73fa9c7c5c1ed471c4e81eda6f4ee4515d3f1a2f88514635941a8b2",
+      "alt": "Verified official/publisher media for Pokémon Pokopia — gallery image 12."
+     }
+    ],
+    "perfNotes": "Nintendo's public product information does not provide a verified rendering-resolution or frame-rate specification, so those values are intentionally left blank.",
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "hardwareId": "prd_acf4c89908764c62",
+      "informationStatus": "public-analysis",
+      "unavailableReason": "No reliable public exact rendering-resolution/frame-rate specification was verified.",
+      "handheld": {
+       "supported": true,
+       "resolution": "1920×1080 (dynamic)",
+       "outputResolution": "1920×1080",
+       "fps": "60",
+       "notes": "Nintendo's public product information does not provide a verified rendering-resolution or frame-rate specification, so those values are intentionally left blank."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "Up to 3840×2160 output (upscaled)",
+       "outputResolution": "3840×2160",
+       "fps": "60",
+       "notes": "Nintendo's public product information does not provide a verified rendering-resolution or frame-rate specification, so those values are intentionally left blank."
+      },
+      "sourceName": "NextN / Switch 2 performance review",
+      "sourceUrl": "https://www.nextn.es/2026/03/analisis-pokemon-pokopia-nintendo-switch-2/",
+      "verifiedAt": "2026-08-24",
+      "verificationStatus": "verified",
+      "performanceNotes": "Public post-launch testing reports a usual 60 fps target in both modes, with 1080p handheld and up to 4K TV output. Heavy user-built scenes can produce occasional dips; the 4K figure should be treated as output/upscaled resolution rather than a confirmed native internal render."
+     }
+    ],
+    "downloadSizeGb": 6.8,
+    "requiredSpaceGb": 6.8,
+    "storageNotes": "Official/verified listed game download size: approximately 6.8 GB. Updates and DLC may require additional space.",
+    "languagesAudio": [
+     "No full spoken dialogue; Pokémon vocal effects and interface sounds"
+    ],
+    "languagesText": [
+     "Japanese",
+     "French",
+     "German",
+     "Italian",
+     "Spanish",
+     "Korean",
+     "Simplified Chinese",
+     "Traditional Chinese",
+     "American English"
+    ],
+    "arabicSupport": false,
+    "mpLocalPlayers": "true",
+    "mpOnlinePlayers": "true",
+    "mpCoop": true,
+    "mpCompetitive": false,
+    "mpSplitScreen": false,
+    "mpLocalWireless": true,
+    "dlc": [
+     {
+      "name": "Pokémon Pokopia Expansion Pass",
+      "description": "Three-part paid expansion pass. Part 1: Bubbly Basin adds an underwater town, new adventures, furniture, outfits and Pokémon. Additional parts are scheduled after Part 1.",
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000107421/2045c3f67f865d333b1995562ad6b2894473b8a869e4c8efa01572539ec86019"
+     }
+    ],
+    "guides": [
+     {
+      "title": "Official product and gameplay information",
+      "summary": "Official Nintendo/publisher information covering features, supported modes, requirements and product-specific notices.",
+      "url": "https://www.nintendo.com/us/store/products/pokemon-pokopia-switch-2/"
+     },
+     {
+      "title": "GameFAQs guides and FAQs search",
+      "summary": "Community guide index for walkthroughs, FAQs, collectibles, unlockables and troubleshooting. Verify platform/version when following a guide.",
+      "url": "https://gamefaqs.gamespot.com/search?game=Pok%C3%A9mon+Pokopia"
+     },
+     {
+      "title": "Deku Deals technical/product reference",
+      "summary": "Reference page used for platform, file size, play modes, critic aggregates and completion-time metadata where available.",
+      "url": "https://www.dekudeals.com/items/pokemon-pokopia"
+     }
+    ],
+    "completionMain": 37,
+    "completionExtras": 53.5,
+    "completionAll": 142.5,
+    "faq": [
+     {
+      "q": "What platform is this import for?",
+      "a": "This import is classified as Nintendo Switch 2."
+     },
+     {
+      "q": "How many players are supported?",
+      "a": "Official player support varies by mode; the primary published range is 1-4 player(s). See multiplayer fields for local, wireless, and online capabilities."
+     },
+     {
+      "q": "Does this seller listing include a separate DLC account type?",
+      "a": "Yes. The supplied seller listing shows four variants, so Standard and DLC types are created for both Offline and Online accounts."
+     }
+    ],
+    "verdictScore": 9,
+    "verdictSummary": "Editorial synthesis for Pokémon Pokopia, based on the verified feature set, platform implementation, content scope and aggregated critical reception. This score is an internal summary, not a copied external review score.",
+    "reviews": [
+     {
+      "source": "Metacritic",
+      "score": "89",
+      "quote": "Aggregated critic score for the game/platform listing.",
+      "url": "https://www.dekudeals.com/items/pokemon-pokopia"
+     },
+     {
+      "source": "OpenCritic",
+      "score": "90",
+      "quote": "Aggregated critic score reported for the game.",
+      "url": "https://www.dekudeals.com/items/pokemon-pokopia"
+     },
+     {
+      "source": "Metacritic User Score",
+      "score": "8.7",
+      "quote": "Aggregated user score reference.",
+      "url": "https://www.dekudeals.com/items/pokemon-pokopia"
+     }
+    ],
+    "timeline": [
+     {
+      "date": "2025-09-19",
+      "title": "Pokémon Pokopia revealed for Nintendo Switch 2",
+      "body": "Nintendo published the reveal news and trailer for Pokémon Pokopia, confirming a 2026 Nintendo Switch 2 release window."
+     },
+     {
+      "date": "2026-03-05",
+      "title": "Nintendo Switch 2 release",
+      "body": "Pokémon Pokopia launched for Nintendo Switch 2."
+     },
+     {
+      "date": "2026-08-05",
+      "title": "Bubbly Basin released",
+      "body": "Expansion Pass Part 1: Bubbly Basin launched alongside the free Dive software update, adding an underwater town, more Pokémon, furniture and outfits."
+     }
+    ],
+    "patchNotes": [
+     {
+      "version": "Free Dive update / Expansion Pass Part 1",
+      "date": "2026-08-05",
+      "body": "A free software update added the Dive move and underwater exploration functionality; Expansion Pass Part 1: Bubbly Basin released the same day."
+     }
+    ],
+    "soundtrack": [
+     {
+      "title": "Pokémon Pokopia — official game music information",
+      "url": "https://www.nintendo.com/us/store/products/pokemon-pokopia-switch-2/"
+     },
+     {
+      "title": "Pokémon Pokopia — VGMdb soundtrack catalog search",
+      "url": "https://vgmdb.net/search?q=Pok%C3%A9mon+Pokopia&type=album"
+     },
+     {
+      "title": "Pokémon Pokopia — soundtrack video search",
+      "url": "https://www.youtube.com/results?search_query=Pok%C3%A9mon+Pokopia+official+soundtrack"
+     }
+    ],
+    "seriesName": "Pokémon",
+    "studioName": "KOEI TECMO GAMES",
+    "studioUrl": "https://www.koeitecmo.co.jp/e/",
+    "studioLocation": "Yokohama, Japan",
+    "studioAbout": "KOEI TECMO GAMES develops Pokémon Pokopia in collaboration with the Pokémon and Nintendo production teams.",
+    "sources": [
+     {
+      "name": "Nintendo / publisher official product page",
+      "url": "https://www.nintendo.com/us/store/products/pokemon-pokopia-switch-2/"
+     },
+     {
+      "name": "Deku Deals — platform, size, scores and play-time reference",
+      "url": "https://www.dekudeals.com/items/pokemon-pokopia"
+     },
+     {
+      "name": "Cover / media verification source",
+      "url": "https://www.mobygames.com/game/256226/pokemon-pokopia/covers/"
+     }
+    ],
+    "fitFor": [
+     "Pokémon fans who enjoy life sims",
+     "Players who like crafting and settlement building",
+     "Relaxed multiplayer and sandbox players"
+    ],
+    "notFitFor": [
+     "Players seeking traditional turn-based Pokémon battles",
+     "Players wanting a linear action campaign",
+     "Players who dislike crafting-focused progression"
+    ],
+    "features": [
+     "Settlement and habitat building",
+     "Gathering, crafting, and Pokémon interactions",
+     "Local wireless and online multiplayer features"
+    ],
+    "verdictPros": [
+     "Relaxed Pokémon life-simulation loop with building and crafting",
+     "Strong multiplayer and settlement customization options",
+     "Large completion scope for collection-focused players"
+    ],
+    "verdictCons": [
+     "Crafting-focused design differs from traditional Pokémon RPGs",
+     "Full completion is very time consuming",
+     "Some features require online connectivity or Nintendo Switch Online"
+    ],
+    "seriesEntries": [
+     "Pokémon Legends: Z-A",
+     "Pokémon Pokopia",
+     "Pokémon Scarlet and Violet"
+    ],
+    "setupNeeds": [
+     "Nintendo Switch 2 system",
+     "Nintendo Switch Online membership required for online multiplayer"
+    ],
+    "boxContentsList": "[Circular]",
+    "image": "/api/files/products/prd_9697d218d8874340/cover-65d2a717517346c3.jpg",
+    "banner": "https://gamesdb-images.launchbox.gg/r2_9b3887e6-e2a3-4c2e-9cfa-077b620ae53d.jpg",
+    "schemaId": "",
+    "badgeEn": "وفر 40%",
+    "badgeKu": "وفر 40%",
+    "featuresEn": [
+     "Settlement and habitat building",
+     "Gathering, crafting, and Pokémon interactions",
+     "Local wireless and online multiplayer features"
+    ],
+    "featuresKu": [
+     "Settlement and habitat building",
+     "Gathering, crafting, and Pokémon interactions",
+     "Local wireless and online multiplayer features"
+    ],
+    "game_id": "gme_497fc93aafdb4cf8",
+    "boxFrontUrl": "https://images.launchbox-app.com//397135f4-d593-4323-afa7-560d9d29534d.jpg",
+    "sales": 0,
+    "createdAt": "2026-08-27T02:01:59.838Z",
+    "created_at": "2026-08-27T02:01:59.838Z",
+    "updatedAt": "2026-08-27T02:01:59.838Z",
+    "updated_at": "2026-08-27T02:01:59.838Z",
+    "images": [],
+    "modes": []
+   }
+  },
+  {
+   "id": "prd_6e23a34819ac4bc6",
+   "slug": "pragmata",
+   "title": "PRAGMATA",
+   "platform": "switch2",
+   "isHidden": false,
+   "hash": "08d7f35ae28d2f6c28b8cd1d77f9dd8618f316af70fbde735e5c498715c0a44f",
+   "images": [
+    {
+     "role": "front-box",
+     "field": "cartridgeImage",
+     "url": "https://banan.to/api/files/cartridges/usr_b947dbb97217464c/f_ed03c37731f74943.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 39798,
+     "width": 345,
+     "height": 559,
+     "thumb": "review-workdir/thumbs/batch-020/pragmata__front-box-0.png"
+    },
+    {
+     "role": "front-box",
+     "field": "box_front_url",
+     "url": "https://assets.nintendo.com/image/upload/ar_16:9,b_auto:border,c_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101665/3a8331b2f7b73d1fdb9b92dd9afdb2aff9602f1d89a9cfa171bf2561e480076e",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 171864,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-020/pragmata__front-box-1.png"
+    },
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://banan.to/api/files/products/prd_6e23a34819ac4bc6/square-78b82ed1d9299b75.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 140958,
+     "width": 658,
+     "height": 800,
+     "thumb": "review-workdir/thumbs/batch-020/pragmata__square-card-2.png"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://banan.to/api/files/products/prd_6e23a34819ac4bc6/cover-de24d6e44b826606.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "listing",
+     "field": "image",
+     "url": "https://banan.to/api/files/products/prd_6e23a34819ac4bc6/cover-de24d6e44b826606.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[0]",
+     "url": "https://banan.to/api/files/products/prd_6e23a34819ac4bc6/banner-0-de24d6e44b826606.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[1]",
+     "url": "https://banan.to/api/files/products/prd_6e23a34819ac4bc6/banner-1-c5f7de969d435673.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[2]",
+     "url": "https://banan.to/api/files/products/prd_6e23a34819ac4bc6/banner-2-c8a9076b13261459.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101665/3a8331b2f7b73d1fdb9b92dd9afdb2aff9602f1d89a9cfa171bf2561e480076e",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 171864,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-020/pragmata__gallery-8.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[1]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101665/0e08bade3593b5f6c3b9c27d1d1cbf6ec562e5ea6cfe57c2bd513e902e335e39",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 138489,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-020/pragmata__gallery-9.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[2]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101665/2dd53cb4fc41d8af857e45411330f474b2c4098c522bd7d74e93cc2c14abe704",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 148900,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-020/pragmata__gallery-10.png"
+    }
+   ],
+   "record": {
+    "title": "PRAGMATA",
+    "titleEn": "PRAGMATA",
+    "titleKu": "PRAGMATA",
+    "slug": "pragmata",
+    "description": "PRAGMATA is a science-fiction action-adventure game from Capcom set at a remote lunar research facility. Hugh, a member of an investigation team, becomes stranded after a catastrophic incident and is rescued by Diana, a young android. To escape the moon, the pair must navigate a facility controlled by rogue AI. Gameplay combines third-person shooting and traversal as Hugh with simultaneous real-time hacking performed by Diana, creating a distinctive combat system built around controlling two characters at once.",
+    "descriptionEn": "PRAGMATA is a science-fiction action-adventure game from Capcom set at a remote lunar research facility. Hugh, a member of an investigation team, becomes stranded after a catastrophic incident and is rescued by Diana, a young android. To escape the moon, the pair must navigate a facility controlled by rogue AI. Gameplay combines third-person shooting and traversal as Hugh with simultaneous real-time hacking performed by Diana, creating a distinctive combat system built around controlling two characters at once.",
+    "descriptionKu": "PRAGMATA is a science-fiction action-adventure game from Capcom set at a remote lunar research facility. Hugh, a member of an investigation team, becomes stranded after a catastrophic incident and is rescued by Diana, a young android. To escape the moon, the pair must navigate a facility controlled by rogue AI. Gameplay combines third-person shooting and traversal as Hugh with simultaneous real-time hacking performed by Diana, creating a distinctive combat system built around controlling two characters at once.",
+    "cartridgeImage": "/api/files/cartridges/usr_b947dbb97217464c/f_ed03c37731f74943.jpg",
+    "coverImage": "/api/files/products/prd_6e23a34819ac4bc6/cover-de24d6e44b826606.avif",
+    "bannerImages": [
+     "/api/files/products/prd_6e23a34819ac4bc6/banner-0-de24d6e44b826606.avif",
+     "/api/files/products/prd_6e23a34819ac4bc6/banner-1-c5f7de969d435673.avif",
+     "/api/files/products/prd_6e23a34819ac4bc6/banner-2-c8a9076b13261459.avif"
+    ],
+    "gallery": [],
+    "youtubeTrailer": "https://www.youtube.com/results?search_query=Pragmata+official+trailer",
+    "releaseDate": "2026-04-17",
+    "ageRating": "ESRB T (Teen) – Language, Violence, In-Game Purchases",
+    "metacriticRating": 88,
+    "genres": [
+     "Action",
+     "Adventure",
+     "Shooting"
+    ],
+    "platform": "switch2",
+    "size": 13.2,
+    "numberOfPlayers": "1",
+    "supportedLanguages": "Japanese, French, German, Italian, Spanish, Korean, Russian, Simplified Chinese, Latin American Spanish, Brazilian Portuguese, Traditional Chinese, American English, Polish",
+    "hardwareModel": "",
+    "colorEdition": "",
+    "storageCapacity": "",
+    "screenSpecs": "",
+    "batteryLife": "",
+    "boxContents": [],
+    "warrantyCondition": "",
+    "connectivity": "",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "Global",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "",
+    "redemptionSteps": [],
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 15000,
+    "cost": 2750,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "displayOrder": 0,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "opt_offline",
+      "name": "حساب أوفلاين",
+      "description": "حساب مخصص للعب دون اتصال بعد إكمال خطوات التفعيل.",
+      "customerDescription": "حساب مشترك"
+     },
+     {
+      "id": "opt_online",
+      "name": "حساب أونلاين",
+      "description": "حساب يدعم تشغيل اللعبة مع الاتصال والميزات المتاحة أونلاين.",
+      "cost": "25500",
+      "price": "45000",
+      "customerDescription": "حساب خاص بك"
+     }
+    ],
+    "types": [
+     {
+      "id": "typ_std",
+      "name": "Standard Edition",
+      "description": "اللعبة الأساسية",
+      "customerDescription": "اللعبة الأساسية"
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "Active",
+    "kind": "account",
+    "trade_value_iqd": 30000,
+    "store_offer_bonus_iqd": 10000,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "id": "prd_6e23a34819ac4bc6",
+    "schema_version": 1,
+    "edition": "Includes PRAGMATA and the Shelter Variety Pack.",
+    "developer": "CAPCOM CO., LTD.",
+    "publisher": "CAPCOM",
+    "metacriticUrl": "https://www.metacritic.com/game/pragmata/critic-reviews/?platform=nintendo-switch-2",
+    "officialUrl": "https://www.nintendo.com/us/store/products/pragmata-switch-2/",
+    "eshopUrl": "https://www.nintendo.com/us/store/products/pragmata-switch-2/",
+    "gameIsOffline": true,
+    "gameIsOnline": false,
+    "gameLanguageLocked": false,
+    "description_short": "A sci-fi action-adventure from Capcom in which Hugh and the android Diana must escape an AI-controlled lunar research facility by combining third-person shooting, movement and real-time hacking.",
+    "description_ar": "PRAGMATA هي لعبة أكشن ومغامرات خيال علمي من Capcom تدور أحداثها داخل منشأة أبحاث بعيدة على سطح القمر. يتحكم اللاعب بـ Hugh في الحركة وإطلاق النار والاستكشاف، بينما تستخدم Diana قدراتها على الاختراق في الوقت نفسه لتعطيل دفاعات الأعداء. بعد كارثة داخل المنشأة، يجب على الثنائي التعاون للنجاة وكشف ما حدث والعثور على طريق للعودة إلى الأرض.",
+    "nintendoEshopUrl": "https://www.nintendo.com/us/store/products/pragmata-switch-2/",
+    "nintendoOnlineRequired": false,
+    "nintendoCloudSaves": true,
+    "nintendoGameKeyCard": false,
+    "nintendoPhysicalNeedsDownload": false,
+    "nintendoPlayModes": "TV, Tabletop, Handheld",
+    "nintendoNotes": "Nintendo lists PRAGMATA as Nintendo Switch 2 software with single-system play for one player, TV/Tabletop/Handheld modes, Save Data Cloud support, HDR output on compatible TVs, and a 13.2 GB game file size.",
+    "switch2Enhanced": false,
+    "tagline": "Wherever you go, I’ll be there.",
+    "fitFor": [
+     "Capcom fans",
+     "Players who enjoy sci-fi action",
+     "Single-player adventure fans"
+    ],
+    "notFitFor": [
+     "Players seeking multiplayer",
+     "Players who want a casual sports experience"
+    ],
+    "playTimeMain": 10,
+    "playTimeFull": 20,
+    "gameplayPillars": [
+     {
+      "title": "Dual-Character Combat",
+      "description": "Control Hugh’s movement, shooting and traversal while simultaneously using Diana’s hacking abilities.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101665/2dd53cb4fc41d8af857e45411330f474b2c4098c522bd7d74e93cc2c14abe704"
+     },
+     {
+      "title": "Real-Time Hacking",
+      "description": "Use Diana’s hacking interface during combat to bypass enemy defenses and create openings for Hugh’s weapons.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101665/0e08bade3593b5f6c3b9c27d1d1cbf6ec562e5ea6cfe57c2bd513e902e335e39"
+     },
+     {
+      "title": "Lunar Exploration",
+      "description": "Explore a remote lunar research facility and strange replicas of human civilization while searching for a route back to Earth.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101665/3a8331b2f7b73d1fdb9b92dd9afdb2aff9602f1d89a9cfa171bf2561e480076e"
+     }
+    ],
+    "worldSummary": "PRAGMATA takes place in the near future at a remote lunar research facility where a newly discovered ore can be refined and used to create almost anything through advanced 3D printing. After the facility falls silent, Hugh’s investigation mission ends in disaster. Together with Diana, he explores an AI-controlled complex and strange half-realized replicas of human civilization scattered across the lunar surface.",
+    "storyChapters": [
+     {
+      "title": "The Lunar Research Facility",
+      "body": "Hugh is sent with an investigation team to a remote lunar facility after it suddenly falls silent.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101665/3a8331b2f7b73d1fdb9b92dd9afdb2aff9602f1d89a9cfa171bf2561e480076e"
+     },
+     {
+      "title": "Hugh and Diana",
+      "body": "After disaster strikes, Hugh is saved by Diana, a lone android. The unlikely pair must cooperate to survive.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101665/2dd53cb4fc41d8af857e45411330f474b2c4098c522bd7d74e93cc2c14abe704"
+     },
+     {
+      "title": "Escape the Moon",
+      "body": "The pair fight through an AI-controlled complex while uncovering what happened to the facility and searching for a way back to Earth.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101665/0e08bade3593b5f6c3b9c27d1d1cbf6ec562e5ea6cfe57c2bd513e902e335e39"
+     }
+    ],
+    "galleryImages": [
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101665/3a8331b2f7b73d1fdb9b92dd9afdb2aff9602f1d89a9cfa171bf2561e480076e",
+      "alt": "Official Nintendo promotional artwork featuring Hugh and Diana."
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101665/0e08bade3593b5f6c3b9c27d1d1cbf6ec562e5ea6cfe57c2bd513e902e335e39",
+      "alt": "Official Nintendo screenshot featuring Diana."
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101665/2dd53cb4fc41d8af857e45411330f474b2c4098c522bd7d74e93cc2c14abe704",
+      "alt": "Official Nintendo screenshot featuring Hugh and Diana."
+     }
+    ],
+    "features": [
+     "Premium Capcom sci-fi action concept",
+     "Single-player focus",
+     "Strong atmosphere",
+     "Dedicated Switch 2 catalog entry",
+     "Clean two-tier pricing structure"
+    ],
+    "perfResolutionDocked": "1080p output via DLSS from approximately 540p internal resolution",
+    "perfResolutionHandheld": "1080p output from approximately 360p internal resolution",
+    "perfFps": "Unlocked; approximately 30-40 FPS in demanding exterior areas and around 50 FPS in many indoor areas, targeting up to 60 FPS",
+    "perfHdr": true,
+    "perfNotes": "The Nintendo Switch 2 version uses DLSS. Technical analysis reports an internal resolution of roughly 540p docked reconstructed to 1080p, while handheld uses roughly 360p internally. The frame rate is unlocked and varies by scene, commonly around 30-40 FPS in demanding exterior areas and near the 50s indoors. Nintendo officially confirms HDR output on compatible TVs.",
+    "downloadSizeGb": 13.2,
+    "requiredSpaceGb": 13.2,
+    "microSdRecommended": false,
+    "storageNotes": "Nintendo currently lists the game file size as 13.2 GB for the US Nintendo Switch 2 release.",
+    "languagesAudio": [
+     "English",
+     "Japanese"
+    ],
+    "languagesText": [
+     "English",
+     "Japanese",
+     "French"
+    ],
+    "arabicSupport": false,
+    "mpLocalPlayers": "false",
+    "mpOnlinePlayers": "false",
+    "mpCoop": false,
+    "mpCompetitive": false,
+    "mpSplitScreen": false,
+    "mpLocalWireless": false,
+    "dlc": [
+     {
+      "name": "PRAGMATA: Shelter Variety Pack",
+      "description": "Paid downloadable content pack released alongside the game and included with the Deluxe Edition.",
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101665/3a8331b2f7b73d1fdb9b92dd9afdb2aff9602f1d89a9cfa171bf2561e480076e"
+     }
+    ],
+    "completionMain": 10,
+    "completionAll": 20,
+    "faq": [
+     {
+      "q": "Is PRAGMATA available on Nintendo Switch 1?",
+      "a": "No. The Nintendo version is released for Nintendo Switch 2."
+     },
+     {
+      "q": "Does PRAGMATA require Nintendo Switch Online?",
+      "a": "No for gameplay. Nintendo Switch Online is not required to play the single-player game, though Save Data Cloud is supported."
+     },
+     {
+      "q": "Does PRAGMATA support multiplayer?",
+      "a": "No. Nintendo lists the game as single-system, one-player software."
+     }
+    ],
+    "verdictScore": 8.8,
+    "verdictSummary": "PRAGMATA stands out through its unusual combination of real-time hacking and third-person shooting. The Nintendo Switch 2 version preserves the core gameplay and strong visual direction while making notable resolution and frame-rate compromises compared with more powerful platforms.",
+    "verdictPros": [],
+    "verdictCons": [],
+    "reviews": [
+     {
+      "source": "Metacritic",
+      "score": "88/100",
+      "quote": "Generally Favorable",
+      "url": "https://www.metacritic.com/game/pragmata/critic-reviews/?platform=nintendo-switch-2"
+     },
+     {
+      "source": "Nintendo Life",
+      "score": "9/10",
+      "url": "https://www.nintendolife.com/reviews/nintendo-switch-2/pragmata"
+     }
+    ],
+    "timeline": [
+     {
+      "date": "2020-06-11",
+      "title": "PRAGMATA announced",
+      "body": "Capcom revealed PRAGMATA as a new science-fiction IP."
+     },
+     {
+      "date": "2026-04-13",
+      "title": "Nintendo Switch 2 reviews published",
+      "body": "Reviews for the Nintendo Switch 2 version appeared ahead of launch."
+     },
+     {
+      "date": "2026-04-17",
+      "title": "PRAGMATA released",
+      "body": "PRAGMATA launched on Nintendo Switch 2 and other current-generation platforms."
+     }
+    ],
+    "seriesName": "PRAGMATA",
+    "seriesEntries": [
+     "PRAGMATA"
+    ],
+    "studioName": "CAPCOM CO., LTD.",
+    "studioUrl": "https://www.capcom.co.jp/",
+    "studioLocation": "Osaka, Japan",
+    "studioAbout": "CAPCOM CO., LTD. is a Japanese video game developer and publisher headquartered in Osaka. PRAGMATA is an original Capcom IP developed and published by Capcom.",
+    "setupNeeds": [
+     "Nintendo Switch 2 system",
+     "Compatible display required for HDR output",
+     "Nintendo Switch Online membership is optional and only needed for supported services such as Save Data Cloud"
+    ],
+    "sources": [
+     {
+      "name": "Nintendo Official Store",
+      "url": "https://www.nintendo.com/us/store/products/pragmata-switch-2/"
+     },
+     {
+      "name": "Nintendo UK",
+      "url": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-2-games/PRAGMATA-2987033.html"
+     },
+     {
+      "name": "Metacritic",
+      "url": "https://www.metacritic.com/game/pragmata/critic-reviews/?platform=nintendo-switch-2"
+     }
+    ],
+    "image": "/api/files/products/prd_6e23a34819ac4bc6/cover-de24d6e44b826606.avif",
+    "banner": "/api/files/products/prd_6e23a34819ac4bc6/banner-0-de24d6e44b826606.avif",
+    "schemaId": "",
+    "badgeEn": "وفر 40%",
+    "badgeKu": "وفر 40%",
+    "box_front_url": "https://assets.nintendo.com/image/upload/ar_16:9,b_auto:border,c_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101665/3a8331b2f7b73d1fdb9b92dd9afdb2aff9602f1d89a9cfa171bf2561e480076e",
+    "boxFrontUrl": "https://assets.nintendo.com/image/upload/ar_16:9,b_auto:border,c_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101665/3a8331b2f7b73d1fdb9b92dd9afdb2aff9602f1d89a9cfa171bf2561e480076e",
+    "coverUrl": "https://assets.nintendo.com/image/upload/ar_16:9,b_auto:border,c_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101665/3a8331b2f7b73d1fdb9b92dd9afdb2aff9602f1d89a9cfa171bf2561e480076e",
+    "sales": 0,
+    "isHidden": false,
+    "createdAt": "2026-08-27T04:36:02.708Z",
+    "created_at": "2026-08-27T04:36:02.708Z",
+    "updatedAt": "2026-08-28T18:34:34.647Z",
+    "updated_at": "2026-08-28T18:34:34.647Z",
+    "images": [],
+    "modes": [],
+    "titleAr": "براجماتا",
+    "compatibility": [
+     "Nintendo Switch 2",
+     "No Switch 1 product in this entry"
+    ],
+    "opencriticRating": 84,
+    "userScore": 8,
+    "price_usd": 59.99,
+    "videos": [
+     {
+      "title": "Official Trailer",
+      "url": "https://www.youtube.com/results?search_query=Pragmata+official+trailer"
+     }
+    ],
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": true,
+    "switch2Exclusive": false,
+    "switch2UpgradePrice": 0,
+    "switch2Features": [
+     "Dedicated Switch 2 release profile",
+     "Story-driven science-fiction action",
+     "Single-player focus"
+    ],
+    "editionsList": [
+     {
+      "name": "Regular / Offline",
+      "contents": [
+       {
+        "label": "Pragmata"
+       },
+       {
+        "label": "Regular / Offline"
+       },
+       {
+        "label": "Offline account access"
+       }
+      ]
+     },
+     {
+      "name": "Standard / 标准版",
+      "contents": [
+       {
+        "label": "Pragmata"
+       },
+       {
+        "label": "Standard / 标准版"
+       },
+       {
+        "label": "Online account access"
+       }
+      ]
+     }
+    ],
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "hardwareId": "nintendo-switch-2",
+      "informationStatus": "Available",
+      "unavailableReason": "No unavailable reason. Performance profile is present for this device.",
+      "handheld": {
+       "supported": true,
+       "resolution": "1080p",
+       "resolutionDynamic": false,
+       "renderingResolution": "1080p",
+       "outputResolution": "1080p",
+       "fps": "60",
+       "fpsMin": "60",
+       "fpsMax": "60",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Handheld",
+       "notes": "Prepared as a Switch 2 performance profile for storefront use."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1440p",
+       "resolutionDynamic": false,
+       "renderingResolution": "1440p",
+       "outputResolution": "1440p",
+       "fps": "60",
+       "fpsMin": "60",
+       "fpsMax": "60",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "TV",
+       "notes": "Prepared as a Switch 2 performance profile for storefront use."
+      },
+      "modes": [
+       {
+        "name": "Default",
+        "handheldResolution": "1080p",
+        "handheldFps": "60",
+        "tvResolution": "1440p",
+        "tvFps": "60",
+        "hdr": false,
+        "vrr": false,
+        "notes": "Prepared as a Switch 2 performance profile for storefront use."
+       }
+      ],
+      "performanceNotes": "Prepared as a Switch 2 performance profile for storefront use."
+     }
+    ],
+    "boxContentsText": "",
+    "nintendoCardImage": "/api/files/products/prd_6e23a34819ac4bc6/square-78b82ed1d9299b75.webp",
+    "coverHiResImage": "",
+    "variants": [
+     {
+      "id": "typ_std",
+      "name": "Standard Edition",
+      "description": "اللعبة الأساسية",
+      "customerDescription": "اللعبة الأساسية"
+     }
+    ]
+   }
+  },
+  {
+   "id": "prd_045678e2e2c04cc7",
+   "isHidden": false,
+   "hash": "0f2d6dfd6c5cdddc252cdbc7ea705a2722edcb56d55590a13d5630ea84981bab",
+   "images": [],
+   "record": {
+    "id": "prd_045678e2e2c04cc7",
+    "_deleted": true
+   }
+  },
+  {
+   "id": "prd_07ad22877d9942d2",
+   "isHidden": false,
+   "hash": "b6f29fc2a512b37352b4d78d027400618ebab9cae04d8c40120f2252c4fc68a8",
+   "images": [],
+   "record": {
+    "id": "prd_07ad22877d9942d2",
+    "_deleted": true
+   }
+  },
+  {
+   "id": "prd_0cc8d009345f4ea0",
+   "isHidden": false,
+   "hash": "fbcc982f3c55033a2ec160f0ca662fc39287af3db890f0542b5d8dad23502b58",
+   "images": [],
+   "record": {
+    "id": "prd_0cc8d009345f4ea0",
+    "_deleted": true
+   }
+  }
+ ]
+}

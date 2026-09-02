@@ -1,0 +1,441 @@
+{
+ "id": "prd_307e4cacf6024fa1",
+ "title": "Phoenix Wright: Ace Attorney Trilogy",
+ "titleEn": "Phoenix Wright: Ace Attorney Trilogy",
+ "titleKu": "Phoenix Wright: Ace Attorney Trilogy",
+ "slug": "phoenix-wright-ace-attorney-trilogy-switch1",
+ "description": "Phoenix Wright: Ace Attorney Trilogy collects Phoenix Wright: Ace Attorney, Phoenix Wright: Ace Attorney – Justice for All, and Phoenix Wright: Ace Attorney – Trials and Tribulations. Across 14 episodes, players investigate crime scenes, collect evidence, question witnesses and defend clients in court.\n\nCourtroom sequences revolve around identifying contradictions between testimony and evidence, while investigation sections focus on examining locations and speaking with characters. The current Nintendo Switch version also includes added accessibility and gallery features such as Episode Selection, Story Mode, Auto-play, a Music Player, an Art gallery and a Scene Creator.",
+ "descriptionEn": "Phoenix Wright: Ace Attorney Trilogy collects Phoenix Wright: Ace Attorney, Phoenix Wright: Ace Attorney – Justice for All, and Phoenix Wright: Ace Attorney – Trials and Tribulations. Across 14 episodes, players investigate crime scenes, collect evidence, question witnesses and defend clients in court.\n\nCourtroom sequences revolve around identifying contradictions between testimony and evidence, while investigation sections focus on examining locations and speaking with characters. The current Nintendo Switch version also includes added accessibility and gallery features such as Episode Selection, Story Mode, Auto-play, a Music Player, an Art gallery and a Scene Creator.",
+ "descriptionKu": "Phoenix Wright: Ace Attorney Trilogy collects Phoenix Wright: Ace Attorney, Phoenix Wright: Ace Attorney – Justice for All, and Phoenix Wright: Ace Attorney – Trials and Tribulations. Across 14 episodes, players investigate crime scenes, collect evidence, question witnesses and defend clients in court.\n\nCourtroom sequences revolve around identifying contradictions between testimony and evidence, while investigation sections focus on examining locations and speaking with characters. The current Nintendo Switch version also includes added accessibility and gallery features such as Episode Selection, Story Mode, Auto-play, a Music Player, an Art gallery and a Scene Creator.",
+ "cartridgeImage": "/api/files/products/prd_307e4cacf6024fa1/cartridgeImage-4bbaa3d14018eaf4.webp",
+ "nintendoCardImage": "/api/files/products/prd_307e4cacf6024fa1/nintendoCardImage-907a5ef5ef7bfc34.webp",
+ "coverHiResImage": "/api/files/products/prd_307e4cacf6024fa1/coverHiResImage-4e48d39b5597bad7.webp",
+ "coverImage": "/api/files/products/prd_307e4cacf6024fa1/coverImage-ef15403fc1000c13.webp",
+ "bannerImages": [
+  "/api/files/products/prd_307e4cacf6024fa1/bannerImages-171c6e9dac0d65ab.webp",
+  "/api/files/products/prd_307e4cacf6024fa1/bannerImages-48b9b7cb9c314ba5.webp"
+ ],
+ "gallery": [],
+ "youtubeTrailer": "https://www.youtube.com/watch?v=QY7EDGd_B50",
+ "releaseDate": "2019-04-09",
+ "ageRating": "ESRB Teen",
+ "metacriticRating": 81,
+ "genres": [
+  "Adventure",
+  "Puzzle",
+  "Visual Novel"
+ ],
+ "platform": "switch1",
+ "size": 2.8,
+ "numberOfPlayers": "1",
+ "supportedLanguages": "Japanese, French, German, Korean, Simplified Chinese, Latin American Spanish, Brazilian Portuguese, Traditional Chinese, American English",
+ "hardwareModel": "",
+ "colorEdition": "",
+ "storageCapacity": "",
+ "screenSpecs": "",
+ "batteryLife": "",
+ "boxContents": [],
+ "boxContentsText": "",
+ "warrantyCondition": "",
+ "connectivity": "",
+ "characterName": "Link",
+ "amiiboSeries": "The Legend of Zelda",
+ "figureType": "figure",
+ "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+ "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+ "boxCondition": "mib",
+ "releaseWave": "Wave 2 (Restock)",
+ "rarity": "standard",
+ "accessoryType": "حقيبة حماية وتنقل Carry Case",
+ "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+ "brand": "Nintendo Official",
+ "material": "Hard EVA Shockproof Shell",
+ "availableColors": "Black, Neon Red/Blue, White",
+ "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+ "cardValue": "$20 eShop Balance",
+ "region": "US",
+ "cardType": "eshop",
+ "deliveryMethod": "instant_code",
+ "redemptionGuide": "",
+ "redemptionSteps": [],
+ "validity": "no_expiry",
+ "usedType": "cartridge",
+ "conditionGrade": "like_new",
+ "packaging": "cib",
+ "guaranteeStatus": "tested_30days",
+ "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+ "accountType": "primary",
+ "badge": "وفر 40%",
+ "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+ "price": 7000,
+ "cost": 1250,
+ "stock": 999999,
+ "isInfiniteStock": true,
+ "isHidden": false,
+ "displayOrder": 0,
+ "category": "nintendo-switch-games",
+ "categoryId": "nintendo-switch-games",
+ "categoryEn": "",
+ "categoryKu": "",
+ "options": [
+  {
+   "id": "offline_account",
+   "name": "Offline Account",
+   "description": "Account delivery option intended for offline-account use.",
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_account",
+   "name": "Online Account",
+   "description": "Account delivery option intended for online-account use where the game supports online features.",
+   "isInfiniteStock": true
+  }
+ ],
+ "types": [
+  {
+   "id": "standard_offline",
+   "name": "Standard",
+   "optionId": "offline_account",
+   "price": 7000,
+   "cost": 1250,
+   "description": "Supplier 普通版 mapped to Offline / Standard. Supplier cost: ¥6.80 after platform subsidy; converted at 220 IQD/CNY and floored to 1,250 IQD.",
+   "isInfiniteStock": true
+  },
+  {
+   "id": "standard_online",
+   "name": "Standard",
+   "optionId": "online_account",
+   "price": "25000",
+   "cost": 12250,
+   "description": "Supplier 标准版 mapped to Online / Standard. Supplier cost: ¥55.80 after platform subsidy; converted at 220 IQD/CNY and floored to 12,250 IQD.",
+   "isInfiniteStock": true
+  }
+ ],
+ "editions": [],
+ "dlcs": [],
+ "isActive": true,
+ "status": "active",
+ "kind": "account",
+ "trade_value_iqd": 0,
+ "store_offer_bonus_iqd": 0,
+ "trade_enabled": true,
+ "trade_value_locked": false,
+ "schema_version": 21,
+ "compatibility": [
+  "Nintendo Switch",
+  "Nintendo Switch 2 (backward compatible)"
+ ],
+ "edition": "Standard",
+ "developer": "CAPCOM",
+ "publisher": "CAPCOM",
+ "metacriticUrl": "https://www.metacritic.com/game/phoenix-wright-ace-attorney-trilogy/critic-reviews/?platform=nintendo-switch",
+ "opencriticRating": 82,
+ "userScore": 8.5,
+ "officialUrl": "https://www.nintendo.com/us/store/products/phoenix-wright-ace-attorney-trilogy-switch/",
+ "eshopUrl": "https://www.nintendo.com/us/store/products/phoenix-wright-ace-attorney-trilogy-switch/",
+ "gameIsOffline": true,
+ "gameIsOnline": false,
+ "description_short": "A remastered collection of Phoenix Wright’s first three courtroom adventures, covering 14 episodes of investigations, evidence gathering and dramatic cross-examinations.",
+ "description_ar": "مجموعة تضم أول ثلاث ألعاب رئيسية من Phoenix Wright: Ace Attorney، وتجمع بين التحقيق في مسارح الجرائم وجمع الأدلة واستجواب الشهود وكشف التناقضات داخل قاعة المحكمة.",
+ "videos": [
+  {
+   "title": "Phoenix Wright: Ace Attorney Trilogy — Official Trailer",
+   "url": "https://www.youtube.com/watch?v=QY7EDGd_B50"
+  }
+ ],
+ "nintendoEshopUrl": "https://www.nintendo.com/us/store/products/phoenix-wright-ace-attorney-trilogy-switch/",
+ "nintendoOnlineRequired": false,
+ "nintendoCloudSaves": true,
+ "tvMode": true,
+ "tabletopMode": true,
+ "handheldMode": true,
+ "nintendoPlayModes": "TV Mode, Tabletop Mode, Handheld Mode",
+ "nintendoNotes": "Nintendo lists the trilogy as a single-player Nintendo Switch release with Simplified Chinese support. The collection contains the first three Phoenix Wright games and 14 episodes. A later update expanded convenience and gallery features. No verified direct Full Wrap was found, so 3D texture fields are blank.",
+ "switch2Exclusive": false,
+ "tagline": "Investigate crime scenes, collect evidence and expose contradictions in 14 episodes spanning Phoenix Wright’s original courtroom trilogy.",
+ "fitFor": [
+  "Players who enjoy mysteries, visual novels, courtroom drama and logic-based contradiction solving.",
+  "Players who want the first three Phoenix Wright games in one modern package.",
+  "Players who prefer character-driven stories and puzzle-like reasoning over action combat."
+ ],
+ "notFitFor": [
+  "Players who want fast real-time action or combat-focused gameplay.",
+  "Players who dislike reading large amounts of dialogue and examining testimony carefully.",
+  "Players looking for multiplayer; the trilogy is a single-player experience."
+ ],
+ "playTimeMain": 60,
+ "playTimeFull": 72,
+ "gameplayPillars": [
+  {
+   "title": "Investigate Crime Scenes",
+   "description": "Talk to witnesses, examine locations and gather evidence before trial so every object and statement can become part of the case."
+  },
+  {
+   "title": "Cross-Examine Testimony",
+   "description": "Press witnesses for more detail, compare statements with evidence and present contradictions at the right moment."
+  },
+  {
+   "title": "Character-Driven Mysteries",
+   "description": "Recurring allies, rivals, prosecutors and clients connect individual cases into a larger trilogy-spanning story."
+  }
+ ],
+ "worldSummary": "The trilogy takes place in a stylized legal world where defense attorney Phoenix Wright investigates crime scenes and then defends clients in high-pressure trials. Police stations, offices, homes and unusual locations feed evidence into courtroom confrontations where testimony, logic and character motives drive the central puzzles.",
+ "storyChapters": [
+  {
+   "title": "Phoenix Wright: Ace Attorney",
+   "body": "Phoenix begins his career as a defense attorney, learning to investigate cases and challenge testimony under the guidance of Mia Fey."
+  },
+  {
+   "title": "Justice for All",
+   "body": "New cases and the introduction of the Psyche-Lock mechanic deepen the investigation side while Phoenix faces increasingly difficult courtroom dilemmas."
+  },
+  {
+   "title": "Trials and Tribulations",
+   "body": "The third game connects past and present cases, developing Phoenix, Mia and their rivals while bringing major trilogy story threads together."
+  }
+ ],
+ "galleryImages": [
+  {
+   "url": "https://images.launchbox-app.com/9567ec82-a38c-4550-a6df-27c0800ce2d4.jpg",
+   "alt": "Phoenix Wright: Ace Attorney Trilogy gameplay image."
+  },
+  {
+   "url": "https://images.launchbox-app.com/9e3d01fa-deb9-48c9-a457-d73979e05c5a.jpg",
+   "alt": "Courtroom/investigation gameplay image."
+  },
+  {
+   "url": "https://images.launchbox-app.com/e37711a5-c8a7-46d6-8cca-a9ac69d509ab.jpg",
+   "alt": "Additional trilogy gameplay image."
+  }
+ ],
+ "features": [
+  "Contains all 14 episodes from Phoenix Wright: Ace Attorney, Justice for All and Trials and Tribulations.",
+  "Investigation sections revolve around examining crime scenes, collecting evidence and questioning characters.",
+  "Courtroom sections require comparing testimony with evidence to expose contradictions and advance each case.",
+  "The collection supports Simplified Chinese and Traditional Chinese text alongside multiple other languages.",
+  "The November 2025 title update added Episode Selection, Story Mode and Auto-play to make replaying or focusing on narrative easier.",
+  "The same free update added a Gallery with a Music Player, Art viewer and Scene Creator."
+ ],
+ "perfResolutionDocked": "1080p",
+ "perfResolutionHandheld": "720p on Switch; up to 1080p on Switch 2 Handheld Boost",
+ "perfFps": "60 FPS intended presentation",
+ "perfHdr": false,
+ "perfNotes": "Nintendo does not publish a game-specific resolution/FPS specification for this Nintendo Switch release in the official product data used here. Exact performance metrics are therefore left blank.",
+ "devicePerformance": [
+  {
+   "device": "Nintendo Switch 2",
+   "deviceSlug": "nintendo-switch-2",
+   "deviceModel": "Nintendo Switch 2",
+   "hardwareId": "prd_acf4c89908764c62",
+   "informationStatus": "verified",
+   "handheld": {
+    "supported": true,
+    "resolution": "1080p with Handheld Boost Mode",
+    "resolutionDynamic": false,
+    "renderingResolution": "1080p",
+    "outputResolution": "1080p",
+    "fps": "60",
+    "fpsMin": "60",
+    "fpsMax": "60",
+    "refreshRate": "60 Hz",
+    "hdr": false,
+    "vrr": false,
+    "mode": "Handheld Boost Mode",
+    "notes": "Handheld Boost uses the TV graphics profile at 1080p; touchscreen support is disabled while boost mode is active."
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "1080p",
+    "resolutionDynamic": false,
+    "renderingResolution": "1080p",
+    "outputResolution": "1080p",
+    "fps": "60",
+    "fpsMin": "60",
+    "fpsMax": "60",
+    "refreshRate": "60 Hz",
+    "hdr": false,
+    "vrr": false,
+    "mode": "Backward Compatibility / TV profile",
+    "notes": "Nintendo lists Switch 2 compatibility as supported; TV behavior remains consistent with the Switch version."
+   },
+   "sourceName": "Nintendo compatibility + RPG Site Handheld Boost testing",
+   "sourceUrl": "https://www.rpgsite.net/feature/19894-the-best-switch-rpgs-to-play-switch-2-handheld-boost-mode-1080p",
+   "verifiedAt": "2026-08-25",
+   "verificationStatus": "verified",
+   "performanceNotes": "Switch 2 compatibility is supported; Handheld Boost raises portable output from 720p to 1080p while preserving the original frame-rate behavior."
+  }
+ ],
+ "downloadSizeGb": 2.8,
+ "arabicSupport": false,
+ "mpLocalPlayers": false,
+ "mpOnlinePlayers": false,
+ "mpCoop": false,
+ "mpCompetitive": false,
+ "mpSplitScreen": false,
+ "mpLocalWireless": false,
+ "guides": [
+  {
+   "title": "Nintendo — Phoenix Wright: Ace Attorney Trilogy",
+   "summary": "Official Nintendo product page and feature information.",
+   "url": "https://www.nintendo.com/us/store/products/phoenix-wright-ace-attorney-trilogy-switch/"
+  },
+  {
+   "title": "Capcom — Ace Attorney Portal",
+   "summary": "Official Capcom series information and current Ace Attorney releases.",
+   "url": "https://www.ace-attorney.com/"
+  },
+  {
+   "title": "LaunchBox — Media Reference",
+   "summary": "Media database source for cover, square and artwork verification.",
+   "url": "https://gamesdb.launchbox-app.com/"
+  }
+ ],
+ "completionMain": 60,
+ "completionExtras": 69,
+ "completionAll": 72,
+ "faq": [
+  {
+   "q": "How many games are included?",
+   "a": "Three: Phoenix Wright: Ace Attorney, Phoenix Wright: Ace Attorney – Justice for All, and Phoenix Wright: Ace Attorney – Trials and Tribulations."
+  },
+  {
+   "q": "How many episodes are in the collection?",
+   "a": "Nintendo describes the trilogy as containing 14 episodes across the three games."
+  },
+  {
+   "q": "What did the later update add?",
+   "a": "The update added Gallery functions including a Music Player, Art and Scene Creator, plus Episode Selection, Story Mode and Auto-play features."
+  }
+ ],
+ "verdictScore": 8.1,
+ "verdictSummary": "Score note: 8.1/10 is a direct normalization of the current 81/100 Metacritic aggregate for the Nintendo listing; it is not a separately invented store rating.\n\nThe trilogy remains one of the strongest entry points into Ace Attorney because its three-game structure combines memorable mysteries, recurring characters and courtroom logic in one package, with later quality-of-life additions reducing friction for new players.",
+ "verdictPros": [
+  "Three full Ace Attorney games and 14 episodes in one release.",
+  "Excellent character writing and satisfying contradiction-based courtroom puzzles.",
+  "Modern convenience and gallery features improve accessibility."
+ ],
+ "verdictCons": [
+  "Large amount of reading may not suit action-focused players.",
+  "Some investigation sequences can require very specific interactions.",
+  "Single-player only."
+ ],
+ "reviews": [
+  {
+   "source": "Metacritic — Nintendo listing",
+   "score": "81/100",
+   "quote": "Current critic aggregate for the relevant Nintendo listing: 81/100. This is an external aggregate, not a BANANTO-created review score.",
+   "url": "https://www.dekudeals.com/items/phoenix-wright-ace-attorney-trilogy"
+  },
+  {
+   "url": "https://www.dekudeals.com/items/phoenix-wright-ace-attorney-trilogy",
+   "source": "OpenCritic",
+   "score": "82/100",
+   "quote": "OpenCritic aggregate recorded at 82/100. Where OpenCritic groups platforms, this value represents the published aggregate rather than a fabricated platform-specific score."
+  },
+  {
+   "source": "Metacritic User Score",
+   "score": "8.5/10",
+   "quote": "Current Metacritic user score shown with the listing: 8.5/10. User scores can change over time as additional ratings are submitted.",
+   "url": "https://www.dekudeals.com/items/phoenix-wright-ace-attorney-trilogy"
+  }
+ ],
+ "timeline": [
+  null,
+  {
+   "date": "2024",
+   "title": "Feature Update",
+   "body": "Capcom added expanded Gallery tools and convenience functions such as Episode Selection, Story Mode and Auto-play."
+  },
+  {
+   "title": "Trilogy Collection",
+   "body": "The collection remains the modern Nintendo package for Phoenix Wright’s original three-game story arc."
+  }
+ ],
+ "patchNotes": [
+  {
+   "version": "Free Title Update",
+   "date": "2025-11-19",
+   "body": "Capcom added Gallery Mode with Music Player, Art and Scene Creator; Episode Selection; Story Mode; Auto-play; Latin American Spanish and Brazilian Portuguese text/voice support; and security-related fixes."
+  }
+ ],
+ "setupNeeds": [
+  "Nintendo Switch or compatible Nintendo Switch 2 hardware.",
+  "Approximately 2.8 GB of free storage for the digital Nintendo Switch release.",
+  "Single-player game; no multiplayer subscription is required for the core adventure."
+ ],
+ "sources": [
+  {
+   "name": "Nintendo — Phoenix Wright: Ace Attorney Trilogy",
+   "url": "https://www.nintendo.com/us/store/products/phoenix-wright-ace-attorney-trilogy-switch/"
+  },
+  {
+   "name": "Capcom — Ace Attorney",
+   "url": "https://www.ace-attorney.com/"
+  },
+  {
+   "name": "LaunchBox Games Database",
+   "url": "https://gamesdb.launchbox-app.com/"
+  },
+  {
+   "name": "Deku Deals — Nintendo Switch critic/user aggregates",
+   "url": "https://www.dekudeals.com/items/phoenix-wright-ace-attorney-trilogy"
+  },
+  {
+   "name": "IsThereAnyDeal — HowLongToBeat summary",
+   "url": "https://isthereanydeal.com/game/phoenix-wright-ace-attorney-trilogy/stats/"
+  },
+  {
+   "name": "Capcom — 2025 free title update trailer",
+   "url": "https://www.youtube.com/watch?v=h80JKnkgRA4"
+  },
+  {
+   "name": "IsThereAnyDeal / HowLongToBeat — 60h / 69h / 72h",
+   "url": "https://isthereanydeal.com/game/phoenix-wright-ace-attorney-trilogy/stats/"
+  }
+ ],
+ "soundtrack": [
+  {
+   "title": "In-game Music Player — original trilogy soundtrack",
+   "url": "https://www.dekudeals.com/items/phoenix-wright-ace-attorney-trilogy"
+  },
+  {
+   "title": "Selected tracks from the special arrangement album",
+   "url": "https://www.dekudeals.com/items/phoenix-wright-ace-attorney-trilogy"
+  }
+ ],
+ "seriesName": "Ace Attorney",
+ "seriesEntries": [
+  "Phoenix Wright: Ace Attorney",
+  "Phoenix Wright: Ace Attorney – Justice for All",
+  "Phoenix Wright: Ace Attorney – Trials and Tribulations"
+ ],
+ "studioName": "CAPCOM",
+ "studioUrl": "https://www.capcom.com/",
+ "studioLocation": "Osaka, Japan",
+ "studioAbout": "CAPCOM created the Ace Attorney series and publishes Phoenix Wright: Ace Attorney Trilogy, preserving the original courtroom-adventure structure while updating presentation and convenience features for modern platforms.",
+ "boxContentsList": "[Circular]",
+ "image": "/api/files/products/prd_307e4cacf6024fa1/coverImage-ef15403fc1000c13.webp",
+ "banner": "/api/files/products/prd_307e4cacf6024fa1/bannerImages-171c6e9dac0d65ab.webp",
+ "schemaId": "",
+ "badgeEn": "وفر 40%",
+ "badgeKu": "وفر 40%",
+ "featuresEn": [
+  "Contains all 14 episodes from Phoenix Wright: Ace Attorney, Justice for All and Trials and Tribulations.",
+  "Investigation sections revolve around examining crime scenes, collecting evidence and questioning characters.",
+  "Courtroom sections require comparing testimony with evidence to expose contradictions and advance each case.",
+  "The collection supports Simplified Chinese and Traditional Chinese text alongside multiple other languages.",
+  "The November 2025 title update added Episode Selection, Story Mode and Auto-play to make replaying or focusing on narrative easier.",
+  "The same free update added a Gallery with a Music Player, Art viewer and Scene Creator."
+ ],
+ "featuresKu": [
+  "Contains all 14 episodes from Phoenix Wright: Ace Attorney, Justice for All and Trials and Tribulations.",
+  "Investigation sections revolve around examining crime scenes, collecting evidence and questioning characters.",
+  "Courtroom sections require comparing testimony with evidence to expose contradictions and advance each case.",
+  "The collection supports Simplified Chinese and Traditional Chinese text alongside multiple other languages.",
+  "The November 2025 title update added Episode Selection, Story Mode and Auto-play to make replaying or focusing on narrative easier.",
+  "The same free update added a Gallery with a Music Player, Art viewer and Scene Creator."
+ ],
+ "sales": 0,
+ "images": [],
+ "modes": []
+}
