@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { toast } from "sonner";
 
 import { useCurrency } from "@/context/CurrencyContext";
+import { playSound } from "@/utils/audio";
 import type { CartLine } from "@/store/useCartStore";
 
 /**
@@ -142,11 +143,18 @@ export function ReferralCartField({
       await queryClient.invalidateQueries({ queryKey: ["referral-state"] });
       if (data.quote?.applicable) publish({ ...data.quote, applicable: true });
       else revalidate.mutate();
+      /*
+        The store's own sound library, and the same two cues the coupon field
+        beside this one uses — so applying a referral and applying a coupon
+        sound like the same action, because they are.
+      */
+      playSound("turn_on", 0.5);
       toast.success(data.message || "تم تطبيق كود الإحالة");
     },
     onError: (err: Error) => {
       publish(null);
       setError(err.message);
+      playSound("Error", 0.5);
     },
   });
 
@@ -159,6 +167,7 @@ export function ReferralCartField({
       setCode("");
       setError("");
       await queryClient.invalidateQueries({ queryKey: ["referral-state"] });
+      playSound("turn_off", 0.6);
       toast.info("تمت إزالة كود الإحالة");
     },
   });

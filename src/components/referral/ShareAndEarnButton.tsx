@@ -4,6 +4,7 @@ import { useState } from "react";
 import { toast } from "sonner";
 
 import { useAuth } from "@/hooks/useAuth";
+import { playSound } from "@/utils/audio";
 
 /**
  * "شارك اللعبة واربح 10%" — the share button on a product page.
@@ -79,13 +80,18 @@ export function ShareAndEarnButton({
       return "copied" as const;
     },
     onSuccess: (result) => {
+      // The store's existing sound library — no generated substitutes.
+      playSound("confirm", 0.5);
       if (result === "copied") {
         setCopied(true);
         setTimeout(() => setCopied(false), 2500);
         toast.success("تم نسخ رابط الدعوة");
       }
     },
-    onError: () => toast.error("تعذر مشاركة الرابط، حاول مرة أخرى"),
+    onError: () => {
+      playSound("Error", 0.5);
+      toast.error("تعذر مشاركة الرابط، حاول مرة أخرى");
+    },
   });
 
   if (!enabled) return null;
