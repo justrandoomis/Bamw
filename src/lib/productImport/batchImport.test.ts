@@ -151,8 +151,18 @@ describe("buildBatchSchemaImport", () => {
 
 describe("the Nintendo path validates commercial data", () => {
   it("refuses a batch template that has no separate supplier costs", () => {
+    /*
+      A complete file apart from the thing under test. Without the performance
+      record the refusal is about that instead, and this test would pass or
+      fail on a rule it is not about.
+    */
     const built = buildBatchGameImport(
-      "schema_version=1\nname=Some Game\nplatform=switch1\nprice=25000\n",
+      "schema_version=1\nname=Some Game\nplatform=switch1\nprice=25000\n" +
+        "device_performance.1.device=Nintendo Switch\n" +
+        "device_performance.1.information_status=not_published\n" +
+        "device_performance.1.unavailable_reason=Nintendo has not published performance figures.\n" +
+        "device_performance.1.source_name=Nintendo eShop\n" +
+        "device_performance.1.verification_status=checked\n",
       "cat_nintendo",
     );
     expect(built.ok).toBe(false);

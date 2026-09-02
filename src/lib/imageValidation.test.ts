@@ -69,7 +69,12 @@ describe("isMostlyBlank", () => {
 });
 
 describe("import parser image handling", () => {
-  const base = "schema_version=1\nname=Test Game\nplatform=switch1\n";
+  /* A complete header: a game must carry a performance record for its own
+   platform, so a fixture without one is invalid for a reason that has
+   nothing to do with images. */
+  const base =
+    "schema_version=1\nname=Test Game\nplatform=switch1\n" +
+    "device_performance.1.device=Nintendo Switch\ndevice_performance.1.information_status=not_published\ndevice_performance.1.unavailable_reason=Nintendo has not published performance figures.\ndevice_performance.1.source_name=Nintendo eShop\ndevice_performance.1.verification_status=checked\n";
 
   it("keeps a valid front cover under either key name", () => {
     const a = parseGameImport(`${base}front_cover_image=https://cdn.example/front.jpg\n`);
@@ -126,7 +131,12 @@ describe("import parser image handling", () => {
 });
 
 describe("the four image fields are independent", () => {
-  const base = "schema_version=1\nname=Test Game\nplatform=switch1\n";
+  /* A complete header: a game must carry a performance record for its own
+   platform, so a fixture without one is invalid for a reason that has
+   nothing to do with images. */
+  const base =
+    "schema_version=1\nname=Test Game\nplatform=switch1\n" +
+    "device_performance.1.device=Nintendo Switch\ndevice_performance.1.information_status=not_published\ndevice_performance.1.unavailable_reason=Nintendo has not published performance figures.\ndevice_performance.1.source_name=Nintendo eShop\ndevice_performance.1.verification_status=checked\n";
 
   /**
    * The screenshot that started this: all four image boxes in the product

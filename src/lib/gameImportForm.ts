@@ -294,15 +294,23 @@ export type BatchGameImport =
  */
 export function buildBatchGameImport(rawText: string, categoryId: string): BatchGameImport {
   const parsed = parseGameImport(rawText);
+  const form = applyGameImportToForm(createBlankProductForm(categoryId), parsed.data);
+
+  /*
+    The name comes first. A file with no name is not a game, and every other
+    rule then fires about a record that does not exist — an operator importing
+    a truncated or wrong file was told its performance record was incomplete,
+    which is true and useless. Once there is a name, the parser's own errors
+    are what matters and are reported as before.
+  */
+  if (!form["titleEn"] && !form["title"]) {
+    return { ok: false, reason: "الملف لا يحتوي اسم اللعبة (name=)" };
+  }
+
   const blocking = parsed.errors.filter((issue) => issue.severity === "error");
   if (blocking.length > 0) {
     const first = blocking[0]!;
     return { ok: false, reason: `${first.key}: ${first.message}` };
-  }
-
-  const form = applyGameImportToForm(createBlankProductForm(categoryId), parsed.data);
-  if (!form["titleEn"] && !form["title"]) {
-    return { ok: false, reason: "الملف لا يحتوي اسم اللعبة (name=)" };
   }
 
   const slug = String(form.slug ?? "").trim();
