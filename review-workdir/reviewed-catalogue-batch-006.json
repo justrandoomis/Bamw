@@ -1,51 +1,196 @@
 {
  "batch": "006",
- "apply": false,
+ "apply": true,
  "games": [
   {
    "id": "prd_ddd43641059248a3",
    "slug": "ea-sports-fc-27-switch-2",
    "baseHash": "ca9d2b82e980fcc50aeb46c2514dfca23ff915509b1a05cc3cf40994ee81ef51",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "informationStatus": "not_published",
+      "unavailableReason": "EA SPORTS FC 27 releases on 2026-09-25; EA has not published Switch 2 performance figures ahead of launch.",
+      "handheld": { "supported": true },
+      "tv": { "supported": true },
+      "modes": [],
+      "sourceName": "EA SPORTS FC official announcement",
+      "sourceUrl": "https://www.ea.com/games/ea-sports-fc",
+      "verificationStatus": "official"
+     }
+    ]
+   },
+   "clear": [
+    "metacriticRating",
+    "supportedLanguages",
+    "size",
+    "downloadSizeGb",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "Switch 2 SKU of the unreleased FC 27 (2026-09-25). Same series removals: the copy-pasted '85' string (no score can exist pre-release), the referral language sentence, and the zero size. The two device records give way to one honest not-published Switch 2 record. Square card, cover and five gallery screenshots verified working."
   },
   {
    "id": "prd_69ea08de9fcb4869",
    "slug": "ea-sports-fifa-23-nintendo-switch-legacy-edition",
    "baseHash": "91d7298accad05857d611bc27a2825aea28d07322d80865223c71511a480be65",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "informationStatus": "available",
+      "handheld": { "supported": true, "resolution": "720p", "fps": "30" },
+      "tv": { "supported": true, "resolution": "1080p", "fps": "30" },
+      "modes": [],
+      "sourceName": "Official product and compatibility information",
+      "sourceUrl": "https://www.ea.com/games/fifa/fifa-23",
+      "verificationStatus": "official"
+     }
+    ]
+   },
+   "clear": [
+    "metacriticRating",
+    "supportedLanguages",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "FIFA 23 Legacy Edition (2022-09-30, 14 GB). The same copy-pasted '85' string removed — the Legacy Editions scored far lower and no verifiable Switch aggregate matches it; referral language sentence removed; device records collapse to the platform record. Hidden product with no images stored; none can be sourced and verified from this environment."
   },
   {
    "id": "prd_d530fb53867c4915",
    "slug": "efootball-kick-off-switch-2",
    "baseHash": "1d04a9bae8f6b447d5c2328c15d431a294259e0ed7222ad89309579fbb331ecb",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "releaseDate": "2026-06-04",
+    "dlcSummary": "The International Cup mode — Konami's 48-nation tournament — arrives as downloadable content; the game itself is a paid release with free content updates."
+   },
+   "clear": [
+    "youtubeTrailer",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "Release date corrected from the 2026-01-01 placeholder to Konami's announced 2026-06-04 launch. DLC summary recorded from Konami's announcement (International Cup DLC). The stored trailer was a YouTube SEARCH link — removed. The stray unsupported Nintendo Switch record drops under the platform-owned rule at apply time. Metacritic 76 left as stored (typed correctly and game-specific; could not be disproven from here). Square card, cover and six 1080p galleries verified working."
   },
   {
    "id": "prd_e0e2e61ef26b4744",
    "slug": "elden-ring-tarnished-edition-switch-2",
    "baseHash": "25a380f7c4007beaf7a660d9034dcdf25749aba8ec1de9aaa752af142115c6b2",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "metacriticRating": 91,
+    "metacriticUrl": "https://www.metacritic.com/game/elden-ring-tarnished-edition/",
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "informationStatus": "available",
+      "handheld": {
+       "supported": true,
+       "resolution": "Dynamic — FromSoftware publishes no official figures",
+       "fps": "30 (occasional drops; no 60 fps mode)"
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "Dynamic — FromSoftware publishes no official figures",
+       "fps": "30 (occasional drops; no 60 fps mode)"
+      },
+      "modes": [],
+      "sourceName": "Launch review consensus and performance coverage of the Switch 2 port",
+      "sourceUrl": "https://www.metacritic.com/game/elden-ring-tarnished-edition/",
+      "verificationStatus": "technical_analysis"
+     }
+    ],
+    "galleryImages": [
+     {
+      "url": "https://p325k7wa.twic.pics/high/elden-ring/elden-ring/02-screenshots/EldenRing_Screen.png",
+      "alt": "Elden Ring combat against a dragon in the Lands Between"
+     },
+     {
+      "url": "https://p325k7wa.twic.pics/high/elden-ring/elden-ring/02-screenshots/ELDENRING_08_4K.jpg",
+      "alt": "Elden Ring open-world vista"
+     },
+     {
+      "url": "https://p325k7wa.twic.pics/high/elden-ring/elden-ring/02-screenshots/ELDENRING_15_4K.jpg",
+      "alt": "Elden Ring boss encounter"
+     }
+    ]
+   },
+   "clear": [
+    "box_front_url",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "Metacritic corrected 96→91: 96 is the original PS5 release's score, 91 is the Tarnished Edition's own aggregate (40 critics). Perf record rewritten honestly: 30 fps with occasional drops, no 60 fps mode, resolution figures unpublished by FromSoftware. The broken fourth gallery entry (403) dropped; the three working screenshots keep their verbatim URLs and gain real descriptions in place of generic filler alts. box_front_url removed: a retail-bundle promo flat (wrong role, carries date and bundle contents) while cartridgeImage holds the genuine game-key-card box. Contamination removed."
   },
   {
    "id": "prd_44e73eb4a39a47e9",
    "slug": "everybody-1-2-switch-switch-1",
    "baseHash": "c3209e75c5cbf286524f1a8795f20b1b8ead918b83ef36896357465d06464465",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "size": 3.4,
+    "downloadSizeGb": 3.4,
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "informationStatus": "available",
+      "handheld": { "supported": true, "resolution": "720p", "fps": "60" },
+      "tv": { "supported": true, "resolution": "1080p", "fps": "60" },
+      "modes": [],
+      "sourceName": "Official product information",
+      "sourceUrl": "https://www.nintendo.com/us/store/products/everybody-1-2-switch-switch/",
+      "verificationStatus": "official"
+     }
+    ]
+   },
+   "clear": [
+    "youtubeTrailer",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "Size was stored as the string '3.4 GB', which the storage section cannot parse — replaced with the number. The trailer field held a nintendo.com store page URL that cannot embed — removed (no verified video id confirmed from here). Device records collapse to the platform record. Metacritic 54 left as stored — consistent with the game's documented weak reception. Genuine box, square card, cover, full wrap and six galleries verified working."
   }
  ]
 }
