@@ -1,0 +1,51 @@
+{
+ "batch": "006",
+ "apply": false,
+ "games": [
+  {
+   "id": "prd_ddd43641059248a3",
+   "slug": "ea-sports-fc-27-switch-2",
+   "baseHash": "ca9d2b82e980fcc50aeb46c2514dfca23ff915509b1a05cc3cf40994ee81ef51",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  },
+  {
+   "id": "prd_69ea08de9fcb4869",
+   "slug": "ea-sports-fifa-23-nintendo-switch-legacy-edition",
+   "baseHash": "91d7298accad05857d611bc27a2825aea28d07322d80865223c71511a480be65",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  },
+  {
+   "id": "prd_d530fb53867c4915",
+   "slug": "efootball-kick-off-switch-2",
+   "baseHash": "1d04a9bae8f6b447d5c2328c15d431a294259e0ed7222ad89309579fbb331ecb",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  },
+  {
+   "id": "prd_e0e2e61ef26b4744",
+   "slug": "elden-ring-tarnished-edition-switch-2",
+   "baseHash": "25a380f7c4007beaf7a660d9034dcdf25749aba8ec1de9aaa752af142115c6b2",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  },
+  {
+   "id": "prd_44e73eb4a39a47e9",
+   "slug": "everybody-1-2-switch-switch-1",
+   "baseHash": "c3209e75c5cbf286524f1a8795f20b1b8ead918b83ef36896357465d06464465",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  }
+ ]
+}

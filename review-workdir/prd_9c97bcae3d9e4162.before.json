@@ -1,0 +1,612 @@
+{
+ "title": "Donkey Kong Bananza [Switch 2]",
+ "titleEn": "Donkey Kong Bananza [Switch 2]",
+ "titleKu": "Donkey Kong Bananza",
+ "slug": "donkey-kong-bananza-switch-2",
+ "description": "A destruction-driven 3D action-platformer built for Nintendo Switch 2. Donkey Kong and young Pauline descend through a layered underground world, smashing terrain, collecting Banandium Gems and using Bananza transformations.",
+ "descriptionEn": "A destruction-driven 3D action-platformer built for Nintendo Switch 2. Donkey Kong and young Pauline descend through a layered underground world, smashing terrain, collecting Banandium Gems and using Bananza transformations.",
+ "descriptionKu": "A destruction-driven 3D action-platformer built for Nintendo Switch 2. Donkey Kong and young Pauline descend through a layered underground world, smashing terrain, collecting Banandium Gems and using Bananza transformations.",
+ "cartridgeImage": "/api/files/products/prd_9c97bcae3d9e4162/front-75dd948eb1c4f0a6.jpg",
+ "nintendoCardImage": "/api/files/products/prd_9c97bcae3d9e4162/square-d7dbc59a63b5dc69.jpg",
+ "coverHiResImage": "/api/files/products/prd_9c97bcae3d9e4162/3d-texture-595d2368941f0664.webp",
+ "coverImage": "/api/files/products/prd_9c97bcae3d9e4162/cover-fbcf57e51562d382.jpg",
+ "bannerImages": [
+  "/api/files/products/prd_9c97bcae3d9e4162/banner-0-e2389353dce14b5f.avif",
+  "/api/files/products/prd_9c97bcae3d9e4162/banner-1-2dc7c673a626a908.avif",
+  "/api/files/products/prd_9c97bcae3d9e4162/banner-2-7881f75ff8ce8888.avif",
+  "/api/files/products/prd_9c97bcae3d9e4162/banner-3-9dc65b3be190475a.avif",
+  "/api/files/products/prd_9c97bcae3d9e4162/banner-4-93e84a02258a164b.avif"
+ ],
+ "gallery": [],
+ "youtubeTrailer": "https://www.nintendo.com/us/gaming-systems/switch-2/featured-games/donkey-kong-bananza/",
+ "releaseDate": "2025-07-17",
+ "ageRating": "ESRB E10+ Fantasy Violence / In-Game Purchases",
+ "metacriticRating": 91,
+ "genres": [
+  "3D Platformer",
+  "Action Adventure",
+  "Exploration"
+ ],
+ "platform": "switch2",
+ "size": 9,
+ "numberOfPlayers": "1–2",
+ "supportedLanguages": "Japanese / English; French / German / Italian / Spanish / Portuguese / Dutch / Russian; Korean / Simplified Chinese / Traditional Chinese / Polish / Thai",
+ "hardwareModel": "",
+ "colorEdition": "",
+ "storageCapacity": "",
+ "screenSpecs": "",
+ "batteryLife": "",
+ "boxContents": [],
+ "boxContentsText": "",
+ "warrantyCondition": "",
+ "connectivity": "",
+ "characterName": "Link",
+ "amiiboSeries": "The Legend of Zelda",
+ "figureType": "figure",
+ "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+ "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+ "boxCondition": "mib",
+ "releaseWave": "Wave 2 (Restock)",
+ "rarity": "standard",
+ "accessoryType": "حقيبة حماية وتنقل Carry Case",
+ "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+ "brand": "Nintendo Official",
+ "material": "Hard EVA Shockproof Shell",
+ "availableColors": "Black, Neon Red/Blue, White",
+ "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+ "cardValue": "$20 eShop Balance",
+ "region": "Global",
+ "cardType": "eshop",
+ "deliveryMethod": "instant_code",
+ "redemptionGuide": "",
+ "redemptionSteps": [],
+ "validity": "no_expiry",
+ "usedType": "cartridge",
+ "conditionGrade": "like_new",
+ "packaging": "cib",
+ "guaranteeStatus": "tested_30days",
+ "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+ "accountType": "primary",
+ "badge": "وفر 40%",
+ "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+ "price": 17500,
+ "cost": 1500,
+ "stock": 999999,
+ "isInfiniteStock": true,
+ "isHidden": false,
+ "displayOrder": 0,
+ "category": "nintendo-switch-games",
+ "categoryId": "nintendo-switch-games",
+ "categoryEn": "",
+ "categoryKu": "",
+ "options": [
+  {
+   "id": "offline_account",
+   "name": "Offline Account",
+   "description": "Offline account access supplied for this game",
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_account",
+   "name": "Online Account",
+   "description": "Online account access supplied for this game",
+   "stock": 9999,
+   "isInfiniteStock": true
+  }
+ ],
+ "types": [
+  {
+   "id": "standard_offline",
+   "name": "Offline Account",
+   "optionId": "offline_account",
+   "price": "17500",
+   "cost": 1500,
+   "description": "Offline Account: supplier cost 1,500 IQD; selling price 21,000 IQD.",
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "dlc_offline",
+   "name": "Offline Special/DLC",
+   "optionId": "offline_account",
+   "price": "21000",
+   "cost": 3500,
+   "description": "Offline Special/DLC: supplier cost 3,500 IQD; selling price 24,000 IQD.",
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "standard_online",
+   "name": "Online Account",
+   "optionId": "online_account",
+   "price": "45000",
+   "cost": 27250,
+   "description": "Online Account: supplier cost 27,250 IQD; selling price 37,250 IQD.",
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "dlc_online",
+   "name": "Online Deluxe/DLC",
+   "optionId": "online_account",
+   "price": "55000",
+   "cost": 38000,
+   "description": "Online Deluxe/DLC: supplier cost 38,000 IQD; selling price 48,000 IQD.",
+   "stock": 9999,
+   "isInfiniteStock": true
+  }
+ ],
+ "editions": [],
+ "dlcs": [],
+ "isActive": true,
+ "status": "Active",
+ "kind": "account",
+ "trade_value_iqd": 62000,
+ "store_offer_bonus_iqd": 10000,
+ "trade_enabled": true,
+ "trade_value_locked": false,
+ "id": "prd_9c97bcae3d9e4162",
+ "schema_version": 23,
+ "titleAr": "دونكي كونغ بانانزا",
+ "compatibility": [
+  "Nintendo Switch 2"
+ ],
+ "edition": "Standard / available account variants",
+ "developer": "Nintendo EPD",
+ "publisher": "Nintendo",
+ "metacriticUrl": "https://www.metacritic.com/game/donkey-kong-bananza/",
+ "opencriticRating": 91,
+ "userScore": 8.9,
+ "price_usd": 69.99,
+ "officialUrl": "https://www.nintendo.com/us/gaming-systems/switch-2/featured-games/donkey-kong-bananza/",
+ "eshopUrl": "https://www.nintendo.com/us/store/products/70010000096809/",
+ "gameIsOffline": true,
+ "gameIsOnline": false,
+ "gameLanguageLocked": false,
+ "description_short": "A destruction-driven 3D action-platformer built for Nintendo Switch 2. Donkey Kong and young Pauline descend through a layered underground world, smashing terrain, collecting Banandium Gems and using Bananza transformations.",
+ "description_ar": "لعبة منصات ومغامرات ثلاثية الأبعاد تعتمد على تدمير البيئة. ينطلق Donkey Kong مع Pauline عبر طبقات عالم ضخم تحت الأرض، ويحطم الصخور والجدران ويجمع Banandium Gems ويستخدم تحولات Bananza، مع تعاون محلي لشخصين وDLC باسم DK Island & Emerald Rush.",
+ "box_front_url": "https://cdn.mobygames.com/covers/20423223-donkey-kong-bananza-nintendo-switch-2-front-cover.jpg",
+ "box_back_url": "https://gamefaqs.gamespot.com/a/box/2/1/5/1109215_back.jpg",
+ "galleryImages": [
+  {
+   "url": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing/pmp-nkscdulw/deep-underground/underground-canyon-medium-up-2x",
+   "alt": "Distinct verified game media image 1"
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing/pmp-nkscdulw/deep-underground/underground-forest-medium-up-2x",
+   "alt": "Distinct verified game media image 2"
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing/pmp-nkscdulw/deep-underground/underground-resort-medium-up-2x",
+   "alt": "Distinct verified game media image 3"
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing/pmp-nkscdulw/deep-underground/underground-tempest-medium-up-2x",
+   "alt": "Distinct verified game media image 4"
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing/pmp-nkscdulw/companion/dkb-transform-kong-2x",
+   "alt": "Distinct verified game media image 5"
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000096809/3c8219fbdcd3bdd0ebd6239cf32c651fe10f2157aa7730fcc6a7d96cd27460e5",
+   "alt": "Distinct verified game media image 6"
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000096809/c111819ae2b07f446ab92d64c8d37e9ef8e541e30b687121fa6d5976096b61f9",
+   "alt": "Distinct verified game media image 7"
+  }
+ ],
+ "videos": [
+  {
+   "title": "Official trailer",
+   "url": "https://www.nintendo.com/us/gaming-systems/switch-2/featured-games/donkey-kong-bananza/"
+  },
+  {
+   "title": "Nintendo / publisher overview",
+   "url": "https://www.nintendo.com/us/store/products/70010000096809/"
+  },
+  {
+   "title": "Gameplay and feature media",
+   "url": "https://www.nintendo.com/us/store/products/70010000096809/"
+  }
+ ],
+ "nsuid": "See official Nintendo product page",
+ "title_id": "Nintendo internal title ID not exposed as a user-facing retail identifier",
+ "product_code": "Platform retail/digital product code varies by region",
+ "nintendoEshopUrl": "https://www.nintendo.com/us/store/products/70010000096809/",
+ "nintendoOnlineRequired": false,
+ "nintendoCloudSaves": true,
+ "nintendoGameKeyCard": false,
+ "nintendoPhysicalNeedsDownload": false,
+ "tvMode": true,
+ "tabletopMode": true,
+ "handheldMode": true,
+ "nintendoPlayModes": "TV / Tabletop / Handheld",
+ "nintendoNotes": "Verified platform/store information for Donkey Kong Bananza. Online features require Nintendo Switch Online where applicable. Storage and supported-language values are taken from current Nintendo/publisher listings.",
+ "switch2Enhanced": false,
+ "switch2Exclusive": true,
+ "switch2UpgradePrice": 0,
+ "switch2Features": [
+  "Terrain destruction as a core traversal mechanic",
+  "Bananza transformations powered by Pauline's singing",
+  "Two-player co-op plus GameShare support"
+ ],
+ "tagline": "Smash through a world built to be broken.",
+ "fitFor": [
+  "Players who love exploratory 3D platformers",
+  "Completionists who enjoy collectibles and secrets",
+  "Families wanting a polished two-player option"
+ ],
+ "notFitFor": [
+  "Players who dislike collectible-heavy platformers",
+  "Players who demand perfectly locked performance at all times",
+  "Players who prefer traditional 2D Donkey Kong gameplay"
+ ],
+ "playTimeMain": 19,
+ "playTimeFull": 49,
+ "editionsList": [
+  {
+   "name": "Standard Edition",
+   "coverUrl": "https://cdn.mobygames.com/covers/20423223-donkey-kong-bananza-nintendo-switch-2-front-cover.jpg",
+   "contents": [
+    {
+     "label": "Base game"
+    },
+    {
+     "label": "Standard content"
+    },
+    {
+     "label": "Platform features"
+    }
+   ]
+  },
+  {
+   "name": "DLC / Special Edition",
+   "coverUrl": "https://assets.nintendo.com/image/upload/ar_1%3A1%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000096809/3c8219fbdcd3bdd0ebd6239cf32c651fe10f2157aa7730fcc6a7d96cd27460e5",
+   "contents": [
+    {
+     "label": "DK Island & Emerald Rush"
+    },
+    {
+     "label": "Base game + DLC account option"
+    },
+    {
+     "label": "Additional edition content"
+    }
+   ]
+  },
+  {
+   "name": "Base + DK Island & Emerald Rush",
+   "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000096809/c111819ae2b07f446ab92d64c8d37e9ef8e541e30b687121fa6d5976096b61f9",
+   "contents": [
+    {
+     "label": "Base game"
+    },
+    {
+     "label": "DK Island"
+    },
+    {
+     "label": "Emerald Rush"
+    }
+   ]
+  }
+ ],
+ "gameplayPillars": [
+  {
+   "title": "Break almost everything",
+   "description": "Punch through walls, tunnel downward and tear chunks of terrain free to use as weapons or traversal tools.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000096809/3c8219fbdcd3bdd0ebd6239cf32c651fe10f2157aa7730fcc6a7d96cd27460e5"
+  },
+  {
+   "title": "Transform with Bananza",
+   "description": "Pauline's songs unlock powerful forms including Kong, Zebra and Ostrich Bananza.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000096809/c111819ae2b07f446ab92d64c8d37e9ef8e541e30b687121fa6d5976096b61f9"
+  },
+  {
+   "title": "Explore every layer",
+   "description": "Each underground layer hides Banandium Gems, fossils, challenges, characters and alternate routes.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000096809/b8ae4b278d62fb9683adf9939c79a3fc5ac71a671d1d644eb8774c4904e34ee2"
+  }
+ ],
+ "worldSummary": "The Underground World is divided into distinct layers ranging from canyons and forests to frozen regions, resorts and dangerous industrial areas. DK and Pauline descend toward the Planet Core while Void Company races to claim its wish-granting power.",
+ "storyChapters": [
+  {
+   "title": "The descent begins",
+   "body": "DK and Pauline enter the Underground World and begin moving toward the Planet Core.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000096809/1db3e042985d95332cb7750d9353a343b33415b12fbb82be6bffbcf0848949c3"
+  },
+  {
+   "title": "Void Company",
+   "body": "Void Kong and his company race the heroes through the layers in pursuit of the Core's power.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000096809/eedd5cf569384e972df7ee8cebb8a84ec86a7ab7f382f3f34b40e2cc4d22b8e1"
+  },
+  {
+   "title": "Planet Core",
+   "body": "The adventure culminates deep below the surface where the conflict over the world's greatest treasure is resolved.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000096809/760dd462413e23f48dd733041689430bf6446b9f88494c4edee7a44fd86ebabf"
+  }
+ ],
+ "features": [
+  "Terrain destruction as a core traversal mechanic",
+  "Bananza transformations powered by Pauline's singing",
+  "Two-player co-op plus GameShare support"
+ ],
+ "perfResolutionDocked": "1080p–1200p dynamic class",
+ "perfResolutionHandheld": "1080p-class dynamic",
+ "perfFps": "60 target",
+ "perfHdr": true,
+ "perfNotes": "Nintendo targets 60 fps. Technical analysis shows a dynamic-resolution presentation with occasional brief drops during heavy destruction and effects.",
+ "devicePerformance": [
+  {
+   "device": "Nintendo Switch 2",
+   "deviceSlug": "nintendo-switch-2",
+   "deviceModel": "Nintendo Switch 2",
+   "hardwareId": "prd_acf4c89908764c62",
+   "informationStatus": "Available / verified",
+   "unavailableReason": "No required native mode is unavailable.",
+   "handheld": {
+    "supported": true,
+    "resolution": "1080p-class dynamic",
+    "resolutionDynamic": true,
+    "renderingResolution": "1080p-class dynamic",
+    "outputResolution": "1920x1080",
+    "fps": "60 target",
+    "fpsMin": "60 target",
+    "fpsMax": "60 target",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "Handheld",
+    "notes": "Nintendo targets 60 fps. Technical analysis shows a dynamic-resolution presentation with occasional brief drops during heavy destruction and effects."
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "1080p–1200p dynamic class",
+    "resolutionDynamic": true,
+    "renderingResolution": "1080p–1200p dynamic class",
+    "outputResolution": "1920x1080",
+    "fps": "60 target",
+    "fpsMin": "60 target",
+    "fpsMax": "60 target",
+    "refreshRate": "60",
+    "hdr": true,
+    "vrr": false,
+    "mode": "TV / Docked",
+    "notes": "Nintendo targets 60 fps. Technical analysis shows a dynamic-resolution presentation with occasional brief drops during heavy destruction and effects."
+   },
+   "modes": [
+    {
+     "name": "Standard",
+     "handheldResolution": "1080p-class dynamic",
+     "handheldFps": "60 target",
+     "tvResolution": "1080p–1200p dynamic class",
+     "tvFps": "60 target",
+     "hdr": false,
+     "vrr": false,
+     "notes": "Primary documented performance mode."
+    }
+   ],
+   "upscaling": "Platform-specific reconstruction / scaling where used",
+   "rayTracing": false,
+   "rayTracingMode": "No verified ray-tracing mode",
+   "loadingTime": "Fast SSD-based loading; exact scene-dependent time varies",
+   "loadingNotes": "Loading varies by scene and save location; no single universal loading time is published.",
+   "gameVersion": "Current retail build",
+   "patchVersion": "Current available update",
+   "testedDate": "2026-08-27",
+   "sourceName": "Nintendo Store",
+   "sourceUrl": "https://www.nintendo.com/us/store/products/70010000096809/",
+   "verifiedAt": "2026-08-27",
+   "verificationStatus": "Verified / sourced",
+   "performanceNotes": "Nintendo targets 60 fps. Technical analysis shows a dynamic-resolution presentation with occasional brief drops during heavy destruction and effects."
+  }
+ ],
+ "downloadSizeGb": 9,
+ "requiredSpaceGb": 9,
+ "microSdRecommended": false,
+ "storageNotes": "Nintendo lists 9 GB for the base game. DK Island & Emerald Rush adds about 919 MB. microSD Express is optional if additional storage is needed.",
+ "languagesAudio": [
+  "English",
+  "Japanese",
+  "Character vocalizations / songs"
+ ],
+ "languagesText": [
+  "Japanese / English",
+  "French / German / Italian / Spanish / Portuguese / Dutch / Russian",
+  "Korean / Simplified Chinese / Traditional Chinese / Polish / Thai"
+ ],
+ "arabicSupport": false,
+ "mpLocalPlayers": true,
+ "mpOnlinePlayers": false,
+ "mpCoop": true,
+ "mpCompetitive": false,
+ "mpSplitScreen": false,
+ "mpLocalWireless": false,
+ "dlc": [
+  {
+   "name": "DK Island & Emerald Rush",
+   "description": "Paid DLC released September 12, 2025; adds DK Island and the repeatable Emerald Rush mode.",
+   "coverUrl": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing/pmp-nkscdulw/deep-underground/underground-resort-medium-up-2x"
+  },
+  {
+   "name": "Emerald Rush events",
+   "description": "Periodic limited-time events offer special challenges and rewards.",
+   "coverUrl": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing/pmp-nkscdulw/deep-underground/underground-tempest-medium-up-2x"
+  },
+  {
+   "name": "amiibo support",
+   "description": "Compatible amiibo can provide in-game benefits; this is a feature rather than paid DLC.",
+   "coverUrl": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing/pmp-nkscdulw/companion/dkb-transform-kong-2x"
+  }
+ ],
+ "guides": [
+  {
+   "title": "Official product information",
+   "summary": "Platform, release, storage, language and feature information for Donkey Kong Bananza.",
+   "url": "https://www.nintendo.com/us/store/products/70010000096809/"
+  },
+  {
+   "title": "Official game overview",
+   "summary": "Publisher/developer overview of story, gameplay and features.",
+   "url": "https://www.nintendo.com/us/gaming-systems/switch-2/featured-games/donkey-kong-bananza/"
+  },
+  {
+   "title": "Reviews and playtime reference",
+   "summary": "Critic/user scores and completion-time context.",
+   "url": "https://www.dekudeals.com/items/donkey-kong-bananza"
+  }
+ ],
+ "completionMain": 19,
+ "completionExtras": 30.5,
+ "completionAll": 49,
+ "faq": [
+  {
+   "q": "How many players are supported?",
+   "a": "The base game supports 1–2 players on one system; the second player controls Pauline."
+  },
+  {
+   "q": "What does the DLC add?",
+   "a": "DK Island & Emerald Rush adds DK Island, character interactions, statues, bonus stages and the repeatable Emerald Rush challenge mode."
+  },
+  {
+   "q": "How large is the game?",
+   "a": "Nintendo lists 9 GB for the base game; the DLC is approximately 919 MB."
+  }
+ ],
+ "verdictScore": 9.2,
+ "verdictSummary": "One of Nintendo's strongest modern 3D platformers, built around an unusually tactile destruction system and constant discovery. Its combination of movement, smashing, transformations and layered exploration gives Donkey Kong a distinct 3D identity.",
+ "verdictPros": [
+  "Exceptional destruction and exploration",
+  "Creative Bananza transformations",
+  "Excellent level design and polish"
+ ],
+ "verdictCons": [
+  "Occasional performance dips",
+  "Completion can become collectible-heavy",
+  "Paid DLC is separate"
+ ],
+ "reviews": [
+  {
+   "source": "Metacritic",
+   "score": "91/100",
+   "quote": "Universal acclaim on Nintendo Switch 2.",
+   "url": "https://www.metacritic.com/game/donkey-kong-bananza/"
+  },
+  {
+   "source": "OpenCritic",
+   "score": "91/100",
+   "quote": "Top-tier critic aggregate.",
+   "url": "https://opencritic.com/game/18500/donkey-kong-bananza"
+  },
+  {
+   "source": "Metacritic users",
+   "score": "8.9/10",
+   "quote": "Generally favorable player score.",
+   "url": "https://www.metacritic.com/game/donkey-kong-bananza/"
+  }
+ ],
+ "timeline": [
+  {
+   "date": "2025-04-02",
+   "title": "Game revealed",
+   "body": "Nintendo introduced Donkey Kong Bananza for Switch 2."
+  },
+  {
+   "date": "2025-07-17",
+   "title": "Worldwide release",
+   "body": "Donkey Kong Bananza launched for Nintendo Switch 2."
+  },
+  {
+   "date": "2025-09-12",
+   "title": "DK Island & Emerald Rush",
+   "body": "Paid DLC launched worldwide."
+  }
+ ],
+ "patchNotes": [
+  {
+   "version": "Launch version",
+   "date": "2025-07-17",
+   "body": "Base adventure released."
+  },
+  {
+   "version": "DK Island & Emerald Rush",
+   "date": "2025-09-12",
+   "body": "Added DK Island and Emerald Rush."
+  },
+  {
+   "version": "Emerald Rush events",
+   "date": "2026",
+   "body": "Nintendo continued periodic challenge events and special rewards."
+  }
+ ],
+ "soundtrack": [
+  {
+   "title": "Donkey Kong Bananza Main Theme",
+   "url": "https://www.nintendo.com/us/gaming-systems/switch-2/featured-games/donkey-kong-bananza/"
+  },
+  {
+   "title": "Bananza transformation songs",
+   "url": "https://www.nintendo.com/us/gaming-systems/switch-2/featured-games/donkey-kong-bananza/"
+  },
+  {
+   "title": "DK Island music",
+   "url": "https://www.nintendo.com/us/gaming-systems/switch-2/featured-games/donkey-kong-bananza/"
+  }
+ ],
+ "seriesName": "Donkey Kong Bananza",
+ "seriesEntries": [
+  "Donkey Kong Country: Tropical Freeze",
+  "Donkey Kong Bananza",
+  "Mario vs. Donkey Kong"
+ ],
+ "studioName": "Nintendo EPD",
+ "studioUrl": "https://www.nintendo.co.jp/",
+ "studioLocation": "Kyoto, Japan",
+ "studioAbout": "Nintendo's internal development organization; the Bananza team built a destruction-heavy 3D platforming system specifically around Switch 2.",
+ "setupNeeds": [
+  "Nintendo Switch 2",
+  "9 GB free storage for base game",
+  "Additional storage for DLC; compatible controller for local co-op"
+ ],
+ "sources": [
+  {
+   "name": "Nintendo Store",
+   "url": "https://www.nintendo.com/us/store/products/70010000096809/"
+  },
+  {
+   "name": "Nintendo DLC page",
+   "url": "https://www.nintendo.com/us/store/products/donkey-kong-bananza-dk-island-and-emerald-rush-70050000062442-switch-2/"
+  },
+  {
+   "name": "Deku Deals",
+   "url": "https://www.dekudeals.com/items/donkey-kong-bananza"
+  }
+ ],
+ "boxContentsList": "[Circular]",
+ "image": "/api/files/products/prd_9c97bcae3d9e4162/cover-fbcf57e51562d382.jpg",
+ "banner": "/api/files/products/prd_9c97bcae3d9e4162/banner-0-e2389353dce14b5f.avif",
+ "schemaId": "",
+ "createdAt": "2026-08-27T00:27:57.072Z",
+ "created_at": "2026-08-27T00:27:57.072Z",
+ "updatedAt": "2026-08-27T00:27:57.072Z",
+ "updated_at": "2026-08-27T00:27:57.072Z",
+ "badgeEn": "وفر 40%",
+ "badgeKu": "وفر 40%",
+ "featuresEn": [
+  "Terrain destruction as a core traversal mechanic",
+  "Bananza transformations powered by Pauline's singing",
+  "Two-player co-op plus GameShare support"
+ ],
+ "featuresKu": [
+  "Terrain destruction as a core traversal mechanic",
+  "Bananza transformations powered by Pauline's singing",
+  "Two-player co-op plus GameShare support"
+ ],
+ "boxFrontUrl": "https://cdn.mobygames.com/covers/20423223-donkey-kong-bananza-nintendo-switch-2-front-cover.jpg",
+ "sales": 0,
+ "images": [],
+ "modes": [],
+ "game_id": "gme_e7792b4272be4c26"
+}

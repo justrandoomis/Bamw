@@ -1,6 +1,6 @@
 {
  "batch": "005",
- "apply": true,
+ "apply": false,
  "games": [
   {
    "id": "prd_9c97bcae3d9e4162",
@@ -59,8 +59,16 @@
       "device": "Nintendo Switch",
       "deviceSlug": "nintendo-switch",
       "informationStatus": "available",
-      "handheld": { "supported": true, "resolution": "720p", "fps": "30" },
-      "tv": { "supported": true, "resolution": "1080p", "fps": "30" },
+      "handheld": {
+       "supported": true,
+       "resolution": "720p",
+       "fps": "30"
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p",
+       "fps": "30"
+      },
       "modes": [],
       "sourceName": "Official product and compatibility information",
       "sourceUrl": "https://www.ea.com/games/ea-sports-fc/fc-25",
@@ -94,8 +102,16 @@
       "device": "Nintendo Switch",
       "deviceSlug": "nintendo-switch",
       "informationStatus": "available",
-      "handheld": { "supported": true, "resolution": "720p", "fps": "30" },
-      "tv": { "supported": true, "resolution": "1080p", "fps": "30" },
+      "handheld": {
+       "supported": true,
+       "resolution": "720p",
+       "fps": "30"
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p",
+       "fps": "30"
+      },
       "modes": [],
       "sourceName": "Official product and compatibility information",
       "sourceUrl": "https://www.ea.com/games/ea-sports-fc/fc-26",
@@ -129,8 +145,16 @@
       "device": "Nintendo Switch 2",
       "deviceSlug": "nintendo-switch-2",
       "informationStatus": "available",
-      "handheld": { "supported": true, "resolution": "1080p", "fps": "60" },
-      "tv": { "supported": true, "resolution": "1440p", "fps": "60" },
+      "handheld": {
+       "supported": true,
+       "resolution": "1080p",
+       "fps": "60"
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1440p",
+       "fps": "60"
+      },
       "modes": [],
       "sourceName": "Official product and compatibility information",
       "sourceUrl": "https://www.ea.com/games/ea-sports-fc/fc-26",
@@ -165,8 +189,12 @@
       "deviceSlug": "nintendo-switch",
       "informationStatus": "not_published",
       "unavailableReason": "EA SPORTS FC 27 releases on 2026-09-25; EA has not published Switch performance figures ahead of launch.",
-      "handheld": { "supported": true },
-      "tv": { "supported": true },
+      "handheld": {
+       "supported": true
+      },
+      "tv": {
+       "supported": true
+      },
       "modes": [],
       "sourceName": "EA SPORTS FC official announcement",
       "sourceUrl": "https://www.ea.com/games/ea-sports-fc",
@@ -191,6 +219,116 @@
     "guaranteeStatus"
    ],
    "notes": "Unreleased title (2026-09-25, after today). A Metacritic score cannot exist yet — the '85' string removed; download size was stored as 0 and removed (unpublished); the referral language sentence removed. The two guessed 720p/1080p records are replaced by one honest not-published platform record: EA has not announced Switch performance figures for FC 27. Square card, cover and five gallery screenshots verified working."
+  }
+ ],
+ "appliedAt": "2026-09-02T02:32:28.830Z",
+ "results": [
+  {
+   "id": "prd_9c97bcae3d9e4162",
+   "action": "APPLIED",
+   "changed": [
+    "youtubeTrailer",
+    "bannerImages",
+    "galleryImages"
+   ],
+   "removed": [
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ]
+  },
+  {
+   "id": "prd_db09416253cf4760",
+   "action": "APPLIED",
+   "changed": [
+    "devicePerformance"
+   ],
+   "removed": [
+    "metacriticRating",
+    "supportedLanguages",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ]
+  },
+  {
+   "id": "prd_b185a38dcf644622",
+   "action": "APPLIED",
+   "changed": [
+    "devicePerformance"
+   ],
+   "removed": [
+    "metacriticRating",
+    "supportedLanguages",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ]
+  },
+  {
+   "id": "prd_391864a55b884a32",
+   "action": "APPLIED",
+   "changed": [
+    "devicePerformance"
+   ],
+   "removed": [
+    "metacriticRating",
+    "supportedLanguages",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ]
+  },
+  {
+   "id": "prd_87ae580ce1e54856",
+   "action": "APPLIED",
+   "changed": [
+    "devicePerformance"
+   ],
+   "removed": [
+    "metacriticRating",
+    "supportedLanguages",
+    "size",
+    "downloadSizeGb",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ]
   }
  ]
 }

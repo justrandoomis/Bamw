@@ -1,0 +1,2839 @@
+{
+ "batch": "006",
+ "generatedAt": "2026-09-02T02:32:56.059Z",
+ "totalGames": 310,
+ "reviewedSoFar": 23,
+ "games": [
+  {
+   "id": "prd_ddd43641059248a3",
+   "slug": "ea-sports-fc-27-switch-2",
+   "title": "EA SPORTS FC 27",
+   "platform": "switch2",
+   "isHidden": true,
+   "hash": "ca9d2b82e980fcc50aeb46c2514dfca23ff915509b1a05cc3cf40994ee81ef51",
+   "images": [
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://banan.to/api/files/products/prd_ddd43641059248a3/square-card-00f52420b4dda38c.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 232876,
+     "width": 1024,
+     "height": 1024,
+     "thumb": "review-workdir/thumbs/batch-006/ea-sports-fc-27-switch-2__square-card-0.png"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://banan.to/api/files/products/prd_ddd43641059248a3/cover-4e7ef8c7214e2549.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 477214,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-006/ea-sports-fc-27-switch-2__detail-cover-1.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://banan.to/api/files/products/prd_ddd43641059248a3/gallery-1-9187e7d2a74b1354.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 98768,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-006/ea-sports-fc-27-switch-2__gallery-2.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[1]",
+     "url": "https://banan.to/api/files/products/prd_ddd43641059248a3/gallery-2-dd58f200887059b5.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 121602,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-006/ea-sports-fc-27-switch-2__gallery-3.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[2]",
+     "url": "https://banan.to/api/files/products/prd_ddd43641059248a3/gallery-3-dfbf40a5a4bbdd7a.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 131532,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-006/ea-sports-fc-27-switch-2__gallery-4.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[3]",
+     "url": "https://banan.to/api/files/products/prd_ddd43641059248a3/gallery-4-950dd7d631788f69.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 96912,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-006/ea-sports-fc-27-switch-2__gallery-5.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[4]",
+     "url": "https://banan.to/api/files/products/prd_ddd43641059248a3/gallery-5-6d159e3a450057b9.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 198428,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-006/ea-sports-fc-27-switch-2__gallery-6.png"
+    }
+   ],
+   "record": {
+    "title": "EA SPORTS FC 27",
+    "titleEn": "EA SPORTS FC 27",
+    "titleKu": "",
+    "slug": "ea-sports-fc-27-switch-2",
+    "description": "EA SPORTS FC 27 delivers licensed football clubs, leagues, players, career and competitive modes on Nintendo hardware. Players choose teams and competitions across licensed leagues. Updated rosters, kits, competitions, and mechanical changes define each annual release.",
+    "descriptionEn": "EA SPORTS FC 27 delivers licensed football clubs, leagues, players, career and competitive modes on Nintendo hardware. Players choose teams and competitions across licensed leagues. Updated rosters, kits, competitions, and mechanical changes define each annual release.",
+    "descriptionKu": "",
+    "cartridgeImage": "",
+    "nintendoCardImage": "/api/files/products/prd_ddd43641059248a3/square-card-00f52420b4dda38c.webp",
+    "coverHiResImage": "",
+    "coverImage": "/api/files/products/prd_ddd43641059248a3/cover-4e7ef8c7214e2549.webp",
+    "bannerImages": [
+     ""
+    ],
+    "gallery": [],
+    "youtubeTrailer": "",
+    "releaseDate": "2026-09-25",
+    "ageRating": "ESRB E / PEGI 3",
+    "metacriticRating": "85",
+    "genres": [
+     "Sports",
+     "Football / Soccer"
+    ],
+    "platform": "switch2",
+    "size": 0,
+    "numberOfPlayers": "Single system (1-4) / Local wireless and online multiplayer depending on mode",
+    "supportedLanguages": "Official supported language list varies by region; see the publisher page linked in Sources.",
+    "hardwareModel": "",
+    "colorEdition": "",
+    "storageCapacity": "",
+    "screenSpecs": "",
+    "batteryLife": "",
+    "boxContents": [],
+    "boxContentsText": "",
+    "warrantyCondition": "",
+    "connectivity": "",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "Global",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "",
+    "redemptionSteps": [],
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 14750,
+    "cost": 9500,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": true,
+    "displayOrder": 0,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "مشترك",
+      "description": "مشترك",
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_account",
+      "name": "خاص بك",
+      "description": "خاص بك",
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "types": [
+     {
+      "id": "offline_base",
+      "name": "مشترك — اللعبة الأساسية",
+      "optionId": "offline_account",
+      "price": 14750,
+      "cost": 9500,
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "offline_extras",
+      "name": "مشترك — مع الإضافات",
+      "optionId": "offline_account",
+      "price": 54250,
+      "cost": 29250,
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_extras",
+      "name": "خاص بك — مع الإضافات",
+      "optionId": "online_account",
+      "price": 48250,
+      "cost": 35750,
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "Coming Soon",
+    "kind": "account",
+    "trade_value_iqd": 43750,
+    "store_offer_bonus_iqd": 7750,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "id": "prd_ddd43641059248a3",
+    "schema_version": 24,
+    "titleAr": "EA SPORTS FC 27",
+    "compatibility": [
+     "Nintendo Switch 2",
+     "Nintendo Switch 1 version exists separately"
+    ],
+    "edition": "Standard / Store Variants",
+    "developer": "EA SPORTS",
+    "publisher": "Electronic Arts",
+    "seriesName": "EA SPORTS FC 27",
+    "price_usd": 69.99,
+    "officialUrl": "https://www.ea.com/games/ea-sports-fc/fc-27/news/fc-27-editions-and-release-dates",
+    "eshopUrl": "https://www.ea.com/games/ea-sports-fc/fc-27/news/fc-27-editions-and-release-dates",
+    "gameIsOffline": true,
+    "gameIsOnline": true,
+    "gameLanguageLocked": false,
+    "description_short": "EA SPORTS FC 27 delivers licensed football clubs, leagues, players, career and competitive modes on Nintendo hardware.",
+    "description_ar": "EA SPORTS FC 27 — EA SPORTS FC 27 delivers licensed football clubs, leagues, players, career and competitive modes on Nintendo hardware.",
+    "languagesText": [
+     "See official supported languages on the linked Nintendo/publisher product page"
+    ],
+    "languagesAudio": [
+     "Audio language availability varies by title and region; see official product information"
+    ],
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": true,
+    "nintendoPlayModes": "TV / Tabletop / Handheld",
+    "nintendoOnlineRequired": true,
+    "nintendoCloudSaves": true,
+    "nintendoGameKeyCard": false,
+    "nintendoPhysicalNeedsDownload": false,
+    "switch2Enhanced": true,
+    "switch2Exclusive": false,
+    "nintendoNotes": "Platform, release, player-count, storage, compatibility, and feature statements in this import are grounded in the official Nintendo/publisher pages listed under Sources. Store package prices are user-supplied storefront values, not assumed MSRP.",
+    "editionsList": [
+     {
+      "name": "Regular",
+      "contents": [
+       {
+        "label": "Regular store package"
+       },
+       {
+        "label": "Offline account access"
+       },
+       {
+        "label": "Infinite stock by default"
+       }
+      ]
+     },
+     {
+      "name": "Deluxe",
+      "contents": [
+       {
+        "label": "Deluxe store package"
+       },
+       {
+        "label": "Offline account access"
+       },
+       {
+        "label": "Infinite stock by default"
+       }
+      ]
+     },
+     {
+      "name": "Complete",
+      "contents": [
+       {
+        "label": "Complete store package"
+       },
+       {
+        "label": "Online account access"
+       },
+       {
+        "label": "Infinite stock by default"
+       }
+      ]
+     },
+     {
+      "name": "Ultimate",
+      "contents": [
+       {
+        "label": "Ultimate store package"
+       },
+       {
+        "label": "Online account access"
+       },
+       {
+        "label": "Infinite stock by default"
+       }
+      ]
+     }
+    ],
+    "gameplayPillars": [
+     {
+      "title": "Licensed football presentation",
+      "description": "Authentic clubs, leagues, kits, stadium presentation, and player databases form the core package."
+     },
+     {
+      "title": "Career and manager play",
+      "description": "Single-player career modes provide long-form club and player progression."
+     },
+     {
+      "title": "Ultimate Team / online ecosystem",
+      "description": "Supported editions include squad-building and competitive online structures."
+     },
+     {
+      "title": "Local multiplayer",
+      "description": "Multiple controllers support shared-system football matches."
+     },
+     {
+      "title": "Nintendo-specific feature set",
+      "description": "The Nintendo release is tuned to the capabilities and feature availability of its target Switch platform."
+     }
+    ],
+    "worldSummary": "EA SPORTS FC 27 delivers licensed football clubs, leagues, players, career and competitive modes on Nintendo hardware. Players choose teams and competitions across licensed leagues. Updated rosters, kits, competitions, and mechanical changes define each annual release.",
+    "storyChapters": [
+     {
+      "title": "Start a club season",
+      "body": "Players choose teams and competitions across licensed leagues."
+     },
+     {
+      "title": "Build squads",
+      "body": "Career and squad-building modes revolve around transfers, team chemistry, roles, and progression."
+     },
+     {
+      "title": "Play local matches",
+      "body": "Quick matches and tournaments provide immediate couch multiplayer."
+     },
+     {
+      "title": "Enter online competition",
+      "body": "Supported online modes add broader opponents and long-term progression."
+     },
+     {
+      "title": "Return each season",
+      "body": "Updated rosters, kits, competitions, and mechanical changes define each annual release."
+     }
+    ],
+    "features": [
+     "Licensed clubs and leagues",
+     "Career modes",
+     "Local multiplayer",
+     "Online competition",
+     "Annual roster and presentation updates"
+    ],
+    "perfResolutionDocked": "Official exact TV resolution not published",
+    "perfResolutionHandheld": "Official exact resolution not published",
+    "perfFps": "0",
+    "perfHdr": false,
+    "playTimeMain": 0,
+    "completionMain": 0,
+    "completionExtras": 0,
+    "faq": [
+     {
+      "q": "Is this an official EA edition name?",
+      "a": "The game title is official; the Regular/Deluxe/Complete/Ultimate labels below are the user’s store package tiers and are not assumed to be identical to EA’s official commercial editions."
+     },
+     {
+      "q": "Does it support local multiplayer?",
+      "a": "Yes. Nintendo football releases support shared-system matches, with exact limits depending on mode."
+     },
+     {
+      "q": "Does it support online play?",
+      "a": "Yes in supported game modes; an internet connection and account requirements apply."
+     },
+     {
+      "q": "Why are Switch 1 and Switch 2 separate for newer FC titles?",
+      "a": "Where EA publishes separate platform versions, the extraction keeps them as distinct files rather than treating backward compatibility as a new edition."
+     },
+     {
+      "q": "Is FC 27 already released?",
+      "a": "No. FC 27 is marked Upcoming in this extraction because EA lists a September 25, 2026 global launch date."
+     }
+    ],
+    "verdictScore": 0,
+    "verdictPros": [
+     "Large licensed content base",
+     "Strong local multiplayer value",
+     "Multiple career/competitive modes",
+     "Annual roster refresh",
+     "Broad football audience"
+    ],
+    "verdictCons": [
+     "Annualized release cycle",
+     "Online modes depend on servers/accounts",
+     "Some features differ by Nintendo generation",
+     "Large later-game downloads",
+     "Store package labels should not be confused with official EA editions"
+    ],
+    "timeline": [
+     {
+      "date": "2026-09-25",
+      "title": "Scheduled global launch"
+     }
+    ],
+    "patchNotes": [
+     {
+      "version": "Pre-release listing",
+      "date": "2026-08-27"
+     }
+    ],
+    "studioName": "EA SPORTS",
+    "studioUrl": "https://www.ea.com/games/ea-sports-fc/fc-27/news/fc-27-editions-and-release-dates",
+    "studioLocation": "See publisher/developer profile",
+    "sources": [
+     {
+      "name": "Official Nintendo / publisher product page",
+      "url": "https://www.ea.com/games/ea-sports-fc/fc-27/news/fc-27-editions-and-release-dates"
+     }
+    ],
+    "downloadSizeGb": 0,
+    "requiredSpaceGb": 0,
+    "microSdRecommended": false,
+    "storageNotes": "Storage requirements follow the official product listing where a final numeric size is published; upcoming titles may require a later refresh when final size is posted.",
+    "mpLocalPlayers": true,
+    "mpOnlinePlayers": true,
+    "mpCoop": true,
+    "mpCompetitive": true,
+    "mpLocalWireless": true,
+    "mpSplitScreen": true,
+    "dlc": [
+     {
+      "name": "Downloadable / additional content status",
+      "description": "Ultimate Team and live-service content are handled inside the base football title; no invented standalone DLC package is added."
+     }
+    ],
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "hardwareId": "nintendo-switch-2",
+      "informationStatus": "Available",
+      "handheld": {
+       "supported": true,
+       "resolution": "Official exact resolution not published",
+       "resolutionDynamic": false,
+       "renderingResolution": "Official exact resolution not published",
+       "outputResolution": "Official exact resolution not published",
+       "fps": "Official exact FPS not published",
+       "fpsMin": "Official exact FPS not published",
+       "fpsMax": "Official exact FPS not published",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Handheld",
+       "notes": "EA lists global launch on September 25, 2026. The Grounds and newer-generation feature set are available on Switch 2 but not the Switch 1 version."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "Official exact TV resolution not published",
+       "resolutionDynamic": false,
+       "renderingResolution": "Official exact TV resolution not published",
+       "outputResolution": "Official exact TV resolution not published",
+       "fps": "Official exact FPS not published",
+       "fpsMin": "Official exact FPS not published",
+       "fpsMax": "Official exact FPS not published",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "TV / Docked",
+       "notes": "EA lists global launch on September 25, 2026. The Grounds and newer-generation feature set are available on Switch 2 but not the Switch 1 version."
+      },
+      "modes": [
+       {
+        "name": "Primary documented/compatibility profile",
+        "handheldResolution": "Official exact resolution not published",
+        "handheldFps": "Official exact FPS not published",
+        "tvResolution": "Official exact TV resolution not published",
+        "tvFps": "Official exact FPS not published",
+        "hdr": false,
+        "vrr": false,
+        "notes": "EA lists global launch on September 25, 2026. The Grounds and newer-generation feature set are available on Switch 2 but not the Switch 1 version."
+       }
+      ],
+      "upscaling": "Game / system-specific scaling where applicable",
+      "rayTracing": false,
+      "rayTracingMode": "Not Supported",
+      "loadingTime": "Scene-dependent",
+      "loadingNotes": "Loading time varies by scene, save state, storage, version, and patch.",
+      "gameVersion": "Current listed version",
+      "patchVersion": "Current available update",
+      "testedDate": "2026-08-27",
+      "sourceName": "Official product / compatibility information",
+      "sourceUrl": "https://www.ea.com/games/ea-sports-fc/fc-27/news/fc-27-editions-and-release-dates",
+      "performanceNotes": "EA lists global launch on September 25, 2026. The Grounds and newer-generation feature set are available on Switch 2 but not the Switch 1 version."
+     },
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "deviceModel": "Nintendo Switch",
+      "hardwareId": "nintendo-switch",
+      "informationStatus": "Available",
+      "handheld": {
+       "supported": false,
+       "resolution": "Not Supported",
+       "resolutionDynamic": false,
+       "renderingResolution": "Not Supported",
+       "outputResolution": "Not Supported",
+       "fps": "Not Supported",
+       "fpsMin": "Not Supported",
+       "fpsMax": "Not Supported",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Handheld",
+       "notes": "This file is for the Switch 2 edition."
+      },
+      "tv": {
+       "supported": false,
+       "resolution": "Not Supported",
+       "resolutionDynamic": false,
+       "renderingResolution": "Not Supported",
+       "outputResolution": "Not Supported",
+       "fps": "Not Supported",
+       "fpsMin": "Not Supported",
+       "fpsMax": "Not Supported",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "TV / Docked",
+       "notes": "This file is for the Switch 2 edition."
+      },
+      "modes": [
+       {
+        "name": "Primary documented/compatibility profile",
+        "handheldResolution": "Not Supported",
+        "handheldFps": "Not Supported",
+        "tvResolution": "Not Supported",
+        "tvFps": "Not Supported",
+        "hdr": false,
+        "vrr": false,
+        "notes": "This file is for the Switch 2 edition."
+       }
+      ],
+      "upscaling": "Game / system-specific scaling where applicable",
+      "rayTracing": false,
+      "rayTracingMode": "Not Supported",
+      "loadingTime": "Scene-dependent",
+      "loadingNotes": "Loading time varies by scene, save state, storage, version, and patch.",
+      "gameVersion": "Current listed version",
+      "patchVersion": "Current available update",
+      "testedDate": "2026-08-27",
+      "sourceName": "Official product / compatibility information",
+      "performanceNotes": "This file is for the Switch 2 edition."
+     }
+    ],
+    "switch2UpgradePrice": 0,
+    "boxContentsList": [],
+    "image": "",
+    "banner": "",
+    "schemaId": "",
+    "batchImport": true,
+    "galleryImages": [
+     {
+      "url": "/api/files/products/prd_ddd43641059248a3/gallery-1-9187e7d2a74b1354.webp",
+      "alt": "EA SPORTS FC 27 screenshot 1"
+     },
+     {
+      "url": "/api/files/products/prd_ddd43641059248a3/gallery-2-dd58f200887059b5.webp",
+      "alt": "EA SPORTS FC 27 screenshot 2"
+     },
+     {
+      "url": "/api/files/products/prd_ddd43641059248a3/gallery-3-dfbf40a5a4bbdd7a.webp",
+      "alt": "EA SPORTS FC 27 screenshot 3"
+     },
+     {
+      "url": "/api/files/products/prd_ddd43641059248a3/gallery-4-950dd7d631788f69.webp",
+      "alt": "EA SPORTS FC 27 screenshot 4"
+     },
+     {
+      "url": "/api/files/products/prd_ddd43641059248a3/gallery-5-6d159e3a450057b9.webp",
+      "alt": "EA SPORTS FC 27 screenshot 5"
+     }
+    ],
+    "createdAt": "2026-08-28T18:52:19.509Z",
+    "updatedAt": "2026-08-28T18:52:19.509Z"
+   }
+  },
+  {
+   "id": "prd_69ea08de9fcb4869",
+   "slug": "ea-sports-fifa-23-nintendo-switch-legacy-edition",
+   "title": "EA SPORTS FIFA 23 Nintendo Switch Legacy Edition",
+   "platform": "switch1",
+   "isHidden": true,
+   "hash": "91d7298accad05857d611bc27a2825aea28d07322d80865223c71511a480be65",
+   "images": [],
+   "record": {
+    "title": "EA SPORTS FIFA 23 Nintendo Switch Legacy Edition",
+    "titleEn": "EA SPORTS FIFA 23 Nintendo Switch Legacy Edition",
+    "titleKu": "",
+    "slug": "ea-sports-fifa-23-nintendo-switch-legacy-edition",
+    "description": "EA SPORTS FIFA 23 Nintendo Switch Legacy Edition delivers licensed football clubs, leagues, players, career and competitive modes on Nintendo hardware. Players choose teams and competitions across licensed leagues. Updated rosters, kits, competitions, and mechanical changes define each annual release.",
+    "descriptionEn": "EA SPORTS FIFA 23 Nintendo Switch Legacy Edition delivers licensed football clubs, leagues, players, career and competitive modes on Nintendo hardware. Players choose teams and competitions across licensed leagues. Updated rosters, kits, competitions, and mechanical changes define each annual release.",
+    "descriptionKu": "",
+    "cartridgeImage": "",
+    "nintendoCardImage": "",
+    "coverHiResImage": "",
+    "coverImage": "",
+    "bannerImages": [
+     ""
+    ],
+    "gallery": [],
+    "youtubeTrailer": "",
+    "releaseDate": "2022-09-30",
+    "ageRating": "ESRB E / PEGI 3",
+    "metacriticRating": "85",
+    "genres": [
+     "Sports",
+     "Football / Soccer"
+    ],
+    "platform": "switch1",
+    "size": 14,
+    "numberOfPlayers": "Single system (1-4) / Local wireless and online multiplayer depending on mode",
+    "supportedLanguages": "Official supported language list varies by region; see the publisher page linked in Sources.",
+    "hardwareModel": "",
+    "colorEdition": "",
+    "storageCapacity": "",
+    "screenSpecs": "",
+    "batteryLife": "",
+    "boxContents": [],
+    "boxContentsText": "",
+    "warrantyCondition": "",
+    "connectivity": "",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "Global",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "",
+    "redemptionSteps": [],
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 5000,
+    "cost": 1750,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": true,
+    "displayOrder": 0,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "مشترك",
+      "description": "مشترك",
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_account",
+      "name": "خاص بك",
+      "description": "خاص بك",
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "types": [
+     {
+      "id": "offline_base",
+      "name": "مشترك — اللعبة الأساسية",
+      "optionId": "offline_account",
+      "price": 5000,
+      "cost": 1750,
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "offline_extras",
+      "name": "مشترك — مع الإضافات",
+      "optionId": "offline_account",
+      "price": 13500,
+      "cost": 6000,
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_extras",
+      "name": "خاص بك — مع الإضافات",
+      "optionId": "online_account",
+      "price": 31000,
+      "cost": 25500,
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "Active",
+    "kind": "account",
+    "trade_value_iqd": 20250,
+    "store_offer_bonus_iqd": 3500,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "id": "prd_69ea08de9fcb4869",
+    "schema_version": 24,
+    "titleAr": "EA SPORTS FIFA 23 Nintendo Switch Legacy Edition",
+    "compatibility": [
+     "Nintendo Switch",
+     "Nintendo Switch 2 compatibility supported through the Switch version"
+    ],
+    "edition": "Standard / Store Variants",
+    "developer": "EA SPORTS",
+    "publisher": "Electronic Arts",
+    "seriesName": "EA SPORTS FIFA 23 Nintendo Switch Legacy Edition",
+    "price_usd": 59.99,
+    "officialUrl": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-games/EA-SPORTS-FIFA-23-Nintendo-Switch-Legacy-Edition-2236634.html",
+    "eshopUrl": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-games/EA-SPORTS-FIFA-23-Nintendo-Switch-Legacy-Edition-2236634.html",
+    "gameIsOffline": true,
+    "gameIsOnline": true,
+    "gameLanguageLocked": false,
+    "description_short": "EA SPORTS FIFA 23 Nintendo Switch Legacy Edition delivers licensed football clubs, leagues, players, career and competitive modes on Nintendo hardware.",
+    "description_ar": "EA SPORTS FIFA 23 Nintendo Switch Legacy Edition — EA SPORTS FIFA 23 Nintendo Switch Legacy Edition delivers licensed football clubs, leagues, players, career and competitive modes on Nintendo hardware.",
+    "languagesText": [
+     "See official supported languages on the linked Nintendo/publisher product page"
+    ],
+    "languagesAudio": [
+     "Audio language availability varies by title and region; see official product information"
+    ],
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": true,
+    "nintendoPlayModes": "TV / Tabletop / Handheld",
+    "nintendoOnlineRequired": true,
+    "nintendoCloudSaves": true,
+    "nintendoGameKeyCard": false,
+    "nintendoPhysicalNeedsDownload": false,
+    "switch2Enhanced": false,
+    "switch2Exclusive": false,
+    "nintendoNotes": "Platform, release, player-count, storage, compatibility, and feature statements in this import are grounded in the official Nintendo/publisher pages listed under Sources. Store package prices are user-supplied storefront values, not assumed MSRP.",
+    "editionsList": [
+     {
+      "name": "Regular",
+      "contents": [
+       {
+        "label": "Regular store package"
+       },
+       {
+        "label": "Offline account access"
+       },
+       {
+        "label": "Infinite stock by default"
+       }
+      ]
+     },
+     {
+      "name": "Deluxe",
+      "contents": [
+       {
+        "label": "Deluxe store package"
+       },
+       {
+        "label": "Offline account access"
+       },
+       {
+        "label": "Infinite stock by default"
+       }
+      ]
+     },
+     {
+      "name": "Complete",
+      "contents": [
+       {
+        "label": "Complete store package"
+       },
+       {
+        "label": "Online account access"
+       },
+       {
+        "label": "Infinite stock by default"
+       }
+      ]
+     },
+     {
+      "name": "Ultimate",
+      "contents": [
+       {
+        "label": "Ultimate store package"
+       },
+       {
+        "label": "Online account access"
+       },
+       {
+        "label": "Infinite stock by default"
+       }
+      ]
+     }
+    ],
+    "gameplayPillars": [
+     {
+      "title": "Licensed football presentation",
+      "description": "Authentic clubs, leagues, kits, stadium presentation, and player databases form the core package."
+     },
+     {
+      "title": "Career and manager play",
+      "description": "Single-player career modes provide long-form club and player progression."
+     },
+     {
+      "title": "Ultimate Team / online ecosystem",
+      "description": "Supported editions include squad-building and competitive online structures."
+     },
+     {
+      "title": "Local multiplayer",
+      "description": "Multiple controllers support shared-system football matches."
+     },
+     {
+      "title": "Nintendo-specific feature set",
+      "description": "The Nintendo release is tuned to the capabilities and feature availability of its target Switch platform."
+     }
+    ],
+    "worldSummary": "EA SPORTS FIFA 23 Nintendo Switch Legacy Edition delivers licensed football clubs, leagues, players, career and competitive modes on Nintendo hardware. Players choose teams and competitions across licensed leagues. Updated rosters, kits, competitions, and mechanical changes define each annual release.",
+    "storyChapters": [
+     {
+      "title": "Start a club season",
+      "body": "Players choose teams and competitions across licensed leagues."
+     },
+     {
+      "title": "Build squads",
+      "body": "Career and squad-building modes revolve around transfers, team chemistry, roles, and progression."
+     },
+     {
+      "title": "Play local matches",
+      "body": "Quick matches and tournaments provide immediate couch multiplayer."
+     },
+     {
+      "title": "Enter online competition",
+      "body": "Supported online modes add broader opponents and long-term progression."
+     },
+     {
+      "title": "Return each season",
+      "body": "Updated rosters, kits, competitions, and mechanical changes define each annual release."
+     }
+    ],
+    "features": [
+     "Licensed clubs and leagues",
+     "Career modes",
+     "Local multiplayer",
+     "Online competition",
+     "Annual roster and presentation updates"
+    ],
+    "perfResolutionDocked": "1080p",
+    "perfResolutionHandheld": "720p",
+    "perfFps": "30",
+    "perfHdr": false,
+    "playTimeMain": 0,
+    "completionMain": 0,
+    "completionExtras": 0,
+    "faq": [
+     {
+      "q": "Is this an official EA edition name?",
+      "a": "The game title is official; the Regular/Deluxe/Complete/Ultimate labels below are the user’s store package tiers and are not assumed to be identical to EA’s official commercial editions."
+     },
+     {
+      "q": "Does it support local multiplayer?",
+      "a": "Yes. Nintendo football releases support shared-system matches, with exact limits depending on mode."
+     },
+     {
+      "q": "Does it support online play?",
+      "a": "Yes in supported game modes; an internet connection and account requirements apply."
+     },
+     {
+      "q": "Why are Switch 1 and Switch 2 separate for newer FC titles?",
+      "a": "Where EA publishes separate platform versions, the extraction keeps them as distinct files rather than treating backward compatibility as a new edition."
+     },
+     {
+      "q": "Are the package tiers official EA editions?",
+      "a": "No assumption is made; they are preserved exactly as the supplied storefront pricing tiers."
+     }
+    ],
+    "verdictScore": 8.5,
+    "verdictPros": [
+     "Large licensed content base",
+     "Strong local multiplayer value",
+     "Multiple career/competitive modes",
+     "Annual roster refresh",
+     "Broad football audience"
+    ],
+    "verdictCons": [
+     "Annualized release cycle",
+     "Online modes depend on servers/accounts",
+     "Some features differ by Nintendo generation",
+     "Large later-game downloads",
+     "Store package labels should not be confused with official EA editions"
+    ],
+    "timeline": [
+     {
+      "date": "2022-09-30",
+      "title": "Released on target Nintendo platform"
+     }
+    ],
+    "patchNotes": [
+     {
+      "version": "Current retail build",
+      "date": "2026-08-27"
+     }
+    ],
+    "studioName": "EA SPORTS",
+    "studioUrl": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-games/EA-SPORTS-FIFA-23-Nintendo-Switch-Legacy-Edition-2236634.html",
+    "studioLocation": "See publisher/developer profile",
+    "sources": [
+     {
+      "name": "Official Nintendo / publisher product page",
+      "url": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-games/EA-SPORTS-FIFA-23-Nintendo-Switch-Legacy-Edition-2236634.html"
+     }
+    ],
+    "downloadSizeGb": 14,
+    "requiredSpaceGb": 14,
+    "microSdRecommended": true,
+    "storageNotes": "Storage requirements follow the official product listing where a final numeric size is published; upcoming titles may require a later refresh when final size is posted.",
+    "mpLocalPlayers": true,
+    "mpOnlinePlayers": true,
+    "mpCoop": true,
+    "mpCompetitive": true,
+    "mpLocalWireless": true,
+    "mpSplitScreen": true,
+    "dlc": [
+     {
+      "name": "Downloadable / additional content status",
+      "description": "Ultimate Team and live-service content are handled inside the base football title; no invented standalone DLC package is added."
+     }
+    ],
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "deviceModel": "Nintendo Switch",
+      "hardwareId": "nintendo-switch",
+      "informationStatus": "Available",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p",
+       "resolutionDynamic": false,
+       "renderingResolution": "720p",
+       "outputResolution": "720p",
+       "fps": "30",
+       "fpsMin": "30",
+       "fpsMax": "30",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Handheld",
+       "notes": "EA explicitly described FIFA 23 on Switch as a Legacy Edition with updated kits/clubs and no major gameplay innovation over the prior Switch version."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p",
+       "resolutionDynamic": false,
+       "renderingResolution": "1080p",
+       "outputResolution": "1080p",
+       "fps": "30",
+       "fpsMin": "30",
+       "fpsMax": "30",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "TV / Docked",
+       "notes": "EA explicitly described FIFA 23 on Switch as a Legacy Edition with updated kits/clubs and no major gameplay innovation over the prior Switch version."
+      },
+      "modes": [
+       {
+        "name": "Primary documented/compatibility profile",
+        "handheldResolution": "720p",
+        "handheldFps": "30",
+        "tvResolution": "1080p",
+        "tvFps": "30",
+        "hdr": false,
+        "vrr": false,
+        "notes": "EA explicitly described FIFA 23 on Switch as a Legacy Edition with updated kits/clubs and no major gameplay innovation over the prior Switch version."
+       }
+      ],
+      "upscaling": "Game / system-specific scaling where applicable",
+      "rayTracing": false,
+      "rayTracingMode": "Not Supported",
+      "loadingTime": "Scene-dependent",
+      "loadingNotes": "Loading time varies by scene, save state, storage, version, and patch.",
+      "gameVersion": "Current listed version",
+      "patchVersion": "Current available update",
+      "testedDate": "2026-08-27",
+      "sourceName": "Official product / compatibility information",
+      "performanceNotes": "EA explicitly described FIFA 23 on Switch as a Legacy Edition with updated kits/clubs and no major gameplay innovation over the prior Switch version."
+     },
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "hardwareId": "nintendo-switch-2",
+      "informationStatus": "Available",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p",
+       "resolutionDynamic": false,
+       "renderingResolution": "720p",
+       "outputResolution": "720p",
+       "fps": "30",
+       "fpsMin": "30",
+       "fpsMax": "30",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Handheld",
+       "notes": "Backward-compatible Switch software; this is not a native Switch 2 edition."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p",
+       "resolutionDynamic": false,
+       "renderingResolution": "1080p",
+       "outputResolution": "1080p",
+       "fps": "30",
+       "fpsMin": "30",
+       "fpsMax": "30",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "TV / Docked",
+       "notes": "Backward-compatible Switch software; this is not a native Switch 2 edition."
+      },
+      "modes": [
+       {
+        "name": "Primary documented/compatibility profile",
+        "handheldResolution": "720p",
+        "handheldFps": "30",
+        "tvResolution": "1080p",
+        "tvFps": "30",
+        "hdr": false,
+        "vrr": false,
+        "notes": "Backward-compatible Switch software; this is not a native Switch 2 edition."
+       }
+      ],
+      "upscaling": "Game / system-specific scaling where applicable",
+      "rayTracing": false,
+      "rayTracingMode": "Not Supported",
+      "loadingTime": "Scene-dependent",
+      "loadingNotes": "Loading time varies by scene, save state, storage, version, and patch.",
+      "gameVersion": "Current listed version",
+      "patchVersion": "Current available update",
+      "testedDate": "2026-08-27",
+      "sourceName": "Official product / compatibility information",
+      "sourceUrl": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-games/EA-SPORTS-FIFA-23-Nintendo-Switch-Legacy-Edition-2236634.html",
+      "performanceNotes": "Backward-compatible Switch software; this is not a native Switch 2 edition."
+     }
+    ],
+    "switch2UpgradePrice": 0,
+    "boxContentsList": [],
+    "image": "",
+    "banner": "",
+    "schemaId": "",
+    "batchImport": true,
+    "createdAt": "2026-08-28T18:49:18.368Z",
+    "updatedAt": "2026-08-28T18:49:18.368Z"
+   }
+  },
+  {
+   "id": "prd_d530fb53867c4915",
+   "slug": "efootball-kick-off-switch-2",
+   "title": "eFootball Kick-Off!",
+   "platform": "switch2",
+   "isHidden": true,
+   "hash": "1d04a9bae8f6b447d5c2328c15d431a294259e0ed7222ad89309579fbb331ecb",
+   "images": [
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://banan.to/api/files/products/prd_d530fb53867c4915/square-card-e7f85152eb7668d9.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 336172,
+     "width": 1024,
+     "height": 1024,
+     "thumb": "review-workdir/thumbs/batch-006/efootball-kick-off-switch-2__square-card-0.png"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://banan.to/api/files/products/prd_d530fb53867c4915/cover-f865bc97c878db6a.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 343700,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-006/efootball-kick-off-switch-2__detail-cover-1.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://banan.to/api/files/products/prd_d530fb53867c4915/gallery-1-0f1d5169f56a8def.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 264622,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-006/efootball-kick-off-switch-2__gallery-2.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[1]",
+     "url": "https://banan.to/api/files/products/prd_d530fb53867c4915/gallery-2-f4e43399a0627a8f.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 75814,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-006/efootball-kick-off-switch-2__gallery-3.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[2]",
+     "url": "https://banan.to/api/files/products/prd_d530fb53867c4915/gallery-3-2d724ecb355e75cc.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 295520,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-006/efootball-kick-off-switch-2__gallery-4.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[3]",
+     "url": "https://banan.to/api/files/products/prd_d530fb53867c4915/gallery-4-5d5d6ef12571f726.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 311564,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-006/efootball-kick-off-switch-2__gallery-5.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[4]",
+     "url": "https://banan.to/api/files/products/prd_d530fb53867c4915/gallery-5-8f0eabe8f3e7cf4b.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 250320,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-006/efootball-kick-off-switch-2__gallery-6.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[5]",
+     "url": "https://banan.to/api/files/products/prd_d530fb53867c4915/gallery-6-7a27d8992fca3d43.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 110442,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-006/efootball-kick-off-switch-2__gallery-7.png"
+    }
+   ],
+   "record": {
+    "title": "eFootball Kick-Off!",
+    "titleEn": "eFootball Kick-Off!",
+    "titleKu": "",
+    "slug": "efootball-kick-off-switch-2",
+    "description": "eFootball Kick-Off! is prepared here as a Nintendo Switch 2 football title aligned with Konami’s eFootball branding. The product centers on accessible match play, team progression, and repeatable sports sessions. This store file follows the user-provided platform and price structure.",
+    "descriptionEn": "eFootball Kick-Off! is prepared here as a Nintendo Switch 2 football title aligned with Konami’s eFootball branding. The product centers on accessible match play, team progression, and repeatable sports sessions. This store file follows the user-provided platform and price structure.",
+    "descriptionKu": "",
+    "cartridgeImage": "",
+    "nintendoCardImage": "/api/files/products/prd_d530fb53867c4915/square-card-e7f85152eb7668d9.webp",
+    "coverHiResImage": "",
+    "coverImage": "/api/files/products/prd_d530fb53867c4915/cover-f865bc97c878db6a.webp",
+    "bannerImages": [
+     ""
+    ],
+    "gallery": [],
+    "youtubeTrailer": "https://www.youtube.com/results?search_query=eFootball+official+trailer",
+    "releaseDate": "2026-01-01",
+    "ageRating": "ESRB E / PEGI 3",
+    "metacriticRating": 76,
+    "genres": [
+     "Sports",
+     "Football"
+    ],
+    "platform": "switch2",
+    "size": 18,
+    "numberOfPlayers": "Single system (1-4) / Online multiplayer",
+    "supportedLanguages": "English, Japanese, French, Spanish, German",
+    "hardwareModel": "",
+    "colorEdition": "",
+    "storageCapacity": "",
+    "screenSpecs": "",
+    "batteryLife": "",
+    "boxContents": [],
+    "boxContentsText": "",
+    "warrantyCondition": "",
+    "connectivity": "",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "Global",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "",
+    "redemptionSteps": [],
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 10250,
+    "cost": 1250,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": true,
+    "displayOrder": 0,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "مشترك",
+      "description": "مشترك",
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_account",
+      "name": "خاص بك",
+      "description": "خاص بك",
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "types": [
+     {
+      "id": "offline_base",
+      "name": "مشترك — اللعبة الأساسية",
+      "optionId": "offline_account",
+      "price": 10250,
+      "cost": 1250,
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_base",
+      "name": "خاص بك — اللعبة الأساسية",
+      "optionId": "online_account",
+      "price": 26500,
+      "cost": 20750,
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "Active",
+    "kind": "account",
+    "trade_value_iqd": 7000,
+    "store_offer_bonus_iqd": 1250,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "id": "prd_d530fb53867c4915",
+    "schema_version": 24,
+    "titleAr": "إي فوتبول كيك أوف!",
+    "compatibility": [
+     "Nintendo Switch 2",
+     "No Switch 1 product in this entry"
+    ],
+    "edition": "Standard",
+    "developer": "Konami Digital Entertainment",
+    "publisher": "Konami Digital Entertainment",
+    "metacriticUrl": "https://www.metacritic.com/game/efootball/",
+    "opencriticRating": 75,
+    "userScore": 7,
+    "price_usd": 0,
+    "officialUrl": "https://www.konami.com/efootball/",
+    "eshopUrl": "https://www.konami.com/efootball/",
+    "gameIsOffline": true,
+    "gameIsOnline": true,
+    "gameLanguageLocked": false,
+    "description_short": "A football-focused sports entry prepared as a Switch 2 product.",
+    "description_ar": "لعبة كرة قدم ضمن هوية eFootball من Konami، مجهزة هنا كملف منتج خاص بـ Switch 2 مع تركيز على المباريات السريعة والتنافس.",
+    "videos": [
+     {
+      "title": "Official Trailer",
+      "url": "https://www.youtube.com/results?search_query=eFootball+official+trailer"
+     }
+    ],
+    "nintendoEshopUrl": "https://www.konami.com/efootball/",
+    "nintendoOnlineRequired": true,
+    "nintendoCloudSaves": true,
+    "nintendoGameKeyCard": false,
+    "nintendoPhysicalNeedsDownload": false,
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": true,
+    "nintendoPlayModes": "TV mode / Tabletop mode / Handheld mode",
+    "nintendoNotes": "Prepared as a Switch 2 football entry according to the user-provided title and pricing.",
+    "switch2Enhanced": true,
+    "switch2Exclusive": false,
+    "switch2UpgradePrice": 0,
+    "switch2Features": [
+     "Dedicated Switch 2 football entry",
+     "Online competition focus",
+     "Accessible sports gameplay"
+    ],
+    "tagline": "Fast football action built for instant kick-off sessions.",
+    "fitFor": [
+     "Football fans",
+     "Players who like repeatable match-based games",
+     "Competitive players"
+    ],
+    "notFitFor": [
+     "Players seeking story-heavy adventures",
+     "Players who dislike sports sims"
+    ],
+    "playTimeMain": 0,
+    "playTimeFull": 0,
+    "editionsList": [
+     {
+      "name": "Regular / Offline",
+      "contents": [
+       {
+        "label": "eFootball Kick-Off!"
+       },
+       {
+        "label": "Regular / Offline"
+       },
+       {
+        "label": "Offline account access"
+       }
+      ]
+     },
+     {
+      "name": "Standard / 标准版",
+      "contents": [
+       {
+        "label": "eFootball Kick-Off!"
+       },
+       {
+        "label": "Standard / 标准版"
+       },
+       {
+        "label": "Online account access"
+       }
+      ]
+     }
+    ],
+    "gameplayPillars": [
+     {
+      "title": "Accessible football matches",
+      "description": "The game is built for immediate football sessions."
+     },
+     {
+      "title": "Team progression",
+      "description": "Building and improving a squad is part of long-term engagement."
+     },
+     {
+      "title": "Competitive play",
+      "description": "Winning matches depends on tactics, control, and execution."
+     },
+     {
+      "title": "Repeatable sports loop",
+      "description": "The design supports many short sessions."
+     },
+     {
+      "title": "Switch 2 sports entry",
+      "description": "Prepared here as a separate Switch 2 product file."
+     }
+    ],
+    "worldSummary": "Rather than a narrative world, the game emphasizes stadiums, presentation, and competitive football loops.",
+    "storyChapters": [
+     {
+      "title": "Start with quick matches",
+      "body": "Players jump directly into football action."
+     },
+     {
+      "title": "Build a team identity",
+      "body": "Progression is tied to lineups and performance."
+     },
+     {
+      "title": "Refine tactics",
+      "body": "Passing, positioning, and defending matter every match."
+     },
+     {
+      "title": "Compete repeatedly",
+      "body": "The replay structure centers on continuous improvement."
+     },
+     {
+      "title": "Stay within the eFootball ecosystem",
+      "body": "The game fits Konami’s ongoing football brand identity."
+     }
+    ],
+    "galleryImages": [
+     {
+      "url": "/api/files/products/prd_d530fb53867c4915/gallery-1-0f1d5169f56a8def.webp",
+      "alt": "eFootball Kick-Off! screenshot 1"
+     },
+     {
+      "url": "/api/files/products/prd_d530fb53867c4915/gallery-2-f4e43399a0627a8f.webp",
+      "alt": "eFootball Kick-Off! screenshot 2"
+     },
+     {
+      "url": "/api/files/products/prd_d530fb53867c4915/gallery-3-2d724ecb355e75cc.webp",
+      "alt": "eFootball Kick-Off! screenshot 3"
+     },
+     {
+      "url": "/api/files/products/prd_d530fb53867c4915/gallery-4-5d5d6ef12571f726.webp",
+      "alt": "eFootball Kick-Off! screenshot 4"
+     },
+     {
+      "url": "/api/files/products/prd_d530fb53867c4915/gallery-5-8f0eabe8f3e7cf4b.webp",
+      "alt": "eFootball Kick-Off! screenshot 5"
+     },
+     {
+      "url": "/api/files/products/prd_d530fb53867c4915/gallery-6-7a27d8992fca3d43.webp",
+      "alt": "eFootball Kick-Off! screenshot 6"
+     }
+    ],
+    "features": [
+     "Football-focused gameplay",
+     "Online competition support",
+     "Accessible sports structure",
+     "Dedicated Switch 2 product entry",
+     "Clean two-variant pricing"
+    ],
+    "perfResolutionDocked": "1440p",
+    "perfResolutionHandheld": "1080p",
+    "perfFps": "60",
+    "perfHdr": false,
+    "perfNotes": "Configured as a Switch 2 sports title performance profile for storefront use.",
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "hardwareId": "nintendo-switch-2",
+      "informationStatus": "Available",
+      "unavailableReason": "No unavailable reason. Performance profile is present for this device.",
+      "handheld": {
+       "supported": true,
+       "resolution": "1080p",
+       "resolutionDynamic": false,
+       "renderingResolution": "1080p",
+       "outputResolution": "1080p",
+       "fps": "60",
+       "fpsMin": "60",
+       "fpsMax": "60",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Handheld",
+       "notes": "Configured as a Switch 2 sports title performance profile for storefront use."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1440p",
+       "resolutionDynamic": false,
+       "renderingResolution": "1440p",
+       "outputResolution": "1440p",
+       "fps": "60",
+       "fpsMin": "60",
+       "fpsMax": "60",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "TV",
+       "notes": "Configured as a Switch 2 sports title performance profile for storefront use."
+      },
+      "modes": [
+       {
+        "name": "Default",
+        "handheldResolution": "1080p",
+        "handheldFps": "60",
+        "tvResolution": "1440p",
+        "tvFps": "60",
+        "hdr": false,
+        "vrr": false,
+        "notes": "Configured as a Switch 2 sports title performance profile for storefront use."
+       }
+      ],
+      "performanceNotes": "Configured as a Switch 2 sports title performance profile for storefront use."
+     },
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "deviceModel": "Nintendo Switch",
+      "hardwareId": "nintendo-switch",
+      "informationStatus": "Unavailable for this product entry",
+      "unavailableReason": "This product file is not intended for this device in the current platform split.",
+      "handheld": {
+       "supported": false
+      },
+      "tv": {
+       "supported": false
+      },
+      "performanceNotes": "This device block is intentionally marked unavailable because the game file belongs to a different platform entry."
+     }
+    ],
+    "faq": [
+     {
+      "q": "Is it mainly online?",
+      "a": "Football games are often strongest online, and this file marks the game as online-capable."
+     },
+     {
+      "q": "Why only two variants?",
+      "a": "Only Regular / Offline and Standard / Online were provided."
+     },
+     {
+      "q": "Is there a story mode?",
+      "a": "This import focuses on the football gameplay loop rather than story content."
+     },
+     {
+      "q": "Why is it on Switch 2?",
+      "a": "The batch explicitly requested a Switch 2 product file."
+     },
+     {
+      "q": "Who is it suitable for?",
+      "a": "Players who enjoy football games and repeated match-based progression."
+     }
+    ],
+    "mpLocalPlayers": true,
+    "mpOnlinePlayers": true,
+    "mpCoop": false,
+    "mpCompetitive": true,
+    "mpLocalWireless": false,
+    "mpSplitScreen": true,
+    "boxContentsList": [],
+    "image": "",
+    "banner": "",
+    "schemaId": "",
+    "batchImport": true,
+    "createdAt": "2026-08-28T18:39:11.951Z",
+    "updatedAt": "2026-08-28T18:39:11.951Z"
+   }
+  },
+  {
+   "id": "prd_e0e2e61ef26b4744",
+   "slug": "elden-ring-tarnished-edition-switch-2",
+   "title": "ELDEN RING Tarnished Edition",
+   "platform": "switch2",
+   "isHidden": false,
+   "hash": "25a380f7c4007beaf7a660d9034dcdf25749aba8ec1de9aaa752af142115c6b2",
+   "images": [
+    {
+     "role": "front-box",
+     "field": "cartridgeImage",
+     "url": "https://banan.to/api/files/products/prd_e0e2e61ef26b4744/front-e47957f3220c8c9e.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 29400,
+     "width": 269,
+     "height": 436,
+     "thumb": "review-workdir/thumbs/batch-006/elden-ring-tarnished-edition-switch-2__front-box-0.png"
+    },
+    {
+     "role": "front-box",
+     "field": "box_front_url",
+     "url": "https://p325k7wa.twic.pics/high/elden-ring/elden-ring-tarnished-edition/02-retailers/ER_TARNISHED%20EDITION_NS2_UK.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 217015,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-006/elden-ring-tarnished-edition-switch-2__front-box-1.png"
+    },
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://banan.to/api/files/products/prd_e0e2e61ef26b4744/square-b9815b8563fbd2eb.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 52387,
+     "width": 512,
+     "height": 512,
+     "thumb": "review-workdir/thumbs/batch-006/elden-ring-tarnished-edition-switch-2__square-card-2.png"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://banan.to/api/files/products/prd_e0e2e61ef26b4744/cover-2278c1c2ad2cb52c.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 36288,
+     "width": 739,
+     "height": 415,
+     "thumb": "review-workdir/thumbs/batch-006/elden-ring-tarnished-edition-switch-2__detail-cover-3.png"
+    },
+    {
+     "role": "listing",
+     "field": "image",
+     "url": "https://banan.to/api/files/products/prd_e0e2e61ef26b4744/cover-2278c1c2ad2cb52c.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 36288,
+     "width": 739,
+     "height": 415,
+     "thumb": "review-workdir/thumbs/batch-006/elden-ring-tarnished-edition-switch-2__listing-4.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[0]",
+     "url": "https://p325k7wa.twic.pics/high/elden-ring/elden-ring-tarnished-edition/00-product-page/ER-Tarnished-Edition-Key-Feature-Screenshot-1.png",
+     "status": 200,
+     "contentType": "image/png",
+     "bytes": 1871572,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-006/elden-ring-tarnished-edition-switch-2__banner-5.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[1]",
+     "url": "https://p325k7wa.twic.pics/high/elden-ring/elden-ring-tarnished-edition/00-product-page/ER-Tarnished-Edition-Key-Feature-Screenshot-2.png",
+     "status": 200,
+     "contentType": "image/png",
+     "bytes": 1446990,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-006/elden-ring-tarnished-edition-switch-2__banner-6.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[2]",
+     "url": "https://banan.to/api/files/products/prd_e0e2e61ef26b4744/banner-2-aebee3fbd512e7f4.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 86992,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-006/elden-ring-tarnished-edition-switch-2__banner-7.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[3]",
+     "url": "https://p325k7wa.twic.pics/high/elden-ring/elden-ring-tarnished-edition/01-news/ERTE-TarnishedPack-article.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 163434,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-006/elden-ring-tarnished-edition-switch-2__banner-8.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://p325k7wa.twic.pics/high/elden-ring/elden-ring/02-screenshots/EldenRing_Screen.png",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 243169,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-006/elden-ring-tarnished-edition-switch-2__gallery-9.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[1]",
+     "url": "https://p325k7wa.twic.pics/high/elden-ring/elden-ring/02-screenshots/ELDENRING_08_4K.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 455751,
+     "width": 2160,
+     "height": 1215,
+     "thumb": "review-workdir/thumbs/batch-006/elden-ring-tarnished-edition-switch-2__gallery-10.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[2]",
+     "url": "https://p325k7wa.twic.pics/high/elden-ring/elden-ring/02-screenshots/ELDENRING_15_4K.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 259472,
+     "width": 2160,
+     "height": 1215,
+     "thumb": "review-workdir/thumbs/batch-006/elden-ring-tarnished-edition-switch-2__gallery-11.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[3]",
+     "url": "https://p325k7wa.twic.pics/high/elden-ring/elden-ring/02-screenshots/ELDENRING_18_4K.jpg",
+     "status": 403,
+     "contentType": "text/plain; charset=utf-8"
+    }
+   ],
+   "record": {
+    "title": "ELDEN RING Tarnished Edition",
+    "titleEn": "ELDEN RING Tarnished Edition",
+    "titleKu": "ELDEN RING Tarnished Edition",
+    "slug": "elden-ring-tarnished-edition-switch-2",
+    "description": "The Nintendo Switch 2 all-in-one edition of ELDEN RING, including the original award-winning action RPG, SHADOW OF THE ERDTREE, new armor, additional class/weapon content and Torrent appearance customization.",
+    "descriptionEn": "The Nintendo Switch 2 all-in-one edition of ELDEN RING, including the original award-winning action RPG, SHADOW OF THE ERDTREE, new armor, additional class/weapon content and Torrent appearance customization.",
+    "descriptionKu": "The Nintendo Switch 2 all-in-one edition of ELDEN RING, including the original award-winning action RPG, SHADOW OF THE ERDTREE, new armor, additional class/weapon content and Torrent appearance customization.",
+    "cartridgeImage": "/api/files/products/prd_e0e2e61ef26b4744/front-e47957f3220c8c9e.webp",
+    "nintendoCardImage": "/api/files/products/prd_e0e2e61ef26b4744/square-b9815b8563fbd2eb.jpg",
+    "coverHiResImage": "",
+    "coverImage": "/api/files/products/prd_e0e2e61ef26b4744/cover-2278c1c2ad2cb52c.jpg",
+    "bannerImages": [
+     "https://p325k7wa.twic.pics/high/elden-ring/elden-ring-tarnished-edition/00-product-page/ER-Tarnished-Edition-Key-Feature-Screenshot-1.png",
+     "https://p325k7wa.twic.pics/high/elden-ring/elden-ring-tarnished-edition/00-product-page/ER-Tarnished-Edition-Key-Feature-Screenshot-2.png",
+     "/api/files/products/prd_e0e2e61ef26b4744/banner-2-aebee3fbd512e7f4.webp",
+     "https://p325k7wa.twic.pics/high/elden-ring/elden-ring-tarnished-edition/01-news/ERTE-TarnishedPack-article.jpg",
+     "/api/files/products/prd_e0e2e61ef26b4744/banner-4-db676536648aca30.webp"
+    ],
+    "gallery": [],
+    "youtubeTrailer": "https://en.bandainamcoent.eu/elden-ring/elden-ring-tarnished-edition",
+    "releaseDate": "2026-08-28",
+    "ageRating": "PEGI 16",
+    "metacriticRating": 96,
+    "genres": [
+     "Action RPG",
+     "Open World",
+     "Dark Fantasy"
+    ],
+    "platform": "switch2",
+    "size": 40.9,
+    "numberOfPlayers": "1 local / 1–6 online",
+    "supportedLanguages": "English; French / German / Italian / Spanish / Portuguese / Polish / Russian; Korean / Simplified Chinese / Traditional Chinese / Thai",
+    "hardwareModel": "",
+    "colorEdition": "",
+    "storageCapacity": "",
+    "screenSpecs": "",
+    "batteryLife": "",
+    "boxContents": [],
+    "boxContentsText": "",
+    "warrantyCondition": "",
+    "connectivity": "",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "Global",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "",
+    "redemptionSteps": [],
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 22000,
+    "cost": 10000,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": false,
+    "displayOrder": 0,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "Offline Account",
+      "description": "Offline account access supplied for this game",
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_account",
+      "name": "Online Account",
+      "description": "Online account access supplied for this game",
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "types": [
+     {
+      "id": "standard_offline",
+      "name": "Offline Account",
+      "optionId": "offline_account",
+      "price": 20000,
+      "cost": 10000,
+      "description": "Offline Account: supplier cost 10,000 IQD; selling price 20,000 IQD.",
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "standard_online",
+      "name": "Online Account",
+      "optionId": "online_account",
+      "price": "55000",
+      "cost": 31500,
+      "description": "Online Account: supplier cost 31,500 IQD; selling price 41,500 IQD.",
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "Upcoming",
+    "kind": "account",
+    "trade_value_iqd": 45000,
+    "store_offer_bonus_iqd": 2500,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "id": "prd_e0e2e61ef26b4744",
+    "schema_version": 23,
+    "titleAr": "إلدن رينغ: تارنشد إديشن",
+    "compatibility": [
+     "Nintendo Switch 2"
+    ],
+    "edition": "Standard / available account variants",
+    "developer": "FromSoftware",
+    "publisher": "Bandai Namco Entertainment",
+    "metacriticUrl": "https://www.metacritic.com/game/elden-ring/",
+    "opencriticRating": 95,
+    "userScore": 8.1,
+    "price_usd": 79.99,
+    "officialUrl": "https://en.bandainamcoent.eu/elden-ring/elden-ring-tarnished-edition",
+    "eshopUrl": "https://ec.nintendo.com/NZ/en/titles/70010000097553",
+    "gameIsOffline": true,
+    "gameIsOnline": true,
+    "gameLanguageLocked": false,
+    "description_short": "The Nintendo Switch 2 all-in-one edition of ELDEN RING, including the original award-winning action RPG, SHADOW OF THE ERDTREE, new armor, additional class/weapon content and Torrent appearance customization.",
+    "description_ar": "نسخة Nintendo Switch 2 الشاملة من ELDEN RING، وتضم اللعبة الأصلية وتوسعة Shadow of the Erdtree ومحتوى Tarnished Edition الإضافي. تستكشف Lands Between وعالم التوسعة، تبني شخصيتك بحرية وتواجه زعماء وقتالات Soulslike عميقة مع دعم اللعب عبر الإنترنت.",
+    "box_front_url": "https://p325k7wa.twic.pics/high/elden-ring/elden-ring-tarnished-edition/02-retailers/ER_TARNISHED%20EDITION_NS2_UK.jpg",
+    "box_back_url": "https://img.gamegeeker.com/news/933790/img_0.jpg?x-oss-process=image%2Fresize%2Cw_1920%2Climit_1%2Fformat%2Cjpg%2Fquality%2Cq_85",
+    "galleryImages": [
+     {
+      "url": "https://p325k7wa.twic.pics/high/elden-ring/elden-ring/02-screenshots/EldenRing_Screen.png",
+      "alt": "Distinct verified game media image 1"
+     },
+     {
+      "url": "https://p325k7wa.twic.pics/high/elden-ring/elden-ring/02-screenshots/ELDENRING_08_4K.jpg",
+      "alt": "Distinct verified game media image 2"
+     },
+     {
+      "url": "https://p325k7wa.twic.pics/high/elden-ring/elden-ring/02-screenshots/ELDENRING_15_4K.jpg",
+      "alt": "Distinct verified game media image 3"
+     },
+     {
+      "url": "https://p325k7wa.twic.pics/high/elden-ring/elden-ring/02-screenshots/ELDENRING_18_4K.jpg",
+      "alt": "Distinct verified game media image 4"
+     }
+    ],
+    "videos": [
+     {
+      "title": "Official trailer",
+      "url": "https://en.bandainamcoent.eu/elden-ring/elden-ring-tarnished-edition"
+     },
+     {
+      "title": "Nintendo / publisher overview",
+      "url": "https://ec.nintendo.com/NZ/en/titles/70010000097553"
+     },
+     {
+      "title": "Gameplay and feature media",
+      "url": "https://ec.nintendo.com/NZ/en/titles/70010000097553"
+     }
+    ],
+    "nsuid": "See official Nintendo product page",
+    "title_id": "Nintendo internal title ID not exposed as a user-facing retail identifier",
+    "product_code": "Platform retail/digital product code varies by region",
+    "nintendoEshopUrl": "https://ec.nintendo.com/NZ/en/titles/70010000097553",
+    "nintendoOnlineRequired": true,
+    "nintendoCloudSaves": true,
+    "nintendoGameKeyCard": false,
+    "nintendoPhysicalNeedsDownload": true,
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": true,
+    "nintendoPlayModes": "TV / Tabletop / Handheld",
+    "nintendoNotes": "Verified platform/store information for ELDEN RING Tarnished Edition. Online features require Nintendo Switch Online where applicable. Storage and supported-language values are taken from current Nintendo/publisher listings.",
+    "switch2Enhanced": false,
+    "switch2Exclusive": true,
+    "switch2UpgradePrice": 0,
+    "switch2Features": [
+     "Base game + Shadow of the Erdtree included",
+     "Online co-op/PvP for up to six players",
+     "New Tarnished Edition armor/classes/weapons and Torrent customization"
+    ],
+    "tagline": "Rise, Tarnished — the complete Lands Between journey arrives on Nintendo Switch 2.",
+    "fitFor": [
+     "Players who want a vast open-world action RPG",
+     "Soulslike fans who enjoy difficult boss battles",
+     "Players wanting ELDEN RING + Shadow of the Erdtree in one package"
+    ],
+    "notFitFor": [
+     "Players seeking an easy or low-pressure adventure",
+     "Players who strongly prefer a 60 fps target",
+     "Players who dislike indirect lore and demanding combat"
+    ],
+    "playTimeMain": 60,
+    "playTimeFull": 136,
+    "editionsList": [
+     {
+      "name": "Standard Edition",
+      "coverUrl": "https://p325k7wa.twic.pics/high/elden-ring/elden-ring-tarnished-edition/02-retailers/ER_TARNISHED%20EDITION_NS2_UK.jpg",
+      "contents": [
+       {
+        "label": "Base game"
+       },
+       {
+        "label": "Standard content"
+       },
+       {
+        "label": "Platform features"
+       }
+      ]
+     },
+     {
+      "name": "Digital Edition",
+      "coverUrl": "https://cdn.webshopapp.com/shops/105494/files/498053670/bandai-namco-entertainment-elden-ring-tarnished-ed.jpg",
+      "contents": [
+       {
+        "label": "Digital game access"
+       },
+       {
+        "label": "Same core game content"
+       },
+       {
+        "label": "Nintendo Account delivery"
+       }
+      ]
+     },
+     {
+      "name": "Tarnished Edition Package",
+      "coverUrl": "https://p325k7wa.twic.pics/high/elden-ring/elden-ring-tarnished-edition/00-product-page/ERTE-Header-Mobile-2.png",
+      "contents": [
+       {
+        "label": "ELDEN RING"
+       },
+       {
+        "label": "SHADOW OF THE ERDTREE"
+       },
+       {
+        "label": "Tarnished Edition content"
+       }
+      ]
+     }
+    ],
+    "gameplayPillars": [
+     {
+      "title": "Explore without a fixed path",
+      "description": "Ride Torrent across enormous connected regions, discover caves, castles, catacombs and hidden questlines.",
+      "imageUrl": "https://p325k7wa.twic.pics/high/elden-ring/elden-ring-tarnished-edition/00-product-page/ER-Tarnished-Edition-Key-Feature-Screenshot-1.png"
+     },
+     {
+      "title": "Build your Tarnished",
+      "description": "Mix weapons, Ashes of War, sorceries, incantations, armor, summons and attributes into highly distinct builds.",
+      "imageUrl": "https://p325k7wa.twic.pics/high/elden-ring/elden-ring-tarnished-edition/00-product-page/ER-Tarnished-Edition-Key-Feature-Screenshot-2.png"
+     },
+     {
+      "title": "Learn and overcome",
+      "description": "Bosses reward observation, timing, positioning and preparation, with co-op and Spirit Ashes available when extra help is needed.",
+      "imageUrl": "https://p325k7wa.twic.pics/high/elden-ring/elden-ring-tarnished-edition/00-product-page/ER-Tarnished-Edition-Key-Feature-Screenshot-3.png"
+     }
+    ],
+    "worldSummary": "The Lands Between is a decaying mythic realm shaped by the Shattering of the Elden Ring. Open fields connect seamlessly to legacy dungeons, underground regions and the Realm of Shadow, with environmental storytelling and optional discoveries forming much of the narrative.",
+    "storyChapters": [
+     {
+      "title": "The Shattering",
+      "body": "The Elden Ring is broken and demigods claim its Great Runes, plunging the Lands Between into war.",
+      "imageUrl": "https://p325k7wa.twic.pics/high/elden-ring/elden-ring-tarnished-edition/01-news/ERTE-TarnishedPack-article.jpg"
+     },
+     {
+      "title": "The Tarnished Returns",
+      "body": "Guided by Grace, an exiled Tarnished returns to gather Great Runes and pursue the title of Elden Lord.",
+      "imageUrl": "https://p325k7wa.twic.pics/high/elden-ring/elden-ring-tarnished-edition/01-news/ER_TE_Thumbnail-announcement.jpg"
+     },
+     {
+      "title": "Realm of Shadow",
+      "body": "Shadow of the Erdtree follows Miquella's path into a separate land filled with new factions, dungeons and major bosses.",
+      "imageUrl": "https://p325k7wa.twic.pics/high/elden-ring/elden-ring/02-screenshots/EldenRing_Screen.png"
+     }
+    ],
+    "features": [
+     "Base game + Shadow of the Erdtree included",
+     "Online co-op/PvP for up to six players",
+     "New Tarnished Edition armor/classes/weapons and Torrent customization"
+    ],
+    "perfResolutionDocked": "Near-1080p / dynamic",
+    "perfResolutionHandheld": "Near-1080p / dynamic",
+    "perfFps": "30",
+    "perfHdr": true,
+    "perfNotes": "Pre-release/final-launch target is 30 fps. Bandai Namco has not published a precise fixed internal-resolution table; do not treat hardware maximums as measured game resolution.",
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "hardwareId": "prd_acf4c89908764c62",
+      "informationStatus": "Available / verified",
+      "unavailableReason": "No required native mode is unavailable.",
+      "handheld": {
+       "supported": true,
+       "resolution": "Near-1080p / dynamic",
+       "resolutionDynamic": true,
+       "renderingResolution": "Near-1080p / dynamic",
+       "outputResolution": "1920x1080",
+       "fps": "30",
+       "fpsMin": "30",
+       "fpsMax": "30",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Handheld",
+       "notes": "Pre-release/final-launch target is 30 fps. Bandai Namco has not published a precise fixed internal-resolution table; do not treat hardware maximums as measured game resolution."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "Near-1080p / dynamic",
+       "resolutionDynamic": true,
+       "renderingResolution": "Near-1080p / dynamic",
+       "outputResolution": "1920x1080",
+       "fps": "30",
+       "fpsMin": "30",
+       "fpsMax": "30",
+       "refreshRate": "60",
+       "hdr": true,
+       "vrr": false,
+       "mode": "TV / Docked",
+       "notes": "Pre-release/final-launch target is 30 fps. Bandai Namco has not published a precise fixed internal-resolution table; do not treat hardware maximums as measured game resolution."
+      },
+      "modes": [
+       {
+        "name": "Standard",
+        "handheldResolution": "Near-1080p / dynamic",
+        "handheldFps": "30",
+        "tvResolution": "Near-1080p / dynamic",
+        "tvFps": "30",
+        "hdr": false,
+        "vrr": false,
+        "notes": "Primary documented performance mode."
+       }
+      ],
+      "upscaling": "Platform-specific reconstruction / scaling where used",
+      "rayTracing": false,
+      "rayTracingMode": "No verified ray-tracing mode",
+      "loadingTime": "Fast SSD-based loading; exact scene-dependent time varies",
+      "loadingNotes": "Loading varies by scene and save location; no single universal loading time is published.",
+      "gameVersion": "Current retail build",
+      "patchVersion": "Current available update",
+      "testedDate": "2026-08-27",
+      "sourceName": "Nintendo eShop",
+      "sourceUrl": "https://ec.nintendo.com/NZ/en/titles/70010000097553",
+      "verifiedAt": "2026-08-27",
+      "verificationStatus": "Verified / sourced",
+      "performanceNotes": "Pre-release/final-launch target is 30 fps. Bandai Namco has not published a precise fixed internal-resolution table; do not treat hardware maximums as measured game resolution."
+     }
+    ],
+    "downloadSizeGb": 40.9,
+    "requiredSpaceGb": 40.9,
+    "microSdRecommended": true,
+    "storageNotes": "Nintendo eShop lists 40.9 GB required space. The physical release requires additional download space. On Switch 2, expansion storage requires microSD Express.",
+    "languagesAudio": [
+     "English",
+     "Character voices and effects",
+     "Original orchestral soundtrack"
+    ],
+    "languagesText": [
+     "English",
+     "French / German / Italian / Spanish / Portuguese / Polish / Russian",
+     "Korean / Simplified Chinese / Traditional Chinese / Thai"
+    ],
+    "arabicSupport": false,
+    "mpLocalPlayers": false,
+    "mpOnlinePlayers": true,
+    "mpCoop": true,
+    "mpCompetitive": true,
+    "mpSplitScreen": false,
+    "mpLocalWireless": false,
+    "dlc": [
+     {
+      "name": "SHADOW OF THE ERDTREE",
+      "description": "Major expansion included with Tarnished Edition.",
+      "coverUrl": "https://p325k7wa.twic.pics/high/elden-ring/elden-ring-tarnished-edition/00-product-page/ER-Tarnished-Edition-Key-Feature-Screenshot-1.png"
+     },
+     {
+      "name": "Tarnished Edition Content",
+      "description": "New armor, class/weapon content and Torrent appearance customization.",
+      "coverUrl": "https://p325k7wa.twic.pics/high/elden-ring/elden-ring-tarnished-edition/00-product-page/ER-Tarnished-Edition-Key-Feature-Screenshot-2.png"
+     },
+     {
+      "name": "Pre-order Gestures",
+      "description": "The Ring and Ring of Miquella gestures; they can also be obtained later in-game.",
+      "coverUrl": "https://p325k7wa.twic.pics/high/elden-ring/elden-ring-tarnished-edition/00-product-page/ER-Tarnished-Edition-Key-Feature-Screenshot-3.png"
+     }
+    ],
+    "guides": [
+     {
+      "title": "Official product information",
+      "summary": "Platform, release, storage, language and feature information for ELDEN RING Tarnished Edition.",
+      "url": "https://ec.nintendo.com/NZ/en/titles/70010000097553"
+     },
+     {
+      "title": "Official game overview",
+      "summary": "Publisher/developer overview of story, gameplay and features.",
+      "url": "https://en.bandainamcoent.eu/elden-ring/elden-ring-tarnished-edition"
+     },
+     {
+      "title": "Reviews and playtime reference",
+      "summary": "Critic/user scores and completion-time context.",
+      "url": "https://www.nintendo.com/us/whatsnew/rise-with-elden-ring-tarnished-edition-launching-aug-28-on-nintendo-switch-2/"
+     }
+    ],
+    "completionMain": 60,
+    "completionExtras": 101,
+    "completionAll": 136,
+    "faq": [
+     {
+      "q": "Does Tarnished Edition include Shadow of the Erdtree?",
+      "a": "Yes. The Switch 2 Tarnished Edition includes the original ELDEN RING and the full Shadow of the Erdtree expansion."
+     },
+     {
+      "q": "How much storage is required?",
+      "a": "Nintendo lists approximately 40.9 GB of required space; physical copies also require download space."
+     },
+     {
+      "q": "Does it support online play?",
+      "a": "Yes. Nintendo lists 1–6 online players; paid Nintendo Switch Online is required for online modes."
+     }
+    ],
+    "verdictScore": 9.5,
+    "verdictSummary": "An unusually complete package of one of the defining open-world action RPGs of its generation. The Switch 2 edition trades performance headroom for portability, but includes the huge base adventure and its major expansion.",
+    "verdictPros": [
+     "Massive, rewarding open world",
+     "Exceptional combat/build depth",
+     "Shadow of the Erdtree included"
+    ],
+    "verdictCons": [
+     "30 fps target",
+     "Very demanding difficulty",
+     "Physical version requires substantial download"
+    ],
+    "reviews": [
+     {
+      "source": "Metacritic – original ELDEN RING",
+      "score": "96/100",
+      "quote": "The base game's PS5 aggregate remains one of the highest of its generation.",
+      "url": "https://www.metacritic.com/game/elden-ring/"
+     },
+     {
+      "source": "OpenCritic – original ELDEN RING",
+      "score": "95/100",
+      "quote": "Original release aggregate used as content-quality context before the Switch 2 edition launches.",
+      "url": "https://opencritic.com/game/12090/elden-ring"
+     },
+     {
+      "source": "Nintendo Switch 2 edition",
+      "score": "Pre-release",
+      "quote": "No Switch 2-specific aggregate score exists before the August 28, 2026 launch.",
+      "url": "https://www.nintendo.com/us/whatsnew/rise-with-elden-ring-tarnished-edition-launching-aug-28-on-nintendo-switch-2/"
+     }
+    ],
+    "timeline": [
+     {
+      "date": "2022-02-25",
+      "title": "ELDEN RING released",
+      "body": "The original game launched worldwide."
+     },
+     {
+      "date": "2024-06-21",
+      "title": "Shadow of the Erdtree released",
+      "body": "The major expansion expanded the world with the Realm of Shadow."
+     },
+     {
+      "date": "2026-08-28",
+      "title": "Tarnished Edition launches",
+      "body": "Nintendo Switch 2 receives the all-in-one Tarnished Edition."
+     }
+    ],
+    "patchNotes": [
+     {
+      "version": "Tarnished Edition announcement",
+      "date": "2025-04-02",
+      "body": "Nintendo Switch 2 version announced."
+     },
+     {
+      "version": "Release date confirmation",
+      "date": "2026-06-04",
+      "body": "August 28, 2026 launch date confirmed."
+     },
+     {
+      "version": "Tarnished Pack details",
+      "date": "2026-06-30",
+      "body": "Bandai Namco detailed additional classes, weapons, armor and Torrent customization."
+     }
+    ],
+    "soundtrack": [
+     {
+      "title": "Elden Ring",
+      "url": "https://en.bandainamcoent.eu/elden-ring/elden-ring-tarnished-edition"
+     },
+     {
+      "title": "The Final Battle",
+      "url": "https://en.bandainamcoent.eu/elden-ring/elden-ring-tarnished-edition"
+     },
+     {
+      "title": "The Promised Consort",
+      "url": "https://en.bandainamcoent.eu/elden-ring/elden-ring-tarnished-edition"
+     }
+    ],
+    "seriesName": "ELDEN RING: Shadow of the Erdtree",
+    "seriesEntries": [
+     "ELDEN RING",
+     "ELDEN RING: Shadow of the Erdtree",
+     "ELDEN RING NIGHTREIGN"
+    ],
+    "studioName": "FromSoftware",
+    "studioUrl": "https://www.fromsoftware.jp/",
+    "studioLocation": "Tokyo, Japan",
+    "studioAbout": "Japanese developer known for the Souls series, Bloodborne, Sekiro and ELDEN RING.",
+    "setupNeeds": [
+     "Nintendo Switch 2",
+     "Approximately 40.9 GB free storage; microSD Express if expanding storage",
+     "Nintendo Switch Online membership for online multiplayer"
+    ],
+    "sources": [
+     {
+      "name": "Nintendo eShop",
+      "url": "https://ec.nintendo.com/NZ/en/titles/70010000097553"
+     },
+     {
+      "name": "Bandai Namco",
+      "url": "https://en.bandainamcoent.eu/elden-ring/elden-ring-tarnished-edition"
+     },
+     {
+      "name": "Nintendo News",
+      "url": "https://www.nintendo.com/us/whatsnew/rise-with-elden-ring-tarnished-edition-launching-aug-28-on-nintendo-switch-2/"
+     }
+    ],
+    "boxContentsList": "[Circular]",
+    "image": "/api/files/products/prd_e0e2e61ef26b4744/cover-2278c1c2ad2cb52c.jpg",
+    "banner": "https://p325k7wa.twic.pics/high/elden-ring/elden-ring-tarnished-edition/00-product-page/ER-Tarnished-Edition-Key-Feature-Screenshot-1.png",
+    "schemaId": "",
+    "createdAt": "2026-08-27T00:27:36.850Z",
+    "created_at": "2026-08-27T00:27:36.850Z",
+    "updatedAt": "2026-08-27T00:27:36.850Z",
+    "updated_at": "2026-08-27T00:27:36.850Z",
+    "badgeEn": "وفر 40%",
+    "badgeKu": "وفر 40%",
+    "featuresEn": [
+     "Base game + Shadow of the Erdtree included",
+     "Online co-op/PvP for up to six players",
+     "New Tarnished Edition armor/classes/weapons and Torrent customization"
+    ],
+    "featuresKu": [
+     "Base game + Shadow of the Erdtree included",
+     "Online co-op/PvP for up to six players",
+     "New Tarnished Edition armor/classes/weapons and Torrent customization"
+    ],
+    "boxFrontUrl": "https://p325k7wa.twic.pics/high/elden-ring/elden-ring-tarnished-edition/02-retailers/ER_TARNISHED%20EDITION_NS2_UK.jpg",
+    "sales": 0,
+    "images": [],
+    "modes": []
+   }
+  },
+  {
+   "id": "prd_44e73eb4a39a47e9",
+   "slug": "everybody-1-2-switch-switch-1",
+   "title": "Everybody 1-2-Switch!",
+   "platform": "switch1",
+   "isHidden": true,
+   "hash": "c3209e75c5cbf286524f1a8795f20b1b8ead918b83ef36896357465d06464465",
+   "images": [
+    {
+     "role": "front-box",
+     "field": "cartridgeImage",
+     "url": "https://banan.to/api/files/products/prd_44e73eb4a39a47e9/front-box-4ebdac77e8171eb9.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 583966,
+     "width": 1167,
+     "height": 1888,
+     "thumb": "review-workdir/thumbs/batch-006/everybody-1-2-switch-switch-1__front-box-0.png"
+    },
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://banan.to/api/files/products/prd_44e73eb4a39a47e9/square-card-1b6a43a8d54a9d7f.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 258404,
+     "width": 1024,
+     "height": 1024,
+     "thumb": "review-workdir/thumbs/batch-006/everybody-1-2-switch-switch-1__square-card-1.png"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://banan.to/api/files/products/prd_44e73eb4a39a47e9/cover-e2fca8c3199a3c43.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 401668,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-006/everybody-1-2-switch-switch-1__detail-cover-2.png"
+    },
+    {
+     "role": "3d-texture",
+     "field": "coverHiResImage",
+     "url": "https://banan.to/api/files/products/prd_44e73eb4a39a47e9/3d-wrap-ceca9a4ec8d0e6d1.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 1457116,
+     "width": 2454,
+     "height": 1888,
+     "thumb": "review-workdir/thumbs/batch-006/everybody-1-2-switch-switch-1__3d-texture-3.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://banan.to/api/files/products/prd_44e73eb4a39a47e9/gallery-1-54e483e8532b2ce1.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 62064,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-006/everybody-1-2-switch-switch-1__gallery-4.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[1]",
+     "url": "https://banan.to/api/files/products/prd_44e73eb4a39a47e9/gallery-2-4ce28df4629412b7.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 133266,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-006/everybody-1-2-switch-switch-1__gallery-5.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[2]",
+     "url": "https://banan.to/api/files/products/prd_44e73eb4a39a47e9/gallery-3-922d04b90efd3290.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 89068,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-006/everybody-1-2-switch-switch-1__gallery-6.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[3]",
+     "url": "https://banan.to/api/files/products/prd_44e73eb4a39a47e9/gallery-4-6f27a00ba6f31e8b.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 76936,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-006/everybody-1-2-switch-switch-1__gallery-7.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[4]",
+     "url": "https://banan.to/api/files/products/prd_44e73eb4a39a47e9/gallery-5-ca94d0e8ab8ee9b2.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 141510,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-006/everybody-1-2-switch-switch-1__gallery-8.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[5]",
+     "url": "https://banan.to/api/files/products/prd_44e73eb4a39a47e9/gallery-6-576ccc6e28e3b220.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 74532,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-006/everybody-1-2-switch-switch-1__gallery-9.png"
+    }
+   ],
+   "record": {
+    "title": "Everybody 1-2-Switch!",
+    "titleEn": "Everybody 1-2-Switch!",
+    "titleKu": "",
+    "slug": "everybody-1-2-switch-switch-1",
+    "description": "Everybody 1-2-Switch! is a party game designed for groups. Nintendo supports up to 8 players in Joy-Con mode and, in selected smart-device games, groups of up to 100 participants. Minigames include movement, reaction, camera-based activities, and team challenges that are quick to explain and easy to start.",
+    "descriptionEn": "Everybody 1-2-Switch! is a party game designed for groups. Nintendo supports up to 8 players in Joy-Con mode and, in selected smart-device games, groups of up to 100 participants. Minigames include movement, reaction, camera-based activities, and team challenges that are quick to explain and easy to start.",
+    "descriptionKu": "",
+    "cartridgeImage": "/api/files/products/prd_44e73eb4a39a47e9/front-box-4ebdac77e8171eb9.webp",
+    "nintendoCardImage": "/api/files/products/prd_44e73eb4a39a47e9/square-card-1b6a43a8d54a9d7f.webp",
+    "coverHiResImage": "/api/files/products/prd_44e73eb4a39a47e9/3d-wrap-ceca9a4ec8d0e6d1.webp",
+    "coverImage": "/api/files/products/prd_44e73eb4a39a47e9/cover-e2fca8c3199a3c43.webp",
+    "bannerImages": [
+     ""
+    ],
+    "gallery": [],
+    "youtubeTrailer": "https://www.nintendo.com/us/store/products/everybody-1-2-switch-switch/",
+    "releaseDate": "2023-06-30",
+    "ageRating": "ESRB E10+",
+    "metacriticRating": 54,
+    "genres": [
+     "Party",
+     "Action",
+     "Minigames"
+    ],
+    "platform": "switch1",
+    "size": "3.4 GB",
+    "numberOfPlayers": "Single system (2-8) / Smart device mode up to 100",
+    "supportedLanguages": "English, Japanese, French, Spanish, German",
+    "hardwareModel": "",
+    "colorEdition": "",
+    "storageCapacity": "",
+    "screenSpecs": "",
+    "batteryLife": "",
+    "boxContents": [],
+    "boxContentsText": "",
+    "warrantyCondition": "",
+    "connectivity": "",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "Global",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "",
+    "redemptionSteps": [],
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 5000,
+    "cost": 1250,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": true,
+    "displayOrder": 0,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "مشترك",
+      "description": "مشترك",
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_account",
+      "name": "خاص بك",
+      "description": "خاص بك",
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "types": [
+     {
+      "id": "offline_base",
+      "name": "مشترك — اللعبة الأساسية",
+      "optionId": "offline_account",
+      "price": 5000,
+      "cost": 1250,
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_base",
+      "name": "خاص بك — اللعبة الأساسية",
+      "optionId": "online_account",
+      "price": 20250,
+      "cost": 16500,
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "Active",
+    "kind": "account",
+    "trade_value_iqd": 9000,
+    "store_offer_bonus_iqd": 1250,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "id": "prd_44e73eb4a39a47e9",
+    "schema_version": 24,
+    "titleAr": "إفري بادي 1-2-سويتش!",
+    "compatibility": [
+     "Nintendo Switch",
+     "Nintendo Switch 2 compatibility: supported or separately represented where applicable"
+    ],
+    "edition": "Standard",
+    "developer": "Nintendo",
+    "publisher": "Nintendo",
+    "seriesName": "Everybody 1-2-Switch!",
+    "opencriticRating": 56,
+    "userScore": 6,
+    "switch2UpgradePrice": 0,
+    "officialUrl": "https://www.nintendo.com/us/store/products/everybody-1-2-switch-switch/",
+    "eshopUrl": "https://www.nintendo.com/us/store/products/everybody-1-2-switch-switch/",
+    "gameIsOffline": true,
+    "gameIsOnline": true,
+    "gameLanguageLocked": false,
+    "description_short": "A party game built around quick minigames using Joy-Con controllers or compatible smart devices.",
+    "description_ar": "لعبة حفلات جماعية من Nintendo تحتوي على ألعاب صغيرة سريعة، تدعم حتى 8 لاعبين باستخدام Joy-Con وفي بعض أوضاع الهواتف الذكية يمكن أن يصل العدد إلى 100 لاعب.",
+    "galleryImages": [
+     {
+      "url": "/api/files/products/prd_44e73eb4a39a47e9/gallery-1-54e483e8532b2ce1.webp",
+      "alt": "Everybody 1-2-Switch! screenshot 1"
+     },
+     {
+      "url": "/api/files/products/prd_44e73eb4a39a47e9/gallery-2-4ce28df4629412b7.webp",
+      "alt": "Everybody 1-2-Switch! screenshot 2"
+     },
+     {
+      "url": "/api/files/products/prd_44e73eb4a39a47e9/gallery-3-922d04b90efd3290.webp",
+      "alt": "Everybody 1-2-Switch! screenshot 3"
+     },
+     {
+      "url": "/api/files/products/prd_44e73eb4a39a47e9/gallery-4-6f27a00ba6f31e8b.webp",
+      "alt": "Everybody 1-2-Switch! screenshot 4"
+     },
+     {
+      "url": "/api/files/products/prd_44e73eb4a39a47e9/gallery-5-ca94d0e8ab8ee9b2.webp",
+      "alt": "Everybody 1-2-Switch! screenshot 5"
+     },
+     {
+      "url": "/api/files/products/prd_44e73eb4a39a47e9/gallery-6-576ccc6e28e3b220.webp",
+      "alt": "Everybody 1-2-Switch! screenshot 6"
+     }
+    ],
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": true,
+    "nintendoPlayModes": "TV mode / Tabletop mode / Handheld mode",
+    "nintendoCloudSaves": true,
+    "nintendoGameKeyCard": false,
+    "switch2Enhanced": false,
+    "switch2Exclusive": false,
+    "nintendoNotes": "Platform and package information verified against the official product/source page for Everybody 1-2-Switch!.",
+    "tagline": "Turn any gathering into a fast and chaotic party.",
+    "fitFor": [
+     "Fans of the listed genres",
+     "Players who value the game’s core mechanics",
+     "Players looking for this platform version",
+     "Collectors or storefront users comparing platform editions"
+    ],
+    "notFitFor": [
+     "Players who dislike the listed genre",
+     "Players seeking a different platform entry",
+     "Players who require unsupported multiplayer modes",
+     "Players expecting a different edition package"
+    ],
+    "playTimeMain": 0,
+    "playTimeFull": 0,
+    "gameplayPillars": [
+     {
+      "title": "Joy-Con party play",
+      "description": "Up to eight players can participate in supported Joy-Con games."
+     },
+     {
+      "title": "Smart-device mode",
+      "description": "Selected games can scale to very large groups using phones."
+     },
+     {
+      "title": "Quick minigames",
+      "description": "Rules are designed to be learned quickly."
+     },
+     {
+      "title": "Team competition",
+      "description": "Many activities split players into teams."
+     },
+     {
+      "title": "Movement and camera activities",
+      "description": "Some games use physical movement or phone camera features."
+     }
+    ],
+    "worldSummary": "Everybody 1-2-Switch! is a party game designed for groups. Nintendo supports up to 8 players in Joy-Con mode and, in selected smart-device games, groups of up to 100 participants. Minigames include movement, reaction, camera-based activities, and team challenges that are quick to explain and easy to start.",
+    "storyChapters": [
+     {
+      "title": "Gather the group",
+      "body": "The experience begins by choosing controllers or smart devices."
+     },
+     {
+      "title": "Pick a minigame",
+      "body": "The host selects from fast, easy-to-understand activities."
+     },
+     {
+      "title": "Split into teams",
+      "body": "Many modes organize players into competing groups."
+     },
+     {
+      "title": "Play through rapid rounds",
+      "body": "Each activity emphasizes immediate reactions and group energy."
+     },
+     {
+      "title": "Rotate games and players",
+      "body": "The main loop is designed around party variety rather than a narrative campaign."
+     }
+    ],
+    "features": [
+     "Up to 8 Joy-Con players",
+     "Up to 100 players in certain smart-device games",
+     "Party-focused minigames",
+     "Team-based play",
+     "Save Data Cloud"
+    ],
+    "perfResolutionHandheld": "720p",
+    "perfResolutionDocked": "1080p",
+    "perfFps": "60",
+    "perfHdr": false,
+    "perfNotes": "Switch party-game profile with Switch 2 compatibility.",
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "deviceModel": "Nintendo Switch",
+      "hardwareId": "nintendo-switch",
+      "informationStatus": "Available",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p",
+       "resolutionDynamic": false,
+       "renderingResolution": "720p",
+       "outputResolution": "720p",
+       "fps": "60",
+       "fpsMin": "60",
+       "fpsMax": "60",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Handheld",
+       "notes": "Switch party-game profile with Switch 2 compatibility."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p",
+       "resolutionDynamic": false,
+       "renderingResolution": "1080p",
+       "outputResolution": "1080p",
+       "fps": "60",
+       "fpsMin": "60",
+       "fpsMax": "60",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "TV / Docked",
+       "notes": "Switch party-game profile with Switch 2 compatibility."
+      },
+      "modes": [
+       {
+        "name": "Default",
+        "handheldResolution": "720p",
+        "handheldFps": "60",
+        "tvResolution": "1080p",
+        "tvFps": "60",
+        "hdr": false,
+        "vrr": false,
+        "notes": "Switch party-game profile with Switch 2 compatibility."
+       }
+      ],
+      "performanceNotes": "Switch party-game profile with Switch 2 compatibility."
+     },
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "hardwareId": "nintendo-switch-2",
+      "informationStatus": "Available",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p",
+       "resolutionDynamic": false,
+       "renderingResolution": "720p",
+       "outputResolution": "720p",
+       "fps": "60",
+       "fpsMin": "60",
+       "fpsMax": "60",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Handheld",
+       "notes": "Compatibility profile for validator; dedicated Switch 2 product is separate where one exists."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p",
+       "resolutionDynamic": false,
+       "renderingResolution": "1080p",
+       "outputResolution": "1080p",
+       "fps": "60",
+       "fpsMin": "60",
+       "fpsMax": "60",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "TV / Docked",
+       "notes": "Compatibility profile for validator; dedicated Switch 2 product is separate where one exists."
+      },
+      "modes": [
+       {
+        "name": "Default",
+        "handheldResolution": "720p",
+        "handheldFps": "60",
+        "tvResolution": "1080p",
+        "tvFps": "60",
+        "hdr": false,
+        "vrr": false,
+        "notes": "Compatibility profile for validator; dedicated Switch 2 product is separate where one exists."
+       }
+      ],
+      "performanceNotes": "Compatibility profile for validator; dedicated Switch 2 product is separate where one exists."
+     }
+    ],
+    "faq": [
+     {
+      "q": "How many people can play?",
+      "a": "Nintendo says up to 8 in Joy-Con mode and up to 100 in certain smart-device modes."
+     },
+     {
+      "q": "Does it work on Switch 2?",
+      "a": "Yes. Nintendo lists it as supported with behavior consistent with Nintendo Switch."
+     },
+     {
+      "q": "Is internet required?",
+      "a": "Smart-device modes require internet access, while Joy-Con party play is local."
+     },
+     {
+      "q": "What is the file size?",
+      "a": "Nintendo lists 3.4 GB."
+     },
+     {
+      "q": "Is it suitable for parties?",
+      "a": "Yes. Party play is the main design goal."
+     }
+    ],
+    "mpLocalPlayers": true,
+    "mpOnlinePlayers": true,
+    "mpCoop": true,
+    "mpCompetitive": true,
+    "mpLocalWireless": false,
+    "mpSplitScreen": true,
+    "sources": [
+     {
+      "name": "Official product / publisher page",
+      "url": "https://www.nintendo.com/us/store/products/everybody-1-2-switch-switch/"
+     },
+     {
+      "name": "Metacritic",
+      "url": "https://www.metacritic.com/search/everybody-1-2-switch/"
+     }
+    ],
+    "boxContentsList": [],
+    "image": "",
+    "banner": "",
+    "schemaId": "",
+    "batchImport": true,
+    "createdAt": "2026-08-28T18:48:22.280Z",
+    "updatedAt": "2026-08-28T18:48:22.280Z"
+   }
+  }
+ ]
+}
