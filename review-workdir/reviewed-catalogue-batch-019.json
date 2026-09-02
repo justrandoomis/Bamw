@@ -1,51 +1,235 @@
 {
  "batch": "019",
- "apply": false,
+ "apply": true,
  "games": [
   {
    "id": "prd_9368a12095754e53",
    "slug": "persona-5-tactica",
    "baseHash": "c1161f00d097366e76e30d46650eb1efdee894b28e9b6b3b82f9705659975ba5",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "supportedLanguages": "English, Japanese, French, German, Italian, Spanish, Russian, Brazilian Portuguese",
+    "bannerImages": [
+     "https://images.launchbox-app.com/b885ba0b-74d5-4dfa-91e9-486b0e86fef1.jpg",
+     "https://images.launchbox-app.com/75f6b0d9-bc92-41b3-9727-2f91c2198656.jpg"
+    ],
+    "galleryImages": [
+     {
+      "url": "https://images.launchbox-app.com/651223eb-17a9-4283-8e45-78724f854381.jpg",
+      "alt": "High-resolution tactical combat screenshot"
+     },
+     {
+      "url": "https://images.launchbox-app.com/8c923b15-1948-4a25-bbfe-f451962a5197.jpg",
+      "alt": "High-resolution story/dialogue screenshot"
+     },
+     {
+      "url": "https://images.launchbox-app.com/3679e523-cf77-4566-8413-b68631feeed0.jpg",
+      "alt": "High-resolution Persona 5 Tactica gameplay screenshot"
+     },
+     {
+      "url": "https://images.launchbox-app.com/cfffef2d-fbab-4047-bd74-a40d9d1e75e5.jpg",
+      "alt": "High-resolution combat interface screenshot"
+     }
+    ],
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "informationStatus": "not_published",
+      "unavailableReason": "Atlus publishes no resolution or frame-rate figures for Persona 5 Tactica on Nintendo Switch.",
+      "handheld": {
+       "supported": true
+      },
+      "tv": {
+       "supported": true
+      },
+      "modes": [],
+      "sourceName": "Atlus official product page",
+      "sourceUrl": "https://www.nintendolife.com/games/nintendo-switch/persona_5_tactica",
+      "verificationStatus": "official"
+     }
+    ]
+   },
+   "clear": [
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "The language field's supplier-SKU prefix removed, keeping the clean US-listing language set it carried. Four dead R2 banners replaced by two shots promoted from the six working galleries; the two broken gallery entries dropped, four remain — everything re-verified at apply. The Switch-2-flavoured prose record ('Handheld Mode Boost' on a Switch 1 game) becomes an honest not-published platform record. 2023-11-17, Metacritic 79 verified. Contamination removed."
   },
   {
    "id": "prd_307e4cacf6024fa1",
    "slug": "phoenix-wright-ace-attorney-trilogy-switch1",
    "baseHash": "aebe4fbf7ba559bd3abc4c9e1873eead63af0643ac6a4bd4e504531c130e3653",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "dlcSummary": "No DLC has been released for Phoenix Wright: Ace Attorney Trilogy.",
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "informationStatus": "available",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p",
+       "fps": "60"
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p",
+       "fps": "60"
+      },
+      "modes": [],
+      "sourceName": "Port coverage of the Trilogy on Switch",
+      "sourceUrl": "https://www.nintendolife.com/games/nintendo-switch/phoenix_wright_ace_attorney_trilogy",
+      "verificationStatus": "technical_analysis"
+     }
+    ]
+   },
+   "clear": [
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "The Switch-2 'Handheld Boost' prose record becomes the platform record with the documented 60 fps figures. No-DLC situation recorded. 2019-04-09, Metacritic 81 verified. All images working. Contamination removed."
   },
   {
    "id": "prd_290a310cb5754d83",
    "slug": "pikmin-1-2-switch",
    "baseHash": "a2f14a2a8c730417bc53524267da4a2d6325432eaa1d67fc96745f4427fd40f8",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "informationStatus": "available",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p",
+       "fps": "30"
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p",
+       "fps": "30"
+      },
+      "modes": [],
+      "sourceName": "Port coverage of the HD remasters",
+      "sourceUrl": "https://www.nintendolife.com/games/nintendo-switch/pikmin_1",
+      "verificationStatus": "technical_analysis"
+     }
+    ]
+   },
+   "clear": [
+    "youtubeTrailer",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "The nintendo.com store URL in the trailer field removed; doubled records collapse to the platform record with the documented 30 fps figures. 2023-09-22, Metacritic 80 verified (hidden product)."
   },
   {
    "id": "prd_2355716be2864bc7",
    "slug": "pikmin-3-deluxe-switch",
    "baseHash": "48056361667633b437372323b992e025cfdd9f86bbae522e350031f1b7216965",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "informationStatus": "available",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p",
+       "fps": "30"
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p",
+       "fps": "30"
+      },
+      "modes": [],
+      "sourceName": "Digital Foundry's analysis of Pikmin 3 Deluxe",
+      "sourceUrl": "https://www.nintendolife.com/games/nintendo-switch/pikmin_3_deluxe",
+      "verificationStatus": "technical_analysis"
+     }
+    ]
+   },
+   "clear": [
+    "youtubeTrailer",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "Same fixes: store-URL trailer removed, records collapse to the platform record at the documented 30 fps. 2020-10-30, Metacritic 85 verified (hidden product)."
   },
   {
    "id": "prd_ffdd17fc7ef14e0f",
    "slug": "pikmin-4-switch",
    "baseHash": "94415b04e8ebe4fdc2dcff3e55f32cea8842f31751f07143c6bcc39e5eeedf0d",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "informationStatus": "available",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p",
+       "fps": "30"
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p (dynamic)",
+       "fps": "30"
+      },
+      "modes": [],
+      "sourceName": "Technical coverage of Pikmin 4",
+      "sourceUrl": "https://www.nintendolife.com/games/nintendo-switch/pikmin_4",
+      "verificationStatus": "technical_analysis"
+     }
+    ]
+   },
+   "clear": [
+    "youtubeTrailer",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "Same fixes: store-URL trailer removed, records collapse to the platform record at the documented 30 fps. 2023-07-21, Metacritic 87 verified (hidden product)."
   }
  ]
 }
