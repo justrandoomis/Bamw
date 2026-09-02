@@ -1,33 +1,124 @@
 {
  "batch": "031",
- "apply": false,
+ "apply": true,
  "games": [
   {
    "id": "prd_3f5f6e861ad942ea",
    "slug": "xenoblade-chronicles-x-definitive-edition-switch-2-edition",
    "baseHash": "b2210edea2766d4e7a64a03bdf19bee28917ce0c9340d7014e0a0c61d87a2a45",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "metacriticRating": 79,
+    "metacriticUrl": "https://www.metacritic.com/game/xenoblade-chronicles-x-definitive-edition/critic-reviews/?platform=nintendo-switch-2",
+    "coverImage": "https://assets.nintendo.com/image/upload/f_auto%2Cq_auto/Marketing/pmp-xcx-de-p2-skdhskdhw/assets/primordia",
+    "image": "https://assets.nintendo.com/image/upload/f_auto%2Cq_auto/Marketing/pmp-xcx-de-p2-skdhskdhw/assets/primordia",
+    "bannerImages": [
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000116669/e2ec24af5431e0b05b5124a13d3bb96bf84cfbc1d1d30d866b579ddd45d9a558",
+     "/api/files/products/prd_3f5f6e861ad942ea/banner-3-446ced4ed3e41e3a.jpg"
+    ],
+    "galleryImages": [
+     {
+      "url": "https://assets.nintendo.com/image/upload/f_auto%2Cq_auto/Marketing/pmp-xcx-de-p2-skdhskdhw/assets/noctilum",
+      "alt": "Official Nintendo gameplay image"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/f_auto%2Cq_auto/Marketing/pmp-xcx-de-p2-skdhskdhw/assets/oblivia",
+      "alt": "Official Nintendo gameplay image"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/f_auto%2Cq_auto/Marketing/pmp-xcx-de-p2-skdhskdhw/assets/sylvalum",
+      "alt": "Official Nintendo feature image"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/f_auto%2Cq_auto/Marketing/pmp-xcx-de-p2-skdhskdhw/assets/cauldros",
+      "alt": "Official Nintendo gallery image"
+     }
+    ]
+   },
+   "clear": [
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "Metacritic corrected 87 to 79 — 87 belongs to the Switch 1 release, 79 is this Switch 2 Edition's own verified aggregate. Dead cover and listing rebuilt from the first verified gallery; the two verified banners kept, two dead dropped. 2026-02-19, announced up-to-4K at 60 fps record kept. Contamination removed."
   },
   {
    "id": "prd_704056e8239b4d8c",
    "slug": "yoshi-and-the-mysterious-book",
    "baseHash": "c48e7fce3e5bbbf08d4c133537605f5033aa8ea68be1d6b9562e6a11ad22dd18",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "coverImage": "https://i5.walmartimages.com/asr/856f42e3-d567-4730-94bb-4cefbe8252aa.0dbe32d0ac6f6d23ace842db2e2dbe78.jpeg?odnBg=FFFFFF&odnHeight=117&odnWidth=117",
+    "image": "https://i5.walmartimages.com/asr/856f42e3-d567-4730-94bb-4cefbe8252aa.0dbe32d0ac6f6d23ace842db2e2dbe78.jpeg?odnBg=FFFFFF&odnHeight=117&odnWidth=117",
+    "bannerImages": [
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000119859/b85301d5f8074b6db36ba928328807c7467ddde8badc7ed51aa311a430d567ee",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000119859/7f0de9f8889db511aa981af5d4178ff45f699b9300d25da9bc159c75d02e1ac2"
+    ],
+    "galleryImages": [
+     {
+      "url": "https://i5.walmartimages.com/asr/c7186f18-caff-43fe-9697-d752d1251ab9.3c6fef473671983bcd2b0e43c4c672aa.jpeg?odnBg=FFFFFF&odnHeight=117&odnWidth=117",
+      "alt": "Walmart product media / gameplay screenshot 2 for Yoshi and the Mysterious Book on Nintendo Switch 2."
+     },
+     {
+      "url": "https://i5.walmartimages.com/asr/1bb0e312-137f-4aa7-8da8-f5d14c9c2729.15f7c2dc0030392f4cefd9b8c58f2f52.jpeg?odnBg=FFFFFF&odnHeight=117&odnWidth=117",
+      "alt": "Walmart product media / gameplay screenshot 3 for Yoshi and the Mysterious Book on Nintendo Switch 2."
+     },
+     {
+      "url": "https://i5.walmartimages.com/asr/0d48745f-f656-4c67-92b2-4f265bd8aaf6.5ae87facaf5f49680dfc3596a59d71f7.jpeg?odnBg=FFFFFF&odnHeight=117&odnWidth=117",
+      "alt": "Walmart product media / gameplay screenshot 4 for Yoshi and the Mysterious Book on Nintendo Switch 2."
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000119859/b85301d5f8074b6db36ba928328807c7467ddde8badc7ed51aa311a430d567ee"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000119859/7f0de9f8889db511aa981af5d4178ff45f699b9300d25da9bc159c75d02e1ac2"
+     }
+    ]
+   },
+   "clear": [
+    "cartridgeImage",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "Dead cover, listing and box references repaired: the first verified gallery becomes cover and listing, the two verified banners stay (two dead and six unprobed entries dropped per the verified-only rule), five verified galleries remain, and the dead R2 box reference is removed — the retail box photo in box_front_url, the square card and the wrap all stay. 2026-05-21, 19.8 GB, Metacritic 82, 1080p/4K-output at 60 fps record verified. Contamination removed."
   },
   {
    "id": "prd_64ef321029b44fb8",
    "slug": "ys-x-proud-nordics",
    "baseHash": "49b6ce8b789bc24b0f2d5b5508447fb337b1fdce38388e54ed0590334629512b",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "bannerImages": [
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000103722/ec7879aaf2fae0720473b0cd47ec477dbc855556152048784f2a5d1b6f0b4727",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000103722/325900c69a7487bd940167bbc8a821cd68a10d8ce554a7c2a04de2d11dcea098"
+    ]
+   },
+   "clear": [
+    "youtubeTrailer",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "Two dead banners dropped and two unprobed entries excluded — the two verified banners remain. Search-link trailer removed. 2026-02-20, 9.1 GB, Metacritic 82, dynamic 1080p-class record verified; galleries and remaining roles working. Contamination removed."
   }
  ]
 }
