@@ -9,7 +9,7 @@
 import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
 
-import { requireAdmin, requireAppAuth } from "./auth.middleware";
+import { requireAdmin, requireAppAuth, authed } from "./auth.middleware";
 import { findUserById } from "./db.server";
 import {
   UsedMarketError,
@@ -139,8 +139,8 @@ export const loadMyUsedListings = createServerFn({ method: "GET" })
   .middleware([requireAppAuth])
   .handler(async ({ context }) => {
     const config = await getUsedConfig();
-    const listings = await listSellerListings(context.userId);
-    const user = await findUserById(context.userId);
+    const listings = await listSellerListings(authed(context).userId);
+    const user = await findUserById(authed(context).userId);
     return {
       enabled: config.enabled,
       listings,
@@ -162,7 +162,7 @@ export const createUsedListing = createServerFn({ method: "POST" })
   .validator(draftFields)
   .handler(async ({ data, context }) => {
     try {
-      const listing = await createDraft(context.userId, data as never);
+      const listing = await createDraft(authed(context).userId, data as never);
       return { success: true as const, listing };
     } catch (error) {
       return fail(error);
@@ -175,7 +175,7 @@ export const updateUsedListing = createServerFn({ method: "POST" })
   .handler(async ({ data, context }) => {
     try {
       const { listingId, ...fields } = data;
-      const listing = await updateDraft(context.userId, listingId, fields as never);
+      const listing = await updateDraft(authed(context).userId, listingId, fields as never);
       return { success: true as const, listing };
     } catch (error) {
       return fail(error);
@@ -194,7 +194,7 @@ export const submitUsedListing = createServerFn({ method: "POST" })
     try {
       const listing = await transitionListing(data.listingId, "SUBMITTED", {
         actor: "seller",
-        actorUserId: context.userId,
+        actorUserId: authed(context).userId,
         policyAccepted: data.policyAccepted === true,
       });
       return { success: true as const, listing };
@@ -216,7 +216,7 @@ export const moveUsedListing = createServerFn({ method: "POST" })
     try {
       const listing = await transitionListing(data.listingId, data.to, {
         actor: "seller",
-        actorUserId: context.userId,
+        actorUserId: authed(context).userId,
       });
       return { success: true as const, listing };
     } catch (error) {
@@ -269,7 +269,7 @@ export const reviewUsedListing = createServerFn({ method: "POST" })
     try {
       const listing = await transitionListing(data.listingId, data.to, {
         actor: "admin",
-        actorUserId: context.userId,
+        actorUserId: authed(context).userId,
         note: data.note,
         soldOrderId: data.soldOrderId,
         isReturned: data.isReturned,
@@ -300,7 +300,7 @@ export const saveUsedMarketplaceConfig = createServerFn({ method: "POST" })
     const config = await saveUsedConfig(data);
     await import("./db.server").then(({ createAuditLog }) =>
       createAuditLog(
-        context.userId,
+        authed(context).userId,
         "used_marketplace.config",
         "settings",
         "usedMarketplace",

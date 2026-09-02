@@ -10,7 +10,7 @@ import {
   createAuditLog,
   findUserById,
 } from "./db.server";
-import { requireAppAuth, requireAdmin } from "./auth.middleware";
+import { requireAppAuth, requireAdmin, authed } from "./auth.middleware";
 import {
   COUPON_REFUSAL_MESSAGE,
   checkCoupon,
@@ -36,7 +36,7 @@ export const submitProductReview = createServerFn({ method: "POST" })
     }),
   )
   .handler(async ({ data, context }) => {
-    const userId = context.userId;
+    const userId = authed(context).userId;
     const now = new Date().toISOString();
 
     const reviewId = randomId("rev");
@@ -77,7 +77,7 @@ export const approveReview = createServerFn({ method: "POST" })
     }),
   )
   .handler(async ({ data, context }) => {
-    const adminId = context.userId;
+    const adminId = authed(context).userId;
     const now = new Date().toISOString();
 
     const review = await d1First<ProductReview>(
@@ -176,7 +176,7 @@ export const validateCoupon = createServerFn({ method: "POST" })
     }),
   )
   .handler(async ({ data, context }) => {
-    const userId = context.userId;
+    const userId = authed(context).userId;
 
     const row = await d1First<CouponRow>(
       `SELECT * FROM coupons WHERE code = ? AND is_active = 1`,

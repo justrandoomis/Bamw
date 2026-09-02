@@ -1,4 +1,5 @@
 import { createServerFn } from "@tanstack/react-start";
+import { authed } from "./auth.middleware";
 import { z } from "zod";
 import { requireSupabaseAuth } from "@/integrations/supabase/auth-middleware";
 import { d1First, d1Run } from "./d1.server";
@@ -14,7 +15,7 @@ export const getMyTelegramStatus = createServerFn({ method: "GET" })
       telegram_chat_id: number;
     }>(
       `SELECT telegram_username, linked_at, telegram_chat_id FROM telegram_links WHERE user_id = ?`,
-      context.userId,
+      authed(context).userId,
     );
 
     const botUsername = env("TELEGRAM_BOT_USERNAME") || "Bananto_store_bot";
@@ -38,7 +39,7 @@ export const startTelegramLink = createServerFn({ method: "POST" })
     await d1Run(
       "INSERT INTO telegram_link_tokens (token, user_id, expires_at, created_at) VALUES (?, ?, ?, ?)",
       token,
-      context.userId,
+      authed(context).userId,
       expiresAt,
       new Date().toISOString(),
     );
@@ -52,6 +53,6 @@ export const startTelegramLink = createServerFn({ method: "POST" })
 export const unlinkTelegram = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
   .handler(async ({ context }) => {
-    await d1Run(`DELETE FROM telegram_links WHERE user_id = ?`, context.userId);
+    await d1Run(`DELETE FROM telegram_links WHERE user_id = ?`, authed(context).userId);
     return { ok: true };
   });

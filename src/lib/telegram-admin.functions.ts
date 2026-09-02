@@ -1,4 +1,5 @@
 import { createServerFn } from "@tanstack/react-start";
+import { authed } from "./auth.middleware";
 import { z } from "zod";
 import { d1All, d1First, d1Run } from "./d1.server";
 import {
@@ -28,7 +29,7 @@ export const createTelegramContest = createServerFn({ method: "POST" })
     // Check admin
     const user = await d1First<{ is_admin: number }>(
       "SELECT is_admin FROM users WHERE id = ?",
-      context.userId,
+      authed(context).userId,
     );
     if (!user?.is_admin) throw new Error("Unauthorized: Admin only");
 
@@ -95,7 +96,7 @@ export const broadcastTelegramNotification = createServerFn({ method: "POST" })
   .handler(async ({ data, context }) => {
     const user = await d1First<{ is_admin: number }>(
       "SELECT is_admin FROM users WHERE id = ?",
-      context.userId,
+      authed(context).userId,
     );
     if (!user?.is_admin) throw new Error("Unauthorized");
 
@@ -126,7 +127,7 @@ export const sendManualOtpTelegram = createServerFn({ method: "POST" })
   .handler(async ({ data, context }) => {
     const admin = await d1First<{ is_admin: number }>(
       "SELECT is_admin FROM users WHERE id = ?",
-      context.userId,
+      authed(context).userId,
     );
     if (!admin?.is_admin) throw new Error("Unauthorized");
 

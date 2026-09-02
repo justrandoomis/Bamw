@@ -6,6 +6,11 @@
     "module": "ESNext",
     "skipLibCheck": true,
     "moduleResolution": "bundler",
+    // Restored: f2445eb dropped both, and the source is written for them.
+    // `vite/client` is what types `import appCss from "../styles.css?url"`,
+    // and two server modules import a sibling by its `.ts` name.
+    "types": ["vite/client"],
+    "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
