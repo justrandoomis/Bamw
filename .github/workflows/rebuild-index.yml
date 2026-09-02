@@ -32,10 +32,13 @@ jobs:
       - uses: actions/checkout@v4
         with:
           persist-credentials: false
-      - uses: oven-sh/setup-bun@v2
+      # npm against the tracked package-lock.json — the repo has no bun
+      # lockfile, so `bun install --frozen-lockfile` fails before the
+      # rebuild script ever runs. Same setup the catalogue workflows use.
+      - uses: actions/setup-node@v4
         with:
-          bun-version: latest
-      - run: bun install --frozen-lockfile
+          node-version: 22
+      - run: npm install --no-audit --no-fund
       - name: Mask identifiers
         env:
           ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
