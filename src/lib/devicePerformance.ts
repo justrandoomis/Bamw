@@ -603,3 +603,116 @@ export function performanceMatches(record: DevicePerformance, filters: readonly 
     }
   });
 }
+
+/* -------------------------------------------------------------------------- */
+/* One record per game, named by the platform                                 */
+/* -------------------------------------------------------------------------- */
+
+/**
+ * The single device a game's platform names. A catalogue product is one SKU on
+ * one console — a distinct Switch 1 edition is its own product — so its
+ * performance section describes exactly one device. Backward compatibility of
+ * a Switch title on Switch 2 is a compatibility note, never a second record.
+ */
+export const PLATFORM_DEVICE = {
+  switch1: { slug: "nintendo-switch", name: "Nintendo Switch" },
+  switch2: { slug: "nintendo-switch-2", name: "Nintendo Switch 2" },
+} as const;
+
+export type GamePlatformKey = keyof typeof PLATFORM_DEVICE;
+
+/** `both` and every Switch 2 spelling lead with the newer console. */
+export function resolveGamePlatformKey(platform: unknown): GamePlatformKey {
+  const normalized = normalizePlatform(platform);
+  return normalized === "switch2" || normalized === "both" ? "switch2" : "switch1";
+}
+
+/**
+ * The hardware identity for a platform's device: the matching Hardware
+ * product when the catalogue has one (matched by slug, id, then name), the
+ * canonical slug/name otherwise — so the section renders and saves correctly
+ * even before the hardware section is populated.
+ */
+export function resolvePlatformHardware(
+  platformKey: GamePlatformKey,
+  hardwareProducts: readonly Record_[] = [],
+): { device: string; deviceSlug: string; hardwareId?: string; deviceModel?: string } {
+  const target = PLATFORM_DEVICE[platformKey];
+  const hardware = (hardwareProducts || []).find((item) => {
+    if (!item || typeof item !== "object") return false;
+    if (slugifyDevice(item["slug"]) === target.slug) return true;
+    if (String(item["id"] ?? "") === target.slug) return true;
+    return slugifyDevice(item["title"] ?? item["name"]) === target.slug;
+  });
+  return {
+    device: text(hardware?.["title"] ?? hardware?.["name"]) || target.name,
+    deviceSlug: target.slug,
+    ...(hardware?.["id"] !== undefined && hardware?.["id"] !== null
+      ? { hardwareId: String(hardware["id"]) }
+      : {}),
+    ...(text(hardware?.["model"] ?? hardware?.["modelNumber"])
+      ? { deviceModel: text(hardware?.["model"] ?? hardware?.["modelNumber"]) }
+      : {}),
+  };
+}
+
+const matchesDeviceSlug = (record: DevicePerformance, slug: string): boolean =>
+  record.deviceSlug === slug || slugifyDevice(record.device) === slug;
+
+/**
+ * Collapses a game's stored performance data to exactly one record, owned by
+ * the platform's device.
+ *
+ * - Duplicates of the platform device merge together.
+ * - Records for *other* devices are dropped, never blended in: their numbers
+ *   describe different silicon, and copying them is how a Switch figure ends
+ *   up published as Switch 2 performance. The one exception is a game whose
+ *   only records carry a stale device label — that data was entered for this
+ *   game, so the most complete record is kept and re-badged.
+ * - A game with no data gets a fresh skeleton, so the editor always has the
+ *   one record to fill and nothing to add or pick.
+ *
+ * Hardware capabilities are never read here; only the hardware identity is.
+ */
+export function normalizeGameDevicePerformance(
+  product: Record_ | null | undefined,
+  hardwareProducts: readonly Record_[] = [],
+): DevicePerformance[] {
+  const platformKey = resolveGamePlatformKey(product?.["platform"]);
+  const identity = resolvePlatformHardware(platformKey, hardwareProducts);
+  const records = dedupeDevicePerformance(getDevicePerformanceList(product ?? {}));
+
+  const matching = records.filter((record) => matchesDeviceSlug(record, identity.deviceSlug));
+  let base: DevicePerformance | undefined;
+  if (matching.length > 0) {
+    base = matching.reduce((merged, record) => mergeDevicePerformanceRecords(merged, record));
+  } else if (records.length > 0) {
+    const otherPlatformSlugs = Object.values(PLATFORM_DEVICE).map((device) => device.slug);
+    const relabelable = records.filter(
+      (record) => !otherPlatformSlugs.some((slug) => matchesDeviceSlug(record, slug)),
+    );
+    if (relabelable.length > 0) {
+      base = relabelable.reduce((best, record) =>
+        calculateRecordCompleteness(record) > calculateRecordCompleteness(best) ? record : best,
+      );
+    }
+  }
+
+  const record: DevicePerformance = {
+    ...(base ?? {
+      informationStatus: "available" as const,
+      handheld: { supported: true },
+      tv: { supported: true },
+      modes: [],
+    }),
+    device: identity.device,
+    deviceSlug: identity.deviceSlug,
+    ...(identity.hardwareId ? { hardwareId: identity.hardwareId } : {}),
+    ...(identity.deviceModel ? { deviceModel: identity.deviceModel } : {}),
+  };
+  if (!identity.hardwareId) delete record.hardwareId;
+  if (!identity.deviceModel && base?.deviceModel === undefined) {
+    delete record.deviceModel;
+  }
+  return [compact(record)];
+}

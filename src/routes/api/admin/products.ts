@@ -34,7 +34,10 @@ import {
   deactivateGameDevicePerformance,
   syncGameDevicePerformance,
 } from "@/lib/devicePerformance.server";
-import { validateGameDevicePerformance } from "@/lib/devicePerformance";
+import {
+  normalizeGameDevicePerformance,
+  validateGameDevicePerformance,
+} from "@/lib/devicePerformance";
 import { categoryFilterAliases, resolveCategoryType } from "@/lib/productSection";
 import { sanitizeSlug, uniqueSlug } from "@/lib/productSlug";
 import { checkPublishable, isPublishing } from "@/lib/publishGate";
@@ -454,6 +457,18 @@ export const Route = createFileRoute("/api/admin/products")({
             updated_at: nowIso,
           };
 
+          /*
+            One performance record, owned by the platform's device. Whatever
+            arrived — a legacy two-device array, a stale label after a platform
+            change, or nothing — the stored document carries exactly one.
+          */
+          if (productSection(productToSave, currentStore.categories || []) === "game") {
+            productToSave.devicePerformance = normalizeGameDevicePerformance(
+              productToSave as unknown as Record<string, unknown>,
+              hardwareProducts(existingCatalog, currentStore.categories || []),
+            );
+          }
+
           const performanceIssues = performanceValidation(
             productToSave,
             currentStore.categories || [],
@@ -588,6 +603,19 @@ export const Route = createFileRoute("/api/admin/products")({
             console.warn(oversizedMediaLog(productId, guard.rejectedMedia));
           }
           const productToSave: Product = guard.merged;
+
+          /*
+            One performance record, owned by the platform's device. Whatever
+            arrived — a legacy two-device array, a stale label after a platform
+            change, or nothing — the stored document carries exactly one.
+          */
+          if (productSection(productToSave, currentStore.categories || []) === "game") {
+            productToSave.devicePerformance = normalizeGameDevicePerformance(
+              productToSave as unknown as Record<string, unknown>,
+              hardwareProducts(existingCatalog, currentStore.categories || []),
+            );
+          }
+
 
           // The same publication floor the full save applies. A patch is the
           // shorter route to the same transition, and the listing screen's
@@ -835,6 +863,13 @@ export const Route = createFileRoute("/api/admin/products")({
             console.warn(oversizedMediaLog(productId, putGuard.rejectedMedia));
           }
           let productToSave: Product = putGuard.merged;
+
+          if (productSection(productToSave, currentStore.categories || []) === "game") {
+            productToSave.devicePerformance = normalizeGameDevicePerformance(
+              productToSave as unknown as Record<string, unknown>,
+              hardwareProducts(existingCatalog, currentStore.categories || []),
+            );
+          }
 
           const performanceIssues = performanceValidation(
             productToSave,

@@ -12,7 +12,7 @@ import { boxContentsToText } from "./boxContentsText";
 import { toStepList } from "./stepsText";
 import { safeRandomUUID } from "./polyfills";
 import { parseGameImport } from "./gameImportParser";
-import { dedupeDevicePerformance, getDevicePerformanceList } from "./devicePerformance";
+import { normalizeGameDevicePerformance } from "./devicePerformance";
 import { parseProductImport } from "./productImport/parser";
 import { buildQualityReport, type QualityReport } from "./productImport/quality";
 import { applySchemaImportToForm } from "./productImport/toProductForm";
@@ -243,9 +243,14 @@ export function buildProductSavePayload(
     );
   }
 
-  // Deduplicate and normalize devicePerformance
+  /*
+    One performance record, owned by the platform's device. Import templates
+    can carry two legacy device blocks; the save payload never does. The
+    hardware link resolves again server-side against the live catalogue.
+  */
   if (cleanedData.devicePerformance || cleanedData.device_performance) {
-    cleanedData.devicePerformance = dedupeDevicePerformance(getDevicePerformanceList(cleanedData));
+    cleanedData.devicePerformance = normalizeGameDevicePerformance(cleanedData);
+    delete cleanedData.device_performance;
   }
 
   return {

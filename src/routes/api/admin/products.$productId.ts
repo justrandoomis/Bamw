@@ -10,7 +10,10 @@ import {
   deactivateGameDevicePerformance,
   syncGameDevicePerformance,
 } from "@/lib/devicePerformance.server";
-import { validateGameDevicePerformance } from "@/lib/devicePerformance";
+import {
+  normalizeGameDevicePerformance,
+  validateGameDevicePerformance,
+} from "@/lib/devicePerformance";
 import { releaseProductIdentity } from "@/lib/product-identity.server";
 import { resolveCategoryType } from "@/lib/productSection";
 
@@ -165,6 +168,15 @@ export const Route = createFileRoute("/api/admin/products/$productId")({
             productToSave = verification.product as Product;
           } catch (imgErr) {
             console.warn("[sanitizeAndVerifyProductImages] Image verification non-blocking fallback:", imgErr);
+          }
+
+          if (productSection(productToSave, currentStore.categories || []) === "game") {
+            productToSave.devicePerformance = normalizeGameDevicePerformance(
+              productToSave as unknown as Record<string, unknown>,
+              (currentStore.products || []).filter(
+                (item) => productSection(item, currentStore.categories || []) === "hardware",
+              ),
+            );
           }
 
           try {

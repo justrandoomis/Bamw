@@ -5,6 +5,7 @@ import { d1All, d1Run } from "@/lib/d1.server";
 import { getCatalogVersion, getStore, invalidateStoreCache } from "@/lib/db.server";
 import { sanitizeAndVerifyProductImages } from "@/lib/productImageVerification.server";
 import { syncGameDevicePerformance } from "@/lib/devicePerformance.server";
+import { normalizeGameDevicePerformance } from "@/lib/devicePerformance";
 import { resolveCategoryType } from "@/lib/productSection";
 
 export const Route = createFileRoute("/api/admin/products/save/finalize")({
@@ -70,6 +71,45 @@ export const Route = createFileRoute("/api/admin/products/save/finalize")({
               "[sanitizeAndVerifyProductImages] Non-blocking media ingestion fallback:",
               imgErr,
             );
+          }
+
+          /*
+            One performance record, owned by the platform's device, before the
+            document is written — the chunked save is the editor's main path.
+          */
+          try {
+            const storeForNorm = await getStore();
+            const categoriesForNorm = storeForNorm.categories || [];
+            const catIdForNorm = String(productToSave.categoryId || productToSave.category || "");
+            const catForNorm = categoriesForNorm.find(
+              (c) => String(c.id || "") === catIdForNorm,
+            );
+            const sectionForNorm = resolveCategoryType(
+              catIdForNorm,
+              String(catForNorm?.title || catForNorm?.name || ""),
+              String(productToSave.kind || ""),
+              String(productToSave.schemaId || ""),
+            );
+            if (sectionForNorm === "game") {
+              const hardwareForNorm = (storeForNorm.products || []).filter((p) => {
+                const cId = String(p.categoryId || p.category || "");
+                const c = categoriesForNorm.find((entry) => String(entry.id || "") === cId);
+                return (
+                  resolveCategoryType(
+                    cId,
+                    String(c?.title || c?.name || ""),
+                    String(p.kind || ""),
+                    String(p.schemaId || ""),
+                  ) === "hardware"
+                );
+              });
+              productToSave.devicePerformance = normalizeGameDevicePerformance(
+                productToSave,
+                hardwareForNorm,
+              );
+            }
+          } catch (normErr) {
+            console.error("[finalize:normalizeGameDevicePerformance:error]", normErr);
           }
 
           // Save directly as granular product
