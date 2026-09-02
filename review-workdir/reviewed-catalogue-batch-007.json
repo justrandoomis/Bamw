@@ -1,51 +1,150 @@
 {
  "batch": "007",
- "apply": false,
+ "apply": true,
  "games": [
   {
    "id": "prd_0ca27f5eefe44dd5",
    "slug": "fallout-4-anniversary-edition",
    "baseHash": "093cae06700c32222ca3a56a6a0e87691fee75b4c17c26986139b3cec25d8d3e",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "coverImage": "/api/files/products/prd_0ca27f5eefe44dd5/nintendoCardImage-319f3f75f023d52f.jpg",
+    "image": "/api/files/products/prd_0ca27f5eefe44dd5/nintendoCardImage-319f3f75f023d52f.jpg"
+   },
+   "clear": [
+    "nintendoCardImage",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "Role swap repaired: the square-card slot held wide 1920x1080 key art while the cover slot held a 500x500 retail box photo — the key art file becomes the cover and listing image, and the square-card reference is removed (no verified square icon reachable; the slot was wrong, not missing). The genuine Switch 2 box photos stay in the box roles. Fields verified: 2026-02-24, 64.2 GB, Metacritic 84, Bethesda-sourced 1080p/1440p at 30 fps record, three DLC entries, working banners and eShop galleries. Contamination removed."
   },
   {
    "id": "prd_ed0f0c2742ab46d8",
    "slug": "fantasy-life-i-the-girl-who-steals-time-switch1",
    "baseHash": "3aa071931f7eef1ca19540058cdb7f42d2f5290a131d0f56469f5c6cc0dda334",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "dlcSummary": "No paid DLC has been released for FANTASY LIFE i on Nintendo Switch; LEVEL-5 has shipped free post-launch updates.",
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "informationStatus": "not_published",
+      "unavailableReason": "LEVEL-5 publishes no resolution or frame-rate figures for the Nintendo Switch version; the 1080p/1440p at 60 fps figures previously stored here belong to the separate Nintendo Switch 2 Edition.",
+      "handheld": { "supported": true },
+      "tv": { "supported": true },
+      "modes": [],
+      "sourceName": "LEVEL-5 official product information",
+      "sourceUrl": "https://www.level5.co.jp/products/fantasylife-i/",
+      "verificationStatus": "official"
+     }
+    ]
+   },
+   "clear": [
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "This is the Switch 1 SKU, but its performance record carried the Switch 2 Edition's 1080p/1440p at 60 fps figures under a Switch 2 badge — replaced with an honest not-published Nintendo Switch record naming why. dlcSummary states the verified no-paid-DLC situation. Box art, wide cover, genuine PAL full-wrap texture, banners and eShop galleries verified visually: correct and kept. Fields verified: 2025-05-21, 7.7 GB, Metacritic 86."
   },
   {
    "id": "prd_c8e3dc9b206043e3",
    "slug": "fatal-frame-ii-crimson-butterfly-remake",
    "baseHash": "7f0385d792638b225081642e411b890eca8b9c821ff6f62aca359d8d1794e412",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "coverImage": "https://assets.nintendo.com/image/upload/q_auto%3Abest/f_auto/dpr_2.0/store/software/switch2/70010000105942/0c72a534282bbae5922a7abb9b0a9817b6b25ed9c5d9f5a3f7a9d688a657aa3c",
+    "image": "https://assets.nintendo.com/image/upload/q_auto%3Abest/f_auto/dpr_2.0/store/software/switch2/70010000105942/0c72a534282bbae5922a7abb9b0a9817b6b25ed9c5d9f5a3f7a9d688a657aa3c",
+    "galleryImages": [
+     {
+      "url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3920610/a828a70ae0df14b3b458df96d6ca1cccf5c2e9fc/ss_a828a70ae0df14b3b458df96d6ca1cccf5c2e9fc.jpg",
+      "alt": "Mio exploring the Lost Village in the remake"
+     }
+    ]
+   },
+   "clear": [
+    "cartridgeImage",
+    "nintendoCardImage",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "Four image roles were dead R2 references (403): box, square card, cover and listing image. The official eShop key art (twins + logo, verified visually) moves from the gallery into the cover and listing roles; the Steam-hosted 4K screenshot stays as the gallery; the working 4K screenshot banner stays as the hero. The broken box reference is removed and the genuine game-key-card retail box photo in box_front_url (verified visually — Walmart-hosted) becomes the box image. No verified square-card source reachable — removed rather than left broken. Fields verified: 2026-03-12, 27.3 GB, Metacritic 78, KOEI TECMO 1080p/30 spec record. Contamination removed."
   },
   {
    "id": "prd_d2f92910a35d45f0",
    "slug": "fifa-22-nintendo-switch-legacy-edition",
    "baseHash": "49f261771780adc9e2bd8bcd298b44f1238d702141ce8d843c0545220be81250",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "informationStatus": "available",
+      "handheld": { "supported": true, "resolution": "720p", "fps": "30" },
+      "tv": { "supported": true, "resolution": "1080p", "fps": "30" },
+      "modes": [],
+      "sourceName": "Official product and compatibility information",
+      "sourceUrl": "https://www.ea.com/games/fifa/fifa-22",
+      "verificationStatus": "official"
+     }
+    ]
+   },
+   "clear": [
+    "metacriticRating",
+    "supportedLanguages",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "FIFA 22 Legacy Edition (2021-10-01, 14 GB). Same copy-pasted series defects removed: the '85' string (the Legacy Editions' documented reception was far weaker and no Switch aggregate matches it) and the varies-by-region referral sentence. Device records collapse to the platform record. Hidden product with no images stored."
   },
   {
    "id": "prd_4db08fe5ba464314",
    "slug": "final-fantasy-tactics-the-ivalice-chronicles-nintendo-switch-2-edition-switch-2",
    "baseHash": "b4a9d6ca4fd9ffe60770a9398740a7037c64284894e555ee273ca02adc416f0c",
    "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "clear": [
+    "box_front_url",
+    "supportedLanguages",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "box_front_url removed: a malformed Nintendo CDN transformation URL answering HTTP 400 — the genuine box photo in cartridgeImage (verified visually alongside the full wrap) remains. supportedLanguages removed: a varies-by-region referral sentence, not a language list. The stray unsupported Nintendo Switch record drops under the platform rule, keeping the honest improved-resolution Switch 2 record. Fields verified: 2025-09-30, 10.3 GB, Metacritic 87. Square card, cover, wrap, four eShop banners and six galleries verified working."
   }
  ]
 }
