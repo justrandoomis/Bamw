@@ -60,6 +60,10 @@ describe("no statement can outgrow D1's parameter limit", () => {
       // The five statuses that count as live. A literal in the source, not a
       // function of how many listings exist.
       "src/lib/used-marketplace.server.ts:ACTIVE_STATUSES": "fixed width",
+      // Two identity hashes per check — the one on this request and the one
+      // recorded at capture — and sliced to MAX_IDENTITY_COMPARISONS in the
+      // source, so the bound does not depend on what the callers pass.
+      "src/lib/referral/risk.server.ts:wanted": "sliced to a constant",
     };
 
     const unknown = found.filter((entry) => !(`${entry.file}:${entry.source}` in KNOWN));

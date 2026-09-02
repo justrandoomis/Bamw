@@ -26,6 +26,7 @@ import { PLATFORM_META } from "@/hub/ui/Icons";
 import { SmartImage } from "@/hub/ui/Bits";
 import { formatBytes, formatDate, formatRange } from "@/hub/utils/format";
 import { cn } from "@/hub/utils/cn";
+import { ShareAndEarnButton } from "@/components/referral/ShareAndEarnButton";
 import { isAwaitingRelease } from "@/lib/release";
 import { playSound } from "@/hub/utils/audio";
 import { sleeveFor } from "@/hub/services/coverArtService";
@@ -455,6 +456,20 @@ export function Hero() {
                   <Bell className="h-4 w-4 text-warn" />
                   <span className="hidden sm:inline">{t("hero.trackPrice")}</span>
                 </button>
+              </div>
+
+              {/*
+                Share and earn — دعوة صديق.
+
+                Its own row under the buy bar rather than another icon beside
+                the wishlist, because it carries a number the member should
+                read, and because on a phone a fourth chip in that row is what
+                starts the horizontal scroll this layout has fought before.
+              */}
+              <div className="mt-3 max-w-sm">
+                <ShareAndEarnButton
+                  product={(game.rawProduct ?? {}) as Record<string, unknown>}
+                />
               </div>
             </div>
           </div>

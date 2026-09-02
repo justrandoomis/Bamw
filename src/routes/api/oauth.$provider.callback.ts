@@ -8,7 +8,7 @@ import {
   readState,
 } from "@/lib/oauth.server";
 import type { OAuthProvider } from "@/lib/oauth.server";
-import { setSessionCookie } from "@/lib/session.server";
+import { establishSession } from "@/lib/session.server";
 import { textBody } from "@/lib/http.server";
 
 type AppleUser = { name?: { firstName?: string; lastName?: string }; email?: string };
@@ -83,7 +83,7 @@ async function handle(request: Request, providerParam: string) {
   try {
     const profile = await exchangeCode(provider, input.code, origin, input.appleUser);
     const user = await findOrCreateOAuthUser(profile);
-    const sessionCookie = await setSessionCookie(user.id, request);
+    const sessionCookie = await establishSession(user.id, request);
 
     // Safety check: All accounts must have a verified phone number.
     // Redirect to profile setup/phone verification if missing.

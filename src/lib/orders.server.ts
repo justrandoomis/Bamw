@@ -22,6 +22,11 @@ import {
 } from "./coupons";
 import { claimCouponUse, readCouponUsage, releaseCouponUse } from "./coupon-usage.server";
 import { isAwaitingRelease, releaseDayISO } from "./release";
+import { resolveReferralForCheckout } from "./referral/checkout.server";
+import {
+  insertRewardStatement,
+  markAttributionConverted,
+} from "./referral/rewards.server";
 import type {
   Address,
   Order,
@@ -284,6 +289,15 @@ export async function createOrderForUser(
   targetProductId?: string | number,
   source = "checkout_web",
   checkoutSessionId?: string,
+  /*
+    Everything the referral programme needs, as one optional argument.
+
+    The request is here because the attribution lives in a signed cookie on it
+    — the server reads the referrer from that cookie and from the database,
+    never from the checkout body, which is why a browser cannot name its own
+    referrer or its own discount.
+  */
+  referralContext?: { request?: Request; referralCode?: string },
 ): Promise<Order> {
   if (!user || !user.id || typeof user.id !== "string") {
     throw new Error("missing_user");
@@ -343,6 +357,57 @@ export async function createOrderForUser(
   // if a later step of checkout fails.
   let couponClaimed: { couponId: string; userId: string } | null = null;
 
+  /*
+    The referral, priced before the coupon is spent.
+
+    Order matters here. The coupon's use is *claimed* — a one-per-member coupon
+    is consumed the moment it is claimed — so the referral has to be priced
+    first, the better of the two chosen, and only then is a coupon claimed. The
+    old order would have burned a member's single-use coupon on an order the
+    referral ended up discounting instead.
+
+    Everything about the referral comes from the server: the attribution from a
+    signed cookie, the referrer from the database, the price from the catalogue
+    and the rate from the store settings. `referralCode` from the request is
+    only a lookup key, and it is put through exactly the same validation as a
+    link that was clicked.
+  */
+  const referralDecision = await resolveReferralForCheckout({
+    ...(referralContext?.request ? { request: referralContext.request } : {}),
+    buyer: user,
+    lines: items.map((item) => ({
+      productId: item.productId,
+      kind: item.kind,
+      quantity: item.quantity,
+      unitPriceIqd: item.unitPrice,
+      optionId: (item.meta as Record<string, unknown> | undefined)?.["optionId"] as string | null,
+      optionName: (item.meta as Record<string, unknown> | undefined)?.["optionName"] as string | null,
+      typeId: (item.meta as Record<string, unknown> | undefined)?.["typeId"] as string | null,
+      typeName: (item.meta as Record<string, unknown> | undefined)?.["typeName"] as string | null,
+      title: item.title,
+    })),
+    storeSettings: store.settings,
+    products: store.products,
+    ...(referralContext?.referralCode ? { explicitCode: referralContext.referralCode } : {}),
+  }).catch((error) => {
+    // A referral that could not be resolved must never lose the sale.
+    console.error("[order:referral_resolve_failed]", error);
+    return undefined;
+  });
+
+  const referralQuote = referralDecision?.quote;
+  const referralDiscount = referralQuote?.applicable ? referralQuote.buyerDiscountIqd : 0;
+
+  /*
+    The coupon, validated but not yet spent.
+
+    `checkCoupon` and `couponDiscount` are both pure reads; the claim below is
+    the only thing that consumes anything, and it happens after the choice.
+  */
+  let couponCandidate:
+    | { coupon: Coupon; discount: number; targetProductId: string | null; variantId: string | null }
+    | undefined;
+
   if (couponCode) {
     const row = await d1First<CouponRow>(
       "SELECT * FROM coupons WHERE code = ? AND is_active = 1",
@@ -391,6 +456,34 @@ export async function createOrderForUser(
     });
     if (!verdict.ok) throw new Error("coupon_invalid");
 
+    const discountRes = couponDiscount(coupon, itemsTotal, couponItems, targetProductId);
+    const discountedLine = discountRes.targetProductId
+      ? couponItems.find((item) => String(item.productId) === String(discountRes.targetProductId))
+      : undefined;
+    couponCandidate = {
+      coupon,
+      discount: discountRes.discount,
+      targetProductId: discountRes.targetProductId ? String(discountRes.targetProductId) : null,
+      variantId: discountedLine?.optionId ? String(discountedLine.optionId) : null,
+    };
+  }
+
+  /*
+    A coupon and a referral do not stack by default.
+
+    When both are in play the buyer gets whichever is worth more and the other
+    is simply not applied — the coupon is not claimed, so it stays available,
+    and the referral is not spent. The admin can turn stacking on, in which case
+    both come off and the total is floored at the cart's value.
+  */
+  let useCoupon = Boolean(couponCandidate);
+  let useReferral = referralDiscount > 0;
+  if (useCoupon && useReferral && !referralDecision?.settings.stackWithCoupon) {
+    if ((couponCandidate?.discount ?? 0) >= referralDiscount) useReferral = false;
+    else useCoupon = false;
+  }
+
+  if (useCoupon && couponCandidate) {
     /*
       The read above is advisory; this is the decision.
 
@@ -400,26 +493,44 @@ export async function createOrderForUser(
       global cap, when one is set, is spent.
     */
     const claim = await claimCouponUse({
-      couponId: coupon.id,
+      couponId: couponCandidate.coupon.id,
       userId: user.id,
-      perUserLimit: coupon.perUserLimit,
-      totalLimit: coupon.usageLimit,
+      perUserLimit: couponCandidate.coupon.perUserLimit,
+      totalLimit: couponCandidate.coupon.usageLimit,
       now,
     });
     if (!claim.ok) throw new Error("coupon_invalid");
-    couponClaimed = { couponId: coupon.id, userId: user.id };
+    couponClaimed = { couponId: couponCandidate.coupon.id, userId: user.id };
 
-    const discountRes = couponDiscount(coupon, itemsTotal, couponItems, targetProductId);
-    const discountedLine = discountRes.targetProductId
-      ? couponItems.find((item) => String(item.productId) === String(discountRes.targetProductId))
-      : undefined;
-    appliedVariantId = discountedLine?.optionId ? String(discountedLine.optionId) : null;
-    discountAmount = discountRes.discount;
-    appliedCoupon = coupon;
-    appliedTargetProductId = discountRes.targetProductId
-      ? String(discountRes.targetProductId)
-      : null;
+    appliedVariantId = couponCandidate.variantId;
+    discountAmount += couponCandidate.discount;
+    appliedCoupon = couponCandidate.coupon;
+    appliedTargetProductId = couponCandidate.targetProductId;
   }
+
+  if (useReferral) discountAmount += referralDiscount;
+  discountAmount = Math.min(discountAmount, itemsTotal);
+
+  const appliedReferral =
+    useReferral && referralQuote?.applicable
+      ? {
+          ...(referralQuote.referralCode ? { code: referralQuote.referralCode } : {}),
+          ...(referralQuote.referralCodeId ? { referralCodeId: referralQuote.referralCodeId } : {}),
+          ...(referralQuote.attributionId ? { attributionId: referralQuote.attributionId } : {}),
+          referrerUserId: referralQuote.referrerUserId ?? "",
+          referredUserId: user.id,
+          productId: referralQuote.productId ?? "",
+          ...(referralQuote.productTitle ? { productTitle: referralQuote.productTitle } : {}),
+          originalPriceIqd: referralQuote.originalPriceIqd,
+          buyerDiscountIqd: referralQuote.buyerDiscountIqd,
+          referrerRewardIqd: referralQuote.referrerRewardIqd,
+          buyerPercentBps: referralQuote.buyerPercentBps,
+          referrerPercentBps: referralQuote.referrerPercentBps,
+          rewardStatus: "eligible" as const,
+          riskVerdict: referralQuote.riskVerdict,
+          riskScore: referralQuote.riskScore,
+        }
+      : undefined;
 
   const finalItemsTotal = Math.max(0, itemsTotal - discountAmount);
   const needsWalletPayment = items.every((item) =>
@@ -469,6 +580,22 @@ export async function createOrderForUser(
     // per-product profit attribute it to the right product.
     ...(appliedTargetProductId ? { couponTargetProductId: appliedTargetProductId } : {}),
     ...(appliedVariantId ? { couponTargetVariantId: appliedVariantId } : {}),
+    /*
+      The referral, as the server computed it. `rewardStatus` starts at
+      `pending` for an order that is paid on the spot and `eligible` for one
+      that is not — the same two states the reward row is written with, so the
+      order and the row can never disagree about where the money stands.
+    */
+    ...(appliedReferral
+      ? {
+          referral: {
+            ...appliedReferral,
+            rewardStatus: (needsWalletPayment ? "pending" : "eligible") as
+              | "pending"
+              | "eligible",
+          },
+        }
+      : {}),
     id: orderId,
     code,
     userId: user.id,
@@ -490,6 +617,38 @@ export async function createOrderForUser(
     idempotencyKey: cleanIdempotencyKey,
     createdBy: user.id,
   };
+
+  /*
+    The reward row, prepared here so a paid order can commit it atomically with
+    the money and an unpaid one can write it straight after the order.
+  */
+  const rewardStatement = appliedReferral
+    ? insertRewardStatement({
+        orderId,
+        // One reward per order line, and the line is the qualifying game's.
+        orderItemId:
+          items.find((item) => String(item.productId) === appliedReferral.productId)?.id ??
+          `${orderId}:${appliedReferral.productId}`,
+        productId: appliedReferral.productId,
+        ...(appliedReferral.attributionId ? { attributionId: appliedReferral.attributionId } : {}),
+        ...(appliedReferral.referralCodeId
+          ? { referralCodeId: appliedReferral.referralCodeId }
+          : {}),
+        ...(appliedReferral.code ? { referralCode: appliedReferral.code } : {}),
+        referrerUserId: appliedReferral.referrerUserId,
+        buyerUserId: user.id,
+        originalPriceIqd: appliedReferral.originalPriceIqd,
+        buyerDiscountIqd: appliedReferral.buyerDiscountIqd,
+        referrerRewardIqd: appliedReferral.referrerRewardIqd,
+        buyerPercentBps: appliedReferral.buyerPercentBps,
+        referrerPercentBps: appliedReferral.referrerPercentBps,
+        riskScore: appliedReferral.riskScore,
+        riskVerdict: appliedReferral.riskVerdict,
+        paid: needsWalletPayment,
+        holdDays: referralDecision?.settings.holdDays ?? 0,
+        now,
+      })
+    : undefined;
 
   if (needsWalletPayment) {
     const payment = await d1Batch([
@@ -522,6 +681,15 @@ export async function createOrderForUser(
           order.createdBy || user.id,
         ],
       },
+      /*
+        The reward is written in the same batch as the payment, chained to it by
+        `changes() = 1` like every statement before it. A discount the buyer
+        received and a reward the referrer is owed are two halves of one
+        decision: they are committed together or not at all.
+      */
+      ...(rewardStatement
+        ? [{ sql: rewardStatement.chainedSql, params: rewardStatement.params }]
+        : []),
     ]);
     if (Number(payment[0]?.meta?.changes ?? 0) !== 1) {
       if (couponClaimed) {
@@ -529,6 +697,29 @@ export async function createOrderForUser(
       }
       throw new Error("insufficient_balance");
     }
+  }
+
+  /*
+    An unpaid order has no payment batch to ride along with, so the reward is
+    written on its own. It sits at `eligible` until the money arrives.
+  */
+  if (rewardStatement && !needsWalletPayment) {
+    try {
+      await d1Run(rewardStatement.sql, ...rewardStatement.params);
+    } catch (err) {
+      console.error("[order:referral_reward_insert_failed]", err);
+    }
+  }
+
+  /*
+    The offer is spent.
+
+    Marking the attribution converted is what stops the same referral
+    discounting a second order — the row can only move out of `captured` or
+    `eligible` once, so a repeated checkout finds nothing left to apply.
+  */
+  if (appliedReferral) {
+    await markAttributionConverted(appliedReferral.attributionId ?? null, orderId);
   }
 
   // Record Coupon Redemption in D1
@@ -830,6 +1021,26 @@ export async function createOrderForUser(
       );
     } catch (err) {
       console.error("[order:telegram_notify_failed]", err);
+    }
+  }
+
+  /*
+    Tell both sides, without telling either about the other.
+
+    The referrer hears that a friend's order is on its way and what it will be
+    worth — never who, never which game. The buyer hears about their own
+    discount. Both are best-effort: a notification that fails is not a reason
+    to fail a paid order.
+  */
+  if (appliedReferral) {
+    try {
+      const { notifyReferralPending, notifyBuyerReferralApplied, notifyReferralUsed } =
+        await import("./referral/notifications.server");
+      if (needsWalletPayment) await notifyReferralPending(order);
+      else await notifyReferralUsed(appliedReferral.referrerUserId);
+      await notifyBuyerReferralApplied(order);
+    } catch (err) {
+      console.warn("[order:referral_notify_failed]", err);
     }
   }
 

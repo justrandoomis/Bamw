@@ -24,6 +24,7 @@ import { Route as GamesRouteImport } from './routes/games'
 import { Route as PolicyRouteImport } from './routes/policy'
 import { Route as ProblemRouteImport } from './routes/problem'
 import { Route as ProfileRouteImport } from './routes/profile'
+import { Route as ReferRouteImport } from './routes/refer'
 import { Route as SupportRouteImport } from './routes/support'
 import { Route as UsedRouteImport } from './routes/used'
 import { Route as WalletRouteImport } from './routes/wallet'
@@ -47,6 +48,7 @@ import { Route as ApiOrdersRouteImport } from './routes/api/orders'
 import { Route as ApiOtpRouteImport } from './routes/api/otp'
 import { Route as ApiProductRouteImport } from './routes/api/product'
 import { Route as ApiProfileRouteImport } from './routes/api/profile'
+import { Route as ApiReferralRouteImport } from './routes/api/referral'
 import { Route as ApiReleaseAlertsRouteImport } from './routes/api/release-alerts'
 import { Route as ApiRevealPasswordRouteImport } from './routes/api/reveal-password'
 import { Route as ApiReviewsRouteImport } from './routes/api/reviews'
@@ -84,6 +86,7 @@ import { Route as ApiAdminMigrateImagesRouteImport } from './routes/api/admin/mi
 import { Route as ApiAdminOrdersRouteImport } from './routes/api/admin.orders'
 import { Route as ApiAdminProductsRouteImport } from './routes/api/admin/products'
 import { Route as ApiAdminPurgeRouteImport } from './routes/api/admin/purge'
+import { Route as ApiAdminReferralsRouteImport } from './routes/api/admin/referrals'
 import { Route as ApiAdminStoreRouteImport } from './routes/api/admin/store'
 import { Route as ApiAdminUsersRouteImport } from './routes/api/admin/users'
 import { Route as ApiFilesSplatRouteImport } from './routes/api/files/$'
@@ -200,6 +203,11 @@ const ProfileRoute = ProfileRouteImport.update({
   path: '/profile',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ReferRoute = ReferRouteImport.update({
+  id: '/refer',
+  path: '/refer',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SupportRoute = SupportRouteImport.update({
   id: '/support',
   path: '/support',
@@ -313,6 +321,11 @@ const ApiProductRoute = ApiProductRouteImport.update({
 const ApiProfileRoute = ApiProfileRouteImport.update({
   id: '/api/profile',
   path: '/api/profile',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiReferralRoute = ApiReferralRouteImport.update({
+  id: '/api/referral',
+  path: '/api/referral',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ApiReleaseAlertsRoute = ApiReleaseAlertsRouteImport.update({
@@ -498,6 +511,11 @@ const ApiAdminProductsRoute = ApiAdminProductsRouteImport.update({
 const ApiAdminPurgeRoute = ApiAdminPurgeRouteImport.update({
   id: '/api/admin/purge',
   path: '/api/admin/purge',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiAdminReferralsRoute = ApiAdminReferralsRouteImport.update({
+  id: '/api/admin/referrals',
+  path: '/api/admin/referrals',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ApiAdminStoreRoute = ApiAdminStoreRouteImport.update({
@@ -733,6 +751,7 @@ export interface FileRoutesByFullPath {
   '/policy': typeof PolicyRoute
   '/problem': typeof ProblemRoute
   '/profile': typeof ProfileRoute
+  '/refer': typeof ReferRoute
   '/support': typeof SupportRoute
   '/used': typeof UsedRoute
   '/wallet': typeof WalletRoute
@@ -755,6 +774,7 @@ export interface FileRoutesByFullPath {
   '/api/otp': typeof ApiOtpRoute
   '/api/product': typeof ApiProductRoute
   '/api/profile': typeof ApiProfileRoute
+  '/api/referral': typeof ApiReferralRoute
   '/api/release-alerts': typeof ApiReleaseAlertsRoute
   '/api/reveal-password': typeof ApiRevealPasswordRoute
   '/api/reviews': typeof ApiReviewsRoute
@@ -793,6 +813,7 @@ export interface FileRoutesByFullPath {
   '/api/admin/orders': typeof ApiAdminOrdersRoute
   '/api/admin/products': typeof ApiAdminProductsRouteWithChildren
   '/api/admin/purge': typeof ApiAdminPurgeRoute
+  '/api/admin/referrals': typeof ApiAdminReferralsRoute
   '/api/admin/store': typeof ApiAdminStoreRoute
   '/api/admin/users': typeof ApiAdminUsersRoute
   '/api/files/$': typeof ApiFilesSplatRoute
@@ -850,6 +871,7 @@ export interface FileRoutesByTo {
   '/policy': typeof PolicyRoute
   '/problem': typeof ProblemRoute
   '/profile': typeof ProfileRoute
+  '/refer': typeof ReferRoute
   '/support': typeof SupportRoute
   '/used': typeof UsedRoute
   '/wallet': typeof WalletRoute
@@ -872,6 +894,7 @@ export interface FileRoutesByTo {
   '/api/otp': typeof ApiOtpRoute
   '/api/product': typeof ApiProductRoute
   '/api/profile': typeof ApiProfileRoute
+  '/api/referral': typeof ApiReferralRoute
   '/api/release-alerts': typeof ApiReleaseAlertsRoute
   '/api/reveal-password': typeof ApiRevealPasswordRoute
   '/api/reviews': typeof ApiReviewsRoute
@@ -910,6 +933,7 @@ export interface FileRoutesByTo {
   '/api/admin/orders': typeof ApiAdminOrdersRoute
   '/api/admin/products': typeof ApiAdminProductsRouteWithChildren
   '/api/admin/purge': typeof ApiAdminPurgeRoute
+  '/api/admin/referrals': typeof ApiAdminReferralsRoute
   '/api/admin/store': typeof ApiAdminStoreRoute
   '/api/admin/users': typeof ApiAdminUsersRoute
   '/api/files/$': typeof ApiFilesSplatRoute
@@ -968,6 +992,7 @@ export interface FileRoutesById {
   '/policy': typeof PolicyRoute
   '/problem': typeof ProblemRoute
   '/profile': typeof ProfileRoute
+  '/refer': typeof ReferRoute
   '/support': typeof SupportRoute
   '/used': typeof UsedRoute
   '/wallet': typeof WalletRoute
@@ -990,6 +1015,7 @@ export interface FileRoutesById {
   '/api/otp': typeof ApiOtpRoute
   '/api/product': typeof ApiProductRoute
   '/api/profile': typeof ApiProfileRoute
+  '/api/referral': typeof ApiReferralRoute
   '/api/release-alerts': typeof ApiReleaseAlertsRoute
   '/api/reveal-password': typeof ApiRevealPasswordRoute
   '/api/reviews': typeof ApiReviewsRoute
@@ -1028,6 +1054,7 @@ export interface FileRoutesById {
   '/api/admin/orders': typeof ApiAdminOrdersRoute
   '/api/admin/products': typeof ApiAdminProductsRouteWithChildren
   '/api/admin/purge': typeof ApiAdminPurgeRoute
+  '/api/admin/referrals': typeof ApiAdminReferralsRoute
   '/api/admin/store': typeof ApiAdminStoreRoute
   '/api/admin/users': typeof ApiAdminUsersRoute
   '/api/files/$': typeof ApiFilesSplatRoute
@@ -1087,6 +1114,7 @@ export interface FileRouteTypes {
     | '/policy'
     | '/problem'
     | '/profile'
+    | '/refer'
     | '/support'
     | '/used'
     | '/wallet'
@@ -1109,6 +1137,7 @@ export interface FileRouteTypes {
     | '/api/otp'
     | '/api/product'
     | '/api/profile'
+    | '/api/referral'
     | '/api/release-alerts'
     | '/api/reveal-password'
     | '/api/reviews'
@@ -1147,6 +1176,7 @@ export interface FileRouteTypes {
     | '/api/admin/orders'
     | '/api/admin/products'
     | '/api/admin/purge'
+    | '/api/admin/referrals'
     | '/api/admin/store'
     | '/api/admin/users'
     | '/api/files/$'
@@ -1204,6 +1234,7 @@ export interface FileRouteTypes {
     | '/policy'
     | '/problem'
     | '/profile'
+    | '/refer'
     | '/support'
     | '/used'
     | '/wallet'
@@ -1226,6 +1257,7 @@ export interface FileRouteTypes {
     | '/api/otp'
     | '/api/product'
     | '/api/profile'
+    | '/api/referral'
     | '/api/release-alerts'
     | '/api/reveal-password'
     | '/api/reviews'
@@ -1264,6 +1296,7 @@ export interface FileRouteTypes {
     | '/api/admin/orders'
     | '/api/admin/products'
     | '/api/admin/purge'
+    | '/api/admin/referrals'
     | '/api/admin/store'
     | '/api/admin/users'
     | '/api/files/$'
@@ -1321,6 +1354,7 @@ export interface FileRouteTypes {
     | '/policy'
     | '/problem'
     | '/profile'
+    | '/refer'
     | '/support'
     | '/used'
     | '/wallet'
@@ -1343,6 +1377,7 @@ export interface FileRouteTypes {
     | '/api/otp'
     | '/api/product'
     | '/api/profile'
+    | '/api/referral'
     | '/api/release-alerts'
     | '/api/reveal-password'
     | '/api/reviews'
@@ -1381,6 +1416,7 @@ export interface FileRouteTypes {
     | '/api/admin/orders'
     | '/api/admin/products'
     | '/api/admin/purge'
+    | '/api/admin/referrals'
     | '/api/admin/store'
     | '/api/admin/users'
     | '/api/files/$'
@@ -1439,6 +1475,7 @@ export interface RootRouteChildren {
   PolicyRoute: typeof PolicyRoute
   ProblemRoute: typeof ProblemRoute
   ProfileRoute: typeof ProfileRoute
+  ReferRoute: typeof ReferRoute
   SupportRoute: typeof SupportRoute
   UsedRoute: typeof UsedRoute
   WalletRoute: typeof WalletRoute
@@ -1461,6 +1498,7 @@ export interface RootRouteChildren {
   ApiOtpRoute: typeof ApiOtpRoute
   ApiProductRoute: typeof ApiProductRoute
   ApiProfileRoute: typeof ApiProfileRoute
+  ApiReferralRoute: typeof ApiReferralRoute
   ApiReleaseAlertsRoute: typeof ApiReleaseAlertsRoute
   ApiRevealPasswordRoute: typeof ApiRevealPasswordRoute
   ApiReviewsRoute: typeof ApiReviewsRoute
@@ -1499,6 +1537,7 @@ export interface RootRouteChildren {
   ApiAdminOrdersRoute: typeof ApiAdminOrdersRoute
   ApiAdminProductsRoute: typeof ApiAdminProductsRouteWithChildren
   ApiAdminPurgeRoute: typeof ApiAdminPurgeRoute
+  ApiAdminReferralsRoute: typeof ApiAdminReferralsRoute
   ApiAdminStoreRoute: typeof ApiAdminStoreRoute
   ApiAdminUsersRoute: typeof ApiAdminUsersRoute
   ApiFilesSplatRoute: typeof ApiFilesSplatRoute
@@ -1634,6 +1673,13 @@ declare module '@tanstack/react-router' {
       path: '/profile'
       fullPath: '/profile'
       preLoaderRoute: typeof ProfileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/refer': {
+      id: '/refer'
+      path: '/refer'
+      fullPath: '/refer'
+      preLoaderRoute: typeof ReferRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/support': {
@@ -1795,6 +1841,13 @@ declare module '@tanstack/react-router' {
       path: '/api/profile'
       fullPath: '/api/profile'
       preLoaderRoute: typeof ApiProfileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/referral': {
+      id: '/api/referral'
+      path: '/api/referral'
+      fullPath: '/api/referral'
+      preLoaderRoute: typeof ApiReferralRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/api/release-alerts': {
@@ -2054,6 +2107,13 @@ declare module '@tanstack/react-router' {
       path: '/api/admin/purge'
       fullPath: '/api/admin/purge'
       preLoaderRoute: typeof ApiAdminPurgeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/admin/referrals': {
+      id: '/api/admin/referrals'
+      path: '/api/admin/referrals'
+      fullPath: '/api/admin/referrals'
+      preLoaderRoute: typeof ApiAdminReferralsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/api/admin/store': {
@@ -2417,6 +2477,7 @@ const rootRouteChildren: RootRouteChildren = {
   PolicyRoute: PolicyRoute,
   ProblemRoute: ProblemRoute,
   ProfileRoute: ProfileRoute,
+  ReferRoute: ReferRoute,
   SupportRoute: SupportRoute,
   UsedRoute: UsedRoute,
   WalletRoute: WalletRoute,
@@ -2439,6 +2500,7 @@ const rootRouteChildren: RootRouteChildren = {
   ApiOtpRoute: ApiOtpRoute,
   ApiProductRoute: ApiProductRoute,
   ApiProfileRoute: ApiProfileRoute,
+  ApiReferralRoute: ApiReferralRoute,
   ApiReleaseAlertsRoute: ApiReleaseAlertsRoute,
   ApiRevealPasswordRoute: ApiRevealPasswordRoute,
   ApiReviewsRoute: ApiReviewsRoute,
@@ -2477,6 +2539,7 @@ const rootRouteChildren: RootRouteChildren = {
   ApiAdminOrdersRoute: ApiAdminOrdersRoute,
   ApiAdminProductsRoute: ApiAdminProductsRouteWithChildren,
   ApiAdminPurgeRoute: ApiAdminPurgeRoute,
+  ApiAdminReferralsRoute: ApiAdminReferralsRoute,
   ApiAdminStoreRoute: ApiAdminStoreRoute,
   ApiAdminUsersRoute: ApiAdminUsersRoute,
   ApiFilesSplatRoute: ApiFilesSplatRoute,

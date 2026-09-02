@@ -17,6 +17,7 @@ import {
   Zap,
   CheckCircle2,
   Coins,
+  Gift,
   Palette,
   Shield,
 } from "lucide-react";
@@ -508,6 +509,31 @@ export default function ProfileView() {
                 </div>
                 <span className="font-bold text-foreground">{t("طرق الدفع")}</span>
               </div>
+            </button>
+
+            <div className="w-full h-px bg-muted" />
+
+            <button
+              onClick={() => {
+                playSound("hover_s", 0.5);
+                void navigate({ to: "/refer" as any });
+              }}
+              className="w-full flex items-center justify-between p-3 hover:bg-muted rounded-2xl transition-colors text-right"
+            >
+              <div className="flex min-w-0 items-center gap-4">
+                <div className="shrink-0 p-3 bg-emerald-100 text-emerald-600 rounded-full">
+                  <Gift className="w-5 h-5" />
+                </div>
+                <div className="min-w-0">
+                  <div className="font-bold text-foreground">{t("دعوة صديق")}</div>
+                  <div className="truncate text-xs text-muted-foreground">
+                    {t("اربح رصيداً عن كل صديق يكمل أول عملية شراء")}
+                  </div>
+                </div>
+              </div>
+              <ChevronDown
+                className={`w-5 h-5 shrink-0 text-muted-foreground ${lang === "ar" ? "rotate-90" : "-rotate-90"}`}
+              />
             </button>
 
             <div className="w-full h-px bg-muted" />

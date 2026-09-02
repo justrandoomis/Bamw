@@ -13,7 +13,7 @@ import {
   verifiedOwnerIdentity,
 } from "@/lib/db.server";
 import { body, guard, json } from "@/lib/http.server";
-import { clearSessionCookie, getSessionUser, setSessionCookie } from "@/lib/session.server";
+import { clearSessionCookie, getSessionUser, establishSession } from "@/lib/session.server";
 import { consumeRateLimit, rateLimitResponse } from "@/lib/rate-limit.server";
 
 interface AuthBody {
@@ -87,7 +87,7 @@ export const Route = createFileRoute("/api/auth")({
           const user = await ensureOwnerAdmin(found, verifiedOwnerIdentity(found));
           return json(
             { user: toPublicUser(user) },
-            { headers: { "set-cookie": await setSessionCookie(user.id, request) } },
+            { headers: { "set-cookie": await establishSession(user.id, request) } },
           );
         }, "auth"),
     },

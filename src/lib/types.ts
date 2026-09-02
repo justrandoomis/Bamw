@@ -644,7 +644,19 @@ export interface StoreNotification {
   createdAt: string;
 }
 
-export type WalletTransactionKind = "deposit" | "purchase" | "refund" | "admin_adjustment";
+/**
+ * `referral_reward` and `referral_reversal` are store credit moving because of
+ * the Refer a Friend programme. They are kept as their own kinds rather than
+ * folded into `deposit`/`refund` so the wallet history can name them, and so a
+ * clawback is never mistaken for an order refund.
+ */
+export type WalletTransactionKind =
+  | "deposit"
+  | "purchase"
+  | "refund"
+  | "admin_adjustment"
+  | "referral_reward"
+  | "referral_reversal";
 
 export interface WalletTransaction {
   id: string;
@@ -784,6 +796,37 @@ export const ADMIN_FINISHED_ORDER_STATUSES: readonly OrderStatus[] = [
 ];
 export type PaymentStatus = "unpaid" | "review" | "paid" | "rejected";
 
+/**
+ * The referral recorded on an order.
+ *
+ * Every figure is the one the *server* computed at the moment of purchase, in
+ * whole dinars, at the rates then in force. Nothing here is ever read back
+ * from a request.
+ */
+export interface OrderReferral {
+  /** The code as it was typed or shared, for the audit trail. */
+  code?: string;
+  referralCodeId?: string;
+  attributionId?: string;
+  referrerUserId: string;
+  /** The friend who bought. The same as `Order.userId`; kept for clarity. */
+  referredUserId: string;
+  /** The qualifying game. */
+  productId: string;
+  productTitle?: string;
+  /** The catalogue price of one copy, before the referral discount. */
+  originalPriceIqd: number;
+  buyerDiscountIqd: number;
+  referrerRewardIqd: number;
+  buyerPercentBps: number;
+  referrerPercentBps: number;
+  /** Where the reward stood when the order was written. */
+  rewardStatus: "eligible" | "pending" | "approved" | "blocked" | "reversed" | "expired";
+  /** The anti-abuse result: `clear`, or the reasons that were found. */
+  riskVerdict: string;
+  riskScore: number;
+}
+
 export interface Order {
   id: string;
   code: string;
@@ -805,6 +848,14 @@ export interface Order {
   couponTargetProductId?: string;
   /** The variant of {@link couponTargetProductId} that was discounted. */
   couponTargetVariantId?: string;
+  /**
+   * The referral this order was placed under, when there was one.
+   *
+   * Recorded on the order itself as well as in `referral_rewards`, so the
+   * numbers behind a discount can be read from the order alone — months later,
+   * with the settings since changed and the catalogue re-priced.
+   */
+  referral?: OrderReferral;
   currency: string;
   status: OrderStatus;
   paymentStatus: PaymentStatus;

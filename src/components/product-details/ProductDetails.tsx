@@ -39,6 +39,10 @@ import { navSections, resolveSections, type SectionDef } from "@/lib/productImpo
 import type { ProductSchema } from "@/lib/productImport/types";
 import { useCartStore } from "@/store/useCartStore";
 import { ReleaseAlertPanel } from "@/components/ReleaseAlertPanel";
+import {
+  ShareAndEarnButton,
+  ShareTermsNote,
+} from "@/components/referral/ShareAndEarnButton";
 import { isAwaitingRelease } from "@/lib/release";
 import type { ProductKind } from "@/lib/types";
 import { showAddToCartToast } from "@/utils/cart-toast";
@@ -375,6 +379,17 @@ function DetailsBody({
             </button>
           </div>
           )}
+
+          {/*
+            Share and earn. Under the buy row rather than in it, because it is
+            an offer to the person already looking at the game — and it stays
+            visible before release too, when there is nothing to buy yet but a
+            link is still worth sharing.
+          */}
+          <div className="pt-3">
+            <ShareAndEarnButton product={product} />
+            <ShareTermsNote />
+          </div>
         </div>
       </div>
 

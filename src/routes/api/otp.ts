@@ -41,7 +41,7 @@ import {
   type OtpChannel,
 } from "@/lib/otp.server";
 import { isPlaceholderEmail, normalizePhone, phonePlaceholderEmail } from "@/lib/phone";
-import { getSessionUser, setSessionCookie, toPublicUser } from "@/lib/session.server";
+import { getSessionUser, establishSession, toPublicUser } from "@/lib/session.server";
 import { consumeRateLimit, rateLimitResponse } from "@/lib/rate-limit.server";
 
 interface OtpBody {
@@ -272,7 +272,7 @@ export const Route = createFileRoute("/api/otp")({
               await setUserPassword(account.id, data.password);
               return json(
                 { user: toPublicUser(account) },
-                { headers: { "set-cookie": await setSessionCookie(account.id, request) } },
+                { headers: { "set-cookie": await establishSession(account.id, request) } },
               );
             }
 
@@ -420,7 +420,7 @@ export const Route = createFileRoute("/api/otp")({
               const verified = (await setPhoneVerified(account.id, phone)) ?? account;
               return json(
                 { user: toPublicUser(verified) },
-                { headers: { "set-cookie": await setSessionCookie(verified.id, request) } },
+                { headers: { "set-cookie": await establishSession(verified.id, request) } },
               );
             }
 
@@ -433,7 +433,7 @@ export const Route = createFileRoute("/api/otp")({
               await adoptGuestTelegramLink(phone, verified.id);
               return json(
                 { user: toPublicUser(verified) },
-                { headers: { "set-cookie": await setSessionCookie(verified.id, request) } },
+                { headers: { "set-cookie": await establishSession(verified.id, request) } },
               );
             }
 
@@ -498,7 +498,7 @@ export const Route = createFileRoute("/api/otp")({
 
               return json(
                 { user: toPublicUser(promoted), legacyClaimed },
-                { headers: { "set-cookie": await setSessionCookie(promoted.id, request) } },
+                { headers: { "set-cookie": await establishSession(promoted.id, request) } },
               );
             }
 
@@ -527,7 +527,7 @@ export const Route = createFileRoute("/api/otp")({
 
             return json(
               { user: toPublicUser(created), legacyClaimed },
-              { headers: { "set-cookie": await setSessionCookie(created.id, request) } },
+              { headers: { "set-cookie": await establishSession(created.id, request) } },
             );
           } catch (err) {
             if (err instanceof Response) return err;
