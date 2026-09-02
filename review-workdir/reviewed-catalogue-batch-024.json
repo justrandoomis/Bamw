@@ -1,51 +1,212 @@
 {
  "batch": "024",
- "apply": false,
+ "apply": true,
  "games": [
   {
    "id": "prd_99e5727e6bc7469f",
    "slug": "super-mario-bros-wonder-switch",
    "baseHash": "468aedef5a736f201f09efd715b3edf664060bdab80f19768537bc006f450f6c",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "informationStatus": "available",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p",
+       "fps": "60"
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p",
+       "fps": "60"
+      },
+      "modes": [],
+      "sourceName": "Digital Foundry's analysis of Super Mario Bros. Wonder",
+      "sourceUrl": "https://www.nintendolife.com/games/nintendo-switch/super_mario_bros_wonder",
+      "verificationStatus": "technical_analysis"
+     }
+    ]
+   },
+   "clear": [
+    "youtubeTrailer",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "The trailer field held the game's microsite URL — removed. Switch-2 badge becomes the platform record with the documented native 1080p/720p at 60 fps figures. 2023-10-20, Metacritic 92 verified. All images working. Contamination removed."
   },
   {
    "id": "prd_d74598d589434852",
    "slug": "super-mario-galaxy-plus-super-mario-galaxy-2-switch",
    "baseHash": "43e71a4dca43f697ee82fb35fffaf481dbdbf73e902d6c21034758be50c72bf6",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "bannerImages": [
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000030770/2eafc395d5c6fbbcbccc7e151a2552f15d83d5d881bb074d3bc881a38191e440",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000030770/f33b4687628c37c083e6c34f077f5432696ea413048751e8da684ea3b4f1481b",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000030770/92e54844116c79ebb07e3b4f56c454238d2e777fa61ed84c88b2f79909c51ab7",
+     "/api/files/products/prd_d74598d589434852/banner-4-8cdc3a9e72faaadb.avif"
+    ],
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "informationStatus": "available",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p",
+       "fps": "60"
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p",
+       "fps": "60"
+      },
+      "modes": [],
+      "sourceName": "Coverage of the Galaxy collection on Switch",
+      "sourceUrl": "https://www.nintendolife.com/games/nintendo-switch/super_mario_galaxy_plus_super_mario_galaxy_2",
+      "verificationStatus": "technical_analysis"
+     }
+    ]
+   },
+   "clear": [
+    "youtubeTrailer",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "One dead R2 banner dropped; store-URL trailer removed. The cross-generation prose record becomes this Switch 1 SKU's platform record at the collection's documented 60 fps. 2025-10-02, Metacritic 87 verified. Contamination removed."
   },
   {
    "id": "prd_8305beacb7f14685",
    "slug": "super-mario-odyssey",
    "baseHash": "3beb8eb6d7d9655033fa523d8cf23dbddcc6087dfb1c68314b65dd5f5f31f543",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "dlcSummary": "No paid DLC exists for Super Mario Odyssey; free updates added Luigi's Balloon World and extra outfits.",
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "informationStatus": "not_published",
+      "unavailableReason": "Nintendo publishes no Switch 2-specific figures for Super Mario Odyssey; the original Switch release runs 900p docked / 720p handheld at 60 fps per Digital Foundry.",
+      "handheld": {
+       "supported": true
+      },
+      "tv": {
+       "supported": true
+      },
+      "modes": [],
+      "sourceName": "Nintendo official product page; Digital Foundry analysis of the original release",
+      "sourceUrl": "https://www.nintendo.com/us/store/products/super-mario-odyssey-switch/",
+      "verificationStatus": "official"
+     }
+    ]
+   },
+   "clear": [
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus",
+    "redemptionSteps",
+    "hardwareModel",
+    "storageCapacity",
+    "screenSpecs",
+    "batteryLife"
+   ],
+   "notes": "The record had no device performance at all — an honest not-published record added for the platform device (this cross-generation SKU resolves to Switch 2), carrying the original release's documented figures in the reason text. Like Mario Kart World, fifteen contamination fields including hardware specs and redemption steps removed. Free-update history recorded in dlcSummary. 2017-10-27, Metacritic 97, working trailer and images verified."
   },
   {
    "id": "prd_91e34a020d374ca5",
    "slug": "super-mario-party-jamboree",
    "baseHash": "124f4f9466908145f3d960ea7fccec5f3e4944b1f93c7661a1f00e5b6b52bac2",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "informationStatus": "available",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p",
+       "fps": "60"
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p",
+       "fps": "60"
+      },
+      "modes": [],
+      "sourceName": "Launch coverage of Super Mario Party Jamboree",
+      "sourceUrl": "https://www.nintendolife.com/games/nintendo-switch/super_mario_party_jamboree",
+      "verificationStatus": "technical_analysis"
+     }
+    ]
+   },
+   "clear": [
+    "nintendoCardImage",
+    "coverHiResImage",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "The square-card and wrap-texture fields pointed at an HTML page on a third-party image host — not images at all — removed (remaining images work). The record claimed 1920x1080 handheld on Switch 1 hardware, which cannot be right: replaced with the platform record at the documented 720p/1080p 60 fps. 2024-10-17, Metacritic 82 verified. Contamination removed."
   },
   {
    "id": "prd_eddd0a3519bd4681",
    "slug": "super-mario-party-jamboree-nintendo-switch-2-edition-plus-jamboree-tv",
    "baseHash": "2e56add19d0ed5b45ffff3326ef1eb22cb8895f6334c487cf8b797283c60d974",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "coverImage": "/api/files/products/prd_eddd0a3519bd4681/banner-0-a2bd7726a54dfe05.webp",
+    "image": "/api/files/products/prd_eddd0a3519bd4681/banner-0-a2bd7726a54dfe05.webp",
+    "bannerImages": [
+     "/api/files/products/prd_eddd0a3519bd4681/banner-1-c476915d7678eb15.webp",
+     "/api/files/products/prd_eddd0a3519bd4681/banner-2-faa07f9b00973079.webp",
+     "/api/files/products/prd_eddd0a3519bd4681/banner-3-f6fa26639791554c.webp"
+    ]
+   },
+   "clear": [
+    "box_front_url",
+    "galleryImages",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "Cover and listing were dead R2 references, the box_front_url and all eight gallery entries were MarioWiki hotlinks the wiki blocks — the first working banner becomes cover and listing, the other three verified banners remain as banners, the wiki-dead gallery is removed (section hides), and the genuine box, square card and wrap stay. Unprobed banner entries excluded per the verified-only rule. 2026-03-26, Metacritic 90, sourced 1080p/4K-output record kept. Contamination removed."
   }
  ]
 }
