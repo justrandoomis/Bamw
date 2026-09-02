@@ -1,51 +1,202 @@
 {
  "batch": "023",
- "apply": false,
+ "apply": true,
  "games": [
   {
    "id": "prd_5ba181a080d14238",
    "slug": "star-wars-outlaws-gold-edition-switch-2",
    "baseHash": "27b8463fa7a2257197121e97806678af4e797cc175558cd30dc9f0695d5b7d3a",
    "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "clear": [
+    "youtubeTrailer"
+   ],
+   "notes": "The trailer field held a Ubisoft news-article URL, which cannot embed — removed. Honest not-published Ubisoft record already in place; Metacritic left absent (no verifiable Switch 2 aggregate). 2025-09-04, 19.4 GB verified (hidden product, no contamination present)."
   },
   {
    "id": "prd_008374b0a7324d22",
    "slug": "stray-switch-1",
    "baseHash": "deb4e03baac64d77c88e0411bb8cc5fe2f53f3f97bf9deba80d6f5d2cefcdf20",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "size": 5.7,
+    "downloadSizeGb": 5.7,
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "informationStatus": "available",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p",
+       "fps": "30"
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p (dynamic)",
+       "fps": "30"
+      },
+      "modes": [],
+      "sourceName": "Technical coverage of the 2024 Switch port",
+      "sourceUrl": "https://www.nintendolife.com/games/nintendo-switch/stray",
+      "verificationStatus": "technical_analysis"
+     }
+    ]
+   },
+   "clear": [
+    "youtubeTrailer",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "Size string '5.7 GB' becomes a number; store-URL trailer removed; doubled records collapse to the platform record with the port's documented 30 fps figures. 2024-11-19, Metacritic 83 verified (hidden product)."
   },
   {
    "id": "prd_ff440aba76494705",
    "slug": "stray-switch-2",
    "baseHash": "61b266a8aff90b166b2a3e9133981c253f9899aa4b7828fafbbe124e2934d4cd",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "size": 8.0,
+    "downloadSizeGb": 8.0
+   },
+   "clear": [
+    "youtubeTrailer",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "Size string '8.0 GB' becomes a number; store-URL trailer removed; the unsupported Nintendo Switch record drops under the platform rule, keeping the sourced 1080p/1440p at 60 fps Switch 2 record. 2026-05-28 kept (hidden product)."
   },
   {
    "id": "prd_cb0a2dc68a744407",
    "slug": "street-fighter-6-switch-2",
    "baseHash": "c31ba41b1b2bc48730edc13aee592d5f5e65e4ba4fd5b6d7c2e08011df83d8b5",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "coverImage": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000095203/95c9f337f3edd2c27edc56baaf88ef63b48cb017c513235ba5baca96027502ba",
+    "image": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000095203/95c9f337f3edd2c27edc56baaf88ef63b48cb017c513235ba5baca96027502ba",
+    "bannerImages": [
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000095203/95c9f337f3edd2c27edc56baaf88ef63b48cb017c513235ba5baca96027502ba",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000095203/748d45d06a143faeb7571f80fe5cb9ae8d4649cff2331f0d917513a3b86ac853",
+     "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000095203/95c9f337f3edd2c27edc56baaf88ef63b48cb017c513235ba5baca96027502ba",
+     "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000095203/748d45d06a143faeb7571f80fe5cb9ae8d4649cff2331f0d917513a3b86ac853",
+     "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000095203/a7f91fd319c61dddff1a7a3fdb3b64c7498ef4bb4e132fa0fbfef1cd10c54628",
+     "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70070000027440/158a2372f4521fd29a53cba5851408062d3045c21d8ccfaf5c42f631d2fea1fe",
+     "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70070000027440/333958d6d9149fbecafbb3291b4c12ae876a890ae436205d0620a400cc6aaddb"
+    ],
+    "galleryImages": [
+     {
+      "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000095203/748d45d06a143faeb7571f80fe5cb9ae8d4649cff2331f0d917513a3b86ac853",
+      "alt": "Verified official/publisher media for Street Fighter 6 — gallery image 2."
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000095203/a7f91fd319c61dddff1a7a3fdb3b64c7498ef4bb4e132fa0fbfef1cd10c54628",
+      "alt": "Verified official/publisher media for Street Fighter 6 — gallery image 3."
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70070000027440/158a2372f4521fd29a53cba5851408062d3045c21d8ccfaf5c42f631d2fea1fe",
+      "alt": "Verified official/publisher media for Street Fighter 6 — gallery image 4."
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70070000027440/333958d6d9149fbecafbb3291b4c12ae876a890ae436205d0620a400cc6aaddb",
+      "alt": "Verified official/publisher media for Street Fighter 6 — gallery image 5."
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000095203/95c9f337f3edd2c27edc56baaf88ef63b48cb017c513235ba5baca96027502ba",
+      "alt": "Verified official/publisher media for Street Fighter 6 — gallery image 6."
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000095203/748d45d06a143faeb7571f80fe5cb9ae8d4649cff2331f0d917513a3b86ac853",
+      "alt": "Verified official/publisher media for Street Fighter 6 — gallery image 7."
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000095203/a7f91fd319c61dddff1a7a3fdb3b64c7498ef4bb4e132fa0fbfef1cd10c54628",
+      "alt": "Verified official/publisher media for Street Fighter 6 — gallery image 8."
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000095203/f17d11638cf1d532270c10b405fdf31597a95d97b3b32943a26dd8576a2e2132",
+      "alt": "Verified official/publisher media for Street Fighter 6 — gallery image 9."
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cc_fill%2Cg_auto/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000095203/12d36a4c9bbf43a4babba2f203e1e271ef08de143349e08231dff56fd2bef70e",
+      "alt": "Verified official/publisher media for Street Fighter 6 — gallery image 10."
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cc_fill%2Cg_auto/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000095203/f17d11638cf1d532270c10b405fdf31597a95d97b3b32943a26dd8576a2e2132",
+      "alt": "Verified official/publisher media for Street Fighter 6 — gallery image 11."
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000095203/12d36a4c9bbf43a4babba2f203e1e271ef08de143349e08231dff56fd2bef70e",
+      "alt": "Verified official/publisher media for Street Fighter 6 — gallery image 12."
+     }
+    ]
+   },
+   "clear": [
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "Dead cover/listing references replaced by the first verified eShop gallery shot; one dead banner dropped and, after the Rotwood lesson, every unprobed banan.to entry is excluded too — the rebuilt arrays carry only entries the export verified or official CDN URLs, and the apply step re-verifies each. Digital Foundry's documented internal-reconstruction figures (640×360 handheld / 960×540 docked) kept — honest and sourced. 2025-06-05, Metacritic 87 verified. Contamination removed."
   },
   {
    "id": "prd_4b3c62c6fc504c9b",
    "slug": "super-mario-3d-world-plus-bowsers-fury-switch",
    "baseHash": "27ef5e151f1e2e66dd6faf2b42ab23acb5493d897264ddb713d02bb5dbceefc5",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "informationStatus": "available",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p",
+       "fps": "60 (Bowser's Fury: 60 target with dips)"
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p (Bowser's Fury: dynamic)",
+       "fps": "60 (Bowser's Fury: 60 target with dips)"
+      },
+      "modes": [],
+      "sourceName": "Digital Foundry's analysis of 3D World + Bowser's Fury",
+      "sourceUrl": "https://www.nintendolife.com/games/nintendo-switch/super_mario_3d_world_plus_bowsers_fury",
+      "verificationStatus": "technical_analysis"
+     }
+    ]
+   },
+   "clear": [
+    "youtubeTrailer",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "The trailer field held the game's microsite URL — removed. The Switch-2-badged prose record becomes the platform record with Digital Foundry's split findings for the two included games. 2021-02-12, Metacritic 89 verified. All images working. Contamination removed."
   }
  ]
 }
