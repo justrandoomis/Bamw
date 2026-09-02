@@ -1,0 +1,435 @@
+{
+ "id": "prd_5e9f053ac60f4412",
+ "title": "Red Dead Redemption",
+ "titleEn": "Red Dead Redemption",
+ "titleKu": "Red Dead Redemption",
+ "slug": "red-dead-redemption-switch1",
+ "description": "Red Dead Redemption follows former outlaw John Marston after federal agents threaten his family and force him to hunt down surviving members of his former gang. The journey crosses the American West and Mexico during the closing years of the frontier era.\n\nThe Nintendo Switch release contains the complete single-player Red Dead Redemption experience together with Undead Nightmare, the supernatural horror campaign in which Marston confronts a zombie outbreak. It also includes additional single-player content from the Game of the Year Edition. Multiplayer from the original release is not included.",
+ "descriptionEn": "Red Dead Redemption follows former outlaw John Marston after federal agents threaten his family and force him to hunt down surviving members of his former gang. The journey crosses the American West and Mexico during the closing years of the frontier era.\n\nThe Nintendo Switch release contains the complete single-player Red Dead Redemption experience together with Undead Nightmare, the supernatural horror campaign in which Marston confronts a zombie outbreak. It also includes additional single-player content from the Game of the Year Edition. Multiplayer from the original release is not included.",
+ "descriptionKu": "Red Dead Redemption follows former outlaw John Marston after federal agents threaten his family and force him to hunt down surviving members of his former gang. The journey crosses the American West and Mexico during the closing years of the frontier era.\n\nThe Nintendo Switch release contains the complete single-player Red Dead Redemption experience together with Undead Nightmare, the supernatural horror campaign in which Marston confronts a zombie outbreak. It also includes additional single-player content from the Game of the Year Edition. Multiplayer from the original release is not included.",
+ "cartridgeImage": "/api/files/products/prd_5e9f053ac60f4412/cartridgeImage-6783fb284daa9ffe.webp",
+ "nintendoCardImage": "/api/files/products/prd_5e9f053ac60f4412/nintendoCardImage-51f97aee53b93db5.webp",
+ "coverHiResImage": "/api/files/products/prd_5e9f053ac60f4412/coverHiResImage-b85c1679167369f8.webp",
+ "coverImage": "/api/files/products/prd_5e9f053ac60f4412/coverImage-ee8fe4d4d7a17ce0.webp",
+ "bannerImages": [
+  "/api/files/products/prd_5e9f053ac60f4412/bannerImages-d56880d8159cbd7a.webp",
+  "/api/files/products/prd_5e9f053ac60f4412/bannerImages-055a9a506da9752a.webp",
+  "/api/files/products/prd_5e9f053ac60f4412/bannerImages-ccc24b1eafdc50cc.webp"
+ ],
+ "gallery": [],
+ "youtubeTrailer": "https://www.youtube.com/watch?v=Q5sGCr03cPI",
+ "releaseDate": "2023-08-17",
+ "ageRating": "PEGI 18",
+ "metacriticRating": 83,
+ "genres": [
+  "Action",
+  "Adventure"
+ ],
+ "platform": "switch1",
+ "size": 11.6,
+ "numberOfPlayers": "1",
+ "supportedLanguages": "English, Spanish, French, German, Italian, Portuguese, Russian, Korean, Chinese (Simplified), Chinese (Traditional)",
+ "hardwareModel": "",
+ "colorEdition": "",
+ "storageCapacity": "",
+ "screenSpecs": "",
+ "batteryLife": "",
+ "boxContents": [],
+ "boxContentsText": "",
+ "warrantyCondition": "",
+ "connectivity": "",
+ "characterName": "Link",
+ "amiiboSeries": "The Legend of Zelda",
+ "figureType": "figure",
+ "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+ "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+ "boxCondition": "mib",
+ "releaseWave": "Wave 2 (Restock)",
+ "rarity": "standard",
+ "accessoryType": "حقيبة حماية وتنقل Carry Case",
+ "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+ "brand": "Nintendo Official",
+ "material": "Hard EVA Shockproof Shell",
+ "availableColors": "Black, Neon Red/Blue, White",
+ "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+ "cardValue": "$20 eShop Balance",
+ "region": "US",
+ "cardType": "eshop",
+ "deliveryMethod": "instant_code",
+ "redemptionGuide": "",
+ "redemptionSteps": [],
+ "validity": "no_expiry",
+ "usedType": "cartridge",
+ "conditionGrade": "like_new",
+ "packaging": "cib",
+ "guaranteeStatus": "tested_30days",
+ "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+ "accountType": "primary",
+ "badge": "وفر 40%",
+ "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+ "price": 9000,
+ "cost": 1500,
+ "stock": 999999,
+ "isInfiniteStock": true,
+ "isHidden": false,
+ "displayOrder": 0,
+ "category": "nintendo-switch-games",
+ "categoryId": "nintendo-switch-games",
+ "categoryEn": "",
+ "categoryKu": "",
+ "options": [
+  {
+   "id": "offline_account",
+   "name": "Offline Account",
+   "description": "Account delivery option intended for offline-account use.",
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_account",
+   "name": "Online Account",
+   "description": "Account delivery option intended for online-account use where the game supports online features.",
+   "isInfiniteStock": true
+  }
+ ],
+ "types": [
+  {
+   "id": "standard_offline",
+   "name": "Standard",
+   "optionId": "offline_account",
+   "price": "9000",
+   "cost": 1500,
+   "description": "Supplier 普通版 mapped to Offline / Standard. Supplier cost: ¥7.78 after platform subsidy; converted at 220 IQD/CNY and floored to 1,500 IQD.",
+   "isInfiniteStock": true
+  },
+  {
+   "id": "standard_online",
+   "name": "Standard",
+   "optionId": "online_account",
+   "price": "38000",
+   "cost": 20750,
+   "description": "Supplier 标准版 mapped to Online / Standard. Supplier cost: ¥95 after platform subsidy; converted at 220 IQD/CNY and floored to 20,750 IQD.",
+   "isInfiniteStock": true
+  }
+ ],
+ "editions": [],
+ "dlcs": [],
+ "isActive": true,
+ "status": "active",
+ "kind": "account",
+ "trade_value_iqd": 0,
+ "store_offer_bonus_iqd": 0,
+ "trade_enabled": true,
+ "trade_value_locked": false,
+ "schema_version": 21,
+ "compatibility": [
+  "Nintendo Switch",
+  "Nintendo Switch 2 (backward compatible)"
+ ],
+ "edition": "Standard",
+ "developer": "Double Eleven Studios",
+ "publisher": "ROCKSTAR GAMES",
+ "metacriticUrl": "https://www.metacritic.com/game/red-dead-redemption-and-undead-nightmare/critic-reviews/?platform=nintendo-switch",
+ "opencriticRating": 79,
+ "userScore": 6.7,
+ "officialUrl": "https://www.nintendo.com/au/games/nintendo-switch/red-dead-redemption/",
+ "eshopUrl": "https://www.nintendo.com/au/games/nintendo-switch/red-dead-redemption/",
+ "gameIsOffline": true,
+ "gameIsOnline": false,
+ "description_short": "Rockstar’s open-world Western follows former outlaw John Marston across the American frontier and Mexico, including the complete Undead Nightmare single-player campaign on Nintendo Switch.",
+ "description_ar": "مغامرة عالم مفتوح تدور حول الخارج عن القانون السابق جون مارستون، وتضم الحملة الفردية الكاملة للعبة Red Dead Redemption إضافة إلى قصة Undead Nightmare ومحتوى إضافي من إصدار Game of the Year.",
+ "videos": [
+  {
+   "title": "Red Dead Redemption — Official Trailer",
+   "url": "https://www.youtube.com/watch?v=Q5sGCr03cPI"
+  }
+ ],
+ "nintendoEshopUrl": "https://www.nintendo.com/au/games/nintendo-switch/red-dead-redemption/",
+ "nintendoOnlineRequired": false,
+ "nintendoCloudSaves": true,
+ "tvMode": true,
+ "tabletopMode": true,
+ "handheldMode": true,
+ "nintendoPlayModes": "TV Mode, Tabletop Mode, Handheld Mode",
+ "nintendoNotes": "Nintendo lists one player, 11.6 GB download size, Chinese language support, TV/Tabletop/Handheld play and Save Data Cloud. The package includes the complete single-player Red Dead Redemption campaign, Undead Nightmare and bonus Game of the Year Edition single-player content; multiplayer content is not included. No verified direct Full Wrap was found, so 3D texture fields remain blank.",
+ "switch2Exclusive": false,
+ "tagline": "Ride across the dying American frontier as John Marston in a story-driven open world that also includes the supernatural Undead Nightmare campaign.",
+ "fitFor": [
+  "Players who want a mature, cinematic Western story with a large open world and memorable characters.",
+  "Players who enjoy horseback exploration, gunfights, side activities and emergent encounters.",
+  "Players who want Red Dead Redemption and Undead Nightmare together in a portable Nintendo version."
+ ],
+ "notFitFor": [
+  "Players primarily looking for the original multiplayer modes; they are not included in this Nintendo Switch release.",
+  "Players who require 60 FPS on the original Nintendo Switch version.",
+  "Younger players; the game carries a mature age rating and contains strong violence and adult themes."
+ ],
+ "playTimeMain": 17.5,
+ "playTimeFull": 46.5,
+ "gameplayPillars": [
+  {
+   "title": "Open-World Frontier",
+   "description": "Travel freely through a large Western world filled with settlements, wilderness, side activities, strangers, wildlife and emergent encounters."
+  },
+  {
+   "title": "Gunfights and Dead Eye",
+   "description": "Use revolvers, rifles and other period weapons while Dead Eye slows targeting to create precise, cinematic gunfights."
+  },
+  {
+   "title": "John Marston’s Story",
+   "description": "Follow a former outlaw forced by federal agents to hunt down the surviving members of the gang he once called family."
+  }
+ ],
+ "worldSummary": "Red Dead Redemption is set during the final years of the American frontier. John Marston travels across New Austin, West Elizabeth and northern Mexico through ranches, deserts, frontier towns, forests and lawless settlements. The world supports story missions, hunting, gambling, strangers, bounties, random encounters and travel by horse, train and stagecoach.",
+ "storyChapters": [
+  {
+   "title": "Hunting the Old Gang",
+   "body": "Federal agents threaten John Marston’s family and compel him to track down former gang members across the American frontier."
+  },
+  {
+   "title": "Across the Border",
+   "body": "Marston’s search expands into Mexico, where local conflicts and competing factions draw him deeper into the region’s political violence."
+  },
+  {
+   "title": "Undead Nightmare",
+   "body": "The included horror campaign transforms the familiar frontier into a supernatural survival crisis filled with the undead."
+  }
+ ],
+ "galleryImages": [
+  {
+   "url": "https://images.launchbox-app.com/61e32eec-0b93-4343-978e-861688806b79.png",
+   "alt": "Gameplay image from Red Dead Redemption."
+  },
+  {
+   "url": "https://images.launchbox-app.com/e5e2a811-0fc5-4aaa-8875-c7e6672cc384.png",
+   "alt": "Gameplay image showing the game world and Western setting."
+  },
+  {
+   "url": "https://images.launchbox-app.com/18b8adab-68f9-4a98-a6a7-693e51b0ca63.jpg",
+   "alt": "Additional gameplay artwork/screenshot."
+  },
+  {
+   "url": "https://images.launchbox-app.com/a29cd8bb-0a25-4808-8d69-926be0866f6e.jpg",
+   "alt": "Additional Red Dead Redemption media image."
+  }
+ ],
+ "features": [
+  "Explore the American frontier and Mexico in a large open world built around towns, wilderness, missions and emergent encounters.",
+  "Use the Dead Eye targeting system to slow down combat decisions and mark precise shots during gunfights.",
+  "The Nintendo Switch release includes the complete single-player Red Dead Redemption campaign plus Undead Nightmare.",
+  "Hunting, bounty work, stranger missions, poker and other side activities expand the campaign beyond story missions.",
+  "Horse travel, weapon management and an honor-driven Western narrative define the core single-player loop.",
+  "A separate Nintendo Switch 2 Edition is available, but this product entry remains the Nintendo Switch 1 release rather than being relabeled through backward compatibility."
+ ],
+ "perfResolutionDocked": "1080p native",
+ "perfResolutionHandheld": "720p native",
+ "perfFps": "30 FPS",
+ "perfHdr": false,
+ "perfNotes": "Technical analysis reports a native 1080p presentation in TV mode, native 720p in handheld mode, and a 30 FPS target with occasional uneven frame pacing. These are measured game results, not hardware maximums.",
+ "devicePerformance": [
+  {
+   "device": "Nintendo Switch 2",
+   "deviceSlug": "nintendo-switch-2",
+   "deviceModel": "Nintendo Switch 2",
+   "hardwareId": "prd_acf4c89908764c62",
+   "informationStatus": "verified",
+   "handheld": {
+    "supported": true,
+    "resolution": "1080p output",
+    "resolutionDynamic": false,
+    "renderingResolution": "DLSS reconstructed; exact internal handheld resolution varies/not published",
+    "outputResolution": "1080p",
+    "fps": "60",
+    "fpsMin": "~55",
+    "fpsMax": "60",
+    "refreshRate": "60 Hz",
+    "hdr": true,
+    "mode": "Standard",
+    "notes": "Switch 2 Edition targets 60 FPS; reviews report 1080p handheld output and mostly stable performance."
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "1440p DLSS output",
+    "resolutionDynamic": false,
+    "renderingResolution": "720p native input to DLSS",
+    "outputResolution": "1440p",
+    "fps": "60",
+    "fpsMin": "~55",
+    "fpsMax": "60",
+    "refreshRate": "60 Hz",
+    "hdr": true,
+    "mode": "Standard",
+    "notes": "Digital Foundry reports native 720p reconstructed by DLSS to 1440p while docked, targeting 60 FPS."
+   },
+   "upscaling": "NVIDIA DLSS",
+   "rayTracing": false,
+   "sourceName": "Digital Foundry via Nintendo Life + Rockstar",
+   "sourceUrl": "https://www.nintendolife.com/news/2025/12/digital-foundry-delivers-its-tech-verdict-on-red-dead-redemption-for-switch-2",
+   "verifiedAt": "2026-08-25",
+   "verificationStatus": "verified",
+   "performanceNotes": "Free Nintendo Switch 2 Edition upgrade adds 60 FPS, DLSS, HDR and mouse controls. Docked technical analysis: 720p native reconstructed to 1440p."
+  }
+ ],
+ "downloadSizeGb": 11.6,
+ "arabicSupport": false,
+ "mpLocalPlayers": false,
+ "mpOnlinePlayers": false,
+ "mpCoop": false,
+ "mpCompetitive": false,
+ "mpSplitScreen": false,
+ "mpLocalWireless": false,
+ "guides": [
+  {
+   "title": "Nintendo — Red Dead Redemption",
+   "summary": "Official product information, supported modes, languages and download size.",
+   "url": "https://www.nintendo.com/nl-nl/Games/Nintendo-Switch-games/Red-Dead-Redemption-2427365.html"
+  },
+  {
+   "title": "Rockstar Games — Red Dead Redemption",
+   "summary": "Official Rockstar information for Red Dead Redemption.",
+   "url": "https://www.rockstargames.com/reddeadredemption"
+  },
+  {
+   "title": "Nintendo Everything — Switch Technical Analysis",
+   "summary": "Nintendo Switch performance analysis covering resolution and frame rate.",
+   "url": "https://nintendoeverything.com/red-dead-redemption-switch-tech-analysis-frame-rate-resolution/"
+  }
+ ],
+ "completionMain": 17.5,
+ "completionExtras": 26,
+ "completionAll": 46.5,
+ "faq": [
+  {
+   "q": "Does the Switch release include Undead Nightmare?",
+   "a": "Yes. Nintendo states that Undead Nightmare is included alongside the complete Red Dead Redemption single-player campaign."
+  },
+  {
+   "q": "Does Red Dead Redemption on Switch include multiplayer?",
+   "a": "No. Nintendo explicitly notes that multiplayer content from the original game is not included."
+  },
+  {
+   "q": "Can the Nintendo Switch version run on Nintendo Switch 2?",
+   "a": "Yes. It is compatible with Nintendo Switch 2, and the current import keeps separate Switch 2 performance information where available."
+  }
+ ],
+ "verdictScore": 8.3,
+ "verdictSummary": "Score note: 8.3/10 is a direct normalization of the current 83/100 Metacritic aggregate for the Nintendo listing; it is not a separately invented store rating.\n\nThe Nintendo Switch release is a strong portable way to experience John Marston’s complete single-player story and Undead Nightmare. Its greatest limitations are the absence of original multiplayer and the original Switch performance ceiling.",
+ "verdictPros": [
+  "Excellent Western atmosphere and story.",
+  "Undead Nightmare is included in the package.",
+  "Stable portable presentation with the full single-player experience."
+ ],
+ "verdictCons": [
+  "Original multiplayer content is absent.",
+  "Original Switch version is limited to a 30 FPS presentation.",
+  "Some mechanics retain the feel of a 2010-era open-world game."
+ ],
+ "reviews": [
+  {
+   "source": "Metacritic — Nintendo listing",
+   "score": "83/100",
+   "quote": "Current critic aggregate for the relevant Nintendo listing: 83/100. This is an external aggregate, not a BANANTO-created review score.",
+   "url": "https://www.dekudeals.com/items/red-dead-redemption"
+  },
+  {
+   "url": "https://www.dekudeals.com/items/red-dead-redemption",
+   "source": "OpenCritic",
+   "score": "79/100",
+   "quote": "OpenCritic aggregate recorded at 79/100. Where OpenCritic groups platforms, this value represents the published aggregate rather than a fabricated platform-specific score."
+  },
+  {
+   "source": "Metacritic User Score",
+   "score": "6.7/10",
+   "quote": "Current Metacritic user score shown with the listing: 6.7/10. User scores can change over time as additional ratings are submitted.",
+   "url": "https://www.dekudeals.com/items/red-dead-redemption"
+  }
+ ],
+ "timeline": [
+  null,
+  {
+   "date": "2023-08-17",
+   "title": "Nintendo Switch Release",
+   "body": "Red Dead Redemption and Undead Nightmare launched on Nintendo Switch."
+  },
+  {
+   "date": "2025-12-02",
+   "title": "Nintendo Switch 2 Edition",
+   "body": "A dedicated Nintendo Switch 2 Edition later became available; this product entry remains the original Switch release."
+  }
+ ],
+ "setupNeeds": [
+  "Nintendo Switch or compatible Nintendo Switch 2 hardware.",
+  "Approximately 11.6 GB of free storage for the digital Nintendo Switch version.",
+  "One player; the Nintendo Switch release does not include original multiplayer content."
+ ],
+ "sources": [
+  {
+   "name": "Nintendo — Red Dead Redemption",
+   "url": "https://www.nintendo.com/nl-nl/Games/Nintendo-Switch-games/Red-Dead-Redemption-2427365.html"
+  },
+  {
+   "name": "Rockstar Games — Red Dead Redemption",
+   "url": "https://www.rockstargames.com/reddeadredemption"
+  },
+  {
+   "name": "LaunchBox Games Database — media reference",
+   "url": "https://gamesdb.launchbox-app.com/"
+  },
+  {
+   "name": "Deku Deals — Nintendo version scores and completion data",
+   "url": "https://www.dekudeals.com/items/red-dead-redemption"
+  },
+  {
+   "name": "Red Dead Redemption soundtrack reference",
+   "url": "https://www.ireddead.com/rdr/soundtrack"
+  }
+ ],
+ "soundtrack": [
+  {
+   "title": "(Theme From) Red Dead Redemption",
+   "url": "https://www.ireddead.com/rdr/soundtrack"
+  },
+  {
+   "title": "Far Away",
+   "url": "https://www.ireddead.com/rdr/soundtrack"
+  },
+  {
+   "title": "Deadman's Gun",
+   "url": "https://www.ireddead.com/rdr/soundtrack"
+  }
+ ],
+ "seriesName": "Red Dead",
+ "seriesEntries": [
+  "Red Dead Revolver",
+  "Red Dead Redemption",
+  "Red Dead Redemption 2"
+ ],
+ "studioName": "Double Eleven",
+ "studioUrl": "https://www.double11.com/",
+ "studioLocation": "Middlesbrough, United Kingdom",
+ "studioAbout": "Double Eleven handled the Nintendo Switch port of Rockstar Games’ Red Dead Redemption, adapting the original single-player release and Undead Nightmare to Nintendo hardware.",
+ "boxContentsList": "[Circular]",
+ "image": "/api/files/products/prd_5e9f053ac60f4412/image-ee8fe4d4d7a17ce0.webp",
+ "banner": "/api/files/products/prd_5e9f053ac60f4412/banner-d56880d8159cbd7a.webp",
+ "schemaId": "",
+ "badgeEn": "وفر 40%",
+ "badgeKu": "وفر 40%",
+ "featuresEn": [
+  "Explore the American frontier and Mexico in a large open world built around towns, wilderness, missions and emergent encounters.",
+  "Use the Dead Eye targeting system to slow down combat decisions and mark precise shots during gunfights.",
+  "The Nintendo Switch release includes the complete single-player Red Dead Redemption campaign plus Undead Nightmare.",
+  "Hunting, bounty work, stranger missions, poker and other side activities expand the campaign beyond story missions.",
+  "Horse travel, weapon management and an honor-driven Western narrative define the core single-player loop.",
+  "A separate Nintendo Switch 2 Edition is available, but this product entry remains the Nintendo Switch 1 release rather than being relabeled through backward compatibility."
+ ],
+ "featuresKu": [
+  "Explore the American frontier and Mexico in a large open world built around towns, wilderness, missions and emergent encounters.",
+  "Use the Dead Eye targeting system to slow down combat decisions and mark precise shots during gunfights.",
+  "The Nintendo Switch release includes the complete single-player Red Dead Redemption campaign plus Undead Nightmare.",
+  "Hunting, bounty work, stranger missions, poker and other side activities expand the campaign beyond story missions.",
+  "Horse travel, weapon management and an honor-driven Western narrative define the core single-player loop.",
+  "A separate Nintendo Switch 2 Edition is available, but this product entry remains the Nintendo Switch 1 release rather than being relabeled through backward compatibility."
+ ],
+ "sales": 0,
+ "images": [],
+ "modes": []
+}

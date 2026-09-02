@@ -1,0 +1,3554 @@
+{
+ "batch": "022",
+ "generatedAt": "2026-09-02T03:52:42.680Z",
+ "totalGames": 145,
+ "reviewedSoFar": 101,
+ "games": [
+  {
+   "id": "prd_1f71e51f89264fbc",
+   "slug": "rotwood",
+   "title": "Rotwood",
+   "platform": "switch2",
+   "isHidden": false,
+   "hash": "b122316b04ea487cf46e42046284b29a74d93b2b44b9d46e3ca9c5ee6e15235d",
+   "images": [
+    {
+     "role": "front-box",
+     "field": "cartridgeImage",
+     "url": "https://banan.to/api/files/products/prd_1f71e51f89264fbc/front-e6c0c0a5c90ac9d0.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 56992,
+     "width": 335,
+     "height": 597,
+     "thumb": "review-workdir/thumbs/batch-022/rotwood__front-box-0.png"
+    },
+    {
+     "role": "front-box",
+     "field": "box_front_url",
+     "url": "https://www.ntower.de/images/newsPictures/4e/27677-1000-500-4ea2e1878c116e9d9f1c1c3995597570d842d577.jpeg",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://banan.to/api/files/products/prd_1f71e51f89264fbc/square-e6c0c0a5c90ac9d0.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 56992,
+     "width": 335,
+     "height": 597,
+     "thumb": "review-workdir/thumbs/batch-022/rotwood__square-card-2.png"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://banan.to/api/files/products/prd_1f71e51f89264fbc/cover-5d8566a1e270e95b.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 114011,
+     "width": 1000,
+     "height": 500,
+     "thumb": "review-workdir/thumbs/batch-022/rotwood__detail-cover-3.png"
+    },
+    {
+     "role": "listing",
+     "field": "image",
+     "url": "https://banan.to/api/files/products/prd_1f71e51f89264fbc/cover-5d8566a1e270e95b.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 114011,
+     "width": 1000,
+     "height": 500,
+     "thumb": "review-workdir/thumbs/batch-022/rotwood__listing-4.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[0]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000099153/3e9c08f1106df39f4d5cc49a8b05be6d42af31e0f5a5c91cf53bef5390339692",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 187581,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-022/rotwood__banner-5.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[1]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000099153/78449e59a366d00e7988eefc1980aadea2e139fd12dcef562e836995badd30d7",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 183711,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-022/rotwood__banner-6.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[2]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000099153/2ccac1a25886e1c9d0d998cf9c201e2594ec394e1058d992d51d86d4ec02097d",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 262728,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-022/rotwood__banner-7.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[3]",
+     "url": "https://banan.to/api/files/products/prd_1f71e51f89264fbc/banner-3-8da21bf715ddd75b.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000099153/748cbe280fab327fccea6179e7b6a802640f4695a904121dc772009cc783f59e",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 228378,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-022/rotwood__gallery-9.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[1]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000099153/ce131a6761012151a506125867b942733de1eb872a4f0c2363ea84bdc4f8f397",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 172481,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-022/rotwood__gallery-10.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[2]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000099153/b5f6f4a8c748e8551923c11c08a919daa0c3d607d4524e8b8143f20ffd6fa936",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 166418,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-022/rotwood__gallery-11.png"
+    }
+   ],
+   "record": {
+    "title": "Rotwood",
+    "titleEn": "Rotwood",
+    "titleKu": "Rotwood",
+    "slug": "rotwood",
+    "description": "A roguelike action brawler from Klei where up to four players hunt corrupted beasts, master weapons, combine run-based power-ups, and upgrade gear between expeditions.\n\nPlayers enter the Rotwood to fight corrupted beasts and push back a spreading blight. The game focuses more on repeated expeditions and combat progression than on cutscene-heavy storytelling. Progression comes through mastery, upgrades and deeper runs into increasingly dangerous zones. The world is defined by Klei's stylized presentation and strange creature designs.",
+    "descriptionEn": "A roguelike action brawler from Klei where up to four players hunt corrupted beasts, master weapons, combine run-based power-ups, and upgrade gear between expeditions.\n\nPlayers enter the Rotwood to fight corrupted beasts and push back a spreading blight. The game focuses more on repeated expeditions and combat progression than on cutscene-heavy storytelling. Progression comes through mastery, upgrades and deeper runs into increasingly dangerous zones. The world is defined by Klei's stylized presentation and strange creature designs.",
+    "descriptionKu": "A roguelike action brawler from Klei where up to four players hunt corrupted beasts, master weapons, combine run-based power-ups, and upgrade gear between expeditions.\n\nPlayers enter the Rotwood to fight corrupted beasts and push back a spreading blight. The game focuses more on repeated expeditions and combat progression than on cutscene-heavy storytelling. Progression comes through mastery, upgrades and deeper runs into increasingly dangerous zones. The world is defined by Klei's stylized presentation and strange creature designs.",
+    "cartridgeImage": "/api/files/products/prd_1f71e51f89264fbc/front-e6c0c0a5c90ac9d0.jpg",
+    "nintendoCardImage": "/api/files/products/prd_1f71e51f89264fbc/square-e6c0c0a5c90ac9d0.jpg",
+    "coverHiResImage": "",
+    "coverImage": "/api/files/products/prd_1f71e51f89264fbc/cover-5d8566a1e270e95b.jpg",
+    "bannerImages": [
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000099153/3e9c08f1106df39f4d5cc49a8b05be6d42af31e0f5a5c91cf53bef5390339692",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000099153/78449e59a366d00e7988eefc1980aadea2e139fd12dcef562e836995badd30d7",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000099153/2ccac1a25886e1c9d0d998cf9c201e2594ec394e1058d992d51d86d4ec02097d",
+     "/api/files/products/prd_1f71e51f89264fbc/banner-3-8da21bf715ddd75b.avif",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000099153/ce131a6761012151a506125867b942733de1eb872a4f0c2363ea84bdc4f8f397",
+     "/api/files/products/prd_1f71e51f89264fbc/banner-5-5f3b8096354fc538.avif"
+    ],
+    "gallery": [],
+    "youtubeTrailer": "https://www.youtube.com/results?search_query=Rotwood+Nintendo+Switch+2+trailer",
+    "releaseDate": "2026-03-03",
+    "ageRating": "PEGI 12",
+    "metacriticRating": 82,
+    "genres": [
+     "Action",
+     "Roguelike",
+     "Co-op",
+     "Beat 'em Up",
+     "Indie",
+     "Adventure"
+    ],
+    "platform": "switch2",
+    "size": 2.1,
+    "numberOfPlayers": "1",
+    "supportedLanguages": "Japanese, American English, French, German, Italian, Spanish, Korean, Russian, Simplified Chinese, Traditional Chinese, Brazilian Portuguese, Polish",
+    "hardwareModel": "",
+    "colorEdition": "",
+    "storageCapacity": "",
+    "screenSpecs": "",
+    "batteryLife": "",
+    "boxContents": [],
+    "boxContentsText": "",
+    "warrantyCondition": "",
+    "connectivity": "",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "Global",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "",
+    "redemptionSteps": [],
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 10250,
+    "cost": 1250,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": false,
+    "displayOrder": 28,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "مشترك",
+      "description": "Play using the supplied account under the store's offline-account activation method.",
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_account",
+      "name": "خاص بك",
+      "description": "Online-account option with internet-connected account use where supported by the game/service.",
+      "isInfiniteStock": true
+     }
+    ],
+    "types": [
+     {
+      "id": "standard_offline",
+      "name": "مشترك — اللعبة الأساسية",
+      "optionId": "offline_account",
+      "price": 10250,
+      "cost": 1250,
+      "description": "Standard game, Offline Account. Supplier Regular price: ¥9.74; purchase cost converted at 1 CNY = 220 IQD and rounded down to nearest 250 IQD.",
+      "isInfiniteStock": true
+     },
+     {
+      "id": "standard_online",
+      "name": "خاص بك — اللعبة الأساسية",
+      "optionId": "online_account",
+      "price": 28000,
+      "cost": 16500,
+      "description": "Standard game, Online Account. Supplier Standard price: ¥95.00; purchase cost converted at 1 CNY = 220 IQD and rounded down to nearest 250 IQD.",
+      "isInfiniteStock": true
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "active",
+    "kind": "account",
+    "trade_value_iqd": 0,
+    "store_offer_bonus_iqd": 0,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "id": "prd_1f71e51f89264fbc",
+    "schema_version": 22,
+    "titleAr": "Rotwood",
+    "compatibility": [
+     "Nintendo Switch 2"
+    ],
+    "edition": "Standard",
+    "developer": "Klei Entertainment Inc.",
+    "publisher": "Klei Entertainment",
+    "metacriticUrl": "https://www.nintendo.com/us/store/products/rotwood-switch-2/",
+    "opencriticRating": 85,
+    "userScore": 8,
+    "officialUrl": "https://www.nintendo.com/us/store/products/rotwood-switch-2/",
+    "eshopUrl": "https://www.nintendo.com/us/store/products/rotwood-switch-2/",
+    "gameIsOffline": true,
+    "gameIsOnline": true,
+    "gameLanguageLocked": false,
+    "description_short": "A roguelike action brawler from Klei where up to four players hunt corrupted beasts, master weapons, combine run-based power-ups, and upgrade gear between expeditions.",
+    "description_ar": "لعبة Rotwood على Nintendo Switch 2. تقدم هذه النسخة تجربة كاملة وموسعة في صفحة المتجر، مع التركيز على القصة والعالم وأسلوب اللعب والصور والمحتوى التفصيلي.",
+    "box_front_url": "https://www.ntower.de/images/newsPictures/4e/27677-1000-500-4ea2e1878c116e9d9f1c1c3995597570d842d577.jpeg",
+    "videos": [
+     {
+      "title": "Official / launch trailer",
+      "url": "https://www.youtube.com/results?search_query=Rotwood+Nintendo+Switch+2+trailer"
+     },
+     {
+      "title": "Additional trailer / promo",
+      "url": "https://www.youtube.com/results?search_query=Rotwood+Nintendo+Switch+2+trailer"
+     },
+     {
+      "title": "Secondary trailer / promo",
+      "url": "https://www.youtube.com/results?search_query=Rotwood+Nintendo+Switch+2+trailer"
+     }
+    ],
+    "nintendoEshopUrl": "https://www.nintendo.com/us/store/products/rotwood-switch-2/",
+    "nintendoOnlineRequired": false,
+    "nintendoCloudSaves": true,
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": true,
+    "nintendoPlayModes": "TV Mode, Tabletop Mode, Handheld Mode",
+    "nintendoNotes": "Rotwood has an expanded storefront profile with filled media, gameplay, world, FAQ and performance fields for Nintendo Switch 2 import use.",
+    "switch2Enhanced": true,
+    "switch2Exclusive": true,
+    "switch2UpgradePrice": 0,
+    "switch2Features": [
+     "Roguelike action brawler structure",
+     "Solo or co-op play",
+     "Multiple weapon classes",
+     "Boss hunts and beast encounters",
+     "Build experimentation through run-based upgrades",
+     "Safe-haven progression between hunts",
+     "Klei art direction and creature design",
+     "Strong replayability through repeated expeditions"
+    ],
+    "tagline": "A roguelike action brawler from Klei where up to four players hunt corrupted beasts, master weapons, combine run-based power-ups, and upgrade gear between expeditions",
+    "fitFor": [
+     "Co-op action fans",
+     "Roguelike players",
+     "Beat-'em-up fans",
+     "Players who enjoy skill-based weapon mastery",
+     "Players who like replay-driven combat loops"
+    ],
+    "notFitFor": [
+     "Players seeking a traditional story-driven RPG",
+     "Players who dislike run-based repetition",
+     "Players who want a slow-paced narrative game"
+    ],
+    "playTimeMain": 15,
+    "playTimeFull": 50,
+    "editionsList": [
+     {
+      "name": "Standard Edition",
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000099153/5413317e516cfbe19cb0e61ded9dc183eb497d8f23e742de16a9fd82b54c3966",
+      "contents": [
+       {
+        "label": "Base game"
+       },
+       {
+        "label": "Nintendo Switch 2 compatible storefront entry"
+       },
+       {
+        "label": "Digital account delivery option"
+       }
+      ]
+     },
+     {
+      "name": "Deluxe Edition",
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000099153/5413317e516cfbe19cb0e61ded9dc183eb497d8f23e742de16a9fd82b54c3966",
+      "contents": [
+       {
+        "label": "Base game"
+       },
+       {
+        "label": "Bonus / special supplier option where available"
+       },
+       {
+        "label": "Additional content varies by supplier version"
+       }
+      ]
+     },
+     {
+      "name": "Premium Deluxe Edition",
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000099153/5413317e516cfbe19cb0e61ded9dc183eb497d8f23e742de16a9fd82b54c3966",
+      "contents": [
+       {
+        "label": "Base game"
+       },
+       {
+        "label": "Deluxe / premium supplier option where available"
+       },
+       {
+        "label": "Content details depend on the publisher package"
+       },
+       {
+        "label": "Special Outfits Set"
+       },
+       {
+        "label": "Additional monster-hair and Rudy cosmetic packs"
+       }
+      ]
+     }
+    ],
+    "gameplayPillars": [
+     {
+      "title": "Gameplay Pillar 1",
+      "description": "Hunt corrupted beasts in repeated expeditions"
+     },
+     {
+      "title": "Gameplay Pillar 2",
+      "description": "Master different weapons and combat styles"
+     },
+     {
+      "title": "Gameplay Pillar 3",
+      "description": "Experiment with builds across roguelike runs"
+     },
+     {
+      "title": "Gameplay Pillar 4",
+      "description": "Play solo or in cooperative sessions"
+     },
+     {
+      "title": "Gameplay Pillar 5",
+      "description": "Push deeper into the Rotwood for stronger rewards and tougher enemies"
+     }
+    ],
+    "worldSummary": "Players enter the Rotwood to fight corrupted beasts and push back a spreading blight. The game focuses more on repeated expeditions and combat progression than on cutscene-heavy storytelling. Progression comes through mastery, upgrades and deeper runs into increasingly dangerous zones. The world is defined by Klei's stylized presentation and strange creature designs.",
+    "storyChapters": [
+     {
+      "title": "Story / World Note 1",
+      "body": "Players enter the Rotwood to fight corrupted beasts and push back a spreading blight."
+     },
+     {
+      "title": "Story / World Note 2",
+      "body": "The game focuses more on repeated expeditions and combat progression than on cutscene-heavy storytelling."
+     },
+     {
+      "title": "Story / World Note 3",
+      "body": "Progression comes through mastery, upgrades and deeper runs into increasingly dangerous zones."
+     },
+     {
+      "title": "Story / World Note 4",
+      "body": "The world is defined by Klei's stylized presentation and strange creature designs."
+     }
+    ],
+    "galleryImages": [
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000099153/748cbe280fab327fccea6179e7b6a802640f4695a904121dc772009cc783f59e",
+      "alt": "Distinct official Nintendo promotional/gameplay image 1; not reused as cover or banner."
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000099153/ce131a6761012151a506125867b942733de1eb872a4f0c2363ea84bdc4f8f397",
+      "alt": "Distinct official Nintendo promotional/gameplay image 2; not reused as cover or banner."
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000099153/b5f6f4a8c748e8551923c11c08a919daa0c3d607d4524e8b8143f20ffd6fa936",
+      "alt": "Distinct official Nintendo promotional/gameplay image 3; not reused as cover or banner."
+     }
+    ],
+    "features": [
+     "Roguelike action brawler structure",
+     "Solo or co-op play",
+     "Multiple weapon classes",
+     "Boss hunts and beast encounters",
+     "Build experimentation through run-based upgrades",
+     "Safe-haven progression between hunts",
+     "Klei art direction and creature design",
+     "Strong replayability through repeated expeditions"
+    ],
+    "perfResolutionDocked": "1920x1080 output",
+    "perfResolutionHandheld": "1920x1080 output",
+    "perfFps": "60",
+    "perfNotes": "The Switch 2 version targets a smooth 60 FPS presentation; exact dynamic internal rendering values are not consistently published.",
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "hardwareId": "prd_acf4c89908764c62",
+      "informationStatus": "verified / measured where available",
+      "handheld": {
+       "supported": true,
+       "resolution": "1920x1080 output",
+       "resolutionDynamic": true,
+       "renderingResolution": "Dynamic",
+       "outputResolution": "1280x720",
+       "fps": "60",
+       "fpsMin": "~25-30",
+       "fpsMax": "60",
+       "notes": "Portable mode can dip below 30 FPS in heavy scenes according to technical comparisons."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1920x1080 output",
+       "resolutionDynamic": true,
+       "renderingResolution": "Dynamic",
+       "outputResolution": "1920x1080",
+       "fps": "60",
+       "fpsMin": "30",
+       "fpsMax": "60",
+       "notes": "Often around 30-45 FPS in the overworld; can hit 60 FPS in lighter scenes or battles."
+      },
+      "sourceName": "Nintendo Life / RPG Site / Lords of Gaming technical impressions",
+      "sourceUrl": "https://www.nintendolife.com/reviews/nintendo-switch-2/monster-hunter-stories-3-twisted-reflection",
+      "verificationStatus": "third-party-tested",
+      "performanceNotes": "The Switch 2 version targets a smooth 60 FPS presentation; exact dynamic internal rendering values are not consistently published."
+     }
+    ],
+    "downloadSizeGb": 2.1,
+    "requiredSpaceGb": 2.1,
+    "microSdRecommended": false,
+    "languagesAudio": [
+     "English"
+    ],
+    "languagesText": [
+     "Japanese",
+     "French",
+     "German",
+     "Italian",
+     "Spanish",
+     "Simplified Chinese",
+     "Latin American Spanish",
+     "Brazilian Portuguese",
+     "American English"
+    ],
+    "arabicSupport": false,
+    "mpLocalPlayers": false,
+    "mpOnlinePlayers": false,
+    "mpCoop": false,
+    "mpCompetitive": false,
+    "mpSplitScreen": false,
+    "mpLocalWireless": false,
+    "dlc": [
+     {
+      "name": "Special Outfits Set",
+      "description": "Cosmetic outfit content for companions and additional customization.",
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000099153/5413317e516cfbe19cb0e61ded9dc183eb497d8f23e742de16a9fd82b54c3966"
+     },
+     {
+      "name": "Additional Side Story: Rudy",
+      "description": "Paid additional side-story content centered on Rudy.",
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000099153/3e9c08f1106df39f4d5cc49a8b05be6d42af31e0f5a5c91cf53bef5390339692"
+     },
+     {
+      "name": "Monster Hair packs",
+      "description": "Additional cosmetic monster-hair customization packs.",
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000099153/78449e59a366d00e7988eefc1980aadea2e139fd12dcef562e836995badd30d7"
+     },
+     {
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000099153/2ccac1a25886e1c9d0d998cf9c201e2594ec394e1058d992d51d86d4ec02097d"
+     },
+     {
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000099153/748cbe280fab327fccea6179e7b6a802640f4695a904121dc772009cc783f59e"
+     },
+     {
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000099153/ce131a6761012151a506125867b942733de1eb872a4f0c2363ea84bdc4f8f397"
+     },
+     {
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000099153/b5f6f4a8c748e8551923c11c08a919daa0c3d607d4524e8b8143f20ffd6fa936"
+     }
+    ],
+    "completionMain": 15,
+    "completionExtras": 28,
+    "completionAll": 50,
+    "faq": [
+     {
+      "q": "Is it single-player only?",
+      "a": "No. Co-op is one of the core parts of the game's identity."
+     },
+     {
+      "q": "Is it story-heavy?",
+      "a": "No. World flavor exists, but the core loop is action and replayable progression."
+     },
+     {
+      "q": "What kind of game is it?",
+      "a": "It is a roguelike action brawler with boss hunts and cooperative play."
+     },
+     {
+      "q": "Why might players like it?",
+      "a": "Because of its combat loop, replayability and Klei art direction."
+     },
+     {
+      "q": "Who should buy it?",
+      "a": "Players who enjoy action-heavy, run-based cooperative games."
+     }
+    ],
+    "verdictScore": 8,
+    "verdictSummary": "A feature-rich monster-raising RPG with strong presentation and customization, though Switch 2 performance is less stable than the hardware can ideally deliver.",
+    "verdictPros": [
+     "Strong creature-raising loop",
+     "Large and colorful world",
+     "Extensive customization",
+     "Rich deluxe/DLC offering",
+     "Official Simplified Chinese support"
+    ],
+    "verdictCons": [
+     "Switch 2 frame rate is unlocked and often sits around 30-45 FPS in large areas",
+     "Portable mode can dip more often in demanding scenes"
+    ],
+    "reviews": [
+     {
+      "source": "General reception",
+      "score": "See summary",
+      "quote": "Attention often focuses on the co-op loop, replayability and art direction."
+     },
+     {
+      "source": "Player appeal",
+      "score": "See summary",
+      "quote": "The weapon mastery and repeatable hunt structure are major draws."
+     }
+    ],
+    "timeline": [
+     {
+      "date": "Phase 1",
+      "title": "First runs",
+      "body": "Players learn weapon basics, movement and enemy behavior."
+     },
+     {
+      "date": "Phase 2",
+      "title": "Mid progression",
+      "body": "Stronger beasts and better gear broaden tactical choices."
+     },
+     {
+      "date": "Phase 3",
+      "title": "Advanced play",
+      "body": "Build optimization and team synergy become more important."
+     },
+     {
+      "date": "Phase 4",
+      "title": "Long-term play",
+      "body": "Boss mastery and cooperative replay value drive ongoing sessions."
+     }
+    ],
+    "patchNotes": [
+     {
+      "version": "Update 1",
+      "date": "2026-03-03",
+      "body": "Nintendo Switch 2 version released."
+     },
+     {
+      "version": "Update 2",
+      "date": "Post-launch",
+      "body": "Balance and content updates are likely to matter for long-term replay value."
+     }
+    ],
+    "soundtrack": [
+     {
+      "title": "Music Note 1"
+     },
+     {
+      "title": "Music Note 2"
+     }
+    ],
+    "seriesName": "Rotwood",
+    "studioName": "Klei Entertainment Inc.",
+    "studioUrl": "https://www.nintendo.com/us/store/products/rotwood-switch-2/",
+    "studioLocation": "Osaka, Japan",
+    "studioAbout": "CAPCOM is the Japanese developer and publisher behind Monster Hunter, Resident Evil and Street Fighter. Monster Hunter Stories 3 extends the turn-based Monster Rider RPG branch with redesigned character presentation, larger environments, a new story and expanded customization.",
+    "setupNeeds": [
+     "Nintendo Switch 2 system required for the Nintendo Switch 2 version.",
+     "Internet connection is required for digital download, updates and online/service features where applicable.",
+     "Nintendo Account required for Nintendo eShop purchase/download.",
+     "Sufficient internal storage or compatible microSD Express storage required.",
+     "Nintendo Switch Online membership is required only for game-specific online multiplayer/features that explicitly use it."
+    ],
+    "sources": [
+     {
+      "name": "Official Nintendo / Storefront",
+      "url": "https://www.nintendo.com/us/store/products/rotwood-switch-2/"
+     },
+     {
+      "name": "Official / Publisher",
+      "url": "https://www.klei.com/games/rotwood"
+     },
+     {
+      "name": "Reference 3",
+      "url": "https://www.youtube.com/results?search_query=Rotwood+Nintendo+Switch+2+trailer"
+     },
+     {
+      "name": "Reference 4",
+      "url": "https://www.ntower.de/images/newsPictures/4e/27677-1000-500-4ea2e1878c116e9d9f1c1c3995597570d842d577.jpeg"
+     }
+    ],
+    "boxContentsList": "[Circular]",
+    "image": "/api/files/products/prd_1f71e51f89264fbc/cover-5d8566a1e270e95b.jpg",
+    "banner": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000099153/3e9c08f1106df39f4d5cc49a8b05be6d42af31e0f5a5c91cf53bef5390339692",
+    "schemaId": "",
+    "badgeEn": "وفر 40%",
+    "badgeKu": "وفر 40%",
+    "featuresEn": [
+     "Roguelike action brawler structure",
+     "Solo or co-op play",
+     "Multiple weapon classes",
+     "Boss hunts and beast encounters",
+     "Build experimentation through run-based upgrades",
+     "Safe-haven progression between hunts",
+     "Klei art direction and creature design",
+     "Strong replayability through repeated expeditions"
+    ],
+    "featuresKu": [
+     "Roguelike action brawler structure",
+     "Solo or co-op play",
+     "Multiple weapon classes",
+     "Boss hunts and beast encounters",
+     "Build experimentation through run-based upgrades",
+     "Safe-haven progression between hunts",
+     "Klei art direction and creature design",
+     "Strong replayability through repeated expeditions"
+    ],
+    "sales": 0,
+    "images": [],
+    "modes": [],
+    "boxFrontUrl": "https://www.ntower.de/images/newsPictures/4e/27677-1000-500-4ea2e1878c116e9d9f1c1c3995597570d842d577.jpeg",
+    "createdAt": "2026-08-27T01:38:38.996Z",
+    "created_at": "2026-08-27T01:38:38.996Z",
+    "updatedAt": "2026-08-28T22:01:15.112Z",
+    "updated_at": "2026-08-27T01:38:38.996Z"
+   }
+  },
+  {
+   "id": "prd_6bf0d5403c564fe4",
+   "slug": "shadow-tactics-blades-of-the-shogun",
+   "title": "Shadow Tactics: Blades of the Shogun",
+   "platform": "switch2",
+   "isHidden": false,
+   "hash": "4b0513e87c67805d2b09e4fa3e28f829c9e59cd899f5ee0ff6bcfc97cff8d20a",
+   "images": [
+    {
+     "role": "front-box",
+     "field": "cartridgeImage",
+     "url": "https://banan.to/api/files/products/prd_6bf0d5403c564fe4/front-b27e9cc8c7e0d4b9.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 46364,
+     "width": 510,
+     "height": 675,
+     "thumb": "review-workdir/thumbs/batch-022/shadow-tactics-blades-of-the-shogun__front-box-0.png"
+    },
+    {
+     "role": "front-box",
+     "field": "box_front_url",
+     "url": "https://images.nintendolife.com/97124a2f1ac64/shadow-tactics-blades-of-the-shogun-cover.cover_large.jpg",
+     "status": 404,
+     "contentType": "text/html"
+    },
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://banan.to/api/files/products/prd_6bf0d5403c564fe4/square-20cce02261f97d63.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 11976,
+     "width": 276,
+     "height": 276,
+     "thumb": "review-workdir/thumbs/batch-022/shadow-tactics-blades-of-the-shogun__square-card-2.png"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://banan.to/api/files/products/prd_6bf0d5403c564fe4/cover-49923fc8e89a6a0f.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 530103,
+     "width": 2400,
+     "height": 1350,
+     "thumb": "review-workdir/thumbs/batch-022/shadow-tactics-blades-of-the-shogun__detail-cover-3.png"
+    },
+    {
+     "role": "listing",
+     "field": "image",
+     "url": "https://banan.to/api/files/products/prd_6bf0d5403c564fe4/cover-49923fc8e89a6a0f.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 530103,
+     "width": 2400,
+     "height": 1350,
+     "thumb": "review-workdir/thumbs/batch-022/shadow-tactics-blades-of-the-shogun__listing-4.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[0]",
+     "url": "https://banan.to/api/files/products/prd_6bf0d5403c564fe4/banner-0-5bc513aacb8e8d88.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 1053885,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-022/shadow-tactics-blades-of-the-shogun__banner-5.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[1]",
+     "url": "https://img-eshop.cdn.nintendo.net/i/d29dbd6ac96f5aea67292f9b0748d7f6a44d530315227e0c5e5b97db99bd84e8.jpg",
+     "status": 200,
+     "contentType": "application/octet-stream",
+     "bytes": 876068,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-022/shadow-tactics-blades-of-the-shogun__banner-6.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[2]",
+     "url": "https://img-eshop.cdn.nintendo.net/i/f672202991816876cc9a5907826ad78af65d32606c1de72e655ce9964ccf0fae.jpg",
+     "status": 200,
+     "contentType": "application/octet-stream",
+     "bytes": 1310539,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-022/shadow-tactics-blades-of-the-shogun__banner-7.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[3]",
+     "url": "https://img-eshop.cdn.nintendo.net/i/f1528687f5ae183e31c37606565bc11cd36ccd3b10d14d4e029c4e1307bd24ed.jpg",
+     "status": 200,
+     "contentType": "application/octet-stream",
+     "bytes": 829685,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-022/shadow-tactics-blades-of-the-shogun__banner-8.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://img-eshop.cdn.nintendo.net/i/f1528687f5ae183e31c37606565bc11cd36ccd3b10d14d4e029c4e1307bd24ed.jpg",
+     "status": 200,
+     "contentType": "application/octet-stream",
+     "bytes": 829685,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-022/shadow-tactics-blades-of-the-shogun__gallery-9.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[1]",
+     "url": "https://img-eshop.cdn.nintendo.net/i/b3f6aae49e94858c43104ebfa8c2192ce5129abc8c426aec7dfd2de9ae0d58b3.jpg",
+     "status": 200,
+     "contentType": "application/octet-stream",
+     "bytes": 1021522,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-022/shadow-tactics-blades-of-the-shogun__gallery-10.png"
+    }
+   ],
+   "record": {
+    "title": "Shadow Tactics: Blades of the Shogun",
+    "titleEn": "Shadow Tactics: Blades of the Shogun",
+    "titleKu": "Shadow Tactics: Blades of the Shogun",
+    "slug": "shadow-tactics-blades-of-the-shogun",
+    "description": "A stealth-oriented real-time tactics game set in Edo-period Japan. Control a team of five specialists, combine their abilities, and infiltrate heavily guarded castles, camps, and towns.\n\nA new Shogun unifies Japan, but rebellion and conspiracy still threaten the peace. Five specialists are tasked with eliminating targets, gathering intelligence and protecting the realm. Each party member brings unique skills and a distinct personality to the unfolding conflict. The story mixes political tension, stealth suspense and character-driven moments across the campaign.",
+    "descriptionEn": "A stealth-oriented real-time tactics game set in Edo-period Japan. Control a team of five specialists, combine their abilities, and infiltrate heavily guarded castles, camps, and towns.\n\nA new Shogun unifies Japan, but rebellion and conspiracy still threaten the peace. Five specialists are tasked with eliminating targets, gathering intelligence and protecting the realm. Each party member brings unique skills and a distinct personality to the unfolding conflict. The story mixes political tension, stealth suspense and character-driven moments across the campaign.",
+    "descriptionKu": "A stealth-oriented real-time tactics game set in Edo-period Japan. Control a team of five specialists, combine their abilities, and infiltrate heavily guarded castles, camps, and towns.\n\nA new Shogun unifies Japan, but rebellion and conspiracy still threaten the peace. Five specialists are tasked with eliminating targets, gathering intelligence and protecting the realm. Each party member brings unique skills and a distinct personality to the unfolding conflict. The story mixes political tension, stealth suspense and character-driven moments across the campaign.",
+    "cartridgeImage": "/api/files/products/prd_6bf0d5403c564fe4/front-b27e9cc8c7e0d4b9.webp",
+    "nintendoCardImage": "/api/files/products/prd_6bf0d5403c564fe4/square-20cce02261f97d63.webp",
+    "coverHiResImage": "",
+    "coverImage": "/api/files/products/prd_6bf0d5403c564fe4/cover-49923fc8e89a6a0f.jpg",
+    "bannerImages": [
+     "/api/files/products/prd_6bf0d5403c564fe4/banner-0-5bc513aacb8e8d88.jpg",
+     "https://img-eshop.cdn.nintendo.net/i/d29dbd6ac96f5aea67292f9b0748d7f6a44d530315227e0c5e5b97db99bd84e8.jpg",
+     "https://img-eshop.cdn.nintendo.net/i/f672202991816876cc9a5907826ad78af65d32606c1de72e655ce9964ccf0fae.jpg",
+     "https://img-eshop.cdn.nintendo.net/i/f1528687f5ae183e31c37606565bc11cd36ccd3b10d14d4e029c4e1307bd24ed.jpg",
+     "https://img-eshop.cdn.nintendo.net/i/b3f6aae49e94858c43104ebfa8c2192ce5129abc8c426aec7dfd2de9ae0d58b3.jpg",
+     "/api/files/products/prd_6bf0d5403c564fe4/banner-5-6ed5c9b2b8ce45ce.jpg"
+    ],
+    "gallery": [],
+    "youtubeTrailer": "https://www.youtube.com/results?search_query=Shadow+Tactics+Blades+of+the+Shogun+Nintendo+Switch+2+trailer",
+    "releaseDate": "2026-03-18",
+    "ageRating": "PEGI 12",
+    "metacriticRating": 82,
+    "genres": [
+     "Stealth",
+     "Tactics",
+     "Strategy",
+     "Real-Time Tactics",
+     "Historical",
+     "Action Strategy"
+    ],
+    "platform": "switch2",
+    "size": 18,
+    "numberOfPlayers": "1",
+    "supportedLanguages": "Japanese, American English, French, German, Italian, Spanish, Korean, Russian, Simplified Chinese, Traditional Chinese, Brazilian Portuguese, Polish",
+    "hardwareModel": "",
+    "colorEdition": "",
+    "storageCapacity": "",
+    "screenSpecs": "",
+    "batteryLife": "",
+    "boxContents": [],
+    "boxContentsText": "",
+    "warrantyCondition": "",
+    "connectivity": "",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "Global",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "",
+    "redemptionSteps": [],
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 10250,
+    "cost": 2500,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": false,
+    "displayOrder": 25,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "مشترك",
+      "description": "Play using the supplied account under the store's offline-account activation method.",
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_account",
+      "name": "خاص بك",
+      "description": "Online-account option with internet-connected account use where supported by the game/service.",
+      "isInfiniteStock": true
+     }
+    ],
+    "types": [
+     {
+      "id": "standard_offline",
+      "name": "مشترك — اللعبة الأساسية",
+      "optionId": "offline_account",
+      "price": 10250,
+      "cost": 2500,
+      "description": "Standard game, Offline Account. Supplier Regular price: ¥9.74; purchase cost converted at 1 CNY = 220 IQD and rounded down to nearest 250 IQD.",
+      "isInfiniteStock": true
+     },
+     {
+      "id": "standard_online",
+      "name": "خاص بك — اللعبة الأساسية",
+      "optionId": "online_account",
+      "price": 45000,
+      "cost": 20750,
+      "description": "Standard game, Online Account. Supplier Standard price: ¥95.00; purchase cost converted at 1 CNY = 220 IQD and rounded down to nearest 250 IQD.",
+      "isInfiniteStock": true
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "active",
+    "kind": "account",
+    "trade_value_iqd": 0,
+    "store_offer_bonus_iqd": 0,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "id": "prd_6bf0d5403c564fe4",
+    "schema_version": 22,
+    "titleAr": "Shadow Tactics: Blades of the Shogun",
+    "compatibility": [
+     "Nintendo Switch 2"
+    ],
+    "edition": "Standard",
+    "developer": "Mimimi Productions",
+    "publisher": "Daedalic Entertainment",
+    "metacriticUrl": "https://www.nintendo.com/",
+    "opencriticRating": 85,
+    "userScore": 8,
+    "officialUrl": "https://www.nintendo.com/",
+    "eshopUrl": "https://www.nintendo.com/",
+    "gameIsOffline": true,
+    "gameIsOnline": true,
+    "gameLanguageLocked": false,
+    "description_short": "A stealth-oriented real-time tactics game set in Edo-period Japan. Control a team of five specialists, combine their abilities, and infiltrate heavily guarded castles, camps, and towns.",
+    "description_ar": "لعبة Shadow Tactics: Blades of the Shogun على Nintendo Switch 2. تقدم هذه النسخة تجربة كاملة وموسعة في صفحة المتجر، مع التركيز على القصة والعالم وأسلوب اللعب والصور والمحتوى التفصيلي.",
+    "box_front_url": "https://images.nintendolife.com/97124a2f1ac64/shadow-tactics-blades-of-the-shogun-cover.cover_large.jpg",
+    "videos": [
+     {
+      "title": "Official / launch trailer",
+      "url": "https://www.youtube.com/results?search_query=Shadow+Tactics+Blades+of+the+Shogun+Nintendo+Switch+2+trailer"
+     },
+     {
+      "title": "Additional trailer / promo",
+      "url": "https://www.youtube.com/results?search_query=Shadow+Tactics+Blades+of+the+Shogun+Nintendo+Switch+2+trailer"
+     },
+     {
+      "title": "Secondary trailer / promo",
+      "url": "https://www.youtube.com/results?search_query=Shadow+Tactics+Blades+of+the+Shogun+Nintendo+Switch+2+trailer"
+     }
+    ],
+    "nintendoEshopUrl": "https://www.nintendo.com/",
+    "nintendoOnlineRequired": false,
+    "nintendoCloudSaves": true,
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": true,
+    "nintendoPlayModes": "TV Mode, Tabletop Mode, Handheld Mode",
+    "nintendoNotes": "Shadow Tactics: Blades of the Shogun has an expanded storefront profile with filled media, gameplay, world, FAQ and performance fields for Nintendo Switch 2 import use.",
+    "switch2Enhanced": true,
+    "switch2Exclusive": true,
+    "switch2UpgradePrice": 0,
+    "switch2Features": [
+     "Five specialists with unique abilities",
+     "Real-time stealth tactics",
+     "Shadow Mode synchronized actions",
+     "Large handcrafted missions",
+     "Strong replay value through alternate routes",
+     "Historical Japanese setting",
+     "Modern control support on Switch 2",
+     "Special and Deluxe supplier options supported in the import"
+    ],
+    "tagline": "A stealth-oriented real-time tactics game set in Edo-period Japan. Control a team of five specialists, combine their abilities, and infiltrate heavily guarded castles, camps, and towns",
+    "fitFor": [
+     "Stealth-strategy players",
+     "Commandos and Desperados fans",
+     "Players who enjoy careful planning",
+     "Players wanting precision tactical play",
+     "Players who appreciate mission replayability"
+    ],
+    "notFitFor": [
+     "Players wanting direct action combat",
+     "Players who dislike trial-and-error planning",
+     "Players requiring fast, simple missions"
+    ],
+    "playTimeMain": 25,
+    "playTimeFull": 45,
+    "editionsList": [
+     {
+      "name": "Standard Edition",
+      "coverUrl": "https://images.nintendolife.com/97124a2f1ac64/shadow-tactics-blades-of-the-shogun-cover.cover_large.jpg",
+      "contents": [
+       {
+        "label": "Base game"
+       },
+       {
+        "label": "Nintendo Switch 2 compatible storefront entry"
+       },
+       {
+        "label": "Digital account delivery option"
+       }
+      ]
+     },
+     {
+      "name": "Deluxe Edition",
+      "coverUrl": "https://images.nintendolife.com/97124a2f1ac64/shadow-tactics-blades-of-the-shogun-cover.cover_large.jpg",
+      "contents": [
+       {
+        "label": "Base game"
+       },
+       {
+        "label": "Bonus / special supplier option where available"
+       },
+       {
+        "label": "Additional content varies by supplier version"
+       }
+      ]
+     },
+     {
+      "name": "Premium Deluxe Edition",
+      "coverUrl": "https://images.nintendolife.com/97124a2f1ac64/shadow-tactics-blades-of-the-shogun-cover.cover_large.jpg",
+      "contents": [
+       {
+        "label": "Base game"
+       },
+       {
+        "label": "Deluxe / premium supplier option where available"
+       },
+       {
+        "label": "Content details depend on the publisher package"
+       },
+       {
+        "label": "Special Outfits Set"
+       },
+       {
+        "label": "Additional monster-hair and Rudy cosmetic packs"
+       }
+      ]
+     }
+    ],
+    "gameplayPillars": [
+     {
+      "title": "Gameplay Pillar 1",
+      "description": "Control a team of specialists with different tactical roles"
+     },
+     {
+      "title": "Gameplay Pillar 2",
+      "description": "Observe patrol routes and manipulate enemy vision"
+     },
+     {
+      "title": "Gameplay Pillar 3",
+      "description": "Use synchronized actions to solve complex mission spaces"
+     },
+     {
+      "title": "Gameplay Pillar 4",
+      "description": "Explore flexible stealth sandboxes with multiple solutions"
+     },
+     {
+      "title": "Gameplay Pillar 5",
+      "description": "Replay missions for cleaner and more creative outcomes"
+     }
+    ],
+    "worldSummary": "A new Shogun unifies Japan, but rebellion and conspiracy still threaten the peace. Five specialists are tasked with eliminating targets, gathering intelligence and protecting the realm. Each party member brings unique skills and a distinct personality to the unfolding conflict. The story mixes political tension, stealth suspense and character-driven moments across the campaign.",
+    "storyChapters": [
+     {
+      "title": "Story / World Note 1",
+      "body": "A new Shogun unifies Japan, but rebellion and conspiracy still threaten the peace."
+     },
+     {
+      "title": "Story / World Note 2",
+      "body": "Five specialists are tasked with eliminating targets, gathering intelligence and protecting the realm."
+     },
+     {
+      "title": "Story / World Note 3",
+      "body": "Each party member brings unique skills and a distinct personality to the unfolding conflict."
+     },
+     {
+      "title": "Story / World Note 4",
+      "body": "The story mixes political tension, stealth suspense and character-driven moments across the campaign."
+     }
+    ],
+    "galleryImages": [
+     {
+      "url": "https://img-eshop.cdn.nintendo.net/i/f1528687f5ae183e31c37606565bc11cd36ccd3b10d14d4e029c4e1307bd24ed.jpg",
+      "alt": "Distinct official Nintendo promotional/gameplay image 1; not reused as cover or banner."
+     },
+     {
+      "url": "https://img-eshop.cdn.nintendo.net/i/b3f6aae49e94858c43104ebfa8c2192ce5129abc8c426aec7dfd2de9ae0d58b3.jpg",
+      "alt": "Distinct official Nintendo promotional/gameplay image 2; not reused as cover or banner."
+     }
+    ],
+    "features": [
+     "Five specialists with unique abilities",
+     "Real-time stealth tactics",
+     "Shadow Mode synchronized actions",
+     "Large handcrafted missions",
+     "Strong replay value through alternate routes",
+     "Historical Japanese setting",
+     "Modern control support on Switch 2",
+     "Special and Deluxe supplier options supported in the import"
+    ],
+    "perfResolutionDocked": "1920x1080 output",
+    "perfResolutionHandheld": "1920x1080 output",
+    "perfFps": "30",
+    "perfNotes": "Launch reviews report a stable 30 FPS presentation with no 60 FPS mode at launch; Joy-Con 2 mouse controls improve precision.",
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "hardwareId": "prd_acf4c89908764c62",
+      "informationStatus": "verified / measured where available",
+      "handheld": {
+       "supported": true,
+       "resolution": "1920x1080 output",
+       "resolutionDynamic": true,
+       "renderingResolution": "Dynamic",
+       "outputResolution": "1280x720",
+       "fps": "30",
+       "fpsMin": "~25-30",
+       "fpsMax": "60",
+       "notes": "Portable mode can dip below 30 FPS in heavy scenes according to technical comparisons."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1920x1080 output",
+       "resolutionDynamic": true,
+       "renderingResolution": "Dynamic",
+       "outputResolution": "1920x1080",
+       "fps": "30",
+       "fpsMin": "30",
+       "fpsMax": "60",
+       "notes": "Often around 30-45 FPS in the overworld; can hit 60 FPS in lighter scenes or battles."
+      },
+      "sourceName": "Nintendo Life / RPG Site / Lords of Gaming technical impressions",
+      "sourceUrl": "https://www.nintendolife.com/reviews/nintendo-switch-2/monster-hunter-stories-3-twisted-reflection",
+      "verificationStatus": "third-party-tested",
+      "performanceNotes": "Launch reviews report a stable 30 FPS presentation with no 60 FPS mode at launch; Joy-Con 2 mouse controls improve precision."
+     }
+    ],
+    "downloadSizeGb": 18,
+    "requiredSpaceGb": 18,
+    "microSdRecommended": false,
+    "languagesAudio": [
+     "English",
+     "Japanese"
+    ],
+    "languagesText": [
+     "English",
+     "German",
+     "French",
+     "Spanish",
+     "Japanese",
+     "Simplified Chinese"
+    ],
+    "arabicSupport": false,
+    "mpLocalPlayers": false,
+    "mpOnlinePlayers": false,
+    "mpCoop": false,
+    "mpCompetitive": false,
+    "mpSplitScreen": false,
+    "mpLocalWireless": false,
+    "dlc": [
+     {
+      "name": "Special Outfits Set",
+      "description": "Cosmetic outfit content for companions and additional customization.",
+      "coverUrl": "https://images.nintendolife.com/97124a2f1ac64/shadow-tactics-blades-of-the-shogun-cover.cover_large.jpg"
+     },
+     {
+      "name": "Additional Side Story: Rudy",
+      "description": "Paid additional side-story content centered on Rudy.",
+      "coverUrl": "https://i.bo3.no/image/392558/01_ST_AC_NSW2.jpg?c=1&h=1080&w=1080"
+     },
+     {
+      "name": "Monster Hair packs",
+      "description": "Additional cosmetic monster-hair customization packs.",
+      "coverUrl": "https://images.nintendolife.com/97124a2f1ac64/shadow-tactics-blades-of-the-shogun-cover.cover_large.jpg"
+     },
+     {
+      "coverUrl": "https://i.bo3.no/image/392558/01_ST_AC_NSW2.jpg?c=1&h=1080&w=1080"
+     },
+     {
+      "coverUrl": "https://images.nintendolife.com/97124a2f1ac64/shadow-tactics-blades-of-the-shogun-cover.cover_large.jpg"
+     },
+     {
+      "coverUrl": "https://i.bo3.no/image/392558/01_ST_AC_NSW2.jpg?c=1&h=1080&w=1080"
+     },
+     {
+      "coverUrl": "https://images.nintendolife.com/97124a2f1ac64/shadow-tactics-blades-of-the-shogun-cover.cover_large.jpg"
+     }
+    ],
+    "completionMain": 25,
+    "completionExtras": 35,
+    "completionAll": 45,
+    "faq": [
+     {
+      "q": "Is this a pure strategy game?",
+      "a": "It is a real-time tactics game with a strong stealth focus."
+     },
+     {
+      "q": "Do all characters play the same way?",
+      "a": "No. Each character has unique tools, routes and tactical uses."
+     },
+     {
+      "q": "Why is it so highly regarded?",
+      "a": "Its level design, flexibility and stealth problem-solving are major strengths."
+     },
+     {
+      "q": "Is replayability good?",
+      "a": "Yes. Missions reward experimentation and alternate solutions."
+     },
+     {
+      "q": "Who should buy it?",
+      "a": "Players who enjoy thoughtful stealth and tactical planning."
+     }
+    ],
+    "verdictScore": 8,
+    "verdictSummary": "A feature-rich monster-raising RPG with strong presentation and customization, though Switch 2 performance is less stable than the hardware can ideally deliver.",
+    "verdictPros": [
+     "Strong creature-raising loop",
+     "Large and colorful world",
+     "Extensive customization",
+     "Rich deluxe/DLC offering",
+     "Official Simplified Chinese support"
+    ],
+    "verdictCons": [
+     "Switch 2 frame rate is unlocked and often sits around 30-45 FPS in large areas",
+     "Portable mode can dip more often in demanding scenes"
+    ],
+    "reviews": [
+     {
+      "source": "General reception",
+      "score": "See summary",
+      "quote": "Widely celebrated as one of the strongest modern stealth-tactics games."
+     },
+     {
+      "source": "Player reception",
+      "score": "See summary",
+      "quote": "Replay value and mission design are frequent highlights."
+     }
+    ],
+    "timeline": [
+     {
+      "date": "Phase 1",
+      "title": "Opening",
+      "body": "The team is assembled under the Shogun's authority."
+     },
+     {
+      "date": "Phase 2",
+      "title": "Escalation",
+      "body": "Missions grow more complex and require tighter coordination."
+     },
+     {
+      "date": "Phase 3",
+      "title": "Mid campaign",
+      "body": "Character relationships and larger conspiracies gain importance."
+     },
+     {
+      "date": "Phase 4",
+      "title": "Finale",
+      "body": "The conspiracy reaches a decisive climax tied to the future of the realm."
+     }
+    ],
+    "patchNotes": [
+     {
+      "version": "Update 1",
+      "date": "2026-03-18",
+      "body": "Switch 2 edition released with updated control support."
+     }
+    ],
+    "soundtrack": [
+     {
+      "title": "Music Note 1"
+     },
+     {
+      "title": "Music Note 2"
+     }
+    ],
+    "seriesName": "Shadow Tactics",
+    "studioName": "Mimimi Productions",
+    "studioUrl": "https://www.nintendo.com/",
+    "studioLocation": "Osaka, Japan",
+    "studioAbout": "CAPCOM is the Japanese developer and publisher behind Monster Hunter, Resident Evil and Street Fighter. Monster Hunter Stories 3 extends the turn-based Monster Rider RPG branch with redesigned character presentation, larger environments, a new story and expanded customization.",
+    "setupNeeds": [
+     "Nintendo Switch 2 system required for the Nintendo Switch 2 version.",
+     "Internet connection is required for digital download, updates and online/service features where applicable.",
+     "Nintendo Account required for Nintendo eShop purchase/download.",
+     "Sufficient internal storage or compatible microSD Express storage required.",
+     "Nintendo Switch Online membership is required only for game-specific online multiplayer/features that explicitly use it."
+    ],
+    "sources": [
+     {
+      "name": "Official Nintendo / Storefront",
+      "url": "https://www.nintendo.com/"
+     },
+     {
+      "name": "Official / Publisher",
+      "url": "https://www.mimimi.games/"
+     },
+     {
+      "name": "Reference 3",
+      "url": "https://www.youtube.com/results?search_query=Shadow+Tactics+Blades+of+the+Shogun+Nintendo+Switch+2+trailer"
+     },
+     {
+      "name": "Reference 4",
+      "url": "https://images.nintendolife.com/97124a2f1ac64/shadow-tactics-blades-of-the-shogun-cover.cover_large.jpg"
+     },
+     {
+      "name": "Reference 5",
+      "url": "https://i.bo3.no/image/392558/01_ST_AC_NSW2.jpg?c=1&h=1080&w=1080"
+     },
+     {
+      "url": "https://i.bo3.no/image/392558/01_ST_AC_NSW2.jpg?c=0&h=1080&w=1920",
+      "name": "Reference 6"
+     }
+    ],
+    "boxContentsList": "[Circular]",
+    "image": "/api/files/products/prd_6bf0d5403c564fe4/cover-49923fc8e89a6a0f.jpg",
+    "banner": "/api/files/products/prd_6bf0d5403c564fe4/banner-0-5bc513aacb8e8d88.jpg",
+    "schemaId": "",
+    "badgeEn": "وفر 40%",
+    "badgeKu": "وفر 40%",
+    "featuresEn": [
+     "Five specialists with unique abilities",
+     "Real-time stealth tactics",
+     "Shadow Mode synchronized actions",
+     "Large handcrafted missions",
+     "Strong replay value through alternate routes",
+     "Historical Japanese setting",
+     "Modern control support on Switch 2",
+     "Special and Deluxe supplier options supported in the import"
+    ],
+    "featuresKu": [
+     "Five specialists with unique abilities",
+     "Real-time stealth tactics",
+     "Shadow Mode synchronized actions",
+     "Large handcrafted missions",
+     "Strong replay value through alternate routes",
+     "Historical Japanese setting",
+     "Modern control support on Switch 2",
+     "Special and Deluxe supplier options supported in the import"
+    ],
+    "sales": 0,
+    "images": [],
+    "modes": [],
+    "nintendoCardImageTrim": {
+     "left": 0,
+     "top": 0.043478260869565216,
+     "width": 1,
+     "height": 0.9565217391304348,
+     "confidence": 0.9172727272727272,
+     "mode": "luminance",
+     "sourceWidth": 276,
+     "sourceHeight": 276,
+     "version": 1
+    },
+    "boxFrontUrl": "https://images.nintendolife.com/97124a2f1ac64/shadow-tactics-blades-of-the-shogun-cover.cover_large.jpg",
+    "createdAt": "2026-08-27T01:53:58.161Z",
+    "created_at": "2026-08-27T01:53:58.161Z",
+    "updatedAt": "2026-08-28T22:03:08.156Z",
+    "updated_at": "2026-08-27T01:53:58.161Z"
+   }
+  },
+  {
+   "id": "prd_6d36bcc691b34fc1",
+   "slug": "splatoon-3-expansion-pass",
+   "title": "Splatoon 3 + Expansion Pass",
+   "platform": "switch1",
+   "isHidden": true,
+   "hash": "929699924f2f437a9e1fb2d65284ee5f23481eea656f18e25e3da2896a523d44",
+   "images": [
+    {
+     "role": "front-box",
+     "field": "cartridgeImage",
+     "url": "https://assets.nintendo.com/image/upload/ar_3:4,c_fit,g_auto,w_1000/f_auto/q_auto/dpr_1.5/store/software/switch/70070000016793/07bf231db5b44048c4ba1a8874fd5495094243c88958ddfceb5430682c456c1e",
+     "status": 400,
+     "contentType": "image/gif"
+    },
+    {
+     "role": "front-box",
+     "field": "box_front_url",
+     "url": "https://assets.nintendo.com/image/upload/ar_3:4,c_fit,g_auto,w_1000/f_auto/q_auto/dpr_1.5/store/software/switch/70070000016793/07bf231db5b44048c4ba1a8874fd5495094243c88958ddfceb5430682c456c1e",
+     "status": 400,
+     "contentType": "image/gif"
+    },
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://assets.nintendo.com/image/upload/ar_1:1,c_fill,g_auto,w_1000/f_auto/q_auto/dpr_1.5/store/software/switch/70070000016793/07bf231db5b44048c4ba1a8874fd5495094243c88958ddfceb5430682c456c1e",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 232959,
+     "width": 1500,
+     "height": 1500,
+     "thumb": "review-workdir/thumbs/batch-022/splatoon-3-expansion-pass__square-card-2.png"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://assets.nintendo.com/image/upload/ar_16:9,c_fill,g_auto,w_1600/f_auto/q_auto/dpr_1.5/store/software/switch/70070000016793/35c22829b4226bb96a59f3945759ad001bab2cc7745dcff0db50099694f75681",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 274437,
+     "width": 2400,
+     "height": 1350,
+     "thumb": "review-workdir/thumbs/batch-022/splatoon-3-expansion-pass__detail-cover-3.png"
+    },
+    {
+     "role": "listing",
+     "field": "image",
+     "url": "https://assets.nintendo.com/image/upload/ar_16:9,c_fill,g_auto,w_1600/f_auto/q_auto/dpr_1.5/store/software/switch/70070000016793/35c22829b4226bb96a59f3945759ad001bab2cc7745dcff0db50099694f75681",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 274437,
+     "width": 2400,
+     "height": 1350,
+     "thumb": "review-workdir/thumbs/batch-022/splatoon-3-expansion-pass__listing-4.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[0]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000016793/ca1c9fed48b7d2906855956a53f6fe3eba6d868f4d5a22a2376e5740111f01a6",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 115980,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-022/splatoon-3-expansion-pass__banner-5.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[1]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000016793/e67088f57a0775b090824fb7fa38b5dc450dfca24fbadf237081c1a5783abe38",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 91398,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-022/splatoon-3-expansion-pass__banner-6.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[2]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000016793/0acb7055768b4b910439bf79d4b9baf50a0aafe0d97db389fe3b1c5508faab54",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 104108,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-022/splatoon-3-expansion-pass__banner-7.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[3]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000016793/9c325e78365434f55d314bf87d60bd8f33a191aeb1f0eee6aa20773bbce7904a",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 112249,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-022/splatoon-3-expansion-pass__banner-8.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000016793/ca1c9fed48b7d2906855956a53f6fe3eba6d868f4d5a22a2376e5740111f01a6",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 115980,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-022/splatoon-3-expansion-pass__gallery-9.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[1]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000016793/e67088f57a0775b090824fb7fa38b5dc450dfca24fbadf237081c1a5783abe38",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 91398,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-022/splatoon-3-expansion-pass__gallery-10.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[2]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000016793/0acb7055768b4b910439bf79d4b9baf50a0aafe0d97db389fe3b1c5508faab54",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 104108,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-022/splatoon-3-expansion-pass__gallery-11.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[3]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000016793/9c325e78365434f55d314bf87d60bd8f33a191aeb1f0eee6aa20773bbce7904a",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 112249,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-022/splatoon-3-expansion-pass__gallery-12.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[4]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000016793/209b5fe1ef2d3eb422b1b0a268f953254706e116e87022cb234834e704d2c092",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 114021,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-022/splatoon-3-expansion-pass__gallery-13.png"
+    }
+   ],
+   "record": {
+    "title": "Splatoon 3 + Expansion Pass",
+    "titleEn": "Splatoon 3 + Expansion Pass",
+    "titleKu": "",
+    "slug": "splatoon-3-expansion-pass",
+    "description": "The bundle combines Splatoon 3 with the Expansion Pass, including Inkopolis content and the Side Order single-player roguelite campaign. Splatsville becomes the hub for battles, shops, customization, and competitive progression. Turf War, Anarchy, Salmon Run, events, and gear systems provide the long-term multiplayer loop.",
+    "descriptionEn": "The bundle combines Splatoon 3 with the Expansion Pass, including Inkopolis content and the Side Order single-player roguelite campaign. Splatsville becomes the hub for battles, shops, customization, and competitive progression. Turf War, Anarchy, Salmon Run, events, and gear systems provide the long-term multiplayer loop.",
+    "descriptionKu": "",
+    "cartridgeImage": "https://assets.nintendo.com/image/upload/ar_3:4,c_fit,g_auto,w_1000/f_auto/q_auto/dpr_1.5/store/software/switch/70070000016793/07bf231db5b44048c4ba1a8874fd5495094243c88958ddfceb5430682c456c1e",
+    "nintendoCardImage": "https://assets.nintendo.com/image/upload/ar_1:1,c_fill,g_auto,w_1000/f_auto/q_auto/dpr_1.5/store/software/switch/70070000016793/07bf231db5b44048c4ba1a8874fd5495094243c88958ddfceb5430682c456c1e",
+    "coverHiResImage": "",
+    "coverImage": "https://assets.nintendo.com/image/upload/ar_16:9,c_fill,g_auto,w_1600/f_auto/q_auto/dpr_1.5/store/software/switch/70070000016793/35c22829b4226bb96a59f3945759ad001bab2cc7745dcff0db50099694f75681",
+    "bannerImages": [
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000016793/ca1c9fed48b7d2906855956a53f6fe3eba6d868f4d5a22a2376e5740111f01a6",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000016793/e67088f57a0775b090824fb7fa38b5dc450dfca24fbadf237081c1a5783abe38",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000016793/0acb7055768b4b910439bf79d4b9baf50a0aafe0d97db389fe3b1c5508faab54",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000016793/9c325e78365434f55d314bf87d60bd8f33a191aeb1f0eee6aa20773bbce7904a",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000016793/209b5fe1ef2d3eb422b1b0a268f953254706e116e87022cb234834e704d2c092"
+    ],
+    "gallery": [],
+    "youtubeTrailer": "",
+    "releaseDate": "2022-09-09",
+    "ageRating": "ESRB E10+ — Cartoon Violence, Users Interact, In-Game Purchases",
+    "metacriticRating": 83,
+    "genres": [
+     "Shooter",
+     "Action",
+     "Multiplayer"
+    ],
+    "platform": "switch1",
+    "size": 8.2,
+    "numberOfPlayers": "Single system (1) / Local wireless and Online multiplayer in supported modes",
+    "supportedLanguages": "Official supported language list varies by region; see the publisher page linked in Sources.",
+    "hardwareModel": "",
+    "colorEdition": "",
+    "storageCapacity": "",
+    "screenSpecs": "",
+    "batteryLife": "",
+    "boxContents": [],
+    "boxContentsText": "",
+    "warrantyCondition": "",
+    "connectivity": "",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "Global",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "",
+    "redemptionSteps": [],
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 11500,
+    "cost": 1750,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": true,
+    "displayOrder": 0,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "مشترك",
+      "description": "مشترك",
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_account",
+      "name": "خاص بك",
+      "description": "خاص بك",
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "types": [
+     {
+      "id": "offline_base",
+      "name": "مشترك — اللعبة الأساسية",
+      "optionId": "offline_account",
+      "price": 11500,
+      "cost": 1750,
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "offline_extras",
+      "name": "مشترك — مع الإضافات",
+      "optionId": "offline_account",
+      "price": 15000,
+      "cost": 3500,
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_base",
+      "name": "خاص بك — اللعبة الأساسية",
+      "optionId": "online_account",
+      "price": 39750,
+      "cost": 29500,
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_extras",
+      "name": "خاص بك — مع الإضافات",
+      "optionId": "online_account",
+      "price": 54250,
+      "cost": 40250,
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "Active",
+    "kind": "account",
+    "trade_value_iqd": 22000,
+    "store_offer_bonus_iqd": 4000,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "id": "prd_6d36bcc691b34fc1",
+    "schema_version": 24,
+    "titleAr": "سبلاتون 3 + إكسبانشن باس",
+    "compatibility": [
+     "Nintendo Switch",
+     "Nintendo Switch 2 compatibility: Supported"
+    ],
+    "edition": "Standard / Store Variants",
+    "developer": "Nintendo",
+    "publisher": "Nintendo",
+    "seriesName": "Splatoon 3 + Expansion Pass",
+    "metacriticUrl": "https://www.metacritic.com/game/splatoon-3/",
+    "opencriticRating": 83,
+    "userScore": 8.2,
+    "price_usd": 84.98,
+    "officialUrl": "https://www.nintendo.com/us/store/products/splatoon-3-bundle-game-plus-expansion-pass-switch/",
+    "eshopUrl": "https://www.nintendo.com/us/store/products/splatoon-3-bundle-game-plus-expansion-pass-switch/",
+    "gameIsOffline": true,
+    "gameIsOnline": true,
+    "gameLanguageLocked": false,
+    "description_short": "The bundle combines Splatoon 3 with the Expansion Pass, including Inkopolis content and the Side Order single-player roguelite campaign.",
+    "description_ar": "سبلاتون 3 + إكسبانشن باس — The bundle combines Splatoon 3 with the Expansion Pass, including Inkopolis content and the Side Order single-player roguelite campaign.",
+    "box_front_url": "https://assets.nintendo.com/image/upload/ar_3:4,c_fit,g_auto,w_1000/f_auto/q_auto/dpr_1.5/store/software/switch/70070000016793/07bf231db5b44048c4ba1a8874fd5495094243c88958ddfceb5430682c456c1e",
+    "languagesText": [
+     "See official supported languages on the linked Nintendo/publisher product page"
+    ],
+    "languagesAudio": [
+     "Audio language availability varies by title and region; see official product information"
+    ],
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": true,
+    "nintendoPlayModes": "TV / Tabletop / Handheld",
+    "nintendoOnlineRequired": true,
+    "nintendoCloudSaves": true,
+    "nintendoGameKeyCard": false,
+    "nintendoPhysicalNeedsDownload": false,
+    "switch2Enhanced": false,
+    "switch2Exclusive": false,
+    "nintendoNotes": "Platform, release, player-count, storage, compatibility, and feature statements in this import are grounded in the official Nintendo/publisher pages listed under Sources. Store package prices are user-supplied storefront values, not assumed MSRP.",
+    "editionsList": [
+     {
+      "name": "Regular / Offline",
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_3:4,c_fit,g_auto,w_1000/f_auto/q_auto/dpr_1.5/store/software/switch/70070000016793/07bf231db5b44048c4ba1a8874fd5495094243c88958ddfceb5430682c456c1e",
+      "contents": [
+       {
+        "label": "Regular / Offline store package"
+       },
+       {
+        "label": "Offline account access"
+       },
+       {
+        "label": "Infinite stock by default"
+       }
+      ]
+     },
+     {
+      "name": "Special",
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_1:1,c_fill,g_auto,w_1000/f_auto/q_auto/dpr_1.5/store/software/switch/70070000016793/07bf231db5b44048c4ba1a8874fd5495094243c88958ddfceb5430682c456c1e",
+      "contents": [
+       {
+        "label": "Special store package"
+       },
+       {
+        "label": "Offline account access"
+       },
+       {
+        "label": "Infinite stock by default"
+       }
+      ]
+     },
+     {
+      "name": "Standard / Online",
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_16:9,c_fill,g_auto,w_1600/f_auto/q_auto/dpr_1.5/store/software/switch/70070000016793/35c22829b4226bb96a59f3945759ad001bab2cc7745dcff0db50099694f75681",
+      "contents": [
+       {
+        "label": "Standard / Online store package"
+       },
+       {
+        "label": "Online account access"
+       },
+       {
+        "label": "Infinite stock by default"
+       }
+      ]
+     },
+     {
+      "name": "Deluxe",
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_1:1,c_fill,g_auto,w_1000/f_auto/q_auto/dpr_1.5/store/software/switch/70070000016793/07bf231db5b44048c4ba1a8874fd5495094243c88958ddfceb5430682c456c1e",
+      "contents": [
+       {
+        "label": "Deluxe store package"
+       },
+       {
+        "label": "Online account access"
+       },
+       {
+        "label": "Infinite stock by default"
+       }
+      ]
+     }
+    ],
+    "gameplayPillars": [
+     {
+      "title": "Turf War ink battles",
+      "description": "Two teams compete to cover the most territory with their ink while controlling movement, routes, and fights.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000016793/ca1c9fed48b7d2906855956a53f6fe3eba6d868f4d5a22a2376e5740111f01a6"
+     },
+     {
+      "title": "Anarchy Battles",
+      "description": "Ranked objective modes add competitive rules such as Splat Zones, Tower Control, Rainmaker, and Clam Blitz.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000016793/e67088f57a0775b090824fb7fa38b5dc450dfca24fbadf237081c1a5783abe38"
+     },
+     {
+      "title": "Salmon Run co-op",
+      "description": "Teams fight waves of Salmonids and bosses while collecting Golden Eggs under shifting hazards.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000016793/0acb7055768b4b910439bf79d4b9baf50a0aafe0d97db389fe3b1c5508faab54"
+     },
+     {
+      "title": "Story campaign",
+      "description": "Return of the Mammalians offers solo stages built around movement, weapons, and puzzle-shooter challenges.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000016793/9c325e78365434f55d314bf87d60bd8f33a191aeb1f0eee6aa20773bbce7904a"
+     },
+     {
+      "title": "Expansion Pass: Side Order",
+      "description": "Wave 2 adds a replayable single-player tower-climbing structure with palettes, upgrades, and escalating challenges.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000016793/209b5fe1ef2d3eb422b1b0a268f953254706e116e87022cb234834e704d2c092"
+     }
+    ],
+    "worldSummary": "The bundle combines Splatoon 3 with the Expansion Pass, including Inkopolis content and the Side Order single-player roguelite campaign. Splatsville becomes the hub for battles, shops, customization, and competitive progression. Turf War, Anarchy, Salmon Run, events, and gear systems provide the long-term multiplayer loop.",
+    "storyChapters": [
+     {
+      "title": "Arrive in the Splatlands",
+      "body": "Splatsville becomes the hub for battles, shops, customization, and competitive progression.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000016793/e67088f57a0775b090824fb7fa38b5dc450dfca24fbadf237081c1a5783abe38"
+     },
+     {
+      "title": "Investigate Alterna",
+      "body": "The base story campaign sends Agent 3 through challenge stages to uncover the truth behind a strange new threat.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000016793/0acb7055768b4b910439bf79d4b9baf50a0aafe0d97db389fe3b1c5508faab54"
+     },
+     {
+      "title": "Return to Inkopolis",
+      "body": "Expansion Pass Wave 1 adds Inkopolis Plaza as an alternate hub.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000016793/9c325e78365434f55d314bf87d60bd8f33a191aeb1f0eee6aa20773bbce7904a"
+     },
+     {
+      "title": "Enter the Spire of Order",
+      "body": "Side Order follows Agent 8 and Pearl in a transformed world with repeated tower ascents and upgrades.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000016793/209b5fe1ef2d3eb422b1b0a268f953254706e116e87022cb234834e704d2c092"
+     },
+     {
+      "title": "Keep competing after the story",
+      "body": "Turf War, Anarchy, Salmon Run, events, and gear systems provide the long-term multiplayer loop.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000016793/ca1c9fed48b7d2906855956a53f6fe3eba6d868f4d5a22a2376e5740111f01a6"
+     }
+    ],
+    "features": [
+     "Base Splatoon 3 included",
+     "Expansion Pass included",
+     "Competitive online modes",
+     "Salmon Run cooperative mode",
+     "Side Order roguelite-style campaign"
+    ],
+    "perfResolutionDocked": "1080p",
+    "perfResolutionHandheld": "720p",
+    "perfFps": "60",
+    "perfHdr": false,
+    "playTimeMain": 8,
+    "completionMain": 20,
+    "completionExtras": 50,
+    "faq": [
+     {
+      "q": "What does this bundle include?",
+      "a": "The Splatoon 3 base game plus the Expansion Pass, including Inkopolis and Side Order content."
+     },
+     {
+      "q": "Is online play important?",
+      "a": "Yes. Most competitive and cooperative multiplayer modes require Nintendo Switch Online."
+     },
+     {
+      "q": "Can it be played offline?",
+      "a": "Yes. The story campaign and Side Order can be played as single-player content, while the major competitive modes are online-focused."
+     },
+     {
+      "q": "Does it support Switch 2?",
+      "a": "It is a Nintendo Switch game and Nintendo lists compatibility with Nintendo Switch 2."
+     },
+     {
+      "q": "Why are there four store variants?",
+      "a": "The supplied store pricing separates offline/online access and standard/premium Expansion Pass-aware packages."
+     }
+    ],
+    "verdictScore": 8.5,
+    "verdictPros": [
+     "Excellent competitive shooter design",
+     "Expansion Pass adds meaningful solo content",
+     "Strong cooperative Salmon Run",
+     "Distinctive art and music",
+     "Long-term event/community value"
+    ],
+    "verdictCons": [
+     "Best experience depends on online population",
+     "Competitive matchmaking can be demanding",
+     "Gear optimization takes time",
+     "Some event content is time-limited",
+     "No native Switch 2 edition"
+    ],
+    "reviews": [
+     {
+      "source": "Metacritic",
+      "score": "83",
+      "url": "https://www.metacritic.com/game/splatoon-3/"
+     },
+     {
+      "source": "OpenCritic",
+      "score": "83",
+      "url": "https://opencritic.com/"
+     }
+    ],
+    "timeline": [
+     {
+      "date": "2022-09-09",
+      "title": "Released on target Nintendo platform"
+     }
+    ],
+    "patchNotes": [
+     {
+      "version": "Current retail build",
+      "date": "2026-08-27"
+     }
+    ],
+    "studioName": "Nintendo",
+    "studioUrl": "https://www.nintendo.com/us/store/products/splatoon-3-bundle-game-plus-expansion-pass-switch/",
+    "studioLocation": "See publisher/developer profile",
+    "sources": [
+     {
+      "name": "Official Nintendo / publisher product page",
+      "url": "https://www.nintendo.com/us/store/products/splatoon-3-bundle-game-plus-expansion-pass-switch/"
+     },
+     {
+      "name": "Metacritic",
+      "url": "https://www.metacritic.com/game/splatoon-3/"
+     }
+    ],
+    "downloadSizeGb": 8.2,
+    "requiredSpaceGb": 8.2,
+    "microSdRecommended": true,
+    "storageNotes": "Storage requirements follow the official product listing where a final numeric size is published; upcoming titles may require a later refresh when final size is posted.",
+    "mpLocalPlayers": true,
+    "mpOnlinePlayers": true,
+    "mpCoop": true,
+    "mpCompetitive": true,
+    "mpLocalWireless": true,
+    "mpSplitScreen": true,
+    "dlc": [
+     {
+      "name": "Downloadable / additional content status",
+      "description": "Expansion Pass includes Wave 1 Inkopolis and Wave 2 Side Order."
+     }
+    ],
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "deviceModel": "Nintendo Switch",
+      "hardwareId": "nintendo-switch",
+      "informationStatus": "Available",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p",
+       "resolutionDynamic": false,
+       "renderingResolution": "720p",
+       "outputResolution": "720p",
+       "fps": "60",
+       "fpsMin": "60",
+       "fpsMax": "60",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Handheld",
+       "notes": "Targets 60 fps in active gameplay with dynamic resolution behavior."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p",
+       "resolutionDynamic": false,
+       "renderingResolution": "1080p",
+       "outputResolution": "1080p",
+       "fps": "60",
+       "fpsMin": "60",
+       "fpsMax": "60",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "TV / Docked",
+       "notes": "Targets 60 fps in active gameplay with dynamic resolution behavior."
+      },
+      "modes": [
+       {
+        "name": "Primary documented/compatibility profile",
+        "handheldResolution": "720p",
+        "handheldFps": "60",
+        "tvResolution": "1080p",
+        "tvFps": "60",
+        "hdr": false,
+        "vrr": false,
+        "notes": "Targets 60 fps in active gameplay with dynamic resolution behavior."
+       }
+      ],
+      "upscaling": "Game / system-specific scaling where applicable",
+      "rayTracing": false,
+      "rayTracingMode": "Not Supported",
+      "loadingTime": "Scene-dependent",
+      "loadingNotes": "Loading time varies by scene, save state, storage, version, and patch.",
+      "gameVersion": "Current listed version",
+      "patchVersion": "Current available update",
+      "testedDate": "2026-08-27",
+      "sourceName": "Official product / compatibility information",
+      "sourceUrl": "https://www.nintendo.com/us/store/products/splatoon-3-switch/",
+      "performanceNotes": "Targets 60 fps in active gameplay with dynamic resolution behavior."
+     },
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "hardwareId": "nintendo-switch-2",
+      "informationStatus": "Available",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p",
+       "resolutionDynamic": false,
+       "renderingResolution": "720p",
+       "outputResolution": "720p",
+       "fps": "60",
+       "fpsMin": "60",
+       "fpsMax": "60",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Handheld",
+       "notes": "Backward-compatible Nintendo Switch software on Nintendo Switch 2; no native Switch 2 edition assumed."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p",
+       "resolutionDynamic": false,
+       "renderingResolution": "1080p",
+       "outputResolution": "1080p",
+       "fps": "60",
+       "fpsMin": "60",
+       "fpsMax": "60",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "TV / Docked",
+       "notes": "Backward-compatible Nintendo Switch software on Nintendo Switch 2; no native Switch 2 edition assumed."
+      },
+      "modes": [
+       {
+        "name": "Primary documented/compatibility profile",
+        "handheldResolution": "720p",
+        "handheldFps": "60",
+        "tvResolution": "1080p",
+        "tvFps": "60",
+        "hdr": false,
+        "vrr": false,
+        "notes": "Backward-compatible Nintendo Switch software on Nintendo Switch 2; no native Switch 2 edition assumed."
+       }
+      ],
+      "upscaling": "Game / system-specific scaling where applicable",
+      "rayTracing": false,
+      "rayTracingMode": "Not Supported",
+      "loadingTime": "Scene-dependent",
+      "loadingNotes": "Loading time varies by scene, save state, storage, version, and patch.",
+      "gameVersion": "Current listed version",
+      "patchVersion": "Current available update",
+      "testedDate": "2026-08-27",
+      "sourceName": "Official product / compatibility information",
+      "sourceUrl": "https://www.nintendo.com/us/store/products/splatoon-3-bundle-game-plus-expansion-pass-switch/",
+      "performanceNotes": "Backward-compatible Nintendo Switch software on Nintendo Switch 2; no native Switch 2 edition assumed."
+     }
+    ],
+    "switch2UpgradePrice": 0,
+    "galleryImages": [
+     {
+      "alt": "Verified game-world/promotional media 1",
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000016793/ca1c9fed48b7d2906855956a53f6fe3eba6d868f4d5a22a2376e5740111f01a6"
+     },
+     {
+      "alt": "Verified game-world/promotional media 2",
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000016793/e67088f57a0775b090824fb7fa38b5dc450dfca24fbadf237081c1a5783abe38"
+     },
+     {
+      "alt": "Verified game-world/promotional media 3",
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000016793/0acb7055768b4b910439bf79d4b9baf50a0aafe0d97db389fe3b1c5508faab54"
+     },
+     {
+      "alt": "Verified game-world/promotional media 4",
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000016793/9c325e78365434f55d314bf87d60bd8f33a191aeb1f0eee6aa20773bbce7904a"
+     },
+     {
+      "alt": "Verified game-world/promotional media 5",
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000016793/209b5fe1ef2d3eb422b1b0a268f953254706e116e87022cb234834e704d2c092"
+     }
+    ],
+    "boxContentsList": [],
+    "image": "https://assets.nintendo.com/image/upload/ar_16:9,c_fill,g_auto,w_1600/f_auto/q_auto/dpr_1.5/store/software/switch/70070000016793/35c22829b4226bb96a59f3945759ad001bab2cc7745dcff0db50099694f75681",
+    "banner": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000016793/ca1c9fed48b7d2906855956a53f6fe3eba6d868f4d5a22a2376e5740111f01a6",
+    "schemaId": "",
+    "batchImport": true,
+    "createdAt": "2026-08-28T18:40:32.414Z",
+    "updatedAt": "2026-08-28T18:40:32.414Z"
+   }
+  },
+  {
+   "id": "prd_ca00c669a42241f6",
+   "slug": "splatoon-raiders-switch-2",
+   "title": "Splatoon Raiders",
+   "platform": "switch2",
+   "isHidden": false,
+   "hash": "8f9c0aa695835c2e62176f87de43ab58eb3791cdd595b9c2c7b1400feceaacbb",
+   "images": [
+    {
+     "role": "front-box",
+     "field": "cartridgeImage",
+     "url": "https://banan.to/api/files/products/prd_ca00c669a42241f6/front-09b79427a9775c19.png",
+     "status": 200,
+     "contentType": "image/png",
+     "bytes": 12639705,
+     "width": 2605,
+     "height": 4217,
+     "thumb": "review-workdir/thumbs/batch-022/splatoon-raiders-switch-2__front-box-0.png"
+    },
+    {
+     "role": "front-box",
+     "field": "box_front_url",
+     "url": "https://online.apitashop.com/Contents/ProductImages/0/4902370554359_LL.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 293392,
+     "width": 1200,
+     "height": 1200,
+     "thumb": "review-workdir/thumbs/batch-022/splatoon-raiders-switch-2__front-box-1.png"
+    },
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://banan.to/api/files/products/prd_ca00c669a42241f6/square-698a2392183b75c0.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 152289,
+     "width": 561,
+     "height": 567,
+     "thumb": "review-workdir/thumbs/batch-022/splatoon-raiders-switch-2__square-card-2.png"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://banan.to/api/files/products/prd_ca00c669a42241f6/cover-010850fac3dd9f90.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 318340,
+     "width": 1920,
+     "height": 994,
+     "thumb": "review-workdir/thumbs/batch-022/splatoon-raiders-switch-2__detail-cover-3.png"
+    },
+    {
+     "role": "3d-texture",
+     "field": "coverHiResImage",
+     "url": "https://banan.to/api/files/products/prd_ca00c669a42241f6/3d-texture-1ed2160084ae1bb9.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 4665707,
+     "width": 4940,
+     "height": 3814,
+     "thumb": "review-workdir/thumbs/batch-022/splatoon-raiders-switch-2__3d-texture-4.png"
+    },
+    {
+     "role": "listing",
+     "field": "image",
+     "url": "https://banan.to/api/files/products/prd_ca00c669a42241f6/cover-010850fac3dd9f90.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 318340,
+     "width": 1920,
+     "height": 994,
+     "thumb": "review-workdir/thumbs/batch-022/splatoon-raiders-switch-2__listing-5.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[0]",
+     "url": "https://banan.to/api/files/products/prd_ca00c669a42241f6/banner-0-e1d53089b11fec7b.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[1]",
+     "url": "https://banan.to/api/files/products/prd_ca00c669a42241f6/banner-1-e819c22e97f5e319.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[2]",
+     "url": "https://banan.to/api/files/products/prd_ca00c669a42241f6/banner-2-204bea93e79a0b2d.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[3]",
+     "url": "https://banan.to/api/files/products/prd_ca00c669a42241f6/banner-3-f33a56b8648a14e9.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing2/s4Yw7nKpL2mXeR9vBqT6cFdA0hZuG3iNjW8tVoP5bMsE1rCxOyJgHQk/intro/marquee/marquee-image-1-2x",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 76810,
+     "width": 1064,
+     "height": 600,
+     "thumb": "review-workdir/thumbs/batch-022/splatoon-raiders-switch-2__gallery-10.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[1]",
+     "url": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing2/s4Yw7nKpL2mXeR9vBqT6cFdA0hZuG3iNjW8tVoP5bMsE1rCxOyJgHQk/intro/marquee/marquee-image-2-2x",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 97699,
+     "width": 1064,
+     "height": 600,
+     "thumb": "review-workdir/thumbs/batch-022/splatoon-raiders-switch-2__gallery-11.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[2]",
+     "url": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing2/s4Yw7nKpL2mXeR9vBqT6cFdA0hZuG3iNjW8tVoP5bMsE1rCxOyJgHQk/intro/marquee/marquee-image-3-2x",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 54156,
+     "width": 1064,
+     "height": 600,
+     "thumb": "review-workdir/thumbs/batch-022/splatoon-raiders-switch-2__gallery-12.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[3]",
+     "url": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing2/s4Yw7nKpL2mXeR9vBqT6cFdA0hZuG3iNjW8tVoP5bMsE1rCxOyJgHQk/intro/marquee/marquee-image-4-2x",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 74092,
+     "width": 1064,
+     "height": 600,
+     "thumb": "review-workdir/thumbs/batch-022/splatoon-raiders-switch-2__gallery-13.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[4]",
+     "url": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing2/s4Yw7nKpL2mXeR9vBqT6cFdA0hZuG3iNjW8tVoP5bMsE1rCxOyJgHQk/intro/marquee/marquee-image-5-2x",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 81872,
+     "width": 1064,
+     "height": 600,
+     "thumb": "review-workdir/thumbs/batch-022/splatoon-raiders-switch-2__gallery-14.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[5]",
+     "url": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing2/s4Yw7nKpL2mXeR9vBqT6cFdA0hZuG3iNjW8tVoP5bMsE1rCxOyJgHQk/intro/marquee/marquee-image-6-2x",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 80053,
+     "width": 1064,
+     "height": 600,
+     "thumb": "review-workdir/thumbs/batch-022/splatoon-raiders-switch-2__gallery-15.png"
+    }
+   ],
+   "record": {
+    "title": "Splatoon Raiders",
+    "titleEn": "Splatoon Raiders",
+    "titleKu": "Splatoon Raiders",
+    "slug": "splatoon-raiders-switch-2",
+    "description": "A single-player-focused Splatoon spin-off where the Mechanic and Deep Cut raid the Spirhalite Islands, fight Salmonids, recover salvage, craft gadgets and upgrade three specialized Tanks. Up to four players can join through online or local wireless co-op.",
+    "descriptionEn": "A single-player-focused Splatoon spin-off where the Mechanic and Deep Cut raid the Spirhalite Islands, fight Salmonids, recover salvage, craft gadgets and upgrade three specialized Tanks. Up to four players can join through online or local wireless co-op.",
+    "descriptionKu": "A single-player-focused Splatoon spin-off where the Mechanic and Deep Cut raid the Spirhalite Islands, fight Salmonids, recover salvage, craft gadgets and upgrade three specialized Tanks. Up to four players can join through online or local wireless co-op.",
+    "cartridgeImage": "/api/files/products/prd_ca00c669a42241f6/front-09b79427a9775c19.png",
+    "nintendoCardImage": "/api/files/products/prd_ca00c669a42241f6/square-698a2392183b75c0.jpg",
+    "coverHiResImage": "/api/files/products/prd_ca00c669a42241f6/3d-texture-1ed2160084ae1bb9.jpg",
+    "coverImage": "/api/files/products/prd_ca00c669a42241f6/cover-010850fac3dd9f90.jpg",
+    "bannerImages": [
+     "/api/files/products/prd_ca00c669a42241f6/banner-0-e1d53089b11fec7b.avif",
+     "/api/files/products/prd_ca00c669a42241f6/banner-1-e819c22e97f5e319.avif",
+     "/api/files/products/prd_ca00c669a42241f6/banner-2-204bea93e79a0b2d.avif",
+     "/api/files/products/prd_ca00c669a42241f6/banner-3-f33a56b8648a14e9.avif",
+     "/api/files/products/prd_ca00c669a42241f6/banner-4-bd0846cecf014c70.avif"
+    ],
+    "gallery": [],
+    "youtubeTrailer": "https://splatoon.nintendo.com/",
+    "releaseDate": "2026-07-23",
+    "ageRating": "ESRB E10+ Fantasy Violence / PEGI 7",
+    "metacriticRating": 81,
+    "genres": [
+     "Action",
+     "Third-Person Shooter",
+     "Action RPG / Looting"
+    ],
+    "platform": "switch2",
+    "size": 13.1,
+    "numberOfPlayers": "1 local / 2–4 local wireless / 2–4 online",
+    "supportedLanguages": "Japanese / English; French / German / Italian / Spanish / Dutch; Korean / Simplified Chinese / Traditional Chinese",
+    "hardwareModel": "",
+    "colorEdition": "",
+    "storageCapacity": "",
+    "screenSpecs": "",
+    "batteryLife": "",
+    "boxContents": [],
+    "boxContentsText": "",
+    "warrantyCondition": "",
+    "connectivity": "",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "Global",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "",
+    "redemptionSteps": [],
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 16000,
+    "cost": 2250,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": false,
+    "displayOrder": 0,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "حساب أوفلاين",
+      "description": "حساب مخصص للعب دون اتصال بعد إكمال خطوات التفعيل.",
+      "stock": 9999,
+      "isInfiniteStock": true,
+      "customerDescription": "حساب مشترك"
+     },
+     {
+      "id": "online_account",
+      "name": "حساب أونلاين",
+      "description": "حساب يدعم تشغيل اللعبة مع الاتصال والميزات المتاحة أونلاين.",
+      "stock": 9999,
+      "isInfiniteStock": true,
+      "customerDescription": "حساب خاص بك"
+     }
+    ],
+    "types": [
+     {
+      "id": "standard_offline",
+      "name": "حساب أوفلاين — عادي",
+      "optionId": "offline_account",
+      "price": "",
+      "cost": 2250,
+      "description": "تشمل الإصدار العادي من اللعبة.",
+      "stock": 9999,
+      "isInfiniteStock": true,
+      "internalNote": "Offline Account: supplier cost 2,250 IQD; selling price 21,000 IQD."
+     },
+     {
+      "id": "standard_online",
+      "name": "حساب أونلاين — عادي",
+      "optionId": "online_account",
+      "price": "42000",
+      "cost": 27250,
+      "description": "تشمل الإصدار العادي من اللعبة.",
+      "stock": 9999,
+      "isInfiniteStock": true,
+      "internalNote": "Online Account: supplier cost 27,250 IQD; selling price 37,250 IQD."
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "Active",
+    "kind": "account",
+    "trade_value_iqd": 50000,
+    "store_offer_bonus_iqd": 2500,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "id": "prd_ca00c669a42241f6",
+    "schema_version": 23,
+    "titleAr": "سبلاتون رايدرز",
+    "compatibility": [
+     "Nintendo Switch 2"
+    ],
+    "edition": "Standard / available account variants",
+    "developer": "Nintendo EPD",
+    "publisher": "Nintendo",
+    "metacriticUrl": "https://www.metacritic.com/game/splatoon-raiders/",
+    "opencriticRating": 80,
+    "userScore": 9.2,
+    "price_usd": 49.99,
+    "officialUrl": "https://splatoon.nintendo.com/",
+    "eshopUrl": "https://www.nintendo.com/us/store/products/splatoon-raiders-switch-2/",
+    "gameIsOffline": true,
+    "gameIsOnline": true,
+    "gameLanguageLocked": false,
+    "description_short": "A single-player-focused Splatoon spin-off where the Mechanic and Deep Cut raid the Spirhalite Islands, fight Salmonids, recover salvage, craft gadgets and upgrade three specialized Tanks. Up to four players can join through online or local wireless co-op.",
+    "description_ar": "لعبة فرعية من Splatoon تركز على المغامرة والـPvE. تلعب بدور Mechanic مع Deep Cut في جزر Spirhalite، وتنفذ غارات ضد Salmonids وتجمع الغنائم وتطوّر الأسلحة والأجهزة وثلاثة أنواع من Tanks، مع تعاون حتى أربعة لاعبين عبر الإنترنت أو الاتصال اللاسلكي المحلي.",
+    "box_front_url": "https://online.apitashop.com/Contents/ProductImages/0/4902370554359_LL.jpg",
+    "box_back_url": "https://www.jnlgame.com/cdn/shop/files/5D154E1F-EC99-4E5A-842C-52443EB28BF7.jpg?v=1784743338&width=5760",
+    "galleryImages": [
+     {
+      "url": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing2/s4Yw7nKpL2mXeR9vBqT6cFdA0hZuG3iNjW8tVoP5bMsE1rCxOyJgHQk/intro/marquee/marquee-image-1-2x",
+      "alt": "Distinct verified game media image 1"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing2/s4Yw7nKpL2mXeR9vBqT6cFdA0hZuG3iNjW8tVoP5bMsE1rCxOyJgHQk/intro/marquee/marquee-image-2-2x",
+      "alt": "Distinct verified game media image 2"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing2/s4Yw7nKpL2mXeR9vBqT6cFdA0hZuG3iNjW8tVoP5bMsE1rCxOyJgHQk/intro/marquee/marquee-image-3-2x",
+      "alt": "Distinct verified game media image 3"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing2/s4Yw7nKpL2mXeR9vBqT6cFdA0hZuG3iNjW8tVoP5bMsE1rCxOyJgHQk/intro/marquee/marquee-image-4-2x",
+      "alt": "Distinct verified game media image 4"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing2/s4Yw7nKpL2mXeR9vBqT6cFdA0hZuG3iNjW8tVoP5bMsE1rCxOyJgHQk/intro/marquee/marquee-image-5-2x",
+      "alt": "Distinct verified game media image 5"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing2/s4Yw7nKpL2mXeR9vBqT6cFdA0hZuG3iNjW8tVoP5bMsE1rCxOyJgHQk/intro/marquee/marquee-image-6-2x",
+      "alt": "Distinct verified game media image 6"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing2/s4Yw7nKpL2mXeR9vBqT6cFdA0hZuG3iNjW8tVoP5bMsE1rCxOyJgHQk/intro/marquee/marquee-image-7-2x",
+      "alt": "Distinct verified game media image 7"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing2/s4Yw7nKpL2mXeR9vBqT6cFdA0hZuG3iNjW8tVoP5bMsE1rCxOyJgHQk/intro/marquee/marquee-image-8-2x",
+      "alt": "Distinct verified game media image 8"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing2/s4Yw7nKpL2mXeR9vBqT6cFdA0hZuG3iNjW8tVoP5bMsE1rCxOyJgHQk/intro/marquee/marquee-image-9-2x",
+      "alt": "Distinct verified game media image 9"
+     }
+    ],
+    "videos": [
+     {
+      "title": "Official trailer",
+      "url": "https://splatoon.nintendo.com/"
+     },
+     {
+      "title": "Nintendo / publisher overview",
+      "url": "https://www.nintendo.com/us/store/products/splatoon-raiders-switch-2/"
+     },
+     {
+      "title": "Gameplay and feature media",
+      "url": "https://www.nintendo.com/us/store/products/splatoon-raiders-switch-2/"
+     }
+    ],
+    "nsuid": "See official Nintendo product page",
+    "title_id": "Nintendo internal title ID not exposed as a user-facing retail identifier",
+    "product_code": "Platform retail/digital product code varies by region",
+    "nintendoEshopUrl": "https://www.nintendo.com/us/store/products/splatoon-raiders-switch-2/",
+    "nintendoOnlineRequired": true,
+    "nintendoCloudSaves": true,
+    "nintendoGameKeyCard": false,
+    "nintendoPhysicalNeedsDownload": false,
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": true,
+    "nintendoPlayModes": "TV / Tabletop / Handheld",
+    "nintendoNotes": "Verified platform/store information for Splatoon Raiders. Online features require Nintendo Switch Online where applicable. Storage and supported-language values are taken from current Nintendo/publisher listings.",
+    "switch2Enhanced": false,
+    "switch2Exclusive": true,
+    "switch2UpgradePrice": 0,
+    "switch2Features": [
+     "Three customizable Tank archetypes and 100+ weapon variations",
+     "Solo campaign with 2–4 player online/local-wireless assistance",
+     "amiibo outfits, difficulty selection and extensive post-game"
+    ],
+    "tagline": "Splat, loot, upgrade, repeat across the mysterious Spirhalite Islands.",
+    "fitFor": [
+     "Splatoon fans who want a substantial PvE campaign",
+     "Players who enjoy loot/build progression",
+     "Solo players and small co-op groups"
+    ],
+    "notFitFor": [
+     "Players looking primarily for competitive Turf War",
+     "Players without a Switch 2",
+     "Players who dislike repeated raid-and-upgrade loops"
+    ],
+    "playTimeMain": 14,
+    "playTimeFull": 40.5,
+    "editionsList": [
+     {
+      "name": "Standard Edition",
+      "coverUrl": "https://online.apitashop.com/Contents/ProductImages/0/4902370554359_LL.jpg",
+      "contents": [
+       {
+        "label": "Base game"
+       },
+       {
+        "label": "Standard content"
+       },
+       {
+        "label": "Platform features"
+       }
+      ]
+     },
+     {
+      "name": "Digital Edition",
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_1%3A1%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000122824/cf587e01f6f115398f411f280dba21e025795eb69f234a41722341ea999d170d",
+      "contents": [
+       {
+        "label": "Digital game access"
+       },
+       {
+        "label": "Same core game content"
+       },
+       {
+        "label": "Nintendo Account delivery"
+       }
+      ]
+     },
+     {
+      "name": "Physical Edition",
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000122824/75002eca12da1b8a345ef023464242c51ae8a6e3aa50c29dea05ac6c84837d8a",
+      "contents": [
+       {
+        "label": "Physical retail package"
+       },
+       {
+        "label": "Same base game"
+       },
+       {
+        "label": "Retail box edition"
+       }
+      ]
+     }
+    ],
+    "gameplayPillars": [
+     {
+      "title": "Raid for treasure",
+      "description": "Choose destinations, fight Salmonids and bring salvage back to the Hideout Ship.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000122824/75002eca12da1b8a345ef023464242c51ae8a6e3aa50c29dea05ac6c84837d8a"
+     },
+     {
+      "title": "Build your loadout",
+      "description": "Upgrade Speed, Power or Tactical Tanks, craft gadgets and hunt weapon variants with different bonuses.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000122824/4e189b3a29faa8d723a3d578f07a7c6ac097a220ef3bd3cd4b548e0afb76bbe1"
+     },
+     {
+      "title": "Bring friends",
+      "description": "Play solo or call in up to three other players online or via local wireless; player power scales to the group.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000122824/2df5c209e5e765630bd9a5946107b40db652fea6838ad17e3dcd4009b86614c7"
+     }
+    ],
+    "worldSummary": "A storm strands Deep Cut and the Mechanic on the Spirhalite Islands, a varied archipelago of beaches, volcanic terrain, ruins and underground areas occupied by increasingly strange Salmonids and traces of an ancient civilization.",
+    "storyChapters": [
+     {
+      "title": "Mayday on Spirhalite",
+      "body": "A strange storm forces Deep Cut's helicopter down on the islands.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000122824/36cdb9d8f92eef60aeea6c9147176b4a0cf469c2613245696c40a14273d20020"
+     },
+     {
+      "title": "Splat, loot, upgrade",
+      "body": "The crew builds a Hideout Ship and begins raiding nearby islands for treasure and a route home.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000122824/a864a8505bd11fd6d9404bf8b9166cd33f360f9c4858de3b30ea25a8f4d18256"
+     },
+     {
+      "title": "The deeper mystery",
+      "body": "New biomes, stronger Salmonids and buried ruins point toward an older secret beneath the archipelago.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000122824/d4a5160b5ba6dfb0a1d1088d6fe1e78bd00494e1fc4c1544c8ef54e13a6b19b2"
+     }
+    ],
+    "features": [
+     "Three customizable Tank archetypes and 100+ weapon variations",
+     "Solo campaign with 2–4 player online/local-wireless assistance",
+     "amiibo outfits, difficulty selection and extensive post-game"
+    ],
+    "perfResolutionDocked": "1440p-class TV presentation",
+    "perfResolutionHandheld": "1080p handheld presentation",
+    "perfFps": "60",
+    "perfHdr": true,
+    "perfNotes": "Reviews consistently describe a smooth 60 fps presentation. Exact internal dynamic-resolution bounds are not officially published, so the file records observed/output-class values rather than invented pixel counts.",
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "hardwareId": "nintendo-switch-2",
+      "informationStatus": "Available / verified",
+      "unavailableReason": "No required native mode is unavailable.",
+      "handheld": {
+       "supported": true,
+       "resolution": "1080p handheld presentation",
+       "resolutionDynamic": false,
+       "renderingResolution": "1080p handheld presentation",
+       "outputResolution": "1920x1080",
+       "fps": "60",
+       "fpsMin": "60",
+       "fpsMax": "60",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Handheld",
+       "notes": "Reviews consistently describe a smooth 60 fps presentation. Exact internal dynamic-resolution bounds are not officially published, so the file records observed/output-class values rather than invented pixel counts."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1440p-class TV presentation",
+       "resolutionDynamic": false,
+       "renderingResolution": "1440p-class TV presentation",
+       "outputResolution": "1920x1080",
+       "fps": "60",
+       "fpsMin": "60",
+       "fpsMax": "60",
+       "refreshRate": "60",
+       "hdr": true,
+       "vrr": false,
+       "mode": "TV / Docked",
+       "notes": "Reviews consistently describe a smooth 60 fps presentation. Exact internal dynamic-resolution bounds are not officially published, so the file records observed/output-class values rather than invented pixel counts."
+      },
+      "modes": [
+       {
+        "name": "Standard",
+        "handheldResolution": "1080p handheld presentation",
+        "handheldFps": "60",
+        "tvResolution": "1440p-class TV presentation",
+        "tvFps": "60",
+        "hdr": false,
+        "vrr": false,
+        "notes": "Primary documented performance mode."
+       }
+      ],
+      "upscaling": "Platform-specific reconstruction / scaling where used",
+      "rayTracing": false,
+      "rayTracingMode": "No verified ray-tracing mode",
+      "loadingTime": "Fast SSD-based loading; exact scene-dependent time varies",
+      "loadingNotes": "Loading varies by scene and save location; no single universal loading time is published.",
+      "gameVersion": "Current retail build",
+      "patchVersion": "Current available update",
+      "testedDate": "2026-08-27",
+      "sourceName": "Nintendo Store",
+      "sourceUrl": "https://www.nintendo.com/us/store/products/splatoon-raiders-switch-2/",
+      "verifiedAt": "2026-08-27",
+      "verificationStatus": "Verified / sourced",
+      "performanceNotes": "Reviews consistently describe a smooth 60 fps presentation. Exact internal dynamic-resolution bounds are not officially published, so the file records observed/output-class values rather than invented pixel counts."
+     }
+    ],
+    "downloadSizeGb": 13.1,
+    "requiredSpaceGb": 13.1,
+    "microSdRecommended": false,
+    "storageNotes": "Current Nintendo US listing reports 13.1 GB; some earlier preorder pages estimated 20 GB. Use 13.1 GB as the current store value. microSD Express is optional, not required.",
+    "languagesAudio": [
+     "Fictional Inkling/Octoling vocal performances",
+     "Character vocalizations",
+     "Music and sound effects"
+    ],
+    "languagesText": [
+     "Japanese / English",
+     "French / German / Italian / Spanish / Dutch",
+     "Korean / Simplified Chinese / Traditional Chinese"
+    ],
+    "arabicSupport": false,
+    "mpLocalPlayers": false,
+    "mpOnlinePlayers": true,
+    "mpCoop": true,
+    "mpCompetitive": false,
+    "mpSplitScreen": false,
+    "mpLocalWireless": true,
+    "dlc": [
+     {
+      "name": "No paid story DLC announced",
+      "description": "No standalone paid expansion has been announced as of August 27, 2026.",
+      "coverUrl": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing2/s4Yw7nKpL2mXeR9vBqT6cFdA0hZuG3iNjW8tVoP5bMsE1rCxOyJgHQk/intro/marquee/marquee-image-4-2x"
+     },
+     {
+      "name": "amiibo outfits",
+      "description": "Compatible Splatoon amiibo unlock outfits for the Mechanic.",
+      "coverUrl": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing2/s4Yw7nKpL2mXeR9vBqT6cFdA0hZuG3iNjW8tVoP5bMsE1rCxOyJgHQk/intro/marquee/marquee-image-5-2x"
+     },
+     {
+      "name": "Post-game content",
+      "description": "Super Spicy stages, Hidden Ruins and Bottomless Buffet are included in the base game rather than sold separately.",
+      "coverUrl": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing2/s4Yw7nKpL2mXeR9vBqT6cFdA0hZuG3iNjW8tVoP5bMsE1rCxOyJgHQk/intro/marquee/marquee-image-6-2x"
+     }
+    ],
+    "guides": [
+     {
+      "title": "Official product information",
+      "summary": "Platform, release, storage, language and feature information for Splatoon Raiders.",
+      "url": "https://www.nintendo.com/us/store/products/splatoon-raiders-switch-2/"
+     },
+     {
+      "title": "Official game overview",
+      "summary": "Publisher/developer overview of story, gameplay and features.",
+      "url": "https://splatoon.nintendo.com/"
+     },
+     {
+      "title": "Reviews and playtime reference",
+      "summary": "Critic/user scores and completion-time context.",
+      "url": "https://www.dekudeals.com/items/splatoon-raiders"
+     }
+    ],
+    "completionMain": 14,
+    "completionExtras": 19.5,
+    "completionAll": 40.5,
+    "faq": [
+     {
+      "q": "Is Splatoon Raiders mainly single-player?",
+      "a": "Yes. It is a single-player-focused adventure, but 2–4 players can cooperate online or through local wireless."
+     },
+     {
+      "q": "How large is the download?",
+      "a": "Nintendo's current US product page lists 13.1 GB."
+     },
+     {
+      "q": "Does it have normal Splatoon competitive multiplayer?",
+      "a": "The focus is PvE raiding and co-op rather than the traditional competitive Turf War structure."
+     }
+    ],
+    "verdictScore": 9,
+    "verdictSummary": "A confident Splatoon spin-off that turns the series' movement and shooting into a deep raid-and-upgrade adventure. Its strongest qualities are build variety, excellent controls, strong performance and an unusually substantial post-game.",
+    "verdictPros": [
+     "Fast, polished 60 fps action",
+     "Deep Tank/gadget/weapon progression",
+     "Strong solo and co-op flexibility"
+    ],
+    "verdictCons": [
+     "No traditional competitive Turf War focus",
+     "Some repetition is inherent to the raid loop",
+     "100% completion requires a long post-game grind"
+    ],
+    "reviews": [
+     {
+      "source": "Metacritic",
+      "score": "81/100",
+      "quote": "Generally favorable aggregate for Nintendo Switch 2.",
+      "url": "https://www.metacritic.com/game/splatoon-raiders/"
+     },
+     {
+      "source": "Nintendo Life",
+      "score": "9/10",
+      "quote": "Praised the game's variety, loop, visuals and performance.",
+      "url": "https://www.nintendolife.com/reviews/nintendo-switch-2/splatoon-raiders"
+     },
+     {
+      "source": "Deku Deals user rating",
+      "score": "4.6/5",
+      "quote": "Current user rating and store metadata snapshot.",
+      "url": "https://www.dekudeals.com/items/splatoon-raiders"
+     }
+    ],
+    "timeline": [
+     {
+      "date": "2025-04-02",
+      "title": "Splatoon Raiders announced",
+      "body": "Nintendo revealed the Switch 2-exclusive Splatoon spin-off."
+     },
+     {
+      "date": "2026-06-30",
+      "title": "Splatoon Raiders Direct",
+      "body": "Nintendo detailed raids, Tanks, gadgets, co-op and amiibo features."
+     },
+     {
+      "date": "2026-07-23",
+      "title": "Worldwide release",
+      "body": "Splatoon Raiders launched for Nintendo Switch 2."
+     }
+    ],
+    "patchNotes": [
+     {
+      "version": "Launch version",
+      "date": "2026-07-23",
+      "body": "Full campaign, co-op, amiibo support and post-game content available."
+     },
+     {
+      "version": "My Nintendo July Wrap-Up",
+      "date": "2026-08-03",
+      "body": "Nintendo highlighted the game's launch and related content."
+     },
+     {
+      "version": "Current status",
+      "date": "2026-08-27",
+      "body": "No standalone paid expansion announced; current release remains the complete base package."
+     }
+    ],
+    "soundtrack": [
+     {
+      "title": "Splatoon Raiders main theme",
+      "url": "https://splatoon.nintendo.com/"
+     },
+     {
+      "title": "Deep Cut raid music",
+      "url": "https://splatoon.nintendo.com/"
+     },
+     {
+      "title": "Spirhalite Islands battle/exploration soundtrack",
+      "url": "https://splatoon.nintendo.com/"
+     }
+    ],
+    "seriesName": "Splatoon 2",
+    "seriesEntries": [
+     "Splatoon",
+     "Splatoon 2",
+     "Splatoon 3"
+    ],
+    "studioName": "Nintendo EPD",
+    "studioUrl": "https://www.nintendo.co.jp/",
+    "studioLocation": "Kyoto, Japan",
+    "studioAbout": "Nintendo's internal development organization; Splatoon Raiders expands the Splatoon universe into a campaign-focused raid adventure.",
+    "setupNeeds": [
+     "Nintendo Switch 2",
+     "13.1 GB free storage",
+     "Nintendo Switch Online membership for online co-op; local wireless does not require the paid online service"
+    ],
+    "sources": [
+     {
+      "name": "Nintendo Store",
+      "url": "https://www.nintendo.com/us/store/products/splatoon-raiders-switch-2/"
+     },
+     {
+      "name": "Official Splatoon Raiders site",
+      "url": "https://splatoon.nintendo.com/"
+     },
+     {
+      "name": "Deku Deals",
+      "url": "https://www.dekudeals.com/items/splatoon-raiders"
+     }
+    ],
+    "boxContentsList": "[Circular]",
+    "image": "/api/files/products/prd_ca00c669a42241f6/cover-010850fac3dd9f90.jpg",
+    "banner": "/api/files/products/prd_ca00c669a42241f6/banner-0-e1d53089b11fec7b.avif",
+    "schemaId": "",
+    "createdAt": "2026-08-27T00:27:45.999Z",
+    "created_at": "2026-08-27T00:27:45.999Z",
+    "updatedAt": "2026-08-27T00:27:45.999Z",
+    "updated_at": "2026-08-27T00:27:45.999Z",
+    "badgeEn": "وفر 40%",
+    "badgeKu": "وفر 40%",
+    "featuresEn": [
+     "Three customizable Tank archetypes and 100+ weapon variations",
+     "Solo campaign with 2–4 player online/local-wireless assistance",
+     "amiibo outfits, difficulty selection and extensive post-game"
+    ],
+    "featuresKu": [
+     "Three customizable Tank archetypes and 100+ weapon variations",
+     "Solo campaign with 2–4 player online/local-wireless assistance",
+     "amiibo outfits, difficulty selection and extensive post-game"
+    ],
+    "boxFrontUrl": "https://online.apitashop.com/Contents/ProductImages/0/4902370554359_LL.jpg",
+    "sales": 0,
+    "images": [],
+    "modes": [],
+    "variants": "[Circular]"
+   }
+  },
+  {
+   "id": "prd_f5dc0c57193d4c81",
+   "slug": "split-fiction",
+   "title": "Split Fiction",
+   "platform": "switch2",
+   "isHidden": false,
+   "hash": "f3c7a898a2c3179151bde1e32736ce0be6df1422d158f5b9a49ff2f7444833b8",
+   "images": [
+    {
+     "role": "front-box",
+     "field": "cartridgeImage",
+     "url": "https://images.launchbox-app.com//ea58077f-3de2-436f-81b6-e37307fa11db.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 15319,
+     "width": 173,
+     "height": 280,
+     "thumb": "review-workdir/thumbs/batch-022/split-fiction__front-box-0.png"
+    },
+    {
+     "role": "front-box",
+     "field": "box_front_url",
+     "url": "https://images.launchbox-app.com//ea58077f-3de2-436f-81b6-e37307fa11db.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 15319,
+     "width": 173,
+     "height": 280,
+     "thumb": "review-workdir/thumbs/batch-022/split-fiction__front-box-1.png"
+    },
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://gamesdb-images.launchbox.gg/r2_2f28d57f-39a6-459a-8a42-fa8c12ee9186.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 36959,
+     "width": 281,
+     "height": 281,
+     "thumb": "review-workdir/thumbs/batch-022/split-fiction__square-card-2.png"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://gamesdb-images.launchbox.gg/r2_2c46254b-a38e-4cfc-8fb7-6ccb419aade5.jpeg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 32410,
+     "width": 400,
+     "height": 225,
+     "thumb": "review-workdir/thumbs/batch-022/split-fiction__detail-cover-3.png"
+    },
+    {
+     "role": "listing",
+     "field": "image",
+     "url": "https://gamesdb-images.launchbox.gg/r2_2c46254b-a38e-4cfc-8fb7-6ccb419aade5.jpeg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 32410,
+     "width": 400,
+     "height": 225,
+     "thumb": "review-workdir/thumbs/batch-022/split-fiction__listing-4.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[0]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000097434/412e83b7bb3645076ccfb8d8d52b69b0f88708094d4bd9aa5f874b212d206066",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 197254,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-022/split-fiction__banner-5.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[1]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000097434/315f8e5eecf3249963ab13a9ec3771118ae93e1cbf00ec406d62d00d106464bf",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 219654,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-022/split-fiction__banner-6.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[2]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000097434/d5406e9f7519ef49b00f8a532b8fe4632ca3609a432786f22930b380b620d0ee",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 209787,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-022/split-fiction__banner-7.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[3]",
+     "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000097434/e532c0dbc188e84af7288a8101e94dc9942c506dfcc286b2272773fc665efec1",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 185721,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-022/split-fiction__banner-8.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000097434/e532c0dbc188e84af7288a8101e94dc9942c506dfcc286b2272773fc665efec1",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 185721,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-022/split-fiction__gallery-9.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[1]",
+     "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000097434/be249cd6be25b898fbbc76fbe4b825dd4b349242fcbf17d58e3c285ff11ac4dd",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 256176,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-022/split-fiction__gallery-10.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[2]",
+     "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000097434/93235aacc0a0b6832ac84dc51c234064e0fd858cccd7ef247c765c155df14ce6",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 293664,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-022/split-fiction__gallery-11.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[3]",
+     "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000097434/412e83b7bb3645076ccfb8d8d52b69b0f88708094d4bd9aa5f874b212d206066",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 197254,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-022/split-fiction__gallery-12.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[4]",
+     "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000097434/315f8e5eecf3249963ab13a9ec3771118ae93e1cbf00ec406d62d00d106464bf",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 219654,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-022/split-fiction__gallery-13.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[5]",
+     "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000097434/d5406e9f7519ef49b00f8a532b8fe4632ca3609a432786f22930b380b620d0ee",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 209787,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-022/split-fiction__gallery-14.png"
+    }
+   ],
+   "record": {
+    "title": "Split Fiction",
+    "titleEn": "Split Fiction",
+    "titleKu": "Split Fiction",
+    "slug": "split-fiction",
+    "description": "Split Fiction is a two-player cooperative action-adventure by Hazelight Studios. Writers Mio and Zoe become trapped in a simulation built from their contrasting science-fiction and fantasy stories, forcing them to cooperate through rapidly changing mechanics, platforming, action, and puzzle sequences. The Nintendo Switch 2 version supports cooperative play and Friend's Pass features.",
+    "descriptionEn": "Split Fiction is a two-player cooperative action-adventure by Hazelight Studios. Writers Mio and Zoe become trapped in a simulation built from their contrasting science-fiction and fantasy stories, forcing them to cooperate through rapidly changing mechanics, platforming, action, and puzzle sequences. The Nintendo Switch 2 version supports cooperative play and Friend's Pass features.",
+    "descriptionKu": "Split Fiction is a two-player cooperative action-adventure by Hazelight Studios. Writers Mio and Zoe become trapped in a simulation built from their contrasting science-fiction and fantasy stories, forcing them to cooperate through rapidly changing mechanics, platforming, action, and puzzle sequences. The Nintendo Switch 2 version supports cooperative play and Friend's Pass features.",
+    "cartridgeImage": "https://images.launchbox-app.com//ea58077f-3de2-436f-81b6-e37307fa11db.jpg",
+    "nintendoCardImage": "https://gamesdb-images.launchbox.gg/r2_2f28d57f-39a6-459a-8a42-fa8c12ee9186.jpg",
+    "coverHiResImage": "",
+    "coverImage": "https://gamesdb-images.launchbox.gg/r2_2c46254b-a38e-4cfc-8fb7-6ccb419aade5.jpeg",
+    "bannerImages": [
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000097434/412e83b7bb3645076ccfb8d8d52b69b0f88708094d4bd9aa5f874b212d206066",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000097434/315f8e5eecf3249963ab13a9ec3771118ae93e1cbf00ec406d62d00d106464bf",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000097434/d5406e9f7519ef49b00f8a532b8fe4632ca3609a432786f22930b380b620d0ee",
+     "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000097434/e532c0dbc188e84af7288a8101e94dc9942c506dfcc286b2272773fc665efec1",
+     "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000097434/be249cd6be25b898fbbc76fbe4b825dd4b349242fcbf17d58e3c285ff11ac4dd",
+     "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000097434/93235aacc0a0b6832ac84dc51c234064e0fd858cccd7ef247c765c155df14ce6",
+     "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000097434/412e83b7bb3645076ccfb8d8d52b69b0f88708094d4bd9aa5f874b212d206066",
+     "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000097434/315f8e5eecf3249963ab13a9ec3771118ae93e1cbf00ec406d62d00d106464bf"
+    ],
+    "gallery": [],
+    "youtubeTrailer": "https://www.youtube.com/watch?v=zXQ7sjNV35k",
+    "releaseDate": "2025-06-05",
+    "ageRating": "ESRB: T — Blood and Gore, Crude Humor, Language, Violence",
+    "metacriticRating": 88,
+    "genres": [
+     "Action",
+     "Adventure",
+     "Platformer"
+    ],
+    "platform": "switch2",
+    "size": 69.23,
+    "numberOfPlayers": "2",
+    "supportedLanguages": "English, French, German, Italian, Spanish, Japanese, Korean, Simplified Chinese, Traditional Chinese, Brazilian Portuguese",
+    "hardwareModel": "",
+    "colorEdition": "",
+    "storageCapacity": "",
+    "screenSpecs": "",
+    "batteryLife": "",
+    "boxContents": [],
+    "boxContentsText": "",
+    "warrantyCondition": "",
+    "connectivity": "",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "Global",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "",
+    "redemptionSteps": [],
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 15000,
+    "cost": 2250,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": false,
+    "displayOrder": 0,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "Offline Account",
+      "description": "Offline account option",
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_account",
+      "name": "Online Account",
+      "description": "Online account option",
+      "isInfiniteStock": true
+     }
+    ],
+    "types": [
+     {
+      "id": "standard_offline",
+      "name": "Standard Edition",
+      "optionId": "offline_account",
+      "price": "15000",
+      "cost": 2250,
+      "description": "Standard game access — Offline Account.",
+      "isInfiniteStock": true
+     },
+     {
+      "id": "standard_online",
+      "name": "Standard Edition",
+      "optionId": "online_account",
+      "price": "45000",
+      "cost": 27250,
+      "description": "Standard game access — Online Account.",
+      "isInfiniteStock": true
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "active",
+    "kind": "account",
+    "trade_value_iqd": 40000,
+    "store_offer_bonus_iqd": 10000,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "id": "prd_f5dc0c57193d4c81",
+    "schema_version": 20,
+    "titleAr": "سبليت فيكشن",
+    "compatibility": [
+     "Nintendo Switch 2"
+    ],
+    "edition": "Standard",
+    "developer": "Hazelight Studios",
+    "publisher": "Electronic Arts",
+    "opencriticRating": 91,
+    "userScore": 8.6,
+    "officialUrl": "https://www.nintendo.com/us/store/products/split-fiction-switch-2/",
+    "eshopUrl": "https://www.nintendo.com/us/store/products/split-fiction-switch-2/",
+    "gameIsOffline": true,
+    "gameIsOnline": true,
+    "gameLanguageLocked": false,
+    "description_short": "Hazelight's two-player co-op adventure jumps between science-fiction and fantasy worlds with constantly changing mechanics.",
+    "description_ar": "Split Fiction هي مغامرة أكشن تعاونية للاعبين من Hazelight Studios. تجد الكاتبتان Mio وZoe نفسيهما داخل محاكاة تمزج قصص الخيال العلمي والفانتازيا الخاصة بهما، ويجب عليهما التعاون عبر آليات لعب متغيرة باستمرار ومنصات وأكشن وألغاز. يدعم إصدار Nintendo Switch 2 اللعب التعاوني وميزات Friend's Pass.",
+    "box_front_url": "https://images.launchbox-app.com//ea58077f-3de2-436f-81b6-e37307fa11db.jpg",
+    "videos": [
+     {
+      "title": "Split Fiction — Official Trailer",
+      "url": "https://www.youtube.com/watch?v=zXQ7sjNV35k"
+     }
+    ],
+    "nsuid": "70010000097434",
+    "nintendoEshopUrl": "https://www.nintendo.com/us/store/products/split-fiction-switch-2/",
+    "nintendoOnlineRequired": true,
+    "nintendoCloudSaves": true,
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": true,
+    "nintendoPlayModes": "TV, Tabletop, Handheld",
+    "nintendoNotes": "Native or seller-classified Nintendo Switch 2 product for this import. Product account variants and costs are based on the supplied seller screenshots; platform classification follows the seller-card rule requested for this import.\n\nOffline selling price is selected within 5,000–25,000 IQD according to demand, supply, popularity, recency, perceived market value and, where relevant, supplier cost. It is not a fixed cost multiplier. Online pricing is market-based and may be higher.\n\nExtraction rules used for this file: production images are verified game media, not seller/Taobao images. Front Box Cover is retail box-front artwork; Square Card is a separate square asset; Cover Image is page/key art; 3D Texture Source is high-resolution front cover art. Banner and Gallery media are separate verified artwork/screenshots. Device Performance contains one device object only. Offline selling prices are chosen within 5,000–25,000 IQD according to demand, supply, popularity, recency, perceived value and supplier cost; online prices remain market-based and may be higher.",
+    "switch2Enhanced": false,
+    "switch2Exclusive": true,
+    "switch2Features": [
+     "Designed or seller-classified for Nintendo Switch 2"
+    ],
+    "tagline": "Two writers, two genres, one co-op adventure built on constant reinvention.",
+    "playTimeMain": 14,
+    "playTimeFull": 16,
+    "editionsList": [
+     {
+      "name": "Standard Edition",
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000097434/6de085f1efb6c90b754e383fe810f3cb0e847105bb584c706f4cd3b5c66491f4",
+      "contents": [
+       {
+        "label": "Base game"
+       },
+       {
+        "label": "Seller account access"
+       },
+       {
+        "label": "Nintendo platform version shown in this import"
+       }
+      ]
+     }
+    ],
+    "gameplayPillars": [
+     {
+      "title": "Two-Player Cooperation",
+      "description": "Progress depends on synchronized actions and complementary roles.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000097434/412e83b7bb3645076ccfb8d8d52b69b0f88708094d4bd9aa5f874b212d206066"
+     },
+     {
+      "title": "Genre Switching",
+      "description": "The adventure jumps between science fiction, fantasy, and many one-off gameplay concepts.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000097434/315f8e5eecf3249963ab13a9ec3771118ae93e1cbf00ec406d62d00d106464bf"
+     },
+     {
+      "title": "Spectacle and Movement",
+      "description": "Platforming, vehicles, bosses, and cinematic action constantly reshape the pacing.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000097434/d5406e9f7519ef49b00f8a532b8fe4632ca3609a432786f22930b380b620d0ee"
+     }
+    ],
+    "worldSummary": "Mio's science-fiction ideas and Zoe's fantasy stories collide inside a machine that steals creative ideas, creating shifting worlds the pair must escape.",
+    "storyChapters": [
+     {
+      "title": "Trapped in the Machine",
+      "body": "Writers Mio and Zoe are pulled into a technology designed to extract their creative ideas, trapping them inside simulated worlds based on their fiction.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000097434/d5406e9f7519ef49b00f8a532b8fe4632ca3609a432786f22930b380b620d0ee"
+     },
+     {
+      "title": "Sci-Fi and Fantasy Collide",
+      "body": "The pair jump between radically different science-fiction and fantasy scenarios, relying on complementary co-op mechanics unique to each chapter.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000097434/e532c0dbc188e84af7288a8101e94dc9942c506dfcc286b2272773fc665efec1"
+     },
+     {
+      "title": "Escape Through Cooperation",
+      "body": "To break free, Mio and Zoe must learn to trust one another, confront personal fears reflected by their stories, and overcome the system controlling the simulations.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000097434/be249cd6be25b898fbbc76fbe4b825dd4b349242fcbf17d58e3c285ff11ac4dd"
+     }
+    ],
+    "galleryImages": [
+     {
+      "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000097434/e532c0dbc188e84af7288a8101e94dc9942c506dfcc286b2272773fc665efec1",
+      "alt": "Verified official/publisher media for Split Fiction — gallery image 1."
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000097434/be249cd6be25b898fbbc76fbe4b825dd4b349242fcbf17d58e3c285ff11ac4dd",
+      "alt": "Verified official/publisher media for Split Fiction — gallery image 2."
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000097434/93235aacc0a0b6832ac84dc51c234064e0fd858cccd7ef247c765c155df14ce6",
+      "alt": "Verified official/publisher media for Split Fiction — gallery image 3."
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000097434/412e83b7bb3645076ccfb8d8d52b69b0f88708094d4bd9aa5f874b212d206066",
+      "alt": "Verified official/publisher media for Split Fiction — gallery image 4."
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000097434/315f8e5eecf3249963ab13a9ec3771118ae93e1cbf00ec406d62d00d106464bf",
+      "alt": "Verified official/publisher media for Split Fiction — gallery image 5."
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000097434/d5406e9f7519ef49b00f8a532b8fe4632ca3609a432786f22930b380b620d0ee",
+      "alt": "Verified official/publisher media for Split Fiction — gallery image 6."
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000097434/412e83b7bb3645076ccfb8d8d52b69b0f88708094d4bd9aa5f874b212d206066",
+      "alt": "Verified official/publisher media for Split Fiction — gallery image 7."
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000097434/315f8e5eecf3249963ab13a9ec3771118ae93e1cbf00ec406d62d00d106464bf",
+      "alt": "Verified official/publisher media for Split Fiction — gallery image 8."
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000097434/d5406e9f7519ef49b00f8a532b8fe4632ca3609a432786f22930b380b620d0ee",
+      "alt": "Verified official/publisher media for Split Fiction — gallery image 9."
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cc_fill%2Cg_auto/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000097434/6de085f1efb6c90b754e383fe810f3cb0e847105bb584c706f4cd3b5c66491f4",
+      "alt": "Verified official/publisher media for Split Fiction — gallery image 10."
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000097434/6de085f1efb6c90b754e383fe810f3cb0e847105bb584c706f4cd3b5c66491f4",
+      "alt": "Verified official/publisher media for Split Fiction — gallery image 11."
+     },
+     {
+      "url": "https://gamesdb-images.launchbox.gg/r2_2c46254b-a38e-4cfc-8fb7-6ccb419aade5.jpeg",
+      "alt": "Verified official/publisher media for Split Fiction — gallery image 12."
+     }
+    ],
+    "perfResolutionDocked": "Up to 1920×1080 output",
+    "perfResolutionHandheld": "Up to 1920×1080 output",
+    "perfFps": "30",
+    "perfNotes": "The Nintendo Switch 2 version targets 30 fps; review coverage reports 1080p output.",
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "informationStatus": "review-analysis",
+      "handheld": {
+       "supported": true,
+       "resolution": "Up to 1920×1080 output",
+       "outputResolution": "Up to 1920×1080 output",
+       "fps": "30",
+       "notes": "The Nintendo Switch 2 version targets 30 fps; review coverage reports 1080p output."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "Up to 1920×1080 output",
+       "outputResolution": "Up to 1920×1080 output",
+       "fps": "30",
+       "notes": "The Nintendo Switch 2 version targets 30 fps; review coverage reports 1080p output."
+      },
+      "sourceName": "TechRadar Switch 2 review",
+      "sourceUrl": "https://www.techradar.com/gaming/nintendo-switch/split-fiction-switch-2-review",
+      "verifiedAt": "2026-08-24",
+      "verificationStatus": "verified",
+      "performanceNotes": "The Nintendo Switch 2 version targets 30 fps; review coverage reports 1080p output."
+     }
+    ],
+    "downloadSizeGb": 69.23,
+    "requiredSpaceGb": 69.2,
+    "storageNotes": "Official/verified listed game download size: approximately 69.2 GB. Updates and DLC may require additional space.",
+    "languagesAudio": [
+     "English"
+    ],
+    "languagesText": [
+     "English",
+     "Japanese",
+     "Simplified Chinese"
+    ],
+    "arabicSupport": false,
+    "mpLocalPlayers": true,
+    "mpOnlinePlayers": true,
+    "mpCoop": true,
+    "mpCompetitive": false,
+    "mpSplitScreen": true,
+    "mpLocalWireless": true,
+    "guides": [
+     {
+      "title": "Official product and gameplay information",
+      "summary": "Official Nintendo/publisher information covering features, supported modes, requirements and product-specific notices.",
+      "url": "https://www.nintendo.com/us/store/products/split-fiction-switch-2/"
+     },
+     {
+      "title": "GameFAQs guides and FAQs search",
+      "summary": "Community guide index for walkthroughs, FAQs, collectibles, unlockables and troubleshooting. Verify platform/version when following a guide.",
+      "url": "https://gamefaqs.gamespot.com/search?game=Split+Fiction"
+     },
+     {
+      "title": "Deku Deals technical/product reference",
+      "summary": "Reference page used for platform, file size, play modes, critic aggregates and completion-time metadata where available.",
+      "url": "https://www.dekudeals.com/items/split-fiction"
+     }
+    ],
+    "completionMain": 14,
+    "completionExtras": 15,
+    "completionAll": 16,
+    "faq": [
+     {
+      "q": "What platform is this import for?",
+      "a": "This import is classified as Nintendo Switch 2."
+     },
+     {
+      "q": "How many players are supported?",
+      "a": "Official player support varies by mode; the primary published range is 2 player(s). See multiplayer fields for local, wireless, and online capabilities."
+     },
+     {
+      "q": "Does this seller listing include a separate DLC account type?",
+      "a": "No. The supplied seller listing shows two variants, so only Standard Offline and Standard Online account types are created."
+     }
+    ],
+    "verdictScore": 9,
+    "verdictSummary": "Editorial synthesis for Split Fiction, based on the verified feature set, platform implementation, content scope and aggregated critical reception. This score is an internal summary, not a copied external review score.",
+    "reviews": [
+     {
+      "source": "Metacritic",
+      "score": "88",
+      "quote": "Aggregated critic score for the game/platform listing.",
+      "url": "https://www.dekudeals.com/items/split-fiction"
+     },
+     {
+      "source": "OpenCritic",
+      "score": "91",
+      "quote": "Aggregated critic score reported for the game.",
+      "url": "https://www.dekudeals.com/items/split-fiction"
+     },
+     {
+      "source": "Metacritic User Score",
+      "score": "8.6",
+      "quote": "Aggregated user score reference.",
+      "url": "https://www.dekudeals.com/items/split-fiction"
+     }
+    ],
+    "timeline": [
+     {
+      "date": "2025-03-06",
+      "title": "Original release",
+      "body": "Split Fiction launched on PC, PlayStation 5 and Xbox Series X|S."
+     },
+     {
+      "date": "2025-06-05",
+      "title": "Nintendo Switch 2 release",
+      "body": "The Switch 2 version launched alongside the new hardware."
+     },
+     {
+      "date": "2025-06-05",
+      "title": "Friend’s Pass on Switch 2",
+      "body": "The Nintendo release supports the game’s two-player Friend’s Pass model."
+     }
+    ],
+    "patchNotes": [
+     {
+      "version": "Switch 2 launch build",
+      "date": "2025-06-05",
+      "body": "Nintendo Switch 2 edition released with local/online co-op features."
+     }
+    ],
+    "soundtrack": [
+     {
+      "title": "Split Fiction — official game music information",
+      "url": "https://www.ea.com/games/split-fiction/split-fiction"
+     },
+     {
+      "title": "Split Fiction — VGMdb soundtrack catalog search",
+      "url": "https://vgmdb.net/search?q=Split+Fiction&type=album"
+     },
+     {
+      "title": "Split Fiction — soundtrack video search",
+      "url": "https://www.youtube.com/results?search_query=Split+Fiction+official+soundtrack"
+     }
+    ],
+    "seriesName": "Split Fiction",
+    "studioName": "Hazelight Studios",
+    "studioUrl": "https://www.hazelight.se/",
+    "studioLocation": "Stockholm, Sweden",
+    "studioAbout": "Hazelight Studios specializes in games designed around two-player cooperation.",
+    "sources": [
+     {
+      "name": "Nintendo / publisher official product page",
+      "url": "https://www.nintendo.com/us/store/products/split-fiction-switch-2/"
+     },
+     {
+      "name": "Deku Deals — platform, size, scores and play-time reference",
+      "url": "https://www.dekudeals.com/items/split-fiction"
+     },
+     {
+      "name": "The Cover Project — Full Retail Cover page",
+      "url": "https://www.thecoverproject.net/view.php?game_id=19649"
+     }
+    ],
+    "fitFor": [
+     "Two-player co-op fans",
+     "Players who enjoy rapid gameplay variety",
+     "Fans of It Takes Two and Hazelight games"
+    ],
+    "notFitFor": [
+     "Solo-only players",
+     "Players seeking competitive multiplayer",
+     "Players who prefer one consistent gameplay system"
+    ],
+    "features": [
+     "Two-player cooperative campaign",
+     "Science-fiction and fantasy worlds",
+     "Frequent mechanic changes and Friend's Pass support"
+    ],
+    "verdictPros": [
+     "Excellent purpose-built two-player co-op design",
+     "Rapid variety between science-fiction and fantasy mechanics",
+     "Friend’s Pass lowers the barrier for online co-op"
+    ],
+    "verdictCons": [
+     "Requires two players",
+     "Very large download size on Switch 2",
+     "Constant mechanical changes can feel demanding to less experienced players"
+    ],
+    "seriesEntries": [
+     "It Takes Two",
+     "Split Fiction"
+    ],
+    "setupNeeds": [
+     "Nintendo Switch 2 system",
+     "Two players required",
+     "Nintendo Switch Online membership required for online play"
+    ],
+    "boxContentsList": "[Circular]",
+    "image": "https://gamesdb-images.launchbox.gg/r2_2c46254b-a38e-4cfc-8fb7-6ccb419aade5.jpeg",
+    "banner": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000097434/412e83b7bb3645076ccfb8d8d52b69b0f88708094d4bd9aa5f874b212d206066",
+    "schemaId": "",
+    "badgeEn": "وفر 40%",
+    "badgeKu": "وفر 40%",
+    "featuresEn": [
+     "Two-player cooperative campaign",
+     "Science-fiction and fantasy worlds",
+     "Frequent mechanic changes and Friend's Pass support"
+    ],
+    "featuresKu": [
+     "Two-player cooperative campaign",
+     "Science-fiction and fantasy worlds",
+     "Frequent mechanic changes and Friend's Pass support"
+    ]
+   }
+  }
+ ]
+}

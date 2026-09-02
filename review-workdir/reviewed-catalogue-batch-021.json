@@ -1,6 +1,6 @@
 {
  "batch": "021",
- "apply": true,
+ "apply": false,
  "games": [
   {
    "id": "prd_7f0b34dece8f4245",
@@ -166,6 +166,99 @@
     "guaranteeStatus"
    ],
    "notes": "box_front_url was a German fan-site hotlink answering 403 — removed. One dead R2 banner dropped; the working eShop CDN banners remain, re-verified at apply. The YouTube SEARCH link trailer removed. 2026-03-03, 2.1 GB, Metacritic 82, 1080p/60 record verified. Contamination removed."
+  }
+ ],
+ "appliedAt": "2026-09-02T03:52:13.685Z",
+ "results": [
+  {
+   "id": "prd_7f0b34dece8f4245",
+   "action": "APPLIED",
+   "changed": [
+    "coverImage",
+    "image",
+    "galleryImages"
+   ],
+   "removed": [
+    "cartridgeImage",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ]
+  },
+  {
+   "id": "prd_5e9f053ac60f4412",
+   "action": "APPLIED",
+   "changed": [
+    "dlcSummary",
+    "devicePerformance"
+   ],
+   "removed": [
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ]
+  },
+  {
+   "id": "prd_7037e22716fa4681",
+   "action": "APPLIED",
+   "changed": [
+    "devicePerformance"
+   ],
+   "removed": [
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus",
+    "redemptionSteps",
+    "hardwareModel",
+    "storageCapacity",
+    "screenSpecs",
+    "batteryLife"
+   ]
+  },
+  {
+   "id": "prd_e13531f82f00492d",
+   "action": "APPLIED",
+   "changed": [
+    "releaseDate"
+   ],
+   "removed": [
+    "youtubeTrailer",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ]
+  },
+  {
+   "id": "prd_1f71e51f89264fbc",
+   "action": "REFUSED_IMAGE_URL"
   }
  ]
 }

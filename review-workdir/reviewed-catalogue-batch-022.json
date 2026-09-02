@@ -1,0 +1,51 @@
+{
+ "batch": "022",
+ "apply": false,
+ "games": [
+  {
+   "id": "prd_1f71e51f89264fbc",
+   "slug": "rotwood",
+   "baseHash": "b122316b04ea487cf46e42046284b29a74d93b2b44b9d46e3ca9c5ee6e15235d",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  },
+  {
+   "id": "prd_6bf0d5403c564fe4",
+   "slug": "shadow-tactics-blades-of-the-shogun",
+   "baseHash": "4b0513e87c67805d2b09e4fa3e28f829c9e59cd899f5ee0ff6bcfc97cff8d20a",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  },
+  {
+   "id": "prd_6d36bcc691b34fc1",
+   "slug": "splatoon-3-expansion-pass",
+   "baseHash": "929699924f2f437a9e1fb2d65284ee5f23481eea656f18e25e3da2896a523d44",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  },
+  {
+   "id": "prd_ca00c669a42241f6",
+   "slug": "splatoon-raiders-switch-2",
+   "baseHash": "8f9c0aa695835c2e62176f87de43ab58eb3791cdd595b9c2c7b1400feceaacbb",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  },
+  {
+   "id": "prd_f5dc0c57193d4c81",
+   "slug": "split-fiction",
+   "baseHash": "f3c7a898a2c3179151bde1e32736ce0be6df1422d158f5b9a49ff2f7444833b8",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  }
+ ]
+}

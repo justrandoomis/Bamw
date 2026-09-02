@@ -1,0 +1,396 @@
+{
+ "title": "Rise of the Tomb Raider: 20 Year Celebration",
+ "titleEn": "Rise of the Tomb Raider: 20 Year Celebration",
+ "titleKu": "",
+ "slug": "rise-of-the-tomb-raider-20-year-celebration-switch-2",
+ "description": "Rise of the Tomb Raider: 20 Year Celebration is a cinematic action-adventure that follows Lara Croft through hostile wilderness, ancient ruins, and increasingly dangerous confrontations. It mixes traversal, combat, optional puzzle tombs, and a premium package identity. This import prepares it as a dedicated Nintendo Switch 2 storefront entry.",
+ "descriptionEn": "Rise of the Tomb Raider: 20 Year Celebration is a cinematic action-adventure that follows Lara Croft through hostile wilderness, ancient ruins, and increasingly dangerous confrontations. It mixes traversal, combat, optional puzzle tombs, and a premium package identity. This import prepares it as a dedicated Nintendo Switch 2 storefront entry.",
+ "descriptionKu": "",
+ "cartridgeImage": "",
+ "nintendoCardImage": "/api/files/products/prd_e13531f82f00492d/square-card-1caa5d5d148a924b.webp",
+ "coverHiResImage": "",
+ "coverImage": "/api/files/products/prd_e13531f82f00492d/cover-9a976e7fb9c604f3.webp",
+ "bannerImages": [
+  ""
+ ],
+ "gallery": [],
+ "youtubeTrailer": "https://www.youtube.com/results?search_query=Rise+of+the+Tomb+Raider+20+Year+Celebration+official+trailer",
+ "releaseDate": "2016-10-11",
+ "ageRating": "ESRB M / PEGI 18",
+ "metacriticRating": 86,
+ "genres": [
+  "Action",
+  "Adventure",
+  "Shooter"
+ ],
+ "platform": "switch2",
+ "size": 22,
+ "numberOfPlayers": "Single system (1)",
+ "supportedLanguages": "English, Japanese, French, Spanish, German",
+ "hardwareModel": "",
+ "colorEdition": "",
+ "storageCapacity": "",
+ "screenSpecs": "",
+ "batteryLife": "",
+ "boxContents": [],
+ "boxContentsText": "",
+ "warrantyCondition": "",
+ "connectivity": "",
+ "characterName": "Link",
+ "amiiboSeries": "The Legend of Zelda",
+ "figureType": "figure",
+ "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+ "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+ "boxCondition": "mib",
+ "releaseWave": "Wave 2 (Restock)",
+ "rarity": "standard",
+ "accessoryType": "حقيبة حماية وتنقل Carry Case",
+ "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+ "brand": "Nintendo Official",
+ "material": "Hard EVA Shockproof Shell",
+ "availableColors": "Black, Neon Red/Blue, White",
+ "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+ "cardValue": "$20 eShop Balance",
+ "region": "Global",
+ "cardType": "eshop",
+ "deliveryMethod": "instant_code",
+ "redemptionGuide": "",
+ "redemptionSteps": [],
+ "validity": "no_expiry",
+ "usedType": "cartridge",
+ "conditionGrade": "like_new",
+ "packaging": "cib",
+ "guaranteeStatus": "tested_30days",
+ "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+ "accountType": "primary",
+ "badge": "وفر 40%",
+ "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+ "price": 10250,
+ "cost": 3500,
+ "stock": 999999,
+ "isInfiniteStock": true,
+ "isHidden": true,
+ "displayOrder": 0,
+ "category": "nintendo-switch-games",
+ "categoryId": "nintendo-switch-games",
+ "categoryEn": "",
+ "categoryKu": "",
+ "options": [
+  {
+   "id": "offline_account",
+   "name": "مشترك",
+   "description": "مشترك",
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_account",
+   "name": "خاص بك",
+   "description": "خاص بك",
+   "stock": 9999,
+   "isInfiniteStock": true
+  }
+ ],
+ "types": [
+  {
+   "id": "offline_base",
+   "name": "مشترك — اللعبة الأساسية",
+   "optionId": "offline_account",
+   "price": 10250,
+   "cost": 3500,
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_base",
+   "name": "خاص بك — اللعبة الأساسية",
+   "optionId": "online_account",
+   "price": 23750,
+   "cost": 18500,
+   "stock": 9999,
+   "isInfiniteStock": true
+  }
+ ],
+ "editions": [],
+ "dlcs": [],
+ "isActive": true,
+ "status": "Active",
+ "kind": "account",
+ "trade_value_iqd": 11000,
+ "store_offer_bonus_iqd": 3500,
+ "trade_enabled": true,
+ "trade_value_locked": false,
+ "id": "prd_e13531f82f00492d",
+ "schema_version": 24,
+ "titleAr": "رايز أوف ذا تومب رايدر: احتفالية 20 سنة",
+ "compatibility": [
+  "Nintendo Switch 2",
+  "No Switch 1 product in this entry"
+ ],
+ "edition": "20 Year Celebration",
+ "developer": "Crystal Dynamics",
+ "publisher": "Crystal Dynamics / Feral Interactive",
+ "metacriticUrl": "https://www.metacritic.com/game/rise-of-the-tomb-raider-20-year-celebration/",
+ "opencriticRating": 86,
+ "userScore": 8.2,
+ "price_usd": 29.99,
+ "officialUrl": "https://tombraider.com/",
+ "eshopUrl": "https://tombraider.com/",
+ "gameIsOffline": true,
+ "gameIsOnline": false,
+ "gameLanguageLocked": false,
+ "description_short": "Lara Croft’s sequel adventure with exploration, combat, and tomb puzzles.",
+ "description_ar": "مغامرة أكشن سينمائية مع لارا كروفت تجمع بين الاستكشاف، القتال، وحل ألغاز القبور، ومجهزة هنا كملف منتج خاص بـ Switch 2.",
+ "videos": [
+  {
+   "title": "Official Trailer",
+   "url": "https://www.youtube.com/results?search_query=Rise+of+the+Tomb+Raider+20+Year+Celebration+official+trailer"
+  }
+ ],
+ "nintendoEshopUrl": "https://tombraider.com/",
+ "nintendoOnlineRequired": false,
+ "nintendoCloudSaves": true,
+ "nintendoGameKeyCard": false,
+ "nintendoPhysicalNeedsDownload": false,
+ "tvMode": true,
+ "tabletopMode": true,
+ "handheldMode": true,
+ "nintendoPlayModes": "TV mode / Tabletop mode / Handheld mode",
+ "nintendoNotes": "Prepared as a Switch 2 product according to the user-provided platform and pricing.",
+ "switch2Enhanced": true,
+ "switch2Exclusive": false,
+ "switch2UpgradePrice": 0,
+ "switch2Features": [
+  "Separate Switch 2 product entry",
+  "Story expansion-friendly package",
+  "Single-player action adventure"
+ ],
+ "tagline": "Lara Croft returns for a colder, deadlier expedition.",
+ "fitFor": [
+  "Action-adventure fans",
+  "Lara Croft fans",
+  "Players who enjoy exploration and tomb puzzles"
+ ],
+ "notFitFor": [
+  "Players wanting local multiplayer",
+  "Children sensitive to violent action"
+ ],
+ "playTimeMain": 13,
+ "playTimeFull": 28,
+ "editionsList": [
+  {
+   "name": "Regular / Offline",
+   "contents": [
+    {
+     "label": "Rise of the Tomb Raider: 20 Year Celebration"
+    },
+    {
+     "label": "Regular / Offline"
+    },
+    {
+     "label": "Offline account access"
+    }
+   ]
+  },
+  {
+   "name": "Standard / 标准版",
+   "contents": [
+    {
+     "label": "Rise of the Tomb Raider: 20 Year Celebration"
+    },
+    {
+     "label": "Standard / 标准版"
+    },
+    {
+     "label": "Online account access"
+    }
+   ]
+  }
+ ],
+ "gameplayPillars": [
+  {
+   "title": "Cinematic exploration",
+   "description": "Traversal, climbing, and environmental spectacle define the flow."
+  },
+  {
+   "title": "Action and stealth combat",
+   "description": "Players alternate between direct firefights and stealthy infiltration."
+  },
+  {
+   "title": "Optional tombs and puzzles",
+   "description": "Extra tombs add more deliberate puzzle-solving to the adventure."
+  },
+  {
+   "title": "Survival-flavored progression",
+   "description": "Crafting, hunting, and upgrades support Lara’s journey."
+  },
+  {
+   "title": "Celebration package identity",
+   "description": "The 20 Year Celebration edition adds a premium package identity."
+  }
+ ],
+ "worldSummary": "Remote wilderness, ancient ruins, and hostile compounds combine into a globe-spanning Lara Croft adventure.",
+ "storyChapters": [
+  {
+   "title": "Begin the Siberian journey",
+   "body": "Lara pursues a hidden secret tied to myth and legacy."
+  },
+  {
+   "title": "Explore tombs and ruins",
+   "body": "Ancient spaces hide both answers and danger."
+  },
+  {
+   "title": "Survive armed opposition",
+   "body": "Enemy factions stand between Lara and the truth."
+  },
+  {
+   "title": "Push through harsh environments",
+   "body": "Snow, cliffs, and remote ruins reinforce the survival tone."
+  },
+  {
+   "title": "Resolve the expedition",
+   "body": "The finale ties together myth, history, and Lara’s determination."
+  }
+ ],
+ "galleryImages": [
+  {
+   "url": "/api/files/products/prd_e13531f82f00492d/gallery-1-a8a58f28803dd7af.webp",
+   "alt": "Rise of the Tomb Raider: 20 Year Celebration screenshot 1"
+  },
+  {
+   "url": "/api/files/products/prd_e13531f82f00492d/gallery-2-0cfff113e0a58a0a.webp",
+   "alt": "Rise of the Tomb Raider: 20 Year Celebration screenshot 2"
+  },
+  {
+   "url": "/api/files/products/prd_e13531f82f00492d/gallery-3-c6a9483f90c526df.webp",
+   "alt": "Rise of the Tomb Raider: 20 Year Celebration screenshot 3"
+  },
+  {
+   "url": "/api/files/products/prd_e13531f82f00492d/gallery-4-a4a1c835693a7eba.webp",
+   "alt": "Rise of the Tomb Raider: 20 Year Celebration screenshot 4"
+  },
+  {
+   "url": "/api/files/products/prd_e13531f82f00492d/gallery-5-c1629762fa5270ed.webp",
+   "alt": "Rise of the Tomb Raider: 20 Year Celebration screenshot 5"
+  },
+  {
+   "url": "/api/files/products/prd_e13531f82f00492d/gallery-6-3466a5c52f1ee041.webp",
+   "alt": "Rise of the Tomb Raider: 20 Year Celebration screenshot 6"
+  }
+ ],
+ "features": [
+  "Strong third-person adventure design",
+  "Good mix of action and puzzles",
+  "Premium edition identity",
+  "Single-player campaign focus",
+  "Separate Switch 2 storefront entry"
+ ],
+ "perfResolutionDocked": "1440p",
+ "perfResolutionHandheld": "1080p",
+ "perfFps": "60",
+ "perfHdr": false,
+ "perfNotes": "Configured as a Switch 2 storefront profile for the requested platform split.",
+ "devicePerformance": [
+  {
+   "device": "Nintendo Switch 2",
+   "deviceSlug": "nintendo-switch-2",
+   "deviceModel": "Nintendo Switch 2",
+   "hardwareId": "nintendo-switch-2",
+   "informationStatus": "Available",
+   "unavailableReason": "No unavailable reason. Performance profile is present for this device.",
+   "handheld": {
+    "supported": true,
+    "resolution": "1080p",
+    "resolutionDynamic": false,
+    "renderingResolution": "1080p",
+    "outputResolution": "1080p",
+    "fps": "60",
+    "fpsMin": "60",
+    "fpsMax": "60",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "Handheld",
+    "notes": "Configured as a Switch 2 storefront profile for the requested platform split."
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "1440p",
+    "resolutionDynamic": false,
+    "renderingResolution": "1440p",
+    "outputResolution": "1440p",
+    "fps": "60",
+    "fpsMin": "60",
+    "fpsMax": "60",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "TV",
+    "notes": "Configured as a Switch 2 storefront profile for the requested platform split."
+   },
+   "modes": [
+    {
+     "name": "Default",
+     "handheldResolution": "1080p",
+     "handheldFps": "60",
+     "tvResolution": "1440p",
+     "tvFps": "60",
+     "hdr": false,
+     "vrr": false,
+     "notes": "Configured as a Switch 2 storefront profile for the requested platform split."
+    }
+   ],
+   "performanceNotes": "Configured as a Switch 2 storefront profile for the requested platform split."
+  },
+  {
+   "device": "Nintendo Switch",
+   "deviceSlug": "nintendo-switch",
+   "deviceModel": "Nintendo Switch",
+   "hardwareId": "nintendo-switch",
+   "informationStatus": "Unavailable for this product entry",
+   "unavailableReason": "This product file is not intended for this device in the current platform split.",
+   "handheld": {
+    "supported": false
+   },
+   "tv": {
+    "supported": false
+   },
+   "performanceNotes": "This device block is intentionally marked unavailable because the game file belongs to a different platform entry."
+  }
+ ],
+ "faq": [
+  {
+   "q": "What is 20 Year Celebration?",
+   "a": "It is a premium package edition of Rise of the Tomb Raider."
+  },
+  {
+   "q": "Is it the same as Tomb Raider Definitive Edition?",
+   "a": "No. That is the earlier game, while Rise is the sequel."
+  },
+  {
+   "q": "Why only two variants?",
+   "a": "Only Regular / Offline and Standard / Online were provided."
+  },
+  {
+   "q": "Is it single-player?",
+   "a": "Yes. It is a single-player action adventure."
+  },
+  {
+   "q": "Why is this a Switch 2 file?",
+   "a": "The batch explicitly requested a Switch 2 version."
+  }
+ ],
+ "mpLocalPlayers": false,
+ "mpOnlinePlayers": false,
+ "mpCoop": false,
+ "mpCompetitive": false,
+ "mpLocalWireless": false,
+ "mpSplitScreen": false,
+ "boxContentsList": [],
+ "image": "",
+ "banner": "",
+ "schemaId": "",
+ "batchImport": true,
+ "createdAt": "2026-08-28T18:35:56.218Z",
+ "updatedAt": "2026-08-28T18:35:56.218Z"
+}

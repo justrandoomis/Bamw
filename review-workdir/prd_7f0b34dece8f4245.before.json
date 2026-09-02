@@ -1,0 +1,537 @@
+{
+ "id": "prd_7f0b34dece8f4245",
+ "title": "RAIDOU Remastered: The Mystery of the Soulless Army",
+ "titleEn": "RAIDOU Remastered: The Mystery of the Soulless Army",
+ "titleKu": "RAIDOU Remastered: The Mystery of the Soulless Army",
+ "slug": "raidou-remastered-the-mystery-of-the-soulless-army",
+ "description": "A modernized remaster of Devil Summoner: Raidou Kuzunoha vs. The Soulless Army with a new UI, full voice acting, expanded environments, improved visuals and an overhauled real-time combat system. Summon from more than 120 demons while solving a supernatural mystery in the Capital.",
+ "descriptionEn": "A modernized remaster of Devil Summoner: Raidou Kuzunoha vs. The Soulless Army with a new UI, full voice acting, expanded environments, improved visuals and an overhauled real-time combat system. Summon from more than 120 demons while solving a supernatural mystery in the Capital.",
+ "descriptionKu": "A modernized remaster of Devil Summoner: Raidou Kuzunoha vs. The Soulless Army with a new UI, full voice acting, expanded environments, improved visuals and an overhauled real-time combat system. Summon from more than 120 demons while solving a supernatural mystery in the Capital.",
+ "cartridgeImage": "/api/files/products/prd_7f0b34dece8f4245/cartridgeImage-bf35d334b0e0294c.avif",
+ "nintendoCardImage": "/api/files/products/prd_7f0b34dece8f4245/nintendoCardImage-d38c8715039edaa6.jpg",
+ "coverHiResImage": "",
+ "coverImage": "/api/files/products/prd_7f0b34dece8f4245/coverImage-bf35d334b0e0294c.avif",
+ "bannerImages": [
+  "/api/files/products/prd_7f0b34dece8f4245/bannerImages-1-057eb0047d14a955.jpg",
+  "/api/files/products/prd_7f0b34dece8f4245/bannerImages-2-3c499b9753989a09.jpg"
+ ],
+ "gallery": [],
+ "youtubeTrailer": "https://www.youtube.com/watch?v=LEP_7CLiV8c",
+ "releaseDate": "2025-06-19",
+ "ageRating": "PEGI 7",
+ "metacriticRating": 76,
+ "genres": [
+  "Action RPG",
+  "Supernatural",
+  "Detective"
+ ],
+ "platform": "both",
+ "size": 12.8,
+ "numberOfPlayers": "1",
+ "supportedLanguages": "English, French, German, Italian, Spanish",
+ "hardwareModel": "",
+ "colorEdition": "",
+ "storageCapacity": "",
+ "screenSpecs": "",
+ "batteryLife": "",
+ "boxContents": [],
+ "boxContentsText": "",
+ "warrantyCondition": "",
+ "connectivity": "",
+ "characterName": "Link",
+ "amiiboSeries": "The Legend of Zelda",
+ "figureType": "figure",
+ "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+ "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+ "boxCondition": "mib",
+ "releaseWave": "Wave 2 (Restock)",
+ "rarity": "standard",
+ "accessoryType": "حقيبة حماية وتنقل Carry Case",
+ "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+ "brand": "Nintendo Official",
+ "material": "Hard EVA Shockproof Shell",
+ "availableColors": "Black, Neon Red/Blue, White",
+ "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+ "cardValue": "$20 eShop Balance",
+ "region": "Global",
+ "cardType": "eshop",
+ "deliveryMethod": "instant_code",
+ "redemptionGuide": "",
+ "redemptionSteps": [],
+ "validity": "no_expiry",
+ "usedType": "cartridge",
+ "conditionGrade": "like_new",
+ "packaging": "cib",
+ "guaranteeStatus": "tested_30days",
+ "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+ "accountType": "primary",
+ "badge": "وفر 40%",
+ "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+ "price": 8500,
+ "cost": 1250,
+ "stock": 999999,
+ "isInfiniteStock": true,
+ "isHidden": false,
+ "displayOrder": 0,
+ "category": "nintendo-switch-games",
+ "categoryId": "nintendo-switch-games",
+ "categoryEn": "",
+ "categoryKu": "",
+ "options": [
+  {
+   "id": "offline_account",
+   "name": "مشترك",
+   "description": "Play using the supplied account under the store's offline-account activation method.",
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_account",
+   "name": "خاص بك",
+   "description": "Online-account option with internet-connected account use where supported by the game/service.",
+   "isInfiniteStock": true
+  }
+ ],
+ "types": [
+  {
+   "id": "standard_offline",
+   "name": "مشترك — اللعبة الأساسية",
+   "optionId": "offline_account",
+   "price": 8500,
+   "cost": 1250,
+   "description": "Standard game, Offline Account. Supplier Regular price: ¥6.80; purchase cost converted at 1 CNY = 220 IQD and rounded down to nearest 250 IQD.",
+   "isInfiniteStock": true
+  },
+  {
+   "id": "standard_online",
+   "name": "خاص بك — اللعبة الأساسية",
+   "optionId": "online_account",
+   "price": 25000,
+   "cost": 14250,
+   "description": "Standard game, Online Account. Supplier Standard price: ¥65.60; purchase cost converted at 1 CNY = 220 IQD and rounded down to nearest 250 IQD.",
+   "isInfiniteStock": true
+  },
+  {
+   "id": "dlc_offline",
+   "name": "مشترك — مع الإضافات",
+   "optionId": "offline_account",
+   "price": 12000,
+   "cost": 2500,
+   "description": "Offline Account with the listed DLC/Deluxe content. Supplier Special price: ¥11.70.",
+   "isInfiniteStock": true
+  },
+  {
+   "id": "dlc_online",
+   "name": "خاص بك — مع الإضافات",
+   "optionId": "online_account",
+   "price": 28000,
+   "cost": 18500,
+   "description": "Online Account with the listed DLC/Deluxe content. Supplier Deluxe price: ¥85.20.",
+   "isInfiniteStock": true
+  }
+ ],
+ "editions": [],
+ "dlcs": [],
+ "isActive": true,
+ "status": "active",
+ "kind": "account",
+ "trade_value_iqd": 40000,
+ "store_offer_bonus_iqd": 0,
+ "trade_enabled": true,
+ "trade_value_locked": false,
+ "schema_version": 22,
+ "titleAr": "رايدو ريماترد: لغز جيش بلا أرواح",
+ "compatibility": [
+  "Nintendo Switch",
+  "Nintendo Switch 2"
+ ],
+ "edition": "Standard",
+ "developer": "ATLUS",
+ "publisher": "SEGA",
+ "opencriticRating": 79,
+ "userScore": 8.1,
+ "officialUrl": "https://www.atlus.com/raidou/",
+ "gameIsOffline": true,
+ "gameIsOnline": true,
+ "gameLanguageLocked": false,
+ "description_short": "ATLUS revives the supernatural detective action RPG with modern visuals, full voice acting, quality-of-life upgrades and a heavily revised battle system.",
+ "description_ar": "إعادة إتقان موسعة للعبة Devil Summoner: Raidou Kuzunoha vs. The Soulless Army. يلعب رايدو دور محقق ومتخصص في استدعاء الشياطين، ويتتبع قضية اختطاف تتحول إلى مؤامرة واسعة داخل العاصمة والعالم المظلم.",
+ "box_front_url": "https://i5.walmartimages.com/seo/RAIDOU-Remastered-The-Mystery-of-the-Soulless-Army-Nintendo-Switch-2_c7dbe8a2-1296-44a9-8062-18e90326ff20.b03da43df6e4ca242506c0280524fd5d.jpeg?odnBg=FFFFFF&odnHeight=1200&odnWidth=1200",
+ "videos": [
+  {
+   "title": "Launch Trailer",
+   "url": "https://www.youtube.com/watch?v=LEP_7CLiV8c"
+  }
+ ],
+ "nintendoEshopUrl": "https://www.nintendo.com/au/games/nintendo-switch-2/raidou-remastered-the-mystery-of-the-soulless-army/",
+ "nintendoOnlineRequired": false,
+ "nintendoCloudSaves": true,
+ "tvMode": true,
+ "tabletopMode": true,
+ "handheldMode": true,
+ "nintendoPlayModes": "TV Mode, Tabletop Mode, Handheld Mode",
+ "switch2Features": [
+  "Native Switch 2 release",
+  "1920x1080 target in handheld mode",
+  "1920x1080 target in TV mode",
+  "60 FPS target on Switch 2",
+  "Full English and Japanese voice acting",
+  "Save Data Cloud",
+  "Demo with save transfer",
+  "Improved loading and modernized UI"
+ ],
+ "tagline": "Undertake the case of the century in a supernatural Taisho-era mystery.",
+ "fitFor": [
+  "Fans of Shin Megami Tensei and Devil Summoner",
+  "Players who enjoy action RPG combat with demon allies",
+  "Players interested in supernatural detective stories",
+  "Players wanting a smooth 60 FPS Switch 2 version"
+ ],
+ "notFitFor": [
+  "Players looking for multiplayer",
+  "Players who dislike older narrative structures despite modernization"
+ ],
+ "playTimeMain": 19,
+ "playTimeFull": 38,
+ "editionsList": [
+  {
+   "name": "Standard Edition",
+   "contents": [
+    {
+     "label": "Base game"
+    }
+   ]
+  },
+  {
+   "name": "Digital Deluxe Edition",
+   "contents": [
+    {
+     "label": "Base game"
+    },
+    {
+     "label": "Kuzunoha Village Trainings"
+    },
+    {
+     "label": "Demons of the Aril Rift"
+    },
+    {
+     "label": "Guest Demons Pack"
+    },
+    {
+     "label": "Skill Book Pack"
+    },
+    {
+     "label": "Survival Pack"
+    }
+   ]
+  }
+ ],
+ "gameplayPillars": [
+  {
+   "title": "Devil Summoner Combat",
+   "description": "Fight in real time using sword, gun, defensive actions and summoned demon allies."
+  },
+  {
+   "title": "Detective Investigation",
+   "description": "Question witnesses, inspect scenes and use demon Investigation Skills to solve supernatural cases."
+  },
+  {
+   "title": "Demon Collection",
+   "description": "Recruit, fuse and develop more than 120 demons to build specialized combat and investigation teams."
+  },
+  {
+   "title": "Taisho Capital Exploration",
+   "description": "Move between a stylized 1930s-inspired Capital and the dangerous Dark Realm."
+  }
+ ],
+ "worldSummary": "A stylized alternate Taisho-era Capital inspired by 1930s Tokyo is connected to the Dark Realm, a dangerous supernatural layer inhabited by demons. Raidou moves between investigation and combat as the case expands from a disappearance into a national conspiracy.",
+ "storyChapters": [
+  {
+   "title": "A Strange Request",
+   "body": "A young heiress visits the Narumi Detective Agency with a shocking request before being kidnapped."
+  },
+  {
+   "title": "The Dark Realm",
+   "body": "Raidou investigates the Capital and a demon-filled parallel realm while tracking the missing girl."
+  },
+  {
+   "title": "A National Conspiracy",
+   "body": "The case expands far beyond a disappearance and threatens the future of the entire nation."
+  }
+ ],
+ "galleryImages": [
+  {
+   "url": "https://img-eshop.cdn.nintendo.net/i/7df0dc4d521580ee665243804c5209dd5f3dc20807e424ee4e9f301908833e72.jpg",
+   "alt": "Distinct product/game media image 1; separate from the primary cover and square-card roles."
+  },
+  {
+   "url": "https://img-eshop.cdn.nintendo.net/i/45f5b1ccef4aed4db2f53539daf415945f49689fd90ffa3c48c524dbb6db8860.jpg",
+   "alt": "Distinct product/game media image 2; separate from the primary cover and square-card roles."
+  }
+ ],
+ "features": [
+  "Faithful remaster with revamped visuals and audio",
+  "Completely overhauled real-time battle system",
+  "Full voice acting",
+  "Expanded 3D environments",
+  "More than 120 demons to summon",
+  "Supernatural detective investigation",
+  "Taisho-era alternate-history Tokyo setting",
+  "Quality-of-life improvements and redesigned UI",
+  "Nintendo Switch 2 version targets 1080p/60 FPS in both handheld and TV modes"
+ ],
+ "perfResolutionDocked": "Switch 2: 1920x1080; Switch: 1920x1080 target",
+ "perfResolutionHandheld": "Switch 2: 1920x1080; Switch: 1280x720 target",
+ "perfFps": "Switch 2: 60 FPS; Switch: 30-60 FPS target",
+ "perfNotes": "ATLUS officially states that the Nintendo Switch 2 version targets 60 FPS at 1920x1080 in both TV and handheld modes. The Nintendo Switch version targets 30-60 FPS, 1080p docked and 720p handheld.",
+ "devicePerformance": [
+  {
+   "device": "Nintendo Switch 2",
+   "deviceSlug": "nintendo-switch-2",
+   "deviceModel": "Nintendo Switch 2",
+   "hardwareId": "prd_acf4c89908764c62",
+   "informationStatus": "verified",
+   "handheld": {
+    "supported": true,
+    "resolution": "1920x1080",
+    "resolutionDynamic": false,
+    "outputResolution": "1920x1080",
+    "fps": "60",
+    "fpsMin": "60",
+    "fpsMax": "60"
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "1920x1080",
+    "resolutionDynamic": false,
+    "outputResolution": "1920x1080",
+    "fps": "60",
+    "fpsMin": "60",
+    "fpsMax": "60"
+   },
+   "sourceName": "ATLUS Official Q&A",
+   "sourceUrl": "https://www.atlus.co.jp/news/32532/",
+   "verificationStatus": "verified"
+  }
+ ],
+ "downloadSizeGb": 12.8,
+ "requiredSpaceGb": 12.8,
+ "microSdRecommended": false,
+ "languagesAudio": [
+  "Japanese",
+  "English"
+ ],
+ "languagesText": [
+  "English",
+  "French",
+  "German",
+  "Italian",
+  "Spanish"
+ ],
+ "arabicSupport": false,
+ "mpLocalPlayers": false,
+ "mpOnlinePlayers": false,
+ "mpCoop": false,
+ "mpCompetitive": false,
+ "mpSplitScreen": false,
+ "mpLocalWireless": false,
+ "dlc": [
+  {
+   "name": "DLC content and bonus packs",
+   "description": "The remaster has optional DLC and bonus content; exact availability varies by region and storefront."
+  }
+ ],
+ "guides": [
+  {
+   "title": "Official RAIDOU Site",
+   "summary": "Game systems, characters, media and edition details.",
+   "url": "https://asia.sega.com/raidou/en/"
+  },
+  {
+   "title": "Official Patch Notes",
+   "summary": "Patch 1.10 and demo information.",
+   "url": "https://asia.sega.com/raidou/en/news/"
+  },
+  {
+   "title": "Deku Deals",
+   "summary": "Completion-time, review aggregates and release data.",
+   "url": "https://www.dekudeals.com/items/raidou-remastered-the-mystery-of-the-soulless-army"
+  }
+ ],
+ "completionMain": 19,
+ "completionExtras": 27,
+ "completionAll": 38,
+ "faq": [
+  {
+   "q": "Is RAIDOU Remastered the same game on Switch and Switch 2?",
+   "a": "The content is fundamentally the same remaster, but Switch 2 has its own version and substantially stronger performance targets."
+  },
+  {
+   "q": "What is the Switch 2 performance target?",
+   "a": "ATLUS lists 1920x1080 and 60 FPS targets in both handheld and TV modes."
+  },
+  {
+   "q": "Does it have English voice acting?",
+   "a": "Yes. The remaster includes newly added Japanese and English voiceover."
+  },
+  {
+   "q": "How long is the story?",
+   "a": "Crowdsourced completion data places the main story around 19 hours, around 27 hours with extras and roughly 38 hours for completionist play."
+  },
+  {
+   "q": "Is there a demo?",
+   "a": "Yes. A demo lets players progress to the start of Episode 2 and transfer save data to the full game."
+  },
+  {
+   "q": "Does it have paid DLC?",
+   "a": "Yes. The Digital Deluxe content includes training, demon, skill-book and survival packs."
+  }
+ ],
+ "verdictScore": 8.5,
+ "verdictSummary": "A polished modernization of a cult ATLUS action RPG, with the Switch 2 version standing out for its official 1080p/60 FPS target.",
+ "verdictPros": [
+  "Excellent 1080p/60 FPS Switch 2 presentation",
+  "Distinct supernatural detective identity",
+  "Large demon roster",
+  "Improved combat and quality-of-life systems"
+ ],
+ "verdictCons": [
+  "Single-player only",
+  "Switch and Switch 2 versions use separate software/save paths"
+ ],
+ "reviews": [
+  {
+   "source": "Metacritic",
+   "score": "76/100",
+   "quote": "Generally favorable response to the remaster's modernization and distinctive setting.",
+   "url": "https://www.metacritic.com/"
+  },
+  {
+   "source": "OpenCritic",
+   "score": "79/100",
+   "quote": "Critics broadly praised the improved combat and preservation of the original's unusual detective-RPG identity.",
+   "url": "https://opencritic.com/"
+  },
+  {
+   "source": "Deku Deals user score",
+   "score": "8.1/10",
+   "quote": "Player-facing aggregate data lists an 8.1 user score.",
+   "url": "https://www.dekudeals.com/items/raidou-remastered-the-mystery-of-the-soulless-army"
+  }
+ ],
+ "timeline": [
+  {
+   "date": "2006-03-02",
+   "title": "Original game release",
+   "body": "Devil Summoner: Raidou Kuzunoha vs. The Soulless Army released in Japan."
+  },
+  {
+   "date": "2025-06-19",
+   "title": "RAIDOU Remastered launch",
+   "body": "The remaster launched on Switch, Switch 2, PlayStation, Xbox and PC."
+  },
+  {
+   "date": "2025-09-16",
+   "title": "Patch 1.10",
+   "body": "Major quality-of-life, combat and New Game+ improvements were released."
+  },
+  {
+   "date": "2025-11",
+   "title": "Playable demo",
+   "body": "A demo covering the opening through the start of Episode 2 was released with save transfer."
+  }
+ ],
+ "patchNotes": [
+  {
+   "version": "1.12",
+   "date": "2025-10-15",
+   "body": "Security/engine update; no substantive game-content changes."
+  },
+  {
+   "version": "1.10",
+   "date": "2025-09-16",
+   "body": "Added MAG Drain to gun attacks, hold-input accessibility, remapping, difficulty retry, improved fusion/alchemy flow, Devil Chart completion display and numerous QOL/battle changes."
+  },
+  {
+   "version": "Launch",
+   "date": "2025-06-19",
+   "body": "Initial worldwide release of the remaster."
+  }
+ ],
+ "soundtrack": [
+  {
+   "title": "RAIDOU Remastered Original Soundtrack / arranged score",
+   "url": "https://asia.sega.com/raidou/en/"
+  },
+  {
+   "title": "Devil Summoner series music",
+   "url": "https://www.atlus.com/"
+  }
+ ],
+ "seriesName": "Devil Summoner / Shin Megami Tensei",
+ "seriesEntries": [
+  "Devil Summoner: Raidou Kuzunoha vs. The Soulless Army",
+  "Devil Summoner 2: Raidou Kuzunoha vs. King Abaddon",
+  "RAIDOU Remastered: The Mystery of the Soulless Army"
+ ],
+ "studioName": "ATLUS",
+ "studioUrl": "https://www.atlus.com/",
+ "studioLocation": "Tokyo, Japan",
+ "studioAbout": "ATLUS is a Japanese game developer and publisher known for Shin Megami Tensei, Persona and Devil Summoner. RAIDOU Remastered modernizes the 2006 action RPG with full voice acting, expanded environments, a new UI and overhauled real-time combat.",
+ "setupNeeds": [
+  "Nintendo Switch 2 system required for the Nintendo Switch 2 version.",
+  "Internet connection is required for digital download, updates and online/service features where applicable.",
+  "Nintendo Account required for Nintendo eShop purchase/download.",
+  "Sufficient internal storage or compatible microSD Express storage required.",
+  "Nintendo Switch Online membership is required only for game-specific online multiplayer/features that explicitly use it."
+ ],
+ "sources": [
+  {
+   "name": "ATLUS/SEGA Official",
+   "url": "https://asia.sega.com/raidou/en/"
+  },
+  {
+   "name": "ATLUS News",
+   "url": "https://asia.sega.com/raidou/en/news/"
+  },
+  {
+   "name": "SEGA Release",
+   "url": "https://www.sega.co.jp/en/release/250619_1.html"
+  },
+  {
+   "name": "Deku Deals",
+   "url": "https://www.dekudeals.com/items/raidou-remastered-the-mystery-of-the-soulless-army"
+  }
+ ],
+ "boxContentsList": "[Circular]",
+ "image": "/api/files/products/prd_7f0b34dece8f4245/coverImage-bf35d334b0e0294c.avif",
+ "banner": "/api/files/products/prd_7f0b34dece8f4245/bannerImages-1-057eb0047d14a955.jpg",
+ "schemaId": "",
+ "badgeEn": "وفر 40%",
+ "badgeKu": "وفر 40%",
+ "featuresEn": [
+  "Faithful remaster with revamped visuals and audio",
+  "Completely overhauled real-time battle system",
+  "Full voice acting",
+  "Expanded 3D environments",
+  "More than 120 demons to summon",
+  "Supernatural detective investigation",
+  "Taisho-era alternate-history Tokyo setting",
+  "Quality-of-life improvements and redesigned UI",
+  "Nintendo Switch 2 version targets 1080p/60 FPS in both handheld and TV modes"
+ ],
+ "featuresKu": [
+  "Faithful remaster with revamped visuals and audio",
+  "Completely overhauled real-time battle system",
+  "Full voice acting",
+  "Expanded 3D environments",
+  "More than 120 demons to summon",
+  "Supernatural detective investigation",
+  "Taisho-era alternate-history Tokyo setting",
+  "Quality-of-life improvements and redesigned UI",
+  "Nintendo Switch 2 version targets 1080p/60 FPS in both handheld and TV modes"
+ ],
+ "sales": 0,
+ "images": [],
+ "modes": [],
+ "updatedAt": "2026-08-28T22:04:59.470Z"
+}
