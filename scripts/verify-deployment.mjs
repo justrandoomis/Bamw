@@ -108,13 +108,60 @@ try {
   say(`- \`/\` → unreachable: ${String(error?.message || error)}`);
 }
 
+/*
+  Does the referral programme answer, and is its schema really there?
+
+  A guest `GET /api/referral` returns the programme's terms without touching a
+  single referral table, so it would pass just as happily against a database
+  that has none of them. A `POST` with a code that cannot exist does touch one:
+  the server resolves it against `referral_codes`, finds nothing, and refuses.
+
+  That is what makes this a schema check rather than a routing check. A missing
+  table turns the lookup into a 500; a present one answers 400 with the single
+  refusal sentence. Nothing is written either way — a code that resolves to
+  nobody creates no attribution.
+
+  400 is the expected answer. 429 means the rate limiter answered first, and
+  503 means the deployment has no signing key: both mean the route ran, which
+  is what is being asked. Anything else is a fault.
+*/
+let referralOk = false;
+try {
+  const res = await fetch(`${ORIGIN}/api/referral`, {
+    method: "POST",
+    headers: {
+      "content-type": "application/json",
+      "user-agent": "bananto-deploy-verify",
+    },
+    body: JSON.stringify({ code: "ZZZZZZZZ" }),
+  });
+  const text = await res.text();
+  referralOk = res.status === 400 || res.status === 429 || res.status === 503;
+  const note =
+    res.status === 400
+      ? " (refused as expected — `referral_codes` was read)"
+      : res.status === 429
+        ? " (rate limited — the route ran)"
+        : res.status === 503
+          ? " (programme off: no signing key)"
+          : " (unexpected)";
+  say(`- \`POST /api/referral\` → HTTP ${res.status}${note}`);
+  if (!referralOk) say(`  - body: \`${text.slice(0, 200)}\``);
+} catch (error) {
+  say(`- \`POST /api/referral\` → unreachable: ${String(error?.message || error)}`);
+}
+
 const healthy = health?.ok === true && body.status === "OK";
 say();
-say(healthy && homeOk ? `**verified: the deployed site is healthy**` : `**FAILED**`);
+say(
+  healthy && homeOk && referralOk
+    ? `**verified: the deployed site is healthy**`
+    : `**FAILED**`,
+);
 
 writeFileSync("deployment-verification.md", lines.join("\n") + "\n");
 
-if (!healthy || !homeOk) {
+if (!healthy || !homeOk || !referralOk) {
   console.error("deployment verification failed");
   process.exit(1);
 }
