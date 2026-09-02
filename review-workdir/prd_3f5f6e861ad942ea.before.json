@@ -1,0 +1,458 @@
+{
+ "title": "Xenoblade Chronicles X: Definitive Edition – Nintendo Switch 2 Edition",
+ "titleEn": "Xenoblade Chronicles X: Definitive Edition – Nintendo Switch 2 Edition",
+ "titleKu": "Xenoblade Chronicles X: Definitive Edition – Nintendo Switch 2 Edition",
+ "slug": "xenoblade-chronicles-x-definitive-edition-switch-2-edition",
+ "description": "Humanity’s survivors have crash-landed on Mira. Explore huge regions, build your party, develop character classes, take on missions, and pilot Skells in a deeply layered action RPG. The Definitive Edition adds new story material and modernized systems.",
+ "descriptionEn": "Humanity’s survivors have crash-landed on Mira. Explore huge regions, build your party, develop character classes, take on missions, and pilot Skells in a deeply layered action RPG. The Definitive Edition adds new story material and modernized systems.",
+ "descriptionKu": "Humanity’s survivors have crash-landed on Mira. Explore huge regions, build your party, develop character classes, take on missions, and pilot Skells in a deeply layered action RPG. The Definitive Edition adds new story material and modernized systems.",
+ "cartridgeImage": "/api/files/products/prd_3f5f6e861ad942ea/front-5aa2bef9a9119791.webp",
+ "nintendoCardImage": "/api/files/products/prd_3f5f6e861ad942ea/square-e6271e1693d6c2de.jpg",
+ "coverHiResImage": "/api/files/products/prd_3f5f6e861ad942ea/3d-texture-96233dd5db5f55cb.webp",
+ "coverImage": "/api/files/products/prd_3f5f6e861ad942ea/cover-75989882187d8c01.avif",
+ "bannerImages": [
+  "/api/files/products/prd_3f5f6e861ad942ea/banner-0-1784f63de7cf5cb0.avif",
+  "/api/files/products/prd_3f5f6e861ad942ea/banner-1-06c45a242fd956f6.avif",
+  "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000116669/e2ec24af5431e0b05b5124a13d3bb96bf84cfbc1d1d30d866b579ddd45d9a558",
+  "/api/files/products/prd_3f5f6e861ad942ea/banner-3-446ced4ed3e41e3a.jpg"
+ ],
+ "gallery": [],
+ "youtubeTrailer": "https://www.youtube.com/watch?v=I68j_RQL2Es",
+ "releaseDate": "2026-02-19",
+ "ageRating": "ESRB Teen",
+ "metacriticRating": 87,
+ "genres": [
+  "Action",
+  "Role-Playing",
+  "Open World"
+ ],
+ "platform": "switch2",
+ "size": 13.5,
+ "numberOfPlayers": "1",
+ "supportedLanguages": "Japanese, American English, French, German, Italian, Spanish, Korean, Simplified Chinese, Traditional Chinese",
+ "hardwareModel": "",
+ "colorEdition": "",
+ "storageCapacity": "",
+ "screenSpecs": "",
+ "batteryLife": "",
+ "boxContents": [],
+ "boxContentsText": "",
+ "warrantyCondition": "",
+ "connectivity": "",
+ "characterName": "Link",
+ "amiiboSeries": "The Legend of Zelda",
+ "figureType": "figure",
+ "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+ "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+ "boxCondition": "mib",
+ "releaseWave": "Wave 2 (Restock)",
+ "rarity": "standard",
+ "accessoryType": "حقيبة حماية وتنقل Carry Case",
+ "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+ "brand": "Nintendo Official",
+ "material": "Hard EVA Shockproof Shell",
+ "availableColors": "Black, Neon Red/Blue, White",
+ "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+ "cardValue": "$20 eShop Balance",
+ "region": "Global",
+ "cardType": "eshop",
+ "deliveryMethod": "instant_code",
+ "redemptionGuide": "",
+ "redemptionSteps": [],
+ "validity": "no_expiry",
+ "usedType": "cartridge",
+ "conditionGrade": "like_new",
+ "packaging": "cib",
+ "guaranteeStatus": "tested_30days",
+ "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+ "accountType": "primary",
+ "badge": "وفر 40%",
+ "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+ "price": 12000,
+ "cost": 2500,
+ "stock": 999999,
+ "isInfiniteStock": true,
+ "isHidden": false,
+ "displayOrder": 0,
+ "category": "nintendo-switch-games",
+ "categoryId": "nintendo-switch-games",
+ "categoryEn": "",
+ "categoryKu": "",
+ "options": [
+  {
+   "id": "offline_account",
+   "name": "حساب أوفلاين",
+   "description": "حساب مخصص للعب دون اتصال بعد إكمال خطوات التفعيل.",
+   "isInfiniteStock": true,
+   "customerDescription": "حساب مشترك"
+  },
+  {
+   "id": "online_account",
+   "name": "حساب أونلاين",
+   "description": "حساب يدعم تشغيل اللعبة مع الاتصال والميزات المتاحة أونلاين.",
+   "isInfiniteStock": true,
+   "customerDescription": "حساب خاص بك",
+   "internalNote": "Online-capable account access option sold by the supplier."
+  }
+ ],
+ "types": [
+  {
+   "id": "standard_offline",
+   "name": "حساب أوفلاين — عادي",
+   "optionId": "offline_account",
+   "price": "",
+   "cost": 2500,
+   "description": "تشمل الإصدار العادي من اللعبة.",
+   "stock": 999999,
+   "isInfiniteStock": true,
+   "customerDescription": "اللعبة الأساسية"
+  },
+  {
+   "id": "standard_online",
+   "name": "حساب أونلاين — عادي",
+   "optionId": "online_account",
+   "price": 38000,
+   "cost": 25000,
+   "description": "تشمل الإصدار العادي من اللعبة.",
+   "stock": 999999,
+   "isInfiniteStock": true,
+   "customerDescription": "اللعبة الأساسية"
+  }
+ ],
+ "editions": [],
+ "dlcs": [],
+ "isActive": true,
+ "status": "active",
+ "kind": "account",
+ "trade_value_iqd": 0,
+ "store_offer_bonus_iqd": 0,
+ "trade_enabled": true,
+ "trade_value_locked": false,
+ "id": "prd_3f5f6e861ad942ea",
+ "titleAr": "Xenoblade Chronicles X: Definitive Edition",
+ "compatibility": [
+  "Nintendo Switch 2",
+  null,
+  null,
+  "Nintendo Switch Lite (handheld-compatible; feature experience may vary)"
+ ],
+ "edition": "Standard",
+ "developer": "MONOLITHSOFT",
+ "publisher": "Nintendo",
+ "metacriticUrl": "https://www.metacritic.com/game/xenoblade-chronicles-x-definitive-edition/",
+ "opencriticRating": 87,
+ "userScore": 8.5,
+ "officialUrl": "https://www.nintendo.com/us/store/products/xenoblade-chronicles-x-definitive-edition-nintendo-switch-2-edition-switch-2/",
+ "eshopUrl": "https://www.nintendo.com/us/store/products/xenoblade-chronicles-x-definitive-edition-nintendo-switch-2-edition-switch-2/",
+ "gameIsOffline": true,
+ "gameIsOnline": true,
+ "description_short": "A vast open-world sci-fi action RPG on planet Mira, rebuilt and expanded in the Definitive Edition.",
+ "description_ar": "بعد دمار الأرض، يهبط الناجون على كوكب ميرا الغامض. تستكشف مناطق ضخمة، وتبني فريقك، وتطور الفئات والمهارات، وتنفذ المهمات، ثم تقود آليات Skell العملاقة. نسخة Definitive Edition تضيف تحسينات في أسلوب اللعب ومحتوى قصصيًا إضافيًا.",
+ "videos": [
+  {
+   "title": "Official Announcement / Overview Trailer",
+   "url": "https://www.youtube.com/watch?v=I68j_RQL2Es"
+  }
+ ],
+ "nsuid": "70010000088832",
+ "nintendoEshopUrl": "https://www.nintendo.com/us/store/products/xenoblade-chronicles-x-definitive-edition-nintendo-switch-2-edition-switch-2/",
+ "nintendoOnlineRequired": false,
+ "nintendoCloudSaves": true,
+ "tvMode": true,
+ "tabletopMode": true,
+ "handheldMode": true,
+ "nintendoPlayModes": "TV, Tabletop, Handheld",
+ "nintendoNotes": "Official platform status: native Nintendo Switch release on 2025-03-20 and native Nintendo Switch 2 Edition on 2026-02-19. Switch 2 Edition supports up to 4K / 60 fps in TV mode and up to 1080p / 60 fps handheld. Online squads can include up to 32 players; Nintendo Switch Online is required only for online features.\n\nSupplier language selection supplied by user: Simplified Chinese.\nSupplier matrix: NS1 Regular ¥6.8 (pre-discount ¥10); NS1 Standard ¥95; NS2 Regular ¥11.7; NS2 Standard ¥114.6. Two supplier variants per platform means no paid DLC product type is created.\nConverted purchase costs at 1 CNY = 220 IQD, rounded down to nearest 250 IQD: NS1 Regular 1,250 IQD; NS1 Standard 20,750 IQD; NS2 Regular 2,500 IQD; NS2 Standard 25,000 IQD.\nThe template has one cost per product type and no platform-specific cost subfield; therefore dual-platform type.cost fields are intentionally left blank rather than mixing NS1 and NS2 costs.",
+ "switch2Enhanced": true,
+ "switch2Exclusive": true,
+ "switch2UpgradePrice": 4.99,
+ "switch2Features": [
+  "Up to 4K resolution in TV mode",
+  "Up to 60 fps on Switch 2",
+  "Up to 1080p in handheld mode",
+  "Up to 1080p / 60 fps in handheld mode",
+  "Upgrade Pack available for Switch owners"
+ ],
+ "tagline": "Rebuild humanity on the mysterious planet Mira.",
+ "fitFor": [
+  "Players who enjoy huge open worlds and exploration",
+  "Fans of deep party-based action RPG combat",
+  "Players who like mechs, character builds, and long-form progression",
+  "Players who enjoy 100+ hour completionist RPGs"
+ ],
+ "notFitFor": [
+  "Players looking for a short linear campaign",
+  "Players who dislike dense RPG systems",
+  "Players who prefer purely turn-based combat",
+  "Players who want minimal menus and simple progression"
+ ],
+ "playTimeMain": 67.5,
+ "playTimeFull": 253.5,
+ "editionsList": [
+  {
+   "name": "Nintendo Switch Standard",
+   "coverUrl": "https://gamesdb-images.launchbox.gg/r2_e0a82f87-f163-4a4f-9d06-2dcbe770253a.jpg",
+   "contents": [
+    {
+     "label": "Base Definitive Edition game"
+    },
+    {
+     "label": "Expanded story content"
+    },
+    {
+     "label": "Quality-of-life and visual improvements"
+    }
+   ]
+  },
+  {
+   "name": "Nintendo Switch 2 Edition",
+   "contents": [
+    {
+     "label": "Nintendo Switch game + Switch 2 Upgrade Pack"
+    },
+    {
+     "label": "Up to 4K TV output"
+    },
+    {
+     "label": "Up to 60 fps"
+    }
+   ]
+  },
+  {
+   "name": "Nintendo Switch 2 Edition Upgrade Pack",
+   "contents": [
+    {
+     "label": "Requires the Nintendo Switch version"
+    },
+    {
+     "label": "Enhanced visuals and performance"
+    },
+    {
+     "label": "Switch 2 optimization"
+    }
+   ]
+  }
+ ],
+ "gameplayPillars": [
+  {
+   "title": "Explore Mira",
+   "description": "Exploration is central: the player surveys continents, plants probes, discovers landmarks, gathers materials, and opens new routes.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/f_auto%2Cq_auto/Marketing/pmp-xcx-de-p2-skdhskdhw/assets/new-los-angeles"
+  },
+  {
+   "title": "Master Arts and Classes",
+   "description": "Real-time party combat uses auto-attacks, Arts, positioning, cooldowns, class progression, equipment, and coordinated party roles.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/f_auto%2Cq_auto/Marketing/pmp-xcx-de-p2-skdhskdhw/assets/primordia"
+  },
+  {
+   "title": "Pilot Skells",
+   "description": "Skells add a second layer of movement and battle, allowing faster traversal, flight later in progression, and large-scale combat.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/f_auto%2Cq_auto/Marketing/pmp-xcx-de-p2-skdhskdhw/assets/noctilum"
+  }
+ ],
+ "worldSummary": "Mira is a massive alien planet divided into distinct regions with different climates, ecosystems, creatures, resources, and ruins. New Los Angeles serves as humanity’s base after the White Whale crash.",
+ "storyChapters": [
+  {
+   "title": "The White Whale and New Los Angeles",
+   "body": "The White Whale escapes Earth’s destruction but crashes on Mira. Survivors establish New Los Angeles and race to secure humanity’s future.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/f_auto%2Cq_auto/Marketing/pmp-xcx-de-p2-skdhskdhw/assets/oblivia"
+  },
+  {
+   "title": "Life on Mira",
+   "body": "BLADE explores Mira, rescues survivors, studies alien life, and uncovers competing factions and mysteries surrounding the planet.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/f_auto%2Cq_auto/Marketing/pmp-xcx-de-p2-skdhskdhw/assets/sylvalum"
+  },
+  {
+   "title": "The fight for humanity’s future",
+   "body": "The story expands beyond the original Wii U release with additional narrative material included in the Definitive Edition.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/f_auto%2Cq_auto/Marketing/pmp-xcx-de-p2-skdhskdhw/assets/cauldros"
+  }
+ ],
+ "galleryImages": [
+  {
+   "url": "https://assets.nintendo.com/image/upload/f_auto%2Cq_auto/Marketing/pmp-xcx-de-p2-skdhskdhw/assets/primordia",
+   "alt": "Official Nintendo promotional image"
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/f_auto%2Cq_auto/Marketing/pmp-xcx-de-p2-skdhskdhw/assets/noctilum",
+   "alt": "Official Nintendo gameplay image"
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/f_auto%2Cq_auto/Marketing/pmp-xcx-de-p2-skdhskdhw/assets/oblivia",
+   "alt": "Official Nintendo gameplay image"
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/f_auto%2Cq_auto/Marketing/pmp-xcx-de-p2-skdhskdhw/assets/sylvalum",
+   "alt": "Official Nintendo feature image"
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/f_auto%2Cq_auto/Marketing/pmp-xcx-de-p2-skdhskdhw/assets/cauldros",
+   "alt": "Official Nintendo gallery image"
+  }
+ ],
+ "features": [
+  "Large seamless regions across planet Mira",
+  "Pilot and customize Skell mechs",
+  "Online squads for up to 32 players",
+  "Character and gear customization",
+  "Affinity missions and side content",
+  "Expanded Definitive Edition story"
+ ],
+ "perfResolutionDocked": "Up to 4K",
+ "perfResolutionHandheld": "Up to 1080p",
+ "perfFps": "60",
+ "perfNotes": "Nintendo Switch: measured target is 30 fps, with dynamic resolution reaching about 1080p docked and 720p handheld. Nintendo Switch 2 Edition: Nintendo officially advertises up to 4K / 60 fps TV and up to 1080p / 60 fps handheld. Actual rendering resolution can differ from output resolution.",
+ "devicePerformance": [
+  {
+   "device": "Nintendo Switch 2",
+   "deviceSlug": "nintendo-switch-2",
+   "deviceModel": "Nintendo Switch 2",
+   "hardwareId": "prd_acf4c89908764c62",
+   "informationStatus": "Published / verified",
+   "handheld": {
+    "supported": true,
+    "resolution": "Up to 1080p",
+    "outputResolution": "Up to 1080p",
+    "fps": "60"
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "Up to 4K",
+    "outputResolution": "Up to 4K",
+    "fps": "60"
+   },
+   "sourceName": "Nintendo Official",
+   "sourceUrl": "https://www.nintendo.com/us/store/products/xenoblade-chronicles-x-definitive-edition-nintendo-switch-2-edition-switch-2/",
+   "verificationStatus": "verified"
+  }
+ ],
+ "downloadSizeGb": 13.5,
+ "requiredSpaceGb": 14.8,
+ "microSdRecommended": false,
+ "storageNotes": "Nintendo lists 13.5 GB for Nintendo Switch and 14.8 GB for Nintendo Switch 2 on the current product page.",
+ "languagesAudio": [
+  "English",
+  "Japanese"
+ ],
+ "languagesText": [
+  "Japanese",
+  "American English",
+  "French",
+  "German",
+  "Italian",
+  "Spanish",
+  "Korean",
+  "Simplified Chinese",
+  "Traditional Chinese"
+ ],
+ "arabicSupport": false,
+ "mpLocalPlayers": false,
+ "mpOnlinePlayers": true,
+ "mpCoop": true,
+ "mpCompetitive": false,
+ "mpSplitScreen": false,
+ "mpLocalWireless": false,
+ "dlc": [
+  {
+   "name": "Exploration Support Package"
+  }
+ ],
+ "completionMain": 67.5,
+ "completionExtras": 108.5,
+ "completionAll": 253.5,
+ "verdictSummary": "A critically well-received, unusually large science-fiction RPG whose strongest qualities are exploration, world scale, customization, and Skell gameplay. Its dense systems and long runtime make it best suited to players who enjoy deep RPG progression.",
+ "reviews": [
+  {
+   "source": "Metacritic",
+   "score": "87/100",
+   "url": "https://www.metacritic.com/game/xenoblade-chronicles-x-definitive-edition/"
+  },
+  {
+   "source": "OpenCritic aggregate",
+   "score": "87/100",
+   "url": "https://www.dekudeals.com/items/xenoblade-chronicles-x-definitive-edition"
+  },
+  {
+   "source": "Metacritic user score",
+   "score": "8.5/10",
+   "url": "https://www.metacritic.com/game/xenoblade-chronicles-x-definitive-edition/"
+  }
+ ],
+ "timeline": [
+  {
+   "date": "2025-03-20",
+   "title": "Nintendo Switch release",
+   "body": "Definitive Edition launched for Nintendo Switch."
+  },
+  {
+   "date": "2026-02-19",
+   "title": "Nintendo Switch 2 Edition digital release",
+   "body": "Native Nintendo Switch 2 Edition launched digitally with enhanced resolution and frame rate."
+  },
+  {
+   "date": "2026-04-16",
+   "title": "Nintendo Switch 2 Edition physical release",
+   "body": "Physical Nintendo Switch 2 Edition became available at select retailers."
+  }
+ ],
+ "seriesName": "Xenoblade Chronicles",
+ "seriesEntries": [
+  "Xenoblade Chronicles: Definitive Edition",
+  "Xenoblade Chronicles 2",
+  "Xenoblade Chronicles 3"
+ ],
+ "studioName": "MONOLITHSOFT",
+ "studioUrl": "https://www.monolithsoft.co.jp/",
+ "studioLocation": "Tokyo, Japan",
+ "studioAbout": "MONOLITHSOFT is a Japanese game development studio known for the Xenoblade Chronicles series and large-scale RPG world design.",
+ "setupNeeds": [
+  "Nintendo Switch or Nintendo Switch 2 system",
+  "Nintendo Account for digital ownership and online services",
+  "Nintendo Switch Online membership required for online squad features",
+  "Internet connection required for online features"
+ ],
+ "sources": [
+  {
+   "name": "Nintendo official — Switch version",
+   "url": "https://www.nintendo.com/us/store/products/xenoblade-chronicles-x-definitive-edition-switch/"
+  },
+  {
+   "name": "Nintendo official — Switch 2 Edition",
+   "url": "https://www.nintendo.com/us/store/products/xenoblade-chronicles-x-definitive-edition-nintendo-switch-2-edition-switch-2/"
+  },
+  {
+   "name": "Deku Deals — metadata / HLTB aggregates",
+   "url": "https://www.dekudeals.com/items/xenoblade-chronicles-x-definitive-edition"
+  }
+ ],
+ "boxContentsList": "[Circular]",
+ "image": "/api/files/products/prd_3f5f6e861ad942ea/cover-75989882187d8c01.avif",
+ "banner": "/api/files/products/prd_3f5f6e861ad942ea/banner-0-1784f63de7cf5cb0.avif",
+ "schemaId": "",
+ "createdAt": "2026-08-26T21:39:16.803Z",
+ "created_at": "2026-08-26T21:39:16.803Z",
+ "updatedAt": "2026-08-28T22:01:16.520Z",
+ "updated_at": "2026-08-28T22:01:16.520Z",
+ "badgeEn": "وفر 40%",
+ "badgeKu": "وفر 40%",
+ "featuresEn": [
+  "Large seamless regions across planet Mira",
+  "Pilot and customize Skell mechs",
+  "Online squads for up to 32 players",
+  "Character and gear customization",
+  "Affinity missions and side content",
+  "Expanded Definitive Edition story"
+ ],
+ "featuresKu": [
+  "Large seamless regions across planet Mira",
+  "Pilot and customize Skell mechs",
+  "Online squads for up to 32 players",
+  "Character and gear customization",
+  "Affinity missions and side content",
+  "Expanded Definitive Edition story"
+ ],
+ "sales": 0,
+ "images": [],
+ "modes": [],
+ "variants": "[Circular]"
+}

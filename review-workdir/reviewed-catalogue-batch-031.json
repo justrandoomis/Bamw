@@ -1,6 +1,6 @@
 {
  "batch": "031",
- "apply": true,
+ "apply": false,
  "games": [
   {
    "id": "prd_3f5f6e861ad942ea",
@@ -119,6 +119,76 @@
     "guaranteeStatus"
    ],
    "notes": "Two dead banners dropped and two unprobed entries excluded — the two verified banners remain. Search-link trailer removed. 2026-02-20, 9.1 GB, Metacritic 82, dynamic 1080p-class record verified; galleries and remaining roles working. Contamination removed."
+  }
+ ],
+ "appliedAt": "2026-09-02T04:38:50.638Z",
+ "results": [
+  {
+   "id": "prd_3f5f6e861ad942ea",
+   "action": "APPLIED",
+   "changed": [
+    "metacriticRating",
+    "metacriticUrl",
+    "coverImage",
+    "image",
+    "bannerImages",
+    "galleryImages"
+   ],
+   "removed": [
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ]
+  },
+  {
+   "id": "prd_704056e8239b4d8c",
+   "action": "APPLIED",
+   "changed": [
+    "coverImage",
+    "image",
+    "bannerImages",
+    "galleryImages"
+   ],
+   "removed": [
+    "cartridgeImage",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ]
+  },
+  {
+   "id": "prd_64ef321029b44fb8",
+   "action": "APPLIED",
+   "changed": [
+    "bannerImages"
+   ],
+   "removed": [
+    "youtubeTrailer",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ]
   }
  ]
 }
