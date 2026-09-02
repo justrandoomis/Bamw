@@ -1,0 +1,368 @@
+{
+ "title": "Stray",
+ "titleEn": "Stray",
+ "titleKu": "",
+ "slug": "stray-switch-2",
+ "description": "Stray on Nintendo Switch 2 is a dedicated native version of BlueTwelve Studio’s cat adventure. Explore neon-lit streets and hidden districts, solve puzzles, evade threats, and work with B-12 to uncover the city’s past. Nintendo lists this version separately from the original Switch release, with an 8 GB estimated file size.",
+ "descriptionEn": "Stray on Nintendo Switch 2 is a dedicated native version of BlueTwelve Studio’s cat adventure. Explore neon-lit streets and hidden districts, solve puzzles, evade threats, and work with B-12 to uncover the city’s past. Nintendo lists this version separately from the original Switch release, with an 8 GB estimated file size.",
+ "descriptionKu": "",
+ "cartridgeImage": "",
+ "nintendoCardImage": "/api/files/products/prd_ff440aba76494705/square-card-f86c07ae0d9d6e09.webp",
+ "coverHiResImage": "",
+ "coverImage": "/api/files/products/prd_ff440aba76494705/cover-6669c170836f33ec.webp",
+ "bannerImages": [
+  ""
+ ],
+ "gallery": [],
+ "youtubeTrailer": "https://www.nintendo.com/us/store/products/stray-switch-2/",
+ "releaseDate": "2026-05-28",
+ "ageRating": "ESRB T / PEGI 12",
+ "metacriticRating": 83,
+ "genres": [
+  "Action",
+  "Adventure",
+  "Platformer",
+  "Puzzle"
+ ],
+ "platform": "switch2",
+ "size": "8.0 GB",
+ "numberOfPlayers": "Single system (1)",
+ "supportedLanguages": "English, Japanese, French, Spanish, German",
+ "hardwareModel": "",
+ "colorEdition": "",
+ "storageCapacity": "",
+ "screenSpecs": "",
+ "batteryLife": "",
+ "boxContents": [],
+ "boxContentsText": "",
+ "warrantyCondition": "",
+ "connectivity": "",
+ "characterName": "Link",
+ "amiiboSeries": "The Legend of Zelda",
+ "figureType": "figure",
+ "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+ "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+ "boxCondition": "mib",
+ "releaseWave": "Wave 2 (Restock)",
+ "rarity": "standard",
+ "accessoryType": "حقيبة حماية وتنقل Carry Case",
+ "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+ "brand": "Nintendo Official",
+ "material": "Hard EVA Shockproof Shell",
+ "availableColors": "Black, Neon Red/Blue, White",
+ "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+ "cardValue": "$20 eShop Balance",
+ "region": "Global",
+ "cardType": "eshop",
+ "deliveryMethod": "instant_code",
+ "redemptionGuide": "",
+ "redemptionSteps": [],
+ "validity": "no_expiry",
+ "usedType": "cartridge",
+ "conditionGrade": "like_new",
+ "packaging": "cib",
+ "guaranteeStatus": "tested_30days",
+ "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+ "accountType": "primary",
+ "badge": "وفر 40%",
+ "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+ "price": 10250,
+ "cost": 3500,
+ "stock": 999999,
+ "isInfiniteStock": true,
+ "isHidden": true,
+ "displayOrder": 0,
+ "category": "nintendo-switch-games",
+ "categoryId": "nintendo-switch-games",
+ "categoryEn": "",
+ "categoryKu": "",
+ "options": [
+  {
+   "id": "offline_account",
+   "name": "مشترك",
+   "description": "مشترك",
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_account",
+   "name": "خاص بك",
+   "description": "خاص بك",
+   "stock": 9999,
+   "isInfiniteStock": true
+  }
+ ],
+ "types": [
+  {
+   "id": "offline_base",
+   "name": "مشترك — اللعبة الأساسية",
+   "optionId": "offline_account",
+   "price": 10250,
+   "cost": 3500,
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_base",
+   "name": "خاص بك — اللعبة الأساسية",
+   "optionId": "online_account",
+   "price": 21000,
+   "cost": 16500,
+   "stock": 9999,
+   "isInfiniteStock": true
+  }
+ ],
+ "editions": [],
+ "dlcs": [],
+ "isActive": true,
+ "status": "Active",
+ "kind": "account",
+ "trade_value_iqd": 11000,
+ "store_offer_bonus_iqd": 3500,
+ "trade_enabled": true,
+ "trade_value_locked": false,
+ "id": "prd_ff440aba76494705",
+ "schema_version": 24,
+ "titleAr": "ستراي",
+ "compatibility": [
+  "Nintendo Switch 2",
+  "Separate Nintendo Switch product may exist"
+ ],
+ "edition": "Standard",
+ "developer": "BlueTwelve Studio",
+ "publisher": "Annapurna Interactive",
+ "seriesName": "Stray",
+ "opencriticRating": 84,
+ "userScore": 8.4,
+ "switch2UpgradePrice": 0,
+ "officialUrl": "https://www.nintendo.com/us/store/products/stray-switch-2/",
+ "eshopUrl": "https://www.nintendo.com/us/store/products/stray-switch-2/",
+ "gameIsOffline": true,
+ "gameIsOnline": false,
+ "gameLanguageLocked": false,
+ "description_short": "The native Nintendo Switch 2 version of Stray, the atmospheric cat adventure set in a decaying cybercity.",
+ "description_ar": "النسخة الأصلية المخصصة لـ Nintendo Switch 2 من Stray، وهي مغامرة قط داخل مدينة سايبربانك مليئة بالألغاز والروبوتات والمخاطر.",
+ "galleryImages": [
+  {
+   "url": "/api/files/products/prd_ff440aba76494705/gallery-1-ce9885574c7b6ad2.webp",
+   "alt": "Stray screenshot 1"
+  },
+  {
+   "url": "/api/files/products/prd_ff440aba76494705/gallery-2-420a4e6a3c216494.webp",
+   "alt": "Stray screenshot 2"
+  },
+  {
+   "url": "/api/files/products/prd_ff440aba76494705/gallery-3-d3bf765b696ccaf5.webp",
+   "alt": "Stray screenshot 3"
+  },
+  {
+   "url": "/api/files/products/prd_ff440aba76494705/gallery-4-14c58708ae22aa1c.webp",
+   "alt": "Stray screenshot 4"
+  },
+  {
+   "url": "/api/files/products/prd_ff440aba76494705/gallery-5-4dda409953b4ec83.webp",
+   "alt": "Stray screenshot 5"
+  },
+  {
+   "url": "/api/files/products/prd_ff440aba76494705/gallery-6-787c6404c31c3f27.webp",
+   "alt": "Stray screenshot 6"
+  }
+ ],
+ "tvMode": true,
+ "tabletopMode": true,
+ "handheldMode": true,
+ "nintendoPlayModes": "TV mode / Tabletop mode / Handheld mode",
+ "nintendoCloudSaves": true,
+ "nintendoGameKeyCard": false,
+ "switch2Enhanced": true,
+ "switch2Exclusive": true,
+ "nintendoNotes": "Platform and package information verified against the official product/source page for Stray.",
+ "tagline": "The cat adventure returns as a dedicated Switch 2 release.",
+ "fitFor": [
+  "Fans of the listed genres",
+  "Players who value the game’s core mechanics",
+  "Players looking for this platform version",
+  "Collectors or storefront users comparing platform editions"
+ ],
+ "notFitFor": [
+  "Players who dislike the listed genre",
+  "Players seeking a different platform entry",
+  "Players who require unsupported multiplayer modes",
+  "Players expecting a different edition package"
+ ],
+ "playTimeMain": 5,
+ "playTimeFull": 10,
+ "gameplayPillars": [
+  {
+   "title": "Native Switch 2 version",
+   "description": "Nintendo sells this as a distinct Switch 2 product."
+  },
+  {
+   "title": "Cat traversal",
+   "description": "Movement and environmental interaction remain central."
+  },
+  {
+   "title": "Cybercity atmosphere",
+   "description": "The dense neon world gives the game a memorable identity."
+  },
+  {
+   "title": "Puzzle and stealth gameplay",
+   "description": "Progress alternates between exploration, puzzles, and danger."
+  },
+  {
+   "title": "B-12 companion",
+   "description": "The drone supports communication and story progression."
+  }
+ ],
+ "worldSummary": "Stray on Nintendo Switch 2 is a dedicated native version of BlueTwelve Studio’s cat adventure. Explore neon-lit streets and hidden districts, solve puzzles, evade threats, and work with B-12 to uncover the city’s past. Nintendo lists this version separately from the original Switch release, with an 8 GB estimated file size.",
+ "storyChapters": [
+  {
+   "title": "Fall into the city",
+   "body": "The cat becomes separated from its family."
+  },
+  {
+   "title": "Meet B-12",
+   "body": "A drone companion opens new ways to understand the world."
+  },
+  {
+   "title": "Explore the cybercity",
+   "body": "Droids and abandoned spaces reveal a lost civilization."
+  },
+  {
+   "title": "Survive hostile zones",
+   "body": "Creatures and hazards force more careful play."
+  },
+  {
+   "title": "Find the route home",
+   "body": "The story pushes toward escaping the city and reaching the outside."
+  }
+ ],
+ "features": [
+  "Dedicated Switch 2 product",
+  "8 GB estimated size",
+  "Single-player adventure",
+  "Cybercity exploration",
+  "Puzzle and stealth elements"
+ ],
+ "perfResolutionHandheld": "1080p",
+ "perfResolutionDocked": "1440p",
+ "perfFps": "60",
+ "perfHdr": false,
+ "perfNotes": "Native Switch 2 performance profile recorded for this separate product.",
+ "devicePerformance": [
+  {
+   "device": "Nintendo Switch 2",
+   "deviceSlug": "nintendo-switch-2",
+   "deviceModel": "Nintendo Switch 2",
+   "hardwareId": "nintendo-switch-2",
+   "informationStatus": "Available",
+   "handheld": {
+    "supported": true,
+    "resolution": "1080p",
+    "resolutionDynamic": false,
+    "renderingResolution": "1080p",
+    "outputResolution": "1080p",
+    "fps": "60",
+    "fpsMin": "60",
+    "fpsMax": "60",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "Handheld",
+    "notes": "Native Switch 2 performance profile recorded for this separate product."
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "1440p",
+    "resolutionDynamic": false,
+    "renderingResolution": "1440p",
+    "outputResolution": "1440p",
+    "fps": "60",
+    "fpsMin": "60",
+    "fpsMax": "60",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "TV / Docked",
+    "notes": "Native Switch 2 performance profile recorded for this separate product."
+   },
+   "modes": [
+    {
+     "name": "Default",
+     "handheldResolution": "1080p",
+     "handheldFps": "60",
+     "tvResolution": "1440p",
+     "tvFps": "60",
+     "hdr": false,
+     "vrr": false,
+     "notes": "Native Switch 2 performance profile recorded for this separate product."
+    }
+   ],
+   "performanceNotes": "Native Switch 2 performance profile recorded for this separate product."
+  },
+  {
+   "device": "Nintendo Switch",
+   "deviceSlug": "nintendo-switch",
+   "deviceModel": "Nintendo Switch",
+   "hardwareId": "nintendo-switch",
+   "informationStatus": "Unavailable for this product entry",
+   "unavailableReason": "This product file belongs to a different Nintendo platform entry.",
+   "handheld": {
+    "supported": false,
+    "resolution": "Not Supported",
+    "fps": "Not Supported"
+   },
+   "tv": {
+    "supported": false,
+    "resolution": "Not Supported",
+    "fps": "Not Supported"
+   },
+   "performanceNotes": "Not supported for this product entry."
+  }
+ ],
+ "faq": [
+  {
+   "q": "When did the Switch 2 version release?",
+   "a": "Nintendo lists May 28, 2026."
+  },
+  {
+   "q": "Is this the same product as the Switch version?",
+   "a": "No. Nintendo lists a separate Switch 2 product."
+  },
+  {
+   "q": "What is the file size?",
+   "a": "Nintendo lists an estimated 8 GB."
+  },
+  {
+   "q": "Is it multiplayer?",
+   "a": "No. It is single-player."
+  },
+  {
+   "q": "Why are the prices different from Switch 1?",
+   "a": "The supplier provided separate platform-specific costs and selling prices."
+  }
+ ],
+ "mpLocalPlayers": false,
+ "mpOnlinePlayers": false,
+ "mpCoop": false,
+ "mpCompetitive": false,
+ "mpLocalWireless": false,
+ "mpSplitScreen": false,
+ "sources": [
+  {
+   "name": "Official product / publisher page",
+   "url": "https://www.nintendo.com/us/store/products/stray-switch-2/"
+  },
+  {
+   "name": "Metacritic",
+   "url": "https://www.metacritic.com/search/stray/"
+  }
+ ],
+ "boxContentsList": [],
+ "image": "",
+ "banner": "",
+ "schemaId": "",
+ "batchImport": true,
+ "createdAt": "2026-08-28T18:50:29.417Z",
+ "updatedAt": "2026-08-28T18:50:29.417Z"
+}

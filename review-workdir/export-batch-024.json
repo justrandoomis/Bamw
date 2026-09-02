@@ -1,0 +1,3555 @@
+{
+ "batch": "024",
+ "generatedAt": "2026-09-02T04:02:11.130Z",
+ "totalGames": 145,
+ "reviewedSoFar": 111,
+ "games": [
+  {
+   "id": "prd_99e5727e6bc7469f",
+   "slug": "super-mario-bros-wonder-switch",
+   "title": "Super Mario Bros. Wonder",
+   "platform": "switch1",
+   "isHidden": false,
+   "hash": "468aedef5a736f201f09efd715b3edf664060bdab80f19768537bc006f450f6c",
+   "images": [
+    {
+     "role": "front-box",
+     "field": "cartridgeImage",
+     "url": "https://banan.to/api/files/products/prd_99e5727e6bc7469f/front-20956222f30ef265.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 17701,
+     "width": 173,
+     "height": 281,
+     "thumb": "review-workdir/thumbs/batch-024/super-mario-bros-wonder-switch__front-box-0.png"
+    },
+    {
+     "role": "front-box",
+     "field": "box_front_url",
+     "url": "https://images.launchbox-app.com//f78a724a-e900-45bc-af80-c42ae5de005a.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 17701,
+     "width": 173,
+     "height": 281,
+     "thumb": "review-workdir/thumbs/batch-024/super-mario-bros-wonder-switch__front-box-1.png"
+    },
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://banan.to/api/files/products/prd_99e5727e6bc7469f/square-6a3e28837cb228fe.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 96024,
+     "width": 554,
+     "height": 554,
+     "thumb": "review-workdir/thumbs/batch-024/super-mario-bros-wonder-switch__square-card-2.png"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://banan.to/api/files/products/prd_99e5727e6bc7469f/cover-d366a61f7bd3500b.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 1070586,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-024/super-mario-bros-wonder-switch__detail-cover-3.png"
+    },
+    {
+     "role": "3d-texture",
+     "field": "coverHiResImage",
+     "url": "https://banan.to/api/files/products/prd_99e5727e6bc7469f/3d-texture-31535f6bb9e4a015.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 8170547,
+     "width": 3776,
+     "height": 4928,
+     "thumb": "review-workdir/thumbs/batch-024/super-mario-bros-wonder-switch__3d-texture-4.png"
+    },
+    {
+     "role": "listing",
+     "field": "image",
+     "url": "https://banan.to/api/files/products/prd_99e5727e6bc7469f/cover-d366a61f7bd3500b.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 1070586,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-024/super-mario-bros-wonder-switch__listing-5.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[0]",
+     "url": "https://banan.to/api/files/products/prd_99e5727e6bc7469f/banner-1-4850c509beea2560.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 23969,
+     "width": 400,
+     "height": 225,
+     "thumb": "review-workdir/thumbs/batch-024/super-mario-bros-wonder-switch__banner-6.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[1]",
+     "url": "https://banan.to/api/files/products/prd_99e5727e6bc7469f/banner-2-818838a2d9794cd4.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 15162,
+     "width": 400,
+     "height": 225,
+     "thumb": "review-workdir/thumbs/batch-024/super-mario-bros-wonder-switch__banner-7.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[2]",
+     "url": "https://banan.to/api/files/products/prd_99e5727e6bc7469f/banner-3-beaa34c2ad711390.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 21976,
+     "width": 400,
+     "height": 225,
+     "thumb": "review-workdir/thumbs/batch-024/super-mario-bros-wonder-switch__banner-8.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[3]",
+     "url": "https://banan.to/api/files/products/prd_99e5727e6bc7469f/banner-4-75cd48b6b2790004.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 14092,
+     "width": 400,
+     "height": 225,
+     "thumb": "review-workdir/thumbs/batch-024/super-mario-bros-wonder-switch__banner-9.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://images.launchbox-app.com//acc8ff81-396a-499f-8e74-826b30525e6f.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 21651,
+     "width": 400,
+     "height": 225,
+     "thumb": "review-workdir/thumbs/batch-024/super-mario-bros-wonder-switch__gallery-10.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[1]",
+     "url": "https://images.launchbox-app.com//414947bf-268f-4dec-921a-c9b4d8c2305d.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 18165,
+     "width": 400,
+     "height": 225,
+     "thumb": "review-workdir/thumbs/batch-024/super-mario-bros-wonder-switch__gallery-11.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[2]",
+     "url": "https://images.launchbox-app.com//fc2d2cdf-1a33-4b22-a7c2-199e7b17d1fb.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 12742,
+     "width": 400,
+     "height": 225,
+     "thumb": "review-workdir/thumbs/batch-024/super-mario-bros-wonder-switch__gallery-12.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[3]",
+     "url": "https://images.launchbox-app.com//112a9edf-a936-42b1-8a02-a3970d87bc27.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 17970,
+     "width": 400,
+     "height": 225,
+     "thumb": "review-workdir/thumbs/batch-024/super-mario-bros-wonder-switch__gallery-13.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[4]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000068688/87e8aa5f1fdc950b88eae7d7c62ed185c8a6373c845090bbdb2e2cf039b38da1",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 236946,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-024/super-mario-bros-wonder-switch__gallery-14.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[5]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000068688/7f1845a5e8d8ec895ad188a6b0f46b59036a363db1b2d9b79d23b913b0b9ab8a",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 111433,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-024/super-mario-bros-wonder-switch__gallery-15.png"
+    }
+   ],
+   "record": {
+    "title": "Super Mario Bros. Wonder",
+    "titleEn": "Super Mario Bros. Wonder",
+    "titleKu": "Super Mario Bros. Wonder",
+    "slug": "super-mario-bros-wonder-switch",
+    "description": "A colorful evolution of 2D Mario set in the Flower Kingdom. Wonder Flowers transform courses in unexpected ways, while badges, Elephant Mario and a large playable cast create new approaches to classic side-scrolling platforming.",
+    "descriptionEn": "A colorful evolution of 2D Mario set in the Flower Kingdom. Wonder Flowers transform courses in unexpected ways, while badges, Elephant Mario and a large playable cast create new approaches to classic side-scrolling platforming.",
+    "descriptionKu": "A colorful evolution of 2D Mario set in the Flower Kingdom. Wonder Flowers transform courses in unexpected ways, while badges, Elephant Mario and a large playable cast create new approaches to classic side-scrolling platforming.",
+    "cartridgeImage": "/api/files/products/prd_99e5727e6bc7469f/front-20956222f30ef265.jpg",
+    "nintendoCardImage": "/api/files/products/prd_99e5727e6bc7469f/square-6a3e28837cb228fe.jpg",
+    "coverHiResImage": "/api/files/products/prd_99e5727e6bc7469f/3d-texture-31535f6bb9e4a015.jpg",
+    "coverImage": "/api/files/products/prd_99e5727e6bc7469f/cover-d366a61f7bd3500b.jpg",
+    "bannerImages": [
+     "/api/files/products/prd_99e5727e6bc7469f/banner-1-4850c509beea2560.jpg",
+     "/api/files/products/prd_99e5727e6bc7469f/banner-2-818838a2d9794cd4.jpg",
+     "/api/files/products/prd_99e5727e6bc7469f/banner-3-beaa34c2ad711390.jpg",
+     "/api/files/products/prd_99e5727e6bc7469f/banner-4-75cd48b6b2790004.jpg",
+     "/api/files/products/prd_99e5727e6bc7469f/banner-5-91f3e558fd34a477.webp",
+     "/api/files/products/prd_99e5727e6bc7469f/banner-5-52c1d00291f39aec.png"
+    ],
+    "gallery": [],
+    "youtubeTrailer": "https://supermariobroswonder.nintendo.com/",
+    "releaseDate": "2023-10-20",
+    "ageRating": "ESRB E / PEGI 3",
+    "metacriticRating": 92,
+    "genres": [
+     "Platformer",
+     "2D Action",
+     "Family"
+    ],
+    "platform": "switch1",
+    "size": 3.7,
+    "numberOfPlayers": "1–4 local; 1–4 online",
+    "supportedLanguages": "Japanese / English; French / German / Italian / Spanish / Portuguese / Dutch / Russian; Korean / Simplified Chinese / Traditional Chinese / Polish / Thai",
+    "hardwareModel": "",
+    "colorEdition": "",
+    "storageCapacity": "",
+    "screenSpecs": "",
+    "batteryLife": "",
+    "boxContents": [],
+    "boxContentsText": "",
+    "warrantyCondition": "",
+    "connectivity": "",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "Global",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "",
+    "redemptionSteps": [],
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 12000,
+    "cost": 2500,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": false,
+    "displayOrder": 0,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "Offline Account",
+      "description": "Offline account access",
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_account",
+      "name": "Online Account",
+      "description": "Online account access",
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "types": [
+     {
+      "id": "standard_offline",
+      "name": "Offline Account",
+      "optionId": "offline_account",
+      "price": "12000",
+      "cost": 2500,
+      "description": "Offline Account; supplier cost 2,500 IQD; configured selling price 15,000 IQD.",
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "standard_online",
+      "name": "Online Account",
+      "optionId": "online_account",
+      "price": "38000",
+      "cost": 25000,
+      "description": "Online Account; supplier cost 25,000 IQD; configured selling price 35,000 IQD.",
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "Active",
+    "kind": "account",
+    "trade_value_iqd": 44000,
+    "store_offer_bonus_iqd": 8000,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "id": "prd_99e5727e6bc7469f",
+    "schema_version": 23,
+    "titleAr": "سوبر ماريو بروس. وندر",
+    "compatibility": [
+     "Nintendo Switch",
+     "Nintendo Switch 2 (backward compatible / separate Switch 2 Edition where applicable)"
+    ],
+    "edition": "Standard",
+    "developer": "Nintendo EPD",
+    "publisher": "Nintendo",
+    "metacriticUrl": "https://www.metacritic.com/game/super-mario-bros-wonder/",
+    "opencriticRating": 92,
+    "userScore": 8.9,
+    "price_usd": 59.99,
+    "officialUrl": "https://supermariobroswonder.nintendo.com/",
+    "eshopUrl": "https://www.nintendo.com/us/store/products/super-mario-bros-wonder-switch/",
+    "gameIsOffline": true,
+    "gameIsOnline": true,
+    "gameLanguageLocked": false,
+    "description_short": "A colorful evolution of 2D Mario set in the Flower Kingdom. Wonder Flowers transform courses in unexpected ways, while badges, Elephant Mario and a large playable cast create new approaches to classic side-scrolling platforming.",
+    "description_ar": "تطور كبير لألعاب Mario ثنائية الأبعاد في مملكة الزهور. تغيّر Wonder Flowers المراحل بطرق مفاجئة، وتضيف Badges وقدرة Elephant Mario وشخصيات عديدة أساليب لعب متنوعة، مع تعاون محلي وأونلاين.",
+    "box_front_url": "https://images.launchbox-app.com//f78a724a-e900-45bc-af80-c42ae5de005a.jpg",
+    "box_back_url": "https://images.launchbox-app.com//7f1c97fe-c67f-4049-92a2-c32855b41514.jpg",
+    "galleryImages": [
+     {
+      "url": "https://images.launchbox-app.com//acc8ff81-396a-499f-8e74-826b30525e6f.jpg",
+      "alt": "Super Mario Bros. Wonder — verified promotional/gameplay image 1"
+     },
+     {
+      "url": "https://images.launchbox-app.com//414947bf-268f-4dec-921a-c9b4d8c2305d.jpg",
+      "alt": "Super Mario Bros. Wonder — verified promotional/gameplay image 2"
+     },
+     {
+      "url": "https://images.launchbox-app.com//fc2d2cdf-1a33-4b22-a7c2-199e7b17d1fb.jpg",
+      "alt": "Super Mario Bros. Wonder — verified promotional/gameplay image 3"
+     },
+     {
+      "url": "https://images.launchbox-app.com//112a9edf-a936-42b1-8a02-a3970d87bc27.jpg",
+      "alt": "Super Mario Bros. Wonder — verified promotional/gameplay image 4"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000068688/87e8aa5f1fdc950b88eae7d7c62ed185c8a6373c845090bbdb2e2cf039b38da1",
+      "alt": "Super Mario Bros. Wonder — verified promotional/gameplay image 5"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000068688/7f1845a5e8d8ec895ad188a6b0f46b59036a363db1b2d9b79d23b913b0b9ab8a",
+      "alt": "Super Mario Bros. Wonder — verified promotional/gameplay image 6"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000068688/e3024df668cdead60e62865924652c811323b0e7c46f51567fe80907f2637cc4",
+      "alt": "Super Mario Bros. Wonder — verified promotional/gameplay image 7"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000068688/e1ee4f690cec788fc2a75e85ddc12f6d7ef69501bbb362ad918e1ffcbc14936f",
+      "alt": "Super Mario Bros. Wonder — verified promotional/gameplay image 8"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000068688/c77b1b26934fa04c01bbadcd5081b7a2cbfe787f4cd7d8a8e59445f67beb73c3",
+      "alt": "Super Mario Bros. Wonder — verified promotional/gameplay image 9"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000068688/9669405e5f3f899993cddbc02bd570d530eb39410ed3b50e6bd102381fbe6916",
+      "alt": "Super Mario Bros. Wonder — verified promotional/gameplay image 10"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000068688/befae68cae3bdd5e0cce98fc224ccdbb4b5885d2df3a642855f2c272fa4e7033",
+      "alt": "Super Mario Bros. Wonder — verified promotional/gameplay image 11"
+     }
+    ],
+    "videos": [
+     {
+      "title": "Official trailer / product overview",
+      "url": "https://supermariobroswonder.nintendo.com/"
+     },
+     {
+      "title": "Nintendo product page and gameplay media",
+      "url": "https://www.nintendo.com/us/store/products/super-mario-bros-wonder-switch/"
+     },
+     {
+      "title": "Technical / review reference",
+      "url": "https://nintendoeverything.com/super-mario-bros-wonder-tech-analysis-frame-rate-resolution/"
+     }
+    ],
+    "nsuid": "See official Nintendo product page for regional NSUID",
+    "title_id": "Regional digital title ID varies by storefront and package",
+    "product_code": "HAC-P-AQMXA",
+    "nintendoEshopUrl": "https://www.nintendo.com/us/store/products/super-mario-bros-wonder-switch/",
+    "nintendoOnlineRequired": true,
+    "nintendoCloudSaves": true,
+    "nintendoGameKeyCard": false,
+    "nintendoPhysicalNeedsDownload": false,
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": true,
+    "nintendoPlayModes": "TV / Tabletop / Handheld",
+    "nintendoNotes": "Current verified Nintendo data for Super Mario Bros. Wonder. Storage, languages, multiplayer and platform-specific features are separated from measured performance values.",
+    "switch2Enhanced": true,
+    "switch2Exclusive": false,
+    "switch2UpgradePrice": 0,
+    "switch2Features": [
+     "Wonder Flowers and highly varied Wonder Effects",
+     "12 playable characters with different accessibility traits",
+     "Local four-player play plus online cooperative features"
+    ],
+    "tagline": "Expect the unexpected in Mario's most inventive modern 2D adventure.",
+    "fitFor": [
+     "Fans of 2D Mario and polished platformers",
+     "Families wanting up to four-player local play",
+     "Players who enjoy creative secrets and collectibles"
+    ],
+    "notFitFor": [
+     "Players who only want difficult precision platforming",
+     "Players looking for a long RPG-style campaign",
+     "Players who dislike shared-screen multiplayer"
+    ],
+    "playTimeMain": 10,
+    "playTimeFull": 20,
+    "editionsList": [
+     {
+      "name": "Standard Edition",
+      "coverUrl": "https://images.launchbox-app.com//f78a724a-e900-45bc-af80-c42ae5de005a.jpg",
+      "contents": [
+       {
+        "label": "Base game"
+       },
+       {
+        "label": "Core modes"
+       },
+       {
+        "label": "Platform features"
+       }
+      ]
+     },
+     {
+      "name": "Digital Edition",
+      "coverUrl": "https://images.launchbox-app.com//4917dc4b-b5ca-4720-ad67-8e082fae556e.jpg",
+      "contents": [
+       {
+        "label": "Digital game license"
+       },
+       {
+        "label": "Same core game content"
+       },
+       {
+        "label": "Nintendo Account delivery"
+       }
+      ]
+     },
+     {
+      "name": "Current Complete Package",
+      "coverUrl": "https://images.launchbox-app.com//116a73ff-e22d-4545-87cb-6272c5cab2bc.jpg",
+      "contents": [
+       {
+        "label": "Latest game build"
+       },
+       {
+        "label": "Nintendo Switch 2 Edition Upgrade Pack"
+       },
+       {
+        "label": "Wonder Flowers and highly varied Wonder Effects"
+       }
+      ]
+     }
+    ],
+    "gameplayPillars": [
+     {
+      "title": "Wonder Effects",
+      "description": "Touch a Wonder Flower and the course can transform dramatically: pipes move, perspectives change, enemies multiply and entirely new rules appear.",
+      "imageUrl": "https://images.launchbox-app.com//116a73ff-e22d-4545-87cb-6272c5cab2bc.jpg"
+     },
+     {
+      "title": "Badges and power-ups",
+      "description": "Equip badges that alter movement or provide assistance, while new power-ups such as Elephant Fruit create new interactions.",
+      "imageUrl": "https://images.launchbox-app.com//2c03c780-5b60-46a5-94ac-014fc5f3504e.jpg"
+     },
+     {
+      "title": "Share the adventure",
+      "description": "Up to four people can play on one system, and online features add live player ghosts, standees and cooperative assistance.",
+      "imageUrl": "https://images.launchbox-app.com//fb96b8f1-f190-4162-b408-76431528f7f3.jpg"
+     }
+    ],
+    "worldSummary": "The adventure takes place in the Flower Kingdom, made up of six main worlds plus the Petal Isles. Bowser uses a Wonder Flower to merge with Prince Florian's castle, while Mario and friends travel across varied regions collecting Wonder Seeds.",
+    "storyChapters": [
+     {
+      "title": "The Flower Kingdom",
+      "body": "Prince Florian welcomes Mario and friends before Bowser transforms the castle into a flying fortress.",
+      "imageUrl": "https://images.launchbox-app.com//de58e88d-f185-4ca6-b950-d2c9dfa61ca1.jpg"
+     },
+     {
+      "title": "Six worlds and Petal Isles",
+      "body": "The heroes cross colorful regions, finding Wonder Seeds and confronting Bowser Jr. in multiple palaces.",
+      "imageUrl": "https://images.launchbox-app.com//0ce8624c-adf6-47fe-ba04-606f5e91d4f9.jpg"
+     },
+     {
+      "title": "Castle Bowser",
+      "body": "The journey culminates in the transformed castle and the final effort to free the Flower Kingdom.",
+      "imageUrl": "https://images.launchbox-app.com//acc8ff81-396a-499f-8e74-826b30525e6f.jpg"
+     }
+    ],
+    "features": [
+     "Wonder Flowers and highly varied Wonder Effects",
+     "12 playable characters with different accessibility traits",
+     "Local four-player play plus online cooperative features"
+    ],
+    "perfResolutionDocked": "1080p native; some map scenes can dynamically reduce to around 864p",
+    "perfResolutionHandheld": "720p native",
+    "perfFps": "60",
+    "perfHdr": false,
+    "perfNotes": "Digital Foundry analysis reports 1080p docked gameplay and 720p handheld at a near-perfect 60 fps, with only selected overworld/map situations dynamically reducing resolution.",
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "hardwareId": "prd_acf4c89908764c62",
+      "informationStatus": "Available / verified",
+      "unavailableReason": "No required native mode is unavailable.",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p native",
+       "resolutionDynamic": false,
+       "renderingResolution": "720p native",
+       "outputResolution": "1280x720",
+       "fps": "60",
+       "fpsMin": "60",
+       "fpsMax": "60",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Handheld",
+       "notes": "Digital Foundry analysis reports 1080p docked gameplay and 720p handheld at a near-perfect 60 fps, with only selected overworld/map situations dynamically reducing resolution."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p native; some map scenes can dynamically reduce to around 864p",
+       "resolutionDynamic": true,
+       "renderingResolution": "1080p native; some map scenes can dynamically reduce to around 864p",
+       "outputResolution": "1920x1080",
+       "fps": "60",
+       "fpsMin": "60",
+       "fpsMax": "60",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "TV / Docked",
+       "notes": "Digital Foundry analysis reports 1080p docked gameplay and 720p handheld at a near-perfect 60 fps, with only selected overworld/map situations dynamically reducing resolution."
+      },
+      "modes": [
+       {
+        "name": "Standard",
+        "handheldResolution": "720p native",
+        "handheldFps": "60",
+        "tvResolution": "1080p native; some map scenes can dynamically reduce to around 864p",
+        "tvFps": "60",
+        "hdr": false,
+        "vrr": false,
+        "notes": "Primary documented performance profile."
+       }
+      ],
+      "upscaling": "Platform-specific scaling/reconstruction where documented",
+      "rayTracing": false,
+      "rayTracingMode": "No ray-tracing mode",
+      "loadingTime": "Scene-dependent; no single universal load time",
+      "loadingNotes": "Loading varies by activity and storage state.",
+      "gameVersion": "Current retail build",
+      "patchVersion": "Current available update",
+      "testedDate": "2026-08-27",
+      "sourceName": "Digital Foundry performance summary",
+      "sourceUrl": "https://nintendoeverything.com/super-mario-bros-wonder-tech-analysis-frame-rate-resolution/",
+      "verifiedAt": "2026-08-27",
+      "verificationStatus": "Verified / sourced",
+      "performanceNotes": "Digital Foundry analysis reports 1080p docked gameplay and 720p handheld at a near-perfect 60 fps, with only selected overworld/map situations dynamically reducing resolution."
+     }
+    ],
+    "downloadSizeGb": 3.7,
+    "requiredSpaceGb": 3.7,
+    "microSdRecommended": false,
+    "storageNotes": "Nintendo lists about 3.7 GB for the original Switch version. A microSD card is optional rather than required.",
+    "languagesAudio": [
+     "English character vocalizations",
+     "Japanese character vocalizations",
+     "Music / sound effects are language-independent"
+    ],
+    "languagesText": [
+     "Japanese / English",
+     "French / German / Italian / Spanish / Portuguese / Dutch / Russian",
+     "Korean / Simplified Chinese / Traditional Chinese / Polish / Thai"
+    ],
+    "arabicSupport": false,
+    "mpLocalPlayers": true,
+    "mpOnlinePlayers": true,
+    "mpCoop": true,
+    "mpCompetitive": false,
+    "mpSplitScreen": false,
+    "mpLocalWireless": false,
+    "dlc": [
+     {
+      "name": "Nintendo Switch 2 Edition Upgrade Pack",
+      "description": "Paid upgrade path for owners of the Switch version; adds Switch 2 enhancements and Meetup in Bellabel Park.",
+      "coverUrl": "https://images.launchbox-app.com//414947bf-268f-4dec-921a-c9b4d8c2305d.jpg"
+     },
+     {
+      "name": "No standalone Switch 1 story DLC",
+      "description": "The original Switch release has no separate paid story expansion of its own.",
+      "coverUrl": "https://images.launchbox-app.com//fc2d2cdf-1a33-4b22-a7c2-199e7b17d1fb.jpg"
+     },
+     {
+      "name": "Online features",
+      "description": "Online player shadows and standees are part of the base software and require Nintendo Switch Online.",
+      "coverUrl": "https://images.launchbox-app.com//112a9edf-a936-42b1-8a02-a3970d87bc27.jpg"
+     }
+    ],
+    "guides": [
+     {
+      "title": "Official Nintendo page",
+      "summary": "Release, platform, storage, languages and feature information.",
+      "url": "https://www.nintendo.com/us/store/products/super-mario-bros-wonder-switch/"
+     },
+     {
+      "title": "Gameplay / technical reference",
+      "summary": "Performance and gameplay behavior reference.",
+      "url": "https://nintendoeverything.com/super-mario-bros-wonder-tech-analysis-frame-rate-resolution/"
+     },
+     {
+      "title": "Database / review reference",
+      "summary": "Media, reviews and completion context.",
+      "url": "https://gamesdb.launchbox-app.com/games/details/371985-super-mario-bros-wonder"
+     }
+    ],
+    "completionMain": 10,
+    "completionExtras": 14,
+    "completionAll": 20,
+    "faq": [
+     {
+      "q": "Does the original Switch version support four players?",
+      "a": "Yes. Up to four players can play locally on one Nintendo Switch system."
+     },
+     {
+      "q": "What resolution and frame rate does it use?",
+      "a": "The original Switch version targets 60 fps, with 1080p docked and 720p handheld gameplay."
+     },
+     {
+      "q": "Can this version be upgraded on Switch 2?",
+      "a": "Yes. Nintendo sells a Switch 2 Edition upgrade pack that adds enhanced graphics and Bellabel Park content."
+     }
+    ],
+    "verdictScore": 9.2,
+    "verdictSummary": "A benchmark modern 2D platformer: inventive without abandoning Mario's immediate controls, full of surprises, and technically excellent on the original Switch.",
+    "verdictPros": [
+     "Constantly inventive Wonder Effects",
+     "Near-perfect 60 fps performance",
+     "Excellent local/online accessibility"
+    ],
+    "verdictCons": [
+     "Main story is relatively short",
+     "Online interaction is cooperative rather than traditional matchmaking",
+     "Some characters intentionally remove damage challenge"
+    ],
+    "reviews": [
+     {
+      "source": "Metacritic",
+      "score": "92/100",
+      "quote": "Universal acclaim from critics.",
+      "url": "https://www.metacritic.com/game/super-mario-bros-wonder/"
+     },
+     {
+      "source": "OpenCritic",
+      "score": "92/100",
+      "quote": "Top-tier aggregate reception.",
+      "url": "https://opencritic.com/game/15196/super-mario-bros-wonder"
+     },
+     {
+      "source": "Metacritic users",
+      "score": "8.9/10",
+      "quote": "Generally favorable user reception.",
+      "url": "https://www.metacritic.com/game/super-mario-bros-wonder/user-reviews/"
+     }
+    ],
+    "timeline": [
+     {
+      "date": "2023-06-21",
+      "title": "Revealed",
+      "body": "Nintendo announced a new 2D Mario adventure during a Nintendo Direct."
+     },
+     {
+      "date": "2023-10-20",
+      "title": "Nintendo Switch release",
+      "body": "Super Mario Bros. Wonder launched worldwide."
+     },
+     {
+      "date": "2026-03-26",
+      "title": "Switch 2 Edition released",
+      "body": "An enhanced Switch 2 Edition with Meetup in Bellabel Park launched."
+     }
+    ],
+    "patchNotes": [
+     {
+      "version": "Version 1.0.1",
+      "date": "2023-10-20",
+      "body": "Launch-period stability and online adjustments."
+     },
+     {
+      "version": "Switch 2 compatibility era",
+      "date": "2025-06-05",
+      "body": "Original Switch software became playable on Nintendo Switch 2 via backward compatibility."
+     },
+     {
+      "version": "Switch 2 Edition Upgrade Pack",
+      "date": "2026-03-26",
+      "body": "Optional upgrade added Bellabel Park, enhanced resolution and additional multiplayer features."
+     }
+    ],
+    "soundtrack": [
+     {
+      "title": "Title Theme",
+      "url": "https://supermariobroswonder.nintendo.com/"
+     },
+     {
+      "title": "Flower Kingdom course themes",
+      "url": "https://supermariobroswonder.nintendo.com/"
+     },
+     {
+      "title": "Bowser / Wonder battle themes",
+      "url": "https://supermariobroswonder.nintendo.com/"
+     }
+    ],
+    "seriesName": "Super Mario",
+    "seriesEntries": [
+     "Super Mario Bros. Wonder",
+     "Super Mario Odyssey",
+     "Super Mario 3D World + Bowser's Fury"
+    ],
+    "studioName": "Nintendo EPD",
+    "studioUrl": "https://www.nintendo.co.jp/",
+    "studioLocation": "Kyoto, Japan",
+    "studioAbout": "Nintendo's internal development division responsible for many flagship Super Mario titles.",
+    "setupNeeds": [
+     "Nintendo Switch",
+     "Approximately 3.7 GB free storage for the digital version",
+     "Nintendo Switch Online membership for online play"
+    ],
+    "sources": [
+     {
+      "name": "Nintendo official product page",
+      "url": "https://www.nintendo.com/us/store/products/super-mario-bros-wonder-switch/"
+     },
+     {
+      "name": "Digital Foundry performance summary",
+      "url": "https://nintendoeverything.com/super-mario-bros-wonder-tech-analysis-frame-rate-resolution/"
+     },
+     {
+      "name": "LaunchBox Games Database",
+      "url": "https://gamesdb.launchbox-app.com/games/details/371985-super-mario-bros-wonder"
+     }
+    ],
+    "boxContentsList": "[Circular]",
+    "image": "/api/files/products/prd_99e5727e6bc7469f/cover-d366a61f7bd3500b.jpg",
+    "banner": "/api/files/products/prd_99e5727e6bc7469f/banner-1-4850c509beea2560.jpg",
+    "schemaId": "",
+    "createdAt": "2026-08-27T01:03:18.505Z",
+    "created_at": "2026-08-27T01:03:18.505Z",
+    "updatedAt": "2026-08-27T01:03:18.505Z",
+    "updated_at": "2026-08-27T01:03:18.505Z",
+    "badgeEn": "وفر 40%",
+    "badgeKu": "وفر 40%",
+    "featuresEn": [
+     "Wonder Flowers and highly varied Wonder Effects",
+     "12 playable characters with different accessibility traits",
+     "Local four-player play plus online cooperative features"
+    ],
+    "featuresKu": [
+     "Wonder Flowers and highly varied Wonder Effects",
+     "12 playable characters with different accessibility traits",
+     "Local four-player play plus online cooperative features"
+    ],
+    "boxFrontUrl": "https://images.launchbox-app.com//f78a724a-e900-45bc-af80-c42ae5de005a.jpg",
+    "sales": 0,
+    "images": [],
+    "modes": [],
+    "game_id": "gme_0967374339004425"
+   }
+  },
+  {
+   "id": "prd_d74598d589434852",
+   "slug": "super-mario-galaxy-plus-super-mario-galaxy-2-switch",
+   "title": "Super Mario Galaxy + Super Mario Galaxy 2",
+   "platform": "switch1",
+   "isHidden": false,
+   "hash": "43e71a4dca43f697ee82fb35fffaf481dbdbf73e902d6c21034758be50c72bf6",
+   "images": [
+    {
+     "role": "front-box",
+     "field": "cartridgeImage",
+     "url": "https://banan.to/api/files/products/prd_d74598d589434852/front-aa68ee4b70238322.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 105601,
+     "width": 494,
+     "height": 800,
+     "thumb": "review-workdir/thumbs/batch-024/super-mario-galaxy-plus-super-mario-galaxy-2-switch__front-box-0.png"
+    },
+    {
+     "role": "front-box",
+     "field": "box_front_url",
+     "url": "https://cdn.mobygames.com/covers/21870288-super-mario-galaxy-super-mario-galaxy-2-nintendo-switch-front-co.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 105601,
+     "width": 494,
+     "height": 800,
+     "thumb": "review-workdir/thumbs/batch-024/super-mario-galaxy-plus-super-mario-galaxy-2-switch__front-box-1.png"
+    },
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://banan.to/api/files/products/prd_d74598d589434852/square-8c579eef9070b890.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 334841,
+     "width": 992,
+     "height": 992,
+     "thumb": "review-workdir/thumbs/batch-024/super-mario-galaxy-plus-super-mario-galaxy-2-switch__square-card-2.png"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://banan.to/api/files/products/prd_d74598d589434852/cover-2e466cee872b01ec.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 88041,
+     "width": 500,
+     "height": 281,
+     "thumb": "review-workdir/thumbs/batch-024/super-mario-galaxy-plus-super-mario-galaxy-2-switch__detail-cover-3.png"
+    },
+    {
+     "role": "3d-texture",
+     "field": "coverHiResImage",
+     "url": "https://banan.to/api/files/products/prd_d74598d589434852/3d-texture-b6ecbc7df6874061.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 3851387,
+     "width": 2495,
+     "height": 1910,
+     "thumb": "review-workdir/thumbs/batch-024/super-mario-galaxy-plus-super-mario-galaxy-2-switch__3d-texture-4.png"
+    },
+    {
+     "role": "listing",
+     "field": "image",
+     "url": "https://banan.to/api/files/products/prd_d74598d589434852/cover-2e466cee872b01ec.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 88041,
+     "width": 500,
+     "height": 281,
+     "thumb": "review-workdir/thumbs/batch-024/super-mario-galaxy-plus-super-mario-galaxy-2-switch__listing-5.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[0]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000030770/2eafc395d5c6fbbcbccc7e151a2552f15d83d5d881bb074d3bc881a38191e440",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 84213,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-024/super-mario-galaxy-plus-super-mario-galaxy-2-switch__banner-6.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[1]",
+     "url": "https://banan.to/api/files/products/prd_d74598d589434852/banner-1-c9d0d4473b2f7fcb.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[2]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000030770/f33b4687628c37c083e6c34f077f5432696ea413048751e8da684ea3b4f1481b",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 93252,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-024/super-mario-galaxy-plus-super-mario-galaxy-2-switch__banner-8.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[3]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000030770/92e54844116c79ebb07e3b4f56c454238d2e777fa61ed84c88b2f79909c51ab7",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 76085,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-024/super-mario-galaxy-plus-super-mario-galaxy-2-switch__banner-9.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing/7k9mX2qR8vN4pL6sY1uE3wA5zT0hB9jC/marquee-smg12/marquee-smg1-1-2x",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 169081,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-024/super-mario-galaxy-plus-super-mario-galaxy-2-switch__gallery-10.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[1]",
+     "url": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing/7k9mX2qR8vN4pL6sY1uE3wA5zT0hB9jC/marquee-smg12/marquee-smg2-1-2x",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 309032,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-024/super-mario-galaxy-plus-super-mario-galaxy-2-switch__gallery-11.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[2]",
+     "url": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing/7k9mX2qR8vN4pL6sY1uE3wA5zT0hB9jC/marquee-smg12/marquee-smg1-2-2x",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 210569,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-024/super-mario-galaxy-plus-super-mario-galaxy-2-switch__gallery-12.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[3]",
+     "url": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing/7k9mX2qR8vN4pL6sY1uE3wA5zT0hB9jC/marquee-smg12/marquee-smg2-2-2x",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 194089,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-024/super-mario-galaxy-plus-super-mario-galaxy-2-switch__gallery-13.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[4]",
+     "url": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing/7k9mX2qR8vN4pL6sY1uE3wA5zT0hB9jC/marquee-smg12/marquee-smg1-5-2x",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 142198,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-024/super-mario-galaxy-plus-super-mario-galaxy-2-switch__gallery-14.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[5]",
+     "url": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing/7k9mX2qR8vN4pL6sY1uE3wA5zT0hB9jC/marquee-smg12/marquee-smg2-6-2x",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 226663,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-024/super-mario-galaxy-plus-super-mario-galaxy-2-switch__gallery-15.png"
+    }
+   ],
+   "record": {
+    "title": "Super Mario Galaxy + Super Mario Galaxy 2",
+    "titleEn": "Super Mario Galaxy + Super Mario Galaxy 2",
+    "titleKu": "Super Mario Galaxy + Super Mario Galaxy 2",
+    "slug": "super-mario-galaxy-plus-super-mario-galaxy-2-switch",
+    "description": "A two-game Nintendo Switch collection of enhanced Super Mario Galaxy and Super Mario Galaxy 2, featuring 1080p Switch presentation, improved UI, Assist Mode, new Storybook chapters, Soundtrack Mode and amiibo support. A free Switch 2 update enables 4K TV output and 1080p handheld visuals.",
+    "descriptionEn": "A two-game Nintendo Switch collection of enhanced Super Mario Galaxy and Super Mario Galaxy 2, featuring 1080p Switch presentation, improved UI, Assist Mode, new Storybook chapters, Soundtrack Mode and amiibo support. A free Switch 2 update enables 4K TV output and 1080p handheld visuals.",
+    "descriptionKu": "A two-game Nintendo Switch collection of enhanced Super Mario Galaxy and Super Mario Galaxy 2, featuring 1080p Switch presentation, improved UI, Assist Mode, new Storybook chapters, Soundtrack Mode and amiibo support. A free Switch 2 update enables 4K TV output and 1080p handheld visuals.",
+    "cartridgeImage": "/api/files/products/prd_d74598d589434852/front-aa68ee4b70238322.jpg",
+    "nintendoCardImage": "/api/files/products/prd_d74598d589434852/square-8c579eef9070b890.jpg",
+    "coverHiResImage": "/api/files/products/prd_d74598d589434852/3d-texture-b6ecbc7df6874061.jpg",
+    "coverImage": "/api/files/products/prd_d74598d589434852/cover-2e466cee872b01ec.jpg",
+    "bannerImages": [
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000030770/2eafc395d5c6fbbcbccc7e151a2552f15d83d5d881bb074d3bc881a38191e440",
+     "/api/files/products/prd_d74598d589434852/banner-1-c9d0d4473b2f7fcb.avif",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000030770/f33b4687628c37c083e6c34f077f5432696ea413048751e8da684ea3b4f1481b",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000030770/92e54844116c79ebb07e3b4f56c454238d2e777fa61ed84c88b2f79909c51ab7",
+     "/api/files/products/prd_d74598d589434852/banner-4-8cdc3a9e72faaadb.avif"
+    ],
+    "gallery": [],
+    "youtubeTrailer": "https://www.nintendo.com/us/store/products/super-mario-galaxy-plus-super-mario-galaxy-2-switch/",
+    "releaseDate": "2025-10-02",
+    "ageRating": "ESRB Mild Fantasy Violence",
+    "metacriticRating": 87,
+    "genres": [
+     "3D Platformer",
+     "Action Adventure",
+     "Compilation"
+    ],
+    "platform": "switch1",
+    "size": 6.5,
+    "numberOfPlayers": "1–2",
+    "supportedLanguages": "Japanese / English; French / German / Italian / Spanish / Dutch / Portuguese; Korean / Simplified Chinese / Traditional Chinese",
+    "hardwareModel": "",
+    "colorEdition": "",
+    "storageCapacity": "",
+    "screenSpecs": "",
+    "batteryLife": "",
+    "boxContents": [],
+    "boxContentsText": "",
+    "warrantyCondition": "",
+    "connectivity": "",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "Global",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "",
+    "redemptionSteps": [],
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 14000,
+    "cost": 2750,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": false,
+    "displayOrder": 0,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "حساب أوفلاين",
+      "description": "حساب مخصص للعب دون اتصال بعد إكمال خطوات التفعيل.",
+      "stock": 9999,
+      "isInfiniteStock": true,
+      "customerDescription": "حساب مشترك"
+     },
+     {
+      "id": "online_account",
+      "name": "حساب أونلاين",
+      "description": "حساب يدعم تشغيل اللعبة مع الاتصال والميزات المتاحة أونلاين.",
+      "stock": 9999,
+      "isInfiniteStock": true,
+      "customerDescription": "حساب خاص بك"
+     }
+    ],
+    "types": [
+     {
+      "id": "standard_offline",
+      "name": "حساب أوفلاين — عادي",
+      "optionId": "offline_account",
+      "price": 15000,
+      "cost": 2750,
+      "description": "تشمل الإصدار العادي من اللعبة.",
+      "stock": 9999,
+      "isInfiniteStock": true,
+      "internalNote": "Offline Account: supplier cost 2,750 IQD; selling price 15,000 IQD."
+     },
+     {
+      "id": "standard_online",
+      "name": "حساب أونلاين — عادي",
+      "optionId": "online_account",
+      "price": "65000",
+      "cost": 40250,
+      "description": "تشمل الإصدار العادي من اللعبة.",
+      "stock": 9999,
+      "isInfiniteStock": true,
+      "internalNote": "Online Account: supplier cost 40,250 IQD; selling price 50,250 IQD."
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "Active",
+    "kind": "account",
+    "trade_value_iqd": 49000,
+    "store_offer_bonus_iqd": 10000,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "id": "prd_d74598d589434852",
+    "schema_version": 23,
+    "titleAr": "سوبر ماريو غالاكسي + سوبر ماريو غالاكسي 2",
+    "compatibility": [
+     "Nintendo Switch"
+    ],
+    "edition": "Standard / available account variants",
+    "developer": "Nintendo",
+    "publisher": "Nintendo",
+    "metacriticUrl": "https://www.metacritic.com/game/super-mario-galaxy-plus-super-mario-galaxy-2/",
+    "opencriticRating": 87,
+    "userScore": 7.6,
+    "price_usd": 69.99,
+    "officialUrl": "https://www.nintendo.com/us/store/products/super-mario-galaxy-plus-super-mario-galaxy-2-switch/",
+    "eshopUrl": "https://www.nintendo.com/us/store/products/super-mario-galaxy-plus-super-mario-galaxy-2-switch/",
+    "gameIsOffline": true,
+    "gameIsOnline": false,
+    "gameLanguageLocked": false,
+    "description_short": "A two-game Nintendo Switch collection of enhanced Super Mario Galaxy and Super Mario Galaxy 2, featuring 1080p Switch presentation, improved UI, Assist Mode, new Storybook chapters, Soundtrack Mode and amiibo support. A free Switch 2 update enables 4K TV output and 1080p handheld visuals.",
+    "description_ar": "حزمة تضم نسخًا محسنة من Super Mario Galaxy وSuper Mario Galaxy 2 على Nintendo Switch. تتضمن دقة محسنة وواجهة مطورة وAssist Mode وفصول Storybook إضافية وSoundtrack Mode ودعم amiibo، مع تحديث مجاني لـSwitch 2 يرفع العرض إلى 4K على التلفاز و1080p في المحمول.",
+    "box_front_url": "https://cdn.mobygames.com/covers/21870288-super-mario-galaxy-super-mario-galaxy-2-nintendo-switch-front-co.jpg",
+    "box_back_url": "https://i.ebayimg.com/images/g/PWYAAeSwdXFo3s-R/s-l1200.png",
+    "galleryImages": [
+     {
+      "url": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing/7k9mX2qR8vN4pL6sY1uE3wA5zT0hB9jC/marquee-smg12/marquee-smg1-1-2x",
+      "alt": "Distinct verified game media image 1"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing/7k9mX2qR8vN4pL6sY1uE3wA5zT0hB9jC/marquee-smg12/marquee-smg2-1-2x",
+      "alt": "Distinct verified game media image 2"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing/7k9mX2qR8vN4pL6sY1uE3wA5zT0hB9jC/marquee-smg12/marquee-smg1-2-2x",
+      "alt": "Distinct verified game media image 3"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing/7k9mX2qR8vN4pL6sY1uE3wA5zT0hB9jC/marquee-smg12/marquee-smg2-2-2x",
+      "alt": "Distinct verified game media image 4"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing/7k9mX2qR8vN4pL6sY1uE3wA5zT0hB9jC/marquee-smg12/marquee-smg1-5-2x",
+      "alt": "Distinct verified game media image 5"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing/7k9mX2qR8vN4pL6sY1uE3wA5zT0hB9jC/marquee-smg12/marquee-smg2-6-2x",
+      "alt": "Distinct verified game media image 6"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing/7k9mX2qR8vN4pL6sY1uE3wA5zT0hB9jC/marquee-smg12/marquee-smg1-6-2x",
+      "alt": "Distinct verified game media image 7"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing/7k9mX2qR8vN4pL6sY1uE3wA5zT0hB9jC/marquee-smg12/marquee-smg2-11-2x",
+      "alt": "Distinct verified game media image 8"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing/7k9mX2qR8vN4pL6sY1uE3wA5zT0hB9jC/marquee-smg12/marquee-smg1-7-2x",
+      "alt": "Distinct verified game media image 9"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing/7k9mX2qR8vN4pL6sY1uE3wA5zT0hB9jC/marquee-smg12/marquee-smg2-8-2x",
+      "alt": "Distinct verified game media image 10"
+     }
+    ],
+    "videos": [
+     {
+      "title": "Official trailer",
+      "url": "https://www.nintendo.com/us/store/products/super-mario-galaxy-plus-super-mario-galaxy-2-switch/"
+     },
+     {
+      "title": "Nintendo / publisher overview",
+      "url": "https://www.nintendo.com/us/store/products/super-mario-galaxy-plus-super-mario-galaxy-2-switch/"
+     },
+     {
+      "title": "Gameplay and feature media",
+      "url": "https://www.nintendo.com/us/store/products/super-mario-galaxy-plus-super-mario-galaxy-2-switch/"
+     }
+    ],
+    "nsuid": "See official Nintendo product page",
+    "title_id": "Nintendo internal title ID not exposed as a user-facing retail identifier",
+    "product_code": "Platform retail/digital product code varies by region",
+    "nintendoEshopUrl": "https://www.nintendo.com/us/store/products/super-mario-galaxy-plus-super-mario-galaxy-2-switch/",
+    "nintendoOnlineRequired": false,
+    "nintendoCloudSaves": true,
+    "nintendoGameKeyCard": false,
+    "nintendoPhysicalNeedsDownload": false,
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": true,
+    "nintendoPlayModes": "TV / Tabletop / Handheld",
+    "nintendoNotes": "Verified platform/store information for Super Mario Galaxy + Super Mario Galaxy 2. Online features require Nintendo Switch Online where applicable. Storage and supported-language values are taken from current Nintendo/publisher listings.",
+    "switch2Enhanced": true,
+    "switch2Exclusive": false,
+    "switch2UpgradePrice": 0,
+    "switch2Features": [
+     "Two complete Galaxy games in one collection",
+     "1080p Switch visuals and free 4K Switch 2 update",
+     "Assist Mode, Storybook additions, Soundtrack Mode and amiibo support"
+    ],
+    "tagline": "Two gravity-defying Mario classics, enhanced for modern Nintendo hardware.",
+    "fitFor": [
+     "Players who want two landmark 3D Mario adventures",
+     "Families and platforming fans",
+     "Switch 2 owners who want the free 4K enhancement"
+    ],
+    "notFitFor": [
+     "Players who dislike pointer/motion-derived mechanics",
+     "Players looking for a completely new Mario campaign",
+     "Players who already own both games and do not value the enhancements"
+    ],
+    "playTimeMain": 32,
+    "playTimeFull": 70,
+    "editionsList": [
+     {
+      "name": "Standard Edition",
+      "coverUrl": "https://cdn.mobygames.com/covers/21870288-super-mario-galaxy-super-mario-galaxy-2-nintendo-switch-front-co.jpg",
+      "contents": [
+       {
+        "label": "Base game"
+       },
+       {
+        "label": "Standard content"
+       },
+       {
+        "label": "Platform features"
+       }
+      ]
+     },
+     {
+      "name": "Digital Edition",
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_1%3A1%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000030770/0acaf709e29c57e125e90032853562562843757d238fec2815a52ec0409c6fd1",
+      "contents": [
+       {
+        "label": "Digital game access"
+       },
+       {
+        "label": "Same core game content"
+       },
+       {
+        "label": "Nintendo Account delivery"
+       }
+      ]
+     },
+     {
+      "name": "Two-Game Bundle",
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000030770/dd17fbca346376ffe7db5e53b5500dd475f50c610098099fe03e18bff3731d26",
+      "contents": [
+       {
+        "label": "Super Mario Galaxy"
+       },
+       {
+        "label": "Super Mario Galaxy 2"
+       },
+       {
+        "label": "Free Switch 2 enhancement"
+       }
+      ]
+     }
+    ],
+    "gameplayPillars": [
+     {
+      "title": "Gravity platforming",
+      "description": "Run around spherical worlds, launch between planets and use shifting gravity as part of the level design.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000030770/0acaf709e29c57e125e90032853562562843757d238fec2815a52ec0409c6fd1"
+     },
+     {
+      "title": "Two full adventures",
+      "description": "Play the complete enhanced Super Mario Galaxy and Super Mario Galaxy 2 campaigns.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000030770/dd17fbca346376ffe7db5e53b5500dd475f50c610098099fe03e18bff3731d26"
+     },
+     {
+      "title": "Modern quality-of-life features",
+      "description": "Improved UI, Assist Mode, new Storybook chapters, Soundtrack Mode, amiibo support and Switch 2 enhancements.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000030770/2eafc395d5c6fbbcbccc7e151a2552f15d83d5d881bb074d3bc881a38191e440"
+     }
+    ],
+    "worldSummary": "Both adventures turn outer space into a playground of small planets, gravity fields, observatories, starships and themed galaxies. Super Mario Galaxy centers on Rosalina's Comet Observatory, while Galaxy 2 uses Starship Mario as its hub and expands the formula with Yoshi.",
+    "storyChapters": [
+     {
+      "title": "Super Mario Galaxy",
+      "body": "Mario meets Rosalina and the Lumas while recovering Power Stars and rescuing Peach from Bowser.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000030770/3504cc11a769b7e29a25148fe5d92a7c0cc308d7889723b11e2c56b02d73400f"
+     },
+     {
+      "title": "Super Mario Galaxy 2",
+      "body": "Mario travels aboard Starship Mario, teams with Yoshi and explores another huge set of galaxies.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000030770/f33b4687628c37c083e6c34f077f5432696ea413048751e8da684ea3b4f1481b"
+     },
+     {
+      "title": "Enhanced collection",
+      "body": "The 2025 Switch release adds modern presentation and accessibility features while preserving the original level design.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000030770/92e54844116c79ebb07e3b4f56c454238d2e777fa61ed84c88b2f79909c51ab7"
+     }
+    ],
+    "features": [
+     "Two complete Galaxy games in one collection",
+     "1080p Switch visuals and free 4K Switch 2 update",
+     "Assist Mode, Storybook additions, Soundtrack Mode and amiibo support"
+    ],
+    "perfResolutionDocked": "1080p docked on Switch 1 / 4K with free Switch 2 update",
+    "perfResolutionHandheld": "720p-class handheld on Switch 1 / 1080p on Switch 2",
+    "perfFps": "60",
+    "perfHdr": false,
+    "perfNotes": "Nintendo officially states 1080p on Nintendo Switch and 4K on Switch 2 with the free update. Switch 2 handheld output is 1080p. Both games target 60 fps.",
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "hardwareId": "prd_acf4c89908764c62",
+      "informationStatus": "Available / verified",
+      "unavailableReason": "No required native mode is unavailable.",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p-class handheld on Switch 1 / 1080p on Switch 2",
+       "resolutionDynamic": false,
+       "renderingResolution": "720p-class handheld on Switch 1 / 1080p on Switch 2",
+       "outputResolution": "1280x720",
+       "fps": "60",
+       "fpsMin": "60",
+       "fpsMax": "60",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Handheld",
+       "notes": "Nintendo officially states 1080p on Nintendo Switch and 4K on Switch 2 with the free update. Switch 2 handheld output is 1080p. Both games target 60 fps."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p docked on Switch 1 / 4K with free Switch 2 update",
+       "resolutionDynamic": false,
+       "renderingResolution": "1080p docked on Switch 1 / 4K with free Switch 2 update",
+       "outputResolution": "1920x1080",
+       "fps": "60",
+       "fpsMin": "60",
+       "fpsMax": "60",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "TV / Docked",
+       "notes": "Nintendo officially states 1080p on Nintendo Switch and 4K on Switch 2 with the free update. Switch 2 handheld output is 1080p. Both games target 60 fps."
+      },
+      "modes": [
+       {
+        "name": "Standard",
+        "handheldResolution": "720p-class handheld on Switch 1 / 1080p on Switch 2",
+        "handheldFps": "60",
+        "tvResolution": "1080p docked on Switch 1 / 4K with free Switch 2 update",
+        "tvFps": "60",
+        "hdr": false,
+        "vrr": false,
+        "notes": "Primary documented performance mode."
+       }
+      ],
+      "upscaling": "Platform-specific reconstruction / scaling where used",
+      "rayTracing": false,
+      "rayTracingMode": "No verified ray-tracing mode",
+      "loadingTime": "Fast SSD-based loading; exact scene-dependent time varies",
+      "loadingNotes": "Loading varies by scene and save location; no single universal loading time is published.",
+      "gameVersion": "Current retail build",
+      "patchVersion": "Current available update",
+      "testedDate": "2026-08-27",
+      "sourceName": "Nintendo Store",
+      "sourceUrl": "https://www.nintendo.com/us/store/products/super-mario-galaxy-plus-super-mario-galaxy-2-switch/",
+      "verifiedAt": "2026-08-27",
+      "verificationStatus": "Verified / sourced",
+      "performanceNotes": "Nintendo officially states 1080p on Nintendo Switch and 4K on Switch 2 with the free update. Switch 2 handheld output is 1080p. Both games target 60 fps."
+     }
+    ],
+    "downloadSizeGb": 6.5,
+    "requiredSpaceGb": 6.5,
+    "microSdRecommended": false,
+    "storageNotes": "Nintendo/Deku Deals list the combined collection at about 6.5 GB. A microSD card is optional. Switch 2 can apply the free enhancement update.",
+    "languagesAudio": [
+     "Character vocalizations",
+     "Orchestral soundtrack",
+     "Language-independent gameplay voices"
+    ],
+    "languagesText": [
+     "Japanese / English",
+     "French / German / Italian / Spanish / Dutch / Portuguese",
+     "Korean / Simplified Chinese / Traditional Chinese"
+    ],
+    "arabicSupport": false,
+    "mpLocalPlayers": true,
+    "mpOnlinePlayers": false,
+    "mpCoop": true,
+    "mpCompetitive": false,
+    "mpSplitScreen": false,
+    "mpLocalWireless": false,
+    "dlc": [
+     {
+      "name": "Free Nintendo Switch 2 update",
+      "description": "Free enhancement enables 4K TV visuals, 1080p handheld visuals and additional Switch 2 control features.",
+      "coverUrl": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing/7k9mX2qR8vN4pL6sY1uE3wA5zT0hB9jC/marquee-smg12/marquee-smg1-2-2x"
+     },
+     {
+      "name": "No paid story DLC",
+      "description": "No standalone paid story expansion has been announced for the collection.",
+      "coverUrl": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing/7k9mX2qR8vN4pL6sY1uE3wA5zT0hB9jC/marquee-smg12/marquee-smg2-2-2x"
+     },
+     {
+      "name": "amiibo features",
+      "description": "Compatible amiibo provide helpful in-game items; this is built into the game rather than sold as DLC.",
+      "coverUrl": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing/7k9mX2qR8vN4pL6sY1uE3wA5zT0hB9jC/marquee-smg12/marquee-smg1-5-2x"
+     }
+    ],
+    "guides": [
+     {
+      "title": "Official product information",
+      "summary": "Platform, release, storage, language and feature information for Super Mario Galaxy + Super Mario Galaxy 2.",
+      "url": "https://www.nintendo.com/us/store/products/super-mario-galaxy-plus-super-mario-galaxy-2-switch/"
+     },
+     {
+      "title": "Official game overview",
+      "summary": "Publisher/developer overview of story, gameplay and features.",
+      "url": "https://www.nintendo.com/us/store/products/super-mario-galaxy-plus-super-mario-galaxy-2-switch/"
+     },
+     {
+      "title": "Reviews and playtime reference",
+      "summary": "Critic/user scores and completion-time context.",
+      "url": "https://www.dekudeals.com/items/super-mario-galaxy-and-super-mario-galaxy-2"
+     }
+    ],
+    "completionMain": 32,
+    "completionExtras": 45,
+    "completionAll": 70,
+    "faq": [
+     {
+      "q": "Are both Galaxy games included?",
+      "a": "Yes. The package includes enhanced versions of Super Mario Galaxy and Super Mario Galaxy 2."
+     },
+     {
+      "q": "What changes on Nintendo Switch 2?",
+      "a": "A free update enables 4K TV output and 1080p handheld visuals, plus Switch 2-specific control enhancements."
+     },
+     {
+      "q": "Does the collection support two players?",
+      "a": "Yes. Both games retain an assist-style second-player role on one system."
+     }
+    ],
+    "verdictScore": 9.3,
+    "verdictSummary": "A superb double package of two of Nintendo's most inventive 3D platformers. The remaster work is conservative, but sharper presentation, quality-of-life additions and the Switch 2 enhancement make this the most convenient modern release of the pair.",
+    "verdictPros": [
+     "Two all-time-great platformers",
+     "Excellent 60 fps presentation",
+     "Strong Switch 2 enhancement"
+    ],
+    "verdictCons": [
+     "Pointer-style mechanics still show Wii-era roots",
+     "Mostly remastered rather than newly rebuilt",
+     "Premium price for older games"
+    ],
+    "reviews": [
+     {
+      "source": "Metacritic",
+      "score": "87/100",
+      "quote": "Generally favorable aggregate for the Switch collection.",
+      "url": "https://www.metacritic.com/game/super-mario-galaxy-plus-super-mario-galaxy-2/"
+     },
+     {
+      "source": "OpenCritic",
+      "score": "87/100",
+      "quote": "Strong cross-outlet aggregate.",
+      "url": "https://opencritic.com/"
+     },
+     {
+      "source": "Metacritic users",
+      "score": "7.6/10",
+      "quote": "Current user aggregate for the Switch collection.",
+      "url": "https://www.metacritic.com/game/super-mario-galaxy-plus-super-mario-galaxy-2/user-reviews/"
+     }
+    ],
+    "timeline": [
+     {
+      "date": "2007-11-12",
+      "title": "Super Mario Galaxy",
+      "body": "The first Galaxy launched on Wii."
+     },
+     {
+      "date": "2010-05-23",
+      "title": "Super Mario Galaxy 2",
+      "body": "The sequel launched on Wii."
+     },
+     {
+      "date": "2025-10-02",
+      "title": "Switch collection",
+      "body": "Both enhanced games released together for Nintendo Switch with a free Switch 2 enhancement."
+     }
+    ],
+    "patchNotes": [
+     {
+      "version": "Collection launch",
+      "date": "2025-10-02",
+      "body": "Enhanced Switch versions released with UI, Assist Mode, Storybook and Soundtrack additions."
+     },
+     {
+      "version": "Switch 2 enhancement",
+      "date": "2025-10-02",
+      "body": "Free update enabled 4K TV / 1080p handheld presentation on Switch 2."
+     },
+     {
+      "version": "Storybook addition",
+      "date": "2026-04-29",
+      "body": "Nintendo added an additional Storybook chapter to Super Mario Galaxy 2."
+     }
+    ],
+    "soundtrack": [
+     {
+      "title": "Gusty Garden Galaxy",
+      "url": "https://www.nintendo.com/us/store/products/super-mario-galaxy-plus-super-mario-galaxy-2-switch/"
+     },
+     {
+      "title": "Super Mario Galaxy Main Theme",
+      "url": "https://www.nintendo.com/us/store/products/super-mario-galaxy-plus-super-mario-galaxy-2-switch/"
+     },
+     {
+      "title": "Super Mario Galaxy 2 Main Theme",
+      "url": "https://www.nintendo.com/us/store/products/super-mario-galaxy-plus-super-mario-galaxy-2-switch/"
+     }
+    ],
+    "seriesName": "Super Mario Galaxy 2",
+    "seriesEntries": [
+     "Super Mario Galaxy",
+     "Super Mario Galaxy 2",
+     "Super Mario Odyssey"
+    ],
+    "studioName": "Nintendo",
+    "studioUrl": "https://www.nintendo.co.jp/",
+    "studioLocation": "Kyoto, Japan",
+    "studioAbout": "Nintendo developed the original Galaxy games and produced the enhanced Switch collection, preserving their gravity-focused platforming while modernizing presentation and accessibility.",
+    "setupNeeds": [
+     "Nintendo Switch or Nintendo Switch 2",
+     "Approximately 6.5 GB free storage",
+     "Compatible controller; motion/pointer-style interactions remain part of the experience"
+    ],
+    "sources": [
+     {
+      "name": "Nintendo Store",
+      "url": "https://www.nintendo.com/us/store/products/super-mario-galaxy-plus-super-mario-galaxy-2-switch/"
+     },
+     {
+      "name": "Metacritic",
+      "url": "https://www.metacritic.com/game/super-mario-galaxy-plus-super-mario-galaxy-2/"
+     },
+     {
+      "name": "Deku Deals",
+      "url": "https://www.dekudeals.com/items/super-mario-galaxy-and-super-mario-galaxy-2"
+     }
+    ],
+    "boxContentsList": "[Circular]",
+    "image": "/api/files/products/prd_d74598d589434852/cover-2e466cee872b01ec.jpg",
+    "banner": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000030770/2eafc395d5c6fbbcbccc7e151a2552f15d83d5d881bb074d3bc881a38191e440",
+    "schemaId": "",
+    "createdAt": "2026-08-27T00:28:06.310Z",
+    "created_at": "2026-08-27T00:28:06.310Z",
+    "updatedAt": "2026-08-27T00:28:06.310Z",
+    "updated_at": "2026-08-27T00:28:06.310Z",
+    "badgeEn": "وفر 40%",
+    "badgeKu": "وفر 40%",
+    "featuresEn": [
+     "Two complete Galaxy games in one collection",
+     "1080p Switch visuals and free 4K Switch 2 update",
+     "Assist Mode, Storybook additions, Soundtrack Mode and amiibo support"
+    ],
+    "featuresKu": [
+     "Two complete Galaxy games in one collection",
+     "1080p Switch visuals and free 4K Switch 2 update",
+     "Assist Mode, Storybook additions, Soundtrack Mode and amiibo support"
+    ],
+    "boxFrontUrl": "https://cdn.mobygames.com/covers/21870288-super-mario-galaxy-super-mario-galaxy-2-nintendo-switch-front-co.jpg",
+    "sales": 0,
+    "images": [],
+    "modes": [],
+    "game_id": "gme_4eb89ae9b5f34019",
+    "variants": "[Circular]"
+   }
+  },
+  {
+   "id": "prd_8305beacb7f14685",
+   "slug": "super-mario-odyssey",
+   "title": "Super Mario Odyssey",
+   "platform": "both",
+   "isHidden": false,
+   "hash": "3beb8eb6d7d9655033fa523d8cf23dbddcc6087dfb1c68314b65dd5f5f31f543",
+   "images": [
+    {
+     "role": "front-box",
+     "field": "cartridgeImage",
+     "url": "https://img-eshop.cdn.nintendo.net/i/9cf8220e928ecd25fce3abaa591bccf28b5192294c6d307ef73a86995f3ce583.jpg",
+     "status": 200,
+     "contentType": "application/octet-stream",
+     "bytes": 969193,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-024/super-mario-odyssey__front-box-0.png"
+    },
+    {
+     "role": "front-box",
+     "field": "box_front_url",
+     "url": "https://assets.nintendo.eu/image/upload/NAL/Software%20Nintendo%20Switch/Super%20Mario%20Odyssey/Super_Mario_Odyssey.png",
+     "status": 200,
+     "contentType": "image/png",
+     "bytes": 48441,
+     "width": 227,
+     "height": 368,
+     "thumb": "review-workdir/thumbs/batch-024/super-mario-odyssey__front-box-1.png"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://art.gametdb.com/switch/coverfullHQ/US/AAACA.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 2240138,
+     "width": 2454,
+     "height": 1888,
+     "thumb": "review-workdir/thumbs/batch-024/super-mario-odyssey__detail-cover-2.png"
+    },
+    {
+     "role": "listing",
+     "field": "image",
+     "url": "https://art.gametdb.com/switch/coverfullHQ/US/AAACA.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 2240138,
+     "width": 2454,
+     "height": 1888,
+     "thumb": "review-workdir/thumbs/batch-024/super-mario-odyssey__listing-3.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[0]",
+     "url": "https://assets.nintendo.eu/image/upload/NAL/Migration/SuperMarioOdyssey/overview_intro.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 27635,
+     "width": 621,
+     "height": 343,
+     "thumb": "review-workdir/thumbs/batch-024/super-mario-odyssey__banner-4.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[1]",
+     "url": "https://assets.nintendo.eu/image/upload/NAL/Migration/SuperMarioOdyssey/guide-intro-image.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 28395,
+     "width": 658,
+     "height": 370,
+     "thumb": "review-workdir/thumbs/batch-024/super-mario-odyssey__banner-5.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[2]",
+     "url": "https://assets.nintendo.eu/image/upload/NAL/Migration/SuperMarioOdyssey/adventure-intro-image.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 61816,
+     "width": 848,
+     "height": 474,
+     "thumb": "review-workdir/thumbs/batch-024/super-mario-odyssey__banner-6.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://img-eshop.cdn.nintendo.net/i/9cf8220e928ecd25fce3abaa591bccf28b5192294c6d307ef73a86995f3ce583.jpg?w=1000",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 417502,
+     "width": 1000,
+     "height": 562,
+     "thumb": "review-workdir/thumbs/batch-024/super-mario-odyssey__gallery-7.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[1]",
+     "url": "https://img-eshop.cdn.nintendo.net/i/f5dd8b464ac560ae950c3bf23a010a29050f2f3cb67329514802f99099435bae.jpg?w=1000",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 200167,
+     "width": 1000,
+     "height": 562,
+     "thumb": "review-workdir/thumbs/batch-024/super-mario-odyssey__gallery-8.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[2]",
+     "url": "https://img-eshop.cdn.nintendo.net/i/7db70ecd883f94d935f65b9f4454b8151b6f8be7c4be95543e87488e48e5a6b9.jpg?w=1000",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 207844,
+     "width": 1000,
+     "height": 562,
+     "thumb": "review-workdir/thumbs/batch-024/super-mario-odyssey__gallery-9.png"
+    }
+   ],
+   "record": {
+    "title": "Super Mario Odyssey",
+    "titleEn": "Super Mario Odyssey",
+    "titleKu": "Super Mario Odyssey",
+    "slug": "super-mario-odyssey",
+    "description": "Super Mario Odyssey is a large, globe-trotting 3D action-platforming adventure developed and published by Nintendo. Mario leaves the Mushroom Kingdom and teams up with Cappy, a sentient Bonneter who takes the form of Mario's red cap. Together they pursue Bowser, who has kidnapped Princess Peach and is travelling across the world collecting everything he needs for an extravagant wedding.\n\nThe game's central progression system revolves around Power Moons. Mario explores expansive Kingdoms and completes platforming challenges, puzzles, races, hidden-room trials, boss encounters and environmental discoveries to earn Moons. These power the Odyssey, Mario and Cappy's hat-shaped airship, unlocking the route to further Kingdoms.\n\nCappy transforms Mario's traditional moveset. Mario can throw Cappy straight, upward, downward or in a spin, use him as a temporary platform, and Capture many enemies, creatures and objects. Captures radically alter movement and interaction: a Goomba can stack with other Goombas, a Bullet Bill can fly through gaps, a Sherm provides tank-style firepower, a Cheep Cheep can remain underwater, a Lava Bubble can travel through lava, and a T-Rex provides enormous destructive strength.\n\nThe adventure uses a sandbox-style structure inspired by the exploration-driven lineage of Super Mario 64 and Super Mario Sunshine. Kingdoms are densely packed rather than purely linear, rewarding experimentation and curiosity. Regional purple coins can be spent on Kingdom-specific souvenirs and outfits, while regular coins buy additional clothing and items at Crazy Cap stores.\n\nThe game includes a two-player cooperative mode in which Player 1 controls Mario and Player 2 independently controls Cappy. Assist Mode adds guidance arrows, extra health, health regeneration and gentler recovery after falling, making the adventure accessible to newer players without removing the standard mode.\n\nPost-game content is extensive. Additional Power Moons, costumes and harder challenges become available, and later destinations include challenging end-game areas. The free Balloon World update adds Luigi's network-enabled Hide It and Find It challenge, while Nintendo Labo VR support adds selected VR-compatible experiences.\n\nOn Nintendo Switch 2, a free update significantly enhances the original Nintendo Switch release. Nintendo officially added improved visuals optimized for the Switch 2 display and high-resolution TVs, HDR support, and GameShare. Two people can share the co-op experience locally or through GameChat, with one controlling Mario and the other Cappy.\n\nThe current official software version at the time of this file is Ver. 1.4.1.",
+    "descriptionEn": "Super Mario Odyssey is a large, globe-trotting 3D action-platforming adventure developed and published by Nintendo. Mario leaves the Mushroom Kingdom and teams up with Cappy, a sentient Bonneter who takes the form of Mario's red cap. Together they pursue Bowser, who has kidnapped Princess Peach and is travelling across the world collecting everything he needs for an extravagant wedding.\n\nThe game's central progression system revolves around Power Moons. Mario explores expansive Kingdoms and completes platforming challenges, puzzles, races, hidden-room trials, boss encounters and environmental discoveries to earn Moons. These power the Odyssey, Mario and Cappy's hat-shaped airship, unlocking the route to further Kingdoms.\n\nCappy transforms Mario's traditional moveset. Mario can throw Cappy straight, upward, downward or in a spin, use him as a temporary platform, and Capture many enemies, creatures and objects. Captures radically alter movement and interaction: a Goomba can stack with other Goombas, a Bullet Bill can fly through gaps, a Sherm provides tank-style firepower, a Cheep Cheep can remain underwater, a Lava Bubble can travel through lava, and a T-Rex provides enormous destructive strength.\n\nThe adventure uses a sandbox-style structure inspired by the exploration-driven lineage of Super Mario 64 and Super Mario Sunshine. Kingdoms are densely packed rather than purely linear, rewarding experimentation and curiosity. Regional purple coins can be spent on Kingdom-specific souvenirs and outfits, while regular coins buy additional clothing and items at Crazy Cap stores.\n\nThe game includes a two-player cooperative mode in which Player 1 controls Mario and Player 2 independently controls Cappy. Assist Mode adds guidance arrows, extra health, health regeneration and gentler recovery after falling, making the adventure accessible to newer players without removing the standard mode.\n\nPost-game content is extensive. Additional Power Moons, costumes and harder challenges become available, and later destinations include challenging end-game areas. The free Balloon World update adds Luigi's network-enabled Hide It and Find It challenge, while Nintendo Labo VR support adds selected VR-compatible experiences.\n\nOn Nintendo Switch 2, a free update significantly enhances the original Nintendo Switch release. Nintendo officially added improved visuals optimized for the Switch 2 display and high-resolution TVs, HDR support, and GameShare. Two people can share the co-op experience locally or through GameChat, with one controlling Mario and the other Cappy.\n\nThe current official software version at the time of this file is Ver. 1.4.1.",
+    "descriptionKu": "Super Mario Odyssey is a large, globe-trotting 3D action-platforming adventure developed and published by Nintendo. Mario leaves the Mushroom Kingdom and teams up with Cappy, a sentient Bonneter who takes the form of Mario's red cap. Together they pursue Bowser, who has kidnapped Princess Peach and is travelling across the world collecting everything he needs for an extravagant wedding.\n\nThe game's central progression system revolves around Power Moons. Mario explores expansive Kingdoms and completes platforming challenges, puzzles, races, hidden-room trials, boss encounters and environmental discoveries to earn Moons. These power the Odyssey, Mario and Cappy's hat-shaped airship, unlocking the route to further Kingdoms.\n\nCappy transforms Mario's traditional moveset. Mario can throw Cappy straight, upward, downward or in a spin, use him as a temporary platform, and Capture many enemies, creatures and objects. Captures radically alter movement and interaction: a Goomba can stack with other Goombas, a Bullet Bill can fly through gaps, a Sherm provides tank-style firepower, a Cheep Cheep can remain underwater, a Lava Bubble can travel through lava, and a T-Rex provides enormous destructive strength.\n\nThe adventure uses a sandbox-style structure inspired by the exploration-driven lineage of Super Mario 64 and Super Mario Sunshine. Kingdoms are densely packed rather than purely linear, rewarding experimentation and curiosity. Regional purple coins can be spent on Kingdom-specific souvenirs and outfits, while regular coins buy additional clothing and items at Crazy Cap stores.\n\nThe game includes a two-player cooperative mode in which Player 1 controls Mario and Player 2 independently controls Cappy. Assist Mode adds guidance arrows, extra health, health regeneration and gentler recovery after falling, making the adventure accessible to newer players without removing the standard mode.\n\nPost-game content is extensive. Additional Power Moons, costumes and harder challenges become available, and later destinations include challenging end-game areas. The free Balloon World update adds Luigi's network-enabled Hide It and Find It challenge, while Nintendo Labo VR support adds selected VR-compatible experiences.\n\nOn Nintendo Switch 2, a free update significantly enhances the original Nintendo Switch release. Nintendo officially added improved visuals optimized for the Switch 2 display and high-resolution TVs, HDR support, and GameShare. Two people can share the co-op experience locally or through GameChat, with one controlling Mario and the other Cappy.\n\nThe current official software version at the time of this file is Ver. 1.4.1.",
+    "cartridgeImage": "https://img-eshop.cdn.nintendo.net/i/9cf8220e928ecd25fce3abaa591bccf28b5192294c6d307ef73a86995f3ce583.jpg",
+    "coverImage": "https://art.gametdb.com/switch/coverfullHQ/US/AAACA.jpg",
+    "bannerImages": [
+     "https://assets.nintendo.eu/image/upload/NAL/Migration/SuperMarioOdyssey/overview_intro.jpg",
+     "https://assets.nintendo.eu/image/upload/NAL/Migration/SuperMarioOdyssey/guide-intro-image.jpg",
+     "https://assets.nintendo.eu/image/upload/NAL/Migration/SuperMarioOdyssey/adventure-intro-image.jpg"
+    ],
+    "gallery": [],
+    "youtubeTrailer": "https://www.youtube.com/watch?v=VcXvnb7dHZk",
+    "releaseDate": "2017-10-27",
+    "ageRating": "ESRB E10+ (Cartoon Violence, Comic Mischief) / PEGI 7",
+    "metacriticRating": 97,
+    "genres": [
+     "Action",
+     "Platformer",
+     "Adventure / 3D Sandbox Platformer"
+    ],
+    "platform": "both",
+    "size": 5.6,
+    "numberOfPlayers": "1-2",
+    "supportedLanguages": "English, French, Italian, German, Dutch, Portuguese, Spanish, Russian, Korean, Simplified Chinese, Traditional Chinese, Japanese (global Nintendo regional builds; exact language set varies by regional version)",
+    "hardwareModel": "Nintendo Switch OLED Model",
+    "colorEdition": "White OLED",
+    "storageCapacity": "64 GB",
+    "screenSpecs": "7.0-inch OLED (1280x720) Touchscreen",
+    "batteryLife": "4.5 - 9.0 Hours (4310 mAh)",
+    "boxContents": [],
+    "warrantyCondition": "جديد أصلي 100% بالكرتون مع ضمان سنة",
+    "connectivity": "Wi-Fi 6, Bluetooth 5.0, LAN Port, HDMI 2.0, USB Type-C",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "Global",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "فتح متجر Nintendo eShop\nاختيار Redeem Code\nكتابة الكود المكون من 16 خانة\nتأكيد",
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 12000,
+    "cost": 1500,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "displayOrder": 0,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "opt_offline",
+      "name": "Offline Account",
+      "description": "حساب مشترك",
+      "customerDescription": "حساب مشترك"
+     },
+     {
+      "id": "opt_online",
+      "name": "Online Account",
+      "description": "حساب خاص بك",
+      "cost": "14500",
+      "price": "35000",
+      "customerDescription": "حساب خاص بك"
+     }
+    ],
+    "types": [
+     {
+      "id": "typ_std",
+      "name": "Standard Edition",
+      "description": "اللعبة الأساسية",
+      "customerDescription": "اللعبة الأساسية"
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "Active",
+    "kind": "account",
+    "trade_value_iqd": 39000,
+    "store_offer_bonus_iqd": 8000,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "id": "prd_8305beacb7f14685",
+    "schema_version": 1,
+    "edition": "Historical Nintendo Switch hardware bundles were sold in selected regions with Super Mario Odyssey included.",
+    "developer": "Nintendo EPD",
+    "publisher": "Nintendo",
+    "metacriticUrl": "https://www.metacritic.com/game/super-mario-odyssey/",
+    "opencriticRating": 97,
+    "userScore": 8.9,
+    "officialUrl": "https://supermario.nintendo.com/",
+    "eshopUrl": "https://ec.nintendo.com/AU/en/titles/70010000000127",
+    "gameIsOffline": true,
+    "gameIsOnline": true,
+    "gameLanguageLocked": false,
+    "description_short": "A globe-trotting 3D Mario sandbox adventure in which Mario teams up with Cappy, captures enemies and objects, collects Power Moons, explores diverse Kingdoms, and receives free visual, HDR and GameShare enhancements on Nintendo Switch 2.",
+    "description_ar": "Super Mario Odyssey هي مغامرة أكشن ومنصات ثلاثية الأبعاد بأسلوب Sandbox من Nintendo، وتُعد واحدة من أهم ألعاب Mario الحديثة. يغادر Mario مملكة الفطر وينطلق في رحلة حول العالم بصحبة Cappy، وهو كائن من شعب Bonneters يتخذ شكل قبعة Mario الحمراء.\n\nتبدأ المطاردة بعد أن يخطف Bowser الأميرة Peach ويقرر إقامة حفل زفاف ضخم معها. أثناء سفره بين الممالك يجمع Bowser مستلزمات الحفل، بينما يحاول Mario وCappy اللحاق به وإفساد خطته.\n\nتعتمد رحلة التقدم على Power Moons. يستكشف اللاعب كل Kingdom ويجد الأقمار عبر تحديات منصات، ألغاز، سباقات، أسرار، غرف مخفية، مواجهات زعماء ومهمات صغيرة. تعمل Power Moons كوقود لسفينة Odyssey وتفتح الطريق إلى ممالك جديدة.\n\nالميزة التي تغير أسلوب اللعب هي Cappy. يستطيع Mario رمي القبعة في عدة اتجاهات، استخدامها لضرب الأعداء وتشغيل المفاتيح، أو القفز عليها للوصول لمسافات أبعد. الأهم هو Capture: يمكن السيطرة على عدد كبير من الأعداء والمخلوقات والأجسام والاستفادة من قدراتها الخاصة.\n\nمن أمثلة الـCaptures التي تعرضها Nintendo رسمياً: Goomba لتكوين أبراج Goomba، Bullet Bill للطيران، Sherm لاستخدام المدفع، Hammer Bro لرمي المطارق، Moe-Eye لرؤية الأشياء المخفية، Chain Chomp لتحطيم العوائق، Uproot للوصول عمودياً، T-Rex للقوة التدميرية، Lava Bubble للتحرك في الحمم، وCheep Cheep للسباحة تحت الماء دون الحاجة للعودة إلى السطح.\n\nالممالك واسعة ومليئة بالمقتنيات وليست مجرد مراحل خطية. يمكن العثور على Regional Coins البنفسجية الخاصة بكل مملكة واستخدامها لشراء أزياء وهدايا تذكارية من Crazy Cap، كما توجد مجموعة كبيرة من الملابس والأزياء التي يستمر فتحها أثناء التقدم وبعد نهاية القصة.\n\nتدعم اللعبة Co-op لشخصين؛ اللاعب الأول يتحكم بـMario والثاني يتحكم بـCappy بصورة مستقلة. كما يوجد Assist Mode الذي يوفر أسهماً للإرشاد، صحة أكبر، استرجاع الصحة عند الوقوف واستعادة أسهل بعد السقوط.\n\nبعد إنهاء القصة يستمر المحتوى بشكل كبير عبر المزيد من Power Moons والتحديات والأزياء والمناطق الصعبة. تحديث Balloon World المجاني أضاف Luigi's Balloon World بنمطي Hide It وFind It، بينما أضاف تحديث لاحق دعماً لـNintendo Labo Toy-Con VR Goggles وتجارب VR محددة.\n\nفي 2025 حصلت اللعبة على تحديث مجاني مخصص للاستفادة من Nintendo Switch 2. Nintendo تؤكد أن الصورة أصبحت محسنة لشاشة Switch 2 وأجهزة التلفاز عالية الدقة، مع دعم HDR وGameShare. ويمكن لشخصين اللعب معاً باستخدام نسخة واحدة في الإعدادات المدعومة، محلياً أو عبر GameChat، بحيث يتحكم أحدهما بـMario والآخر بـCappy.\n\nآخر إصدار رسمي عند إعداد هذا الملف هو Ver. 1.4.1.",
+    "box_front_url": "https://assets.nintendo.eu/image/upload/NAL/Software%20Nintendo%20Switch/Super%20Mario%20Odyssey/Super_Mario_Odyssey.png",
+    "box_back_url": "https://assets.pawnamerica.com/ProductImages/24522011950/32d94c0e-3112-4c8d-9e56-b4cafe4ea0b6.JPG",
+    "videos": [
+     {
+      "title": "Super Mario Odyssey – Overview Trailer – Nintendo Switch",
+      "url": "https://www.youtube.com/watch?v=VcXvnb7dHZk"
+     },
+     {
+      "title": "Super Mario Odyssey – Game Trailer – Nintendo E3 2017",
+      "url": "https://www.youtube.com/watch?v=wGQHQc_3ycE"
+     },
+     {
+      "title": "Super Mario Odyssey – Meet Cappy – Nintendo Switch",
+      "url": "https://www.youtube.com/watch?v=W83b4HoPdFo"
+     }
+    ],
+    "nsuid": "70010000000127",
+    "title_id": "0100000000010000",
+    "product_code": "HAC-P-AAACA",
+    "nintendoEshopUrl": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-games/Super-Mario-Odyssey-1173332.html",
+    "nintendoOnlineRequired": true,
+    "nintendoCloudSaves": true,
+    "nintendoGameKeyCard": false,
+    "nintendoPhysicalNeedsDownload": false,
+    "nintendoPlayModes": "TV Mode, Tabletop Mode, Handheld Mode, Nintendo Labo VR Mode (selected content)",
+    "nintendoNotes": "Nintendo officially confirms Super Mario Odyssey as Nintendo Switch software playable on Nintendo Switch 2. The free Ver. 1.4.0 update adds Switch 2-optimized visuals, HDR and GameShare; it is not a separately sold Nintendo Switch 2 Edition.\n\nCurrent Nintendo regional listings differ in language metadata. Nintendo Europe lists Japanese, English, Spanish, French, German, Italian, Dutch and Russian, while Nintendo Malaysia's official product information also lists Portuguese, Korean, Simplified Chinese and Traditional Chinese. Ver. 1.1.0 officially added Korean support. The file therefore records the global regional language set and explicitly notes regional variation.\n\nNintendo eShop AU NSUID: 70010000000127. The base physical product code is HAC-P-AAACA. The standard physical release is a conventional Nintendo Switch game card, not a Game-Key Card.\n\nLatest version: Ver. 1.4.1, released 24 June 2025 in Nintendo of America / 25 June in Nintendo Europe. Ver. 1.4.0 was released 3 June 2025 ahead of Switch 2 launch and introduced the Switch 2 enhancements.\n\nNintendo officially confirms 1–2 same-system players, amiibo, surround sound, Save Data Cloud, TV/Tabletop/Handheld play and Nintendo Labo compatibility. Online functionality includes Luigi's Balloon World; Switch 2 also supports GameShare locally or via GameChat.",
+    "switch2Enhanced": false,
+    "switch2Features": [
+     "Visuals optimized for the Nintendo Switch 2 display and high-resolution TVs for improved image quality.",
+     "HDR support on Nintendo Switch 2, with a compatible display required for HDR in TV Mode.",
+     "GameShare support for two-player Mario-and-Cappy co-op, shared locally or online via GameChat."
+    ],
+    "tagline": "Throw Cappy, Capture the world around you, and collect Power Moons across Mario's globe-spanning 3D adventure.",
+    "fitFor": [
+     "Players who enjoy exploration-heavy 3D platformers packed with secrets, collectibles and movement challenges.",
+     "Both beginners and expert platformer players thanks to Assist Mode and demanding post-game challenges.",
+     "Players who want a major Mario adventure that runs on Nintendo Switch and also receives free enhancements on Nintendo Switch 2."
+    ],
+    "notFitFor": [
+     "Players looking for a competitive multiplayer Mario game; the second player controls Cappy as a support role.",
+     "Players who prefer short, strictly linear Mario levels instead of large sandbox-style Kingdoms.",
+     "Players who dislike collectible-driven progression, especially extensive Power Moon and regional-coin hunting."
+    ],
+    "playTimeMain": 12.5,
+    "playTimeFull": 62,
+    "gameplayPillars": [
+     {
+      "title": "Explore and Collect Power Moons",
+      "description": "Explore large Kingdoms and collect Power Moons to power the Odyssey and unlock new destinations.",
+      "imageUrl": "https://assets.nintendo.eu/image/upload/NAL/Migration/SuperMarioOdyssey/overview_intro.jpg"
+     },
+     {
+      "title": "Cappy and Capture",
+      "description": "Use Cappy for attacks, movement and Capture, taking control of selected enemies, creatures and objects to use their abilities.",
+      "imageUrl": "https://assets.nintendo.eu/image/upload/NAL/Migration/SuperMarioOdyssey/meetcappy_keyvis.png"
+     },
+     {
+      "title": "Kingdoms, Secrets and Post-game",
+      "description": "Discover dense secrets, regional coins, outfits, minigames and substantial post-game challenges across the Kingdoms.",
+      "imageUrl": "https://assets.nintendo.eu/image/upload/NAL/Migration/SuperMarioOdyssey/guide-intro-image.jpg"
+     }
+    ],
+    "worldSummary": "Super Mario Odyssey is structured as a globe-spanning trip through Kingdoms rather than one seamless open world. The Odyssey airship serves as the transport hub, and Power Moons provide the energy required to travel farther.\n\nThe adventure includes:\n1. Cap Kingdom — Bonneton\n2. Cascade Kingdom — Fossil Falls\n3. Sand Kingdom — Tostarena\n4. Lake Kingdom — Lake Lamode\n5. Wooded Kingdom — Steam Gardens\n6. Cloud Kingdom — Nimbus Arena\n7. Lost Kingdom — Forgotten Isle\n8. Metro Kingdom — New Donk City\n9. Snow Kingdom — Shiveria\n10. Seaside Kingdom — Bubblaine\n11. Luncheon Kingdom — Mount Volbono\n12. Ruined Kingdom — Crumbleden\n13. Bowser's Kingdom\n14. Moon Kingdom\n15. Mushroom Kingdom — post-game return to a classic Mario setting\n16. Dark Side — post-game challenge area\n17. Darker Side — high-difficulty post-game challenge\n\nThe Kingdoms deliberately contrast with one another. Nintendo's official travel-guide material highlights locations ranging from ancient ruins and deserts to dense forests, neon-lit New Donk City, frozen Shiveria, an ocean resort filled with Sparkle Water, a volcanic food culture and the Moon itself.\n\nRegional Coins are unique to each Kingdom and buy location-specific outfits and souvenirs. The world contains standard platforming, Capture-based traversal, secret rooms, 2D retro sections, bosses, races, minigames and environmental puzzles.",
+    "storyChapters": [
+     {
+      "title": "Bowser's Wedding Plan and the Cap Kingdom",
+      "body": "After Bowser kidnaps Princess Peach for a lavish wedding, Mario reaches the Cap Kingdom and teams up with Cappy, who is also searching for someone taken by Bowser.",
+      "imageUrl": "https://assets.nintendo.eu/image/upload/NAL/Migration/SuperMarioOdyssey/overview_intro.jpg"
+     },
+     {
+      "title": "Powering the Odyssey Across the Kingdoms",
+      "body": "Mario and Cappy travel from Kingdom to Kingdom aboard the Odyssey, collecting Power Moons and following Bowser's wedding preparations around the world.",
+      "imageUrl": "https://assets.nintendo.eu/image/upload/NAL/Migration/SuperMarioOdyssey/guide-intro-image.jpg"
+     },
+     {
+      "title": "The Journey to the Wedding and Beyond",
+      "body": "The pursuit eventually reaches the wedding itself, while completing the main story unlocks additional Power Moons, destinations and high-difficulty post-game challenges.",
+      "imageUrl": "https://assets.nintendo.eu/image/upload/NAL/Migration/SuperMarioOdyssey/adventure-intro-image.jpg"
+     }
+    ],
+    "galleryImages": [
+     {
+      "url": "https://img-eshop.cdn.nintendo.net/i/9cf8220e928ecd25fce3abaa591bccf28b5192294c6d307ef73a86995f3ce583.jpg?w=1000",
+      "alt": "Official promotional art showing Mario, Cappy and locations from the global adventure."
+     },
+     {
+      "url": "https://img-eshop.cdn.nintendo.net/i/f5dd8b464ac560ae950c3bf23a010a29050f2f3cb67329514802f99099435bae.jpg?w=1000",
+      "alt": "A Capture ability in action using one of the game's controllable creatures."
+     },
+     {
+      "url": "https://img-eshop.cdn.nintendo.net/i/7db70ecd883f94d935f65b9f4454b8151b6f8be7c4be95543e87488e48e5a6b9.jpg?w=1000",
+      "alt": "A Kingdom environment demonstrating the game's sandbox-style exploration."
+     }
+    ],
+    "features": [
+     "Cappy enables cap throws, cap jumps and Capture abilities that transform traversal and combat.",
+     "Large sandbox-style Kingdoms filled with Power Moons, regional coins, outfits, souvenirs and hidden challenges.",
+     "Free Nintendo Switch 2 update adds improved visuals, HDR and GameShare support."
+    ],
+    "perfResolutionDocked": "Nintendo Switch 2: improved high-resolution presentation; independent technical analysis reports dynamic output up to ~1800p. Original Switch: ~900p dynamic in TV mode.",
+    "perfResolutionHandheld": "Nintendo Switch 2: 1080p presentation reported by independent technical analysis. Original Switch: approximately 720p target.",
+    "perfFps": "60 FPS target; Switch 2 update is reported as essentially locked 60 FPS in independent technical testing",
+    "perfHdr": true,
+    "perfNotes": "Nintendo officially states that Ver. 1.4.0 optimizes visuals for the Nintendo Switch 2 display and high-resolution TVs and adds HDR, but Nintendo does not publish exact native-resolution values.\n\nIndependent technical analysis reports the Switch 2 version reaching a dynamic output of roughly 1800p in TV mode, 1080p in handheld mode and an essentially locked 60 FPS target. The original Switch version used lower dynamic resolutions while also targeting 60 FPS. These exact numbers are third-party technical observations, not Nintendo-published specifications.",
+    "downloadSizeGb": 5.6,
+    "requiredSpaceGb": 5.6,
+    "microSdRecommended": false,
+    "storageNotes": "Nintendo AU eShop currently lists Required Space as 5.6 GB on both Nintendo Switch and Nintendo Switch 2. Nintendo's current US product metadata has shown approximately 5.7 GB for the Nintendo Switch 2 version after updates, so minor regional/storefront differences can occur.\n\nExtra free space is required for update data. Ver. 1.4.0 and Ver. 1.4.1 are separate update data layered on top of the base game.\n\nA microSD card is optional when sufficient system storage is available. Original Nintendo Switch supports standard compatible microSD cards; Nintendo Switch 2 uses microSD Express cards for expanded Switch 2 storage.",
+    "languagesAudio": [
+     "Nintendo does not provide a separate selectable spoken-dub language table; most dialogue is text with character vocalizations.",
+     "English vocal music is prominently used in songs such as Jump Up, Super Star!",
+     "Character vocalizations and music are largely independent of the selected text language."
+    ],
+    "languagesText": [
+     "English",
+     "French",
+     "Italian"
+    ],
+    "arabicSupport": false,
+    "mpLocalPlayers": "true",
+    "mpOnlinePlayers": "true",
+    "mpCoop": true,
+    "mpCompetitive": false,
+    "mpSplitScreen": false,
+    "mpLocalWireless": true,
+    "guides": [
+     {
+      "title": "How to Update Super Mario Odyssey",
+      "summary": "Nintendo's official software-update history for Super Mario Odyssey.",
+      "url": "https://en-americas-support.nintendo.com/app/answers/detail/a_id/27783/~/how-to-update-super-mario-odyssey"
+     },
+     {
+      "title": "Super Mario Odyssey Official Travel Guide",
+      "summary": "Nintendo's official game guide covering Cappy, Captures, Kingdoms, co-op and Assist Mode.",
+      "url": "https://www.nintendo.com/au/games/nintendo-switch/super-mario-odyssey/"
+     },
+     {
+      "title": "How to Use amiibo Figures — Super Mario Odyssey",
+      "summary": "Nintendo Support instructions for using compatible amiibo in Super Mario Odyssey.",
+      "url": "https://en-americas-support.nintendo.com/app/answers/detail/a_id/27786/~/how-to-use-amiibo-figures-%28super-mario-odyssey%29"
+     }
+    ],
+    "completionMain": 12.5,
+    "completionExtras": 27,
+    "completionAll": 62,
+    "faq": [
+     {
+      "q": "Does Super Mario Odyssey run on Nintendo Switch 2?",
+      "a": "Yes. It is an original Nintendo Switch game that runs on Switch 2 and receives free Switch 2-specific visual, HDR and GameShare enhancements."
+     },
+     {
+      "q": "How many players are supported?",
+      "a": "Up to two players on one system, with Player 1 controlling Mario and Player 2 controlling Cappy."
+     },
+     {
+      "q": "Does the game have paid DLC?",
+      "a": "No paid expansion was released; Balloon World, Nintendo Labo VR support and Switch 2 enhancements were delivered through free updates."
+     }
+    ],
+    "verdictScore": 9.7,
+    "verdictSummary": "Super Mario Odyssey remains one of Nintendo's strongest 3D platformers. Cappy and the Capture system dramatically expand Mario's movement options without making the core controls difficult to learn, while the Kingdom structure rewards experimentation and exploration at nearly every turn.\n\nThe main campaign is approachable, but collecting more Power Moons and clearing the post-game opens considerably harder platforming challenges. The amount of optional content is one of the game's greatest strengths, although players who prefer more linear Mario design may find the density of simple collectible Moons excessive.\n\nThe free Nintendo Switch 2 update improves the current version further through better image quality, HDR and GameShare without requiring a paid upgrade.",
+    "verdictPros": [
+     "Exceptional movement system built around Mario's traditional controls, Cappy and Capture.",
+     "Creative Kingdom design with dense secrets, collectibles and varied challenges.",
+     "Substantial post-game content plus free Nintendo Switch 2 visual, HDR and GameShare improvements."
+    ],
+    "verdictCons": [
+     "Some Power Moons are extremely simple, reducing the sense of importance of individual collectibles.",
+     "A small number of optional actions rely on motion controls.",
+     "The two-player mode is asymmetrical because the second player controls Cappy rather than a full independent character."
+    ],
+    "reviews": [
+     {
+      "source": "IGN",
+      "score": "10/10",
+      "quote": "A generational masterpiece.",
+      "url": "https://www.ign.com/articles/2017/10/26/super-mario-odyssey-review"
+     },
+     {
+      "source": "Game Informer",
+      "score": "9.75/10",
+      "quote": "Super Mario Odyssey is an absolute delight.",
+      "url": "https://gameinformer.com/games/super_mario_odyssey/b/switch/archive/2017/10/26/super-mario-odyssey-review.aspx"
+     },
+     {
+      "source": "Nintendo Life",
+      "score": "10/10",
+      "quote": "Incredible design and development flair.",
+      "url": "https://www.nintendolife.com/reviews/nintendo-switch/super_mario_odyssey"
+     }
+    ],
+    "timeline": [
+     {
+      "date": "2017-01-12",
+      "title": "Nintendo Switch Presentation",
+      "body": "Nintendo fully revealed Super Mario Odyssey as a major sandbox-style 3D Mario adventure."
+     },
+     {
+      "date": "2017-06-13",
+      "title": "Global Launch",
+      "body": "Super Mario Odyssey launched worldwide for Nintendo Switch."
+     },
+     {
+      "date": "2017-10-27",
+      "title": "Ver. 1.4.0 Switch 2 Enhancement",
+      "body": "Nintendo added improved visuals, HDR and GameShare support when running the game on Nintendo Switch 2."
+     }
+    ],
+    "patchNotes": [
+     {
+      "version": "1.4.1",
+      "date": "2025-06-24",
+      "body": "Several issues were addressed to improve the gameplay experience on Nintendo Switch 2."
+     },
+     {
+      "version": "1.4.0",
+      "date": "2025-06-03",
+      "body": "On Nintendo Switch 2: optimized visuals for the display/high-resolution TVs, HDR support, and GameShare for two-player Mario/Cappy co-op locally or via GameChat."
+     },
+     {
+      "version": "1.3.0",
+      "date": "2019-04-25",
+      "body": "Added Nintendo Labo Toy-Con 04: VR Kit support through Playing in VR and fixed several issues."
+     }
+    ],
+    "soundtrack": [
+     {
+      "title": "Jump Up, Super Star!",
+      "url": "https://share.music.nintendo.com/en-GB/AU/officialPlaylists/128aecaa-8d75-4efd-97ef-4964702fec0e"
+     },
+     {
+      "title": "Steam Gardens",
+      "url": "https://share.music.nintendo.com/en-GB/AU/officialPlaylists/128aecaa-8d75-4efd-97ef-4964702fec0e"
+     },
+     {
+      "title": "Fossil Falls",
+      "url": "https://share.music.nintendo.com/en-GB/AU/officialPlaylists/128aecaa-8d75-4efd-97ef-4964702fec0e"
+     }
+    ],
+    "seriesName": "Super Mario",
+    "seriesEntries": [
+     "Super Mario Bros.",
+     "Super Mario Bros. 3",
+     "Super Mario World"
+    ],
+    "studioName": "Nintendo Entertainment Planning & Development (Nintendo EPD)",
+    "studioUrl": "https://www.nintendo.co.jp/",
+    "studioLocation": "Kyoto, Japan",
+    "studioAbout": "Super Mario Odyssey was developed by Nintendo's internal 3D Mario development group within Nintendo Entertainment Planning & Development (Nintendo EPD), with development assistance from 1-UP Studio.\n\nKey staff associated with the project include:\n- Kenta Motokura — Director of Super Mario Odyssey. Nintendo later confirmed he continued as a central leader in the same 3D-action development lineage.\n- Yoshiaki Koizumi — Producer.\n- Koichi Hayashida — Producer; Nintendo's later Ask the Developer material confirms his producer role on Super Mario Odyssey.\n- Wataru Tanaka — implemented player controls and directed the core system of action elements in Super Mario Odyssey, according to Nintendo's 2025 Ask the Developer interview for Donkey Kong Bananza.\n- Naoto Kubo — led overall sound development for Super Mario Odyssey.\n- Shiho Fujii and Koji Kondo were among the major composers associated with the score.\n\nThe project returned 3D Mario to a more open sandbox-style exploration structure after the comparatively linear 3D Land / 3D World design approach.\n\nCapture and Cappy were built around the idea of giving Mario a broad set of contextual abilities without permanently bloating his standard moveset. Different enemies and objects effectively become temporary playable toolsets.\n\nNintendo's later Donkey Kong Bananza development interview also revealed that voxel technology was experimented with during Super Mario Odyssey, though its use was limited at that stage. That technical experimentation later informed Bananza's destruction system.\n\nThe free Nintendo Switch 2 enhancement is software-update content for the existing game rather than a separately sold Switch 2 Edition.",
+    "setupNeeds": [
+     "Nintendo Switch family hardware or Nintendo Switch 2; Switch 2-specific enhancements require Nintendo Switch 2 and the latest game update.",
+     "Nintendo Switch Online is required for applicable online functions and Save Data Cloud, not for the main single-player adventure.",
+     "Two-player same-system co-op requires compatible controllers for both players."
+    ],
+    "sources": [
+     {
+      "name": "Nintendo AU — Super Mario Odyssey Official Game Page",
+      "url": "https://www.nintendo.com/au/games/nintendo-switch/super-mario-odyssey/"
+     },
+     {
+      "name": "Nintendo UK — Super Mario Odyssey Official Game Page",
+      "url": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-games/Super-Mario-Odyssey-1173332.html"
+     },
+     {
+      "name": "Nintendo eShop AU — Super Mario Odyssey",
+      "url": "https://ec.nintendo.com/AU/en/titles/70010000000127"
+     }
+    ],
+    "game_id": "gme_daba3ee10e024109",
+    "image": "https://art.gametdb.com/switch/coverfullHQ/US/AAACA.jpg",
+    "banner": "https://assets.nintendo.eu/image/upload/NAL/Migration/SuperMarioOdyssey/overview_intro.jpg",
+    "schemaId": "",
+    "badgeEn": "وفر 40%",
+    "badgeKu": "وفر 40%",
+    "featuresEn": [
+     "Cappy enables cap throws, cap jumps and Capture abilities that transform traversal and combat.",
+     "Large sandbox-style Kingdoms filled with Power Moons, regional coins, outfits, souvenirs and hidden challenges.",
+     "Free Nintendo Switch 2 update adds improved visuals, HDR and GameShare support."
+    ],
+    "featuresKu": [
+     "Cappy enables cap throws, cap jumps and Capture abilities that transform traversal and combat.",
+     "Large sandbox-style Kingdoms filled with Power Moons, regional coins, outfits, souvenirs and hidden challenges.",
+     "Free Nintendo Switch 2 update adds improved visuals, HDR and GameShare support."
+    ],
+    "redemptionSteps": [
+     "فتح متجر Nintendo eShop",
+     "اختيار Redeem Code",
+     "كتابة الكود المكون من 16 خانة",
+     "تأكيد"
+    ],
+    "boxFrontUrl": "https://assets.nintendo.eu/image/upload/NAL/Software%20Nintendo%20Switch/Super%20Mario%20Odyssey/Super_Mario_Odyssey.png",
+    "coverUrl": "https://art.gametdb.com/switch/cover/US/AAACA.jpg",
+    "sales": 0,
+    "isHidden": false,
+    "createdAt": "2026-08-27T04:36:02.708Z",
+    "created_at": "2026-08-27T04:36:02.708Z",
+    "updatedAt": "2026-08-27T04:36:02.708Z",
+    "updated_at": "2026-08-27T04:36:02.708Z",
+    "images": [],
+    "modes": []
+   }
+  },
+  {
+   "id": "prd_91e34a020d374ca5",
+   "slug": "super-mario-party-jamboree",
+   "title": "Super Mario Party Jamboree",
+   "platform": "switch1",
+   "isHidden": false,
+   "hash": "124f4f9466908145f3d960ea7fccec5f3e4944b1f93c7661a1f00e5b6b52bac2",
+   "images": [
+    {
+     "role": "front-box",
+     "field": "cartridgeImage",
+     "url": "https://cdn.switch-images-julio.com/file/switch-images-julio/A7HLA/front.png",
+     "status": 200,
+     "contentType": "image/png",
+     "bytes": 35037740,
+     "width": 2317,
+     "height": 3774,
+     "thumb": "review-workdir/thumbs/batch-024/super-mario-party-jamboree__front-box-0.png"
+    },
+    {
+     "role": "front-box",
+     "field": "box_front_url",
+     "url": "https://cdn.switch-images-julio.com/file/switch-images-julio/A7HLA/front.png",
+     "status": 200,
+     "contentType": "image/png",
+     "bytes": 35037740,
+     "width": 2317,
+     "height": 3774,
+     "thumb": "review-workdir/thumbs/batch-024/super-mario-party-jamboree__front-box-1.png"
+    },
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://cdn.switch-images-julio.com/file/switch-images-julio/display/index.html?code=A7HLA",
+     "status": 200,
+     "contentType": "text/html",
+     "bytes": 854,
+     "width": null,
+     "height": null,
+     "thumb": null
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://cdn.switch-images-julio.com/file/switch-images-julio/A7HLA/front.png",
+     "status": 200,
+     "contentType": "image/png",
+     "bytes": 35037740,
+     "width": 2317,
+     "height": 3774,
+     "thumb": "review-workdir/thumbs/batch-024/super-mario-party-jamboree__detail-cover-3.png"
+    },
+    {
+     "role": "3d-texture",
+     "field": "coverHiResImage",
+     "url": "https://cdn.switch-images-julio.com/file/switch-images-julio/display/index.html?code=A7HLA",
+     "status": 200,
+     "contentType": "text/html",
+     "bytes": 854,
+     "width": null,
+     "height": null,
+     "thumb": null
+    },
+    {
+     "role": "listing",
+     "field": "image",
+     "url": "https://cdn.switch-images-julio.com/file/switch-images-julio/A7HLA/front.png",
+     "status": 200,
+     "contentType": "image/png",
+     "bytes": 35037740,
+     "width": 2317,
+     "height": 3774,
+     "thumb": "review-workdir/thumbs/batch-024/super-mario-party-jamboree__listing-5.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[0]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16:9,c_lpad,w_1300/b_white/f_auto/q_auto/ncom/software/switch/70010000084608/ba0572bf9d840b03bf9958809943fb3c76c3adfd6d8f2704b0f1b766f8aa4027",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 166597,
+     "width": 1300,
+     "height": 731,
+     "thumb": "review-workdir/thumbs/batch-024/super-mario-party-jamboree__banner-6.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[1]",
+     "url": "https://i.ytimg.com/vi/YKR6sdcO4ac/maxresdefault.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 237943,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-024/super-mario-party-jamboree__banner-7.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[2]",
+     "url": "https://i.ytimg.com/vi/lKp9cD4e8ac/maxresdefault.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 209706,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-024/super-mario-party-jamboree__banner-8.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16:9,c_lpad,w_1300/b_white/f_auto/q_auto/ncom/software/switch/70010000084608/ba0572bf9d840b03bf9958809943fb3c76c3adfd6d8f2704b0f1b766f8aa4027",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 166597,
+     "width": 1300,
+     "height": 731,
+     "thumb": "review-workdir/thumbs/batch-024/super-mario-party-jamboree__gallery-9.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[1]",
+     "url": "https://i.ytimg.com/vi/YKR6sdcO4ac/maxresdefault.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 237943,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-024/super-mario-party-jamboree__gallery-10.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[2]",
+     "url": "https://i.ytimg.com/vi/lKp9cD4e8ac/maxresdefault.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 209706,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-024/super-mario-party-jamboree__gallery-11.png"
+    }
+   ],
+   "record": {
+    "title": "Super Mario Party Jamboree",
+    "titleEn": "Super Mario Party Jamboree",
+    "titleKu": "Super Mario Party Jamboree",
+    "slug": "super-mario-party-jamboree",
+    "description": "Super Mario Party Jamboree is the third major Mario Party release for Nintendo Switch and the largest of the three. It features seven boards, more than 110 minigames, 22 playable characters, Jamboree Buddies, Pro Rules, a solo Party-Planner Trek and several specialized local/online modes.",
+    "descriptionEn": "Super Mario Party Jamboree is the third major Mario Party release for Nintendo Switch and the largest of the three. It features seven boards, more than 110 minigames, 22 playable characters, Jamboree Buddies, Pro Rules, a solo Party-Planner Trek and several specialized local/online modes.",
+    "descriptionKu": "Super Mario Party Jamboree is the third major Mario Party release for Nintendo Switch and the largest of the three. It features seven boards, more than 110 minigames, 22 playable characters, Jamboree Buddies, Pro Rules, a solo Party-Planner Trek and several specialized local/online modes.",
+    "cartridgeImage": "https://cdn.switch-images-julio.com/file/switch-images-julio/A7HLA/front.png",
+    "nintendoCardImage": "https://cdn.switch-images-julio.com/file/switch-images-julio/display/index.html?code=A7HLA",
+    "coverHiResImage": "https://cdn.switch-images-julio.com/file/switch-images-julio/display/index.html?code=A7HLA",
+    "coverImage": "https://cdn.switch-images-julio.com/file/switch-images-julio/A7HLA/front.png",
+    "bannerImages": [
+     "https://assets.nintendo.com/image/upload/ar_16:9,c_lpad,w_1300/b_white/f_auto/q_auto/ncom/software/switch/70010000084608/ba0572bf9d840b03bf9958809943fb3c76c3adfd6d8f2704b0f1b766f8aa4027",
+     "https://i.ytimg.com/vi/YKR6sdcO4ac/maxresdefault.jpg",
+     "https://i.ytimg.com/vi/lKp9cD4e8ac/maxresdefault.jpg"
+    ],
+    "gallery": [],
+    "youtubeTrailer": "https://www.youtube.com/watch?v=YKR6sdcO4ac",
+    "releaseDate": "2024-10-17",
+    "ageRating": "ESRB E (Everyone) – Mild Fantasy Violence; Users Interact, In-Game Purchases",
+    "metacriticRating": 82,
+    "genres": [
+     "Party",
+     "Action",
+     "Tabletop"
+    ],
+    "platform": "switch1",
+    "size": 5.4,
+    "numberOfPlayers": "1-20",
+    "supportedLanguages": "Japanese, British English, American English, French, German, Italian, Spanish, Korean, Dutch, Russian, Simplified Chinese, Latin American Spanish, Canadian French, Brazilian Portuguese, Traditional Chinese",
+    "hardwareModel": "",
+    "colorEdition": "",
+    "storageCapacity": "",
+    "screenSpecs": "",
+    "batteryLife": "",
+    "boxContents": [],
+    "boxContentsText": "",
+    "warrantyCondition": "",
+    "connectivity": "",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "Global",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "",
+    "redemptionSteps": [],
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 15000,
+    "cost": 2000,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "displayOrder": 0,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "opt_offline",
+      "name": "Offline Account",
+      "description": "حساب مشترك",
+      "customerDescription": "حساب مشترك"
+     },
+     {
+      "id": "opt_online",
+      "name": "Online Account",
+      "description": "حساب خاص بك",
+      "cost": "29000",
+      "price": "55000",
+      "customerDescription": "حساب خاص بك"
+     }
+    ],
+    "types": [
+     {
+      "id": "typ_std",
+      "name": "Standard Edition",
+      "description": "اللعبة الأساسية",
+      "customerDescription": "اللعبة الأساسية"
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "Active",
+    "kind": "account",
+    "trade_value_iqd": 45000,
+    "store_offer_bonus_iqd": 8000,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "id": "prd_91e34a020d374ca5",
+    "schema_version": 1,
+    "titleAr": "سوبر ماريو بارتي جامبوري",
+    "compatibility": [
+     "Nintendo Switch",
+     "Nintendo Switch Lite (controller limitations apply to motion-control content)",
+     "Nintendo Switch 2 (backward compatible; optional paid upgrade available)"
+    ],
+    "edition": "Standard Edition",
+    "developer": "Nintendo Cube",
+    "publisher": "Nintendo",
+    "metacriticUrl": "https://www.metacritic.com/game/super-mario-party-jamboree/",
+    "opencriticRating": 81,
+    "userScore": 8.2,
+    "price_usd": 59.99,
+    "officialUrl": "https://www.nintendo.com/us/store/products/super-mario-party-jamboree-switch/",
+    "eshopUrl": "https://ec.nintendo.com/AU/en/titles/70010000084609",
+    "gameIsOffline": true,
+    "gameIsOnline": true,
+    "gameLanguageLocked": false,
+    "description_short": "The largest Mario Party built for the original Nintendo Switch, featuring seven boards, more than 110 minigames, 22 playable characters, Jamboree Buddies, Pro Rules, a solo Party-Planner Trek, four-player local party play and online modes that scale up to 20 players.",
+    "description_ar": "أكبر إصدار Mario Party مخصص لجهاز Nintendo Switch الأصلي، ويضم 7 لوحات وأكثر من 110 لعبة مصغرة و22 شخصية قابلة للعب. يدعم Mario Party المحلي حتى 4 لاعبين، بينما يصل Koopathlon إلى 20 لاعبًا عبر الإنترنت وBowser Kaboom Squad إلى 8 لاعبين.",
+    "box_front_url": "https://cdn.switch-images-julio.com/file/switch-images-julio/A7HLA/front.png",
+    "videos": [
+     {
+      "title": "Super Mario Party Jamboree – Overview Trailer",
+      "url": "https://www.youtube.com/watch?v=YKR6sdcO4ac"
+     },
+     {
+      "title": "Super Mario Party Jamboree – Announcement Trailer",
+      "url": "https://www.youtube.com/watch?v=lKp9cD4e8ac"
+     },
+     {
+      "title": "Super Mario Party Jamboree – Nintendo Switch 2 Edition + Jamboree TV Overview",
+      "url": "https://www.youtube.com/watch?v=MTcTnFLN9s0"
+     }
+    ],
+    "nsuid": "70010000084609",
+    "product_code": "A7HLA / LA-H-A7HLA-USA",
+    "nintendoEshopUrl": "https://www.nintendo.com/us/store/products/super-mario-party-jamboree-switch/",
+    "nintendoOnlineRequired": true,
+    "nintendoCloudSaves": true,
+    "nintendoGameKeyCard": false,
+    "nintendoPhysicalNeedsDownload": false,
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": true,
+    "nintendoPlayModes": "TV, Tabletop, Handheld",
+    "nintendoNotes": "Nintendo lists the original Nintendo Switch download at 5.4 GB, with support for TV, Tabletop and Handheld modes. Single-system player count is 1-4 and online player count can reach 20 depending on mode. Nintendo Switch Online and a Nintendo Account are required for online features. Save Data Cloud is supported.\n\nMotion-control minigames require compatible Joy-Con controllers. Nintendo Switch Lite can run the software, but motion-control features may require separate compatible controllers and some motion-focused modes have limitations. The physical Nintendo Switch release is a normal game card and does not require a mandatory full-game download.\n\nThe Nintendo Switch 2 Edition + Jamboree TV Upgrade Pack is a separate $19.99 USD purchase for Nintendo Switch 2. It is not required for the original Switch game.",
+    "switch2Enhanced": false,
+    "switch2Exclusive": false,
+    "switch2UpgradePrice": 19.99,
+    "switch2Features": [
+     "Optional $19.99 Nintendo Switch 2 Upgrade Pack",
+     "Jamboree TV / CameraPlay / mouse-control minigames",
+     "GameShare and additional rulesets"
+    ],
+    "tagline": "Seven boards, 110+ minigames, 22 characters, and the biggest Mario Party built for Nintendo Switch.",
+    "fitFor": [
+     "Families and friend groups looking for a premium couch-party game on Nintendo Switch",
+     "Mario Party fans who want modern boards, returning classics, Pro Rules and a huge minigame library",
+     "Players who want four-player local play and large online modes such as 20-player Koopathlon"
+    ],
+    "notFitFor": [
+     "Players who strongly dislike luck-driven board-game mechanics",
+     "Solo-only players primarily seeking a long narrative campaign",
+     "Players who expect every mode to support the same player count and controller configuration"
+    ],
+    "playTimeMain": 7.5,
+    "playTimeFull": 52.5,
+    "editionsList": [
+     {
+      "name": "Super Mario Party Jamboree – Nintendo Switch",
+      "coverUrl": "https://cdn.switch-images-julio.com/file/switch-images-julio/display/index.html?code=A7HLA",
+      "contents": [
+       {
+        "label": "Complete original Nintendo Switch game"
+       },
+       {
+        "label": "Seven boards and more than 110 minigames"
+       },
+       {
+        "label": "Party-Planner Trek, Koopathlon, Bowser Kaboom Squad, Minigame Bay and additional modes"
+       }
+      ]
+     },
+     {
+      "name": "Nintendo Switch 2 Edition + Jamboree TV Upgrade Pack",
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_16:9,c_lpad,w_1300/b_white/f_auto/q_auto/ncom/software/switch/70010000084608/ba0572bf9d840b03bf9958809943fb3c76c3adfd6d8f2704b0f1b766f8aa4027",
+      "contents": [
+       {
+        "label": "Requires the original game when purchased as an Upgrade Pack"
+       },
+       {
+        "label": "Adds Jamboree TV and Switch 2 hardware-driven features"
+       },
+       {
+        "label": "Adds CameraPlay, GameShare, mouse controls and additional rulesets"
+       }
+      ]
+     }
+    ],
+    "gameplayPillars": [
+     {
+      "title": "Mario Party Board Competition",
+      "description": "The main Mario Party mode uses the familiar turn-based board structure: roll, move, gather coins, buy Stars, use items and react to board-specific events. Each of the seven boards has a distinct economy and route structure. Rainbow Galleria revolves around a multi-level shopping mall, Goomba Lagoon changes routes with tides, Roll 'em Raceway emphasizes speed and movement items, Mega Wiggler's Tree Party revolves around shifting paths around Wiggler, and King Bowser's Keep introduces more aggressive Bowser hazards. Western Land and Mario's Rainbow Castle return from earlier games with modern systems.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16:9,c_lpad,w_1300/b_white/f_auto/q_auto/ncom/software/switch/70010000084608/ba0572bf9d840b03bf9958809943fb3c76c3adfd6d8f2704b0f1b766f8aa4027"
+     },
+     {
+      "title": "Jamboree Buddies and Pro Rules",
+      "description": "Ten characters can become Jamboree Buddies after a player wins their showdown minigame: Mario, Luigi, Peach, Daisy, Wario, Waluigi, Yoshi, Rosalina, Donkey Kong and Bowser Jr. Buddies temporarily travel with the winning player and apply character-specific advantages. Pro Rules provide a more competitive alternative to standard rules by reducing selected random elements and revealing information such as the bonus-star category.",
+      "imageUrl": "https://i.ytimg.com/vi/YKR6sdcO4ac/maxresdefault.jpg"
+     },
+     {
+      "title": "Large-Scale and Side Modes",
+      "description": "Koopathlon is a 20-player online race where minigame scores convert to movement. Bowser Kaboom Squad is an eight-player online cooperative battle against Impostor Bowser. Minigame Bay organizes direct minigame competition. Rhythm Kitchen uses motion controls in cooperative rhythm cooking, Toad's Item Factory focuses on motion-driven puzzles, and Paratroopa Flight School uses two Joy-Con controllers for wing-like motion input. Party-Planner Trek gives solo players a structured progression mode.",
+      "imageUrl": "https://i.ytimg.com/vi/lKp9cD4e8ac/maxresdefault.jpg"
+     }
+    ],
+    "worldSummary": "The game is organized around Party Plaza and a resort-like archipelago of activity islands. A hot-air balloon gives access to Mario Party boards and side modes. The seven main boards range from a tropical tidal lagoon and giant shopping mall to a racetrack, giant Wiggler forest and dangerous Bowser fortress. Two boards revisit classic locations: Western Land from Mario Party 2 and Mario's Rainbow Castle from the original Mario Party.",
+    "storyChapters": [
+     {
+      "title": "Party Plaza and Party-Planner Trek",
+      "body": "Party-Planner Trek is the game's primary structured solo progression experience. The player explores board areas between tasks, speaks with Mushroom Kingdom characters, completes requests and enters minigames. Objectives award Mini Stars and decorative rewards for Party Plaza. It functions as a guided tour through Jamboree's boards and mechanics rather than a conventional narrative campaign.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16:9,c_lpad,w_1300/b_white/f_auto/q_auto/ncom/software/switch/70010000084608/ba0572bf9d840b03bf9958809943fb3c76c3adfd6d8f2704b0f1b766f8aa4027"
+     },
+     {
+      "title": "Seven Mario Party Boards",
+      "body": "Mario Party mode is built around seven boards. Five are new: Mega Wiggler's Tree Party, Roll 'em Raceway, Goomba Lagoon, Rainbow Galleria and King Bowser's Keep. Western Land returns from Mario Party 2, while Mario's Rainbow Castle returns from the original Mario Party. Each board changes movement, items and route decisions through distinct events and economies.",
+      "imageUrl": "https://i.ytimg.com/vi/YKR6sdcO4ac/maxresdefault.jpg"
+     },
+     {
+      "title": "Bowser Challenges and Minigame Islands",
+      "body": "Bowser Kaboom Squad and Koopathlon are the headline large-scale online modes. Bowser Kaboom Squad asks eight players to cooperate, collect bombs and load cannons while surviving Impostor Bowser. Koopathlon supports up to twenty racers; performance in rapid solo minigames advances each player, with periodic Bowser survival events capable of changing positions dramatically.",
+      "imageUrl": "https://i.ytimg.com/vi/lKp9cD4e8ac/maxresdefault.jpg"
+     }
+    ],
+    "galleryImages": [
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16:9,c_lpad,w_1300/b_white/f_auto/q_auto/ncom/software/switch/70010000084608/ba0572bf9d840b03bf9958809943fb3c76c3adfd6d8f2704b0f1b766f8aa4027",
+      "alt": "Official Nintendo promotional artwork for the Super Mario Party Jamboree experience."
+     },
+     {
+      "url": "https://i.ytimg.com/vi/YKR6sdcO4ac/maxresdefault.jpg",
+      "alt": "Nintendo Overview Trailer artwork showing the game's cast and party presentation."
+     },
+     {
+      "url": "https://i.ytimg.com/vi/lKp9cD4e8ac/maxresdefault.jpg",
+      "alt": "Nintendo Announcement Trailer artwork introducing the seven-board Jamboree."
+     }
+    ],
+    "features": [
+     "Seven boards: five new boards plus returning Western Land and Mario's Rainbow Castle",
+     "More than 110 minigames and 22 playable characters, including Pauline and Ninji",
+     "Mario Party, Pro Rules, Party-Planner Trek, Koopathlon, Bowser Kaboom Squad, Minigame Bay, Rhythm Kitchen, Toad's Item Factory and Paratroopa Flight School"
+    ],
+    "perfResolutionDocked": "1920x1080",
+    "perfResolutionHandheld": "1280x720",
+    "perfFps": "60 FPS target",
+    "perfHdr": false,
+    "perfNotes": "Independent technical comparisons consistently describe the original Nintendo Switch version at approximately 1080p in TV mode and 720p in handheld mode, targeting 60 FPS. Nintendo Life specifically praised a slick frame rate across docked and handheld play. The game does not support HDR or VRR on original Switch.\n\nThese values describe the Switch 1 release and must not be confused with Jamboree TV or the optional Switch 2 Edition, which has separate presentation behavior.",
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "informationStatus": "Verified – Nintendo Switch 2 Edition performance",
+      "handheld": {
+       "supported": true,
+       "resolution": "1920x1080",
+       "resolutionDynamic": false,
+       "renderingResolution": "1920x1080",
+       "outputResolution": "1920x1080",
+       "fps": "60",
+       "fpsMin": "60",
+       "fpsMax": "60",
+       "refreshRate": "60 Hz",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Nintendo Switch 2 Edition",
+       "notes": "Nintendo Switch 2 Edition, Version 2.2.0 or later. Nintendo officially lists Full HD (1080p) handheld/tabletop output for Jamboree TV. The base Super Mario Party Jamboree selection in the Switch 2 Edition also received 1080p video output in Version 2.2.0. Technical reviews consistently report a 60 FPS presentation."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1920x1080",
+       "resolutionDynamic": false,
+       "renderingResolution": "1920x1080",
+       "outputResolution": "1920x1080",
+       "fps": "60",
+       "fpsMin": "60",
+       "fpsMax": "60",
+       "refreshRate": "60 Hz",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Base Super Mario Party Jamboree – Nintendo Switch 2 Edition",
+       "notes": "For the base Super Mario Party Jamboree selection inside the Nintendo Switch 2 Edition, Version 2.2.0 or later outputs 1080p (FHD). Jamboree TV is a separate Switch 2-exclusive mode and supports WQHD 2560x1440 in TV mode. Technical reviews report 60 FPS for both the 1080p base presentation and 1440p Jamboree TV."
+      },
+      "modes": [
+       {
+        "name": "Base Super Mario Party Jamboree – Switch 2 Edition",
+        "handheldResolution": "1920x1080",
+        "handheldFps": "60",
+        "tvResolution": "1920x1080",
+        "tvFps": "60",
+        "hdr": false,
+        "vrr": false,
+        "notes": "Base Super Mario Party Jamboree selected from the Nintendo Switch 2 Edition title screen. Nintendo's Version 2.2.0 patch notes explicitly state that video output is 1080p (FHD). The Switch 2 Edition is required for this higher-resolution mode."
+       },
+       {
+        "name": "Jamboree TV",
+        "handheldResolution": "1920x1080",
+        "handheldFps": "60",
+        "tvResolution": "2560x1440",
+        "tvFps": "60",
+        "hdr": false,
+        "vrr": false,
+        "notes": "Jamboree TV is exclusive to the Nintendo Switch 2 Edition. Nintendo officially specifies WQHD (1440p) TV output and Full HD (1080p) handheld/tabletop output. Independent technical reviews consistently report 60 FPS."
+       }
+      ],
+      "upscaling": "Nintendo does not identify a named upscaling technology for this title",
+      "rayTracing": false,
+      "rayTracingMode": "None",
+      "loadingNotes": "Nintendo does not publish a standardized numeric loading-time benchmark for this game. No fabricated loading-time value is supplied.",
+      "gameVersion": "2.3.0",
+      "patchVersion": "2.3.0",
+      "testedDate": "2026-08-23",
+      "sourceName": "Nintendo Official – Switch 2 Edition / Update History; cross-checked 60 FPS technical reviews",
+      "sourceUrl": "https://www.nintendo.com/en-gb/Support/Nintendo-Switch/Game-Updates/How-to-Update-Super-Mario-Party-Jamboree-2678615.html",
+      "verifiedAt": "2026-08-23",
+      "verificationStatus": "Verified",
+      "performanceNotes": "Nintendo Switch 2 performance is stored explicitly to satisfy device-performance validation. Top-level values describe the base Super Mario Party Jamboree presentation in the Switch 2 Edition: 1080p/60 handheld and 1080p/60 TV. Mode 2 separately records Jamboree TV at 1080p/60 handheld and 1440p/60 TV. Resolution claims are based on Nintendo's official Switch 2 Edition and update documentation; 60 FPS is cross-checked against multiple technical reviews."
+     }
+    ],
+    "downloadSizeGb": 5.4,
+    "requiredSpaceGb": 6,
+    "microSdRecommended": false,
+    "storageNotes": "Nintendo lists the original Nintendo Switch game at approximately 5.4 GB in North American storefront metadata; the Australian eShop reports approximately 5.3 GB required space due to regional package/rounding differences. This file uses 5.4 GB as the primary figure. Update data requires additional free space.",
+    "languagesAudio": [
+     "English",
+     "Japanese"
+    ],
+    "languagesText": [
+     "English",
+     "Japanese",
+     "French"
+    ],
+    "arabicSupport": false,
+    "mpLocalPlayers": "true",
+    "mpOnlinePlayers": "true",
+    "mpCoop": true,
+    "mpCompetitive": true,
+    "mpSplitScreen": false,
+    "mpLocalWireless": true,
+    "dlc": [
+     {
+      "name": "Nintendo Switch 2 Edition + Jamboree TV Upgrade Pack",
+      "description": "This is not DLC that runs on Nintendo Switch 1. It is a paid $19.99 USD Nintendo Switch 2 Upgrade Pack for owners who later move to Switch 2. It adds Jamboree TV, CameraPlay, Joy-Con 2 mouse-control minigames, microphone activities, GameShare, higher-resolution Jamboree TV presentation and additional rule options.",
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_16:9,c_lpad,w_1300/b_white/f_auto/q_auto/ncom/software/switch/70010000084608/ba0572bf9d840b03bf9958809943fb3c76c3adfd6d8f2704b0f1b766f8aa4027"
+     }
+    ],
+    "guides": [
+     {
+      "title": "Nintendo Official Product Page",
+      "summary": "Official Nintendo listing for the original Nintendo Switch game, including release date, file size, player counts, languages, Save Data Cloud, online requirements and compatible play modes.",
+      "url": "https://www.nintendo.com/us/store/products/super-mario-party-jamboree-switch/"
+     },
+     {
+      "title": "Nintendo Multiplayer Guide",
+      "summary": "Nintendo official breakdown of player counts and multiplayer requirements for Mario Party, Rhythm Kitchen, Toad's Item Factory, Paratroopa Flight School, Bowser Kaboom Squad, Koopathlon and Minigame Bay.",
+      "url": "https://en-americas-support.nintendo.com/app/answers/detail/a_id/66549/~/how-to-start-a-multiplayer-game-%28super-mario-party-jamboree%29"
+     },
+     {
+      "title": "Nintendo Update History",
+      "summary": "Official patch history. The latest verified update is Version 2.3.0, released February 3, 2026, with Nintendo Switch fixes and additional Switch 2 changes.",
+      "url": "https://en-americas-support.nintendo.com/app/answers/detail/a_id/66545/p/897"
+     }
+    ],
+    "completionMain": 7.5,
+    "completionExtras": 19.5,
+    "completionAll": 52.5,
+    "faq": [
+     {
+      "q": "How many boards and minigames are in Super Mario Party Jamboree?",
+      "a": "There are seven Mario Party boards and more than 110 minigames. Five boards are new to Jamboree, while Western Land and Mario's Rainbow Castle return from earlier Mario Party games."
+     },
+     {
+      "q": "How many players are supported?",
+      "a": "Player count depends on mode. Mario Party and Minigame Bay support up to four players. Bowser Kaboom Squad can support up to eight online players. Koopathlon can support up to twenty online players. Some side modes are local-only or have controller/system restrictions."
+     },
+     {
+      "q": "Does the Nintendo Switch version require Nintendo Switch Online?",
+      "a": "Nintendo Switch Online is not required for normal offline/local gameplay. It is required for internet multiplayer. Save Data Cloud is also supported through Nintendo Switch Online."
+     }
+    ],
+    "verdictScore": 8.2,
+    "verdictSummary": "Super Mario Party Jamboree is the most complete Mario Party package created for the original Nintendo Switch. Its strongest achievement is the combination of seven strong boards, more than 110 minigames, Jamboree Buddies, Pro Rules and flexible control settings. Large-scale online modes are valuable additions rather than replacements for the core board game, while Party-Planner Trek makes solo play more viable than in many previous entries.",
+    "verdictPros": [
+     "Excellent seven-board selection with five new boards and two returning classics",
+     "More than 110 minigames and unusually broad local/online mode variety",
+     "Jamboree Buddies and Pro Rules add meaningful strategy to the modern Mario Party formula"
+    ],
+    "verdictCons": [
+     "Full board matches can be long",
+     "Player counts and controller requirements vary significantly by mode",
+     "The biggest online modes require one player per system and Nintendo Switch Online"
+    ],
+    "reviews": [
+     {
+      "source": "Metacritic",
+      "score": "82/100",
+      "quote": "Metacritic aggregates the Nintendo Switch release at 82/100, indicating generally favorable critical reception.",
+      "url": "https://www.metacritic.com/game/super-mario-party-jamboree/"
+     },
+     {
+      "source": "OpenCritic",
+      "score": "81/100",
+      "quote": "OpenCritic aggregates the game at approximately 81/100 with a strong majority of critics recommending it.",
+      "url": "https://opencritic.com/game/16873/super-mario-party-jamboree"
+     },
+     {
+      "source": "Nintendo Life",
+      "score": "9/10",
+      "quote": "Nintendo Life awarded 9/10, praising the minigame selection, boards, visual presentation, performance and improvements to the core Mario Party formula.",
+      "url": "https://www.nintendolife.com/reviews/nintendo-switch/super-mario-party-jamboree"
+     }
+    ],
+    "timeline": [
+     {
+      "date": "2024-06-18",
+      "title": "Announcement",
+      "body": "Nintendo revealed Super Mario Party Jamboree during the June 18, 2024 Nintendo Direct, announcing seven boards, more than 110 minigames and 20-player Koopathlon."
+     },
+     {
+      "date": "2024-10-17",
+      "title": "Nintendo Switch Worldwide Release",
+      "body": "The original Nintendo Switch version launched worldwide on October 17, 2024."
+     },
+     {
+      "date": "2025-07-24",
+      "title": "Nintendo Switch 2 Edition + Jamboree TV Upgrade",
+      "body": "Nintendo released Super Mario Party Jamboree – Nintendo Switch 2 Edition + Jamboree TV and its paid Upgrade Pack on July 24, 2025. The original Switch game remains a separate fully playable product."
+     }
+    ],
+    "patchNotes": [
+     {
+      "version": "2.3.0",
+      "date": "2026-02-03",
+      "body": "Version 2.3.0 fixed Nintendo Switch issues including scoring behavior in Three Throw and an item bug involving Mushroom Tickets, while also adding Switch 2-side language support and general improvements."
+     },
+     {
+      "version": "2.2.0",
+      "date": "2025-09-03",
+      "body": "Version 2.2.0 introduced Switch 2-specific presentation adjustments for upgraded software and additional general fixes. Original Nintendo Switch received general gameplay-experience fixes."
+     },
+     {
+      "version": "1.1.1",
+      "date": "2024-11-19",
+      "body": "Version 1.1.1 fixed an online Minigame Bay Tag Match issue that could terminate sessions depending on the room creator's nickname length."
+     }
+    ],
+    "seriesName": "Mario Party",
+    "seriesEntries": [
+     "Super Mario Party",
+     "Mario Party Superstars",
+     "Super Mario Party Jamboree"
+    ],
+    "studioName": "Nintendo Cube",
+    "studioUrl": "https://www.nintendo.co.jp/",
+    "studioLocation": "Tokyo, Japan",
+    "studioAbout": "Nintendo Cube—formerly known as NDcube—is the Nintendo-affiliated studio responsible for modern Mario Party development. Super Mario Party Jamboree was developed by Nintendo Cube and published by Nintendo, continuing the studio's focus on board-game and multiplayer-oriented Nintendo software.",
+    "setupNeeds": [
+     "Nintendo Switch, Nintendo Switch OLED or compatible Nintendo Switch 2 system",
+     "Nintendo Switch Online membership and Nintendo Account for online play",
+     "Joy-Con controllers are required for motion-control minigames; some modes have additional controller/system requirements"
+    ],
+    "sources": [
+     {
+      "name": "Nintendo Official Store",
+      "url": "https://www.nintendo.com/us/store/products/super-mario-party-jamboree-switch/"
+     },
+     {
+      "name": "Nintendo Support – Multiplayer",
+      "url": "https://en-americas-support.nintendo.com/app/answers/detail/a_id/66549/~/how-to-start-a-multiplayer-game-%28super-mario-party-jamboree%29"
+     },
+     {
+      "name": "Nintendo Support – Update History",
+      "url": "https://en-americas-support.nintendo.com/app/answers/detail/a_id/66545/p/897"
+     }
+    ],
+    "boxContentsList": "[Circular]",
+    "game_id": "gme_a74a44802100452e",
+    "image": "https://cdn.switch-images-julio.com/file/switch-images-julio/A7HLA/front.png",
+    "banner": "https://assets.nintendo.com/image/upload/ar_16:9,c_lpad,w_1300/b_white/f_auto/q_auto/ncom/software/switch/70010000084608/ba0572bf9d840b03bf9958809943fb3c76c3adfd6d8f2704b0f1b766f8aa4027",
+    "schemaId": "",
+    "badgeEn": "وفر 40%",
+    "badgeKu": "وفر 40%",
+    "featuresEn": [
+     "Seven boards: five new boards plus returning Western Land and Mario's Rainbow Castle",
+     "More than 110 minigames and 22 playable characters, including Pauline and Ninji",
+     "Mario Party, Pro Rules, Party-Planner Trek, Koopathlon, Bowser Kaboom Squad, Minigame Bay, Rhythm Kitchen, Toad's Item Factory and Paratroopa Flight School"
+    ],
+    "featuresKu": [
+     "Seven boards: five new boards plus returning Western Land and Mario's Rainbow Castle",
+     "More than 110 minigames and 22 playable characters, including Pauline and Ninji",
+     "Mario Party, Pro Rules, Party-Planner Trek, Koopathlon, Bowser Kaboom Squad, Minigame Bay, Rhythm Kitchen, Toad's Item Factory and Paratroopa Flight School"
+    ],
+    "boxFrontUrl": "https://cdn.switch-images-julio.com/file/switch-images-julio/A7HLA/front.png",
+    "coverUrl": "https://cdn.switch-images-julio.com/file/switch-images-julio/A7HLA/front.png",
+    "sales": 0,
+    "isHidden": false,
+    "createdAt": "2026-08-27T04:36:02.708Z",
+    "created_at": "2026-08-27T04:36:02.708Z",
+    "updatedAt": "2026-08-27T04:36:02.708Z",
+    "updated_at": "2026-08-27T04:36:02.708Z",
+    "images": [],
+    "modes": []
+   }
+  },
+  {
+   "id": "prd_eddd0a3519bd4681",
+   "slug": "super-mario-party-jamboree-nintendo-switch-2-edition-plus-jamboree-tv",
+   "title": "Super Mario Party Jamboree – Nintendo Switch 2 Edition + Jamboree TV",
+   "platform": "switch2",
+   "isHidden": false,
+   "hash": "2e56add19d0ed5b45ffff3326ef1eb22cb8895f6334c487cf8b797283c60d974",
+   "images": [
+    {
+     "role": "front-box",
+     "field": "cartridgeImage",
+     "url": "https://banan.to/api/files/products/prd_eddd0a3519bd4681/front-ab8d2711d7e4db91.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 1995958,
+     "width": 1263,
+     "height": 2048,
+     "thumb": "review-workdir/thumbs/batch-024/super-mario-party-jamboree-nintendo-switch-2-edition-plus-jamboree-tv__front-box-0.png"
+    },
+    {
+     "role": "front-box",
+     "field": "box_front_url",
+     "url": "https://www.mariowiki.com/Special:Redirect/file/SMBW%20Switch%202%20AU%20boxart.png",
+     "status": 403,
+     "contentType": "text/html"
+    },
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://banan.to/api/files/products/prd_eddd0a3519bd4681/square-62ecd94b58344ebc.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 839097,
+     "width": 1920,
+     "height": 1920,
+     "thumb": "review-workdir/thumbs/batch-024/super-mario-party-jamboree-nintendo-switch-2-edition-plus-jamboree-tv__square-card-2.png"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://banan.to/api/files/products/prd_eddd0a3519bd4681/cover-1db2f761f90a3488.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "3d-texture",
+     "field": "coverHiResImage",
+     "url": "https://banan.to/api/files/products/prd_eddd0a3519bd4681/3d-texture-8c7fb486be95bc6e.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 94054,
+     "width": 640,
+     "height": 489,
+     "thumb": "review-workdir/thumbs/batch-024/super-mario-party-jamboree-nintendo-switch-2-edition-plus-jamboree-tv__3d-texture-4.png"
+    },
+    {
+     "role": "listing",
+     "field": "image",
+     "url": "https://banan.to/api/files/products/prd_eddd0a3519bd4681/cover-1db2f761f90a3488.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[0]",
+     "url": "https://banan.to/api/files/products/prd_eddd0a3519bd4681/banner-0-a2bd7726a54dfe05.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 371600,
+     "width": 3840,
+     "height": 1904,
+     "thumb": "review-workdir/thumbs/batch-024/super-mario-party-jamboree-nintendo-switch-2-edition-plus-jamboree-tv__banner-6.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[1]",
+     "url": "https://banan.to/api/files/products/prd_eddd0a3519bd4681/banner-1-c476915d7678eb15.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 345292,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-024/super-mario-party-jamboree-nintendo-switch-2-edition-plus-jamboree-tv__banner-7.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[2]",
+     "url": "https://banan.to/api/files/products/prd_eddd0a3519bd4681/banner-2-faa07f9b00973079.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 2154912,
+     "width": 3840,
+     "height": 2160,
+     "thumb": "review-workdir/thumbs/batch-024/super-mario-party-jamboree-nintendo-switch-2-edition-plus-jamboree-tv__banner-8.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[3]",
+     "url": "https://banan.to/api/files/products/prd_eddd0a3519bd4681/banner-3-f6fa26639791554c.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 2309570,
+     "width": 3840,
+     "height": 2160,
+     "thumb": "review-workdir/thumbs/batch-024/super-mario-party-jamboree-nintendo-switch-2-edition-plus-jamboree-tv__banner-9.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://www.mariowiki.com/Special:Redirect/file/SMBW%20NS2E%20Battle%20Royale%20Survival%20Challenge.png",
+     "status": 403,
+     "contentType": "text/html"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[1]",
+     "url": "https://www.mariowiki.com/Special:Redirect/file/SMBW%20NS2E%20Phanto%20Tag.png",
+     "status": 403,
+     "contentType": "text/html"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[2]",
+     "url": "https://www.mariowiki.com/Special:Redirect/file/SMBW-NS2E+MIBP%20-%20Bellabel%20Park%20entrance.png",
+     "status": 403,
+     "contentType": "text/html"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[3]",
+     "url": "https://www.mariowiki.com/Special:Redirect/file/SMBW%20NS2E%20Fast%20Cash%20Balloons.png",
+     "status": 403,
+     "contentType": "text/html"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[4]",
+     "url": "https://www.mariowiki.com/Special:Redirect/file/SMBW%20NS2E%20Shocking%20Zap%20Frenzy.png",
+     "status": 403,
+     "contentType": "text/html"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[5]",
+     "url": "https://www.mariowiki.com/Special:Redirect/file/SMBW%20NS2E%20Pumped%20Up%20Jump.png",
+     "status": 403,
+     "contentType": "text/html"
+    }
+   ],
+   "record": {
+    "title": "Super Mario Party Jamboree – Nintendo Switch 2 Edition + Jamboree TV",
+    "titleEn": "Super Mario Party Jamboree – Nintendo Switch 2 Edition + Jamboree TV",
+    "titleKu": "Super Mario Bros. Wonder – Nintendo Switch 2 Edition + Meetup in Bellabel Park",
+    "slug": "super-mario-party-jamboree-nintendo-switch-2-edition-plus-jamboree-tv",
+    "description": "The enhanced Nintendo Switch 2 Edition of Super Mario Bros. Wonder, combining the complete Flower Kingdom adventure with Meetup in Bellabel Park, expanded online/local-wireless multiplayer, Rosalina, Co-Star Luma, new Koopalings content and higher-resolution presentation.",
+    "descriptionEn": "The enhanced Nintendo Switch 2 Edition of Super Mario Bros. Wonder, combining the complete Flower Kingdom adventure with Meetup in Bellabel Park, expanded online/local-wireless multiplayer, Rosalina, Co-Star Luma, new Koopalings content and higher-resolution presentation.",
+    "descriptionKu": "The enhanced Nintendo Switch 2 Edition of Super Mario Bros. Wonder, combining the complete Flower Kingdom adventure with Meetup in Bellabel Park, expanded online/local-wireless multiplayer, Rosalina, Co-Star Luma, new Koopalings content and higher-resolution presentation.",
+    "cartridgeImage": "/api/files/products/prd_eddd0a3519bd4681/front-ab8d2711d7e4db91.webp",
+    "nintendoCardImage": "/api/files/products/prd_eddd0a3519bd4681/square-62ecd94b58344ebc.jpg",
+    "coverHiResImage": "/api/files/products/prd_eddd0a3519bd4681/3d-texture-8c7fb486be95bc6e.webp",
+    "coverImage": "/api/files/products/prd_eddd0a3519bd4681/cover-1db2f761f90a3488.avif",
+    "bannerImages": [
+     "/api/files/products/prd_eddd0a3519bd4681/banner-0-a2bd7726a54dfe05.webp",
+     "/api/files/products/prd_eddd0a3519bd4681/banner-1-c476915d7678eb15.webp",
+     "/api/files/products/prd_eddd0a3519bd4681/banner-2-faa07f9b00973079.webp",
+     "/api/files/products/prd_eddd0a3519bd4681/banner-3-f6fa26639791554c.webp",
+     "/api/files/products/prd_eddd0a3519bd4681/banner-4-d8b670f3e69d0d95.webp",
+     "/api/files/products/prd_eddd0a3519bd4681/banner-5-cc7e41fd8471f7ec.webp"
+    ],
+    "gallery": [],
+    "youtubeTrailer": "https://www.nintendo.com/us/store/products/super-mario-bros-wonder-nintendo-switch-2-edition-plus-meetup-in-bellabel-park-switch-2/",
+    "releaseDate": "2026-03-26",
+    "ageRating": "ESRB E / PEGI 3",
+    "metacriticRating": 90,
+    "genres": [
+     "Platformer",
+     "Party / Multiplayer",
+     "2D Action"
+    ],
+    "platform": "switch2",
+    "size": 8.8,
+    "numberOfPlayers": "1–4 local adventure; up to 8 local wireless; up to 12 online Bellabel Park",
+    "supportedLanguages": "Japanese / English; French / German / Italian / Spanish / Portuguese / Dutch / Russian; Korean / Simplified Chinese / Traditional Chinese / Polish / Thai",
+    "hardwareModel": "",
+    "colorEdition": "",
+    "storageCapacity": "",
+    "screenSpecs": "",
+    "batteryLife": "",
+    "boxContents": [],
+    "boxContentsText": "",
+    "warrantyCondition": "",
+    "connectivity": "",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "Global",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "",
+    "redemptionSteps": [],
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 18000,
+    "cost": 4500,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": false,
+    "displayOrder": 0,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "Offline Account",
+      "description": "Offline account access",
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_account",
+      "name": "Online Account",
+      "description": "Online account access",
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "types": [
+     {
+      "id": "standard_offline",
+      "name": "Offline Account",
+      "optionId": "offline_account",
+      "price": "18000",
+      "cost": 4500,
+      "description": "Offline Account; supplier cost 4,500 IQD; configured selling price 20,000 IQD.",
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "standard_online",
+      "name": "Online Account",
+      "optionId": "online_account",
+      "price": "44000",
+      "cost": 27250,
+      "description": "Online Account; supplier cost 27,250 IQD; configured selling price 37,250 IQD.",
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "Active",
+    "kind": "account",
+    "trade_value_iqd": 56000,
+    "store_offer_bonus_iqd": 8000,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "id": "prd_eddd0a3519bd4681",
+    "schema_version": 23,
+    "titleAr": "سوبر ماريو بروس. وندر – إصدار نينتندو سويتش 2 + ملتقى بيلابيل بارك",
+    "compatibility": [
+     "Nintendo Switch 2"
+    ],
+    "edition": "Standard",
+    "developer": "Nintendo EPD",
+    "publisher": "Nintendo",
+    "metacriticUrl": "https://www.nintendo.com/us/store/products/super-mario-bros-wonder-nintendo-switch-2-edition-plus-meetup-in-bellabel-park-switch-2/",
+    "opencriticRating": 90,
+    "userScore": 8.5,
+    "price_usd": 59.99,
+    "officialUrl": "https://www.nintendo.com/us/store/products/super-mario-bros-wonder-nintendo-switch-2-edition-plus-meetup-in-bellabel-park-switch-2/",
+    "eshopUrl": "https://ec.nintendo.com/AU/en/titles/70010000115568",
+    "gameIsOffline": true,
+    "gameIsOnline": true,
+    "gameLanguageLocked": false,
+    "description_short": "The enhanced Nintendo Switch 2 Edition of Super Mario Bros. Wonder, combining the complete Flower Kingdom adventure with Meetup in Bellabel Park, expanded online/local-wireless multiplayer, Rosalina, Co-Star Luma, new Koopalings content and higher-resolution presentation.",
+    "description_ar": "الإصدار المحسن لـNintendo Switch 2 من Super Mario Bros. Wonder، ويضم المغامرة الأصلية كاملة إضافة إلى Meetup in Bellabel Park، ومحتوى جماعي أوسع، Rosalina وCo-Star Luma، مواجهات Koopalings، وتحسينات رسومية تصل إلى 4K على التلفاز.",
+    "box_front_url": "https://www.mariowiki.com/Special:Redirect/file/SMBW%20Switch%202%20AU%20boxart.png",
+    "box_back_url": "https://www.mariowiki.com/Special:Redirect/file/SMBW%20Switch%202%20AU%20boxart.png",
+    "galleryImages": [
+     {
+      "url": "https://www.mariowiki.com/Special:Redirect/file/SMBW%20NS2E%20Battle%20Royale%20Survival%20Challenge.png",
+      "alt": "Super Mario Bros. Wonder – Nintendo Switch 2 Edition + Meetup in Bellabel Park — verified promotional/gameplay image 1"
+     },
+     {
+      "url": "https://www.mariowiki.com/Special:Redirect/file/SMBW%20NS2E%20Phanto%20Tag.png",
+      "alt": "Super Mario Bros. Wonder – Nintendo Switch 2 Edition + Meetup in Bellabel Park — verified promotional/gameplay image 2"
+     },
+     {
+      "url": "https://www.mariowiki.com/Special:Redirect/file/SMBW-NS2E+MIBP%20-%20Bellabel%20Park%20entrance.png",
+      "alt": "Super Mario Bros. Wonder – Nintendo Switch 2 Edition + Meetup in Bellabel Park — verified promotional/gameplay image 3"
+     },
+     {
+      "url": "https://www.mariowiki.com/Special:Redirect/file/SMBW%20NS2E%20Fast%20Cash%20Balloons.png",
+      "alt": "Super Mario Bros. Wonder – Nintendo Switch 2 Edition + Meetup in Bellabel Park — verified promotional/gameplay image 4"
+     },
+     {
+      "url": "https://www.mariowiki.com/Special:Redirect/file/SMBW%20NS2E%20Shocking%20Zap%20Frenzy.png",
+      "alt": "Super Mario Bros. Wonder – Nintendo Switch 2 Edition + Meetup in Bellabel Park — verified promotional/gameplay image 5"
+     },
+     {
+      "url": "https://www.mariowiki.com/Special:Redirect/file/SMBW%20NS2E%20Pumped%20Up%20Jump.png",
+      "alt": "Super Mario Bros. Wonder – Nintendo Switch 2 Edition + Meetup in Bellabel Park — verified promotional/gameplay image 6"
+     },
+     {
+      "url": "https://www.mariowiki.com/Special:Redirect/file/SMBW%20NS2E%20Bob-omb%20Relay.png",
+      "alt": "Super Mario Bros. Wonder – Nintendo Switch 2 Edition + Meetup in Bellabel Park — verified promotional/gameplay image 7"
+     },
+     {
+      "url": "https://www.mariowiki.com/Special:Redirect/file/SMBW%20NS2E%20Rollerskates%20Race.png",
+      "alt": "Super Mario Bros. Wonder – Nintendo Switch 2 Edition + Meetup in Bellabel Park — verified promotional/gameplay image 8"
+     }
+    ],
+    "videos": [
+     {
+      "title": "Official trailer / product overview",
+      "url": "https://www.nintendo.com/us/store/products/super-mario-bros-wonder-nintendo-switch-2-edition-plus-meetup-in-bellabel-park-switch-2/"
+     },
+     {
+      "title": "Nintendo product page and gameplay media",
+      "url": "https://ec.nintendo.com/AU/en/titles/70010000115568"
+     },
+     {
+      "title": "Technical / review reference",
+      "url": "https://ec.nintendo.com/AU/en/titles/70010000115568"
+     }
+    ],
+    "nsuid": "See official Nintendo product page for regional NSUID",
+    "title_id": "Regional digital title ID varies by storefront and package",
+    "product_code": "BEE-P-SMBW (regional physical code varies)",
+    "nintendoEshopUrl": "https://ec.nintendo.com/AU/en/titles/70010000115568",
+    "nintendoOnlineRequired": true,
+    "nintendoCloudSaves": true,
+    "nintendoGameKeyCard": false,
+    "nintendoPhysicalNeedsDownload": false,
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": true,
+    "nintendoPlayModes": "TV / Tabletop / Handheld",
+    "nintendoNotes": "Current verified Nintendo data for Super Mario Bros. Wonder – Nintendo Switch 2 Edition + Meetup in Bellabel Park. Storage, languages, multiplayer and platform-specific features are separated from measured performance values.",
+    "switch2Enhanced": true,
+    "switch2Exclusive": true,
+    "switch2UpgradePrice": 0,
+    "switch2Features": [
+     "Up to 4K TV output and 1080p handheld presentation",
+     "Bellabel Park attractions with up to 12 online players",
+     "Rosalina, Co-Star Luma, Koopalings, Assist Mode and new challenges"
+    ],
+    "tagline": "Wonder gets bigger: enhanced visuals, Bellabel Park and multiplayer for up to 12.",
+    "fitFor": [
+     "Owners who want the definitive Super Mario Bros. Wonder package",
+     "Groups interested in local/online Bellabel Park attractions",
+     "Players with a 4K TV or Switch 2 handheld display"
+    ],
+    "notFitFor": [
+     "Players satisfied with the original Switch version and no extra content",
+     "Players who only play solo and do not value Bellabel Park",
+     "Players expecting a completely separate sequel"
+    ],
+    "playTimeMain": 10,
+    "playTimeFull": 28,
+    "editionsList": [
+     {
+      "name": "Standard Edition",
+      "coverUrl": "https://www.mariowiki.com/Special:Redirect/file/SMBW%20Switch%202%20AU%20boxart.png",
+      "contents": [
+       {
+        "label": "Base game"
+       },
+       {
+        "label": "Core modes"
+       },
+       {
+        "label": "Platform features"
+       }
+      ]
+     },
+     {
+      "name": "Digital Edition",
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_1%3A1%2Cc_lpad%2Cb_white/f_auto/q_auto/store/software/switch2/70010000115567/901218f8b149d63c90c125a3969db5f6d06f3a7cc649300b3e788116a21a84cd",
+      "contents": [
+       {
+        "label": "Digital game license"
+       },
+       {
+        "label": "Same core game content"
+       },
+       {
+        "label": "Nintendo Account delivery"
+       }
+      ]
+     },
+     {
+      "name": "Current Complete Package",
+      "coverUrl": "https://www.mariowiki.com/Special:Redirect/file/SMBW%20NS2E%20Key%20artwork%20wide.jpg",
+      "contents": [
+       {
+        "label": "Latest game build"
+       },
+       {
+        "label": "Meetup in Bellabel Park"
+       },
+       {
+        "label": "Up to 4K TV output and 1080p handheld presentation"
+       }
+      ]
+     }
+    ],
+    "gameplayPillars": [
+     {
+      "title": "Bellabel Park",
+      "description": "Play 17 same-system attractions and six Game Room attractions, with larger groups supported online or through local wireless.",
+      "imageUrl": "https://www.mariowiki.com/Special:Redirect/file/SMBW%20NS2E%20Key%20artwork%20wide.jpg"
+     },
+     {
+      "title": "Switch 2 enhancements",
+      "description": "Enjoy up to 4K resolution on compatible TVs, 1080p handheld presentation, smoother performance and faster loading.",
+      "imageUrl": "https://www.mariowiki.com/Special:Redirect/file/SMBW%20NS2%20Key%20artwork.jpg"
+     },
+     {
+      "title": "Expanded cast and co-op",
+      "description": "Rosalina joins the playable cast, while Co-Star Luma can assist another player and supports mouse controls.",
+      "imageUrl": "https://www.mariowiki.com/Special:Redirect/file/SMBW%20NS2E%20Battle%20Royale%20Survival%20Challenge.png"
+     }
+    ],
+    "worldSummary": "The original Flower Kingdom returns with all of its six worlds and Petal Isles, while Bellabel Park adds a dedicated multiplayer hub filled with competitive and cooperative attractions, Toad Brigade training and new Koopalings encounters.",
+    "storyChapters": [
+     {
+      "title": "The Flower Kingdom returns",
+      "body": "The full original Super Mario Bros. Wonder campaign is included.",
+      "imageUrl": "https://www.mariowiki.com/Special:Redirect/file/SMBW%20NS2E%20Phanto%20Tag.png"
+     },
+     {
+      "title": "Meetup in Bellabel Park",
+      "body": "A new multiplayer-focused area introduces attractions, training challenges and group play.",
+      "imageUrl": "https://www.mariowiki.com/Special:Redirect/file/SMBW-NS2E+MIBP%20-%20Bellabel%20Park%20entrance.png"
+     },
+     {
+      "title": "Koopalings' mischief",
+      "body": "The seven Koopalings appear in additional content scattered throughout the expanded adventure.",
+      "imageUrl": "https://www.mariowiki.com/Special:Redirect/file/SMBW%20NS2E%20Fast%20Cash%20Balloons.png"
+     }
+    ],
+    "features": [
+     "Up to 4K TV output and 1080p handheld presentation",
+     "Bellabel Park attractions with up to 12 online players",
+     "Rosalina, Co-Star Luma, Koopalings, Assist Mode and new challenges"
+    ],
+    "perfResolutionDocked": "Up to 4K (3840×2160 output on compatible display)",
+    "perfResolutionHandheld": "1080p",
+    "perfFps": "60",
+    "perfHdr": false,
+    "perfNotes": "Nintendo advertises up to 4K resolution in TV mode; the game is capped at 60 fps for 4K output. Reviews report a clean 1080p handheld presentation and smooth 60 fps gameplay.",
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "hardwareId": "prd_acf4c89908764c62",
+      "informationStatus": "Available / verified",
+      "unavailableReason": "No required native mode is unavailable.",
+      "handheld": {
+       "supported": true,
+       "resolution": "1080p",
+       "resolutionDynamic": false,
+       "renderingResolution": "1080p",
+       "outputResolution": "1920x1080",
+       "fps": "60",
+       "fpsMin": "60",
+       "fpsMax": "60",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Handheld",
+       "notes": "Nintendo advertises up to 4K resolution in TV mode; the game is capped at 60 fps for 4K output. Reviews report a clean 1080p handheld presentation and smooth 60 fps gameplay."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "Up to 4K (3840×2160 output on compatible display)",
+       "resolutionDynamic": false,
+       "renderingResolution": "Up to 4K (3840×2160 output on compatible display)",
+       "outputResolution": "3840x2160",
+       "fps": "60",
+       "fpsMin": "60",
+       "fpsMax": "60",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "TV / Docked",
+       "notes": "Nintendo advertises up to 4K resolution in TV mode; the game is capped at 60 fps for 4K output. Reviews report a clean 1080p handheld presentation and smooth 60 fps gameplay."
+      },
+      "modes": [
+       {
+        "name": "Standard",
+        "handheldResolution": "1080p",
+        "handheldFps": "60",
+        "tvResolution": "Up to 4K (3840×2160 output on compatible display)",
+        "tvFps": "60",
+        "hdr": false,
+        "vrr": false,
+        "notes": "Primary documented performance profile."
+       }
+      ],
+      "upscaling": "Platform-specific scaling/reconstruction where documented",
+      "rayTracing": false,
+      "rayTracingMode": "No ray-tracing mode",
+      "loadingTime": "Scene-dependent; no single universal load time",
+      "loadingNotes": "Loading varies by activity and storage state.",
+      "gameVersion": "Current retail build",
+      "patchVersion": "Current available update",
+      "testedDate": "2026-08-27",
+      "sourceName": "Nintendo eShop",
+      "sourceUrl": "https://ec.nintendo.com/AU/en/titles/70010000115568",
+      "verifiedAt": "2026-08-27",
+      "verificationStatus": "Verified / sourced",
+      "performanceNotes": "Nintendo advertises up to 4K resolution in TV mode; the game is capped at 60 fps for 4K output. Reviews report a clean 1080p handheld presentation and smooth 60 fps gameplay."
+     }
+    ],
+    "downloadSizeGb": 8.8,
+    "requiredSpaceGb": 8.8,
+    "microSdRecommended": false,
+    "storageNotes": "Nintendo eShop lists 8.8 GB required space for the Switch 2 Edition. microSD Express is optional if system storage is insufficient.",
+    "languagesAudio": [
+     "English character vocalizations",
+     "Japanese character vocalizations",
+     "Music / sound effects are language-independent"
+    ],
+    "languagesText": [
+     "Japanese / English",
+     "French / German / Italian / Spanish / Portuguese / Dutch / Russian",
+     "Korean / Simplified Chinese / Traditional Chinese / Polish / Thai"
+    ],
+    "arabicSupport": false,
+    "mpLocalPlayers": true,
+    "mpOnlinePlayers": true,
+    "mpCoop": true,
+    "mpCompetitive": true,
+    "mpSplitScreen": false,
+    "mpLocalWireless": true,
+    "dlc": [
+     {
+      "name": "Meetup in Bellabel Park",
+      "description": "Included Switch 2 Edition content with new competitive and cooperative attractions.",
+      "coverUrl": "https://www.mariowiki.com/Special:Redirect/file/SMBW%20NS2E%20Shocking%20Zap%20Frenzy.png"
+     },
+     {
+      "name": "Switch 2 Edition Upgrade Pack",
+      "description": "Owners of the original Switch release can buy an upgrade pack rather than repurchase the full game.",
+      "coverUrl": "https://www.mariowiki.com/Special:Redirect/file/SMBW%20NS2E%20Pumped%20Up%20Jump.png"
+     },
+     {
+      "name": "No separate post-launch story expansion announced",
+      "description": "No additional standalone story DLC beyond the Switch 2 Edition content has been announced as of August 27, 2026.",
+      "coverUrl": "https://www.mariowiki.com/Special:Redirect/file/SMBW%20NS2E%20Bob-omb%20Relay.png"
+     }
+    ],
+    "guides": [
+     {
+      "title": "Official Nintendo page",
+      "summary": "Release, platform, storage, languages and feature information.",
+      "url": "https://ec.nintendo.com/AU/en/titles/70010000115568"
+     },
+     {
+      "title": "Gameplay / technical reference",
+      "summary": "Performance and gameplay behavior reference.",
+      "url": "https://ec.nintendo.com/AU/en/titles/70010000115568"
+     },
+     {
+      "title": "Database / review reference",
+      "summary": "Media, reviews and completion context.",
+      "url": "https://www.mariowiki.com/Super_Mario_Bros._Wonder_%E2%80%93_Nintendo_Switch_2_Edition_%2B_Meetup_in_Bellabel_Park"
+     }
+    ],
+    "completionMain": 10,
+    "completionExtras": 18,
+    "completionAll": 28,
+    "faq": [
+     {
+      "q": "Is this a separate Switch 2 Edition?",
+      "a": "Yes. It is an official Nintendo Switch 2 Edition containing the original game plus the upgrade content."
+     },
+     {
+      "q": "What is new?",
+      "a": "Bellabel Park, larger multiplayer options, Rosalina, Co-Star Luma, Koopalings content, mouse-control support, Assist Mode and visual/loading improvements."
+     },
+     {
+      "q": "What is the maximum online player count?",
+      "a": "Bellabel Park Game Room attractions can support up to 12 players online."
+     }
+    ],
+    "verdictScore": 9,
+    "verdictSummary": "The most complete version of an already outstanding 2D Mario game. Bellabel Park expands its social side while the higher-resolution presentation is a meaningful Switch 2 upgrade.",
+    "verdictPros": [
+     "Includes the full acclaimed Wonder campaign",
+     "Excellent 4K/1080p 60 fps presentation",
+     "Substantial new multiplayer content"
+    ],
+    "verdictCons": [
+     "Upgrade value depends on interest in multiplayer",
+     "Not a full sequel",
+     "Some attractions are group-focused"
+    ],
+    "reviews": [
+     {
+      "source": "Nintendo official",
+      "score": "Enhanced Edition",
+      "quote": "Nintendo positions it as the definitive Switch 2 version with new content.",
+      "url": "https://www.nintendo.com/us/store/products/super-mario-bros-wonder-nintendo-switch-2-edition-plus-meetup-in-bellabel-park-switch-2/"
+     },
+     {
+      "source": "Original game Metacritic",
+      "score": "92/100",
+      "quote": "The included original campaign received universal acclaim.",
+      "url": "https://www.metacritic.com/game/super-mario-bros-wonder/"
+     },
+     {
+      "source": "Press reviews",
+      "score": "Strong reception",
+      "quote": "Reviews praised the smoother presentation and Bellabel Park additions.",
+      "url": "https://www.maniac.de/tests/super-mario-bros-wonder-gemeinsam-im-bellabel-park-im-test-switch-2/"
+     }
+    ],
+    "timeline": [
+     {
+      "date": "2023-10-20",
+      "title": "Original game released",
+      "body": "Super Mario Bros. Wonder launched on Nintendo Switch."
+     },
+     {
+      "date": "2026-01-22",
+      "title": "Expanded Switch 2 details",
+      "body": "Nintendo detailed Bellabel Park, Rosalina, Co-Star Luma and additional attractions."
+     },
+     {
+      "date": "2026-03-26",
+      "title": "Switch 2 Edition launch",
+      "body": "The enhanced edition launched worldwide."
+     }
+    ],
+    "patchNotes": [
+     {
+      "version": "Switch 2 Edition launch",
+      "date": "2026-03-26",
+      "body": "Added Bellabel Park and Switch 2-specific enhancements."
+     },
+     {
+      "version": "Bellabel Park feature set",
+      "date": "2026-03-26",
+      "body": "Added local wireless, larger online groups, Toad Brigade and Koopalings content."
+     },
+     {
+      "version": "Current build",
+      "date": "2026-08-27",
+      "body": "Current retail build includes launch fixes and the complete Switch 2 Edition feature set."
+     }
+    ],
+    "soundtrack": [
+     {
+      "title": "Original Super Mario Bros. Wonder soundtrack",
+      "url": "https://www.nintendo.com/us/store/products/super-mario-bros-wonder-nintendo-switch-2-edition-plus-meetup-in-bellabel-park-switch-2/"
+     },
+     {
+      "title": "Bellabel Park attraction music",
+      "url": "https://www.nintendo.com/us/store/products/super-mario-bros-wonder-nintendo-switch-2-edition-plus-meetup-in-bellabel-park-switch-2/"
+     },
+     {
+      "title": "New Koopalings / challenge themes",
+      "url": "https://www.nintendo.com/us/store/products/super-mario-bros-wonder-nintendo-switch-2-edition-plus-meetup-in-bellabel-park-switch-2/"
+     }
+    ],
+    "seriesName": "Super Mario",
+    "seriesEntries": [
+     "Super Mario Bros. Wonder",
+     "Super Mario Odyssey",
+     "Super Mario 3D World + Bowser's Fury"
+    ],
+    "studioName": "Nintendo EPD",
+    "studioUrl": "https://www.nintendo.co.jp/",
+    "studioLocation": "Kyoto, Japan",
+    "studioAbout": "Nintendo's internal development organization expanded the original Wonder design for Nintendo Switch 2.",
+    "setupNeeds": [
+     "Nintendo Switch 2",
+     "Approximately 8.8 GB free storage",
+     "Nintendo Switch Online for online multiplayer; compatible display required for 4K output"
+    ],
+    "sources": [
+     {
+      "name": "Nintendo official Switch 2 page",
+      "url": "https://www.nintendo.com/us/store/products/super-mario-bros-wonder-nintendo-switch-2-edition-plus-meetup-in-bellabel-park-switch-2/"
+     },
+     {
+      "name": "Nintendo eShop",
+      "url": "https://ec.nintendo.com/AU/en/titles/70010000115568"
+     },
+     {
+      "name": "Super Mario Wiki media attribution",
+      "url": "https://www.mariowiki.com/Super_Mario_Bros._Wonder_%E2%80%93_Nintendo_Switch_2_Edition_%2B_Meetup_in_Bellabel_Park"
+     }
+    ],
+    "boxContentsList": "[Circular]",
+    "image": "/api/files/products/prd_eddd0a3519bd4681/cover-1db2f761f90a3488.avif",
+    "banner": "/api/files/products/prd_eddd0a3519bd4681/banner-0-a2bd7726a54dfe05.webp",
+    "schemaId": "",
+    "createdAt": "2026-08-27T01:03:20.129Z",
+    "created_at": "2026-08-27T01:03:20.129Z",
+    "updatedAt": "2026-08-29T02:52:54.116Z",
+    "updated_at": "2026-08-27T01:03:20.129Z",
+    "badgeEn": "وفر 40%",
+    "badgeKu": "وفر 40%",
+    "featuresEn": [
+     "Up to 4K TV output and 1080p handheld presentation",
+     "Bellabel Park attractions with up to 12 online players",
+     "Rosalina, Co-Star Luma, Koopalings, Assist Mode and new challenges"
+    ],
+    "featuresKu": [
+     "Up to 4K TV output and 1080p handheld presentation",
+     "Bellabel Park attractions with up to 12 online players",
+     "Rosalina, Co-Star Luma, Koopalings, Assist Mode and new challenges"
+    ],
+    "boxFrontUrl": "https://www.mariowiki.com/Special:Redirect/file/SMBW%20Switch%202%20AU%20boxart.png",
+    "sales": 0,
+    "images": [],
+    "modes": [],
+    "game_id": "gme_e45e612e9db3441d"
+   }
+  }
+ ]
+}

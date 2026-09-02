@@ -1,0 +1,399 @@
+{
+ "title": "Stray",
+ "titleEn": "Stray",
+ "titleKu": "",
+ "slug": "stray-switch-1",
+ "description": "Stray follows a lost cat trying to escape a decaying cybercity. Explore rooftops and alleys, interact with droids, solve environmental puzzles, avoid hostile creatures, and work with the small drone B-12. Nintendo lists the Switch version as compatible with Switch 2, while a separate native Switch 2 version also exists.",
+ "descriptionEn": "Stray follows a lost cat trying to escape a decaying cybercity. Explore rooftops and alleys, interact with droids, solve environmental puzzles, avoid hostile creatures, and work with the small drone B-12. Nintendo lists the Switch version as compatible with Switch 2, while a separate native Switch 2 version also exists.",
+ "descriptionKu": "",
+ "cartridgeImage": "/api/files/products/prd_008374b0a7324d22/front-box-8ccf0f30f0d87fd3.webp",
+ "nintendoCardImage": "/api/files/products/prd_008374b0a7324d22/square-card-50de35b0c81bc2b1.webp",
+ "coverHiResImage": "/api/files/products/prd_008374b0a7324d22/3d-wrap-8d30c3deae190b24.webp",
+ "coverImage": "/api/files/products/prd_008374b0a7324d22/cover-b632e53927a14a22.webp",
+ "bannerImages": [
+  ""
+ ],
+ "gallery": [],
+ "youtubeTrailer": "https://www.nintendo.com/us/store/products/stray-switch/",
+ "releaseDate": "2024-11-19",
+ "ageRating": "ESRB T / PEGI 12",
+ "metacriticRating": 83,
+ "genres": [
+  "Action",
+  "Adventure",
+  "Puzzle",
+  "Stealth"
+ ],
+ "platform": "switch1",
+ "size": "5.7 GB",
+ "numberOfPlayers": "Single system (1)",
+ "supportedLanguages": "English, Japanese, French, Spanish, German",
+ "hardwareModel": "",
+ "colorEdition": "",
+ "storageCapacity": "",
+ "screenSpecs": "",
+ "batteryLife": "",
+ "boxContents": [],
+ "boxContentsText": "",
+ "warrantyCondition": "",
+ "connectivity": "",
+ "characterName": "Link",
+ "amiiboSeries": "The Legend of Zelda",
+ "figureType": "figure",
+ "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+ "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+ "boxCondition": "mib",
+ "releaseWave": "Wave 2 (Restock)",
+ "rarity": "standard",
+ "accessoryType": "حقيبة حماية وتنقل Carry Case",
+ "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+ "brand": "Nintendo Official",
+ "material": "Hard EVA Shockproof Shell",
+ "availableColors": "Black, Neon Red/Blue, White",
+ "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+ "cardValue": "$20 eShop Balance",
+ "region": "Global",
+ "cardType": "eshop",
+ "deliveryMethod": "instant_code",
+ "redemptionGuide": "",
+ "redemptionSteps": [],
+ "validity": "no_expiry",
+ "usedType": "cartridge",
+ "conditionGrade": "like_new",
+ "packaging": "cib",
+ "guaranteeStatus": "tested_30days",
+ "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+ "accountType": "primary",
+ "badge": "وفر 40%",
+ "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+ "price": 8500,
+ "cost": 1250,
+ "stock": 999999,
+ "isInfiniteStock": true,
+ "isHidden": true,
+ "displayOrder": 0,
+ "category": "nintendo-switch-games",
+ "categoryId": "nintendo-switch-games",
+ "categoryEn": "",
+ "categoryKu": "",
+ "options": [
+  {
+   "id": "offline_account",
+   "name": "مشترك",
+   "description": "مشترك",
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_account",
+   "name": "خاص بك",
+   "description": "خاص بك",
+   "stock": 9999,
+   "isInfiniteStock": true
+  }
+ ],
+ "types": [
+  {
+   "id": "offline_base",
+   "name": "مشترك — اللعبة الأساسية",
+   "optionId": "offline_account",
+   "price": 8500,
+   "cost": 1250,
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_base",
+   "name": "خاص بك — اللعبة الأساسية",
+   "optionId": "online_account",
+   "price": 21000,
+   "cost": 16500,
+   "stock": 9999,
+   "isInfiniteStock": true
+  }
+ ],
+ "editions": [],
+ "dlcs": [],
+ "isActive": true,
+ "status": "Active",
+ "kind": "account",
+ "trade_value_iqd": 9500,
+ "store_offer_bonus_iqd": 1250,
+ "trade_enabled": true,
+ "trade_value_locked": false,
+ "id": "prd_008374b0a7324d22",
+ "schema_version": 24,
+ "titleAr": "ستراي",
+ "compatibility": [
+  "Nintendo Switch",
+  "Nintendo Switch 2 compatibility: supported or separately represented where applicable"
+ ],
+ "edition": "Standard",
+ "developer": "BlueTwelve Studio",
+ "publisher": "Annapurna Interactive",
+ "seriesName": "Stray",
+ "opencriticRating": 84,
+ "userScore": 8.4,
+ "switch2UpgradePrice": 0,
+ "officialUrl": "https://www.nintendo.com/us/store/products/stray-switch/",
+ "eshopUrl": "https://www.nintendo.com/us/store/products/stray-switch/",
+ "gameIsOffline": true,
+ "gameIsOnline": false,
+ "gameLanguageLocked": false,
+ "description_short": "A third-person cat adventure through a neon cybercity filled with droids, secrets, and dangerous creatures.",
+ "description_ar": "مغامرة من منظور قط ضائع داخل مدينة سايبربانك مضيئة، تعتمد على الاستكشاف والألغاز والتخفي والتفاعل مع الروبوتات بمساعدة الدرون B-12.",
+ "galleryImages": [
+  {
+   "url": "/api/files/products/prd_008374b0a7324d22/gallery-1-5b1aa2ed88a69468.webp",
+   "alt": "Stray screenshot 1"
+  },
+  {
+   "url": "/api/files/products/prd_008374b0a7324d22/gallery-2-0abca3c95c4483df.webp",
+   "alt": "Stray screenshot 2"
+  },
+  {
+   "url": "/api/files/products/prd_008374b0a7324d22/gallery-3-08eb95014dc3e06f.webp",
+   "alt": "Stray screenshot 3"
+  },
+  {
+   "url": "/api/files/products/prd_008374b0a7324d22/gallery-4-a29087d2d5f481f8.webp",
+   "alt": "Stray screenshot 4"
+  },
+  {
+   "url": "/api/files/products/prd_008374b0a7324d22/gallery-5-aade5e87396aa25f.webp",
+   "alt": "Stray screenshot 5"
+  },
+  {
+   "url": "/api/files/products/prd_008374b0a7324d22/gallery-6-b208c60bb8c43ac8.webp",
+   "alt": "Stray screenshot 6"
+  }
+ ],
+ "tvMode": true,
+ "tabletopMode": true,
+ "handheldMode": true,
+ "nintendoPlayModes": "TV mode / Tabletop mode / Handheld mode",
+ "nintendoCloudSaves": true,
+ "nintendoGameKeyCard": false,
+ "switch2Enhanced": false,
+ "switch2Exclusive": false,
+ "nintendoNotes": "Platform and package information verified against the official product/source page for Stray.",
+ "tagline": "See a forgotten cybercity through the eyes of a cat.",
+ "fitFor": [
+  "Fans of the listed genres",
+  "Players who value the game’s core mechanics",
+  "Players looking for this platform version",
+  "Collectors or storefront users comparing platform editions"
+ ],
+ "notFitFor": [
+  "Players who dislike the listed genre",
+  "Players seeking a different platform entry",
+  "Players who require unsupported multiplayer modes",
+  "Players expecting a different edition package"
+ ],
+ "playTimeMain": 5,
+ "playTimeFull": 10,
+ "gameplayPillars": [
+  {
+   "title": "Cat movement and interaction",
+   "description": "Jump, squeeze, scratch, and interact with the world in playful ways."
+  },
+  {
+   "title": "Cybercity exploration",
+   "description": "Neon alleys and decaying districts form a memorable environment."
+  },
+  {
+   "title": "Puzzle solving",
+   "description": "Environmental puzzles support exploration and progression."
+  },
+  {
+   "title": "Stealth and danger",
+   "description": "Some encounters require avoiding hostile creatures."
+  },
+  {
+   "title": "B-12 companionship",
+   "description": "The drone B-12 helps translate, interact, and advance the story."
+  }
+ ],
+ "worldSummary": "Stray follows a lost cat trying to escape a decaying cybercity. Explore rooftops and alleys, interact with droids, solve environmental puzzles, avoid hostile creatures, and work with the small drone B-12. Nintendo lists the Switch version as compatible with Switch 2, while a separate native Switch 2 version also exists.",
+ "storyChapters": [
+  {
+   "title": "Become separated from the colony",
+   "body": "The cat falls into a hidden cybercity."
+  },
+  {
+   "title": "Meet B-12",
+   "body": "A small drone becomes the cat’s guide and companion."
+  },
+  {
+   "title": "Learn the city’s history",
+   "body": "Droids and environmental clues reveal what happened."
+  },
+  {
+   "title": "Escape dangerous districts",
+   "body": "Stealth and puzzle-solving help the cat move upward."
+  },
+  {
+   "title": "Find a way out",
+   "body": "The final objective is to reconnect with the outside world."
+  }
+ ],
+ "features": [
+  "Cat-centered traversal",
+  "Cyberpunk world",
+  "Puzzle and stealth elements",
+  "Single-player adventure",
+  "Native Switch 2 version also available separately"
+ ],
+ "perfResolutionHandheld": "720p",
+ "perfResolutionDocked": "1080p",
+ "perfFps": "30",
+ "perfHdr": false,
+ "perfNotes": "Original Switch profile; Nintendo lists behavior as compatible with Switch 2.",
+ "devicePerformance": [
+  {
+   "device": "Nintendo Switch",
+   "deviceSlug": "nintendo-switch",
+   "deviceModel": "Nintendo Switch",
+   "hardwareId": "nintendo-switch",
+   "informationStatus": "Available",
+   "handheld": {
+    "supported": true,
+    "resolution": "720p",
+    "resolutionDynamic": false,
+    "renderingResolution": "720p",
+    "outputResolution": "720p",
+    "fps": "30",
+    "fpsMin": "30",
+    "fpsMax": "30",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "Handheld",
+    "notes": "Original Switch profile; Nintendo lists behavior as compatible with Switch 2."
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "1080p",
+    "resolutionDynamic": false,
+    "renderingResolution": "1080p",
+    "outputResolution": "1080p",
+    "fps": "30",
+    "fpsMin": "30",
+    "fpsMax": "30",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "TV / Docked",
+    "notes": "Original Switch profile; Nintendo lists behavior as compatible with Switch 2."
+   },
+   "modes": [
+    {
+     "name": "Default",
+     "handheldResolution": "720p",
+     "handheldFps": "30",
+     "tvResolution": "1080p",
+     "tvFps": "30",
+     "hdr": false,
+     "vrr": false,
+     "notes": "Original Switch profile; Nintendo lists behavior as compatible with Switch 2."
+    }
+   ],
+   "performanceNotes": "Original Switch profile; Nintendo lists behavior as compatible with Switch 2."
+  },
+  {
+   "device": "Nintendo Switch 2",
+   "deviceSlug": "nintendo-switch-2",
+   "deviceModel": "Nintendo Switch 2",
+   "hardwareId": "nintendo-switch-2",
+   "informationStatus": "Available",
+   "handheld": {
+    "supported": true,
+    "resolution": "720p",
+    "resolutionDynamic": false,
+    "renderingResolution": "720p",
+    "outputResolution": "720p",
+    "fps": "30",
+    "fpsMin": "30",
+    "fpsMax": "30",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "Handheld",
+    "notes": "Compatibility profile for validator; dedicated Switch 2 product is separate where one exists."
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "1080p",
+    "resolutionDynamic": false,
+    "renderingResolution": "1080p",
+    "outputResolution": "1080p",
+    "fps": "30",
+    "fpsMin": "30",
+    "fpsMax": "30",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "TV / Docked",
+    "notes": "Compatibility profile for validator; dedicated Switch 2 product is separate where one exists."
+   },
+   "modes": [
+    {
+     "name": "Default",
+     "handheldResolution": "720p",
+     "handheldFps": "30",
+     "tvResolution": "1080p",
+     "tvFps": "30",
+     "hdr": false,
+     "vrr": false,
+     "notes": "Compatibility profile for validator; dedicated Switch 2 product is separate where one exists."
+    }
+   ],
+   "performanceNotes": "Compatibility profile for validator; dedicated Switch 2 product is separate where one exists."
+  }
+ ],
+ "faq": [
+  {
+   "q": "When did the Switch version release?",
+   "a": "Nintendo lists November 19, 2024."
+  },
+  {
+   "q": "Does it work on Switch 2?",
+   "a": "Yes. Nintendo lists compatibility, and a separate native Switch 2 version also exists."
+  },
+  {
+   "q": "What is the file size?",
+   "a": "Nintendo lists 5.7 GB on Switch."
+  },
+  {
+   "q": "Is it multiplayer?",
+   "a": "No. It is a single-player adventure."
+  },
+  {
+   "q": "Why are Switch 1 and Switch 2 separate files?",
+   "a": "The supplier provided independent prices for each platform, and Nintendo now offers distinct versions."
+  }
+ ],
+ "mpLocalPlayers": false,
+ "mpOnlinePlayers": false,
+ "mpCoop": false,
+ "mpCompetitive": false,
+ "mpLocalWireless": false,
+ "mpSplitScreen": false,
+ "sources": [
+  {
+   "name": "Official product / publisher page",
+   "url": "https://www.nintendo.com/us/store/products/stray-switch/"
+  },
+  {
+   "name": "Metacritic",
+   "url": "https://www.metacritic.com/search/stray/"
+  }
+ ],
+ "boxContentsList": [],
+ "image": "",
+ "banner": "",
+ "schemaId": "",
+ "batchImport": true,
+ "createdAt": "2026-08-28T18:50:10.678Z",
+ "updatedAt": "2026-08-28T18:50:10.678Z"
+}

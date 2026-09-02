@@ -1,0 +1,51 @@
+{
+ "batch": "024",
+ "apply": false,
+ "games": [
+  {
+   "id": "prd_99e5727e6bc7469f",
+   "slug": "super-mario-bros-wonder-switch",
+   "baseHash": "468aedef5a736f201f09efd715b3edf664060bdab80f19768537bc006f450f6c",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  },
+  {
+   "id": "prd_d74598d589434852",
+   "slug": "super-mario-galaxy-plus-super-mario-galaxy-2-switch",
+   "baseHash": "43e71a4dca43f697ee82fb35fffaf481dbdbf73e902d6c21034758be50c72bf6",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  },
+  {
+   "id": "prd_8305beacb7f14685",
+   "slug": "super-mario-odyssey",
+   "baseHash": "3beb8eb6d7d9655033fa523d8cf23dbddcc6087dfb1c68314b65dd5f5f31f543",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  },
+  {
+   "id": "prd_91e34a020d374ca5",
+   "slug": "super-mario-party-jamboree",
+   "baseHash": "124f4f9466908145f3d960ea7fccec5f3e4944b1f93c7661a1f00e5b6b52bac2",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  },
+  {
+   "id": "prd_eddd0a3519bd4681",
+   "slug": "super-mario-party-jamboree-nintendo-switch-2-edition-plus-jamboree-tv",
+   "baseHash": "2e56add19d0ed5b45ffff3326ef1eb22cb8895f6334c487cf8b797283c60d974",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  }
+ ]
+}

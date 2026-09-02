@@ -1,0 +1,579 @@
+{
+ "title": "Super Mario 3D World + Bowser's Fury",
+ "titleEn": "Super Mario 3D World + Bowser's Fury",
+ "titleKu": "Super Mario 3D World + Bowser's Fury",
+ "slug": "super-mario-3d-world-plus-bowsers-fury-switch",
+ "description": "A two-part Mario package: the faster Switch version of Super Mario 3D World with four-player local/online co-op, plus Bowser's Fury, a free-roaming Lake Lapcat adventure where Mario and Bowser Jr. collect Cat Shines while surviving Fury Bowser.",
+ "descriptionEn": "A two-part Mario package: the faster Switch version of Super Mario 3D World with four-player local/online co-op, plus Bowser's Fury, a free-roaming Lake Lapcat adventure where Mario and Bowser Jr. collect Cat Shines while surviving Fury Bowser.",
+ "descriptionKu": "A two-part Mario package: the faster Switch version of Super Mario 3D World with four-player local/online co-op, plus Bowser's Fury, a free-roaming Lake Lapcat adventure where Mario and Bowser Jr. collect Cat Shines while surviving Fury Bowser.",
+ "cartridgeImage": "/api/files/products/prd_4b3c62c6fc504c9b/front-d6a49571d7b03fbc.jpg",
+ "nintendoCardImage": "/api/files/products/prd_4b3c62c6fc504c9b/square-1b71093403571273.jpg",
+ "coverHiResImage": "/api/files/products/prd_4b3c62c6fc504c9b/3d-texture-50c724bfc56d10e1.webp",
+ "coverImage": "/api/files/products/prd_4b3c62c6fc504c9b/cover-c3a5f061b0f4e5d7.jpg",
+ "bannerImages": [
+  "/api/files/products/prd_4b3c62c6fc504c9b/banner-1-91c5b294494173ea.jpg",
+  "/api/files/products/prd_4b3c62c6fc504c9b/banner-1-b1703b6dbdddabee.jpg",
+  "/api/files/products/prd_4b3c62c6fc504c9b/banner-2-feabf6997a47510f.jpg"
+ ],
+ "gallery": [],
+ "youtubeTrailer": "https://supermario3dworld.nintendo.com/",
+ "releaseDate": "2021-02-12",
+ "ageRating": "ESRB E / PEGI 7",
+ "metacriticRating": 89,
+ "genres": [
+  "3D Platformer",
+  "Action Adventure",
+  "Co-op"
+ ],
+ "platform": "switch1",
+ "size": 3,
+ "numberOfPlayers": "1–4 local; 2–4 local wireless; 2–4 online",
+ "supportedLanguages": "Japanese / English; French / German / Italian / Spanish / Portuguese / Dutch / Russian; Korean / Simplified Chinese / Traditional Chinese",
+ "hardwareModel": "",
+ "colorEdition": "",
+ "storageCapacity": "",
+ "screenSpecs": "",
+ "batteryLife": "",
+ "boxContents": [],
+ "boxContentsText": "",
+ "warrantyCondition": "",
+ "connectivity": "",
+ "characterName": "Link",
+ "amiiboSeries": "The Legend of Zelda",
+ "figureType": "figure",
+ "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+ "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+ "boxCondition": "mib",
+ "releaseWave": "Wave 2 (Restock)",
+ "rarity": "standard",
+ "accessoryType": "حقيبة حماية وتنقل Carry Case",
+ "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+ "brand": "Nintendo Official",
+ "material": "Hard EVA Shockproof Shell",
+ "availableColors": "Black, Neon Red/Blue, White",
+ "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+ "cardValue": "$20 eShop Balance",
+ "region": "Global",
+ "cardType": "eshop",
+ "deliveryMethod": "instant_code",
+ "redemptionGuide": "",
+ "redemptionSteps": [],
+ "validity": "no_expiry",
+ "usedType": "cartridge",
+ "conditionGrade": "like_new",
+ "packaging": "cib",
+ "guaranteeStatus": "tested_30days",
+ "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+ "accountType": "primary",
+ "badge": "وفر 40%",
+ "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+ "price": 12000,
+ "cost": 1750,
+ "stock": 999999,
+ "isInfiniteStock": true,
+ "isHidden": false,
+ "displayOrder": 0,
+ "category": "nintendo-switch-games",
+ "categoryId": "nintendo-switch-games",
+ "categoryEn": "",
+ "categoryKu": "",
+ "options": [
+  {
+   "id": "offline_account",
+   "name": "Offline Account",
+   "description": "Offline account access",
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_account",
+   "name": "Online Account",
+   "description": "Online account access",
+   "stock": 9999,
+   "isInfiniteStock": true
+  }
+ ],
+ "types": [
+  {
+   "id": "standard_offline",
+   "name": "Offline Account",
+   "optionId": "offline_account",
+   "price": "12000",
+   "cost": 1750,
+   "description": "Offline Account; supplier cost 1,750 IQD; selling price 15,000 IQD.",
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "standard_online",
+   "name": "Online Account",
+   "optionId": "online_account",
+   "price": "35000",
+   "cost": 20750,
+   "description": "Online Account; supplier cost 20,750 IQD; selling price 30,750 IQD.",
+   "stock": 9999,
+   "isInfiniteStock": true
+  }
+ ],
+ "editions": [],
+ "dlcs": [],
+ "isActive": true,
+ "status": "Active",
+ "kind": "account",
+ "trade_value_iqd": 39000,
+ "store_offer_bonus_iqd": 7000,
+ "trade_enabled": true,
+ "trade_value_locked": false,
+ "id": "prd_4b3c62c6fc504c9b",
+ "schema_version": 23,
+ "titleAr": "سوبر ماريو 3D وورلد + باوزرز فيوري",
+ "compatibility": [
+  "Nintendo Switch",
+  "Nintendo Switch 2 (backward compatible / enhanced where applicable)"
+ ],
+ "edition": "Standard",
+ "developer": "Nintendo EPD",
+ "publisher": "Nintendo",
+ "metacriticUrl": "https://www.metacritic.com/game/super-mario-3d-world-plus-bowsers-fury/",
+ "opencriticRating": 89,
+ "userScore": 8.8,
+ "price_usd": 59.99,
+ "officialUrl": "https://supermario3dworld.nintendo.com/",
+ "eshopUrl": "https://www.nintendo.com/us/store/products/super-mario-3d-world-plus-bowsers-fury-switch/",
+ "gameIsOffline": true,
+ "gameIsOnline": true,
+ "gameLanguageLocked": false,
+ "description_short": "A two-part Mario package: the faster Switch version of Super Mario 3D World with four-player local/online co-op, plus Bowser's Fury, a free-roaming Lake Lapcat adventure where Mario and Bowser Jr. collect Cat Shines while surviving Fury Bowser.",
+ "description_ar": "حزمة تضم Super Mario 3D World المحسنة على Switch مع تعاون محلي وأونلاين حتى أربعة لاعبين، إضافة إلى Bowser's Fury وهي مغامرة حرة في Lake Lapcat يتعاون فيها Mario وBowser Jr. لجمع Cat Shines ومواجهة Fury Bowser.",
+ "box_front_url": "https://images.launchbox-app.com/e2d2005b-788a-4999-b418-e3bd52db587a.jpg",
+ "box_back_url": "https://images.launchbox-app.com/42a9cfb8-8ad8-4702-a10e-e73fc43f79fd.jpg",
+ "galleryImages": [
+  {
+   "url": "https://images.launchbox-app.com/59c9bd8c-4dcd-4f42-af62-8c382aa301d7.jpg",
+   "alt": "Super Mario 3D World + Bowser's Fury — distinct gameplay/promotional image 1"
+  },
+  {
+   "url": "https://images.launchbox-app.com/157829e9-eed7-4b2a-b21a-c3a291260f14.jpg",
+   "alt": "Super Mario 3D World + Bowser's Fury — distinct gameplay/promotional image 2"
+  },
+  {
+   "url": "https://images.launchbox-app.com/fa1b4f3d-6983-4b3f-b20e-beb6f7e4c326.jpg",
+   "alt": "Super Mario 3D World + Bowser's Fury — distinct gameplay/promotional image 3"
+  },
+  {
+   "url": "https://images.launchbox-app.com/229ee9bc-3556-4ad1-b49e-490baa61aad5.jpg",
+   "alt": "Super Mario 3D World + Bowser's Fury — distinct gameplay/promotional image 4"
+  }
+ ],
+ "videos": [
+  {
+   "title": "Official game page / trailer",
+   "url": "https://supermario3dworld.nintendo.com/"
+  },
+  {
+   "title": "Nintendo / publisher product information",
+   "url": "https://www.nintendo.com/us/store/products/super-mario-3d-world-plus-bowsers-fury-switch/"
+  },
+  {
+   "title": "Technical or database reference",
+   "url": "https://en-americas-support.nintendo.com/app/answers/detail/a_id/54589/"
+  }
+ ],
+ "nsuid": "See regional Nintendo eShop listing",
+ "title_id": "Regional title identifier varies by Nintendo storefront",
+ "product_code": "HAC-P-AUZPA",
+ "nintendoEshopUrl": "https://www.nintendo.com/us/store/products/super-mario-3d-world-plus-bowsers-fury-switch/",
+ "nintendoOnlineRequired": true,
+ "nintendoCloudSaves": true,
+ "nintendoGameKeyCard": false,
+ "nintendoPhysicalNeedsDownload": false,
+ "tvMode": true,
+ "tabletopMode": true,
+ "handheldMode": true,
+ "nintendoPlayModes": "TV / Tabletop / Handheld",
+ "nintendoNotes": "Verified game-page data for Super Mario 3D World + Bowser's Fury; measured performance is separated from system maximum capabilities.",
+ "switch2Enhanced": true,
+ "switch2Exclusive": false,
+ "switch2UpgradePrice": 0,
+ "switch2Features": [
+  "Super Mario 3D World with faster Switch movement",
+  "Bowser's Fury open-area adventure",
+  "Free Switch 2 update with improved visuals/frame rate, HDR in Bowser's Fury and GameShare"
+ ],
+ "tagline": "Two different Mario adventures: course-based multiplayer and a free-roaming Bowser showdown.",
+ "fitFor": [
+  "3D Mario fans",
+  "Families wanting four-player co-op",
+  "Players who want both structured levels and an open-area Mario adventure"
+ ],
+ "notFitFor": [
+  "Players seeking one continuous long open world",
+  "Players who dislike collectible platformers",
+  "Players expecting a completely new full-length sequel"
+ ],
+ "playTimeMain": 10.5,
+ "playTimeFull": 28,
+ "editionsList": [
+  {
+   "name": "Standard Edition",
+   "coverUrl": "https://images.launchbox-app.com/e2d2005b-788a-4999-b418-e3bd52db587a.jpg",
+   "contents": [
+    {
+     "label": "Base game"
+    },
+    {
+     "label": "Core content"
+    },
+    {
+     "label": "Current updates"
+    }
+   ]
+  },
+  {
+   "name": "Digital Edition",
+   "coverUrl": "https://images.launchbox-app.com/2cbc79de-50af-4780-bcfd-9d824080fca1.jpg",
+   "contents": [
+    {
+     "label": "Digital entitlement"
+    },
+    {
+     "label": "Same core game"
+    },
+    {
+     "label": "Nintendo Account delivery"
+    }
+   ]
+  },
+  {
+   "name": "Current Complete Package",
+   "coverUrl": "https://images.launchbox-app.com/bf35fd71-69a6-43b5-8578-9e5f379e692f.jpg",
+   "contents": [
+    {
+     "label": "Latest build"
+    },
+    {
+     "label": "Bowser's Fury included"
+    },
+    {
+     "label": "Super Mario 3D World with faster Switch movement"
+    }
+   ]
+  }
+ ],
+ "gameplayPillars": [
+  {
+   "title": "Fast course platforming",
+   "description": "Run, jump, climb as Cat Mario and chase Green Stars, stamps and high scores across compact stages.",
+   "imageUrl": "https://images.launchbox-app.com/bf0d9d55-96b7-474a-8282-7e0a011a8df6.png"
+  },
+  {
+   "title": "Four-player 3D World",
+   "description": "Play the main campaign locally or online with Mario, Luigi, Peach and Toad.",
+   "imageUrl": "https://images.launchbox-app.com/bf35fd71-69a6-43b5-8578-9e5f379e692f.jpg"
+  },
+  {
+   "title": "Bowser's Fury freedom",
+   "description": "Explore Lake Lapcat, collect Cat Shines and respond dynamically whenever Fury Bowser transforms the environment.",
+   "imageUrl": "https://images.launchbox-app.com/22ed0ce4-502c-4d3e-a037-cb74ce747833.jpg"
+  }
+ ],
+ "worldSummary": "Super Mario 3D World spans the Sprixie Kingdom through compact obstacle-course stages. Bowser's Fury shifts to Lake Lapcat, an interconnected cat-themed environment whose islands change as Fury Bowser awakens.",
+ "storyChapters": [
+  {
+   "title": "Save the Sprixies",
+   "body": "Bowser captures the Sprixie Princesses and Mario's group travels through a series of themed worlds.",
+   "imageUrl": "https://images.launchbox-app.com/59c9bd8c-4dcd-4f42-af62-8c382aa301d7.jpg"
+  },
+  {
+   "title": "World Bowser",
+   "body": "The course-based adventure culminates in Bowser's neon amusement-park kingdom.",
+   "imageUrl": "https://images.launchbox-app.com/157829e9-eed7-4b2a-b21a-c3a291260f14.jpg"
+  },
+  {
+   "title": "Lake Lapcat",
+   "body": "Bowser's Fury sends Mario into a separate open environment where Bowser Jr. helps restore his father.",
+   "imageUrl": "https://images.launchbox-app.com/fa1b4f3d-6983-4b3f-b20e-beb6f7e4c326.jpg"
+  }
+ ],
+ "features": [
+  "Super Mario 3D World with faster Switch movement",
+  "Bowser's Fury open-area adventure",
+  "Free Switch 2 update with improved visuals/frame rate, HDR in Bowser's Fury and GameShare"
+ ],
+ "perfResolutionDocked": "1080p / 60 fps in Super Mario 3D World; Bowser's Fury targets 60 fps docked",
+ "perfResolutionHandheld": "720p / 60 fps in 3D World; Bowser's Fury is 720p / 30 fps on original Switch handheld",
+ "perfFps": "60 (3D World; Bowser's Fury varies by mode on original Switch)",
+ "perfHdr": false,
+ "perfNotes": "On original Switch, 3D World runs at 60 fps; Bowser's Fury is 60 fps docked but 30 fps handheld. Nintendo's free Switch 2 update improves visuals and smoothness, including Bowser's Fury, and adds HDR for Bowser's Fury in compatible TV mode.",
+ "devicePerformance": [
+  {
+   "device": "Nintendo Switch 2",
+   "deviceSlug": "nintendo-switch-2",
+   "deviceModel": "Nintendo Switch 2",
+   "hardwareId": "prd_acf4c89908764c62",
+   "informationStatus": "Available / verified",
+   "unavailableReason": "No standard supported mode is unavailable.",
+   "handheld": {
+    "supported": true,
+    "resolution": "720p / 60 fps in 3D World; Bowser's Fury is 720p / 30 fps on original Switch handheld",
+    "resolutionDynamic": false,
+    "renderingResolution": "720p / 60 fps in 3D World; Bowser's Fury is 720p / 30 fps on original Switch handheld",
+    "outputResolution": "1280x720",
+    "fps": "60 (3D World; Bowser's Fury varies by mode on original Switch)",
+    "fpsMin": "30",
+    "fpsMax": "60",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "Handheld",
+    "notes": "On original Switch, 3D World runs at 60 fps; Bowser's Fury is 60 fps docked but 30 fps handheld. Nintendo's free Switch 2 update improves visuals and smoothness, including Bowser's Fury, and adds HDR for Bowser's Fury in compatible TV mode."
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "1080p / 60 fps in Super Mario 3D World; Bowser's Fury targets 60 fps docked",
+    "resolutionDynamic": false,
+    "renderingResolution": "1080p / 60 fps in Super Mario 3D World; Bowser's Fury targets 60 fps docked",
+    "outputResolution": "1920x1080",
+    "fps": "60 (3D World; Bowser's Fury varies by mode on original Switch)",
+    "fpsMin": "30",
+    "fpsMax": "60",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "TV / Docked",
+    "notes": "On original Switch, 3D World runs at 60 fps; Bowser's Fury is 60 fps docked but 30 fps handheld. Nintendo's free Switch 2 update improves visuals and smoothness, including Bowser's Fury, and adds HDR for Bowser's Fury in compatible TV mode."
+   },
+   "modes": [
+    {
+     "name": "Primary documented mode",
+     "handheldResolution": "720p / 60 fps in 3D World; Bowser's Fury is 720p / 30 fps on original Switch handheld",
+     "handheldFps": "60 (3D World; Bowser's Fury varies by mode on original Switch)",
+     "tvResolution": "1080p / 60 fps in Super Mario 3D World; Bowser's Fury targets 60 fps docked",
+     "tvFps": "60 (3D World; Bowser's Fury varies by mode on original Switch)",
+     "hdr": false,
+     "vrr": false,
+     "notes": "Primary documented performance profile."
+    }
+   ],
+   "upscaling": "System/game-specific scaling where applicable",
+   "rayTracing": false,
+   "rayTracingMode": "No verified ray-tracing mode",
+   "loadingTime": "Scene-dependent; no single universal loading time",
+   "loadingNotes": "Loading varies by scene, save and storage state.",
+   "gameVersion": "Current retail build",
+   "patchVersion": "Current available update",
+   "testedDate": "2026-08-27",
+   "sourceName": "Nintendo Support",
+   "sourceUrl": "https://en-americas-support.nintendo.com/app/answers/detail/a_id/54589/",
+   "verifiedAt": "2026-08-27",
+   "verificationStatus": "Verified / sourced",
+   "performanceNotes": "On original Switch, 3D World runs at 60 fps; Bowser's Fury is 60 fps docked but 30 fps handheld. Nintendo's free Switch 2 update improves visuals and smoothness, including Bowser's Fury, and adds HDR for Bowser's Fury in compatible TV mode."
+  }
+ ],
+ "downloadSizeGb": 3,
+ "requiredSpaceGb": 3,
+ "microSdRecommended": false,
+ "storageNotes": "Nintendo lists about 3 GB. microSD storage is optional.",
+ "languagesAudio": [
+  "Character vocalizations",
+  "Music / sound effects",
+  "No full language-dependent voice track"
+ ],
+ "languagesText": [
+  "Japanese / English",
+  "French / German / Italian / Spanish / Portuguese / Dutch / Russian",
+  "Korean / Simplified Chinese / Traditional Chinese"
+ ],
+ "arabicSupport": false,
+ "mpLocalPlayers": true,
+ "mpOnlinePlayers": true,
+ "mpCoop": true,
+ "mpCompetitive": true,
+ "mpSplitScreen": true,
+ "mpLocalWireless": true,
+ "dlc": [
+  {
+   "name": "Bowser's Fury included",
+   "description": "Bowser's Fury is part of the base Switch package, not separate paid DLC.",
+   "coverUrl": "https://images.launchbox-app.com/229ee9bc-3556-4ad1-b49e-490baa61aad5.jpg"
+  },
+  {
+   "name": "Free Switch 2 update",
+   "description": "Version 1.2.0 added improved visuals/frame rate, Bowser's Fury HDR and GameShare when played on Switch 2.",
+   "coverUrl": "https://images.launchbox-app.com/2cbc79de-50af-4780-bcfd-9d824080fca1.jpg"
+  },
+  {
+   "name": "No paid story DLC",
+   "description": "No standalone paid story expansion was released.",
+   "coverUrl": "https://images.launchbox-app.com/e2d2005b-788a-4999-b418-e3bd52db587a.jpg"
+  }
+ ],
+ "guides": [
+  {
+   "title": "Official product page",
+   "summary": "Platform, release, languages and features.",
+   "url": "https://www.nintendo.com/us/store/products/super-mario-3d-world-plus-bowsers-fury-switch/"
+  },
+  {
+   "title": "Performance / update reference",
+   "summary": "Technical or update information.",
+   "url": "https://en-americas-support.nintendo.com/app/answers/detail/a_id/54589/"
+  },
+  {
+   "title": "Media / database reference",
+   "summary": "Images and catalog metadata.",
+   "url": "https://gamesdb.launchbox-app.com/games/details/145306-super-mario-3d-world-bowsers-fury"
+  }
+ ],
+ "completionMain": 10.5,
+ "completionExtras": 16,
+ "completionAll": 28,
+ "faq": [
+  {
+   "q": "Are 3D World and Bowser's Fury both included?",
+   "a": "Yes. Both are included in one Switch game."
+  },
+  {
+   "q": "What changed on Switch 2?",
+   "a": "Nintendo's free update improves visuals and frame rate, adds Bowser's Fury HDR and enables GameShare."
+  },
+  {
+   "q": "How many people can play?",
+   "a": "Super Mario 3D World supports up to four players; Bowser's Fury supports two-player local co-op."
+  }
+ ],
+ "verdictScore": 9.1,
+ "verdictSummary": "An exceptional double package: 3D World is one of Nintendo's best multiplayer platformers, while Bowser's Fury is a compact experiment in open-area Mario design.",
+ "verdictPros": [
+  "Two excellent but distinct Mario experiences",
+  "Strong four-player local/online support",
+  "Switch 2 update meaningfully improves Bowser's Fury"
+ ],
+ "verdictCons": [
+  "Bowser's Fury is shorter than a standalone Mario game",
+  "Original Switch handheld Bowser's Fury is 30 fps",
+  "Some 3D World stages become chaotic with four players"
+ ],
+ "reviews": [
+  {
+   "source": "Metacritic",
+   "score": "89/100",
+   "quote": "Strong critic aggregate for the Switch package.",
+   "url": "https://www.metacritic.com/game/super-mario-3d-world-plus-bowsers-fury/"
+  },
+  {
+   "source": "OpenCritic",
+   "score": "89/100",
+   "quote": "Very strong aggregate reception.",
+   "url": "https://opencritic.com/game/10866/super-mario-3d-world-plus-bowsers-fury"
+  },
+  {
+   "source": "Nintendo Life",
+   "score": "10/10",
+   "quote": "Praised the combined package and Bowser's Fury addition.",
+   "url": "https://www.nintendolife.com/reviews/nintendo-switch/super_mario_3d_world_plus_bowsers_fury"
+  }
+ ],
+ "timeline": [
+  {
+   "date": "2013-11-22",
+   "title": "Original 3D World",
+   "body": "Super Mario 3D World launched on Wii U."
+  },
+  {
+   "date": "2021-02-12",
+   "title": "Switch package released",
+   "body": "The faster port and new Bowser's Fury adventure launched."
+  },
+  {
+   "date": "2025-06-03",
+   "title": "Switch 2 enhancement",
+   "body": "Version 1.2.0 introduced Switch 2 visuals/frame-rate optimization, HDR and GameShare."
+  }
+ ],
+ "patchNotes": [
+  {
+   "version": "Version 1.1.0",
+   "date": "2021-02-11",
+   "body": "General gameplay issue fixes."
+  },
+  {
+   "version": "Version 1.2.0",
+   "date": "2025-06-03",
+   "body": "Switch 2 visual/frame-rate optimization, Bowser's Fury HDR and GameShare."
+  },
+  {
+   "version": "Version 1.2.1",
+   "date": "2025-07-29",
+   "body": "Fixed Switch 2 system-behavior issues."
+  }
+ ],
+ "soundtrack": [
+  {
+   "title": "Super Bell Hill",
+   "url": "https://supermario3dworld.nintendo.com/"
+  },
+  {
+   "title": "World Bowser",
+   "url": "https://supermario3dworld.nintendo.com/"
+  },
+  {
+   "title": "Lake Lapcat / Fury Bowser themes",
+   "url": "https://supermario3dworld.nintendo.com/"
+  }
+ ],
+ "seriesName": "Super Mario",
+ "seriesEntries": [
+  "Super Mario 3D World + Bowser's Fury",
+  "Super Mario Odyssey",
+  "Super Mario Bros. Wonder"
+ ],
+ "studioName": "Nintendo EPD",
+ "studioUrl": "https://www.nintendo.co.jp/",
+ "studioLocation": "Kyoto, Japan",
+ "studioAbout": "Nintendo EPD developed the Switch version and the new Bowser's Fury adventure.",
+ "setupNeeds": [
+  "Nintendo Switch or Nintendo Switch 2",
+  "Approximately 3 GB free storage",
+  "Nintendo Switch Online membership for online 3D World multiplayer"
+ ],
+ "sources": [
+  {
+   "name": "Nintendo official",
+   "url": "https://www.nintendo.com/us/store/products/super-mario-3d-world-plus-bowsers-fury-switch/"
+  },
+  {
+   "name": "Nintendo Support",
+   "url": "https://en-americas-support.nintendo.com/app/answers/detail/a_id/54589/"
+  },
+  {
+   "name": "LaunchBox Games Database",
+   "url": "https://gamesdb.launchbox-app.com/games/details/145306-super-mario-3d-world-bowsers-fury"
+  }
+ ],
+ "boxContentsList": "[Circular]",
+ "image": "/api/files/products/prd_4b3c62c6fc504c9b/cover-c3a5f061b0f4e5d7.jpg",
+ "banner": "/api/files/products/prd_4b3c62c6fc504c9b/banner-1-91c5b294494173ea.jpg",
+ "schemaId": "",
+ "createdAt": "2026-08-27T01:24:45.626Z",
+ "created_at": "2026-08-27T01:24:45.626Z",
+ "updatedAt": "2026-08-27T01:24:45.626Z",
+ "updated_at": "2026-08-27T01:24:45.626Z",
+ "badgeEn": "وفر 40%",
+ "badgeKu": "وفر 40%",
+ "featuresEn": [
+  "Super Mario 3D World with faster Switch movement",
+  "Bowser's Fury open-area adventure",
+  "Free Switch 2 update with improved visuals/frame rate, HDR in Bowser's Fury and GameShare"
+ ],
+ "featuresKu": [
+  "Super Mario 3D World with faster Switch movement",
+  "Bowser's Fury open-area adventure",
+  "Free Switch 2 update with improved visuals/frame rate, HDR in Bowser's Fury and GameShare"
+ ],
+ "boxFrontUrl": "https://images.launchbox-app.com/e2d2005b-788a-4999-b418-e3bd52db587a.jpg",
+ "sales": 0,
+ "images": [],
+ "modes": [],
+ "game_id": "gme_1fde693900df40b5"
+}
