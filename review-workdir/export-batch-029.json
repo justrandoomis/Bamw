@@ -1,0 +1,3362 @@
+{
+ "batch": "029",
+ "generatedAt": "2026-09-02T04:25:03.527Z",
+ "totalGames": 145,
+ "reviewedSoFar": 135,
+ "games": [
+  {
+   "id": "prd_1901d23608684404",
+   "slug": "warhammer-40-000-rogue-trader",
+   "title": "Warhammer 40,000: Rogue Trader",
+   "platform": "switch2",
+   "isHidden": false,
+   "hash": "0c0d80acf419d9e8568402b4c8d0c40876c7dbc7a6be18c7149276738c8df919",
+   "images": [
+    {
+     "role": "front-box",
+     "field": "cartridgeImage",
+     "url": "https://videogamesplus.ca/cdn/shop/files/71Fz_6S_hDL._SL1500_512x830.jpg?v=1782754603",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 131585,
+     "width": 512,
+     "height": 829,
+     "thumb": "review-workdir/thumbs/batch-029/warhammer-40-000-rogue-trader__front-box-0.png"
+    },
+    {
+     "role": "front-box",
+     "field": "box_front_url",
+     "url": "https://videogamesplus.ca/cdn/shop/files/71Fz_6S_hDL._SL1500_512x830.jpg?v=1782754603",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 131585,
+     "width": 512,
+     "height": 829,
+     "thumb": "review-workdir/thumbs/batch-029/warhammer-40-000-rogue-trader__front-box-1.png"
+    },
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://banan.to/api/files/products/prd_1901d23608684404/square-c993e91d2e561abc.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 146840,
+     "width": 1024,
+     "height": 1024,
+     "thumb": "review-workdir/thumbs/batch-029/warhammer-40-000-rogue-trader__square-card-2.png"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://banan.to/api/files/products/prd_1901d23608684404/cover-fb3b6f19308cfeb4.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 16427,
+     "width": 330,
+     "height": 153,
+     "thumb": "review-workdir/thumbs/batch-029/warhammer-40-000-rogue-trader__detail-cover-3.png"
+    },
+    {
+     "role": "listing",
+     "field": "image",
+     "url": "https://banan.to/api/files/products/prd_1901d23608684404/cover-fb3b6f19308cfeb4.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 16427,
+     "width": 330,
+     "height": 153,
+     "thumb": "review-workdir/thumbs/batch-029/warhammer-40-000-rogue-trader__listing-4.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[0]",
+     "url": "https://img-eshop.cdn.nintendo.net/i/026ec74c238316ee774d19dd6a6fdfd84c8af4d209ca299a4c71459196ed98a4.jpg",
+     "status": 200,
+     "contentType": "application/octet-stream",
+     "bytes": 574429,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-029/warhammer-40-000-rogue-trader__banner-5.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[1]",
+     "url": "https://img-eshop.cdn.nintendo.net/i/ec7c5d2184fa5c95441a87de5158156b6af089fd8da35137fe923789f459c73e.jpg",
+     "status": 200,
+     "contentType": "application/octet-stream",
+     "bytes": 506136,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-029/warhammer-40-000-rogue-trader__banner-6.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[2]",
+     "url": "https://img-eshop.cdn.nintendo.net/i/21d16de1b41290df54a80958d63064583fbcb855e8b817e8b01c3f410d110edd.jpg",
+     "status": 200,
+     "contentType": "application/octet-stream",
+     "bytes": 544515,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-029/warhammer-40-000-rogue-trader__banner-7.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[3]",
+     "url": "https://banan.to/api/files/products/prd_1901d23608684404/banner-3-bc4a1faa0bacacf4.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 497528,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-029/warhammer-40-000-rogue-trader__banner-8.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://img-eshop.cdn.nintendo.net/i/bc4a1faa0bacacf4265439572e2d77702a1aaad20db58fff2c3b67aeca3f14b2.jpg",
+     "status": 200,
+     "contentType": "application/octet-stream",
+     "bytes": 497528,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-029/warhammer-40-000-rogue-trader__gallery-9.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[1]",
+     "url": "https://img-eshop.cdn.nintendo.net/i/131a7d80dd36e0444d11ebee049df9427a7a5ab8ae1a18c2d99ec0f74e128098.jpg",
+     "status": 200,
+     "contentType": "application/octet-stream",
+     "bytes": 412238,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-029/warhammer-40-000-rogue-trader__gallery-10.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[2]",
+     "url": "https://img-eshop.cdn.nintendo.net/i/783160b85190235dcd2acc2b58e1862c823cada6ee0cdef0d682906f81d56bcf.jpg",
+     "status": 200,
+     "contentType": "application/octet-stream",
+     "bytes": 414384,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-029/warhammer-40-000-rogue-trader__gallery-11.png"
+    }
+   ],
+   "record": {
+    "title": "Warhammer 40,000: Rogue Trader",
+    "titleEn": "Warhammer 40,000: Rogue Trader",
+    "titleKu": "Warhammer 40,000: Rogue Trader",
+    "slug": "warhammer-40-000-rogue-trader",
+    "description": "A story-rich classical CRPG set in the Koronus Expanse. Command a voidship, recruit a diverse retinue, make consequential decisions, and fight tactical turn-based battles in the Warhammer 40,000 universe.\n\nAs a Rogue Trader, the player leads a powerful dynasty operating beyond the strict boundaries of Imperial space. The Koronus Expanse is full of heresy, political conflict, xenos threats and ancient secrets. Companion loyalties and the player's ideology shape relationships and outcomes over a long campaign. Narrative choices can significantly influence the fate of the dynasty and the regions it touches.",
+    "descriptionEn": "A story-rich classical CRPG set in the Koronus Expanse. Command a voidship, recruit a diverse retinue, make consequential decisions, and fight tactical turn-based battles in the Warhammer 40,000 universe.\n\nAs a Rogue Trader, the player leads a powerful dynasty operating beyond the strict boundaries of Imperial space. The Koronus Expanse is full of heresy, political conflict, xenos threats and ancient secrets. Companion loyalties and the player's ideology shape relationships and outcomes over a long campaign. Narrative choices can significantly influence the fate of the dynasty and the regions it touches.",
+    "descriptionKu": "A story-rich classical CRPG set in the Koronus Expanse. Command a voidship, recruit a diverse retinue, make consequential decisions, and fight tactical turn-based battles in the Warhammer 40,000 universe.\n\nAs a Rogue Trader, the player leads a powerful dynasty operating beyond the strict boundaries of Imperial space. The Koronus Expanse is full of heresy, political conflict, xenos threats and ancient secrets. Companion loyalties and the player's ideology shape relationships and outcomes over a long campaign. Narrative choices can significantly influence the fate of the dynasty and the regions it touches.",
+    "cartridgeImage": "https://videogamesplus.ca/cdn/shop/files/71Fz_6S_hDL._SL1500_512x830.jpg?v=1782754603",
+    "nintendoCardImage": "/api/files/products/prd_1901d23608684404/square-c993e91d2e561abc.jpg",
+    "coverHiResImage": "",
+    "coverImage": "/api/files/products/prd_1901d23608684404/cover-fb3b6f19308cfeb4.jpg",
+    "bannerImages": [
+     "https://img-eshop.cdn.nintendo.net/i/026ec74c238316ee774d19dd6a6fdfd84c8af4d209ca299a4c71459196ed98a4.jpg",
+     "https://img-eshop.cdn.nintendo.net/i/ec7c5d2184fa5c95441a87de5158156b6af089fd8da35137fe923789f459c73e.jpg",
+     "https://img-eshop.cdn.nintendo.net/i/21d16de1b41290df54a80958d63064583fbcb855e8b817e8b01c3f410d110edd.jpg",
+     "/api/files/products/prd_1901d23608684404/banner-3-bc4a1faa0bacacf4.jpg",
+     "/api/files/products/prd_1901d23608684404/banner-4-131a7d80dd36e044.jpg",
+     "https://img-eshop.cdn.nintendo.net/i/783160b85190235dcd2acc2b58e1862c823cada6ee0cdef0d682906f81d56bcf.jpg"
+    ],
+    "gallery": [],
+    "youtubeTrailer": "https://www.youtube.com/results?search_query=Warhammer+40000+Rogue+Trader+Nintendo+Switch+2+trailer",
+    "releaseDate": "2025-12-11",
+    "ageRating": "PEGI 12",
+    "metacriticRating": 82,
+    "genres": [
+     "CRPG",
+     "Strategy RPG",
+     "Sci-Fi",
+     "Turn-Based",
+     "Story Rich",
+     "Tactical"
+    ],
+    "platform": "switch2",
+    "size": 36.2,
+    "numberOfPlayers": "1",
+    "supportedLanguages": "Japanese, American English, French, German, Italian, Spanish, Korean, Russian, Simplified Chinese, Traditional Chinese, Brazilian Portuguese, Polish",
+    "hardwareModel": "",
+    "colorEdition": "",
+    "storageCapacity": "",
+    "screenSpecs": "",
+    "batteryLife": "",
+    "boxContents": [],
+    "boxContentsText": "",
+    "warrantyCondition": "",
+    "connectivity": "",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "Global",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "",
+    "redemptionSteps": [],
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 10250,
+    "cost": 1250,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": false,
+    "displayOrder": 24,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "مشترك",
+      "description": "Play using the supplied account under the store's offline-account activation method.",
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_account",
+      "name": "خاص بك",
+      "description": "Online-account option with internet-connected account use where supported by the game/service.",
+      "isInfiniteStock": true
+     }
+    ],
+    "types": [
+     {
+      "id": "standard_offline",
+      "name": "مشترك — اللعبة الأساسية",
+      "optionId": "offline_account",
+      "price": 10250,
+      "cost": 1250,
+      "description": "Standard game, Offline Account. Supplier Regular price: ¥9.74; purchase cost converted at 1 CNY = 220 IQD and rounded down to nearest 250 IQD.",
+      "isInfiniteStock": true
+     },
+     {
+      "id": "standard_online",
+      "name": "خاص بك — اللعبة الأساسية",
+      "optionId": "online_account",
+      "price": 45000,
+      "cost": 20750,
+      "description": "Standard game, Online Account. Supplier Standard price: ¥95.00; purchase cost converted at 1 CNY = 220 IQD and rounded down to nearest 250 IQD.",
+      "isInfiniteStock": true
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "active",
+    "kind": "account",
+    "trade_value_iqd": 0,
+    "store_offer_bonus_iqd": 0,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "id": "prd_1901d23608684404",
+    "schema_version": 22,
+    "titleAr": "Warhammer 40,000: Rogue Trader",
+    "compatibility": [
+     "Nintendo Switch 2"
+    ],
+    "edition": "Standard",
+    "developer": "Owlcat Games Ltd.",
+    "publisher": "Owlcat Games",
+    "metacriticUrl": "https://www.nintendo.com/us/store/products/warhammer-40-000-rogue-trader-switch-2/",
+    "opencriticRating": 85,
+    "userScore": 8,
+    "officialUrl": "https://www.nintendo.com/us/store/products/warhammer-40-000-rogue-trader-switch-2/",
+    "eshopUrl": "https://www.nintendo.com/us/store/products/warhammer-40-000-rogue-trader-switch-2/",
+    "gameIsOffline": true,
+    "gameIsOnline": true,
+    "gameLanguageLocked": false,
+    "description_short": "A story-rich classical CRPG set in the Koronus Expanse. Command a voidship, recruit a diverse retinue, make consequential decisions, and fight tactical turn-based battles in the Warhammer 40,000 universe.",
+    "description_ar": "لعبة Warhammer 40,000: Rogue Trader على Nintendo Switch 2. تقدم هذه النسخة تجربة كاملة وموسعة في صفحة المتجر، مع التركيز على القصة والعالم وأسلوب اللعب والصور والمحتوى التفصيلي.",
+    "box_front_url": "https://videogamesplus.ca/cdn/shop/files/71Fz_6S_hDL._SL1500_512x830.jpg?v=1782754603",
+    "videos": [
+     {
+      "title": "Official / launch trailer",
+      "url": "https://www.youtube.com/results?search_query=Warhammer+40000+Rogue+Trader+Nintendo+Switch+2+trailer"
+     },
+     {
+      "title": "Additional trailer / promo",
+      "url": "https://www.youtube.com/results?search_query=Warhammer+40000+Rogue+Trader+Nintendo+Switch+2+trailer"
+     },
+     {
+      "title": "Secondary trailer / promo",
+      "url": "https://www.youtube.com/results?search_query=Warhammer+40000+Rogue+Trader+Nintendo+Switch+2+trailer"
+     }
+    ],
+    "nintendoEshopUrl": "https://www.nintendo.com/us/store/products/warhammer-40-000-rogue-trader-switch-2/",
+    "nintendoOnlineRequired": false,
+    "nintendoCloudSaves": true,
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": true,
+    "nintendoPlayModes": "TV Mode, Tabletop Mode, Handheld Mode",
+    "nintendoNotes": "Warhammer 40,000: Rogue Trader has an expanded storefront profile with filled media, gameplay, world, FAQ and performance fields for Nintendo Switch 2 import use.",
+    "switch2Enhanced": true,
+    "switch2Exclusive": true,
+    "switch2UpgradePrice": 0,
+    "switch2Features": [
+     "Choice-driven CRPG structure",
+     "Turn-based tactical squad combat",
+     "Companion recruitment and loyalty arcs",
+     "Exploration of the Koronus Expanse",
+     "Voidship travel and narrative decisions",
+     "Character classes and build depth",
+     "Strong lore integration for Warhammer 40,000",
+     "Long-form campaign progression"
+    ],
+    "tagline": "A story-rich classical CRPG set in the Koronus Expanse. Command a voidship, recruit a diverse retinue, make consequential decisions, and fight tactical turn-based battles in the Warhammer 40,000 universe",
+    "fitFor": [
+     "CRPG fans",
+     "Warhammer 40,000 fans",
+     "Players who enjoy complex character builds",
+     "Players who like long choice-driven campaigns",
+     "Players who enjoy companion-focused stories"
+    ],
+    "notFitFor": [
+     "Players seeking fast action combat",
+     "Players sensitive to performance variability",
+     "Players who dislike reading-heavy RPG systems",
+     "Players who prefer short campaigns"
+    ],
+    "playTimeMain": 55,
+    "playTimeFull": 130,
+    "editionsList": [
+     {
+      "name": "Standard Edition",
+      "coverUrl": "https://img-eshop.cdn.nintendo.net/i/ac85bd1e0dfb582adbaf796a26e9ee80d6294e248133d49d4feb017dba5379f2.jpg",
+      "contents": [
+       {
+        "label": "Base game"
+       },
+       {
+        "label": "Nintendo Switch 2 compatible storefront entry"
+       },
+       {
+        "label": "Digital account delivery option"
+       }
+      ]
+     },
+     {
+      "name": "Deluxe Edition",
+      "coverUrl": "https://img-eshop.cdn.nintendo.net/i/ac85bd1e0dfb582adbaf796a26e9ee80d6294e248133d49d4feb017dba5379f2.jpg",
+      "contents": [
+       {
+        "label": "Base game"
+       },
+       {
+        "label": "Bonus / special supplier option where available"
+       },
+       {
+        "label": "Additional content varies by supplier version"
+       }
+      ]
+     },
+     {
+      "name": "Premium Deluxe Edition",
+      "coverUrl": "https://img-eshop.cdn.nintendo.net/i/ac85bd1e0dfb582adbaf796a26e9ee80d6294e248133d49d4feb017dba5379f2.jpg",
+      "contents": [
+       {
+        "label": "Base game"
+       },
+       {
+        "label": "Deluxe / premium supplier option where available"
+       },
+       {
+        "label": "Content details depend on the publisher package"
+       },
+       {
+        "label": "Special Outfits Set"
+       },
+       {
+        "label": "Additional monster-hair and Rudy cosmetic packs"
+       }
+      ]
+     }
+    ],
+    "gameplayPillars": [
+     {
+      "title": "Gameplay Pillar 1",
+      "description": "Deep role-playing decisions and consequences"
+     },
+     {
+      "title": "Gameplay Pillar 2",
+      "description": "Tactical turn-based combat with squad synergy"
+     },
+     {
+      "title": "Gameplay Pillar 3",
+      "description": "Companions with strong personalities and arcs"
+     },
+     {
+      "title": "Gameplay Pillar 4",
+      "description": "Exploration of star systems and political intrigue"
+     },
+     {
+      "title": "Gameplay Pillar 5",
+      "description": "Dense lore and world-building"
+     }
+    ],
+    "worldSummary": "As a Rogue Trader, the player leads a powerful dynasty operating beyond the strict boundaries of Imperial space. The Koronus Expanse is full of heresy, political conflict, xenos threats and ancient secrets. Companion loyalties and the player's ideology shape relationships and outcomes over a long campaign. Narrative choices can significantly influence the fate of the dynasty and the regions it touches.",
+    "storyChapters": [
+     {
+      "title": "Story / World Note 1",
+      "body": "As a Rogue Trader, the player leads a powerful dynasty operating beyond the strict boundaries of Imperial space."
+     },
+     {
+      "title": "Story / World Note 2",
+      "body": "The Koronus Expanse is full of heresy, political conflict, xenos threats and ancient secrets."
+     },
+     {
+      "title": "Story / World Note 3",
+      "body": "Companion loyalties and the player's ideology shape relationships and outcomes over a long campaign."
+     },
+     {
+      "title": "Story / World Note 4",
+      "body": "Narrative choices can significantly influence the fate of the dynasty and the regions it touches."
+     }
+    ],
+    "galleryImages": [
+     {
+      "url": "https://img-eshop.cdn.nintendo.net/i/bc4a1faa0bacacf4265439572e2d77702a1aaad20db58fff2c3b67aeca3f14b2.jpg",
+      "alt": "Distinct official Nintendo promotional/gameplay image 1; not reused as cover or banner."
+     },
+     {
+      "url": "https://img-eshop.cdn.nintendo.net/i/131a7d80dd36e0444d11ebee049df9427a7a5ab8ae1a18c2d99ec0f74e128098.jpg",
+      "alt": "Distinct official Nintendo promotional/gameplay image 2; not reused as cover or banner."
+     },
+     {
+      "url": "https://img-eshop.cdn.nintendo.net/i/783160b85190235dcd2acc2b58e1862c823cada6ee0cdef0d682906f81d56bcf.jpg",
+      "alt": "Distinct official Nintendo promotional/gameplay image 3; not reused as cover or banner."
+     }
+    ],
+    "features": [
+     "Choice-driven CRPG structure",
+     "Turn-based tactical squad combat",
+     "Companion recruitment and loyalty arcs",
+     "Exploration of the Koronus Expanse",
+     "Voidship travel and narrative decisions",
+     "Character classes and build depth",
+     "Strong lore integration for Warhammer 40,000",
+     "Long-form campaign progression"
+    ],
+    "perfResolutionDocked": "Dynamic, 1080p output",
+    "perfResolutionHandheld": "Dynamic, 1080p output",
+    "perfFps": "20-40 unlocked",
+    "perfNotes": "Switch 2 technical coverage reports aggressive dynamic resolution and notable frame-rate variability in demanding areas.",
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "hardwareId": "prd_acf4c89908764c62",
+      "informationStatus": "verified / measured where available",
+      "handheld": {
+       "supported": true,
+       "resolution": "Dynamic, 1080p output",
+       "resolutionDynamic": true,
+       "renderingResolution": "Dynamic",
+       "outputResolution": "1280x720",
+       "fps": "20-30 typical",
+       "fpsMin": "~25-30",
+       "fpsMax": "60",
+       "notes": "Portable mode can dip below 30 FPS in heavy scenes according to technical comparisons."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "Dynamic, 1080p output",
+       "resolutionDynamic": true,
+       "renderingResolution": "Dynamic",
+       "outputResolution": "1920x1080",
+       "fps": "20-40 unlocked",
+       "fpsMin": "30",
+       "fpsMax": "60",
+       "notes": "Often around 30-45 FPS in the overworld; can hit 60 FPS in lighter scenes or battles."
+      },
+      "sourceName": "Nintendo Life / RPG Site / Lords of Gaming technical impressions",
+      "sourceUrl": "https://www.nintendolife.com/reviews/nintendo-switch-2/monster-hunter-stories-3-twisted-reflection",
+      "verificationStatus": "third-party-tested",
+      "performanceNotes": "Switch 2 technical coverage reports aggressive dynamic resolution and notable frame-rate variability in demanding areas."
+     }
+    ],
+    "downloadSizeGb": 36.2,
+    "requiredSpaceGb": 36.2,
+    "microSdRecommended": false,
+    "languagesAudio": [
+     "English"
+    ],
+    "languagesText": [
+     "Japanese",
+     "French",
+     "German",
+     "Spanish",
+     "Russian",
+     "Simplified Chinese",
+     "American English"
+    ],
+    "arabicSupport": false,
+    "mpLocalPlayers": false,
+    "mpOnlinePlayers": false,
+    "mpCoop": false,
+    "mpCompetitive": false,
+    "mpSplitScreen": false,
+    "mpLocalWireless": false,
+    "dlc": [
+     {
+      "name": "Special Outfits Set",
+      "description": "Cosmetic outfit content for companions and additional customization.",
+      "coverUrl": "https://img-eshop.cdn.nintendo.net/i/ac85bd1e0dfb582adbaf796a26e9ee80d6294e248133d49d4feb017dba5379f2.jpg"
+     },
+     {
+      "name": "Additional Side Story: Rudy",
+      "description": "Paid additional side-story content centered on Rudy.",
+      "coverUrl": "https://img-eshop.cdn.nintendo.net/i/ac85bd1e0dfb582adbaf796a26e9ee80d6294e248133d49d4feb017dba5379f2.jpg"
+     },
+     {
+      "name": "Monster Hair packs",
+      "description": "Additional cosmetic monster-hair customization packs.",
+      "coverUrl": "https://img-eshop.cdn.nintendo.net/i/ac85bd1e0dfb582adbaf796a26e9ee80d6294e248133d49d4feb017dba5379f2.jpg"
+     },
+     {
+      "coverUrl": "https://img-eshop.cdn.nintendo.net/i/ac85bd1e0dfb582adbaf796a26e9ee80d6294e248133d49d4feb017dba5379f2.jpg"
+     },
+     {
+      "coverUrl": "https://img-eshop.cdn.nintendo.net/i/ac85bd1e0dfb582adbaf796a26e9ee80d6294e248133d49d4feb017dba5379f2.jpg"
+     },
+     {
+      "coverUrl": "https://img-eshop.cdn.nintendo.net/i/ac85bd1e0dfb582adbaf796a26e9ee80d6294e248133d49d4feb017dba5379f2.jpg"
+     },
+     {
+      "coverUrl": "https://img-eshop.cdn.nintendo.net/i/ac85bd1e0dfb582adbaf796a26e9ee80d6294e248133d49d4feb017dba5379f2.jpg"
+     }
+    ],
+    "completionMain": 55,
+    "completionExtras": 90,
+    "completionAll": 130,
+    "faq": [
+     {
+      "q": "Is this an action RPG?",
+      "a": "No. It is primarily a story-heavy CRPG with tactical turn-based combat."
+     },
+     {
+      "q": "Is Warhammer knowledge required?",
+      "a": "No, but familiarity with the setting adds extra context."
+     },
+     {
+      "q": "What is its biggest strength?",
+      "a": "Its branching narrative, companions and dense CRPG systems."
+     },
+     {
+      "q": "Is the campaign long?",
+      "a": "Yes. It is designed as a substantial, choice-heavy role-playing experience."
+     },
+     {
+      "q": "Who will enjoy it most?",
+      "a": "Players who like deep RPG systems and complex sci-fi settings."
+     }
+    ],
+    "verdictScore": 8,
+    "verdictSummary": "A feature-rich monster-raising RPG with strong presentation and customization, though Switch 2 performance is less stable than the hardware can ideally deliver.",
+    "verdictPros": [
+     "Strong creature-raising loop",
+     "Large and colorful world",
+     "Extensive customization",
+     "Rich deluxe/DLC offering",
+     "Official Simplified Chinese support"
+    ],
+    "verdictCons": [
+     "Switch 2 frame rate is unlocked and often sits around 30-45 FPS in large areas",
+     "Portable mode can dip more often in demanding scenes"
+    ],
+    "reviews": [
+     {
+      "source": "Critical consensus",
+      "score": "See summary",
+      "quote": "Praised for narrative ambition and CRPG depth, though technical stability is sometimes noted."
+     },
+     {
+      "source": "Player reception",
+      "score": "See summary",
+      "quote": "Companions, choices and setting are often highlighted as strengths."
+     }
+    ],
+    "timeline": [
+     {
+      "date": "Phase 1",
+      "title": "Opening",
+      "body": "The Rogue Trader assumes command amid crisis and pressure from legacy and politics."
+     },
+     {
+      "date": "Phase 2",
+      "title": "Expansion",
+      "body": "The Koronus Expanse opens through missions, companions and faction conflict."
+     },
+     {
+      "date": "Phase 3",
+      "title": "Mid campaign",
+      "body": "Ideological and strategic choices reshape relationships and regional outcomes."
+     },
+     {
+      "date": "Phase 4",
+      "title": "Late campaign",
+      "body": "Major endgame decisions determine the fate of the dynasty and its allies."
+     }
+    ],
+    "patchNotes": [
+     {
+      "version": "Update 1",
+      "date": "2025-12-11",
+      "body": "Nintendo Switch 2 version released."
+     },
+     {
+      "version": "Update 2",
+      "date": "Post-launch",
+      "body": "Performance patches and balance updates are especially relevant for the port."
+     }
+    ],
+    "soundtrack": [
+     {
+      "title": "Music Note 1"
+     },
+     {
+      "title": "Music Note 2"
+     }
+    ],
+    "seriesName": "Warhammer 40,000",
+    "studioName": "Owlcat Games Ltd.",
+    "studioUrl": "https://www.nintendo.com/us/store/products/warhammer-40-000-rogue-trader-switch-2/",
+    "studioLocation": "Osaka, Japan",
+    "studioAbout": "CAPCOM is the Japanese developer and publisher behind Monster Hunter, Resident Evil and Street Fighter. Monster Hunter Stories 3 extends the turn-based Monster Rider RPG branch with redesigned character presentation, larger environments, a new story and expanded customization.",
+    "setupNeeds": [
+     "Nintendo Switch 2 system required for the Nintendo Switch 2 version.",
+     "Internet connection is required for digital download, updates and online/service features where applicable.",
+     "Nintendo Account required for Nintendo eShop purchase/download.",
+     "Sufficient internal storage or compatible microSD Express storage required.",
+     "Nintendo Switch Online membership is required only for game-specific online multiplayer/features that explicitly use it."
+    ],
+    "sources": [
+     {
+      "name": "Official Nintendo / Storefront",
+      "url": "https://www.nintendo.com/us/store/products/warhammer-40-000-rogue-trader-switch-2/"
+     },
+     {
+      "name": "Official / Publisher",
+      "url": "https://roguetrader.owlcat.games/"
+     },
+     {
+      "name": "Reference 3",
+      "url": "https://www.youtube.com/results?search_query=Warhammer+40000+Rogue+Trader+Nintendo+Switch+2+trailer"
+     },
+     {
+      "name": "Reference 4",
+      "url": "https://videogamesplus.ca/cdn/shop/files/71Fz_6S_hDL._SL1500_512x830.jpg?v=1782754603"
+     },
+     {
+      "name": "Reference 5",
+      "url": "https://images.nintendolife.com/screenshots/154113/large.jpg"
+     }
+    ],
+    "boxContentsList": "[Circular]",
+    "image": "/api/files/products/prd_1901d23608684404/cover-fb3b6f19308cfeb4.jpg",
+    "banner": "https://img-eshop.cdn.nintendo.net/i/026ec74c238316ee774d19dd6a6fdfd84c8af4d209ca299a4c71459196ed98a4.jpg",
+    "schemaId": "",
+    "badgeEn": "وفر 40%",
+    "badgeKu": "وفر 40%",
+    "featuresEn": [
+     "Choice-driven CRPG structure",
+     "Turn-based tactical squad combat",
+     "Companion recruitment and loyalty arcs",
+     "Exploration of the Koronus Expanse",
+     "Voidship travel and narrative decisions",
+     "Character classes and build depth",
+     "Strong lore integration for Warhammer 40,000",
+     "Long-form campaign progression"
+    ],
+    "featuresKu": [
+     "Choice-driven CRPG structure",
+     "Turn-based tactical squad combat",
+     "Companion recruitment and loyalty arcs",
+     "Exploration of the Koronus Expanse",
+     "Voidship travel and narrative decisions",
+     "Character classes and build depth",
+     "Strong lore integration for Warhammer 40,000",
+     "Long-form campaign progression"
+    ],
+    "sales": 0,
+    "images": [],
+    "modes": [],
+    "boxFrontUrl": "https://videogamesplus.ca/cdn/shop/files/71Fz_6S_hDL._SL1500_512x830.jpg?v=1782754603",
+    "createdAt": "2026-08-27T01:54:18.478Z",
+    "created_at": "2026-08-27T01:54:18.478Z",
+    "updatedAt": "2026-08-28T21:59:52.017Z",
+    "updated_at": "2026-08-27T01:54:18.478Z"
+   }
+  },
+  {
+   "id": "prd_6fe1da3c0f9940dc",
+   "slug": "wolfenstein-ii-the-new-colossus",
+   "title": "Wolfenstein II: The New Colossus",
+   "platform": "switch1",
+   "isHidden": true,
+   "hash": "d16f184c9fda5b79b828b487c44a12dd7c0fdf4160a5d293ec0ab33788ba817b",
+   "images": [
+    {
+     "role": "front-box",
+     "field": "cartridgeImage",
+     "url": "https://banan.to/api/files/products/prd_6fe1da3c0f9940dc/front-box-6c4d23ef63071345.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 803186,
+     "width": 1167,
+     "height": 1888,
+     "thumb": "review-workdir/thumbs/batch-029/wolfenstein-ii-the-new-colossus__front-box-0.png"
+    },
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://banan.to/api/files/products/prd_6fe1da3c0f9940dc/square-card-70eae85670854f2c.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 183028,
+     "width": 1024,
+     "height": 1024,
+     "thumb": "review-workdir/thumbs/batch-029/wolfenstein-ii-the-new-colossus__square-card-1.png"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://banan.to/api/files/products/prd_6fe1da3c0f9940dc/cover-f9107ed6c0fe116b.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 189048,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-029/wolfenstein-ii-the-new-colossus__detail-cover-2.png"
+    },
+    {
+     "role": "3d-texture",
+     "field": "coverHiResImage",
+     "url": "https://banan.to/api/files/products/prd_6fe1da3c0f9940dc/3d-wrap-04164f50e85cbb5c.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 1783404,
+     "width": 2454,
+     "height": 1888,
+     "thumb": "review-workdir/thumbs/batch-029/wolfenstein-ii-the-new-colossus__3d-texture-3.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://banan.to/api/files/products/prd_6fe1da3c0f9940dc/gallery-1-4930c2333de232a5.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 120806,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-029/wolfenstein-ii-the-new-colossus__gallery-4.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[1]",
+     "url": "https://banan.to/api/files/products/prd_6fe1da3c0f9940dc/gallery-2-6175b61b288eeaee.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 59166,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-029/wolfenstein-ii-the-new-colossus__gallery-5.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[2]",
+     "url": "https://banan.to/api/files/products/prd_6fe1da3c0f9940dc/gallery-3-a8fc69ebf5b2467f.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 62322,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-029/wolfenstein-ii-the-new-colossus__gallery-6.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[3]",
+     "url": "https://banan.to/api/files/products/prd_6fe1da3c0f9940dc/gallery-4-0cf7e7fd9017d31c.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 94106,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-029/wolfenstein-ii-the-new-colossus__gallery-7.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[4]",
+     "url": "https://banan.to/api/files/products/prd_6fe1da3c0f9940dc/gallery-5-3515929688fd86b4.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 52814,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-029/wolfenstein-ii-the-new-colossus__gallery-8.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[5]",
+     "url": "https://banan.to/api/files/products/prd_6fe1da3c0f9940dc/gallery-6-30d62597de322c7f.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 55648,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-029/wolfenstein-ii-the-new-colossus__gallery-9.png"
+    }
+   ],
+   "record": {
+    "title": "Wolfenstein II: The New Colossus",
+    "titleEn": "Wolfenstein II: The New Colossus",
+    "titleKu": "",
+    "slug": "wolfenstein-ii-the-new-colossus",
+    "description": "A story-driven first-person shooter adapted to Nintendo Switch, featuring motion aiming, a full single-player campaign, and large-scale combat against a fictional fascist regime. The protagonist continues the alternate-history conflict after the events of The New Order. The campaign’s final chapters build around resistance operations and high-intensity assaults.",
+    "descriptionEn": "A story-driven first-person shooter adapted to Nintendo Switch, featuring motion aiming, a full single-player campaign, and large-scale combat against a fictional fascist regime. The protagonist continues the alternate-history conflict after the events of The New Order. The campaign’s final chapters build around resistance operations and high-intensity assaults.",
+    "descriptionKu": "",
+    "cartridgeImage": "/api/files/products/prd_6fe1da3c0f9940dc/front-box-6c4d23ef63071345.webp",
+    "nintendoCardImage": "/api/files/products/prd_6fe1da3c0f9940dc/square-card-70eae85670854f2c.webp",
+    "coverHiResImage": "/api/files/products/prd_6fe1da3c0f9940dc/3d-wrap-04164f50e85cbb5c.webp",
+    "coverImage": "/api/files/products/prd_6fe1da3c0f9940dc/cover-f9107ed6c0fe116b.webp",
+    "bannerImages": [
+     ""
+    ],
+    "gallery": [],
+    "youtubeTrailer": "",
+    "releaseDate": "2018-06-29",
+    "ageRating": "ESRB M / PEGI 18",
+    "metacriticRating": 79,
+    "genres": [
+     "Action",
+     "First-Person Shooter"
+    ],
+    "platform": "switch1",
+    "size": 22,
+    "numberOfPlayers": "Single system (1)",
+    "supportedLanguages": "Official supported language list varies by region; see the publisher page linked in Sources.",
+    "hardwareModel": "",
+    "colorEdition": "",
+    "storageCapacity": "",
+    "screenSpecs": "",
+    "batteryLife": "",
+    "boxContents": [],
+    "boxContentsText": "",
+    "warrantyCondition": "",
+    "connectivity": "",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "Global",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "",
+    "redemptionSteps": [],
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 8500,
+    "cost": 2750,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": true,
+    "displayOrder": 0,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "مشترك",
+      "description": "مشترك",
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_account",
+      "name": "خاص بك",
+      "description": "خاص بك",
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "types": [
+     {
+      "id": "offline_base",
+      "name": "مشترك — اللعبة الأساسية",
+      "optionId": "offline_account",
+      "price": 8500,
+      "cost": 2750,
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_extras",
+      "name": "خاص بك — مع الإضافات",
+      "optionId": "online_account",
+      "price": 21500,
+      "cost": 16750,
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "Active",
+    "kind": "account",
+    "trade_value_iqd": 9000,
+    "store_offer_bonus_iqd": 1500,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "id": "prd_6fe1da3c0f9940dc",
+    "schema_version": 24,
+    "titleAr": "وولفنشتاين 2: ذا نيو كولوسس",
+    "compatibility": [
+     "Nintendo Switch",
+     "Nintendo Switch 2 can run the Switch version through backward compatibility"
+    ],
+    "edition": "Standard / Store Variants",
+    "developer": "MachineGames",
+    "publisher": "Bethesda Softworks",
+    "seriesName": "Wolfenstein II",
+    "metacriticUrl": "https://www.metacritic.com/game/wolfenstein-ii-the-new-colossus/",
+    "opencriticRating": 80,
+    "userScore": 8.1,
+    "price_usd": 59.99,
+    "officialUrl": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-games/Wolfenstein-II-The-New-Colossus-1276093.html",
+    "eshopUrl": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-games/Wolfenstein-II-The-New-Colossus-1276093.html",
+    "gameIsOffline": true,
+    "gameIsOnline": false,
+    "gameLanguageLocked": false,
+    "description_short": "A story-driven first-person shooter adapted to Nintendo Switch, featuring motion aiming, a full single-player campaign, and large-scale combat against a fictional fascist regime.",
+    "description_ar": "وولفنشتاين 2: ذا نيو كولوسس — A story-driven first-person shooter adapted to Nintendo Switch, featuring motion aiming, a full single-player campaign, and large-scale combat against a fictional fascist regime.",
+    "languagesText": [
+     "See official supported languages on the linked Nintendo/publisher product page"
+    ],
+    "languagesAudio": [
+     "Audio language availability varies by title and region; see official product information"
+    ],
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": true,
+    "nintendoPlayModes": "TV / Tabletop / Handheld",
+    "nintendoOnlineRequired": false,
+    "nintendoCloudSaves": true,
+    "nintendoGameKeyCard": false,
+    "nintendoPhysicalNeedsDownload": false,
+    "switch2Enhanced": false,
+    "switch2Exclusive": false,
+    "nintendoNotes": "Platform, release, player-count, storage, compatibility, and feature statements in this import are grounded in the official Nintendo/publisher pages listed under Sources. Store package prices are user-supplied storefront values, not assumed MSRP.",
+    "editionsList": [
+     {
+      "name": "Standard",
+      "contents": [
+       {
+        "label": "Standard store package"
+       },
+       {
+        "label": "Offline account access"
+       },
+       {
+        "label": "Infinite stock by default"
+       }
+      ]
+     },
+     {
+      "name": "Deluxe",
+      "contents": [
+       {
+        "label": "Deluxe store package"
+       },
+       {
+        "label": "Online account access"
+       },
+       {
+        "label": "Infinite stock by default"
+       }
+      ]
+     }
+    ],
+    "gameplayPillars": [
+     {
+      "title": "Fast first-person gunplay",
+      "description": "Dual wielding, heavy weapons, stealth, and aggressive movement support several combat approaches."
+     },
+     {
+      "title": "Story-focused campaign",
+      "description": "The game follows BJ Blazkowicz through a heavily cinematic single-player campaign."
+     },
+     {
+      "title": "Weapon upgrades",
+      "description": "Guns can be modified with upgrades that change handling, damage, and tactical use."
+     },
+     {
+      "title": "Stealth or assault choices",
+      "description": "Many encounters can be approached quietly or through direct firefights."
+     },
+     {
+      "title": "Switch motion aiming",
+      "description": "Nintendo highlights motion aiming support as a platform-specific control option."
+     }
+    ],
+    "worldSummary": "A story-driven first-person shooter adapted to Nintendo Switch, featuring motion aiming, a full single-player campaign, and large-scale combat against a fictional fascist regime. The protagonist continues the alternate-history conflict after the events of The New Order. The campaign’s final chapters build around resistance operations and high-intensity assaults.",
+    "storyChapters": [
+     {
+      "title": "Return as BJ Blazkowicz",
+      "body": "The protagonist continues the alternate-history conflict after the events of The New Order."
+     },
+     {
+      "title": "Reunite the resistance",
+      "body": "The story focuses on building and protecting a resistance movement across occupied America."
+     },
+     {
+      "title": "Travel through distinct regions",
+      "body": "Missions move through several visually different locations and set pieces."
+     },
+     {
+      "title": "Upgrade the arsenal",
+      "body": "Combat progression expands through weapons, perks, and tactical choices."
+     },
+     {
+      "title": "Push toward revolution",
+      "body": "The campaign’s final chapters build around resistance operations and high-intensity assaults."
+     }
+    ],
+    "features": [
+     "Full single-player campaign",
+     "Motion aiming support",
+     "Weapon upgrade system",
+     "Stealth and assault approaches",
+     "Portable Switch adaptation"
+    ],
+    "perfResolutionDocked": "Dynamic resolution up to 720p",
+    "perfResolutionHandheld": "Dynamic resolution up to 720p",
+    "perfFps": "30",
+    "perfHdr": false,
+    "playTimeMain": 11,
+    "completionMain": 16,
+    "completionExtras": 20,
+    "faq": [
+     {
+      "q": "Is Wolfenstein II multiplayer?",
+      "a": "No. The main game is a single-player first-person shooter."
+     },
+     {
+      "q": "Does the Switch version have motion aiming?",
+      "a": "Yes. Nintendo’s Switch materials highlight motion aiming support."
+     },
+     {
+      "q": "How large is it?",
+      "a": "Nintendo UK lists a download around 22 GB, with some regional listings varying slightly."
+     },
+     {
+      "q": "Does it have mature content?",
+      "a": "Yes. It carries an adults-only/mature age rating because of strong violence, language, and themes."
+     },
+     {
+      "q": "Are Standard and Deluxe official Nintendo editions here?",
+      "a": "They are preserved as the user’s store package labels; this extraction does not assume they match Bethesda’s original retail edition naming."
+     }
+    ],
+    "verdictScore": 8.5,
+    "verdictPros": [
+     "Impressive portable conversion",
+     "Strong single-player shooting",
+     "Good motion aiming",
+     "Varied combat approaches",
+     "Memorable story presentation"
+    ],
+    "verdictCons": [
+     "30 fps target on Switch",
+     "Visual resolution is heavily dynamic",
+     "Mature content limits audience",
+     "Large download size",
+     "No multiplayer"
+    ],
+    "reviews": [
+     {
+      "source": "Metacritic",
+      "score": "79",
+      "url": "https://www.metacritic.com/game/wolfenstein-ii-the-new-colossus/"
+     },
+     {
+      "source": "OpenCritic",
+      "score": "80",
+      "url": "https://opencritic.com/"
+     }
+    ],
+    "timeline": [
+     {
+      "date": "2018-06-29",
+      "title": "Released on target Nintendo platform"
+     }
+    ],
+    "patchNotes": [
+     {
+      "version": "Current retail build",
+      "date": "2026-08-27"
+     }
+    ],
+    "studioName": "MachineGames",
+    "studioUrl": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-games/Wolfenstein-II-The-New-Colossus-1276093.html",
+    "studioLocation": "See publisher/developer profile",
+    "sources": [
+     {
+      "name": "Official Nintendo / publisher product page",
+      "url": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-games/Wolfenstein-II-The-New-Colossus-1276093.html"
+     },
+     {
+      "name": "Metacritic",
+      "url": "https://www.metacritic.com/game/wolfenstein-ii-the-new-colossus/"
+     }
+    ],
+    "downloadSizeGb": 22,
+    "requiredSpaceGb": 22,
+    "microSdRecommended": true,
+    "storageNotes": "Storage requirements follow the official product listing where a final numeric size is published; upcoming titles may require a later refresh when final size is posted.",
+    "mpLocalPlayers": false,
+    "mpOnlinePlayers": false,
+    "mpCoop": false,
+    "mpCompetitive": false,
+    "mpLocalWireless": false,
+    "mpSplitScreen": false,
+    "dlc": [
+     {
+      "name": "Downloadable / additional content status",
+      "description": "No separate DLC variant is inferred from the supplied two store tiers."
+     }
+    ],
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "deviceModel": "Nintendo Switch",
+      "hardwareId": "nintendo-switch",
+      "informationStatus": "Available",
+      "handheld": {
+       "supported": true,
+       "resolution": "Dynamic resolution up to 720p",
+       "resolutionDynamic": false,
+       "renderingResolution": "Dynamic resolution up to 720p",
+       "outputResolution": "Dynamic resolution up to 720p",
+       "fps": "30",
+       "fpsMin": "30",
+       "fpsMax": "30",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Handheld",
+       "notes": "The Switch conversion targets 30 fps with aggressive dynamic resolution scaling; exact internal resolution varies by scene."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "Dynamic resolution up to 720p",
+       "resolutionDynamic": false,
+       "renderingResolution": "Dynamic resolution up to 720p",
+       "outputResolution": "Dynamic resolution up to 720p",
+       "fps": "30",
+       "fpsMin": "30",
+       "fpsMax": "30",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "TV / Docked",
+       "notes": "The Switch conversion targets 30 fps with aggressive dynamic resolution scaling; exact internal resolution varies by scene."
+      },
+      "modes": [
+       {
+        "name": "Primary documented/compatibility profile",
+        "handheldResolution": "Dynamic resolution up to 720p",
+        "handheldFps": "30",
+        "tvResolution": "Dynamic resolution up to 720p",
+        "tvFps": "30",
+        "hdr": false,
+        "vrr": false,
+        "notes": "The Switch conversion targets 30 fps with aggressive dynamic resolution scaling; exact internal resolution varies by scene."
+       }
+      ],
+      "upscaling": "Game / system-specific scaling where applicable",
+      "rayTracing": false,
+      "rayTracingMode": "Not Supported",
+      "loadingTime": "Scene-dependent",
+      "loadingNotes": "Loading time varies by scene, save state, storage, version, and patch.",
+      "gameVersion": "Current listed version",
+      "patchVersion": "Current available update",
+      "testedDate": "2026-08-27",
+      "sourceName": "Official product / compatibility information",
+      "sourceUrl": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-games/Wolfenstein-II-The-New-Colossus-1276093.html",
+      "performanceNotes": "The Switch conversion targets 30 fps with aggressive dynamic resolution scaling; exact internal resolution varies by scene."
+     },
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "hardwareId": "nintendo-switch-2",
+      "informationStatus": "Available",
+      "handheld": {
+       "supported": true,
+       "resolution": "Dynamic up to 720p",
+       "resolutionDynamic": false,
+       "renderingResolution": "Dynamic up to 720p",
+       "outputResolution": "Dynamic up to 720p",
+       "fps": "30",
+       "fpsMin": "30",
+       "fpsMax": "30",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Handheld",
+       "notes": "Backward-compatible Nintendo Switch software on Nintendo Switch 2; no native Switch 2 edition assumed."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "Dynamic up to 720p",
+       "resolutionDynamic": false,
+       "renderingResolution": "Dynamic up to 720p",
+       "outputResolution": "Dynamic up to 720p",
+       "fps": "30",
+       "fpsMin": "30",
+       "fpsMax": "30",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "TV / Docked",
+       "notes": "Backward-compatible Nintendo Switch software on Nintendo Switch 2; no native Switch 2 edition assumed."
+      },
+      "modes": [
+       {
+        "name": "Primary documented/compatibility profile",
+        "handheldResolution": "Dynamic up to 720p",
+        "handheldFps": "30",
+        "tvResolution": "Dynamic up to 720p",
+        "tvFps": "30",
+        "hdr": false,
+        "vrr": false,
+        "notes": "Backward-compatible Nintendo Switch software on Nintendo Switch 2; no native Switch 2 edition assumed."
+       }
+      ],
+      "upscaling": "Game / system-specific scaling where applicable",
+      "rayTracing": false,
+      "rayTracingMode": "Not Supported",
+      "loadingTime": "Scene-dependent",
+      "loadingNotes": "Loading time varies by scene, save state, storage, version, and patch.",
+      "gameVersion": "Current listed version",
+      "patchVersion": "Current available update",
+      "testedDate": "2026-08-27",
+      "sourceName": "Official product / compatibility information",
+      "sourceUrl": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-games/Wolfenstein-II-The-New-Colossus-1276093.html",
+      "performanceNotes": "Backward-compatible Nintendo Switch software on Nintendo Switch 2; no native Switch 2 edition assumed."
+     }
+    ],
+    "switch2UpgradePrice": 0,
+    "boxContentsList": [],
+    "image": "",
+    "banner": "",
+    "schemaId": "",
+    "batchImport": true,
+    "galleryImages": [
+     {
+      "url": "/api/files/products/prd_6fe1da3c0f9940dc/gallery-1-4930c2333de232a5.webp",
+      "alt": "Wolfenstein II: The New Colossus screenshot 1"
+     },
+     {
+      "url": "/api/files/products/prd_6fe1da3c0f9940dc/gallery-2-6175b61b288eeaee.webp",
+      "alt": "Wolfenstein II: The New Colossus screenshot 2"
+     },
+     {
+      "url": "/api/files/products/prd_6fe1da3c0f9940dc/gallery-3-a8fc69ebf5b2467f.webp",
+      "alt": "Wolfenstein II: The New Colossus screenshot 3"
+     },
+     {
+      "url": "/api/files/products/prd_6fe1da3c0f9940dc/gallery-4-0cf7e7fd9017d31c.webp",
+      "alt": "Wolfenstein II: The New Colossus screenshot 4"
+     },
+     {
+      "url": "/api/files/products/prd_6fe1da3c0f9940dc/gallery-5-3515929688fd86b4.webp",
+      "alt": "Wolfenstein II: The New Colossus screenshot 5"
+     },
+     {
+      "url": "/api/files/products/prd_6fe1da3c0f9940dc/gallery-6-30d62597de322c7f.webp",
+      "alt": "Wolfenstein II: The New Colossus screenshot 6"
+     }
+    ],
+    "createdAt": "2026-08-28T18:52:49.343Z",
+    "updatedAt": "2026-08-28T18:52:49.343Z"
+   }
+  },
+  {
+   "id": "prd_acae6edb0a1b4f5c",
+   "slug": "world-of-final-fantasy-maxima",
+   "title": "WORLD OF FINAL FANTASY MAXIMA",
+   "platform": "switch1",
+   "isHidden": true,
+   "hash": "15d0e706f3fc6ede494db3b18245183c8eff4539da6545ec3fdda6b6d890dcb9",
+   "images": [
+    {
+     "role": "front-box",
+     "field": "cartridgeImage",
+     "url": "https://banan.to/api/files/products/prd_acae6edb0a1b4f5c/front-box-8370d769a8ca966d.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 595514,
+     "width": 1167,
+     "height": 1888,
+     "thumb": "review-workdir/thumbs/batch-029/world-of-final-fantasy-maxima__front-box-0.png"
+    },
+    {
+     "role": "front-box",
+     "field": "box_front_url",
+     "url": "https://images.launchbox-app.com/f990b014-4e8d-479f-b68d-7eb17980d076.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 797199,
+     "width": 1238,
+     "height": 2000,
+     "thumb": "review-workdir/thumbs/batch-029/world-of-final-fantasy-maxima__front-box-1.png"
+    },
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://banan.to/api/files/products/prd_acae6edb0a1b4f5c/square-card-2eb2c55f8b647e3e.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 181288,
+     "width": 1024,
+     "height": 1024,
+     "thumb": "review-workdir/thumbs/batch-029/world-of-final-fantasy-maxima__square-card-2.png"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://banan.to/api/files/products/prd_acae6edb0a1b4f5c/cover-e7b3d7b11ea11578.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 377942,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-029/world-of-final-fantasy-maxima__detail-cover-3.png"
+    },
+    {
+     "role": "3d-texture",
+     "field": "coverHiResImage",
+     "url": "https://banan.to/api/files/products/prd_acae6edb0a1b4f5c/3d-wrap-5844a3fdaa9c71e1.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 1091154,
+     "width": 2454,
+     "height": 1888,
+     "thumb": "review-workdir/thumbs/batch-029/world-of-final-fantasy-maxima__3d-texture-4.png"
+    },
+    {
+     "role": "listing",
+     "field": "image",
+     "url": "https://images.launchbox-app.com/deacd374-3a74-42c3-aa56-042985c2fab9.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 354994,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-029/world-of-final-fantasy-maxima__listing-5.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[0]",
+     "url": "https://images.launchbox-app.com/48a5e5f0-e1dc-4446-9a0e-245e98076dc1.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 413868,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-029/world-of-final-fantasy-maxima__banner-6.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[1]",
+     "url": "https://images.launchbox-app.com/eccf9dba-5d3d-4ee2-a231-6ab57d707906.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 431434,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-029/world-of-final-fantasy-maxima__banner-7.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[2]",
+     "url": "https://images.launchbox-app.com/d8f35444-9aff-4e96-957b-9ff29fb08f43.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 389847,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-029/world-of-final-fantasy-maxima__banner-8.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[3]",
+     "url": "https://images.launchbox-app.com/c51ead44-9805-4bbf-80bb-7b6bbfb47e08.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 405951,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-029/world-of-final-fantasy-maxima__banner-9.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://banan.to/api/files/products/prd_acae6edb0a1b4f5c/gallery-1-6ccf52555a5d977f.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 132302,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-029/world-of-final-fantasy-maxima__gallery-10.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[1]",
+     "url": "https://banan.to/api/files/products/prd_acae6edb0a1b4f5c/gallery-2-7c2e604359daac04.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 123764,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-029/world-of-final-fantasy-maxima__gallery-11.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[2]",
+     "url": "https://banan.to/api/files/products/prd_acae6edb0a1b4f5c/gallery-3-ffa0654d39206206.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 117316,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-029/world-of-final-fantasy-maxima__gallery-12.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[3]",
+     "url": "https://banan.to/api/files/products/prd_acae6edb0a1b4f5c/gallery-4-e62566521883e3c5.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 107814,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-029/world-of-final-fantasy-maxima__gallery-13.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[4]",
+     "url": "https://banan.to/api/files/products/prd_acae6edb0a1b4f5c/gallery-5-97bb7e03dc11794e.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 135616,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-029/world-of-final-fantasy-maxima__gallery-14.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[5]",
+     "url": "https://banan.to/api/files/products/prd_acae6edb0a1b4f5c/gallery-6-8bf5054719356c80.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 177980,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-029/world-of-final-fantasy-maxima__gallery-15.png"
+    }
+   ],
+   "record": {
+    "title": "WORLD OF FINAL FANTASY MAXIMA",
+    "titleEn": "WORLD OF FINAL FANTASY MAXIMA",
+    "titleKu": "",
+    "slug": "world-of-final-fantasy-maxima",
+    "description": "A colorful FINAL FANTASY crossover RPG where Lann and Reynn capture Mirages, build stacked battle formations, and meet familiar series characters in a storybook world. The twins travel into a miniature-styled world filled with familiar FINAL FANTASY creatures and characters. Additional champion transformations and systems expand the late-game options beyond the original release.",
+    "descriptionEn": "A colorful FINAL FANTASY crossover RPG where Lann and Reynn capture Mirages, build stacked battle formations, and meet familiar series characters in a storybook world. The twins travel into a miniature-styled world filled with familiar FINAL FANTASY creatures and characters. Additional champion transformations and systems expand the late-game options beyond the original release.",
+    "descriptionKu": "",
+    "cartridgeImage": "/api/files/products/prd_acae6edb0a1b4f5c/front-box-8370d769a8ca966d.webp",
+    "nintendoCardImage": "/api/files/products/prd_acae6edb0a1b4f5c/square-card-2eb2c55f8b647e3e.webp",
+    "coverHiResImage": "/api/files/products/prd_acae6edb0a1b4f5c/3d-wrap-5844a3fdaa9c71e1.webp",
+    "coverImage": "/api/files/products/prd_acae6edb0a1b4f5c/cover-e7b3d7b11ea11578.webp",
+    "bannerImages": [
+     "https://images.launchbox-app.com/48a5e5f0-e1dc-4446-9a0e-245e98076dc1.jpg",
+     "https://images.launchbox-app.com/eccf9dba-5d3d-4ee2-a231-6ab57d707906.jpg",
+     "https://images.launchbox-app.com/d8f35444-9aff-4e96-957b-9ff29fb08f43.jpg",
+     "https://images.launchbox-app.com/c51ead44-9805-4bbf-80bb-7b6bbfb47e08.jpg",
+     "https://images.launchbox-app.com/716c3026-9736-4f31-bd1b-f6019b255753.jpg",
+     "https://images.launchbox-app.com/be81c063-8dc2-4b1f-ba64-b597e749dcdc.jpg"
+    ],
+    "gallery": [],
+    "youtubeTrailer": "",
+    "releaseDate": "2018-11-06",
+    "ageRating": "ESRB E10+ / PEGI 12",
+    "metacriticRating": 79,
+    "genres": [
+     "RPG",
+     "Adventure"
+    ],
+    "platform": "switch1",
+    "size": 10.8,
+    "numberOfPlayers": "Single system (1)",
+    "supportedLanguages": "Official supported language list varies by region; see the publisher page linked in Sources.",
+    "hardwareModel": "",
+    "colorEdition": "",
+    "storageCapacity": "",
+    "screenSpecs": "",
+    "batteryLife": "",
+    "boxContents": [],
+    "boxContentsText": "",
+    "warrantyCondition": "",
+    "connectivity": "",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "Global",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "",
+    "redemptionSteps": [],
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 5000,
+    "cost": 1500,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": true,
+    "displayOrder": 0,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "مشترك",
+      "description": "مشترك",
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "types": [
+     {
+      "id": "offline_base",
+      "name": "مشترك — اللعبة الأساسية",
+      "optionId": "offline_account",
+      "price": 5000,
+      "cost": 1500,
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "Active",
+    "kind": "account",
+    "trade_value_iqd": 2500,
+    "store_offer_bonus_iqd": 1000,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "id": "prd_acae6edb0a1b4f5c",
+    "schema_version": 24,
+    "titleAr": "وورلد أوف فاينل فانتسي ماكسيما",
+    "compatibility": [
+     "Nintendo Switch",
+     "Nintendo Switch 2 compatibility: Supported"
+    ],
+    "edition": "Standard / Store Variants",
+    "developer": "SQUARE ENIX",
+    "publisher": "SQUARE ENIX",
+    "seriesName": "WORLD OF FINAL FANTASY MAXIMA",
+    "metacriticUrl": "https://www.metacritic.com/game/world-of-final-fantasy-maxima/",
+    "opencriticRating": 79,
+    "userScore": 8,
+    "price_usd": 39.99,
+    "officialUrl": "https://www.nintendo.com/us/store/products/world-of-final-fantasy-maxima-switch/",
+    "eshopUrl": "https://www.nintendo.com/us/store/products/world-of-final-fantasy-maxima-switch/",
+    "gameIsOffline": true,
+    "gameIsOnline": false,
+    "gameLanguageLocked": false,
+    "description_short": "A colorful FINAL FANTASY crossover RPG where Lann and Reynn capture Mirages, build stacked battle formations, and meet familiar series characters in a storybook world.",
+    "description_ar": "وورلد أوف فاينل فانتسي ماكسيما — A colorful FINAL FANTASY crossover RPG where Lann and Reynn capture Mirages, build stacked battle formations, and meet familiar series characters in a storybook world.",
+    "box_front_url": "https://images.launchbox-app.com/f990b014-4e8d-479f-b68d-7eb17980d076.jpg",
+    "languagesText": [
+     "See official supported languages on the linked Nintendo/publisher product page"
+    ],
+    "languagesAudio": [
+     "Audio language availability varies by title and region; see official product information"
+    ],
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": true,
+    "nintendoPlayModes": "TV / Tabletop / Handheld",
+    "nintendoOnlineRequired": false,
+    "nintendoCloudSaves": true,
+    "nintendoGameKeyCard": false,
+    "nintendoPhysicalNeedsDownload": false,
+    "switch2Enhanced": false,
+    "switch2Exclusive": false,
+    "nintendoNotes": "Platform, release, player-count, storage, compatibility, and feature statements in this import are grounded in the official Nintendo/publisher pages listed under Sources. Store package prices are user-supplied storefront values, not assumed MSRP.",
+    "editionsList": [
+     {
+      "name": "Regular / Offline",
+      "coverUrl": "https://images.launchbox-app.com/f990b014-4e8d-479f-b68d-7eb17980d076.jpg",
+      "contents": [
+       {
+        "label": "Regular / Offline store package"
+       },
+       {
+        "label": "Offline account access"
+       },
+       {
+        "label": "Infinite stock by default"
+       }
+      ]
+     },
+     {
+      "name": "Standard / Online — Out of stock",
+      "coverUrl": "https://images.launchbox-app.com/deacd374-3a74-42c3-aa56-042985c2fab9.jpg",
+      "contents": [
+       {
+        "label": "Standard / Online — Out of stock store package"
+       },
+       {
+        "label": "Online account access"
+       },
+       {
+        "label": "Out of stock"
+       }
+      ]
+     }
+    ],
+    "gameplayPillars": [
+     {
+      "title": "Mirage collection",
+      "description": "Players capture creatures called Mirages and develop them through transformations and abilities.",
+      "imageUrl": "https://images.launchbox-app.com/48a5e5f0-e1dc-4446-9a0e-245e98076dc1.jpg"
+     },
+     {
+      "title": "Stack battle system",
+      "description": "Small, medium, and large units can be stacked together, combining statistics and abilities into strategic formations.",
+      "imageUrl": "https://images.launchbox-app.com/eccf9dba-5d3d-4ee2-a231-6ab57d707906.jpg"
+     },
+     {
+      "title": "FINAL FANTASY crossover cast",
+      "description": "Famous heroes and creatures from across the series appear in stylized roles.",
+      "imageUrl": "https://images.launchbox-app.com/d8f35444-9aff-4e96-957b-9ff29fb08f43.jpg"
+     },
+     {
+      "title": "Maxima additions",
+      "description": "The Maxima version adds Avatar Change and additional champions, Mirages, and features.",
+      "imageUrl": "https://images.launchbox-app.com/c51ead44-9805-4bbf-80bb-7b6bbfb47e08.jpg"
+     },
+     {
+      "title": "Classic command combat",
+      "description": "Turn-based battles reward elemental weaknesses, status effects, and party composition.",
+      "imageUrl": "https://images.launchbox-app.com/716c3026-9736-4f31-bd1b-f6019b255753.jpg"
+     }
+    ],
+    "worldSummary": "A colorful FINAL FANTASY crossover RPG where Lann and Reynn capture Mirages, build stacked battle formations, and meet familiar series characters in a storybook world. The twins travel into a miniature-styled world filled with familiar FINAL FANTASY creatures and characters. Additional champion transformations and systems expand the late-game options beyond the original release.",
+    "storyChapters": [
+     {
+      "title": "Lann and Reynn enter Grymoire",
+      "body": "The twins travel into a miniature-styled world filled with familiar FINAL FANTASY creatures and characters.",
+      "imageUrl": "https://images.launchbox-app.com/eccf9dba-5d3d-4ee2-a231-6ab57d707906.jpg"
+     },
+     {
+      "title": "Collect Mirages",
+      "body": "Progression revolves around capturing and developing monsters with different sizes and abilities.",
+      "imageUrl": "https://images.launchbox-app.com/d8f35444-9aff-4e96-957b-9ff29fb08f43.jpg"
+     },
+     {
+      "title": "Meet champions",
+      "body": "Iconic FINAL FANTASY characters appear throughout the adventure and can influence combat.",
+      "imageUrl": "https://images.launchbox-app.com/c51ead44-9805-4bbf-80bb-7b6bbfb47e08.jpg"
+     },
+     {
+      "title": "Uncover the twins’ past",
+      "body": "The story gradually reveals hidden memories and the larger conflict surrounding Grymoire.",
+      "imageUrl": "https://images.launchbox-app.com/716c3026-9736-4f31-bd1b-f6019b255753.jpg"
+     },
+     {
+      "title": "Use Maxima content",
+      "body": "Additional champion transformations and systems expand the late-game options beyond the original release.",
+      "imageUrl": "https://images.launchbox-app.com/be81c063-8dc2-4b1f-ba64-b597e749dcdc.jpg"
+     }
+    ],
+    "features": [
+     "Mirage collection system",
+     "Stack-based party building",
+     "FINAL FANTASY crossover characters",
+     "Maxima additional content",
+     "Traditional turn-based combat"
+    ],
+    "perfResolutionDocked": "1080p",
+    "perfResolutionHandheld": "720p",
+    "perfFps": "30",
+    "perfHdr": false,
+    "playTimeMain": 35,
+    "completionMain": 55,
+    "completionExtras": 90,
+    "faq": [
+     {
+      "q": "What does Maxima add?",
+      "a": "It adds Avatar Change, more champions, additional Mirages, and other expanded content."
+     },
+     {
+      "q": "Is the online variant available?",
+      "a": "The supplied store data says Standard / Online is out of stock, so that variant is stored with stock 0."
+     },
+     {
+      "q": "Does it support Switch 2?",
+      "a": "Nintendo lists the Switch version as compatible with Switch 2."
+     },
+     {
+      "q": "Is it multiplayer?",
+      "a": "The main game is a single-player RPG."
+     },
+     {
+      "q": "What is a Mirage?",
+      "a": "A collectible monster that can be developed and combined into stacked party formations."
+     }
+    ],
+    "verdictScore": 8.5,
+    "verdictPros": [
+     "Charming crossover fan service",
+     "Deep creature collection",
+     "Interesting stack mechanics",
+     "Maxima includes more content",
+     "Good portable JRPG"
+    ],
+    "verdictCons": [
+     "Very cute tone will not suit everyone",
+     "Story can be dialogue-heavy",
+     "Some grinding is expected",
+     "Online variant currently unavailable in supplied store data",
+     "No native Switch 2 edition"
+    ],
+    "reviews": [
+     {
+      "source": "Metacritic",
+      "score": "79",
+      "url": "https://www.metacritic.com/game/world-of-final-fantasy-maxima/"
+     },
+     {
+      "source": "OpenCritic",
+      "score": "79",
+      "url": "https://opencritic.com/"
+     }
+    ],
+    "timeline": [
+     {
+      "date": "2018-11-06",
+      "title": "Released on target Nintendo platform"
+     }
+    ],
+    "patchNotes": [
+     {
+      "version": "Current retail build",
+      "date": "2026-08-27"
+     }
+    ],
+    "studioName": "SQUARE ENIX",
+    "studioUrl": "https://www.nintendo.com/us/store/products/world-of-final-fantasy-maxima-switch/",
+    "studioLocation": "See publisher/developer profile",
+    "sources": [
+     {
+      "name": "Official Nintendo / publisher product page",
+      "url": "https://www.nintendo.com/us/store/products/world-of-final-fantasy-maxima-switch/"
+     },
+     {
+      "name": "Metacritic",
+      "url": "https://www.metacritic.com/game/world-of-final-fantasy-maxima/"
+     }
+    ],
+    "downloadSizeGb": 10.8,
+    "requiredSpaceGb": 10.8,
+    "microSdRecommended": true,
+    "storageNotes": "Storage requirements follow the official product listing where a final numeric size is published; upcoming titles may require a later refresh when final size is posted.",
+    "mpLocalPlayers": false,
+    "mpOnlinePlayers": false,
+    "mpCoop": false,
+    "mpCompetitive": false,
+    "mpLocalWireless": false,
+    "mpSplitScreen": false,
+    "dlc": [
+     {
+      "name": "Downloadable / additional content status",
+      "description": "MAXIMA already incorporates its major expanded feature set; no separate expansion pass is required."
+     }
+    ],
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "deviceModel": "Nintendo Switch",
+      "hardwareId": "nintendo-switch",
+      "informationStatus": "Available",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p",
+       "resolutionDynamic": false,
+       "renderingResolution": "720p",
+       "outputResolution": "720p",
+       "fps": "30",
+       "fpsMin": "30",
+       "fpsMax": "30",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Handheld",
+       "notes": "Recorded at the established Switch 30 fps presentation profile."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p",
+       "resolutionDynamic": false,
+       "renderingResolution": "1080p",
+       "outputResolution": "1080p",
+       "fps": "30",
+       "fpsMin": "30",
+       "fpsMax": "30",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "TV / Docked",
+       "notes": "Recorded at the established Switch 30 fps presentation profile."
+      },
+      "modes": [
+       {
+        "name": "Primary documented/compatibility profile",
+        "handheldResolution": "720p",
+        "handheldFps": "30",
+        "tvResolution": "1080p",
+        "tvFps": "30",
+        "hdr": false,
+        "vrr": false,
+        "notes": "Recorded at the established Switch 30 fps presentation profile."
+       }
+      ],
+      "upscaling": "Game / system-specific scaling where applicable",
+      "rayTracing": false,
+      "rayTracingMode": "Not Supported",
+      "loadingTime": "Scene-dependent",
+      "loadingNotes": "Loading time varies by scene, save state, storage, version, and patch.",
+      "gameVersion": "Current listed version",
+      "patchVersion": "Current available update",
+      "testedDate": "2026-08-27",
+      "sourceName": "Official product / compatibility information",
+      "sourceUrl": "https://www.nintendo.com/us/store/products/world-of-final-fantasy-maxima-switch/",
+      "performanceNotes": "Recorded at the established Switch 30 fps presentation profile."
+     },
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "hardwareId": "nintendo-switch-2",
+      "informationStatus": "Available",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p",
+       "resolutionDynamic": false,
+       "renderingResolution": "720p",
+       "outputResolution": "720p",
+       "fps": "30",
+       "fpsMin": "30",
+       "fpsMax": "30",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Handheld",
+       "notes": "Backward-compatible Nintendo Switch software on Nintendo Switch 2; no native Switch 2 edition assumed."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p",
+       "resolutionDynamic": false,
+       "renderingResolution": "1080p",
+       "outputResolution": "1080p",
+       "fps": "30",
+       "fpsMin": "30",
+       "fpsMax": "30",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "TV / Docked",
+       "notes": "Backward-compatible Nintendo Switch software on Nintendo Switch 2; no native Switch 2 edition assumed."
+      },
+      "modes": [
+       {
+        "name": "Primary documented/compatibility profile",
+        "handheldResolution": "720p",
+        "handheldFps": "30",
+        "tvResolution": "1080p",
+        "tvFps": "30",
+        "hdr": false,
+        "vrr": false,
+        "notes": "Backward-compatible Nintendo Switch software on Nintendo Switch 2; no native Switch 2 edition assumed."
+       }
+      ],
+      "upscaling": "Game / system-specific scaling where applicable",
+      "rayTracing": false,
+      "rayTracingMode": "Not Supported",
+      "loadingTime": "Scene-dependent",
+      "loadingNotes": "Loading time varies by scene, save state, storage, version, and patch.",
+      "gameVersion": "Current listed version",
+      "patchVersion": "Current available update",
+      "testedDate": "2026-08-27",
+      "sourceName": "Official product / compatibility information",
+      "sourceUrl": "https://www.nintendo.com/us/store/products/world-of-final-fantasy-maxima-switch/",
+      "performanceNotes": "Backward-compatible Nintendo Switch software on Nintendo Switch 2; no native Switch 2 edition assumed."
+     }
+    ],
+    "switch2UpgradePrice": 0,
+    "galleryImages": [
+     {
+      "url": "/api/files/products/prd_acae6edb0a1b4f5c/gallery-1-6ccf52555a5d977f.webp",
+      "alt": "WORLD OF FINAL FANTASY MAXIMA screenshot 1"
+     },
+     {
+      "url": "/api/files/products/prd_acae6edb0a1b4f5c/gallery-2-7c2e604359daac04.webp",
+      "alt": "WORLD OF FINAL FANTASY MAXIMA screenshot 2"
+     },
+     {
+      "url": "/api/files/products/prd_acae6edb0a1b4f5c/gallery-3-ffa0654d39206206.webp",
+      "alt": "WORLD OF FINAL FANTASY MAXIMA screenshot 3"
+     },
+     {
+      "url": "/api/files/products/prd_acae6edb0a1b4f5c/gallery-4-e62566521883e3c5.webp",
+      "alt": "WORLD OF FINAL FANTASY MAXIMA screenshot 4"
+     },
+     {
+      "url": "/api/files/products/prd_acae6edb0a1b4f5c/gallery-5-97bb7e03dc11794e.webp",
+      "alt": "WORLD OF FINAL FANTASY MAXIMA screenshot 5"
+     },
+     {
+      "url": "/api/files/products/prd_acae6edb0a1b4f5c/gallery-6-8bf5054719356c80.webp",
+      "alt": "WORLD OF FINAL FANTASY MAXIMA screenshot 6"
+     }
+    ],
+    "boxContentsList": [],
+    "image": "https://images.launchbox-app.com/deacd374-3a74-42c3-aa56-042985c2fab9.jpg",
+    "banner": "https://images.launchbox-app.com/48a5e5f0-e1dc-4446-9a0e-245e98076dc1.jpg",
+    "schemaId": "",
+    "batchImport": true,
+    "createdAt": "2026-08-28T18:47:56.026Z",
+    "updatedAt": "2026-08-28T18:47:56.026Z"
+   }
+  },
+  {
+   "id": "prd_930cf6dc6e644af0",
+   "slug": "xenoblade-chronicles-2-switch",
+   "title": "Xenoblade Chronicles 2",
+   "platform": "switch1",
+   "isHidden": false,
+   "hash": "78f0fb14b9b8dfce7d13e0ea11411808fa5ece3984bc49236a75e92772bad2b5",
+   "images": [
+    {
+     "role": "front-box",
+     "field": "cartridgeImage",
+     "url": "https://banan.to/api/files/products/prd_930cf6dc6e644af0/front-4f3790e97d83419a.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 17343,
+     "width": 172,
+     "height": 281,
+     "thumb": "review-workdir/thumbs/batch-029/xenoblade-chronicles-2-switch__front-box-0.png"
+    },
+    {
+     "role": "front-box",
+     "field": "box_front_url",
+     "url": "https://images.launchbox-app.com//acc8a6b4-60c7-454f-9e01-d9b04ef152cd.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 17343,
+     "width": 172,
+     "height": 281,
+     "thumb": "review-workdir/thumbs/batch-029/xenoblade-chronicles-2-switch__front-box-1.png"
+    },
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://banan.to/api/files/products/prd_930cf6dc6e644af0/square-9d7cf581b6e00bd8.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 24781,
+     "width": 281,
+     "height": 281,
+     "thumb": "review-workdir/thumbs/batch-029/xenoblade-chronicles-2-switch__square-card-2.png"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://banan.to/api/files/products/prd_930cf6dc6e644af0/cover-4f3790e97d83419a.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 17343,
+     "width": 172,
+     "height": 281,
+     "thumb": "review-workdir/thumbs/batch-029/xenoblade-chronicles-2-switch__detail-cover-3.png"
+    },
+    {
+     "role": "3d-texture",
+     "field": "coverHiResImage",
+     "url": "https://banan.to/api/files/products/prd_930cf6dc6e644af0/3d-texture-f872bd737a5a2546.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 7690735,
+     "width": 4421,
+     "height": 3398,
+     "thumb": "review-workdir/thumbs/batch-029/xenoblade-chronicles-2-switch__3d-texture-4.png"
+    },
+    {
+     "role": "listing",
+     "field": "image",
+     "url": "https://banan.to/api/files/products/prd_930cf6dc6e644af0/cover-4f3790e97d83419a.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 17343,
+     "width": 172,
+     "height": 281,
+     "thumb": "review-workdir/thumbs/batch-029/xenoblade-chronicles-2-switch__listing-5.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[0]",
+     "url": "https://banan.to/api/files/products/prd_930cf6dc6e644af0/banner-0-ab953b6d3344cd5a.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[1]",
+     "url": "https://banan.to/api/files/products/prd_930cf6dc6e644af0/banner-1-c7efab308bdb87cd.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[2]",
+     "url": "https://banan.to/api/files/products/prd_930cf6dc6e644af0/banner-2-f30da022f5643557.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[3]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000000707/070d1f7be9a836c7064e1b9d33fc6388191f8bdfbefe0b5d9c284c1b471c163f",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 166947,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-029/xenoblade-chronicles-2-switch__banner-9.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://images.launchbox-app.com//824803dd-d70e-42fb-a233-1b8f8eb0ee21.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 25992,
+     "width": 400,
+     "height": 226,
+     "thumb": "review-workdir/thumbs/batch-029/xenoblade-chronicles-2-switch__gallery-10.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[1]",
+     "url": "https://images.launchbox-app.com//feacda3b-39a1-4fe8-9c8a-a2052986190d.png",
+     "status": 200,
+     "contentType": "image/png",
+     "bytes": 62597,
+     "width": 400,
+     "height": 225,
+     "thumb": "review-workdir/thumbs/batch-029/xenoblade-chronicles-2-switch__gallery-11.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[2]",
+     "url": "https://images.launchbox-app.com//b01faef5-2447-407c-ae47-b895634511a4.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 32283,
+     "width": 400,
+     "height": 225,
+     "thumb": "review-workdir/thumbs/batch-029/xenoblade-chronicles-2-switch__gallery-12.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[3]",
+     "url": "https://images.launchbox-app.com//fda3b3bf-42cd-4595-8e91-d69c4f3cae2e.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 25063,
+     "width": 400,
+     "height": 225,
+     "thumb": "review-workdir/thumbs/batch-029/xenoblade-chronicles-2-switch__gallery-13.png"
+    }
+   ],
+   "record": {
+    "title": "Xenoblade Chronicles 2",
+    "titleEn": "Xenoblade Chronicles 2",
+    "titleKu": "Xenoblade Chronicles 2",
+    "slug": "xenoblade-chronicles-2-switch",
+    "description": "Lead Rex, Pyra, and their allies across Alrest in search of Elysium. Explore the Titans, collect and develop Blades, master layered real-time combat, and expand the adventure with the official Expansion Pass and Torna story.",
+    "descriptionEn": "Lead Rex, Pyra, and their allies across Alrest in search of Elysium. Explore the Titans, collect and develop Blades, master layered real-time combat, and expand the adventure with the official Expansion Pass and Torna story.",
+    "descriptionKu": "Lead Rex, Pyra, and their allies across Alrest in search of Elysium. Explore the Titans, collect and develop Blades, master layered real-time combat, and expand the adventure with the official Expansion Pass and Torna story.",
+    "cartridgeImage": "/api/files/products/prd_930cf6dc6e644af0/front-4f3790e97d83419a.jpg",
+    "nintendoCardImage": "/api/files/products/prd_930cf6dc6e644af0/square-9d7cf581b6e00bd8.jpg",
+    "coverHiResImage": "/api/files/products/prd_930cf6dc6e644af0/3d-texture-f872bd737a5a2546.jpg",
+    "coverImage": "/api/files/products/prd_930cf6dc6e644af0/cover-4f3790e97d83419a.jpg",
+    "bannerImages": [
+     "/api/files/products/prd_930cf6dc6e644af0/banner-0-ab953b6d3344cd5a.avif",
+     "/api/files/products/prd_930cf6dc6e644af0/banner-1-c7efab308bdb87cd.avif",
+     "/api/files/products/prd_930cf6dc6e644af0/banner-2-f30da022f5643557.avif",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000000707/070d1f7be9a836c7064e1b9d33fc6388191f8bdfbefe0b5d9c284c1b471c163f"
+    ],
+    "gallery": [],
+    "youtubeTrailer": "https://www.youtube.com/watch?v=Xjpao-nD5YU",
+    "releaseDate": "2017-12-01",
+    "ageRating": "ESRB Teen",
+    "metacriticRating": 83,
+    "genres": [
+     "Action",
+     "Role-Playing",
+     "Adventure"
+    ],
+    "platform": "switch1",
+    "size": 13.2,
+    "numberOfPlayers": "1",
+    "supportedLanguages": "Japanese, British English, French, German, Italian, Spanish, Korean, Simplified Chinese, Latin American Spanish, Canadian French, Traditional Chinese, American English",
+    "hardwareModel": "",
+    "colorEdition": "",
+    "storageCapacity": "",
+    "screenSpecs": "",
+    "batteryLife": "",
+    "boxContents": [],
+    "boxContentsText": "",
+    "warrantyCondition": "",
+    "connectivity": "",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "Global",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "",
+    "redemptionSteps": [],
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 11500,
+    "cost": 1250,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": false,
+    "displayOrder": 0,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "مشترك",
+      "description": "Offline account access for this game.",
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_account",
+      "name": "خاص بك",
+      "description": "Online-capable account access option sold by the supplier.",
+      "isInfiniteStock": true
+     }
+    ],
+    "types": [
+     {
+      "id": "standard_offline",
+      "name": "مشترك — اللعبة الأساسية",
+      "optionId": "offline_account",
+      "price": 11500,
+      "cost": 1250,
+      "description": "Supplier Regular / 普通版. Dual-platform costs retained in notes.",
+      "stock": 999999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "dlc_offline",
+      "name": "مشترك — مع الإضافات",
+      "optionId": "offline_account",
+      "price": 14000,
+      "cost": 2500,
+      "description": "Supplier Special / 特典版 mapped to the DLC-bearing offline variant. Dual-platform costs retained in notes.",
+      "stock": 999999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "standard_online",
+      "name": "خاص بك — اللعبة الأساسية",
+      "optionId": "online_account",
+      "price": 35000,
+      "cost": 20750,
+      "description": "Supplier Standard / 标准版. Dual-platform costs retained in notes.",
+      "stock": 999999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "dlc_online",
+      "name": "خاص بك — مع الإضافات",
+      "optionId": "online_account",
+      "price": 42000,
+      "cost": 25000,
+      "description": "Supplier Deluxe / 豪华版 mapped to the DLC-bearing online variant. Dual-platform costs retained in notes.",
+      "stock": 999999,
+      "isInfiniteStock": true
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "active",
+    "kind": "account",
+    "trade_value_iqd": 0,
+    "store_offer_bonus_iqd": 0,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "id": "prd_930cf6dc6e644af0",
+    "titleAr": "Xenoblade Chronicles 2",
+    "compatibility": [
+     "Nintendo Switch"
+    ],
+    "edition": "Standard",
+    "developer": "MONOLITHSOFT",
+    "publisher": "Nintendo",
+    "metacriticUrl": "https://www.metacritic.com/game/xenoblade-chronicles-2/",
+    "opencriticRating": 83,
+    "userScore": 8.5,
+    "officialUrl": "https://www.nintendo.com/us/store/products/xenoblade-chronicles-2-switch/",
+    "eshopUrl": "https://www.nintendo.com/us/store/products/xenoblade-chronicles-2-switch/",
+    "gameIsOffline": true,
+    "gameIsOnline": false,
+    "description_short": "A story-driven action RPG following Rex and Pyra across the Titans of Alrest in search of Elysium.",
+    "description_ar": "قاد ريكس وبايرا ورفاقهما عبر عالم ألريست بحثًا عن Elysium. استكشف العمالقة الأحياء، واجمع الـBlades وطوّرها، وأتقن نظام قتال متدرج وعميق، مع توسعة رسمية كبيرة تتضمن Torna ~ The Golden Country.",
+    "box_front_url": "https://images.launchbox-app.com//acc8a6b4-60c7-454f-9e01-d9b04ef152cd.jpg",
+    "box_back_url": "https://images.launchbox-app.com//816d9755-8600-4581-85d3-b2e512525780.jpg",
+    "videos": [
+     {
+      "title": "Official Nintendo Switch trailer",
+      "url": "https://www.youtube.com/watch?v=Xjpao-nD5YU"
+     }
+    ],
+    "nsuid": "70010000000707",
+    "nintendoEshopUrl": "https://www.nintendo.com/us/store/products/xenoblade-chronicles-2-nintendo-switch-2-edition-switch-2/",
+    "nintendoOnlineRequired": false,
+    "nintendoCloudSaves": true,
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": true,
+    "nintendoPlayModes": "TV, Tabletop, Handheld",
+    "nintendoNotes": "Official platform status: Nintendo Switch version released 2017-12-01. Native Nintendo Switch 2 Edition released digitally on 2026-07-30; Nintendo lists 4K TV / full-HD handheld at 60 fps plus MOMO, Merc Assault and new Pyra/Mythra outfit designs.\n\nSupplier language selection: Simplified Chinese. Four supplier variants per platform are mapped using the established rule: Regular=Offline Standard; Special=Offline DLC; Standard=Online Standard; Deluxe=Online DLC.\nNS1: ¥6.8 / ¥11.7 / ¥95 / ¥114.6 => 1,250 / 2,500 / 20,750 / 25,000 IQD.\nNS2: ¥16.6 / ¥21.5 / ¥114.6 / ¥124.4 => 3,500 / 4,500 / 25,000 / 27,250 IQD.\nDual-platform type.cost fields are left blank because the template cannot encode two platform costs safely.",
+    "switch2Enhanced": true,
+    "switch2Exclusive": false,
+    "switch2Features": [
+     "4K TV output",
+     "1080p handheld output",
+     "60 fps",
+     "New Rare Blade MOMO",
+     "Merc Assault action-battle mode",
+     "New Pyra and Mythra outfit designs"
+    ],
+    "tagline": "Lead Rex and Pyra across a sea of clouds in search of Elysium.",
+    "fitFor": [
+     "Fans of long story-driven JRPGs",
+     "Players who enjoy party and build customization",
+     "Players interested in a large DLC expansion and postgame",
+     "Players who enjoy extensive postgame and DLC"
+    ],
+    "notFitFor": [
+     "Players seeking a short campaign",
+     "Players who dislike layered combat systems",
+     "Players who prefer minimal character-management systems"
+    ],
+    "playTimeMain": 62,
+    "playTimeFull": 255.5,
+    "editionsList": [
+     {
+      "name": "Nintendo Switch Standard",
+      "coverUrl": "https://images.launchbox-app.com//acc8a6b4-60c7-454f-9e01-d9b04ef152cd.jpg",
+      "contents": [
+       {
+        "label": "Base game"
+       },
+       {
+        "label": "Single-player story across Alrest"
+       },
+       {
+        "label": "Blade collection and party progression"
+       }
+      ]
+     },
+     {
+      "name": "Nintendo Switch 2 Edition",
+      "contents": [
+       {
+        "label": "Base game + Switch 2 Upgrade Pack"
+       },
+       {
+        "label": "4K TV / 1080p handheld at 60 fps"
+       },
+       {
+        "label": "MOMO, Merc Assault, new Pyra/Mythra designs"
+       }
+      ]
+     },
+     {
+      "name": "Expansion Pass",
+      "contents": [
+       {
+        "label": "Torna ~ The Golden Country"
+       },
+       {
+        "label": "New quests, Blades and challenge content"
+       },
+       {
+        "label": "Helpful items and additional content"
+       }
+      ]
+     }
+    ],
+    "gameplayPillars": [
+     {
+      "title": "Driver and Blade combat",
+      "description": "Drivers fight alongside Blades, combining Arts, Specials, elemental routes, Driver Combos, Blade Combos, and Chain Attacks.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000000707/85883546315ee943d54f8d29686705fb9ba9828099f876e3e27ee82e6fd40f5e"
+     },
+     {
+      "title": "Explore the Titans",
+      "description": "The Titans function as large adventure regions filled with quests, enemies, collection points, landmarks, towns, and hidden paths.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000000707/e6680b0381aa7c47b0d4a251de4b40a840b9746021aab9a48cc05121d73059d5"
+     },
+     {
+      "title": "Build affinity and teams",
+      "description": "Blade affinity charts, equipment, Aux Cores, pouch items, roles, elements, and party composition create a large customization layer.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000000707/3bdd5ab14edb0b72d215460b0a4fcef337fb8c7ec9d56ae2023d411f810fa51f"
+     }
+    ],
+    "worldSummary": "Alrest is a cloud-covered world where civilizations live on the backs of enormous Titans. Each Titan has distinctive terrain, settlements, wildlife, politics, and routes that change the shape of exploration.",
+    "storyChapters": [
+     {
+      "title": "Rex and Pyra",
+      "body": "Rex forms a bond with Pyra and accepts her request to reach Elysium, drawing him into a conflict involving Drivers, Blades, and rival powers.",
+      "imageUrl": "https://images.launchbox-app.com//a2841985-37b9-44cd-a8fb-6713973dbe3b.png"
+     },
+     {
+      "title": "The search for Elysium",
+      "body": "The party journeys between Titans as dwindling land and political tension push Alrest toward crisis.",
+      "imageUrl": "https://images.launchbox-app.com//78146993-b111-4144-a6fe-575bcd50849f.png"
+     },
+     {
+      "title": "Conflict over Alrest’s future",
+      "body": "The search for Elysium reveals deeper truths about Blades, Titans, and the history that shaped Alrest."
+     }
+    ],
+    "galleryImages": [
+     {
+      "url": "https://images.launchbox-app.com//824803dd-d70e-42fb-a233-1b8f8eb0ee21.jpg",
+      "alt": "Battle and exploration artwork"
+     },
+     {
+      "url": "https://images.launchbox-app.com//feacda3b-39a1-4fe8-9c8a-a2052986190d.png",
+      "alt": "Alrest environment artwork"
+     },
+     {
+      "url": "https://images.launchbox-app.com//b01faef5-2447-407c-ae47-b895634511a4.jpg",
+      "alt": "Character and Blade artwork"
+     },
+     {
+      "url": "https://images.launchbox-app.com//fda3b3bf-42cd-4595-8e91-d69c4f3cae2e.jpg",
+      "alt": "Additional promotional artwork"
+     }
+    ],
+    "features": [
+     "Driver and Blade party system",
+     "Large regions built on living Titans",
+     "Elemental combos, Chain Attacks, and affinity progression",
+     "Rare Blade collection and affinity charts",
+     "Extensive Expansion Pass",
+     "Torna prequel story"
+    ],
+    "perfResolutionDocked": "720p dynamic",
+    "perfResolutionHandheld": "368p-552p dynamic",
+    "perfFps": "30",
+    "perfNotes": "Original Switch: docked 720p with a 30 fps target and occasional dips; handheld uses aggressive dynamic resolution roughly 368p-552p. Switch 2 Edition: official 4K TV / 1080p handheld output at 60 fps; measured internal resolution is lower and temporally upscaled.",
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "hardwareId": "prd_acf4c89908764c62",
+      "informationStatus": "Published / verified",
+      "handheld": {
+       "supported": true,
+       "resolution": "368p-552p dynamic",
+       "outputResolution": "368p-552p dynamic",
+       "fps": "30"
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "720p dynamic",
+       "outputResolution": "720p dynamic",
+       "fps": "30"
+      },
+      "sourceName": "Nintendo Official",
+      "sourceUrl": "https://www.nintendo.com/us/store/products/xenoblade-chronicles-2-switch/",
+      "verificationStatus": "verified"
+     }
+    ],
+    "downloadSizeGb": 13.2,
+    "requiredSpaceGb": 37.6,
+    "microSdRecommended": false,
+    "storageNotes": "Nintendo lists 13.2 GB for the Switch game and 37.6 GB for the Switch 2 Edition.",
+    "languagesAudio": [
+     "English",
+     "Japanese"
+    ],
+    "languagesText": [
+     "Japanese",
+     "British English",
+     "French",
+     "German",
+     "Italian",
+     "Spanish",
+     "Korean",
+     "Simplified Chinese",
+     "Latin American Spanish",
+     "Canadian French",
+     "Traditional Chinese",
+     "American English"
+    ],
+    "arabicSupport": false,
+    "mpLocalPlayers": false,
+    "mpOnlinePlayers": false,
+    "mpCoop": false,
+    "mpCompetitive": false,
+    "mpSplitScreen": false,
+    "mpLocalWireless": false,
+    "dlc": [
+     {
+      "name": "Xenoblade Chronicles 2 Expansion Pass"
+     },
+     {
+      "name": "Helpful Items Pack"
+     },
+     {
+      "name": "New Quests Pack"
+     },
+     {
+      "name": "New Rare Blade Pack",
+      "description": "Adds additional Rare Blades through the official Expansion Pass."
+     },
+     {
+      "name": "New Challenge Mode Pack",
+      "description": "Adds Challenge Battle Mode and related rewards."
+     },
+     {
+      "name": "Xenoblade Chronicles 2: Torna ~ The Golden Country",
+      "description": "A major story expansion set 500 years before the base game."
+     },
+     {
+      "name": "Japanese-Voice Pack",
+      "description": "Free Japanese voice-language add-on for supported regional versions."
+     }
+    ],
+    "completionMain": 62,
+    "completionExtras": 105,
+    "completionAll": 255.5,
+    "verdictSummary": "A large, ambitious JRPG with a memorable cast, expansive world design, and an unusually deep combat/build system. The Switch 2 Edition substantially improves image clarity and frame rate.",
+    "reviews": [
+     {
+      "source": "Metacritic",
+      "score": "83/100",
+      "url": "https://www.metacritic.com/game/xenoblade-chronicles-2/"
+     },
+     {
+      "source": "OpenCritic aggregate",
+      "score": "83/100",
+      "url": "https://www.dekudeals.com/items/xenoblade-chronicles-2"
+     },
+     {
+      "source": "Metacritic user score",
+      "score": "8.5/10",
+      "url": "https://www.metacritic.com/game/xenoblade-chronicles-2/"
+     }
+    ],
+    "timeline": [
+     {
+      "date": "2017-12-01",
+      "title": "Nintendo Switch release",
+      "body": "Original Nintendo Switch launch."
+     },
+     {
+      "date": "2018-09-14",
+      "title": "Torna ~ The Golden Country expansion",
+      "body": "Torna story expansion released as part of the game’s Expansion Pass and as a standalone package."
+     },
+     {
+      "date": "2026-07-30",
+      "title": "Nintendo Switch 2 Edition digital release",
+      "body": "Nintendo Switch 2 Edition launched digitally with new performance and content enhancements."
+     }
+    ],
+    "seriesName": "Xenoblade Chronicles",
+    "seriesEntries": [
+     "Xenoblade Chronicles: Definitive Edition",
+     "Xenoblade Chronicles 3",
+     "Xenoblade Chronicles 2: Torna ~ The Golden Country"
+    ],
+    "studioName": "MONOLITHSOFT",
+    "studioUrl": "https://www.monolithsoft.co.jp/",
+    "studioLocation": "Tokyo, Japan",
+    "studioAbout": "MONOLITHSOFT is a Japanese developer whose Xenoblade titles are known for large environments, complex RPG systems, and cinematic storytelling.",
+    "setupNeeds": [
+     "Nintendo Switch or Nintendo Switch 2",
+     "Nintendo Account for digital purchases",
+     "Expansion Pass required for Torna when accessed as DLC",
+     "Internet required for digital content and updates"
+    ],
+    "sources": [
+     {
+      "name": "Nintendo official — Switch",
+      "url": "https://www.nintendo.com/us/store/products/xenoblade-chronicles-2-switch/"
+     },
+     {
+      "name": "Nintendo official — Switch 2 Edition",
+      "url": "https://www.nintendo.com/us/store/products/xenoblade-chronicles-2-nintendo-switch-2-edition-switch-2/"
+     },
+     {
+      "name": "Nintendo official — DLC list",
+      "url": "https://www.nintendo.com/us/store/products/xenoblade-chronicles-2-switch/dlc/"
+     }
+    ],
+    "boxContentsList": "[Circular]",
+    "image": "/api/files/products/prd_930cf6dc6e644af0/cover-4f3790e97d83419a.jpg",
+    "banner": "/api/files/products/prd_930cf6dc6e644af0/banner-0-ab953b6d3344cd5a.avif",
+    "schemaId": "",
+    "createdAt": "2026-08-26T21:39:21.674Z",
+    "created_at": "2026-08-26T21:39:21.674Z",
+    "updatedAt": "2026-08-28T22:05:01.198Z",
+    "updated_at": "2026-08-26T21:39:21.674Z",
+    "badgeEn": "وفر 40%",
+    "badgeKu": "وفر 40%",
+    "featuresEn": [
+     "Driver and Blade party system",
+     "Large regions built on living Titans",
+     "Elemental combos, Chain Attacks, and affinity progression",
+     "Rare Blade collection and affinity charts",
+     "Extensive Expansion Pass",
+     "Torna prequel story"
+    ],
+    "featuresKu": [
+     "Driver and Blade party system",
+     "Large regions built on living Titans",
+     "Elemental combos, Chain Attacks, and affinity progression",
+     "Rare Blade collection and affinity charts",
+     "Extensive Expansion Pass",
+     "Torna prequel story"
+    ],
+    "boxFrontUrl": "https://images.launchbox-app.com//acc8a6b4-60c7-454f-9e01-d9b04ef152cd.jpg",
+    "sales": 0,
+    "images": [],
+    "modes": [],
+    "price_usd": 59.99,
+    "gameLanguageLocked": false,
+    "nintendoGameKeyCard": false,
+    "nintendoPhysicalNeedsDownload": false,
+    "perfHdr": false,
+    "faq": [
+     {
+      "q": "Is Xenoblade Chronicles 2 turn-based?",
+      "a": "No. Combat occurs in real time with auto-attacks, timed Arts, Blade switching, combos, and party management."
+     },
+     {
+      "q": "Does the Expansion Pass include Torna?",
+      "a": "Yes. The official Expansion Pass includes Torna – The Golden Country along with quests, items, and challenge content."
+     },
+     {
+      "q": "Is this the Switch 2 Edition?",
+      "a": "No. This file is specifically for the original Nintendo Switch release."
+     },
+     {
+      "q": "Does it work on Switch 2?",
+      "a": "Yes, the original release is compatible, but a separate Switch 2 Edition also exists and should not be confused with this file."
+     },
+     {
+      "q": "How long is it?",
+      "a": "The main story is very long, and side quests, Blade affinity charts, postgame bosses, and expansion content can greatly extend playtime."
+     }
+    ],
+    "verdictScore": 9,
+    "verdictPros": [
+     "Memorable characters and soundtrack",
+     "Deep combat becomes highly rewarding",
+     "Large and distinctive world design",
+     "Expansion Pass adds major value",
+     "Excellent long-form JRPG progression"
+    ],
+    "verdictCons": [
+     "Combat tutorials can be overwhelming",
+     "Early pacing is slower than later chapters",
+     "Handheld image quality can be soft on original Switch",
+     "Randomized Blade acquisition is divisive",
+     "Large time commitment"
+    ],
+    "patchNotes": [
+     {
+      "version": "Launch version",
+      "date": "2017-12-01"
+     },
+     {
+      "version": "Expansion Pass complete",
+      "date": "2018-09-14"
+     },
+     {
+      "version": "Current original Switch build",
+      "date": "2026-08-27"
+     }
+    ],
+    "switch2UpgradePrice": 0
+   }
+  },
+  {
+   "id": "prd_5f5f9c74db8d4052",
+   "slug": "xenoblade-chronicles-2-switch-2-edition",
+   "title": "Xenoblade Chronicles 2 – Nintendo Switch 2 Edition",
+   "platform": "switch2",
+   "isHidden": false,
+   "hash": "ff735bc642f0af15feed9ba1f5a0c7cdcb09740c2c2ed8f74c0ed7170122217b",
+   "images": [
+    {
+     "role": "front-box",
+     "field": "cartridgeImage",
+     "url": "https://banan.to/api/files/products/prd_5f5f9c74db8d4052/front-2f2c51e9f50780a1.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 51090,
+     "width": 448,
+     "height": 669,
+     "thumb": "review-workdir/thumbs/batch-029/xenoblade-chronicles-2-switch-2-edition__front-box-0.png"
+    },
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://banan.to/api/files/products/prd_5f5f9c74db8d4052/square-052e92918d112295.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 327317,
+     "width": 1440,
+     "height": 1416,
+     "thumb": "review-workdir/thumbs/batch-029/xenoblade-chronicles-2-switch-2-edition__square-card-1.png"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://banan.to/api/files/products/prd_5f5f9c74db8d4052/cover-18a9d95cb0758375.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "listing",
+     "field": "image",
+     "url": "https://banan.to/api/files/products/prd_5f5f9c74db8d4052/cover-18a9d95cb0758375.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[0]",
+     "url": "https://banan.to/api/files/products/prd_5f5f9c74db8d4052/banner-0-49582f3ac584b255.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[1]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000000707/e94cf7b5e50297aaaf224be3d215d5b524e35d40ed8338065dae4d58fb3742da",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 89336,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-029/xenoblade-chronicles-2-switch-2-edition__banner-5.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[2]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000000707/070d1f7be9a836c7064e1b9d33fc6388191f8bdfbefe0b5d9c284c1b471c163f",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 166947,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-029/xenoblade-chronicles-2-switch-2-edition__banner-6.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[3]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000000707/85883546315ee943d54f8d29686705fb9ba9828099f876e3e27ee82e6fd40f5e",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 148136,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-029/xenoblade-chronicles-2-switch-2-edition__banner-7.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000000707/e6680b0381aa7c47b0d4a251de4b40a840b9746021aab9a48cc05121d73059d5",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 100432,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-029/xenoblade-chronicles-2-switch-2-edition__gallery-8.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[1]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000000707/3bdd5ab14edb0b72d215460b0a4fcef337fb8c7ec9d56ae2023d411f810fa51f",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 74358,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-029/xenoblade-chronicles-2-switch-2-edition__gallery-9.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[2]",
+     "url": "https://images.launchbox-app.com//a2841985-37b9-44cd-a8fb-6713973dbe3b.png",
+     "status": 200,
+     "contentType": "image/png",
+     "bytes": 136028,
+     "width": 400,
+     "height": 225,
+     "thumb": "review-workdir/thumbs/batch-029/xenoblade-chronicles-2-switch-2-edition__gallery-10.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[3]",
+     "url": "https://images.launchbox-app.com//78146993-b111-4144-a6fe-575bcd50849f.png",
+     "status": 200,
+     "contentType": "image/png",
+     "bytes": 251719,
+     "width": 400,
+     "height": 225,
+     "thumb": "review-workdir/thumbs/batch-029/xenoblade-chronicles-2-switch-2-edition__gallery-11.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[4]",
+     "url": "https://images.launchbox-app.com//b01faef5-2447-407c-ae47-b895634511a4.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 32283,
+     "width": 400,
+     "height": 225,
+     "thumb": "review-workdir/thumbs/batch-029/xenoblade-chronicles-2-switch-2-edition__gallery-12.png"
+    }
+   ],
+   "record": {
+    "title": "Xenoblade Chronicles 2 – Nintendo Switch 2 Edition",
+    "titleEn": "Xenoblade Chronicles 2 – Nintendo Switch 2 Edition",
+    "titleKu": "Xenoblade Chronicles 2 – Nintendo Switch 2 Edition",
+    "slug": "xenoblade-chronicles-2-switch-2-edition",
+    "description": "Lead Rex, Pyra, and their allies across Alrest in search of Elysium. Explore the Titans, collect and develop Blades, master layered real-time combat, and expand the adventure with the official Expansion Pass and Torna story.",
+    "descriptionEn": "Lead Rex, Pyra, and their allies across Alrest in search of Elysium. Explore the Titans, collect and develop Blades, master layered real-time combat, and expand the adventure with the official Expansion Pass and Torna story.",
+    "descriptionKu": "Lead Rex, Pyra, and their allies across Alrest in search of Elysium. Explore the Titans, collect and develop Blades, master layered real-time combat, and expand the adventure with the official Expansion Pass and Torna story.",
+    "cartridgeImage": "/api/files/products/prd_5f5f9c74db8d4052/front-2f2c51e9f50780a1.webp",
+    "nintendoCardImage": "/api/files/products/prd_5f5f9c74db8d4052/square-052e92918d112295.jpg",
+    "coverHiResImage": "",
+    "coverImage": "/api/files/products/prd_5f5f9c74db8d4052/cover-18a9d95cb0758375.avif",
+    "bannerImages": [
+     "/api/files/products/prd_5f5f9c74db8d4052/banner-0-49582f3ac584b255.avif",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000000707/e94cf7b5e50297aaaf224be3d215d5b524e35d40ed8338065dae4d58fb3742da",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000000707/070d1f7be9a836c7064e1b9d33fc6388191f8bdfbefe0b5d9c284c1b471c163f",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000000707/85883546315ee943d54f8d29686705fb9ba9828099f876e3e27ee82e6fd40f5e"
+    ],
+    "gallery": [],
+    "youtubeTrailer": "https://www.youtube.com/watch?v=Xjpao-nD5YU",
+    "releaseDate": "2026-07-30",
+    "ageRating": "ESRB Teen",
+    "metacriticRating": 83,
+    "genres": [
+     "Action",
+     "Role-Playing",
+     "Adventure"
+    ],
+    "platform": "switch2",
+    "size": 13.2,
+    "numberOfPlayers": "1",
+    "supportedLanguages": "Japanese, British English, French, German, Italian, Spanish, Korean, Simplified Chinese, Latin American Spanish, Canadian French, Traditional Chinese, American English",
+    "hardwareModel": "",
+    "colorEdition": "",
+    "storageCapacity": "",
+    "screenSpecs": "",
+    "batteryLife": "",
+    "boxContents": [],
+    "boxContentsText": "",
+    "warrantyCondition": "",
+    "connectivity": "",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "Global",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "",
+    "redemptionSteps": [],
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 14750,
+    "cost": 3500,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": false,
+    "displayOrder": 0,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "مشترك",
+      "description": "Offline account access for this game.",
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_account",
+      "name": "خاص بك",
+      "description": "Online-capable account access option sold by the supplier.",
+      "isInfiniteStock": true
+     }
+    ],
+    "types": [
+     {
+      "id": "standard_offline",
+      "name": "مشترك — اللعبة الأساسية",
+      "optionId": "offline_account",
+      "price": 14750,
+      "cost": 3500,
+      "description": "Supplier Regular / 普通版. Dual-platform costs retained in notes.",
+      "stock": 999999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "dlc_offline",
+      "name": "مشترك — مع الإضافات",
+      "optionId": "offline_account",
+      "price": 16000,
+      "cost": 4500,
+      "description": "Supplier Special / 特典版 mapped to the DLC-bearing offline variant. Dual-platform costs retained in notes.",
+      "stock": 999999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "standard_online",
+      "name": "خاص بك — اللعبة الأساسية",
+      "optionId": "online_account",
+      "price": 38000,
+      "cost": 25000,
+      "description": "Supplier Standard / 标准版. Dual-platform costs retained in notes.",
+      "stock": 999999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "dlc_online",
+      "name": "خاص بك — مع الإضافات",
+      "optionId": "online_account",
+      "price": 45000,
+      "cost": 27250,
+      "description": "Supplier Deluxe / 豪华版 mapped to the DLC-bearing online variant. Dual-platform costs retained in notes.",
+      "stock": 999999,
+      "isInfiniteStock": true
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "active",
+    "kind": "account",
+    "trade_value_iqd": 0,
+    "store_offer_bonus_iqd": 0,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "id": "prd_5f5f9c74db8d4052",
+    "titleAr": "Xenoblade Chronicles 2",
+    "compatibility": [
+     "Nintendo Switch 2"
+    ],
+    "edition": "Standard",
+    "developer": "MONOLITHSOFT",
+    "publisher": "Nintendo",
+    "metacriticUrl": "https://www.metacritic.com/game/xenoblade-chronicles-2/",
+    "opencriticRating": 83,
+    "userScore": 8.5,
+    "officialUrl": "https://www.nintendo.com/us/store/products/xenoblade-chronicles-2-nintendo-switch-2-edition-switch-2/",
+    "eshopUrl": "https://www.nintendo.com/us/store/products/xenoblade-chronicles-2-nintendo-switch-2-edition-switch-2/",
+    "gameIsOffline": true,
+    "gameIsOnline": false,
+    "description_short": "A story-driven action RPG following Rex and Pyra across the Titans of Alrest in search of Elysium.",
+    "description_ar": "قاد ريكس وبايرا ورفاقهما عبر عالم ألريست بحثًا عن Elysium. استكشف العمالقة الأحياء، واجمع الـBlades وطوّرها، وأتقن نظام قتال متدرج وعميق، مع توسعة رسمية كبيرة تتضمن Torna ~ The Golden Country.",
+    "videos": [
+     {
+      "title": "Official Nintendo Switch trailer",
+      "url": "https://www.youtube.com/watch?v=Xjpao-nD5YU"
+     }
+    ],
+    "nsuid": "70010000000707",
+    "nintendoEshopUrl": "https://www.nintendo.com/us/store/products/xenoblade-chronicles-2-nintendo-switch-2-edition-switch-2/",
+    "nintendoOnlineRequired": false,
+    "nintendoCloudSaves": true,
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": true,
+    "nintendoPlayModes": "TV, Tabletop, Handheld",
+    "nintendoNotes": "Official platform status: Nintendo Switch version released 2017-12-01. Native Nintendo Switch 2 Edition released digitally on 2026-07-30; Nintendo lists 4K TV / full-HD handheld at 60 fps plus MOMO, Merc Assault and new Pyra/Mythra outfit designs.\n\nSupplier language selection: Simplified Chinese. Four supplier variants per platform are mapped using the established rule: Regular=Offline Standard; Special=Offline DLC; Standard=Online Standard; Deluxe=Online DLC.\nNS1: ¥6.8 / ¥11.7 / ¥95 / ¥114.6 => 1,250 / 2,500 / 20,750 / 25,000 IQD.\nNS2: ¥16.6 / ¥21.5 / ¥114.6 / ¥124.4 => 3,500 / 4,500 / 25,000 / 27,250 IQD.\nDual-platform type.cost fields are left blank because the template cannot encode two platform costs safely.",
+    "switch2Enhanced": true,
+    "switch2Exclusive": true,
+    "switch2Features": [
+     "4K TV output",
+     "1080p handheld output",
+     "60 fps",
+     "New Rare Blade MOMO",
+     "Merc Assault action-battle mode",
+     "New Pyra and Mythra outfit designs"
+    ],
+    "tagline": "Lead Rex and Pyra across a sea of clouds in search of Elysium.",
+    "fitFor": [
+     "Fans of long story-driven JRPGs",
+     "Players who enjoy party and build customization",
+     "Players interested in a large DLC expansion and postgame",
+     "Players who enjoy extensive postgame and DLC"
+    ],
+    "notFitFor": [
+     "Players seeking a short campaign",
+     "Players who dislike layered combat systems",
+     "Players who prefer minimal character-management systems"
+    ],
+    "playTimeMain": 62,
+    "playTimeFull": 255.5,
+    "editionsList": [
+     {
+      "name": "Nintendo Switch Standard",
+      "coverUrl": "https://images.launchbox-app.com//acc8a6b4-60c7-454f-9e01-d9b04ef152cd.jpg",
+      "contents": [
+       {
+        "label": "Base game"
+       },
+       {
+        "label": "Single-player story across Alrest"
+       },
+       {
+        "label": "Blade collection and party progression"
+       }
+      ]
+     },
+     {
+      "name": "Nintendo Switch 2 Edition",
+      "contents": [
+       {
+        "label": "Base game + Switch 2 Upgrade Pack"
+       },
+       {
+        "label": "4K TV / 1080p handheld at 60 fps"
+       },
+       {
+        "label": "MOMO, Merc Assault, new Pyra/Mythra designs"
+       }
+      ]
+     },
+     {
+      "name": "Expansion Pass",
+      "contents": [
+       {
+        "label": "Torna ~ The Golden Country"
+       },
+       {
+        "label": "New quests, Blades and challenge content"
+       },
+       {
+        "label": "Helpful items and additional content"
+       }
+      ]
+     }
+    ],
+    "gameplayPillars": [
+     {
+      "title": "Driver and Blade combat",
+      "description": "Drivers fight alongside Blades, combining Arts, Specials, elemental routes, Driver Combos, Blade Combos, and Chain Attacks.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000000707/85883546315ee943d54f8d29686705fb9ba9828099f876e3e27ee82e6fd40f5e"
+     },
+     {
+      "title": "Explore the Titans",
+      "description": "The Titans function as large adventure regions filled with quests, enemies, collection points, landmarks, towns, and hidden paths.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000000707/e6680b0381aa7c47b0d4a251de4b40a840b9746021aab9a48cc05121d73059d5"
+     },
+     {
+      "title": "Build affinity and teams",
+      "description": "Blade affinity charts, equipment, Aux Cores, pouch items, roles, elements, and party composition create a large customization layer.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000000707/3bdd5ab14edb0b72d215460b0a4fcef337fb8c7ec9d56ae2023d411f810fa51f"
+     }
+    ],
+    "worldSummary": "Alrest is a cloud-covered world where civilizations live on the backs of enormous Titans. Each Titan has distinctive terrain, settlements, wildlife, politics, and routes that change the shape of exploration.",
+    "storyChapters": [
+     {
+      "title": "Rex and Pyra",
+      "body": "Rex forms a bond with Pyra and accepts her request to reach Elysium, drawing him into a conflict involving Drivers, Blades, and rival powers.",
+      "imageUrl": "https://images.launchbox-app.com//a2841985-37b9-44cd-a8fb-6713973dbe3b.png"
+     },
+     {
+      "title": "The search for Elysium",
+      "body": "The party journeys between Titans as dwindling land and political tension push Alrest toward crisis.",
+      "imageUrl": "https://images.launchbox-app.com//78146993-b111-4144-a6fe-575bcd50849f.png"
+     },
+     {
+      "title": "Conflict over Alrest’s future",
+      "body": "The search for Elysium reveals deeper truths about Blades, Titans, and the history that shaped Alrest."
+     }
+    ],
+    "galleryImages": [
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000000707/e6680b0381aa7c47b0d4a251de4b40a840b9746021aab9a48cc05121d73059d5",
+      "alt": "Official Nintendo promotional image"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000000707/3bdd5ab14edb0b72d215460b0a4fcef337fb8c7ec9d56ae2023d411f810fa51f",
+      "alt": "Official Nintendo gameplay image"
+     },
+     {
+      "url": "https://images.launchbox-app.com//a2841985-37b9-44cd-a8fb-6713973dbe3b.png",
+      "alt": "Official Nintendo gameplay image"
+     },
+     {
+      "url": "https://images.launchbox-app.com//78146993-b111-4144-a6fe-575bcd50849f.png",
+      "alt": "Official Nintendo feature image"
+     },
+     {
+      "url": "https://images.launchbox-app.com//b01faef5-2447-407c-ae47-b895634511a4.jpg",
+      "alt": "Official Nintendo gallery image"
+     }
+    ],
+    "features": [
+     "Driver and Blade party system",
+     "Large regions built on living Titans",
+     "Elemental combos, Chain Attacks, and affinity progression",
+     "Rare Blade collection and affinity charts",
+     "Extensive Expansion Pass",
+     "Torna prequel story"
+    ],
+    "perfResolutionDocked": "4K",
+    "perfResolutionHandheld": "1080p",
+    "perfFps": "60",
+    "perfNotes": "Original Switch: docked 720p with a 30 fps target and occasional dips; handheld uses aggressive dynamic resolution roughly 368p-552p. Switch 2 Edition: official 4K TV / 1080p handheld output at 60 fps; measured internal resolution is lower and temporally upscaled.",
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "hardwareId": "prd_acf4c89908764c62",
+      "informationStatus": "Published / verified",
+      "handheld": {
+       "supported": true,
+       "resolution": "1080p",
+       "outputResolution": "1080p",
+       "fps": "60"
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "4K",
+       "outputResolution": "4K",
+       "fps": "60"
+      },
+      "sourceName": "Nintendo Official",
+      "sourceUrl": "https://www.nintendo.com/us/store/products/xenoblade-chronicles-2-nintendo-switch-2-edition-switch-2/",
+      "verificationStatus": "verified"
+     }
+    ],
+    "downloadSizeGb": 13.2,
+    "requiredSpaceGb": 37.6,
+    "microSdRecommended": false,
+    "storageNotes": "Nintendo lists 13.2 GB for the Switch game and 37.6 GB for the Switch 2 Edition.",
+    "languagesAudio": [
+     "English",
+     "Japanese"
+    ],
+    "languagesText": [
+     "Japanese",
+     "British English",
+     "French",
+     "German",
+     "Italian",
+     "Spanish",
+     "Korean",
+     "Simplified Chinese",
+     "Latin American Spanish",
+     "Canadian French",
+     "Traditional Chinese",
+     "American English"
+    ],
+    "arabicSupport": false,
+    "mpLocalPlayers": false,
+    "mpOnlinePlayers": false,
+    "mpCoop": false,
+    "mpCompetitive": false,
+    "mpSplitScreen": false,
+    "mpLocalWireless": false,
+    "dlc": [
+     {
+      "name": "Xenoblade Chronicles 2 Expansion Pass"
+     },
+     {
+      "name": "Helpful Items Pack"
+     },
+     {
+      "name": "New Quests Pack"
+     },
+     {
+      "name": "New Rare Blade Pack",
+      "description": "Adds additional Rare Blades through the official Expansion Pass."
+     },
+     {
+      "name": "New Challenge Mode Pack",
+      "description": "Adds Challenge Battle Mode and related rewards."
+     },
+     {
+      "name": "Xenoblade Chronicles 2: Torna ~ The Golden Country",
+      "description": "A major story expansion set 500 years before the base game."
+     },
+     {
+      "name": "Japanese-Voice Pack",
+      "description": "Free Japanese voice-language add-on for supported regional versions."
+     }
+    ],
+    "completionMain": 62,
+    "completionExtras": 105,
+    "completionAll": 255.5,
+    "verdictSummary": "A large, ambitious JRPG with a memorable cast, expansive world design, and an unusually deep combat/build system. The Switch 2 Edition substantially improves image clarity and frame rate.",
+    "reviews": [
+     {
+      "source": "Metacritic",
+      "score": "83/100",
+      "url": "https://www.metacritic.com/game/xenoblade-chronicles-2/"
+     },
+     {
+      "source": "OpenCritic aggregate",
+      "score": "83/100",
+      "url": "https://www.dekudeals.com/items/xenoblade-chronicles-2"
+     },
+     {
+      "source": "Metacritic user score",
+      "score": "8.5/10",
+      "url": "https://www.metacritic.com/game/xenoblade-chronicles-2/"
+     }
+    ],
+    "timeline": [
+     {
+      "date": "2017-12-01",
+      "title": "Nintendo Switch release",
+      "body": "Original Nintendo Switch launch."
+     },
+     {
+      "date": "2018-09-14",
+      "title": "Torna ~ The Golden Country expansion",
+      "body": "Torna story expansion released as part of the game’s Expansion Pass and as a standalone package."
+     },
+     {
+      "date": "2026-07-30",
+      "title": "Nintendo Switch 2 Edition digital release",
+      "body": "Nintendo Switch 2 Edition launched digitally with new performance and content enhancements."
+     }
+    ],
+    "seriesName": "Xenoblade Chronicles",
+    "seriesEntries": [
+     "Xenoblade Chronicles: Definitive Edition",
+     "Xenoblade Chronicles 3",
+     "Xenoblade Chronicles 2: Torna ~ The Golden Country"
+    ],
+    "studioName": "MONOLITHSOFT",
+    "studioUrl": "https://www.monolithsoft.co.jp/",
+    "studioLocation": "Tokyo, Japan",
+    "studioAbout": "MONOLITHSOFT is a Japanese developer whose Xenoblade titles are known for large environments, complex RPG systems, and cinematic storytelling.",
+    "setupNeeds": [
+     "Nintendo Switch or Nintendo Switch 2",
+     "Nintendo Account for digital purchases",
+     "Expansion Pass required for Torna when accessed as DLC",
+     "Internet required for digital content and updates"
+    ],
+    "sources": [
+     {
+      "name": "Nintendo official — Switch",
+      "url": "https://www.nintendo.com/us/store/products/xenoblade-chronicles-2-switch/"
+     },
+     {
+      "name": "Nintendo official — Switch 2 Edition",
+      "url": "https://www.nintendo.com/us/store/products/xenoblade-chronicles-2-nintendo-switch-2-edition-switch-2/"
+     },
+     {
+      "name": "Nintendo official — DLC list",
+      "url": "https://www.nintendo.com/us/store/products/xenoblade-chronicles-2-switch/dlc/"
+     }
+    ],
+    "boxContentsList": "[Circular]",
+    "image": "/api/files/products/prd_5f5f9c74db8d4052/cover-18a9d95cb0758375.avif",
+    "banner": "/api/files/products/prd_5f5f9c74db8d4052/banner-0-49582f3ac584b255.avif",
+    "schemaId": "",
+    "createdAt": "2026-08-26T21:39:23.344Z",
+    "created_at": "2026-08-26T21:39:23.344Z",
+    "updatedAt": "2026-08-28T22:03:05.668Z",
+    "updated_at": "2026-08-26T21:39:23.344Z",
+    "badgeEn": "وفر 40%",
+    "badgeKu": "وفر 40%",
+    "featuresEn": [
+     "Driver and Blade party system",
+     "Large regions built on living Titans",
+     "Elemental combos, Chain Attacks, and affinity progression",
+     "Rare Blade collection and affinity charts",
+     "Extensive Expansion Pass",
+     "Torna prequel story"
+    ],
+    "featuresKu": [
+     "Driver and Blade party system",
+     "Large regions built on living Titans",
+     "Elemental combos, Chain Attacks, and affinity progression",
+     "Rare Blade collection and affinity charts",
+     "Extensive Expansion Pass",
+     "Torna prequel story"
+    ],
+    "sales": 0,
+    "images": [],
+    "modes": [],
+    "cartridgeImageTrim": {
+     "left": 0.0514018691588785,
+     "top": 0.025,
+     "width": 0.9345794392523364,
+     "height": 0.953125,
+     "confidence": 1,
+     "mode": "luminance",
+     "sourceWidth": 214,
+     "sourceHeight": 320,
+     "version": 1
+    }
+   }
+  }
+ ]
+}

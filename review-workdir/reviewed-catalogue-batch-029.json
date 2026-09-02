@@ -1,0 +1,51 @@
+{
+ "batch": "029",
+ "apply": false,
+ "games": [
+  {
+   "id": "prd_1901d23608684404",
+   "slug": "warhammer-40-000-rogue-trader",
+   "baseHash": "0c0d80acf419d9e8568402b4c8d0c40876c7dbc7a6be18c7149276738c8df919",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  },
+  {
+   "id": "prd_6fe1da3c0f9940dc",
+   "slug": "wolfenstein-ii-the-new-colossus",
+   "baseHash": "d16f184c9fda5b79b828b487c44a12dd7c0fdf4160a5d293ec0ab33788ba817b",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  },
+  {
+   "id": "prd_acae6edb0a1b4f5c",
+   "slug": "world-of-final-fantasy-maxima",
+   "baseHash": "15d0e706f3fc6ede494db3b18245183c8eff4539da6545ec3fdda6b6d890dcb9",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  },
+  {
+   "id": "prd_930cf6dc6e644af0",
+   "slug": "xenoblade-chronicles-2-switch",
+   "baseHash": "78f0fb14b9b8dfce7d13e0ea11411808fa5ece3984bc49236a75e92772bad2b5",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  },
+  {
+   "id": "prd_5f5f9c74db8d4052",
+   "slug": "xenoblade-chronicles-2-switch-2-edition",
+   "baseHash": "ff735bc642f0af15feed9ba1f5a0c7cdcb09740c2c2ed8f74c0ed7170122217b",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  }
+ ]
+}

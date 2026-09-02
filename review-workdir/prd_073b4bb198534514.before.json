@@ -1,0 +1,343 @@
+{
+ "title": "Tomb Raider: Definitive Edition",
+ "titleEn": "Tomb Raider: Definitive Edition",
+ "titleKu": "",
+ "slug": "tomb-raider-definitive-edition-switch-1",
+ "description": "The cinematic action-adventure that forced Lara Croft to grow from an inexperienced young woman into a hardened survivor has been re-built for next-gen consoles, featuring an obsessively detailed Lara and a stunningly lifelike world. Lara must endure high-octane combat, customize her weapons and gear, and overcome grueling environments to survive her first adventure and uncover the island’s deadly secret.",
+ "descriptionEn": "The cinematic action-adventure that forced Lara Croft to grow from an inexperienced young woman into a hardened survivor has been re-built for next-gen consoles, featuring an obsessively detailed Lara and a stunningly lifelike world. Lara must endure high-octane combat, customize her weapons and gear, and overcome grueling environments to survive her first adventure and uncover the island’s deadly secret.",
+ "descriptionKu": "",
+ "cartridgeImage": "",
+ "nintendoCardImage": "/api/files/products/prd_073b4bb198534514/square-card-b56de90fa243a0c3.webp",
+ "coverHiResImage": "",
+ "coverImage": "/api/files/products/prd_073b4bb198534514/cover-6dc609c677a26618.webp",
+ "bannerImages": [],
+ "gallery": [],
+ "youtubeTrailer": "https://www.youtube.com/results?search_query=Tomb+Raider+Definitive+Edition+official+trailer",
+ "releaseDate": "2025-11-18",
+ "ageRating": "Mature",
+ "genres": [
+  "Action",
+  "Adventure",
+  "Shooting"
+ ],
+ "platform": "switch1",
+ "size": "27.33 GB",
+ "numberOfPlayers": "1",
+ "supportedLanguages": "Japanese, French, German, Italian, Spanish, Korean, Dutch, Russian, Brazilian Portuguese, Traditional Chinese, American English",
+ "price": 8500,
+ "cost": 1250,
+ "stock": 999999,
+ "isInfiniteStock": true,
+ "isHidden": true,
+ "displayOrder": 0,
+ "category": "nintendo-switch-games",
+ "categoryId": "nintendo-switch-games",
+ "categoryEn": "",
+ "categoryKu": "",
+ "options": [
+  {
+   "id": "offline_account",
+   "name": "مشترك",
+   "description": "مشترك",
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_account",
+   "name": "خاص بك",
+   "description": "خاص بك",
+   "stock": 9999,
+   "isInfiniteStock": true
+  }
+ ],
+ "types": [
+  {
+   "id": "offline_base",
+   "name": "مشترك — اللعبة الأساسية",
+   "optionId": "offline_account",
+   "price": 8500,
+   "cost": 1250,
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_base",
+   "name": "خاص بك — اللعبة الأساسية",
+   "optionId": "online_account",
+   "price": 17000,
+   "cost": 13250,
+   "stock": 9999,
+   "isInfiniteStock": true
+  }
+ ],
+ "editions": [],
+ "dlcs": [],
+ "isActive": true,
+ "status": "Active",
+ "kind": "account",
+ "trade_value_iqd": 8500,
+ "store_offer_bonus_iqd": 1250,
+ "trade_enabled": true,
+ "trade_value_locked": false,
+ "id": "prd_073b4bb198534514",
+ "schema_version": 24,
+ "titleAr": "تومب رايدر: الإصدار النهائي",
+ "compatibility": [
+  "Nintendo Switch",
+  "Nintendo Switch 2"
+ ],
+ "edition": "Definitive Edition",
+ "developer": "Aspyr",
+ "publisher": "Aspyr",
+ "metacriticUrl": "https://www.metacritic.com/game/tomb-raider-definitive-edition/",
+ "price_usd": 29.99,
+ "officialUrl": "https://www.nintendo.com/us/store/products/tomb-raider-definitive-edition-switch/",
+ "eshopUrl": "https://www.nintendo.com/us/store/products/tomb-raider-definitive-edition-switch/",
+ "gameIsOffline": true,
+ "gameIsOnline": true,
+ "gameLanguageLocked": false,
+ "description_short": "مغامرة سينمائية تروي نشأة Lara Croft، مع استكشاف وقتال وطور جماعي عبر الإنترنت.",
+ "description_ar": "رحلة نشأة Lara Croft من شابة قليلة الخبرة إلى ناجية صلبة على جزيرة خطرة. تجمع اللعبة بين الاستكشاف والتسلق والقتال وتطوير الأسلحة، ويضم إصدار Nintendo طور القصة واللعب الجماعي عبر الإنترنت حتى ثمانية لاعبين.",
+ "videos": [
+  {
+   "title": "Official Trailer",
+   "url": "https://www.youtube.com/results?search_query=Tomb+Raider+Definitive+Edition+official+trailer"
+  }
+ ],
+ "nintendoEshopUrl": "https://www.nintendo.com/us/store/products/tomb-raider-definitive-edition-switch/",
+ "nintendoOnlineRequired": true,
+ "nintendoCloudSaves": true,
+ "nintendoGameKeyCard": false,
+ "nintendoPhysicalNeedsDownload": false,
+ "tvMode": true,
+ "tabletopMode": true,
+ "handheldMode": true,
+ "nintendoPlayModes": [
+  "TV mode",
+  "Tabletop mode",
+  "Handheld mode"
+ ],
+ "nintendoNotes": "Nintendo product identity and store facts were verified against the official listing on 2026-09-01. Performance values are included only where an official source publishes them.",
+ "switch2Enhanced": true,
+ "switch2Exclusive": false,
+ "switch2UpgradePrice": 0,
+ "switch2Features": [
+  "Playable on Switch 2 through compatibility",
+  "Single-player action adventure",
+  "Reboot trilogy starting point"
+ ],
+ "tagline": "Lara Croft’s origin reimagined.",
+ "fitFor": [
+  "Players who enjoy cinematic action-adventure campaigns",
+  "Fans of exploration, traversal, and survival combat",
+  "Players who also want the included online multiplayer modes"
+ ],
+ "notFitFor": [
+  "Younger players due to the Mature rating",
+  "Players seeking local co-op or split-screen",
+  "Players expecting officially published resolution and FPS specifications"
+ ],
+ "playTimeMain": 12,
+ "playTimeFull": 24,
+ "editionsList": [
+  {
+   "name": "Definitive Edition"
+  }
+ ],
+ "gameplayPillars": [
+  {
+   "title": "Survival and exploration",
+   "description": "Cross dangerous terrain, solve environmental challenges, and search the island."
+  },
+  {
+   "title": "Traversal",
+   "description": "Climbing tools and movement abilities open new routes."
+  },
+  {
+   "title": "Combat and upgrades",
+   "description": "Improve weapons and equipment while facing human and supernatural threats."
+  },
+  {
+   "title": "Definitive presentation",
+   "description": "This release presents the rebuilt Definitive Edition and later received TressFX 1.0 on Switch 2."
+  }
+ ],
+ "worldSummary": "Lara is stranded on Yamatai, an island shaped by violent storms, hostile scavengers, ancient ruins, and a deadly secret.",
+ "storyChapters": [
+  {
+   "title": "Survive the shipwreck",
+   "body": "Lara is stranded and forced into a harsh struggle for survival."
+  },
+  {
+   "title": "Gather allies and tools",
+   "body": "The cast tries to regroup while Lara learns to adapt."
+  },
+  {
+   "title": "Confront the island’s danger",
+   "body": "Human enemies and darker mysteries escalate the threat."
+  },
+  {
+   "title": "Grow into the Tomb Raider",
+   "body": "Lara becomes more capable with every challenge."
+  },
+  {
+   "title": "Escape and endure",
+   "body": "The climax pushes her to overcome the island’s grip."
+  }
+ ],
+ "galleryImages": [
+  {
+   "url": "/api/files/products/prd_073b4bb198534514/gallery-1-9ce6cf335bceb2d9.webp",
+   "alt": "Tomb Raider: Definitive Edition screenshot 1"
+  },
+  {
+   "url": "/api/files/products/prd_073b4bb198534514/gallery-2-b0fba6f152924daa.webp",
+   "alt": "Tomb Raider: Definitive Edition screenshot 2"
+  },
+  {
+   "url": "/api/files/products/prd_073b4bb198534514/gallery-3-a70c2fb7214fdae4.webp",
+   "alt": "Tomb Raider: Definitive Edition screenshot 3"
+  },
+  {
+   "url": "/api/files/products/prd_073b4bb198534514/gallery-4-a59358711710caf4.webp",
+   "alt": "Tomb Raider: Definitive Edition screenshot 4"
+  },
+  {
+   "url": "/api/files/products/prd_073b4bb198534514/gallery-5-acdb89018a3f08f4.webp",
+   "alt": "Tomb Raider: Definitive Edition screenshot 5"
+  },
+  {
+   "url": "/api/files/products/prd_073b4bb198534514/gallery-6-dc4ff27d1a1d19ec.webp",
+   "alt": "Tomb Raider: Definitive Edition screenshot 6"
+  }
+ ],
+ "features": [
+  "Cinematic origin story for Lara Croft",
+  "Exploration, traversal, survival, and combat",
+  "Weapon and gear upgrades",
+  "Online multiplayer for up to eight players",
+  "TressFX 1.0 update available on Nintendo Switch 2"
+ ],
+ "perfResolutionDocked": "",
+ "perfResolutionHandheld": "",
+ "perfFps": "",
+ "perfNotes": "Official Nintendo and Aspyr sources reviewed do not publish exact verified resolution or FPS figures.",
+ "devicePerformance": [
+  {
+   "device": "Nintendo Switch",
+   "deviceSlug": "nintendo-switch",
+   "deviceModel": "Nintendo Switch",
+   "informationStatus": "not_published",
+   "unavailableReason": "Nintendo does not publish game-specific resolution and FPS figures for this release.",
+   "sourceName": "Nintendo eShop (US)",
+   "sourceUrl": "https://www.nintendo.com/us/store/products/tomb-raider-definitive-edition-switch/",
+   "verificationStatus": "official",
+   "verifiedAt": "2026-09-01"
+  },
+  {
+   "device": "Nintendo Switch 2",
+   "deviceSlug": "nintendo-switch-2",
+   "deviceModel": "Nintendo Switch 2",
+   "informationStatus": "not_published",
+   "unavailableReason": "Aspyr confirms the TressFX 1.0 enhancement, but does not publish exact resolution or FPS figures.",
+   "sourceName": "Aspyr TressFX update",
+   "sourceUrl": "https://support.aspyr.com/hc/en-us/articles/45979963403277-Tomb-Raider-Definitive-Edition-TressFX-update",
+   "verificationStatus": "official",
+   "verifiedAt": "2026-09-01"
+  }
+ ],
+ "faq": [
+  {
+   "q": "When did this Nintendo release launch?",
+   "a": "Nintendo lists November 18, 2025."
+  },
+  {
+   "q": "Is online multiplayer included?",
+   "a": "Yes. Nintendo lists online play for up to eight players and Nintendo Switch Online is required for online features."
+  },
+  {
+   "q": "Does it run on Nintendo Switch 2?",
+   "a": "Yes. Nintendo lists it as supported with behavior consistent with Switch."
+  },
+  {
+   "q": "Is there a Switch 2 enhancement?",
+   "a": "Aspyr added TressFX 1.0 on May 20, 2026 and states it is out on Nintendo Switch 2."
+  },
+  {
+   "q": "What are the official resolution and FPS values?",
+   "a": "The reviewed Nintendo and Aspyr sources do not publish exact verified figures, so none are inferred."
+  }
+ ],
+ "mpLocalPlayers": 1,
+ "mpOnlinePlayers": 8,
+ "mpCoop": false,
+ "mpCompetitive": true,
+ "mpLocalWireless": false,
+ "mpSplitScreen": false,
+ "image": "",
+ "banner": "",
+ "schemaId": "",
+ "batchImport": true,
+ "createdAt": "2026-08-28T18:37:40.434Z",
+ "updatedAt": "2026-09-01T09:49:06.792Z",
+ "nsuid": "70010000091961",
+ "product_code": "HACPBM9LA",
+ "title_id": "0100092021c80000",
+ "downloadSizeGb": 27.33,
+ "requiredSpaceGb": 27.33,
+ "microSdRecommended": true,
+ "arabicSupport": false,
+ "languagesText": [
+  "Japanese",
+  "French",
+  "German",
+  "Italian",
+  "Spanish",
+  "Korean",
+  "Dutch",
+  "Russian",
+  "Brazilian Portuguese",
+  "Traditional Chinese",
+  "American English"
+ ],
+ "storageNotes": "Nintendo lists a 27.33 GB download. Free-space requirements can increase with updates.",
+ "seriesName": "Tomb Raider",
+ "studioName": "Aspyr / Crystal Dynamics",
+ "timeline": [
+  {
+   "date": "2025-11-18",
+   "kind": "release",
+   "title": "Nintendo Switch release"
+  },
+  {
+   "date": "2026-05-20",
+   "kind": "update",
+   "title": "TressFX 1.0 update",
+   "detail": "Aspyr added TressFX 1.0 on Nintendo Switch 2."
+  }
+ ],
+ "patchNotes": [
+  {
+   "version": "TressFX 1.0 update",
+   "date": "2026-05-20",
+   "body": "Aspyr added TressFX 1.0; the update is available on Nintendo Switch 2."
+  }
+ ],
+ "guides": [
+  {
+   "title": "TressFX update",
+   "summary": "Official Aspyr confirmation of the Switch 2 TressFX 1.0 update.",
+   "url": "https://support.aspyr.com/hc/en-us/articles/45979963403277-Tomb-Raider-Definitive-Edition-TressFX-update"
+  }
+ ],
+ "sources": [
+  {
+   "name": "Nintendo eShop (US)",
+   "url": "https://www.nintendo.com/us/store/products/tomb-raider-definitive-edition-switch/"
+  },
+  {
+   "name": "Aspyr TressFX update",
+   "url": "https://support.aspyr.com/hc/en-us/articles/45979963403277-Tomb-Raider-Definitive-Edition-TressFX-update"
+  }
+ ]
+}

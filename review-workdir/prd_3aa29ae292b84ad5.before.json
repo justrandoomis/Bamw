@@ -1,0 +1,575 @@
+{
+ "id": "prd_3aa29ae292b84ad5",
+ "title": "Two Point Museum",
+ "titleEn": "Two Point Museum",
+ "titleKu": "Two Point Museum",
+ "slug": "two-point-museum",
+ "description": "Curate and manage museums across Two Point County. Discover exhibits through expeditions, design themed halls, manage staff and guest needs, build guided tours and expand into a huge sandbox with hundreds of exhibits and decorative items.",
+ "descriptionEn": "Curate and manage museums across Two Point County. Discover exhibits through expeditions, design themed halls, manage staff and guest needs, build guided tours and expand into a huge sandbox with hundreds of exhibits and decorative items.",
+ "descriptionKu": "Curate and manage museums across Two Point County. Discover exhibits through expeditions, design themed halls, manage staff and guest needs, build guided tours and expand into a huge sandbox with hundreds of exhibits and decorative items.",
+ "cartridgeImage": "/api/files/products/prd_3aa29ae292b84ad5/front-7be703bcde605924.jpg",
+ "nintendoCardImage": "/api/files/products/prd_3aa29ae292b84ad5/nintendoCardImage-e616556b93fe9837.avif",
+ "coverHiResImage": "",
+ "coverImage": "/api/files/products/prd_3aa29ae292b84ad5/coverImage-30b2444f5a24291c.avif",
+ "bannerImages": [
+  "/api/files/products/prd_3aa29ae292b84ad5/bannerImages-1-fe443b4cc7ac8c01.avif",
+  "/api/files/products/prd_3aa29ae292b84ad5/bannerImages-2-81d6b660dbf58302.avif",
+  "/api/files/products/prd_3aa29ae292b84ad5/bannerImages-3-8b5b80f03dd0c523.avif"
+ ],
+ "gallery": [],
+ "youtubeTrailer": "https://www.youtube.com/watch?v=NDHW7G5HPcA",
+ "releaseDate": "2025-10-28",
+ "ageRating": "PEGI 3",
+ "metacriticRating": 81,
+ "genres": [
+  "Management Simulation",
+  "Strategy",
+  "Sandbox"
+ ],
+ "platform": "switch2",
+ "size": 4.6,
+ "numberOfPlayers": "1",
+ "supportedLanguages": "Japanese, English, French, German, Italian, Spanish, Korean, Russian, Simplified Chinese, Traditional Chinese, Portuguese",
+ "hardwareModel": "",
+ "colorEdition": "",
+ "storageCapacity": "",
+ "screenSpecs": "",
+ "batteryLife": "",
+ "boxContents": [],
+ "boxContentsText": "",
+ "warrantyCondition": "",
+ "connectivity": "",
+ "characterName": "Link",
+ "amiiboSeries": "The Legend of Zelda",
+ "figureType": "figure",
+ "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+ "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+ "boxCondition": "mib",
+ "releaseWave": "Wave 2 (Restock)",
+ "rarity": "standard",
+ "accessoryType": "حقيبة حماية وتنقل Carry Case",
+ "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+ "brand": "Nintendo Official",
+ "material": "Hard EVA Shockproof Shell",
+ "availableColors": "Black, Neon Red/Blue, White",
+ "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+ "cardValue": "$20 eShop Balance",
+ "region": "Global",
+ "cardType": "eshop",
+ "deliveryMethod": "instant_code",
+ "redemptionGuide": "",
+ "redemptionSteps": [],
+ "validity": "no_expiry",
+ "usedType": "cartridge",
+ "conditionGrade": "like_new",
+ "packaging": "cib",
+ "guaranteeStatus": "tested_30days",
+ "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+ "accountType": "primary",
+ "badge": "وفر 40%",
+ "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+ "price": 13000,
+ "cost": 3000,
+ "stock": 999999,
+ "isInfiniteStock": true,
+ "isHidden": false,
+ "displayOrder": 0,
+ "category": "nintendo-switch-games",
+ "categoryId": "nintendo-switch-games",
+ "categoryEn": "",
+ "categoryKu": "",
+ "options": [
+  {
+   "id": "offline_account",
+   "name": "حساب أوفلاين",
+   "description": "حساب مخصص للعب دون اتصال بعد إكمال خطوات التفعيل.",
+   "isInfiniteStock": true,
+   "customerDescription": "حساب مشترك"
+  },
+  {
+   "id": "online_account",
+   "name": "حساب أونلاين",
+   "description": "حساب يدعم تشغيل اللعبة مع الاتصال والميزات المتاحة أونلاين.",
+   "isInfiniteStock": true,
+   "customerDescription": "حساب خاص بك"
+  }
+ ],
+ "types": [
+  {
+   "id": "standard_offline",
+   "name": "حساب أوفلاين — عادي",
+   "optionId": "offline_account",
+   "price": "",
+   "cost": 3000,
+   "description": "تشمل الإصدار العادي من اللعبة.",
+   "isInfiniteStock": true,
+   "customerDescription": "اللعبة الأساسية",
+   "internalNote": "Standard game, Offline Account. Supplier Regular price: ¥14.64; purchase cost converted at 1 CNY = 220 IQD and rounded down to nearest 250 IQD."
+  },
+  {
+   "id": "standard_online",
+   "name": "حساب أونلاين — عادي",
+   "optionId": "online_account",
+   "price": 44000,
+   "cost": 25000,
+   "description": "تشمل الإصدار العادي من اللعبة.",
+   "isInfiniteStock": true,
+   "customerDescription": "اللعبة الأساسية",
+   "internalNote": "Standard game, Online Account. Supplier Standard price: ¥114.60; purchase cost converted at 1 CNY = 220 IQD and rounded down to nearest 250 IQD."
+  },
+  {
+   "id": "dlc_offline",
+   "name": "حساب أوفلاين — مع الإضافات",
+   "optionId": "offline_account",
+   "price": "15000",
+   "cost": 4250,
+   "description": "تشمل اللعبة الأساسية والمحتوى الإضافي المثبت في هذا الإصدار.",
+   "isInfiniteStock": true,
+   "customerDescription": "اللعبة مع الإضافات",
+   "internalNote": "Offline Account with the listed DLC/Deluxe content. Supplier Special price: ¥19.54."
+  },
+  {
+   "id": "dlc_online",
+   "name": "حساب أونلاين — مع الإضافات",
+   "optionId": "online_account",
+   "price": 55000,
+   "cost": 29500,
+   "description": "تشمل اللعبة الأساسية والمحتوى الإضافي المثبت في هذا الإصدار.",
+   "isInfiniteStock": true,
+   "customerDescription": "اللعبة مع الإضافات",
+   "internalNote": "Online Account with the listed DLC/Deluxe content. Supplier Deluxe price: ¥134.20."
+  }
+ ],
+ "editions": [],
+ "dlcs": [],
+ "isActive": true,
+ "status": "active",
+ "kind": "account",
+ "trade_value_iqd": 40000,
+ "store_offer_bonus_iqd": 0,
+ "trade_enabled": true,
+ "trade_value_locked": false,
+ "schema_version": 22,
+ "titleAr": "تو بوينت ميوزيم",
+ "compatibility": [
+  "Nintendo Switch 2"
+ ],
+ "edition": "Standard",
+ "developer": "Two Point Studios",
+ "publisher": "SEGA",
+ "opencriticRating": 85,
+ "userScore": 8,
+ "officialUrl": "https://www.twopointstudios.com/",
+ "gameIsOffline": true,
+ "gameIsOnline": true,
+ "gameLanguageLocked": false,
+ "description_short": "Build and operate elaborate museums, send experts on expeditions, collect exhibits, manage guests and staff, and customize every hall in a humorous management simulation.",
+ "description_ar": "لعبة إدارة وبناء متاحف من Two Point Studios. أرسل الخبراء في بعثات، اجمع المعروضات، صمم القاعات والجولات، وأدر الموظفين واحتياجات الزوار مع عدد كبير جدًا من المعروضات والديكورات.",
+ "box_front_url": "https://gamefaqs.gamespot.com/a/box/9/4/8/1162948_front.jpg",
+ "videos": [
+  {
+   "title": "Nintendo Switch 2 Launch Trailer",
+   "url": "https://www.youtube.com/watch?v=NDHW7G5HPcA"
+  }
+ ],
+ "nintendoEshopUrl": "https://www.nintendo.com/us/store/products/two-point-museum-switch-2/",
+ "nintendoOnlineRequired": false,
+ "nintendoCloudSaves": true,
+ "tvMode": true,
+ "tabletopMode": true,
+ "handheldMode": true,
+ "nintendoPlayModes": "TV Mode, Tabletop Mode, Handheld Mode",
+ "switch2Features": [
+  "Native Nintendo Switch 2 version",
+  "Official 1920x1080 / 30 FPS target",
+  "TV, Tabletop and Handheld modes",
+  "Save Data Cloud",
+  "Simplified and Traditional Chinese support",
+  "Ongoing DLC support"
+ ],
+ "tagline": "Curate and manage incredible museums.",
+ "fitFor": [
+  "Management-simulation fans",
+  "Creative builders",
+  "Players who enjoy optimization and humor",
+  "Long-form sandbox players"
+ ],
+ "notFitFor": [
+  "Players looking for action combat",
+  "Players who dislike management micromanagement"
+ ],
+ "playTimeMain": 47,
+ "playTimeFull": 96,
+ "editionsList": [
+  {
+   "name": "Standard Edition",
+   "contents": [
+    {
+     "label": "Base game"
+    }
+   ]
+  },
+  {
+   "name": "Explorer Edition",
+   "contents": [
+    {
+     "label": "Base game"
+    },
+    {
+     "label": "Explorer Upgrade Pack"
+    },
+    {
+     "label": "Exclusive expedition location"
+    },
+    {
+     "label": "Pop-up challenge museum"
+    },
+    {
+     "label": "Decorative and utility bonuses"
+    }
+   ]
+  }
+ ],
+ "gameplayPillars": [
+  {
+   "title": "Museum Design",
+   "description": "Build halls, themed areas, facilities, decorations and guest routes."
+  },
+  {
+   "title": "Expeditions",
+   "description": "Send Experts across expedition maps to recover rare exhibits and complete the sticker book."
+  },
+  {
+   "title": "Guest Experience",
+   "description": "Balance education, entertainment, cleanliness, security, tours, facilities and donations."
+  },
+  {
+   "title": "Exhibit Management",
+   "description": "Maintain artifacts, habitats and interactive displays while protecting them from damage and thieves."
+  },
+  {
+   "title": "Sandbox Creativity",
+   "description": "Use the sandbox to build large custom museums beyond the campaign structure."
+  }
+ ],
+ "storyChapters": [
+  {
+   "title": "Fledgling Curator",
+   "body": "Begin managing museums across Two Point County."
+  },
+  {
+   "title": "Expanding Collections",
+   "body": "Unlock new museum themes and expedition regions as your experts discover increasingly unusual exhibits."
+  },
+  {
+   "title": "Mega Museums",
+   "body": "Progress toward highly customized, large-scale museums with specialized staff and guest systems."
+  }
+ ],
+ "galleryImages": [
+  {
+   "url": "https://assets.nintendo.com/image/upload/ar_16:9,b_auto:border,c_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000104115/f4b2a1e4f7d0889722fb1a938f5b4a77b48a53f33c89a802d5cbd259a6b4e38d",
+   "alt": "Official Nintendo Switch 2 Two Point Museum media image 1; separate from cover and banner assets."
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/ar_16:9,b_auto:border,c_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000104115/8ad9da1378fe72f0977e38b7f20d82f5459c7af5ea0a46526d321cc1f1c2c302",
+   "alt": "Official Nintendo Switch 2 Two Point Museum media image 2; separate from cover and banner assets."
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/ar_16:9,b_auto:border,c_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000104115/3984a8b8584fa52c0cecdce9be37e701e54043b61ca8b3b36732b7cf2c1e4134",
+   "alt": "Official Nintendo Switch 2 Two Point Museum media image 3; separate from cover and banner assets."
+  }
+ ],
+ "features": [
+  "Design, build and manage museums",
+  "Five main museum locations",
+  "Three pop-up museums",
+  "Sandbox mode",
+  "Six main exhibit categories and 30+ subcategories",
+  "Five expedition maps with 100+ points of interest",
+  "200+ unique exhibits",
+  "350+ decorative items",
+  "18 guest types",
+  "Guided tours and guest needs",
+  "Explorer Edition content",
+  "Multiple post-launch DLC packs including Fantasy Finds, Zooseum and Arty-Facts"
+ ],
+ "perfResolutionDocked": "1920x1080",
+ "perfResolutionHandheld": "1920x1080",
+ "perfFps": "30",
+ "perfNotes": "Two Point Studios officially states that the Nintendo Switch 2 version runs at 1920x1080 at 30 FPS. Reviews note occasional drops below the target as museums become crowded, but the official target remains 1080p/30.",
+ "devicePerformance": [
+  {
+   "device": "Nintendo Switch 2",
+   "deviceSlug": "nintendo-switch-2",
+   "deviceModel": "Nintendo Switch 2",
+   "hardwareId": "prd_acf4c89908764c62",
+   "informationStatus": "verified",
+   "unavailableReason": "No official measured resolution/FPS table was found.",
+   "handheld": {
+    "supported": true,
+    "resolution": "1920x1080",
+    "renderingResolution": "1920x1080 target",
+    "outputResolution": "1920x1080",
+    "fps": "30",
+    "fpsMin": "~26",
+    "fpsMax": "30"
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "1920x1080",
+    "renderingResolution": "1920x1080 target",
+    "outputResolution": "1920x1080",
+    "fps": "30",
+    "fpsMin": "~26",
+    "fpsMax": "30"
+   },
+   "sourceName": "Two Point Studios Official Switch 2 FAQ",
+   "sourceUrl": "https://www.twopointstudios.com/en/post/two-point-museum-nintendo-switch-2-faq",
+   "verificationStatus": "official",
+   "performanceNotes": "Two Point Studios officially states that the Nintendo Switch 2 version runs at 1920x1080 at 30 FPS. Reviews note occasional drops below the target as museums become crowded, but the official target remains 1080p/30."
+  }
+ ],
+ "downloadSizeGb": 4.6,
+ "requiredSpaceGb": 4.6,
+ "microSdRecommended": false,
+ "languagesAudio": [
+  "English"
+ ],
+ "languagesText": [
+  "Japanese",
+  "English",
+  "French",
+  "German",
+  "Italian",
+  "Spanish",
+  "Korean",
+  "Russian",
+  "Simplified Chinese",
+  "Traditional Chinese",
+  "Portuguese"
+ ],
+ "arabicSupport": false,
+ "mpLocalPlayers": false,
+ "mpOnlinePlayers": false,
+ "mpCoop": false,
+ "mpCompetitive": false,
+ "mpSplitScreen": false,
+ "mpLocalWireless": false,
+ "dlc": [
+  {
+   "name": "Explorer Upgrade Pack",
+   "description": "Adds an exclusive expedition location, pop-up museum, cosmetics, decorations and utility bonuses."
+  },
+  {
+   "name": "Fantasy Finds",
+   "description": "Fantasy-themed expedition map, exhibits, experts, decorations, events and interactive displays."
+  },
+  {
+   "name": "Zooseum / Arty-Facts and other DLC",
+   "description": "Additional themed museum content released after launch, including new locations, exhibits and expert types."
+  }
+ ],
+ "guides": [
+  {
+   "title": "Nintendo Store",
+   "summary": "Switch 2 details, languages, DLC and feature list.",
+   "url": "https://www.nintendo.com/us/store/products/two-point-museum-switch-2/"
+  },
+  {
+   "title": "Two Point Studios",
+   "summary": "Official news and support.",
+   "url": "https://www.twopointstudios.com/"
+  },
+  {
+   "title": "Deku Deals",
+   "summary": "Completion data and review aggregates.",
+   "url": "https://www.dekudeals.com/items/two-point-museum"
+  }
+ ],
+ "completionMain": 47,
+ "completionExtras": 57,
+ "completionAll": 96,
+ "faq": [
+  {
+   "q": "How large is Two Point Museum?",
+   "a": "Nintendo/Deku listings place the Switch 2 download at roughly 4.6 GB before additional DLC."
+  },
+  {
+   "q": "How long is the campaign?",
+   "a": "Crowdsourced data lists about 47 hours for the main story and around 96 hours for completionist play."
+  },
+  {
+   "q": "Does it support Simplified Chinese?",
+   "a": "Yes."
+  },
+  {
+   "q": "Is it multiplayer?",
+   "a": "No. It is a single-player management simulation."
+  },
+  {
+   "q": "What major DLC exists?",
+   "a": "Explorer content, Fantasy Finds, Zooseum and Arty-Facts are among the major Switch 2 DLC releases."
+  },
+  {
+   "q": "How does it run on Switch 2?",
+   "a": "Two Point Studios lists a 1920x1080 target at 30 FPS."
+  }
+ ],
+ "verdictScore": 8.5,
+ "verdictSummary": "A large, charming management sandbox with excellent content density, broad customization and strong long-term expansion support.",
+ "verdictPros": [
+  "Deep management systems",
+  "Huge exhibit and decoration variety",
+  "Strong humor and personality",
+  "Small installation size",
+  "Ongoing DLC support"
+ ],
+ "verdictCons": [
+  "Single-player only",
+  "Dense management can become complex in large museums"
+ ],
+ "reviews": [
+  {
+   "source": "Metacritic",
+   "score": "81/100",
+   "quote": "Strong reviews for the depth, humor and expansion of the Two Point management formula.",
+   "url": "https://www.metacritic.com/"
+  },
+  {
+   "source": "OpenCritic",
+   "score": "85/100",
+   "quote": "Critics widely praised its management depth, charm and long-term creativity.",
+   "url": "https://opencritic.com/"
+  },
+  {
+   "source": "Deku Deals users",
+   "score": "8.0/10",
+   "quote": "Player aggregate data lists an 8.0 user score.",
+   "url": "https://www.dekudeals.com/items/two-point-museum"
+  }
+ ],
+ "timeline": [
+  {
+   "date": "2025-03-04",
+   "title": "Original launch",
+   "body": "Two Point Museum launched on PS5, Xbox Series X|S and PC."
+  },
+  {
+   "date": "2025-10-28",
+   "title": "Nintendo Switch 2 launch",
+   "body": "The Switch 2 version and Explorer content became available."
+  },
+  {
+   "date": "2026-02-17",
+   "title": "Zooseum DLC",
+   "body": "Wildlife-themed expansion launched on Switch 2."
+  },
+  {
+   "date": "2026-06-18",
+   "title": "Arty-Facts DLC",
+   "body": "Art-focused museum expansion launched on Switch 2."
+  }
+ ],
+ "patchNotes": [
+  {
+   "version": "Switch 2 launch",
+   "date": "2025-10-28",
+   "body": "Native Switch 2 release with the complete base museum-management campaign and sandbox."
+  },
+  {
+   "version": "Zooseum",
+   "date": "2026-02-17",
+   "body": "Added a wildlife museum, Wildlife Experts, Farflung Isles, 40+ wildlife exhibits and a new campaign."
+  },
+  {
+   "version": "Arty-Facts",
+   "date": "2026-06-18",
+   "body": "Added Undee Docks, Art Experts, an art expedition map, 27+ art exhibits and an Art Studio room."
+  }
+ ],
+ "soundtrack": [
+  {
+   "title": "Two Point Museum Original Soundtrack / in-game radio",
+   "url": "https://www.twopointstudios.com/"
+  }
+ ],
+ "seriesName": "Two Point",
+ "seriesEntries": [
+  "Two Point Hospital",
+  "Two Point Campus",
+  "Two Point Museum"
+ ],
+ "studioName": "Two Point Studios",
+ "studioUrl": "https://www.twopointstudios.com/",
+ "studioLocation": "Farnham, Surrey, United Kingdom",
+ "studioAbout": "Two Point Studios specializes in humorous management simulations. Two Point Museum expands the Two Point formula into museum curation, expeditions, exhibits, guest behavior, themed construction and long-form sandbox management.",
+ "setupNeeds": [
+  "Nintendo Switch 2 system required for the Nintendo Switch 2 version.",
+  "Internet connection is required for digital download, updates and online/service features where applicable.",
+  "Nintendo Account required for Nintendo eShop purchase/download.",
+  "Sufficient internal storage or compatible microSD Express storage required.",
+  "Nintendo Switch Online membership is required only for game-specific online multiplayer/features that explicitly use it."
+ ],
+ "sources": [
+  {
+   "name": "Nintendo Store",
+   "url": "https://www.nintendo.com/us/store/products/two-point-museum-switch-2/"
+  },
+  {
+   "name": "Two Point Studios",
+   "url": "https://www.twopointstudios.com/"
+  },
+  {
+   "name": "Deku Deals",
+   "url": "https://www.dekudeals.com/items/two-point-museum"
+  },
+  {
+   "name": "Nintendo DLC - Arty-Facts",
+   "url": "https://www.nintendo.com/us/store/products/two-point-museum-arty-facts-70050000072695-switch-2/"
+  }
+ ],
+ "boxContentsList": "[Circular]",
+ "image": "/api/files/products/prd_3aa29ae292b84ad5/coverImage-30b2444f5a24291c.avif",
+ "banner": "/api/files/products/prd_3aa29ae292b84ad5/bannerImages-1-fe443b4cc7ac8c01.avif",
+ "schemaId": "",
+ "badgeEn": "وفر 40%",
+ "badgeKu": "وفر 40%",
+ "featuresEn": [
+  "Design, build and manage museums",
+  "Five main museum locations",
+  "Three pop-up museums",
+  "Sandbox mode",
+  "Six main exhibit categories and 30+ subcategories",
+  "Five expedition maps with 100+ points of interest",
+  "200+ unique exhibits",
+  "350+ decorative items",
+  "18 guest types",
+  "Guided tours and guest needs",
+  "Explorer Edition content",
+  "Multiple post-launch DLC packs including Fantasy Finds, Zooseum and Arty-Facts"
+ ],
+ "featuresKu": [
+  "Design, build and manage museums",
+  "Five main museum locations",
+  "Three pop-up museums",
+  "Sandbox mode",
+  "Six main exhibit categories and 30+ subcategories",
+  "Five expedition maps with 100+ points of interest",
+  "200+ unique exhibits",
+  "350+ decorative items",
+  "18 guest types",
+  "Guided tours and guest needs",
+  "Explorer Edition content",
+  "Multiple post-launch DLC packs including Fantasy Finds, Zooseum and Arty-Facts"
+ ],
+ "sales": 0,
+ "images": [],
+ "modes": [],
+ "updatedAt": "2026-08-28T22:01:15.854Z",
+ "boxFrontUrl": "https://gamefaqs.gamespot.com/a/box/9/4/8/1162948_front.jpg",
+ "createdAt": "2026-08-31T22:49:52.660Z",
+ "created_at": "2026-08-31T22:49:52.660Z",
+ "updated_at": "2026-08-28T22:01:15.854Z",
+ "variants": "[Circular]"
+}

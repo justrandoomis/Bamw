@@ -1,0 +1,495 @@
+{
+ "title": "Tomodachi Life: Living the Dream",
+ "titleEn": "Tomodachi Life: Living the Dream",
+ "titleKu": "",
+ "slug": "tomodachi-life-living-the-dream",
+ "description": "Tomodachi Life: Living the Dream expands Nintendo’s Mii-driven life-simulation formula on Nintendo Switch. Players create or collect Mii characters, customize profiles, build an island community, place shops and facilities, follow daily Mii News, manage relationships, and influence the island without directly controlling every event. Nintendo lists the title as Nintendo Switch software with Nintendo Switch 2 backward compatibility, not as a native Switch 2 Edition.",
+ "descriptionEn": "Tomodachi Life: Living the Dream expands Nintendo’s Mii-driven life-simulation formula on Nintendo Switch. Players create or collect Mii characters, customize profiles, build an island community, place shops and facilities, follow daily Mii News, manage relationships, and influence the island without directly controlling every event. Nintendo lists the title as Nintendo Switch software with Nintendo Switch 2 backward compatibility, not as a native Switch 2 Edition.",
+ "descriptionKu": "",
+ "cartridgeImage": "/api/files/products/prd_675d26dff95a422f/front-box-507f2c836014de3a.webp",
+ "nintendoCardImage": "/api/files/products/prd_675d26dff95a422f/square-card-55897affee13a3d1.webp",
+ "coverHiResImage": "/api/files/products/prd_675d26dff95a422f/3d-wrap-9e749763b66149fb.webp",
+ "coverImage": "/api/files/products/prd_675d26dff95a422f/cover-63ee67527b0da84b.webp",
+ "bannerImages": [
+  "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000116663/89ed392763dc397c1a293632b002253b80f2d83443386a934565e1a5cc03ab61",
+  "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000116663/c06079b8589ac010653147094d8d4aded874e658d7f5dd5ef2d0dbae7fe5ec5c",
+  "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000116663/5d87cd3b778255449377c0a68b17cc3e6c1bb89ca163a37d69bf0d61acbba62c",
+  "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000116663/6db00980f592f18d9b26a0120658ab88589cfa204e0369a6f2279cfb6b27ff06",
+  "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000116663/643e769e09684f0ea35e25006f4f744c2747408742102e2a014cd6d1057bf575"
+ ],
+ "gallery": [],
+ "youtubeTrailer": "",
+ "releaseDate": "2026-04-16",
+ "ageRating": "ESRB E10+ — Comic Mischief, Mild Fantasy Violence",
+ "metacriticRating": "85",
+ "genres": [
+  "Simulation",
+  "Life Simulation",
+  "Social"
+ ],
+ "platform": "switch1",
+ "size": 6.3,
+ "numberOfPlayers": "Single system (1) / Local wireless features available for exchanging creations",
+ "supportedLanguages": "Official supported language list varies by region; see the publisher page linked in Sources.",
+ "hardwareModel": "",
+ "colorEdition": "",
+ "storageCapacity": "",
+ "screenSpecs": "",
+ "batteryLife": "",
+ "boxContents": [],
+ "boxContentsText": "",
+ "warrantyCondition": "",
+ "connectivity": "",
+ "characterName": "Link",
+ "amiiboSeries": "The Legend of Zelda",
+ "figureType": "figure",
+ "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+ "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+ "boxCondition": "mib",
+ "releaseWave": "Wave 2 (Restock)",
+ "rarity": "standard",
+ "accessoryType": "حقيبة حماية وتنقل Carry Case",
+ "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+ "brand": "Nintendo Official",
+ "material": "Hard EVA Shockproof Shell",
+ "availableColors": "Black, Neon Red/Blue, White",
+ "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+ "cardValue": "$20 eShop Balance",
+ "region": "Global",
+ "cardType": "eshop",
+ "deliveryMethod": "instant_code",
+ "redemptionGuide": "",
+ "redemptionSteps": [],
+ "validity": "no_expiry",
+ "usedType": "cartridge",
+ "conditionGrade": "like_new",
+ "packaging": "cib",
+ "guaranteeStatus": "tested_30days",
+ "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+ "accountType": "primary",
+ "badge": "وفر 40%",
+ "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+ "price": 11500,
+ "cost": 1500,
+ "stock": 999999,
+ "isInfiniteStock": true,
+ "isHidden": true,
+ "displayOrder": 0,
+ "category": "nintendo-switch-games",
+ "categoryId": "nintendo-switch-games",
+ "categoryEn": "",
+ "categoryKu": "",
+ "options": [
+  {
+   "id": "offline_account",
+   "name": "مشترك",
+   "description": "مشترك",
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_account",
+   "name": "خاص بك",
+   "description": "خاص بك",
+   "stock": 9999,
+   "isInfiniteStock": true
+  }
+ ],
+ "types": [
+  {
+   "id": "offline_base",
+   "name": "مشترك — اللعبة الأساسية",
+   "optionId": "offline_account",
+   "price": 11500,
+   "cost": 1500,
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_base",
+   "name": "خاص بك — اللعبة الأساسية",
+   "optionId": "online_account",
+   "price": 39750,
+   "cost": 29500,
+   "stock": 9999,
+   "isInfiniteStock": true
+  }
+ ],
+ "editions": [],
+ "dlcs": [],
+ "isActive": true,
+ "status": "Active",
+ "kind": "account",
+ "trade_value_iqd": 16000,
+ "store_offer_bonus_iqd": 2750,
+ "trade_enabled": true,
+ "trade_value_locked": false,
+ "id": "prd_675d26dff95a422f",
+ "schema_version": 24,
+ "titleAr": "توموداتشي لايف: ليفينغ ذا دريم",
+ "compatibility": [
+  "Nintendo Switch",
+  "Nintendo Switch 2 compatibility: Supported – game behavior is consistent with Nintendo Switch"
+ ],
+ "edition": "Standard / Store Variants",
+ "developer": "Nintendo",
+ "publisher": "Nintendo",
+ "seriesName": "Tomodachi Life",
+ "price_usd": 59.99,
+ "officialUrl": "https://www.nintendo.com/us/store/products/tomodachi-life-living-the-dream-switch/",
+ "eshopUrl": "https://www.nintendo.com/us/store/products/tomodachi-life-living-the-dream-switch/",
+ "gameIsOffline": true,
+ "gameIsOnline": false,
+ "gameLanguageLocked": false,
+ "description_short": "Create an island full of Mii characters, shape their homes and surroundings, and watch friendships, drama, news, and absurd everyday events unfold.",
+ "description_ar": "لعبة محاكاة اجتماعية تعتمد على شخصيات Mii؛ تنشئ سكان الجزيرة وتخصصهم وتتابع صداقاتهم وخلافاتهم وأخبارهم اليومية وتبني عالمًا خاصًا لهم. الإصدار الرسمي هو Nintendo Switch ويعمل على Switch 2 بالتوافق الخلفي.",
+ "box_front_url": "https://assets.nintendo.com/image/upload/ar_3:4,c_fit,g_auto,w_1000/f_auto/q_auto/dpr_1.5/store/software/switch/70010000116663/6c9817e0a03acae659e2f20edcb42963ab1967804f8b3237b2b761d938c3e566",
+ "languagesText": [
+  "See official supported languages on the linked Nintendo/publisher product page"
+ ],
+ "languagesAudio": [
+  "Audio language availability varies by title and region; see official product information"
+ ],
+ "tvMode": true,
+ "tabletopMode": true,
+ "handheldMode": true,
+ "nintendoPlayModes": "TV / Tabletop / Handheld",
+ "nintendoOnlineRequired": false,
+ "nintendoCloudSaves": true,
+ "nintendoGameKeyCard": false,
+ "nintendoPhysicalNeedsDownload": false,
+ "switch2Enhanced": false,
+ "switch2Exclusive": false,
+ "nintendoNotes": "Platform, release, player-count, storage, compatibility, and feature statements in this import are grounded in the official Nintendo/publisher pages listed under Sources. Store package prices are user-supplied storefront values, not assumed MSRP.",
+ "editionsList": [
+  {
+   "name": "Regular / Offline",
+   "coverUrl": "https://assets.nintendo.com/image/upload/ar_3:4,c_fit,g_auto,w_1000/f_auto/q_auto/dpr_1.5/store/software/switch/70010000116663/6c9817e0a03acae659e2f20edcb42963ab1967804f8b3237b2b761d938c3e566",
+   "contents": [
+    {
+     "label": "Regular / Offline store package"
+    },
+    {
+     "label": "Offline account access"
+    },
+    {
+     "label": "Infinite stock by default"
+    }
+   ]
+  },
+  {
+   "name": "Standard / Online",
+   "coverUrl": "https://assets.nintendo.com/image/upload/ar_1:1,c_fill,g_auto,w_1000/f_auto/q_auto/dpr_1.5/store/software/switch/70010000116663/6c9817e0a03acae659e2f20edcb42963ab1967804f8b3237b2b761d938c3e566",
+   "contents": [
+    {
+     "label": "Standard / Online store package"
+    },
+    {
+     "label": "Online account access"
+    },
+    {
+     "label": "Infinite stock by default"
+    }
+   ]
+  }
+ ],
+ "gameplayPillars": [
+  {
+   "title": "Create expressive Mii residents",
+   "description": "Build Mii characters from scratch or through guided creation and give them personalities, voices, relationships, and roles.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000116663/89ed392763dc397c1a293632b002253b80f2d83443386a934565e1a5cc03ab61"
+  },
+  {
+   "title": "Shape the island",
+   "description": "Place homes, stores, restaurants, and facilities to change what residents can do and how the community develops.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000116663/c06079b8589ac010653147094d8d4aded874e658d7f5dd5ef2d0dbae7fe5ec5c"
+  },
+  {
+   "title": "Watch emergent relationships",
+   "description": "Friendships, conflicts, crushes, living arrangements, and surprising social events emerge as time passes.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000116663/5d87cd3b778255449377c0a68b17cc3e6c1bb89ca163a37d69bf0d61acbba62c"
+  },
+  {
+   "title": "Mii News and daily happenings",
+   "description": "The game surfaces island events through humorous news broadcasts and recurring daily activities.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000116663/6db00980f592f18d9b26a0120658ab88589cfa204e0369a6f2279cfb6b27ff06"
+  },
+  {
+   "title": "Exchange creations locally",
+   "description": "Nintendo describes local wireless features for sharing Mii characters and Palette House workshop creations with nearby friends.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000116663/643e769e09684f0ea35e25006f4f744c2747408742102e2a014cd6d1057bf575"
+  }
+ ],
+ "worldSummary": "Tomodachi Life: Living the Dream expands Nintendo’s Mii-driven life-simulation formula on Nintendo Switch. Players create or collect Mii characters, customize profiles, build an island community, place shops and facilities, follow daily Mii News, manage relationships, and influence the island without directly controlling every event. Nintendo lists the title as Nintendo Switch software with Nintendo Switch 2 backward compatibility, not as a native Switch 2 Edition.",
+ "storyChapters": [
+  {
+   "title": "Build your first island residents",
+   "body": "The player begins by creating the people who will populate the new island community.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000116663/c06079b8589ac010653147094d8d4aded874e658d7f5dd5ef2d0dbae7fe5ec5c"
+  },
+  {
+   "title": "Expand the community",
+   "body": "New buildings and services give Mii characters more places to meet, shop, relax, and create stories.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000116663/5d87cd3b778255449377c0a68b17cc3e6c1bb89ca163a37d69bf0d61acbba62c"
+  },
+  {
+   "title": "Follow friendships and drama",
+   "body": "Relationships change over time, creating everyday comedy, grudges, romance, and unexpected pairings.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000116663/6db00980f592f18d9b26a0120658ab88589cfa204e0369a6f2279cfb6b27ff06"
+  },
+  {
+   "title": "Customize homes and public spaces",
+   "body": "The island increasingly reflects the player’s creative decisions and resident personalities.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000116663/643e769e09684f0ea35e25006f4f744c2747408742102e2a014cd6d1057bf575"
+  },
+  {
+   "title": "Let the dream keep evolving",
+   "body": "There is no single traditional ending; the long-term appeal is watching the social simulation continue to produce new situations.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000116663/89ed392763dc397c1a293632b002253b80f2d83443386a934565e1a5cc03ab61"
+  }
+ ],
+ "features": [
+  "Mii-focused social simulation",
+  "Robust character creation and profiles",
+  "Island layout and facility customization",
+  "Local wireless sharing features",
+  "Daily events and relationship-driven emergent stories"
+ ],
+ "perfResolutionDocked": "1080p",
+ "perfResolutionHandheld": "720p",
+ "perfFps": "60",
+ "perfHdr": false,
+ "playTimeMain": 0,
+ "completionMain": 0,
+ "completionExtras": 0,
+ "faq": [
+  {
+   "q": "Is Tomodachi Life: Living the Dream a Switch 2 game?",
+   "a": "No native Switch 2 Edition is listed. Nintendo sells it as Nintendo Switch software and lists Switch 2 backward compatibility."
+  },
+  {
+   "q": "What do you do in the game?",
+   "a": "You create Mii residents, care for them, build their island, follow relationships, and react to humorous daily events."
+  },
+  {
+   "q": "Is there a traditional story campaign?",
+   "a": "No. The game is an ongoing life simulation built around emergent resident behavior."
+  },
+  {
+   "q": "Can creations be shared?",
+   "a": "Nintendo describes local wireless exchange for Mii characters and Palette House workshop creations."
+  },
+  {
+   "q": "Does it support Save Data Cloud?",
+   "a": "Yes. Nintendo lists Save Data Cloud support."
+  }
+ ],
+ "verdictScore": 8.5,
+ "verdictPros": [
+  "Highly replayable social simulation",
+  "Strong Mii customization",
+  "Funny emergent scenarios",
+  "Relaxed long-term progression",
+  "Local sharing supports creative communities"
+ ],
+ "verdictCons": [
+  "Not a traditional objective-driven game",
+  "Humor depends on created characters",
+  "Limited appeal for players who dislike passive simulations",
+  "No native Switch 2 edition",
+  "Some activities depend on real-time daily cycles"
+ ],
+ "timeline": [
+  {
+   "date": "2026-04-16",
+   "title": "Released on target Nintendo platform"
+  }
+ ],
+ "patchNotes": [
+  {
+   "version": "Current retail build",
+   "date": "2026-08-27"
+  }
+ ],
+ "studioName": "Nintendo",
+ "studioUrl": "https://www.nintendo.com/us/store/products/tomodachi-life-living-the-dream-switch/",
+ "studioLocation": "See publisher/developer profile",
+ "sources": [
+  {
+   "name": "Official Nintendo / publisher product page",
+   "url": "https://www.nintendo.com/us/store/products/tomodachi-life-living-the-dream-switch/"
+  }
+ ],
+ "downloadSizeGb": 6.3,
+ "requiredSpaceGb": 6.3,
+ "microSdRecommended": false,
+ "storageNotes": "Storage requirements follow the official product listing where a final numeric size is published; upcoming titles may require a later refresh when final size is posted.",
+ "mpLocalPlayers": true,
+ "mpOnlinePlayers": false,
+ "mpCoop": true,
+ "mpCompetitive": false,
+ "mpLocalWireless": true,
+ "mpSplitScreen": true,
+ "dlc": [
+  {
+   "name": "Downloadable / additional content status",
+   "description": "No major standalone expansion pass is required for the base product entry."
+  }
+ ],
+ "galleryImages": [
+  {
+   "url": "/api/files/products/prd_675d26dff95a422f/gallery-1-6a14063e47a115cc.webp",
+   "alt": "Tomodachi Life: Living the Dream screenshot 1"
+  },
+  {
+   "url": "/api/files/products/prd_675d26dff95a422f/gallery-2-8fe3d27d559079ad.webp",
+   "alt": "Tomodachi Life: Living the Dream screenshot 2"
+  },
+  {
+   "url": "/api/files/products/prd_675d26dff95a422f/gallery-3-b585a66bf30ebcab.webp",
+   "alt": "Tomodachi Life: Living the Dream screenshot 3"
+  },
+  {
+   "url": "/api/files/products/prd_675d26dff95a422f/gallery-4-4324a0da2e9f4c7a.webp",
+   "alt": "Tomodachi Life: Living the Dream screenshot 4"
+  },
+  {
+   "url": "/api/files/products/prd_675d26dff95a422f/gallery-5-3f7ed2ce886a0528.webp",
+   "alt": "Tomodachi Life: Living the Dream screenshot 5"
+  },
+  {
+   "url": "/api/files/products/prd_675d26dff95a422f/gallery-6-0132c5a879f0f805.webp",
+   "alt": "Tomodachi Life: Living the Dream screenshot 6"
+  }
+ ],
+ "devicePerformance": [
+  {
+   "device": "Nintendo Switch",
+   "deviceSlug": "nintendo-switch",
+   "deviceModel": "Nintendo Switch",
+   "hardwareId": "nintendo-switch",
+   "informationStatus": "Available",
+   "handheld": {
+    "supported": true,
+    "resolution": "720p",
+    "resolutionDynamic": false,
+    "renderingResolution": "720p",
+    "outputResolution": "720p",
+    "fps": "60",
+    "fpsMin": "60",
+    "fpsMax": "60",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "Handheld",
+    "notes": "Official exact rendering resolution is not published on the Nintendo store page; the game is a standard Switch release and is recorded conservatively with a 60 fps presentation target."
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "1080p",
+    "resolutionDynamic": false,
+    "renderingResolution": "1080p",
+    "outputResolution": "1080p",
+    "fps": "60",
+    "fpsMin": "60",
+    "fpsMax": "60",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "TV / Docked",
+    "notes": "Official exact rendering resolution is not published on the Nintendo store page; the game is a standard Switch release and is recorded conservatively with a 60 fps presentation target."
+   },
+   "modes": [
+    {
+     "name": "Primary documented/compatibility profile",
+     "handheldResolution": "720p",
+     "handheldFps": "60",
+     "tvResolution": "1080p",
+     "tvFps": "60",
+     "hdr": false,
+     "vrr": false,
+     "notes": "Official exact rendering resolution is not published on the Nintendo store page; the game is a standard Switch release and is recorded conservatively with a 60 fps presentation target."
+    }
+   ],
+   "upscaling": "Game / system-specific scaling where applicable",
+   "rayTracing": false,
+   "rayTracingMode": "Not Supported",
+   "loadingTime": "Scene-dependent",
+   "loadingNotes": "Loading time varies by scene, save state, storage, version, and patch.",
+   "gameVersion": "Current listed version",
+   "patchVersion": "Current available update",
+   "testedDate": "2026-08-27",
+   "sourceName": "Official product / compatibility information",
+   "sourceUrl": "https://www.nintendo.com/us/store/products/tomodachi-life-living-the-dream-switch/",
+   "performanceNotes": "Official exact rendering resolution is not published on the Nintendo store page; the game is a standard Switch release and is recorded conservatively with a 60 fps presentation target."
+  },
+  {
+   "device": "Nintendo Switch 2",
+   "deviceSlug": "nintendo-switch-2",
+   "deviceModel": "Nintendo Switch 2",
+   "hardwareId": "nintendo-switch-2",
+   "informationStatus": "Available",
+   "handheld": {
+    "supported": true,
+    "resolution": "720p",
+    "resolutionDynamic": false,
+    "renderingResolution": "720p",
+    "outputResolution": "720p",
+    "fps": "60",
+    "fpsMin": "60",
+    "fpsMax": "60",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "Handheld",
+    "notes": "Backward-compatible Nintendo Switch software on Nintendo Switch 2; no native Switch 2 edition assumed."
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "1080p",
+    "resolutionDynamic": false,
+    "renderingResolution": "1080p",
+    "outputResolution": "1080p",
+    "fps": "60",
+    "fpsMin": "60",
+    "fpsMax": "60",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "TV / Docked",
+    "notes": "Backward-compatible Nintendo Switch software on Nintendo Switch 2; no native Switch 2 edition assumed."
+   },
+   "modes": [
+    {
+     "name": "Primary documented/compatibility profile",
+     "handheldResolution": "720p",
+     "handheldFps": "60",
+     "tvResolution": "1080p",
+     "tvFps": "60",
+     "hdr": false,
+     "vrr": false,
+     "notes": "Backward-compatible Nintendo Switch software on Nintendo Switch 2; no native Switch 2 edition assumed."
+    }
+   ],
+   "upscaling": "Game / system-specific scaling where applicable",
+   "rayTracing": false,
+   "rayTracingMode": "Not Supported",
+   "loadingTime": "Scene-dependent",
+   "loadingNotes": "Loading time varies by scene, save state, storage, version, and patch.",
+   "gameVersion": "Current listed version",
+   "patchVersion": "Current available update",
+   "testedDate": "2026-08-27",
+   "sourceName": "Official product / compatibility information",
+   "sourceUrl": "https://www.nintendo.com/us/store/products/tomodachi-life-living-the-dream-switch/",
+   "performanceNotes": "Backward-compatible Nintendo Switch software on Nintendo Switch 2; no native Switch 2 edition assumed."
+  }
+ ],
+ "switch2UpgradePrice": 0,
+ "boxContentsList": [],
+ "image": "https://assets.nintendo.com/image/upload/ar_16:9,c_fill,g_auto,w_1600/f_auto/q_auto/dpr_1.5/store/software/switch/70010000116663/940ff91bfdbc963635d09032b6fc83524eb5a8387920099723ede3dc077a33ce",
+ "banner": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000116663/89ed392763dc397c1a293632b002253b80f2d83443386a934565e1a5cc03ab61",
+ "schemaId": "",
+ "batchImport": true,
+ "createdAt": "2026-08-28T18:35:09.850Z",
+ "updatedAt": "2026-08-28T18:35:09.850Z"
+}

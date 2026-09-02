@@ -1,6 +1,6 @@
 {
  "batch": "028",
- "apply": true,
+ "apply": false,
  "games": [
   {
    "id": "prd_073b4bb198534514",
@@ -167,6 +167,104 @@
     "guaranteeStatus"
    ],
    "notes": "Size string '2.8 GB' becomes a number; store-URL trailer removed; doubled records collapse to the platform record at the port's documented 30 fps. 2019-03-22, Metacritic 81 verified (hidden product)."
+  }
+ ],
+ "appliedAt": "2026-09-02T04:24:37.076Z",
+ "results": [
+  {
+   "id": "prd_073b4bb198534514",
+   "action": "APPLIED",
+   "changed": [
+    "devicePerformance"
+   ],
+   "removed": [
+    "youtubeTrailer"
+   ]
+  },
+  {
+   "id": "prd_ce036843bb8c42f2",
+   "action": "APPLIED",
+   "changed": [],
+   "removed": [
+    "youtubeTrailer",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ]
+  },
+  {
+   "id": "prd_675d26dff95a422f",
+   "action": "APPLIED",
+   "changed": [
+    "devicePerformance"
+   ],
+   "removed": [
+    "metacriticRating",
+    "box_front_url",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ]
+  },
+  {
+   "id": "prd_3aa29ae292b84ad5",
+   "action": "APPLIED",
+   "changed": [
+    "coverImage",
+    "image",
+    "bannerImages",
+    "galleryImages"
+   ],
+   "removed": [
+    "box_front_url",
+    "nintendoCardImage",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ]
+  },
+  {
+   "id": "prd_02876a10c3914082",
+   "action": "APPLIED",
+   "changed": [
+    "size",
+    "downloadSizeGb",
+    "devicePerformance"
+   ],
+   "removed": [
+    "youtubeTrailer",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ]
   }
  ]
 }

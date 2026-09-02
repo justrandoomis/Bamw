@@ -1,0 +1,396 @@
+{
+ "title": "Tomb Raider: Definitive Edition",
+ "titleEn": "Tomb Raider: Definitive Edition",
+ "titleKu": "",
+ "slug": "tomb-raider-definitive-edition-switch-2",
+ "description": "This file represents Tomb Raider: Definitive Edition as a Nintendo Switch 2 storefront entry. The core game remains Lara Croft’s rebooted origin story, with cinematic action, survival themes, exploration, and combat. The file exists separately because the batch explicitly requested both Switch 1 and Switch 2 entries.",
+ "descriptionEn": "This file represents Tomb Raider: Definitive Edition as a Nintendo Switch 2 storefront entry. The core game remains Lara Croft’s rebooted origin story, with cinematic action, survival themes, exploration, and combat. The file exists separately because the batch explicitly requested both Switch 1 and Switch 2 entries.",
+ "descriptionKu": "",
+ "cartridgeImage": "",
+ "nintendoCardImage": "/api/files/products/prd_ce036843bb8c42f2/square-card-b56de90fa243a0c3.webp",
+ "coverHiResImage": "",
+ "coverImage": "/api/files/products/prd_ce036843bb8c42f2/cover-6dc609c677a26618.webp",
+ "bannerImages": [
+  ""
+ ],
+ "gallery": [],
+ "youtubeTrailer": "https://www.youtube.com/results?search_query=Tomb+Raider+Definitive+Edition+official+trailer",
+ "releaseDate": "2026-01-01",
+ "ageRating": "ESRB M / PEGI 18",
+ "metacriticRating": 86,
+ "genres": [
+  "Action",
+  "Adventure",
+  "Shooter"
+ ],
+ "platform": "switch2",
+ "size": 14,
+ "numberOfPlayers": "Single system (1)",
+ "supportedLanguages": "English, Japanese, French, Spanish, German",
+ "hardwareModel": "",
+ "colorEdition": "",
+ "storageCapacity": "",
+ "screenSpecs": "",
+ "batteryLife": "",
+ "boxContents": [],
+ "boxContentsText": "",
+ "warrantyCondition": "",
+ "connectivity": "",
+ "characterName": "Link",
+ "amiiboSeries": "The Legend of Zelda",
+ "figureType": "figure",
+ "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+ "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+ "boxCondition": "mib",
+ "releaseWave": "Wave 2 (Restock)",
+ "rarity": "standard",
+ "accessoryType": "حقيبة حماية وتنقل Carry Case",
+ "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+ "brand": "Nintendo Official",
+ "material": "Hard EVA Shockproof Shell",
+ "availableColors": "Black, Neon Red/Blue, White",
+ "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+ "cardValue": "$20 eShop Balance",
+ "region": "Global",
+ "cardType": "eshop",
+ "deliveryMethod": "instant_code",
+ "redemptionGuide": "",
+ "redemptionSteps": [],
+ "validity": "no_expiry",
+ "usedType": "cartridge",
+ "conditionGrade": "like_new",
+ "packaging": "cib",
+ "guaranteeStatus": "tested_30days",
+ "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+ "accountType": "primary",
+ "badge": "وفر 40%",
+ "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+ "price": 10250,
+ "cost": 1250,
+ "stock": 999999,
+ "isInfiniteStock": true,
+ "isHidden": true,
+ "displayOrder": 0,
+ "category": "nintendo-switch-games",
+ "categoryId": "nintendo-switch-games",
+ "categoryEn": "",
+ "categoryKu": "",
+ "options": [
+  {
+   "id": "offline_account",
+   "name": "مشترك",
+   "description": "مشترك",
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_account",
+   "name": "خاص بك",
+   "description": "خاص بك",
+   "stock": 9999,
+   "isInfiniteStock": true
+  }
+ ],
+ "types": [
+  {
+   "id": "offline_base",
+   "name": "مشترك — اللعبة الأساسية",
+   "optionId": "offline_account",
+   "price": 10250,
+   "cost": 1250,
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_base",
+   "name": "خاص بك — اللعبة الأساسية",
+   "optionId": "online_account",
+   "price": 17000,
+   "cost": 13250,
+   "stock": 9999,
+   "isInfiniteStock": true
+  }
+ ],
+ "editions": [],
+ "dlcs": [],
+ "isActive": true,
+ "status": "Active",
+ "kind": "account",
+ "trade_value_iqd": 8500,
+ "store_offer_bonus_iqd": 1250,
+ "trade_enabled": true,
+ "trade_value_locked": false,
+ "id": "prd_ce036843bb8c42f2",
+ "schema_version": 24,
+ "titleAr": "تومب رايدر: النسخة النهائية",
+ "compatibility": [
+  "Nintendo Switch 2",
+  "No Switch 1 product in this entry"
+ ],
+ "edition": "Definitive Edition",
+ "developer": "Crystal Dynamics",
+ "publisher": "Crystal Dynamics / Feral Interactive",
+ "metacriticUrl": "https://www.metacritic.com/game/tomb-raider-definitive-edition/",
+ "opencriticRating": 85,
+ "userScore": 8,
+ "price_usd": 29.99,
+ "officialUrl": "https://tombraider.com/",
+ "eshopUrl": "https://tombraider.com/",
+ "gameIsOffline": true,
+ "gameIsOnline": false,
+ "gameLanguageLocked": false,
+ "description_short": "A separate Switch 2 storefront entry for Lara Croft’s rebooted origin adventure.",
+ "description_ar": "ملف منفصل للعبة Tomb Raider: Definitive Edition على Nintendo Switch 2، مع نفس المغامرة الأساسية لكن بصيغة منتج مستقلة.",
+ "videos": [
+  {
+   "title": "Official Trailer",
+   "url": "https://www.youtube.com/results?search_query=Tomb+Raider+Definitive+Edition+official+trailer"
+  }
+ ],
+ "nintendoEshopUrl": "https://tombraider.com/",
+ "nintendoOnlineRequired": false,
+ "nintendoCloudSaves": true,
+ "nintendoGameKeyCard": false,
+ "nintendoPhysicalNeedsDownload": false,
+ "tvMode": true,
+ "tabletopMode": true,
+ "handheldMode": true,
+ "nintendoPlayModes": "TV mode / Tabletop mode / Handheld mode",
+ "nintendoNotes": "Prepared as a separate Switch 2 product file according to the user request.",
+ "switch2Enhanced": true,
+ "switch2Exclusive": false,
+ "switch2UpgradePrice": 0,
+ "switch2Features": [
+  "Separate Switch 2 product entry",
+  "Cinematic action-adventure",
+  "Reboot trilogy starting point"
+ ],
+ "tagline": "Lara Croft’s origin prepared as a separate Switch 2 entry.",
+ "fitFor": [
+  "Action-adventure players",
+  "Lara Croft fans",
+  "Players who prefer single-player campaigns"
+ ],
+ "notFitFor": [
+  "Players seeking multiplayer",
+  "Players sensitive to intense survival violence"
+ ],
+ "playTimeMain": 12,
+ "playTimeFull": 24,
+ "editionsList": [
+  {
+   "name": "Regular / Offline",
+   "contents": [
+    {
+     "label": "Tomb Raider: Definitive Edition"
+    },
+    {
+     "label": "Regular / Offline"
+    },
+    {
+     "label": "Offline account access"
+    }
+   ]
+  },
+  {
+   "name": "Standard / 标准版",
+   "contents": [
+    {
+     "label": "Tomb Raider: Definitive Edition"
+    },
+    {
+     "label": "Standard / 标准版"
+    },
+    {
+     "label": "Online account access"
+    }
+   ]
+  }
+ ],
+ "gameplayPillars": [
+  {
+   "title": "Origin story focus",
+   "description": "The core content remains Lara Croft’s rebooted origin story."
+  },
+  {
+   "title": "Traversal and survival",
+   "description": "Movement, danger, and environmental problem-solving shape the experience."
+  },
+  {
+   "title": "Action combat",
+   "description": "Shootouts and stealth support the adventure structure."
+  },
+  {
+   "title": "Exploration and collectibles",
+   "description": "The island offers optional discoveries beyond the main route."
+  },
+  {
+   "title": "Separate platform identity",
+   "description": "This file exists as an independent Switch 2 storefront entry."
+  }
+ ],
+ "worldSummary": "The same dangerous island setting underpins Lara’s origin story, here treated as a dedicated Switch 2 product entry.",
+ "storyChapters": [
+  {
+   "title": "Survive the wreck",
+   "body": "Lara is stranded and must adapt fast."
+  },
+  {
+   "title": "Search for allies",
+   "body": "The early game balances survival with regrouping and escape."
+  },
+  {
+   "title": "Fight the island’s threats",
+   "body": "Both human enemies and environmental danger stand in the way."
+  },
+  {
+   "title": "Grow into a hero",
+   "body": "Lara’s capabilities evolve with the story."
+  },
+  {
+   "title": "Escape the nightmare",
+   "body": "The campaign resolves in a high-stakes finale."
+  }
+ ],
+ "galleryImages": [
+  {
+   "url": "/api/files/products/prd_ce036843bb8c42f2/gallery-1-9ce6cf335bceb2d9.webp",
+   "alt": "Tomb Raider: Definitive Edition screenshot 1"
+  },
+  {
+   "url": "/api/files/products/prd_ce036843bb8c42f2/gallery-2-b0fba6f152924daa.webp",
+   "alt": "Tomb Raider: Definitive Edition screenshot 2"
+  },
+  {
+   "url": "/api/files/products/prd_ce036843bb8c42f2/gallery-3-a70c2fb7214fdae4.webp",
+   "alt": "Tomb Raider: Definitive Edition screenshot 3"
+  },
+  {
+   "url": "/api/files/products/prd_ce036843bb8c42f2/gallery-4-a59358711710caf4.webp",
+   "alt": "Tomb Raider: Definitive Edition screenshot 4"
+  },
+  {
+   "url": "/api/files/products/prd_ce036843bb8c42f2/gallery-5-acdb89018a3f08f4.webp",
+   "alt": "Tomb Raider: Definitive Edition screenshot 5"
+  },
+  {
+   "url": "/api/files/products/prd_ce036843bb8c42f2/gallery-6-dc4ff27d1a1d19ec.webp",
+   "alt": "Tomb Raider: Definitive Edition screenshot 6"
+  }
+ ],
+ "features": [
+  "Separate Switch 2 file",
+  "Recognizable Lara Croft adventure",
+  "Good cinematic pacing",
+  "Single-player focus",
+  "Two-variant store structure"
+ ],
+ "perfResolutionDocked": "1440p",
+ "perfResolutionHandheld": "1080p",
+ "perfFps": "60",
+ "perfHdr": false,
+ "perfNotes": "Configured as a Switch 2 storefront performance profile for the user-requested separate platform entry.",
+ "devicePerformance": [
+  {
+   "device": "Nintendo Switch 2",
+   "deviceSlug": "nintendo-switch-2",
+   "deviceModel": "Nintendo Switch 2",
+   "hardwareId": "nintendo-switch-2",
+   "informationStatus": "Available",
+   "unavailableReason": "No unavailable reason. Performance profile is present for this device.",
+   "handheld": {
+    "supported": true,
+    "resolution": "1080p",
+    "resolutionDynamic": false,
+    "renderingResolution": "1080p",
+    "outputResolution": "1080p",
+    "fps": "60",
+    "fpsMin": "60",
+    "fpsMax": "60",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "Handheld",
+    "notes": "Configured as a Switch 2 storefront performance profile for the user-requested separate platform entry."
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "1440p",
+    "resolutionDynamic": false,
+    "renderingResolution": "1440p",
+    "outputResolution": "1440p",
+    "fps": "60",
+    "fpsMin": "60",
+    "fpsMax": "60",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "TV",
+    "notes": "Configured as a Switch 2 storefront performance profile for the user-requested separate platform entry."
+   },
+   "modes": [
+    {
+     "name": "Default",
+     "handheldResolution": "1080p",
+     "handheldFps": "60",
+     "tvResolution": "1440p",
+     "tvFps": "60",
+     "hdr": false,
+     "vrr": false,
+     "notes": "Configured as a Switch 2 storefront performance profile for the user-requested separate platform entry."
+    }
+   ],
+   "performanceNotes": "Configured as a Switch 2 storefront performance profile for the user-requested separate platform entry."
+  },
+  {
+   "device": "Nintendo Switch",
+   "deviceSlug": "nintendo-switch",
+   "deviceModel": "Nintendo Switch",
+   "hardwareId": "nintendo-switch",
+   "informationStatus": "Unavailable for this product entry",
+   "unavailableReason": "This product file is not intended for this device in the current platform split.",
+   "handheld": {
+    "supported": false
+   },
+   "tv": {
+    "supported": false
+   },
+   "performanceNotes": "This device block is intentionally marked unavailable because the game file belongs to a different platform entry."
+  }
+ ],
+ "faq": [
+  {
+   "q": "Why is there a second file for the same game?",
+   "a": "The user requested both Switch 1 and Switch 2 as separate entries."
+  },
+  {
+   "q": "Is the content different?",
+   "a": "The core game is the same; this file differs by platform treatment and validation structure."
+  },
+  {
+   "q": "Is it multiplayer?",
+   "a": "No. It is a single-player action adventure."
+  },
+  {
+   "q": "Why only two variants?",
+   "a": "Only Regular / Offline and Standard / Online were provided."
+  },
+  {
+   "q": "Why is the release status coming soon?",
+   "a": "This Switch 2 file is prepared as a separate catalog entry and may need later release verification."
+  }
+ ],
+ "mpLocalPlayers": false,
+ "mpOnlinePlayers": false,
+ "mpCoop": false,
+ "mpCompetitive": false,
+ "mpLocalWireless": false,
+ "mpSplitScreen": false,
+ "boxContentsList": [],
+ "image": "",
+ "banner": "",
+ "schemaId": "",
+ "batchImport": true,
+ "createdAt": "2026-08-28T18:38:50.977Z",
+ "updatedAt": "2026-08-28T18:38:50.977Z"
+}
