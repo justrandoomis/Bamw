@@ -71,7 +71,7 @@ export function ReferralCapture() {
           body: JSON.stringify({ code, product, hints: deviceHints() }),
         });
         const data = (await res.json().catch(() => null)) as
-          | { ok?: boolean; message?: string }
+          | { ok?: boolean; message?: string; selfReferral?: boolean }
           | null;
 
         try {
@@ -81,7 +81,9 @@ export function ReferralCapture() {
         }
 
         if (data?.message) {
+          // Your own link is information, not a failure.
           if (data.ok) toast.success(data.message, { duration: 8000 });
+          else if (data.selfReferral) toast.info(data.message, { duration: 8000 });
           else toast.error(data.message, { duration: 6000 });
         }
         if (data?.ok) {

@@ -340,6 +340,7 @@ export const Route = createFileRoute("/api/admin/referrals")({
                 dailyInviteLimit: Math.max(0, Number(incoming["dailyInviteLimit"]) || 0),
                 dailyRewardCapIqd: toIqd(incoming["dailyRewardCapIqd"]),
                 monthlyRewardCapIqd: toIqd(incoming["monthlyRewardCapIqd"]),
+                blockSameIp: incoming["blockSameIp"] !== false,
               };
               await updateStore((prev) => ({
                 ...prev,

@@ -216,8 +216,21 @@ export const Route = createFileRoute("/api/referral")({
           });
 
           if (!capture.ok) {
+            /*
+              A member opening their own link is not an error — it is the
+              answer to a question they asked. It comes back 200 with
+              `selfReferral`, so the page can say so calmly instead of
+              flashing a failure at the person who owns the link.
+            */
             return withCookies(
-              json({ ok: false, message: capture.message }, { status: 400 }),
+              json(
+                {
+                  ok: false,
+                  selfReferral: Boolean(capture.selfReferral),
+                  message: capture.message,
+                },
+                { status: capture.selfReferral ? 200 : 400 },
+              ),
               capture.setCookies,
             );
           }
