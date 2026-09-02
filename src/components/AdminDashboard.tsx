@@ -2004,6 +2004,27 @@ function ListingsView({
     }
   }, []);
 
+  /*
+    The publication floor refused a hidden→visible save: the product cannot yet
+    answer "what is this and what does it cost". The refusal names the gaps.
+    Publishing anyway stays possible — deliberate, one click, and recorded
+    server-side — instead of a dead end the admin can only escape by re-hiding.
+  */
+  const offerPublishOverride = (result: any, productData: any) => {
+    const missing = Array.isArray(result?.missing) ? result.missing.join("، ") : "";
+    toast.error(`لا يمكن نشر المنتج قبل إكمال: ${missing || "الحقول الأساسية"}`, {
+      id: "save-product",
+      duration: 15000,
+      description: "أكمل الحقول الناقصة، أو انشر رغم النقص وسيُسجَّل ذلك.",
+      action: {
+        label: "نشر على أي حال",
+        onClick: () => {
+          void handleSave({ ...productData, publishOverride: true });
+        },
+      },
+    });
+  };
+
   const handleSave = async (productData: any) => {
     try {
       if (!isAdding && editingProduct) {
@@ -2033,7 +2054,11 @@ function ListingsView({
         const result = await res.json().catch(() => null);
         if (!res.ok || !result?.success) {
           const errorMsg = result?.error || `HTTP ${res.status}: Failed to update product`;
-          toast.error(errorMsg, { id: "save-product", duration: 8000 });
+          if (result?.code === "PRODUCT_NOT_PUBLISHABLE" && productData?.publishOverride !== true) {
+            offerPublishOverride(result, productData);
+          } else {
+            toast.error(errorMsg, { id: "save-product", duration: 8000 });
+          }
           throw Object.assign(new Error(errorMsg), { reported: true });
         }
 
@@ -2159,7 +2184,12 @@ function ListingsView({
 
         const result = await finalRes.json().catch(() => null);
         if (!finalRes.ok || !result?.success) {
-          throw new Error(result?.error || `HTTP ${finalRes.status}: Finalize failed`);
+          const errorMsg = result?.error || `HTTP ${finalRes.status}: Finalize failed`;
+          if (result?.code === "PRODUCT_NOT_PUBLISHABLE" && productData?.publishOverride !== true) {
+            offerPublishOverride(result, productData);
+            throw Object.assign(new Error(errorMsg), { reported: true });
+          }
+          throw new Error(errorMsg);
         }
 
         toast.success(t("admin.saved") || "تم الحفظ بنجاح", { id: "save-product" });

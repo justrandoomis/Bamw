@@ -15,6 +15,7 @@ import {
   bootstrapProductIndex,
   DEFAULT_PAGE_SIZE,
   readProductIndexPage,
+  refreshProductIndexRow,
 } from "@/lib/product-index.server";
 import {
   findConflictingProduct,
@@ -41,6 +42,7 @@ import {
 import { categoryFilterAliases, resolveCategoryType } from "@/lib/productSection";
 import { sanitizeSlug, uniqueSlug } from "@/lib/productSlug";
 import { checkPublishable, isPublishing } from "@/lib/publishGate";
+import { applyHiddenIntent } from "@/lib/purchasable";
 import { sanitizeAndVerifyProductImages } from "@/lib/productImageVerification.server";
 
 function productSection(product: Partial<Product>, categories: Record<string, unknown>[]) {
@@ -458,6 +460,19 @@ export const Route = createFileRoute("/api/admin/products")({
           };
 
           /*
+            The spread above can carry hidden-state spellings from the payload
+            or a duplicated source product (`is_hidden`, `hidden`, a hidden
+            `visibility`/`status`). Align them all with the checkbox so a new
+            product is exactly as hidden as the admin said.
+          */
+          applyHiddenIntent(
+            productToSave as unknown as Record<string, unknown>,
+            payload.isHidden === true,
+          );
+          // A request flag, never part of the document.
+          delete (productToSave as unknown as Record<string, unknown>)["publishOverride"];
+
+          /*
             One performance record, owned by the platform's device. Whatever
             arrived — a legacy two-device array, a stale label after a platform
             change, or nothing — the stored document carries exactly one.
@@ -510,6 +525,7 @@ export const Route = createFileRoute("/api/admin/products")({
                   `store:product:${productId}`,
                 );
                 invalidateStoreCache();
+                await refreshProductIndexRow(imgVerification.product as Record<string, unknown>);
               }
             } catch (imgErr) {
               console.warn("[BackgroundImgIngestError]", imgErr);
@@ -528,6 +544,11 @@ export const Route = createFileRoute("/api/admin/products")({
 
             // Invalidate the store cache so loadStore picks up the new granular product
             invalidateStoreCache();
+
+            // The admin listing reads product_index; a granular save that
+            // skips it leaves the list showing the old flags until a full
+            // rebuild. One row, same request, before the success response.
+            await refreshProductIndexRow(productToSave as unknown as Record<string, unknown>);
 
             const saved = productToSave;
 
@@ -616,6 +637,20 @@ export const Route = createFileRoute("/api/admin/products")({
             );
           }
 
+          /*
+            An explicit hide/unhide must hold whatever spelling the stored
+            record used. The patch writes `isHidden`; visibility honours five
+            signals — before this, unhiding a product hidden through
+            `is_hidden` or `status: "مخفي"` changed nothing a customer could
+            see. Applied before the publication floor so the floor judges the
+            real transition.
+          */
+          if (typeof (payload as Record<string, unknown>)["isHidden"] === "boolean") {
+            applyHiddenIntent(
+              productToSave as unknown as Record<string, unknown>,
+              (payload as Record<string, unknown>)["isHidden"] === true,
+            );
+          }
 
           // The same publication floor the full save applies. A patch is the
           // shorter route to the same transition, and the listing screen's
@@ -640,6 +675,8 @@ export const Route = createFileRoute("/api/admin/products")({
               );
             }
           }
+          // A request flag, never part of the document.
+          delete (productToSave as unknown as Record<string, unknown>)["publishOverride"];
 
           // Fast DB Update (UPSERT style on KV value)
           try {
@@ -653,6 +690,11 @@ export const Route = createFileRoute("/api/admin/products")({
 
             // Invalidate the store cache so loadStore picks up the new granular product
             invalidateStoreCache();
+
+            // The admin listing reads product_index; a granular save that
+            // skips it leaves the list showing the old flags until a full
+            // rebuild. One row, same request, before the success response.
+            await refreshProductIndexRow(productToSave as unknown as Record<string, unknown>);
 
             // Background syncing for Game Device Performance (only if performance arrays changed)
             if (
@@ -871,6 +913,18 @@ export const Route = createFileRoute("/api/admin/products")({
             );
           }
 
+          /*
+            The merge keeps every stored spelling of hidden state, so unhiding
+            a product hidden through `is_hidden` or `status: "مخفي"` used to
+            change nothing a customer could see. Align them all with the
+            checkbox — before the publication floor, so the floor judges the
+            real hidden→visible transition instead of a leftover flag.
+          */
+          applyHiddenIntent(
+            productToSave as unknown as Record<string, unknown>,
+            payload.isHidden === true,
+          );
+
           const performanceIssues = performanceValidation(
             productToSave,
             currentStore.categories || [],
@@ -919,6 +973,8 @@ export const Route = createFileRoute("/api/admin/products")({
               );
             }
           }
+          // A request flag, never part of the document.
+          delete (productToSave as unknown as Record<string, unknown>)["publishOverride"];
 
           try {
             productToSave = await autoTranslateProduct(productToSave);
@@ -942,6 +998,7 @@ export const Route = createFileRoute("/api/admin/products")({
                   `store:product:${productId}`,
                 );
                 invalidateStoreCache();
+                await refreshProductIndexRow(imgVerification.product as Record<string, unknown>);
               }
             } catch (imgErr) {
               console.warn("[BackgroundImgIngestError]", imgErr);
@@ -959,6 +1016,11 @@ export const Route = createFileRoute("/api/admin/products")({
 
             // Invalidate the store cache so loadStore picks up the new granular product
             invalidateStoreCache();
+
+            // The admin listing reads product_index; a granular save that
+            // skips it leaves the list showing the old flags until a full
+            // rebuild. One row, same request, before the success response.
+            await refreshProductIndexRow(productToSave as unknown as Record<string, unknown>);
 
             const saved = productToSave;
 

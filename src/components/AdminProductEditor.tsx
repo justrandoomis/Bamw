@@ -81,6 +81,7 @@ import { HardwareAdminEditor } from "./admin/HardwareAdminEditor";
 import { SchemaAdminEditor } from "./admin/SchemaAdminEditor";
 import { useCurrency } from "../context/CurrencyContext";
 import { productSupportsSwitch2, validateGameDevicePerformance } from "@/lib/devicePerformance";
+import { hiddenToggleState } from "@/lib/purchasable";
 
 export type CategoryDefinition = {
   type: CategoryType;
@@ -285,8 +286,14 @@ export default function AdminProductEditor({
         cost: Number(product.cost) || 0,
         stock: Number(product.stock) || 0,
         isInfiniteStock: product.isInfiniteStock === true,
-        // Absent on every product saved before hiding existed — those stay visible.
-        isHidden: product.isHidden === true,
+        /*
+          Every hidden spelling the storefront honours, or the checkbox lies:
+          a product hidden through `is_hidden` or `status: "مخفي"` showed an
+          unchecked box, the admin saved "visible", and nothing changed.
+          Absent on every product saved before hiding existed — those stay
+          visible.
+        */
+        isHidden: hiddenToggleState(product),
         displayOrder: Number(product.displayOrder) || 0,
         isActive: product.isActive !== false,
         status: product.status || "نشط",

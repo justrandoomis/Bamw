@@ -7,6 +7,9 @@ import { sanitizeAndVerifyProductImages } from "@/lib/productImageVerification.s
 import { syncGameDevicePerformance } from "@/lib/devicePerformance.server";
 import { normalizeGameDevicePerformance } from "@/lib/devicePerformance";
 import { resolveCategoryType } from "@/lib/productSection";
+import { refreshProductIndexRow } from "@/lib/product-index.server";
+import { checkPublishable, isPublishing } from "@/lib/publishGate";
+import { applyHiddenIntent } from "@/lib/purchasable";
 
 export const Route = createFileRoute("/api/admin/products/save/finalize")({
   server: {
@@ -112,6 +115,59 @@ export const Route = createFileRoute("/api/admin/products/save/finalize")({
             console.error("[finalize:normalizeGameDevicePerformance:error]", normErr);
           }
 
+          /*
+            An explicit hide/unhide must hold whatever spelling the staged form
+            state carried — the chunked save replaces the document wholesale,
+            so a stale `is_hidden` or `status: "مخفي"` riding in the form state
+            would keep the product hidden after an unhide.
+          */
+          if (typeof productToSave.isHidden === "boolean") {
+            applyHiddenIntent(
+              productToSave as Record<string, unknown>,
+              productToSave.isHidden === true,
+            );
+          }
+
+          /*
+            The same publication floor as PATCH and PUT. The chunked save is
+            the editor's path for every rich product, so without this the
+            floor only guarded the small ones. Refusal discards the staged
+            chunks: the retry re-stages from scratch.
+          */
+          const publishOverride = productToSave.publishOverride === true;
+          delete productToSave.publishOverride;
+          {
+            const storeForGate = await getStore();
+            const storedForGate = (storeForGate.products || []).find(
+              (p) => String(p.id) === String(productId),
+            );
+            if (
+              storedForGate &&
+              isPublishing(
+                storedForGate as unknown as Record<string, unknown>,
+                productToSave as Record<string, unknown>,
+              )
+            ) {
+              const gate = checkPublishable(productToSave as Record<string, unknown>);
+              if (!gate.ok && !publishOverride) {
+                await d1Run(`DELETE FROM store_kv WHERE key LIKE ?`, `staged_save:${sessionId}:%`);
+                return json(
+                  {
+                    error: `لا يمكن نشر هذا المنتج قبل إكمال: ${gate.missing.join("، ")}`,
+                    code: "PRODUCT_NOT_PUBLISHABLE",
+                    missing: gate.missing,
+                  },
+                  { status: 400 },
+                );
+              }
+              if (!gate.ok && publishOverride) {
+                console.warn(
+                  `[products] published with override: ${productId} still missing ${gate.missing.join(", ")}`,
+                );
+              }
+            }
+          }
+
           // Save directly as granular product
           await d1Run(
             `INSERT INTO store_kv (key, value, updated_at) VALUES (?, ?, ?)
@@ -123,8 +179,12 @@ export const Route = createFileRoute("/api/admin/products/save/finalize")({
 
           // Clean up staged chunks
           await d1Run(`DELETE FROM store_kv WHERE key LIKE ?`, `staged_save:${sessionId}:%`);
-          
+
           invalidateStoreCache();
+
+          // The admin listing reads product_index; keep its row in line with
+          // the document just written or the list shows the old flags.
+          await refreshProductIndexRow(productToSave as Record<string, unknown>);
 
           // Sync game device performance in background/await safely
           try {

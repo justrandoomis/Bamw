@@ -102,4 +102,17 @@ describe("when the floor applies", () => {
     // is visible, so an absent flag on the stored record means it was visible.
     expect(isPublishing({}, { isHidden: false })).toBe(false);
   });
+
+  it("gates the legacy hidden spellings too, now that unhide releases them", () => {
+    // Many of the deliberately-hidden records carry `is_hidden` or
+    // `status: "مخفي"` rather than `isHidden`. Reading only `isHidden` would
+    // let exactly those products go visible without touching the floor.
+    expect(isPublishing({ is_hidden: true }, { isHidden: false })).toBe(true);
+    expect(isPublishing({ status: "مخفي" }, { isHidden: false })).toBe(true);
+    expect(isPublishing({ visibility: "draft" }, { isHidden: false })).toBe(true);
+  });
+
+  it("does not treat undeleting as publishing — that is not the toggle's axis", () => {
+    expect(isPublishing({ isDeleted: true }, { isHidden: false })).toBe(false);
+  });
 });
