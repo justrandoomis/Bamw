@@ -1,0 +1,609 @@
+{
+ "title": "Super Mario Galaxy + Super Mario Galaxy 2",
+ "titleEn": "Super Mario Galaxy + Super Mario Galaxy 2",
+ "titleKu": "Super Mario Galaxy + Super Mario Galaxy 2",
+ "slug": "super-mario-galaxy-plus-super-mario-galaxy-2-switch",
+ "description": "A two-game Nintendo Switch collection of enhanced Super Mario Galaxy and Super Mario Galaxy 2, featuring 1080p Switch presentation, improved UI, Assist Mode, new Storybook chapters, Soundtrack Mode and amiibo support. A free Switch 2 update enables 4K TV output and 1080p handheld visuals.",
+ "descriptionEn": "A two-game Nintendo Switch collection of enhanced Super Mario Galaxy and Super Mario Galaxy 2, featuring 1080p Switch presentation, improved UI, Assist Mode, new Storybook chapters, Soundtrack Mode and amiibo support. A free Switch 2 update enables 4K TV output and 1080p handheld visuals.",
+ "descriptionKu": "A two-game Nintendo Switch collection of enhanced Super Mario Galaxy and Super Mario Galaxy 2, featuring 1080p Switch presentation, improved UI, Assist Mode, new Storybook chapters, Soundtrack Mode and amiibo support. A free Switch 2 update enables 4K TV output and 1080p handheld visuals.",
+ "cartridgeImage": "/api/files/products/prd_d74598d589434852/front-aa68ee4b70238322.jpg",
+ "nintendoCardImage": "/api/files/products/prd_d74598d589434852/square-8c579eef9070b890.jpg",
+ "coverHiResImage": "/api/files/products/prd_d74598d589434852/3d-texture-b6ecbc7df6874061.jpg",
+ "coverImage": "/api/files/products/prd_d74598d589434852/cover-2e466cee872b01ec.jpg",
+ "bannerImages": [
+  "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000030770/2eafc395d5c6fbbcbccc7e151a2552f15d83d5d881bb074d3bc881a38191e440",
+  "/api/files/products/prd_d74598d589434852/banner-1-c9d0d4473b2f7fcb.avif",
+  "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000030770/f33b4687628c37c083e6c34f077f5432696ea413048751e8da684ea3b4f1481b",
+  "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000030770/92e54844116c79ebb07e3b4f56c454238d2e777fa61ed84c88b2f79909c51ab7",
+  "/api/files/products/prd_d74598d589434852/banner-4-8cdc3a9e72faaadb.avif"
+ ],
+ "gallery": [],
+ "youtubeTrailer": "https://www.nintendo.com/us/store/products/super-mario-galaxy-plus-super-mario-galaxy-2-switch/",
+ "releaseDate": "2025-10-02",
+ "ageRating": "ESRB Mild Fantasy Violence",
+ "metacriticRating": 87,
+ "genres": [
+  "3D Platformer",
+  "Action Adventure",
+  "Compilation"
+ ],
+ "platform": "switch1",
+ "size": 6.5,
+ "numberOfPlayers": "1–2",
+ "supportedLanguages": "Japanese / English; French / German / Italian / Spanish / Dutch / Portuguese; Korean / Simplified Chinese / Traditional Chinese",
+ "hardwareModel": "",
+ "colorEdition": "",
+ "storageCapacity": "",
+ "screenSpecs": "",
+ "batteryLife": "",
+ "boxContents": [],
+ "boxContentsText": "",
+ "warrantyCondition": "",
+ "connectivity": "",
+ "characterName": "Link",
+ "amiiboSeries": "The Legend of Zelda",
+ "figureType": "figure",
+ "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+ "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+ "boxCondition": "mib",
+ "releaseWave": "Wave 2 (Restock)",
+ "rarity": "standard",
+ "accessoryType": "حقيبة حماية وتنقل Carry Case",
+ "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+ "brand": "Nintendo Official",
+ "material": "Hard EVA Shockproof Shell",
+ "availableColors": "Black, Neon Red/Blue, White",
+ "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+ "cardValue": "$20 eShop Balance",
+ "region": "Global",
+ "cardType": "eshop",
+ "deliveryMethod": "instant_code",
+ "redemptionGuide": "",
+ "redemptionSteps": [],
+ "validity": "no_expiry",
+ "usedType": "cartridge",
+ "conditionGrade": "like_new",
+ "packaging": "cib",
+ "guaranteeStatus": "tested_30days",
+ "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+ "accountType": "primary",
+ "badge": "وفر 40%",
+ "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+ "price": 14000,
+ "cost": 2750,
+ "stock": 999999,
+ "isInfiniteStock": true,
+ "isHidden": false,
+ "displayOrder": 0,
+ "category": "nintendo-switch-games",
+ "categoryId": "nintendo-switch-games",
+ "categoryEn": "",
+ "categoryKu": "",
+ "options": [
+  {
+   "id": "offline_account",
+   "name": "حساب أوفلاين",
+   "description": "حساب مخصص للعب دون اتصال بعد إكمال خطوات التفعيل.",
+   "stock": 9999,
+   "isInfiniteStock": true,
+   "customerDescription": "حساب مشترك"
+  },
+  {
+   "id": "online_account",
+   "name": "حساب أونلاين",
+   "description": "حساب يدعم تشغيل اللعبة مع الاتصال والميزات المتاحة أونلاين.",
+   "stock": 9999,
+   "isInfiniteStock": true,
+   "customerDescription": "حساب خاص بك"
+  }
+ ],
+ "types": [
+  {
+   "id": "standard_offline",
+   "name": "حساب أوفلاين — عادي",
+   "optionId": "offline_account",
+   "price": 15000,
+   "cost": 2750,
+   "description": "تشمل الإصدار العادي من اللعبة.",
+   "stock": 9999,
+   "isInfiniteStock": true,
+   "internalNote": "Offline Account: supplier cost 2,750 IQD; selling price 15,000 IQD."
+  },
+  {
+   "id": "standard_online",
+   "name": "حساب أونلاين — عادي",
+   "optionId": "online_account",
+   "price": "65000",
+   "cost": 40250,
+   "description": "تشمل الإصدار العادي من اللعبة.",
+   "stock": 9999,
+   "isInfiniteStock": true,
+   "internalNote": "Online Account: supplier cost 40,250 IQD; selling price 50,250 IQD."
+  }
+ ],
+ "editions": [],
+ "dlcs": [],
+ "isActive": true,
+ "status": "Active",
+ "kind": "account",
+ "trade_value_iqd": 49000,
+ "store_offer_bonus_iqd": 10000,
+ "trade_enabled": true,
+ "trade_value_locked": false,
+ "id": "prd_d74598d589434852",
+ "schema_version": 23,
+ "titleAr": "سوبر ماريو غالاكسي + سوبر ماريو غالاكسي 2",
+ "compatibility": [
+  "Nintendo Switch"
+ ],
+ "edition": "Standard / available account variants",
+ "developer": "Nintendo",
+ "publisher": "Nintendo",
+ "metacriticUrl": "https://www.metacritic.com/game/super-mario-galaxy-plus-super-mario-galaxy-2/",
+ "opencriticRating": 87,
+ "userScore": 7.6,
+ "price_usd": 69.99,
+ "officialUrl": "https://www.nintendo.com/us/store/products/super-mario-galaxy-plus-super-mario-galaxy-2-switch/",
+ "eshopUrl": "https://www.nintendo.com/us/store/products/super-mario-galaxy-plus-super-mario-galaxy-2-switch/",
+ "gameIsOffline": true,
+ "gameIsOnline": false,
+ "gameLanguageLocked": false,
+ "description_short": "A two-game Nintendo Switch collection of enhanced Super Mario Galaxy and Super Mario Galaxy 2, featuring 1080p Switch presentation, improved UI, Assist Mode, new Storybook chapters, Soundtrack Mode and amiibo support. A free Switch 2 update enables 4K TV output and 1080p handheld visuals.",
+ "description_ar": "حزمة تضم نسخًا محسنة من Super Mario Galaxy وSuper Mario Galaxy 2 على Nintendo Switch. تتضمن دقة محسنة وواجهة مطورة وAssist Mode وفصول Storybook إضافية وSoundtrack Mode ودعم amiibo، مع تحديث مجاني لـSwitch 2 يرفع العرض إلى 4K على التلفاز و1080p في المحمول.",
+ "box_front_url": "https://cdn.mobygames.com/covers/21870288-super-mario-galaxy-super-mario-galaxy-2-nintendo-switch-front-co.jpg",
+ "box_back_url": "https://i.ebayimg.com/images/g/PWYAAeSwdXFo3s-R/s-l1200.png",
+ "galleryImages": [
+  {
+   "url": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing/7k9mX2qR8vN4pL6sY1uE3wA5zT0hB9jC/marquee-smg12/marquee-smg1-1-2x",
+   "alt": "Distinct verified game media image 1"
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing/7k9mX2qR8vN4pL6sY1uE3wA5zT0hB9jC/marquee-smg12/marquee-smg2-1-2x",
+   "alt": "Distinct verified game media image 2"
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing/7k9mX2qR8vN4pL6sY1uE3wA5zT0hB9jC/marquee-smg12/marquee-smg1-2-2x",
+   "alt": "Distinct verified game media image 3"
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing/7k9mX2qR8vN4pL6sY1uE3wA5zT0hB9jC/marquee-smg12/marquee-smg2-2-2x",
+   "alt": "Distinct verified game media image 4"
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing/7k9mX2qR8vN4pL6sY1uE3wA5zT0hB9jC/marquee-smg12/marquee-smg1-5-2x",
+   "alt": "Distinct verified game media image 5"
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing/7k9mX2qR8vN4pL6sY1uE3wA5zT0hB9jC/marquee-smg12/marquee-smg2-6-2x",
+   "alt": "Distinct verified game media image 6"
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing/7k9mX2qR8vN4pL6sY1uE3wA5zT0hB9jC/marquee-smg12/marquee-smg1-6-2x",
+   "alt": "Distinct verified game media image 7"
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing/7k9mX2qR8vN4pL6sY1uE3wA5zT0hB9jC/marquee-smg12/marquee-smg2-11-2x",
+   "alt": "Distinct verified game media image 8"
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing/7k9mX2qR8vN4pL6sY1uE3wA5zT0hB9jC/marquee-smg12/marquee-smg1-7-2x",
+   "alt": "Distinct verified game media image 9"
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing/7k9mX2qR8vN4pL6sY1uE3wA5zT0hB9jC/marquee-smg12/marquee-smg2-8-2x",
+   "alt": "Distinct verified game media image 10"
+  }
+ ],
+ "videos": [
+  {
+   "title": "Official trailer",
+   "url": "https://www.nintendo.com/us/store/products/super-mario-galaxy-plus-super-mario-galaxy-2-switch/"
+  },
+  {
+   "title": "Nintendo / publisher overview",
+   "url": "https://www.nintendo.com/us/store/products/super-mario-galaxy-plus-super-mario-galaxy-2-switch/"
+  },
+  {
+   "title": "Gameplay and feature media",
+   "url": "https://www.nintendo.com/us/store/products/super-mario-galaxy-plus-super-mario-galaxy-2-switch/"
+  }
+ ],
+ "nsuid": "See official Nintendo product page",
+ "title_id": "Nintendo internal title ID not exposed as a user-facing retail identifier",
+ "product_code": "Platform retail/digital product code varies by region",
+ "nintendoEshopUrl": "https://www.nintendo.com/us/store/products/super-mario-galaxy-plus-super-mario-galaxy-2-switch/",
+ "nintendoOnlineRequired": false,
+ "nintendoCloudSaves": true,
+ "nintendoGameKeyCard": false,
+ "nintendoPhysicalNeedsDownload": false,
+ "tvMode": true,
+ "tabletopMode": true,
+ "handheldMode": true,
+ "nintendoPlayModes": "TV / Tabletop / Handheld",
+ "nintendoNotes": "Verified platform/store information for Super Mario Galaxy + Super Mario Galaxy 2. Online features require Nintendo Switch Online where applicable. Storage and supported-language values are taken from current Nintendo/publisher listings.",
+ "switch2Enhanced": true,
+ "switch2Exclusive": false,
+ "switch2UpgradePrice": 0,
+ "switch2Features": [
+  "Two complete Galaxy games in one collection",
+  "1080p Switch visuals and free 4K Switch 2 update",
+  "Assist Mode, Storybook additions, Soundtrack Mode and amiibo support"
+ ],
+ "tagline": "Two gravity-defying Mario classics, enhanced for modern Nintendo hardware.",
+ "fitFor": [
+  "Players who want two landmark 3D Mario adventures",
+  "Families and platforming fans",
+  "Switch 2 owners who want the free 4K enhancement"
+ ],
+ "notFitFor": [
+  "Players who dislike pointer/motion-derived mechanics",
+  "Players looking for a completely new Mario campaign",
+  "Players who already own both games and do not value the enhancements"
+ ],
+ "playTimeMain": 32,
+ "playTimeFull": 70,
+ "editionsList": [
+  {
+   "name": "Standard Edition",
+   "coverUrl": "https://cdn.mobygames.com/covers/21870288-super-mario-galaxy-super-mario-galaxy-2-nintendo-switch-front-co.jpg",
+   "contents": [
+    {
+     "label": "Base game"
+    },
+    {
+     "label": "Standard content"
+    },
+    {
+     "label": "Platform features"
+    }
+   ]
+  },
+  {
+   "name": "Digital Edition",
+   "coverUrl": "https://assets.nintendo.com/image/upload/ar_1%3A1%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000030770/0acaf709e29c57e125e90032853562562843757d238fec2815a52ec0409c6fd1",
+   "contents": [
+    {
+     "label": "Digital game access"
+    },
+    {
+     "label": "Same core game content"
+    },
+    {
+     "label": "Nintendo Account delivery"
+    }
+   ]
+  },
+  {
+   "name": "Two-Game Bundle",
+   "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000030770/dd17fbca346376ffe7db5e53b5500dd475f50c610098099fe03e18bff3731d26",
+   "contents": [
+    {
+     "label": "Super Mario Galaxy"
+    },
+    {
+     "label": "Super Mario Galaxy 2"
+    },
+    {
+     "label": "Free Switch 2 enhancement"
+    }
+   ]
+  }
+ ],
+ "gameplayPillars": [
+  {
+   "title": "Gravity platforming",
+   "description": "Run around spherical worlds, launch between planets and use shifting gravity as part of the level design.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000030770/0acaf709e29c57e125e90032853562562843757d238fec2815a52ec0409c6fd1"
+  },
+  {
+   "title": "Two full adventures",
+   "description": "Play the complete enhanced Super Mario Galaxy and Super Mario Galaxy 2 campaigns.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000030770/dd17fbca346376ffe7db5e53b5500dd475f50c610098099fe03e18bff3731d26"
+  },
+  {
+   "title": "Modern quality-of-life features",
+   "description": "Improved UI, Assist Mode, new Storybook chapters, Soundtrack Mode, amiibo support and Switch 2 enhancements.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000030770/2eafc395d5c6fbbcbccc7e151a2552f15d83d5d881bb074d3bc881a38191e440"
+  }
+ ],
+ "worldSummary": "Both adventures turn outer space into a playground of small planets, gravity fields, observatories, starships and themed galaxies. Super Mario Galaxy centers on Rosalina's Comet Observatory, while Galaxy 2 uses Starship Mario as its hub and expands the formula with Yoshi.",
+ "storyChapters": [
+  {
+   "title": "Super Mario Galaxy",
+   "body": "Mario meets Rosalina and the Lumas while recovering Power Stars and rescuing Peach from Bowser.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000030770/3504cc11a769b7e29a25148fe5d92a7c0cc308d7889723b11e2c56b02d73400f"
+  },
+  {
+   "title": "Super Mario Galaxy 2",
+   "body": "Mario travels aboard Starship Mario, teams with Yoshi and explores another huge set of galaxies.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000030770/f33b4687628c37c083e6c34f077f5432696ea413048751e8da684ea3b4f1481b"
+  },
+  {
+   "title": "Enhanced collection",
+   "body": "The 2025 Switch release adds modern presentation and accessibility features while preserving the original level design.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000030770/92e54844116c79ebb07e3b4f56c454238d2e777fa61ed84c88b2f79909c51ab7"
+  }
+ ],
+ "features": [
+  "Two complete Galaxy games in one collection",
+  "1080p Switch visuals and free 4K Switch 2 update",
+  "Assist Mode, Storybook additions, Soundtrack Mode and amiibo support"
+ ],
+ "perfResolutionDocked": "1080p docked on Switch 1 / 4K with free Switch 2 update",
+ "perfResolutionHandheld": "720p-class handheld on Switch 1 / 1080p on Switch 2",
+ "perfFps": "60",
+ "perfHdr": false,
+ "perfNotes": "Nintendo officially states 1080p on Nintendo Switch and 4K on Switch 2 with the free update. Switch 2 handheld output is 1080p. Both games target 60 fps.",
+ "devicePerformance": [
+  {
+   "device": "Nintendo Switch 2",
+   "deviceSlug": "nintendo-switch-2",
+   "deviceModel": "Nintendo Switch 2",
+   "hardwareId": "prd_acf4c89908764c62",
+   "informationStatus": "Available / verified",
+   "unavailableReason": "No required native mode is unavailable.",
+   "handheld": {
+    "supported": true,
+    "resolution": "720p-class handheld on Switch 1 / 1080p on Switch 2",
+    "resolutionDynamic": false,
+    "renderingResolution": "720p-class handheld on Switch 1 / 1080p on Switch 2",
+    "outputResolution": "1280x720",
+    "fps": "60",
+    "fpsMin": "60",
+    "fpsMax": "60",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "Handheld",
+    "notes": "Nintendo officially states 1080p on Nintendo Switch and 4K on Switch 2 with the free update. Switch 2 handheld output is 1080p. Both games target 60 fps."
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "1080p docked on Switch 1 / 4K with free Switch 2 update",
+    "resolutionDynamic": false,
+    "renderingResolution": "1080p docked on Switch 1 / 4K with free Switch 2 update",
+    "outputResolution": "1920x1080",
+    "fps": "60",
+    "fpsMin": "60",
+    "fpsMax": "60",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "TV / Docked",
+    "notes": "Nintendo officially states 1080p on Nintendo Switch and 4K on Switch 2 with the free update. Switch 2 handheld output is 1080p. Both games target 60 fps."
+   },
+   "modes": [
+    {
+     "name": "Standard",
+     "handheldResolution": "720p-class handheld on Switch 1 / 1080p on Switch 2",
+     "handheldFps": "60",
+     "tvResolution": "1080p docked on Switch 1 / 4K with free Switch 2 update",
+     "tvFps": "60",
+     "hdr": false,
+     "vrr": false,
+     "notes": "Primary documented performance mode."
+    }
+   ],
+   "upscaling": "Platform-specific reconstruction / scaling where used",
+   "rayTracing": false,
+   "rayTracingMode": "No verified ray-tracing mode",
+   "loadingTime": "Fast SSD-based loading; exact scene-dependent time varies",
+   "loadingNotes": "Loading varies by scene and save location; no single universal loading time is published.",
+   "gameVersion": "Current retail build",
+   "patchVersion": "Current available update",
+   "testedDate": "2026-08-27",
+   "sourceName": "Nintendo Store",
+   "sourceUrl": "https://www.nintendo.com/us/store/products/super-mario-galaxy-plus-super-mario-galaxy-2-switch/",
+   "verifiedAt": "2026-08-27",
+   "verificationStatus": "Verified / sourced",
+   "performanceNotes": "Nintendo officially states 1080p on Nintendo Switch and 4K on Switch 2 with the free update. Switch 2 handheld output is 1080p. Both games target 60 fps."
+  }
+ ],
+ "downloadSizeGb": 6.5,
+ "requiredSpaceGb": 6.5,
+ "microSdRecommended": false,
+ "storageNotes": "Nintendo/Deku Deals list the combined collection at about 6.5 GB. A microSD card is optional. Switch 2 can apply the free enhancement update.",
+ "languagesAudio": [
+  "Character vocalizations",
+  "Orchestral soundtrack",
+  "Language-independent gameplay voices"
+ ],
+ "languagesText": [
+  "Japanese / English",
+  "French / German / Italian / Spanish / Dutch / Portuguese",
+  "Korean / Simplified Chinese / Traditional Chinese"
+ ],
+ "arabicSupport": false,
+ "mpLocalPlayers": true,
+ "mpOnlinePlayers": false,
+ "mpCoop": true,
+ "mpCompetitive": false,
+ "mpSplitScreen": false,
+ "mpLocalWireless": false,
+ "dlc": [
+  {
+   "name": "Free Nintendo Switch 2 update",
+   "description": "Free enhancement enables 4K TV visuals, 1080p handheld visuals and additional Switch 2 control features.",
+   "coverUrl": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing/7k9mX2qR8vN4pL6sY1uE3wA5zT0hB9jC/marquee-smg12/marquee-smg1-2-2x"
+  },
+  {
+   "name": "No paid story DLC",
+   "description": "No standalone paid story expansion has been announced for the collection.",
+   "coverUrl": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing/7k9mX2qR8vN4pL6sY1uE3wA5zT0hB9jC/marquee-smg12/marquee-smg2-2-2x"
+  },
+  {
+   "name": "amiibo features",
+   "description": "Compatible amiibo provide helpful in-game items; this is built into the game rather than sold as DLC.",
+   "coverUrl": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing/7k9mX2qR8vN4pL6sY1uE3wA5zT0hB9jC/marquee-smg12/marquee-smg1-5-2x"
+  }
+ ],
+ "guides": [
+  {
+   "title": "Official product information",
+   "summary": "Platform, release, storage, language and feature information for Super Mario Galaxy + Super Mario Galaxy 2.",
+   "url": "https://www.nintendo.com/us/store/products/super-mario-galaxy-plus-super-mario-galaxy-2-switch/"
+  },
+  {
+   "title": "Official game overview",
+   "summary": "Publisher/developer overview of story, gameplay and features.",
+   "url": "https://www.nintendo.com/us/store/products/super-mario-galaxy-plus-super-mario-galaxy-2-switch/"
+  },
+  {
+   "title": "Reviews and playtime reference",
+   "summary": "Critic/user scores and completion-time context.",
+   "url": "https://www.dekudeals.com/items/super-mario-galaxy-and-super-mario-galaxy-2"
+  }
+ ],
+ "completionMain": 32,
+ "completionExtras": 45,
+ "completionAll": 70,
+ "faq": [
+  {
+   "q": "Are both Galaxy games included?",
+   "a": "Yes. The package includes enhanced versions of Super Mario Galaxy and Super Mario Galaxy 2."
+  },
+  {
+   "q": "What changes on Nintendo Switch 2?",
+   "a": "A free update enables 4K TV output and 1080p handheld visuals, plus Switch 2-specific control enhancements."
+  },
+  {
+   "q": "Does the collection support two players?",
+   "a": "Yes. Both games retain an assist-style second-player role on one system."
+  }
+ ],
+ "verdictScore": 9.3,
+ "verdictSummary": "A superb double package of two of Nintendo's most inventive 3D platformers. The remaster work is conservative, but sharper presentation, quality-of-life additions and the Switch 2 enhancement make this the most convenient modern release of the pair.",
+ "verdictPros": [
+  "Two all-time-great platformers",
+  "Excellent 60 fps presentation",
+  "Strong Switch 2 enhancement"
+ ],
+ "verdictCons": [
+  "Pointer-style mechanics still show Wii-era roots",
+  "Mostly remastered rather than newly rebuilt",
+  "Premium price for older games"
+ ],
+ "reviews": [
+  {
+   "source": "Metacritic",
+   "score": "87/100",
+   "quote": "Generally favorable aggregate for the Switch collection.",
+   "url": "https://www.metacritic.com/game/super-mario-galaxy-plus-super-mario-galaxy-2/"
+  },
+  {
+   "source": "OpenCritic",
+   "score": "87/100",
+   "quote": "Strong cross-outlet aggregate.",
+   "url": "https://opencritic.com/"
+  },
+  {
+   "source": "Metacritic users",
+   "score": "7.6/10",
+   "quote": "Current user aggregate for the Switch collection.",
+   "url": "https://www.metacritic.com/game/super-mario-galaxy-plus-super-mario-galaxy-2/user-reviews/"
+  }
+ ],
+ "timeline": [
+  {
+   "date": "2007-11-12",
+   "title": "Super Mario Galaxy",
+   "body": "The first Galaxy launched on Wii."
+  },
+  {
+   "date": "2010-05-23",
+   "title": "Super Mario Galaxy 2",
+   "body": "The sequel launched on Wii."
+  },
+  {
+   "date": "2025-10-02",
+   "title": "Switch collection",
+   "body": "Both enhanced games released together for Nintendo Switch with a free Switch 2 enhancement."
+  }
+ ],
+ "patchNotes": [
+  {
+   "version": "Collection launch",
+   "date": "2025-10-02",
+   "body": "Enhanced Switch versions released with UI, Assist Mode, Storybook and Soundtrack additions."
+  },
+  {
+   "version": "Switch 2 enhancement",
+   "date": "2025-10-02",
+   "body": "Free update enabled 4K TV / 1080p handheld presentation on Switch 2."
+  },
+  {
+   "version": "Storybook addition",
+   "date": "2026-04-29",
+   "body": "Nintendo added an additional Storybook chapter to Super Mario Galaxy 2."
+  }
+ ],
+ "soundtrack": [
+  {
+   "title": "Gusty Garden Galaxy",
+   "url": "https://www.nintendo.com/us/store/products/super-mario-galaxy-plus-super-mario-galaxy-2-switch/"
+  },
+  {
+   "title": "Super Mario Galaxy Main Theme",
+   "url": "https://www.nintendo.com/us/store/products/super-mario-galaxy-plus-super-mario-galaxy-2-switch/"
+  },
+  {
+   "title": "Super Mario Galaxy 2 Main Theme",
+   "url": "https://www.nintendo.com/us/store/products/super-mario-galaxy-plus-super-mario-galaxy-2-switch/"
+  }
+ ],
+ "seriesName": "Super Mario Galaxy 2",
+ "seriesEntries": [
+  "Super Mario Galaxy",
+  "Super Mario Galaxy 2",
+  "Super Mario Odyssey"
+ ],
+ "studioName": "Nintendo",
+ "studioUrl": "https://www.nintendo.co.jp/",
+ "studioLocation": "Kyoto, Japan",
+ "studioAbout": "Nintendo developed the original Galaxy games and produced the enhanced Switch collection, preserving their gravity-focused platforming while modernizing presentation and accessibility.",
+ "setupNeeds": [
+  "Nintendo Switch or Nintendo Switch 2",
+  "Approximately 6.5 GB free storage",
+  "Compatible controller; motion/pointer-style interactions remain part of the experience"
+ ],
+ "sources": [
+  {
+   "name": "Nintendo Store",
+   "url": "https://www.nintendo.com/us/store/products/super-mario-galaxy-plus-super-mario-galaxy-2-switch/"
+  },
+  {
+   "name": "Metacritic",
+   "url": "https://www.metacritic.com/game/super-mario-galaxy-plus-super-mario-galaxy-2/"
+  },
+  {
+   "name": "Deku Deals",
+   "url": "https://www.dekudeals.com/items/super-mario-galaxy-and-super-mario-galaxy-2"
+  }
+ ],
+ "boxContentsList": "[Circular]",
+ "image": "/api/files/products/prd_d74598d589434852/cover-2e466cee872b01ec.jpg",
+ "banner": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000030770/2eafc395d5c6fbbcbccc7e151a2552f15d83d5d881bb074d3bc881a38191e440",
+ "schemaId": "",
+ "createdAt": "2026-08-27T00:28:06.310Z",
+ "created_at": "2026-08-27T00:28:06.310Z",
+ "updatedAt": "2026-08-27T00:28:06.310Z",
+ "updated_at": "2026-08-27T00:28:06.310Z",
+ "badgeEn": "وفر 40%",
+ "badgeKu": "وفر 40%",
+ "featuresEn": [
+  "Two complete Galaxy games in one collection",
+  "1080p Switch visuals and free 4K Switch 2 update",
+  "Assist Mode, Storybook additions, Soundtrack Mode and amiibo support"
+ ],
+ "featuresKu": [
+  "Two complete Galaxy games in one collection",
+  "1080p Switch visuals and free 4K Switch 2 update",
+  "Assist Mode, Storybook additions, Soundtrack Mode and amiibo support"
+ ],
+ "boxFrontUrl": "https://cdn.mobygames.com/covers/21870288-super-mario-galaxy-super-mario-galaxy-2-nintendo-switch-front-co.jpg",
+ "sales": 0,
+ "images": [],
+ "modes": [],
+ "game_id": "gme_4eb89ae9b5f34019",
+ "variants": "[Circular]"
+}

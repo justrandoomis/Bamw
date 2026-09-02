@@ -1,6 +1,6 @@
 {
  "batch": "025",
- "apply": true,
+ "apply": false,
  "games": [
   {
    "id": "prd_d74598d589434852",
@@ -203,8 +203,8 @@
    "slug": "the-binding-of-isaac-afterbirthplus-switch-1",
    "baseHash": "79feaf070960f96a8bea0d487195f0e3dad1b1cb4cbf7849b44c9c56eb241a37",
    "set": {
-    "size": 1.0,
-    "downloadSizeGb": 1.0,
+    "size": 1,
+    "downloadSizeGb": 1,
     "devicePerformance": [
      {
       "device": "Nintendo Switch",
@@ -241,6 +241,99 @@
     "guaranteeStatus"
    ],
    "notes": "Size string '1.0 GB' becomes a number; page-URL trailer removed; doubled records collapse to the platform record at the documented 60 fps. 2017-09-07, Metacritic 85 verified (hidden product)."
+  }
+ ],
+ "appliedAt": "2026-09-02T04:11:14.832Z",
+ "results": [
+  {
+   "id": "prd_d74598d589434852",
+   "action": "APPLIED",
+   "changed": [
+    "bannerImages",
+    "devicePerformance"
+   ],
+   "removed": [
+    "youtubeTrailer",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ]
+  },
+  {
+   "id": "prd_dfb6ac13472d4624",
+   "action": "APPLIED",
+   "changed": [
+    "devicePerformance"
+   ],
+   "removed": [
+    "youtubeTrailer",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ]
+  },
+  {
+   "id": "prd_028b26bf1f5d4e0b",
+   "action": "APPLIED",
+   "changed": [
+    "coverImage",
+    "image",
+    "bannerImages",
+    "galleryImages",
+    "devicePerformance"
+   ],
+   "removed": [
+    "nintendoCardImage",
+    "youtubeTrailer"
+   ]
+  },
+  {
+   "id": "prd_b9c50887a24849fa",
+   "action": "APPLIED",
+   "changed": [
+    "bannerImages",
+    "galleryImages",
+    "devicePerformance"
+   ],
+   "removed": [
+    "box_front_url"
+   ]
+  },
+  {
+   "id": "prd_46580d6478e849b6",
+   "action": "APPLIED",
+   "changed": [
+    "size",
+    "downloadSizeGb",
+    "devicePerformance"
+   ],
+   "removed": [
+    "youtubeTrailer",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ]
   }
  ]
 }

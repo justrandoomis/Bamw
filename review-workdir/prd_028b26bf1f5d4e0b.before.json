@@ -1,0 +1,558 @@
+{
+ "title": "Super Mario RPG",
+ "titleEn": "Super Mario RPG",
+ "titleKu": "Super Mario RPG",
+ "slug": "super-mario-rpg-switch-1",
+ "description": "Team up with an oddball group of heroes to save Star Road and stop the troublemaking Smithy Gang. This colorful RPG has updated graphics and cinematics that add even more charm to the unexpected alliance between Mario, Bowser, Peach, and original characters Mallow and Geno. Enter (or revisit) this world of eccentric allies and offbeat enemies in an RPG for everyone.\n\nJump through a colorful world and give attacks some extra oomph in battle!\n\nExplore the vibrant environments with your party and jump towards your next goal! Run into monsters to enter turn-based battles with your party of three. Press the button at the right time for a satisfying dose of extra damage or helpful guard.",
+ "descriptionEn": "Team up with an oddball group of heroes to save Star Road and stop the troublemaking Smithy Gang. This colorful RPG has updated graphics and cinematics that add even more charm to the unexpected alliance between Mario, Bowser, Peach, and original characters Mallow and Geno. Enter (or revisit) this world of eccentric allies and offbeat enemies in an RPG for everyone.\n\nJump through a colorful world and give attacks some extra oomph in battle!\n\nExplore the vibrant environments with your party and jump towards your next goal! Run into monsters to enter turn-based battles with your party of three. Press the button at the right time for a satisfying dose of extra damage or helpful guard.",
+ "descriptionKu": "Enter—or revisit—a world of whimsy with Mario on a quest to repair Star Road and defeat the troublemaking Smithy Gang. Team up with a party of unlikely allies, including Bowser, Peach, Mallow, and Geno, in a story-rich RPG packed with laughs, remastered music, refreshed graphics, and new battle refinements.",
+ "cartridgeImage": "/api/files/products/prd_028b26bf1f5d4e0b/front-e6013a6cb90aa94d.jpg",
+ "nintendoCardImage": "/api/files/products/prd_028b26bf1f5d4e0b/square-b613c2bb37daf464.avif",
+ "coverHiResImage": "/api/files/products/prd_028b26bf1f5d4e0b/3d-texture-d4d2230ef1092243.jpg",
+ "coverImage": "/api/files/products/prd_028b26bf1f5d4e0b/cover-b013690780c57622.avif",
+ "bannerImages": [
+  "/api/files/products/prd_028b26bf1f5d4e0b/banner-0-644989ad6806ffcc.avif",
+  "/api/files/products/prd_028b26bf1f5d4e0b/banner-1-43853995e40ce5c4.avif",
+  "/api/files/products/prd_028b26bf1f5d4e0b/banner-2-848ab7fbecf83317.avif",
+  "/api/files/products/prd_028b26bf1f5d4e0b/banner-3-25328678297120cb.avif",
+  "/api/files/products/prd_028b26bf1f5d4e0b/banner-4-239ed11aa0c3a70f.avif",
+  "/api/files/products/prd_028b26bf1f5d4e0b/banner-5-a1f2f2c70448daa2.avif"
+ ],
+ "youtubeTrailer": "https://www.nintendo.com/us/store/products/super-mario-rpg-switch/",
+ "releaseDate": "2023-11-17",
+ "ageRating": "Everyone",
+ "metacriticRating": 84,
+ "genres": [
+  "Action",
+  "Role playing"
+ ],
+ "platform": "switch1",
+ "size": "6.53 GB",
+ "numberOfPlayers": "1",
+ "supportedLanguages": "Japanese, British English, French, German, Italian, Spanish, Korean, Dutch, Simplified Chinese, Latin American Spanish, Canadian French, Traditional Chinese, American English",
+ "price": 11500,
+ "cost": 1250,
+ "stock": 999999,
+ "isInfiniteStock": true,
+ "isHidden": false,
+ "displayOrder": 0,
+ "category": "nintendo-switch-games",
+ "categoryId": "nintendo-switch-games",
+ "options": [
+  {
+   "id": "offline_account",
+   "name": "مشترك",
+   "description": "حساب مشترك",
+   "stock": 9999,
+   "isInfiniteStock": true,
+   "customerDescription": "حساب مشترك"
+  },
+  {
+   "id": "online_account",
+   "name": "خاص بك",
+   "description": "حساب خاص بك",
+   "stock": 9999,
+   "isInfiniteStock": true,
+   "customerDescription": "حساب خاص بك"
+  }
+ ],
+ "types": [
+  {
+   "id": "standard_offline",
+   "name": "مشترك — اللعبة الأساسية",
+   "optionId": "offline_account",
+   "price": 11500,
+   "cost": 1250,
+   "description": "",
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "standard_online",
+   "name": "خاص بك — اللعبة الأساسية",
+   "optionId": "online_account",
+   "price": 35000,
+   "cost": 20750,
+   "description": "",
+   "stock": 9999,
+   "isInfiniteStock": true
+  }
+ ],
+ "editions": [],
+ "dlcs": [],
+ "isActive": true,
+ "status": "Active",
+ "kind": "account",
+ "trade_value_iqd": 30000,
+ "store_offer_bonus_iqd": 3000,
+ "trade_enabled": true,
+ "trade_value_locked": false,
+ "id": "prd_028b26bf1f5d4e0b",
+ "schema_version": 24,
+ "titleAr": "سوبر ماريو آر بي جي",
+ "compatibility": [
+  "Nintendo Switch",
+  "Nintendo Switch 2: supported with behavior consistent with Nintendo Switch"
+ ],
+ "edition": "Standard",
+ "developer": "Nintendo",
+ "publisher": "Nintendo",
+ "seriesName": "Mario RPG",
+ "metacriticUrl": "https://www.metacritic.com/game/super-mario-rpg/",
+ "opencriticRating": 84,
+ "userScore": 8.6,
+ "price_usd": 59.99,
+ "officialUrl": "https://www.nintendo.com/us/store/products/super-mario-rpg-switch/",
+ "eshopUrl": "https://www.nintendo.com/us/store/products/super-mario-rpg-switch/",
+ "galleryImages": [
+  {
+   "alt": "Super Mario RPG official promotional media 1",
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000068683/dad2dfa044f3b1809bfb65e0145f824e25d2a363e446a142b5d46b27766463ea"
+  },
+  {
+   "alt": "Super Mario RPG official promotional media 2",
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000068683/4c7e8dd48d4502fe6e055a4123edb756884df4c3b9e38b6e0b2e6467f0e3f156"
+  },
+  {
+   "alt": "Super Mario RPG official promotional media 3",
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000068683/6f1e4ece77f40f695a7589fb098bc07c26ea34dcb740f31ad65f5b6fe157d006"
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000068683/9e65faa68da4e6401bec610a841c4767843058906b4dbca5b809a9fe7eb7bc81"
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000068683/163e4c00b087ebce4aba847ea045c6447847f8441799cff4742ca0b96e16fbb5"
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000068683/b6ddbc898fcb6c78c6d186d914c9cbdf446652b930d16eabb30b169fbf9b94c1"
+  }
+ ],
+ "videos": [
+  {
+   "title": "Official product page / trailer",
+   "url": "https://www.nintendo.com/us/store/products/super-mario-rpg-switch/"
+  },
+  {
+   "title": "Nintendo news",
+   "url": "https://www.nintendo.com/us/search/#q=Super%20Mario%20RPG&p=1&cat=news"
+  },
+  {
+   "title": "Metacritic review hub",
+   "url": "https://www.metacritic.com/game/super-mario-rpg/"
+  }
+ ],
+ "soundtrack": [
+  {
+   "title": "Official game page",
+   "url": "https://www.nintendo.com/us/store/products/super-mario-rpg-switch/"
+  },
+  {
+   "title": "Nintendo news",
+   "url": "https://www.nintendo.com/us/search/#q=Super%20Mario%20RPG&p=1&cat=news"
+  },
+  {
+   "title": "Metacritic / reviews",
+   "url": "https://www.metacritic.com/game/super-mario-rpg/"
+  }
+ ],
+ "gameIsOffline": true,
+ "gameIsOnline": false,
+ "gameLanguageLocked": false,
+ "description_short": "Set out on a classic Mario adventure. Repair Star Road, battle the Smithy Gang, and team up with oddball allies in a story-rich RPG remade for Nintendo Switch.",
+ "description_ar": "إعادة صنع للعبة RPG الكلاسيكية حيث ينطلق ماريو لإصلاح Star Road وإيقاف عصابة Smithy Gang، مع حلفاء مثل Bowser وPeach وMallow وGeno، ورسوم محسنة وموسيقى مجددة وتطويرات على القتال.",
+ "box_front_url": "https://images.launchbox-app.com/0be66a78-ae3b-4280-aa4e-8d6005373f15.jpg",
+ "box_back_url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000068683/dad2dfa044f3b1809bfb65e0145f824e25d2a363e446a142b5d46b27766463ea",
+ "languagesAudio": [
+  "Character vocalizations",
+  "Music / sound effects",
+  "No full language-dependent dub confirmed"
+ ],
+ "languagesText": [
+  "Japanese",
+  "British English",
+  "French",
+  "German",
+  "Italian",
+  "Spanish",
+  "Korean",
+  "Dutch",
+  "Simplified Chinese",
+  "Latin American Spanish",
+  "Canadian French",
+  "Traditional Chinese",
+  "American English"
+ ],
+ "tvMode": true,
+ "tabletopMode": true,
+ "handheldMode": true,
+ "nintendoPlayModes": [
+  "TV mode",
+  "Tabletop mode",
+  "Handheld mode"
+ ],
+ "nintendoOnlineRequired": false,
+ "nintendoCloudSaves": true,
+ "nintendoGameKeyCard": false,
+ "nintendoPhysicalNeedsDownload": false,
+ "switch2Enhanced": false,
+ "switch2Exclusive": false,
+ "nintendoNotes": "Nintendo product identity and store facts were verified against the official listing on 2026-09-02. Performance values are included only where an official source publishes them.",
+ "editionsList": [
+  {
+   "name": "Standard Edition",
+   "coverUrl": "https://images.launchbox-app.com/0be66a78-ae3b-4280-aa4e-8d6005373f15.jpg",
+   "contents": [
+    {
+     "label": "Base game"
+    },
+    {
+     "label": "Story-rich turn-based RPG adventure"
+    },
+    {
+     "label": "Breezy difficulty mode for easier progression"
+    }
+   ]
+  },
+  {
+   "name": "Digital Edition",
+   "coverUrl": "https://assets.nintendo.com/image/upload/ar_1:1,c_fill,g_auto,w_1000/f_auto/q_auto/dpr_1.5/store/software/switch/70010000068683/fe4afe940b0e707798332e86f0af56cdbde48da59dc37cdfb8d59febb88ac72a",
+   "contents": [
+    {
+     "label": "Nintendo eShop release"
+    },
+    {
+     "label": "Remastered soundtrack plus Classic SNES soundtrack option"
+    },
+    {
+     "label": "Save Data Cloud support"
+    }
+   ]
+  },
+  {
+   "name": "Current Store Package",
+   "coverUrl": "https://assets.nintendo.com/image/upload/ar_16:9,c_fill,g_auto,w_1600/f_auto/q_auto/dpr_1.5/store/software/switch/70010000068683/fe4afe940b0e707798332e86f0af56cdbde48da59dc37cdfb8d59febb88ac72a",
+   "contents": [
+    {
+     "label": "Offline account option"
+    },
+    {
+     "label": "Online account option"
+    },
+    {
+     "label": "Hidden by default until review"
+    }
+   ]
+  }
+ ],
+ "gameplayPillars": [
+  {
+   "title": "Action Commands",
+   "description": "Time button presses to deal extra damage or guard effectively in battle.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000068683/dad2dfa044f3b1809bfb65e0145f824e25d2a363e446a142b5d46b27766463ea"
+  },
+  {
+   "title": "Chain and Triple Moves",
+   "description": "Use Action Commands to build gauge and unleash powerful Chain and Triple Moves.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000068683/4c7e8dd48d4502fe6e055a4123edb756884df4c3b9e38b6e0b2e6467f0e3f156"
+  },
+  {
+   "title": "Exploration and boss battles",
+   "description": "Explore colorful areas, complete mini-games, and take on memorable bosses across the world.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000068683/6f1e4ece77f40f695a7589fb098bc07c26ea34dcb740f31ad65f5b6fe157d006"
+  },
+  {
+   "title": "Timed defense and party rhythm",
+   "description": "Action Commands are used on offense and defense, keeping battles active and rewarding good timing rather than purely menu-based play.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000068683/9e65faa68da4e6401bec610a841c4767843058906b4dbca5b809a9fe7eb7bc81"
+  },
+  {
+   "title": "Secrets, minigames, and side content",
+   "description": "The adventure includes hidden chests, optional bosses, minigames, and post-story challenges that add more to do beyond the critical path.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000068683/163e4c00b087ebce4aba847ea045c6447847f8441799cff4742ca0b96e16fbb5"
+  }
+ ],
+ "worldSummary": "Super Mario RPG delivers a whimsical quest through a colorful world full of towns, dungeons, mini-games, expressive characters, and classic turn-based battles with modern presentation upgrades.",
+ "storyChapters": [
+  {
+   "title": "Repair Star Road",
+   "body": "Mario sets out to restore wishes after Star Road is disrupted.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000068683/dad2dfa044f3b1809bfb65e0145f824e25d2a363e446a142b5d46b27766463ea"
+  },
+  {
+   "title": "Gather unlikely allies",
+   "body": "Peach, Bowser, Mallow, and Geno each bring distinct abilities and personalities to the party.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000068683/4c7e8dd48d4502fe6e055a4123edb756884df4c3b9e38b6e0b2e6467f0e3f156"
+  },
+  {
+   "title": "Defeat the Smithy Gang",
+   "body": "The adventure culminates in battles against the Smithy Gang and its leaders.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000068683/6f1e4ece77f40f695a7589fb098bc07c26ea34dcb740f31ad65f5b6fe157d006"
+  },
+  {
+   "title": "Meet Geno, Mallow, and unexpected allies",
+   "body": "Mario gradually builds a memorable party whose personalities, abilities, and interactions carry much of the game's charm and humor.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000068683/b6ddbc898fcb6c78c6d186d914c9cbdf446652b930d16eabb30b169fbf9b94c1"
+  },
+  {
+   "title": "Optional challenges after the finale",
+   "body": "Even after the main story, players can tackle stronger rematch content, finish side objectives, and hunt down missed treasures and secrets.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000068683/dad2dfa044f3b1809bfb65e0145f824e25d2a363e446a142b5d46b27766463ea"
+  }
+ ],
+ "features": [
+  "Story-rich turn-based RPG adventure",
+  "Breezy difficulty mode for easier progression",
+  "Remastered soundtrack plus Classic SNES soundtrack option",
+  "Action Commands keep turn-based battles lively",
+  "Short pacing makes it easy to finish without filler",
+  "Optional postgame content adds extra challenge beyond the story"
+ ],
+ "perfResolutionDocked": "Not published by Nintendo",
+ "perfResolutionHandheld": "Not published by Nintendo",
+ "perfFps": "Not published by Nintendo",
+ "perfHdr": false,
+ "playTimeMain": 11,
+ "completionMain": 16,
+ "completionExtras": 20,
+ "faq": [
+  {
+   "q": "Is Super Mario RPG multiplayer?",
+   "a": "No. This remake is a single-player RPG."
+  },
+  {
+   "q": "Does it support Nintendo Switch 2?",
+   "a": "Yes. Nintendo lists it as Supported – game behavior is consistent with Nintendo Switch."
+  },
+  {
+   "q": "What is new in the remake?",
+   "a": "The Switch version adds remastered visuals, new CGI cutscenes, the Chain and Triple Move battle systems, Breezy mode, and the option to use a remastered or classic soundtrack."
+  },
+  {
+   "q": "How long is Super Mario RPG?",
+   "a": "The main story is relatively approachable in length, while side content, optional bosses, and completion goals extend the overall playtime meaningfully."
+  },
+  {
+   "q": "Is the remake faithful to the original?",
+   "a": "Yes. It preserves the core structure, characters, and battle flow of the SNES classic while updating visuals, audio, accessibility, and battle conveniences."
+  }
+ ],
+ "verdictScore": 8.8,
+ "verdictPros": [
+  "Charming remake of a beloved classic",
+  "Excellent pacing and approachable RPG mechanics",
+  "Great music options and polished presentation",
+  "Action Command timing keeps battles engaging",
+  "Optional secrets give the short adventure extra replay value"
+ ],
+ "verdictCons": [
+  "Relatively short for an RPG",
+  "Low challenge for genre veterans outside selected encounters",
+  "Limited postgame compared with larger modern RPGs",
+  "Veteran RPG players may outgrow its simple systems quickly",
+  "The compact runtime may leave some players wanting a bigger adventure"
+ ],
+ "reviews": [
+  {
+   "source": "Metacritic",
+   "score": "84",
+   "url": "https://www.metacritic.com/game/super-mario-rpg/"
+  },
+  {
+   "source": "OpenCritic",
+   "score": "84",
+   "url": "https://opencritic.com/game/15689/super-mario-rpg"
+  },
+  {
+   "source": "IGN",
+   "score": "8/10",
+   "url": "https://www.ign.com/games/super-mario-rpg"
+  }
+ ],
+ "timeline": [
+  {
+   "date": "2023-06-21",
+   "title": "Announced during Nintendo Direct",
+   "body": "Announced during Nintendo Direct — recorded milestone dated 2023-06-21."
+  },
+  {
+   "date": "2023-11-17",
+   "title": "Released on Nintendo Switch",
+   "body": "Released on Nintendo Switch — recorded milestone dated 2023-11-17."
+  },
+  {
+   "date": "2024-01-22",
+   "title": "Nintendo published follow-up tips / secrets coverage",
+   "body": "Nintendo published follow-up tips / secrets coverage — recorded milestone dated 2024-01-22."
+  }
+ ],
+ "patchNotes": [
+  {
+   "version": "Launch version",
+   "date": "2023-11-17",
+   "body": "Update entry for Launch version, dated 2023-11-17. No additional change list was included in the prior verified extraction."
+  },
+  {
+   "version": "Current retail build",
+   "date": "2026-08-27",
+   "body": "Update entry for Current retail build, dated 2026-08-27. No additional change list was included in the prior verified extraction."
+  },
+  {
+   "version": "Save Data Cloud support active",
+   "date": "2026-08-27",
+   "body": "Update entry for Save Data Cloud support active, dated 2026-08-27. No additional change list was included in the prior verified extraction."
+  }
+ ],
+ "studioName": "Nintendo / ArtePiazza",
+ "studioUrl": "https://www.nintendo.com/us/store/products/super-mario-rpg-switch/",
+ "studioLocation": "Japan",
+ "sources": [
+  {
+   "name": "Nintendo eShop (US)",
+   "url": "https://www.nintendo.com/us/store/products/super-mario-rpg-switch/"
+  }
+ ],
+ "downloadSizeGb": 6.53,
+ "requiredSpaceGb": 6.53,
+ "microSdRecommended": false,
+ "storageNotes": "Nintendo lists a 6.53 GB download. Free-space requirements can increase with updates.",
+ "mpLocalPlayers": 1,
+ "mpOnlinePlayers": 0,
+ "mpCoop": false,
+ "mpCompetitive": false,
+ "mpLocalWireless": false,
+ "mpSplitScreen": false,
+ "seriesEntries": [
+  "Paper Mario: The Thousand-Year Door",
+  "Mario & Luigi: Brothership",
+  "Bug Fables: The Everlasting Sapling"
+ ],
+ "devicePerformance": [
+  {
+   "device": "Nintendo Switch 2",
+   "deviceSlug": "nintendo-switch-2",
+   "deviceModel": "Nintendo Switch 2",
+   "hardwareId": "prd_acf4c89908764c62",
+   "informationStatus": "available",
+   "handheld": {
+    "supported": true,
+    "resolution": "Not published by Nintendo",
+    "fps": "Not published by Nintendo",
+    "mode": "Handheld"
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "Not published by Nintendo",
+    "fps": "Not published by Nintendo",
+    "mode": "TV"
+   },
+   "sourceName": "Nintendo official product page",
+   "sourceUrl": "https://www.nintendo.com/us/store/products/super-mario-rpg-switch/",
+   "verificationStatus": "official",
+   "verifiedAt": "2026-09-02",
+   "performanceNotes": "Backward-compatible on Switch 2; exact resolution and FPS are not published by Nintendo."
+  }
+ ],
+ "switch2UpgradePrice": 0,
+ "nintendoEshopUrl": "https://www.nintendo.com/us/store/products/super-mario-rpg-switch/",
+ "arabicSupport": false,
+ "tagline": "Mario, Bowser, and Peach partner up to repair the wish-granting Star Road.",
+ "fitFor": [
+  "Players looking for role playing, action gameplay.",
+  "Players who want the game modes supported by the official player-count specification: Single system (1).",
+  "Players curious about turn-based RPGs but wanting an easy starting point.",
+  "Nintendo fans who value charm, humor, and brisk pacing over huge scale."
+ ],
+ "notFitFor": [
+  "Players specifically seeking online multiplayer; this title does not list online multiplayer support.",
+  "Players specifically seeking local multiplayer; this title does not list local multiplayer support.",
+  "Players wanting a very long, system-heavy RPG.",
+  "Players who prefer fully real-time combat over command-based encounters."
+ ],
+ "perfNotes": "Nintendo confirms TV, Tabletop, Handheld, and Switch 2 compatibility but publishes no exact rendering resolution or FPS.",
+ "verdictSummary": "Overall score: 8.8/10. Strengths include Charming remake of a beloved classic; Excellent pacing and approachable RPG mechanics; Great music options and polished presentation. Main drawbacks include Relatively short for an RPG; Low challenge for genre veterans outside selected encounters.",
+ "studioAbout": "Nintendo is credited as the developer of this Nintendo Switch release. Nintendo is credited as the publisher.",
+ "setupNeeds": [
+  "Nintendo Switch-compatible hardware for this release.",
+  "Online multiplayer is not required for the core single-player experience."
+ ],
+ "dlc": [
+  {
+   "name": "No standalone DLC announced",
+   "description": "No standalone paid DLC expansion is included in this extraction. Free updates, when applicable, are listed in the Updates section instead."
+  }
+ ],
+ "guides": [
+  {
+   "title": "Nintendo official product page",
+   "summary": "Official story, play modes, language, size, and compatibility information.",
+   "url": "https://www.nintendo.com/us/store/products/super-mario-rpg-switch/"
+  }
+ ],
+ "image": "/api/files/products/prd_028b26bf1f5d4e0b/cover-b013690780c57622.avif",
+ "banner": "/api/files/products/prd_028b26bf1f5d4e0b/banner-0-644989ad6806ffcc.avif",
+ "createdAt": "2026-08-27T16:59:54.167Z",
+ "created_at": "2026-08-27T16:59:54.167Z",
+ "updatedAt": "2026-09-02T00:32:15.816Z",
+ "updated_at": "2026-08-27T16:59:54.167Z",
+ "badgeEn": "وفر 40%",
+ "badgeKu": "وفر 40%",
+ "featuresEn": [
+  "Story-rich turn-based RPG adventure",
+  "Breezy difficulty mode for easier progression",
+  "Remastered soundtrack plus Classic SNES soundtrack option",
+  "Action Commands keep turn-based battles lively",
+  "Short pacing makes it easy to finish without filler",
+  "Optional postgame content adds extra challenge beyond the story"
+ ],
+ "featuresKu": [
+  "Story-rich turn-based RPG adventure",
+  "Breezy difficulty mode for easier progression",
+  "Remastered soundtrack plus Classic SNES soundtrack option",
+  "Action Commands keep turn-based battles lively",
+  "Short pacing makes it easy to finish without filler",
+  "Optional postgame content adds extra challenge beyond the story"
+ ],
+ "boxFrontUrl": "https://images.launchbox-app.com/0be66a78-ae3b-4280-aa4e-8d6005373f15.jpg",
+ "sales": 0,
+ "cartridgeImageTrim": {
+  "left": 0,
+  "top": 0,
+  "width": 1,
+  "height": 0.984375,
+  "confidence": 0.9176356589147286,
+  "mode": "luminance",
+  "sourceWidth": 198,
+  "sourceHeight": 320,
+  "version": 1
+ },
+ "nsuid": "70010000068683",
+ "product_code": "HACPA8LUA",
+ "title_id": "0100bc0018138000",
+ "storySummary": "The Smithy Gang shatters Star Road and scatters its pieces. Mario forms an unlikely party with Peach, Bowser, Mallow, and Geno to restore wishes and stop Smithy.",
+ "dlcList": [
+  {
+   "name": "No standalone DLC announced",
+   "description": "Nintendo’s official product page lists no paid gameplay DLC for Super Mario RPG."
+  }
+ ],
+ "updates": [
+  {
+   "date": "2024-02-21",
+   "title": "Version 1.0.1",
+   "description": "Nintendo published a bug-fix update for progression and battle issues."
+  }
+ ],
+ "music": "The remake includes a newly arranged soundtrack and an option to switch to the original Super NES music.",
+ "completionTime": "Nintendo does not publish an official story-hour estimate; playtime varies with battles, exploration, and difficulty choice.",
+ "completionistTime": "Nintendo does not publish an official 100% time; hidden chests, minigames, optional bosses, and post-game rematches extend playtime.",
+ "pros": [
+  "Faithful and charming remake",
+  "Approachable timed-input combat",
+  "Remastered and classic soundtrack options"
+ ],
+ "cons": [
+  "Single-player only",
+  "Relatively compact for an RPG",
+  "Experienced RPG players may find the main path easy"
+ ]
+}

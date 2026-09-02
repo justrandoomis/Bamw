@@ -1,0 +1,798 @@
+{
+ "title": "Super Smash Bros. Ultimate",
+ "titleEn": "Super Smash Bros. Ultimate",
+ "titleKu": "Super Smash Bros. Ultimate",
+ "slug": "super-smash-bros-ultimate",
+ "description": "Gaming icons clash in the ultimate brawl you can play anytime, anywhere! Smash rivals off the stage as new characters Simon Belmont and King K. Rool join Inkling, Ridley, and every fighter in Super Smash Bros. history. Enjoy enhanced speed and combat at new stages based on the Castlevania series, Super Mario Odyssey, and more!\n\nHaving trouble choosing a stage? Then select the Stage Morph option to transform one stage into another while battling—a series first! Plus, new echo fighters Dark Samus, Richter Belmont, and Chrom join the battle. Whether you play locally or online, savor the faster combat, new attacks, and new defensive options, like a perfect shield. Jam out to 900 different music compositions and go 1-on-1 with a friend, hold a 4-player free-for-all, kick it up to 8-player battles and more! Feel free to bust out your GameCube controllers—legendary couch competitions await—or play together anytime, anywhere!",
+ "descriptionEn": "Gaming icons clash in the ultimate brawl you can play anytime, anywhere! Smash rivals off the stage as new characters Simon Belmont and King K. Rool join Inkling, Ridley, and every fighter in Super Smash Bros. history. Enjoy enhanced speed and combat at new stages based on the Castlevania series, Super Mario Odyssey, and more!\n\nHaving trouble choosing a stage? Then select the Stage Morph option to transform one stage into another while battling—a series first! Plus, new echo fighters Dark Samus, Richter Belmont, and Chrom join the battle. Whether you play locally or online, savor the faster combat, new attacks, and new defensive options, like a perfect shield. Jam out to 900 different music compositions and go 1-on-1 with a friend, hold a 4-player free-for-all, kick it up to 8-player battles and more! Feel free to bust out your GameCube controllers—legendary couch competitions await—or play together anytime, anywhere!",
+ "descriptionKu": "Super Smash Bros. Ultimate is the definitive Nintendo crossover fighting game on Nintendo Switch. It combines a massive roster of fighters, stages, music, Spirits, World of Light, Classic Mode, local multiplayer, local wireless, and online battles. The game is also backward compatible with Nintendo Switch 2, but Nintendo does not sell a native Switch 2 Edition, so this file correctly remains a Nintendo Switch entry.",
+ "cartridgeImage": "/api/files/products/prd_b9c50887a24849fa/front-fb394dfb3da705ea.jpg",
+ "nintendoCardImage": "/api/files/products/prd_b9c50887a24849fa/square-card-520c12542c2d3cef.webp",
+ "coverHiResImage": "/api/files/products/prd_b9c50887a24849fa/3d-texture-bea421de5ed04054.jpg",
+ "coverImage": "/api/files/products/prd_b9c50887a24849fa/cover-87e1d75e06c2fd92.jpg",
+ "bannerImages": [
+  "/api/files/products/prd_b9c50887a24849fa/banner-0-242e9640abfbddd1.avif",
+  "/api/files/products/prd_b9c50887a24849fa/banner-1-0cec3fddee5fdb1e.avif",
+  "/api/files/products/prd_b9c50887a24849fa/banner-2-a29991e13dd7b598.avif",
+  "/api/files/products/prd_b9c50887a24849fa/banner-3-20845f0d253094ef.avif",
+  "/api/files/products/prd_b9c50887a24849fa/banner-4-e54499ad7b041b0a.avif"
+ ],
+ "youtubeTrailer": "",
+ "releaseDate": "2018-12-07",
+ "ageRating": "Everyone 10+",
+ "metacriticRating": 93,
+ "genres": [
+  "Action",
+  "Fighting",
+  "Party"
+ ],
+ "platform": "switch1",
+ "size": "17.31 GB",
+ "numberOfPlayers": "1-8",
+ "supportedLanguages": "Japanese, British English, French, German, Italian, Spanish, Korean, Dutch, Russian, Simplified Chinese, Latin American Spanish, Canadian French, Traditional Chinese, American English",
+ "price": 9000,
+ "cost": 1750,
+ "stock": 999999,
+ "isInfiniteStock": true,
+ "isHidden": false,
+ "displayOrder": 0,
+ "category": "nintendo-switch-games",
+ "categoryId": "nintendo-switch-games",
+ "options": [
+  {
+   "id": "offline_account",
+   "name": "حساب أوفلاين",
+   "description": "حساب مخصص للعب دون اتصال بعد إكمال خطوات التفعيل.",
+   "stock": 9999,
+   "isInfiniteStock": true,
+   "customerDescription": "حساب مشترك"
+  },
+  {
+   "id": "online_account",
+   "name": "حساب أونلاين",
+   "description": "حساب يدعم تشغيل اللعبة مع الاتصال والميزات المتاحة أونلاين.",
+   "stock": 9999,
+   "isInfiniteStock": true,
+   "customerDescription": "حساب خاص بك"
+  }
+ ],
+ "types": [
+  {
+   "id": "regular_offline",
+   "name": "حساب أوفلاين — عادي",
+   "optionId": "offline_account",
+   "price": "",
+   "cost": 1750,
+   "description": "تشمل الإصدار العادي من اللعبة.",
+   "stock": 9999,
+   "isInfiniteStock": true,
+   "customerDescription": "اللعبة الأساسية"
+  },
+  {
+   "id": "special",
+   "name": "حساب أوفلاين — مع الإضافات",
+   "optionId": "offline_account",
+   "price": "12000",
+   "cost": 3000,
+   "description": "تشمل اللعبة الأساسية والمحتوى الإضافي المثبت في هذا الإصدار.",
+   "stock": 9999,
+   "isInfiniteStock": true,
+   "customerDescription": "اللعبة مع الإضافات"
+  },
+  {
+   "id": "standard_online",
+   "name": "حساب أونلاين — عادي",
+   "optionId": "online_account",
+   "price": "32000",
+   "cost": 1750,
+   "description": "تشمل الإصدار العادي من اللعبة.",
+   "stock": 9999,
+   "isInfiniteStock": true,
+   "customerDescription": "اللعبة الأساسية"
+  },
+  {
+   "id": "deluxe",
+   "name": "حساب أونلاين — مع الإضافات",
+   "optionId": "online_account",
+   "price": "45000",
+   "cost": 3000,
+   "description": "تشمل اللعبة الأساسية والمحتوى الإضافي المثبت في هذا الإصدار.",
+   "stock": 9999,
+   "isInfiniteStock": true,
+   "customerDescription": "اللعبة مع الإضافات"
+  }
+ ],
+ "editions": [],
+ "dlcs": [],
+ "isActive": true,
+ "status": "Active",
+ "kind": "account",
+ "trade_value_iqd": 45000,
+ "store_offer_bonus_iqd": 5000,
+ "trade_enabled": true,
+ "trade_value_locked": false,
+ "id": "prd_b9c50887a24849fa",
+ "schema_version": 24,
+ "titleAr": "سوبر سماش برذرز ألتميت",
+ "compatibility": [
+  "Nintendo Switch",
+  "Nintendo Switch 2: supported with behavior consistent with Nintendo Switch"
+ ],
+ "edition": "Standard / Store Variants",
+ "developer": "Bandai Namco Studios / Sora Ltd.",
+ "publisher": "Nintendo",
+ "seriesName": "Super Smash Bros.",
+ "metacriticUrl": "https://www.metacritic.com/game/super-smash-bros-ultimate/",
+ "opencriticRating": 92,
+ "userScore": 8.7,
+ "price_usd": 59.99,
+ "officialUrl": "https://www.smashbros.com/",
+ "eshopUrl": "https://www.nintendo.com/us/store/products/super-smash-bros-ultimate-switch/",
+ "gameIsOffline": true,
+ "gameIsOnline": true,
+ "gameLanguageLocked": false,
+ "description_short": "Nintendo’s giant crossover fighter brings together a huge roster of gaming icons, dozens of stages, deep competitive systems, and an enormous amount of solo and multiplayer content.",
+ "description_ar": "لعبة القتال الكروس أوفر الأضخم من نينتندو، تجمع جميع المقاتلين السابقين مع شخصيات ومراحل جديدة، وأكثر من 900 مقطوعة موسيقية، وأطوار فردية ومحلية ولاسلكية وأونلاين. تدعم حتى 8 لاعبين على جهاز واحد، وحتى 8 محليًا لاسلكيًا، وحتى 4 عبر الإنترنت.",
+ "box_front_url": "https://assets.nintendo.com/image/upload/ar_3:4,c_fit,g_auto,w_1000/f_auto/q_auto/dpr_1.5/store/software/switch/70010000012332/ac4d1fc9824876ce756406f0525d50c57ded4b2a666f6dfe40a6ac5c3563fad9",
+ "languagesText": [
+  "Japanese",
+  "British English",
+  "French",
+  "German",
+  "Italian",
+  "Spanish",
+  "Korean",
+  "Dutch",
+  "Russian",
+  "Simplified Chinese",
+  "Latin American Spanish",
+  "Canadian French",
+  "Traditional Chinese",
+  "American English"
+ ],
+ "languagesAudio": [
+  "Audio language availability varies by title and region; see official product information"
+ ],
+ "tvMode": true,
+ "tabletopMode": true,
+ "handheldMode": true,
+ "nintendoPlayModes": [
+  "TV mode",
+  "Tabletop mode",
+  "Handheld mode"
+ ],
+ "nintendoOnlineRequired": true,
+ "nintendoCloudSaves": true,
+ "nintendoGameKeyCard": false,
+ "nintendoPhysicalNeedsDownload": false,
+ "switch2Enhanced": false,
+ "switch2Exclusive": false,
+ "nintendoNotes": "Nintendo product identity and store facts were verified against the official listing on 2026-09-02. Performance values are included only where an official source publishes them.",
+ "editionsList": [
+  {
+   "name": "Regular / Offline",
+   "coverUrl": "https://assets.nintendo.com/image/upload/ar_3:4,c_fit,g_auto,w_1000/f_auto/q_auto/dpr_1.5/store/software/switch/70010000012332/ac4d1fc9824876ce756406f0525d50c57ded4b2a666f6dfe40a6ac5c3563fad9",
+   "contents": [
+    {
+     "label": "Regular / Offline store package"
+    },
+    {
+     "label": "Offline account access"
+    },
+    {
+     "label": "Infinite stock by default"
+    }
+   ]
+  },
+  {
+   "name": "Special",
+   "coverUrl": "https://assets.nintendo.com/image/upload/ar_1:1,c_fill,g_auto,w_1000/f_auto/q_auto/dpr_1.5/store/software/switch/70010000012332/ac4d1fc9824876ce756406f0525d50c57ded4b2a666f6dfe40a6ac5c3563fad9",
+   "contents": [
+    {
+     "label": "Special store package"
+    },
+    {
+     "label": "Offline account access"
+    },
+    {
+     "label": "Infinite stock by default"
+    }
+   ]
+  },
+  {
+   "name": "Standard / Online",
+   "coverUrl": "https://assets.nintendo.com/image/upload/ar_16:9,c_fill,g_auto,w_1600/f_auto/q_auto/dpr_1.5/store/software/switch/70010000012332/8b42e00012633320624f3894179b5d6bec44c255998a58ceb54e07bd352df171",
+   "contents": [
+    {
+     "label": "Standard / Online store package"
+    },
+    {
+     "label": "Online account access"
+    },
+    {
+     "label": "Infinite stock by default"
+    }
+   ]
+  },
+  {
+   "name": "Deluxe",
+   "coverUrl": "https://assets.nintendo.com/image/upload/ar_1:1,c_fill,g_auto,w_1000/f_auto/q_auto/dpr_1.5/store/software/switch/70010000012332/ac4d1fc9824876ce756406f0525d50c57ded4b2a666f6dfe40a6ac5c3563fad9",
+   "contents": [
+    {
+     "label": "Deluxe store package"
+    },
+    {
+     "label": "Online account access"
+    },
+    {
+     "label": "Infinite stock by default"
+    }
+   ]
+  }
+ ],
+ "gameplayPillars": [
+  {
+   "title": "Massive crossover roster",
+   "description": "The roster spans Nintendo franchises and major third-party series, with highly varied movement, recovery, combo, and matchup styles.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000012332/245420c78ce40337bdca7ce9c2dd819bd4ae33b022da9b922c0710b8420b59dd"
+  },
+  {
+   "title": "Accessible but deep combat",
+   "description": "Simple directional inputs make the basics approachable while advanced movement, spacing, teching, and matchup knowledge support competitive play.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000012332/0a381c9a157deda7997e47a40ebedf5d6357daa54eadb8747c85535247b5966a"
+  },
+  {
+   "title": "World of Light and Spirits",
+   "description": "Solo players can progress through the World of Light adventure and build Spirit teams that modify character attributes and challenges.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000012332/039c33416d22f81d72efa2f1646bb97627f2be0a0bfaea7f4a3638ce0ce73eba"
+  },
+  {
+   "title": "Local and online multiplayer",
+   "description": "The game supports large local battles, local wireless sessions, online matchmaking, arenas, and custom rule sets.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000012332/4a0b002c60e6fd1cbbf3165fb666fde994decf73d60902957963f7d17113a3e5"
+  },
+  {
+   "title": "Stage and music variety",
+   "description": "A huge stage catalog and extensive soundtrack make the game unusually rich for both casual party play and competitive sessions.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000012332/a1194f11c5397e5134cad94a723d9afb2c9ab274ee5d824aa80c6ea4d60f0dc7"
+  }
+ ],
+ "worldSummary": "Super Smash Bros. Ultimate is the definitive Nintendo crossover fighting game on Nintendo Switch. It combines a massive roster of fighters, stages, music, Spirits, World of Light, Classic Mode, local multiplayer, local wireless, and online battles. The game is also backward compatible with Nintendo Switch 2, but Nintendo does not sell a native Switch 2 Edition, so this file correctly remains a Nintendo Switch entry.",
+ "storyChapters": [
+  {
+   "title": "Everyone is here",
+   "body": "Ultimate is built around the idea that every prior playable Smash fighter returns alongside newcomers and DLC additions.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000012332/0a381c9a157deda7997e47a40ebedf5d6357daa54eadb8747c85535247b5966a"
+  },
+  {
+   "title": "World of Light begins",
+   "body": "A catastrophic event turns most fighters into captive puppet versions, leaving Kirby to begin the rescue.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000012332/039c33416d22f81d72efa2f1646bb97627f2be0a0bfaea7f4a3638ce0ce73eba"
+  },
+  {
+   "title": "Recruit fighters and Spirits",
+   "body": "The campaign expands as players defeat themed Spirit challenges and restore fighters to the roster.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000012332/4a0b002c60e6fd1cbbf3165fb666fde994decf73d60902957963f7d17113a3e5"
+  },
+  {
+   "title": "Master competitive systems",
+   "body": "Outside the campaign, players learn each fighter’s movement, recovery, kill options, defensive tools, and stage interactions.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000012332/a1194f11c5397e5134cad94a723d9afb2c9ab274ee5d824aa80c6ea4d60f0dc7"
+  },
+  {
+   "title": "Build a lasting multiplayer game",
+   "body": "The enormous roster, custom rules, online arenas, tournaments, and DLC keep Ultimate relevant long after the story is completed.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000012332/245420c78ce40337bdca7ce9c2dd819bd4ae33b022da9b922c0710b8420b59dd"
+  }
+ ],
+ "features": [
+  "Huge playable roster",
+  "Extensive local and online multiplayer",
+  "World of Light single-player campaign",
+  "Massive soundtrack and stage selection",
+  "Fighters Pass DLC adds additional characters and stages"
+ ],
+ "perfResolutionDocked": "Not published by Nintendo",
+ "perfResolutionHandheld": "Not published by Nintendo",
+ "perfFps": "Not published by Nintendo",
+ "perfHdr": false,
+ "playTimeMain": 12,
+ "completionMain": 25,
+ "completionExtras": 70,
+ "faq": [
+  {
+   "q": "Is Super Smash Bros. Ultimate a native Nintendo Switch 2 game?",
+   "a": "No. Nintendo lists it as a Nintendo Switch game that is supported on Nintendo Switch 2 with behavior consistent with Nintendo Switch."
+  },
+  {
+   "q": "How many players are supported?",
+   "a": "Nintendo lists up to 8 players on a single system, up to 8 by local wireless, and up to 4 online."
+  },
+  {
+   "q": "Does it have DLC?",
+   "a": "Yes. Nintendo released multiple Challenger Packs and Fighters Pass volumes that add fighters, stages, music, and related content."
+  },
+  {
+   "q": "Is it only for competitive players?",
+   "a": "No. It supports casual party rules, items, Spirits, solo modes, custom matches, and advanced competitive settings."
+  },
+  {
+   "q": "Does it support Save Data Cloud?",
+   "a": "Yes, Nintendo Switch Online Save Data Cloud support is listed for the title."
+  }
+ ],
+ "verdictScore": 8.5,
+ "verdictPros": [
+  "Enormous content volume",
+  "Excellent roster variety",
+  "Strong local multiplayer value",
+  "Deep competitive mechanics",
+  "Long-term DLC and community support"
+ ],
+ "verdictCons": [
+  "Online latency can vary",
+  "Large roster can overwhelm new players",
+  "Some DLC fighters create matchup knowledge demands",
+  "World of Light can become repetitive",
+  "No native Switch 2 edition"
+ ],
+ "reviews": [
+  {
+   "source": "Metacritic",
+   "score": "93",
+   "url": "https://www.metacritic.com/game/super-smash-bros-ultimate/"
+  },
+  {
+   "source": "OpenCritic",
+   "score": "92",
+   "url": "https://opencritic.com/"
+  }
+ ],
+ "timeline": [
+  {
+   "date": "2018-12-07",
+   "title": "Released on target Nintendo platform"
+  }
+ ],
+ "patchNotes": [
+  {
+   "version": "Current retail build",
+   "date": "2026-08-27"
+  }
+ ],
+ "studioName": "Sora Ltd. / Bandai Namco Studios",
+ "studioUrl": "https://www.nintendo.com/us/store/products/super-smash-bros-ultimate-switch/",
+ "studioLocation": "See publisher/developer profile",
+ "sources": [
+  {
+   "name": "Nintendo eShop (US)",
+   "url": "https://www.nintendo.com/us/store/products/super-smash-bros-ultimate-switch/"
+  },
+  {
+   "name": "Super Smash Bros. Ultimate official site",
+   "url": "https://www.smashbros.com/"
+  }
+ ],
+ "downloadSizeGb": 17.31,
+ "requiredSpaceGb": 17.31,
+ "microSdRecommended": true,
+ "storageNotes": "Nintendo lists a 17.31 GB download. Free-space requirements can increase with updates.",
+ "mpLocalPlayers": 8,
+ "mpOnlinePlayers": 4,
+ "mpCoop": true,
+ "mpCompetitive": true,
+ "mpLocalWireless": true,
+ "mpSplitScreen": true,
+ "dlc": [
+  {
+   "name": "Super Smash Bros.™ Ultimate: Fighters Pass Vol. 2 ",
+   "description": ""
+  },
+  {
+   "name": "Super Smash Bros.™ Ultimate: Challenger Pack 11",
+   "description": ""
+  },
+  {
+   "name": "Super Smash Bros.™ Ultimate: Challenger Pack 10",
+   "description": ""
+  },
+  {
+   "name": "Super Smash Bros.™ Ultimate: Challenger Pack 9",
+   "description": ""
+  },
+  {
+   "name": "Super Smash Bros.™ Ultimate: Challenger Pack 8",
+   "description": ""
+  },
+  {
+   "name": "Super Smash Bros.™ Ultimate: Challenger Pack 7",
+   "description": ""
+  },
+  {
+   "name": "Super Smash Bros.™ Ultimate: Challenger Pack 6 ",
+   "description": ""
+  },
+  {
+   "name": "Fighters Pass Bonus Mii Fighter Costume (Ancient Soldier)",
+   "description": ""
+  },
+  {
+   "name": "Super Smash Bros.™ Ultimate: Fighters Pass ",
+   "description": ""
+  },
+  {
+   "name": "Super Smash Bros.™ Ultimate: Challenger Pack 5",
+   "description": ""
+  },
+  {
+   "name": "Super Smash Bros.™ Ultimate: Challenger Pack 4 ",
+   "description": ""
+  },
+  {
+   "name": "Super Smash Bros.™ Ultimate: Challenger Pack 3 ",
+   "description": ""
+  },
+  {
+   "name": "Super Smash Bros.™ Ultimate: Challenger Pack 2 ",
+   "description": ""
+  },
+  {
+   "name": "Super Smash Bros.™ Ultimate: Challenger Pack 1",
+   "description": ""
+  },
+  {
+   "name": "Super Smash Bros. Ultimate Fighters Pass Bonus Mii Fighter Costume (Rex)",
+   "description": ""
+  },
+  {
+   "name": "Super Smash Bros.™ Ultimate: Piranha Plant Standalone Fighter ",
+   "description": ""
+  },
+  {
+   "name": "【Costume】Judd Hat",
+   "description": ""
+  },
+  {
+   "name": "【Costume】Octoling Wig",
+   "description": ""
+  },
+  {
+   "name": "【Costume】Doom Slayer's Armor and Helmet",
+   "description": ""
+  },
+  {
+   "name": "【Costume】Dante Outfit and Wig",
+   "description": ""
+  },
+  {
+   "name": "【Costume】Shantae Outfit, Wig, and Song",
+   "description": ""
+  },
+  {
+   "name": "【Costume】Dragonborn Outfit and Helm",
+   "description": ""
+  },
+  {
+   "name": "【Costume】Lloyd Outfit and Wig",
+   "description": ""
+  },
+  {
+   "name": "【Costume】Arthur's Armor and Helm",
+   "description": ""
+  },
+  {
+   "name": "【Costume】Felyne Hat",
+   "description": ""
+  },
+  {
+   "name": "【Costume】Hunter's Mail and Helm",
+   "description": ""
+  },
+  {
+   "name": "【Costume】Rathalos Mail and Helm",
+   "description": ""
+  },
+  {
+   "name": "【Costume】Barret's Outfit",
+   "description": ""
+  },
+  {
+   "name": "【Costume】Tifa's Outfit",
+   "description": ""
+  },
+  {
+   "name": "【Costume】Aerith's Outfit",
+   "description": ""
+  },
+  {
+   "name": "【Costume】Chocobo Hat",
+   "description": ""
+  },
+  {
+   "name": "【Costume】Geno Hat + Outfit",
+   "description": ""
+  },
+  {
+   "name": "【Costume】Creeper Outfit and Mask",
+   "description": ""
+  },
+  {
+   "name": "【Costume】Pig Outfit and Mask",
+   "description": ""
+  },
+  {
+   "name": "【Costume】Diamond Armor and Helmet",
+   "description": ""
+  },
+  {
+   "name": "【Costume】Travis Outfit and Wig",
+   "description": ""
+  },
+  {
+   "name": "【Costume】Persona 4 Protagonist Outfit and Wig",
+   "description": ""
+  },
+  {
+   "name": "【Costume】Bomberman Outfit and Mask",
+   "description": ""
+  },
+  {
+   "name": "【Costume】Gil's Armor and Helmet",
+   "description": ""
+  },
+  {
+   "name": "【Costume】Persona 3 Protagonist Outfit and Wig",
+   "description": ""
+  },
+  {
+   "name": "【Costume】Teddie Hat",
+   "description": ""
+  },
+  {
+   "name": "【Costume】Morgana Hat",
+   "description": ""
+  },
+  {
+   "name": "【Costume】Tails Outfit and Hat",
+   "description": ""
+  },
+  {
+   "name": "【Costume】Knuckles Outfit and Hat",
+   "description": ""
+  },
+  {
+   "name": "【Costume】Erdrick's Armor and Helmet",
+   "description": ""
+  },
+  {
+   "name": "【Costume】Martial Artist Gi and Wig",
+   "description": ""
+  },
+  {
+   "name": "【Costume】Veronica's Outfit and Hat",
+   "description": ""
+  },
+  {
+   "name": "【Costume】Slime Hat",
+   "description": ""
+  },
+  {
+   "name": "【Costume】Team Rocket Outfit and Hat",
+   "description": ""
+  },
+  {
+   "name": "【Costume】Goemon Outfit and Wig",
+   "description": ""
+  },
+  {
+   "name": "【Costume】Sans Outfit and Mask",
+   "description": ""
+  },
+  {
+   "name": "【Costume】Proto Man's Armor and Helmet",
+   "description": ""
+  },
+  {
+   "name": "【Costume】Zero's Armor and Helmet",
+   "description": ""
+  },
+  {
+   "name": "【Costume】Ryo Sakazaki Outfit and Wig",
+   "description": ""
+  },
+  {
+   "name": "【Costume】Nakoruru Outfit and Wig",
+   "description": ""
+  },
+  {
+   "name": "【Costume】Iori Yagami Outfit and Wig",
+   "description": ""
+  },
+  {
+   "name": "【Costume】Akira Outfit and Wig",
+   "description": ""
+  },
+  {
+   "name": "【Costume】Jacky's Outfit and Wig",
+   "description": ""
+  },
+  {
+   "name": "【Costume】Cuphead Outfit and Hat",
+   "description": ""
+  },
+  {
+   "name": "【Costume】Altaïr Outfit and Hood",
+   "description": ""
+  },
+  {
+   "name": "【Costume】Rabbids Hat",
+   "description": ""
+  },
+  {
+   "name": "【Costume】X's Armor and Helmet",
+   "description": ""
+  },
+  {
+   "name": "【Costume】MegaMan.EXE's Armor and Helmet",
+   "description": ""
+  },
+  {
+   "name": "【Costume】Ninjara Outfit and Wig",
+   "description": ""
+  },
+  {
+   "name": "【Costume】Callie Outfit and Wig",
+   "description": ""
+  },
+  {
+   "name": "【Costume】Marie Outfit and Wig",
+   "description": ""
+  },
+  {
+   "name": "【Costume】Vault Boy Outfit and Mask",
+   "description": ""
+  },
+  {
+   "name": "【Costume】Heihachi Outfit and Wig",
+   "description": ""
+  },
+  {
+   "name": "Spirit Booster Bundle #2 - Reaching Lv. MAX",
+   "description": ""
+  }
+ ],
+ "galleryImages": [
+  {
+   "alt": "Super Smash Bros. Ultimate official/promotional game-world media 1",
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000012332/245420c78ce40337bdca7ce9c2dd819bd4ae33b022da9b922c0710b8420b59dd"
+  },
+  {
+   "alt": "Super Smash Bros. Ultimate official/promotional game-world media 2",
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000012332/0a381c9a157deda7997e47a40ebedf5d6357daa54eadb8747c85535247b5966a"
+  },
+  {
+   "alt": "Super Smash Bros. Ultimate official/promotional game-world media 3",
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000012332/039c33416d22f81d72efa2f1646bb97627f2be0a0bfaea7f4a3638ce0ce73eba"
+  },
+  {
+   "alt": "Super Smash Bros. Ultimate official/promotional game-world media 4",
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000012332/4a0b002c60e6fd1cbbf3165fb666fde994decf73d60902957963f7d17113a3e5"
+  },
+  {
+   "alt": "Super Smash Bros. Ultimate official/promotional game-world media 5",
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000012332/a1194f11c5397e5134cad94a723d9afb2c9ab274ee5d824aa80c6ea4d60f0dc7"
+  }
+ ],
+ "devicePerformance": [
+  {
+   "device": "Nintendo Switch 2",
+   "deviceSlug": "nintendo-switch-2",
+   "deviceModel": "Nintendo Switch 2",
+   "hardwareId": "prd_acf4c89908764c62",
+   "informationStatus": "available",
+   "handheld": {
+    "supported": true,
+    "resolution": "Not published by Nintendo",
+    "fps": "Not published by Nintendo",
+    "mode": "Handheld"
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "Not published by Nintendo",
+    "fps": "Not published by Nintendo",
+    "mode": "TV"
+   },
+   "sourceName": "Nintendo official product page",
+   "sourceUrl": "https://www.nintendo.com/us/store/products/super-smash-bros-ultimate-switch/",
+   "verificationStatus": "official",
+   "verifiedAt": "2026-09-02",
+   "performanceNotes": "Backward-compatible on Switch 2; Nintendo does not publish exact resolution or FPS specifications."
+  }
+ ],
+ "switch2UpgradePrice": 0,
+ "image": "/api/files/products/prd_b9c50887a24849fa/cover-87e1d75e06c2fd92.jpg",
+ "banner": "/api/files/products/prd_b9c50887a24849fa/banner-0-242e9640abfbddd1.avif",
+ "createdAt": "2026-08-27T21:24:55.570Z",
+ "created_at": "2026-08-27T21:24:55.570Z",
+ "updatedAt": "2026-09-02T00:32:03.987Z",
+ "updated_at": "2026-08-28T21:56:34.540Z",
+ "badgeEn": "وفر 40%",
+ "badgeKu": "وفر 40%",
+ "featuresEn": [
+  "Huge playable roster",
+  "Extensive local and online multiplayer",
+  "World of Light single-player campaign",
+  "Massive soundtrack and stage selection",
+  "Fighters Pass DLC adds additional characters and stages"
+ ],
+ "featuresKu": [
+  "Huge playable roster",
+  "Extensive local and online multiplayer",
+  "World of Light single-player campaign",
+  "Massive soundtrack and stage selection",
+  "Fighters Pass DLC adds additional characters and stages"
+ ],
+ "boxFrontUrl": "https://assets.nintendo.com/image/upload/ar_3:4,c_fit,g_auto,w_1000/f_auto/q_auto/dpr_1.5/store/software/switch/70010000012332/ac4d1fc9824876ce756406f0525d50c57ded4b2a666f6dfe40a6ac5c3563fad9",
+ "sales": 0,
+ "variants": "[Circular]",
+ "nsuid": "70010000012332",
+ "product_code": "HACPAAABA",
+ "title_id": "01006a800016e000",
+ "arabicSupport": false,
+ "nintendoEshopUrl": "https://www.nintendo.com/us/store/products/super-smash-bros-ultimate-switch/",
+ "tagline": "New characters and stages join the entire legacy roster.",
+ "fitFor": [
+  "Local party groups and competitive fighting-game players",
+  "Nintendo fans who want a large crossover roster",
+  "Solo players interested in World of Light, Spirits, and Classic Mode"
+ ],
+ "notFitFor": [
+  "Players who do not enjoy platform-fighter knockback rules",
+  "Online players without Nintendo Switch Online",
+  "Players expecting all DLC fighters in the base purchase"
+ ],
+ "storySummary": "In World of Light, the entity Galeem captures most fighters and turns characters into puppet combatants; Kirby begins a campaign to rescue the roster and confront the forces of light and darkness.",
+ "dlcList": [
+  {
+   "name": "Fighters Pass",
+   "description": "Five Challenger Packs with fighters, stages, music, and related content."
+  },
+  {
+   "name": "Fighters Pass Vol. 2",
+   "description": "Six additional Challenger Packs with fighters, stages, music, and related content."
+  },
+  {
+   "name": "Additional fighters and Mii Fighter costumes",
+   "description": "Nintendo also sells individual Challenger Packs, Piranha Plant, and optional Mii Fighter costumes."
+  }
+ ],
+ "updates": [
+  {
+   "date": "2021-12-01",
+   "title": "Version 13.0.1",
+   "description": "Final fighter-adjustment update listed by Nintendo support; later compatibility or maintenance changes may still occur."
+  }
+ ],
+ "music": "Nintendo advertises more than 900 music compositions spanning the represented game series.",
+ "completionTime": "No single official completion time: match-based modes are replayable, while World of Light length varies by route and difficulty.",
+ "completionistTime": "No finite official 100% time is published because Spirits, challenges, online play, and DLC substantially expand the scope.",
+ "pros": [
+  "Exceptional roster, stage, and music breadth",
+  "Deep local and competitive systems",
+  "Large amount of solo and multiplayer content"
+ ],
+ "cons": [
+  "Major extra fighters are paid DLC",
+  "Online play requires Nintendo Switch Online",
+  "The quantity of systems can overwhelm new players"
+ ],
+ "verdictSummary": "A remarkably complete platform fighter with unmatched crossover breadth, strong local play, deep competitive mechanics, and extensive solo content.",
+ "guides": [
+  {
+   "title": "Super Smash Bros. Ultimate official site",
+   "summary": "Official fighters, stages, music, modes, and update information.",
+   "url": "https://www.smashbros.com/"
+  }
+ ],
+ "perfNotes": "Nintendo confirms TV, Tabletop, Handheld, and Switch 2 compatibility but does not publish exact rendering resolution or FPS on the product page."
+}

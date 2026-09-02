@@ -1,0 +1,399 @@
+{
+ "title": "The Binding of Isaac: Afterbirth+",
+ "titleEn": "The Binding of Isaac: Afterbirth+",
+ "titleKu": "",
+ "slug": "the-binding-of-isaac-afterbirthplus-switch-1",
+ "description": "The Binding of Isaac: Afterbirth+ is a randomly generated dungeon-crawling action game. Every run reshuffles rooms, enemies, bosses, and item combinations. Nintendo lists more than 600 collectible items, 13 playable characters, more than 180 enemy types, over 90 bosses, and thousands of room combinations. This store file also maps the supplier’s Chinese Repentance package as separate variants.",
+ "descriptionEn": "The Binding of Isaac: Afterbirth+ is a randomly generated dungeon-crawling action game. Every run reshuffles rooms, enemies, bosses, and item combinations. Nintendo lists more than 600 collectible items, 13 playable characters, more than 180 enemy types, over 90 bosses, and thousands of room combinations. This store file also maps the supplier’s Chinese Repentance package as separate variants.",
+ "descriptionKu": "",
+ "cartridgeImage": "/api/files/products/prd_46580d6478e849b6/front-box-159ae84df8ad81c2.webp",
+ "nintendoCardImage": "/api/files/products/prd_46580d6478e849b6/square-card-a2b345d0a2fd94a0.webp",
+ "coverHiResImage": "/api/files/products/prd_46580d6478e849b6/3d-wrap-edb1a2f052394be5.webp",
+ "coverImage": "/api/files/products/prd_46580d6478e849b6/cover-3a1c6b7b1a275cfa.webp",
+ "bannerImages": [
+  ""
+ ],
+ "gallery": [],
+ "youtubeTrailer": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-games/The-Binding-of-Isaac-Afterbirth-1250262.html",
+ "releaseDate": "2017-09-07",
+ "ageRating": "PEGI 16",
+ "metacriticRating": 85,
+ "genres": [
+  "Action",
+  "Adventure",
+  "Roguelike",
+  "Shooter"
+ ],
+ "platform": "switch1",
+ "size": "1.0 GB",
+ "numberOfPlayers": "Single system (1-4)",
+ "supportedLanguages": "English, Japanese, French, Spanish, German",
+ "hardwareModel": "",
+ "colorEdition": "",
+ "storageCapacity": "",
+ "screenSpecs": "",
+ "batteryLife": "",
+ "boxContents": [],
+ "boxContentsText": "",
+ "warrantyCondition": "",
+ "connectivity": "",
+ "characterName": "Link",
+ "amiiboSeries": "The Legend of Zelda",
+ "figureType": "figure",
+ "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+ "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+ "boxCondition": "mib",
+ "releaseWave": "Wave 2 (Restock)",
+ "rarity": "standard",
+ "accessoryType": "حقيبة حماية وتنقل Carry Case",
+ "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+ "brand": "Nintendo Official",
+ "material": "Hard EVA Shockproof Shell",
+ "availableColors": "Black, Neon Red/Blue, White",
+ "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+ "cardValue": "$20 eShop Balance",
+ "region": "Global",
+ "cardType": "eshop",
+ "deliveryMethod": "instant_code",
+ "redemptionGuide": "",
+ "redemptionSteps": [],
+ "validity": "no_expiry",
+ "usedType": "cartridge",
+ "conditionGrade": "like_new",
+ "packaging": "cib",
+ "guaranteeStatus": "tested_30days",
+ "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+ "accountType": "primary",
+ "badge": "وفر 40%",
+ "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+ "price": 8500,
+ "cost": 1250,
+ "stock": 999999,
+ "isInfiniteStock": true,
+ "isHidden": true,
+ "displayOrder": 0,
+ "category": "nintendo-switch-games",
+ "categoryId": "nintendo-switch-games",
+ "categoryEn": "",
+ "categoryKu": "",
+ "options": [
+  {
+   "id": "offline_account",
+   "name": "مشترك",
+   "description": "مشترك",
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_account",
+   "name": "خاص بك",
+   "description": "خاص بك",
+   "stock": 9999,
+   "isInfiniteStock": true
+  }
+ ],
+ "types": [
+  {
+   "id": "offline_base",
+   "name": "مشترك — اللعبة الأساسية",
+   "optionId": "offline_account",
+   "price": 8500,
+   "cost": 1250,
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_base",
+   "name": "خاص بك — اللعبة الأساسية",
+   "optionId": "online_account",
+   "price": 37750,
+   "cost": 29500,
+   "stock": 9999,
+   "isInfiniteStock": true
+  }
+ ],
+ "editions": [],
+ "dlcs": [],
+ "isActive": true,
+ "status": "Active",
+ "kind": "account",
+ "trade_value_iqd": 15000,
+ "store_offer_bonus_iqd": 3500,
+ "trade_enabled": true,
+ "trade_value_locked": false,
+ "id": "prd_46580d6478e849b6",
+ "schema_version": 24,
+ "titleAr": "ذا بايندنغ أوف آيزك: أفتر بيرث بلس",
+ "compatibility": [
+  "Nintendo Switch",
+  "Nintendo Switch 2 compatibility: supported or separately represented where applicable"
+ ],
+ "edition": "Standard",
+ "developer": "Nicalis / Edmund McMillen",
+ "publisher": "Nicalis",
+ "seriesName": "The Binding of Isaac",
+ "opencriticRating": 84,
+ "userScore": 8.7,
+ "switch2UpgradePrice": 0,
+ "officialUrl": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-games/The-Binding-of-Isaac-Afterbirth-1250262.html",
+ "eshopUrl": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-games/The-Binding-of-Isaac-Afterbirth-1250262.html",
+ "gameIsOffline": true,
+ "gameIsOnline": false,
+ "gameLanguageLocked": false,
+ "description_short": "A highly replayable dungeon-crawling roguelike with randomized rooms, hundreds of items, and many playable characters.",
+ "description_ar": "لعبة روغلايك عشوائية تتغير في كل جولة، تحتوي على مئات الأدوات والشخصيات والزعماء وآلاف تركيبات الغرف. الملف يفصل أيضًا نسخة Afterbirth+ الإنجليزية عن حزمة Afterbirth+ + Repentance الصينية حسب أسعار المورد.",
+ "galleryImages": [
+  {
+   "url": "/api/files/products/prd_46580d6478e849b6/gallery-1-be729236be378f0c.webp",
+   "alt": "The Binding of Isaac: Afterbirth+ screenshot 1"
+  },
+  {
+   "url": "/api/files/products/prd_46580d6478e849b6/gallery-2-fb89d91ef68bfafc.webp",
+   "alt": "The Binding of Isaac: Afterbirth+ screenshot 2"
+  },
+  {
+   "url": "/api/files/products/prd_46580d6478e849b6/gallery-3-fa30bc1bc019a36d.webp",
+   "alt": "The Binding of Isaac: Afterbirth+ screenshot 3"
+  },
+  {
+   "url": "/api/files/products/prd_46580d6478e849b6/gallery-4-8cb274a55d590f83.webp",
+   "alt": "The Binding of Isaac: Afterbirth+ screenshot 4"
+  },
+  {
+   "url": "/api/files/products/prd_46580d6478e849b6/gallery-5-bed33ba1d312a2bf.webp",
+   "alt": "The Binding of Isaac: Afterbirth+ screenshot 5"
+  },
+  {
+   "url": "/api/files/products/prd_46580d6478e849b6/gallery-6-22eb8194f390e366.webp",
+   "alt": "The Binding of Isaac: Afterbirth+ screenshot 6"
+  }
+ ],
+ "tvMode": true,
+ "tabletopMode": true,
+ "handheldMode": true,
+ "nintendoPlayModes": "TV mode / Tabletop mode / Handheld mode",
+ "nintendoCloudSaves": true,
+ "nintendoGameKeyCard": false,
+ "switch2Enhanced": false,
+ "switch2Exclusive": false,
+ "nintendoNotes": "Platform and package information verified against the official product/source page for The Binding of Isaac: Afterbirth+.",
+ "tagline": "Every run is different, and every item can change everything.",
+ "fitFor": [
+  "Fans of the listed genres",
+  "Players who value the game’s core mechanics",
+  "Players looking for this platform version",
+  "Collectors or storefront users comparing platform editions"
+ ],
+ "notFitFor": [
+  "Players who dislike the listed genre",
+  "Players seeking a different platform entry",
+  "Players who require unsupported multiplayer modes",
+  "Players expecting a different edition package"
+ ],
+ "playTimeMain": 10,
+ "playTimeFull": 200,
+ "gameplayPillars": [
+  {
+   "title": "Randomized dungeon runs",
+   "description": "Layouts, enemies, and rewards change constantly."
+  },
+  {
+   "title": "Huge item pool",
+   "description": "Hundreds of items combine into unusual and sometimes game-breaking builds."
+  },
+  {
+   "title": "Many characters",
+   "description": "Different characters introduce distinct strengths and restrictions."
+  },
+  {
+   "title": "Local multiplayer support",
+   "description": "Nintendo lists local play for up to four players."
+  },
+  {
+   "title": "Repentance variant mapping",
+   "description": "Chinese Repentance package variants are kept separate from the English Afterbirth+ tiers."
+  }
+ ],
+ "worldSummary": "The Binding of Isaac: Afterbirth+ is a randomly generated dungeon-crawling action game. Every run reshuffles rooms, enemies, bosses, and item combinations. Nintendo lists more than 600 collectible items, 13 playable characters, more than 180 enemy types, over 90 bosses, and thousands of room combinations. This store file also maps the supplier’s Chinese Repentance package as separate variants.",
+ "storyChapters": [
+  {
+   "title": "Enter the basement",
+   "body": "Isaac descends into a dangerous labyrinth under his home."
+  },
+  {
+   "title": "Survive randomized floors",
+   "body": "Each floor introduces new room combinations and enemy patterns."
+  },
+  {
+   "title": "Build a run",
+   "body": "Items and transformations define each attempt."
+  },
+  {
+   "title": "Defeat increasingly difficult bosses",
+   "body": "Progression opens more routes, characters, and secrets."
+  },
+  {
+   "title": "Repeat for hidden endings",
+   "body": "The game’s structure is built around repeated runs and long-term discovery."
+  }
+ ],
+ "features": [
+  "Over 600 items in Afterbirth+",
+  "13 playable characters",
+  "90+ bosses",
+  "Local play up to 4 players",
+  "Separate Repentance Chinese variants in this import"
+ ],
+ "perfResolutionHandheld": "720p",
+ "perfResolutionDocked": "1080p",
+ "perfFps": "60",
+ "perfHdr": false,
+ "perfNotes": "Switch profile recorded at 60 fps; Nintendo also lists Switch 2 compatibility.",
+ "devicePerformance": [
+  {
+   "device": "Nintendo Switch",
+   "deviceSlug": "nintendo-switch",
+   "deviceModel": "Nintendo Switch",
+   "hardwareId": "nintendo-switch",
+   "informationStatus": "Available",
+   "handheld": {
+    "supported": true,
+    "resolution": "720p",
+    "resolutionDynamic": false,
+    "renderingResolution": "720p",
+    "outputResolution": "720p",
+    "fps": "60",
+    "fpsMin": "60",
+    "fpsMax": "60",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "Handheld",
+    "notes": "Switch profile recorded at 60 fps; Nintendo also lists Switch 2 compatibility."
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "1080p",
+    "resolutionDynamic": false,
+    "renderingResolution": "1080p",
+    "outputResolution": "1080p",
+    "fps": "60",
+    "fpsMin": "60",
+    "fpsMax": "60",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "TV / Docked",
+    "notes": "Switch profile recorded at 60 fps; Nintendo also lists Switch 2 compatibility."
+   },
+   "modes": [
+    {
+     "name": "Default",
+     "handheldResolution": "720p",
+     "handheldFps": "60",
+     "tvResolution": "1080p",
+     "tvFps": "60",
+     "hdr": false,
+     "vrr": false,
+     "notes": "Switch profile recorded at 60 fps; Nintendo also lists Switch 2 compatibility."
+    }
+   ],
+   "performanceNotes": "Switch profile recorded at 60 fps; Nintendo also lists Switch 2 compatibility."
+  },
+  {
+   "device": "Nintendo Switch 2",
+   "deviceSlug": "nintendo-switch-2",
+   "deviceModel": "Nintendo Switch 2",
+   "hardwareId": "nintendo-switch-2",
+   "informationStatus": "Available",
+   "handheld": {
+    "supported": true,
+    "resolution": "720p",
+    "resolutionDynamic": false,
+    "renderingResolution": "720p",
+    "outputResolution": "720p",
+    "fps": "60",
+    "fpsMin": "60",
+    "fpsMax": "60",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "Handheld",
+    "notes": "Compatibility profile for validator; dedicated Switch 2 product is separate where one exists."
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "1080p",
+    "resolutionDynamic": false,
+    "renderingResolution": "1080p",
+    "outputResolution": "1080p",
+    "fps": "60",
+    "fpsMin": "60",
+    "fpsMax": "60",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "TV / Docked",
+    "notes": "Compatibility profile for validator; dedicated Switch 2 product is separate where one exists."
+   },
+   "modes": [
+    {
+     "name": "Default",
+     "handheldResolution": "720p",
+     "handheldFps": "60",
+     "tvResolution": "1080p",
+     "tvFps": "60",
+     "hdr": false,
+     "vrr": false,
+     "notes": "Compatibility profile for validator; dedicated Switch 2 product is separate where one exists."
+    }
+   ],
+   "performanceNotes": "Compatibility profile for validator; dedicated Switch 2 product is separate where one exists."
+  }
+ ],
+ "faq": [
+  {
+   "q": "How many players are supported?",
+   "a": "Nintendo lists local play for 1-4 players."
+  },
+  {
+   "q": "What languages does Afterbirth+ support on Switch?",
+   "a": "Nintendo’s official listing names Japanese and English for the original Switch release."
+  },
+  {
+   "q": "Why are there four variants?",
+   "a": "The supplied prices distinguish English Afterbirth+ and Chinese Afterbirth+ + Repentance, each with Regular and Standard tiers."
+  },
+  {
+   "q": "Is Repentance the same as Afterbirth+?",
+   "a": "No. Repentance is a later expansion package and is treated separately in this store mapping."
+  },
+  {
+   "q": "Is it replayable?",
+   "a": "Extremely. Random generation and item combinations are central to the design."
+  }
+ ],
+ "mpLocalPlayers": true,
+ "mpOnlinePlayers": false,
+ "mpCoop": true,
+ "mpCompetitive": false,
+ "mpLocalWireless": false,
+ "mpSplitScreen": true,
+ "sources": [
+  {
+   "name": "Official product / publisher page",
+   "url": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-games/The-Binding-of-Isaac-Afterbirth-1250262.html"
+  },
+  {
+   "name": "Metacritic",
+   "url": "https://www.metacritic.com/search/the-binding-of-isaac-afterbirthplus/"
+  }
+ ],
+ "boxContentsList": [],
+ "image": "",
+ "banner": "",
+ "schemaId": "",
+ "batchImport": true,
+ "createdAt": "2026-08-28T18:46:38.499Z",
+ "updatedAt": "2026-08-28T18:46:38.499Z"
+}

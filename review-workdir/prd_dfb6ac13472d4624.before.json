@@ -1,0 +1,585 @@
+{
+ "title": "Super Mario Party",
+ "titleEn": "Super Mario Party",
+ "titleKu": "Super Mario Party",
+ "slug": "super-mario-party-switch",
+ "description": "A motion-focused Mario Party entry built around Joy-Con minigames, character-specific Dice Blocks, traditional four-player boards, Partner Party, River Survival, Sound Stage, Challenge Road and Toad's Rec Room.",
+ "descriptionEn": "A motion-focused Mario Party entry built around Joy-Con minigames, character-specific Dice Blocks, traditional four-player boards, Partner Party, River Survival, Sound Stage, Challenge Road and Toad's Rec Room.",
+ "descriptionKu": "A motion-focused Mario Party entry built around Joy-Con minigames, character-specific Dice Blocks, traditional four-player boards, Partner Party, River Survival, Sound Stage, Challenge Road and Toad's Rec Room.",
+ "cartridgeImage": "/api/files/products/prd_dfb6ac13472d4624/front-4cc05277a59e3517.jpg",
+ "nintendoCardImage": "/api/files/products/prd_dfb6ac13472d4624/square-05ba2c0f7a2eff21.webp",
+ "coverHiResImage": "/api/files/products/prd_dfb6ac13472d4624/3d-texture-813e720ee72a1253.jpg",
+ "coverImage": "/api/files/products/prd_dfb6ac13472d4624/cover-146ce94efb61f82f.jpg",
+ "bannerImages": [
+  "/api/files/products/prd_dfb6ac13472d4624/banner-0-fc6774b5d517c52d.jpg",
+  "/api/files/products/prd_dfb6ac13472d4624/banner-2-b056425e7d322a49.jpg"
+ ],
+ "gallery": [],
+ "youtubeTrailer": "https://www.nintendo.com/us/store/products/super-mario-party-switch/",
+ "releaseDate": "2018-10-05",
+ "ageRating": "ESRB E / PEGI 3",
+ "metacriticRating": 76,
+ "genres": [
+  "Party",
+  "Board Game",
+  "Minigames"
+ ],
+ "platform": "switch1",
+ "size": 2.904,
+ "numberOfPlayers": "1–4 local; 2–4 local wireless; 1–4 online",
+ "supportedLanguages": "Japanese / English; French / German / Italian / Spanish / Dutch / Russian; Korean / Simplified Chinese / Traditional Chinese",
+ "hardwareModel": "",
+ "colorEdition": "",
+ "storageCapacity": "",
+ "screenSpecs": "",
+ "batteryLife": "",
+ "boxContents": [],
+ "boxContentsText": "",
+ "warrantyCondition": "",
+ "connectivity": "",
+ "characterName": "Link",
+ "amiiboSeries": "The Legend of Zelda",
+ "figureType": "figure",
+ "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+ "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+ "boxCondition": "mib",
+ "releaseWave": "Wave 2 (Restock)",
+ "rarity": "standard",
+ "accessoryType": "حقيبة حماية وتنقل Carry Case",
+ "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+ "brand": "Nintendo Official",
+ "material": "Hard EVA Shockproof Shell",
+ "availableColors": "Black, Neon Red/Blue, White",
+ "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+ "cardValue": "$20 eShop Balance",
+ "region": "Global",
+ "cardType": "eshop",
+ "deliveryMethod": "instant_code",
+ "redemptionGuide": "",
+ "redemptionSteps": [],
+ "validity": "no_expiry",
+ "usedType": "cartridge",
+ "conditionGrade": "like_new",
+ "packaging": "cib",
+ "guaranteeStatus": "tested_30days",
+ "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+ "accountType": "primary",
+ "badge": "وفر 40%",
+ "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+ "price": 8000,
+ "cost": 1250,
+ "stock": 999999,
+ "isInfiniteStock": true,
+ "isHidden": false,
+ "displayOrder": 0,
+ "category": "nintendo-switch-games",
+ "categoryId": "nintendo-switch-games",
+ "categoryEn": "",
+ "categoryKu": "",
+ "options": [
+  {
+   "id": "offline_account",
+   "name": "Offline Account",
+   "description": "Offline account access",
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_account",
+   "name": "Online Account",
+   "description": "Online account access",
+   "stock": 9999,
+   "isInfiniteStock": true
+  }
+ ],
+ "types": [
+  {
+   "id": "standard_offline",
+   "name": "Offline Account",
+   "optionId": "offline_account",
+   "price": "8000",
+   "cost": 1250,
+   "description": "Offline Account; supplier cost 1,250 IQD; configured selling price 10,000 IQD.",
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "standard_online",
+   "name": "Online Account",
+   "optionId": "online_account",
+   "price": "32000",
+   "cost": 16500,
+   "description": "Online Account; supplier cost 16,500 IQD; configured selling price 26,500 IQD.",
+   "stock": 9999,
+   "isInfiniteStock": true
+  }
+ ],
+ "editions": [],
+ "dlcs": [],
+ "isActive": true,
+ "status": "Active",
+ "kind": "account",
+ "trade_value_iqd": 35000,
+ "store_offer_bonus_iqd": 2500,
+ "trade_enabled": true,
+ "trade_value_locked": false,
+ "id": "prd_dfb6ac13472d4624",
+ "schema_version": 23,
+ "titleAr": "سوبر ماريو بارتي",
+ "compatibility": [
+  "Nintendo Switch",
+  "Nintendo Switch 2 (backward compatible / separate Switch 2 Edition where applicable)"
+ ],
+ "edition": "Standard",
+ "developer": "NDcube / Nintendo",
+ "publisher": "Nintendo",
+ "metacriticUrl": "https://www.metacritic.com/game/super-mario-party/",
+ "opencriticRating": 77,
+ "userScore": 7,
+ "price_usd": 59.99,
+ "officialUrl": "https://www.nintendo.com/us/store/products/super-mario-party-switch/",
+ "eshopUrl": "https://www.nintendo.com/us/store/products/super-mario-party-switch/",
+ "gameIsOffline": true,
+ "gameIsOnline": true,
+ "gameLanguageLocked": false,
+ "description_short": "A motion-focused Mario Party entry built around Joy-Con minigames, character-specific Dice Blocks, traditional four-player boards, Partner Party, River Survival, Sound Stage, Challenge Road and Toad's Rec Room.",
+ "description_ar": "جزء Mario Party مصمم حول ألعاب Joy-Con الحركية، ويضم لوحات Mario Party التقليدية وPartner Party وRiver Survival وSound Stage وChallenge Road وToad's Rec Room، مع 80 لعبة مصغرة.",
+ "box_front_url": "https://images.launchbox-app.com//21e297b2-ae1e-44ac-bc34-2a10e9317ef8.jpg",
+ "box_back_url": "https://cdn.switch-images-julio.com/file/switch-images-julio/ADFJA/back.png",
+ "galleryImages": [
+  {
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/en_US/games/switch/s/super-mario-party-switch/screenshot-gallery/screenshot01",
+   "alt": "Super Mario Party — verified promotional/gameplay image 1"
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/en_US/games/switch/s/super-mario-party-switch/screenshot-gallery/screenshot02",
+   "alt": "Super Mario Party — verified promotional/gameplay image 2"
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/en_US/games/switch/s/super-mario-party-switch/screenshot-gallery/screenshot03",
+   "alt": "Super Mario Party — verified promotional/gameplay image 3"
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/en_US/games/switch/s/super-mario-party-switch/screenshot-gallery/screenshot04",
+   "alt": "Super Mario Party — verified promotional/gameplay image 4"
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/en_US/games/switch/s/super-mario-party-switch/screenshot-gallery/screenshot05",
+   "alt": "Super Mario Party — verified promotional/gameplay image 5"
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/en_US/games/switch/s/super-mario-party-switch/screenshot-gallery/screenshot06",
+   "alt": "Super Mario Party — verified promotional/gameplay image 6"
+  }
+ ],
+ "videos": [
+  {
+   "title": "Official trailer / product overview",
+   "url": "https://www.nintendo.com/us/store/products/super-mario-party-switch/"
+  },
+  {
+   "title": "Nintendo product page and gameplay media",
+   "url": "https://www.nintendo.com/us/store/products/super-mario-party-switch/"
+  },
+  {
+   "title": "Technical / review reference",
+   "url": "https://handheld-performance.com/games/super-mario-party"
+  }
+ ],
+ "nsuid": "See official Nintendo product page for regional NSUID",
+ "title_id": "Regional digital title ID varies by storefront and package",
+ "product_code": "HAC-P-ADFJA",
+ "nintendoEshopUrl": "https://www.nintendo.com/us/store/products/super-mario-party-switch/",
+ "nintendoOnlineRequired": true,
+ "nintendoCloudSaves": true,
+ "nintendoGameKeyCard": false,
+ "nintendoPhysicalNeedsDownload": false,
+ "tvMode": true,
+ "tabletopMode": true,
+ "handheldMode": false,
+ "nintendoPlayModes": "TV / Tabletop; detached Joy-Con required",
+ "nintendoNotes": "Current verified Nintendo data for Super Mario Party. Storage, languages, multiplayer and platform-specific features are separated from measured performance values.",
+ "switch2Enhanced": false,
+ "switch2Exclusive": false,
+ "switch2UpgradePrice": 0,
+ "switch2Features": [
+  "80 minigames designed around Joy-Con controllers",
+  "Mario Party, Partner Party and multiple side modes",
+  "Online minigame/board functionality added through updates"
+ ],
+ "tagline": "A Joy-Con-driven Mario Party packed with 80 minigames and varied party modes.",
+ "fitFor": [
+  "Families and couch multiplayer groups",
+  "Players who enjoy motion-control minigames",
+  "Groups wanting short competitive or cooperative sessions"
+ ],
+ "notFitFor": [
+  "Handheld-only players",
+  "Players who dislike motion controls",
+  "Players wanting the largest board selection in the series"
+ ],
+ "playTimeMain": 7.5,
+ "playTimeFull": 23.5,
+ "editionsList": [
+  {
+   "name": "Standard Edition",
+   "coverUrl": "https://images.launchbox-app.com//21e297b2-ae1e-44ac-bc34-2a10e9317ef8.jpg",
+   "contents": [
+    {
+     "label": "Base game"
+    },
+    {
+     "label": "Core modes"
+    },
+    {
+     "label": "Platform features"
+    }
+   ]
+  },
+  {
+   "name": "Digital Edition",
+   "coverUrl": "https://images.launchbox-app.com//412a714b-e925-4d22-b8eb-0085d328a8be.jpg",
+   "contents": [
+    {
+     "label": "Digital game license"
+    },
+    {
+     "label": "Same core game content"
+    },
+    {
+     "label": "Nintendo Account delivery"
+    }
+   ]
+  },
+  {
+   "name": "Current Complete Package",
+   "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/en_US/products/games/switch/super-mario-party/108391-switch-super-mario-party-us-1200x675",
+   "contents": [
+    {
+     "label": "Latest game build"
+    },
+    {
+     "label": "No paid DLC"
+    },
+    {
+     "label": "80 minigames designed around Joy-Con controllers"
+    }
+   ]
+  }
+ ],
+ "gameplayPillars": [
+  {
+   "title": "Board-game competition",
+   "description": "Roll character-specific Dice Blocks, move around boards, buy Stars and use items strategically.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/en_US/products/games/switch/super-mario-party/108391-switch-super-mario-party-us-1200x675"
+  },
+  {
+   "title": "80 Joy-Con minigames",
+   "description": "Free-for-all, 2-vs-2 and 1-vs-3 games use buttons, motion and HD Rumble.",
+   "imageUrl": "https://images.launchbox-app.com//e53e0db6-6366-4911-9ef1-9fb55769f39f.jpg"
+  },
+  {
+   "title": "Mode variety",
+   "description": "Partner Party, River Survival, Sound Stage, Challenge Road and Toad's Rec Room alter the usual formula.",
+   "imageUrl": "https://images.launchbox-app.com//d076f58f-b504-435e-84a3-34b0c826e137.jpg"
+  }
+ ],
+ "worldSummary": "Mario and friends gather across colorful digital game boards and themed minigame arenas. Unlike story-heavy Mario titles, progression centers on Party Points, Challenge Road and unlocking characters, boards and activities.",
+ "storyChapters": [
+  {
+   "title": "Start the party",
+   "body": "Choose characters and enter the central plaza of available modes.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/en_US/games/switch/s/super-mario-party-switch/screenshot-gallery/screenshot01"
+  },
+  {
+   "title": "Challenge Road",
+   "body": "A solo route strings together the game's minigames as a progression challenge.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/en_US/games/switch/s/super-mario-party-switch/screenshot-gallery/screenshot02"
+  },
+  {
+   "title": "Party mastery",
+   "body": "Unlock characters and content while mastering boards, minigames and cooperative modes.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/en_US/games/switch/s/super-mario-party-switch/screenshot-gallery/screenshot03"
+  }
+ ],
+ "features": [
+  "80 minigames designed around Joy-Con controllers",
+  "Mario Party, Partner Party and multiple side modes",
+  "Online minigame/board functionality added through updates"
+ ],
+ "perfResolutionDocked": "1080p",
+ "perfResolutionHandheld": "720p / tabletop rendering profile",
+ "perfFps": "60",
+ "perfHdr": false,
+ "perfNotes": "Performance analysis reports 1080p docked and 720p portable/tabletop rendering at a highly stable 60 fps. The software's control design is centered on detached Joy-Con use and does not support ordinary handheld play in the same way as most Switch titles.",
+ "devicePerformance": [
+  {
+   "device": "Nintendo Switch 2",
+   "deviceSlug": "nintendo-switch-2",
+   "deviceModel": "Nintendo Switch 2",
+   "hardwareId": "prd_acf4c89908764c62",
+   "informationStatus": "Available / verified",
+   "unavailableReason": "Normal handheld play requires detached Joy-Con for Super Mario Party; other standard modes are supported.",
+   "handheld": {
+    "supported": false,
+    "resolution": "720p / tabletop rendering profile",
+    "resolutionDynamic": false,
+    "renderingResolution": "720p / tabletop rendering profile",
+    "outputResolution": "1280x720",
+    "fps": "60",
+    "fpsMin": "60",
+    "fpsMax": "60",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "Not supported as normal attached-Joy-Con handheld play",
+    "notes": "Performance analysis reports 1080p docked and 720p portable/tabletop rendering at a highly stable 60 fps. The software's control design is centered on detached Joy-Con use and does not support ordinary handheld play in the same way as most Switch titles."
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "1080p",
+    "resolutionDynamic": false,
+    "renderingResolution": "1080p",
+    "outputResolution": "1920x1080",
+    "fps": "60",
+    "fpsMin": "60",
+    "fpsMax": "60",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "TV / Docked",
+    "notes": "Performance analysis reports 1080p docked and 720p portable/tabletop rendering at a highly stable 60 fps. The software's control design is centered on detached Joy-Con use and does not support ordinary handheld play in the same way as most Switch titles."
+   },
+   "modes": [
+    {
+     "name": "Standard",
+     "handheldResolution": "720p / tabletop rendering profile",
+     "handheldFps": "60",
+     "tvResolution": "1080p",
+     "tvFps": "60",
+     "hdr": false,
+     "vrr": false,
+     "notes": "Primary documented performance profile."
+    }
+   ],
+   "upscaling": "Platform-specific scaling/reconstruction where documented",
+   "rayTracing": false,
+   "rayTracingMode": "No ray-tracing mode",
+   "loadingTime": "Scene-dependent; no single universal load time",
+   "loadingNotes": "Loading varies by activity and storage state.",
+   "gameVersion": "Current retail build",
+   "patchVersion": "Current available update",
+   "testedDate": "2026-08-27",
+   "sourceName": "Handheld Performance",
+   "sourceUrl": "https://handheld-performance.com/games/super-mario-party",
+   "verifiedAt": "2026-08-27",
+   "verificationStatus": "Verified / sourced",
+   "performanceNotes": "Performance analysis reports 1080p docked and 720p portable/tabletop rendering at a highly stable 60 fps. The software's control design is centered on detached Joy-Con use and does not support ordinary handheld play in the same way as most Switch titles."
+  }
+ ],
+ "downloadSizeGb": 2.904,
+ "requiredSpaceGb": 2.904,
+ "microSdRecommended": false,
+ "storageNotes": "Deku Deals lists approximately 2.904 GB. microSD storage is optional.",
+ "languagesAudio": [
+  "Character vocalizations",
+  "Minigame announcer / effects",
+  "Music is language-independent"
+ ],
+ "languagesText": [
+  "Japanese / English",
+  "French / German / Italian / Spanish / Dutch / Russian",
+  "Korean / Simplified Chinese / Traditional Chinese"
+ ],
+ "arabicSupport": false,
+ "mpLocalPlayers": true,
+ "mpOnlinePlayers": true,
+ "mpCoop": true,
+ "mpCompetitive": true,
+ "mpSplitScreen": false,
+ "mpLocalWireless": true,
+ "dlc": [
+  {
+   "name": "No paid DLC",
+   "description": "No standalone paid DLC expansion was released.",
+   "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/en_US/games/switch/s/super-mario-party-switch/screenshot-gallery/screenshot04"
+  },
+  {
+   "name": "Online-play update",
+   "description": "A free 2021 update expanded online play to Mario Party, Partner Party and 70 minigames.",
+   "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/en_US/games/switch/s/super-mario-party-switch/screenshot-gallery/screenshot05"
+  },
+  {
+   "name": "Controller requirement",
+   "description": "Motion-focused minigames require compatible Joy-Con controllers; this is a hardware requirement, not DLC.",
+   "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/en_US/games/switch/s/super-mario-party-switch/screenshot-gallery/screenshot06"
+  }
+ ],
+ "guides": [
+  {
+   "title": "Official Nintendo page",
+   "summary": "Release, platform, storage, languages and feature information.",
+   "url": "https://www.nintendo.com/us/store/products/super-mario-party-switch/"
+  },
+  {
+   "title": "Gameplay / technical reference",
+   "summary": "Performance and gameplay behavior reference.",
+   "url": "https://handheld-performance.com/games/super-mario-party"
+  },
+  {
+   "title": "Database / review reference",
+   "summary": "Media, reviews and completion context.",
+   "url": "https://www.dekudeals.com/items/super-mario-party"
+  }
+ ],
+ "completionMain": 7.5,
+ "completionExtras": 15.5,
+ "completionAll": 23.5,
+ "faq": [
+  {
+   "q": "Can it be played in handheld mode?",
+   "a": "The game is designed around detached Joy-Con controllers and is primarily intended for TV/tabletop configurations rather than normal attached-Joy-Con handheld play."
+  },
+  {
+   "q": "How many minigames are included?",
+   "a": "The game includes 80 minigames."
+  },
+  {
+   "q": "Does it support online play?",
+   "a": "Yes. A free update expanded online support to board modes and most minigames."
+  }
+ ],
+ "verdictScore": 7.8,
+ "verdictSummary": "A lively party package with clever Joy-Con ideas and strong local multiplayer, though its limited board selection and control requirements make it less flexible than later entries.",
+ "verdictPros": [
+  "Creative motion-control minigames",
+  "Several distinct party/co-op modes",
+  "Stable 60 fps presentation"
+ ],
+ "verdictCons": [
+  "Limited number of main boards",
+  "Strong dependence on Joy-Con motion controls",
+  "Less convenient for handheld-only use"
+ ],
+ "reviews": [
+  {
+   "source": "Metacritic",
+   "score": "76/100",
+   "quote": "Generally favorable critic reception.",
+   "url": "https://www.metacritic.com/game/super-mario-party/"
+  },
+  {
+   "source": "OpenCritic",
+   "score": "77/100",
+   "quote": "Generally favorable aggregate.",
+   "url": "https://opencritic.com/game/6682/super-mario-party"
+  },
+  {
+   "source": "Deku Deals users",
+   "score": "3.5/5",
+   "quote": "Current long-term user rating snapshot.",
+   "url": "https://www.dekudeals.com/items/super-mario-party"
+  }
+ ],
+ "timeline": [
+  {
+   "date": "2018-06-12",
+   "title": "Announced",
+   "body": "Nintendo revealed Super Mario Party at E3."
+  },
+  {
+   "date": "2018-10-05",
+   "title": "Worldwide release",
+   "body": "Super Mario Party launched on Nintendo Switch."
+  },
+  {
+   "date": "2021-04-27",
+   "title": "Major online update",
+   "body": "Nintendo added online board play and broader online minigame support."
+  }
+ ],
+ "patchNotes": [
+  {
+   "version": "Version 1.0.1",
+   "date": "2018",
+   "body": "Early stability update."
+  },
+  {
+   "version": "Version 1.1.0",
+   "date": "2021-04-27",
+   "body": "Added online play to Mario Party, Partner Party and Free Play minigames."
+  },
+  {
+   "version": "Current compatibility",
+   "date": "2026",
+   "body": "Remains playable on Switch 2 through backward compatibility."
+  }
+ ],
+ "soundtrack": [
+  {
+   "title": "Super Mario Party Main Theme",
+   "url": "https://www.nintendo.com/us/store/products/super-mario-party-switch/"
+  },
+  {
+   "title": "River Survival themes",
+   "url": "https://www.nintendo.com/us/store/products/super-mario-party-switch/"
+  },
+  {
+   "title": "Sound Stage rhythm tracks",
+   "url": "https://www.nintendo.com/us/store/products/super-mario-party-switch/"
+  }
+ ],
+ "seriesName": "Mario Party",
+ "seriesEntries": [
+  "Mario Party Superstars",
+  "Super Mario Party",
+  "Super Mario Party Jamboree"
+ ],
+ "studioName": "Nintendo Cube / NDcube",
+ "studioUrl": "https://www.nintendo.co.jp/",
+ "studioLocation": "Tokyo, Japan",
+ "studioAbout": "Nintendo Cube (formerly NDcube) specializes in party-game development and has led many modern Mario Party entries.",
+ "setupNeeds": [
+  "Nintendo Switch or compatible Switch 2 backward compatibility",
+  "Approximately 2.904 GB free storage",
+  "Compatible Joy-Con controllers; Nintendo Switch Online for online play"
+ ],
+ "sources": [
+  {
+   "name": "Nintendo official",
+   "url": "https://www.nintendo.com/us/store/products/super-mario-party-switch/"
+  },
+  {
+   "name": "Handheld Performance",
+   "url": "https://handheld-performance.com/games/super-mario-party"
+  },
+  {
+   "name": "Deku Deals",
+   "url": "https://www.dekudeals.com/items/super-mario-party"
+  }
+ ],
+ "boxContentsList": "[Circular]",
+ "image": "/api/files/products/prd_dfb6ac13472d4624/cover-146ce94efb61f82f.jpg",
+ "banner": "/api/files/products/prd_dfb6ac13472d4624/banner-0-fc6774b5d517c52d.jpg",
+ "schemaId": "",
+ "createdAt": "2026-08-27T01:03:33.739Z",
+ "created_at": "2026-08-27T01:03:33.739Z",
+ "updatedAt": "2026-08-27T01:03:33.739Z",
+ "updated_at": "2026-08-27T01:03:33.739Z",
+ "badgeEn": "وفر 40%",
+ "badgeKu": "وفر 40%",
+ "featuresEn": [
+  "80 minigames designed around Joy-Con controllers",
+  "Mario Party, Partner Party and multiple side modes",
+  "Online minigame/board functionality added through updates"
+ ],
+ "featuresKu": [
+  "80 minigames designed around Joy-Con controllers",
+  "Mario Party, Partner Party and multiple side modes",
+  "Online minigame/board functionality added through updates"
+ ],
+ "boxFrontUrl": "https://images.launchbox-app.com//21e297b2-ae1e-44ac-bc34-2a10e9317ef8.jpg",
+ "sales": 0,
+ "images": [],
+ "modes": []
+}

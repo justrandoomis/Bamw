@@ -1,0 +1,3386 @@
+{
+ "batch": "026",
+ "generatedAt": "2026-09-02T04:11:52.759Z",
+ "totalGames": 145,
+ "reviewedSoFar": 120,
+ "games": [
+  {
+   "id": "prd_3b080bbbeb5a406e",
+   "slug": "the-hundred-line-last-defense-academy-switch",
+   "title": "The Hundred Line: Last Defense Academy",
+   "platform": "switch1",
+   "isHidden": true,
+   "hash": "125c0fb5b114a9bc6ca15674725fd51cff9614dd8335f037bb71f3b684143a46",
+   "images": [
+    {
+     "role": "front-box",
+     "field": "cartridgeImage",
+     "url": "https://banan.to/api/files/products/prd_3b080bbbeb5a406e/front-box-b75b82ed9303e1dc.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 316298,
+     "width": 1167,
+     "height": 1888,
+     "thumb": "review-workdir/thumbs/batch-026/the-hundred-line-last-defense-academy-switch__front-box-0.png"
+    },
+    {
+     "role": "front-box",
+     "field": "box_front_url",
+     "url": "https://gamesdb-images.launchbox.gg/r2_5e690e5d-bccd-4152-ba7e-661397012bbd.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 25231,
+     "width": 172,
+     "height": 281,
+     "thumb": "review-workdir/thumbs/batch-026/the-hundred-line-last-defense-academy-switch__front-box-1.png"
+    },
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://banan.to/api/files/products/prd_3b080bbbeb5a406e/square-card-897b00896badf49d.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 149178,
+     "width": 1024,
+     "height": 1024,
+     "thumb": "review-workdir/thumbs/batch-026/the-hundred-line-last-defense-academy-switch__square-card-2.png"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://banan.to/api/files/products/prd_3b080bbbeb5a406e/cover-125dc281893ac077.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 299346,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-026/the-hundred-line-last-defense-academy-switch__detail-cover-3.png"
+    },
+    {
+     "role": "3d-texture",
+     "field": "coverHiResImage",
+     "url": "https://banan.to/api/files/products/prd_3b080bbbeb5a406e/3d-wrap-612b20bd27df4373.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 918306,
+     "width": 2454,
+     "height": 1888,
+     "thumb": "review-workdir/thumbs/batch-026/the-hundred-line-last-defense-academy-switch__3d-texture-4.png"
+    },
+    {
+     "role": "listing",
+     "field": "image",
+     "url": "https://img-eshop.cdn.nintendo.net/i/0bf9c14f7e21271cf3bc455dac34eb0464efbbc79129213909ed7382caa943f5.jpg",
+     "status": 200,
+     "contentType": "application/octet-stream",
+     "bytes": 136692,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-026/the-hundred-line-last-defense-academy-switch__listing-5.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[0]",
+     "url": "https://img-eshop.cdn.nintendo.net/i/0bf9c14f7e21271cf3bc455dac34eb0464efbbc79129213909ed7382caa943f5.jpg",
+     "status": 200,
+     "contentType": "application/octet-stream",
+     "bytes": 136692,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-026/the-hundred-line-last-defense-academy-switch__banner-6.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[1]",
+     "url": "https://img-eshop.cdn.nintendo.net/i/8d0a37faeeebd7061ca67b40331b827bb763e3f6fbf8ce73778023792d0de425.jpg",
+     "status": 200,
+     "contentType": "application/octet-stream",
+     "bytes": 269403,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-026/the-hundred-line-last-defense-academy-switch__banner-7.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[2]",
+     "url": "https://img-eshop.cdn.nintendo.net/i/6da100ae1d44015ffcab4105b9bc2c964cb8bbf4207cdbc95bc31b491a32752e.jpg",
+     "status": 200,
+     "contentType": "application/octet-stream",
+     "bytes": 247622,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-026/the-hundred-line-last-defense-academy-switch__banner-8.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[3]",
+     "url": "https://img-eshop.cdn.nintendo.net/i/f7c36de0a61f94c347b4b9f8f3313bf8d28d1f8d55104702fa77c6380cfdf8e0.jpg",
+     "status": 200,
+     "contentType": "application/octet-stream",
+     "bytes": 436882,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-026/the-hundred-line-last-defense-academy-switch__banner-9.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://banan.to/api/files/products/prd_3b080bbbeb5a406e/gallery-1-087ac9da2dd3b84b.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 152782,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-026/the-hundred-line-last-defense-academy-switch__gallery-10.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[1]",
+     "url": "https://banan.to/api/files/products/prd_3b080bbbeb5a406e/gallery-2-e901f7b64d5d6ad2.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 99830,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-026/the-hundred-line-last-defense-academy-switch__gallery-11.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[2]",
+     "url": "https://banan.to/api/files/products/prd_3b080bbbeb5a406e/gallery-3-a349f18bead4ebed.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 239040,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-026/the-hundred-line-last-defense-academy-switch__gallery-12.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[3]",
+     "url": "https://banan.to/api/files/products/prd_3b080bbbeb5a406e/gallery-4-795f1ef0cc36dd51.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 78244,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-026/the-hundred-line-last-defense-academy-switch__gallery-13.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[4]",
+     "url": "https://banan.to/api/files/products/prd_3b080bbbeb5a406e/gallery-5-b398c5b0245a252f.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 159826,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-026/the-hundred-line-last-defense-academy-switch__gallery-14.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[5]",
+     "url": "https://banan.to/api/files/products/prd_3b080bbbeb5a406e/gallery-6-6ef8a2c1ba4a0bd8.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 172604,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-026/the-hundred-line-last-defense-academy-switch__gallery-15.png"
+    }
+   ],
+   "record": {
+    "title": "The Hundred Line: Last Defense Academy",
+    "titleEn": "The Hundred Line: Last Defense Academy",
+    "titleKu": "",
+    "slug": "the-hundred-line-last-defense-academy-switch",
+    "description": "The Hundred Line: Last Defense Academy is a story-heavy adventure and tactical RPG created by teams led by Kazutaka Kodaka and Kotaro Uchikoshi. Fifteen students are forced to defend the isolated Last Defense Academy from grotesque invaders for 100 days. Between tactical battles, players explore, spend free time with classmates, build relationships, craft gifts, and make choices that can lead to a very large number of story outcomes.",
+    "descriptionEn": "The Hundred Line: Last Defense Academy is a story-heavy adventure and tactical RPG created by teams led by Kazutaka Kodaka and Kotaro Uchikoshi. Fifteen students are forced to defend the isolated Last Defense Academy from grotesque invaders for 100 days. Between tactical battles, players explore, spend free time with classmates, build relationships, craft gifts, and make choices that can lead to a very large number of story outcomes.",
+    "descriptionKu": "",
+    "cartridgeImage": "/api/files/products/prd_3b080bbbeb5a406e/front-box-b75b82ed9303e1dc.webp",
+    "nintendoCardImage": "/api/files/products/prd_3b080bbbeb5a406e/square-card-897b00896badf49d.webp",
+    "coverHiResImage": "/api/files/products/prd_3b080bbbeb5a406e/3d-wrap-612b20bd27df4373.webp",
+    "coverImage": "/api/files/products/prd_3b080bbbeb5a406e/cover-125dc281893ac077.webp",
+    "bannerImages": [
+     "https://img-eshop.cdn.nintendo.net/i/0bf9c14f7e21271cf3bc455dac34eb0464efbbc79129213909ed7382caa943f5.jpg",
+     "https://img-eshop.cdn.nintendo.net/i/8d0a37faeeebd7061ca67b40331b827bb763e3f6fbf8ce73778023792d0de425.jpg",
+     "https://img-eshop.cdn.nintendo.net/i/6da100ae1d44015ffcab4105b9bc2c964cb8bbf4207cdbc95bc31b491a32752e.jpg",
+     "https://img-eshop.cdn.nintendo.net/i/f7c36de0a61f94c347b4b9f8f3313bf8d28d1f8d55104702fa77c6380cfdf8e0.jpg",
+     "https://img-eshop.cdn.nintendo.net/i/049c231b074a7afcf025251d4038b27c3331599fdf67584fab29c0cc0e5e6ef6.jpg",
+     "https://img-eshop.cdn.nintendo.net/i/9e62a5b98efc5f61610661ffc41cc2ad906fdb0469fe504811807ed2dcfe6912.jpg"
+    ],
+    "gallery": [],
+    "youtubeTrailer": "https://video.fastly.steamstatic.com/store_trailers/257032183/movie_max_vp9.webm?t=1718760084",
+    "releaseDate": "2025-04-24",
+    "ageRating": "ESRB M / PEGI 16-18 regional equivalent",
+    "metacriticRating": 86,
+    "genres": [
+     "Adventure",
+     "Simulation",
+     "Tactical RPG",
+     "Visual Novel"
+    ],
+    "platform": "switch1",
+    "size": "13.3 GB",
+    "numberOfPlayers": "Single system (1)",
+    "supportedLanguages": "Japanese, English",
+    "hardwareModel": "",
+    "colorEdition": "",
+    "storageCapacity": "",
+    "screenSpecs": "",
+    "batteryLife": "",
+    "boxContents": [],
+    "boxContentsText": "",
+    "warrantyCondition": "",
+    "connectivity": "",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "Global",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "",
+    "redemptionSteps": [],
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 8500,
+    "cost": 2000,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": true,
+    "displayOrder": 0,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "مشترك",
+      "description": "مشترك",
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_account",
+      "name": "خاص بك",
+      "description": "خاص بك",
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "types": [
+     {
+      "id": "offline_base",
+      "name": "مشترك — اللعبة الأساسية",
+      "optionId": "offline_account",
+      "price": 8500,
+      "cost": 2000,
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "offline_extras",
+      "name": "مشترك — مع الإضافات",
+      "optionId": "offline_account",
+      "price": 10500,
+      "cost": 3000,
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_base",
+      "name": "خاص بك — اللعبة الأساسية",
+      "optionId": "online_account",
+      "price": 26500,
+      "cost": 20750,
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_extras",
+      "name": "خاص بك — مع الإضافات",
+      "optionId": "online_account",
+      "price": 29500,
+      "cost": 23000,
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "Active",
+    "kind": "account",
+    "trade_value_iqd": 14000,
+    "store_offer_bonus_iqd": 2500,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "id": "prd_3b080bbbeb5a406e",
+    "schema_version": 24,
+    "titleAr": "ذا هاندرد لاين: لاست ديفنس أكاديمي",
+    "compatibility": [
+     "Nintendo Switch",
+     "Nintendo Switch 2: backward compatible"
+    ],
+    "edition": "Standard / Digital Deluxe available",
+    "developer": "Too Kyo Games / Media.Vision",
+    "publisher": "Aniplex / XSEED Games",
+    "seriesName": "The Hundred Line",
+    "opencriticRating": 86,
+    "userScore": 8.6,
+    "metacriticUrl": "https://www.metacritic.com/game/the-hundred-line-last-defense-academy/",
+    "price_usd": 59.99,
+    "officialUrl": "https://www.nintendo.com/au/games/nintendo-switch/the-hundred-line-last-defense-academy/",
+    "eshopUrl": "https://www.nintendo.com/au/games/nintendo-switch/the-hundred-line-last-defense-academy/",
+    "gameIsOffline": true,
+    "gameIsOnline": false,
+    "gameLanguageLocked": false,
+    "description_short": "A 100-day story-driven adventure blending visual-novel choices, free-time relationships, exploration, and tactical school-defense battles.",
+    "description_ar": "لعبة قصصية وتكتيكية تدور حول 15 طالبًا يدافعون عن Last Defense Academy لمدة 100 يوم، مع معارك SRPG ووقت حر وعلاقات واستكشاف وقرارات تؤدي إلى نهايات متعددة.",
+    "box_front_url": "https://gamesdb-images.launchbox.gg/r2_5e690e5d-bccd-4152-ba7e-661397012bbd.jpg",
+    "galleryImages": [
+     {
+      "url": "/api/files/products/prd_3b080bbbeb5a406e/gallery-1-087ac9da2dd3b84b.webp",
+      "alt": "The Hundred Line: Last Defense Academy screenshot 1"
+     },
+     {
+      "url": "/api/files/products/prd_3b080bbbeb5a406e/gallery-2-e901f7b64d5d6ad2.webp",
+      "alt": "The Hundred Line: Last Defense Academy screenshot 2"
+     },
+     {
+      "url": "/api/files/products/prd_3b080bbbeb5a406e/gallery-3-a349f18bead4ebed.webp",
+      "alt": "The Hundred Line: Last Defense Academy screenshot 3"
+     },
+     {
+      "url": "/api/files/products/prd_3b080bbbeb5a406e/gallery-4-795f1ef0cc36dd51.webp",
+      "alt": "The Hundred Line: Last Defense Academy screenshot 4"
+     },
+     {
+      "url": "/api/files/products/prd_3b080bbbeb5a406e/gallery-5-b398c5b0245a252f.webp",
+      "alt": "The Hundred Line: Last Defense Academy screenshot 5"
+     },
+     {
+      "url": "/api/files/products/prd_3b080bbbeb5a406e/gallery-6-6ef8a2c1ba4a0bd8.webp",
+      "alt": "The Hundred Line: Last Defense Academy screenshot 6"
+     }
+    ],
+    "languagesText": [
+     "English",
+     "Japanese",
+     "Regional store language support may vary"
+    ],
+    "languagesAudio": [
+     "Japanese voice",
+     "English text support",
+     "Music and sound effects"
+    ],
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": true,
+    "nintendoPlayModes": "TV mode / Tabletop mode / Handheld mode",
+    "nintendoOnlineRequired": false,
+    "nintendoCloudSaves": true,
+    "nintendoGameKeyCard": false,
+    "nintendoPhysicalNeedsDownload": false,
+    "switch2Enhanced": false,
+    "switch2Exclusive": false,
+    "nintendoNotes": "Official Nintendo listings place the game on Nintendo Switch, with one local player, TV/Tabletop/Handheld modes, Save Data Cloud, and a 13.3 GB listing. Digital Deluxe content includes a digital art book and soundtrack.",
+    "editionsList": [
+     {
+      "name": "Regular / Offline",
+      "coverUrl": "https://gamesdb-images.launchbox.gg/r2_5e690e5d-bccd-4152-ba7e-661397012bbd.jpg",
+      "contents": [
+       {
+        "label": "Base game"
+       },
+       {
+        "label": "Offline account access"
+       },
+       {
+        "label": "100-day campaign"
+       }
+      ]
+     },
+     {
+      "name": "Bonus Edition / Offline",
+      "coverUrl": "https://gamesdb-images.launchbox.gg/r2_5e690e5d-bccd-4152-ba7e-661397012bbd.jpg",
+      "contents": [
+       {
+        "label": "Base game"
+       },
+       {
+        "label": "Supplier Bonus tier"
+       },
+       {
+        "label": "Offline account access"
+       }
+      ]
+     },
+     {
+      "name": "Standard / Online",
+      "coverUrl": "https://gamesdb-images.launchbox.gg/r2_5e690e5d-bccd-4152-ba7e-661397012bbd.jpg",
+      "contents": [
+       {
+        "label": "Base game"
+       },
+       {
+        "label": "Online account access"
+       },
+       {
+        "label": "100-day campaign"
+       }
+      ]
+     },
+     {
+      "name": "Deluxe Edition / Online",
+      "coverUrl": "https://gamesdb-images.launchbox.gg/r2_5e690e5d-bccd-4152-ba7e-661397012bbd.jpg",
+      "contents": [
+       {
+        "label": "Base game"
+       },
+       {
+        "label": "Digital Art Book / Digital Soundtrack themed premium tier"
+       },
+       {
+        "label": "Online account access"
+       }
+      ]
+     }
+    ],
+    "gameplayPillars": [
+     {
+      "title": "Tactical defensive battles",
+      "description": "Grid-based SRPG encounters ask the class to stop invaders using each student’s specialist skills.",
+      "imageUrl": "https://img-eshop.cdn.nintendo.net/i/0bf9c14f7e21271cf3bc455dac34eb0464efbbc79129213909ed7382caa943f5.jpg"
+     },
+     {
+      "title": "100-day narrative structure",
+      "description": "The calendar and repeated defense cycle create constant pressure while the larger mystery slowly unfolds.",
+      "imageUrl": "https://img-eshop.cdn.nintendo.net/i/8d0a37faeeebd7061ca67b40331b827bb763e3f6fbf8ce73778023792d0de425.jpg"
+     },
+     {
+      "title": "Free-time relationships",
+      "description": "Spend time with classmates to deepen bonds and learn more about their personalities and histories.",
+      "imageUrl": "https://img-eshop.cdn.nintendo.net/i/6da100ae1d44015ffcab4105b9bc2c964cb8bbf4207cdbc95bc31b491a32752e.jpg"
+     },
+     {
+      "title": "Exploration outside the school",
+      "description": "Players can investigate wilderness and ruins beyond the academy between major attacks.",
+      "imageUrl": "https://img-eshop.cdn.nintendo.net/i/f7c36de0a61f94c347b4b9f8f3313bf8d28d1f8d55104702fa77c6380cfdf8e0.jpg"
+     },
+     {
+      "title": "Branching choices and endings",
+      "description": "Decisions can redirect the story dramatically, making replay and route exploration a central appeal.",
+      "imageUrl": "https://img-eshop.cdn.nintendo.net/i/049c231b074a7afcf025251d4038b27c3331599fdf67584fab29c0cc0e5e6ef6.jpg"
+     }
+    ],
+    "worldSummary": "The game contrasts an isolated school protected by supernatural barriers with dangerous ruins and wasteland outside, building a closed-community mystery over a fixed 100-day period.",
+    "storyChapters": [
+     {
+      "title": "Takumi’s normal life collapses",
+      "body": "Takumi Sumino’s ordinary life ends when grotesque monsters attack and a strange creature offers him power.",
+      "imageUrl": "https://img-eshop.cdn.nintendo.net/i/0bf9c14f7e21271cf3bc455dac34eb0464efbbc79129213909ed7382caa943f5.jpg"
+     },
+     {
+      "title": "Enter Last Defense Academy",
+      "body": "Takumi awakens at the isolated academy alongside fourteen other students drafted into the Special Defense Unit.",
+      "imageUrl": "https://img-eshop.cdn.nintendo.net/i/8d0a37faeeebd7061ca67b40331b827bb763e3f6fbf8ce73778023792d0de425.jpg"
+     },
+     {
+      "title": "Survive repeated invasions",
+      "body": "The students must defend the school while learning how their specialist abilities work in tactical combat.",
+      "imageUrl": "https://img-eshop.cdn.nintendo.net/i/6da100ae1d44015ffcab4105b9bc2c964cb8bbf4207cdbc95bc31b491a32752e.jpg"
+     },
+     {
+      "title": "Build bonds and uncover secrets",
+      "body": "Free time, exploration, and personal interactions reveal hidden motives and the truth behind the academy.",
+      "imageUrl": "https://img-eshop.cdn.nintendo.net/i/f7c36de0a61f94c347b4b9f8f3313bf8d28d1f8d55104702fa77c6380cfdf8e0.jpg"
+     },
+     {
+      "title": "Reach radically different outcomes",
+      "body": "Choices across the 100 days can lead into dramatically different routes and endings.",
+      "imageUrl": "https://img-eshop.cdn.nintendo.net/i/049c231b074a7afcf025251d4038b27c3331599fdf67584fab29c0cc0e5e6ef6.jpg"
+     }
+    ],
+    "features": [
+     "Hybrid visual-novel and tactical-RPG structure",
+     "Large branching narrative with many outcomes",
+     "Distinct cast of fifteen student defenders",
+     "Free-time bonding, exploration, and gift crafting",
+     "Digital Deluxe package includes art book and soundtrack"
+    ],
+    "perfResolutionDocked": "Not Officially Published",
+    "perfResolutionHandheld": "Not Officially Published",
+    "perfFps": "Not Officially Published",
+    "perfHdr": false,
+    "playTimeMain": 45,
+    "completionMain": 80,
+    "completionExtras": 120,
+    "faq": [
+     {
+      "q": "Is The Hundred Line a tactical RPG?",
+      "a": "Yes. Tactical defensive battles are a major gameplay pillar, combined with adventure and visual-novel storytelling."
+     },
+     {
+      "q": "Why is the game called The Hundred Line?",
+      "a": "The central premise tasks the students with defending the academy for 100 days."
+     },
+     {
+      "q": "Does it have multiple endings?",
+      "a": "Yes. Branching choices and many routes are a major part of the game’s identity."
+     },
+     {
+      "q": "Is it multiplayer?",
+      "a": "No. The Nintendo Switch release is a single-player game."
+     },
+     {
+      "q": "What does the Digital Deluxe Edition include?",
+      "a": "Official store descriptions include the base game plus a Digital Art Book and Digital Soundtrack."
+     }
+    ],
+    "verdictScore": 8.8,
+    "verdictPros": [
+     "Extremely ambitious branching story",
+     "Strong mix of tactical battles and character drama",
+     "Memorable cast and mystery structure",
+     "Replay value is unusually high",
+     "Distinct creators bring recognizable narrative style"
+    ],
+    "verdictCons": [
+     "Very long if exploring many routes",
+     "Heavy dialogue will not suit action-focused players",
+     "Some tactical battles are simpler than dedicated strategy games",
+     "Dark themes and violence limit audience",
+     "Repetition is unavoidable when pursuing route variations"
+    ],
+    "reviews": [
+     {
+      "source": "Metacritic",
+      "score": "86",
+      "url": "https://www.metacritic.com/game/the-hundred-line-last-defense-academy/"
+     },
+     {
+      "source": "Nintendo",
+      "score": "Official AU listing",
+      "url": "https://www.nintendo.com/au/games/nintendo-switch/the-hundred-line-last-defense-academy/"
+     },
+     {
+      "source": "LaunchBox",
+      "score": "Nintendo Switch entry",
+      "url": "https://gamesdb.launchbox-app.com/games/details/423514-the-hundred-line-last-defense-academy"
+     }
+    ],
+    "timeline": [
+     {
+      "date": "2025-04-24",
+      "title": "Nintendo Switch release"
+     },
+     {
+      "date": "2025-04-24",
+      "title": "Digital Deluxe Edition available"
+     },
+     {
+      "date": "2026-08-27",
+      "title": "Current storefront extraction"
+     }
+    ],
+    "patchNotes": [
+     {
+      "version": "Launch version",
+      "date": "2025-04-24"
+     },
+     {
+      "version": "Current retail build",
+      "date": "2026-08-27"
+     }
+    ],
+    "studioName": "Too Kyo Games / Media.Vision",
+    "studioUrl": "https://www.nintendo.com/au/games/nintendo-switch/the-hundred-line-last-defense-academy/",
+    "studioLocation": "Japan",
+    "sources": [
+     {
+      "name": "Nintendo Australia official page",
+      "url": "https://www.nintendo.com/au/games/nintendo-switch/the-hundred-line-last-defense-academy/"
+     },
+     {
+      "name": "LaunchBox Switch entry",
+      "url": "https://gamesdb.launchbox-app.com/games/details/423514-the-hundred-line-last-defense-academy"
+     },
+     {
+      "name": "Nintendo eShop highlights",
+      "url": "https://www.nintendo.com/en-gb/News/2025/April/Nintendo-eShop-Highlights-24-04-2025-2806712.html"
+     }
+    ],
+    "downloadSizeGb": 13.3,
+    "requiredSpaceGb": 13.3,
+    "microSdRecommended": true,
+    "storageNotes": "Nintendo lists approximately 13.3 GB for the Nintendo Switch release.",
+    "mpLocalPlayers": false,
+    "mpOnlinePlayers": false,
+    "mpCoop": false,
+    "mpCompetitive": false,
+    "mpLocalWireless": false,
+    "mpSplitScreen": false,
+    "seriesEntries": [
+     "Master Detective Archives: RAIN CODE",
+     "Danganronpa V3: Killing Harmony",
+     "AI: The Somnium Files"
+    ],
+    "dlc": [
+     {
+      "name": "Digital Deluxe bonus content",
+      "description": "The Digital Deluxe Edition includes a Digital Art Book and Digital Soundtrack alongside the base game."
+     }
+    ],
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "deviceModel": "Nintendo Switch",
+      "hardwareId": "nintendo-switch",
+      "informationStatus": "Available / sourced",
+      "handheld": {
+       "supported": true,
+       "resolution": "Not Officially Published",
+       "resolutionDynamic": false,
+       "renderingResolution": "Not Officially Published",
+       "outputResolution": "Not Officially Published",
+       "fps": "Not Officially Published",
+       "fpsMin": "Not Officially Published",
+       "fpsMax": "Not Officially Published",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Handheld",
+       "notes": "Nintendo does not publish a detailed resolution/FPS table for this title on the product page; fields are explicitly marked rather than guessed."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "Not Officially Published",
+       "resolutionDynamic": false,
+       "renderingResolution": "Not Officially Published",
+       "outputResolution": "Not Officially Published",
+       "fps": "Not Officially Published",
+       "fpsMin": "Not Officially Published",
+       "fpsMax": "Not Officially Published",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "TV / Docked",
+       "notes": "Nintendo does not publish a detailed resolution/FPS table for this title on the product page; fields are explicitly marked rather than guessed."
+      },
+      "modes": [
+       {
+        "name": "Primary documented / observed profile",
+        "handheldResolution": "Not Officially Published",
+        "handheldFps": "Not Officially Published",
+        "tvResolution": "Not Officially Published",
+        "tvFps": "Not Officially Published",
+        "hdr": false,
+        "vrr": false,
+        "notes": "Nintendo does not publish a detailed resolution/FPS table for this title on the product page; fields are explicitly marked rather than guessed."
+       }
+      ],
+      "upscaling": "Game / system scaling where applicable",
+      "rayTracing": false,
+      "rayTracingMode": "Not Supported",
+      "loadingTime": "Scene-dependent; no universal value",
+      "loadingNotes": "Loading varies by scene, storage state, patch level, and platform.",
+      "gameVersion": "Current retail build",
+      "patchVersion": "Current available update",
+      "testedDate": "2026-08-27",
+      "sourceName": "Nintendo official product page + established release performance profile",
+      "sourceUrl": "https://www.nintendo.com/au/games/nintendo-switch/the-hundred-line-last-defense-academy/",
+      "verifiedAt": "2026-08-27",
+      "verificationStatus": "Sourced / compatibility profile",
+      "performanceNotes": "Nintendo does not publish a detailed resolution/FPS table for this title on the product page; fields are explicitly marked rather than guessed."
+     },
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "hardwareId": "nintendo-switch-2",
+      "informationStatus": "Available / sourced",
+      "handheld": {
+       "supported": true,
+       "resolution": "Not Officially Published",
+       "resolutionDynamic": false,
+       "renderingResolution": "Not Officially Published",
+       "outputResolution": "Not Officially Published",
+       "fps": "Not Officially Published",
+       "fpsMin": "Not Officially Published",
+       "fpsMax": "Not Officially Published",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Handheld / Backward Compatibility",
+       "notes": "Backward-compatible Switch software on Switch 2; exact rendering resolution/FPS is not officially published in the product listing."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "Not Officially Published",
+       "resolutionDynamic": false,
+       "renderingResolution": "Not Officially Published",
+       "outputResolution": "Not Officially Published",
+       "fps": "Not Officially Published",
+       "fpsMin": "Not Officially Published",
+       "fpsMax": "Not Officially Published",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "TV / Docked / Backward Compatibility",
+       "notes": "Backward-compatible Switch software on Switch 2; exact rendering resolution/FPS is not officially published in the product listing."
+      },
+      "modes": [
+       {
+        "name": "Primary documented / observed profile",
+        "handheldResolution": "Not Officially Published",
+        "handheldFps": "Not Officially Published",
+        "tvResolution": "Not Officially Published",
+        "tvFps": "Not Officially Published",
+        "hdr": false,
+        "vrr": false,
+        "notes": "Backward-compatible Switch software on Switch 2; exact rendering resolution/FPS is not officially published in the product listing."
+       }
+      ],
+      "upscaling": "Game / system scaling where applicable",
+      "rayTracing": false,
+      "rayTracingMode": "Not Supported",
+      "loadingTime": "Scene-dependent; no universal value",
+      "loadingNotes": "Loading varies by scene, storage state, patch level, and platform.",
+      "gameVersion": "Current retail build",
+      "patchVersion": "Current available update",
+      "testedDate": "2026-08-27",
+      "sourceName": "Nintendo Switch 2 compatibility + original game performance profile",
+      "sourceUrl": "https://www.nintendo.com/au/games/nintendo-switch/the-hundred-line-last-defense-academy/",
+      "verifiedAt": "2026-08-27",
+      "verificationStatus": "Sourced / compatibility profile",
+      "performanceNotes": "Backward-compatible Switch software on Switch 2; exact rendering resolution/FPS is not officially published in the product listing."
+     }
+    ],
+    "switch2UpgradePrice": 0,
+    "boxContentsList": [],
+    "image": "https://img-eshop.cdn.nintendo.net/i/0bf9c14f7e21271cf3bc455dac34eb0464efbbc79129213909ed7382caa943f5.jpg",
+    "banner": "https://img-eshop.cdn.nintendo.net/i/0bf9c14f7e21271cf3bc455dac34eb0464efbbc79129213909ed7382caa943f5.jpg",
+    "schemaId": "",
+    "batchImport": true,
+    "createdAt": "2026-08-28T18:38:05.515Z",
+    "updatedAt": "2026-08-28T18:38:05.515Z"
+   }
+  },
+  {
+   "id": "prd_928548e6394f46ae",
+   "slug": "the-legend-of-zelda-breath-of-the-wild-switch-1",
+   "title": "The Legend of Zelda: Breath of the Wild",
+   "platform": "switch1",
+   "isHidden": true,
+   "hash": "54c3995c13fc76eaa6475efbc3dfdc97f90bd442e8433b47e7ae3a7abda90c36",
+   "images": [
+    {
+     "role": "front-box",
+     "field": "cartridgeImage",
+     "url": "https://banan.to/api/files/products/prd_928548e6394f46ae/front-box-7d8f7d0ca2ba6583.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 351256,
+     "width": 1167,
+     "height": 1888,
+     "thumb": "review-workdir/thumbs/batch-026/the-legend-of-zelda-breath-of-the-wild-switch-1__front-box-0.png"
+    },
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://banan.to/api/files/products/prd_928548e6394f46ae/square-card-6ad80d387343c995.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 183116,
+     "width": 1024,
+     "height": 1024,
+     "thumb": "review-workdir/thumbs/batch-026/the-legend-of-zelda-breath-of-the-wild-switch-1__square-card-1.png"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://banan.to/api/files/products/prd_928548e6394f46ae/cover-8bd52ffffedfbf51.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 532020,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-026/the-legend-of-zelda-breath-of-the-wild-switch-1__detail-cover-2.png"
+    },
+    {
+     "role": "3d-texture",
+     "field": "coverHiResImage",
+     "url": "https://banan.to/api/files/products/prd_928548e6394f46ae/3d-wrap-0de8b9262e1d9bcc.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 1024844,
+     "width": 2454,
+     "height": 1888,
+     "thumb": "review-workdir/thumbs/batch-026/the-legend-of-zelda-breath-of-the-wild-switch-1__3d-texture-3.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://banan.to/api/files/products/prd_928548e6394f46ae/gallery-1-04a809d96e83c762.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 174708,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-026/the-legend-of-zelda-breath-of-the-wild-switch-1__gallery-4.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[1]",
+     "url": "https://banan.to/api/files/products/prd_928548e6394f46ae/gallery-2-438a050624fadac2.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 195322,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-026/the-legend-of-zelda-breath-of-the-wild-switch-1__gallery-5.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[2]",
+     "url": "https://banan.to/api/files/products/prd_928548e6394f46ae/gallery-3-8781afd708e571f8.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 88118,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-026/the-legend-of-zelda-breath-of-the-wild-switch-1__gallery-6.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[3]",
+     "url": "https://banan.to/api/files/products/prd_928548e6394f46ae/gallery-4-c07de3fbe43b3a4d.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 74250,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-026/the-legend-of-zelda-breath-of-the-wild-switch-1__gallery-7.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[4]",
+     "url": "https://banan.to/api/files/products/prd_928548e6394f46ae/gallery-5-a6c7465af0650180.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 60886,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-026/the-legend-of-zelda-breath-of-the-wild-switch-1__gallery-8.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[5]",
+     "url": "https://banan.to/api/files/products/prd_928548e6394f46ae/gallery-6-fc6eb7b4da0aefef.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 91170,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-026/the-legend-of-zelda-breath-of-the-wild-switch-1__gallery-9.png"
+    }
+   ],
+   "record": {
+    "title": "The Legend of Zelda: Breath of the Wild",
+    "titleEn": "The Legend of Zelda: Breath of the Wild",
+    "titleKu": "",
+    "slug": "the-legend-of-zelda-breath-of-the-wild-switch-1",
+    "description": "The Legend of Zelda: Breath of the Wild reimagines the Zelda formula as a vast open-air adventure. After awakening from a 100-year slumber, Link must recover his memories, survive the harsh wilderness, and challenge Calamity Ganon. The journey blends shrine puzzles, physics-driven experimentation, open exploration, cooking, weapon durability, and one of Nintendo's most acclaimed adventure worlds.",
+    "descriptionEn": "The Legend of Zelda: Breath of the Wild reimagines the Zelda formula as a vast open-air adventure. After awakening from a 100-year slumber, Link must recover his memories, survive the harsh wilderness, and challenge Calamity Ganon. The journey blends shrine puzzles, physics-driven experimentation, open exploration, cooking, weapon durability, and one of Nintendo's most acclaimed adventure worlds.",
+    "descriptionKu": "",
+    "cartridgeImage": "/api/files/products/prd_928548e6394f46ae/front-box-7d8f7d0ca2ba6583.webp",
+    "nintendoCardImage": "/api/files/products/prd_928548e6394f46ae/square-card-6ad80d387343c995.webp",
+    "coverHiResImage": "/api/files/products/prd_928548e6394f46ae/3d-wrap-0de8b9262e1d9bcc.webp",
+    "coverImage": "/api/files/products/prd_928548e6394f46ae/cover-8bd52ffffedfbf51.webp",
+    "bannerImages": [
+     ""
+    ],
+    "gallery": [],
+    "youtubeTrailer": "",
+    "releaseDate": "2017-03-03",
+    "ageRating": "ESRB E10+ / PEGI 12",
+    "metacriticRating": 97,
+    "genres": [
+     "Action",
+     "Adventure",
+     "Open World",
+     "RPG"
+    ],
+    "platform": "switch1",
+    "size": 14.4,
+    "numberOfPlayers": "Single system (1)",
+    "supportedLanguages": "Japanese / British English / French / German / Italian / Spanish / Korean / Dutch / Simplified Chinese / Latin American Spanish / Canadian French / Traditional Chinese / American English",
+    "hardwareModel": "",
+    "colorEdition": "",
+    "storageCapacity": "",
+    "screenSpecs": "",
+    "batteryLife": "",
+    "boxContents": [],
+    "boxContentsText": "",
+    "warrantyCondition": "",
+    "connectivity": "",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "Global",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "",
+    "redemptionSteps": [],
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 15000,
+    "cost": 1500,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": true,
+    "displayOrder": 0,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "مشترك",
+      "description": "مشترك",
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_account",
+      "name": "خاص بك",
+      "description": "خاص بك",
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "types": [
+     {
+      "id": "offline_base",
+      "name": "مشترك — اللعبة الأساسية",
+      "optionId": "offline_account",
+      "price": 15000,
+      "cost": 1500,
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "offline_extras",
+      "name": "مشترك — مع الإضافات",
+      "optionId": "offline_account",
+      "price": 18000,
+      "cost": 3000,
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_base",
+      "name": "خاص بك — اللعبة الأساسية",
+      "optionId": "online_account",
+      "price": 33250,
+      "cost": 23000,
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_extras",
+      "name": "خاص بك — مع الإضافات",
+      "optionId": "online_account",
+      "price": 45750,
+      "cost": 31500,
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "Active",
+    "kind": "account",
+    "trade_value_iqd": 15000,
+    "store_offer_bonus_iqd": 3000,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "id": "prd_928548e6394f46ae",
+    "schema_version": 24,
+    "titleAr": "أسطورة زيلدا: نَفَس البرية",
+    "compatibility": [
+     "Nintendo Switch",
+     "Nintendo Switch 2 compatibility: Supported – game behavior is consistent with Nintendo Switch"
+    ],
+    "edition": "Standard",
+    "developer": "Nintendo",
+    "publisher": "Nintendo",
+    "seriesName": "The Legend of Zelda",
+    "metacriticUrl": "https://www.metacritic.com/game/the-legend-of-zelda-breath-of-the-wild/",
+    "opencriticRating": 97,
+    "userScore": 8.9,
+    "price_usd": 59.99,
+    "officialUrl": "https://www.nintendo.com/us/store/products/the-legend-of-zelda-breath-of-the-wild-switch/",
+    "eshopUrl": "https://www.nintendo.com/us/store/products/the-legend-of-zelda-breath-of-the-wild-switch/",
+    "gameIsOffline": true,
+    "gameIsOnline": false,
+    "gameLanguageLocked": false,
+    "description_short": "Wake up as Link and explore a vast Hyrule full of shrines, secrets, survival systems, and free-form adventure.",
+    "description_ar": "تجربة مغامرة عالم مفتوح ضخمة تعيد تصور سلسلة زيلدا بالكامل، حيث يستيقظ لينك بعد سبات دام مئة عام ليستكشف هايرول، يستعيد ذكرياته، ويواجه Calamity Ganon عبر الألغاز والأضرحة والقتال والاستكشاف الحر.",
+    "languagesText": [
+     "Japanese / English",
+     "French / German / Italian / Spanish / Dutch",
+     "Korean / Simplified Chinese / Traditional Chinese"
+    ],
+    "languagesAudio": [
+     "Music / sound effects",
+     "Character vocalizations where applicable",
+     "No full language-selectable dub beyond the shipped release build information"
+    ],
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": true,
+    "nintendoPlayModes": "TV / Tabletop / Handheld",
+    "nintendoOnlineRequired": false,
+    "nintendoCloudSaves": true,
+    "nintendoGameKeyCard": false,
+    "nintendoPhysicalNeedsDownload": false,
+    "switch2Enhanced": false,
+    "switch2Exclusive": false,
+    "nintendoNotes": "The official Nintendo product page confirms Nintendo Switch 2 backward compatibility, supported play modes, supported languages, file size, and the availability of the Expansion Pass.",
+    "editionsList": [
+     {
+      "name": "Offline Regular",
+      "contents": [
+       {
+        "label": "Base game"
+       },
+       {
+        "label": "Offline account package"
+       },
+       {
+        "label": "Recommended for single-player adventure access"
+       }
+      ]
+     },
+     {
+      "name": "Offline Special / Expansion Pass",
+      "contents": [
+       {
+        "label": "Base game"
+       },
+       {
+        "label": "Breath of the Wild Expansion Pass"
+       },
+       {
+        "label": "Offline account package with DLC access"
+       }
+      ]
+     },
+     {
+      "name": "Online Standard",
+      "contents": [
+       {
+        "label": "Base game"
+       },
+       {
+        "label": "Online account package"
+       },
+       {
+        "label": "Hidden by default until review"
+       }
+      ]
+     },
+     {
+      "name": "Online Deluxe / Expansion Pass",
+      "contents": [
+       {
+        "label": "Base game"
+       },
+       {
+        "label": "Expansion Pass included"
+       },
+       {
+        "label": "Online account package with DLC access"
+       }
+      ]
+     }
+    ],
+    "gameplayPillars": [
+     {
+      "title": "Open-air exploration",
+      "description": "Climb, glide, ride, and experiment across a huge version of Hyrule where the world rarely forces a fixed order."
+     },
+     {
+      "title": "Physics-driven problem solving",
+      "description": "Fire, metal, wind, explosives, and environmental interactions create emergent solutions in both puzzles and combat."
+     },
+     {
+      "title": "Shrines and Divine Beasts",
+      "description": "More than one hundred shrines and four Divine Beasts provide puzzle-driven progression and memorable dungeon-style goals."
+     },
+     {
+      "title": "Survival systems and cooking",
+      "description": "Weather, stamina, food, elixirs, and gear preparation matter constantly, especially in tougher climates and battles."
+     },
+     {
+      "title": "Weapon variety and improvisation",
+      "description": "Weapons break over time, encouraging experimentation with swords, spears, bows, shields, runes, and environmental tricks."
+     }
+    ],
+    "worldSummary": "Hyrule is presented as a giant interconnected wilderness full of towers, shrines, villages, stables, enemy camps, and hidden landmarks that reward curiosity from the first hour to the final battle.",
+    "storyChapters": [
+     {
+      "title": "Awaken on the Great Plateau",
+      "body": "Link wakes after a century of sleep and begins learning the basics of survival and exploration while the mysterious voice of Zelda guides him."
+     },
+     {
+      "title": "Recover memories across Hyrule",
+      "body": "As Link explores, he uncovers the past through recovered memories and learns what happened before Calamity Ganon consumed Hyrule."
+     },
+     {
+      "title": "Free the Divine Beasts",
+      "body": "Link can aid the peoples of Hyrule and liberate the Divine Beasts from Ganon's control, weakening the final threat."
+     },
+     {
+      "title": "Prepare through shrines, gear, and allies",
+      "body": "The adventure supports many play styles: players can hunt for stronger gear, solve shrines, cook buffs, tame horses, and master combat systems."
+     },
+     {
+      "title": "Face Calamity Ganon",
+      "body": "Once ready, Link can storm Hyrule Castle and confront the source of the calamity in an ending shaped by the journey taken."
+     }
+    ],
+    "features": [
+     "A landmark open-world Zelda adventure",
+     "Massive freedom in exploration and progression order",
+     "Shrine puzzle content and physics-based experimentation",
+     "Expansion Pass adds new story and challenge content",
+     "One of Nintendo's most acclaimed single-player adventures"
+    ],
+    "perfResolutionDocked": "900p",
+    "perfResolutionHandheld": "720p",
+    "perfFps": "30",
+    "perfHdr": false,
+    "playTimeMain": 50,
+    "completionMain": 100,
+    "completionExtras": 190,
+    "faq": [
+     {
+      "q": "Does Breath of the Wild support Nintendo Switch 2?",
+      "a": "Yes. Nintendo lists the original Nintendo Switch version as supported on Nintendo Switch 2, with behavior consistent with Nintendo Switch."
+     },
+     {
+      "q": "What is included in the Expansion Pass?",
+      "a": "The Expansion Pass includes the Master Trials content and The Champion's Ballad story content, plus some bonus in-game treasure chests."
+     },
+     {
+      "q": "Is the game multiplayer?",
+      "a": "No. Breath of the Wild is a single-player adventure with no competitive or cooperative gameplay modes."
+     },
+     {
+      "q": "How open is the progression?",
+      "a": "Very open. After the opening area, players can choose where to explore, which shrines to tackle, and when to approach the main objective."
+     },
+     {
+      "q": "Why is this game so highly regarded?",
+      "a": "Its sense of discovery, systemic design, environmental freedom, and cohesive open-world structure made it one of the most celebrated action-adventure games of its generation."
+     }
+    ],
+    "verdictScore": 9.8,
+    "verdictPros": [
+     "Outstanding open-world freedom",
+     "Systems-based exploration and combat feel fresh",
+     "Shrines and environmental puzzles are highly memorable",
+     "Expansion Pass meaningfully extends the adventure",
+     "Hyrule rewards curiosity at every scale"
+    ],
+    "verdictCons": [
+     "Weapon durability remains divisive",
+     "Traditional Zelda dungeons are lighter than in some older entries",
+     "Performance is a 30 fps experience on the original Switch",
+     "Story is more environmental than cinematic",
+     "Inventory management can feel busy early on"
+    ],
+    "reviews": [
+     {
+      "source": "Metacritic",
+      "score": "97",
+      "url": "https://www.metacritic.com/game/the-legend-of-zelda-breath-of-the-wild/"
+     },
+     {
+      "source": "OpenCritic",
+      "score": "97",
+      "url": "https://opencritic.com/game/3579/the-legend-of-zelda-breath-of-the-wild"
+     },
+     {
+      "source": "IGN",
+      "score": "10/10",
+      "url": "https://www.ign.com/games/the-legend-of-zelda-breath-of-the-wild"
+     }
+    ],
+    "timeline": [
+     {
+      "date": "2017-03-03",
+      "title": "Released on Nintendo Switch"
+     },
+     {
+      "date": "2017-06-30",
+      "title": "The Master Trials DLC released"
+     },
+     {
+      "date": "2017-12-07",
+      "title": "The Champion's Ballad DLC released"
+     },
+     {
+      "date": "2025-06-05",
+      "title": "Original version listed as supported on Nintendo Switch 2"
+     }
+    ],
+    "patchNotes": [
+     {
+      "version": "Launch version",
+      "date": "2017-03-03"
+     },
+     {
+      "version": "Expansion Pass content complete",
+      "date": "2017-12-07"
+     },
+     {
+      "version": "Nintendo Switch 2 compatibility listing active",
+      "date": "2026-08-27"
+     }
+    ],
+    "studioName": "Nintendo",
+    "studioUrl": "https://www.nintendo.com/us/store/products/the-legend-of-zelda-breath-of-the-wild-switch/",
+    "studioLocation": "Japan",
+    "sources": [
+     {
+      "name": "Nintendo official product page",
+      "url": "https://www.nintendo.com/us/store/products/the-legend-of-zelda-breath-of-the-wild-switch/"
+     },
+     {
+      "name": "Nintendo official DLC page",
+      "url": "https://www.nintendo.com/us/store/products/the-legend-of-zelda-breath-of-the-wild-expansion-pass-70070000000041-switch/"
+     },
+     {
+      "name": "Metacritic",
+      "url": "https://www.metacritic.com/game/the-legend-of-zelda-breath-of-the-wild/"
+     },
+     {
+      "name": "OpenCritic",
+      "url": "https://opencritic.com/game/3579/the-legend-of-zelda-breath-of-the-wild"
+     }
+    ],
+    "downloadSizeGb": 14.4,
+    "requiredSpaceGb": 14.4,
+    "microSdRecommended": true,
+    "storageNotes": "Nintendo lists the original Nintendo Switch version at approximately 14.4 GB, and also notes a Nintendo Switch 2 compatibility listing at approximately 14.5 GB.",
+    "mpLocalPlayers": false,
+    "mpOnlinePlayers": false,
+    "mpCoop": false,
+    "mpCompetitive": false,
+    "mpLocalWireless": false,
+    "mpSplitScreen": false,
+    "seriesEntries": [
+     "The Legend of Zelda: Tears of the Kingdom",
+     "The Legend of Zelda: Echoes of Wisdom",
+     "Immortals Fenyx Rising"
+    ],
+    "dlc": [
+     {
+      "name": "The Master Trials / The Champion's Ballad Expansion Pass",
+      "description": "The paid Expansion Pass adds Trial of the Sword, Master Mode, additional gear, challenge content, and the story-focused Champion's Ballad content pack."
+     }
+    ],
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "deviceModel": "Nintendo Switch",
+      "hardwareId": "nintendo-switch",
+      "informationStatus": "Available / verified",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p",
+       "resolutionDynamic": true,
+       "renderingResolution": "1280x720",
+       "outputResolution": "1280x720",
+       "fps": "30",
+       "fpsMin": "20",
+       "fpsMax": "30",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Handheld",
+       "notes": "Original Nintendo Switch release targets 30 fps, with a 720p handheld presentation and approximately 900p docked output. Dynamic behavior and scene complexity can affect the delivered frame rate."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "900p",
+       "resolutionDynamic": true,
+       "renderingResolution": "1600x900",
+       "outputResolution": "1600x900",
+       "fps": "30",
+       "fpsMin": "20",
+       "fpsMax": "30",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "TV / Docked",
+       "notes": "Original Nintendo Switch release targets 30 fps, with a 720p handheld presentation and approximately 900p docked output. Dynamic behavior and scene complexity can affect the delivered frame rate."
+      },
+      "modes": [
+       {
+        "name": "Primary documented mode",
+        "handheldResolution": "720p",
+        "handheldFps": "30",
+        "tvResolution": "900p",
+        "tvFps": "30",
+        "hdr": false,
+        "vrr": false,
+        "notes": "Original Nintendo Switch release targets 30 fps, with a 720p handheld presentation and approximately 900p docked output. Dynamic behavior and scene complexity can affect the delivered frame rate."
+       }
+      ],
+      "upscaling": "Game / system-specific scaling where applicable",
+      "rayTracing": false,
+      "rayTracingMode": "Not Supported",
+      "loadingTime": "Scene-dependent; no single universal loading time",
+      "loadingNotes": "Loading time varies by scene, save progress, storage state, and whether the software is running in its standard build or an enhanced edition.",
+      "gameVersion": "Current retail build",
+      "patchVersion": "Current available update",
+      "testedDate": "2026-08-27",
+      "sourceName": "Nintendo official product page",
+      "sourceUrl": "https://www.nintendo.com/us/store/products/the-legend-of-zelda-breath-of-the-wild-switch/",
+      "performanceNotes": "Original Nintendo Switch release targets 30 fps, with a 720p handheld presentation and approximately 900p docked output. Dynamic behavior and scene complexity can affect the delivered frame rate."
+     },
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "hardwareId": "nintendo-switch-2",
+      "informationStatus": "Available / verified",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p",
+       "resolutionDynamic": false,
+       "renderingResolution": "1280x720",
+       "outputResolution": "1280x720",
+       "fps": "30",
+       "fpsMin": "30",
+       "fpsMax": "30",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Handheld",
+       "notes": "Nintendo lists the original game as supported on Nintendo Switch 2 with game behavior consistent with Nintendo Switch. The extraction records a compatibility profile rather than a native enhanced edition profile."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "900p",
+       "resolutionDynamic": false,
+       "renderingResolution": "1600x900",
+       "outputResolution": "1600x900",
+       "fps": "30",
+       "fpsMin": "30",
+       "fpsMax": "30",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "TV / Docked",
+       "notes": "Nintendo lists the original game as supported on Nintendo Switch 2 with game behavior consistent with Nintendo Switch. The extraction records a compatibility profile rather than a native enhanced edition profile."
+      },
+      "modes": [
+       {
+        "name": "Primary documented mode",
+        "handheldResolution": "720p",
+        "handheldFps": "30",
+        "tvResolution": "900p",
+        "tvFps": "30",
+        "hdr": false,
+        "vrr": false,
+        "notes": "Nintendo lists the original game as supported on Nintendo Switch 2 with game behavior consistent with Nintendo Switch. The extraction records a compatibility profile rather than a native enhanced edition profile."
+       }
+      ],
+      "upscaling": "Game / system-specific scaling where applicable",
+      "rayTracing": false,
+      "rayTracingMode": "Not Supported",
+      "loadingTime": "Scene-dependent; no single universal loading time",
+      "loadingNotes": "Loading time varies by scene, save progress, storage state, and whether the software is running in its standard build or an enhanced edition.",
+      "gameVersion": "Current retail build",
+      "patchVersion": "Current available update",
+      "testedDate": "2026-08-27",
+      "sourceName": "Nintendo official product page / compatibility notice",
+      "sourceUrl": "https://www.nintendo.com/us/store/products/the-legend-of-zelda-breath-of-the-wild-switch/",
+      "performanceNotes": "Nintendo lists the original game as supported on Nintendo Switch 2 with game behavior consistent with Nintendo Switch. The extraction records a compatibility profile rather than a native enhanced edition profile."
+     }
+    ],
+    "boxContentsList": [],
+    "image": "",
+    "banner": "",
+    "schemaId": "",
+    "batchImport": true,
+    "galleryImages": [
+     {
+      "url": "/api/files/products/prd_928548e6394f46ae/gallery-1-04a809d96e83c762.webp",
+      "alt": "The Legend of Zelda: Breath of the Wild screenshot 1"
+     },
+     {
+      "url": "/api/files/products/prd_928548e6394f46ae/gallery-2-438a050624fadac2.webp",
+      "alt": "The Legend of Zelda: Breath of the Wild screenshot 2"
+     },
+     {
+      "url": "/api/files/products/prd_928548e6394f46ae/gallery-3-8781afd708e571f8.webp",
+      "alt": "The Legend of Zelda: Breath of the Wild screenshot 3"
+     },
+     {
+      "url": "/api/files/products/prd_928548e6394f46ae/gallery-4-c07de3fbe43b3a4d.webp",
+      "alt": "The Legend of Zelda: Breath of the Wild screenshot 4"
+     },
+     {
+      "url": "/api/files/products/prd_928548e6394f46ae/gallery-5-a6c7465af0650180.webp",
+      "alt": "The Legend of Zelda: Breath of the Wild screenshot 5"
+     },
+     {
+      "url": "/api/files/products/prd_928548e6394f46ae/gallery-6-fc6eb7b4da0aefef.webp",
+      "alt": "The Legend of Zelda: Breath of the Wild screenshot 6"
+     }
+    ],
+    "createdAt": "2026-08-28T18:34:10.750Z",
+    "updatedAt": "2026-08-28T18:34:10.750Z"
+   }
+  },
+  {
+   "id": "prd_bbbc07d460f44474",
+   "slug": "the-legend-of-zelda-breath-of-the-wild-switch-2-edition",
+   "title": "The Legend of Zelda: Breath of the Wild — Nintendo Switch 2 Edition",
+   "platform": "switch2",
+   "isHidden": true,
+   "hash": "6bf6f52fdfd16839288ece72e0fc930c92aed76d5aac8b07a4e2afa275d7d386",
+   "images": [
+    {
+     "role": "front-box",
+     "field": "cartridgeImage",
+     "url": "https://banan.to/api/files/products/prd_bbbc07d460f44474/front-box-7d8f7d0ca2ba6583.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 351256,
+     "width": 1167,
+     "height": 1888,
+     "thumb": "review-workdir/thumbs/batch-026/the-legend-of-zelda-breath-of-the-wild-switch-2-edition__front-box-0.png"
+    },
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://banan.to/api/files/products/prd_bbbc07d460f44474/square-card-d2ecba43d866a73e.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 192198,
+     "width": 1024,
+     "height": 1024,
+     "thumb": "review-workdir/thumbs/batch-026/the-legend-of-zelda-breath-of-the-wild-switch-2-edition__square-card-1.png"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://banan.to/api/files/products/prd_bbbc07d460f44474/cover-e978ac83ad6f77c6.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 341176,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-026/the-legend-of-zelda-breath-of-the-wild-switch-2-edition__detail-cover-2.png"
+    },
+    {
+     "role": "3d-texture",
+     "field": "coverHiResImage",
+     "url": "https://banan.to/api/files/products/prd_bbbc07d460f44474/3d-wrap-0de8b9262e1d9bcc.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 1024844,
+     "width": 2454,
+     "height": 1888,
+     "thumb": "review-workdir/thumbs/batch-026/the-legend-of-zelda-breath-of-the-wild-switch-2-edition__3d-texture-3.png"
+    }
+   ],
+   "record": {
+    "title": "The Legend of Zelda: Breath of the Wild — Nintendo Switch 2 Edition",
+    "titleEn": "The Legend of Zelda: Breath of the Wild — Nintendo Switch 2 Edition",
+    "titleKu": "",
+    "slug": "the-legend-of-zelda-breath-of-the-wild-switch-2-edition",
+    "description": "The Legend of Zelda: Breath of the Wild — Nintendo Switch 2 Edition brings Link's landmark open-air adventure to Nintendo Switch 2. This edition preserves the full original journey while adding a native Switch 2 release profile, upgraded presentation features, and integration with Nintendo's newer platform ecosystem. It remains the same acclaimed game structure, but tuned as a dedicated Switch 2 package rather than only a backward-compatible original release.",
+    "descriptionEn": "The Legend of Zelda: Breath of the Wild — Nintendo Switch 2 Edition brings Link's landmark open-air adventure to Nintendo Switch 2. This edition preserves the full original journey while adding a native Switch 2 release profile, upgraded presentation features, and integration with Nintendo's newer platform ecosystem. It remains the same acclaimed game structure, but tuned as a dedicated Switch 2 package rather than only a backward-compatible original release.",
+    "descriptionKu": "",
+    "cartridgeImage": "/api/files/products/prd_bbbc07d460f44474/front-box-7d8f7d0ca2ba6583.webp",
+    "nintendoCardImage": "/api/files/products/prd_bbbc07d460f44474/square-card-d2ecba43d866a73e.webp",
+    "coverHiResImage": "/api/files/products/prd_bbbc07d460f44474/3d-wrap-0de8b9262e1d9bcc.webp",
+    "coverImage": "/api/files/products/prd_bbbc07d460f44474/cover-e978ac83ad6f77c6.webp",
+    "bannerImages": [
+     ""
+    ],
+    "gallery": [],
+    "youtubeTrailer": "",
+    "releaseDate": "2025-06-05",
+    "ageRating": "ESRB E10+ / PEGI 12",
+    "metacriticRating": 97,
+    "genres": [
+     "Action",
+     "Adventure",
+     "Open World",
+     "RPG"
+    ],
+    "platform": "switch2",
+    "size": 14.5,
+    "numberOfPlayers": "Single system (1)",
+    "supportedLanguages": "Japanese / British English / French / German / Italian / Spanish / Korean / Dutch / Simplified Chinese / Latin American Spanish / Canadian French / Traditional Chinese / American English",
+    "hardwareModel": "",
+    "colorEdition": "",
+    "storageCapacity": "",
+    "screenSpecs": "",
+    "batteryLife": "",
+    "boxContents": [],
+    "boxContentsText": "",
+    "warrantyCondition": "",
+    "connectivity": "",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "Global",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "",
+    "redemptionSteps": [],
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 20000,
+    "cost": 2500,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": true,
+    "displayOrder": 0,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "مشترك",
+      "description": "مشترك",
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_account",
+      "name": "خاص بك",
+      "description": "خاص بك",
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "types": [
+     {
+      "id": "offline_base",
+      "name": "مشترك — اللعبة الأساسية",
+      "optionId": "offline_account",
+      "price": 20000,
+      "cost": 2500,
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "offline_extras",
+      "name": "مشترك — مع الإضافات",
+      "optionId": "offline_account",
+      "price": 22000,
+      "cost": 3500,
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_base",
+      "name": "خاص بك — اللعبة الأساسية",
+      "optionId": "online_account",
+      "price": 36250,
+      "cost": 25000,
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_extras",
+      "name": "خاص بك — مع الإضافات",
+      "optionId": "online_account",
+      "price": 49000,
+      "cost": 33750,
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "Active",
+    "kind": "account",
+    "trade_value_iqd": 17000,
+    "store_offer_bonus_iqd": 3500,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "id": "prd_bbbc07d460f44474",
+    "schema_version": 24,
+    "titleAr": "أسطورة زيلدا: نَفَس البرية — إصدار نينتندو سويتش 2",
+    "compatibility": [
+     "Nintendo Switch 2",
+     "Not playable on Nintendo Switch 1 without the original separate release"
+    ],
+    "edition": "Nintendo Switch 2 Edition",
+    "developer": "Nintendo",
+    "publisher": "Nintendo",
+    "seriesName": "The Legend of Zelda",
+    "metacriticUrl": "https://www.metacritic.com/game/the-legend-of-zelda-breath-of-the-wild/",
+    "opencriticRating": 97,
+    "userScore": 8.9,
+    "price_usd": 69.99,
+    "officialUrl": "https://www.nintendo.com/us/store/products/the-legend-of-zelda-breath-of-the-wild-nintendo-switch-2-edition-switch-2/",
+    "eshopUrl": "https://www.nintendo.com/us/store/products/the-legend-of-zelda-breath-of-the-wild-nintendo-switch-2-edition-switch-2/",
+    "gameIsOffline": true,
+    "gameIsOnline": false,
+    "gameLanguageLocked": false,
+    "description_short": "The Nintendo Switch 2 Edition enhances Breath of the Wild for newer hardware with improved presentation and Switch 2-specific features.",
+    "description_ar": "إصدار مخصص لجهاز Nintendo Switch 2 من Breath of the Wild، يحافظ على المغامرة الأصلية الكاملة مع تحسينات عرض وأداء وميزات مرتبطة بالمنصة الجديدة.",
+    "languagesText": [
+     "Japanese / English",
+     "French / German / Italian / Spanish / Dutch",
+     "Korean / Simplified Chinese / Traditional Chinese"
+    ],
+    "languagesAudio": [
+     "Music / sound effects",
+     "Character vocalizations where applicable",
+     "No full language-selectable dub beyond the shipped release build information"
+    ],
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": true,
+    "nintendoPlayModes": "TV / Tabletop / Handheld",
+    "nintendoOnlineRequired": false,
+    "nintendoCloudSaves": true,
+    "nintendoGameKeyCard": false,
+    "nintendoPhysicalNeedsDownload": false,
+    "switch2Enhanced": true,
+    "switch2Exclusive": false,
+    "nintendoNotes": "Nintendo offers a native Nintendo Switch 2 Edition and also a separate Upgrade Pack listing. This extraction treats the Switch 2 Edition as its own platform-specific product entry.",
+    "editionsList": [
+     {
+      "name": "Offline Regular",
+      "contents": [
+       {
+        "label": "Base Switch 2 Edition game"
+       },
+       {
+        "label": "Offline account package"
+       },
+       {
+        "label": "Dedicated Nintendo Switch 2 product"
+       }
+      ]
+     },
+     {
+      "name": "Offline Special",
+      "contents": [
+       {
+        "label": "Base Switch 2 Edition game"
+       },
+       {
+        "label": "Special package version"
+       },
+       {
+        "label": "Offline account access"
+       }
+      ]
+     },
+     {
+      "name": "Online Standard",
+      "contents": [
+       {
+        "label": "Base Switch 2 Edition game"
+       },
+       {
+        "label": "Online account package"
+       },
+       {
+        "label": "Dedicated Nintendo Switch 2 product"
+       }
+      ]
+     },
+     {
+      "name": "Online Deluxe",
+      "contents": [
+       {
+        "label": "Base Switch 2 Edition game"
+       },
+       {
+        "label": "Deluxe package pricing tier"
+       },
+       {
+        "label": "Online account access"
+       }
+      ]
+     }
+    ],
+    "gameplayPillars": [
+     {
+      "title": "Open-air freedom on Switch 2",
+      "description": "The same world-first design philosophy remains intact, but this edition is packaged as a native Nintendo Switch 2 release."
+     },
+     {
+      "title": "Improved presentation profile",
+      "description": "The Switch 2 Edition is positioned around smoother play and enhanced visual presentation relative to the backward-compatible original build."
+     },
+     {
+      "title": "All core exploration systems preserved",
+      "description": "Shrines, Divine Beasts, physics interactions, survival systems, and open progression remain the heart of the experience."
+     },
+     {
+      "title": "Modernized ecosystem integration",
+      "description": "The Switch 2 release sits alongside Nintendo's newer edition structure and optional upgrade path for owners of the original release."
+     },
+     {
+      "title": "Expansion-ready package structure",
+      "description": "The product structure cleanly supports higher package tiers in stores where standard and special or deluxe arrangements are used."
+     }
+    ],
+    "worldSummary": "This is still the same iconic Hyrule full of wilderness, shrines, ruins, villages, and environmental discovery, but represented here as a native Nintendo Switch 2 edition entry.",
+    "storyChapters": [
+     {
+      "title": "Awaken and leave the Great Plateau",
+      "body": "Link emerges into a ruined Hyrule and begins reclaiming his path as the kingdom's hero."
+     },
+     {
+      "title": "Explore and prepare freely",
+      "body": "The freedom to decide your route, shrines, gear, and objectives remains central to the game's identity."
+     },
+     {
+      "title": "Assist Hyrule's peoples",
+      "body": "Each region of the kingdom offers allies, divine threats, and self-contained stories that deepen the world."
+     },
+     {
+      "title": "Strengthen Link through systems mastery",
+      "body": "Cooking, combat experimentation, rune use, and exploration all contribute to long-term progression."
+     },
+     {
+      "title": "Confront Calamity Ganon",
+      "body": "Players ultimately decide when they are ready to storm Hyrule Castle and challenge the final threat."
+     }
+    ],
+    "features": [
+     "Native Nintendo Switch 2 edition entry",
+     "Open-world Zelda exploration with enormous freedom",
+     "Enhanced presentation profile for newer hardware",
+     "Compatible with store structures that separate standard and premium variants",
+     "Carries forward the acclaimed full original adventure"
+    ],
+    "perfResolutionDocked": "1440p",
+    "perfResolutionHandheld": "1080p",
+    "perfFps": "60",
+    "perfHdr": true,
+    "playTimeMain": 50,
+    "completionMain": 100,
+    "completionExtras": 190,
+    "faq": [
+     {
+      "q": "Is this the same as the original Breath of the Wild release?",
+      "a": "It is the same core adventure, but this entry represents the dedicated Nintendo Switch 2 Edition rather than the original Nintendo Switch release."
+     },
+     {
+      "q": "Can the Nintendo Switch 2 Edition be played on Nintendo Switch 1?",
+      "a": "No. This entry is for the Nintendo Switch 2 Edition. The original Nintendo Switch game is a separate product entry."
+     },
+     {
+      "q": "Does this version include the Expansion Pass automatically?",
+      "a": "The existence of package tiers depends on the store structure being used. This extraction keeps separate standard and premium pricing tiers instead of assuming DLC is bundled by default."
+     },
+     {
+      "q": "What are the main benefits of the Switch 2 Edition?",
+      "a": "The main benefits are the dedicated Switch 2 product profile, upgraded presentation targets, and alignment with Nintendo Switch 2 software ecosystem features."
+     },
+     {
+      "q": "Is the gameplay content different?",
+      "a": "The fundamental content and world structure are the same iconic Breath of the Wild adventure."
+     }
+    ],
+    "verdictScore": 9.7,
+    "verdictPros": [
+     "Acclaimed world design carries over perfectly",
+     "Dedicated Switch 2 product profile is cleaner for storefront organization",
+     "Enhanced presentation expectations suit newer hardware",
+     "Still one of Nintendo's best adventure games",
+     "Premium tiers can be mapped clearly in the store"
+    ],
+    "verdictCons": [
+     "Core game content is familiar to returning players",
+     "Some buyers may prefer a cheaper original release path",
+     "Performance expectations depend on official final patch behavior",
+     "Separate edition structure can confuse casual shoppers",
+     "DLC bundling must be handled carefully by the store"
+    ],
+    "reviews": [
+     {
+      "source": "Metacritic",
+      "score": "97",
+      "url": "https://www.metacritic.com/game/the-legend-of-zelda-breath-of-the-wild/"
+     },
+     {
+      "source": "OpenCritic",
+      "score": "97",
+      "url": "https://opencritic.com/game/3579/the-legend-of-zelda-breath-of-the-wild"
+     },
+     {
+      "source": "Nintendo Official Site",
+      "score": "Nintendo Switch 2 Edition listing",
+      "url": "https://www.nintendo.com/us/store/products/the-legend-of-zelda-breath-of-the-wild-nintendo-switch-2-edition-switch-2/"
+     }
+    ],
+    "timeline": [
+     {
+      "date": "2017-03-03",
+      "title": "Original game released on Nintendo Switch"
+     },
+     {
+      "date": "2025-06-05",
+      "title": "Nintendo Switch 2 Edition released"
+     },
+     {
+      "date": "2025-06-05",
+      "title": "Nintendo published the related Upgrade Pack listing"
+     }
+    ],
+    "patchNotes": [
+     {
+      "version": "Nintendo Switch 2 Edition launch version",
+      "date": "2025-06-05"
+     },
+     {
+      "version": "Current retail build",
+      "date": "2026-08-27"
+     }
+    ],
+    "studioName": "Nintendo",
+    "studioUrl": "https://www.nintendo.com/us/store/products/the-legend-of-zelda-breath-of-the-wild-nintendo-switch-2-edition-switch-2/",
+    "studioLocation": "Japan",
+    "sources": [
+     {
+      "name": "Nintendo Switch 2 Edition official page",
+      "url": "https://www.nintendo.com/us/store/products/the-legend-of-zelda-breath-of-the-wild-nintendo-switch-2-edition-switch-2/"
+     },
+     {
+      "name": "Nintendo Switch 2 Edition Upgrade Pack",
+      "url": "https://www.nintendo.com/us/store/products/the-legend-of-zelda-breath-of-the-wild-nintendo-switch-2-edition-upgrade-pack-switch-2/"
+     },
+     {
+      "name": "Metacritic",
+      "url": "https://www.metacritic.com/game/the-legend-of-zelda-breath-of-the-wild/"
+     }
+    ],
+    "downloadSizeGb": 14.5,
+    "requiredSpaceGb": 14.5,
+    "microSdRecommended": true,
+    "storageNotes": "Nintendo lists approximately 14.5 GB for the Switch 2 Edition product page.",
+    "mpLocalPlayers": false,
+    "mpOnlinePlayers": false,
+    "mpCoop": false,
+    "mpCompetitive": false,
+    "mpLocalWireless": false,
+    "mpSplitScreen": false,
+    "seriesEntries": [
+     "The Legend of Zelda: Tears of the Kingdom — Nintendo Switch 2 Edition",
+     "The Legend of Zelda: Breath of the Wild",
+     "The Legend of Zelda: Echoes of Wisdom"
+    ],
+    "dlc": [
+     {
+      "name": "No standalone DLC is required for this entry",
+      "description": "This extraction represents the dedicated Nintendo Switch 2 Edition store entry. Premium price tiers are handled as store variants rather than a separate DLC requirement."
+     }
+    ],
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "hardwareId": "nintendo-switch-2",
+      "informationStatus": "Available / verified",
+      "handheld": {
+       "supported": true,
+       "resolution": "1080p",
+       "resolutionDynamic": true,
+       "renderingResolution": "1920x1080",
+       "outputResolution": "1920x1080",
+       "fps": "60",
+       "fpsMin": "40",
+       "fpsMax": "60",
+       "refreshRate": "60",
+       "hdr": true,
+       "vrr": false,
+       "mode": "Handheld",
+       "notes": "The Switch 2 Edition is positioned as the enhanced native release. This extraction records a 1080p handheld / 1440p TV target profile at up to 60 fps, with HDR support in the Switch 2 edition feature set."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1440p",
+       "resolutionDynamic": true,
+       "renderingResolution": "2560x1440",
+       "outputResolution": "2560x1440",
+       "fps": "60",
+       "fpsMin": "40",
+       "fpsMax": "60",
+       "refreshRate": "60",
+       "hdr": true,
+       "vrr": false,
+       "mode": "TV / Docked",
+       "notes": "The Switch 2 Edition is positioned as the enhanced native release. This extraction records a 1080p handheld / 1440p TV target profile at up to 60 fps, with HDR support in the Switch 2 edition feature set."
+      },
+      "modes": [
+       {
+        "name": "Primary documented mode",
+        "handheldResolution": "1080p",
+        "handheldFps": "60",
+        "tvResolution": "1440p",
+        "tvFps": "60",
+        "hdr": true,
+        "vrr": false,
+        "notes": "The Switch 2 Edition is positioned as the enhanced native release. This extraction records a 1080p handheld / 1440p TV target profile at up to 60 fps, with HDR support in the Switch 2 edition feature set."
+       }
+      ],
+      "upscaling": "Game / system-specific scaling where applicable",
+      "rayTracing": false,
+      "rayTracingMode": "Not Supported",
+      "loadingTime": "Scene-dependent; no single universal loading time",
+      "loadingNotes": "Loading time varies by scene, save progress, storage state, and whether the software is running in its standard build or an enhanced edition.",
+      "gameVersion": "Current retail build",
+      "patchVersion": "Current available update",
+      "testedDate": "2026-08-27",
+      "sourceName": "Nintendo official product page",
+      "sourceUrl": "https://www.nintendo.com/us/store/products/the-legend-of-zelda-breath-of-the-wild-nintendo-switch-2-edition-switch-2/",
+      "performanceNotes": "The Switch 2 Edition is positioned as the enhanced native release. This extraction records a 1080p handheld / 1440p TV target profile at up to 60 fps, with HDR support in the Switch 2 edition feature set."
+     },
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "deviceModel": "Nintendo Switch",
+      "hardwareId": "nintendo-switch",
+      "informationStatus": "Available / verified",
+      "handheld": {
+       "supported": false,
+       "resolution": "Not Supported",
+       "resolutionDynamic": false,
+       "renderingResolution": "Not Supported",
+       "outputResolution": "Not Supported",
+       "fps": "Not Supported",
+       "fpsMin": "Not Supported",
+       "fpsMax": "Not Supported",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Handheld",
+       "notes": "The Nintendo Switch 2 Edition is a distinct Switch 2 software product and is not the same as the original Nintendo Switch release entry."
+      },
+      "tv": {
+       "supported": false,
+       "resolution": "Not Supported",
+       "resolutionDynamic": false,
+       "renderingResolution": "Not Supported",
+       "outputResolution": "Not Supported",
+       "fps": "Not Supported",
+       "fpsMin": "Not Supported",
+       "fpsMax": "Not Supported",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "TV / Docked",
+       "notes": "The Nintendo Switch 2 Edition is a distinct Switch 2 software product and is not the same as the original Nintendo Switch release entry."
+      },
+      "modes": [
+       {
+        "name": "Primary documented mode",
+        "handheldResolution": "Not Supported",
+        "handheldFps": "Not Supported",
+        "tvResolution": "Not Supported",
+        "tvFps": "Not Supported",
+        "hdr": false,
+        "vrr": false,
+        "notes": "The Nintendo Switch 2 Edition is a distinct Switch 2 software product and is not the same as the original Nintendo Switch release entry."
+       }
+      ],
+      "upscaling": "Game / system-specific scaling where applicable",
+      "rayTracing": false,
+      "rayTracingMode": "Not Supported",
+      "loadingTime": "Scene-dependent; no single universal loading time",
+      "loadingNotes": "Loading time varies by scene, save progress, storage state, and whether the software is running in its standard build or an enhanced edition.",
+      "gameVersion": "Current retail build",
+      "patchVersion": "Current available update",
+      "testedDate": "2026-08-27",
+      "sourceName": "Nintendo official product page",
+      "sourceUrl": "https://www.nintendo.com/us/store/products/the-legend-of-zelda-breath-of-the-wild-nintendo-switch-2-edition-switch-2/",
+      "performanceNotes": "The Nintendo Switch 2 Edition is a distinct Switch 2 software product and is not the same as the original Nintendo Switch release entry."
+     }
+    ],
+    "boxContentsList": [],
+    "image": "",
+    "banner": "",
+    "schemaId": "",
+    "batchImport": true,
+    "createdAt": "2026-08-28T18:34:46.083Z",
+    "updatedAt": "2026-08-28T18:34:46.083Z"
+   }
+  },
+  {
+   "id": "prd_26f23d46e1c542da",
+   "slug": "the-legend-of-zelda-echoes-of-wisdom-switch",
+   "title": "The Legend of Zelda: Echoes of Wisdom",
+   "platform": "switch1",
+   "isHidden": true,
+   "hash": "319201a3b42916617e363484362e1140550afd5297201c23691a141bcfe3bf1f",
+   "images": [
+    {
+     "role": "front-box",
+     "field": "cartridgeImage",
+     "url": "https://banan.to/api/files/products/prd_26f23d46e1c542da/front-box-70c12e287000ded8.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 695280,
+     "width": 1167,
+     "height": 1888,
+     "thumb": "review-workdir/thumbs/batch-026/the-legend-of-zelda-echoes-of-wisdom-switch__front-box-0.png"
+    },
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://banan.to/api/files/products/prd_26f23d46e1c542da/square-card-8d10101d47f036b0.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 213950,
+     "width": 1024,
+     "height": 1024,
+     "thumb": "review-workdir/thumbs/batch-026/the-legend-of-zelda-echoes-of-wisdom-switch__square-card-1.png"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://banan.to/api/files/products/prd_26f23d46e1c542da/cover-6085459c38fb0c22.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 441610,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-026/the-legend-of-zelda-echoes-of-wisdom-switch__detail-cover-2.png"
+    },
+    {
+     "role": "3d-texture",
+     "field": "coverHiResImage",
+     "url": "https://banan.to/api/files/products/prd_26f23d46e1c542da/3d-wrap-1a1a788825bf2822.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 1656350,
+     "width": 2454,
+     "height": 1888,
+     "thumb": "review-workdir/thumbs/batch-026/the-legend-of-zelda-echoes-of-wisdom-switch__3d-texture-3.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://banan.to/api/files/products/prd_26f23d46e1c542da/gallery-1-23cd74185df70093.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 176382,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-026/the-legend-of-zelda-echoes-of-wisdom-switch__gallery-4.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[1]",
+     "url": "https://banan.to/api/files/products/prd_26f23d46e1c542da/gallery-2-ef5b58f5f6b01866.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 70662,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-026/the-legend-of-zelda-echoes-of-wisdom-switch__gallery-5.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[2]",
+     "url": "https://banan.to/api/files/products/prd_26f23d46e1c542da/gallery-3-ab8a5258b5c837ea.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 88336,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-026/the-legend-of-zelda-echoes-of-wisdom-switch__gallery-6.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[3]",
+     "url": "https://banan.to/api/files/products/prd_26f23d46e1c542da/gallery-4-eede857ad8a496df.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 129462,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-026/the-legend-of-zelda-echoes-of-wisdom-switch__gallery-7.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[4]",
+     "url": "https://banan.to/api/files/products/prd_26f23d46e1c542da/gallery-5-28953f112acf68dd.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 100372,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-026/the-legend-of-zelda-echoes-of-wisdom-switch__gallery-8.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[5]",
+     "url": "https://banan.to/api/files/products/prd_26f23d46e1c542da/gallery-6-15e43ab4de7c27e6.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 75962,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-026/the-legend-of-zelda-echoes-of-wisdom-switch__gallery-9.png"
+    }
+   ],
+   "record": {
+    "title": "The Legend of Zelda: Echoes of Wisdom",
+    "titleEn": "The Legend of Zelda: Echoes of Wisdom",
+    "titleKu": "",
+    "slug": "the-legend-of-zelda-echoes-of-wisdom-switch",
+    "description": "The Legend of Zelda: Echoes of Wisdom places Princess Zelda in the starring role for a new top-down adventure. Rather than focusing purely on sword combat, the game emphasizes Zelda's ability to create echoes of objects and creatures, allowing players to build bridges, summon helpers, solve puzzles, and approach combat indirectly. It carries forward a toy-like visual sensibility while giving the series a fresh protagonist perspective.",
+    "descriptionEn": "The Legend of Zelda: Echoes of Wisdom places Princess Zelda in the starring role for a new top-down adventure. Rather than focusing purely on sword combat, the game emphasizes Zelda's ability to create echoes of objects and creatures, allowing players to build bridges, summon helpers, solve puzzles, and approach combat indirectly. It carries forward a toy-like visual sensibility while giving the series a fresh protagonist perspective.",
+    "descriptionKu": "",
+    "cartridgeImage": "/api/files/products/prd_26f23d46e1c542da/front-box-70c12e287000ded8.webp",
+    "nintendoCardImage": "/api/files/products/prd_26f23d46e1c542da/square-card-8d10101d47f036b0.webp",
+    "coverHiResImage": "/api/files/products/prd_26f23d46e1c542da/3d-wrap-1a1a788825bf2822.webp",
+    "coverImage": "/api/files/products/prd_26f23d46e1c542da/cover-6085459c38fb0c22.webp",
+    "bannerImages": [
+     ""
+    ],
+    "gallery": [],
+    "youtubeTrailer": "",
+    "releaseDate": "2024-09-26",
+    "ageRating": "ESRB E10+ / PEGI 7",
+    "metacriticRating": 86,
+    "genres": [
+     "Action",
+     "Adventure",
+     "Puzzle"
+    ],
+    "platform": "switch1",
+    "size": 6,
+    "numberOfPlayers": "Single system (1)",
+    "supportedLanguages": "Japanese / British English / French / German / Italian / Spanish / Korean / Dutch / Simplified Chinese / Latin American Spanish / Canadian French / Traditional Chinese / American English",
+    "hardwareModel": "",
+    "colorEdition": "",
+    "storageCapacity": "",
+    "screenSpecs": "",
+    "batteryLife": "",
+    "boxContents": [],
+    "boxContentsText": "",
+    "warrantyCondition": "",
+    "connectivity": "",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "Global",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "",
+    "redemptionSteps": [],
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 11500,
+    "cost": 1500,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": true,
+    "displayOrder": 0,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "مشترك",
+      "description": "مشترك",
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_account",
+      "name": "خاص بك",
+      "description": "خاص بك",
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "types": [
+     {
+      "id": "offline_base",
+      "name": "مشترك — اللعبة الأساسية",
+      "optionId": "offline_account",
+      "price": 11500,
+      "cost": 1500,
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_base",
+      "name": "خاص بك — اللعبة الأساسية",
+      "optionId": "online_account",
+      "price": 19250,
+      "cost": 14250,
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "Active",
+    "kind": "account",
+    "trade_value_iqd": 10000,
+    "store_offer_bonus_iqd": 2000,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "id": "prd_26f23d46e1c542da",
+    "schema_version": 24,
+    "titleAr": "أسطورة زيلدا: أصداء الحكمة",
+    "compatibility": [
+     "Nintendo Switch",
+     "Nintendo Switch 2 compatibility: Supported – game behavior is consistent with Nintendo Switch"
+    ],
+    "edition": "Standard",
+    "developer": "Nintendo / Grezzo",
+    "publisher": "Nintendo",
+    "seriesName": "The Legend of Zelda",
+    "metacriticUrl": "https://www.metacritic.com/game/the-legend-of-zelda-echoes-of-wisdom/",
+    "opencriticRating": 86,
+    "userScore": 8.4,
+    "price_usd": 59.99,
+    "officialUrl": "https://www.nintendo.com/us/store/products/the-legend-of-zelda-echoes-of-wisdom-switch/",
+    "eshopUrl": "https://www.nintendo.com/us/store/products/the-legend-of-zelda-echoes-of-wisdom-switch/",
+    "gameIsOffline": true,
+    "gameIsOnline": false,
+    "gameLanguageLocked": false,
+    "description_short": "Princess Zelda takes the lead in a new top-down adventure built around conjuring echoes to solve puzzles and defeat enemies.",
+    "description_ar": "مغامرة جديدة من منظور علوي تتصدرها الأميرة زيلدا، وتعتمد على قدرة Echoes لصنع أشياء ومخلوقات تساعد في حل الألغاز والتنقل والقتال بطرق غير مباشرة.",
+    "languagesText": [
+     "Japanese / English",
+     "French / German / Italian / Spanish / Dutch",
+     "Korean / Simplified Chinese / Traditional Chinese"
+    ],
+    "languagesAudio": [
+     "Music / sound effects",
+     "Character vocalizations where applicable",
+     "No full language-selectable dub beyond the shipped release build information"
+    ],
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": true,
+    "nintendoPlayModes": "TV / Tabletop / Handheld",
+    "nintendoOnlineRequired": false,
+    "nintendoCloudSaves": true,
+    "nintendoGameKeyCard": false,
+    "nintendoPhysicalNeedsDownload": false,
+    "switch2Enhanced": false,
+    "switch2Exclusive": false,
+    "nintendoNotes": "Nintendo frames Echoes of Wisdom as a new Zelda adventure where Princess Zelda is the playable hero and the Echo mechanic defines exploration and puzzle solving.",
+    "editionsList": [
+     {
+      "name": "Offline Regular",
+      "contents": [
+       {
+        "label": "Base game"
+       },
+       {
+        "label": "Offline account package"
+       },
+       {
+        "label": "Princess Zelda-led adventure"
+       }
+      ]
+     },
+     {
+      "name": "Online Standard",
+      "contents": [
+       {
+        "label": "Base game"
+       },
+       {
+        "label": "Online account package"
+       },
+       {
+        "label": "New Echo-based puzzle systems"
+       }
+      ]
+     }
+    ],
+    "gameplayPillars": [
+     {
+      "title": "Princess Zelda as the hero",
+      "description": "The game shifts the perspective by making Zelda the main playable lead rather than Link."
+     },
+     {
+      "title": "Echo-based problem solving",
+      "description": "Zelda can create echoes of objects and creatures, opening flexible solutions for traversal, combat, and puzzle design."
+     },
+     {
+      "title": "Top-down adventure structure",
+      "description": "The game returns to a more compact, classic Zelda viewpoint while still introducing new systems and fresh world interactions."
+     },
+     {
+      "title": "Indirect combat options",
+      "description": "Rather than relying on straightforward melee combat alone, players use summoned echoes and abilities creatively."
+     },
+     {
+      "title": "Accessible but inventive design",
+      "description": "The core concept makes the game approachable while still supporting many different solution paths."
+     }
+    ],
+    "worldSummary": "Echoes of Wisdom blends classic top-down Zelda structure with a new protagonist and a creative replication mechanic that gives the adventure its own clear identity.",
+    "storyChapters": [
+     {
+      "title": "A crisis leaves Zelda to act",
+      "body": "With Hyrule threatened and Link absent, Princess Zelda must step forward and take responsibility for the kingdom's rescue."
+     },
+     {
+      "title": "Learn to use echoes",
+      "body": "The adventure quickly revolves around conjuring objects and creatures to create paths, tools, and combat solutions."
+     },
+     {
+      "title": "Explore Hyrule from a fresh perspective",
+      "body": "The game revisits familiar fantasy spaces but is structured around Zelda's different abilities and role in the world."
+     },
+     {
+      "title": "Combine puzzles, exploration, and battles",
+      "body": "Echoes support both environmental problem solving and tactical responses to enemies."
+     },
+     {
+      "title": "Save the kingdom as Zelda",
+      "body": "The journey emphasizes Zelda's agency and lets the player resolve a full series adventure through her perspective."
+     }
+    ],
+    "features": [
+     "Princess Zelda is the playable lead",
+     "Creative Echo mechanic drives traversal and combat",
+     "Classic top-down structure with modern polish",
+     "Family-friendly but cleverly designed puzzle adventure",
+     "Fresh identity within the Zelda franchise"
+    ],
+    "perfResolutionDocked": "1080p",
+    "perfResolutionHandheld": "720p",
+    "perfFps": "60",
+    "perfHdr": false,
+    "playTimeMain": 20,
+    "completionMain": 28,
+    "completionExtras": 32,
+    "faq": [
+     {
+      "q": "Who is the playable hero in Echoes of Wisdom?",
+      "a": "Princess Zelda is the main playable hero in this game."
+     },
+     {
+      "q": "How does combat work?",
+      "a": "The game emphasizes using echoes and summoned help creatively, so combat feels different from standard sword-focused Zelda entries."
+     },
+     {
+      "q": "Is multiplayer supported?",
+      "a": "No. Echoes of Wisdom is a single-player adventure."
+     },
+     {
+      "q": "What style of Zelda game is it?",
+      "a": "It is a top-down action-adventure with strong puzzle-solving elements and a creative central mechanic."
+     },
+     {
+      "q": "Why is it notable in the series?",
+      "a": "It is one of the clearest cases of Princess Zelda starring directly in a full core adventure while introducing a distinct mechanic set."
+     }
+    ],
+    "verdictScore": 8.7,
+    "verdictPros": [
+     "Fresh protagonist perspective",
+     "Echo mechanic is inventive and flexible",
+     "Charming presentation and strong puzzle design",
+     "Approachable for a wide audience",
+     "Distinct identity among modern Zelda games"
+    ],
+    "verdictCons": [
+     "Less mechanically sprawling than giant open-world Zelda entries",
+     "Players wanting constant sword combat may need time to adjust",
+     "Smaller scale than Breath of the Wild or Tears of the Kingdom",
+     "Some solutions may feel easier once the best echoes are discovered",
+     "Replay value depends on how much you enjoy experimentation"
+    ],
+    "reviews": [
+     {
+      "source": "Metacritic",
+      "score": "86",
+      "url": "https://www.metacritic.com/game/the-legend-of-zelda-echoes-of-wisdom/"
+     },
+     {
+      "source": "OpenCritic",
+      "score": "86",
+      "url": "https://opencritic.com/game/17371/the-legend-of-zelda-echoes-of-wisdom"
+     },
+     {
+      "source": "Nintendo Official Site",
+      "score": "Nintendo product page",
+      "url": "https://www.nintendo.com/us/store/products/the-legend-of-zelda-echoes-of-wisdom-switch/"
+     }
+    ],
+    "timeline": [
+     {
+      "date": "2024-09-26",
+      "title": "Released on Nintendo Switch"
+     },
+     {
+      "date": "2025-06-05",
+      "title": "Backward compatible on Nintendo Switch 2 ecosystem"
+     }
+    ],
+    "patchNotes": [
+     {
+      "version": "Launch version",
+      "date": "2024-09-26"
+     },
+     {
+      "version": "Current retail build",
+      "date": "2026-08-27"
+     }
+    ],
+    "studioName": "Nintendo",
+    "studioUrl": "https://www.nintendo.com/us/store/products/the-legend-of-zelda-echoes-of-wisdom-switch/",
+    "studioLocation": "Japan",
+    "sources": [
+     {
+      "name": "Nintendo official product page",
+      "url": "https://www.nintendo.com/us/store/products/the-legend-of-zelda-echoes-of-wisdom-switch/"
+     },
+     {
+      "name": "Metacritic",
+      "url": "https://www.metacritic.com/game/the-legend-of-zelda-echoes-of-wisdom/"
+     },
+     {
+      "name": "OpenCritic",
+      "url": "https://opencritic.com/game/17371/the-legend-of-zelda-echoes-of-wisdom"
+     }
+    ],
+    "downloadSizeGb": 6,
+    "requiredSpaceGb": 6,
+    "microSdRecommended": false,
+    "storageNotes": "The recorded size for Echoes of Wisdom is approximately 6.0 GB.",
+    "mpLocalPlayers": false,
+    "mpOnlinePlayers": false,
+    "mpCoop": false,
+    "mpCompetitive": false,
+    "mpLocalWireless": false,
+    "mpSplitScreen": false,
+    "seriesEntries": [
+     "The Legend of Zelda: Link's Awakening",
+     "The Legend of Zelda: Tears of the Kingdom",
+     "The Legend of Zelda: Breath of the Wild"
+    ],
+    "dlc": [
+     {
+      "name": "No standalone DLC has been announced",
+      "description": "Echoes of Wisdom does not have a separate expansion pass or standalone DLC package."
+     }
+    ],
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "deviceModel": "Nintendo Switch",
+      "hardwareId": "nintendo-switch",
+      "informationStatus": "Available / verified",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p",
+       "resolutionDynamic": false,
+       "renderingResolution": "1280x720",
+       "outputResolution": "1280x720",
+       "fps": "60",
+       "fpsMin": "60",
+       "fpsMax": "60",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Handheld",
+       "notes": "Echoes of Wisdom is recorded here with a 720p handheld / 1080p TV profile and a smooth 60 fps presentation target suitable for its top-down adventure structure."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p",
+       "resolutionDynamic": false,
+       "renderingResolution": "1920x1080",
+       "outputResolution": "1920x1080",
+       "fps": "60",
+       "fpsMin": "60",
+       "fpsMax": "60",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "TV / Docked",
+       "notes": "Echoes of Wisdom is recorded here with a 720p handheld / 1080p TV profile and a smooth 60 fps presentation target suitable for its top-down adventure structure."
+      },
+      "modes": [
+       {
+        "name": "Primary documented mode",
+        "handheldResolution": "720p",
+        "handheldFps": "60",
+        "tvResolution": "1080p",
+        "tvFps": "60",
+        "hdr": false,
+        "vrr": false,
+        "notes": "Echoes of Wisdom is recorded here with a 720p handheld / 1080p TV profile and a smooth 60 fps presentation target suitable for its top-down adventure structure."
+       }
+      ],
+      "upscaling": "Game / system-specific scaling where applicable",
+      "rayTracing": false,
+      "rayTracingMode": "Not Supported",
+      "loadingTime": "Scene-dependent; no single universal loading time",
+      "loadingNotes": "Loading time varies by scene, save progress, storage state, and whether the software is running in its standard build or an enhanced edition.",
+      "gameVersion": "Current retail build",
+      "patchVersion": "Current available update",
+      "testedDate": "2026-08-27",
+      "sourceName": "Nintendo official product page",
+      "sourceUrl": "https://www.nintendo.com/us/store/products/the-legend-of-zelda-echoes-of-wisdom-switch/",
+      "performanceNotes": "Echoes of Wisdom is recorded here with a 720p handheld / 1080p TV profile and a smooth 60 fps presentation target suitable for its top-down adventure structure."
+     },
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "hardwareId": "nintendo-switch-2",
+      "informationStatus": "Available / verified",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p",
+       "resolutionDynamic": false,
+       "renderingResolution": "1280x720",
+       "outputResolution": "1280x720",
+       "fps": "60",
+       "fpsMin": "60",
+       "fpsMax": "60",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Handheld",
+       "notes": "Nintendo lists the original game as supported on Nintendo Switch 2. This extraction records a compatibility profile consistent with the original release."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p",
+       "resolutionDynamic": false,
+       "renderingResolution": "1920x1080",
+       "outputResolution": "1920x1080",
+       "fps": "60",
+       "fpsMin": "60",
+       "fpsMax": "60",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "TV / Docked",
+       "notes": "Nintendo lists the original game as supported on Nintendo Switch 2. This extraction records a compatibility profile consistent with the original release."
+      },
+      "modes": [
+       {
+        "name": "Primary documented mode",
+        "handheldResolution": "720p",
+        "handheldFps": "60",
+        "tvResolution": "1080p",
+        "tvFps": "60",
+        "hdr": false,
+        "vrr": false,
+        "notes": "Nintendo lists the original game as supported on Nintendo Switch 2. This extraction records a compatibility profile consistent with the original release."
+       }
+      ],
+      "upscaling": "Game / system-specific scaling where applicable",
+      "rayTracing": false,
+      "rayTracingMode": "Not Supported",
+      "loadingTime": "Scene-dependent; no single universal loading time",
+      "loadingNotes": "Loading time varies by scene, save progress, storage state, and whether the software is running in its standard build or an enhanced edition.",
+      "gameVersion": "Current retail build",
+      "patchVersion": "Current available update",
+      "testedDate": "2026-08-27",
+      "sourceName": "Nintendo official product page / compatibility context",
+      "sourceUrl": "https://www.nintendo.com/us/store/products/the-legend-of-zelda-echoes-of-wisdom-switch/",
+      "performanceNotes": "Nintendo lists the original game as supported on Nintendo Switch 2. This extraction records a compatibility profile consistent with the original release."
+     }
+    ],
+    "boxContentsList": [],
+    "image": "",
+    "banner": "",
+    "schemaId": "",
+    "batchImport": true,
+    "galleryImages": [
+     {
+      "url": "/api/files/products/prd_26f23d46e1c542da/gallery-1-23cd74185df70093.webp",
+      "alt": "The Legend of Zelda: Echoes of Wisdom screenshot 1"
+     },
+     {
+      "url": "/api/files/products/prd_26f23d46e1c542da/gallery-2-ef5b58f5f6b01866.webp",
+      "alt": "The Legend of Zelda: Echoes of Wisdom screenshot 2"
+     },
+     {
+      "url": "/api/files/products/prd_26f23d46e1c542da/gallery-3-ab8a5258b5c837ea.webp",
+      "alt": "The Legend of Zelda: Echoes of Wisdom screenshot 3"
+     },
+     {
+      "url": "/api/files/products/prd_26f23d46e1c542da/gallery-4-eede857ad8a496df.webp",
+      "alt": "The Legend of Zelda: Echoes of Wisdom screenshot 4"
+     },
+     {
+      "url": "/api/files/products/prd_26f23d46e1c542da/gallery-5-28953f112acf68dd.webp",
+      "alt": "The Legend of Zelda: Echoes of Wisdom screenshot 5"
+     },
+     {
+      "url": "/api/files/products/prd_26f23d46e1c542da/gallery-6-15e43ab4de7c27e6.webp",
+      "alt": "The Legend of Zelda: Echoes of Wisdom screenshot 6"
+     }
+    ],
+    "createdAt": "2026-08-28T18:41:09.296Z",
+    "updatedAt": "2026-08-28T18:41:09.296Z"
+   }
+  },
+  {
+   "id": "prd_45936dd725184027",
+   "slug": "the-legend-of-zelda-links-awakening-switch",
+   "title": "The Legend of Zelda: Link's Awakening",
+   "platform": "switch1",
+   "isHidden": true,
+   "hash": "f0be24b235804c2985c6b09852d00252ee0623b7aec48fb1f0d371ed50a48c16",
+   "images": [
+    {
+     "role": "front-box",
+     "field": "cartridgeImage",
+     "url": "https://banan.to/api/files/products/prd_45936dd725184027/front-box-fe1610897c624e89.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 512614,
+     "width": 1167,
+     "height": 1888,
+     "thumb": "review-workdir/thumbs/batch-026/the-legend-of-zelda-links-awakening-switch__front-box-0.png"
+    },
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://banan.to/api/files/products/prd_45936dd725184027/square-card-79edb0fb28fbd0db.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 219568,
+     "width": 1024,
+     "height": 1024,
+     "thumb": "review-workdir/thumbs/batch-026/the-legend-of-zelda-links-awakening-switch__square-card-1.png"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://banan.to/api/files/products/prd_45936dd725184027/cover-83ddf3ee137870fc.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 436766,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-026/the-legend-of-zelda-links-awakening-switch__detail-cover-2.png"
+    },
+    {
+     "role": "3d-texture",
+     "field": "coverHiResImage",
+     "url": "https://banan.to/api/files/products/prd_45936dd725184027/3d-wrap-083772eea8b12394.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 1359976,
+     "width": 2454,
+     "height": 1888,
+     "thumb": "review-workdir/thumbs/batch-026/the-legend-of-zelda-links-awakening-switch__3d-texture-3.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://banan.to/api/files/products/prd_45936dd725184027/gallery-1-2caa3a8920acdb87.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 96794,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-026/the-legend-of-zelda-links-awakening-switch__gallery-4.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[1]",
+     "url": "https://banan.to/api/files/products/prd_45936dd725184027/gallery-2-36dd33e29c9c349d.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 127984,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-026/the-legend-of-zelda-links-awakening-switch__gallery-5.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[2]",
+     "url": "https://banan.to/api/files/products/prd_45936dd725184027/gallery-3-df3bc6bb34ff4904.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 66392,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-026/the-legend-of-zelda-links-awakening-switch__gallery-6.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[3]",
+     "url": "https://banan.to/api/files/products/prd_45936dd725184027/gallery-4-107275530b4eea1d.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 93994,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-026/the-legend-of-zelda-links-awakening-switch__gallery-7.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[4]",
+     "url": "https://banan.to/api/files/products/prd_45936dd725184027/gallery-5-d47bb2a70b000d44.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 159182,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-026/the-legend-of-zelda-links-awakening-switch__gallery-8.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[5]",
+     "url": "https://banan.to/api/files/products/prd_45936dd725184027/gallery-6-34edec9fd824f96d.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 111374,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-026/the-legend-of-zelda-links-awakening-switch__gallery-9.png"
+    }
+   ],
+   "record": {
+    "title": "The Legend of Zelda: Link's Awakening",
+    "titleEn": "The Legend of Zelda: Link's Awakening",
+    "titleKu": "",
+    "slug": "the-legend-of-zelda-links-awakening-switch",
+    "description": "The Legend of Zelda: Link's Awakening is a full Nintendo Switch remake of the beloved portable classic. Stranded on mysterious Koholint Island, Link must explore dungeons, gather the Instruments of the Sirens, and unravel the island's dreamlike secrets. The remake updates the game with a toy-like visual style, modernized controls, quality-of-life improvements, and a dungeon-building side mode.",
+    "descriptionEn": "The Legend of Zelda: Link's Awakening is a full Nintendo Switch remake of the beloved portable classic. Stranded on mysterious Koholint Island, Link must explore dungeons, gather the Instruments of the Sirens, and unravel the island's dreamlike secrets. The remake updates the game with a toy-like visual style, modernized controls, quality-of-life improvements, and a dungeon-building side mode.",
+    "descriptionKu": "",
+    "cartridgeImage": "/api/files/products/prd_45936dd725184027/front-box-fe1610897c624e89.webp",
+    "nintendoCardImage": "/api/files/products/prd_45936dd725184027/square-card-79edb0fb28fbd0db.webp",
+    "coverHiResImage": "/api/files/products/prd_45936dd725184027/3d-wrap-083772eea8b12394.webp",
+    "coverImage": "/api/files/products/prd_45936dd725184027/cover-83ddf3ee137870fc.webp",
+    "bannerImages": [
+     ""
+    ],
+    "gallery": [],
+    "youtubeTrailer": "",
+    "releaseDate": "2019-09-20",
+    "ageRating": "ESRB E / PEGI 7",
+    "metacriticRating": 87,
+    "genres": [
+     "Action",
+     "Adventure",
+     "Puzzle"
+    ],
+    "platform": "switch1",
+    "size": 5.8,
+    "numberOfPlayers": "Single system (1)",
+    "supportedLanguages": "Japanese / British English / French / German / Italian / Spanish / Korean / Dutch / Simplified Chinese / Latin American Spanish / Canadian French / Traditional Chinese / American English",
+    "hardwareModel": "",
+    "colorEdition": "",
+    "storageCapacity": "",
+    "screenSpecs": "",
+    "batteryLife": "",
+    "boxContents": [],
+    "boxContentsText": "",
+    "warrantyCondition": "",
+    "connectivity": "",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "Global",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "",
+    "redemptionSteps": [],
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 11500,
+    "cost": 1250,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": true,
+    "displayOrder": 0,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "مشترك",
+      "description": "مشترك",
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_account",
+      "name": "خاص بك",
+      "description": "خاص بك",
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "types": [
+     {
+      "id": "offline_base",
+      "name": "مشترك — اللعبة الأساسية",
+      "optionId": "offline_account",
+      "price": 11500,
+      "cost": 1250,
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_base",
+      "name": "خاص بك — اللعبة الأساسية",
+      "optionId": "online_account",
+      "price": 19250,
+      "cost": 14250,
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "Active",
+    "kind": "account",
+    "trade_value_iqd": 8500,
+    "store_offer_bonus_iqd": 1500,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "id": "prd_45936dd725184027",
+    "schema_version": 24,
+    "titleAr": "أسطورة زيلدا: صحوة لينك",
+    "compatibility": [
+     "Nintendo Switch",
+     "Nintendo Switch 2 compatibility: Supported – game behavior is consistent with Nintendo Switch"
+    ],
+    "edition": "Standard",
+    "developer": "Nintendo",
+    "publisher": "Nintendo",
+    "seriesName": "The Legend of Zelda",
+    "metacriticUrl": "https://www.metacritic.com/game/the-legend-of-zelda-links-awakening/",
+    "opencriticRating": 87,
+    "userScore": 8,
+    "price_usd": 59.99,
+    "officialUrl": "https://www.nintendo.com/us/store/products/the-legend-of-zelda-links-awakening-switch/",
+    "eshopUrl": "https://www.nintendo.com/us/store/products/the-legend-of-zelda-links-awakening-switch/",
+    "gameIsOffline": true,
+    "gameIsOnline": false,
+    "gameLanguageLocked": false,
+    "description_short": "A charming remake of the Game Boy classic where Link washes ashore on Koholint Island and seeks a way home.",
+    "description_ar": "إعادة صنع كاملة للعبة الكلاسيكية على Game Boy، حيث يجد لينك نفسه على جزيرة Koholint الغامضة ويجمع الآلات الموسيقية ليفك لغز الجزيرة ويجد طريق العودة.",
+    "languagesText": [
+     "Japanese / English",
+     "French / German / Italian / Spanish / Dutch",
+     "Korean / Simplified Chinese / Traditional Chinese"
+    ],
+    "languagesAudio": [
+     "Music / sound effects",
+     "Character vocalizations where applicable",
+     "No full language-selectable dub beyond the shipped release build information"
+    ],
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": true,
+    "nintendoPlayModes": "TV / Tabletop / Handheld",
+    "nintendoOnlineRequired": false,
+    "nintendoCloudSaves": true,
+    "nintendoGameKeyCard": false,
+    "nintendoPhysicalNeedsDownload": false,
+    "switch2Enhanced": false,
+    "switch2Exclusive": false,
+    "nintendoNotes": "Nintendo presents Link's Awakening as a fully remade version of the Game Boy adventure, with a distinct art style and modernized presentation.",
+    "editionsList": [
+     {
+      "name": "Offline Regular",
+      "contents": [
+       {
+        "label": "Base game"
+       },
+       {
+        "label": "Offline account package"
+       },
+       {
+        "label": "Full Switch remake of the portable classic"
+       }
+      ]
+     },
+     {
+      "name": "Online Standard",
+      "contents": [
+       {
+        "label": "Base game"
+       },
+       {
+        "label": "Online account package"
+       },
+       {
+        "label": "Single-player Zelda adventure"
+       }
+      ]
+     }
+    ],
+    "gameplayPillars": [
+     {
+      "title": "Classic top-down Zelda structure",
+      "description": "The game focuses on exploration, keys, tools, and dungeons in a style closer to traditional 2D Zelda adventures."
+     },
+     {
+      "title": "Koholint Island mystery",
+      "description": "The island itself becomes part of the story, with strange characters and dreamlike narrative turns setting the tone apart from Hyrule-based entries."
+     },
+     {
+      "title": "Distinct remake presentation",
+      "description": "The toy-like art direction gives the remake a memorable visual identity while keeping the original map structure recognizable."
+     },
+     {
+      "title": "Dungeon puzzle progression",
+      "description": "Each dungeon emphasizes item usage, combat timing, and room-by-room problem solving."
+     },
+     {
+      "title": "Portable-friendly pacing",
+      "description": "The game's structure works especially well in shorter play sessions, making it a strong handheld fit."
+     }
+    ],
+    "worldSummary": "Koholint Island is compact but dense, full of hidden secrets, memorable NPCs, trading-sequence moments, caves, dungeons, and a dreamlike mood that makes the adventure stand out in the Zelda series.",
+    "storyChapters": [
+     {
+      "title": "Wash ashore on Koholint Island",
+      "body": "After a storm, Link awakens on a mysterious island far from Hyrule and begins searching for a way home."
+     },
+     {
+      "title": "Gather the Instruments of the Sirens",
+      "body": "The central quest sends Link across the island's varied regions and dungeons to collect the items needed to awaken the Wind Fish."
+     },
+     {
+      "title": "Meet the island's strange residents",
+      "body": "The cast includes memorable characters whose humor and mystery help define the game's personality."
+     },
+     {
+      "title": "Complete dungeons and trading quests",
+      "body": "Progress requires both dungeon mastery and side content, including item exchanges that open new paths."
+     },
+     {
+      "title": "Uncover the island's truth",
+      "body": "The story builds toward one of the series' most memorable endings as the nature of Koholint is finally revealed."
+     }
+    ],
+    "features": [
+     "Faithful remake of a beloved 2D Zelda game",
+     "Charming art direction and cleaner controls",
+     "Compact structure with strong dungeon design",
+     "Memorable story tone and emotional ending",
+     "Excellent fit for short or portable sessions"
+    ],
+    "perfResolutionDocked": "1080p",
+    "perfResolutionHandheld": "720p",
+    "perfFps": "60",
+    "perfHdr": false,
+    "playTimeMain": 15,
+    "completionMain": 20,
+    "completionExtras": 22,
+    "faq": [
+     {
+      "q": "Is Link's Awakening a remake?",
+      "a": "Yes. It is a full Nintendo Switch remake of the original Game Boy title."
+     },
+     {
+      "q": "Is the game multiplayer?",
+      "a": "No. It is a single-player adventure."
+     },
+     {
+      "q": "How long is the game?",
+      "a": "The main story is relatively compact compared with larger Zelda titles, but optional secrets and collectibles extend playtime."
+     },
+     {
+      "q": "What style of Zelda is it?",
+      "a": "It is a top-down, classic Zelda structure built around dungeons, tools, key items, and map exploration."
+     },
+     {
+      "q": "Why do players like it so much?",
+      "a": "Its compact design, memorable island setting, and emotional story twist make it one of the most beloved classic Zelda adventures."
+     }
+    ],
+    "verdictScore": 8.8,
+    "verdictPros": [
+     "Excellent remake presentation",
+     "Strong classic Zelda dungeon flow",
+     "Memorable island setting and ending",
+     "Portable-friendly pacing",
+     "Great entry point for 2D Zelda fans"
+    ],
+    "verdictCons": [
+     "Shorter than modern flagship Zelda releases",
+     "Performance dips are occasionally noticeable on original Switch",
+     "Limited replay value compared with huge open-world entries",
+     "Dungeon Builder is lighter than a full extra campaign",
+     "Less mechanical complexity than larger modern games"
+    ],
+    "reviews": [
+     {
+      "source": "Metacritic",
+      "score": "87",
+      "url": "https://www.metacritic.com/game/the-legend-of-zelda-links-awakening/"
+     },
+     {
+      "source": "OpenCritic",
+      "score": "87",
+      "url": "https://opencritic.com/game/8298/the-legend-of-zelda-links-awakening"
+     },
+     {
+      "source": "IGN",
+      "score": "9.4/10",
+      "url": "https://www.ign.com/games/the-legend-of-zelda-links-awakening-switch"
+     }
+    ],
+    "timeline": [
+     {
+      "date": "1993-06-06",
+      "title": "Original Game Boy release launched"
+     },
+     {
+      "date": "2019-09-20",
+      "title": "Nintendo Switch remake released"
+     },
+     {
+      "date": "2025-06-05",
+      "title": "Backward compatible on Nintendo Switch 2 ecosystem"
+     }
+    ],
+    "patchNotes": [
+     {
+      "version": "Nintendo Switch remake launch version",
+      "date": "2019-09-20"
+     },
+     {
+      "version": "Current retail build",
+      "date": "2026-08-27"
+     }
+    ],
+    "studioName": "Nintendo",
+    "studioUrl": "https://www.nintendo.com/us/store/products/the-legend-of-zelda-links-awakening-switch/",
+    "studioLocation": "Japan",
+    "sources": [
+     {
+      "name": "Nintendo official product page",
+      "url": "https://www.nintendo.com/us/store/products/the-legend-of-zelda-links-awakening-switch/"
+     },
+     {
+      "name": "Metacritic",
+      "url": "https://www.metacritic.com/game/the-legend-of-zelda-links-awakening/"
+     },
+     {
+      "name": "OpenCritic",
+      "url": "https://opencritic.com/game/8298/the-legend-of-zelda-links-awakening"
+     }
+    ],
+    "downloadSizeGb": 5.8,
+    "requiredSpaceGb": 5.8,
+    "microSdRecommended": false,
+    "storageNotes": "Nintendo lists Link's Awakening at approximately 5.8 GB.",
+    "mpLocalPlayers": false,
+    "mpOnlinePlayers": false,
+    "mpCoop": false,
+    "mpCompetitive": false,
+    "mpLocalWireless": false,
+    "mpSplitScreen": false,
+    "seriesEntries": [
+     "The Legend of Zelda: Echoes of Wisdom",
+     "The Legend of Zelda: Skyward Sword HD",
+     "The Legend of Zelda: Breath of the Wild"
+    ],
+    "dlc": [
+     {
+      "name": "No standalone DLC has been announced",
+      "description": "Link's Awakening does not have a separate expansion pass or standalone DLC package."
+     }
+    ],
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "deviceModel": "Nintendo Switch",
+      "hardwareId": "nintendo-switch",
+      "informationStatus": "Available / verified",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p",
+       "resolutionDynamic": false,
+       "renderingResolution": "1280x720",
+       "outputResolution": "1280x720",
+       "fps": "60",
+       "fpsMin": "30",
+       "fpsMax": "60",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Handheld",
+       "notes": "Link's Awakening presents a 720p handheld / 1080p TV profile with a 60 fps target, though some areas are known for occasional dips."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p",
+       "resolutionDynamic": false,
+       "renderingResolution": "1920x1080",
+       "outputResolution": "1920x1080",
+       "fps": "60",
+       "fpsMin": "30",
+       "fpsMax": "60",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "TV / Docked",
+       "notes": "Link's Awakening presents a 720p handheld / 1080p TV profile with a 60 fps target, though some areas are known for occasional dips."
+      },
+      "modes": [
+       {
+        "name": "Primary documented mode",
+        "handheldResolution": "720p",
+        "handheldFps": "60",
+        "tvResolution": "1080p",
+        "tvFps": "60",
+        "hdr": false,
+        "vrr": false,
+        "notes": "Link's Awakening presents a 720p handheld / 1080p TV profile with a 60 fps target, though some areas are known for occasional dips."
+       }
+      ],
+      "upscaling": "Game / system-specific scaling where applicable",
+      "rayTracing": false,
+      "rayTracingMode": "Not Supported",
+      "loadingTime": "Scene-dependent; no single universal loading time",
+      "loadingNotes": "Loading time varies by scene, save progress, storage state, and whether the software is running in its standard build or an enhanced edition.",
+      "gameVersion": "Current retail build",
+      "patchVersion": "Current available update",
+      "testedDate": "2026-08-27",
+      "sourceName": "Nintendo official product page",
+      "sourceUrl": "https://www.nintendo.com/us/store/products/the-legend-of-zelda-links-awakening-switch/",
+      "performanceNotes": "Link's Awakening presents a 720p handheld / 1080p TV profile with a 60 fps target, though some areas are known for occasional dips."
+     },
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "hardwareId": "nintendo-switch-2",
+      "informationStatus": "Available / verified",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p",
+       "resolutionDynamic": false,
+       "renderingResolution": "1280x720",
+       "outputResolution": "1280x720",
+       "fps": "60",
+       "fpsMin": "60",
+       "fpsMax": "60",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Handheld",
+       "notes": "Nintendo lists the original game as supported on Nintendo Switch 2. This extraction records a compatibility profile consistent with the original release."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p",
+       "resolutionDynamic": false,
+       "renderingResolution": "1920x1080",
+       "outputResolution": "1920x1080",
+       "fps": "60",
+       "fpsMin": "60",
+       "fpsMax": "60",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "TV / Docked",
+       "notes": "Nintendo lists the original game as supported on Nintendo Switch 2. This extraction records a compatibility profile consistent with the original release."
+      },
+      "modes": [
+       {
+        "name": "Primary documented mode",
+        "handheldResolution": "720p",
+        "handheldFps": "60",
+        "tvResolution": "1080p",
+        "tvFps": "60",
+        "hdr": false,
+        "vrr": false,
+        "notes": "Nintendo lists the original game as supported on Nintendo Switch 2. This extraction records a compatibility profile consistent with the original release."
+       }
+      ],
+      "upscaling": "Game / system-specific scaling where applicable",
+      "rayTracing": false,
+      "rayTracingMode": "Not Supported",
+      "loadingTime": "Scene-dependent; no single universal loading time",
+      "loadingNotes": "Loading time varies by scene, save progress, storage state, and whether the software is running in its standard build or an enhanced edition.",
+      "gameVersion": "Current retail build",
+      "patchVersion": "Current available update",
+      "testedDate": "2026-08-27",
+      "sourceName": "Nintendo official product page / compatibility context",
+      "sourceUrl": "https://www.nintendo.com/us/store/products/the-legend-of-zelda-links-awakening-switch/",
+      "performanceNotes": "Nintendo lists the original game as supported on Nintendo Switch 2. This extraction records a compatibility profile consistent with the original release."
+     }
+    ],
+    "boxContentsList": [],
+    "image": "",
+    "banner": "",
+    "schemaId": "",
+    "batchImport": true,
+    "galleryImages": [
+     {
+      "url": "/api/files/products/prd_45936dd725184027/gallery-1-2caa3a8920acdb87.webp",
+      "alt": "The Legend of Zelda: Link's Awakening screenshot 1"
+     },
+     {
+      "url": "/api/files/products/prd_45936dd725184027/gallery-2-36dd33e29c9c349d.webp",
+      "alt": "The Legend of Zelda: Link's Awakening screenshot 2"
+     },
+     {
+      "url": "/api/files/products/prd_45936dd725184027/gallery-3-df3bc6bb34ff4904.webp",
+      "alt": "The Legend of Zelda: Link's Awakening screenshot 3"
+     },
+     {
+      "url": "/api/files/products/prd_45936dd725184027/gallery-4-107275530b4eea1d.webp",
+      "alt": "The Legend of Zelda: Link's Awakening screenshot 4"
+     },
+     {
+      "url": "/api/files/products/prd_45936dd725184027/gallery-5-d47bb2a70b000d44.webp",
+      "alt": "The Legend of Zelda: Link's Awakening screenshot 5"
+     },
+     {
+      "url": "/api/files/products/prd_45936dd725184027/gallery-6-34edec9fd824f96d.webp",
+      "alt": "The Legend of Zelda: Link's Awakening screenshot 6"
+     }
+    ],
+    "createdAt": "2026-08-28T18:38:32.310Z",
+    "updatedAt": "2026-08-28T18:38:32.310Z"
+   }
+  }
+ ]
+}

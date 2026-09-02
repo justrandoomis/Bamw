@@ -1,0 +1,51 @@
+{
+ "batch": "026",
+ "apply": false,
+ "games": [
+  {
+   "id": "prd_3b080bbbeb5a406e",
+   "slug": "the-hundred-line-last-defense-academy-switch",
+   "baseHash": "125c0fb5b114a9bc6ca15674725fd51cff9614dd8335f037bb71f3b684143a46",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  },
+  {
+   "id": "prd_928548e6394f46ae",
+   "slug": "the-legend-of-zelda-breath-of-the-wild-switch-1",
+   "baseHash": "54c3995c13fc76eaa6475efbc3dfdc97f90bd442e8433b47e7ae3a7abda90c36",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  },
+  {
+   "id": "prd_bbbc07d460f44474",
+   "slug": "the-legend-of-zelda-breath-of-the-wild-switch-2-edition",
+   "baseHash": "6bf6f52fdfd16839288ece72e0fc930c92aed76d5aac8b07a4e2afa275d7d386",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  },
+  {
+   "id": "prd_26f23d46e1c542da",
+   "slug": "the-legend-of-zelda-echoes-of-wisdom-switch",
+   "baseHash": "319201a3b42916617e363484362e1140550afd5297201c23691a141bcfe3bf1f",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  },
+  {
+   "id": "prd_45936dd725184027",
+   "slug": "the-legend-of-zelda-links-awakening-switch",
+   "baseHash": "f0be24b235804c2985c6b09852d00252ee0623b7aec48fb1f0d371ed50a48c16",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  }
+ ]
+}
