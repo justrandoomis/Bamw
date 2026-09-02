@@ -1,0 +1,513 @@
+{
+ "title": "FINAL FANTASY TACTICS - The Ivalice Chronicles — Nintendo Switch 2 Edition",
+ "titleEn": "FINAL FANTASY TACTICS - The Ivalice Chronicles — Nintendo Switch 2 Edition",
+ "titleKu": "",
+ "slug": "final-fantasy-tactics-the-ivalice-chronicles-nintendo-switch-2-edition-switch-2",
+ "description": "A modernized release of the classic tactical RPG, offering an enhanced presentation, improved usability, and Switch 2 performance/resolution improvements without changing the underlying game content. The story follows Ramza Beoulve as political and personal tensions destabilize Ivalice. The final chapters reveal the larger forces behind the political war and test the player’s strongest tactical builds.",
+ "descriptionEn": "A modernized release of the classic tactical RPG, offering an enhanced presentation, improved usability, and Switch 2 performance/resolution improvements without changing the underlying game content. The story follows Ramza Beoulve as political and personal tensions destabilize Ivalice. The final chapters reveal the larger forces behind the political war and test the player’s strongest tactical builds.",
+ "descriptionKu": "",
+ "cartridgeImage": "/api/files/products/prd_4db08fe5ba464314/front-box-41a19a52a5b7205b.webp",
+ "nintendoCardImage": "/api/files/products/prd_4db08fe5ba464314/square-card-a44d9f88cc6c9a05.webp",
+ "coverHiResImage": "/api/files/products/prd_4db08fe5ba464314/3d-wrap-71f92c4aacb07cb2.webp",
+ "coverImage": "/api/files/products/prd_4db08fe5ba464314/cover-f9d71052ce9407cc.webp",
+ "bannerImages": [
+  "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000100754/fc3d6a8a3b8ac47058cd9dedcf7bc28721dca6fa5e806ab231d553848e6d95be",
+  "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000100754/84ad1ef921eb2d59e09ef2d4a7d573415de2e1e97fe4f1784e2b3c43f096de95",
+  "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000100754/9932b6d1503f0fe1d359c2f677cefc9352446e5316ec5c881aa2d81d09c14b3b",
+  "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000100754/b48e58d583d5bae4d2aabc6c6b3eee195f2720051fd6ace09c62c54b3bce3534"
+ ],
+ "gallery": [],
+ "youtubeTrailer": "",
+ "releaseDate": "2025-09-30",
+ "ageRating": "ESRB T — Blood, Drug Reference, Fantasy Violence, Mild Language, Mild Suggestive Themes",
+ "metacriticRating": 87,
+ "genres": [
+  "Strategy",
+  "RPG",
+  "Tactical RPG"
+ ],
+ "platform": "switch2",
+ "size": 10.3,
+ "numberOfPlayers": "Single system (1)",
+ "supportedLanguages": "Official supported language list varies by region; see the publisher page linked in Sources.",
+ "hardwareModel": "",
+ "colorEdition": "",
+ "storageCapacity": "",
+ "screenSpecs": "",
+ "batteryLife": "",
+ "boxContents": [],
+ "boxContentsText": "",
+ "warrantyCondition": "",
+ "connectivity": "",
+ "characterName": "Link",
+ "amiiboSeries": "The Legend of Zelda",
+ "figureType": "figure",
+ "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+ "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+ "boxCondition": "mib",
+ "releaseWave": "Wave 2 (Restock)",
+ "rarity": "standard",
+ "accessoryType": "حقيبة حماية وتنقل Carry Case",
+ "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+ "brand": "Nintendo Official",
+ "material": "Hard EVA Shockproof Shell",
+ "availableColors": "Black, Neon Red/Blue, White",
+ "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+ "cardValue": "$20 eShop Balance",
+ "region": "Global",
+ "cardType": "eshop",
+ "deliveryMethod": "instant_code",
+ "redemptionGuide": "",
+ "redemptionSteps": [],
+ "validity": "no_expiry",
+ "usedType": "cartridge",
+ "conditionGrade": "like_new",
+ "packaging": "cib",
+ "guaranteeStatus": "tested_30days",
+ "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+ "accountType": "primary",
+ "badge": "وفر 40%",
+ "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+ "price": 10250,
+ "cost": 3500,
+ "stock": 999999,
+ "isInfiniteStock": true,
+ "isHidden": true,
+ "displayOrder": 0,
+ "category": "nintendo-switch-games",
+ "categoryId": "nintendo-switch-games",
+ "categoryEn": "",
+ "categoryKu": "",
+ "options": [
+  {
+   "id": "offline_account",
+   "name": "مشترك",
+   "description": "مشترك",
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_account",
+   "name": "خاص بك",
+   "description": "خاص بك",
+   "stock": 9999,
+   "isInfiniteStock": true
+  }
+ ],
+ "types": [
+  {
+   "id": "offline_base",
+   "name": "مشترك — اللعبة الأساسية",
+   "optionId": "offline_account",
+   "price": 10250,
+   "cost": 3500,
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_base",
+   "name": "خاص بك — اللعبة الأساسية",
+   "optionId": "online_account",
+   "price": 35000,
+   "cost": 27250,
+   "stock": 9999,
+   "isInfiniteStock": true
+  }
+ ],
+ "editions": [],
+ "dlcs": [],
+ "isActive": true,
+ "status": "Active",
+ "kind": "account",
+ "trade_value_iqd": 14750,
+ "store_offer_bonus_iqd": 2500,
+ "trade_enabled": true,
+ "trade_value_locked": false,
+ "id": "prd_4db08fe5ba464314",
+ "schema_version": 24,
+ "titleAr": "فاينل فانتسي تاكتيكس: ذا إيفاليس كرونيكلز — إصدار سويتش 2",
+ "compatibility": [
+  "Nintendo Switch 2",
+  "Nintendo Switch version exists separately"
+ ],
+ "edition": "Standard / Store Variants",
+ "developer": "SQUARE ENIX",
+ "publisher": "SQUARE ENIX",
+ "seriesName": "FINAL FANTASY TACTICS - The Ivalice Chronicles — Nintendo Switch 2 Edition",
+ "metacriticUrl": "https://www.metacritic.com/game/final-fantasy-tactics-the-ivalice-chronicles/",
+ "opencriticRating": 87,
+ "userScore": 8.8,
+ "price_usd": 49.99,
+ "officialUrl": "https://www.nintendo.com/us/store/products/final-fantasy-tactics-the-ivalice-chronicles-nintendo-switch-2-edition-switch-2/",
+ "eshopUrl": "https://www.nintendo.com/us/store/products/final-fantasy-tactics-the-ivalice-chronicles-nintendo-switch-2-edition-switch-2/",
+ "gameIsOffline": true,
+ "gameIsOnline": false,
+ "gameLanguageLocked": false,
+ "description_short": "A modernized release of the classic tactical RPG, offering an enhanced presentation, improved usability, and Switch 2 performance/resolution improvements without changing the underlying game content.",
+ "description_ar": "فاينل فانتسي تاكتيكس: ذا إيفاليس كرونيكلز — إصدار سويتش 2 — A modernized release of the classic tactical RPG, offering an enhanced presentation, improved usability, and Switch 2 performance/resolution improvements without changing the underlying game content.",
+ "box_front_url": "https://assets.nintendo.com/image/upload/ar_3:4,c_fit,g_auto,w_1000/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000100754/a79ce10127b30deb1b647f11aa85333fee47cb1237bc1b23c8a3a4ef3b1aef1a",
+ "languagesText": [
+  "See official supported languages on the linked Nintendo/publisher product page"
+ ],
+ "languagesAudio": [
+  "Audio language availability varies by title and region; see official product information"
+ ],
+ "tvMode": true,
+ "tabletopMode": true,
+ "handheldMode": true,
+ "nintendoPlayModes": "TV / Tabletop / Handheld",
+ "nintendoOnlineRequired": false,
+ "nintendoCloudSaves": true,
+ "nintendoGameKeyCard": false,
+ "nintendoPhysicalNeedsDownload": false,
+ "switch2Enhanced": true,
+ "switch2Exclusive": true,
+ "nintendoNotes": "Platform, release, player-count, storage, compatibility, and feature statements in this import are grounded in the official Nintendo/publisher pages listed under Sources. Store package prices are user-supplied storefront values, not assumed MSRP.",
+ "editionsList": [
+  {
+   "name": "Regular / Offline",
+   "coverUrl": "https://assets.nintendo.com/image/upload/ar_3:4,c_fit,g_auto,w_1000/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000100754/a79ce10127b30deb1b647f11aa85333fee47cb1237bc1b23c8a3a4ef3b1aef1a",
+   "contents": [
+    {
+     "label": "Regular / Offline store package"
+    },
+    {
+     "label": "Offline account access"
+    },
+    {
+     "label": "Infinite stock by default"
+    }
+   ]
+  },
+  {
+   "name": "Standard / Online",
+   "coverUrl": "https://assets.nintendo.com/image/upload/ar_1:1,c_fill,g_auto,w_1000/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000100754/a79ce10127b30deb1b647f11aa85333fee47cb1237bc1b23c8a3a4ef3b1aef1a",
+   "contents": [
+    {
+     "label": "Standard / Online store package"
+    },
+    {
+     "label": "Online account access"
+    },
+    {
+     "label": "Infinite stock by default"
+    }
+   ]
+  }
+ ],
+ "gameplayPillars": [
+  {
+   "title": "Grid-based tactical combat",
+   "description": "Turn order, elevation, positioning, terrain, and ability ranges define every encounter.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000100754/fc3d6a8a3b8ac47058cd9dedcf7bc28721dca6fa5e806ab231d553848e6d95be"
+  },
+  {
+   "title": "Deep job system",
+   "description": "Characters can unlock and combine many jobs, skills, reactions, supports, and movement abilities.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000100754/84ad1ef921eb2d59e09ef2d4a7d573415de2e1e97fe4f1784e2b3c43f096de95"
+  },
+  {
+   "title": "Political Ivalice story",
+   "description": "The narrative follows war, class conflict, betrayal, religion, and personal loyalty in Ivalice.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000100754/9932b6d1503f0fe1d359c2f677cefc9352446e5316ec5c881aa2d81d09c14b3b"
+  },
+  {
+   "title": "Enhanced presentation",
+   "description": "The Ivalice Chronicles modernizes interface and presentation while preserving the strategic core.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000100754/b48e58d583d5bae4d2aabc6c6b3eee195f2720051fd6ace09c62c54b3bce3534"
+  },
+  {
+   "title": "Switch 2 performance upgrade",
+   "description": "Nintendo states that the Switch 2 version offers improved frame rates and resolution for enhanced visual fidelity.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000100754/fc3d6a8a3b8ac47058cd9dedcf7bc28721dca6fa5e806ab231d553848e6d95be"
+  }
+ ],
+ "worldSummary": "A modernized release of the classic tactical RPG, offering an enhanced presentation, improved usability, and Switch 2 performance/resolution improvements without changing the underlying game content. The story follows Ramza Beoulve as political and personal tensions destabilize Ivalice. The final chapters reveal the larger forces behind the political war and test the player’s strongest tactical builds.",
+ "storyChapters": [
+  {
+   "title": "Ramza enters the conflict",
+   "body": "The story follows Ramza Beoulve as political and personal tensions destabilize Ivalice.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000100754/84ad1ef921eb2d59e09ef2d4a7d573415de2e1e97fe4f1784e2b3c43f096de95"
+  },
+  {
+   "title": "Build a flexible party",
+   "body": "Players train a roster through multiple jobs and ability combinations.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000100754/9932b6d1503f0fe1d359c2f677cefc9352446e5316ec5c881aa2d81d09c14b3b"
+  },
+  {
+   "title": "Navigate war and intrigue",
+   "body": "Battles are tied to a dense narrative of noble houses, mercenaries, church power, and hidden agendas.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000100754/b48e58d583d5bae4d2aabc6c6b3eee195f2720051fd6ace09c62c54b3bce3534"
+  },
+  {
+   "title": "Master late-game jobs",
+   "body": "Advanced classes and optimized skill combinations reward long-term planning.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000100754/fc3d6a8a3b8ac47058cd9dedcf7bc28721dca6fa5e806ab231d553848e6d95be"
+  },
+  {
+   "title": "Resolve the Ivalice conflict",
+   "body": "The final chapters reveal the larger forces behind the political war and test the player’s strongest tactical builds.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000100754/84ad1ef921eb2d59e09ef2d4a7d573415de2e1e97fe4f1784e2b3c43f096de95"
+  }
+ ],
+ "features": [
+  "Classic tactical RPG restored",
+  "Deep job/ability system",
+  "Enhanced interface and presentation",
+  "Improved Switch 2 frame rate and resolution",
+  "Single-player strategy campaign"
+ ],
+ "perfResolutionDocked": "Improved resolution — exact official number not published",
+ "perfResolutionHandheld": "Improved resolution — exact official number not published",
+ "perfFps": "0",
+ "perfHdr": false,
+ "playTimeMain": 45,
+ "completionMain": 65,
+ "completionExtras": 90,
+ "faq": [
+  {
+   "q": "What does the Switch 2 Edition improve?",
+   "a": "Nintendo explicitly states improved frame rates and resolution; the game content itself is unchanged."
+  },
+  {
+   "q": "Are exact resolution and FPS numbers published?",
+   "a": "Nintendo’s product/upgrade page confirms improvements but does not provide exact numeric targets."
+  },
+  {
+   "q": "Is there an upgrade path?",
+   "a": "Yes. Nintendo lists a Switch 2 Edition Upgrade Pack."
+  },
+  {
+   "q": "Is it multiplayer?",
+   "a": "No. It is a single-player tactical RPG."
+  },
+  {
+   "q": "What is the core progression system?",
+   "a": "Characters change jobs, learn abilities, and combine skills to create specialized tactical builds."
+  }
+ ],
+ "verdictScore": 8.5,
+ "verdictPros": [
+  "Excellent tactical depth",
+  "Deep job customization",
+  "Strong political story",
+  "Useful modern quality-of-life improvements",
+  "Native Switch 2 performance enhancements"
+ ],
+ "verdictCons": [
+  "Steep systems learning curve",
+  "Battles can be slow for action-focused players",
+  "Grinding jobs may appeal mainly to strategy fans",
+  "Exact Switch 2 performance figures are not officially published",
+  "Story is text-heavy"
+ ],
+ "reviews": [
+  {
+   "source": "Metacritic",
+   "score": "87",
+   "url": "https://www.metacritic.com/game/final-fantasy-tactics-the-ivalice-chronicles/"
+  },
+  {
+   "source": "OpenCritic",
+   "score": "87",
+   "url": "https://opencritic.com/"
+  }
+ ],
+ "timeline": [
+  {
+   "date": "2025-09-30",
+   "title": "Released on target Nintendo platform"
+  }
+ ],
+ "patchNotes": [
+  {
+   "version": "Current retail build",
+   "date": "2026-08-27"
+  }
+ ],
+ "studioName": "SQUARE ENIX",
+ "studioUrl": "https://www.nintendo.com/us/store/products/final-fantasy-tactics-the-ivalice-chronicles-nintendo-switch-2-edition-switch-2/",
+ "studioLocation": "See publisher/developer profile",
+ "sources": [
+  {
+   "name": "Official Nintendo / publisher product page",
+   "url": "https://www.nintendo.com/us/store/products/final-fantasy-tactics-the-ivalice-chronicles-nintendo-switch-2-edition-switch-2/"
+  },
+  {
+   "name": "Metacritic",
+   "url": "https://www.metacritic.com/game/final-fantasy-tactics-the-ivalice-chronicles/"
+  }
+ ],
+ "downloadSizeGb": 10.3,
+ "requiredSpaceGb": 10.3,
+ "microSdRecommended": true,
+ "storageNotes": "Storage requirements follow the official product listing where a final numeric size is published; upcoming titles may require a later refresh when final size is posted.",
+ "mpLocalPlayers": false,
+ "mpOnlinePlayers": false,
+ "mpCoop": false,
+ "mpCompetitive": false,
+ "mpLocalWireless": false,
+ "mpSplitScreen": false,
+ "dlc": [
+  {
+   "name": "Downloadable / additional content status",
+   "description": "No separate story DLC is required for this entry."
+  }
+ ],
+ "devicePerformance": [
+  {
+   "device": "Nintendo Switch 2",
+   "deviceSlug": "nintendo-switch-2",
+   "deviceModel": "Nintendo Switch 2",
+   "hardwareId": "nintendo-switch-2",
+   "informationStatus": "Available",
+   "handheld": {
+    "supported": true,
+    "resolution": "Improved resolution — exact official number not published",
+    "resolutionDynamic": false,
+    "renderingResolution": "Improved resolution — exact official number not published",
+    "outputResolution": "Improved resolution — exact official number not published",
+    "fps": "Improved frame rate — exact official number not published",
+    "fpsMin": "Improved frame rate — exact official number not published",
+    "fpsMax": "Improved frame rate — exact official number not published",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "Handheld",
+    "notes": "Nintendo confirms improved frame rates and resolution but does not publish exact numbers."
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "Improved resolution — exact official number not published",
+    "resolutionDynamic": false,
+    "renderingResolution": "Improved resolution — exact official number not published",
+    "outputResolution": "Improved resolution — exact official number not published",
+    "fps": "Improved frame rate — exact official number not published",
+    "fpsMin": "Improved frame rate — exact official number not published",
+    "fpsMax": "Improved frame rate — exact official number not published",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "TV / Docked",
+    "notes": "Nintendo confirms improved frame rates and resolution but does not publish exact numbers."
+   },
+   "modes": [
+    {
+     "name": "Primary documented/compatibility profile",
+     "handheldResolution": "Improved resolution — exact official number not published",
+     "handheldFps": "Improved frame rate — exact official number not published",
+     "tvResolution": "Improved resolution — exact official number not published",
+     "tvFps": "Improved frame rate — exact official number not published",
+     "hdr": false,
+     "vrr": false,
+     "notes": "Nintendo confirms improved frame rates and resolution but does not publish exact numbers."
+    }
+   ],
+   "upscaling": "Game / system-specific scaling where applicable",
+   "rayTracing": false,
+   "rayTracingMode": "Not Supported",
+   "loadingTime": "Scene-dependent",
+   "loadingNotes": "Loading time varies by scene, save state, storage, version, and patch.",
+   "gameVersion": "Current listed version",
+   "patchVersion": "Current available update",
+   "testedDate": "2026-08-27",
+   "sourceName": "Official product / compatibility information",
+   "sourceUrl": "https://www.nintendo.com/us/store/products/final-fantasy-tactics-the-ivalice-chronicles-nintendo-switch-2-edition-upgrade-pack-switch-2/",
+   "performanceNotes": "Nintendo confirms improved frame rates and resolution but does not publish exact numbers."
+  },
+  {
+   "device": "Nintendo Switch",
+   "deviceSlug": "nintendo-switch",
+   "deviceModel": "Nintendo Switch",
+   "hardwareId": "nintendo-switch",
+   "informationStatus": "Available",
+   "handheld": {
+    "supported": false,
+    "resolution": "Not Supported",
+    "resolutionDynamic": false,
+    "renderingResolution": "Not Supported",
+    "outputResolution": "Not Supported",
+    "fps": "Not Supported",
+    "fpsMin": "Not Supported",
+    "fpsMax": "Not Supported",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "Handheld",
+    "notes": "This file is for the Switch 2 Edition; the Switch 1 version is a separate product."
+   },
+   "tv": {
+    "supported": false,
+    "resolution": "Not Supported",
+    "resolutionDynamic": false,
+    "renderingResolution": "Not Supported",
+    "outputResolution": "Not Supported",
+    "fps": "Not Supported",
+    "fpsMin": "Not Supported",
+    "fpsMax": "Not Supported",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "TV / Docked",
+    "notes": "This file is for the Switch 2 Edition; the Switch 1 version is a separate product."
+   },
+   "modes": [
+    {
+     "name": "Primary documented/compatibility profile",
+     "handheldResolution": "Not Supported",
+     "handheldFps": "Not Supported",
+     "tvResolution": "Not Supported",
+     "tvFps": "Not Supported",
+     "hdr": false,
+     "vrr": false,
+     "notes": "This file is for the Switch 2 Edition; the Switch 1 version is a separate product."
+    }
+   ],
+   "upscaling": "Game / system-specific scaling where applicable",
+   "rayTracing": false,
+   "rayTracingMode": "Not Supported",
+   "loadingTime": "Scene-dependent",
+   "loadingNotes": "Loading time varies by scene, save state, storage, version, and patch.",
+   "gameVersion": "Current listed version",
+   "patchVersion": "Current available update",
+   "testedDate": "2026-08-27",
+   "sourceName": "Official product / compatibility information",
+   "sourceUrl": "https://www.nintendo.com/us/store/products/final-fantasy-tactics-the-ivalice-chronicles-switch/",
+   "performanceNotes": "This file is for the Switch 2 Edition; the Switch 1 version is a separate product."
+  }
+ ],
+ "switch2UpgradePrice": 0,
+ "galleryImages": [
+  {
+   "url": "/api/files/products/prd_4db08fe5ba464314/gallery-1-698561e3216bac34.webp",
+   "alt": "FINAL FANTASY TACTICS - The Ivalice Chronicles — Nintendo Switch 2 Edition screenshot 1"
+  },
+  {
+   "url": "/api/files/products/prd_4db08fe5ba464314/gallery-2-32679b261531f261.webp",
+   "alt": "FINAL FANTASY TACTICS - The Ivalice Chronicles — Nintendo Switch 2 Edition screenshot 2"
+  },
+  {
+   "url": "/api/files/products/prd_4db08fe5ba464314/gallery-3-8b4302b79b9c36de.webp",
+   "alt": "FINAL FANTASY TACTICS - The Ivalice Chronicles — Nintendo Switch 2 Edition screenshot 3"
+  },
+  {
+   "url": "/api/files/products/prd_4db08fe5ba464314/gallery-4-6669a3db0482c3dd.webp",
+   "alt": "FINAL FANTASY TACTICS - The Ivalice Chronicles — Nintendo Switch 2 Edition screenshot 4"
+  },
+  {
+   "url": "/api/files/products/prd_4db08fe5ba464314/gallery-5-da99d36de99f24ac.webp",
+   "alt": "FINAL FANTASY TACTICS - The Ivalice Chronicles — Nintendo Switch 2 Edition screenshot 5"
+  },
+  {
+   "url": "/api/files/products/prd_4db08fe5ba464314/gallery-6-8e09bf0eb81f796d.webp",
+   "alt": "FINAL FANTASY TACTICS - The Ivalice Chronicles — Nintendo Switch 2 Edition screenshot 6"
+  }
+ ],
+ "boxContentsList": [],
+ "image": "https://assets.nintendo.com/image/upload/ar_16:9,c_fill,g_auto,w_1600/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000100754/830654ca35accbee0ac86e1ec4c73674879679728f268b908dce90111d23561b",
+ "banner": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000100754/fc3d6a8a3b8ac47058cd9dedcf7bc28721dca6fa5e806ab231d553848e6d95be",
+ "schemaId": "",
+ "batchImport": true,
+ "createdAt": "2026-08-28T18:43:18.495Z",
+ "updatedAt": "2026-08-28T18:43:18.495Z"
+}

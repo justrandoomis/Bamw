@@ -1,0 +1,449 @@
+{
+ "id": "prd_ed0f0c2742ab46d8",
+ "title": "FANTASY LIFE i: The Girl Who Steals Time",
+ "titleEn": "FANTASY LIFE i: The Girl Who Steals Time",
+ "titleKu": "FANTASY LIFE i: The Girl Who Steals Time",
+ "slug": "fantasy-life-i-the-girl-who-steals-time-switch1",
+ "description": "FANTASY LIFE i: The Girl Who Steals Time is a social slow-life RPG from LEVEL5 built around 14 selectable Lives. Players can fight monsters, gather materials, cook, craft equipment, build and decorate, develop an island, and explore a large fantasy world.\n\nThe story follows an adventurer who reaches a mysterious island and moves between its present state and a past era a thousand years earlier while investigating the events that led to its downfall. Multiplayer supports up to four players online or through local wireless, while Family Co-op allows a second player to join on one system with two controllers.",
+ "descriptionEn": "FANTASY LIFE i: The Girl Who Steals Time is a social slow-life RPG from LEVEL5 built around 14 selectable Lives. Players can fight monsters, gather materials, cook, craft equipment, build and decorate, develop an island, and explore a large fantasy world.\n\nThe story follows an adventurer who reaches a mysterious island and moves between its present state and a past era a thousand years earlier while investigating the events that led to its downfall. Multiplayer supports up to four players online or through local wireless, while Family Co-op allows a second player to join on one system with two controllers.",
+ "descriptionKu": "FANTASY LIFE i: The Girl Who Steals Time is a social slow-life RPG from LEVEL5 built around 14 selectable Lives. Players can fight monsters, gather materials, cook, craft equipment, build and decorate, develop an island, and explore a large fantasy world.\n\nThe story follows an adventurer who reaches a mysterious island and moves between its present state and a past era a thousand years earlier while investigating the events that led to its downfall. Multiplayer supports up to four players online or through local wireless, while Family Co-op allows a second player to join on one system with two controllers.",
+ "cartridgeImage": "/api/files/products/prd_ed0f0c2742ab46d8/cartridgeImage-456f5c1ea5593b0d.webp",
+ "nintendoCardImage": "",
+ "coverHiResImage": "/api/files/products/prd_ed0f0c2742ab46d8/3d-texture-bc809fedd3bff97c.webp",
+ "coverImage": "/api/files/products/prd_ed0f0c2742ab46d8/coverImage-2bcd0bbfc5b1706a.webp",
+ "bannerImages": [
+  "/api/files/products/prd_ed0f0c2742ab46d8/bannerImages-7a24a55f9d42976b.webp",
+  "/api/files/products/prd_ed0f0c2742ab46d8/bannerImages-f9d6949b356ff307.webp"
+ ],
+ "gallery": [],
+ "youtubeTrailer": "https://www.youtube.com/watch?v=ZmbC_dS-FjY",
+ "releaseDate": "2025-05-21",
+ "ageRating": "PEGI 7",
+ "metacriticRating": 86,
+ "genres": [
+  "RPG",
+  "Simulation",
+  "Adventure"
+ ],
+ "platform": "switch1",
+ "size": 7.7,
+ "numberOfPlayers": "4",
+ "supportedLanguages": "Japanese, French, German, Italian, Spanish, Korean, Simplified Chinese, Traditional Chinese, American English",
+ "hardwareModel": "",
+ "colorEdition": "",
+ "storageCapacity": "",
+ "screenSpecs": "",
+ "batteryLife": "",
+ "boxContents": [],
+ "boxContentsText": "",
+ "warrantyCondition": "",
+ "connectivity": "",
+ "characterName": "Link",
+ "amiiboSeries": "The Legend of Zelda",
+ "figureType": "figure",
+ "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+ "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+ "boxCondition": "mib",
+ "releaseWave": "Wave 2 (Restock)",
+ "rarity": "standard",
+ "accessoryType": "حقيبة حماية وتنقل Carry Case",
+ "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+ "brand": "Nintendo Official",
+ "material": "Hard EVA Shockproof Shell",
+ "availableColors": "Black, Neon Red/Blue, White",
+ "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+ "cardValue": "$20 eShop Balance",
+ "region": "US",
+ "cardType": "eshop",
+ "deliveryMethod": "instant_code",
+ "redemptionGuide": "",
+ "redemptionSteps": [],
+ "validity": "no_expiry",
+ "usedType": "cartridge",
+ "conditionGrade": "like_new",
+ "packaging": "cib",
+ "guaranteeStatus": "tested_30days",
+ "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+ "accountType": "primary",
+ "badge": "وفر 40%",
+ "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+ "price": 8000,
+ "cost": 1500,
+ "stock": 999999,
+ "isInfiniteStock": true,
+ "isHidden": false,
+ "displayOrder": 0,
+ "category": "nintendo-switch-games",
+ "categoryId": "nintendo-switch-games",
+ "categoryEn": "",
+ "categoryKu": "",
+ "options": [
+  {
+   "id": "offline_account",
+   "name": "Offline Account",
+   "description": "Account delivery option intended for offline-account use.",
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_account",
+   "name": "Online Account",
+   "description": "Account delivery option intended for online-account use where the game supports online features.",
+   "isInfiniteStock": true
+  }
+ ],
+ "types": [
+  {
+   "id": "standard_offline",
+   "name": "Standard",
+   "optionId": "offline_account",
+   "price": "8000",
+   "cost": 1500,
+   "description": "Supplier 普通版 mapped to Offline / Standard. Supplier cost: ¥7.78 after platform subsidy -> 1,500 IQD. Stock remains infinite in the store model.",
+   "isInfiniteStock": true
+  },
+  {
+   "id": "standard_online",
+   "name": "Standard",
+   "optionId": "online_account",
+   "price": 25000,
+   "cost": 14250,
+   "description": "Supplier 标准版 mapped to Online / Standard. Supplier cost: ¥65.60 after platform subsidy -> 14,250 IQD. Supplier marked this tier 即将售罄 (almost sold out), recorded as a sourcing note only; store inventory remains infinite by rule.",
+   "isInfiniteStock": true
+  }
+ ],
+ "editions": [],
+ "dlcs": [],
+ "isActive": true,
+ "status": "active",
+ "kind": "account",
+ "trade_value_iqd": 30000,
+ "store_offer_bonus_iqd": 0,
+ "trade_enabled": true,
+ "trade_value_locked": false,
+ "schema_version": 21,
+ "compatibility": [
+  "Nintendo Switch",
+  "Nintendo Switch 2 (backward compatible; separate Switch 2 Edition also exists)"
+ ],
+ "edition": "Standard",
+ "developer": "LEVEL5 Inc.",
+ "publisher": "LEVEL5",
+ "opencriticRating": 85,
+ "userScore": 8.4,
+ "officialUrl": "https://www.nintendo.com/us/store/products/fantasy-life-i-the-girl-who-steals-time-switch/",
+ "eshopUrl": "https://www.nintendo.com/us/store/products/fantasy-life-i-the-girl-who-steals-time-switch/",
+ "gameIsOffline": true,
+ "gameIsOnline": true,
+ "description_short": "A social slow-life RPG where you can switch freely among 14 Lives, gather and craft, fight monsters, reshape an island, explore a large continent and play with friends.",
+ "description_ar": "لعبة تقمص أدوار بأسلوب حياة هادئ من LEVEL5 تتيح التبديل بين 14 مهنة مختلفة، مع الاستكشاف والقتال والجمع والتصنيع وبناء الجزيرة واللعب الجماعي حتى أربعة لاعبين.",
+ "videos": [
+  {
+   "title": "FANTASY LIFE i: The Girl Who Steals Time — Official Trailer",
+   "url": "https://www.youtube.com/watch?v=ZmbC_dS-FjY"
+  }
+ ],
+ "nintendoEshopUrl": "https://www.nintendo.com/us/store/products/fantasy-life-i-the-girl-who-steals-time-switch/",
+ "nintendoOnlineRequired": false,
+ "nintendoCloudSaves": true,
+ "tvMode": true,
+ "tabletopMode": true,
+ "handheldMode": true,
+ "nintendoPlayModes": "TV Mode, Tabletop Mode, Handheld Mode",
+ "nintendoNotes": "Nintendo lists the original Nintendo Switch version at 7.7 GB with one-to-two players on one system, one-to-four via local wireless and one-to-four online. Simplified Chinese is officially supported. Nintendo also lists a separate Switch 2 Edition/upgrade path. The supplier provided only two tiers, so this store product keeps Standard Offline/Online types and does not create DLC product variants.",
+ "switch2Exclusive": false,
+ "tagline": "Choose among 14 Lives, travel between past and present, rebuild a mysterious island and create your own rhythm of combat, gathering, crafting and exploration.",
+ "fitFor": [
+  "Players who enjoy life simulation mixed with action RPG progression, crafting and collecting.",
+  "Players who want freedom to change jobs and activities instead of following a single combat class.",
+  "Families and friends who value online/local-wireless multiplayer and two-player Family Co-op."
+ ],
+ "notFitFor": [
+  "Players who want a tightly linear action game with little crafting or resource gathering.",
+  "Players who dislike long-term collection, job progression and town/island customization systems.",
+  "Players seeking a purely competitive multiplayer game rather than cooperative/social play."
+ ],
+ "playTimeMain": 34,
+ "playTimeFull": 139,
+ "gameplayPillars": [
+  {
+   "title": "Fourteen Lives",
+   "description": "Combat, Gathering and Crafting Lives each offer their own progression and activities, and the player can switch between them freely instead of being locked to one class."
+  },
+  {
+   "title": "Restore and Shape the Island",
+   "description": "Gather materials, build structures, alter terrain, draw roads and rivers, expand your home and decorate interiors as the island develops."
+  },
+  {
+   "title": "Open-World Adventure and Multiplayer",
+   "description": "Explore Ginormosia and other regions using climbing, swimming and mounts, then invite friends for exploration, dungeons and cooperative activities."
+  }
+ ],
+ "worldSummary": "The adventure begins on Mysteria Island in the seas of Reveria. A dragon fossil guides the player and archaeologist Edward’s expedition to an uncharted island marked by a vast abyss, a Bone Dragon and a message from a mysterious girl. The player can travel between the island’s ruined present and its flourishing state 1,000 years in the past, gathering materials and clues that help restore the present-day settlement.",
+ "storyChapters": [
+  {
+   "title": "A Dragon Guides the Expedition",
+   "body": "The player sails with archaeologist Edward’s team and follows light from a fossilized dragon toward a deserted, uncharted island."
+  },
+  {
+   "title": "One Thousand Years in the Past",
+   "body": "A mysterious event opens a way to the island as it existed 1,000 years earlier, letting the player investigate what caused its downfall."
+  },
+  {
+   "title": "Restore the Present",
+   "body": "Materials, relationships and discoveries gathered across the adventure feed into rebuilding the present-day island and uncovering its central mystery."
+  }
+ ],
+ "galleryImages": [
+  {
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000078577/a052db27e61532be6e9af004c028e28950675f845f3e923c4946c229af242270",
+   "alt": "Official Nintendo gameplay screenshot from FANTASY LIFE i."
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000078577/760ba402b52841d1a378c021a136ce9bbd0007d11841853734690aab55e61913",
+   "alt": "Official Nintendo gameplay screenshot showing exploration/life activities."
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000078577/7ba9ec2d4376b9a0ebdd168160170ed0b4f7436a4ddf6c263daef9101208855e",
+   "alt": "Additional official Nintendo media image."
+  }
+ ],
+ "features": [
+  "Switch freely among 14 Lives spanning combat, gathering and crafting professions.",
+  "The story alternates between a deserted present-day island and its thriving past roughly 1,000 years earlier.",
+  "Island restoration includes placing buildings and objects, changing terrain, and drawing roads and rivers.",
+  "Ginormosia provides a large open-world area with swimming, climbing and mounts for broad exploration.",
+  "Multiplayer supports up to four players for exploration and activities, with local Family Co-op also supported for two players.",
+  "Version 2.2.0 added crossplay support with the mobile release, celebration costume rewards, font changes and multiple bug fixes."
+ ],
+ "perfHdr": false,
+ "perfNotes": "No sufficiently verified game-specific Nintendo Switch resolution/FPS table was found in the official sources used for this extraction. Exact performance values are therefore left blank. Separate Switch 2 Edition improvements are not applied to this Switch 1 product.",
+ "devicePerformance": [
+  {
+   "device": "Nintendo Switch 2",
+   "deviceSlug": "nintendo-switch-2",
+   "deviceModel": "Nintendo Switch 2",
+   "informationStatus": "verified / secondary resolution measurement",
+   "handheld": {
+    "supported": true,
+    "resolution": "1080p output",
+    "resolutionDynamic": true,
+    "renderingResolution": "dynamic / reconstructed",
+    "outputResolution": "1080p",
+    "fps": "60 target",
+    "fpsMin": "minor dips below 60 in larger areas",
+    "fpsMax": "60",
+    "refreshRate": "60 Hz",
+    "hdr": false,
+    "mode": "Nintendo Switch 2 Edition",
+    "notes": "Switch 2 Edition improves resolution, framerate and load times; handheld output is reported at 1080p with a 60 FPS target."
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "1440p output",
+    "resolutionDynamic": true,
+    "renderingResolution": "dynamic / reconstructed",
+    "outputResolution": "1440p",
+    "fps": "60 target",
+    "fpsMin": "minor dips below 60 in larger areas",
+    "fpsMax": "60",
+    "refreshRate": "60 Hz",
+    "hdr": false,
+    "mode": "Nintendo Switch 2 Edition",
+    "notes": "Docked output is reported around 1440p with a 60 FPS target. Nintendo/LEVEL5 officially confirm improved resolution and framerate but do not publish numeric resolution targets."
+   },
+   "upscaling": "Reconstruction/upscaling used; exact method not officially specified",
+   "rayTracing": false,
+   "sourceName": "LEVEL5/Nintendo official + RPG Site + secondary resolution report",
+   "sourceUrl": "https://www.fantasylife.jp/fli/en/",
+   "verifiedAt": "2026-08-25",
+   "verificationStatus": "cross-checked",
+   "performanceNotes": "Official sources confirm higher resolution, higher framerate and faster loads. Reviews confirm a 60 FPS target; numeric 1080p handheld / 1440p docked output is secondary technical reporting.",
+   "hardwareId": "prd_acf4c89908764c62"
+  }
+ ],
+ "downloadSizeGb": 7.7,
+ "arabicSupport": false,
+ "mpLocalPlayers": true,
+ "mpOnlinePlayers": true,
+ "mpCoop": true,
+ "mpCompetitive": false,
+ "mpSplitScreen": false,
+ "mpLocalWireless": true,
+ "guides": [
+  {
+   "title": "Nintendo — FANTASY LIFE i",
+   "summary": "Official Nintendo product page with story, Lives, multiplayer, language and storage information.",
+   "url": "https://www.nintendo.com/us/store/products/fantasy-life-i-the-girl-who-steals-time-switch/"
+  },
+  {
+   "title": "LEVEL5 — Official FANTASY LIFE i Site",
+   "summary": "Official publisher/developer site with trailers, platform details, updates and Switch 2 information.",
+   "url": "https://www.fantasylife.jp/fli/en/"
+  },
+  {
+   "title": "Nintendo Life — FANTASY LIFE i",
+   "summary": "Nintendo-focused review and guide hub for the Switch release.",
+   "url": "https://www.nintendolife.com/games/switch-eshop/fantasy_life_i_the_girl_who_steals_time"
+  }
+ ],
+ "completionMain": 34,
+ "completionExtras": 60,
+ "completionAll": 139,
+ "faq": [
+  {
+   "q": "How many Lives are available?",
+   "a": "There are 14 Lives spanning combat, gathering and crafting, and the player can switch between them during the adventure."
+  },
+  {
+   "q": "Does FANTASY LIFE i support multiplayer?",
+   "a": "Yes. Nintendo lists one-to-two players on one system, one-to-four local wireless and one-to-four online, plus a two-player Family Co-op feature."
+  },
+  {
+   "q": "Is there a Nintendo Switch 2 Edition?",
+   "a": "Yes. LEVEL5 released a separate Nintendo Switch 2 Edition and an upgrade path with higher resolution, higher frame rate and faster loading."
+  }
+ ],
+ "verdictScore": 8.6,
+ "verdictSummary": "Score note: 8.6/10 is a direct normalization of the current 86/100 Metacritic aggregate for the Nintendo listing; it is not a separately invented store rating.\n\nFANTASY LIFE i succeeds by letting the player decide how much time to spend fighting, crafting, gathering, decorating or exploring. The time-travel island structure gives those relaxed systems a clear story purpose, while extensive multiplayer makes the world easy to share.",
+ "verdictPros": [
+  "Fourteen Lives create unusually broad activity and progression variety.",
+  "Island restoration and open-world exploration reinforce the slow-life fantasy theme.",
+  "Strong cooperative options including online, local wireless and Family Co-op."
+ ],
+ "verdictCons": [
+  "Players who dislike gathering/crafting loops may find progression repetitive.",
+  "The large number of systems can feel busy at the beginning.",
+  "Original Switch presentation is less advanced than the dedicated Switch 2 Edition."
+ ],
+ "reviews": [
+  {
+   "source": "Metacritic — Nintendo listing",
+   "score": "86/100",
+   "quote": "Current critic aggregate for the relevant Nintendo listing: 86/100. This is an external aggregate, not a BANANTO-created review score.",
+   "url": "https://www.dekudeals.com/items/fantasy-life-i-the-girl-who-steals-time"
+  },
+  {
+   "url": "https://www.dekudeals.com/items/fantasy-life-i-the-girl-who-steals-time",
+   "source": "OpenCritic",
+   "score": "85/100",
+   "quote": "OpenCritic aggregate recorded at 85/100. Where OpenCritic groups platforms, this value represents the published aggregate rather than a fabricated platform-specific score."
+  },
+  {
+   "source": "Metacritic User Score",
+   "score": "8.4/10",
+   "quote": "Current Metacritic user score shown with the listing: 8.4/10. User scores can change over time as additional ratings are submitted.",
+   "url": "https://www.dekudeals.com/items/fantasy-life-i-the-girl-who-steals-time"
+  }
+ ],
+ "timeline": [
+  null,
+  {
+   "date": "2025-06-05",
+   "title": "Nintendo Switch 2 Edition",
+   "body": "LEVEL5 launched the Nintendo Switch 2 Edition with improved resolution, frame rate and loading."
+  },
+  {
+   "date": "2025-12",
+   "title": "The Sinister Broker Bazario’s Schemes",
+   "body": "LEVEL5 released major free additional content expanding the game after launch."
+  }
+ ],
+ "patchNotes": [
+  {
+   "version": "Ver. 2.2.0",
+   "date": "2026-08-20",
+   "body": "LEVEL5 added crossplay support with the mobile version, distributed celebration costume packs, changed fonts for selected languages and fixed multiple gameplay issues. This version is listed for Nintendo Switch and Nintendo Switch 2 as well as the other supported platforms."
+  }
+ ],
+ "setupNeeds": [
+  "Nintendo Switch or compatible Nintendo Switch 2 hardware.",
+  "Approximately 7.7 GB of free storage for the Nintendo Switch digital version.",
+  "Nintendo Switch Online is required for online multiplayer; local and single-system options are also available."
+ ],
+ "sources": [
+  {
+   "name": "Nintendo — FANTASY LIFE i",
+   "url": "https://www.nintendo.com/us/store/products/fantasy-life-i-the-girl-who-steals-time-switch/"
+  },
+  {
+   "name": "LEVEL5 — FANTASY LIFE i",
+   "url": "https://www.fantasylife.jp/fli/en/"
+  },
+  {
+   "name": "Play-Asia — physical Switch cover reference",
+   "url": "https://www.play-asia.com/en/fantasy-life-i-the-girl-who-steals-time-multi-language/13/70g01l"
+  },
+  {
+   "name": "Deku Deals — scores, player counts and completion data",
+   "url": "https://www.dekudeals.com/items/fantasy-life-i-the-girl-who-steals-time"
+  },
+  {
+   "name": "LEVEL5 — Version 2.2.0 update notes",
+   "url": "https://www.fantasylife.jp/fli/en/patchnote/ver_2_2_0/"
+  },
+  {
+   "name": "MobyGames — music/credits reference",
+   "url": "https://www.mobygames.com/game/242403/fantasy-life-i-the-girl-who-steals-time/credits/windows/"
+  }
+ ],
+ "soundtrack": [
+  {
+   "title": "Of Helms and White Flowers",
+   "url": "https://www.mobygames.com/game/242403/fantasy-life-i-the-girl-who-steals-time/credits/windows/"
+  },
+  {
+   "title": "Circle of Love",
+   "url": "https://www.mobygames.com/game/242403/fantasy-life-i-the-girl-who-steals-time/credits/windows/"
+  },
+  {
+   "title": "The Hunt Goes On",
+   "url": "https://www.mobygames.com/game/242403/fantasy-life-i-the-girl-who-steals-time/credits/windows/"
+  }
+ ],
+ "seriesName": "FANTASY LIFE",
+ "seriesEntries": [
+  "FANTASY LIFE",
+  "FANTASY LIFE Online",
+  "FANTASY LIFE i: The Girl Who Steals Time"
+ ],
+ "studioName": "LEVEL5 Inc.",
+ "studioUrl": "https://www.level5.co.jp/",
+ "studioLocation": "Fukuoka, Japan",
+ "studioAbout": "LEVEL5 develops and publishes FANTASY LIFE i, combining role-playing progression with social simulation, crafting, exploration and town-building systems.",
+ "boxContentsList": "[Circular]",
+ "image": "/api/files/products/prd_ed0f0c2742ab46d8/image-2bcd0bbfc5b1706a.webp",
+ "banner": "/api/files/products/prd_ed0f0c2742ab46d8/banner-7a24a55f9d42976b.webp",
+ "schemaId": "",
+ "badgeEn": "وفر 40%",
+ "badgeKu": "وفر 40%",
+ "featuresEn": [
+  "Switch freely among 14 Lives spanning combat, gathering and crafting professions.",
+  "The story alternates between a deserted present-day island and its thriving past roughly 1,000 years earlier.",
+  "Island restoration includes placing buildings and objects, changing terrain, and drawing roads and rivers.",
+  "Ginormosia provides a large open-world area with swimming, climbing and mounts for broad exploration.",
+  "Multiplayer supports up to four players for exploration and activities, with local Family Co-op also supported for two players.",
+  "Version 2.2.0 added crossplay support with the mobile release, celebration costume rewards, font changes and multiple bug fixes."
+ ],
+ "featuresKu": [
+  "Switch freely among 14 Lives spanning combat, gathering and crafting professions.",
+  "The story alternates between a deserted present-day island and its thriving past roughly 1,000 years earlier.",
+  "Island restoration includes placing buildings and objects, changing terrain, and drawing roads and rivers.",
+  "Ginormosia provides a large open-world area with swimming, climbing and mounts for broad exploration.",
+  "Multiplayer supports up to four players for exploration and activities, with local Family Co-op also supported for two players.",
+  "Version 2.2.0 added crossplay support with the mobile release, celebration costume rewards, font changes and multiple bug fixes."
+ ],
+ "sales": 0,
+ "images": [],
+ "modes": [],
+ "cartridgeImageTrim": {
+  "left": 0.07906976744186046,
+  "top": 0.040625,
+  "width": 0.8418604651162791,
+  "height": 0.915625,
+  "confidence": 1,
+  "mode": "luminance",
+  "sourceWidth": 215,
+  "sourceHeight": 320,
+  "version": 1
+ }
+}

@@ -1,0 +1,600 @@
+{
+ "id": "prd_0ca27f5eefe44dd5",
+ "title": "Fallout 4: Anniversary Edition",
+ "titleEn": "Fallout 4: Anniversary Edition",
+ "titleKu": "Fallout 4: Anniversary Edition",
+ "slug": "fallout-4-anniversary-edition",
+ "description": "The definitive Fallout 4 package combines the base game, all six official expansions and more than 150 Creation Club items. Explore the Commonwealth, build settlements, craft equipment, join or oppose factions and shape the story through your choices.",
+ "descriptionEn": "The definitive Fallout 4 package combines the base game, all six official expansions and more than 150 Creation Club items. Explore the Commonwealth, build settlements, craft equipment, join or oppose factions and shape the story through your choices.",
+ "descriptionKu": "The definitive Fallout 4 package combines the base game, all six official expansions and more than 150 Creation Club items. Explore the Commonwealth, build settlements, craft equipment, join or oppose factions and shape the story through your choices.",
+ "cartridgeImage": "/api/files/products/prd_0ca27f5eefe44dd5/cartridgeImage-457f2aa15bd06e74.jpg",
+ "nintendoCardImage": "/api/files/products/prd_0ca27f5eefe44dd5/nintendoCardImage-319f3f75f023d52f.jpg",
+ "coverHiResImage": "",
+ "coverImage": "/api/files/products/prd_0ca27f5eefe44dd5/coverImage-457f2aa15bd06e74.jpg",
+ "bannerImages": [
+  "/api/files/products/prd_0ca27f5eefe44dd5/bannerImages-1-860d9c129fd0f72a.jpg",
+  "/api/files/products/prd_0ca27f5eefe44dd5/bannerImages-2-5292342f7f542155.jpg"
+ ],
+ "gallery": [],
+ "youtubeTrailer": "https://www.youtube.com/watch?v=57Dj9vrW20g",
+ "releaseDate": "2026-02-24",
+ "ageRating": "Mature / Strong Violence",
+ "metacriticRating": 84,
+ "genres": [
+  "Open-World RPG",
+  "Action RPG",
+  "Post-Apocalyptic"
+ ],
+ "platform": "switch2",
+ "size": 64.2,
+ "numberOfPlayers": "1",
+ "supportedLanguages": "Japanese, English, French, German, Italian, Spanish, Russian, Portuguese, Traditional Chinese",
+ "hardwareModel": "",
+ "colorEdition": "",
+ "storageCapacity": "",
+ "screenSpecs": "",
+ "batteryLife": "",
+ "boxContents": [],
+ "boxContentsText": "",
+ "warrantyCondition": "",
+ "connectivity": "",
+ "characterName": "Link",
+ "amiiboSeries": "The Legend of Zelda",
+ "figureType": "figure",
+ "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+ "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+ "boxCondition": "mib",
+ "releaseWave": "Wave 2 (Restock)",
+ "rarity": "standard",
+ "accessoryType": "حقيبة حماية وتنقل Carry Case",
+ "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+ "brand": "Nintendo Official",
+ "material": "Hard EVA Shockproof Shell",
+ "availableColors": "Black, Neon Red/Blue, White",
+ "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+ "cardValue": "$20 eShop Balance",
+ "region": "Global",
+ "cardType": "eshop",
+ "deliveryMethod": "instant_code",
+ "redemptionGuide": "",
+ "redemptionSteps": [],
+ "validity": "no_expiry",
+ "usedType": "cartridge",
+ "conditionGrade": "like_new",
+ "packaging": "cib",
+ "guaranteeStatus": "tested_30days",
+ "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+ "accountType": "primary",
+ "badge": "وفر 40%",
+ "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+ "price": 10250,
+ "cost": 1750,
+ "stock": 999999,
+ "isInfiniteStock": true,
+ "isHidden": false,
+ "displayOrder": 0,
+ "category": "nintendo-switch-games",
+ "categoryId": "nintendo-switch-games",
+ "categoryEn": "",
+ "categoryKu": "",
+ "options": [
+  {
+   "id": "offline_account",
+   "name": "مشترك",
+   "description": "Play using the supplied account under the store's offline-account activation method.",
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_account",
+   "name": "خاص بك",
+   "description": "Online-account option with internet-connected account use where supported by the game/service.",
+   "isInfiniteStock": true
+  }
+ ],
+ "types": [
+  {
+   "id": "standard_offline",
+   "name": "مشترك — اللعبة الأساسية",
+   "optionId": "offline_account",
+   "price": 10250,
+   "cost": 1750,
+   "description": "Standard game, Offline Account. Supplier Regular price: ¥8.76; purchase cost converted at 1 CNY = 220 IQD and rounded down to nearest 250 IQD.",
+   "isInfiniteStock": true
+  },
+  {
+   "id": "standard_online",
+   "name": "خاص بك — اللعبة الأساسية",
+   "optionId": "online_account",
+   "price": 55000,
+   "cost": 38000,
+   "description": "Standard game, Online Account. Supplier Standard price: ¥173.40; purchase cost converted at 1 CNY = 220 IQD and rounded down to nearest 250 IQD.",
+   "isInfiniteStock": true
+  }
+ ],
+ "editions": [],
+ "dlcs": [],
+ "isActive": true,
+ "status": "active",
+ "kind": "account",
+ "trade_value_iqd": 40000,
+ "store_offer_bonus_iqd": 0,
+ "trade_enabled": true,
+ "trade_value_locked": false,
+ "schema_version": 22,
+ "titleAr": "فال آوت 4: أنيفرسري إديشن",
+ "compatibility": [
+  "Nintendo Switch 2"
+ ],
+ "edition": "Anniversary Edition",
+ "developer": "Bethesda Game Studios",
+ "publisher": "Bethesda Softworks",
+ "opencriticRating": 87,
+ "userScore": 8.2,
+ "officialUrl": "https://fallout.bethesda.net/",
+ "gameIsOffline": true,
+ "gameIsOnline": true,
+ "gameLanguageLocked": false,
+ "description_short": "The complete Fallout 4 package for Nintendo Switch 2, including the base game, six official expansions and more than 150 curated Creation Club items.",
+ "description_ar": "الحزمة الكاملة من Fallout 4 على Nintendo Switch 2، وتشمل اللعبة الأساسية وجميع الإضافات الرسمية الست وأكثر من 150 عنصرًا من Creation Club. استكشف الـCommonwealth وابنِ المستوطنات وطوّر الأسلحة واختر الفصائل التي تتعاون معها أو تحاربها.",
+ "box_front_url": "https://multimedia.bbycastatic.ca/multimedia/products/500x500/197/19748/19748598.jpg",
+ "videos": [
+  {
+   "title": "Nintendo Switch 2 Teaser Trailer",
+   "url": "https://www.youtube.com/watch?v=57Dj9vrW20g"
+  }
+ ],
+ "nintendoEshopUrl": "https://www.nintendo.com/au/games/nintendo-switch-2/fallout-4-anniversary-edition/",
+ "nintendoOnlineRequired": false,
+ "nintendoCloudSaves": true,
+ "tvMode": true,
+ "tabletopMode": true,
+ "handheldMode": true,
+ "nintendoPlayModes": "TV Mode, Tabletop Mode, Handheld Mode",
+ "switch2Features": [
+  "Native Nintendo Switch 2 release",
+  "30 FPS Quality mode",
+  "40 FPS Balanced mode",
+  "60 FPS Performance mode",
+  "Up to 1080p-class handheld output in higher-quality mode",
+  "Up to 1440p-class TV output in higher-quality mode",
+  "All six official expansions included",
+  "150+ curated Creation Club items"
+ ],
+ "tagline": "The complete post-nuclear Commonwealth adventure arrives on Nintendo Switch 2.",
+ "fitFor": [
+  "Open-world RPG fans",
+  "Fallout fans",
+  "Players who enjoy exploration and character builds",
+  "Players who enjoy settlement construction and crafting",
+  "Players seeking a very large single-player package"
+ ],
+ "notFitFor": [
+  "Players who dislike mature post-apocalyptic themes",
+  "Players looking for multiplayer"
+ ],
+ "playTimeMain": 27,
+ "playTimeFull": 159,
+ "editionsList": [
+  {
+   "name": "Anniversary Edition",
+   "contents": [
+    {
+     "label": "Fallout 4 base game"
+    },
+    {
+     "label": "Automatron"
+    },
+    {
+     "label": "Wasteland Workshop"
+    },
+    {
+     "label": "Far Harbor"
+    },
+    {
+     "label": "Contraptions Workshop"
+    },
+    {
+     "label": "Vault-Tec Workshop"
+    },
+    {
+     "label": "Nuka-World"
+    },
+    {
+     "label": "150+ curated Creation Club items"
+    }
+   ]
+  }
+ ],
+ "gameplayPillars": [
+  {
+   "title": "Open-World Exploration",
+   "description": "Roam the Commonwealth, discover settlements, ruins, vaults and faction-controlled locations."
+  },
+  {
+   "title": "Character Building",
+   "description": "Use SPECIAL stats, perks, equipment and combat styles to define the Sole Survivor."
+  },
+  {
+   "title": "Settlement Construction",
+   "description": "Build and manage settlements using gathered resources, defenses, power and supply lines."
+  },
+  {
+   "title": "Factions and Choices",
+   "description": "Join or oppose major factions whose conflicts determine the direction of the main story."
+  },
+  {
+   "title": "Crafting and Loot",
+   "description": "Modify weapons, armor and power armor using extensive crafting systems."
+  }
+ ],
+ "storyChapters": [
+  {
+   "title": "Vault 111",
+   "body": "The Sole Survivor awakens after the destruction of the old world and leaves Vault 111 to search for a missing child."
+  },
+  {
+   "title": "The Commonwealth",
+   "body": "The search leads through post-war Boston and into conflict among the Minutemen, Brotherhood of Steel, Railroad and Institute."
+  },
+  {
+   "title": "A New Future",
+   "body": "Faction choices shape the ending while expansions open additional stories including Far Harbor and Nuka-World."
+  }
+ ],
+ "galleryImages": [
+  {
+   "url": "https://img-eshop.cdn.nintendo.net/i/ec17cbc1afc8a7d453fe4f1dc7a88ae277b04e13d230d88359fcb7bbb3409f11.jpg",
+   "alt": "Distinct product/game media image 1; separate from the primary cover and square-card roles."
+  },
+  {
+   "url": "https://img-eshop.cdn.nintendo.net/i/af8c0eb31377456217a26585034f61b5e67486c5081a6cebbba663c36a3a1514.jpg",
+   "alt": "Distinct product/game media image 2; separate from the primary cover and square-card roles."
+  }
+ ],
+ "features": [
+  "Complete Fallout 4 base game",
+  "All six official expansions",
+  "Automatron",
+  "Wasteland Workshop",
+  "Far Harbor",
+  "Contraptions Workshop",
+  "Vault-Tec Workshop",
+  "Nuka-World",
+  "More than 150 curated Creation Club items",
+  "Open-world exploration",
+  "Settlement building",
+  "Weapon and armor crafting",
+  "Faction-driven quest structure",
+  "First Nintendo console release of Fallout 4"
+ ],
+ "perfResolutionDocked": "2560x1440 target (30 FPS Quality mode)",
+ "perfResolutionHandheld": "1920x1080 target (30 FPS Quality mode)",
+ "perfFps": "30 / 40 / 60 selectable",
+ "perfNotes": "Bethesda officially provides 30, 40 and 60 FPS targets on Switch 2. Quality mode targets up to 1080p handheld and 1440p docked; Balanced 40 FPS uses lower dynamic resolutions, including roughly 810p-990p handheld and around 1080p docked in third-party testing. Higher-frame-rate modes trade image quality for performance.",
+ "devicePerformance": [
+  {
+   "device": "Nintendo Switch 2",
+   "deviceSlug": "nintendo-switch-2",
+   "deviceModel": "Nintendo Switch 2",
+   "hardwareId": "prd_acf4c89908764c62",
+   "informationStatus": "verified",
+   "unavailableReason": "Reliable measured rendering resolution/FPS values were not established from the official sources used here.",
+   "handheld": {
+    "supported": true,
+    "resolution": "1920x1080 target",
+    "renderingResolution": "Up to 1920x1080 in 30 FPS Quality mode",
+    "outputResolution": "1920x1080",
+    "fps": "30",
+    "fpsMin": "30",
+    "fpsMax": "30"
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "2560x1440 target",
+    "renderingResolution": "2560x1440 target in 30 FPS Quality mode",
+    "outputResolution": "2560x1440",
+    "fps": "30",
+    "fpsMin": "30",
+    "fpsMax": "30"
+   },
+   "modes": [
+    {
+     "name": "Quality",
+     "handheldResolution": "Up to 1920x1080",
+     "handheldFps": "30",
+     "tvResolution": "2560x1440 target",
+     "tvFps": "30"
+    },
+    {
+     "name": "Balanced",
+     "handheldResolution": "Dynamic ~810p-990p",
+     "handheldFps": "40",
+     "tvResolution": "Dynamic around 1920x1080",
+     "tvFps": "40"
+    },
+    {
+     "name": "Performance",
+     "handheldResolution": "Dynamic, reduced from Quality mode",
+     "handheldFps": "60",
+     "tvResolution": "Dynamic, reduced from Quality mode",
+     "tvFps": "60"
+    }
+   ],
+   "sourceName": "Bethesda Support + Switch 2 technical review",
+   "sourceUrl": "https://help.bethesda.net/app/answers/detail/a_id/73860/",
+   "verificationStatus": "official-frame-rate-modes; third-party-resolution-tested",
+   "performanceNotes": "Bethesda officially provides 30, 40 and 60 FPS targets on Switch 2. Quality mode targets up to 1080p handheld and 1440p docked; Balanced 40 FPS uses lower dynamic resolutions, including roughly 810p-990p handheld and around 1080p docked in third-party testing. Higher-frame-rate modes trade image quality for performance."
+  }
+ ],
+ "downloadSizeGb": 64.2,
+ "requiredSpaceGb": 64.2,
+ "microSdRecommended": true,
+ "languagesAudio": [
+  "English",
+  "Japanese",
+  "French",
+  "German",
+  "Italian",
+  "Spanish"
+ ],
+ "languagesText": [
+  "Japanese",
+  "English",
+  "French",
+  "German",
+  "Italian",
+  "Spanish",
+  "Russian",
+  "Portuguese",
+  "Traditional Chinese"
+ ],
+ "arabicSupport": false,
+ "mpLocalPlayers": false,
+ "mpOnlinePlayers": false,
+ "mpCoop": false,
+ "mpCompetitive": false,
+ "mpSplitScreen": false,
+ "mpLocalWireless": false,
+ "dlc": [
+  {
+   "name": "Automatron",
+   "description": "Official expansion featuring robotic enemies and custom robot construction."
+  },
+  {
+   "name": "Far Harbor",
+   "description": "Large story expansion set on a dangerous island with new factions, quests, creatures and equipment."
+  },
+  {
+   "name": "Nuka-World and Workshop expansions",
+   "description": "Anniversary Edition also includes Wasteland Workshop, Contraptions Workshop, Vault-Tec Workshop and Nuka-World."
+  }
+ ],
+ "guides": [
+  {
+   "title": "Bethesda Fallout Site",
+   "summary": "Official franchise and product information.",
+   "url": "https://fallout.bethesda.net/"
+  },
+  {
+   "title": "Bethesda Switch 2 Frame-Rate Support",
+   "summary": "Official guidance for target frame-rate selection.",
+   "url": "https://help.bethesda.net/app/answers/detail/a_id/73860/"
+  },
+  {
+   "title": "Nintendo Switch 2 Teaser",
+   "summary": "Official announcement trailer.",
+   "url": "https://www.youtube.com/watch?v=57Dj9vrW20g"
+  }
+ ],
+ "completionMain": 27,
+ "completionExtras": 82,
+ "completionAll": 159,
+ "faq": [
+  {
+   "q": "What is included in Anniversary Edition?",
+   "a": "The base game, all six official expansions and more than 150 curated Creation Club items."
+  },
+  {
+   "q": "What frame-rate modes are available on Switch 2?",
+   "a": "Bethesda provides 30, 40 and 60 FPS target modes."
+  },
+  {
+   "q": "How long is Fallout 4?",
+   "a": "The main story is roughly 27 hours in long-standing crowdsourced data, while exploration and DLC can push a full playthrough well beyond 80 hours."
+  },
+  {
+   "q": "Is it multiplayer?",
+   "a": "No. Fallout 4 is a single-player RPG."
+  },
+  {
+   "q": "Does it include Far Harbor and Nuka-World?",
+   "a": "Yes. Both are included along with Automatron and the Workshop expansions."
+  },
+  {
+   "q": "Is this the first native Fallout 4 release on a Nintendo console?",
+   "a": "Yes. Anniversary Edition brought Fallout 4 natively to Nintendo Switch 2."
+  }
+ ],
+ "verdictScore": 9,
+ "verdictSummary": "An enormous open-world RPG package and the first native Fallout 4 release on a Nintendo console, combining the base game, all major expansions and a very large Creation Club collection.",
+ "verdictPros": [
+  "Huge amount of included content",
+  "Strong exploration freedom",
+  "Six full expansions included",
+  "150+ Creation Club items built into the Switch 2 version"
+ ],
+ "verdictCons": [
+  "Large 64.2 GB installation",
+  "Nintendo Switch 2 version does not expose the full Creations menu",
+  "Single-player only"
+ ],
+ "reviews": [
+  {
+   "source": "Original Fallout 4 Metacritic",
+   "score": "84+/100",
+   "quote": "The original release was critically acclaimed for world exploration, crafting and player freedom, though dialogue and technical issues were common criticisms.",
+   "url": "https://www.metacritic.com/game/fallout-4/"
+  },
+  {
+   "source": "Switch 2 technical reviews",
+   "score": "Mixed-positive",
+   "quote": "Reviewers praised portability and mode flexibility while noting image-quality compromises, especially at higher frame rates.",
+   "url": "https://www.youtube.com/watch?v=0ls0khdg63g"
+  },
+  {
+   "source": "Anniversary value",
+   "score": "Content-rich package",
+   "quote": "The edition includes the base game, all six expansions and more than 150 curated Creation Club items.",
+   "url": "https://www.youtube.com/watch?v=57Dj9vrW20g"
+  }
+ ],
+ "timeline": [
+  {
+   "date": "2015-11-10",
+   "title": "Original Fallout 4 release",
+   "body": "Fallout 4 launched on PlayStation 4, Xbox One and PC."
+  },
+  {
+   "date": "2016",
+   "title": "Expansion cycle",
+   "body": "Automatron, Far Harbor, Nuka-World and the Workshop expansions released."
+  },
+  {
+   "date": "2025-10-23",
+   "title": "Switch 2 teaser",
+   "body": "Bethesda announced Anniversary Edition for Nintendo Switch 2."
+  },
+  {
+   "date": "2026-02-24",
+   "title": "Switch 2 launch",
+   "body": "Fallout 4: Anniversary Edition released on Nintendo Switch 2."
+  }
+ ],
+ "patchNotes": [
+  {
+   "version": "Anniversary / Switch 2 launch",
+   "date": "2026-02-24",
+   "body": "Nintendo Switch 2 version launched with all official add-ons and curated Creation Club content."
+  },
+  {
+   "version": "Performance mode support",
+   "date": "2026",
+   "body": "Switch 2 version provides selectable 30, 40 and 60 FPS targets."
+  },
+  {
+   "version": "Post-launch fixes",
+   "date": "2026",
+   "body": "Bethesda support continued with technical and stability updates after the Switch 2 launch."
+  }
+ ],
+ "soundtrack": [
+  {
+   "title": "Fallout 4 Original Game Soundtrack",
+   "url": "https://fallout.bethesda.net/"
+  },
+  {
+   "title": "Fallout 4 Main Theme",
+   "url": "https://fallout.bethesda.net/"
+  }
+ ],
+ "seriesName": "Fallout",
+ "seriesEntries": [
+  "Fallout 3",
+  "Fallout: New Vegas",
+  "Fallout 4",
+  "Fallout 76"
+ ],
+ "studioName": "Bethesda Game Studios",
+ "studioUrl": "https://bethesdagamestudios.com/",
+ "studioLocation": "Rockville, Maryland, USA",
+ "studioAbout": "Bethesda Game Studios develops large open-world role-playing games including Fallout and The Elder Scrolls. Anniversary Edition packages Fallout 4 with all six official expansions and more than 150 curated Creation Club items.",
+ "setupNeeds": [
+  "Nintendo Switch 2 system required for the Nintendo Switch 2 version.",
+  "Internet connection is required for digital download, updates and online/service features where applicable.",
+  "Nintendo Account required for Nintendo eShop purchase/download.",
+  "Sufficient internal storage or compatible microSD Express storage required.",
+  "Nintendo Switch Online membership is required only for game-specific online multiplayer/features that explicitly use it."
+ ],
+ "sources": [
+  {
+   "name": "Bethesda",
+   "url": "https://fallout.bethesda.net/"
+  },
+  {
+   "name": "Bethesda Support",
+   "url": "https://help.bethesda.net/app/answers/detail/a_id/73860/"
+  },
+  {
+   "name": "Bethesda Teaser Trailer",
+   "url": "https://www.youtube.com/watch?v=57Dj9vrW20g"
+  },
+  {
+   "name": "SwitchUp Performance Review",
+   "url": "https://www.youtube.com/watch?v=0ls0khdg63g"
+  }
+ ],
+ "boxContentsList": "[Circular]",
+ "image": "/api/files/products/prd_0ca27f5eefe44dd5/coverImage-457f2aa15bd06e74.jpg",
+ "banner": "/api/files/products/prd_0ca27f5eefe44dd5/bannerImages-1-860d9c129fd0f72a.jpg",
+ "schemaId": "",
+ "badgeEn": "وفر 40%",
+ "badgeKu": "وفر 40%",
+ "featuresEn": [
+  "Complete Fallout 4 base game",
+  "All six official expansions",
+  "Automatron",
+  "Wasteland Workshop",
+  "Far Harbor",
+  "Contraptions Workshop",
+  "Vault-Tec Workshop",
+  "Nuka-World",
+  "More than 150 curated Creation Club items",
+  "Open-world exploration",
+  "Settlement building",
+  "Weapon and armor crafting",
+  "Faction-driven quest structure",
+  "First Nintendo console release of Fallout 4"
+ ],
+ "featuresKu": [
+  "Complete Fallout 4 base game",
+  "All six official expansions",
+  "Automatron",
+  "Wasteland Workshop",
+  "Far Harbor",
+  "Contraptions Workshop",
+  "Vault-Tec Workshop",
+  "Nuka-World",
+  "More than 150 curated Creation Club items",
+  "Open-world exploration",
+  "Settlement building",
+  "Weapon and armor crafting",
+  "Faction-driven quest structure",
+  "First Nintendo console release of Fallout 4"
+ ],
+ "sales": 0,
+ "images": [],
+ "modes": [],
+ "cartridgeImageTrim": {
+  "left": 0.19375,
+  "top": 0.00625,
+  "width": 0.6125,
+  "height": 0.9875,
+  "confidence": 1,
+  "mode": "luminance",
+  "sourceWidth": 320,
+  "sourceHeight": 320,
+  "version": 1
+ },
+ "coverImageTrim": {
+  "left": 0.19375,
+  "top": 0.00625,
+  "width": 0.6125,
+  "height": 0.9875,
+  "confidence": 1,
+  "mode": "luminance",
+  "sourceWidth": 320,
+  "sourceHeight": 320,
+  "version": 1
+ },
+ "updatedAt": "2026-08-28T21:59:50.140Z"
+}

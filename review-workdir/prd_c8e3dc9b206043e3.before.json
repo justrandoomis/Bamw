@@ -1,0 +1,571 @@
+{
+ "id": "prd_c8e3dc9b206043e3",
+ "title": "FATAL FRAME II: Crimson Butterfly REMAKE",
+ "titleEn": "FATAL FRAME II: Crimson Butterfly REMAKE",
+ "titleKu": "FATAL FRAME II: Crimson Butterfly REMAKE",
+ "slug": "fatal-frame-ii-crimson-butterfly-remake",
+ "description": "A full remake of the second FATAL FRAME / PROJECT ZERO game. Explore Minakami Village, protect Mayu, uncover the forbidden ritual, and repel spirits using the Camera Obscura. The remake includes rebuilt graphics and sound, revised controls, new Camera Obscura functions, new areas and side stories.",
+ "descriptionEn": "A full remake of the second FATAL FRAME / PROJECT ZERO game. Explore Minakami Village, protect Mayu, uncover the forbidden ritual, and repel spirits using the Camera Obscura. The remake includes rebuilt graphics and sound, revised controls, new Camera Obscura functions, new areas and side stories.",
+ "descriptionKu": "A full remake of the second FATAL FRAME / PROJECT ZERO game. Explore Minakami Village, protect Mayu, uncover the forbidden ritual, and repel spirits using the Camera Obscura. The remake includes rebuilt graphics and sound, revised controls, new Camera Obscura functions, new areas and side stories.",
+ "cartridgeImage": "/api/files/products/prd_c8e3dc9b206043e3/cartridgeImage-97aff1f2b2768dfe.avif",
+ "nintendoCardImage": "/api/files/products/prd_c8e3dc9b206043e3/nintendoCardImage-3787dce27b0a922d.avif",
+ "coverHiResImage": "",
+ "coverImage": "/api/files/products/prd_c8e3dc9b206043e3/coverImage-97aff1f2b2768dfe.avif",
+ "bannerImages": [
+  "/api/files/products/prd_c8e3dc9b206043e3/bannerImages-1-b0521c7f19590a32.jpg"
+ ],
+ "gallery": [],
+ "youtubeTrailer": "https://www.youtube.com/watch?v=CC71I1r3cE4",
+ "releaseDate": "2026-03-12",
+ "ageRating": "PEGI 16",
+ "metacriticRating": 78,
+ "genres": [
+  "Horror",
+  "Adventure",
+  "Action"
+ ],
+ "platform": "switch2",
+ "size": 27.3,
+ "numberOfPlayers": "1",
+ "supportedLanguages": "Japanese, English, Spanish, French, German, Italian, Korean, Arabic",
+ "hardwareModel": "",
+ "colorEdition": "",
+ "storageCapacity": "",
+ "screenSpecs": "",
+ "batteryLife": "",
+ "boxContents": [],
+ "boxContentsText": "",
+ "warrantyCondition": "",
+ "connectivity": "",
+ "characterName": "Link",
+ "amiiboSeries": "The Legend of Zelda",
+ "figureType": "figure",
+ "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+ "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+ "boxCondition": "mib",
+ "releaseWave": "Wave 2 (Restock)",
+ "rarity": "standard",
+ "accessoryType": "حقيبة حماية وتنقل Carry Case",
+ "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+ "brand": "Nintendo Official",
+ "material": "Hard EVA Shockproof Shell",
+ "availableColors": "Black, Neon Red/Blue, White",
+ "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+ "cardValue": "$20 eShop Balance",
+ "region": "Global",
+ "cardType": "eshop",
+ "deliveryMethod": "instant_code",
+ "redemptionGuide": "",
+ "redemptionSteps": [],
+ "validity": "no_expiry",
+ "usedType": "cartridge",
+ "conditionGrade": "like_new",
+ "packaging": "cib",
+ "guaranteeStatus": "tested_30days",
+ "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+ "accountType": "primary",
+ "badge": "وفر 40%",
+ "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+ "price": 12000,
+ "cost": 1500,
+ "stock": 999999,
+ "isInfiniteStock": true,
+ "isHidden": false,
+ "displayOrder": 0,
+ "category": "nintendo-switch-games",
+ "categoryId": "nintendo-switch-games",
+ "categoryEn": "",
+ "categoryKu": "",
+ "options": [
+  {
+   "id": "offline_account",
+   "name": "حساب أوفلاين",
+   "description": "حساب مخصص للعب دون اتصال بعد إكمال خطوات التفعيل.",
+   "isInfiniteStock": true,
+   "customerDescription": "حساب مشترك"
+  },
+  {
+   "id": "online_account",
+   "name": "حساب أونلاين",
+   "description": "حساب يدعم تشغيل اللعبة مع الاتصال والميزات المتاحة أونلاين.",
+   "isInfiniteStock": true,
+   "customerDescription": "حساب خاص بك"
+  }
+ ],
+ "types": [
+  {
+   "id": "standard_offline",
+   "name": "حساب أوفلاين — عادي",
+   "optionId": "offline_account",
+   "price": "",
+   "cost": 1500,
+   "description": "تشمل الإصدار العادي من اللعبة.",
+   "isInfiniteStock": true,
+   "customerDescription": "اللعبة الأساسية",
+   "internalNote": "Standard game, Offline Account. Supplier Regular price: ¥7.78; purchase cost converted at 1 CNY = 220 IQD and rounded down to nearest 250 IQD."
+  },
+  {
+   "id": "standard_online",
+   "name": "حساب أونلاين — عادي",
+   "optionId": "online_account",
+   "price": "38000",
+   "cost": 20750,
+   "description": "تشمل الإصدار العادي من اللعبة.",
+   "isInfiniteStock": true,
+   "customerDescription": "اللعبة الأساسية",
+   "internalNote": "Standard game, Online Account. Supplier Standard price: ¥95.00; purchase cost converted at 1 CNY = 220 IQD and rounded down to nearest 250 IQD."
+  }
+ ],
+ "editions": [],
+ "dlcs": [],
+ "isActive": true,
+ "status": "active",
+ "kind": "account",
+ "trade_value_iqd": 40000,
+ "store_offer_bonus_iqd": 0,
+ "trade_enabled": true,
+ "trade_value_locked": false,
+ "schema_version": 22,
+ "titleAr": "فاتال فريم 2: كريمسون باترفلاي ريميك",
+ "compatibility": [
+  "Nintendo Switch 2"
+ ],
+ "edition": "Standard",
+ "developer": "Team NINJA",
+ "publisher": "KOEI TECMO",
+ "opencriticRating": 76,
+ "userScore": 8,
+ "officialUrl": "https://www.koeitecmoeurope.com/zero/crimson-re/uk/",
+ "eshopUrl": "https://ec.nintendo.com/AU/en/titles/70010000105943",
+ "gameIsOffline": true,
+ "gameIsOnline": true,
+ "gameLanguageLocked": false,
+ "description_short": "A full remake of the acclaimed Japanese horror adventure following twin sisters Mio and Mayu Amakura in the haunted Minakami Village.",
+ "description_ar": "إعادة صنع كاملة للجزء الثاني من سلسلة Fatal Frame / Project Zero. تتبع القصة الشقيقتين التوأم ميو ومايو داخل قرية ميناکامي المسكونة، مع الاعتماد على Camera Obscura لمواجهة الأرواح وكشف أسرار الطقس المحرّم. النسخة الجديدة تعيد بناء الرسوم والصوت والتحكم وتضيف مناطق وقصصًا جانبية وميكانيكيات جديدة.",
+ "box_front_url": "https://i5.walmartimages.com/seo/FATAL-nbsp-FRAME-nbsp-II-nbsp-Crimson-Butterfly-REMAKE-Nintendo-Switch-2-Game_8579ec98-53f2-4342-9953-76f830097735.1993ce518fb467b8f599d2fae21d172a.jpeg?odnBg=FFFFFF&odnHeight=1200&odnWidth=1200",
+ "videos": [
+  {
+   "title": "Launch Trailer",
+   "url": "https://www.youtube.com/watch?v=CC71I1r3cE4"
+  },
+  {
+   "title": "Official Launch Trailer (US)",
+   "url": "https://www.youtube.com/watch?v=nqgbZ_2puYw"
+  },
+  {
+   "title": "Japanese Launch Trailer",
+   "url": "https://www.youtube.com/watch?v=FA7dCq8IdOU"
+  }
+ ],
+ "nintendoEshopUrl": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-2-games/FATAL-FRAME-II-Crimson-Butterfly-REMAKE--3014309.html",
+ "nintendoOnlineRequired": false,
+ "nintendoCloudSaves": true,
+ "nintendoGameKeyCard": true,
+ "nintendoPhysicalNeedsDownload": true,
+ "tvMode": true,
+ "tabletopMode": true,
+ "handheldMode": true,
+ "nintendoPlayModes": "TV Mode, Tabletop Mode, Handheld Mode",
+ "switch2Enhanced": false,
+ "switch2Exclusive": false,
+ "switch2Features": [
+  "Native Nintendo Switch 2 version",
+  "Up to 1920x1080 output",
+  "30 FPS target",
+  "TV, Tabletop and Handheld modes",
+  "Gyroscope aiming support for Camera Obscura in handheld play",
+  "3D / surround-sound presentation",
+  "Save Data Cloud",
+  "Arabic text support added by update 1.04.00"
+ ],
+ "tagline": "Together, always.",
+ "fitFor": [
+  "Players who enjoy Japanese psychological horror",
+  "Fans of exploration-heavy survival horror",
+  "Players interested in atmospheric ghost stories and photography mechanics",
+  "Returning Fatal Frame / Project Zero fans"
+ ],
+ "notFitFor": [
+  "Players uncomfortable with intense horror themes",
+  "Players seeking fast action or multiplayer",
+  "Players who require a 60 FPS experience on Switch 2"
+ ],
+ "playTimeMain": 12.5,
+ "playTimeFull": 39.5,
+ "editionsList": [
+  {
+   "name": "Standard Edition",
+   "contents": [
+    {
+     "label": "Full game"
+    }
+   ]
+  },
+  {
+   "name": "Digital Deluxe Edition",
+   "contents": [
+    {
+     "label": "Full game"
+    },
+    {
+     "label": "Digital Art Book"
+    },
+    {
+     "label": "Digital Soundtrack"
+    },
+    {
+     "label": "Lace Gloves (White/Black)"
+    },
+    {
+     "label": "Japanese Gothic Dress costumes"
+    },
+    {
+     "label": "Deluxe Charm"
+    }
+   ]
+  },
+  {
+   "name": "Digital Deluxe Upgrade",
+   "contents": [
+    {
+     "label": "Digital Art Book"
+    },
+    {
+     "label": "Digital Soundtrack"
+    },
+    {
+     "label": "Digital Deluxe cosmetic bonuses"
+    }
+   ]
+  }
+ ],
+ "gameplayPillars": [
+  {
+   "title": "Camera Obscura Combat",
+   "description": "Photograph hostile spirits at the right moment, manage positioning and use Focus, Zoom and filters to maximize damage and control encounters."
+  },
+  {
+   "title": "Haunted Exploration",
+   "description": "Search Minakami Village through dark homes, shrines, passages and new areas while following traces of the village's forbidden ritual."
+  },
+  {
+   "title": "Twin-Sister Bond",
+   "description": "The remake adds a Hold Mayu's Hand interaction and expands moments centered on Mio and Mayu's relationship."
+  },
+  {
+   "title": "Remade Presentation",
+   "description": "Characters, environments, lighting, sound and controls are rebuilt for modern hardware while preserving the original story structure."
+  }
+ ],
+ "worldSummary": "Minakami Village exists in an endless night shaped by a catastrophic forbidden ritual. Mio searches for Mayu through abandoned homes, shrines and dark paths while spirits replay fragments of the village's tragic past.",
+ "storyChapters": [
+  {
+   "title": "Lost in Minakami Village",
+   "body": "Twin sisters Mio and Mayu Amakura become trapped in an abandoned village that appears to exist in an endless night."
+  },
+  {
+   "title": "The Crimson Sacrifice",
+   "body": "Clues reveal a forbidden ritual and the tragedy that left the village filled with vengeful spirits."
+  },
+  {
+   "title": "Together, Always",
+   "body": "Mio's search for Mayu and the sisters' bond become inseparable from the mystery of the village and its past."
+  }
+ ],
+ "galleryImages": [
+  {
+   "url": "https://assets.nintendo.com/image/upload/q_auto%3Abest/f_auto/dpr_2.0/store/software/switch2/70010000105942/0c72a534282bbae5922a7abb9b0a9817b6b25ed9c5d9f5a3f7a9d688a657aa3c",
+   "alt": "Distinct product/game media image 1; separate from the primary cover and square-card roles."
+  },
+  {
+   "url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3920610/a828a70ae0df14b3b458df96d6ca1cccf5c2e9fc/ss_a828a70ae0df14b3b458df96d6ca1cccf5c2e9fc.jpg",
+   "alt": "Distinct product/game media image 2; separate from the primary cover and square-card roles."
+  }
+ ],
+ "features": [
+  "Complete remake of the 2003 horror classic",
+  "Rebuilt graphics, audio, controls and gameplay systems",
+  "Camera Obscura combat with Focus, Zoom and filter switching",
+  "New Hold Mayu's Hand mechanic",
+  "New side stories and areas",
+  "3D/spatial audio presentation",
+  "Demo with save-data transfer",
+  "Digital Deluxe edition with art book, soundtrack, costumes and charm",
+  "Arabic text support added in version 1.04.00"
+ ],
+ "perfResolutionDocked": "1920x1080 (upscaled output; may temporarily decrease)",
+ "perfResolutionHandheld": "1920x1080 output",
+ "perfFps": "30",
+ "perfHdr": false,
+ "perfNotes": "Official platform specifications list Nintendo Switch 2 at up to 1080p and 30 FPS in TV, tabletop and handheld modes. Resolution may temporarily decrease. HDR is not supported on Switch 2. Handheld mode supports Camera Obscura gyroscope controls.",
+ "devicePerformance": [
+  {
+   "device": "Nintendo Switch 2",
+   "deviceSlug": "nintendo-switch-2",
+   "deviceModel": "Nintendo Switch 2",
+   "hardwareId": "prd_acf4c89908764c62",
+   "informationStatus": "verified",
+   "handheld": {
+    "supported": true,
+    "resolution": "1920x1080 output",
+    "resolutionDynamic": true,
+    "outputResolution": "1920x1080",
+    "fps": "30",
+    "fpsMin": "30",
+    "fpsMax": "30",
+    "hdr": false,
+    "mode": "Quality / Standard",
+    "notes": "Official maximum output 1080p; resolution may temporarily decrease. Gyro aiming for Camera Obscura is supported in handheld mode."
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "1920x1080 output",
+    "resolutionDynamic": true,
+    "outputResolution": "1920x1080",
+    "fps": "30",
+    "fpsMin": "30",
+    "fpsMax": "30",
+    "hdr": false,
+    "mode": "Standard",
+    "notes": "Official maximum 1080p/30 FPS; resolution can temporarily decrease."
+   },
+   "sourceName": "KOEI TECMO Official Specs",
+   "sourceUrl": "https://www.koeitecmoamerica.com/fatalframe/crimson-re/us/specs/",
+   "verificationStatus": "verified"
+  }
+ ],
+ "downloadSizeGb": 27.3,
+ "requiredSpaceGb": 27.3,
+ "microSdRecommended": false,
+ "languagesAudio": [
+  "Japanese"
+ ],
+ "languagesText": [
+  "Japanese",
+  "English",
+  "Spanish",
+  "French",
+  "German",
+  "Italian",
+  "Korean",
+  "Arabic"
+ ],
+ "arabicSupport": true,
+ "mpLocalPlayers": false,
+ "mpOnlinePlayers": false,
+ "mpCoop": false,
+ "mpCompetitive": false,
+ "mpSplitScreen": false,
+ "mpLocalWireless": false,
+ "dlc": [
+  {
+   "name": "Digital Deluxe Upgrade",
+   "description": "Adds the Digital Art Book, Digital Soundtrack, Lace Gloves, Japanese Gothic costumes and Deluxe Charm."
+  },
+  {
+   "name": "SILENT HILL f Costume Set",
+   "description": "Collaboration costume content featuring the Navy Sailor School Uniform and Fox Mask."
+  }
+ ],
+ "guides": [
+  {
+   "title": "Official Game Site",
+   "summary": "Official feature, edition and platform information.",
+   "url": "https://www.koeitecmoeurope.com/zero/crimson-re/uk/"
+  },
+  {
+   "title": "Official Updates",
+   "summary": "Patch notes and language-support changes.",
+   "url": "https://www.koeitecmoeurope.com/zero/crimson-re/uk/update/"
+  },
+  {
+   "title": "Nintendo Store Page",
+   "summary": "Nintendo Switch 2 specifications, modes, size and languages.",
+   "url": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-2-games/FATAL-FRAME-II-Crimson-Butterfly-REMAKE--3014309.html"
+  }
+ ],
+ "completionMain": 12.5,
+ "completionExtras": 16,
+ "completionAll": 39.5,
+ "faq": [
+  {
+   "q": "Is this a remaster or a full remake?",
+   "a": "It is a full remake of FATAL FRAME / PROJECT ZERO II: Crimson Butterfly, with rebuilt visuals, audio, controls and gameplay systems."
+  },
+  {
+   "q": "Does the Switch 2 version support Arabic?",
+   "a": "Yes. Arabic language support was added to Nintendo Switch 2 with version 1.04.00 on June 22, 2026."
+  },
+  {
+   "q": "How does it run on Nintendo Switch 2?",
+   "a": "The official platform specification lists up to 1080p output at 30 FPS; resolution can temporarily decrease."
+  },
+  {
+   "q": "Is it single-player?",
+   "a": "Yes. It is a single-player horror adventure."
+  },
+  {
+   "q": "What is included in Digital Deluxe?",
+   "a": "The full game, Digital Art Book, Digital Soundtrack and several cosmetic/accessory bonuses."
+  },
+  {
+   "q": "Does it use a Game-Key Card physically?",
+   "a": "Physical-format details vary by region. The Nintendo Switch 2 product should be checked against the exact regional physical release before purchase."
+  }
+ ],
+ "verdictScore": 8.5,
+ "verdictSummary": "A strong modern reconstruction of one of the genre's most distinctive horror games. Its atmosphere, sound and Camera Obscura gameplay remain the main strengths, while the 30 FPS cap is the main technical limitation on Switch 2.",
+ "verdictPros": [
+  "Exceptional atmosphere and sound design",
+  "Faithful yet substantially rebuilt remake",
+  "Distinctive Camera Obscura combat",
+  "Strong narrative focus on Mio and Mayu",
+  "Official post-launch Arabic language support"
+ ],
+ "verdictCons": [
+  "Switch 2 version is capped at 30 FPS",
+  "No HDR support on Switch 2 according to official platform comparison",
+  "Single-player only"
+ ],
+ "reviews": [
+  {
+   "source": "Metacritic",
+   "score": "78/100",
+   "quote": "Generally favorable critical reception with strong praise for atmosphere, visuals and horror presentation.",
+   "url": "https://www.metacritic.com/game/fatal-frame-ii-crimson-butterfly-remake/"
+  },
+  {
+   "source": "OpenCritic",
+   "score": "76/100",
+   "quote": "Critics broadly praised the remake's atmosphere and presentation while noting some legacy clunkiness.",
+   "url": "https://opencritic.com/"
+  },
+  {
+   "source": "Deku Deals / user data",
+   "score": "8.0/10",
+   "quote": "Player-facing aggregate data lists an 8.0 user score alongside critic aggregates.",
+   "url": "https://www.dekudeals.com/items/fatal-frame-ii-crimson-butterfly-remake"
+  }
+ ],
+ "timeline": [
+  {
+   "date": "2003-11-27",
+   "title": "Original Japanese release",
+   "body": "Fatal Frame II: Crimson Butterfly originally launched on PlayStation 2 in Japan."
+  },
+  {
+   "date": "2025",
+   "title": "Remake announced",
+   "body": "KOEI TECMO revealed a full modern remake for current platforms including Nintendo Switch 2."
+  },
+  {
+   "date": "2026-03-12",
+   "title": "Worldwide remake launch",
+   "body": "The remake released on Nintendo Switch 2, PS5, Xbox Series X|S and PC."
+  },
+  {
+   "date": "2026-06-22",
+   "title": "Version 1.04.00",
+   "body": "Nintendo Switch 2 update added Arabic language support and stability/progression fixes."
+  }
+ ],
+ "patchNotes": [
+  {
+   "version": "1.04.00",
+   "date": "2026-06-22",
+   "body": "Added Arabic language support, fixed the Chapter Four Light Key progression issue, improved stability and applied other minor bug fixes."
+  },
+  {
+   "version": "1.03.x",
+   "date": "2026-04",
+   "body": "Post-launch fixes targeted visual/stability issues on supported platforms; exact Switch 2 applicability varies by patch."
+  },
+  {
+   "version": "1.01.00",
+   "date": "2026-03",
+   "body": "Launch-period update support for the game and Digital Art Book / Digital Soundtrack."
+  }
+ ],
+ "soundtrack": [
+  {
+   "title": "FATAL FRAME II: Crimson Butterfly REMAKE Digital Soundtrack",
+   "url": "https://www.koeitecmoeurope.com/zero/crimson-re/uk/"
+  },
+  {
+   "title": "Remake soundtrack and 3D audio presentation",
+   "url": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-2-games/FATAL-FRAME-II-Crimson-Butterfly-REMAKE--3014309.html"
+  }
+ ],
+ "seriesName": "FATAL FRAME / PROJECT ZERO",
+ "seriesEntries": [
+  "FATAL FRAME: Maiden of Black Water",
+  "FATAL FRAME: Mask of the Lunar Eclipse",
+  "FATAL FRAME II: Crimson Butterfly REMAKE"
+ ],
+ "studioName": "KOEI TECMO GAMES / Team NINJA",
+ "studioUrl": "https://www.koeitecmo.co.jp/",
+ "studioLocation": "Yokohama, Kanagawa, Japan",
+ "studioAbout": "KOEI TECMO GAMES develops and publishes Japanese console and PC titles. The remake rebuilds the 2003 horror classic with new visuals, audio, controls, exploration systems and Camera Obscura mechanics.",
+ "setupNeeds": [
+  "Nintendo Switch 2 system required for the Nintendo Switch 2 version.",
+  "Internet connection is required for digital download, updates and online/service features where applicable.",
+  "Nintendo Account required for Nintendo eShop purchase/download.",
+  "Sufficient internal storage or compatible microSD Express storage required.",
+  "Nintendo Switch Online membership is required only for game-specific online multiplayer/features that explicitly use it."
+ ],
+ "sources": [
+  {
+   "name": "Nintendo UK",
+   "url": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-2-games/FATAL-FRAME-II-Crimson-Butterfly-REMAKE--3014309.html"
+  },
+  {
+   "name": "KOEI TECMO Official",
+   "url": "https://www.koeitecmoeurope.com/zero/crimson-re/uk/"
+  },
+  {
+   "name": "KOEI TECMO Updates",
+   "url": "https://www.koeitecmoeurope.com/zero/crimson-re/uk/update/"
+  },
+  {
+   "name": "Deku Deals",
+   "url": "https://www.dekudeals.com/items/fatal-frame-ii-crimson-butterfly-remake"
+  }
+ ],
+ "boxContentsList": "[Circular]",
+ "image": "/api/files/products/prd_c8e3dc9b206043e3/coverImage-97aff1f2b2768dfe.avif",
+ "banner": "/api/files/products/prd_c8e3dc9b206043e3/bannerImages-1-b0521c7f19590a32.jpg",
+ "schemaId": "",
+ "badgeEn": "وفر 40%",
+ "badgeKu": "وفر 40%",
+ "featuresEn": [
+  "Complete remake of the 2003 horror classic",
+  "Rebuilt graphics, audio, controls and gameplay systems",
+  "Camera Obscura combat with Focus, Zoom and filter switching",
+  "New Hold Mayu's Hand mechanic",
+  "New side stories and areas",
+  "3D/spatial audio presentation",
+  "Demo with save-data transfer",
+  "Digital Deluxe edition with art book, soundtrack, costumes and charm",
+  "Arabic text support added in version 1.04.00"
+ ],
+ "featuresKu": [
+  "Complete remake of the 2003 horror classic",
+  "Rebuilt graphics, audio, controls and gameplay systems",
+  "Camera Obscura combat with Focus, Zoom and filter switching",
+  "New Hold Mayu's Hand mechanic",
+  "New side stories and areas",
+  "3D/spatial audio presentation",
+  "Demo with save-data transfer",
+  "Digital Deluxe edition with art book, soundtrack, costumes and charm",
+  "Arabic text support added in version 1.04.00"
+ ],
+ "sales": 0,
+ "images": [],
+ "modes": [],
+ "boxFrontUrl": "https://i5.walmartimages.com/seo/FATAL-nbsp-FRAME-nbsp-II-nbsp-Crimson-Butterfly-REMAKE-Nintendo-Switch-2-Game_8579ec98-53f2-4342-9953-76f830097735.1993ce518fb467b8f599d2fae21d172a.jpeg?odnBg=FFFFFF&odnHeight=1200&odnWidth=1200",
+ "createdAt": "2026-08-31T22:50:06.612Z",
+ "created_at": "2026-08-31T22:50:06.612Z",
+ "updatedAt": "2026-08-31T22:50:06.612Z",
+ "updated_at": "2026-08-31T22:50:06.612Z",
+ "variants": "[Circular]"
+}

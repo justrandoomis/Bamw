@@ -1,6 +1,6 @@
 {
  "batch": "007",
- "apply": true,
+ "apply": false,
  "games": [
   {
    "id": "prd_0ca27f5eefe44dd5",
@@ -37,8 +37,12 @@
       "deviceSlug": "nintendo-switch",
       "informationStatus": "not_published",
       "unavailableReason": "LEVEL-5 publishes no resolution or frame-rate figures for the Nintendo Switch version; the 1080p/1440p at 60 fps figures previously stored here belong to the separate Nintendo Switch 2 Edition.",
-      "handheld": { "supported": true },
-      "tv": { "supported": true },
+      "handheld": {
+       "supported": true
+      },
+      "tv": {
+       "supported": true
+      },
       "modes": [],
       "sourceName": "LEVEL-5 official product information",
       "sourceUrl": "https://www.level5.co.jp/products/fantasylife-i/",
@@ -100,8 +104,16 @@
       "device": "Nintendo Switch",
       "deviceSlug": "nintendo-switch",
       "informationStatus": "available",
-      "handheld": { "supported": true, "resolution": "720p", "fps": "30" },
-      "tv": { "supported": true, "resolution": "1080p", "fps": "30" },
+      "handheld": {
+       "supported": true,
+       "resolution": "720p",
+       "fps": "30"
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p",
+       "fps": "30"
+      },
       "modes": [],
       "sourceName": "Official product and compatibility information",
       "sourceUrl": "https://www.ea.com/games/fifa/fifa-22",
@@ -145,6 +157,113 @@
     "guaranteeStatus"
    ],
    "notes": "box_front_url removed: a malformed Nintendo CDN transformation URL answering HTTP 400 — the genuine box photo in cartridgeImage (verified visually alongside the full wrap) remains. supportedLanguages removed: a varies-by-region referral sentence, not a language list. The stray unsupported Nintendo Switch record drops under the platform rule, keeping the honest improved-resolution Switch 2 record. Fields verified: 2025-09-30, 10.3 GB, Metacritic 87. Square card, cover, wrap, four eShop banners and six galleries verified working."
+  }
+ ],
+ "appliedAt": "2026-09-02T02:42:54.943Z",
+ "results": [
+  {
+   "id": "prd_0ca27f5eefe44dd5",
+   "action": "APPLIED",
+   "changed": [
+    "coverImage",
+    "image"
+   ],
+   "removed": [
+    "nintendoCardImage",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ]
+  },
+  {
+   "id": "prd_ed0f0c2742ab46d8",
+   "action": "APPLIED",
+   "changed": [
+    "dlcSummary",
+    "devicePerformance"
+   ],
+   "removed": [
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ]
+  },
+  {
+   "id": "prd_c8e3dc9b206043e3",
+   "action": "APPLIED",
+   "changed": [
+    "coverImage",
+    "image",
+    "galleryImages"
+   ],
+   "removed": [
+    "cartridgeImage",
+    "nintendoCardImage",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ]
+  },
+  {
+   "id": "prd_d2f92910a35d45f0",
+   "action": "APPLIED",
+   "changed": [
+    "devicePerformance"
+   ],
+   "removed": [
+    "metacriticRating",
+    "supportedLanguages",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ]
+  },
+  {
+   "id": "prd_4db08fe5ba464314",
+   "action": "APPLIED",
+   "changed": [],
+   "removed": [
+    "box_front_url",
+    "supportedLanguages",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ]
   }
  ]
 }

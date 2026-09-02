@@ -1,0 +1,3442 @@
+{
+ "batch": "008",
+ "generatedAt": "2026-09-02T02:43:37.692Z",
+ "totalGames": 310,
+ "reviewedSoFar": 33,
+ "games": [
+  {
+   "id": "prd_9b9588d4e6ea4cfd",
+   "slug": "final-fantasy-vi",
+   "title": "FINAL FANTASY VI",
+   "platform": "switch1",
+   "isHidden": true,
+   "hash": "1f1724f2d8da01b1bbc33331e6cde037fd516dedabc6cfbeeefce7d498035b05",
+   "images": [
+    {
+     "role": "front-box",
+     "field": "cartridgeImage",
+     "url": "https://images.launchbox-app.com/b09d81bf-b265-4744-9385-74be2d21eed9.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 164052,
+     "width": 600,
+     "height": 900,
+     "thumb": "review-workdir/thumbs/batch-008/final-fantasy-vi__front-box-0.png"
+    },
+    {
+     "role": "front-box",
+     "field": "box_front_url",
+     "url": "https://images.launchbox-app.com/b09d81bf-b265-4744-9385-74be2d21eed9.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 164052,
+     "width": 600,
+     "height": 900,
+     "thumb": "review-workdir/thumbs/batch-008/final-fantasy-vi__front-box-1.png"
+    },
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://banan.to/api/files/products/prd_9b9588d4e6ea4cfd/square-card-75c7ccb00ddbd019.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 104406,
+     "width": 1024,
+     "height": 1024,
+     "thumb": "review-workdir/thumbs/batch-008/final-fantasy-vi__square-card-2.png"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://banan.to/api/files/products/prd_9b9588d4e6ea4cfd/cover-599284e9a6609045.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 154356,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-008/final-fantasy-vi__detail-cover-3.png"
+    },
+    {
+     "role": "listing",
+     "field": "image",
+     "url": "https://images.launchbox-app.com/20d48a28-c10c-4b00-a399-5f27052cc58c.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 294872,
+     "width": 1600,
+     "height": 900,
+     "thumb": "review-workdir/thumbs/batch-008/final-fantasy-vi__listing-4.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[0]",
+     "url": "https://images.launchbox-app.com/r2_7d94a5fd-9a47-48fb-9657-df979245ae07.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 182357,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-008/final-fantasy-vi__banner-5.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[1]",
+     "url": "https://images.launchbox-app.com/ed2e409b-175c-4471-85e3-d93a82d4a8da.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 189827,
+     "width": 1024,
+     "height": 1024,
+     "thumb": "review-workdir/thumbs/batch-008/final-fantasy-vi__banner-6.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[2]",
+     "url": "https://images.launchbox-app.com/20d48a28-c10c-4b00-a399-5f27052cc58c.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 294872,
+     "width": 1600,
+     "height": 900,
+     "thumb": "review-workdir/thumbs/batch-008/final-fantasy-vi__banner-7.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[3]",
+     "url": "https://images.launchbox-app.com/f4586008-dc74-408a-a8a5-723a743429d3.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 109230,
+     "width": 800,
+     "height": 450,
+     "thumb": "review-workdir/thumbs/batch-008/final-fantasy-vi__banner-8.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://banan.to/api/files/products/prd_9b9588d4e6ea4cfd/gallery-1-42a9320b0e7800e6.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 207472,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-008/final-fantasy-vi__gallery-9.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[1]",
+     "url": "https://banan.to/api/files/products/prd_9b9588d4e6ea4cfd/gallery-2-53afda8bb52c0ff6.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 192152,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-008/final-fantasy-vi__gallery-10.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[2]",
+     "url": "https://banan.to/api/files/products/prd_9b9588d4e6ea4cfd/gallery-3-934238e7e61daefa.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 158450,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-008/final-fantasy-vi__gallery-11.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[3]",
+     "url": "https://banan.to/api/files/products/prd_9b9588d4e6ea4cfd/gallery-4-2d0f905c3a63a42d.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 95878,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-008/final-fantasy-vi__gallery-12.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[4]",
+     "url": "https://banan.to/api/files/products/prd_9b9588d4e6ea4cfd/gallery-5-cc4059be7b620d5b.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 104066,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-008/final-fantasy-vi__gallery-13.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[5]",
+     "url": "https://banan.to/api/files/products/prd_9b9588d4e6ea4cfd/gallery-6-3bfa5a2b2969d87c.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 78338,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-008/final-fantasy-vi__gallery-14.png"
+    }
+   ],
+   "record": {
+    "title": "FINAL FANTASY VI",
+    "titleEn": "FINAL FANTASY VI",
+    "titleKu": "",
+    "slug": "final-fantasy-vi",
+    "description": "The Pixel Remaster of FINAL FANTASY VI preserves its ensemble story, Active Time Battle combat, Espers, and iconic soundtrack with modern UI and convenience options. The early game follows an empire, resistance movement, and a mysterious young woman connected to magic. Players can recover companions, complete optional stories, and prepare to confront Kefka’s final domain.",
+    "descriptionEn": "The Pixel Remaster of FINAL FANTASY VI preserves its ensemble story, Active Time Battle combat, Espers, and iconic soundtrack with modern UI and convenience options. The early game follows an empire, resistance movement, and a mysterious young woman connected to magic. Players can recover companions, complete optional stories, and prepare to confront Kefka’s final domain.",
+    "descriptionKu": "",
+    "cartridgeImage": "https://images.launchbox-app.com/b09d81bf-b265-4744-9385-74be2d21eed9.jpg",
+    "nintendoCardImage": "/api/files/products/prd_9b9588d4e6ea4cfd/square-card-75c7ccb00ddbd019.webp",
+    "coverHiResImage": "",
+    "coverImage": "/api/files/products/prd_9b9588d4e6ea4cfd/cover-599284e9a6609045.webp",
+    "bannerImages": [
+     "https://images.launchbox-app.com/r2_7d94a5fd-9a47-48fb-9657-df979245ae07.jpg",
+     "https://images.launchbox-app.com/ed2e409b-175c-4471-85e3-d93a82d4a8da.jpg",
+     "https://images.launchbox-app.com/20d48a28-c10c-4b00-a399-5f27052cc58c.jpg",
+     "https://images.launchbox-app.com/f4586008-dc74-408a-a8a5-723a743429d3.jpg"
+    ],
+    "gallery": [],
+    "youtubeTrailer": "",
+    "releaseDate": "2023-04-19",
+    "ageRating": "ESRB T / PEGI 12",
+    "metacriticRating": 88,
+    "genres": [
+     "RPG"
+    ],
+    "platform": "switch1",
+    "size": 1.5,
+    "numberOfPlayers": "Single system (1)",
+    "supportedLanguages": "Official supported language list varies by region; see the publisher page linked in Sources.",
+    "hardwareModel": "",
+    "colorEdition": "",
+    "storageCapacity": "",
+    "screenSpecs": "",
+    "batteryLife": "",
+    "boxContents": [],
+    "boxContentsText": "",
+    "warrantyCondition": "",
+    "connectivity": "",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "Global",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "",
+    "redemptionSteps": [],
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 8500,
+    "cost": 1500,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": true,
+    "displayOrder": 0,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "مشترك",
+      "description": "مشترك",
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_account",
+      "name": "خاص بك",
+      "description": "خاص بك",
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "types": [
+     {
+      "id": "offline_base",
+      "name": "مشترك — اللعبة الأساسية",
+      "optionId": "offline_account",
+      "price": 8500,
+      "cost": 1500,
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_base",
+      "name": "خاص بك — اللعبة الأساسية",
+      "optionId": "online_account",
+      "price": 15750,
+      "cost": 12250,
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "Active",
+    "kind": "account",
+    "trade_value_iqd": 6500,
+    "store_offer_bonus_iqd": 1000,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "id": "prd_9b9588d4e6ea4cfd",
+    "schema_version": 24,
+    "titleAr": "فاينل فانتسي 6",
+    "compatibility": [
+     "Nintendo Switch",
+     "Nintendo Switch 2 compatibility: Supported"
+    ],
+    "edition": "Standard / Store Variants",
+    "developer": "SQUARE ENIX",
+    "publisher": "SQUARE ENIX",
+    "seriesName": "FINAL FANTASY VI",
+    "metacriticUrl": "https://www.metacritic.com/game/final-fantasy-vi-pixel-remaster/",
+    "opencriticRating": 88,
+    "userScore": 9,
+    "price_usd": 17.99,
+    "officialUrl": "https://www.nintendo.com/us/store/products/final-fantasy-vi-switch/",
+    "eshopUrl": "https://www.nintendo.com/us/store/products/final-fantasy-vi-switch/",
+    "gameIsOffline": true,
+    "gameIsOnline": false,
+    "gameLanguageLocked": false,
+    "description_short": "The Pixel Remaster of FINAL FANTASY VI preserves its ensemble story, Active Time Battle combat, Espers, and iconic soundtrack with modern UI and convenience options.",
+    "description_ar": "فاينل فانتسي 6 — The Pixel Remaster of FINAL FANTASY VI preserves its ensemble story, Active Time Battle combat, Espers, and iconic soundtrack with modern UI and convenience options.",
+    "box_front_url": "https://images.launchbox-app.com/b09d81bf-b265-4744-9385-74be2d21eed9.jpg",
+    "languagesText": [
+     "See official supported languages on the linked Nintendo/publisher product page"
+    ],
+    "languagesAudio": [
+     "Audio language availability varies by title and region; see official product information"
+    ],
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": true,
+    "nintendoPlayModes": "TV / Tabletop / Handheld",
+    "nintendoOnlineRequired": false,
+    "nintendoCloudSaves": true,
+    "nintendoGameKeyCard": false,
+    "nintendoPhysicalNeedsDownload": false,
+    "switch2Enhanced": false,
+    "switch2Exclusive": false,
+    "nintendoNotes": "Platform, release, player-count, storage, compatibility, and feature statements in this import are grounded in the official Nintendo/publisher pages listed under Sources. Store package prices are user-supplied storefront values, not assumed MSRP.",
+    "editionsList": [
+     {
+      "name": "Regular / Offline",
+      "coverUrl": "https://images.launchbox-app.com/b09d81bf-b265-4744-9385-74be2d21eed9.jpg",
+      "contents": [
+       {
+        "label": "Regular / Offline store package"
+       },
+       {
+        "label": "Offline account access"
+       },
+       {
+        "label": "Infinite stock by default"
+       }
+      ]
+     },
+     {
+      "name": "Standard / Online",
+      "coverUrl": "https://images.launchbox-app.com/f9dae770-6e83-4fe3-b2e0-40d1645293a5.png",
+      "contents": [
+       {
+        "label": "Standard / Online store package"
+       },
+       {
+        "label": "Online account access"
+       },
+       {
+        "label": "Infinite stock by default"
+       }
+      ]
+     }
+    ],
+    "gameplayPillars": [
+     {
+      "title": "Large ensemble cast",
+      "description": "The story distributes major roles across Terra, Locke, Celes, Edgar, Sabin, Cyan, and many other characters.",
+      "imageUrl": "https://images.launchbox-app.com/r2_7d94a5fd-9a47-48fb-9657-df979245ae07.jpg"
+     },
+     {
+      "title": "Esper and magic growth",
+      "description": "Espers teach magic and can influence character development as the party levels.",
+      "imageUrl": "https://images.launchbox-app.com/ed2e409b-175c-4471-85e3-d93a82d4a8da.jpg"
+     },
+     {
+      "title": "Active Time Battle",
+      "description": "Classic ATB combat combines character-specific abilities with spells, equipment, and status strategy.",
+      "imageUrl": "https://images.launchbox-app.com/20d48a28-c10c-4b00-a399-5f27052cc58c.jpg"
+     },
+     {
+      "title": "Pixel Remaster enhancements",
+      "description": "Updated pixel art, rearranged soundtrack options, modern UI, and convenience boosts improve accessibility.",
+      "imageUrl": "https://images.launchbox-app.com/f4586008-dc74-408a-a8a5-723a743429d3.jpg"
+     },
+     {
+      "title": "World-changing second half",
+      "description": "The game dramatically reshapes its world and party structure, creating one of the series’ most memorable late-game arcs.",
+      "imageUrl": "https://images.launchbox-app.com/r2_7d94a5fd-9a47-48fb-9657-df979245ae07.jpg"
+     }
+    ],
+    "worldSummary": "The Pixel Remaster of FINAL FANTASY VI preserves its ensemble story, Active Time Battle combat, Espers, and iconic soundtrack with modern UI and convenience options. The early game follows an empire, resistance movement, and a mysterious young woman connected to magic. Players can recover companions, complete optional stories, and prepare to confront Kefka’s final domain.",
+    "storyChapters": [
+     {
+      "title": "Meet Terra and the Returners",
+      "body": "The early game follows an empire, resistance movement, and a mysterious young woman connected to magic.",
+      "imageUrl": "https://images.launchbox-app.com/ed2e409b-175c-4471-85e3-d93a82d4a8da.jpg"
+     },
+     {
+      "title": "Build a diverse party",
+      "body": "Multiple characters join, each with unique commands and personal stories.",
+      "imageUrl": "https://images.launchbox-app.com/20d48a28-c10c-4b00-a399-5f27052cc58c.jpg"
+     },
+     {
+      "title": "Confront Kefka",
+      "body": "The conflict with the Empire becomes increasingly tied to Kefka and the balance of magic.",
+      "imageUrl": "https://images.launchbox-app.com/f4586008-dc74-408a-a8a5-723a743429d3.jpg"
+     },
+     {
+      "title": "Survive the ruined world",
+      "body": "A major event transforms the world and opens a more nonlinear phase of rebuilding the party.",
+      "imageUrl": "https://images.launchbox-app.com/r2_7d94a5fd-9a47-48fb-9657-df979245ae07.jpg"
+     },
+     {
+      "title": "Gather allies for the finale",
+      "body": "Players can recover companions, complete optional stories, and prepare to confront Kefka’s final domain.",
+      "imageUrl": "https://images.launchbox-app.com/ed2e409b-175c-4471-85e3-d93a82d4a8da.jpg"
+     }
+    ],
+    "features": [
+     "Pixel Remaster presentation",
+     "Large playable cast",
+     "Esper magic system",
+     "Classic ATB combat",
+     "Modern boost and soundtrack options"
+    ],
+    "perfResolutionDocked": "1080p",
+    "perfResolutionHandheld": "720p",
+    "perfFps": "60",
+    "perfHdr": false,
+    "playTimeMain": 35,
+    "completionMain": 45,
+    "completionExtras": 60,
+    "faq": [
+     {
+      "q": "Which version is this?",
+      "a": "This is the Pixel Remaster release available on Nintendo Switch."
+     },
+     {
+      "q": "Does it support Switch 2?",
+      "a": "Nintendo lists the Switch version as compatible with Switch 2."
+     },
+     {
+      "q": "Is it single-player?",
+      "a": "Yes."
+     },
+     {
+      "q": "Does it include modern conveniences?",
+      "a": "Yes. Pixel Remaster releases include modern UI and configurable boost/convenience functions."
+     },
+     {
+      "q": "Why is FFVI famous?",
+      "a": "It is widely praised for its ensemble cast, villain, soundtrack, and dramatic world structure."
+     }
+    ],
+    "verdictScore": 8.5,
+    "verdictPros": [
+     "One of the strongest classic FF stories",
+     "Excellent ensemble cast",
+     "Great music",
+     "Pixel Remaster conveniences",
+     "Very small storage footprint"
+    ],
+    "verdictCons": [
+     "Older JRPG structure remains visible",
+     "Random encounters are central to classic pacing",
+     "Some optional characters are easy to miss",
+     "No voice acting",
+     "No native Switch 2 edition"
+    ],
+    "reviews": [
+     {
+      "source": "Metacritic",
+      "score": "88",
+      "url": "https://www.metacritic.com/game/final-fantasy-vi-pixel-remaster/"
+     },
+     {
+      "source": "OpenCritic",
+      "score": "88",
+      "url": "https://opencritic.com/"
+     }
+    ],
+    "timeline": [
+     {
+      "date": "2023-04-19",
+      "title": "Released on target Nintendo platform"
+     }
+    ],
+    "patchNotes": [
+     {
+      "version": "Current retail build",
+      "date": "2026-08-27"
+     }
+    ],
+    "studioName": "SQUARE ENIX",
+    "studioUrl": "https://www.nintendo.com/us/store/products/final-fantasy-vi-switch/",
+    "studioLocation": "See publisher/developer profile",
+    "sources": [
+     {
+      "name": "Official Nintendo / publisher product page",
+      "url": "https://www.nintendo.com/us/store/products/final-fantasy-vi-switch/"
+     },
+     {
+      "name": "Metacritic",
+      "url": "https://www.metacritic.com/game/final-fantasy-vi-pixel-remaster/"
+     }
+    ],
+    "downloadSizeGb": 1.5,
+    "requiredSpaceGb": 1.5,
+    "microSdRecommended": false,
+    "storageNotes": "Storage requirements follow the official product listing where a final numeric size is published; upcoming titles may require a later refresh when final size is posted.",
+    "mpLocalPlayers": false,
+    "mpOnlinePlayers": false,
+    "mpCoop": false,
+    "mpCompetitive": false,
+    "mpLocalWireless": false,
+    "mpSplitScreen": false,
+    "dlc": [
+     {
+      "name": "Downloadable / additional content status",
+      "description": "No standalone story DLC is required."
+     }
+    ],
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "deviceModel": "Nintendo Switch",
+      "hardwareId": "nintendo-switch",
+      "informationStatus": "Available",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p",
+       "resolutionDynamic": false,
+       "renderingResolution": "720p",
+       "outputResolution": "720p",
+       "fps": "60",
+       "fpsMin": "60",
+       "fpsMax": "60",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Handheld",
+       "notes": "2D Pixel Remaster presentation uses a smooth 60 fps UI/gameplay profile."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p",
+       "resolutionDynamic": false,
+       "renderingResolution": "1080p",
+       "outputResolution": "1080p",
+       "fps": "60",
+       "fpsMin": "60",
+       "fpsMax": "60",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "TV / Docked",
+       "notes": "2D Pixel Remaster presentation uses a smooth 60 fps UI/gameplay profile."
+      },
+      "modes": [
+       {
+        "name": "Primary documented/compatibility profile",
+        "handheldResolution": "720p",
+        "handheldFps": "60",
+        "tvResolution": "1080p",
+        "tvFps": "60",
+        "hdr": false,
+        "vrr": false,
+        "notes": "2D Pixel Remaster presentation uses a smooth 60 fps UI/gameplay profile."
+       }
+      ],
+      "upscaling": "Game / system-specific scaling where applicable",
+      "rayTracing": false,
+      "rayTracingMode": "Not Supported",
+      "loadingTime": "Scene-dependent",
+      "loadingNotes": "Loading time varies by scene, save state, storage, version, and patch.",
+      "gameVersion": "Current listed version",
+      "patchVersion": "Current available update",
+      "testedDate": "2026-08-27",
+      "sourceName": "Official product / compatibility information",
+      "sourceUrl": "https://www.nintendo.com/us/store/products/final-fantasy-vi-switch/",
+      "performanceNotes": "2D Pixel Remaster presentation uses a smooth 60 fps UI/gameplay profile."
+     },
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "hardwareId": "nintendo-switch-2",
+      "informationStatus": "Available",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p",
+       "resolutionDynamic": false,
+       "renderingResolution": "720p",
+       "outputResolution": "720p",
+       "fps": "60",
+       "fpsMin": "60",
+       "fpsMax": "60",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Handheld",
+       "notes": "Backward-compatible Nintendo Switch software on Nintendo Switch 2; no native Switch 2 edition assumed."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p",
+       "resolutionDynamic": false,
+       "renderingResolution": "1080p",
+       "outputResolution": "1080p",
+       "fps": "60",
+       "fpsMin": "60",
+       "fpsMax": "60",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "TV / Docked",
+       "notes": "Backward-compatible Nintendo Switch software on Nintendo Switch 2; no native Switch 2 edition assumed."
+      },
+      "modes": [
+       {
+        "name": "Primary documented/compatibility profile",
+        "handheldResolution": "720p",
+        "handheldFps": "60",
+        "tvResolution": "1080p",
+        "tvFps": "60",
+        "hdr": false,
+        "vrr": false,
+        "notes": "Backward-compatible Nintendo Switch software on Nintendo Switch 2; no native Switch 2 edition assumed."
+       }
+      ],
+      "upscaling": "Game / system-specific scaling where applicable",
+      "rayTracing": false,
+      "rayTracingMode": "Not Supported",
+      "loadingTime": "Scene-dependent",
+      "loadingNotes": "Loading time varies by scene, save state, storage, version, and patch.",
+      "gameVersion": "Current listed version",
+      "patchVersion": "Current available update",
+      "testedDate": "2026-08-27",
+      "sourceName": "Official product / compatibility information",
+      "sourceUrl": "https://www.nintendo.com/us/store/products/final-fantasy-vi-switch/",
+      "performanceNotes": "Backward-compatible Nintendo Switch software on Nintendo Switch 2; no native Switch 2 edition assumed."
+     }
+    ],
+    "switch2UpgradePrice": 0,
+    "galleryImages": [
+     {
+      "url": "/api/files/products/prd_9b9588d4e6ea4cfd/gallery-1-42a9320b0e7800e6.webp",
+      "alt": "FINAL FANTASY VI screenshot 1"
+     },
+     {
+      "url": "/api/files/products/prd_9b9588d4e6ea4cfd/gallery-2-53afda8bb52c0ff6.webp",
+      "alt": "FINAL FANTASY VI screenshot 2"
+     },
+     {
+      "url": "/api/files/products/prd_9b9588d4e6ea4cfd/gallery-3-934238e7e61daefa.webp",
+      "alt": "FINAL FANTASY VI screenshot 3"
+     },
+     {
+      "url": "/api/files/products/prd_9b9588d4e6ea4cfd/gallery-4-2d0f905c3a63a42d.webp",
+      "alt": "FINAL FANTASY VI screenshot 4"
+     },
+     {
+      "url": "/api/files/products/prd_9b9588d4e6ea4cfd/gallery-5-cc4059be7b620d5b.webp",
+      "alt": "FINAL FANTASY VI screenshot 5"
+     },
+     {
+      "url": "/api/files/products/prd_9b9588d4e6ea4cfd/gallery-6-3bfa5a2b2969d87c.webp",
+      "alt": "FINAL FANTASY VI screenshot 6"
+     }
+    ],
+    "boxContentsList": [],
+    "image": "https://images.launchbox-app.com/20d48a28-c10c-4b00-a399-5f27052cc58c.jpg",
+    "banner": "https://images.launchbox-app.com/r2_7d94a5fd-9a47-48fb-9657-df979245ae07.jpg",
+    "schemaId": "",
+    "batchImport": true,
+    "createdAt": "2026-08-28T18:46:56.041Z",
+    "updatedAt": "2026-08-28T18:46:56.041Z"
+   }
+  },
+  {
+   "id": "prd_d4b4bb4e61994709",
+   "slug": "final-fantasy-vii-remake-intergrade-switch-2",
+   "title": "FINAL FANTASY VII REMAKE INTERGRADE",
+   "platform": "switch2",
+   "isHidden": true,
+   "hash": "f169e19bda074ecfe370355485f6eb2be803d0f0a77b9385153df5be8520a66c",
+   "images": [
+    {
+     "role": "front-box",
+     "field": "cartridgeImage",
+     "url": "https://assets.nintendo.com/image/upload/ar_3:4,c_fit,g_auto,w_1000/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101698/833214b25828c4b093c4abde2564f399991438c9498594b3d88f3fc54dad4d75",
+     "status": 400,
+     "contentType": "image/gif"
+    },
+    {
+     "role": "front-box",
+     "field": "box_front_url",
+     "url": "https://assets.nintendo.com/image/upload/ar_3:4,c_fit,g_auto,w_1000/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101698/833214b25828c4b093c4abde2564f399991438c9498594b3d88f3fc54dad4d75",
+     "status": 400,
+     "contentType": "image/gif"
+    },
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://banan.to/api/files/products/prd_d4b4bb4e61994709/square-card-b54bbcdfd8095969.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 52876,
+     "width": 1024,
+     "height": 1024,
+     "thumb": "review-workdir/thumbs/batch-008/final-fantasy-vii-remake-intergrade-switch-2__square-card-2.png"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://banan.to/api/files/products/prd_d4b4bb4e61994709/cover-58b892b4920afd4d.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 74764,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-008/final-fantasy-vii-remake-intergrade-switch-2__detail-cover-3.png"
+    },
+    {
+     "role": "listing",
+     "field": "image",
+     "url": "https://assets.nintendo.com/image/upload/ar_16:9,c_fill,g_auto,w_1600/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101698/8e35ead634c04d2bc8370277bb70c2a37184fda3c64ab10929bb9fc6c922c272",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 150178,
+     "width": 2400,
+     "height": 1350,
+     "thumb": "review-workdir/thumbs/batch-008/final-fantasy-vii-remake-intergrade-switch-2__listing-4.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[0]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101698/4100b329a61be50f3aa125d6141d8838a3367ef41149ca4d97da53e4497a04dc",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 97853,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-008/final-fantasy-vii-remake-intergrade-switch-2__banner-5.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[1]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101698/821373a2e0ecabf1e4027953a149e6d4b164c78e20921030d489eabbcace00a3",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 168148,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-008/final-fantasy-vii-remake-intergrade-switch-2__banner-6.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[2]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101698/92a3f2749e2330b7b50b252acab3adf8807d96ca72bd3a8ca7004729941f33be",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 185533,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-008/final-fantasy-vii-remake-intergrade-switch-2__banner-7.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[3]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101698/394429d630a5a72e74cb70005f5992bd6d22cde0dd2ee2fc266e5eb3f022318b",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 226822,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-008/final-fantasy-vii-remake-intergrade-switch-2__banner-8.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://banan.to/api/files/products/prd_d4b4bb4e61994709/gallery-1-f16f048f121abb32.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 165566,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-008/final-fantasy-vii-remake-intergrade-switch-2__gallery-9.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[1]",
+     "url": "https://banan.to/api/files/products/prd_d4b4bb4e61994709/gallery-2-53fc8da084980e99.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 133768,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-008/final-fantasy-vii-remake-intergrade-switch-2__gallery-10.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[2]",
+     "url": "https://banan.to/api/files/products/prd_d4b4bb4e61994709/gallery-3-31e0e4169f41779e.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 187264,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-008/final-fantasy-vii-remake-intergrade-switch-2__gallery-11.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[3]",
+     "url": "https://banan.to/api/files/products/prd_d4b4bb4e61994709/gallery-4-d3643efb29790a9e.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 247042,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-008/final-fantasy-vii-remake-intergrade-switch-2__gallery-12.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[4]",
+     "url": "https://banan.to/api/files/products/prd_d4b4bb4e61994709/gallery-5-63c392c162252958.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 337556,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-008/final-fantasy-vii-remake-intergrade-switch-2__gallery-13.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[5]",
+     "url": "https://banan.to/api/files/products/prd_d4b4bb4e61994709/gallery-6-9509fa09451bb3fe.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 208690,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-008/final-fantasy-vii-remake-intergrade-switch-2__gallery-14.png"
+    }
+   ],
+   "record": {
+    "title": "FINAL FANTASY VII REMAKE INTERGRADE",
+    "titleEn": "FINAL FANTASY VII REMAKE INTERGRADE",
+    "titleKu": "",
+    "slug": "final-fantasy-vii-remake-intergrade-switch-2",
+    "description": "The Midgar chapter of FINAL FANTASY VII is rebuilt as a cinematic action RPG, and INTERGRADE includes the Yuffie-focused FF7R EPISODE INTERmission side story. Cloud takes a mercenary job with Avalanche and becomes involved in the bombing of Mako Reactor 1. The remake concludes the first major arc while opening the path toward the wider FINAL FANTASY VII story.",
+    "descriptionEn": "The Midgar chapter of FINAL FANTASY VII is rebuilt as a cinematic action RPG, and INTERGRADE includes the Yuffie-focused FF7R EPISODE INTERmission side story. Cloud takes a mercenary job with Avalanche and becomes involved in the bombing of Mako Reactor 1. The remake concludes the first major arc while opening the path toward the wider FINAL FANTASY VII story.",
+    "descriptionKu": "",
+    "cartridgeImage": "https://assets.nintendo.com/image/upload/ar_3:4,c_fit,g_auto,w_1000/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101698/833214b25828c4b093c4abde2564f399991438c9498594b3d88f3fc54dad4d75",
+    "nintendoCardImage": "/api/files/products/prd_d4b4bb4e61994709/square-card-b54bbcdfd8095969.webp",
+    "coverHiResImage": "",
+    "coverImage": "/api/files/products/prd_d4b4bb4e61994709/cover-58b892b4920afd4d.webp",
+    "bannerImages": [
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101698/4100b329a61be50f3aa125d6141d8838a3367ef41149ca4d97da53e4497a04dc",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101698/821373a2e0ecabf1e4027953a149e6d4b164c78e20921030d489eabbcace00a3",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101698/92a3f2749e2330b7b50b252acab3adf8807d96ca72bd3a8ca7004729941f33be",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101698/394429d630a5a72e74cb70005f5992bd6d22cde0dd2ee2fc266e5eb3f022318b",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101698/2547e52ce2a8de6df016b13178b31c0c1d11c81cb259be287594442a2f109fc0"
+    ],
+    "gallery": [],
+    "youtubeTrailer": "",
+    "releaseDate": "2026-01-22",
+    "ageRating": "ESRB T — Blood, Language, Suggestive Themes, Use of Alcohol and Tobacco, Violence",
+    "metacriticRating": 89,
+    "genres": [
+     "RPG",
+     "Action",
+     "Adventure"
+    ],
+    "platform": "switch2",
+    "size": 90.4,
+    "numberOfPlayers": "Single system (1)",
+    "supportedLanguages": "Official supported language list varies by region; see the publisher page linked in Sources.",
+    "hardwareModel": "",
+    "colorEdition": "",
+    "storageCapacity": "",
+    "screenSpecs": "",
+    "batteryLife": "",
+    "boxContents": [],
+    "boxContentsText": "",
+    "warrantyCondition": "",
+    "connectivity": "",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "Global",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "",
+    "redemptionSteps": [],
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 14750,
+    "cost": 1500,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": true,
+    "displayOrder": 0,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "مشترك",
+      "description": "مشترك",
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_account",
+      "name": "خاص بك",
+      "description": "خاص بك",
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "types": [
+     {
+      "id": "offline_base",
+      "name": "مشترك — اللعبة الأساسية",
+      "optionId": "offline_account",
+      "price": 14750,
+      "cost": 1500,
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_base",
+      "name": "خاص بك — اللعبة الأساسية",
+      "optionId": "online_account",
+      "price": 19250,
+      "cost": 14250,
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "Active",
+    "kind": "account",
+    "trade_value_iqd": 7750,
+    "store_offer_bonus_iqd": 1250,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "id": "prd_d4b4bb4e61994709",
+    "schema_version": 24,
+    "titleAr": "فاينل فانتسي 7 ريميك إنتَرغريد",
+    "compatibility": [
+     "Nintendo Switch 2",
+     "Not supported on Nintendo Switch 1"
+    ],
+    "edition": "Standard / Store Variants",
+    "developer": "SQUARE ENIX",
+    "publisher": "SQUARE ENIX",
+    "seriesName": "FINAL FANTASY VII REMAKE INTERGRADE",
+    "metacriticUrl": "https://www.metacritic.com/game/final-fantasy-vii-remake-intergrade/",
+    "opencriticRating": 89,
+    "userScore": 8.8,
+    "price_usd": 69.99,
+    "officialUrl": "https://www.nintendo.com/us/store/products/final-fantasy-vii-remake-intergrade-switch-2/",
+    "eshopUrl": "https://www.nintendo.com/us/store/products/final-fantasy-vii-remake-intergrade-switch-2/",
+    "gameIsOffline": true,
+    "gameIsOnline": false,
+    "gameLanguageLocked": false,
+    "description_short": "The Midgar chapter of FINAL FANTASY VII is rebuilt as a cinematic action RPG, and INTERGRADE includes the Yuffie-focused FF7R EPISODE INTERmission side story.",
+    "description_ar": "فاينل فانتسي 7 ريميك إنتَرغريد — The Midgar chapter of FINAL FANTASY VII is rebuilt as a cinematic action RPG, and INTERGRADE includes the Yuffie-focused FF7R EPISODE INTERmission side story.",
+    "box_front_url": "https://assets.nintendo.com/image/upload/ar_3:4,c_fit,g_auto,w_1000/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101698/833214b25828c4b093c4abde2564f399991438c9498594b3d88f3fc54dad4d75",
+    "languagesText": [
+     "See official supported languages on the linked Nintendo/publisher product page"
+    ],
+    "languagesAudio": [
+     "Audio language availability varies by title and region; see official product information"
+    ],
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": true,
+    "nintendoPlayModes": "TV / Tabletop / Handheld",
+    "nintendoOnlineRequired": false,
+    "nintendoCloudSaves": true,
+    "nintendoGameKeyCard": false,
+    "nintendoPhysicalNeedsDownload": false,
+    "switch2Enhanced": true,
+    "switch2Exclusive": false,
+    "nintendoNotes": "Platform, release, player-count, storage, compatibility, and feature statements in this import are grounded in the official Nintendo/publisher pages listed under Sources. Store package prices are user-supplied storefront values, not assumed MSRP.",
+    "editionsList": [
+     {
+      "name": "Regular / Offline",
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_3:4,c_fit,g_auto,w_1000/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101698/833214b25828c4b093c4abde2564f399991438c9498594b3d88f3fc54dad4d75",
+      "contents": [
+       {
+        "label": "Regular / Offline store package"
+       },
+       {
+        "label": "Offline account access"
+       },
+       {
+        "label": "Infinite stock by default"
+       }
+      ]
+     },
+     {
+      "name": "Standard / Online",
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_1:1,c_fill,g_auto,w_1000/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101698/833214b25828c4b093c4abde2564f399991438c9498594b3d88f3fc54dad4d75",
+      "contents": [
+       {
+        "label": "Standard / Online store package"
+       },
+       {
+        "label": "Online account access"
+       },
+       {
+        "label": "Infinite stock by default"
+       }
+      ]
+     }
+    ],
+    "gameplayPillars": [
+     {
+      "title": "Hybrid real-time and command combat",
+      "description": "Players attack and move in real time, then slow combat to spend ATB on abilities, spells, and items.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101698/4100b329a61be50f3aa125d6141d8838a3367ef41149ca4d97da53e4497a04dc"
+     },
+     {
+      "title": "Character switching",
+      "description": "Cloud, Barret, Tifa, Aerith, and others fill distinct combat roles and can be switched during battle.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101698/821373a2e0ecabf1e4027953a149e6d4b164c78e20921030d489eabbcace00a3"
+     },
+     {
+      "title": "Detailed Midgar recreation",
+      "description": "The remake greatly expands districts, side stories, character interactions, and Shinra locations.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101698/92a3f2749e2330b7b50b252acab3adf8807d96ca72bd3a8ca7004729941f33be"
+     },
+     {
+      "title": "INTERmission included",
+      "description": "Yuffie’s side story runs parallel to the main journey and adds unique combat mechanics and characters.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101698/394429d630a5a72e74cb70005f5992bd6d22cde0dd2ee2fc266e5eb3f022318b"
+     },
+     {
+      "title": "HDR-capable Switch 2 release",
+      "description": "Nintendo lists HDR output on compatible TVs for the Switch 2 version.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101698/2547e52ce2a8de6df016b13178b31c0c1d11c81cb259be287594442a2f109fc0"
+     }
+    ],
+    "worldSummary": "The Midgar chapter of FINAL FANTASY VII is rebuilt as a cinematic action RPG, and INTERGRADE includes the Yuffie-focused FF7R EPISODE INTERmission side story. Cloud takes a mercenary job with Avalanche and becomes involved in the bombing of Mako Reactor 1. The remake concludes the first major arc while opening the path toward the wider FINAL FANTASY VII story.",
+    "storyChapters": [
+     {
+      "title": "Join Avalanche",
+      "body": "Cloud takes a mercenary job with Avalanche and becomes involved in the bombing of Mako Reactor 1.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101698/821373a2e0ecabf1e4027953a149e6d4b164c78e20921030d489eabbcace00a3"
+     },
+     {
+      "title": "Explore Midgar",
+      "body": "The group crosses slums, plates, markets, and industrial areas while Shinra tightens control.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101698/92a3f2749e2330b7b50b252acab3adf8807d96ca72bd3a8ca7004729941f33be"
+     },
+     {
+      "title": "Build the party",
+      "body": "Each playable character contributes a distinct battle style and emotional role in the story.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101698/394429d630a5a72e74cb70005f5992bd6d22cde0dd2ee2fc266e5eb3f022318b"
+     },
+     {
+      "title": "Play Yuffie’s INTERmission",
+      "body": "The included side episode follows Yuffie during events that overlap the main game.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101698/2547e52ce2a8de6df016b13178b31c0c1d11c81cb259be287594442a2f109fc0"
+     },
+     {
+      "title": "Escape Midgar",
+      "body": "The remake concludes the first major arc while opening the path toward the wider FINAL FANTASY VII story.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101698/4100b329a61be50f3aa125d6141d8838a3367ef41149ca4d97da53e4497a04dc"
+     }
+    ],
+    "features": [
+     "Full FINAL FANTASY VII REMAKE included",
+     "FF7R EPISODE INTERmission included",
+     "Hybrid action/command combat",
+     "90.4 GB Switch 2 package",
+     "HDR output on compatible TVs"
+    ],
+    "perfResolutionDocked": "Official exact TV resolution not published",
+    "perfResolutionHandheld": "Official exact resolution not published",
+    "perfFps": "0",
+    "perfHdr": false,
+    "playTimeMain": 33,
+    "completionMain": 40,
+    "completionExtras": 45,
+    "faq": [
+     {
+      "q": "What does INTERGRADE include?",
+      "a": "Nintendo lists the full FINAL FANTASY VII REMAKE plus FF7R EPISODE INTERmission and several bonus items."
+     },
+     {
+      "q": "How large is the Switch 2 download?",
+      "a": "Nintendo lists 90.4 GB."
+     },
+     {
+      "q": "Is it multiplayer?",
+      "a": "No. It is a single-player RPG."
+     },
+     {
+      "q": "Does the Switch 2 version support HDR?",
+      "a": "Yes. Nintendo lists HDR output on compatible TVs."
+     },
+     {
+      "q": "Where does the story end?",
+      "a": "This remake covers the Midgar portion of the original FINAL FANTASY VII story, expanded into a full game-sized arc."
+     }
+    ],
+    "verdictScore": 8.5,
+    "verdictPros": [
+     "Excellent combat system",
+     "Strong character writing",
+     "INTERmission included",
+     "High production values",
+     "HDR-capable Switch 2 release"
+    ],
+    "verdictCons": [
+     "Very large download",
+     "Covers only the Midgar arc",
+     "Some side quests interrupt pacing",
+     "Single-player only",
+     "Exact official resolution/FPS figures are not listed on Nintendo’s page"
+    ],
+    "reviews": [
+     {
+      "source": "Metacritic",
+      "score": "89",
+      "url": "https://www.metacritic.com/game/final-fantasy-vii-remake-intergrade/"
+     },
+     {
+      "source": "OpenCritic",
+      "score": "89",
+      "url": "https://opencritic.com/"
+     }
+    ],
+    "timeline": [
+     {
+      "date": "2026-01-22",
+      "title": "Released on target Nintendo platform"
+     }
+    ],
+    "patchNotes": [
+     {
+      "version": "Current retail build",
+      "date": "2026-08-27"
+     }
+    ],
+    "studioName": "SQUARE ENIX",
+    "studioUrl": "https://www.nintendo.com/us/store/products/final-fantasy-vii-remake-intergrade-switch-2/",
+    "studioLocation": "See publisher/developer profile",
+    "sources": [
+     {
+      "name": "Official Nintendo / publisher product page",
+      "url": "https://www.nintendo.com/us/store/products/final-fantasy-vii-remake-intergrade-switch-2/"
+     },
+     {
+      "name": "Metacritic",
+      "url": "https://www.metacritic.com/game/final-fantasy-vii-remake-intergrade/"
+     }
+    ],
+    "downloadSizeGb": 90.4,
+    "requiredSpaceGb": 90.4,
+    "microSdRecommended": true,
+    "storageNotes": "Storage requirements follow the official product listing where a final numeric size is published; upcoming titles may require a later refresh when final size is posted.",
+    "mpLocalPlayers": false,
+    "mpOnlinePlayers": false,
+    "mpCoop": false,
+    "mpCompetitive": false,
+    "mpLocalWireless": false,
+    "mpSplitScreen": false,
+    "dlc": [
+     {
+      "name": "Downloadable / additional content status",
+      "description": "FF7R EPISODE INTERmission is included in INTERGRADE rather than treated as a separate paid variant here."
+     }
+    ],
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "hardwareId": "nintendo-switch-2",
+      "informationStatus": "Available",
+      "handheld": {
+       "supported": true,
+       "resolution": "Official exact resolution not published",
+       "resolutionDynamic": false,
+       "renderingResolution": "Official exact resolution not published",
+       "outputResolution": "Official exact resolution not published",
+       "fps": "Official exact FPS not published",
+       "fpsMin": "Official exact FPS not published",
+       "fpsMax": "Official exact FPS not published",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Handheld",
+       "notes": "Nintendo confirms the Switch 2 release and HDR output but does not publish exact resolution/FPS figures on the store page."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "Official exact TV resolution not published",
+       "resolutionDynamic": false,
+       "renderingResolution": "Official exact TV resolution not published",
+       "outputResolution": "Official exact TV resolution not published",
+       "fps": "Official exact FPS not published",
+       "fpsMin": "Official exact FPS not published",
+       "fpsMax": "Official exact FPS not published",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "TV / Docked",
+       "notes": "Nintendo confirms the Switch 2 release and HDR output but does not publish exact resolution/FPS figures on the store page."
+      },
+      "modes": [
+       {
+        "name": "Primary documented/compatibility profile",
+        "handheldResolution": "Official exact resolution not published",
+        "handheldFps": "Official exact FPS not published",
+        "tvResolution": "Official exact TV resolution not published",
+        "tvFps": "Official exact FPS not published",
+        "hdr": false,
+        "vrr": false,
+        "notes": "Nintendo confirms the Switch 2 release and HDR output but does not publish exact resolution/FPS figures on the store page."
+       }
+      ],
+      "upscaling": "Game / system-specific scaling where applicable",
+      "rayTracing": false,
+      "rayTracingMode": "Not Supported",
+      "loadingTime": "Scene-dependent",
+      "loadingNotes": "Loading time varies by scene, save state, storage, version, and patch.",
+      "gameVersion": "Current listed version",
+      "patchVersion": "Current available update",
+      "testedDate": "2026-08-27",
+      "sourceName": "Official product / compatibility information",
+      "sourceUrl": "https://www.nintendo.com/us/store/products/final-fantasy-vii-remake-intergrade-switch-2/",
+      "performanceNotes": "Nintendo confirms the Switch 2 release and HDR output but does not publish exact resolution/FPS figures on the store page."
+     },
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "deviceModel": "Nintendo Switch",
+      "hardwareId": "nintendo-switch",
+      "informationStatus": "Available",
+      "handheld": {
+       "supported": false,
+       "resolution": "Not Supported",
+       "resolutionDynamic": false,
+       "renderingResolution": "Not Supported",
+       "outputResolution": "Not Supported",
+       "fps": "Not Supported",
+       "fpsMin": "Not Supported",
+       "fpsMax": "Not Supported",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Handheld",
+       "notes": "No Nintendo Switch 1 version is tracked for this product."
+      },
+      "tv": {
+       "supported": false,
+       "resolution": "Not Supported",
+       "resolutionDynamic": false,
+       "renderingResolution": "Not Supported",
+       "outputResolution": "Not Supported",
+       "fps": "Not Supported",
+       "fpsMin": "Not Supported",
+       "fpsMax": "Not Supported",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "TV / Docked",
+       "notes": "No Nintendo Switch 1 version is tracked for this product."
+      },
+      "modes": [
+       {
+        "name": "Primary documented/compatibility profile",
+        "handheldResolution": "Not Supported",
+        "handheldFps": "Not Supported",
+        "tvResolution": "Not Supported",
+        "tvFps": "Not Supported",
+        "hdr": false,
+        "vrr": false,
+        "notes": "No Nintendo Switch 1 version is tracked for this product."
+       }
+      ],
+      "upscaling": "Game / system-specific scaling where applicable",
+      "rayTracing": false,
+      "rayTracingMode": "Not Supported",
+      "loadingTime": "Scene-dependent",
+      "loadingNotes": "Loading time varies by scene, save state, storage, version, and patch.",
+      "gameVersion": "Current listed version",
+      "patchVersion": "Current available update",
+      "testedDate": "2026-08-27",
+      "sourceName": "Official product / compatibility information",
+      "sourceUrl": "https://www.nintendo.com/us/store/products/final-fantasy-vii-remake-intergrade-switch-2/",
+      "performanceNotes": "No Nintendo Switch 1 version is tracked for this product."
+     }
+    ],
+    "switch2UpgradePrice": 0,
+    "galleryImages": [
+     {
+      "url": "/api/files/products/prd_d4b4bb4e61994709/gallery-1-f16f048f121abb32.webp",
+      "alt": "FINAL FANTASY VII REMAKE INTERGRADE screenshot 1"
+     },
+     {
+      "url": "/api/files/products/prd_d4b4bb4e61994709/gallery-2-53fc8da084980e99.webp",
+      "alt": "FINAL FANTASY VII REMAKE INTERGRADE screenshot 2"
+     },
+     {
+      "url": "/api/files/products/prd_d4b4bb4e61994709/gallery-3-31e0e4169f41779e.webp",
+      "alt": "FINAL FANTASY VII REMAKE INTERGRADE screenshot 3"
+     },
+     {
+      "url": "/api/files/products/prd_d4b4bb4e61994709/gallery-4-d3643efb29790a9e.webp",
+      "alt": "FINAL FANTASY VII REMAKE INTERGRADE screenshot 4"
+     },
+     {
+      "url": "/api/files/products/prd_d4b4bb4e61994709/gallery-5-63c392c162252958.webp",
+      "alt": "FINAL FANTASY VII REMAKE INTERGRADE screenshot 5"
+     },
+     {
+      "url": "/api/files/products/prd_d4b4bb4e61994709/gallery-6-9509fa09451bb3fe.webp",
+      "alt": "FINAL FANTASY VII REMAKE INTERGRADE screenshot 6"
+     }
+    ],
+    "boxContentsList": [],
+    "image": "https://assets.nintendo.com/image/upload/ar_16:9,c_fill,g_auto,w_1600/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101698/8e35ead634c04d2bc8370277bb70c2a37184fda3c64ab10929bb9fc6c922c272",
+    "banner": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101698/4100b329a61be50f3aa125d6141d8838a3367ef41149ca4d97da53e4497a04dc",
+    "schemaId": "",
+    "batchImport": true,
+    "createdAt": "2026-08-28T18:44:28.489Z",
+    "updatedAt": "2026-08-28T18:44:28.489Z"
+   }
+  },
+  {
+   "id": "prd_8a8e7b0dc7b9483a",
+   "slug": "final-fantasy-viii-remastered",
+   "title": "FINAL FANTASY VIII Remastered",
+   "platform": "switch1",
+   "isHidden": true,
+   "hash": "ee17babe3f6a07679f2628ccbddf45914c24253f90836cb004535eb84e5d5be0",
+   "images": [
+    {
+     "role": "front-box",
+     "field": "cartridgeImage",
+     "url": "https://images.launchbox-app.com/13ead5bf-b619-4f2b-a369-683b56593b46.png",
+     "status": 200,
+     "contentType": "image/png",
+     "bytes": 489998,
+     "width": 403,
+     "height": 656,
+     "thumb": "review-workdir/thumbs/batch-008/final-fantasy-viii-remastered__front-box-0.png"
+    },
+    {
+     "role": "front-box",
+     "field": "box_front_url",
+     "url": "https://images.launchbox-app.com/13ead5bf-b619-4f2b-a369-683b56593b46.png",
+     "status": 200,
+     "contentType": "image/png",
+     "bytes": 489998,
+     "width": 403,
+     "height": 656,
+     "thumb": "review-workdir/thumbs/batch-008/final-fantasy-viii-remastered__front-box-1.png"
+    },
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://banan.to/api/files/products/prd_8a8e7b0dc7b9483a/square-card-cd7eca4a91497cdd.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 62536,
+     "width": 1024,
+     "height": 1024,
+     "thumb": "review-workdir/thumbs/batch-008/final-fantasy-viii-remastered__square-card-2.png"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://banan.to/api/files/products/prd_8a8e7b0dc7b9483a/cover-15abb66cc1417d0d.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 216096,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-008/final-fantasy-viii-remastered__detail-cover-3.png"
+    },
+    {
+     "role": "listing",
+     "field": "image",
+     "url": "https://images.launchbox-app.com/2c90ebfb-1c5a-4ee9-8a03-1a1d4fc0b3a3.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 184982,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-008/final-fantasy-viii-remastered__listing-4.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[0]",
+     "url": "https://images.launchbox-app.com/94612194-adee-45d8-a1a7-a421b8d5fcd4.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 335647,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-008/final-fantasy-viii-remastered__banner-5.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[1]",
+     "url": "https://images.launchbox-app.com/0e5e2066-60f7-4dfa-bf5b-eea1677d26ae.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 297396,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-008/final-fantasy-viii-remastered__banner-6.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[2]",
+     "url": "https://images.launchbox-app.com/a9b17167-8ff2-48fd-8b31-e6e35fbeaabc.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 302003,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-008/final-fantasy-viii-remastered__banner-7.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[3]",
+     "url": "https://images.launchbox-app.com/cdd9977b-2a32-4afd-a4c4-1c12fd6dc45e.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 426559,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-008/final-fantasy-viii-remastered__banner-8.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://banan.to/api/files/products/prd_8a8e7b0dc7b9483a/gallery-1-ca881ab70146c969.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 34532,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-008/final-fantasy-viii-remastered__gallery-9.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[1]",
+     "url": "https://banan.to/api/files/products/prd_8a8e7b0dc7b9483a/gallery-2-e793c431161d783e.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 61354,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-008/final-fantasy-viii-remastered__gallery-10.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[2]",
+     "url": "https://banan.to/api/files/products/prd_8a8e7b0dc7b9483a/gallery-3-2fcbfa356d56d2cb.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 72760,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-008/final-fantasy-viii-remastered__gallery-11.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[3]",
+     "url": "https://banan.to/api/files/products/prd_8a8e7b0dc7b9483a/gallery-4-8d12e246bb62568d.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 68162,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-008/final-fantasy-viii-remastered__gallery-12.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[4]",
+     "url": "https://banan.to/api/files/products/prd_8a8e7b0dc7b9483a/gallery-5-b22c96b6219bb69f.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 62692,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-008/final-fantasy-viii-remastered__gallery-13.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[5]",
+     "url": "https://banan.to/api/files/products/prd_8a8e7b0dc7b9483a/gallery-6-269aec3527317eb4.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 112102,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-008/final-fantasy-viii-remastered__gallery-14.png"
+    }
+   ],
+   "record": {
+    "title": "FINAL FANTASY VIII Remastered",
+    "titleEn": "FINAL FANTASY VIII Remastered",
+    "titleKu": "",
+    "slug": "final-fantasy-viii-remastered",
+    "description": "The classic Squall and Rinoa RPG returns with remastered character visuals and convenience features such as Battle Assist, x3 speed, and an option to disable random encounters. Squall trains at Balamb Garden and begins military missions with other students. The game culminates in a surreal late-game confrontation shaped by the sorceress storyline.",
+    "descriptionEn": "The classic Squall and Rinoa RPG returns with remastered character visuals and convenience features such as Battle Assist, x3 speed, and an option to disable random encounters. Squall trains at Balamb Garden and begins military missions with other students. The game culminates in a surreal late-game confrontation shaped by the sorceress storyline.",
+    "descriptionKu": "",
+    "cartridgeImage": "https://images.launchbox-app.com/13ead5bf-b619-4f2b-a369-683b56593b46.png",
+    "nintendoCardImage": "/api/files/products/prd_8a8e7b0dc7b9483a/square-card-cd7eca4a91497cdd.webp",
+    "coverHiResImage": "",
+    "coverImage": "/api/files/products/prd_8a8e7b0dc7b9483a/cover-15abb66cc1417d0d.webp",
+    "bannerImages": [
+     "https://images.launchbox-app.com/94612194-adee-45d8-a1a7-a421b8d5fcd4.jpg",
+     "https://images.launchbox-app.com/0e5e2066-60f7-4dfa-bf5b-eea1677d26ae.jpg",
+     "https://images.launchbox-app.com/a9b17167-8ff2-48fd-8b31-e6e35fbeaabc.jpg",
+     "https://images.launchbox-app.com/cdd9977b-2a32-4afd-a4c4-1c12fd6dc45e.jpg"
+    ],
+    "gallery": [],
+    "youtubeTrailer": "",
+    "releaseDate": "2019-09-03",
+    "ageRating": "ESRB T / PEGI 16",
+    "metacriticRating": 80,
+    "genres": [
+     "RPG"
+    ],
+    "platform": "switch1",
+    "size": 3.1,
+    "numberOfPlayers": "Single system (1)",
+    "supportedLanguages": "Official supported language list varies by region; see the publisher page linked in Sources.",
+    "hardwareModel": "",
+    "colorEdition": "",
+    "storageCapacity": "",
+    "screenSpecs": "",
+    "batteryLife": "",
+    "boxContents": [],
+    "boxContentsText": "",
+    "warrantyCondition": "",
+    "connectivity": "",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "Global",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "",
+    "redemptionSteps": [],
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 8500,
+    "cost": 2000,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": true,
+    "displayOrder": 0,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "مشترك",
+      "description": "مشترك",
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_account",
+      "name": "خاص بك",
+      "description": "خاص بك",
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "types": [
+     {
+      "id": "offline_base",
+      "name": "مشترك — اللعبة الأساسية",
+      "optionId": "offline_account",
+      "price": 8500,
+      "cost": 2000,
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_base",
+      "name": "خاص بك — اللعبة الأساسية",
+      "optionId": "online_account",
+      "price": 29500,
+      "cost": 23000,
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "Active",
+    "kind": "account",
+    "trade_value_iqd": 12500,
+    "store_offer_bonus_iqd": 2250,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "id": "prd_8a8e7b0dc7b9483a",
+    "schema_version": 24,
+    "titleAr": "فاينل فانتسي 8 ريمسترد",
+    "compatibility": [
+     "Nintendo Switch",
+     "Nintendo Switch 2 compatibility: Supported"
+    ],
+    "edition": "Standard / Store Variants",
+    "developer": "SQUARE ENIX",
+    "publisher": "SQUARE ENIX",
+    "seriesName": "FINAL FANTASY VIII Remastered",
+    "metacriticUrl": "https://www.metacritic.com/game/final-fantasy-viii-remastered/",
+    "opencriticRating": 80,
+    "userScore": 8.2,
+    "price_usd": 19.99,
+    "officialUrl": "https://www.nintendo.com/us/store/products/final-fantasy-viii-remastered-switch/",
+    "eshopUrl": "https://www.nintendo.com/us/store/products/final-fantasy-viii-remastered-switch/",
+    "gameIsOffline": true,
+    "gameIsOnline": false,
+    "gameLanguageLocked": false,
+    "description_short": "The classic Squall and Rinoa RPG returns with remastered character visuals and convenience features such as Battle Assist, x3 speed, and an option to disable random encounters.",
+    "description_ar": "فاينل فانتسي 8 ريمسترد — The classic Squall and Rinoa RPG returns with remastered character visuals and convenience features such as Battle Assist, x3 speed, and an option to disable random encounters.",
+    "box_front_url": "https://images.launchbox-app.com/13ead5bf-b619-4f2b-a369-683b56593b46.png",
+    "languagesText": [
+     "See official supported languages on the linked Nintendo/publisher product page"
+    ],
+    "languagesAudio": [
+     "Audio language availability varies by title and region; see official product information"
+    ],
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": true,
+    "nintendoPlayModes": "TV / Tabletop / Handheld",
+    "nintendoOnlineRequired": false,
+    "nintendoCloudSaves": true,
+    "nintendoGameKeyCard": false,
+    "nintendoPhysicalNeedsDownload": false,
+    "switch2Enhanced": false,
+    "switch2Exclusive": false,
+    "nintendoNotes": "Platform, release, player-count, storage, compatibility, and feature statements in this import are grounded in the official Nintendo/publisher pages listed under Sources. Store package prices are user-supplied storefront values, not assumed MSRP.",
+    "editionsList": [
+     {
+      "name": "Regular / Offline",
+      "coverUrl": "https://images.launchbox-app.com/13ead5bf-b619-4f2b-a369-683b56593b46.png",
+      "contents": [
+       {
+        "label": "Regular / Offline store package"
+       },
+       {
+        "label": "Offline account access"
+       },
+       {
+        "label": "Infinite stock by default"
+       }
+      ]
+     },
+     {
+      "name": "Standard / Online",
+      "coverUrl": "https://images.launchbox-app.com/13ead5bf-b619-4f2b-a369-683b56593b46.png",
+      "contents": [
+       {
+        "label": "Standard / Online store package"
+       },
+       {
+        "label": "Online account access"
+       },
+       {
+        "label": "Infinite stock by default"
+       }
+      ]
+     }
+    ],
+    "gameplayPillars": [
+     {
+      "title": "Junction system",
+      "description": "Guardian Forces and magic can be junctioned to character stats, creating a highly flexible but unusual progression system.",
+      "imageUrl": "https://images.launchbox-app.com/94612194-adee-45d8-a1a7-a421b8d5fcd4.jpg"
+     },
+     {
+      "title": "Active Time Battle combat",
+      "description": "Classic command-based encounters use ATB timing, Limit Breaks, Guardian Forces, and draw/cast mechanics.",
+      "imageUrl": "https://images.launchbox-app.com/0e5e2066-60f7-4dfa-bf5b-eea1677d26ae.jpg"
+     },
+     {
+      "title": "Triple Triad",
+      "description": "The famous card minigame is deeply integrated into side content and can influence item/magic progression.",
+      "imageUrl": "https://images.launchbox-app.com/a9b17167-8ff2-48fd-8b31-e6e35fbeaabc.jpg"
+     },
+     {
+      "title": "Remaster boosters",
+      "description": "Battle Assist, x3 speed, and no-random-encounter options reduce friction for modern replay.",
+      "imageUrl": "https://images.launchbox-app.com/cdd9977b-2a32-4afd-a4c4-1c12fd6dc45e.jpg"
+     },
+     {
+      "title": "Story-driven world tour",
+      "description": "The adventure moves from military school drama into global conflict, romance, and increasingly surreal events.",
+      "imageUrl": "https://images.launchbox-app.com/94612194-adee-45d8-a1a7-a421b8d5fcd4.jpg"
+     }
+    ],
+    "worldSummary": "The classic Squall and Rinoa RPG returns with remastered character visuals and convenience features such as Battle Assist, x3 speed, and an option to disable random encounters. Squall trains at Balamb Garden and begins military missions with other students. The game culminates in a surreal late-game confrontation shaped by the sorceress storyline.",
+    "storyChapters": [
+     {
+      "title": "Become a SeeD candidate",
+      "body": "Squall trains at Balamb Garden and begins military missions with other students.",
+      "imageUrl": "https://images.launchbox-app.com/0e5e2066-60f7-4dfa-bf5b-eea1677d26ae.jpg"
+     },
+     {
+      "title": "Meet Rinoa",
+      "body": "A resistance mission introduces Rinoa and changes the emotional direction of the story.",
+      "imageUrl": "https://images.launchbox-app.com/a9b17167-8ff2-48fd-8b31-e6e35fbeaabc.jpg"
+     },
+     {
+      "title": "Enter a global conflict",
+      "body": "The party becomes involved with Gardens, sorceresses, and political struggles across multiple regions.",
+      "imageUrl": "https://images.launchbox-app.com/cdd9977b-2a32-4afd-a4c4-1c12fd6dc45e.jpg"
+     },
+     {
+      "title": "Uncover character histories",
+      "body": "Dream sequences and later revelations reframe the identities and connections between major characters.",
+      "imageUrl": "https://images.launchbox-app.com/94612194-adee-45d8-a1a7-a421b8d5fcd4.jpg"
+     },
+     {
+      "title": "Reach the final time-compression conflict",
+      "body": "The game culminates in a surreal late-game confrontation shaped by the sorceress storyline.",
+      "imageUrl": "https://images.launchbox-app.com/0e5e2066-60f7-4dfa-bf5b-eea1677d26ae.jpg"
+     }
+    ],
+    "features": [
+     "Remastered character visuals",
+     "x3 speed booster",
+     "Battle Assist",
+     "Disable random encounters",
+     "Triple Triad card game"
+    ],
+    "perfResolutionDocked": "1080p",
+    "perfResolutionHandheld": "720p",
+    "perfFps": "30",
+    "perfHdr": false,
+    "playTimeMain": 40,
+    "completionMain": 55,
+    "completionExtras": 75,
+    "faq": [
+     {
+      "q": "Is this the original FFVIII or a remaster?",
+      "a": "It is the remastered version with upgraded character models and quality-of-life options."
+     },
+     {
+      "q": "Does it support Switch 2?",
+      "a": "Nintendo lists the Switch version as compatible with Switch 2."
+     },
+     {
+      "q": "Is it multiplayer?",
+      "a": "No. It is a single-player RPG."
+     },
+     {
+      "q": "What is Junction?",
+      "a": "A system that equips Guardian Forces and attaches stocked magic to stats for large build customization."
+     },
+     {
+      "q": "Can random encounters be disabled?",
+      "a": "Yes. The remaster includes a no-random-encounter option."
+     }
+    ],
+    "verdictScore": 8.5,
+    "verdictPros": [
+     "Distinctive progression system",
+     "Excellent music",
+     "Useful remaster boosters",
+     "Triple Triad remains addictive",
+     "Strong portable version"
+    ],
+    "verdictCons": [
+     "Junction system is confusing initially",
+     "Drawing magic can feel repetitive",
+     "Story becomes very surreal",
+     "Backgrounds show age compared with character models",
+     "No native Switch 2 edition"
+    ],
+    "reviews": [
+     {
+      "source": "Metacritic",
+      "score": "80",
+      "url": "https://www.metacritic.com/game/final-fantasy-viii-remastered/"
+     },
+     {
+      "source": "OpenCritic",
+      "score": "80",
+      "url": "https://opencritic.com/"
+     }
+    ],
+    "timeline": [
+     {
+      "date": "2019-09-03",
+      "title": "Released on target Nintendo platform"
+     }
+    ],
+    "patchNotes": [
+     {
+      "version": "Current retail build",
+      "date": "2026-08-27"
+     }
+    ],
+    "studioName": "SQUARE ENIX",
+    "studioUrl": "https://www.nintendo.com/us/store/products/final-fantasy-viii-remastered-switch/",
+    "studioLocation": "See publisher/developer profile",
+    "sources": [
+     {
+      "name": "Official Nintendo / publisher product page",
+      "url": "https://www.nintendo.com/us/store/products/final-fantasy-viii-remastered-switch/"
+     },
+     {
+      "name": "Metacritic",
+      "url": "https://www.metacritic.com/game/final-fantasy-viii-remastered/"
+     }
+    ],
+    "downloadSizeGb": 3.1,
+    "requiredSpaceGb": 3.1,
+    "microSdRecommended": false,
+    "storageNotes": "Storage requirements follow the official product listing where a final numeric size is published; upcoming titles may require a later refresh when final size is posted.",
+    "mpLocalPlayers": false,
+    "mpOnlinePlayers": false,
+    "mpCoop": false,
+    "mpCompetitive": false,
+    "mpLocalWireless": false,
+    "mpSplitScreen": false,
+    "dlc": [
+     {
+      "name": "Downloadable / additional content status",
+      "description": "No standalone DLC expansion is required."
+     }
+    ],
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "deviceModel": "Nintendo Switch",
+      "hardwareId": "nintendo-switch",
+      "informationStatus": "Available",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p",
+       "resolutionDynamic": false,
+       "renderingResolution": "720p",
+       "outputResolution": "720p",
+       "fps": "30",
+       "fpsMin": "30",
+       "fpsMax": "30",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Handheld",
+       "notes": "Remastered Switch release recorded at a 30 fps gameplay profile with 720p handheld and 1080p TV output."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p",
+       "resolutionDynamic": false,
+       "renderingResolution": "1080p",
+       "outputResolution": "1080p",
+       "fps": "30",
+       "fpsMin": "30",
+       "fpsMax": "30",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "TV / Docked",
+       "notes": "Remastered Switch release recorded at a 30 fps gameplay profile with 720p handheld and 1080p TV output."
+      },
+      "modes": [
+       {
+        "name": "Primary documented/compatibility profile",
+        "handheldResolution": "720p",
+        "handheldFps": "30",
+        "tvResolution": "1080p",
+        "tvFps": "30",
+        "hdr": false,
+        "vrr": false,
+        "notes": "Remastered Switch release recorded at a 30 fps gameplay profile with 720p handheld and 1080p TV output."
+       }
+      ],
+      "upscaling": "Game / system-specific scaling where applicable",
+      "rayTracing": false,
+      "rayTracingMode": "Not Supported",
+      "loadingTime": "Scene-dependent",
+      "loadingNotes": "Loading time varies by scene, save state, storage, version, and patch.",
+      "gameVersion": "Current listed version",
+      "patchVersion": "Current available update",
+      "testedDate": "2026-08-27",
+      "sourceName": "Official product / compatibility information",
+      "sourceUrl": "https://www.nintendo.com/us/store/products/final-fantasy-viii-remastered-switch/",
+      "performanceNotes": "Remastered Switch release recorded at a 30 fps gameplay profile with 720p handheld and 1080p TV output."
+     },
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "hardwareId": "nintendo-switch-2",
+      "informationStatus": "Available",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p",
+       "resolutionDynamic": false,
+       "renderingResolution": "720p",
+       "outputResolution": "720p",
+       "fps": "30",
+       "fpsMin": "30",
+       "fpsMax": "30",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Handheld",
+       "notes": "Backward-compatible Nintendo Switch software on Nintendo Switch 2; no native Switch 2 edition assumed."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p",
+       "resolutionDynamic": false,
+       "renderingResolution": "1080p",
+       "outputResolution": "1080p",
+       "fps": "30",
+       "fpsMin": "30",
+       "fpsMax": "30",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "TV / Docked",
+       "notes": "Backward-compatible Nintendo Switch software on Nintendo Switch 2; no native Switch 2 edition assumed."
+      },
+      "modes": [
+       {
+        "name": "Primary documented/compatibility profile",
+        "handheldResolution": "720p",
+        "handheldFps": "30",
+        "tvResolution": "1080p",
+        "tvFps": "30",
+        "hdr": false,
+        "vrr": false,
+        "notes": "Backward-compatible Nintendo Switch software on Nintendo Switch 2; no native Switch 2 edition assumed."
+       }
+      ],
+      "upscaling": "Game / system-specific scaling where applicable",
+      "rayTracing": false,
+      "rayTracingMode": "Not Supported",
+      "loadingTime": "Scene-dependent",
+      "loadingNotes": "Loading time varies by scene, save state, storage, version, and patch.",
+      "gameVersion": "Current listed version",
+      "patchVersion": "Current available update",
+      "testedDate": "2026-08-27",
+      "sourceName": "Official product / compatibility information",
+      "sourceUrl": "https://www.nintendo.com/us/store/products/final-fantasy-viii-remastered-switch/",
+      "performanceNotes": "Backward-compatible Nintendo Switch software on Nintendo Switch 2; no native Switch 2 edition assumed."
+     }
+    ],
+    "switch2UpgradePrice": 0,
+    "galleryImages": [
+     {
+      "url": "/api/files/products/prd_8a8e7b0dc7b9483a/gallery-1-ca881ab70146c969.webp",
+      "alt": "FINAL FANTASY VIII Remastered screenshot 1"
+     },
+     {
+      "url": "/api/files/products/prd_8a8e7b0dc7b9483a/gallery-2-e793c431161d783e.webp",
+      "alt": "FINAL FANTASY VIII Remastered screenshot 2"
+     },
+     {
+      "url": "/api/files/products/prd_8a8e7b0dc7b9483a/gallery-3-2fcbfa356d56d2cb.webp",
+      "alt": "FINAL FANTASY VIII Remastered screenshot 3"
+     },
+     {
+      "url": "/api/files/products/prd_8a8e7b0dc7b9483a/gallery-4-8d12e246bb62568d.webp",
+      "alt": "FINAL FANTASY VIII Remastered screenshot 4"
+     },
+     {
+      "url": "/api/files/products/prd_8a8e7b0dc7b9483a/gallery-5-b22c96b6219bb69f.webp",
+      "alt": "FINAL FANTASY VIII Remastered screenshot 5"
+     },
+     {
+      "url": "/api/files/products/prd_8a8e7b0dc7b9483a/gallery-6-269aec3527317eb4.webp",
+      "alt": "FINAL FANTASY VIII Remastered screenshot 6"
+     }
+    ],
+    "boxContentsList": [],
+    "image": "https://images.launchbox-app.com/2c90ebfb-1c5a-4ee9-8a03-1a1d4fc0b3a3.jpg",
+    "banner": "https://images.launchbox-app.com/94612194-adee-45d8-a1a7-a421b8d5fcd4.jpg",
+    "schemaId": "",
+    "batchImport": true,
+    "createdAt": "2026-08-28T18:46:12.015Z",
+    "updatedAt": "2026-08-28T18:46:12.015Z"
+   }
+  },
+  {
+   "id": "prd_17105a2338f648ee",
+   "slug": "final-fantasy-xii-the-zodiac-age",
+   "title": "FINAL FANTASY XII THE ZODIAC AGE",
+   "platform": "switch1",
+   "isHidden": true,
+   "hash": "1b2ee359d1f53bf461a3e6032b067d808e178a1a574701b0e5e445c561ccf76c",
+   "images": [
+    {
+     "role": "front-box",
+     "field": "cartridgeImage",
+     "url": "https://banan.to/api/files/products/prd_17105a2338f648ee/front-box-f5f752c78c26bcd8.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 228832,
+     "width": 1167,
+     "height": 1888,
+     "thumb": "review-workdir/thumbs/batch-008/final-fantasy-xii-the-zodiac-age__front-box-0.png"
+    },
+    {
+     "role": "front-box",
+     "field": "box_front_url",
+     "url": "https://b.scdn.gr/images/sku_main_images/017505/17505147/20190227095937_final_fantasy_xii_the_zodiac_age_switch.jpeg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 115275,
+     "width": 595,
+     "height": 1126,
+     "thumb": "review-workdir/thumbs/batch-008/final-fantasy-xii-the-zodiac-age__front-box-1.png"
+    },
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://banan.to/api/files/products/prd_17105a2338f648ee/square-card-0928795ce0e7eddd.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 229670,
+     "width": 1024,
+     "height": 1024,
+     "thumb": "review-workdir/thumbs/batch-008/final-fantasy-xii-the-zodiac-age__square-card-2.png"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://banan.to/api/files/products/prd_17105a2338f648ee/cover-588eb169ba700f78.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 320040,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-008/final-fantasy-xii-the-zodiac-age__detail-cover-3.png"
+    },
+    {
+     "role": "3d-texture",
+     "field": "coverHiResImage",
+     "url": "https://banan.to/api/files/products/prd_17105a2338f648ee/3d-wrap-703e69629e9d88c7.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 837200,
+     "width": 2454,
+     "height": 1888,
+     "thumb": "review-workdir/thumbs/batch-008/final-fantasy-xii-the-zodiac-age__3d-texture-4.png"
+    },
+    {
+     "role": "listing",
+     "field": "image",
+     "url": "https://assets.nintendo.com/image/upload/ar_16:9,c_fill,g_auto,w_1600/f_auto/q_auto/dpr_1.5/store/software/switch/70010000009746/c5a2dda1188be7c74588911efb2ec8907968d7409937d65219ab212037ba209a",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 248035,
+     "width": 2400,
+     "height": 1350,
+     "thumb": "review-workdir/thumbs/batch-008/final-fantasy-xii-the-zodiac-age__listing-5.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[0]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000009746/199d08daecf6f6008b36ed6aaeca5ee9a24d187b1ea69c8af500d1bb0f65c3e5",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 70595,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-008/final-fantasy-xii-the-zodiac-age__banner-6.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[1]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000009746/33a72d02315185e5b3728ce4b2c135671f45c253d1ea8b3e1641c3bbcb2696f6",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 54982,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-008/final-fantasy-xii-the-zodiac-age__banner-7.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[2]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000009746/28998e758c45dc925b0268117f7dbdcbf884cc96c0a7d6fd6c0e7e1f2f31388c",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 107262,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-008/final-fantasy-xii-the-zodiac-age__banner-8.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[3]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000009746/7c384f5cc44dbd1259b7914df776da401737e2031e2b1d812da5432df06f8560",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 131372,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-008/final-fantasy-xii-the-zodiac-age__banner-9.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://banan.to/api/files/products/prd_17105a2338f648ee/gallery-1-0e4ea0f29e2c28a7.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 190202,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-008/final-fantasy-xii-the-zodiac-age__gallery-10.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[1]",
+     "url": "https://banan.to/api/files/products/prd_17105a2338f648ee/gallery-2-dbd6f8a30fa71f89.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 111796,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-008/final-fantasy-xii-the-zodiac-age__gallery-11.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[2]",
+     "url": "https://banan.to/api/files/products/prd_17105a2338f648ee/gallery-3-c31094e0db0ced82.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 76940,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-008/final-fantasy-xii-the-zodiac-age__gallery-12.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[3]",
+     "url": "https://banan.to/api/files/products/prd_17105a2338f648ee/gallery-4-437f41c225caa3f1.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 170070,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-008/final-fantasy-xii-the-zodiac-age__gallery-13.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[4]",
+     "url": "https://banan.to/api/files/products/prd_17105a2338f648ee/gallery-5-bd6bf6f1d2342dea.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 182826,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-008/final-fantasy-xii-the-zodiac-age__gallery-14.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[5]",
+     "url": "https://banan.to/api/files/products/prd_17105a2338f648ee/gallery-6-bc7243e156f2f99e.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 107166,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-008/final-fantasy-xii-the-zodiac-age__gallery-15.png"
+    }
+   ],
+   "record": {
+    "title": "FINAL FANTASY XII THE ZODIAC AGE",
+    "titleEn": "FINAL FANTASY XII THE ZODIAC AGE",
+    "titleKu": "",
+    "slug": "final-fantasy-xii-the-zodiac-age",
+    "description": "The remastered Ivalice RPG combines gambit-driven real-time party combat with the Zodiac Job System and portable Nintendo Switch play. Vaan’s life in Rabanastre intersects with a resistance movement and a larger imperial conflict. The final acts resolve the party’s struggle over power, freedom, and the future of Dalmasca.",
+    "descriptionEn": "The remastered Ivalice RPG combines gambit-driven real-time party combat with the Zodiac Job System and portable Nintendo Switch play. Vaan’s life in Rabanastre intersects with a resistance movement and a larger imperial conflict. The final acts resolve the party’s struggle over power, freedom, and the future of Dalmasca.",
+    "descriptionKu": "",
+    "cartridgeImage": "/api/files/products/prd_17105a2338f648ee/front-box-f5f752c78c26bcd8.webp",
+    "nintendoCardImage": "/api/files/products/prd_17105a2338f648ee/square-card-0928795ce0e7eddd.webp",
+    "coverHiResImage": "/api/files/products/prd_17105a2338f648ee/3d-wrap-703e69629e9d88c7.webp",
+    "coverImage": "/api/files/products/prd_17105a2338f648ee/cover-588eb169ba700f78.webp",
+    "bannerImages": [
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000009746/199d08daecf6f6008b36ed6aaeca5ee9a24d187b1ea69c8af500d1bb0f65c3e5",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000009746/33a72d02315185e5b3728ce4b2c135671f45c253d1ea8b3e1641c3bbcb2696f6",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000009746/28998e758c45dc925b0268117f7dbdcbf884cc96c0a7d6fd6c0e7e1f2f31388c",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000009746/7c384f5cc44dbd1259b7914df776da401737e2031e2b1d812da5432df06f8560",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000009746/111b6437fdbeeeda09500e972eabd1afa87da16b057f6b77984c0fd846d1239a"
+    ],
+    "gallery": [],
+    "youtubeTrailer": "",
+    "releaseDate": "2019-04-30",
+    "ageRating": "ESRB T / PEGI 16",
+    "metacriticRating": 85,
+    "genres": [
+     "RPG",
+     "Adventure"
+    ],
+    "platform": "switch1",
+    "size": 12.7,
+    "numberOfPlayers": "Single system (1)",
+    "supportedLanguages": "Official supported language list varies by region; see the publisher page linked in Sources.",
+    "hardwareModel": "",
+    "colorEdition": "",
+    "storageCapacity": "",
+    "screenSpecs": "",
+    "batteryLife": "",
+    "boxContents": [],
+    "boxContentsText": "",
+    "warrantyCondition": "",
+    "connectivity": "",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "Global",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "",
+    "redemptionSteps": [],
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 8500,
+    "cost": 1500,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": true,
+    "displayOrder": 0,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "مشترك",
+      "description": "مشترك",
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_account",
+      "name": "خاص بك",
+      "description": "خاص بك",
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "types": [
+     {
+      "id": "offline_base",
+      "name": "مشترك — اللعبة الأساسية",
+      "optionId": "offline_account",
+      "price": 8500,
+      "cost": 1500,
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_base",
+      "name": "خاص بك — اللعبة الأساسية",
+      "optionId": "online_account",
+      "price": 21000,
+      "cost": 16500,
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "Active",
+    "kind": "account",
+    "trade_value_iqd": 9000,
+    "store_offer_bonus_iqd": 1500,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "id": "prd_17105a2338f648ee",
+    "schema_version": 24,
+    "titleAr": "فاينل فانتسي 12: ذا زودياك إيج",
+    "compatibility": [
+     "Nintendo Switch",
+     "Nintendo Switch 2 compatibility: Supported"
+    ],
+    "edition": "Standard / Store Variants",
+    "developer": "SQUARE ENIX",
+    "publisher": "SQUARE ENIX",
+    "seriesName": "FINAL FANTASY XII THE ZODIAC AGE",
+    "metacriticUrl": "https://www.metacritic.com/game/final-fantasy-xii-the-zodiac-age/",
+    "opencriticRating": 85,
+    "userScore": 8.5,
+    "price_usd": 49.99,
+    "officialUrl": "https://www.nintendo.com/us/store/products/final-fantasy-xii-the-zodiac-age-switch/",
+    "eshopUrl": "https://www.nintendo.com/us/store/products/final-fantasy-xii-the-zodiac-age-switch/",
+    "gameIsOffline": true,
+    "gameIsOnline": false,
+    "gameLanguageLocked": false,
+    "description_short": "The remastered Ivalice RPG combines gambit-driven real-time party combat with the Zodiac Job System and portable Nintendo Switch play.",
+    "description_ar": "فاينل فانتسي 12: ذا زودياك إيج — The remastered Ivalice RPG combines gambit-driven real-time party combat with the Zodiac Job System and portable Nintendo Switch play.",
+    "box_front_url": "https://b.scdn.gr/images/sku_main_images/017505/17505147/20190227095937_final_fantasy_xii_the_zodiac_age_switch.jpeg",
+    "languagesText": [
+     "See official supported languages on the linked Nintendo/publisher product page"
+    ],
+    "languagesAudio": [
+     "Audio language availability varies by title and region; see official product information"
+    ],
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": true,
+    "nintendoPlayModes": "TV / Tabletop / Handheld",
+    "nintendoOnlineRequired": false,
+    "nintendoCloudSaves": true,
+    "nintendoGameKeyCard": false,
+    "nintendoPhysicalNeedsDownload": false,
+    "switch2Enhanced": false,
+    "switch2Exclusive": false,
+    "nintendoNotes": "Platform, release, player-count, storage, compatibility, and feature statements in this import are grounded in the official Nintendo/publisher pages listed under Sources. Store package prices are user-supplied storefront values, not assumed MSRP.",
+    "editionsList": [
+     {
+      "name": "Regular / Offline",
+      "coverUrl": "https://b.scdn.gr/images/sku_main_images/017505/17505147/20190227095937_final_fantasy_xii_the_zodiac_age_switch.jpeg",
+      "contents": [
+       {
+        "label": "Regular / Offline store package"
+       },
+       {
+        "label": "Offline account access"
+       },
+       {
+        "label": "Infinite stock by default"
+       }
+      ]
+     },
+     {
+      "name": "Standard / Online",
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_1:1,c_fill,g_auto,w_1000/f_auto/q_auto/dpr_1.5/store/software/switch/70010000009746/5bcb8b7802294acb31bc57de2d50a34c1e7a3bd10d8d00f931aa297e20948196",
+      "contents": [
+       {
+        "label": "Standard / Online store package"
+       },
+       {
+        "label": "Online account access"
+       },
+       {
+        "label": "Infinite stock by default"
+       }
+      ]
+     }
+    ],
+    "gameplayPillars": [
+     {
+      "title": "Gambit automation",
+      "description": "Players program party priorities and conditional actions, creating detailed AI behavior for long battles.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000009746/199d08daecf6f6008b36ed6aaeca5ee9a24d187b1ea69c8af500d1bb0f65c3e5"
+     },
+     {
+      "title": "Zodiac Job System",
+      "description": "Characters select specialized jobs and develop through License Boards that define weapons, armor, magic, and skills.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000009746/33a72d02315185e5b3728ce4b2c135671f45c253d1ea8b3e1641c3bbcb2696f6"
+     },
+     {
+      "title": "Large Ivalice world",
+      "description": "Towns, wilderness zones, hunts, optional bosses, and political story arcs make exploration a major part of progression.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000009746/28998e758c45dc925b0268117f7dbdcbf884cc96c0a7d6fd6c0e7e1f2f31388c"
+     },
+     {
+      "title": "Hunts and superbosses",
+      "description": "Optional marks and high-level enemies provide long-term challenges beyond the main story.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000009746/7c384f5cc44dbd1259b7914df776da401737e2031e2b1d812da5432df06f8560"
+     },
+     {
+      "title": "Remastered quality-of-life features",
+      "description": "The Zodiac Age improves visuals, speed options, soundtrack choices, and progression systems over the original release.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000009746/111b6437fdbeeeda09500e972eabd1afa87da16b057f6b77984c0fd846d1239a"
+     }
+    ],
+    "worldSummary": "The remastered Ivalice RPG combines gambit-driven real-time party combat with the Zodiac Job System and portable Nintendo Switch play. Vaan’s life in Rabanastre intersects with a resistance movement and a larger imperial conflict. The final acts resolve the party’s struggle over power, freedom, and the future of Dalmasca.",
+    "storyChapters": [
+     {
+      "title": "Vaan enters the resistance",
+      "body": "Vaan’s life in Rabanastre intersects with a resistance movement and a larger imperial conflict.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000009746/33a72d02315185e5b3728ce4b2c135671f45c253d1ea8b3e1641c3bbcb2696f6"
+     },
+     {
+      "title": "Meet Ashe and the party",
+      "body": "The group forms around Princess Ashe, Balthier, Fran, Basch, Penelo, and Vaan.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000009746/28998e758c45dc925b0268117f7dbdcbf884cc96c0a7d6fd6c0e7e1f2f31388c"
+     },
+     {
+      "title": "Cross Ivalice",
+      "body": "The story travels through multiple nations and environments while political stakes continue to grow.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000009746/7c384f5cc44dbd1259b7914df776da401737e2031e2b1d812da5432df06f8560"
+     },
+     {
+      "title": "Master jobs and hunts",
+      "body": "Optional hunts, Espers, equipment, and job combinations become major progression goals.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000009746/111b6437fdbeeeda09500e972eabd1afa87da16b057f6b77984c0fd846d1239a"
+     },
+     {
+      "title": "Challenge the Empire",
+      "body": "The final acts resolve the party’s struggle over power, freedom, and the future of Dalmasca.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000009746/199d08daecf6f6008b36ed6aaeca5ee9a24d187b1ea69c8af500d1bb0f65c3e5"
+     }
+    ],
+    "features": [
+     "Zodiac Job System",
+     "Gambit party automation",
+     "Large hunt/boss catalog",
+     "Remastered soundtrack options",
+     "Strong portable RPG value"
+    ],
+    "perfResolutionDocked": "1080p",
+    "perfResolutionHandheld": "720p",
+    "perfFps": "30",
+    "perfHdr": false,
+    "playTimeMain": 40,
+    "completionMain": 60,
+    "completionExtras": 100,
+    "faq": [
+     {
+      "q": "Is The Zodiac Age turn-based?",
+      "a": "Combat runs in real time with commands, pause-style planning, and programmable Gambits rather than a strict traditional turn queue."
+     },
+     {
+      "q": "What is the file size?",
+      "a": "Nintendo lists 12.7 GB."
+     },
+     {
+      "q": "Does it support Switch 2?",
+      "a": "It is a Switch 1 game and Nintendo lists backward compatibility on Switch 2."
+     },
+     {
+      "q": "Is it multiplayer?",
+      "a": "No. It is a single-player RPG."
+     },
+     {
+      "q": "What is the Zodiac Job System?",
+      "a": "Each character develops through selected job License Boards that shape equipment and abilities."
+     }
+    ],
+    "verdictScore": 8.5,
+    "verdictPros": [
+     "Deep party automation",
+     "Excellent remaster features",
+     "Rich Ivalice setting",
+     "Strong optional hunt content",
+     "Flexible job builds"
+    ],
+    "verdictCons": [
+     "Gambit system has a learning curve",
+     "Political story can feel dense",
+     "Large maps involve substantial travel",
+     "Some rare loot systems are opaque",
+     "No native Switch 2 edition"
+    ],
+    "reviews": [
+     {
+      "source": "Metacritic",
+      "score": "85",
+      "url": "https://www.metacritic.com/game/final-fantasy-xii-the-zodiac-age/"
+     },
+     {
+      "source": "OpenCritic",
+      "score": "85",
+      "url": "https://opencritic.com/"
+     }
+    ],
+    "timeline": [
+     {
+      "date": "2019-04-30",
+      "title": "Released on target Nintendo platform"
+     }
+    ],
+    "patchNotes": [
+     {
+      "version": "Current retail build",
+      "date": "2026-08-27"
+     }
+    ],
+    "studioName": "SQUARE ENIX",
+    "studioUrl": "https://www.nintendo.com/us/store/products/final-fantasy-xii-the-zodiac-age-switch/",
+    "studioLocation": "See publisher/developer profile",
+    "sources": [
+     {
+      "name": "Official Nintendo / publisher product page",
+      "url": "https://www.nintendo.com/us/store/products/final-fantasy-xii-the-zodiac-age-switch/"
+     },
+     {
+      "name": "Metacritic",
+      "url": "https://www.metacritic.com/game/final-fantasy-xii-the-zodiac-age/"
+     }
+    ],
+    "downloadSizeGb": 12.7,
+    "requiredSpaceGb": 12.7,
+    "microSdRecommended": true,
+    "storageNotes": "Storage requirements follow the official product listing where a final numeric size is published; upcoming titles may require a later refresh when final size is posted.",
+    "mpLocalPlayers": false,
+    "mpOnlinePlayers": false,
+    "mpCoop": false,
+    "mpCompetitive": false,
+    "mpLocalWireless": false,
+    "mpSplitScreen": false,
+    "dlc": [
+     {
+      "name": "Downloadable / additional content status",
+      "description": "No standalone story expansion pass is required."
+     }
+    ],
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "deviceModel": "Nintendo Switch",
+      "hardwareId": "nintendo-switch",
+      "informationStatus": "Available",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p",
+       "resolutionDynamic": false,
+       "renderingResolution": "720p",
+       "outputResolution": "720p",
+       "fps": "30",
+       "fpsMin": "30",
+       "fpsMax": "30",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Handheld",
+       "notes": "Targets 30 fps; 720p handheld and 1080p docked are the established Switch presentation profiles."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p",
+       "resolutionDynamic": false,
+       "renderingResolution": "1080p",
+       "outputResolution": "1080p",
+       "fps": "30",
+       "fpsMin": "30",
+       "fpsMax": "30",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "TV / Docked",
+       "notes": "Targets 30 fps; 720p handheld and 1080p docked are the established Switch presentation profiles."
+      },
+      "modes": [
+       {
+        "name": "Primary documented/compatibility profile",
+        "handheldResolution": "720p",
+        "handheldFps": "30",
+        "tvResolution": "1080p",
+        "tvFps": "30",
+        "hdr": false,
+        "vrr": false,
+        "notes": "Targets 30 fps; 720p handheld and 1080p docked are the established Switch presentation profiles."
+       }
+      ],
+      "upscaling": "Game / system-specific scaling where applicable",
+      "rayTracing": false,
+      "rayTracingMode": "Not Supported",
+      "loadingTime": "Scene-dependent",
+      "loadingNotes": "Loading time varies by scene, save state, storage, version, and patch.",
+      "gameVersion": "Current listed version",
+      "patchVersion": "Current available update",
+      "testedDate": "2026-08-27",
+      "sourceName": "Official product / compatibility information",
+      "sourceUrl": "https://www.nintendo.com/us/store/products/final-fantasy-xii-the-zodiac-age-switch/",
+      "performanceNotes": "Targets 30 fps; 720p handheld and 1080p docked are the established Switch presentation profiles."
+     },
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "hardwareId": "nintendo-switch-2",
+      "informationStatus": "Available",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p",
+       "resolutionDynamic": false,
+       "renderingResolution": "720p",
+       "outputResolution": "720p",
+       "fps": "30",
+       "fpsMin": "30",
+       "fpsMax": "30",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Handheld",
+       "notes": "Backward-compatible Nintendo Switch software on Nintendo Switch 2; no native Switch 2 edition assumed."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p",
+       "resolutionDynamic": false,
+       "renderingResolution": "1080p",
+       "outputResolution": "1080p",
+       "fps": "30",
+       "fpsMin": "30",
+       "fpsMax": "30",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "TV / Docked",
+       "notes": "Backward-compatible Nintendo Switch software on Nintendo Switch 2; no native Switch 2 edition assumed."
+      },
+      "modes": [
+       {
+        "name": "Primary documented/compatibility profile",
+        "handheldResolution": "720p",
+        "handheldFps": "30",
+        "tvResolution": "1080p",
+        "tvFps": "30",
+        "hdr": false,
+        "vrr": false,
+        "notes": "Backward-compatible Nintendo Switch software on Nintendo Switch 2; no native Switch 2 edition assumed."
+       }
+      ],
+      "upscaling": "Game / system-specific scaling where applicable",
+      "rayTracing": false,
+      "rayTracingMode": "Not Supported",
+      "loadingTime": "Scene-dependent",
+      "loadingNotes": "Loading time varies by scene, save state, storage, version, and patch.",
+      "gameVersion": "Current listed version",
+      "patchVersion": "Current available update",
+      "testedDate": "2026-08-27",
+      "sourceName": "Official product / compatibility information",
+      "sourceUrl": "https://www.nintendo.com/us/store/products/final-fantasy-xii-the-zodiac-age-switch/",
+      "performanceNotes": "Backward-compatible Nintendo Switch software on Nintendo Switch 2; no native Switch 2 edition assumed."
+     }
+    ],
+    "switch2UpgradePrice": 0,
+    "galleryImages": [
+     {
+      "url": "/api/files/products/prd_17105a2338f648ee/gallery-1-0e4ea0f29e2c28a7.webp",
+      "alt": "FINAL FANTASY XII THE ZODIAC AGE screenshot 1"
+     },
+     {
+      "url": "/api/files/products/prd_17105a2338f648ee/gallery-2-dbd6f8a30fa71f89.webp",
+      "alt": "FINAL FANTASY XII THE ZODIAC AGE screenshot 2"
+     },
+     {
+      "url": "/api/files/products/prd_17105a2338f648ee/gallery-3-c31094e0db0ced82.webp",
+      "alt": "FINAL FANTASY XII THE ZODIAC AGE screenshot 3"
+     },
+     {
+      "url": "/api/files/products/prd_17105a2338f648ee/gallery-4-437f41c225caa3f1.webp",
+      "alt": "FINAL FANTASY XII THE ZODIAC AGE screenshot 4"
+     },
+     {
+      "url": "/api/files/products/prd_17105a2338f648ee/gallery-5-bd6bf6f1d2342dea.webp",
+      "alt": "FINAL FANTASY XII THE ZODIAC AGE screenshot 5"
+     },
+     {
+      "url": "/api/files/products/prd_17105a2338f648ee/gallery-6-bc7243e156f2f99e.webp",
+      "alt": "FINAL FANTASY XII THE ZODIAC AGE screenshot 6"
+     }
+    ],
+    "boxContentsList": [],
+    "image": "https://assets.nintendo.com/image/upload/ar_16:9,c_fill,g_auto,w_1600/f_auto/q_auto/dpr_1.5/store/software/switch/70010000009746/c5a2dda1188be7c74588911efb2ec8907968d7409937d65219ab212037ba209a",
+    "banner": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000009746/199d08daecf6f6008b36ed6aaeca5ee9a24d187b1ea69c8af500d1bb0f65c3e5",
+    "schemaId": "",
+    "batchImport": true,
+    "createdAt": "2026-08-28T18:45:24.044Z",
+    "updatedAt": "2026-08-28T18:45:24.044Z"
+   }
+  },
+  {
+   "id": "prd_6378a049ed4f454f",
+   "slug": "fitness-boxing-3-your-personal-trainer",
+   "title": "Fitness Boxing 3: Your Personal Trainer",
+   "platform": "switch1",
+   "isHidden": true,
+   "hash": "fa2a965f1f2c212fbce015ac45a2bf10ee622de6f36404ee4c3cb1d0387becf4",
+   "images": [
+    {
+     "role": "front-box",
+     "field": "cartridgeImage",
+     "url": "https://banan.to/api/files/products/prd_6378a049ed4f454f/front-box-de4cc1207bd1ce0e.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 222136,
+     "width": 1167,
+     "height": 1888,
+     "thumb": "review-workdir/thumbs/batch-008/fitness-boxing-3-your-personal-trainer__front-box-0.png"
+    },
+    {
+     "role": "front-box",
+     "field": "box_front_url",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/My%20Nintendo%20Store/EN-US/Nintendo%20Switch%20Software/fitness-boxing-3-your-personal-trainer-121188/121188-fitness-boxing-3-your-personal-trainer-1200x675",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 89859,
+     "width": 1200,
+     "height": 675,
+     "thumb": "review-workdir/thumbs/batch-008/fitness-boxing-3-your-personal-trainer__front-box-1.png"
+    },
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://banan.to/api/files/products/prd_6378a049ed4f454f/square-card-d43d81c33535be8d.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 120266,
+     "width": 1024,
+     "height": 1024,
+     "thumb": "review-workdir/thumbs/batch-008/fitness-boxing-3-your-personal-trainer__square-card-2.png"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://banan.to/api/files/products/prd_6378a049ed4f454f/cover-61d0ee4c057f928a.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 168580,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-008/fitness-boxing-3-your-personal-trainer__detail-cover-3.png"
+    },
+    {
+     "role": "3d-texture",
+     "field": "coverHiResImage",
+     "url": "https://banan.to/api/files/products/prd_6378a049ed4f454f/3d-wrap-7aeb86067f57750b.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 773222,
+     "width": 2454,
+     "height": 1888,
+     "thumb": "review-workdir/thumbs/batch-008/fitness-boxing-3-your-personal-trainer__3d-texture-4.png"
+    },
+    {
+     "role": "listing",
+     "field": "image",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/My%20Nintendo%20Store/EN-US/Nintendo%20Switch%20Software/fitness-boxing-3-your-personal-trainer-121188/121188-fitness-boxing-3-your-personal-trainer-1200x675",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 89859,
+     "width": 1200,
+     "height": 675,
+     "thumb": "review-workdir/thumbs/batch-008/fitness-boxing-3-your-personal-trainer__listing-5.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[0]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/My%20Nintendo%20Store/EN-US/Nintendo%20Switch%20Software/fitness-boxing-3-your-personal-trainer-121188/121188-121189-fitness-boxing-3-your-personal-trainer-ss-1-1280x720",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 127570,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-008/fitness-boxing-3-your-personal-trainer__banner-6.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[1]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/My%20Nintendo%20Store/EN-US/Nintendo%20Switch%20Software/fitness-boxing-3-your-personal-trainer-121188/121188-121189-fitness-boxing-3-your-personal-trainer-ss-2-1280x720",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 101514,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-008/fitness-boxing-3-your-personal-trainer__banner-7.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[2]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/My%20Nintendo%20Store/EN-US/Nintendo%20Switch%20Software/fitness-boxing-3-your-personal-trainer-121188/121188-121189-fitness-boxing-3-your-personal-trainer-ss-3-1280x720",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 107890,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-008/fitness-boxing-3-your-personal-trainer__banner-8.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[3]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/My%20Nintendo%20Store/EN-US/Nintendo%20Switch%20Software/fitness-boxing-3-your-personal-trainer-121188/121188-121189-fitness-boxing-3-your-personal-trainer-ss-4-1280x720",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 113831,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-008/fitness-boxing-3-your-personal-trainer__banner-9.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://banan.to/api/files/products/prd_6378a049ed4f454f/gallery-1-f69201ccf6ba973b.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 134270,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-008/fitness-boxing-3-your-personal-trainer__gallery-10.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[1]",
+     "url": "https://banan.to/api/files/products/prd_6378a049ed4f454f/gallery-2-33adf1cafc3623af.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 106764,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-008/fitness-boxing-3-your-personal-trainer__gallery-11.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[2]",
+     "url": "https://banan.to/api/files/products/prd_6378a049ed4f454f/gallery-3-bfd6cd43bcd3620a.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 99634,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-008/fitness-boxing-3-your-personal-trainer__gallery-12.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[3]",
+     "url": "https://banan.to/api/files/products/prd_6378a049ed4f454f/gallery-4-b06cc90e9b29a8e6.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 99038,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-008/fitness-boxing-3-your-personal-trainer__gallery-13.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[4]",
+     "url": "https://banan.to/api/files/products/prd_6378a049ed4f454f/gallery-5-1027d824f888d3b6.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 107590,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-008/fitness-boxing-3-your-personal-trainer__gallery-14.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[5]",
+     "url": "https://banan.to/api/files/products/prd_6378a049ed4f454f/gallery-6-ab80182343b867c2.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 101254,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-008/fitness-boxing-3-your-personal-trainer__gallery-15.png"
+    }
+   ],
+   "record": {
+    "title": "Fitness Boxing 3: Your Personal Trainer",
+    "titleEn": "Fitness Boxing 3: Your Personal Trainer",
+    "titleKu": "",
+    "slug": "fitness-boxing-3-your-personal-trainer",
+    "description": "Rhythm-based boxing workouts combine daily plans, virtual trainers, quick routines, Mitt Drills, and accessible exercise options for one or two players. Players select a trainer and establish a workout profile. Optional DLC packs add additional music and cosmetic content.",
+    "descriptionEn": "Rhythm-based boxing workouts combine daily plans, virtual trainers, quick routines, Mitt Drills, and accessible exercise options for one or two players. Players select a trainer and establish a workout profile. Optional DLC packs add additional music and cosmetic content.",
+    "descriptionKu": "",
+    "cartridgeImage": "/api/files/products/prd_6378a049ed4f454f/front-box-de4cc1207bd1ce0e.webp",
+    "nintendoCardImage": "/api/files/products/prd_6378a049ed4f454f/square-card-d43d81c33535be8d.webp",
+    "coverHiResImage": "/api/files/products/prd_6378a049ed4f454f/3d-wrap-7aeb86067f57750b.webp",
+    "coverImage": "/api/files/products/prd_6378a049ed4f454f/cover-61d0ee4c057f928a.webp",
+    "bannerImages": [
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/My%20Nintendo%20Store/EN-US/Nintendo%20Switch%20Software/fitness-boxing-3-your-personal-trainer-121188/121188-121189-fitness-boxing-3-your-personal-trainer-ss-1-1280x720",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/My%20Nintendo%20Store/EN-US/Nintendo%20Switch%20Software/fitness-boxing-3-your-personal-trainer-121188/121188-121189-fitness-boxing-3-your-personal-trainer-ss-2-1280x720",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/My%20Nintendo%20Store/EN-US/Nintendo%20Switch%20Software/fitness-boxing-3-your-personal-trainer-121188/121188-121189-fitness-boxing-3-your-personal-trainer-ss-3-1280x720",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/My%20Nintendo%20Store/EN-US/Nintendo%20Switch%20Software/fitness-boxing-3-your-personal-trainer-121188/121188-121189-fitness-boxing-3-your-personal-trainer-ss-4-1280x720",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/My%20Nintendo%20Store/EN-US/Nintendo%20Switch%20Software/fitness-boxing-3-your-personal-trainer-121188/121188-121189-fitness-boxing-3-your-personal-trainer-ss-5-1280x720",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/My%20Nintendo%20Store/EN-US/Nintendo%20Switch%20Software/fitness-boxing-3-your-personal-trainer-121188/121188-121189-fitness-boxing-3-your-personal-trainer-ss-6-1280x720"
+    ],
+    "gallery": [],
+    "youtubeTrailer": "",
+    "releaseDate": "2024-12-05",
+    "ageRating": "ESRB E — In-Game Purchases",
+    "metacriticRating": "85",
+    "genres": [
+     "Sports",
+     "Training",
+     "Fitness"
+    ],
+    "platform": "switch1",
+    "size": 4.6,
+    "numberOfPlayers": "Single system (1-2)",
+    "supportedLanguages": "Official supported language list varies by region; see the publisher page linked in Sources.",
+    "hardwareModel": "",
+    "colorEdition": "",
+    "storageCapacity": "",
+    "screenSpecs": "",
+    "batteryLife": "",
+    "boxContents": [],
+    "boxContentsText": "",
+    "warrantyCondition": "",
+    "connectivity": "",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "Global",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "",
+    "redemptionSteps": [],
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 8500,
+    "cost": 2500,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": true,
+    "displayOrder": 0,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "مشترك",
+      "description": "مشترك",
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_account",
+      "name": "خاص بك",
+      "description": "خاص بك",
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "types": [
+     {
+      "id": "offline_base",
+      "name": "مشترك — اللعبة الأساسية",
+      "optionId": "offline_account",
+      "price": 8500,
+      "cost": 2500,
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_base",
+      "name": "خاص بك — اللعبة الأساسية",
+      "optionId": "online_account",
+      "price": 32000,
+      "cost": 25000,
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "Active",
+    "kind": "account",
+    "trade_value_iqd": 13750,
+    "store_offer_bonus_iqd": 2500,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "id": "prd_6378a049ed4f454f",
+    "schema_version": 24,
+    "titleAr": "فيتنس بوكسينغ 3: يور بيرسونال ترينر",
+    "compatibility": [
+     "Nintendo Switch",
+     "Nintendo Switch 2 compatibility: Supported; native Switch 2 Edition available separately"
+    ],
+    "edition": "Standard / Store Variants",
+    "developer": "Imagineer",
+    "publisher": "Nintendo",
+    "seriesName": "Fitness Boxing 3",
+    "price_usd": 49.99,
+    "officialUrl": "https://www.nintendo.com/us/store/products/fitness-boxing-3-your-personal-trainer-121188/",
+    "eshopUrl": "https://www.nintendo.com/us/store/products/fitness-boxing-3-your-personal-trainer-121188/",
+    "gameIsOffline": true,
+    "gameIsOnline": false,
+    "gameLanguageLocked": false,
+    "description_short": "Rhythm-based boxing workouts combine daily plans, virtual trainers, quick routines, Mitt Drills, and accessible exercise options for one or two players.",
+    "description_ar": "فيتنس بوكسينغ 3: يور بيرسونال ترينر — Rhythm-based boxing workouts combine daily plans, virtual trainers, quick routines, Mitt Drills, and accessible exercise options for one or two players.",
+    "box_front_url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/My%20Nintendo%20Store/EN-US/Nintendo%20Switch%20Software/fitness-boxing-3-your-personal-trainer-121188/121188-fitness-boxing-3-your-personal-trainer-1200x675",
+    "languagesText": [
+     "See official supported languages on the linked Nintendo/publisher product page"
+    ],
+    "languagesAudio": [
+     "Audio language availability varies by title and region; see official product information"
+    ],
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": false,
+    "nintendoPlayModes": "TV / Tabletop",
+    "nintendoOnlineRequired": false,
+    "nintendoCloudSaves": true,
+    "nintendoGameKeyCard": false,
+    "nintendoPhysicalNeedsDownload": false,
+    "switch2Enhanced": false,
+    "switch2Exclusive": false,
+    "nintendoNotes": "Platform, release, player-count, storage, compatibility, and feature statements in this import are grounded in the official Nintendo/publisher pages listed under Sources. Store package prices are user-supplied storefront values, not assumed MSRP.",
+    "editionsList": [
+     {
+      "name": "Regular / Offline",
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/My%20Nintendo%20Store/EN-US/Nintendo%20Switch%20Software/fitness-boxing-3-your-personal-trainer-121188/121188-fitness-boxing-3-your-personal-trainer-1200x675",
+      "contents": [
+       {
+        "label": "Regular / Offline store package"
+       },
+       {
+        "label": "Offline account access"
+       },
+       {
+        "label": "Infinite stock by default"
+       }
+      ]
+     },
+     {
+      "name": "Standard / Online",
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/My%20Nintendo%20Store/EN-US/Nintendo%20Switch%20Software/fitness-boxing-3-your-personal-trainer-121188/121188-fitness-boxing-3-your-personal-trainer-1200x675",
+      "contents": [
+       {
+        "label": "Standard / Online store package"
+       },
+       {
+        "label": "Online account access"
+       },
+       {
+        "label": "Infinite stock by default"
+       }
+      ]
+     }
+    ],
+    "gameplayPillars": [
+     {
+      "title": "Rhythm boxing workouts",
+      "description": "Punch and dodge in time with 30 instrumental tracks and guided routines.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/My%20Nintendo%20Store/EN-US/Nintendo%20Switch%20Software/fitness-boxing-3-your-personal-trainer-121188/121188-121189-fitness-boxing-3-your-personal-trainer-ss-1-1280x720"
+     },
+     {
+      "title": "Personal Program",
+      "description": "Daily routines can be tailored around training goals and available time.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/My%20Nintendo%20Store/EN-US/Nintendo%20Switch%20Software/fitness-boxing-3-your-personal-trainer-121188/121188-121189-fitness-boxing-3-your-personal-trainer-ss-2-1280x720"
+     },
+     {
+      "title": "Nine virtual instructors",
+      "description": "Trainers are fully voiced and support customizable clothing and hairstyles.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/My%20Nintendo%20Store/EN-US/Nintendo%20Switch%20Software/fitness-boxing-3-your-personal-trainer-121188/121188-121189-fitness-boxing-3-your-personal-trainer-ss-3-1280x720"
+     },
+     {
+      "title": "Sit Fit Boxing and Mitt Drills",
+      "description": "Special modes broaden accessibility and provide focused practice.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/My%20Nintendo%20Store/EN-US/Nintendo%20Switch%20Software/fitness-boxing-3-your-personal-trainer-121188/121188-121189-fitness-boxing-3-your-personal-trainer-ss-4-1280x720"
+     },
+     {
+      "title": "Two-player workouts",
+      "description": "Supported routines let two local players exercise together on one system.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/My%20Nintendo%20Store/EN-US/Nintendo%20Switch%20Software/fitness-boxing-3-your-personal-trainer-121188/121188-121189-fitness-boxing-3-your-personal-trainer-ss-5-1280x720"
+     }
+    ],
+    "worldSummary": "Rhythm-based boxing workouts combine daily plans, virtual trainers, quick routines, Mitt Drills, and accessible exercise options for one or two players. Players select a trainer and establish a workout profile. Optional DLC packs add additional music and cosmetic content.",
+    "storyChapters": [
+     {
+      "title": "Choose an instructor",
+      "body": "Players select a trainer and establish a workout profile.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/My%20Nintendo%20Store/EN-US/Nintendo%20Switch%20Software/fitness-boxing-3-your-personal-trainer-121188/121188-121189-fitness-boxing-3-your-personal-trainer-ss-2-1280x720"
+     },
+     {
+      "title": "Build a daily routine",
+      "body": "Personal Programs and Quick Workouts make it easy to fit sessions around a schedule.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/My%20Nintendo%20Store/EN-US/Nintendo%20Switch%20Software/fitness-boxing-3-your-personal-trainer-121188/121188-121189-fitness-boxing-3-your-personal-trainer-ss-3-1280x720"
+     },
+     {
+      "title": "Practice technique",
+      "body": "Mitt Drills and targeted exercises focus on combinations and movement.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/My%20Nintendo%20Store/EN-US/Nintendo%20Switch%20Software/fitness-boxing-3-your-personal-trainer-121188/121188-121189-fitness-boxing-3-your-personal-trainer-ss-4-1280x720"
+     },
+     {
+      "title": "Track progress",
+      "body": "Session history and training metrics encourage regular use.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/My%20Nintendo%20Store/EN-US/Nintendo%20Switch%20Software/fitness-boxing-3-your-personal-trainer-121188/121188-121189-fitness-boxing-3-your-personal-trainer-ss-5-1280x720"
+     },
+     {
+      "title": "Expand music and cosmetics",
+      "body": "Optional DLC packs add additional music and cosmetic content.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/My%20Nintendo%20Store/EN-US/Nintendo%20Switch%20Software/fitness-boxing-3-your-personal-trainer-121188/121188-121189-fitness-boxing-3-your-personal-trainer-ss-6-1280x720"
+     }
+    ],
+    "features": [
+     "30 instrumental songs",
+     "Nine voiced trainers",
+     "Personal Program",
+     "Sit Fit Boxing and Mitt Drills",
+     "Two-player local workouts"
+    ],
+    "perfResolutionDocked": "1080p",
+    "perfResolutionHandheld": "Not Supported",
+    "perfFps": "60",
+    "perfHdr": false,
+    "playTimeMain": 0,
+    "completionMain": 0,
+    "completionExtras": 0,
+    "faq": [
+     {
+      "q": "Does it support Handheld mode?",
+      "a": "No. Nintendo lists TV and Tabletop modes because detached Joy-Con motion input is required."
+     },
+     {
+      "q": "How many players are supported?",
+      "a": "Nintendo lists 1-2 players on a single system."
+     },
+     {
+      "q": "Does it have DLC?",
+      "a": "Yes. Nintendo Support lists additional music and cosmetic packs."
+     },
+     {
+      "q": "Is there a Switch 2 Edition?",
+      "a": "Yes. A separate Nintendo Switch 2 Edition released in 2026 and should be treated as a separate file."
+     },
+     {
+      "q": "Can the Switch 1 version be upgraded?",
+      "a": "Yes. Nintendo provides a Switch 2 Edition Upgrade Pack for owners who want the enhanced version on Switch 2."
+     }
+    ],
+    "verdictScore": 8.5,
+    "verdictPros": [
+     "Good daily workout structure",
+     "Accessible training modes",
+     "Strong instructor customization",
+     "Local two-player support",
+     "Expandable with music DLC"
+    ],
+    "verdictCons": [
+     "Requires motion space",
+     "Handheld mode not supported",
+     "Not a substitute for professional medical/fitness advice",
+     "Music selection may not suit everyone",
+     "Advanced Switch 2 features require the separate edition"
+    ],
+    "timeline": [
+     {
+      "date": "2024-12-05",
+      "title": "Released on target Nintendo platform"
+     }
+    ],
+    "patchNotes": [
+     {
+      "version": "Current retail build",
+      "date": "2026-08-27"
+     }
+    ],
+    "studioName": "Imagineer",
+    "studioUrl": "https://www.nintendo.com/us/store/products/fitness-boxing-3-your-personal-trainer-121188/",
+    "studioLocation": "See publisher/developer profile",
+    "sources": [
+     {
+      "name": "Official Nintendo / publisher product page",
+      "url": "https://www.nintendo.com/us/store/products/fitness-boxing-3-your-personal-trainer-121188/"
+     }
+    ],
+    "downloadSizeGb": 4.6,
+    "requiredSpaceGb": 4.6,
+    "microSdRecommended": false,
+    "storageNotes": "Storage requirements follow the official product listing where a final numeric size is published; upcoming titles may require a later refresh when final size is posted.",
+    "mpLocalPlayers": true,
+    "mpOnlinePlayers": false,
+    "mpCoop": true,
+    "mpCompetitive": false,
+    "mpLocalWireless": false,
+    "mpSplitScreen": true,
+    "dlc": [
+     {
+      "name": "Downloadable / additional content status",
+      "description": "Nintendo Support lists optional music/cosmetic packs and a separate Switch 2 Edition Upgrade Pack."
+     }
+    ],
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "deviceModel": "Nintendo Switch",
+      "hardwareId": "nintendo-switch",
+      "informationStatus": "Available",
+      "handheld": {
+       "supported": false,
+       "resolution": "Not Supported",
+       "resolutionDynamic": false,
+       "renderingResolution": "Not Supported",
+       "outputResolution": "Not Supported",
+       "fps": "60",
+       "fpsMin": "60",
+       "fpsMax": "60",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Handheld",
+       "notes": "Handheld mode is not supported. TV/Tabletop motion-controlled workouts use a 60 fps presentation target."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p",
+       "resolutionDynamic": false,
+       "renderingResolution": "1080p",
+       "outputResolution": "1080p",
+       "fps": "60",
+       "fpsMin": "60",
+       "fpsMax": "60",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "TV / Docked",
+       "notes": "Handheld mode is not supported. TV/Tabletop motion-controlled workouts use a 60 fps presentation target."
+      },
+      "modes": [
+       {
+        "name": "Primary documented/compatibility profile",
+        "handheldResolution": "Not Supported",
+        "handheldFps": "60",
+        "tvResolution": "1080p",
+        "tvFps": "60",
+        "hdr": false,
+        "vrr": false,
+        "notes": "Handheld mode is not supported. TV/Tabletop motion-controlled workouts use a 60 fps presentation target."
+       }
+      ],
+      "upscaling": "Game / system-specific scaling where applicable",
+      "rayTracing": false,
+      "rayTracingMode": "Not Supported",
+      "loadingTime": "Scene-dependent",
+      "loadingNotes": "Loading time varies by scene, save state, storage, version, and patch.",
+      "gameVersion": "Current listed version",
+      "patchVersion": "Current available update",
+      "testedDate": "2026-08-27",
+      "sourceName": "Official product / compatibility information",
+      "sourceUrl": "https://www.nintendo.com/us/store/products/fitness-boxing-3-your-personal-trainer-121188/",
+      "performanceNotes": "Handheld mode is not supported. TV/Tabletop motion-controlled workouts use a 60 fps presentation target."
+     },
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "hardwareId": "nintendo-switch-2",
+      "informationStatus": "Available",
+      "handheld": {
+       "supported": false,
+       "resolution": "Not Supported",
+       "resolutionDynamic": false,
+       "renderingResolution": "Not Supported",
+       "outputResolution": "Not Supported",
+       "fps": "60",
+       "fpsMin": "60",
+       "fpsMax": "60",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Handheld",
+       "notes": "Original Switch version is playable on Switch 2; the enhanced Switch 2 Edition is a separate product and should be used for its additional features."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p",
+       "resolutionDynamic": false,
+       "renderingResolution": "1080p",
+       "outputResolution": "1080p",
+       "fps": "60",
+       "fpsMin": "60",
+       "fpsMax": "60",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "TV / Docked",
+       "notes": "Original Switch version is playable on Switch 2; the enhanced Switch 2 Edition is a separate product and should be used for its additional features."
+      },
+      "modes": [
+       {
+        "name": "Primary documented/compatibility profile",
+        "handheldResolution": "Not Supported",
+        "handheldFps": "60",
+        "tvResolution": "1080p",
+        "tvFps": "60",
+        "hdr": false,
+        "vrr": false,
+        "notes": "Original Switch version is playable on Switch 2; the enhanced Switch 2 Edition is a separate product and should be used for its additional features."
+       }
+      ],
+      "upscaling": "Game / system-specific scaling where applicable",
+      "rayTracing": false,
+      "rayTracingMode": "Not Supported",
+      "loadingTime": "Scene-dependent",
+      "loadingNotes": "Loading time varies by scene, save state, storage, version, and patch.",
+      "gameVersion": "Current listed version",
+      "patchVersion": "Current available update",
+      "testedDate": "2026-08-27",
+      "sourceName": "Official product / compatibility information",
+      "sourceUrl": "https://www.nintendo.com/us/store/products/fitness-boxing-3-your-personal-trainer-121188/",
+      "performanceNotes": "Original Switch version is playable on Switch 2; the enhanced Switch 2 Edition is a separate product and should be used for its additional features."
+     }
+    ],
+    "switch2UpgradePrice": 0,
+    "galleryImages": [
+     {
+      "url": "/api/files/products/prd_6378a049ed4f454f/gallery-1-f69201ccf6ba973b.webp",
+      "alt": "Fitness Boxing 3: Your Personal Trainer screenshot 1"
+     },
+     {
+      "url": "/api/files/products/prd_6378a049ed4f454f/gallery-2-33adf1cafc3623af.webp",
+      "alt": "Fitness Boxing 3: Your Personal Trainer screenshot 2"
+     },
+     {
+      "url": "/api/files/products/prd_6378a049ed4f454f/gallery-3-bfd6cd43bcd3620a.webp",
+      "alt": "Fitness Boxing 3: Your Personal Trainer screenshot 3"
+     },
+     {
+      "url": "/api/files/products/prd_6378a049ed4f454f/gallery-4-b06cc90e9b29a8e6.webp",
+      "alt": "Fitness Boxing 3: Your Personal Trainer screenshot 4"
+     },
+     {
+      "url": "/api/files/products/prd_6378a049ed4f454f/gallery-5-1027d824f888d3b6.webp",
+      "alt": "Fitness Boxing 3: Your Personal Trainer screenshot 5"
+     },
+     {
+      "url": "/api/files/products/prd_6378a049ed4f454f/gallery-6-ab80182343b867c2.webp",
+      "alt": "Fitness Boxing 3: Your Personal Trainer screenshot 6"
+     }
+    ],
+    "boxContentsList": [],
+    "image": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/My%20Nintendo%20Store/EN-US/Nintendo%20Switch%20Software/fitness-boxing-3-your-personal-trainer-121188/121188-fitness-boxing-3-your-personal-trainer-1200x675",
+    "banner": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/My%20Nintendo%20Store/EN-US/Nintendo%20Switch%20Software/fitness-boxing-3-your-personal-trainer-121188/121188-121189-fitness-boxing-3-your-personal-trainer-ss-1-1280x720",
+    "schemaId": "",
+    "batchImport": true,
+    "createdAt": "2026-08-28T18:42:27.668Z",
+    "updatedAt": "2026-08-28T18:42:27.668Z"
+   }
+  }
+ ]
+}
