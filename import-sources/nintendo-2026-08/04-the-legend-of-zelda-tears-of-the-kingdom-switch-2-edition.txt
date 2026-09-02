@@ -35,9 +35,9 @@ opencritic=96
 user_score=8.7
 userscore=8.7
 user_rating=8.7
-game_size_gb=16.4
-size=16.4 GB
-size_gb=16.4
+game_size_gb=19.9
+size=19.9 GB
+size_gb=19.9
 price=27250
 price_iqd=27250
 price_usd=79.99
@@ -73,28 +73,36 @@ EOF
 description_ar<<EOF
 الإصدار المخصص لجهاز Nintendo Switch 2 من Tears of the Kingdom، ويقدم نفس المغامرة الضخمة في هايرول لكن ضمن ملف منتج محسن ومخصص للمنصة الجديدة.
 EOF
-front_cover_image=
+front_cover_image=https://img-eshop.cdn.nintendo.net/i/4b53da7ca4b118fe37c8b8040609b84dc63214d6131c51592486de9bf29ef29c.jpg
 cartridge_image=
 cartridge=
 cartridge_url=
-box_front_url=
+box_front_url=https://img-eshop.cdn.nintendo.net/i/4b53da7ca4b118fe37c8b8040609b84dc63214d6131c51592486de9bf29ef29c.jpg
 nintendo_card_image=
 square_game_image=
-main_image=
-image=
-image_url=
-cover_image=
+main_image=https://img-eshop.cdn.nintendo.net/i/4b53da7ca4b118fe37c8b8040609b84dc63214d6131c51592486de9bf29ef29c.jpg
+image=https://img-eshop.cdn.nintendo.net/i/4b53da7ca4b118fe37c8b8040609b84dc63214d6131c51592486de9bf29ef29c.jpg
+image_url=https://img-eshop.cdn.nintendo.net/i/4b53da7ca4b118fe37c8b8040609b84dc63214d6131c51592486de9bf29ef29c.jpg
+cover_image=https://img-eshop.cdn.nintendo.net/i/4b53da7ca4b118fe37c8b8040609b84dc63214d6131c51592486de9bf29ef29c.jpg
 cover=
 cover_url=
 cover_texture_url=
 box_back_url=
-supported_languages_raw=Japanese / British English / French / German / Italian / Spanish / Korean / Dutch / Simplified Chinese / Latin American Spanish / Canadian French / Traditional Chinese / American English
-text_language.1=Japanese / English
-text_language.2=French / German / Italian / Spanish / Dutch
-text_language.3=Korean / Simplified Chinese / Traditional Chinese
+supported_languages_raw=Japanese, English, French, German, Spanish, Italian, Dutch, Russian, Korean, Simplified Chinese, Traditional Chinese
+text_language.1=Japanese
+text_language.2=English
+text_language.3=Spanish
+text_language.4=French
+text_language.5=Portuguese
+text_language.6=German
+text_language.7=Italian
+text_language.8=Dutch
+text_language.9=Russian
+text_language.10=Korean
+text_language.11=Chinese (Simplified)
 audio_language.1=Music / sound effects
 audio_language.2=Character vocalizations where applicable
-audio_language.3=No full language-selectable dub beyond the shipped release build information
+audio_language.3=
 tv_mode=true
 tabletop_mode=true
 handheld_mode=true
@@ -247,8 +255,8 @@ source.2.name=Upgrade Pack page
 source.2.url=https://www.nintendo.com/us/store/products/the-legend-of-zelda-tears-of-the-kingdom-nintendo-switch-2-edition-upgrade-pack-switch-2/
 source.3.name=Metacritic
 source.3.url=https://www.metacritic.com/game/the-legend-of-zelda-tears-of-the-kingdom/
-storage_download_size_gb=16.4
-storage_required_space_gb=16.4
+storage_download_size_gb=19.9
+storage_required_space_gb=19.9
 storage_micro_sd_recommended=true
 storage_notes<<EOF
 The Switch 2 Edition store entry is treated as a dedicated software product, so this file records a slightly updated storage profile for the enhanced release.
@@ -412,3 +420,8 @@ device_performance.2.source_url=https://www.nintendo.com/us/store/products/the-l
 device_performance.2.performance_notes<<EOF
 This file tracks the dedicated Nintendo Switch 2 Edition rather than the original Nintendo Switch release.
 EOF
+
+trailer_url=https://www.youtube.com/watch?v=dmDD7JSfhcE
+overview_tagline=An epic adventure across land and skies—enhanced for Nintendo Switch 2
+banner_image=https://img-eshop.cdn.nintendo.net/i/f20258999e8d852a496dad2961a87faf2b119488f97fb81442f378043e58b000.jpg
+text_language.12=Chinese (Traditional)

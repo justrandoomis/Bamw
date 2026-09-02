@@ -26,9 +26,9 @@ opencritic=89
 user_score=8.7
 userscore=8.7
 user_rating=8.7
-game_size_gb=4.5
-size=4.5 GB
-size_gb=4.5
+game_size_gb=4.59
+size=4.59 GB
+size_gb=4.59
 price=10000
 price_iqd=10000
 price_usd=59.99
@@ -78,14 +78,14 @@ image=
 image_url=
 box_front_url=
 box_back_url=
-banner_image.1=
+banner_image.1=https://img-eshop.cdn.nintendo.net/i/4f2c683f0196210ec212a2ab8bf6952223c0b88e827b820953407a2ba61c9cb2.jpg
 banner_image.2=
 banner_image.3=
 banner_image.4=
 banner_image.5=
 banner_image.6=
 banner_image.7=
-trailer_url=https://www.youtube.com/results?search_query=Metroid+Dread+official+trailer
+trailer_url=https://www.youtube.com/watch?v=AOvefm5U250
 video.1.title=Official Trailer
 video.1.url=https://www.youtube.com/results?search_query=Metroid+Dread+official+trailer
 nsuid=
@@ -371,3 +371,14 @@ type.2.cost=1250
 type.2.description=Online account access
 type.2.stock=9999
 type.2.is_infinite_stock=true
+
+verdict_score=8.8
+supported_languages_raw=Japanese, English, Spanish, French, German, Italian, Dutch, Russian, Korean, Chinese (Simplified), Chinese (Traditional)
+storage_download_size_gb=4.59
+storage_required_space_gb=4.59
+completion_main_story_hours=8.0
+completion_story_plus_dlc_hours=9.5
+completion_100_percent_hours=12.0
+update.1.version=2.1.0
+update.1.date=2022-04-08
+update.1.changes=Free update adding Boss Rush, Survival Rush and Dread Rush modes plus a per-boss Practice mode; also fixes a Game Over screen display bug.

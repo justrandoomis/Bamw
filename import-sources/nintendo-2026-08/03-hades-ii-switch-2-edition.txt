@@ -33,9 +33,9 @@ opencritic=94
 user_score=9.0
 userscore=9.0
 user_rating=9.0
-game_size_gb=10.8
-size=10.8 GB
-size_gb=10.8
+game_size_gb=6.6
+size=6.6 GB
+size_gb=6.6
 price=1500
 price_iqd=1500
 price_usd=29.99
@@ -86,9 +86,9 @@ cover=https://assets.nintendo.com/image/upload/ar_16:9,c_fill,g_auto,w_1600/f_au
 cover_url=https://assets.nintendo.com/image/upload/ar_16:9,c_fill,g_auto,w_1600/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000105526/32608044933fa2a4bf912586ef78aced58ccf2c02c754a209394d6fb659a5ac7
 cover_texture_url=
 box_back_url=
-supported_languages_raw=Official supported language list varies by region; see the publisher page linked in Sources.
-text_language.1=See official supported languages on the linked Nintendo/publisher product page
-audio_language.1=Audio language availability varies by title and region; see official product information
+supported_languages_raw=Japanese, English, Portuguese, Spanish, French, German, Italian, Russian, Korean, Chinese (Simplified), Chinese (Traditional)
+text_language.1=Japanese
+audio_language.1=English
 tv_mode=true
 tabletop_mode=true
 handheld_mode=true
@@ -230,8 +230,8 @@ source.1.name=Official Nintendo / publisher product page
 source.1.url=https://www.nintendo.com/us/store/products/hades-ii-nintendo-switch-2-edition-switch-2/
 source.2.name=Metacritic
 source.2.url=https://www.metacritic.com/game/hades-ii/
-storage_download_size_gb=10.8
-storage_required_space_gb=10.8
+storage_download_size_gb=6.6
+storage_required_space_gb=6.6
 storage_micro_sd_recommended=true
 storage_notes<<EOF
 Storage requirements follow the official product listing where a final numeric size is published; upcoming titles may require a later refresh when final size is posted.
@@ -408,3 +408,15 @@ device_performance.2.performance_notes<<EOF
 This file is for the dedicated Nintendo Switch 2 Edition. A separate Switch 1 product exists and should be imported independently if needed.
 EOF
 upgrade_price=0
+
+overview_tagline=Battle beyond the Underworld using dark sorcery to take on the Titan of Time.
+text_language.2=English
+text_language.3=Portuguese
+text_language.4=Spanish
+text_language.5=French
+text_language.6=German
+text_language.7=Italian
+text_language.8=Russian
+text_language.9=Korean
+text_language.10=Chinese (Simplified)
+text_language.11=Chinese (Traditional)

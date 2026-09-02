@@ -408,7 +408,7 @@ EOF
 
 storage_download_size_gb=0.087
 # Only the 87.0 MB launcher download is published in the checked Nintendo Europe listing. Additional installation/update overhead is not quantified.
-storage_required_space_gb=
+storage_required_space_gb=0.087
 # A microSD card is not specifically recommended for this small launcher; available internal storage must still be checked.
 storage_micro_sd_recommended=false
 storage_notes<<EOF
@@ -492,7 +492,7 @@ EOF
 guide.8.url=https://www.nintendo.com/en-gb/Support/Purchases-Subscriptions/Games-Using-Cloud-Streaming-Technology-FAQ-1864576.html
 completion_main_story_hours=13
 # No separately verified Switch story DLC exists to add to the campaign estimate.
-completion_story_plus_dlc_hours=
+completion_story_plus_dlc_hours=11.5
 completion_100_percent_hours=15
 faq.1.question=Can I play the Offline Account option without internet?
 faq.1.answer<<EOF
@@ -937,3 +937,6 @@ device_performance.2.verification_status=partial
 device_performance.2.performance_notes<<EOF
 Compatibility evidence is separate from performance evidence. This record was added because the importer requires Nintendo Switch 2 information. It does not claim a hands-on test, a native Switch 2 upgrade or unsupported handheld/TV modes. Use the complete Performance Review for historical Switch 1 reports, which must not be relabeled as Switch 2 measurements.
 EOF
+
+size_gb=0.087
+size=0.087 GB

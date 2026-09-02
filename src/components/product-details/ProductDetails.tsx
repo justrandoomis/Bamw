@@ -41,6 +41,7 @@ import { useCartStore } from "@/store/useCartStore";
 import type { ProductKind } from "@/lib/types";
 import { showAddToCartToast } from "@/utils/cart-toast";
 import { resolvePurchaseImage } from "@/lib/nintendoImages";
+import { initialOptionId } from "@/lib/productPricing";
 
 import {
   AmiiboFunctionalityBlock,
@@ -99,7 +100,13 @@ function DetailsBody({
   const addToCart = useCartStore((s) => s.add);
   const navigate = useNavigate();
 
-  const [optionId, setOptionId] = useState(view.options[0]?.id ?? "");
+  /*
+    The page opens on the option the listing card priced: the one matching the
+    base price when a priced option carries it, the cheapest priced option
+    otherwise. Landing on an arbitrary first option showed a different price
+    two seconds after the card's.
+  */
+  const [optionId, setOptionId] = useState(() => initialOptionId(view.options, view.price));
   const [variantName, setVariantName] = useState("");
   const [quantity, setQuantity] = useState(1);
 

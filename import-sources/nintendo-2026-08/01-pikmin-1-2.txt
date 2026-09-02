@@ -108,9 +108,9 @@ gallery.7.description=Pikmin 1+2 gameplay / world media 7
 gallery.7.image=https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/My%20Nintendo%20Store/EN-US/Nintendo%20Switch%20Software/pikmin-1-2-118697/118696-118697-pikmin-1-and-2-ss-7-1280x720
 trailer_url=https://www.nintendo.com/us/store/products/pikmin-1-2-118696/
 supported_languages_raw=Japanese, English, French, German, Italian, Spanish, Korean, Dutch, Simplified Chinese, Traditional Chinese
-text_language.1=Japanese / English
-text_language.2=French / German / Italian / Spanish
-text_language.3=Korean / Simplified Chinese / Traditional Chinese
+text_language.1=Japanese
+text_language.2=English
+text_language.3=French
 audio_language.1=Character vocalizations
 audio_language.2=Music and sound effects
 audio_language.3=No language-dependent full spoken dub required
@@ -444,3 +444,12 @@ device_performance.2.performance_notes<<EOF
 Backward-compatible Nintendo Switch software on Nintendo Switch 2; no native Switch 2 edition is represented by this file.
 EOF
 upgrade_price=0
+
+overview_tagline=Two classic Pikmin adventures return, remastered in HD for Nintendo Switch.
+text_language.4=German
+text_language.5=Italian
+text_language.6=Spanish
+text_language.7=Korean
+text_language.8=Dutch
+text_language.9=Simplified Chinese
+text_language.10=Traditional Chinese

@@ -149,7 +149,14 @@ function buildMedia(p: Record<string, unknown>, locale: "ar" | "en") {
   ].filter((img) => img.url);
 
   const videoRows = rows(p["videos"]);
-  const trailerUrl = str(p["trailerUrl"]);
+  /*
+    The import schema stores `trailer_url=` under `youtubeTrailer` (and the
+    admin form edits that same field); `trailerUrl` only ever existed on legacy
+    records. Reading just the legacy name left the trailer card empty on every
+    imported game while the URL sat in the document.
+  */
+  const trailerUrl =
+    str(p["trailerUrl"]) || str(p["youtubeTrailer"]) || str(p["trailer_url"]);
   const videos: GameVideo[] = [
     ...(trailerUrl
       ? [
@@ -397,20 +404,38 @@ function buildStorage(p: Record<string, unknown>): StorageInfo | undefined {
   };
 }
 
+/*
+  A language *name*, not a sentence about languages. Templates that had nothing
+  to state wrote a referral ("see the official product page…") into the same
+  field, and rendering that as a supported language is worse than an empty
+  section. Real names — "Traditional Chinese (Taiwan region)" included — fit
+  under the cap and never use referral vocabulary.
+*/
+const REFERRAL_WORDS =
+  /\b(see|varies|vary|check|refer|according|official|page|listing|information|details|availability|supported)\b/i;
+const isLanguageName = (value: string) =>
+  value.length > 0 && value.length <= 48 && !REFERRAL_WORDS.test(value);
+
 function buildLanguages(p: Record<string, unknown>): LanguageSupport[] | undefined {
-  const audioNames = lines(p["languagesAudio"]).flatMap((l) =>
-    l
-      .split(",")
+  const splitNames = (value: unknown) =>
+    lines(value)
+      .flatMap((l) => l.split(","))
       .map((s) => s.trim())
-      .filter(Boolean),
-  );
-  const textNames = lines(p["languagesText"]).flatMap((l) =>
-    l
-      .split(",")
-      .map((s) => s.trim())
-      .filter(Boolean),
-  );
-  if (!audioNames.length && !textNames.length) return undefined;
+      .filter(isLanguageName);
+
+  const audioNames = splitNames(p["languagesAudio"]);
+  const textNames = splitNames(p["languagesText"]);
+  /*
+    The free-text official list (`supported_languages_raw`). When the per-channel
+    fields are empty this is everything the catalogue knows, and it used to be
+    ignored — so the page said nothing at all. A plain supported-language list
+    means the game's interface ships in it.
+  */
+  const rawNames =
+    audioNames.length || textNames.length
+      ? []
+      : splitNames(p["supportedLanguages"] ?? p["supported_languages_details"]);
+  if (!audioNames.length && !textNames.length && !rawNames.length) return undefined;
 
   const byName = new Map<string, LanguageSupport>();
   const upsert = (name: string, channel: LanguageSupport["channels"][number]) => {
@@ -424,6 +449,7 @@ function buildLanguages(p: Record<string, unknown>): LanguageSupport[] | undefin
   };
   audioNames.forEach((n) => upsert(n, "audio"));
   textNames.forEach((n) => upsert(n, "subtitles"));
+  rawNames.forEach((n) => upsert(n, "interface"));
   return Array.from(byName.values());
 }
 
@@ -1409,7 +1435,14 @@ export function gameFromProduct(
 
   const metacritic = num(p["metacriticRating"]);
   const opencritic = num(p["opencriticRating"]);
-  const userScore = num(p["userScore"]);
+  /*
+    The import schema stores the player score on a 0-10 scale ("تقييم اللاعبين
+    (0-10)"), while the hub's star widgets — and the site's own review
+    aggregate — are out of 5. An imported 8.1 rendered as "8.1 / 5". Anything
+    above 5 can only be the 10-point scale, so it is halved into the site's.
+  */
+  const rawUserScore = num(p["userScore"]);
+  const userScore = rawUserScore > 5 ? Math.round((rawUserScore / 2) * 10) / 10 : rawUserScore;
 
   const dataSourceRows = rows(p["dataSources"] || p["sources"]);
 

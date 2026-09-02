@@ -409,3 +409,5 @@ story_chapter.2.image=https://images.launchbox-app.com/d8f35444-9aff-4e96-957b-9
 story_chapter.3.image=https://images.launchbox-app.com/c51ead44-9805-4bbf-80bb-7b6bbfb47e08.jpg
 story_chapter.4.image=https://images.launchbox-app.com/716c3026-9736-4f31-bd1b-f6019b255753.jpg
 story_chapter.5.image=https://images.launchbox-app.com/be81c063-8dc2-4b1f-ba64-b597e749dcdc.jpg
+
+overview_tagline=Stack, battle and capture classic FINAL FANTASY monsters across the world of Grymoire.

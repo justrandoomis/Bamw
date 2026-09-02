@@ -76,9 +76,9 @@ cover=
 cover_url=
 cover_texture_url=
 box_back_url=
-supported_languages_raw=Official supported language list varies by region; see the publisher page linked in Sources.
-text_language.1=See official supported languages on the linked Nintendo/publisher product page
-audio_language.1=Audio language availability varies by title and region; see official product information
+supported_languages_raw=EU/AU eShop — Voice (commentary): German, English, Spanish, Spanish (Mexico), French (France), Italian, Dutch, Portuguese (Brazil); Screen text: German, English, Danish, Spanish, Spanish (Mexico), French (France), Italian, Norwegian, Dutch, Portuguese (Brazil), Portuguese (Portugal), Swedish
+text_language.1=English
+audio_language.1=English
 tv_mode=true
 tabletop_mode=true
 handheld_mode=true
@@ -401,3 +401,24 @@ device_performance.2.performance_notes<<EOF
 Backward-compatible Switch software; this is not a native Switch 2 edition.
 EOF
 upgrade_price=0
+
+trailer_url=https://www.youtube.com/watch?v=yHZB0jBZr48
+overview_tagline=The World's Game
+audio_language.2=German
+audio_language.3=Spanish
+audio_language.4=Spanish (Mexico)
+audio_language.5=French (France)
+audio_language.6=Italian
+audio_language.7=Dutch
+audio_language.8=Portuguese (Brazil)
+text_language.2=German
+text_language.3=Danish
+text_language.4=Spanish
+text_language.5=Spanish (Mexico)
+text_language.6=French (France)
+text_language.7=Italian
+text_language.8=Norwegian
+text_language.9=Dutch
+text_language.10=Portuguese (Brazil)
+text_language.11=Portuguese (Portugal)
+text_language.12=Swedish

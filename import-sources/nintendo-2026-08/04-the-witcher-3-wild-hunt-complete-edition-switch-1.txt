@@ -108,12 +108,12 @@ gallery.6.description=The Witcher 3: Wild Hunt — Complete Edition gameplay / w
 gallery.6.image=https://images.launchbox-app.com//eead0c78-0984-40fa-b98b-59fa28cf8462.jpg
 trailer_url=https://www.youtube.com/watch?v=nBT2SP21f3Q
 supported_languages_raw=English, French, German, Italian, Spanish, Russian, Polish, Brazilian Portuguese, Japanese, Korean, Chinese and additional regional text/audio options depending on build
-text_language.1=English / French / German / Italian / Spanish
-text_language.2=Polish / Russian / Brazilian Portuguese
-text_language.3=Japanese / Korean / Chinese options by regional build
-audio_language.1=English and selected full voice languages by regional installation
-audio_language.2=Music and voiced dialogue
-audio_language.3=Regional language pack availability can vary
+text_language.1=English
+text_language.2=French
+text_language.3=German
+audio_language.1=English
+audio_language.2=French
+audio_language.3=German
 supported_play_mode.1=TV mode
 supported_play_mode.2=Tabletop mode
 supported_play_mode.3=Handheld mode
@@ -477,3 +477,17 @@ device_performance.2.performance_notes<<EOF
 Original Switch build running through backward compatibility. A native Remastered Switch 2 release is tracked separately.
 EOF
 upgrade_price=0
+
+overview_tagline=The most awarded game of a generation — now on Nintendo Switch.
+audio_language.4=Japanese
+audio_language.5=Polish
+audio_language.6=Brazilian Portuguese
+audio_language.7=Russian
+text_language.4=Italian
+text_language.5=Spanish
+text_language.6=Russian
+text_language.7=Polish
+text_language.8=Brazilian Portuguese
+text_language.9=Japanese
+completionist_hours=173.0
+completion_100_percent_hours=173.0

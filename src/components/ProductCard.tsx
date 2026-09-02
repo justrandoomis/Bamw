@@ -3,6 +3,7 @@ import { getProductCategory } from "@/lib/productSection";
 import { GameCard } from "./cards/GameCard";
 import { HardwareCard } from "./cards/HardwareCard";
 import { AccessoryCard } from "./cards/AccessoryCard";
+import { GiftCardCard } from "./cards/GiftCardCard";
 import type { NintendoMediaRole } from "@/lib/nintendoImages";
 
 /**
@@ -34,6 +35,10 @@ export function ProductCard({
 
   if (category === "accessory") {
     return <AccessoryCard product={product} />;
+  }
+
+  if (category === "gift_card") {
+    return <GiftCardCard product={product} />;
   }
 
   return <GameCard product={product} imageRole={imageRole} priority={priority} />;

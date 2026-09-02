@@ -25,7 +25,6 @@ import { Route as PolicyRouteImport } from './routes/policy'
 import { Route as ProblemRouteImport } from './routes/problem'
 import { Route as ProfileRouteImport } from './routes/profile'
 import { Route as SupportRouteImport } from './routes/support'
-import { Route as SwRouteImport } from './routes/sw'
 import { Route as UsedRouteImport } from './routes/used'
 import { Route as WalletRouteImport } from './routes/wallet'
 import { Route as AdminIndexRouteImport } from './routes/admin.index'
@@ -203,11 +202,6 @@ const ProfileRoute = ProfileRouteImport.update({
 const SupportRoute = SupportRouteImport.update({
   id: '/support',
   path: '/support',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const SwRoute = SwRouteImport.update({
-  id: '/sw',
-  path: '/sw',
   getParentRoute: () => rootRouteImport,
 } as any)
 const UsedRoute = UsedRouteImport.update({
@@ -734,7 +728,6 @@ export interface FileRoutesByFullPath {
   '/problem': typeof ProblemRoute
   '/profile': typeof ProfileRoute
   '/support': typeof SupportRoute
-  '/sw': typeof SwRoute
   '/used': typeof UsedRoute
   '/wallet': typeof WalletRoute
   '/admin/import': typeof AdminImportRoute
@@ -851,7 +844,6 @@ export interface FileRoutesByTo {
   '/problem': typeof ProblemRoute
   '/profile': typeof ProfileRoute
   '/support': typeof SupportRoute
-  '/sw': typeof SwRoute
   '/used': typeof UsedRoute
   '/wallet': typeof WalletRoute
   '/admin/import': typeof AdminImportRoute
@@ -969,7 +961,6 @@ export interface FileRoutesById {
   '/problem': typeof ProblemRoute
   '/profile': typeof ProfileRoute
   '/support': typeof SupportRoute
-  '/sw': typeof SwRoute
   '/used': typeof UsedRoute
   '/wallet': typeof WalletRoute
   '/admin/import': typeof AdminImportRoute
@@ -1088,7 +1079,6 @@ export interface FileRouteTypes {
     | '/problem'
     | '/profile'
     | '/support'
-    | '/sw'
     | '/used'
     | '/wallet'
     | '/admin/import'
@@ -1205,7 +1195,6 @@ export interface FileRouteTypes {
     | '/problem'
     | '/profile'
     | '/support'
-    | '/sw'
     | '/used'
     | '/wallet'
     | '/admin/import'
@@ -1322,7 +1311,6 @@ export interface FileRouteTypes {
     | '/problem'
     | '/profile'
     | '/support'
-    | '/sw'
     | '/used'
     | '/wallet'
     | '/admin/import'
@@ -1440,7 +1428,6 @@ export interface RootRouteChildren {
   ProblemRoute: typeof ProblemRoute
   ProfileRoute: typeof ProfileRoute
   SupportRoute: typeof SupportRoute
-  SwRoute: typeof SwRoute
   UsedRoute: typeof UsedRoute
   WalletRoute: typeof WalletRoute
   AdminImportRoute: typeof AdminImportRoute
@@ -1641,13 +1628,6 @@ declare module '@tanstack/react-router' {
       path: '/support'
       fullPath: '/support'
       preLoaderRoute: typeof SupportRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/sw': {
-      id: '/sw'
-      path: '/sw'
-      fullPath: '/sw'
-      preLoaderRoute: typeof SwRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/used': {
@@ -2418,7 +2398,6 @@ const rootRouteChildren: RootRouteChildren = {
   ProblemRoute: ProblemRoute,
   ProfileRoute: ProfileRoute,
   SupportRoute: SupportRoute,
-  SwRoute: SwRoute,
   UsedRoute: UsedRoute,
   WalletRoute: WalletRoute,
   AdminImportRoute: AdminImportRoute,
@@ -2511,11 +2490,10 @@ export const routeTree = rootRouteImport
   ._addFileTypes<FileRouteTypes>()
 
 import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
+import type { createStart } from '@tanstack/react-start'
 declare module '@tanstack/react-start' {
   interface Register {
     ssr: true
     router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
   }
 }

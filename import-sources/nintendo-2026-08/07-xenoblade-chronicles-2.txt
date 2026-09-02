@@ -107,12 +107,12 @@ gallery.6.description=Xenoblade Chronicles 2 gameplay / world media 6
 gallery.6.image=https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000000707/3bdd5ab14edb0b72d215460b0a4fcef337fb8c7ec9d56ae2023d411f810fa51f
 trailer_url=https://www.nintendo.com/us/store/products/xenoblade-chronicles-2-switch/
 supported_languages_raw=Japanese, English, French, German, Italian, Spanish, Korean, Chinese regional text support
-text_language.1=English / Japanese
-text_language.2=French / German / Italian / Spanish
-text_language.3=Korean / Chinese regional options
-audio_language.1=English voice
-audio_language.2=Japanese voice
-audio_language.3=Music and fully voiced story scenes
+text_language.1=Japanese
+text_language.2=English
+text_language.3=French
+audio_language.1=English
+audio_language.2=Japanese (free downloadable voice pack)
+audio_language.3=
 supported_play_mode.1=TV mode
 supported_play_mode.2=Tabletop mode
 supported_play_mode.3=Handheld mode
@@ -467,3 +467,12 @@ device_performance.2.performance_notes<<EOF
 Original Switch version through compatibility. A dedicated Switch 2 Edition exists separately and is not represented here.
 EOF
 upgrade_price=0
+
+overview_tagline=Search the endless clouds for Elysium - humanity's last hope rides with Rex and Pyra.
+text_language.4=German
+text_language.5=Italian
+text_language.6=Spanish
+text_language.7=Korean (Asian regions)
+text_language.8=Traditional Chinese (Asian regions)
+completionist_hours=256.0
+completion_100_percent_hours=256.0

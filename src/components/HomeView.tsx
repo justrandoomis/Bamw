@@ -9,6 +9,8 @@ import { Headset, CreditCard, Wallet, Star, Trophy, Sparkles } from "lucide-reac
 import { playSound, preloadSound } from "../utils/audio";
 import { filterPurchasable } from "@/lib/purchasable";
 import { getProductCategory, isGameProduct } from "@/lib/productSection";
+import { productImageUrl } from "@/lib/productImages";
+import { listingPrice } from "@/lib/productPricing";
 import { CartridgeStrip, ProductStrip, CartridgeSkeleton } from "./ProductStrips";
 import { BundleStrip } from "./BundleStrip";
 import type { AccountBundle } from "@/lib/types";
@@ -658,8 +660,11 @@ export default function HomeView({
                     slug: p.slug,
                     title: p.titleEn || p.english_name || p.title || "Gift Card",
                     subtitle: p.developer || "Gift Card",
-                    price: p.price ?? 0,
-                    image: resolveNintendoImageUrl(p, "listing-card"),
+                    // The price the details page opens on and the picture its
+                    // hero leads with — a strip that prints the base price and
+                    // the box-art chain contradicted the very page it links to.
+                    price: listingPrice(p),
+                    image: productImageUrl(p, "listing"),
                     source: p,
                     rating: p.metacriticRating,
                   }))}

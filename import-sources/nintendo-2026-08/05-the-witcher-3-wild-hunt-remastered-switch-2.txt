@@ -33,7 +33,7 @@ size_gb=31.5
 size=31.5 GB
 price=1250
 price_iqd=1250
-price_usd=Not Announced
+price_usd=59.99
 cost=1250
 cost_iqd=1250
 stock=9999
@@ -233,7 +233,7 @@ faq.5.question=What is Songs of the Past?
 faq.5.answer<<EOF
 It is a newly announced paid expansion planned for 2027, featuring the new region of Letten.
 EOF
-verdict_score=Pending
+verdict_score=
 verdict_pro.1=Native Switch 2 release is officially confirmed
 verdict_pro.2=Large modernization pass goes beyond simple resolution scaling
 verdict_pro.3=Combat and progression revisions target long-standing rough edges
@@ -463,3 +463,5 @@ device_performance.2.performance_notes<<EOF
 This file represents the native Nintendo Switch 2 Remastered product. The original Nintendo Switch Complete Edition is a separate product file.
 EOF
 upgrade_price=0
+
+overview_tagline=Geralt's most awarded adventure, rebuilt for Nintendo Switch 2.

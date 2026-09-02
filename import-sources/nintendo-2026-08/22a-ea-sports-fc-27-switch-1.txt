@@ -401,3 +401,5 @@ device_performance.2.performance_notes<<EOF
 Backward-compatible Switch software; this is not a native Switch 2 edition.
 EOF
 upgrade_price=0
+
+overview_tagline=The next season of The World's Game kicks off 25 September 2026 — on Switch.

@@ -177,3 +177,82 @@ describe("gameFromProduct Timeline and Similar Games", () => {
     expect(game.id).toBe("corrupted-game");
   });
 });
+
+describe("gameFromProduct trailer", () => {
+  it("reads the youtubeTrailer field the import schema and admin form write", () => {
+    const game = gameFromProduct(
+      { id: "t1", title: "T", youtubeTrailer: "https://www.youtube.com/watch?v=abcdefgh123" },
+      "ar",
+    );
+    expect(game.videos?.length).toBe(1);
+    expect(game.videos?.[0]?.kind).toBe("trailer");
+    expect(game.videos?.[0]?.embedUrl).toContain("abcdefgh123");
+  });
+
+  it("still reads the legacy trailerUrl field first", () => {
+    const game = gameFromProduct(
+      {
+        id: "t2",
+        title: "T",
+        trailerUrl: "https://www.youtube.com/watch?v=legacy12345",
+        youtubeTrailer: "https://www.youtube.com/watch?v=newer123456",
+      },
+      "ar",
+    );
+    expect(game.videos?.[0]?.embedUrl).toContain("legacy12345");
+  });
+});
+
+describe("gameFromProduct user score", () => {
+  it("halves an imported 0-10 player score into the site's 5-star scale", () => {
+    const game = gameFromProduct({ id: "u1", title: "T", userScore: 8.1 }, "ar");
+    expect(game.userScore).toBe(4.1);
+  });
+
+  it("keeps a native 0-5 aggregate untouched", () => {
+    const game = gameFromProduct({ id: "u2", title: "T", userScore: 4.4 }, "ar");
+    expect(game.userScore).toBe(4.4);
+  });
+});
+
+describe("gameFromProduct languages", () => {
+  it("reads the array-valued audio/text language fields the importer writes", () => {
+    const game = gameFromProduct(
+      {
+        id: "g1",
+        title: "Game",
+        languagesAudio: ["English, Japanese"],
+        languagesText: ["English", "Arabic"],
+      },
+      "ar",
+    );
+    const names = (game.languages ?? []).map((l) => l.name).sort();
+    expect(names).toEqual(["Arabic", "English", "Japanese"]);
+    const english = game.languages?.find((l) => l.name === "English");
+    expect(english?.channels).toContain("audio");
+    expect(english?.channels).toContain("subtitles");
+  });
+
+  it("falls back to the free-text supported languages list", () => {
+    const game = gameFromProduct(
+      { id: "g2", title: "Game", supportedLanguages: "English, French, German" },
+      "ar",
+    );
+    expect((game.languages ?? []).map((l) => l.name)).toEqual(["English", "French", "German"]);
+    expect(game.languages?.[0]?.channels).toEqual(["interface"]);
+  });
+
+  it("does not render referral sentences as languages", () => {
+    const game = gameFromProduct(
+      {
+        id: "g3",
+        title: "Game",
+        languagesAudio: [
+          "Audio language availability varies by title and region; see official product information",
+        ],
+      },
+      "ar",
+    );
+    expect(game.languages).toBeUndefined();
+  });
+});

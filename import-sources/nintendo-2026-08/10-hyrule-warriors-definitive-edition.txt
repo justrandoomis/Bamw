@@ -33,9 +33,9 @@ opencritic=76
 user_score=8.0
 userscore=8.0
 user_rating=8.0
-game_size_gb=13.8
-size=13.8 GB
-size_gb=13.8
+game_size_gb=12.9
+size=12.9 GB
+size_gb=12.9
 price=16500
 price_iqd=16500
 price_usd=59.99
@@ -71,28 +71,28 @@ EOF
 description_ar<<EOF
 نسخة شاملة وغنية بالمحتوى من Hyrule Warriors على سويتش، تجمع شخصيات كثيرة من سلسلة زيلدا ومعارك موسو ضخمة وكمية كبيرة من المراحل والأنماط والمحتوى.
 EOF
-front_cover_image=
+front_cover_image=https://img-eshop.cdn.nintendo.net/i/8d75a710f3feacbaa1be6e277648b2cb04ec61edf6a9e4c67f4a1d1321c0b57a.jpg
 cartridge_image=
 cartridge=
 cartridge_url=
-box_front_url=
+box_front_url=https://img-eshop.cdn.nintendo.net/i/8d75a710f3feacbaa1be6e277648b2cb04ec61edf6a9e4c67f4a1d1321c0b57a.jpg
 nintendo_card_image=
 square_game_image=
-main_image=
-image=
-image_url=
-cover_image=
+main_image=https://img-eshop.cdn.nintendo.net/i/8d75a710f3feacbaa1be6e277648b2cb04ec61edf6a9e4c67f4a1d1321c0b57a.jpg
+image=https://img-eshop.cdn.nintendo.net/i/8d75a710f3feacbaa1be6e277648b2cb04ec61edf6a9e4c67f4a1d1321c0b57a.jpg
+image_url=https://img-eshop.cdn.nintendo.net/i/8d75a710f3feacbaa1be6e277648b2cb04ec61edf6a9e4c67f4a1d1321c0b57a.jpg
+cover_image=https://img-eshop.cdn.nintendo.net/i/8d75a710f3feacbaa1be6e277648b2cb04ec61edf6a9e4c67f4a1d1321c0b57a.jpg
 cover=
 cover_url=
 cover_texture_url=
 box_back_url=
 supported_languages_raw=Japanese / British English / French / German / Italian / Spanish / Korean / Dutch / Simplified Chinese / Latin American Spanish / Canadian French / Traditional Chinese / American English
-text_language.1=Japanese / English
-text_language.2=French / German / Italian / Spanish / Dutch
-text_language.3=Korean / Simplified Chinese / Traditional Chinese
+text_language.1=English
+text_language.2=Spanish
+text_language.3=French
 audio_language.1=Music / sound effects
 audio_language.2=Character vocalizations where applicable
-audio_language.3=No full language-selectable dub beyond the shipped release build information
+audio_language.3=
 tv_mode=true
 tabletop_mode=true
 handheld_mode=true
@@ -243,8 +243,8 @@ source.2.name=Metacritic
 source.2.url=https://www.metacritic.com/game/hyrule-warriors-definitive-edition/
 source.3.name=OpenCritic
 source.3.url=https://opencritic.com/game/6114/hyrule-warriors-definitive-edition
-storage_download_size_gb=13.8
-storage_required_space_gb=13.8
+storage_download_size_gb=12.9
+storage_required_space_gb=12.9
 storage_micro_sd_recommended=true
 storage_notes<<EOF
 The recorded storage size for Hyrule Warriors: Definitive Edition is approximately 13.8 GB.
@@ -408,3 +408,7 @@ device_performance.2.source_url=https://www.nintendo.com/us/store/products/hyrul
 device_performance.2.performance_notes<<EOF
 Nintendo lists the title as supported on Nintendo Switch 2. This extraction records a compatibility profile consistent with the original release.
 EOF
+
+trailer_url=https://www.youtube.com/watch?v=DUzdlDiFUyU
+overview_tagline=Cut down enemy hordes as Legend of Zelda characters
+banner_image=https://img-eshop.cdn.nintendo.net/i/4b035b357b10e59dce73609dd071e61d131d90b2e477c29088f26fbe50b44d1b.jpg

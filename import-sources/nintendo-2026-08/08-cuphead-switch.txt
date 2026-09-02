@@ -397,3 +397,14 @@ type.4.cost=2500
 type.4.description=Online premium package
 type.4.stock=9999
 type.4.is_infinite_stock=true
+
+verdict_score=8.8
+supported_languages_raw=English, Japanese, French, German, Italian, Spanish, Korean, Portuguese, Russian, Simplified Chinese
+storage_download_size_gb=3.3
+storage_required_space_gb=3.3
+completion_main_story_hours=10.5
+completion_story_plus_dlc_hours=13.5
+completion_100_percent_hours=19.5
+dlc.1.title=The Delicious Last Course
+dlc.1.description=Expansion adding playable Ms. Chalice, Chef Saltbaker, and a new Inkwell Isle of bosses and charms.
+dlc.1.release_date=2022-06-30

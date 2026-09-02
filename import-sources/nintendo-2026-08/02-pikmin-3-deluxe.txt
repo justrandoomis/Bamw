@@ -107,9 +107,9 @@ gallery.6.description=Pikmin 3 Deluxe gameplay / world media 6
 gallery.6.image=https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000005302/8e26b2b5fbaa785806044caf66f77a61e6cb991a641fc8a820bab5fa4759448d
 trailer_url=https://www.nintendo.com/us/store/products/pikmin-3-deluxe-switch/
 supported_languages_raw=Japanese, English, French, German, Italian, Spanish, Korean, Dutch, Simplified Chinese, Traditional Chinese
-text_language.1=Japanese / English
-text_language.2=French / German / Italian / Spanish
-text_language.3=Korean / Chinese language options by region
+text_language.1=Japanese
+text_language.2=English
+text_language.3=French
 audio_language.1=Character vocalizations
 audio_language.2=Music and sound effects
 audio_language.3=Language support follows regional Nintendo release data
@@ -439,3 +439,12 @@ device_performance.2.performance_notes<<EOF
 Backward-compatible Nintendo Switch software on Nintendo Switch 2; no native Switch 2 edition is represented by this file.
 EOF
 upgrade_price=0
+
+overview_tagline=Command a squad of plucky Pikmin in the definitive edition of Pikmin 3.
+text_language.4=German
+text_language.5=Italian
+text_language.6=Spanish
+text_language.7=Korean
+text_language.8=Dutch
+text_language.9=Simplified Chinese
+text_language.10=Traditional Chinese

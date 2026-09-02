@@ -78,9 +78,9 @@ cover=https://assets.nintendo.com/image/upload/ar_16:9,c_fill,g_auto,w_1600/f_au
 cover_url=https://assets.nintendo.com/image/upload/ar_16:9,c_fill,g_auto,w_1600/f_auto/q_auto/dpr_1.5/store/software/switch/70010000116663/940ff91bfdbc963635d09032b6fc83524eb5a8387920099723ede3dc077a33ce
 cover_texture_url=
 box_back_url=
-supported_languages_raw=Official supported language list varies by region; see the publisher page linked in Sources.
-text_language.1=See official supported languages on the linked Nintendo/publisher product page
-audio_language.1=Audio language availability varies by title and region; see official product information
+supported_languages_raw=Japanese, English (American/British), French (incl. Canadian), German, Italian, Spanish (incl. Latin American), Korean, Dutch, Simplified Chinese, Traditional Chinese
+text_language.1=Japanese
+audio_language.1=
 tv_mode=true
 tabletop_mode=true
 handheld_mode=true
@@ -392,3 +392,17 @@ device_performance.2.performance_notes<<EOF
 Backward-compatible Nintendo Switch software on Nintendo Switch 2; no native Switch 2 edition assumed.
 EOF
 upgrade_price=0
+
+trailer_url=https://www.youtube.com/watch?v=_xY0XuGOWJs
+overview_tagline=Create your Miis and let them live their dream island life.
+text_language.2=English (US)
+text_language.3=English (UK)
+text_language.4=French
+text_language.5=French (Canada)
+text_language.6=German
+text_language.7=Italian
+text_language.8=Spanish
+text_language.9=Spanish (Latin America)
+text_language.10=Korean
+text_language.11=Dutch
+text_language.12=Simplified Chinese

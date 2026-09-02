@@ -73,28 +73,36 @@ EOF
 description_ar<<EOF
 تكملة ضخمة لـ Breath of the Wild توسع عالم هايرول إلى السماء والأعماق، وتضيف قدرات مثل Ultrahand وFuse وAscend وRecall، ما يمنح اللاعب حرية هائلة في القتال والحل والاستكشاف.
 EOF
-front_cover_image=
+front_cover_image=https://img-eshop.cdn.nintendo.net/i/4b53da7ca4b118fe37c8b8040609b84dc63214d6131c51592486de9bf29ef29c.jpg
 cartridge_image=
 cartridge=
 cartridge_url=
-box_front_url=
+box_front_url=https://img-eshop.cdn.nintendo.net/i/4b53da7ca4b118fe37c8b8040609b84dc63214d6131c51592486de9bf29ef29c.jpg
 nintendo_card_image=
 square_game_image=
-main_image=
-image=
-image_url=
-cover_image=
+main_image=https://img-eshop.cdn.nintendo.net/i/4b53da7ca4b118fe37c8b8040609b84dc63214d6131c51592486de9bf29ef29c.jpg
+image=https://img-eshop.cdn.nintendo.net/i/4b53da7ca4b118fe37c8b8040609b84dc63214d6131c51592486de9bf29ef29c.jpg
+image_url=https://img-eshop.cdn.nintendo.net/i/4b53da7ca4b118fe37c8b8040609b84dc63214d6131c51592486de9bf29ef29c.jpg
+cover_image=https://img-eshop.cdn.nintendo.net/i/4b53da7ca4b118fe37c8b8040609b84dc63214d6131c51592486de9bf29ef29c.jpg
 cover=
 cover_url=
 cover_texture_url=
 box_back_url=
-supported_languages_raw=Japanese / British English / French / German / Italian / Spanish / Korean / Dutch / Simplified Chinese / Latin American Spanish / Canadian French / Traditional Chinese / American English
-text_language.1=Japanese / English
-text_language.2=French / German / Italian / Spanish / Dutch
-text_language.3=Korean / Simplified Chinese / Traditional Chinese
+supported_languages_raw=Japanese, English, French, German, Spanish, Italian, Dutch, Russian, Korean, Simplified Chinese, Traditional Chinese
+text_language.1=Japanese
+text_language.2=English
+text_language.3=Spanish
+text_language.4=French
+text_language.5=Portuguese
+text_language.6=German
+text_language.7=Italian
+text_language.8=Dutch
+text_language.9=Russian
+text_language.10=Korean
+text_language.11=Chinese (Simplified)
 audio_language.1=Music / sound effects
 audio_language.2=Character vocalizations where applicable
-audio_language.3=No full language-selectable dub beyond the shipped release build information
+audio_language.3=
 tv_mode=true
 tabletop_mode=true
 handheld_mode=true
@@ -414,3 +422,10 @@ device_performance.2.source_url=https://www.nintendo.com/us/store/products/the-l
 device_performance.2.performance_notes<<EOF
 The original version is playable on Nintendo Switch 2, while Nintendo also sells a separate enhanced Nintendo Switch 2 Edition. This block records the original-version compatibility profile.
 EOF
+
+trailer_url=https://www.youtube.com/watch?v=uHGShqcAHlQ
+overview_tagline=An epic adventure across the land and skies of Hyrule
+completionist_hours=224.0
+completion_100_percent_hours=224.0
+banner_image=https://img-eshop.cdn.nintendo.net/i/fb30eab428df3fc993b41c76e20f72e4d76d49734d17d31996b5ab61c414b117.jpg
+text_language.12=Chinese (Traditional)

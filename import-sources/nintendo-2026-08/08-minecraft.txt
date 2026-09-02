@@ -9,7 +9,7 @@ compatibility.1=Nintendo Switch
 compatibility.2=Nintendo Switch 2: backward compatible
 edition=Bedrock Edition
 region=Global
-release_date=2018-06-21
+release_date=2018-06-20
 release_status=Released
 status=Active
 developer=Mojang Studios
@@ -28,16 +28,16 @@ players_count=Single system (1-4) / Local wireless (2-8) / Online (2-8)
 players=Single system (1-4) / Local wireless (2-8) / Online (2-8)
 player_count=Single system (1-4) / Local wireless (2-8) / Online (2-8)
 age_rating=ESRB E10+ / PEGI 7
-metacritic_score=86
-metacritic=86
+metacritic_score=
+metacritic=
 opencritic_score=86
 opencritic=86
 user_score=8.1
 user_score=8.1
-metacritic_url=https://www.metacritic.com/game/minecraft/
-game_size_gb=1.3
-size_gb=1.3
-size=1.3 GB
+metacritic_url=
+game_size_gb=1.5
+size_gb=1.5
+size=1.5 GB
 price=1500
 price_iqd=1500
 price_usd=29.99
@@ -110,9 +110,9 @@ gallery.7.description=Minecraft gameplay / world media 7
 gallery.7.image=https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/en_US/games/switch/m/minecraft-switch/screenshot-gallery/screenshot06
 trailer_url=https://www.nintendo.com/us/store/products/minecraft-106679/
 supported_languages_raw=English, Japanese, French, German, Italian, Spanish, Portuguese, Russian, Korean, Chinese and many additional Bedrock interface languages
-text_language.1=English / Japanese / major European languages
-text_language.2=Portuguese / Russian / Korean
-text_language.3=Simplified Chinese / Traditional Chinese and other Bedrock languages
+text_language.1=Japanese
+text_language.2=English
+text_language.3=Spanish
 audio_language.1=Ambient and creature sounds
 audio_language.2=Music and sound effects
 audio_language.3=Minimal language-dependent spoken dialogue
@@ -209,9 +209,9 @@ performance_tv_resolution=1080p
 performance_handheld_resolution=720p
 performance_fps=60
 performance_hdr=false
-main_story_hours=Infinite
-completion_main_story_hours=Infinite
-completion_story_plus_dlc_hours=Infinite
+main_story_hours=
+completion_main_story_hours=
+completion_story_plus_dlc_hours=
 faq.1.question=Is this the old Nintendo Switch Edition?
 faq.1.answer<<EOF
 No. This is the current Bedrock Minecraft product that replaced the older 2017 Switch Edition in June 2018.
@@ -271,8 +271,8 @@ source.2.name=Minecraft official website
 source.2.url=https://www.minecraft.net/
 source.3.name=LaunchBox media
 source.3.url=https://gamesdb.launchbox-app.com/
-storage_download_size_gb=1.3
-storage_required_space_gb=1.3
+storage_download_size_gb=1.5
+storage_required_space_gb=1.5
 storage_micro_sd_recommended=false
 storage_notes<<EOF
 Base download size is relatively small compared with many retail games, but saved worlds, resource packs, Marketplace content, and updates can increase storage substantially.
@@ -442,3 +442,14 @@ device_performance.2.performance_notes<<EOF
 Backward-compatible Bedrock Switch software on Switch 2; actual world performance still depends heavily on simulation complexity.
 EOF
 upgrade_price=0
+
+overview_tagline=Create, explore and survive alone or with friends.
+text_language.4=French
+text_language.5=Portuguese
+text_language.6=German
+text_language.7=Italian
+text_language.8=Dutch
+text_language.9=Russian
+text_language.10=Korean
+text_language.11=Chinese (Simplified)
+text_language.12=Chinese (Traditional)

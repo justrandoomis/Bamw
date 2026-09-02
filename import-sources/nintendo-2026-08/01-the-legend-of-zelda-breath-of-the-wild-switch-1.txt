@@ -73,28 +73,36 @@ EOF
 description_ar<<EOF
 تجربة مغامرة عالم مفتوح ضخمة تعيد تصور سلسلة زيلدا بالكامل، حيث يستيقظ لينك بعد سبات دام مئة عام ليستكشف هايرول، يستعيد ذكرياته، ويواجه Calamity Ganon عبر الألغاز والأضرحة والقتال والاستكشاف الحر.
 EOF
-front_cover_image=
+front_cover_image=https://img-eshop.cdn.nintendo.net/i/d3c210e61e8487200fc4c344987243a60257838187a69a6a81c42d7447d5d192.jpg
 cartridge_image=
 cartridge=
 cartridge_url=
-box_front_url=
+box_front_url=https://img-eshop.cdn.nintendo.net/i/d3c210e61e8487200fc4c344987243a60257838187a69a6a81c42d7447d5d192.jpg
 nintendo_card_image=
 square_game_image=
-main_image=
-image=
-image_url=
-cover_image=
+main_image=https://img-eshop.cdn.nintendo.net/i/d3c210e61e8487200fc4c344987243a60257838187a69a6a81c42d7447d5d192.jpg
+image=https://img-eshop.cdn.nintendo.net/i/d3c210e61e8487200fc4c344987243a60257838187a69a6a81c42d7447d5d192.jpg
+image_url=https://img-eshop.cdn.nintendo.net/i/d3c210e61e8487200fc4c344987243a60257838187a69a6a81c42d7447d5d192.jpg
+cover_image=https://img-eshop.cdn.nintendo.net/i/d3c210e61e8487200fc4c344987243a60257838187a69a6a81c42d7447d5d192.jpg
 cover=
 cover_url=
 cover_texture_url=
 box_back_url=
-supported_languages_raw=Japanese / British English / French / German / Italian / Spanish / Korean / Dutch / Simplified Chinese / Latin American Spanish / Canadian French / Traditional Chinese / American English
-text_language.1=Japanese / English
-text_language.2=French / German / Italian / Spanish / Dutch
-text_language.3=Korean / Simplified Chinese / Traditional Chinese
+supported_languages_raw=Japanese, English, French, German, Spanish, Italian, Dutch, Russian, Korean, Simplified Chinese, Traditional Chinese
+text_language.1=Japanese
+text_language.2=English
+text_language.3=Spanish
+text_language.4=French
+text_language.5=Portuguese
+text_language.6=German
+text_language.7=Italian
+text_language.8=Dutch
+text_language.9=Russian
+text_language.10=Korean
+text_language.11=Chinese (Simplified)
 audio_language.1=Music / sound effects
 audio_language.2=Character vocalizations where applicable
-audio_language.3=No full language-selectable dub beyond the shipped release build information
+audio_language.3=
 tv_mode=true
 tabletop_mode=true
 handheld_mode=true
@@ -445,3 +453,8 @@ device_performance.2.source_url=https://www.nintendo.com/us/store/products/the-l
 device_performance.2.performance_notes<<EOF
 Nintendo lists the original game as supported on Nintendo Switch 2 with game behavior consistent with Nintendo Switch. The extraction records a compatibility profile rather than a native enhanced edition profile.
 EOF
+
+trailer_url=https://www.youtube.com/watch?v=zw47_q9wbBE
+overview_tagline=Step into a world of discovery, exploration, and adventure
+banner_image=https://img-eshop.cdn.nintendo.net/i/7137262b5a64d921e193653f8aa0b722925abc5680380ca0e18a5cfd91697f58.jpg
+text_language.12=Chinese (Traditional)
