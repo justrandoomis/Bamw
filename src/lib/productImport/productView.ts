@@ -121,6 +121,16 @@ export interface OptionItem {
 }
 
 export interface VariantItem {
+  /*
+    The record's own id for this variant.
+
+    It used to be dropped here, so the details page could show a variant's
+    price but had nothing to name it with when the line reached the cart —
+    checkout then priced that line at the product's headline price instead of
+    the variant's. The id is what lets the server resolve the same row the
+    buyer picked. Optional because older records were written without one.
+  */
+  id?: string;
   name: string;
   optionId?: string;
   price?: number;
@@ -767,6 +777,8 @@ export function buildProductView(
     )
       .map((v) => {
         const item: VariantItem = { name: str(v["name"]) };
+        const variantId = str(v["id"]);
+        if (variantId) item.id = variantId;
         const optId = str(v["optionId"] || v["option_id"]);
         if (optId && optId !== "all") item.optionId = optId;
         if (v["price"] != null && str(v["price"]) !== "") {

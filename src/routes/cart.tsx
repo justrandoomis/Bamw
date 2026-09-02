@@ -46,6 +46,7 @@ import { resolvePurchaseImage } from "@/lib/nintendoImages";
 import { playSound } from "@/utils/audio";
 import { useCurrency } from "@/context/CurrencyContext";
 import { getCart, updateCartItem, removeCartItem } from "@/lib/cart.functions";
+import { cartLinePrice } from "@/lib/productPricing";
 import ReferralCartField, {
   type ReferralCartState,
 } from "@/components/referral/ReferralCartField";
@@ -324,6 +325,22 @@ function CartPage() {
   const products = (storeData?.products ?? []) as Product[];
   const bundles = (storeData?.bundles ?? []) as any[];
 
+  /*
+    The price a cart line is worth *now*.
+
+    A line lives in localStorage, so its price is whatever the catalogue said
+    on the day it was added — and it survives restarts, so "that day" can be
+    weeks ago. The old rule here was `l.price || product?.price`, which made
+    the stored figure win outright: the admin raised a price, the cart went on
+    showing the old one, the wallet check used the old one, and the server
+    then charged the new one. Three numbers for one purchase.
+
+    The catalogue wins now, resolved through the same function checkout prices
+    with, so the number on this screen is the number that will be taken. The
+    stored price is kept only as a last resort for a line whose product has
+    left the catalogue entirely — checkout refuses that line anyway, and
+    showing a blank 0 would say less than showing what it used to cost.
+  */
   // Combine both local Zustand lines and DB lines
   const lines: CartLine[] = useMemo(() => {
     if (localLines && localLines.length > 0) {
@@ -339,7 +356,9 @@ function CartPage() {
           // with the product page about the same purchase.
           image: product ? resolvePurchaseImage(product).url : l.image || "",
           source: product,
-          price: l.price || product?.price || 0,
+          price: cartLinePrice(product, l),
+          /** What it cost when it was added, so a change can be pointed out. */
+          addedAtPrice: Number(l.price) || 0,
         };
       });
     }
@@ -351,6 +370,16 @@ function CartPage() {
 
       const isBundle = !product && !!bundle;
       const kind: ProductKind = isBundle ? "bundle" : ((product?.kind || "account") as ProductKind);
+      /*
+        Read once, before the line is built: the price below is resolved from
+        the selection this row carries, and the same object is handed back on
+        the line.
+      */
+      const meta: Record<string, unknown> | undefined = item.meta
+        ? typeof item.meta === "string"
+          ? JSON.parse(item.meta)
+          : item.meta
+        : undefined;
 
       return {
         /*
@@ -364,7 +393,8 @@ function CartPage() {
           entity?.titleEn || (entity as any)?.english_name || entity?.title || "منتج غير معروف",
         image: resolvePurchaseImage(entity).url,
         source: entity,
-        price: entity?.price || 0,
+        // Same rule as above: the catalogue, priced through the selection.
+        price: cartLinePrice(entity, { meta }),
         kind,
         quantity: item.quantity,
         requiresAddress: isBundle
@@ -372,11 +402,7 @@ function CartPage() {
           : ["hardware", "physical", "accessory", "device", "collectible"].includes(
               product?.kind || "",
             ),
-        meta: item.meta
-          ? typeof item.meta === "string"
-            ? JSON.parse(item.meta)
-            : item.meta
-          : undefined,
+        meta,
       };
     });
   }, [localLines, dbItems, products, bundles]);
@@ -385,6 +411,25 @@ function CartPage() {
     () => user?.addresses.find((a) => a.isDefault) ?? emptyAddress,
   );
   const [error, setError] = useState<string>();
+
+  /*
+    Prices that moved while the cart sat open.
+
+    Re-pricing silently would swap the number under the customer between one
+    glance and the next, which is only a little better than charging them the
+    old one. Naming the change is the honest half of the fix: they see what it
+    was, what it is, and can decide before paying.
+  */
+  const changedPrices = useMemo(
+    () =>
+      lines.flatMap((line) => {
+        const was = Number(line.addedAtPrice) || 0;
+        const now = Number(line.price) || 0;
+        if (!was || !now || was === now) return [];
+        return [{ id: String(line.id), title: String(line.title), was, now }];
+      }),
+    [lines],
+  );
 
   const needsAddress = cartNeedsAddress(lines);
   const subtotal = cartTotal(lines);
@@ -817,6 +862,46 @@ function CartPage() {
               {tr("تسليم فوري لجميع الحسابات الرقمية والأكواد مباشرة في محادثة الطلب بعد الدفع.")}
             </p>
           </div>
+        )}
+
+        {/* A price moved while this cart was open — say so before they pay. */}
+        {changedPrices.length > 0 && (
+          <section className="rounded-3xl border border-amber-400/40 bg-amber-50/70 p-4 dark:border-amber-500/25 dark:bg-amber-500/5">
+            <div className="mb-2 flex items-center gap-2 text-amber-700 dark:text-amber-400">
+              <AlertCircle className="h-4 w-4 shrink-0" />
+              <span className="text-xs font-black">
+                {tr("تغيّر السعر منذ أن أضفت المنتج للسلة")}
+              </span>
+            </div>
+            <ul className="space-y-1.5">
+              {changedPrices.map((change) => (
+                <li
+                  key={change.id}
+                  className="flex flex-wrap items-center justify-between gap-2 text-[12px]"
+                >
+                  <span className="min-w-0 flex-1 truncate font-bold text-foreground">
+                    {change.title}
+                  </span>
+                  <span className="shrink-0 text-muted-foreground">
+                    <span className="line-through">{formatIQDPrice(change.was)}</span>
+                    {" → "}
+                    <span
+                      className={
+                        change.now > change.was
+                          ? "font-black text-amber-700 dark:text-amber-300"
+                          : "font-black text-emerald-700 dark:text-emerald-300"
+                      }
+                    >
+                      {formatIQDPrice(change.now)}
+                    </span>
+                  </span>
+                </li>
+              ))}
+            </ul>
+            <p className="mt-2 text-[11px] leading-relaxed text-muted-foreground">
+              {tr("المبلغ أدناه هو السعر الحالي، وهو ما سيُخصم من محفظتك.")}
+            </p>
+          </section>
         )}
 
         {/* Referral code — دعوة صديق */}

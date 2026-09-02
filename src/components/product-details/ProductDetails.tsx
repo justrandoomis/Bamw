@@ -164,6 +164,25 @@ function DetailsBody({
         price: effectivePrice,
         kind: (view.schema.kind as ProductKind) ?? "accessory",
         requiresAddress: true,
+        /*
+          The selection travels, not just its label.
+
+          Only the label used to be sent, so checkout had no id to resolve and
+          priced the line at the record's headline price — a customer who
+          picked a dearer option was undercharged and one who picked a cheaper
+          option was overcharged. The ids are what let the server price the
+          same line the same way.
+        */
+        ...(selectedOption ? { optionId: selectedOption.id, optionName: selectedOption.name } : {}),
+        ...(selectedVariant?.id
+          ? { typeId: selectedVariant.id, typeName: selectedVariant.name }
+          : {}),
+        meta: {
+          optionId: selectedOption?.id ?? null,
+          optionName: selectedOption?.name ?? null,
+          typeId: selectedVariant?.id ?? null,
+          typeName: selectedVariant?.name ?? null,
+        },
         ...(labelParts.length
           ? { offerKind: labelParts.join(" / "), offerLabel: labelParts.join(" / ") }
           : {}),

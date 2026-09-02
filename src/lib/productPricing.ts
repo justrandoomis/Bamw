@@ -71,3 +71,183 @@ export function listingPrice(product: Row | null | undefined): number {
   if (base > 0 && rows.some((row) => row.price === base)) return base;
   return rows.reduce((min, row) => (row.price < min.price ? row : min)).price;
 }
+
+/** A cart line's selection, as every surface records it. */
+export interface UnitPriceSelection {
+  optionId?: string | number | null;
+  typeId?: string | number | null;
+  editionId?: string | number | null;
+  dlcIds?: readonly (string | number)[] | null;
+}
+
+export interface UnitPriceResult {
+  /** What one copy costs, resolved from the product record. */
+  unitPrice: number;
+  /** Which part of the record decided it — for tests and the audit trail. */
+  source: "type" | "option" | "edition" | "base";
+  optionName: string | null;
+  typeName: string | null;
+  editionName: string | null;
+  dlcNames: string[];
+}
+
+function rowById(value: unknown, id: unknown): Row | undefined {
+  if (!Array.isArray(value) || id === undefined || id === null || id === "") return undefined;
+  const wanted = String(id);
+  for (const entry of value) {
+    if (!entry || typeof entry !== "object") continue;
+    const row = entry as Row;
+    if (String(row["id"] ?? "") === wanted) return row;
+  }
+  return undefined;
+}
+
+function priceOf(row: Row | undefined): number {
+  if (!row) return 0;
+  const price = toAmount(row["price"]);
+  return Number.isFinite(price) && price > 0 ? price : 0;
+}
+
+function nameOf(row: Row | undefined): string | null {
+  if (!row) return null;
+  const name = String(row["name"] ?? "").trim();
+  return name || null;
+}
+
+/**
+ * What one copy of this product actually costs, given what the buyer picked.
+ *
+ * ## Why this is shared rather than written twice
+ *
+ * It used to be written twice, and the two copies disagreed. The storefront
+ * priced a line `type → option → edition → base`; checkout priced it
+ * `edition → base` and never looked at the option or the type at all. So a
+ * customer who chose a differently-priced option was shown one number and
+ * charged another — the shop losing money on the dearer option and
+ * overcharging on the cheaper one.
+ *
+ * The precedence here is the storefront's, because that is the number the
+ * customer was shown and agreed to. Now both sides call this, so the two
+ * cannot drift apart again: a change to the rule is a change to one function.
+ *
+ * The product record is always the source. Nothing a browser sends is read
+ * except the *ids* of what was picked, and an id that names nothing on the
+ * record resolves to nothing rather than to whatever was claimed.
+ */
+export function resolveUnitPrice(
+  product: Row | null | undefined,
+  selection: UnitPriceSelection = {},
+): UnitPriceResult {
+  const empty: UnitPriceResult = {
+    unitPrice: 0,
+    source: "base",
+    optionName: null,
+    typeName: null,
+    editionName: null,
+    dlcNames: [],
+  };
+  if (!product || typeof product !== "object") return empty;
+
+  /*
+    `types` is the current name and `variants` the older one. Both are read,
+    the same way `validateLine` has always read them, so a record written by
+    either generation of the editor prices correctly.
+  */
+  const typeRows = Array.isArray(product["types"]) ? product["types"] : product["variants"];
+  const selectedType = rowById(typeRows, selection.typeId);
+  const selectedOption = rowById(product["options"], selection.optionId);
+  const selectedEdition = rowById(product["editions"], selection.editionId);
+
+  const base = toAmount(product["price"]);
+  let unitPrice = Number.isFinite(base) && base > 0 ? base : 0;
+  let source: UnitPriceResult["source"] = "base";
+
+  /*
+    Most specific wins. A type belongs to an option, so a priced type overrides
+    the option that contains it; a priced option overrides the record's
+    headline price. An unpriced row is not a price of zero — it means "use
+    whatever is above me", which is why `priceOf` returns 0 for one and the
+    checks below are `> 0`.
+  */
+  if (priceOf(selectedEdition) > 0) {
+    unitPrice = priceOf(selectedEdition);
+    source = "edition";
+  }
+  if (priceOf(selectedOption) > 0) {
+    unitPrice = priceOf(selectedOption);
+    source = "option";
+  }
+  if (priceOf(selectedType) > 0) {
+    unitPrice = priceOf(selectedType);
+    source = "type";
+  }
+
+  // Add-ons are additive on top of whichever price won.
+  const dlcNames: string[] = [];
+  if (Array.isArray(selection.dlcIds)) {
+    for (const dlcId of selection.dlcIds) {
+      const dlc = rowById(product["dlcs"], dlcId);
+      if (!dlc) continue;
+      unitPrice += priceOf(dlc);
+      const name = nameOf(dlc);
+      if (name) dlcNames.push(name);
+    }
+  }
+
+  return {
+    unitPrice,
+    source,
+    optionName: nameOf(selectedOption),
+    typeName: nameOf(selectedType),
+    editionName: nameOf(selectedEdition),
+    dlcNames,
+  };
+}
+
+/** The fields a cart line carries that identify what was picked. */
+export interface CartLineLike {
+  price?: unknown;
+  optionId?: string | number | null | undefined;
+  typeId?: string | number | null | undefined;
+  editionId?: string | number | null | undefined;
+  meta?: Record<string, unknown> | undefined;
+}
+
+/**
+ * What a cart line is worth **now**.
+ *
+ * A line lives in the browser's storage and survives restarts, so the price it
+ * carries is whatever the catalogue said on the day it was added — sometimes
+ * weeks ago. The rule used to be `line.price || product.price`, which made
+ * that stored figure win outright: the admin raised a price, the cart went on
+ * showing the old one, the wallet check used the old one, and the server
+ * charged the new one. Three numbers for one purchase, and the customer only
+ * ever saw the first.
+ *
+ * The catalogue wins here, through the same resolver checkout prices with. The
+ * stored figure is kept only for a line whose product has left the catalogue
+ * altogether: checkout refuses such a line anyway, and showing what it used to
+ * cost says more than showing nothing.
+ */
+export function cartLinePrice(
+  product: Row | null | undefined,
+  line: CartLineLike,
+): number {
+  const stored = toAmount(line.price);
+  if (!product) return stored;
+
+  const meta = line.meta ?? {};
+  const pick = (direct: unknown, key: string) =>
+    direct !== undefined && direct !== null && direct !== ""
+      ? direct
+      : ((meta[key] as string | undefined) ?? null);
+
+  const { unitPrice } = resolveUnitPrice(product, {
+    optionId: pick(line.optionId, "optionId") as string | null,
+    typeId: pick(line.typeId, "typeId") as string | null,
+    editionId: pick(line.editionId, "editionId") as string | null,
+    dlcIds: (meta["dlcIds"] as string[] | undefined) ?? null,
+  });
+
+  return unitPrice > 0 ? unitPrice : stored;
+}

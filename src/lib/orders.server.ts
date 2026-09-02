@@ -22,6 +22,7 @@ import {
 } from "./coupons";
 import { claimCouponUse, readCouponUsage, releaseCouponUse } from "./coupon-usage.server";
 import { isAwaitingRelease, releaseDayISO } from "./release";
+import { resolveUnitPrice } from "./productPricing";
 import { resolveReferralForCheckout } from "./referral/checkout.server";
 import {
   insertRewardStatement,
@@ -169,32 +170,30 @@ async function validateLine(
     throw new AwaitingReleaseError(String(product.id), product.title, releaseDayISO(product));
   }
 
-  let unitPrice = toNumber(product.price);
+  /*
+    The price, resolved from the catalogue by the same function the storefront
+    prices with.
+
+    Two things were wrong here. This block read `product.price` and the
+    edition, and never looked at the option or the type — so a buyer who chose
+    a differently-priced option was charged the record's headline price
+    instead of the one on their screen. And the *storefront* had its own copy
+    of the rule, so even the part that agreed only agreed by coincidence. One
+    function now decides it for both, and a price the admin changes while the
+    cart sits open is picked up here on the next request, because nothing is
+    read from the cart at all.
+  */
+  const priced = resolveUnitPrice(product as unknown as Record<string, unknown>, {
+    optionId: line.optionId ?? null,
+    typeId: line.typeId ?? null,
+    editionId: line.editionId ?? null,
+    dlcIds: line.dlcIds ?? null,
+  });
+
+  const unitPrice = priced.unitPrice;
   let title = product.title;
-
-  // Handle Editions
-  if (line.editionId && product.editions) {
-    const edition = product.editions.find((e) => e.id === line.editionId);
-    if (edition) {
-      unitPrice = toNumber(edition.price);
-      title = `${title} (${edition.name})`;
-    }
-  }
-
-  // Handle DLCs
-  const selectedDlcs: string[] = [];
-  if (line.dlcIds && product.dlcs) {
-    for (const dlcId of line.dlcIds) {
-      const dlc = product.dlcs.find((d) => d.id === dlcId);
-      if (dlc) {
-        unitPrice += toNumber(dlc.price);
-        selectedDlcs.push(dlc.name);
-      }
-    }
-  }
-  if (selectedDlcs.length > 0) {
-    title = `${title} + ${selectedDlcs.join(", ")}`;
-  }
+  if (priced.editionName) title = `${title} (${priced.editionName})`;
+  if (priced.dlcNames.length > 0) title = `${title} + ${priced.dlcNames.join(", ")}`;
 
   if (!Number.isFinite(unitPrice) || unitPrice <= 0 || isInvalidTitle(title)) {
     return null;
