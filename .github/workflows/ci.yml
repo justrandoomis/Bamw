@@ -1,0 +1,95 @@
+# The gate in front of `main`.
+#
+# Until this existed, nothing checked a pull request. `security.yml` was meant
+# to — it declares `on: pull_request` — but GitHub reports its state as
+# `disabled_fork` and the API records **zero runs of it, ever**. It would not
+# have passed anyway: it opens with `bun install --frozen-lockfile` and this
+# repository has no bun lockfile, only the `package-lock.json` npm actually
+# installs from. So the four checks in `deploy.yml` were the only ones that
+# ran, and they run *after* the merge.
+#
+# That ordering is the problem this file fixes. A merge to `main` is picked up
+# by a Cloudflare build that deploys within about a minute, before the release
+# job has finished its first check — so code that fails the gates can already
+# be serving customers by the time anything says so. It has happened: on 2 Sep
+# the release for PR #16 failed and never deployed, and production was given a
+# new version at 17:10:52 regardless.
+#
+# Running the same four checks *here*, on the pull request, is what makes that
+# safe: whatever reaches `main` has already passed them, whichever path then
+# deploys it.
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+# A superseded run on the same branch is wasted work; the newest commit is the
+# one that matters. `main` is exempt, because each of its pushes is a distinct
+# state somebody may need the record of.
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
+
+jobs:
+  gates:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      # `npm install`, not `npm ci`, and deliberately: it is exactly what the
+      # release job runs, and the point of this gate is that "passed CI" means
+      # "can be deployed". Installing differently here would break that.
+      #
+      # `npm ci` is the one that ought to be used, and it currently cannot be:
+      # `package-lock.json` has drifted out of sync with `package.json`
+      # (miniflare, workerd, undici and ajv all resolve differently), so it
+      # refuses outright. The step below reports that rather than leaving it
+      # invisible; re-syncing the lockfile is a dependency change and belongs
+      # in its own commit, not smuggled into a CI one.
+      - run: npm install --no-audit --no-fund
+
+      - name: Lockfile drift (advisory)
+        continue-on-error: true
+        run: |
+          if npm ci --dry-run --no-audit --no-fund >/dev/null 2>&1; then
+            echo "package-lock.json is in sync with package.json"
+          else
+            echo "::warning::package-lock.json has drifted from package.json —"\
+                 "builds are not reproducible until it is re-synced with 'npm install'"
+            npm ci --dry-run --no-audit --no-fund 2>&1 | grep -E "Invalid|Missing" | head -20 || true
+          fi
+
+      # The four gates, in the order that fails cheapest first. Each is its own
+      # step so a red run names what broke without anyone opening the log.
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Test
+        run: npx vitest run
+
+      - name: Lint
+        run: npx eslint .
+
+      - name: Build
+        run: npm run build
+
+      # Advisory. A vulnerable transitive dependency is worth knowing about,
+      # but it is not a reason to block a fix to the storefront, and a gate
+      # that goes red on somebody else's advisory is a gate people learn to
+      # ignore.
+      - name: Dependency audit (advisory)
+        continue-on-error: true
+        run: npm audit --audit-level=high
