@@ -1,51 +1,274 @@
 {
  "batch": "002",
- "apply": false,
+ "apply": true,
  "games": [
   {
    "id": "prd_ad958aa523e24052",
    "slug": "assassins-creed-shadows-switch-2",
    "baseHash": "d229dda26242fe08ee2e5eae629bd0b5fe91081b304d74aa50dfb5e5384a77f0",
    "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "clear": [
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus",
+    "box_front_url"
+   ],
+   "notes": "Batch 001's field corrections all verified present in production (62.8 GB, Metacritic 81, trailer, Claws of Awaji DLC, two working banners). Remaining work is removal only: the ten cross-schema contamination fields (cardValue even read '$20 eShop Balance' on a game record) and box_front_url, an angled third-party retail photo in the front-box role — the flat Switch 2 box in cartridgeImage is the correct one (verified visually)."
   },
   {
    "id": "prd_999b5c5da17c492e",
    "slug": "bayonetta-2",
    "baseHash": "d1e55269d3d37ca563a252649aab117bc8180b3dac3096daf7b2099447778e06",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "downloadSizeGb": 12.4,
+    "size": 12.4,
+    "supportedLanguages": "Japanese, English, French, German, Italian, Spanish (text); voice in English and Japanese. Korean, Simplified Chinese and Traditional Chinese text added by update 1.1.0.",
+    "dlcSummary": "No paid DLC has been released for Bayonetta 2 on Nintendo Switch.",
+    "patchNotes": [
+     {
+      "version": "1.1.0",
+      "body": "Added Korean, Simplified Chinese and Traditional Chinese text language support to Bayonetta 2 on Nintendo Switch."
+     }
+    ],
+    "bannerImages": [
+     "https://images.launchbox-app.com/e0f66ab8-3edc-485a-a961-320ec046bbf3.jpg",
+     "https://images.launchbox-app.com/e77c9ea8-b711-4e78-8436-8dc155a436f8.jpg"
+    ],
+    "galleryImages": [
+     {
+      "url": "https://images.launchbox-app.com/aa9b91fb-a52c-4b94-b340-ebc225d2e112.jpg",
+      "alt": "Bayonetta 2 Bayonetta character artwork"
+     },
+     {
+      "url": "https://images.launchbox-app.com/eafbd007-aa10-4381-b7ca-153ca2320332.png",
+      "alt": "Bayonetta 2 gameplay screenshot"
+     },
+     {
+      "url": "https://images.launchbox-app.com/6cde1cca-b14b-490e-afe2-6091f2805d14.png",
+      "alt": "Bayonetta 2 gameplay screenshot"
+     }
+    ],
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "informationStatus": "available",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p",
+       "fps": "60 target (small dips; slightly below docked)"
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "720p",
+       "fps": "60 target (close to locked; dips at stress points)"
+      },
+      "modes": [],
+      "sourceName": "Digital Foundry — Bayonetta 1 and 2 on Switch tested",
+      "sourceUrl": "https://www.eurogamer.net/digitalfoundry-2018-bayonetta-1-and-2-on-switch-tested",
+      "verificationStatus": "technical_analysis"
+     }
+    ]
+   },
+   "clear": [
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "Size corrected 12.537→12.4 GB (eShop figure). supportedLanguages replaced: the stored value leaked internal supplier-SKU text to customers; now the official language set plus the 1.1.0 language patch, which also fills patch notes. Perf record re-labelled from a wrongly-badged Switch 2 record to the platform's Nintendo Switch record with Digital Foundry's 720p/60 figures. Six dead R2 banner references replaced by the two verified key-art images promoted from the gallery (no duplication — the gallery keeps the other three). Box art, square card, wide cover and the genuine full-wrap 3D texture all verified visually: correct and kept."
   },
   {
    "id": "prd_704957ef027f4145",
    "slug": "bayonetta-3",
    "baseHash": "3d0a2302395ce10a70113def68d99b70fa6ebae9bdb56e61e9e3e1e4017f3282",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "downloadSizeGb": 15,
+    "size": 15,
+    "dlcSummary": "No paid DLC has been released for Bayonetta 3.",
+    "patchNotes": [
+     {
+      "version": "1.2.0",
+      "date": "2023-01-11",
+      "body": "Combat adjustments (Viola's Block and Witch Time activation), Niflheim difficulty tuning, and bug fixes for weapon-switch animations and Infernal Demon attacks."
+     }
+    ],
+    "bannerImages": [
+     "https://images.launchbox-app.com/1c973387-3fe0-4634-b5a6-c3f1c63fac59.jpg",
+     "https://images.launchbox-app.com/92db7cf4-452a-4dc5-9977-7a298e121b17.jpg"
+    ],
+    "galleryImages": [
+     {
+      "url": "https://images.launchbox-app.com/60e38b2d-8cfb-4912-a385-b1d691677c4f.png",
+      "alt": "Bayonetta 3 gameplay screenshot"
+     },
+     {
+      "url": "https://images.launchbox-app.com/db56011d-814b-4186-bcaf-e192a632c263.png",
+      "alt": "Bayonetta 3 gameplay screenshot"
+     },
+     {
+      "url": "https://images.launchbox-app.com/9109b1bc-8166-4275-9a9a-47c4904e5b76.png",
+      "alt": "Bayonetta 3 gameplay screenshot"
+     }
+    ],
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "informationStatus": "available",
+      "handheld": {
+       "supported": true,
+       "resolution": "Dynamic, commonly below 480p",
+       "fps": "60 target with frequent dips"
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "Dynamic 810p",
+       "fps": "60 target with frequent dips; cutscenes 30"
+      },
+      "modes": [],
+      "sourceName": "Digital Foundry technical analysis of Bayonetta 3",
+      "sourceUrl": "https://www.nintendolife.com/news/2022/10/video-digital-foundrys-technical-analysis-of-bayonetta-3",
+      "verificationStatus": "technical_analysis"
+     }
+    ]
+   },
+   "clear": [
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "Size corrected 14.479→15 GB (eShop figure). Verified 1.2.0 patch recorded with its real changes. Perf re-labelled to the platform's Nintendo Switch record with Digital Foundry's dynamic 810p docked / sub-480p handheld findings, replacing awkward prose. Six dead R2 banners replaced by the official promotional banner artwork plus the red-moon key art from the gallery. One gallery entry removed: it was labelled fanart and shows Bayonetta 2's character design — not official Bayonetta 3 media. Box art, square card, wide cover and genuine full-wrap texture verified visually: kept."
   },
   {
    "id": "prd_86e6ac009a6249f9",
    "slug": "bayonetta-origins-cereza-and-the-lost-demon",
    "baseHash": "60939166eb04eabfde1bf8f4e5e22e4aed26429475b66a851795b091453e2977",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "developer": "PlatinumGames",
+    "dlcSummary": "No DLC has been released for Bayonetta Origins: Cereza and the Lost Demon.",
+    "bannerImages": [
+     "https://images.launchbox-app.com/cbccc12c-1ab3-451d-93b8-9cf8c23b165d.jpg",
+     "https://images.launchbox-app.com/4d775327-bb8d-48f8-bfdf-48417eb93aee.jpg"
+    ],
+    "galleryImages": [
+     {
+      "url": "https://images.launchbox-app.com/c0c1d68d-6c87-4235-95be-d77e08eb00e4.png",
+      "alt": "Gameplay screenshot from Avalon Forest"
+     },
+     {
+      "url": "https://images.launchbox-app.com/0d9e2582-1009-4cae-aa2a-39fd841cc701.png",
+      "alt": "Gameplay screenshot showing Cereza and Cheshire"
+     },
+     {
+      "url": "https://images.launchbox-app.com/2fe468bc-77af-41d2-8227-92a4c873251f.png",
+      "alt": "Avalon Forest exploration screenshot"
+     }
+    ],
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "informationStatus": "available",
+      "handheld": {
+       "supported": true,
+       "resolution": "Not published by Nintendo",
+       "fps": "30 (developer-confirmed cap)"
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "Not published by Nintendo",
+       "fps": "30 (developer-confirmed cap)"
+      },
+      "modes": [],
+      "sourceName": "PlatinumGames director on the 30 fps design choice; Nintendo publishes no resolution figures",
+      "sourceUrl": "https://www.nintendolife.com/news/2024/04/bayonetta-origins-director-empathises-with-paper-mario-dev-suggests-reasons-for-30fps",
+      "verificationStatus": "official"
+     }
+    ]
+   },
+   "clear": [
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "Developer name normalised to the official PlatinumGames branding. Perf record re-labelled from a Switch-2-flavoured note to the platform's Nintendo Switch record: 30 fps is the developer-confirmed cap, resolution honestly marked not published. Six dead R2 banners replaced by the storybook title artwork and the key art promoted from the gallery; the three gameplay screenshots stay in the gallery. Box art, square card, wide cover and genuine PAL full-wrap texture verified visually: kept."
   },
   {
    "id": "prd_5a43e5c95bbc46dc",
    "slug": "bravely-default-flying-fairy-hd-remaster",
    "baseHash": "33d2e37e57c7d75ac3bd8d21e8a80d9990340c25c375dc42b0aa42aee3ad7c5a",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "ageRating": "ESRB T (Teen) — Fantasy Violence, Mild Blood, Mild Suggestive Themes, Use of Alcohol",
+    "dlcSummary": "No DLC has been released for BRAVELY DEFAULT FLYING FAIRY HD Remaster.",
+    "bannerImages": [
+     "https://assets.nintendo.com/image/upload/ar_16:9,b_auto:border,c_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000095321/8a479cf836bb83b68f8c5c7595647a08004a732956510e7ee838d7453e29f666"
+    ],
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "informationStatus": "available",
+      "handheld": {
+       "supported": true,
+       "resolution": "1080p",
+       "fps": "60"
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p",
+       "fps": "60"
+      },
+      "modes": [],
+      "sourceName": "RPG Site version comparison (Switch 2 vs 3DS/PC): 1080p, consistent 60 fps in both modes",
+      "sourceUrl": "https://www.rpgsite.net/feature/19872-bravely-default-switch-2-vs-steam-deck-xbox-pc-3ds-frame-rate-graphics",
+      "verificationStatus": "technical_analysis"
+     }
+    ]
+   },
+   "clear": [
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus",
+    "nintendoCardImage",
+    "box_front_url",
+    "galleryImages"
+   ],
+   "notes": "ageRating now carries the actual ESRB rating (T) ahead of the descriptors that were stored alone. Perf figures verified by RPG Site's version comparison and Nintendo Life's review: 1080p/60 in both modes, labelled with the real source. The two dead R2 banners are replaced by the game's one verified Nintendo CDN screenshot, moved out of the gallery (no duplication; the empty gallery section hides). nintendoCardImage (403, file gone) and box_front_url (404 Best Buy link) removed — no verified square-card or replacement source reachable; the genuine Switch 2 game-key-card box in cartridgeImage and the correct (small) key-art cover remain. coverImage kept although only 320x180: content verified correct, and no higher-resolution copy of the same art could be verified from here."
   }
  ]
 }

@@ -1,0 +1,86 @@
+{
+ "batch": "901",
+ "apply": true,
+ "note": "Fix batch: batch 001's clear lists were silent no-ops (the merge's clear option only permits empty values carried in the patch; it never removes absent keys). The apply script now genuinely deletes clear-listed fields; this batch re-runs exactly those deletions for the four games written in batch 001. baseHash values are the post-batch-001 hashes recorded in review-state.json.",
+ "games": [
+  {
+   "id": "prd_49ac50b2e7e041fa",
+   "slug": "1-2-switch",
+   "baseHash": "858b0ba67c5c61c70d441eef109874c13c5f33b0d1a929de71b362dab67d1843",
+   "set": {},
+   "clear": [
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "Remove the ten cross-schema contamination fields that batch 001 reported cleared but did not remove."
+  },
+  {
+   "id": "prd_b73635742b2649fc",
+   "slug": "a-plague-tale-innocence-cloud-version-switch1",
+   "baseHash": "a18b6abc5f91e96062945270f56a953f09b190f7bc144c9c7a90a73674563b69",
+   "set": {},
+   "clear": [
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "Remove the ten cross-schema contamination fields that batch 001 reported cleared but did not remove."
+  },
+  {
+   "id": "prd_e056bfabbf914721",
+   "slug": "arcade-archives-vs-super-mario-bros-switch",
+   "baseHash": "7ce46aae53da173c27afc06d53b24dbe8fc4df785c01df95a187e531a197ca53",
+   "set": {},
+   "clear": [
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus",
+    "box_front_url",
+    "coverImage",
+    "image"
+   ],
+   "notes": "Remove the contamination fields plus the three image references that return 403 (box_front_url square eShop icon in the wrong role; coverImage/image broken R2 files) — the working cartridgeImage, nintendoCardImage, rebuilt banners and galleries remain."
+  },
+  {
+   "id": "prd_b66558151b784a6f",
+   "slug": "bayonetta",
+   "baseHash": "4ff3dd5848856a1e92efb183b06bcf3a3ce6808f6b0fa1b3c1a513e0112fba3b",
+   "set": {},
+   "clear": [
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "Remove the ten cross-schema contamination fields that batch 001 reported cleared but did not remove."
+  }
+ ]
+}
