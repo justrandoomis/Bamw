@@ -17,6 +17,7 @@ import { toast } from "sonner";
 import AppShell from "@/components/AppShell";
 import { useAuth } from "@/hooks/useAuth";
 import { useCurrency } from "@/context/CurrencyContext";
+import { playSound } from "@/utils/audio";
 
 /**
  * "دعوة صديق" — the member's own referral page.
@@ -114,8 +115,11 @@ function ReferPage() {
       await navigator.clipboard.writeText(value);
       setCopied(what);
       setTimeout(() => setCopied(null), 2500);
+      // The store's existing sound library — no generated substitutes.
+      playSound("select", 0.45);
       toast.success(what === "code" ? "تم نسخ الكود" : "تم نسخ الرابط");
     } catch {
+      playSound("Error", 0.5);
       toast.error("تعذر النسخ، انسخ الرابط يدوياً");
     }
   };
@@ -127,8 +131,10 @@ function ReferPage() {
     if (typeof navigator !== "undefined" && typeof navigator.share === "function") {
       try {
         await navigator.share({ title: "دعوة صديق — بنانتو", text, url: link });
+        playSound("confirm", 0.5);
         return;
       } catch (error) {
+        // A dismissed sheet is not a failure — fall through to the clipboard.
         if ((error as { name?: string })?.name === "AbortError") return;
       }
     }
