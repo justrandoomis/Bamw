@@ -1,51 +1,221 @@
 {
  "batch": "018",
- "apply": false,
+ "apply": true,
  "games": [
   {
    "id": "prd_efd67851b0b44837",
    "slug": "persona-3-reload",
    "baseHash": "76ee7cd6c0121c76afa12a9d6ca90eb0b4148e6d5052b3aa3fd67b0350518176",
    "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "clear": [
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "Switch 2 release verified: 2025-10-23, 21.7 GB, Metacritic 80, working trailer, 1080p record (60 fps docked / 30 handheld) kept as sourced. All images working. Only contamination removed."
   },
   {
    "id": "prd_1da85016b1ea440f",
    "slug": "persona-4-arena-ultimax",
    "baseHash": "0ac07b33b7542d5dc0a38343b437cba8dbcf14586abe9d09a1c3a92bb9e54464",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "supportedLanguages": "Text: English, Japanese, French, Italian, German, Spanish; voice: English and Japanese.",
+    "bannerImages": [
+     "https://images.launchbox-app.com/b5cdc185-701f-4c0a-9a70-0744caaafccc.jpg",
+     "https://images.launchbox-app.com/59384393-4b0e-4d38-92f5-447d1f979336.jpg"
+    ],
+    "galleryImages": [
+     {
+      "url": "https://images.launchbox-app.com/db4aea1b-29eb-4b26-919c-c0f78b9e707a.jpg",
+      "alt": "Character matchup gameplay"
+     },
+     {
+      "url": "https://images.launchbox-app.com/977b68b3-8fcd-4200-887d-7f22fff8dc58.jpg",
+      "alt": "Persona-assisted combat scene"
+     },
+     {
+      "url": "https://images.launchbox-app.com/b2c1db53-205f-4fae-8323-b0e062260a27.jpg",
+      "alt": "Arena story / character scene"
+     },
+     {
+      "url": "https://images.launchbox-app.com/8f73ca78-823f-4f1c-9e00-cf752d4faf8a.jpg",
+      "alt": "Persona 4 Arena Ultimax key artwork"
+     },
+     {
+      "url": "https://images.launchbox-app.com/919cd6c9-d0ce-4caf-9aac-4f6b294c68ee.jpg",
+      "alt": "Persona 4 Arena Ultimax banner artwork"
+     }
+    ],
+    "dlcSummary": "No paid DLC has been released for Persona 4 Arena Ultimax on Nintendo Switch; the earlier console DLC characters are included.",
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "informationStatus": "available",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p",
+       "fps": "60"
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p",
+       "fps": "60"
+      },
+      "modes": [],
+      "sourceName": "Port coverage of the 2022 re-release",
+      "sourceUrl": "https://www.nintendolife.com/games/nintendo-switch/persona_4_arena_ultimax",
+      "verificationStatus": "technical_analysis"
+     }
+    ]
+   },
+   "clear": [
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "The language field held internal analyst prose about supplier SKUs — replaced with the official text/voice split. Four dead R2 banners replaced by two shots promoted from the six working galleries (story screenshot verified visually); four remain in the gallery. The included-DLC situation recorded. Switch-2 badge becomes the platform record at the fighter's documented 60 fps. 2022-03-17, Metacritic 81 verified. Contamination removed."
   },
   {
    "id": "prd_0635e35ca407487d",
    "slug": "persona-4-golden",
    "baseHash": "d4c624fa5b872cb3689670c0ca2a394f3486d8076829db919e26dfd057f14b78",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "supportedLanguages": "English, Japanese, French, German, Italian, Spanish, Korean, Simplified Chinese, Traditional Chinese",
+    "dlcSummary": "No DLC has been released for Persona 4 Golden on Nintendo Switch.",
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "informationStatus": "available",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p",
+       "fps": "60"
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p",
+       "fps": "60"
+      },
+      "modes": [],
+      "sourceName": "Port coverage of Persona 4 Golden on Switch",
+      "sourceUrl": "https://www.nintendolife.com/games/nintendo-switch/persona_4_golden",
+      "verificationStatus": "technical_analysis"
+     }
+    ]
+   },
+   "clear": [
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "The language field's 'Nintendo AU:' prefix and supplier-selection note removed, keeping the clean enumerated official list it carried. Switch-2 badge becomes the platform record with the documented 60 fps figures. 2023-01-19, Metacritic 90 kept. All images working. Contamination removed."
   },
   {
    "id": "prd_3a93e24db910403d",
    "slug": "persona-5-royal",
    "baseHash": "ef142a4d27ca52a1d565fe3ff2f9aded5e64d22f88824eb60195f7e5403ab691",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "supportedLanguages": "Text: English, French, German, Italian, Spanish; voice: English and Japanese.",
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "informationStatus": "available",
+      "handheld": {
+       "supported": true,
+       "resolution": "540p (3D rendering)",
+       "fps": "30"
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "810p (3D rendering)",
+       "fps": "30"
+      },
+      "modes": [],
+      "sourceName": "Technical analyses of the Switch port",
+      "sourceUrl": "https://www.nintendolife.com/games/nintendo-switch/persona_5_royal",
+      "verificationStatus": "technical_analysis"
+     }
+    ]
+   },
+   "clear": [
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "The language field held supplier-SKU analyst prose — replaced with the official western text/voice split its own text cites. The Switch-2 badge becomes the platform record keeping the analysis-sourced 540p/810p 3D rendering at 30 fps figures. 2022-10-21, Metacritic 94 verified. All images working. Contamination removed."
   },
   {
    "id": "prd_96ddda9955af40e8",
    "slug": "persona-5-strikers",
    "baseHash": "72124046e9dbb2070ec9295afc54a3b88ab1c007326e28428ed1dc0e97785b76",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "supportedLanguages": "Text: English, French, German, Italian, Spanish; voice: English and Japanese.",
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "informationStatus": "available",
+      "handheld": {
+       "supported": true,
+       "resolution": "Dynamic (720p-class)",
+       "fps": "30"
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "Dynamic, up to 1080p",
+       "fps": "30"
+      },
+      "modes": [],
+      "sourceName": "Technical coverage of the Switch version",
+      "sourceUrl": "https://www.nintendolife.com/games/nintendo-switch/persona_5_strikers",
+      "verificationStatus": "technical_analysis"
+     }
+    ]
+   },
+   "clear": [
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "Same supplier-prose language cleanup with the officially-listed western text set. The Switch-2-badged prose record becomes the platform record with the documented dynamic-resolution 30 fps figures. 2021-02-23, Metacritic 81 verified. All images working. Contamination removed."
   }
  ]
 }
