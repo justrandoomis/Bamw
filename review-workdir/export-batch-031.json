@@ -1,0 +1,2076 @@
+{
+ "batch": "031",
+ "generatedAt": "2026-09-02T04:34:40.193Z",
+ "totalGames": 145,
+ "reviewedSoFar": 145,
+ "games": [
+  {
+   "id": "prd_3f5f6e861ad942ea",
+   "slug": "xenoblade-chronicles-x-definitive-edition-switch-2-edition",
+   "title": "Xenoblade Chronicles X: Definitive Edition – Nintendo Switch 2 Edition",
+   "platform": "switch2",
+   "isHidden": false,
+   "hash": "b2210edea2766d4e7a64a03bdf19bee28917ce0c9340d7014e0a0c61d87a2a45",
+   "images": [
+    {
+     "role": "front-box",
+     "field": "cartridgeImage",
+     "url": "https://banan.to/api/files/products/prd_3f5f6e861ad942ea/front-5aa2bef9a9119791.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 67954,
+     "width": 400,
+     "height": 648,
+     "thumb": "review-workdir/thumbs/batch-031/xenoblade-chronicles-x-definitive-edition-switch-2-edition__front-box-0.png"
+    },
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://banan.to/api/files/products/prd_3f5f6e861ad942ea/square-e6271e1693d6c2de.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 341695,
+     "width": 1080,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-031/xenoblade-chronicles-x-definitive-edition-switch-2-edition__square-card-1.png"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://banan.to/api/files/products/prd_3f5f6e861ad942ea/cover-75989882187d8c01.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "3d-texture",
+     "field": "coverHiResImage",
+     "url": "https://banan.to/api/files/products/prd_3f5f6e861ad942ea/3d-texture-96233dd5db5f55cb.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 86956,
+     "width": 640,
+     "height": 492,
+     "thumb": "review-workdir/thumbs/batch-031/xenoblade-chronicles-x-definitive-edition-switch-2-edition__3d-texture-3.png"
+    },
+    {
+     "role": "listing",
+     "field": "image",
+     "url": "https://banan.to/api/files/products/prd_3f5f6e861ad942ea/cover-75989882187d8c01.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[0]",
+     "url": "https://banan.to/api/files/products/prd_3f5f6e861ad942ea/banner-0-1784f63de7cf5cb0.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[1]",
+     "url": "https://banan.to/api/files/products/prd_3f5f6e861ad942ea/banner-1-06c45a242fd956f6.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[2]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000116669/e2ec24af5431e0b05b5124a13d3bb96bf84cfbc1d1d30d866b579ddd45d9a558",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 119595,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-031/xenoblade-chronicles-x-definitive-edition-switch-2-edition__banner-7.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[3]",
+     "url": "https://banan.to/api/files/products/prd_3f5f6e861ad942ea/banner-3-446ced4ed3e41e3a.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 233292,
+     "width": 1440,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-031/xenoblade-chronicles-x-definitive-edition-switch-2-edition__banner-8.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://assets.nintendo.com/image/upload/f_auto%2Cq_auto/Marketing/pmp-xcx-de-p2-skdhskdhw/assets/primordia",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 231866,
+     "width": 1440,
+     "height": 675,
+     "thumb": "review-workdir/thumbs/batch-031/xenoblade-chronicles-x-definitive-edition-switch-2-edition__gallery-9.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[1]",
+     "url": "https://assets.nintendo.com/image/upload/f_auto%2Cq_auto/Marketing/pmp-xcx-de-p2-skdhskdhw/assets/noctilum",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 346023,
+     "width": 1440,
+     "height": 675,
+     "thumb": "review-workdir/thumbs/batch-031/xenoblade-chronicles-x-definitive-edition-switch-2-edition__gallery-10.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[2]",
+     "url": "https://assets.nintendo.com/image/upload/f_auto%2Cq_auto/Marketing/pmp-xcx-de-p2-skdhskdhw/assets/oblivia",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 222767,
+     "width": 1440,
+     "height": 675,
+     "thumb": "review-workdir/thumbs/batch-031/xenoblade-chronicles-x-definitive-edition-switch-2-edition__gallery-11.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[3]",
+     "url": "https://assets.nintendo.com/image/upload/f_auto%2Cq_auto/Marketing/pmp-xcx-de-p2-skdhskdhw/assets/sylvalum",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 181245,
+     "width": 1440,
+     "height": 675,
+     "thumb": "review-workdir/thumbs/batch-031/xenoblade-chronicles-x-definitive-edition-switch-2-edition__gallery-12.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[4]",
+     "url": "https://assets.nintendo.com/image/upload/f_auto%2Cq_auto/Marketing/pmp-xcx-de-p2-skdhskdhw/assets/cauldros",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 209015,
+     "width": 1440,
+     "height": 675,
+     "thumb": "review-workdir/thumbs/batch-031/xenoblade-chronicles-x-definitive-edition-switch-2-edition__gallery-13.png"
+    }
+   ],
+   "record": {
+    "title": "Xenoblade Chronicles X: Definitive Edition – Nintendo Switch 2 Edition",
+    "titleEn": "Xenoblade Chronicles X: Definitive Edition – Nintendo Switch 2 Edition",
+    "titleKu": "Xenoblade Chronicles X: Definitive Edition – Nintendo Switch 2 Edition",
+    "slug": "xenoblade-chronicles-x-definitive-edition-switch-2-edition",
+    "description": "Humanity’s survivors have crash-landed on Mira. Explore huge regions, build your party, develop character classes, take on missions, and pilot Skells in a deeply layered action RPG. The Definitive Edition adds new story material and modernized systems.",
+    "descriptionEn": "Humanity’s survivors have crash-landed on Mira. Explore huge regions, build your party, develop character classes, take on missions, and pilot Skells in a deeply layered action RPG. The Definitive Edition adds new story material and modernized systems.",
+    "descriptionKu": "Humanity’s survivors have crash-landed on Mira. Explore huge regions, build your party, develop character classes, take on missions, and pilot Skells in a deeply layered action RPG. The Definitive Edition adds new story material and modernized systems.",
+    "cartridgeImage": "/api/files/products/prd_3f5f6e861ad942ea/front-5aa2bef9a9119791.webp",
+    "nintendoCardImage": "/api/files/products/prd_3f5f6e861ad942ea/square-e6271e1693d6c2de.jpg",
+    "coverHiResImage": "/api/files/products/prd_3f5f6e861ad942ea/3d-texture-96233dd5db5f55cb.webp",
+    "coverImage": "/api/files/products/prd_3f5f6e861ad942ea/cover-75989882187d8c01.avif",
+    "bannerImages": [
+     "/api/files/products/prd_3f5f6e861ad942ea/banner-0-1784f63de7cf5cb0.avif",
+     "/api/files/products/prd_3f5f6e861ad942ea/banner-1-06c45a242fd956f6.avif",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000116669/e2ec24af5431e0b05b5124a13d3bb96bf84cfbc1d1d30d866b579ddd45d9a558",
+     "/api/files/products/prd_3f5f6e861ad942ea/banner-3-446ced4ed3e41e3a.jpg"
+    ],
+    "gallery": [],
+    "youtubeTrailer": "https://www.youtube.com/watch?v=I68j_RQL2Es",
+    "releaseDate": "2026-02-19",
+    "ageRating": "ESRB Teen",
+    "metacriticRating": 87,
+    "genres": [
+     "Action",
+     "Role-Playing",
+     "Open World"
+    ],
+    "platform": "switch2",
+    "size": 13.5,
+    "numberOfPlayers": "1",
+    "supportedLanguages": "Japanese, American English, French, German, Italian, Spanish, Korean, Simplified Chinese, Traditional Chinese",
+    "hardwareModel": "",
+    "colorEdition": "",
+    "storageCapacity": "",
+    "screenSpecs": "",
+    "batteryLife": "",
+    "boxContents": [],
+    "boxContentsText": "",
+    "warrantyCondition": "",
+    "connectivity": "",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "Global",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "",
+    "redemptionSteps": [],
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 12000,
+    "cost": 2500,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": false,
+    "displayOrder": 0,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "حساب أوفلاين",
+      "description": "حساب مخصص للعب دون اتصال بعد إكمال خطوات التفعيل.",
+      "isInfiniteStock": true,
+      "customerDescription": "حساب مشترك"
+     },
+     {
+      "id": "online_account",
+      "name": "حساب أونلاين",
+      "description": "حساب يدعم تشغيل اللعبة مع الاتصال والميزات المتاحة أونلاين.",
+      "isInfiniteStock": true,
+      "customerDescription": "حساب خاص بك",
+      "internalNote": "Online-capable account access option sold by the supplier."
+     }
+    ],
+    "types": [
+     {
+      "id": "standard_offline",
+      "name": "حساب أوفلاين — عادي",
+      "optionId": "offline_account",
+      "price": "",
+      "cost": 2500,
+      "description": "تشمل الإصدار العادي من اللعبة.",
+      "stock": 999999,
+      "isInfiniteStock": true,
+      "customerDescription": "اللعبة الأساسية"
+     },
+     {
+      "id": "standard_online",
+      "name": "حساب أونلاين — عادي",
+      "optionId": "online_account",
+      "price": 38000,
+      "cost": 25000,
+      "description": "تشمل الإصدار العادي من اللعبة.",
+      "stock": 999999,
+      "isInfiniteStock": true,
+      "customerDescription": "اللعبة الأساسية"
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "active",
+    "kind": "account",
+    "trade_value_iqd": 0,
+    "store_offer_bonus_iqd": 0,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "id": "prd_3f5f6e861ad942ea",
+    "titleAr": "Xenoblade Chronicles X: Definitive Edition",
+    "compatibility": [
+     "Nintendo Switch 2",
+     null,
+     null,
+     "Nintendo Switch Lite (handheld-compatible; feature experience may vary)"
+    ],
+    "edition": "Standard",
+    "developer": "MONOLITHSOFT",
+    "publisher": "Nintendo",
+    "metacriticUrl": "https://www.metacritic.com/game/xenoblade-chronicles-x-definitive-edition/",
+    "opencriticRating": 87,
+    "userScore": 8.5,
+    "officialUrl": "https://www.nintendo.com/us/store/products/xenoblade-chronicles-x-definitive-edition-nintendo-switch-2-edition-switch-2/",
+    "eshopUrl": "https://www.nintendo.com/us/store/products/xenoblade-chronicles-x-definitive-edition-nintendo-switch-2-edition-switch-2/",
+    "gameIsOffline": true,
+    "gameIsOnline": true,
+    "description_short": "A vast open-world sci-fi action RPG on planet Mira, rebuilt and expanded in the Definitive Edition.",
+    "description_ar": "بعد دمار الأرض، يهبط الناجون على كوكب ميرا الغامض. تستكشف مناطق ضخمة، وتبني فريقك، وتطور الفئات والمهارات، وتنفذ المهمات، ثم تقود آليات Skell العملاقة. نسخة Definitive Edition تضيف تحسينات في أسلوب اللعب ومحتوى قصصيًا إضافيًا.",
+    "videos": [
+     {
+      "title": "Official Announcement / Overview Trailer",
+      "url": "https://www.youtube.com/watch?v=I68j_RQL2Es"
+     }
+    ],
+    "nsuid": "70010000088832",
+    "nintendoEshopUrl": "https://www.nintendo.com/us/store/products/xenoblade-chronicles-x-definitive-edition-nintendo-switch-2-edition-switch-2/",
+    "nintendoOnlineRequired": false,
+    "nintendoCloudSaves": true,
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": true,
+    "nintendoPlayModes": "TV, Tabletop, Handheld",
+    "nintendoNotes": "Official platform status: native Nintendo Switch release on 2025-03-20 and native Nintendo Switch 2 Edition on 2026-02-19. Switch 2 Edition supports up to 4K / 60 fps in TV mode and up to 1080p / 60 fps handheld. Online squads can include up to 32 players; Nintendo Switch Online is required only for online features.\n\nSupplier language selection supplied by user: Simplified Chinese.\nSupplier matrix: NS1 Regular ¥6.8 (pre-discount ¥10); NS1 Standard ¥95; NS2 Regular ¥11.7; NS2 Standard ¥114.6. Two supplier variants per platform means no paid DLC product type is created.\nConverted purchase costs at 1 CNY = 220 IQD, rounded down to nearest 250 IQD: NS1 Regular 1,250 IQD; NS1 Standard 20,750 IQD; NS2 Regular 2,500 IQD; NS2 Standard 25,000 IQD.\nThe template has one cost per product type and no platform-specific cost subfield; therefore dual-platform type.cost fields are intentionally left blank rather than mixing NS1 and NS2 costs.",
+    "switch2Enhanced": true,
+    "switch2Exclusive": true,
+    "switch2UpgradePrice": 4.99,
+    "switch2Features": [
+     "Up to 4K resolution in TV mode",
+     "Up to 60 fps on Switch 2",
+     "Up to 1080p in handheld mode",
+     "Up to 1080p / 60 fps in handheld mode",
+     "Upgrade Pack available for Switch owners"
+    ],
+    "tagline": "Rebuild humanity on the mysterious planet Mira.",
+    "fitFor": [
+     "Players who enjoy huge open worlds and exploration",
+     "Fans of deep party-based action RPG combat",
+     "Players who like mechs, character builds, and long-form progression",
+     "Players who enjoy 100+ hour completionist RPGs"
+    ],
+    "notFitFor": [
+     "Players looking for a short linear campaign",
+     "Players who dislike dense RPG systems",
+     "Players who prefer purely turn-based combat",
+     "Players who want minimal menus and simple progression"
+    ],
+    "playTimeMain": 67.5,
+    "playTimeFull": 253.5,
+    "editionsList": [
+     {
+      "name": "Nintendo Switch Standard",
+      "coverUrl": "https://gamesdb-images.launchbox.gg/r2_e0a82f87-f163-4a4f-9d06-2dcbe770253a.jpg",
+      "contents": [
+       {
+        "label": "Base Definitive Edition game"
+       },
+       {
+        "label": "Expanded story content"
+       },
+       {
+        "label": "Quality-of-life and visual improvements"
+       }
+      ]
+     },
+     {
+      "name": "Nintendo Switch 2 Edition",
+      "contents": [
+       {
+        "label": "Nintendo Switch game + Switch 2 Upgrade Pack"
+       },
+       {
+        "label": "Up to 4K TV output"
+       },
+       {
+        "label": "Up to 60 fps"
+       }
+      ]
+     },
+     {
+      "name": "Nintendo Switch 2 Edition Upgrade Pack",
+      "contents": [
+       {
+        "label": "Requires the Nintendo Switch version"
+       },
+       {
+        "label": "Enhanced visuals and performance"
+       },
+       {
+        "label": "Switch 2 optimization"
+       }
+      ]
+     }
+    ],
+    "gameplayPillars": [
+     {
+      "title": "Explore Mira",
+      "description": "Exploration is central: the player surveys continents, plants probes, discovers landmarks, gathers materials, and opens new routes.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/f_auto%2Cq_auto/Marketing/pmp-xcx-de-p2-skdhskdhw/assets/new-los-angeles"
+     },
+     {
+      "title": "Master Arts and Classes",
+      "description": "Real-time party combat uses auto-attacks, Arts, positioning, cooldowns, class progression, equipment, and coordinated party roles.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/f_auto%2Cq_auto/Marketing/pmp-xcx-de-p2-skdhskdhw/assets/primordia"
+     },
+     {
+      "title": "Pilot Skells",
+      "description": "Skells add a second layer of movement and battle, allowing faster traversal, flight later in progression, and large-scale combat.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/f_auto%2Cq_auto/Marketing/pmp-xcx-de-p2-skdhskdhw/assets/noctilum"
+     }
+    ],
+    "worldSummary": "Mira is a massive alien planet divided into distinct regions with different climates, ecosystems, creatures, resources, and ruins. New Los Angeles serves as humanity’s base after the White Whale crash.",
+    "storyChapters": [
+     {
+      "title": "The White Whale and New Los Angeles",
+      "body": "The White Whale escapes Earth’s destruction but crashes on Mira. Survivors establish New Los Angeles and race to secure humanity’s future.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/f_auto%2Cq_auto/Marketing/pmp-xcx-de-p2-skdhskdhw/assets/oblivia"
+     },
+     {
+      "title": "Life on Mira",
+      "body": "BLADE explores Mira, rescues survivors, studies alien life, and uncovers competing factions and mysteries surrounding the planet.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/f_auto%2Cq_auto/Marketing/pmp-xcx-de-p2-skdhskdhw/assets/sylvalum"
+     },
+     {
+      "title": "The fight for humanity’s future",
+      "body": "The story expands beyond the original Wii U release with additional narrative material included in the Definitive Edition.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/f_auto%2Cq_auto/Marketing/pmp-xcx-de-p2-skdhskdhw/assets/cauldros"
+     }
+    ],
+    "galleryImages": [
+     {
+      "url": "https://assets.nintendo.com/image/upload/f_auto%2Cq_auto/Marketing/pmp-xcx-de-p2-skdhskdhw/assets/primordia",
+      "alt": "Official Nintendo promotional image"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/f_auto%2Cq_auto/Marketing/pmp-xcx-de-p2-skdhskdhw/assets/noctilum",
+      "alt": "Official Nintendo gameplay image"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/f_auto%2Cq_auto/Marketing/pmp-xcx-de-p2-skdhskdhw/assets/oblivia",
+      "alt": "Official Nintendo gameplay image"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/f_auto%2Cq_auto/Marketing/pmp-xcx-de-p2-skdhskdhw/assets/sylvalum",
+      "alt": "Official Nintendo feature image"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/f_auto%2Cq_auto/Marketing/pmp-xcx-de-p2-skdhskdhw/assets/cauldros",
+      "alt": "Official Nintendo gallery image"
+     }
+    ],
+    "features": [
+     "Large seamless regions across planet Mira",
+     "Pilot and customize Skell mechs",
+     "Online squads for up to 32 players",
+     "Character and gear customization",
+     "Affinity missions and side content",
+     "Expanded Definitive Edition story"
+    ],
+    "perfResolutionDocked": "Up to 4K",
+    "perfResolutionHandheld": "Up to 1080p",
+    "perfFps": "60",
+    "perfNotes": "Nintendo Switch: measured target is 30 fps, with dynamic resolution reaching about 1080p docked and 720p handheld. Nintendo Switch 2 Edition: Nintendo officially advertises up to 4K / 60 fps TV and up to 1080p / 60 fps handheld. Actual rendering resolution can differ from output resolution.",
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "hardwareId": "prd_acf4c89908764c62",
+      "informationStatus": "Published / verified",
+      "handheld": {
+       "supported": true,
+       "resolution": "Up to 1080p",
+       "outputResolution": "Up to 1080p",
+       "fps": "60"
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "Up to 4K",
+       "outputResolution": "Up to 4K",
+       "fps": "60"
+      },
+      "sourceName": "Nintendo Official",
+      "sourceUrl": "https://www.nintendo.com/us/store/products/xenoblade-chronicles-x-definitive-edition-nintendo-switch-2-edition-switch-2/",
+      "verificationStatus": "verified"
+     }
+    ],
+    "downloadSizeGb": 13.5,
+    "requiredSpaceGb": 14.8,
+    "microSdRecommended": false,
+    "storageNotes": "Nintendo lists 13.5 GB for Nintendo Switch and 14.8 GB for Nintendo Switch 2 on the current product page.",
+    "languagesAudio": [
+     "English",
+     "Japanese"
+    ],
+    "languagesText": [
+     "Japanese",
+     "American English",
+     "French",
+     "German",
+     "Italian",
+     "Spanish",
+     "Korean",
+     "Simplified Chinese",
+     "Traditional Chinese"
+    ],
+    "arabicSupport": false,
+    "mpLocalPlayers": false,
+    "mpOnlinePlayers": true,
+    "mpCoop": true,
+    "mpCompetitive": false,
+    "mpSplitScreen": false,
+    "mpLocalWireless": false,
+    "dlc": [
+     {
+      "name": "Exploration Support Package"
+     }
+    ],
+    "completionMain": 67.5,
+    "completionExtras": 108.5,
+    "completionAll": 253.5,
+    "verdictSummary": "A critically well-received, unusually large science-fiction RPG whose strongest qualities are exploration, world scale, customization, and Skell gameplay. Its dense systems and long runtime make it best suited to players who enjoy deep RPG progression.",
+    "reviews": [
+     {
+      "source": "Metacritic",
+      "score": "87/100",
+      "url": "https://www.metacritic.com/game/xenoblade-chronicles-x-definitive-edition/"
+     },
+     {
+      "source": "OpenCritic aggregate",
+      "score": "87/100",
+      "url": "https://www.dekudeals.com/items/xenoblade-chronicles-x-definitive-edition"
+     },
+     {
+      "source": "Metacritic user score",
+      "score": "8.5/10",
+      "url": "https://www.metacritic.com/game/xenoblade-chronicles-x-definitive-edition/"
+     }
+    ],
+    "timeline": [
+     {
+      "date": "2025-03-20",
+      "title": "Nintendo Switch release",
+      "body": "Definitive Edition launched for Nintendo Switch."
+     },
+     {
+      "date": "2026-02-19",
+      "title": "Nintendo Switch 2 Edition digital release",
+      "body": "Native Nintendo Switch 2 Edition launched digitally with enhanced resolution and frame rate."
+     },
+     {
+      "date": "2026-04-16",
+      "title": "Nintendo Switch 2 Edition physical release",
+      "body": "Physical Nintendo Switch 2 Edition became available at select retailers."
+     }
+    ],
+    "seriesName": "Xenoblade Chronicles",
+    "seriesEntries": [
+     "Xenoblade Chronicles: Definitive Edition",
+     "Xenoblade Chronicles 2",
+     "Xenoblade Chronicles 3"
+    ],
+    "studioName": "MONOLITHSOFT",
+    "studioUrl": "https://www.monolithsoft.co.jp/",
+    "studioLocation": "Tokyo, Japan",
+    "studioAbout": "MONOLITHSOFT is a Japanese game development studio known for the Xenoblade Chronicles series and large-scale RPG world design.",
+    "setupNeeds": [
+     "Nintendo Switch or Nintendo Switch 2 system",
+     "Nintendo Account for digital ownership and online services",
+     "Nintendo Switch Online membership required for online squad features",
+     "Internet connection required for online features"
+    ],
+    "sources": [
+     {
+      "name": "Nintendo official — Switch version",
+      "url": "https://www.nintendo.com/us/store/products/xenoblade-chronicles-x-definitive-edition-switch/"
+     },
+     {
+      "name": "Nintendo official — Switch 2 Edition",
+      "url": "https://www.nintendo.com/us/store/products/xenoblade-chronicles-x-definitive-edition-nintendo-switch-2-edition-switch-2/"
+     },
+     {
+      "name": "Deku Deals — metadata / HLTB aggregates",
+      "url": "https://www.dekudeals.com/items/xenoblade-chronicles-x-definitive-edition"
+     }
+    ],
+    "boxContentsList": "[Circular]",
+    "image": "/api/files/products/prd_3f5f6e861ad942ea/cover-75989882187d8c01.avif",
+    "banner": "/api/files/products/prd_3f5f6e861ad942ea/banner-0-1784f63de7cf5cb0.avif",
+    "schemaId": "",
+    "createdAt": "2026-08-26T21:39:16.803Z",
+    "created_at": "2026-08-26T21:39:16.803Z",
+    "updatedAt": "2026-08-28T22:01:16.520Z",
+    "updated_at": "2026-08-28T22:01:16.520Z",
+    "badgeEn": "وفر 40%",
+    "badgeKu": "وفر 40%",
+    "featuresEn": [
+     "Large seamless regions across planet Mira",
+     "Pilot and customize Skell mechs",
+     "Online squads for up to 32 players",
+     "Character and gear customization",
+     "Affinity missions and side content",
+     "Expanded Definitive Edition story"
+    ],
+    "featuresKu": [
+     "Large seamless regions across planet Mira",
+     "Pilot and customize Skell mechs",
+     "Online squads for up to 32 players",
+     "Character and gear customization",
+     "Affinity missions and side content",
+     "Expanded Definitive Edition story"
+    ],
+    "sales": 0,
+    "images": [],
+    "modes": [],
+    "variants": "[Circular]"
+   }
+  },
+  {
+   "id": "prd_704056e8239b4d8c",
+   "slug": "yoshi-and-the-mysterious-book",
+   "title": "Yoshi and the Mysterious Book",
+   "platform": "switch2",
+   "isHidden": false,
+   "hash": "c48e7fce3e5bbbf08d4c133537605f5033aa8ea68be1d6b9562e6a11ad22dd18",
+   "images": [
+    {
+     "role": "front-box",
+     "field": "cartridgeImage",
+     "url": "https://banan.to/api/files/products/prd_704056e8239b4d8c/front-9b572b4635401aa8.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "front-box",
+     "field": "box_front_url",
+     "url": "https://i5.walmartimages.com/seo/Yoshi-and-the-Mysterious-Book-Nintendo-Switch-2_a51c4953-88a5-4ccc-bcec-e686e8d3d167.383500a4c490e5c5a58964f284f4ae6f.jpeg?odnBg=FFFFFF&odnHeight=573&odnWidth=573",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 61234,
+     "width": 573,
+     "height": 573,
+     "thumb": "review-workdir/thumbs/batch-031/yoshi-and-the-mysterious-book__front-box-1.png"
+    },
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://banan.to/api/files/products/prd_704056e8239b4d8c/square-37f77486c6407655.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 617863,
+     "width": 1614,
+     "height": 1668,
+     "thumb": "review-workdir/thumbs/batch-031/yoshi-and-the-mysterious-book__square-card-2.png"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://banan.to/api/files/products/prd_704056e8239b4d8c/cover-5f162f3995fee23a.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "3d-texture",
+     "field": "coverHiResImage",
+     "url": "https://banan.to/api/files/products/prd_704056e8239b4d8c/3d-texture-cd50424d97c38268.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 216574,
+     "width": 1080,
+     "height": 833,
+     "thumb": "review-workdir/thumbs/batch-031/yoshi-and-the-mysterious-book__3d-texture-4.png"
+    },
+    {
+     "role": "listing",
+     "field": "image",
+     "url": "https://banan.to/api/files/products/prd_704056e8239b4d8c/cover-5f162f3995fee23a.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[0]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000119859/b85301d5f8074b6db36ba928328807c7467ddde8badc7ed51aa311a430d567ee",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 181014,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-031/yoshi-and-the-mysterious-book__banner-6.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[1]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000119859/7f0de9f8889db511aa981af5d4178ff45f699b9300d25da9bc159c75d02e1ac2",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 205545,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-031/yoshi-and-the-mysterious-book__banner-7.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[2]",
+     "url": "https://banan.to/api/files/products/prd_704056e8239b4d8c/banner-2-acbb6f93a5cff54a.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[3]",
+     "url": "https://banan.to/api/files/products/prd_704056e8239b4d8c/banner-3-017ed1f5a6b9bb10.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://i5.walmartimages.com/asr/856f42e3-d567-4730-94bb-4cefbe8252aa.0dbe32d0ac6f6d23ace842db2e2dbe78.jpeg?odnBg=FFFFFF&odnHeight=117&odnWidth=117",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 4272,
+     "width": 117,
+     "height": 117,
+     "thumb": "review-workdir/thumbs/batch-031/yoshi-and-the-mysterious-book__gallery-10.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[1]",
+     "url": "https://i5.walmartimages.com/asr/c7186f18-caff-43fe-9697-d752d1251ab9.3c6fef473671983bcd2b0e43c4c672aa.jpeg?odnBg=FFFFFF&odnHeight=117&odnWidth=117",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 3996,
+     "width": 117,
+     "height": 117,
+     "thumb": "review-workdir/thumbs/batch-031/yoshi-and-the-mysterious-book__gallery-11.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[2]",
+     "url": "https://i5.walmartimages.com/asr/1bb0e312-137f-4aa7-8da8-f5d14c9c2729.15f7c2dc0030392f4cefd9b8c58f2f52.jpeg?odnBg=FFFFFF&odnHeight=117&odnWidth=117",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 3598,
+     "width": 117,
+     "height": 117,
+     "thumb": "review-workdir/thumbs/batch-031/yoshi-and-the-mysterious-book__gallery-12.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[3]",
+     "url": "https://i5.walmartimages.com/asr/0d48745f-f656-4c67-92b2-4f265bd8aaf6.5ae87facaf5f49680dfc3596a59d71f7.jpeg?odnBg=FFFFFF&odnHeight=117&odnWidth=117",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 3911,
+     "width": 117,
+     "height": 117,
+     "thumb": "review-workdir/thumbs/batch-031/yoshi-and-the-mysterious-book__gallery-13.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[4]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000119859/b85301d5f8074b6db36ba928328807c7467ddde8badc7ed51aa311a430d567ee",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 181014,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-031/yoshi-and-the-mysterious-book__gallery-14.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[5]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000119859/7f0de9f8889db511aa981af5d4178ff45f699b9300d25da9bc159c75d02e1ac2",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 205545,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-031/yoshi-and-the-mysterious-book__gallery-15.png"
+    }
+   ],
+   "record": {
+    "title": "Yoshi and the Mysterious Book",
+    "titleEn": "Yoshi and the Mysterious Book",
+    "titleKu": "Yoshi and the Mysterious Book",
+    "slug": "yoshi-and-the-mysterious-book",
+    "description": "A Nintendo Switch 2-exclusive Yoshi adventure set inside a living encyclopedia. Help the talking book Mr. E remember its creatures by exploring colorful habitats, experimenting with creature behavior, and recording discoveries.\n\nYoshi enters a living encyclopedia to help the mysterious book named Mr. E recover lost knowledge. Each region represents a themed habitat filled with creatures, secrets and behaviors to observe. Collecting observations and restoring knowledge unlocks deeper parts of the world and more chapters. The tone is colorful, curious and family-friendly, emphasizing wonder rather than danger.",
+    "descriptionEn": "A Nintendo Switch 2-exclusive Yoshi adventure set inside a living encyclopedia. Help the talking book Mr. E remember its creatures by exploring colorful habitats, experimenting with creature behavior, and recording discoveries.\n\nYoshi enters a living encyclopedia to help the mysterious book named Mr. E recover lost knowledge. Each region represents a themed habitat filled with creatures, secrets and behaviors to observe. Collecting observations and restoring knowledge unlocks deeper parts of the world and more chapters. The tone is colorful, curious and family-friendly, emphasizing wonder rather than danger.",
+    "descriptionKu": "A Nintendo Switch 2-exclusive Yoshi adventure set inside a living encyclopedia. Help the talking book Mr. E remember its creatures by exploring colorful habitats, experimenting with creature behavior, and recording discoveries.\n\nYoshi enters a living encyclopedia to help the mysterious book named Mr. E recover lost knowledge. Each region represents a themed habitat filled with creatures, secrets and behaviors to observe. Collecting observations and restoring knowledge unlocks deeper parts of the world and more chapters. The tone is colorful, curious and family-friendly, emphasizing wonder rather than danger.",
+    "cartridgeImage": "/api/files/products/prd_704056e8239b4d8c/front-9b572b4635401aa8.avif",
+    "nintendoCardImage": "/api/files/products/prd_704056e8239b4d8c/square-37f77486c6407655.jpg",
+    "coverHiResImage": "/api/files/products/prd_704056e8239b4d8c/3d-texture-cd50424d97c38268.webp",
+    "coverImage": "/api/files/products/prd_704056e8239b4d8c/cover-5f162f3995fee23a.avif",
+    "bannerImages": [
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000119859/b85301d5f8074b6db36ba928328807c7467ddde8badc7ed51aa311a430d567ee",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000119859/7f0de9f8889db511aa981af5d4178ff45f699b9300d25da9bc159c75d02e1ac2",
+     "/api/files/products/prd_704056e8239b4d8c/banner-2-acbb6f93a5cff54a.avif",
+     "/api/files/products/prd_704056e8239b4d8c/banner-3-017ed1f5a6b9bb10.avif",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000119859/333f60ea97cad95f4b10315037e35bb0ad92202f34117fe965857cc55f07083f",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000119859/832b9b2dc9a5fda1252d9247c9aa7b3db28ba7712dd2f4b3a226bc9eba54e717",
+     "https://i5.walmartimages.com/asr/856f42e3-d567-4730-94bb-4cefbe8252aa.0dbe32d0ac6f6d23ace842db2e2dbe78.jpeg?odnBg=FFFFFF&odnHeight=117&odnWidth=117",
+     "https://i5.walmartimages.com/asr/c7186f18-caff-43fe-9697-d752d1251ab9.3c6fef473671983bcd2b0e43c4c672aa.jpeg?odnBg=FFFFFF&odnHeight=117&odnWidth=117",
+     "https://i5.walmartimages.com/asr/1bb0e312-137f-4aa7-8da8-f5d14c9c2729.15f7c2dc0030392f4cefd9b8c58f2f52.jpeg?odnBg=FFFFFF&odnHeight=117&odnWidth=117",
+     "https://i5.walmartimages.com/asr/0d48745f-f656-4c67-92b2-4f265bd8aaf6.5ae87facaf5f49680dfc3596a59d71f7.jpeg?odnBg=FFFFFF&odnHeight=117&odnWidth=117"
+    ],
+    "gallery": [],
+    "youtubeTrailer": "https://www.youtube.com/watch?v=1d7IdzUK2MM",
+    "releaseDate": "2026-05-21",
+    "ageRating": "PEGI 12",
+    "metacriticRating": 82,
+    "genres": [
+     "Platformer",
+     "Adventure",
+     "Family",
+     "Nintendo",
+     "Exploration",
+     "Puzzle"
+    ],
+    "platform": "switch2",
+    "size": 19.8,
+    "numberOfPlayers": "1",
+    "supportedLanguages": "Japanese, American English, French, German, Italian, Spanish, Korean, Russian, Simplified Chinese, Traditional Chinese, Brazilian Portuguese, Polish",
+    "hardwareModel": "",
+    "colorEdition": "",
+    "storageCapacity": "",
+    "screenSpecs": "",
+    "batteryLife": "",
+    "boxContents": [],
+    "boxContentsText": "",
+    "warrantyCondition": "",
+    "connectivity": "",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "Global",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "",
+    "redemptionSteps": [],
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 13000,
+    "cost": 2250,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": false,
+    "displayOrder": 29,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "Offline Account",
+      "description": "حساب مشترك",
+      "isInfiniteStock": true,
+      "customerDescription": "حساب مشترك"
+     },
+     {
+      "id": "online_account",
+      "name": "Online Account",
+      "description": "حساب خاص بك",
+      "isInfiniteStock": true,
+      "customerDescription": "حساب خاص بك"
+     }
+    ],
+    "types": [
+     {
+      "id": "standard_offline",
+      "name": "Standard Edition",
+      "optionId": "offline_account",
+      "price": "13000",
+      "cost": 2250,
+      "description": "اللعبة الأساسية",
+      "isInfiniteStock": true,
+      "customerDescription": "اللعبة الأساسية",
+      "internalNote": "Standard game, Offline Account. Supplier Regular price: ¥9.74; purchase cost converted at 1 CNY = 220 IQD and rounded down to nearest 250 IQD."
+     },
+     {
+      "id": "standard_online",
+      "name": "Standard Edition",
+      "optionId": "online_account",
+      "price": "38000",
+      "cost": 20750,
+      "description": "اللعبة الأساسية",
+      "isInfiniteStock": true,
+      "customerDescription": "اللعبة الأساسية",
+      "internalNote": "Standard game, Online Account. Supplier Standard price: ¥95.00; purchase cost converted at 1 CNY = 220 IQD and rounded down to nearest 250 IQD."
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "active",
+    "kind": "account",
+    "trade_value_iqd": 55000,
+    "store_offer_bonus_iqd": 5000,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "id": "prd_704056e8239b4d8c",
+    "schema_version": 22,
+    "titleAr": "Yoshi and the Mysterious Book",
+    "compatibility": [
+     "Nintendo Switch 2"
+    ],
+    "edition": "Standard",
+    "developer": "Nintendo",
+    "publisher": "Nintendo",
+    "metacriticUrl": "https://www.nintendo.com/us/store/products/yoshi-and-the-mysterious-book-switch-2/",
+    "opencriticRating": 85,
+    "userScore": 8,
+    "officialUrl": "https://www.nintendo.com/us/store/products/yoshi-and-the-mysterious-book-switch-2/",
+    "eshopUrl": "https://www.nintendo.com/us/store/products/yoshi-and-the-mysterious-book-switch-2/",
+    "gameIsOffline": true,
+    "gameIsOnline": true,
+    "gameLanguageLocked": false,
+    "description_short": "A Nintendo Switch 2-exclusive Yoshi adventure set inside a living encyclopedia. Help the talking book Mr. E remember its creatures by exploring colorful habitats, experimenting with creature behavior, and recording discoveries.",
+    "description_ar": "لعبة Yoshi and the Mysterious Book على Nintendo Switch 2. تقدم هذه النسخة تجربة كاملة وموسعة في صفحة المتجر، مع التركيز على القصة والعالم وأسلوب اللعب والصور والمحتوى التفصيلي.",
+    "box_front_url": "https://i5.walmartimages.com/seo/Yoshi-and-the-Mysterious-Book-Nintendo-Switch-2_a51c4953-88a5-4ccc-bcec-e686e8d3d167.383500a4c490e5c5a58964f284f4ae6f.jpeg?odnBg=FFFFFF&odnHeight=573&odnWidth=573",
+    "videos": [
+     {
+      "title": "Official / launch trailer",
+      "url": "https://www.youtube.com/watch?v=1d7IdzUK2MM"
+     },
+     {
+      "title": "Additional trailer / promo",
+      "url": "https://www.youtube.com/watch?v=1d7IdzUK2MM"
+     },
+     {
+      "title": "Secondary trailer / promo",
+      "url": "https://www.youtube.com/watch?v=1d7IdzUK2MM"
+     }
+    ],
+    "nintendoEshopUrl": "https://www.nintendo.com/us/store/products/yoshi-and-the-mysterious-book-switch-2/",
+    "nintendoOnlineRequired": false,
+    "nintendoCloudSaves": true,
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": true,
+    "nintendoPlayModes": "TV Mode, Tabletop Mode, Handheld Mode",
+    "nintendoNotes": "Yoshi and the Mysterious Book has an expanded storefront profile with filled media, gameplay, world, FAQ and performance fields for Nintendo Switch 2 import use.",
+    "switch2Enhanced": true,
+    "switch2Exclusive": true,
+    "switch2UpgradePrice": 0,
+    "switch2Features": [
+     "Nintendo Switch 2 exclusive",
+     "Creature-discovery encyclopedia system",
+     "Storybook-inspired presentation",
+     "Exploration-focused platforming",
+     "Yoshi's jump, flutter and egg-throw movement set",
+     "Progression through collecting observations",
+     "Family-friendly tone and pacing",
+     "Strong world and creature charm"
+    ],
+    "tagline": "A Nintendo Switch 2-exclusive Yoshi adventure set inside a living encyclopedia. Help the talking book Mr. E remember its creatures by exploring colorful habitats, experimenting with creature behavior, and recording discoveries",
+    "fitFor": [
+     "Families",
+     "Yoshi fans",
+     "Exploration-focused platforming fans",
+     "Players who enjoy collecting and discovery",
+     "Younger players who want an accessible adventure"
+    ],
+    "notFitFor": [
+     "Players seeking difficult combat",
+     "Players wanting a multiplayer-focused game",
+     "Players who want a very dark or intense tone"
+    ],
+    "playTimeMain": 12,
+    "playTimeFull": 30,
+    "editionsList": [
+     {
+      "name": "Standard Edition",
+      "coverUrl": "https://i5.walmartimages.com/seo/Yoshi-and-the-Mysterious-Book-Nintendo-Switch-2_a51c4953-88a5-4ccc-bcec-e686e8d3d167.383500a4c490e5c5a58964f284f4ae6f.jpeg?odnBg=FFFFFF&odnHeight=573&odnWidth=573",
+      "contents": [
+       {
+        "label": "Base game"
+       },
+       {
+        "label": "Nintendo Switch 2 compatible storefront entry"
+       },
+       {
+        "label": "Digital account delivery option"
+       }
+      ]
+     },
+     {
+      "name": "Deluxe Edition",
+      "coverUrl": "https://i5.walmartimages.com/seo/Yoshi-and-the-Mysterious-Book-Nintendo-Switch-2_a51c4953-88a5-4ccc-bcec-e686e8d3d167.383500a4c490e5c5a58964f284f4ae6f.jpeg?odnBg=FFFFFF&odnHeight=573&odnWidth=573",
+      "contents": [
+       {
+        "label": "Base game"
+       },
+       {
+        "label": "Bonus / special supplier option where available"
+       },
+       {
+        "label": "Additional content varies by supplier version"
+       }
+      ]
+     },
+     {
+      "name": "Premium Deluxe Edition",
+      "contents": [
+       {
+        "label": "Base game"
+       },
+       {
+        "label": "Deluxe / premium supplier option where available"
+       },
+       {
+        "label": "Content details depend on the publisher package"
+       },
+       {
+        "label": "Special Outfits Set"
+       },
+       {
+        "label": "Additional monster-hair and Rudy cosmetic packs"
+       }
+      ]
+     }
+    ],
+    "gameplayPillars": [
+     {
+      "title": "Gameplay Pillar 1",
+      "description": "Explore themed habitats inside a living encyclopedia",
+      "imageUrl": "https://i5.walmartimages.com/asr/856f42e3-d567-4730-94bb-4cefbe8252aa.0dbe32d0ac6f6d23ace842db2e2dbe78.jpeg?odnBg=FFFFFF&odnHeight=117&odnWidth=117"
+     },
+     {
+      "title": "Gameplay Pillar 2",
+      "description": "Collect discoveries to expand the book and unlock new chapters",
+      "imageUrl": "https://i5.walmartimages.com/asr/c7186f18-caff-43fe-9697-d752d1251ab9.3c6fef473671983bcd2b0e43c4c672aa.jpeg?odnBg=FFFFFF&odnHeight=117&odnWidth=117"
+     },
+     {
+      "title": "Gameplay Pillar 3",
+      "description": "Use classic Yoshi abilities to move, interact and solve traversal problems",
+      "imageUrl": "https://i5.walmartimages.com/asr/1bb0e312-137f-4aa7-8da8-f5d14c9c2729.15f7c2dc0030392f4cefd9b8c58f2f52.jpeg?odnBg=FFFFFF&odnHeight=117&odnWidth=117"
+     },
+     {
+      "imageUrl": "https://i5.walmartimages.com/asr/0d48745f-f656-4c67-92b2-4f265bd8aaf6.5ae87facaf5f49680dfc3596a59d71f7.jpeg?odnBg=FFFFFF&odnHeight=117&odnWidth=117",
+      "title": "Gameplay Pillar 4",
+      "description": "Observe creature behavior and environmental details"
+     },
+     {
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000119859/7f0de9f8889db511aa981af5d4178ff45f699b9300d25da9bc159c75d02e1ac2",
+      "title": "Gameplay Pillar 5",
+      "description": "Enjoy a light, accessible adventure built around curiosity and discovery"
+     },
+     {
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000119859/3cd2c76cb77f84961ed3b06715cdf146699567bfbdd70e2642c6d3a6067fca3c"
+     }
+    ],
+    "worldSummary": "Yoshi enters a living encyclopedia to help the mysterious book named Mr. E recover lost knowledge. Each region represents a themed habitat filled with creatures, secrets and behaviors to observe. Collecting observations and restoring knowledge unlocks deeper parts of the world and more chapters. The tone is colorful, curious and family-friendly, emphasizing wonder rather than danger.",
+    "storyChapters": [
+     {
+      "title": "Story / World Note 1",
+      "body": "Yoshi enters a living encyclopedia to help the mysterious book named Mr. E recover lost knowledge.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000119859/b85301d5f8074b6db36ba928328807c7467ddde8badc7ed51aa311a430d567ee"
+     },
+     {
+      "title": "Story / World Note 2",
+      "body": "Each region represents a themed habitat filled with creatures, secrets and behaviors to observe.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000119859/2311b4f5d1677216b43119f5a93401106bb7bb54f79a410d49bd19db26e04a91"
+     },
+     {
+      "title": "Story / World Note 3",
+      "body": "Collecting observations and restoring knowledge unlocks deeper parts of the world and more chapters.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000119859/333f60ea97cad95f4b10315037e35bb0ad92202f34117fe965857cc55f07083f"
+     },
+     {
+      "imageUrl": "https://i5.walmartimages.com/asr/c7186f18-caff-43fe-9697-d752d1251ab9.3c6fef473671983bcd2b0e43c4c672aa.jpeg?odnBg=FFFFFF&odnHeight=117&odnWidth=117",
+      "title": "Story / World Note 4",
+      "body": "The tone is colorful, curious and family-friendly, emphasizing wonder rather than danger."
+     },
+     {
+      "imageUrl": "https://i5.walmartimages.com/asr/0d48745f-f656-4c67-92b2-4f265bd8aaf6.5ae87facaf5f49680dfc3596a59d71f7.jpeg?odnBg=FFFFFF&odnHeight=117&odnWidth=117"
+     }
+    ],
+    "galleryImages": [
+     {
+      "url": "https://i5.walmartimages.com/asr/856f42e3-d567-4730-94bb-4cefbe8252aa.0dbe32d0ac6f6d23ace842db2e2dbe78.jpeg?odnBg=FFFFFF&odnHeight=117&odnWidth=117",
+      "alt": "Walmart product media / gameplay screenshot 1 for Yoshi and the Mysterious Book on Nintendo Switch 2."
+     },
+     {
+      "url": "https://i5.walmartimages.com/asr/c7186f18-caff-43fe-9697-d752d1251ab9.3c6fef473671983bcd2b0e43c4c672aa.jpeg?odnBg=FFFFFF&odnHeight=117&odnWidth=117",
+      "alt": "Walmart product media / gameplay screenshot 2 for Yoshi and the Mysterious Book on Nintendo Switch 2."
+     },
+     {
+      "url": "https://i5.walmartimages.com/asr/1bb0e312-137f-4aa7-8da8-f5d14c9c2729.15f7c2dc0030392f4cefd9b8c58f2f52.jpeg?odnBg=FFFFFF&odnHeight=117&odnWidth=117",
+      "alt": "Walmart product media / gameplay screenshot 3 for Yoshi and the Mysterious Book on Nintendo Switch 2."
+     },
+     {
+      "url": "https://i5.walmartimages.com/asr/0d48745f-f656-4c67-92b2-4f265bd8aaf6.5ae87facaf5f49680dfc3596a59d71f7.jpeg?odnBg=FFFFFF&odnHeight=117&odnWidth=117",
+      "alt": "Walmart product media / gameplay screenshot 4 for Yoshi and the Mysterious Book on Nintendo Switch 2."
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000119859/b85301d5f8074b6db36ba928328807c7467ddde8badc7ed51aa311a430d567ee"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000119859/7f0de9f8889db511aa981af5d4178ff45f699b9300d25da9bc159c75d02e1ac2"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000119859/2311b4f5d1677216b43119f5a93401106bb7bb54f79a410d49bd19db26e04a91"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000119859/3cd2c76cb77f84961ed3b06715cdf146699567bfbdd70e2642c6d3a6067fca3c"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000119859/333f60ea97cad95f4b10315037e35bb0ad92202f34117fe965857cc55f07083f"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000119859/832b9b2dc9a5fda1252d9247c9aa7b3db28ba7712dd2f4b3a226bc9eba54e717"
+     }
+    ],
+    "features": [
+     "Nintendo Switch 2 exclusive",
+     "Creature-discovery encyclopedia system",
+     "Storybook-inspired presentation",
+     "Exploration-focused platforming",
+     "Yoshi's jump, flutter and egg-throw movement set",
+     "Progression through collecting observations",
+     "Family-friendly tone and pacing",
+     "Strong world and creature charm"
+    ],
+    "perfResolutionDocked": "Up to 3840x2160 output",
+    "perfResolutionHandheld": "1920x1080 output",
+    "perfFps": "60",
+    "perfNotes": "Gameplay targets 60 FPS. Some creature animation intentionally uses a stop-motion-like lower-frame aesthetic. Exact internal rendering can vary by scene.",
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "hardwareId": "prd_acf4c89908764c62",
+      "informationStatus": "verified / measured where available",
+      "handheld": {
+       "supported": true,
+       "resolution": "1920x1080 output",
+       "resolutionDynamic": true,
+       "renderingResolution": "Dynamic",
+       "outputResolution": "1280x720",
+       "fps": "60",
+       "fpsMin": "~25-30",
+       "fpsMax": "60",
+       "notes": "Portable mode can dip below 30 FPS in heavy scenes according to technical comparisons."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "Up to 3840x2160 output",
+       "resolutionDynamic": true,
+       "renderingResolution": "Dynamic",
+       "outputResolution": "1920x1080",
+       "fps": "60",
+       "fpsMin": "30",
+       "fpsMax": "60",
+       "notes": "Often around 30-45 FPS in the overworld; can hit 60 FPS in lighter scenes or battles."
+      },
+      "sourceName": "Nintendo Life / RPG Site / Lords of Gaming technical impressions",
+      "sourceUrl": "https://www.nintendolife.com/reviews/nintendo-switch-2/monster-hunter-stories-3-twisted-reflection",
+      "verificationStatus": "third-party-tested",
+      "performanceNotes": "Gameplay targets 60 FPS. Some creature animation intentionally uses a stop-motion-like lower-frame aesthetic. Exact internal rendering can vary by scene."
+     }
+    ],
+    "downloadSizeGb": 19.8,
+    "requiredSpaceGb": 19.8,
+    "microSdRecommended": false,
+    "languagesAudio": [
+     "English",
+     "Japanese"
+    ],
+    "languagesText": [
+     "Japanese",
+     "British English",
+     "French",
+     "German",
+     "Italian",
+     "Spanish",
+     "Korean",
+     "Dutch",
+     "Simplified Chinese",
+     "Latin American Spanish",
+     "Canadian French",
+     "Brazilian Portuguese",
+     "Traditional Chinese",
+     "American English"
+    ],
+    "arabicSupport": false,
+    "mpLocalPlayers": false,
+    "mpOnlinePlayers": false,
+    "mpCoop": false,
+    "mpCompetitive": false,
+    "mpSplitScreen": false,
+    "mpLocalWireless": false,
+    "dlc": [
+     {
+      "name": "Special Outfits Set",
+      "description": "Cosmetic outfit content for companions and additional customization."
+     },
+     {
+      "name": "Additional Side Story: Rudy",
+      "description": "Paid additional side-story content centered on Rudy."
+     },
+     {
+      "name": "Monster Hair packs",
+      "description": "Additional cosmetic monster-hair customization packs."
+     }
+    ],
+    "completionMain": 12,
+    "completionExtras": 20,
+    "completionAll": 30,
+    "faq": [
+     {
+      "q": "Is this a traditional platformer?",
+      "a": "It includes classic platforming, but discovery and observation are more important than in some previous Yoshi games."
+     },
+     {
+      "q": "Is it family-friendly?",
+      "a": "Yes. It is designed as an accessible Nintendo adventure with a light tone."
+     },
+     {
+      "q": "What makes it different?",
+      "a": "The living-book setting and creature encyclopedia system give it a more exploratory identity."
+     },
+     {
+      "q": "Is it focused on combat?",
+      "a": "No. Exploration, collection and discovery are more central than combat challenge."
+     },
+     {
+      "q": "Who should buy it?",
+      "a": "Families, Yoshi fans and players who enjoy gentle exploration-heavy adventures."
+     }
+    ],
+    "verdictScore": 8,
+    "verdictSummary": "A feature-rich monster-raising RPG with strong presentation and customization, though Switch 2 performance is less stable than the hardware can ideally deliver.",
+    "verdictPros": [
+     "Strong creature-raising loop",
+     "Large and colorful world",
+     "Extensive customization",
+     "Rich deluxe/DLC offering",
+     "Official Simplified Chinese support"
+    ],
+    "verdictCons": [
+     "Switch 2 frame rate is unlocked and often sits around 30-45 FPS in large areas",
+     "Portable mode can dip more often in demanding scenes"
+    ],
+    "reviews": [
+     {
+      "source": "General expectation",
+      "score": "See summary",
+      "quote": "Expected to appeal strongly to families and long-time Yoshi fans through charm and discovery-driven design."
+     },
+     {
+      "source": "Player appeal",
+      "score": "See summary",
+      "quote": "Its presentation and world-building are likely to be major attractions."
+     }
+    ],
+    "timeline": [
+     {
+      "date": "Phase 1",
+      "title": "Opening",
+      "body": "Yoshi meets Mr. E and enters the mysterious book."
+     },
+     {
+      "date": "Phase 2",
+      "title": "Mid adventure",
+      "body": "New habitats and creatures expand the encyclopedia."
+     },
+     {
+      "date": "Phase 3",
+      "title": "Late adventure",
+      "body": "Deeper discoveries reveal hidden paths and final truths."
+     },
+     {
+      "date": "Phase 4",
+      "title": "Completion",
+      "body": "Collecting and discovery remain central to full completion."
+     }
+    ],
+    "patchNotes": [
+     {
+      "version": "Update 1",
+      "date": "2026-05-21",
+      "body": "Nintendo Switch 2 exclusive launched."
+     }
+    ],
+    "soundtrack": [
+     {
+      "title": "Music Note 1"
+     },
+     {
+      "title": "Music Note 2"
+     }
+    ],
+    "seriesName": "Yoshi",
+    "studioName": "Nintendo",
+    "studioUrl": "https://www.nintendo.com/us/store/products/yoshi-and-the-mysterious-book-switch-2/",
+    "studioLocation": "Osaka, Japan",
+    "studioAbout": "CAPCOM is the Japanese developer and publisher behind Monster Hunter, Resident Evil and Street Fighter. Monster Hunter Stories 3 extends the turn-based Monster Rider RPG branch with redesigned character presentation, larger environments, a new story and expanded customization.",
+    "setupNeeds": [
+     "Nintendo Switch 2 system required for the Nintendo Switch 2 version.",
+     "Internet connection is required for digital download, updates and online/service features where applicable.",
+     "Nintendo Account required for Nintendo eShop purchase/download.",
+     "Sufficient internal storage or compatible microSD Express storage required.",
+     "Nintendo Switch Online membership is required only for game-specific online multiplayer/features that explicitly use it."
+    ],
+    "sources": [
+     {
+      "name": "Nintendo Official",
+      "url": "https://www.nintendo.com/us/store/products/yoshi-and-the-mysterious-book-switch-2/"
+     },
+     {
+      "name": "Walmart Physical Product Media",
+      "url": "https://www.walmart.com/ip/Yoshi-and-the-Mysterious-Book-Nintendo-Switch-2/19926072010"
+     },
+     {
+      "name": "Reference 3",
+      "url": "https://www.youtube.com/watch?v=1d7IdzUK2MM"
+     },
+     {
+      "name": "Nintendo Digital Product Page",
+      "url": "https://www.nintendo.com/us/store/products/yoshi-and-the-mysterious-book-switch-2/"
+     },
+     {
+      "name": "Nintendo Physical Product Page",
+      "url": "https://www.nintendo.com/us/store/products/yoshi-and-the-mysterious-book-125658/"
+     }
+    ],
+    "boxContentsList": "[Circular]",
+    "image": "/api/files/products/prd_704056e8239b4d8c/cover-5f162f3995fee23a.avif",
+    "banner": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000119859/b85301d5f8074b6db36ba928328807c7467ddde8badc7ed51aa311a430d567ee",
+    "schemaId": "",
+    "badgeEn": "وفر 40%",
+    "badgeKu": "وفر 40%",
+    "featuresEn": [
+     "Nintendo Switch 2 exclusive",
+     "Creature-discovery encyclopedia system",
+     "Storybook-inspired presentation",
+     "Exploration-focused platforming",
+     "Yoshi's jump, flutter and egg-throw movement set",
+     "Progression through collecting observations",
+     "Family-friendly tone and pacing",
+     "Strong world and creature charm"
+    ],
+    "featuresKu": [
+     "Nintendo Switch 2 exclusive",
+     "Creature-discovery encyclopedia system",
+     "Storybook-inspired presentation",
+     "Exploration-focused platforming",
+     "Yoshi's jump, flutter and egg-throw movement set",
+     "Progression through collecting observations",
+     "Family-friendly tone and pacing",
+     "Strong world and creature charm"
+    ],
+    "boxFrontUrl": "https://i5.walmartimages.com/seo/Yoshi-and-the-Mysterious-Book-Nintendo-Switch-2_a51c4953-88a5-4ccc-bcec-e686e8d3d167.383500a4c490e5c5a58964f284f4ae6f.jpeg?odnBg=FFFFFF&odnHeight=573&odnWidth=573",
+    "sales": 0,
+    "createdAt": "2026-08-28T14:47:03.425Z",
+    "created_at": "2026-08-28T14:47:03.425Z",
+    "updatedAt": "2026-08-28T14:47:03.425Z",
+    "updated_at": "2026-08-28T14:47:03.425Z",
+    "images": [],
+    "modes": []
+   }
+  },
+  {
+   "id": "prd_64ef321029b44fb8",
+   "slug": "ys-x-proud-nordics",
+   "title": "Ys X: Proud Nordics",
+   "platform": "switch2",
+   "isHidden": false,
+   "hash": "49b6ce8b789bc24b0f2d5b5508447fb337b1fdce38388e54ed0590334629512b",
+   "images": [
+    {
+     "role": "front-box",
+     "field": "cartridgeImage",
+     "url": "https://www.shopitree.com/cdn/shop/files/Ys-X-Proud-Nordics-CHI_1500x.jpg?v=1749709071",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 297864,
+     "width": 1500,
+     "height": 1500,
+     "thumb": "review-workdir/thumbs/batch-031/ys-x-proud-nordics__front-box-0.png"
+    },
+    {
+     "role": "front-box",
+     "field": "box_front_url",
+     "url": "https://www.shopitree.com/cdn/shop/files/Ys-X-Proud-Nordics-CHI_1500x.jpg?v=1749709071",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 297864,
+     "width": 1500,
+     "height": 1500,
+     "thumb": "review-workdir/thumbs/batch-031/ys-x-proud-nordics__front-box-1.png"
+    },
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://banan.to/api/files/products/prd_64ef321029b44fb8/square-5a5427027ef7ca16.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 119820,
+     "width": 640,
+     "height": 640,
+     "thumb": "review-workdir/thumbs/batch-031/ys-x-proud-nordics__square-card-2.png"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://banan.to/api/files/products/prd_64ef321029b44fb8/cover-e46969a3ca379eb7.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 50839,
+     "width": 596,
+     "height": 335,
+     "thumb": "review-workdir/thumbs/batch-031/ys-x-proud-nordics__detail-cover-3.png"
+    },
+    {
+     "role": "listing",
+     "field": "image",
+     "url": "https://banan.to/api/files/products/prd_64ef321029b44fb8/cover-e46969a3ca379eb7.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 50839,
+     "width": 596,
+     "height": 335,
+     "thumb": "review-workdir/thumbs/batch-031/ys-x-proud-nordics__listing-4.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[0]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000103722/ec7879aaf2fae0720473b0cd47ec477dbc855556152048784f2a5d1b6f0b4727",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 103459,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-031/ys-x-proud-nordics__banner-5.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[1]",
+     "url": "https://banan.to/api/files/products/prd_64ef321029b44fb8/banner-1-340fc7c777fd4d22.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[2]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000103722/325900c69a7487bd940167bbc8a821cd68a10d8ce554a7c2a04de2d11dcea098",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 122229,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-031/ys-x-proud-nordics__banner-7.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[3]",
+     "url": "https://banan.to/api/files/products/prd_64ef321029b44fb8/banner-3-9512756e724c0983.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000103722/a8cad5e71769f3019dadd6efa4e21e0a22603e17c0ff3cf1cdc52d48cd222151",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 144993,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-031/ys-x-proud-nordics__gallery-9.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[1]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000103722/f0fd608e96d26b247e066c3b789d7a6e0a38363f0cf5c8c8f9bc569b69a4cddf",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 115946,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-031/ys-x-proud-nordics__gallery-10.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[2]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000103722/7abb64a614c638b302bb7ea3d70273d1bb1a8605ead74651fb0d106898471730",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 156893,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-031/ys-x-proud-nordics__gallery-11.png"
+    }
+   ],
+   "record": {
+    "title": "Ys X: Proud Nordics",
+    "titleEn": "Ys X: Proud Nordics",
+    "titleKu": "Ys X: Proud Nordics",
+    "slug": "ys-x-proud-nordics",
+    "description": "An expanded edition of Ys X: Nordics with quality-of-life improvements, additional story content around Öland Island, new characters, and the Muspelheim challenge dungeon.\n\nAdol Christin and Karja Balta continue their seafaring journey across the Obelia Gulf. The Proud Nordics edition adds new story material centered on Öland Island and additional characters. Political friction, ancient powers and personal development drive the adventure forward. The sea, islands and Nordic-inspired setting define the identity of the world and its pacing.",
+    "descriptionEn": "An expanded edition of Ys X: Nordics with quality-of-life improvements, additional story content around Öland Island, new characters, and the Muspelheim challenge dungeon.\n\nAdol Christin and Karja Balta continue their seafaring journey across the Obelia Gulf. The Proud Nordics edition adds new story material centered on Öland Island and additional characters. Political friction, ancient powers and personal development drive the adventure forward. The sea, islands and Nordic-inspired setting define the identity of the world and its pacing.",
+    "descriptionKu": "An expanded edition of Ys X: Nordics with quality-of-life improvements, additional story content around Öland Island, new characters, and the Muspelheim challenge dungeon.\n\nAdol Christin and Karja Balta continue their seafaring journey across the Obelia Gulf. The Proud Nordics edition adds new story material centered on Öland Island and additional characters. Political friction, ancient powers and personal development drive the adventure forward. The sea, islands and Nordic-inspired setting define the identity of the world and its pacing.",
+    "cartridgeImage": "https://www.shopitree.com/cdn/shop/files/Ys-X-Proud-Nordics-CHI_1500x.jpg?v=1749709071",
+    "nintendoCardImage": "/api/files/products/prd_64ef321029b44fb8/square-5a5427027ef7ca16.webp",
+    "coverHiResImage": "",
+    "coverImage": "/api/files/products/prd_64ef321029b44fb8/cover-e46969a3ca379eb7.jpg",
+    "bannerImages": [
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000103722/ec7879aaf2fae0720473b0cd47ec477dbc855556152048784f2a5d1b6f0b4727",
+     "/api/files/products/prd_64ef321029b44fb8/banner-1-340fc7c777fd4d22.avif",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000103722/325900c69a7487bd940167bbc8a821cd68a10d8ce554a7c2a04de2d11dcea098",
+     "/api/files/products/prd_64ef321029b44fb8/banner-3-9512756e724c0983.avif",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000103722/f0fd608e96d26b247e066c3b789d7a6e0a38363f0cf5c8c8f9bc569b69a4cddf",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000103722/7abb64a614c638b302bb7ea3d70273d1bb1a8605ead74651fb0d106898471730"
+    ],
+    "gallery": [],
+    "youtubeTrailer": "https://www.youtube.com/results?search_query=Ys+X+Proud+Nordics+Nintendo+Switch+2+trailer",
+    "releaseDate": "2026-02-20",
+    "ageRating": "PEGI 12",
+    "metacriticRating": 82,
+    "genres": [
+     "Action RPG",
+     "JRPG",
+     "Adventure",
+     "Fantasy",
+     "Story Rich",
+     "Action"
+    ],
+    "platform": "switch2",
+    "size": 9.1,
+    "numberOfPlayers": "1",
+    "supportedLanguages": "Japanese, American English, French, German, Italian, Spanish, Korean, Russian, Simplified Chinese, Traditional Chinese, Brazilian Portuguese, Polish",
+    "hardwareModel": "",
+    "colorEdition": "",
+    "storageCapacity": "",
+    "screenSpecs": "",
+    "batteryLife": "",
+    "boxContents": [],
+    "boxContentsText": "",
+    "warrantyCondition": "",
+    "connectivity": "",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "Global",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "",
+    "redemptionSteps": [],
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 10250,
+    "cost": 1250,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": false,
+    "displayOrder": 27,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "مشترك",
+      "description": "Play using the supplied account under the store's offline-account activation method.",
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_account",
+      "name": "خاص بك",
+      "description": "Online-account option with internet-connected account use where supported by the game/service.",
+      "isInfiniteStock": true
+     }
+    ],
+    "types": [
+     {
+      "id": "standard_offline",
+      "name": "مشترك — اللعبة الأساسية",
+      "optionId": "offline_account",
+      "price": 10250,
+      "cost": 1250,
+      "description": "Standard game, Offline Account. Supplier Regular price: ¥9.74; purchase cost converted at 1 CNY = 220 IQD and rounded down to nearest 250 IQD.",
+      "isInfiniteStock": true
+     },
+     {
+      "id": "standard_online",
+      "name": "خاص بك — اللعبة الأساسية",
+      "optionId": "online_account",
+      "price": 32000,
+      "cost": 18500,
+      "description": "Standard game, Online Account. Supplier Standard price: ¥95.00; purchase cost converted at 1 CNY = 220 IQD and rounded down to nearest 250 IQD.",
+      "isInfiniteStock": true
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "active",
+    "kind": "account",
+    "trade_value_iqd": 0,
+    "store_offer_bonus_iqd": 0,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "id": "prd_64ef321029b44fb8",
+    "schema_version": 22,
+    "titleAr": "Ys X: Proud Nordics",
+    "compatibility": [
+     "Nintendo Switch 2"
+    ],
+    "edition": "Standard",
+    "developer": "Nihon Falcom / PH3",
+    "publisher": "NIS America",
+    "metacriticUrl": "https://www.nintendo.com/us/store/products/ys-x-proud-nordics-switch-2/",
+    "opencriticRating": 85,
+    "userScore": 8,
+    "officialUrl": "https://www.nintendo.com/us/store/products/ys-x-proud-nordics-switch-2/",
+    "eshopUrl": "https://www.nintendo.com/us/store/products/ys-x-proud-nordics-switch-2/",
+    "gameIsOffline": true,
+    "gameIsOnline": true,
+    "gameLanguageLocked": false,
+    "description_short": "An expanded edition of Ys X: Nordics with quality-of-life improvements, additional story content around Öland Island, new characters, and the Muspelheim challenge dungeon.",
+    "description_ar": "لعبة Ys X: Proud Nordics على Nintendo Switch 2. تقدم هذه النسخة تجربة كاملة وموسعة في صفحة المتجر، مع التركيز على القصة والعالم وأسلوب اللعب والصور والمحتوى التفصيلي.",
+    "box_front_url": "https://www.shopitree.com/cdn/shop/files/Ys-X-Proud-Nordics-CHI_1500x.jpg?v=1749709071",
+    "videos": [
+     {
+      "title": "Official / launch trailer",
+      "url": "https://www.youtube.com/results?search_query=Ys+X+Proud+Nordics+Nintendo+Switch+2+trailer"
+     },
+     {
+      "title": "Additional trailer / promo",
+      "url": "https://www.youtube.com/results?search_query=Ys+X+Proud+Nordics+Nintendo+Switch+2+trailer"
+     },
+     {
+      "title": "Secondary trailer / promo",
+      "url": "https://www.youtube.com/results?search_query=Ys+X+Proud+Nordics+Nintendo+Switch+2+trailer"
+     }
+    ],
+    "nintendoEshopUrl": "https://www.nintendo.com/us/store/products/ys-x-proud-nordics-switch-2/",
+    "nintendoOnlineRequired": false,
+    "nintendoCloudSaves": true,
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": true,
+    "nintendoPlayModes": "TV Mode, Tabletop Mode, Handheld Mode",
+    "nintendoNotes": "Ys X: Proud Nordics has an expanded storefront profile with filled media, gameplay, world, FAQ and performance fields for Nintendo Switch 2 import use.",
+    "switch2Enhanced": true,
+    "switch2Exclusive": true,
+    "switch2UpgradePrice": 0,
+    "switch2Features": [
+     "Expanded edition of Ys X: Nordics",
+     "Additional story content around Öland Island",
+     "New characters such as Canute and Astrid",
+     "Muspelheim challenge content",
+     "Improved visual quality and loading",
+     "60 FPS Quality mode",
+     "High-refresh Performance mode",
+     "Switch 2-focused enhancements"
+    ],
+    "tagline": "An expanded edition of Ys X: Nordics with quality-of-life improvements, additional story content around Öland Island, new characters, and the Muspelheim challenge dungeon",
+    "fitFor": [
+     "Ys fans",
+     "Fast-action RPG players",
+     "Players who value high frame rates",
+     "JRPG fans",
+     "Players who enjoy exploration by land and sea"
+    ],
+    "notFitFor": [
+     "Players wanting multiplayer",
+     "Players who dislike anime-styled action RPGs",
+     "Players who already finished Ys X and do not want expanded content"
+    ],
+    "playTimeMain": 30,
+    "playTimeFull": 65,
+    "editionsList": [
+     {
+      "name": "Standard Edition",
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000103722/5f38c0355bc19d2f99f7328fbac9a6a30cf7dd1617ddf867b86a96a5962e8710",
+      "contents": [
+       {
+        "label": "Base game"
+       },
+       {
+        "label": "Nintendo Switch 2 compatible storefront entry"
+       },
+       {
+        "label": "Digital account delivery option"
+       }
+      ]
+     },
+     {
+      "name": "Deluxe Edition",
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000103722/5f38c0355bc19d2f99f7328fbac9a6a30cf7dd1617ddf867b86a96a5962e8710",
+      "contents": [
+       {
+        "label": "Base game"
+       },
+       {
+        "label": "Bonus / special supplier option where available"
+       },
+       {
+        "label": "Additional content varies by supplier version"
+       }
+      ]
+     },
+     {
+      "name": "Premium Deluxe Edition",
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000103722/5f38c0355bc19d2f99f7328fbac9a6a30cf7dd1617ddf867b86a96a5962e8710",
+      "contents": [
+       {
+        "label": "Base game"
+       },
+       {
+        "label": "Deluxe / premium supplier option where available"
+       },
+       {
+        "label": "Content details depend on the publisher package"
+       },
+       {
+        "label": "Special Outfits Set"
+       },
+       {
+        "label": "Additional monster-hair and Rudy cosmetic packs"
+       }
+      ]
+     }
+    ],
+    "gameplayPillars": [
+     {
+      "title": "Gameplay Pillar 1",
+      "description": "Fast action combat with duo mechanics"
+     },
+     {
+      "title": "Gameplay Pillar 2",
+      "description": "Explore islands and maritime routes"
+     },
+     {
+      "title": "Gameplay Pillar 3",
+      "description": "Experience the added Proud Nordics story content"
+     },
+     {
+      "title": "Gameplay Pillar 4",
+      "description": "Challenge endgame content like Muspelheim"
+     },
+     {
+      "title": "Gameplay Pillar 5",
+      "description": "Enjoy improved performance and presentation on Switch 2"
+     }
+    ],
+    "worldSummary": "Adol Christin and Karja Balta continue their seafaring journey across the Obelia Gulf. The Proud Nordics edition adds new story material centered on Öland Island and additional characters. Political friction, ancient powers and personal development drive the adventure forward. The sea, islands and Nordic-inspired setting define the identity of the world and its pacing.",
+    "storyChapters": [
+     {
+      "title": "Story / World Note 1",
+      "body": "Adol Christin and Karja Balta continue their seafaring journey across the Obelia Gulf."
+     },
+     {
+      "title": "Story / World Note 2",
+      "body": "The Proud Nordics edition adds new story material centered on Öland Island and additional characters."
+     },
+     {
+      "title": "Story / World Note 3",
+      "body": "Political friction, ancient powers and personal development drive the adventure forward."
+     },
+     {
+      "title": "Story / World Note 4",
+      "body": "The sea, islands and Nordic-inspired setting define the identity of the world and its pacing."
+     }
+    ],
+    "galleryImages": [
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000103722/a8cad5e71769f3019dadd6efa4e21e0a22603e17c0ff3cf1cdc52d48cd222151",
+      "alt": "Distinct official Nintendo promotional/gameplay image 1; not reused as cover or banner."
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000103722/f0fd608e96d26b247e066c3b789d7a6e0a38363f0cf5c8c8f9bc569b69a4cddf",
+      "alt": "Distinct official Nintendo promotional/gameplay image 2; not reused as cover or banner."
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000103722/7abb64a614c638b302bb7ea3d70273d1bb1a8605ead74651fb0d106898471730",
+      "alt": "Distinct official Nintendo promotional/gameplay image 3; not reused as cover or banner."
+     }
+    ],
+    "features": [
+     "Expanded edition of Ys X: Nordics",
+     "Additional story content around Öland Island",
+     "New characters such as Canute and Astrid",
+     "Muspelheim challenge content",
+     "Improved visual quality and loading",
+     "60 FPS Quality mode",
+     "High-refresh Performance mode",
+     "Switch 2-focused enhancements"
+    ],
+    "perfResolutionDocked": "Dynamic 1080p-class output",
+    "perfResolutionHandheld": "Dynamic 1080p-class output",
+    "perfFps": "60 Quality / up to 120 Performance",
+    "perfNotes": "Switch 2 offers a 60 FPS Quality mode and a high-refresh Performance mode that can run substantially above 60 FPS depending on scene load.",
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "hardwareId": "prd_acf4c89908764c62",
+      "informationStatus": "verified / measured where available",
+      "handheld": {
+       "supported": true,
+       "resolution": "Dynamic 1080p-class output",
+       "resolutionDynamic": true,
+       "renderingResolution": "Dynamic",
+       "outputResolution": "1280x720",
+       "fps": "60 Quality / up to 120 Performance",
+       "fpsMin": "~25-30",
+       "fpsMax": "60",
+       "notes": "Portable mode can dip below 30 FPS in heavy scenes according to technical comparisons."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "Dynamic 1080p-class output",
+       "resolutionDynamic": true,
+       "renderingResolution": "Dynamic",
+       "outputResolution": "1920x1080",
+       "fps": "60 Quality / up to 120 Performance",
+       "fpsMin": "30",
+       "fpsMax": "60",
+       "notes": "Often around 30-45 FPS in the overworld; can hit 60 FPS in lighter scenes or battles."
+      },
+      "sourceName": "Nintendo Life / RPG Site / Lords of Gaming technical impressions",
+      "sourceUrl": "https://www.nintendolife.com/reviews/nintendo-switch-2/monster-hunter-stories-3-twisted-reflection",
+      "verificationStatus": "third-party-tested",
+      "performanceNotes": "Switch 2 offers a 60 FPS Quality mode and a high-refresh Performance mode that can run substantially above 60 FPS depending on scene load."
+     }
+    ],
+    "downloadSizeGb": 9.1,
+    "requiredSpaceGb": 9.1,
+    "microSdRecommended": false,
+    "languagesAudio": [
+     "Japanese",
+     "English"
+    ],
+    "languagesText": [
+     "English",
+     "Spanish",
+     "French",
+     "German",
+     "Simplified Chinese"
+    ],
+    "arabicSupport": false,
+    "mpLocalPlayers": false,
+    "mpOnlinePlayers": false,
+    "mpCoop": false,
+    "mpCompetitive": false,
+    "mpSplitScreen": false,
+    "mpLocalWireless": false,
+    "dlc": [
+     {
+      "name": "Special Outfits Set",
+      "description": "Cosmetic outfit content for companions and additional customization.",
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000103722/5f38c0355bc19d2f99f7328fbac9a6a30cf7dd1617ddf867b86a96a5962e8710"
+     },
+     {
+      "name": "Additional Side Story: Rudy",
+      "description": "Paid additional side-story content centered on Rudy.",
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000103722/ec7879aaf2fae0720473b0cd47ec477dbc855556152048784f2a5d1b6f0b4727"
+     },
+     {
+      "name": "Monster Hair packs",
+      "description": "Additional cosmetic monster-hair customization packs.",
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000103722/0f177843d58b9bfb423f9f112142caee815d7c8a799d3d52e09407e8c74a73d1"
+     },
+     {
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000103722/325900c69a7487bd940167bbc8a821cd68a10d8ce554a7c2a04de2d11dcea098"
+     },
+     {
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000103722/a8cad5e71769f3019dadd6efa4e21e0a22603e17c0ff3cf1cdc52d48cd222151"
+     },
+     {
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000103722/f0fd608e96d26b247e066c3b789d7a6e0a38363f0cf5c8c8f9bc569b69a4cddf"
+     },
+     {
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000103722/7abb64a614c638b302bb7ea3d70273d1bb1a8605ead74651fb0d106898471730"
+     }
+    ],
+    "completionMain": 30,
+    "completionExtras": 45,
+    "completionAll": 65,
+    "faq": [
+     {
+      "q": "Is this the same as the original Ys X?",
+      "a": "No. It is an expanded Switch 2 edition with extra content and enhancements."
+     },
+     {
+      "q": "What type of RPG is it?",
+      "a": "It is a fast-paced action RPG with exploration and strong story momentum."
+     },
+     {
+      "q": "Why is the Switch 2 version notable?",
+      "a": "It offers stronger performance options and additional content."
+     },
+     {
+      "q": "Is the soundtrack good?",
+      "a": "Yes. Falcom music is a major highlight of the package."
+     },
+     {
+      "q": "Who should buy it?",
+      "a": "Action RPG players who want speed, exploration and a lively presentation."
+     }
+    ],
+    "verdictScore": 8,
+    "verdictSummary": "A feature-rich monster-raising RPG with strong presentation and customization, though Switch 2 performance is less stable than the hardware can ideally deliver.",
+    "verdictPros": [
+     "Strong creature-raising loop",
+     "Large and colorful world",
+     "Extensive customization",
+     "Rich deluxe/DLC offering",
+     "Official Simplified Chinese support"
+    ],
+    "verdictCons": [
+     "Switch 2 frame rate is unlocked and often sits around 30-45 FPS in large areas",
+     "Portable mode can dip more often in demanding scenes"
+    ],
+    "reviews": [
+     {
+      "source": "General reception",
+      "score": "See summary",
+      "quote": "Praised for combat flow, soundtrack and the value of the expanded edition."
+     },
+     {
+      "source": "Player appeal",
+      "score": "See summary",
+      "quote": "Its performance profile and added content are central attractions."
+     }
+    ],
+    "timeline": [
+     {
+      "date": "Phase 1",
+      "title": "Opening",
+      "body": "Adol and Karja set sail and become central to the gulf's conflict."
+     },
+     {
+      "date": "Phase 2",
+      "title": "Expansion arc",
+      "body": "Öland Island and added story content deepen the world and cast."
+     },
+     {
+      "date": "Phase 3",
+      "title": "Late game",
+      "body": "Mythic and political stakes escalate toward the finale."
+     },
+     {
+      "date": "Phase 4",
+      "title": "Postgame focus",
+      "body": "Challenge content and completion goals extend playtime."
+     }
+    ],
+    "patchNotes": [
+     {
+      "version": "Update 1",
+      "date": "2026-02-20",
+      "body": "Proud Nordics released on Nintendo Switch 2 as an expanded edition."
+     }
+    ],
+    "soundtrack": [
+     {
+      "title": "Music Note 1"
+     },
+     {
+      "title": "Music Note 2"
+     }
+    ],
+    "seriesName": "Ys X",
+    "studioName": "Nihon Falcom / PH3",
+    "studioUrl": "https://www.nintendo.com/us/store/products/ys-x-proud-nordics-switch-2/",
+    "studioLocation": "Osaka, Japan",
+    "studioAbout": "CAPCOM is the Japanese developer and publisher behind Monster Hunter, Resident Evil and Street Fighter. Monster Hunter Stories 3 extends the turn-based Monster Rider RPG branch with redesigned character presentation, larger environments, a new story and expanded customization.",
+    "setupNeeds": [
+     "Nintendo Switch 2 system required for the Nintendo Switch 2 version.",
+     "Internet connection is required for digital download, updates and online/service features where applicable.",
+     "Nintendo Account required for Nintendo eShop purchase/download.",
+     "Sufficient internal storage or compatible microSD Express storage required.",
+     "Nintendo Switch Online membership is required only for game-specific online multiplayer/features that explicitly use it."
+    ],
+    "sources": [
+     {
+      "name": "Official Nintendo / Storefront",
+      "url": "https://www.nintendo.com/us/store/products/ys-x-proud-nordics-switch-2/"
+     },
+     {
+      "name": "Official / Publisher",
+      "url": "https://ec.nintendo.com/AU/en/titles/70010000103723"
+     },
+     {
+      "name": "Reference 3",
+      "url": "https://www.youtube.com/results?search_query=Ys+X+Proud+Nordics+Nintendo+Switch+2+trailer"
+     },
+     {
+      "name": "Reference 4",
+      "url": "https://www.shopitree.com/cdn/shop/files/Ys-X-Proud-Nordics-CHI_1500x.jpg?v=1749709071"
+     },
+     {
+      "name": "Reference 5",
+      "url": "https://images.stopgame.ru/screenshots/50556/ys_x_proud_nordics-1.jpg"
+     }
+    ],
+    "boxContentsList": "[Circular]",
+    "image": "/api/files/products/prd_64ef321029b44fb8/cover-e46969a3ca379eb7.jpg",
+    "banner": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000103722/ec7879aaf2fae0720473b0cd47ec477dbc855556152048784f2a5d1b6f0b4727",
+    "schemaId": "",
+    "badgeEn": "وفر 40%",
+    "badgeKu": "وفر 40%",
+    "featuresEn": [
+     "Expanded edition of Ys X: Nordics",
+     "Additional story content around Öland Island",
+     "New characters such as Canute and Astrid",
+     "Muspelheim challenge content",
+     "Improved visual quality and loading",
+     "60 FPS Quality mode",
+     "High-refresh Performance mode",
+     "Switch 2-focused enhancements"
+    ],
+    "featuresKu": [
+     "Expanded edition of Ys X: Nordics",
+     "Additional story content around Öland Island",
+     "New characters such as Canute and Astrid",
+     "Muspelheim challenge content",
+     "Improved visual quality and loading",
+     "60 FPS Quality mode",
+     "High-refresh Performance mode",
+     "Switch 2-focused enhancements"
+    ],
+    "sales": 0,
+    "images": [],
+    "modes": [],
+    "boxFrontUrl": "https://www.shopitree.com/cdn/shop/files/Ys-X-Proud-Nordics-CHI_1500x.jpg?v=1749709071",
+    "createdAt": "2026-08-27T01:53:00.185Z",
+    "created_at": "2026-08-27T01:53:00.185Z",
+    "updatedAt": "2026-08-28T22:03:06.634Z",
+    "updated_at": "2026-08-27T01:53:00.185Z"
+   }
+  }
+ ]
+}

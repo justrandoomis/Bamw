@@ -1,0 +1,33 @@
+{
+ "batch": "031",
+ "apply": false,
+ "games": [
+  {
+   "id": "prd_3f5f6e861ad942ea",
+   "slug": "xenoblade-chronicles-x-definitive-edition-switch-2-edition",
+   "baseHash": "b2210edea2766d4e7a64a03bdf19bee28917ce0c9340d7014e0a0c61d87a2a45",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  },
+  {
+   "id": "prd_704056e8239b4d8c",
+   "slug": "yoshi-and-the-mysterious-book",
+   "baseHash": "c48e7fce3e5bbbf08d4c133537605f5033aa8ea68be1d6b9562e6a11ad22dd18",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  },
+  {
+   "id": "prd_64ef321029b44fb8",
+   "slug": "ys-x-proud-nordics",
+   "baseHash": "49b6ce8b789bc24b0f2d5b5508447fb337b1fdce38388e54ed0590334629512b",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  }
+ ]
+}

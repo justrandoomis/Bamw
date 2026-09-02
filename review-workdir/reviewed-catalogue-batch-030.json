@@ -1,6 +1,6 @@
 {
  "batch": "030",
- "apply": true,
+ "apply": false,
  "games": [
   {
    "id": "prd_4febaa0136bd4f7f",
@@ -248,6 +248,118 @@
     "guaranteeStatus"
    ],
    "notes": "One dead banner dropped and, per the verified-only rule, the three unprobed entries excluded — three verified banners remain. The Switch-2-badged record becomes the platform record at the documented 30 fps. 2025-03-20, Metacritic 87 kept. Contamination removed."
+  }
+ ],
+ "appliedAt": "2026-09-02T04:34:22.167Z",
+ "results": [
+  {
+   "id": "prd_4febaa0136bd4f7f",
+   "action": "APPLIED",
+   "changed": [
+    "bannerImages",
+    "galleryImages",
+    "devicePerformance"
+   ],
+   "removed": [
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ]
+  },
+  {
+   "id": "prd_c171d6530cf74141",
+   "action": "APPLIED",
+   "changed": [
+    "coverImage",
+    "image",
+    "bannerImages",
+    "galleryImages"
+   ],
+   "removed": [
+    "metacriticRating",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ]
+  },
+  {
+   "id": "prd_e5d365e777e043dd",
+   "action": "APPLIED",
+   "changed": [
+    "bannerImages",
+    "galleryImages",
+    "devicePerformance"
+   ],
+   "removed": [
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ]
+  },
+  {
+   "id": "prd_9e05c55e9e4f4c59",
+   "action": "APPLIED",
+   "changed": [
+    "metacriticRating",
+    "metacriticUrl",
+    "coverImage",
+    "image",
+    "bannerImages",
+    "galleryImages"
+   ],
+   "removed": [
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ]
+  },
+  {
+   "id": "prd_8eaacbcb18d549d6",
+   "action": "APPLIED",
+   "changed": [
+    "bannerImages",
+    "devicePerformance"
+   ],
+   "removed": [
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ]
   }
  ]
 }

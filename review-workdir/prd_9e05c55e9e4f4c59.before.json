@@ -1,0 +1,446 @@
+{
+ "title": "Xenoblade Chronicles: Definitive Edition – Nintendo Switch 2 Edition",
+ "titleEn": "Xenoblade Chronicles: Definitive Edition – Nintendo Switch 2 Edition",
+ "titleKu": "Xenoblade Chronicles: Definitive Edition – Nintendo Switch 2 Edition",
+ "slug": "xenoblade-chronicles-definitive-edition-switch-2-edition",
+ "description": "Join Shulk and his companions in a remastered version of the classic Xenoblade adventure. Explore the Bionis and Mechonis, use visions to influence battle outcomes, customize your party, and continue the story in Future Connected.",
+ "descriptionEn": "Join Shulk and his companions in a remastered version of the classic Xenoblade adventure. Explore the Bionis and Mechonis, use visions to influence battle outcomes, customize your party, and continue the story in Future Connected.",
+ "descriptionKu": "Join Shulk and his companions in a remastered version of the classic Xenoblade adventure. Explore the Bionis and Mechonis, use visions to influence battle outcomes, customize your party, and continue the story in Future Connected.",
+ "cartridgeImage": "/api/files/products/prd_9e05c55e9e4f4c59/front-c8b7a620b4818515.webp",
+ "nintendoCardImage": "/api/files/products/prd_9e05c55e9e4f4c59/square-1d0eb348ff1596ff.jpg",
+ "coverHiResImage": "",
+ "coverImage": "/api/files/products/prd_9e05c55e9e4f4c59/cover-4430219d0d87ec5d.avif",
+ "bannerImages": [
+  "/api/files/products/prd_9e05c55e9e4f4c59/banner-0-5b033ad4711823ef.avif",
+  "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000029711/84970b80dc13a98cd389cf0e68ed1ed1dae571b7adbafa58588f0438a4202708",
+  "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000029711/37173d7f0b5b5fe1c586aaf9572510daf25292b7427a274e2760c08b3b433f72",
+  "https://images.launchbox-app.com//a23d5096-f19f-4a9c-9b8e-1f529a11e62b.jpg"
+ ],
+ "gallery": [],
+ "youtubeTrailer": "https://www.youtube.com/watch?v=O8H23tVbmcc",
+ "releaseDate": "2026-06-09",
+ "ageRating": "ESRB Teen",
+ "metacriticRating": 89,
+ "genres": [
+  "Action",
+  "Role-Playing",
+  "Adventure"
+ ],
+ "platform": "switch2",
+ "size": 13.7,
+ "numberOfPlayers": "1",
+ "supportedLanguages": "Japanese, British English, French, German, Italian, Spanish, Korean, Simplified Chinese, Latin American Spanish, Canadian French, Traditional Chinese, American English",
+ "hardwareModel": "",
+ "colorEdition": "",
+ "storageCapacity": "",
+ "screenSpecs": "",
+ "batteryLife": "",
+ "boxContents": [],
+ "boxContentsText": "",
+ "warrantyCondition": "",
+ "connectivity": "",
+ "characterName": "Link",
+ "amiiboSeries": "The Legend of Zelda",
+ "figureType": "figure",
+ "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+ "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+ "boxCondition": "mib",
+ "releaseWave": "Wave 2 (Restock)",
+ "rarity": "standard",
+ "accessoryType": "حقيبة حماية وتنقل Carry Case",
+ "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+ "brand": "Nintendo Official",
+ "material": "Hard EVA Shockproof Shell",
+ "availableColors": "Black, Neon Red/Blue, White",
+ "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+ "cardValue": "$20 eShop Balance",
+ "region": "Global",
+ "cardType": "eshop",
+ "deliveryMethod": "instant_code",
+ "redemptionGuide": "",
+ "redemptionSteps": [],
+ "validity": "no_expiry",
+ "usedType": "cartridge",
+ "conditionGrade": "like_new",
+ "packaging": "cib",
+ "guaranteeStatus": "tested_30days",
+ "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+ "accountType": "primary",
+ "badge": "وفر 40%",
+ "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+ "price": 15000,
+ "cost": 4500,
+ "stock": 999999,
+ "isInfiniteStock": true,
+ "isHidden": false,
+ "displayOrder": 0,
+ "category": "nintendo-switch-games",
+ "categoryId": "nintendo-switch-games",
+ "categoryEn": "",
+ "categoryKu": "",
+ "options": [
+  {
+   "id": "offline_account",
+   "name": "Offline Account",
+   "description": "Offline account access for this game.",
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_account",
+   "name": "Online Account",
+   "description": "Online-capable account access option sold by the supplier.",
+   "isInfiniteStock": true
+  }
+ ],
+ "types": [
+  {
+   "id": "standard_offline",
+   "name": "Standard Offline",
+   "optionId": "offline_account",
+   "price": 15000,
+   "cost": 4500,
+   "description": "Supplier Regular / 普通版. Dual-platform costs retained in notes.",
+   "stock": 999999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "standard_online",
+   "name": "Standard Online",
+   "optionId": "online_account",
+   "price": "65000",
+   "cost": 42250,
+   "description": "Supplier Standard / 标准版. Dual-platform costs retained in notes.",
+   "stock": 999999,
+   "isInfiniteStock": true
+  }
+ ],
+ "editions": [],
+ "dlcs": [],
+ "isActive": true,
+ "status": "active",
+ "kind": "account",
+ "trade_value_iqd": 0,
+ "store_offer_bonus_iqd": 0,
+ "trade_enabled": true,
+ "trade_value_locked": false,
+ "id": "prd_9e05c55e9e4f4c59",
+ "titleAr": "Xenoblade Chronicles: Definitive Edition",
+ "compatibility": [
+  "Nintendo Switch 2"
+ ],
+ "edition": "Standard",
+ "developer": "MONOLITHSOFT",
+ "publisher": "Nintendo",
+ "metacriticUrl": "https://www.metacritic.com/game/xenoblade-chronicles-definitive-edition/",
+ "opencriticRating": 89,
+ "userScore": 8.9,
+ "officialUrl": "https://www.nintendo.com/us/store/products/xenoblade-chronicles-definitive-edition-nintendo-switch-2-edition-switch-2/",
+ "eshopUrl": "https://www.nintendo.com/us/store/products/xenoblade-chronicles-definitive-edition-nintendo-switch-2-edition-switch-2/",
+ "gameIsOffline": true,
+ "gameIsOnline": false,
+ "description_short": "The definitive remaster of Shulk’s adventure across the Bionis and Mechonis, including Future Connected.",
+ "description_ar": "انضم إلى شلك ورفاقه في النسخة المحسنة من مغامرة Xenoblade الأصلية. استكشف جسدي Bionis وMechonis، واستفد من رؤى المستقبل في المعارك، وطوّر الفريق والمعدات، ثم واصل القصة في فصل Future Connected المضمن.",
+ "videos": [
+  {
+   "title": "Official trailer",
+   "url": "https://www.youtube.com/watch?v=O8H23tVbmcc"
+  }
+ ],
+ "nsuid": "70010000029711",
+ "nintendoEshopUrl": "https://www.nintendo.com/us/store/products/xenoblade-chronicles-definitive-edition-nintendo-switch-2-edition-switch-2/",
+ "nintendoOnlineRequired": false,
+ "nintendoCloudSaves": true,
+ "tvMode": true,
+ "tabletopMode": true,
+ "handheldMode": true,
+ "nintendoPlayModes": "TV, Tabletop, Handheld",
+ "nintendoNotes": "Official platform status: Nintendo Switch version released 2020-05-29. A native Nintendo Switch 2 Edition is also available in 2026 with 4K TV output, full-HD handheld output and 60 fps, plus Ether Jet traversal, extra equipment and fully voiced Heart-to-Hearts.\n\nSupplier language selection: Simplified Chinese. Supplier matrix: NS1 Regular ¥11.7 (pre-discount ¥15); NS1 Standard ¥173.4; NS2 Regular ¥21.5; NS2 Standard ¥193. Two supplier variants per platform means no DLC product type.\nConverted costs: NS1 Regular 2,500 IQD; NS1 Standard 38,000 IQD; NS2 Regular 4,500 IQD; NS2 Standard 42,250 IQD.\nBecause the current template has no platform-specific type.cost field, active type.cost values remain blank instead of selecting an incorrect platform cost.",
+ "switch2Enhanced": true,
+ "switch2Exclusive": true,
+ "switch2Features": [
+  "4K TV mode",
+  "Full HD handheld mode",
+  "60 frames per second",
+  "Ether Jet high-speed traversal",
+  "Additional equipment for Ether Jet use",
+  "Fully voiced Heart-to-Hearts"
+ ],
+ "tagline": "Discover the origins of Shulk and the power of the Monado.",
+ "fitFor": [
+  "Story-focused JRPG players",
+  "Players who enjoy exploration and real-time party combat",
+  "Fans who want the included Future Connected epilogue",
+  "Players interested in a long, character-focused JRPG"
+ ],
+ "notFitFor": [
+  "Players seeking a short campaign",
+  "Players who strongly prefer turn-based combat",
+  "Players who dislike extensive side quests"
+ ],
+ "playTimeMain": 50.5,
+ "playTimeFull": 133.5,
+ "editionsList": [
+  {
+   "name": "Nintendo Switch Definitive Edition",
+   "coverUrl": "https://images.launchbox-app.com//6ea844c6-3b18-4c9c-8113-f499aafc761e.jpg",
+   "contents": [
+    {
+     "label": "Remastered base adventure"
+    },
+    {
+     "label": "Future Connected epilogue"
+    },
+    {
+     "label": "Remastered soundtrack and visual upgrades"
+    }
+   ]
+  },
+  {
+   "name": "Nintendo Switch 2 Edition",
+   "contents": [
+    {
+     "label": "Base game + Upgrade Pack"
+    },
+    {
+     "label": "4K TV / Full HD handheld at 60 fps"
+    },
+    {
+     "label": "Ether Jet and fully voiced Heart-to-Hearts"
+    }
+   ]
+  },
+  {
+   "name": "Nintendo Switch 2 Edition Upgrade Pack",
+   "contents": [
+    {
+     "label": "Requires Switch version"
+    },
+    {
+     "label": "Switch 2 enhancements"
+    },
+    {
+     "label": "Additional Switch 2 features"
+    }
+   ]
+  }
+ ],
+ "gameplayPillars": [
+  {
+   "title": "Vision and tactical reactions",
+   "description": "Shulk’s visions can reveal dangerous future events, allowing the player to respond with Arts, positioning, buffs, or party coordination.",
+   "imageUrl": "https://images.launchbox-app.com//a23d5096-f19f-4a9c-9b8e-1f529a11e62b.jpg"
+  },
+  {
+   "title": "Explore the titans",
+   "description": "Large regions reward exploration with landmarks, quests, unique monsters, collectibles, and hidden routes.",
+   "imageUrl": "https://images.launchbox-app.com//4b3a0aef-4fc6-4a87-b949-08e32817d75c.jpg"
+  },
+  {
+   "title": "Build the party",
+   "description": "Party building combines Arts, equipment, gems, affinity, skill links, and Chain Attacks.",
+   "imageUrl": "https://images.launchbox-app.com//7eed887f-c46d-4b80-b973-b1fe459c100c.jpg"
+  }
+ ],
+ "worldSummary": "The world is formed around the bodies of two colossal titans, Bionis and Mechonis, locked in an ancient conflict. Settlements, wilderness, ruins, and battlefields stretch across their bodies.",
+ "storyChapters": [
+  {
+   "title": "A world on two titans",
+   "body": "Life on Bionis is shattered by a renewed Mechon assault, placing Shulk and the Monado at the center of a larger conflict.",
+   "imageUrl": "https://images.launchbox-app.com//5618c4b3-d1a6-49b3-ad5c-8d48dc380175.jpg"
+  },
+  {
+   "title": "Shulk and the Monado",
+   "body": "The journey across Bionis and Mechonis gradually reveals the origins of the Monado, the Mechon, and the world itself.",
+   "imageUrl": "https://images.launchbox-app.com//bb60150c-02b8-4264-b1bb-7c9115dda769.jpg"
+  },
+  {
+   "title": "Future Connected",
+   "body": "Future Connected is an included epilogue set after the main story, adding a new region and a continuation for key characters.",
+   "imageUrl": "https://images.launchbox-app.com//64a16877-2bc0-4739-9989-88bf6062b7f2.jpg"
+  }
+ ],
+ "galleryImages": [
+  {
+   "url": "https://images.launchbox-app.com//4b3a0aef-4fc6-4a87-b949-08e32817d75c.jpg",
+   "alt": "Official Nintendo promotional image"
+  },
+  {
+   "url": "https://images.launchbox-app.com//7eed887f-c46d-4b80-b973-b1fe459c100c.jpg",
+   "alt": "Official Nintendo gameplay image"
+  },
+  {
+   "url": "https://images.launchbox-app.com//5618c4b3-d1a6-49b3-ad5c-8d48dc380175.jpg",
+   "alt": "Official Nintendo gameplay image"
+  },
+  {
+   "url": "https://images.launchbox-app.com//bb60150c-02b8-4264-b1bb-7c9115dda769.jpg",
+   "alt": "Official Nintendo feature image"
+  },
+  {
+   "url": "https://images.launchbox-app.com//64a16877-2bc0-4739-9989-88bf6062b7f2.jpg",
+   "alt": "Official Nintendo gallery image"
+  }
+ ],
+ "features": [
+  "Future-seeing Monado combat mechanics",
+  "Large interconnected areas across Bionis and Mechonis",
+  "Future Connected epilogue included",
+  "Remastered soundtrack",
+  "Updated menus and quest tracking",
+  "Affinity and gem crafting systems"
+ ],
+ "perfResolutionDocked": "4K",
+ "perfResolutionHandheld": "1080p",
+ "perfFps": "60",
+ "perfNotes": "Nintendo Switch targets 30 fps with dynamic resolution around 504p-720p docked and 378p-540p handheld. Nintendo Switch 2 Edition officially runs at 60 fps with 4K TV output and full-HD handheld output.",
+ "devicePerformance": [
+  {
+   "device": "Nintendo Switch 2",
+   "deviceSlug": "nintendo-switch-2",
+   "deviceModel": "Nintendo Switch 2",
+   "hardwareId": "prd_acf4c89908764c62",
+   "informationStatus": "Published / verified",
+   "handheld": {
+    "supported": true,
+    "resolution": "1080p",
+    "outputResolution": "1080p",
+    "fps": "60"
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "4K",
+    "outputResolution": "4K",
+    "fps": "60"
+   },
+   "sourceName": "Nintendo Official",
+   "sourceUrl": "https://www.nintendo.com/us/store/products/xenoblade-chronicles-definitive-edition-nintendo-switch-2-edition-switch-2/",
+   "verificationStatus": "verified"
+  }
+ ],
+ "downloadSizeGb": 13.7,
+ "requiredSpaceGb": 33.8,
+ "microSdRecommended": false,
+ "storageNotes": "Nintendo lists 13.7 GB for the Switch version and 33.8 GB for the native Switch 2 Edition.",
+ "languagesAudio": [
+  "English",
+  "Japanese"
+ ],
+ "languagesText": [
+  "Japanese",
+  "British English",
+  "French",
+  "German",
+  "Italian",
+  "Spanish",
+  "Korean",
+  "Simplified Chinese",
+  "Latin American Spanish",
+  "Canadian French",
+  "Traditional Chinese",
+  "American English"
+ ],
+ "arabicSupport": false,
+ "mpLocalPlayers": false,
+ "mpOnlinePlayers": false,
+ "mpCoop": false,
+ "mpCompetitive": false,
+ "mpSplitScreen": false,
+ "mpLocalWireless": false,
+ "completionMain": 50.5,
+ "completionExtras": 77.5,
+ "completionAll": 133.5,
+ "verdictSummary": "A highly rated remaster that preserves the original’s story and combat while substantially improving presentation and usability. The Switch 2 Edition further improves clarity and frame rate.",
+ "reviews": [
+  {
+   "source": "Metacritic",
+   "score": "89/100",
+   "url": "https://www.metacritic.com/game/xenoblade-chronicles-definitive-edition/"
+  },
+  {
+   "source": "OpenCritic aggregate",
+   "score": "89/100",
+   "url": "https://www.dekudeals.com/items/xenoblade-chronicles-definitive-edition"
+  },
+  {
+   "source": "Metacritic user score",
+   "score": "8.9/10",
+   "url": "https://www.metacritic.com/game/xenoblade-chronicles-definitive-edition/"
+  }
+ ],
+ "timeline": [
+  {
+   "date": "2020-05-29",
+   "title": "Definitive Edition releases on Nintendo Switch",
+   "body": "Definitive Edition released worldwide on Switch."
+  },
+  {
+   "date": "2026-06-09",
+   "title": "Nintendo Switch 2 Edition digital release",
+   "body": "Nintendo Switch 2 digital edition released with performance and content enhancements."
+  },
+  {
+   "date": "2026-07-30",
+   "title": "Nintendo Switch 2 Edition physical release in North America",
+   "body": "North American physical Switch 2 Edition followed later in July 2026."
+  }
+ ],
+ "seriesName": "Xenoblade Chronicles",
+ "seriesEntries": [
+  "Xenoblade Chronicles 2",
+  "Xenoblade Chronicles 3",
+  "Xenoblade Chronicles X: Definitive Edition"
+ ],
+ "studioName": "MONOLITHSOFT",
+ "studioUrl": "https://www.monolithsoft.co.jp/",
+ "studioLocation": "Tokyo, Japan",
+ "studioAbout": "MONOLITHSOFT is a Tokyo-based Japanese developer best known for the Xenoblade Chronicles RPG series.",
+ "setupNeeds": [
+  "Nintendo Switch or Nintendo Switch 2 system",
+  "Nintendo Account for digital purchases",
+  "Sufficient storage for selected platform edition",
+  "Internet connection needed for digital download / updates"
+ ],
+ "sources": [
+  {
+   "name": "Nintendo official — Switch",
+   "url": "https://www.nintendo.com/us/store/products/xenoblade-chronicles-definitive-edition-switch/"
+  },
+  {
+   "name": "Nintendo official — Switch 2 Edition",
+   "url": "https://www.nintendo.com/us/store/products/xenoblade-chronicles-definitive-edition-nintendo-switch-2-edition-switch-2/"
+  },
+  {
+   "name": "Deku Deals",
+   "url": "https://www.dekudeals.com/items/xenoblade-chronicles-definitive-edition"
+  }
+ ],
+ "boxContentsList": "[Circular]",
+ "image": "/api/files/products/prd_9e05c55e9e4f4c59/cover-4430219d0d87ec5d.avif",
+ "banner": "/api/files/products/prd_9e05c55e9e4f4c59/banner-0-5b033ad4711823ef.avif",
+ "schemaId": "",
+ "createdAt": "2026-08-26T21:39:20.047Z",
+ "created_at": "2026-08-26T21:39:20.047Z",
+ "updatedAt": "2026-08-26T21:39:20.047Z",
+ "updated_at": "2026-08-26T21:39:20.047Z",
+ "badgeEn": "وفر 40%",
+ "badgeKu": "وفر 40%",
+ "featuresEn": [
+  "Future-seeing Monado combat mechanics",
+  "Large interconnected areas across Bionis and Mechonis",
+  "Future Connected epilogue included",
+  "Remastered soundtrack",
+  "Updated menus and quest tracking",
+  "Affinity and gem crafting systems"
+ ],
+ "featuresKu": [
+  "Future-seeing Monado combat mechanics",
+  "Large interconnected areas across Bionis and Mechonis",
+  "Future Connected epilogue included",
+  "Remastered soundtrack",
+  "Updated menus and quest tracking",
+  "Affinity and gem crafting systems"
+ ],
+ "sales": 0,
+ "images": [],
+ "modes": []
+}

@@ -1,0 +1,476 @@
+{
+ "title": "Xenoblade Chronicles 3",
+ "titleEn": "Xenoblade Chronicles 3",
+ "titleKu": "Xenoblade Chronicles 3",
+ "slug": "xenoblade-chronicles-3-switch",
+ "description": "Join Noah, Mio, and their allies on a journey through Aionios. Build classes, recruit Heroes, master Ouroboros and Chain Attacks, and uncover the truth behind the world’s endless war.",
+ "descriptionEn": "Join Noah, Mio, and their allies on a journey through Aionios. Build classes, recruit Heroes, master Ouroboros and Chain Attacks, and uncover the truth behind the world’s endless war.",
+ "descriptionKu": "Join Noah, Mio, and their allies on a journey through Aionios. Build classes, recruit Heroes, master Ouroboros and Chain Attacks, and uncover the truth behind the world’s endless war.",
+ "cartridgeImage": "/api/files/products/prd_4febaa0136bd4f7f/front-49378aa8919acf93.jpg",
+ "nintendoCardImage": "/api/files/products/prd_4febaa0136bd4f7f/square-46c70dac56dec85b.jpg",
+ "coverHiResImage": "/api/files/products/general/image-f872bd737a5a2546.jpg",
+ "coverImage": "/api/files/products/prd_4febaa0136bd4f7f/cover-2022d04a3e526dec.jpg",
+ "bannerImages": [
+  "/api/files/products/prd_4febaa0136bd4f7f/banner-0-e2f9e4b18db956a4.avif",
+  "/api/files/products/prd_4febaa0136bd4f7f/banner-1-87e31c46bc4137ac.avif",
+  "/api/files/products/prd_4febaa0136bd4f7f/banner-3-91cbcace8752ae21.avif"
+ ],
+ "gallery": [],
+ "youtubeTrailer": "https://www.youtube.com/watch?v=fG_hINfOz28",
+ "releaseDate": "2022-07-29",
+ "ageRating": "ESRB Teen",
+ "metacriticRating": 89,
+ "genres": [
+  "Action",
+  "Role-Playing",
+  "Adventure"
+ ],
+ "platform": "switch1",
+ "size": 14.4,
+ "numberOfPlayers": "1",
+ "supportedLanguages": "Japanese, British English, French, German, Italian, Spanish, Korean, Simplified Chinese, Traditional Chinese",
+ "hardwareModel": "",
+ "colorEdition": "",
+ "storageCapacity": "",
+ "screenSpecs": "",
+ "batteryLife": "",
+ "boxContents": [],
+ "boxContentsText": "",
+ "warrantyCondition": "",
+ "connectivity": "",
+ "characterName": "Link",
+ "amiiboSeries": "The Legend of Zelda",
+ "figureType": "figure",
+ "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+ "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+ "boxCondition": "mib",
+ "releaseWave": "Wave 2 (Restock)",
+ "rarity": "standard",
+ "accessoryType": "حقيبة حماية وتنقل Carry Case",
+ "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+ "brand": "Nintendo Official",
+ "material": "Hard EVA Shockproof Shell",
+ "availableColors": "Black, Neon Red/Blue, White",
+ "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+ "cardValue": "$20 eShop Balance",
+ "region": "Global",
+ "cardType": "eshop",
+ "deliveryMethod": "instant_code",
+ "redemptionGuide": "",
+ "redemptionSteps": [],
+ "validity": "no_expiry",
+ "usedType": "cartridge",
+ "conditionGrade": "like_new",
+ "packaging": "cib",
+ "guaranteeStatus": "tested_30days",
+ "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+ "accountType": "primary",
+ "badge": "وفر 40%",
+ "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+ "price": 12000,
+ "cost": 1250,
+ "stock": 999999,
+ "isInfiniteStock": true,
+ "isHidden": false,
+ "displayOrder": 0,
+ "category": "nintendo-switch-games",
+ "categoryId": "nintendo-switch-games",
+ "categoryEn": "",
+ "categoryKu": "",
+ "options": [
+  {
+   "id": "offline_account",
+   "name": "Offline Account",
+   "description": "Offline account access for this game.",
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_account",
+   "name": "Online Account",
+   "description": "Online-capable account access option sold by the supplier.",
+   "isInfiniteStock": true
+  }
+ ],
+ "types": [
+  {
+   "id": "standard_offline",
+   "name": "Standard Offline",
+   "optionId": "offline_account",
+   "price": "12000",
+   "cost": 1250,
+   "description": "Supplier Regular / 普通版. Dual-platform costs retained in notes.",
+   "stock": 999999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "dlc_offline",
+   "name": "DLC Offline",
+   "optionId": "offline_account",
+   "price": "14000",
+   "cost": 2500,
+   "description": "Supplier Special / 特典版 mapped to DLC offline variant.",
+   "stock": 999999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "standard_online",
+   "name": "Standard Online",
+   "optionId": "online_account",
+   "price": "35000",
+   "cost": 18500,
+   "description": "Supplier Standard / 标准版.",
+   "stock": 999999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "dlc_online",
+   "name": "DLC Online",
+   "optionId": "online_account",
+   "price": "38000",
+   "cost": 25000,
+   "description": "Supplier Deluxe / 豪华版 mapped to DLC online variant.",
+   "stock": 999999,
+   "isInfiniteStock": true
+  }
+ ],
+ "editions": [],
+ "dlcs": [],
+ "isActive": true,
+ "status": "active",
+ "kind": "account",
+ "trade_value_iqd": 0,
+ "store_offer_bonus_iqd": 0,
+ "trade_enabled": true,
+ "trade_value_locked": false,
+ "id": "prd_4febaa0136bd4f7f",
+ "titleAr": "Xenoblade Chronicles 3",
+ "compatibility": [
+  "Nintendo Switch"
+ ],
+ "edition": "Standard",
+ "developer": "MONOLITHSOFT",
+ "publisher": "Nintendo",
+ "metacriticUrl": "https://www.metacritic.com/game/xenoblade-chronicles-3/",
+ "opencriticRating": 88,
+ "userScore": 8.8,
+ "officialUrl": "https://www.nintendo.com/us/store/products/xenoblade-chronicles-3-switch/",
+ "eshopUrl": "https://www.nintendo.com/us/store/products/xenoblade-chronicles-3-switch/",
+ "gameIsOffline": true,
+ "gameIsOnline": false,
+ "description_short": "Noah and Mio lead a party through the war-torn world of Aionios in a story about life, conflict, and freedom.",
+ "description_ar": "انضم إلى Noah وMio ورفاقهما في رحلة عبر عالم Aionios الذي يعيش حربًا لا تنتهي. غيّر الفئات، وجنّد الـHeroes، واستخدم Ouroboros وChain Attacks، واكشف حقيقة العالم والصراع المستمر.",
+ "box_front_url": "https://images.launchbox-app.com//a336c756-a692-46d1-a21c-24c9e1768031.jpg",
+ "box_back_url": "https://gamesdb-images.launchbox.gg/r2_49a50069-844f-44d7-b6dc-a41a860f77fc.jpg",
+ "videos": [
+  {
+   "title": "Official trailer",
+   "url": "https://www.youtube.com/watch?v=fG_hINfOz28"
+  }
+ ],
+ "product_code": "SKU 114559 / UPC 00045496598280",
+ "nintendoEshopUrl": "https://www.nintendo.com/us/store/products/xenoblade-chronicles-3-nintendo-switch-2-edition-switch-2/",
+ "nintendoOnlineRequired": false,
+ "nintendoCloudSaves": true,
+ "tvMode": true,
+ "tabletopMode": true,
+ "handheldMode": true,
+ "nintendoPlayModes": "TV, Tabletop, Handheld",
+ "nintendoNotes": "Nintendo Switch base game is active since 2022-07-29. The native Nintendo Switch 2 Edition is officially scheduled for 2026-12-03, so it is upcoming as of 2026-08-26 even though the supplier already lists an NS2 option. Nintendo announces 4K TV / full-HD handheld at 60 fps, plus a new Hero and quest, defensive battle mode, and fully voiced event scenes.\n\nSupplier language selection: Simplified Chinese. Four supplier variants per platform mapped by established rule.\nNS1: Regular ¥6.8 -> 1,250; Special ¥11.7 -> 2,500; Standard ¥85.2 -> 18,500; Deluxe ¥114.6 -> 25,000 IQD.\nNS2: Regular ¥11.7 -> 2,500; Special ¥16.6 -> 3,500; Standard ¥95 -> 20,750; Deluxe ¥124.4 -> 27,250 IQD.\nDual-platform type.cost fields are intentionally blank because the template has no platform-specific price/cost dimension.",
+ "switch2Enhanced": true,
+ "switch2Exclusive": false,
+ "switch2Features": [
+  "4K TV mode",
+  "Full HD handheld mode",
+  "60 frames per second",
+  "New Hero and Hero Quest",
+  "Defensive wave battle mode",
+  "Fully voiced event scenes"
+ ],
+ "tagline": "Live to fight. Fight to live.",
+ "fitFor": [
+  "Players who prioritize story and character development",
+  "Players who enjoy flexible class systems",
+  "Fans of large party battles and exploration",
+  "Players who enjoy emotional, long-form ensemble stories"
+ ],
+ "notFitFor": [
+  "Players looking for a short action game",
+  "Players who dislike complex party systems",
+  "Players who prefer purely turn-based combat"
+ ],
+ "playTimeMain": 62,
+ "playTimeFull": 174,
+ "editionsList": [
+  {
+   "name": "Nintendo Switch Standard",
+   "coverUrl": "https://images.launchbox-app.com//a336c756-a692-46d1-a21c-24c9e1768031.jpg",
+   "contents": [
+    {
+     "label": "Base game"
+    },
+    {
+     "label": "Six-character core party system"
+    },
+    {
+     "label": "Class, Hero and Ouroboros systems"
+    }
+   ]
+  },
+  {
+   "name": "Nintendo Switch 2 Edition",
+   "contents": [
+    {
+     "label": "Base game + Switch 2 Upgrade Pack"
+    },
+    {
+     "label": "4K TV / full-HD handheld at 60 fps"
+    },
+    {
+     "label": "New Hero, defensive battle mode, fully voiced event scenes"
+    }
+   ]
+  },
+  {
+   "name": "Expansion Pass",
+   "contents": [
+    {
+     "label": "Four DLC waves"
+    },
+    {
+     "label": "Future Redeemed story"
+    },
+    {
+     "label": "Heroes, challenges, outfits and items"
+    }
+   ]
+  }
+ ],
+ "gameplayPillars": [
+  {
+   "title": "Classes and Heroes",
+   "description": "Each core character can learn and switch classes, inherit Master Arts and skills, and combine roles from recruited Heroes.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/en_US/products/games/switch/xenoblade-chronicles-3/114559-3-nintendo-switch-xenoblade-chron-3-se-ss-3-1280x720"
+  },
+  {
+   "title": "Ouroboros",
+   "description": "Ouroboros transformations merge paired characters for temporary powerful forms with unique abilities and progression.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/en_US/products/games/switch/xenoblade-chronicles-3/114559-3-nintendo-switch-xenoblade-chron-3-se-ss-2-1280x720"
+  },
+  {
+   "title": "Large party battles",
+   "description": "The active party is unusually large for the series, emphasizing roles, positioning, combos, aggro management, Interlinking, and Chain Attacks.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/en_US/products/games/switch/xenoblade-chronicles-3/114559-3-nintendo-switch-xenoblade-chron-3-se-ss-5-1280x720"
+  }
+ ],
+ "worldSummary": "Aionios is a vast world dominated by the rival nations of Keves and Agnus. Soldiers live under strict lifespans and fight to fill Flame Clocks, while the party travels across colonies, battlefields, wilderness, and ruins seeking the truth.",
+ "storyChapters": [
+  {
+   "title": "Keves and Agnus",
+   "body": "Noah and Mio begin as enemies from Keves and Agnus but are forced to cooperate after a life-changing encounter.",
+   "imageUrl": "https://images.launchbox-app.com//dcd7b5c0-cd1f-453c-9811-419d9c70562d.jpg"
+  },
+  {
+   "title": "Noah and Mio",
+   "body": "The party crosses Aionios, freeing colonies and challenging the systems that sustain the war.",
+   "imageUrl": "https://images.launchbox-app.com//f556af34-e40d-4874-ba38-8c3b33138290.png"
+  },
+  {
+   "title": "The truth of Aionios",
+   "body": "The journey reveals the forces behind the world’s cycle and ties the story to the broader Xenoblade chronology.",
+   "imageUrl": "https://images.launchbox-app.com//5009d573-15de-4316-9625-82ee24790cca.png"
+  }
+ ],
+ "galleryImages": [
+  {
+   "url": "https://images.launchbox-app.com//ae39d379-1cdf-4ad4-8151-b3ed29da1a7d.jpg",
+   "alt": "Aionios artwork"
+  },
+  {
+   "url": "https://images.launchbox-app.com//49811b28-a83c-4697-95b9-3e2a4baab324.jpg",
+   "alt": "Party and character artwork"
+  },
+  {
+   "url": "https://images.launchbox-app.com//2cbf9443-a7b0-4cd3-b00d-fa32070e05d7.png",
+   "alt": "Battle artwork"
+  },
+  {
+   "url": "https://images.launchbox-app.com//5596a2b7-134b-4402-9cff-86eb757c864c.png",
+   "alt": "Additional promotional artwork"
+  }
+ ],
+ "features": [
+  "Six-character active party",
+  "Class switching and Hero recruitment",
+  "Ouroboros transformations and Chain Attacks",
+  "Four-wave Expansion Pass",
+  "Future Redeemed story expansion",
+  "Affinity and colony quest systems"
+ ],
+ "perfResolutionDocked": "Up to 1080p reconstructed",
+ "perfResolutionHandheld": "Up to 720p reconstructed",
+ "perfFps": "30",
+ "perfNotes": "Nintendo Switch uses dynamic internal resolution and temporal reconstruction toward 1080p docked / 720p handheld with a 30 fps cap that can dip in complex scenes. The upcoming native Switch 2 Edition is officially announced for 4K TV / 1080p handheld at 60 fps.",
+ "devicePerformance": [
+  {
+   "device": "Nintendo Switch 2",
+   "deviceSlug": "nintendo-switch-2",
+   "deviceModel": "Nintendo Switch 2",
+   "hardwareId": "prd_acf4c89908764c62",
+   "informationStatus": "Published / verified",
+   "handheld": {
+    "supported": true,
+    "resolution": "Up to 720p reconstructed",
+    "outputResolution": "Up to 720p reconstructed",
+    "fps": "30"
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "Up to 1080p reconstructed",
+    "outputResolution": "Up to 1080p reconstructed",
+    "fps": "30"
+   },
+   "sourceName": "Nintendo Official",
+   "sourceUrl": "https://www.nintendo.com/us/store/products/xenoblade-chronicles-3-switch/",
+   "verificationStatus": "verified"
+  }
+ ],
+ "downloadSizeGb": 14.4,
+ "requiredSpaceGb": 42.6,
+ "microSdRecommended": false,
+ "storageNotes": "Switch base game is about 14.4 GB. Nintendo estimates 42.6 GB for the native Switch 2 Edition.",
+ "languagesAudio": [
+  "English",
+  "Japanese"
+ ],
+ "languagesText": [
+  "Japanese",
+  "British English",
+  "French",
+  "German",
+  "Italian",
+  "Spanish",
+  "Korean",
+  "Simplified Chinese",
+  "Traditional Chinese"
+ ],
+ "arabicSupport": false,
+ "mpLocalPlayers": false,
+ "mpOnlinePlayers": false,
+ "mpCoop": false,
+ "mpCompetitive": false,
+ "mpSplitScreen": false,
+ "mpLocalWireless": false,
+ "dlc": [
+  {
+   "name": "DLC Wave 1"
+  },
+  {
+   "name": "DLC Wave 2"
+  },
+  {
+   "name": "DLC Wave 3"
+  },
+  {
+   "name": "DLC Wave 4 — Future Redeemed",
+   "description": "Major story expansion Future Redeemed, plus additional systems and content in the fourth DLC wave."
+  }
+ ],
+ "completionMain": 62,
+ "completionExtras": 102.5,
+ "completionAll": 174,
+ "verdictSummary": "One of the most highly rated entries in the series, combining an emotional ensemble story with flexible class building and large-scale battles. The Switch 2 Edition is announced but not yet released as of this extraction date.",
+ "reviews": [
+  {
+   "source": "Metacritic",
+   "score": "89/100",
+   "url": "https://www.metacritic.com/game/xenoblade-chronicles-3/"
+  },
+  {
+   "source": "OpenCritic aggregate",
+   "score": "88/100",
+   "url": "https://www.dekudeals.com/items/xenoblade-chronicles-3"
+  },
+  {
+   "source": "Metacritic user score",
+   "score": "8.8/10",
+   "url": "https://www.metacritic.com/game/xenoblade-chronicles-3/"
+  }
+ ],
+ "timeline": [
+  {
+   "date": "2022-07-29",
+   "title": "Nintendo Switch release",
+   "body": "Base game launched on Nintendo Switch."
+  },
+  {
+   "date": "2023-04-25",
+   "title": "Future Redeemed DLC release",
+   "body": "Future Redeemed, the major story expansion in Wave 4, released."
+  },
+  {
+   "date": "2026-12-03",
+   "title": "Nintendo Switch 2 Edition scheduled release",
+   "body": "Native Nintendo Switch 2 Edition is scheduled to launch with performance and content enhancements."
+  }
+ ],
+ "seriesName": "Xenoblade Chronicles",
+ "seriesEntries": [
+  "Xenoblade Chronicles: Definitive Edition",
+  "Xenoblade Chronicles 2",
+  "Xenoblade Chronicles X: Definitive Edition"
+ ],
+ "studioName": "MONOLITHSOFT",
+ "studioUrl": "https://www.monolithsoft.co.jp/",
+ "studioLocation": "Tokyo, Japan",
+ "studioAbout": "MONOLITHSOFT is the Japanese studio behind the Xenoblade Chronicles series, specializing in large-scale RPG worlds and party-based systems.",
+ "setupNeeds": [
+  "Nintendo Switch or Nintendo Switch 2",
+  "Nintendo Account for digital purchases",
+  "Expansion Pass required for paid DLC content",
+  "Internet connection required for digital DLC and updates"
+ ],
+ "sources": [
+  {
+   "name": "Nintendo official — Switch",
+   "url": "https://www.nintendo.com/us/store/products/xenoblade-chronicles-3-switch/"
+  },
+  {
+   "name": "Nintendo official — Switch 2 Edition",
+   "url": "https://www.nintendo.com/us/store/products/xenoblade-chronicles-3-nintendo-switch-2-edition-switch-2/"
+  },
+  {
+   "name": "Deku Deals",
+   "url": "https://www.dekudeals.com/items/xenoblade-chronicles-3"
+  }
+ ],
+ "boxContentsList": "[Circular]",
+ "image": "/api/files/products/prd_4febaa0136bd4f7f/cover-2022d04a3e526dec.jpg",
+ "banner": "/api/files/products/prd_4febaa0136bd4f7f/banner-0-e2f9e4b18db956a4.avif",
+ "schemaId": "",
+ "createdAt": "2026-08-26T21:39:26.434Z",
+ "created_at": "2026-08-26T21:39:26.434Z",
+ "updatedAt": "2026-08-26T21:39:26.434Z",
+ "updated_at": "2026-08-26T21:39:26.434Z",
+ "badgeEn": "وفر 40%",
+ "badgeKu": "وفر 40%",
+ "featuresEn": [
+  "Six-character active party",
+  "Class switching and Hero recruitment",
+  "Ouroboros transformations and Chain Attacks",
+  "Four-wave Expansion Pass",
+  "Future Redeemed story expansion",
+  "Affinity and colony quest systems"
+ ],
+ "featuresKu": [
+  "Six-character active party",
+  "Class switching and Hero recruitment",
+  "Ouroboros transformations and Chain Attacks",
+  "Four-wave Expansion Pass",
+  "Future Redeemed story expansion",
+  "Affinity and colony quest systems"
+ ],
+ "boxFrontUrl": "https://images.launchbox-app.com//a336c756-a692-46d1-a21c-24c9e1768031.jpg",
+ "sales": 0,
+ "images": [],
+ "modes": []
+}
