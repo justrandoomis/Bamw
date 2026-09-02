@@ -1,51 +1,172 @@
 {
  "batch": "028",
- "apply": false,
+ "apply": true,
  "games": [
   {
    "id": "prd_073b4bb198534514",
    "slug": "tomb-raider-definitive-edition-switch-1",
    "baseHash": "2f64dc9eeca1f936915d7564b8bd0d6d22e293e508640711cf4dde71e0e91800",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "informationStatus": "not_published",
+      "unavailableReason": "Aspyr publishes no resolution or frame-rate figures for the Switch release of Tomb Raider: Definitive Edition.",
+      "handheld": {
+       "supported": true
+      },
+      "tv": {
+       "supported": true
+      },
+      "modes": [],
+      "sourceName": "Aspyr official product information",
+      "sourceUrl": "https://www.nintendolife.com/games/nintendo-switch/tomb_raider_definitive_edition",
+      "verificationStatus": "official"
+     }
+    ]
+   },
+   "clear": [
+    "youtubeTrailer"
+   ],
+   "notes": "The two device records carried no performance data at all — replaced by one honest not-published platform record. Search-link trailer removed. 2025-11-18 kept (hidden product; no contamination present)."
   },
   {
    "id": "prd_ce036843bb8c42f2",
    "slug": "tomb-raider-definitive-edition-switch-2",
    "baseHash": "5637f8a0f34952ffea7277236f61bdf76e08a900bb10ff9bc012e943e6d7a212",
    "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "clear": [
+    "youtubeTrailer",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "Search-link trailer removed; the empty stray Nintendo Switch record drops under the platform rule, keeping the sourced 1080p/1440p at 60 fps Switch 2 record. The 2026-01-01 date looks like a placeholder but no verified digital release date could be confirmed from this environment — left for the owner to confirm (hidden product)."
   },
   {
    "id": "prd_675d26dff95a422f",
    "slug": "tomodachi-life-living-the-dream",
    "baseHash": "c1314d070c2f2fba7abe5fa9d524f1bb3be58cf7f3ae9b0737a0d95b5c061cf1",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "informationStatus": "not_published",
+      "unavailableReason": "Nintendo publishes no resolution or frame-rate figures for Tomodachi Life: Living the Dream.",
+      "handheld": {
+       "supported": true
+      },
+      "tv": {
+       "supported": true
+      },
+      "modes": [],
+      "sourceName": "Nintendo official product page",
+      "sourceUrl": "https://www.nintendo.com/us/store/products/tomodachi-life-living-the-dream-switch/",
+      "verificationStatus": "official"
+     }
+    ]
+   },
+   "clear": [
+    "metacriticRating",
+    "box_front_url",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "The recurring '85' string removed (no verifiable aggregate matches it); the malformed HTTP-400 box URL removed. The doubled unsourced 60 fps records become one honest not-published platform record — Nintendo publishes no figures. 2026-04-16 kept (hidden product)."
   },
   {
    "id": "prd_3aa29ae292b84ad5",
    "slug": "two-point-museum",
    "baseHash": "73b6e25b5ea2b23d78409b1ee6755aa5bf0c78953b431530e616fe3182057b7c",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "coverImage": "https://assets.nintendo.com/image/upload/ar_16:9,b_auto:border,c_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000104115/f4b2a1e4f7d0889722fb1a938f5b4a77b48a53f33c89a802d5cbd259a6b4e38d",
+    "image": "https://assets.nintendo.com/image/upload/ar_16:9,b_auto:border,c_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000104115/f4b2a1e4f7d0889722fb1a938f5b4a77b48a53f33c89a802d5cbd259a6b4e38d",
+    "bannerImages": [
+     "https://assets.nintendo.com/image/upload/ar_16:9,b_auto:border,c_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000104115/8ad9da1378fe72f0977e38b7f20d82f5459c7af5ea0a46526d321cc1f1c2c302"
+    ],
+    "galleryImages": [
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16:9,b_auto:border,c_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000104115/3984a8b8584fa52c0cecdce9be37e701e54043b61ca8b3b36732b7cf2c1e4134",
+      "alt": "Official Nintendo Switch 2 Two Point Museum media image 3; separate from cover and banner assets."
+     }
+    ]
+   },
+   "clear": [
+    "box_front_url",
+    "nintendoCardImage",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "Seven dead roles on a visible product: rebuilt from the three verified eShop galleries — one to cover and listing, one to the banner, one kept in the gallery. The dead GameFAQs box hotlink and broken square-card removed; the working box in cartridgeImage remains. 2025-10-28, 4.6 GB, Metacritic 81, 1080p/30 record verified. Contamination removed."
   },
   {
    "id": "prd_02876a10c3914082",
    "slug": "unravel-two-switch-1",
    "baseHash": "5ae9330950cdb30cddeffe6e94eb1e51c47cb20b6e211a3346ecd3a5d910cc26",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "size": 2.8,
+    "downloadSizeGb": 2.8,
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "informationStatus": "available",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p",
+       "fps": "30"
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p",
+       "fps": "30"
+      },
+      "modes": [],
+      "sourceName": "Port coverage of Unravel Two on Switch",
+      "sourceUrl": "https://www.nintendolife.com/games/nintendo-switch/unravel_two",
+      "verificationStatus": "technical_analysis"
+     }
+    ]
+   },
+   "clear": [
+    "youtubeTrailer",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "Size string '2.8 GB' becomes a number; store-URL trailer removed; doubled records collapse to the platform record at the port's documented 30 fps. 2019-03-22, Metacritic 81 verified (hidden product)."
   }
  ]
 }
