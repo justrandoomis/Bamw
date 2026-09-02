@@ -228,6 +228,36 @@ export function invalidateStoreCache() {
 }
 
 /**
+ * "This store is empty because the read failed", as distinct from "this store
+ * is empty".
+ *
+ * Nothing downstream could tell those apart. A failed catalogue read was
+ * swallowed into an empty row set, `getStore` returned `emptyStore`, and
+ * `/api/data` served it as a perfectly good 200 — which the edge then cached
+ * for five seconds and the service worker kept for six hours. The storefront
+ * drew its section headings over nothing, with no error and no retry, because
+ * as far as every layer knew the shop genuinely had no products.
+ *
+ * The marker is a symbol so it cannot reach a customer: `JSON.stringify`
+ * ignores symbol keys, and it is defined non-enumerable so a spread of the
+ * document does not carry it either. Callers ask {@link isStoreDegraded}.
+ */
+export const STORE_DEGRADED = Symbol.for("bananto.store.degraded");
+
+/** Whether this document is a failure dressed as an empty catalogue. */
+export function isStoreDegraded(store: unknown): boolean {
+  if (!store || typeof store !== "object") return false;
+  return (store as Record<symbol, unknown>)[STORE_DEGRADED] === true;
+}
+
+function asDegraded(doc: StoreDoc): StoreDoc {
+  return Object.defineProperty({ ...doc }, STORE_DEGRADED, {
+    value: true,
+    enumerable: false,
+  }) as StoreDoc;
+}
+
+/**
  * D1 rejects single column values above ~1MB, and the catalogue blob passed
  * that ceiling once products carried full hub data. The heavy sections are
  * therefore stored in their own rows (and split into chunks when a single
@@ -531,10 +561,25 @@ const ALL_ROWS_SQL = `SELECT key, value FROM store_kv WHERE key = 'store' OR key
 async function loadStore(options?: { skipProducts?: boolean }): Promise<StoreDoc> {
   const skipProducts = options?.skipProducts === true;
   if (await d1Ready()) {
+    /*
+      A failed read is not an empty catalogue.
+
+      This used to be `.catch(() => [])`, which turned a D1 timeout or a
+      transient error into a store with no rows — and from there into a
+      successful, cacheable, empty response that the storefront rendered as
+      bare section headings. The error now travels; `getStore` decides what to
+      serve instead (a stale snapshot when it has one) and marks the result
+      when it has nothing.
+    */
     const [allStoreRows, rev] = await Promise.all([
       d1RawAll<{ key: string; value: string }>(
         skipProducts ? NON_PRODUCT_ROWS_SQL : ALL_ROWS_SQL,
-      ).catch(() => []),
+      ).catch((err) => {
+        throw new Error(
+          `store_rows_unreadable: ${err instanceof Error ? err.message : String(err)}`,
+          { cause: err },
+        );
+      }),
       readStoreRev(),
     ]);
     storeRev = rev;
@@ -647,6 +692,19 @@ async function loadStore(options?: { skipProducts?: boolean }): Promise<StoreDoc
         console.error(`[store:load_section_failed] section=${section}`, sectionErr);
         if (sectionErr instanceof Error && sectionErr.message.startsWith('store_section_unreadable')) {
           throw sectionErr;
+        }
+        /*
+          Emptying the failed section is fine for banners or bundles — the page
+          loses a strip. For `products` it is the whole shop, and passing an
+          empty array off as the catalogue is the fault this file exists to
+          stop. It travels instead, so `getStore` can answer from its last good
+          snapshot and mark the result if it has none.
+        */
+        if (section === "products") {
+          throw new Error(
+            `store_products_unreadable: ${sectionErr instanceof Error ? sectionErr.message : String(sectionErr)}`,
+            { cause: sectionErr },
+          );
         }
         doc[section] = section === "content" ? {} : [];
       }
@@ -1165,7 +1223,14 @@ export async function getStore(): Promise<StoreDoc> {
       } catch {
         // ignore fallback error
       }
-      return emptyStore;
+      /*
+        Nothing left to serve. The shape callers expect is still returned so a
+        page can render its shell rather than crash, but it is marked: an
+        endpoint must not pass this off as the catalogue, and none of it may be
+        cached anywhere.
+      */
+      console.error("[getStore:degraded_empty_store] no snapshot and no file fallback");
+      return asDegraded(emptyStore);
     })
     .finally(() => {
       storeInFlight = undefined;

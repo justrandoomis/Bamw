@@ -106,9 +106,15 @@ async function fetchStoreData(): Promise<StoreData> {
   })();
 
   inFlightFetch = fetchPromise;
-  fetchPromise.finally(() => {
-    inFlightFetch = null;
-  });
+  // The deduplication bookkeeping is its own promise chain, and a rejected
+  // fetch would surface there as an unhandled rejection as well as at the
+  // caller. Now that a failed load is retried twice, that is three console
+  // errors per outage on top of the one the caller already reports.
+  void fetchPromise
+    .catch(() => undefined)
+    .finally(() => {
+      inFlightFetch = null;
+    });
 
   return fetchPromise;
 }
@@ -131,11 +137,18 @@ export function useStoreData() {
     gcTime: 24 * 60 * 60_000,
     refetchOnMount: true,
     refetchOnWindowFocus: true,
-    retry: (failureCount) => {
-      // Don't retry more than once on error to prevent infinite spin
-      return failureCount < 1;
-    },
-    retryDelay: 1500,
+    /*
+      A single retry 1.5s later was one attempt short of the fault this hook
+      actually meets: the catalogue read is heavy, and when an isolate has no
+      warm snapshot the first request can exceed the 8.5s bound above. That
+      request keeps running on the server and leaves the snapshot warm, so the
+      attempt after it usually returns immediately — but only if there is one.
+      Three attempts, spaced 1s then 2s, cover a transient D1 failure and the
+      503 the server now sends while it cannot read the catalogue, and still
+      settle in well under fifteen seconds before the retry button appears.
+    */
+    retry: (failureCount) => failureCount < 2,
+    retryDelay: (attemptIndex) => Math.min(1000 * 2 ** attemptIndex, 4000),
   });
 }
 
