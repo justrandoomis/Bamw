@@ -1,51 +1,246 @@
 {
  "batch": "025",
- "apply": false,
+ "apply": true,
  "games": [
   {
    "id": "prd_d74598d589434852",
    "slug": "super-mario-galaxy-plus-super-mario-galaxy-2-switch",
    "baseHash": "43e71a4dca43f697ee82fb35fffaf481dbdbf73e902d6c21034758be50c72bf6",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "bannerImages": [
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000030770/2eafc395d5c6fbbcbccc7e151a2552f15d83d5d881bb074d3bc881a38191e440",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000030770/f33b4687628c37c083e6c34f077f5432696ea413048751e8da684ea3b4f1481b",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000030770/92e54844116c79ebb07e3b4f56c454238d2e777fa61ed84c88b2f79909c51ab7"
+    ],
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "informationStatus": "available",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p",
+       "fps": "60"
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p",
+       "fps": "60"
+      },
+      "modes": [],
+      "sourceName": "Coverage of the Galaxy collection on Switch",
+      "sourceUrl": "https://www.nintendolife.com/games/nintendo-switch/super_mario_galaxy_plus_super_mario_galaxy_2",
+      "verificationStatus": "technical_analysis"
+     }
+    ]
+   },
+   "clear": [
+    "youtubeTrailer",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "Retry after the guard caught an unprobed dead banner: the array now carries only the three probe-verified entries — the strict verified-only rule, applied consistently from here on. Store-URL trailer removed; cross-generation prose record becomes the platform record at 60 fps. 2025-10-02, Metacritic 87 verified. Contamination removed."
   },
   {
    "id": "prd_dfb6ac13472d4624",
    "slug": "super-mario-party-switch",
    "baseHash": "9a504ac0f08b0db4732def3e684852033b4e8fe2a2dc067e47253c04f308bbd8",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "informationStatus": "available",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p",
+       "fps": "60"
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p",
+       "fps": "60"
+      },
+      "modes": [],
+      "sourceName": "Launch coverage of Super Mario Party",
+      "sourceUrl": "https://www.nintendolife.com/games/nintendo-switch/super_mario_party",
+      "verificationStatus": "technical_analysis"
+     }
+    ]
+   },
+   "clear": [
+    "youtubeTrailer",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "Store-URL trailer removed; the Switch-2-badged tabletop-prose record becomes the platform record at the documented 60 fps. 2018-10-05, Metacritic 76 verified. All images working. Contamination removed."
   },
   {
    "id": "prd_028b26bf1f5d4e0b",
    "slug": "super-mario-rpg-switch-1",
    "baseHash": "2fb3c287505d8af80346b7a792869f93c4133c036c513f69ba157a6311723477",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "coverImage": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000068683/dad2dfa044f3b1809bfb65e0145f824e25d2a363e446a142b5d46b27766463ea",
+    "image": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000068683/dad2dfa044f3b1809bfb65e0145f824e25d2a363e446a142b5d46b27766463ea",
+    "bannerImages": [
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000068683/4c7e8dd48d4502fe6e055a4123edb756884df4c3b9e38b6e0b2e6467f0e3f156",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000068683/6f1e4ece77f40f695a7589fb098bc07c26ea34dcb740f31ad65f5b6fe157d006"
+    ],
+    "galleryImages": [
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000068683/9e65faa68da4e6401bec610a841c4767843058906b4dbca5b809a9fe7eb7bc81"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000068683/163e4c00b087ebce4aba847ea045c6447847f8441799cff4742ca0b96e16fbb5"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000068683/b6ddbc898fcb6c78c6d186d914c9cbdf446652b930d16eabb30b169fbf9b94c1"
+     }
+    ],
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "informationStatus": "not_published",
+      "unavailableReason": "Nintendo publishes no resolution or frame-rate figures for the Super Mario RPG remake.",
+      "handheld": {
+       "supported": true
+      },
+      "tv": {
+       "supported": true
+      },
+      "modes": [],
+      "sourceName": "Nintendo official product page",
+      "sourceUrl": "https://www.nintendo.com/us/store/products/super-mario-rpg-switch/",
+      "verificationStatus": "official"
+     }
+    ]
+   },
+   "clear": [
+    "nintendoCardImage",
+    "youtubeTrailer",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "Six dead roles rebuilt from the six verified eShop galleries: lead shot to cover and listing, two to banners, three kept. Broken square-card removed; store-URL trailer removed. The Switch-2-badged not-published record becomes the honest platform record. Genuine box and wrap working. 2023-11-17, Metacritic 84 verified. Contamination removed."
   },
   {
    "id": "prd_b9c50887a24849fa",
    "slug": "super-smash-bros-ultimate",
    "baseHash": "beae9a286301a041d1d1c956ea66bdbc5ca0e9bb6f9fb92493972aff718dce66",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "bannerImages": [
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000012332/245420c78ce40337bdca7ce9c2dd819bd4ae33b022da9b922c0710b8420b59dd",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000012332/0a381c9a157deda7997e47a40ebedf5d6357daa54eadb8747c85535247b5966a"
+    ],
+    "galleryImages": [
+     {
+      "alt": "Super Smash Bros. Ultimate official/promotional game-world media 3",
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000012332/039c33416d22f81d72efa2f1646bb97627f2be0a0bfaea7f4a3638ce0ce73eba"
+     },
+     {
+      "alt": "Super Smash Bros. Ultimate official/promotional game-world media 4",
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000012332/4a0b002c60e6fd1cbbf3165fb666fde994decf73d60902957963f7d17113a3e5"
+     },
+     {
+      "alt": "Super Smash Bros. Ultimate official/promotional game-world media 5",
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000012332/a1194f11c5397e5134cad94a723d9afb2c9ab274ee5d824aa80c6ea4d60f0dc7"
+     }
+    ],
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "informationStatus": "available",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p",
+       "fps": "60"
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p",
+       "fps": "60"
+      },
+      "modes": [],
+      "sourceName": "Digital Foundry's analysis of Smash Ultimate",
+      "sourceUrl": "https://www.nintendolife.com/games/nintendo-switch/super_smash_bros_ultimate",
+      "verificationStatus": "technical_analysis"
+     }
+    ]
+   },
+   "clear": [
+    "box_front_url"
+   ],
+   "notes": "Four dead banners replaced by two shots promoted from the five verified galleries (three remain). The malformed HTTP-400 box URL removed; the working box stays. The Switch-2-badged not-published record becomes the platform record with Digital Foundry's documented 1080p/720p at 60 fps — among the best-documented figures on the platform. 2018-12-07, Metacritic 93 verified. No contamination present on this record."
   },
   {
    "id": "prd_46580d6478e849b6",
    "slug": "the-binding-of-isaac-afterbirthplus-switch-1",
    "baseHash": "79feaf070960f96a8bea0d487195f0e3dad1b1cb4cbf7849b44c9c56eb241a37",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "size": 1.0,
+    "downloadSizeGb": 1.0,
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "informationStatus": "available",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p",
+       "fps": "60"
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p",
+       "fps": "60"
+      },
+      "modes": [],
+      "sourceName": "Port coverage of Afterbirth+ on Switch",
+      "sourceUrl": "https://www.nintendolife.com/games/nintendo-switch/the_binding_of_isaac_afterbirth",
+      "verificationStatus": "technical_analysis"
+     }
+    ]
+   },
+   "clear": [
+    "youtubeTrailer",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "Size string '1.0 GB' becomes a number; page-URL trailer removed; doubled records collapse to the platform record at the documented 60 fps. 2017-09-07, Metacritic 85 verified (hidden product)."
   }
  ]
 }
