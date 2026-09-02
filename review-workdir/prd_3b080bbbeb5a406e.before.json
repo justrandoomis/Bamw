@@ -1,0 +1,598 @@
+{
+ "title": "The Hundred Line: Last Defense Academy",
+ "titleEn": "The Hundred Line: Last Defense Academy",
+ "titleKu": "",
+ "slug": "the-hundred-line-last-defense-academy-switch",
+ "description": "The Hundred Line: Last Defense Academy is a story-heavy adventure and tactical RPG created by teams led by Kazutaka Kodaka and Kotaro Uchikoshi. Fifteen students are forced to defend the isolated Last Defense Academy from grotesque invaders for 100 days. Between tactical battles, players explore, spend free time with classmates, build relationships, craft gifts, and make choices that can lead to a very large number of story outcomes.",
+ "descriptionEn": "The Hundred Line: Last Defense Academy is a story-heavy adventure and tactical RPG created by teams led by Kazutaka Kodaka and Kotaro Uchikoshi. Fifteen students are forced to defend the isolated Last Defense Academy from grotesque invaders for 100 days. Between tactical battles, players explore, spend free time with classmates, build relationships, craft gifts, and make choices that can lead to a very large number of story outcomes.",
+ "descriptionKu": "",
+ "cartridgeImage": "/api/files/products/prd_3b080bbbeb5a406e/front-box-b75b82ed9303e1dc.webp",
+ "nintendoCardImage": "/api/files/products/prd_3b080bbbeb5a406e/square-card-897b00896badf49d.webp",
+ "coverHiResImage": "/api/files/products/prd_3b080bbbeb5a406e/3d-wrap-612b20bd27df4373.webp",
+ "coverImage": "/api/files/products/prd_3b080bbbeb5a406e/cover-125dc281893ac077.webp",
+ "bannerImages": [
+  "https://img-eshop.cdn.nintendo.net/i/0bf9c14f7e21271cf3bc455dac34eb0464efbbc79129213909ed7382caa943f5.jpg",
+  "https://img-eshop.cdn.nintendo.net/i/8d0a37faeeebd7061ca67b40331b827bb763e3f6fbf8ce73778023792d0de425.jpg",
+  "https://img-eshop.cdn.nintendo.net/i/6da100ae1d44015ffcab4105b9bc2c964cb8bbf4207cdbc95bc31b491a32752e.jpg",
+  "https://img-eshop.cdn.nintendo.net/i/f7c36de0a61f94c347b4b9f8f3313bf8d28d1f8d55104702fa77c6380cfdf8e0.jpg",
+  "https://img-eshop.cdn.nintendo.net/i/049c231b074a7afcf025251d4038b27c3331599fdf67584fab29c0cc0e5e6ef6.jpg",
+  "https://img-eshop.cdn.nintendo.net/i/9e62a5b98efc5f61610661ffc41cc2ad906fdb0469fe504811807ed2dcfe6912.jpg"
+ ],
+ "gallery": [],
+ "youtubeTrailer": "https://video.fastly.steamstatic.com/store_trailers/257032183/movie_max_vp9.webm?t=1718760084",
+ "releaseDate": "2025-04-24",
+ "ageRating": "ESRB M / PEGI 16-18 regional equivalent",
+ "metacriticRating": 86,
+ "genres": [
+  "Adventure",
+  "Simulation",
+  "Tactical RPG",
+  "Visual Novel"
+ ],
+ "platform": "switch1",
+ "size": "13.3 GB",
+ "numberOfPlayers": "Single system (1)",
+ "supportedLanguages": "Japanese, English",
+ "hardwareModel": "",
+ "colorEdition": "",
+ "storageCapacity": "",
+ "screenSpecs": "",
+ "batteryLife": "",
+ "boxContents": [],
+ "boxContentsText": "",
+ "warrantyCondition": "",
+ "connectivity": "",
+ "characterName": "Link",
+ "amiiboSeries": "The Legend of Zelda",
+ "figureType": "figure",
+ "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+ "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+ "boxCondition": "mib",
+ "releaseWave": "Wave 2 (Restock)",
+ "rarity": "standard",
+ "accessoryType": "حقيبة حماية وتنقل Carry Case",
+ "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+ "brand": "Nintendo Official",
+ "material": "Hard EVA Shockproof Shell",
+ "availableColors": "Black, Neon Red/Blue, White",
+ "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+ "cardValue": "$20 eShop Balance",
+ "region": "Global",
+ "cardType": "eshop",
+ "deliveryMethod": "instant_code",
+ "redemptionGuide": "",
+ "redemptionSteps": [],
+ "validity": "no_expiry",
+ "usedType": "cartridge",
+ "conditionGrade": "like_new",
+ "packaging": "cib",
+ "guaranteeStatus": "tested_30days",
+ "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+ "accountType": "primary",
+ "badge": "وفر 40%",
+ "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+ "price": 8500,
+ "cost": 2000,
+ "stock": 999999,
+ "isInfiniteStock": true,
+ "isHidden": true,
+ "displayOrder": 0,
+ "category": "nintendo-switch-games",
+ "categoryId": "nintendo-switch-games",
+ "categoryEn": "",
+ "categoryKu": "",
+ "options": [
+  {
+   "id": "offline_account",
+   "name": "مشترك",
+   "description": "مشترك",
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_account",
+   "name": "خاص بك",
+   "description": "خاص بك",
+   "stock": 9999,
+   "isInfiniteStock": true
+  }
+ ],
+ "types": [
+  {
+   "id": "offline_base",
+   "name": "مشترك — اللعبة الأساسية",
+   "optionId": "offline_account",
+   "price": 8500,
+   "cost": 2000,
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "offline_extras",
+   "name": "مشترك — مع الإضافات",
+   "optionId": "offline_account",
+   "price": 10500,
+   "cost": 3000,
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_base",
+   "name": "خاص بك — اللعبة الأساسية",
+   "optionId": "online_account",
+   "price": 26500,
+   "cost": 20750,
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_extras",
+   "name": "خاص بك — مع الإضافات",
+   "optionId": "online_account",
+   "price": 29500,
+   "cost": 23000,
+   "stock": 9999,
+   "isInfiniteStock": true
+  }
+ ],
+ "editions": [],
+ "dlcs": [],
+ "isActive": true,
+ "status": "Active",
+ "kind": "account",
+ "trade_value_iqd": 14000,
+ "store_offer_bonus_iqd": 2500,
+ "trade_enabled": true,
+ "trade_value_locked": false,
+ "id": "prd_3b080bbbeb5a406e",
+ "schema_version": 24,
+ "titleAr": "ذا هاندرد لاين: لاست ديفنس أكاديمي",
+ "compatibility": [
+  "Nintendo Switch",
+  "Nintendo Switch 2: backward compatible"
+ ],
+ "edition": "Standard / Digital Deluxe available",
+ "developer": "Too Kyo Games / Media.Vision",
+ "publisher": "Aniplex / XSEED Games",
+ "seriesName": "The Hundred Line",
+ "opencriticRating": 86,
+ "userScore": 8.6,
+ "metacriticUrl": "https://www.metacritic.com/game/the-hundred-line-last-defense-academy/",
+ "price_usd": 59.99,
+ "officialUrl": "https://www.nintendo.com/au/games/nintendo-switch/the-hundred-line-last-defense-academy/",
+ "eshopUrl": "https://www.nintendo.com/au/games/nintendo-switch/the-hundred-line-last-defense-academy/",
+ "gameIsOffline": true,
+ "gameIsOnline": false,
+ "gameLanguageLocked": false,
+ "description_short": "A 100-day story-driven adventure blending visual-novel choices, free-time relationships, exploration, and tactical school-defense battles.",
+ "description_ar": "لعبة قصصية وتكتيكية تدور حول 15 طالبًا يدافعون عن Last Defense Academy لمدة 100 يوم، مع معارك SRPG ووقت حر وعلاقات واستكشاف وقرارات تؤدي إلى نهايات متعددة.",
+ "box_front_url": "https://gamesdb-images.launchbox.gg/r2_5e690e5d-bccd-4152-ba7e-661397012bbd.jpg",
+ "galleryImages": [
+  {
+   "url": "/api/files/products/prd_3b080bbbeb5a406e/gallery-1-087ac9da2dd3b84b.webp",
+   "alt": "The Hundred Line: Last Defense Academy screenshot 1"
+  },
+  {
+   "url": "/api/files/products/prd_3b080bbbeb5a406e/gallery-2-e901f7b64d5d6ad2.webp",
+   "alt": "The Hundred Line: Last Defense Academy screenshot 2"
+  },
+  {
+   "url": "/api/files/products/prd_3b080bbbeb5a406e/gallery-3-a349f18bead4ebed.webp",
+   "alt": "The Hundred Line: Last Defense Academy screenshot 3"
+  },
+  {
+   "url": "/api/files/products/prd_3b080bbbeb5a406e/gallery-4-795f1ef0cc36dd51.webp",
+   "alt": "The Hundred Line: Last Defense Academy screenshot 4"
+  },
+  {
+   "url": "/api/files/products/prd_3b080bbbeb5a406e/gallery-5-b398c5b0245a252f.webp",
+   "alt": "The Hundred Line: Last Defense Academy screenshot 5"
+  },
+  {
+   "url": "/api/files/products/prd_3b080bbbeb5a406e/gallery-6-6ef8a2c1ba4a0bd8.webp",
+   "alt": "The Hundred Line: Last Defense Academy screenshot 6"
+  }
+ ],
+ "languagesText": [
+  "English",
+  "Japanese",
+  "Regional store language support may vary"
+ ],
+ "languagesAudio": [
+  "Japanese voice",
+  "English text support",
+  "Music and sound effects"
+ ],
+ "tvMode": true,
+ "tabletopMode": true,
+ "handheldMode": true,
+ "nintendoPlayModes": "TV mode / Tabletop mode / Handheld mode",
+ "nintendoOnlineRequired": false,
+ "nintendoCloudSaves": true,
+ "nintendoGameKeyCard": false,
+ "nintendoPhysicalNeedsDownload": false,
+ "switch2Enhanced": false,
+ "switch2Exclusive": false,
+ "nintendoNotes": "Official Nintendo listings place the game on Nintendo Switch, with one local player, TV/Tabletop/Handheld modes, Save Data Cloud, and a 13.3 GB listing. Digital Deluxe content includes a digital art book and soundtrack.",
+ "editionsList": [
+  {
+   "name": "Regular / Offline",
+   "coverUrl": "https://gamesdb-images.launchbox.gg/r2_5e690e5d-bccd-4152-ba7e-661397012bbd.jpg",
+   "contents": [
+    {
+     "label": "Base game"
+    },
+    {
+     "label": "Offline account access"
+    },
+    {
+     "label": "100-day campaign"
+    }
+   ]
+  },
+  {
+   "name": "Bonus Edition / Offline",
+   "coverUrl": "https://gamesdb-images.launchbox.gg/r2_5e690e5d-bccd-4152-ba7e-661397012bbd.jpg",
+   "contents": [
+    {
+     "label": "Base game"
+    },
+    {
+     "label": "Supplier Bonus tier"
+    },
+    {
+     "label": "Offline account access"
+    }
+   ]
+  },
+  {
+   "name": "Standard / Online",
+   "coverUrl": "https://gamesdb-images.launchbox.gg/r2_5e690e5d-bccd-4152-ba7e-661397012bbd.jpg",
+   "contents": [
+    {
+     "label": "Base game"
+    },
+    {
+     "label": "Online account access"
+    },
+    {
+     "label": "100-day campaign"
+    }
+   ]
+  },
+  {
+   "name": "Deluxe Edition / Online",
+   "coverUrl": "https://gamesdb-images.launchbox.gg/r2_5e690e5d-bccd-4152-ba7e-661397012bbd.jpg",
+   "contents": [
+    {
+     "label": "Base game"
+    },
+    {
+     "label": "Digital Art Book / Digital Soundtrack themed premium tier"
+    },
+    {
+     "label": "Online account access"
+    }
+   ]
+  }
+ ],
+ "gameplayPillars": [
+  {
+   "title": "Tactical defensive battles",
+   "description": "Grid-based SRPG encounters ask the class to stop invaders using each student’s specialist skills.",
+   "imageUrl": "https://img-eshop.cdn.nintendo.net/i/0bf9c14f7e21271cf3bc455dac34eb0464efbbc79129213909ed7382caa943f5.jpg"
+  },
+  {
+   "title": "100-day narrative structure",
+   "description": "The calendar and repeated defense cycle create constant pressure while the larger mystery slowly unfolds.",
+   "imageUrl": "https://img-eshop.cdn.nintendo.net/i/8d0a37faeeebd7061ca67b40331b827bb763e3f6fbf8ce73778023792d0de425.jpg"
+  },
+  {
+   "title": "Free-time relationships",
+   "description": "Spend time with classmates to deepen bonds and learn more about their personalities and histories.",
+   "imageUrl": "https://img-eshop.cdn.nintendo.net/i/6da100ae1d44015ffcab4105b9bc2c964cb8bbf4207cdbc95bc31b491a32752e.jpg"
+  },
+  {
+   "title": "Exploration outside the school",
+   "description": "Players can investigate wilderness and ruins beyond the academy between major attacks.",
+   "imageUrl": "https://img-eshop.cdn.nintendo.net/i/f7c36de0a61f94c347b4b9f8f3313bf8d28d1f8d55104702fa77c6380cfdf8e0.jpg"
+  },
+  {
+   "title": "Branching choices and endings",
+   "description": "Decisions can redirect the story dramatically, making replay and route exploration a central appeal.",
+   "imageUrl": "https://img-eshop.cdn.nintendo.net/i/049c231b074a7afcf025251d4038b27c3331599fdf67584fab29c0cc0e5e6ef6.jpg"
+  }
+ ],
+ "worldSummary": "The game contrasts an isolated school protected by supernatural barriers with dangerous ruins and wasteland outside, building a closed-community mystery over a fixed 100-day period.",
+ "storyChapters": [
+  {
+   "title": "Takumi’s normal life collapses",
+   "body": "Takumi Sumino’s ordinary life ends when grotesque monsters attack and a strange creature offers him power.",
+   "imageUrl": "https://img-eshop.cdn.nintendo.net/i/0bf9c14f7e21271cf3bc455dac34eb0464efbbc79129213909ed7382caa943f5.jpg"
+  },
+  {
+   "title": "Enter Last Defense Academy",
+   "body": "Takumi awakens at the isolated academy alongside fourteen other students drafted into the Special Defense Unit.",
+   "imageUrl": "https://img-eshop.cdn.nintendo.net/i/8d0a37faeeebd7061ca67b40331b827bb763e3f6fbf8ce73778023792d0de425.jpg"
+  },
+  {
+   "title": "Survive repeated invasions",
+   "body": "The students must defend the school while learning how their specialist abilities work in tactical combat.",
+   "imageUrl": "https://img-eshop.cdn.nintendo.net/i/6da100ae1d44015ffcab4105b9bc2c964cb8bbf4207cdbc95bc31b491a32752e.jpg"
+  },
+  {
+   "title": "Build bonds and uncover secrets",
+   "body": "Free time, exploration, and personal interactions reveal hidden motives and the truth behind the academy.",
+   "imageUrl": "https://img-eshop.cdn.nintendo.net/i/f7c36de0a61f94c347b4b9f8f3313bf8d28d1f8d55104702fa77c6380cfdf8e0.jpg"
+  },
+  {
+   "title": "Reach radically different outcomes",
+   "body": "Choices across the 100 days can lead into dramatically different routes and endings.",
+   "imageUrl": "https://img-eshop.cdn.nintendo.net/i/049c231b074a7afcf025251d4038b27c3331599fdf67584fab29c0cc0e5e6ef6.jpg"
+  }
+ ],
+ "features": [
+  "Hybrid visual-novel and tactical-RPG structure",
+  "Large branching narrative with many outcomes",
+  "Distinct cast of fifteen student defenders",
+  "Free-time bonding, exploration, and gift crafting",
+  "Digital Deluxe package includes art book and soundtrack"
+ ],
+ "perfResolutionDocked": "Not Officially Published",
+ "perfResolutionHandheld": "Not Officially Published",
+ "perfFps": "Not Officially Published",
+ "perfHdr": false,
+ "playTimeMain": 45,
+ "completionMain": 80,
+ "completionExtras": 120,
+ "faq": [
+  {
+   "q": "Is The Hundred Line a tactical RPG?",
+   "a": "Yes. Tactical defensive battles are a major gameplay pillar, combined with adventure and visual-novel storytelling."
+  },
+  {
+   "q": "Why is the game called The Hundred Line?",
+   "a": "The central premise tasks the students with defending the academy for 100 days."
+  },
+  {
+   "q": "Does it have multiple endings?",
+   "a": "Yes. Branching choices and many routes are a major part of the game’s identity."
+  },
+  {
+   "q": "Is it multiplayer?",
+   "a": "No. The Nintendo Switch release is a single-player game."
+  },
+  {
+   "q": "What does the Digital Deluxe Edition include?",
+   "a": "Official store descriptions include the base game plus a Digital Art Book and Digital Soundtrack."
+  }
+ ],
+ "verdictScore": 8.8,
+ "verdictPros": [
+  "Extremely ambitious branching story",
+  "Strong mix of tactical battles and character drama",
+  "Memorable cast and mystery structure",
+  "Replay value is unusually high",
+  "Distinct creators bring recognizable narrative style"
+ ],
+ "verdictCons": [
+  "Very long if exploring many routes",
+  "Heavy dialogue will not suit action-focused players",
+  "Some tactical battles are simpler than dedicated strategy games",
+  "Dark themes and violence limit audience",
+  "Repetition is unavoidable when pursuing route variations"
+ ],
+ "reviews": [
+  {
+   "source": "Metacritic",
+   "score": "86",
+   "url": "https://www.metacritic.com/game/the-hundred-line-last-defense-academy/"
+  },
+  {
+   "source": "Nintendo",
+   "score": "Official AU listing",
+   "url": "https://www.nintendo.com/au/games/nintendo-switch/the-hundred-line-last-defense-academy/"
+  },
+  {
+   "source": "LaunchBox",
+   "score": "Nintendo Switch entry",
+   "url": "https://gamesdb.launchbox-app.com/games/details/423514-the-hundred-line-last-defense-academy"
+  }
+ ],
+ "timeline": [
+  {
+   "date": "2025-04-24",
+   "title": "Nintendo Switch release"
+  },
+  {
+   "date": "2025-04-24",
+   "title": "Digital Deluxe Edition available"
+  },
+  {
+   "date": "2026-08-27",
+   "title": "Current storefront extraction"
+  }
+ ],
+ "patchNotes": [
+  {
+   "version": "Launch version",
+   "date": "2025-04-24"
+  },
+  {
+   "version": "Current retail build",
+   "date": "2026-08-27"
+  }
+ ],
+ "studioName": "Too Kyo Games / Media.Vision",
+ "studioUrl": "https://www.nintendo.com/au/games/nintendo-switch/the-hundred-line-last-defense-academy/",
+ "studioLocation": "Japan",
+ "sources": [
+  {
+   "name": "Nintendo Australia official page",
+   "url": "https://www.nintendo.com/au/games/nintendo-switch/the-hundred-line-last-defense-academy/"
+  },
+  {
+   "name": "LaunchBox Switch entry",
+   "url": "https://gamesdb.launchbox-app.com/games/details/423514-the-hundred-line-last-defense-academy"
+  },
+  {
+   "name": "Nintendo eShop highlights",
+   "url": "https://www.nintendo.com/en-gb/News/2025/April/Nintendo-eShop-Highlights-24-04-2025-2806712.html"
+  }
+ ],
+ "downloadSizeGb": 13.3,
+ "requiredSpaceGb": 13.3,
+ "microSdRecommended": true,
+ "storageNotes": "Nintendo lists approximately 13.3 GB for the Nintendo Switch release.",
+ "mpLocalPlayers": false,
+ "mpOnlinePlayers": false,
+ "mpCoop": false,
+ "mpCompetitive": false,
+ "mpLocalWireless": false,
+ "mpSplitScreen": false,
+ "seriesEntries": [
+  "Master Detective Archives: RAIN CODE",
+  "Danganronpa V3: Killing Harmony",
+  "AI: The Somnium Files"
+ ],
+ "dlc": [
+  {
+   "name": "Digital Deluxe bonus content",
+   "description": "The Digital Deluxe Edition includes a Digital Art Book and Digital Soundtrack alongside the base game."
+  }
+ ],
+ "devicePerformance": [
+  {
+   "device": "Nintendo Switch",
+   "deviceSlug": "nintendo-switch",
+   "deviceModel": "Nintendo Switch",
+   "hardwareId": "nintendo-switch",
+   "informationStatus": "Available / sourced",
+   "handheld": {
+    "supported": true,
+    "resolution": "Not Officially Published",
+    "resolutionDynamic": false,
+    "renderingResolution": "Not Officially Published",
+    "outputResolution": "Not Officially Published",
+    "fps": "Not Officially Published",
+    "fpsMin": "Not Officially Published",
+    "fpsMax": "Not Officially Published",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "Handheld",
+    "notes": "Nintendo does not publish a detailed resolution/FPS table for this title on the product page; fields are explicitly marked rather than guessed."
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "Not Officially Published",
+    "resolutionDynamic": false,
+    "renderingResolution": "Not Officially Published",
+    "outputResolution": "Not Officially Published",
+    "fps": "Not Officially Published",
+    "fpsMin": "Not Officially Published",
+    "fpsMax": "Not Officially Published",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "TV / Docked",
+    "notes": "Nintendo does not publish a detailed resolution/FPS table for this title on the product page; fields are explicitly marked rather than guessed."
+   },
+   "modes": [
+    {
+     "name": "Primary documented / observed profile",
+     "handheldResolution": "Not Officially Published",
+     "handheldFps": "Not Officially Published",
+     "tvResolution": "Not Officially Published",
+     "tvFps": "Not Officially Published",
+     "hdr": false,
+     "vrr": false,
+     "notes": "Nintendo does not publish a detailed resolution/FPS table for this title on the product page; fields are explicitly marked rather than guessed."
+    }
+   ],
+   "upscaling": "Game / system scaling where applicable",
+   "rayTracing": false,
+   "rayTracingMode": "Not Supported",
+   "loadingTime": "Scene-dependent; no universal value",
+   "loadingNotes": "Loading varies by scene, storage state, patch level, and platform.",
+   "gameVersion": "Current retail build",
+   "patchVersion": "Current available update",
+   "testedDate": "2026-08-27",
+   "sourceName": "Nintendo official product page + established release performance profile",
+   "sourceUrl": "https://www.nintendo.com/au/games/nintendo-switch/the-hundred-line-last-defense-academy/",
+   "verifiedAt": "2026-08-27",
+   "verificationStatus": "Sourced / compatibility profile",
+   "performanceNotes": "Nintendo does not publish a detailed resolution/FPS table for this title on the product page; fields are explicitly marked rather than guessed."
+  },
+  {
+   "device": "Nintendo Switch 2",
+   "deviceSlug": "nintendo-switch-2",
+   "deviceModel": "Nintendo Switch 2",
+   "hardwareId": "nintendo-switch-2",
+   "informationStatus": "Available / sourced",
+   "handheld": {
+    "supported": true,
+    "resolution": "Not Officially Published",
+    "resolutionDynamic": false,
+    "renderingResolution": "Not Officially Published",
+    "outputResolution": "Not Officially Published",
+    "fps": "Not Officially Published",
+    "fpsMin": "Not Officially Published",
+    "fpsMax": "Not Officially Published",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "Handheld / Backward Compatibility",
+    "notes": "Backward-compatible Switch software on Switch 2; exact rendering resolution/FPS is not officially published in the product listing."
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "Not Officially Published",
+    "resolutionDynamic": false,
+    "renderingResolution": "Not Officially Published",
+    "outputResolution": "Not Officially Published",
+    "fps": "Not Officially Published",
+    "fpsMin": "Not Officially Published",
+    "fpsMax": "Not Officially Published",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "TV / Docked / Backward Compatibility",
+    "notes": "Backward-compatible Switch software on Switch 2; exact rendering resolution/FPS is not officially published in the product listing."
+   },
+   "modes": [
+    {
+     "name": "Primary documented / observed profile",
+     "handheldResolution": "Not Officially Published",
+     "handheldFps": "Not Officially Published",
+     "tvResolution": "Not Officially Published",
+     "tvFps": "Not Officially Published",
+     "hdr": false,
+     "vrr": false,
+     "notes": "Backward-compatible Switch software on Switch 2; exact rendering resolution/FPS is not officially published in the product listing."
+    }
+   ],
+   "upscaling": "Game / system scaling where applicable",
+   "rayTracing": false,
+   "rayTracingMode": "Not Supported",
+   "loadingTime": "Scene-dependent; no universal value",
+   "loadingNotes": "Loading varies by scene, storage state, patch level, and platform.",
+   "gameVersion": "Current retail build",
+   "patchVersion": "Current available update",
+   "testedDate": "2026-08-27",
+   "sourceName": "Nintendo Switch 2 compatibility + original game performance profile",
+   "sourceUrl": "https://www.nintendo.com/au/games/nintendo-switch/the-hundred-line-last-defense-academy/",
+   "verifiedAt": "2026-08-27",
+   "verificationStatus": "Sourced / compatibility profile",
+   "performanceNotes": "Backward-compatible Switch software on Switch 2; exact rendering resolution/FPS is not officially published in the product listing."
+  }
+ ],
+ "switch2UpgradePrice": 0,
+ "boxContentsList": [],
+ "image": "https://img-eshop.cdn.nintendo.net/i/0bf9c14f7e21271cf3bc455dac34eb0464efbbc79129213909ed7382caa943f5.jpg",
+ "banner": "https://img-eshop.cdn.nintendo.net/i/0bf9c14f7e21271cf3bc455dac34eb0464efbbc79129213909ed7382caa943f5.jpg",
+ "schemaId": "",
+ "batchImport": true,
+ "createdAt": "2026-08-28T18:38:05.515Z",
+ "updatedAt": "2026-08-28T18:38:05.515Z"
+}

@@ -1,0 +1,3388 @@
+{
+ "batch": "027",
+ "generatedAt": "2026-09-02T04:16:01.371Z",
+ "totalGames": 145,
+ "reviewedSoFar": 125,
+ "games": [
+  {
+   "id": "prd_5b18e929c72c41e0",
+   "slug": "the-legend-of-zelda-skyward-sword-hd-switch",
+   "title": "The Legend of Zelda: Skyward Sword HD",
+   "platform": "switch1",
+   "isHidden": true,
+   "hash": "2d6210818905fad7792a21b17aba3bf64774e42f544e2e4fee11685f1e46ae80",
+   "images": [
+    {
+     "role": "front-box",
+     "field": "cartridgeImage",
+     "url": "https://banan.to/api/files/products/prd_5b18e929c72c41e0/front-box-09a43c0c26a229ae.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 434958,
+     "width": 1167,
+     "height": 1888,
+     "thumb": "review-workdir/thumbs/batch-027/the-legend-of-zelda-skyward-sword-hd-switch__front-box-0.png"
+    },
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://banan.to/api/files/products/prd_5b18e929c72c41e0/square-card-89eabe1dd6c82485.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 308086,
+     "width": 1024,
+     "height": 1024,
+     "thumb": "review-workdir/thumbs/batch-027/the-legend-of-zelda-skyward-sword-hd-switch__square-card-1.png"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://banan.to/api/files/products/prd_5b18e929c72c41e0/cover-a24b5efdc1993d85.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 670468,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-027/the-legend-of-zelda-skyward-sword-hd-switch__detail-cover-2.png"
+    },
+    {
+     "role": "3d-texture",
+     "field": "coverHiResImage",
+     "url": "https://banan.to/api/files/products/prd_5b18e929c72c41e0/3d-wrap-6cc8b01b5f871167.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 1120358,
+     "width": 2454,
+     "height": 1888,
+     "thumb": "review-workdir/thumbs/batch-027/the-legend-of-zelda-skyward-sword-hd-switch__3d-texture-3.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://banan.to/api/files/products/prd_5b18e929c72c41e0/gallery-1-fce08e50198fecc0.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 117340,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-027/the-legend-of-zelda-skyward-sword-hd-switch__gallery-4.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[1]",
+     "url": "https://banan.to/api/files/products/prd_5b18e929c72c41e0/gallery-2-ca9c53731cad59de.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 106862,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-027/the-legend-of-zelda-skyward-sword-hd-switch__gallery-5.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[2]",
+     "url": "https://banan.to/api/files/products/prd_5b18e929c72c41e0/gallery-3-c3d3b51ef9aa43cc.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 87962,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-027/the-legend-of-zelda-skyward-sword-hd-switch__gallery-6.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[3]",
+     "url": "https://banan.to/api/files/products/prd_5b18e929c72c41e0/gallery-4-220a1284ee3b3844.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 85462,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-027/the-legend-of-zelda-skyward-sword-hd-switch__gallery-7.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[4]",
+     "url": "https://banan.to/api/files/products/prd_5b18e929c72c41e0/gallery-5-e61d93a722e25b46.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 137786,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-027/the-legend-of-zelda-skyward-sword-hd-switch__gallery-8.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[5]",
+     "url": "https://banan.to/api/files/products/prd_5b18e929c72c41e0/gallery-6-67b9f6ad1053e0ef.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 88978,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-027/the-legend-of-zelda-skyward-sword-hd-switch__gallery-9.png"
+    }
+   ],
+   "record": {
+    "title": "The Legend of Zelda: Skyward Sword HD",
+    "titleEn": "The Legend of Zelda: Skyward Sword HD",
+    "titleKu": "",
+    "slug": "the-legend-of-zelda-skyward-sword-hd-switch",
+    "description": "The Legend of Zelda: Skyward Sword HD remasters the Wii-era adventure that explores the origin of the Master Sword and the earliest known era of Zelda lore. This version sharpens the visuals, adds quality-of-life improvements, and supports both motion controls and button-only controls. Its structure leans more toward classic dungeons, item-based progression, and puzzle-driven exploration than the open-air Zelda entries.",
+    "descriptionEn": "The Legend of Zelda: Skyward Sword HD remasters the Wii-era adventure that explores the origin of the Master Sword and the earliest known era of Zelda lore. This version sharpens the visuals, adds quality-of-life improvements, and supports both motion controls and button-only controls. Its structure leans more toward classic dungeons, item-based progression, and puzzle-driven exploration than the open-air Zelda entries.",
+    "descriptionKu": "",
+    "cartridgeImage": "/api/files/products/prd_5b18e929c72c41e0/front-box-09a43c0c26a229ae.webp",
+    "nintendoCardImage": "/api/files/products/prd_5b18e929c72c41e0/square-card-89eabe1dd6c82485.webp",
+    "coverHiResImage": "/api/files/products/prd_5b18e929c72c41e0/3d-wrap-6cc8b01b5f871167.webp",
+    "coverImage": "/api/files/products/prd_5b18e929c72c41e0/cover-a24b5efdc1993d85.webp",
+    "bannerImages": [
+     ""
+    ],
+    "gallery": [],
+    "youtubeTrailer": "",
+    "releaseDate": "2021-07-16",
+    "ageRating": "ESRB E10+ / PEGI 12",
+    "metacriticRating": 81,
+    "genres": [
+     "Action",
+     "Adventure",
+     "Puzzle"
+    ],
+    "platform": "switch1",
+    "size": 7.1,
+    "numberOfPlayers": "Single system (1)",
+    "supportedLanguages": "Japanese / British English / French / German / Italian / Spanish / Korean / Dutch / Simplified Chinese / Latin American Spanish / Canadian French / Traditional Chinese / American English",
+    "hardwareModel": "",
+    "colorEdition": "",
+    "storageCapacity": "",
+    "screenSpecs": "",
+    "batteryLife": "",
+    "boxContents": [],
+    "boxContentsText": "",
+    "warrantyCondition": "",
+    "connectivity": "",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "Global",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "",
+    "redemptionSteps": [],
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 11500,
+    "cost": 1250,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": true,
+    "displayOrder": 0,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "مشترك",
+      "description": "مشترك",
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_account",
+      "name": "خاص بك",
+      "description": "خاص بك",
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "types": [
+     {
+      "id": "offline_base",
+      "name": "مشترك — اللعبة الأساسية",
+      "optionId": "offline_account",
+      "price": 11500,
+      "cost": 1250,
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_base",
+      "name": "خاص بك — اللعبة الأساسية",
+      "optionId": "online_account",
+      "price": 10500,
+      "cost": 7750,
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "Active",
+    "kind": "account",
+    "trade_value_iqd": 9000,
+    "store_offer_bonus_iqd": 1500,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "id": "prd_5b18e929c72c41e0",
+    "schema_version": 24,
+    "titleAr": "أسطورة زيلدا: سكايوورد سورد إتش دي",
+    "compatibility": [
+     "Nintendo Switch",
+     "Nintendo Switch 2 compatibility: Supported – game behavior is consistent with Nintendo Switch"
+    ],
+    "edition": "HD",
+    "developer": "Nintendo",
+    "publisher": "Nintendo",
+    "seriesName": "The Legend of Zelda",
+    "metacriticUrl": "https://www.metacritic.com/game/the-legend-of-zelda-skyward-sword-hd/",
+    "opencriticRating": 82,
+    "userScore": 7.7,
+    "price_usd": 59.99,
+    "officialUrl": "https://www.nintendo.com/us/store/products/the-legend-of-zelda-skyward-sword-hd-switch/",
+    "eshopUrl": "https://www.nintendo.com/us/store/products/the-legend-of-zelda-skyward-sword-hd-switch/",
+    "gameIsOffline": true,
+    "gameIsOnline": false,
+    "gameLanguageLocked": false,
+    "description_short": "Return to the earliest story in the Zelda timeline in a motion-control-focused adventure refined for Nintendo Switch.",
+    "description_ar": "نسخة محسنة من اللعبة التي تروي البدايات الزمنية لسلسلة زيلدا وأصل Master Sword، مع تحسينات جودة الحياة ودعم التحكم الحركي أو الأزرار على نينتندو سويتش.",
+    "languagesText": [
+     "Japanese / English",
+     "French / German / Italian / Spanish / Dutch",
+     "Korean / Simplified Chinese / Traditional Chinese"
+    ],
+    "languagesAudio": [
+     "Music / sound effects",
+     "Character vocalizations where applicable",
+     "No full language-selectable dub beyond the shipped release build information"
+    ],
+    "tvMode": true,
+    "tabletopMode": false,
+    "handheldMode": true,
+    "nintendoPlayModes": "TV / Handheld",
+    "nintendoOnlineRequired": false,
+    "nintendoCloudSaves": true,
+    "nintendoGameKeyCard": false,
+    "nintendoPhysicalNeedsDownload": false,
+    "switch2Enhanced": false,
+    "switch2Exclusive": false,
+    "nintendoNotes": "Nintendo highlights support for both motion controls and newly added button-only controls, making this HD version more flexible than the original Wii release.",
+    "editionsList": [
+     {
+      "name": "Offline Regular",
+      "contents": [
+       {
+        "label": "Base game"
+       },
+       {
+        "label": "Offline account package"
+       },
+       {
+        "label": "Button-only and motion-control support"
+       }
+      ]
+     },
+     {
+      "name": "Online Standard",
+      "contents": [
+       {
+        "label": "Base game"
+       },
+       {
+        "label": "Online account package"
+       },
+       {
+        "label": "HD remaster of the Wii title"
+       }
+      ]
+     }
+    ],
+    "gameplayPillars": [
+     {
+      "title": "Classic dungeon progression",
+      "description": "Skyward Sword HD places strong emphasis on directed progression through themed dungeons and item-based exploration."
+     },
+     {
+      "title": "Swordplay and motion controls",
+      "description": "The combat system was originally built around directional sword attacks and still supports motion-driven play on Switch."
+     },
+     {
+      "title": "Button-only alternative controls",
+      "description": "Nintendo added a non-motion control scheme that makes the game more comfortable for portable and traditional controller play."
+     },
+     {
+      "title": "Origin story of the Master Sword",
+      "description": "The narrative explores the beginnings of iconic Zelda lore and the relationship between Link, Zelda, and Fi."
+     },
+     {
+      "title": "Puzzle-focused structure",
+      "description": "Environmental riddles, dungeon mechanisms, and item usage are central to the game's identity."
+     }
+    ],
+    "worldSummary": "Unlike the open-air Zelda entries, Skyward Sword HD emphasizes a more traditional adventure structure built around the sky hub, surface regions, dungeons, and story-driven progression.",
+    "storyChapters": [
+     {
+      "title": "Life above the clouds",
+      "body": "Link begins his journey on Skyloft, a floating settlement in the sky where everyday life seems peaceful."
+     },
+     {
+      "title": "Descend to the surface",
+      "body": "After Zelda is swept below, Link must travel to the dangerous world beneath the clouds to begin the rescue mission."
+     },
+     {
+      "title": "Forge the Master Sword",
+      "body": "The quest becomes a foundational Zelda tale as Link strengthens the Goddess Sword and advances toward its legendary form."
+     },
+     {
+      "title": "Confront ancient evil",
+      "body": "Classic Zelda dungeons and bosses gradually push the story toward the source of the kingdom's danger."
+     },
+     {
+      "title": "Resolve the origin-era conflict",
+      "body": "The ending ties together the series' oldest mythology and the emotional stakes around Link and Zelda."
+     }
+    ],
+    "features": [
+     "Traditional Zelda dungeon and item structure",
+     "Supports motion controls and button-only controls",
+     "Improved visuals and quality-of-life upgrades",
+     "Important lore about the origin of the Master Sword",
+     "Good fit for players who prefer classic Zelda design"
+    ],
+    "perfResolutionDocked": "1080p",
+    "perfResolutionHandheld": "720p",
+    "perfFps": "60",
+    "perfHdr": false,
+    "playTimeMain": 38,
+    "completionMain": 45,
+    "completionExtras": 50,
+    "faq": [
+     {
+      "q": "Does Skyward Sword HD support button-only controls?",
+      "a": "Yes. The HD release added a full button-control option in addition to the motion-control scheme."
+     },
+     {
+      "q": "Is multiplayer supported?",
+      "a": "No. Skyward Sword HD is a single-player adventure."
+     },
+     {
+      "q": "Is it related to Breath of the Wild in gameplay style?",
+      "a": "Not directly. Skyward Sword HD is much more structured and dungeon-driven than Nintendo's open-air Zelda titles."
+     },
+     {
+      "q": "Why is this game important to Zelda lore?",
+      "a": "It tells an origin-era story about the Master Sword and major themes that echo throughout the series."
+     },
+     {
+      "q": "Does it run well on Switch?",
+      "a": "Yes. The HD release targets 60 fps and is widely regarded as technically smoother than the original Wii version."
+     }
+    ],
+    "verdictScore": 8.3,
+    "verdictPros": [
+     "Strong classic Zelda dungeon design",
+     "60 fps presentation feels smooth",
+     "Button-only controls improve accessibility",
+     "Important lore and memorable boss encounters",
+     "Good remaster of a previously divisive game"
+    ],
+    "verdictCons": [
+     "Backtracking can feel repetitive",
+     "Motion controls remain imperfect for some players",
+     "Less freedom than modern open-world Zelda games",
+     "Early pacing is slower than some later entries",
+     "World structure is more segmented than expansive"
+    ],
+    "reviews": [
+     {
+      "source": "Metacritic",
+      "score": "81",
+      "url": "https://www.metacritic.com/game/the-legend-of-zelda-skyward-sword-hd/"
+     },
+     {
+      "source": "OpenCritic",
+      "score": "82",
+      "url": "https://opencritic.com/game/11637/the-legend-of-zelda-skyward-sword-hd"
+     },
+     {
+      "source": "IGN",
+      "score": "8/10",
+      "url": "https://www.ign.com/games/the-legend-of-zelda-skyward-sword-hd"
+     }
+    ],
+    "timeline": [
+     {
+      "date": "2011-11-20",
+      "title": "Original Wii release launched"
+     },
+     {
+      "date": "2021-07-16",
+      "title": "Skyward Sword HD released on Nintendo Switch"
+     },
+     {
+      "date": "2025-06-05",
+      "title": "Backward compatible on Nintendo Switch 2 ecosystem"
+     }
+    ],
+    "patchNotes": [
+     {
+      "version": "Nintendo Switch HD remaster launch version",
+      "date": "2021-07-16"
+     },
+     {
+      "version": "Current retail build",
+      "date": "2026-08-27"
+     }
+    ],
+    "studioName": "Nintendo",
+    "studioUrl": "https://www.nintendo.com/us/store/products/the-legend-of-zelda-skyward-sword-hd-switch/",
+    "studioLocation": "Japan",
+    "sources": [
+     {
+      "name": "Nintendo official product page",
+      "url": "https://www.nintendo.com/us/store/products/the-legend-of-zelda-skyward-sword-hd-switch/"
+     },
+     {
+      "name": "Metacritic",
+      "url": "https://www.metacritic.com/game/the-legend-of-zelda-skyward-sword-hd/"
+     },
+     {
+      "name": "OpenCritic",
+      "url": "https://opencritic.com/game/11637/the-legend-of-zelda-skyward-sword-hd"
+     }
+    ],
+    "downloadSizeGb": 7.1,
+    "requiredSpaceGb": 7.1,
+    "microSdRecommended": false,
+    "storageNotes": "Nintendo lists Skyward Sword HD at approximately 7.1 GB.",
+    "mpLocalPlayers": false,
+    "mpOnlinePlayers": false,
+    "mpCoop": false,
+    "mpCompetitive": false,
+    "mpLocalWireless": false,
+    "mpSplitScreen": false,
+    "seriesEntries": [
+     "The Legend of Zelda: Link's Awakening",
+     "The Legend of Zelda: Breath of the Wild",
+     "The Legend of Zelda: Echoes of Wisdom"
+    ],
+    "dlc": [
+     {
+      "name": "No standalone DLC has been announced",
+      "description": "Skyward Sword HD does not have a separate expansion pass or standalone DLC package."
+     }
+    ],
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "deviceModel": "Nintendo Switch",
+      "hardwareId": "nintendo-switch",
+      "informationStatus": "Available / verified",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p",
+       "resolutionDynamic": false,
+       "renderingResolution": "1280x720",
+       "outputResolution": "1280x720",
+       "fps": "60",
+       "fpsMin": "60",
+       "fpsMax": "60",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Handheld",
+       "notes": "Skyward Sword HD targets a stable 60 fps presentation at 720p handheld and 1080p docked, reflecting its HD remaster positioning on Nintendo Switch."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p",
+       "resolutionDynamic": false,
+       "renderingResolution": "1920x1080",
+       "outputResolution": "1920x1080",
+       "fps": "60",
+       "fpsMin": "60",
+       "fpsMax": "60",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "TV / Docked",
+       "notes": "Skyward Sword HD targets a stable 60 fps presentation at 720p handheld and 1080p docked, reflecting its HD remaster positioning on Nintendo Switch."
+      },
+      "modes": [
+       {
+        "name": "Primary documented mode",
+        "handheldResolution": "720p",
+        "handheldFps": "60",
+        "tvResolution": "1080p",
+        "tvFps": "60",
+        "hdr": false,
+        "vrr": false,
+        "notes": "Skyward Sword HD targets a stable 60 fps presentation at 720p handheld and 1080p docked, reflecting its HD remaster positioning on Nintendo Switch."
+       }
+      ],
+      "upscaling": "Game / system-specific scaling where applicable",
+      "rayTracing": false,
+      "rayTracingMode": "Not Supported",
+      "loadingTime": "Scene-dependent; no single universal loading time",
+      "loadingNotes": "Loading time varies by scene, save progress, storage state, and whether the software is running in its standard build or an enhanced edition.",
+      "gameVersion": "Current retail build",
+      "patchVersion": "Current available update",
+      "testedDate": "2026-08-27",
+      "sourceName": "Nintendo official product page",
+      "sourceUrl": "https://www.nintendo.com/us/store/products/the-legend-of-zelda-skyward-sword-hd-switch/",
+      "performanceNotes": "Skyward Sword HD targets a stable 60 fps presentation at 720p handheld and 1080p docked, reflecting its HD remaster positioning on Nintendo Switch."
+     },
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "hardwareId": "nintendo-switch-2",
+      "informationStatus": "Available / verified",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p",
+       "resolutionDynamic": false,
+       "renderingResolution": "1280x720",
+       "outputResolution": "1280x720",
+       "fps": "60",
+       "fpsMin": "60",
+       "fpsMax": "60",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Handheld",
+       "notes": "Nintendo lists the original game as supported on Nintendo Switch 2. This extraction records a compatibility profile consistent with the original release."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p",
+       "resolutionDynamic": false,
+       "renderingResolution": "1920x1080",
+       "outputResolution": "1920x1080",
+       "fps": "60",
+       "fpsMin": "60",
+       "fpsMax": "60",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "TV / Docked",
+       "notes": "Nintendo lists the original game as supported on Nintendo Switch 2. This extraction records a compatibility profile consistent with the original release."
+      },
+      "modes": [
+       {
+        "name": "Primary documented mode",
+        "handheldResolution": "720p",
+        "handheldFps": "60",
+        "tvResolution": "1080p",
+        "tvFps": "60",
+        "hdr": false,
+        "vrr": false,
+        "notes": "Nintendo lists the original game as supported on Nintendo Switch 2. This extraction records a compatibility profile consistent with the original release."
+       }
+      ],
+      "upscaling": "Game / system-specific scaling where applicable",
+      "rayTracing": false,
+      "rayTracingMode": "Not Supported",
+      "loadingTime": "Scene-dependent; no single universal loading time",
+      "loadingNotes": "Loading time varies by scene, save progress, storage state, and whether the software is running in its standard build or an enhanced edition.",
+      "gameVersion": "Current retail build",
+      "patchVersion": "Current available update",
+      "testedDate": "2026-08-27",
+      "sourceName": "Nintendo official product page / compatibility context",
+      "sourceUrl": "https://www.nintendo.com/us/store/products/the-legend-of-zelda-skyward-sword-hd-switch/",
+      "performanceNotes": "Nintendo lists the original game as supported on Nintendo Switch 2. This extraction records a compatibility profile consistent with the original release."
+     }
+    ],
+    "boxContentsList": [],
+    "image": "",
+    "banner": "",
+    "schemaId": "",
+    "batchImport": true,
+    "galleryImages": [
+     {
+      "url": "/api/files/products/prd_5b18e929c72c41e0/gallery-1-fce08e50198fecc0.webp",
+      "alt": "The Legend of Zelda: Skyward Sword HD screenshot 1"
+     },
+     {
+      "url": "/api/files/products/prd_5b18e929c72c41e0/gallery-2-ca9c53731cad59de.webp",
+      "alt": "The Legend of Zelda: Skyward Sword HD screenshot 2"
+     },
+     {
+      "url": "/api/files/products/prd_5b18e929c72c41e0/gallery-3-c3d3b51ef9aa43cc.webp",
+      "alt": "The Legend of Zelda: Skyward Sword HD screenshot 3"
+     },
+     {
+      "url": "/api/files/products/prd_5b18e929c72c41e0/gallery-4-220a1284ee3b3844.webp",
+      "alt": "The Legend of Zelda: Skyward Sword HD screenshot 4"
+     },
+     {
+      "url": "/api/files/products/prd_5b18e929c72c41e0/gallery-5-e61d93a722e25b46.webp",
+      "alt": "The Legend of Zelda: Skyward Sword HD screenshot 5"
+     },
+     {
+      "url": "/api/files/products/prd_5b18e929c72c41e0/gallery-6-67b9f6ad1053e0ef.webp",
+      "alt": "The Legend of Zelda: Skyward Sword HD screenshot 6"
+     }
+    ],
+    "createdAt": "2026-08-28T18:37:15.404Z",
+    "updatedAt": "2026-08-28T18:37:15.404Z"
+   }
+  },
+  {
+   "id": "prd_5c41a894eedd416e",
+   "slug": "the-legend-of-zelda-tears-of-the-kingdom-switch-1",
+   "title": "The Legend of Zelda: Tears of the Kingdom",
+   "platform": "switch1",
+   "isHidden": true,
+   "hash": "d2ac77af8761d44fe42c72c916971e838fd5c5ee9cf7363bfa612393d73565ac",
+   "images": [
+    {
+     "role": "front-box",
+     "field": "cartridgeImage",
+     "url": "https://banan.to/api/files/products/prd_5c41a894eedd416e/front-box-e047ddcfe96bdf08.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 546582,
+     "width": 1167,
+     "height": 1888,
+     "thumb": "review-workdir/thumbs/batch-027/the-legend-of-zelda-tears-of-the-kingdom-switch-1__front-box-0.png"
+    },
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://banan.to/api/files/products/prd_5c41a894eedd416e/square-card-e80a1007de412198.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 222254,
+     "width": 1024,
+     "height": 1024,
+     "thumb": "review-workdir/thumbs/batch-027/the-legend-of-zelda-tears-of-the-kingdom-switch-1__square-card-1.png"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://banan.to/api/files/products/prd_5c41a894eedd416e/cover-946586ef4983c2fb.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 345788,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-027/the-legend-of-zelda-tears-of-the-kingdom-switch-1__detail-cover-2.png"
+    },
+    {
+     "role": "3d-texture",
+     "field": "coverHiResImage",
+     "url": "https://banan.to/api/files/products/prd_5c41a894eedd416e/3d-wrap-c40d03949c527cc2.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 1292958,
+     "width": 2454,
+     "height": 1888,
+     "thumb": "review-workdir/thumbs/batch-027/the-legend-of-zelda-tears-of-the-kingdom-switch-1__3d-texture-3.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://banan.to/api/files/products/prd_5c41a894eedd416e/gallery-1-116dc2fcf9ba744e.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 86670,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-027/the-legend-of-zelda-tears-of-the-kingdom-switch-1__gallery-4.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[1]",
+     "url": "https://banan.to/api/files/products/prd_5c41a894eedd416e/gallery-2-f7208f389f6387ce.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 104518,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-027/the-legend-of-zelda-tears-of-the-kingdom-switch-1__gallery-5.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[2]",
+     "url": "https://banan.to/api/files/products/prd_5c41a894eedd416e/gallery-3-2589702bf5235f3b.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 130748,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-027/the-legend-of-zelda-tears-of-the-kingdom-switch-1__gallery-6.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[3]",
+     "url": "https://banan.to/api/files/products/prd_5c41a894eedd416e/gallery-4-8c7360b4d574bd84.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 69912,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-027/the-legend-of-zelda-tears-of-the-kingdom-switch-1__gallery-7.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[4]",
+     "url": "https://banan.to/api/files/products/prd_5c41a894eedd416e/gallery-5-73c84e677f89b5c3.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 126876,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-027/the-legend-of-zelda-tears-of-the-kingdom-switch-1__gallery-8.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[5]",
+     "url": "https://banan.to/api/files/products/prd_5c41a894eedd416e/gallery-6-d99fc93d344611e1.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 37978,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-027/the-legend-of-zelda-tears-of-the-kingdom-switch-1__gallery-9.png"
+    }
+   ],
+   "record": {
+    "title": "The Legend of Zelda: Tears of the Kingdom",
+    "titleEn": "The Legend of Zelda: Tears of the Kingdom",
+    "titleKu": "",
+    "slug": "the-legend-of-zelda-tears-of-the-kingdom-switch-1",
+    "description": "The Legend of Zelda: Tears of the Kingdom builds on Breath of the Wild with a larger and denser version of Hyrule that now spans the surface, the sky, and the mysterious Depths below. Link gains abilities such as Ultrahand, Fuse, Ascend, and Recall, enabling players to build vehicles, combine equipment creatively, and solve problems in highly flexible ways. It is one of Nintendo's most ambitious adventure games.",
+    "descriptionEn": "The Legend of Zelda: Tears of the Kingdom builds on Breath of the Wild with a larger and denser version of Hyrule that now spans the surface, the sky, and the mysterious Depths below. Link gains abilities such as Ultrahand, Fuse, Ascend, and Recall, enabling players to build vehicles, combine equipment creatively, and solve problems in highly flexible ways. It is one of Nintendo's most ambitious adventure games.",
+    "descriptionKu": "",
+    "cartridgeImage": "/api/files/products/prd_5c41a894eedd416e/front-box-e047ddcfe96bdf08.webp",
+    "nintendoCardImage": "/api/files/products/prd_5c41a894eedd416e/square-card-e80a1007de412198.webp",
+    "coverHiResImage": "/api/files/products/prd_5c41a894eedd416e/3d-wrap-c40d03949c527cc2.webp",
+    "coverImage": "/api/files/products/prd_5c41a894eedd416e/cover-946586ef4983c2fb.webp",
+    "bannerImages": [
+     ""
+    ],
+    "gallery": [],
+    "youtubeTrailer": "",
+    "releaseDate": "2023-05-12",
+    "ageRating": "ESRB E10+ / PEGI 12",
+    "metacriticRating": 96,
+    "genres": [
+     "Action",
+     "Adventure",
+     "Open World",
+     "RPG"
+    ],
+    "platform": "switch1",
+    "size": 16.3,
+    "numberOfPlayers": "Single system (1)",
+    "supportedLanguages": "Japanese / British English / French / German / Italian / Spanish / Korean / Dutch / Simplified Chinese / Latin American Spanish / Canadian French / Traditional Chinese / American English",
+    "hardwareModel": "",
+    "colorEdition": "",
+    "storageCapacity": "",
+    "screenSpecs": "",
+    "batteryLife": "",
+    "boxContents": [],
+    "boxContentsText": "",
+    "warrantyCondition": "",
+    "connectivity": "",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "Global",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "",
+    "redemptionSteps": [],
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 15000,
+    "cost": 1500,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": true,
+    "displayOrder": 0,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "مشترك",
+      "description": "مشترك",
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_account",
+      "name": "خاص بك",
+      "description": "خاص بك",
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "types": [
+     {
+      "id": "offline_base",
+      "name": "مشترك — اللعبة الأساسية",
+      "optionId": "offline_account",
+      "price": 15000,
+      "cost": 1500,
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_base",
+      "name": "خاص بك — اللعبة الأساسية",
+      "optionId": "online_account",
+      "price": 36250,
+      "cost": 25000,
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "Active",
+    "kind": "account",
+    "trade_value_iqd": 17000,
+    "store_offer_bonus_iqd": 3500,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "id": "prd_5c41a894eedd416e",
+    "schema_version": 24,
+    "titleAr": "أسطورة زيلدا: دموع المملكة",
+    "compatibility": [
+     "Nintendo Switch",
+     "Nintendo Switch 2 compatibility: Supported – original version playable; dedicated Switch 2 Edition also exists"
+    ],
+    "edition": "Standard",
+    "developer": "Nintendo",
+    "publisher": "Nintendo",
+    "seriesName": "The Legend of Zelda",
+    "metacriticUrl": "https://www.metacritic.com/game/the-legend-of-zelda-tears-of-the-kingdom/",
+    "opencriticRating": 96,
+    "userScore": 8.7,
+    "price_usd": 69.99,
+    "officialUrl": "https://www.nintendo.com/us/store/products/the-legend-of-zelda-tears-of-the-kingdom-switch/",
+    "eshopUrl": "https://www.nintendo.com/us/store/products/the-legend-of-zelda-tears-of-the-kingdom-switch/",
+    "gameIsOffline": true,
+    "gameIsOnline": false,
+    "gameLanguageLocked": false,
+    "description_short": "Expand beyond the land of Hyrule and take Link across sky islands and underground depths in a vast sequel built around invention and experimentation.",
+    "description_ar": "تكملة ضخمة لـ Breath of the Wild توسع عالم هايرول إلى السماء والأعماق، وتضيف قدرات مثل Ultrahand وFuse وAscend وRecall، ما يمنح اللاعب حرية هائلة في القتال والحل والاستكشاف.",
+    "languagesText": [
+     "Japanese / English",
+     "French / German / Italian / Spanish / Dutch",
+     "Korean / Simplified Chinese / Traditional Chinese"
+    ],
+    "languagesAudio": [
+     "Music / sound effects",
+     "Character vocalizations where applicable",
+     "No full language-selectable dub beyond the shipped release build information"
+    ],
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": true,
+    "nintendoPlayModes": "TV / Tabletop / Handheld",
+    "nintendoOnlineRequired": false,
+    "nintendoCloudSaves": true,
+    "nintendoGameKeyCard": false,
+    "nintendoPhysicalNeedsDownload": false,
+    "switch2Enhanced": false,
+    "switch2Exclusive": false,
+    "nintendoNotes": "The original Nintendo Switch release remains a distinct product even though Nintendo also offers a separate Nintendo Switch 2 Edition and an upgrade pack.",
+    "editionsList": [
+     {
+      "name": "Offline Regular",
+      "contents": [
+       {
+        "label": "Base game"
+       },
+       {
+        "label": "Offline account package"
+       },
+       {
+        "label": "Original Nintendo Switch release"
+       }
+      ]
+     },
+     {
+      "name": "Online Standard",
+      "contents": [
+       {
+        "label": "Base game"
+       },
+       {
+        "label": "Online account package"
+       },
+       {
+        "label": "Original Nintendo Switch release"
+       }
+      ]
+     }
+    ],
+    "gameplayPillars": [
+     {
+      "title": "Ultrahand building",
+      "description": "Players can assemble vehicles, machines, and problem-solving contraptions using a flexible construction system."
+     },
+     {
+      "title": "Fuse experimentation",
+      "description": "Weapons, shields, and arrows can be fused with items and monster materials, dramatically expanding combat options."
+     },
+     {
+      "title": "Three-layer world design",
+      "description": "The surface, sky islands, and underground Depths create a much more vertical adventure space than the previous game."
+     },
+     {
+      "title": "Open-ended puzzle solving",
+      "description": "Ascend, Recall, and physics systems allow players to solve shrines, traversal problems, and combat scenarios creatively."
+     },
+     {
+      "title": "Epic main quest progression",
+      "description": "Regional stories, major dungeons, and a powerful late-game arc make the sequel feel more directed while keeping openness intact."
+     }
+    ],
+    "worldSummary": "Tears of the Kingdom takes Hyrule in three directions at once: upward into floating islands, downward into a shadowy underground realm, and deeper across the original surface world through more systems and secrets.",
+    "storyChapters": [
+     {
+      "title": "Investigate the Upheaval",
+      "body": "Link and Zelda uncover a disaster beneath Hyrule Castle, setting in motion a crisis that reshapes the entire kingdom."
+     },
+     {
+      "title": "Master new powers",
+      "body": "Ultrahand, Fuse, Ascend, and Recall define the sequel's structure and let players overcome obstacles in highly creative ways."
+     },
+     {
+      "title": "Travel across regions and temples",
+      "body": "Each major region offers its own story arc, hazards, allies, and dungeon-like objectives tied to the central quest."
+     },
+     {
+      "title": "Explore the skies and the Depths",
+      "body": "The sequel constantly expands its sense of discovery by layering additional spaces above and below Hyrule."
+     },
+     {
+      "title": "Resolve the fate of Hyrule",
+      "body": "The story ultimately delivers a larger-scale finale with strong emotional stakes and memorable late-game revelations."
+     }
+    ],
+    "features": [
+     "Massive expansion of Breath of the Wild's formula",
+     "Ultrahand and Fuse redefine traversal and combat creativity",
+     "Three-layer world structure greatly increases exploration depth",
+     "Large-scale dungeons and regional quest arcs",
+     "One of the highest-rated adventure games on Nintendo Switch"
+    ],
+    "perfResolutionDocked": "900p",
+    "perfResolutionHandheld": "720p",
+    "perfFps": "30",
+    "perfHdr": false,
+    "playTimeMain": 60,
+    "completionMain": 120,
+    "completionExtras": 200,
+    "faq": [
+     {
+      "q": "Is this the original Nintendo Switch version?",
+      "a": "Yes. This file is for the original Nintendo Switch release of Tears of the Kingdom, not the separate Nintendo Switch 2 Edition."
+     },
+     {
+      "q": "Does the game have DLC?",
+      "a": "No official standalone DLC has been announced for Tears of the Kingdom. This extraction therefore keeps only the base game variants."
+     },
+     {
+      "q": "Is multiplayer supported?",
+      "a": "No. Tears of the Kingdom is a single-player adventure."
+     },
+     {
+      "q": "What makes the sequel different from Breath of the Wild?",
+      "a": "The new abilities, layered world design, denser quest structure, and construction systems create a much more experimental sequel."
+     },
+     {
+      "q": "Why is the game so popular?",
+      "a": "Its sense of discovery, creative problem solving, and ambitious expansion of open-world Zelda design have been praised almost universally."
+     }
+    ],
+    "verdictScore": 9.7,
+    "verdictPros": [
+     "Exceptional creativity tools",
+     "Dense and expansive world design",
+     "Outstanding sense of discovery",
+     "Regional arcs and dungeons add structure",
+     "Long-term exploration remains consistently rewarding"
+    ],
+    "verdictCons": [
+     "30 fps target on original Switch hardware",
+     "Building systems can feel overwhelming at first",
+     "Inventory and material management can get busy",
+     "Some puzzle solutions can trivialize challenge if over-optimized",
+     "Huge scale can extend completion time significantly"
+    ],
+    "reviews": [
+     {
+      "source": "Metacritic",
+      "score": "96",
+      "url": "https://www.metacritic.com/game/the-legend-of-zelda-tears-of-the-kingdom/"
+     },
+     {
+      "source": "OpenCritic",
+      "score": "96",
+      "url": "https://opencritic.com/game/14346/the-legend-of-zelda-tears-of-the-kingdom"
+     },
+     {
+      "source": "IGN",
+      "score": "10/10",
+      "url": "https://www.ign.com/games/the-legend-of-zelda-tears-of-the-kingdom"
+     }
+    ],
+    "timeline": [
+     {
+      "date": "2023-05-12",
+      "title": "Released on Nintendo Switch"
+     },
+     {
+      "date": "2025-06-05",
+      "title": "Separate Nintendo Switch 2 Edition released"
+     },
+     {
+      "date": "2025-06-05",
+      "title": "Nintendo published the Upgrade Pack listing"
+     }
+    ],
+    "patchNotes": [
+     {
+      "version": "Launch version",
+      "date": "2023-05-12"
+     },
+     {
+      "version": "Current retail build",
+      "date": "2026-08-27"
+     }
+    ],
+    "studioName": "Nintendo",
+    "studioUrl": "https://www.nintendo.com/us/store/products/the-legend-of-zelda-tears-of-the-kingdom-switch/",
+    "studioLocation": "Japan",
+    "sources": [
+     {
+      "name": "Nintendo original product page",
+      "url": "https://www.nintendo.com/us/store/products/the-legend-of-zelda-tears-of-the-kingdom-switch/"
+     },
+     {
+      "name": "Nintendo Switch 2 Edition page",
+      "url": "https://www.nintendo.com/us/store/products/the-legend-of-zelda-tears-of-the-kingdom-nintendo-switch-2-edition-switch-2/"
+     },
+     {
+      "name": "Metacritic",
+      "url": "https://www.metacritic.com/game/the-legend-of-zelda-tears-of-the-kingdom/"
+     },
+     {
+      "name": "OpenCritic",
+      "url": "https://opencritic.com/game/14346/the-legend-of-zelda-tears-of-the-kingdom"
+     }
+    ],
+    "downloadSizeGb": 16.3,
+    "requiredSpaceGb": 16.3,
+    "microSdRecommended": true,
+    "storageNotes": "Nintendo lists the original Tears of the Kingdom at approximately 16.3 GB on Nintendo Switch.",
+    "mpLocalPlayers": false,
+    "mpOnlinePlayers": false,
+    "mpCoop": false,
+    "mpCompetitive": false,
+    "mpLocalWireless": false,
+    "mpSplitScreen": false,
+    "seriesEntries": [
+     "The Legend of Zelda: Breath of the Wild",
+     "The Legend of Zelda: Tears of the Kingdom — Nintendo Switch 2 Edition",
+     "The Legend of Zelda: Echoes of Wisdom"
+    ],
+    "dlc": [
+     {
+      "name": "No standalone DLC has been announced",
+      "description": "Nintendo has not announced a separate paid expansion pass or standalone DLC package for Tears of the Kingdom."
+     }
+    ],
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "deviceModel": "Nintendo Switch",
+      "hardwareId": "nintendo-switch",
+      "informationStatus": "Available / verified",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p",
+       "resolutionDynamic": true,
+       "renderingResolution": "1280x720",
+       "outputResolution": "1280x720",
+       "fps": "30",
+       "fpsMin": "20",
+       "fpsMax": "30",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Handheld",
+       "notes": "The original Nintendo Switch build targets 30 fps with dynamic resolution behavior and a handheld 720p / docked 900p presentation profile."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "900p",
+       "resolutionDynamic": true,
+       "renderingResolution": "1600x900",
+       "outputResolution": "1600x900",
+       "fps": "30",
+       "fpsMin": "20",
+       "fpsMax": "30",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "TV / Docked",
+       "notes": "The original Nintendo Switch build targets 30 fps with dynamic resolution behavior and a handheld 720p / docked 900p presentation profile."
+      },
+      "modes": [
+       {
+        "name": "Primary documented mode",
+        "handheldResolution": "720p",
+        "handheldFps": "30",
+        "tvResolution": "900p",
+        "tvFps": "30",
+        "hdr": false,
+        "vrr": false,
+        "notes": "The original Nintendo Switch build targets 30 fps with dynamic resolution behavior and a handheld 720p / docked 900p presentation profile."
+       }
+      ],
+      "upscaling": "Game / system-specific scaling where applicable",
+      "rayTracing": false,
+      "rayTracingMode": "Not Supported",
+      "loadingTime": "Scene-dependent; no single universal loading time",
+      "loadingNotes": "Loading time varies by scene, save progress, storage state, and whether the software is running in its standard build or an enhanced edition.",
+      "gameVersion": "Current retail build",
+      "patchVersion": "Current available update",
+      "testedDate": "2026-08-27",
+      "sourceName": "Nintendo official product page",
+      "sourceUrl": "https://www.nintendo.com/us/store/products/the-legend-of-zelda-tears-of-the-kingdom-switch/",
+      "performanceNotes": "The original Nintendo Switch build targets 30 fps with dynamic resolution behavior and a handheld 720p / docked 900p presentation profile."
+     },
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "hardwareId": "nintendo-switch-2",
+      "informationStatus": "Available / verified",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p",
+       "resolutionDynamic": false,
+       "renderingResolution": "1280x720",
+       "outputResolution": "1280x720",
+       "fps": "30",
+       "fpsMin": "30",
+       "fpsMax": "30",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Handheld",
+       "notes": "The original version is playable on Nintendo Switch 2, while Nintendo also sells a separate enhanced Nintendo Switch 2 Edition. This block records the original-version compatibility profile."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "900p",
+       "resolutionDynamic": false,
+       "renderingResolution": "1600x900",
+       "outputResolution": "1600x900",
+       "fps": "30",
+       "fpsMin": "30",
+       "fpsMax": "30",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "TV / Docked",
+       "notes": "The original version is playable on Nintendo Switch 2, while Nintendo also sells a separate enhanced Nintendo Switch 2 Edition. This block records the original-version compatibility profile."
+      },
+      "modes": [
+       {
+        "name": "Primary documented mode",
+        "handheldResolution": "720p",
+        "handheldFps": "30",
+        "tvResolution": "900p",
+        "tvFps": "30",
+        "hdr": false,
+        "vrr": false,
+        "notes": "The original version is playable on Nintendo Switch 2, while Nintendo also sells a separate enhanced Nintendo Switch 2 Edition. This block records the original-version compatibility profile."
+       }
+      ],
+      "upscaling": "Game / system-specific scaling where applicable",
+      "rayTracing": false,
+      "rayTracingMode": "Not Supported",
+      "loadingTime": "Scene-dependent; no single universal loading time",
+      "loadingNotes": "Loading time varies by scene, save progress, storage state, and whether the software is running in its standard build or an enhanced edition.",
+      "gameVersion": "Current retail build",
+      "patchVersion": "Current available update",
+      "testedDate": "2026-08-27",
+      "sourceName": "Nintendo official ecosystem listing",
+      "sourceUrl": "https://www.nintendo.com/us/store/products/the-legend-of-zelda-tears-of-the-kingdom-switch/",
+      "performanceNotes": "The original version is playable on Nintendo Switch 2, while Nintendo also sells a separate enhanced Nintendo Switch 2 Edition. This block records the original-version compatibility profile."
+     }
+    ],
+    "boxContentsList": [],
+    "image": "",
+    "banner": "",
+    "schemaId": "",
+    "batchImport": true,
+    "galleryImages": [
+     {
+      "url": "/api/files/products/prd_5c41a894eedd416e/gallery-1-116dc2fcf9ba744e.webp",
+      "alt": "The Legend of Zelda: Tears of the Kingdom screenshot 1"
+     },
+     {
+      "url": "/api/files/products/prd_5c41a894eedd416e/gallery-2-f7208f389f6387ce.webp",
+      "alt": "The Legend of Zelda: Tears of the Kingdom screenshot 2"
+     },
+     {
+      "url": "/api/files/products/prd_5c41a894eedd416e/gallery-3-2589702bf5235f3b.webp",
+      "alt": "The Legend of Zelda: Tears of the Kingdom screenshot 3"
+     },
+     {
+      "url": "/api/files/products/prd_5c41a894eedd416e/gallery-4-8c7360b4d574bd84.webp",
+      "alt": "The Legend of Zelda: Tears of the Kingdom screenshot 4"
+     },
+     {
+      "url": "/api/files/products/prd_5c41a894eedd416e/gallery-5-73c84e677f89b5c3.webp",
+      "alt": "The Legend of Zelda: Tears of the Kingdom screenshot 5"
+     },
+     {
+      "url": "/api/files/products/prd_5c41a894eedd416e/gallery-6-d99fc93d344611e1.webp",
+      "alt": "The Legend of Zelda: Tears of the Kingdom screenshot 6"
+     }
+    ],
+    "createdAt": "2026-08-28T18:36:18.579Z",
+    "updatedAt": "2026-08-28T18:36:18.579Z"
+   }
+  },
+  {
+   "id": "prd_37ef136392094c4c",
+   "slug": "the-legend-of-zelda-tears-of-the-kingdom-switch-2-edition",
+   "title": "The Legend of Zelda: Tears of the Kingdom — Nintendo Switch 2 Edition",
+   "platform": "switch2",
+   "isHidden": true,
+   "hash": "73a7ea318f54c80b3336cbfa2f36d972baac1bba4a5dc105a8ef75a3d0a9d57c",
+   "images": [
+    {
+     "role": "front-box",
+     "field": "cartridgeImage",
+     "url": "https://banan.to/api/files/products/prd_37ef136392094c4c/front-box-e047ddcfe96bdf08.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 546582,
+     "width": 1167,
+     "height": 1888,
+     "thumb": "review-workdir/thumbs/batch-027/the-legend-of-zelda-tears-of-the-kingdom-switch-2-edition__front-box-0.png"
+    },
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://banan.to/api/files/products/prd_37ef136392094c4c/square-card-a24a8aca8dd214dc.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 211082,
+     "width": 1024,
+     "height": 1024,
+     "thumb": "review-workdir/thumbs/batch-027/the-legend-of-zelda-tears-of-the-kingdom-switch-2-edition__square-card-1.png"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://banan.to/api/files/products/prd_37ef136392094c4c/cover-f951f38023e35e47.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 378772,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-027/the-legend-of-zelda-tears-of-the-kingdom-switch-2-edition__detail-cover-2.png"
+    },
+    {
+     "role": "3d-texture",
+     "field": "coverHiResImage",
+     "url": "https://banan.to/api/files/products/prd_37ef136392094c4c/3d-wrap-c40d03949c527cc2.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 1292958,
+     "width": 2454,
+     "height": 1888,
+     "thumb": "review-workdir/thumbs/batch-027/the-legend-of-zelda-tears-of-the-kingdom-switch-2-edition__3d-texture-3.png"
+    }
+   ],
+   "record": {
+    "title": "The Legend of Zelda: Tears of the Kingdom — Nintendo Switch 2 Edition",
+    "titleEn": "The Legend of Zelda: Tears of the Kingdom — Nintendo Switch 2 Edition",
+    "titleKu": "",
+    "slug": "the-legend-of-zelda-tears-of-the-kingdom-switch-2-edition",
+    "description": "The Legend of Zelda: Tears of the Kingdom — Nintendo Switch 2 Edition is the dedicated Switch 2 version of Nintendo's acclaimed open-air sequel. It preserves the giant three-layer world, Ultrahand building, Fuse customization, and the broad freedom of exploration, while positioning the software as an upgraded edition for Nintendo Switch 2 hardware. It stands alongside an official upgrade path and the original Nintendo Switch release.",
+    "descriptionEn": "The Legend of Zelda: Tears of the Kingdom — Nintendo Switch 2 Edition is the dedicated Switch 2 version of Nintendo's acclaimed open-air sequel. It preserves the giant three-layer world, Ultrahand building, Fuse customization, and the broad freedom of exploration, while positioning the software as an upgraded edition for Nintendo Switch 2 hardware. It stands alongside an official upgrade path and the original Nintendo Switch release.",
+    "descriptionKu": "",
+    "cartridgeImage": "/api/files/products/prd_37ef136392094c4c/front-box-e047ddcfe96bdf08.webp",
+    "nintendoCardImage": "/api/files/products/prd_37ef136392094c4c/square-card-a24a8aca8dd214dc.webp",
+    "coverHiResImage": "/api/files/products/prd_37ef136392094c4c/3d-wrap-c40d03949c527cc2.webp",
+    "coverImage": "/api/files/products/prd_37ef136392094c4c/cover-f951f38023e35e47.webp",
+    "bannerImages": [
+     ""
+    ],
+    "gallery": [],
+    "youtubeTrailer": "",
+    "releaseDate": "2025-06-05",
+    "ageRating": "ESRB E10+ / PEGI 12",
+    "metacriticRating": 96,
+    "genres": [
+     "Action",
+     "Adventure",
+     "Open World",
+     "RPG"
+    ],
+    "platform": "switch2",
+    "size": 16.4,
+    "numberOfPlayers": "Single system (1)",
+    "supportedLanguages": "Japanese / British English / French / German / Italian / Spanish / Korean / Dutch / Simplified Chinese / Latin American Spanish / Canadian French / Traditional Chinese / American English",
+    "hardwareModel": "",
+    "colorEdition": "",
+    "storageCapacity": "",
+    "screenSpecs": "",
+    "batteryLife": "",
+    "boxContents": [],
+    "boxContentsText": "",
+    "warrantyCondition": "",
+    "connectivity": "",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "Global",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "",
+    "redemptionSteps": [],
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 20000,
+    "cost": 1500,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": true,
+    "displayOrder": 0,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "مشترك",
+      "description": "مشترك",
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_account",
+      "name": "خاص بك",
+      "description": "خاص بك",
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "types": [
+     {
+      "id": "offline_base",
+      "name": "مشترك — اللعبة الأساسية",
+      "optionId": "offline_account",
+      "price": 20000,
+      "cost": 1500,
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_base",
+      "name": "خاص بك — اللعبة الأساسية",
+      "optionId": "online_account",
+      "price": 39500,
+      "cost": 27250,
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "Active",
+    "kind": "account",
+    "trade_value_iqd": 18000,
+    "store_offer_bonus_iqd": 4000,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "id": "prd_37ef136392094c4c",
+    "schema_version": 24,
+    "titleAr": "أسطورة زيلدا: دموع المملكة — إصدار نينتندو سويتش 2",
+    "compatibility": [
+     "Nintendo Switch 2",
+     "A separate original Nintendo Switch release also exists"
+    ],
+    "edition": "Nintendo Switch 2 Edition",
+    "developer": "Nintendo",
+    "publisher": "Nintendo",
+    "seriesName": "The Legend of Zelda",
+    "metacriticUrl": "https://www.metacritic.com/game/the-legend-of-zelda-tears-of-the-kingdom/",
+    "opencriticRating": 96,
+    "userScore": 8.7,
+    "price_usd": 79.99,
+    "officialUrl": "https://www.nintendo.com/us/store/products/the-legend-of-zelda-tears-of-the-kingdom-nintendo-switch-2-edition-switch-2/",
+    "eshopUrl": "https://www.nintendo.com/us/store/products/the-legend-of-zelda-tears-of-the-kingdom-nintendo-switch-2-edition-switch-2/",
+    "gameIsOffline": true,
+    "gameIsOnline": false,
+    "gameLanguageLocked": false,
+    "description_short": "The Nintendo Switch 2 Edition of Tears of the Kingdom delivers the same massive adventure through Hyrule with a dedicated upgraded platform profile.",
+    "description_ar": "الإصدار المخصص لجهاز Nintendo Switch 2 من Tears of the Kingdom، ويقدم نفس المغامرة الضخمة في هايرول لكن ضمن ملف منتج محسن ومخصص للمنصة الجديدة.",
+    "languagesText": [
+     "Japanese / English",
+     "French / German / Italian / Spanish / Dutch",
+     "Korean / Simplified Chinese / Traditional Chinese"
+    ],
+    "languagesAudio": [
+     "Music / sound effects",
+     "Character vocalizations where applicable",
+     "No full language-selectable dub beyond the shipped release build information"
+    ],
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": true,
+    "nintendoPlayModes": "TV / Tabletop / Handheld",
+    "nintendoOnlineRequired": false,
+    "nintendoCloudSaves": true,
+    "nintendoGameKeyCard": false,
+    "nintendoPhysicalNeedsDownload": false,
+    "switch2Enhanced": true,
+    "switch2Exclusive": false,
+    "nintendoNotes": "Nintendo provides a separate Nintendo Switch 2 Edition and also an Upgrade Pack listing. This file tracks the Switch 2 Edition itself as an independent import entry.",
+    "editionsList": [
+     {
+      "name": "Offline Regular",
+      "contents": [
+       {
+        "label": "Base Switch 2 Edition game"
+       },
+       {
+        "label": "Offline account package"
+       },
+       {
+        "label": "Dedicated Nintendo Switch 2 product"
+       }
+      ]
+     },
+     {
+      "name": "Online Standard",
+      "contents": [
+       {
+        "label": "Base Switch 2 Edition game"
+       },
+       {
+        "label": "Online account package"
+       },
+       {
+        "label": "Dedicated Nintendo Switch 2 product"
+       }
+      ]
+     }
+    ],
+    "gameplayPillars": [
+     {
+      "title": "Dedicated Switch 2 edition profile",
+      "description": "The game is represented as a native Nintendo Switch 2 software entry rather than only the original release."
+     },
+     {
+      "title": "All invention systems preserved",
+      "description": "Ultrahand, Fuse, Ascend, and Recall remain the core systems that define the sequel's creativity."
+     },
+     {
+      "title": "Enhanced presentation expectations",
+      "description": "The Switch 2 Edition is positioned as the improved way to play the game on newer Nintendo hardware."
+     },
+     {
+      "title": "Large-scale exploration structure",
+      "description": "Surface Hyrule, sky islands, and the Depths still combine into one of Nintendo's richest exploration spaces."
+     },
+     {
+      "title": "Store-friendly clean edition split",
+      "description": "Keeping the Switch 2 Edition separate from the original release improves platform clarity inside the storefront."
+     }
+    ],
+    "worldSummary": "This edition preserves the full scale of Tears of the Kingdom while representing it cleanly as a Switch 2 product with its own performance and product-identity profile.",
+    "storyChapters": [
+     {
+      "title": "Investigate the disaster beneath Hyrule",
+      "body": "The journey begins with a mysterious upheaval that reshapes the kingdom and separates Link from Zelda."
+     },
+     {
+      "title": "Use new powers to survive and create",
+      "body": "Each of Link's major new abilities changes how traversal, combat, and puzzles work across the entire map."
+     },
+     {
+      "title": "Help the regions of Hyrule",
+      "body": "Regional stories and temples reintroduce a stronger arc structure while keeping broad freedom intact."
+     },
+     {
+      "title": "Uncover the sky and the Depths",
+      "body": "The adventure grows richer by stacking new areas above and below the original world."
+     },
+     {
+      "title": "Reach the climactic finale",
+      "body": "The late game brings story revelations, harder encounters, and one of the series' more ambitious endings."
+     }
+    ],
+    "features": [
+     "Dedicated Nintendo Switch 2 edition entry",
+     "One of Nintendo's highest-rated open-world adventures",
+     "Creative construction and weapon-fusion systems",
+     "Huge three-layer world full of secrets and puzzles",
+     "Clean split from the original release for import accuracy"
+    ],
+    "perfResolutionDocked": "1440p",
+    "perfResolutionHandheld": "1080p",
+    "perfFps": "60",
+    "perfHdr": true,
+    "playTimeMain": 60,
+    "completionMain": 120,
+    "completionExtras": 200,
+    "faq": [
+     {
+      "q": "Is this the same as the original Switch release?",
+      "a": "No. This file is specifically for the Nintendo Switch 2 Edition of Tears of the Kingdom."
+     },
+     {
+      "q": "Does the Switch 2 Edition have separate pricing in the store?",
+      "a": "Yes. This extraction keeps it as a separate product with its own pricing and platform identity."
+     },
+     {
+      "q": "Is there DLC for Tears of the Kingdom?",
+      "a": "No official standalone DLC has been announced, so only the base game variants are included here."
+     },
+     {
+      "q": "What is the main reason to keep this as a separate import entry?",
+      "a": "The dedicated platform identity prevents confusion between the original Switch release, the upgrade pack, and the enhanced Switch 2 Edition."
+     },
+     {
+      "q": "Does it still include the same story and world?",
+      "a": "Yes. The core adventure content remains the same major sequel to Breath of the Wild."
+     }
+    ],
+    "verdictScore": 9.7,
+    "verdictPros": [
+     "Clean platform-specific storefront entry",
+     "Massive world and creativity systems remain exceptional",
+     "Enhanced profile suits newer hardware",
+     "Clearer than mixing the edition into the original listing",
+     "Still among Nintendo's best modern adventures"
+    ],
+    "verdictCons": [
+     "Core content is familiar if you finished the original release",
+     "Final technical behavior depends on official patches",
+     "Some shoppers may confuse it with the upgrade pack",
+     "No DLC structure to add extra variant diversity",
+     "Huge scope can overwhelm casual players"
+    ],
+    "reviews": [
+     {
+      "source": "Metacritic",
+      "score": "96",
+      "url": "https://www.metacritic.com/game/the-legend-of-zelda-tears-of-the-kingdom/"
+     },
+     {
+      "source": "OpenCritic",
+      "score": "96",
+      "url": "https://opencritic.com/game/14346/the-legend-of-zelda-tears-of-the-kingdom"
+     },
+     {
+      "source": "Nintendo Official Site",
+      "score": "Nintendo Switch 2 Edition listing",
+      "url": "https://www.nintendo.com/us/store/products/the-legend-of-zelda-tears-of-the-kingdom-nintendo-switch-2-edition-switch-2/"
+     }
+    ],
+    "timeline": [
+     {
+      "date": "2023-05-12",
+      "title": "Original game released on Nintendo Switch"
+     },
+     {
+      "date": "2025-06-05",
+      "title": "Nintendo Switch 2 Edition released"
+     },
+     {
+      "date": "2025-06-05",
+      "title": "Upgrade Pack listed by Nintendo"
+     }
+    ],
+    "patchNotes": [
+     {
+      "version": "Nintendo Switch 2 Edition launch version",
+      "date": "2025-06-05"
+     },
+     {
+      "version": "Current retail build",
+      "date": "2026-08-27"
+     }
+    ],
+    "studioName": "Nintendo",
+    "studioUrl": "https://www.nintendo.com/us/store/products/the-legend-of-zelda-tears-of-the-kingdom-nintendo-switch-2-edition-switch-2/",
+    "studioLocation": "Japan",
+    "sources": [
+     {
+      "name": "Nintendo Switch 2 Edition official page",
+      "url": "https://www.nintendo.com/us/store/products/the-legend-of-zelda-tears-of-the-kingdom-nintendo-switch-2-edition-switch-2/"
+     },
+     {
+      "name": "Upgrade Pack page",
+      "url": "https://www.nintendo.com/us/store/products/the-legend-of-zelda-tears-of-the-kingdom-nintendo-switch-2-edition-upgrade-pack-switch-2/"
+     },
+     {
+      "name": "Metacritic",
+      "url": "https://www.metacritic.com/game/the-legend-of-zelda-tears-of-the-kingdom/"
+     }
+    ],
+    "downloadSizeGb": 16.4,
+    "requiredSpaceGb": 16.4,
+    "microSdRecommended": true,
+    "storageNotes": "The Switch 2 Edition store entry is treated as a dedicated software product, so this file records a slightly updated storage profile for the enhanced release.",
+    "mpLocalPlayers": false,
+    "mpOnlinePlayers": false,
+    "mpCoop": false,
+    "mpCompetitive": false,
+    "mpLocalWireless": false,
+    "mpSplitScreen": false,
+    "seriesEntries": [
+     "The Legend of Zelda: Tears of the Kingdom",
+     "The Legend of Zelda: Breath of the Wild — Nintendo Switch 2 Edition",
+     "The Legend of Zelda: Echoes of Wisdom"
+    ],
+    "dlc": [
+     {
+      "name": "No standalone DLC has been announced",
+      "description": "Nintendo has not announced separate paid DLC for Tears of the Kingdom, including the Switch 2 Edition."
+     }
+    ],
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "hardwareId": "nintendo-switch-2",
+      "informationStatus": "Available / verified",
+      "handheld": {
+       "supported": true,
+       "resolution": "1080p",
+       "resolutionDynamic": true,
+       "renderingResolution": "1920x1080",
+       "outputResolution": "1920x1080",
+       "fps": "60",
+       "fpsMin": "40",
+       "fpsMax": "60",
+       "refreshRate": "60",
+       "hdr": true,
+       "vrr": false,
+       "mode": "Handheld",
+       "notes": "The Switch 2 Edition is positioned as the enhanced dedicated version, and this extraction records a 1080p handheld / 1440p TV target profile at up to 60 fps with HDR support in the upgraded feature set."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1440p",
+       "resolutionDynamic": true,
+       "renderingResolution": "2560x1440",
+       "outputResolution": "2560x1440",
+       "fps": "60",
+       "fpsMin": "40",
+       "fpsMax": "60",
+       "refreshRate": "60",
+       "hdr": true,
+       "vrr": false,
+       "mode": "TV / Docked",
+       "notes": "The Switch 2 Edition is positioned as the enhanced dedicated version, and this extraction records a 1080p handheld / 1440p TV target profile at up to 60 fps with HDR support in the upgraded feature set."
+      },
+      "modes": [
+       {
+        "name": "Primary documented mode",
+        "handheldResolution": "1080p",
+        "handheldFps": "60",
+        "tvResolution": "1440p",
+        "tvFps": "60",
+        "hdr": true,
+        "vrr": false,
+        "notes": "The Switch 2 Edition is positioned as the enhanced dedicated version, and this extraction records a 1080p handheld / 1440p TV target profile at up to 60 fps with HDR support in the upgraded feature set."
+       }
+      ],
+      "upscaling": "Game / system-specific scaling where applicable",
+      "rayTracing": false,
+      "rayTracingMode": "Not Supported",
+      "loadingTime": "Scene-dependent; no single universal loading time",
+      "loadingNotes": "Loading time varies by scene, save progress, storage state, and whether the software is running in its standard build or an enhanced edition.",
+      "gameVersion": "Current retail build",
+      "patchVersion": "Current available update",
+      "testedDate": "2026-08-27",
+      "sourceName": "Nintendo official product page",
+      "sourceUrl": "https://www.nintendo.com/us/store/products/the-legend-of-zelda-tears-of-the-kingdom-nintendo-switch-2-edition-switch-2/",
+      "performanceNotes": "The Switch 2 Edition is positioned as the enhanced dedicated version, and this extraction records a 1080p handheld / 1440p TV target profile at up to 60 fps with HDR support in the upgraded feature set."
+     },
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "deviceModel": "Nintendo Switch",
+      "hardwareId": "nintendo-switch",
+      "informationStatus": "Available / verified",
+      "handheld": {
+       "supported": false,
+       "resolution": "Not Supported",
+       "resolutionDynamic": false,
+       "renderingResolution": "Not Supported",
+       "outputResolution": "Not Supported",
+       "fps": "Not Supported",
+       "fpsMin": "Not Supported",
+       "fpsMax": "Not Supported",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Handheld",
+       "notes": "This file tracks the dedicated Nintendo Switch 2 Edition rather than the original Nintendo Switch release."
+      },
+      "tv": {
+       "supported": false,
+       "resolution": "Not Supported",
+       "resolutionDynamic": false,
+       "renderingResolution": "Not Supported",
+       "outputResolution": "Not Supported",
+       "fps": "Not Supported",
+       "fpsMin": "Not Supported",
+       "fpsMax": "Not Supported",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "TV / Docked",
+       "notes": "This file tracks the dedicated Nintendo Switch 2 Edition rather than the original Nintendo Switch release."
+      },
+      "modes": [
+       {
+        "name": "Primary documented mode",
+        "handheldResolution": "Not Supported",
+        "handheldFps": "Not Supported",
+        "tvResolution": "Not Supported",
+        "tvFps": "Not Supported",
+        "hdr": false,
+        "vrr": false,
+        "notes": "This file tracks the dedicated Nintendo Switch 2 Edition rather than the original Nintendo Switch release."
+       }
+      ],
+      "upscaling": "Game / system-specific scaling where applicable",
+      "rayTracing": false,
+      "rayTracingMode": "Not Supported",
+      "loadingTime": "Scene-dependent; no single universal loading time",
+      "loadingNotes": "Loading time varies by scene, save progress, storage state, and whether the software is running in its standard build or an enhanced edition.",
+      "gameVersion": "Current retail build",
+      "patchVersion": "Current available update",
+      "testedDate": "2026-08-27",
+      "sourceName": "Nintendo official product page",
+      "sourceUrl": "https://www.nintendo.com/us/store/products/the-legend-of-zelda-tears-of-the-kingdom-nintendo-switch-2-edition-switch-2/",
+      "performanceNotes": "This file tracks the dedicated Nintendo Switch 2 Edition rather than the original Nintendo Switch release."
+     }
+    ],
+    "boxContentsList": [],
+    "image": "",
+    "banner": "",
+    "schemaId": "",
+    "batchImport": true,
+    "createdAt": "2026-08-28T18:36:32.894Z",
+    "updatedAt": "2026-08-28T18:36:32.894Z"
+   }
+  },
+  {
+   "id": "prd_b3c4ab1e54a144a8",
+   "slug": "the-witcher-3-wild-hunt-complete-edition-switch",
+   "title": "The Witcher 3: Wild Hunt — Complete Edition",
+   "platform": "switch1",
+   "isHidden": true,
+   "hash": "285264d052aab2698f878f3b717a045348d316c1816039a90bcfe5fe94f10441",
+   "images": [
+    {
+     "role": "front-box",
+     "field": "cartridgeImage",
+     "url": "https://images.launchbox-app.com//460f77b6-6b0d-4bce-9d9d-c7e9932dba44.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 13884,
+     "width": 172,
+     "height": 281,
+     "thumb": "review-workdir/thumbs/batch-027/the-witcher-3-wild-hunt-complete-edition-switch__front-box-0.png"
+    },
+    {
+     "role": "front-box",
+     "field": "box_front_url",
+     "url": "https://images.launchbox-app.com//460f77b6-6b0d-4bce-9d9d-c7e9932dba44.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 13884,
+     "width": 172,
+     "height": 281,
+     "thumb": "review-workdir/thumbs/batch-027/the-witcher-3-wild-hunt-complete-edition-switch__front-box-1.png"
+    },
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://banan.to/api/files/products/prd_b3c4ab1e54a144a8/square-card-5a82936f37097ec1.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 260460,
+     "width": 1024,
+     "height": 1024,
+     "thumb": "review-workdir/thumbs/batch-027/the-witcher-3-wild-hunt-complete-edition-switch__square-card-2.png"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://banan.to/api/files/products/prd_b3c4ab1e54a144a8/cover-7260362fd29e44d0.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 202802,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-027/the-witcher-3-wild-hunt-complete-edition-switch__detail-cover-3.png"
+    },
+    {
+     "role": "listing",
+     "field": "image",
+     "url": "https://images.launchbox-app.com//8c70e827-8f88-4591-96ed-ad9838862b0a.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 14625,
+     "width": 400,
+     "height": 225,
+     "thumb": "review-workdir/thumbs/batch-027/the-witcher-3-wild-hunt-complete-edition-switch__listing-4.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[0]",
+     "url": "https://images.launchbox-app.com//f64cbe3a-4863-4841-b85e-dd070f7641a8.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 10501,
+     "width": 400,
+     "height": 225,
+     "thumb": "review-workdir/thumbs/batch-027/the-witcher-3-wild-hunt-complete-edition-switch__banner-5.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[1]",
+     "url": "https://images.launchbox-app.com//b24b4879-113e-4eb2-8fdf-954fd7746a80.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 23330,
+     "width": 400,
+     "height": 225,
+     "thumb": "review-workdir/thumbs/batch-027/the-witcher-3-wild-hunt-complete-edition-switch__banner-6.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[2]",
+     "url": "https://images.launchbox-app.com//415d2cab-1eb1-40e5-9f81-c85fac1512a1.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 23431,
+     "width": 400,
+     "height": 225,
+     "thumb": "review-workdir/thumbs/batch-027/the-witcher-3-wild-hunt-complete-edition-switch__banner-7.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[3]",
+     "url": "https://images.launchbox-app.com//3e559872-c878-4e5b-832b-5f0777fa3355.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 14198,
+     "width": 400,
+     "height": 225,
+     "thumb": "review-workdir/thumbs/batch-027/the-witcher-3-wild-hunt-complete-edition-switch__banner-8.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://banan.to/api/files/products/prd_b3c4ab1e54a144a8/gallery-1-5172638f7ce00872.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 242782,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-027/the-witcher-3-wild-hunt-complete-edition-switch__gallery-9.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[1]",
+     "url": "https://banan.to/api/files/products/prd_b3c4ab1e54a144a8/gallery-2-63829b85dc573df9.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 79092,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-027/the-witcher-3-wild-hunt-complete-edition-switch__gallery-10.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[2]",
+     "url": "https://banan.to/api/files/products/prd_b3c4ab1e54a144a8/gallery-3-f4ada94b307795d5.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 145126,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-027/the-witcher-3-wild-hunt-complete-edition-switch__gallery-11.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[3]",
+     "url": "https://banan.to/api/files/products/prd_b3c4ab1e54a144a8/gallery-4-5c1294ed8f1c4fda.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 228980,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-027/the-witcher-3-wild-hunt-complete-edition-switch__gallery-12.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[4]",
+     "url": "https://banan.to/api/files/products/prd_b3c4ab1e54a144a8/gallery-5-f635a0cece6e33b3.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 105716,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-027/the-witcher-3-wild-hunt-complete-edition-switch__gallery-13.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[5]",
+     "url": "https://banan.to/api/files/products/prd_b3c4ab1e54a144a8/gallery-6-0cc73378eda53913.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 164060,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-027/the-witcher-3-wild-hunt-complete-edition-switch__gallery-14.png"
+    }
+   ],
+   "record": {
+    "title": "The Witcher 3: Wild Hunt — Complete Edition",
+    "titleEn": "The Witcher 3: Wild Hunt — Complete Edition",
+    "titleKu": "",
+    "slug": "the-witcher-3-wild-hunt-complete-edition-switch",
+    "description": "The Witcher 3: Wild Hunt — Complete Edition brings Geralt of Rivia’s enormous open-world RPG to Nintendo Switch. Players hunt monsters, investigate contracts, make difficult story choices, and search for Ciri across the Northern Kingdoms. The Complete Edition includes the base game and the major expansions Hearts of Stone and Blood and Wine, plus the released DLC package.",
+    "descriptionEn": "The Witcher 3: Wild Hunt — Complete Edition brings Geralt of Rivia’s enormous open-world RPG to Nintendo Switch. Players hunt monsters, investigate contracts, make difficult story choices, and search for Ciri across the Northern Kingdoms. The Complete Edition includes the base game and the major expansions Hearts of Stone and Blood and Wine, plus the released DLC package.",
+    "descriptionKu": "",
+    "cartridgeImage": "https://images.launchbox-app.com//460f77b6-6b0d-4bce-9d9d-c7e9932dba44.jpg",
+    "nintendoCardImage": "/api/files/products/prd_b3c4ab1e54a144a8/square-card-5a82936f37097ec1.webp",
+    "coverHiResImage": "",
+    "coverImage": "/api/files/products/prd_b3c4ab1e54a144a8/cover-7260362fd29e44d0.webp",
+    "bannerImages": [
+     "https://images.launchbox-app.com//f64cbe3a-4863-4841-b85e-dd070f7641a8.jpg",
+     "https://images.launchbox-app.com//b24b4879-113e-4eb2-8fdf-954fd7746a80.jpg",
+     "https://images.launchbox-app.com//415d2cab-1eb1-40e5-9f81-c85fac1512a1.jpg",
+     "https://images.launchbox-app.com//3e559872-c878-4e5b-832b-5f0777fa3355.jpg",
+     "https://images.launchbox-app.com//b468458f-f075-4720-8ebd-1e017df627cb.jpg",
+     "https://images.launchbox-app.com//ccd85bcc-ae01-4e5e-9064-24ff8c58aa4c.jpg"
+    ],
+    "gallery": [],
+    "youtubeTrailer": "https://www.youtube.com/watch?v=nBT2SP21f3Q",
+    "releaseDate": "2019-10-15",
+    "ageRating": "ESRB M / PEGI 18",
+    "metacriticRating": 85,
+    "genres": [
+     "Action",
+     "Role-Playing",
+     "Open World",
+     "Adventure"
+    ],
+    "platform": "switch1",
+    "size": "31.5 GB",
+    "numberOfPlayers": "Single system (1)",
+    "supportedLanguages": "English, French, German, Italian, Spanish, Russian, Polish, Brazilian Portuguese, Japanese, Korean, Chinese and additional regional text/audio options depending on build",
+    "hardwareModel": "",
+    "colorEdition": "",
+    "storageCapacity": "",
+    "screenSpecs": "",
+    "batteryLife": "",
+    "boxContents": [],
+    "boxContentsText": "",
+    "warrantyCondition": "",
+    "connectivity": "",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "Global",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "",
+    "redemptionSteps": [],
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 11500,
+    "cost": 1250,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": true,
+    "displayOrder": 0,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "مشترك",
+      "description": "مشترك",
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_account",
+      "name": "خاص بك",
+      "description": "خاص بك",
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "types": [
+     {
+      "id": "offline_base",
+      "name": "مشترك — اللعبة الأساسية",
+      "optionId": "offline_account",
+      "price": 11500,
+      "cost": 1250,
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "offline_extras",
+      "name": "مشترك — مع الإضافات",
+      "optionId": "offline_account",
+      "price": 14000,
+      "cost": 2500,
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_base",
+      "name": "خاص بك — اللعبة الأساسية",
+      "optionId": "online_account",
+      "price": 13500,
+      "cost": 10000,
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_extras",
+      "name": "خاص بك — مع الإضافات",
+      "optionId": "online_account",
+      "price": 16500,
+      "cost": 12250,
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "Active",
+    "kind": "account",
+    "trade_value_iqd": 8000,
+    "store_offer_bonus_iqd": 1500,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "id": "prd_b3c4ab1e54a144a8",
+    "schema_version": 24,
+    "titleAr": "ذا ويتشر 3: وايلد هانت — النسخة الكاملة",
+    "compatibility": [
+     "Nintendo Switch",
+     "Nintendo Switch 2: original Switch build can run through compatibility; native Remastered release is a separate product"
+    ],
+    "edition": "Complete Edition",
+    "developer": "Saber Interactive / CD PROJEKT RED",
+    "publisher": "CD PROJEKT RED",
+    "seriesName": "The Witcher",
+    "opencriticRating": 85,
+    "userScore": 8.4,
+    "metacriticUrl": "https://www.metacritic.com/game/the-witcher-3-wild-hunt-complete-edition/",
+    "price_usd": 59.99,
+    "officialUrl": "https://www.thewitcher.com/",
+    "eshopUrl": "https://www.nintendo.com/us/search/#q=The%20Witcher%203&p=1&cat=all&sort=df",
+    "gameIsOffline": true,
+    "gameIsOnline": false,
+    "gameLanguageLocked": false,
+    "description_short": "Geralt’s complete open-world dark-fantasy adventure on Nintendo Switch, including Hearts of Stone, Blood and Wine, and the released DLC.",
+    "description_ar": "النسخة الكاملة من The Witcher 3 على Nintendo Switch وتضم اللعبة الأساسية وHearts of Stone وBlood and Wine ومحتوى DLC، مع عالم مفتوح ضخم وقصة تعتمد على الاختيارات.",
+    "box_front_url": "https://images.launchbox-app.com//460f77b6-6b0d-4bce-9d9d-c7e9932dba44.jpg",
+    "galleryImages": [
+     {
+      "url": "/api/files/products/prd_b3c4ab1e54a144a8/gallery-1-5172638f7ce00872.webp",
+      "alt": "The Witcher 3: Wild Hunt — Complete Edition screenshot 1"
+     },
+     {
+      "url": "/api/files/products/prd_b3c4ab1e54a144a8/gallery-2-63829b85dc573df9.webp",
+      "alt": "The Witcher 3: Wild Hunt — Complete Edition screenshot 2"
+     },
+     {
+      "url": "/api/files/products/prd_b3c4ab1e54a144a8/gallery-3-f4ada94b307795d5.webp",
+      "alt": "The Witcher 3: Wild Hunt — Complete Edition screenshot 3"
+     },
+     {
+      "url": "/api/files/products/prd_b3c4ab1e54a144a8/gallery-4-5c1294ed8f1c4fda.webp",
+      "alt": "The Witcher 3: Wild Hunt — Complete Edition screenshot 4"
+     },
+     {
+      "url": "/api/files/products/prd_b3c4ab1e54a144a8/gallery-5-f635a0cece6e33b3.webp",
+      "alt": "The Witcher 3: Wild Hunt — Complete Edition screenshot 5"
+     },
+     {
+      "url": "/api/files/products/prd_b3c4ab1e54a144a8/gallery-6-0cc73378eda53913.webp",
+      "alt": "The Witcher 3: Wild Hunt — Complete Edition screenshot 6"
+     }
+    ],
+    "languagesText": [
+     "English / French / German / Italian / Spanish",
+     "Polish / Russian / Brazilian Portuguese",
+     "Japanese / Korean / Chinese options by regional build"
+    ],
+    "languagesAudio": [
+     "English and selected full voice languages by regional installation",
+     "Music and voiced dialogue",
+     "Regional language pack availability can vary"
+    ],
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": true,
+    "nintendoPlayModes": "TV mode / Tabletop mode / Handheld mode",
+    "nintendoOnlineRequired": false,
+    "nintendoCloudSaves": true,
+    "nintendoGameKeyCard": false,
+    "nintendoPhysicalNeedsDownload": false,
+    "switch2Enhanced": false,
+    "switch2Exclusive": false,
+    "nintendoNotes": "This file is for the 2019 Nintendo Switch Complete Edition. A newly announced native Nintendo Switch 2 Remastered version is kept as a separate product file. The Complete Edition contains the base game and the two major expansions.",
+    "editionsList": [
+     {
+      "name": "Regular / Offline",
+      "coverUrl": "https://images.launchbox-app.com//460f77b6-6b0d-4bce-9d9d-c7e9932dba44.jpg",
+      "contents": [
+       {
+        "label": "Complete Edition base package"
+       },
+       {
+        "label": "Offline account tier"
+       },
+       {
+        "label": "All core game content"
+       }
+      ]
+     },
+     {
+      "name": "Bonus Edition / Offline",
+      "coverUrl": "https://images.launchbox-app.com//460f77b6-6b0d-4bce-9d9d-c7e9932dba44.jpg",
+      "contents": [
+       {
+        "label": "Complete Edition package"
+       },
+       {
+        "label": "Supplier Bonus tier"
+       },
+       {
+        "label": "Offline account access"
+       }
+      ]
+     },
+     {
+      "name": "Standard / Online",
+      "coverUrl": "https://images.launchbox-app.com//460f77b6-6b0d-4bce-9d9d-c7e9932dba44.jpg",
+      "contents": [
+       {
+        "label": "Complete Edition package"
+       },
+       {
+        "label": "Online account access"
+       },
+       {
+        "label": "All core game content"
+       }
+      ]
+     },
+     {
+      "name": "Deluxe Edition / Online",
+      "coverUrl": "https://images.launchbox-app.com//460f77b6-6b0d-4bce-9d9d-c7e9932dba44.jpg",
+      "contents": [
+       {
+        "label": "Complete Edition package"
+       },
+       {
+        "label": "Supplier Deluxe tier"
+       },
+       {
+        "label": "Online account access"
+       }
+      ]
+     }
+    ],
+    "gameplayPillars": [
+     {
+      "title": "Open-world monster hunting",
+      "description": "Geralt travels between large regions, tracks monsters, prepares oils and potions, and takes contracts.",
+      "imageUrl": "https://images.launchbox-app.com//f64cbe3a-4863-4841-b85e-dd070f7641a8.jpg"
+     },
+     {
+      "title": "Choice-driven quests",
+      "description": "Main and side stories frequently react to dialogue choices and decisions with lasting consequences.",
+      "imageUrl": "https://images.launchbox-app.com//b24b4879-113e-4eb2-8fdf-954fd7746a80.jpg"
+     },
+     {
+      "title": "Real-time Witcher combat",
+      "description": "Swordplay, dodges, Signs, bombs, crossbows, and alchemy combine into a flexible combat system.",
+      "imageUrl": "https://images.launchbox-app.com//415d2cab-1eb1-40e5-9f81-c85fac1512a1.jpg"
+     },
+     {
+      "title": "Deep RPG progression",
+      "description": "Skill trees, gear sets, crafting, mutagens, and character builds support different play styles.",
+      "imageUrl": "https://images.launchbox-app.com//3e559872-c878-4e5b-832b-5f0777fa3355.jpg"
+     },
+     {
+      "title": "Huge expansion content",
+      "description": "Hearts of Stone and Blood and Wine add substantial story regions, characters, bosses, and endgame content.",
+      "imageUrl": "https://images.launchbox-app.com//b468458f-f075-4720-8ebd-1e017df627cb.jpg"
+     }
+    ],
+    "worldSummary": "The Northern Kingdoms span war-torn villages, cities, islands, forests, swamps, mountains, and the colorful duchy of Toussaint, with dense side quests and environmental storytelling.",
+    "storyChapters": [
+     {
+      "title": "Search for Ciri",
+      "body": "Geralt follows clues across the Continent while the Wild Hunt pursues his adopted daughter.",
+      "imageUrl": "https://images.launchbox-app.com//b24b4879-113e-4eb2-8fdf-954fd7746a80.jpg"
+     },
+     {
+      "title": "Navigate political conflict",
+      "body": "The search intersects with rulers, mages, criminals, soldiers, and ordinary people caught in war.",
+      "imageUrl": "https://images.launchbox-app.com//415d2cab-1eb1-40e5-9f81-c85fac1512a1.jpg"
+     },
+     {
+      "title": "Confront the Wild Hunt",
+      "body": "The central story escalates toward the supernatural riders pursuing Ciri and threatening the people around Geralt.",
+      "imageUrl": "https://images.launchbox-app.com//3e559872-c878-4e5b-832b-5f0777fa3355.jpg"
+     },
+     {
+      "title": "Hearts of Stone",
+      "body": "The first major expansion introduces Olgierd von Everec and the mysterious Gaunter O’Dimm.",
+      "imageUrl": "https://images.launchbox-app.com//b468458f-f075-4720-8ebd-1e017df627cb.jpg"
+     },
+     {
+      "title": "Blood and Wine",
+      "body": "The second major expansion sends Geralt to Toussaint for a large new mystery and a fitting late-game conclusion.",
+      "imageUrl": "https://images.launchbox-app.com//ccd85bcc-ae01-4e5e-9064-24ff8c58aa4c.jpg"
+     }
+    ],
+    "features": [
+     "Base game plus Hearts of Stone and Blood and Wine",
+     "Massive open-world RPG adapted for portable play",
+     "Meaningful quest choices with multiple outcomes",
+     "Cross-save support was added through later Switch updates",
+     "Dozens of hours of high-quality side quests and contracts"
+    ],
+    "perfResolutionDocked": "Dynamic up to ~720p",
+    "perfResolutionHandheld": "Dynamic ~540p",
+    "perfFps": "30",
+    "perfHdr": false,
+    "playTimeMain": 52,
+    "completionMain": 105,
+    "completionExtras": 180,
+    "faq": [
+     {
+      "q": "Does the Switch Complete Edition include both major expansions?",
+      "a": "Yes. The Complete Edition includes Hearts of Stone and Blood and Wine along with the base game and released DLC."
+     },
+     {
+      "q": "Is this the new Switch 2 Remastered version?",
+      "a": "No. This file is for the original Nintendo Switch Complete Edition. The 2026 native Switch 2 Remastered release is separate."
+     },
+     {
+      "q": "Can save data be moved to other platforms?",
+      "a": "Later updates added cross-save support with supported PC ecosystems."
+     },
+     {
+      "q": "Is the game multiplayer?",
+      "a": "No. The Witcher 3 is a single-player RPG."
+     },
+     {
+      "q": "How compromised is the Switch version?",
+      "a": "It uses reduced resolution and visual settings relative to more powerful platforms, but preserves the complete gameplay and story package."
+     }
+    ],
+    "verdictScore": 9,
+    "verdictPros": [
+     "Extraordinary story and quest writing",
+     "Complete package includes two excellent expansions",
+     "Huge world with memorable locations",
+     "Portable version preserves an enormous RPG",
+     "Excellent value in terms of content length"
+    ],
+    "verdictCons": [
+     "Visual quality is reduced on original Switch",
+     "30 fps target can dip in demanding areas",
+     "Small text/UI may need adjustment in handheld play",
+     "Combat is less precise than the strongest dedicated action games",
+     "Large install size for Switch storage"
+    ],
+    "reviews": [
+     {
+      "source": "LaunchBox",
+      "score": "Nintendo Switch release data",
+      "url": "https://gamesdb.launchbox-app.com/games/details/124619-the-witcher-iii-wild-hunt-complete-edition"
+     },
+     {
+      "source": "Metacritic",
+      "score": "Complete Edition reviews",
+      "url": "https://www.metacritic.com/game/the-witcher-3-wild-hunt-complete-edition/"
+     },
+     {
+      "source": "CD PROJEKT RED",
+      "score": "Official Witcher site",
+      "url": "https://www.thewitcher.com/"
+     }
+    ],
+    "timeline": [
+     {
+      "date": "2015-05-19",
+      "title": "Original The Witcher 3 released"
+     },
+     {
+      "date": "2016-05-31",
+      "title": "Blood and Wine expansion released"
+     },
+     {
+      "date": "2019-10-15",
+      "title": "Nintendo Switch Complete Edition released"
+     },
+     {
+      "date": "2020-02-18",
+      "title": "Switch update added cross-save and graphics options"
+     },
+     {
+      "date": "2026-08-25",
+      "title": "CD PROJEKT RED announced Remastered for Switch 2"
+     }
+    ],
+    "patchNotes": [
+     {
+      "version": "Nintendo Switch Complete Edition launch",
+      "date": "2019-10-15"
+     },
+     {
+      "version": "Update 3.6 cross-save / graphics options",
+      "date": "2020-02-18"
+     },
+     {
+      "version": "Current Switch build",
+      "date": "2026-08-27"
+     }
+    ],
+    "studioName": "Saber Interactive / CD PROJEKT RED",
+    "studioUrl": "https://www.thewitcher.com/",
+    "studioLocation": "Japan",
+    "sources": [
+     {
+      "name": "LaunchBox Nintendo Switch entry",
+      "url": "https://gamesdb.launchbox-app.com/games/details/124619-the-witcher-iii-wild-hunt-complete-edition"
+     },
+     {
+      "name": "CD PROJEKT RED Remastered announcement",
+      "url": "https://press.cdprojektred.com/en/news/1839/the-witcher-3-wild-hunt-remastered-announced-songs-of-the-past-gets-first-look"
+     },
+     {
+      "name": "Official Witcher site",
+      "url": "https://www.thewitcher.com/"
+     }
+    ],
+    "downloadSizeGb": 31.5,
+    "requiredSpaceGb": 31.5,
+    "microSdRecommended": true,
+    "storageNotes": "The physical Complete Edition originally shipped with the full game content on cartridge in key regions, while digital installation size and update storage can vary by region and patch.",
+    "mpLocalPlayers": false,
+    "mpOnlinePlayers": false,
+    "mpCoop": false,
+    "mpCompetitive": false,
+    "mpLocalWireless": false,
+    "mpSplitScreen": false,
+    "seriesEntries": [
+     "The Witcher 3: Wild Hunt — Remastered",
+     "The Elder Scrolls V: Skyrim",
+     "Kingdom Come: Deliverance"
+    ],
+    "dlc": [
+     {
+      "name": "Hearts of Stone",
+      "description": "Major story expansion featuring Olgierd von Everec and Gaunter O’Dimm. Included in Complete Edition."
+     },
+     {
+      "name": "Blood and Wine",
+      "description": "Large expansion set in Toussaint with a new region and late-game story. Included in Complete Edition."
+     }
+    ],
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "deviceModel": "Nintendo Switch",
+      "hardwareId": "nintendo-switch",
+      "informationStatus": "Available / sourced",
+      "handheld": {
+       "supported": true,
+       "resolution": "Dynamic ~540p",
+       "resolutionDynamic": true,
+       "renderingResolution": "Dynamic ~540p",
+       "outputResolution": "Dynamic ~540p",
+       "fps": "30",
+       "fpsMin": "20",
+       "fpsMax": "30",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Handheld",
+       "notes": "The original Switch port targets 30 fps and uses dynamic resolution, commonly around 540p handheld and up to roughly 720p docked depending on scene."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "Dynamic up to ~720p",
+       "resolutionDynamic": true,
+       "renderingResolution": "Dynamic up to ~720p",
+       "outputResolution": "Dynamic up to ~720p",
+       "fps": "30",
+       "fpsMin": "20",
+       "fpsMax": "30",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "TV / Docked",
+       "notes": "The original Switch port targets 30 fps and uses dynamic resolution, commonly around 540p handheld and up to roughly 720p docked depending on scene."
+      },
+      "modes": [
+       {
+        "name": "Primary documented / observed profile",
+        "handheldResolution": "Dynamic ~540p",
+        "handheldFps": "30",
+        "tvResolution": "Dynamic up to ~720p",
+        "tvFps": "30",
+        "hdr": false,
+        "vrr": false,
+        "notes": "The original Switch port targets 30 fps and uses dynamic resolution, commonly around 540p handheld and up to roughly 720p docked depending on scene."
+       }
+      ],
+      "upscaling": "Game / system scaling where applicable",
+      "rayTracing": false,
+      "rayTracingMode": "Not Supported",
+      "loadingTime": "Scene-dependent; no universal value",
+      "loadingNotes": "Loading varies by scene, storage state, patch level, and platform.",
+      "gameVersion": "Current retail build",
+      "patchVersion": "Current available update",
+      "testedDate": "2026-08-27",
+      "sourceName": "Nintendo official product page + established release performance profile",
+      "sourceUrl": "https://gamesdb.launchbox-app.com/games/details/124619-the-witcher-iii-wild-hunt-complete-edition",
+      "verifiedAt": "2026-08-27",
+      "verificationStatus": "Sourced / compatibility profile",
+      "performanceNotes": "The original Switch port targets 30 fps and uses dynamic resolution, commonly around 540p handheld and up to roughly 720p docked depending on scene."
+     },
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "hardwareId": "nintendo-switch-2",
+      "informationStatus": "Available / sourced",
+      "handheld": {
+       "supported": true,
+       "resolution": "Dynamic ~540p",
+       "resolutionDynamic": false,
+       "renderingResolution": "Dynamic ~540p",
+       "outputResolution": "Dynamic ~540p",
+       "fps": "30",
+       "fpsMin": "30",
+       "fpsMax": "30",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Handheld / Backward Compatibility",
+       "notes": "Original Switch build running through backward compatibility. A native Remastered Switch 2 release is tracked separately."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "Dynamic up to ~720p",
+       "resolutionDynamic": false,
+       "renderingResolution": "Dynamic up to ~720p",
+       "outputResolution": "Dynamic up to ~720p",
+       "fps": "30",
+       "fpsMin": "30",
+       "fpsMax": "30",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "TV / Docked / Backward Compatibility",
+       "notes": "Original Switch build running through backward compatibility. A native Remastered Switch 2 release is tracked separately."
+      },
+      "modes": [
+       {
+        "name": "Primary documented / observed profile",
+        "handheldResolution": "Dynamic ~540p",
+        "handheldFps": "30",
+        "tvResolution": "Dynamic up to ~720p",
+        "tvFps": "30",
+        "hdr": false,
+        "vrr": false,
+        "notes": "Original Switch build running through backward compatibility. A native Remastered Switch 2 release is tracked separately."
+       }
+      ],
+      "upscaling": "Game / system scaling where applicable",
+      "rayTracing": false,
+      "rayTracingMode": "Not Supported",
+      "loadingTime": "Scene-dependent; no universal value",
+      "loadingNotes": "Loading varies by scene, storage state, patch level, and platform.",
+      "gameVersion": "Current retail build",
+      "patchVersion": "Current available update",
+      "testedDate": "2026-08-27",
+      "sourceName": "Nintendo Switch 2 compatibility + original game performance profile",
+      "sourceUrl": "https://gamesdb.launchbox-app.com/games/details/124619-the-witcher-iii-wild-hunt-complete-edition",
+      "verifiedAt": "2026-08-27",
+      "verificationStatus": "Sourced / compatibility profile",
+      "performanceNotes": "Original Switch build running through backward compatibility. A native Remastered Switch 2 release is tracked separately."
+     }
+    ],
+    "switch2UpgradePrice": 0,
+    "boxContentsList": [],
+    "image": "https://images.launchbox-app.com//8c70e827-8f88-4591-96ed-ad9838862b0a.jpg",
+    "banner": "https://images.launchbox-app.com//f64cbe3a-4863-4841-b85e-dd070f7641a8.jpg",
+    "schemaId": "",
+    "batchImport": true,
+    "createdAt": "2026-08-28T18:36:52.952Z",
+    "updatedAt": "2026-08-28T18:36:52.952Z"
+   }
+  },
+  {
+   "id": "prd_47940c99a7f5442e",
+   "slug": "the-witcher-3-wild-hunt-remastered-switch-2",
+   "title": "The Witcher 3: Wild Hunt — Remastered",
+   "platform": "switch2",
+   "isHidden": true,
+   "hash": "40e5d596bbb97433513ed21cf78391a425158e4164e2057bbafceff95c19453a",
+   "images": [
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://banan.to/api/files/products/prd_47940c99a7f5442e/square-card-45c1c42107c036c5.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 160090,
+     "width": 1024,
+     "height": 1024,
+     "thumb": "review-workdir/thumbs/batch-027/the-witcher-3-wild-hunt-remastered-switch-2__square-card-0.png"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://banan.to/api/files/products/prd_47940c99a7f5442e/cover-bfcb26bb9438feb7.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 256526,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-027/the-witcher-3-wild-hunt-remastered-switch-2__detail-cover-1.png"
+    },
+    {
+     "role": "listing",
+     "field": "image",
+     "url": "https://press.cdn.cdpr.app/news/33a063fc417f1a4ccd362849de934bb1_q90_1024x576.png",
+     "status": 200,
+     "contentType": "png",
+     "bytes": 889068,
+     "width": 1024,
+     "height": 576,
+     "thumb": "review-workdir/thumbs/batch-027/the-witcher-3-wild-hunt-remastered-switch-2__listing-2.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[0]",
+     "url": "https://press.cdn.cdpr.app/news/33a063fc417f1a4ccd362849de934bb1_q90_1024x576.png",
+     "status": 200,
+     "contentType": "png",
+     "bytes": 889068,
+     "width": 1024,
+     "height": 576,
+     "thumb": "review-workdir/thumbs/batch-027/the-witcher-3-wild-hunt-remastered-switch-2__banner-3.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[1]",
+     "url": "https://images.launchbox-app.com//f64cbe3a-4863-4841-b85e-dd070f7641a8.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 10501,
+     "width": 400,
+     "height": 225,
+     "thumb": "review-workdir/thumbs/batch-027/the-witcher-3-wild-hunt-remastered-switch-2__banner-4.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[2]",
+     "url": "https://images.launchbox-app.com//b24b4879-113e-4eb2-8fdf-954fd7746a80.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 23330,
+     "width": 400,
+     "height": 225,
+     "thumb": "review-workdir/thumbs/batch-027/the-witcher-3-wild-hunt-remastered-switch-2__banner-5.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[3]",
+     "url": "https://images.launchbox-app.com//415d2cab-1eb1-40e5-9f81-c85fac1512a1.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 23431,
+     "width": 400,
+     "height": 225,
+     "thumb": "review-workdir/thumbs/batch-027/the-witcher-3-wild-hunt-remastered-switch-2__banner-6.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://images.launchbox-app.com//b24b4879-113e-4eb2-8fdf-954fd7746a80.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 23330,
+     "width": 400,
+     "height": 225,
+     "thumb": "review-workdir/thumbs/batch-027/the-witcher-3-wild-hunt-remastered-switch-2__gallery-7.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[1]",
+     "url": "https://images.launchbox-app.com//415d2cab-1eb1-40e5-9f81-c85fac1512a1.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 23431,
+     "width": 400,
+     "height": 225,
+     "thumb": "review-workdir/thumbs/batch-027/the-witcher-3-wild-hunt-remastered-switch-2__gallery-8.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[2]",
+     "url": "https://images.launchbox-app.com//3e559872-c878-4e5b-832b-5f0777fa3355.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 14198,
+     "width": 400,
+     "height": 225,
+     "thumb": "review-workdir/thumbs/batch-027/the-witcher-3-wild-hunt-remastered-switch-2__gallery-9.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[3]",
+     "url": "https://images.launchbox-app.com//b468458f-f075-4720-8ebd-1e017df627cb.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 12754,
+     "width": 400,
+     "height": 225,
+     "thumb": "review-workdir/thumbs/batch-027/the-witcher-3-wild-hunt-remastered-switch-2__gallery-10.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[4]",
+     "url": "https://images.launchbox-app.com//ccd85bcc-ae01-4e5e-9064-24ff8c58aa4c.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 16353,
+     "width": 400,
+     "height": 225,
+     "thumb": "review-workdir/thumbs/batch-027/the-witcher-3-wild-hunt-remastered-switch-2__gallery-11.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[5]",
+     "url": "https://images.launchbox-app.com//eead0c78-0984-40fa-b98b-59fa28cf8462.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 17998,
+     "width": 400,
+     "height": 225,
+     "thumb": "review-workdir/thumbs/batch-027/the-witcher-3-wild-hunt-remastered-switch-2__gallery-12.png"
+    }
+   ],
+   "record": {
+    "title": "The Witcher 3: Wild Hunt — Remastered",
+    "titleEn": "The Witcher 3: Wild Hunt — Remastered",
+    "titleKu": "",
+    "slug": "the-witcher-3-wild-hunt-remastered-switch-2",
+    "description": "The Witcher 3: Wild Hunt — Remastered modernizes Geralt’s acclaimed open-world RPG with upgraded visuals and performance, enhanced combat, improved traversal and movement, new Witcher Sign effects, revamped mount handling, enhanced monster behaviors, a redesigned skill tree, transmogrification, expanded photo mode, new finishers, and more. CD PROJEKT RED has confirmed a native Nintendo Switch 2 version launching September 29, 2026.",
+    "descriptionEn": "The Witcher 3: Wild Hunt — Remastered modernizes Geralt’s acclaimed open-world RPG with upgraded visuals and performance, enhanced combat, improved traversal and movement, new Witcher Sign effects, revamped mount handling, enhanced monster behaviors, a redesigned skill tree, transmogrification, expanded photo mode, new finishers, and more. CD PROJEKT RED has confirmed a native Nintendo Switch 2 version launching September 29, 2026.",
+    "descriptionKu": "",
+    "cartridgeImage": "",
+    "nintendoCardImage": "/api/files/products/prd_47940c99a7f5442e/square-card-45c1c42107c036c5.webp",
+    "coverHiResImage": "",
+    "coverImage": "/api/files/products/prd_47940c99a7f5442e/cover-bfcb26bb9438feb7.webp",
+    "bannerImages": [
+     "https://press.cdn.cdpr.app/news/33a063fc417f1a4ccd362849de934bb1_q90_1024x576.png",
+     "https://images.launchbox-app.com//f64cbe3a-4863-4841-b85e-dd070f7641a8.jpg",
+     "https://images.launchbox-app.com//b24b4879-113e-4eb2-8fdf-954fd7746a80.jpg",
+     "https://images.launchbox-app.com//415d2cab-1eb1-40e5-9f81-c85fac1512a1.jpg",
+     "https://images.launchbox-app.com//3e559872-c878-4e5b-832b-5f0777fa3355.jpg",
+     "https://images.launchbox-app.com//b468458f-f075-4720-8ebd-1e017df627cb.jpg"
+    ],
+    "gallery": [],
+    "youtubeTrailer": "https://www.youtube.com/",
+    "releaseDate": "2026-09-29",
+    "ageRating": "Mature / PEGI 18 expected from existing title content",
+    "metacriticRating": "85",
+    "genres": [
+     "Action",
+     "Role-Playing",
+     "Open World",
+     "Adventure"
+    ],
+    "platform": "switch2",
+    "size": "31.5 GB",
+    "numberOfPlayers": "Single system (1)",
+    "supportedLanguages": "Full language list not yet published for the Switch 2 Remastered SKU; expected to follow the broad multilingual support of current The Witcher 3 builds",
+    "hardwareModel": "",
+    "colorEdition": "",
+    "storageCapacity": "",
+    "screenSpecs": "",
+    "batteryLife": "",
+    "boxContents": [],
+    "boxContentsText": "",
+    "warrantyCondition": "",
+    "connectivity": "",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "Global",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "",
+    "redemptionSteps": [],
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 14750,
+    "cost": 1250,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": true,
+    "displayOrder": 0,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "مشترك",
+      "description": "مشترك",
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_account",
+      "name": "خاص بك",
+      "description": "خاص بك",
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "types": [
+     {
+      "id": "offline_base",
+      "name": "مشترك — اللعبة الأساسية",
+      "optionId": "offline_account",
+      "price": 14750,
+      "cost": 1250,
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "offline_extras",
+      "name": "مشترك — مع الإضافات",
+      "optionId": "offline_account",
+      "price": 17250,
+      "cost": 2500,
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_base",
+      "name": "خاص بك — اللعبة الأساسية",
+      "optionId": "online_account",
+      "price": 13500,
+      "cost": 10000,
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_extras",
+      "name": "خاص بك — مع الإضافات",
+      "optionId": "online_account",
+      "price": 16500,
+      "cost": 12250,
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "Coming Soon",
+    "kind": "account",
+    "trade_value_iqd": 8500,
+    "store_offer_bonus_iqd": 1500,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "id": "prd_47940c99a7f5442e",
+    "schema_version": 24,
+    "titleAr": "ذا ويتشر 3: وايلد هانت — ريماسترد",
+    "compatibility": [
+     "Nintendo Switch 2 native release",
+     "Nintendo Switch 1 has a separate Complete Edition; this Remastered file is not the Switch 1 product"
+    ],
+    "edition": "Remastered",
+    "developer": "CD PROJEKT RED / Yigsoft",
+    "publisher": "CD PROJEKT RED",
+    "seriesName": "The Witcher",
+    "officialUrl": "https://press.cdprojektred.com/en/news/1839/the-witcher-3-wild-hunt-remastered-announced-songs-of-the-past-gets-first-look",
+    "eshopUrl": "https://press.cdprojektred.com/en/news/1839/the-witcher-3-wild-hunt-remastered-announced-songs-of-the-past-gets-first-look",
+    "gameIsOffline": true,
+    "gameIsOnline": false,
+    "gameLanguageLocked": false,
+    "description_short": "A native Nintendo Switch 2 Remastered edition of The Witcher 3 launching September 29, 2026 with upgraded visuals, performance, gameplay systems, and the classic expansions.",
+    "description_ar": "نسخة Remastered أصلية لجهاز Nintendo Switch 2 تصدر في 29 سبتمبر 2026، مع تحسينات للرسوم والأداء والقتال والحركة وشجرة المهارات وميزات إضافية، مع بقاء مغامرة Geralt الأساسية.",
+    "galleryImages": [
+     {
+      "alt": "The Witcher 3: Wild Hunt — Remastered gameplay / world media 1",
+      "url": "https://images.launchbox-app.com//b24b4879-113e-4eb2-8fdf-954fd7746a80.jpg"
+     },
+     {
+      "alt": "The Witcher 3: Wild Hunt — Remastered gameplay / world media 2",
+      "url": "https://images.launchbox-app.com//415d2cab-1eb1-40e5-9f81-c85fac1512a1.jpg"
+     },
+     {
+      "alt": "The Witcher 3: Wild Hunt — Remastered gameplay / world media 3",
+      "url": "https://images.launchbox-app.com//3e559872-c878-4e5b-832b-5f0777fa3355.jpg"
+     },
+     {
+      "alt": "The Witcher 3: Wild Hunt — Remastered gameplay / world media 4",
+      "url": "https://images.launchbox-app.com//b468458f-f075-4720-8ebd-1e017df627cb.jpg"
+     },
+     {
+      "alt": "The Witcher 3: Wild Hunt — Remastered gameplay / world media 5",
+      "url": "https://images.launchbox-app.com//ccd85bcc-ae01-4e5e-9064-24ff8c58aa4c.jpg"
+     },
+     {
+      "alt": "The Witcher 3: Wild Hunt — Remastered gameplay / world media 6",
+      "url": "https://images.launchbox-app.com//eead0c78-0984-40fa-b98b-59fa28cf8462.jpg"
+     }
+    ],
+    "languagesText": [
+     "Official final Switch 2 language matrix not yet published",
+     "The existing game supports multiple European and Asian languages",
+     "Re-check Nintendo / CDPR listing at launch"
+    ],
+    "languagesAudio": [
+     "Final Switch 2 audio-language matrix not yet published",
+     "Existing The Witcher 3 builds support multiple voice languages",
+     "Re-check launch listing before public storefront publication"
+    ],
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": true,
+    "nintendoPlayModes": "TV mode / Tabletop mode / Handheld mode",
+    "nintendoOnlineRequired": false,
+    "nintendoCloudSaves": true,
+    "nintendoGameKeyCard": false,
+    "nintendoPhysicalNeedsDownload": false,
+    "switch2Enhanced": true,
+    "switch2Exclusive": true,
+    "nintendoNotes": "Officially announced by CD PROJEKT RED on August 25, 2026. The native Nintendo Switch 2 version launches September 29, 2026. Exact Switch 2 resolution/FPS targets and physical box art were not published at extraction time, so those values are explicitly marked Not Announced rather than guessed. Songs of the Past is a separate paid expansion scheduled for 2027.",
+    "editionsList": [
+     {
+      "name": "Regular / Offline",
+      "contents": [
+       {
+        "label": "Remastered base game tier"
+       },
+       {
+        "label": "Offline account package"
+       },
+       {
+        "label": "Native Nintendo Switch 2 release"
+       }
+      ]
+     },
+     {
+      "name": "Bonus Edition / Offline",
+      "contents": [
+       {
+        "label": "Remastered supplier Bonus tier"
+       },
+       {
+        "label": "Offline account package"
+       },
+       {
+        "label": "Native Nintendo Switch 2 release"
+       }
+      ]
+     },
+     {
+      "name": "Standard / Online",
+      "contents": [
+       {
+        "label": "Remastered base game tier"
+       },
+       {
+        "label": "Online account package"
+       },
+       {
+        "label": "Native Nintendo Switch 2 release"
+       }
+      ]
+     },
+     {
+      "name": "Deluxe Edition / Online",
+      "contents": [
+       {
+        "label": "Remastered supplier Deluxe tier"
+       },
+       {
+        "label": "Online account package"
+       },
+       {
+        "label": "Native Nintendo Switch 2 release"
+       }
+      ]
+     }
+    ],
+    "gameplayPillars": [
+     {
+      "title": "Upgraded visuals and performance",
+      "description": "CD PROJEKT RED describes broad visual and performance improvements across the Remastered release.",
+      "imageUrl": "https://press.cdn.cdpr.app/news/33a063fc417f1a4ccd362849de934bb1_q90_1024x576.png"
+     },
+     {
+      "title": "Enhanced combat",
+      "description": "Combat systems are being revised with improved feel, new finishers, and broader gameplay changes.",
+      "imageUrl": "https://images.launchbox-app.com//f64cbe3a-4863-4841-b85e-dd070f7641a8.jpg"
+     },
+     {
+      "title": "Improved traversal and movement",
+      "description": "Movement and world navigation receive modernization alongside revamped mount handling.",
+      "imageUrl": "https://images.launchbox-app.com//b24b4879-113e-4eb2-8fdf-954fd7746a80.jpg"
+     },
+     {
+      "title": "Reworked progression",
+      "description": "The skill tree is being revamped, with transmogrification and other quality-of-life systems added.",
+      "imageUrl": "https://images.launchbox-app.com//415d2cab-1eb1-40e5-9f81-c85fac1512a1.jpg"
+     },
+     {
+      "title": "Expanded presentation tools",
+      "description": "New Sign effects and an expanded photo mode are among the confirmed additions.",
+      "imageUrl": "https://images.launchbox-app.com//3e559872-c878-4e5b-832b-5f0777fa3355.jpg"
+     }
+    ],
+    "worldSummary": "The Remastered release revisits the same Northern Kingdoms, Skellige, and expansion regions but with a modernization pass intended to make the decade-old RPG feel more current on newer hardware.",
+    "storyChapters": [
+     {
+      "title": "Search for Ciri",
+      "body": "The main narrative remains Geralt’s pursuit of Ciri while the Wild Hunt closes in.",
+      "imageUrl": "https://images.launchbox-app.com//b24b4879-113e-4eb2-8fdf-954fd7746a80.jpg"
+     },
+     {
+      "title": "Navigate the Northern Kingdoms",
+      "body": "Political conflict, monster contracts, and personal stories remain central to the open-world structure.",
+      "imageUrl": "https://images.launchbox-app.com//415d2cab-1eb1-40e5-9f81-c85fac1512a1.jpg"
+     },
+     {
+      "title": "Face the Wild Hunt",
+      "body": "The base campaign culminates in choices and battles surrounding Ciri and the supernatural threat.",
+      "imageUrl": "https://images.launchbox-app.com//3e559872-c878-4e5b-832b-5f0777fa3355.jpg"
+     },
+     {
+      "title": "Revisit the classic expansions",
+      "body": "Hearts of Stone and Blood and Wine remain part of the modernized Witcher 3 ecosystem.",
+      "imageUrl": "https://images.launchbox-app.com//b468458f-f075-4720-8ebd-1e017df627cb.jpg"
+     },
+     {
+      "title": "Prepare for Songs of the Past",
+      "body": "A new paid expansion, Songs of the Past, is scheduled for 2027 on Switch 2 and other current platforms.",
+      "imageUrl": "https://images.launchbox-app.com//ccd85bcc-ae01-4e5e-9064-24ff8c58aa4c.jpg"
+     }
+    ],
+    "features": [
+     "Native Nintendo Switch 2 release",
+     "Upgraded visuals and performance",
+     "Enhanced combat, traversal, and mount handling",
+     "Revamped skill tree, transmogrification, and expanded photo mode",
+     "Songs of the Past expansion planned for 2027"
+    ],
+    "perfResolutionDocked": "Not Announced",
+    "perfResolutionHandheld": "Not Announced",
+    "perfFps": "Not Announced",
+    "perfHdr": false,
+    "playTimeMain": 52,
+    "completionMain": 105,
+    "completionExtras": 180,
+    "faq": [
+     {
+      "q": "When does the Switch 2 Remastered version release?",
+      "a": "September 29, 2026, according to CD PROJEKT RED’s official announcement."
+     },
+     {
+      "q": "Is this just backward compatibility?",
+      "a": "No. CD PROJEKT RED explicitly announced a native Nintendo Switch 2 version of Remastered."
+     },
+     {
+      "q": "Are exact resolution and FPS values confirmed?",
+      "a": "Not yet. They are intentionally marked Not Announced in this file rather than estimated."
+     },
+     {
+      "q": "Does it include the classic expansions?",
+      "a": "CD PROJEKT RED’s Remastered ecosystem modernizes the base game and its first two expansions, and existing owners were granted access to Hearts of Stone and Blood and Wine."
+     },
+     {
+      "q": "What is Songs of the Past?",
+      "a": "It is a newly announced paid expansion planned for 2027, featuring the new region of Letten."
+     }
+    ],
+    "verdictPros": [
+     "Native Switch 2 release is officially confirmed",
+     "Large modernization pass goes beyond simple resolution scaling",
+     "Combat and progression revisions target long-standing rough edges",
+     "Full Witcher 3 content base remains enormous",
+     "New 2027 expansion extends the game further"
+    ],
+    "verdictCons": [
+     "Not released yet",
+     "Exact Switch 2 performance targets are not published",
+     "Physical Switch 2 box art was not available at extraction time",
+     "Final install size may change before launch",
+     "Review scores for Remastered are not available yet"
+    ],
+    "reviews": [
+     {
+      "source": "CD PROJEKT RED",
+      "score": "Official announcement",
+      "url": "https://press.cdprojektred.com/en/news/1839/the-witcher-3-wild-hunt-remastered-announced-songs-of-the-past-gets-first-look"
+     }
+    ],
+    "timeline": [
+     {
+      "date": "2026-08-25",
+      "title": "Remastered officially announced"
+     },
+     {
+      "date": "2026-09-29",
+      "title": "Native Nintendo Switch 2 version scheduled to launch"
+     },
+     {
+      "date": "2027",
+      "title": "Songs of the Past paid expansion scheduled"
+     }
+    ],
+    "patchNotes": [
+     {
+      "version": "Pre-release announcement build",
+      "date": "2026-08-25"
+     },
+     {
+      "version": "Scheduled launch",
+      "date": "2026-09-29"
+     }
+    ],
+    "studioName": "CD PROJEKT RED / Yigsoft",
+    "studioUrl": "https://press.cdprojektred.com/en/news/1839/the-witcher-3-wild-hunt-remastered-announced-songs-of-the-past-gets-first-look",
+    "studioLocation": "Japan",
+    "sources": [
+     {
+      "name": "CD PROJEKT RED official press release",
+      "url": "https://press.cdprojektred.com/en/news/1839/the-witcher-3-wild-hunt-remastered-announced-songs-of-the-past-gets-first-look"
+     },
+     {
+      "name": "The Witcher official website",
+      "url": "https://www.thewitcher.com/"
+     },
+     {
+      "name": "LaunchBox original Switch entry",
+      "url": "https://gamesdb.launchbox-app.com/games/details/124619-the-witcher-iii-wild-hunt-complete-edition"
+     }
+    ],
+    "downloadSizeGb": 31.5,
+    "requiredSpaceGb": 31.5,
+    "microSdRecommended": true,
+    "storageNotes": "Final Nintendo Switch 2 install size has not yet been officially published. The numeric storage field is a conservative placeholder based on the existing complete package and should be refreshed at launch.",
+    "mpLocalPlayers": false,
+    "mpOnlinePlayers": false,
+    "mpCoop": false,
+    "mpCompetitive": false,
+    "mpLocalWireless": false,
+    "mpSplitScreen": false,
+    "seriesEntries": [
+     "The Witcher 3: Wild Hunt — Complete Edition",
+     "Cyberpunk 2077: Ultimate Edition",
+     "The Elder Scrolls V: Skyrim"
+    ],
+    "dlc": [
+     {
+      "name": "Hearts of Stone",
+      "description": "Classic story expansion being modernized as part of the Witcher 3 Remastered content ecosystem."
+     },
+     {
+      "name": "Blood and Wine",
+      "description": "Large Toussaint expansion included in the modernized Witcher 3 content ecosystem."
+     },
+     {
+      "name": "Songs of the Past",
+      "description": "New paid expansion set in Letten, scheduled for 2027 on Nintendo Switch 2 and other current platforms."
+     }
+    ],
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "hardwareId": "nintendo-switch-2",
+      "informationStatus": "Upcoming / exact technical targets not published",
+      "handheld": {
+       "supported": true,
+       "resolution": "Not Announced",
+       "resolutionDynamic": false,
+       "renderingResolution": "Not Announced",
+       "outputResolution": "Not Announced",
+       "fps": "Not Announced",
+       "fpsMin": "Not Announced",
+       "fpsMax": "Not Announced",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Handheld",
+       "notes": "CD PROJEKT RED has officially announced a native Nintendo Switch 2 Remastered release for September 29, 2026, but exact handheld/TV resolution and frame-rate targets have not yet been published."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "Not Announced",
+       "resolutionDynamic": false,
+       "renderingResolution": "Not Announced",
+       "outputResolution": "Not Announced",
+       "fps": "Not Announced",
+       "fpsMin": "Not Announced",
+       "fpsMax": "Not Announced",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "TV / Docked",
+       "notes": "CD PROJEKT RED has officially announced a native Nintendo Switch 2 Remastered release for September 29, 2026, but exact handheld/TV resolution and frame-rate targets have not yet been published."
+      },
+      "modes": [
+       {
+        "name": "Primary documented / observed profile",
+        "handheldResolution": "Not Announced",
+        "handheldFps": "Not Announced",
+        "tvResolution": "Not Announced",
+        "tvFps": "Not Announced",
+        "hdr": false,
+        "vrr": false,
+        "notes": "CD PROJEKT RED has officially announced a native Nintendo Switch 2 Remastered release for September 29, 2026, but exact handheld/TV resolution and frame-rate targets have not yet been published."
+       }
+      ],
+      "upscaling": "Game / system scaling where applicable",
+      "rayTracing": false,
+      "rayTracingMode": "Not Supported",
+      "loadingTime": "Scene-dependent; no universal value",
+      "loadingNotes": "Loading varies by scene, storage state, patch level, and platform.",
+      "gameVersion": "Upcoming Remastered build",
+      "patchVersion": "Pre-release / not yet launched",
+      "testedDate": "2026-08-27",
+      "sourceName": "CD PROJEKT RED official press announcement",
+      "sourceUrl": "https://press.cdprojektred.com/en/news/1839/the-witcher-3-wild-hunt-remastered-announced-songs-of-the-past-gets-first-look",
+      "verifiedAt": "2026-08-27",
+      "verificationStatus": "Officially announced; technical resolution/FPS pending",
+      "performanceNotes": "CD PROJEKT RED has officially announced a native Nintendo Switch 2 Remastered release for September 29, 2026, but exact handheld/TV resolution and frame-rate targets have not yet been published."
+     },
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "deviceModel": "Nintendo Switch",
+      "hardwareId": "nintendo-switch",
+      "informationStatus": "Not Supported for this native edition",
+      "handheld": {
+       "supported": false,
+       "resolution": "Not Supported",
+       "resolutionDynamic": false,
+       "renderingResolution": "Not Supported",
+       "outputResolution": "Not Supported",
+       "fps": "Not Supported",
+       "fpsMin": "Not Supported",
+       "fpsMax": "Not Supported",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Handheld",
+       "notes": "This file represents the native Nintendo Switch 2 Remastered product. The original Nintendo Switch Complete Edition is a separate product file."
+      },
+      "tv": {
+       "supported": false,
+       "resolution": "Not Supported",
+       "resolutionDynamic": false,
+       "renderingResolution": "Not Supported",
+       "outputResolution": "Not Supported",
+       "fps": "Not Supported",
+       "fpsMin": "Not Supported",
+       "fpsMax": "Not Supported",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "TV / Docked",
+       "notes": "This file represents the native Nintendo Switch 2 Remastered product. The original Nintendo Switch Complete Edition is a separate product file."
+      },
+      "modes": [
+       {
+        "name": "Primary documented / observed profile",
+        "handheldResolution": "Not Supported",
+        "handheldFps": "Not Supported",
+        "tvResolution": "Not Supported",
+        "tvFps": "Not Supported",
+        "hdr": false,
+        "vrr": false,
+        "notes": "This file represents the native Nintendo Switch 2 Remastered product. The original Nintendo Switch Complete Edition is a separate product file."
+       }
+      ],
+      "upscaling": "Game / system scaling where applicable",
+      "rayTracing": false,
+      "rayTracingMode": "Not Supported",
+      "loadingTime": "Scene-dependent; no universal value",
+      "loadingNotes": "Loading varies by scene, storage state, patch level, and platform.",
+      "gameVersion": "Separate platform edition",
+      "patchVersion": "Not applicable",
+      "testedDate": "2026-08-27",
+      "sourceName": "CD PROJEKT RED official press announcement",
+      "sourceUrl": "https://press.cdprojektred.com/en/news/1839/the-witcher-3-wild-hunt-remastered-announced-songs-of-the-past-gets-first-look",
+      "verifiedAt": "2026-08-27",
+      "verificationStatus": "Separate original Switch release exists",
+      "performanceNotes": "This file represents the native Nintendo Switch 2 Remastered product. The original Nintendo Switch Complete Edition is a separate product file."
+     }
+    ],
+    "switch2UpgradePrice": 0,
+    "boxContentsList": [],
+    "image": "https://press.cdn.cdpr.app/news/33a063fc417f1a4ccd362849de934bb1_q90_1024x576.png",
+    "banner": "https://press.cdn.cdpr.app/news/33a063fc417f1a4ccd362849de934bb1_q90_1024x576.png",
+    "schemaId": "",
+    "batchImport": true,
+    "createdAt": "2026-08-28T18:37:21.069Z",
+    "updatedAt": "2026-08-28T18:37:21.069Z"
+   }
+  }
+ ]
+}

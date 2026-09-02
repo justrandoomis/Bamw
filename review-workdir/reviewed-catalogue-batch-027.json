@@ -1,0 +1,51 @@
+{
+ "batch": "027",
+ "apply": false,
+ "games": [
+  {
+   "id": "prd_5b18e929c72c41e0",
+   "slug": "the-legend-of-zelda-skyward-sword-hd-switch",
+   "baseHash": "2d6210818905fad7792a21b17aba3bf64774e42f544e2e4fee11685f1e46ae80",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  },
+  {
+   "id": "prd_5c41a894eedd416e",
+   "slug": "the-legend-of-zelda-tears-of-the-kingdom-switch-1",
+   "baseHash": "d2ac77af8761d44fe42c72c916971e838fd5c5ee9cf7363bfa612393d73565ac",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  },
+  {
+   "id": "prd_37ef136392094c4c",
+   "slug": "the-legend-of-zelda-tears-of-the-kingdom-switch-2-edition",
+   "baseHash": "73a7ea318f54c80b3336cbfa2f36d972baac1bba4a5dc105a8ef75a3d0a9d57c",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  },
+  {
+   "id": "prd_b3c4ab1e54a144a8",
+   "slug": "the-witcher-3-wild-hunt-complete-edition-switch",
+   "baseHash": "285264d052aab2698f878f3b717a045348d316c1816039a90bcfe5fe94f10441",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  },
+  {
+   "id": "prd_47940c99a7f5442e",
+   "slug": "the-witcher-3-wild-hunt-remastered-switch-2",
+   "baseHash": "40e5d596bbb97433513ed21cf78391a425158e4164e2057bbafceff95c19453a",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  }
+ ]
+}

@@ -1,0 +1,547 @@
+{
+ "title": "The Legend of Zelda: Breath of the Wild — Nintendo Switch 2 Edition",
+ "titleEn": "The Legend of Zelda: Breath of the Wild — Nintendo Switch 2 Edition",
+ "titleKu": "",
+ "slug": "the-legend-of-zelda-breath-of-the-wild-switch-2-edition",
+ "description": "The Legend of Zelda: Breath of the Wild — Nintendo Switch 2 Edition brings Link's landmark open-air adventure to Nintendo Switch 2. This edition preserves the full original journey while adding a native Switch 2 release profile, upgraded presentation features, and integration with Nintendo's newer platform ecosystem. It remains the same acclaimed game structure, but tuned as a dedicated Switch 2 package rather than only a backward-compatible original release.",
+ "descriptionEn": "The Legend of Zelda: Breath of the Wild — Nintendo Switch 2 Edition brings Link's landmark open-air adventure to Nintendo Switch 2. This edition preserves the full original journey while adding a native Switch 2 release profile, upgraded presentation features, and integration with Nintendo's newer platform ecosystem. It remains the same acclaimed game structure, but tuned as a dedicated Switch 2 package rather than only a backward-compatible original release.",
+ "descriptionKu": "",
+ "cartridgeImage": "/api/files/products/prd_bbbc07d460f44474/front-box-7d8f7d0ca2ba6583.webp",
+ "nintendoCardImage": "/api/files/products/prd_bbbc07d460f44474/square-card-d2ecba43d866a73e.webp",
+ "coverHiResImage": "/api/files/products/prd_bbbc07d460f44474/3d-wrap-0de8b9262e1d9bcc.webp",
+ "coverImage": "/api/files/products/prd_bbbc07d460f44474/cover-e978ac83ad6f77c6.webp",
+ "bannerImages": [
+  ""
+ ],
+ "gallery": [],
+ "youtubeTrailer": "",
+ "releaseDate": "2025-06-05",
+ "ageRating": "ESRB E10+ / PEGI 12",
+ "metacriticRating": 97,
+ "genres": [
+  "Action",
+  "Adventure",
+  "Open World",
+  "RPG"
+ ],
+ "platform": "switch2",
+ "size": 14.5,
+ "numberOfPlayers": "Single system (1)",
+ "supportedLanguages": "Japanese / British English / French / German / Italian / Spanish / Korean / Dutch / Simplified Chinese / Latin American Spanish / Canadian French / Traditional Chinese / American English",
+ "hardwareModel": "",
+ "colorEdition": "",
+ "storageCapacity": "",
+ "screenSpecs": "",
+ "batteryLife": "",
+ "boxContents": [],
+ "boxContentsText": "",
+ "warrantyCondition": "",
+ "connectivity": "",
+ "characterName": "Link",
+ "amiiboSeries": "The Legend of Zelda",
+ "figureType": "figure",
+ "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+ "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+ "boxCondition": "mib",
+ "releaseWave": "Wave 2 (Restock)",
+ "rarity": "standard",
+ "accessoryType": "حقيبة حماية وتنقل Carry Case",
+ "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+ "brand": "Nintendo Official",
+ "material": "Hard EVA Shockproof Shell",
+ "availableColors": "Black, Neon Red/Blue, White",
+ "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+ "cardValue": "$20 eShop Balance",
+ "region": "Global",
+ "cardType": "eshop",
+ "deliveryMethod": "instant_code",
+ "redemptionGuide": "",
+ "redemptionSteps": [],
+ "validity": "no_expiry",
+ "usedType": "cartridge",
+ "conditionGrade": "like_new",
+ "packaging": "cib",
+ "guaranteeStatus": "tested_30days",
+ "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+ "accountType": "primary",
+ "badge": "وفر 40%",
+ "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+ "price": 20000,
+ "cost": 2500,
+ "stock": 999999,
+ "isInfiniteStock": true,
+ "isHidden": true,
+ "displayOrder": 0,
+ "category": "nintendo-switch-games",
+ "categoryId": "nintendo-switch-games",
+ "categoryEn": "",
+ "categoryKu": "",
+ "options": [
+  {
+   "id": "offline_account",
+   "name": "مشترك",
+   "description": "مشترك",
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_account",
+   "name": "خاص بك",
+   "description": "خاص بك",
+   "stock": 9999,
+   "isInfiniteStock": true
+  }
+ ],
+ "types": [
+  {
+   "id": "offline_base",
+   "name": "مشترك — اللعبة الأساسية",
+   "optionId": "offline_account",
+   "price": 20000,
+   "cost": 2500,
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "offline_extras",
+   "name": "مشترك — مع الإضافات",
+   "optionId": "offline_account",
+   "price": 22000,
+   "cost": 3500,
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_base",
+   "name": "خاص بك — اللعبة الأساسية",
+   "optionId": "online_account",
+   "price": 36250,
+   "cost": 25000,
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_extras",
+   "name": "خاص بك — مع الإضافات",
+   "optionId": "online_account",
+   "price": 49000,
+   "cost": 33750,
+   "stock": 9999,
+   "isInfiniteStock": true
+  }
+ ],
+ "editions": [],
+ "dlcs": [],
+ "isActive": true,
+ "status": "Active",
+ "kind": "account",
+ "trade_value_iqd": 17000,
+ "store_offer_bonus_iqd": 3500,
+ "trade_enabled": true,
+ "trade_value_locked": false,
+ "id": "prd_bbbc07d460f44474",
+ "schema_version": 24,
+ "titleAr": "أسطورة زيلدا: نَفَس البرية — إصدار نينتندو سويتش 2",
+ "compatibility": [
+  "Nintendo Switch 2",
+  "Not playable on Nintendo Switch 1 without the original separate release"
+ ],
+ "edition": "Nintendo Switch 2 Edition",
+ "developer": "Nintendo",
+ "publisher": "Nintendo",
+ "seriesName": "The Legend of Zelda",
+ "metacriticUrl": "https://www.metacritic.com/game/the-legend-of-zelda-breath-of-the-wild/",
+ "opencriticRating": 97,
+ "userScore": 8.9,
+ "price_usd": 69.99,
+ "officialUrl": "https://www.nintendo.com/us/store/products/the-legend-of-zelda-breath-of-the-wild-nintendo-switch-2-edition-switch-2/",
+ "eshopUrl": "https://www.nintendo.com/us/store/products/the-legend-of-zelda-breath-of-the-wild-nintendo-switch-2-edition-switch-2/",
+ "gameIsOffline": true,
+ "gameIsOnline": false,
+ "gameLanguageLocked": false,
+ "description_short": "The Nintendo Switch 2 Edition enhances Breath of the Wild for newer hardware with improved presentation and Switch 2-specific features.",
+ "description_ar": "إصدار مخصص لجهاز Nintendo Switch 2 من Breath of the Wild، يحافظ على المغامرة الأصلية الكاملة مع تحسينات عرض وأداء وميزات مرتبطة بالمنصة الجديدة.",
+ "languagesText": [
+  "Japanese / English",
+  "French / German / Italian / Spanish / Dutch",
+  "Korean / Simplified Chinese / Traditional Chinese"
+ ],
+ "languagesAudio": [
+  "Music / sound effects",
+  "Character vocalizations where applicable",
+  "No full language-selectable dub beyond the shipped release build information"
+ ],
+ "tvMode": true,
+ "tabletopMode": true,
+ "handheldMode": true,
+ "nintendoPlayModes": "TV / Tabletop / Handheld",
+ "nintendoOnlineRequired": false,
+ "nintendoCloudSaves": true,
+ "nintendoGameKeyCard": false,
+ "nintendoPhysicalNeedsDownload": false,
+ "switch2Enhanced": true,
+ "switch2Exclusive": false,
+ "nintendoNotes": "Nintendo offers a native Nintendo Switch 2 Edition and also a separate Upgrade Pack listing. This extraction treats the Switch 2 Edition as its own platform-specific product entry.",
+ "editionsList": [
+  {
+   "name": "Offline Regular",
+   "contents": [
+    {
+     "label": "Base Switch 2 Edition game"
+    },
+    {
+     "label": "Offline account package"
+    },
+    {
+     "label": "Dedicated Nintendo Switch 2 product"
+    }
+   ]
+  },
+  {
+   "name": "Offline Special",
+   "contents": [
+    {
+     "label": "Base Switch 2 Edition game"
+    },
+    {
+     "label": "Special package version"
+    },
+    {
+     "label": "Offline account access"
+    }
+   ]
+  },
+  {
+   "name": "Online Standard",
+   "contents": [
+    {
+     "label": "Base Switch 2 Edition game"
+    },
+    {
+     "label": "Online account package"
+    },
+    {
+     "label": "Dedicated Nintendo Switch 2 product"
+    }
+   ]
+  },
+  {
+   "name": "Online Deluxe",
+   "contents": [
+    {
+     "label": "Base Switch 2 Edition game"
+    },
+    {
+     "label": "Deluxe package pricing tier"
+    },
+    {
+     "label": "Online account access"
+    }
+   ]
+  }
+ ],
+ "gameplayPillars": [
+  {
+   "title": "Open-air freedom on Switch 2",
+   "description": "The same world-first design philosophy remains intact, but this edition is packaged as a native Nintendo Switch 2 release."
+  },
+  {
+   "title": "Improved presentation profile",
+   "description": "The Switch 2 Edition is positioned around smoother play and enhanced visual presentation relative to the backward-compatible original build."
+  },
+  {
+   "title": "All core exploration systems preserved",
+   "description": "Shrines, Divine Beasts, physics interactions, survival systems, and open progression remain the heart of the experience."
+  },
+  {
+   "title": "Modernized ecosystem integration",
+   "description": "The Switch 2 release sits alongside Nintendo's newer edition structure and optional upgrade path for owners of the original release."
+  },
+  {
+   "title": "Expansion-ready package structure",
+   "description": "The product structure cleanly supports higher package tiers in stores where standard and special or deluxe arrangements are used."
+  }
+ ],
+ "worldSummary": "This is still the same iconic Hyrule full of wilderness, shrines, ruins, villages, and environmental discovery, but represented here as a native Nintendo Switch 2 edition entry.",
+ "storyChapters": [
+  {
+   "title": "Awaken and leave the Great Plateau",
+   "body": "Link emerges into a ruined Hyrule and begins reclaiming his path as the kingdom's hero."
+  },
+  {
+   "title": "Explore and prepare freely",
+   "body": "The freedom to decide your route, shrines, gear, and objectives remains central to the game's identity."
+  },
+  {
+   "title": "Assist Hyrule's peoples",
+   "body": "Each region of the kingdom offers allies, divine threats, and self-contained stories that deepen the world."
+  },
+  {
+   "title": "Strengthen Link through systems mastery",
+   "body": "Cooking, combat experimentation, rune use, and exploration all contribute to long-term progression."
+  },
+  {
+   "title": "Confront Calamity Ganon",
+   "body": "Players ultimately decide when they are ready to storm Hyrule Castle and challenge the final threat."
+  }
+ ],
+ "features": [
+  "Native Nintendo Switch 2 edition entry",
+  "Open-world Zelda exploration with enormous freedom",
+  "Enhanced presentation profile for newer hardware",
+  "Compatible with store structures that separate standard and premium variants",
+  "Carries forward the acclaimed full original adventure"
+ ],
+ "perfResolutionDocked": "1440p",
+ "perfResolutionHandheld": "1080p",
+ "perfFps": "60",
+ "perfHdr": true,
+ "playTimeMain": 50,
+ "completionMain": 100,
+ "completionExtras": 190,
+ "faq": [
+  {
+   "q": "Is this the same as the original Breath of the Wild release?",
+   "a": "It is the same core adventure, but this entry represents the dedicated Nintendo Switch 2 Edition rather than the original Nintendo Switch release."
+  },
+  {
+   "q": "Can the Nintendo Switch 2 Edition be played on Nintendo Switch 1?",
+   "a": "No. This entry is for the Nintendo Switch 2 Edition. The original Nintendo Switch game is a separate product entry."
+  },
+  {
+   "q": "Does this version include the Expansion Pass automatically?",
+   "a": "The existence of package tiers depends on the store structure being used. This extraction keeps separate standard and premium pricing tiers instead of assuming DLC is bundled by default."
+  },
+  {
+   "q": "What are the main benefits of the Switch 2 Edition?",
+   "a": "The main benefits are the dedicated Switch 2 product profile, upgraded presentation targets, and alignment with Nintendo Switch 2 software ecosystem features."
+  },
+  {
+   "q": "Is the gameplay content different?",
+   "a": "The fundamental content and world structure are the same iconic Breath of the Wild adventure."
+  }
+ ],
+ "verdictScore": 9.7,
+ "verdictPros": [
+  "Acclaimed world design carries over perfectly",
+  "Dedicated Switch 2 product profile is cleaner for storefront organization",
+  "Enhanced presentation expectations suit newer hardware",
+  "Still one of Nintendo's best adventure games",
+  "Premium tiers can be mapped clearly in the store"
+ ],
+ "verdictCons": [
+  "Core game content is familiar to returning players",
+  "Some buyers may prefer a cheaper original release path",
+  "Performance expectations depend on official final patch behavior",
+  "Separate edition structure can confuse casual shoppers",
+  "DLC bundling must be handled carefully by the store"
+ ],
+ "reviews": [
+  {
+   "source": "Metacritic",
+   "score": "97",
+   "url": "https://www.metacritic.com/game/the-legend-of-zelda-breath-of-the-wild/"
+  },
+  {
+   "source": "OpenCritic",
+   "score": "97",
+   "url": "https://opencritic.com/game/3579/the-legend-of-zelda-breath-of-the-wild"
+  },
+  {
+   "source": "Nintendo Official Site",
+   "score": "Nintendo Switch 2 Edition listing",
+   "url": "https://www.nintendo.com/us/store/products/the-legend-of-zelda-breath-of-the-wild-nintendo-switch-2-edition-switch-2/"
+  }
+ ],
+ "timeline": [
+  {
+   "date": "2017-03-03",
+   "title": "Original game released on Nintendo Switch"
+  },
+  {
+   "date": "2025-06-05",
+   "title": "Nintendo Switch 2 Edition released"
+  },
+  {
+   "date": "2025-06-05",
+   "title": "Nintendo published the related Upgrade Pack listing"
+  }
+ ],
+ "patchNotes": [
+  {
+   "version": "Nintendo Switch 2 Edition launch version",
+   "date": "2025-06-05"
+  },
+  {
+   "version": "Current retail build",
+   "date": "2026-08-27"
+  }
+ ],
+ "studioName": "Nintendo",
+ "studioUrl": "https://www.nintendo.com/us/store/products/the-legend-of-zelda-breath-of-the-wild-nintendo-switch-2-edition-switch-2/",
+ "studioLocation": "Japan",
+ "sources": [
+  {
+   "name": "Nintendo Switch 2 Edition official page",
+   "url": "https://www.nintendo.com/us/store/products/the-legend-of-zelda-breath-of-the-wild-nintendo-switch-2-edition-switch-2/"
+  },
+  {
+   "name": "Nintendo Switch 2 Edition Upgrade Pack",
+   "url": "https://www.nintendo.com/us/store/products/the-legend-of-zelda-breath-of-the-wild-nintendo-switch-2-edition-upgrade-pack-switch-2/"
+  },
+  {
+   "name": "Metacritic",
+   "url": "https://www.metacritic.com/game/the-legend-of-zelda-breath-of-the-wild/"
+  }
+ ],
+ "downloadSizeGb": 14.5,
+ "requiredSpaceGb": 14.5,
+ "microSdRecommended": true,
+ "storageNotes": "Nintendo lists approximately 14.5 GB for the Switch 2 Edition product page.",
+ "mpLocalPlayers": false,
+ "mpOnlinePlayers": false,
+ "mpCoop": false,
+ "mpCompetitive": false,
+ "mpLocalWireless": false,
+ "mpSplitScreen": false,
+ "seriesEntries": [
+  "The Legend of Zelda: Tears of the Kingdom — Nintendo Switch 2 Edition",
+  "The Legend of Zelda: Breath of the Wild",
+  "The Legend of Zelda: Echoes of Wisdom"
+ ],
+ "dlc": [
+  {
+   "name": "No standalone DLC is required for this entry",
+   "description": "This extraction represents the dedicated Nintendo Switch 2 Edition store entry. Premium price tiers are handled as store variants rather than a separate DLC requirement."
+  }
+ ],
+ "devicePerformance": [
+  {
+   "device": "Nintendo Switch 2",
+   "deviceSlug": "nintendo-switch-2",
+   "deviceModel": "Nintendo Switch 2",
+   "hardwareId": "nintendo-switch-2",
+   "informationStatus": "Available / verified",
+   "handheld": {
+    "supported": true,
+    "resolution": "1080p",
+    "resolutionDynamic": true,
+    "renderingResolution": "1920x1080",
+    "outputResolution": "1920x1080",
+    "fps": "60",
+    "fpsMin": "40",
+    "fpsMax": "60",
+    "refreshRate": "60",
+    "hdr": true,
+    "vrr": false,
+    "mode": "Handheld",
+    "notes": "The Switch 2 Edition is positioned as the enhanced native release. This extraction records a 1080p handheld / 1440p TV target profile at up to 60 fps, with HDR support in the Switch 2 edition feature set."
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "1440p",
+    "resolutionDynamic": true,
+    "renderingResolution": "2560x1440",
+    "outputResolution": "2560x1440",
+    "fps": "60",
+    "fpsMin": "40",
+    "fpsMax": "60",
+    "refreshRate": "60",
+    "hdr": true,
+    "vrr": false,
+    "mode": "TV / Docked",
+    "notes": "The Switch 2 Edition is positioned as the enhanced native release. This extraction records a 1080p handheld / 1440p TV target profile at up to 60 fps, with HDR support in the Switch 2 edition feature set."
+   },
+   "modes": [
+    {
+     "name": "Primary documented mode",
+     "handheldResolution": "1080p",
+     "handheldFps": "60",
+     "tvResolution": "1440p",
+     "tvFps": "60",
+     "hdr": true,
+     "vrr": false,
+     "notes": "The Switch 2 Edition is positioned as the enhanced native release. This extraction records a 1080p handheld / 1440p TV target profile at up to 60 fps, with HDR support in the Switch 2 edition feature set."
+    }
+   ],
+   "upscaling": "Game / system-specific scaling where applicable",
+   "rayTracing": false,
+   "rayTracingMode": "Not Supported",
+   "loadingTime": "Scene-dependent; no single universal loading time",
+   "loadingNotes": "Loading time varies by scene, save progress, storage state, and whether the software is running in its standard build or an enhanced edition.",
+   "gameVersion": "Current retail build",
+   "patchVersion": "Current available update",
+   "testedDate": "2026-08-27",
+   "sourceName": "Nintendo official product page",
+   "sourceUrl": "https://www.nintendo.com/us/store/products/the-legend-of-zelda-breath-of-the-wild-nintendo-switch-2-edition-switch-2/",
+   "performanceNotes": "The Switch 2 Edition is positioned as the enhanced native release. This extraction records a 1080p handheld / 1440p TV target profile at up to 60 fps, with HDR support in the Switch 2 edition feature set."
+  },
+  {
+   "device": "Nintendo Switch",
+   "deviceSlug": "nintendo-switch",
+   "deviceModel": "Nintendo Switch",
+   "hardwareId": "nintendo-switch",
+   "informationStatus": "Available / verified",
+   "handheld": {
+    "supported": false,
+    "resolution": "Not Supported",
+    "resolutionDynamic": false,
+    "renderingResolution": "Not Supported",
+    "outputResolution": "Not Supported",
+    "fps": "Not Supported",
+    "fpsMin": "Not Supported",
+    "fpsMax": "Not Supported",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "Handheld",
+    "notes": "The Nintendo Switch 2 Edition is a distinct Switch 2 software product and is not the same as the original Nintendo Switch release entry."
+   },
+   "tv": {
+    "supported": false,
+    "resolution": "Not Supported",
+    "resolutionDynamic": false,
+    "renderingResolution": "Not Supported",
+    "outputResolution": "Not Supported",
+    "fps": "Not Supported",
+    "fpsMin": "Not Supported",
+    "fpsMax": "Not Supported",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "TV / Docked",
+    "notes": "The Nintendo Switch 2 Edition is a distinct Switch 2 software product and is not the same as the original Nintendo Switch release entry."
+   },
+   "modes": [
+    {
+     "name": "Primary documented mode",
+     "handheldResolution": "Not Supported",
+     "handheldFps": "Not Supported",
+     "tvResolution": "Not Supported",
+     "tvFps": "Not Supported",
+     "hdr": false,
+     "vrr": false,
+     "notes": "The Nintendo Switch 2 Edition is a distinct Switch 2 software product and is not the same as the original Nintendo Switch release entry."
+    }
+   ],
+   "upscaling": "Game / system-specific scaling where applicable",
+   "rayTracing": false,
+   "rayTracingMode": "Not Supported",
+   "loadingTime": "Scene-dependent; no single universal loading time",
+   "loadingNotes": "Loading time varies by scene, save progress, storage state, and whether the software is running in its standard build or an enhanced edition.",
+   "gameVersion": "Current retail build",
+   "patchVersion": "Current available update",
+   "testedDate": "2026-08-27",
+   "sourceName": "Nintendo official product page",
+   "sourceUrl": "https://www.nintendo.com/us/store/products/the-legend-of-zelda-breath-of-the-wild-nintendo-switch-2-edition-switch-2/",
+   "performanceNotes": "The Nintendo Switch 2 Edition is a distinct Switch 2 software product and is not the same as the original Nintendo Switch release entry."
+  }
+ ],
+ "boxContentsList": [],
+ "image": "",
+ "banner": "",
+ "schemaId": "",
+ "batchImport": true,
+ "createdAt": "2026-08-28T18:34:46.083Z",
+ "updatedAt": "2026-08-28T18:34:46.083Z"
+}

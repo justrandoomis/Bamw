@@ -1,0 +1,522 @@
+{
+ "title": "The Legend of Zelda: Echoes of Wisdom",
+ "titleEn": "The Legend of Zelda: Echoes of Wisdom",
+ "titleKu": "",
+ "slug": "the-legend-of-zelda-echoes-of-wisdom-switch",
+ "description": "The Legend of Zelda: Echoes of Wisdom places Princess Zelda in the starring role for a new top-down adventure. Rather than focusing purely on sword combat, the game emphasizes Zelda's ability to create echoes of objects and creatures, allowing players to build bridges, summon helpers, solve puzzles, and approach combat indirectly. It carries forward a toy-like visual sensibility while giving the series a fresh protagonist perspective.",
+ "descriptionEn": "The Legend of Zelda: Echoes of Wisdom places Princess Zelda in the starring role for a new top-down adventure. Rather than focusing purely on sword combat, the game emphasizes Zelda's ability to create echoes of objects and creatures, allowing players to build bridges, summon helpers, solve puzzles, and approach combat indirectly. It carries forward a toy-like visual sensibility while giving the series a fresh protagonist perspective.",
+ "descriptionKu": "",
+ "cartridgeImage": "/api/files/products/prd_26f23d46e1c542da/front-box-70c12e287000ded8.webp",
+ "nintendoCardImage": "/api/files/products/prd_26f23d46e1c542da/square-card-8d10101d47f036b0.webp",
+ "coverHiResImage": "/api/files/products/prd_26f23d46e1c542da/3d-wrap-1a1a788825bf2822.webp",
+ "coverImage": "/api/files/products/prd_26f23d46e1c542da/cover-6085459c38fb0c22.webp",
+ "bannerImages": [
+  ""
+ ],
+ "gallery": [],
+ "youtubeTrailer": "",
+ "releaseDate": "2024-09-26",
+ "ageRating": "ESRB E10+ / PEGI 7",
+ "metacriticRating": 86,
+ "genres": [
+  "Action",
+  "Adventure",
+  "Puzzle"
+ ],
+ "platform": "switch1",
+ "size": 6,
+ "numberOfPlayers": "Single system (1)",
+ "supportedLanguages": "Japanese / British English / French / German / Italian / Spanish / Korean / Dutch / Simplified Chinese / Latin American Spanish / Canadian French / Traditional Chinese / American English",
+ "hardwareModel": "",
+ "colorEdition": "",
+ "storageCapacity": "",
+ "screenSpecs": "",
+ "batteryLife": "",
+ "boxContents": [],
+ "boxContentsText": "",
+ "warrantyCondition": "",
+ "connectivity": "",
+ "characterName": "Link",
+ "amiiboSeries": "The Legend of Zelda",
+ "figureType": "figure",
+ "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+ "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+ "boxCondition": "mib",
+ "releaseWave": "Wave 2 (Restock)",
+ "rarity": "standard",
+ "accessoryType": "حقيبة حماية وتنقل Carry Case",
+ "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+ "brand": "Nintendo Official",
+ "material": "Hard EVA Shockproof Shell",
+ "availableColors": "Black, Neon Red/Blue, White",
+ "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+ "cardValue": "$20 eShop Balance",
+ "region": "Global",
+ "cardType": "eshop",
+ "deliveryMethod": "instant_code",
+ "redemptionGuide": "",
+ "redemptionSteps": [],
+ "validity": "no_expiry",
+ "usedType": "cartridge",
+ "conditionGrade": "like_new",
+ "packaging": "cib",
+ "guaranteeStatus": "tested_30days",
+ "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+ "accountType": "primary",
+ "badge": "وفر 40%",
+ "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+ "price": 11500,
+ "cost": 1500,
+ "stock": 999999,
+ "isInfiniteStock": true,
+ "isHidden": true,
+ "displayOrder": 0,
+ "category": "nintendo-switch-games",
+ "categoryId": "nintendo-switch-games",
+ "categoryEn": "",
+ "categoryKu": "",
+ "options": [
+  {
+   "id": "offline_account",
+   "name": "مشترك",
+   "description": "مشترك",
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_account",
+   "name": "خاص بك",
+   "description": "خاص بك",
+   "stock": 9999,
+   "isInfiniteStock": true
+  }
+ ],
+ "types": [
+  {
+   "id": "offline_base",
+   "name": "مشترك — اللعبة الأساسية",
+   "optionId": "offline_account",
+   "price": 11500,
+   "cost": 1500,
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_base",
+   "name": "خاص بك — اللعبة الأساسية",
+   "optionId": "online_account",
+   "price": 19250,
+   "cost": 14250,
+   "stock": 9999,
+   "isInfiniteStock": true
+  }
+ ],
+ "editions": [],
+ "dlcs": [],
+ "isActive": true,
+ "status": "Active",
+ "kind": "account",
+ "trade_value_iqd": 10000,
+ "store_offer_bonus_iqd": 2000,
+ "trade_enabled": true,
+ "trade_value_locked": false,
+ "id": "prd_26f23d46e1c542da",
+ "schema_version": 24,
+ "titleAr": "أسطورة زيلدا: أصداء الحكمة",
+ "compatibility": [
+  "Nintendo Switch",
+  "Nintendo Switch 2 compatibility: Supported – game behavior is consistent with Nintendo Switch"
+ ],
+ "edition": "Standard",
+ "developer": "Nintendo / Grezzo",
+ "publisher": "Nintendo",
+ "seriesName": "The Legend of Zelda",
+ "metacriticUrl": "https://www.metacritic.com/game/the-legend-of-zelda-echoes-of-wisdom/",
+ "opencriticRating": 86,
+ "userScore": 8.4,
+ "price_usd": 59.99,
+ "officialUrl": "https://www.nintendo.com/us/store/products/the-legend-of-zelda-echoes-of-wisdom-switch/",
+ "eshopUrl": "https://www.nintendo.com/us/store/products/the-legend-of-zelda-echoes-of-wisdom-switch/",
+ "gameIsOffline": true,
+ "gameIsOnline": false,
+ "gameLanguageLocked": false,
+ "description_short": "Princess Zelda takes the lead in a new top-down adventure built around conjuring echoes to solve puzzles and defeat enemies.",
+ "description_ar": "مغامرة جديدة من منظور علوي تتصدرها الأميرة زيلدا، وتعتمد على قدرة Echoes لصنع أشياء ومخلوقات تساعد في حل الألغاز والتنقل والقتال بطرق غير مباشرة.",
+ "languagesText": [
+  "Japanese / English",
+  "French / German / Italian / Spanish / Dutch",
+  "Korean / Simplified Chinese / Traditional Chinese"
+ ],
+ "languagesAudio": [
+  "Music / sound effects",
+  "Character vocalizations where applicable",
+  "No full language-selectable dub beyond the shipped release build information"
+ ],
+ "tvMode": true,
+ "tabletopMode": true,
+ "handheldMode": true,
+ "nintendoPlayModes": "TV / Tabletop / Handheld",
+ "nintendoOnlineRequired": false,
+ "nintendoCloudSaves": true,
+ "nintendoGameKeyCard": false,
+ "nintendoPhysicalNeedsDownload": false,
+ "switch2Enhanced": false,
+ "switch2Exclusive": false,
+ "nintendoNotes": "Nintendo frames Echoes of Wisdom as a new Zelda adventure where Princess Zelda is the playable hero and the Echo mechanic defines exploration and puzzle solving.",
+ "editionsList": [
+  {
+   "name": "Offline Regular",
+   "contents": [
+    {
+     "label": "Base game"
+    },
+    {
+     "label": "Offline account package"
+    },
+    {
+     "label": "Princess Zelda-led adventure"
+    }
+   ]
+  },
+  {
+   "name": "Online Standard",
+   "contents": [
+    {
+     "label": "Base game"
+    },
+    {
+     "label": "Online account package"
+    },
+    {
+     "label": "New Echo-based puzzle systems"
+    }
+   ]
+  }
+ ],
+ "gameplayPillars": [
+  {
+   "title": "Princess Zelda as the hero",
+   "description": "The game shifts the perspective by making Zelda the main playable lead rather than Link."
+  },
+  {
+   "title": "Echo-based problem solving",
+   "description": "Zelda can create echoes of objects and creatures, opening flexible solutions for traversal, combat, and puzzle design."
+  },
+  {
+   "title": "Top-down adventure structure",
+   "description": "The game returns to a more compact, classic Zelda viewpoint while still introducing new systems and fresh world interactions."
+  },
+  {
+   "title": "Indirect combat options",
+   "description": "Rather than relying on straightforward melee combat alone, players use summoned echoes and abilities creatively."
+  },
+  {
+   "title": "Accessible but inventive design",
+   "description": "The core concept makes the game approachable while still supporting many different solution paths."
+  }
+ ],
+ "worldSummary": "Echoes of Wisdom blends classic top-down Zelda structure with a new protagonist and a creative replication mechanic that gives the adventure its own clear identity.",
+ "storyChapters": [
+  {
+   "title": "A crisis leaves Zelda to act",
+   "body": "With Hyrule threatened and Link absent, Princess Zelda must step forward and take responsibility for the kingdom's rescue."
+  },
+  {
+   "title": "Learn to use echoes",
+   "body": "The adventure quickly revolves around conjuring objects and creatures to create paths, tools, and combat solutions."
+  },
+  {
+   "title": "Explore Hyrule from a fresh perspective",
+   "body": "The game revisits familiar fantasy spaces but is structured around Zelda's different abilities and role in the world."
+  },
+  {
+   "title": "Combine puzzles, exploration, and battles",
+   "body": "Echoes support both environmental problem solving and tactical responses to enemies."
+  },
+  {
+   "title": "Save the kingdom as Zelda",
+   "body": "The journey emphasizes Zelda's agency and lets the player resolve a full series adventure through her perspective."
+  }
+ ],
+ "features": [
+  "Princess Zelda is the playable lead",
+  "Creative Echo mechanic drives traversal and combat",
+  "Classic top-down structure with modern polish",
+  "Family-friendly but cleverly designed puzzle adventure",
+  "Fresh identity within the Zelda franchise"
+ ],
+ "perfResolutionDocked": "1080p",
+ "perfResolutionHandheld": "720p",
+ "perfFps": "60",
+ "perfHdr": false,
+ "playTimeMain": 20,
+ "completionMain": 28,
+ "completionExtras": 32,
+ "faq": [
+  {
+   "q": "Who is the playable hero in Echoes of Wisdom?",
+   "a": "Princess Zelda is the main playable hero in this game."
+  },
+  {
+   "q": "How does combat work?",
+   "a": "The game emphasizes using echoes and summoned help creatively, so combat feels different from standard sword-focused Zelda entries."
+  },
+  {
+   "q": "Is multiplayer supported?",
+   "a": "No. Echoes of Wisdom is a single-player adventure."
+  },
+  {
+   "q": "What style of Zelda game is it?",
+   "a": "It is a top-down action-adventure with strong puzzle-solving elements and a creative central mechanic."
+  },
+  {
+   "q": "Why is it notable in the series?",
+   "a": "It is one of the clearest cases of Princess Zelda starring directly in a full core adventure while introducing a distinct mechanic set."
+  }
+ ],
+ "verdictScore": 8.7,
+ "verdictPros": [
+  "Fresh protagonist perspective",
+  "Echo mechanic is inventive and flexible",
+  "Charming presentation and strong puzzle design",
+  "Approachable for a wide audience",
+  "Distinct identity among modern Zelda games"
+ ],
+ "verdictCons": [
+  "Less mechanically sprawling than giant open-world Zelda entries",
+  "Players wanting constant sword combat may need time to adjust",
+  "Smaller scale than Breath of the Wild or Tears of the Kingdom",
+  "Some solutions may feel easier once the best echoes are discovered",
+  "Replay value depends on how much you enjoy experimentation"
+ ],
+ "reviews": [
+  {
+   "source": "Metacritic",
+   "score": "86",
+   "url": "https://www.metacritic.com/game/the-legend-of-zelda-echoes-of-wisdom/"
+  },
+  {
+   "source": "OpenCritic",
+   "score": "86",
+   "url": "https://opencritic.com/game/17371/the-legend-of-zelda-echoes-of-wisdom"
+  },
+  {
+   "source": "Nintendo Official Site",
+   "score": "Nintendo product page",
+   "url": "https://www.nintendo.com/us/store/products/the-legend-of-zelda-echoes-of-wisdom-switch/"
+  }
+ ],
+ "timeline": [
+  {
+   "date": "2024-09-26",
+   "title": "Released on Nintendo Switch"
+  },
+  {
+   "date": "2025-06-05",
+   "title": "Backward compatible on Nintendo Switch 2 ecosystem"
+  }
+ ],
+ "patchNotes": [
+  {
+   "version": "Launch version",
+   "date": "2024-09-26"
+  },
+  {
+   "version": "Current retail build",
+   "date": "2026-08-27"
+  }
+ ],
+ "studioName": "Nintendo",
+ "studioUrl": "https://www.nintendo.com/us/store/products/the-legend-of-zelda-echoes-of-wisdom-switch/",
+ "studioLocation": "Japan",
+ "sources": [
+  {
+   "name": "Nintendo official product page",
+   "url": "https://www.nintendo.com/us/store/products/the-legend-of-zelda-echoes-of-wisdom-switch/"
+  },
+  {
+   "name": "Metacritic",
+   "url": "https://www.metacritic.com/game/the-legend-of-zelda-echoes-of-wisdom/"
+  },
+  {
+   "name": "OpenCritic",
+   "url": "https://opencritic.com/game/17371/the-legend-of-zelda-echoes-of-wisdom"
+  }
+ ],
+ "downloadSizeGb": 6,
+ "requiredSpaceGb": 6,
+ "microSdRecommended": false,
+ "storageNotes": "The recorded size for Echoes of Wisdom is approximately 6.0 GB.",
+ "mpLocalPlayers": false,
+ "mpOnlinePlayers": false,
+ "mpCoop": false,
+ "mpCompetitive": false,
+ "mpLocalWireless": false,
+ "mpSplitScreen": false,
+ "seriesEntries": [
+  "The Legend of Zelda: Link's Awakening",
+  "The Legend of Zelda: Tears of the Kingdom",
+  "The Legend of Zelda: Breath of the Wild"
+ ],
+ "dlc": [
+  {
+   "name": "No standalone DLC has been announced",
+   "description": "Echoes of Wisdom does not have a separate expansion pass or standalone DLC package."
+  }
+ ],
+ "devicePerformance": [
+  {
+   "device": "Nintendo Switch",
+   "deviceSlug": "nintendo-switch",
+   "deviceModel": "Nintendo Switch",
+   "hardwareId": "nintendo-switch",
+   "informationStatus": "Available / verified",
+   "handheld": {
+    "supported": true,
+    "resolution": "720p",
+    "resolutionDynamic": false,
+    "renderingResolution": "1280x720",
+    "outputResolution": "1280x720",
+    "fps": "60",
+    "fpsMin": "60",
+    "fpsMax": "60",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "Handheld",
+    "notes": "Echoes of Wisdom is recorded here with a 720p handheld / 1080p TV profile and a smooth 60 fps presentation target suitable for its top-down adventure structure."
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "1080p",
+    "resolutionDynamic": false,
+    "renderingResolution": "1920x1080",
+    "outputResolution": "1920x1080",
+    "fps": "60",
+    "fpsMin": "60",
+    "fpsMax": "60",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "TV / Docked",
+    "notes": "Echoes of Wisdom is recorded here with a 720p handheld / 1080p TV profile and a smooth 60 fps presentation target suitable for its top-down adventure structure."
+   },
+   "modes": [
+    {
+     "name": "Primary documented mode",
+     "handheldResolution": "720p",
+     "handheldFps": "60",
+     "tvResolution": "1080p",
+     "tvFps": "60",
+     "hdr": false,
+     "vrr": false,
+     "notes": "Echoes of Wisdom is recorded here with a 720p handheld / 1080p TV profile and a smooth 60 fps presentation target suitable for its top-down adventure structure."
+    }
+   ],
+   "upscaling": "Game / system-specific scaling where applicable",
+   "rayTracing": false,
+   "rayTracingMode": "Not Supported",
+   "loadingTime": "Scene-dependent; no single universal loading time",
+   "loadingNotes": "Loading time varies by scene, save progress, storage state, and whether the software is running in its standard build or an enhanced edition.",
+   "gameVersion": "Current retail build",
+   "patchVersion": "Current available update",
+   "testedDate": "2026-08-27",
+   "sourceName": "Nintendo official product page",
+   "sourceUrl": "https://www.nintendo.com/us/store/products/the-legend-of-zelda-echoes-of-wisdom-switch/",
+   "performanceNotes": "Echoes of Wisdom is recorded here with a 720p handheld / 1080p TV profile and a smooth 60 fps presentation target suitable for its top-down adventure structure."
+  },
+  {
+   "device": "Nintendo Switch 2",
+   "deviceSlug": "nintendo-switch-2",
+   "deviceModel": "Nintendo Switch 2",
+   "hardwareId": "nintendo-switch-2",
+   "informationStatus": "Available / verified",
+   "handheld": {
+    "supported": true,
+    "resolution": "720p",
+    "resolutionDynamic": false,
+    "renderingResolution": "1280x720",
+    "outputResolution": "1280x720",
+    "fps": "60",
+    "fpsMin": "60",
+    "fpsMax": "60",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "Handheld",
+    "notes": "Nintendo lists the original game as supported on Nintendo Switch 2. This extraction records a compatibility profile consistent with the original release."
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "1080p",
+    "resolutionDynamic": false,
+    "renderingResolution": "1920x1080",
+    "outputResolution": "1920x1080",
+    "fps": "60",
+    "fpsMin": "60",
+    "fpsMax": "60",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "TV / Docked",
+    "notes": "Nintendo lists the original game as supported on Nintendo Switch 2. This extraction records a compatibility profile consistent with the original release."
+   },
+   "modes": [
+    {
+     "name": "Primary documented mode",
+     "handheldResolution": "720p",
+     "handheldFps": "60",
+     "tvResolution": "1080p",
+     "tvFps": "60",
+     "hdr": false,
+     "vrr": false,
+     "notes": "Nintendo lists the original game as supported on Nintendo Switch 2. This extraction records a compatibility profile consistent with the original release."
+    }
+   ],
+   "upscaling": "Game / system-specific scaling where applicable",
+   "rayTracing": false,
+   "rayTracingMode": "Not Supported",
+   "loadingTime": "Scene-dependent; no single universal loading time",
+   "loadingNotes": "Loading time varies by scene, save progress, storage state, and whether the software is running in its standard build or an enhanced edition.",
+   "gameVersion": "Current retail build",
+   "patchVersion": "Current available update",
+   "testedDate": "2026-08-27",
+   "sourceName": "Nintendo official product page / compatibility context",
+   "sourceUrl": "https://www.nintendo.com/us/store/products/the-legend-of-zelda-echoes-of-wisdom-switch/",
+   "performanceNotes": "Nintendo lists the original game as supported on Nintendo Switch 2. This extraction records a compatibility profile consistent with the original release."
+  }
+ ],
+ "boxContentsList": [],
+ "image": "",
+ "banner": "",
+ "schemaId": "",
+ "batchImport": true,
+ "galleryImages": [
+  {
+   "url": "/api/files/products/prd_26f23d46e1c542da/gallery-1-23cd74185df70093.webp",
+   "alt": "The Legend of Zelda: Echoes of Wisdom screenshot 1"
+  },
+  {
+   "url": "/api/files/products/prd_26f23d46e1c542da/gallery-2-ef5b58f5f6b01866.webp",
+   "alt": "The Legend of Zelda: Echoes of Wisdom screenshot 2"
+  },
+  {
+   "url": "/api/files/products/prd_26f23d46e1c542da/gallery-3-ab8a5258b5c837ea.webp",
+   "alt": "The Legend of Zelda: Echoes of Wisdom screenshot 3"
+  },
+  {
+   "url": "/api/files/products/prd_26f23d46e1c542da/gallery-4-eede857ad8a496df.webp",
+   "alt": "The Legend of Zelda: Echoes of Wisdom screenshot 4"
+  },
+  {
+   "url": "/api/files/products/prd_26f23d46e1c542da/gallery-5-28953f112acf68dd.webp",
+   "alt": "The Legend of Zelda: Echoes of Wisdom screenshot 5"
+  },
+  {
+   "url": "/api/files/products/prd_26f23d46e1c542da/gallery-6-15e43ab4de7c27e6.webp",
+   "alt": "The Legend of Zelda: Echoes of Wisdom screenshot 6"
+  }
+ ],
+ "createdAt": "2026-08-28T18:41:09.296Z",
+ "updatedAt": "2026-08-28T18:41:09.296Z"
+}

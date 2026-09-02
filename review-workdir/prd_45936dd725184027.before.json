@@ -1,0 +1,526 @@
+{
+ "title": "The Legend of Zelda: Link's Awakening",
+ "titleEn": "The Legend of Zelda: Link's Awakening",
+ "titleKu": "",
+ "slug": "the-legend-of-zelda-links-awakening-switch",
+ "description": "The Legend of Zelda: Link's Awakening is a full Nintendo Switch remake of the beloved portable classic. Stranded on mysterious Koholint Island, Link must explore dungeons, gather the Instruments of the Sirens, and unravel the island's dreamlike secrets. The remake updates the game with a toy-like visual style, modernized controls, quality-of-life improvements, and a dungeon-building side mode.",
+ "descriptionEn": "The Legend of Zelda: Link's Awakening is a full Nintendo Switch remake of the beloved portable classic. Stranded on mysterious Koholint Island, Link must explore dungeons, gather the Instruments of the Sirens, and unravel the island's dreamlike secrets. The remake updates the game with a toy-like visual style, modernized controls, quality-of-life improvements, and a dungeon-building side mode.",
+ "descriptionKu": "",
+ "cartridgeImage": "/api/files/products/prd_45936dd725184027/front-box-fe1610897c624e89.webp",
+ "nintendoCardImage": "/api/files/products/prd_45936dd725184027/square-card-79edb0fb28fbd0db.webp",
+ "coverHiResImage": "/api/files/products/prd_45936dd725184027/3d-wrap-083772eea8b12394.webp",
+ "coverImage": "/api/files/products/prd_45936dd725184027/cover-83ddf3ee137870fc.webp",
+ "bannerImages": [
+  ""
+ ],
+ "gallery": [],
+ "youtubeTrailer": "",
+ "releaseDate": "2019-09-20",
+ "ageRating": "ESRB E / PEGI 7",
+ "metacriticRating": 87,
+ "genres": [
+  "Action",
+  "Adventure",
+  "Puzzle"
+ ],
+ "platform": "switch1",
+ "size": 5.8,
+ "numberOfPlayers": "Single system (1)",
+ "supportedLanguages": "Japanese / British English / French / German / Italian / Spanish / Korean / Dutch / Simplified Chinese / Latin American Spanish / Canadian French / Traditional Chinese / American English",
+ "hardwareModel": "",
+ "colorEdition": "",
+ "storageCapacity": "",
+ "screenSpecs": "",
+ "batteryLife": "",
+ "boxContents": [],
+ "boxContentsText": "",
+ "warrantyCondition": "",
+ "connectivity": "",
+ "characterName": "Link",
+ "amiiboSeries": "The Legend of Zelda",
+ "figureType": "figure",
+ "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+ "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+ "boxCondition": "mib",
+ "releaseWave": "Wave 2 (Restock)",
+ "rarity": "standard",
+ "accessoryType": "حقيبة حماية وتنقل Carry Case",
+ "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+ "brand": "Nintendo Official",
+ "material": "Hard EVA Shockproof Shell",
+ "availableColors": "Black, Neon Red/Blue, White",
+ "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+ "cardValue": "$20 eShop Balance",
+ "region": "Global",
+ "cardType": "eshop",
+ "deliveryMethod": "instant_code",
+ "redemptionGuide": "",
+ "redemptionSteps": [],
+ "validity": "no_expiry",
+ "usedType": "cartridge",
+ "conditionGrade": "like_new",
+ "packaging": "cib",
+ "guaranteeStatus": "tested_30days",
+ "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+ "accountType": "primary",
+ "badge": "وفر 40%",
+ "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+ "price": 11500,
+ "cost": 1250,
+ "stock": 999999,
+ "isInfiniteStock": true,
+ "isHidden": true,
+ "displayOrder": 0,
+ "category": "nintendo-switch-games",
+ "categoryId": "nintendo-switch-games",
+ "categoryEn": "",
+ "categoryKu": "",
+ "options": [
+  {
+   "id": "offline_account",
+   "name": "مشترك",
+   "description": "مشترك",
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_account",
+   "name": "خاص بك",
+   "description": "خاص بك",
+   "stock": 9999,
+   "isInfiniteStock": true
+  }
+ ],
+ "types": [
+  {
+   "id": "offline_base",
+   "name": "مشترك — اللعبة الأساسية",
+   "optionId": "offline_account",
+   "price": 11500,
+   "cost": 1250,
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_base",
+   "name": "خاص بك — اللعبة الأساسية",
+   "optionId": "online_account",
+   "price": 19250,
+   "cost": 14250,
+   "stock": 9999,
+   "isInfiniteStock": true
+  }
+ ],
+ "editions": [],
+ "dlcs": [],
+ "isActive": true,
+ "status": "Active",
+ "kind": "account",
+ "trade_value_iqd": 8500,
+ "store_offer_bonus_iqd": 1500,
+ "trade_enabled": true,
+ "trade_value_locked": false,
+ "id": "prd_45936dd725184027",
+ "schema_version": 24,
+ "titleAr": "أسطورة زيلدا: صحوة لينك",
+ "compatibility": [
+  "Nintendo Switch",
+  "Nintendo Switch 2 compatibility: Supported – game behavior is consistent with Nintendo Switch"
+ ],
+ "edition": "Standard",
+ "developer": "Nintendo",
+ "publisher": "Nintendo",
+ "seriesName": "The Legend of Zelda",
+ "metacriticUrl": "https://www.metacritic.com/game/the-legend-of-zelda-links-awakening/",
+ "opencriticRating": 87,
+ "userScore": 8,
+ "price_usd": 59.99,
+ "officialUrl": "https://www.nintendo.com/us/store/products/the-legend-of-zelda-links-awakening-switch/",
+ "eshopUrl": "https://www.nintendo.com/us/store/products/the-legend-of-zelda-links-awakening-switch/",
+ "gameIsOffline": true,
+ "gameIsOnline": false,
+ "gameLanguageLocked": false,
+ "description_short": "A charming remake of the Game Boy classic where Link washes ashore on Koholint Island and seeks a way home.",
+ "description_ar": "إعادة صنع كاملة للعبة الكلاسيكية على Game Boy، حيث يجد لينك نفسه على جزيرة Koholint الغامضة ويجمع الآلات الموسيقية ليفك لغز الجزيرة ويجد طريق العودة.",
+ "languagesText": [
+  "Japanese / English",
+  "French / German / Italian / Spanish / Dutch",
+  "Korean / Simplified Chinese / Traditional Chinese"
+ ],
+ "languagesAudio": [
+  "Music / sound effects",
+  "Character vocalizations where applicable",
+  "No full language-selectable dub beyond the shipped release build information"
+ ],
+ "tvMode": true,
+ "tabletopMode": true,
+ "handheldMode": true,
+ "nintendoPlayModes": "TV / Tabletop / Handheld",
+ "nintendoOnlineRequired": false,
+ "nintendoCloudSaves": true,
+ "nintendoGameKeyCard": false,
+ "nintendoPhysicalNeedsDownload": false,
+ "switch2Enhanced": false,
+ "switch2Exclusive": false,
+ "nintendoNotes": "Nintendo presents Link's Awakening as a fully remade version of the Game Boy adventure, with a distinct art style and modernized presentation.",
+ "editionsList": [
+  {
+   "name": "Offline Regular",
+   "contents": [
+    {
+     "label": "Base game"
+    },
+    {
+     "label": "Offline account package"
+    },
+    {
+     "label": "Full Switch remake of the portable classic"
+    }
+   ]
+  },
+  {
+   "name": "Online Standard",
+   "contents": [
+    {
+     "label": "Base game"
+    },
+    {
+     "label": "Online account package"
+    },
+    {
+     "label": "Single-player Zelda adventure"
+    }
+   ]
+  }
+ ],
+ "gameplayPillars": [
+  {
+   "title": "Classic top-down Zelda structure",
+   "description": "The game focuses on exploration, keys, tools, and dungeons in a style closer to traditional 2D Zelda adventures."
+  },
+  {
+   "title": "Koholint Island mystery",
+   "description": "The island itself becomes part of the story, with strange characters and dreamlike narrative turns setting the tone apart from Hyrule-based entries."
+  },
+  {
+   "title": "Distinct remake presentation",
+   "description": "The toy-like art direction gives the remake a memorable visual identity while keeping the original map structure recognizable."
+  },
+  {
+   "title": "Dungeon puzzle progression",
+   "description": "Each dungeon emphasizes item usage, combat timing, and room-by-room problem solving."
+  },
+  {
+   "title": "Portable-friendly pacing",
+   "description": "The game's structure works especially well in shorter play sessions, making it a strong handheld fit."
+  }
+ ],
+ "worldSummary": "Koholint Island is compact but dense, full of hidden secrets, memorable NPCs, trading-sequence moments, caves, dungeons, and a dreamlike mood that makes the adventure stand out in the Zelda series.",
+ "storyChapters": [
+  {
+   "title": "Wash ashore on Koholint Island",
+   "body": "After a storm, Link awakens on a mysterious island far from Hyrule and begins searching for a way home."
+  },
+  {
+   "title": "Gather the Instruments of the Sirens",
+   "body": "The central quest sends Link across the island's varied regions and dungeons to collect the items needed to awaken the Wind Fish."
+  },
+  {
+   "title": "Meet the island's strange residents",
+   "body": "The cast includes memorable characters whose humor and mystery help define the game's personality."
+  },
+  {
+   "title": "Complete dungeons and trading quests",
+   "body": "Progress requires both dungeon mastery and side content, including item exchanges that open new paths."
+  },
+  {
+   "title": "Uncover the island's truth",
+   "body": "The story builds toward one of the series' most memorable endings as the nature of Koholint is finally revealed."
+  }
+ ],
+ "features": [
+  "Faithful remake of a beloved 2D Zelda game",
+  "Charming art direction and cleaner controls",
+  "Compact structure with strong dungeon design",
+  "Memorable story tone and emotional ending",
+  "Excellent fit for short or portable sessions"
+ ],
+ "perfResolutionDocked": "1080p",
+ "perfResolutionHandheld": "720p",
+ "perfFps": "60",
+ "perfHdr": false,
+ "playTimeMain": 15,
+ "completionMain": 20,
+ "completionExtras": 22,
+ "faq": [
+  {
+   "q": "Is Link's Awakening a remake?",
+   "a": "Yes. It is a full Nintendo Switch remake of the original Game Boy title."
+  },
+  {
+   "q": "Is the game multiplayer?",
+   "a": "No. It is a single-player adventure."
+  },
+  {
+   "q": "How long is the game?",
+   "a": "The main story is relatively compact compared with larger Zelda titles, but optional secrets and collectibles extend playtime."
+  },
+  {
+   "q": "What style of Zelda is it?",
+   "a": "It is a top-down, classic Zelda structure built around dungeons, tools, key items, and map exploration."
+  },
+  {
+   "q": "Why do players like it so much?",
+   "a": "Its compact design, memorable island setting, and emotional story twist make it one of the most beloved classic Zelda adventures."
+  }
+ ],
+ "verdictScore": 8.8,
+ "verdictPros": [
+  "Excellent remake presentation",
+  "Strong classic Zelda dungeon flow",
+  "Memorable island setting and ending",
+  "Portable-friendly pacing",
+  "Great entry point for 2D Zelda fans"
+ ],
+ "verdictCons": [
+  "Shorter than modern flagship Zelda releases",
+  "Performance dips are occasionally noticeable on original Switch",
+  "Limited replay value compared with huge open-world entries",
+  "Dungeon Builder is lighter than a full extra campaign",
+  "Less mechanical complexity than larger modern games"
+ ],
+ "reviews": [
+  {
+   "source": "Metacritic",
+   "score": "87",
+   "url": "https://www.metacritic.com/game/the-legend-of-zelda-links-awakening/"
+  },
+  {
+   "source": "OpenCritic",
+   "score": "87",
+   "url": "https://opencritic.com/game/8298/the-legend-of-zelda-links-awakening"
+  },
+  {
+   "source": "IGN",
+   "score": "9.4/10",
+   "url": "https://www.ign.com/games/the-legend-of-zelda-links-awakening-switch"
+  }
+ ],
+ "timeline": [
+  {
+   "date": "1993-06-06",
+   "title": "Original Game Boy release launched"
+  },
+  {
+   "date": "2019-09-20",
+   "title": "Nintendo Switch remake released"
+  },
+  {
+   "date": "2025-06-05",
+   "title": "Backward compatible on Nintendo Switch 2 ecosystem"
+  }
+ ],
+ "patchNotes": [
+  {
+   "version": "Nintendo Switch remake launch version",
+   "date": "2019-09-20"
+  },
+  {
+   "version": "Current retail build",
+   "date": "2026-08-27"
+  }
+ ],
+ "studioName": "Nintendo",
+ "studioUrl": "https://www.nintendo.com/us/store/products/the-legend-of-zelda-links-awakening-switch/",
+ "studioLocation": "Japan",
+ "sources": [
+  {
+   "name": "Nintendo official product page",
+   "url": "https://www.nintendo.com/us/store/products/the-legend-of-zelda-links-awakening-switch/"
+  },
+  {
+   "name": "Metacritic",
+   "url": "https://www.metacritic.com/game/the-legend-of-zelda-links-awakening/"
+  },
+  {
+   "name": "OpenCritic",
+   "url": "https://opencritic.com/game/8298/the-legend-of-zelda-links-awakening"
+  }
+ ],
+ "downloadSizeGb": 5.8,
+ "requiredSpaceGb": 5.8,
+ "microSdRecommended": false,
+ "storageNotes": "Nintendo lists Link's Awakening at approximately 5.8 GB.",
+ "mpLocalPlayers": false,
+ "mpOnlinePlayers": false,
+ "mpCoop": false,
+ "mpCompetitive": false,
+ "mpLocalWireless": false,
+ "mpSplitScreen": false,
+ "seriesEntries": [
+  "The Legend of Zelda: Echoes of Wisdom",
+  "The Legend of Zelda: Skyward Sword HD",
+  "The Legend of Zelda: Breath of the Wild"
+ ],
+ "dlc": [
+  {
+   "name": "No standalone DLC has been announced",
+   "description": "Link's Awakening does not have a separate expansion pass or standalone DLC package."
+  }
+ ],
+ "devicePerformance": [
+  {
+   "device": "Nintendo Switch",
+   "deviceSlug": "nintendo-switch",
+   "deviceModel": "Nintendo Switch",
+   "hardwareId": "nintendo-switch",
+   "informationStatus": "Available / verified",
+   "handheld": {
+    "supported": true,
+    "resolution": "720p",
+    "resolutionDynamic": false,
+    "renderingResolution": "1280x720",
+    "outputResolution": "1280x720",
+    "fps": "60",
+    "fpsMin": "30",
+    "fpsMax": "60",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "Handheld",
+    "notes": "Link's Awakening presents a 720p handheld / 1080p TV profile with a 60 fps target, though some areas are known for occasional dips."
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "1080p",
+    "resolutionDynamic": false,
+    "renderingResolution": "1920x1080",
+    "outputResolution": "1920x1080",
+    "fps": "60",
+    "fpsMin": "30",
+    "fpsMax": "60",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "TV / Docked",
+    "notes": "Link's Awakening presents a 720p handheld / 1080p TV profile with a 60 fps target, though some areas are known for occasional dips."
+   },
+   "modes": [
+    {
+     "name": "Primary documented mode",
+     "handheldResolution": "720p",
+     "handheldFps": "60",
+     "tvResolution": "1080p",
+     "tvFps": "60",
+     "hdr": false,
+     "vrr": false,
+     "notes": "Link's Awakening presents a 720p handheld / 1080p TV profile with a 60 fps target, though some areas are known for occasional dips."
+    }
+   ],
+   "upscaling": "Game / system-specific scaling where applicable",
+   "rayTracing": false,
+   "rayTracingMode": "Not Supported",
+   "loadingTime": "Scene-dependent; no single universal loading time",
+   "loadingNotes": "Loading time varies by scene, save progress, storage state, and whether the software is running in its standard build or an enhanced edition.",
+   "gameVersion": "Current retail build",
+   "patchVersion": "Current available update",
+   "testedDate": "2026-08-27",
+   "sourceName": "Nintendo official product page",
+   "sourceUrl": "https://www.nintendo.com/us/store/products/the-legend-of-zelda-links-awakening-switch/",
+   "performanceNotes": "Link's Awakening presents a 720p handheld / 1080p TV profile with a 60 fps target, though some areas are known for occasional dips."
+  },
+  {
+   "device": "Nintendo Switch 2",
+   "deviceSlug": "nintendo-switch-2",
+   "deviceModel": "Nintendo Switch 2",
+   "hardwareId": "nintendo-switch-2",
+   "informationStatus": "Available / verified",
+   "handheld": {
+    "supported": true,
+    "resolution": "720p",
+    "resolutionDynamic": false,
+    "renderingResolution": "1280x720",
+    "outputResolution": "1280x720",
+    "fps": "60",
+    "fpsMin": "60",
+    "fpsMax": "60",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "Handheld",
+    "notes": "Nintendo lists the original game as supported on Nintendo Switch 2. This extraction records a compatibility profile consistent with the original release."
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "1080p",
+    "resolutionDynamic": false,
+    "renderingResolution": "1920x1080",
+    "outputResolution": "1920x1080",
+    "fps": "60",
+    "fpsMin": "60",
+    "fpsMax": "60",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "TV / Docked",
+    "notes": "Nintendo lists the original game as supported on Nintendo Switch 2. This extraction records a compatibility profile consistent with the original release."
+   },
+   "modes": [
+    {
+     "name": "Primary documented mode",
+     "handheldResolution": "720p",
+     "handheldFps": "60",
+     "tvResolution": "1080p",
+     "tvFps": "60",
+     "hdr": false,
+     "vrr": false,
+     "notes": "Nintendo lists the original game as supported on Nintendo Switch 2. This extraction records a compatibility profile consistent with the original release."
+    }
+   ],
+   "upscaling": "Game / system-specific scaling where applicable",
+   "rayTracing": false,
+   "rayTracingMode": "Not Supported",
+   "loadingTime": "Scene-dependent; no single universal loading time",
+   "loadingNotes": "Loading time varies by scene, save progress, storage state, and whether the software is running in its standard build or an enhanced edition.",
+   "gameVersion": "Current retail build",
+   "patchVersion": "Current available update",
+   "testedDate": "2026-08-27",
+   "sourceName": "Nintendo official product page / compatibility context",
+   "sourceUrl": "https://www.nintendo.com/us/store/products/the-legend-of-zelda-links-awakening-switch/",
+   "performanceNotes": "Nintendo lists the original game as supported on Nintendo Switch 2. This extraction records a compatibility profile consistent with the original release."
+  }
+ ],
+ "boxContentsList": [],
+ "image": "",
+ "banner": "",
+ "schemaId": "",
+ "batchImport": true,
+ "galleryImages": [
+  {
+   "url": "/api/files/products/prd_45936dd725184027/gallery-1-2caa3a8920acdb87.webp",
+   "alt": "The Legend of Zelda: Link's Awakening screenshot 1"
+  },
+  {
+   "url": "/api/files/products/prd_45936dd725184027/gallery-2-36dd33e29c9c349d.webp",
+   "alt": "The Legend of Zelda: Link's Awakening screenshot 2"
+  },
+  {
+   "url": "/api/files/products/prd_45936dd725184027/gallery-3-df3bc6bb34ff4904.webp",
+   "alt": "The Legend of Zelda: Link's Awakening screenshot 3"
+  },
+  {
+   "url": "/api/files/products/prd_45936dd725184027/gallery-4-107275530b4eea1d.webp",
+   "alt": "The Legend of Zelda: Link's Awakening screenshot 4"
+  },
+  {
+   "url": "/api/files/products/prd_45936dd725184027/gallery-5-d47bb2a70b000d44.webp",
+   "alt": "The Legend of Zelda: Link's Awakening screenshot 5"
+  },
+  {
+   "url": "/api/files/products/prd_45936dd725184027/gallery-6-34edec9fd824f96d.webp",
+   "alt": "The Legend of Zelda: Link's Awakening screenshot 6"
+  }
+ ],
+ "createdAt": "2026-08-28T18:38:32.310Z",
+ "updatedAt": "2026-08-28T18:38:32.310Z"
+}
