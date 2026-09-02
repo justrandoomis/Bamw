@@ -1,0 +1,3241 @@
+{
+ "batch": "011",
+ "generatedAt": "2026-09-02T02:58:40.050Z",
+ "totalGames": 310,
+ "reviewedSoFar": 48,
+ "games": [
+  {
+   "id": "prd_4966d6abd0da4509",
+   "slug": "hollow-knight-switch-1",
+   "title": "Hollow Knight",
+   "platform": "switch1",
+   "isHidden": true,
+   "hash": "48b84a2db17431254cb6f4498c96916db5d6587f030e7015608f43b3ef50fe43",
+   "images": [
+    {
+     "role": "front-box",
+     "field": "cartridgeImage",
+     "url": "https://banan.to/api/files/products/prd_4966d6abd0da4509/front-box-2ca0ebacd0f50149.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 485930,
+     "width": 1167,
+     "height": 1888,
+     "thumb": "review-workdir/thumbs/batch-011/hollow-knight-switch-1__front-box-0.png"
+    },
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://banan.to/api/files/products/prd_4966d6abd0da4509/square-card-4c397052974cad43.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 147570,
+     "width": 1024,
+     "height": 1024,
+     "thumb": "review-workdir/thumbs/batch-011/hollow-knight-switch-1__square-card-1.png"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://banan.to/api/files/products/prd_4966d6abd0da4509/cover-f9678ffe0820568c.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 223030,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-011/hollow-knight-switch-1__detail-cover-2.png"
+    },
+    {
+     "role": "3d-texture",
+     "field": "coverHiResImage",
+     "url": "https://banan.to/api/files/products/prd_4966d6abd0da4509/3d-wrap-38cd0611bcbfc67d.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 1245772,
+     "width": 2454,
+     "height": 1888,
+     "thumb": "review-workdir/thumbs/batch-011/hollow-knight-switch-1__3d-texture-3.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://banan.to/api/files/products/prd_4966d6abd0da4509/gallery-1-11ebdaf13b889f7b.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 99804,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-011/hollow-knight-switch-1__gallery-4.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[1]",
+     "url": "https://banan.to/api/files/products/prd_4966d6abd0da4509/gallery-2-8193266ef36cdea9.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 116796,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-011/hollow-knight-switch-1__gallery-5.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[2]",
+     "url": "https://banan.to/api/files/products/prd_4966d6abd0da4509/gallery-3-218cdff14802061e.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 113900,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-011/hollow-knight-switch-1__gallery-6.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[3]",
+     "url": "https://banan.to/api/files/products/prd_4966d6abd0da4509/gallery-4-071dd09c79178d02.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 123768,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-011/hollow-knight-switch-1__gallery-7.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[4]",
+     "url": "https://banan.to/api/files/products/prd_4966d6abd0da4509/gallery-5-9924fb863e0af765.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 116742,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-011/hollow-knight-switch-1__gallery-8.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[5]",
+     "url": "https://banan.to/api/files/products/prd_4966d6abd0da4509/gallery-6-1e75d708d496f10d.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 93444,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-011/hollow-knight-switch-1__gallery-9.png"
+    }
+   ],
+   "record": {
+    "title": "Hollow Knight",
+    "titleEn": "Hollow Knight",
+    "titleKu": "",
+    "slug": "hollow-knight-switch-1",
+    "description": "Hollow Knight is a hand-drawn 2D action-adventure set in the fallen kingdom of Hallownest. Explore interconnected caverns, ancient cities, fungal wastes, and hidden passages while learning new abilities, fighting strange creatures, and uncovering a mysterious history. The Switch release includes the major free content packs.",
+    "descriptionEn": "Hollow Knight is a hand-drawn 2D action-adventure set in the fallen kingdom of Hallownest. Explore interconnected caverns, ancient cities, fungal wastes, and hidden passages while learning new abilities, fighting strange creatures, and uncovering a mysterious history. The Switch release includes the major free content packs.",
+    "descriptionKu": "",
+    "cartridgeImage": "/api/files/products/prd_4966d6abd0da4509/front-box-2ca0ebacd0f50149.webp",
+    "nintendoCardImage": "/api/files/products/prd_4966d6abd0da4509/square-card-4c397052974cad43.webp",
+    "coverHiResImage": "/api/files/products/prd_4966d6abd0da4509/3d-wrap-38cd0611bcbfc67d.webp",
+    "coverImage": "/api/files/products/prd_4966d6abd0da4509/cover-f9678ffe0820568c.webp",
+    "bannerImages": [
+     ""
+    ],
+    "gallery": [],
+    "youtubeTrailer": "https://www.nintendo.com/store/products/hollow-knight-switch/",
+    "releaseDate": "2018-06-12",
+    "ageRating": "PEGI 7 / ESRB E10+",
+    "metacriticRating": 90,
+    "genres": [
+     "Action",
+     "Adventure",
+     "Metroidvania"
+    ],
+    "platform": "switch1",
+    "size": "5.2 GB",
+    "numberOfPlayers": "Single system (1)",
+    "supportedLanguages": "English, Japanese, French, Spanish, German",
+    "hardwareModel": "",
+    "colorEdition": "",
+    "storageCapacity": "",
+    "screenSpecs": "",
+    "batteryLife": "",
+    "boxContents": [],
+    "boxContentsText": "",
+    "warrantyCondition": "",
+    "connectivity": "",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "Global",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "",
+    "redemptionSteps": [],
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 11500,
+    "cost": 1250,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": true,
+    "displayOrder": 0,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "مشترك",
+      "description": "مشترك",
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_account",
+      "name": "خاص بك",
+      "description": "خاص بك",
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "types": [
+     {
+      "id": "offline_base",
+      "name": "مشترك — اللعبة الأساسية",
+      "optionId": "offline_account",
+      "price": 11500,
+      "cost": 1250,
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_base",
+      "name": "خاص بك — اللعبة الأساسية",
+      "optionId": "online_account",
+      "price": 10500,
+      "cost": 7750,
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "Active",
+    "kind": "account",
+    "trade_value_iqd": 6500,
+    "store_offer_bonus_iqd": 1250,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "id": "prd_4966d6abd0da4509",
+    "schema_version": 24,
+    "titleAr": "هولو نايت",
+    "compatibility": [
+     "Nintendo Switch",
+     "Nintendo Switch 2 compatibility: supported or separately represented where applicable"
+    ],
+    "edition": "Standard",
+    "developer": "Team Cherry",
+    "publisher": "Team Cherry",
+    "seriesName": "Hollow Knight",
+    "opencriticRating": 90,
+    "userScore": 9,
+    "switch2UpgradePrice": 0,
+    "officialUrl": "https://www.nintendo.com/store/products/hollow-knight-switch/",
+    "eshopUrl": "https://www.nintendo.com/store/products/hollow-knight-switch/",
+    "gameIsOffline": true,
+    "gameIsOnline": false,
+    "gameLanguageLocked": false,
+    "description_short": "Explore the ruined insect kingdom of Hallownest in a challenging, atmospheric 2D action adventure.",
+    "description_ar": "مغامرة أكشن ثنائية الأبعاد داخل مملكة Hallownest المدمرة، تعتمد على الاستكشاف والقتال والزعماء وفتح قدرات جديدة في عالم مترابط وغامض.",
+    "galleryImages": [
+     {
+      "url": "/api/files/products/prd_4966d6abd0da4509/gallery-1-11ebdaf13b889f7b.webp",
+      "alt": "Hollow Knight screenshot 1"
+     },
+     {
+      "url": "/api/files/products/prd_4966d6abd0da4509/gallery-2-8193266ef36cdea9.webp",
+      "alt": "Hollow Knight screenshot 2"
+     },
+     {
+      "url": "/api/files/products/prd_4966d6abd0da4509/gallery-3-218cdff14802061e.webp",
+      "alt": "Hollow Knight screenshot 3"
+     },
+     {
+      "url": "/api/files/products/prd_4966d6abd0da4509/gallery-4-071dd09c79178d02.webp",
+      "alt": "Hollow Knight screenshot 4"
+     },
+     {
+      "url": "/api/files/products/prd_4966d6abd0da4509/gallery-5-9924fb863e0af765.webp",
+      "alt": "Hollow Knight screenshot 5"
+     },
+     {
+      "url": "/api/files/products/prd_4966d6abd0da4509/gallery-6-1e75d708d496f10d.webp",
+      "alt": "Hollow Knight screenshot 6"
+     }
+    ],
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": true,
+    "nintendoPlayModes": "TV mode / Tabletop mode / Handheld mode",
+    "nintendoCloudSaves": true,
+    "nintendoGameKeyCard": false,
+    "switch2Enhanced": false,
+    "switch2Exclusive": false,
+    "nintendoNotes": "Platform and package information verified against the official product/source page for Hollow Knight.",
+    "tagline": "Forge your own path through a beautiful ruined kingdom.",
+    "fitFor": [
+     "Fans of the listed genres",
+     "Players who value the game’s core mechanics",
+     "Players looking for this platform version",
+     "Collectors or storefront users comparing platform editions"
+    ],
+    "notFitFor": [
+     "Players who dislike the listed genre",
+     "Players seeking a different platform entry",
+     "Players who require unsupported multiplayer modes",
+     "Players expecting a different edition package"
+    ],
+    "playTimeMain": 27,
+    "playTimeFull": 65,
+    "gameplayPillars": [
+     {
+      "title": "Interconnected exploration",
+      "description": "Hallownest is a large, layered world built around backtracking and newly unlocked abilities."
+     },
+     {
+      "title": "Precise combat",
+      "description": "Simple controls hide a demanding combat system built around spacing, timing, and charm builds."
+     },
+     {
+      "title": "Boss mastery",
+      "description": "A large boss roster rewards pattern recognition and patience."
+     },
+     {
+      "title": "Charm customization",
+      "description": "Charms let players reshape combat, healing, mobility, and exploration strategies."
+     },
+     {
+      "title": "Free content packs",
+      "description": "The Switch version includes major free content additions with extra bosses and challenges."
+     }
+    ],
+    "worldSummary": "Hollow Knight is a hand-drawn 2D action-adventure set in the fallen kingdom of Hallownest. Explore interconnected caverns, ancient cities, fungal wastes, and hidden passages while learning new abilities, fighting strange creatures, and uncovering a mysterious history. The Switch release includes the major free content packs.",
+    "storyChapters": [
+     {
+      "title": "Descend into Hallownest",
+      "body": "A silent knight enters the fallen underground kingdom."
+     },
+     {
+      "title": "Learn the kingdom’s history",
+      "body": "Ruins, characters, and environmental details slowly reveal what happened."
+     },
+     {
+      "title": "Grow stronger",
+      "body": "Movement abilities, charms, and upgrades open new regions."
+     },
+     {
+      "title": "Face corrupted guardians",
+      "body": "Bosses and hostile creatures block the path toward the kingdom’s deepest truths."
+     },
+     {
+      "title": "Choose how far to go",
+      "body": "Multiple endings and optional challenges reward deeper exploration."
+     }
+    ],
+    "features": [
+     "Large interconnected world",
+     "Excellent boss design",
+     "Charm build system",
+     "Atmospheric hand-drawn art",
+     "Multiple free content packs"
+    ],
+    "perfResolutionHandheld": "720p",
+    "perfResolutionDocked": "1080p",
+    "perfFps": "60",
+    "perfHdr": false,
+    "perfNotes": "Original Switch profile recorded at 60 fps with Switch 2 compatibility.",
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "deviceModel": "Nintendo Switch",
+      "hardwareId": "nintendo-switch",
+      "informationStatus": "Available",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p",
+       "resolutionDynamic": false,
+       "renderingResolution": "720p",
+       "outputResolution": "720p",
+       "fps": "60",
+       "fpsMin": "60",
+       "fpsMax": "60",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Handheld",
+       "notes": "Original Switch profile recorded at 60 fps with Switch 2 compatibility."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p",
+       "resolutionDynamic": false,
+       "renderingResolution": "1080p",
+       "outputResolution": "1080p",
+       "fps": "60",
+       "fpsMin": "60",
+       "fpsMax": "60",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "TV / Docked",
+       "notes": "Original Switch profile recorded at 60 fps with Switch 2 compatibility."
+      },
+      "modes": [
+       {
+        "name": "Default",
+        "handheldResolution": "720p",
+        "handheldFps": "60",
+        "tvResolution": "1080p",
+        "tvFps": "60",
+        "hdr": false,
+        "vrr": false,
+        "notes": "Original Switch profile recorded at 60 fps with Switch 2 compatibility."
+       }
+      ],
+      "performanceNotes": "Original Switch profile recorded at 60 fps with Switch 2 compatibility."
+     },
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "hardwareId": "nintendo-switch-2",
+      "informationStatus": "Available",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p",
+       "resolutionDynamic": false,
+       "renderingResolution": "720p",
+       "outputResolution": "720p",
+       "fps": "60",
+       "fpsMin": "60",
+       "fpsMax": "60",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Handheld",
+       "notes": "Compatibility profile for validator; dedicated Switch 2 product is separate where one exists."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p",
+       "resolutionDynamic": false,
+       "renderingResolution": "1080p",
+       "outputResolution": "1080p",
+       "fps": "60",
+       "fpsMin": "60",
+       "fpsMax": "60",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "TV / Docked",
+       "notes": "Compatibility profile for validator; dedicated Switch 2 product is separate where one exists."
+      },
+      "modes": [
+       {
+        "name": "Default",
+        "handheldResolution": "720p",
+        "handheldFps": "60",
+        "tvResolution": "1080p",
+        "tvFps": "60",
+        "hdr": false,
+        "vrr": false,
+        "notes": "Compatibility profile for validator; dedicated Switch 2 product is separate where one exists."
+       }
+      ],
+      "performanceNotes": "Compatibility profile for validator; dedicated Switch 2 product is separate where one exists."
+     }
+    ],
+    "faq": [
+     {
+      "q": "Does Hollow Knight work on Switch 2?",
+      "a": "Yes. Nintendo lists the Switch version as supported with behavior consistent with Nintendo Switch."
+     },
+     {
+      "q": "Is it difficult?",
+      "a": "It can be demanding, especially bosses and late-game optional challenges."
+     },
+     {
+      "q": "Does it include DLC?",
+      "a": "Nintendo notes that the Switch version includes the major free content packs."
+     },
+     {
+      "q": "Is it multiplayer?",
+      "a": "No. It is a single-player adventure."
+     },
+     {
+      "q": "Why only two variants?",
+      "a": "Only Regular and Standard pricing was supplied."
+     }
+    ],
+    "mpLocalPlayers": false,
+    "mpOnlinePlayers": false,
+    "mpCoop": false,
+    "mpCompetitive": false,
+    "mpLocalWireless": false,
+    "mpSplitScreen": false,
+    "sources": [
+     {
+      "name": "Official product / publisher page",
+      "url": "https://www.nintendo.com/store/products/hollow-knight-switch/"
+     },
+     {
+      "name": "Metacritic",
+      "url": "https://www.metacritic.com/search/hollow-knight/"
+     }
+    ],
+    "boxContentsList": [],
+    "image": "",
+    "banner": "",
+    "schemaId": "",
+    "batchImport": true,
+    "createdAt": "2026-08-28T18:45:51.917Z",
+    "updatedAt": "2026-08-28T18:45:51.917Z"
+   }
+  },
+  {
+   "id": "prd_b6c32956d9c24d99",
+   "slug": "hyrule-warriors-age-of-calamity-switch",
+   "title": "Hyrule Warriors: Age of Calamity",
+   "platform": "switch1",
+   "isHidden": true,
+   "hash": "682467ff3a65b07034ceb2b8694ff85f9884a43e787c3ccd67cace505db19bef",
+   "images": [
+    {
+     "role": "front-box",
+     "field": "cartridgeImage",
+     "url": "https://banan.to/api/files/products/prd_b6c32956d9c24d99/front-box-b8b6adcac680239f.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 873074,
+     "width": 1167,
+     "height": 1888,
+     "thumb": "review-workdir/thumbs/batch-011/hyrule-warriors-age-of-calamity-switch__front-box-0.png"
+    },
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://banan.to/api/files/products/prd_b6c32956d9c24d99/square-card-cc37ded321a95f29.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 262944,
+     "width": 1024,
+     "height": 1024,
+     "thumb": "review-workdir/thumbs/batch-011/hyrule-warriors-age-of-calamity-switch__square-card-1.png"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://banan.to/api/files/products/prd_b6c32956d9c24d99/cover-5ac2d2f24831a563.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 403722,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-011/hyrule-warriors-age-of-calamity-switch__detail-cover-2.png"
+    },
+    {
+     "role": "3d-texture",
+     "field": "coverHiResImage",
+     "url": "https://banan.to/api/files/products/prd_b6c32956d9c24d99/3d-wrap-55a50cefa0c5401f.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 1918154,
+     "width": 2454,
+     "height": 1888,
+     "thumb": "review-workdir/thumbs/batch-011/hyrule-warriors-age-of-calamity-switch__3d-texture-3.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://banan.to/api/files/products/prd_b6c32956d9c24d99/gallery-1-4d898f6c5437baa3.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 127912,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-011/hyrule-warriors-age-of-calamity-switch__gallery-4.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[1]",
+     "url": "https://banan.to/api/files/products/prd_b6c32956d9c24d99/gallery-2-c900ee3415e338e6.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 97816,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-011/hyrule-warriors-age-of-calamity-switch__gallery-5.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[2]",
+     "url": "https://banan.to/api/files/products/prd_b6c32956d9c24d99/gallery-3-632ea14cc8c088c4.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 56890,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-011/hyrule-warriors-age-of-calamity-switch__gallery-6.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[3]",
+     "url": "https://banan.to/api/files/products/prd_b6c32956d9c24d99/gallery-4-49048af51ec5a887.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 57924,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-011/hyrule-warriors-age-of-calamity-switch__gallery-7.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[4]",
+     "url": "https://banan.to/api/files/products/prd_b6c32956d9c24d99/gallery-5-757ba5c99241f5e1.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 210692,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-011/hyrule-warriors-age-of-calamity-switch__gallery-8.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[5]",
+     "url": "https://banan.to/api/files/products/prd_b6c32956d9c24d99/gallery-6-9dacd2122a244f76.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 148280,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-011/hyrule-warriors-age-of-calamity-switch__gallery-9.png"
+    }
+   ],
+   "record": {
+    "title": "Hyrule Warriors: Age of Calamity",
+    "titleEn": "Hyrule Warriors: Age of Calamity",
+    "titleKu": "",
+    "slug": "hyrule-warriors-age-of-calamity-switch",
+    "description": "Hyrule Warriors: Age of Calamity revisits the world and characters of Breath of the Wild through the large-scale musou action formula. Players take command of Link, Zelda, the Champions, and other fighters across cinematic battlefields packed with enemies, captains, bosses, and mission objectives. The game also received an Expansion Pass that adds new characters, stages, and challenges.",
+    "descriptionEn": "Hyrule Warriors: Age of Calamity revisits the world and characters of Breath of the Wild through the large-scale musou action formula. Players take command of Link, Zelda, the Champions, and other fighters across cinematic battlefields packed with enemies, captains, bosses, and mission objectives. The game also received an Expansion Pass that adds new characters, stages, and challenges.",
+    "descriptionKu": "",
+    "cartridgeImage": "/api/files/products/prd_b6c32956d9c24d99/front-box-b8b6adcac680239f.webp",
+    "nintendoCardImage": "/api/files/products/prd_b6c32956d9c24d99/square-card-cc37ded321a95f29.webp",
+    "coverHiResImage": "/api/files/products/prd_b6c32956d9c24d99/3d-wrap-55a50cefa0c5401f.webp",
+    "coverImage": "/api/files/products/prd_b6c32956d9c24d99/cover-5ac2d2f24831a563.webp",
+    "bannerImages": [
+     ""
+    ],
+    "gallery": [],
+    "youtubeTrailer": "",
+    "releaseDate": "2020-11-20",
+    "ageRating": "ESRB T / PEGI 12",
+    "metacriticRating": 78,
+    "genres": [
+     "Action",
+     "Adventure",
+     "Musou"
+    ],
+    "platform": "switch1",
+    "size": 10.6,
+    "numberOfPlayers": "Single system (1-2)",
+    "supportedLanguages": "Japanese / British English / French / German / Italian / Spanish / Korean / Dutch / Simplified Chinese / Latin American Spanish / Canadian French / Traditional Chinese / American English",
+    "hardwareModel": "",
+    "colorEdition": "",
+    "storageCapacity": "",
+    "screenSpecs": "",
+    "batteryLife": "",
+    "boxContents": [],
+    "boxContentsText": "",
+    "warrantyCondition": "",
+    "connectivity": "",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "Global",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "",
+    "redemptionSteps": [],
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 11500,
+    "cost": 1250,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": true,
+    "displayOrder": 0,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "مشترك",
+      "description": "مشترك",
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_account",
+      "name": "خاص بك",
+      "description": "خاص بك",
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "types": [
+     {
+      "id": "offline_base",
+      "name": "مشترك — اللعبة الأساسية",
+      "optionId": "offline_account",
+      "price": 11500,
+      "cost": 1250,
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "offline_extras",
+      "name": "مشترك — مع الإضافات",
+      "optionId": "offline_account",
+      "price": 14000,
+      "cost": 2500,
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_base",
+      "name": "خاص بك — اللعبة الأساسية",
+      "optionId": "online_account",
+      "price": 22250,
+      "cost": 16500,
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_extras",
+      "name": "خاص بك — مع الإضافات",
+      "optionId": "online_account",
+      "price": 33750,
+      "cost": 25000,
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "Active",
+    "kind": "account",
+    "trade_value_iqd": 11000,
+    "store_offer_bonus_iqd": 2000,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "id": "prd_b6c32956d9c24d99",
+    "schema_version": 24,
+    "titleAr": "هايرول ووريرز: عصر الكارثة",
+    "compatibility": [
+     "Nintendo Switch",
+     "Nintendo Switch 2 compatibility: Supported – game behavior is consistent with Nintendo Switch"
+    ],
+    "edition": "Standard",
+    "developer": "Koei Tecmo Games",
+    "publisher": "Nintendo",
+    "seriesName": "The Legend of Zelda / Hyrule Warriors",
+    "metacriticUrl": "https://www.metacritic.com/game/hyrule-warriors-age-of-calamity/",
+    "opencriticRating": 80,
+    "userScore": 8.1,
+    "price_usd": 59.99,
+    "officialUrl": "https://www.nintendo.com/us/store/products/hyrule-warriors-age-of-calamity-switch/",
+    "eshopUrl": "https://www.nintendo.com/us/store/products/hyrule-warriors-age-of-calamity-switch/",
+    "gameIsOffline": true,
+    "gameIsOnline": false,
+    "gameLanguageLocked": false,
+    "description_short": "Battle through the era leading to Breath of the Wild in a musou action game full of heroes, combos, and battlefield objectives.",
+    "description_ar": "لعبة أكشن جماعية بأسلوب موسو تعود إلى زمن ما قبل أحداث Breath of the Wild، مع شخصيات الأبطال ومعارك واسعة ومهام ساحة قتال ومحتوى إضافي عبر Expansion Pass.",
+    "languagesText": [
+     "Japanese / English",
+     "French / German / Italian / Spanish / Dutch",
+     "Korean / Simplified Chinese / Traditional Chinese"
+    ],
+    "languagesAudio": [
+     "Music / sound effects",
+     "Character vocalizations where applicable",
+     "No full language-selectable dub beyond the shipped release build information"
+    ],
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": true,
+    "nintendoPlayModes": "TV / Tabletop / Handheld",
+    "nintendoOnlineRequired": false,
+    "nintendoCloudSaves": true,
+    "nintendoGameKeyCard": false,
+    "nintendoPhysicalNeedsDownload": false,
+    "switch2Enhanced": false,
+    "switch2Exclusive": false,
+    "nintendoNotes": "Nintendo sells both the base game and a separate Expansion Pass. This extraction maps the user's Special and Deluxe pricing tiers to Expansion Pass-aware variants.",
+    "editionsList": [
+     {
+      "name": "Offline Regular",
+      "contents": [
+       {
+        "label": "Base game"
+       },
+       {
+        "label": "Offline account package"
+       },
+       {
+        "label": "Musou action adventure"
+       }
+      ]
+     },
+     {
+      "name": "Offline Special / Expansion Pass",
+      "contents": [
+       {
+        "label": "Base game"
+       },
+       {
+        "label": "Expansion Pass included"
+       },
+       {
+        "label": "Offline account package"
+       }
+      ]
+     },
+     {
+      "name": "Online Standard",
+      "contents": [
+       {
+        "label": "Base game"
+       },
+       {
+        "label": "Online account package"
+       },
+       {
+        "label": "Musou action adventure"
+       }
+      ]
+     },
+     {
+      "name": "Online Deluxe / Expansion Pass",
+      "contents": [
+       {
+        "label": "Base game"
+       },
+       {
+        "label": "Expansion Pass included"
+       },
+       {
+        "label": "Online account package"
+       }
+      ]
+     }
+    ],
+    "gameplayPillars": [
+     {
+      "title": "Large-scale battlefield action",
+      "description": "Fight through waves of enemies while capturing keeps, defeating bosses, and protecting allied positions."
+     },
+     {
+      "title": "Breath of the Wild cast and setting",
+      "description": "The game draws heavily from the characters, aesthetics, and regions of Breath of the Wild."
+     },
+     {
+      "title": "Distinct hero movesets",
+      "description": "Each playable character has unique attacks, special mechanics, and combo styles that keep battles varied."
+     },
+     {
+      "title": "Story-driven campaign",
+      "description": "Unlike some musou titles that rely mostly on loose scenarios, Age of Calamity presents a cinematic story campaign with frequent cutscenes."
+     },
+     {
+      "title": "Expansion Pass content",
+      "description": "Post-launch content adds more weapons, characters, and challenges for players who want a broader package."
+     }
+    ],
+    "worldSummary": "Age of Calamity reframes Zelda lore through wide battlefields, hero swapping, hordes of enemies, and a campaign that tries to connect directly to Breath of the Wild's world and themes.",
+    "storyChapters": [
+     {
+      "title": "Hyrule prepares for war",
+      "body": "The kingdom mobilizes as Calamity Ganon's threat grows, gathering heroes and warriors from across Hyrule."
+     },
+     {
+      "title": "Recruit the Champions and allies",
+      "body": "Link and Zelda join forces with the Champions and other important characters to resist the coming calamity."
+     },
+     {
+      "title": "Fight across major regions",
+      "body": "Campaign stages send the player across familiar areas with objectives, bosses, and large enemy forces."
+     },
+     {
+      "title": "Unlock stronger tools and movesets",
+      "body": "Progression rewards weapon upgrades, side missions, and additional playable characters."
+     },
+     {
+      "title": "Reach the climax of the conflict",
+      "body": "The later chapters push toward a large-scale showdown tied to the fate of Hyrule."
+     }
+    ],
+    "features": [
+     "Breath of the Wild-themed musou action",
+     "Strong roster variety and flashy combat",
+     "Story campaign with many cutscenes",
+     "Expansion Pass support for premium variants",
+     "Good option for players who enjoy battlefield-heavy action"
+    ],
+    "perfResolutionDocked": "1080p",
+    "perfResolutionHandheld": "720p",
+    "perfFps": "30",
+    "perfHdr": false,
+    "playTimeMain": 21,
+    "completionMain": 35,
+    "completionExtras": 45,
+    "faq": [
+     {
+      "q": "Does Age of Calamity have DLC?",
+      "a": "Yes. Nintendo released an Expansion Pass that adds new content, which is why this extraction includes Special and Deluxe variant tiers."
+     },
+     {
+      "q": "Is the game multiplayer?",
+      "a": "Yes. It supports local cooperative play for up to two players on a single system."
+     },
+     {
+      "q": "Is this an open-world Zelda game?",
+      "a": "No. It is a mission-based musou action game, not a free-roaming open-world structure like Breath of the Wild."
+     },
+     {
+      "q": "Can I enjoy it without playing Breath of the Wild?",
+      "a": "Yes, but familiarity with the Breath of the Wild cast and setting will make many story moments more meaningful."
+     },
+     {
+      "q": "Why are the online account tiers more expensive?",
+      "a": "That follows the store's pricing structure, while the gameplay content remains tied to the base game and its optional Expansion Pass."
+     }
+    ],
+    "verdictScore": 8,
+    "verdictPros": [
+     "Fun musou combat with a strong Zelda theme",
+     "Good roster variety and flashy special attacks",
+     "Local co-op is a welcome feature",
+     "Expansion Pass adds value to premium tiers",
+     "Cinematic story framing appeals to BOTW fans"
+    ],
+    "verdictCons": [
+     "Performance can dip during very busy battles",
+     "Mission structure is less free than mainline Zelda games",
+     "Musou combat is not for everyone",
+     "Some story expectations depend on player familiarity with BOTW",
+     "Grinding side content may feel repetitive for completionists"
+    ],
+    "reviews": [
+     {
+      "source": "Metacritic",
+      "score": "78",
+      "url": "https://www.metacritic.com/game/hyrule-warriors-age-of-calamity/"
+     },
+     {
+      "source": "OpenCritic",
+      "score": "80",
+      "url": "https://opencritic.com/game/10284/hyrule-warriors-age-of-calamity"
+     },
+     {
+      "source": "IGN",
+      "score": "9/10",
+      "url": "https://www.ign.com/games/hyrule-warriors-age-of-calamity"
+     }
+    ],
+    "timeline": [
+     {
+      "date": "2020-11-20",
+      "title": "Released on Nintendo Switch"
+     },
+     {
+      "date": "2021-05-28",
+      "title": "Expansion Pass announced / purchase bonus active"
+     },
+     {
+      "date": "2021-10-29",
+      "title": "Guardian of Remembrance wave released"
+     }
+    ],
+    "patchNotes": [
+     {
+      "version": "Launch version",
+      "date": "2020-11-20"
+     },
+     {
+      "version": "Expansion Pass content complete",
+      "date": "2021-10-29"
+     },
+     {
+      "version": "Current retail build",
+      "date": "2026-08-27"
+     }
+    ],
+    "studioName": "Nintendo",
+    "studioUrl": "https://www.nintendo.com/us/store/products/hyrule-warriors-age-of-calamity-switch/",
+    "studioLocation": "Japan",
+    "sources": [
+     {
+      "name": "Nintendo official product page",
+      "url": "https://www.nintendo.com/us/store/products/hyrule-warriors-age-of-calamity-switch/"
+     },
+     {
+      "name": "Nintendo Expansion Pass page",
+      "url": "https://www.nintendo.com/us/store/products/hyrule-warriors-age-of-calamity-expansion-pass-70070000011785-switch/"
+     },
+     {
+      "name": "Metacritic",
+      "url": "https://www.metacritic.com/game/hyrule-warriors-age-of-calamity/"
+     },
+     {
+      "name": "OpenCritic",
+      "url": "https://opencritic.com/game/10284/hyrule-warriors-age-of-calamity"
+     }
+    ],
+    "downloadSizeGb": 10.6,
+    "requiredSpaceGb": 10.6,
+    "microSdRecommended": true,
+    "storageNotes": "Nintendo lists the base game at roughly 10.6 GB. Extra content from the Expansion Pass is handled as downloadable expansion content.",
+    "mpLocalPlayers": true,
+    "mpOnlinePlayers": false,
+    "mpCoop": true,
+    "mpCompetitive": false,
+    "mpLocalWireless": false,
+    "mpSplitScreen": true,
+    "seriesEntries": [
+     "Hyrule Warriors: Age of Imprisonment",
+     "Hyrule Warriors: Definitive Edition",
+     "The Legend of Zelda: Breath of the Wild"
+    ],
+    "dlc": [
+     {
+      "name": "Age of Calamity Expansion Pass",
+      "description": "The Expansion Pass adds new playable content, stages, weapons, and battle scenarios. In this extraction, Special and Deluxe variants map to Expansion Pass-aware package tiers."
+     }
+    ],
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "deviceModel": "Nintendo Switch",
+      "hardwareId": "nintendo-switch",
+      "informationStatus": "Available / verified",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p",
+       "resolutionDynamic": true,
+       "renderingResolution": "1280x720",
+       "outputResolution": "1280x720",
+       "fps": "30",
+       "fpsMin": "20",
+       "fpsMax": "30",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Handheld",
+       "notes": "Age of Calamity targets 30 fps with dynamic resolution behavior and occasional drops during particularly intense musou scenes."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p",
+       "resolutionDynamic": true,
+       "renderingResolution": "1920x1080",
+       "outputResolution": "1920x1080",
+       "fps": "30",
+       "fpsMin": "20",
+       "fpsMax": "30",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "TV / Docked",
+       "notes": "Age of Calamity targets 30 fps with dynamic resolution behavior and occasional drops during particularly intense musou scenes."
+      },
+      "modes": [
+       {
+        "name": "Primary documented mode",
+        "handheldResolution": "720p",
+        "handheldFps": "30",
+        "tvResolution": "1080p",
+        "tvFps": "30",
+        "hdr": false,
+        "vrr": false,
+        "notes": "Age of Calamity targets 30 fps with dynamic resolution behavior and occasional drops during particularly intense musou scenes."
+       }
+      ],
+      "upscaling": "Game / system-specific scaling where applicable",
+      "rayTracing": false,
+      "rayTracingMode": "Not Supported",
+      "loadingTime": "Scene-dependent; no single universal loading time",
+      "loadingNotes": "Loading time varies by scene, save progress, storage state, and whether the software is running in its standard build or an enhanced edition.",
+      "gameVersion": "Current retail build",
+      "patchVersion": "Current available update",
+      "testedDate": "2026-08-27",
+      "sourceName": "Nintendo official product page",
+      "sourceUrl": "https://www.nintendo.com/us/store/products/hyrule-warriors-age-of-calamity-switch/",
+      "performanceNotes": "Age of Calamity targets 30 fps with dynamic resolution behavior and occasional drops during particularly intense musou scenes."
+     },
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "hardwareId": "nintendo-switch-2",
+      "informationStatus": "Available / verified",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p",
+       "resolutionDynamic": false,
+       "renderingResolution": "1280x720",
+       "outputResolution": "1280x720",
+       "fps": "30",
+       "fpsMin": "30",
+       "fpsMax": "30",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Handheld",
+       "notes": "Nintendo lists the original title as supported on Nintendo Switch 2. This extraction records a compatibility profile consistent with the original release."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p",
+       "resolutionDynamic": false,
+       "renderingResolution": "1920x1080",
+       "outputResolution": "1920x1080",
+       "fps": "30",
+       "fpsMin": "30",
+       "fpsMax": "30",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "TV / Docked",
+       "notes": "Nintendo lists the original title as supported on Nintendo Switch 2. This extraction records a compatibility profile consistent with the original release."
+      },
+      "modes": [
+       {
+        "name": "Primary documented mode",
+        "handheldResolution": "720p",
+        "handheldFps": "30",
+        "tvResolution": "1080p",
+        "tvFps": "30",
+        "hdr": false,
+        "vrr": false,
+        "notes": "Nintendo lists the original title as supported on Nintendo Switch 2. This extraction records a compatibility profile consistent with the original release."
+       }
+      ],
+      "upscaling": "Game / system-specific scaling where applicable",
+      "rayTracing": false,
+      "rayTracingMode": "Not Supported",
+      "loadingTime": "Scene-dependent; no single universal loading time",
+      "loadingNotes": "Loading time varies by scene, save progress, storage state, and whether the software is running in its standard build or an enhanced edition.",
+      "gameVersion": "Current retail build",
+      "patchVersion": "Current available update",
+      "testedDate": "2026-08-27",
+      "sourceName": "Nintendo official product page / compatibility context",
+      "sourceUrl": "https://www.nintendo.com/us/store/products/hyrule-warriors-age-of-calamity-switch/",
+      "performanceNotes": "Nintendo lists the original title as supported on Nintendo Switch 2. This extraction records a compatibility profile consistent with the original release."
+     }
+    ],
+    "boxContentsList": [],
+    "image": "",
+    "banner": "",
+    "schemaId": "",
+    "batchImport": true,
+    "galleryImages": [
+     {
+      "url": "/api/files/products/prd_b6c32956d9c24d99/gallery-1-4d898f6c5437baa3.webp",
+      "alt": "Hyrule Warriors: Age of Calamity screenshot 1"
+     },
+     {
+      "url": "/api/files/products/prd_b6c32956d9c24d99/gallery-2-c900ee3415e338e6.webp",
+      "alt": "Hyrule Warriors: Age of Calamity screenshot 2"
+     },
+     {
+      "url": "/api/files/products/prd_b6c32956d9c24d99/gallery-3-632ea14cc8c088c4.webp",
+      "alt": "Hyrule Warriors: Age of Calamity screenshot 3"
+     },
+     {
+      "url": "/api/files/products/prd_b6c32956d9c24d99/gallery-4-49048af51ec5a887.webp",
+      "alt": "Hyrule Warriors: Age of Calamity screenshot 4"
+     },
+     {
+      "url": "/api/files/products/prd_b6c32956d9c24d99/gallery-5-757ba5c99241f5e1.webp",
+      "alt": "Hyrule Warriors: Age of Calamity screenshot 5"
+     },
+     {
+      "url": "/api/files/products/prd_b6c32956d9c24d99/gallery-6-9dacd2122a244f76.webp",
+      "alt": "Hyrule Warriors: Age of Calamity screenshot 6"
+     }
+    ],
+    "createdAt": "2026-08-28T18:42:00.998Z",
+    "updatedAt": "2026-08-28T18:42:00.998Z"
+   }
+  },
+  {
+   "id": "prd_14259a3bda924632",
+   "slug": "hyrule-warriors-age-of-imprisonment",
+   "title": "Hyrule Warriors: Age of Imprisonment [Switch 2]",
+   "platform": "switch2",
+   "isHidden": false,
+   "hash": "b82db8e397b3c6167ccff9b6a30e28aef33fdb0693a2b47a99f6d1ae356e0c81",
+   "images": [
+    {
+     "role": "front-box",
+     "field": "cartridgeImage",
+     "url": "https://banan.to/api/files/products/prd_14259a3bda924632/front-7d30c2303a91d168.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 63394,
+     "width": 171,
+     "height": 280,
+     "thumb": "review-workdir/thumbs/batch-011/hyrule-warriors-age-of-imprisonment__front-box-0.png"
+    },
+    {
+     "role": "front-box",
+     "field": "box_front_url",
+     "url": "https://gamesdb-images.launchbox.gg/r2_927c4138-1d9f-4802-a264-a477a54e62a3.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 63394,
+     "width": 171,
+     "height": 280,
+     "thumb": "review-workdir/thumbs/batch-011/hyrule-warriors-age-of-imprisonment__front-box-1.png"
+    },
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://banan.to/api/files/products/prd_14259a3bda924632/square-0595e1da0eff36a5.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 31905,
+     "width": 281,
+     "height": 281,
+     "thumb": "review-workdir/thumbs/batch-011/hyrule-warriors-age-of-imprisonment__square-card-2.png"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://banan.to/api/files/products/prd_14259a3bda924632/cover-244d2043f1940abd.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 51532,
+     "width": 400,
+     "height": 225,
+     "thumb": "review-workdir/thumbs/batch-011/hyrule-warriors-age-of-imprisonment__detail-cover-3.png"
+    },
+    {
+     "role": "3d-texture",
+     "field": "coverHiResImage",
+     "url": "https://banan.to/api/files/cartridges/usr_b947dbb97217464c/f_294bf0a6c83e4f08.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 3715545,
+     "width": 4955,
+     "height": 3800,
+     "thumb": "review-workdir/thumbs/batch-011/hyrule-warriors-age-of-imprisonment__3d-texture-4.png"
+    },
+    {
+     "role": "listing",
+     "field": "image",
+     "url": "https://banan.to/api/files/products/prd_14259a3bda924632/cover-244d2043f1940abd.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 51532,
+     "width": 400,
+     "height": 225,
+     "thumb": "review-workdir/thumbs/batch-011/hyrule-warriors-age-of-imprisonment__listing-5.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[0]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000103459/fbe77762b0ba94c9f42514a67214b710e7f43dc659fceab58c29d780e9a89aa9",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 238456,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-011/hyrule-warriors-age-of-imprisonment__banner-6.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[1]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000103459/8d0350383a2af078565350a1a11450738bace496269690a8d07e1faf7bc346e5",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 194145,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-011/hyrule-warriors-age-of-imprisonment__banner-7.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[2]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000103459/688342401661bbc6d50eb97b4e6f706184e58341e6e3e5f59775bddfc0e7638d",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 221187,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-011/hyrule-warriors-age-of-imprisonment__banner-8.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[3]",
+     "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000103459/5c64f5f77b2337252b379076edc705712a5beeaff08a104269a2ccf8fc9445c9",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 180140,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-011/hyrule-warriors-age-of-imprisonment__banner-9.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000103459/5c64f5f77b2337252b379076edc705712a5beeaff08a104269a2ccf8fc9445c9",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 180140,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-011/hyrule-warriors-age-of-imprisonment__gallery-10.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[1]",
+     "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000103459/6c233749c2311251c1df347f5e46016b95c293d1568e1196b44d6712dcfae308",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 290260,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-011/hyrule-warriors-age-of-imprisonment__gallery-11.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[2]",
+     "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000103459/d436e6809b6e3cb0ae48d70d27fe405c39045a4248098439f9ac431f8f2e167c",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 286266,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-011/hyrule-warriors-age-of-imprisonment__gallery-12.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[3]",
+     "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000103459/fbe77762b0ba94c9f42514a67214b710e7f43dc659fceab58c29d780e9a89aa9",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 238456,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-011/hyrule-warriors-age-of-imprisonment__gallery-13.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[4]",
+     "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000103459/8d0350383a2af078565350a1a11450738bace496269690a8d07e1faf7bc346e5",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 194145,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-011/hyrule-warriors-age-of-imprisonment__gallery-14.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[5]",
+     "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000103459/688342401661bbc6d50eb97b4e6f706184e58341e6e3e5f59775bddfc0e7638d",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 221187,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-011/hyrule-warriors-age-of-imprisonment__gallery-15.png"
+    }
+   ],
+   "record": {
+    "title": "Hyrule Warriors: Age of Imprisonment [Switch 2]",
+    "titleEn": "Hyrule Warriors: Age of Imprisonment [Switch 2]",
+    "titleKu": "Hyrule Warriors: Age of Imprisonment [Switch 2]",
+    "slug": "hyrule-warriors-age-of-imprisonment",
+    "description": "Hyrule Warriors: Age of Imprisonment is a large-scale action game set in the ancient era connected to The Legend of Zelda: Tears of the Kingdom. It combines Hyrule Warriors-style battles against large enemy forces with character-specific abilities and cooperative play features on Nintendo Switch 2. The game is a native Nintendo Switch 2 release.",
+    "descriptionEn": "Hyrule Warriors: Age of Imprisonment is a large-scale action game set in the ancient era connected to The Legend of Zelda: Tears of the Kingdom. It combines Hyrule Warriors-style battles against large enemy forces with character-specific abilities and cooperative play features on Nintendo Switch 2. The game is a native Nintendo Switch 2 release.",
+    "descriptionKu": "Hyrule Warriors: Age of Imprisonment is a large-scale action game set in the ancient era connected to The Legend of Zelda: Tears of the Kingdom. It combines Hyrule Warriors-style battles against large enemy forces with character-specific abilities and cooperative play features on Nintendo Switch 2. The game is a native Nintendo Switch 2 release.",
+    "cartridgeImage": "/api/files/products/prd_14259a3bda924632/front-7d30c2303a91d168.jpg",
+    "nintendoCardImage": "/api/files/products/prd_14259a3bda924632/square-0595e1da0eff36a5.jpg",
+    "coverHiResImage": "/api/files/cartridges/usr_b947dbb97217464c/f_294bf0a6c83e4f08.jpg",
+    "coverImage": "/api/files/products/prd_14259a3bda924632/cover-244d2043f1940abd.jpg",
+    "bannerImages": [
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000103459/fbe77762b0ba94c9f42514a67214b710e7f43dc659fceab58c29d780e9a89aa9",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000103459/8d0350383a2af078565350a1a11450738bace496269690a8d07e1faf7bc346e5",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000103459/688342401661bbc6d50eb97b4e6f706184e58341e6e3e5f59775bddfc0e7638d",
+     "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000103459/5c64f5f77b2337252b379076edc705712a5beeaff08a104269a2ccf8fc9445c9",
+     "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000103459/6c233749c2311251c1df347f5e46016b95c293d1568e1196b44d6712dcfae308",
+     "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000103459/d436e6809b6e3cb0ae48d70d27fe405c39045a4248098439f9ac431f8f2e167c",
+     "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000103459/fbe77762b0ba94c9f42514a67214b710e7f43dc659fceab58c29d780e9a89aa9",
+     "/api/files/products/prd_14259a3bda924632/banner-7-7ddd4dab02162b22.avif"
+    ],
+    "gallery": [],
+    "youtubeTrailer": "https://www.youtube.com/watch?v=vuSV9Sy28Mw",
+    "releaseDate": "2025-11-06",
+    "ageRating": "ESRB: T — Fantasy Violence",
+    "metacriticRating": 79,
+    "genres": [
+     "Action",
+     "Hack and Slash",
+     "Adventure"
+    ],
+    "platform": "switch2",
+    "size": 43.525,
+    "numberOfPlayers": "1-2",
+    "supportedLanguages": "Japanese, English, French, German, Italian, Spanish, Korean, Dutch, Russian, Simplified Chinese, Traditional Chinese",
+    "hardwareModel": "",
+    "colorEdition": "",
+    "storageCapacity": "",
+    "screenSpecs": "",
+    "batteryLife": "",
+    "boxContents": [],
+    "boxContentsText": "",
+    "warrantyCondition": "",
+    "connectivity": "",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "Global",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "",
+    "redemptionSteps": [],
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 12000,
+    "cost": 1500,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": false,
+    "displayOrder": 0,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "حساب أوفلاين",
+      "description": "حساب مخصص للعب دون اتصال بعد إكمال خطوات التفعيل.",
+      "isInfiniteStock": true,
+      "customerDescription": "حساب مشترك"
+     },
+     {
+      "id": "online_account",
+      "name": "حساب أونلاين",
+      "description": "حساب يدعم تشغيل اللعبة مع الاتصال والميزات المتاحة أونلاين.",
+      "isInfiniteStock": true,
+      "customerDescription": "حساب خاص بك"
+     }
+    ],
+    "types": [
+     {
+      "id": "standard_offline",
+      "name": "حساب أوفلاين — عادي",
+      "optionId": "offline_account",
+      "price": "",
+      "cost": 1500,
+      "description": "تشمل الإصدار العادي من اللعبة.",
+      "isInfiniteStock": true,
+      "customerDescription": "اللعبة الأساسية"
+     },
+     {
+      "id": "standard_online",
+      "name": "حساب أونلاين — عادي",
+      "optionId": "online_account",
+      "price": "38000",
+      "cost": 25000,
+      "description": "تشمل الإصدار العادي من اللعبة.",
+      "isInfiniteStock": true,
+      "customerDescription": "اللعبة الأساسية"
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "active",
+    "kind": "account",
+    "trade_value_iqd": 53000,
+    "store_offer_bonus_iqd": 7000,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "id": "prd_14259a3bda924632",
+    "schema_version": 20,
+    "titleAr": "هايرول واريورز: إيج أوف إمبريزنمنت",
+    "compatibility": [
+     "Nintendo Switch 2"
+    ],
+    "edition": "Standard",
+    "developer": "KOEI TECMO GAMES / AAA Studio",
+    "publisher": "Nintendo",
+    "opencriticRating": 79,
+    "userScore": 8.4,
+    "officialUrl": "https://www.nintendo.com/us/store/products/hyrule-warriors-age-of-imprisonment-switch-2/",
+    "eshopUrl": "https://www.nintendo.com/us/store/products/hyrule-warriors-age-of-imprisonment-switch-2/",
+    "gameIsOffline": true,
+    "gameIsOnline": true,
+    "gameLanguageLocked": false,
+    "description_short": "A Nintendo Switch 2 Hyrule Warriors action game depicting the ancient Imprisoning War with large-scale battles and two-player options.",
+    "description_ar": "Hyrule Warriors: Age of Imprisonment هي لعبة أكشن واسعة النطاق تدور في الحقبة القديمة المرتبطة بأحداث The Legend of Zelda: Tears of the Kingdom. تجمع بين معارك Hyrule Warriors ضد أعداد كبيرة من الأعداء وقدرات خاصة بكل شخصية وخيارات للعب التعاوني على Nintendo Switch 2، وهي إصدار أصلي للجهاز.",
+    "box_front_url": "https://gamesdb-images.launchbox.gg/r2_927c4138-1d9f-4802-a264-a477a54e62a3.jpg",
+    "videos": [
+     {
+      "title": "Hyrule Warriors: Age of Imprisonment — Official Trailer",
+      "url": "https://www.youtube.com/watch?v=vuSV9Sy28Mw"
+     }
+    ],
+    "nsuid": "70010000103459",
+    "nintendoEshopUrl": "https://www.nintendo.com/us/store/products/hyrule-warriors-age-of-imprisonment-switch-2/",
+    "nintendoOnlineRequired": true,
+    "nintendoCloudSaves": true,
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": true,
+    "nintendoPlayModes": "TV, Tabletop, Handheld",
+    "nintendoNotes": "Native or seller-classified Nintendo Switch 2 product for this import. Product account variants and costs are based on the supplied seller screenshots; platform classification follows the seller-card rule requested for this import.\n\nOffline selling price is selected within 5,000–25,000 IQD according to demand, supply, popularity, recency, perceived market value and, where relevant, supplier cost. It is not a fixed cost multiplier. Online pricing is market-based and may be higher.\n\nExtraction rules used for this file: production images are verified game media, not seller/Taobao images. Front Box Cover is retail box-front artwork; Square Card is a separate square asset; Cover Image is page/key art; 3D Texture Source is high-resolution front cover art. Banner and Gallery media are separate verified artwork/screenshots. Device Performance contains one device object only. Offline selling prices are chosen within 5,000–25,000 IQD according to demand, supply, popularity, recency, perceived value and supplier cost; online prices remain market-based and may be higher.",
+    "switch2Enhanced": false,
+    "switch2Exclusive": true,
+    "switch2Features": [
+     "Designed or seller-classified for Nintendo Switch 2"
+    ],
+    "tagline": "Fight the ancient Imprisoning War in large-scale Hyrule Warriors battles.",
+    "playTimeMain": 22,
+    "playTimeFull": 52.5,
+    "editionsList": [
+     {
+      "name": "Standard Edition",
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000103459/463c88b9defa517be9227d851857d27926c9e2ffe18337790d47a948a3af1ef5",
+      "contents": [
+       {
+        "label": "Base game"
+       },
+       {
+        "label": "Seller account access"
+       },
+       {
+        "label": "Nintendo platform version shown in this import"
+       }
+      ]
+     }
+    ],
+    "gameplayPillars": [
+     {
+      "title": "Large-Scale Combat",
+      "description": "Fight dense enemy forces using sweeping combos and character abilities.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000103459/fbe77762b0ba94c9f42514a67214b710e7f43dc659fceab58c29d780e9a89aa9"
+     },
+     {
+      "title": "Zelda Lore",
+      "description": "The campaign focuses on the ancient conflict that shaped Hyrule's later history.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000103459/8d0350383a2af078565350a1a11450738bace496269690a8d07e1faf7bc346e5"
+     },
+     {
+      "title": "Co-op Action",
+      "description": "Two-player options let players tackle battles together.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000103459/688342401661bbc6d50eb97b4e6f706184e58341e6e3e5f59775bddfc0e7638d"
+     }
+    ],
+    "worldSummary": "The story explores ancient Hyrule during the Imprisoning War, before the modern-era events depicted in Tears of the Kingdom.",
+    "storyChapters": [
+     {
+      "title": "The Imprisoning War",
+      "body": "The story explores the ancient conflict surrounding Rauru, Sonia, Zelda, and Ganondorf during the era referenced in The Legend of Zelda: Tears of the Kingdom.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000103459/688342401661bbc6d50eb97b4e6f706184e58341e6e3e5f59775bddfc0e7638d"
+     },
+     {
+      "title": "Hyrule at War",
+      "body": "Players command multiple heroes across large battlefields, defending settlements and completing objectives while the Demon King expands his forces.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000103459/5c64f5f77b2337252b379076edc705712a5beeaff08a104269a2ccf8fc9445c9"
+     },
+     {
+      "title": "The Battle for the Kingdom",
+      "body": "The campaign builds toward the decisive struggle that establishes the history later remembered as the Imprisoning War.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000103459/6c233749c2311251c1df347f5e46016b95c293d1568e1196b44d6712dcfae308"
+     }
+    ],
+    "galleryImages": [
+     {
+      "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000103459/5c64f5f77b2337252b379076edc705712a5beeaff08a104269a2ccf8fc9445c9",
+      "alt": "Verified official/publisher media for Hyrule Warriors: Age of Imprisonment — gallery image 1."
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000103459/6c233749c2311251c1df347f5e46016b95c293d1568e1196b44d6712dcfae308",
+      "alt": "Verified official/publisher media for Hyrule Warriors: Age of Imprisonment — gallery image 2."
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000103459/d436e6809b6e3cb0ae48d70d27fe405c39045a4248098439f9ac431f8f2e167c",
+      "alt": "Verified official/publisher media for Hyrule Warriors: Age of Imprisonment — gallery image 3."
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000103459/fbe77762b0ba94c9f42514a67214b710e7f43dc659fceab58c29d780e9a89aa9",
+      "alt": "Verified official/publisher media for Hyrule Warriors: Age of Imprisonment — gallery image 4."
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000103459/8d0350383a2af078565350a1a11450738bace496269690a8d07e1faf7bc346e5",
+      "alt": "Verified official/publisher media for Hyrule Warriors: Age of Imprisonment — gallery image 5."
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000103459/688342401661bbc6d50eb97b4e6f706184e58341e6e3e5f59775bddfc0e7638d",
+      "alt": "Verified official/publisher media for Hyrule Warriors: Age of Imprisonment — gallery image 6."
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000103459/098d46c06e02364741a89c96bd91a194e817905c7f45b5f08ea76346d328742c",
+      "alt": "Verified official/publisher media for Hyrule Warriors: Age of Imprisonment — gallery image 7."
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000103459/fbe77762b0ba94c9f42514a67214b710e7f43dc659fceab58c29d780e9a89aa9",
+      "alt": "Verified official/publisher media for Hyrule Warriors: Age of Imprisonment — gallery image 8."
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000103459/8d0350383a2af078565350a1a11450738bace496269690a8d07e1faf7bc346e5",
+      "alt": "Verified official/publisher media for Hyrule Warriors: Age of Imprisonment — gallery image 9."
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000103459/688342401661bbc6d50eb97b4e6f706184e58341e6e3e5f59775bddfc0e7638d",
+      "alt": "Verified official/publisher media for Hyrule Warriors: Age of Imprisonment — gallery image 10."
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cc_fill%2Cg_auto/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000103459/463c88b9defa517be9227d851857d27926c9e2ffe18337790d47a948a3af1ef5",
+      "alt": "Verified official/publisher media for Hyrule Warriors: Age of Imprisonment — gallery image 11."
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000103459/463c88b9defa517be9227d851857d27926c9e2ffe18337790d47a948a3af1ef5",
+      "alt": "Verified official/publisher media for Hyrule Warriors: Age of Imprisonment — gallery image 12."
+     }
+    ],
+    "perfResolutionDocked": "Dynamic 1280×720 to 1600×900 (technical analysis)",
+    "perfResolutionHandheld": "Dynamic 832×468 to 1152×648 (technical analysis)",
+    "perfFps": "Target 60; split-screen capped at 30",
+    "perfNotes": "Technical analysis reports a 60 fps target in single-player with dynamic resolution and a 30 fps cap in split-screen.",
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "informationStatus": "verified-analysis",
+      "handheld": {
+       "supported": true,
+       "resolution": "Dynamic 832×468 to 1152×648 (technical analysis)",
+       "outputResolution": "Dynamic 832×468 to 1152×648 (technical analysis)",
+       "fps": "Target 60; split-screen capped at 30",
+       "notes": "Technical analysis reports a 60 fps target in single-player with dynamic resolution and a 30 fps cap in split-screen."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "Dynamic 1280×720 to 1600×900 (technical analysis)",
+       "outputResolution": "Dynamic 1280×720 to 1600×900 (technical analysis)",
+       "fps": "Target 60; split-screen capped at 30",
+       "notes": "Technical analysis reports a 60 fps target in single-player with dynamic resolution and a 30 fps cap in split-screen."
+      },
+      "modes": [
+       {
+        "name": "Single-player",
+        "handheldResolution": "Dynamic 832×468 to 1152×648 (technical analysis)",
+        "handheldFps": "Target 60",
+        "tvResolution": "Dynamic 1280×720 to 1600×900 (technical analysis)",
+        "tvFps": "Target 60"
+       },
+       {
+        "name": "Two-player split-screen",
+        "tvFps": "30"
+       }
+      ],
+      "sourceName": "Nintendo Everything technical analysis",
+      "sourceUrl": "https://nintendoeverything.com/hyrule-warriors-age-of-imprisonment-frame-rate-resolution/",
+      "verifiedAt": "2026-08-24",
+      "verificationStatus": "verified",
+      "performanceNotes": "Technical analysis reports a 60 fps target in single-player with dynamic resolution and a 30 fps cap in split-screen."
+     }
+    ],
+    "downloadSizeGb": 43.525,
+    "requiredSpaceGb": 43.5,
+    "storageNotes": "Official/verified listed game download size: approximately 43.5 GB. Updates and DLC may require additional space.",
+    "languagesAudio": [
+     "English",
+     "Japanese"
+    ],
+    "languagesText": [
+     "English",
+     "Japanese",
+     "Simplified Chinese"
+    ],
+    "arabicSupport": false,
+    "mpLocalPlayers": true,
+    "mpOnlinePlayers": true,
+    "mpCoop": true,
+    "mpCompetitive": false,
+    "mpSplitScreen": true,
+    "mpLocalWireless": true,
+    "guides": [
+     {
+      "title": "Official product and gameplay information",
+      "summary": "Official Nintendo/publisher information covering features, supported modes, requirements and product-specific notices.",
+      "url": "https://www.nintendo.com/us/store/products/hyrule-warriors-age-of-imprisonment-switch-2/"
+     },
+     {
+      "title": "GameFAQs guides and FAQs search",
+      "summary": "Community guide index for walkthroughs, FAQs, collectibles, unlockables and troubleshooting. Verify platform/version when following a guide.",
+      "url": "https://gamefaqs.gamespot.com/search?game=Hyrule+Warriors%3A+Age+of+Imprisonment"
+     },
+     {
+      "title": "Deku Deals technical/product reference",
+      "summary": "Reference page used for platform, file size, play modes, critic aggregates and completion-time metadata where available.",
+      "url": "https://www.dekudeals.com/items/hyrule-warriors-age-of-imprisonment"
+     }
+    ],
+    "completionMain": 22,
+    "completionExtras": 30,
+    "completionAll": 52.5,
+    "faq": [
+     {
+      "q": "What platform is this import for?",
+      "a": "This import is classified as Nintendo Switch 2."
+     },
+     {
+      "q": "How many players are supported?",
+      "a": "Official player support varies by mode; the primary published range is 1-2 player(s). See multiplayer fields for local, wireless, and online capabilities."
+     },
+     {
+      "q": "Does this seller listing include a separate DLC account type?",
+      "a": "No. The supplied seller listing shows two variants, so only Standard Offline and Standard Online account types are created."
+     }
+    ],
+    "verdictScore": 7.9,
+    "verdictSummary": "Editorial synthesis for Hyrule Warriors: Age of Imprisonment, based on the verified feature set, platform implementation, content scope and aggregated critical reception. This score is an internal summary, not a copied external review score.",
+    "reviews": [
+     {
+      "source": "Metacritic",
+      "score": "79",
+      "quote": "Aggregated critic score for the game/platform listing.",
+      "url": "https://www.dekudeals.com/items/hyrule-warriors-age-of-imprisonment"
+     },
+     {
+      "source": "OpenCritic",
+      "score": "79",
+      "quote": "Aggregated critic score reported for the game.",
+      "url": "https://www.dekudeals.com/items/hyrule-warriors-age-of-imprisonment"
+     },
+     {
+      "source": "Metacritic User Score",
+      "score": "8.4",
+      "quote": "Aggregated user score reference.",
+      "url": "https://www.dekudeals.com/items/hyrule-warriors-age-of-imprisonment"
+     }
+    ],
+    "timeline": [
+     {
+      "date": "2025-04-02",
+      "title": "Announcement",
+      "body": "Nintendo revealed Hyrule Warriors: Age of Imprisonment for Nintendo Switch 2."
+     },
+     {
+      "date": "2025-11-06",
+      "title": "Nintendo Switch 2 release",
+      "body": "The game launched for Nintendo Switch 2."
+     },
+     {
+      "date": "2025-12-18",
+      "title": "Second free content update available",
+      "body": "Nintendo confirmed both free post-launch updates were available by December 18, 2025, including new challenges, enemies, weapons and Forbidden Difficulty."
+     }
+    ],
+    "patchNotes": [
+     {
+      "version": "1.0.2",
+      "date": "2025-11-26",
+      "body": "Added post-story challenges and quests, new Vicious enemy variants, new weapons, Pure Zonaite Steel and a Zelda/Calamo Sync Strike."
+     },
+     {
+      "version": "1.0.3",
+      "date": "2025-12-17",
+      "body": "Added Phantom Ganon, Forbidden Difficulty, additional high-difficulty content and related rewards/features."
+     }
+    ],
+    "soundtrack": [
+     {
+      "title": "Hyrule Warriors: Age of Imprisonment — official game music information",
+      "url": "https://www.nintendo.com/us/store/products/hyrule-warriors-age-of-imprisonment-switch-2/"
+     },
+     {
+      "title": "Hyrule Warriors: Age of Imprisonment — VGMdb soundtrack catalog search",
+      "url": "https://vgmdb.net/search?q=Hyrule+Warriors%3A+Age+of+Imprisonment&type=album"
+     },
+     {
+      "title": "Hyrule Warriors: Age of Imprisonment — soundtrack video search",
+      "url": "https://www.youtube.com/results?search_query=Hyrule+Warriors%3A+Age+of+Imprisonment+official+soundtrack"
+     }
+    ],
+    "seriesName": "Hyrule Warriors / The Legend of Zelda",
+    "studioName": "KOEI TECMO GAMES",
+    "studioUrl": "https://www.koeitecmo.co.jp/e/",
+    "studioLocation": "Yokohama, Japan",
+    "studioAbout": "KOEI TECMO develops the Warriors series and has collaborated with Nintendo on multiple Hyrule Warriors titles.",
+    "sources": [
+     {
+      "name": "Nintendo / publisher official product page",
+      "url": "https://www.nintendo.com/us/store/products/hyrule-warriors-age-of-imprisonment-switch-2/"
+     },
+     {
+      "name": "Deku Deals — platform, size, scores and play-time reference",
+      "url": "https://www.dekudeals.com/items/hyrule-warriors-age-of-imprisonment"
+     },
+     {
+      "name": "The Cover Project — Full Retail Wrap",
+      "url": "https://www.thecoverproject.net/view.php?game_id=20053"
+     }
+    ],
+    "fitFor": [
+     "Zelda and Hyrule Warriors fans",
+     "Players who enjoy large enemy crowds and combo combat",
+     "Two-player action fans"
+    ],
+    "notFitFor": [
+     "Players seeking traditional Zelda dungeon structure",
+     "Players who dislike musou-style combat",
+     "Players seeking turn-based gameplay"
+    ],
+    "features": [
+     "Large-scale battles in ancient Hyrule",
+     "Distinct playable character abilities",
+     "Two-player cooperative options on Nintendo Switch 2"
+    ],
+    "verdictPros": [
+     "Large-scale Warriors battles set in Zelda history",
+     "Playable characters and story tied to the Imprisoning War",
+     "Two-player local cooperative play"
+    ],
+    "verdictCons": [
+     "Musou repetition remains central to the experience",
+     "Large download size",
+     "Busy battlefields may not appeal to players seeking traditional Zelda exploration"
+    ],
+    "seriesEntries": [
+     "Hyrule Warriors: Definitive Edition",
+     "Hyrule Warriors: Age of Calamity",
+     "The Legend of Zelda: Tears of the Kingdom"
+    ],
+    "setupNeeds": [
+     "Nintendo Switch 2 system",
+     "Additional compatible controller required for local two-player play",
+     "Nintendo Switch Online may be required for supported online features"
+    ],
+    "boxContentsList": "[Circular]",
+    "image": "/api/files/products/prd_14259a3bda924632/cover-244d2043f1940abd.jpg",
+    "banner": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000103459/fbe77762b0ba94c9f42514a67214b710e7f43dc659fceab58c29d780e9a89aa9",
+    "schemaId": "",
+    "badgeEn": "وفر 40%",
+    "badgeKu": "وفر 40%",
+    "featuresEn": [
+     "Large-scale battles in ancient Hyrule",
+     "Distinct playable character abilities",
+     "Two-player cooperative options on Nintendo Switch 2"
+    ],
+    "featuresKu": [
+     "Large-scale battles in ancient Hyrule",
+     "Distinct playable character abilities",
+     "Two-player cooperative options on Nintendo Switch 2"
+    ],
+    "game_id": "gme_3ed6755e8be54e51",
+    "boxFrontUrl": "https://gamesdb-images.launchbox.gg/r2_927c4138-1d9f-4802-a264-a477a54e62a3.jpg",
+    "sales": 0,
+    "createdAt": "2026-08-27T04:36:02.708Z",
+    "created_at": "2026-08-27T04:36:02.708Z",
+    "updatedAt": "2026-08-28T23:31:45.186Z",
+    "updated_at": "2026-08-28T23:31:45.186Z",
+    "images": [],
+    "modes": [],
+    "price_usd": 69.99,
+    "nintendoGameKeyCard": false,
+    "nintendoPhysicalNeedsDownload": false,
+    "perfHdr": true,
+    "microSdRecommended": true,
+    "dlc": [
+     {
+      "name": "No standalone DLC has been announced",
+      "description": "No official standalone DLC or expansion-pass announcement is available for Age of Imprisonment at the time of this extraction."
+     }
+    ],
+    "batchImport": true,
+    "variants": "[Circular]"
+   }
+  },
+  {
+   "id": "prd_6e169cd5731f4e2b",
+   "slug": "hyrule-warriors-definitive-edition-switch",
+   "title": "Hyrule Warriors: Definitive Edition",
+   "platform": "switch1",
+   "isHidden": true,
+   "hash": "0a7c5345906ada2cebf3431f369c6484b50f75c9630bd0a9cb42e76a0cf64c2d",
+   "images": [
+    {
+     "role": "front-box",
+     "field": "cartridgeImage",
+     "url": "https://banan.to/api/files/products/prd_6e169cd5731f4e2b/front-box-04f4eb2d75b2a8c2.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 603046,
+     "width": 1167,
+     "height": 1888,
+     "thumb": "review-workdir/thumbs/batch-011/hyrule-warriors-definitive-edition-switch__front-box-0.png"
+    },
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://banan.to/api/files/products/prd_6e169cd5731f4e2b/square-card-09f69b0957252a18.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 299242,
+     "width": 1024,
+     "height": 1024,
+     "thumb": "review-workdir/thumbs/batch-011/hyrule-warriors-definitive-edition-switch__square-card-1.png"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://banan.to/api/files/products/prd_6e169cd5731f4e2b/cover-9aae86034d5f7b21.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 347544,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-011/hyrule-warriors-definitive-edition-switch__detail-cover-2.png"
+    },
+    {
+     "role": "3d-texture",
+     "field": "coverHiResImage",
+     "url": "https://banan.to/api/files/products/prd_6e169cd5731f4e2b/3d-wrap-e3058b64229e8277.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 1497732,
+     "width": 2454,
+     "height": 1888,
+     "thumb": "review-workdir/thumbs/batch-011/hyrule-warriors-definitive-edition-switch__3d-texture-3.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://banan.to/api/files/products/prd_6e169cd5731f4e2b/gallery-1-5f2bac3988986b00.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 154500,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-011/hyrule-warriors-definitive-edition-switch__gallery-4.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[1]",
+     "url": "https://banan.to/api/files/products/prd_6e169cd5731f4e2b/gallery-2-7b2723ab996f0701.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 277092,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-011/hyrule-warriors-definitive-edition-switch__gallery-5.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[2]",
+     "url": "https://banan.to/api/files/products/prd_6e169cd5731f4e2b/gallery-3-1a157d3c6a1a2578.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 180222,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-011/hyrule-warriors-definitive-edition-switch__gallery-6.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[3]",
+     "url": "https://banan.to/api/files/products/prd_6e169cd5731f4e2b/gallery-4-c59bbe12a3d361b8.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 258924,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-011/hyrule-warriors-definitive-edition-switch__gallery-7.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[4]",
+     "url": "https://banan.to/api/files/products/prd_6e169cd5731f4e2b/gallery-5-1fcf5a52af6b106a.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 275586,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-011/hyrule-warriors-definitive-edition-switch__gallery-8.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[5]",
+     "url": "https://banan.to/api/files/products/prd_6e169cd5731f4e2b/gallery-6-3ca7c6aedac7ac3f.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 206216,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-011/hyrule-warriors-definitive-edition-switch__gallery-9.png"
+    }
+   ],
+   "record": {
+    "title": "Hyrule Warriors: Definitive Edition",
+    "titleEn": "Hyrule Warriors: Definitive Edition",
+    "titleKu": "",
+    "slug": "hyrule-warriors-definitive-edition-switch",
+    "description": "Hyrule Warriors: Definitive Edition packages together the musou Zelda crossover content from previous versions into one expansive Nintendo Switch release. Players choose from a giant roster of characters drawn from across the Zelda franchise and battle through large maps, mission objectives, and mode variations. It is a content-rich action spin-off built for fans who want scale, replay value, and a celebratory crossover structure.",
+    "descriptionEn": "Hyrule Warriors: Definitive Edition packages together the musou Zelda crossover content from previous versions into one expansive Nintendo Switch release. Players choose from a giant roster of characters drawn from across the Zelda franchise and battle through large maps, mission objectives, and mode variations. It is a content-rich action spin-off built for fans who want scale, replay value, and a celebratory crossover structure.",
+    "descriptionKu": "",
+    "cartridgeImage": "/api/files/products/prd_6e169cd5731f4e2b/front-box-04f4eb2d75b2a8c2.webp",
+    "nintendoCardImage": "/api/files/products/prd_6e169cd5731f4e2b/square-card-09f69b0957252a18.webp",
+    "coverHiResImage": "/api/files/products/prd_6e169cd5731f4e2b/3d-wrap-e3058b64229e8277.webp",
+    "coverImage": "/api/files/products/prd_6e169cd5731f4e2b/cover-9aae86034d5f7b21.webp",
+    "bannerImages": [
+     ""
+    ],
+    "gallery": [],
+    "youtubeTrailer": "",
+    "releaseDate": "2018-05-18",
+    "ageRating": "ESRB T / PEGI 12",
+    "metacriticRating": 76,
+    "genres": [
+     "Action",
+     "Adventure",
+     "Musou"
+    ],
+    "platform": "switch1",
+    "size": 13.8,
+    "numberOfPlayers": "Single system (1-2)",
+    "supportedLanguages": "Japanese / British English / French / German / Italian / Spanish / Korean / Dutch / Simplified Chinese / Latin American Spanish / Canadian French / Traditional Chinese / American English",
+    "hardwareModel": "",
+    "colorEdition": "",
+    "storageCapacity": "",
+    "screenSpecs": "",
+    "batteryLife": "",
+    "boxContents": [],
+    "boxContentsText": "",
+    "warrantyCondition": "",
+    "connectivity": "",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "Global",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "",
+    "redemptionSteps": [],
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 8500,
+    "cost": 1500,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": true,
+    "displayOrder": 0,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "مشترك",
+      "description": "مشترك",
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_account",
+      "name": "خاص بك",
+      "description": "خاص بك",
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "types": [
+     {
+      "id": "offline_base",
+      "name": "مشترك — اللعبة الأساسية",
+      "optionId": "offline_account",
+      "price": 8500,
+      "cost": 1500,
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_base",
+      "name": "خاص بك — اللعبة الأساسية",
+      "optionId": "online_account",
+      "price": 21000,
+      "cost": 16500,
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "Active",
+    "kind": "account",
+    "trade_value_iqd": 10000,
+    "store_offer_bonus_iqd": 2000,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "id": "prd_6e169cd5731f4e2b",
+    "schema_version": 24,
+    "titleAr": "هايرول ووريرز: النسخة النهائية",
+    "compatibility": [
+     "Nintendo Switch",
+     "Nintendo Switch 2 compatibility: Supported – game behavior is consistent with Nintendo Switch"
+    ],
+    "edition": "Definitive Edition",
+    "developer": "Koei Tecmo Games",
+    "publisher": "Nintendo",
+    "seriesName": "The Legend of Zelda / Hyrule Warriors",
+    "metacriticUrl": "https://www.metacritic.com/game/hyrule-warriors-definitive-edition/",
+    "opencriticRating": 76,
+    "userScore": 8,
+    "price_usd": 59.99,
+    "officialUrl": "https://www.nintendo.com/us/store/products/hyrule-warriors-definitive-edition-switch/",
+    "eshopUrl": "https://www.nintendo.com/us/store/products/hyrule-warriors-definitive-edition-switch/",
+    "gameIsOffline": true,
+    "gameIsOnline": false,
+    "gameLanguageLocked": false,
+    "description_short": "The complete Hyrule Warriors package on Switch, combining musou battlefield action with a huge roster and extensive content.",
+    "description_ar": "نسخة شاملة وغنية بالمحتوى من Hyrule Warriors على سويتش، تجمع شخصيات كثيرة من سلسلة زيلدا ومعارك موسو ضخمة وكمية كبيرة من المراحل والأنماط والمحتوى.",
+    "languagesText": [
+     "Japanese / English",
+     "French / German / Italian / Spanish / Dutch",
+     "Korean / Simplified Chinese / Traditional Chinese"
+    ],
+    "languagesAudio": [
+     "Music / sound effects",
+     "Character vocalizations where applicable",
+     "No full language-selectable dub beyond the shipped release build information"
+    ],
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": true,
+    "nintendoPlayModes": "TV / Tabletop / Handheld",
+    "nintendoOnlineRequired": false,
+    "nintendoCloudSaves": true,
+    "nintendoGameKeyCard": false,
+    "nintendoPhysicalNeedsDownload": false,
+    "switch2Enhanced": false,
+    "switch2Exclusive": false,
+    "nintendoNotes": "Nintendo describes this as the complete Hyrule Warriors experience on Switch, making it the most content-rich version of the original musou crossover.",
+    "editionsList": [
+     {
+      "name": "Offline Regular",
+      "contents": [
+       {
+        "label": "Base game"
+       },
+       {
+        "label": "Offline account package"
+       },
+       {
+        "label": "Complete Hyrule Warriors package"
+       }
+      ]
+     },
+     {
+      "name": "Online Standard",
+      "contents": [
+       {
+        "label": "Base game"
+       },
+       {
+        "label": "Online account package"
+       },
+       {
+        "label": "Complete Hyrule Warriors package"
+       }
+      ]
+     }
+    ],
+    "gameplayPillars": [
+     {
+      "title": "Complete musou crossover package",
+      "description": "This release combines the broader Hyrule Warriors content set into a single large Nintendo Switch edition."
+     },
+     {
+      "title": "Huge playable roster",
+      "description": "A wide range of Zelda-series characters keeps the combat styles and progression variety high."
+     },
+     {
+      "title": "Objective-driven battlefield combat",
+      "description": "Players capture keeps, defeat officers, escort allies, and manage map flow across large battle stages."
+     },
+     {
+      "title": "Many side modes and replay hooks",
+      "description": "Adventure maps, unlockables, materials, and character growth create a large amount of optional content."
+     },
+     {
+      "title": "Fan-service celebration of Zelda history",
+      "description": "The crossover approach turns the game into a broad celebration of settings, costumes, and characters from across the series."
+     }
+    ],
+    "worldSummary": "Definitive Edition is less about one focused Zelda story and more about providing a giant musou playground packed with franchise references, character variety, and long-term completion goals.",
+    "storyChapters": [
+     {
+      "title": "Unite a crossover cast",
+      "body": "Characters from many Zelda entries converge in a musou-style conflict that pulls together a celebratory roster."
+     },
+     {
+      "title": "Battle through story chapters",
+      "body": "The main story provides structure, but the larger appeal quickly expands into side maps, unlockables, and mastery."
+     },
+     {
+      "title": "Grow your favorite warriors",
+      "body": "Leveling, weapons, badges, and materials give players reasons to specialize and keep improving characters."
+     },
+     {
+      "title": "Explore Adventure Mode depth",
+      "body": "Adventure maps extend replay value tremendously and often become the main long-term progression path."
+     },
+     {
+      "title": "Build a completionist endgame",
+      "body": "The content volume makes Definitive Edition one of the most replay-heavy Zelda spin-offs available."
+     }
+    ],
+    "features": [
+     "Definitive edition bundles enormous content",
+     "Large roster of Zelda-series warriors",
+     "Good local co-op action on a single system",
+     "High replay value for completionists",
+     "Best version of the original Hyrule Warriors concept on Switch"
+    ],
+    "perfResolutionDocked": "1080p",
+    "perfResolutionHandheld": "720p",
+    "perfFps": "60",
+    "perfHdr": false,
+    "playTimeMain": 18,
+    "completionMain": 60,
+    "completionExtras": 120,
+    "faq": [
+     {
+      "q": "Is this the complete Hyrule Warriors package?",
+      "a": "Yes. Definitive Edition is designed as the most complete Nintendo Switch version of the original Hyrule Warriors content set."
+     },
+     {
+      "q": "Does it support multiplayer?",
+      "a": "Yes. It supports local cooperative play for up to two players on a single system."
+     },
+     {
+      "q": "How does it differ from Age of Calamity?",
+      "a": "Definitive Edition is a broader crossover celebration of Zelda history, while Age of Calamity focuses specifically on the Breath of the Wild setting and characters."
+     },
+     {
+      "q": "Is the game story-focused?",
+      "a": "It has a story mode, but much of its appeal comes from Adventure Mode, unlockables, character growth, and replay-heavy side content."
+     },
+     {
+      "q": "Who is this game best for?",
+      "a": "It is ideal for players who enjoy musou action, large rosters, and long-term completion goals."
+     }
+    ],
+    "verdictScore": 7.9,
+    "verdictPros": [
+     "Huge amount of content",
+     "Great roster variety",
+     "Strong value for musou fans",
+     "Local co-op is a plus",
+     "Definitive Edition is the right version to own"
+    ],
+    "verdictCons": [
+     "Musou combat loop can feel repetitive",
+     "Story is less focused than mainline Zelda adventures",
+     "Visuals reflect its earlier cross-platform origins",
+     "Completionism can become very grind-heavy",
+     "Not all players enjoy the large amount of side-map repetition"
+    ],
+    "reviews": [
+     {
+      "source": "Metacritic",
+      "score": "76",
+      "url": "https://www.metacritic.com/game/hyrule-warriors-definitive-edition/"
+     },
+     {
+      "source": "OpenCritic",
+      "score": "76",
+      "url": "https://opencritic.com/game/6114/hyrule-warriors-definitive-edition"
+     },
+     {
+      "source": "IGN",
+      "score": "8/10",
+      "url": "https://www.ign.com/games/hyrule-warriors-definitive-edition"
+     }
+    ],
+    "timeline": [
+     {
+      "date": "2018-05-18",
+      "title": "Released on Nintendo Switch"
+     },
+     {
+      "date": "2025-06-05",
+      "title": "Backward compatible on Nintendo Switch 2 ecosystem"
+     }
+    ],
+    "patchNotes": [
+     {
+      "version": "Launch version",
+      "date": "2018-05-18"
+     },
+     {
+      "version": "Current retail build",
+      "date": "2026-08-27"
+     }
+    ],
+    "studioName": "Nintendo",
+    "studioUrl": "https://www.nintendo.com/us/store/products/hyrule-warriors-definitive-edition-switch/",
+    "studioLocation": "Japan",
+    "sources": [
+     {
+      "name": "Nintendo official product page",
+      "url": "https://www.nintendo.com/us/store/products/hyrule-warriors-definitive-edition-switch/"
+     },
+     {
+      "name": "Metacritic",
+      "url": "https://www.metacritic.com/game/hyrule-warriors-definitive-edition/"
+     },
+     {
+      "name": "OpenCritic",
+      "url": "https://opencritic.com/game/6114/hyrule-warriors-definitive-edition"
+     }
+    ],
+    "downloadSizeGb": 13.8,
+    "requiredSpaceGb": 13.8,
+    "microSdRecommended": true,
+    "storageNotes": "The recorded storage size for Hyrule Warriors: Definitive Edition is approximately 13.8 GB.",
+    "mpLocalPlayers": true,
+    "mpOnlinePlayers": false,
+    "mpCoop": true,
+    "mpCompetitive": false,
+    "mpLocalWireless": false,
+    "mpSplitScreen": true,
+    "seriesEntries": [
+     "Hyrule Warriors: Age of Calamity",
+     "Hyrule Warriors: Age of Imprisonment",
+     "The Legend of Zelda: Breath of the Wild"
+    ],
+    "dlc": [
+     {
+      "name": "No separate DLC package needed in this entry",
+      "description": "Definitive Edition is already positioned as the complete packaged release, so this extraction keeps only base-game variants."
+     }
+    ],
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "deviceModel": "Nintendo Switch",
+      "hardwareId": "nintendo-switch",
+      "informationStatus": "Available / verified",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p",
+       "resolutionDynamic": false,
+       "renderingResolution": "1280x720",
+       "outputResolution": "1280x720",
+       "fps": "60",
+       "fpsMin": "30",
+       "fpsMax": "60",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Handheld",
+       "notes": "Definitive Edition targets a high-refresh musou presentation with a 720p handheld / 1080p TV profile, though some intense scenes can reduce effective smoothness."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p",
+       "resolutionDynamic": false,
+       "renderingResolution": "1920x1080",
+       "outputResolution": "1920x1080",
+       "fps": "60",
+       "fpsMin": "30",
+       "fpsMax": "60",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "TV / Docked",
+       "notes": "Definitive Edition targets a high-refresh musou presentation with a 720p handheld / 1080p TV profile, though some intense scenes can reduce effective smoothness."
+      },
+      "modes": [
+       {
+        "name": "Primary documented mode",
+        "handheldResolution": "720p",
+        "handheldFps": "60",
+        "tvResolution": "1080p",
+        "tvFps": "60",
+        "hdr": false,
+        "vrr": false,
+        "notes": "Definitive Edition targets a high-refresh musou presentation with a 720p handheld / 1080p TV profile, though some intense scenes can reduce effective smoothness."
+       }
+      ],
+      "upscaling": "Game / system-specific scaling where applicable",
+      "rayTracing": false,
+      "rayTracingMode": "Not Supported",
+      "loadingTime": "Scene-dependent; no single universal loading time",
+      "loadingNotes": "Loading time varies by scene, save progress, storage state, and whether the software is running in its standard build or an enhanced edition.",
+      "gameVersion": "Current retail build",
+      "patchVersion": "Current available update",
+      "testedDate": "2026-08-27",
+      "sourceName": "Nintendo official product page",
+      "sourceUrl": "https://www.nintendo.com/us/store/products/hyrule-warriors-definitive-edition-switch/",
+      "performanceNotes": "Definitive Edition targets a high-refresh musou presentation with a 720p handheld / 1080p TV profile, though some intense scenes can reduce effective smoothness."
+     },
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "hardwareId": "nintendo-switch-2",
+      "informationStatus": "Available / verified",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p",
+       "resolutionDynamic": false,
+       "renderingResolution": "1280x720",
+       "outputResolution": "1280x720",
+       "fps": "60",
+       "fpsMin": "60",
+       "fpsMax": "60",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Handheld",
+       "notes": "Nintendo lists the title as supported on Nintendo Switch 2. This extraction records a compatibility profile consistent with the original release."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p",
+       "resolutionDynamic": false,
+       "renderingResolution": "1920x1080",
+       "outputResolution": "1920x1080",
+       "fps": "60",
+       "fpsMin": "60",
+       "fpsMax": "60",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "TV / Docked",
+       "notes": "Nintendo lists the title as supported on Nintendo Switch 2. This extraction records a compatibility profile consistent with the original release."
+      },
+      "modes": [
+       {
+        "name": "Primary documented mode",
+        "handheldResolution": "720p",
+        "handheldFps": "60",
+        "tvResolution": "1080p",
+        "tvFps": "60",
+        "hdr": false,
+        "vrr": false,
+        "notes": "Nintendo lists the title as supported on Nintendo Switch 2. This extraction records a compatibility profile consistent with the original release."
+       }
+      ],
+      "upscaling": "Game / system-specific scaling where applicable",
+      "rayTracing": false,
+      "rayTracingMode": "Not Supported",
+      "loadingTime": "Scene-dependent; no single universal loading time",
+      "loadingNotes": "Loading time varies by scene, save progress, storage state, and whether the software is running in its standard build or an enhanced edition.",
+      "gameVersion": "Current retail build",
+      "patchVersion": "Current available update",
+      "testedDate": "2026-08-27",
+      "sourceName": "Nintendo official product page / compatibility context",
+      "sourceUrl": "https://www.nintendo.com/us/store/products/hyrule-warriors-definitive-edition-switch/",
+      "performanceNotes": "Nintendo lists the title as supported on Nintendo Switch 2. This extraction records a compatibility profile consistent with the original release."
+     }
+    ],
+    "boxContentsList": [],
+    "image": "",
+    "banner": "",
+    "schemaId": "",
+    "batchImport": true,
+    "galleryImages": [
+     {
+      "url": "/api/files/products/prd_6e169cd5731f4e2b/gallery-1-5f2bac3988986b00.webp",
+      "alt": "Hyrule Warriors: Definitive Edition screenshot 1"
+     },
+     {
+      "url": "/api/files/products/prd_6e169cd5731f4e2b/gallery-2-7b2723ab996f0701.webp",
+      "alt": "Hyrule Warriors: Definitive Edition screenshot 2"
+     },
+     {
+      "url": "/api/files/products/prd_6e169cd5731f4e2b/gallery-3-1a157d3c6a1a2578.webp",
+      "alt": "Hyrule Warriors: Definitive Edition screenshot 3"
+     },
+     {
+      "url": "/api/files/products/prd_6e169cd5731f4e2b/gallery-4-c59bbe12a3d361b8.webp",
+      "alt": "Hyrule Warriors: Definitive Edition screenshot 4"
+     },
+     {
+      "url": "/api/files/products/prd_6e169cd5731f4e2b/gallery-5-1fcf5a52af6b106a.webp",
+      "alt": "Hyrule Warriors: Definitive Edition screenshot 5"
+     },
+     {
+      "url": "/api/files/products/prd_6e169cd5731f4e2b/gallery-6-3ca7c6aedac7ac3f.webp",
+      "alt": "Hyrule Warriors: Definitive Edition screenshot 6"
+     }
+    ],
+    "createdAt": "2026-08-28T18:43:44.926Z",
+    "updatedAt": "2026-08-28T18:43:44.926Z"
+   }
+  },
+  {
+   "id": "prd_b9ca0595530f4d17",
+   "slug": "it-takes-two",
+   "title": "It Takes Two",
+   "platform": "switch1",
+   "isHidden": false,
+   "hash": "d4f26a5feedf4b4505a51ebd3c8d9b2e90df2eeaf34bdbdfdfeb66c1a92ce129",
+   "images": [
+    {
+     "role": "front-box",
+     "field": "cartridgeImage",
+     "url": "https://images.launchbox-app.com//37c4f187-49f1-4568-b984-b8f9ca43efbf.png",
+     "status": 200,
+     "contentType": "image/png",
+     "bytes": 132873,
+     "width": 173,
+     "height": 281,
+     "thumb": "review-workdir/thumbs/batch-011/it-takes-two__front-box-0.png"
+    },
+    {
+     "role": "front-box",
+     "field": "box_front_url",
+     "url": "https://images.launchbox-app.com//37c4f187-49f1-4568-b984-b8f9ca43efbf.png",
+     "status": 200,
+     "contentType": "image/png",
+     "bytes": 132873,
+     "width": 173,
+     "height": 281,
+     "thumb": "review-workdir/thumbs/batch-011/it-takes-two__front-box-1.png"
+    },
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://assets.nintendo.com/image/upload/ar_1%3A1%2Cc_fill%2Cg_auto/f_auto/q_auto/dpr_1.5/store/software/switch/70070000014924/e7200824041808289d4a65589ed368f7e08dc2e538a5fd7ee9f8d39e58015c24",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 136644,
+     "width": 1080,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-011/it-takes-two__square-card-2.png"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://images.launchbox-app.com//22562538-da20-4589-ad20-c91c4e570c19.png",
+     "status": 200,
+     "contentType": "image/png",
+     "bytes": 223854,
+     "width": 400,
+     "height": 225,
+     "thumb": "review-workdir/thumbs/batch-011/it-takes-two__detail-cover-3.png"
+    },
+    {
+     "role": "listing",
+     "field": "image",
+     "url": "https://images.launchbox-app.com//22562538-da20-4589-ad20-c91c4e570c19.png",
+     "status": 200,
+     "contentType": "image/png",
+     "bytes": 223854,
+     "width": 400,
+     "height": 225,
+     "thumb": "review-workdir/thumbs/batch-011/it-takes-two__listing-4.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[0]",
+     "url": "https://images.launchbox-app.com//303addc0-2646-434a-9475-f5a980523441.png",
+     "status": 200,
+     "contentType": "image/png",
+     "bytes": 219719,
+     "width": 400,
+     "height": 225,
+     "thumb": "review-workdir/thumbs/batch-011/it-takes-two__banner-5.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[1]",
+     "url": "https://images.launchbox-app.com//ff5ae30d-7bf6-4230-8819-1ed66fea4e6a.png",
+     "status": 200,
+     "contentType": "image/png",
+     "bytes": 256620,
+     "width": 400,
+     "height": 225,
+     "thumb": "review-workdir/thumbs/batch-011/it-takes-two__banner-6.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[2]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000014924/c942c07a0e6500f8a5354e7ba6300cb8962fe83888b41cc71690fa772012267b",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 214161,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-011/it-takes-two__banner-7.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[3]",
+     "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch/70010000049281/7d4781f639c29fab428d9dec8ea53297838294db4efb847b51b92f04e2987711",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 80551,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-011/it-takes-two__banner-8.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch/70010000049281/7d4781f639c29fab428d9dec8ea53297838294db4efb847b51b92f04e2987711",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 80551,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-011/it-takes-two__gallery-9.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[1]",
+     "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch/70010000049281/4fba2aed43196cce5c459bffcede7869d2be7a48b0bb237907a1f52dc000580d",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 107975,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-011/it-takes-two__gallery-10.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[2]",
+     "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch/70010000049281/a980423f43a1d37f7338a7f1c723583bcb9f41af2aa02aadb918c793f8d6f75c",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 111849,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-011/it-takes-two__gallery-11.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[3]",
+     "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch/70010000049281/219bf5ca843b0087fc6f0937536157113c8924cafc0dfe72e6b614ba6b3d34fb",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 113254,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-011/it-takes-two__gallery-12.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[4]",
+     "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch/70010000049281/17c1edf90923ecbb824fc3deb8cef390bd3eefcb6597bc222805256f51e1c2ce",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 111752,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-011/it-takes-two__gallery-13.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[5]",
+     "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch/70010000049281/c942c07a0e6500f8a5354e7ba6300cb8962fe83888b41cc71690fa772012267b",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 214161,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-011/it-takes-two__gallery-14.png"
+    }
+   ],
+   "record": {
+    "title": "It Takes Two",
+    "titleEn": "It Takes Two",
+    "titleKu": "It Takes Two",
+    "slug": "it-takes-two",
+    "description": "It Takes Two is a co-op-only action-adventure platformer by Hazelight Studios. Two players control Cody and May, a couple transformed into dolls, and must cooperate through highly varied levels where new mechanics appear constantly. On Nintendo Switch it supports same-system co-op, local wireless, and online play, with Friend's Pass allowing a friend to join without owning the full game.",
+    "descriptionEn": "It Takes Two is a co-op-only action-adventure platformer by Hazelight Studios. Two players control Cody and May, a couple transformed into dolls, and must cooperate through highly varied levels where new mechanics appear constantly. On Nintendo Switch it supports same-system co-op, local wireless, and online play, with Friend's Pass allowing a friend to join without owning the full game.",
+    "descriptionKu": "It Takes Two is a co-op-only action-adventure platformer by Hazelight Studios. Two players control Cody and May, a couple transformed into dolls, and must cooperate through highly varied levels where new mechanics appear constantly. On Nintendo Switch it supports same-system co-op, local wireless, and online play, with Friend's Pass allowing a friend to join without owning the full game.",
+    "cartridgeImage": "https://images.launchbox-app.com//37c4f187-49f1-4568-b984-b8f9ca43efbf.png",
+    "nintendoCardImage": "https://assets.nintendo.com/image/upload/ar_1%3A1%2Cc_fill%2Cg_auto/f_auto/q_auto/dpr_1.5/store/software/switch/70070000014924/e7200824041808289d4a65589ed368f7e08dc2e538a5fd7ee9f8d39e58015c24",
+    "coverHiResImage": "",
+    "coverImage": "https://images.launchbox-app.com//22562538-da20-4589-ad20-c91c4e570c19.png",
+    "bannerImages": [
+     "https://images.launchbox-app.com//303addc0-2646-434a-9475-f5a980523441.png",
+     "https://images.launchbox-app.com//ff5ae30d-7bf6-4230-8819-1ed66fea4e6a.png",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000014924/c942c07a0e6500f8a5354e7ba6300cb8962fe83888b41cc71690fa772012267b",
+     "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch/70010000049281/7d4781f639c29fab428d9dec8ea53297838294db4efb847b51b92f04e2987711",
+     "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch/70010000049281/4fba2aed43196cce5c459bffcede7869d2be7a48b0bb237907a1f52dc000580d",
+     "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch/70010000049281/a980423f43a1d37f7338a7f1c723583bcb9f41af2aa02aadb918c793f8d6f75c",
+     "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch/70010000049281/219bf5ca843b0087fc6f0937536157113c8924cafc0dfe72e6b614ba6b3d34fb",
+     "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch/70010000049281/17c1edf90923ecbb824fc3deb8cef390bd3eefcb6597bc222805256f51e1c2ce"
+    ],
+    "gallery": [],
+    "youtubeTrailer": "https://www.youtube.com/watch?v=F7MpUspVRwM",
+    "releaseDate": "2022-11-04",
+    "ageRating": "ESRB: T — Animated Blood, Comic Mischief, Fantasy Violence, Language; Users Interact",
+    "metacriticRating": 82,
+    "genres": [
+     "Action",
+     "Adventure",
+     "Platformer"
+    ],
+    "platform": "switch1",
+    "size": 9.473,
+    "numberOfPlayers": "2",
+    "supportedLanguages": "Japanese, French, German, Italian, Korean, Russian, Simplified Chinese, Latin American Spanish, Brazilian Portuguese, Traditional Chinese, American English",
+    "hardwareModel": "",
+    "colorEdition": "",
+    "storageCapacity": "",
+    "screenSpecs": "",
+    "batteryLife": "",
+    "boxContents": [],
+    "boxContentsText": "",
+    "warrantyCondition": "",
+    "connectivity": "",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "Global",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "",
+    "redemptionSteps": [],
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 8000,
+    "cost": 1500,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": false,
+    "displayOrder": 0,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "Offline Account",
+      "description": "Offline account option",
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_account",
+      "name": "Online Account",
+      "description": "Online account option",
+      "isInfiniteStock": true
+     }
+    ],
+    "types": [
+     {
+      "id": "standard_offline",
+      "name": "Standard Edition",
+      "optionId": "offline_account",
+      "price": "8000",
+      "cost": 1500,
+      "description": "Standard game access — Offline Account.",
+      "isInfiniteStock": true
+     },
+     {
+      "id": "standard_online",
+      "name": "Standard Edition",
+      "optionId": "online_account",
+      "price": "28000",
+      "cost": 14250,
+      "description": "Standard game access — Online Account.",
+      "isInfiniteStock": true
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "active",
+    "kind": "account",
+    "trade_value_iqd": 30000,
+    "store_offer_bonus_iqd": 5000,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "id": "prd_b9ca0595530f4d17",
+    "schema_version": 20,
+    "titleAr": "إت تيكس تو",
+    "compatibility": [
+     "Nintendo Switch",
+     "Nintendo Switch 2 (backward compatible)"
+    ],
+    "edition": "Standard",
+    "developer": "Hazelight Studios",
+    "publisher": "Electronic Arts",
+    "opencriticRating": 88,
+    "userScore": 8.8,
+    "officialUrl": "https://www.nintendo.com/us/store/products/it-takes-two-switch/",
+    "eshopUrl": "https://www.nintendo.com/us/store/products/it-takes-two-switch/",
+    "gameIsOffline": true,
+    "gameIsOnline": true,
+    "gameLanguageLocked": false,
+    "description_short": "A co-op-only platform adventure in which Cody and May must work together through constantly changing mechanics and imaginative levels.",
+    "description_ar": "It Takes Two هي لعبة مغامرات ومنصات مصممة بالكامل للعب التعاوني من Hazelight Studios. يتحكم لاعبان بكودي وماي بعد تحولهما إلى دميتين، ويجب عليهما التعاون عبر مراحل متنوعة تتغير فيها الآليات باستمرار. على Nintendo Switch تدعم اللعب على جهاز واحد والاتصال اللاسلكي المحلي واللعب عبر الإنترنت، كما تسمح Friend's Pass لصديق بالانضمام دون امتلاك النسخة الكاملة.",
+    "box_front_url": "https://images.launchbox-app.com//37c4f187-49f1-4568-b984-b8f9ca43efbf.png",
+    "videos": [
+     {
+      "title": "It Takes Two — Official Trailer",
+      "url": "https://www.youtube.com/watch?v=F7MpUspVRwM"
+     }
+    ],
+    "nsuid": "70070000014924",
+    "nintendoEshopUrl": "https://www.nintendo.com/us/store/products/it-takes-two-switch/",
+    "nintendoOnlineRequired": true,
+    "nintendoCloudSaves": true,
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": true,
+    "nintendoPlayModes": "TV, Tabletop, Handheld",
+    "nintendoNotes": "Nintendo Switch product; compatible with Nintendo Switch 2 where Nintendo lists backward compatibility. Product account variants and costs are based on the supplied seller screenshots; platform classification follows the seller-card rule requested for this import.\n\nOffline selling price is selected within 5,000–25,000 IQD according to demand, supply, popularity, recency, perceived market value and, where relevant, supplier cost. It is not a fixed cost multiplier. Online pricing is market-based and may be higher.\n\nExtraction rules used for this file: production images are verified game media, not seller/Taobao images. Front Box Cover is retail box-front artwork; Square Card is a separate square asset; Cover Image is page/key art; 3D Texture Source is high-resolution front cover art. Banner and Gallery media are separate verified artwork/screenshots. Device Performance contains one device object only. Offline selling prices are chosen within 5,000–25,000 IQD according to demand, supply, popularity, recency, perceived value and supplier cost; online prices remain market-based and may be higher.",
+    "switch2Enhanced": false,
+    "switch2Exclusive": false,
+    "tagline": "A genre-bending adventure designed from the ground up for two players.",
+    "playTimeMain": 13,
+    "playTimeFull": 16,
+    "editionsList": [
+     {
+      "name": "Standard Edition",
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000014924/e7200824041808289d4a65589ed368f7e08dc2e538a5fd7ee9f8d39e58015c24",
+      "contents": [
+       {
+        "label": "Base game"
+       },
+       {
+        "label": "Seller account access"
+       },
+       {
+        "label": "Nintendo platform version shown in this import"
+       }
+      ]
+     }
+    ],
+    "gameplayPillars": [
+     {
+      "title": "Co-op Mechanics",
+      "description": "Every major challenge is built around two complementary player roles.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000014924/219bf5ca843b0087fc6f0937536157113c8924cafc0dfe72e6b614ba6b3d34fb"
+     },
+     {
+      "title": "Constant Variety",
+      "description": "Levels introduce new tools, movement systems, minigames, and puzzle concepts.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000014924/17c1edf90923ecbb824fc3deb8cef390bd3eefcb6597bc222805256f51e1c2ce"
+     },
+     {
+      "title": "Shared Story",
+      "description": "Gameplay and narrative focus on Cody and May learning to work together.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000014924/c942c07a0e6500f8a5354e7ba6300cb8962fe83888b41cc71690fa772012267b"
+     }
+    ],
+    "worldSummary": "Cody and May are transformed into dolls and pushed through a surreal journey shaped by their home, memories, and relationship.",
+    "storyChapters": [
+     {
+      "title": "A Family in Crisis",
+      "body": "Cody and May plan to separate, but their daughter Rose wishes they could stay together. The parents are magically transformed into small handmade dolls.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000014924/c942c07a0e6500f8a5354e7ba6300cb8962fe83888b41cc71690fa772012267b"
+     },
+     {
+      "title": "Forced to Cooperate",
+      "body": "Guided by Dr. Hakim, Cody and May must work together through a series of surreal environments where each area gives them complementary abilities.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch/70010000049281/7d4781f639c29fab428d9dec8ea53297838294db4efb847b51b92f04e2987711"
+     },
+     {
+      "title": "Rebuilding the Bond",
+      "body": "Their adventure forces them to confront resentment, forgotten passions, and the reasons their relationship broke down as they try to return to their daughter.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch/70010000049281/4fba2aed43196cce5c459bffcede7869d2be7a48b0bb237907a1f52dc000580d"
+     }
+    ],
+    "galleryImages": [
+     {
+      "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch/70010000049281/7d4781f639c29fab428d9dec8ea53297838294db4efb847b51b92f04e2987711",
+      "alt": "Verified official/publisher media for It Takes Two — gallery image 1."
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch/70010000049281/4fba2aed43196cce5c459bffcede7869d2be7a48b0bb237907a1f52dc000580d",
+      "alt": "Verified official/publisher media for It Takes Two — gallery image 2."
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch/70010000049281/a980423f43a1d37f7338a7f1c723583bcb9f41af2aa02aadb918c793f8d6f75c",
+      "alt": "Verified official/publisher media for It Takes Two — gallery image 3."
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch/70010000049281/219bf5ca843b0087fc6f0937536157113c8924cafc0dfe72e6b614ba6b3d34fb",
+      "alt": "Verified official/publisher media for It Takes Two — gallery image 4."
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch/70010000049281/17c1edf90923ecbb824fc3deb8cef390bd3eefcb6597bc222805256f51e1c2ce",
+      "alt": "Verified official/publisher media for It Takes Two — gallery image 5."
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch/70010000049281/c942c07a0e6500f8a5354e7ba6300cb8962fe83888b41cc71690fa772012267b",
+      "alt": "Verified official/publisher media for It Takes Two — gallery image 6."
+     },
+     {
+      "url": "https://images.launchbox-app.com//303addc0-2646-434a-9475-f5a980523441.png",
+      "alt": "Verified official/publisher media for It Takes Two — gallery image 7."
+     },
+     {
+      "url": "https://images.launchbox-app.com//ff5ae30d-7bf6-4230-8819-1ed66fea4e6a.png",
+      "alt": "Verified official/publisher media for It Takes Two — gallery image 8."
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000014924/c942c07a0e6500f8a5354e7ba6300cb8962fe83888b41cc71690fa772012267b",
+      "alt": "Verified official/publisher media for It Takes Two — gallery image 9."
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000014924/219bf5ca843b0087fc6f0937536157113c8924cafc0dfe72e6b614ba6b3d34fb",
+      "alt": "Verified official/publisher media for It Takes Two — gallery image 10."
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000014924/17c1edf90923ecbb824fc3deb8cef390bd3eefcb6597bc222805256f51e1c2ce",
+      "alt": "Verified official/publisher media for It Takes Two — gallery image 11."
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cc_fill%2Cg_auto/f_auto/q_auto/dpr_1.5/store/software/switch/70070000014924/e7200824041808289d4a65589ed368f7e08dc2e538a5fd7ee9f8d39e58015c24",
+      "alt": "Verified official/publisher media for It Takes Two — gallery image 12."
+     }
+    ],
+    "perfResolutionDocked": "1920×1080 output",
+    "perfResolutionHandheld": "1280×720 output",
+    "perfFps": "30",
+    "perfNotes": "The Switch port targets 30 fps with 1080p output in TV mode and 720p output in handheld mode.",
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "informationStatus": "backward-compatible-verified",
+      "handheld": {
+       "supported": true,
+       "resolution": "1280×720 output",
+       "outputResolution": "1280×720",
+       "fps": "30",
+       "notes": "Nintendo lists the game as supported on Nintendo Switch 2 with behavior consistent with Nintendo Switch. The Switch port targets 30 fps with 720p handheld output and 1080p TV output; no Switch 2-specific enhancement is claimed here."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1920×1080 output",
+       "outputResolution": "1920×1080",
+       "fps": "30",
+       "notes": "Nintendo lists the game as supported on Nintendo Switch 2 with behavior consistent with Nintendo Switch. The Switch port targets 30 fps with 720p handheld output and 1080p TV output; no Switch 2-specific enhancement is claimed here."
+      },
+      "sourceName": "VentureBeat / Turn Me Up Games interview",
+      "sourceUrl": "https://venturebeat.com/business/it-takes-two-porting-2021s-game-of-the-year-to-switch",
+      "verifiedAt": "2026-08-24",
+      "verificationStatus": "verified",
+      "performanceNotes": "Nintendo lists the game as supported on Nintendo Switch 2 with behavior consistent with Nintendo Switch. The Switch port targets 30 fps with 720p handheld output and 1080p TV output; no Switch 2-specific enhancement is claimed here."
+     }
+    ],
+    "downloadSizeGb": 9.473,
+    "requiredSpaceGb": 12.1,
+    "storageNotes": "Official/verified listed game download size: approximately 12.1 GB. Updates and DLC may require additional space.",
+    "languagesAudio": [
+     "English"
+    ],
+    "languagesText": [
+     "American English",
+     "English",
+     "Japanese"
+    ],
+    "arabicSupport": false,
+    "mpLocalPlayers": true,
+    "mpOnlinePlayers": true,
+    "mpCoop": true,
+    "mpCompetitive": false,
+    "mpSplitScreen": true,
+    "mpLocalWireless": true,
+    "guides": [
+     {
+      "title": "Official product and gameplay information",
+      "summary": "Official Nintendo/publisher information covering features, supported modes, requirements and product-specific notices.",
+      "url": "https://www.nintendo.com/us/store/products/it-takes-two-switch/"
+     },
+     {
+      "title": "GameFAQs guides and FAQs search",
+      "summary": "Community guide index for walkthroughs, FAQs, collectibles, unlockables and troubleshooting. Verify platform/version when following a guide.",
+      "url": "https://gamefaqs.gamespot.com/search?game=It+Takes+Two"
+     },
+     {
+      "title": "Deku Deals technical/product reference",
+      "summary": "Reference page used for platform, file size, play modes, critic aggregates and completion-time metadata where available.",
+      "url": "https://www.dekudeals.com/items/it-takes-two"
+     }
+    ],
+    "completionMain": 13,
+    "completionExtras": 14,
+    "completionAll": 16,
+    "faq": [
+     {
+      "q": "What platform is this import for?",
+      "a": "This import is classified as Nintendo Switch."
+     },
+     {
+      "q": "How many players are supported?",
+      "a": "Official player support varies by mode; the primary published range is 2 player(s). See multiplayer fields for local, wireless, and online capabilities."
+     },
+     {
+      "q": "Does this seller listing include a separate DLC account type?",
+      "a": "No. The supplied seller listing shows two variants, so only Standard Offline and Standard Online account types are created."
+     }
+    ],
+    "verdictScore": 8.5,
+    "verdictSummary": "Editorial synthesis for It Takes Two, based on the verified feature set, platform implementation, content scope and aggregated critical reception. This score is an internal summary, not a copied external review score.",
+    "reviews": [
+     {
+      "source": "Metacritic",
+      "score": "82",
+      "quote": "Aggregated critic score for the game/platform listing.",
+      "url": "https://www.dekudeals.com/items/it-takes-two"
+     },
+     {
+      "source": "OpenCritic",
+      "score": "88",
+      "quote": "Aggregated critic score reported for the game.",
+      "url": "https://www.dekudeals.com/items/it-takes-two"
+     },
+     {
+      "source": "Metacritic User Score",
+      "score": "8.8",
+      "quote": "Aggregated user score reference.",
+      "url": "https://www.dekudeals.com/items/it-takes-two"
+     }
+    ],
+    "timeline": [
+     {
+      "date": "2021-03-26",
+      "title": "Original release",
+      "body": "It Takes Two launched on other platforms."
+     },
+     {
+      "date": "2021-12-09",
+      "title": "Game of the Year recognition",
+      "body": "The game won Game of the Year at The Game Awards 2021."
+     },
+     {
+      "date": "2022-11-04",
+      "title": "Nintendo Switch release",
+      "body": "The Nintendo Switch port launched with local and online co-op support."
+     }
+    ],
+    "patchNotes": [
+     {
+      "version": "Switch launch build",
+      "date": "2022-11-04",
+      "body": "Nintendo Switch version released with split-screen, local wireless, online play and Friend’s Pass support."
+     }
+    ],
+    "soundtrack": [
+     {
+      "title": "It Takes Two — Original Soundtrack",
+      "url": "https://store.steampowered.com/app/4110940/It_Takes_Two__Original_Soundtrack/?l=english"
+     },
+     {
+      "title": "It Takes Two — VGMdb soundtrack catalog search",
+      "url": "https://vgmdb.net/search?q=It+Takes+Two&type=album"
+     },
+     {
+      "title": "It Takes Two — soundtrack video search",
+      "url": "https://www.youtube.com/results?search_query=It+Takes+Two+official+soundtrack"
+     }
+    ],
+    "seriesName": "It Takes Two",
+    "studioName": "Hazelight Studios",
+    "studioUrl": "https://www.hazelight.se/",
+    "studioLocation": "Stockholm, Sweden",
+    "studioAbout": "Hazelight Studios is a Swedish developer focused on cooperative narrative games.",
+    "sources": [
+     {
+      "name": "Nintendo / publisher official product page",
+      "url": "https://www.nintendo.com/us/store/products/it-takes-two-switch/"
+     },
+     {
+      "name": "Deku Deals — platform, size, scores and play-time reference",
+      "url": "https://www.dekudeals.com/items/it-takes-two"
+     },
+     {
+      "name": "The Cover Project — Full Retail Cover page",
+      "url": "https://www.thecoverproject.net/view.php?game_id=18292"
+     }
+    ],
+    "fitFor": [
+     "Two players looking for a full co-op campaign",
+     "Couples, friends, or family who enjoy teamwork",
+     "Players who like frequent gameplay variety"
+    ],
+    "notFitFor": [
+     "Solo-only players",
+     "Players who dislike split-screen or co-op dependency",
+     "Players seeking competitive multiplayer"
+    ],
+    "features": [
+     "Mandatory two-player cooperative design",
+     "Friend's Pass support",
+     "Same-system, local wireless, and online co-op"
+    ],
+    "verdictPros": [
+     "Inventive co-op mechanics that constantly change",
+     "Strong split-screen and Friend’s Pass design",
+     "Memorable environments and set pieces"
+    ],
+    "verdictCons": [
+     "Requires exactly two players",
+     "Some story beats may divide players",
+     "No traditional single-player mode"
+    ],
+    "seriesEntries": [
+     "It Takes Two",
+     "Split Fiction"
+    ],
+    "setupNeeds": [
+     "Two players are required",
+     "Two compatible controllers for same-system play",
+     "Nintendo Switch Online membership required for online play"
+    ],
+    "boxContentsList": "[Circular]",
+    "image": "https://images.launchbox-app.com//22562538-da20-4589-ad20-c91c4e570c19.png",
+    "banner": "https://images.launchbox-app.com//303addc0-2646-434a-9475-f5a980523441.png",
+    "schemaId": "",
+    "badgeEn": "وفر 40%",
+    "badgeKu": "وفر 40%",
+    "featuresEn": [
+     "Mandatory two-player cooperative design",
+     "Friend's Pass support",
+     "Same-system, local wireless, and online co-op"
+    ],
+    "featuresKu": [
+     "Mandatory two-player cooperative design",
+     "Friend's Pass support",
+     "Same-system, local wireless, and online co-op"
+    ]
+   }
+  }
+ ]
+}

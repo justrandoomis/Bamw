@@ -1,0 +1,51 @@
+{
+ "batch": "011",
+ "apply": false,
+ "games": [
+  {
+   "id": "prd_4966d6abd0da4509",
+   "slug": "hollow-knight-switch-1",
+   "baseHash": "48b84a2db17431254cb6f4498c96916db5d6587f030e7015608f43b3ef50fe43",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  },
+  {
+   "id": "prd_b6c32956d9c24d99",
+   "slug": "hyrule-warriors-age-of-calamity-switch",
+   "baseHash": "682467ff3a65b07034ceb2b8694ff85f9884a43e787c3ccd67cace505db19bef",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  },
+  {
+   "id": "prd_14259a3bda924632",
+   "slug": "hyrule-warriors-age-of-imprisonment",
+   "baseHash": "b82db8e397b3c6167ccff9b6a30e28aef33fdb0693a2b47a99f6d1ae356e0c81",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  },
+  {
+   "id": "prd_6e169cd5731f4e2b",
+   "slug": "hyrule-warriors-definitive-edition-switch",
+   "baseHash": "0a7c5345906ada2cebf3431f369c6484b50f75c9630bd0a9cb42e76a0cf64c2d",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  },
+  {
+   "id": "prd_b9ca0595530f4d17",
+   "slug": "it-takes-two",
+   "baseHash": "d4f26a5feedf4b4505a51ebd3c8d9b2e90df2eeaf34bdbdfdfeb66c1a92ce129",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  }
+ ]
+}

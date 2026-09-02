@@ -1,0 +1,468 @@
+{
+ "id": "prd_ebcb11cda2854251",
+ "title": "Hollow Knight: Silksong",
+ "titleEn": "Hollow Knight: Silksong",
+ "titleKu": "Hollow Knight: Silksong",
+ "slug": "hollow-knight-silksong-switch-2",
+ "description": "Hollow Knight: Silksong follows Hornet, princess-protector of Hallownest, after she is captured and taken to the unfamiliar kingdom of Pharloom. Rather than descending through a ruined realm, Hornet's pilgrimage pushes upward toward the kingdom's shining citadel. Her movement is faster and more acrobatic than the Knight's, with diagonal attacks, mantling, sprinting and silk-powered abilities. Tools can be crafted and equipped through crest systems, while quests, merchants and settlements give the world a more explicit social structure. Team Cherry advertises more than 200 enemies and more than 40 bosses, plus a Steel Soul challenge mode and a full orchestral score by Christopher Larkin.",
+ "descriptionEn": "Hollow Knight: Silksong follows Hornet, princess-protector of Hallownest, after she is captured and taken to the unfamiliar kingdom of Pharloom. Rather than descending through a ruined realm, Hornet's pilgrimage pushes upward toward the kingdom's shining citadel. Her movement is faster and more acrobatic than the Knight's, with diagonal attacks, mantling, sprinting and silk-powered abilities. Tools can be crafted and equipped through crest systems, while quests, merchants and settlements give the world a more explicit social structure. Team Cherry advertises more than 200 enemies and more than 40 bosses, plus a Steel Soul challenge mode and a full orchestral score by Christopher Larkin.",
+ "descriptionKu": "Hollow Knight: Silksong follows Hornet, princess-protector of Hallownest, after she is captured and taken to the unfamiliar kingdom of Pharloom. Rather than descending through a ruined realm, Hornet's pilgrimage pushes upward toward the kingdom's shining citadel. Her movement is faster and more acrobatic than the Knight's, with diagonal attacks, mantling, sprinting and silk-powered abilities. Tools can be crafted and equipped through crest systems, while quests, merchants and settlements give the world a more explicit social structure. Team Cherry advertises more than 200 enemies and more than 40 bosses, plus a Steel Soul challenge mode and a full orchestral score by Christopher Larkin.",
+ "cartridgeImage": "/api/files/products/prd_ebcb11cda2854251/cartridgeImage-d4c1c7665b49312f.webp",
+ "nintendoCardImage": "/api/files/products/prd_ebcb11cda2854251/nintendoCardImage-8001614a8a13f223.webp",
+ "coverHiResImage": "/api/files/products/prd_ebcb11cda2854251/3d-texture-3e988f6f11c01085.webp",
+ "coverImage": "/api/files/products/prd_ebcb11cda2854251/coverImage-851b30b4bda9a7ca.webp",
+ "bannerImages": [
+  "/api/files/products/prd_ebcb11cda2854251/bannerImages-dccdfc1e748e9264.webp",
+  "/api/files/products/prd_ebcb11cda2854251/bannerImages-4470965f0226372f.webp",
+  "/api/files/products/prd_ebcb11cda2854251/bannerImages-61f291f495566d0f.webp"
+ ],
+ "gallery": [],
+ "youtubeTrailer": "",
+ "releaseDate": "2025-09-04",
+ "ageRating": "ESRB E10+ – Animated Blood, Fantasy Violence, Mild Language",
+ "metacriticRating": 94,
+ "genres": [
+  "Action",
+  "Metroidvania",
+  "Platformer"
+ ],
+ "platform": "switch2",
+ "size": 4.1,
+ "numberOfPlayers": "1",
+ "supportedLanguages": "Japanese, French, German, Italian, Spanish, Korean, Russian, Simplified Chinese, Brazilian Portuguese, American English",
+ "hardwareModel": "",
+ "colorEdition": "",
+ "storageCapacity": "",
+ "screenSpecs": "",
+ "batteryLife": "",
+ "boxContents": [],
+ "boxContentsText": "",
+ "warrantyCondition": "",
+ "connectivity": "",
+ "characterName": "Link",
+ "amiiboSeries": "The Legend of Zelda",
+ "figureType": "figure",
+ "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+ "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+ "boxCondition": "mib",
+ "releaseWave": "Wave 2 (Restock)",
+ "rarity": "standard",
+ "accessoryType": "حقيبة حماية وتنقل Carry Case",
+ "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+ "brand": "Nintendo Official",
+ "material": "Hard EVA Shockproof Shell",
+ "availableColors": "Black, Neon Red/Blue, White",
+ "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+ "cardValue": "$20 eShop Balance",
+ "region": "Global",
+ "cardType": "eshop",
+ "deliveryMethod": "instant_code",
+ "redemptionGuide": "",
+ "redemptionSteps": [],
+ "validity": "no_expiry",
+ "usedType": "cartridge",
+ "conditionGrade": "like_new",
+ "packaging": "cib",
+ "guaranteeStatus": "tested_30days",
+ "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+ "accountType": "primary",
+ "badge": "وفر 40%",
+ "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+ "price": 7000,
+ "cost": 1250,
+ "stock": 999999,
+ "isInfiniteStock": true,
+ "isHidden": false,
+ "displayOrder": 0,
+ "category": "nintendo-switch-games",
+ "categoryId": "nintendo-switch-games",
+ "categoryEn": "",
+ "categoryKu": "",
+ "options": [
+  {
+   "id": "offline_account",
+   "name": "Offline Account",
+   "description": "Account delivery option intended for offline-account use.",
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_account",
+   "name": "Online Account",
+   "description": "Account delivery option intended for online-account use where supported.",
+   "isInfiniteStock": true
+  }
+ ],
+ "types": [
+  {
+   "id": "standard_offline",
+   "name": "Standard",
+   "optionId": "offline_account",
+   "price": "12000",
+   "cost": 1250,
+   "description": "Supplier 普通版 mapped to Offline / Standard. Cost ¥6.80 -> 1,250 IQD.",
+   "isInfiniteStock": true
+  },
+  {
+   "id": "standard_online",
+   "name": "Standard",
+   "optionId": "online_account",
+   "price": "28000",
+   "cost": 11000,
+   "description": "Supplier 标准版 mapped to Online / Standard. Cost ¥50.90 -> 11,000 IQD.",
+   "isInfiniteStock": true
+  }
+ ],
+ "editions": [],
+ "dlcs": [],
+ "isActive": true,
+ "status": "Active",
+ "kind": "account",
+ "trade_value_iqd": 20000,
+ "store_offer_bonus_iqd": 0,
+ "trade_enabled": true,
+ "trade_value_locked": false,
+ "schema_version": 1,
+ "edition": "Standard",
+ "developer": "Team Cherry",
+ "publisher": "Team Cherry",
+ "metacriticUrl": "https://www.metacritic.com/game/hollow-knight-silksong/critic-reviews/?platform=nintendo-switch-2",
+ "opencriticRating": 91,
+ "userScore": 8.9,
+ "officialUrl": "https://www.nintendo.com/us/store/products/hollow-knight-silksong-nintendo-switch-2-edition-switch-2/",
+ "eshopUrl": "https://www.nintendo.com/us/store/products/hollow-knight-silksong-nintendo-switch-2-edition-switch-2/",
+ "gameIsOffline": true,
+ "gameIsOnline": false,
+ "gameLanguageLocked": false,
+ "description_short": "A fast, acrobatic metroidvania starring Hornet as she ascends through Pharloom, with crafted tools, quests, more than 200 enemies and more than 40 bosses, enhanced on Nintendo Switch 2.",
+ "description_ar": "تكملة Hollow Knight وبطلتها Hornet في مملكة Pharloom. تتميز بحركة أسرع وقتال يعتمد على الإبرة والحرير وTools قابلة للصناعة وQuests وأكثر من 200 عدو وأكثر من 40 Boss، إضافة إلى Steel Soul Mode.",
+ "nintendoEshopUrl": "https://www.nintendo.com/us/store/products/hollow-knight-silksong-nintendo-switch-2-edition-switch-2/",
+ "nintendoOnlineRequired": false,
+ "nintendoCloudSaves": true,
+ "nintendoGameKeyCard": false,
+ "nintendoPhysicalNeedsDownload": false,
+ "nintendoPlayModes": "TV, Tabletop, Handheld",
+ "nintendoNotes": "Nintendo lists the Nintendo Switch 2 Edition as an enhanced version with higher resolution, improved frame rates and additional effects. The game is single-player and supports Simplified Chinese. No verified direct Full Wrap image was found during this extraction, so 3D texture fields are intentionally blank.",
+ "switch2Enhanced": true,
+ "switch2Features": [
+  "Higher resolution on Nintendo Switch 2.",
+  "Improved frame rates, including high-refresh-rate presentation in supported modes.",
+  "Additional visual effects in the Nintendo Switch 2 Edition."
+ ],
+ "tagline": "Ascend through the haunted kingdom of Pharloom as Hornet, mastering acrobatic combat, silk abilities, crafted tools and a vast web of quests.",
+ "fitFor": [
+  "Players who enjoy exploration-driven metroidvania worlds with hidden routes, upgrades and challenging bosses.",
+  "Players who want faster, more acrobatic combat than the original Hollow Knight.",
+  "Nintendo Switch 2 owners who want the enhanced version with higher resolution, improved frame rates and additional effects."
+ ],
+ "notFitFor": [
+  "Players who strongly prefer linear progression and constant objective markers.",
+  "Players who dislike demanding boss fights, repeated attempts and exploration without heavy hand-holding.",
+  "Players looking for multiplayer or cooperative play; the adventure is single-player."
+ ],
+ "playTimeMain": 28,
+ "playTimeFull": 65.5,
+ "gameplayPillars": [
+  {
+   "title": "Acrobatic Needle Combat",
+   "description": "Hornet fights with a needle and silk-based techniques, combining aerial movement, fast repositioning, diagonal attacks and healing/ability management."
+  },
+  {
+   "title": "Ascend Through Pharloom",
+   "description": "Explore an interconnected kingdom built around vertical progression, environmental secrets, shortcuts, settlements and increasingly dangerous regions."
+  },
+  {
+   "title": "Tools, Crests and Quests",
+   "description": "Craft and equip tools, tune loadouts through crests, meet inhabitants and complete quests while uncovering the kingdom’s history."
+  }
+ ],
+ "worldSummary": "Pharloom is a vast insect kingdom structured as an upward pilgrimage. Hornet moves through mossy grottos, coral-like forests, industrial settlements, gilded cities and misted regions while climbing toward the shining Citadel. Settlements, merchants, quest givers and hidden paths give the kingdom a stronger social structure than Hallownest while retaining interconnected metroidvania exploration.",
+ "storyChapters": [
+  {
+   "title": "Captured and Taken to Pharloom",
+   "body": "Hornet is captured and carried to an unfamiliar kingdom. After escaping, she begins an upward journey through Pharloom toward the Citadel."
+  },
+  {
+   "title": "The Pilgrimage Upward",
+   "body": "The route expands through varied regions, settlements and dangerous territories as Hornet gathers new tools, abilities and information about the forces shaping the kingdom."
+  },
+  {
+   "title": "Toward the Citadel",
+   "body": "Later progression focuses on increasingly difficult traversal, bosses and revelations surrounding the kingdom’s peak, presented here without endgame spoilers."
+  }
+ ],
+ "galleryImages": [
+  {
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000105851/66fa053c1e9b6e068556d73469acab78a630856a766a818752121e78cea8507f",
+   "alt": "Official Nintendo gameplay screenshot from Pharloom."
+  },
+  {
+   "url": "https://itstore.pl/252537-large_default/hollow-knight-silksong-nintendo-switch-2.jpg",
+   "alt": "Retail Nintendo Switch 2 packaging reference image."
+  }
+ ],
+ "features": [
+  "Explore Pharloom, a new insect kingdom built around vertical ascent, hidden routes and interconnected regions.",
+  "Hornet uses fast acrobatic movement, aerial attacks and silk-based abilities that make traversal and combat more agile than Hollow Knight.",
+  "A broad tool system lets Hornet craft and equip offensive, defensive and utility tools for different situations.",
+  "Quest-style objectives give structured reasons to revisit settlements, characters and previously explored regions.",
+  "Boss encounters emphasize mobility, pattern reading and aggressive counterplay.",
+  "Christopher Larkin returns with an orchestral score written specifically for Pharloom and Hornet’s journey."
+ ],
+ "perfResolutionDocked": "2160p (Quality) / 1080p (120 Hz Performance)",
+ "perfResolutionHandheld": "1080p",
+ "perfFps": "60 FPS Quality; 120 FPS Performance / Handheld",
+ "perfHdr": false,
+ "perfNotes": "Switch 2 provides a clean high-frame-rate presentation. Team Cherry/Nintendo do not publish one universal fixed native resolution number on the store page, so an exact render resolution is not invented.",
+ "devicePerformance": [
+  {
+   "device": "Nintendo Switch 2",
+   "deviceSlug": "nintendo-switch-2",
+   "deviceModel": "Nintendo Switch 2",
+   "hardwareId": "prd_acf4c89908764c62",
+   "informationStatus": "verified",
+   "handheld": {
+    "supported": true,
+    "resolution": "1080p",
+    "resolutionDynamic": false,
+    "renderingResolution": "1080p",
+    "outputResolution": "1080p",
+    "fps": "120",
+    "fpsMin": "120",
+    "fpsMax": "120",
+    "refreshRate": "120 Hz",
+    "hdr": false,
+    "mode": "Performance",
+    "notes": "Switch 2 handheld runs at 1080p up to 120 FPS in the performance mode."
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "2160p Quality / 1080p Performance",
+    "resolutionDynamic": false,
+    "renderingResolution": "2160p Quality / 1080p Performance",
+    "outputResolution": "2160p Quality / 1080p Performance",
+    "fps": "60 Quality / 120 Performance",
+    "fpsMin": "60",
+    "fpsMax": "120",
+    "refreshRate": "60 Hz / 120 Hz",
+    "hdr": false,
+    "mode": "Quality / Performance",
+    "notes": "Quality mode: 4K/60. Performance mode: 1080p/120."
+   },
+   "modes": [
+    {
+     "name": "Quality",
+     "handheldResolution": "1080p",
+     "handheldFps": "120",
+     "tvResolution": "2160p",
+     "tvFps": "60",
+     "hdr": false,
+     "notes": "4K/60 TV quality profile; handheld uses 1080p/120."
+    },
+    {
+     "name": "Performance",
+     "handheldResolution": "1080p",
+     "handheldFps": "120",
+     "tvResolution": "1080p",
+     "tvFps": "120",
+     "hdr": false,
+     "notes": "120 Hz performance profile."
+    }
+   ],
+   "sourceName": "Handheld Performance / technical comparison",
+   "sourceUrl": "https://handheld-performance.com/games/hollow-knight-silksong",
+   "verifiedAt": "2026-08-25",
+   "verificationStatus": "verified",
+   "performanceNotes": "Current Switch 2 performance verified: 2160p/60 or 1080p/120 docked; 1080p/120 handheld."
+  }
+ ],
+ "downloadSizeGb": 4.1,
+ "requiredSpaceGb": 5,
+ "microSdRecommended": false,
+ "storageNotes": "Nintendo lists 4.1 GB for Switch 2 and 2.9 GB for the original Switch version.",
+ "languagesAudio": [
+  "English"
+ ],
+ "languagesText": [
+  "English",
+  "Japanese",
+  "French"
+ ],
+ "arabicSupport": false,
+ "mpLocalPlayers": false,
+ "mpOnlinePlayers": false,
+ "mpCoop": false,
+ "mpCompetitive": false,
+ "mpSplitScreen": false,
+ "mpLocalWireless": false,
+ "guides": [
+  {
+   "title": "Nintendo Switch 2 Edition — Official Game Page",
+   "summary": "Nintendo’s official overview of the Switch 2 Edition, its features and platform information.",
+   "url": "https://www.nintendo.com/us/store/products/hollow-knight-silksong-nintendo-switch-2-edition-switch-2/"
+  },
+  {
+   "title": "Team Cherry — Hollow Knight: Silksong",
+   "summary": "Official developer information and news for Silksong.",
+   "url": "https://hollowknightsilksong.com/"
+  },
+  {
+   "title": "LaunchBox Media Reference",
+   "summary": "Media database entry used for square artwork and additional asset verification.",
+   "url": "https://gamesdb.launchbox-app.com/games/details/428216-hollow-knight-silksong-nintendo-switch-2-edition"
+  }
+ ],
+ "completionMain": 28,
+ "completionExtras": 47,
+ "completionAll": 65.5,
+ "faq": [
+  {
+   "q": "Is Hollow Knight: Silksong a direct sequel to Hollow Knight?",
+   "a": "Yes. It follows Hornet in the new kingdom of Pharloom and builds on the exploration and combat structure of Hollow Knight with a faster protagonist and new systems."
+  },
+  {
+   "q": "What is improved on Nintendo Switch 2?",
+   "a": "Nintendo specifically lists higher resolution, improved frame rates and additional effects for the Nintendo Switch 2 Edition."
+  },
+  {
+   "q": "Is Silksong multiplayer?",
+   "a": "No. The Nintendo release is a single-player adventure."
+  }
+ ],
+ "verdictScore": 9.4,
+ "verdictSummary": "Score note: 9.4/10 is a direct normalization of the current 94/100 Metacritic aggregate for the Nintendo listing; it is not a separately invented store rating.\n\nSilksong expands the Hollow Knight formula around Hornet’s speed and mobility, a new upward-structured kingdom, crafted tools and a large enemy/boss roster. The Switch 2 Edition is especially attractive for players who want the enhanced Nintendo presentation.",
+ "verdictPros": [
+  "Fast, expressive movement and combat built around Hornet.",
+  "Large interconnected world with strong visual variety and exploration depth.",
+  "Switch 2 enhancements improve presentation without changing the core game."
+ ],
+ "verdictCons": [
+  "High difficulty can be demanding for players who prefer relaxed progression.",
+  "Exploration-heavy structure can require backtracking and self-directed navigation.",
+  "Single-player only; there is no cooperative or competitive mode."
+ ],
+ "reviews": [
+  {
+   "source": "Metacritic — Nintendo listing",
+   "score": "94/100",
+   "quote": "Current critic aggregate for the relevant Nintendo listing: 94/100. This is an external aggregate, not a BANANTO-created review score.",
+   "url": "https://www.dekudeals.com/items/hollow-knight-silksong"
+  },
+  {
+   "source": "OpenCritic",
+   "score": "91/100",
+   "quote": "OpenCritic aggregate recorded at 91/100. Where OpenCritic groups platforms, this value represents the published aggregate rather than a fabricated platform-specific score.",
+   "url": "https://www.dekudeals.com/items/hollow-knight-silksong"
+  },
+  {
+   "source": "Metacritic User Score",
+   "score": "8.9/10",
+   "quote": "Current Metacritic user score shown with the listing: 8.9/10. User scores can change over time as additional ratings are submitted.",
+   "url": "https://www.dekudeals.com/items/hollow-knight-silksong"
+  }
+ ],
+ "timeline": [
+  null,
+  {
+   "date": "2025-09-04",
+   "title": "Switch 2 Enhancements Available",
+   "body": "The Switch 2 Edition launched with higher resolution, improved frame rates and additional effects compared with the original Switch version."
+  },
+  {
+   "title": "Ongoing Pharloom Journey",
+   "body": "Post-launch information and updates are tracked only when officially published; no unsupported version number is invented here."
+  }
+ ],
+ "patchNotes": [
+  {
+   "version": "Patch 4",
+   "date": "2025-11-06",
+   "body": "Team Cherry’s fourth major patch introduced the Team Cart Fix Simplified Chinese translation, moved controller handling to Unity’s newer Input System, added controller-support improvements and delivered another broad bug-fix pass. Team Cherry later confirmed the patch live on all platforms."
+  }
+ ],
+ "setupNeeds": [
+  "Nintendo Switch 2 system.",
+  "Approximately 4.1 GB of free storage for the Nintendo Switch 2 digital version.",
+  "One player; Nintendo Switch Online is not required for the main single-player game."
+ ],
+ "sources": [
+  {
+   "name": "Nintendo — Hollow Knight: Silksong Nintendo Switch 2 Edition",
+   "url": "https://www.nintendo.com/us/store/products/hollow-knight-silksong-nintendo-switch-2-edition-switch-2/"
+  },
+  {
+   "name": "Team Cherry — Silksong",
+   "url": "https://hollowknightsilksong.com/"
+  },
+  {
+   "name": "LaunchBox Games Database — Switch 2 media",
+   "url": "https://gamesdb.launchbox-app.com/games/details/428216-hollow-knight-silksong-nintendo-switch-2-edition"
+  },
+  {
+   "name": "Deku Deals — Nintendo version scores and completion data",
+   "url": "https://www.dekudeals.com/items/hollow-knight-silksong"
+  },
+  {
+   "name": "Team Cherry — Patch 4 notes",
+   "url": "https://www.teamcherry.com.au/blog/silksong-patch-4"
+  },
+  {
+   "name": "Christopher Larkin — Official Silksong soundtrack",
+   "url": "https://christopherlarkin.bandcamp.com/album/hollow-knight-silksong-original-soundtrack"
+  }
+ ],
+ "soundtrack": [
+  {
+   "title": "Enter Pharloom",
+   "url": "https://christopherlarkin.bandcamp.com/album/hollow-knight-silksong-original-soundtrack"
+  },
+  {
+   "title": "Lace",
+   "url": "https://christopherlarkin.bandcamp.com/album/hollow-knight-silksong-original-soundtrack"
+  },
+  {
+   "title": "Choral Chambers",
+   "url": "https://christopherlarkin.bandcamp.com/album/hollow-knight-silksong-original-soundtrack"
+  }
+ ],
+ "seriesName": "Hollow Knight",
+ "seriesEntries": [
+  "Hollow Knight",
+  "Hollow Knight: Silksong"
+ ],
+ "studioName": "Team Cherry",
+ "studioUrl": "https://www.teamcherry.com.au/",
+ "studioLocation": "Adelaide, Australia",
+ "studioAbout": "Team Cherry is the independent Australian studio behind Hollow Knight and Hollow Knight: Silksong, known for hand-drawn 2D art, interconnected worlds and precision action-platforming.",
+ "boxContentsList": "[Circular]",
+ "image": "/api/files/products/prd_ebcb11cda2854251/coverImage-851b30b4bda9a7ca.webp",
+ "banner": "/api/files/products/prd_ebcb11cda2854251/bannerImages-dccdfc1e748e9264.webp",
+ "schemaId": "",
+ "badgeEn": "وفر 40%",
+ "badgeKu": "وفر 40%",
+ "featuresEn": [
+  "Explore Pharloom, a new insect kingdom built around vertical ascent, hidden routes and interconnected regions.",
+  "Hornet uses fast acrobatic movement, aerial attacks and silk-based abilities that make traversal and combat more agile than Hollow Knight.",
+  "A broad tool system lets Hornet craft and equip offensive, defensive and utility tools for different situations.",
+  "Quest-style objectives give structured reasons to revisit settlements, characters and previously explored regions.",
+  "Boss encounters emphasize mobility, pattern reading and aggressive counterplay.",
+  "Christopher Larkin returns with an orchestral score written specifically for Pharloom and Hornet’s journey."
+ ],
+ "featuresKu": [
+  "Explore Pharloom, a new insect kingdom built around vertical ascent, hidden routes and interconnected regions.",
+  "Hornet uses fast acrobatic movement, aerial attacks and silk-based abilities that make traversal and combat more agile than Hollow Knight.",
+  "A broad tool system lets Hornet craft and equip offensive, defensive and utility tools for different situations.",
+  "Quest-style objectives give structured reasons to revisit settlements, characters and previously explored regions.",
+  "Boss encounters emphasize mobility, pattern reading and aggressive counterplay.",
+  "Christopher Larkin returns with an orchestral score written specifically for Pharloom and Hornet’s journey."
+ ],
+ "sales": 0,
+ "images": [],
+ "modes": [],
+ "box_front_url": "https://art.gametdb.com/switch/cover/US/AKZRA.jpg",
+ "boxFrontUrl": "https://art.gametdb.com/switch/cover/US/AKZRA.jpg",
+ "coverUrl": "https://art.gametdb.com/switch/cover/US/AKZRA.jpg",
+ "createdAt": "2026-08-27T01:39:49.300Z",
+ "created_at": "2026-08-27T01:39:49.300Z",
+ "updatedAt": "2026-08-27T01:39:49.300Z",
+ "updated_at": "2026-08-27T01:39:49.300Z"
+}

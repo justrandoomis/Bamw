@@ -1,0 +1,549 @@
+{
+ "id": "prd_502d0bd14c6049b6",
+ "title": "HITMAN World of Assassination - Signature Edition",
+ "titleEn": "HITMAN World of Assassination - Signature Edition",
+ "titleKu": "HITMAN World of Assassination - Signature Edition",
+ "slug": "hitman-world-of-assassination-signature-edition",
+ "description": "A massive stealth sandbox anthology combining HITMAN, HITMAN 2 and HITMAN 3 content. Plan assassinations, disguise yourself, exploit environments and replay highly systemic missions across more than twenty locations.",
+ "descriptionEn": "A massive stealth sandbox anthology combining HITMAN, HITMAN 2 and HITMAN 3 content. Plan assassinations, disguise yourself, exploit environments and replay highly systemic missions across more than twenty locations.",
+ "descriptionKu": "A massive stealth sandbox anthology combining HITMAN, HITMAN 2 and HITMAN 3 content. Plan assassinations, disguise yourself, exploit environments and replay highly systemic missions across more than twenty locations.",
+ "cartridgeImage": "/api/files/products/prd_502d0bd14c6049b6/cartridgeImage-8fab9ae51312180d.jpg",
+ "nintendoCardImage": "/api/files/products/prd_502d0bd14c6049b6/nintendoCardImage-32244565452126c7.jpg",
+ "coverHiResImage": "",
+ "coverImage": "/api/files/products/prd_502d0bd14c6049b6/coverImage-8fab9ae51312180d.jpg",
+ "bannerImages": [
+  "/api/files/products/prd_502d0bd14c6049b6/bannerImages-1-685a53eaefaa363f.jpg",
+  "/api/files/products/prd_502d0bd14c6049b6/bannerImages-2-07f2f50079320ee3.jpg"
+ ],
+ "gallery": [],
+ "youtubeTrailer": "https://www.youtube.com/watch?v=FfKQgglhaBU",
+ "releaseDate": "2025-06-05",
+ "ageRating": "PEGI 18",
+ "metacriticRating": 87,
+ "genres": [
+  "Stealth",
+  "Sandbox",
+  "Action"
+ ],
+ "platform": "switch2",
+ "size": 54.1,
+ "numberOfPlayers": "1",
+ "supportedLanguages": "Japanese, English, French, German, Italian, Spanish, Russian, Simplified Chinese, Traditional Chinese",
+ "hardwareModel": "",
+ "colorEdition": "",
+ "storageCapacity": "",
+ "screenSpecs": "",
+ "batteryLife": "",
+ "boxContents": [],
+ "boxContentsText": "",
+ "warrantyCondition": "",
+ "connectivity": "",
+ "characterName": "Link",
+ "amiiboSeries": "The Legend of Zelda",
+ "figureType": "figure",
+ "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+ "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+ "boxCondition": "mib",
+ "releaseWave": "Wave 2 (Restock)",
+ "rarity": "standard",
+ "accessoryType": "حقيبة حماية وتنقل Carry Case",
+ "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+ "brand": "Nintendo Official",
+ "material": "Hard EVA Shockproof Shell",
+ "availableColors": "Black, Neon Red/Blue, White",
+ "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+ "cardValue": "$20 eShop Balance",
+ "region": "Global",
+ "cardType": "eshop",
+ "deliveryMethod": "instant_code",
+ "redemptionGuide": "",
+ "redemptionSteps": [],
+ "validity": "no_expiry",
+ "usedType": "cartridge",
+ "conditionGrade": "like_new",
+ "packaging": "cib",
+ "guaranteeStatus": "tested_30days",
+ "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+ "accountType": "primary",
+ "badge": "وفر 40%",
+ "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+ "price": 14750,
+ "cost": 1500,
+ "stock": 999999,
+ "isInfiniteStock": true,
+ "isHidden": false,
+ "displayOrder": 0,
+ "category": "nintendo-switch-games",
+ "categoryId": "nintendo-switch-games",
+ "categoryEn": "",
+ "categoryKu": "",
+ "options": [
+  {
+   "id": "offline_account",
+   "name": "مشترك",
+   "description": "Play using the supplied account under the store's offline-account activation method.",
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_account",
+   "name": "خاص بك",
+   "description": "Online-account option with internet-connected account use where supported by the game/service.",
+   "isInfiniteStock": true
+  }
+ ],
+ "types": [
+  {
+   "id": "standard_offline",
+   "name": "مشترك — اللعبة الأساسية",
+   "optionId": "offline_account",
+   "price": 14750,
+   "cost": 1500,
+   "description": "Standard game, Offline Account. Supplier Regular price: ¥7.78; purchase cost converted at 1 CNY = 220 IQD and rounded down to nearest 250 IQD.",
+   "isInfiniteStock": true
+  },
+  {
+   "id": "standard_online",
+   "name": "خاص بك — اللعبة الأساسية",
+   "optionId": "online_account",
+   "price": 35000,
+   "cost": 20750,
+   "description": "Standard game, Online Account. Supplier Standard price: ¥95.00; purchase cost converted at 1 CNY = 220 IQD and rounded down to nearest 250 IQD.",
+   "isInfiniteStock": true
+  }
+ ],
+ "editions": [],
+ "dlcs": [],
+ "isActive": true,
+ "status": "active",
+ "kind": "account",
+ "trade_value_iqd": 0,
+ "store_offer_bonus_iqd": 0,
+ "trade_enabled": true,
+ "trade_value_locked": false,
+ "schema_version": 22,
+ "titleAr": "هيتمان ورلد أوف أساسي نيشن - سيغنتشر إديشن",
+ "compatibility": [
+  "Nintendo Switch 2"
+ ],
+ "edition": "Signature Edition",
+ "developer": "IO Interactive",
+ "publisher": "IO Interactive",
+ "opencriticRating": 85,
+ "userScore": 8.5,
+ "officialUrl": "https://ioi.dk/hitman",
+ "gameIsOffline": true,
+ "gameIsOnline": true,
+ "gameLanguageLocked": false,
+ "description_short": "The complete modern HITMAN sandbox package, combining the trilogy campaign, Freelancer, live modes and major expansion content in a native Switch 2 release.",
+ "description_ar": "الحزمة المتكاملة من ثلاثية HITMAN الحديثة، وتشمل الحملة الرئيسية وأكثر من 20 موقعًا وContracts وEscalations وElusive Target Arcade وFreelancer ومحتوى HITMAN 2 Expansion وHITMAN 3 Deluxe.",
+ "box_front_url": "https://m.media-amazon.com/images/I/81Tt4+qucWL._SL1500_.jpg",
+ "videos": [
+  {
+   "title": "Launch Trailer - Nintendo Switch 2",
+   "url": "https://www.youtube.com/watch?v=FfKQgglhaBU"
+  }
+ ],
+ "nintendoEshopUrl": "https://www.nintendo.com/au/games/nintendo-switch-2/hitman-world-of-assassination-signature-edition/",
+ "nintendoOnlineRequired": false,
+ "nintendoCloudSaves": true,
+ "tvMode": true,
+ "tabletopMode": true,
+ "handheldMode": true,
+ "nintendoPlayModes": "TV Mode, Tabletop Mode, Handheld Mode",
+ "switch2Features": [
+  "Native local Switch 2 version rather than cloud streaming",
+  "TV, Tabletop and Handheld modes",
+  "HDR support on compatible TVs",
+  "30 FPS cap option added after launch for consistency",
+  "Signature Edition includes major trilogy/Deluxe content",
+  "More than 20 locations",
+  "Freelancer mode and live content"
+ ],
+ "tagline": "Enter the world of the ultimate assassin.",
+ "fitFor": [
+  "Stealth and sandbox fans",
+  "Players who enjoy experimentation and replayability",
+  "Fans of systemic level design",
+  "Players wanting the complete modern HITMAN package"
+ ],
+ "notFitFor": [
+  "Players uncomfortable with assassination themes",
+  "Players who want local multiplayer"
+ ],
+ "playTimeMain": 25,
+ "playTimeFull": 256,
+ "editionsList": [
+  {
+   "name": "Signature Edition",
+   "contents": [
+    {
+     "label": "World of Assassination campaign"
+    },
+    {
+     "label": "HITMAN 2 Expansion Pack"
+    },
+    {
+     "label": "HITMAN 3 Deluxe Pack"
+    },
+    {
+     "label": "Freelancer"
+    },
+    {
+     "label": "Contracts"
+    },
+    {
+     "label": "Escalations"
+    },
+    {
+     "label": "Elusive Target Arcade and live content"
+    }
+   ]
+  }
+ ],
+ "gameplayPillars": [
+  {
+   "title": "Freedom of Approach",
+   "description": "Use disguises, routes, environmental opportunities, tools and social stealth to create your own solutions."
+  },
+  {
+   "title": "Large Sandbox Locations",
+   "description": "Explore highly detailed spaces with schedules, restricted areas, mission stories and systemic interactions."
+  },
+  {
+   "title": "Replayability",
+   "description": "Challenges, mastery, alternate starting locations and equipment make each mission highly replayable."
+  },
+  {
+   "title": "Freelancer",
+   "description": "A persistent roguelike-style mode adds campaign planning, risk management and long-term progression."
+  }
+ ],
+ "storyChapters": [
+  {
+   "title": "Agent 47 Returns",
+   "body": "The World of Assassination campaign follows Agent 47 through the events of HITMAN, HITMAN 2 and HITMAN 3."
+  },
+  {
+   "title": "Providence Conflict",
+   "body": "47's contracts become entangled with the secretive Providence organization and his own past."
+  },
+  {
+   "title": "A World of Assassination",
+   "body": "The trilogy culminates in a globe-spanning spy-thriller while side modes extend the sandbox far beyond the main narrative."
+  }
+ ],
+ "galleryImages": [
+  {
+   "url": "https://m.media-amazon.com/images/I/71MnD1eLMGL._SL1500_.jpg",
+   "alt": "Distinct product/game media image 1; separate from the primary cover and square-card roles."
+  },
+  {
+   "url": "https://m.media-amazon.com/images/I/71o8Xq0A1IL._SL1500_.jpg",
+   "alt": "Distinct product/game media image 2; separate from the primary cover and square-card roles."
+  },
+  {
+   "url": "https://m.media-amazon.com/images/I/61-xuuIJFXL._SL1500_.jpg",
+   "alt": "Distinct product/game media image 3; separate from the primary cover and square-card roles."
+  },
+  {
+   "url": "https://m.media-amazon.com/images/I/71YwENQJ8UL._SL1500_.jpg",
+   "alt": "Distinct product/game media image 4; separate from the primary cover and square-card roles."
+  }
+ ],
+ "features": [
+  "Full World of Assassination trilogy campaign",
+  "More than 20 locations",
+  "Contracts mode",
+  "Escalations",
+  "Elusive Target Arcade",
+  "Featured live content",
+  "Freelancer mode",
+  "HITMAN 2 Expansion Pack content",
+  "HITMAN 3 Deluxe Pack content",
+  "Native Nintendo Switch 2 version rather than cloud streaming",
+  "HDR support on compatible TVs",
+  "High mission replayability and systemic stealth"
+ ],
+ "perfResolutionDocked": "1920x1080",
+ "perfResolutionHandheld": "1280x720",
+ "perfFps": "30 FPS cap available after patch",
+ "perfHdr": true,
+ "perfNotes": "Technical testing reports approximately 720p in handheld mode and 1080p in docked mode. The launch build used an unlocked frame rate with significant fluctuation; a post-launch patch added a 30 FPS cap for more stable play.",
+ "devicePerformance": [
+  {
+   "device": "Nintendo Switch 2",
+   "deviceSlug": "nintendo-switch-2",
+   "deviceModel": "Nintendo Switch 2",
+   "hardwareId": "prd_acf4c89908764c62",
+   "informationStatus": "verified",
+   "handheld": {
+    "supported": true,
+    "resolution": "1280x720",
+    "renderingResolution": "Dynamic around 720p",
+    "outputResolution": "1280x720",
+    "fps": "30",
+    "fpsMin": "30",
+    "fpsMax": "30"
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "1920x1080",
+    "renderingResolution": "Dynamic around 1080p",
+    "outputResolution": "1920x1080",
+    "fps": "30",
+    "fpsMin": "30",
+    "fpsMax": "30",
+    "hdr": true
+   },
+   "modes": [
+    {
+     "name": "30 FPS Cap (post-launch patch)",
+     "handheldResolution": "1280x720",
+     "handheldFps": "30",
+     "tvResolution": "1920x1080",
+     "tvFps": "30"
+    }
+   ],
+   "sourceName": "Nintendo Life Switch 2 review + post-launch patch note",
+   "sourceUrl": "https://www.nintendolife.com/reviews/nintendo-switch-2/hitman-world-of-assassination-signature-edition",
+   "verificationStatus": "third-party-tested",
+   "performanceNotes": "Technical testing reports approximately 720p in handheld mode and 1080p in docked mode. The launch build used an unlocked frame rate with significant fluctuation; a post-launch patch added a 30 FPS cap for more stable play."
+  }
+ ],
+ "downloadSizeGb": 54.1,
+ "requiredSpaceGb": 54.5,
+ "microSdRecommended": true,
+ "languagesAudio": [
+  "English"
+ ],
+ "languagesText": [
+  "Japanese",
+  "English",
+  "French",
+  "German",
+  "Italian",
+  "Spanish",
+  "Russian",
+  "Simplified Chinese",
+  "Traditional Chinese"
+ ],
+ "arabicSupport": false,
+ "mpLocalPlayers": false,
+ "mpOnlinePlayers": false,
+ "mpCoop": false,
+ "mpCompetitive": false,
+ "mpSplitScreen": false,
+ "mpLocalWireless": false,
+ "guides": [
+  {
+   "title": "IO Interactive HITMAN Site",
+   "summary": "Official game and live-content information.",
+   "url": "https://ioi.dk/hitman"
+  },
+  {
+   "title": "Nintendo Switch 2 Launch Trailer",
+   "summary": "Official Switch 2 Signature Edition overview.",
+   "url": "https://www.youtube.com/watch?v=FfKQgglhaBU"
+  },
+  {
+   "title": "Nintendo Store",
+   "summary": "Switch 2 features and edition details.",
+   "url": "https://www.nintendo.com/au/games/nintendo-switch-2/hitman-world-of-assassination-signature-edition/"
+  }
+ ],
+ "completionMain": 25,
+ "completionExtras": 48,
+ "completionAll": 256,
+ "faq": [
+  {
+   "q": "Is this the cloud version from the original Switch?",
+   "a": "No. Signature Edition is a native Nintendo Switch 2 release."
+  },
+  {
+   "q": "How much content is included?",
+   "a": "It includes the World of Assassination trilogy campaign plus major expansion/Deluxe content and long-term modes such as Freelancer."
+  },
+  {
+   "q": "How long is it?",
+   "a": "A single pass through the main trilogy is around 25 hours in crowdsourced data, but full completion and replay-driven modes can reach hundreds of hours."
+  },
+  {
+   "q": "Does it support HDR?",
+   "a": "Nintendo lists HDR support on compatible TVs."
+  },
+  {
+   "q": "Is it multiplayer?",
+   "a": "The core game is single-player; online connectivity is used for progression, contracts and live-service features."
+  },
+  {
+   "q": "What is the stable frame-rate option?",
+   "a": "A post-launch Switch 2 update added a 30 FPS cap option for more consistent play."
+  }
+ ],
+ "verdictScore": 7.5,
+ "verdictSummary": "One of the richest stealth packages available, with huge replay value. The native Switch 2 release is a major improvement over cloud-only access, though performance requires compromises.",
+ "verdictPros": [
+  "Enormous amount of content",
+  "Excellent replayability",
+  "Native local execution on Switch 2",
+  "Freelancer adds long-term structure"
+ ],
+ "verdictCons": [
+  "Switch 2 port has technical compromises compared with stronger platforms",
+  "Frame-rate cap option was added after launch to improve consistency"
+ ],
+ "reviews": [
+  {
+   "source": "Metacritic",
+   "score": "87/100",
+   "quote": "The World of Assassination package is widely regarded as one of the strongest modern stealth sandboxes.",
+   "url": "https://www.metacritic.com/"
+  },
+  {
+   "source": "OpenCritic",
+   "score": "85/100",
+   "quote": "Critical consensus strongly favors the systemic level design and replayability.",
+   "url": "https://opencritic.com/"
+  },
+  {
+   "source": "Nintendo Switch 2 reviews",
+   "score": "Mixed technical reception",
+   "quote": "Switch 2 reviews praised having a native version but noted visual/performance compromises compared with stronger platforms.",
+   "url": "https://www.nintendolife.com/reviews/nintendo-switch-2/hitman-world-of-assassination-signature-edition"
+  }
+ ],
+ "timeline": [
+  {
+   "date": "2016",
+   "title": "Modern trilogy begins",
+   "body": "The episodic HITMAN reboot launched."
+  },
+  {
+   "date": "2018",
+   "title": "HITMAN 2",
+   "body": "The campaign expanded with new global locations and systems."
+  },
+  {
+   "date": "2021",
+   "title": "HITMAN 3",
+   "body": "The trilogy concluded and later became the unified World of Assassination platform."
+  },
+  {
+   "date": "2025-06-05",
+   "title": "Switch 2 Signature Edition",
+   "body": "A native Nintendo Switch 2 version launched."
+  },
+  {
+   "date": "2025",
+   "title": "Post-launch performance patch",
+   "body": "A frame-rate option added a 30 FPS cap for more consistent performance."
+  }
+ ],
+ "patchNotes": [
+  {
+   "version": "Switch 2 launch",
+   "date": "2025-06-05",
+   "body": "Native Switch 2 release of Signature Edition."
+  },
+  {
+   "version": "Frame-rate option patch",
+   "date": "2025",
+   "body": "Added a 30 FPS cap option to improve consistency on Nintendo Switch 2."
+  },
+  {
+   "version": "Live service content",
+   "date": "2025-2026",
+   "body": "Elusive targets, featured contracts and other live content continued through the World of Assassination platform."
+  }
+ ],
+ "soundtrack": [
+  {
+   "title": "HITMAN World of Assassination soundtrack",
+   "url": "https://ioi.dk/hitman"
+  },
+  {
+   "title": "HITMAN 3 Deluxe Soundtrack content",
+   "url": "https://ioi.dk/hitman"
+  }
+ ],
+ "seriesName": "HITMAN",
+ "seriesEntries": [
+  "HITMAN",
+  "HITMAN 2",
+  "HITMAN 3 / World of Assassination"
+ ],
+ "studioName": "IO Interactive",
+ "studioUrl": "https://ioi.dk/",
+ "studioLocation": "Copenhagen, Denmark",
+ "studioAbout": "IO Interactive is the independent Danish studio behind the HITMAN franchise. World of Assassination consolidates the modern trilogy into a single systemic stealth sandbox with campaign missions, contracts, escalations, elusive targets and Freelancer.",
+ "setupNeeds": [
+  "Nintendo Switch 2 system required for the Nintendo Switch 2 version.",
+  "Internet connection is required for digital download, updates and online/service features where applicable.",
+  "Nintendo Account required for Nintendo eShop purchase/download.",
+  "Sufficient internal storage or compatible microSD Express storage required.",
+  "Nintendo Switch Online membership is required only for game-specific online multiplayer/features that explicitly use it."
+ ],
+ "sources": [
+  {
+   "name": "IO Interactive",
+   "url": "https://ioi.dk/hitman"
+  },
+  {
+   "name": "Nintendo AU",
+   "url": "https://www.nintendo.com/au/games/nintendo-switch-2/hitman-world-of-assassination-signature-edition/"
+  },
+  {
+   "name": "Nintendo Launch Trailer",
+   "url": "https://www.youtube.com/watch?v=FfKQgglhaBU"
+  },
+  {
+   "name": "Nintendo Life",
+   "url": "https://www.nintendolife.com/reviews/nintendo-switch-2/hitman-world-of-assassination-signature-edition"
+  }
+ ],
+ "boxContentsList": "[Circular]",
+ "image": "/api/files/products/prd_502d0bd14c6049b6/coverImage-8fab9ae51312180d.jpg",
+ "banner": "/api/files/products/prd_502d0bd14c6049b6/bannerImages-1-685a53eaefaa363f.jpg",
+ "schemaId": "",
+ "badgeEn": "وفر 40%",
+ "badgeKu": "وفر 40%",
+ "featuresEn": [
+  "Full World of Assassination trilogy campaign",
+  "More than 20 locations",
+  "Contracts mode",
+  "Escalations",
+  "Elusive Target Arcade",
+  "Featured live content",
+  "Freelancer mode",
+  "HITMAN 2 Expansion Pack content",
+  "HITMAN 3 Deluxe Pack content",
+  "Native Nintendo Switch 2 version rather than cloud streaming",
+  "HDR support on compatible TVs",
+  "High mission replayability and systemic stealth"
+ ],
+ "featuresKu": [
+  "Full World of Assassination trilogy campaign",
+  "More than 20 locations",
+  "Contracts mode",
+  "Escalations",
+  "Elusive Target Arcade",
+  "Featured live content",
+  "Freelancer mode",
+  "HITMAN 2 Expansion Pack content",
+  "HITMAN 3 Deluxe Pack content",
+  "Native Nintendo Switch 2 version rather than cloud streaming",
+  "HDR support on compatible TVs",
+  "High mission replayability and systemic stealth"
+ ],
+ "sales": 0,
+ "images": [],
+ "modes": [],
+ "switch2UpgradePrice": 0,
+ "eshopUrl": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-2-games/HITMAN-World-of-Assassination-Signature-Edition-2792849.html",
+ "nintendoGameKeyCard": false,
+ "switch2Enhanced": true,
+ "switch2Exclusive": true,
+ "nintendoNotes": "Platform and package information verified against the official product/source page for HITMAN World of Assassination – Signature Edition.",
+ "worldSummary": "HITMAN World of Assassination – Signature Edition brings together HITMAN, HITMAN 2, and HITMAN 3 content in a single Nintendo Switch 2 package. Play as Agent 47 across more than 20 locations, using disguises, stealth, gadgets, environmental opportunities, and creative assassination routes. The Signature Edition also includes major expansion and deluxe content.",
+ "updatedAt": "2026-08-28T22:01:17.264Z"
+}

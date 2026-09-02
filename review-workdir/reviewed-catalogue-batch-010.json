@@ -1,6 +1,6 @@
 {
  "batch": "010",
- "apply": true,
+ "apply": false,
  "games": [
   {
    "id": "prd_3c341c814d254f05",
@@ -189,6 +189,113 @@
     "guaranteeStatus"
    ],
    "notes": "box_front_url was a dead GameTDB link (404) — removed; the 1200x1200 box render in cartridgeImage remains. The second gallery entry was a Polish web-shop product photo, not game media — the gallery is rebuilt with only the official eShop screenshot. The performance record's prose fields become the documented mode split: docked 4K/60 Quality or 1080p/120 Performance, handheld 1080p up to 120. dlcSummary states the verified no-DLC situation. Metacritic 94 verified correct. Trailer left absent — no official video id could be verified from here."
+  }
+ ],
+ "appliedAt": "2026-09-02T02:58:12.825Z",
+ "results": [
+  {
+   "id": "prd_3c341c814d254f05",
+   "action": "APPLIED",
+   "changed": [
+    "metacriticRating",
+    "bannerImages",
+    "devicePerformance"
+   ],
+   "removed": [
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ]
+  },
+  {
+   "id": "prd_bec7f58f8ef14dde",
+   "action": "APPLIED",
+   "changed": [
+    "devicePerformance"
+   ],
+   "removed": [
+    "youtubeTrailer",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ]
+  },
+  {
+   "id": "prd_502d0bd14c6049b6",
+   "action": "APPLIED",
+   "changed": [
+    "coverImage",
+    "image"
+   ],
+   "removed": [
+    "nintendoCardImage",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ]
+  },
+  {
+   "id": "prd_81d7e7d737804445",
+   "action": "APPLIED",
+   "changed": [
+    "releaseDate"
+   ],
+   "removed": [
+    "youtubeTrailer",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ]
+  },
+  {
+   "id": "prd_ebcb11cda2854251",
+   "action": "APPLIED",
+   "changed": [
+    "dlcSummary",
+    "devicePerformance",
+    "galleryImages"
+   ],
+   "removed": [
+    "box_front_url",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ]
   }
  ]
 }

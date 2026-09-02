@@ -1,0 +1,432 @@
+{
+ "title": "Hades",
+ "titleEn": "Hades",
+ "titleKu": "",
+ "slug": "hades-switch",
+ "description": "Hades is an action roguelike from Supergiant Games in which Zagreus fights through the Underworld using different weapons, divine boons, and persistent upgrades. It combines highly responsive combat with strong writing, memorable characters, and a structure that makes repeated play rewarding. This file represents the Nintendo Switch 1 product entry.",
+ "descriptionEn": "Hades is an action roguelike from Supergiant Games in which Zagreus fights through the Underworld using different weapons, divine boons, and persistent upgrades. It combines highly responsive combat with strong writing, memorable characters, and a structure that makes repeated play rewarding. This file represents the Nintendo Switch 1 product entry.",
+ "descriptionKu": "",
+ "cartridgeImage": "/api/files/products/prd_bec7f58f8ef14dde/front-box-769951b23af07d7e.webp",
+ "nintendoCardImage": "/api/files/products/prd_bec7f58f8ef14dde/square-card-64ac281bb02527e7.webp",
+ "coverHiResImage": "/api/files/products/prd_bec7f58f8ef14dde/3d-wrap-c32dff7950fac3c7.webp",
+ "coverImage": "/api/files/products/prd_bec7f58f8ef14dde/cover-6d9253bb40f8bd8d.webp",
+ "bannerImages": [
+  ""
+ ],
+ "gallery": [],
+ "youtubeTrailer": "https://www.youtube.com/results?search_query=Hades+official+trailer",
+ "releaseDate": "2020-09-17",
+ "ageRating": "ESRB T / PEGI 12",
+ "metacriticRating": 93,
+ "genres": [
+  "Action",
+  "Roguelike",
+  "RPG"
+ ],
+ "platform": "switch1",
+ "size": 7,
+ "numberOfPlayers": "Single system (1)",
+ "supportedLanguages": "English, Japanese, French, Spanish, German",
+ "hardwareModel": "",
+ "colorEdition": "",
+ "storageCapacity": "",
+ "screenSpecs": "",
+ "batteryLife": "",
+ "boxContents": [],
+ "boxContentsText": "",
+ "warrantyCondition": "",
+ "connectivity": "",
+ "characterName": "Link",
+ "amiiboSeries": "The Legend of Zelda",
+ "figureType": "figure",
+ "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+ "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+ "boxCondition": "mib",
+ "releaseWave": "Wave 2 (Restock)",
+ "rarity": "standard",
+ "accessoryType": "حقيبة حماية وتنقل Carry Case",
+ "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+ "brand": "Nintendo Official",
+ "material": "Hard EVA Shockproof Shell",
+ "availableColors": "Black, Neon Red/Blue, White",
+ "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+ "cardValue": "$20 eShop Balance",
+ "region": "Global",
+ "cardType": "eshop",
+ "deliveryMethod": "instant_code",
+ "redemptionGuide": "",
+ "redemptionSteps": [],
+ "validity": "no_expiry",
+ "usedType": "cartridge",
+ "conditionGrade": "like_new",
+ "packaging": "cib",
+ "guaranteeStatus": "tested_30days",
+ "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+ "accountType": "primary",
+ "badge": "وفر 40%",
+ "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+ "price": 11500,
+ "cost": 1250,
+ "stock": 999999,
+ "isInfiniteStock": true,
+ "isHidden": true,
+ "displayOrder": 0,
+ "category": "nintendo-switch-games",
+ "categoryId": "nintendo-switch-games",
+ "categoryEn": "",
+ "categoryKu": "",
+ "options": [
+  {
+   "id": "offline_account",
+   "name": "مشترك",
+   "description": "مشترك",
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_account",
+   "name": "خاص بك",
+   "description": "خاص بك",
+   "stock": 9999,
+   "isInfiniteStock": true
+  }
+ ],
+ "types": [
+  {
+   "id": "offline_base",
+   "name": "مشترك — اللعبة الأساسية",
+   "optionId": "offline_account",
+   "price": 11500,
+   "cost": 1250,
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_base",
+   "name": "خاص بك — اللعبة الأساسية",
+   "optionId": "online_account",
+   "price": 16500,
+   "cost": 12250,
+   "stock": 9999,
+   "isInfiniteStock": true
+  }
+ ],
+ "editions": [],
+ "dlcs": [],
+ "isActive": true,
+ "status": "Active",
+ "kind": "account",
+ "trade_value_iqd": 8500,
+ "store_offer_bonus_iqd": 1250,
+ "trade_enabled": true,
+ "trade_value_locked": false,
+ "id": "prd_bec7f58f8ef14dde",
+ "schema_version": 24,
+ "titleAr": "هادِس",
+ "compatibility": [
+  "Nintendo Switch 1",
+  "Nintendo Switch 2"
+ ],
+ "edition": "Standard",
+ "developer": "Supergiant Games",
+ "publisher": "Supergiant Games",
+ "metacriticUrl": "https://www.metacritic.com/game/hades/",
+ "opencriticRating": 94,
+ "userScore": 8.9,
+ "price_usd": 24.99,
+ "officialUrl": "https://www.supergiantgames.com/games/hades/",
+ "eshopUrl": "https://www.supergiantgames.com/games/hades/",
+ "gameIsOffline": true,
+ "gameIsOnline": false,
+ "gameLanguageLocked": false,
+ "description_short": "A fast-paced action roguelike about escaping the Underworld.",
+ "description_ar": "لعبة أكشن روغلايك سريعة من Supergiant Games، تحاول فيها الهروب من العالم السفلي عبر جولات متكررة مليئة بالأسلحة والـ boons والتطويرات، ومجهزة هنا كملف Switch 1.",
+ "videos": [
+  {
+   "title": "Official Trailer",
+   "url": "https://www.youtube.com/results?search_query=Hades+official+trailer"
+  }
+ ],
+ "nintendoEshopUrl": "https://www.supergiantgames.com/games/hades/",
+ "nintendoOnlineRequired": false,
+ "nintendoCloudSaves": true,
+ "nintendoGameKeyCard": false,
+ "nintendoPhysicalNeedsDownload": false,
+ "tvMode": true,
+ "tabletopMode": true,
+ "handheldMode": true,
+ "nintendoPlayModes": "TV mode / Tabletop mode / Handheld mode",
+ "nintendoNotes": "Prepared as the Switch 1 product file with Switch 2 compatibility reference.",
+ "switch2Enhanced": false,
+ "switch2Exclusive": false,
+ "switch2UpgradePrice": 0,
+ "switch2Features": [
+  "Playable on Switch 2 through compatibility",
+  "Excellent portable action runs",
+  "Highly replayable structure"
+ ],
+ "tagline": "Fight out of the Underworld, one run at a time.",
+ "fitFor": [
+  "Roguelike fans",
+  "Action game fans",
+  "Players who enjoy short repeatable sessions"
+ ],
+ "notFitFor": [
+  "Players who dislike repetition",
+  "Players seeking multiplayer"
+ ],
+ "playTimeMain": 22,
+ "playTimeFull": 80,
+ "editionsList": [
+  {
+   "name": "Regular / Offline",
+   "contents": [
+    {
+     "label": "Hades"
+    },
+    {
+     "label": "Regular / Offline"
+    },
+    {
+     "label": "Offline account access"
+    }
+   ]
+  },
+  {
+   "name": "Standard / 标准版",
+   "contents": [
+    {
+     "label": "Hades"
+    },
+    {
+     "label": "Standard / 标准版"
+    },
+    {
+     "label": "Online account access"
+    }
+   ]
+  }
+ ],
+ "gameplayPillars": [
+  {
+   "title": "Repeatable escape runs",
+   "description": "Every run through the Underworld offers new decisions and builds."
+  },
+  {
+   "title": "Fast action combat",
+   "description": "Weapons, dashes, and boons create highly responsive combat."
+  },
+  {
+   "title": "Build variety",
+   "description": "Godly blessings and upgrades lead to many play styles."
+  },
+  {
+   "title": "Narrative through repetition",
+   "description": "Characters and story progress across repeated attempts."
+  },
+  {
+   "title": "Long-term mastery",
+   "description": "Failure still contributes to progress and eventual improvement."
+  }
+ ],
+ "worldSummary": "The Greek Underworld is divided into themed regions filled with enemies, gods, allies, and escalating dangers.",
+ "storyChapters": [
+  {
+   "title": "Begin the escape",
+   "body": "Zagreus repeatedly tries to leave the Underworld."
+  },
+  {
+   "title": "Meet the Olympians",
+   "body": "Godly boons change each run and shape combat."
+  },
+  {
+   "title": "Strengthen through attempts",
+   "body": "Upgrades and practice slowly open stronger possibilities."
+  },
+  {
+   "title": "Build relationships",
+   "body": "Conversations and gifts deepen the cast over time."
+  },
+  {
+   "title": "Reach the truth",
+   "body": "The repeated structure gradually reveals the heart of the story."
+  }
+ ],
+ "galleryImages": [
+  {
+   "url": "/api/files/products/prd_bec7f58f8ef14dde/gallery-1-4c2318f68d48e85f.webp",
+   "alt": "Hades screenshot 1"
+  },
+  {
+   "url": "/api/files/products/prd_bec7f58f8ef14dde/gallery-2-653c41e3c62a6870.webp",
+   "alt": "Hades screenshot 2"
+  },
+  {
+   "url": "/api/files/products/prd_bec7f58f8ef14dde/gallery-3-6b0bb750f8779d75.webp",
+   "alt": "Hades screenshot 3"
+  },
+  {
+   "url": "/api/files/products/prd_bec7f58f8ef14dde/gallery-4-7ac294b35405f77c.webp",
+   "alt": "Hades screenshot 4"
+  },
+  {
+   "url": "/api/files/products/prd_bec7f58f8ef14dde/gallery-5-2d49ad222df3c046.webp",
+   "alt": "Hades screenshot 5"
+  },
+  {
+   "url": "/api/files/products/prd_bec7f58f8ef14dde/gallery-6-cae612351bb4f4a0.webp",
+   "alt": "Hades screenshot 6"
+  }
+ ],
+ "features": [
+  "One of the best modern roguelikes",
+  "Excellent combat feel",
+  "Great writing and characters",
+  "Very high replay value",
+  "Switch 1 product entry"
+ ],
+ "perfResolutionDocked": "1080p",
+ "perfResolutionHandheld": "720p",
+ "perfFps": "60",
+ "perfHdr": false,
+ "perfNotes": "Recorded as a Switch 1 profile with a Switch 2 compatibility reference.",
+ "devicePerformance": [
+  {
+   "device": "Nintendo Switch 1",
+   "deviceSlug": "nintendo-switch-1",
+   "deviceModel": "Nintendo Switch 1",
+   "hardwareId": "nintendo-switch-1",
+   "informationStatus": "Available",
+   "unavailableReason": "No unavailable reason. Performance profile is present for this device.",
+   "handheld": {
+    "supported": true,
+    "resolution": "720p",
+    "resolutionDynamic": false,
+    "renderingResolution": "720p",
+    "outputResolution": "720p",
+    "fps": "60",
+    "fpsMin": "60",
+    "fpsMax": "60",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "Handheld",
+    "notes": "Recorded as a Switch 1 profile with a Switch 2 compatibility reference."
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "1080p",
+    "resolutionDynamic": false,
+    "renderingResolution": "1080p",
+    "outputResolution": "1080p",
+    "fps": "60",
+    "fpsMin": "60",
+    "fpsMax": "60",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "TV",
+    "notes": "Recorded as a Switch 1 profile with a Switch 2 compatibility reference."
+   },
+   "modes": [
+    {
+     "name": "Default",
+     "handheldResolution": "720p",
+     "handheldFps": "60",
+     "tvResolution": "1080p",
+     "tvFps": "60",
+     "hdr": false,
+     "vrr": false,
+     "notes": "Recorded as a Switch 1 profile with a Switch 2 compatibility reference."
+    }
+   ],
+   "performanceNotes": "Recorded as a Switch 1 profile with a Switch 2 compatibility reference."
+  },
+  {
+   "device": "Nintendo Switch 2",
+   "deviceSlug": "nintendo-switch-2",
+   "deviceModel": "Nintendo Switch 2",
+   "hardwareId": "nintendo-switch-2",
+   "informationStatus": "Available",
+   "unavailableReason": "No unavailable reason. Performance profile is present for this device.",
+   "handheld": {
+    "supported": true,
+    "resolution": "720p",
+    "resolutionDynamic": false,
+    "renderingResolution": "720p",
+    "outputResolution": "720p",
+    "fps": "60",
+    "fpsMin": "60",
+    "fpsMax": "60",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "Handheld",
+    "notes": "Compatibility or alternate-platform reference only."
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "1080p",
+    "resolutionDynamic": false,
+    "renderingResolution": "1080p",
+    "outputResolution": "1080p",
+    "fps": "60",
+    "fpsMin": "60",
+    "fpsMax": "60",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "TV",
+    "notes": "Compatibility or alternate-platform reference only."
+   },
+   "modes": [
+    {
+     "name": "Default",
+     "handheldResolution": "720p",
+     "handheldFps": "60",
+     "tvResolution": "1080p",
+     "tvFps": "60",
+     "hdr": false,
+     "vrr": false,
+     "notes": "Compatibility or alternate-platform reference only."
+    }
+   ],
+   "performanceNotes": "Compatibility or alternate-platform reference only."
+  }
+ ],
+ "faq": [
+  {
+   "q": "Is Hades a roguelike?",
+   "a": "Yes. Repeated runs, randomized upgrades, and persistent progression define the experience."
+  },
+  {
+   "q": "Does the story advance after failure?",
+   "a": "Yes. The narrative continues to unfold across repeated attempts."
+  },
+  {
+   "q": "Why is it so replayable?",
+   "a": "Weapon choice, boon combinations, and evolving story beats keep runs fresh."
+  },
+  {
+   "q": "Is there multiplayer?",
+   "a": "No. Hades is a single-player action roguelike."
+  },
+  {
+   "q": "Why only two variants?",
+   "a": "Only Regular / Offline and Standard / Online were provided."
+  }
+ ],
+ "mpLocalPlayers": false,
+ "mpOnlinePlayers": false,
+ "mpCoop": false,
+ "mpCompetitive": false,
+ "mpLocalWireless": false,
+ "mpSplitScreen": false,
+ "boxContentsList": [],
+ "image": "",
+ "banner": "",
+ "schemaId": "",
+ "batchImport": true,
+ "createdAt": "2026-08-28T18:44:57.039Z",
+ "updatedAt": "2026-08-28T18:44:57.039Z"
+}
