@@ -4,6 +4,7 @@ import {
   getCatalogVersion,
   getStore,
   getStoreCacheVersion,
+  isStoreDegraded,
   updateStore,
   getAdminAvailabilityStatus,
   getAdminAvailabilityConfig,
@@ -227,6 +228,34 @@ export const Route = createFileRoute("/api/data")({
           const store = await getStore();
           const duration = Date.now() - startTime;
 
+          /*
+            The catalogue could not be read and there was nothing left to serve
+            in its place. Answering 200 with an empty `products` array is what
+            put bare section headings on the storefront: the client cannot tell
+            it from a shop with no stock, so it renders the emptiness, the edge
+            caches it for five seconds and the service worker keeps it for
+            hours. A 503 that is never stored says the true thing — come back
+            in a moment — and every cache along the way declines to keep it.
+          */
+          if (isStoreDegraded(store)) {
+            console.error(
+              `[CATALOG_UNAVAILABLE] reqId=${reqId} duration=${duration}ms — refusing to serve an empty catalogue`,
+            );
+            return new Response(
+              JSON.stringify({ error: "catalog_unavailable", ref: reqId, retryable: true }),
+              {
+                status: 503,
+                headers: {
+                  "content-type": "application/json; charset=utf-8",
+                  "cache-control": "no-store",
+                  "retry-after": "2",
+                  "x-data-source": "degraded",
+                  vary: "cookie",
+                },
+              },
+            );
+          }
+
           if (duration > 2000) {
             console.warn(`[SLOW_REQUEST] /api/data reqId=${reqId} duration=${duration}ms url=${request.url}`);
           } else {
@@ -257,16 +286,33 @@ export const Route = createFileRoute("/api/data")({
           */
           const catalogVersion = await getCatalogVersion();
           const etag = etagFor(`${catalogVersion}:${payload}`);
+          /*
+            Only a catalogue with something in it is worth holding at the edge.
+            A shop with no products has no traffic to protect, and if emptiness
+            ever gets here by a route this file does not know about, five
+            seconds of it must not be handed to everyone who asks.
+          */
+          const servesProducts = (store.products?.length ?? 0) > 0;
           const headers: Record<string, string> = {
             "content-type": "application/json; charset=utf-8",
             etag,
             "cache-control": viewer?.isAdmin
               ? "private, no-store"
-              : "public, max-age=0, s-maxage=5, must-revalidate",
+              : servesProducts
+                ? "public, max-age=0, s-maxage=5, must-revalidate"
+                : "no-store",
             "server-timing": `db;dur=${duration}`,
             // Diagnostics: which catalogue this is, and where it came from.
             // No secrets — a version number and the name of a code path.
             "x-catalog-version": String(catalogVersion),
+            /*
+              How many products the catalogue this answer was built from held.
+              The service worker keeps a response only when this is above zero,
+              so a momentary emptiness cannot become hours of an empty shop on
+              somebody's phone. Read from a header because parsing the payload
+              on every request costs more than the check is worth.
+            */
+            "x-catalog-size": String(store.products?.length ?? 0),
             "x-data-source": viewer?.isAdmin ? "d1:admin" : "d1:public",
             vary: "cookie",
           };

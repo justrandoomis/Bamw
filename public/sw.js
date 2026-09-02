@@ -1,7 +1,14 @@
 /* Banana Store service worker — Cloudflare-only asset + data caching. */
 const VERSION = "banana-v9";
 const IMAGE_CACHE = `${VERSION}-images`;
-const DATA_CACHE = `${VERSION}-data`;
+/*
+  The generation is on the data cache alone. Devices that visited while the
+  server was serving an empty catalogue as a success are holding one, and it is
+  good on their machine for six hours; renaming the cache drops it on the next
+  activation. Bumping VERSION instead would take every cached image with it,
+  which this fault gives no reason to do.
+*/
+const DATA_CACHE = `${VERSION}-data2`;
 
 self.addEventListener("install", (event) => {
   event.waitUntil(self.skipWaiting());
@@ -13,7 +20,15 @@ self.addEventListener("activate", (event) => {
       .keys()
       .then((keys) =>
         Promise.all(
-          keys.filter((key) => !key.startsWith(VERSION)).map((key) => caches.delete(key)),
+          keys
+            .filter(
+              (key) =>
+                !key.startsWith(VERSION) ||
+                // A superseded data cache of the current version, which is how
+                // a catalogue cached during an outage is dropped.
+                (key.includes("-data") && key !== DATA_CACHE),
+            )
+            .map((key) => caches.delete(key)),
         ),
       )
       .then(() => self.clients.claim()),
@@ -50,9 +65,39 @@ async function staleWhileRevalidate(cacheName, request) {
 */
 const DATA_MAX_OFFLINE_AGE_MS = 6 * 60 * 60 * 1000;
 
+/*
+  Whether a stored catalogue response came from a catalogue that had products.
+
+  The server stamps every `/api/data` answer with how many products the store
+  it was built from held. A response stamped zero is either a shop with nothing
+  in it or — the case this exists for — a read that failed and was served as if
+  it had succeeded. Keeping one turns a momentary fault into six hours of an
+  empty storefront on that device, so it is neither stored nor served. Read
+  from a header rather than by parsing the body: this runs on every catalogue
+  request, and the payload is hundreds of kilobytes.
+*/
+function catalogueHasProducts(response) {
+  const stamped = response?.headers?.get("x-catalog-size");
+  if (stamped === null || stamped === undefined) return true; // not a catalogue response
+  return Number(stamped) > 0;
+}
+
 /** Network first for data queries. Never serves stale data to an online visitor. */
 async function networkFirst(cacheName, request) {
   const cache = await caches.open(cacheName);
+
+  const servableCached = async () => {
+    const cached = await cache.match(request);
+    if (!cached) return undefined;
+    const cachedAt = Number(cached.headers.get("x-sw-cached-at") || 0);
+    const tooOld = cachedAt && Date.now() - cachedAt > DATA_MAX_OFFLINE_AGE_MS;
+    if (tooOld || !catalogueHasProducts(cached)) {
+      await cache.delete(request);
+      return undefined;
+    }
+    return cached;
+  };
+
   try {
     const response = await fetch(request);
 
@@ -62,13 +107,34 @@ async function networkFirst(cacheName, request) {
       refers to is served instead — which is what 304 means.
     */
     if (response && response.status === 304) {
-      const cached = await cache.match(request);
+      const cached = await servableCached();
       if (cached) return cached;
-      // No cached body to pair with the validator: ask again unconditionally.
+      // No usable body to pair with the validator: ask again unconditionally.
       return fetch(new Request(request.url, { cache: "reload", credentials: request.credentials }));
     }
 
-    if (response && response.status === 200) {
+    /*
+      The server says it could not read the catalogue (503) or failed outright.
+      The last good copy is a better answer than an error page, and it is
+      bounded by the same six hours as the offline case.
+    */
+    if (response && response.status >= 500) {
+      const cached = await servableCached();
+      if (cached) return cached;
+      return response;
+    }
+
+    /*
+      The cache is keyed by URL alone, and `/api/data` answers admins and
+      shoppers at the same URL — an admin payload carries hidden products and
+      costs, so storing one lets it be replayed to the storefront on that
+      device. The server already marks those responses `private, no-store`;
+      honour it rather than keeping a copy it asked us not to keep.
+    */
+    const directive = response?.headers?.get("cache-control") || "";
+    const mayStore = !/no-store|private/i.test(directive);
+
+    if (response && response.status === 200 && mayStore && catalogueHasProducts(response)) {
       // The stored copy is stamped so its age can be judged on the way out.
       const body = await response.clone().blob();
       const headers = new Headers(response.headers);
@@ -77,12 +143,8 @@ async function networkFirst(cacheName, request) {
     }
     return response;
   } catch (error) {
-    const cached = await cache.match(request);
-    if (cached) {
-      const cachedAt = Number(cached.headers.get("x-sw-cached-at") || 0);
-      if (!cachedAt || Date.now() - cachedAt <= DATA_MAX_OFFLINE_AGE_MS) return cached;
-      await cache.delete(request);
-    }
+    const cached = await servableCached();
+    if (cached) return cached;
     throw error;
   }
 }
