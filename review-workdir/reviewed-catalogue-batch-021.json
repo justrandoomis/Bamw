@@ -1,0 +1,51 @@
+{
+ "batch": "021",
+ "apply": false,
+ "games": [
+  {
+   "id": "prd_7f0b34dece8f4245",
+   "slug": "raidou-remastered-the-mystery-of-the-soulless-army",
+   "baseHash": "90174ffd9027fb029556cd9ec5658c967397a08f023e8ea8a2225b4560d98688",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  },
+  {
+   "id": "prd_5e9f053ac60f4412",
+   "slug": "red-dead-redemption-switch1",
+   "baseHash": "870011a1d71e0c85cd4114c8fbe8ec50c85e640266f3898b4decba86d96aab24",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  },
+  {
+   "id": "prd_7037e22716fa4681",
+   "slug": "resident-evil-requiem",
+   "baseHash": "cea3eb4e5a97ac250cca45115051f88ace638021d97ffb8236740e8fcc212866",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  },
+  {
+   "id": "prd_e13531f82f00492d",
+   "slug": "rise-of-the-tomb-raider-20-year-celebration-switch-2",
+   "baseHash": "a3227b32dc14210d8491a9466a596ea6035ec6709f545248e2bc0aec11d06ec9",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  },
+  {
+   "id": "prd_1f71e51f89264fbc",
+   "slug": "rotwood",
+   "baseHash": "b122316b04ea487cf46e42046284b29a74d93b2b44b9d46e3ca9c5ee6e15235d",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  }
+ ]
+}

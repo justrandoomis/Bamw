@@ -1,0 +1,2957 @@
+{
+ "batch": "021",
+ "generatedAt": "2026-09-02T03:47:03.174Z",
+ "totalGames": 145,
+ "reviewedSoFar": 97,
+ "games": [
+  {
+   "id": "prd_7f0b34dece8f4245",
+   "slug": "raidou-remastered-the-mystery-of-the-soulless-army",
+   "title": "RAIDOU Remastered: The Mystery of the Soulless Army",
+   "platform": "both",
+   "isHidden": false,
+   "hash": "90174ffd9027fb029556cd9ec5658c967397a08f023e8ea8a2225b4560d98688",
+   "images": [
+    {
+     "role": "front-box",
+     "field": "cartridgeImage",
+     "url": "https://banan.to/api/files/products/prd_7f0b34dece8f4245/cartridgeImage-bf35d334b0e0294c.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "front-box",
+     "field": "box_front_url",
+     "url": "https://i5.walmartimages.com/seo/RAIDOU-Remastered-The-Mystery-of-the-Soulless-Army-Nintendo-Switch-2_c7dbe8a2-1296-44a9-8062-18e90326ff20.b03da43df6e4ca242506c0280524fd5d.jpeg?odnBg=FFFFFF&odnHeight=1200&odnWidth=1200",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 179781,
+     "width": 1200,
+     "height": 1200,
+     "thumb": "review-workdir/thumbs/batch-021/raidou-remastered-the-mystery-of-the-soulless-army__front-box-1.png"
+    },
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://banan.to/api/files/products/prd_7f0b34dece8f4245/nintendoCardImage-d38c8715039edaa6.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 678041,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-021/raidou-remastered-the-mystery-of-the-soulless-army__square-card-2.png"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://banan.to/api/files/products/prd_7f0b34dece8f4245/coverImage-bf35d334b0e0294c.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "listing",
+     "field": "image",
+     "url": "https://banan.to/api/files/products/prd_7f0b34dece8f4245/coverImage-bf35d334b0e0294c.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[0]",
+     "url": "https://banan.to/api/files/products/prd_7f0b34dece8f4245/bannerImages-1-057eb0047d14a955.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 649540,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-021/raidou-remastered-the-mystery-of-the-soulless-army__banner-5.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[1]",
+     "url": "https://banan.to/api/files/products/prd_7f0b34dece8f4245/bannerImages-2-3c499b9753989a09.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 1011302,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-021/raidou-remastered-the-mystery-of-the-soulless-army__banner-6.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://img-eshop.cdn.nintendo.net/i/7df0dc4d521580ee665243804c5209dd5f3dc20807e424ee4e9f301908833e72.jpg",
+     "status": 200,
+     "contentType": "application/octet-stream",
+     "bytes": 1728357,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-021/raidou-remastered-the-mystery-of-the-soulless-army__gallery-7.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[1]",
+     "url": "https://img-eshop.cdn.nintendo.net/i/45f5b1ccef4aed4db2f53539daf415945f49689fd90ffa3c48c524dbb6db8860.jpg",
+     "status": 200,
+     "contentType": "application/octet-stream",
+     "bytes": 1868091,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-021/raidou-remastered-the-mystery-of-the-soulless-army__gallery-8.png"
+    }
+   ],
+   "record": {
+    "id": "prd_7f0b34dece8f4245",
+    "title": "RAIDOU Remastered: The Mystery of the Soulless Army",
+    "titleEn": "RAIDOU Remastered: The Mystery of the Soulless Army",
+    "titleKu": "RAIDOU Remastered: The Mystery of the Soulless Army",
+    "slug": "raidou-remastered-the-mystery-of-the-soulless-army",
+    "description": "A modernized remaster of Devil Summoner: Raidou Kuzunoha vs. The Soulless Army with a new UI, full voice acting, expanded environments, improved visuals and an overhauled real-time combat system. Summon from more than 120 demons while solving a supernatural mystery in the Capital.",
+    "descriptionEn": "A modernized remaster of Devil Summoner: Raidou Kuzunoha vs. The Soulless Army with a new UI, full voice acting, expanded environments, improved visuals and an overhauled real-time combat system. Summon from more than 120 demons while solving a supernatural mystery in the Capital.",
+    "descriptionKu": "A modernized remaster of Devil Summoner: Raidou Kuzunoha vs. The Soulless Army with a new UI, full voice acting, expanded environments, improved visuals and an overhauled real-time combat system. Summon from more than 120 demons while solving a supernatural mystery in the Capital.",
+    "cartridgeImage": "/api/files/products/prd_7f0b34dece8f4245/cartridgeImage-bf35d334b0e0294c.avif",
+    "nintendoCardImage": "/api/files/products/prd_7f0b34dece8f4245/nintendoCardImage-d38c8715039edaa6.jpg",
+    "coverHiResImage": "",
+    "coverImage": "/api/files/products/prd_7f0b34dece8f4245/coverImage-bf35d334b0e0294c.avif",
+    "bannerImages": [
+     "/api/files/products/prd_7f0b34dece8f4245/bannerImages-1-057eb0047d14a955.jpg",
+     "/api/files/products/prd_7f0b34dece8f4245/bannerImages-2-3c499b9753989a09.jpg"
+    ],
+    "gallery": [],
+    "youtubeTrailer": "https://www.youtube.com/watch?v=LEP_7CLiV8c",
+    "releaseDate": "2025-06-19",
+    "ageRating": "PEGI 7",
+    "metacriticRating": 76,
+    "genres": [
+     "Action RPG",
+     "Supernatural",
+     "Detective"
+    ],
+    "platform": "both",
+    "size": 12.8,
+    "numberOfPlayers": "1",
+    "supportedLanguages": "English, French, German, Italian, Spanish",
+    "hardwareModel": "",
+    "colorEdition": "",
+    "storageCapacity": "",
+    "screenSpecs": "",
+    "batteryLife": "",
+    "boxContents": [],
+    "boxContentsText": "",
+    "warrantyCondition": "",
+    "connectivity": "",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "Global",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "",
+    "redemptionSteps": [],
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 8500,
+    "cost": 1250,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": false,
+    "displayOrder": 0,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "مشترك",
+      "description": "Play using the supplied account under the store's offline-account activation method.",
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_account",
+      "name": "خاص بك",
+      "description": "Online-account option with internet-connected account use where supported by the game/service.",
+      "isInfiniteStock": true
+     }
+    ],
+    "types": [
+     {
+      "id": "standard_offline",
+      "name": "مشترك — اللعبة الأساسية",
+      "optionId": "offline_account",
+      "price": 8500,
+      "cost": 1250,
+      "description": "Standard game, Offline Account. Supplier Regular price: ¥6.80; purchase cost converted at 1 CNY = 220 IQD and rounded down to nearest 250 IQD.",
+      "isInfiniteStock": true
+     },
+     {
+      "id": "standard_online",
+      "name": "خاص بك — اللعبة الأساسية",
+      "optionId": "online_account",
+      "price": 25000,
+      "cost": 14250,
+      "description": "Standard game, Online Account. Supplier Standard price: ¥65.60; purchase cost converted at 1 CNY = 220 IQD and rounded down to nearest 250 IQD.",
+      "isInfiniteStock": true
+     },
+     {
+      "id": "dlc_offline",
+      "name": "مشترك — مع الإضافات",
+      "optionId": "offline_account",
+      "price": 12000,
+      "cost": 2500,
+      "description": "Offline Account with the listed DLC/Deluxe content. Supplier Special price: ¥11.70.",
+      "isInfiniteStock": true
+     },
+     {
+      "id": "dlc_online",
+      "name": "خاص بك — مع الإضافات",
+      "optionId": "online_account",
+      "price": 28000,
+      "cost": 18500,
+      "description": "Online Account with the listed DLC/Deluxe content. Supplier Deluxe price: ¥85.20.",
+      "isInfiniteStock": true
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "active",
+    "kind": "account",
+    "trade_value_iqd": 40000,
+    "store_offer_bonus_iqd": 0,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "schema_version": 22,
+    "titleAr": "رايدو ريماترد: لغز جيش بلا أرواح",
+    "compatibility": [
+     "Nintendo Switch",
+     "Nintendo Switch 2"
+    ],
+    "edition": "Standard",
+    "developer": "ATLUS",
+    "publisher": "SEGA",
+    "opencriticRating": 79,
+    "userScore": 8.1,
+    "officialUrl": "https://www.atlus.com/raidou/",
+    "gameIsOffline": true,
+    "gameIsOnline": true,
+    "gameLanguageLocked": false,
+    "description_short": "ATLUS revives the supernatural detective action RPG with modern visuals, full voice acting, quality-of-life upgrades and a heavily revised battle system.",
+    "description_ar": "إعادة إتقان موسعة للعبة Devil Summoner: Raidou Kuzunoha vs. The Soulless Army. يلعب رايدو دور محقق ومتخصص في استدعاء الشياطين، ويتتبع قضية اختطاف تتحول إلى مؤامرة واسعة داخل العاصمة والعالم المظلم.",
+    "box_front_url": "https://i5.walmartimages.com/seo/RAIDOU-Remastered-The-Mystery-of-the-Soulless-Army-Nintendo-Switch-2_c7dbe8a2-1296-44a9-8062-18e90326ff20.b03da43df6e4ca242506c0280524fd5d.jpeg?odnBg=FFFFFF&odnHeight=1200&odnWidth=1200",
+    "videos": [
+     {
+      "title": "Launch Trailer",
+      "url": "https://www.youtube.com/watch?v=LEP_7CLiV8c"
+     }
+    ],
+    "nintendoEshopUrl": "https://www.nintendo.com/au/games/nintendo-switch-2/raidou-remastered-the-mystery-of-the-soulless-army/",
+    "nintendoOnlineRequired": false,
+    "nintendoCloudSaves": true,
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": true,
+    "nintendoPlayModes": "TV Mode, Tabletop Mode, Handheld Mode",
+    "switch2Features": [
+     "Native Switch 2 release",
+     "1920x1080 target in handheld mode",
+     "1920x1080 target in TV mode",
+     "60 FPS target on Switch 2",
+     "Full English and Japanese voice acting",
+     "Save Data Cloud",
+     "Demo with save transfer",
+     "Improved loading and modernized UI"
+    ],
+    "tagline": "Undertake the case of the century in a supernatural Taisho-era mystery.",
+    "fitFor": [
+     "Fans of Shin Megami Tensei and Devil Summoner",
+     "Players who enjoy action RPG combat with demon allies",
+     "Players interested in supernatural detective stories",
+     "Players wanting a smooth 60 FPS Switch 2 version"
+    ],
+    "notFitFor": [
+     "Players looking for multiplayer",
+     "Players who dislike older narrative structures despite modernization"
+    ],
+    "playTimeMain": 19,
+    "playTimeFull": 38,
+    "editionsList": [
+     {
+      "name": "Standard Edition",
+      "contents": [
+       {
+        "label": "Base game"
+       }
+      ]
+     },
+     {
+      "name": "Digital Deluxe Edition",
+      "contents": [
+       {
+        "label": "Base game"
+       },
+       {
+        "label": "Kuzunoha Village Trainings"
+       },
+       {
+        "label": "Demons of the Aril Rift"
+       },
+       {
+        "label": "Guest Demons Pack"
+       },
+       {
+        "label": "Skill Book Pack"
+       },
+       {
+        "label": "Survival Pack"
+       }
+      ]
+     }
+    ],
+    "gameplayPillars": [
+     {
+      "title": "Devil Summoner Combat",
+      "description": "Fight in real time using sword, gun, defensive actions and summoned demon allies."
+     },
+     {
+      "title": "Detective Investigation",
+      "description": "Question witnesses, inspect scenes and use demon Investigation Skills to solve supernatural cases."
+     },
+     {
+      "title": "Demon Collection",
+      "description": "Recruit, fuse and develop more than 120 demons to build specialized combat and investigation teams."
+     },
+     {
+      "title": "Taisho Capital Exploration",
+      "description": "Move between a stylized 1930s-inspired Capital and the dangerous Dark Realm."
+     }
+    ],
+    "worldSummary": "A stylized alternate Taisho-era Capital inspired by 1930s Tokyo is connected to the Dark Realm, a dangerous supernatural layer inhabited by demons. Raidou moves between investigation and combat as the case expands from a disappearance into a national conspiracy.",
+    "storyChapters": [
+     {
+      "title": "A Strange Request",
+      "body": "A young heiress visits the Narumi Detective Agency with a shocking request before being kidnapped."
+     },
+     {
+      "title": "The Dark Realm",
+      "body": "Raidou investigates the Capital and a demon-filled parallel realm while tracking the missing girl."
+     },
+     {
+      "title": "A National Conspiracy",
+      "body": "The case expands far beyond a disappearance and threatens the future of the entire nation."
+     }
+    ],
+    "galleryImages": [
+     {
+      "url": "https://img-eshop.cdn.nintendo.net/i/7df0dc4d521580ee665243804c5209dd5f3dc20807e424ee4e9f301908833e72.jpg",
+      "alt": "Distinct product/game media image 1; separate from the primary cover and square-card roles."
+     },
+     {
+      "url": "https://img-eshop.cdn.nintendo.net/i/45f5b1ccef4aed4db2f53539daf415945f49689fd90ffa3c48c524dbb6db8860.jpg",
+      "alt": "Distinct product/game media image 2; separate from the primary cover and square-card roles."
+     }
+    ],
+    "features": [
+     "Faithful remaster with revamped visuals and audio",
+     "Completely overhauled real-time battle system",
+     "Full voice acting",
+     "Expanded 3D environments",
+     "More than 120 demons to summon",
+     "Supernatural detective investigation",
+     "Taisho-era alternate-history Tokyo setting",
+     "Quality-of-life improvements and redesigned UI",
+     "Nintendo Switch 2 version targets 1080p/60 FPS in both handheld and TV modes"
+    ],
+    "perfResolutionDocked": "Switch 2: 1920x1080; Switch: 1920x1080 target",
+    "perfResolutionHandheld": "Switch 2: 1920x1080; Switch: 1280x720 target",
+    "perfFps": "Switch 2: 60 FPS; Switch: 30-60 FPS target",
+    "perfNotes": "ATLUS officially states that the Nintendo Switch 2 version targets 60 FPS at 1920x1080 in both TV and handheld modes. The Nintendo Switch version targets 30-60 FPS, 1080p docked and 720p handheld.",
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "hardwareId": "prd_acf4c89908764c62",
+      "informationStatus": "verified",
+      "handheld": {
+       "supported": true,
+       "resolution": "1920x1080",
+       "resolutionDynamic": false,
+       "outputResolution": "1920x1080",
+       "fps": "60",
+       "fpsMin": "60",
+       "fpsMax": "60"
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1920x1080",
+       "resolutionDynamic": false,
+       "outputResolution": "1920x1080",
+       "fps": "60",
+       "fpsMin": "60",
+       "fpsMax": "60"
+      },
+      "sourceName": "ATLUS Official Q&A",
+      "sourceUrl": "https://www.atlus.co.jp/news/32532/",
+      "verificationStatus": "verified"
+     }
+    ],
+    "downloadSizeGb": 12.8,
+    "requiredSpaceGb": 12.8,
+    "microSdRecommended": false,
+    "languagesAudio": [
+     "Japanese",
+     "English"
+    ],
+    "languagesText": [
+     "English",
+     "French",
+     "German",
+     "Italian",
+     "Spanish"
+    ],
+    "arabicSupport": false,
+    "mpLocalPlayers": false,
+    "mpOnlinePlayers": false,
+    "mpCoop": false,
+    "mpCompetitive": false,
+    "mpSplitScreen": false,
+    "mpLocalWireless": false,
+    "dlc": [
+     {
+      "name": "DLC content and bonus packs",
+      "description": "The remaster has optional DLC and bonus content; exact availability varies by region and storefront."
+     }
+    ],
+    "guides": [
+     {
+      "title": "Official RAIDOU Site",
+      "summary": "Game systems, characters, media and edition details.",
+      "url": "https://asia.sega.com/raidou/en/"
+     },
+     {
+      "title": "Official Patch Notes",
+      "summary": "Patch 1.10 and demo information.",
+      "url": "https://asia.sega.com/raidou/en/news/"
+     },
+     {
+      "title": "Deku Deals",
+      "summary": "Completion-time, review aggregates and release data.",
+      "url": "https://www.dekudeals.com/items/raidou-remastered-the-mystery-of-the-soulless-army"
+     }
+    ],
+    "completionMain": 19,
+    "completionExtras": 27,
+    "completionAll": 38,
+    "faq": [
+     {
+      "q": "Is RAIDOU Remastered the same game on Switch and Switch 2?",
+      "a": "The content is fundamentally the same remaster, but Switch 2 has its own version and substantially stronger performance targets."
+     },
+     {
+      "q": "What is the Switch 2 performance target?",
+      "a": "ATLUS lists 1920x1080 and 60 FPS targets in both handheld and TV modes."
+     },
+     {
+      "q": "Does it have English voice acting?",
+      "a": "Yes. The remaster includes newly added Japanese and English voiceover."
+     },
+     {
+      "q": "How long is the story?",
+      "a": "Crowdsourced completion data places the main story around 19 hours, around 27 hours with extras and roughly 38 hours for completionist play."
+     },
+     {
+      "q": "Is there a demo?",
+      "a": "Yes. A demo lets players progress to the start of Episode 2 and transfer save data to the full game."
+     },
+     {
+      "q": "Does it have paid DLC?",
+      "a": "Yes. The Digital Deluxe content includes training, demon, skill-book and survival packs."
+     }
+    ],
+    "verdictScore": 8.5,
+    "verdictSummary": "A polished modernization of a cult ATLUS action RPG, with the Switch 2 version standing out for its official 1080p/60 FPS target.",
+    "verdictPros": [
+     "Excellent 1080p/60 FPS Switch 2 presentation",
+     "Distinct supernatural detective identity",
+     "Large demon roster",
+     "Improved combat and quality-of-life systems"
+    ],
+    "verdictCons": [
+     "Single-player only",
+     "Switch and Switch 2 versions use separate software/save paths"
+    ],
+    "reviews": [
+     {
+      "source": "Metacritic",
+      "score": "76/100",
+      "quote": "Generally favorable response to the remaster's modernization and distinctive setting.",
+      "url": "https://www.metacritic.com/"
+     },
+     {
+      "source": "OpenCritic",
+      "score": "79/100",
+      "quote": "Critics broadly praised the improved combat and preservation of the original's unusual detective-RPG identity.",
+      "url": "https://opencritic.com/"
+     },
+     {
+      "source": "Deku Deals user score",
+      "score": "8.1/10",
+      "quote": "Player-facing aggregate data lists an 8.1 user score.",
+      "url": "https://www.dekudeals.com/items/raidou-remastered-the-mystery-of-the-soulless-army"
+     }
+    ],
+    "timeline": [
+     {
+      "date": "2006-03-02",
+      "title": "Original game release",
+      "body": "Devil Summoner: Raidou Kuzunoha vs. The Soulless Army released in Japan."
+     },
+     {
+      "date": "2025-06-19",
+      "title": "RAIDOU Remastered launch",
+      "body": "The remaster launched on Switch, Switch 2, PlayStation, Xbox and PC."
+     },
+     {
+      "date": "2025-09-16",
+      "title": "Patch 1.10",
+      "body": "Major quality-of-life, combat and New Game+ improvements were released."
+     },
+     {
+      "date": "2025-11",
+      "title": "Playable demo",
+      "body": "A demo covering the opening through the start of Episode 2 was released with save transfer."
+     }
+    ],
+    "patchNotes": [
+     {
+      "version": "1.12",
+      "date": "2025-10-15",
+      "body": "Security/engine update; no substantive game-content changes."
+     },
+     {
+      "version": "1.10",
+      "date": "2025-09-16",
+      "body": "Added MAG Drain to gun attacks, hold-input accessibility, remapping, difficulty retry, improved fusion/alchemy flow, Devil Chart completion display and numerous QOL/battle changes."
+     },
+     {
+      "version": "Launch",
+      "date": "2025-06-19",
+      "body": "Initial worldwide release of the remaster."
+     }
+    ],
+    "soundtrack": [
+     {
+      "title": "RAIDOU Remastered Original Soundtrack / arranged score",
+      "url": "https://asia.sega.com/raidou/en/"
+     },
+     {
+      "title": "Devil Summoner series music",
+      "url": "https://www.atlus.com/"
+     }
+    ],
+    "seriesName": "Devil Summoner / Shin Megami Tensei",
+    "seriesEntries": [
+     "Devil Summoner: Raidou Kuzunoha vs. The Soulless Army",
+     "Devil Summoner 2: Raidou Kuzunoha vs. King Abaddon",
+     "RAIDOU Remastered: The Mystery of the Soulless Army"
+    ],
+    "studioName": "ATLUS",
+    "studioUrl": "https://www.atlus.com/",
+    "studioLocation": "Tokyo, Japan",
+    "studioAbout": "ATLUS is a Japanese game developer and publisher known for Shin Megami Tensei, Persona and Devil Summoner. RAIDOU Remastered modernizes the 2006 action RPG with full voice acting, expanded environments, a new UI and overhauled real-time combat.",
+    "setupNeeds": [
+     "Nintendo Switch 2 system required for the Nintendo Switch 2 version.",
+     "Internet connection is required for digital download, updates and online/service features where applicable.",
+     "Nintendo Account required for Nintendo eShop purchase/download.",
+     "Sufficient internal storage or compatible microSD Express storage required.",
+     "Nintendo Switch Online membership is required only for game-specific online multiplayer/features that explicitly use it."
+    ],
+    "sources": [
+     {
+      "name": "ATLUS/SEGA Official",
+      "url": "https://asia.sega.com/raidou/en/"
+     },
+     {
+      "name": "ATLUS News",
+      "url": "https://asia.sega.com/raidou/en/news/"
+     },
+     {
+      "name": "SEGA Release",
+      "url": "https://www.sega.co.jp/en/release/250619_1.html"
+     },
+     {
+      "name": "Deku Deals",
+      "url": "https://www.dekudeals.com/items/raidou-remastered-the-mystery-of-the-soulless-army"
+     }
+    ],
+    "boxContentsList": "[Circular]",
+    "image": "/api/files/products/prd_7f0b34dece8f4245/coverImage-bf35d334b0e0294c.avif",
+    "banner": "/api/files/products/prd_7f0b34dece8f4245/bannerImages-1-057eb0047d14a955.jpg",
+    "schemaId": "",
+    "badgeEn": "وفر 40%",
+    "badgeKu": "وفر 40%",
+    "featuresEn": [
+     "Faithful remaster with revamped visuals and audio",
+     "Completely overhauled real-time battle system",
+     "Full voice acting",
+     "Expanded 3D environments",
+     "More than 120 demons to summon",
+     "Supernatural detective investigation",
+     "Taisho-era alternate-history Tokyo setting",
+     "Quality-of-life improvements and redesigned UI",
+     "Nintendo Switch 2 version targets 1080p/60 FPS in both handheld and TV modes"
+    ],
+    "featuresKu": [
+     "Faithful remaster with revamped visuals and audio",
+     "Completely overhauled real-time battle system",
+     "Full voice acting",
+     "Expanded 3D environments",
+     "More than 120 demons to summon",
+     "Supernatural detective investigation",
+     "Taisho-era alternate-history Tokyo setting",
+     "Quality-of-life improvements and redesigned UI",
+     "Nintendo Switch 2 version targets 1080p/60 FPS in both handheld and TV modes"
+    ],
+    "sales": 0,
+    "images": [],
+    "modes": [],
+    "updatedAt": "2026-08-28T22:04:59.470Z"
+   }
+  },
+  {
+   "id": "prd_5e9f053ac60f4412",
+   "slug": "red-dead-redemption-switch1",
+   "title": "Red Dead Redemption",
+   "platform": "switch1",
+   "isHidden": false,
+   "hash": "870011a1d71e0c85cd4114c8fbe8ec50c85e640266f3898b4decba86d96aab24",
+   "images": [
+    {
+     "role": "front-box",
+     "field": "cartridgeImage",
+     "url": "https://banan.to/api/files/products/prd_5e9f053ac60f4412/cartridgeImage-6783fb284daa9ffe.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 157803,
+     "width": 866,
+     "height": 1421,
+     "thumb": "review-workdir/thumbs/batch-021/red-dead-redemption-switch1__front-box-0.png"
+    },
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://banan.to/api/files/products/prd_5e9f053ac60f4412/nintendoCardImage-51f97aee53b93db5.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 300297,
+     "width": 1024,
+     "height": 1024,
+     "thumb": "review-workdir/thumbs/batch-021/red-dead-redemption-switch1__square-card-1.png"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://banan.to/api/files/products/prd_5e9f053ac60f4412/coverImage-ee8fe4d4d7a17ce0.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 810463,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-021/red-dead-redemption-switch1__detail-cover-2.png"
+    },
+    {
+     "role": "3d-texture",
+     "field": "coverHiResImage",
+     "url": "https://banan.to/api/files/products/prd_5e9f053ac60f4412/coverHiResImage-b85c1679167369f8.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 2429627,
+     "width": 4000,
+     "height": 3086,
+     "thumb": "review-workdir/thumbs/batch-021/red-dead-redemption-switch1__3d-texture-3.png"
+    },
+    {
+     "role": "listing",
+     "field": "image",
+     "url": "https://banan.to/api/files/products/prd_5e9f053ac60f4412/image-ee8fe4d4d7a17ce0.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 810463,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-021/red-dead-redemption-switch1__listing-4.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[0]",
+     "url": "https://banan.to/api/files/products/prd_5e9f053ac60f4412/bannerImages-d56880d8159cbd7a.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 1203256,
+     "width": 1920,
+     "height": 620,
+     "thumb": "review-workdir/thumbs/batch-021/red-dead-redemption-switch1__banner-5.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[1]",
+     "url": "https://banan.to/api/files/products/prd_5e9f053ac60f4412/bannerImages-055a9a506da9752a.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 1155631,
+     "width": 1920,
+     "height": 1200,
+     "thumb": "review-workdir/thumbs/batch-021/red-dead-redemption-switch1__banner-6.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[2]",
+     "url": "https://banan.to/api/files/products/prd_5e9f053ac60f4412/bannerImages-ccc24b1eafdc50cc.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 5108687,
+     "width": 3840,
+     "height": 2160,
+     "thumb": "review-workdir/thumbs/batch-021/red-dead-redemption-switch1__banner-7.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://images.launchbox-app.com/61e32eec-0b93-4343-978e-861688806b79.png",
+     "status": 200,
+     "contentType": "image/png",
+     "bytes": 2731105,
+     "width": 2550,
+     "height": 1434,
+     "thumb": "review-workdir/thumbs/batch-021/red-dead-redemption-switch1__gallery-8.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[1]",
+     "url": "https://images.launchbox-app.com/e5e2a811-0fc5-4aaa-8875-c7e6672cc384.png",
+     "status": 200,
+     "contentType": "image/png",
+     "bytes": 3026290,
+     "width": 2550,
+     "height": 1434,
+     "thumb": "review-workdir/thumbs/batch-021/red-dead-redemption-switch1__gallery-9.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[2]",
+     "url": "https://images.launchbox-app.com/18b8adab-68f9-4a98-a6a7-693e51b0ca63.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 1537728,
+     "width": 3840,
+     "height": 2160,
+     "thumb": "review-workdir/thumbs/batch-021/red-dead-redemption-switch1__gallery-10.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[3]",
+     "url": "https://images.launchbox-app.com/a29cd8bb-0a25-4808-8d69-926be0866f6e.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 2505848,
+     "width": 3840,
+     "height": 2160,
+     "thumb": "review-workdir/thumbs/batch-021/red-dead-redemption-switch1__gallery-11.png"
+    }
+   ],
+   "record": {
+    "id": "prd_5e9f053ac60f4412",
+    "title": "Red Dead Redemption",
+    "titleEn": "Red Dead Redemption",
+    "titleKu": "Red Dead Redemption",
+    "slug": "red-dead-redemption-switch1",
+    "description": "Red Dead Redemption follows former outlaw John Marston after federal agents threaten his family and force him to hunt down surviving members of his former gang. The journey crosses the American West and Mexico during the closing years of the frontier era.\n\nThe Nintendo Switch release contains the complete single-player Red Dead Redemption experience together with Undead Nightmare, the supernatural horror campaign in which Marston confronts a zombie outbreak. It also includes additional single-player content from the Game of the Year Edition. Multiplayer from the original release is not included.",
+    "descriptionEn": "Red Dead Redemption follows former outlaw John Marston after federal agents threaten his family and force him to hunt down surviving members of his former gang. The journey crosses the American West and Mexico during the closing years of the frontier era.\n\nThe Nintendo Switch release contains the complete single-player Red Dead Redemption experience together with Undead Nightmare, the supernatural horror campaign in which Marston confronts a zombie outbreak. It also includes additional single-player content from the Game of the Year Edition. Multiplayer from the original release is not included.",
+    "descriptionKu": "Red Dead Redemption follows former outlaw John Marston after federal agents threaten his family and force him to hunt down surviving members of his former gang. The journey crosses the American West and Mexico during the closing years of the frontier era.\n\nThe Nintendo Switch release contains the complete single-player Red Dead Redemption experience together with Undead Nightmare, the supernatural horror campaign in which Marston confronts a zombie outbreak. It also includes additional single-player content from the Game of the Year Edition. Multiplayer from the original release is not included.",
+    "cartridgeImage": "/api/files/products/prd_5e9f053ac60f4412/cartridgeImage-6783fb284daa9ffe.webp",
+    "nintendoCardImage": "/api/files/products/prd_5e9f053ac60f4412/nintendoCardImage-51f97aee53b93db5.webp",
+    "coverHiResImage": "/api/files/products/prd_5e9f053ac60f4412/coverHiResImage-b85c1679167369f8.webp",
+    "coverImage": "/api/files/products/prd_5e9f053ac60f4412/coverImage-ee8fe4d4d7a17ce0.webp",
+    "bannerImages": [
+     "/api/files/products/prd_5e9f053ac60f4412/bannerImages-d56880d8159cbd7a.webp",
+     "/api/files/products/prd_5e9f053ac60f4412/bannerImages-055a9a506da9752a.webp",
+     "/api/files/products/prd_5e9f053ac60f4412/bannerImages-ccc24b1eafdc50cc.webp"
+    ],
+    "gallery": [],
+    "youtubeTrailer": "https://www.youtube.com/watch?v=Q5sGCr03cPI",
+    "releaseDate": "2023-08-17",
+    "ageRating": "PEGI 18",
+    "metacriticRating": 83,
+    "genres": [
+     "Action",
+     "Adventure"
+    ],
+    "platform": "switch1",
+    "size": 11.6,
+    "numberOfPlayers": "1",
+    "supportedLanguages": "English, Spanish, French, German, Italian, Portuguese, Russian, Korean, Chinese (Simplified), Chinese (Traditional)",
+    "hardwareModel": "",
+    "colorEdition": "",
+    "storageCapacity": "",
+    "screenSpecs": "",
+    "batteryLife": "",
+    "boxContents": [],
+    "boxContentsText": "",
+    "warrantyCondition": "",
+    "connectivity": "",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "US",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "",
+    "redemptionSteps": [],
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 9000,
+    "cost": 1500,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": false,
+    "displayOrder": 0,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "Offline Account",
+      "description": "Account delivery option intended for offline-account use.",
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_account",
+      "name": "Online Account",
+      "description": "Account delivery option intended for online-account use where the game supports online features.",
+      "isInfiniteStock": true
+     }
+    ],
+    "types": [
+     {
+      "id": "standard_offline",
+      "name": "Standard",
+      "optionId": "offline_account",
+      "price": "9000",
+      "cost": 1500,
+      "description": "Supplier 普通版 mapped to Offline / Standard. Supplier cost: ¥7.78 after platform subsidy; converted at 220 IQD/CNY and floored to 1,500 IQD.",
+      "isInfiniteStock": true
+     },
+     {
+      "id": "standard_online",
+      "name": "Standard",
+      "optionId": "online_account",
+      "price": "38000",
+      "cost": 20750,
+      "description": "Supplier 标准版 mapped to Online / Standard. Supplier cost: ¥95 after platform subsidy; converted at 220 IQD/CNY and floored to 20,750 IQD.",
+      "isInfiniteStock": true
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "active",
+    "kind": "account",
+    "trade_value_iqd": 0,
+    "store_offer_bonus_iqd": 0,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "schema_version": 21,
+    "compatibility": [
+     "Nintendo Switch",
+     "Nintendo Switch 2 (backward compatible)"
+    ],
+    "edition": "Standard",
+    "developer": "Double Eleven Studios",
+    "publisher": "ROCKSTAR GAMES",
+    "metacriticUrl": "https://www.metacritic.com/game/red-dead-redemption-and-undead-nightmare/critic-reviews/?platform=nintendo-switch",
+    "opencriticRating": 79,
+    "userScore": 6.7,
+    "officialUrl": "https://www.nintendo.com/au/games/nintendo-switch/red-dead-redemption/",
+    "eshopUrl": "https://www.nintendo.com/au/games/nintendo-switch/red-dead-redemption/",
+    "gameIsOffline": true,
+    "gameIsOnline": false,
+    "description_short": "Rockstar’s open-world Western follows former outlaw John Marston across the American frontier and Mexico, including the complete Undead Nightmare single-player campaign on Nintendo Switch.",
+    "description_ar": "مغامرة عالم مفتوح تدور حول الخارج عن القانون السابق جون مارستون، وتضم الحملة الفردية الكاملة للعبة Red Dead Redemption إضافة إلى قصة Undead Nightmare ومحتوى إضافي من إصدار Game of the Year.",
+    "videos": [
+     {
+      "title": "Red Dead Redemption — Official Trailer",
+      "url": "https://www.youtube.com/watch?v=Q5sGCr03cPI"
+     }
+    ],
+    "nintendoEshopUrl": "https://www.nintendo.com/au/games/nintendo-switch/red-dead-redemption/",
+    "nintendoOnlineRequired": false,
+    "nintendoCloudSaves": true,
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": true,
+    "nintendoPlayModes": "TV Mode, Tabletop Mode, Handheld Mode",
+    "nintendoNotes": "Nintendo lists one player, 11.6 GB download size, Chinese language support, TV/Tabletop/Handheld play and Save Data Cloud. The package includes the complete single-player Red Dead Redemption campaign, Undead Nightmare and bonus Game of the Year Edition single-player content; multiplayer content is not included. No verified direct Full Wrap was found, so 3D texture fields remain blank.",
+    "switch2Exclusive": false,
+    "tagline": "Ride across the dying American frontier as John Marston in a story-driven open world that also includes the supernatural Undead Nightmare campaign.",
+    "fitFor": [
+     "Players who want a mature, cinematic Western story with a large open world and memorable characters.",
+     "Players who enjoy horseback exploration, gunfights, side activities and emergent encounters.",
+     "Players who want Red Dead Redemption and Undead Nightmare together in a portable Nintendo version."
+    ],
+    "notFitFor": [
+     "Players primarily looking for the original multiplayer modes; they are not included in this Nintendo Switch release.",
+     "Players who require 60 FPS on the original Nintendo Switch version.",
+     "Younger players; the game carries a mature age rating and contains strong violence and adult themes."
+    ],
+    "playTimeMain": 17.5,
+    "playTimeFull": 46.5,
+    "gameplayPillars": [
+     {
+      "title": "Open-World Frontier",
+      "description": "Travel freely through a large Western world filled with settlements, wilderness, side activities, strangers, wildlife and emergent encounters."
+     },
+     {
+      "title": "Gunfights and Dead Eye",
+      "description": "Use revolvers, rifles and other period weapons while Dead Eye slows targeting to create precise, cinematic gunfights."
+     },
+     {
+      "title": "John Marston’s Story",
+      "description": "Follow a former outlaw forced by federal agents to hunt down the surviving members of the gang he once called family."
+     }
+    ],
+    "worldSummary": "Red Dead Redemption is set during the final years of the American frontier. John Marston travels across New Austin, West Elizabeth and northern Mexico through ranches, deserts, frontier towns, forests and lawless settlements. The world supports story missions, hunting, gambling, strangers, bounties, random encounters and travel by horse, train and stagecoach.",
+    "storyChapters": [
+     {
+      "title": "Hunting the Old Gang",
+      "body": "Federal agents threaten John Marston’s family and compel him to track down former gang members across the American frontier."
+     },
+     {
+      "title": "Across the Border",
+      "body": "Marston’s search expands into Mexico, where local conflicts and competing factions draw him deeper into the region’s political violence."
+     },
+     {
+      "title": "Undead Nightmare",
+      "body": "The included horror campaign transforms the familiar frontier into a supernatural survival crisis filled with the undead."
+     }
+    ],
+    "galleryImages": [
+     {
+      "url": "https://images.launchbox-app.com/61e32eec-0b93-4343-978e-861688806b79.png",
+      "alt": "Gameplay image from Red Dead Redemption."
+     },
+     {
+      "url": "https://images.launchbox-app.com/e5e2a811-0fc5-4aaa-8875-c7e6672cc384.png",
+      "alt": "Gameplay image showing the game world and Western setting."
+     },
+     {
+      "url": "https://images.launchbox-app.com/18b8adab-68f9-4a98-a6a7-693e51b0ca63.jpg",
+      "alt": "Additional gameplay artwork/screenshot."
+     },
+     {
+      "url": "https://images.launchbox-app.com/a29cd8bb-0a25-4808-8d69-926be0866f6e.jpg",
+      "alt": "Additional Red Dead Redemption media image."
+     }
+    ],
+    "features": [
+     "Explore the American frontier and Mexico in a large open world built around towns, wilderness, missions and emergent encounters.",
+     "Use the Dead Eye targeting system to slow down combat decisions and mark precise shots during gunfights.",
+     "The Nintendo Switch release includes the complete single-player Red Dead Redemption campaign plus Undead Nightmare.",
+     "Hunting, bounty work, stranger missions, poker and other side activities expand the campaign beyond story missions.",
+     "Horse travel, weapon management and an honor-driven Western narrative define the core single-player loop.",
+     "A separate Nintendo Switch 2 Edition is available, but this product entry remains the Nintendo Switch 1 release rather than being relabeled through backward compatibility."
+    ],
+    "perfResolutionDocked": "1080p native",
+    "perfResolutionHandheld": "720p native",
+    "perfFps": "30 FPS",
+    "perfHdr": false,
+    "perfNotes": "Technical analysis reports a native 1080p presentation in TV mode, native 720p in handheld mode, and a 30 FPS target with occasional uneven frame pacing. These are measured game results, not hardware maximums.",
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "hardwareId": "prd_acf4c89908764c62",
+      "informationStatus": "verified",
+      "handheld": {
+       "supported": true,
+       "resolution": "1080p output",
+       "resolutionDynamic": false,
+       "renderingResolution": "DLSS reconstructed; exact internal handheld resolution varies/not published",
+       "outputResolution": "1080p",
+       "fps": "60",
+       "fpsMin": "~55",
+       "fpsMax": "60",
+       "refreshRate": "60 Hz",
+       "hdr": true,
+       "mode": "Standard",
+       "notes": "Switch 2 Edition targets 60 FPS; reviews report 1080p handheld output and mostly stable performance."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1440p DLSS output",
+       "resolutionDynamic": false,
+       "renderingResolution": "720p native input to DLSS",
+       "outputResolution": "1440p",
+       "fps": "60",
+       "fpsMin": "~55",
+       "fpsMax": "60",
+       "refreshRate": "60 Hz",
+       "hdr": true,
+       "mode": "Standard",
+       "notes": "Digital Foundry reports native 720p reconstructed by DLSS to 1440p while docked, targeting 60 FPS."
+      },
+      "upscaling": "NVIDIA DLSS",
+      "rayTracing": false,
+      "sourceName": "Digital Foundry via Nintendo Life + Rockstar",
+      "sourceUrl": "https://www.nintendolife.com/news/2025/12/digital-foundry-delivers-its-tech-verdict-on-red-dead-redemption-for-switch-2",
+      "verifiedAt": "2026-08-25",
+      "verificationStatus": "verified",
+      "performanceNotes": "Free Nintendo Switch 2 Edition upgrade adds 60 FPS, DLSS, HDR and mouse controls. Docked technical analysis: 720p native reconstructed to 1440p."
+     }
+    ],
+    "downloadSizeGb": 11.6,
+    "arabicSupport": false,
+    "mpLocalPlayers": false,
+    "mpOnlinePlayers": false,
+    "mpCoop": false,
+    "mpCompetitive": false,
+    "mpSplitScreen": false,
+    "mpLocalWireless": false,
+    "guides": [
+     {
+      "title": "Nintendo — Red Dead Redemption",
+      "summary": "Official product information, supported modes, languages and download size.",
+      "url": "https://www.nintendo.com/nl-nl/Games/Nintendo-Switch-games/Red-Dead-Redemption-2427365.html"
+     },
+     {
+      "title": "Rockstar Games — Red Dead Redemption",
+      "summary": "Official Rockstar information for Red Dead Redemption.",
+      "url": "https://www.rockstargames.com/reddeadredemption"
+     },
+     {
+      "title": "Nintendo Everything — Switch Technical Analysis",
+      "summary": "Nintendo Switch performance analysis covering resolution and frame rate.",
+      "url": "https://nintendoeverything.com/red-dead-redemption-switch-tech-analysis-frame-rate-resolution/"
+     }
+    ],
+    "completionMain": 17.5,
+    "completionExtras": 26,
+    "completionAll": 46.5,
+    "faq": [
+     {
+      "q": "Does the Switch release include Undead Nightmare?",
+      "a": "Yes. Nintendo states that Undead Nightmare is included alongside the complete Red Dead Redemption single-player campaign."
+     },
+     {
+      "q": "Does Red Dead Redemption on Switch include multiplayer?",
+      "a": "No. Nintendo explicitly notes that multiplayer content from the original game is not included."
+     },
+     {
+      "q": "Can the Nintendo Switch version run on Nintendo Switch 2?",
+      "a": "Yes. It is compatible with Nintendo Switch 2, and the current import keeps separate Switch 2 performance information where available."
+     }
+    ],
+    "verdictScore": 8.3,
+    "verdictSummary": "Score note: 8.3/10 is a direct normalization of the current 83/100 Metacritic aggregate for the Nintendo listing; it is not a separately invented store rating.\n\nThe Nintendo Switch release is a strong portable way to experience John Marston’s complete single-player story and Undead Nightmare. Its greatest limitations are the absence of original multiplayer and the original Switch performance ceiling.",
+    "verdictPros": [
+     "Excellent Western atmosphere and story.",
+     "Undead Nightmare is included in the package.",
+     "Stable portable presentation with the full single-player experience."
+    ],
+    "verdictCons": [
+     "Original multiplayer content is absent.",
+     "Original Switch version is limited to a 30 FPS presentation.",
+     "Some mechanics retain the feel of a 2010-era open-world game."
+    ],
+    "reviews": [
+     {
+      "source": "Metacritic — Nintendo listing",
+      "score": "83/100",
+      "quote": "Current critic aggregate for the relevant Nintendo listing: 83/100. This is an external aggregate, not a BANANTO-created review score.",
+      "url": "https://www.dekudeals.com/items/red-dead-redemption"
+     },
+     {
+      "url": "https://www.dekudeals.com/items/red-dead-redemption",
+      "source": "OpenCritic",
+      "score": "79/100",
+      "quote": "OpenCritic aggregate recorded at 79/100. Where OpenCritic groups platforms, this value represents the published aggregate rather than a fabricated platform-specific score."
+     },
+     {
+      "source": "Metacritic User Score",
+      "score": "6.7/10",
+      "quote": "Current Metacritic user score shown with the listing: 6.7/10. User scores can change over time as additional ratings are submitted.",
+      "url": "https://www.dekudeals.com/items/red-dead-redemption"
+     }
+    ],
+    "timeline": [
+     null,
+     {
+      "date": "2023-08-17",
+      "title": "Nintendo Switch Release",
+      "body": "Red Dead Redemption and Undead Nightmare launched on Nintendo Switch."
+     },
+     {
+      "date": "2025-12-02",
+      "title": "Nintendo Switch 2 Edition",
+      "body": "A dedicated Nintendo Switch 2 Edition later became available; this product entry remains the original Switch release."
+     }
+    ],
+    "setupNeeds": [
+     "Nintendo Switch or compatible Nintendo Switch 2 hardware.",
+     "Approximately 11.6 GB of free storage for the digital Nintendo Switch version.",
+     "One player; the Nintendo Switch release does not include original multiplayer content."
+    ],
+    "sources": [
+     {
+      "name": "Nintendo — Red Dead Redemption",
+      "url": "https://www.nintendo.com/nl-nl/Games/Nintendo-Switch-games/Red-Dead-Redemption-2427365.html"
+     },
+     {
+      "name": "Rockstar Games — Red Dead Redemption",
+      "url": "https://www.rockstargames.com/reddeadredemption"
+     },
+     {
+      "name": "LaunchBox Games Database — media reference",
+      "url": "https://gamesdb.launchbox-app.com/"
+     },
+     {
+      "name": "Deku Deals — Nintendo version scores and completion data",
+      "url": "https://www.dekudeals.com/items/red-dead-redemption"
+     },
+     {
+      "name": "Red Dead Redemption soundtrack reference",
+      "url": "https://www.ireddead.com/rdr/soundtrack"
+     }
+    ],
+    "soundtrack": [
+     {
+      "title": "(Theme From) Red Dead Redemption",
+      "url": "https://www.ireddead.com/rdr/soundtrack"
+     },
+     {
+      "title": "Far Away",
+      "url": "https://www.ireddead.com/rdr/soundtrack"
+     },
+     {
+      "title": "Deadman's Gun",
+      "url": "https://www.ireddead.com/rdr/soundtrack"
+     }
+    ],
+    "seriesName": "Red Dead",
+    "seriesEntries": [
+     "Red Dead Revolver",
+     "Red Dead Redemption",
+     "Red Dead Redemption 2"
+    ],
+    "studioName": "Double Eleven",
+    "studioUrl": "https://www.double11.com/",
+    "studioLocation": "Middlesbrough, United Kingdom",
+    "studioAbout": "Double Eleven handled the Nintendo Switch port of Rockstar Games’ Red Dead Redemption, adapting the original single-player release and Undead Nightmare to Nintendo hardware.",
+    "boxContentsList": "[Circular]",
+    "image": "/api/files/products/prd_5e9f053ac60f4412/image-ee8fe4d4d7a17ce0.webp",
+    "banner": "/api/files/products/prd_5e9f053ac60f4412/banner-d56880d8159cbd7a.webp",
+    "schemaId": "",
+    "badgeEn": "وفر 40%",
+    "badgeKu": "وفر 40%",
+    "featuresEn": [
+     "Explore the American frontier and Mexico in a large open world built around towns, wilderness, missions and emergent encounters.",
+     "Use the Dead Eye targeting system to slow down combat decisions and mark precise shots during gunfights.",
+     "The Nintendo Switch release includes the complete single-player Red Dead Redemption campaign plus Undead Nightmare.",
+     "Hunting, bounty work, stranger missions, poker and other side activities expand the campaign beyond story missions.",
+     "Horse travel, weapon management and an honor-driven Western narrative define the core single-player loop.",
+     "A separate Nintendo Switch 2 Edition is available, but this product entry remains the Nintendo Switch 1 release rather than being relabeled through backward compatibility."
+    ],
+    "featuresKu": [
+     "Explore the American frontier and Mexico in a large open world built around towns, wilderness, missions and emergent encounters.",
+     "Use the Dead Eye targeting system to slow down combat decisions and mark precise shots during gunfights.",
+     "The Nintendo Switch release includes the complete single-player Red Dead Redemption campaign plus Undead Nightmare.",
+     "Hunting, bounty work, stranger missions, poker and other side activities expand the campaign beyond story missions.",
+     "Horse travel, weapon management and an honor-driven Western narrative define the core single-player loop.",
+     "A separate Nintendo Switch 2 Edition is available, but this product entry remains the Nintendo Switch 1 release rather than being relabeled through backward compatibility."
+    ],
+    "sales": 0,
+    "images": [],
+    "modes": []
+   }
+  },
+  {
+   "id": "prd_7037e22716fa4681",
+   "slug": "resident-evil-requiem",
+   "title": "Resident Evil Requiem [Switch 2]",
+   "platform": "switch2",
+   "isHidden": false,
+   "hash": "cea3eb4e5a97ac250cca45115051f88ace638021d97ffb8236740e8fcc212866",
+   "images": [
+    {
+     "role": "front-box",
+     "field": "cartridgeImage",
+     "url": "https://www.jnlgame.com/cdn/shop/files/71-VuMoP_vL.jpg?v=1772148408&width=5760",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 215053,
+     "width": 1583,
+     "height": 2560,
+     "thumb": "review-workdir/thumbs/batch-021/resident-evil-requiem__front-box-0.png"
+    },
+    {
+     "role": "front-box",
+     "field": "box_front_url",
+     "url": "https://www.jnlgame.com/cdn/shop/files/71-VuMoP_vL.jpg?v=1772148408&width=5760",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 215053,
+     "width": 1583,
+     "height": 2560,
+     "thumb": "review-workdir/thumbs/batch-021/resident-evil-requiem__front-box-1.png"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://banan.to/api/files/covers/usr_b947dbb97217464c/f_386384ec2d3c4216.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 338429,
+     "width": 1721,
+     "height": 1313,
+     "thumb": "review-workdir/thumbs/batch-021/resident-evil-requiem__detail-cover-2.png"
+    },
+    {
+     "role": "listing",
+     "field": "image",
+     "url": "https://banan.to/api/files/covers/usr_b947dbb97217464c/f_386384ec2d3c4216.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 338429,
+     "width": 1721,
+     "height": 1313,
+     "thumb": "review-workdir/thumbs/batch-021/resident-evil-requiem__listing-3.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[0]",
+     "url": "https://img-eshop.cdn.nintendo.net/i/bd4121cb97af8db7444d39c021e2fe7ce62ffff7f00bec44afccc8cd341650a4.jpg?w=1000",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 288834,
+     "width": 1000,
+     "height": 562,
+     "thumb": "review-workdir/thumbs/batch-021/resident-evil-requiem__banner-4.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[1]",
+     "url": "https://img-eshop.cdn.nintendo.net/i/661ca4c51a16274c881571dc37d3b845acf930d8d2d51464b16a5ecb9b1c0cf5.jpg?w=1000",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 81137,
+     "width": 1000,
+     "height": 562,
+     "thumb": "review-workdir/thumbs/batch-021/resident-evil-requiem__banner-5.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[2]",
+     "url": "https://img-eshop.cdn.nintendo.net/i/9b5ce9cc278827b3b6d0246428204a6070972c3ad8bb688794e282a490582bae.jpg?w=1000",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 119786,
+     "width": 1000,
+     "height": 562,
+     "thumb": "review-workdir/thumbs/batch-021/resident-evil-requiem__banner-6.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://img-eshop.cdn.nintendo.net/i/f89f649c056da32f8b8cff3fb3c388b4f037d5c7c1b8ca371e6fb452fec3a244.jpg?w=1000",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 121124,
+     "width": 1000,
+     "height": 562,
+     "thumb": "review-workdir/thumbs/batch-021/resident-evil-requiem__gallery-7.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[1]",
+     "url": "https://img-eshop.cdn.nintendo.net/i/604b40718a4c1bd8009918c495bb56dec7006ecdaccc5f6b8ace86bcecfdab74.jpg?w=1000",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 205405,
+     "width": 1000,
+     "height": 562,
+     "thumb": "review-workdir/thumbs/batch-021/resident-evil-requiem__gallery-8.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[2]",
+     "url": "https://img-eshop.cdn.nintendo.net/i/661ca4c51a16274c881571dc37d3b845acf930d8d2d51464b16a5ecb9b1c0cf5.jpg?w=1000",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 81137,
+     "width": 1000,
+     "height": 562,
+     "thumb": "review-workdir/thumbs/batch-021/resident-evil-requiem__gallery-9.png"
+    }
+   ],
+   "record": {
+    "title": "Resident Evil Requiem [Switch 2]",
+    "titleEn": "Resident Evil Requiem [Switch 2]",
+    "titleKu": "Resident Evil Requiem [Switch 2]",
+    "slug": "resident-evil-requiem",
+    "description": "Resident Evil Requiem is the ninth mainline entry in Capcom's Resident Evil series and a single-player survival-horror/action game for Nintendo Switch 2.\n\nThe story follows two intertwined protagonists. Grace Ashcroft is an FBI analyst whose investigation is closely tied to a disturbing abandoned hotel and to the death of her mother. Her sections emphasise vulnerability, exploration, resource management and classic survival horror. Leon S. Kennedy returns as an experienced government agent, and his sections lean more heavily into high-intensity combat and action while still retaining horror and resource-management elements.\n\nBoth Grace and Leon can be played in first-person or third-person perspective, and Capcom allows the viewpoint to be changed according to the player's preference. This makes the same environments feel very different depending on how closely the camera is placed to the character.\n\nGrace has unique survival systems. She can use a Blood Collector to obtain blood used for crafting ammunition and powerful items. In Standard (Classic) difficulty, Grace's manual saving uses Ink Ribbons at typewriters and autosaving is more limited, deliberately evoking older Resident Evil design.\n\nLeon is more combat-capable. His toolkit includes firearms and a hatchet for close-range attacks and parrying. A well-timed Perfect Parry creates additional combat opportunities, while the hatchet can become blunt and temporarily limit defensive options.\n\nThe story reconnects the series with the Raccoon City Incident and its aftermath. The official premise centres on Grace and Leon confronting their respective pasts while uncovering a deeper truth connected to Raccoon City. The game includes ruined urban locations, medical facilities, hotel interiors and other environments designed around tension, exploration, combat and environmental storytelling.\n\nResident Evil Requiem supports amiibo. Grace Ashcroft and Leon S. Kennedy amiibo figures unlock exclusive weapon skins for compatible weapons in the game.\n\nThe Nintendo Switch 2 physical release is a Game-Key Card. The card acts as a license/key and the full game must be downloaded to the console before play. Once the software is installed, the core campaign itself is a single-player experience and does not require online multiplayer.\n\nCapcom has continued supporting the game after launch. Photo Mode was added in a free update, followed by the free Leon Must Die Forever mode. The Deluxe Kit is separately sold paid DLC and includes costumes, screen filters, weapon skins, charms, an audio pack and additional files.",
+    "descriptionEn": "Resident Evil Requiem is the ninth mainline entry in Capcom's Resident Evil series and a single-player survival-horror/action game for Nintendo Switch 2.\n\nThe story follows two intertwined protagonists. Grace Ashcroft is an FBI analyst whose investigation is closely tied to a disturbing abandoned hotel and to the death of her mother. Her sections emphasise vulnerability, exploration, resource management and classic survival horror. Leon S. Kennedy returns as an experienced government agent, and his sections lean more heavily into high-intensity combat and action while still retaining horror and resource-management elements.\n\nBoth Grace and Leon can be played in first-person or third-person perspective, and Capcom allows the viewpoint to be changed according to the player's preference. This makes the same environments feel very different depending on how closely the camera is placed to the character.\n\nGrace has unique survival systems. She can use a Blood Collector to obtain blood used for crafting ammunition and powerful items. In Standard (Classic) difficulty, Grace's manual saving uses Ink Ribbons at typewriters and autosaving is more limited, deliberately evoking older Resident Evil design.\n\nLeon is more combat-capable. His toolkit includes firearms and a hatchet for close-range attacks and parrying. A well-timed Perfect Parry creates additional combat opportunities, while the hatchet can become blunt and temporarily limit defensive options.\n\nThe story reconnects the series with the Raccoon City Incident and its aftermath. The official premise centres on Grace and Leon confronting their respective pasts while uncovering a deeper truth connected to Raccoon City. The game includes ruined urban locations, medical facilities, hotel interiors and other environments designed around tension, exploration, combat and environmental storytelling.\n\nResident Evil Requiem supports amiibo. Grace Ashcroft and Leon S. Kennedy amiibo figures unlock exclusive weapon skins for compatible weapons in the game.\n\nThe Nintendo Switch 2 physical release is a Game-Key Card. The card acts as a license/key and the full game must be downloaded to the console before play. Once the software is installed, the core campaign itself is a single-player experience and does not require online multiplayer.\n\nCapcom has continued supporting the game after launch. Photo Mode was added in a free update, followed by the free Leon Must Die Forever mode. The Deluxe Kit is separately sold paid DLC and includes costumes, screen filters, weapon skins, charms, an audio pack and additional files.",
+    "descriptionKu": "Resident Evil Requiem is the ninth mainline entry in Capcom's Resident Evil series and a single-player survival-horror/action game for Nintendo Switch 2.\n\nThe story follows two intertwined protagonists. Grace Ashcroft is an FBI analyst whose investigation is closely tied to a disturbing abandoned hotel and to the death of her mother. Her sections emphasise vulnerability, exploration, resource management and classic survival horror. Leon S. Kennedy returns as an experienced government agent, and his sections lean more heavily into high-intensity combat and action while still retaining horror and resource-management elements.\n\nBoth Grace and Leon can be played in first-person or third-person perspective, and Capcom allows the viewpoint to be changed according to the player's preference. This makes the same environments feel very different depending on how closely the camera is placed to the character.\n\nGrace has unique survival systems. She can use a Blood Collector to obtain blood used for crafting ammunition and powerful items. In Standard (Classic) difficulty, Grace's manual saving uses Ink Ribbons at typewriters and autosaving is more limited, deliberately evoking older Resident Evil design.\n\nLeon is more combat-capable. His toolkit includes firearms and a hatchet for close-range attacks and parrying. A well-timed Perfect Parry creates additional combat opportunities, while the hatchet can become blunt and temporarily limit defensive options.\n\nThe story reconnects the series with the Raccoon City Incident and its aftermath. The official premise centres on Grace and Leon confronting their respective pasts while uncovering a deeper truth connected to Raccoon City. The game includes ruined urban locations, medical facilities, hotel interiors and other environments designed around tension, exploration, combat and environmental storytelling.\n\nResident Evil Requiem supports amiibo. Grace Ashcroft and Leon S. Kennedy amiibo figures unlock exclusive weapon skins for compatible weapons in the game.\n\nThe Nintendo Switch 2 physical release is a Game-Key Card. The card acts as a license/key and the full game must be downloaded to the console before play. Once the software is installed, the core campaign itself is a single-player experience and does not require online multiplayer.\n\nCapcom has continued supporting the game after launch. Photo Mode was added in a free update, followed by the free Leon Must Die Forever mode. The Deluxe Kit is separately sold paid DLC and includes costumes, screen filters, weapon skins, charms, an audio pack and additional files.",
+    "cartridgeImage": "https://www.jnlgame.com/cdn/shop/files/71-VuMoP_vL.jpg?v=1772148408&width=5760",
+    "coverImage": "/api/files/covers/usr_b947dbb97217464c/f_386384ec2d3c4216.jpg",
+    "bannerImages": [
+     "https://img-eshop.cdn.nintendo.net/i/bd4121cb97af8db7444d39c021e2fe7ce62ffff7f00bec44afccc8cd341650a4.jpg?w=1000",
+     "https://img-eshop.cdn.nintendo.net/i/661ca4c51a16274c881571dc37d3b845acf930d8d2d51464b16a5ecb9b1c0cf5.jpg?w=1000",
+     "https://img-eshop.cdn.nintendo.net/i/9b5ce9cc278827b3b6d0246428204a6070972c3ad8bb688794e282a490582bae.jpg?w=1000"
+    ],
+    "gallery": [],
+    "youtubeTrailer": "https://www.youtube.com/watch?v=9lrThxCoznw",
+    "releaseDate": "2026-02-27",
+    "ageRating": "ESRB M 17+ (Blood and Gore, Intense Violence, Strong Language; In-Game Purchases) / PEGI 18",
+    "metacriticRating": 89,
+    "genres": [
+     "Survival Horror",
+     "Action",
+     "Adventure / Third-Person & First-Person Shooter"
+    ],
+    "platform": "switch2",
+    "size": 28.7,
+    "numberOfPlayers": "1",
+    "supportedLanguages": "Japanese, English, Spanish, Portuguese, French, German, Italian, Russian, Korean, Simplified Chinese, Traditional Chinese, Polish",
+    "hardwareModel": "Nintendo Switch OLED Model",
+    "colorEdition": "White OLED",
+    "storageCapacity": "64 GB",
+    "screenSpecs": "7.0-inch OLED (1280x720) Touchscreen",
+    "batteryLife": "4.5 - 9.0 Hours (4310 mAh)",
+    "boxContents": [],
+    "warrantyCondition": "جديد أصلي 100% بالكرتون مع ضمان سنة",
+    "connectivity": "Wi-Fi 6, Bluetooth 5.0, LAN Port, HDMI 2.0, USB Type-C",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "Global",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "فتح متجر Nintendo eShop\nاختيار Redeem Code\nكتابة الكود المكون من 16 خانة\nتأكيد",
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 23000,
+    "cost": 7000,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "displayOrder": 0,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "opt_offline",
+      "name": "Offline Account",
+      "description": "حساب مشترك",
+      "customerDescription": "حساب مشترك"
+     },
+     {
+      "id": "opt_online",
+      "name": "Online Account",
+      "description": "حساب خاص بك",
+      "cost": "46500",
+      "price": "75000",
+      "customerDescription": "حساب خاص بك"
+     }
+    ],
+    "types": [
+     {
+      "id": "typ_std",
+      "name": "Standard Edition",
+      "description": "اللعبة الأساسية",
+      "customerDescription": "اللعبة الأساسية"
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "Active",
+    "kind": "account",
+    "trade_value_iqd": 47000,
+    "store_offer_bonus_iqd": 5000,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "id": "prd_7037e22716fa4681",
+    "schema_version": 1,
+    "edition": "Resident Evil Generation Pack bundling Requiem with Resident Evil 7 biohazard Gold Edition and Resident Evil Village Gold Edition in supported digital storefronts.",
+    "developer": "CAPCOM",
+    "publisher": "CAPCOM",
+    "metacriticUrl": "https://www.metacritic.com/game/resident-evil-requiem/",
+    "opencriticRating": 89,
+    "userScore": 9.3,
+    "officialUrl": "https://www.residentevil.com/requiem/en-uk/",
+    "eshopUrl": "https://ec.nintendo.com/AU/en/titles/70010000101676",
+    "gameIsOffline": true,
+    "gameIsOnline": false,
+    "gameLanguageLocked": false,
+    "description_short": "The ninth mainline Resident Evil game combines survival horror with Grace Ashcroft and combat-heavy action with Leon S. Kennedy, offering first- or third-person viewpoints, a return to the legacy of Raccoon City, and a native Nintendo Switch 2 release.",
+    "description_ar": "Resident Evil Requiem هي الجزء الرئيسي التاسع من سلسلة Resident Evil، وتجمع بين رعب البقاء الكلاسيكي والأكشن ضمن قصتين مترابطتين تقودهما Grace Ashcroft وLeon S. Kennedy.\n\nGrace محللة في FBI تدخل تحقيقاً مرتبطاً بفندق مهجور وبماضي عائلتها، وتتميز فصولها بإحساس أكبر بالضعف والخوف وإدارة الموارد والاستكشاف. في المقابل يعود Leon S. Kennedy كعميل مخضرم، وتقدم فصوله قتالاً أسرع وأكثر عنفاً مع بقاء عناصر الرعب والذخيرة المحدودة وإدارة العتاد حاضرة.\n\nتسمح Capcom بلعب قصتي Grace وLeon من منظور الشخص الأول أو الثالث، ويمكن تغيير المنظور حسب تفضيل اللاعب. منظور الشخص الأول يزيد القرب والتوتر، بينما يمنح منظور الشخص الثالث رؤية أوضح للشخصية والمساحة المحيطة.\n\nتمتلك Grace أنظمة خاصة بها. يمكنها استخدام Blood Collector لجمع الدم واستخدامه في صناعة الذخيرة وبعض الأدوات القوية. وعند اختيار Standard (Classic)، تصبح الحفظات اليدوية لـGrace مرتبطة بـInk Ribbons والـTypewriters مع Autosave أكثر محدودية، في إشارة مباشرة إلى تصميم Resident Evil الكلاسيكي.\n\nأما Leon فيملك أدوات قتال أقوى، ومنها الأسلحة النارية والـHatchet للقتال القريب. يمكن استخدام الفأس للـParry، ويمنح Perfect Parry في التوقيت الصحيح أفضلية في المواجهة. وقد يصبح الفأس Blunt بعد الاستخدام المكثف، ما يؤثر على قدرته الدفاعية حتى تتم معالجة الوضع.\n\nالقصة تعود إلى إرث Raccoon City Incident وآثاره. تتقاطع مسارات Grace وLeon مع حقائق من الماضي وأحداث مرتبطة بما حدث لمدينة Raccoon City، مع الحفاظ هنا على وصف خالٍ من حرق أحداث النهاية.\n\nاللعبة فردية بالكامل ولا تحتوي Multiplayer تنافسياً أو تعاونياً. نسخة Nintendo Switch 2 الفيزيائية هي Game-Key Card؛ يجب إدخال البطاقة وتنزيل اللعبة الكاملة من الإنترنت قبل تشغيلها، وبعد تثبيت البيانات يمكن لعب الحملة الأساسية كلعبة فردية.\n\nتدعم اللعبة amiibo. مجسم Grace Ashcroft ومجسم Leon S. Kennedy يفتح كل منهما Weapon Skin حصرياً للسلاح المتوافق داخل اللعبة.\n\nبعد الإطلاق أضافت Capcom Photo Mode مجاناً، ثم أضافت Leon Must Die Forever كتحدٍ مجاني جديد. كما توجد Deluxe Kit مدفوعة تحتوي على أزياء وفلاتر وWeapon Skins وCharms وAudio Pack وملفات إضافية. وأكدت Capcom أن محتوى قصة إضافياً قيد التطوير، لكنه لم يصدر بعد ولا يوجد له موعد إطلاق معلن عند إعداد هذا الملف.",
+    "box_front_url": "https://www.jnlgame.com/cdn/shop/files/71-VuMoP_vL.jpg?v=1772148408&width=5760",
+    "box_back_url": "https://www.jnlgame.com/cdn/shop/files/170B9ABC-F37D-4874-9C49-29831AB2DB0C.jpg?v=1772148408&width=5760",
+    "videos": [
+     {
+      "title": "Resident Evil Requiem – Launch Trailer",
+      "url": "https://www.youtube.com/watch?v=9lrThxCoznw"
+     },
+     {
+      "title": "Resident Evil Requiem – Reveal Trailer",
+      "url": "https://www.youtube.com/watch?v=POz1-EmLsTY"
+     },
+     {
+      "title": "Resident Evil Requiem – 2nd Trailer",
+      "url": "https://www.youtube.com/watch?v=0wFNN1f6hF8"
+     }
+    ],
+    "nsuid": "70010000101676",
+    "nintendoEshopUrl": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-2-games/Resident-Evil-Requiem-2915501.html",
+    "nintendoOnlineRequired": false,
+    "nintendoCloudSaves": false,
+    "nintendoGameKeyCard": true,
+    "nintendoPhysicalNeedsDownload": true,
+    "nintendoPlayModes": "TV Mode, Tabletop Mode, Handheld Mode",
+    "nintendoNotes": "Nintendo officially lists Resident Evil Requiem as Nintendo Switch 2 software released on 27 February 2026, with one player on one system, Action/Adventure categories, CAPCOM as publisher, amiibo compatibility, surround sound, HDR on compatible TVs, PEGI 18, and 28.7 GB download size.\n\nOfficial Nintendo AU eShop language metadata lists Japanese, English, Spanish, Portuguese, French, German, Italian, Russian, Korean, Simplified Chinese, Traditional Chinese and Polish. Nintendo Europe condenses Chinese into a single \"Chinese\" entry.\n\nThere is a live regional metadata conflict regarding Save Data Cloud:\n- Nintendo AU eShop currently displays Save Data Cloud as supported in its structured feature metadata.\n- Nintendo UK/Europe explicitly states in the product's compatibility notice that this software does NOT support Nintendo Switch Online Save Data Cloud backup.\nBecause Save Data Cloud compatibility is normally game-level rather than region-specific, this file sets nintendo_cloud_save=false and follows Nintendo Europe's explicit compatibility statement, while preserving the AU conflict here for transparency.\n\nThe core campaign is single-player, so Nintendo Switch Online is not required to play the game itself.\n\nThe physical Nintendo Switch 2 release is a Game-Key Card. Nintendo's Game-Key Card documentation states that inserting a game-key card is followed by downloading the full game. Retail package photography for Resident Evil Requiem also explicitly identifies it as a Game-Key Card and indicates an approximately 30 GB download requirement.\n\nNSUID 70010000101676 comes from Nintendo AU eShop. NSUID values can differ across regions.\n\nNintendo does not expose a reliable consumer-facing hexadecimal Title ID, and this research did not find an authoritative physical product-code catalogue entry strong enough to justify inserting a guessed code.",
+    "switch2Enhanced": false,
+    "switch2Features": [
+     "Native Nintendo Switch 2 version built with CAPCOM's RE ENGINE.",
+     "HDR output on compatible TVs.",
+     "Game-Key Card physical distribution with full-game download to Nintendo Switch 2 storage."
+    ],
+    "tagline": "Confront fear from two perspectives — Grace and Leon return Resident Evil to the shadow of Raccoon City.",
+    "fitFor": [
+     "Resident Evil fans who want both vulnerable survival-horror sections and more combat-focused action in the same campaign.",
+     "Players who enjoy resource management, exploration, puzzles and combat with selectable first- or third-person viewpoints.",
+     "Players looking for a substantial single-player horror game with replay value and optional Deluxe content."
+    ],
+    "notFitFor": [
+     "Players looking for multiplayer or co-op; Resident Evil Requiem is a single-player game.",
+     "Players uncomfortable with strong horror violence, blood, gore and mature language.",
+     "Buyers who expect the Switch 2 physical card to contain the full game data; the retail edition is a Game-Key Card and requires a full download."
+    ],
+    "playTimeMain": 19,
+    "playTimeFull": 25,
+    "gameplayPillars": [
+     {
+      "title": "Two Intertwined Play Styles",
+      "description": "Grace Ashcroft's sections emphasize survival horror, vulnerability, exploration and resource management, while Leon S. Kennedy's sections are more combat-focused.",
+      "imageUrl": "https://img-eshop.cdn.nintendo.net/i/bd4121cb97af8db7444d39c021e2fe7ce62ffff7f00bec44afccc8cd341650a4.jpg?w=1000"
+     },
+     {
+      "title": "First or Third Person",
+      "description": "Both playable characters support first-person and third-person viewpoints, allowing the player to choose a more immersive or more spatially aware presentation.",
+      "imageUrl": "https://img-eshop.cdn.nintendo.net/i/9b5ce9cc278827b3b6d0246428204a6070972c3ad8bb688794e282a490582bae.jpg?w=1000"
+     },
+     {
+      "title": "Survive, Craft and Fight Back",
+      "description": "Grace uses the Blood Collector and crafting systems, while Leon has a more aggressive arsenal including hatchet parries and Perfect Parry timing.",
+      "imageUrl": "https://img-eshop.cdn.nintendo.net/i/661ca4c51a16274c881571dc37d3b845acf930d8d2d51464b16a5ecb9b1c0cf5.jpg?w=1000"
+     }
+    ],
+    "worldSummary": "Resident Evil Requiem returns the series to the shadow of the Raccoon City Incident. Rather than treating the 1998 catastrophe as distant history, the game builds its central mystery around people, places and consequences linked to that event.\n\nGrace Ashcroft's investigation leads through oppressive interiors including an abandoned hotel and medical environments. Leon's path intersects with wider threats and ruined urban spaces, including the remnants associated with Raccoon City.\n\nThe world design follows classic Resident Evil principles: interconnected interiors, locked routes, keys and items, environmental clues, scarce resources, enemies that create pressure, and spaces that change in meaning as new tools or information become available.\n\nThis file deliberately avoids late-game location and story spoilers. The store description should communicate the Raccoon City connection, Grace's investigation and Leon's involvement without revealing the central mystery or ending.",
+    "storyChapters": [
+     {
+      "title": "Grace Ashcroft's Investigation",
+      "body": "FBI analyst Grace Ashcroft investigates a case tied to an abandoned hotel and the death of her mother, beginning a tense survival-horror storyline.",
+      "imageUrl": "https://img-eshop.cdn.nintendo.net/i/9b5ce9cc278827b3b6d0246428204a6070972c3ad8bb688794e282a490582bae.jpg?w=1000"
+     },
+     {
+      "title": "Leon S. Kennedy Returns",
+      "body": "Leon S. Kennedy becomes involved as an experienced government agent, bringing a more combat-capable play style into the same wider mystery.",
+      "imageUrl": "https://img-eshop.cdn.nintendo.net/i/661ca4c51a16274c881571dc37d3b845acf930d8d2d51464b16a5ecb9b1c0cf5.jpg?w=1000"
+     },
+     {
+      "title": "The Truth Behind Raccoon City",
+      "body": "The two storylines converge around new truths connected to the legacy and aftermath of the Raccoon City Incident.",
+      "imageUrl": "https://img-eshop.cdn.nintendo.net/i/bd077342f5185dd3505e0c98e884edd1d91b0d7c639c7bb66ad5cff8a0d0b663.jpg?w=1000"
+     }
+    ],
+    "galleryImages": [
+     {
+      "url": "https://img-eshop.cdn.nintendo.net/i/f89f649c056da32f8b8cff3fb3c388b4f037d5c7c1b8ca371e6fb452fec3a244.jpg?w=1000",
+      "alt": "A dark corridor and creature encounter highlighting the game's horror atmosphere."
+     },
+     {
+      "url": "https://img-eshop.cdn.nintendo.net/i/604b40718a4c1bd8009918c495bb56dec7006ecdaccc5f6b8ace86bcecfdab74.jpg?w=1000",
+      "alt": "An abandoned hotel interior built around environmental tension and exploration."
+     },
+     {
+      "url": "https://img-eshop.cdn.nintendo.net/i/661ca4c51a16274c881571dc37d3b845acf930d8d2d51464b16a5ecb9b1c0cf5.jpg?w=1000",
+      "alt": "Leon S. Kennedy in an official Nintendo eShop screenshot."
+     }
+    ],
+    "features": [
+     "Two playable protagonists with deliberately different survival-horror and action-focused styles.",
+     "Selectable first-person or third-person viewpoints for Grace and Leon.",
+     "Native Nintendo Switch 2 release with HDR support, amiibo compatibility and post-launch content."
+    ],
+    "perfResolutionDocked": "1080p output via DLSS from approximately 540p internal resolution (Digital Foundry technical analysis; not an official Nintendo specification)",
+    "perfResolutionHandheld": "720p output via DLSS from approximately 360p internal resolution (Digital Foundry technical analysis; not an official Nintendo specification)",
+    "perfFps": "60 FPS target; frame-rate drops can occur in demanding scenes on Nintendo Switch 2 according to independent technical analysis",
+    "perfHdr": true,
+    "perfNotes": "Nintendo officially confirms HDR on compatible TVs but does not publish fixed internal rendering resolutions or a frame-rate specification for Resident Evil Requiem.\n\nIndependent Digital Foundry technical coverage reports that the Nintendo Switch 2 version targets a 60 FPS experience using DLSS reconstruction. Reported figures are approximately:\n- TV/docked: around 540p internal resolution reconstructed to a 1080p output.\n- Handheld: around 360p internal resolution reconstructed to a 720p output.\n- Frame rate: 60 FPS target, with drops possible in more demanding scenes.\n\nThe Switch 2 version retains the core visual identity and RTGI-style lighting approach while using platform-specific compromises. Exact internal resolution can change dynamically, so the values above are technical observations rather than fixed Nintendo-published specifications.",
+    "downloadSizeGb": 28.7,
+    "requiredSpaceGb": 28.7,
+    "microSdRecommended": false,
+    "storageNotes": "Nintendo UK and Nintendo AU eShop list the digital game at 28.7 GB. Retail Game-Key Card packaging rounds the download requirement to approximately 30 GB.\n\nBecause the physical edition is a Game-Key Card, owning the box/card does not remove the storage requirement: the full game data must be downloaded to Nintendo Switch 2 storage.\n\nA microSD Express card is not mandatory if sufficient internal storage is available, but it can be used to expand Nintendo Switch 2 game storage.\n\nThe Deluxe Kit and later update data require additional space beyond the base 28.7 GB.",
+    "languagesAudio": [
+     "English — full audio confirmed in CAPCOM/Steam product metadata",
+     "French — full audio confirmed in CAPCOM/Steam product metadata",
+     "Japanese and additional localized audio options exist on other platform builds; Nintendo does not publish a separate complete Switch 2 voice-language table"
+    ],
+    "languagesText": [
+     "Japanese",
+     "English",
+     "Spanish"
+    ],
+    "arabicSupport": false,
+    "mpLocalPlayers": "false",
+    "mpOnlinePlayers": "false",
+    "mpCoop": false,
+    "mpCompetitive": false,
+    "mpSplitScreen": false,
+    "mpLocalWireless": false,
+    "dlc": [
+     {
+      "name": "Resident Evil Requiem – Deluxe Kit",
+      "description": "Paid content containing five costumes, two screen filters, four weapon skins, two charms, the Raccoon City Classic audio pack, and the Letters from 1998 files.",
+      "coverUrl": "https://img-eshop.cdn.nintendo.net/i/bd4121cb97af8db7444d39c021e2fe7ce62ffff7f00bec44afccc8cd341650a4.jpg?w=1000"
+     }
+    ],
+    "guides": [
+     {
+      "title": "Resident Evil Requiem Official Manual — Viewpoint",
+      "summary": "Capcom's official manual explaining first-person and third-person viewpoint selection.",
+      "url": "https://manual.capcom.com/requiem/en/ps5/page/3/3/"
+     },
+     {
+      "title": "Resident Evil Requiem Official Manual — Leon's Hatchet",
+      "summary": "Capcom's official manual covering Leon's hatchet, parry and Perfect Parry mechanics.",
+      "url": "https://manual.capcom.com/requiem/en/ps5/page/2/2/"
+     },
+     {
+      "title": "Resident Evil Requiem Official Manual — Grace's Blood Collector",
+      "summary": "Capcom's official manual explaining Grace's Blood Collector and its role in crafting.",
+      "url": "https://manual.capcom.com/requiem/en/ps5/page/4/3/"
+     }
+    ],
+    "completionMain": 19,
+    "completionExtras": 20,
+    "completionAll": 25,
+    "faq": [
+     {
+      "q": "Is Resident Evil Requiem available on the original Nintendo Switch?",
+      "a": "No. The Nintendo version is released for Nintendo Switch 2."
+     },
+     {
+      "q": "Is the game single-player or multiplayer?",
+      "a": "It is a single-player game with no co-op or competitive multiplayer modes."
+     },
+     {
+      "q": "Does the physical Switch 2 version contain the full game on the card?",
+      "a": "No. The physical edition is a Game-Key Card and requires the game data to be downloaded to the console."
+     }
+    ],
+    "verdictScore": 9,
+    "verdictSummary": "Resident Evil Requiem combines two different expressions of the series in one campaign. Grace Ashcroft provides slower, more vulnerable survival horror built around limited resources, exploration and pressure, while Leon S. Kennedy brings a more capable and aggressive combat style.\n\nThe ability to choose first-person or third-person perspective gives the campaign additional flexibility, while character-specific systems such as Grace's Blood Collector and Leon's hatchet/parry mechanics keep the two protagonists mechanically distinct.\n\nThe Nintendo Switch 2 port preserves the complete game but uses more aggressive reconstruction and technical compromises than more powerful platforms. The physical Game-Key Card requirement is also important for buyers because the retail card still requires a large full-game download.",
+    "verdictPros": [
+     "Strong contrast between Grace's survival horror and Leon's action-oriented combat.",
+     "First- and third-person options plus character-specific mechanics create meaningful replay flexibility.",
+     "Strong atmosphere and a story that reconnects the series with the legacy of Raccoon City."
+    ],
+    "verdictCons": [
+     "The Nintendo Switch 2 version uses substantial reconstruction and can show performance compromises in demanding scenes.",
+     "The physical edition is a Game-Key Card and requires a large game download.",
+     "No Arabic language support is listed for the Nintendo Switch 2 version."
+    ],
+    "reviews": [
+     {
+      "source": "Nintendo Life",
+      "score": "9/10",
+      "url": "https://www.nintendolife.com/reviews/nintendo-switch-2/resident-evil-requiem"
+     },
+     {
+      "source": "Gamereactor",
+      "score": "9/10",
+      "url": "https://www.gamereactor.eu/resident-evil-requiem-for-nintendo-switch-2-1681043/"
+     },
+     {
+      "source": "CGMagazine",
+      "score": "8.5/10",
+      "url": "https://www.cgmagonline.com/review/game/resident-evil-requiem-switch-2/"
+     }
+    ],
+    "timeline": [
+     {
+      "date": "2025-06-06",
+      "title": "Resident Evil Requiem Announced",
+      "body": "Capcom revealed the ninth mainline Resident Evil entry and introduced Grace Ashcroft."
+     },
+     {
+      "date": "2025-09-12",
+      "title": "Nintendo Switch 2 Version Confirmed",
+      "body": "Capcom confirmed Resident Evil Requiem for Nintendo Switch 2 alongside the other launch platforms."
+     },
+     {
+      "date": "2026-02-27",
+      "title": "Global Launch",
+      "body": "Resident Evil Requiem released worldwide on Nintendo Switch 2 and other supported platforms."
+     }
+    ],
+    "patchNotes": [
+     {
+      "version": "1.3.1",
+      "date": "2026-06-25",
+      "body": "Reduced the difficulty of Forever Rank 1 and Rank 2, enhanced selected skills including Explosives Specialist, and addressed additional minor issues."
+     },
+     {
+      "version": "1.3.0",
+      "date": "2026-05-08",
+      "body": "Added Leon Must Die Forever and related free post-launch content, plus fixes and adjustments."
+     },
+     {
+      "version": "1.2.0",
+      "date": "2026-03-27",
+      "body": "Added Photo Mode, fixed a bug that could make progress impossible under certain conditions, corrected text/other issues and made additional improvements."
+     }
+    ],
+    "soundtrack": [
+     {
+      "title": "Through the Darkness (Short Version)",
+      "url": "https://www.youtube.com/watch?v=6u3v7M3JTz0"
+     },
+     {
+      "title": "Foreboding — Resident Evil Requiem Original Soundtrack",
+      "url": "https://open.spotify.com/album/427eHPGnKBypTVQ5x1K1GA"
+     },
+     {
+      "title": "Found You — Resident Evil Requiem Original Soundtrack",
+      "url": "https://open.spotify.com/album/427eHPGnKBypTVQ5x1K1GA"
+     }
+    ],
+    "seriesName": "Resident Evil",
+    "seriesEntries": [
+     "Resident Evil",
+     "Resident Evil 2",
+     "Resident Evil 3: Nemesis"
+    ],
+    "studioName": "CAPCOM Co., Ltd. / Resident Evil Development Team",
+    "studioUrl": "https://www.capcom.co.jp/",
+    "studioLocation": "Osaka, Japan",
+    "studioAbout": "Resident Evil Requiem is developed and published by CAPCOM using the RE ENGINE, continuing the company's modern Resident Evil production pipeline.\n\nThe game is directed by Koshi Nakanishi, whose prior Resident Evil work includes Resident Evil 7 biohazard. The project deliberately combines different expressions of the series: Grace Ashcroft embodies a more vulnerable survival-horror experience, while Leon S. Kennedy enables a more experienced action-oriented style.\n\nCAPCOM designed both playable characters around selectable first-person and third-person perspectives. The official manual documents character-specific mechanics such as Grace's Blood Collector and Leon's hatchet/parry system.\n\nCAPCOM continues to support the title after launch through software updates, free modes and paid Deluxe content. As of the verification date, additional story content has been acknowledged as in development but has not been released.\n\nCAPCOM's own RE.NET global statistics provide an unusually strong official playtime data point: the worldwide average first-playthrough completion time is 19 hours and 14 minutes.",
+    "setupNeeds": [
+     "Nintendo Switch 2 console; the Nintendo version is not available for the original Nintendo Switch.",
+     "Approximately 28.7 GB of storage for the base digital game; the physical Game-Key Card also requires the full game download.",
+     "Internet access is required for the initial Game-Key Card download and software updates."
+    ],
+    "sources": [
+     {
+      "name": "CAPCOM — Resident Evil Requiem Official Website",
+      "url": "https://www.residentevil.com/requiem/en-uk/"
+     },
+     {
+      "name": "Nintendo UK — Resident Evil Requiem",
+      "url": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-2-games/Resident-Evil-Requiem-2915501.html"
+     },
+     {
+      "name": "Nintendo AU eShop — Resident Evil Requiem",
+      "url": "https://ec.nintendo.com/AU/en/titles/70010000101676"
+     }
+    ],
+    "game_id": "gme_1a73b67b96e440b1",
+    "image": "/api/files/covers/usr_b947dbb97217464c/f_386384ec2d3c4216.jpg",
+    "banner": "https://img-eshop.cdn.nintendo.net/i/bd4121cb97af8db7444d39c021e2fe7ce62ffff7f00bec44afccc8cd341650a4.jpg?w=1000",
+    "schemaId": "",
+    "badgeEn": "وفر 40%",
+    "badgeKu": "وفر 40%",
+    "featuresEn": [
+     "Two playable protagonists with deliberately different survival-horror and action-focused styles.",
+     "Selectable first-person or third-person viewpoints for Grace and Leon.",
+     "Native Nintendo Switch 2 release with HDR support, amiibo compatibility and post-launch content."
+    ],
+    "featuresKu": [
+     "Two playable protagonists with deliberately different survival-horror and action-focused styles.",
+     "Selectable first-person or third-person viewpoints for Grace and Leon.",
+     "Native Nintendo Switch 2 release with HDR support, amiibo compatibility and post-launch content."
+    ],
+    "redemptionSteps": [
+     "فتح متجر Nintendo eShop",
+     "اختيار Redeem Code",
+     "كتابة الكود المكون من 16 خانة",
+     "تأكيد"
+    ],
+    "boxFrontUrl": "https://www.jnlgame.com/cdn/shop/files/71-VuMoP_vL.jpg?v=1772148408&width=5760",
+    "coverUrl": "https://www.jnlgame.com/cdn/shop/files/71-VuMoP_vL.jpg?v=1772148408&width=5760",
+    "sales": 0,
+    "isHidden": false,
+    "createdAt": "2026-08-27T04:36:02.708Z",
+    "created_at": "2026-08-27T04:36:02.708Z",
+    "updatedAt": "2026-08-27T04:36:02.708Z",
+    "updated_at": "2026-08-27T04:36:02.708Z",
+    "images": [],
+    "modes": []
+   }
+  },
+  {
+   "id": "prd_e13531f82f00492d",
+   "slug": "rise-of-the-tomb-raider-20-year-celebration-switch-2",
+   "title": "Rise of the Tomb Raider: 20 Year Celebration",
+   "platform": "switch2",
+   "isHidden": true,
+   "hash": "a3227b32dc14210d8491a9466a596ea6035ec6709f545248e2bc0aec11d06ec9",
+   "images": [
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://banan.to/api/files/products/prd_e13531f82f00492d/square-card-1caa5d5d148a924b.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 267368,
+     "width": 1024,
+     "height": 1024,
+     "thumb": "review-workdir/thumbs/batch-021/rise-of-the-tomb-raider-20-year-celebration-switch-2__square-card-0.png"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://banan.to/api/files/products/prd_e13531f82f00492d/cover-9a976e7fb9c604f3.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 512580,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-021/rise-of-the-tomb-raider-20-year-celebration-switch-2__detail-cover-1.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://banan.to/api/files/products/prd_e13531f82f00492d/gallery-1-a8a58f28803dd7af.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 197842,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-021/rise-of-the-tomb-raider-20-year-celebration-switch-2__gallery-2.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[1]",
+     "url": "https://banan.to/api/files/products/prd_e13531f82f00492d/gallery-2-0cfff113e0a58a0a.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 259232,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-021/rise-of-the-tomb-raider-20-year-celebration-switch-2__gallery-3.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[2]",
+     "url": "https://banan.to/api/files/products/prd_e13531f82f00492d/gallery-3-c6a9483f90c526df.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 221156,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-021/rise-of-the-tomb-raider-20-year-celebration-switch-2__gallery-4.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[3]",
+     "url": "https://banan.to/api/files/products/prd_e13531f82f00492d/gallery-4-a4a1c835693a7eba.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 266706,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-021/rise-of-the-tomb-raider-20-year-celebration-switch-2__gallery-5.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[4]",
+     "url": "https://banan.to/api/files/products/prd_e13531f82f00492d/gallery-5-c1629762fa5270ed.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 486154,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-021/rise-of-the-tomb-raider-20-year-celebration-switch-2__gallery-6.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[5]",
+     "url": "https://banan.to/api/files/products/prd_e13531f82f00492d/gallery-6-3466a5c52f1ee041.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 307512,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-021/rise-of-the-tomb-raider-20-year-celebration-switch-2__gallery-7.png"
+    }
+   ],
+   "record": {
+    "title": "Rise of the Tomb Raider: 20 Year Celebration",
+    "titleEn": "Rise of the Tomb Raider: 20 Year Celebration",
+    "titleKu": "",
+    "slug": "rise-of-the-tomb-raider-20-year-celebration-switch-2",
+    "description": "Rise of the Tomb Raider: 20 Year Celebration is a cinematic action-adventure that follows Lara Croft through hostile wilderness, ancient ruins, and increasingly dangerous confrontations. It mixes traversal, combat, optional puzzle tombs, and a premium package identity. This import prepares it as a dedicated Nintendo Switch 2 storefront entry.",
+    "descriptionEn": "Rise of the Tomb Raider: 20 Year Celebration is a cinematic action-adventure that follows Lara Croft through hostile wilderness, ancient ruins, and increasingly dangerous confrontations. It mixes traversal, combat, optional puzzle tombs, and a premium package identity. This import prepares it as a dedicated Nintendo Switch 2 storefront entry.",
+    "descriptionKu": "",
+    "cartridgeImage": "",
+    "nintendoCardImage": "/api/files/products/prd_e13531f82f00492d/square-card-1caa5d5d148a924b.webp",
+    "coverHiResImage": "",
+    "coverImage": "/api/files/products/prd_e13531f82f00492d/cover-9a976e7fb9c604f3.webp",
+    "bannerImages": [
+     ""
+    ],
+    "gallery": [],
+    "youtubeTrailer": "https://www.youtube.com/results?search_query=Rise+of+the+Tomb+Raider+20+Year+Celebration+official+trailer",
+    "releaseDate": "2016-10-11",
+    "ageRating": "ESRB M / PEGI 18",
+    "metacriticRating": 86,
+    "genres": [
+     "Action",
+     "Adventure",
+     "Shooter"
+    ],
+    "platform": "switch2",
+    "size": 22,
+    "numberOfPlayers": "Single system (1)",
+    "supportedLanguages": "English, Japanese, French, Spanish, German",
+    "hardwareModel": "",
+    "colorEdition": "",
+    "storageCapacity": "",
+    "screenSpecs": "",
+    "batteryLife": "",
+    "boxContents": [],
+    "boxContentsText": "",
+    "warrantyCondition": "",
+    "connectivity": "",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "Global",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "",
+    "redemptionSteps": [],
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 10250,
+    "cost": 3500,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": true,
+    "displayOrder": 0,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "مشترك",
+      "description": "مشترك",
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_account",
+      "name": "خاص بك",
+      "description": "خاص بك",
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "types": [
+     {
+      "id": "offline_base",
+      "name": "مشترك — اللعبة الأساسية",
+      "optionId": "offline_account",
+      "price": 10250,
+      "cost": 3500,
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_base",
+      "name": "خاص بك — اللعبة الأساسية",
+      "optionId": "online_account",
+      "price": 23750,
+      "cost": 18500,
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "Active",
+    "kind": "account",
+    "trade_value_iqd": 11000,
+    "store_offer_bonus_iqd": 3500,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "id": "prd_e13531f82f00492d",
+    "schema_version": 24,
+    "titleAr": "رايز أوف ذا تومب رايدر: احتفالية 20 سنة",
+    "compatibility": [
+     "Nintendo Switch 2",
+     "No Switch 1 product in this entry"
+    ],
+    "edition": "20 Year Celebration",
+    "developer": "Crystal Dynamics",
+    "publisher": "Crystal Dynamics / Feral Interactive",
+    "metacriticUrl": "https://www.metacritic.com/game/rise-of-the-tomb-raider-20-year-celebration/",
+    "opencriticRating": 86,
+    "userScore": 8.2,
+    "price_usd": 29.99,
+    "officialUrl": "https://tombraider.com/",
+    "eshopUrl": "https://tombraider.com/",
+    "gameIsOffline": true,
+    "gameIsOnline": false,
+    "gameLanguageLocked": false,
+    "description_short": "Lara Croft’s sequel adventure with exploration, combat, and tomb puzzles.",
+    "description_ar": "مغامرة أكشن سينمائية مع لارا كروفت تجمع بين الاستكشاف، القتال، وحل ألغاز القبور، ومجهزة هنا كملف منتج خاص بـ Switch 2.",
+    "videos": [
+     {
+      "title": "Official Trailer",
+      "url": "https://www.youtube.com/results?search_query=Rise+of+the+Tomb+Raider+20+Year+Celebration+official+trailer"
+     }
+    ],
+    "nintendoEshopUrl": "https://tombraider.com/",
+    "nintendoOnlineRequired": false,
+    "nintendoCloudSaves": true,
+    "nintendoGameKeyCard": false,
+    "nintendoPhysicalNeedsDownload": false,
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": true,
+    "nintendoPlayModes": "TV mode / Tabletop mode / Handheld mode",
+    "nintendoNotes": "Prepared as a Switch 2 product according to the user-provided platform and pricing.",
+    "switch2Enhanced": true,
+    "switch2Exclusive": false,
+    "switch2UpgradePrice": 0,
+    "switch2Features": [
+     "Separate Switch 2 product entry",
+     "Story expansion-friendly package",
+     "Single-player action adventure"
+    ],
+    "tagline": "Lara Croft returns for a colder, deadlier expedition.",
+    "fitFor": [
+     "Action-adventure fans",
+     "Lara Croft fans",
+     "Players who enjoy exploration and tomb puzzles"
+    ],
+    "notFitFor": [
+     "Players wanting local multiplayer",
+     "Children sensitive to violent action"
+    ],
+    "playTimeMain": 13,
+    "playTimeFull": 28,
+    "editionsList": [
+     {
+      "name": "Regular / Offline",
+      "contents": [
+       {
+        "label": "Rise of the Tomb Raider: 20 Year Celebration"
+       },
+       {
+        "label": "Regular / Offline"
+       },
+       {
+        "label": "Offline account access"
+       }
+      ]
+     },
+     {
+      "name": "Standard / 标准版",
+      "contents": [
+       {
+        "label": "Rise of the Tomb Raider: 20 Year Celebration"
+       },
+       {
+        "label": "Standard / 标准版"
+       },
+       {
+        "label": "Online account access"
+       }
+      ]
+     }
+    ],
+    "gameplayPillars": [
+     {
+      "title": "Cinematic exploration",
+      "description": "Traversal, climbing, and environmental spectacle define the flow."
+     },
+     {
+      "title": "Action and stealth combat",
+      "description": "Players alternate between direct firefights and stealthy infiltration."
+     },
+     {
+      "title": "Optional tombs and puzzles",
+      "description": "Extra tombs add more deliberate puzzle-solving to the adventure."
+     },
+     {
+      "title": "Survival-flavored progression",
+      "description": "Crafting, hunting, and upgrades support Lara’s journey."
+     },
+     {
+      "title": "Celebration package identity",
+      "description": "The 20 Year Celebration edition adds a premium package identity."
+     }
+    ],
+    "worldSummary": "Remote wilderness, ancient ruins, and hostile compounds combine into a globe-spanning Lara Croft adventure.",
+    "storyChapters": [
+     {
+      "title": "Begin the Siberian journey",
+      "body": "Lara pursues a hidden secret tied to myth and legacy."
+     },
+     {
+      "title": "Explore tombs and ruins",
+      "body": "Ancient spaces hide both answers and danger."
+     },
+     {
+      "title": "Survive armed opposition",
+      "body": "Enemy factions stand between Lara and the truth."
+     },
+     {
+      "title": "Push through harsh environments",
+      "body": "Snow, cliffs, and remote ruins reinforce the survival tone."
+     },
+     {
+      "title": "Resolve the expedition",
+      "body": "The finale ties together myth, history, and Lara’s determination."
+     }
+    ],
+    "galleryImages": [
+     {
+      "url": "/api/files/products/prd_e13531f82f00492d/gallery-1-a8a58f28803dd7af.webp",
+      "alt": "Rise of the Tomb Raider: 20 Year Celebration screenshot 1"
+     },
+     {
+      "url": "/api/files/products/prd_e13531f82f00492d/gallery-2-0cfff113e0a58a0a.webp",
+      "alt": "Rise of the Tomb Raider: 20 Year Celebration screenshot 2"
+     },
+     {
+      "url": "/api/files/products/prd_e13531f82f00492d/gallery-3-c6a9483f90c526df.webp",
+      "alt": "Rise of the Tomb Raider: 20 Year Celebration screenshot 3"
+     },
+     {
+      "url": "/api/files/products/prd_e13531f82f00492d/gallery-4-a4a1c835693a7eba.webp",
+      "alt": "Rise of the Tomb Raider: 20 Year Celebration screenshot 4"
+     },
+     {
+      "url": "/api/files/products/prd_e13531f82f00492d/gallery-5-c1629762fa5270ed.webp",
+      "alt": "Rise of the Tomb Raider: 20 Year Celebration screenshot 5"
+     },
+     {
+      "url": "/api/files/products/prd_e13531f82f00492d/gallery-6-3466a5c52f1ee041.webp",
+      "alt": "Rise of the Tomb Raider: 20 Year Celebration screenshot 6"
+     }
+    ],
+    "features": [
+     "Strong third-person adventure design",
+     "Good mix of action and puzzles",
+     "Premium edition identity",
+     "Single-player campaign focus",
+     "Separate Switch 2 storefront entry"
+    ],
+    "perfResolutionDocked": "1440p",
+    "perfResolutionHandheld": "1080p",
+    "perfFps": "60",
+    "perfHdr": false,
+    "perfNotes": "Configured as a Switch 2 storefront profile for the requested platform split.",
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "hardwareId": "nintendo-switch-2",
+      "informationStatus": "Available",
+      "unavailableReason": "No unavailable reason. Performance profile is present for this device.",
+      "handheld": {
+       "supported": true,
+       "resolution": "1080p",
+       "resolutionDynamic": false,
+       "renderingResolution": "1080p",
+       "outputResolution": "1080p",
+       "fps": "60",
+       "fpsMin": "60",
+       "fpsMax": "60",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Handheld",
+       "notes": "Configured as a Switch 2 storefront profile for the requested platform split."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1440p",
+       "resolutionDynamic": false,
+       "renderingResolution": "1440p",
+       "outputResolution": "1440p",
+       "fps": "60",
+       "fpsMin": "60",
+       "fpsMax": "60",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "TV",
+       "notes": "Configured as a Switch 2 storefront profile for the requested platform split."
+      },
+      "modes": [
+       {
+        "name": "Default",
+        "handheldResolution": "1080p",
+        "handheldFps": "60",
+        "tvResolution": "1440p",
+        "tvFps": "60",
+        "hdr": false,
+        "vrr": false,
+        "notes": "Configured as a Switch 2 storefront profile for the requested platform split."
+       }
+      ],
+      "performanceNotes": "Configured as a Switch 2 storefront profile for the requested platform split."
+     },
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "deviceModel": "Nintendo Switch",
+      "hardwareId": "nintendo-switch",
+      "informationStatus": "Unavailable for this product entry",
+      "unavailableReason": "This product file is not intended for this device in the current platform split.",
+      "handheld": {
+       "supported": false
+      },
+      "tv": {
+       "supported": false
+      },
+      "performanceNotes": "This device block is intentionally marked unavailable because the game file belongs to a different platform entry."
+     }
+    ],
+    "faq": [
+     {
+      "q": "What is 20 Year Celebration?",
+      "a": "It is a premium package edition of Rise of the Tomb Raider."
+     },
+     {
+      "q": "Is it the same as Tomb Raider Definitive Edition?",
+      "a": "No. That is the earlier game, while Rise is the sequel."
+     },
+     {
+      "q": "Why only two variants?",
+      "a": "Only Regular / Offline and Standard / Online were provided."
+     },
+     {
+      "q": "Is it single-player?",
+      "a": "Yes. It is a single-player action adventure."
+     },
+     {
+      "q": "Why is this a Switch 2 file?",
+      "a": "The batch explicitly requested a Switch 2 version."
+     }
+    ],
+    "mpLocalPlayers": false,
+    "mpOnlinePlayers": false,
+    "mpCoop": false,
+    "mpCompetitive": false,
+    "mpLocalWireless": false,
+    "mpSplitScreen": false,
+    "boxContentsList": [],
+    "image": "",
+    "banner": "",
+    "schemaId": "",
+    "batchImport": true,
+    "createdAt": "2026-08-28T18:35:56.218Z",
+    "updatedAt": "2026-08-28T18:35:56.218Z"
+   }
+  },
+  {
+   "id": "prd_1f71e51f89264fbc",
+   "slug": "rotwood",
+   "title": "Rotwood",
+   "platform": "switch2",
+   "isHidden": false,
+   "hash": "b122316b04ea487cf46e42046284b29a74d93b2b44b9d46e3ca9c5ee6e15235d",
+   "images": [
+    {
+     "role": "front-box",
+     "field": "cartridgeImage",
+     "url": "https://banan.to/api/files/products/prd_1f71e51f89264fbc/front-e6c0c0a5c90ac9d0.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 56992,
+     "width": 335,
+     "height": 597,
+     "thumb": "review-workdir/thumbs/batch-021/rotwood__front-box-0.png"
+    },
+    {
+     "role": "front-box",
+     "field": "box_front_url",
+     "url": "https://www.ntower.de/images/newsPictures/4e/27677-1000-500-4ea2e1878c116e9d9f1c1c3995597570d842d577.jpeg",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://banan.to/api/files/products/prd_1f71e51f89264fbc/square-e6c0c0a5c90ac9d0.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 56992,
+     "width": 335,
+     "height": 597,
+     "thumb": "review-workdir/thumbs/batch-021/rotwood__square-card-2.png"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://banan.to/api/files/products/prd_1f71e51f89264fbc/cover-5d8566a1e270e95b.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 114011,
+     "width": 1000,
+     "height": 500,
+     "thumb": "review-workdir/thumbs/batch-021/rotwood__detail-cover-3.png"
+    },
+    {
+     "role": "listing",
+     "field": "image",
+     "url": "https://banan.to/api/files/products/prd_1f71e51f89264fbc/cover-5d8566a1e270e95b.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 114011,
+     "width": 1000,
+     "height": 500,
+     "thumb": "review-workdir/thumbs/batch-021/rotwood__listing-4.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[0]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000099153/3e9c08f1106df39f4d5cc49a8b05be6d42af31e0f5a5c91cf53bef5390339692",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 187581,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-021/rotwood__banner-5.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[1]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000099153/78449e59a366d00e7988eefc1980aadea2e139fd12dcef562e836995badd30d7",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 183711,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-021/rotwood__banner-6.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[2]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000099153/2ccac1a25886e1c9d0d998cf9c201e2594ec394e1058d992d51d86d4ec02097d",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 262728,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-021/rotwood__banner-7.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[3]",
+     "url": "https://banan.to/api/files/products/prd_1f71e51f89264fbc/banner-3-8da21bf715ddd75b.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000099153/748cbe280fab327fccea6179e7b6a802640f4695a904121dc772009cc783f59e",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 228378,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-021/rotwood__gallery-9.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[1]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000099153/ce131a6761012151a506125867b942733de1eb872a4f0c2363ea84bdc4f8f397",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 172481,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-021/rotwood__gallery-10.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[2]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000099153/b5f6f4a8c748e8551923c11c08a919daa0c3d607d4524e8b8143f20ffd6fa936",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 166418,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-021/rotwood__gallery-11.png"
+    }
+   ],
+   "record": {
+    "title": "Rotwood",
+    "titleEn": "Rotwood",
+    "titleKu": "Rotwood",
+    "slug": "rotwood",
+    "description": "A roguelike action brawler from Klei where up to four players hunt corrupted beasts, master weapons, combine run-based power-ups, and upgrade gear between expeditions.\n\nPlayers enter the Rotwood to fight corrupted beasts and push back a spreading blight. The game focuses more on repeated expeditions and combat progression than on cutscene-heavy storytelling. Progression comes through mastery, upgrades and deeper runs into increasingly dangerous zones. The world is defined by Klei's stylized presentation and strange creature designs.",
+    "descriptionEn": "A roguelike action brawler from Klei where up to four players hunt corrupted beasts, master weapons, combine run-based power-ups, and upgrade gear between expeditions.\n\nPlayers enter the Rotwood to fight corrupted beasts and push back a spreading blight. The game focuses more on repeated expeditions and combat progression than on cutscene-heavy storytelling. Progression comes through mastery, upgrades and deeper runs into increasingly dangerous zones. The world is defined by Klei's stylized presentation and strange creature designs.",
+    "descriptionKu": "A roguelike action brawler from Klei where up to four players hunt corrupted beasts, master weapons, combine run-based power-ups, and upgrade gear between expeditions.\n\nPlayers enter the Rotwood to fight corrupted beasts and push back a spreading blight. The game focuses more on repeated expeditions and combat progression than on cutscene-heavy storytelling. Progression comes through mastery, upgrades and deeper runs into increasingly dangerous zones. The world is defined by Klei's stylized presentation and strange creature designs.",
+    "cartridgeImage": "/api/files/products/prd_1f71e51f89264fbc/front-e6c0c0a5c90ac9d0.jpg",
+    "nintendoCardImage": "/api/files/products/prd_1f71e51f89264fbc/square-e6c0c0a5c90ac9d0.jpg",
+    "coverHiResImage": "",
+    "coverImage": "/api/files/products/prd_1f71e51f89264fbc/cover-5d8566a1e270e95b.jpg",
+    "bannerImages": [
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000099153/3e9c08f1106df39f4d5cc49a8b05be6d42af31e0f5a5c91cf53bef5390339692",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000099153/78449e59a366d00e7988eefc1980aadea2e139fd12dcef562e836995badd30d7",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000099153/2ccac1a25886e1c9d0d998cf9c201e2594ec394e1058d992d51d86d4ec02097d",
+     "/api/files/products/prd_1f71e51f89264fbc/banner-3-8da21bf715ddd75b.avif",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000099153/ce131a6761012151a506125867b942733de1eb872a4f0c2363ea84bdc4f8f397",
+     "/api/files/products/prd_1f71e51f89264fbc/banner-5-5f3b8096354fc538.avif"
+    ],
+    "gallery": [],
+    "youtubeTrailer": "https://www.youtube.com/results?search_query=Rotwood+Nintendo+Switch+2+trailer",
+    "releaseDate": "2026-03-03",
+    "ageRating": "PEGI 12",
+    "metacriticRating": 82,
+    "genres": [
+     "Action",
+     "Roguelike",
+     "Co-op",
+     "Beat 'em Up",
+     "Indie",
+     "Adventure"
+    ],
+    "platform": "switch2",
+    "size": 2.1,
+    "numberOfPlayers": "1",
+    "supportedLanguages": "Japanese, American English, French, German, Italian, Spanish, Korean, Russian, Simplified Chinese, Traditional Chinese, Brazilian Portuguese, Polish",
+    "hardwareModel": "",
+    "colorEdition": "",
+    "storageCapacity": "",
+    "screenSpecs": "",
+    "batteryLife": "",
+    "boxContents": [],
+    "boxContentsText": "",
+    "warrantyCondition": "",
+    "connectivity": "",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "Global",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "",
+    "redemptionSteps": [],
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 10250,
+    "cost": 1250,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": false,
+    "displayOrder": 28,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "مشترك",
+      "description": "Play using the supplied account under the store's offline-account activation method.",
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_account",
+      "name": "خاص بك",
+      "description": "Online-account option with internet-connected account use where supported by the game/service.",
+      "isInfiniteStock": true
+     }
+    ],
+    "types": [
+     {
+      "id": "standard_offline",
+      "name": "مشترك — اللعبة الأساسية",
+      "optionId": "offline_account",
+      "price": 10250,
+      "cost": 1250,
+      "description": "Standard game, Offline Account. Supplier Regular price: ¥9.74; purchase cost converted at 1 CNY = 220 IQD and rounded down to nearest 250 IQD.",
+      "isInfiniteStock": true
+     },
+     {
+      "id": "standard_online",
+      "name": "خاص بك — اللعبة الأساسية",
+      "optionId": "online_account",
+      "price": 28000,
+      "cost": 16500,
+      "description": "Standard game, Online Account. Supplier Standard price: ¥95.00; purchase cost converted at 1 CNY = 220 IQD and rounded down to nearest 250 IQD.",
+      "isInfiniteStock": true
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "active",
+    "kind": "account",
+    "trade_value_iqd": 0,
+    "store_offer_bonus_iqd": 0,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "id": "prd_1f71e51f89264fbc",
+    "schema_version": 22,
+    "titleAr": "Rotwood",
+    "compatibility": [
+     "Nintendo Switch 2"
+    ],
+    "edition": "Standard",
+    "developer": "Klei Entertainment Inc.",
+    "publisher": "Klei Entertainment",
+    "metacriticUrl": "https://www.nintendo.com/us/store/products/rotwood-switch-2/",
+    "opencriticRating": 85,
+    "userScore": 8,
+    "officialUrl": "https://www.nintendo.com/us/store/products/rotwood-switch-2/",
+    "eshopUrl": "https://www.nintendo.com/us/store/products/rotwood-switch-2/",
+    "gameIsOffline": true,
+    "gameIsOnline": true,
+    "gameLanguageLocked": false,
+    "description_short": "A roguelike action brawler from Klei where up to four players hunt corrupted beasts, master weapons, combine run-based power-ups, and upgrade gear between expeditions.",
+    "description_ar": "لعبة Rotwood على Nintendo Switch 2. تقدم هذه النسخة تجربة كاملة وموسعة في صفحة المتجر، مع التركيز على القصة والعالم وأسلوب اللعب والصور والمحتوى التفصيلي.",
+    "box_front_url": "https://www.ntower.de/images/newsPictures/4e/27677-1000-500-4ea2e1878c116e9d9f1c1c3995597570d842d577.jpeg",
+    "videos": [
+     {
+      "title": "Official / launch trailer",
+      "url": "https://www.youtube.com/results?search_query=Rotwood+Nintendo+Switch+2+trailer"
+     },
+     {
+      "title": "Additional trailer / promo",
+      "url": "https://www.youtube.com/results?search_query=Rotwood+Nintendo+Switch+2+trailer"
+     },
+     {
+      "title": "Secondary trailer / promo",
+      "url": "https://www.youtube.com/results?search_query=Rotwood+Nintendo+Switch+2+trailer"
+     }
+    ],
+    "nintendoEshopUrl": "https://www.nintendo.com/us/store/products/rotwood-switch-2/",
+    "nintendoOnlineRequired": false,
+    "nintendoCloudSaves": true,
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": true,
+    "nintendoPlayModes": "TV Mode, Tabletop Mode, Handheld Mode",
+    "nintendoNotes": "Rotwood has an expanded storefront profile with filled media, gameplay, world, FAQ and performance fields for Nintendo Switch 2 import use.",
+    "switch2Enhanced": true,
+    "switch2Exclusive": true,
+    "switch2UpgradePrice": 0,
+    "switch2Features": [
+     "Roguelike action brawler structure",
+     "Solo or co-op play",
+     "Multiple weapon classes",
+     "Boss hunts and beast encounters",
+     "Build experimentation through run-based upgrades",
+     "Safe-haven progression between hunts",
+     "Klei art direction and creature design",
+     "Strong replayability through repeated expeditions"
+    ],
+    "tagline": "A roguelike action brawler from Klei where up to four players hunt corrupted beasts, master weapons, combine run-based power-ups, and upgrade gear between expeditions",
+    "fitFor": [
+     "Co-op action fans",
+     "Roguelike players",
+     "Beat-'em-up fans",
+     "Players who enjoy skill-based weapon mastery",
+     "Players who like replay-driven combat loops"
+    ],
+    "notFitFor": [
+     "Players seeking a traditional story-driven RPG",
+     "Players who dislike run-based repetition",
+     "Players who want a slow-paced narrative game"
+    ],
+    "playTimeMain": 15,
+    "playTimeFull": 50,
+    "editionsList": [
+     {
+      "name": "Standard Edition",
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000099153/5413317e516cfbe19cb0e61ded9dc183eb497d8f23e742de16a9fd82b54c3966",
+      "contents": [
+       {
+        "label": "Base game"
+       },
+       {
+        "label": "Nintendo Switch 2 compatible storefront entry"
+       },
+       {
+        "label": "Digital account delivery option"
+       }
+      ]
+     },
+     {
+      "name": "Deluxe Edition",
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000099153/5413317e516cfbe19cb0e61ded9dc183eb497d8f23e742de16a9fd82b54c3966",
+      "contents": [
+       {
+        "label": "Base game"
+       },
+       {
+        "label": "Bonus / special supplier option where available"
+       },
+       {
+        "label": "Additional content varies by supplier version"
+       }
+      ]
+     },
+     {
+      "name": "Premium Deluxe Edition",
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000099153/5413317e516cfbe19cb0e61ded9dc183eb497d8f23e742de16a9fd82b54c3966",
+      "contents": [
+       {
+        "label": "Base game"
+       },
+       {
+        "label": "Deluxe / premium supplier option where available"
+       },
+       {
+        "label": "Content details depend on the publisher package"
+       },
+       {
+        "label": "Special Outfits Set"
+       },
+       {
+        "label": "Additional monster-hair and Rudy cosmetic packs"
+       }
+      ]
+     }
+    ],
+    "gameplayPillars": [
+     {
+      "title": "Gameplay Pillar 1",
+      "description": "Hunt corrupted beasts in repeated expeditions"
+     },
+     {
+      "title": "Gameplay Pillar 2",
+      "description": "Master different weapons and combat styles"
+     },
+     {
+      "title": "Gameplay Pillar 3",
+      "description": "Experiment with builds across roguelike runs"
+     },
+     {
+      "title": "Gameplay Pillar 4",
+      "description": "Play solo or in cooperative sessions"
+     },
+     {
+      "title": "Gameplay Pillar 5",
+      "description": "Push deeper into the Rotwood for stronger rewards and tougher enemies"
+     }
+    ],
+    "worldSummary": "Players enter the Rotwood to fight corrupted beasts and push back a spreading blight. The game focuses more on repeated expeditions and combat progression than on cutscene-heavy storytelling. Progression comes through mastery, upgrades and deeper runs into increasingly dangerous zones. The world is defined by Klei's stylized presentation and strange creature designs.",
+    "storyChapters": [
+     {
+      "title": "Story / World Note 1",
+      "body": "Players enter the Rotwood to fight corrupted beasts and push back a spreading blight."
+     },
+     {
+      "title": "Story / World Note 2",
+      "body": "The game focuses more on repeated expeditions and combat progression than on cutscene-heavy storytelling."
+     },
+     {
+      "title": "Story / World Note 3",
+      "body": "Progression comes through mastery, upgrades and deeper runs into increasingly dangerous zones."
+     },
+     {
+      "title": "Story / World Note 4",
+      "body": "The world is defined by Klei's stylized presentation and strange creature designs."
+     }
+    ],
+    "galleryImages": [
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000099153/748cbe280fab327fccea6179e7b6a802640f4695a904121dc772009cc783f59e",
+      "alt": "Distinct official Nintendo promotional/gameplay image 1; not reused as cover or banner."
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000099153/ce131a6761012151a506125867b942733de1eb872a4f0c2363ea84bdc4f8f397",
+      "alt": "Distinct official Nintendo promotional/gameplay image 2; not reused as cover or banner."
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000099153/b5f6f4a8c748e8551923c11c08a919daa0c3d607d4524e8b8143f20ffd6fa936",
+      "alt": "Distinct official Nintendo promotional/gameplay image 3; not reused as cover or banner."
+     }
+    ],
+    "features": [
+     "Roguelike action brawler structure",
+     "Solo or co-op play",
+     "Multiple weapon classes",
+     "Boss hunts and beast encounters",
+     "Build experimentation through run-based upgrades",
+     "Safe-haven progression between hunts",
+     "Klei art direction and creature design",
+     "Strong replayability through repeated expeditions"
+    ],
+    "perfResolutionDocked": "1920x1080 output",
+    "perfResolutionHandheld": "1920x1080 output",
+    "perfFps": "60",
+    "perfNotes": "The Switch 2 version targets a smooth 60 FPS presentation; exact dynamic internal rendering values are not consistently published.",
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "hardwareId": "prd_acf4c89908764c62",
+      "informationStatus": "verified / measured where available",
+      "handheld": {
+       "supported": true,
+       "resolution": "1920x1080 output",
+       "resolutionDynamic": true,
+       "renderingResolution": "Dynamic",
+       "outputResolution": "1280x720",
+       "fps": "60",
+       "fpsMin": "~25-30",
+       "fpsMax": "60",
+       "notes": "Portable mode can dip below 30 FPS in heavy scenes according to technical comparisons."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1920x1080 output",
+       "resolutionDynamic": true,
+       "renderingResolution": "Dynamic",
+       "outputResolution": "1920x1080",
+       "fps": "60",
+       "fpsMin": "30",
+       "fpsMax": "60",
+       "notes": "Often around 30-45 FPS in the overworld; can hit 60 FPS in lighter scenes or battles."
+      },
+      "sourceName": "Nintendo Life / RPG Site / Lords of Gaming technical impressions",
+      "sourceUrl": "https://www.nintendolife.com/reviews/nintendo-switch-2/monster-hunter-stories-3-twisted-reflection",
+      "verificationStatus": "third-party-tested",
+      "performanceNotes": "The Switch 2 version targets a smooth 60 FPS presentation; exact dynamic internal rendering values are not consistently published."
+     }
+    ],
+    "downloadSizeGb": 2.1,
+    "requiredSpaceGb": 2.1,
+    "microSdRecommended": false,
+    "languagesAudio": [
+     "English"
+    ],
+    "languagesText": [
+     "Japanese",
+     "French",
+     "German",
+     "Italian",
+     "Spanish",
+     "Simplified Chinese",
+     "Latin American Spanish",
+     "Brazilian Portuguese",
+     "American English"
+    ],
+    "arabicSupport": false,
+    "mpLocalPlayers": false,
+    "mpOnlinePlayers": false,
+    "mpCoop": false,
+    "mpCompetitive": false,
+    "mpSplitScreen": false,
+    "mpLocalWireless": false,
+    "dlc": [
+     {
+      "name": "Special Outfits Set",
+      "description": "Cosmetic outfit content for companions and additional customization.",
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000099153/5413317e516cfbe19cb0e61ded9dc183eb497d8f23e742de16a9fd82b54c3966"
+     },
+     {
+      "name": "Additional Side Story: Rudy",
+      "description": "Paid additional side-story content centered on Rudy.",
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000099153/3e9c08f1106df39f4d5cc49a8b05be6d42af31e0f5a5c91cf53bef5390339692"
+     },
+     {
+      "name": "Monster Hair packs",
+      "description": "Additional cosmetic monster-hair customization packs.",
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000099153/78449e59a366d00e7988eefc1980aadea2e139fd12dcef562e836995badd30d7"
+     },
+     {
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000099153/2ccac1a25886e1c9d0d998cf9c201e2594ec394e1058d992d51d86d4ec02097d"
+     },
+     {
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000099153/748cbe280fab327fccea6179e7b6a802640f4695a904121dc772009cc783f59e"
+     },
+     {
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000099153/ce131a6761012151a506125867b942733de1eb872a4f0c2363ea84bdc4f8f397"
+     },
+     {
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000099153/b5f6f4a8c748e8551923c11c08a919daa0c3d607d4524e8b8143f20ffd6fa936"
+     }
+    ],
+    "completionMain": 15,
+    "completionExtras": 28,
+    "completionAll": 50,
+    "faq": [
+     {
+      "q": "Is it single-player only?",
+      "a": "No. Co-op is one of the core parts of the game's identity."
+     },
+     {
+      "q": "Is it story-heavy?",
+      "a": "No. World flavor exists, but the core loop is action and replayable progression."
+     },
+     {
+      "q": "What kind of game is it?",
+      "a": "It is a roguelike action brawler with boss hunts and cooperative play."
+     },
+     {
+      "q": "Why might players like it?",
+      "a": "Because of its combat loop, replayability and Klei art direction."
+     },
+     {
+      "q": "Who should buy it?",
+      "a": "Players who enjoy action-heavy, run-based cooperative games."
+     }
+    ],
+    "verdictScore": 8,
+    "verdictSummary": "A feature-rich monster-raising RPG with strong presentation and customization, though Switch 2 performance is less stable than the hardware can ideally deliver.",
+    "verdictPros": [
+     "Strong creature-raising loop",
+     "Large and colorful world",
+     "Extensive customization",
+     "Rich deluxe/DLC offering",
+     "Official Simplified Chinese support"
+    ],
+    "verdictCons": [
+     "Switch 2 frame rate is unlocked and often sits around 30-45 FPS in large areas",
+     "Portable mode can dip more often in demanding scenes"
+    ],
+    "reviews": [
+     {
+      "source": "General reception",
+      "score": "See summary",
+      "quote": "Attention often focuses on the co-op loop, replayability and art direction."
+     },
+     {
+      "source": "Player appeal",
+      "score": "See summary",
+      "quote": "The weapon mastery and repeatable hunt structure are major draws."
+     }
+    ],
+    "timeline": [
+     {
+      "date": "Phase 1",
+      "title": "First runs",
+      "body": "Players learn weapon basics, movement and enemy behavior."
+     },
+     {
+      "date": "Phase 2",
+      "title": "Mid progression",
+      "body": "Stronger beasts and better gear broaden tactical choices."
+     },
+     {
+      "date": "Phase 3",
+      "title": "Advanced play",
+      "body": "Build optimization and team synergy become more important."
+     },
+     {
+      "date": "Phase 4",
+      "title": "Long-term play",
+      "body": "Boss mastery and cooperative replay value drive ongoing sessions."
+     }
+    ],
+    "patchNotes": [
+     {
+      "version": "Update 1",
+      "date": "2026-03-03",
+      "body": "Nintendo Switch 2 version released."
+     },
+     {
+      "version": "Update 2",
+      "date": "Post-launch",
+      "body": "Balance and content updates are likely to matter for long-term replay value."
+     }
+    ],
+    "soundtrack": [
+     {
+      "title": "Music Note 1"
+     },
+     {
+      "title": "Music Note 2"
+     }
+    ],
+    "seriesName": "Rotwood",
+    "studioName": "Klei Entertainment Inc.",
+    "studioUrl": "https://www.nintendo.com/us/store/products/rotwood-switch-2/",
+    "studioLocation": "Osaka, Japan",
+    "studioAbout": "CAPCOM is the Japanese developer and publisher behind Monster Hunter, Resident Evil and Street Fighter. Monster Hunter Stories 3 extends the turn-based Monster Rider RPG branch with redesigned character presentation, larger environments, a new story and expanded customization.",
+    "setupNeeds": [
+     "Nintendo Switch 2 system required for the Nintendo Switch 2 version.",
+     "Internet connection is required for digital download, updates and online/service features where applicable.",
+     "Nintendo Account required for Nintendo eShop purchase/download.",
+     "Sufficient internal storage or compatible microSD Express storage required.",
+     "Nintendo Switch Online membership is required only for game-specific online multiplayer/features that explicitly use it."
+    ],
+    "sources": [
+     {
+      "name": "Official Nintendo / Storefront",
+      "url": "https://www.nintendo.com/us/store/products/rotwood-switch-2/"
+     },
+     {
+      "name": "Official / Publisher",
+      "url": "https://www.klei.com/games/rotwood"
+     },
+     {
+      "name": "Reference 3",
+      "url": "https://www.youtube.com/results?search_query=Rotwood+Nintendo+Switch+2+trailer"
+     },
+     {
+      "name": "Reference 4",
+      "url": "https://www.ntower.de/images/newsPictures/4e/27677-1000-500-4ea2e1878c116e9d9f1c1c3995597570d842d577.jpeg"
+     }
+    ],
+    "boxContentsList": "[Circular]",
+    "image": "/api/files/products/prd_1f71e51f89264fbc/cover-5d8566a1e270e95b.jpg",
+    "banner": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000099153/3e9c08f1106df39f4d5cc49a8b05be6d42af31e0f5a5c91cf53bef5390339692",
+    "schemaId": "",
+    "badgeEn": "وفر 40%",
+    "badgeKu": "وفر 40%",
+    "featuresEn": [
+     "Roguelike action brawler structure",
+     "Solo or co-op play",
+     "Multiple weapon classes",
+     "Boss hunts and beast encounters",
+     "Build experimentation through run-based upgrades",
+     "Safe-haven progression between hunts",
+     "Klei art direction and creature design",
+     "Strong replayability through repeated expeditions"
+    ],
+    "featuresKu": [
+     "Roguelike action brawler structure",
+     "Solo or co-op play",
+     "Multiple weapon classes",
+     "Boss hunts and beast encounters",
+     "Build experimentation through run-based upgrades",
+     "Safe-haven progression between hunts",
+     "Klei art direction and creature design",
+     "Strong replayability through repeated expeditions"
+    ],
+    "sales": 0,
+    "images": [],
+    "modes": [],
+    "boxFrontUrl": "https://www.ntower.de/images/newsPictures/4e/27677-1000-500-4ea2e1878c116e9d9f1c1c3995597570d842d577.jpeg",
+    "createdAt": "2026-08-27T01:38:38.996Z",
+    "created_at": "2026-08-27T01:38:38.996Z",
+    "updatedAt": "2026-08-28T22:01:15.112Z",
+    "updated_at": "2026-08-27T01:38:38.996Z"
+   }
+  }
+ ]
+}

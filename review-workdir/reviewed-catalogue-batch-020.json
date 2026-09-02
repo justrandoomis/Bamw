@@ -1,6 +1,6 @@
 {
  "batch": "020",
- "apply": true,
+ "apply": false,
  "games": [
   {
    "id": "prd_9697d218d8874340",
@@ -73,6 +73,62 @@
    "set": {},
    "clear": [],
    "notes": "Deletion tombstone ({'id', '_deleted': true}), not a game: the export's category filter treated it as one. The export script now skips tombstones; this clean entry records it as reviewed so it never re-exports. Nothing written to production."
+  }
+ ],
+ "appliedAt": "2026-09-02T03:46:41.553Z",
+ "results": [
+  {
+   "id": "prd_9697d218d8874340",
+   "action": "APPLIED",
+   "changed": [],
+   "removed": [
+    "nintendoCardImage",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ]
+  },
+  {
+   "id": "prd_6e23a34819ac4bc6",
+   "action": "APPLIED",
+   "changed": [
+    "coverImage",
+    "image",
+    "bannerImages"
+   ],
+   "removed": [
+    "youtubeTrailer",
+    "galleryImages",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ]
+  },
+  {
+   "id": "prd_045678e2e2c04cc7",
+   "action": "CLEAN"
+  },
+  {
+   "id": "prd_07ad22877d9942d2",
+   "action": "CLEAN"
+  },
+  {
+   "id": "prd_0cc8d009345f4ea0",
+   "action": "CLEAN"
   }
  ]
 }

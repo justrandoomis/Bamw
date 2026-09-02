@@ -1,0 +1,441 @@
+{
+ "title": "PRAGMATA",
+ "titleEn": "PRAGMATA",
+ "titleKu": "PRAGMATA",
+ "slug": "pragmata",
+ "description": "PRAGMATA is a science-fiction action-adventure game from Capcom set at a remote lunar research facility. Hugh, a member of an investigation team, becomes stranded after a catastrophic incident and is rescued by Diana, a young android. To escape the moon, the pair must navigate a facility controlled by rogue AI. Gameplay combines third-person shooting and traversal as Hugh with simultaneous real-time hacking performed by Diana, creating a distinctive combat system built around controlling two characters at once.",
+ "descriptionEn": "PRAGMATA is a science-fiction action-adventure game from Capcom set at a remote lunar research facility. Hugh, a member of an investigation team, becomes stranded after a catastrophic incident and is rescued by Diana, a young android. To escape the moon, the pair must navigate a facility controlled by rogue AI. Gameplay combines third-person shooting and traversal as Hugh with simultaneous real-time hacking performed by Diana, creating a distinctive combat system built around controlling two characters at once.",
+ "descriptionKu": "PRAGMATA is a science-fiction action-adventure game from Capcom set at a remote lunar research facility. Hugh, a member of an investigation team, becomes stranded after a catastrophic incident and is rescued by Diana, a young android. To escape the moon, the pair must navigate a facility controlled by rogue AI. Gameplay combines third-person shooting and traversal as Hugh with simultaneous real-time hacking performed by Diana, creating a distinctive combat system built around controlling two characters at once.",
+ "cartridgeImage": "/api/files/cartridges/usr_b947dbb97217464c/f_ed03c37731f74943.jpg",
+ "coverImage": "/api/files/products/prd_6e23a34819ac4bc6/cover-de24d6e44b826606.avif",
+ "bannerImages": [
+  "/api/files/products/prd_6e23a34819ac4bc6/banner-0-de24d6e44b826606.avif",
+  "/api/files/products/prd_6e23a34819ac4bc6/banner-1-c5f7de969d435673.avif",
+  "/api/files/products/prd_6e23a34819ac4bc6/banner-2-c8a9076b13261459.avif"
+ ],
+ "gallery": [],
+ "youtubeTrailer": "https://www.youtube.com/results?search_query=Pragmata+official+trailer",
+ "releaseDate": "2026-04-17",
+ "ageRating": "ESRB T (Teen) – Language, Violence, In-Game Purchases",
+ "metacriticRating": 88,
+ "genres": [
+  "Action",
+  "Adventure",
+  "Shooting"
+ ],
+ "platform": "switch2",
+ "size": 13.2,
+ "numberOfPlayers": "1",
+ "supportedLanguages": "Japanese, French, German, Italian, Spanish, Korean, Russian, Simplified Chinese, Latin American Spanish, Brazilian Portuguese, Traditional Chinese, American English, Polish",
+ "hardwareModel": "",
+ "colorEdition": "",
+ "storageCapacity": "",
+ "screenSpecs": "",
+ "batteryLife": "",
+ "boxContents": [],
+ "warrantyCondition": "",
+ "connectivity": "",
+ "characterName": "Link",
+ "amiiboSeries": "The Legend of Zelda",
+ "figureType": "figure",
+ "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+ "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+ "boxCondition": "mib",
+ "releaseWave": "Wave 2 (Restock)",
+ "rarity": "standard",
+ "accessoryType": "حقيبة حماية وتنقل Carry Case",
+ "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+ "brand": "Nintendo Official",
+ "material": "Hard EVA Shockproof Shell",
+ "availableColors": "Black, Neon Red/Blue, White",
+ "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+ "cardValue": "$20 eShop Balance",
+ "region": "Global",
+ "cardType": "eshop",
+ "deliveryMethod": "instant_code",
+ "redemptionGuide": "",
+ "redemptionSteps": [],
+ "validity": "no_expiry",
+ "usedType": "cartridge",
+ "conditionGrade": "like_new",
+ "packaging": "cib",
+ "guaranteeStatus": "tested_30days",
+ "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+ "accountType": "primary",
+ "badge": "وفر 40%",
+ "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+ "price": 15000,
+ "cost": 2750,
+ "stock": 999999,
+ "isInfiniteStock": true,
+ "displayOrder": 0,
+ "category": "nintendo-switch-games",
+ "categoryId": "nintendo-switch-games",
+ "categoryEn": "",
+ "categoryKu": "",
+ "options": [
+  {
+   "id": "opt_offline",
+   "name": "حساب أوفلاين",
+   "description": "حساب مخصص للعب دون اتصال بعد إكمال خطوات التفعيل.",
+   "customerDescription": "حساب مشترك"
+  },
+  {
+   "id": "opt_online",
+   "name": "حساب أونلاين",
+   "description": "حساب يدعم تشغيل اللعبة مع الاتصال والميزات المتاحة أونلاين.",
+   "cost": "25500",
+   "price": "45000",
+   "customerDescription": "حساب خاص بك"
+  }
+ ],
+ "types": [
+  {
+   "id": "typ_std",
+   "name": "Standard Edition",
+   "description": "اللعبة الأساسية",
+   "customerDescription": "اللعبة الأساسية"
+  }
+ ],
+ "editions": [],
+ "dlcs": [],
+ "isActive": true,
+ "status": "Active",
+ "kind": "account",
+ "trade_value_iqd": 30000,
+ "store_offer_bonus_iqd": 10000,
+ "trade_enabled": true,
+ "trade_value_locked": false,
+ "id": "prd_6e23a34819ac4bc6",
+ "schema_version": 1,
+ "edition": "Includes PRAGMATA and the Shelter Variety Pack.",
+ "developer": "CAPCOM CO., LTD.",
+ "publisher": "CAPCOM",
+ "metacriticUrl": "https://www.metacritic.com/game/pragmata/critic-reviews/?platform=nintendo-switch-2",
+ "officialUrl": "https://www.nintendo.com/us/store/products/pragmata-switch-2/",
+ "eshopUrl": "https://www.nintendo.com/us/store/products/pragmata-switch-2/",
+ "gameIsOffline": true,
+ "gameIsOnline": false,
+ "gameLanguageLocked": false,
+ "description_short": "A sci-fi action-adventure from Capcom in which Hugh and the android Diana must escape an AI-controlled lunar research facility by combining third-person shooting, movement and real-time hacking.",
+ "description_ar": "PRAGMATA هي لعبة أكشن ومغامرات خيال علمي من Capcom تدور أحداثها داخل منشأة أبحاث بعيدة على سطح القمر. يتحكم اللاعب بـ Hugh في الحركة وإطلاق النار والاستكشاف، بينما تستخدم Diana قدراتها على الاختراق في الوقت نفسه لتعطيل دفاعات الأعداء. بعد كارثة داخل المنشأة، يجب على الثنائي التعاون للنجاة وكشف ما حدث والعثور على طريق للعودة إلى الأرض.",
+ "nintendoEshopUrl": "https://www.nintendo.com/us/store/products/pragmata-switch-2/",
+ "nintendoOnlineRequired": false,
+ "nintendoCloudSaves": true,
+ "nintendoGameKeyCard": false,
+ "nintendoPhysicalNeedsDownload": false,
+ "nintendoPlayModes": "TV, Tabletop, Handheld",
+ "nintendoNotes": "Nintendo lists PRAGMATA as Nintendo Switch 2 software with single-system play for one player, TV/Tabletop/Handheld modes, Save Data Cloud support, HDR output on compatible TVs, and a 13.2 GB game file size.",
+ "switch2Enhanced": false,
+ "tagline": "Wherever you go, I’ll be there.",
+ "fitFor": [
+  "Capcom fans",
+  "Players who enjoy sci-fi action",
+  "Single-player adventure fans"
+ ],
+ "notFitFor": [
+  "Players seeking multiplayer",
+  "Players who want a casual sports experience"
+ ],
+ "playTimeMain": 10,
+ "playTimeFull": 20,
+ "gameplayPillars": [
+  {
+   "title": "Dual-Character Combat",
+   "description": "Control Hugh’s movement, shooting and traversal while simultaneously using Diana’s hacking abilities.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101665/2dd53cb4fc41d8af857e45411330f474b2c4098c522bd7d74e93cc2c14abe704"
+  },
+  {
+   "title": "Real-Time Hacking",
+   "description": "Use Diana’s hacking interface during combat to bypass enemy defenses and create openings for Hugh’s weapons.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101665/0e08bade3593b5f6c3b9c27d1d1cbf6ec562e5ea6cfe57c2bd513e902e335e39"
+  },
+  {
+   "title": "Lunar Exploration",
+   "description": "Explore a remote lunar research facility and strange replicas of human civilization while searching for a route back to Earth.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101665/3a8331b2f7b73d1fdb9b92dd9afdb2aff9602f1d89a9cfa171bf2561e480076e"
+  }
+ ],
+ "worldSummary": "PRAGMATA takes place in the near future at a remote lunar research facility where a newly discovered ore can be refined and used to create almost anything through advanced 3D printing. After the facility falls silent, Hugh’s investigation mission ends in disaster. Together with Diana, he explores an AI-controlled complex and strange half-realized replicas of human civilization scattered across the lunar surface.",
+ "storyChapters": [
+  {
+   "title": "The Lunar Research Facility",
+   "body": "Hugh is sent with an investigation team to a remote lunar facility after it suddenly falls silent.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101665/3a8331b2f7b73d1fdb9b92dd9afdb2aff9602f1d89a9cfa171bf2561e480076e"
+  },
+  {
+   "title": "Hugh and Diana",
+   "body": "After disaster strikes, Hugh is saved by Diana, a lone android. The unlikely pair must cooperate to survive.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101665/2dd53cb4fc41d8af857e45411330f474b2c4098c522bd7d74e93cc2c14abe704"
+  },
+  {
+   "title": "Escape the Moon",
+   "body": "The pair fight through an AI-controlled complex while uncovering what happened to the facility and searching for a way back to Earth.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101665/0e08bade3593b5f6c3b9c27d1d1cbf6ec562e5ea6cfe57c2bd513e902e335e39"
+  }
+ ],
+ "galleryImages": [
+  {
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101665/3a8331b2f7b73d1fdb9b92dd9afdb2aff9602f1d89a9cfa171bf2561e480076e",
+   "alt": "Official Nintendo promotional artwork featuring Hugh and Diana."
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101665/0e08bade3593b5f6c3b9c27d1d1cbf6ec562e5ea6cfe57c2bd513e902e335e39",
+   "alt": "Official Nintendo screenshot featuring Diana."
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101665/2dd53cb4fc41d8af857e45411330f474b2c4098c522bd7d74e93cc2c14abe704",
+   "alt": "Official Nintendo screenshot featuring Hugh and Diana."
+  }
+ ],
+ "features": [
+  "Premium Capcom sci-fi action concept",
+  "Single-player focus",
+  "Strong atmosphere",
+  "Dedicated Switch 2 catalog entry",
+  "Clean two-tier pricing structure"
+ ],
+ "perfResolutionDocked": "1080p output via DLSS from approximately 540p internal resolution",
+ "perfResolutionHandheld": "1080p output from approximately 360p internal resolution",
+ "perfFps": "Unlocked; approximately 30-40 FPS in demanding exterior areas and around 50 FPS in many indoor areas, targeting up to 60 FPS",
+ "perfHdr": true,
+ "perfNotes": "The Nintendo Switch 2 version uses DLSS. Technical analysis reports an internal resolution of roughly 540p docked reconstructed to 1080p, while handheld uses roughly 360p internally. The frame rate is unlocked and varies by scene, commonly around 30-40 FPS in demanding exterior areas and near the 50s indoors. Nintendo officially confirms HDR output on compatible TVs.",
+ "downloadSizeGb": 13.2,
+ "requiredSpaceGb": 13.2,
+ "microSdRecommended": false,
+ "storageNotes": "Nintendo currently lists the game file size as 13.2 GB for the US Nintendo Switch 2 release.",
+ "languagesAudio": [
+  "English",
+  "Japanese"
+ ],
+ "languagesText": [
+  "English",
+  "Japanese",
+  "French"
+ ],
+ "arabicSupport": false,
+ "mpLocalPlayers": "false",
+ "mpOnlinePlayers": "false",
+ "mpCoop": false,
+ "mpCompetitive": false,
+ "mpSplitScreen": false,
+ "mpLocalWireless": false,
+ "dlc": [
+  {
+   "name": "PRAGMATA: Shelter Variety Pack",
+   "description": "Paid downloadable content pack released alongside the game and included with the Deluxe Edition.",
+   "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101665/3a8331b2f7b73d1fdb9b92dd9afdb2aff9602f1d89a9cfa171bf2561e480076e"
+  }
+ ],
+ "completionMain": 10,
+ "completionAll": 20,
+ "faq": [
+  {
+   "q": "Is PRAGMATA available on Nintendo Switch 1?",
+   "a": "No. The Nintendo version is released for Nintendo Switch 2."
+  },
+  {
+   "q": "Does PRAGMATA require Nintendo Switch Online?",
+   "a": "No for gameplay. Nintendo Switch Online is not required to play the single-player game, though Save Data Cloud is supported."
+  },
+  {
+   "q": "Does PRAGMATA support multiplayer?",
+   "a": "No. Nintendo lists the game as single-system, one-player software."
+  }
+ ],
+ "verdictScore": 8.8,
+ "verdictSummary": "PRAGMATA stands out through its unusual combination of real-time hacking and third-person shooting. The Nintendo Switch 2 version preserves the core gameplay and strong visual direction while making notable resolution and frame-rate compromises compared with more powerful platforms.",
+ "verdictPros": [],
+ "verdictCons": [],
+ "reviews": [
+  {
+   "source": "Metacritic",
+   "score": "88/100",
+   "quote": "Generally Favorable",
+   "url": "https://www.metacritic.com/game/pragmata/critic-reviews/?platform=nintendo-switch-2"
+  },
+  {
+   "source": "Nintendo Life",
+   "score": "9/10",
+   "url": "https://www.nintendolife.com/reviews/nintendo-switch-2/pragmata"
+  }
+ ],
+ "timeline": [
+  {
+   "date": "2020-06-11",
+   "title": "PRAGMATA announced",
+   "body": "Capcom revealed PRAGMATA as a new science-fiction IP."
+  },
+  {
+   "date": "2026-04-13",
+   "title": "Nintendo Switch 2 reviews published",
+   "body": "Reviews for the Nintendo Switch 2 version appeared ahead of launch."
+  },
+  {
+   "date": "2026-04-17",
+   "title": "PRAGMATA released",
+   "body": "PRAGMATA launched on Nintendo Switch 2 and other current-generation platforms."
+  }
+ ],
+ "seriesName": "PRAGMATA",
+ "seriesEntries": [
+  "PRAGMATA"
+ ],
+ "studioName": "CAPCOM CO., LTD.",
+ "studioUrl": "https://www.capcom.co.jp/",
+ "studioLocation": "Osaka, Japan",
+ "studioAbout": "CAPCOM CO., LTD. is a Japanese video game developer and publisher headquartered in Osaka. PRAGMATA is an original Capcom IP developed and published by Capcom.",
+ "setupNeeds": [
+  "Nintendo Switch 2 system",
+  "Compatible display required for HDR output",
+  "Nintendo Switch Online membership is optional and only needed for supported services such as Save Data Cloud"
+ ],
+ "sources": [
+  {
+   "name": "Nintendo Official Store",
+   "url": "https://www.nintendo.com/us/store/products/pragmata-switch-2/"
+  },
+  {
+   "name": "Nintendo UK",
+   "url": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-2-games/PRAGMATA-2987033.html"
+  },
+  {
+   "name": "Metacritic",
+   "url": "https://www.metacritic.com/game/pragmata/critic-reviews/?platform=nintendo-switch-2"
+  }
+ ],
+ "image": "/api/files/products/prd_6e23a34819ac4bc6/cover-de24d6e44b826606.avif",
+ "banner": "/api/files/products/prd_6e23a34819ac4bc6/banner-0-de24d6e44b826606.avif",
+ "schemaId": "",
+ "badgeEn": "وفر 40%",
+ "badgeKu": "وفر 40%",
+ "box_front_url": "https://assets.nintendo.com/image/upload/ar_16:9,b_auto:border,c_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101665/3a8331b2f7b73d1fdb9b92dd9afdb2aff9602f1d89a9cfa171bf2561e480076e",
+ "boxFrontUrl": "https://assets.nintendo.com/image/upload/ar_16:9,b_auto:border,c_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101665/3a8331b2f7b73d1fdb9b92dd9afdb2aff9602f1d89a9cfa171bf2561e480076e",
+ "coverUrl": "https://assets.nintendo.com/image/upload/ar_16:9,b_auto:border,c_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101665/3a8331b2f7b73d1fdb9b92dd9afdb2aff9602f1d89a9cfa171bf2561e480076e",
+ "sales": 0,
+ "isHidden": false,
+ "createdAt": "2026-08-27T04:36:02.708Z",
+ "created_at": "2026-08-27T04:36:02.708Z",
+ "updatedAt": "2026-08-28T18:34:34.647Z",
+ "updated_at": "2026-08-28T18:34:34.647Z",
+ "images": [],
+ "modes": [],
+ "titleAr": "براجماتا",
+ "compatibility": [
+  "Nintendo Switch 2",
+  "No Switch 1 product in this entry"
+ ],
+ "opencriticRating": 84,
+ "userScore": 8,
+ "price_usd": 59.99,
+ "videos": [
+  {
+   "title": "Official Trailer",
+   "url": "https://www.youtube.com/results?search_query=Pragmata+official+trailer"
+  }
+ ],
+ "tvMode": true,
+ "tabletopMode": true,
+ "handheldMode": true,
+ "switch2Exclusive": false,
+ "switch2UpgradePrice": 0,
+ "switch2Features": [
+  "Dedicated Switch 2 release profile",
+  "Story-driven science-fiction action",
+  "Single-player focus"
+ ],
+ "editionsList": [
+  {
+   "name": "Regular / Offline",
+   "contents": [
+    {
+     "label": "Pragmata"
+    },
+    {
+     "label": "Regular / Offline"
+    },
+    {
+     "label": "Offline account access"
+    }
+   ]
+  },
+  {
+   "name": "Standard / 标准版",
+   "contents": [
+    {
+     "label": "Pragmata"
+    },
+    {
+     "label": "Standard / 标准版"
+    },
+    {
+     "label": "Online account access"
+    }
+   ]
+  }
+ ],
+ "devicePerformance": [
+  {
+   "device": "Nintendo Switch 2",
+   "deviceSlug": "nintendo-switch-2",
+   "deviceModel": "Nintendo Switch 2",
+   "hardwareId": "nintendo-switch-2",
+   "informationStatus": "Available",
+   "unavailableReason": "No unavailable reason. Performance profile is present for this device.",
+   "handheld": {
+    "supported": true,
+    "resolution": "1080p",
+    "resolutionDynamic": false,
+    "renderingResolution": "1080p",
+    "outputResolution": "1080p",
+    "fps": "60",
+    "fpsMin": "60",
+    "fpsMax": "60",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "Handheld",
+    "notes": "Prepared as a Switch 2 performance profile for storefront use."
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "1440p",
+    "resolutionDynamic": false,
+    "renderingResolution": "1440p",
+    "outputResolution": "1440p",
+    "fps": "60",
+    "fpsMin": "60",
+    "fpsMax": "60",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "TV",
+    "notes": "Prepared as a Switch 2 performance profile for storefront use."
+   },
+   "modes": [
+    {
+     "name": "Default",
+     "handheldResolution": "1080p",
+     "handheldFps": "60",
+     "tvResolution": "1440p",
+     "tvFps": "60",
+     "hdr": false,
+     "vrr": false,
+     "notes": "Prepared as a Switch 2 performance profile for storefront use."
+    }
+   ],
+   "performanceNotes": "Prepared as a Switch 2 performance profile for storefront use."
+  }
+ ],
+ "boxContentsText": "",
+ "nintendoCardImage": "/api/files/products/prd_6e23a34819ac4bc6/square-78b82ed1d9299b75.webp",
+ "coverHiResImage": "",
+ "variants": [
+  {
+   "id": "typ_std",
+   "name": "Standard Edition",
+   "description": "اللعبة الأساسية",
+   "customerDescription": "اللعبة الأساسية"
+  }
+ ]
+}
