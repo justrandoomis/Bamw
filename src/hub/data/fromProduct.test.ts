@@ -256,3 +256,17 @@ describe("gameFromProduct languages", () => {
     expect(game.languages).toBeUndefined();
   });
 });
+
+describe("gameFromProduct Arabic title", () => {
+  it("shows the stored Arabic name on the Arabic page and the English one elsewhere", () => {
+    const p = { id: "t", titleEn: "Mario Kart World", title: "Mario Kart World", titleAr: "ماريو كارت وورلد" };
+    expect(gameFromProduct(p, "ar").title).toBe("ماريو كارت وورلد");
+    expect(gameFromProduct(p, "en").title).toBe("Mario Kart World");
+  });
+
+  it("falls back to a legacy Arabic title carried in `title`", () => {
+    const p = { id: "t", titleEn: "Bayonetta", title: "بايونيتا" };
+    expect(gameFromProduct(p, "ar").title).toBe("بايونيتا");
+    expect(gameFromProduct(p, "en").title).toBe("Bayonetta");
+  });
+});

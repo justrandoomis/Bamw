@@ -4,6 +4,7 @@ import {
   normalizeGameDevicePerformance,
   resolveGamePlatformKey,
   resolvePlatformHardware,
+  validateGameDevicePerformance,
   PLATFORM_DEVICE,
 } from "./devicePerformance";
 
@@ -186,5 +187,57 @@ describe("normalizeGameDevicePerformance", () => {
     expect(records).toHaveLength(1);
     expect(records[0]!.device).toBe("Nintendo Switch 2");
     expect(records[0]!.hardwareId).toBeUndefined();
+  });
+});
+
+describe("validateGameDevicePerformance under the platform-owned record rule", () => {
+  const completeSwitch1Record = {
+    device: "Nintendo Switch",
+    deviceSlug: "nintendo-switch",
+    handheld: { supported: true, outputResolution: "720p", fps: "30" },
+    tv: { supported: true, outputResolution: "1080p", fps: "30" },
+  };
+
+  it("accepts a Switch 1 game whose compatibility text mentions Switch 2", () => {
+    const product = {
+      platform: "switch",
+      compatibility: ["Playable on Nintendo Switch 2 via backward compatibility"],
+      devicePerformance: [completeSwitch1Record],
+    };
+    expect(validateGameDevicePerformance(product)).toEqual([]);
+  });
+
+  it("requires the platform device record, named per platform", () => {
+    const switch1 = validateGameDevicePerformance({ platform: "switch", devicePerformance: [] });
+    expect(switch1[0]?.severity).toBe("error");
+    expect(switch1[0]?.message).toContain("Nintendo Switch performance");
+
+    const switch2 = validateGameDevicePerformance({ platform: "switch2", devicePerformance: [] });
+    expect(switch2[0]?.message).toContain("Nintendo Switch 2 performance");
+  });
+
+  it("accepts a not_published record that carries reason, source and verification", () => {
+    const product = {
+      platform: "switch",
+      devicePerformance: [
+        {
+          device: "Nintendo Switch",
+          deviceSlug: "nintendo-switch",
+          informationStatus: "not_published",
+          unavailableReason: "Nintendo has not published official performance figures.",
+          sourceName: "Nintendo eShop",
+          verificationStatus: "checked",
+        },
+      ],
+    };
+    expect(validateGameDevicePerformance(product)).toEqual([]);
+  });
+
+  it("validates a sole record even before its stale device label is re-badged", () => {
+    const product = {
+      platform: "switch",
+      devicePerformance: [{ ...completeSwitch1Record, device: "Switch", deviceSlug: "switch" }],
+    };
+    expect(validateGameDevicePerformance(product)).toEqual([]);
   });
 });
