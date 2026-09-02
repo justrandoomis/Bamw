@@ -1,6 +1,6 @@
 {
  "batch": "014",
- "apply": true,
+ "apply": false,
  "games": [
   {
    "id": "prd_5e7f25795b9c47eb",
@@ -211,6 +211,115 @@
     "guaranteeStatus"
    ],
    "notes": "The trailer field held a ubisoft.com page URL, which cannot embed — removed. The Switch-2-badged record becomes the platform record keeping the analysis-sourced dynamic-600p/900p at 30 fps figures. 2022-10-20, Metacritic 86 verified. All images working. Contamination removed."
+  }
+ ],
+ "appliedAt": "2026-09-02T03:18:03.894Z",
+ "results": [
+  {
+   "id": "prd_5e7f25795b9c47eb",
+   "action": "APPLIED",
+   "changed": [
+    "devicePerformance"
+   ],
+   "removed": [
+    "youtubeTrailer",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ]
+  },
+  {
+   "id": "prd_34be2de35cbe4d6b",
+   "action": "APPLIED",
+   "changed": [],
+   "removed": [
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus",
+    "redemptionSteps",
+    "hardwareModel",
+    "storageCapacity",
+    "screenSpecs",
+    "batteryLife"
+   ]
+  },
+  {
+   "id": "prd_40524f52f17144d3",
+   "action": "APPLIED",
+   "changed": [
+    "devicePerformance"
+   ],
+   "removed": [
+    "youtubeTrailer",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ]
+  },
+  {
+   "id": "prd_2421082de71c4b0e",
+   "action": "APPLIED",
+   "changed": [
+    "coverImage",
+    "image",
+    "bannerImages",
+    "galleryImages",
+    "devicePerformance"
+   ],
+   "removed": [
+    "nintendoCardImage",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ]
+  },
+  {
+   "id": "prd_1083d6f5b5454571",
+   "action": "APPLIED",
+   "changed": [
+    "devicePerformance"
+   ],
+   "removed": [
+    "youtubeTrailer",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ]
   }
  ]
 }

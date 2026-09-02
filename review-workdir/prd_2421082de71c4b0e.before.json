@@ -1,0 +1,530 @@
+{
+ "title": "Mario + Rabbids Kingdom Battle",
+ "titleEn": "Mario + Rabbids Kingdom Battle",
+ "titleKu": "Mario + Rabbids Kingdom Battle",
+ "slug": "mario-rabbids-kingdom-battle-switch-1",
+ "description": "Mario joins forces with Rabbid heroes in a colorful turn-based strategy adventure packed with movement skills, overwatch tactics, weapon synergies and humorous exploration. Travel across the Mushroom Kingdom, build a team of three, use pipes and dashes to reposition, and defeat enemy waves and bosses through smart tactical play.",
+ "descriptionEn": "Mario joins forces with Rabbid heroes in a colorful turn-based strategy adventure packed with movement skills, overwatch tactics, weapon synergies and humorous exploration. Travel across the Mushroom Kingdom, build a team of three, use pipes and dashes to reposition, and defeat enemy waves and bosses through smart tactical play.",
+ "descriptionKu": "Mario joins forces with Rabbid heroes in a colorful turn-based strategy adventure packed with movement skills, overwatch tactics, weapon synergies and humorous exploration. Travel across the Mushroom Kingdom, build a team of three, use pipes and dashes to reposition, and defeat enemy waves and bosses through smart tactical play.",
+ "cartridgeImage": "/api/files/products/prd_2421082de71c4b0e/front-681ba91fc095aa92.jpg",
+ "nintendoCardImage": "/api/files/products/prd_2421082de71c4b0e/square-bac5eb6ec5003b81.avif",
+ "coverHiResImage": "/api/files/products/prd_2421082de71c4b0e/3d-texture-f7ce979be7a16739.jpg",
+ "coverImage": "/api/files/products/prd_2421082de71c4b0e/cover-9a8c1fec2f5bb136.avif",
+ "bannerImages": [
+  "/api/files/products/prd_2421082de71c4b0e/banner-0-57fbfcdb8e225c71.avif",
+  "/api/files/products/prd_2421082de71c4b0e/banner-1-32ec1e2b6eea0f19.avif",
+  "/api/files/products/prd_2421082de71c4b0e/banner-2-54f0f5652793e42d.avif",
+  "/api/files/products/prd_2421082de71c4b0e/banner-3-db2384180bb7e5b9.avif",
+  "/api/files/products/prd_2421082de71c4b0e/banner-4-87f029499155a666.avif",
+  "/api/files/products/prd_2421082de71c4b0e/banner-5-593d95b6ab175969.avif"
+ ],
+ "gallery": [],
+ "youtubeTrailer": "https://www.youtube.com/watch?v=DqH-iwA0ZmU",
+ "releaseDate": "2017-08-29",
+ "ageRating": "ESRB E10+ / PEGI 7",
+ "metacriticRating": 85,
+ "genres": [
+  "Strategy",
+  "Turn-based Tactics",
+  "Adventure"
+ ],
+ "platform": "switch1",
+ "size": 2.3,
+ "numberOfPlayers": "Single system (1); Local co-op (2) in select modes",
+ "supportedLanguages": "English, Japanese, French, Spanish, German",
+ "hardwareModel": "",
+ "colorEdition": "",
+ "storageCapacity": "",
+ "screenSpecs": "",
+ "batteryLife": "",
+ "boxContents": [],
+ "boxContentsText": "",
+ "warrantyCondition": "",
+ "connectivity": "",
+ "characterName": "Link",
+ "amiiboSeries": "The Legend of Zelda",
+ "figureType": "figure",
+ "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+ "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+ "boxCondition": "mib",
+ "releaseWave": "Wave 2 (Restock)",
+ "rarity": "standard",
+ "accessoryType": "حقيبة حماية وتنقل Carry Case",
+ "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+ "brand": "Nintendo Official",
+ "material": "Hard EVA Shockproof Shell",
+ "availableColors": "Black, Neon Red/Blue, White",
+ "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+ "cardValue": "$20 eShop Balance",
+ "region": "Global",
+ "cardType": "eshop",
+ "deliveryMethod": "instant_code",
+ "redemptionGuide": "",
+ "redemptionSteps": [],
+ "validity": "no_expiry",
+ "usedType": "cartridge",
+ "conditionGrade": "like_new",
+ "packaging": "cib",
+ "guaranteeStatus": "tested_30days",
+ "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+ "accountType": "primary",
+ "badge": "وفر 40%",
+ "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+ "price": 8500,
+ "cost": 1250,
+ "stock": 999999,
+ "isInfiniteStock": true,
+ "isHidden": false,
+ "displayOrder": 0,
+ "category": "nintendo-switch-games",
+ "categoryId": "nintendo-switch-games",
+ "categoryEn": "",
+ "categoryKu": "",
+ "options": [
+  {
+   "id": "offline_account",
+   "name": "مشترك",
+   "description": "حساب مشترك",
+   "stock": 9999,
+   "isInfiniteStock": true,
+   "customerDescription": "حساب مشترك"
+  },
+  {
+   "id": "online_account",
+   "name": "خاص بك",
+   "description": "حساب خاص بك",
+   "stock": 9999,
+   "isInfiniteStock": true,
+   "customerDescription": "حساب خاص بك"
+  }
+ ],
+ "types": [
+  {
+   "id": "standard_offline",
+   "name": "مشترك — اللعبة الأساسية",
+   "optionId": "offline_account",
+   "price": 8500,
+   "cost": 1250,
+   "description": "",
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "standard_online",
+   "name": "خاص بك — اللعبة الأساسية",
+   "optionId": "online_account",
+   "price": 20000,
+   "cost": 10000,
+   "description": "",
+   "stock": 9999,
+   "isInfiniteStock": true
+  }
+ ],
+ "editions": [],
+ "dlcs": [],
+ "isActive": true,
+ "status": "Active",
+ "kind": "account",
+ "trade_value_iqd": 20000,
+ "store_offer_bonus_iqd": 2500,
+ "trade_enabled": true,
+ "trade_value_locked": false,
+ "id": "prd_2421082de71c4b0e",
+ "schema_version": 24,
+ "titleAr": "ماريو + رابيدز: كينغدوم باتل",
+ "compatibility": [
+  "Nintendo Switch",
+  "Nintendo Switch 2 compatibility: Supported – game behavior is consistent with Nintendo Switch"
+ ],
+ "edition": "Standard",
+ "developer": "Ubisoft Milan",
+ "publisher": "Ubisoft",
+ "seriesName": "Mario + Rabbids",
+ "userScore": 8.5,
+ "price_usd": 59.99,
+ "officialUrl": "https://www.nintendo.com/us/store/products/mario-plus-rabbids-kingdom-battle-switch/",
+ "eshopUrl": "https://www.nintendo.com/us/store/products/mario-plus-rabbids-kingdom-battle-switch/",
+ "galleryImages": [
+  {
+   "alt": "Verified direct image URL 1",
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000000819/d7c227b987e2c656c89e5181fb0c32234fe80a591fd6ecc72b3810af7fb3dbbd"
+  },
+  {
+   "alt": "Verified direct image URL 2",
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000000819/91823f4de86d308747cd319e0a83ea5df7b39de182ae8f76bda2ad3143356940"
+  },
+  {
+   "alt": "Verified direct image URL 3",
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000000819/82f7e88f885af8a855e40d22fa04028a4704e9de8bd2821fab42f8ae4c781ea9"
+  },
+  {
+   "alt": "Verified direct image URL 4",
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000000819/5e95a3a99d0c5e4e8f09de72a210a13e7e5a9aa520876a0da4810f5c19f9c163"
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000000819/110d9895cfbbf7131e7ce54b4acef974a7e5d01f1bda33fd8d5462e6655168db"
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000000819/f0989040c1749800f66d97fa54cd79b89fbe3080809d0c8869614025dd97391d"
+  }
+ ],
+ "gameIsOffline": true,
+ "gameIsOnline": true,
+ "gameLanguageLocked": false,
+ "description_short": "Mario joins forces with Rabbid heroes in a colorful turn-based strategy adventure packed with movement skills, overwatch tactics, weapon synergies and humorous exploration.",
+ "description_ar": "يتعاون ماريو مع أبطال رابيدز في لعبة تكتيكية بنظام الأدوار مليئة بالحركة والمهارات والتكتيك والأسلحة والتجوال المرح. تتنقل بين عوالم مملكة الفطر، تبني فريقًا من ثلاثة أبطال، وتستخدم الأنابيب والاندفاع والقدرات الخاصة للفوز على الأعداء والزعماء عبر تخطيط ذكي.",
+ "box_front_url": "https://images.launchbox-app.com/f28e8b8d-6050-4713-8c21-6837cb37e574.jpg",
+ "box_back_url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000000819/d7c227b987e2c656c89e5181fb0c32234fe80a591fd6ecc72b3810af7fb3dbbd",
+ "editionsList": [
+  {
+   "name": "Standard Edition",
+   "coverUrl": "https://images.launchbox-app.com/f28e8b8d-6050-4713-8c21-6837cb37e574.jpg",
+   "contents": [
+    {
+     "label": "Base game"
+    },
+    {
+     "label": "Full campaign"
+    },
+    {
+     "label": "Core tactical battles"
+    }
+   ]
+  },
+  {
+   "name": "Digital Edition",
+   "coverUrl": "https://assets.nintendo.com/image/upload/ar_1:1,c_fill,g_auto,w_1000/f_auto/q_auto/dpr_1.5/store/software/switch/70010000000819/c0544d71c50c0595b8589451e9fc8b2deaf5cab52415202e0585e137fbe3d5fb",
+   "contents": [
+    {
+     "label": "Nintendo eShop release"
+    },
+    {
+     "label": "Fast download size"
+    },
+    {
+     "label": "Save Data Cloud support"
+    }
+   ]
+  },
+  {
+   "name": "Current Store Package",
+   "coverUrl": "https://assets.nintendo.com/image/upload/ar_16:9,c_fill,g_auto,w_1600/f_auto/q_auto/dpr_1.5/store/software/switch/70010000000819/c0544d71c50c0595b8589451e9fc8b2deaf5cab52415202e0585e137fbe3d5fb",
+   "contents": [
+    {
+     "label": "Offline account option"
+    },
+    {
+     "label": "Online account option"
+    },
+    {
+     "label": "Hidden by default until review"
+    }
+   ]
+  }
+ ],
+ "gameplayPillars": [
+  {
+   "title": "Tactical movement",
+   "description": "Use team jumps, dashes, pipes, high cover and low cover to build strong turn-by-turn positioning advantages.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000000819/d7c227b987e2c656c89e5181fb0c32234fe80a591fd6ecc72b3810af7fb3dbbd"
+  },
+  {
+   "title": "Hero synergy",
+   "description": "Combine Mario, Luigi, Peach and the Rabbid heroes to create complementary attacks, buffs and battlefield control.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000000819/91823f4de86d308747cd319e0a83ea5df7b39de182ae8f76bda2ad3143356940"
+  },
+  {
+   "title": "Exploration and puzzles",
+   "description": "Outside battles you explore connected zones, collect secrets, solve simple puzzles and unlock new weapons and paths.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000000819/82f7e88f885af8a855e40d22fa04028a4704e9de8bd2821fab42f8ae4c781ea9"
+  },
+  {
+   "title": "Tactical positioning and cover",
+   "description": "Battles revolve around movement ranges, flanking lanes, and smart use of full or partial cover. Good positioning often matters as much as raw damage output.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000000819/5e95a3a99d0c5e4e8f09de72a210a13e7e5a9aa520876a0da4810f5c19f9c163"
+  },
+  {
+   "title": "Kingdom exploration and secrets",
+   "description": "Between fights, each kingdom includes light exploration, environmental puzzles, hidden chests, and collectible content that expands the adventure beyond combat.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000000819/110d9895cfbbf7131e7ce54b4acef974a7e5d01f1bda33fd8d5462e6655168db"
+  }
+ ],
+ "worldSummary": "A dimensional accident fuses the Mushroom Kingdom with the chaotic Rabbids world. Mario and his unusual new allies journey across warped regions filled with puzzles, enemy encounters and comic set pieces to restore order.",
+ "storyChapters": [
+  {
+   "title": "Worlds collide",
+   "body": "A strange machine merges the Rabbids and the Mushroom Kingdom, creating chaos across familiar Mario locations.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000000819/d7c227b987e2c656c89e5181fb0c32234fe80a591fd6ecc72b3810af7fb3dbbd"
+  },
+  {
+   "title": "Build the team",
+   "body": "Mario gathers Rabbid allies and unlocks new hero combinations, weapons and special skills as the journey expands.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000000819/91823f4de86d308747cd319e0a83ea5df7b39de182ae8f76bda2ad3143356940"
+  },
+  {
+   "title": "Defeat the corruption",
+   "body": "Late-game battles demand smart positioning, weapon synergy and careful management of cooldowns and status effects.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000000819/82f7e88f885af8a855e40d22fa04028a4704e9de8bd2821fab42f8ae4c781ea9"
+  },
+  {
+   "title": "Clean up the Megabug disaster",
+   "body": "Mario, Luigi, Peach, and Rabbid allies travel across the Mushroom Kingdom after a chaotic invention fuses Rabbids, technology, and familiar locations.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000000819/f0989040c1749800f66d97fa54cd79b89fbe3080809d0c8869614025dd97391d"
+  },
+  {
+   "title": "Donkey Kong Adventure and extra battles",
+   "body": "Post-launch content adds a separate Donkey Kong-focused campaign with its own maps, enemy types, and tactical twists for players who want more combat scenarios.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000000819/d7c227b987e2c656c89e5181fb0c32234fe80a591fd6ecc72b3810af7fb3dbbd"
+  }
+ ],
+ "features": [
+  "Turn-based battles with cover mechanics",
+  "Hero upgrades and weapon progression",
+  "Local co-op in dedicated challenges",
+  "Deep turn-based tactics with approachable controls",
+  "Distinct hero abilities, weapons, and team synergies",
+  "Donkey Kong Adventure DLC expands the campaign with a separate storyline"
+ ],
+ "perfResolutionDocked": "Up to 900p docked",
+ "perfResolutionHandheld": "Up to 720p handheld",
+ "perfFps": "30",
+ "perfHdr": false,
+ "faq": [
+  {
+   "q": "What kind of game is it?",
+   "a": "It is a turn-based tactics game with exploration, character upgrades and puzzle-like positioning."
+  },
+  {
+   "q": "Does it support multiplayer?",
+   "a": "The main campaign is single-player, while select challenge and co-op modes support local two-player play."
+  },
+  {
+   "q": "Is it beginner friendly?",
+   "a": "Yes. The early game introduces core mechanics gradually, while later difficulty comes from deeper tactical combinations."
+  },
+  {
+   "q": "Is Mario + Rabbids Kingdom Battle beginner-friendly?",
+   "a": "Yes. It starts gently, explains movement and cover clearly, and remains approachable while still offering tougher optional challenges later on."
+  },
+  {
+   "q": "Does the game include extra content?",
+   "a": "Yes. The best-known expansion is Donkey Kong Adventure, which adds a separate side campaign with new heroes, new areas, and additional tactical encounters."
+  }
+ ],
+ "verdictScore": 8.7,
+ "verdictSummary": "Overall score: 8.7/10. Strengths include Excellent tactical readability; Charming crossover presentation; Strong mix of accessibility and depth. Main drawbacks include 30 fps presentation; Exploration can feel light.",
+ "verdictPros": [
+  "Excellent tactical readability",
+  "Charming crossover presentation",
+  "Strong mix of accessibility and depth",
+  "Smart map design keeps battles varied",
+  "Exploration adds charm between combat arenas"
+ ],
+ "verdictCons": [
+  "30 fps presentation",
+  "Exploration can feel light",
+  "Some encounters repeat ideas",
+  "Some difficulty spikes can surprise casual players",
+  "Exploration segments are lighter than the tactical combat itself"
+ ],
+ "reviews": [
+  {
+   "source": "Metacritic",
+   "score": "85/100",
+   "quote": "Widely praised for its tactical design and crossover concept.",
+   "url": "https://www.metacritic.com/game/mario-rabbids-kingdom-battle/"
+  },
+  {
+   "source": "Nintendo",
+   "score": "Official",
+   "quote": "Nintendo store listing highlights tactical movement, hero teams and exploration.",
+   "url": "https://www.nintendo.com/us/store/products/mario-plus-rabbids-kingdom-battle-switch/"
+  },
+  {
+   "source": "YouTube trailer",
+   "score": "Official Trailer",
+   "quote": "The reveal trailer established the tone of the Mario and Rabbids crossover.",
+   "url": "https://www.youtube.com/watch?v=DqH-iwA0ZmU"
+  }
+ ],
+ "timeline": [
+  {
+   "date": "2017-06-13",
+   "title": "Official reveal",
+   "body": "The game was formally presented during E3 2017."
+  },
+  {
+   "date": "2017-08-29",
+   "title": "Worldwide release",
+   "body": "Mario + Rabbids Kingdom Battle launched on Nintendo Switch."
+  },
+  {
+   "date": "2018-06-26",
+   "title": "Donkey Kong Adventure",
+   "body": "The major post-launch expansion added a new adventure starring Donkey Kong."
+  }
+ ],
+ "patchNotes": [
+  {
+   "version": "Launch build",
+   "date": "2017-08",
+   "body": "Base game release."
+  },
+  {
+   "version": "Versus update",
+   "date": "2017",
+   "body": "Post-launch support added extra modes and fixes."
+  },
+  {
+   "version": "Current build",
+   "date": "2026-08-27",
+   "body": "Stable retail version compatible with Nintendo Switch 2 behavior mode."
+  }
+ ],
+ "studioName": "Ubisoft Milan",
+ "studioUrl": "https://www.ubisoft.com/",
+ "studioLocation": "Milan, Italy",
+ "studioAbout": "Ubisoft Milan is credited as the developer of this Nintendo Switch release. Ubisoft is credited as the publisher.",
+ "sources": [
+  {
+   "name": "Nintendo Store",
+   "url": "https://www.nintendo.com/us/store/products/mario-plus-rabbids-kingdom-battle-switch/"
+  },
+  {
+   "name": "Official Trailer",
+   "url": "https://www.youtube.com/watch?v=DqH-iwA0ZmU"
+  },
+  {
+   "name": "LaunchBox art reference",
+   "url": "https://gamesdb.launchbox-app.com/games/details/76749-mario-rabbids-kingdom-battle"
+  }
+ ],
+ "devicePerformance": [
+  {
+   "device": "Nintendo Switch 2",
+   "deviceSlug": "nintendo-switch-2",
+   "deviceModel": "Nintendo Switch 2",
+   "hardwareId": "prd_acf4c89908764c62",
+   "informationStatus": "Available / Backward Compatible",
+   "unavailableReason": "No required Handheld or TV mode is marked unsupported.",
+   "handheld": {
+    "supported": true,
+    "resolution": "720p",
+    "resolutionDynamic": false,
+    "renderingResolution": "1280x720",
+    "outputResolution": "1920x1080 system output / backward-compatible rendering profile",
+    "fps": "30",
+    "fpsMin": "30",
+    "fpsMax": "30",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "Handheld / Backward Compatibility",
+    "notes": "Backward-compatible Nintendo Switch version. No native Switch 2 edition or graphics patch is used here; the original Switch rendering profile and 30 fps cap are retained, with system-level loading/consistency benefits possible."
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "900p",
+    "resolutionDynamic": false,
+    "renderingResolution": "1600x900",
+    "outputResolution": "1920x1080",
+    "fps": "30",
+    "fpsMin": "30",
+    "fpsMax": "30",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "TV / Docked / Backward Compatibility",
+    "notes": "Backward-compatible Nintendo Switch version. No native Switch 2 edition or graphics patch is used here; the original Switch rendering profile and 30 fps cap are retained, with system-level loading/consistency benefits possible."
+   },
+   "modes": [
+    {
+     "name": "Backward Compatibility",
+     "handheldResolution": "720p",
+     "handheldFps": "30",
+     "tvResolution": "900p",
+     "tvFps": "30",
+     "hdr": false,
+     "vrr": false,
+     "notes": "Backward-compatible Nintendo Switch version. No native Switch 2 edition or graphics patch is used here; the original Switch rendering profile and 30 fps cap are retained, with system-level loading/consistency benefits possible."
+    }
+   ],
+   "upscaling": "System output scaling only; no native Switch 2 edition assumed",
+   "rayTracing": false,
+   "rayTracingMode": "Not Supported",
+   "loadingTime": "Generally faster system/storage access may occur; exact loading time varies by scene",
+   "loadingNotes": "Backward compatibility can reduce some loading bottlenecks, but no single universal loading-time value is used.",
+   "gameVersion": "Current Nintendo Switch retail build",
+   "patchVersion": "Current available Switch update",
+   "testedDate": "2026-08-27",
+   "sourceName": "Nintendo Switch 2 backward compatibility + established Nintendo Switch performance profile",
+   "sourceUrl": "https://www.nintendo.com/us/gaming-systems/switch-2/",
+   "verifiedAt": "2026-08-27",
+   "verificationStatus": "Verified profile / Backward Compatible",
+   "performanceNotes": "Backward-compatible Nintendo Switch version. No native Switch 2 edition or graphics patch is used here; the original Switch rendering profile and 30 fps cap are retained, with system-level loading/consistency benefits possible."
+  }
+ ],
+ "switch2UpgradePrice": 0,
+ "nintendoEshopUrl": "https://www.nintendo.com/us/store/products/mario-plus-rabbids-kingdom-battle-switch/",
+ "arabicSupport": false,
+ "tagline": "Mario joins forces with Rabbid heroes in a colorful turn-based strategy adventure packed with movement skills, overwatch tactics, weapon synergies and humorous exploration.",
+ "fitFor": [
+  "Players looking for strategy, turn-based tactics gameplay.",
+  "Players who want the game modes supported by the official player-count specification: Single system (1); Local co-op (2) in select modes.",
+  "Players who enjoy XCOM-style tactical decision making without extreme complexity.",
+  "Fans of Mario crossovers who want a long single-player adventure with exploration between battles."
+ ],
+ "notFitFor": [
+  "Players specifically seeking online multiplayer; this title does not list online multiplayer support.",
+  "Players specifically seeking local multiplayer; this title does not list local multiplayer support.",
+  "Players looking for fast real-time action instead of turn-based encounters.",
+  "Players who want competitive online multiplayer; the focus is on solo play and local challenge content."
+ ],
+ "setupNeeds": [
+  "Nintendo Switch-compatible hardware for this release.",
+  "Internet connection is required for online features."
+ ],
+ "dlc": [
+  {
+   "name": "Donkey Kong Adventure",
+   "description": "A standalone story expansion starring Donkey Kong, Rabbid Peach, and Rabbid Cranky, with new combat and environments."
+  }
+ ],
+ "guides": [
+  {
+   "title": "Official Nintendo game page",
+   "summary": "Official Nintendo reference for game description, supported modes, player counts, languages, file size, and compatibility information.",
+   "url": "https://www.nintendo.com/us/store/products/mario-plus-rabbids-kingdom-battle-switch/"
+  }
+ ],
+ "boxContentsList": "[Circular]",
+ "image": "/api/files/products/prd_2421082de71c4b0e/cover-9a8c1fec2f5bb136.avif",
+ "banner": "/api/files/products/prd_2421082de71c4b0e/banner-0-57fbfcdb8e225c71.avif",
+ "schemaId": "",
+ "createdAt": "2026-08-27T16:59:42.408Z",
+ "created_at": "2026-08-27T16:59:42.408Z",
+ "updatedAt": "2026-08-28T21:58:06.218Z",
+ "updated_at": "2026-08-27T16:59:42.408Z",
+ "badgeEn": "وفر 40%",
+ "badgeKu": "وفر 40%",
+ "featuresEn": [
+  "Turn-based battles with cover mechanics",
+  "Hero upgrades and weapon progression",
+  "Local co-op in dedicated challenges",
+  "Deep turn-based tactics with approachable controls",
+  "Distinct hero abilities, weapons, and team synergies",
+  "Donkey Kong Adventure DLC expands the campaign with a separate storyline"
+ ],
+ "featuresKu": [
+  "Turn-based battles with cover mechanics",
+  "Hero upgrades and weapon progression",
+  "Local co-op in dedicated challenges",
+  "Deep turn-based tactics with approachable controls",
+  "Distinct hero abilities, weapons, and team synergies",
+  "Donkey Kong Adventure DLC expands the campaign with a separate storyline"
+ ],
+ "boxFrontUrl": "https://images.launchbox-app.com/f28e8b8d-6050-4713-8c21-6837cb37e574.jpg",
+ "sales": 0,
+ "images": [],
+ "modes": []
+}

@@ -1,0 +1,51 @@
+{
+ "batch": "015",
+ "apply": false,
+ "games": [
+  {
+   "id": "prd_c4c08e2c87db4f69",
+   "slug": "mario-sonic-at-the-olympic-games-tokyo-2020-switch",
+   "baseHash": "ddb65328c2ac99de0e2736e09f133625f2a7d417a87e43506902d5ee229667a6",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  },
+  {
+   "id": "prd_e395bfb05dc141f1",
+   "slug": "mario-strikers-battle-league-switch-1",
+   "baseHash": "0267d5d93ecf5f160b170aea3c67cbeaabe9107fc092864e301878e5ca55d157",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  },
+  {
+   "id": "prd_a546170ff0fd4846",
+   "slug": "mario-tennis-aces-switch-1",
+   "baseHash": "da2847f9a64690c7c6d657f01bd234367961f89bd7171befc8903a64e452ea98",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  },
+  {
+   "id": "prd_34ac10f0ab97482c",
+   "slug": "mario-tennis-fever-switch-2",
+   "baseHash": "37444efaca850856b6697e2910cd0a76642f30fb3afb9b023282984633963312",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  },
+  {
+   "id": "prd_08ac1190a4d44318",
+   "slug": "mario-vs-donkey-kong-switch-1",
+   "baseHash": "12f1f67870caef673b75abf1d1f65faf85763a5ace27d9c4591d3fad6ca3af04",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  }
+ ]
+}

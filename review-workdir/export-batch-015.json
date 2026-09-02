@@ -1,0 +1,3512 @@
+{
+ "batch": "015",
+ "generatedAt": "2026-09-02T03:18:30.078Z",
+ "totalGames": 310,
+ "reviewedSoFar": 67,
+ "games": [
+  {
+   "id": "prd_c4c08e2c87db4f69",
+   "slug": "mario-sonic-at-the-olympic-games-tokyo-2020-switch",
+   "title": "Mario & Sonic at the Olympic Games Tokyo 2020",
+   "platform": "switch1",
+   "isHidden": false,
+   "hash": "ddb65328c2ac99de0e2736e09f133625f2a7d417a87e43506902d5ee229667a6",
+   "images": [
+    {
+     "role": "front-box",
+     "field": "cartridgeImage",
+     "url": "https://banan.to/api/files/products/prd_c4c08e2c87db4f69/front-9f432f1b46db2e11.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 15406,
+     "width": 172,
+     "height": 281,
+     "thumb": "review-workdir/thumbs/batch-015/mario-sonic-at-the-olympic-games-tokyo-2020-switch__front-box-0.png"
+    },
+    {
+     "role": "front-box",
+     "field": "box_front_url",
+     "url": "https://images.launchbox-app.com/a312eea0-33bf-4411-98e6-ae2044412c7d.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 15406,
+     "width": 172,
+     "height": 281,
+     "thumb": "review-workdir/thumbs/batch-015/mario-sonic-at-the-olympic-games-tokyo-2020-switch__front-box-1.png"
+    },
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://banan.to/api/files/products/prd_c4c08e2c87db4f69/square-aa277d1796e49f4b.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 275876,
+     "width": 992,
+     "height": 992,
+     "thumb": "review-workdir/thumbs/batch-015/mario-sonic-at-the-olympic-games-tokyo-2020-switch__square-card-2.png"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://banan.to/api/files/products/prd_c4c08e2c87db4f69/cover-b9e2ad7c402f992e.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 1625059,
+     "width": 4000,
+     "height": 2000,
+     "thumb": "review-workdir/thumbs/batch-015/mario-sonic-at-the-olympic-games-tokyo-2020-switch__detail-cover-3.png"
+    },
+    {
+     "role": "3d-texture",
+     "field": "coverHiResImage",
+     "url": "https://banan.to/api/files/products/prd_c4c08e2c87db4f69/3d-texture-ae4d4087bb41839d.png",
+     "status": 200,
+     "contentType": "image/png",
+     "bytes": 2713922,
+     "width": 1200,
+     "height": 926,
+     "thumb": "review-workdir/thumbs/batch-015/mario-sonic-at-the-olympic-games-tokyo-2020-switch__3d-texture-4.png"
+    },
+    {
+     "role": "listing",
+     "field": "image",
+     "url": "https://banan.to/api/files/products/prd_c4c08e2c87db4f69/cover-b9e2ad7c402f992e.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 1625059,
+     "width": 4000,
+     "height": 2000,
+     "thumb": "review-workdir/thumbs/batch-015/mario-sonic-at-the-olympic-games-tokyo-2020-switch__listing-5.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[0]",
+     "url": "https://banan.to/api/files/products/prd_c4c08e2c87db4f69/banner-0-72cafc661309c195.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 22666,
+     "width": 400,
+     "height": 225,
+     "thumb": "review-workdir/thumbs/batch-015/mario-sonic-at-the-olympic-games-tokyo-2020-switch__banner-6.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[1]",
+     "url": "https://banan.to/api/files/products/prd_c4c08e2c87db4f69/banner-1-c8218f4578965cda.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 49609,
+     "width": 736,
+     "height": 416,
+     "thumb": "review-workdir/thumbs/batch-015/mario-sonic-at-the-olympic-games-tokyo-2020-switch__banner-7.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[2]",
+     "url": "https://banan.to/api/files/products/prd_c4c08e2c87db4f69/banner-2-46ab18c489edc514.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 153521,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-015/mario-sonic-at-the-olympic-games-tokyo-2020-switch__banner-8.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://images.launchbox-app.com/1ff7e292-a970-443e-9877-1dd495d8e5ca.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 21060,
+     "width": 400,
+     "height": 225,
+     "thumb": "review-workdir/thumbs/batch-015/mario-sonic-at-the-olympic-games-tokyo-2020-switch__gallery-9.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[1]",
+     "url": "https://images.launchbox-app.com/7a96e736-f85f-4d4c-b6ac-cefb287e347e.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 22033,
+     "width": 400,
+     "height": 225,
+     "thumb": "review-workdir/thumbs/batch-015/mario-sonic-at-the-olympic-games-tokyo-2020-switch__gallery-10.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[2]",
+     "url": "https://images.launchbox-app.com/15d083e6-93a8-45aa-9026-1c74618c7742.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 22673,
+     "width": 400,
+     "height": 225,
+     "thumb": "review-workdir/thumbs/batch-015/mario-sonic-at-the-olympic-games-tokyo-2020-switch__gallery-11.png"
+    }
+   ],
+   "record": {
+    "title": "Mario & Sonic at the Olympic Games Tokyo 2020",
+    "titleEn": "Mario & Sonic at the Olympic Games Tokyo 2020",
+    "titleKu": "Mario & Sonic at the Olympic Games Tokyo 2020",
+    "slug": "mario-sonic-at-the-olympic-games-tokyo-2020-switch",
+    "description": "A sports-party crossover starring Mario and Sonic characters across more than 30 Olympic events. New Tokyo 2020 sports include skateboarding, surfing, karate and sport climbing, while ten retro 2D events recreate the 1964 Tokyo Olympics with classic-style Mario and Sonic visuals.",
+    "descriptionEn": "A sports-party crossover starring Mario and Sonic characters across more than 30 Olympic events. New Tokyo 2020 sports include skateboarding, surfing, karate and sport climbing, while ten retro 2D events recreate the 1964 Tokyo Olympics with classic-style Mario and Sonic visuals.",
+    "descriptionKu": "A sports-party crossover starring Mario and Sonic characters across more than 30 Olympic events. New Tokyo 2020 sports include skateboarding, surfing, karate and sport climbing, while ten retro 2D events recreate the 1964 Tokyo Olympics with classic-style Mario and Sonic visuals.",
+    "cartridgeImage": "/api/files/products/prd_c4c08e2c87db4f69/front-9f432f1b46db2e11.jpg",
+    "nintendoCardImage": "/api/files/products/prd_c4c08e2c87db4f69/square-aa277d1796e49f4b.jpg",
+    "coverHiResImage": "/api/files/products/prd_c4c08e2c87db4f69/3d-texture-ae4d4087bb41839d.png",
+    "coverImage": "/api/files/products/prd_c4c08e2c87db4f69/cover-b9e2ad7c402f992e.jpg",
+    "bannerImages": [
+     "/api/files/products/prd_c4c08e2c87db4f69/banner-0-72cafc661309c195.jpg",
+     "/api/files/products/prd_c4c08e2c87db4f69/banner-1-c8218f4578965cda.jpg",
+     "/api/files/products/prd_c4c08e2c87db4f69/banner-2-46ab18c489edc514.jpg"
+    ],
+    "gallery": [],
+    "youtubeTrailer": "https://tokyo2020-olympicvideogames.sega.com/us/",
+    "releaseDate": "2019-11-05",
+    "ageRating": "ESRB E10+ Cartoon Violence / Users Interact",
+    "metacriticRating": 69,
+    "genres": [
+     "Sports",
+     "Party",
+     "Minigames"
+    ],
+    "platform": "switch1",
+    "size": 6.4,
+    "numberOfPlayers": "1–4 local; 2–8 online",
+    "supportedLanguages": "British / American English; French / German / Italian / Spanish / Dutch / Portuguese / Russian; Latin American Spanish / Canadian French / Brazilian Portuguese",
+    "hardwareModel": "",
+    "colorEdition": "",
+    "storageCapacity": "",
+    "screenSpecs": "",
+    "batteryLife": "",
+    "boxContents": [],
+    "boxContentsText": "",
+    "warrantyCondition": "",
+    "connectivity": "",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "Global",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "",
+    "redemptionSteps": [],
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 8500,
+    "cost": 1250,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": false,
+    "displayOrder": 0,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "مشترك",
+      "description": "Offline account access",
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_account",
+      "name": "خاص بك",
+      "description": "Online account access",
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "types": [
+     {
+      "id": "standard_offline",
+      "name": "مشترك — اللعبة الأساسية",
+      "optionId": "offline_account",
+      "price": 8500,
+      "cost": 1250,
+      "description": "Offline Account; supplier cost 1,250 IQD; selling price 15,000 IQD.",
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "standard_online",
+      "name": "خاص بك — اللعبة الأساسية",
+      "optionId": "online_account",
+      "price": 38000,
+      "cost": 25000,
+      "description": "Online Account; supplier cost 25,000 IQD; selling price 35,000 IQD.",
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "Active",
+    "kind": "account",
+    "trade_value_iqd": 25000,
+    "store_offer_bonus_iqd": 2500,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "id": "prd_c4c08e2c87db4f69",
+    "schema_version": 23,
+    "titleAr": "ماريو وسونيك في الألعاب الأولمبية طوكيو 2020",
+    "compatibility": [
+     "Nintendo Switch",
+     "Nintendo Switch 2 (backward compatible / enhanced where applicable)"
+    ],
+    "edition": "Standard",
+    "developer": "SEGA",
+    "publisher": "SEGA",
+    "metacriticUrl": "https://www.metacritic.com/game/mario-and-sonic-at-the-olympic-games-tokyo-2020/",
+    "opencriticRating": 69,
+    "userScore": 7.2,
+    "price_usd": 59.99,
+    "officialUrl": "https://tokyo2020-olympicvideogames.sega.com/us/",
+    "eshopUrl": "https://www.nintendo.com/fr-ca/store/products/mario-and-sonic-at-the-olympic-games-tokyo-2020-switch/",
+    "gameIsOffline": true,
+    "gameIsOnline": true,
+    "gameLanguageLocked": false,
+    "description_short": "A sports-party crossover starring Mario and Sonic characters across more than 30 Olympic events. New Tokyo 2020 sports include skateboarding, surfing, karate and sport climbing, while ten retro 2D events recreate the 1964 Tokyo Olympics with classic-style Mario and Sonic visuals.",
+    "description_ar": "لعبة رياضية جماعية تجمع شخصيات Mario وSonic في أكثر من 30 فعالية أولمبية. تتضمن فعاليات طوكيو الجديدة مثل التزلج وركوب الأمواج والكاراتيه وتسلق الجدران، إضافة إلى 10 فعاليات 2D كلاسيكية مستوحاة من أولمبياد طوكيو 1964.",
+    "box_front_url": "https://images.launchbox-app.com/a312eea0-33bf-4411-98e6-ae2044412c7d.jpg",
+    "box_back_url": "https://images.launchbox-app.com/b83c9e35-250b-4f43-bfb0-c28cf978f545.jpg",
+    "galleryImages": [
+     {
+      "url": "https://images.launchbox-app.com/1ff7e292-a970-443e-9877-1dd495d8e5ca.jpg",
+      "alt": "Mario & Sonic at the Olympic Games Tokyo 2020 — distinct gameplay/promotional image 1"
+     },
+     {
+      "url": "https://images.launchbox-app.com/7a96e736-f85f-4d4c-b6ac-cefb287e347e.jpg",
+      "alt": "Mario & Sonic at the Olympic Games Tokyo 2020 — distinct gameplay/promotional image 2"
+     },
+     {
+      "url": "https://images.launchbox-app.com/15d083e6-93a8-45aa-9026-1c74618c7742.jpg",
+      "alt": "Mario & Sonic at the Olympic Games Tokyo 2020 — distinct gameplay/promotional image 3"
+     }
+    ],
+    "videos": [
+     {
+      "title": "Official game page / trailer",
+      "url": "https://tokyo2020-olympicvideogames.sega.com/us/"
+     },
+     {
+      "title": "Nintendo / publisher product information",
+      "url": "https://www.nintendo.com/fr-ca/store/products/mario-and-sonic-at-the-olympic-games-tokyo-2020-switch/"
+     },
+     {
+      "title": "Technical or database reference",
+      "url": "https://tokyo2020-olympicvideogames.sega.com/us/"
+     }
+    ],
+    "nsuid": "See regional Nintendo eShop listing",
+    "title_id": "Regional title identifier varies by Nintendo storefront",
+    "product_code": "HAC-P-ARQPB",
+    "nintendoEshopUrl": "https://www.nintendo.com/fr-ca/store/products/mario-and-sonic-at-the-olympic-games-tokyo-2020-switch/",
+    "nintendoOnlineRequired": true,
+    "nintendoCloudSaves": true,
+    "nintendoGameKeyCard": false,
+    "nintendoPhysicalNeedsDownload": false,
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": true,
+    "nintendoPlayModes": "TV / Tabletop / Handheld",
+    "nintendoNotes": "Verified game-page data for Mario & Sonic at the Olympic Games Tokyo 2020; measured performance is separated from system maximum capabilities.",
+    "switch2Enhanced": false,
+    "switch2Exclusive": false,
+    "switch2UpgradePrice": 0,
+    "switch2Features": [
+     "30+ Olympic events",
+     "Up to four local and eight online players",
+     "Ten retro 2D Tokyo 1964 events"
+    ],
+    "tagline": "Mario, Sonic and friends compete across modern Tokyo 2020 sports and nostalgic 1964-style events.",
+    "fitFor": [
+     "Families and local party groups",
+     "Mario and Sonic crossover fans",
+     "Players who enjoy many short sports minigames"
+    ],
+    "notFitFor": [
+     "Players seeking deep simulation mechanics",
+     "Solo players wanting a long story campaign",
+     "Players looking for current Olympic licensing/content"
+    ],
+    "playTimeMain": 5,
+    "playTimeFull": 25,
+    "editionsList": [
+     {
+      "name": "Standard Edition",
+      "coverUrl": "https://images.launchbox-app.com/a312eea0-33bf-4411-98e6-ae2044412c7d.jpg",
+      "contents": [
+       {
+        "label": "Base game"
+       },
+       {
+        "label": "Core content"
+       },
+       {
+        "label": "Current updates"
+       }
+      ]
+     },
+     {
+      "name": "Digital Edition",
+      "coverUrl": "https://images.launchbox-app.com/755e1a25-e614-4f45-b697-f49fb93407d7.jpg",
+      "contents": [
+       {
+        "label": "Digital entitlement"
+       },
+       {
+        "label": "Same core game"
+       },
+       {
+        "label": "Nintendo Account delivery"
+       }
+      ]
+     },
+     {
+      "name": "Current Complete Package",
+      "coverUrl": "https://images.launchbox-app.com/755e1a25-e614-4f45-b697-f49fb93407d7.jpg",
+      "contents": [
+       {
+        "label": "Latest build"
+       },
+       {
+        "label": "No paid DLC"
+       },
+       {
+        "label": "30+ Olympic events"
+       }
+      ]
+     }
+    ],
+    "gameplayPillars": [
+     {
+      "title": "30+ sports events",
+      "description": "Compete in athletics, gymnastics, swimming, combat sports and new Tokyo events such as skateboarding, surfing, climbing and karate.",
+      "imageUrl": "https://images.launchbox-app.com/755e1a25-e614-4f45-b697-f49fb93407d7.jpg"
+     },
+     {
+      "title": "Mario + Sonic crossover",
+      "description": "A large cast from both franchises brings different strengths and special animations.",
+      "imageUrl": "https://images.launchbox-app.com/15a22cc5-f668-47af-af59-96d1c605ff1e.jpg"
+     },
+     {
+      "title": "Modern and retro styles",
+      "description": "Switch between 3D Tokyo 2020 events and ten deliberately old-school 2D Tokyo 1964 events.",
+      "imageUrl": "https://images.launchbox-app.com/1ff7e292-a970-443e-9877-1dd495d8e5ca.jpg"
+     }
+    ],
+    "worldSummary": "Tokyo 2020 venues host a broad collection of modern Olympic events, while story mode and special 2D events send Mario and Sonic characters into a stylized recreation of the 1964 Tokyo Games.",
+    "storyChapters": [
+     {
+      "title": "Tokyo 2020 begins",
+      "body": "Mario, Sonic and their friends arrive for the Olympic Games and begin competing in modern events.",
+      "imageUrl": "https://images.launchbox-app.com/7a96e736-f85f-4d4c-b6ac-cefb287e347e.jpg"
+     },
+     {
+      "title": "1964 game system",
+      "body": "A story device sends key characters into a retro-styled Tokyo 1964 world.",
+      "imageUrl": "https://images.launchbox-app.com/15d083e6-93a8-45aa-9026-1c74618c7742.jpg"
+     },
+     {
+      "title": "Final Olympic challenges",
+      "body": "The two groups compete across events and reunite as the story resolves.",
+      "imageUrl": "https://images.launchbox-app.com/a312eea0-33bf-4411-98e6-ae2044412c7d.jpg"
+     }
+    ],
+    "features": [
+     "30+ Olympic events",
+     "Up to four local and eight online players",
+     "Ten retro 2D Tokyo 1964 events"
+    ],
+    "perfResolutionDocked": "1080p-class presentation",
+    "perfResolutionHandheld": "720p-class presentation",
+    "perfFps": "60 target in many events; some event-specific presentation varies",
+    "perfHdr": false,
+    "perfNotes": "The game targets fluid 60 fps gameplay in many events on original Switch with 1080p-class docked and 720p-class handheld output. Individual events and cutscenes can use different presentation settings; Nintendo/SEGA do not publish a single universal internal-resolution table.",
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "hardwareId": "prd_acf4c89908764c62",
+      "informationStatus": "Available / verified",
+      "unavailableReason": "No standard supported mode is unavailable.",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p-class presentation",
+       "resolutionDynamic": false,
+       "renderingResolution": "720p-class presentation",
+       "outputResolution": "1280x720",
+       "fps": "60 target in many events; some event-specific presentation varies",
+       "fpsMin": "30",
+       "fpsMax": "60",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Handheld",
+       "notes": "The game targets fluid 60 fps gameplay in many events on original Switch with 1080p-class docked and 720p-class handheld output. Individual events and cutscenes can use different presentation settings; Nintendo/SEGA do not publish a single universal internal-resolution table."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p-class presentation",
+       "resolutionDynamic": false,
+       "renderingResolution": "1080p-class presentation",
+       "outputResolution": "1920x1080",
+       "fps": "60 target in many events; some event-specific presentation varies",
+       "fpsMin": "30",
+       "fpsMax": "60",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "TV / Docked",
+       "notes": "The game targets fluid 60 fps gameplay in many events on original Switch with 1080p-class docked and 720p-class handheld output. Individual events and cutscenes can use different presentation settings; Nintendo/SEGA do not publish a single universal internal-resolution table."
+      },
+      "modes": [
+       {
+        "name": "Primary documented mode",
+        "handheldResolution": "720p-class presentation",
+        "handheldFps": "60 target in many events; some event-specific presentation varies",
+        "tvResolution": "1080p-class presentation",
+        "tvFps": "60 target in many events; some event-specific presentation varies",
+        "hdr": false,
+        "vrr": false,
+        "notes": "Primary documented performance profile."
+       }
+      ],
+      "upscaling": "System/game-specific scaling where applicable",
+      "rayTracing": false,
+      "rayTracingMode": "No verified ray-tracing mode",
+      "loadingTime": "Scene-dependent; no single universal loading time",
+      "loadingNotes": "Loading varies by scene, save and storage state.",
+      "gameVersion": "Current retail build",
+      "patchVersion": "Current available update",
+      "testedDate": "2026-08-27",
+      "sourceName": "SEGA Olympic Games site",
+      "sourceUrl": "https://tokyo2020-olympicvideogames.sega.com/us/",
+      "verifiedAt": "2026-08-27",
+      "verificationStatus": "Verified / sourced",
+      "performanceNotes": "The game targets fluid 60 fps gameplay in many events on original Switch with 1080p-class docked and 720p-class handheld output. Individual events and cutscenes can use different presentation settings; Nintendo/SEGA do not publish a single universal internal-resolution table."
+     }
+    ],
+    "downloadSizeGb": 6.4,
+    "requiredSpaceGb": 6.4,
+    "microSdRecommended": false,
+    "storageNotes": "Nintendo Canada lists 6.4 GB on both Switch and Switch 2. microSD storage is optional.",
+    "languagesAudio": [
+     "English voice clips",
+     "Japanese voice clips in supported regional versions",
+     "Music / event sound effects"
+    ],
+    "languagesText": [
+     "British / American English",
+     "French / German / Italian / Spanish / Dutch / Portuguese / Russian",
+     "Latin American Spanish / Canadian French / Brazilian Portuguese"
+    ],
+    "arabicSupport": false,
+    "mpLocalPlayers": true,
+    "mpOnlinePlayers": true,
+    "mpCoop": true,
+    "mpCompetitive": true,
+    "mpSplitScreen": true,
+    "mpLocalWireless": false,
+    "dlc": [
+     {
+      "name": "No paid DLC",
+      "description": "No standalone paid expansion was released.",
+      "coverUrl": "https://images.launchbox-app.com/755e1a25-e614-4f45-b697-f49fb93407d7.jpg"
+     },
+     {
+      "name": "Free demo",
+      "description": "Nintendo eShop offered a free demo in supported regions.",
+      "coverUrl": "https://images.launchbox-app.com/15a22cc5-f668-47af-af59-96d1c605ff1e.jpg"
+     },
+     {
+      "name": "Online functionality",
+      "description": "Internet competition is part of the base software and requires Nintendo Switch Online.",
+      "coverUrl": "https://images.launchbox-app.com/1ff7e292-a970-443e-9877-1dd495d8e5ca.jpg"
+     }
+    ],
+    "guides": [
+     {
+      "title": "Official product page",
+      "summary": "Platform, release, languages and features.",
+      "url": "https://www.nintendo.com/fr-ca/store/products/mario-and-sonic-at-the-olympic-games-tokyo-2020-switch/"
+     },
+     {
+      "title": "Performance / update reference",
+      "summary": "Technical or update information.",
+      "url": "https://tokyo2020-olympicvideogames.sega.com/us/"
+     },
+     {
+      "title": "Media / database reference",
+      "summary": "Images and catalog metadata.",
+      "url": "https://gamesdb.launchbox-app.com/games/details/123998-mario-sonic-at-the-olympic-games-tokyo-2020"
+     }
+    ],
+    "completionMain": 5,
+    "completionExtras": 12,
+    "completionAll": 25,
+    "faq": [
+     {
+      "q": "How many people can play?",
+      "a": "Nintendo lists 1–4 players on one system and 2–8 players online."
+     },
+     {
+      "q": "How large is it?",
+      "a": "Nintendo lists 6.4 GB."
+     },
+     {
+      "q": "What are the retro events?",
+      "a": "Ten 2D events use classic-style Mario and Sonic graphics to reference the Tokyo 1964 Olympics."
+     }
+    ],
+    "verdictScore": 7.1,
+    "verdictSummary": "A broad and colorful party-sports crossover whose huge event variety works best with friends, though individual sports are intentionally lightweight.",
+    "verdictPros": [
+     "Large and varied event selection",
+     "Strong Mario/Sonic presentation",
+     "Good local and online party support"
+    ],
+    "verdictCons": [
+     "Individual sports lack simulation depth",
+     "Story mode is lightweight",
+     "Olympic setting is tied to Tokyo 2020"
+    ],
+    "reviews": [
+     {
+      "source": "Metacritic",
+      "score": "69/100",
+      "quote": "Mixed-to-positive aggregate reception.",
+      "url": "https://www.metacritic.com/game/mario-and-sonic-at-the-olympic-games-tokyo-2020/"
+     },
+     {
+      "source": "OpenCritic",
+      "score": "69/100",
+      "quote": "Mixed-to-positive critic aggregate.",
+      "url": "https://opencritic.com/game/8477/mario-sonic-at-the-olympic-games-tokyo-2020"
+     },
+     {
+      "source": "LaunchBox",
+      "score": "Released",
+      "quote": "Database confirms November 5, 2019 release and up to eight players.",
+      "url": "https://gamesdb.launchbox-app.com/games/details/123998-mario-sonic-at-the-olympic-games-tokyo-2020"
+     }
+    ],
+    "timeline": [
+     {
+      "date": "2019-03",
+      "title": "Announced",
+      "body": "SEGA and Nintendo revealed the Tokyo 2020 crossover."
+     },
+     {
+      "date": "2019-11-05",
+      "title": "North American release",
+      "body": "The Nintendo Switch game launched in North America following its earlier Japanese launch."
+     },
+     {
+      "date": "2020",
+      "title": "Tokyo 2020 licensing period",
+      "body": "The title continued as the official Mario & Sonic console game for the postponed Olympic Games."
+     }
+    ],
+    "patchNotes": [
+     {
+      "version": "Launch build",
+      "date": "2019-11",
+      "body": "Full event set and Story Mode released."
+     },
+     {
+      "version": "Post-launch maintenance",
+      "date": "2019–2021",
+      "body": "Compatibility and online service updates maintained the release."
+     },
+     {
+      "version": "Switch 2 compatibility era",
+      "date": "2025-06-05",
+      "body": "The Switch title remains playable through backward compatibility."
+     }
+    ],
+    "soundtrack": [
+     {
+      "title": "Tokyo 2020 menu themes",
+      "url": "https://tokyo2020-olympicvideogames.sega.com/us/"
+     },
+     {
+      "title": "Event-specific Olympic arrangements",
+      "url": "https://tokyo2020-olympicvideogames.sega.com/us/"
+     },
+     {
+      "title": "Retro Tokyo 1964 event music",
+      "url": "https://tokyo2020-olympicvideogames.sega.com/us/"
+     }
+    ],
+    "seriesName": "Mario & Sonic",
+    "seriesEntries": [
+     "Mario & Sonic at the Olympic Games Tokyo 2020",
+     "Mario Tennis Aces",
+     "Mario Golf: Super Rush"
+    ],
+    "studioName": "SEGA",
+    "studioUrl": "https://www.sega.com/",
+    "studioLocation": "Tokyo, Japan",
+    "studioAbout": "SEGA developed and published the Mario & Sonic Olympic crossover under official Olympic licensing.",
+    "setupNeeds": [
+     "Nintendo Switch or backward-compatible Switch 2",
+     "6.4 GB free storage",
+     "Nintendo Switch Online membership for online multiplayer"
+    ],
+    "sources": [
+     {
+      "name": "Nintendo Canada",
+      "url": "https://www.nintendo.com/fr-ca/store/products/mario-and-sonic-at-the-olympic-games-tokyo-2020-switch/"
+     },
+     {
+      "name": "SEGA Olympic Games site",
+      "url": "https://tokyo2020-olympicvideogames.sega.com/us/"
+     },
+     {
+      "name": "LaunchBox Games Database",
+      "url": "https://gamesdb.launchbox-app.com/games/details/123998-mario-sonic-at-the-olympic-games-tokyo-2020"
+     }
+    ],
+    "boxContentsList": "[Circular]",
+    "image": "/api/files/products/prd_c4c08e2c87db4f69/cover-b9e2ad7c402f992e.jpg",
+    "banner": "/api/files/products/prd_c4c08e2c87db4f69/banner-0-72cafc661309c195.jpg",
+    "schemaId": "",
+    "createdAt": "2026-08-27T01:24:48.824Z",
+    "created_at": "2026-08-27T01:24:48.824Z",
+    "updatedAt": "2026-08-28T22:06:50.084Z",
+    "updated_at": "2026-08-27T01:24:48.824Z",
+    "badgeEn": "وفر 40%",
+    "badgeKu": "وفر 40%",
+    "featuresEn": [
+     "30+ Olympic events",
+     "Up to four local and eight online players",
+     "Ten retro 2D Tokyo 1964 events"
+    ],
+    "featuresKu": [
+     "30+ Olympic events",
+     "Up to four local and eight online players",
+     "Ten retro 2D Tokyo 1964 events"
+    ],
+    "boxFrontUrl": "https://images.launchbox-app.com/a312eea0-33bf-4411-98e6-ae2044412c7d.jpg",
+    "sales": 0,
+    "images": [],
+    "modes": []
+   }
+  },
+  {
+   "id": "prd_e395bfb05dc141f1",
+   "slug": "mario-strikers-battle-league-switch-1",
+   "title": "Mario Strikers: Battle League",
+   "platform": "switch1",
+   "isHidden": false,
+   "hash": "0267d5d93ecf5f160b170aea3c67cbeaabe9107fc092864e301878e5ca55d157",
+   "images": [
+    {
+     "role": "front-box",
+     "field": "cartridgeImage",
+     "url": "https://banan.to/api/files/products/prd_e395bfb05dc141f1/front-d52ab9424e2fd7d3.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 201764,
+     "width": 600,
+     "height": 972,
+     "thumb": "review-workdir/thumbs/batch-015/mario-strikers-battle-league-switch-1__front-box-0.png"
+    },
+    {
+     "role": "front-box",
+     "field": "box_front_url",
+     "url": "https://images.launchbox-app.com/e43f9275-2834-4f46-8c74-e0ae9ed1af4a.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 624563,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-015/mario-strikers-battle-league-switch-1__front-box-1.png"
+    },
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://banan.to/api/files/products/prd_e395bfb05dc141f1/square-9619b0351c509eef.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://banan.to/api/files/products/prd_e395bfb05dc141f1/cover-2425ad804ab4a523.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "3d-texture",
+     "field": "coverHiResImage",
+     "url": "https://banan.to/api/files/products/prd_e395bfb05dc141f1/3d-texture-83a2a088f551629d.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 7095535,
+     "width": 3776,
+     "height": 4912,
+     "thumb": "review-workdir/thumbs/batch-015/mario-strikers-battle-league-switch-1__3d-texture-4.png"
+    },
+    {
+     "role": "listing",
+     "field": "image",
+     "url": "https://banan.to/api/files/products/prd_e395bfb05dc141f1/cover-2425ad804ab4a523.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[0]",
+     "url": "https://banan.to/api/files/products/prd_e395bfb05dc141f1/banner-0-47e81a66c3e9d97b.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[1]",
+     "url": "https://banan.to/api/files/products/prd_e395bfb05dc141f1/banner-1-cda8a42207d6cd12.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[2]",
+     "url": "https://banan.to/api/files/products/prd_e395bfb05dc141f1/banner-2-5afa58b34353cd7a.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[3]",
+     "url": "https://banan.to/api/files/products/prd_e395bfb05dc141f1/banner-3-ecdd1631a8011a12.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000049936/b251b331f6d0f691121d1df78f9461c66c7537013205a60af431bb33206d454f",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 90977,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-015/mario-strikers-battle-league-switch-1__gallery-10.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[1]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000049936/197c3c4a052ac6990e96c5827f67a4a2631c6853331007a2cda87851500f50ec",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 170368,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-015/mario-strikers-battle-league-switch-1__gallery-11.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[2]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000049936/ce363f4712ccdad748af43d96e13a1c3260912d920a2b9bda93ac67aff02d619",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 61189,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-015/mario-strikers-battle-league-switch-1__gallery-12.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[3]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000049936/f2678b33615746fb4e0bb0ab7d91404e726ad1e59623434eff83ff30392943dc",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 146089,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-015/mario-strikers-battle-league-switch-1__gallery-13.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[4]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000049936/646ea61ae1da2ed1b87ade13d115cc61a5840e8d4c1d5502ea8db3708f253341",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 130668,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-015/mario-strikers-battle-league-switch-1__gallery-14.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[5]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000049936/1f3bcb3dc0d91c95af22b2e25d3f5e5e6eb26b8aa38c58c1b7212d94a7d9c708",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 108375,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-015/mario-strikers-battle-league-switch-1__gallery-15.png"
+    }
+   ],
+   "record": {
+    "title": "Mario Strikers: Battle League",
+    "titleEn": "Mario Strikers: Battle League",
+    "titleKu": "Mario Strikers: Battle League",
+    "slug": "mario-strikers-battle-league-switch-1",
+    "description": "Rule-free five-on-five soccer returns with hard tackles, items, Hyper Strikes, gear customization and hectic local or online competition. Pick Mushroom Kingdom stars, build a squad, and crash into opponents while trying to outscore them in fast, aggressive matches.",
+    "descriptionEn": "Rule-free five-on-five soccer returns with hard tackles, items, Hyper Strikes, gear customization and hectic local or online competition. Pick Mushroom Kingdom stars, build a squad, and crash into opponents while trying to outscore them in fast, aggressive matches.",
+    "descriptionKu": "Rule-free five-on-five soccer returns with hard tackles, items, Hyper Strikes, gear customization and hectic local or online competition. Pick Mushroom Kingdom stars, build a squad, and crash into opponents while trying to outscore them in fast, aggressive matches.",
+    "cartridgeImage": "/api/files/products/prd_e395bfb05dc141f1/front-d52ab9424e2fd7d3.webp",
+    "nintendoCardImage": "/api/files/products/prd_e395bfb05dc141f1/square-9619b0351c509eef.avif",
+    "coverHiResImage": "/api/files/products/prd_e395bfb05dc141f1/3d-texture-83a2a088f551629d.jpg",
+    "coverImage": "/api/files/products/prd_e395bfb05dc141f1/cover-2425ad804ab4a523.avif",
+    "bannerImages": [
+     "/api/files/products/prd_e395bfb05dc141f1/banner-0-47e81a66c3e9d97b.avif",
+     "/api/files/products/prd_e395bfb05dc141f1/banner-1-cda8a42207d6cd12.avif",
+     "/api/files/products/prd_e395bfb05dc141f1/banner-2-5afa58b34353cd7a.avif",
+     "/api/files/products/prd_e395bfb05dc141f1/banner-3-ecdd1631a8011a12.avif",
+     "/api/files/products/prd_e395bfb05dc141f1/banner-4-10f35a782e94283c.avif",
+     "/api/files/products/prd_e395bfb05dc141f1/banner-5-6049bdad035d4f9a.avif"
+    ],
+    "gallery": [],
+    "youtubeTrailer": "https://www.youtube.com/watch?v=cLAzzYz92r4",
+    "releaseDate": "2022-06-10",
+    "ageRating": "ESRB E10+ / PEGI 7",
+    "metacriticRating": 73,
+    "genres": [
+     "Sports",
+     "Arcade",
+     "Multiplayer"
+    ],
+    "platform": "switch1",
+    "size": 4.2,
+    "numberOfPlayers": "Single system (1-8); Local wireless and online support",
+    "supportedLanguages": "English, Japanese, French, Spanish, German",
+    "hardwareModel": "",
+    "colorEdition": "",
+    "storageCapacity": "",
+    "screenSpecs": "",
+    "batteryLife": "",
+    "boxContents": [],
+    "boxContentsText": "",
+    "warrantyCondition": "",
+    "connectivity": "",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "Global",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "",
+    "redemptionSteps": [],
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 7000,
+    "cost": 1250,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": false,
+    "displayOrder": 0,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "Offline Account",
+      "description": "حساب مشترك",
+      "stock": 9999,
+      "isInfiniteStock": true,
+      "customerDescription": "حساب مشترك"
+     },
+     {
+      "id": "online_account",
+      "name": "Online Account",
+      "description": "حساب خاص بك",
+      "stock": 9999,
+      "isInfiniteStock": true,
+      "customerDescription": "حساب خاص بك"
+     }
+    ],
+    "types": [
+     {
+      "id": "standard_offline",
+      "name": "Standard Account",
+      "optionId": "offline_account",
+      "price": 13500,
+      "cost": 1250,
+      "description": "",
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "standard_online",
+      "name": "Standard Account",
+      "optionId": "online_account",
+      "price": 22250,
+      "cost": 12250,
+      "description": "",
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "Active",
+    "kind": "account",
+    "trade_value_iqd": 25000,
+    "store_offer_bonus_iqd": 2500,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "id": "prd_e395bfb05dc141f1",
+    "schema_version": 24,
+    "titleAr": "ماريو سترايكرز: باتل ليغ",
+    "compatibility": [
+     "Nintendo Switch",
+     "Nintendo Switch 2 compatibility: Supported – game behavior is consistent with Nintendo Switch"
+    ],
+    "edition": "Standard",
+    "developer": "Next Level Games",
+    "publisher": "Nintendo",
+    "seriesName": "Mario Strikers",
+    "userScore": 7.1,
+    "price_usd": 59.99,
+    "officialUrl": "https://www.nintendo.com/us/store/products/mario-strikers-battle-league-switch/",
+    "eshopUrl": "https://www.nintendo.com/us/store/products/mario-strikers-battle-league-switch/",
+    "galleryImages": [
+     {
+      "alt": "Verified direct image URL 1",
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000049936/b251b331f6d0f691121d1df78f9461c66c7537013205a60af431bb33206d454f"
+     },
+     {
+      "alt": "Verified direct image URL 2",
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000049936/197c3c4a052ac6990e96c5827f67a4a2631c6853331007a2cda87851500f50ec"
+     },
+     {
+      "alt": "Verified direct image URL 3",
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000049936/ce363f4712ccdad748af43d96e13a1c3260912d920a2b9bda93ac67aff02d619"
+     },
+     {
+      "alt": "Verified direct image URL 4",
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000049936/f2678b33615746fb4e0bb0ab7d91404e726ad1e59623434eff83ff30392943dc"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000049936/646ea61ae1da2ed1b87ade13d115cc61a5840e8d4c1d5502ea8db3708f253341"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000049936/1f3bcb3dc0d91c95af22b2e25d3f5e5e6eb26b8aa38c58c1b7212d94a7d9c708"
+     }
+    ],
+    "gameIsOffline": true,
+    "gameIsOnline": true,
+    "gameLanguageLocked": false,
+    "description_short": "Rule-free five-on-five soccer returns with hard tackles, items, Hyper Strikes, gear customization and hectic local or online competition.",
+    "description_ar": "تعود كرة القدم الفوضوية خمسة ضد خمسة بدون قوانين مع الالتحامات القوية، والعناصر، وHyper Strikes، وتخصيص العتاد، ومنافسات محلية وأونلاين سريعة. اختر نجوم مملكة الفطر، كوّن فريقك، واصطدم بالخصوم للفوز بأكبر عدد من الأهداف.",
+    "box_front_url": "https://images.launchbox-app.com/e43f9275-2834-4f46-8c74-e0ae9ed1af4a.jpg",
+    "box_back_url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000049936/b251b331f6d0f691121d1df78f9461c66c7537013205a60af431bb33206d454f",
+    "editionsList": [
+     {
+      "name": "Standard Edition",
+      "coverUrl": "https://images.launchbox-app.com/e43f9275-2834-4f46-8c74-e0ae9ed1af4a.jpg",
+      "contents": [
+       {
+        "label": "Base game"
+       },
+       {
+        "label": "Quick Battle"
+       },
+       {
+        "label": "Cup Battles"
+       }
+      ]
+     },
+     {
+      "name": "Digital Edition",
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_1:1,c_fill,g_auto,w_1000/f_auto/q_auto/dpr_1.5/store/software/switch/70010000049936/c280b6843af262757f041d2aa3543992ec076b97545abea4dbadda797d9056fc",
+      "contents": [
+       {
+        "label": "Nintendo eShop release"
+       },
+       {
+        "label": "Strikers Club online"
+       },
+       {
+        "label": "Save Data Cloud support"
+       }
+      ]
+     },
+     {
+      "name": "Current Store Package",
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_16:9,c_fill,g_auto,w_1600/f_auto/q_auto/dpr_1.5/store/software/switch/70010000049936/c280b6843af262757f041d2aa3543992ec076b97545abea4dbadda797d9056fc",
+      "contents": [
+       {
+        "label": "Offline account option"
+       },
+       {
+        "label": "Online account option"
+       },
+       {
+        "label": "Hidden by default until review"
+       }
+      ]
+     }
+    ],
+    "gameplayPillars": [
+     {
+      "title": "Anything-goes soccer",
+      "description": "Matches are played without fouls, so tackles, item attacks and chaotic rebounds are all part of the strategy.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000049936/b251b331f6d0f691121d1df78f9461c66c7537013205a60af431bb33206d454f"
+     },
+     {
+      "title": "Hyper Strikes and gear",
+      "description": "Special powered shots can swing the score, while gear sets modify character stats and play style.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000049936/197c3c4a052ac6990e96c5827f67a4a2631c6853331007a2cda87851500f50ec"
+     },
+     {
+      "title": "Online clubs and local chaos",
+      "description": "The game supports local sessions, online matches and club-based competition through Strikers Club.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000049936/ce363f4712ccdad748af43d96e13a1c3260912d920a2b9bda93ac67aff02d619"
+     },
+     {
+      "title": "Hyper Strikes and item chaos",
+      "description": "Matches blend football basics with hard tackles, items, and dramatic Hyper Strikes that can swing a match instantly when set up well.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000049936/f2678b33615746fb4e0bb0ab7d91404e726ad1e59623434eff83ff30392943dc"
+     },
+     {
+      "title": "Gear customization and club play",
+      "description": "Character gear changes stats like speed, technique, power, and passing, while online clubs encourage long-term team identity and group play.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000049936/646ea61ae1da2ed1b87ade13d115cc61a5840e8d4c1d5502ea8db3708f253341"
+     }
+    ],
+    "worldSummary": "Mushroom Kingdom characters collide on electrified pitches in a high-intensity sport where clean play is optional and style is everything. Build a team, customize stats with gear and chase goals through explosive matches.",
+    "storyChapters": [
+     {
+      "title": "Form your squad",
+      "body": "Select strikers from the Mario cast and tailor their roles through character choice and gear.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000049936/b251b331f6d0f691121d1df78f9461c66c7537013205a60af431bb33206d454f"
+     },
+     {
+      "title": "Dominate the pitch",
+      "body": "Tackle rivals, use items and line up Hyper Strikes to create massive swings in match momentum.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000049936/197c3c4a052ac6990e96c5827f67a4a2631c6853331007a2cda87851500f50ec"
+     },
+     {
+      "title": "Compete with friends",
+      "body": "Take the action online or locally and develop a club identity in Strikers Club.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000049936/ce363f4712ccdad748af43d96e13a1c3260912d920a2b9bda93ac67aff02d619"
+     },
+     {
+      "title": "Build a roster and learn roles",
+      "body": "The early game is about finding the right captain, teammates, and gear setups for your preferred style, whether offensive pressure or defensive control.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000049936/1f3bcb3dc0d91c95af22b2e25d3f5e5e6eb26b8aa38c58c1b7212d94a7d9c708"
+     },
+     {
+      "title": "Push through cups and online seasons",
+      "body": "The long-term loop centers on cup battles, ranked competition, and online club play rather than a traditional narrative-driven campaign.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000049936/b251b331f6d0f691121d1df78f9461c66c7537013205a60af431bb33206d454f"
+     }
+    ],
+    "features": [
+     "No-rules arcade soccer",
+     "Hyper Strikes and gear customization",
+     "Local and online competitive modes",
+     "Fast arcade football with chaotic Mario items",
+     "Gear system lets players tune stats and roles",
+     "Online Clubs extend the experience beyond offline cups"
+    ],
+    "perfResolutionDocked": "Up to 1080p docked",
+    "perfResolutionHandheld": "Up to 720p handheld",
+    "perfFps": "60",
+    "perfHdr": false,
+    "faq": [
+     {
+      "q": "Is this realistic football?",
+      "a": "No. It is an exaggerated arcade sports game with items, heavy tackles and special scoring moves."
+     },
+     {
+      "q": "Does it support many players?",
+      "a": "Yes. The game supports large local sessions and online competition depending on mode."
+     },
+     {
+      "q": "What is Strikers Club?",
+      "a": "It is the game’s online club system where players join a club and compete in seasons and ranked matches."
+     },
+     {
+      "q": "Does Mario Strikers: Battle League support online play?",
+      "a": "Yes. It supports online play, including club-based competition, and Nintendo Switch Online is required for Nintendo-operated online features."
+     },
+     {
+      "q": "Is there a story mode?",
+      "a": "No traditional story campaign exists. The main structured content comes from cup battles, local versus play, training, and online club competition."
+     }
+    ],
+    "verdictScore": 7.7,
+    "verdictSummary": "Overall score: 7.7/10. Strengths include Great match energy and presentation; Strong local multiplayer fun; Gear system adds variety. Main drawbacks include Content depth at launch was thin; Single-player appeal is limited.",
+    "verdictPros": [
+     "Great match energy and presentation",
+     "Strong local multiplayer fun",
+     "Gear system adds variety",
+     "Energetic matches are great with friends",
+     "Gear system adds extra strategy to team building"
+    ],
+    "verdictCons": [
+     "Content depth at launch was thin",
+     "Single-player appeal is limited",
+     "Online infrastructure can feel barebones",
+     "Single-player content is thinner than multiplayer content",
+     "Chaotic item swings may frustrate players seeking pure sports balance"
+    ],
+    "reviews": [
+     {
+      "source": "Nintendo",
+      "score": "Official",
+      "quote": "Nintendo’s page emphasizes 5-on-5 strike matches, Hyper Strikes and online/local play.",
+      "url": "https://www.nintendo.com/us/store/products/mario-strikers-battle-league-switch/"
+     },
+     {
+      "source": "Metacritic",
+      "score": "73/100",
+      "quote": "Critical reaction praised the core match action but criticized content volume.",
+      "url": "https://www.metacritic.com/game/mario-strikers-battle-league/"
+     },
+     {
+      "source": "Announcement Trailer",
+      "score": "Official Trailer",
+      "quote": "The reveal trailer established the game’s aggressive arcade football tone.",
+      "url": "https://www.youtube.com/watch?v=cLAzzYz92r4"
+     }
+    ],
+    "timeline": [
+     {
+      "date": "2022-02-09",
+      "title": "Announcement",
+      "body": "Nintendo announced Mario Strikers: Battle League during a Nintendo Direct."
+     },
+     {
+      "date": "2022-06-10",
+      "title": "Worldwide release",
+      "body": "The game launched on Nintendo Switch."
+     },
+     {
+      "date": "2022-07-21",
+      "title": "First free update",
+      "body": "Daisy, Shy Guy and additional gear arrived in the first content update."
+     }
+    ],
+    "patchNotes": [
+     {
+      "version": "Launch build",
+      "date": "2022-06",
+      "body": "Base game release."
+     },
+     {
+      "version": "Free updates",
+      "date": "2022",
+      "body": "New characters, new gear and additional stadium content were added."
+     },
+     {
+      "version": "Current build",
+      "date": "2026-08-27",
+      "body": "Stable retail version with Nintendo Switch 2 compatibility status supported."
+     }
+    ],
+    "studioName": "Next Level Games",
+    "studioUrl": "https://www.nextlevelgames.com/",
+    "studioLocation": "Vancouver, Canada",
+    "studioAbout": "Next Level Games is credited as the developer of this Nintendo Switch release. Nintendo is credited as the publisher.",
+    "sources": [
+     {
+      "name": "Nintendo Store",
+      "url": "https://www.nintendo.com/us/store/products/mario-strikers-battle-league-switch/"
+     },
+     {
+      "name": "Announcement Trailer",
+      "url": "https://www.youtube.com/watch?v=cLAzzYz92r4"
+     },
+     {
+      "name": "LaunchBox art reference",
+      "url": "https://gamesdb.launchbox-app.com/games/details/75372-mario-strikers-battle-league"
+     }
+    ],
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "hardwareId": "prd_acf4c89908764c62",
+      "informationStatus": "Available / Backward Compatible",
+      "unavailableReason": "No required Handheld or TV mode is marked unsupported.",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p",
+       "resolutionDynamic": false,
+       "renderingResolution": "1280x720",
+       "outputResolution": "1920x1080 system output / backward-compatible rendering profile",
+       "fps": "60",
+       "fpsMin": "60",
+       "fpsMax": "60",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Handheld / Backward Compatibility",
+       "notes": "Backward-compatible Nintendo Switch version. No native Switch 2 graphics mode is used; the original 720p handheld / 1080p docked 60 fps gameplay profile is retained."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p",
+       "resolutionDynamic": false,
+       "renderingResolution": "1920x1080",
+       "outputResolution": "1920x1080",
+       "fps": "60",
+       "fpsMin": "60",
+       "fpsMax": "60",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "TV / Docked / Backward Compatibility",
+       "notes": "Backward-compatible Nintendo Switch version. No native Switch 2 graphics mode is used; the original 720p handheld / 1080p docked 60 fps gameplay profile is retained."
+      },
+      "modes": [
+       {
+        "name": "Backward Compatibility",
+        "handheldResolution": "720p",
+        "handheldFps": "60",
+        "tvResolution": "1080p",
+        "tvFps": "60",
+        "hdr": false,
+        "vrr": false,
+        "notes": "Backward-compatible Nintendo Switch version. No native Switch 2 graphics mode is used; the original 720p handheld / 1080p docked 60 fps gameplay profile is retained."
+       }
+      ],
+      "upscaling": "System output scaling only; no native Switch 2 edition assumed",
+      "rayTracing": false,
+      "rayTracingMode": "Not Supported",
+      "loadingTime": "Generally faster system/storage access may occur; exact loading time varies by scene",
+      "loadingNotes": "Backward compatibility can reduce some loading bottlenecks, but no single universal loading-time value is used.",
+      "gameVersion": "Current Nintendo Switch retail build",
+      "patchVersion": "Current available Switch update",
+      "testedDate": "2026-08-27",
+      "sourceName": "Nintendo Switch 2 backward compatibility + established Nintendo Switch performance profile",
+      "sourceUrl": "https://www.nintendo.com/us/gaming-systems/switch-2/",
+      "verifiedAt": "2026-08-27",
+      "verificationStatus": "Verified profile / Backward Compatible",
+      "performanceNotes": "Backward-compatible Nintendo Switch version. No native Switch 2 graphics mode is used; the original 720p handheld / 1080p docked 60 fps gameplay profile is retained."
+     }
+    ],
+    "switch2UpgradePrice": 0,
+    "nintendoEshopUrl": "https://www.nintendo.com/us/store/products/mario-strikers-battle-league-switch/",
+    "arabicSupport": false,
+    "tagline": "Rule-free five-on-five soccer returns with hard tackles, items, Hyper Strikes, gear customization and hectic local or online competition.",
+    "fitFor": [
+     "Players looking for sports, arcade gameplay.",
+     "Players who want the game modes supported by the official player-count specification: Single system (1-8); Local wireless and online support.",
+     "Players who enjoy aggressive arcade sports and competitive couch play.",
+     "Groups looking for online team identity through clubs and seasonal competition."
+    ],
+    "notFitFor": [
+     "Players specifically seeking online multiplayer; this title does not list online multiplayer support.",
+     "Players specifically seeking local multiplayer; this title does not list local multiplayer support.",
+     "Players seeking a deep single-player narrative mode.",
+     "Players who want realistic football simulation instead of chaotic arcade action."
+    ],
+    "setupNeeds": [
+     "Nintendo Switch-compatible hardware for this release.",
+     "Internet connection is required for online features."
+    ],
+    "dlc": [
+     {
+      "name": "No standalone DLC announced",
+      "description": "No standalone paid DLC expansion is included in this extraction. Free updates, when applicable, are listed in the Updates section instead."
+     }
+    ],
+    "guides": [
+     {
+      "title": "Official Nintendo game page",
+      "summary": "Official Nintendo reference for game description, supported modes, player counts, languages, file size, and compatibility information.",
+      "url": "https://www.nintendo.com/us/store/products/mario-strikers-battle-league-switch/"
+     }
+    ],
+    "boxContentsList": "[Circular]",
+    "image": "/api/files/products/prd_e395bfb05dc141f1/cover-2425ad804ab4a523.avif",
+    "banner": "/api/files/products/prd_e395bfb05dc141f1/banner-0-47e81a66c3e9d97b.avif",
+    "schemaId": "",
+    "createdAt": "2026-08-27T16:59:48.168Z",
+    "created_at": "2026-08-27T16:59:48.168Z",
+    "updatedAt": "2026-08-27T16:59:48.168Z",
+    "updated_at": "2026-08-27T16:59:48.168Z",
+    "badgeEn": "وفر 40%",
+    "badgeKu": "وفر 40%",
+    "featuresEn": [
+     "No-rules arcade soccer",
+     "Hyper Strikes and gear customization",
+     "Local and online competitive modes",
+     "Fast arcade football with chaotic Mario items",
+     "Gear system lets players tune stats and roles",
+     "Online Clubs extend the experience beyond offline cups"
+    ],
+    "featuresKu": [
+     "No-rules arcade soccer",
+     "Hyper Strikes and gear customization",
+     "Local and online competitive modes",
+     "Fast arcade football with chaotic Mario items",
+     "Gear system lets players tune stats and roles",
+     "Online Clubs extend the experience beyond offline cups"
+    ],
+    "boxFrontUrl": "https://images.launchbox-app.com/e43f9275-2834-4f46-8c74-e0ae9ed1af4a.jpg",
+    "sales": 0,
+    "images": [],
+    "modes": []
+   }
+  },
+  {
+   "id": "prd_a546170ff0fd4846",
+   "slug": "mario-tennis-aces-switch-1",
+   "title": "Mario Tennis Aces",
+   "platform": "switch1",
+   "isHidden": false,
+   "hash": "da2847f9a64690c7c6d657f01bd234367961f89bd7171befc8903a64e452ea98",
+   "images": [
+    {
+     "role": "front-box",
+     "field": "cartridgeImage",
+     "url": "https://banan.to/api/files/products/prd_a546170ff0fd4846/front-f1362a8028666406.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 4337482,
+     "width": 1863,
+     "height": 3030,
+     "thumb": "review-workdir/thumbs/batch-015/mario-tennis-aces-switch-1__front-box-0.png"
+    },
+    {
+     "role": "front-box",
+     "field": "box_front_url",
+     "url": "https://images.launchbox-app.com/07adc904-69fb-40c3-9e19-2b0f9eb71115.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 4337482,
+     "width": 1863,
+     "height": 3030,
+     "thumb": "review-workdir/thumbs/batch-015/mario-tennis-aces-switch-1__front-box-1.png"
+    },
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://banan.to/api/files/products/prd_a546170ff0fd4846/square-9d1958c3fa1cc423.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://banan.to/api/files/products/prd_a546170ff0fd4846/cover-0ddf42f6dd9740a8.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "3d-texture",
+     "field": "coverHiResImage",
+     "url": "https://banan.to/api/files/products/prd_a546170ff0fd4846/3d-texture-adc9ab320cf6528d.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 5418675,
+     "width": 2473,
+     "height": 1902,
+     "thumb": "review-workdir/thumbs/batch-015/mario-tennis-aces-switch-1__3d-texture-4.png"
+    },
+    {
+     "role": "listing",
+     "field": "image",
+     "url": "https://banan.to/api/files/products/prd_a546170ff0fd4846/cover-0ddf42f6dd9740a8.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[0]",
+     "url": "https://banan.to/api/files/products/prd_a546170ff0fd4846/banner-0-9e26e16efc531253.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[1]",
+     "url": "https://banan.to/api/files/products/prd_a546170ff0fd4846/banner-1-32414e56e8456eea.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[2]",
+     "url": "https://banan.to/api/files/products/prd_a546170ff0fd4846/banner-2-33c7a85939849d3d.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[3]",
+     "url": "https://banan.to/api/files/products/prd_a546170ff0fd4846/banner-3-6820498c5ac5b70d.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000003889/a142d7eee62bc0a34faf9cb6192118ea2b9323b9246bc82e7fb2bae79970eb5d",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 112067,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-015/mario-tennis-aces-switch-1__gallery-10.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[1]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000003889/7d0800ef54a653069a61c67efad7a3a3ddf48e31f8a9123f17bc8e68ca8b29ce",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 161103,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-015/mario-tennis-aces-switch-1__gallery-11.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[2]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000003889/3b32dbcc272cf2c8140404dd9a3d07d13b7450f5362edcbcbd7fd4a643a794d0",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 103454,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-015/mario-tennis-aces-switch-1__gallery-12.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[3]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000003889/445941288962ebea7824a1dab605764aa8067268d4b05f733155f63e13e2ce27",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 114649,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-015/mario-tennis-aces-switch-1__gallery-13.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[4]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000003889/e2c7bc666279a2fb209904a1f95924ad2bbb9f9ae5546e9c388dcc5527289bbf",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 105760,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-015/mario-tennis-aces-switch-1__gallery-14.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[5]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000003889/5d1a33ab8355a9cff777372bda1a3b19cfe092950dd21031216e8df17c263e84",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 136480,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-015/mario-tennis-aces-switch-1__gallery-15.png"
+    }
+   ],
+   "record": {
+    "title": "Mario Tennis Aces",
+    "titleEn": "Mario Tennis Aces",
+    "titleKu": "Mario Tennis Aces",
+    "slug": "mario-tennis-aces-switch-1",
+    "description": "Mario Tennis Aces delivers fast arcade tennis, Zone Shot and Zone Speed mechanics, Adventure mode, and flexible multiplayer across local and online play. Build energy, break rackets, master trick shots and use character-specific styles to dominate singles and doubles matches.",
+    "descriptionEn": "Mario Tennis Aces delivers fast arcade tennis, Zone Shot and Zone Speed mechanics, Adventure mode, and flexible multiplayer across local and online play. Build energy, break rackets, master trick shots and use character-specific styles to dominate singles and doubles matches.",
+    "descriptionKu": "Mario Tennis Aces delivers fast arcade tennis, Zone Shot and Zone Speed mechanics, Adventure mode, and flexible multiplayer across local and online play. Build energy, break rackets, master trick shots and use character-specific styles to dominate singles and doubles matches.",
+    "cartridgeImage": "/api/files/products/prd_a546170ff0fd4846/front-f1362a8028666406.jpg",
+    "nintendoCardImage": "/api/files/products/prd_a546170ff0fd4846/square-9d1958c3fa1cc423.avif",
+    "coverHiResImage": "/api/files/products/prd_a546170ff0fd4846/3d-texture-adc9ab320cf6528d.jpg",
+    "coverImage": "/api/files/products/prd_a546170ff0fd4846/cover-0ddf42f6dd9740a8.avif",
+    "bannerImages": [
+     "/api/files/products/prd_a546170ff0fd4846/banner-0-9e26e16efc531253.avif",
+     "/api/files/products/prd_a546170ff0fd4846/banner-1-32414e56e8456eea.avif",
+     "/api/files/products/prd_a546170ff0fd4846/banner-2-33c7a85939849d3d.avif",
+     "/api/files/products/prd_a546170ff0fd4846/banner-3-6820498c5ac5b70d.avif",
+     "/api/files/products/prd_a546170ff0fd4846/banner-4-8a8cd8e58828c8a8.avif",
+     "/api/files/products/prd_a546170ff0fd4846/banner-5-9b8b87f561045174.avif"
+    ],
+    "gallery": [],
+    "youtubeTrailer": "https://www.youtube.com/watch?v=jxrHwK-e1vk",
+    "releaseDate": "2018-06-22",
+    "ageRating": "ESRB E / PEGI 3",
+    "metacriticRating": 75,
+    "genres": [
+     "Sports",
+     "Tennis",
+     "Party"
+    ],
+    "platform": "switch1",
+    "size": 2.4,
+    "numberOfPlayers": "Single system (1-4); Local wireless (2-4); Online (2-4)",
+    "supportedLanguages": "English, Japanese, French, Spanish, German",
+    "hardwareModel": "",
+    "colorEdition": "",
+    "storageCapacity": "",
+    "screenSpecs": "",
+    "batteryLife": "",
+    "boxContents": [],
+    "boxContentsText": "",
+    "warrantyCondition": "",
+    "connectivity": "",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "Global",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "",
+    "redemptionSteps": [],
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 8000,
+    "cost": 1250,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": false,
+    "displayOrder": 0,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "Offline Account",
+      "description": "حساب مشترك",
+      "stock": 9999,
+      "isInfiniteStock": true,
+      "customerDescription": "حساب مشترك"
+     },
+     {
+      "id": "online_account",
+      "name": "Online Account",
+      "description": "حساب خاص بك",
+      "stock": 9999,
+      "isInfiniteStock": true,
+      "customerDescription": "حساب خاص بك"
+     }
+    ],
+    "types": [
+     {
+      "id": "standard_offline",
+      "name": "Standard Account",
+      "optionId": "offline_account",
+      "price": 12500,
+      "cost": 1250,
+      "description": "",
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "standard_online",
+      "name": "Standard Account",
+      "optionId": "online_account",
+      "price": "25000",
+      "cost": 10000,
+      "description": "Online Account; supplier cost 10,000 IQD; selling price 20,000 IQD.",
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "Active",
+    "kind": "account",
+    "trade_value_iqd": 25000,
+    "store_offer_bonus_iqd": 2500,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "id": "prd_a546170ff0fd4846",
+    "schema_version": 24,
+    "titleAr": "ماريو تنس آيسز",
+    "compatibility": [
+     "Nintendo Switch",
+     "Nintendo Switch 2 compatibility: Supported – game behavior is consistent with Nintendo Switch"
+    ],
+    "edition": "Standard",
+    "developer": "Camelot Software Planning",
+    "publisher": "Nintendo",
+    "seriesName": "Mario Tennis",
+    "userScore": 7.5,
+    "price_usd": 59.99,
+    "officialUrl": "https://www.nintendo.com/us/store/products/mario-tennis-aces-switch/",
+    "eshopUrl": "https://www.nintendo.com/us/store/products/mario-tennis-aces-switch/",
+    "galleryImages": [
+     {
+      "alt": "Verified direct image URL 1",
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000003889/a142d7eee62bc0a34faf9cb6192118ea2b9323b9246bc82e7fb2bae79970eb5d"
+     },
+     {
+      "alt": "Verified direct image URL 2",
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000003889/7d0800ef54a653069a61c67efad7a3a3ddf48e31f8a9123f17bc8e68ca8b29ce"
+     },
+     {
+      "alt": "Verified direct image URL 3",
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000003889/3b32dbcc272cf2c8140404dd9a3d07d13b7450f5362edcbcbd7fd4a643a794d0"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000003889/445941288962ebea7824a1dab605764aa8067268d4b05f733155f63e13e2ce27"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000003889/e2c7bc666279a2fb209904a1f95924ad2bbb9f9ae5546e9c388dcc5527289bbf"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000003889/5d1a33ab8355a9cff777372bda1a3b19cfe092950dd21031216e8df17c263e84"
+     }
+    ],
+    "gameIsOffline": true,
+    "gameIsOnline": true,
+    "gameLanguageLocked": false,
+    "description_short": "Mario Tennis Aces delivers fast arcade tennis, Zone Shot and Zone Speed mechanics, Adventure mode, and flexible multiplayer across local and online play.",
+    "description_ar": "تقدم Mario Tennis Aces تجربة تنس سريعة وممتعة مع ميكانيكيات Zone Shot وZone Speed، ووضع Adventure، وخيارات لعب محلي وأونلاين مرنة. اجمع الطاقة، اكسر مضارب الخصم، وأتقن الضربات الخاصة لتتفوق في المباريات الفردية والزوجية.",
+    "box_front_url": "https://images.launchbox-app.com/07adc904-69fb-40c3-9e19-2b0f9eb71115.jpg",
+    "box_back_url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000003889/a142d7eee62bc0a34faf9cb6192118ea2b9323b9246bc82e7fb2bae79970eb5d",
+    "editionsList": [
+     {
+      "name": "Standard Edition",
+      "coverUrl": "https://images.launchbox-app.com/07adc904-69fb-40c3-9e19-2b0f9eb71115.jpg",
+      "contents": [
+       {
+        "label": "Base game"
+       },
+       {
+        "label": "Adventure mode"
+       },
+       {
+        "label": "Local and online multiplayer"
+       }
+      ]
+     },
+     {
+      "name": "Digital Edition",
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_1:1,c_fill,g_auto,w_1000/f_auto/q_auto/dpr_1.5/store/software/switch/70010000003889/7d4bb0a9ace1fb56a41aae8ef0d4ee806419e6187afdb4697a598458f02cd8e7",
+      "contents": [
+       {
+        "label": "Nintendo eShop release"
+       },
+       {
+        "label": "Fast download size"
+       },
+       {
+        "label": "Save Data Cloud support"
+       }
+      ]
+     },
+     {
+      "name": "Current Store Package",
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_16:9,c_fill,g_auto,w_1600/f_auto/q_auto/dpr_1.5/store/software/switch/70010000003889/7d4bb0a9ace1fb56a41aae8ef0d4ee806419e6187afdb4697a598458f02cd8e7",
+      "contents": [
+       {
+        "label": "Offline account option"
+       },
+       {
+        "label": "Online account option"
+       },
+       {
+        "label": "Hidden by default until review"
+       }
+      ]
+     }
+    ],
+    "gameplayPillars": [
+     {
+      "title": "Zone Shot and Zone Speed",
+      "description": "Spend energy to slow time for precise shot placement or to sprint across the court and save difficult returns.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000003889/a142d7eee62bc0a34faf9cb6192118ea2b9323b9246bc82e7fb2bae79970eb5d"
+     },
+     {
+      "title": "Adventure mode",
+      "description": "A light single-player mode mixes matches, challenges and boss encounters while teaching the game systems.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000003889/7d0800ef54a653069a61c67efad7a3a3ddf48e31f8a9123f17bc8e68ca8b29ce"
+     },
+     {
+      "title": "Competitive multiplayer",
+      "description": "Singles and doubles are available locally and online, with many characters and distinct stat profiles to master.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000003889/3b32dbcc272cf2c8140404dd9a3d07d13b7450f5362edcbcbd7fd4a643a794d0"
+     },
+     {
+      "title": "Zone and energy systems",
+      "description": "Advanced play is built around energy management for Zone Shots, trick shots, racket defense, and powerful special plays that add mind games to every rally.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000003889/445941288962ebea7824a1dab605764aa8067268d4b05f733155f63e13e2ce27"
+     },
+     {
+      "title": "Adventure mode progression",
+      "description": "The Adventure mode mixes boss fights, challenge stages, and training-style matches that introduce mechanics beyond standard versus play.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000003889/e2c7bc666279a2fb209904a1f95924ad2bbb9f9ae5546e9c388dcc5527289bbf"
+     }
+    ],
+    "worldSummary": "The Mushroom Kingdom hosts a high-energy tennis spectacle where classic Mario characters compete across themed courts. Beyond quick matches, Adventure mode adds light progression and boss fights that reinforce the mechanical depth.",
+    "storyChapters": [
+     {
+      "title": "Enter the tournament",
+      "body": "Mario and the cast take to the court in fast-paced matches built around energy and positioning.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000003889/a142d7eee62bc0a34faf9cb6192118ea2b9323b9246bc82e7fb2bae79970eb5d"
+     },
+     {
+      "title": "Master the special mechanics",
+      "body": "Players learn trick shots, racket durability, powerful Zone attacks and fast movement options.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000003889/7d0800ef54a653069a61c67efad7a3a3ddf48e31f8a9123f17bc8e68ca8b29ce"
+     },
+     {
+      "title": "Climb online and locally",
+      "body": "Once you know the mechanics, the game opens up through local multiplayer, online matches and character mastery.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000003889/3b32dbcc272cf2c8140404dd9a3d07d13b7450f5362edcbcbd7fd4a643a794d0"
+     },
+     {
+      "title": "Build skill through Adventure mode",
+      "body": "Adventure mode takes Mario through themed courts, boss encounters, and training matches that steadily teach timing, positioning, and shot variety.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000003889/5d1a33ab8355a9cff777372bda1a3b19cfe092950dd21031216e8df17c263e84"
+     },
+     {
+      "title": "Compete online and locally",
+      "body": "After learning the fundamentals, players can move into exhibition matches, local multiplayer sessions, and online tournaments for long-term replay value.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000003889/a142d7eee62bc0a34faf9cb6192118ea2b9323b9246bc82e7fb2bae79970eb5d"
+     }
+    ],
+    "features": [
+     "Fast arcade tennis gameplay",
+     "Adventure mode with bosses and missions",
+     "Local and online multiplayer for up to 4 players",
+     "Energy-based mechanics create strategic rallies",
+     "Adventure mode adds bosses, minigames, and progression",
+     "Motion-friendly Swing Mode complements traditional controls"
+    ],
+    "perfResolutionDocked": "Up to 1080p docked",
+    "perfResolutionHandheld": "Up to 720p handheld",
+    "perfFps": "60",
+    "perfHdr": false,
+    "faq": [
+     {
+      "q": "Is the game mainly multiplayer?",
+      "a": "Multiplayer is a huge focus, but there is also a single-player Adventure mode and CPU tournament play."
+     },
+     {
+      "q": "What makes the gameplay different?",
+      "a": "The game adds energy-based mechanics like Zone Shot, Zone Speed and Special Shots that can even break rackets."
+     },
+     {
+      "q": "Does it run smoothly?",
+      "a": "Yes. The game is widely known for smooth 60 fps play in matches."
+     },
+     {
+      "q": "Does Mario Tennis Aces support online play?",
+      "a": "Yes. The game supports online matches, and Nintendo Switch Online is required for Nintendo-operated online features."
+     },
+     {
+      "q": "Is there a story mode?",
+      "a": "Yes. Adventure mode acts as the main single-player campaign and includes themed stages, bosses, and progression-driven matches."
+     }
+    ],
+    "verdictScore": 8,
+    "verdictSummary": "Overall score: 8.0/10. Strengths include Excellent core tennis mechanics; Very strong multiplayer suite; Smooth 60 fps gameplay. Main drawbacks include Adventure mode is fairly short; Some mechanics can overwhelm newcomers.",
+    "verdictPros": [
+     "Excellent core tennis mechanics",
+     "Very strong multiplayer suite",
+     "Smooth 60 fps gameplay",
+     "Excellent skill ceiling for multiplayer play",
+     "Adventure mode gives single-player fans plenty to do"
+    ],
+    "verdictCons": [
+     "Adventure mode is fairly short",
+     "Some mechanics can overwhelm newcomers",
+     "Content pacing at launch was modest",
+     "High-level online play can feel demanding",
+     "Some newcomers may need time to learn the energy systems"
+    ],
+    "reviews": [
+     {
+      "source": "Nintendo",
+      "score": "Official",
+      "quote": "The official store listing highlights Zone Shot, Zone Speed, Adventure mode and 1-4 player multiplayer.",
+      "url": "https://www.nintendo.com/us/store/products/mario-tennis-aces-switch/"
+     },
+     {
+      "source": "Metacritic",
+      "score": "75/100",
+      "quote": "Critical consensus generally praised the mechanics and multiplayer.",
+      "url": "https://www.metacritic.com/game/mario-tennis-aces/"
+     },
+     {
+      "source": "Launch Trailer",
+      "score": "Official Trailer",
+      "quote": "The launch trailer showcases character variety and energy-based tennis abilities.",
+      "url": "https://www.youtube.com/watch?v=jxrHwK-e1vk"
+     }
+    ],
+    "timeline": [
+     {
+      "date": "2018-03-08",
+      "title": "Major showcase",
+      "body": "Nintendo Direct presentations outlined the game systems and modes."
+     },
+     {
+      "date": "2018-06-22",
+      "title": "Worldwide release",
+      "body": "Mario Tennis Aces launched on Nintendo Switch."
+     },
+     {
+      "date": "2019-03-01",
+      "title": "Post-launch roster complete",
+      "body": "Free updates expanded the cast and balance changes over time."
+     }
+    ],
+    "patchNotes": [
+     {
+      "version": "Launch build",
+      "date": "2018-06",
+      "body": "Base game release."
+     },
+     {
+      "version": "Free content updates",
+      "date": "2018-2019",
+      "body": "Additional characters and balance adjustments were added."
+     },
+     {
+      "version": "Current build",
+      "date": "2026-08-27",
+      "body": "Stable retail version, fully playable on Nintendo Switch with Switch 2 compatibility mode."
+     }
+    ],
+    "studioName": "Camelot Software Planning",
+    "studioUrl": "https://www.camelot.co.jp/",
+    "studioLocation": "Tokyo, Japan",
+    "studioAbout": "Camelot Software Planning is credited as the developer of this Nintendo Switch release. Nintendo is credited as the publisher.",
+    "sources": [
+     {
+      "name": "Nintendo Store",
+      "url": "https://www.nintendo.com/us/store/products/mario-tennis-aces-switch/"
+     },
+     {
+      "name": "Launch Trailer",
+      "url": "https://www.youtube.com/watch?v=jxrHwK-e1vk"
+     },
+     {
+      "name": "Metacritic",
+      "url": "https://www.metacritic.com/game/mario-tennis-aces/"
+     }
+    ],
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "hardwareId": "prd_acf4c89908764c62",
+      "informationStatus": "Available / Backward Compatible",
+      "unavailableReason": "No required Handheld or TV mode is marked unsupported.",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p",
+       "resolutionDynamic": false,
+       "renderingResolution": "1280x720",
+       "outputResolution": "1920x1080 system output / backward-compatible rendering profile",
+       "fps": "60",
+       "fpsMin": "60",
+       "fpsMax": "60",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Handheld / Backward Compatibility",
+       "notes": "Backward-compatible Nintendo Switch version. No native Switch 2 edition is required; the established 720p handheld / 1080p docked profile and 60 fps match target are retained."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p",
+       "resolutionDynamic": false,
+       "renderingResolution": "1920x1080",
+       "outputResolution": "1920x1080",
+       "fps": "60",
+       "fpsMin": "60",
+       "fpsMax": "60",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "TV / Docked / Backward Compatibility",
+       "notes": "Backward-compatible Nintendo Switch version. No native Switch 2 edition is required; the established 720p handheld / 1080p docked profile and 60 fps match target are retained."
+      },
+      "modes": [
+       {
+        "name": "Backward Compatibility",
+        "handheldResolution": "720p",
+        "handheldFps": "60",
+        "tvResolution": "1080p",
+        "tvFps": "60",
+        "hdr": false,
+        "vrr": false,
+        "notes": "Backward-compatible Nintendo Switch version. No native Switch 2 edition is required; the established 720p handheld / 1080p docked profile and 60 fps match target are retained."
+       }
+      ],
+      "upscaling": "System output scaling only; no native Switch 2 edition assumed",
+      "rayTracing": false,
+      "rayTracingMode": "Not Supported",
+      "loadingTime": "Generally faster system/storage access may occur; exact loading time varies by scene",
+      "loadingNotes": "Backward compatibility can reduce some loading bottlenecks, but no single universal loading-time value is used.",
+      "gameVersion": "Current Nintendo Switch retail build",
+      "patchVersion": "Current available Switch update",
+      "testedDate": "2026-08-27",
+      "sourceName": "Nintendo Switch 2 backward compatibility + established Nintendo Switch performance profile",
+      "sourceUrl": "https://www.nintendo.com/us/gaming-systems/switch-2/",
+      "verifiedAt": "2026-08-27",
+      "verificationStatus": "Verified profile / Backward Compatible",
+      "performanceNotes": "Backward-compatible Nintendo Switch version. No native Switch 2 edition is required; the established 720p handheld / 1080p docked profile and 60 fps match target are retained."
+     }
+    ],
+    "switch2UpgradePrice": 0,
+    "nintendoEshopUrl": "https://www.nintendo.com/us/store/products/mario-tennis-aces-switch/",
+    "arabicSupport": false,
+    "tagline": "Mario Tennis Aces delivers fast arcade tennis, Zone Shot and Zone Speed mechanics, Adventure mode, and flexible multiplayer across local and online play.",
+    "fitFor": [
+     "Players looking for sports, tennis gameplay.",
+     "Players who want the game modes supported by the official player-count specification: Single system (1-4); Local wireless (2-4); Online (2-4).",
+     "Players who want an arcade sports game with more depth than basic tennis controls.",
+     "Players looking for strong local multiplayer and competitive online matches."
+    ],
+    "notFitFor": [
+     "Players specifically seeking online multiplayer; this title does not list online multiplayer support.",
+     "Players specifically seeking local multiplayer; this title does not list local multiplayer support.",
+     "Players who want a realistic tennis simulation rather than exaggerated Mario abilities.",
+     "Players who dislike timing-heavy mechanics and competitive pressure in versus matches."
+    ],
+    "setupNeeds": [
+     "Nintendo Switch-compatible hardware for this release.",
+     "Internet connection is required for online features."
+    ],
+    "dlc": [
+     {
+      "name": "No standalone DLC announced",
+      "description": "No standalone paid DLC expansion is included in this extraction. Free updates, when applicable, are listed in the Updates section instead."
+     }
+    ],
+    "guides": [
+     {
+      "title": "Official Nintendo game page",
+      "summary": "Official Nintendo reference for game description, supported modes, player counts, languages, file size, and compatibility information.",
+      "url": "https://www.nintendo.com/us/store/products/mario-tennis-aces-switch/"
+     }
+    ],
+    "boxContentsList": "[Circular]",
+    "image": "/api/files/products/prd_a546170ff0fd4846/cover-0ddf42f6dd9740a8.avif",
+    "banner": "/api/files/products/prd_a546170ff0fd4846/banner-0-9e26e16efc531253.avif",
+    "schemaId": "",
+    "createdAt": "2026-08-27T16:59:44.572Z",
+    "created_at": "2026-08-27T16:59:44.572Z",
+    "updatedAt": "2026-08-27T16:59:44.572Z",
+    "updated_at": "2026-08-27T16:59:44.572Z",
+    "badgeEn": "وفر 40%",
+    "badgeKu": "وفر 40%",
+    "featuresEn": [
+     "Fast arcade tennis gameplay",
+     "Adventure mode with bosses and missions",
+     "Local and online multiplayer for up to 4 players",
+     "Energy-based mechanics create strategic rallies",
+     "Adventure mode adds bosses, minigames, and progression",
+     "Motion-friendly Swing Mode complements traditional controls"
+    ],
+    "featuresKu": [
+     "Fast arcade tennis gameplay",
+     "Adventure mode with bosses and missions",
+     "Local and online multiplayer for up to 4 players",
+     "Energy-based mechanics create strategic rallies",
+     "Adventure mode adds bosses, minigames, and progression",
+     "Motion-friendly Swing Mode complements traditional controls"
+    ],
+    "boxFrontUrl": "https://images.launchbox-app.com/07adc904-69fb-40c3-9e19-2b0f9eb71115.jpg",
+    "sales": 0,
+    "images": [],
+    "modes": []
+   }
+  },
+  {
+   "id": "prd_34ac10f0ab97482c",
+   "slug": "mario-tennis-fever-switch-2",
+   "title": "Mario Tennis Fever",
+   "platform": "switch2",
+   "isHidden": false,
+   "hash": "37444efaca850856b6697e2910cd0a76642f30fb3afb9b023282984633963312",
+   "images": [
+    {
+     "role": "front-box",
+     "field": "cartridgeImage",
+     "url": "https://banan.to/api/files/products/prd_34ac10f0ab97482c/front-fb679ef97526da22.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 651823,
+     "width": 992,
+     "height": 1606,
+     "thumb": "review-workdir/thumbs/batch-015/mario-tennis-fever-switch-2__front-box-0.png"
+    },
+    {
+     "role": "front-box",
+     "field": "box_front_url",
+     "url": "https://www.mariowiki.com/Special:Redirect/file/Mario-Tennis-Fever-boxart.jpg",
+     "status": 403,
+     "contentType": "text/html"
+    },
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://banan.to/api/files/products/prd_34ac10f0ab97482c/square-2456515729c50be0.png",
+     "status": 200,
+     "contentType": "image/png",
+     "bytes": 592209,
+     "width": 1024,
+     "height": 1024,
+     "thumb": "review-workdir/thumbs/batch-015/mario-tennis-fever-switch-2__square-card-2.png"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://banan.to/api/files/products/prd_34ac10f0ab97482c/cover-a9e57e75177d8493.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 581429,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-015/mario-tennis-fever-switch-2__detail-cover-3.png"
+    },
+    {
+     "role": "3d-texture",
+     "field": "coverHiResImage",
+     "url": "https://banan.to/api/files/products/prd_34ac10f0ab97482c/3d-texture-df47431ebc3e73cb.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 5430145,
+     "width": 4933,
+     "height": 3818,
+     "thumb": "review-workdir/thumbs/batch-015/mario-tennis-fever-switch-2__3d-texture-4.png"
+    },
+    {
+     "role": "listing",
+     "field": "image",
+     "url": "https://banan.to/api/files/products/prd_34ac10f0ab97482c/cover-a9e57e75177d8493.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 581429,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-015/mario-tennis-fever-switch-2__listing-5.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[0]",
+     "url": "https://banan.to/api/files/products/prd_34ac10f0ab97482c/banner-0-7563876ee6a5b991.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 358958,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-015/mario-tennis-fever-switch-2__banner-6.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[1]",
+     "url": "https://banan.to/api/files/products/prd_34ac10f0ab97482c/banner-1-24c659205c019ecc.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 1373860,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-015/mario-tennis-fever-switch-2__banner-7.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[2]",
+     "url": "https://banan.to/api/files/products/prd_34ac10f0ab97482c/banner-2-c4f1156d81b8e1e5.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 484388,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-015/mario-tennis-fever-switch-2__banner-8.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[3]",
+     "url": "https://banan.to/api/files/products/prd_34ac10f0ab97482c/banner-3-473e038f7daefe6b.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 424292,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-015/mario-tennis-fever-switch-2__banner-9.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://www.mariowiki.com/Special:Redirect/file/MTF%20Gameplay%20screenshot.png",
+     "status": 403,
+     "contentType": "text/html"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[1]",
+     "url": "https://www.mariowiki.com/Special:Redirect/file/MTF%20Mario%20Introduction%20Opening.png",
+     "status": 403,
+     "contentType": "text/html"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[2]",
+     "url": "https://www.mariowiki.com/Special:Redirect/file/MTF%20Peach%20Introduction%20Opening.png",
+     "status": 403,
+     "contentType": "text/html"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[3]",
+     "url": "https://www.mariowiki.com/Special:Redirect/file/MTF%20Bowser%20Introduction%20Opening.png",
+     "status": 403,
+     "contentType": "text/html"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[4]",
+     "url": "https://www.mariowiki.com/Special:Redirect/file/MTF%20Daisy%20Introduction%20Opening.png",
+     "status": 403,
+     "contentType": "text/html"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[5]",
+     "url": "https://www.mariowiki.com/Special:Redirect/file/DiddyKongMarioTennisFever.png",
+     "status": 403,
+     "contentType": "text/html"
+    }
+   ],
+   "record": {
+    "title": "Mario Tennis Fever",
+    "titleEn": "Mario Tennis Fever",
+    "titleKu": "Mario Tennis Fever",
+    "slug": "mario-tennis-fever-switch-2",
+    "description": "Mario Tennis returns on Nintendo Switch 2 with 38 playable characters, 30 Fever Rackets, Tournament, Trial Towers, Mix It Up, Adventure, Swing Mode, ranked online play, amiibo support and GameShare. Fever Shots give each racket a distinct court-changing effect.",
+    "descriptionEn": "Mario Tennis returns on Nintendo Switch 2 with 38 playable characters, 30 Fever Rackets, Tournament, Trial Towers, Mix It Up, Adventure, Swing Mode, ranked online play, amiibo support and GameShare. Fever Shots give each racket a distinct court-changing effect.",
+    "descriptionKu": "Mario Tennis returns on Nintendo Switch 2 with 38 playable characters, 30 Fever Rackets, Tournament, Trial Towers, Mix It Up, Adventure, Swing Mode, ranked online play, amiibo support and GameShare. Fever Shots give each racket a distinct court-changing effect.",
+    "cartridgeImage": "/api/files/products/prd_34ac10f0ab97482c/front-fb679ef97526da22.jpg",
+    "nintendoCardImage": "/api/files/products/prd_34ac10f0ab97482c/square-2456515729c50be0.png",
+    "coverHiResImage": "/api/files/products/prd_34ac10f0ab97482c/3d-texture-df47431ebc3e73cb.jpg",
+    "coverImage": "/api/files/products/prd_34ac10f0ab97482c/cover-a9e57e75177d8493.jpg",
+    "bannerImages": [
+     "/api/files/products/prd_34ac10f0ab97482c/banner-0-7563876ee6a5b991.webp",
+     "/api/files/products/prd_34ac10f0ab97482c/banner-1-24c659205c019ecc.webp",
+     "/api/files/products/prd_34ac10f0ab97482c/banner-2-c4f1156d81b8e1e5.webp",
+     "/api/files/products/prd_34ac10f0ab97482c/banner-3-473e038f7daefe6b.jpg",
+     "/api/files/products/prd_34ac10f0ab97482c/banner-4-ae8ee73c21684b54.webp"
+    ],
+    "gallery": [],
+    "youtubeTrailer": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-2-games/Mario-Tennis-Fever-2915160.html",
+    "releaseDate": "2026-02-12",
+    "ageRating": "PEGI 7 / ESRB E",
+    "metacriticRating": 80,
+    "genres": [
+     "Sports",
+     "Tennis",
+     "Party"
+    ],
+    "platform": "switch2",
+    "size": 7.7,
+    "numberOfPlayers": "1–4 local; 2–4 local wireless; 1–4 online",
+    "supportedLanguages": "Japanese / English; French / German / Italian / Spanish / Dutch / Portuguese; Korean / Chinese",
+    "hardwareModel": "",
+    "colorEdition": "",
+    "storageCapacity": "",
+    "screenSpecs": "",
+    "batteryLife": "",
+    "boxContents": [],
+    "boxContentsText": "",
+    "warrantyCondition": "",
+    "connectivity": "",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "Global",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "",
+    "redemptionSteps": [],
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 15000,
+    "cost": 1500,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": false,
+    "displayOrder": 0,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "Offline Account",
+      "description": "Offline account access",
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_account",
+      "name": "Online Account",
+      "description": "Online account access",
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "types": [
+     {
+      "id": "standard_offline",
+      "name": "Offline Account",
+      "optionId": "offline_account",
+      "price": 15000,
+      "cost": 1500,
+      "description": "Offline Account; supplier cost 1,500 IQD; selling price 15,000 IQD.",
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "standard_online",
+      "name": "Online Account",
+      "optionId": "online_account",
+      "price": "38000",
+      "cost": 20750,
+      "description": "Online Account; supplier cost 20,750 IQD; selling price 30,750 IQD.",
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "Active",
+    "kind": "account",
+    "trade_value_iqd": 48000,
+    "store_offer_bonus_iqd": 2500,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "id": "prd_34ac10f0ab97482c",
+    "schema_version": 23,
+    "titleAr": "ماريو تنس فيفر",
+    "compatibility": [
+     "Nintendo Switch 2"
+    ],
+    "edition": "Standard",
+    "developer": "Camelot Software Planning",
+    "publisher": "Nintendo",
+    "metacriticUrl": "https://www.nintendolife.com/reviews/nintendo-switch-2/mario-tennis-fever",
+    "opencriticRating": 80,
+    "userScore": 8,
+    "price_usd": 69.99,
+    "officialUrl": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-2-games/Mario-Tennis-Fever-2915160.html",
+    "eshopUrl": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-2-games/Mario-Tennis-Fever-2915160.html",
+    "gameIsOffline": true,
+    "gameIsOnline": true,
+    "gameLanguageLocked": false,
+    "description_short": "Mario Tennis returns on Nintendo Switch 2 with 38 playable characters, 30 Fever Rackets, Tournament, Trial Towers, Mix It Up, Adventure, Swing Mode, ranked online play, amiibo support and GameShare. Fever Shots give each racket a distinct court-changing effect.",
+    "description_ar": "تعود سلسلة Mario Tennis على Nintendo Switch 2 مع 38 شخصية و30 Fever Racket، إضافة إلى Tournament وTrial Towers وMix It Up وAdventure وSwing Mode واللعب المصنف أونلاين وGameShare ودعم amiibo. لكل Fever Racket قدرة خاصة تغيّر سير المباراة.",
+    "box_front_url": "https://www.mariowiki.com/Special:Redirect/file/Mario-Tennis-Fever-boxart.jpg",
+    "box_back_url": "https://www.mariowiki.com/Special:Redirect/file/Mario-Tennis-Fever-boxart.jpg",
+    "galleryImages": [
+     {
+      "url": "https://www.mariowiki.com/Special:Redirect/file/MTF%20Gameplay%20screenshot.png",
+      "alt": "Mario Tennis Fever — distinct gameplay/promotional image 1"
+     },
+     {
+      "url": "https://www.mariowiki.com/Special:Redirect/file/MTF%20Mario%20Introduction%20Opening.png",
+      "alt": "Mario Tennis Fever — distinct gameplay/promotional image 2"
+     },
+     {
+      "url": "https://www.mariowiki.com/Special:Redirect/file/MTF%20Peach%20Introduction%20Opening.png",
+      "alt": "Mario Tennis Fever — distinct gameplay/promotional image 3"
+     },
+     {
+      "url": "https://www.mariowiki.com/Special:Redirect/file/MTF%20Bowser%20Introduction%20Opening.png",
+      "alt": "Mario Tennis Fever — distinct gameplay/promotional image 4"
+     },
+     {
+      "url": "https://www.mariowiki.com/Special:Redirect/file/MTF%20Daisy%20Introduction%20Opening.png",
+      "alt": "Mario Tennis Fever — distinct gameplay/promotional image 5"
+     },
+     {
+      "url": "https://www.mariowiki.com/Special:Redirect/file/DiddyKongMarioTennisFever.png",
+      "alt": "Mario Tennis Fever — distinct gameplay/promotional image 6"
+     },
+     {
+      "url": "https://www.mariowiki.com/Special:Redirect/file/MTF%20Five%20Tennis%20Tips%201.png",
+      "alt": "Mario Tennis Fever — distinct gameplay/promotional image 7"
+     },
+     {
+      "url": "https://www.mariowiki.com/Special:Redirect/file/MTF%20Five%20Tennis%20Tips%202.png",
+      "alt": "Mario Tennis Fever — distinct gameplay/promotional image 8"
+     }
+    ],
+    "videos": [
+     {
+      "title": "Official game page / trailer",
+      "url": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-2-games/Mario-Tennis-Fever-2915160.html"
+     },
+     {
+      "title": "Nintendo / publisher product information",
+      "url": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-2-games/Mario-Tennis-Fever-2915160.html"
+     },
+     {
+      "title": "Technical or database reference",
+      "url": "https://en-americas-support.nintendo.com/app/answers/detail/a_id/68671/p/1095/c/120"
+     }
+    ],
+    "nsuid": "See regional Nintendo eShop listing",
+    "title_id": "Regional title identifier varies by Nintendo storefront",
+    "product_code": "Nintendo Switch 2 retail code varies by region",
+    "nintendoEshopUrl": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-2-games/Mario-Tennis-Fever-2915160.html",
+    "nintendoOnlineRequired": true,
+    "nintendoCloudSaves": true,
+    "nintendoGameKeyCard": false,
+    "nintendoPhysicalNeedsDownload": false,
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": true,
+    "nintendoPlayModes": "TV / Tabletop / Handheld",
+    "nintendoNotes": "Verified game-page data for Mario Tennis Fever; measured performance is separated from system maximum capabilities.",
+    "switch2Enhanced": true,
+    "switch2Exclusive": true,
+    "switch2UpgradePrice": 0,
+    "switch2Features": [
+     "38 playable characters",
+     "30 Fever Rackets with unique powers",
+     "GameShare, online rooms/ranked play and Joy-Con 2 Swing Mode"
+    ],
+    "tagline": "Mario tennis with 38 characters, 30 Fever Rackets and fast 60 fps court action.",
+    "fitFor": [
+     "Fans of competitive arcade tennis",
+     "Local and online multiplayer groups",
+     "Players who enjoy Mario-style special abilities"
+    ],
+    "notFitFor": [
+     "Players seeking a deep RPG-length story mode",
+     "Players who only want realistic tennis simulation",
+     "Players who dislike special-effect-heavy matches"
+    ],
+    "playTimeMain": 4,
+    "playTimeFull": 30,
+    "editionsList": [
+     {
+      "name": "Standard Edition",
+      "coverUrl": "https://www.mariowiki.com/Special:Redirect/file/Mario-Tennis-Fever-boxart.jpg",
+      "contents": [
+       {
+        "label": "Base game"
+       },
+       {
+        "label": "Core content"
+       },
+       {
+        "label": "Current updates"
+       }
+      ]
+     },
+     {
+      "name": "Digital Edition",
+      "coverUrl": "https://www.mariowiki.com/Special:Redirect/file/MTF%20Home%20Menu%20Icon.png",
+      "contents": [
+       {
+        "label": "Digital entitlement"
+       },
+       {
+        "label": "Same core game"
+       },
+       {
+        "label": "Nintendo Account delivery"
+       }
+      ]
+     },
+     {
+      "name": "Current Complete Package",
+      "coverUrl": "https://www.mariowiki.com/Special:Redirect/file/My%20Nintendo%20MTF%20wallpaper%20desktop.jpg",
+      "contents": [
+       {
+        "label": "Latest build"
+       },
+       {
+        "label": "Free Galaxy update"
+       },
+       {
+        "label": "38 playable characters"
+       }
+      ]
+     }
+    ],
+    "gameplayPillars": [
+     {
+      "title": "Fever Rackets",
+      "description": "Build the Fever Gauge and trigger racket-specific Fever Shots that freeze, shrink, shock, duplicate or otherwise disrupt opponents.",
+      "imageUrl": "https://www.mariowiki.com/Special:Redirect/file/My%20Nintendo%20MTF%20wallpaper%20desktop.jpg"
+     },
+     {
+      "title": "Pure tennis foundation",
+      "description": "Topspin, slice, lob, movement, positioning and shot timing remain central underneath the Mario powers.",
+      "imageUrl": "https://www.mariowiki.com/Special:Redirect/file/My%20Nintendo%20Mario%20Tennis%20Fever%20(Mario)%20wallpaper%20desktop.png"
+     },
+     {
+      "title": "Many ways to compete",
+      "description": "Play Tournament, Trial Towers, Mix It Up, Adventure, Swing Mode, Free Play, ranked online and GameShare sessions.",
+      "imageUrl": "https://www.mariowiki.com/Special:Redirect/file/My%20Nintendo%20MTF%20EU%20wallpaper%20desktop.jpg"
+     }
+    ],
+    "worldSummary": "The Mushroom Kingdom hosts a huge tennis tournament across themed courts. Adventure mode sends Baby Mario and the transformed cast through a light story journey to regain their tennis abilities, while Tournament, Trial Towers and online play provide the long-term competitive structure.",
+    "storyChapters": [
+     {
+      "title": "Mushroom Kingdom tournament",
+      "body": "Mario and friends enter a new high-energy tennis tournament.",
+      "imageUrl": "https://www.mariowiki.com/Special:Redirect/file/MTF%20My%20Nintendo%20February%202026%20calendar%20desktop.jpg"
+     },
+     {
+      "title": "Adventure transformation",
+      "body": "The cast is transformed into babies and must relearn tennis while overcoming monsters and challenges.",
+      "imageUrl": "https://www.mariowiki.com/Special:Redirect/file/MTF%20Five%20Tennis%20Tips.jpg"
+     },
+     {
+      "title": "Competitive mastery",
+      "body": "Unlock characters, courts and Fever Rackets and take custom combinations into online or local matches.",
+      "imageUrl": "https://www.mariowiki.com/Special:Redirect/file/MTF%20Gameplay%20screenshot.png"
+     }
+    ],
+    "features": [
+     "38 playable characters",
+     "30 Fever Rackets with unique powers",
+     "GameShare, online rooms/ranked play and Joy-Con 2 Swing Mode"
+    ],
+    "perfResolutionDocked": "4K-class output / upscaled high-resolution presentation",
+    "perfResolutionHandheld": "1080p-class handheld presentation",
+    "perfFps": "60",
+    "perfHdr": false,
+    "perfNotes": "Reviews consistently report a 60 fps target in handheld and docked play. Some testing reports brief dips with very heavy effects or split-screen setup; Nintendo does not publish a fixed internal-resolution table.",
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "hardwareId": "prd_acf4c89908764c62",
+      "informationStatus": "Available / verified",
+      "unavailableReason": "No standard supported mode is unavailable.",
+      "handheld": {
+       "supported": true,
+       "resolution": "1080p-class handheld presentation",
+       "resolutionDynamic": false,
+       "renderingResolution": "1080p-class handheld presentation",
+       "outputResolution": "1920x1080",
+       "fps": "60",
+       "fpsMin": "30",
+       "fpsMax": "60",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Handheld",
+       "notes": "Reviews consistently report a 60 fps target in handheld and docked play. Some testing reports brief dips with very heavy effects or split-screen setup; Nintendo does not publish a fixed internal-resolution table."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "4K-class output / upscaled high-resolution presentation",
+       "resolutionDynamic": false,
+       "renderingResolution": "4K-class output / upscaled high-resolution presentation",
+       "outputResolution": "3840x2160",
+       "fps": "60",
+       "fpsMin": "30",
+       "fpsMax": "60",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "TV / Docked",
+       "notes": "Reviews consistently report a 60 fps target in handheld and docked play. Some testing reports brief dips with very heavy effects or split-screen setup; Nintendo does not publish a fixed internal-resolution table."
+      },
+      "modes": [
+       {
+        "name": "Primary documented mode",
+        "handheldResolution": "1080p-class handheld presentation",
+        "handheldFps": "60",
+        "tvResolution": "4K-class output / upscaled high-resolution presentation",
+        "tvFps": "60",
+        "hdr": false,
+        "vrr": false,
+        "notes": "Primary documented performance profile."
+       }
+      ],
+      "upscaling": "System/game-specific scaling where applicable",
+      "rayTracing": false,
+      "rayTracingMode": "No verified ray-tracing mode",
+      "loadingTime": "Scene-dependent; no single universal loading time",
+      "loadingNotes": "Loading varies by scene, save and storage state.",
+      "gameVersion": "Current retail build",
+      "patchVersion": "Current available update",
+      "testedDate": "2026-08-27",
+      "sourceName": "Nintendo Support",
+      "sourceUrl": "https://en-americas-support.nintendo.com/app/answers/detail/a_id/68671/p/1095/c/120",
+      "verifiedAt": "2026-08-27",
+      "verificationStatus": "Verified / sourced",
+      "performanceNotes": "Reviews consistently report a 60 fps target in handheld and docked play. Some testing reports brief dips with very heavy effects or split-screen setup; Nintendo does not publish a fixed internal-resolution table."
+     }
+    ],
+    "downloadSizeGb": 7.7,
+    "requiredSpaceGb": 7.7,
+    "microSdRecommended": false,
+    "storageNotes": "Nintendo Europe lists 7.7 GB. microSD Express is optional if system storage is insufficient.",
+    "languagesAudio": [
+     "English character voices",
+     "Japanese character voices",
+     "Music / sound effects"
+    ],
+    "languagesText": [
+     "Japanese / English",
+     "French / German / Italian / Spanish / Dutch / Portuguese",
+     "Korean / Chinese"
+    ],
+    "arabicSupport": false,
+    "mpLocalPlayers": true,
+    "mpOnlinePlayers": true,
+    "mpCoop": true,
+    "mpCompetitive": true,
+    "mpSplitScreen": false,
+    "mpLocalWireless": true,
+    "dlc": [
+     {
+      "name": "Free Galaxy update",
+      "description": "Version 1.1.0 added Galaxy Court content, Black Hole Racket and expanded GameShare/GameChat support.",
+      "coverUrl": "https://www.mariowiki.com/Special:Redirect/file/MTF%20Mario%20Introduction%20Opening.png"
+     },
+     {
+      "name": "No paid expansion announced",
+      "description": "No standalone paid story DLC has been announced as of August 27, 2026.",
+      "coverUrl": "https://www.mariowiki.com/Special:Redirect/file/MTF%20Peach%20Introduction%20Opening.png"
+     },
+     {
+      "name": "amiibo support",
+      "description": "Compatible amiibo can change tennis-ball designs; amiibo are optional physical accessories.",
+      "coverUrl": "https://www.mariowiki.com/Special:Redirect/file/MTF%20Bowser%20Introduction%20Opening.png"
+     }
+    ],
+    "guides": [
+     {
+      "title": "Official product page",
+      "summary": "Platform, release, languages and features.",
+      "url": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-2-games/Mario-Tennis-Fever-2915160.html"
+     },
+     {
+      "title": "Performance / update reference",
+      "summary": "Technical or update information.",
+      "url": "https://en-americas-support.nintendo.com/app/answers/detail/a_id/68671/p/1095/c/120"
+     },
+     {
+      "title": "Media / database reference",
+      "summary": "Images and catalog metadata.",
+      "url": "https://www.nintendolife.com/reviews/nintendo-switch-2/mario-tennis-fever"
+     }
+    ],
+    "completionMain": 4,
+    "completionExtras": 12,
+    "completionAll": 30,
+    "faq": [
+     {
+      "q": "How many characters are playable?",
+      "a": "Nintendo advertises 38 playable characters, the largest roster in Mario Tennis history."
+     },
+     {
+      "q": "How many Fever Rackets are there?",
+      "a": "The base feature set includes 30 Fever Rackets, with additional content such as the Black Hole Racket added through a free update."
+     },
+     {
+      "q": "Does it run at 60 fps?",
+      "a": "Yes, the game targets 60 fps in both handheld and docked play according to multiple reviews and performance tests."
+     }
+    ],
+    "verdictScore": 8.2,
+    "verdictSummary": "The strongest modern Mario Tennis entry for pure on-court play: fast, readable and deep enough for long-term multiplayer, although Adventure mode remains comparatively short.",
+    "verdictPros": [
+     "Excellent core tennis and Fever Racket system",
+     "Large roster and strong multiplayer suite",
+     "Smooth 60 fps presentation"
+    ],
+    "verdictCons": [
+     "Adventure mode is short",
+     "Special rackets can create balance frustrations",
+     "Resolution can be reconstructed rather than native 4K"
+    ],
+    "reviews": [
+     {
+      "source": "Nintendo Life",
+      "score": "8/10",
+      "quote": "Praised the core tennis, Fever mechanics and multiplayer longevity.",
+      "url": "https://www.nintendolife.com/reviews/nintendo-switch-2/mario-tennis-fever"
+     },
+     {
+      "source": "VGC",
+      "score": "3/5",
+      "quote": "Strong core tennis but criticized story content and balance.",
+      "url": "https://www.videogameschronicle.com/review/mario-tennis-fever/"
+     },
+     {
+      "source": "CGMagazine",
+      "score": "Positive",
+      "quote": "Reported consistent 60 fps in handheld and docked play.",
+      "url": "https://www.cgmagonline.com/review/game/mario-tennis-fever-nintendo-switch/"
+     }
+    ],
+    "timeline": [
+     {
+      "date": "2025-09-19",
+      "title": "Release date revealed",
+      "body": "Nintendo confirmed the February 12, 2026 Switch 2 launch."
+     },
+     {
+      "date": "2026-02-12",
+      "title": "Worldwide release",
+      "body": "Mario Tennis Fever launched exclusively for Nintendo Switch 2."
+     },
+     {
+      "date": "2026-07-15",
+      "title": "Version 1.1.0",
+      "body": "Free Galaxy-themed update and expanded GameShare functionality released."
+     }
+    ],
+    "patchNotes": [
+     {
+      "version": "Version 1.0.x",
+      "date": "2026-02",
+      "body": "Launch build and early fixes."
+     },
+     {
+      "version": "Version 1.1.0",
+      "date": "2026-07-15",
+      "body": "Added GameShare/GameChat functionality, Black Hole Racket and Galaxy Court content."
+     },
+     {
+      "version": "Current build",
+      "date": "2026-08-27",
+      "body": "Current version includes the free Galaxy update and launch-era fixes."
+     }
+    ],
+    "soundtrack": [
+     {
+      "title": "Mario Tennis Fever Main Theme",
+      "url": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-2-games/Mario-Tennis-Fever-2915160.html"
+     },
+     {
+      "title": "Tournament / stadium themes",
+      "url": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-2-games/Mario-Tennis-Fever-2915160.html"
+     },
+     {
+      "title": "Galaxy Court music",
+      "url": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-2-games/Mario-Tennis-Fever-2915160.html"
+     }
+    ],
+    "seriesName": "Mario Tennis",
+    "seriesEntries": [
+     "Mario Tennis Aces",
+     "Mario Tennis Fever",
+     "Mario Golf: Super Rush"
+    ],
+    "studioName": "Camelot Software Planning",
+    "studioUrl": "https://www.camelot.co.jp/",
+    "studioLocation": "Tokyo, Japan",
+    "studioAbout": "Camelot is the long-time developer of the Mario Tennis and Mario Golf series.",
+    "setupNeeds": [
+     "Nintendo Switch 2",
+     "7.7 GB free storage",
+     "Nintendo Switch Online membership for online play / GameChat features"
+    ],
+    "sources": [
+     {
+      "name": "Nintendo Europe",
+      "url": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-2-games/Mario-Tennis-Fever-2915160.html"
+     },
+     {
+      "name": "Nintendo Support",
+      "url": "https://en-americas-support.nintendo.com/app/answers/detail/a_id/68671/p/1095/c/120"
+     },
+     {
+      "name": "Nintendo Life",
+      "url": "https://www.nintendolife.com/reviews/nintendo-switch-2/mario-tennis-fever"
+     }
+    ],
+    "boxContentsList": "[Circular]",
+    "image": "/api/files/products/prd_34ac10f0ab97482c/cover-a9e57e75177d8493.jpg",
+    "banner": "/api/files/products/prd_34ac10f0ab97482c/banner-0-7563876ee6a5b991.webp",
+    "schemaId": "",
+    "createdAt": "2026-08-27T01:24:42.393Z",
+    "created_at": "2026-08-27T01:24:42.393Z",
+    "updatedAt": "2026-08-27T01:24:42.393Z",
+    "updated_at": "2026-08-27T01:24:42.393Z",
+    "badgeEn": "وفر 40%",
+    "badgeKu": "وفر 40%",
+    "featuresEn": [
+     "38 playable characters",
+     "30 Fever Rackets with unique powers",
+     "GameShare, online rooms/ranked play and Joy-Con 2 Swing Mode"
+    ],
+    "featuresKu": [
+     "38 playable characters",
+     "30 Fever Rackets with unique powers",
+     "GameShare, online rooms/ranked play and Joy-Con 2 Swing Mode"
+    ],
+    "boxFrontUrl": "https://www.mariowiki.com/Special:Redirect/file/Mario-Tennis-Fever-boxart.jpg",
+    "sales": 0,
+    "images": [],
+    "modes": []
+   }
+  },
+  {
+   "id": "prd_08ac1190a4d44318",
+   "slug": "mario-vs-donkey-kong-switch-1",
+   "title": "Mario vs. Donkey Kong",
+   "platform": "switch1",
+   "isHidden": false,
+   "hash": "12f1f67870caef673b75abf1d1f65faf85763a5ace27d9c4591d3fad6ca3af04",
+   "images": [
+    {
+     "role": "front-box",
+     "field": "cartridgeImage",
+     "url": "https://banan.to/api/files/products/prd_08ac1190a4d44318/front-fc093110a410c2d3.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 118930,
+     "width": 617,
+     "height": 1000,
+     "thumb": "review-workdir/thumbs/batch-015/mario-vs-donkey-kong-switch-1__front-box-0.png"
+    },
+    {
+     "role": "front-box",
+     "field": "box_front_url",
+     "url": "https://gameplay.com.co/cdn/shop/files/MandK.jpg?v=1746200793",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 118798,
+     "width": 1200,
+     "height": 1200,
+     "thumb": "review-workdir/thumbs/batch-015/mario-vs-donkey-kong-switch-1__front-box-1.png"
+    },
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://banan.to/api/files/products/prd_08ac1190a4d44318/square-ed77c6561c58c3dc.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://banan.to/api/files/products/prd_08ac1190a4d44318/cover-6621d58dd4fdf6df.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "3d-texture",
+     "field": "coverHiResImage",
+     "url": "https://banan.to/api/files/products/prd_08ac1190a4d44318/3d-wrap-81ccf288fa6155e8.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 952186,
+     "width": 2454,
+     "height": 1888,
+     "thumb": "review-workdir/thumbs/batch-015/mario-vs-donkey-kong-switch-1__3d-texture-4.png"
+    },
+    {
+     "role": "listing",
+     "field": "image",
+     "url": "https://banan.to/api/files/products/prd_08ac1190a4d44318/cover-6621d58dd4fdf6df.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[0]",
+     "url": "https://banan.to/api/files/products/prd_08ac1190a4d44318/banner-0-f63915a38b62fef1.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[1]",
+     "url": "https://banan.to/api/files/products/prd_08ac1190a4d44318/banner-1-93a83351144ea4fc.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[2]",
+     "url": "https://banan.to/api/files/products/prd_08ac1190a4d44318/banner-2-24b53e125f265b74.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[3]",
+     "url": "https://banan.to/api/files/products/prd_08ac1190a4d44318/banner-3-3091e32d2952322b.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000072191/f1b4785bcc442c5817427defebb9d98ab73838685b54ac5a13bfaefe5aba8013",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 120708,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-015/mario-vs-donkey-kong-switch-1__gallery-10.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[1]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000072191/aba6bff3d9ed7f28faf4084fa9a5819fad427ee2e3c293ba43ad95f8ab30bdd1",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 73946,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-015/mario-vs-donkey-kong-switch-1__gallery-11.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[2]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000072191/21876b9547f4851156094dd786bbba491ee05e39819aa994ea2ab69925e6a202",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 94021,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-015/mario-vs-donkey-kong-switch-1__gallery-12.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[3]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000072191/387f623e74f4763ddebbebf0f8b884a80f02b4112d9de06377fc8718177d3316",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 121085,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-015/mario-vs-donkey-kong-switch-1__gallery-13.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[4]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000072191/7d5a6f196c7b74134c1d94a536800832e395810ec170df62ec08e6f3c6eaeaea",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 142162,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-015/mario-vs-donkey-kong-switch-1__gallery-14.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[5]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000072191/40568c3fcd39ec53006044fb302d66d233c8d972b675ef6d8316d5c73eb7fa26",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 125999,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-015/mario-vs-donkey-kong-switch-1__gallery-15.png"
+    }
+   ],
+   "record": {
+    "title": "Mario vs. Donkey Kong",
+    "titleEn": "Mario vs. Donkey Kong",
+    "titleKu": "Mario vs. Donkey Kong",
+    "slug": "mario-vs-donkey-kong-switch-1",
+    "description": "Run, jump, and backflip your way to rescuing the stolen Mini-Mario toys in this puzzling twist on Mario action. Obstacles like spikes, moving platforms, and falling bricks stand in your way—put your brain to work and figure out the best way to reach the Mini-Marios! You’ll have to master Color Switches, Warp Boxes, and more as the difficulty ramps up across more than 130 levels, including challenging Plus and Expert levels.\n\nTailor the challenge to your playstyle or bring a friend along in local multiplayer!\n\nSeeking a laid-back experience? The newly-added Casual Style removes time limits and adds checkpoints so you can relax and think. Looking for a tough puzzle-platforming challenge? Classic Style has got you covered with the timed levels and one-hit defeats of the original Game Boy™ Advance game. But that’s not all—you can bring a friend along in the newly-added Two-Player Mode, which adds an extra objective for Mario and Toad to take on together!\n\nA classic rivalry reignites with updated visuals, new levels, and more ways to play!\n\nWith overhauled graphics, music, and cutscenes, this revitalized classic is looking better than ever. But wait—there’s more! Not only do you get new ways to play with Casual Style and Two-Player Mode, you also get two brand new worlds: Merry Mini-Land and Slippery Summit! That’s two new worlds, each with eight levels (and even more Plus levels), featuring new environments, enemies, and mechanics. And that’s not all! When you finish with those, you can test your skills in a newly-added Time Attack mode that will push your puzzle-platforming speed to the limit!",
+    "descriptionEn": "Run, jump, and backflip your way to rescuing the stolen Mini-Mario toys in this puzzling twist on Mario action. Obstacles like spikes, moving platforms, and falling bricks stand in your way—put your brain to work and figure out the best way to reach the Mini-Marios! You’ll have to master Color Switches, Warp Boxes, and more as the difficulty ramps up across more than 130 levels, including challenging Plus and Expert levels.\n\nTailor the challenge to your playstyle or bring a friend along in local multiplayer!\n\nSeeking a laid-back experience? The newly-added Casual Style removes time limits and adds checkpoints so you can relax and think. Looking for a tough puzzle-platforming challenge? Classic Style has got you covered with the timed levels and one-hit defeats of the original Game Boy™ Advance game. But that’s not all—you can bring a friend along in the newly-added Two-Player Mode, which adds an extra objective for Mario and Toad to take on together!\n\nA classic rivalry reignites with updated visuals, new levels, and more ways to play!\n\nWith overhauled graphics, music, and cutscenes, this revitalized classic is looking better than ever. But wait—there’s more! Not only do you get new ways to play with Casual Style and Two-Player Mode, you also get two brand new worlds: Merry Mini-Land and Slippery Summit! That’s two new worlds, each with eight levels (and even more Plus levels), featuring new environments, enemies, and mechanics. And that’s not all! When you finish with those, you can test your skills in a newly-added Time Attack mode that will push your puzzle-platforming speed to the limit!",
+    "descriptionKu": "The Game Boy Advance rivalry returns with over 130 puzzle-platforming stages, local two-player co-op, classic and casual styles, plus new worlds and remade visuals. Run, jump, climb, handstand and backflip through handcrafted levels while solving hazards and rescuing the stolen Mini-Marios from Donkey Kong.",
+    "cartridgeImage": "/api/files/products/prd_08ac1190a4d44318/front-fc093110a410c2d3.jpg",
+    "nintendoCardImage": "/api/files/products/prd_08ac1190a4d44318/square-ed77c6561c58c3dc.avif",
+    "coverHiResImage": "/api/files/products/prd_08ac1190a4d44318/3d-wrap-81ccf288fa6155e8.webp",
+    "coverImage": "/api/files/products/prd_08ac1190a4d44318/cover-6621d58dd4fdf6df.avif",
+    "bannerImages": [
+     "/api/files/products/prd_08ac1190a4d44318/banner-0-f63915a38b62fef1.avif",
+     "/api/files/products/prd_08ac1190a4d44318/banner-1-93a83351144ea4fc.avif",
+     "/api/files/products/prd_08ac1190a4d44318/banner-2-24b53e125f265b74.avif",
+     "/api/files/products/prd_08ac1190a4d44318/banner-3-3091e32d2952322b.avif",
+     "/api/files/products/prd_08ac1190a4d44318/banner-4-ef6aeef4d806edb4.avif",
+     "/api/files/products/prd_08ac1190a4d44318/banner-5-29a0cb4bee3b96e5.avif"
+    ],
+    "youtubeTrailer": "https://www.youtube.com/watch?v=p_RypCfeXp4",
+    "releaseDate": "2024-02-16",
+    "ageRating": "Everyone",
+    "metacriticRating": 76,
+    "genres": [
+     "Action",
+     "Puzzle"
+    ],
+    "platform": "switch1",
+    "size": "1.31 GB",
+    "numberOfPlayers": "1-2",
+    "supportedLanguages": "Japanese, British English, French, German, Italian, Spanish, Korean, Dutch, Simplified Chinese, Latin American Spanish, Canadian French, Traditional Chinese, American English",
+    "price": 11500,
+    "cost": 1500,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": false,
+    "displayOrder": 0,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "مشترك",
+      "description": "حساب مشترك",
+      "stock": 9999,
+      "isInfiniteStock": true,
+      "customerDescription": "حساب مشترك"
+     },
+     {
+      "id": "online_account",
+      "name": "خاص بك",
+      "description": "حساب خاص بك",
+      "stock": 9999,
+      "isInfiniteStock": true,
+      "customerDescription": "حساب خاص بك"
+     }
+    ],
+    "types": [
+     {
+      "id": "standard_offline",
+      "name": "مشترك — اللعبة الأساسية",
+      "optionId": "offline_account",
+      "price": 11500,
+      "cost": 1500,
+      "description": "Offline Account; supplier cost 1,500 IQD; selling price 16,500 IQD.",
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "standard_online",
+      "name": "خاص بك — اللعبة الأساسية",
+      "optionId": "online_account",
+      "price": 26500,
+      "cost": 16500,
+      "description": "Online Account; supplier cost 16,500 IQD; selling price 26,500 IQD.",
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "Active",
+    "kind": "account",
+    "trade_value_iqd": 20000,
+    "store_offer_bonus_iqd": 3000,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "id": "prd_08ac1190a4d44318",
+    "schema_version": 24,
+    "titleAr": "ماريو ضد دونكي كونغ",
+    "compatibility": [
+     "Nintendo Switch",
+     "Nintendo Switch 2: supported with behavior consistent with Nintendo Switch"
+    ],
+    "edition": "Standard",
+    "developer": "Nintendo Software Technology",
+    "publisher": "Nintendo",
+    "seriesName": "Mario vs. Donkey Kong",
+    "userScore": 7.8,
+    "price_usd": 49.99,
+    "officialUrl": "https://www.nintendo.com/us/store/products/mario-vs-donkey-kong-switch/",
+    "eshopUrl": "https://www.nintendo.com/us/store/products/mario-vs-donkey-kong-switch/",
+    "galleryImages": [
+     {
+      "alt": "Verified direct image URL 1",
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000072191/f1b4785bcc442c5817427defebb9d98ab73838685b54ac5a13bfaefe5aba8013"
+     },
+     {
+      "alt": "Verified direct image URL 2",
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000072191/aba6bff3d9ed7f28faf4084fa9a5819fad427ee2e3c293ba43ad95f8ab30bdd1"
+     },
+     {
+      "alt": "Verified direct image URL 3",
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000072191/21876b9547f4851156094dd786bbba491ee05e39819aa994ea2ab69925e6a202"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000072191/387f623e74f4763ddebbebf0f8b884a80f02b4112d9de06377fc8718177d3316"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000072191/7d5a6f196c7b74134c1d94a536800832e395810ec170df62ec08e6f3c6eaeaea"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000072191/40568c3fcd39ec53006044fb302d66d233c8d972b675ef6d8316d5c73eb7fa26"
+     }
+    ],
+    "gameIsOffline": true,
+    "gameIsOnline": false,
+    "gameLanguageLocked": false,
+    "description_short": "The Game Boy Advance rivalry returns with over 130 puzzle-platforming stages, local two-player co-op, classic and casual styles, plus new worlds and remade visuals.",
+    "description_ar": "تعود منافسة Game Boy Advance الشهيرة مع أكثر من 130 مرحلة من الألغاز والمنصات، ودعم لعب تعاوني محلي لشخصين، وأنماط Classic وCasual، وعوالم جديدة ورسوم محسنة. اركض واقفز وتسلق ونفّذ الحركات الخاصة لحل المراحل وإنقاذ Mini-Marios من دونكي كونغ.",
+    "box_front_url": "https://gameplay.com.co/cdn/shop/files/MandK.jpg?v=1746200793",
+    "box_back_url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000072191/f1b4785bcc442c5817427defebb9d98ab73838685b54ac5a13bfaefe5aba8013",
+    "editionsList": [
+     {
+      "name": "Standard Edition",
+      "coverUrl": "https://gameplay.com.co/cdn/shop/files/MandK.jpg?v=1746200793",
+      "contents": [
+       {
+        "label": "Base game"
+       },
+       {
+        "label": "Over 130 levels"
+       },
+       {
+        "label": "Classic and Casual styles"
+       }
+      ]
+     },
+     {
+      "name": "Digital Edition",
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_1:1,c_fill,g_auto,w_1000/f_auto/q_auto/dpr_1.5/store/software/switch/70010000072191/2fda60f3007987817be456876e7755f5120522a75e477961fbb622fd32f9e588",
+      "contents": [
+       {
+        "label": "Nintendo eShop release"
+       },
+       {
+        "label": "Local co-op included"
+       },
+       {
+        "label": "Save Data Cloud support"
+       }
+      ]
+     },
+     {
+      "name": "Current Store Package",
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_16:9,c_fill,g_auto,w_1600/f_auto/q_auto/dpr_1.5/store/software/switch/70010000072191/2fda60f3007987817be456876e7755f5120522a75e477961fbb622fd32f9e588",
+      "contents": [
+       {
+        "label": "Offline account option"
+       },
+       {
+        "label": "Online account option"
+       },
+       {
+        "label": "Hidden by default until review"
+       }
+      ]
+     }
+    ],
+    "gameplayPillars": [
+     {
+      "title": "Puzzle-platforming",
+      "description": "Every stage asks you to observe hazards, plan movement and use Mario’s acrobatics to retrieve the Mini-Marios.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000072191/f1b4785bcc442c5817427defebb9d98ab73838685b54ac5a13bfaefe5aba8013"
+     },
+     {
+      "title": "Multiple play styles",
+      "description": "Classic Style recreates a more demanding arcade feel, while Casual Style lowers frustration for newer players.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000072191/aba6bff3d9ed7f28faf4084fa9a5819fad427ee2e3c293ba43ad95f8ab30bdd1"
+     },
+     {
+      "title": "Local co-op",
+      "description": "A second player can join as Toad and help solve the stages on the same system.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000072191/21876b9547f4851156094dd786bbba491ee05e39819aa994ea2ab69925e6a202"
+     },
+     {
+      "title": "Puzzle-platform precision",
+      "description": "Stages focus on timing, switches, keys, ladders, and object interactions, rewarding observation and careful movement more than speed.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000072191/387f623e74f4763ddebbebf0f8b884a80f02b4112d9de06377fc8718177d3316"
+     },
+     {
+      "title": "Co-op and new content in the remake",
+      "description": "The Nintendo Switch version adds local co-op support and extra content, giving the classic puzzle-platform formula more replay value.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000072191/7d5a6f196c7b74134c1d94a536800832e395810ec170df62ec08e6f3c6eaeaea"
+     }
+    ],
+    "worldSummary": "Donkey Kong steals the Mini-Marios from the toy factory, sending Mario across a sequence of puzzle-platforming worlds full of enemies, switches, traps and collectible challenges. The Switch remake expands the content with new worlds, co-op and updated visuals.",
+    "storyChapters": [
+     {
+      "title": "Mini-Marios stolen",
+      "body": "Donkey Kong grabs every Mini-Mario toy from the factory, triggering Mario’s chase.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000072191/f1b4785bcc442c5817427defebb9d98ab73838685b54ac5a13bfaefe5aba8013"
+     },
+     {
+      "title": "Solve the stages",
+      "body": "Mario clears stage after stage by collecting keys, avoiding hazards and guiding the Mini-Marios to safety.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000072191/aba6bff3d9ed7f28faf4084fa9a5819fad427ee2e3c293ba43ad95f8ab30bdd1"
+     },
+     {
+      "title": "Face Donkey Kong again",
+      "body": "At the end of each world, Mario battles Donkey Kong in platforming boss encounters that test what you learned.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000072191/21876b9547f4851156094dd786bbba491ee05e39819aa994ea2ab69925e6a202"
+     },
+     {
+      "title": "Chase Donkey Kong across themed worlds",
+      "body": "After Donkey Kong steals Mini-Mario toys, Mario pursues him through themed stages filled with hazards, puzzles, and toy-rescue objectives.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000072191/40568c3fcd39ec53006044fb302d66d233c8d972b675ef6d8316d5c73eb7fa26"
+     },
+     {
+      "title": "Rescue toys and clear extra content",
+      "body": "Later stages build on the core formula with trickier puzzle rooms, expert-level solutions, and replay-friendly objectives for careful players.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000072191/f1b4785bcc442c5817427defebb9d98ab73838685b54ac5a13bfaefe5aba8013"
+     }
+    ],
+    "features": [
+     "Over 130 puzzle-platforming stages",
+     "Classic and Casual styles",
+     "New two-player co-op and new worlds on Switch",
+     "Careful puzzle solving rather than pure platform speed",
+     "Local co-op helps make the remake more accessible",
+     "Short stages make it ideal for portable stop-and-start play"
+    ],
+    "perfResolutionDocked": "Not published by Nintendo",
+    "perfResolutionHandheld": "Not published by Nintendo",
+    "perfFps": "Not published by Nintendo",
+    "perfHdr": false,
+    "faq": [
+     {
+      "q": "Is this a remake?",
+      "a": "Yes. It is a Switch remake of the Game Boy Advance title with new visuals, co-op and extra content."
+     },
+     {
+      "q": "How many players can play?",
+      "a": "The game supports one or two players on a single system."
+     },
+     {
+      "q": "What makes it special?",
+      "a": "It blends platforming movement with puzzle-solving, making every stage feel like a small challenge box."
+     },
+     {
+      "q": "Does Mario vs. Donkey Kong have multiplayer?",
+      "a": "Yes. The Nintendo Switch remake includes local co-op support, allowing two players to work together through the puzzle-platform stages."
+     },
+     {
+      "q": "Is it an action platformer or a puzzle game?",
+      "a": "It is primarily a puzzle-platformer. Movement matters, but most stages are built around planning routes, using objects, and solving room layouts."
+     }
+    ],
+    "verdictScore": 8.1,
+    "verdictSummary": "Overall score: 8.1/10. Strengths include Clever stage design; Excellent remake presentation; Co-op and accessibility options. Main drawbacks include Relatively compact scope; Not every challenge is equally inventive.",
+    "verdictPros": [
+     "Clever stage design",
+     "Excellent remake presentation",
+     "Co-op and accessibility options",
+     "Excellent fit for short play sessions",
+     "Puzzle variety stays engaging across worlds"
+    ],
+    "verdictCons": [
+     "Relatively compact scope",
+     "Not every challenge is equally inventive",
+     "Short main run for veterans",
+     "Less action-focused than many Mario platformers",
+     "Completionists may need patience for late-stage puzzles"
+    ],
+    "reviews": [
+     {
+      "source": "Nintendo",
+      "score": "Official",
+      "quote": "Nintendo highlights over 130 levels, local co-op and multiple play styles.",
+      "url": "https://www.nintendo.com/us/store/products/mario-vs-donkey-kong-switch/"
+     },
+     {
+      "source": "Metacritic",
+      "score": "76/100",
+      "quote": "Critical reception was generally positive for its charming remake approach.",
+      "url": "https://www.metacritic.com/game/mario-vs-donkey-kong/"
+     },
+     {
+      "source": "Overview Trailer",
+      "score": "Official Trailer",
+      "quote": "The overview trailer shows the puzzle structure and co-op play.",
+      "url": "https://www.youtube.com/watch?v=p_RypCfeXp4"
+     }
+    ],
+    "timeline": [
+     {
+      "date": "2023-09-14",
+      "title": "Announcement",
+      "body": "Nintendo announced the Switch remake during a Nintendo Direct."
+     },
+     {
+      "date": "2024-02-16",
+      "title": "Worldwide release",
+      "body": "Mario vs. Donkey Kong launched on Nintendo Switch."
+     },
+     {
+      "date": "2024-01-31",
+      "title": "Demo released",
+      "body": "Nintendo released a free demo ahead of launch."
+     }
+    ],
+    "patchNotes": [
+     {
+      "version": "Launch build",
+      "date": "2024-02",
+      "body": "Base game release."
+     },
+     {
+      "version": "Post-launch patches",
+      "date": "2024",
+      "body": "Minor stability and compatibility adjustments."
+     },
+     {
+      "version": "Current build",
+      "date": "2026-08-27",
+      "body": "Stable retail version with Nintendo Switch 2 compatibility support."
+     }
+    ],
+    "studioName": "Nintendo Software Technology",
+    "studioUrl": "https://www.nintendo.com/",
+    "studioLocation": "Redmond, Washington / Kyoto, Japan",
+    "studioAbout": "Nintendo Software Technology is credited as the developer of this Nintendo Switch release. Nintendo is credited as the publisher.",
+    "sources": [
+     {
+      "name": "Nintendo eShop (US)",
+      "url": "https://www.nintendo.com/us/store/products/mario-vs-donkey-kong-switch/"
+     }
+    ],
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "hardwareId": "prd_acf4c89908764c62",
+      "informationStatus": "available",
+      "handheld": {
+       "supported": true,
+       "resolution": "Not published by Nintendo",
+       "fps": "Not published by Nintendo",
+       "mode": "Handheld"
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "Not published by Nintendo",
+       "fps": "Not published by Nintendo",
+       "mode": "TV"
+      },
+      "sourceName": "Nintendo official product page",
+      "sourceUrl": "https://www.nintendo.com/us/store/products/mario-vs-donkey-kong-switch/",
+      "verificationStatus": "official",
+      "verifiedAt": "2026-09-02",
+      "performanceNotes": "Backward-compatible on Switch 2; exact resolution and FPS are not published by Nintendo."
+     }
+    ],
+    "switch2UpgradePrice": 0,
+    "nintendoEshopUrl": "https://www.nintendo.com/us/store/products/mario-vs-donkey-kong-switch/",
+    "arabicSupport": false,
+    "tagline": "Donkey Kong has stolen the Mini-Marios—solve platforming puzzles to get them back.",
+    "fitFor": [
+     "Players looking for puzzle, platformer gameplay.",
+     "Players who want the game modes supported by the official player-count specification: Single system (1-2).",
+     "Players who enjoy bite-sized stages and puzzle-platform structure.",
+     "Families looking for approachable local co-op content."
+    ],
+    "notFitFor": [
+     "Players specifically seeking online multiplayer; this title does not list online multiplayer support.",
+     "Players specifically seeking local multiplayer; this title does not list local multiplayer support.",
+     "Players expecting a long cinematic Mario adventure.",
+     "Players who prefer combat-heavy platformers over deliberate puzzle rooms."
+    ],
+    "setupNeeds": [
+     "Nintendo Switch-compatible hardware for this release.",
+     "Internet connection is required for online features."
+    ],
+    "dlc": [
+     {
+      "name": "No standalone DLC announced",
+      "description": "No standalone paid DLC expansion is included in this extraction. Free updates, when applicable, are listed in the Updates section instead."
+     }
+    ],
+    "guides": [
+     {
+      "title": "Nintendo official product page",
+      "summary": "Official modes, player count, remake additions, language, size, and compatibility information.",
+      "url": "https://www.nintendo.com/us/store/products/mario-vs-donkey-kong-switch/"
+     }
+    ],
+    "image": "/api/files/products/prd_08ac1190a4d44318/cover-6621d58dd4fdf6df.avif",
+    "banner": "/api/files/products/prd_08ac1190a4d44318/banner-0-f63915a38b62fef1.avif",
+    "createdAt": "2026-08-27T16:59:46.365Z",
+    "created_at": "2026-08-27T16:59:46.365Z",
+    "updatedAt": "2026-09-02T00:32:23.824Z",
+    "updated_at": "2026-08-27T16:59:46.365Z",
+    "badgeEn": "وفر 40%",
+    "badgeKu": "وفر 40%",
+    "featuresEn": [
+     "Over 130 puzzle-platforming stages",
+     "Classic and Casual styles",
+     "New two-player co-op and new worlds on Switch",
+     "Careful puzzle solving rather than pure platform speed",
+     "Local co-op helps make the remake more accessible",
+     "Short stages make it ideal for portable stop-and-start play"
+    ],
+    "featuresKu": [
+     "Over 130 puzzle-platforming stages",
+     "Classic and Casual styles",
+     "New two-player co-op and new worlds on Switch",
+     "Careful puzzle solving rather than pure platform speed",
+     "Local co-op helps make the remake more accessible",
+     "Short stages make it ideal for portable stop-and-start play"
+    ],
+    "boxFrontUrl": "https://gameplay.com.co/cdn/shop/files/MandK.jpg?v=1746200793",
+    "sales": 0,
+    "nsuid": "70010000072191",
+    "product_code": "HACPA97PA",
+    "title_id": "0100b99019412000",
+    "nintendoPlayModes": [
+     "TV mode",
+     "Tabletop mode",
+     "Handheld mode"
+    ],
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": true,
+    "nintendoCloudSaves": true,
+    "nintendoOnlineRequired": false,
+    "downloadSizeGb": 1.31,
+    "requiredSpaceGb": 1.31,
+    "microSdRecommended": false,
+    "languagesText": [
+     "Japanese",
+     "British English",
+     "French",
+     "German",
+     "Italian",
+     "Spanish",
+     "Korean",
+     "Dutch",
+     "Simplified Chinese",
+     "Latin American Spanish",
+     "Canadian French",
+     "Traditional Chinese",
+     "American English"
+    ],
+    "storageNotes": "Nintendo lists a 1.31 GB download. Free-space requirements can increase with updates.",
+    "nintendoNotes": "Nintendo product identity and store facts were verified against the official listing on 2026-09-02. Performance values are included only where an official source publishes them.",
+    "mpLocalPlayers": 2,
+    "mpOnlinePlayers": 0,
+    "mpCoop": true,
+    "mpCompetitive": false,
+    "mpLocalWireless": false,
+    "storySummary": "Donkey Kong steals the Mini-Mario toys from the factory, and Mario pursues him through puzzle-filled worlds to recover them.",
+    "dlcList": [
+     {
+      "name": "No standalone DLC announced",
+      "description": "Nintendo’s official product page lists no paid gameplay DLC; the full remake content is included in the base game."
+     }
+    ],
+    "updates": [
+     {
+      "date": "2024-02-16",
+      "title": "Launch version",
+      "description": "The remake launched with Casual Style, Two-Player Mode, Time Attack, Merry Mini-Land, and Slippery Summit included."
+     }
+    ],
+    "music": "The remake features overhauled music and sound alongside its rebuilt visuals and cutscenes; Nintendo does not list a standalone soundtrack product.",
+    "completionTime": "Nintendo does not publish an official story-hour estimate; playtime varies by puzzle solving, Classic or Casual Style, and co-op use.",
+    "completionistTime": "Nintendo does not publish an official 100% time; Plus levels, Expert levels, Time Attack, and full collectible completion extend playtime.",
+    "pros": [
+     "More than 130 focused puzzle-platform stages",
+     "Accessible Casual Style and local co-op",
+     "New worlds and polished remake presentation"
+    ],
+    "cons": [
+     "No online multiplayer",
+     "Short stages may feel repetitive in long sessions",
+     "The structure is puzzle-first rather than a traditional Mario platformer"
+    ],
+    "perfNotes": "Nintendo confirms all three play modes and Switch 2 compatibility but does not publish exact rendering resolution or FPS."
+   }
+  }
+ ]
+}

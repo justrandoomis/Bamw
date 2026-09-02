@@ -1,0 +1,584 @@
+{
+ "title": "Mario + Rabbids Sparks of Hope",
+ "titleEn": "Mario + Rabbids Sparks of Hope",
+ "titleKu": "Mario + Rabbids Sparks of Hope",
+ "slug": "mario-rabbids-sparks-of-hope-switch",
+ "description": "A turn-based tactical adventure where Mario, Rabbids and new heroes travel across a galaxy threatened by Cursa. Movement is free inside combat zones, Sparks provide elemental and tactical powers, and three major DLC adventures extend the campaign.",
+ "descriptionEn": "A turn-based tactical adventure where Mario, Rabbids and new heroes travel across a galaxy threatened by Cursa. Movement is free inside combat zones, Sparks provide elemental and tactical powers, and three major DLC adventures extend the campaign.",
+ "descriptionKu": "A turn-based tactical adventure where Mario, Rabbids and new heroes travel across a galaxy threatened by Cursa. Movement is free inside combat zones, Sparks provide elemental and tactical powers, and three major DLC adventures extend the campaign.",
+ "cartridgeImage": "/api/files/products/prd_1083d6f5b5454571/front-0c35770508b348b8.jpg",
+ "nintendoCardImage": "/api/files/products/prd_1083d6f5b5454571/square-11d24d4c35ed1f7f.jpg",
+ "coverHiResImage": "/api/files/products/prd_1083d6f5b5454571/3d-texture-ba782492686b43da.jpg",
+ "coverImage": "/api/files/products/prd_1083d6f5b5454571/cover-c49a982f24b15d66.jpg",
+ "bannerImages": [
+  "/api/files/products/prd_1083d6f5b5454571/banner-3-f12f369a3ac2c00f.jpg",
+  "/api/files/products/prd_1083d6f5b5454571/banner-1-9bb816e051e8e0fc.jpg",
+  "/api/files/products/prd_1083d6f5b5454571/banner-2-5426433144b75fc0.png",
+  "/api/files/products/prd_1083d6f5b5454571/banner-3-72309e9e9d17ab51.png",
+  "/api/files/products/prd_1083d6f5b5454571/banner-4-97664322966446a5.jpg"
+ ],
+ "gallery": [],
+ "youtubeTrailer": "https://www.ubisoft.com/en-us/game/mario-rabbids/sparks-of-hope",
+ "releaseDate": "2022-10-20",
+ "ageRating": "ESRB E10+ Cartoon Violence / PEGI 7",
+ "metacriticRating": 86,
+ "genres": [
+  "Turn-Based Strategy",
+  "Tactical RPG",
+  "Adventure"
+ ],
+ "platform": "switch1",
+ "size": 6,
+ "numberOfPlayers": "1",
+ "supportedLanguages": "English / French / German / Italian / Spanish; Dutch / Russian / Portuguese; Regional Nintendo/Ubisoft language availability varies",
+ "hardwareModel": "",
+ "colorEdition": "",
+ "storageCapacity": "",
+ "screenSpecs": "",
+ "batteryLife": "",
+ "boxContents": [],
+ "boxContentsText": "",
+ "warrantyCondition": "",
+ "connectivity": "",
+ "characterName": "Link",
+ "amiiboSeries": "The Legend of Zelda",
+ "figureType": "figure",
+ "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+ "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+ "boxCondition": "mib",
+ "releaseWave": "Wave 2 (Restock)",
+ "rarity": "standard",
+ "accessoryType": "حقيبة حماية وتنقل Carry Case",
+ "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+ "brand": "Nintendo Official",
+ "material": "Hard EVA Shockproof Shell",
+ "availableColors": "Black, Neon Red/Blue, White",
+ "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+ "cardValue": "$20 eShop Balance",
+ "region": "Global",
+ "cardType": "eshop",
+ "deliveryMethod": "instant_code",
+ "redemptionGuide": "",
+ "redemptionSteps": [],
+ "validity": "no_expiry",
+ "usedType": "cartridge",
+ "conditionGrade": "like_new",
+ "packaging": "cib",
+ "guaranteeStatus": "tested_30days",
+ "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+ "accountType": "primary",
+ "badge": "وفر 40%",
+ "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+ "price": 5000,
+ "cost": 1250,
+ "stock": 999999,
+ "isInfiniteStock": true,
+ "isHidden": false,
+ "displayOrder": 0,
+ "category": "nintendo-switch-games",
+ "categoryId": "nintendo-switch-games",
+ "categoryEn": "",
+ "categoryKu": "",
+ "options": [
+  {
+   "id": "offline_account",
+   "name": "Offline Account",
+   "description": "Offline account access",
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_account",
+   "name": "Online Account",
+   "description": "Online account access",
+   "stock": 9999,
+   "isInfiniteStock": true
+  }
+ ],
+ "types": [
+  {
+   "id": "standard_offline",
+   "name": "Offline Account",
+   "optionId": "offline_account",
+   "price": 10000,
+   "cost": 1250,
+   "description": "Offline Account; supplier cost 1,250 IQD; selling price 10,000 IQD.",
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "standard_online",
+   "name": "Online Account",
+   "optionId": "online_account",
+   "price": "22000",
+   "cost": 10000,
+   "description": "Online Account; supplier cost 10,000 IQD; selling price 20,000 IQD.",
+   "stock": 9999,
+   "isInfiniteStock": true
+  }
+ ],
+ "editions": [],
+ "dlcs": [],
+ "isActive": true,
+ "status": "Active",
+ "kind": "account",
+ "trade_value_iqd": 35000,
+ "store_offer_bonus_iqd": 2500,
+ "trade_enabled": true,
+ "trade_value_locked": false,
+ "id": "prd_1083d6f5b5454571",
+ "schema_version": 23,
+ "titleAr": "ماريو + رابيدز: سباركس أوف هوب",
+ "compatibility": [
+  "Nintendo Switch",
+  "Nintendo Switch 2 (backward compatible / enhanced where applicable)"
+ ],
+ "edition": "Standard",
+ "developer": "Ubisoft Paris / Ubisoft Milan",
+ "publisher": "Ubisoft",
+ "metacriticUrl": "https://www.metacritic.com/game/mario-plus-rabbids-sparks-of-hope/",
+ "opencriticRating": 85,
+ "userScore": 8,
+ "price_usd": 59.99,
+ "officialUrl": "https://www.ubisoft.com/en-us/game/mario-rabbids/sparks-of-hope",
+ "eshopUrl": "https://www.nintendo.com/us/store/products/mario-plus-rabbids-sparks-of-hope-switch/",
+ "gameIsOffline": true,
+ "gameIsOnline": false,
+ "gameLanguageLocked": false,
+ "description_short": "A turn-based tactical adventure where Mario, Rabbids and new heroes travel across a galaxy threatened by Cursa. Movement is free inside combat zones, Sparks provide elemental and tactical powers, and three major DLC adventures extend the campaign.",
+ "description_ar": "مغامرة تكتيكية بنظام أدوار تجمع Mario وRabbids وأبطالًا جددًا في رحلة عبر كواكب مهددة من Cursa. الحركة داخل ساحة القتال حرة، وتوفر Sparks قدرات عنصرية وتكتيكية، مع ثلاث إضافات DLC رئيسية.",
+ "box_front_url": "https://images.launchbox-app.com/3ff77894-3b20-4cb6-b904-5667a9341518.jpg",
+ "box_back_url": "https://images.launchbox-app.com/c1ecb90d-a0e6-4d84-914f-25a9c48843a0.jpg",
+ "galleryImages": [
+  {
+   "url": "https://images.launchbox-app.com/cb78f60c-7bbb-4776-b430-95b9b0a2373b.jpg",
+   "alt": "Mario + Rabbids Sparks of Hope — distinct gameplay/promotional image 1"
+  },
+  {
+   "url": "https://images.launchbox-app.com/acee2681-7f64-4bd4-aa6e-9133a3ac5e78.jpg",
+   "alt": "Mario + Rabbids Sparks of Hope — distinct gameplay/promotional image 2"
+  },
+  {
+   "url": "https://images.launchbox-app.com/61177e2c-3395-4d62-8a66-469c89bf6775.png",
+   "alt": "Mario + Rabbids Sparks of Hope — distinct gameplay/promotional image 3"
+  },
+  {
+   "url": "https://images.launchbox-app.com/be190b0f-d4b8-4e3c-9180-612a8b2518b4.jpg",
+   "alt": "Mario + Rabbids Sparks of Hope — distinct gameplay/promotional image 4"
+  },
+  {
+   "url": "https://images.launchbox-app.com/de944360-b696-4a0c-b813-a56336ce48bb.png",
+   "alt": "Mario + Rabbids Sparks of Hope — distinct gameplay/promotional image 5"
+  }
+ ],
+ "videos": [
+  {
+   "title": "Official game page / trailer",
+   "url": "https://www.ubisoft.com/en-us/game/mario-rabbids/sparks-of-hope"
+  },
+  {
+   "title": "Nintendo / publisher product information",
+   "url": "https://www.nintendo.com/us/store/products/mario-plus-rabbids-sparks-of-hope-switch/"
+  },
+  {
+   "title": "Technical or database reference",
+   "url": "https://nintendoeverything.com/mario-rabbids-sparks-of-hope-tech-analysis-including-frame-rate-and-resolution/"
+  }
+ ],
+ "nsuid": "See regional Nintendo eShop listing",
+ "title_id": "Regional title identifier varies by Nintendo storefront",
+ "product_code": "HAC-P-A2G7A",
+ "nintendoEshopUrl": "https://www.nintendo.com/us/store/products/mario-plus-rabbids-sparks-of-hope-switch/",
+ "nintendoOnlineRequired": false,
+ "nintendoCloudSaves": true,
+ "nintendoGameKeyCard": false,
+ "nintendoPhysicalNeedsDownload": false,
+ "tvMode": true,
+ "tabletopMode": true,
+ "handheldMode": true,
+ "nintendoPlayModes": "TV / Tabletop / Handheld",
+ "nintendoNotes": "Verified game-page data for Mario + Rabbids Sparks of Hope; measured performance is separated from system maximum capabilities.",
+ "switch2Enhanced": false,
+ "switch2Exclusive": false,
+ "switch2UpgradePrice": 0,
+ "switch2Features": [
+  "Nine playable heroes and customizable three-character squads",
+  "Sparks with tactical/elemental abilities",
+  "Three major DLC adventures including Rayman"
+ ],
+ "tagline": "Build a three-hero squad, combine Sparks and save a galaxy corrupted by Cursa.",
+ "fitFor": [
+  "Players who enjoy accessible turn-based tactics",
+  "Mario/Rabbids fans who want a longer adventure",
+  "Players who like exploration between tactical battles"
+ ],
+ "notFitFor": [
+  "Players seeking real-time action",
+  "Players who require multiplayer",
+  "Players sensitive to a fixed 30 fps target"
+ ],
+ "playTimeMain": 21.5,
+ "playTimeFull": 45,
+ "editionsList": [
+  {
+   "name": "Standard Edition",
+   "coverUrl": "https://images.launchbox-app.com/3ff77894-3b20-4cb6-b904-5667a9341518.jpg",
+   "contents": [
+    {
+     "label": "Base game"
+    },
+    {
+     "label": "Core content"
+    },
+    {
+     "label": "Current updates"
+    }
+   ]
+  },
+  {
+   "name": "Digital Edition",
+   "coverUrl": "https://images.launchbox-app.com/40619a3a-c232-43d3-bddc-bb46130eb705.jpg",
+   "contents": [
+    {
+     "label": "Digital entitlement"
+    },
+    {
+     "label": "Same core game"
+    },
+    {
+     "label": "Nintendo Account delivery"
+    }
+   ]
+  },
+  {
+   "name": "Current Complete Package",
+   "coverUrl": "https://images.launchbox-app.com/e9585e52-74b7-4810-b112-d2c2beea7147.jpg",
+   "contents": [
+    {
+     "label": "Latest build"
+    },
+    {
+     "label": "The Tower of Doooom"
+    },
+    {
+     "label": "Nine playable heroes and customizable three-character squads"
+    }
+   ]
+  }
+ ],
+ "gameplayPillars": [
+  {
+   "title": "Free-movement tactics",
+   "description": "Heroes move freely inside a limited combat area before spending actions, replacing the predecessor's grid movement.",
+   "imageUrl": "https://images.launchbox-app.com/e9585e52-74b7-4810-b112-d2c2beea7147.jpg"
+  },
+  {
+   "title": "Sparks and team building",
+   "description": "Equip Sparks to change elemental damage, movement, defense and tactical roles across a nine-hero roster.",
+   "imageUrl": "https://images.launchbox-app.com/0ead93ee-467b-4e15-8580-e999c5744f06.jpg"
+  },
+  {
+   "title": "Planet exploration",
+   "description": "Leave combat to solve puzzles, find side quests, collect Sparks and uncover optional challenges.",
+   "imageUrl": "https://images.launchbox-app.com/a24bac64-5722-4c26-9d54-dd3884d23f33.jpg"
+  }
+ ],
+ "worldSummary": "The heroes travel between distinct planets such as Beacon Beach, Pristine Peaks and Palette Prime. Each mixes explorable hubs, side quests, puzzles and tactical battle arenas while Cursa's Darkmess corrupts the galaxy.",
+ "storyChapters": [
+  {
+   "title": "Cursa's threat",
+   "body": "A cosmic entity spreads Darkmess and hunts the Sparks.",
+   "imageUrl": "https://images.launchbox-app.com/46008376-bc80-48f6-9509-e045750253fc.jpg"
+  },
+  {
+   "title": "Planet-hopping resistance",
+   "body": "Mario, Rabbid Peach, Edge and allies travel across multiple worlds to rescue Sparks and defeat Darkmess Tentacles.",
+   "imageUrl": "https://images.launchbox-app.com/cb78f60c-7bbb-4776-b430-95b9b0a2373b.jpg"
+  },
+  {
+   "title": "Final confrontation",
+   "body": "The growing team pushes toward Cursa while revealing the connection between Rosalina, the Sparks and the galactic threat.",
+   "imageUrl": "https://images.launchbox-app.com/acee2681-7f64-4bd4-aa6e-9133a3ac5e78.jpg"
+  }
+ ],
+ "features": [
+  "Nine playable heroes and customizable three-character squads",
+  "Sparks with tactical/elemental abilities",
+  "Three major DLC adventures including Rayman"
+ ],
+ "perfResolutionDocked": "900p",
+ "perfResolutionHandheld": "600–612p",
+ "perfFps": "30",
+ "perfHdr": false,
+ "perfNotes": "Technical analysis measures 1600×900 docked and about 1066×600 handheld with a 30 fps target. On Switch 2 the game remains capped at 30 fps, with improved consistency/loading but no native Switch 2 upgrade.",
+ "devicePerformance": [
+  {
+   "device": "Nintendo Switch 2",
+   "deviceSlug": "nintendo-switch-2",
+   "deviceModel": "Nintendo Switch 2",
+   "hardwareId": "prd_acf4c89908764c62",
+   "informationStatus": "Available / verified",
+   "unavailableReason": "No standard supported mode is unavailable.",
+   "handheld": {
+    "supported": true,
+    "resolution": "600–612p",
+    "resolutionDynamic": false,
+    "renderingResolution": "600–612p",
+    "outputResolution": "1280x720",
+    "fps": "30",
+    "fpsMin": "30",
+    "fpsMax": "60",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "Handheld",
+    "notes": "Technical analysis measures 1600×900 docked and about 1066×600 handheld with a 30 fps target. On Switch 2 the game remains capped at 30 fps, with improved consistency/loading but no native Switch 2 upgrade."
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "900p",
+    "resolutionDynamic": false,
+    "renderingResolution": "900p",
+    "outputResolution": "1920x1080",
+    "fps": "30",
+    "fpsMin": "30",
+    "fpsMax": "60",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "TV / Docked",
+    "notes": "Technical analysis measures 1600×900 docked and about 1066×600 handheld with a 30 fps target. On Switch 2 the game remains capped at 30 fps, with improved consistency/loading but no native Switch 2 upgrade."
+   },
+   "modes": [
+    {
+     "name": "Primary documented mode",
+     "handheldResolution": "600–612p",
+     "handheldFps": "30",
+     "tvResolution": "900p",
+     "tvFps": "30",
+     "hdr": false,
+     "vrr": false,
+     "notes": "Primary documented performance profile."
+    }
+   ],
+   "upscaling": "System/game-specific scaling where applicable",
+   "rayTracing": false,
+   "rayTracingMode": "No verified ray-tracing mode",
+   "loadingTime": "Scene-dependent; no single universal loading time",
+   "loadingNotes": "Loading varies by scene, save and storage state.",
+   "gameVersion": "Current retail build",
+   "patchVersion": "Current available update",
+   "testedDate": "2026-08-27",
+   "sourceName": "Nintendo Everything / Digital Foundry summary",
+   "sourceUrl": "https://nintendoeverything.com/mario-rabbids-sparks-of-hope-tech-analysis-including-frame-rate-and-resolution/",
+   "verifiedAt": "2026-08-27",
+   "verificationStatus": "Verified / sourced",
+   "performanceNotes": "Technical analysis measures 1600×900 docked and about 1066×600 handheld with a 30 fps target. On Switch 2 the game remains capped at 30 fps, with improved consistency/loading but no native Switch 2 upgrade."
+  }
+ ],
+ "downloadSizeGb": 6,
+ "requiredSpaceGb": 6,
+ "microSdRecommended": false,
+ "storageNotes": "Nintendo lists 6 GB for the base game. Updates and DLC require additional storage; microSD is optional.",
+ "languagesAudio": [
+  "English voice acting",
+  "French / German / Italian / Spanish voice options where supported",
+  "Music / sound effects"
+ ],
+ "languagesText": [
+  "English / French / German / Italian / Spanish",
+  "Dutch / Russian / Portuguese",
+  "Regional Nintendo/Ubisoft language availability varies"
+ ],
+ "arabicSupport": false,
+ "mpLocalPlayers": false,
+ "mpOnlinePlayers": false,
+ "mpCoop": false,
+ "mpCompetitive": false,
+ "mpSplitScreen": false,
+ "mpLocalWireless": false,
+ "dlc": [
+  {
+   "name": "The Tower of Doooom",
+   "description": "A combat-focused challenge expansion released March 2, 2023.",
+   "coverUrl": "https://images.launchbox-app.com/61177e2c-3395-4d62-8a66-469c89bf6775.png"
+  },
+  {
+   "name": "The Last Spark Hunter",
+   "description": "A story expansion released June 21, 2023.",
+   "coverUrl": "https://images.launchbox-app.com/be190b0f-d4b8-4e3c-9180-612a8b2518b4.jpg"
+  },
+  {
+   "name": "Rayman in the Phantom Show",
+   "description": "A major adventure starring Rayman released August 30, 2023.",
+   "coverUrl": "https://images.launchbox-app.com/de944360-b696-4a0c-b813-a56336ce48bb.png"
+  }
+ ],
+ "guides": [
+  {
+   "title": "Official product page",
+   "summary": "Platform, release, languages and features.",
+   "url": "https://www.nintendo.com/us/store/products/mario-plus-rabbids-sparks-of-hope-switch/"
+  },
+  {
+   "title": "Performance / update reference",
+   "summary": "Technical or update information.",
+   "url": "https://nintendoeverything.com/mario-rabbids-sparks-of-hope-tech-analysis-including-frame-rate-and-resolution/"
+  },
+  {
+   "title": "Media / database reference",
+   "summary": "Images and catalog metadata.",
+   "url": "https://gamesdb.launchbox-app.com/games/details/152687-mario-rabbids-sparks-of-hope"
+  }
+ ],
+ "completionMain": 21.5,
+ "completionExtras": 33.5,
+ "completionAll": 45,
+ "faq": [
+  {
+   "q": "Is it multiplayer?",
+   "a": "No. Sparks of Hope is a single-player tactical adventure."
+  },
+  {
+   "q": "How does it perform on Switch 2?",
+   "a": "It remains capped at 30 fps and keeps the Switch rendering profile, with better consistency/loading but no native Switch 2 upgrade."
+  },
+  {
+   "q": "How many major DLC packs are there?",
+   "a": "There are three major DLC adventures: The Tower of Doooom, The Last Spark Hunter and Rayman in the Phantom Show."
+  }
+ ],
+ "verdictScore": 8.6,
+ "verdictSummary": "A smart tactical sequel that loosens grid restrictions, expands exploration and creates far more flexible team builds through Sparks.",
+ "verdictPros": [
+  "Flexible free-movement combat",
+  "Excellent Spark/team combinations",
+  "Strong audiovisual personality and DLC support"
+ ],
+ "verdictCons": [
+  "30 fps cap remains on Switch 2",
+  "Single-player only",
+  "Occasional performance drops on original Switch"
+ ],
+ "reviews": [
+  {
+   "source": "Metacritic",
+   "score": "86/100",
+   "quote": "Generally favorable to very strong critical reception.",
+   "url": "https://www.metacritic.com/game/mario-plus-rabbids-sparks-of-hope/"
+  },
+  {
+   "source": "OpenCritic",
+   "score": "85/100",
+   "quote": "Strong critic aggregate.",
+   "url": "https://opencritic.com/game/13727/mario-rabbids-sparks-of-hope"
+  },
+  {
+   "source": "Nintendo / Ubisoft",
+   "score": "Released",
+   "quote": "Official product listing confirms single-player format, 6 GB size and DLC lineup.",
+   "url": "https://www.nintendo.com/us/store/products/mario-plus-rabbids-sparks-of-hope-switch/"
+  }
+ ],
+ "timeline": [
+  {
+   "date": "2021-06-12",
+   "title": "Announced",
+   "body": "Ubisoft revealed Sparks of Hope."
+  },
+  {
+   "date": "2022-10-20",
+   "title": "Worldwide release",
+   "body": "The game launched for Nintendo Switch."
+  },
+  {
+   "date": "2023-08-30",
+   "title": "DLC roadmap completed",
+   "body": "Rayman in the Phantom Show completed the three-part expansion pass."
+  }
+ ],
+ "patchNotes": [
+  {
+   "version": "Launch build",
+   "date": "2022-10-20",
+   "body": "Base game released."
+  },
+  {
+   "version": "DLC/patch cycle",
+   "date": "2023",
+   "body": "Multiple patches accompanied the three major DLC releases."
+  },
+  {
+   "version": "Switch 2 compatibility",
+   "date": "2025-06-05",
+   "body": "Playable on Switch 2 with the existing 30 fps cap and improved consistency/loading."
+  }
+ ],
+ "soundtrack": [
+  {
+   "title": "Sparks of Hope Main Theme",
+   "url": "https://www.ubisoft.com/en-us/game/mario-rabbids/sparks-of-hope"
+  },
+  {
+   "title": "Beacon Beach themes",
+   "url": "https://www.ubisoft.com/en-us/game/mario-rabbids/sparks-of-hope"
+  },
+  {
+   "title": "Cursa battle themes",
+   "url": "https://www.ubisoft.com/en-us/game/mario-rabbids/sparks-of-hope"
+  }
+ ],
+ "seriesName": "Mario + Rabbids",
+ "seriesEntries": [
+  "Mario + Rabbids Kingdom Battle",
+  "Mario + Rabbids Sparks of Hope",
+  "Rayman in the Phantom Show"
+ ],
+ "studioName": "Ubisoft Paris / Ubisoft Milan",
+ "studioUrl": "https://www.ubisoft.com/",
+ "studioLocation": "Paris, France / Milan, Italy",
+ "studioAbout": "Ubisoft's Mario + Rabbids teams created the tactical crossover in collaboration with Nintendo.",
+ "setupNeeds": [
+  "Nintendo Switch or backward-compatible Nintendo Switch 2",
+  "6 GB base-game storage plus update/DLC space",
+  "No Nintendo Switch Online membership required for the single-player campaign"
+ ],
+ "sources": [
+  {
+   "name": "Nintendo official",
+   "url": "https://www.nintendo.com/us/store/products/mario-plus-rabbids-sparks-of-hope-switch/"
+  },
+  {
+   "name": "Nintendo Everything / Digital Foundry summary",
+   "url": "https://nintendoeverything.com/mario-rabbids-sparks-of-hope-tech-analysis-including-frame-rate-and-resolution/"
+  },
+  {
+   "name": "LaunchBox Games Database",
+   "url": "https://gamesdb.launchbox-app.com/games/details/152687-mario-rabbids-sparks-of-hope"
+  }
+ ],
+ "boxContentsList": "[Circular]",
+ "image": "/api/files/products/prd_1083d6f5b5454571/cover-c49a982f24b15d66.jpg",
+ "banner": "/api/files/products/prd_1083d6f5b5454571/banner-3-f12f369a3ac2c00f.jpg",
+ "schemaId": "",
+ "createdAt": "2026-08-27T01:24:43.992Z",
+ "created_at": "2026-08-27T01:24:43.992Z",
+ "updatedAt": "2026-08-27T01:24:43.992Z",
+ "updated_at": "2026-08-27T01:24:43.992Z",
+ "badgeEn": "وفر 40%",
+ "badgeKu": "وفر 40%",
+ "featuresEn": [
+  "Nine playable heroes and customizable three-character squads",
+  "Sparks with tactical/elemental abilities",
+  "Three major DLC adventures including Rayman"
+ ],
+ "featuresKu": [
+  "Nine playable heroes and customizable three-character squads",
+  "Sparks with tactical/elemental abilities",
+  "Three major DLC adventures including Rayman"
+ ],
+ "boxFrontUrl": "https://images.launchbox-app.com/3ff77894-3b20-4cb6-b904-5667a9341518.jpg",
+ "sales": 0,
+ "images": [],
+ "modes": []
+}

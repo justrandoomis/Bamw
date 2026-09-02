@@ -1,0 +1,612 @@
+{
+ "title": "Mario Party Superstars",
+ "titleEn": "Mario Party Superstars",
+ "titleKu": "Mario Party Superstars",
+ "slug": "mario-party-superstars-switch",
+ "description": "A celebration of classic Mario Party built around five remade Nintendo 64 boards and 100 returning minigames from across the series. Every main mode supports online play, while button-based controls make it compatible with a broad range of controllers.",
+ "descriptionEn": "A celebration of classic Mario Party built around five remade Nintendo 64 boards and 100 returning minigames from across the series. Every main mode supports online play, while button-based controls make it compatible with a broad range of controllers.",
+ "descriptionKu": "A celebration of classic Mario Party built around five remade Nintendo 64 boards and 100 returning minigames from across the series. Every main mode supports online play, while button-based controls make it compatible with a broad range of controllers.",
+ "cartridgeImage": "/api/files/products/prd_40524f52f17144d3/front-92dfefc0591a5f22.jpg",
+ "nintendoCardImage": "/api/files/products/prd_40524f52f17144d3/square-dcdcceec3a832f08.jpg",
+ "coverHiResImage": "/api/files/products/prd_40524f52f17144d3/3d-texture-c5adb6f2bb2101d5.jpg",
+ "coverImage": "/api/files/products/prd_40524f52f17144d3/cover-4384b4d28d55af5b.jpg",
+ "bannerImages": [
+  "/api/files/products/prd_40524f52f17144d3/banner-0-5f37b273fceef4d2.jpg",
+  "/api/files/products/prd_40524f52f17144d3/banner-2-a90122df96e5a443.jpg",
+  "/api/files/products/prd_40524f52f17144d3/banner-2-ea13d9e383cae3e0.jpg",
+  "/api/files/products/prd_40524f52f17144d3/banner-3-471d4a003b708865.jpg",
+  "/api/files/products/prd_40524f52f17144d3/banner-4-92fd91f106fd4192.jpg"
+ ],
+ "gallery": [],
+ "youtubeTrailer": "https://www.nintendo.com/us/store/products/mario-party-superstars-114384/",
+ "releaseDate": "2021-10-29",
+ "ageRating": "ESRB E / PEGI 3",
+ "metacriticRating": 80,
+ "genres": [
+  "Party",
+  "Board Game",
+  "Minigames"
+ ],
+ "platform": "switch1",
+ "size": 2.857,
+ "numberOfPlayers": "1–4 local; 2–4 local wireless; 1–4 online",
+ "supportedLanguages": "Japanese / English; French / German / Italian / Spanish / Portuguese / Dutch / Russian; Korean / Simplified Chinese / Traditional Chinese",
+ "hardwareModel": "",
+ "colorEdition": "",
+ "storageCapacity": "",
+ "screenSpecs": "",
+ "batteryLife": "",
+ "boxContents": [],
+ "boxContentsText": "",
+ "warrantyCondition": "",
+ "connectivity": "",
+ "characterName": "Link",
+ "amiiboSeries": "The Legend of Zelda",
+ "figureType": "figure",
+ "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+ "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+ "boxCondition": "mib",
+ "releaseWave": "Wave 2 (Restock)",
+ "rarity": "standard",
+ "accessoryType": "حقيبة حماية وتنقل Carry Case",
+ "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+ "brand": "Nintendo Official",
+ "material": "Hard EVA Shockproof Shell",
+ "availableColors": "Black, Neon Red/Blue, White",
+ "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+ "cardValue": "$20 eShop Balance",
+ "region": "Global",
+ "cardType": "eshop",
+ "deliveryMethod": "instant_code",
+ "redemptionGuide": "",
+ "redemptionSteps": [],
+ "validity": "no_expiry",
+ "usedType": "cartridge",
+ "conditionGrade": "like_new",
+ "packaging": "cib",
+ "guaranteeStatus": "tested_30days",
+ "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+ "accountType": "primary",
+ "badge": "وفر 40%",
+ "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+ "price": 12000,
+ "cost": 1500,
+ "stock": 999999,
+ "isInfiniteStock": true,
+ "isHidden": false,
+ "displayOrder": 0,
+ "category": "nintendo-switch-games",
+ "categoryId": "nintendo-switch-games",
+ "categoryEn": "",
+ "categoryKu": "",
+ "options": [
+  {
+   "id": "offline_account",
+   "name": "Offline Account",
+   "description": "Offline account access",
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_account",
+   "name": "Online Account",
+   "description": "Online account access",
+   "stock": 9999,
+   "isInfiniteStock": true
+  }
+ ],
+ "types": [
+  {
+   "id": "standard_offline",
+   "name": "Offline Account",
+   "optionId": "offline_account",
+   "price": 12000,
+   "cost": 1500,
+   "description": "Offline Account; supplier cost 1,500 IQD; configured selling price 12,000 IQD.",
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "standard_online",
+   "name": "Online Account",
+   "optionId": "online_account",
+   "price": "28000",
+   "cost": 16500,
+   "description": "Online Account; supplier cost 16,500 IQD; configured selling price 26,500 IQD.",
+   "stock": 9999,
+   "isInfiniteStock": true
+  }
+ ],
+ "editions": [],
+ "dlcs": [],
+ "isActive": true,
+ "status": "Active",
+ "kind": "account",
+ "trade_value_iqd": 45000,
+ "store_offer_bonus_iqd": 2500,
+ "trade_enabled": true,
+ "trade_value_locked": false,
+ "id": "prd_40524f52f17144d3",
+ "schema_version": 23,
+ "titleAr": "ماريو بارتي سوبرستارز",
+ "compatibility": [
+  "Nintendo Switch",
+  "Nintendo Switch 2 (backward compatible / separate Switch 2 Edition where applicable)"
+ ],
+ "edition": "Standard",
+ "developer": "NDcube",
+ "publisher": "Nintendo",
+ "metacriticUrl": "https://www.metacritic.com/game/mario-party-superstars/",
+ "opencriticRating": 79,
+ "userScore": 7.9,
+ "price_usd": 59.99,
+ "officialUrl": "https://www.nintendo.com/us/store/products/mario-party-superstars-114384/",
+ "eshopUrl": "https://www.nintendo.com/us/store/products/mario-party-superstars-114384/",
+ "gameIsOffline": true,
+ "gameIsOnline": true,
+ "gameLanguageLocked": false,
+ "description_short": "A celebration of classic Mario Party built around five remade Nintendo 64 boards and 100 returning minigames from across the series. Every main mode supports online play, while button-based controls make it compatible with a broad range of controllers.",
+ "description_ar": "احتفال بتاريخ Mario Party يضم خمس لوحات كلاسيكية معاد بناؤها من ألعاب Nintendo 64 و100 لعبة مصغرة مختارة من أجزاء السلسلة. تدعم الأوضاع الرئيسية اللعب عبر الإنترنت وتعتمد على أزرار التحكم بدل الحركات الإلزامية.",
+ "box_front_url": "https://gamesdb-images.launchbox.gg/r2_3a6ca800-0092-4fa5-94df-d233512177b4.jpg",
+ "box_back_url": "https://cdn.switch-images-julio.com/file/switch-images-julio/AZ82A/back.png",
+ "galleryImages": [
+  {
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/en_US/games/switch/m/mario-party-superstars-switch/screenshot-gallery/screenshot01",
+   "alt": "Mario Party Superstars — verified promotional/gameplay image 1"
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/en_US/games/switch/m/mario-party-superstars-switch/screenshot-gallery/screenshot02",
+   "alt": "Mario Party Superstars — verified promotional/gameplay image 2"
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/en_US/games/switch/m/mario-party-superstars-switch/screenshot-gallery/screenshot03",
+   "alt": "Mario Party Superstars — verified promotional/gameplay image 3"
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/en_US/games/switch/m/mario-party-superstars-switch/screenshot-gallery/screenshot04",
+   "alt": "Mario Party Superstars — verified promotional/gameplay image 4"
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/en_US/games/switch/m/mario-party-superstars-switch/screenshot-gallery/screenshot05",
+   "alt": "Mario Party Superstars — verified promotional/gameplay image 5"
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/en_US/games/switch/m/mario-party-superstars-switch/screenshot-gallery/screenshot06",
+   "alt": "Mario Party Superstars — verified promotional/gameplay image 6"
+  },
+  {
+   "url": "https://images.launchbox-app.com//3b2dc7de-8725-48c1-8d56-cf74f6835051.jpg",
+   "alt": "Mario Party Superstars — verified promotional/gameplay image 7"
+  },
+  {
+   "url": "https://images.launchbox-app.com//276ed90a-d3bd-46b6-9426-962bd120f3d8.jpg",
+   "alt": "Mario Party Superstars — verified promotional/gameplay image 8"
+  },
+  {
+   "url": "https://images.launchbox-app.com//43cbcfbd-04cb-41bc-935b-b5f5ba14b646.jpg",
+   "alt": "Mario Party Superstars — verified promotional/gameplay image 9"
+  },
+  {
+   "url": "https://images.launchbox-app.com//6e3632b6-a9ae-4e93-93b9-f0066d1462a1.jpg",
+   "alt": "Mario Party Superstars — verified promotional/gameplay image 10"
+  },
+  {
+   "url": "https://images.launchbox-app.com//9153b00e-07f3-46fa-b73d-39664ac392ff.jpg",
+   "alt": "Mario Party Superstars — verified promotional/gameplay image 11"
+  },
+  {
+   "url": "https://images.launchbox-app.com//1b52c648-02e3-42b8-8c35-cded5f0fcc2f.jpg",
+   "alt": "Mario Party Superstars — verified promotional/gameplay image 12"
+  }
+ ],
+ "videos": [
+  {
+   "title": "Official trailer / product overview",
+   "url": "https://www.nintendo.com/us/store/products/mario-party-superstars-114384/"
+  },
+  {
+   "title": "Nintendo product page and gameplay media",
+   "url": "https://www.nintendo.com/us/store/products/mario-party-superstars-114384/"
+  },
+  {
+   "title": "Technical / review reference",
+   "url": "https://www.dekudeals.com/items/mario-party-superstars"
+  }
+ ],
+ "nsuid": "See official Nintendo product page for regional NSUID",
+ "title_id": "Regional digital title ID varies by storefront and package",
+ "product_code": "HAC-P-AZ82A",
+ "nintendoEshopUrl": "https://www.nintendo.com/us/store/products/mario-party-superstars-114384/",
+ "nintendoOnlineRequired": true,
+ "nintendoCloudSaves": true,
+ "nintendoGameKeyCard": false,
+ "nintendoPhysicalNeedsDownload": false,
+ "tvMode": true,
+ "tabletopMode": true,
+ "handheldMode": true,
+ "nintendoPlayModes": "TV / Tabletop / Handheld",
+ "nintendoNotes": "Current verified Nintendo data for Mario Party Superstars. Storage, languages, multiplayer and platform-specific features are separated from measured performance values.",
+ "switch2Enhanced": false,
+ "switch2Exclusive": false,
+ "switch2UpgradePrice": 0,
+ "switch2Features": [
+  "Five remade Nintendo 64 boards",
+  "100 classic minigames",
+  "Online play across the core modes"
+ ],
+ "tagline": "Five classic boards, 100 classic minigames and modern online play.",
+ "fitFor": [
+  "Fans of classic Mario Party boards and minigames",
+  "Online and local party groups",
+  "Players who prefer button controls over motion-only games"
+ ],
+ "notFitFor": [
+  "Players wanting a large number of brand-new boards",
+  "Solo-only players seeking a narrative campaign",
+  "Players who already prefer the larger Jamboree feature set"
+ ],
+ "playTimeMain": 9,
+ "playTimeFull": 68,
+ "editionsList": [
+  {
+   "name": "Standard Edition",
+   "coverUrl": "https://gamesdb-images.launchbox.gg/r2_3a6ca800-0092-4fa5-94df-d233512177b4.jpg",
+   "contents": [
+    {
+     "label": "Base game"
+    },
+    {
+     "label": "Core modes"
+    },
+    {
+     "label": "Platform features"
+    }
+   ]
+  },
+  {
+   "name": "Digital Edition",
+   "coverUrl": "https://images.launchbox-app.com//d2b85238-b734-4f97-95b3-65539c265b26.jpg",
+   "contents": [
+    {
+     "label": "Digital game license"
+    },
+    {
+     "label": "Same core game content"
+    },
+    {
+     "label": "Nintendo Account delivery"
+    }
+   ]
+  },
+  {
+   "name": "Current Complete Package",
+   "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/en_US/products/games/switch/mario-party-superstars/114384-switch-mario-party-superstars-us-1200x675",
+   "contents": [
+    {
+     "label": "Latest game build"
+    },
+    {
+     "label": "No paid DLC"
+    },
+    {
+     "label": "Five remade Nintendo 64 boards"
+    }
+   ]
+  }
+ ],
+ "gameplayPillars": [
+  {
+   "title": "Classic boards rebuilt",
+   "description": "Five iconic Nintendo 64 boards return with modern graphics and familiar event structures.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/en_US/products/games/switch/mario-party-superstars/114384-switch-mario-party-superstars-us-1200x675"
+  },
+  {
+   "title": "100 returning minigames",
+   "description": "A curated selection from across the Mario Party series uses button-based controls.",
+   "imageUrl": "https://images.launchbox-app.com//58513cb7-f697-403a-8f39-ba3dcedaf8da.jpg"
+  },
+  {
+   "title": "Online everywhere",
+   "description": "Board games and minigame modes can be played online, with save/rejoin support for board sessions.",
+   "imageUrl": "https://images.launchbox-app.com//63fc6afa-6a4f-45c6-9735-59f182526db9.jpg"
+  }
+ ],
+ "worldSummary": "The package revisits five famous Nintendo 64-era boards—Peach's Birthday Cake, Space Land, Woody Woods, Yoshi's Tropical Island and Horror Land—rebuilt with modern visuals and surrounded by a collection of classic minigames.",
+ "storyChapters": [
+  {
+   "title": "Choose a classic board",
+   "body": "Pick one of five remade boards and compete for Stars across a set number of turns.",
+   "imageUrl": "https://images.launchbox-app.com//24dc0bf1-2062-4925-8cea-5152054129c7.jpg"
+  },
+  {
+   "title": "100 minigame archive",
+   "body": "Battle through returning free-for-all, team, duel and other minigame formats.",
+   "imageUrl": "https://images.launchbox-app.com//028da5ea-e5b7-4fc3-aa1a-bff2f07980b4.jpg"
+  },
+  {
+   "title": "Mt. Minigames",
+   "body": "Dedicated minigame modes add survival, sports-and-puzzles and online competition outside traditional boards.",
+   "imageUrl": "https://images.launchbox-app.com//c834ee21-c0bb-49aa-be8e-6a97bad03411.jpg"
+  }
+ ],
+ "features": [
+  "Five remade Nintendo 64 boards",
+  "100 classic minigames",
+  "Online play across the core modes"
+ ],
+ "perfResolutionDocked": "Approximately 900p-class presentation / 60 fps target",
+ "perfResolutionHandheld": "720p / 60 fps target",
+ "perfFps": "60",
+ "perfHdr": false,
+ "perfNotes": "Mario Party Superstars targets 60 fps and is widely observed as very stable offline. Docked resolution is commonly measured around the 900p class, with 720p handheld. Network conditions can affect online smoothness without changing the local rendering target.",
+ "devicePerformance": [
+  {
+   "device": "Nintendo Switch 2",
+   "deviceSlug": "nintendo-switch-2",
+   "deviceModel": "Nintendo Switch 2",
+   "hardwareId": "prd_acf4c89908764c62",
+   "informationStatus": "Available / verified",
+   "unavailableReason": "No required native mode is unavailable.",
+   "handheld": {
+    "supported": true,
+    "resolution": "720p / 60 fps target",
+    "resolutionDynamic": false,
+    "renderingResolution": "720p / 60 fps target",
+    "outputResolution": "1280x720",
+    "fps": "60",
+    "fpsMin": "60",
+    "fpsMax": "60",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "Handheld",
+    "notes": "Mario Party Superstars targets 60 fps and is widely observed as very stable offline. Docked resolution is commonly measured around the 900p class, with 720p handheld. Network conditions can affect online smoothness without changing the local rendering target."
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "Approximately 900p-class presentation / 60 fps target",
+    "resolutionDynamic": false,
+    "renderingResolution": "Approximately 900p-class presentation / 60 fps target",
+    "outputResolution": "1920x1080",
+    "fps": "60",
+    "fpsMin": "60",
+    "fpsMax": "60",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "TV / Docked",
+    "notes": "Mario Party Superstars targets 60 fps and is widely observed as very stable offline. Docked resolution is commonly measured around the 900p class, with 720p handheld. Network conditions can affect online smoothness without changing the local rendering target."
+   },
+   "modes": [
+    {
+     "name": "Standard",
+     "handheldResolution": "720p / 60 fps target",
+     "handheldFps": "60",
+     "tvResolution": "Approximately 900p-class presentation / 60 fps target",
+     "tvFps": "60",
+     "hdr": false,
+     "vrr": false,
+     "notes": "Primary documented performance profile."
+    }
+   ],
+   "upscaling": "Platform-specific scaling/reconstruction where documented",
+   "rayTracing": false,
+   "rayTracingMode": "No ray-tracing mode",
+   "loadingTime": "Scene-dependent; no single universal load time",
+   "loadingNotes": "Loading varies by activity and storage state.",
+   "gameVersion": "Current retail build",
+   "patchVersion": "Current available update",
+   "testedDate": "2026-08-27",
+   "sourceName": "Deku Deals",
+   "sourceUrl": "https://www.dekudeals.com/items/mario-party-superstars",
+   "verifiedAt": "2026-08-27",
+   "verificationStatus": "Verified / sourced",
+   "performanceNotes": "Mario Party Superstars targets 60 fps and is widely observed as very stable offline. Docked resolution is commonly measured around the 900p class, with 720p handheld. Network conditions can affect online smoothness without changing the local rendering target."
+  }
+ ],
+ "downloadSizeGb": 2.857,
+ "requiredSpaceGb": 2.857,
+ "microSdRecommended": false,
+ "storageNotes": "Deku Deals lists 2.857 GB for the digital version. microSD storage is optional.",
+ "languagesAudio": [
+  "Character vocalizations",
+  "Minigame announcer / effects",
+  "Music and effects are language-independent"
+ ],
+ "languagesText": [
+  "Japanese / English",
+  "French / German / Italian / Spanish / Portuguese / Dutch / Russian",
+  "Korean / Simplified Chinese / Traditional Chinese"
+ ],
+ "arabicSupport": false,
+ "mpLocalPlayers": true,
+ "mpOnlinePlayers": true,
+ "mpCoop": true,
+ "mpCompetitive": true,
+ "mpSplitScreen": false,
+ "mpLocalWireless": true,
+ "dlc": [
+  {
+   "name": "No paid DLC",
+   "description": "Nintendo did not release a standalone paid DLC expansion for Mario Party Superstars.",
+   "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/en_US/games/switch/m/mario-party-superstars-switch/screenshot-gallery/screenshot01"
+  },
+  {
+   "name": "Free updates / maintenance",
+   "description": "Post-launch updates focused on stability and online behavior rather than paid content.",
+   "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/en_US/games/switch/m/mario-party-superstars-switch/screenshot-gallery/screenshot02"
+  },
+  {
+   "name": "Nintendo Switch Online",
+   "description": "A paid Nintendo Switch Online membership is required for internet play.",
+   "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/en_US/games/switch/m/mario-party-superstars-switch/screenshot-gallery/screenshot03"
+  }
+ ],
+ "guides": [
+  {
+   "title": "Official Nintendo page",
+   "summary": "Release, platform, storage, languages and feature information.",
+   "url": "https://www.nintendo.com/us/store/products/mario-party-superstars-114384/"
+  },
+  {
+   "title": "Gameplay / technical reference",
+   "summary": "Performance and gameplay behavior reference.",
+   "url": "https://www.dekudeals.com/items/mario-party-superstars"
+  },
+  {
+   "title": "Database / review reference",
+   "summary": "Media, reviews and completion context.",
+   "url": "https://gamesdb.launchbox-app.com/games/details/152671-mario-party-superstars"
+  }
+ ],
+ "completionMain": 9,
+ "completionExtras": 21.5,
+ "completionAll": 68,
+ "faq": [
+  {
+   "q": "How many boards are included?",
+   "a": "Five remade Nintendo 64 boards are included."
+  },
+  {
+   "q": "How many minigames are included?",
+   "a": "The game contains 100 classic minigames selected from earlier Mario Party games."
+  },
+  {
+   "q": "Does every main mode support online play?",
+   "a": "Yes. The traditional board game and major minigame modes support online play."
+  }
+ ],
+ "verdictScore": 8.5,
+ "verdictSummary": "A focused return to Mario Party's classic formula. The five-board selection is modest, but the 100-minigame lineup, button controls and strong online support make it an excellent party game.",
+ "verdictPros": [
+  "Excellent selection of classic minigames",
+  "Button controls work with many controller types",
+  "Full board-game online support"
+ ],
+ "verdictCons": [
+  "Only five main boards",
+  "Limited original content compared with later entries",
+  "Online quality depends on connection stability"
+ ],
+ "reviews": [
+  {
+   "source": "Metacritic",
+   "score": "80/100",
+   "quote": "Generally favorable critic aggregate.",
+   "url": "https://www.metacritic.com/game/mario-party-superstars/"
+  },
+  {
+   "source": "OpenCritic",
+   "score": "79/100",
+   "quote": "Generally favorable aggregate.",
+   "url": "https://opencritic.com/game/12192/mario-party-superstars"
+  },
+  {
+   "source": "Deku Deals users",
+   "score": "4.2/5",
+   "quote": "Strong user-rating snapshot.",
+   "url": "https://www.dekudeals.com/items/mario-party-superstars"
+  }
+ ],
+ "timeline": [
+  {
+   "date": "2021-06-15",
+   "title": "Announced",
+   "body": "Nintendo revealed Mario Party Superstars at E3 2021."
+  },
+  {
+   "date": "2021-10-29",
+   "title": "Worldwide release",
+   "body": "The game launched for Nintendo Switch."
+  },
+  {
+   "date": "2025-06-05",
+   "title": "Switch 2 compatibility",
+   "body": "The existing Switch version became playable through Switch 2 backward compatibility."
+  }
+ ],
+ "patchNotes": [
+  {
+   "version": "Version 1.0.1",
+   "date": "2021",
+   "body": "Early stability and online fixes."
+  },
+  {
+   "version": "Version 1.1.x",
+   "date": "2022",
+   "body": "Additional issue fixes and network maintenance."
+  },
+  {
+   "version": "Current compatibility",
+   "date": "2026",
+   "body": "Current Switch software remains playable on Switch 2 via backward compatibility."
+  }
+ ],
+ "soundtrack": [
+  {
+   "title": "Mario Party Superstars Main Theme",
+   "url": "https://www.nintendo.com/us/store/products/mario-party-superstars-114384/"
+  },
+  {
+   "title": "Horror Land arrangement",
+   "url": "https://www.nintendo.com/us/store/products/mario-party-superstars-114384/"
+  },
+  {
+   "title": "Space Land arrangement",
+   "url": "https://www.nintendo.com/us/store/products/mario-party-superstars-114384/"
+  }
+ ],
+ "seriesName": "Mario Party",
+ "seriesEntries": [
+  "Mario Party Superstars",
+  "Super Mario Party",
+  "Super Mario Party Jamboree"
+ ],
+ "studioName": "NDcube / Nintendo Cube",
+ "studioUrl": "https://www.nintendo.co.jp/",
+ "studioLocation": "Tokyo, Japan",
+ "studioAbout": "Nintendo Cube, previously known as NDcube, is Nintendo's specialist party-game studio and the primary developer of modern Mario Party games.",
+ "setupNeeds": [
+  "Nintendo Switch or backward-compatible Nintendo Switch 2",
+  "Approximately 2.857 GB free storage",
+  "Nintendo Switch Online membership for online multiplayer"
+ ],
+ "sources": [
+  {
+   "name": "Nintendo official",
+   "url": "https://www.nintendo.com/us/store/products/mario-party-superstars-114384/"
+  },
+  {
+   "name": "Deku Deals",
+   "url": "https://www.dekudeals.com/items/mario-party-superstars"
+  },
+  {
+   "name": "LaunchBox Games Database",
+   "url": "https://gamesdb.launchbox-app.com/games/details/152671-mario-party-superstars"
+  }
+ ],
+ "boxContentsList": "[Circular]",
+ "image": "/api/files/products/prd_40524f52f17144d3/cover-4384b4d28d55af5b.jpg",
+ "banner": "/api/files/products/prd_40524f52f17144d3/banner-0-5f37b273fceef4d2.jpg",
+ "schemaId": "",
+ "createdAt": "2026-08-27T01:03:36.412Z",
+ "created_at": "2026-08-27T01:03:36.412Z",
+ "updatedAt": "2026-08-27T01:03:36.412Z",
+ "updated_at": "2026-08-27T01:03:36.412Z",
+ "badgeEn": "وفر 40%",
+ "badgeKu": "وفر 40%",
+ "featuresEn": [
+  "Five remade Nintendo 64 boards",
+  "100 classic minigames",
+  "Online play across the core modes"
+ ],
+ "featuresKu": [
+  "Five remade Nintendo 64 boards",
+  "100 classic minigames",
+  "Online play across the core modes"
+ ],
+ "boxFrontUrl": "https://gamesdb-images.launchbox.gg/r2_3a6ca800-0092-4fa5-94df-d233512177b4.jpg",
+ "sales": 0,
+ "images": [],
+ "modes": []
+}

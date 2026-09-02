@@ -1,0 +1,633 @@
+{
+ "title": "Mario Kart 8 Deluxe",
+ "titleEn": "Mario Kart 8 Deluxe",
+ "titleKu": "Mario Kart 8 Deluxe",
+ "slug": "mario-kart-8-deluxe-switch",
+ "description": "The definitive version of Mario Kart 8, combining the complete Wii U game with expanded battle modes, all original DLC, additional characters and the optional Booster Course Pass that adds 48 remastered courses and more racers.",
+ "descriptionEn": "The definitive version of Mario Kart 8, combining the complete Wii U game with expanded battle modes, all original DLC, additional characters and the optional Booster Course Pass that adds 48 remastered courses and more racers.",
+ "descriptionKu": "The definitive version of Mario Kart 8, combining the complete Wii U game with expanded battle modes, all original DLC, additional characters and the optional Booster Course Pass that adds 48 remastered courses and more racers.",
+ "cartridgeImage": "/api/files/products/prd_5e7f25795b9c47eb/front-db6f5ead87e950b4.jpg",
+ "nintendoCardImage": "/api/files/products/prd_5e7f25795b9c47eb/square-d657286344b70746.jpg",
+ "coverHiResImage": "/api/files/products/prd_5e7f25795b9c47eb/3d-texture-9e1e2e574c27f72c.webp",
+ "coverImage": "/api/files/products/prd_5e7f25795b9c47eb/cover-3e31758532099e90.jpg",
+ "bannerImages": [
+  "/api/files/products/prd_5e7f25795b9c47eb/banner-0-ead16a3b54b571ab.jpg",
+  "/api/files/products/prd_5e7f25795b9c47eb/banner-1-a330a5b9aae34da8.jpg",
+  "/api/files/products/prd_5e7f25795b9c47eb/banner-3-ab0a88dd026ce4c6.jpg",
+  "/api/files/products/prd_5e7f25795b9c47eb/banner-3-1f13d78a6c4a7cb6.jpg",
+  "/api/files/products/prd_5e7f25795b9c47eb/banner-4-fe6fc63c780d12be.jpg",
+  "/api/files/products/prd_5e7f25795b9c47eb/banner-5-8029c6688695f4af.jpg"
+ ],
+ "gallery": [],
+ "youtubeTrailer": "https://mariokart8deluxe.nintendo.com/",
+ "releaseDate": "2017-04-28",
+ "ageRating": "ESRB E / PEGI 3",
+ "metacriticRating": 92,
+ "genres": [
+  "Racing",
+  "Party",
+  "Arcade"
+ ],
+ "platform": "switch1",
+ "size": 11.3,
+ "numberOfPlayers": "1–4 local; 2–8 local wireless; 2–12 online",
+ "supportedLanguages": "Japanese / English; French / German / Italian / Spanish / Portuguese / Dutch / Russian; Additional regional interface languages vary by eShop region",
+ "hardwareModel": "",
+ "colorEdition": "",
+ "storageCapacity": "",
+ "screenSpecs": "",
+ "batteryLife": "",
+ "boxContents": [],
+ "boxContentsText": "",
+ "warrantyCondition": "",
+ "connectivity": "",
+ "characterName": "Link",
+ "amiiboSeries": "The Legend of Zelda",
+ "figureType": "figure",
+ "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+ "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+ "boxCondition": "mib",
+ "releaseWave": "Wave 2 (Restock)",
+ "rarity": "standard",
+ "accessoryType": "حقيبة حماية وتنقل Carry Case",
+ "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+ "brand": "Nintendo Official",
+ "material": "Hard EVA Shockproof Shell",
+ "availableColors": "Black, Neon Red/Blue, White",
+ "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+ "cardValue": "$20 eShop Balance",
+ "region": "Global",
+ "cardType": "eshop",
+ "deliveryMethod": "instant_code",
+ "redemptionGuide": "",
+ "redemptionSteps": [],
+ "validity": "no_expiry",
+ "usedType": "cartridge",
+ "conditionGrade": "like_new",
+ "packaging": "cib",
+ "guaranteeStatus": "tested_30days",
+ "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+ "accountType": "primary",
+ "badge": "وفر 40%",
+ "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+ "price": 12000,
+ "cost": 1500,
+ "stock": 999999,
+ "isInfiniteStock": true,
+ "isHidden": false,
+ "displayOrder": 0,
+ "category": "nintendo-switch-games",
+ "categoryId": "nintendo-switch-games",
+ "categoryEn": "",
+ "categoryKu": "",
+ "options": [
+  {
+   "id": "offline_account",
+   "name": "حساب أوفلاين",
+   "description": "حساب مخصص للعب دون اتصال بعد إكمال خطوات التفعيل.",
+   "stock": 9999,
+   "isInfiniteStock": true,
+   "customerDescription": "حساب مشترك"
+  },
+  {
+   "id": "online_account",
+   "name": "حساب أونلاين",
+   "description": "حساب يدعم تشغيل اللعبة مع الاتصال والميزات المتاحة أونلاين.",
+   "stock": 9999,
+   "isInfiniteStock": true,
+   "customerDescription": "حساب خاص بك"
+  }
+ ],
+ "types": [
+  {
+   "id": "standard_offline",
+   "name": "حساب أوفلاين — عادي",
+   "optionId": "offline_account",
+   "price": "12000",
+   "cost": 1500,
+   "description": "تشمل الإصدار العادي من اللعبة.",
+   "stock": 9999,
+   "isInfiniteStock": true,
+   "customerDescription": "اللعبة الأساسية",
+   "internalNote": "Offline Standard; supplier cost 1,500 IQD; configured selling price 15,000 IQD."
+  },
+  {
+   "id": "dlc_offline",
+   "name": "حساب أوفلاين — مع الإضافات",
+   "optionId": "offline_account",
+   "price": "15000",
+   "cost": 2750,
+   "description": "تشمل اللعبة الأساسية والمحتوى الإضافي المثبت في هذا الإصدار.",
+   "stock": 9999,
+   "isInfiniteStock": true,
+   "customerDescription": "اللعبة مع الإضافات",
+   "internalNote": "Offline Special/DLC; supplier cost 2,750 IQD; configured selling price 20,000 IQD."
+  },
+  {
+   "id": "standard_online",
+   "name": "حساب أونلاين — عادي",
+   "optionId": "online_account",
+   "price": 38000,
+   "cost": 23000,
+   "description": "تشمل الإصدار العادي من اللعبة.",
+   "stock": 9999,
+   "isInfiniteStock": true,
+   "customerDescription": "اللعبة الأساسية",
+   "internalNote": "Online Standard; supplier cost 23,000 IQD; configured selling price 33,000 IQD."
+  },
+  {
+   "id": "dlc_online",
+   "name": "حساب أونلاين — مع الإضافات",
+   "optionId": "online_account",
+   "price": 48000,
+   "cost": 31500,
+   "description": "تشمل اللعبة الأساسية والمحتوى الإضافي المثبت في هذا الإصدار.",
+   "stock": 9999,
+   "isInfiniteStock": true,
+   "customerDescription": "اللعبة مع الإضافات",
+   "internalNote": "Online Deluxe/DLC; supplier cost 31,500 IQD; configured selling price 41,500 IQD."
+  }
+ ],
+ "editions": [],
+ "dlcs": [],
+ "isActive": true,
+ "status": "Active",
+ "kind": "account",
+ "trade_value_iqd": 40000,
+ "store_offer_bonus_iqd": 8000,
+ "trade_enabled": true,
+ "trade_value_locked": false,
+ "id": "prd_5e7f25795b9c47eb",
+ "schema_version": 23,
+ "titleAr": "ماريو كارت 8 ديلوكس",
+ "compatibility": [
+  "Nintendo Switch",
+  "Nintendo Switch 2 (backward compatible / separate Switch 2 Edition where applicable)"
+ ],
+ "edition": "Standard",
+ "developer": "Nintendo EPD",
+ "publisher": "Nintendo",
+ "metacriticUrl": "https://www.metacritic.com/game/mario-kart-8-deluxe/",
+ "opencriticRating": 91,
+ "userScore": 8.6,
+ "price_usd": 59.99,
+ "officialUrl": "https://mariokart8deluxe.nintendo.com/",
+ "eshopUrl": "https://www.nintendo.com/us/store/products/mario-kart-8-deluxe-switch/",
+ "gameIsOffline": true,
+ "gameIsOnline": true,
+ "gameLanguageLocked": false,
+ "description_short": "The definitive version of Mario Kart 8, combining the complete Wii U game with expanded battle modes, all original DLC, additional characters and the optional Booster Course Pass that adds 48 remastered courses and more racers.",
+ "description_ar": "النسخة الأشمل من Mario Kart 8، وتضم محتوى Wii U الأصلي مع Battle Mode مطور وشخصيات ومركبات إضافية. ويضيف Booster Course Pass الاختياري 48 مضمارًا كلاسيكيًا ومزيدًا من الشخصيات.",
+ "box_front_url": "https://images.launchbox-app.com//ce8597d3-fc3a-4a0e-8e92-9af9533d8652.jpg",
+ "box_back_url": "https://gamesdb-images.launchbox.gg/r2_ba315a36-b9d9-4bb5-a6cd-ad7a09deb20f.jpg",
+ "galleryImages": [
+  {
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/en_US/games/switch/m/mario-kart-8-deluxe-switch/screenshot-gallery/screenshot01",
+   "alt": "Mario Kart 8 Deluxe — verified promotional/gameplay image 1"
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/en_US/games/switch/m/mario-kart-8-deluxe-switch/screenshot-gallery/screenshot02",
+   "alt": "Mario Kart 8 Deluxe — verified promotional/gameplay image 2"
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/en_US/games/switch/m/mario-kart-8-deluxe-switch/screenshot-gallery/screenshot03",
+   "alt": "Mario Kart 8 Deluxe — verified promotional/gameplay image 3"
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/en_US/games/switch/m/mario-kart-8-deluxe-switch/screenshot-gallery/screenshot04",
+   "alt": "Mario Kart 8 Deluxe — verified promotional/gameplay image 4"
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/en_US/games/switch/m/mario-kart-8-deluxe-switch/screenshot-gallery/screenshot05",
+   "alt": "Mario Kart 8 Deluxe — verified promotional/gameplay image 5"
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/en_US/games/switch/m/mario-kart-8-deluxe-switch/screenshot-gallery/screenshot06",
+   "alt": "Mario Kart 8 Deluxe — verified promotional/gameplay image 6"
+  },
+  {
+   "url": "https://images.launchbox-app.com//f1c662f8-79f9-45f9-ad21-c57a93938e19.jpg",
+   "alt": "Mario Kart 8 Deluxe — verified promotional/gameplay image 7"
+  },
+  {
+   "url": "https://images.launchbox-app.com//b61e59f4-23aa-4168-8bdd-28374042e691.jpg",
+   "alt": "Mario Kart 8 Deluxe — verified promotional/gameplay image 8"
+  },
+  {
+   "url": "https://images.launchbox-app.com//6f61a095-216b-4ba6-8e1c-be6f31e6ab8f.jpg",
+   "alt": "Mario Kart 8 Deluxe — verified promotional/gameplay image 9"
+  }
+ ],
+ "videos": [
+  {
+   "title": "Official trailer / product overview",
+   "url": "https://mariokart8deluxe.nintendo.com/"
+  },
+  {
+   "title": "Nintendo product page and gameplay media",
+   "url": "https://www.nintendo.com/us/store/products/mario-kart-8-deluxe-switch/"
+  },
+  {
+   "title": "Technical / review reference",
+   "url": "https://renderindex.com/games/index-27/mario-kart-8-deluxe"
+  }
+ ],
+ "nsuid": "See official Nintendo product page for regional NSUID",
+ "title_id": "Regional digital title ID varies by storefront and package",
+ "product_code": "HAC-P-AABPA",
+ "nintendoEshopUrl": "https://www.nintendo.com/us/store/products/mario-kart-8-deluxe-switch/",
+ "nintendoOnlineRequired": true,
+ "nintendoCloudSaves": true,
+ "nintendoGameKeyCard": false,
+ "nintendoPhysicalNeedsDownload": false,
+ "tvMode": true,
+ "tabletopMode": true,
+ "handheldMode": true,
+ "nintendoPlayModes": "TV / Tabletop / Handheld",
+ "nintendoNotes": "Current verified Nintendo data for Mario Kart 8 Deluxe. Storage, languages, multiplayer and platform-specific features are separated from measured performance values.",
+ "switch2Enhanced": false,
+ "switch2Exclusive": false,
+ "switch2UpgradePrice": 0,
+ "switch2Features": [
+  "1080p/60 docked and 720p/60 handheld racing",
+  "Up to 12 players online",
+  "Booster Course Pass adds 48 courses and extra racers"
+ ],
+ "tagline": "Nintendo's definitive kart racer with huge local and online multiplayer support.",
+ "fitFor": [
+  "Families and party-game groups",
+  "Competitive and casual racing fans",
+  "Players wanting extensive online and local multiplayer"
+ ],
+ "notFitFor": [
+  "Players looking for a realistic racing simulator",
+  "Solo players who dislike replaying tracks",
+  "Players who do not value multiplayer"
+ ],
+ "playTimeMain": 6.5,
+ "playTimeFull": 54,
+ "editionsList": [
+  {
+   "name": "Standard Edition",
+   "coverUrl": "https://images.launchbox-app.com//ce8597d3-fc3a-4a0e-8e92-9af9533d8652.jpg",
+   "contents": [
+    {
+     "label": "Base game"
+    },
+    {
+     "label": "Core modes"
+    },
+    {
+     "label": "Platform features"
+    }
+   ]
+  },
+  {
+   "name": "DLC / Special Edition",
+   "coverUrl": "https://images.launchbox-app.com//0a689286-2e94-4f4c-9371-743eb5b3d2e3.jpg",
+   "contents": [
+    {
+     "label": "Mario Kart 8 Deluxe – Booster Course Pass"
+    },
+    {
+     "label": "Base game + DLC option"
+    },
+    {
+     "label": "Additional course/content access"
+    }
+   ]
+  },
+  {
+   "name": "Current Complete Package",
+   "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/en_US/products/games/switch/mario-kart-8-deluxe/105275-switch-mario-kart-8-deluxe-us-1200x675",
+   "contents": [
+    {
+     "label": "Latest game build"
+    },
+    {
+     "label": "Mario Kart 8 Deluxe – Booster Course Pass"
+    },
+    {
+     "label": "1080p/60 docked and 720p/60 handheld racing"
+    }
+   ]
+  }
+ ],
+ "gameplayPillars": [
+  {
+   "title": "Accessible racing depth",
+   "description": "Drifting, mini-turbos, items and vehicle builds make it easy to start while leaving room for advanced techniques.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/en_US/products/games/switch/mario-kart-8-deluxe/105275-switch-mario-kart-8-deluxe-us-1200x675"
+  },
+  {
+   "title": "Huge multiplayer range",
+   "description": "Supports four-player split-screen, up to eight via local wireless and up to twelve online.",
+   "imageUrl": "https://images.launchbox-app.com//ae82a193-9f12-44f5-bcb8-26d8c45d7e73.jpg"
+  },
+  {
+   "title": "Massive track selection",
+   "description": "The base game is already content-rich, while the Booster Course Pass adds 48 remastered courses across six waves.",
+   "imageUrl": "https://images.launchbox-app.com//4df37748-c62e-4280-836b-6c7d991288b9.jpg"
+  }
+ ],
+ "worldSummary": "Mario Kart 8 Deluxe turns locations from the Mario universe and other Nintendo series into anti-gravity race tracks, with cups spanning original courses, retro remakes and the large Booster Course Pass collection.",
+ "storyChapters": [
+  {
+   "title": "Grand Prix",
+   "body": "Race through engine classes and cups to unlock rewards and master each course.",
+   "imageUrl": "https://images.launchbox-app.com//11bd3217-96e2-4ce2-b12f-9948aea7e183.jpg"
+  },
+  {
+   "title": "Battle Mode",
+   "body": "Dedicated arenas support Balloon Battle, Bob-omb Blast, Renegade Roundup and other competitive formats.",
+   "imageUrl": "https://images.launchbox-app.com//970f8905-34ae-49ba-b630-a92cee6ee20f.jpg"
+  },
+  {
+   "title": "Booster Course Pass",
+   "body": "Six waves expand the roster of tracks and characters, creating one of the largest Mario Kart selections ever.",
+   "imageUrl": "https://images.launchbox-app.com//10d49f7d-ea23-4b64-98c0-1f9fbc0b9245.jpg"
+  }
+ ],
+ "features": [
+  "1080p/60 docked and 720p/60 handheld racing",
+  "Up to 12 players online",
+  "Booster Course Pass adds 48 courses and extra racers"
+ ],
+ "perfResolutionDocked": "1080p",
+ "perfResolutionHandheld": "720p",
+ "perfFps": "60",
+ "perfHdr": false,
+ "perfNotes": "Solo and two-player split-screen target 60 fps at 1080p docked. Three- and four-player split-screen run at 30 fps. Handheld is 720p with a 60 fps target.",
+ "devicePerformance": [
+  {
+   "device": "Nintendo Switch 2",
+   "deviceSlug": "nintendo-switch-2",
+   "deviceModel": "Nintendo Switch 2",
+   "hardwareId": "prd_acf4c89908764c62",
+   "informationStatus": "Available / verified",
+   "unavailableReason": "No required native mode is unavailable.",
+   "handheld": {
+    "supported": true,
+    "resolution": "720p",
+    "resolutionDynamic": false,
+    "renderingResolution": "720p",
+    "outputResolution": "1280x720",
+    "fps": "60",
+    "fpsMin": "60",
+    "fpsMax": "60",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "Handheld",
+    "notes": "Solo and two-player split-screen target 60 fps at 1080p docked. Three- and four-player split-screen run at 30 fps. Handheld is 720p with a 60 fps target."
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "1080p",
+    "resolutionDynamic": false,
+    "renderingResolution": "1080p",
+    "outputResolution": "1920x1080",
+    "fps": "60",
+    "fpsMin": "60",
+    "fpsMax": "60",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "TV / Docked",
+    "notes": "Solo and two-player split-screen target 60 fps at 1080p docked. Three- and four-player split-screen run at 30 fps. Handheld is 720p with a 60 fps target."
+   },
+   "modes": [
+    {
+     "name": "Standard",
+     "handheldResolution": "720p",
+     "handheldFps": "60",
+     "tvResolution": "1080p",
+     "tvFps": "60",
+     "hdr": false,
+     "vrr": false,
+     "notes": "Primary documented performance profile."
+    }
+   ],
+   "upscaling": "Platform-specific scaling/reconstruction where documented",
+   "rayTracing": false,
+   "rayTracingMode": "No ray-tracing mode",
+   "loadingTime": "Scene-dependent; no single universal load time",
+   "loadingNotes": "Loading varies by activity and storage state.",
+   "gameVersion": "Current retail build",
+   "patchVersion": "Current available update",
+   "testedDate": "2026-08-27",
+   "sourceName": "RenderIndex performance data",
+   "sourceUrl": "https://renderindex.com/games/index-27/mario-kart-8-deluxe",
+   "verifiedAt": "2026-08-27",
+   "verificationStatus": "Verified / sourced",
+   "performanceNotes": "Solo and two-player split-screen target 60 fps at 1080p docked. Three- and four-player split-screen run at 30 fps. Handheld is 720p with a 60 fps target."
+  }
+ ],
+ "downloadSizeGb": 11.3,
+ "requiredSpaceGb": 11.3,
+ "microSdRecommended": false,
+ "storageNotes": "Current digital size is about 11.3 GB before considering system-reserved space and updates. microSD storage is optional.",
+ "languagesAudio": [
+  "Character vocalizations",
+  "Race announcer / character voices",
+  "Music and effects are language-independent"
+ ],
+ "languagesText": [
+  "Japanese / English",
+  "French / German / Italian / Spanish / Portuguese / Dutch / Russian",
+  "Additional regional interface languages vary by eShop region"
+ ],
+ "arabicSupport": false,
+ "mpLocalPlayers": true,
+ "mpOnlinePlayers": true,
+ "mpCoop": true,
+ "mpCompetitive": true,
+ "mpSplitScreen": true,
+ "mpLocalWireless": true,
+ "dlc": [
+  {
+   "name": "Mario Kart 8 Deluxe – Booster Course Pass",
+   "description": "Paid DLC containing 48 remastered courses released in six waves.",
+   "coverUrl": "https://images.launchbox-app.com//142a009c-831b-4fb6-b49c-48ee0bdad6c1.jpg"
+  },
+  {
+   "name": "Booster Course Pass characters",
+   "description": "Adds Birdo, Kamek, Petey Piranha, Wiggler, Diddy Kong, Funky Kong, Pauline and Peachette.",
+   "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/en_US/games/switch/m/mario-kart-8-deluxe-switch/screenshot-gallery/screenshot01"
+  },
+  {
+   "name": "Nintendo Switch Online + Expansion Pack access",
+   "description": "Booster Course Pass can also be accessed through an eligible Expansion Pack membership while subscribed.",
+   "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/en_US/games/switch/m/mario-kart-8-deluxe-switch/screenshot-gallery/screenshot02"
+  }
+ ],
+ "guides": [
+  {
+   "title": "Official Nintendo page",
+   "summary": "Release, platform, storage, languages and feature information.",
+   "url": "https://www.nintendo.com/us/store/products/mario-kart-8-deluxe-switch/"
+  },
+  {
+   "title": "Gameplay / technical reference",
+   "summary": "Performance and gameplay behavior reference.",
+   "url": "https://renderindex.com/games/index-27/mario-kart-8-deluxe"
+  },
+  {
+   "title": "Database / review reference",
+   "summary": "Media, reviews and completion context.",
+   "url": "https://www.dekudeals.com/items/mario-kart-8-deluxe"
+  }
+ ],
+ "completionMain": 6.5,
+ "completionExtras": 22.5,
+ "completionAll": 54,
+ "faq": [
+  {
+   "q": "How many tracks are available with the Booster Course Pass?",
+   "a": "The DLC adds 48 remastered courses on top of the base game's track selection."
+  },
+  {
+   "q": "Does it support four-player split-screen?",
+   "a": "Yes. Three- and four-player split-screen run at 30 fps, while one- and two-player gameplay targets 60 fps."
+  },
+  {
+   "q": "Does it work on Switch 2?",
+   "a": "Yes through backward compatibility, retaining the established Switch rendering profile and performance characteristics."
+  }
+ ],
+ "verdictScore": 9.3,
+ "verdictSummary": "Still one of the strongest multiplayer racing packages on Nintendo hardware, combining impeccable handling, broad accessibility and a giant course list.",
+ "verdictPros": [
+  "Excellent controls and course design",
+  "Outstanding local and online multiplayer",
+  "Booster Course Pass dramatically expands content"
+ ],
+ "verdictCons": [
+  "No native Switch 2 visual upgrade",
+  "Four-player split-screen is 30 fps",
+  "DLC content costs extra unless accessed via eligible subscription"
+ ],
+ "reviews": [
+  {
+   "source": "Metacritic",
+   "score": "92/100",
+   "quote": "Universal acclaim on Nintendo Switch.",
+   "url": "https://www.metacritic.com/game/mario-kart-8-deluxe/"
+  },
+  {
+   "source": "OpenCritic",
+   "score": "91/100",
+   "quote": "Top-tier critic aggregate.",
+   "url": "https://opencritic.com/game/4060/mario-kart-8-deluxe"
+  },
+  {
+   "source": "Deku Deals users",
+   "score": "4.6/5",
+   "quote": "Strong long-term user rating.",
+   "url": "https://www.dekudeals.com/items/mario-kart-8-deluxe"
+  }
+ ],
+ "timeline": [
+  {
+   "date": "2017-04-28",
+   "title": "Mario Kart 8 Deluxe launched",
+   "body": "The expanded Switch version released worldwide."
+  },
+  {
+   "date": "2022-03-18",
+   "title": "Booster Course Pass began",
+   "body": "Wave 1 started the six-wave DLC rollout."
+  },
+  {
+   "date": "2023-11-09",
+   "title": "Booster Course Pass completed",
+   "body": "Wave 6 completed the 48-course expansion."
+  }
+ ],
+ "patchNotes": [
+  {
+   "version": "Version 3.0.0",
+   "date": "2023-11-09",
+   "body": "Added Booster Course Pass Wave 6 content and balance changes."
+  },
+  {
+   "version": "Version 3.0.3",
+   "date": "2024",
+   "body": "Additional stability and issue fixes."
+  },
+  {
+   "version": "Version 3.0.5",
+   "date": "2025-05-21",
+   "body": "Latest official update includes additional fixes and Switch-family compatibility maintenance."
+  }
+ ],
+ "soundtrack": [
+  {
+   "title": "Mario Kart Stadium",
+   "url": "https://mariokart8deluxe.nintendo.com/"
+  },
+  {
+   "title": "Mount Wario",
+   "url": "https://mariokart8deluxe.nintendo.com/"
+  },
+  {
+   "title": "Rainbow Road",
+   "url": "https://mariokart8deluxe.nintendo.com/"
+  }
+ ],
+ "seriesName": "Mario Kart",
+ "seriesEntries": [
+  "Mario Kart 8 Deluxe",
+  "Mario Kart World",
+  "Mario Kart 7"
+ ],
+ "studioName": "Nintendo EPD",
+ "studioUrl": "https://www.nintendo.co.jp/",
+ "studioLocation": "Kyoto, Japan",
+ "studioAbout": "Nintendo's internal development group created Mario Kart 8 Deluxe with support from Bandai Namco Studios on portions of production.",
+ "setupNeeds": [
+  "Nintendo Switch",
+  "About 11.3 GB free storage for the digital version",
+  "Nintendo Switch Online membership for online races"
+ ],
+ "sources": [
+  {
+   "name": "Nintendo official",
+   "url": "https://www.nintendo.com/us/store/products/mario-kart-8-deluxe-switch/"
+  },
+  {
+   "name": "RenderIndex performance data",
+   "url": "https://renderindex.com/games/index-27/mario-kart-8-deluxe"
+  },
+  {
+   "name": "Deku Deals",
+   "url": "https://www.dekudeals.com/items/mario-kart-8-deluxe"
+  }
+ ],
+ "boxContentsList": "[Circular]",
+ "image": "/api/files/products/prd_5e7f25795b9c47eb/cover-3e31758532099e90.jpg",
+ "banner": "/api/files/products/prd_5e7f25795b9c47eb/banner-0-ead16a3b54b571ab.jpg",
+ "schemaId": "",
+ "createdAt": "2026-08-27T01:03:23.468Z",
+ "created_at": "2026-08-27T01:03:23.468Z",
+ "updatedAt": "2026-08-28T22:03:04.269Z",
+ "updated_at": "2026-08-28T22:03:04.269Z",
+ "badgeEn": "وفر 40%",
+ "badgeKu": "وفر 40%",
+ "featuresEn": [
+  "1080p/60 docked and 720p/60 handheld racing",
+  "Up to 12 players online",
+  "Booster Course Pass adds 48 courses and extra racers"
+ ],
+ "featuresKu": [
+  "1080p/60 docked and 720p/60 handheld racing",
+  "Up to 12 players online",
+  "Booster Course Pass adds 48 courses and extra racers"
+ ],
+ "boxFrontUrl": "https://images.launchbox-app.com//ce8597d3-fc3a-4a0e-8e92-9af9533d8652.jpg",
+ "sales": 0,
+ "images": [],
+ "modes": [],
+ "game_id": "gme_50a36bf07cb04bd5",
+ "variants": "[Circular]"
+}
