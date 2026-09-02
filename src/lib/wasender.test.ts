@@ -53,6 +53,7 @@ describe("WaSenderProvider Service", () => {
       const fetchMock = vi.fn().mockResolvedValue({
         status: 200,
         text: async () => JSON.stringify({ success: true, messageId: "msg_abc123" }),
+        json: async () => ({ success: true, messageId: "msg_abc123" }),
       });
       globalThis.fetch = fetchMock;
 
@@ -79,6 +80,7 @@ describe("WaSenderProvider Service", () => {
       globalThis.fetch = vi.fn().mockResolvedValue({
         status: 401,
         text: async () => JSON.stringify({ success: false, message: "Unauthorized" }),
+        json: async () => ({ success: false, message: "Unauthorized" }),
       });
 
       const result = await provider.sendMessage("+9647701234567", "Hello");
@@ -93,6 +95,7 @@ describe("WaSenderProvider Service", () => {
       globalThis.fetch = vi.fn().mockResolvedValue({
         status: 429,
         text: async () => JSON.stringify({ success: false, message: "Too many requests" }),
+        json: async () => ({ success: false, message: "Too many requests" }),
       });
 
       const result = await provider.sendMessage("+9647701234567", "Hello");

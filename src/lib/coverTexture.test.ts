@@ -103,6 +103,11 @@ describe("the field keeps its meaning: full case wrap, uncropped", () => {
 schema_version=1
 name=Hyrule Warriors Age of Imprisonment
 platform=switch1
+device_performance.1.device=Nintendo Switch
+device_performance.1.information_status=not_published
+device_performance.1.unavailable_reason=Nintendo has not published performance figures.
+device_performance.1.source_name=Nintendo eShop
+device_performance.1.verification_status=checked
 cover_texture_url=${WRAP}
 `);
     expect(parsed.errors.filter((issue) => issue.severity === "error")).toEqual([]);
