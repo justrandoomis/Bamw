@@ -1,51 +1,194 @@
 {
  "batch": "010",
- "apply": false,
+ "apply": true,
  "games": [
   {
    "id": "prd_3c341c814d254f05",
    "slug": "hades-ii-nintendo-switch-2-edition",
    "baseHash": "2265d99863883463088fa1fbdaf29011b7df11bca48f600838e84a2a99ae0e6f",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "metacriticRating": 94,
+    "metacriticUrl": "https://www.metacritic.com/game/hades-ii/",
+    "bannerImages": [
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000105526/97ca83e1cd65da9fe9a5f849081523c61cc764e090246e12b274a39ad197b77d",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000105526/50ecd22aee5319d239edbcce4681483c9d300981137a6754bb4857372edc1f58",
+     "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000105526/32608044933fa2a4bf912586ef78aced58ccf2c02c754a209394d6fb659a5ac7",
+     "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000105526/566a78ffa9706838e77a75698ad480f811c1d2bfba31b999e8dc9834ee693fd0",
+     "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000105526/f920391bdff344bdc9e63d06858704a054d11103c8f8b9e244bf9f6795b2c133",
+     "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000105526/e2058a5516c9016f9c09b312b65a1d14962c2861a27068a75cca3dfad9fe3680",
+     "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000105526/97ca83e1cd65da9fe9a5f849081523c61cc764e090246e12b274a39ad197b77d"
+    ],
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "informationStatus": "available",
+      "handheld": {
+       "supported": true,
+       "resolution": "1080p",
+       "fps": "60"
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p",
+       "fps": "Up to 120 (120 fps TV mode)"
+      },
+      "modes": [],
+      "sourceName": "Supergiant Games / Nintendo official product page",
+      "sourceUrl": "https://www.nintendo.com/us/store/products/hades-ii-nintendo-switch-2-edition-switch-2/",
+      "verificationStatus": "official"
+     }
+    ]
+   },
+   "clear": [
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "Metacritic corrected 98→94 (the verified aggregate; 98 matched nothing). The garbled performance record — prose stuffed into the fps field — becomes the official figures: 1080p at up to 120 fps docked, 1080p/60 handheld. The one dead R2 banner dropped; the three working eShop banners kept verbatim. Small-but-correct box/square/cover copies kept (no verified higher-res source). Contamination removed."
   },
   {
    "id": "prd_bec7f58f8ef14dde",
    "slug": "hades-switch",
    "baseHash": "af9b628f4105c32641d15529c9f5cb275906806de48dcae996b3d934ccc9e89a",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "informationStatus": "available",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p",
+       "fps": "60"
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p",
+       "fps": "60"
+      },
+      "modes": [],
+      "sourceName": "Supergiant Games official product information",
+      "sourceUrl": "https://www.supergiantgames.com/games/hades/",
+      "verificationStatus": "official"
+     }
+    ]
+   },
+   "clear": [
+    "youtubeTrailer",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "The two records carried a nonstandard nintendo-switch-1 slug that matches no device — replaced by one explicit platform record with the documented 720p/1080p at 60 fps figures. The YouTube SEARCH link trailer removed. Metacritic 93 verified correct for the Switch release. Genuine box, wrap, square card, cover and six galleries verified working (hidden product)."
   },
   {
    "id": "prd_502d0bd14c6049b6",
    "slug": "hitman-world-of-assassination-signature-edition",
    "baseHash": "f9458028542c6c171180141f5c9bea4134db328618ad694fe1a6ca9557867e91",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "coverImage": "/api/files/products/prd_502d0bd14c6049b6/nintendoCardImage-32244565452126c7.jpg",
+    "image": "/api/files/products/prd_502d0bd14c6049b6/nintendoCardImage-32244565452126c7.jpg"
+   },
+   "clear": [
+    "nintendoCardImage",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "Role swap repaired (same pattern as Fallout 4): the square-card slot held wide 1920x1080 art while cover and listing held the portrait box file — the wide art becomes cover and listing image, the square-card reference is removed, and the genuine portrait box stays in the box roles. Fields verified: 2025-06-05, 54.1 GB, Metacritic 87, Nintendo-Life-sourced 720p/1080p at 30 fps record. Amazon-hosted galleries and R2 banners verified working. Contamination removed."
   },
   {
    "id": "prd_81d7e7d737804445",
    "slug": "hogwarts-legacy-switch-2",
    "baseHash": "1eab74d99d85565e7fcc1df32b2a5f3e3e58bcb3906cfb2dedbae2b06589f755",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "releaseDate": "2025-06-05"
+   },
+   "clear": [
+    "youtubeTrailer",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "Release date corrected from the 2026-01-01 placeholder to the verified 2025-06-05 Switch 2 launch-day release (Warner Bros. announcement). The YouTube SEARCH link trailer removed. The unavailable Nintendo Switch record drops under the platform rule, keeping the Switch 2 record. Square card, cover and six galleries verified working (hidden product)."
   },
   {
    "id": "prd_ebcb11cda2854251",
    "slug": "hollow-knight-silksong-switch-2",
    "baseHash": "465ef7368a66fc04a5b23058dd3779f542ecd2c384022644d4758054b99600b7",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "dlcSummary": "No DLC has been released for Hollow Knight: Silksong; Team Cherry ships content as free updates.",
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "informationStatus": "available",
+      "handheld": {
+       "supported": true,
+       "resolution": "1080p",
+       "fps": "Up to 120"
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "4K (Quality) / 1080p (Performance)",
+       "fps": "60 (Quality) / up to 120 (Performance)"
+      },
+      "modes": [],
+      "sourceName": "Switch 2 performance comparisons of the launch build",
+      "sourceUrl": "https://www.nintendolife.com/news/2026/02/video-hollow-knight-side-by-side-graphics-and-performance-comparison-switch-2-and-switch",
+      "verificationStatus": "technical_analysis"
+     }
+    ],
+    "galleryImages": [
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000105851/66fa053c1e9b6e068556d73469acab78a630856a766a818752121e78cea8507f",
+      "alt": "Official Nintendo gameplay screenshot from Pharloom."
+     }
+    ]
+   },
+   "clear": [
+    "box_front_url",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "box_front_url was a dead GameTDB link (404) — removed; the 1200x1200 box render in cartridgeImage remains. The second gallery entry was a Polish web-shop product photo, not game media — the gallery is rebuilt with only the official eShop screenshot. The performance record's prose fields become the documented mode split: docked 4K/60 Quality or 1080p/120 Performance, handheld 1080p up to 120. dlcSummary states the verified no-DLC situation. Metacritic 94 verified correct. Trailer left absent — no official video id could be verified from here."
   }
  ]
 }
