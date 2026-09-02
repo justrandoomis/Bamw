@@ -25,3 +25,11 @@ export {
   CUSTOMER_LABELS,
 } from "@/lib/nintendoPricing";
 export { demandTierFor } from "@/lib/nintendoDemandTiers";
+export {
+  normalizeGameDevicePerformance,
+  validateGameDevicePerformance,
+  resolveGamePlatformKey,
+  PLATFORM_DEVICE,
+} from "@/lib/devicePerformance";
+export { getProductCategory } from "@/lib/productSection";
+export { syncGameDevicePerformance } from "@/lib/devicePerformance.server";

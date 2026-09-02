@@ -1,0 +1,88 @@
+# The guarded per-batch catalogue review loop.
+#
+# One run serves one cycle on the `catalogue-review` branch:
+#   1. If a reviewed-catalogue-batch file carries `apply: true`, it is first
+#      dry-run and then applied — under the script's guards: commercial fields
+#      stripped, drift-hash refusal, the app's own merge, single-device
+#      normalization + validation, read-after-write hash verification. On
+#      success the file's `apply` resets to false and the state records it.
+#   2. The next batch of (at most) five unreviewed production games is then
+#      exported: full records, content hashes, an image probe report and
+#      visual thumbnails — no customer data, catalogue documents only.
+#   3. Everything lands back on the branch as a commit tagged [review-bot]
+#      and as a run artifact.
+#
+# Trigger it manually, or push a reviewed file to the branch: the push
+# trigger below fires the same cycle. Bot commits are tagged and skipped.
+name: Catalogue review
+
+on:
+  workflow_dispatch:
+    inputs:
+      batch:
+        description: "Batch number to apply (blank = latest)"
+        default: ""
+      export_only:
+        description: "Skip apply; only export the next batch"
+        type: boolean
+        default: false
+  push:
+    branches: [catalogue-review]
+    paths:
+      - review-workdir/reviewed-catalogue-batch-*.json
+
+permissions:
+  contents: write
+
+concurrency:
+  group: catalogue-review
+  cancel-in-progress: false
+
+jobs:
+  cycle:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    if: "!contains(github.event.head_commit.message, '[review-bot]')"
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: catalogue-review
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm install --no-audit --no-fund
+      - name: Mask identifiers
+        env:
+          ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: echo "::add-mask::$ACCOUNT_ID"
+      - name: Apply the reviewed batch (guarded; no-op unless apply=true)
+        if: ${{ !inputs.export_only }}
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          D1_DATABASE_ID: ${{ secrets.CLOUDFLARE_D1_DATABASE_ID }}
+          BATCH: ${{ inputs.batch }}
+        run: |
+          args=""
+          [ -n "$BATCH" ] && args="--batch=$BATCH"
+          node scripts/catalogue-review-apply.mjs $args
+      - name: Export the next batch
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          D1_DATABASE_ID: ${{ secrets.CLOUDFLARE_D1_DATABASE_ID }}
+        run: node scripts/catalogue-review-export.mjs --limit=5
+      - name: Commit results to the branch
+        run: |
+          git config user.name "catalogue-review-bot"
+          git config user.email "noreply@banan.to"
+          git add review-workdir
+          git diff --cached --quiet || git commit -m "[review-bot] batch cycle: apply + export"
+          git push origin HEAD:catalogue-review
+      - name: Upload the batch artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: catalogue-review-${{ github.run_number }}
+          path: review-workdir
+          retention-days: 30
