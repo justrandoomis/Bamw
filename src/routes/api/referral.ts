@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 
 import { body, guard, json } from "@/lib/http.server";
+import { sessionSecretConfigured } from "@/lib/crypto.server";
 import { consumeRateLimit, rateLimitResponse } from "@/lib/rate-limit.server";
 import { getSessionUser, requireUser } from "@/lib/session.server";
 import { getStore } from "@/lib/db.server";
@@ -77,6 +78,29 @@ function toQuoteLines(raw: unknown): ReferralQuoteLine[] {
   });
 }
 
+/**
+ * The programme needs a signing key, because the attribution is a signed
+ * cookie and the identity comparisons are keyed hashes.
+ *
+ * Without one there is nothing safe to do, and every referral surface would
+ * otherwise fail with a 500 on a read the cart makes on every visit. A
+ * deployment in that state answers "the programme is off" instead, so the
+ * storefront simply does not show it.
+ */
+function referralUnavailable(): boolean {
+  return !sessionSecretConfigured();
+}
+
+const DISABLED_TERMS = {
+  enabled: false,
+  buyerPercent: 0,
+  referrerPercent: 0,
+  linkTtlDays: 0,
+  firstPurchaseOnly: true,
+  stackWithCoupon: false,
+  maxRewardIqd: 0,
+};
+
 function toHints(raw: unknown): DeviceHints | undefined {
   if (!raw || typeof raw !== "object") return undefined;
   const hints = raw as Record<string, unknown>;
@@ -93,6 +117,9 @@ export const Route = createFileRoute("/api/referral")({
     handlers: {
       GET: async ({ request }) =>
         guard(async () => {
+          if (referralUnavailable()) {
+            return json({ terms: DISABLED_TERMS, share: null, stats: null, attribution: null });
+          }
           const url = new URL(request.url);
           const viewer = await getSessionUser(request);
           const store = await getStore();
@@ -160,6 +187,9 @@ export const Route = createFileRoute("/api/referral")({
        */
       POST: async ({ request }) =>
         guard(async () => {
+          if (referralUnavailable()) {
+            return json({ ok: false, message: REFERRAL_REFUSAL_MESSAGE }, { status: 503 });
+          }
           const viewer = await getSessionUser(request);
           const data = await body<{
             code?: unknown;
@@ -233,6 +263,7 @@ export const Route = createFileRoute("/api/referral")({
       /** Price the current attribution against the cart, without changing it. */
       PUT: async ({ request }) =>
         guard(async () => {
+          if (referralUnavailable()) return json({ applicable: false, quote: null });
           const viewer = await requireUser(request);
           /*
             Pricing is a read, but it records the identities this request

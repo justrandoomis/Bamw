@@ -291,3 +291,33 @@ describe("PUT /api/referral", () => {
     expect(res.status).toBe(401);
   });
 });
+
+describe("a deployment with no signing key", () => {
+  it("reports the programme as off instead of failing the cart's read", async () => {
+    const original = SECRETS["SESSION_SECRET"];
+    delete SECRETS["SESSION_SECRET"];
+    try {
+      const res = await handlers().GET({
+        request: new Request("https://banan.to/api/referral", { headers: new Headers(HEADERS) }),
+      });
+      expect(res.status).toBe(200);
+      const body = await res.json();
+      expect(body.terms.enabled).toBe(false);
+      expect(body.share).toBeNull();
+    } finally {
+      SECRETS["SESSION_SECRET"] = original!;
+    }
+  });
+
+  it("refuses to apply a code, in the same words as every refusal", async () => {
+    const original = SECRETS["SESSION_SECRET"];
+    delete SECRETS["SESSION_SECRET"];
+    try {
+      const res = await post({ code: "ABC12345" });
+      expect(res.status).toBe(503);
+      expect((await res.json()).message).toBe(service.REFERRAL_REFUSAL_MESSAGE);
+    } finally {
+      SECRETS["SESSION_SECRET"] = original!;
+    }
+  });
+});
