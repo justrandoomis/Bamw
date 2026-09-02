@@ -44,32 +44,40 @@ jobs:
         with:
           persist-credentials: false
 
+      # No `cache: npm`. It keys the cache off a lockfile, and this repository
+      # commits none — `package-lock.json` is on line 44 of `.gitignore`, so
+      # the runner checks out a tree without one and `setup-node` fails before
+      # a single gate has run. The release job has never set it, which is why
+      # that one survives.
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: npm
 
       # `npm install`, not `npm ci`, and deliberately: it is exactly what the
       # release job runs, and the point of this gate is that "passed CI" means
       # "can be deployed". Installing differently here would break that.
       #
-      # `npm ci` is the one that ought to be used, and it currently cannot be:
-      # `package-lock.json` has drifted out of sync with `package.json`
-      # (miniflare, workerd, undici and ajv all resolve differently), so it
-      # refuses outright. The step below reports that rather than leaving it
-      # invisible; re-syncing the lockfile is a dependency change and belongs
-      # in its own commit, not smuggled into a CI one.
+      # `npm ci` is what ought to be used and cannot be, because there is no
+      # lockfile to install from — see the step below.
       - run: npm install --no-audit --no-fund
 
-      - name: Lockfile drift (advisory)
+      # Not a gate, a standing notice.
+      #
+      # `package-lock.json` is ignored, so every install here and in the
+      # release resolves `package.json` from scratch: two deploys of the same
+      # commit can install different transitive versions, and an upstream
+      # patch release lands on the shop without anyone choosing it. Committing
+      # a lockfile is the fix, and it is a dependency change that deserves its
+      # own commit rather than riding along inside a CI one.
+      - name: Reproducible install (advisory)
         continue-on-error: true
         run: |
-          if npm ci --dry-run --no-audit --no-fund >/dev/null 2>&1; then
-            echo "package-lock.json is in sync with package.json"
+          if [ -f package-lock.json ] && git ls-files --error-unmatch package-lock.json >/dev/null 2>&1; then
+            echo "a lockfile is committed — installs are reproducible"
           else
-            echo "::warning::package-lock.json has drifted from package.json —"\
-                 "builds are not reproducible until it is re-synced with 'npm install'"
-            npm ci --dry-run --no-audit --no-fund 2>&1 | grep -E "Invalid|Missing" | head -20 || true
+            echo "::warning title=No committed lockfile::package-lock.json is \
+          gitignored, so every install re-resolves package.json and two builds \
+          of the same commit can differ"
           fi
 
       # The four gates, in the order that fails cheapest first. Each is its own
