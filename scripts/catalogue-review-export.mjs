@@ -70,6 +70,7 @@ for (const row of overlays) {
 }
 
 const games = [...live.values()]
+  .filter((p) => !p["_deleted"] && !p["isDeleted"])
   .filter((p) => app.getProductCategory(p) === "game")
   .sort((a, b) => String(a.slug || a.id).localeCompare(String(b.slug || b.id)));
 

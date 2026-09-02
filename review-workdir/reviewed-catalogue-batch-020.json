@@ -1,48 +1,78 @@
 {
  "batch": "020",
- "apply": false,
+ "apply": true,
  "games": [
   {
    "id": "prd_9697d218d8874340",
    "slug": "pokemon-pokopia",
    "baseHash": "74997efc22d6e1fce18067bae7a1d660eb09a7978ef32211fae2c099483a37e3",
    "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "clear": [
+    "nintendoCardImage",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "The square-card reference was a dead R2 file (403) — removed; box, cover, banners and galleries all verified working, so listings fall back cleanly. 2026-03-05, 6.8 GB, sourced dynamic-1080p/4K-output record kept. Contamination removed."
   },
   {
    "id": "prd_6e23a34819ac4bc6",
    "slug": "pragmata",
    "baseHash": "08d7f35ae28d2f6c28b8cd1d77f9dd8618f316af70fbde735e5c498715c0a44f",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "coverImage": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101665/3a8331b2f7b73d1fdb9b92dd9afdb2aff9602f1d89a9cfa171bf2561e480076e",
+    "image": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101665/3a8331b2f7b73d1fdb9b92dd9afdb2aff9602f1d89a9cfa171bf2561e480076e",
+    "bannerImages": [
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101665/0e08bade3593b5f6c3b9c27d1d1cbf6ec562e5ea6cfe57c2bd513e902e335e39",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101665/2dd53cb4fc41d8af857e45411330f474b2c4098c522bd7d74e93cc2c14abe704"
+    ]
+   },
+   "clear": [
+    "youtubeTrailer",
+    "galleryImages",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "Cover, listing image and all three banners were dead R2 references — rebuilt from the three working eShop galleries: one becomes cover and listing, two become banners (the gallery moves entirely and its section hides; no duplication). The trailer field held a YouTube SEARCH link — removed. Genuine box and square card verified working. 2026-04-17, 13.2 GB, Metacritic 88, 1080p/1440p at 60 fps record kept. Contamination removed."
   },
   {
    "id": "prd_045678e2e2c04cc7",
+   "slug": "",
    "baseHash": "0f2d6dfd6c5cdddc252cdbc7ea705a2722edcb56d55590a13d5630ea84981bab",
    "set": {},
    "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "notes": "Deletion tombstone ({'id', '_deleted': true}), not a game: the export's category filter treated it as one. The export script now skips tombstones; this clean entry records it as reviewed so it never re-exports. Nothing written to production."
   },
   {
    "id": "prd_07ad22877d9942d2",
+   "slug": "",
    "baseHash": "b6f29fc2a512b37352b4d78d027400618ebab9cae04d8c40120f2252c4fc68a8",
    "set": {},
    "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "notes": "Deletion tombstone ({'id', '_deleted': true}), not a game: the export's category filter treated it as one. The export script now skips tombstones; this clean entry records it as reviewed so it never re-exports. Nothing written to production."
   },
   {
    "id": "prd_0cc8d009345f4ea0",
+   "slug": "",
    "baseHash": "fbcc982f3c55033a2ec160f0ca662fc39287af3db890f0542b5d8dad23502b58",
    "set": {},
    "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "notes": "Deletion tombstone ({'id', '_deleted': true}), not a game: the export's category filter treated it as one. The export script now skips tombstones; this clean entry records it as reviewed so it never re-exports. Nothing written to production."
   }
  ]
 }
