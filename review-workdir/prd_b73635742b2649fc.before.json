@@ -355,68 +355,21 @@
   {
    "device": "Nintendo Switch",
    "deviceSlug": "nintendo-switch",
-   "deviceModel": "Nintendo Switch family",
-   "informationStatus": "partial",
-   "unavailableReason": "Supported play modes and historical qualitative cloud reviews are documented. Exact current per-mode resolution, FPS, network latency, server preset and tested hardware revision are not independently established.",
+   "informationStatus": "not_published",
+   "unavailableReason": "Cloud-streamed version: delivered resolution and frame rate depend on the streaming service and the player's connection. Nintendo and Focus Entertainment publish no fixed figures.",
    "handheld": {
     "supported": true,
-    "resolution": "Cloud stream; exact delivered resolution not verified.",
-    "hdr": false,
-    "vrr": false,
-    "mode": "Cloud streaming",
-    "notes": "Supported by Nintendo. Not a native local render; no measured resolution/FPS pair is claimed. Nintendo Switch 1 does not output HDR or VRR. Internet remains mandatory in this mode."
+    "resolution": "Cloud stream — not published",
+    "fps": "Cloud stream — not published"
    },
    "tv": {
     "supported": true,
-    "resolution": "Cloud stream; exact delivered resolution not verified.",
-    "hdr": false,
-    "vrr": false,
-    "mode": "Cloud streaming",
-    "notes": "Supported by Nintendo. Not a native local render; no measured resolution/FPS pair is claimed. Nintendo Switch 1 does not output HDR or VRR. Internet remains mandatory in this mode."
+    "resolution": "Cloud stream — not published",
+    "fps": "Cloud stream — not published"
    },
-   "modes": [
-    {
-     "name": "Cloud streaming",
-     "hdr": false,
-     "vrr": false,
-     "notes": "No separately verified performance/quality selection or per-mode benchmark is asserted for this cloud launcher."
-    }
-   ],
-   "upscaling": "The server upscaling implementation has not been verified for this Switch stream.",
-   "rayTracingMode": "No ray-tracing mode has been verified for this Switch Cloud release.",
-   "loadingTime": "Approximately 150 seconds in a historical review",
-   "loadingNotes": "Nintendo World Report reported roughly 2.5 minutes from the HOME screen to gameplay in its review published 2021-08-12. This includes cloud connection/startup; it is not a controlled local-storage benchmark or a present-day guarantee.",
-   "sourceName": "Nintendo product/support pages; Ubitus; Nintendo World Report; Rapid Reviews UK; Pure Nintendo",
-   "sourceUrl": "https://www.nintendoworldreport.com/review/58068/a-plague-tale-innocence-cloud-edition-switch-review",
-   "verifiedAt": "2026-08-28",
-   "verificationStatus": "partial",
-   "performanceNotes": "See the full Performance Review above for attributed reports and evidence limitations. The separate Nintendo Switch 2 record documents compatibility and explicitly identifies unverified cloud-stream measurements; it is not a new benchmark."
-  },
-  {
-   "device": "Nintendo Switch 2",
-   "deviceSlug": "nintendo-switch-2",
-   "deviceModel": "Nintendo Switch 2",
-   "informationStatus": "partial",
-   "unavailableReason": "Nintendo's product metadata lists Nintendo Switch 2 compatibility as supported with no issues found. This confirms compatibility, not measured resolution or frame rate. No independently verified Nintendo Switch 2 handheld or TV cloud-stream resolution/FPS measurement was established. The game remains a Nintendo Switch Cloud release, not a native Switch 2 edition.",
-   "handheld": {
-    "supported": true,
-    "resolution": "Cloud streaming; exact Nintendo Switch 2 handheld resolution has not been verified.",
-    "fps": "Cloud streaming; Nintendo Switch 2 handheld FPS has not been independently measured.",
-    "mode": "Cloud streaming via backward compatibility",
-    "notes": "The handheld display's maximum resolution and refresh rate do not establish the resolution or FPS delivered by this game. Continuous internet is required. No 1080p, 60 FPS or 120 FPS performance guarantee is made."
-   },
-   "tv": {
-    "supported": true,
-    "resolution": "Cloud streaming; exact Nintendo Switch 2 TV-mode resolution has not been verified.",
-    "fps": "Cloud streaming; Nintendo Switch 2 TV-mode FPS has not been independently measured.",
-    "mode": "Cloud streaming via backward compatibility",
-    "notes": "TV mode does not turn this cloud release into the enhanced PS5/Xbox version. No 4K or 60 FPS guarantee is made. Actual stream quality depends on the service and connection; test the demo at the intended location."
-   },
-   "sourceName": "Nintendo Europe - product compatibility metadata and cloud requirements",
-   "sourceUrl": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-download-software/A-Plague-Tale-Innocence-Cloud-Version-2002534.html",
-   "verifiedAt": "2026-08-28",
-   "verificationStatus": "partial",
-   "performanceNotes": "Compatibility evidence is separate from performance evidence. This record was added because the importer requires Nintendo Switch 2 information. It does not claim a hands-on test, a native Switch 2 upgrade or unsupported handheld/TV modes. Use the complete Performance Review for historical Switch 1 reports, which must not be relabeled as Switch 2 measurements."
+   "sourceName": "Nintendo eShop product page (Cloud Version)",
+   "sourceUrl": "https://www.nintendo.com/us/store/products/a-plague-tale-innocence-cloud-version-switch/",
+   "verificationStatus": "official"
   }
  ],
  "downloadSizeGb": 0.087,
@@ -982,5 +935,6 @@
  "schemaId": "",
  "batchImport": true,
  "createdAt": "2026-08-28T18:53:08.757Z",
- "updatedAt": "2026-08-28T18:53:08.757Z"
+ "updatedAt": "2026-09-02T01:55:56.924Z",
+ "updated_at": "2026-09-02T01:55:56.924Z"
 }

@@ -1,0 +1,573 @@
+{
+ "title": "Assassin's Creed Shadows",
+ "titleEn": "Assassin's Creed Shadows",
+ "titleKu": "Assassin's Creed Shadows",
+ "slug": "assassins-creed-shadows-switch-2",
+ "description": "An open-world Assassin's Creed adventure set in late Sengoku-period Japan, starring shinobi Naoe and samurai Yasuke. The Switch 2 version targets 30 fps, supports touch controls, HDR output, save-data cloud and Ubisoft Connect cross-progression.",
+ "descriptionEn": "An open-world Assassin's Creed adventure set in late Sengoku-period Japan, starring shinobi Naoe and samurai Yasuke. The Switch 2 version targets 30 fps, supports touch controls, HDR output, save-data cloud and Ubisoft Connect cross-progression.",
+ "descriptionKu": "An open-world Assassin's Creed adventure set in late Sengoku-period Japan, starring shinobi Naoe and samurai Yasuke. The Switch 2 version targets 30 fps, supports touch controls, HDR output, save-data cloud and Ubisoft Connect cross-progression.",
+ "cartridgeImage": "/api/files/products/prd_ad958aa523e24052/front-410ddd3a72ecaa7b.webp",
+ "nintendoCardImage": "/api/files/products/prd_ad958aa523e24052/square-2c2b52268e4d090b.webp",
+ "coverHiResImage": "",
+ "coverImage": "/api/files/products/prd_ad958aa523e24052/cover-9ceffdcf1e83ce6d.jpg",
+ "bannerImages": [
+  "https://banan.to/api/files/products/prd_ad958aa523e24052/banner-2-6f8802f4c2a9205b.jpg",
+  "https://banan.to/api/files/products/prd_ad958aa523e24052/banner-3-6475af012b5c8f44.jpg"
+ ],
+ "gallery": [],
+ "youtubeTrailer": "https://www.youtube.com/watch?v=3oTfnzXb8OE",
+ "releaseDate": "2025-12-02",
+ "ageRating": "ESRB Mature 17+ / PEGI 18",
+ "metacriticRating": 81,
+ "genres": [
+  "Open-World Action",
+  "Stealth",
+  "Action Adventure"
+ ],
+ "platform": "switch2",
+ "size": 62.8,
+ "numberOfPlayers": "1",
+ "supportedLanguages": "English / Japanese; French / German / Italian / Spanish / Portuguese / Russian; Korean / Simplified Chinese / Traditional Chinese",
+ "hardwareModel": "",
+ "colorEdition": "",
+ "storageCapacity": "",
+ "screenSpecs": "",
+ "batteryLife": "",
+ "boxContents": [],
+ "boxContentsText": "",
+ "warrantyCondition": "",
+ "connectivity": "",
+ "characterName": "Link",
+ "amiiboSeries": "The Legend of Zelda",
+ "figureType": "figure",
+ "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+ "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+ "boxCondition": "mib",
+ "releaseWave": "Wave 2 (Restock)",
+ "rarity": "standard",
+ "accessoryType": "حقيبة حماية وتنقل Carry Case",
+ "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+ "brand": "Nintendo Official",
+ "material": "Hard EVA Shockproof Shell",
+ "availableColors": "Black, Neon Red/Blue, White",
+ "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+ "cardValue": "$20 eShop Balance",
+ "region": "Global",
+ "cardType": "eshop",
+ "deliveryMethod": "instant_code",
+ "redemptionGuide": "",
+ "redemptionSteps": [],
+ "validity": "no_expiry",
+ "usedType": "cartridge",
+ "conditionGrade": "like_new",
+ "packaging": "cib",
+ "guaranteeStatus": "tested_30days",
+ "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+ "accountType": "primary",
+ "badge": "وفر 40%",
+ "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+ "price": 15000,
+ "cost": 3000,
+ "stock": 999999,
+ "isInfiniteStock": true,
+ "isHidden": false,
+ "displayOrder": 0,
+ "category": "nintendo-switch-games",
+ "categoryId": "nintendo-switch-games",
+ "categoryEn": "",
+ "categoryKu": "",
+ "options": [
+  {
+   "id": "offline_account",
+   "name": "حساب أوفلاين",
+   "description": "حساب مخصص للعب دون اتصال بعد إكمال خطوات التفعيل.",
+   "stock": 9999,
+   "isInfiniteStock": true,
+   "customerDescription": "حساب مشترك"
+  },
+  {
+   "id": "online_account",
+   "name": "حساب أونلاين",
+   "description": "حساب يدعم تشغيل اللعبة مع الاتصال والميزات المتاحة أونلاين.",
+   "stock": 9999,
+   "isInfiniteStock": true,
+   "customerDescription": "حساب خاص بك"
+  }
+ ],
+ "types": [
+  {
+   "id": "standard_offline",
+   "name": "حساب أوفلاين — عادي",
+   "optionId": "offline_account",
+   "price": "",
+   "cost": 3000,
+   "description": "تشمل الإصدار العادي من اللعبة.",
+   "stock": 9999,
+   "isInfiniteStock": true,
+   "internalNote": "Offline Account: supplier cost 3,000 IQD; selling price 18,000 IQD."
+  },
+  {
+   "id": "dlc_offline",
+   "name": "حساب أوفلاين — مع الإضافات",
+   "optionId": "offline_account",
+   "price": "19000",
+   "cost": 7750,
+   "description": "تشمل اللعبة الأساسية والمحتوى الإضافي المثبت في هذا الإصدار.",
+   "stock": 9999,
+   "isInfiniteStock": true,
+   "customerDescription": "اللعبة مع الإضافات",
+   "internalNote": "Offline Special/DLC: supplier cost 7,750 IQD; selling price 22,000 IQD."
+  },
+  {
+   "id": "standard_online",
+   "name": "حساب أونلاين — عادي",
+   "optionId": "online_account",
+   "price": "45000",
+   "cost": 25000,
+   "description": "تشمل الإصدار العادي من اللعبة.",
+   "stock": 9999,
+   "isInfiniteStock": true,
+   "internalNote": "Online Account: supplier cost 25,000 IQD; selling price 35,000 IQD."
+  },
+  {
+   "id": "dlc_online",
+   "name": "حساب أونلاين — مع الإضافات",
+   "optionId": "online_account",
+   "price": "58000",
+   "cost": 38000,
+   "description": "تشمل اللعبة الأساسية والمحتوى الإضافي المثبت في هذا الإصدار.",
+   "stock": 9999,
+   "isInfiniteStock": true,
+   "customerDescription": "اللعبة مع الإضافات",
+   "internalNote": "Online Deluxe/DLC: supplier cost 38,000 IQD; selling price 48,000 IQD."
+  }
+ ],
+ "editions": [],
+ "dlcs": [],
+ "isActive": true,
+ "status": "Active",
+ "kind": "account",
+ "trade_value_iqd": 45000,
+ "store_offer_bonus_iqd": 2500,
+ "trade_enabled": true,
+ "trade_value_locked": false,
+ "id": "prd_ad958aa523e24052",
+ "schema_version": 23,
+ "titleAr": "أساسنز كريد شادوز",
+ "compatibility": [
+  "Nintendo Switch 2"
+ ],
+ "edition": "Standard / available account variants",
+ "developer": "Ubisoft Quebec",
+ "publisher": "Ubisoft",
+ "metacriticUrl": "https://www.metacritic.com/game/assassins-creed-shadows/",
+ "opencriticRating": 81,
+ "userScore": 6.1,
+ "price_usd": 59.99,
+ "officialUrl": "https://www.ubisoft.com/en-us/game/assassins-creed/shadows",
+ "eshopUrl": "https://ec.nintendo.com/NZ/en/titles/70010000101040",
+ "gameIsOffline": true,
+ "gameIsOnline": false,
+ "gameLanguageLocked": false,
+ "description_short": "An open-world Assassin's Creed adventure set in late Sengoku-period Japan, starring shinobi Naoe and samurai Yasuke. The Switch 2 version targets 30 fps, supports touch controls, HDR output, save-data cloud and Ubisoft Connect cross-progression.",
+ "description_ar": "مغامرة Assassin's Creed بعالم مفتوح في اليابان خلال أواخر حقبة Sengoku، بشخصيتين مختلفتين: Naoe الشينوبي المتخصصة بالتسلل وYasuke الساموراي المتخصص بالقتال المباشر. نسخة Switch 2 تستهدف 30fps وتدعم اللمس وHDR وcross-progression عبر Ubisoft Connect.",
+ "box_front_url": "https://images.kabum.com.br/produtos/fotos/952237/jogo-assassinos-creed-shadows-para-nintendo-switch-2-ub000084nsw_1765543878_gg.jpg",
+ "box_back_url": "https://www.jnlgame.com/cdn/shop/files/D8102474-78BA-466B-ACCC-B674358E8635.jpg?v=1764356582&width=5760",
+ "galleryImages": [
+  {
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101043/a84d3fc77995ec699dc770fe1a3b2e5dc2aa3521c0d9e8c130f51d5c30b60678",
+   "alt": "Distinct verified game media image 1"
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101043/01a5078449adce58986dd9657b50dd49bebcba9995d3f0e760e356451269a419",
+   "alt": "Distinct verified game media image 2"
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101043/cd78f78516fc3ad03c703ebff2f4f48fefc62dc02fb50b2f6de08ff97257decf",
+   "alt": "Distinct verified game media image 3"
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101043/2013a2278a51465fca7758c7cd3587f30f7fb78e53ce4efefc1d5058b00f779b",
+   "alt": "Distinct verified game media image 4"
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101043/a007ce4d5dd7b763d73ac5a9f282bedb7b618225902b300fa3bfd4cc7ba1fe41",
+   "alt": "Distinct verified game media image 5"
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101043/97fac375415ac25c7999610f381dbb6a8a8355facc2973423f07531e8c272488",
+   "alt": "Distinct verified game media image 6"
+  },
+  {
+   "url": "https://staticctf.ubisoft.com/J3yJr34U2pZ2Ieem48Dwy9uqj5PNUQTn/7KOVYSn44FSTaCnFUjTZkB/b96d4ea8a4ab5b64eeacef9669a86a53/Nowaki.jpg",
+   "alt": "Distinct verified game media image 7"
+  },
+  {
+   "url": "https://staticctf.ubisoft.com/J3yJr34U2pZ2Ieem48Dwy9uqj5PNUQTn/m5wQaaNZpdIihXZqtYTgG/9d5bb2eaff395257c4c4ecbbf3232898/yasuke.jpg",
+   "alt": "Distinct verified game media image 8"
+  },
+  {
+   "url": "https://staticctf.ubisoft.com/J3yJr34U2pZ2Ieem48Dwy9uqj5PNUQTn/3jEOSdKv9TXCfBYh510RWB/61df1c5418172f0657e03e34600658b1/Eshima.jpg",
+   "alt": "Distinct verified game media image 9"
+  }
+ ],
+ "videos": [
+  {
+   "title": "Official trailer",
+   "url": "https://www.ubisoft.com/en-us/game/assassins-creed/shadows"
+  },
+  {
+   "title": "Nintendo / publisher overview",
+   "url": "https://ec.nintendo.com/NZ/en/titles/70010000101040"
+  },
+  {
+   "title": "Gameplay and feature media",
+   "url": "https://ec.nintendo.com/NZ/en/titles/70010000101040"
+  }
+ ],
+ "nsuid": "See official Nintendo product page",
+ "title_id": "Nintendo internal title ID not exposed as a user-facing retail identifier",
+ "product_code": "Platform retail/digital product code varies by region",
+ "nintendoEshopUrl": "https://ec.nintendo.com/NZ/en/titles/70010000101040",
+ "nintendoOnlineRequired": false,
+ "nintendoCloudSaves": true,
+ "nintendoGameKeyCard": true,
+ "nintendoPhysicalNeedsDownload": true,
+ "tvMode": true,
+ "tabletopMode": true,
+ "handheldMode": true,
+ "nintendoPlayModes": "TV / Tabletop / Handheld",
+ "nintendoNotes": "Verified platform/store information for Assassin's Creed Shadows. Online features require Nintendo Switch Online where applicable. Storage and supported-language values are taken from current Nintendo/publisher listings.",
+ "switch2Enhanced": false,
+ "switch2Exclusive": true,
+ "switch2UpgradePrice": 0,
+ "switch2Features": [
+  "Two protagonists with distinct stealth/combat systems",
+  "Dynamic seasons, weather and reactive environments",
+  "Touchscreen UI and Ubisoft Connect cross-progression on Switch 2"
+ ],
+ "tagline": "Become a shinobi in the shadows or a samurai in the open fields of feudal Japan.",
+ "fitFor": [
+  "Players who enjoy large historical open worlds",
+  "Stealth players who want a dedicated shinobi toolkit",
+  "Action players who prefer heavy samurai combat"
+ ],
+ "notFitFor": [
+  "Players who require 60 fps",
+  "Players who dislike very large maps and long campaigns",
+  "Players who want multiplayer-focused Assassin's Creed"
+ ],
+ "playTimeMain": 36,
+ "playTimeFull": 99.5,
+ "editionsList": [
+  {
+   "name": "Standard Edition",
+   "coverUrl": "https://images.kabum.com.br/produtos/fotos/952237/jogo-assassinos-creed-shadows-para-nintendo-switch-2-ub000084nsw_1765543878_gg.jpg",
+   "contents": [
+    {
+     "label": "Base game"
+    },
+    {
+     "label": "Standard content"
+    },
+    {
+     "label": "Platform features"
+    }
+   ]
+  },
+  {
+   "name": "DLC / Special Edition",
+   "coverUrl": "https://assets.nintendo.com/image/upload/ar_1%3A1%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101043/27e7c0866bfdf82d63a1486122e2dff215a5604794b7c8311256fb5d60a650b0",
+   "contents": [
+    {
+     "label": "Claws of Awaji"
+    },
+    {
+     "label": "Base game + DLC account option"
+    },
+    {
+     "label": "Additional edition content"
+    }
+   ]
+  },
+  {
+   "name": "Premium Edition",
+   "coverUrl": "https://staticctf.ubisoft.com/J3yJr34U2pZ2Ieem48Dwy9uqj5PNUQTn/36Us9qk99eRH7CJEj0xF1O/6eb7544aa5a5812cc9615d31e5875080/ACS_Switch2_launchArticle_asset2.jpg",
+   "contents": [
+    {
+     "label": "Base game"
+    },
+    {
+     "label": "Claws of Awaji"
+    },
+    {
+     "label": "Sekiryu packs + Mastery Points"
+    }
+   ]
+  }
+ ],
+ "gameplayPillars": [
+  {
+   "title": "Shinobi stealth",
+   "description": "Naoe uses shadows, sound, prone movement, grappling, kunai, shuriken and the Hidden Blade.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101043/27e7c0866bfdf82d63a1486122e2dff215a5604794b7c8311256fb5d60a650b0"
+  },
+  {
+   "title": "Samurai combat",
+   "description": "Yasuke relies on powerful melee weapons, posture attacks, blocks and parries.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101043/a84d3fc77995ec699dc770fe1a3b2e5dc2aa3521c0d9e8c130f51d5c30b60678"
+  },
+  {
+   "title": "Reactive open world",
+   "description": "Weather and seasons affect stealth, traversal and the visual state of the environment.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101043/01a5078449adce58986dd9657b50dd49bebcba9995d3f0e760e356451269a419"
+  }
+ ],
+ "worldSummary": "The game recreates late-16th-century Japan across castle towns, ports, shrines, countryside and forests. Seasonal changes alter vegetation, water, visibility and infiltration opportunities, while a spy network and scouts help uncover targets and locations.",
+ "storyChapters": [
+  {
+   "title": "Naoe's path",
+   "body": "A shinobi from Iga pursues revenge and an impossible promise after conflict reaches her homeland.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101043/cd78f78516fc3ad03c703ebff2f4f48fefc62dc02fb50b2f6de08ff97257decf"
+  },
+  {
+   "title": "Yasuke's path",
+   "body": "The historical African samurai serves as the game's combat-focused protagonist while confronting his past.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101043/2013a2278a51465fca7758c7cd3587f30f7fb78e53ce4efefc1d5058b00f779b"
+  },
+  {
+   "title": "A shared destiny",
+   "body": "Their stories intersect amid political upheaval, secret factions and the struggle surrounding Japan's unification.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101043/a007ce4d5dd7b763d73ac5a9f282bedb7b618225902b300fa3bfd4cc7ba1fe41"
+  }
+ ],
+ "features": [
+  "Two protagonists with distinct stealth/combat systems",
+  "Dynamic seasons, weather and reactive environments",
+  "Touchscreen UI and Ubisoft Connect cross-progression on Switch 2"
+ ],
+ "perfResolutionDocked": "1080p output target via reconstruction",
+ "perfResolutionHandheld": "1080p output target via reconstruction",
+ "perfFps": "30",
+ "perfHdr": true,
+ "perfNotes": "Ubisoft officially targets 30 fps in both modes. Technical analysis reports aggressive dynamic internal resolution and reconstruction; the exact internal pixel count varies by scene.",
+ "devicePerformance": [
+  {
+   "device": "Nintendo Switch 2",
+   "deviceSlug": "nintendo-switch-2",
+   "informationStatus": "available",
+   "handheld": {
+    "supported": true,
+    "resolution": "1080p output target via reconstruction",
+    "fps": "30"
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "1080p output target via reconstruction",
+    "fps": "30"
+   },
+   "sourceName": "Switch 2 launch coverage; Ubisoft has not published a full official spec sheet",
+   "sourceUrl": "https://www.ubisoft.com/en-us/game/assassins-creed/shadows",
+   "verificationStatus": "unverified",
+   "hardwareId": "prd_acf4c89908764c62",
+   "deviceModel": "Nintendo Switch 2"
+  }
+ ],
+ "downloadSizeGb": 62.8,
+ "requiredSpaceGb": 68.9,
+ "microSdRecommended": true,
+ "storageNotes": "Nintendo eShop lists 68.9 GB required space for the base Switch 2 game. The Game-Key Card requires the full game download. Premium Edition is larger because it includes Claws of Awaji and additional content.",
+ "languagesAudio": [
+  "English",
+  "Japanese",
+  "French / German / Italian / Spanish / Portuguese"
+ ],
+ "languagesText": [
+  "English / Japanese",
+  "French / German / Italian / Spanish / Portuguese / Russian",
+  "Korean / Simplified Chinese / Traditional Chinese"
+ ],
+ "arabicSupport": false,
+ "mpLocalPlayers": false,
+ "mpOnlinePlayers": false,
+ "mpCoop": false,
+ "mpCompetitive": false,
+ "mpSplitScreen": false,
+ "mpLocalWireless": false,
+ "dlc": [
+  {
+   "name": "The Claws of Awaji",
+   "title": "The Claws of Awaji",
+   "description": "Story expansion set on Awaji island (around 10 extra hours). Not included with the Nintendo Switch 2 release — sold separately, arriving in 2026.",
+   "releaseDate": ""
+  }
+ ],
+ "guides": [
+  {
+   "title": "Official product information",
+   "summary": "Platform, release, storage, language and feature information for Assassin's Creed Shadows.",
+   "url": "https://ec.nintendo.com/NZ/en/titles/70010000101040"
+  },
+  {
+   "title": "Official game overview",
+   "summary": "Publisher/developer overview of story, gameplay and features.",
+   "url": "https://www.ubisoft.com/en-us/game/assassins-creed/shadows"
+  },
+  {
+   "title": "Reviews and playtime reference",
+   "summary": "Critic/user scores and completion-time context.",
+   "url": "https://www.dekudeals.com/items/assassin-s-creed-shadows"
+  }
+ ],
+ "completionMain": 36,
+ "completionExtras": 65,
+ "completionAll": 99.5,
+ "faq": [
+  {
+   "q": "Can the Switch 2 version be played offline?",
+   "a": "Yes after installation. Ubisoft states an internet connection is required for installation, after which the main game can be played offline."
+  },
+  {
+   "q": "What is the frame-rate target?",
+   "a": "Ubisoft officially targets 30 fps in both handheld and docked modes."
+  },
+  {
+   "q": "Is Claws of Awaji available on Switch 2?",
+   "a": "Yes. The expansion released for Switch 2 on March 10, 2026."
+  }
+ ],
+ "verdictScore": 8.2,
+ "verdictSummary": "A technically ambitious portable conversion of Ubisoft's feudal-Japan open world. The dual-protagonist design is its biggest strength, while the Switch 2 version necessarily uses aggressive reconstruction and a 30 fps target.",
+ "verdictPros": [
+  "Excellent Naoe/Yasuke gameplay contrast",
+  "Rich feudal-Japan world and seasonal systems",
+  "Touch controls and cross-progression"
+ ],
+ "verdictCons": [
+  "30 fps target",
+  "Very large 68.9 GB download",
+  "Game-Key Card requires full download"
+ ],
+ "reviews": [
+  {
+   "source": "Metacritic – Switch 2",
+   "score": "80/100",
+   "quote": "Generally favorable Switch 2 aggregate.",
+   "url": "https://www.metacritic.com/game/assassins-creed-shadows/critic-reviews/"
+  },
+  {
+   "source": "OpenCritic",
+   "score": "81/100",
+   "quote": "Cross-platform critic aggregate.",
+   "url": "https://opencritic.com/game/16782/assassins-creed-shadows"
+  },
+  {
+   "source": "Deku Deals user rating",
+   "score": "3.8/5",
+   "quote": "Current Nintendo-store-linked user rating snapshot.",
+   "url": "https://www.dekudeals.com/items/assassin-s-creed-shadows"
+  }
+ ],
+ "timeline": [
+  {
+   "date": "2025-03-20",
+   "title": "Original release",
+   "body": "Assassin's Creed Shadows launched on PS5, Xbox Series and PC."
+  },
+  {
+   "date": "2025-12-02",
+   "title": "Nintendo Switch 2 release",
+   "body": "Switch 2 version launched with accumulated updates and touch controls."
+  },
+  {
+   "date": "2026-03-10",
+   "title": "Claws of Awaji on Switch 2",
+   "body": "The major expansion arrived on Nintendo Switch 2."
+  }
+ ],
+ "patchNotes": [
+  {
+   "version": "Switch 2 launch build",
+   "date": "2025-12-02",
+   "body": "Included New Game+, Nightmare difficulty, parkour improvements and previous free updates."
+  },
+  {
+   "version": "Claws of Awaji",
+   "date": "2026-03-10",
+   "body": "Major expansion released on Switch 2."
+  },
+  {
+   "version": "Ongoing title updates",
+   "date": "2026",
+   "body": "Ubisoft continues bug fixes, quality-of-life changes and content support."
+  }
+ ],
+ "soundtrack": [
+  {
+   "title": "Assassin's Creed Shadows Main Theme",
+   "url": "https://www.ubisoft.com/en-us/game/assassins-creed/shadows"
+  },
+  {
+   "title": "Naoe's Theme",
+   "url": "https://www.ubisoft.com/en-us/game/assassins-creed/shadows"
+  },
+  {
+   "title": "Yasuke's Theme",
+   "url": "https://www.ubisoft.com/en-us/game/assassins-creed/shadows"
+  }
+ ],
+ "seriesName": "Assassin's Creed Shadows",
+ "seriesEntries": [
+  "Assassin's Creed Mirage",
+  "Assassin's Creed Shadows",
+  "Assassin's Creed Valhalla"
+ ],
+ "studioName": "Ubisoft Quebec",
+ "studioUrl": "https://quebec.ubisoft.com/",
+ "studioLocation": "Quebec City, Canada",
+ "studioAbout": "Lead studio for Assassin's Creed Shadows, supported by a large network of Ubisoft studios worldwide.",
+ "setupNeeds": [
+  "Nintendo Switch 2",
+  "68.9 GB free storage for the base game",
+  "Internet connection for initial Game-Key Card installation; Ubisoft Account for applicable online/cross-progression features"
+ ],
+ "sources": [
+  {
+   "name": "Nintendo eShop",
+   "url": "https://ec.nintendo.com/NZ/en/titles/70010000101040"
+  },
+  {
+   "name": "Ubisoft Switch 2 launch article",
+   "url": "https://www.ubisoft.com/en-us/game/assass-creed/news/SkxXq98e1wMmzWMsCkRqY"
+  },
+  {
+   "name": "Deku Deals",
+   "url": "https://www.dekudeals.com/items/assassin-s-creed-shadows"
+  }
+ ],
+ "boxContentsList": "[Circular]",
+ "image": "/api/files/products/prd_ad958aa523e24052/cover-9ceffdcf1e83ce6d.jpg",
+ "banner": "/api/files/products/prd_ad958aa523e24052/banner-0-23b344afdd37e1c2.avif",
+ "schemaId": "",
+ "createdAt": "2026-08-27T00:27:47.504Z",
+ "created_at": "2026-08-27T00:27:47.504Z",
+ "updatedAt": "2026-09-02T01:44:52.622Z",
+ "updated_at": "2026-09-02T01:44:52.622Z",
+ "badgeEn": "وفر 40%",
+ "badgeKu": "وفر 40%",
+ "featuresEn": [
+  "Two protagonists with distinct stealth/combat systems",
+  "Dynamic seasons, weather and reactive environments",
+  "Touchscreen UI and Ubisoft Connect cross-progression on Switch 2"
+ ],
+ "featuresKu": [
+  "Two protagonists with distinct stealth/combat systems",
+  "Dynamic seasons, weather and reactive environments",
+  "Touchscreen UI and Ubisoft Connect cross-progression on Switch 2"
+ ],
+ "boxFrontUrl": "https://images.kabum.com.br/produtos/fotos/952237/jogo-assassinos-creed-shadows-para-nintendo-switch-2-ub000084nsw_1765543878_gg.jpg",
+ "sales": 0,
+ "images": [],
+ "modes": [],
+ "variants": "[Circular]"
+}

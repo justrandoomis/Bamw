@@ -1,0 +1,496 @@
+{
+ "title": "Bayonetta 3",
+ "titleEn": "Bayonetta 3",
+ "titleKu": "Bayonetta 3",
+ "slug": "bayonetta-3",
+ "description": "Bayonetta 3 pushes the series into a multiverse-spanning conflict. Bayonetta can directly command Infernal Demons with Demon Slave, transform through Demon Masquerade and fight alongside new witch-in-training Viola. The campaign mixes classic combo combat with giant demon battles and cinematic set pieces.",
+ "descriptionEn": "Bayonetta 3 pushes the series into a multiverse-spanning conflict. Bayonetta can directly command Infernal Demons with Demon Slave, transform through Demon Masquerade and fight alongside new witch-in-training Viola. The campaign mixes classic combo combat with giant demon battles and cinematic set pieces.",
+ "descriptionKu": "Bayonetta 3 pushes the series into a multiverse-spanning conflict. Bayonetta can directly command Infernal Demons with Demon Slave, transform through Demon Masquerade and fight alongside new witch-in-training Viola. The campaign mixes classic combo combat with giant demon battles and cinematic set pieces.",
+ "cartridgeImage": "/api/files/products/prd_704957ef027f4145/front-60f1d5d6a8b41e55.jpg",
+ "nintendoCardImage": "/api/files/products/prd_704957ef027f4145/square-d269f81248b71025.jpg",
+ "coverHiResImage": "/api/files/products/prd_704957ef027f4145/3d-texture-a7fc6b016bc7abdc.jpg",
+ "coverImage": "/api/files/products/prd_704957ef027f4145/cover-f5d15f1cc21926ca.jpg",
+ "bannerImages": [
+  "/api/files/products/prd_704957ef027f4145/banner-0-b40012aa68dc78b4.avif",
+  "/api/files/products/prd_704957ef027f4145/banner-1-821f7ef56069e856.avif",
+  "/api/files/products/prd_704957ef027f4145/banner-2-42fb6bbe36105323.avif",
+  "/api/files/products/prd_704957ef027f4145/banner-3-f513991fdc7d6886.avif",
+  "/api/files/products/prd_704957ef027f4145/banner-4-da716c92c7629ae2.avif",
+  "/api/files/products/prd_704957ef027f4145/banner-5-9cabdf9dbb67ad98.avif"
+ ],
+ "gallery": [],
+ "youtubeTrailer": "https://www.youtube.com/watch?v=gOGJGv6OoXA",
+ "releaseDate": "2022-10-28",
+ "ageRating": "ESRB Mature",
+ "metacriticRating": 86,
+ "genres": [
+  "Action",
+  "Adventure",
+  "Hack and Slash",
+  "Character Action",
+  "Fantasy Action"
+ ],
+ "platform": "switch1",
+ "size": 14.479,
+ "numberOfPlayers": "1",
+ "supportedLanguages": "Official Switch languages include Japanese, English, Spanish, French, German, Italian, Russian, Korean, Simplified Chinese and Traditional Chinese.",
+ "hardwareModel": "",
+ "colorEdition": "",
+ "storageCapacity": "",
+ "screenSpecs": "",
+ "batteryLife": "",
+ "boxContents": [],
+ "boxContentsText": "",
+ "warrantyCondition": "",
+ "connectivity": "",
+ "characterName": "Link",
+ "amiiboSeries": "The Legend of Zelda",
+ "figureType": "figure",
+ "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+ "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+ "boxCondition": "mib",
+ "releaseWave": "Wave 2 (Restock)",
+ "rarity": "standard",
+ "accessoryType": "حقيبة حماية وتنقل Carry Case",
+ "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+ "brand": "Nintendo Official",
+ "material": "Hard EVA Shockproof Shell",
+ "availableColors": "Black, Neon Red/Blue, White",
+ "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+ "cardValue": "$20 eShop Balance",
+ "region": "Global / region-dependent",
+ "cardType": "eshop",
+ "deliveryMethod": "instant_code",
+ "redemptionGuide": "",
+ "redemptionSteps": [],
+ "validity": "no_expiry",
+ "usedType": "cartridge",
+ "conditionGrade": "like_new",
+ "packaging": "cib",
+ "guaranteeStatus": "tested_30days",
+ "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+ "accountType": "primary",
+ "badge": "وفر 40%",
+ "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+ "price": 10500,
+ "cost": 1250,
+ "stock": 999999,
+ "isInfiniteStock": true,
+ "isHidden": false,
+ "displayOrder": 0,
+ "category": "nintendo-switch-games",
+ "categoryId": "nintendo-switch-games",
+ "categoryEn": "",
+ "categoryKu": "",
+ "options": [
+  {
+   "id": "offline_account",
+   "name": "Offline Account",
+   "description": "Offline account access from the supplier listing.",
+   "stock": 999999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_account",
+   "name": "Online Account",
+   "description": "Online account access from the supplier listing.",
+   "stock": 999999,
+   "isInfiniteStock": true
+  }
+ ],
+ "types": [
+  {
+   "id": "standard_offline",
+   "name": "Standard Offline",
+   "optionId": "offline_account",
+   "price": 10500,
+   "cost": 1250,
+   "description": "Supplier Regular / 普通版; ¥6.8 converted to IQD.",
+   "stock": 999999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "standard_online",
+   "name": "Standard Online",
+   "optionId": "online_account",
+   "price": "22000",
+   "cost": 10000,
+   "description": "Supplier Standard / 标准版; ¥46 converted to IQD.",
+   "stock": 999999,
+   "isInfiniteStock": true
+  }
+ ],
+ "editions": [],
+ "dlcs": [],
+ "isActive": true,
+ "status": "active",
+ "kind": "account",
+ "trade_value_iqd": 0,
+ "store_offer_bonus_iqd": 0,
+ "trade_enabled": true,
+ "trade_value_locked": false,
+ "id": "prd_704957ef027f4145",
+ "schema_version": 1,
+ "titleAr": "بايونيتا 3",
+ "compatibility": [
+  "Nintendo Switch",
+  "Nintendo Switch 2 (backward compatibility)",
+  "Nintendo Switch Lite"
+ ],
+ "edition": "Standard",
+ "developer": "PlatinumGames",
+ "publisher": "Nintendo",
+ "metacriticUrl": "https://www.metacritic.com/game/bayonetta-3/",
+ "opencriticRating": 85,
+ "userScore": 7.8,
+ "price_usd": 59.99,
+ "officialUrl": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-games/Bayonetta-3-2045649.html",
+ "eshopUrl": "https://www.nintendo.com/us/store/products/bayonetta-3-switch/",
+ "gameIsOffline": true,
+ "gameIsOnline": true,
+ "description_short": "A multiverse-scale stylish action game featuring Demon Slave control, Demon Masquerade transformations and playable Viola.",
+ "description_ar": "الجزء الثالث يوسّع السلسلة إلى صراع متعدد الأكوان. تستطيع Bayonetta التحكم المباشر بالشياطين عبر Demon Slave والتحول بقدرات Demon Masquerade، مع إمكانية اللعب بالشخصية الجديدة Viola ومعارك ضخمة واستعراضات سينمائية.",
+ "box_front_url": "https://images.launchbox-app.com/r2_b56e2727-a231-44da-ac60-5c650545edd1.jpg",
+ "box_back_url": "https://images.launchbox-app.com/972a64ed-0a05-4ea1-b077-4f80ab10757e.jpg",
+ "videos": [
+  {
+   "title": "Bayonetta 3 — Nintendo trailer",
+   "url": "https://www.youtube.com/watch?v=gOGJGv6OoXA"
+  },
+  {
+   "title": "Bayonetta 3 — Digital Foundry technical review",
+   "url": "https://www.youtube.com/results?search_query=Digital+Foundry+Bayonetta+3+Switch"
+  },
+  {
+   "title": "PlatinumGames — Bayonetta 3",
+   "url": "https://www.platinumgames.com/games/bayonetta-3/"
+  }
+ ],
+ "nintendoEshopUrl": "https://www.nintendo.com/us/store/products/bayonetta-3-switch/",
+ "nintendoOnlineRequired": false,
+ "nintendoCloudSaves": true,
+ "nintendoGameKeyCard": false,
+ "tvMode": true,
+ "tabletopMode": true,
+ "handheldMode": true,
+ "nintendoPlayModes": "TV / Tabletop / Handheld",
+ "nintendoNotes": "Native Nintendo Switch software released October 28, 2022. Nintendo lists Japanese, English, Spanish, French, German, Italian, Russian, Korean, Simplified Chinese and Traditional Chinese. The supplier’s Simplified Chinese label is therefore consistent with an officially supported text language. Nintendo Switch 2 support is backward compatibility, not a native Edition.",
+ "switch2Enhanced": false,
+ "switch2Exclusive": false,
+ "switch2Features": [
+  "Official backward compatibility",
+  "No native Switch 2 Edition",
+  "Original Switch rendering modes retained",
+  "Potential frame-rate stability benefits depend on backward-compatible execution rather than a dedicated patch"
+ ],
+ "tagline": "Bayonetta struts through multiple locations in an all-new, over-the-top climax action game.",
+ "fitFor": [
+  "Fans of high-speed character action",
+  "Players who want spectacular set pieces",
+  "Series fans interested in Demon Slave mechanics",
+  "Players who enjoy replaying stages for ranks and collectibles"
+ ],
+ "notFitFor": [
+  "Players sensitive to unstable frame rates",
+  "Players requiring high native resolution",
+  "Players seeking multiplayer campaign play",
+  "Players who dislike complex action controls"
+ ],
+ "playTimeMain": 13,
+ "playTimeFull": 47.5,
+ "editionsList": [
+  {
+   "name": "Bayonetta 3 — Nintendo Switch",
+   "coverUrl": "https://images.launchbox-app.com/r2_b56e2727-a231-44da-ac60-5c650545edd1.jpg",
+   "contents": [
+    {
+     "label": "Full Bayonetta 3 campaign"
+    },
+    {
+     "label": "Playable Bayonetta and Viola sections"
+    },
+    {
+     "label": "Demon Slave and Demon Masquerade systems"
+    }
+   ]
+  }
+ ],
+ "gameplayPillars": [
+  {
+   "title": "Demon Slave",
+   "description": "Directly command large Infernal Demons in real time to extend combos, solve encounters and battle giant enemies.",
+   "imageUrl": "https://images.launchbox-app.com/92db7cf4-452a-4dc5-9977-7a298e121b17.jpg"
+  },
+  {
+   "title": "Demon Masquerade",
+   "description": "Fuse with linked demons to transform movement and attacks with weapon-specific forms.",
+   "imageUrl": "https://images.launchbox-app.com/0dc4756b-cb75-412c-872e-f4e6893eff7e.jpg"
+  },
+  {
+   "title": "Viola",
+   "description": "Play selected chapters as Viola, whose sword-and-parry combat changes the defensive rhythm.",
+   "imageUrl": "https://images.launchbox-app.com/60e38b2d-8cfb-4912-a385-b1d691677c4f.png"
+  },
+  {
+   "title": "Multiverse Spectacle",
+   "description": "Travel across alternate realities with unique Bayonetta variants and huge cinematic battles.",
+   "imageUrl": "https://images.launchbox-app.com/db56011d-814b-4186-bcaf-e192a632c263.png"
+  }
+ ],
+ "worldSummary": "A man-made threat known as the Homunculi attacks multiple realities. Bayonetta travels through alternate worlds, meets other versions of herself and joins Viola while confronting Singularity and a collapse that threatens the multiverse.",
+ "storyChapters": [
+  {
+   "title": "Homunculi Invasion",
+   "body": "Artificial Homunculi begin destroying parallel worlds and destabilizing the multiverse.",
+   "imageUrl": "https://images.launchbox-app.com/92db7cf4-452a-4dc5-9977-7a298e121b17.jpg"
+  },
+  {
+   "title": "Across the Multiverse",
+   "body": "Bayonetta travels between alternate realities and meets different versions of herself.",
+   "imageUrl": "https://images.launchbox-app.com/0dc4756b-cb75-412c-872e-f4e6893eff7e.jpg"
+  },
+  {
+   "title": "Viola and Luka",
+   "body": "Viola joins the fight while Luka’s role grows increasingly important to the multiversal crisis.",
+   "imageUrl": "https://images.launchbox-app.com/60e38b2d-8cfb-4912-a385-b1d691677c4f.png"
+  },
+  {
+   "title": "Singularity",
+   "body": "The confrontation with Singularity escalates into a series of reality-spanning climax battles.",
+   "imageUrl": "https://images.launchbox-app.com/db56011d-814b-4186-bcaf-e192a632c263.png"
+  }
+ ],
+ "galleryImages": [
+  {
+   "url": "https://images.launchbox-app.com/92db7cf4-452a-4dc5-9977-7a298e121b17.jpg",
+   "alt": "Bayonetta 3 high-resolution background art"
+  },
+  {
+   "url": "https://images.launchbox-app.com/0dc4756b-cb75-412c-872e-f4e6893eff7e.jpg",
+   "alt": "Bayonetta 3 high-resolution fanart"
+  },
+  {
+   "url": "https://images.launchbox-app.com/60e38b2d-8cfb-4912-a385-b1d691677c4f.png",
+   "alt": "Bayonetta 3 gameplay screenshot"
+  },
+  {
+   "url": "https://images.launchbox-app.com/db56011d-814b-4186-bcaf-e192a632c263.png",
+   "alt": "Bayonetta 3 gameplay screenshot"
+  },
+  {
+   "url": "https://images.launchbox-app.com/9109b1bc-8166-4275-9a9a-47c4904e5b76.png",
+   "alt": "Bayonetta 3 gameplay screenshot"
+  },
+  {
+   "url": "https://images.launchbox-app.com/1c973387-3fe0-4634-b5a6-c3f1c63fac59.jpg",
+   "alt": "Bayonetta 3 promotional banner artwork"
+  }
+ ],
+ "features": [
+  "Demon Slave direct demon control",
+  "Demon Masquerade transformations",
+  "Playable Viola with parry-focused combat",
+  "Large-scale Infernal Demon encounters",
+  "Multiple Bayonetta variants and locations",
+  "Challenge stages and extensive collectibles"
+ ],
+ "perfResolutionDocked": "810p typical upper docked result",
+ "perfResolutionHandheld": "sub-480p reported in demanding portable presentation",
+ "perfFps": "60",
+ "perfHdr": false,
+ "perfNotes": "Bayonetta 3 is technically ambitious for Switch. Docked resolution reaches around 810p, portable presentation can sit below 480p, and regular gameplay targets 60 fps without maintaining a perfect lock. Cutscenes and some large-scale content run at 30 fps.",
+ "devicePerformance": [
+  {
+   "device": "Nintendo Switch 2",
+   "deviceSlug": "nintendo-switch-2",
+   "deviceModel": "Nintendo Switch 2",
+   "hardwareId": "prd_acf4c89908764c62",
+   "informationStatus": "measured / Digital Foundry technical reporting",
+   "handheld": {
+    "supported": true,
+    "resolution": "sub-480p reported in demanding portable presentation",
+    "resolutionDynamic": true,
+    "outputResolution": "1280x720",
+    "fps": "60",
+    "fpsMax": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "Handheld",
+    "notes": "Portable rendering is substantially lower than docked and can fall just below 480p-class presentation. Gameplay still targets 60 fps but is frequently unstable."
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "810p typical upper docked result",
+    "resolutionDynamic": true,
+    "outputResolution": "1920x1080",
+    "fps": "60",
+    "fpsMax": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "Docked",
+    "notes": "Docked rendering can reach roughly 810p. Standard gameplay targets 60 fps, while cinematics and some large-scale sequences use 30 fps presentation."
+   },
+   "rayTracing": false,
+   "sourceName": "Digital Foundry — Bayonetta 3 technical review",
+   "sourceUrl": "https://www.eurogamer.net/digitalfoundry-2022-bayonetta-3-is-a-great-game-but-nintendo-switch-doesnt-do-it-justice",
+   "verificationStatus": "verified / source-qualified",
+   "performanceNotes": "Bayonetta 3 is technically ambitious for Switch. Docked resolution reaches around 810p, portable presentation can sit below 480p, and regular gameplay targets 60 fps without maintaining a perfect lock. Cutscenes and some large-scale content run at 30 fps."
+  }
+ ],
+ "downloadSizeGb": 14.479,
+ "requiredSpaceGb": 14.479,
+ "microSdRecommended": false,
+ "storageNotes": "Official/reliable listing reports approximately 14.479 GB for the Nintendo Switch download. Leave additional free space for save data and future updates.",
+ "languagesAudio": [
+  "English",
+  "Japanese"
+ ],
+ "languagesText": [
+  "Chinese (Simplified)",
+  "Chinese (Traditional)",
+  "English",
+  "Japanese",
+  "French",
+  "German",
+  "Italian",
+  "Spanish",
+  "Russian",
+  "Korean"
+ ],
+ "arabicSupport": false,
+ "mpLocalPlayers": false,
+ "mpOnlinePlayers": false,
+ "mpCoop": false,
+ "mpCompetitive": false,
+ "mpSplitScreen": false,
+ "mpLocalWireless": false,
+ "completionMain": 13,
+ "completionExtras": 18.5,
+ "completionAll": 47.5,
+ "faq": [
+  {
+   "q": "Does Bayonetta 3 work on Nintendo Switch 2?",
+   "a": "Yes through backward compatibility where Nintendo marks the Nintendo Switch release as supported. This file does not classify it as a native Nintendo Switch 2 Edition."
+  },
+  {
+   "q": "What language is the supplier version of Bayonetta 3?",
+   "a": "Supplier listing language supplied by the user: Simplified Chinese. Official/regional language details are preserved separately in supported_languages_raw and nintendo_notes so the supplier SKU is not generalized to every region."
+  },
+  {
+   "q": "Is Bayonetta 3 multiplayer?",
+   "a": "The main game is single-player; no multiplayer mode is asserted in this file."
+  },
+  {
+   "q": "Why are some Switch 2 performance resolution fields blank for Bayonetta 3?",
+   "a": "Because exact measured Switch 2 backward-compatibility rendering values were not verified. The template is intentionally left blank rather than filled with hardware maximums or guesses."
+  }
+ ],
+ "verdictScore": 8.6,
+ "verdictSummary": "A mechanically ambitious and spectacular action sequel with excellent combat ideas, held back mainly by the original Switch hardware’s resolution and frame-rate limits. Its Demon Slave system gives it a distinct identity within the series.",
+ "reviews": [
+  {
+   "source": "Metacritic",
+   "score": "86/100",
+   "quote": "Nintendo Switch aggregate critic score.",
+   "url": "https://www.metacritic.com/game/bayonetta-3/"
+  },
+  {
+   "source": "OpenCritic",
+   "score": "85/100",
+   "quote": "Aggregate critic score.",
+   "url": "https://opencritic.com/game/13711/bayonetta-3"
+  },
+  {
+   "source": "Deku Deals user metadata",
+   "score": "7.8/10",
+   "quote": "User-score metadata displayed with the Switch listing.",
+   "url": "https://www.dekudeals.com/items/bayonetta-3"
+  }
+ ],
+ "timeline": [
+  {
+   "date": "2017-12-07",
+   "title": "Bayonetta 3 announced",
+   "body": "Nintendo and PlatinumGames announced the third numbered game."
+  },
+  {
+   "date": "2022-10-28",
+   "title": "Nintendo Switch release",
+   "body": "Bayonetta 3 launched worldwide for Nintendo Switch."
+  },
+  {
+   "date": "2022-12-08",
+   "title": "Best Action Game recognition",
+   "body": "Bayonetta 3 won Best Action Game at The Game Awards 2022."
+  }
+ ],
+ "seriesName": "Bayonetta",
+ "seriesEntries": [
+  "Bayonetta",
+  "Bayonetta 2",
+  "Bayonetta Origins: Cereza and the Lost Demon",
+  "Bayonetta & Vanquish 10th Anniversary Bundle"
+ ],
+ "studioName": "PlatinumGames",
+ "studioUrl": "https://www.platinumgames.com/",
+ "studioLocation": "Tokyo, Japan",
+ "studioAbout": "PlatinumGames is a Japanese action-game developer known for combat systems that emphasize timing, expressive combos and large-scale spectacle.",
+ "setupNeeds": [
+  "Nintendo Switch family system",
+  "Nintendo Account for digital purchase/download",
+  "Approximately 14.5 GB storage plus updates",
+  "Nintendo Switch Online membership for cloud-save backup"
+ ],
+ "sources": [
+  {
+   "name": "Nintendo — Bayonetta 3",
+   "url": "https://www.nintendo.com/us/store/products/bayonetta-3-switch/"
+  },
+  {
+   "name": "Deku Deals — Bayonetta 3",
+   "url": "https://www.dekudeals.com/items/bayonetta-3"
+  },
+  {
+   "name": "LaunchBox — Bayonetta 3 media",
+   "url": "https://gamesdb.launchbox-app.com/games/images/166538-bayonetta-3"
+  },
+  {
+   "name": "Switch Images Julio — full retail insert",
+   "url": "https://cdn.switch-images-julio.com/file/switch-images-julio/AXB7A/insert.png"
+  },
+  {
+   "name": "Digital Foundry / Eurogamer — technical review",
+   "url": "https://www.eurogamer.net/digitalfoundry-2022-bayonetta-3-is-a-great-game-but-nintendo-switch-doesnt-do-it-justice"
+  }
+ ],
+ "boxContentsList": "[Circular]",
+ "image": "/api/files/products/prd_704957ef027f4145/cover-f5d15f1cc21926ca.jpg",
+ "banner": "/api/files/products/prd_704957ef027f4145/banner-0-b40012aa68dc78b4.avif",
+ "schemaId": "",
+ "createdAt": "2026-08-26T22:24:31.981Z",
+ "created_at": "2026-08-26T22:24:31.981Z",
+ "updatedAt": "2026-08-26T22:24:31.981Z",
+ "updated_at": "2026-08-26T22:24:31.981Z",
+ "badgeEn": "وفر 40%",
+ "badgeKu": "وفر 40%",
+ "featuresEn": [
+  "Demon Slave direct demon control",
+  "Demon Masquerade transformations",
+  "Playable Viola with parry-focused combat",
+  "Large-scale Infernal Demon encounters",
+  "Multiple Bayonetta variants and locations",
+  "Challenge stages and extensive collectibles"
+ ],
+ "featuresKu": [
+  "Demon Slave direct demon control",
+  "Demon Masquerade transformations",
+  "Playable Viola with parry-focused combat",
+  "Large-scale Infernal Demon encounters",
+  "Multiple Bayonetta variants and locations",
+  "Challenge stages and extensive collectibles"
+ ],
+ "boxFrontUrl": "https://images.launchbox-app.com/r2_b56e2727-a231-44da-ac60-5c650545edd1.jpg",
+ "sales": 0,
+ "images": [],
+ "modes": []
+}

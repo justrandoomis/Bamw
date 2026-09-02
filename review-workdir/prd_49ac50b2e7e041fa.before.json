@@ -17,7 +17,7 @@
   "/api/files/products/prd_49ac50b2e7e041fa/bannerImages-d718b50420c134c9.webp"
  ],
  "gallery": [],
- "youtubeTrailer": "",
+ "youtubeTrailer": "https://www.youtube.com/watch?v=ws3Owo6ceOQ",
  "releaseDate": "2017-03-03",
  "ageRating": "ESRB E10+ (Everyone 10+) – Mild Violence",
  "metacriticRating": 58,
@@ -26,7 +26,7 @@
   "Action"
  ],
  "platform": "switch1",
- "size": 1.4,
+ "size": 1.3,
  "numberOfPlayers": "2",
  "supportedLanguages": "Japanese, English, French, German, Italian, Spanish, Dutch, Russian",
  "hardwareModel": "",
@@ -213,65 +213,24 @@
  "perfNotes": "Resolution database analysis identifies 1920x1080 docked output and 1280x720 assets/handheld profile, but Nintendo officially marks Handheld Mode itself as unsupported. The game is visually simple and presented at a 60 Hz/60 FPS class rate.",
  "devicePerformance": [
   {
-   "device": "Nintendo Switch 2",
-   "deviceSlug": "nintendo-switch-2",
-   "deviceModel": "Nintendo Switch 2",
-   "hardwareId": "prd_acf4c89908764c62",
-   "informationStatus": "Cross-checked",
+   "device": "Nintendo Switch",
+   "deviceSlug": "nintendo-switch",
+   "informationStatus": "not_published",
+   "unavailableReason": "Nintendo does not publish resolution or frame-rate figures for 1-2-Switch and no reputable technical analysis exists. Handheld play is not supported: the game is built around detached Joy-Con play in TV and Tabletop modes.",
    "handheld": {
-    "supported": false,
-    "resolution": "Not Supported",
-    "resolutionDynamic": false,
-    "renderingResolution": "Not Supported",
-    "outputResolution": "Not Supported",
-    "fps": "Not Supported",
-    "refreshRate": "Not Supported",
-    "hdr": false,
-    "vrr": false,
-    "mode": "Not Supported",
-    "notes": "Handheld Mode remains unsupported. Some games also require an original Joy-Con due to the missing IR Motion Camera in Joy-Con 2."
+    "supported": false
    },
    "tv": {
     "supported": true,
-    "resolution": "1920x1080",
-    "resolutionDynamic": false,
-    "renderingResolution": "1920x1080",
-    "outputResolution": "1920x1080",
-    "fps": "60",
-    "fpsMin": "60",
-    "fpsMax": "60",
-    "refreshRate": "60 Hz",
-    "hdr": false,
-    "vrr": false,
-    "mode": "TV",
-    "notes": "Backward-compatible software behavior is consistent with Nintendo Switch. TV output remains 1080p-class."
+    "resolution": "Not published by Nintendo",
+    "fps": "Not published by Nintendo"
    },
-   "modes": [
-    {
-     "name": "Standard",
-     "handheldResolution": "Not Supported",
-     "handheldFps": "Not Supported",
-     "tvResolution": "1920x1080",
-     "tvFps": "60",
-     "hdr": false,
-     "vrr": false,
-     "notes": "Original Joy-Con controllers are required for Motion IR Camera minigames on Switch 2."
-    }
-   ],
-   "upscaling": "No named upscaling technology officially documented",
-   "rayTracing": false,
-   "rayTracingMode": "None",
-   "gameVersion": "1.1.0",
-   "patchVersion": "1.1.0",
-   "testedDate": "2026-08-23",
-   "sourceName": "Nintendo eShop Compatibility + original Switch resolution analysis",
-   "sourceUrl": "https://ec.nintendo.com/HK/zh/titles/70010000009374",
-   "verifiedAt": "2026-08-23",
-   "verificationStatus": "Cross-checked",
-   "performanceNotes": "Original Joy-Con controllers are required for Motion IR Camera minigames on Switch 2."
+   "sourceName": "Nintendo official product page",
+   "sourceUrl": "https://www.nintendo.com/us/store/products/1-2-switch-switch/",
+   "verificationStatus": "official"
   }
  ],
- "downloadSizeGb": 1.4,
+ "downloadSizeGb": 1.3,
  "requiredSpaceGb": 1.5,
  "microSdRecommended": false,
  "storageNotes": "Nintendo currently lists 1.4 GB required space for both Switch and Switch 2 compatibility.",
@@ -448,5 +407,8 @@
  ],
  "sales": 0,
  "images": [],
- "modes": []
+ "modes": [],
+ "dlcSummary": "No DLC has been released for 1-2-Switch.",
+ "updatedAt": "2026-09-02T01:55:51.039Z",
+ "updated_at": "2026-09-02T01:55:51.039Z"
 }

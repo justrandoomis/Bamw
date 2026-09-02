@@ -1,0 +1,484 @@
+{
+ "title": "Bayonetta Origins: Cereza and the Lost Demon",
+ "titleEn": "Bayonetta Origins: Cereza and the Lost Demon",
+ "titleKu": "Bayonetta Origins: Cereza and the Lost Demon",
+ "slug": "bayonetta-origins-cereza-and-the-lost-demon",
+ "description": "Bayonetta Origins: Cereza and the Lost Demon is a prequel about young Cereza before she became Bayonetta. The player controls Cereza with one side of the controller and Cheshire with the other, combining magic, demon strength, elemental forms and environmental puzzle solving throughout the hand-painted Avalon Forest.",
+ "descriptionEn": "Bayonetta Origins: Cereza and the Lost Demon is a prequel about young Cereza before she became Bayonetta. The player controls Cereza with one side of the controller and Cheshire with the other, combining magic, demon strength, elemental forms and environmental puzzle solving throughout the hand-painted Avalon Forest.",
+ "descriptionKu": "Bayonetta Origins: Cereza and the Lost Demon is a prequel about young Cereza before she became Bayonetta. The player controls Cereza with one side of the controller and Cheshire with the other, combining magic, demon strength, elemental forms and environmental puzzle solving throughout the hand-painted Avalon Forest.",
+ "cartridgeImage": "/api/files/products/prd_86e6ac009a6249f9/front-fff70eb49c69b58a.jpg",
+ "nintendoCardImage": "/api/files/products/prd_86e6ac009a6249f9/square-4bb38849ff2c4c10.jpg",
+ "coverHiResImage": "/api/files/products/general/image-470b2f51f8dc5a1c.jpg",
+ "coverImage": "/api/files/products/prd_86e6ac009a6249f9/cover-5be689736c5a8c97.jpg",
+ "bannerImages": [
+  "/api/files/products/prd_86e6ac009a6249f9/banner-0-0950e205bc269c87.avif",
+  "/api/files/products/prd_86e6ac009a6249f9/banner-1-21e7e89dfa7499e7.avif",
+  "/api/files/products/prd_86e6ac009a6249f9/banner-2-cd9efbe7b577d3ab.avif",
+  "/api/files/products/prd_86e6ac009a6249f9/banner-3-0dec29398091315f.avif",
+  "/api/files/products/prd_86e6ac009a6249f9/banner-4-60130bec2145a425.avif",
+  "/api/files/products/prd_86e6ac009a6249f9/banner-5-18c2c5e33ef0c760.avif"
+ ],
+ "gallery": [],
+ "youtubeTrailer": "https://youtu.be/Yr08T5Asm1U",
+ "releaseDate": "2023-03-17",
+ "ageRating": "ESRB Teen",
+ "metacriticRating": 80,
+ "genres": [
+  "Action",
+  "Adventure",
+  "Puzzle",
+  "Fantasy Adventure",
+  "Storybook Adventure"
+ ],
+ "platform": "switch1",
+ "size": 3.2,
+ "numberOfPlayers": "1",
+ "supportedLanguages": "Nintendo official: Japanese, British English, French, German, Italian, Spanish, Korean, Russian, Simplified Chinese and Traditional Chinese.",
+ "hardwareModel": "",
+ "colorEdition": "",
+ "storageCapacity": "",
+ "screenSpecs": "",
+ "batteryLife": "",
+ "boxContents": [],
+ "boxContentsText": "",
+ "warrantyCondition": "",
+ "connectivity": "",
+ "characterName": "Link",
+ "amiiboSeries": "The Legend of Zelda",
+ "figureType": "figure",
+ "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+ "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+ "boxCondition": "mib",
+ "releaseWave": "Wave 2 (Restock)",
+ "rarity": "standard",
+ "accessoryType": "حقيبة حماية وتنقل Carry Case",
+ "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+ "brand": "Nintendo Official",
+ "material": "Hard EVA Shockproof Shell",
+ "availableColors": "Black, Neon Red/Blue, White",
+ "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+ "cardValue": "$20 eShop Balance",
+ "region": "Global / region-dependent",
+ "cardType": "eshop",
+ "deliveryMethod": "instant_code",
+ "redemptionGuide": "",
+ "redemptionSteps": [],
+ "validity": "no_expiry",
+ "usedType": "cartridge",
+ "conditionGrade": "like_new",
+ "packaging": "cib",
+ "guaranteeStatus": "tested_30days",
+ "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+ "accountType": "primary",
+ "badge": "وفر 40%",
+ "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+ "price": 8500,
+ "cost": 1250,
+ "stock": 999999,
+ "isInfiniteStock": true,
+ "isHidden": false,
+ "displayOrder": 0,
+ "category": "nintendo-switch-games",
+ "categoryId": "nintendo-switch-games",
+ "categoryEn": "",
+ "categoryKu": "",
+ "options": [
+  {
+   "id": "offline_account",
+   "name": "Offline Account",
+   "description": "Offline account access from the supplier listing.",
+   "stock": 999999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_account",
+   "name": "Online Account",
+   "description": "Online account access from the supplier listing.",
+   "stock": 999999,
+   "isInfiniteStock": true
+  }
+ ],
+ "types": [
+  {
+   "id": "standard_offline",
+   "name": "Standard Offline",
+   "optionId": "offline_account",
+   "price": 8500,
+   "cost": 1250,
+   "description": "Supplier Regular / 普通版; ¥6.8 converted to IQD.",
+   "stock": 999999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "standard_online",
+   "name": "Standard Online",
+   "optionId": "online_account",
+   "price": "28000",
+   "cost": 16500,
+   "description": "Supplier Standard / 标准版; ¥75.4 converted to IQD.",
+   "stock": 999999,
+   "isInfiniteStock": true
+  }
+ ],
+ "editions": [],
+ "dlcs": [],
+ "isActive": true,
+ "status": "active",
+ "kind": "account",
+ "trade_value_iqd": 0,
+ "store_offer_bonus_iqd": 0,
+ "trade_enabled": true,
+ "trade_value_locked": false,
+ "id": "prd_86e6ac009a6249f9",
+ "schema_version": 1,
+ "titleAr": "بايونيتا أوريجنز: سيريزا والشيطان المفقود",
+ "compatibility": [
+  "Nintendo Switch",
+  "Nintendo Switch 2 (backward compatibility)",
+  "Nintendo Switch Lite"
+ ],
+ "edition": "Standard",
+ "developer": "Platinum Games Inc.",
+ "publisher": "Nintendo",
+ "metacriticUrl": "https://www.metacritic.com/game/bayonetta-origins-cereza-and-the-lost-demon/",
+ "opencriticRating": 81,
+ "userScore": 8.4,
+ "price_usd": 59.99,
+ "officialUrl": "https://www.nintendo.com/us/store/products/bayonetta-origins-cereza-and-the-lost-demon-switch/",
+ "eshopUrl": "https://www.nintendo.com/us/store/products/bayonetta-origins-cereza-and-the-lost-demon-switch/",
+ "gameIsOffline": true,
+ "gameIsOnline": false,
+ "description_short": "A storybook-styled action-adventure prequel where young Cereza and demon Cheshire are controlled together to explore, solve puzzles and fight faeries.",
+ "description_ar": "مغامرة تمهيدية تحكي قصة Cereza قبل أن تصبح Bayonetta. يتم التحكم بـCereza وCheshire في الوقت نفسه، بحيث تستخدم Cereza السحر والربط بينما يقاتل Cheshire ويكتسب أشكالًا عنصرية، مع تركيز كبير على الألغاز والاستكشاف داخل غابة Avalon ذات الأسلوب القصصي المرسوم.",
+ "box_front_url": "https://images.launchbox-app.com/45817b87-afc0-4f6e-8666-1eb255e5c5e9.jpg",
+ "box_back_url": "https://images.launchbox-app.com/r2_bc4ec7b9-4f7b-45be-8fcd-686c911f642b.jpg",
+ "videos": [
+  {
+   "title": "Bayonetta Origins — trailer",
+   "url": "https://youtu.be/Yr08T5Asm1U"
+  },
+  {
+   "title": "Nintendo — available now overview",
+   "url": "https://www.nintendo.com/us/whatsnew/bayonetta-origins-cereza-and-the-lost-demon-available-now/"
+  },
+  {
+   "title": "PlatinumGames — Bayonetta series",
+   "url": "https://www.platinumgames.com/"
+  }
+ ],
+ "nintendoEshopUrl": "https://www.nintendo.com/us/store/products/bayonetta-origins-cereza-and-the-lost-demon-switch/",
+ "nintendoOnlineRequired": false,
+ "nintendoCloudSaves": true,
+ "nintendoGameKeyCard": false,
+ "tvMode": true,
+ "tabletopMode": true,
+ "handheldMode": true,
+ "nintendoPlayModes": "TV / Tabletop / Handheld",
+ "nintendoNotes": "Nintendo officially lists Nintendo Switch 2 compatibility as supported with behavior consistent with Nintendo Switch. Official languages include Japanese, British English, French, German, Italian, Spanish, Korean, Russian, Simplified Chinese and Traditional Chinese. A free demo is available and save progress can carry into the full game.",
+ "switch2Enhanced": false,
+ "switch2Exclusive": false,
+ "switch2Features": [
+  "Nintendo officially marks compatibility as supported",
+  "Game behavior is consistent with Nintendo Switch",
+  "No native Switch 2 Edition",
+  "Same 3.2 GB game-size listing shown for Switch and Switch 2 compatibility"
+ ],
+ "tagline": "Once upon a time, there was a young witch named Cereza…",
+ "fitFor": [
+  "Players who enjoy puzzle-adventure games",
+  "Bayonetta fans interested in Cereza’s origin",
+  "Players who appreciate storybook art direction",
+  "Players who prefer a gentler pace than the numbered Bayonetta games"
+ ],
+ "notFitFor": [
+  "Players expecting traditional Bayonetta combo combat",
+  "Players wanting multiplayer",
+  "Players seeking a native Switch 2 Edition",
+  "Players who dislike simultaneous dual-character controls"
+ ],
+ "playTimeMain": 13.5,
+ "playTimeFull": 32.5,
+ "editionsList": [
+  {
+   "name": "Bayonetta Origins: Cereza and the Lost Demon — Nintendo Switch",
+   "coverUrl": "https://images.launchbox-app.com/45817b87-afc0-4f6e-8666-1eb255e5c5e9.jpg",
+   "contents": [
+    {
+     "label": "Full story campaign"
+    },
+    {
+     "label": "Dual Cereza/Cheshire control system"
+    },
+    {
+     "label": "Free demo progress can transfer into full game"
+    }
+   ]
+  }
+ ],
+ "gameplayPillars": [
+  {
+   "title": "Control Two Heroes",
+   "description": "Move Cereza and Cheshire with opposite sides of the controller, coordinating their abilities simultaneously.",
+   "imageUrl": "https://images.launchbox-app.com/4d775327-bb8d-48f8-bfdf-48417eb93aee.jpg"
+  },
+  {
+   "title": "Solve Magical Puzzles",
+   "description": "Use Witch Pulse, Cheshire’s claws, Hug Mode and elemental forms to manipulate the environment.",
+   "imageUrl": "https://images.launchbox-app.com/c0c1d68d-6c87-4235-95be-d77e08eb00e4.png"
+  },
+  {
+   "title": "Fight Together",
+   "description": "Cereza binds enemies with magic while Cheshire attacks, creating a cooperative two-character combat loop.",
+   "imageUrl": "https://images.launchbox-app.com/0d9e2582-1009-4cae-aa2a-39fd841cc701.png"
+  },
+  {
+   "title": "Explore Avalon Forest",
+   "description": "Search hand-painted regions for secrets, upgrade materials, Vitality Petals and new routes.",
+   "imageUrl": "https://images.launchbox-app.com/2fe468bc-77af-41d2-8227-92a4c873251f.png"
+  }
+ ],
+ "worldSummary": "Young Cereza enters the forbidden Avalon Forest in search of power that might save her mother. Her first summoned demon, Cheshire, inhabits her stuffed toy. Together they confront faeries, solve magical obstacles and learn to trust one another.",
+ "storyChapters": [
+  {
+   "title": "A Young Outcast",
+   "body": "Cereza longs to become strong enough to help her imprisoned mother Rosa.",
+   "imageUrl": "https://images.launchbox-app.com/4d775327-bb8d-48f8-bfdf-48417eb93aee.jpg"
+  },
+  {
+   "title": "Into Avalon Forest",
+   "body": "Following a mysterious dream and a white wolf, Cereza enters the forbidden forest.",
+   "imageUrl": "https://images.launchbox-app.com/c0c1d68d-6c87-4235-95be-d77e08eb00e4.png"
+  },
+  {
+   "title": "Cheshire",
+   "body": "A demon summoned by Cereza becomes trapped inside her stuffed toy and reluctantly joins the journey.",
+   "imageUrl": "https://images.launchbox-app.com/0d9e2582-1009-4cae-aa2a-39fd841cc701.png"
+  },
+  {
+   "title": "Faerie Secrets",
+   "body": "The pair confronts Avalon’s faeries and uncovers truths that shape Cereza’s future.",
+   "imageUrl": "https://images.launchbox-app.com/2fe468bc-77af-41d2-8227-92a4c873251f.png"
+  }
+ ],
+ "galleryImages": [
+  {
+   "url": "https://images.launchbox-app.com/4d775327-bb8d-48f8-bfdf-48417eb93aee.jpg",
+   "alt": "Bayonetta Origins high-resolution key art"
+  },
+  {
+   "url": "https://images.launchbox-app.com/c0c1d68d-6c87-4235-95be-d77e08eb00e4.png",
+   "alt": "Gameplay screenshot from Avalon Forest"
+  },
+  {
+   "url": "https://images.launchbox-app.com/0d9e2582-1009-4cae-aa2a-39fd841cc701.png",
+   "alt": "Gameplay screenshot showing Cereza and Cheshire"
+  },
+  {
+   "url": "https://images.launchbox-app.com/2fe468bc-77af-41d2-8227-92a4c873251f.png",
+   "alt": "Avalon Forest exploration screenshot"
+  },
+  {
+   "url": "https://images.launchbox-app.com/cbccc12c-1ab3-451d-93b8-9cf8c23b165d.jpg",
+   "alt": "Bayonetta Origins storybook title artwork"
+  }
+ ],
+ "features": [
+  "Dual-character simultaneous control",
+  "Puzzle solving using Cereza and Cheshire together",
+  "Cheshire elemental forms",
+  "Storybook-inspired hand-painted presentation",
+  "Skill-tree upgrades and hidden collectibles",
+  "Free demo with save-data transfer to full game"
+ ],
+ "perfFps": "30",
+ "perfHdr": false,
+ "perfNotes": "Development commentary indicates the team chose a stable 30 fps target for the overall game rather than an inconsistent 60 fps presentation. Exact rendering resolutions are intentionally not invented.",
+ "devicePerformance": [
+  {
+   "device": "Nintendo Switch 2",
+   "deviceSlug": "nintendo-switch-2",
+   "deviceModel": "Nintendo Switch 2",
+   "hardwareId": "prd_acf4c89908764c62",
+   "informationStatus": "official backward compatibility; original 30 fps cap retained; Handheld Mode Boost improves portable resolution",
+   "handheld": {
+    "supported": true,
+    "resolution": "720p-800p-class with Handheld Mode Boost; lower on original handheld profile",
+    "fps": "30",
+    "hdr": false,
+    "vrr": false,
+    "mode": "Backward compatibility",
+    "notes": "The Nintendo Switch version is supported through backward compatibility. No native Switch 2 Edition or graphics patch is asserted here. Resolution fields are intentionally left blank unless a measured Switch 2 result was verified."
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "1080p",
+    "fps": "30",
+    "hdr": false,
+    "vrr": false,
+    "mode": "Backward compatibility",
+    "notes": "The Nintendo Switch version is supported through backward compatibility. No native Switch 2 Edition or graphics patch is asserted here. Resolution fields are intentionally left blank unless a measured Switch 2 result was verified."
+   },
+   "rayTracing": false,
+   "sourceName": "Nintendo official compatibility + Switch 2 Handheld Mode Boost community testing",
+   "sourceUrl": "https://www.nintendo.com/us/store/products/bayonetta-origins-cereza-and-the-lost-demon-switch/",
+   "verificationStatus": "verified / backward-compatible / 30 fps cap",
+   "performanceNotes": "The Nintendo Switch version is supported through backward compatibility. No native Switch 2 Edition or graphics patch is asserted here. Resolution fields are intentionally left blank unless a measured Switch 2 result was verified."
+  }
+ ],
+ "downloadSizeGb": 3.2,
+ "requiredSpaceGb": 3.2,
+ "microSdRecommended": false,
+ "storageNotes": "Official/reliable listing reports approximately 3.2 GB for the Nintendo Switch download. Leave additional free space for save data and future updates.",
+ "languagesAudio": [
+  "English",
+  "Japanese"
+ ],
+ "languagesText": [
+  "Chinese (Simplified)",
+  "Chinese (Traditional)",
+  "English (British)",
+  "Japanese",
+  "French",
+  "German",
+  "Italian",
+  "Spanish",
+  "Russian",
+  "Korean"
+ ],
+ "arabicSupport": false,
+ "mpLocalPlayers": false,
+ "mpOnlinePlayers": false,
+ "mpCoop": false,
+ "mpCompetitive": false,
+ "mpSplitScreen": false,
+ "mpLocalWireless": false,
+ "completionMain": 13.5,
+ "completionExtras": 18,
+ "completionAll": 32.5,
+ "faq": [
+  {
+   "q": "Does Bayonetta Origins: Cereza and the Lost Demon work on Nintendo Switch 2?",
+   "a": "Yes through backward compatibility where Nintendo marks the Nintendo Switch release as supported. This file does not classify it as a native Nintendo Switch 2 Edition."
+  },
+  {
+   "q": "What language is the supplier version of Bayonetta Origins: Cereza and the Lost Demon?",
+   "a": "Supplier listing language supplied by the user: Simplified Chinese. Official/regional language details are preserved separately in supported_languages_raw and nintendo_notes so the supplier SKU is not generalized to every region."
+  },
+  {
+   "q": "Is Bayonetta Origins: Cereza and the Lost Demon multiplayer?",
+   "a": "The main game is single-player; no multiplayer mode is asserted in this file."
+  },
+  {
+   "q": "Why are some Switch 2 performance resolution fields blank for Bayonetta Origins: Cereza and the Lost Demon?",
+   "a": "Because exact measured Switch 2 backward-compatibility rendering values were not verified. The template is intentionally left blank rather than filled with hardware maximums or guesses."
+  }
+ ],
+ "verdictScore": 8.1,
+ "verdictSummary": "A distinctive prequel that trades the numbered games’ relentless character action for puzzle solving, exploration and a striking storybook presentation. Its dual-character control is the defining mechanic and gives the game a clear identity of its own.",
+ "reviews": [
+  {
+   "source": "Metacritic",
+   "score": "80/100",
+   "quote": "Nintendo Switch aggregate critic score.",
+   "url": "https://www.metacritic.com/game/bayonetta-origins-cereza-and-the-lost-demon/"
+  },
+  {
+   "source": "OpenCritic",
+   "score": "81/100",
+   "quote": "Aggregate critic score.",
+   "url": "https://opencritic.com/game/14372/bayonetta-origins-cereza-and-the-lost-demon"
+  },
+  {
+   "source": "Deku Deals user metadata",
+   "score": "8.4/10",
+   "quote": "User-score metadata displayed with the Switch listing.",
+   "url": "https://www.dekudeals.com/items/bayonetta-origins-cereza-and-the-lost-demon"
+  }
+ ],
+ "timeline": [
+  {
+   "date": "2022-12-08",
+   "title": "Game revealed",
+   "body": "Nintendo revealed the Bayonetta prequel during The Game Awards period."
+  },
+  {
+   "date": "2023-03-08",
+   "title": "Free demo released",
+   "body": "A free demo became available with progress transferable to the full game."
+  },
+  {
+   "date": "2023-03-17",
+   "title": "Nintendo Switch release",
+   "body": "Bayonetta Origins launched worldwide on Nintendo Switch."
+  }
+ ],
+ "seriesName": "Bayonetta",
+ "seriesEntries": [
+  "Bayonetta",
+  "Bayonetta 2",
+  "Bayonetta 3",
+  "Bayonetta & Vanquish 10th Anniversary Bundle"
+ ],
+ "studioName": "PlatinumGames",
+ "studioUrl": "https://www.platinumgames.com/",
+ "studioLocation": "Tokyo, Japan",
+ "studioAbout": "PlatinumGames is a Japanese developer known for action games; Bayonetta Origins deliberately explores a slower puzzle-adventure structure and storybook visual style.",
+ "setupNeeds": [
+  "Nintendo Switch family system",
+  "Nintendo Account for digital purchase/demo download",
+  "Approximately 3.2 GB storage plus updates",
+  "Nintendo Switch Online membership for cloud-save backup"
+ ],
+ "sources": [
+  {
+   "name": "Nintendo — Bayonetta Origins",
+   "url": "https://www.nintendo.com/us/store/products/bayonetta-origins-cereza-and-the-lost-demon-switch/"
+  },
+  {
+   "name": "Nintendo — Available Now article",
+   "url": "https://www.nintendo.com/us/whatsnew/bayonetta-origins-cereza-and-the-lost-demon-available-now/"
+  },
+  {
+   "name": "Deku Deals — Bayonetta Origins",
+   "url": "https://www.dekudeals.com/items/bayonetta-origins-cereza-and-the-lost-demon"
+  },
+  {
+   "name": "LaunchBox — Bayonetta Origins media",
+   "url": "https://gamesdb.launchbox-app.com/games/images/170032-bayonetta-origins-cereza-and-the-lost-demon"
+  },
+  {
+   "name": "PlatinumGames",
+   "url": "https://www.platinumgames.com/"
+  }
+ ],
+ "boxContentsList": "[Circular]",
+ "image": "/api/files/products/prd_86e6ac009a6249f9/cover-5be689736c5a8c97.jpg",
+ "banner": "/api/files/products/prd_86e6ac009a6249f9/banner-0-0950e205bc269c87.avif",
+ "schemaId": "",
+ "createdAt": "2026-08-26T22:24:35.476Z",
+ "created_at": "2026-08-26T22:24:35.476Z",
+ "updatedAt": "2026-08-26T22:24:35.476Z",
+ "updated_at": "2026-08-26T22:24:35.476Z",
+ "badgeEn": "وفر 40%",
+ "badgeKu": "وفر 40%",
+ "featuresEn": [
+  "Dual-character simultaneous control",
+  "Puzzle solving using Cereza and Cheshire together",
+  "Cheshire elemental forms",
+  "Storybook-inspired hand-painted presentation",
+  "Skill-tree upgrades and hidden collectibles",
+  "Free demo with save-data transfer to full game"
+ ],
+ "featuresKu": [
+  "Dual-character simultaneous control",
+  "Puzzle solving using Cereza and Cheshire together",
+  "Cheshire elemental forms",
+  "Storybook-inspired hand-painted presentation",
+  "Skill-tree upgrades and hidden collectibles",
+  "Free demo with save-data transfer to full game"
+ ],
+ "boxFrontUrl": "https://images.launchbox-app.com/45817b87-afc0-4f6e-8666-1eb255e5c5e9.jpg",
+ "sales": 0,
+ "images": [],
+ "modes": []
+}

@@ -1,6 +1,6 @@
 {
  "batch": "901",
- "apply": true,
+ "apply": false,
  "note": "Fix batch: batch 001's clear lists were silent no-ops (the merge's clear option only permits empty values carried in the patch; it never removes absent keys). The apply script now genuinely deletes clear-listed fields; this batch re-runs exactly those deletions for the four games written in batch 001. baseHash values are the post-batch-001 hashes recorded in review-state.json.",
  "games": [
   {
@@ -81,6 +81,80 @@
     "guaranteeStatus"
    ],
    "notes": "Remove the ten cross-schema contamination fields that batch 001 reported cleared but did not remove."
+  }
+ ],
+ "appliedAt": "2026-09-02T02:12:38.862Z",
+ "results": [
+  {
+   "id": "prd_49ac50b2e7e041fa",
+   "action": "APPLIED",
+   "changed": [],
+   "removed": [
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ]
+  },
+  {
+   "id": "prd_b73635742b2649fc",
+   "action": "APPLIED",
+   "changed": [],
+   "removed": [
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ]
+  },
+  {
+   "id": "prd_e056bfabbf914721",
+   "action": "APPLIED",
+   "changed": [],
+   "removed": [
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus",
+    "box_front_url",
+    "coverImage",
+    "image"
+   ]
+  },
+  {
+   "id": "prd_b66558151b784a6f",
+   "action": "APPLIED",
+   "changed": [],
+   "removed": [
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ]
   }
  ]
 }

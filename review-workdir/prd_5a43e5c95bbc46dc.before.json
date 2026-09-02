@@ -1,0 +1,503 @@
+{
+ "id": "prd_5a43e5c95bbc46dc",
+ "title": "BRAVELY DEFAULT FLYING FAIRY HD Remaster",
+ "titleEn": "BRAVELY DEFAULT FLYING FAIRY HD Remaster",
+ "titleKu": "BRAVELY DEFAULT FLYING FAIRY HD Remaster",
+ "slug": "bravely-default-flying-fairy-hd-remaster",
+ "description": "A high-definition remaster of the first BRAVELY DEFAULT. Build parties with more than twenty jobs, manage BP through Brave and Default commands, explore Luxendarc and use new quality-of-life features, updated online functions and two Joy-Con 2 mouse minigames.",
+ "descriptionEn": "A high-definition remaster of the first BRAVELY DEFAULT. Build parties with more than twenty jobs, manage BP through Brave and Default commands, explore Luxendarc and use new quality-of-life features, updated online functions and two Joy-Con 2 mouse minigames.",
+ "descriptionKu": "A high-definition remaster of the first BRAVELY DEFAULT. Build parties with more than twenty jobs, manage BP through Brave and Default commands, explore Luxendarc and use new quality-of-life features, updated online functions and two Joy-Con 2 mouse minigames.",
+ "cartridgeImage": "/api/files/products/prd_5a43e5c95bbc46dc/front-add1fca1c3a5b52b.jpg",
+ "nintendoCardImage": "/api/files/products/prd_5a43e5c95bbc46dc/nintendoCardImage-0ab67690f10287c9.avif",
+ "coverHiResImage": "/api/files/products/prd_5a43e5c95bbc46dc/3d-texture-4f49cbe79d01d803.webp",
+ "coverImage": "/api/files/products/prd_5a43e5c95bbc46dc/cover-030948fa32de0345.jpg",
+ "bannerImages": [
+  "/api/files/products/prd_5a43e5c95bbc46dc/bannerImages-1-1ac625e838596b9d.avif",
+  "/api/files/products/prd_5a43e5c95bbc46dc/bannerImages-2-87accbd1fe5bb1e4.avif"
+ ],
+ "gallery": [],
+ "youtubeTrailer": "https://www.youtube.com/watch?v=s8kBXtwzCp0",
+ "releaseDate": "2025-06-05",
+ "ageRating": "ESRB: Fantasy Violence, Mild Blood, Mild Suggestive Themes, Use of Alcohol",
+ "metacriticRating": 80,
+ "genres": [
+  "JRPG",
+  "Turn-Based RPG",
+  "Fantasy"
+ ],
+ "platform": "switch2",
+ "size": 9.3,
+ "numberOfPlayers": "1",
+ "supportedLanguages": "Japanese, American English, French, German, Italian, Spanish",
+ "hardwareModel": "",
+ "colorEdition": "",
+ "storageCapacity": "",
+ "screenSpecs": "",
+ "batteryLife": "",
+ "boxContents": [],
+ "boxContentsText": "",
+ "warrantyCondition": "",
+ "connectivity": "",
+ "characterName": "Link",
+ "amiiboSeries": "The Legend of Zelda",
+ "figureType": "figure",
+ "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+ "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+ "boxCondition": "mib",
+ "releaseWave": "Wave 2 (Restock)",
+ "rarity": "standard",
+ "accessoryType": "حقيبة حماية وتنقل Carry Case",
+ "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+ "brand": "Nintendo Official",
+ "material": "Hard EVA Shockproof Shell",
+ "availableColors": "Black, Neon Red/Blue, White",
+ "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+ "cardValue": "$20 eShop Balance",
+ "region": "Global",
+ "cardType": "eshop",
+ "deliveryMethod": "instant_code",
+ "redemptionGuide": "",
+ "redemptionSteps": [],
+ "validity": "no_expiry",
+ "usedType": "cartridge",
+ "conditionGrade": "like_new",
+ "packaging": "cib",
+ "guaranteeStatus": "tested_30days",
+ "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+ "accountType": "primary",
+ "badge": "وفر 40%",
+ "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+ "price": 10250,
+ "cost": 1250,
+ "stock": 999999,
+ "isInfiniteStock": true,
+ "isHidden": false,
+ "displayOrder": 0,
+ "category": "nintendo-switch-games",
+ "categoryId": "nintendo-switch-games",
+ "categoryEn": "",
+ "categoryKu": "",
+ "options": [
+  {
+   "id": "offline_account",
+   "name": "مشترك",
+   "description": "Play using the supplied account under the store's offline-account activation method.",
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_account",
+   "name": "خاص بك",
+   "description": "Online-account option with internet-connected account use where supported by the game/service.",
+   "isInfiniteStock": true
+  }
+ ],
+ "types": [
+  {
+   "id": "standard_offline",
+   "name": "مشترك — اللعبة الأساسية",
+   "optionId": "offline_account",
+   "price": 10250,
+   "cost": 1250,
+   "description": "Standard game, Offline Account. Supplier Regular price: ¥6.80; purchase cost converted at 1 CNY = 220 IQD and rounded down to nearest 250 IQD.",
+   "isInfiniteStock": true
+  },
+  {
+   "id": "standard_online",
+   "name": "خاص بك — اللعبة الأساسية",
+   "optionId": "online_account",
+   "price": 28000,
+   "cost": 18500,
+   "description": "Standard game, Online Account. Supplier Standard price: ¥85.20; purchase cost converted at 1 CNY = 220 IQD and rounded down to nearest 250 IQD.",
+   "isInfiniteStock": true
+  }
+ ],
+ "editions": [],
+ "dlcs": [],
+ "isActive": true,
+ "status": "active",
+ "kind": "account",
+ "trade_value_iqd": 0,
+ "store_offer_bonus_iqd": 0,
+ "trade_enabled": true,
+ "trade_value_locked": false,
+ "schema_version": 22,
+ "titleAr": "بريفلي ديفولت فلاينغ فيري HD ريماستر",
+ "compatibility": [
+  "Nintendo Switch 2"
+ ],
+ "edition": "HD Remaster",
+ "developer": "Cattle Call Inc.",
+ "publisher": "SQUARE ENIX",
+ "opencriticRating": 81,
+ "userScore": 8.2,
+ "officialUrl": "https://www.square-enix.com/",
+ "gameIsOffline": true,
+ "gameIsOnline": true,
+ "gameLanguageLocked": false,
+ "description_short": "The original Bravely Default returns in HD with its acclaimed Brave/Default battle system, more than 20 jobs, modern conveniences and two new mouse-controlled minigames.",
+ "description_ar": "إعادة إتقان عالية الدقة للجزء الأول من Bravely Default. استخدم نظام Brave وDefault لإدارة BP، وطوّر الشخصيات عبر أكثر من 20 وظيفة، واستكشف Luxendarc مع تحسينات واجهة وجودة حياة وألعاب صغيرة جديدة تستخدم تحكم الفأرة في Joy-Con 2.",
+ "box_front_url": "https://multimedia.bbycastatic.ca/multimedia/products/500x500/189/18945/18945795.jpg",
+ "videos": [
+  {
+   "title": "Launch Trailer",
+   "url": "https://www.youtube.com/watch?v=s8kBXtwzCp0"
+  },
+  {
+   "title": "Nintendo Switch 2 Announcement Trailer",
+   "url": "https://www.youtube.com/watch?v=pzMaa7UqC7c"
+  }
+ ],
+ "nintendoEshopUrl": "https://www.nintendo.com/us/store/products/bravely-default-flying-fairy-hd-remaster-switch-2/",
+ "nintendoOnlineRequired": false,
+ "nintendoCloudSaves": true,
+ "tvMode": true,
+ "tabletopMode": true,
+ "handheldMode": true,
+ "nintendoPlayModes": "TV Mode, Tabletop Mode, Handheld Mode",
+ "switch2Features": [
+  "Nintendo Switch 2 native remaster",
+  "1920x1080 presentation",
+  "60 FPS target",
+  "Redesigned user interface",
+  "Event-scene fast-forward",
+  "Adjustable encounter rate",
+  "Faster battle-speed options",
+  "Modernized online/network features",
+  "Two new Joy-Con 2 mouse-control minigames"
+ ],
+ "tagline": "The story of light and shadow is reborn in high definition.",
+ "fitFor": [
+  "Classic JRPG fans",
+  "Players who enjoy deep job systems",
+  "Turn-based strategy fans",
+  "Players who missed the Nintendo 3DS original"
+ ],
+ "notFitFor": [
+  "Players looking for action combat",
+  "Players who require Simplified Chinese in the Western Nintendo release"
+ ],
+ "playTimeMain": 57.5,
+ "playTimeFull": 100,
+ "editionsList": [
+  {
+   "name": "HD Remaster",
+   "contents": [
+    {
+     "label": "Full remastered game"
+    },
+    {
+     "label": "High-definition graphics"
+    },
+    {
+     "label": "UI and quality-of-life improvements"
+    },
+    {
+     "label": "Two new Switch 2 minigames"
+    }
+   ]
+  }
+ ],
+ "gameplayPillars": [
+  {
+   "title": "Brave and Default",
+   "description": "Bank BP by defending with Default or spend future turns early with Brave to create powerful tactical sequences."
+  },
+  {
+   "title": "Job System",
+   "description": "Combine more than twenty jobs and support abilities to create highly customized party builds."
+  },
+  {
+   "title": "Crystal Quest",
+   "description": "Travel through Luxendarc with Tiz, Agnès, Ringabel and Edea to awaken the elemental crystals."
+  },
+  {
+   "title": "Modernized Remaster",
+   "description": "Faster event playback, adjustable encounter settings and improved interface reduce friction from the original 3DS release."
+  }
+ ],
+ "storyChapters": [
+  {
+   "title": "The Great Chasm",
+   "body": "Tiz survives the destruction of Norende and meets the Wind Vestal Agnès."
+  },
+  {
+   "title": "Awaken the Crystals",
+   "body": "The party crosses Luxendarc to restore the elemental crystals and confront the forces opposing the Crystal Orthodoxy."
+  },
+  {
+   "title": "Light and Shadow",
+   "body": "Repeated revelations challenge the heroes' understanding of the world, the crystals and the true nature of their journey."
+  }
+ ],
+ "galleryImages": [
+  {
+   "url": "https://assets.nintendo.com/image/upload/ar_16:9,b_auto:border,c_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000095321/8a479cf836bb83b68f8c5c7595647a08004a732956510e7ee838d7453e29f666",
+   "alt": "Distinct product/game media image 1; separate from the primary cover and square-card roles."
+  }
+ ],
+ "features": [
+  "High-definition remaster of the first Bravely Default",
+  "Classic Brave and Default BP battle system",
+  "More than 20 jobs",
+  "Redesigned user interface",
+  "Event-scene fast-forward",
+  "Modern quality-of-life improvements",
+  "Retooled networking features for Nintendo Switch 2",
+  "Two new Joy-Con 2 mouse-controlled minigames",
+  "Single-player story-focused JRPG"
+ ],
+ "perfResolutionDocked": "1920x1080",
+ "perfResolutionHandheld": "1920x1080",
+ "perfFps": "60",
+ "perfNotes": "Switch 2 runs the HD Remaster at 1920x1080 and a stable 60 FPS in both handheld and docked modes. This is independently reviewed and the developer also confirmed the Switch 2-exclusive remaster was designed around a stable 60 FPS target.",
+ "devicePerformance": [
+  {
+   "device": "Nintendo Switch 2",
+   "deviceSlug": "nintendo-switch-2",
+   "deviceModel": "Nintendo Switch 2",
+   "hardwareId": "prd_acf4c89908764c62",
+   "informationStatus": "verified",
+   "unavailableReason": "Measured resolution/FPS values are not published in the Nintendo store listing.",
+   "handheld": {
+    "supported": true,
+    "resolution": "1920x1080",
+    "renderingResolution": "1920x1080",
+    "outputResolution": "1920x1080",
+    "fps": "60",
+    "fpsMin": "60",
+    "fpsMax": "60"
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "1920x1080",
+    "renderingResolution": "1920x1080",
+    "outputResolution": "1920x1080",
+    "fps": "60",
+    "fpsMin": "60",
+    "fpsMax": "60"
+   },
+   "sourceName": "RPGamer review / developer interview",
+   "sourceUrl": "https://rpgamer.com/review/bravely-default-flying-fairy-hd-remaster-review/",
+   "verificationStatus": "verified-third-party-and-developer",
+   "performanceNotes": "Switch 2 runs the HD Remaster at 1920x1080 and a stable 60 FPS in both handheld and docked modes. This is independently reviewed and the developer also confirmed the Switch 2-exclusive remaster was designed around a stable 60 FPS target."
+  }
+ ],
+ "downloadSizeGb": 9.3,
+ "requiredSpaceGb": 11,
+ "microSdRecommended": false,
+ "languagesAudio": [
+  "Japanese",
+  "English"
+ ],
+ "languagesText": [
+  "Japanese",
+  "American English",
+  "French",
+  "German",
+  "Italian",
+  "Spanish"
+ ],
+ "arabicSupport": false,
+ "mpLocalPlayers": false,
+ "mpOnlinePlayers": false,
+ "mpCoop": false,
+ "mpCompetitive": false,
+ "mpSplitScreen": false,
+ "mpLocalWireless": false,
+ "guides": [
+  {
+   "title": "Nintendo Store",
+   "summary": "Switch 2 product information.",
+   "url": "https://www.nintendo.com/us/store/products/bravely-default-flying-fairy-hd-remaster-switch-2/"
+  },
+  {
+   "title": "Game8 Game Length",
+   "summary": "Detailed completion-time estimates.",
+   "url": "https://game8.co/games/Bravely-Default-Flying-Fairy/archives/522377"
+  },
+  {
+   "title": "Game8 Updates / Features",
+   "summary": "Remaster changes and soundtrack information.",
+   "url": "https://game8.co/games/Bravely-Default-Flying-Fairy/archives/522338"
+  }
+ ],
+ "completionMain": 57.5,
+ "completionExtras": 75,
+ "completionAll": 100,
+ "faq": [
+  {
+   "q": "How long is the main story?",
+   "a": "Game8 estimates roughly 55-60 hours for the main story and 100+ hours to explore all jobs, side scenarios and endings."
+  },
+  {
+   "q": "Is the soundtrack new?",
+   "a": "The remaster retains the original soundtrack composed by Revo."
+  },
+  {
+   "q": "What is new on Switch 2?",
+   "a": "HD visuals, redesigned UI, event fast-forward, adjustable encounter behavior, updated networking and two Joy-Con 2 mouse minigames."
+  },
+  {
+   "q": "Does it use the Brave and Default system?",
+   "a": "Yes. The signature BP-based turn system is preserved."
+  },
+  {
+   "q": "Is it multiplayer?",
+   "a": "The core adventure is single-player."
+  },
+  {
+   "q": "Does the Western Nintendo release list Chinese?",
+   "a": "Western Nintendo listings commonly list Japanese and major European languages; Chinese availability should be verified against the exact Asian SKU being sold."
+  }
+ ],
+ "verdictScore": 8.5,
+ "verdictSummary": "A strong preservation and modernization of a landmark turn-based JRPG, retaining the deep Brave/Default and job systems while adding practical Switch 2 conveniences.",
+ "verdictPros": [
+  "Excellent strategic battle system",
+  "Large job roster",
+  "Useful quality-of-life upgrades",
+  "Two new Switch 2 mouse minigames",
+  "Strong classic JRPG structure"
+ ],
+ "verdictCons": [
+  "Western Nintendo listing does not include Chinese among supported languages",
+  "Single-player only"
+ ],
+ "reviews": [
+  {
+   "source": "Metacritic",
+   "score": "~80/100",
+   "quote": "The remaster received broadly positive reviews for preserving the battle/job systems while adding useful quality-of-life features.",
+   "url": "https://www.metacritic.com/"
+  },
+  {
+   "source": "OpenCritic",
+   "score": "~81/100",
+   "quote": "Critics generally valued the preservation of the original JRPG design and modern convenience features.",
+   "url": "https://opencritic.com/"
+  },
+  {
+   "source": "Player reception",
+   "score": "Positive",
+   "quote": "The remaster is widely praised for its job system, Revo soundtrack and strategic combat.",
+   "url": "https://game8.co/games/Bravely-Default-Flying-Fairy/archives/522338"
+  }
+ ],
+ "timeline": [
+  {
+   "date": "2012",
+   "title": "Original Japanese release",
+   "body": "Bravely Default: Flying Fairy launched on Nintendo 3DS in Japan."
+  },
+  {
+   "date": "2013-2014",
+   "title": "Expanded international release",
+   "body": "Bravely Default expanded internationally with revised content."
+  },
+  {
+   "date": "2025-04",
+   "title": "HD Remaster announced",
+   "body": "Square Enix revealed the Nintendo Switch 2 HD remaster."
+  },
+  {
+   "date": "2025-06-05",
+   "title": "Switch 2 launch",
+   "body": "The HD Remaster released alongside Nintendo Switch 2."
+  }
+ ],
+ "patchNotes": [
+  {
+   "version": "Launch version",
+   "date": "2025-06-05",
+   "body": "HD remaster launched with redesigned interface, fast-forward, encounter controls, updated networking and two new mouse-control minigames."
+  },
+  {
+   "version": "Post-launch compatibility",
+   "date": "2025",
+   "body": "Minor support updates maintained system compatibility and stability."
+  },
+  {
+   "version": "Current",
+   "date": "2026",
+   "body": "The remaster remains available on Switch 2 with the original Revo soundtrack intact."
+  }
+ ],
+ "soundtrack": [
+  {
+   "title": "Original Soundtrack composed by Revo",
+   "url": "https://game8.co/games/Bravely-Default-Flying-Fairy/archives/522338"
+  },
+  {
+   "title": "BRAVELY DEFAULT main soundtrack",
+   "url": "https://www.jp.square-enix.com/"
+  }
+ ],
+ "seriesName": "Bravely",
+ "seriesEntries": [
+  "BRAVELY DEFAULT",
+  "BRAVELY SECOND: END LAYER",
+  "BRAVELY DEFAULT II",
+  "BRAVELY DEFAULT FLYING FAIRY HD Remaster"
+ ],
+ "studioName": "Cattle Call / SQUARE ENIX",
+ "studioUrl": "https://www.jp.square-enix.com/",
+ "studioLocation": "Tokyo, Japan",
+ "studioAbout": "Cattle Call and Square Enix brought the original Bravely Default to Switch 2 with high-definition presentation, redesigned UI, faster event handling, modernized networking and two new Joy-Con 2 mouse-controlled minigames.",
+ "setupNeeds": [
+  "Nintendo Switch 2 system required for the Nintendo Switch 2 version.",
+  "Internet connection is required for digital download, updates and online/service features where applicable.",
+  "Nintendo Account required for Nintendo eShop purchase/download.",
+  "Sufficient internal storage or compatible microSD Express storage required.",
+  "Nintendo Switch Online membership is required only for game-specific online multiplayer/features that explicitly use it."
+ ],
+ "sources": [
+  {
+   "name": "Nintendo Store",
+   "url": "https://www.nintendo.com/us/store/products/bravely-default-flying-fairy-hd-remaster-switch-2/"
+  },
+  {
+   "name": "Square Enix",
+   "url": "https://www.jp.square-enix.com/"
+  },
+  {
+   "name": "Game8",
+   "url": "https://game8.co/games/Bravely-Default-Flying-Fairy/archives/522338"
+  },
+  {
+   "name": "Game8 Completion Time",
+   "url": "https://game8.co/games/Bravely-Default-Flying-Fairy/archives/522377"
+  }
+ ],
+ "boxContentsList": "[Circular]",
+ "image": "/api/files/products/prd_5a43e5c95bbc46dc/cover-030948fa32de0345.jpg",
+ "banner": "/api/files/products/prd_5a43e5c95bbc46dc/bannerImages-1-1ac625e838596b9d.avif",
+ "schemaId": "",
+ "badgeEn": "وفر 40%",
+ "badgeKu": "وفر 40%",
+ "featuresEn": [
+  "High-definition remaster of the first Bravely Default",
+  "Classic Brave and Default BP battle system",
+  "More than 20 jobs",
+  "Redesigned user interface",
+  "Event-scene fast-forward",
+  "Modern quality-of-life improvements",
+  "Retooled networking features for Nintendo Switch 2",
+  "Two new Joy-Con 2 mouse-controlled minigames",
+  "Single-player story-focused JRPG"
+ ],
+ "featuresKu": [
+  "High-definition remaster of the first Bravely Default",
+  "Classic Brave and Default BP battle system",
+  "More than 20 jobs",
+  "Redesigned user interface",
+  "Event-scene fast-forward",
+  "Modern quality-of-life improvements",
+  "Retooled networking features for Nintendo Switch 2",
+  "Two new Joy-Con 2 mouse-controlled minigames",
+  "Single-player story-focused JRPG"
+ ],
+ "sales": 0,
+ "images": [],
+ "modes": [],
+ "updatedAt": "2026-08-28T22:01:17.970Z"
+}

@@ -1,6 +1,6 @@
 {
  "batch": "002",
- "apply": true,
+ "apply": false,
  "games": [
   {
    "id": "prd_ad958aa523e24052",
@@ -269,6 +269,126 @@
     "galleryImages"
    ],
    "notes": "ageRating now carries the actual ESRB rating (T) ahead of the descriptors that were stored alone. Perf figures verified by RPG Site's version comparison and Nintendo Life's review: 1080p/60 in both modes, labelled with the real source. The two dead R2 banners are replaced by the game's one verified Nintendo CDN screenshot, moved out of the gallery (no duplication; the empty gallery section hides). nintendoCardImage (403, file gone) and box_front_url (404 Best Buy link) removed — no verified square-card or replacement source reachable; the genuine Switch 2 game-key-card box in cartridgeImage and the correct (small) key-art cover remain. coverImage kept although only 320x180: content verified correct, and no higher-resolution copy of the same art could be verified from here."
+  }
+ ],
+ "appliedAt": "2026-09-02T02:12:30.714Z",
+ "results": [
+  {
+   "id": "prd_ad958aa523e24052",
+   "action": "APPLIED",
+   "changed": [],
+   "removed": [
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus",
+    "box_front_url"
+   ]
+  },
+  {
+   "id": "prd_999b5c5da17c492e",
+   "action": "APPLIED",
+   "changed": [
+    "downloadSizeGb",
+    "size",
+    "supportedLanguages",
+    "dlcSummary",
+    "patchNotes",
+    "bannerImages",
+    "galleryImages",
+    "devicePerformance"
+   ],
+   "removed": [
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ]
+  },
+  {
+   "id": "prd_704957ef027f4145",
+   "action": "APPLIED",
+   "changed": [
+    "downloadSizeGb",
+    "size",
+    "dlcSummary",
+    "patchNotes",
+    "bannerImages",
+    "galleryImages",
+    "devicePerformance"
+   ],
+   "removed": [
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ]
+  },
+  {
+   "id": "prd_86e6ac009a6249f9",
+   "action": "APPLIED",
+   "changed": [
+    "developer",
+    "dlcSummary",
+    "bannerImages",
+    "galleryImages",
+    "devicePerformance"
+   ],
+   "removed": [
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ]
+  },
+  {
+   "id": "prd_5a43e5c95bbc46dc",
+   "action": "APPLIED",
+   "changed": [
+    "ageRating",
+    "dlcSummary",
+    "bannerImages",
+    "devicePerformance"
+   ],
+   "removed": [
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus",
+    "nintendoCardImage",
+    "box_front_url",
+    "galleryImages"
+   ]
   }
  ]
 }

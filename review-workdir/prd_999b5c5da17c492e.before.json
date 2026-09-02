@@ -1,0 +1,495 @@
+{
+ "title": "Bayonetta 2",
+ "titleEn": "Bayonetta 2",
+ "titleKu": "Bayonetta 2",
+ "slug": "bayonetta-2",
+ "description": "Bayonetta 2 expands PlatinumGames’ character-action formula with new weapons, Umbran Climax, refined combat pacing and spectacular environments. The campaign is primarily single-player, while Tag Climax supports two-player cooperative battles through local wireless or online play.",
+ "descriptionEn": "Bayonetta 2 expands PlatinumGames’ character-action formula with new weapons, Umbran Climax, refined combat pacing and spectacular environments. The campaign is primarily single-player, while Tag Climax supports two-player cooperative battles through local wireless or online play.",
+ "descriptionKu": "Bayonetta 2 expands PlatinumGames’ character-action formula with new weapons, Umbran Climax, refined combat pacing and spectacular environments. The campaign is primarily single-player, while Tag Climax supports two-player cooperative battles through local wireless or online play.",
+ "cartridgeImage": "/api/files/products/prd_999b5c5da17c492e/front-81e3a8848721e47d.png",
+ "nintendoCardImage": "/api/files/products/prd_999b5c5da17c492e/square-61249d13582a6526.jpg",
+ "coverHiResImage": "/api/files/products/general/image-b3cb30da1f63472e.jpg",
+ "coverImage": "/api/files/products/prd_999b5c5da17c492e/cover-239df01c660d005b.jpg",
+ "bannerImages": [
+  "/api/files/products/prd_999b5c5da17c492e/banner-0-3db19cd54c6ec2f5.avif",
+  "/api/files/products/prd_999b5c5da17c492e/banner-1-ab3672ce33d2f494.avif",
+  "/api/files/products/prd_999b5c5da17c492e/banner-2-580f681a8ed3de28.avif",
+  "/api/files/products/prd_999b5c5da17c492e/banner-3-190909bf35e92bb4.avif",
+  "/api/files/products/prd_999b5c5da17c492e/banner-4-46bea0e0108f1cb7.avif",
+  "/api/files/products/prd_999b5c5da17c492e/banner-5-294227e7ee8bf03f.avif"
+ ],
+ "gallery": [],
+ "youtubeTrailer": "https://www.youtube.com/watch?v=XN-lQc2slvM",
+ "releaseDate": "2018-02-16",
+ "ageRating": "ESRB Mature",
+ "metacriticRating": 92,
+ "genres": [
+  "Action",
+  "Hack and Slash",
+  "Character Action",
+  "Adventure",
+  "Cooperative Action"
+ ],
+ "platform": "switch1",
+ "size": 12.537,
+ "numberOfPlayers": "2",
+ "supportedLanguages": "Supplier SKU: Simplified Chinese. Western Nintendo listings: Japanese, English, French, German, Italian and Spanish. Regional language availability can differ.",
+ "hardwareModel": "",
+ "colorEdition": "",
+ "storageCapacity": "",
+ "screenSpecs": "",
+ "batteryLife": "",
+ "boxContents": [],
+ "boxContentsText": "",
+ "warrantyCondition": "",
+ "connectivity": "",
+ "characterName": "Link",
+ "amiiboSeries": "The Legend of Zelda",
+ "figureType": "figure",
+ "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+ "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+ "boxCondition": "mib",
+ "releaseWave": "Wave 2 (Restock)",
+ "rarity": "standard",
+ "accessoryType": "حقيبة حماية وتنقل Carry Case",
+ "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+ "brand": "Nintendo Official",
+ "material": "Hard EVA Shockproof Shell",
+ "availableColors": "Black, Neon Red/Blue, White",
+ "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+ "cardValue": "$20 eShop Balance",
+ "region": "Global / region-dependent",
+ "cardType": "eshop",
+ "deliveryMethod": "instant_code",
+ "redemptionGuide": "",
+ "redemptionSteps": [],
+ "validity": "no_expiry",
+ "usedType": "cartridge",
+ "conditionGrade": "like_new",
+ "packaging": "cib",
+ "guaranteeStatus": "tested_30days",
+ "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+ "accountType": "primary",
+ "badge": "وفر 40%",
+ "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+ "price": 8500,
+ "cost": 2000,
+ "stock": 999999,
+ "isInfiniteStock": true,
+ "isHidden": false,
+ "displayOrder": 0,
+ "category": "nintendo-switch-games",
+ "categoryId": "nintendo-switch-games",
+ "categoryEn": "",
+ "categoryKu": "",
+ "options": [
+  {
+   "id": "offline_account",
+   "name": "مشترك",
+   "description": "Offline account access from the supplier listing.",
+   "stock": 999999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_account",
+   "name": "خاص بك",
+   "description": "Online account access from the supplier listing.",
+   "stock": 999999,
+   "isInfiniteStock": true
+  }
+ ],
+ "types": [
+  {
+   "id": "standard_offline",
+   "name": "مشترك — اللعبة الأساسية",
+   "optionId": "offline_account",
+   "price": 8500,
+   "cost": 2000,
+   "description": "Supplier Regular / 普通版; ¥9.74 converted to IQD.",
+   "stock": 999999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "standard_online",
+   "name": "خاص بك — اللعبة الأساسية",
+   "optionId": "online_account",
+   "price": 35000,
+   "cost": 18500,
+   "description": "Supplier Standard / 标准版; ¥85.2 converted to IQD.",
+   "stock": 999999,
+   "isInfiniteStock": true
+  }
+ ],
+ "editions": [],
+ "dlcs": [],
+ "isActive": true,
+ "status": "active",
+ "kind": "account",
+ "trade_value_iqd": 0,
+ "store_offer_bonus_iqd": 0,
+ "trade_enabled": true,
+ "trade_value_locked": false,
+ "id": "prd_999b5c5da17c492e",
+ "schema_version": 1,
+ "titleAr": "بايونيتا 2",
+ "compatibility": [
+  "Nintendo Switch",
+  "Nintendo Switch 2 (backward compatibility)",
+  "Nintendo Switch Lite"
+ ],
+ "edition": "Standard",
+ "developer": "PlatinumGames",
+ "publisher": "Nintendo",
+ "metacriticUrl": "https://www.metacritic.com/game/bayonetta-2/",
+ "opencriticRating": 91,
+ "userScore": 9,
+ "price_usd": 49.99,
+ "officialUrl": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-games/Bayonetta-2-1313750.html",
+ "eshopUrl": "https://www.nintendo.com/us/store/products/bayonetta-2-switch/",
+ "gameIsOffline": true,
+ "gameIsOnline": true,
+ "description_short": "A critically acclaimed stylish-action sequel with faster set pieces, Umbran Climax and two-player Tag Climax battles.",
+ "description_ar": "تكملة أكشن سريعة توسّع نظام Bayonetta بأسلحة جديدة وميزة Umbran Climax ومعارك أكثر ضخامة. القصة فردية أساسًا، بينما يوفّر طور Tag Climax مواجهات تعاونية للاعبين عبر الاتصال المحلي اللاسلكي أو الإنترنت.",
+ "box_front_url": "https://images.launchbox-app.com/r2_7e468c38-352f-47dd-9d9d-d9188d8e770c.png",
+ "box_back_url": "https://images.launchbox-app.com/31b399ac-82ff-484d-97ab-9a1fe4eb55ca.jpg",
+ "videos": [
+  {
+   "title": "Bayonetta 2 — LaunchBox trailer reference",
+   "url": "https://www.youtube.com/watch?v=XN-lQc2slvM"
+  },
+  {
+   "title": "Bayonetta 2 — Digital Foundry Switch analysis",
+   "url": "https://www.youtube.com/watch?v=4Y4RDSXlG3w"
+  },
+  {
+   "title": "PlatinumGames — Bayonetta 2",
+   "url": "https://www.platinumgames.com/games/bayonetta-2/"
+  }
+ ],
+ "nintendoEshopUrl": "https://www.nintendo.com/us/store/products/bayonetta-2-switch/",
+ "nintendoOnlineRequired": true,
+ "nintendoCloudSaves": true,
+ "nintendoGameKeyCard": false,
+ "tvMode": true,
+ "tabletopMode": true,
+ "handheldMode": true,
+ "nintendoPlayModes": "TV / Tabletop / Handheld",
+ "nintendoNotes": "Native Nintendo Switch release dated February 16, 2018. Western Nintendo listings show Japanese, English, French, German, Italian and Spanish; the supplier SKU supplied by the user is explicitly marked Simplified Chinese, so that language is preserved as regional supplier information rather than treated as universal across regions. Tag Climax supports two players through local wireless or online play.",
+ "switch2Enhanced": false,
+ "switch2Exclusive": false,
+ "switch2Features": [
+  "Official backward compatibility",
+  "No native Switch 2 Edition",
+  "Original 720p graphics profile",
+  "Backward-compatible execution without an official enhanced mode"
+ ],
+ "tagline": "The witch is back—and stronger than ever.",
+ "fitFor": [
+  "Players who want elite character-action combat",
+  "Fans of Bayonetta’s combat system",
+  "Players who enjoy score chasing and replayability",
+  "Players who want optional two-player Tag Climax"
+ ],
+ "notFitFor": [
+  "Players who dislike fast reaction-heavy combat",
+  "Players seeking a slow exploration RPG",
+  "Players requiring native 1080p rendering",
+  "Players wanting full campaign co-op"
+ ],
+ "playTimeMain": 9.1,
+ "playTimeFull": 47.2,
+ "editionsList": [
+  {
+   "name": "Bayonetta 2 — Nintendo Switch",
+   "coverUrl": "https://images.launchbox-app.com/r2_7e468c38-352f-47dd-9d9d-d9188d8e770c.png",
+   "contents": [
+    {
+     "label": "Full Bayonetta 2 campaign"
+    },
+    {
+     "label": "Tag Climax multiplayer mode"
+    },
+    {
+     "label": "Nintendo Switch handheld/tabletop/TV support"
+    }
+   ]
+  }
+ ],
+ "gameplayPillars": [
+  {
+   "title": "Refined Witch Time",
+   "description": "Perfect dodges slow enemies and create openings for high-damage combo routes.",
+   "imageUrl": "https://images.launchbox-app.com/e0f66ab8-3edc-485a-a961-320ec046bbf3.jpg"
+  },
+  {
+   "title": "Umbran Climax",
+   "description": "Spend magic to amplify attacks and summon large Wicked Weaves throughout a combo.",
+   "imageUrl": "https://images.launchbox-app.com/e77c9ea8-b711-4e78-8436-8dc155a436f8.jpg"
+  },
+  {
+   "title": "Weapon Variety",
+   "description": "Mix hand and foot weapon sets to create distinct combo properties and playstyles.",
+   "imageUrl": "https://images.launchbox-app.com/aa9b91fb-a52c-4b94-b340-ebc225d2e112.jpg"
+  },
+  {
+   "title": "Tag Climax",
+   "description": "Fight challenge battles with a second player through local wireless or online connectivity.",
+   "imageUrl": "https://images.launchbox-app.com/eafbd007-aa10-4381-b7ca-153ca2320332.png"
+  }
+ ],
+ "worldSummary": "Bayonetta travels through Noatun and realms including Paradiso and Inferno while attempting to rescue Jeanne’s soul. The journey deepens the series’ mythology and brings Bayonetta into direct conflict with angels, demons and masked rivals.",
+ "storyChapters": [
+  {
+   "title": "Jeanne’s Soul",
+   "body": "After a catastrophic battle, Jeanne’s soul is dragged toward Inferno and Bayonetta sets out to save her.",
+   "imageUrl": "https://images.launchbox-app.com/e0f66ab8-3edc-485a-a961-320ec046bbf3.jpg"
+  },
+  {
+   "title": "Journey to Fimbulventr",
+   "body": "Bayonetta travels through Noatun toward the sacred mountain while confronting angels, demons and a masked Lumen Sage.",
+   "imageUrl": "https://images.launchbox-app.com/e77c9ea8-b711-4e78-8436-8dc155a436f8.jpg"
+  },
+  {
+   "title": "Aesir and the Eyes",
+   "body": "The story explores the origins of the Eyes of the World and the god Aesir.",
+   "imageUrl": "https://images.launchbox-app.com/aa9b91fb-a52c-4b94-b340-ebc225d2e112.jpg"
+  },
+  {
+   "title": "Across Time",
+   "body": "Events connect Bayonetta’s past and present and expand the mythology established by the first game.",
+   "imageUrl": "https://images.launchbox-app.com/eafbd007-aa10-4381-b7ca-153ca2320332.png"
+  }
+ ],
+ "galleryImages": [
+  {
+   "url": "https://images.launchbox-app.com/e0f66ab8-3edc-485a-a961-320ec046bbf3.jpg",
+   "alt": "Bayonetta 2 high-resolution key art"
+  },
+  {
+   "url": "https://images.launchbox-app.com/e77c9ea8-b711-4e78-8436-8dc155a436f8.jpg",
+   "alt": "Bayonetta 2 character artwork"
+  },
+  {
+   "url": "https://images.launchbox-app.com/aa9b91fb-a52c-4b94-b340-ebc225d2e112.jpg",
+   "alt": "Bayonetta 2 Bayonetta character artwork"
+  },
+  {
+   "url": "https://images.launchbox-app.com/eafbd007-aa10-4381-b7ca-153ca2320332.png",
+   "alt": "Bayonetta 2 gameplay screenshot"
+  },
+  {
+   "url": "https://images.launchbox-app.com/6cde1cca-b14b-490e-afe2-6091f2805d14.png",
+   "alt": "Bayonetta 2 gameplay screenshot"
+  }
+ ],
+ "features": [
+  "Umbran Climax power-up system",
+  "Deep weapon and combo mechanics",
+  "Witch Time dodge system",
+  "Two-player Tag Climax mode",
+  "Local wireless and online co-op",
+  "Large cinematic boss encounters"
+ ],
+ "perfResolutionDocked": "720p",
+ "perfResolutionHandheld": "720p",
+ "perfFps": "60",
+ "perfHdr": false,
+ "perfNotes": "The Switch version uses 720p in both docked and handheld modes and targets 60 fps. Docked performance is generally stronger; demanding scenes can still fall below the target.",
+ "devicePerformance": [
+  {
+   "device": "Nintendo Switch 2",
+   "deviceSlug": "nintendo-switch-2",
+   "deviceModel": "Nintendo Switch 2",
+   "hardwareId": "prd_acf4c89908764c62",
+   "informationStatus": "measured / technical analysis",
+   "handheld": {
+    "supported": true,
+    "resolution": "720p",
+    "resolutionDynamic": false,
+    "renderingResolution": "1280x720",
+    "outputResolution": "1280x720",
+    "fps": "60",
+    "fpsMax": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "Handheld",
+    "notes": "Portable mode renders at 720p and targets 60 fps. Complex combat can fall below the target, with handheld performance generally less consistent than docked."
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "720p",
+    "resolutionDynamic": false,
+    "renderingResolution": "1280x720",
+    "outputResolution": "1920x1080",
+    "fps": "60",
+    "fpsMax": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "Docked",
+    "notes": "Docked mode renders at 720p and targets 60 fps, with improved performance compared with the Wii U release but not a perfect locked 60 fps."
+   },
+   "rayTracing": false,
+   "sourceName": "Digital Foundry / Nintendo Switch technical analysis",
+   "sourceUrl": "https://www.youtube.com/watch?v=4Y4RDSXlG3w",
+   "verificationStatus": "verified / source-qualified",
+   "performanceNotes": "The Switch version uses 720p in both docked and handheld modes and targets 60 fps. Docked performance is generally stronger; demanding scenes can still fall below the target."
+  }
+ ],
+ "downloadSizeGb": 12.537,
+ "requiredSpaceGb": 12.537,
+ "microSdRecommended": false,
+ "storageNotes": "Official/reliable listing reports approximately 12.537 GB for the Nintendo Switch download. Leave additional free space for save data and future updates.",
+ "languagesAudio": [
+  "English",
+  "Japanese"
+ ],
+ "languagesText": [
+  "Chinese (Simplified) — supplier regional SKU",
+  "English",
+  "Japanese",
+  "French",
+  "German",
+  "Italian",
+  "Spanish"
+ ],
+ "arabicSupport": false,
+ "mpLocalPlayers": true,
+ "mpOnlinePlayers": true,
+ "mpCoop": true,
+ "mpCompetitive": false,
+ "mpSplitScreen": false,
+ "mpLocalWireless": true,
+ "completionMain": 9.1,
+ "completionExtras": 12.4,
+ "completionAll": 47.2,
+ "faq": [
+  {
+   "q": "Does Bayonetta 2 work on Nintendo Switch 2?",
+   "a": "Yes through backward compatibility where Nintendo marks the Nintendo Switch release as supported. This file does not classify it as a native Nintendo Switch 2 Edition."
+  },
+  {
+   "q": "What language is the supplier version of Bayonetta 2?",
+   "a": "Supplier listing language supplied by the user: Simplified Chinese. Official/regional language details are preserved separately in supported_languages_raw and nintendo_notes so the supplier SKU is not generalized to every region."
+  },
+  {
+   "q": "Is Bayonetta 2 multiplayer?",
+   "a": "Yes. The file records the supported local/online modes individually."
+  },
+  {
+   "q": "Why are some Switch 2 performance resolution fields blank for Bayonetta 2?",
+   "a": "Because exact measured Switch 2 backward-compatibility rendering values were not verified. The template is intentionally left blank rather than filled with hardware maximums or guesses."
+  }
+ ],
+ "verdictScore": 9.2,
+ "verdictSummary": "One of the strongest modern character-action games, combining fluid combat, excellent encounter pacing and enormous spectacle. The Switch version’s 720p presentation is modest, but its portability and strong performance make it a particularly good Nintendo release.",
+ "reviews": [
+  {
+   "source": "Metacritic",
+   "score": "92/100",
+   "quote": "Nintendo Switch aggregate critic score.",
+   "url": "https://www.metacritic.com/game/bayonetta-2/"
+  },
+  {
+   "source": "OpenCritic",
+   "score": "91/100",
+   "quote": "Aggregate critic score recorded for Bayonetta 2.",
+   "url": "https://opencritic.com/game/5550/bayonetta-2"
+  },
+  {
+   "source": "Deku Deals user metadata",
+   "score": "9.0/10",
+   "quote": "User-score metadata displayed with the Switch listing.",
+   "url": "https://www.dekudeals.com/items/bayonetta-2-digital-version"
+  }
+ ],
+ "timeline": [
+  {
+   "date": "2014-09-20",
+   "title": "Original Wii U debut in Japan",
+   "body": "Bayonetta 2 first released on Wii U in Japan."
+  },
+  {
+   "date": "2014-10-24",
+   "title": "Wii U international release",
+   "body": "The game expanded internationally on Wii U."
+  },
+  {
+   "date": "2018-02-16",
+   "title": "Nintendo Switch release",
+   "body": "Bayonetta 2 launched on Nintendo Switch with portable play and Tag Climax connectivity."
+  }
+ ],
+ "seriesName": "Bayonetta",
+ "seriesEntries": [
+  "Bayonetta",
+  "Bayonetta 3",
+  "Bayonetta Origins: Cereza and the Lost Demon",
+  "Bayonetta & Vanquish 10th Anniversary Bundle"
+ ],
+ "studioName": "PlatinumGames",
+ "studioUrl": "https://www.platinumgames.com/",
+ "studioLocation": "Tokyo, Japan",
+ "studioAbout": "PlatinumGames is an Osaka-based Japanese action-game studio recognized for expressive combat systems, high-speed character action and large-scale set pieces.",
+ "setupNeeds": [
+  "Nintendo Switch family system",
+  "Nintendo Account for digital purchase/download",
+  "Nintendo Switch Online membership for online Tag Climax",
+  "Second compatible system/game setup for local wireless multiplayer"
+ ],
+ "sources": [
+  {
+   "name": "Nintendo — Bayonetta 2",
+   "url": "https://www.nintendo.com/us/store/products/bayonetta-2-switch/"
+  },
+  {
+   "name": "Deku Deals — Bayonetta 2",
+   "url": "https://www.dekudeals.com/items/bayonetta-2-digital-version"
+  },
+  {
+   "name": "LaunchBox — Bayonetta 2 Switch media",
+   "url": "https://gamesdb.launchbox-app.com/games/images/95451-bayonetta-2"
+  },
+  {
+   "name": "The Cover Project — Bayonetta 2 Switch cover",
+   "url": "https://about.thecoverproject.net/view.php?cover_id=18898"
+  },
+  {
+   "name": "Digital Foundry — Switch analysis",
+   "url": "https://www.youtube.com/watch?v=4Y4RDSXlG3w"
+  },
+  {
+   "name": "PSPrices — playtime/aggregate metadata",
+   "url": "https://psprices.com/region-dk/game/2553102/bayonetta-2"
+  }
+ ],
+ "boxContentsList": "[Circular]",
+ "image": "/api/files/products/prd_999b5c5da17c492e/cover-239df01c660d005b.jpg",
+ "banner": "/api/files/products/prd_999b5c5da17c492e/banner-0-3db19cd54c6ec2f5.avif",
+ "schemaId": "",
+ "createdAt": "2026-08-26T22:24:27.700Z",
+ "created_at": "2026-08-26T22:24:27.700Z",
+ "updatedAt": "2026-08-28T22:05:02.913Z",
+ "updated_at": "2026-08-26T22:24:27.700Z",
+ "badgeEn": "وفر 40%",
+ "badgeKu": "وفر 40%",
+ "featuresEn": [
+  "Umbran Climax power-up system",
+  "Deep weapon and combo mechanics",
+  "Witch Time dodge system",
+  "Two-player Tag Climax mode",
+  "Local wireless and online co-op",
+  "Large cinematic boss encounters"
+ ],
+ "featuresKu": [
+  "Umbran Climax power-up system",
+  "Deep weapon and combo mechanics",
+  "Witch Time dodge system",
+  "Two-player Tag Climax mode",
+  "Local wireless and online co-op",
+  "Large cinematic boss encounters"
+ ],
+ "boxFrontUrl": "https://images.launchbox-app.com/r2_7e468c38-352f-47dd-9d9d-d9188d8e770c.png",
+ "sales": 0,
+ "images": [],
+ "modes": []
+}

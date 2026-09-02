@@ -1,0 +1,51 @@
+{
+ "batch": "003",
+ "apply": false,
+ "games": [
+  {
+   "id": "prd_7cb47defb1ff4c61",
+   "slug": "cuphead-switch",
+   "baseHash": "d246b70d4ea7a2db206650ca8f152eea6148815b4a91aafe4e2538013eee8168",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  },
+  {
+   "id": "prd_0fb9102af8c2450f",
+   "slug": "cyberpunk-2077-ultimate-edition-nintendo-switch-2",
+   "baseHash": "ad1d21e836cf3df068780e9b88efee248b6173a80ad4dd4b5e6adf40b4162876",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  },
+  {
+   "id": "prd_032470e4f7dd4cf0",
+   "slug": "dave-the-diver-nintendo-switch-2-edition",
+   "baseHash": "8682d2c71393ce81d1c38e121c33a219a26894d272a5cdab6cbccdedc7509763",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  },
+  {
+   "id": "prd_07de8f47fbf44b28",
+   "slug": "dead-by-daylight-switch",
+   "baseHash": "d0fa40c3e5f78233559b5340bcaef9236dd629398560c3d6fdee9d3eee67cf2e",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  },
+  {
+   "id": "prd_0e08ad1311134765",
+   "slug": "deltarune",
+   "baseHash": "52908168b3ce769edfb06c2ccae4d6e0fa47c3ebdfa8a4c3da0f0c598e0127e5",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  }
+ ]
+}

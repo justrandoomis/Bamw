@@ -19,9 +19,9 @@
   "/api/files/products/prd_b66558151b784a6f/banner-5-977049aa74b53213.jpg"
  ],
  "gallery": [],
- "youtubeTrailer": "https://www.youtube.com/watch?v=3DjY6JK-WT0",
+ "youtubeTrailer": "https://www.youtube.com/watch?v=XN-lQc2slvM",
  "releaseDate": "2018-02-16",
- "ageRating": "ESRB Mature",
+ "ageRating": "ESRB M (Mature 17+)",
  "metacriticRating": 84,
  "genres": [
   "Action",
@@ -292,42 +292,22 @@
  "perfNotes": "The Switch port uses 720p in both docked and portable modes and targets 60 fps. Docked play is more stable; handheld can show more noticeable dips.",
  "devicePerformance": [
   {
-   "device": "Nintendo Switch 2",
-   "deviceSlug": "nintendo-switch-2",
-   "deviceModel": "Nintendo Switch 2",
-   "hardwareId": "prd_acf4c89908764c62",
-   "informationStatus": "measured / technical analysis",
+   "device": "Nintendo Switch",
+   "deviceSlug": "nintendo-switch",
+   "informationStatus": "available",
    "handheld": {
     "supported": true,
     "resolution": "720p",
-    "resolutionDynamic": false,
-    "renderingResolution": "1280x720",
-    "outputResolution": "1280x720",
-    "fps": "60",
-    "fpsMax": "60",
-    "hdr": false,
-    "vrr": false,
-    "mode": "Handheld",
-    "notes": "Handheld mode renders at 720p and targets 60 fps, with more frequent performance dips than docked play."
+    "fps": "60"
    },
    "tv": {
     "supported": true,
-    "resolution": "720p",
-    "resolutionDynamic": false,
-    "renderingResolution": "1280x720",
-    "outputResolution": "1920x1080",
-    "fps": "60",
-    "fpsMax": "60",
-    "hdr": false,
-    "vrr": false,
-    "mode": "Docked",
-    "notes": "Docked mode renders at 720p and targets 60 fps, generally holding performance more consistently than handheld."
+    "resolution": "720p (upscaled to 1080p output)",
+    "fps": "60"
    },
-   "rayTracing": false,
-   "sourceName": "Digital Foundry / technical coverage of Nintendo Switch version",
-   "sourceUrl": "https://www.eurogamer.net/digitalfoundry-2018-bayonetta-switch-analysis",
-   "verificationStatus": "verified / source-qualified",
-   "performanceNotes": "The Switch port uses 720p in both docked and portable modes and targets 60 fps. Docked play is more stable; handheld can show more noticeable dips."
+   "sourceName": "Digital Foundry analysis of the Switch port",
+   "sourceUrl": "https://www.eurogamer.net/digitalfoundry-2018-bayonetta-1-and-2-on-switch-tested",
+   "verificationStatus": "technical_analysis"
   }
  ],
  "downloadSizeGb": 8.793,
@@ -458,8 +438,8 @@
  "schemaId": "",
  "createdAt": "2026-08-26T22:24:24.597Z",
  "created_at": "2026-08-26T22:24:24.597Z",
- "updatedAt": "2026-08-28T22:06:48.910Z",
- "updated_at": "2026-08-26T22:24:24.597Z",
+ "updatedAt": "2026-09-02T01:56:06.199Z",
+ "updated_at": "2026-09-02T01:56:06.199Z",
  "badgeEn": "وفر 40%",
  "badgeKu": "وفر 40%",
  "featuresEn": [

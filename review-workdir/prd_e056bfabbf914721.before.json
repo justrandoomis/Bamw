@@ -11,12 +11,11 @@
  "coverHiResImage": "/api/files/products/prd_e056bfabbf914721/3d-texture-0662364bffe8c41c.webp",
  "coverImage": "/api/files/products/prd_e056bfabbf914721/cover-dfc48c5debe793b0.avif",
  "bannerImages": [
-  "/api/files/products/prd_e056bfabbf914721/banner-0-dfc48c5debe793b0.avif",
   "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000003432/03df298cde9e5da4aed7d4f3b8f276def99614410f061c06ea8f546c4fdfc48b",
   "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000003432/b083e720569cb85a516bbc7821ad8b65ebd2fa03ec0fb6b0364237427dcfe544"
  ],
  "gallery": [],
- "youtubeTrailer": "https://www.arcadearchives.com/en/title/aca-061/",
+ "youtubeTrailer": "https://www.youtube.com/watch?v=bNICBT2un5c",
  "releaseDate": "2017-12-22",
  "ageRating": "ESRB E / Mild Fantasy Violence",
  "metacriticRating": 75,
@@ -132,7 +131,7 @@
   "Nintendo Switch 2 (backward compatible / enhanced where applicable)"
  ],
  "edition": "Standard",
- "developer": "HAMSTER / Nintendo original arcade game",
+ "developer": "HAMSTER (original arcade game by Nintendo)",
  "publisher": "HAMSTER",
  "metacriticUrl": "https://www.nintendolife.com/reviews/switch-eshop/arcade_archives_vs_super_mario_bros",
  "opencriticRating": 75,
@@ -307,67 +306,22 @@
  "perfNotes": "The title emulates an 1986 arcade game; Nintendo does not publish a modern native rendering-resolution metric. Switch and Switch 2 compatibility preserve the game's original behavior with system-level output scaling.",
  "devicePerformance": [
   {
-   "device": "Nintendo Switch 2",
-   "deviceSlug": "nintendo-switch-2",
-   "deviceModel": "Nintendo Switch 2",
-   "hardwareId": "prd_acf4c89908764c62",
-   "informationStatus": "Available / verified",
-   "unavailableReason": "No standard supported mode is unavailable.",
+   "device": "Nintendo Switch",
+   "deviceSlug": "nintendo-switch",
+   "informationStatus": "available",
    "handheld": {
     "supported": true,
-    "resolution": "Original arcade framebuffer presented through 720p Switch output",
-    "resolutionDynamic": false,
-    "renderingResolution": "Original arcade framebuffer presented through 720p Switch output",
-    "outputResolution": "1280x720",
-    "fps": "60-class arcade emulation",
-    "fpsMin": "30",
-    "fpsMax": "60",
-    "refreshRate": "60",
-    "hdr": false,
-    "vrr": false,
-    "mode": "Handheld",
-    "notes": "The title emulates an 1986 arcade game; Nintendo does not publish a modern native rendering-resolution metric. Switch and Switch 2 compatibility preserve the game's original behavior with system-level output scaling."
+    "resolution": "720p (emulated arcade output)",
+    "fps": "60"
    },
    "tv": {
     "supported": true,
-    "resolution": "Original arcade framebuffer presented through 1080p Switch output",
-    "resolutionDynamic": false,
-    "renderingResolution": "Original arcade framebuffer presented through 1080p Switch output",
-    "outputResolution": "1920x1080",
-    "fps": "60-class arcade emulation",
-    "fpsMin": "30",
-    "fpsMax": "60",
-    "refreshRate": "60",
-    "hdr": false,
-    "vrr": false,
-    "mode": "TV / Docked",
-    "notes": "The title emulates an 1986 arcade game; Nintendo does not publish a modern native rendering-resolution metric. Switch and Switch 2 compatibility preserve the game's original behavior with system-level output scaling."
+    "resolution": "1080p (emulated arcade output)",
+    "fps": "60"
    },
-   "modes": [
-    {
-     "name": "Primary documented mode",
-     "handheldResolution": "Original arcade framebuffer presented through 720p Switch output",
-     "handheldFps": "60-class arcade emulation",
-     "tvResolution": "Original arcade framebuffer presented through 1080p Switch output",
-     "tvFps": "60-class arcade emulation",
-     "hdr": false,
-     "vrr": false,
-     "notes": "Primary documented performance profile."
-    }
-   ],
-   "upscaling": "System/game-specific scaling where applicable",
-   "rayTracing": false,
-   "rayTracingMode": "No verified ray-tracing mode",
-   "loadingTime": "Scene-dependent; no single universal loading time",
-   "loadingNotes": "Loading varies by scene, save and storage state.",
-   "gameVersion": "Current retail build",
-   "patchVersion": "Current available update",
-   "testedDate": "2026-08-27",
-   "sourceName": "HAMSTER Arcade Archives",
+   "sourceName": "Arcade Archives series emulation behaviour (HAMSTER)",
    "sourceUrl": "https://www.arcadearchives.com/en/title/aca-061/",
-   "verifiedAt": "2026-08-27",
-   "verificationStatus": "Verified / sourced",
-   "performanceNotes": "The title emulates an 1986 arcade game; Nintendo does not publish a modern native rendering-resolution metric. Switch and Switch 2 compatibility preserve the game's original behavior with system-level output scaling."
+   "verificationStatus": "technical_analysis"
   }
  ],
  "downloadSizeGb": 0.098,
@@ -557,8 +511,8 @@
  "schemaId": "",
  "createdAt": "2026-08-27T01:24:47.124Z",
  "created_at": "2026-08-27T01:24:47.124Z",
- "updatedAt": "2026-08-27T01:24:47.124Z",
- "updated_at": "2026-08-27T01:24:47.124Z",
+ "updatedAt": "2026-09-02T01:56:01.378Z",
+ "updated_at": "2026-09-02T01:56:01.378Z",
  "badgeEn": "وفر 40%",
  "badgeKu": "وفر 40%",
  "featuresEn": [
