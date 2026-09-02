@@ -1,0 +1,51 @@
+{
+ "batch": "002",
+ "apply": false,
+ "games": [
+  {
+   "id": "prd_ad958aa523e24052",
+   "slug": "assassins-creed-shadows-switch-2",
+   "baseHash": "d229dda26242fe08ee2e5eae629bd0b5fe91081b304d74aa50dfb5e5384a77f0",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  },
+  {
+   "id": "prd_999b5c5da17c492e",
+   "slug": "bayonetta-2",
+   "baseHash": "d1e55269d3d37ca563a252649aab117bc8180b3dac3096daf7b2099447778e06",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  },
+  {
+   "id": "prd_704957ef027f4145",
+   "slug": "bayonetta-3",
+   "baseHash": "3d0a2302395ce10a70113def68d99b70fa6ebae9bdb56e61e9e3e1e4017f3282",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  },
+  {
+   "id": "prd_86e6ac009a6249f9",
+   "slug": "bayonetta-origins-cereza-and-the-lost-demon",
+   "baseHash": "60939166eb04eabfde1bf8f4e5e22e4aed26429475b66a851795b091453e2977",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  },
+  {
+   "id": "prd_5a43e5c95bbc46dc",
+   "slug": "bravely-default-flying-fairy-hd-remaster",
+   "baseHash": "33d2e37e57c7d75ac3bd8d21e8a80d9990340c25c375dc42b0aa42aee3ad7c5a",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  }
+ ]
+}

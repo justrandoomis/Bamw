@@ -1,0 +1,578 @@
+{
+ "title": "Arcade Archives VS. SUPER MARIO BROS.",
+ "titleEn": "Arcade Archives VS. SUPER MARIO BROS.",
+ "titleKu": "Arcade Archives VS. SUPER MARIO BROS.",
+ "slug": "arcade-archives-vs-super-mario-bros-switch",
+ "description": "A faithful emulation of Nintendo's 1986 VS. System arcade version of Super Mario Bros. Enemy and item placement differs from the NES home version, and Arcade Archives adds difficulty settings, CRT-style display options and online high-score rankings.",
+ "descriptionEn": "A faithful emulation of Nintendo's 1986 VS. System arcade version of Super Mario Bros. Enemy and item placement differs from the NES home version, and Arcade Archives adds difficulty settings, CRT-style display options and online high-score rankings.",
+ "descriptionKu": "A faithful emulation of Nintendo's 1986 VS. System arcade version of Super Mario Bros. Enemy and item placement differs from the NES home version, and Arcade Archives adds difficulty settings, CRT-style display options and online high-score rankings.",
+ "cartridgeImage": "/api/files/products/prd_e056bfabbf914721/front-7443cca46ce5cab2.jpg",
+ "nintendoCardImage": "/api/files/products/prd_e056bfabbf914721/square-ffb1ef3cf21beef1.png",
+ "coverHiResImage": "/api/files/products/prd_e056bfabbf914721/3d-texture-0662364bffe8c41c.webp",
+ "coverImage": "/api/files/products/prd_e056bfabbf914721/cover-dfc48c5debe793b0.avif",
+ "bannerImages": [
+  "/api/files/products/prd_e056bfabbf914721/banner-0-dfc48c5debe793b0.avif",
+  "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000003432/03df298cde9e5da4aed7d4f3b8f276def99614410f061c06ea8f546c4fdfc48b",
+  "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000003432/b083e720569cb85a516bbc7821ad8b65ebd2fa03ec0fb6b0364237427dcfe544"
+ ],
+ "gallery": [],
+ "youtubeTrailer": "https://www.arcadearchives.com/en/title/aca-061/",
+ "releaseDate": "2017-12-22",
+ "ageRating": "ESRB E / Mild Fantasy Violence",
+ "metacriticRating": 75,
+ "genres": [
+  "Arcade",
+  "2D Platformer",
+  "Action"
+ ],
+ "platform": "switch1",
+ "size": 0.098,
+ "numberOfPlayers": "1–2 local",
+ "supportedLanguages": "Japanese / English; French / German / Italian / Spanish; Additional regional English/French variants in Nintendo storefront",
+ "hardwareModel": "",
+ "colorEdition": "",
+ "storageCapacity": "",
+ "screenSpecs": "",
+ "batteryLife": "",
+ "boxContents": [],
+ "boxContentsText": "",
+ "warrantyCondition": "",
+ "connectivity": "",
+ "characterName": "Link",
+ "amiiboSeries": "The Legend of Zelda",
+ "figureType": "figure",
+ "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+ "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+ "boxCondition": "mib",
+ "releaseWave": "Wave 2 (Restock)",
+ "rarity": "standard",
+ "accessoryType": "حقيبة حماية وتنقل Carry Case",
+ "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+ "brand": "Nintendo Official",
+ "material": "Hard EVA Shockproof Shell",
+ "availableColors": "Black, Neon Red/Blue, White",
+ "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+ "cardValue": "$20 eShop Balance",
+ "region": "Global",
+ "cardType": "eshop",
+ "deliveryMethod": "instant_code",
+ "redemptionGuide": "",
+ "redemptionSteps": [],
+ "validity": "no_expiry",
+ "usedType": "cartridge",
+ "conditionGrade": "like_new",
+ "packaging": "cib",
+ "guaranteeStatus": "tested_30days",
+ "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+ "accountType": "primary",
+ "badge": "وفر 40%",
+ "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+ "price": 5000,
+ "cost": 1250,
+ "stock": 999999,
+ "isInfiniteStock": true,
+ "isHidden": false,
+ "displayOrder": 0,
+ "category": "nintendo-switch-games",
+ "categoryId": "nintendo-switch-games",
+ "categoryEn": "",
+ "categoryKu": "",
+ "options": [
+  {
+   "id": "offline_account",
+   "name": "Offline Account",
+   "description": "Offline account access",
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_account",
+   "name": "Online Account",
+   "description": "Online account access",
+   "stock": 9999,
+   "isInfiniteStock": true
+  }
+ ],
+ "types": [
+  {
+   "id": "standard_offline",
+   "name": "Offline Account",
+   "optionId": "offline_account",
+   "price": "5000",
+   "cost": 1250,
+   "description": "Offline Account; supplier cost 1,250 IQD; selling price 7,500 IQD.",
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "standard_online",
+   "name": "Online Account",
+   "optionId": "online_account",
+   "price": "12000",
+   "cost": 5750,
+   "description": "Online Account; supplier cost 5,750 IQD; selling price 15,750 IQD.",
+   "stock": 9999,
+   "isInfiniteStock": true
+  }
+ ],
+ "editions": [],
+ "dlcs": [],
+ "isActive": true,
+ "status": "Active",
+ "kind": "account",
+ "trade_value_iqd": 5000,
+ "store_offer_bonus_iqd": 2500,
+ "trade_enabled": true,
+ "trade_value_locked": false,
+ "id": "prd_e056bfabbf914721",
+ "schema_version": 23,
+ "titleAr": "أركيد أركايفز VS. سوبر ماريو بروس.",
+ "compatibility": [
+  "Nintendo Switch",
+  "Nintendo Switch 2 (backward compatible / enhanced where applicable)"
+ ],
+ "edition": "Standard",
+ "developer": "HAMSTER / Nintendo original arcade game",
+ "publisher": "HAMSTER",
+ "metacriticUrl": "https://www.nintendolife.com/reviews/switch-eshop/arcade_archives_vs_super_mario_bros",
+ "opencriticRating": 75,
+ "userScore": 7.5,
+ "price_usd": 59.99,
+ "officialUrl": "https://www.arcadearchives.com/en/title/aca-061/",
+ "eshopUrl": "https://www.nintendo.com/us/store/products/arcade-archives-vs-super-mario-bros-switch/",
+ "gameIsOffline": true,
+ "gameIsOnline": false,
+ "gameLanguageLocked": false,
+ "description_short": "A faithful emulation of Nintendo's 1986 VS. System arcade version of Super Mario Bros. Enemy and item placement differs from the NES home version, and Arcade Archives adds difficulty settings, CRT-style display options and online high-score rankings.",
+ "description_ar": "محاكاة دقيقة لإصدار VS. System الأركيدي من Super Mario Bros. لعام 1986. تختلف أماكن الأعداء والعناصر عن نسخة NES، وتضيف Arcade Archives إعدادات للصعوبة والعرض بأسلوب CRT وتصنيفات عالمية للنقاط.",
+ "box_front_url": "https://images.launchbox-app.com/a150a641-02e7-4bbf-adeb-7fb79b0e4969.png",
+ "box_back_url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000003432/7f1c647eef54f9ea832d956f6579cc47a437f32673ef6b02551b5b065008ece3",
+ "galleryImages": [
+  {
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000003432/96f97ea7cfa5387f0be97718289a29d5b37fe909457c4ba9b68c52ebf40a6907",
+   "alt": "Arcade Archives VS. SUPER MARIO BROS. — distinct gameplay/promotional image 1"
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000003432/8f2f8fd13f75a5b2107ba69f0b712bcd89d9827f669067d5ca3b6d577107c361",
+   "alt": "Arcade Archives VS. SUPER MARIO BROS. — distinct gameplay/promotional image 2"
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000003432/2fe603deaa8624872a56fd20c836dba3fb5d6d917db948b90be0acb70769f95b",
+   "alt": "Arcade Archives VS. SUPER MARIO BROS. — distinct gameplay/promotional image 3"
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000003432/ad78786e3c41b4753d60b5f88d4b161ab2d51ad9731d7871cda5b199604dde8d",
+   "alt": "Arcade Archives VS. SUPER MARIO BROS. — distinct gameplay/promotional image 4"
+  }
+ ],
+ "videos": [
+  {
+   "title": "Official game page / trailer",
+   "url": "https://www.arcadearchives.com/en/title/aca-061/"
+  },
+  {
+   "title": "Nintendo / publisher product information",
+   "url": "https://www.nintendo.com/us/store/products/arcade-archives-vs-super-mario-bros-switch/"
+  },
+  {
+   "title": "Technical or database reference",
+   "url": "https://www.arcadearchives.com/en/title/aca-061/"
+  }
+ ],
+ "nsuid": "See regional Nintendo eShop listing",
+ "title_id": "Regional title identifier varies by Nintendo storefront",
+ "product_code": "Digital-only Nintendo eShop release",
+ "nintendoEshopUrl": "https://www.nintendo.com/us/store/products/arcade-archives-vs-super-mario-bros-switch/",
+ "nintendoOnlineRequired": false,
+ "nintendoCloudSaves": true,
+ "nintendoGameKeyCard": false,
+ "nintendoPhysicalNeedsDownload": false,
+ "tvMode": true,
+ "tabletopMode": true,
+ "handheldMode": true,
+ "nintendoPlayModes": "TV / Tabletop / Handheld",
+ "nintendoNotes": "Verified game-page data for Arcade Archives VS. SUPER MARIO BROS.; measured performance is separated from system maximum capabilities.",
+ "switch2Enhanced": false,
+ "switch2Exclusive": false,
+ "switch2UpgradePrice": 0,
+ "switch2Features": [
+  "Faithful 1986 VS. System emulation",
+  "CRT/display and difficulty configuration",
+  "Online high-score ranking"
+ ],
+ "tagline": "The tougher 1986 arcade remix of Super Mario Bros., preserved through Arcade Archives.",
+ "fitFor": [
+  "Retro arcade players",
+  "Super Mario history fans",
+  "High-score players"
+ ],
+ "notFitFor": [
+  "Players wanting modern Mario visuals",
+  "Players looking for a long campaign",
+  "Players who want online cooperative multiplayer"
+ ],
+ "playTimeMain": 2,
+ "playTimeFull": 8,
+ "editionsList": [
+  {
+   "name": "Standard Edition",
+   "coverUrl": "https://images.launchbox-app.com/a150a641-02e7-4bbf-adeb-7fb79b0e4969.png",
+   "contents": [
+    {
+     "label": "Base game"
+    },
+    {
+     "label": "Core content"
+    },
+    {
+     "label": "Current updates"
+    }
+   ]
+  },
+  {
+   "name": "Digital Edition",
+   "coverUrl": "https://images.launchbox-app.com/a150a641-02e7-4bbf-adeb-7fb79b0e4969.png",
+   "contents": [
+    {
+     "label": "Digital entitlement"
+    },
+    {
+     "label": "Same core game"
+    },
+    {
+     "label": "Nintendo Account delivery"
+    }
+   ]
+  },
+  {
+   "name": "Current Complete Package",
+   "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000003432/7f1c647eef54f9ea832d956f6579cc47a437f32673ef6b02551b5b065008ece3",
+   "contents": [
+    {
+     "label": "Latest build"
+    },
+    {
+     "label": "No paid DLC"
+    },
+    {
+     "label": "Faithful 1986 VS. System emulation"
+    }
+   ]
+  }
+ ],
+ "gameplayPillars": [
+  {
+   "title": "Arcade-authentic Mario",
+   "description": "Play Nintendo's VS. System version rather than the standard NES home release.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000003432/7f1c647eef54f9ea832d956f6579cc47a437f32673ef6b02551b5b065008ece3"
+  },
+  {
+   "title": "Higher difficulty",
+   "description": "Course layouts and item/enemy placement are tuned to a more demanding arcade experience.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000003432/03df298cde9e5da4aed7d4f3b8f276def99614410f061c06ea8f546c4fdfc48b"
+  },
+  {
+   "title": "Arcade Archives tools",
+   "description": "Change difficulty and display options and compete on online high-score rankings.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000003432/b083e720569cb85a516bbc7821ad8b65ebd2fa03ec0fb6b0364237427dcfe544"
+  }
+ ],
+ "worldSummary": "The familiar Mushroom Kingdom appears in a more difficult arcade arrangement. VS. SUPER MARIO BROS. reuses the core structure of the original but changes enemy and item placement and incorporates more demanding course layouts.",
+ "storyChapters": [
+  {
+   "title": "World 1",
+   "body": "The classic rescue begins with familiar Mushroom Kingdom imagery but arcade-specific placements.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000003432/96f97ea7cfa5387f0be97718289a29d5b37fe909457c4ba9b68c52ebf40a6907"
+  },
+  {
+   "title": "Harder worlds",
+   "body": "Later stages incorporate more difficult layouts and patterns.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000003432/8f2f8fd13f75a5b2107ba69f0b712bcd89d9827f669067d5ca3b6d577107c361"
+  },
+  {
+   "title": "Rescue Peach",
+   "body": "Reach Bowser's final castle and complete the original arcade challenge.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000003432/2fe603deaa8624872a56fd20c836dba3fb5d6d917db948b90be0acb70769f95b"
+  }
+ ],
+ "features": [
+  "Faithful 1986 VS. System emulation",
+  "CRT/display and difficulty configuration",
+  "Online high-score ranking"
+ ],
+ "perfResolutionDocked": "Original arcade framebuffer presented through 1080p Switch output",
+ "perfResolutionHandheld": "Original arcade framebuffer presented through 720p Switch output",
+ "perfFps": "60-class arcade emulation",
+ "perfHdr": false,
+ "perfNotes": "The title emulates an 1986 arcade game; Nintendo does not publish a modern native rendering-resolution metric. Switch and Switch 2 compatibility preserve the game's original behavior with system-level output scaling.",
+ "devicePerformance": [
+  {
+   "device": "Nintendo Switch 2",
+   "deviceSlug": "nintendo-switch-2",
+   "deviceModel": "Nintendo Switch 2",
+   "hardwareId": "prd_acf4c89908764c62",
+   "informationStatus": "Available / verified",
+   "unavailableReason": "No standard supported mode is unavailable.",
+   "handheld": {
+    "supported": true,
+    "resolution": "Original arcade framebuffer presented through 720p Switch output",
+    "resolutionDynamic": false,
+    "renderingResolution": "Original arcade framebuffer presented through 720p Switch output",
+    "outputResolution": "1280x720",
+    "fps": "60-class arcade emulation",
+    "fpsMin": "30",
+    "fpsMax": "60",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "Handheld",
+    "notes": "The title emulates an 1986 arcade game; Nintendo does not publish a modern native rendering-resolution metric. Switch and Switch 2 compatibility preserve the game's original behavior with system-level output scaling."
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "Original arcade framebuffer presented through 1080p Switch output",
+    "resolutionDynamic": false,
+    "renderingResolution": "Original arcade framebuffer presented through 1080p Switch output",
+    "outputResolution": "1920x1080",
+    "fps": "60-class arcade emulation",
+    "fpsMin": "30",
+    "fpsMax": "60",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "TV / Docked",
+    "notes": "The title emulates an 1986 arcade game; Nintendo does not publish a modern native rendering-resolution metric. Switch and Switch 2 compatibility preserve the game's original behavior with system-level output scaling."
+   },
+   "modes": [
+    {
+     "name": "Primary documented mode",
+     "handheldResolution": "Original arcade framebuffer presented through 720p Switch output",
+     "handheldFps": "60-class arcade emulation",
+     "tvResolution": "Original arcade framebuffer presented through 1080p Switch output",
+     "tvFps": "60-class arcade emulation",
+     "hdr": false,
+     "vrr": false,
+     "notes": "Primary documented performance profile."
+    }
+   ],
+   "upscaling": "System/game-specific scaling where applicable",
+   "rayTracing": false,
+   "rayTracingMode": "No verified ray-tracing mode",
+   "loadingTime": "Scene-dependent; no single universal loading time",
+   "loadingNotes": "Loading varies by scene, save and storage state.",
+   "gameVersion": "Current retail build",
+   "patchVersion": "Current available update",
+   "testedDate": "2026-08-27",
+   "sourceName": "HAMSTER Arcade Archives",
+   "sourceUrl": "https://www.arcadearchives.com/en/title/aca-061/",
+   "verifiedAt": "2026-08-27",
+   "verificationStatus": "Verified / sourced",
+   "performanceNotes": "The title emulates an 1986 arcade game; Nintendo does not publish a modern native rendering-resolution metric. Switch and Switch 2 compatibility preserve the game's original behavior with system-level output scaling."
+  }
+ ],
+ "downloadSizeGb": 0.098,
+ "requiredSpaceGb": 0.098,
+ "microSdRecommended": false,
+ "storageNotes": "Nintendo lists 98 MB on both Switch and Switch 2. microSD storage is unnecessary for most users.",
+ "languagesAudio": [
+  "Original arcade game audio",
+  "No voice track",
+  "Menu/interface audio"
+ ],
+ "languagesText": [
+  "Japanese / English",
+  "French / German / Italian / Spanish",
+  "Additional regional English/French variants in Nintendo storefront"
+ ],
+ "arabicSupport": false,
+ "mpLocalPlayers": true,
+ "mpOnlinePlayers": false,
+ "mpCoop": false,
+ "mpCompetitive": true,
+ "mpSplitScreen": false,
+ "mpLocalWireless": false,
+ "dlc": [
+  {
+   "name": "No paid DLC",
+   "description": "This digital Arcade Archives release has no paid expansion.",
+   "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000003432/ad78786e3c41b4753d60b5f88d4b161ab2d51ad9731d7871cda5b199604dde8d"
+  },
+  {
+   "name": "Arcade Archives features included",
+   "description": "Difficulty, display and ranking features are part of the base purchase.",
+   "coverUrl": "https://images.launchbox-app.com/a150a641-02e7-4bbf-adeb-7fb79b0e4969.png"
+  },
+  {
+   "name": "No physical edition",
+   "description": "Nintendo lists the title as a digital edition; therefore no genuine retail box/full-wrap texture exists.",
+   "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000003432/7f1c647eef54f9ea832d956f6579cc47a437f32673ef6b02551b5b065008ece3"
+  }
+ ],
+ "guides": [
+  {
+   "title": "Official product page",
+   "summary": "Platform, release, languages and features.",
+   "url": "https://www.nintendo.com/us/store/products/arcade-archives-vs-super-mario-bros-switch/"
+  },
+  {
+   "title": "Performance / update reference",
+   "summary": "Technical or update information.",
+   "url": "https://www.arcadearchives.com/en/title/aca-061/"
+  },
+  {
+   "title": "Media / database reference",
+   "summary": "Images and catalog metadata.",
+   "url": "https://gamesdb.launchbox-app.com/games/details/140018-arcade-archives-vs-super-mario-bros"
+  }
+ ],
+ "completionMain": 2,
+ "completionExtras": 4,
+ "completionAll": 8,
+ "faq": [
+  {
+   "q": "Is this the same as the NES Super Mario Bros.?",
+   "a": "No. It is the 1986 Nintendo VS. System arcade version with different enemy/item placement and harder layouts."
+  },
+  {
+   "q": "How large is the download?",
+   "a": "Nintendo lists 98 MB."
+  },
+  {
+   "q": "Does it work on Switch 2?",
+   "a": "Yes. Nintendo marks it as supported with behavior consistent with Nintendo Switch."
+  }
+ ],
+ "verdictScore": 7.5,
+ "verdictSummary": "A historically interesting and well-preserved arcade variation of Super Mario Bros.; its main appeal is challenge, authenticity and score chasing rather than new content.",
+ "verdictPros": [
+  "Faithful arcade preservation",
+  "Small download and useful emulator options",
+  "Interesting harder layouts for Mario historians"
+ ],
+ "verdictCons": [
+  "Very short by modern standards",
+  "No true retail box or physical edition",
+  "Less accessible than the normal NES version"
+ ],
+ "reviews": [
+  {
+   "source": "Nintendo Life",
+   "score": "7/10",
+   "quote": "A tougher but enjoyable alternative to the home-console original.",
+   "url": "https://www.nintendolife.com/reviews/switch-eshop/arcade_archives_vs_super_mario_bros"
+  },
+  {
+   "source": "Nintendo official",
+   "score": "Supported",
+   "quote": "Official listing confirms Switch 2 compatibility and 98 MB size.",
+   "url": "https://www.nintendo.com/us/store/products/arcade-archives-vs-super-mario-bros-switch/"
+  },
+  {
+   "source": "HAMSTER",
+   "score": "Official preservation release",
+   "quote": "Arcade Archives publisher page confirms the 1986 origin and 1–2 player support.",
+   "url": "https://www.arcadearchives.com/en/title/aca-061/"
+  }
+ ],
+ "timeline": [
+  {
+   "date": "1986",
+   "title": "Original arcade release",
+   "body": "Nintendo released VS. SUPER MARIO BROS. for the VS. System."
+  },
+  {
+   "date": "2017-12-22",
+   "title": "Nintendo Switch release",
+   "body": "HAMSTER released the Arcade Archives version."
+  },
+  {
+   "date": "2025-06-05",
+   "title": "Switch 2 compatibility",
+   "body": "Nintendo confirms behavior consistent with the original Switch release."
+  }
+ ],
+ "patchNotes": [
+  {
+   "version": "Launch version",
+   "date": "2017-12-22",
+   "body": "Arcade Archives emulation released on Switch."
+  },
+  {
+   "version": "System compatibility updates",
+   "date": "2018–2025",
+   "body": "General Arcade Archives platform compatibility maintained."
+  },
+  {
+   "version": "Current status",
+   "date": "2026-08-27",
+   "body": "Nintendo continues to list the title as Switch 2-compatible."
+  }
+ ],
+ "soundtrack": [
+  {
+   "title": "Ground Theme",
+   "url": "https://www.arcadearchives.com/en/title/aca-061/"
+  },
+  {
+   "title": "Underground Theme",
+   "url": "https://www.arcadearchives.com/en/title/aca-061/"
+  },
+  {
+   "title": "Castle Theme",
+   "url": "https://www.arcadearchives.com/en/title/aca-061/"
+  }
+ ],
+ "seriesName": "Super Mario",
+ "seriesEntries": [
+  "Super Mario Bros.",
+  "Arcade Archives Mario Bros.",
+  "Arcade Archives VS. SUPER MARIO BROS."
+ ],
+ "studioName": "HAMSTER Corporation",
+ "studioUrl": "https://www.hamster.co.jp/",
+ "studioLocation": "Tokyo, Japan",
+ "studioAbout": "HAMSTER develops and publishes the Arcade Archives preservation series.",
+ "setupNeeds": [
+  "Nintendo Switch or backward-compatible Switch 2",
+  "98 MB free storage",
+  "Internet only for download and online ranking features"
+ ],
+ "sources": [
+  {
+   "name": "Nintendo official",
+   "url": "https://www.nintendo.com/us/store/products/arcade-archives-vs-super-mario-bros-switch/"
+  },
+  {
+   "name": "HAMSTER Arcade Archives",
+   "url": "https://www.arcadearchives.com/en/title/aca-061/"
+  },
+  {
+   "name": "LaunchBox Games Database",
+   "url": "https://gamesdb.launchbox-app.com/games/details/140018-arcade-archives-vs-super-mario-bros"
+  }
+ ],
+ "boxContentsList": "[Circular]",
+ "image": "/api/files/products/prd_e056bfabbf914721/cover-dfc48c5debe793b0.avif",
+ "banner": "/api/files/products/prd_e056bfabbf914721/banner-0-dfc48c5debe793b0.avif",
+ "schemaId": "",
+ "createdAt": "2026-08-27T01:24:47.124Z",
+ "created_at": "2026-08-27T01:24:47.124Z",
+ "updatedAt": "2026-08-27T01:24:47.124Z",
+ "updated_at": "2026-08-27T01:24:47.124Z",
+ "badgeEn": "وفر 40%",
+ "badgeKu": "وفر 40%",
+ "featuresEn": [
+  "Faithful 1986 VS. System emulation",
+  "CRT/display and difficulty configuration",
+  "Online high-score ranking"
+ ],
+ "featuresKu": [
+  "Faithful 1986 VS. System emulation",
+  "CRT/display and difficulty configuration",
+  "Online high-score ranking"
+ ],
+ "boxFrontUrl": "https://images.launchbox-app.com/a150a641-02e7-4bbf-adeb-7fb79b0e4969.png",
+ "sales": 0,
+ "images": [],
+ "modes": []
+}

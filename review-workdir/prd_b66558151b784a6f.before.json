@@ -1,0 +1,485 @@
+{
+ "title": "Bayonetta",
+ "titleEn": "Bayonetta",
+ "titleKu": "Bayonetta",
+ "slug": "bayonetta",
+ "description": "Bayonetta is PlatinumGames’ stylish character-action game starring the last Umbra Witch. Combat centers on fast combos, gunplay, weapon sets, dodge-triggered Witch Time, Torture Attacks and enormous Infernal Demon finishers. The Nintendo Switch version brings the original game to handheld, tabletop and TV play.",
+ "descriptionEn": "Bayonetta is PlatinumGames’ stylish character-action game starring the last Umbra Witch. Combat centers on fast combos, gunplay, weapon sets, dodge-triggered Witch Time, Torture Attacks and enormous Infernal Demon finishers. The Nintendo Switch version brings the original game to handheld, tabletop and TV play.",
+ "descriptionKu": "Bayonetta is PlatinumGames’ stylish character-action game starring the last Umbra Witch. Combat centers on fast combos, gunplay, weapon sets, dodge-triggered Witch Time, Torture Attacks and enormous Infernal Demon finishers. The Nintendo Switch version brings the original game to handheld, tabletop and TV play.",
+ "cartridgeImage": "/api/files/products/prd_b66558151b784a6f/front-d05d61994e4b1fe1.jpg",
+ "nintendoCardImage": "/api/files/products/prd_b66558151b784a6f/square-a6e89391e7eb3a2d.jpg",
+ "coverHiResImage": "/api/files/products/general/image-3471ce7f786c47be.jpg",
+ "coverImage": "/api/files/products/prd_b66558151b784a6f/cover-699dbf09e7e7b758.jpg",
+ "bannerImages": [
+  "/api/files/products/prd_b66558151b784a6f/banner-0-077ace3d7dc181d7.jpg",
+  "/api/files/products/prd_b66558151b784a6f/banner-1-56371d7c4e65630d.jpg",
+  "/api/files/products/prd_b66558151b784a6f/banner-2-4c8033eaf1501102.jpg",
+  "/api/files/products/prd_b66558151b784a6f/banner-3-28c1a2b94e51b6ad.jpg",
+  "/api/files/products/prd_b66558151b784a6f/banner-4-2875d3a70c970971.jpg",
+  "/api/files/products/prd_b66558151b784a6f/banner-5-977049aa74b53213.jpg"
+ ],
+ "gallery": [],
+ "youtubeTrailer": "https://www.youtube.com/watch?v=3DjY6JK-WT0",
+ "releaseDate": "2018-02-16",
+ "ageRating": "ESRB Mature",
+ "metacriticRating": 84,
+ "genres": [
+  "Action",
+  "Hack and Slash",
+  "Character Action",
+  "Adventure"
+ ],
+ "platform": "switch1",
+ "size": 8.793,
+ "numberOfPlayers": "1",
+ "supportedLanguages": "Official Western Nintendo Switch listing: Japanese, English, French, German, Italian and Spanish. Supplier SKU supplied by user: English.",
+ "hardwareModel": "",
+ "colorEdition": "",
+ "storageCapacity": "",
+ "screenSpecs": "",
+ "batteryLife": "",
+ "boxContents": [],
+ "boxContentsText": "",
+ "warrantyCondition": "",
+ "connectivity": "",
+ "characterName": "Link",
+ "amiiboSeries": "The Legend of Zelda",
+ "figureType": "figure",
+ "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+ "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+ "boxCondition": "mib",
+ "releaseWave": "Wave 2 (Restock)",
+ "rarity": "standard",
+ "accessoryType": "حقيبة حماية وتنقل Carry Case",
+ "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+ "brand": "Nintendo Official",
+ "material": "Hard EVA Shockproof Shell",
+ "availableColors": "Black, Neon Red/Blue, White",
+ "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+ "cardValue": "$20 eShop Balance",
+ "region": "Global / region-dependent",
+ "cardType": "eshop",
+ "deliveryMethod": "instant_code",
+ "redemptionGuide": "",
+ "redemptionSteps": [],
+ "validity": "no_expiry",
+ "usedType": "cartridge",
+ "conditionGrade": "like_new",
+ "packaging": "cib",
+ "guaranteeStatus": "tested_30days",
+ "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+ "accountType": "primary",
+ "badge": "وفر 40%",
+ "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+ "price": 8500,
+ "cost": 1250,
+ "stock": 999999,
+ "isInfiniteStock": true,
+ "isHidden": false,
+ "displayOrder": 0,
+ "category": "nintendo-switch-games",
+ "categoryId": "nintendo-switch-games",
+ "categoryEn": "",
+ "categoryKu": "",
+ "options": [
+  {
+   "id": "offline_account",
+   "name": "مشترك",
+   "description": "Offline account access from the supplier listing.",
+   "stock": 999999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_account",
+   "name": "خاص بك",
+   "description": "Online account access from the supplier listing.",
+   "stock": 999999,
+   "isInfiniteStock": true
+  }
+ ],
+ "types": [
+  {
+   "id": "standard_offline",
+   "name": "مشترك — اللعبة الأساسية",
+   "optionId": "offline_account",
+   "price": 8500,
+   "cost": 1250,
+   "description": "Supplier Regular / 普通版; ¥6.8 converted to IQD.",
+   "stock": 999999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "standard_online",
+   "name": "خاص بك — اللعبة الأساسية",
+   "optionId": "online_account",
+   "price": 25000,
+   "cost": 12250,
+   "description": "Supplier Standard / 标准版; ¥55.8 converted to IQD.",
+   "stock": 999999,
+   "isInfiniteStock": true
+  }
+ ],
+ "editions": [],
+ "dlcs": [],
+ "isActive": true,
+ "status": "active",
+ "kind": "account",
+ "trade_value_iqd": 0,
+ "store_offer_bonus_iqd": 0,
+ "trade_enabled": true,
+ "trade_value_locked": false,
+ "id": "prd_b66558151b784a6f",
+ "schema_version": 1,
+ "titleAr": "بايونيتا",
+ "compatibility": [
+  "Nintendo Switch",
+  "Nintendo Switch 2 (backward compatibility)",
+  "Nintendo Switch Lite"
+ ],
+ "edition": "Standard",
+ "developer": "PlatinumGames",
+ "publisher": "Nintendo",
+ "metacriticUrl": "https://www.metacritic.com/game/bayonetta/",
+ "opencriticRating": 85,
+ "userScore": 8.3,
+ "price_usd": 29.99,
+ "officialUrl": "https://www.nintendo.com/au/games/nintendo-switch/bayonetta/",
+ "eshopUrl": "https://www.nintendo.com/au/games/nintendo-switch/bayonetta/",
+ "gameIsOffline": true,
+ "gameIsOnline": false,
+ "description_short": "The original stylish action classic on Nintendo Switch, built around Witch Time, weapon switching and spectacular combo-driven battles.",
+ "description_ar": "الجزء الأصلي من سلسلة الأكشن السريع Bayonetta. يعتمد القتال على الكومبوهات والأسلحة وإطلاق النار وميزة Witch Time التي تتفعّل مع المراوغة الدقيقة، إضافة إلى الهجمات الضخمة واستدعاءات الشياطين.",
+ "box_front_url": "https://images.launchbox-app.com/52d670d3-013b-488f-b262-6d66f5782576.jpg",
+ "box_back_url": "https://images.launchbox-app.com/4271e926-e202-4079-a0d1-1a25cbf04f9a.png",
+ "videos": [
+  {
+   "title": "Bayonetta — Nintendo Switch trailer",
+   "url": "https://www.youtube.com/watch?v=3DjY6JK-WT0"
+  },
+  {
+   "title": "Bayonetta — technical analysis reference",
+   "url": "https://www.youtube.com/results?search_query=Digital+Foundry+Bayonetta+Switch"
+  },
+  {
+   "title": "PlatinumGames — Bayonetta series",
+   "url": "https://www.platinumgames.com/games/bayonetta/"
+  }
+ ],
+ "nintendoEshopUrl": "https://www.nintendo.com/au/games/nintendo-switch/bayonetta/",
+ "nintendoOnlineRequired": false,
+ "nintendoCloudSaves": true,
+ "nintendoGameKeyCard": false,
+ "tvMode": true,
+ "tabletopMode": true,
+ "handheldMode": true,
+ "nintendoPlayModes": "TV / Tabletop / Handheld",
+ "nintendoNotes": "Native Nintendo Switch software released February 16, 2018. The Western Switch listing supports Japanese, English, French, German, Italian and Spanish. The supplier option supplied by the user is marked English. Nintendo Switch 2 compatibility is backward compatibility rather than a native Switch 2 Edition.",
+ "switch2Enhanced": false,
+ "switch2Exclusive": false,
+ "switch2Features": [
+  "Official backward compatibility support",
+  "No native Switch 2 Edition",
+  "Original 720p rendering profile",
+  "Potentially steadier backward-compatible execution without a new graphics mode"
+ ],
+ "tagline": "Climax action with the last Umbra Witch.",
+ "fitFor": [
+  "Players who love high-skill action games",
+  "Players who enjoy combo systems and score chasing",
+  "Fans of extravagant cinematic action",
+  "Players who want a replayable campaign"
+ ],
+ "notFitFor": [
+  "Players who dislike fast reaction-based combat",
+  "Players seeking a slow narrative RPG",
+  "Players who require native 1080p rendering",
+  "Players who dislike mature fantasy violence"
+ ],
+ "playTimeMain": 11.5,
+ "playTimeFull": 41.5,
+ "editionsList": [
+  {
+   "name": "Bayonetta — Nintendo Switch",
+   "coverUrl": "https://images.launchbox-app.com/52d670d3-013b-488f-b262-6d66f5782576.jpg",
+   "contents": [
+    {
+     "label": "Full Bayonetta campaign"
+    },
+    {
+     "label": "Nintendo Switch play modes"
+    },
+    {
+     "label": "Switch-version bonus compatibility/features"
+    }
+   ]
+  }
+ ],
+ "gameplayPillars": [
+  {
+   "title": "Witch Time",
+   "description": "Dodge at the last possible moment to slow enemies and create powerful openings.",
+   "imageUrl": "https://images.launchbox-app.com/bf543e3b-ea5d-4afd-b9c2-20b717c609d2.jpg"
+  },
+  {
+   "title": "Combo Expression",
+   "description": "Mix punches, kicks, guns and equipped weapons into long customizable combo strings.",
+   "imageUrl": "https://images.launchbox-app.com/fd7b25aa-603d-4782-9903-914e8c8f1da7.jpg"
+  },
+  {
+   "title": "Climax Spectacle",
+   "description": "Finish encounters with Torture Attacks and large Infernal Demon sequences.",
+   "imageUrl": "https://images.launchbox-app.com/fba8741d-41af-40cf-befc-8c5765259aba.jpg"
+  },
+  {
+   "title": "Replay for Mastery",
+   "description": "Ranks, difficulties, collectibles and unlocks reward repeated play and mechanical mastery.",
+   "imageUrl": "https://images.launchbox-app.com/70c999ff-b7a1-47c3-880b-b0fffae6239e.png"
+  }
+ ],
+ "worldSummary": "Bayonetta awakens with fragmented memories and is drawn into a conflict involving the Umbra Witches, Lumen Sages and celestial forces. Her journey across Vigrid gradually reconstructs her past while escalating into increasingly extravagant battles.",
+ "storyChapters": [
+  {
+   "title": "The Witch Awakens",
+   "body": "Bayonetta fights angels while searching for the truth behind her lost memories.",
+   "imageUrl": "https://images.launchbox-app.com/bf543e3b-ea5d-4afd-b9c2-20b717c609d2.jpg"
+  },
+  {
+   "title": "Vigrid and the Past",
+   "body": "The journey through Vigrid reveals links to the Umbra Witches, Lumen Sages and Bayonetta’s origin.",
+   "imageUrl": "https://images.launchbox-app.com/fd7b25aa-603d-4782-9903-914e8c8f1da7.jpg"
+  },
+  {
+   "title": "The Eyes of the World",
+   "body": "The conflict expands into a struggle over ancient powers tied to the balance of the world.",
+   "imageUrl": "https://images.launchbox-app.com/fba8741d-41af-40cf-befc-8c5765259aba.jpg"
+  },
+  {
+   "title": "Climax",
+   "body": "The story culminates in the series’ signature mixture of supernatural mythology and oversized action spectacle.",
+   "imageUrl": "https://images.launchbox-app.com/70c999ff-b7a1-47c3-880b-b0fffae6239e.png"
+  }
+ ],
+ "galleryImages": [
+  {
+   "url": "https://images.launchbox-app.com/bf543e3b-ea5d-4afd-b9c2-20b717c609d2.jpg",
+   "alt": "Bayonetta high-resolution background artwork"
+  },
+  {
+   "url": "https://images.launchbox-app.com/fd7b25aa-603d-4782-9903-914e8c8f1da7.jpg",
+   "alt": "Bayonetta high-resolution fanart background"
+  },
+  {
+   "url": "https://images.launchbox-app.com/fba8741d-41af-40cf-befc-8c5765259aba.jpg",
+   "alt": "Bayonetta character artwork"
+  },
+  {
+   "url": "https://images.launchbox-app.com/70c999ff-b7a1-47c3-880b-b0fffae6239e.png",
+   "alt": "Nintendo Switch gameplay screenshot"
+  }
+ ],
+ "features": [
+  "Witch Time rewarded by last-second dodges",
+  "Deep combo and weapon-switching system",
+  "Torture Attacks and Infernal Demon finishers",
+  "Multiple difficulties and score chasing",
+  "Handheld, tabletop and TV play",
+  "Extensive unlocks and replay value"
+ ],
+ "perfResolutionDocked": "720p",
+ "perfResolutionHandheld": "720p",
+ "perfFps": "60",
+ "perfHdr": false,
+ "perfNotes": "The Switch port uses 720p in both docked and portable modes and targets 60 fps. Docked play is more stable; handheld can show more noticeable dips.",
+ "devicePerformance": [
+  {
+   "device": "Nintendo Switch 2",
+   "deviceSlug": "nintendo-switch-2",
+   "deviceModel": "Nintendo Switch 2",
+   "hardwareId": "prd_acf4c89908764c62",
+   "informationStatus": "measured / technical analysis",
+   "handheld": {
+    "supported": true,
+    "resolution": "720p",
+    "resolutionDynamic": false,
+    "renderingResolution": "1280x720",
+    "outputResolution": "1280x720",
+    "fps": "60",
+    "fpsMax": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "Handheld",
+    "notes": "Handheld mode renders at 720p and targets 60 fps, with more frequent performance dips than docked play."
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "720p",
+    "resolutionDynamic": false,
+    "renderingResolution": "1280x720",
+    "outputResolution": "1920x1080",
+    "fps": "60",
+    "fpsMax": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "Docked",
+    "notes": "Docked mode renders at 720p and targets 60 fps, generally holding performance more consistently than handheld."
+   },
+   "rayTracing": false,
+   "sourceName": "Digital Foundry / technical coverage of Nintendo Switch version",
+   "sourceUrl": "https://www.eurogamer.net/digitalfoundry-2018-bayonetta-switch-analysis",
+   "verificationStatus": "verified / source-qualified",
+   "performanceNotes": "The Switch port uses 720p in both docked and portable modes and targets 60 fps. Docked play is more stable; handheld can show more noticeable dips."
+  }
+ ],
+ "downloadSizeGb": 8.793,
+ "requiredSpaceGb": 8.793,
+ "microSdRecommended": false,
+ "storageNotes": "Official/reliable listing reports approximately 8.793 GB for the Nintendo Switch download. Leave additional free space for save data and future updates.",
+ "languagesAudio": [
+  "English",
+  "Japanese"
+ ],
+ "languagesText": [
+  "English",
+  "Japanese",
+  "French",
+  "German",
+  "Italian",
+  "Spanish"
+ ],
+ "arabicSupport": false,
+ "mpLocalPlayers": false,
+ "mpOnlinePlayers": false,
+ "mpCoop": false,
+ "mpCompetitive": false,
+ "mpSplitScreen": false,
+ "mpLocalWireless": false,
+ "completionMain": 11.5,
+ "completionExtras": 15.5,
+ "completionAll": 41.5,
+ "faq": [
+  {
+   "q": "Does Bayonetta work on Nintendo Switch 2?",
+   "a": "Yes through backward compatibility where Nintendo marks the Nintendo Switch release as supported. This file does not classify it as a native Nintendo Switch 2 Edition."
+  },
+  {
+   "q": "What language is the supplier version of Bayonetta?",
+   "a": "Supplier listing language supplied by the user: English. Official/regional language details are preserved separately in supported_languages_raw and nintendo_notes so the supplier SKU is not generalized to every region."
+  },
+  {
+   "q": "Is Bayonetta multiplayer?",
+   "a": "The main game is single-player; no multiplayer mode is asserted in this file."
+  },
+  {
+   "q": "Why are some Switch 2 performance resolution fields blank for Bayonetta?",
+   "a": "Because exact measured Switch 2 backward-compatibility rendering values were not verified. The template is intentionally left blank rather than filled with hardware maximums or guesses."
+  }
+ ],
+ "verdictScore": 8.8,
+ "verdictSummary": "A foundational stylish-action game with unusually deep combat and enduring replay value. The Switch port is technically modest in resolution but remains a strong way to play the original on a portable Nintendo system.",
+ "reviews": [
+  {
+   "source": "Metacritic",
+   "score": "84/100",
+   "quote": "Nintendo Switch aggregate critic score.",
+   "url": "https://www.metacritic.com/game/bayonetta/"
+  },
+  {
+   "source": "OpenCritic",
+   "score": "85/100",
+   "quote": "Aggregate critic score recorded for Bayonetta.",
+   "url": "https://opencritic.com/game/5617/bayonetta"
+  },
+  {
+   "source": "Deku Deals user metadata",
+   "score": "8.3/10",
+   "quote": "User-score metadata shown with the Switch listing.",
+   "url": "https://www.dekudeals.com/items/bayonetta-digital-version"
+  }
+ ],
+ "timeline": [
+  {
+   "date": "2009-10-29",
+   "title": "Original Japanese debut",
+   "body": "Bayonetta first launched in Japan on its original platforms."
+  },
+  {
+   "date": "2018-02-16",
+   "title": "Nintendo Switch release",
+   "body": "The original Bayonetta released on Nintendo Switch."
+  },
+  {
+   "date": "2022-09-30",
+   "title": "Standalone Switch physical release period",
+   "body": "A standalone physical Switch release followed in select regions years after the initial Switch digital release."
+  }
+ ],
+ "seriesName": "Bayonetta",
+ "seriesEntries": [
+  "Bayonetta 2",
+  "Bayonetta 3",
+  "Bayonetta Origins: Cereza and the Lost Demon",
+  "Bayonetta & Vanquish 10th Anniversary Bundle"
+ ],
+ "studioName": "PlatinumGames",
+ "studioUrl": "https://www.platinumgames.com/",
+ "studioLocation": "Tokyo, Japan",
+ "studioAbout": "PlatinumGames is an Osaka-based Japanese developer known for high-speed character-action combat and technically expressive action games.",
+ "setupNeeds": [
+  "Nintendo Switch family system",
+  "Nintendo Account for digital purchase/download",
+  "Sufficient storage for approximately 8.8 GB plus updates",
+  "Nintendo Switch Online membership for cloud-save backup"
+ ],
+ "sources": [
+  {
+   "name": "Nintendo Australia — Bayonetta",
+   "url": "https://www.nintendo.com/au/games/nintendo-switch/bayonetta/"
+  },
+  {
+   "name": "Deku Deals — Bayonetta",
+   "url": "https://www.dekudeals.com/items/bayonetta-digital-version"
+  },
+  {
+   "name": "LaunchBox — Bayonetta Switch media",
+   "url": "https://gamesdb.launchbox-app.com/games/images/95452-bayonetta"
+  },
+  {
+   "name": "Eurogamer / Digital Foundry — Switch analysis",
+   "url": "https://www.eurogamer.net/digitalfoundry-2018-bayonetta-switch-analysis"
+  },
+  {
+   "name": "PlatinumGames",
+   "url": "https://www.platinumgames.com/games/bayonetta/"
+  }
+ ],
+ "boxContentsList": "[Circular]",
+ "image": "/api/files/products/prd_b66558151b784a6f/cover-699dbf09e7e7b758.jpg",
+ "banner": "/api/files/products/prd_b66558151b784a6f/banner-0-077ace3d7dc181d7.jpg",
+ "schemaId": "",
+ "createdAt": "2026-08-26T22:24:24.597Z",
+ "created_at": "2026-08-26T22:24:24.597Z",
+ "updatedAt": "2026-08-28T22:06:48.910Z",
+ "updated_at": "2026-08-26T22:24:24.597Z",
+ "badgeEn": "وفر 40%",
+ "badgeKu": "وفر 40%",
+ "featuresEn": [
+  "Witch Time rewarded by last-second dodges",
+  "Deep combo and weapon-switching system",
+  "Torture Attacks and Infernal Demon finishers",
+  "Multiple difficulties and score chasing",
+  "Handheld, tabletop and TV play",
+  "Extensive unlocks and replay value"
+ ],
+ "featuresKu": [
+  "Witch Time rewarded by last-second dodges",
+  "Deep combo and weapon-switching system",
+  "Torture Attacks and Infernal Demon finishers",
+  "Multiple difficulties and score chasing",
+  "Handheld, tabletop and TV play",
+  "Extensive unlocks and replay value"
+ ],
+ "boxFrontUrl": "https://images.launchbox-app.com/52d670d3-013b-488f-b262-6d66f5782576.jpg",
+ "sales": 0,
+ "images": [],
+ "modes": []
+}

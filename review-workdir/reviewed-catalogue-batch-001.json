@@ -1,6 +1,6 @@
 {
  "batch": "001",
- "apply": true,
+ "apply": false,
  "games": [
   {
    "id": "prd_49ac50b2e7e041fa",
@@ -239,6 +239,50 @@
     "guaranteeStatus"
    ],
    "notes": "Stored trailer id was unverifiable — replaced with the official Bayonetta & Bayonetta 2 Switch launch trailer. Perf record re-labelled to the platform device with the Digital Foundry source. Box art verified visually: correct."
+  }
+ ],
+ "appliedAt": "2026-09-02T01:56:09.479Z",
+ "results": [
+  {
+   "id": "prd_49ac50b2e7e041fa",
+   "action": "APPLIED",
+   "changed": [
+    "downloadSizeGb",
+    "size",
+    "youtubeTrailer",
+    "dlcSummary",
+    "devicePerformance"
+   ]
+  },
+  {
+   "id": "prd_b73635742b2649fc",
+   "action": "APPLIED",
+   "changed": [
+    "devicePerformance"
+   ]
+  },
+  {
+   "id": "prd_e056bfabbf914721",
+   "action": "APPLIED",
+   "changed": [
+    "developer",
+    "youtubeTrailer",
+    "bannerImages",
+    "devicePerformance"
+   ]
+  },
+  {
+   "id": "prd_ad958aa523e24052",
+   "action": "REFUSED_DRIFT"
+  },
+  {
+   "id": "prd_b66558151b784a6f",
+   "action": "APPLIED",
+   "changed": [
+    "ageRating",
+    "youtubeTrailer",
+    "devicePerformance"
+   ]
   }
  ]
 }

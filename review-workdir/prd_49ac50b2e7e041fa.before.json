@@ -1,0 +1,452 @@
+{
+ "id": "prd_49ac50b2e7e041fa",
+ "title": "1-2-Switch",
+ "titleEn": "1-2-Switch",
+ "titleKu": "1-2-Switch",
+ "slug": "1-2-switch",
+ "description": "1-2-Switch is a collection of 28 compact party activities created to demonstrate the original Nintendo Switch Joy-Con controllers. Many games deliberately ask players to stop watching the display and instead react to one another's body language, timing, sounds and controller feedback. Quick Draw turns two players into Wild West duelists; Milk uses repeated motion input; Ball Count demonstrates HD Rumble by simulating objects rolling inside the controller; Safe Crack asks players to rotate a Joy-Con while feeling subtle vibration feedback; Eating Contest uses the right Joy-Con's IR Motion Camera; Samurai Training, Sword Fight, Table Tennis, Wizard, Copy Dance and other activities explore motion, timing and social interaction. The title has no story campaign, progression economy or online multiplayer. Its value comes almost entirely from short face-to-face sessions with another person.",
+ "descriptionEn": "1-2-Switch is a collection of 28 compact party activities created to demonstrate the original Nintendo Switch Joy-Con controllers. Many games deliberately ask players to stop watching the display and instead react to one another's body language, timing, sounds and controller feedback. Quick Draw turns two players into Wild West duelists; Milk uses repeated motion input; Ball Count demonstrates HD Rumble by simulating objects rolling inside the controller; Safe Crack asks players to rotate a Joy-Con while feeling subtle vibration feedback; Eating Contest uses the right Joy-Con's IR Motion Camera; Samurai Training, Sword Fight, Table Tennis, Wizard, Copy Dance and other activities explore motion, timing and social interaction. The title has no story campaign, progression economy or online multiplayer. Its value comes almost entirely from short face-to-face sessions with another person.",
+ "descriptionKu": "1-2-Switch is a collection of 28 compact party activities created to demonstrate the original Nintendo Switch Joy-Con controllers. Many games deliberately ask players to stop watching the display and instead react to one another's body language, timing, sounds and controller feedback. Quick Draw turns two players into Wild West duelists; Milk uses repeated motion input; Ball Count demonstrates HD Rumble by simulating objects rolling inside the controller; Safe Crack asks players to rotate a Joy-Con while feeling subtle vibration feedback; Eating Contest uses the right Joy-Con's IR Motion Camera; Samurai Training, Sword Fight, Table Tennis, Wizard, Copy Dance and other activities explore motion, timing and social interaction. The title has no story campaign, progression economy or online multiplayer. Its value comes almost entirely from short face-to-face sessions with another person.",
+ "cartridgeImage": "/api/files/products/prd_49ac50b2e7e041fa/cartridgeImage-4aaed5b708b214a7.webp",
+ "nintendoCardImage": "/api/files/products/prd_49ac50b2e7e041fa/nintendoCardImage-99e0bf84068477e0.webp",
+ "coverHiResImage": "/api/files/products/prd_49ac50b2e7e041fa/3d-texture-949dcde734f47d05.jpg",
+ "coverImage": "/api/files/products/prd_49ac50b2e7e041fa/coverImage-c8eeb1214e6c48cc.webp",
+ "bannerImages": [
+  "/api/files/products/prd_49ac50b2e7e041fa/bannerImages-e3f0dc76a0f192ba.webp",
+  "/api/files/products/prd_49ac50b2e7e041fa/bannerImages-ca6464efd8a90b35.webp",
+  "/api/files/products/prd_49ac50b2e7e041fa/bannerImages-d718b50420c134c9.webp"
+ ],
+ "gallery": [],
+ "youtubeTrailer": "",
+ "releaseDate": "2017-03-03",
+ "ageRating": "ESRB E10+ (Everyone 10+) – Mild Violence",
+ "metacriticRating": 58,
+ "genres": [
+  "Family",
+  "Action"
+ ],
+ "platform": "switch1",
+ "size": 1.4,
+ "numberOfPlayers": "2",
+ "supportedLanguages": "Japanese, English, French, German, Italian, Spanish, Dutch, Russian",
+ "hardwareModel": "",
+ "colorEdition": "",
+ "storageCapacity": "",
+ "screenSpecs": "",
+ "batteryLife": "",
+ "boxContents": [],
+ "boxContentsText": "",
+ "warrantyCondition": "",
+ "connectivity": "",
+ "characterName": "Link",
+ "amiiboSeries": "The Legend of Zelda",
+ "figureType": "figure",
+ "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+ "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+ "boxCondition": "mib",
+ "releaseWave": "Wave 2 (Restock)",
+ "rarity": "standard",
+ "accessoryType": "حقيبة حماية وتنقل Carry Case",
+ "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+ "brand": "Nintendo Official",
+ "material": "Hard EVA Shockproof Shell",
+ "availableColors": "Black, Neon Red/Blue, White",
+ "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+ "cardValue": "$20 eShop Balance",
+ "region": "Global",
+ "cardType": "eshop",
+ "deliveryMethod": "instant_code",
+ "redemptionGuide": "",
+ "redemptionSteps": [],
+ "validity": "no_expiry",
+ "usedType": "cartridge",
+ "conditionGrade": "like_new",
+ "packaging": "cib",
+ "guaranteeStatus": "tested_30days",
+ "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+ "accountType": "primary",
+ "badge": "وفر 40%",
+ "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+ "price": 8000,
+ "cost": 2000,
+ "stock": 999999,
+ "isInfiniteStock": true,
+ "isHidden": false,
+ "displayOrder": 0,
+ "category": "nintendo-switch-games",
+ "categoryId": "nintendo-switch-games",
+ "categoryEn": "",
+ "categoryKu": "",
+ "options": [
+  {
+   "id": "offline_account",
+   "name": "Offline Account",
+   "description": "Account delivery option intended for offline/local play.",
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_account",
+   "name": "Online Account",
+   "description": "Account delivery option for account use; the game itself has no online multiplayer.",
+   "isInfiniteStock": true
+  }
+ ],
+ "types": [
+  {
+   "id": "standard_offline",
+   "name": "Standard",
+   "optionId": "offline_account",
+   "price": "8000",
+   "cost": 2000,
+   "description": "Supplier 普通版 mapped to Offline / Standard. Cost ¥9.74 -> 2,000 IQD.",
+   "isInfiniteStock": true
+  },
+  {
+   "id": "standard_online",
+   "name": "Standard",
+   "optionId": "online_account",
+   "price": "28000",
+   "cost": 16500,
+   "description": "Supplier 标准版 mapped to Online / Standard. Cost ¥75.40 -> 16,500 IQD.",
+   "isInfiniteStock": true
+  }
+ ],
+ "editions": [],
+ "dlcs": [],
+ "isActive": true,
+ "status": "Active",
+ "kind": "account",
+ "trade_value_iqd": 0,
+ "store_offer_bonus_iqd": 0,
+ "trade_enabled": true,
+ "trade_value_locked": false,
+ "schema_version": 1,
+ "titleAr": "1-2-سويتش",
+ "compatibility": [
+  "Nintendo Switch",
+  "Nintendo Switch Lite where supported by control requirements",
+  "Nintendo Switch 2 – backward compatible"
+ ],
+ "edition": "Standard Edition",
+ "developer": "Nintendo",
+ "publisher": "Nintendo",
+ "opencriticRating": 55,
+ "userScore": 4.8,
+ "officialUrl": "https://www.nintendo.com/au/games/nintendo-switch/1-2-switch/",
+ "eshopUrl": "https://www.nintendo.com/au/games/nintendo-switch/1-2-switch/",
+ "gameIsOffline": true,
+ "gameIsOnline": false,
+ "gameLanguageLocked": false,
+ "description_short": "A face-to-face party collection built around Joy-Con motion controls, HD Rumble and the IR Motion Camera, designed for two people to watch each other instead of the screen.",
+ "description_ar": "لعبة حفلات لشخصين صُممت عند إطلاق Nintendo Switch لاستعراض Joy-Con. تضم 28 لعبة مصغرة تستخدم الحركة وHD Rumble وIR Motion Camera، وكثير منها يجعل اللاعبين ينظرون لبعضهما بدل الشاشة. لا تحتوي على طور قصة تقليدي أو أونلاين.",
+ "product_code": "AACCA",
+ "nintendoEshopUrl": "https://www.nintendo.com/au/games/nintendo-switch/1-2-switch/",
+ "nintendoOnlineRequired": false,
+ "nintendoCloudSaves": false,
+ "nintendoGameKeyCard": false,
+ "nintendoPhysicalNeedsDownload": false,
+ "tvMode": true,
+ "tabletopMode": true,
+ "handheldMode": false,
+ "nintendoPlayModes": "TV, Tabletop; Handheld Mode is not supported",
+ "nintendoNotes": "Nintendo lists 1-2-Switch as a two-player-focused party game supporting TV and Tabletop modes. Handheld Mode is not supported. Some activities rely on original Joy-Con-specific hardware features, including the IR Motion Camera. No verified Full Wrap was used for 3D texture.",
+ "switch2Enhanced": false,
+ "switch2Exclusive": false,
+ "tagline": "Put the screen aside and face your opponent in a collection of quick Joy-Con party games built around motion, HD Rumble and social reactions.",
+ "fitFor": [
+  "Two-player gatherings where people want simple, immediately understandable party activities.",
+  "Players interested in the original Joy-Con’s motion, HD Rumble and IR Motion Camera features.",
+  "Families and casual groups who prefer short competitive activities rather than a long campaign."
+ ],
+ "notFitFor": [
+  "Solo players; the experience is designed primarily around two people facing each other.",
+  "Players looking for Handheld Mode; Nintendo does not support handheld play for 1-2-Switch.",
+  "Players looking for a narrative campaign, online progression or deep single-player systems."
+ ],
+ "playTimeMain": 1.5,
+ "playTimeFull": 3,
+ "gameplayPillars": [
+  {
+   "title": "Face-to-Face Play",
+   "description": "Many activities deliberately ask players to watch each other rather than stare at the television, making body language and reactions part of the game."
+  },
+  {
+   "title": "Joy-Con Technology",
+   "description": "Motion sensing, HD Rumble and the right Joy-Con IR Motion Camera drive different minigame mechanics and demonstrations."
+  },
+  {
+   "title": "Quick Party Challenges",
+   "description": "Short activities can be selected rapidly for gatherings, with simple rules designed to be understood with minimal setup."
+  }
+ ],
+ "worldSummary": "1-2-Switch does not have a traditional story world. It is structured as a collection of short party scenarios presented through live-action-style prompts and simple visual feedback. The real focus is the physical space between the two players, with the television acting as an instruction and score display rather than the center of attention.",
+ "galleryImages": [
+  {
+   "url": "https://images.launchbox-app.com/84cff0c0-f37d-4d7a-9cab-6637bfaf7867.jpg",
+   "alt": "1-2-Switch gameplay/promotional image."
+  },
+  {
+   "url": "https://images.launchbox-app.com/01c3df49-0a57-4c20-bf41-9947cd545a5e.jpg",
+   "alt": "1-2-Switch gameplay image."
+  },
+  {
+   "url": "https://images.launchbox-app.com/542bacac-3324-4732-956d-2cd91090078f.jpg",
+   "alt": "Additional 1-2-Switch gameplay image."
+  },
+  {
+   "url": "https://images.launchbox-app.com/8e51cc32-1878-4b5c-aca7-5f0a77424daf.jpg",
+   "alt": "Additional 1-2-Switch media image."
+  }
+ ],
+ "features": [
+  "A face-to-face party-game format encourages players to watch each other instead of staring at the television.",
+  "A collection of short competitive activities demonstrates motion controls, HD Rumble and other Joy-Con functions.",
+  "Designed primarily around two-player local play with simple rules that can be explained quickly to new players.",
+  "Activities include reaction tests, duels, rhythm-like challenges and physical-comedy minigames.",
+  "The presentation is intentionally social, making spectators part of the experience even when they are not holding a controller.",
+  "Nintendo’s Ver. 1.1 update added gameplay video capture compatibility on supported system software."
+ ],
+ "perfResolutionDocked": "1920x1080",
+ "perfResolutionHandheld": "Not Supported",
+ "perfFps": "60 FPS class presentation",
+ "perfHdr": false,
+ "perfNotes": "Resolution database analysis identifies 1920x1080 docked output and 1280x720 assets/handheld profile, but Nintendo officially marks Handheld Mode itself as unsupported. The game is visually simple and presented at a 60 Hz/60 FPS class rate.",
+ "devicePerformance": [
+  {
+   "device": "Nintendo Switch 2",
+   "deviceSlug": "nintendo-switch-2",
+   "deviceModel": "Nintendo Switch 2",
+   "hardwareId": "prd_acf4c89908764c62",
+   "informationStatus": "Cross-checked",
+   "handheld": {
+    "supported": false,
+    "resolution": "Not Supported",
+    "resolutionDynamic": false,
+    "renderingResolution": "Not Supported",
+    "outputResolution": "Not Supported",
+    "fps": "Not Supported",
+    "refreshRate": "Not Supported",
+    "hdr": false,
+    "vrr": false,
+    "mode": "Not Supported",
+    "notes": "Handheld Mode remains unsupported. Some games also require an original Joy-Con due to the missing IR Motion Camera in Joy-Con 2."
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "1920x1080",
+    "resolutionDynamic": false,
+    "renderingResolution": "1920x1080",
+    "outputResolution": "1920x1080",
+    "fps": "60",
+    "fpsMin": "60",
+    "fpsMax": "60",
+    "refreshRate": "60 Hz",
+    "hdr": false,
+    "vrr": false,
+    "mode": "TV",
+    "notes": "Backward-compatible software behavior is consistent with Nintendo Switch. TV output remains 1080p-class."
+   },
+   "modes": [
+    {
+     "name": "Standard",
+     "handheldResolution": "Not Supported",
+     "handheldFps": "Not Supported",
+     "tvResolution": "1920x1080",
+     "tvFps": "60",
+     "hdr": false,
+     "vrr": false,
+     "notes": "Original Joy-Con controllers are required for Motion IR Camera minigames on Switch 2."
+    }
+   ],
+   "upscaling": "No named upscaling technology officially documented",
+   "rayTracing": false,
+   "rayTracingMode": "None",
+   "gameVersion": "1.1.0",
+   "patchVersion": "1.1.0",
+   "testedDate": "2026-08-23",
+   "sourceName": "Nintendo eShop Compatibility + original Switch resolution analysis",
+   "sourceUrl": "https://ec.nintendo.com/HK/zh/titles/70010000009374",
+   "verifiedAt": "2026-08-23",
+   "verificationStatus": "Cross-checked",
+   "performanceNotes": "Original Joy-Con controllers are required for Motion IR Camera minigames on Switch 2."
+  }
+ ],
+ "downloadSizeGb": 1.4,
+ "requiredSpaceGb": 1.5,
+ "microSdRecommended": false,
+ "storageNotes": "Nintendo currently lists 1.4 GB required space for both Switch and Switch 2 compatibility.",
+ "languagesAudio": [
+  "English",
+  "Japanese"
+ ],
+ "languagesText": [
+  "English",
+  "Japanese",
+  "French"
+ ],
+ "arabicSupport": false,
+ "mpLocalPlayers": true,
+ "mpOnlinePlayers": false,
+ "mpCoop": true,
+ "mpCompetitive": true,
+ "mpSplitScreen": false,
+ "mpLocalWireless": false,
+ "guides": [
+  {
+   "title": "Nintendo — 1-2-Switch Official Page",
+   "summary": "Official product information, play modes and game overview.",
+   "url": "https://www.nintendo.com/au/games/nintendo-switch/1-2-switch/"
+  },
+  {
+   "title": "Nintendo eShop — 1-2-Switch",
+   "summary": "Official Nintendo eShop product record.",
+   "url": "https://ec.nintendo.com/NZ/en/titles/70010000000024"
+  },
+  {
+   "title": "Switch Images Julio — AACCA",
+   "summary": "Nintendo Switch cover/card asset reference for 1-2-Switch.",
+   "url": "https://cdn.switch-images-julio.com/file/switch-images-julio/display/index.html?code=AACCA"
+  }
+ ],
+ "completionMain": 1.5,
+ "completionExtras": 2,
+ "completionAll": 3,
+ "faq": [
+  {
+   "q": "Can 1-2-Switch be played in Handheld Mode?",
+   "a": "No. Nintendo marks Handheld Mode as unsupported; TV or Tabletop play is required."
+  },
+  {
+   "q": "How many players does 1-2-Switch support?",
+   "a": "The core experience is designed for two players."
+  },
+  {
+   "q": "Is 1-2-Switch a story game?",
+   "a": "No. It is a party-game collection made up of independent minigames rather than a narrative campaign."
+  }
+ ],
+ "verdictScore": 5.8,
+ "verdictSummary": "Score note: 5.8/10 is a direct normalization of the current 58/100 Metacritic aggregate for the Nintendo listing; it is not a separately invented store rating.\n\n1-2-Switch works best as a social hardware showcase: its appeal comes from direct two-person interaction and unusual Joy-Con mechanics rather than depth or a traditional campaign.",
+ "verdictPros": [
+  "Distinctive face-to-face party design.",
+  "Strong demonstration of original Joy-Con hardware features.",
+  "Easy to introduce to casual players at gatherings."
+ ],
+ "verdictCons": [
+  "Little value for players seeking a solo campaign.",
+  "Handheld Mode is not supported.",
+  "Some minigames depend on original Joy-Con-specific hardware features."
+ ],
+ "reviews": [
+  {
+   "source": "Metacritic — Nintendo listing",
+   "score": "58/100",
+   "quote": "Current critic aggregate for the relevant Nintendo listing: 58/100. This is an external aggregate, not a BANANTO-created review score.",
+   "url": "https://www.dekudeals.com/items/1-2-switch"
+  },
+  {
+   "source": "OpenCritic",
+   "score": "55/100",
+   "quote": "OpenCritic aggregate recorded at 55/100. Where OpenCritic groups platforms, this value represents the published aggregate rather than a fabricated platform-specific score.",
+   "url": "https://www.dekudeals.com/items/1-2-switch"
+  },
+  {
+   "source": "Metacritic User Score",
+   "score": "4.8/10",
+   "quote": "Current Metacritic user score shown with the listing: 4.8/10. User scores can change over time as additional ratings are submitted.",
+   "url": "https://www.dekudeals.com/items/1-2-switch"
+  }
+ ],
+ "timeline": [
+  null,
+  {
+   "date": "2017-03-03",
+   "title": "Worldwide Release",
+   "body": "1-2-Switch launched alongside Nintendo Switch."
+  },
+  {
+   "date": "2023-06-30",
+   "title": "Series Follow-up",
+   "body": "Nintendo released Everybody 1-2-Switch! as a separate follow-up game."
+  }
+ ],
+ "patchNotes": [
+  {
+   "version": "Ver. 1.1",
+   "date": "2017-10-31",
+   "body": "Nintendo added gameplay video capture compatibility. Holding the Capture Button can save up to 30 seconds of previous footage when the console system software supports the feature."
+  }
+ ],
+ "soundtrack": [
+  {
+   "title": "Title Screen"
+  },
+  {
+   "title": "Table Tennis"
+  },
+  {
+   "title": "Shuffle"
+  }
+ ],
+ "seriesName": "1-2-Switch",
+ "seriesEntries": [
+  "1-2-Switch",
+  "Everybody 1-2-Switch!"
+ ],
+ "studioName": "Nintendo",
+ "studioUrl": "https://www.nintendo.com/",
+ "studioLocation": "Kyoto, Japan",
+ "studioAbout": "Nintendo developed and published 1-2-Switch as a launch showcase for the interaction features of the Nintendo Switch Joy-Con controllers.",
+ "setupNeeds": [
+  "Two human players are recommended for the intended experience.",
+  "TV Mode or Tabletop Mode; Handheld Mode is not supported.",
+  "Original Joy-Con hardware is required for minigames that use the IR Motion Camera."
+ ],
+ "sources": [
+  {
+   "name": "Nintendo Australia — 1-2-Switch",
+   "url": "https://www.nintendo.com/au/games/nintendo-switch/1-2-switch/"
+  },
+  {
+   "name": "Nintendo eShop — 1-2-Switch",
+   "url": "https://ec.nintendo.com/NZ/en/titles/70010000000024"
+  },
+  {
+   "name": "Switch Images Julio — AACCA",
+   "url": "https://cdn.switch-images-julio.com/file/switch-images-julio/display/index.html?code=AACCA"
+  },
+  {
+   "name": "Deku Deals — Nintendo Switch scores and completion data",
+   "url": "https://www.dekudeals.com/items/1-2-switch"
+  },
+  {
+   "name": "Nintendo Support — Ver. 1.1 update history",
+   "url": "https://en-americas-support.nintendo.com/app/answers/detail/a_id/27796/p/1095/c/950"
+  }
+ ],
+ "boxContentsList": "[Circular]",
+ "image": "/api/files/products/prd_49ac50b2e7e041fa/image-c8eeb1214e6c48cc.webp",
+ "banner": "/api/files/products/prd_49ac50b2e7e041fa/banner-e3f0dc76a0f192ba.webp",
+ "schemaId": "",
+ "badgeEn": "وفر 40%",
+ "badgeKu": "وفر 40%",
+ "featuresEn": [
+  "A face-to-face party-game format encourages players to watch each other instead of staring at the television.",
+  "A collection of short competitive activities demonstrates motion controls, HD Rumble and other Joy-Con functions.",
+  "Designed primarily around two-player local play with simple rules that can be explained quickly to new players.",
+  "Activities include reaction tests, duels, rhythm-like challenges and physical-comedy minigames.",
+  "The presentation is intentionally social, making spectators part of the experience even when they are not holding a controller.",
+  "Nintendo’s Ver. 1.1 update added gameplay video capture compatibility on supported system software."
+ ],
+ "featuresKu": [
+  "A face-to-face party-game format encourages players to watch each other instead of staring at the television.",
+  "A collection of short competitive activities demonstrates motion controls, HD Rumble and other Joy-Con functions.",
+  "Designed primarily around two-player local play with simple rules that can be explained quickly to new players.",
+  "Activities include reaction tests, duels, rhythm-like challenges and physical-comedy minigames.",
+  "The presentation is intentionally social, making spectators part of the experience even when they are not holding a controller.",
+  "Nintendo’s Ver. 1.1 update added gameplay video capture compatibility on supported system software."
+ ],
+ "sales": 0,
+ "images": [],
+ "modes": []
+}

@@ -1,0 +1,3293 @@
+{
+ "batch": "002",
+ "generatedAt": "2026-09-02T01:56:38.879Z",
+ "totalGames": 310,
+ "reviewedSoFar": 4,
+ "games": [
+  {
+   "id": "prd_ad958aa523e24052",
+   "slug": "assassins-creed-shadows-switch-2",
+   "title": "Assassin's Creed Shadows",
+   "platform": "switch2",
+   "isHidden": false,
+   "hash": "d229dda26242fe08ee2e5eae629bd0b5fe91081b304d74aa50dfb5e5384a77f0",
+   "images": [
+    {
+     "role": "front-box",
+     "field": "cartridgeImage",
+     "url": "https://banan.to/api/files/products/prd_ad958aa523e24052/front-410ddd3a72ecaa7b.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 37404,
+     "width": 309,
+     "height": 500,
+     "thumb": "review-workdir/thumbs/batch-002/assassins-creed-shadows-switch-2__front-box-0.png"
+    },
+    {
+     "role": "front-box",
+     "field": "box_front_url",
+     "url": "https://images.kabum.com.br/produtos/fotos/952237/jogo-assassinos-creed-shadows-para-nintendo-switch-2-ub000084nsw_1765543878_gg.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 126495,
+     "width": 1000,
+     "height": 1000,
+     "thumb": "review-workdir/thumbs/batch-002/assassins-creed-shadows-switch-2__front-box-1.png"
+    },
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://banan.to/api/files/products/prd_ad958aa523e24052/square-2c2b52268e4d090b.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 106518,
+     "width": 1080,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-002/assassins-creed-shadows-switch-2__square-card-2.png"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://banan.to/api/files/products/prd_ad958aa523e24052/cover-9ceffdcf1e83ce6d.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 333176,
+     "width": 1600,
+     "height": 900,
+     "thumb": "review-workdir/thumbs/batch-002/assassins-creed-shadows-switch-2__detail-cover-3.png"
+    },
+    {
+     "role": "listing",
+     "field": "image",
+     "url": "https://banan.to/api/files/products/prd_ad958aa523e24052/cover-9ceffdcf1e83ce6d.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 333176,
+     "width": 1600,
+     "height": 900,
+     "thumb": "review-workdir/thumbs/batch-002/assassins-creed-shadows-switch-2__listing-4.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[0]",
+     "url": "https://banan.to/api/files/products/prd_ad958aa523e24052/banner-2-6f8802f4c2a9205b.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 119797,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-002/assassins-creed-shadows-switch-2__banner-5.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[1]",
+     "url": "https://banan.to/api/files/products/prd_ad958aa523e24052/banner-3-6475af012b5c8f44.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 898970,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-002/assassins-creed-shadows-switch-2__banner-6.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101043/a84d3fc77995ec699dc770fe1a3b2e5dc2aa3521c0d9e8c130f51d5c30b60678",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 261312,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-002/assassins-creed-shadows-switch-2__gallery-7.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[1]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101043/01a5078449adce58986dd9657b50dd49bebcba9995d3f0e760e356451269a419",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 232491,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-002/assassins-creed-shadows-switch-2__gallery-8.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[2]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101043/cd78f78516fc3ad03c703ebff2f4f48fefc62dc02fb50b2f6de08ff97257decf",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 243753,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-002/assassins-creed-shadows-switch-2__gallery-9.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[3]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101043/2013a2278a51465fca7758c7cd3587f30f7fb78e53ce4efefc1d5058b00f779b",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 158503,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-002/assassins-creed-shadows-switch-2__gallery-10.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[4]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101043/a007ce4d5dd7b763d73ac5a9f282bedb7b618225902b300fa3bfd4cc7ba1fe41",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 179659,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-002/assassins-creed-shadows-switch-2__gallery-11.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[5]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101043/97fac375415ac25c7999610f381dbb6a8a8355facc2973423f07531e8c272488",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 142384,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-002/assassins-creed-shadows-switch-2__gallery-12.png"
+    }
+   ],
+   "record": {
+    "title": "Assassin's Creed Shadows",
+    "titleEn": "Assassin's Creed Shadows",
+    "titleKu": "Assassin's Creed Shadows",
+    "slug": "assassins-creed-shadows-switch-2",
+    "description": "An open-world Assassin's Creed adventure set in late Sengoku-period Japan, starring shinobi Naoe and samurai Yasuke. The Switch 2 version targets 30 fps, supports touch controls, HDR output, save-data cloud and Ubisoft Connect cross-progression.",
+    "descriptionEn": "An open-world Assassin's Creed adventure set in late Sengoku-period Japan, starring shinobi Naoe and samurai Yasuke. The Switch 2 version targets 30 fps, supports touch controls, HDR output, save-data cloud and Ubisoft Connect cross-progression.",
+    "descriptionKu": "An open-world Assassin's Creed adventure set in late Sengoku-period Japan, starring shinobi Naoe and samurai Yasuke. The Switch 2 version targets 30 fps, supports touch controls, HDR output, save-data cloud and Ubisoft Connect cross-progression.",
+    "cartridgeImage": "/api/files/products/prd_ad958aa523e24052/front-410ddd3a72ecaa7b.webp",
+    "nintendoCardImage": "/api/files/products/prd_ad958aa523e24052/square-2c2b52268e4d090b.webp",
+    "coverHiResImage": "",
+    "coverImage": "/api/files/products/prd_ad958aa523e24052/cover-9ceffdcf1e83ce6d.jpg",
+    "bannerImages": [
+     "https://banan.to/api/files/products/prd_ad958aa523e24052/banner-2-6f8802f4c2a9205b.jpg",
+     "https://banan.to/api/files/products/prd_ad958aa523e24052/banner-3-6475af012b5c8f44.jpg"
+    ],
+    "gallery": [],
+    "youtubeTrailer": "https://www.youtube.com/watch?v=3oTfnzXb8OE",
+    "releaseDate": "2025-12-02",
+    "ageRating": "ESRB Mature 17+ / PEGI 18",
+    "metacriticRating": 81,
+    "genres": [
+     "Open-World Action",
+     "Stealth",
+     "Action Adventure"
+    ],
+    "platform": "switch2",
+    "size": 62.8,
+    "numberOfPlayers": "1",
+    "supportedLanguages": "English / Japanese; French / German / Italian / Spanish / Portuguese / Russian; Korean / Simplified Chinese / Traditional Chinese",
+    "hardwareModel": "",
+    "colorEdition": "",
+    "storageCapacity": "",
+    "screenSpecs": "",
+    "batteryLife": "",
+    "boxContents": [],
+    "boxContentsText": "",
+    "warrantyCondition": "",
+    "connectivity": "",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "Global",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "",
+    "redemptionSteps": [],
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 15000,
+    "cost": 3000,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": false,
+    "displayOrder": 0,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "حساب أوفلاين",
+      "description": "حساب مخصص للعب دون اتصال بعد إكمال خطوات التفعيل.",
+      "stock": 9999,
+      "isInfiniteStock": true,
+      "customerDescription": "حساب مشترك"
+     },
+     {
+      "id": "online_account",
+      "name": "حساب أونلاين",
+      "description": "حساب يدعم تشغيل اللعبة مع الاتصال والميزات المتاحة أونلاين.",
+      "stock": 9999,
+      "isInfiniteStock": true,
+      "customerDescription": "حساب خاص بك"
+     }
+    ],
+    "types": [
+     {
+      "id": "standard_offline",
+      "name": "حساب أوفلاين — عادي",
+      "optionId": "offline_account",
+      "price": "",
+      "cost": 3000,
+      "description": "تشمل الإصدار العادي من اللعبة.",
+      "stock": 9999,
+      "isInfiniteStock": true,
+      "internalNote": "Offline Account: supplier cost 3,000 IQD; selling price 18,000 IQD."
+     },
+     {
+      "id": "dlc_offline",
+      "name": "حساب أوفلاين — مع الإضافات",
+      "optionId": "offline_account",
+      "price": "19000",
+      "cost": 7750,
+      "description": "تشمل اللعبة الأساسية والمحتوى الإضافي المثبت في هذا الإصدار.",
+      "stock": 9999,
+      "isInfiniteStock": true,
+      "customerDescription": "اللعبة مع الإضافات",
+      "internalNote": "Offline Special/DLC: supplier cost 7,750 IQD; selling price 22,000 IQD."
+     },
+     {
+      "id": "standard_online",
+      "name": "حساب أونلاين — عادي",
+      "optionId": "online_account",
+      "price": "45000",
+      "cost": 25000,
+      "description": "تشمل الإصدار العادي من اللعبة.",
+      "stock": 9999,
+      "isInfiniteStock": true,
+      "internalNote": "Online Account: supplier cost 25,000 IQD; selling price 35,000 IQD."
+     },
+     {
+      "id": "dlc_online",
+      "name": "حساب أونلاين — مع الإضافات",
+      "optionId": "online_account",
+      "price": "58000",
+      "cost": 38000,
+      "description": "تشمل اللعبة الأساسية والمحتوى الإضافي المثبت في هذا الإصدار.",
+      "stock": 9999,
+      "isInfiniteStock": true,
+      "customerDescription": "اللعبة مع الإضافات",
+      "internalNote": "Online Deluxe/DLC: supplier cost 38,000 IQD; selling price 48,000 IQD."
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "Active",
+    "kind": "account",
+    "trade_value_iqd": 45000,
+    "store_offer_bonus_iqd": 2500,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "id": "prd_ad958aa523e24052",
+    "schema_version": 23,
+    "titleAr": "أساسنز كريد شادوز",
+    "compatibility": [
+     "Nintendo Switch 2"
+    ],
+    "edition": "Standard / available account variants",
+    "developer": "Ubisoft Quebec",
+    "publisher": "Ubisoft",
+    "metacriticUrl": "https://www.metacritic.com/game/assassins-creed-shadows/",
+    "opencriticRating": 81,
+    "userScore": 6.1,
+    "price_usd": 59.99,
+    "officialUrl": "https://www.ubisoft.com/en-us/game/assassins-creed/shadows",
+    "eshopUrl": "https://ec.nintendo.com/NZ/en/titles/70010000101040",
+    "gameIsOffline": true,
+    "gameIsOnline": false,
+    "gameLanguageLocked": false,
+    "description_short": "An open-world Assassin's Creed adventure set in late Sengoku-period Japan, starring shinobi Naoe and samurai Yasuke. The Switch 2 version targets 30 fps, supports touch controls, HDR output, save-data cloud and Ubisoft Connect cross-progression.",
+    "description_ar": "مغامرة Assassin's Creed بعالم مفتوح في اليابان خلال أواخر حقبة Sengoku، بشخصيتين مختلفتين: Naoe الشينوبي المتخصصة بالتسلل وYasuke الساموراي المتخصص بالقتال المباشر. نسخة Switch 2 تستهدف 30fps وتدعم اللمس وHDR وcross-progression عبر Ubisoft Connect.",
+    "box_front_url": "https://images.kabum.com.br/produtos/fotos/952237/jogo-assassinos-creed-shadows-para-nintendo-switch-2-ub000084nsw_1765543878_gg.jpg",
+    "box_back_url": "https://www.jnlgame.com/cdn/shop/files/D8102474-78BA-466B-ACCC-B674358E8635.jpg?v=1764356582&width=5760",
+    "galleryImages": [
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101043/a84d3fc77995ec699dc770fe1a3b2e5dc2aa3521c0d9e8c130f51d5c30b60678",
+      "alt": "Distinct verified game media image 1"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101043/01a5078449adce58986dd9657b50dd49bebcba9995d3f0e760e356451269a419",
+      "alt": "Distinct verified game media image 2"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101043/cd78f78516fc3ad03c703ebff2f4f48fefc62dc02fb50b2f6de08ff97257decf",
+      "alt": "Distinct verified game media image 3"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101043/2013a2278a51465fca7758c7cd3587f30f7fb78e53ce4efefc1d5058b00f779b",
+      "alt": "Distinct verified game media image 4"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101043/a007ce4d5dd7b763d73ac5a9f282bedb7b618225902b300fa3bfd4cc7ba1fe41",
+      "alt": "Distinct verified game media image 5"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101043/97fac375415ac25c7999610f381dbb6a8a8355facc2973423f07531e8c272488",
+      "alt": "Distinct verified game media image 6"
+     },
+     {
+      "url": "https://staticctf.ubisoft.com/J3yJr34U2pZ2Ieem48Dwy9uqj5PNUQTn/7KOVYSn44FSTaCnFUjTZkB/b96d4ea8a4ab5b64eeacef9669a86a53/Nowaki.jpg",
+      "alt": "Distinct verified game media image 7"
+     },
+     {
+      "url": "https://staticctf.ubisoft.com/J3yJr34U2pZ2Ieem48Dwy9uqj5PNUQTn/m5wQaaNZpdIihXZqtYTgG/9d5bb2eaff395257c4c4ecbbf3232898/yasuke.jpg",
+      "alt": "Distinct verified game media image 8"
+     },
+     {
+      "url": "https://staticctf.ubisoft.com/J3yJr34U2pZ2Ieem48Dwy9uqj5PNUQTn/3jEOSdKv9TXCfBYh510RWB/61df1c5418172f0657e03e34600658b1/Eshima.jpg",
+      "alt": "Distinct verified game media image 9"
+     }
+    ],
+    "videos": [
+     {
+      "title": "Official trailer",
+      "url": "https://www.ubisoft.com/en-us/game/assassins-creed/shadows"
+     },
+     {
+      "title": "Nintendo / publisher overview",
+      "url": "https://ec.nintendo.com/NZ/en/titles/70010000101040"
+     },
+     {
+      "title": "Gameplay and feature media",
+      "url": "https://ec.nintendo.com/NZ/en/titles/70010000101040"
+     }
+    ],
+    "nsuid": "See official Nintendo product page",
+    "title_id": "Nintendo internal title ID not exposed as a user-facing retail identifier",
+    "product_code": "Platform retail/digital product code varies by region",
+    "nintendoEshopUrl": "https://ec.nintendo.com/NZ/en/titles/70010000101040",
+    "nintendoOnlineRequired": false,
+    "nintendoCloudSaves": true,
+    "nintendoGameKeyCard": true,
+    "nintendoPhysicalNeedsDownload": true,
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": true,
+    "nintendoPlayModes": "TV / Tabletop / Handheld",
+    "nintendoNotes": "Verified platform/store information for Assassin's Creed Shadows. Online features require Nintendo Switch Online where applicable. Storage and supported-language values are taken from current Nintendo/publisher listings.",
+    "switch2Enhanced": false,
+    "switch2Exclusive": true,
+    "switch2UpgradePrice": 0,
+    "switch2Features": [
+     "Two protagonists with distinct stealth/combat systems",
+     "Dynamic seasons, weather and reactive environments",
+     "Touchscreen UI and Ubisoft Connect cross-progression on Switch 2"
+    ],
+    "tagline": "Become a shinobi in the shadows or a samurai in the open fields of feudal Japan.",
+    "fitFor": [
+     "Players who enjoy large historical open worlds",
+     "Stealth players who want a dedicated shinobi toolkit",
+     "Action players who prefer heavy samurai combat"
+    ],
+    "notFitFor": [
+     "Players who require 60 fps",
+     "Players who dislike very large maps and long campaigns",
+     "Players who want multiplayer-focused Assassin's Creed"
+    ],
+    "playTimeMain": 36,
+    "playTimeFull": 99.5,
+    "editionsList": [
+     {
+      "name": "Standard Edition",
+      "coverUrl": "https://images.kabum.com.br/produtos/fotos/952237/jogo-assassinos-creed-shadows-para-nintendo-switch-2-ub000084nsw_1765543878_gg.jpg",
+      "contents": [
+       {
+        "label": "Base game"
+       },
+       {
+        "label": "Standard content"
+       },
+       {
+        "label": "Platform features"
+       }
+      ]
+     },
+     {
+      "name": "DLC / Special Edition",
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_1%3A1%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101043/27e7c0866bfdf82d63a1486122e2dff215a5604794b7c8311256fb5d60a650b0",
+      "contents": [
+       {
+        "label": "Claws of Awaji"
+       },
+       {
+        "label": "Base game + DLC account option"
+       },
+       {
+        "label": "Additional edition content"
+       }
+      ]
+     },
+     {
+      "name": "Premium Edition",
+      "coverUrl": "https://staticctf.ubisoft.com/J3yJr34U2pZ2Ieem48Dwy9uqj5PNUQTn/36Us9qk99eRH7CJEj0xF1O/6eb7544aa5a5812cc9615d31e5875080/ACS_Switch2_launchArticle_asset2.jpg",
+      "contents": [
+       {
+        "label": "Base game"
+       },
+       {
+        "label": "Claws of Awaji"
+       },
+       {
+        "label": "Sekiryu packs + Mastery Points"
+       }
+      ]
+     }
+    ],
+    "gameplayPillars": [
+     {
+      "title": "Shinobi stealth",
+      "description": "Naoe uses shadows, sound, prone movement, grappling, kunai, shuriken and the Hidden Blade.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101043/27e7c0866bfdf82d63a1486122e2dff215a5604794b7c8311256fb5d60a650b0"
+     },
+     {
+      "title": "Samurai combat",
+      "description": "Yasuke relies on powerful melee weapons, posture attacks, blocks and parries.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101043/a84d3fc77995ec699dc770fe1a3b2e5dc2aa3521c0d9e8c130f51d5c30b60678"
+     },
+     {
+      "title": "Reactive open world",
+      "description": "Weather and seasons affect stealth, traversal and the visual state of the environment.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101043/01a5078449adce58986dd9657b50dd49bebcba9995d3f0e760e356451269a419"
+     }
+    ],
+    "worldSummary": "The game recreates late-16th-century Japan across castle towns, ports, shrines, countryside and forests. Seasonal changes alter vegetation, water, visibility and infiltration opportunities, while a spy network and scouts help uncover targets and locations.",
+    "storyChapters": [
+     {
+      "title": "Naoe's path",
+      "body": "A shinobi from Iga pursues revenge and an impossible promise after conflict reaches her homeland.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101043/cd78f78516fc3ad03c703ebff2f4f48fefc62dc02fb50b2f6de08ff97257decf"
+     },
+     {
+      "title": "Yasuke's path",
+      "body": "The historical African samurai serves as the game's combat-focused protagonist while confronting his past.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101043/2013a2278a51465fca7758c7cd3587f30f7fb78e53ce4efefc1d5058b00f779b"
+     },
+     {
+      "title": "A shared destiny",
+      "body": "Their stories intersect amid political upheaval, secret factions and the struggle surrounding Japan's unification.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101043/a007ce4d5dd7b763d73ac5a9f282bedb7b618225902b300fa3bfd4cc7ba1fe41"
+     }
+    ],
+    "features": [
+     "Two protagonists with distinct stealth/combat systems",
+     "Dynamic seasons, weather and reactive environments",
+     "Touchscreen UI and Ubisoft Connect cross-progression on Switch 2"
+    ],
+    "perfResolutionDocked": "1080p output target via reconstruction",
+    "perfResolutionHandheld": "1080p output target via reconstruction",
+    "perfFps": "30",
+    "perfHdr": true,
+    "perfNotes": "Ubisoft officially targets 30 fps in both modes. Technical analysis reports aggressive dynamic internal resolution and reconstruction; the exact internal pixel count varies by scene.",
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "informationStatus": "available",
+      "handheld": {
+       "supported": true,
+       "resolution": "1080p output target via reconstruction",
+       "fps": "30"
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p output target via reconstruction",
+       "fps": "30"
+      },
+      "sourceName": "Switch 2 launch coverage; Ubisoft has not published a full official spec sheet",
+      "sourceUrl": "https://www.ubisoft.com/en-us/game/assassins-creed/shadows",
+      "verificationStatus": "unverified",
+      "hardwareId": "prd_acf4c89908764c62",
+      "deviceModel": "Nintendo Switch 2"
+     }
+    ],
+    "downloadSizeGb": 62.8,
+    "requiredSpaceGb": 68.9,
+    "microSdRecommended": true,
+    "storageNotes": "Nintendo eShop lists 68.9 GB required space for the base Switch 2 game. The Game-Key Card requires the full game download. Premium Edition is larger because it includes Claws of Awaji and additional content.",
+    "languagesAudio": [
+     "English",
+     "Japanese",
+     "French / German / Italian / Spanish / Portuguese"
+    ],
+    "languagesText": [
+     "English / Japanese",
+     "French / German / Italian / Spanish / Portuguese / Russian",
+     "Korean / Simplified Chinese / Traditional Chinese"
+    ],
+    "arabicSupport": false,
+    "mpLocalPlayers": false,
+    "mpOnlinePlayers": false,
+    "mpCoop": false,
+    "mpCompetitive": false,
+    "mpSplitScreen": false,
+    "mpLocalWireless": false,
+    "dlc": [
+     {
+      "name": "The Claws of Awaji",
+      "title": "The Claws of Awaji",
+      "description": "Story expansion set on Awaji island (around 10 extra hours). Not included with the Nintendo Switch 2 release — sold separately, arriving in 2026.",
+      "releaseDate": ""
+     }
+    ],
+    "guides": [
+     {
+      "title": "Official product information",
+      "summary": "Platform, release, storage, language and feature information for Assassin's Creed Shadows.",
+      "url": "https://ec.nintendo.com/NZ/en/titles/70010000101040"
+     },
+     {
+      "title": "Official game overview",
+      "summary": "Publisher/developer overview of story, gameplay and features.",
+      "url": "https://www.ubisoft.com/en-us/game/assassins-creed/shadows"
+     },
+     {
+      "title": "Reviews and playtime reference",
+      "summary": "Critic/user scores and completion-time context.",
+      "url": "https://www.dekudeals.com/items/assassin-s-creed-shadows"
+     }
+    ],
+    "completionMain": 36,
+    "completionExtras": 65,
+    "completionAll": 99.5,
+    "faq": [
+     {
+      "q": "Can the Switch 2 version be played offline?",
+      "a": "Yes after installation. Ubisoft states an internet connection is required for installation, after which the main game can be played offline."
+     },
+     {
+      "q": "What is the frame-rate target?",
+      "a": "Ubisoft officially targets 30 fps in both handheld and docked modes."
+     },
+     {
+      "q": "Is Claws of Awaji available on Switch 2?",
+      "a": "Yes. The expansion released for Switch 2 on March 10, 2026."
+     }
+    ],
+    "verdictScore": 8.2,
+    "verdictSummary": "A technically ambitious portable conversion of Ubisoft's feudal-Japan open world. The dual-protagonist design is its biggest strength, while the Switch 2 version necessarily uses aggressive reconstruction and a 30 fps target.",
+    "verdictPros": [
+     "Excellent Naoe/Yasuke gameplay contrast",
+     "Rich feudal-Japan world and seasonal systems",
+     "Touch controls and cross-progression"
+    ],
+    "verdictCons": [
+     "30 fps target",
+     "Very large 68.9 GB download",
+     "Game-Key Card requires full download"
+    ],
+    "reviews": [
+     {
+      "source": "Metacritic – Switch 2",
+      "score": "80/100",
+      "quote": "Generally favorable Switch 2 aggregate.",
+      "url": "https://www.metacritic.com/game/assassins-creed-shadows/critic-reviews/"
+     },
+     {
+      "source": "OpenCritic",
+      "score": "81/100",
+      "quote": "Cross-platform critic aggregate.",
+      "url": "https://opencritic.com/game/16782/assassins-creed-shadows"
+     },
+     {
+      "source": "Deku Deals user rating",
+      "score": "3.8/5",
+      "quote": "Current Nintendo-store-linked user rating snapshot.",
+      "url": "https://www.dekudeals.com/items/assassin-s-creed-shadows"
+     }
+    ],
+    "timeline": [
+     {
+      "date": "2025-03-20",
+      "title": "Original release",
+      "body": "Assassin's Creed Shadows launched on PS5, Xbox Series and PC."
+     },
+     {
+      "date": "2025-12-02",
+      "title": "Nintendo Switch 2 release",
+      "body": "Switch 2 version launched with accumulated updates and touch controls."
+     },
+     {
+      "date": "2026-03-10",
+      "title": "Claws of Awaji on Switch 2",
+      "body": "The major expansion arrived on Nintendo Switch 2."
+     }
+    ],
+    "patchNotes": [
+     {
+      "version": "Switch 2 launch build",
+      "date": "2025-12-02",
+      "body": "Included New Game+, Nightmare difficulty, parkour improvements and previous free updates."
+     },
+     {
+      "version": "Claws of Awaji",
+      "date": "2026-03-10",
+      "body": "Major expansion released on Switch 2."
+     },
+     {
+      "version": "Ongoing title updates",
+      "date": "2026",
+      "body": "Ubisoft continues bug fixes, quality-of-life changes and content support."
+     }
+    ],
+    "soundtrack": [
+     {
+      "title": "Assassin's Creed Shadows Main Theme",
+      "url": "https://www.ubisoft.com/en-us/game/assassins-creed/shadows"
+     },
+     {
+      "title": "Naoe's Theme",
+      "url": "https://www.ubisoft.com/en-us/game/assassins-creed/shadows"
+     },
+     {
+      "title": "Yasuke's Theme",
+      "url": "https://www.ubisoft.com/en-us/game/assassins-creed/shadows"
+     }
+    ],
+    "seriesName": "Assassin's Creed Shadows",
+    "seriesEntries": [
+     "Assassin's Creed Mirage",
+     "Assassin's Creed Shadows",
+     "Assassin's Creed Valhalla"
+    ],
+    "studioName": "Ubisoft Quebec",
+    "studioUrl": "https://quebec.ubisoft.com/",
+    "studioLocation": "Quebec City, Canada",
+    "studioAbout": "Lead studio for Assassin's Creed Shadows, supported by a large network of Ubisoft studios worldwide.",
+    "setupNeeds": [
+     "Nintendo Switch 2",
+     "68.9 GB free storage for the base game",
+     "Internet connection for initial Game-Key Card installation; Ubisoft Account for applicable online/cross-progression features"
+    ],
+    "sources": [
+     {
+      "name": "Nintendo eShop",
+      "url": "https://ec.nintendo.com/NZ/en/titles/70010000101040"
+     },
+     {
+      "name": "Ubisoft Switch 2 launch article",
+      "url": "https://www.ubisoft.com/en-us/game/assass-creed/news/SkxXq98e1wMmzWMsCkRqY"
+     },
+     {
+      "name": "Deku Deals",
+      "url": "https://www.dekudeals.com/items/assassin-s-creed-shadows"
+     }
+    ],
+    "boxContentsList": "[Circular]",
+    "image": "/api/files/products/prd_ad958aa523e24052/cover-9ceffdcf1e83ce6d.jpg",
+    "banner": "/api/files/products/prd_ad958aa523e24052/banner-0-23b344afdd37e1c2.avif",
+    "schemaId": "",
+    "createdAt": "2026-08-27T00:27:47.504Z",
+    "created_at": "2026-08-27T00:27:47.504Z",
+    "updatedAt": "2026-09-02T01:44:52.622Z",
+    "updated_at": "2026-09-02T01:44:52.622Z",
+    "badgeEn": "وفر 40%",
+    "badgeKu": "وفر 40%",
+    "featuresEn": [
+     "Two protagonists with distinct stealth/combat systems",
+     "Dynamic seasons, weather and reactive environments",
+     "Touchscreen UI and Ubisoft Connect cross-progression on Switch 2"
+    ],
+    "featuresKu": [
+     "Two protagonists with distinct stealth/combat systems",
+     "Dynamic seasons, weather and reactive environments",
+     "Touchscreen UI and Ubisoft Connect cross-progression on Switch 2"
+    ],
+    "boxFrontUrl": "https://images.kabum.com.br/produtos/fotos/952237/jogo-assassinos-creed-shadows-para-nintendo-switch-2-ub000084nsw_1765543878_gg.jpg",
+    "sales": 0,
+    "images": [],
+    "modes": [],
+    "variants": "[Circular]"
+   }
+  },
+  {
+   "id": "prd_999b5c5da17c492e",
+   "slug": "bayonetta-2",
+   "title": "Bayonetta 2",
+   "platform": "switch1",
+   "isHidden": false,
+   "hash": "d1e55269d3d37ca563a252649aab117bc8180b3dac3096daf7b2099447778e06",
+   "images": [
+    {
+     "role": "front-box",
+     "field": "cartridgeImage",
+     "url": "https://banan.to/api/files/products/prd_999b5c5da17c492e/front-81e3a8848721e47d.png",
+     "status": 200,
+     "contentType": "image/png",
+     "bytes": 3843630,
+     "width": 1238,
+     "height": 2000,
+     "thumb": "review-workdir/thumbs/batch-002/bayonetta-2__front-box-0.png"
+    },
+    {
+     "role": "front-box",
+     "field": "box_front_url",
+     "url": "https://images.launchbox-app.com/r2_7e468c38-352f-47dd-9d9d-d9188d8e770c.png",
+     "status": 200,
+     "contentType": "image/png",
+     "bytes": 3843630,
+     "width": 1238,
+     "height": 2000,
+     "thumb": "review-workdir/thumbs/batch-002/bayonetta-2__front-box-1.png"
+    },
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://banan.to/api/files/products/prd_999b5c5da17c492e/square-61249d13582a6526.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 467015,
+     "width": 1024,
+     "height": 1024,
+     "thumb": "review-workdir/thumbs/batch-002/bayonetta-2__square-card-2.png"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://banan.to/api/files/products/prd_999b5c5da17c492e/cover-239df01c660d005b.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 772866,
+     "width": 2400,
+     "height": 1350,
+     "thumb": "review-workdir/thumbs/batch-002/bayonetta-2__detail-cover-3.png"
+    },
+    {
+     "role": "3d-texture",
+     "field": "coverHiResImage",
+     "url": "https://banan.to/api/files/products/general/image-b3cb30da1f63472e.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 6215019,
+     "width": 3792,
+     "height": 4912,
+     "thumb": "review-workdir/thumbs/batch-002/bayonetta-2__3d-texture-4.png"
+    },
+    {
+     "role": "listing",
+     "field": "image",
+     "url": "https://banan.to/api/files/products/prd_999b5c5da17c492e/cover-239df01c660d005b.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 772866,
+     "width": 2400,
+     "height": 1350,
+     "thumb": "review-workdir/thumbs/batch-002/bayonetta-2__listing-5.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[0]",
+     "url": "https://banan.to/api/files/products/prd_999b5c5da17c492e/banner-0-3db19cd54c6ec2f5.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[1]",
+     "url": "https://banan.to/api/files/products/prd_999b5c5da17c492e/banner-1-ab3672ce33d2f494.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[2]",
+     "url": "https://banan.to/api/files/products/prd_999b5c5da17c492e/banner-2-580f681a8ed3de28.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[3]",
+     "url": "https://banan.to/api/files/products/prd_999b5c5da17c492e/banner-3-190909bf35e92bb4.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://images.launchbox-app.com/e0f66ab8-3edc-485a-a961-320ec046bbf3.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 303105,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-002/bayonetta-2__gallery-10.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[1]",
+     "url": "https://images.launchbox-app.com/e77c9ea8-b711-4e78-8436-8dc155a436f8.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 269316,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-002/bayonetta-2__gallery-11.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[2]",
+     "url": "https://images.launchbox-app.com/aa9b91fb-a52c-4b94-b340-ebc225d2e112.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 1165979,
+     "width": 3840,
+     "height": 2160,
+     "thumb": "review-workdir/thumbs/batch-002/bayonetta-2__gallery-12.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[3]",
+     "url": "https://images.launchbox-app.com/eafbd007-aa10-4381-b7ca-153ca2320332.png",
+     "status": 200,
+     "contentType": "image/png",
+     "bytes": 1543353,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-002/bayonetta-2__gallery-13.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[4]",
+     "url": "https://images.launchbox-app.com/6cde1cca-b14b-490e-afe2-6091f2805d14.png",
+     "status": 200,
+     "contentType": "image/png",
+     "bytes": 1694909,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-002/bayonetta-2__gallery-14.png"
+    }
+   ],
+   "record": {
+    "title": "Bayonetta 2",
+    "titleEn": "Bayonetta 2",
+    "titleKu": "Bayonetta 2",
+    "slug": "bayonetta-2",
+    "description": "Bayonetta 2 expands PlatinumGames’ character-action formula with new weapons, Umbran Climax, refined combat pacing and spectacular environments. The campaign is primarily single-player, while Tag Climax supports two-player cooperative battles through local wireless or online play.",
+    "descriptionEn": "Bayonetta 2 expands PlatinumGames’ character-action formula with new weapons, Umbran Climax, refined combat pacing and spectacular environments. The campaign is primarily single-player, while Tag Climax supports two-player cooperative battles through local wireless or online play.",
+    "descriptionKu": "Bayonetta 2 expands PlatinumGames’ character-action formula with new weapons, Umbran Climax, refined combat pacing and spectacular environments. The campaign is primarily single-player, while Tag Climax supports two-player cooperative battles through local wireless or online play.",
+    "cartridgeImage": "/api/files/products/prd_999b5c5da17c492e/front-81e3a8848721e47d.png",
+    "nintendoCardImage": "/api/files/products/prd_999b5c5da17c492e/square-61249d13582a6526.jpg",
+    "coverHiResImage": "/api/files/products/general/image-b3cb30da1f63472e.jpg",
+    "coverImage": "/api/files/products/prd_999b5c5da17c492e/cover-239df01c660d005b.jpg",
+    "bannerImages": [
+     "/api/files/products/prd_999b5c5da17c492e/banner-0-3db19cd54c6ec2f5.avif",
+     "/api/files/products/prd_999b5c5da17c492e/banner-1-ab3672ce33d2f494.avif",
+     "/api/files/products/prd_999b5c5da17c492e/banner-2-580f681a8ed3de28.avif",
+     "/api/files/products/prd_999b5c5da17c492e/banner-3-190909bf35e92bb4.avif",
+     "/api/files/products/prd_999b5c5da17c492e/banner-4-46bea0e0108f1cb7.avif",
+     "/api/files/products/prd_999b5c5da17c492e/banner-5-294227e7ee8bf03f.avif"
+    ],
+    "gallery": [],
+    "youtubeTrailer": "https://www.youtube.com/watch?v=XN-lQc2slvM",
+    "releaseDate": "2018-02-16",
+    "ageRating": "ESRB Mature",
+    "metacriticRating": 92,
+    "genres": [
+     "Action",
+     "Hack and Slash",
+     "Character Action",
+     "Adventure",
+     "Cooperative Action"
+    ],
+    "platform": "switch1",
+    "size": 12.537,
+    "numberOfPlayers": "2",
+    "supportedLanguages": "Supplier SKU: Simplified Chinese. Western Nintendo listings: Japanese, English, French, German, Italian and Spanish. Regional language availability can differ.",
+    "hardwareModel": "",
+    "colorEdition": "",
+    "storageCapacity": "",
+    "screenSpecs": "",
+    "batteryLife": "",
+    "boxContents": [],
+    "boxContentsText": "",
+    "warrantyCondition": "",
+    "connectivity": "",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "Global / region-dependent",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "",
+    "redemptionSteps": [],
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 8500,
+    "cost": 2000,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": false,
+    "displayOrder": 0,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "مشترك",
+      "description": "Offline account access from the supplier listing.",
+      "stock": 999999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_account",
+      "name": "خاص بك",
+      "description": "Online account access from the supplier listing.",
+      "stock": 999999,
+      "isInfiniteStock": true
+     }
+    ],
+    "types": [
+     {
+      "id": "standard_offline",
+      "name": "مشترك — اللعبة الأساسية",
+      "optionId": "offline_account",
+      "price": 8500,
+      "cost": 2000,
+      "description": "Supplier Regular / 普通版; ¥9.74 converted to IQD.",
+      "stock": 999999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "standard_online",
+      "name": "خاص بك — اللعبة الأساسية",
+      "optionId": "online_account",
+      "price": 35000,
+      "cost": 18500,
+      "description": "Supplier Standard / 标准版; ¥85.2 converted to IQD.",
+      "stock": 999999,
+      "isInfiniteStock": true
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "active",
+    "kind": "account",
+    "trade_value_iqd": 0,
+    "store_offer_bonus_iqd": 0,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "id": "prd_999b5c5da17c492e",
+    "schema_version": 1,
+    "titleAr": "بايونيتا 2",
+    "compatibility": [
+     "Nintendo Switch",
+     "Nintendo Switch 2 (backward compatibility)",
+     "Nintendo Switch Lite"
+    ],
+    "edition": "Standard",
+    "developer": "PlatinumGames",
+    "publisher": "Nintendo",
+    "metacriticUrl": "https://www.metacritic.com/game/bayonetta-2/",
+    "opencriticRating": 91,
+    "userScore": 9,
+    "price_usd": 49.99,
+    "officialUrl": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-games/Bayonetta-2-1313750.html",
+    "eshopUrl": "https://www.nintendo.com/us/store/products/bayonetta-2-switch/",
+    "gameIsOffline": true,
+    "gameIsOnline": true,
+    "description_short": "A critically acclaimed stylish-action sequel with faster set pieces, Umbran Climax and two-player Tag Climax battles.",
+    "description_ar": "تكملة أكشن سريعة توسّع نظام Bayonetta بأسلحة جديدة وميزة Umbran Climax ومعارك أكثر ضخامة. القصة فردية أساسًا، بينما يوفّر طور Tag Climax مواجهات تعاونية للاعبين عبر الاتصال المحلي اللاسلكي أو الإنترنت.",
+    "box_front_url": "https://images.launchbox-app.com/r2_7e468c38-352f-47dd-9d9d-d9188d8e770c.png",
+    "box_back_url": "https://images.launchbox-app.com/31b399ac-82ff-484d-97ab-9a1fe4eb55ca.jpg",
+    "videos": [
+     {
+      "title": "Bayonetta 2 — LaunchBox trailer reference",
+      "url": "https://www.youtube.com/watch?v=XN-lQc2slvM"
+     },
+     {
+      "title": "Bayonetta 2 — Digital Foundry Switch analysis",
+      "url": "https://www.youtube.com/watch?v=4Y4RDSXlG3w"
+     },
+     {
+      "title": "PlatinumGames — Bayonetta 2",
+      "url": "https://www.platinumgames.com/games/bayonetta-2/"
+     }
+    ],
+    "nintendoEshopUrl": "https://www.nintendo.com/us/store/products/bayonetta-2-switch/",
+    "nintendoOnlineRequired": true,
+    "nintendoCloudSaves": true,
+    "nintendoGameKeyCard": false,
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": true,
+    "nintendoPlayModes": "TV / Tabletop / Handheld",
+    "nintendoNotes": "Native Nintendo Switch release dated February 16, 2018. Western Nintendo listings show Japanese, English, French, German, Italian and Spanish; the supplier SKU supplied by the user is explicitly marked Simplified Chinese, so that language is preserved as regional supplier information rather than treated as universal across regions. Tag Climax supports two players through local wireless or online play.",
+    "switch2Enhanced": false,
+    "switch2Exclusive": false,
+    "switch2Features": [
+     "Official backward compatibility",
+     "No native Switch 2 Edition",
+     "Original 720p graphics profile",
+     "Backward-compatible execution without an official enhanced mode"
+    ],
+    "tagline": "The witch is back—and stronger than ever.",
+    "fitFor": [
+     "Players who want elite character-action combat",
+     "Fans of Bayonetta’s combat system",
+     "Players who enjoy score chasing and replayability",
+     "Players who want optional two-player Tag Climax"
+    ],
+    "notFitFor": [
+     "Players who dislike fast reaction-heavy combat",
+     "Players seeking a slow exploration RPG",
+     "Players requiring native 1080p rendering",
+     "Players wanting full campaign co-op"
+    ],
+    "playTimeMain": 9.1,
+    "playTimeFull": 47.2,
+    "editionsList": [
+     {
+      "name": "Bayonetta 2 — Nintendo Switch",
+      "coverUrl": "https://images.launchbox-app.com/r2_7e468c38-352f-47dd-9d9d-d9188d8e770c.png",
+      "contents": [
+       {
+        "label": "Full Bayonetta 2 campaign"
+       },
+       {
+        "label": "Tag Climax multiplayer mode"
+       },
+       {
+        "label": "Nintendo Switch handheld/tabletop/TV support"
+       }
+      ]
+     }
+    ],
+    "gameplayPillars": [
+     {
+      "title": "Refined Witch Time",
+      "description": "Perfect dodges slow enemies and create openings for high-damage combo routes.",
+      "imageUrl": "https://images.launchbox-app.com/e0f66ab8-3edc-485a-a961-320ec046bbf3.jpg"
+     },
+     {
+      "title": "Umbran Climax",
+      "description": "Spend magic to amplify attacks and summon large Wicked Weaves throughout a combo.",
+      "imageUrl": "https://images.launchbox-app.com/e77c9ea8-b711-4e78-8436-8dc155a436f8.jpg"
+     },
+     {
+      "title": "Weapon Variety",
+      "description": "Mix hand and foot weapon sets to create distinct combo properties and playstyles.",
+      "imageUrl": "https://images.launchbox-app.com/aa9b91fb-a52c-4b94-b340-ebc225d2e112.jpg"
+     },
+     {
+      "title": "Tag Climax",
+      "description": "Fight challenge battles with a second player through local wireless or online connectivity.",
+      "imageUrl": "https://images.launchbox-app.com/eafbd007-aa10-4381-b7ca-153ca2320332.png"
+     }
+    ],
+    "worldSummary": "Bayonetta travels through Noatun and realms including Paradiso and Inferno while attempting to rescue Jeanne’s soul. The journey deepens the series’ mythology and brings Bayonetta into direct conflict with angels, demons and masked rivals.",
+    "storyChapters": [
+     {
+      "title": "Jeanne’s Soul",
+      "body": "After a catastrophic battle, Jeanne’s soul is dragged toward Inferno and Bayonetta sets out to save her.",
+      "imageUrl": "https://images.launchbox-app.com/e0f66ab8-3edc-485a-a961-320ec046bbf3.jpg"
+     },
+     {
+      "title": "Journey to Fimbulventr",
+      "body": "Bayonetta travels through Noatun toward the sacred mountain while confronting angels, demons and a masked Lumen Sage.",
+      "imageUrl": "https://images.launchbox-app.com/e77c9ea8-b711-4e78-8436-8dc155a436f8.jpg"
+     },
+     {
+      "title": "Aesir and the Eyes",
+      "body": "The story explores the origins of the Eyes of the World and the god Aesir.",
+      "imageUrl": "https://images.launchbox-app.com/aa9b91fb-a52c-4b94-b340-ebc225d2e112.jpg"
+     },
+     {
+      "title": "Across Time",
+      "body": "Events connect Bayonetta’s past and present and expand the mythology established by the first game.",
+      "imageUrl": "https://images.launchbox-app.com/eafbd007-aa10-4381-b7ca-153ca2320332.png"
+     }
+    ],
+    "galleryImages": [
+     {
+      "url": "https://images.launchbox-app.com/e0f66ab8-3edc-485a-a961-320ec046bbf3.jpg",
+      "alt": "Bayonetta 2 high-resolution key art"
+     },
+     {
+      "url": "https://images.launchbox-app.com/e77c9ea8-b711-4e78-8436-8dc155a436f8.jpg",
+      "alt": "Bayonetta 2 character artwork"
+     },
+     {
+      "url": "https://images.launchbox-app.com/aa9b91fb-a52c-4b94-b340-ebc225d2e112.jpg",
+      "alt": "Bayonetta 2 Bayonetta character artwork"
+     },
+     {
+      "url": "https://images.launchbox-app.com/eafbd007-aa10-4381-b7ca-153ca2320332.png",
+      "alt": "Bayonetta 2 gameplay screenshot"
+     },
+     {
+      "url": "https://images.launchbox-app.com/6cde1cca-b14b-490e-afe2-6091f2805d14.png",
+      "alt": "Bayonetta 2 gameplay screenshot"
+     }
+    ],
+    "features": [
+     "Umbran Climax power-up system",
+     "Deep weapon and combo mechanics",
+     "Witch Time dodge system",
+     "Two-player Tag Climax mode",
+     "Local wireless and online co-op",
+     "Large cinematic boss encounters"
+    ],
+    "perfResolutionDocked": "720p",
+    "perfResolutionHandheld": "720p",
+    "perfFps": "60",
+    "perfHdr": false,
+    "perfNotes": "The Switch version uses 720p in both docked and handheld modes and targets 60 fps. Docked performance is generally stronger; demanding scenes can still fall below the target.",
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "hardwareId": "prd_acf4c89908764c62",
+      "informationStatus": "measured / technical analysis",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p",
+       "resolutionDynamic": false,
+       "renderingResolution": "1280x720",
+       "outputResolution": "1280x720",
+       "fps": "60",
+       "fpsMax": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Handheld",
+       "notes": "Portable mode renders at 720p and targets 60 fps. Complex combat can fall below the target, with handheld performance generally less consistent than docked."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "720p",
+       "resolutionDynamic": false,
+       "renderingResolution": "1280x720",
+       "outputResolution": "1920x1080",
+       "fps": "60",
+       "fpsMax": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Docked",
+       "notes": "Docked mode renders at 720p and targets 60 fps, with improved performance compared with the Wii U release but not a perfect locked 60 fps."
+      },
+      "rayTracing": false,
+      "sourceName": "Digital Foundry / Nintendo Switch technical analysis",
+      "sourceUrl": "https://www.youtube.com/watch?v=4Y4RDSXlG3w",
+      "verificationStatus": "verified / source-qualified",
+      "performanceNotes": "The Switch version uses 720p in both docked and handheld modes and targets 60 fps. Docked performance is generally stronger; demanding scenes can still fall below the target."
+     }
+    ],
+    "downloadSizeGb": 12.537,
+    "requiredSpaceGb": 12.537,
+    "microSdRecommended": false,
+    "storageNotes": "Official/reliable listing reports approximately 12.537 GB for the Nintendo Switch download. Leave additional free space for save data and future updates.",
+    "languagesAudio": [
+     "English",
+     "Japanese"
+    ],
+    "languagesText": [
+     "Chinese (Simplified) — supplier regional SKU",
+     "English",
+     "Japanese",
+     "French",
+     "German",
+     "Italian",
+     "Spanish"
+    ],
+    "arabicSupport": false,
+    "mpLocalPlayers": true,
+    "mpOnlinePlayers": true,
+    "mpCoop": true,
+    "mpCompetitive": false,
+    "mpSplitScreen": false,
+    "mpLocalWireless": true,
+    "completionMain": 9.1,
+    "completionExtras": 12.4,
+    "completionAll": 47.2,
+    "faq": [
+     {
+      "q": "Does Bayonetta 2 work on Nintendo Switch 2?",
+      "a": "Yes through backward compatibility where Nintendo marks the Nintendo Switch release as supported. This file does not classify it as a native Nintendo Switch 2 Edition."
+     },
+     {
+      "q": "What language is the supplier version of Bayonetta 2?",
+      "a": "Supplier listing language supplied by the user: Simplified Chinese. Official/regional language details are preserved separately in supported_languages_raw and nintendo_notes so the supplier SKU is not generalized to every region."
+     },
+     {
+      "q": "Is Bayonetta 2 multiplayer?",
+      "a": "Yes. The file records the supported local/online modes individually."
+     },
+     {
+      "q": "Why are some Switch 2 performance resolution fields blank for Bayonetta 2?",
+      "a": "Because exact measured Switch 2 backward-compatibility rendering values were not verified. The template is intentionally left blank rather than filled with hardware maximums or guesses."
+     }
+    ],
+    "verdictScore": 9.2,
+    "verdictSummary": "One of the strongest modern character-action games, combining fluid combat, excellent encounter pacing and enormous spectacle. The Switch version’s 720p presentation is modest, but its portability and strong performance make it a particularly good Nintendo release.",
+    "reviews": [
+     {
+      "source": "Metacritic",
+      "score": "92/100",
+      "quote": "Nintendo Switch aggregate critic score.",
+      "url": "https://www.metacritic.com/game/bayonetta-2/"
+     },
+     {
+      "source": "OpenCritic",
+      "score": "91/100",
+      "quote": "Aggregate critic score recorded for Bayonetta 2.",
+      "url": "https://opencritic.com/game/5550/bayonetta-2"
+     },
+     {
+      "source": "Deku Deals user metadata",
+      "score": "9.0/10",
+      "quote": "User-score metadata displayed with the Switch listing.",
+      "url": "https://www.dekudeals.com/items/bayonetta-2-digital-version"
+     }
+    ],
+    "timeline": [
+     {
+      "date": "2014-09-20",
+      "title": "Original Wii U debut in Japan",
+      "body": "Bayonetta 2 first released on Wii U in Japan."
+     },
+     {
+      "date": "2014-10-24",
+      "title": "Wii U international release",
+      "body": "The game expanded internationally on Wii U."
+     },
+     {
+      "date": "2018-02-16",
+      "title": "Nintendo Switch release",
+      "body": "Bayonetta 2 launched on Nintendo Switch with portable play and Tag Climax connectivity."
+     }
+    ],
+    "seriesName": "Bayonetta",
+    "seriesEntries": [
+     "Bayonetta",
+     "Bayonetta 3",
+     "Bayonetta Origins: Cereza and the Lost Demon",
+     "Bayonetta & Vanquish 10th Anniversary Bundle"
+    ],
+    "studioName": "PlatinumGames",
+    "studioUrl": "https://www.platinumgames.com/",
+    "studioLocation": "Tokyo, Japan",
+    "studioAbout": "PlatinumGames is an Osaka-based Japanese action-game studio recognized for expressive combat systems, high-speed character action and large-scale set pieces.",
+    "setupNeeds": [
+     "Nintendo Switch family system",
+     "Nintendo Account for digital purchase/download",
+     "Nintendo Switch Online membership for online Tag Climax",
+     "Second compatible system/game setup for local wireless multiplayer"
+    ],
+    "sources": [
+     {
+      "name": "Nintendo — Bayonetta 2",
+      "url": "https://www.nintendo.com/us/store/products/bayonetta-2-switch/"
+     },
+     {
+      "name": "Deku Deals — Bayonetta 2",
+      "url": "https://www.dekudeals.com/items/bayonetta-2-digital-version"
+     },
+     {
+      "name": "LaunchBox — Bayonetta 2 Switch media",
+      "url": "https://gamesdb.launchbox-app.com/games/images/95451-bayonetta-2"
+     },
+     {
+      "name": "The Cover Project — Bayonetta 2 Switch cover",
+      "url": "https://about.thecoverproject.net/view.php?cover_id=18898"
+     },
+     {
+      "name": "Digital Foundry — Switch analysis",
+      "url": "https://www.youtube.com/watch?v=4Y4RDSXlG3w"
+     },
+     {
+      "name": "PSPrices — playtime/aggregate metadata",
+      "url": "https://psprices.com/region-dk/game/2553102/bayonetta-2"
+     }
+    ],
+    "boxContentsList": "[Circular]",
+    "image": "/api/files/products/prd_999b5c5da17c492e/cover-239df01c660d005b.jpg",
+    "banner": "/api/files/products/prd_999b5c5da17c492e/banner-0-3db19cd54c6ec2f5.avif",
+    "schemaId": "",
+    "createdAt": "2026-08-26T22:24:27.700Z",
+    "created_at": "2026-08-26T22:24:27.700Z",
+    "updatedAt": "2026-08-28T22:05:02.913Z",
+    "updated_at": "2026-08-26T22:24:27.700Z",
+    "badgeEn": "وفر 40%",
+    "badgeKu": "وفر 40%",
+    "featuresEn": [
+     "Umbran Climax power-up system",
+     "Deep weapon and combo mechanics",
+     "Witch Time dodge system",
+     "Two-player Tag Climax mode",
+     "Local wireless and online co-op",
+     "Large cinematic boss encounters"
+    ],
+    "featuresKu": [
+     "Umbran Climax power-up system",
+     "Deep weapon and combo mechanics",
+     "Witch Time dodge system",
+     "Two-player Tag Climax mode",
+     "Local wireless and online co-op",
+     "Large cinematic boss encounters"
+    ],
+    "boxFrontUrl": "https://images.launchbox-app.com/r2_7e468c38-352f-47dd-9d9d-d9188d8e770c.png",
+    "sales": 0,
+    "images": [],
+    "modes": []
+   }
+  },
+  {
+   "id": "prd_704957ef027f4145",
+   "slug": "bayonetta-3",
+   "title": "Bayonetta 3",
+   "platform": "switch1",
+   "isHidden": false,
+   "hash": "3d0a2302395ce10a70113def68d99b70fa6ebae9bdb56e61e9e3e1e4017f3282",
+   "images": [
+    {
+     "role": "front-box",
+     "field": "cartridgeImage",
+     "url": "https://banan.to/api/files/products/prd_704957ef027f4145/front-60f1d5d6a8b41e55.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 1451979,
+     "width": 1170,
+     "height": 1900,
+     "thumb": "review-workdir/thumbs/batch-002/bayonetta-3__front-box-0.png"
+    },
+    {
+     "role": "front-box",
+     "field": "box_front_url",
+     "url": "https://images.launchbox-app.com/r2_b56e2727-a231-44da-ac60-5c650545edd1.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 1451979,
+     "width": 1170,
+     "height": 1900,
+     "thumb": "review-workdir/thumbs/batch-002/bayonetta-3__front-box-1.png"
+    },
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://banan.to/api/files/products/prd_704957ef027f4145/square-d269f81248b71025.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 547917,
+     "width": 1024,
+     "height": 1024,
+     "thumb": "review-workdir/thumbs/batch-002/bayonetta-3__square-card-2.png"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://banan.to/api/files/products/prd_704957ef027f4145/cover-f5d15f1cc21926ca.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 379180,
+     "width": 1600,
+     "height": 800,
+     "thumb": "review-workdir/thumbs/batch-002/bayonetta-3__detail-cover-3.png"
+    },
+    {
+     "role": "3d-texture",
+     "field": "coverHiResImage",
+     "url": "https://banan.to/api/files/products/prd_704957ef027f4145/3d-texture-a7fc6b016bc7abdc.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 7909579,
+     "width": 3760,
+     "height": 4912,
+     "thumb": "review-workdir/thumbs/batch-002/bayonetta-3__3d-texture-4.png"
+    },
+    {
+     "role": "listing",
+     "field": "image",
+     "url": "https://banan.to/api/files/products/prd_704957ef027f4145/cover-f5d15f1cc21926ca.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 379180,
+     "width": 1600,
+     "height": 800,
+     "thumb": "review-workdir/thumbs/batch-002/bayonetta-3__listing-5.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[0]",
+     "url": "https://banan.to/api/files/products/prd_704957ef027f4145/banner-0-b40012aa68dc78b4.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[1]",
+     "url": "https://banan.to/api/files/products/prd_704957ef027f4145/banner-1-821f7ef56069e856.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[2]",
+     "url": "https://banan.to/api/files/products/prd_704957ef027f4145/banner-2-42fb6bbe36105323.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[3]",
+     "url": "https://banan.to/api/files/products/prd_704957ef027f4145/banner-3-f513991fdc7d6886.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://images.launchbox-app.com/92db7cf4-452a-4dc5-9977-7a298e121b17.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 307570,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-002/bayonetta-3__gallery-10.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[1]",
+     "url": "https://images.launchbox-app.com/0dc4756b-cb75-412c-872e-f4e6893eff7e.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 306300,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-002/bayonetta-3__gallery-11.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[2]",
+     "url": "https://images.launchbox-app.com/60e38b2d-8cfb-4912-a385-b1d691677c4f.png",
+     "status": 200,
+     "contentType": "image/png",
+     "bytes": 3070353,
+     "width": 2250,
+     "height": 1266,
+     "thumb": "review-workdir/thumbs/batch-002/bayonetta-3__gallery-12.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[3]",
+     "url": "https://images.launchbox-app.com/db56011d-814b-4186-bcaf-e192a632c263.png",
+     "status": 200,
+     "contentType": "image/png",
+     "bytes": 1962502,
+     "width": 2250,
+     "height": 1266,
+     "thumb": "review-workdir/thumbs/batch-002/bayonetta-3__gallery-13.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[4]",
+     "url": "https://images.launchbox-app.com/9109b1bc-8166-4275-9a9a-47c4904e5b76.png",
+     "status": 200,
+     "contentType": "image/png",
+     "bytes": 2508830,
+     "width": 2250,
+     "height": 1266,
+     "thumb": "review-workdir/thumbs/batch-002/bayonetta-3__gallery-14.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[5]",
+     "url": "https://images.launchbox-app.com/1c973387-3fe0-4634-b5a6-c3f1c63fac59.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 142833,
+     "width": 920,
+     "height": 430,
+     "thumb": "review-workdir/thumbs/batch-002/bayonetta-3__gallery-15.png"
+    }
+   ],
+   "record": {
+    "title": "Bayonetta 3",
+    "titleEn": "Bayonetta 3",
+    "titleKu": "Bayonetta 3",
+    "slug": "bayonetta-3",
+    "description": "Bayonetta 3 pushes the series into a multiverse-spanning conflict. Bayonetta can directly command Infernal Demons with Demon Slave, transform through Demon Masquerade and fight alongside new witch-in-training Viola. The campaign mixes classic combo combat with giant demon battles and cinematic set pieces.",
+    "descriptionEn": "Bayonetta 3 pushes the series into a multiverse-spanning conflict. Bayonetta can directly command Infernal Demons with Demon Slave, transform through Demon Masquerade and fight alongside new witch-in-training Viola. The campaign mixes classic combo combat with giant demon battles and cinematic set pieces.",
+    "descriptionKu": "Bayonetta 3 pushes the series into a multiverse-spanning conflict. Bayonetta can directly command Infernal Demons with Demon Slave, transform through Demon Masquerade and fight alongside new witch-in-training Viola. The campaign mixes classic combo combat with giant demon battles and cinematic set pieces.",
+    "cartridgeImage": "/api/files/products/prd_704957ef027f4145/front-60f1d5d6a8b41e55.jpg",
+    "nintendoCardImage": "/api/files/products/prd_704957ef027f4145/square-d269f81248b71025.jpg",
+    "coverHiResImage": "/api/files/products/prd_704957ef027f4145/3d-texture-a7fc6b016bc7abdc.jpg",
+    "coverImage": "/api/files/products/prd_704957ef027f4145/cover-f5d15f1cc21926ca.jpg",
+    "bannerImages": [
+     "/api/files/products/prd_704957ef027f4145/banner-0-b40012aa68dc78b4.avif",
+     "/api/files/products/prd_704957ef027f4145/banner-1-821f7ef56069e856.avif",
+     "/api/files/products/prd_704957ef027f4145/banner-2-42fb6bbe36105323.avif",
+     "/api/files/products/prd_704957ef027f4145/banner-3-f513991fdc7d6886.avif",
+     "/api/files/products/prd_704957ef027f4145/banner-4-da716c92c7629ae2.avif",
+     "/api/files/products/prd_704957ef027f4145/banner-5-9cabdf9dbb67ad98.avif"
+    ],
+    "gallery": [],
+    "youtubeTrailer": "https://www.youtube.com/watch?v=gOGJGv6OoXA",
+    "releaseDate": "2022-10-28",
+    "ageRating": "ESRB Mature",
+    "metacriticRating": 86,
+    "genres": [
+     "Action",
+     "Adventure",
+     "Hack and Slash",
+     "Character Action",
+     "Fantasy Action"
+    ],
+    "platform": "switch1",
+    "size": 14.479,
+    "numberOfPlayers": "1",
+    "supportedLanguages": "Official Switch languages include Japanese, English, Spanish, French, German, Italian, Russian, Korean, Simplified Chinese and Traditional Chinese.",
+    "hardwareModel": "",
+    "colorEdition": "",
+    "storageCapacity": "",
+    "screenSpecs": "",
+    "batteryLife": "",
+    "boxContents": [],
+    "boxContentsText": "",
+    "warrantyCondition": "",
+    "connectivity": "",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "Global / region-dependent",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "",
+    "redemptionSteps": [],
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 10500,
+    "cost": 1250,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": false,
+    "displayOrder": 0,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "Offline Account",
+      "description": "Offline account access from the supplier listing.",
+      "stock": 999999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_account",
+      "name": "Online Account",
+      "description": "Online account access from the supplier listing.",
+      "stock": 999999,
+      "isInfiniteStock": true
+     }
+    ],
+    "types": [
+     {
+      "id": "standard_offline",
+      "name": "Standard Offline",
+      "optionId": "offline_account",
+      "price": 10500,
+      "cost": 1250,
+      "description": "Supplier Regular / 普通版; ¥6.8 converted to IQD.",
+      "stock": 999999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "standard_online",
+      "name": "Standard Online",
+      "optionId": "online_account",
+      "price": "22000",
+      "cost": 10000,
+      "description": "Supplier Standard / 标准版; ¥46 converted to IQD.",
+      "stock": 999999,
+      "isInfiniteStock": true
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "active",
+    "kind": "account",
+    "trade_value_iqd": 0,
+    "store_offer_bonus_iqd": 0,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "id": "prd_704957ef027f4145",
+    "schema_version": 1,
+    "titleAr": "بايونيتا 3",
+    "compatibility": [
+     "Nintendo Switch",
+     "Nintendo Switch 2 (backward compatibility)",
+     "Nintendo Switch Lite"
+    ],
+    "edition": "Standard",
+    "developer": "PlatinumGames",
+    "publisher": "Nintendo",
+    "metacriticUrl": "https://www.metacritic.com/game/bayonetta-3/",
+    "opencriticRating": 85,
+    "userScore": 7.8,
+    "price_usd": 59.99,
+    "officialUrl": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-games/Bayonetta-3-2045649.html",
+    "eshopUrl": "https://www.nintendo.com/us/store/products/bayonetta-3-switch/",
+    "gameIsOffline": true,
+    "gameIsOnline": true,
+    "description_short": "A multiverse-scale stylish action game featuring Demon Slave control, Demon Masquerade transformations and playable Viola.",
+    "description_ar": "الجزء الثالث يوسّع السلسلة إلى صراع متعدد الأكوان. تستطيع Bayonetta التحكم المباشر بالشياطين عبر Demon Slave والتحول بقدرات Demon Masquerade، مع إمكانية اللعب بالشخصية الجديدة Viola ومعارك ضخمة واستعراضات سينمائية.",
+    "box_front_url": "https://images.launchbox-app.com/r2_b56e2727-a231-44da-ac60-5c650545edd1.jpg",
+    "box_back_url": "https://images.launchbox-app.com/972a64ed-0a05-4ea1-b077-4f80ab10757e.jpg",
+    "videos": [
+     {
+      "title": "Bayonetta 3 — Nintendo trailer",
+      "url": "https://www.youtube.com/watch?v=gOGJGv6OoXA"
+     },
+     {
+      "title": "Bayonetta 3 — Digital Foundry technical review",
+      "url": "https://www.youtube.com/results?search_query=Digital+Foundry+Bayonetta+3+Switch"
+     },
+     {
+      "title": "PlatinumGames — Bayonetta 3",
+      "url": "https://www.platinumgames.com/games/bayonetta-3/"
+     }
+    ],
+    "nintendoEshopUrl": "https://www.nintendo.com/us/store/products/bayonetta-3-switch/",
+    "nintendoOnlineRequired": false,
+    "nintendoCloudSaves": true,
+    "nintendoGameKeyCard": false,
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": true,
+    "nintendoPlayModes": "TV / Tabletop / Handheld",
+    "nintendoNotes": "Native Nintendo Switch software released October 28, 2022. Nintendo lists Japanese, English, Spanish, French, German, Italian, Russian, Korean, Simplified Chinese and Traditional Chinese. The supplier’s Simplified Chinese label is therefore consistent with an officially supported text language. Nintendo Switch 2 support is backward compatibility, not a native Edition.",
+    "switch2Enhanced": false,
+    "switch2Exclusive": false,
+    "switch2Features": [
+     "Official backward compatibility",
+     "No native Switch 2 Edition",
+     "Original Switch rendering modes retained",
+     "Potential frame-rate stability benefits depend on backward-compatible execution rather than a dedicated patch"
+    ],
+    "tagline": "Bayonetta struts through multiple locations in an all-new, over-the-top climax action game.",
+    "fitFor": [
+     "Fans of high-speed character action",
+     "Players who want spectacular set pieces",
+     "Series fans interested in Demon Slave mechanics",
+     "Players who enjoy replaying stages for ranks and collectibles"
+    ],
+    "notFitFor": [
+     "Players sensitive to unstable frame rates",
+     "Players requiring high native resolution",
+     "Players seeking multiplayer campaign play",
+     "Players who dislike complex action controls"
+    ],
+    "playTimeMain": 13,
+    "playTimeFull": 47.5,
+    "editionsList": [
+     {
+      "name": "Bayonetta 3 — Nintendo Switch",
+      "coverUrl": "https://images.launchbox-app.com/r2_b56e2727-a231-44da-ac60-5c650545edd1.jpg",
+      "contents": [
+       {
+        "label": "Full Bayonetta 3 campaign"
+       },
+       {
+        "label": "Playable Bayonetta and Viola sections"
+       },
+       {
+        "label": "Demon Slave and Demon Masquerade systems"
+       }
+      ]
+     }
+    ],
+    "gameplayPillars": [
+     {
+      "title": "Demon Slave",
+      "description": "Directly command large Infernal Demons in real time to extend combos, solve encounters and battle giant enemies.",
+      "imageUrl": "https://images.launchbox-app.com/92db7cf4-452a-4dc5-9977-7a298e121b17.jpg"
+     },
+     {
+      "title": "Demon Masquerade",
+      "description": "Fuse with linked demons to transform movement and attacks with weapon-specific forms.",
+      "imageUrl": "https://images.launchbox-app.com/0dc4756b-cb75-412c-872e-f4e6893eff7e.jpg"
+     },
+     {
+      "title": "Viola",
+      "description": "Play selected chapters as Viola, whose sword-and-parry combat changes the defensive rhythm.",
+      "imageUrl": "https://images.launchbox-app.com/60e38b2d-8cfb-4912-a385-b1d691677c4f.png"
+     },
+     {
+      "title": "Multiverse Spectacle",
+      "description": "Travel across alternate realities with unique Bayonetta variants and huge cinematic battles.",
+      "imageUrl": "https://images.launchbox-app.com/db56011d-814b-4186-bcaf-e192a632c263.png"
+     }
+    ],
+    "worldSummary": "A man-made threat known as the Homunculi attacks multiple realities. Bayonetta travels through alternate worlds, meets other versions of herself and joins Viola while confronting Singularity and a collapse that threatens the multiverse.",
+    "storyChapters": [
+     {
+      "title": "Homunculi Invasion",
+      "body": "Artificial Homunculi begin destroying parallel worlds and destabilizing the multiverse.",
+      "imageUrl": "https://images.launchbox-app.com/92db7cf4-452a-4dc5-9977-7a298e121b17.jpg"
+     },
+     {
+      "title": "Across the Multiverse",
+      "body": "Bayonetta travels between alternate realities and meets different versions of herself.",
+      "imageUrl": "https://images.launchbox-app.com/0dc4756b-cb75-412c-872e-f4e6893eff7e.jpg"
+     },
+     {
+      "title": "Viola and Luka",
+      "body": "Viola joins the fight while Luka’s role grows increasingly important to the multiversal crisis.",
+      "imageUrl": "https://images.launchbox-app.com/60e38b2d-8cfb-4912-a385-b1d691677c4f.png"
+     },
+     {
+      "title": "Singularity",
+      "body": "The confrontation with Singularity escalates into a series of reality-spanning climax battles.",
+      "imageUrl": "https://images.launchbox-app.com/db56011d-814b-4186-bcaf-e192a632c263.png"
+     }
+    ],
+    "galleryImages": [
+     {
+      "url": "https://images.launchbox-app.com/92db7cf4-452a-4dc5-9977-7a298e121b17.jpg",
+      "alt": "Bayonetta 3 high-resolution background art"
+     },
+     {
+      "url": "https://images.launchbox-app.com/0dc4756b-cb75-412c-872e-f4e6893eff7e.jpg",
+      "alt": "Bayonetta 3 high-resolution fanart"
+     },
+     {
+      "url": "https://images.launchbox-app.com/60e38b2d-8cfb-4912-a385-b1d691677c4f.png",
+      "alt": "Bayonetta 3 gameplay screenshot"
+     },
+     {
+      "url": "https://images.launchbox-app.com/db56011d-814b-4186-bcaf-e192a632c263.png",
+      "alt": "Bayonetta 3 gameplay screenshot"
+     },
+     {
+      "url": "https://images.launchbox-app.com/9109b1bc-8166-4275-9a9a-47c4904e5b76.png",
+      "alt": "Bayonetta 3 gameplay screenshot"
+     },
+     {
+      "url": "https://images.launchbox-app.com/1c973387-3fe0-4634-b5a6-c3f1c63fac59.jpg",
+      "alt": "Bayonetta 3 promotional banner artwork"
+     }
+    ],
+    "features": [
+     "Demon Slave direct demon control",
+     "Demon Masquerade transformations",
+     "Playable Viola with parry-focused combat",
+     "Large-scale Infernal Demon encounters",
+     "Multiple Bayonetta variants and locations",
+     "Challenge stages and extensive collectibles"
+    ],
+    "perfResolutionDocked": "810p typical upper docked result",
+    "perfResolutionHandheld": "sub-480p reported in demanding portable presentation",
+    "perfFps": "60",
+    "perfHdr": false,
+    "perfNotes": "Bayonetta 3 is technically ambitious for Switch. Docked resolution reaches around 810p, portable presentation can sit below 480p, and regular gameplay targets 60 fps without maintaining a perfect lock. Cutscenes and some large-scale content run at 30 fps.",
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "hardwareId": "prd_acf4c89908764c62",
+      "informationStatus": "measured / Digital Foundry technical reporting",
+      "handheld": {
+       "supported": true,
+       "resolution": "sub-480p reported in demanding portable presentation",
+       "resolutionDynamic": true,
+       "outputResolution": "1280x720",
+       "fps": "60",
+       "fpsMax": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Handheld",
+       "notes": "Portable rendering is substantially lower than docked and can fall just below 480p-class presentation. Gameplay still targets 60 fps but is frequently unstable."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "810p typical upper docked result",
+       "resolutionDynamic": true,
+       "outputResolution": "1920x1080",
+       "fps": "60",
+       "fpsMax": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Docked",
+       "notes": "Docked rendering can reach roughly 810p. Standard gameplay targets 60 fps, while cinematics and some large-scale sequences use 30 fps presentation."
+      },
+      "rayTracing": false,
+      "sourceName": "Digital Foundry — Bayonetta 3 technical review",
+      "sourceUrl": "https://www.eurogamer.net/digitalfoundry-2022-bayonetta-3-is-a-great-game-but-nintendo-switch-doesnt-do-it-justice",
+      "verificationStatus": "verified / source-qualified",
+      "performanceNotes": "Bayonetta 3 is technically ambitious for Switch. Docked resolution reaches around 810p, portable presentation can sit below 480p, and regular gameplay targets 60 fps without maintaining a perfect lock. Cutscenes and some large-scale content run at 30 fps."
+     }
+    ],
+    "downloadSizeGb": 14.479,
+    "requiredSpaceGb": 14.479,
+    "microSdRecommended": false,
+    "storageNotes": "Official/reliable listing reports approximately 14.479 GB for the Nintendo Switch download. Leave additional free space for save data and future updates.",
+    "languagesAudio": [
+     "English",
+     "Japanese"
+    ],
+    "languagesText": [
+     "Chinese (Simplified)",
+     "Chinese (Traditional)",
+     "English",
+     "Japanese",
+     "French",
+     "German",
+     "Italian",
+     "Spanish",
+     "Russian",
+     "Korean"
+    ],
+    "arabicSupport": false,
+    "mpLocalPlayers": false,
+    "mpOnlinePlayers": false,
+    "mpCoop": false,
+    "mpCompetitive": false,
+    "mpSplitScreen": false,
+    "mpLocalWireless": false,
+    "completionMain": 13,
+    "completionExtras": 18.5,
+    "completionAll": 47.5,
+    "faq": [
+     {
+      "q": "Does Bayonetta 3 work on Nintendo Switch 2?",
+      "a": "Yes through backward compatibility where Nintendo marks the Nintendo Switch release as supported. This file does not classify it as a native Nintendo Switch 2 Edition."
+     },
+     {
+      "q": "What language is the supplier version of Bayonetta 3?",
+      "a": "Supplier listing language supplied by the user: Simplified Chinese. Official/regional language details are preserved separately in supported_languages_raw and nintendo_notes so the supplier SKU is not generalized to every region."
+     },
+     {
+      "q": "Is Bayonetta 3 multiplayer?",
+      "a": "The main game is single-player; no multiplayer mode is asserted in this file."
+     },
+     {
+      "q": "Why are some Switch 2 performance resolution fields blank for Bayonetta 3?",
+      "a": "Because exact measured Switch 2 backward-compatibility rendering values were not verified. The template is intentionally left blank rather than filled with hardware maximums or guesses."
+     }
+    ],
+    "verdictScore": 8.6,
+    "verdictSummary": "A mechanically ambitious and spectacular action sequel with excellent combat ideas, held back mainly by the original Switch hardware’s resolution and frame-rate limits. Its Demon Slave system gives it a distinct identity within the series.",
+    "reviews": [
+     {
+      "source": "Metacritic",
+      "score": "86/100",
+      "quote": "Nintendo Switch aggregate critic score.",
+      "url": "https://www.metacritic.com/game/bayonetta-3/"
+     },
+     {
+      "source": "OpenCritic",
+      "score": "85/100",
+      "quote": "Aggregate critic score.",
+      "url": "https://opencritic.com/game/13711/bayonetta-3"
+     },
+     {
+      "source": "Deku Deals user metadata",
+      "score": "7.8/10",
+      "quote": "User-score metadata displayed with the Switch listing.",
+      "url": "https://www.dekudeals.com/items/bayonetta-3"
+     }
+    ],
+    "timeline": [
+     {
+      "date": "2017-12-07",
+      "title": "Bayonetta 3 announced",
+      "body": "Nintendo and PlatinumGames announced the third numbered game."
+     },
+     {
+      "date": "2022-10-28",
+      "title": "Nintendo Switch release",
+      "body": "Bayonetta 3 launched worldwide for Nintendo Switch."
+     },
+     {
+      "date": "2022-12-08",
+      "title": "Best Action Game recognition",
+      "body": "Bayonetta 3 won Best Action Game at The Game Awards 2022."
+     }
+    ],
+    "seriesName": "Bayonetta",
+    "seriesEntries": [
+     "Bayonetta",
+     "Bayonetta 2",
+     "Bayonetta Origins: Cereza and the Lost Demon",
+     "Bayonetta & Vanquish 10th Anniversary Bundle"
+    ],
+    "studioName": "PlatinumGames",
+    "studioUrl": "https://www.platinumgames.com/",
+    "studioLocation": "Tokyo, Japan",
+    "studioAbout": "PlatinumGames is a Japanese action-game developer known for combat systems that emphasize timing, expressive combos and large-scale spectacle.",
+    "setupNeeds": [
+     "Nintendo Switch family system",
+     "Nintendo Account for digital purchase/download",
+     "Approximately 14.5 GB storage plus updates",
+     "Nintendo Switch Online membership for cloud-save backup"
+    ],
+    "sources": [
+     {
+      "name": "Nintendo — Bayonetta 3",
+      "url": "https://www.nintendo.com/us/store/products/bayonetta-3-switch/"
+     },
+     {
+      "name": "Deku Deals — Bayonetta 3",
+      "url": "https://www.dekudeals.com/items/bayonetta-3"
+     },
+     {
+      "name": "LaunchBox — Bayonetta 3 media",
+      "url": "https://gamesdb.launchbox-app.com/games/images/166538-bayonetta-3"
+     },
+     {
+      "name": "Switch Images Julio — full retail insert",
+      "url": "https://cdn.switch-images-julio.com/file/switch-images-julio/AXB7A/insert.png"
+     },
+     {
+      "name": "Digital Foundry / Eurogamer — technical review",
+      "url": "https://www.eurogamer.net/digitalfoundry-2022-bayonetta-3-is-a-great-game-but-nintendo-switch-doesnt-do-it-justice"
+     }
+    ],
+    "boxContentsList": "[Circular]",
+    "image": "/api/files/products/prd_704957ef027f4145/cover-f5d15f1cc21926ca.jpg",
+    "banner": "/api/files/products/prd_704957ef027f4145/banner-0-b40012aa68dc78b4.avif",
+    "schemaId": "",
+    "createdAt": "2026-08-26T22:24:31.981Z",
+    "created_at": "2026-08-26T22:24:31.981Z",
+    "updatedAt": "2026-08-26T22:24:31.981Z",
+    "updated_at": "2026-08-26T22:24:31.981Z",
+    "badgeEn": "وفر 40%",
+    "badgeKu": "وفر 40%",
+    "featuresEn": [
+     "Demon Slave direct demon control",
+     "Demon Masquerade transformations",
+     "Playable Viola with parry-focused combat",
+     "Large-scale Infernal Demon encounters",
+     "Multiple Bayonetta variants and locations",
+     "Challenge stages and extensive collectibles"
+    ],
+    "featuresKu": [
+     "Demon Slave direct demon control",
+     "Demon Masquerade transformations",
+     "Playable Viola with parry-focused combat",
+     "Large-scale Infernal Demon encounters",
+     "Multiple Bayonetta variants and locations",
+     "Challenge stages and extensive collectibles"
+    ],
+    "boxFrontUrl": "https://images.launchbox-app.com/r2_b56e2727-a231-44da-ac60-5c650545edd1.jpg",
+    "sales": 0,
+    "images": [],
+    "modes": []
+   }
+  },
+  {
+   "id": "prd_86e6ac009a6249f9",
+   "slug": "bayonetta-origins-cereza-and-the-lost-demon",
+   "title": "Bayonetta Origins: Cereza and the Lost Demon",
+   "platform": "switch1",
+   "isHidden": false,
+   "hash": "60939166eb04eabfde1bf8f4e5e22e4aed26429475b66a851795b091453e2977",
+   "images": [
+    {
+     "role": "front-box",
+     "field": "cartridgeImage",
+     "url": "https://banan.to/api/files/products/prd_86e6ac009a6249f9/front-fff70eb49c69b58a.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 8040131,
+     "width": 2515,
+     "height": 4090,
+     "thumb": "review-workdir/thumbs/batch-002/bayonetta-origins-cereza-and-the-lost-demon__front-box-0.png"
+    },
+    {
+     "role": "front-box",
+     "field": "box_front_url",
+     "url": "https://images.launchbox-app.com/45817b87-afc0-4f6e-8666-1eb255e5c5e9.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 8040131,
+     "width": 2515,
+     "height": 4090,
+     "thumb": "review-workdir/thumbs/batch-002/bayonetta-origins-cereza-and-the-lost-demon__front-box-1.png"
+    },
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://banan.to/api/files/products/prd_86e6ac009a6249f9/square-4bb38849ff2c4c10.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 258005,
+     "width": 1024,
+     "height": 1024,
+     "thumb": "review-workdir/thumbs/batch-002/bayonetta-origins-cereza-and-the-lost-demon__square-card-2.png"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://banan.to/api/files/products/prd_86e6ac009a6249f9/cover-5be689736c5a8c97.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 224969,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-002/bayonetta-origins-cereza-and-the-lost-demon__detail-cover-3.png"
+    },
+    {
+     "role": "3d-texture",
+     "field": "coverHiResImage",
+     "url": "https://banan.to/api/files/products/general/image-470b2f51f8dc5a1c.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 3639624,
+     "width": 2489,
+     "height": 1904,
+     "thumb": "review-workdir/thumbs/batch-002/bayonetta-origins-cereza-and-the-lost-demon__3d-texture-4.png"
+    },
+    {
+     "role": "listing",
+     "field": "image",
+     "url": "https://banan.to/api/files/products/prd_86e6ac009a6249f9/cover-5be689736c5a8c97.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 224969,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-002/bayonetta-origins-cereza-and-the-lost-demon__listing-5.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[0]",
+     "url": "https://banan.to/api/files/products/prd_86e6ac009a6249f9/banner-0-0950e205bc269c87.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[1]",
+     "url": "https://banan.to/api/files/products/prd_86e6ac009a6249f9/banner-1-21e7e89dfa7499e7.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[2]",
+     "url": "https://banan.to/api/files/products/prd_86e6ac009a6249f9/banner-2-cd9efbe7b577d3ab.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[3]",
+     "url": "https://banan.to/api/files/products/prd_86e6ac009a6249f9/banner-3-0dec29398091315f.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://images.launchbox-app.com/4d775327-bb8d-48f8-bfdf-48417eb93aee.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 182744,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-002/bayonetta-origins-cereza-and-the-lost-demon__gallery-10.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[1]",
+     "url": "https://images.launchbox-app.com/c0c1d68d-6c87-4235-95be-d77e08eb00e4.png",
+     "status": 200,
+     "contentType": "image/png",
+     "bytes": 3596846,
+     "width": 2250,
+     "height": 1266,
+     "thumb": "review-workdir/thumbs/batch-002/bayonetta-origins-cereza-and-the-lost-demon__gallery-11.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[2]",
+     "url": "https://images.launchbox-app.com/0d9e2582-1009-4cae-aa2a-39fd841cc701.png",
+     "status": 200,
+     "contentType": "image/png",
+     "bytes": 3846797,
+     "width": 2250,
+     "height": 1266,
+     "thumb": "review-workdir/thumbs/batch-002/bayonetta-origins-cereza-and-the-lost-demon__gallery-12.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[3]",
+     "url": "https://images.launchbox-app.com/2fe468bc-77af-41d2-8227-92a4c873251f.png",
+     "status": 200,
+     "contentType": "image/png",
+     "bytes": 3970875,
+     "width": 2250,
+     "height": 1266,
+     "thumb": "review-workdir/thumbs/batch-002/bayonetta-origins-cereza-and-the-lost-demon__gallery-13.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[4]",
+     "url": "https://images.launchbox-app.com/cbccc12c-1ab3-451d-93b8-9cf8c23b165d.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 453639,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-002/bayonetta-origins-cereza-and-the-lost-demon__gallery-14.png"
+    }
+   ],
+   "record": {
+    "title": "Bayonetta Origins: Cereza and the Lost Demon",
+    "titleEn": "Bayonetta Origins: Cereza and the Lost Demon",
+    "titleKu": "Bayonetta Origins: Cereza and the Lost Demon",
+    "slug": "bayonetta-origins-cereza-and-the-lost-demon",
+    "description": "Bayonetta Origins: Cereza and the Lost Demon is a prequel about young Cereza before she became Bayonetta. The player controls Cereza with one side of the controller and Cheshire with the other, combining magic, demon strength, elemental forms and environmental puzzle solving throughout the hand-painted Avalon Forest.",
+    "descriptionEn": "Bayonetta Origins: Cereza and the Lost Demon is a prequel about young Cereza before she became Bayonetta. The player controls Cereza with one side of the controller and Cheshire with the other, combining magic, demon strength, elemental forms and environmental puzzle solving throughout the hand-painted Avalon Forest.",
+    "descriptionKu": "Bayonetta Origins: Cereza and the Lost Demon is a prequel about young Cereza before she became Bayonetta. The player controls Cereza with one side of the controller and Cheshire with the other, combining magic, demon strength, elemental forms and environmental puzzle solving throughout the hand-painted Avalon Forest.",
+    "cartridgeImage": "/api/files/products/prd_86e6ac009a6249f9/front-fff70eb49c69b58a.jpg",
+    "nintendoCardImage": "/api/files/products/prd_86e6ac009a6249f9/square-4bb38849ff2c4c10.jpg",
+    "coverHiResImage": "/api/files/products/general/image-470b2f51f8dc5a1c.jpg",
+    "coverImage": "/api/files/products/prd_86e6ac009a6249f9/cover-5be689736c5a8c97.jpg",
+    "bannerImages": [
+     "/api/files/products/prd_86e6ac009a6249f9/banner-0-0950e205bc269c87.avif",
+     "/api/files/products/prd_86e6ac009a6249f9/banner-1-21e7e89dfa7499e7.avif",
+     "/api/files/products/prd_86e6ac009a6249f9/banner-2-cd9efbe7b577d3ab.avif",
+     "/api/files/products/prd_86e6ac009a6249f9/banner-3-0dec29398091315f.avif",
+     "/api/files/products/prd_86e6ac009a6249f9/banner-4-60130bec2145a425.avif",
+     "/api/files/products/prd_86e6ac009a6249f9/banner-5-18c2c5e33ef0c760.avif"
+    ],
+    "gallery": [],
+    "youtubeTrailer": "https://youtu.be/Yr08T5Asm1U",
+    "releaseDate": "2023-03-17",
+    "ageRating": "ESRB Teen",
+    "metacriticRating": 80,
+    "genres": [
+     "Action",
+     "Adventure",
+     "Puzzle",
+     "Fantasy Adventure",
+     "Storybook Adventure"
+    ],
+    "platform": "switch1",
+    "size": 3.2,
+    "numberOfPlayers": "1",
+    "supportedLanguages": "Nintendo official: Japanese, British English, French, German, Italian, Spanish, Korean, Russian, Simplified Chinese and Traditional Chinese.",
+    "hardwareModel": "",
+    "colorEdition": "",
+    "storageCapacity": "",
+    "screenSpecs": "",
+    "batteryLife": "",
+    "boxContents": [],
+    "boxContentsText": "",
+    "warrantyCondition": "",
+    "connectivity": "",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "Global / region-dependent",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "",
+    "redemptionSteps": [],
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 8500,
+    "cost": 1250,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": false,
+    "displayOrder": 0,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "Offline Account",
+      "description": "Offline account access from the supplier listing.",
+      "stock": 999999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_account",
+      "name": "Online Account",
+      "description": "Online account access from the supplier listing.",
+      "stock": 999999,
+      "isInfiniteStock": true
+     }
+    ],
+    "types": [
+     {
+      "id": "standard_offline",
+      "name": "Standard Offline",
+      "optionId": "offline_account",
+      "price": 8500,
+      "cost": 1250,
+      "description": "Supplier Regular / 普通版; ¥6.8 converted to IQD.",
+      "stock": 999999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "standard_online",
+      "name": "Standard Online",
+      "optionId": "online_account",
+      "price": "28000",
+      "cost": 16500,
+      "description": "Supplier Standard / 标准版; ¥75.4 converted to IQD.",
+      "stock": 999999,
+      "isInfiniteStock": true
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "active",
+    "kind": "account",
+    "trade_value_iqd": 0,
+    "store_offer_bonus_iqd": 0,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "id": "prd_86e6ac009a6249f9",
+    "schema_version": 1,
+    "titleAr": "بايونيتا أوريجنز: سيريزا والشيطان المفقود",
+    "compatibility": [
+     "Nintendo Switch",
+     "Nintendo Switch 2 (backward compatibility)",
+     "Nintendo Switch Lite"
+    ],
+    "edition": "Standard",
+    "developer": "Platinum Games Inc.",
+    "publisher": "Nintendo",
+    "metacriticUrl": "https://www.metacritic.com/game/bayonetta-origins-cereza-and-the-lost-demon/",
+    "opencriticRating": 81,
+    "userScore": 8.4,
+    "price_usd": 59.99,
+    "officialUrl": "https://www.nintendo.com/us/store/products/bayonetta-origins-cereza-and-the-lost-demon-switch/",
+    "eshopUrl": "https://www.nintendo.com/us/store/products/bayonetta-origins-cereza-and-the-lost-demon-switch/",
+    "gameIsOffline": true,
+    "gameIsOnline": false,
+    "description_short": "A storybook-styled action-adventure prequel where young Cereza and demon Cheshire are controlled together to explore, solve puzzles and fight faeries.",
+    "description_ar": "مغامرة تمهيدية تحكي قصة Cereza قبل أن تصبح Bayonetta. يتم التحكم بـCereza وCheshire في الوقت نفسه، بحيث تستخدم Cereza السحر والربط بينما يقاتل Cheshire ويكتسب أشكالًا عنصرية، مع تركيز كبير على الألغاز والاستكشاف داخل غابة Avalon ذات الأسلوب القصصي المرسوم.",
+    "box_front_url": "https://images.launchbox-app.com/45817b87-afc0-4f6e-8666-1eb255e5c5e9.jpg",
+    "box_back_url": "https://images.launchbox-app.com/r2_bc4ec7b9-4f7b-45be-8fcd-686c911f642b.jpg",
+    "videos": [
+     {
+      "title": "Bayonetta Origins — trailer",
+      "url": "https://youtu.be/Yr08T5Asm1U"
+     },
+     {
+      "title": "Nintendo — available now overview",
+      "url": "https://www.nintendo.com/us/whatsnew/bayonetta-origins-cereza-and-the-lost-demon-available-now/"
+     },
+     {
+      "title": "PlatinumGames — Bayonetta series",
+      "url": "https://www.platinumgames.com/"
+     }
+    ],
+    "nintendoEshopUrl": "https://www.nintendo.com/us/store/products/bayonetta-origins-cereza-and-the-lost-demon-switch/",
+    "nintendoOnlineRequired": false,
+    "nintendoCloudSaves": true,
+    "nintendoGameKeyCard": false,
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": true,
+    "nintendoPlayModes": "TV / Tabletop / Handheld",
+    "nintendoNotes": "Nintendo officially lists Nintendo Switch 2 compatibility as supported with behavior consistent with Nintendo Switch. Official languages include Japanese, British English, French, German, Italian, Spanish, Korean, Russian, Simplified Chinese and Traditional Chinese. A free demo is available and save progress can carry into the full game.",
+    "switch2Enhanced": false,
+    "switch2Exclusive": false,
+    "switch2Features": [
+     "Nintendo officially marks compatibility as supported",
+     "Game behavior is consistent with Nintendo Switch",
+     "No native Switch 2 Edition",
+     "Same 3.2 GB game-size listing shown for Switch and Switch 2 compatibility"
+    ],
+    "tagline": "Once upon a time, there was a young witch named Cereza…",
+    "fitFor": [
+     "Players who enjoy puzzle-adventure games",
+     "Bayonetta fans interested in Cereza’s origin",
+     "Players who appreciate storybook art direction",
+     "Players who prefer a gentler pace than the numbered Bayonetta games"
+    ],
+    "notFitFor": [
+     "Players expecting traditional Bayonetta combo combat",
+     "Players wanting multiplayer",
+     "Players seeking a native Switch 2 Edition",
+     "Players who dislike simultaneous dual-character controls"
+    ],
+    "playTimeMain": 13.5,
+    "playTimeFull": 32.5,
+    "editionsList": [
+     {
+      "name": "Bayonetta Origins: Cereza and the Lost Demon — Nintendo Switch",
+      "coverUrl": "https://images.launchbox-app.com/45817b87-afc0-4f6e-8666-1eb255e5c5e9.jpg",
+      "contents": [
+       {
+        "label": "Full story campaign"
+       },
+       {
+        "label": "Dual Cereza/Cheshire control system"
+       },
+       {
+        "label": "Free demo progress can transfer into full game"
+       }
+      ]
+     }
+    ],
+    "gameplayPillars": [
+     {
+      "title": "Control Two Heroes",
+      "description": "Move Cereza and Cheshire with opposite sides of the controller, coordinating their abilities simultaneously.",
+      "imageUrl": "https://images.launchbox-app.com/4d775327-bb8d-48f8-bfdf-48417eb93aee.jpg"
+     },
+     {
+      "title": "Solve Magical Puzzles",
+      "description": "Use Witch Pulse, Cheshire’s claws, Hug Mode and elemental forms to manipulate the environment.",
+      "imageUrl": "https://images.launchbox-app.com/c0c1d68d-6c87-4235-95be-d77e08eb00e4.png"
+     },
+     {
+      "title": "Fight Together",
+      "description": "Cereza binds enemies with magic while Cheshire attacks, creating a cooperative two-character combat loop.",
+      "imageUrl": "https://images.launchbox-app.com/0d9e2582-1009-4cae-aa2a-39fd841cc701.png"
+     },
+     {
+      "title": "Explore Avalon Forest",
+      "description": "Search hand-painted regions for secrets, upgrade materials, Vitality Petals and new routes.",
+      "imageUrl": "https://images.launchbox-app.com/2fe468bc-77af-41d2-8227-92a4c873251f.png"
+     }
+    ],
+    "worldSummary": "Young Cereza enters the forbidden Avalon Forest in search of power that might save her mother. Her first summoned demon, Cheshire, inhabits her stuffed toy. Together they confront faeries, solve magical obstacles and learn to trust one another.",
+    "storyChapters": [
+     {
+      "title": "A Young Outcast",
+      "body": "Cereza longs to become strong enough to help her imprisoned mother Rosa.",
+      "imageUrl": "https://images.launchbox-app.com/4d775327-bb8d-48f8-bfdf-48417eb93aee.jpg"
+     },
+     {
+      "title": "Into Avalon Forest",
+      "body": "Following a mysterious dream and a white wolf, Cereza enters the forbidden forest.",
+      "imageUrl": "https://images.launchbox-app.com/c0c1d68d-6c87-4235-95be-d77e08eb00e4.png"
+     },
+     {
+      "title": "Cheshire",
+      "body": "A demon summoned by Cereza becomes trapped inside her stuffed toy and reluctantly joins the journey.",
+      "imageUrl": "https://images.launchbox-app.com/0d9e2582-1009-4cae-aa2a-39fd841cc701.png"
+     },
+     {
+      "title": "Faerie Secrets",
+      "body": "The pair confronts Avalon’s faeries and uncovers truths that shape Cereza’s future.",
+      "imageUrl": "https://images.launchbox-app.com/2fe468bc-77af-41d2-8227-92a4c873251f.png"
+     }
+    ],
+    "galleryImages": [
+     {
+      "url": "https://images.launchbox-app.com/4d775327-bb8d-48f8-bfdf-48417eb93aee.jpg",
+      "alt": "Bayonetta Origins high-resolution key art"
+     },
+     {
+      "url": "https://images.launchbox-app.com/c0c1d68d-6c87-4235-95be-d77e08eb00e4.png",
+      "alt": "Gameplay screenshot from Avalon Forest"
+     },
+     {
+      "url": "https://images.launchbox-app.com/0d9e2582-1009-4cae-aa2a-39fd841cc701.png",
+      "alt": "Gameplay screenshot showing Cereza and Cheshire"
+     },
+     {
+      "url": "https://images.launchbox-app.com/2fe468bc-77af-41d2-8227-92a4c873251f.png",
+      "alt": "Avalon Forest exploration screenshot"
+     },
+     {
+      "url": "https://images.launchbox-app.com/cbccc12c-1ab3-451d-93b8-9cf8c23b165d.jpg",
+      "alt": "Bayonetta Origins storybook title artwork"
+     }
+    ],
+    "features": [
+     "Dual-character simultaneous control",
+     "Puzzle solving using Cereza and Cheshire together",
+     "Cheshire elemental forms",
+     "Storybook-inspired hand-painted presentation",
+     "Skill-tree upgrades and hidden collectibles",
+     "Free demo with save-data transfer to full game"
+    ],
+    "perfFps": "30",
+    "perfHdr": false,
+    "perfNotes": "Development commentary indicates the team chose a stable 30 fps target for the overall game rather than an inconsistent 60 fps presentation. Exact rendering resolutions are intentionally not invented.",
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "hardwareId": "prd_acf4c89908764c62",
+      "informationStatus": "official backward compatibility; original 30 fps cap retained; Handheld Mode Boost improves portable resolution",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p-800p-class with Handheld Mode Boost; lower on original handheld profile",
+       "fps": "30",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Backward compatibility",
+       "notes": "The Nintendo Switch version is supported through backward compatibility. No native Switch 2 Edition or graphics patch is asserted here. Resolution fields are intentionally left blank unless a measured Switch 2 result was verified."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p",
+       "fps": "30",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Backward compatibility",
+       "notes": "The Nintendo Switch version is supported through backward compatibility. No native Switch 2 Edition or graphics patch is asserted here. Resolution fields are intentionally left blank unless a measured Switch 2 result was verified."
+      },
+      "rayTracing": false,
+      "sourceName": "Nintendo official compatibility + Switch 2 Handheld Mode Boost community testing",
+      "sourceUrl": "https://www.nintendo.com/us/store/products/bayonetta-origins-cereza-and-the-lost-demon-switch/",
+      "verificationStatus": "verified / backward-compatible / 30 fps cap",
+      "performanceNotes": "The Nintendo Switch version is supported through backward compatibility. No native Switch 2 Edition or graphics patch is asserted here. Resolution fields are intentionally left blank unless a measured Switch 2 result was verified."
+     }
+    ],
+    "downloadSizeGb": 3.2,
+    "requiredSpaceGb": 3.2,
+    "microSdRecommended": false,
+    "storageNotes": "Official/reliable listing reports approximately 3.2 GB for the Nintendo Switch download. Leave additional free space for save data and future updates.",
+    "languagesAudio": [
+     "English",
+     "Japanese"
+    ],
+    "languagesText": [
+     "Chinese (Simplified)",
+     "Chinese (Traditional)",
+     "English (British)",
+     "Japanese",
+     "French",
+     "German",
+     "Italian",
+     "Spanish",
+     "Russian",
+     "Korean"
+    ],
+    "arabicSupport": false,
+    "mpLocalPlayers": false,
+    "mpOnlinePlayers": false,
+    "mpCoop": false,
+    "mpCompetitive": false,
+    "mpSplitScreen": false,
+    "mpLocalWireless": false,
+    "completionMain": 13.5,
+    "completionExtras": 18,
+    "completionAll": 32.5,
+    "faq": [
+     {
+      "q": "Does Bayonetta Origins: Cereza and the Lost Demon work on Nintendo Switch 2?",
+      "a": "Yes through backward compatibility where Nintendo marks the Nintendo Switch release as supported. This file does not classify it as a native Nintendo Switch 2 Edition."
+     },
+     {
+      "q": "What language is the supplier version of Bayonetta Origins: Cereza and the Lost Demon?",
+      "a": "Supplier listing language supplied by the user: Simplified Chinese. Official/regional language details are preserved separately in supported_languages_raw and nintendo_notes so the supplier SKU is not generalized to every region."
+     },
+     {
+      "q": "Is Bayonetta Origins: Cereza and the Lost Demon multiplayer?",
+      "a": "The main game is single-player; no multiplayer mode is asserted in this file."
+     },
+     {
+      "q": "Why are some Switch 2 performance resolution fields blank for Bayonetta Origins: Cereza and the Lost Demon?",
+      "a": "Because exact measured Switch 2 backward-compatibility rendering values were not verified. The template is intentionally left blank rather than filled with hardware maximums or guesses."
+     }
+    ],
+    "verdictScore": 8.1,
+    "verdictSummary": "A distinctive prequel that trades the numbered games’ relentless character action for puzzle solving, exploration and a striking storybook presentation. Its dual-character control is the defining mechanic and gives the game a clear identity of its own.",
+    "reviews": [
+     {
+      "source": "Metacritic",
+      "score": "80/100",
+      "quote": "Nintendo Switch aggregate critic score.",
+      "url": "https://www.metacritic.com/game/bayonetta-origins-cereza-and-the-lost-demon/"
+     },
+     {
+      "source": "OpenCritic",
+      "score": "81/100",
+      "quote": "Aggregate critic score.",
+      "url": "https://opencritic.com/game/14372/bayonetta-origins-cereza-and-the-lost-demon"
+     },
+     {
+      "source": "Deku Deals user metadata",
+      "score": "8.4/10",
+      "quote": "User-score metadata displayed with the Switch listing.",
+      "url": "https://www.dekudeals.com/items/bayonetta-origins-cereza-and-the-lost-demon"
+     }
+    ],
+    "timeline": [
+     {
+      "date": "2022-12-08",
+      "title": "Game revealed",
+      "body": "Nintendo revealed the Bayonetta prequel during The Game Awards period."
+     },
+     {
+      "date": "2023-03-08",
+      "title": "Free demo released",
+      "body": "A free demo became available with progress transferable to the full game."
+     },
+     {
+      "date": "2023-03-17",
+      "title": "Nintendo Switch release",
+      "body": "Bayonetta Origins launched worldwide on Nintendo Switch."
+     }
+    ],
+    "seriesName": "Bayonetta",
+    "seriesEntries": [
+     "Bayonetta",
+     "Bayonetta 2",
+     "Bayonetta 3",
+     "Bayonetta & Vanquish 10th Anniversary Bundle"
+    ],
+    "studioName": "PlatinumGames",
+    "studioUrl": "https://www.platinumgames.com/",
+    "studioLocation": "Tokyo, Japan",
+    "studioAbout": "PlatinumGames is a Japanese developer known for action games; Bayonetta Origins deliberately explores a slower puzzle-adventure structure and storybook visual style.",
+    "setupNeeds": [
+     "Nintendo Switch family system",
+     "Nintendo Account for digital purchase/demo download",
+     "Approximately 3.2 GB storage plus updates",
+     "Nintendo Switch Online membership for cloud-save backup"
+    ],
+    "sources": [
+     {
+      "name": "Nintendo — Bayonetta Origins",
+      "url": "https://www.nintendo.com/us/store/products/bayonetta-origins-cereza-and-the-lost-demon-switch/"
+     },
+     {
+      "name": "Nintendo — Available Now article",
+      "url": "https://www.nintendo.com/us/whatsnew/bayonetta-origins-cereza-and-the-lost-demon-available-now/"
+     },
+     {
+      "name": "Deku Deals — Bayonetta Origins",
+      "url": "https://www.dekudeals.com/items/bayonetta-origins-cereza-and-the-lost-demon"
+     },
+     {
+      "name": "LaunchBox — Bayonetta Origins media",
+      "url": "https://gamesdb.launchbox-app.com/games/images/170032-bayonetta-origins-cereza-and-the-lost-demon"
+     },
+     {
+      "name": "PlatinumGames",
+      "url": "https://www.platinumgames.com/"
+     }
+    ],
+    "boxContentsList": "[Circular]",
+    "image": "/api/files/products/prd_86e6ac009a6249f9/cover-5be689736c5a8c97.jpg",
+    "banner": "/api/files/products/prd_86e6ac009a6249f9/banner-0-0950e205bc269c87.avif",
+    "schemaId": "",
+    "createdAt": "2026-08-26T22:24:35.476Z",
+    "created_at": "2026-08-26T22:24:35.476Z",
+    "updatedAt": "2026-08-26T22:24:35.476Z",
+    "updated_at": "2026-08-26T22:24:35.476Z",
+    "badgeEn": "وفر 40%",
+    "badgeKu": "وفر 40%",
+    "featuresEn": [
+     "Dual-character simultaneous control",
+     "Puzzle solving using Cereza and Cheshire together",
+     "Cheshire elemental forms",
+     "Storybook-inspired hand-painted presentation",
+     "Skill-tree upgrades and hidden collectibles",
+     "Free demo with save-data transfer to full game"
+    ],
+    "featuresKu": [
+     "Dual-character simultaneous control",
+     "Puzzle solving using Cereza and Cheshire together",
+     "Cheshire elemental forms",
+     "Storybook-inspired hand-painted presentation",
+     "Skill-tree upgrades and hidden collectibles",
+     "Free demo with save-data transfer to full game"
+    ],
+    "boxFrontUrl": "https://images.launchbox-app.com/45817b87-afc0-4f6e-8666-1eb255e5c5e9.jpg",
+    "sales": 0,
+    "images": [],
+    "modes": []
+   }
+  },
+  {
+   "id": "prd_5a43e5c95bbc46dc",
+   "slug": "bravely-default-flying-fairy-hd-remaster",
+   "title": "BRAVELY DEFAULT FLYING FAIRY HD Remaster",
+   "platform": "switch2",
+   "isHidden": false,
+   "hash": "33d2e37e57c7d75ac3bd8d21e8a80d9990340c25c375dc42b0aa42aee3ad7c5a",
+   "images": [
+    {
+     "role": "front-box",
+     "field": "cartridgeImage",
+     "url": "https://banan.to/api/files/products/prd_5a43e5c95bbc46dc/front-add1fca1c3a5b52b.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 43036,
+     "width": 345,
+     "height": 559,
+     "thumb": "review-workdir/thumbs/batch-002/bravely-default-flying-fairy-hd-remaster__front-box-0.png"
+    },
+    {
+     "role": "front-box",
+     "field": "box_front_url",
+     "url": "https://multimedia.bbycastatic.ca/multimedia/products/500x500/189/18945/18945795.jpg",
+     "status": 404,
+     "contentType": "application/xml"
+    },
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://banan.to/api/files/products/prd_5a43e5c95bbc46dc/nintendoCardImage-0ab67690f10287c9.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://banan.to/api/files/products/prd_5a43e5c95bbc46dc/cover-030948fa32de0345.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 15904,
+     "width": 320,
+     "height": 180,
+     "thumb": "review-workdir/thumbs/batch-002/bravely-default-flying-fairy-hd-remaster__detail-cover-3.png"
+    },
+    {
+     "role": "3d-texture",
+     "field": "coverHiResImage",
+     "url": "https://banan.to/api/files/products/prd_5a43e5c95bbc46dc/3d-texture-4f49cbe79d01d803.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 180004,
+     "width": 1080,
+     "height": 828,
+     "thumb": "review-workdir/thumbs/batch-002/bravely-default-flying-fairy-hd-remaster__3d-texture-4.png"
+    },
+    {
+     "role": "listing",
+     "field": "image",
+     "url": "https://banan.to/api/files/products/prd_5a43e5c95bbc46dc/cover-030948fa32de0345.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 15904,
+     "width": 320,
+     "height": 180,
+     "thumb": "review-workdir/thumbs/batch-002/bravely-default-flying-fairy-hd-remaster__listing-5.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[0]",
+     "url": "https://banan.to/api/files/products/prd_5a43e5c95bbc46dc/bannerImages-1-1ac625e838596b9d.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[1]",
+     "url": "https://banan.to/api/files/products/prd_5a43e5c95bbc46dc/bannerImages-2-87accbd1fe5bb1e4.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16:9,b_auto:border,c_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000095321/8a479cf836bb83b68f8c5c7595647a08004a732956510e7ee838d7453e29f666",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 151075,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-002/bravely-default-flying-fairy-hd-remaster__gallery-8.png"
+    }
+   ],
+   "record": {
+    "id": "prd_5a43e5c95bbc46dc",
+    "title": "BRAVELY DEFAULT FLYING FAIRY HD Remaster",
+    "titleEn": "BRAVELY DEFAULT FLYING FAIRY HD Remaster",
+    "titleKu": "BRAVELY DEFAULT FLYING FAIRY HD Remaster",
+    "slug": "bravely-default-flying-fairy-hd-remaster",
+    "description": "A high-definition remaster of the first BRAVELY DEFAULT. Build parties with more than twenty jobs, manage BP through Brave and Default commands, explore Luxendarc and use new quality-of-life features, updated online functions and two Joy-Con 2 mouse minigames.",
+    "descriptionEn": "A high-definition remaster of the first BRAVELY DEFAULT. Build parties with more than twenty jobs, manage BP through Brave and Default commands, explore Luxendarc and use new quality-of-life features, updated online functions and two Joy-Con 2 mouse minigames.",
+    "descriptionKu": "A high-definition remaster of the first BRAVELY DEFAULT. Build parties with more than twenty jobs, manage BP through Brave and Default commands, explore Luxendarc and use new quality-of-life features, updated online functions and two Joy-Con 2 mouse minigames.",
+    "cartridgeImage": "/api/files/products/prd_5a43e5c95bbc46dc/front-add1fca1c3a5b52b.jpg",
+    "nintendoCardImage": "/api/files/products/prd_5a43e5c95bbc46dc/nintendoCardImage-0ab67690f10287c9.avif",
+    "coverHiResImage": "/api/files/products/prd_5a43e5c95bbc46dc/3d-texture-4f49cbe79d01d803.webp",
+    "coverImage": "/api/files/products/prd_5a43e5c95bbc46dc/cover-030948fa32de0345.jpg",
+    "bannerImages": [
+     "/api/files/products/prd_5a43e5c95bbc46dc/bannerImages-1-1ac625e838596b9d.avif",
+     "/api/files/products/prd_5a43e5c95bbc46dc/bannerImages-2-87accbd1fe5bb1e4.avif"
+    ],
+    "gallery": [],
+    "youtubeTrailer": "https://www.youtube.com/watch?v=s8kBXtwzCp0",
+    "releaseDate": "2025-06-05",
+    "ageRating": "ESRB: Fantasy Violence, Mild Blood, Mild Suggestive Themes, Use of Alcohol",
+    "metacriticRating": 80,
+    "genres": [
+     "JRPG",
+     "Turn-Based RPG",
+     "Fantasy"
+    ],
+    "platform": "switch2",
+    "size": 9.3,
+    "numberOfPlayers": "1",
+    "supportedLanguages": "Japanese, American English, French, German, Italian, Spanish",
+    "hardwareModel": "",
+    "colorEdition": "",
+    "storageCapacity": "",
+    "screenSpecs": "",
+    "batteryLife": "",
+    "boxContents": [],
+    "boxContentsText": "",
+    "warrantyCondition": "",
+    "connectivity": "",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "Global",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "",
+    "redemptionSteps": [],
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 10250,
+    "cost": 1250,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": false,
+    "displayOrder": 0,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "مشترك",
+      "description": "Play using the supplied account under the store's offline-account activation method.",
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_account",
+      "name": "خاص بك",
+      "description": "Online-account option with internet-connected account use where supported by the game/service.",
+      "isInfiniteStock": true
+     }
+    ],
+    "types": [
+     {
+      "id": "standard_offline",
+      "name": "مشترك — اللعبة الأساسية",
+      "optionId": "offline_account",
+      "price": 10250,
+      "cost": 1250,
+      "description": "Standard game, Offline Account. Supplier Regular price: ¥6.80; purchase cost converted at 1 CNY = 220 IQD and rounded down to nearest 250 IQD.",
+      "isInfiniteStock": true
+     },
+     {
+      "id": "standard_online",
+      "name": "خاص بك — اللعبة الأساسية",
+      "optionId": "online_account",
+      "price": 28000,
+      "cost": 18500,
+      "description": "Standard game, Online Account. Supplier Standard price: ¥85.20; purchase cost converted at 1 CNY = 220 IQD and rounded down to nearest 250 IQD.",
+      "isInfiniteStock": true
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "active",
+    "kind": "account",
+    "trade_value_iqd": 0,
+    "store_offer_bonus_iqd": 0,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "schema_version": 22,
+    "titleAr": "بريفلي ديفولت فلاينغ فيري HD ريماستر",
+    "compatibility": [
+     "Nintendo Switch 2"
+    ],
+    "edition": "HD Remaster",
+    "developer": "Cattle Call Inc.",
+    "publisher": "SQUARE ENIX",
+    "opencriticRating": 81,
+    "userScore": 8.2,
+    "officialUrl": "https://www.square-enix.com/",
+    "gameIsOffline": true,
+    "gameIsOnline": true,
+    "gameLanguageLocked": false,
+    "description_short": "The original Bravely Default returns in HD with its acclaimed Brave/Default battle system, more than 20 jobs, modern conveniences and two new mouse-controlled minigames.",
+    "description_ar": "إعادة إتقان عالية الدقة للجزء الأول من Bravely Default. استخدم نظام Brave وDefault لإدارة BP، وطوّر الشخصيات عبر أكثر من 20 وظيفة، واستكشف Luxendarc مع تحسينات واجهة وجودة حياة وألعاب صغيرة جديدة تستخدم تحكم الفأرة في Joy-Con 2.",
+    "box_front_url": "https://multimedia.bbycastatic.ca/multimedia/products/500x500/189/18945/18945795.jpg",
+    "videos": [
+     {
+      "title": "Launch Trailer",
+      "url": "https://www.youtube.com/watch?v=s8kBXtwzCp0"
+     },
+     {
+      "title": "Nintendo Switch 2 Announcement Trailer",
+      "url": "https://www.youtube.com/watch?v=pzMaa7UqC7c"
+     }
+    ],
+    "nintendoEshopUrl": "https://www.nintendo.com/us/store/products/bravely-default-flying-fairy-hd-remaster-switch-2/",
+    "nintendoOnlineRequired": false,
+    "nintendoCloudSaves": true,
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": true,
+    "nintendoPlayModes": "TV Mode, Tabletop Mode, Handheld Mode",
+    "switch2Features": [
+     "Nintendo Switch 2 native remaster",
+     "1920x1080 presentation",
+     "60 FPS target",
+     "Redesigned user interface",
+     "Event-scene fast-forward",
+     "Adjustable encounter rate",
+     "Faster battle-speed options",
+     "Modernized online/network features",
+     "Two new Joy-Con 2 mouse-control minigames"
+    ],
+    "tagline": "The story of light and shadow is reborn in high definition.",
+    "fitFor": [
+     "Classic JRPG fans",
+     "Players who enjoy deep job systems",
+     "Turn-based strategy fans",
+     "Players who missed the Nintendo 3DS original"
+    ],
+    "notFitFor": [
+     "Players looking for action combat",
+     "Players who require Simplified Chinese in the Western Nintendo release"
+    ],
+    "playTimeMain": 57.5,
+    "playTimeFull": 100,
+    "editionsList": [
+     {
+      "name": "HD Remaster",
+      "contents": [
+       {
+        "label": "Full remastered game"
+       },
+       {
+        "label": "High-definition graphics"
+       },
+       {
+        "label": "UI and quality-of-life improvements"
+       },
+       {
+        "label": "Two new Switch 2 minigames"
+       }
+      ]
+     }
+    ],
+    "gameplayPillars": [
+     {
+      "title": "Brave and Default",
+      "description": "Bank BP by defending with Default or spend future turns early with Brave to create powerful tactical sequences."
+     },
+     {
+      "title": "Job System",
+      "description": "Combine more than twenty jobs and support abilities to create highly customized party builds."
+     },
+     {
+      "title": "Crystal Quest",
+      "description": "Travel through Luxendarc with Tiz, Agnès, Ringabel and Edea to awaken the elemental crystals."
+     },
+     {
+      "title": "Modernized Remaster",
+      "description": "Faster event playback, adjustable encounter settings and improved interface reduce friction from the original 3DS release."
+     }
+    ],
+    "storyChapters": [
+     {
+      "title": "The Great Chasm",
+      "body": "Tiz survives the destruction of Norende and meets the Wind Vestal Agnès."
+     },
+     {
+      "title": "Awaken the Crystals",
+      "body": "The party crosses Luxendarc to restore the elemental crystals and confront the forces opposing the Crystal Orthodoxy."
+     },
+     {
+      "title": "Light and Shadow",
+      "body": "Repeated revelations challenge the heroes' understanding of the world, the crystals and the true nature of their journey."
+     }
+    ],
+    "galleryImages": [
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16:9,b_auto:border,c_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000095321/8a479cf836bb83b68f8c5c7595647a08004a732956510e7ee838d7453e29f666",
+      "alt": "Distinct product/game media image 1; separate from the primary cover and square-card roles."
+     }
+    ],
+    "features": [
+     "High-definition remaster of the first Bravely Default",
+     "Classic Brave and Default BP battle system",
+     "More than 20 jobs",
+     "Redesigned user interface",
+     "Event-scene fast-forward",
+     "Modern quality-of-life improvements",
+     "Retooled networking features for Nintendo Switch 2",
+     "Two new Joy-Con 2 mouse-controlled minigames",
+     "Single-player story-focused JRPG"
+    ],
+    "perfResolutionDocked": "1920x1080",
+    "perfResolutionHandheld": "1920x1080",
+    "perfFps": "60",
+    "perfNotes": "Switch 2 runs the HD Remaster at 1920x1080 and a stable 60 FPS in both handheld and docked modes. This is independently reviewed and the developer also confirmed the Switch 2-exclusive remaster was designed around a stable 60 FPS target.",
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "hardwareId": "prd_acf4c89908764c62",
+      "informationStatus": "verified",
+      "unavailableReason": "Measured resolution/FPS values are not published in the Nintendo store listing.",
+      "handheld": {
+       "supported": true,
+       "resolution": "1920x1080",
+       "renderingResolution": "1920x1080",
+       "outputResolution": "1920x1080",
+       "fps": "60",
+       "fpsMin": "60",
+       "fpsMax": "60"
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1920x1080",
+       "renderingResolution": "1920x1080",
+       "outputResolution": "1920x1080",
+       "fps": "60",
+       "fpsMin": "60",
+       "fpsMax": "60"
+      },
+      "sourceName": "RPGamer review / developer interview",
+      "sourceUrl": "https://rpgamer.com/review/bravely-default-flying-fairy-hd-remaster-review/",
+      "verificationStatus": "verified-third-party-and-developer",
+      "performanceNotes": "Switch 2 runs the HD Remaster at 1920x1080 and a stable 60 FPS in both handheld and docked modes. This is independently reviewed and the developer also confirmed the Switch 2-exclusive remaster was designed around a stable 60 FPS target."
+     }
+    ],
+    "downloadSizeGb": 9.3,
+    "requiredSpaceGb": 11,
+    "microSdRecommended": false,
+    "languagesAudio": [
+     "Japanese",
+     "English"
+    ],
+    "languagesText": [
+     "Japanese",
+     "American English",
+     "French",
+     "German",
+     "Italian",
+     "Spanish"
+    ],
+    "arabicSupport": false,
+    "mpLocalPlayers": false,
+    "mpOnlinePlayers": false,
+    "mpCoop": false,
+    "mpCompetitive": false,
+    "mpSplitScreen": false,
+    "mpLocalWireless": false,
+    "guides": [
+     {
+      "title": "Nintendo Store",
+      "summary": "Switch 2 product information.",
+      "url": "https://www.nintendo.com/us/store/products/bravely-default-flying-fairy-hd-remaster-switch-2/"
+     },
+     {
+      "title": "Game8 Game Length",
+      "summary": "Detailed completion-time estimates.",
+      "url": "https://game8.co/games/Bravely-Default-Flying-Fairy/archives/522377"
+     },
+     {
+      "title": "Game8 Updates / Features",
+      "summary": "Remaster changes and soundtrack information.",
+      "url": "https://game8.co/games/Bravely-Default-Flying-Fairy/archives/522338"
+     }
+    ],
+    "completionMain": 57.5,
+    "completionExtras": 75,
+    "completionAll": 100,
+    "faq": [
+     {
+      "q": "How long is the main story?",
+      "a": "Game8 estimates roughly 55-60 hours for the main story and 100+ hours to explore all jobs, side scenarios and endings."
+     },
+     {
+      "q": "Is the soundtrack new?",
+      "a": "The remaster retains the original soundtrack composed by Revo."
+     },
+     {
+      "q": "What is new on Switch 2?",
+      "a": "HD visuals, redesigned UI, event fast-forward, adjustable encounter behavior, updated networking and two Joy-Con 2 mouse minigames."
+     },
+     {
+      "q": "Does it use the Brave and Default system?",
+      "a": "Yes. The signature BP-based turn system is preserved."
+     },
+     {
+      "q": "Is it multiplayer?",
+      "a": "The core adventure is single-player."
+     },
+     {
+      "q": "Does the Western Nintendo release list Chinese?",
+      "a": "Western Nintendo listings commonly list Japanese and major European languages; Chinese availability should be verified against the exact Asian SKU being sold."
+     }
+    ],
+    "verdictScore": 8.5,
+    "verdictSummary": "A strong preservation and modernization of a landmark turn-based JRPG, retaining the deep Brave/Default and job systems while adding practical Switch 2 conveniences.",
+    "verdictPros": [
+     "Excellent strategic battle system",
+     "Large job roster",
+     "Useful quality-of-life upgrades",
+     "Two new Switch 2 mouse minigames",
+     "Strong classic JRPG structure"
+    ],
+    "verdictCons": [
+     "Western Nintendo listing does not include Chinese among supported languages",
+     "Single-player only"
+    ],
+    "reviews": [
+     {
+      "source": "Metacritic",
+      "score": "~80/100",
+      "quote": "The remaster received broadly positive reviews for preserving the battle/job systems while adding useful quality-of-life features.",
+      "url": "https://www.metacritic.com/"
+     },
+     {
+      "source": "OpenCritic",
+      "score": "~81/100",
+      "quote": "Critics generally valued the preservation of the original JRPG design and modern convenience features.",
+      "url": "https://opencritic.com/"
+     },
+     {
+      "source": "Player reception",
+      "score": "Positive",
+      "quote": "The remaster is widely praised for its job system, Revo soundtrack and strategic combat.",
+      "url": "https://game8.co/games/Bravely-Default-Flying-Fairy/archives/522338"
+     }
+    ],
+    "timeline": [
+     {
+      "date": "2012",
+      "title": "Original Japanese release",
+      "body": "Bravely Default: Flying Fairy launched on Nintendo 3DS in Japan."
+     },
+     {
+      "date": "2013-2014",
+      "title": "Expanded international release",
+      "body": "Bravely Default expanded internationally with revised content."
+     },
+     {
+      "date": "2025-04",
+      "title": "HD Remaster announced",
+      "body": "Square Enix revealed the Nintendo Switch 2 HD remaster."
+     },
+     {
+      "date": "2025-06-05",
+      "title": "Switch 2 launch",
+      "body": "The HD Remaster released alongside Nintendo Switch 2."
+     }
+    ],
+    "patchNotes": [
+     {
+      "version": "Launch version",
+      "date": "2025-06-05",
+      "body": "HD remaster launched with redesigned interface, fast-forward, encounter controls, updated networking and two new mouse-control minigames."
+     },
+     {
+      "version": "Post-launch compatibility",
+      "date": "2025",
+      "body": "Minor support updates maintained system compatibility and stability."
+     },
+     {
+      "version": "Current",
+      "date": "2026",
+      "body": "The remaster remains available on Switch 2 with the original Revo soundtrack intact."
+     }
+    ],
+    "soundtrack": [
+     {
+      "title": "Original Soundtrack composed by Revo",
+      "url": "https://game8.co/games/Bravely-Default-Flying-Fairy/archives/522338"
+     },
+     {
+      "title": "BRAVELY DEFAULT main soundtrack",
+      "url": "https://www.jp.square-enix.com/"
+     }
+    ],
+    "seriesName": "Bravely",
+    "seriesEntries": [
+     "BRAVELY DEFAULT",
+     "BRAVELY SECOND: END LAYER",
+     "BRAVELY DEFAULT II",
+     "BRAVELY DEFAULT FLYING FAIRY HD Remaster"
+    ],
+    "studioName": "Cattle Call / SQUARE ENIX",
+    "studioUrl": "https://www.jp.square-enix.com/",
+    "studioLocation": "Tokyo, Japan",
+    "studioAbout": "Cattle Call and Square Enix brought the original Bravely Default to Switch 2 with high-definition presentation, redesigned UI, faster event handling, modernized networking and two new Joy-Con 2 mouse-controlled minigames.",
+    "setupNeeds": [
+     "Nintendo Switch 2 system required for the Nintendo Switch 2 version.",
+     "Internet connection is required for digital download, updates and online/service features where applicable.",
+     "Nintendo Account required for Nintendo eShop purchase/download.",
+     "Sufficient internal storage or compatible microSD Express storage required.",
+     "Nintendo Switch Online membership is required only for game-specific online multiplayer/features that explicitly use it."
+    ],
+    "sources": [
+     {
+      "name": "Nintendo Store",
+      "url": "https://www.nintendo.com/us/store/products/bravely-default-flying-fairy-hd-remaster-switch-2/"
+     },
+     {
+      "name": "Square Enix",
+      "url": "https://www.jp.square-enix.com/"
+     },
+     {
+      "name": "Game8",
+      "url": "https://game8.co/games/Bravely-Default-Flying-Fairy/archives/522338"
+     },
+     {
+      "name": "Game8 Completion Time",
+      "url": "https://game8.co/games/Bravely-Default-Flying-Fairy/archives/522377"
+     }
+    ],
+    "boxContentsList": "[Circular]",
+    "image": "/api/files/products/prd_5a43e5c95bbc46dc/cover-030948fa32de0345.jpg",
+    "banner": "/api/files/products/prd_5a43e5c95bbc46dc/bannerImages-1-1ac625e838596b9d.avif",
+    "schemaId": "",
+    "badgeEn": "وفر 40%",
+    "badgeKu": "وفر 40%",
+    "featuresEn": [
+     "High-definition remaster of the first Bravely Default",
+     "Classic Brave and Default BP battle system",
+     "More than 20 jobs",
+     "Redesigned user interface",
+     "Event-scene fast-forward",
+     "Modern quality-of-life improvements",
+     "Retooled networking features for Nintendo Switch 2",
+     "Two new Joy-Con 2 mouse-controlled minigames",
+     "Single-player story-focused JRPG"
+    ],
+    "featuresKu": [
+     "High-definition remaster of the first Bravely Default",
+     "Classic Brave and Default BP battle system",
+     "More than 20 jobs",
+     "Redesigned user interface",
+     "Event-scene fast-forward",
+     "Modern quality-of-life improvements",
+     "Retooled networking features for Nintendo Switch 2",
+     "Two new Joy-Con 2 mouse-controlled minigames",
+     "Single-player story-focused JRPG"
+    ],
+    "sales": 0,
+    "images": [],
+    "modes": [],
+    "updatedAt": "2026-08-28T22:01:17.970Z"
+   }
+  }
+ ]
+}
