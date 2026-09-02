@@ -331,3 +331,47 @@ export async function processReleaseAlerts(now = new Date()) {
     console.error("[scheduled-jobs] release alerts error:", err);
   }
 }
+
+/**
+ * Pay out referral rewards whose hold period has run out.
+ *
+ * Most rewards are paid the moment the order completes. This exists for the
+ * case where the admin has set a holding period: the completion pass refuses a
+ * reward whose `hold_until` is still in the future, and without this nothing
+ * would come back for it. Restricted to orders that are actually `completed`,
+ * so a hold expiring on a cancelled order pays nobody.
+ *
+ * Idempotent through the same route as every other approval: the unique key on
+ * the wallet transaction, so a second pass over the same reward inserts
+ * nothing.
+ */
+export async function processHeldReferralRewards() {
+  try {
+    const { dueHeldRewards, approveRewardsForOrder } = await import("./referral/rewards.server");
+    const due = await dueHeldRewards(50);
+    if (!due.length) return;
+
+    const { getOrder } = await import("./db.server");
+    const seen = new Set<string>();
+    let paid = 0;
+    for (const reward of due) {
+      if (seen.has(reward.orderId)) continue;
+      seen.add(reward.orderId);
+      const order = await getOrder(reward.orderId);
+      if (!order || order.status !== "completed") continue;
+      const result = await approveRewardsForOrder(order);
+      if (result.approved > 0) {
+        paid += result.approved;
+        try {
+          const { notifyReferralApproved } = await import("./referral/notifications.server");
+          await notifyReferralApproved(order);
+        } catch (err) {
+          console.warn("[scheduled-jobs:referral] notification failed", err);
+        }
+      }
+    }
+    if (paid) console.log(`[scheduled-jobs:referral-rewards] approved=${paid}`);
+  } catch (err) {
+    console.error("[scheduled-jobs] referral rewards error:", err);
+  }
+}

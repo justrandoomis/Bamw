@@ -106,6 +106,13 @@ export const Route = createFileRoute("/api/orders")({
             targetProductId?: string | number;
             source?: string;
             checkoutSessionId?: string;
+            /*
+              A referral code typed into the cart, when the signed cookie has
+              none. It is a lookup key and nothing more: the referrer, the
+              rate and the discount are all resolved on the server from this
+              request's own cookie and from the database.
+            */
+            referralCode?: string;
           }>(request);
           const throttle = await consumeRateLimit(request, "order-create", 15, 15 * 60, user.id);
           if (!throttle.allowed) return rateLimitResponse(throttle.retryAfter);
@@ -128,6 +135,12 @@ export const Route = createFileRoute("/api/orders")({
               data.targetProductId,
               data.source || "checkout_web",
               data.checkoutSessionId,
+              {
+                request,
+                ...(typeof data.referralCode === "string" && data.referralCode.trim()
+                  ? { referralCode: data.referralCode.trim().slice(0, 64) }
+                  : {}),
+              },
             );
             return json({ order: redactOrder(order!) });
           } catch (error) {

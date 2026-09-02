@@ -176,6 +176,26 @@ export async function completeOrder(
     console.warn("[order-completion:history_failed]", { orderId: order.id }, err);
   }
 
+  /*
+    The order is finished, so a referral reward on it is finally earned.
+    
+    Here rather than in the admin's button or the hour-long timer because this
+    function is the single place an order becomes `completed` — and because it
+    already returns early for an order that was complete already, which is what
+    makes paying the referrer exactly once fall out of the existing shape
+    instead of needing a guard of its own.
+  */
+  try {
+    const { approveRewardsForOrder } = await import("./referral/rewards.server");
+    const paid = await approveRewardsForOrder(next);
+    if (paid.approved > 0) {
+      const { notifyReferralApproved } = await import("./referral/notifications.server");
+      await notifyReferralApproved(next);
+    }
+  } catch (err) {
+    console.warn("[order-completion:referral_reward_failed]", { orderId: order.id }, err);
+  }
+
   if (order.threadId) {
     try {
       await appendMessage(order.threadId, {

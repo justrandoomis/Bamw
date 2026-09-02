@@ -17,6 +17,7 @@ import { readPrefs } from "../lib/prefs";
 import { ensureLanguageAssets, useI18n, tr } from "../i18n";
 import GlobalMusicPlayer from "../components/GlobalMusicPlayer";
 import { Toaster } from "../components/ui/sonner";
+import { ReferralCapture } from "../components/referral/ReferralCapture";
 import { ensureNintendoCategory } from "../lib/nintendo-setup";
 import { isScriptImportError, handleModuleReload } from "../lib/polyfills";
 import { useStoreData } from "../hooks/useStoreData";
@@ -358,6 +359,13 @@ function RootInner() {
       <GlobalMusicPlayer musicList={store?.musicList} />
       <ThemeApplier />
       <Toaster />
+      {/*
+        A referral link can land on any page, so the code in `?ref=` is picked
+        up here rather than on the product route — and it is picked up by the
+        *server*, which answers with the signed cookie that actually carries
+        the attribution.
+      */}
+      <ReferralCapture />
       {/* key={lang} remounts the tree so every tr() call re-reads the dictionary. */}
       <div key={`${lang}:${assetsVersion}`} className="contents">
         {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}

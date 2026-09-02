@@ -68,6 +68,7 @@ import {
   X,
   Wallet,
   Coins,
+  Gift,
   CreditCard,
   MapPin,
   FileText,
@@ -108,6 +109,7 @@ import ReviewsManager from "./admin/ReviewsManager";
 import BundlesManager from "./admin/BundlesManager";
 import { BananaManagementView } from "./admin/BananaManagementView";
 import CouponsManager from "./admin/CouponsManager";
+import ReferralsManager from "./admin/ReferralsManager";
 import UsedListingsManager from "./admin/UsedListingsManager";
 import { StoreAdvisorSection } from "./admin/StoreAdvisorSection";
 import AdminInboxView from "./admin/inbox/AdminInboxView";
@@ -784,6 +786,7 @@ export default function AdminDashboard() {
         { id: "binance_mgmt", icon: Zap, label: "عمليات Binance Pay" },
         { id: "banan_codes", icon: Coins, label: "إدارة أكواد بنانتا" },
         { id: "coupons", icon: Tag, label: "أكواد الخصم والكوبونات" },
+        { id: "referrals", icon: Gift, label: "الإحالات — دعوة صديق" },
       ],
     },
 
@@ -938,6 +941,8 @@ export default function AdminDashboard() {
         return <WalletManagementView />;
       case "coupons":
         return <CouponsManager />;
+      case "referrals":
+        return <ReferralsManager />;
       case "used_listings":
         return <UsedListingsManager />;
       case "binance_mgmt":

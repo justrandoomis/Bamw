@@ -63,6 +63,29 @@ export async function setSessionCookie(userId: string, request?: Request) {
   return `${COOKIE}=${encodeURIComponent(signed)}; ${cookieAttrs(request)}`;
 }
 
+/**
+ * Start a session, and carry a referral into it.
+ *
+ * Every way an account is signed in — password, phone code, the OAuth
+ * callback, the account created during verification — ends at
+ * `setSessionCookie`, so this wrapper is the one place a referral captured
+ * while the visitor was still a guest can be moved onto the account. Doing it
+ * here rather than at each of those call sites is what stops the next new
+ * sign-in path from quietly forgetting to.
+ *
+ * The move is best-effort by construction: `bindAttributionToUser` swallows
+ * its own failures, because nobody should be unable to sign in over a
+ * referral.
+ */
+export async function establishSession(userId: string, request?: Request): Promise<string> {
+  const cookie = await setSessionCookie(userId, request);
+  if (request) {
+    const { bindAttributionToUser } = await import("./referral/service.server");
+    await bindAttributionToUser(request, userId);
+  }
+  return cookie;
+}
+
 export function clearSessionCookie(request?: Request) {
   return `${COOKIE}=; ${cookieAttrs(request, 0)}`;
 }

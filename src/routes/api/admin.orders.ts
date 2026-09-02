@@ -292,6 +292,23 @@ export const Route = createFileRoute("/api/admin/orders")({
             }
             case "set_payment": {
               next = { ...order, paymentStatus: data.paymentStatus ?? "paid", updatedAt: now };
+              /*
+                An order that has now been paid moves its referral reward from
+                `eligible` to `pending` — owed, but not yet paid out. The money
+                only reaches the referrer when the order is completed.
+              */
+              if (next.paymentStatus === "paid") {
+                try {
+                  const { markRewardsPending } = await import("@/lib/referral/rewards.server");
+                  await markRewardsPending(order.id);
+                  const { notifyReferralPending } = await import(
+                    "@/lib/referral/notifications.server"
+                  );
+                  if (next.referral) await notifyReferralPending(next);
+                } catch (referralErr) {
+                  console.warn("[set_payment:referral_pending_err]", referralErr);
+                }
+              }
               await appendMessage(order.threadId, {
                 senderRole: "admin",
                 senderName: adminName,
@@ -460,6 +477,33 @@ export const Route = createFileRoute("/api/admin/orders")({
                 await saveOrder(next);
               } catch (saveErr) {
                 console.error("[cancel_order:saveOrder_err]", saveErr);
+              }
+
+              /*
+                A cancelled order earns nobody a referral reward.
+
+                A reward still waiting is simply refused; one already paid is
+                clawed back with its own wallet entry. Both are idempotent, so
+                cancelling an order twice cannot debit twice. The refunded and
+                paid amounts are passed so a partial refund takes back the same
+                share of the reward rather than all of it.
+              */
+              try {
+                const { reverseRewardsForOrder } = await import("@/lib/referral/rewards.server");
+                const reversal = await reverseRewardsForOrder({
+                  order: { id: order.id, code: order.code },
+                  refundedIqd: refundAmount,
+                  paidIqd: Number(order.total || 0),
+                  reason: "order_cancelled",
+                });
+                if (reversal.reversed > 0) {
+                  const { notifyReferralReversed } = await import(
+                    "@/lib/referral/notifications.server"
+                  );
+                  await notifyReferralReversed({ id: order.id });
+                }
+              } catch (referralErr) {
+                console.error("[cancel_order:referral_reversal_err]", referralErr);
               }
 
               // 5. Send system message to order chat

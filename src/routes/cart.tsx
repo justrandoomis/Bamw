@@ -46,6 +46,9 @@ import { resolvePurchaseImage } from "@/lib/nintendoImages";
 import { playSound } from "@/utils/audio";
 import { useCurrency } from "@/context/CurrencyContext";
 import { getCart, updateCartItem, removeCartItem } from "@/lib/cart.functions";
+import ReferralCartField, {
+  type ReferralCartState,
+} from "@/components/referral/ReferralCartField";
 
 /**
  * A cart line as the coupon rules need to see it.
@@ -473,7 +476,24 @@ function CartPage() {
     }
   }, [subtotal, lines.length]);
 
-  const finalDiscount = Number(appliedCoupon?.discountAmount ?? 0);
+  /*
+    The referral, as the server prices it.
+
+    Held here only so the summary can show the same number the server will
+    charge — every figure in it came back from `/api/referral`, and checkout
+    recomputes all of it from the catalogue. Nothing the cart holds is sent as
+    money.
+  */
+  const [referral, setReferral] = useState<ReferralCartState | null>(null);
+  const couponDiscount = Number(appliedCoupon?.discountAmount ?? 0);
+  const referralDiscount = referral?.applicable ? Number(referral.buyerDiscountIqd) : 0;
+  /*
+    A coupon and a referral do not stack: the buyer gets whichever is worth
+    more. The same rule is applied again at checkout, from the same inputs, so
+    this preview cannot disagree with the charge.
+  */
+  const finalDiscount = Math.min(subtotal, Math.max(couponDiscount, referralDiscount));
+  const referralWins = referralDiscount > 0 && referralDiscount > couponDiscount;
   const totalPayable = Math.max(0, subtotal - finalDiscount + deliveryPrice);
 
   const walletBalance = user?.walletBalance || 0;
@@ -538,6 +558,12 @@ function CartPage() {
         true, // acceptedTerms: explicitly confirmed
         idempotencyKeyRef.current,
         selectedTargetProductId,
+        /*
+          Sent only as a fallback: the attribution normally travels in a signed
+          cookie set when the code was applied. The server re-validates it
+          either way and never takes the discount from this request.
+        */
+        referral?.referralCode ?? undefined,
       );
     },
     onSuccess: ({ order }) => {
@@ -793,6 +819,9 @@ function CartPage() {
           </div>
         )}
 
+        {/* Referral code — دعوة صديق */}
+        <ReferralCartField lines={lines} onChange={setReferral} />
+
         {/* Coupon Code Section */}
         <section className="bg-[var(--card)] p-4 rounded-3xl border border-border space-y-3 shadow-xs">
           <div className="flex items-center justify-between">
@@ -938,15 +967,20 @@ function CartPage() {
               <span className="font-bold text-foreground">{formatIQDPrice(subtotal)}</span>
             </div>
 
-            {/* Discount if present */}
+            {/* Discount if present — named, so the member can see which one won */}
             {finalDiscount > 0 && (
               <div className="flex justify-between items-center text-emerald-600 dark:text-emerald-400 font-bold">
                 <span className="flex items-center gap-1">
                   <Sparkles className="w-3.5 h-3.5" />
-                  <span>{tr("الخصم المطبق")}:</span>
+                  <span>{referralWins ? tr("خصم الإحالة") : tr("الخصم المطبق")}:</span>
                 </span>
                 <span>- {formatIQDPrice(finalDiscount)}</span>
               </div>
+            )}
+            {referralWins && couponDiscount > 0 && (
+              <p className="text-[11px] text-muted-foreground leading-relaxed">
+                {tr("تم اختيار خصم الإحالة لأنه أفضل لك — لا يُجمع مع الكوبون.")}
+              </p>
             )}
 
             {/* Delivery Fee if present */}

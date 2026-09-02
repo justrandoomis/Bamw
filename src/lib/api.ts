@@ -253,6 +253,8 @@ export const api = {
     acceptedTerms?: boolean,
     idempotencyKey?: string,
     targetProductId?: string | number,
+    /* A referral code the member typed. The server resolves and re-prices it. */
+    referralCode?: string,
   ) =>
     request<{ order: Order }>("/api/orders", {
       method: "POST",
@@ -263,6 +265,7 @@ export const api = {
         acceptedTerms,
         idempotencyKey,
         targetProductId,
+        referralCode,
       }),
     }),
   setOrderAddress: (orderId: string, address: unknown) =>

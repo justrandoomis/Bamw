@@ -358,6 +358,101 @@ const SCHEMA: string[] = [
     created_at TEXT NOT NULL, notified_at TEXT)`,
   `CREATE UNIQUE INDEX IF NOT EXISTS product_release_alerts_unique ON product_release_alerts (user_id, product_id)`,
   `CREATE INDEX IF NOT EXISTS product_release_alerts_pending_idx ON product_release_alerts (notified_at, product_id)`,
+  /*
+    The referral programme — "دعوة صديق".
+
+    Four tables, and every one of them exists to make a rule unforgeable:
+
+    - `referral_codes` is the stable identity behind a shared link. A link may
+      show a username, but the username is only a lookup key; what is stored on
+      the attribution is a code id, so renaming an account never moves anyone
+      else's earnings.
+    - `referral_attributions` is the claim that a visitor arrived through
+      someone. It is written for guests, before there is an account to attach
+      it to, and later bound to whoever signs in on that session.
+    - `referral_rewards` is the money. The two unique indexes on it are the
+      whole of "pay once": one reward per order, one per order item.
+    - `referral_risk_events` is why a referral was refused, kept for the admin
+      screen — never shown to the customer, who is told only that the code
+      could not be applied.
+
+    Hashes throughout, never raw values: an address or a device is stored as an
+    HMAC so the comparison still works and the identifier itself is not in the
+    database, the logs or an export.
+  */
+  `CREATE TABLE IF NOT EXISTS referral_codes (
+    id TEXT PRIMARY KEY, user_id TEXT NOT NULL, code TEXT NOT NULL,
+    username_alias TEXT, is_active INTEGER NOT NULL DEFAULT 1, blocked_reason TEXT,
+    created_at TEXT NOT NULL, updated_at TEXT NOT NULL)`,
+  `CREATE UNIQUE INDEX IF NOT EXISTS referral_codes_code_idx ON referral_codes (code)`,
+  `CREATE UNIQUE INDEX IF NOT EXISTS referral_codes_user_idx ON referral_codes (user_id)`,
+  `CREATE INDEX IF NOT EXISTS referral_codes_alias_idx ON referral_codes (username_alias)`,
+  /*
+    `product_id` and `guest_session_hash` are NOT NULL with a default rather
+    than nullable, because the uniqueness rule below has to hold for a link
+    with no product on it too — and in SQLite two NULLs are never equal, so a
+    nullable column in a unique index means no constraint at all.
+  */
+  `CREATE TABLE IF NOT EXISTS referral_attributions (
+    id TEXT PRIMARY KEY, referrer_user_id TEXT NOT NULL, referred_user_id TEXT,
+    referral_code_id TEXT NOT NULL, product_id TEXT NOT NULL DEFAULT '',
+    guest_session_hash TEXT NOT NULL DEFAULT '', device_hash TEXT, ip_hash TEXT,
+    status TEXT NOT NULL DEFAULT 'captured',
+    captured_at TEXT NOT NULL, expires_at TEXT NOT NULL, bound_at TEXT,
+    converted_order_id TEXT, converted_at TEXT,
+    risk_score INTEGER NOT NULL DEFAULT 0, blocked_reason TEXT,
+    updated_at TEXT NOT NULL)`,
+  `CREATE UNIQUE INDEX IF NOT EXISTS referral_attributions_session_idx
+     ON referral_attributions (guest_session_hash, referral_code_id, product_id)`,
+  `CREATE UNIQUE INDEX IF NOT EXISTS referral_attributions_order_idx
+     ON referral_attributions (converted_order_id) WHERE converted_order_id IS NOT NULL`,
+  `CREATE INDEX IF NOT EXISTS referral_attributions_referred_idx ON referral_attributions (referred_user_id, status)`,
+  `CREATE INDEX IF NOT EXISTS referral_attributions_referrer_idx ON referral_attributions (referrer_user_id, captured_at DESC)`,
+  `CREATE TABLE IF NOT EXISTS referral_rewards (
+    id TEXT PRIMARY KEY, attribution_id TEXT,
+    order_id TEXT NOT NULL, order_item_id TEXT NOT NULL, product_id TEXT NOT NULL,
+    referrer_user_id TEXT NOT NULL, buyer_user_id TEXT NOT NULL,
+    referral_code_id TEXT, referral_code TEXT,
+    original_price_iqd INTEGER NOT NULL DEFAULT 0,
+    buyer_discount_iqd INTEGER NOT NULL DEFAULT 0,
+    referrer_reward_iqd INTEGER NOT NULL DEFAULT 0,
+    reversed_amount_iqd INTEGER NOT NULL DEFAULT 0,
+    buyer_percent_bps INTEGER NOT NULL DEFAULT 0,
+    referrer_percent_bps INTEGER NOT NULL DEFAULT 0,
+    status TEXT NOT NULL DEFAULT 'eligible',
+    risk_score INTEGER NOT NULL DEFAULT 0, risk_verdict TEXT, blocked_reason TEXT,
+    wallet_transaction_id TEXT, hold_until TEXT, approved_at TEXT, reversed_at TEXT,
+    created_at TEXT NOT NULL, updated_at TEXT NOT NULL)`,
+  `CREATE UNIQUE INDEX IF NOT EXISTS referral_rewards_order_idx ON referral_rewards (order_id)`,
+  `CREATE UNIQUE INDEX IF NOT EXISTS referral_rewards_item_idx ON referral_rewards (order_item_id)`,
+  `CREATE INDEX IF NOT EXISTS referral_rewards_referrer_idx ON referral_rewards (referrer_user_id, status)`,
+  `CREATE INDEX IF NOT EXISTS referral_rewards_buyer_idx ON referral_rewards (buyer_user_id, status)`,
+  `CREATE TABLE IF NOT EXISTS referral_risk_events (
+    id TEXT PRIMARY KEY, attribution_id TEXT, reward_id TEXT, order_id TEXT,
+    referrer_user_id TEXT, buyer_user_id TEXT, event_type TEXT NOT NULL,
+    risk_score INTEGER NOT NULL DEFAULT 0, device_hash TEXT, ip_hash TEXT,
+    metadata TEXT NOT NULL DEFAULT '{}', created_at TEXT NOT NULL)`,
+  `CREATE INDEX IF NOT EXISTS referral_risk_events_attr_idx ON referral_risk_events (attribution_id, created_at DESC)`,
+  `CREATE INDEX IF NOT EXISTS referral_risk_events_order_idx ON referral_risk_events (order_id)`,
+  /*
+    Which devices, addresses and sessions an account has been seen on, and
+    which members the admin has thrown out of the programme.
+
+    One table for all three because the question is always the same shape — is
+    this identity already attached to that account? — and because the device
+    row in particular is what makes deleting a cookie pointless: the hash is
+    re-derived on the server from the request itself, so the same phone lands
+    on the same row whatever the browser is holding.
+  */
+  `CREATE TABLE IF NOT EXISTS referral_identity_links (
+    id TEXT PRIMARY KEY, kind TEXT NOT NULL, identity_hash TEXT NOT NULL,
+    user_id TEXT NOT NULL, first_seen_at TEXT NOT NULL, last_seen_at TEXT NOT NULL)`,
+  `CREATE UNIQUE INDEX IF NOT EXISTS referral_identity_links_unique
+     ON referral_identity_links (kind, identity_hash, user_id)`,
+  `CREATE INDEX IF NOT EXISTS referral_identity_links_user_idx ON referral_identity_links (user_id, kind)`,
+  `CREATE INDEX IF NOT EXISTS referral_identity_links_hash_idx ON referral_identity_links (kind, identity_hash)`,
+  `CREATE TABLE IF NOT EXISTS referral_blocklist (
+    user_id TEXT PRIMARY KEY, reason TEXT, blocked_by TEXT, created_at TEXT NOT NULL)`,
   `CREATE TABLE IF NOT EXISTS product_requests (
     id TEXT PRIMARY KEY, user_id TEXT NOT NULL, request_type TEXT NOT NULL,
     product_name TEXT NOT NULL, game_id TEXT, platform TEXT, product_category TEXT,
@@ -1085,10 +1180,18 @@ const SCHEMA_PATCHES: string[] = [
     trustworthy.
   */
 
+  /*
+    The same definition as the one in SCHEMA above, kept identical rather than
+    reconciled after the fact — this is the pair that disagreed. The `ALTER`s
+    are what actually repair an already-created table, since a second
+    `CREATE TABLE IF NOT EXISTS` never widens one.
+  */
   `CREATE TABLE IF NOT EXISTS audit_logs (
     id TEXT PRIMARY KEY, user_id TEXT NOT NULL, action TEXT NOT NULL,
     entity_type TEXT, entity_id TEXT, old_value TEXT, new_value TEXT,
     details TEXT, created_at TEXT NOT NULL)`,
+  `ALTER TABLE audit_logs ADD COLUMN old_value TEXT`,
+  `ALTER TABLE audit_logs ADD COLUMN new_value TEXT`,
   `CREATE INDEX IF NOT EXISTS audit_logs_entity_idx ON audit_logs (entity_type, entity_id)`,
 
   // --- DATA PERSISTENCE & ACTIVITY HISTORY ---
@@ -1770,7 +1873,7 @@ export function ensureCouponsSchema(): Promise<void> {
 // Bumped whenever SCHEMA_PATCHES gains a statement existing databases need.
 // The stamp below short-circuits the bootstrap, so a new patch is invisible to
 // already-deployed databases until this number moves.
-const RUNTIME_SCHEMA_VERSION = 20;
+const RUNTIME_SCHEMA_VERSION = 21;
 
 async function runSchemaStatements(
   db: D1Like,
