@@ -193,3 +193,21 @@ describe("which line earns", () => {
     expect(verdict.reason).toBe("programme_disabled");
   });
 });
+
+describe("the same-address rule", () => {
+  it("is on by default, as specified", () => {
+    expect(DEFAULT_REFERRAL_SETTINGS.blockSameIp).toBe(true);
+    expect(readReferralSettings({}).blockSameIp).toBe(true);
+  });
+
+  it("can be switched off by the admin", () => {
+    expect(readReferralSettings({ referral: { blockSameIp: false } }).blockSameIp).toBe(false);
+    // A string from a form field reads the same way as a boolean.
+    expect(readReferralSettings({ referral: { blockSameIp: "false" } }).blockSameIp).toBe(false);
+  });
+
+  it("stays on for a value it cannot read, rather than off", () => {
+    // Failing open on a protection is the wrong direction.
+    expect(readReferralSettings({ referral: { blockSameIp: "maybe" } }).blockSameIp).toBe(true);
+  });
+});

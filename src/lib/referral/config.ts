@@ -36,6 +36,16 @@ export interface ReferralSettings {
   /** Ceilings on what one member may earn. Zero means uncapped. */
   dailyRewardCapIqd: number;
   monthlyRewardCapIqd: number;
+  /**
+   * Refuse a referral when both sides share a network address.
+   *
+   * On by default, as specified. Worth knowing before turning it off — and
+   * before leaving it on: Iraqi mobile carriers put thousands of unrelated
+   * subscribers behind one public address, so on a phone network this refuses
+   * a great many honest referrals along with the dishonest ones. The device
+   * check is unaffected either way, and is the sharper of the two.
+   */
+  blockSameIp: boolean;
 }
 
 /**
@@ -56,6 +66,7 @@ export const DEFAULT_REFERRAL_SETTINGS: ReferralSettings = {
   dailyInviteLimit: 50,
   dailyRewardCapIqd: 0,
   monthlyRewardCapIqd: 0,
+  blockSameIp: true,
 };
 
 /** The key the settings document stores this block under. */
@@ -221,6 +232,10 @@ export function readReferralSettings(storeSettings: unknown): ReferralSettings {
         ["monthlyRewardCapIqd", "referralMonthlyRewardCap"],
         DEFAULT_REFERRAL_SETTINGS.monthlyRewardCapIqd,
       ),
+    ),
+    blockSameIp: readBoolean(
+      merged["blockSameIp"] ?? merged["referralBlockSameIp"],
+      DEFAULT_REFERRAL_SETTINGS.blockSameIp,
     ),
   };
 }

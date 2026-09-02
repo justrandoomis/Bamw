@@ -401,12 +401,15 @@ function DetailsBody({
 
           {/*
             Share and earn. Under the buy row rather than in it, because it is
-            an offer to the person already looking at the game — and it stays
-            visible before release too, when there is nothing to buy yet but a
-            link is still worth sharing.
+            an offer to the person already looking at the product — and it
+            stays visible before release too, when there is nothing to buy yet
+            but a link is still worth sharing. A chip, so it reads as quieter
+            than the button above it.
           */}
           <div className="pt-3">
-            <ShareAndEarnButton product={product} />
+            <div className="flex">
+              <ShareAndEarnButton product={product} />
+            </div>
             <ShareTermsNote />
           </div>
         </div>

@@ -74,6 +74,7 @@ interface AdminSettings {
   dailyInviteLimit: number;
   dailyRewardCapIqd: number;
   monthlyRewardCapIqd: number;
+  blockSameIp: boolean;
 }
 
 interface ListPayload {
@@ -597,6 +598,22 @@ export default function ReferralsManager() {
               />
               السماح بدمج الإحالة مع الكوبون
             </label>
+          </div>
+
+          <div className="rounded-xl border border-border bg-background p-3">
+            <label className="flex items-center gap-2 text-[13px] font-bold text-foreground">
+              <input
+                type="checkbox"
+                checked={settings.blockSameIp !== false}
+                onChange={(event) => patchSettings({ blockSameIp: event.target.checked })}
+                className="h-4 w-4"
+              />
+              منع الإحالة عند تطابق عنوان الشبكة (IP)
+            </label>
+            <p className="mt-1.5 text-[11px] leading-relaxed text-muted-foreground">
+              مُفعّل افتراضياً. انتبه: شبكات الهاتف في العراق تضع آلاف المشتركين خلف عنوان واحد،
+              لذلك قد يمنع هذا إحالات صادقة كثيرة. فحص الجهاز يبقى فعّالاً في الحالتين وهو الأدق.
+            </p>
           </div>
 
           <div>

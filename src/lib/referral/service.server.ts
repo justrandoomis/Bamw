@@ -292,6 +292,8 @@ export interface CaptureResult {
   /** The single sentence to show, refusal or confirmation. */
   message: string;
   reasons?: ReferralRiskReason[];
+  /** The member opened their own link — named, because it is safe to name. */
+  selfReferral?: boolean;
 }
 
 /**
@@ -326,8 +328,23 @@ export async function captureAttribution(params: {
   const referrer = await findUserById(code.userId);
   if (!referrer) return refuse(["code_inactive"]);
 
-  if (params.viewer?.id) {
-    await bindIdentitiesToUser(params.viewer.id, identity);
+  /*
+    Your own link, opened by you.
+
+    This is the one refusal worth naming. Everything else reads the same
+    sentence on purpose — telling somebody which check caught them tells them
+    which one to change — but a member cannot learn anything from being told a
+    link is theirs, and being told "this could not be applied" instead is how
+    an owner testing their own share button concludes the feature is broken.
+  */
+  if (params.viewer?.id && params.viewer.id === referrer.id) {
+    return {
+      ok: false,
+      setCookies: identity.setCookies,
+      message: "هذا رابط دعوتك أنت — شاركه مع صديق ليحصل على الخصم وتحصل أنت على المكافأة.",
+      reasons: ["self_referral"],
+      selfReferral: true,
+    };
   }
 
   const verdict = await assessReferralRisk({
@@ -352,6 +369,18 @@ export async function captureAttribution(params: {
     buyerIpHash: identity.ipHash,
     buyerSessionHash: identity.sessionHash,
   });
+
+  /*
+    Recorded *after* the verdict, not before.
+
+    Binding first meant the request under assessment taught the system its own
+    device, address and session a moment before being asked whether they were
+    the referrer's — which is only harmless because self-referral is caught
+    above. Assess, then remember.
+  */
+  if (params.viewer?.id) {
+    await bindIdentitiesToUser(params.viewer.id, identity);
+  }
 
   if (verdict.blocked) {
     await recordRiskEvent({

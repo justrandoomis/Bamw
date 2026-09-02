@@ -326,7 +326,14 @@ export async function assessReferralRisk(
     ]),
   ]);
   if (sameDevice) reasons.push("same_device");
-  if (sameIp) reasons.push("same_ip");
+  /*
+    The address check is the one the admin can switch off, because it is the
+    one that catches bystanders: a mobile carrier can put thousands of
+    unrelated subscribers behind a single public address, and two friends on
+    the same home connection are the ordinary case rather than the suspicious
+    one. On by default, as specified.
+  */
+  if (sameIp && input.settings.blockSameIp) reasons.push("same_ip");
   if (sameSession) reasons.push("same_session");
 
   const buyer = input.buyer;

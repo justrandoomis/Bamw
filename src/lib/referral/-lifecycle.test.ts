@@ -1364,3 +1364,120 @@ describe("only one referral can touch an order", () => {
     });
   });
 });
+
+/* -------------------------------------------------------------------------- */
+/* Opening your own link, and the address rule                                */
+/* -------------------------------------------------------------------------- */
+
+describe("a member opening their own share link", () => {
+  it("is told it is their own link, not that something failed", async () => {
+    const code = await referrerCode();
+    const owner = (await store.findUserById(REFERRER.id))!;
+
+    const capture = await service.captureAttribution({
+      request: request(REFERRER_DEVICE),
+      codeInput: code,
+      productRef: "super-mario-odyssey",
+      viewer: owner,
+    });
+
+    expect(capture.ok).toBe(false);
+    expect(capture.selfReferral).toBe(true);
+    // Named, because a member cannot learn anything from being told a link is
+    // theirs — every other refusal keeps the single generic sentence.
+    expect(capture.message).not.toBe(service.REFERRAL_REFUSAL_MESSAGE);
+    expect(capture.message).toContain("رابط دعوتك");
+    expect(capture.reasons).toContain("self_referral");
+  });
+
+  it("writes no attribution for it", async () => {
+    const code = await referrerCode();
+    const owner = (await store.findUserById(REFERRER.id))!;
+    await service.captureAttribution({
+      request: request(REFERRER_DEVICE),
+      codeInput: code,
+      productRef: "super-mario-odyssey",
+      viewer: owner,
+    });
+
+    expect(db.raw.prepare(`SELECT COUNT(*) AS total FROM referral_attributions`).get()).toEqual({
+      total: 0,
+    });
+  });
+
+  it("still refuses a stranger who is genuinely on the referrer's device", async () => {
+    // The named message is for the owner only; everyone else gets the one line.
+    await referrerVisits();
+    const code = await referrerCode();
+    const capture = await service.captureAttribution({
+      request: request(REFERRER_DEVICE),
+      codeInput: code,
+      productRef: "super-mario-odyssey",
+      viewer: (await store.findUserById(BUYER.id))!,
+    });
+
+    expect(capture.ok).toBe(false);
+    expect(capture.selfReferral).toBeUndefined();
+    expect(capture.message).toBe(service.REFERRAL_REFUSAL_MESSAGE);
+  });
+});
+
+describe("two people behind one network address", () => {
+  /** Same connection, different phones — the ordinary case on a home line. */
+  const SAME_NETWORK = { ip: REFERRER_DEVICE.ip, userAgent: BUYER_DEVICE.userAgent };
+
+  async function captureFromSameNetwork() {
+    await referrerVisits();
+    const code = await referrerCode();
+    return service.captureAttribution({
+      request: request(SAME_NETWORK),
+      codeInput: code,
+      productRef: "super-mario-odyssey",
+    });
+  }
+
+  it("is refused while the rule is on, which is the default", async () => {
+    const capture = await captureFromSameNetwork();
+    expect(capture.ok).toBe(false);
+    expect(capture.reasons).toContain("same_ip");
+  });
+
+  it("is allowed once the admin switches the rule off", async () => {
+    db.raw.prepare(`UPDATE store_kv SET value = ? WHERE key = 'store'`).run(
+      JSON.stringify({
+        categories: [{ id: "cat_nintendo", title: "ألعاب" }],
+        settings: {
+          referral: { enabled: true, buyerPercent: 10, referrerPercent: 10, blockSameIp: false },
+        },
+      }),
+    );
+    store.invalidateStoreCache();
+
+    const capture = await captureFromSameNetwork();
+    expect(capture.ok).toBe(true);
+    expect(capture.reasons ?? []).not.toContain("same_ip");
+  });
+
+  it("keeps refusing the referrer's own device even with the rule off", async () => {
+    db.raw.prepare(`UPDATE store_kv SET value = ? WHERE key = 'store'`).run(
+      JSON.stringify({
+        settings: {
+          referral: { enabled: true, buyerPercent: 10, referrerPercent: 10, blockSameIp: false },
+        },
+      }),
+    );
+    store.invalidateStoreCache();
+
+    await referrerVisits();
+    const code = await referrerCode();
+    const capture = await service.captureAttribution({
+      request: request(REFERRER_DEVICE),
+      codeInput: code,
+      productRef: "super-mario-odyssey",
+    });
+
+    // The device check is the sharper of the two and is not switchable.
+    expect(capture.ok).toBe(false);
+    expect(capture.reasons).toContain("same_device");
+  });
+});

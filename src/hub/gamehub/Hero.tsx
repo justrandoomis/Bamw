@@ -461,12 +461,13 @@ export function Hero() {
               {/*
                 Share and earn — دعوة صديق.
 
-                Its own row under the buy bar rather than another icon beside
-                the wishlist, because it carries a number the member should
-                read, and because on a phone a fourth chip in that row is what
-                starts the horizontal scroll this layout has fought before.
+                A chip on its own line under the buy row: it carries a number
+                worth reading, so it is not an icon, but it is the page's thin
+                quiet control rather than a second call to action. On its own
+                line because a fourth control inside the buy row is what starts
+                the horizontal scroll this layout has fought before.
               */}
-              <div className="mt-3 max-w-sm">
+              <div className="mt-3 flex">
                 <ShareAndEarnButton
                   product={(game.rawProduct ?? {}) as Record<string, unknown>}
                 />
