@@ -75,6 +75,7 @@ describe("Secure OTP Service & WaSender Integration", () => {
         return {
           status: 200,
           text: async () => JSON.stringify({ success: true, messageId: "msg_123" }),
+          json: async () => ({ success: true, messageId: "msg_123" }),
         };
       });
 
@@ -99,6 +100,7 @@ describe("Secure OTP Service & WaSender Integration", () => {
         return {
           status: 200,
           text: async () => JSON.stringify({ success: true, messageId: "msg_123" }),
+          json: async () => ({ success: true, messageId: "msg_123" }),
         };
       });
 
@@ -113,6 +115,7 @@ describe("Secure OTP Service & WaSender Integration", () => {
       globalThis.fetch = vi.fn().mockResolvedValue({
         status: 200,
         text: async () => JSON.stringify({ success: true, messageId: "msg_123" }),
+        json: async () => ({ success: true, messageId: "msg_123" }),
       });
 
       const phone = `+964770${Math.floor(1000000 + Math.random() * 9000000)}`;

@@ -16,9 +16,27 @@ import { generateGameImportTemplate } from "./gameImportGenerator";
  * says out loud that N is allowed.
  */
 
+/*
+  A complete, valid import — not a minimal one.
+
+  These tests assert that a file with N repeated entries parses with no errors,
+  so the fixture has to satisfy every rule the parser enforces, not just the
+  repeat handling. The device-performance record is the one that made them
+  fail: a game must now carry a performance record for its own platform, and a
+  fixture without one is genuinely invalid rather than incidentally so. Stating
+  "the figures are not published, here is the source" is the shortest honest
+  way to satisfy it, and it keeps `errorsOf(result)` a real assertion instead of
+  something that had to be weakened.
+*/
 const HEADER = `schema_version=1
 name=Test Game
 platform=switch1
+device_performance.1.device=Nintendo Switch
+device_performance.1.device_slug=nintendo-switch
+device_performance.1.information_status=not_published
+device_performance.1.unavailable_reason=Nintendo has not published performance figures for this title.
+device_performance.1.source_name=Nintendo eShop
+device_performance.1.verification_status=checked
 `;
 
 function build(lines: string[]): string {

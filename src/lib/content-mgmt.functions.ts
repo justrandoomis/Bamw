@@ -1,7 +1,7 @@
 import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
 import { d1All, d1First, d1Run, randomId, createAuditLog } from "./db.server";
-import { requireAdmin } from "./auth.middleware";
+import { requireAdmin, authed } from "./auth.middleware";
 import type { StoreBanner, StoreGuide, ProblemSolution } from "./types";
 
 /**
@@ -23,7 +23,7 @@ export const updateStoreBanner = createServerFn({ method: "POST" })
     }),
   )
   .handler(async ({ data, context }) => {
-    const adminId = context.userId;
+    const adminId = authed(context).userId;
     const now = new Date().toISOString();
     const id = data.id || randomId("bnr");
 
@@ -69,7 +69,7 @@ export const updateStoreGuide = createServerFn({ method: "POST" })
     }),
   )
   .handler(async ({ data, context }) => {
-    const adminId = context.userId;
+    const adminId = authed(context).userId;
     const now = new Date().toISOString();
     const id = data.id || randomId("gd");
 
@@ -122,7 +122,7 @@ export const updateProblemSolution = createServerFn({ method: "POST" })
     }),
   )
   .handler(async ({ data, context }) => {
-    const adminId = context.userId;
+    const adminId = authed(context).userId;
     const now = new Date().toISOString();
     const id = data.id || randomId("sol");
 

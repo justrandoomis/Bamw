@@ -85,7 +85,7 @@ function stubD1(options: { claimChanges?: number; failCredit?: boolean; status?:
     db: {
       prepare: (sql: string) => prepare(sql),
       batch: async (prepared: any[]) => {
-        const out = [];
+        const out: unknown[] = [];
         for (const statement of prepared) out.push(await statement.run());
         return out;
       },

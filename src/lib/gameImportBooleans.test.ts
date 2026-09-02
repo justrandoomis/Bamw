@@ -289,8 +289,17 @@ multiplayer_local_wireless=false
     const errors = parseGameImport(
       `schema_version=1\nname=Bad\nplatform=switch1\ndevice_performance.1.handheld.resolution_dynamic=468p-648p\n`,
     ).errors.filter((issue) => issue.severity === "error");
-    expect(errors).toHaveLength(1);
-    expect(errors[0]!.message).toContain("boolean");
+    /*
+      This fixture is deliberately one bad line, so it also trips the rule that
+      a game must carry a performance record for its own platform. The subject
+      here is the type of the field, so assert on that error rather than on the
+      total, which would make an unrelated rule able to break this test.
+    */
+    const typeErrors = errors.filter((issue) => issue.message.includes("boolean"));
+    expect(typeErrors).toHaveLength(1);
+    // The message quotes the value it refused, which is what tells an importer
+    // what to correct; the issue itself is keyed to the group.
+    expect(typeErrors[0]!.message).toContain("468p-648p");
   });
 
   it("refuses a player count written into a multiplayer flag", () => {
@@ -298,8 +307,9 @@ multiplayer_local_wireless=false
       const errors = parseGameImport(
         `schema_version=1\nname=Bad\nplatform=switch1\nmultiplayer_local=${bad}\n`,
       ).errors.filter((issue) => issue.severity === "error");
-      expect(errors).toHaveLength(1);
-      expect(errors[0]!.key).toBe("multiplayer_local");
+      // Same reason as above: the subject is this field, not the whole file.
+      const fieldErrors = errors.filter((issue) => issue.key === "multiplayer_local");
+      expect(fieldErrors).toHaveLength(1);
     }
   });
 

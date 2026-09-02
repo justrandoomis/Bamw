@@ -194,12 +194,21 @@ describe("boolean fields refuse prose and accept blank", () => {
   const withHdr = (value: string) =>
     `schema_version=1\nname=Boolean Game\nplatform=switch1\nperformance_hdr=${value}\n`;
 
+  /*
+    These fixtures are one field on a bare header, so they also trip the rule
+    that a game must carry a performance record for its own platform. The
+    subject here is `performance_hdr`, so the assertions look at that field's
+    errors rather than the file's total — otherwise an unrelated rule can break
+    a test that is not about it.
+  */
+  const hdrErrors = (source: string) =>
+    blockingErrors(source).filter((issue) => issue.key === "performance_hdr");
+
   it.each(["Not Published", "Unknown", "N/A", "HDR10", "Yes", "Nintendo Switch 2"])(
     "rejects %s and says what to write instead",
     (bad) => {
-      const errors = blockingErrors(withHdr(bad));
+      const errors = hdrErrors(withHdr(bad));
       expect(errors).toHaveLength(1);
-      expect(errors[0]!.key).toBe("performance_hdr");
       expect(errors[0]!.message).toContain("true");
       expect(errors[0]!.message).toContain("false");
       expect(errors[0]!.message).toContain("فارغاً");
@@ -207,9 +216,9 @@ describe("boolean fields refuse prose and accept blank", () => {
   );
 
   it("accepts true, false and blank", () => {
-    expect(blockingErrors(withHdr("true"))).toEqual([]);
-    expect(blockingErrors(withHdr("false"))).toEqual([]);
-    expect(blockingErrors(withHdr(""))).toEqual([]);
+    expect(hdrErrors(withHdr("true"))).toEqual([]);
+    expect(hdrErrors(withHdr("false"))).toEqual([]);
+    expect(hdrErrors(withHdr(""))).toEqual([]);
     expect(parseGameImport(withHdr("")).data["perfHdr"]).toBeUndefined();
   });
 });
@@ -262,6 +271,11 @@ describe("older files keep working", () => {
 schema_version=1
 name=Legacy List Game
 platform=switch1
+device_performance.1.device=Nintendo Switch
+device_performance.1.information_status=not_published
+device_performance.1.unavailable_reason=Nintendo has not published performance figures for this title.
+device_performance.1.source_name=Nintendo eShop
+device_performance.1.verification_status=checked
 feature.1.value=ميزة أولى
 feature.2.value=ميزة ثانية
 verdict_pro.1.value=إيجابية
@@ -336,6 +350,11 @@ describe("the shipped template teaches the corrected shapes", () => {
 schema_version=1
 name=Many Images Game
 platform=switch1
+device_performance.1.device=Nintendo Switch
+device_performance.1.information_status=not_published
+device_performance.1.unavailable_reason=Nintendo has not published performance figures for this title.
+device_performance.1.source_name=Nintendo eShop
+device_performance.1.verification_status=checked
 banner_image.11=https://cdn.example.test/banner-11.jpg
 banner_image.12=https://cdn.example.test/banner-12.jpg
 gallery.13.image=https://cdn.example.test/shot-13.jpg

@@ -129,7 +129,7 @@ export default function PriceHistoryChart({ history, defaultWindow = "6m", compa
           <Figure label={t("history.average")} value={money(stats.average)} />
           {!compact && <Figure label={t("history.highest")} value={money(stats.high.price)} />}
         </div>
-        <Segmented
+        <Segmented<HistoryWindow>
           size="sm"
           value={window_}
           onChange={setWindow}

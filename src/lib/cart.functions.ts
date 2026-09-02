@@ -2,7 +2,7 @@ import { createServerFn } from "@tanstack/react-start";
 import { getRequest } from "@tanstack/react-start/server";
 import { z } from "zod";
 import { d1All, d1Run, d1First, randomId } from "@/lib/db.server";
-import { requireAppAuth } from "@/lib/auth.middleware";
+import { requireAppAuth, authed } from "@/lib/auth.middleware";
 
 async function logActivity(params: any) {
   const { logActivity: logger } = await import("./activity.functions.server");
@@ -12,7 +12,7 @@ async function logActivity(params: any) {
 export const getCart = createServerFn({ method: "GET" })
   .middleware([requireAppAuth])
   .handler(async ({ context }) => {
-    const userId = context.userId;
+    const userId = authed(context).userId;
     const items = await d1All(
       `SELECT * FROM cart_items WHERE user_id = ? ORDER BY created_at ASC`,
       userId,
@@ -34,7 +34,7 @@ export const addToCart = createServerFn({ method: "POST" })
   )
   .handler(async (args) => {
     const { data: input, context } = args;
-    const userId = context.userId;
+    const userId = authed(context).userId;
     const now = new Date().toISOString();
 
     // Check if item exists
@@ -87,7 +87,7 @@ export const updateCartItem = createServerFn({ method: "POST" })
   )
   .handler(async (args) => {
     const { data: input, context } = args;
-    const userId = context.userId;
+    const userId = authed(context).userId;
     const now = new Date().toISOString();
 
     if (input.quantity <= 0) {
@@ -123,11 +123,11 @@ export const removeCartItem = createServerFn({ method: "POST" })
   )
   .handler(async (args) => {
     const { data: input, context } = args;
-    await d1Run(`DELETE FROM cart_items WHERE id = ? AND user_id = ?`, input.id, context.userId);
+    await d1Run(`DELETE FROM cart_items WHERE id = ? AND user_id = ?`, input.id, authed(context).userId);
 
     // Log Activity
     await logActivity({
-      userId: context.userId,
+      userId: authed(context).userId,
       activityType: "CART_REMOVE",
       entityType: "cart_item",
       entityId: input.id,

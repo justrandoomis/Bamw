@@ -350,6 +350,12 @@ function CartPage() {
       const kind: ProductKind = isBundle ? "bundle" : ((product?.kind || "account") as ProductKind);
 
       return {
+        /*
+          The db-backed lines had no `id`. Every line needs one — it is what
+          `remove` and `setQuantity` target — and without it these were not
+          `CartLine`s at all. The cart row's own id is stable and unique.
+        */
+        id: String(item.id ?? `${item.product_id}_${kind}`),
         productId: item.product_id,
         title:
           entity?.titleEn || (entity as any)?.english_name || entity?.title || "منتج غير معروف",

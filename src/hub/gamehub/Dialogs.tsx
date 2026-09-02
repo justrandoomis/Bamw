@@ -400,7 +400,7 @@ export function BuySheet({
             showAddToCartToast({
               title: "أُضيف إلى السلة",
               message: `${quantity > 1 ? `${quantity} × ` : ""}${game.title}${offerLabel ? ` (${offerLabel})` : ""}`,
-              product: game.rawProduct ?? (image ? { image } : null),
+              product: game.rawProduct ?? (image ? { image } : undefined),
               quantity,
               navigate,
               playSoundEffect: false,

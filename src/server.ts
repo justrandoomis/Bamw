@@ -49,7 +49,17 @@ export default {
     }
 
     try {
-      return await fetchHandler(request, { context: { env, ctx } });
+      /*
+        The Cloudflare bindings ride on the request context — `publishEnv(env)`
+        downstream is what makes D1, R2 and the queue reachable. The handler
+        types `context` as the framework's registered request context, and this
+        app registers none, so the parameter types as `{ nonce?: string }`
+        only. The value is right and the runtime contract is real; the cast
+        says so rather than pretending the bindings are optional.
+      */
+      return await fetchHandler(request, {
+        context: { env, ctx } as unknown as { nonce?: string },
+      });
     } catch (error: any) {
       console.error("[worker:fetch_error]", error?.stack || error);
       return new Response("Internal Server Error", {

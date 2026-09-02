@@ -62,7 +62,7 @@ function stubD1(guardedChanges = 1) {
     db: {
       prepare: (sql: string) => prepare(sql),
       batch: async (prepared: any[]) => {
-        const out = [];
+        const out: unknown[] = [];
         for (const statement of prepared) out.push(await statement.run());
         return out;
       },

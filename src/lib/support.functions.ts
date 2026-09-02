@@ -9,7 +9,7 @@ import {
   listThreadsByUser,
   findUserById,
 } from "./db.server";
-import { requireAdmin, requireAppAuth } from "./auth.middleware";
+import { requireAdmin, requireAppAuth, authed } from "./auth.middleware";
 import { ChatMessage, Thread, MessageKind, ThreadMode } from "./types";
 import {
   isAdminThread,
@@ -21,7 +21,7 @@ import {
 export const getMyThreads = createServerFn({ method: "GET" })
   .middleware([requireAppAuth])
   .handler(async ({ context }) => {
-    const userId = context.userId;
+    const userId = authed(context).userId;
     if (!userId) return [] as Thread[];
     const threads = await listThreadsByUser(userId);
     return threads || [];

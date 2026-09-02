@@ -34,7 +34,7 @@ export const Route = createFileRoute("/api/public/hooks/contests-draw")({
           new Date().toISOString(),
         );
 
-        const results = [];
+        const results: Record<string, unknown>[] = [];
         for (const c of contests) {
           try {
             const res = await drawContest(c.id);

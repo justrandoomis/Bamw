@@ -1,6 +1,6 @@
 import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
-import { requireAppAuth } from "./auth.middleware";
+import { requireAppAuth, authed } from "./auth.middleware";
 import { getUserPreferences, saveUserPreferences } from "./db.server";
 
 export const savePreferences = createServerFn({ method: "POST" })
@@ -12,13 +12,13 @@ export const savePreferences = createServerFn({ method: "POST" })
   )
   .handler(async (args) => {
     const { data, context } = args;
-    await saveUserPreferences(context.userId, data.prefs);
+    await saveUserPreferences(authed(context).userId, data.prefs);
     return { success: true };
   });
 
 export const getPreferences = createServerFn({ method: "GET" })
   .middleware([requireAppAuth])
   .handler(async ({ context }) => {
-    const prefs = await getUserPreferences(context.userId);
+    const prefs = await getUserPreferences(authed(context).userId);
     return prefs;
   });

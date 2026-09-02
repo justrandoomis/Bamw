@@ -75,12 +75,29 @@ describe("English locale prefers English copy", () => {
   });
 });
 
-describe("proper names stay in English in both locales", () => {
-  it("keeps the official game title", () => {
-    for (const locale of ["ar", "en"] as const) {
-      const game = gameFromProduct({ ...base, description_ar: AR }, locale);
-      expect(game.title, `title changed in ${locale}`).toBe("Super Mario Odyssey");
-    }
+describe("the title follows the reader, the studio names do not", () => {
+  /*
+    This used to assert the English name in both locales. That was the rule
+    until "Show the stored Arabic game titles on the Arabic pages" (4f48d88):
+    the catalogue carries an Arabic name for these games and an Arabic page
+    that prints the English one is showing a translation nobody asked for.
+    Studio and publisher names are still proper nouns and still stay English —
+    the case below.
+  */
+  it("shows the Arabic name to an Arabic reader and the English one to an English reader", () => {
+    const arabic = gameFromProduct({ ...base, description_ar: AR }, "ar");
+    expect(arabic.title).toBe("سوبر ماريو أوديسي");
+
+    const english = gameFromProduct({ ...base, description_ar: AR }, "en");
+    expect(english.title).toBe("Super Mario Odyssey");
+  });
+
+  it("falls back to the English name when the game has no Arabic one", () => {
+    const noArabic = gameFromProduct(
+      { ...base, title: "Super Mario Odyssey", description_ar: AR },
+      "ar",
+    );
+    expect(noArabic.title).toBe("Super Mario Odyssey");
   });
 
   it("keeps developer and publisher names", () => {

@@ -201,7 +201,7 @@ export function ReviewsSection() {
       action={
         <div className="flex flex-wrap items-center justify-end gap-2">
           {reviews.length > 1 && (
-            <Segmented
+            <Segmented<ReviewSort>
               size="sm"
               value={sort}
               onChange={setSort}
@@ -442,7 +442,7 @@ export function CommunitySection() {
       subtitle={t("community.subtitle")}
       weight="primary"
       action={
-        <Segmented
+        <Segmented<CommunityKind | "all">
           size="sm"
           value={tab}
           onChange={setTab}

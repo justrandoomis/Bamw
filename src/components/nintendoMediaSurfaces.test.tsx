@@ -1,4 +1,7 @@
 /**
+ * @vitest-environment jsdom
+ */
+/**
  * End-to-end check of the media contract at the component level.
  *
  * The unit tests in src/lib/nintendoImages.test.ts prove the resolver hands

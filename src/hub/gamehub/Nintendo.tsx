@@ -894,7 +894,7 @@ export function LanguagesSection() {
       subtitle={t("languages.subtitle")}
       weight="support"
       action={
-        <Segmented
+        <Segmented<LanguageChannel | "all">
           size="sm"
           ariaLabel={t("languages.filterBy")}
           value={channel}
