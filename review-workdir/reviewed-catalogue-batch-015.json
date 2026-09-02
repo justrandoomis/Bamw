@@ -1,51 +1,245 @@
 {
  "batch": "015",
- "apply": false,
+ "apply": true,
  "games": [
   {
    "id": "prd_c4c08e2c87db4f69",
    "slug": "mario-sonic-at-the-olympic-games-tokyo-2020-switch",
    "baseHash": "ddb65328c2ac99de0e2736e09f133625f2a7d417a87e43506902d5ee229667a6",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "informationStatus": "available",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p-class",
+       "fps": "60"
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p-class",
+       "fps": "60"
+      },
+      "modes": [],
+      "sourceName": "Launch coverage of the Switch release",
+      "sourceUrl": "https://www.nintendolife.com/games/nintendo-switch/mario_and_sonic_at_the_olympic_games_tokyo_2020",
+      "verificationStatus": "technical_analysis"
+     }
+    ]
+   },
+   "clear": [
+    "youtubeTrailer",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "The trailer field held SEGA's microsite URL, which cannot embed — removed. The Switch-2-badged record becomes the platform record with the same 60 fps figures. 2019-11-05, Metacritic 69 verified. All images working. Contamination removed."
   },
   {
    "id": "prd_e395bfb05dc141f1",
    "slug": "mario-strikers-battle-league-switch-1",
    "baseHash": "0267d5d93ecf5f160b170aea3c67cbeaabe9107fc092864e301878e5ca55d157",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "coverImage": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000049936/b251b331f6d0f691121d1df78f9461c66c7537013205a60af431bb33206d454f",
+    "image": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000049936/b251b331f6d0f691121d1df78f9461c66c7537013205a60af431bb33206d454f",
+    "bannerImages": [
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000049936/197c3c4a052ac6990e96c5827f67a4a2631c6853331007a2cda87851500f50ec",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000049936/ce363f4712ccdad748af43d96e13a1c3260912d920a2b9bda93ac67aff02d619"
+    ],
+    "galleryImages": [
+     {
+      "alt": "Verified direct image URL 4",
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000049936/f2678b33615746fb4e0bb0ab7d91404e726ad1e59623434eff83ff30392943dc"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000049936/646ea61ae1da2ed1b87ade13d115cc61a5840e8d4c1d5502ea8db3708f253341"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000049936/1f3bcb3dc0d91c95af22b2e25d3f5e5e6eb26b8aa38c58c1b7212d94a7d9c708"
+     }
+    ],
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "informationStatus": "available",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p",
+       "fps": "60"
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p",
+       "fps": "60"
+      },
+      "modes": [],
+      "sourceName": "Launch technical coverage of Battle League",
+      "sourceUrl": "https://www.nintendolife.com/games/nintendo-switch/mario_strikers_battle_league",
+      "verificationStatus": "technical_analysis"
+     }
+    ]
+   },
+   "clear": [
+    "nintendoCardImage",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "Six dead R2 roles on a visible product rebuilt from the six working eShop galleries (first shot verified visually — official Strikers render): cover and listing from the lead shot, two shots to banners, three kept as gallery, broken square-card removed. Switch-2 badge becomes the platform record keeping the documented 60 fps figures. Genuine box and wrap verified working. 2022-06-10, Metacritic 73 verified. Contamination removed."
   },
   {
    "id": "prd_a546170ff0fd4846",
    "slug": "mario-tennis-aces-switch-1",
    "baseHash": "da2847f9a64690c7c6d657f01bd234367961f89bd7171befc8903a64e452ea98",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "coverImage": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000003889/a142d7eee62bc0a34faf9cb6192118ea2b9323b9246bc82e7fb2bae79970eb5d",
+    "image": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000003889/a142d7eee62bc0a34faf9cb6192118ea2b9323b9246bc82e7fb2bae79970eb5d",
+    "bannerImages": [
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000003889/7d0800ef54a653069a61c67efad7a3a3ddf48e31f8a9123f17bc8e68ca8b29ce",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000003889/3b32dbcc272cf2c8140404dd9a3d07d13b7450f5362edcbcbd7fd4a643a794d0"
+    ],
+    "galleryImages": [
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000003889/445941288962ebea7824a1dab605764aa8067268d4b05f733155f63e13e2ce27"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000003889/e2c7bc666279a2fb209904a1f95924ad2bbb9f9ae5546e9c388dcc5527289bbf"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000003889/5d1a33ab8355a9cff777372bda1a3b19cfe092950dd21031216e8df17c263e84"
+     }
+    ],
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "informationStatus": "available",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p",
+       "fps": "60"
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p",
+       "fps": "60"
+      },
+      "modes": [],
+      "sourceName": "Launch technical coverage of Mario Tennis Aces",
+      "sourceUrl": "https://www.nintendolife.com/games/nintendo-switch/mario_tennis_aces",
+      "verificationStatus": "technical_analysis"
+     }
+    ]
+   },
+   "clear": [
+    "nintendoCardImage",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "Same six-dead-roles rebuild from the six working eShop galleries (lead shot verified visually — official Aces render). Switch-2 badge becomes the platform record with the documented 1080p/720p at 60 fps figures. Genuine box and wrap verified working. 2018-06-22, Metacritic 75 verified. Contamination removed."
   },
   {
    "id": "prd_34ac10f0ab97482c",
    "slug": "mario-tennis-fever-switch-2",
    "baseHash": "37444efaca850856b6697e2910cd0a76642f30fb3afb9b023282984633963312",
    "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "clear": [
+    "box_front_url",
+    "galleryImages",
+    "youtubeTrailer",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "box_front_url and all six gallery entries were MarioWiki hotlinks that the wiki blocks (403) — removed; the working box, square card, cover and banners remain, and the gallery section hides cleanly rather than rendering broken. The trailer field held a nintendo.com page URL — removed. 2026-02-12, Metacritic 80 kept. The Switch 2 record's prose figures kept as stored. Contamination removed."
   },
   {
    "id": "prd_08ac1190a4d44318",
    "slug": "mario-vs-donkey-kong-switch-1",
    "baseHash": "12f1f67870caef673b75abf1d1f65faf85763a5ace27d9c4591d3fad6ca3af04",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "coverImage": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000072191/f1b4785bcc442c5817427defebb9d98ab73838685b54ac5a13bfaefe5aba8013",
+    "image": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000072191/f1b4785bcc442c5817427defebb9d98ab73838685b54ac5a13bfaefe5aba8013",
+    "bannerImages": [
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000072191/aba6bff3d9ed7f28faf4084fa9a5819fad427ee2e3c293ba43ad95f8ab30bdd1",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000072191/21876b9547f4851156094dd786bbba491ee05e39819aa994ea2ab69925e6a202"
+    ],
+    "galleryImages": [
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000072191/387f623e74f4763ddebbebf0f8b884a80f02b4112d9de06377fc8718177d3316"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000072191/7d5a6f196c7b74134c1d94a536800832e395810ec170df62ec08e6f3c6eaeaea"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000072191/40568c3fcd39ec53006044fb302d66d233c8d972b675ef6d8316d5c73eb7fa26"
+     }
+    ],
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "informationStatus": "not_published",
+      "unavailableReason": "Nintendo publishes no resolution or frame-rate figures for Mario vs. Donkey Kong.",
+      "handheld": {
+       "supported": true
+      },
+      "tv": {
+       "supported": true
+      },
+      "modes": [],
+      "sourceName": "Nintendo official product page",
+      "sourceUrl": "https://www.nintendo.com/us/store/products/mario-vs-donkey-kong-switch/",
+      "verificationStatus": "official"
+     }
+    ]
+   },
+   "clear": [
+    "nintendoCardImage",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "Same six-dead-roles rebuild from the six working eShop galleries (lead shot verified visually — genuine puzzle gameplay). The Switch-2-badged not-published record becomes an honest platform record. Genuine box and wrap verified working. 2024-02-16, Metacritic 76 verified. Contamination removed."
   }
  ]
 }
