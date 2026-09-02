@@ -1,51 +1,185 @@
 {
  "batch": "013",
- "apply": false,
+ "apply": true,
  "games": [
   {
    "id": "prd_2b0afd3037524c80",
    "slug": "lies-of-p-complete-edition-switch-2",
    "baseHash": "8efb09cea8442ae1530a50f36f73f7db68708e47f20ad28a3537676ab9ed6500",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "size": 35,
+    "downloadSizeGb": 35
+   },
+   "clear": [
+    "youtubeTrailer",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "Size string '35.0 GB' becomes a number; the trailer field held a nintendo.com page URL that cannot embed — removed. The unsupported Nintendo Switch record drops under the platform rule, keeping the 1080p/1440p at 60 fps Switch 2 record. 2026-08-05, Metacritic 84 kept. Images verified working (hidden product)."
   },
   {
    "id": "prd_d598766205db4786",
    "slug": "little-nightmares-i-and-ii-bundle",
    "baseHash": "f3aae0b4208a9fd44a96d36bddf1128eff42521175ae405e0a94061fe7de0d51",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "informationStatus": "not_published",
+      "unavailableReason": "Bandai Namco publishes no per-title resolution figures for the bundle; both included games target 30 fps on Nintendo Switch.",
+      "handheld": {
+       "supported": true
+      },
+      "tv": {
+       "supported": true
+      },
+      "modes": [],
+      "sourceName": "Bandai Namco official product information",
+      "sourceUrl": "https://en.bandainamcoent.eu/little-nightmares/little-nightmares-ii",
+      "verificationStatus": "official"
+     }
+    ]
+   },
+   "clear": [
+    "metacriticRating",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "The recurring '85' string removed — a bundle SKU has no verifiable aggregate of its own. The Switch-2-badged prose record ('varies by included title') becomes one honest not-published platform record stating the shared 30 fps target. 2022-06-30 release and all fifteen images verified working. Contamination removed."
   },
   {
    "id": "prd_ca9a9392db394624",
    "slug": "little-nightmares-iii-switch1-switch2",
    "baseHash": "acd44e55c8f986a58a7299aa306b8409a428af00972e8bdf66f7ed49fae2f87c",
    "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "clear": [
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "Cross-platform SKU (platform 'both' resolves to the Switch 2 record under the platform rule). Detailed render/upscale analysis figures, 2025-10-10 release, Metacritic 69 and working trailer all verified; images working. Only the contamination fields removed."
   },
   {
    "id": "prd_481cc6fd338e4617",
    "slug": "luigis-mansion-3",
    "baseHash": "338ec82092a35eaa41e8b2de07a8ecb7a2dfd7fcef0b53779bce77a4b47f82af",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "informationStatus": "available",
+      "handheld": {
+       "supported": true,
+       "resolution": "Dynamic (commonly around 720p)",
+       "fps": "30"
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "Dynamic, up to 1080p",
+       "fps": "30"
+      },
+      "modes": [],
+      "sourceName": "Launch technical analyses of Luigi's Mansion 3",
+      "sourceUrl": "https://www.nintendolife.com/games/nintendo-switch/luigis_mansion_3",
+      "verificationStatus": "technical_analysis"
+     }
+    ]
+   },
+   "clear": [
+    "box_front_url",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "box_front_url was a malformed Nintendo CDN transformation URL answering HTTP 400 — removed; the working box image remains. The Switch-2-badged not-published record on this Switch 1 game becomes an explicit platform record with the documented dynamic-resolution 30 fps figures. 2019-10-31, Metacritic 86 verified (hidden product)."
   },
   {
    "id": "prd_c666e66b286c4d03",
    "slug": "mario-golf-super-rush-switch-1",
    "baseHash": "506abe7ea3e03b24e5967c49047c794c880455694c181061ad6ff632d2dbe612",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "coverImage": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000038622/e4ffb9da390e0a8c300cb95851dd58615e0567f0e1d25f95f4061202b320b1fe",
+    "image": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000038622/e4ffb9da390e0a8c300cb95851dd58615e0567f0e1d25f95f4061202b320b1fe",
+    "bannerImages": [
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000038622/999445cd526cd1d055e44879aaa7610dd666c1390ae3237f36adf06209f8a20e",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000038622/6a0ff92d949c16029c35ac9ddcf47a661bcfeb158543769bf8ad166163d280ce"
+    ],
+    "galleryImages": [
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000038622/ec315c889d7529ac87575d6eb6bb07b3dbcd4b946241c79e285eb737c92ad4ea"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000038622/ff15c5d4814187fae399cf7b92b253d864da409af367119a3956a3609b2f99c4"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000038622/a0f7308ef01901623453e0ed7ae30a97e4389a358ed825e07ae3f9af83fa8ef1"
+     }
+    ],
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "informationStatus": "not_published",
+      "unavailableReason": "Nintendo publishes no official resolution or frame-rate figures for Mario Golf: Super Rush.",
+      "handheld": {
+       "supported": true
+      },
+      "tv": {
+       "supported": true
+      },
+      "modes": [],
+      "sourceName": "Nintendo official product page",
+      "sourceUrl": "https://www.nintendo.com/us/store/products/mario-golf-super-rush-switch/",
+      "verificationStatus": "official"
+     }
+    ]
+   },
+   "clear": [
+    "nintendoCardImage",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "Six image roles were dead R2 references on this visible product. Rebuilt from the six working official eShop CDN galleries: the clean no-HUD beauty shot (verified visually) becomes cover and listing image, two gameplay shots become the banners, and the remaining three stay in the gallery — no duplication, everything re-verified at apply. The broken square-card reference removed (no verified square source). The Switch-2-badged 60 fps record becomes an honest not-published platform record — Nintendo publishes no figures and the stored numbers were unsourced. Genuine box, launchbox box copy and full wrap verified working. Contamination removed."
   }
  ]
 }
