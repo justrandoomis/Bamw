@@ -1,0 +1,529 @@
+{
+ "title": "Mario Tennis Aces",
+ "titleEn": "Mario Tennis Aces",
+ "titleKu": "Mario Tennis Aces",
+ "slug": "mario-tennis-aces-switch-1",
+ "description": "Mario Tennis Aces delivers fast arcade tennis, Zone Shot and Zone Speed mechanics, Adventure mode, and flexible multiplayer across local and online play. Build energy, break rackets, master trick shots and use character-specific styles to dominate singles and doubles matches.",
+ "descriptionEn": "Mario Tennis Aces delivers fast arcade tennis, Zone Shot and Zone Speed mechanics, Adventure mode, and flexible multiplayer across local and online play. Build energy, break rackets, master trick shots and use character-specific styles to dominate singles and doubles matches.",
+ "descriptionKu": "Mario Tennis Aces delivers fast arcade tennis, Zone Shot and Zone Speed mechanics, Adventure mode, and flexible multiplayer across local and online play. Build energy, break rackets, master trick shots and use character-specific styles to dominate singles and doubles matches.",
+ "cartridgeImage": "/api/files/products/prd_a546170ff0fd4846/front-f1362a8028666406.jpg",
+ "nintendoCardImage": "/api/files/products/prd_a546170ff0fd4846/square-9d1958c3fa1cc423.avif",
+ "coverHiResImage": "/api/files/products/prd_a546170ff0fd4846/3d-texture-adc9ab320cf6528d.jpg",
+ "coverImage": "/api/files/products/prd_a546170ff0fd4846/cover-0ddf42f6dd9740a8.avif",
+ "bannerImages": [
+  "/api/files/products/prd_a546170ff0fd4846/banner-0-9e26e16efc531253.avif",
+  "/api/files/products/prd_a546170ff0fd4846/banner-1-32414e56e8456eea.avif",
+  "/api/files/products/prd_a546170ff0fd4846/banner-2-33c7a85939849d3d.avif",
+  "/api/files/products/prd_a546170ff0fd4846/banner-3-6820498c5ac5b70d.avif",
+  "/api/files/products/prd_a546170ff0fd4846/banner-4-8a8cd8e58828c8a8.avif",
+  "/api/files/products/prd_a546170ff0fd4846/banner-5-9b8b87f561045174.avif"
+ ],
+ "gallery": [],
+ "youtubeTrailer": "https://www.youtube.com/watch?v=jxrHwK-e1vk",
+ "releaseDate": "2018-06-22",
+ "ageRating": "ESRB E / PEGI 3",
+ "metacriticRating": 75,
+ "genres": [
+  "Sports",
+  "Tennis",
+  "Party"
+ ],
+ "platform": "switch1",
+ "size": 2.4,
+ "numberOfPlayers": "Single system (1-4); Local wireless (2-4); Online (2-4)",
+ "supportedLanguages": "English, Japanese, French, Spanish, German",
+ "hardwareModel": "",
+ "colorEdition": "",
+ "storageCapacity": "",
+ "screenSpecs": "",
+ "batteryLife": "",
+ "boxContents": [],
+ "boxContentsText": "",
+ "warrantyCondition": "",
+ "connectivity": "",
+ "characterName": "Link",
+ "amiiboSeries": "The Legend of Zelda",
+ "figureType": "figure",
+ "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+ "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+ "boxCondition": "mib",
+ "releaseWave": "Wave 2 (Restock)",
+ "rarity": "standard",
+ "accessoryType": "حقيبة حماية وتنقل Carry Case",
+ "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+ "brand": "Nintendo Official",
+ "material": "Hard EVA Shockproof Shell",
+ "availableColors": "Black, Neon Red/Blue, White",
+ "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+ "cardValue": "$20 eShop Balance",
+ "region": "Global",
+ "cardType": "eshop",
+ "deliveryMethod": "instant_code",
+ "redemptionGuide": "",
+ "redemptionSteps": [],
+ "validity": "no_expiry",
+ "usedType": "cartridge",
+ "conditionGrade": "like_new",
+ "packaging": "cib",
+ "guaranteeStatus": "tested_30days",
+ "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+ "accountType": "primary",
+ "badge": "وفر 40%",
+ "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+ "price": 8000,
+ "cost": 1250,
+ "stock": 999999,
+ "isInfiniteStock": true,
+ "isHidden": false,
+ "displayOrder": 0,
+ "category": "nintendo-switch-games",
+ "categoryId": "nintendo-switch-games",
+ "categoryEn": "",
+ "categoryKu": "",
+ "options": [
+  {
+   "id": "offline_account",
+   "name": "Offline Account",
+   "description": "حساب مشترك",
+   "stock": 9999,
+   "isInfiniteStock": true,
+   "customerDescription": "حساب مشترك"
+  },
+  {
+   "id": "online_account",
+   "name": "Online Account",
+   "description": "حساب خاص بك",
+   "stock": 9999,
+   "isInfiniteStock": true,
+   "customerDescription": "حساب خاص بك"
+  }
+ ],
+ "types": [
+  {
+   "id": "standard_offline",
+   "name": "Standard Account",
+   "optionId": "offline_account",
+   "price": 12500,
+   "cost": 1250,
+   "description": "",
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "standard_online",
+   "name": "Standard Account",
+   "optionId": "online_account",
+   "price": "25000",
+   "cost": 10000,
+   "description": "Online Account; supplier cost 10,000 IQD; selling price 20,000 IQD.",
+   "stock": 9999,
+   "isInfiniteStock": true
+  }
+ ],
+ "editions": [],
+ "dlcs": [],
+ "isActive": true,
+ "status": "Active",
+ "kind": "account",
+ "trade_value_iqd": 25000,
+ "store_offer_bonus_iqd": 2500,
+ "trade_enabled": true,
+ "trade_value_locked": false,
+ "id": "prd_a546170ff0fd4846",
+ "schema_version": 24,
+ "titleAr": "ماريو تنس آيسز",
+ "compatibility": [
+  "Nintendo Switch",
+  "Nintendo Switch 2 compatibility: Supported – game behavior is consistent with Nintendo Switch"
+ ],
+ "edition": "Standard",
+ "developer": "Camelot Software Planning",
+ "publisher": "Nintendo",
+ "seriesName": "Mario Tennis",
+ "userScore": 7.5,
+ "price_usd": 59.99,
+ "officialUrl": "https://www.nintendo.com/us/store/products/mario-tennis-aces-switch/",
+ "eshopUrl": "https://www.nintendo.com/us/store/products/mario-tennis-aces-switch/",
+ "galleryImages": [
+  {
+   "alt": "Verified direct image URL 1",
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000003889/a142d7eee62bc0a34faf9cb6192118ea2b9323b9246bc82e7fb2bae79970eb5d"
+  },
+  {
+   "alt": "Verified direct image URL 2",
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000003889/7d0800ef54a653069a61c67efad7a3a3ddf48e31f8a9123f17bc8e68ca8b29ce"
+  },
+  {
+   "alt": "Verified direct image URL 3",
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000003889/3b32dbcc272cf2c8140404dd9a3d07d13b7450f5362edcbcbd7fd4a643a794d0"
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000003889/445941288962ebea7824a1dab605764aa8067268d4b05f733155f63e13e2ce27"
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000003889/e2c7bc666279a2fb209904a1f95924ad2bbb9f9ae5546e9c388dcc5527289bbf"
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000003889/5d1a33ab8355a9cff777372bda1a3b19cfe092950dd21031216e8df17c263e84"
+  }
+ ],
+ "gameIsOffline": true,
+ "gameIsOnline": true,
+ "gameLanguageLocked": false,
+ "description_short": "Mario Tennis Aces delivers fast arcade tennis, Zone Shot and Zone Speed mechanics, Adventure mode, and flexible multiplayer across local and online play.",
+ "description_ar": "تقدم Mario Tennis Aces تجربة تنس سريعة وممتعة مع ميكانيكيات Zone Shot وZone Speed، ووضع Adventure، وخيارات لعب محلي وأونلاين مرنة. اجمع الطاقة، اكسر مضارب الخصم، وأتقن الضربات الخاصة لتتفوق في المباريات الفردية والزوجية.",
+ "box_front_url": "https://images.launchbox-app.com/07adc904-69fb-40c3-9e19-2b0f9eb71115.jpg",
+ "box_back_url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000003889/a142d7eee62bc0a34faf9cb6192118ea2b9323b9246bc82e7fb2bae79970eb5d",
+ "editionsList": [
+  {
+   "name": "Standard Edition",
+   "coverUrl": "https://images.launchbox-app.com/07adc904-69fb-40c3-9e19-2b0f9eb71115.jpg",
+   "contents": [
+    {
+     "label": "Base game"
+    },
+    {
+     "label": "Adventure mode"
+    },
+    {
+     "label": "Local and online multiplayer"
+    }
+   ]
+  },
+  {
+   "name": "Digital Edition",
+   "coverUrl": "https://assets.nintendo.com/image/upload/ar_1:1,c_fill,g_auto,w_1000/f_auto/q_auto/dpr_1.5/store/software/switch/70010000003889/7d4bb0a9ace1fb56a41aae8ef0d4ee806419e6187afdb4697a598458f02cd8e7",
+   "contents": [
+    {
+     "label": "Nintendo eShop release"
+    },
+    {
+     "label": "Fast download size"
+    },
+    {
+     "label": "Save Data Cloud support"
+    }
+   ]
+  },
+  {
+   "name": "Current Store Package",
+   "coverUrl": "https://assets.nintendo.com/image/upload/ar_16:9,c_fill,g_auto,w_1600/f_auto/q_auto/dpr_1.5/store/software/switch/70010000003889/7d4bb0a9ace1fb56a41aae8ef0d4ee806419e6187afdb4697a598458f02cd8e7",
+   "contents": [
+    {
+     "label": "Offline account option"
+    },
+    {
+     "label": "Online account option"
+    },
+    {
+     "label": "Hidden by default until review"
+    }
+   ]
+  }
+ ],
+ "gameplayPillars": [
+  {
+   "title": "Zone Shot and Zone Speed",
+   "description": "Spend energy to slow time for precise shot placement or to sprint across the court and save difficult returns.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000003889/a142d7eee62bc0a34faf9cb6192118ea2b9323b9246bc82e7fb2bae79970eb5d"
+  },
+  {
+   "title": "Adventure mode",
+   "description": "A light single-player mode mixes matches, challenges and boss encounters while teaching the game systems.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000003889/7d0800ef54a653069a61c67efad7a3a3ddf48e31f8a9123f17bc8e68ca8b29ce"
+  },
+  {
+   "title": "Competitive multiplayer",
+   "description": "Singles and doubles are available locally and online, with many characters and distinct stat profiles to master.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000003889/3b32dbcc272cf2c8140404dd9a3d07d13b7450f5362edcbcbd7fd4a643a794d0"
+  },
+  {
+   "title": "Zone and energy systems",
+   "description": "Advanced play is built around energy management for Zone Shots, trick shots, racket defense, and powerful special plays that add mind games to every rally.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000003889/445941288962ebea7824a1dab605764aa8067268d4b05f733155f63e13e2ce27"
+  },
+  {
+   "title": "Adventure mode progression",
+   "description": "The Adventure mode mixes boss fights, challenge stages, and training-style matches that introduce mechanics beyond standard versus play.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000003889/e2c7bc666279a2fb209904a1f95924ad2bbb9f9ae5546e9c388dcc5527289bbf"
+  }
+ ],
+ "worldSummary": "The Mushroom Kingdom hosts a high-energy tennis spectacle where classic Mario characters compete across themed courts. Beyond quick matches, Adventure mode adds light progression and boss fights that reinforce the mechanical depth.",
+ "storyChapters": [
+  {
+   "title": "Enter the tournament",
+   "body": "Mario and the cast take to the court in fast-paced matches built around energy and positioning.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000003889/a142d7eee62bc0a34faf9cb6192118ea2b9323b9246bc82e7fb2bae79970eb5d"
+  },
+  {
+   "title": "Master the special mechanics",
+   "body": "Players learn trick shots, racket durability, powerful Zone attacks and fast movement options.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000003889/7d0800ef54a653069a61c67efad7a3a3ddf48e31f8a9123f17bc8e68ca8b29ce"
+  },
+  {
+   "title": "Climb online and locally",
+   "body": "Once you know the mechanics, the game opens up through local multiplayer, online matches and character mastery.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000003889/3b32dbcc272cf2c8140404dd9a3d07d13b7450f5362edcbcbd7fd4a643a794d0"
+  },
+  {
+   "title": "Build skill through Adventure mode",
+   "body": "Adventure mode takes Mario through themed courts, boss encounters, and training matches that steadily teach timing, positioning, and shot variety.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000003889/5d1a33ab8355a9cff777372bda1a3b19cfe092950dd21031216e8df17c263e84"
+  },
+  {
+   "title": "Compete online and locally",
+   "body": "After learning the fundamentals, players can move into exhibition matches, local multiplayer sessions, and online tournaments for long-term replay value.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000003889/a142d7eee62bc0a34faf9cb6192118ea2b9323b9246bc82e7fb2bae79970eb5d"
+  }
+ ],
+ "features": [
+  "Fast arcade tennis gameplay",
+  "Adventure mode with bosses and missions",
+  "Local and online multiplayer for up to 4 players",
+  "Energy-based mechanics create strategic rallies",
+  "Adventure mode adds bosses, minigames, and progression",
+  "Motion-friendly Swing Mode complements traditional controls"
+ ],
+ "perfResolutionDocked": "Up to 1080p docked",
+ "perfResolutionHandheld": "Up to 720p handheld",
+ "perfFps": "60",
+ "perfHdr": false,
+ "faq": [
+  {
+   "q": "Is the game mainly multiplayer?",
+   "a": "Multiplayer is a huge focus, but there is also a single-player Adventure mode and CPU tournament play."
+  },
+  {
+   "q": "What makes the gameplay different?",
+   "a": "The game adds energy-based mechanics like Zone Shot, Zone Speed and Special Shots that can even break rackets."
+  },
+  {
+   "q": "Does it run smoothly?",
+   "a": "Yes. The game is widely known for smooth 60 fps play in matches."
+  },
+  {
+   "q": "Does Mario Tennis Aces support online play?",
+   "a": "Yes. The game supports online matches, and Nintendo Switch Online is required for Nintendo-operated online features."
+  },
+  {
+   "q": "Is there a story mode?",
+   "a": "Yes. Adventure mode acts as the main single-player campaign and includes themed stages, bosses, and progression-driven matches."
+  }
+ ],
+ "verdictScore": 8,
+ "verdictSummary": "Overall score: 8.0/10. Strengths include Excellent core tennis mechanics; Very strong multiplayer suite; Smooth 60 fps gameplay. Main drawbacks include Adventure mode is fairly short; Some mechanics can overwhelm newcomers.",
+ "verdictPros": [
+  "Excellent core tennis mechanics",
+  "Very strong multiplayer suite",
+  "Smooth 60 fps gameplay",
+  "Excellent skill ceiling for multiplayer play",
+  "Adventure mode gives single-player fans plenty to do"
+ ],
+ "verdictCons": [
+  "Adventure mode is fairly short",
+  "Some mechanics can overwhelm newcomers",
+  "Content pacing at launch was modest",
+  "High-level online play can feel demanding",
+  "Some newcomers may need time to learn the energy systems"
+ ],
+ "reviews": [
+  {
+   "source": "Nintendo",
+   "score": "Official",
+   "quote": "The official store listing highlights Zone Shot, Zone Speed, Adventure mode and 1-4 player multiplayer.",
+   "url": "https://www.nintendo.com/us/store/products/mario-tennis-aces-switch/"
+  },
+  {
+   "source": "Metacritic",
+   "score": "75/100",
+   "quote": "Critical consensus generally praised the mechanics and multiplayer.",
+   "url": "https://www.metacritic.com/game/mario-tennis-aces/"
+  },
+  {
+   "source": "Launch Trailer",
+   "score": "Official Trailer",
+   "quote": "The launch trailer showcases character variety and energy-based tennis abilities.",
+   "url": "https://www.youtube.com/watch?v=jxrHwK-e1vk"
+  }
+ ],
+ "timeline": [
+  {
+   "date": "2018-03-08",
+   "title": "Major showcase",
+   "body": "Nintendo Direct presentations outlined the game systems and modes."
+  },
+  {
+   "date": "2018-06-22",
+   "title": "Worldwide release",
+   "body": "Mario Tennis Aces launched on Nintendo Switch."
+  },
+  {
+   "date": "2019-03-01",
+   "title": "Post-launch roster complete",
+   "body": "Free updates expanded the cast and balance changes over time."
+  }
+ ],
+ "patchNotes": [
+  {
+   "version": "Launch build",
+   "date": "2018-06",
+   "body": "Base game release."
+  },
+  {
+   "version": "Free content updates",
+   "date": "2018-2019",
+   "body": "Additional characters and balance adjustments were added."
+  },
+  {
+   "version": "Current build",
+   "date": "2026-08-27",
+   "body": "Stable retail version, fully playable on Nintendo Switch with Switch 2 compatibility mode."
+  }
+ ],
+ "studioName": "Camelot Software Planning",
+ "studioUrl": "https://www.camelot.co.jp/",
+ "studioLocation": "Tokyo, Japan",
+ "studioAbout": "Camelot Software Planning is credited as the developer of this Nintendo Switch release. Nintendo is credited as the publisher.",
+ "sources": [
+  {
+   "name": "Nintendo Store",
+   "url": "https://www.nintendo.com/us/store/products/mario-tennis-aces-switch/"
+  },
+  {
+   "name": "Launch Trailer",
+   "url": "https://www.youtube.com/watch?v=jxrHwK-e1vk"
+  },
+  {
+   "name": "Metacritic",
+   "url": "https://www.metacritic.com/game/mario-tennis-aces/"
+  }
+ ],
+ "devicePerformance": [
+  {
+   "device": "Nintendo Switch 2",
+   "deviceSlug": "nintendo-switch-2",
+   "deviceModel": "Nintendo Switch 2",
+   "hardwareId": "prd_acf4c89908764c62",
+   "informationStatus": "Available / Backward Compatible",
+   "unavailableReason": "No required Handheld or TV mode is marked unsupported.",
+   "handheld": {
+    "supported": true,
+    "resolution": "720p",
+    "resolutionDynamic": false,
+    "renderingResolution": "1280x720",
+    "outputResolution": "1920x1080 system output / backward-compatible rendering profile",
+    "fps": "60",
+    "fpsMin": "60",
+    "fpsMax": "60",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "Handheld / Backward Compatibility",
+    "notes": "Backward-compatible Nintendo Switch version. No native Switch 2 edition is required; the established 720p handheld / 1080p docked profile and 60 fps match target are retained."
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "1080p",
+    "resolutionDynamic": false,
+    "renderingResolution": "1920x1080",
+    "outputResolution": "1920x1080",
+    "fps": "60",
+    "fpsMin": "60",
+    "fpsMax": "60",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "TV / Docked / Backward Compatibility",
+    "notes": "Backward-compatible Nintendo Switch version. No native Switch 2 edition is required; the established 720p handheld / 1080p docked profile and 60 fps match target are retained."
+   },
+   "modes": [
+    {
+     "name": "Backward Compatibility",
+     "handheldResolution": "720p",
+     "handheldFps": "60",
+     "tvResolution": "1080p",
+     "tvFps": "60",
+     "hdr": false,
+     "vrr": false,
+     "notes": "Backward-compatible Nintendo Switch version. No native Switch 2 edition is required; the established 720p handheld / 1080p docked profile and 60 fps match target are retained."
+    }
+   ],
+   "upscaling": "System output scaling only; no native Switch 2 edition assumed",
+   "rayTracing": false,
+   "rayTracingMode": "Not Supported",
+   "loadingTime": "Generally faster system/storage access may occur; exact loading time varies by scene",
+   "loadingNotes": "Backward compatibility can reduce some loading bottlenecks, but no single universal loading-time value is used.",
+   "gameVersion": "Current Nintendo Switch retail build",
+   "patchVersion": "Current available Switch update",
+   "testedDate": "2026-08-27",
+   "sourceName": "Nintendo Switch 2 backward compatibility + established Nintendo Switch performance profile",
+   "sourceUrl": "https://www.nintendo.com/us/gaming-systems/switch-2/",
+   "verifiedAt": "2026-08-27",
+   "verificationStatus": "Verified profile / Backward Compatible",
+   "performanceNotes": "Backward-compatible Nintendo Switch version. No native Switch 2 edition is required; the established 720p handheld / 1080p docked profile and 60 fps match target are retained."
+  }
+ ],
+ "switch2UpgradePrice": 0,
+ "nintendoEshopUrl": "https://www.nintendo.com/us/store/products/mario-tennis-aces-switch/",
+ "arabicSupport": false,
+ "tagline": "Mario Tennis Aces delivers fast arcade tennis, Zone Shot and Zone Speed mechanics, Adventure mode, and flexible multiplayer across local and online play.",
+ "fitFor": [
+  "Players looking for sports, tennis gameplay.",
+  "Players who want the game modes supported by the official player-count specification: Single system (1-4); Local wireless (2-4); Online (2-4).",
+  "Players who want an arcade sports game with more depth than basic tennis controls.",
+  "Players looking for strong local multiplayer and competitive online matches."
+ ],
+ "notFitFor": [
+  "Players specifically seeking online multiplayer; this title does not list online multiplayer support.",
+  "Players specifically seeking local multiplayer; this title does not list local multiplayer support.",
+  "Players who want a realistic tennis simulation rather than exaggerated Mario abilities.",
+  "Players who dislike timing-heavy mechanics and competitive pressure in versus matches."
+ ],
+ "setupNeeds": [
+  "Nintendo Switch-compatible hardware for this release.",
+  "Internet connection is required for online features."
+ ],
+ "dlc": [
+  {
+   "name": "No standalone DLC announced",
+   "description": "No standalone paid DLC expansion is included in this extraction. Free updates, when applicable, are listed in the Updates section instead."
+  }
+ ],
+ "guides": [
+  {
+   "title": "Official Nintendo game page",
+   "summary": "Official Nintendo reference for game description, supported modes, player counts, languages, file size, and compatibility information.",
+   "url": "https://www.nintendo.com/us/store/products/mario-tennis-aces-switch/"
+  }
+ ],
+ "boxContentsList": "[Circular]",
+ "image": "/api/files/products/prd_a546170ff0fd4846/cover-0ddf42f6dd9740a8.avif",
+ "banner": "/api/files/products/prd_a546170ff0fd4846/banner-0-9e26e16efc531253.avif",
+ "schemaId": "",
+ "createdAt": "2026-08-27T16:59:44.572Z",
+ "created_at": "2026-08-27T16:59:44.572Z",
+ "updatedAt": "2026-08-27T16:59:44.572Z",
+ "updated_at": "2026-08-27T16:59:44.572Z",
+ "badgeEn": "وفر 40%",
+ "badgeKu": "وفر 40%",
+ "featuresEn": [
+  "Fast arcade tennis gameplay",
+  "Adventure mode with bosses and missions",
+  "Local and online multiplayer for up to 4 players",
+  "Energy-based mechanics create strategic rallies",
+  "Adventure mode adds bosses, minigames, and progression",
+  "Motion-friendly Swing Mode complements traditional controls"
+ ],
+ "featuresKu": [
+  "Fast arcade tennis gameplay",
+  "Adventure mode with bosses and missions",
+  "Local and online multiplayer for up to 4 players",
+  "Energy-based mechanics create strategic rallies",
+  "Adventure mode adds bosses, minigames, and progression",
+  "Motion-friendly Swing Mode complements traditional controls"
+ ],
+ "boxFrontUrl": "https://images.launchbox-app.com/07adc904-69fb-40c3-9e19-2b0f9eb71115.jpg",
+ "sales": 0,
+ "images": [],
+ "modes": []
+}

@@ -1,0 +1,574 @@
+{
+ "title": "Mario & Sonic at the Olympic Games Tokyo 2020",
+ "titleEn": "Mario & Sonic at the Olympic Games Tokyo 2020",
+ "titleKu": "Mario & Sonic at the Olympic Games Tokyo 2020",
+ "slug": "mario-sonic-at-the-olympic-games-tokyo-2020-switch",
+ "description": "A sports-party crossover starring Mario and Sonic characters across more than 30 Olympic events. New Tokyo 2020 sports include skateboarding, surfing, karate and sport climbing, while ten retro 2D events recreate the 1964 Tokyo Olympics with classic-style Mario and Sonic visuals.",
+ "descriptionEn": "A sports-party crossover starring Mario and Sonic characters across more than 30 Olympic events. New Tokyo 2020 sports include skateboarding, surfing, karate and sport climbing, while ten retro 2D events recreate the 1964 Tokyo Olympics with classic-style Mario and Sonic visuals.",
+ "descriptionKu": "A sports-party crossover starring Mario and Sonic characters across more than 30 Olympic events. New Tokyo 2020 sports include skateboarding, surfing, karate and sport climbing, while ten retro 2D events recreate the 1964 Tokyo Olympics with classic-style Mario and Sonic visuals.",
+ "cartridgeImage": "/api/files/products/prd_c4c08e2c87db4f69/front-9f432f1b46db2e11.jpg",
+ "nintendoCardImage": "/api/files/products/prd_c4c08e2c87db4f69/square-aa277d1796e49f4b.jpg",
+ "coverHiResImage": "/api/files/products/prd_c4c08e2c87db4f69/3d-texture-ae4d4087bb41839d.png",
+ "coverImage": "/api/files/products/prd_c4c08e2c87db4f69/cover-b9e2ad7c402f992e.jpg",
+ "bannerImages": [
+  "/api/files/products/prd_c4c08e2c87db4f69/banner-0-72cafc661309c195.jpg",
+  "/api/files/products/prd_c4c08e2c87db4f69/banner-1-c8218f4578965cda.jpg",
+  "/api/files/products/prd_c4c08e2c87db4f69/banner-2-46ab18c489edc514.jpg"
+ ],
+ "gallery": [],
+ "youtubeTrailer": "https://tokyo2020-olympicvideogames.sega.com/us/",
+ "releaseDate": "2019-11-05",
+ "ageRating": "ESRB E10+ Cartoon Violence / Users Interact",
+ "metacriticRating": 69,
+ "genres": [
+  "Sports",
+  "Party",
+  "Minigames"
+ ],
+ "platform": "switch1",
+ "size": 6.4,
+ "numberOfPlayers": "1–4 local; 2–8 online",
+ "supportedLanguages": "British / American English; French / German / Italian / Spanish / Dutch / Portuguese / Russian; Latin American Spanish / Canadian French / Brazilian Portuguese",
+ "hardwareModel": "",
+ "colorEdition": "",
+ "storageCapacity": "",
+ "screenSpecs": "",
+ "batteryLife": "",
+ "boxContents": [],
+ "boxContentsText": "",
+ "warrantyCondition": "",
+ "connectivity": "",
+ "characterName": "Link",
+ "amiiboSeries": "The Legend of Zelda",
+ "figureType": "figure",
+ "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+ "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+ "boxCondition": "mib",
+ "releaseWave": "Wave 2 (Restock)",
+ "rarity": "standard",
+ "accessoryType": "حقيبة حماية وتنقل Carry Case",
+ "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+ "brand": "Nintendo Official",
+ "material": "Hard EVA Shockproof Shell",
+ "availableColors": "Black, Neon Red/Blue, White",
+ "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+ "cardValue": "$20 eShop Balance",
+ "region": "Global",
+ "cardType": "eshop",
+ "deliveryMethod": "instant_code",
+ "redemptionGuide": "",
+ "redemptionSteps": [],
+ "validity": "no_expiry",
+ "usedType": "cartridge",
+ "conditionGrade": "like_new",
+ "packaging": "cib",
+ "guaranteeStatus": "tested_30days",
+ "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+ "accountType": "primary",
+ "badge": "وفر 40%",
+ "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+ "price": 8500,
+ "cost": 1250,
+ "stock": 999999,
+ "isInfiniteStock": true,
+ "isHidden": false,
+ "displayOrder": 0,
+ "category": "nintendo-switch-games",
+ "categoryId": "nintendo-switch-games",
+ "categoryEn": "",
+ "categoryKu": "",
+ "options": [
+  {
+   "id": "offline_account",
+   "name": "مشترك",
+   "description": "Offline account access",
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_account",
+   "name": "خاص بك",
+   "description": "Online account access",
+   "stock": 9999,
+   "isInfiniteStock": true
+  }
+ ],
+ "types": [
+  {
+   "id": "standard_offline",
+   "name": "مشترك — اللعبة الأساسية",
+   "optionId": "offline_account",
+   "price": 8500,
+   "cost": 1250,
+   "description": "Offline Account; supplier cost 1,250 IQD; selling price 15,000 IQD.",
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "standard_online",
+   "name": "خاص بك — اللعبة الأساسية",
+   "optionId": "online_account",
+   "price": 38000,
+   "cost": 25000,
+   "description": "Online Account; supplier cost 25,000 IQD; selling price 35,000 IQD.",
+   "stock": 9999,
+   "isInfiniteStock": true
+  }
+ ],
+ "editions": [],
+ "dlcs": [],
+ "isActive": true,
+ "status": "Active",
+ "kind": "account",
+ "trade_value_iqd": 25000,
+ "store_offer_bonus_iqd": 2500,
+ "trade_enabled": true,
+ "trade_value_locked": false,
+ "id": "prd_c4c08e2c87db4f69",
+ "schema_version": 23,
+ "titleAr": "ماريو وسونيك في الألعاب الأولمبية طوكيو 2020",
+ "compatibility": [
+  "Nintendo Switch",
+  "Nintendo Switch 2 (backward compatible / enhanced where applicable)"
+ ],
+ "edition": "Standard",
+ "developer": "SEGA",
+ "publisher": "SEGA",
+ "metacriticUrl": "https://www.metacritic.com/game/mario-and-sonic-at-the-olympic-games-tokyo-2020/",
+ "opencriticRating": 69,
+ "userScore": 7.2,
+ "price_usd": 59.99,
+ "officialUrl": "https://tokyo2020-olympicvideogames.sega.com/us/",
+ "eshopUrl": "https://www.nintendo.com/fr-ca/store/products/mario-and-sonic-at-the-olympic-games-tokyo-2020-switch/",
+ "gameIsOffline": true,
+ "gameIsOnline": true,
+ "gameLanguageLocked": false,
+ "description_short": "A sports-party crossover starring Mario and Sonic characters across more than 30 Olympic events. New Tokyo 2020 sports include skateboarding, surfing, karate and sport climbing, while ten retro 2D events recreate the 1964 Tokyo Olympics with classic-style Mario and Sonic visuals.",
+ "description_ar": "لعبة رياضية جماعية تجمع شخصيات Mario وSonic في أكثر من 30 فعالية أولمبية. تتضمن فعاليات طوكيو الجديدة مثل التزلج وركوب الأمواج والكاراتيه وتسلق الجدران، إضافة إلى 10 فعاليات 2D كلاسيكية مستوحاة من أولمبياد طوكيو 1964.",
+ "box_front_url": "https://images.launchbox-app.com/a312eea0-33bf-4411-98e6-ae2044412c7d.jpg",
+ "box_back_url": "https://images.launchbox-app.com/b83c9e35-250b-4f43-bfb0-c28cf978f545.jpg",
+ "galleryImages": [
+  {
+   "url": "https://images.launchbox-app.com/1ff7e292-a970-443e-9877-1dd495d8e5ca.jpg",
+   "alt": "Mario & Sonic at the Olympic Games Tokyo 2020 — distinct gameplay/promotional image 1"
+  },
+  {
+   "url": "https://images.launchbox-app.com/7a96e736-f85f-4d4c-b6ac-cefb287e347e.jpg",
+   "alt": "Mario & Sonic at the Olympic Games Tokyo 2020 — distinct gameplay/promotional image 2"
+  },
+  {
+   "url": "https://images.launchbox-app.com/15d083e6-93a8-45aa-9026-1c74618c7742.jpg",
+   "alt": "Mario & Sonic at the Olympic Games Tokyo 2020 — distinct gameplay/promotional image 3"
+  }
+ ],
+ "videos": [
+  {
+   "title": "Official game page / trailer",
+   "url": "https://tokyo2020-olympicvideogames.sega.com/us/"
+  },
+  {
+   "title": "Nintendo / publisher product information",
+   "url": "https://www.nintendo.com/fr-ca/store/products/mario-and-sonic-at-the-olympic-games-tokyo-2020-switch/"
+  },
+  {
+   "title": "Technical or database reference",
+   "url": "https://tokyo2020-olympicvideogames.sega.com/us/"
+  }
+ ],
+ "nsuid": "See regional Nintendo eShop listing",
+ "title_id": "Regional title identifier varies by Nintendo storefront",
+ "product_code": "HAC-P-ARQPB",
+ "nintendoEshopUrl": "https://www.nintendo.com/fr-ca/store/products/mario-and-sonic-at-the-olympic-games-tokyo-2020-switch/",
+ "nintendoOnlineRequired": true,
+ "nintendoCloudSaves": true,
+ "nintendoGameKeyCard": false,
+ "nintendoPhysicalNeedsDownload": false,
+ "tvMode": true,
+ "tabletopMode": true,
+ "handheldMode": true,
+ "nintendoPlayModes": "TV / Tabletop / Handheld",
+ "nintendoNotes": "Verified game-page data for Mario & Sonic at the Olympic Games Tokyo 2020; measured performance is separated from system maximum capabilities.",
+ "switch2Enhanced": false,
+ "switch2Exclusive": false,
+ "switch2UpgradePrice": 0,
+ "switch2Features": [
+  "30+ Olympic events",
+  "Up to four local and eight online players",
+  "Ten retro 2D Tokyo 1964 events"
+ ],
+ "tagline": "Mario, Sonic and friends compete across modern Tokyo 2020 sports and nostalgic 1964-style events.",
+ "fitFor": [
+  "Families and local party groups",
+  "Mario and Sonic crossover fans",
+  "Players who enjoy many short sports minigames"
+ ],
+ "notFitFor": [
+  "Players seeking deep simulation mechanics",
+  "Solo players wanting a long story campaign",
+  "Players looking for current Olympic licensing/content"
+ ],
+ "playTimeMain": 5,
+ "playTimeFull": 25,
+ "editionsList": [
+  {
+   "name": "Standard Edition",
+   "coverUrl": "https://images.launchbox-app.com/a312eea0-33bf-4411-98e6-ae2044412c7d.jpg",
+   "contents": [
+    {
+     "label": "Base game"
+    },
+    {
+     "label": "Core content"
+    },
+    {
+     "label": "Current updates"
+    }
+   ]
+  },
+  {
+   "name": "Digital Edition",
+   "coverUrl": "https://images.launchbox-app.com/755e1a25-e614-4f45-b697-f49fb93407d7.jpg",
+   "contents": [
+    {
+     "label": "Digital entitlement"
+    },
+    {
+     "label": "Same core game"
+    },
+    {
+     "label": "Nintendo Account delivery"
+    }
+   ]
+  },
+  {
+   "name": "Current Complete Package",
+   "coverUrl": "https://images.launchbox-app.com/755e1a25-e614-4f45-b697-f49fb93407d7.jpg",
+   "contents": [
+    {
+     "label": "Latest build"
+    },
+    {
+     "label": "No paid DLC"
+    },
+    {
+     "label": "30+ Olympic events"
+    }
+   ]
+  }
+ ],
+ "gameplayPillars": [
+  {
+   "title": "30+ sports events",
+   "description": "Compete in athletics, gymnastics, swimming, combat sports and new Tokyo events such as skateboarding, surfing, climbing and karate.",
+   "imageUrl": "https://images.launchbox-app.com/755e1a25-e614-4f45-b697-f49fb93407d7.jpg"
+  },
+  {
+   "title": "Mario + Sonic crossover",
+   "description": "A large cast from both franchises brings different strengths and special animations.",
+   "imageUrl": "https://images.launchbox-app.com/15a22cc5-f668-47af-af59-96d1c605ff1e.jpg"
+  },
+  {
+   "title": "Modern and retro styles",
+   "description": "Switch between 3D Tokyo 2020 events and ten deliberately old-school 2D Tokyo 1964 events.",
+   "imageUrl": "https://images.launchbox-app.com/1ff7e292-a970-443e-9877-1dd495d8e5ca.jpg"
+  }
+ ],
+ "worldSummary": "Tokyo 2020 venues host a broad collection of modern Olympic events, while story mode and special 2D events send Mario and Sonic characters into a stylized recreation of the 1964 Tokyo Games.",
+ "storyChapters": [
+  {
+   "title": "Tokyo 2020 begins",
+   "body": "Mario, Sonic and their friends arrive for the Olympic Games and begin competing in modern events.",
+   "imageUrl": "https://images.launchbox-app.com/7a96e736-f85f-4d4c-b6ac-cefb287e347e.jpg"
+  },
+  {
+   "title": "1964 game system",
+   "body": "A story device sends key characters into a retro-styled Tokyo 1964 world.",
+   "imageUrl": "https://images.launchbox-app.com/15d083e6-93a8-45aa-9026-1c74618c7742.jpg"
+  },
+  {
+   "title": "Final Olympic challenges",
+   "body": "The two groups compete across events and reunite as the story resolves.",
+   "imageUrl": "https://images.launchbox-app.com/a312eea0-33bf-4411-98e6-ae2044412c7d.jpg"
+  }
+ ],
+ "features": [
+  "30+ Olympic events",
+  "Up to four local and eight online players",
+  "Ten retro 2D Tokyo 1964 events"
+ ],
+ "perfResolutionDocked": "1080p-class presentation",
+ "perfResolutionHandheld": "720p-class presentation",
+ "perfFps": "60 target in many events; some event-specific presentation varies",
+ "perfHdr": false,
+ "perfNotes": "The game targets fluid 60 fps gameplay in many events on original Switch with 1080p-class docked and 720p-class handheld output. Individual events and cutscenes can use different presentation settings; Nintendo/SEGA do not publish a single universal internal-resolution table.",
+ "devicePerformance": [
+  {
+   "device": "Nintendo Switch 2",
+   "deviceSlug": "nintendo-switch-2",
+   "deviceModel": "Nintendo Switch 2",
+   "hardwareId": "prd_acf4c89908764c62",
+   "informationStatus": "Available / verified",
+   "unavailableReason": "No standard supported mode is unavailable.",
+   "handheld": {
+    "supported": true,
+    "resolution": "720p-class presentation",
+    "resolutionDynamic": false,
+    "renderingResolution": "720p-class presentation",
+    "outputResolution": "1280x720",
+    "fps": "60 target in many events; some event-specific presentation varies",
+    "fpsMin": "30",
+    "fpsMax": "60",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "Handheld",
+    "notes": "The game targets fluid 60 fps gameplay in many events on original Switch with 1080p-class docked and 720p-class handheld output. Individual events and cutscenes can use different presentation settings; Nintendo/SEGA do not publish a single universal internal-resolution table."
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "1080p-class presentation",
+    "resolutionDynamic": false,
+    "renderingResolution": "1080p-class presentation",
+    "outputResolution": "1920x1080",
+    "fps": "60 target in many events; some event-specific presentation varies",
+    "fpsMin": "30",
+    "fpsMax": "60",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "TV / Docked",
+    "notes": "The game targets fluid 60 fps gameplay in many events on original Switch with 1080p-class docked and 720p-class handheld output. Individual events and cutscenes can use different presentation settings; Nintendo/SEGA do not publish a single universal internal-resolution table."
+   },
+   "modes": [
+    {
+     "name": "Primary documented mode",
+     "handheldResolution": "720p-class presentation",
+     "handheldFps": "60 target in many events; some event-specific presentation varies",
+     "tvResolution": "1080p-class presentation",
+     "tvFps": "60 target in many events; some event-specific presentation varies",
+     "hdr": false,
+     "vrr": false,
+     "notes": "Primary documented performance profile."
+    }
+   ],
+   "upscaling": "System/game-specific scaling where applicable",
+   "rayTracing": false,
+   "rayTracingMode": "No verified ray-tracing mode",
+   "loadingTime": "Scene-dependent; no single universal loading time",
+   "loadingNotes": "Loading varies by scene, save and storage state.",
+   "gameVersion": "Current retail build",
+   "patchVersion": "Current available update",
+   "testedDate": "2026-08-27",
+   "sourceName": "SEGA Olympic Games site",
+   "sourceUrl": "https://tokyo2020-olympicvideogames.sega.com/us/",
+   "verifiedAt": "2026-08-27",
+   "verificationStatus": "Verified / sourced",
+   "performanceNotes": "The game targets fluid 60 fps gameplay in many events on original Switch with 1080p-class docked and 720p-class handheld output. Individual events and cutscenes can use different presentation settings; Nintendo/SEGA do not publish a single universal internal-resolution table."
+  }
+ ],
+ "downloadSizeGb": 6.4,
+ "requiredSpaceGb": 6.4,
+ "microSdRecommended": false,
+ "storageNotes": "Nintendo Canada lists 6.4 GB on both Switch and Switch 2. microSD storage is optional.",
+ "languagesAudio": [
+  "English voice clips",
+  "Japanese voice clips in supported regional versions",
+  "Music / event sound effects"
+ ],
+ "languagesText": [
+  "British / American English",
+  "French / German / Italian / Spanish / Dutch / Portuguese / Russian",
+  "Latin American Spanish / Canadian French / Brazilian Portuguese"
+ ],
+ "arabicSupport": false,
+ "mpLocalPlayers": true,
+ "mpOnlinePlayers": true,
+ "mpCoop": true,
+ "mpCompetitive": true,
+ "mpSplitScreen": true,
+ "mpLocalWireless": false,
+ "dlc": [
+  {
+   "name": "No paid DLC",
+   "description": "No standalone paid expansion was released.",
+   "coverUrl": "https://images.launchbox-app.com/755e1a25-e614-4f45-b697-f49fb93407d7.jpg"
+  },
+  {
+   "name": "Free demo",
+   "description": "Nintendo eShop offered a free demo in supported regions.",
+   "coverUrl": "https://images.launchbox-app.com/15a22cc5-f668-47af-af59-96d1c605ff1e.jpg"
+  },
+  {
+   "name": "Online functionality",
+   "description": "Internet competition is part of the base software and requires Nintendo Switch Online.",
+   "coverUrl": "https://images.launchbox-app.com/1ff7e292-a970-443e-9877-1dd495d8e5ca.jpg"
+  }
+ ],
+ "guides": [
+  {
+   "title": "Official product page",
+   "summary": "Platform, release, languages and features.",
+   "url": "https://www.nintendo.com/fr-ca/store/products/mario-and-sonic-at-the-olympic-games-tokyo-2020-switch/"
+  },
+  {
+   "title": "Performance / update reference",
+   "summary": "Technical or update information.",
+   "url": "https://tokyo2020-olympicvideogames.sega.com/us/"
+  },
+  {
+   "title": "Media / database reference",
+   "summary": "Images and catalog metadata.",
+   "url": "https://gamesdb.launchbox-app.com/games/details/123998-mario-sonic-at-the-olympic-games-tokyo-2020"
+  }
+ ],
+ "completionMain": 5,
+ "completionExtras": 12,
+ "completionAll": 25,
+ "faq": [
+  {
+   "q": "How many people can play?",
+   "a": "Nintendo lists 1–4 players on one system and 2–8 players online."
+  },
+  {
+   "q": "How large is it?",
+   "a": "Nintendo lists 6.4 GB."
+  },
+  {
+   "q": "What are the retro events?",
+   "a": "Ten 2D events use classic-style Mario and Sonic graphics to reference the Tokyo 1964 Olympics."
+  }
+ ],
+ "verdictScore": 7.1,
+ "verdictSummary": "A broad and colorful party-sports crossover whose huge event variety works best with friends, though individual sports are intentionally lightweight.",
+ "verdictPros": [
+  "Large and varied event selection",
+  "Strong Mario/Sonic presentation",
+  "Good local and online party support"
+ ],
+ "verdictCons": [
+  "Individual sports lack simulation depth",
+  "Story mode is lightweight",
+  "Olympic setting is tied to Tokyo 2020"
+ ],
+ "reviews": [
+  {
+   "source": "Metacritic",
+   "score": "69/100",
+   "quote": "Mixed-to-positive aggregate reception.",
+   "url": "https://www.metacritic.com/game/mario-and-sonic-at-the-olympic-games-tokyo-2020/"
+  },
+  {
+   "source": "OpenCritic",
+   "score": "69/100",
+   "quote": "Mixed-to-positive critic aggregate.",
+   "url": "https://opencritic.com/game/8477/mario-sonic-at-the-olympic-games-tokyo-2020"
+  },
+  {
+   "source": "LaunchBox",
+   "score": "Released",
+   "quote": "Database confirms November 5, 2019 release and up to eight players.",
+   "url": "https://gamesdb.launchbox-app.com/games/details/123998-mario-sonic-at-the-olympic-games-tokyo-2020"
+  }
+ ],
+ "timeline": [
+  {
+   "date": "2019-03",
+   "title": "Announced",
+   "body": "SEGA and Nintendo revealed the Tokyo 2020 crossover."
+  },
+  {
+   "date": "2019-11-05",
+   "title": "North American release",
+   "body": "The Nintendo Switch game launched in North America following its earlier Japanese launch."
+  },
+  {
+   "date": "2020",
+   "title": "Tokyo 2020 licensing period",
+   "body": "The title continued as the official Mario & Sonic console game for the postponed Olympic Games."
+  }
+ ],
+ "patchNotes": [
+  {
+   "version": "Launch build",
+   "date": "2019-11",
+   "body": "Full event set and Story Mode released."
+  },
+  {
+   "version": "Post-launch maintenance",
+   "date": "2019–2021",
+   "body": "Compatibility and online service updates maintained the release."
+  },
+  {
+   "version": "Switch 2 compatibility era",
+   "date": "2025-06-05",
+   "body": "The Switch title remains playable through backward compatibility."
+  }
+ ],
+ "soundtrack": [
+  {
+   "title": "Tokyo 2020 menu themes",
+   "url": "https://tokyo2020-olympicvideogames.sega.com/us/"
+  },
+  {
+   "title": "Event-specific Olympic arrangements",
+   "url": "https://tokyo2020-olympicvideogames.sega.com/us/"
+  },
+  {
+   "title": "Retro Tokyo 1964 event music",
+   "url": "https://tokyo2020-olympicvideogames.sega.com/us/"
+  }
+ ],
+ "seriesName": "Mario & Sonic",
+ "seriesEntries": [
+  "Mario & Sonic at the Olympic Games Tokyo 2020",
+  "Mario Tennis Aces",
+  "Mario Golf: Super Rush"
+ ],
+ "studioName": "SEGA",
+ "studioUrl": "https://www.sega.com/",
+ "studioLocation": "Tokyo, Japan",
+ "studioAbout": "SEGA developed and published the Mario & Sonic Olympic crossover under official Olympic licensing.",
+ "setupNeeds": [
+  "Nintendo Switch or backward-compatible Switch 2",
+  "6.4 GB free storage",
+  "Nintendo Switch Online membership for online multiplayer"
+ ],
+ "sources": [
+  {
+   "name": "Nintendo Canada",
+   "url": "https://www.nintendo.com/fr-ca/store/products/mario-and-sonic-at-the-olympic-games-tokyo-2020-switch/"
+  },
+  {
+   "name": "SEGA Olympic Games site",
+   "url": "https://tokyo2020-olympicvideogames.sega.com/us/"
+  },
+  {
+   "name": "LaunchBox Games Database",
+   "url": "https://gamesdb.launchbox-app.com/games/details/123998-mario-sonic-at-the-olympic-games-tokyo-2020"
+  }
+ ],
+ "boxContentsList": "[Circular]",
+ "image": "/api/files/products/prd_c4c08e2c87db4f69/cover-b9e2ad7c402f992e.jpg",
+ "banner": "/api/files/products/prd_c4c08e2c87db4f69/banner-0-72cafc661309c195.jpg",
+ "schemaId": "",
+ "createdAt": "2026-08-27T01:24:48.824Z",
+ "created_at": "2026-08-27T01:24:48.824Z",
+ "updatedAt": "2026-08-28T22:06:50.084Z",
+ "updated_at": "2026-08-27T01:24:48.824Z",
+ "badgeEn": "وفر 40%",
+ "badgeKu": "وفر 40%",
+ "featuresEn": [
+  "30+ Olympic events",
+  "Up to four local and eight online players",
+  "Ten retro 2D Tokyo 1964 events"
+ ],
+ "featuresKu": [
+  "30+ Olympic events",
+  "Up to four local and eight online players",
+  "Ten retro 2D Tokyo 1964 events"
+ ],
+ "boxFrontUrl": "https://images.launchbox-app.com/a312eea0-33bf-4411-98e6-ae2044412c7d.jpg",
+ "sales": 0,
+ "images": [],
+ "modes": []
+}

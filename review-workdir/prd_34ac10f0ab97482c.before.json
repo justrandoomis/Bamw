@@ -1,0 +1,595 @@
+{
+ "title": "Mario Tennis Fever",
+ "titleEn": "Mario Tennis Fever",
+ "titleKu": "Mario Tennis Fever",
+ "slug": "mario-tennis-fever-switch-2",
+ "description": "Mario Tennis returns on Nintendo Switch 2 with 38 playable characters, 30 Fever Rackets, Tournament, Trial Towers, Mix It Up, Adventure, Swing Mode, ranked online play, amiibo support and GameShare. Fever Shots give each racket a distinct court-changing effect.",
+ "descriptionEn": "Mario Tennis returns on Nintendo Switch 2 with 38 playable characters, 30 Fever Rackets, Tournament, Trial Towers, Mix It Up, Adventure, Swing Mode, ranked online play, amiibo support and GameShare. Fever Shots give each racket a distinct court-changing effect.",
+ "descriptionKu": "Mario Tennis returns on Nintendo Switch 2 with 38 playable characters, 30 Fever Rackets, Tournament, Trial Towers, Mix It Up, Adventure, Swing Mode, ranked online play, amiibo support and GameShare. Fever Shots give each racket a distinct court-changing effect.",
+ "cartridgeImage": "/api/files/products/prd_34ac10f0ab97482c/front-fb679ef97526da22.jpg",
+ "nintendoCardImage": "/api/files/products/prd_34ac10f0ab97482c/square-2456515729c50be0.png",
+ "coverHiResImage": "/api/files/products/prd_34ac10f0ab97482c/3d-texture-df47431ebc3e73cb.jpg",
+ "coverImage": "/api/files/products/prd_34ac10f0ab97482c/cover-a9e57e75177d8493.jpg",
+ "bannerImages": [
+  "/api/files/products/prd_34ac10f0ab97482c/banner-0-7563876ee6a5b991.webp",
+  "/api/files/products/prd_34ac10f0ab97482c/banner-1-24c659205c019ecc.webp",
+  "/api/files/products/prd_34ac10f0ab97482c/banner-2-c4f1156d81b8e1e5.webp",
+  "/api/files/products/prd_34ac10f0ab97482c/banner-3-473e038f7daefe6b.jpg",
+  "/api/files/products/prd_34ac10f0ab97482c/banner-4-ae8ee73c21684b54.webp"
+ ],
+ "gallery": [],
+ "youtubeTrailer": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-2-games/Mario-Tennis-Fever-2915160.html",
+ "releaseDate": "2026-02-12",
+ "ageRating": "PEGI 7 / ESRB E",
+ "metacriticRating": 80,
+ "genres": [
+  "Sports",
+  "Tennis",
+  "Party"
+ ],
+ "platform": "switch2",
+ "size": 7.7,
+ "numberOfPlayers": "1–4 local; 2–4 local wireless; 1–4 online",
+ "supportedLanguages": "Japanese / English; French / German / Italian / Spanish / Dutch / Portuguese; Korean / Chinese",
+ "hardwareModel": "",
+ "colorEdition": "",
+ "storageCapacity": "",
+ "screenSpecs": "",
+ "batteryLife": "",
+ "boxContents": [],
+ "boxContentsText": "",
+ "warrantyCondition": "",
+ "connectivity": "",
+ "characterName": "Link",
+ "amiiboSeries": "The Legend of Zelda",
+ "figureType": "figure",
+ "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+ "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+ "boxCondition": "mib",
+ "releaseWave": "Wave 2 (Restock)",
+ "rarity": "standard",
+ "accessoryType": "حقيبة حماية وتنقل Carry Case",
+ "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+ "brand": "Nintendo Official",
+ "material": "Hard EVA Shockproof Shell",
+ "availableColors": "Black, Neon Red/Blue, White",
+ "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+ "cardValue": "$20 eShop Balance",
+ "region": "Global",
+ "cardType": "eshop",
+ "deliveryMethod": "instant_code",
+ "redemptionGuide": "",
+ "redemptionSteps": [],
+ "validity": "no_expiry",
+ "usedType": "cartridge",
+ "conditionGrade": "like_new",
+ "packaging": "cib",
+ "guaranteeStatus": "tested_30days",
+ "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+ "accountType": "primary",
+ "badge": "وفر 40%",
+ "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+ "price": 15000,
+ "cost": 1500,
+ "stock": 999999,
+ "isInfiniteStock": true,
+ "isHidden": false,
+ "displayOrder": 0,
+ "category": "nintendo-switch-games",
+ "categoryId": "nintendo-switch-games",
+ "categoryEn": "",
+ "categoryKu": "",
+ "options": [
+  {
+   "id": "offline_account",
+   "name": "Offline Account",
+   "description": "Offline account access",
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_account",
+   "name": "Online Account",
+   "description": "Online account access",
+   "stock": 9999,
+   "isInfiniteStock": true
+  }
+ ],
+ "types": [
+  {
+   "id": "standard_offline",
+   "name": "Offline Account",
+   "optionId": "offline_account",
+   "price": 15000,
+   "cost": 1500,
+   "description": "Offline Account; supplier cost 1,500 IQD; selling price 15,000 IQD.",
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "standard_online",
+   "name": "Online Account",
+   "optionId": "online_account",
+   "price": "38000",
+   "cost": 20750,
+   "description": "Online Account; supplier cost 20,750 IQD; selling price 30,750 IQD.",
+   "stock": 9999,
+   "isInfiniteStock": true
+  }
+ ],
+ "editions": [],
+ "dlcs": [],
+ "isActive": true,
+ "status": "Active",
+ "kind": "account",
+ "trade_value_iqd": 48000,
+ "store_offer_bonus_iqd": 2500,
+ "trade_enabled": true,
+ "trade_value_locked": false,
+ "id": "prd_34ac10f0ab97482c",
+ "schema_version": 23,
+ "titleAr": "ماريو تنس فيفر",
+ "compatibility": [
+  "Nintendo Switch 2"
+ ],
+ "edition": "Standard",
+ "developer": "Camelot Software Planning",
+ "publisher": "Nintendo",
+ "metacriticUrl": "https://www.nintendolife.com/reviews/nintendo-switch-2/mario-tennis-fever",
+ "opencriticRating": 80,
+ "userScore": 8,
+ "price_usd": 69.99,
+ "officialUrl": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-2-games/Mario-Tennis-Fever-2915160.html",
+ "eshopUrl": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-2-games/Mario-Tennis-Fever-2915160.html",
+ "gameIsOffline": true,
+ "gameIsOnline": true,
+ "gameLanguageLocked": false,
+ "description_short": "Mario Tennis returns on Nintendo Switch 2 with 38 playable characters, 30 Fever Rackets, Tournament, Trial Towers, Mix It Up, Adventure, Swing Mode, ranked online play, amiibo support and GameShare. Fever Shots give each racket a distinct court-changing effect.",
+ "description_ar": "تعود سلسلة Mario Tennis على Nintendo Switch 2 مع 38 شخصية و30 Fever Racket، إضافة إلى Tournament وTrial Towers وMix It Up وAdventure وSwing Mode واللعب المصنف أونلاين وGameShare ودعم amiibo. لكل Fever Racket قدرة خاصة تغيّر سير المباراة.",
+ "box_front_url": "https://www.mariowiki.com/Special:Redirect/file/Mario-Tennis-Fever-boxart.jpg",
+ "box_back_url": "https://www.mariowiki.com/Special:Redirect/file/Mario-Tennis-Fever-boxart.jpg",
+ "galleryImages": [
+  {
+   "url": "https://www.mariowiki.com/Special:Redirect/file/MTF%20Gameplay%20screenshot.png",
+   "alt": "Mario Tennis Fever — distinct gameplay/promotional image 1"
+  },
+  {
+   "url": "https://www.mariowiki.com/Special:Redirect/file/MTF%20Mario%20Introduction%20Opening.png",
+   "alt": "Mario Tennis Fever — distinct gameplay/promotional image 2"
+  },
+  {
+   "url": "https://www.mariowiki.com/Special:Redirect/file/MTF%20Peach%20Introduction%20Opening.png",
+   "alt": "Mario Tennis Fever — distinct gameplay/promotional image 3"
+  },
+  {
+   "url": "https://www.mariowiki.com/Special:Redirect/file/MTF%20Bowser%20Introduction%20Opening.png",
+   "alt": "Mario Tennis Fever — distinct gameplay/promotional image 4"
+  },
+  {
+   "url": "https://www.mariowiki.com/Special:Redirect/file/MTF%20Daisy%20Introduction%20Opening.png",
+   "alt": "Mario Tennis Fever — distinct gameplay/promotional image 5"
+  },
+  {
+   "url": "https://www.mariowiki.com/Special:Redirect/file/DiddyKongMarioTennisFever.png",
+   "alt": "Mario Tennis Fever — distinct gameplay/promotional image 6"
+  },
+  {
+   "url": "https://www.mariowiki.com/Special:Redirect/file/MTF%20Five%20Tennis%20Tips%201.png",
+   "alt": "Mario Tennis Fever — distinct gameplay/promotional image 7"
+  },
+  {
+   "url": "https://www.mariowiki.com/Special:Redirect/file/MTF%20Five%20Tennis%20Tips%202.png",
+   "alt": "Mario Tennis Fever — distinct gameplay/promotional image 8"
+  }
+ ],
+ "videos": [
+  {
+   "title": "Official game page / trailer",
+   "url": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-2-games/Mario-Tennis-Fever-2915160.html"
+  },
+  {
+   "title": "Nintendo / publisher product information",
+   "url": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-2-games/Mario-Tennis-Fever-2915160.html"
+  },
+  {
+   "title": "Technical or database reference",
+   "url": "https://en-americas-support.nintendo.com/app/answers/detail/a_id/68671/p/1095/c/120"
+  }
+ ],
+ "nsuid": "See regional Nintendo eShop listing",
+ "title_id": "Regional title identifier varies by Nintendo storefront",
+ "product_code": "Nintendo Switch 2 retail code varies by region",
+ "nintendoEshopUrl": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-2-games/Mario-Tennis-Fever-2915160.html",
+ "nintendoOnlineRequired": true,
+ "nintendoCloudSaves": true,
+ "nintendoGameKeyCard": false,
+ "nintendoPhysicalNeedsDownload": false,
+ "tvMode": true,
+ "tabletopMode": true,
+ "handheldMode": true,
+ "nintendoPlayModes": "TV / Tabletop / Handheld",
+ "nintendoNotes": "Verified game-page data for Mario Tennis Fever; measured performance is separated from system maximum capabilities.",
+ "switch2Enhanced": true,
+ "switch2Exclusive": true,
+ "switch2UpgradePrice": 0,
+ "switch2Features": [
+  "38 playable characters",
+  "30 Fever Rackets with unique powers",
+  "GameShare, online rooms/ranked play and Joy-Con 2 Swing Mode"
+ ],
+ "tagline": "Mario tennis with 38 characters, 30 Fever Rackets and fast 60 fps court action.",
+ "fitFor": [
+  "Fans of competitive arcade tennis",
+  "Local and online multiplayer groups",
+  "Players who enjoy Mario-style special abilities"
+ ],
+ "notFitFor": [
+  "Players seeking a deep RPG-length story mode",
+  "Players who only want realistic tennis simulation",
+  "Players who dislike special-effect-heavy matches"
+ ],
+ "playTimeMain": 4,
+ "playTimeFull": 30,
+ "editionsList": [
+  {
+   "name": "Standard Edition",
+   "coverUrl": "https://www.mariowiki.com/Special:Redirect/file/Mario-Tennis-Fever-boxart.jpg",
+   "contents": [
+    {
+     "label": "Base game"
+    },
+    {
+     "label": "Core content"
+    },
+    {
+     "label": "Current updates"
+    }
+   ]
+  },
+  {
+   "name": "Digital Edition",
+   "coverUrl": "https://www.mariowiki.com/Special:Redirect/file/MTF%20Home%20Menu%20Icon.png",
+   "contents": [
+    {
+     "label": "Digital entitlement"
+    },
+    {
+     "label": "Same core game"
+    },
+    {
+     "label": "Nintendo Account delivery"
+    }
+   ]
+  },
+  {
+   "name": "Current Complete Package",
+   "coverUrl": "https://www.mariowiki.com/Special:Redirect/file/My%20Nintendo%20MTF%20wallpaper%20desktop.jpg",
+   "contents": [
+    {
+     "label": "Latest build"
+    },
+    {
+     "label": "Free Galaxy update"
+    },
+    {
+     "label": "38 playable characters"
+    }
+   ]
+  }
+ ],
+ "gameplayPillars": [
+  {
+   "title": "Fever Rackets",
+   "description": "Build the Fever Gauge and trigger racket-specific Fever Shots that freeze, shrink, shock, duplicate or otherwise disrupt opponents.",
+   "imageUrl": "https://www.mariowiki.com/Special:Redirect/file/My%20Nintendo%20MTF%20wallpaper%20desktop.jpg"
+  },
+  {
+   "title": "Pure tennis foundation",
+   "description": "Topspin, slice, lob, movement, positioning and shot timing remain central underneath the Mario powers.",
+   "imageUrl": "https://www.mariowiki.com/Special:Redirect/file/My%20Nintendo%20Mario%20Tennis%20Fever%20(Mario)%20wallpaper%20desktop.png"
+  },
+  {
+   "title": "Many ways to compete",
+   "description": "Play Tournament, Trial Towers, Mix It Up, Adventure, Swing Mode, Free Play, ranked online and GameShare sessions.",
+   "imageUrl": "https://www.mariowiki.com/Special:Redirect/file/My%20Nintendo%20MTF%20EU%20wallpaper%20desktop.jpg"
+  }
+ ],
+ "worldSummary": "The Mushroom Kingdom hosts a huge tennis tournament across themed courts. Adventure mode sends Baby Mario and the transformed cast through a light story journey to regain their tennis abilities, while Tournament, Trial Towers and online play provide the long-term competitive structure.",
+ "storyChapters": [
+  {
+   "title": "Mushroom Kingdom tournament",
+   "body": "Mario and friends enter a new high-energy tennis tournament.",
+   "imageUrl": "https://www.mariowiki.com/Special:Redirect/file/MTF%20My%20Nintendo%20February%202026%20calendar%20desktop.jpg"
+  },
+  {
+   "title": "Adventure transformation",
+   "body": "The cast is transformed into babies and must relearn tennis while overcoming monsters and challenges.",
+   "imageUrl": "https://www.mariowiki.com/Special:Redirect/file/MTF%20Five%20Tennis%20Tips.jpg"
+  },
+  {
+   "title": "Competitive mastery",
+   "body": "Unlock characters, courts and Fever Rackets and take custom combinations into online or local matches.",
+   "imageUrl": "https://www.mariowiki.com/Special:Redirect/file/MTF%20Gameplay%20screenshot.png"
+  }
+ ],
+ "features": [
+  "38 playable characters",
+  "30 Fever Rackets with unique powers",
+  "GameShare, online rooms/ranked play and Joy-Con 2 Swing Mode"
+ ],
+ "perfResolutionDocked": "4K-class output / upscaled high-resolution presentation",
+ "perfResolutionHandheld": "1080p-class handheld presentation",
+ "perfFps": "60",
+ "perfHdr": false,
+ "perfNotes": "Reviews consistently report a 60 fps target in handheld and docked play. Some testing reports brief dips with very heavy effects or split-screen setup; Nintendo does not publish a fixed internal-resolution table.",
+ "devicePerformance": [
+  {
+   "device": "Nintendo Switch 2",
+   "deviceSlug": "nintendo-switch-2",
+   "deviceModel": "Nintendo Switch 2",
+   "hardwareId": "prd_acf4c89908764c62",
+   "informationStatus": "Available / verified",
+   "unavailableReason": "No standard supported mode is unavailable.",
+   "handheld": {
+    "supported": true,
+    "resolution": "1080p-class handheld presentation",
+    "resolutionDynamic": false,
+    "renderingResolution": "1080p-class handheld presentation",
+    "outputResolution": "1920x1080",
+    "fps": "60",
+    "fpsMin": "30",
+    "fpsMax": "60",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "Handheld",
+    "notes": "Reviews consistently report a 60 fps target in handheld and docked play. Some testing reports brief dips with very heavy effects or split-screen setup; Nintendo does not publish a fixed internal-resolution table."
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "4K-class output / upscaled high-resolution presentation",
+    "resolutionDynamic": false,
+    "renderingResolution": "4K-class output / upscaled high-resolution presentation",
+    "outputResolution": "3840x2160",
+    "fps": "60",
+    "fpsMin": "30",
+    "fpsMax": "60",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "TV / Docked",
+    "notes": "Reviews consistently report a 60 fps target in handheld and docked play. Some testing reports brief dips with very heavy effects or split-screen setup; Nintendo does not publish a fixed internal-resolution table."
+   },
+   "modes": [
+    {
+     "name": "Primary documented mode",
+     "handheldResolution": "1080p-class handheld presentation",
+     "handheldFps": "60",
+     "tvResolution": "4K-class output / upscaled high-resolution presentation",
+     "tvFps": "60",
+     "hdr": false,
+     "vrr": false,
+     "notes": "Primary documented performance profile."
+    }
+   ],
+   "upscaling": "System/game-specific scaling where applicable",
+   "rayTracing": false,
+   "rayTracingMode": "No verified ray-tracing mode",
+   "loadingTime": "Scene-dependent; no single universal loading time",
+   "loadingNotes": "Loading varies by scene, save and storage state.",
+   "gameVersion": "Current retail build",
+   "patchVersion": "Current available update",
+   "testedDate": "2026-08-27",
+   "sourceName": "Nintendo Support",
+   "sourceUrl": "https://en-americas-support.nintendo.com/app/answers/detail/a_id/68671/p/1095/c/120",
+   "verifiedAt": "2026-08-27",
+   "verificationStatus": "Verified / sourced",
+   "performanceNotes": "Reviews consistently report a 60 fps target in handheld and docked play. Some testing reports brief dips with very heavy effects or split-screen setup; Nintendo does not publish a fixed internal-resolution table."
+  }
+ ],
+ "downloadSizeGb": 7.7,
+ "requiredSpaceGb": 7.7,
+ "microSdRecommended": false,
+ "storageNotes": "Nintendo Europe lists 7.7 GB. microSD Express is optional if system storage is insufficient.",
+ "languagesAudio": [
+  "English character voices",
+  "Japanese character voices",
+  "Music / sound effects"
+ ],
+ "languagesText": [
+  "Japanese / English",
+  "French / German / Italian / Spanish / Dutch / Portuguese",
+  "Korean / Chinese"
+ ],
+ "arabicSupport": false,
+ "mpLocalPlayers": true,
+ "mpOnlinePlayers": true,
+ "mpCoop": true,
+ "mpCompetitive": true,
+ "mpSplitScreen": false,
+ "mpLocalWireless": true,
+ "dlc": [
+  {
+   "name": "Free Galaxy update",
+   "description": "Version 1.1.0 added Galaxy Court content, Black Hole Racket and expanded GameShare/GameChat support.",
+   "coverUrl": "https://www.mariowiki.com/Special:Redirect/file/MTF%20Mario%20Introduction%20Opening.png"
+  },
+  {
+   "name": "No paid expansion announced",
+   "description": "No standalone paid story DLC has been announced as of August 27, 2026.",
+   "coverUrl": "https://www.mariowiki.com/Special:Redirect/file/MTF%20Peach%20Introduction%20Opening.png"
+  },
+  {
+   "name": "amiibo support",
+   "description": "Compatible amiibo can change tennis-ball designs; amiibo are optional physical accessories.",
+   "coverUrl": "https://www.mariowiki.com/Special:Redirect/file/MTF%20Bowser%20Introduction%20Opening.png"
+  }
+ ],
+ "guides": [
+  {
+   "title": "Official product page",
+   "summary": "Platform, release, languages and features.",
+   "url": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-2-games/Mario-Tennis-Fever-2915160.html"
+  },
+  {
+   "title": "Performance / update reference",
+   "summary": "Technical or update information.",
+   "url": "https://en-americas-support.nintendo.com/app/answers/detail/a_id/68671/p/1095/c/120"
+  },
+  {
+   "title": "Media / database reference",
+   "summary": "Images and catalog metadata.",
+   "url": "https://www.nintendolife.com/reviews/nintendo-switch-2/mario-tennis-fever"
+  }
+ ],
+ "completionMain": 4,
+ "completionExtras": 12,
+ "completionAll": 30,
+ "faq": [
+  {
+   "q": "How many characters are playable?",
+   "a": "Nintendo advertises 38 playable characters, the largest roster in Mario Tennis history."
+  },
+  {
+   "q": "How many Fever Rackets are there?",
+   "a": "The base feature set includes 30 Fever Rackets, with additional content such as the Black Hole Racket added through a free update."
+  },
+  {
+   "q": "Does it run at 60 fps?",
+   "a": "Yes, the game targets 60 fps in both handheld and docked play according to multiple reviews and performance tests."
+  }
+ ],
+ "verdictScore": 8.2,
+ "verdictSummary": "The strongest modern Mario Tennis entry for pure on-court play: fast, readable and deep enough for long-term multiplayer, although Adventure mode remains comparatively short.",
+ "verdictPros": [
+  "Excellent core tennis and Fever Racket system",
+  "Large roster and strong multiplayer suite",
+  "Smooth 60 fps presentation"
+ ],
+ "verdictCons": [
+  "Adventure mode is short",
+  "Special rackets can create balance frustrations",
+  "Resolution can be reconstructed rather than native 4K"
+ ],
+ "reviews": [
+  {
+   "source": "Nintendo Life",
+   "score": "8/10",
+   "quote": "Praised the core tennis, Fever mechanics and multiplayer longevity.",
+   "url": "https://www.nintendolife.com/reviews/nintendo-switch-2/mario-tennis-fever"
+  },
+  {
+   "source": "VGC",
+   "score": "3/5",
+   "quote": "Strong core tennis but criticized story content and balance.",
+   "url": "https://www.videogameschronicle.com/review/mario-tennis-fever/"
+  },
+  {
+   "source": "CGMagazine",
+   "score": "Positive",
+   "quote": "Reported consistent 60 fps in handheld and docked play.",
+   "url": "https://www.cgmagonline.com/review/game/mario-tennis-fever-nintendo-switch/"
+  }
+ ],
+ "timeline": [
+  {
+   "date": "2025-09-19",
+   "title": "Release date revealed",
+   "body": "Nintendo confirmed the February 12, 2026 Switch 2 launch."
+  },
+  {
+   "date": "2026-02-12",
+   "title": "Worldwide release",
+   "body": "Mario Tennis Fever launched exclusively for Nintendo Switch 2."
+  },
+  {
+   "date": "2026-07-15",
+   "title": "Version 1.1.0",
+   "body": "Free Galaxy-themed update and expanded GameShare functionality released."
+  }
+ ],
+ "patchNotes": [
+  {
+   "version": "Version 1.0.x",
+   "date": "2026-02",
+   "body": "Launch build and early fixes."
+  },
+  {
+   "version": "Version 1.1.0",
+   "date": "2026-07-15",
+   "body": "Added GameShare/GameChat functionality, Black Hole Racket and Galaxy Court content."
+  },
+  {
+   "version": "Current build",
+   "date": "2026-08-27",
+   "body": "Current version includes the free Galaxy update and launch-era fixes."
+  }
+ ],
+ "soundtrack": [
+  {
+   "title": "Mario Tennis Fever Main Theme",
+   "url": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-2-games/Mario-Tennis-Fever-2915160.html"
+  },
+  {
+   "title": "Tournament / stadium themes",
+   "url": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-2-games/Mario-Tennis-Fever-2915160.html"
+  },
+  {
+   "title": "Galaxy Court music",
+   "url": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-2-games/Mario-Tennis-Fever-2915160.html"
+  }
+ ],
+ "seriesName": "Mario Tennis",
+ "seriesEntries": [
+  "Mario Tennis Aces",
+  "Mario Tennis Fever",
+  "Mario Golf: Super Rush"
+ ],
+ "studioName": "Camelot Software Planning",
+ "studioUrl": "https://www.camelot.co.jp/",
+ "studioLocation": "Tokyo, Japan",
+ "studioAbout": "Camelot is the long-time developer of the Mario Tennis and Mario Golf series.",
+ "setupNeeds": [
+  "Nintendo Switch 2",
+  "7.7 GB free storage",
+  "Nintendo Switch Online membership for online play / GameChat features"
+ ],
+ "sources": [
+  {
+   "name": "Nintendo Europe",
+   "url": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-2-games/Mario-Tennis-Fever-2915160.html"
+  },
+  {
+   "name": "Nintendo Support",
+   "url": "https://en-americas-support.nintendo.com/app/answers/detail/a_id/68671/p/1095/c/120"
+  },
+  {
+   "name": "Nintendo Life",
+   "url": "https://www.nintendolife.com/reviews/nintendo-switch-2/mario-tennis-fever"
+  }
+ ],
+ "boxContentsList": "[Circular]",
+ "image": "/api/files/products/prd_34ac10f0ab97482c/cover-a9e57e75177d8493.jpg",
+ "banner": "/api/files/products/prd_34ac10f0ab97482c/banner-0-7563876ee6a5b991.webp",
+ "schemaId": "",
+ "createdAt": "2026-08-27T01:24:42.393Z",
+ "created_at": "2026-08-27T01:24:42.393Z",
+ "updatedAt": "2026-08-27T01:24:42.393Z",
+ "updated_at": "2026-08-27T01:24:42.393Z",
+ "badgeEn": "وفر 40%",
+ "badgeKu": "وفر 40%",
+ "featuresEn": [
+  "38 playable characters",
+  "30 Fever Rackets with unique powers",
+  "GameShare, online rooms/ranked play and Joy-Con 2 Swing Mode"
+ ],
+ "featuresKu": [
+  "38 playable characters",
+  "30 Fever Rackets with unique powers",
+  "GameShare, online rooms/ranked play and Joy-Con 2 Swing Mode"
+ ],
+ "boxFrontUrl": "https://www.mariowiki.com/Special:Redirect/file/Mario-Tennis-Fever-boxart.jpg",
+ "sales": 0,
+ "images": [],
+ "modes": []
+}

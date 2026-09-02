@@ -1,6 +1,6 @@
 {
  "batch": "015",
- "apply": true,
+ "apply": false,
  "games": [
   {
    "id": "prd_c4c08e2c87db4f69",
@@ -240,6 +240,111 @@
     "guaranteeStatus"
    ],
    "notes": "Same six-dead-roles rebuild from the six working eShop galleries (lead shot verified visually — genuine puzzle gameplay). The Switch-2-badged not-published record becomes an honest platform record. Genuine box and wrap verified working. 2024-02-16, Metacritic 76 verified. Contamination removed."
+  }
+ ],
+ "appliedAt": "2026-09-02T03:23:14.378Z",
+ "results": [
+  {
+   "id": "prd_c4c08e2c87db4f69",
+   "action": "APPLIED",
+   "changed": [
+    "devicePerformance"
+   ],
+   "removed": [
+    "youtubeTrailer",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ]
+  },
+  {
+   "id": "prd_e395bfb05dc141f1",
+   "action": "APPLIED",
+   "changed": [
+    "coverImage",
+    "image",
+    "bannerImages",
+    "galleryImages",
+    "devicePerformance"
+   ],
+   "removed": [
+    "nintendoCardImage",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ]
+  },
+  {
+   "id": "prd_a546170ff0fd4846",
+   "action": "APPLIED",
+   "changed": [
+    "coverImage",
+    "image",
+    "bannerImages",
+    "galleryImages",
+    "devicePerformance"
+   ],
+   "removed": [
+    "nintendoCardImage",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ]
+  },
+  {
+   "id": "prd_34ac10f0ab97482c",
+   "action": "APPLIED",
+   "changed": [],
+   "removed": [
+    "box_front_url",
+    "galleryImages",
+    "youtubeTrailer",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ]
+  },
+  {
+   "id": "prd_08ac1190a4d44318",
+   "action": "APPLIED",
+   "changed": [
+    "coverImage",
+    "image",
+    "bannerImages",
+    "galleryImages",
+    "devicePerformance"
+   ],
+   "removed": [
+    "nintendoCardImage"
+   ]
   }
  ]
 }

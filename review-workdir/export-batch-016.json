@@ -1,0 +1,3234 @@
+{
+ "batch": "016",
+ "generatedAt": "2026-09-02T03:24:01.312Z",
+ "totalGames": 310,
+ "reviewedSoFar": 72,
+ "games": [
+  {
+   "id": "prd_316788014ee14877",
+   "slug": "metroid-dread-switch",
+   "title": "Metroid Dread",
+   "platform": "switch1",
+   "isHidden": true,
+   "hash": "45ebdccefef4bbfd810e26c122e252c38240aa42b079c4db1fc4124941295053",
+   "images": [
+    {
+     "role": "front-box",
+     "field": "cartridgeImage",
+     "url": "https://banan.to/api/files/products/prd_316788014ee14877/front-box-d792fb9df1e2d98e.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 499712,
+     "width": 1167,
+     "height": 1888,
+     "thumb": "review-workdir/thumbs/batch-016/metroid-dread-switch__front-box-0.png"
+    },
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://banan.to/api/files/products/prd_316788014ee14877/square-card-a5e6c44d97572642.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 200190,
+     "width": 1024,
+     "height": 1024,
+     "thumb": "review-workdir/thumbs/batch-016/metroid-dread-switch__square-card-1.png"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://banan.to/api/files/products/prd_316788014ee14877/cover-5134ebe3995fd2e2.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 274988,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-016/metroid-dread-switch__detail-cover-2.png"
+    },
+    {
+     "role": "3d-texture",
+     "field": "coverHiResImage",
+     "url": "https://banan.to/api/files/products/prd_316788014ee14877/3d-wrap-1eb92fe0be19d198.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 1468074,
+     "width": 2454,
+     "height": 1888,
+     "thumb": "review-workdir/thumbs/batch-016/metroid-dread-switch__3d-texture-3.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://banan.to/api/files/products/prd_316788014ee14877/gallery-1-1c42f7e73e529b5a.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 91484,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-016/metroid-dread-switch__gallery-4.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[1]",
+     "url": "https://banan.to/api/files/products/prd_316788014ee14877/gallery-2-bf02e25053466ae2.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 106690,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-016/metroid-dread-switch__gallery-5.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[2]",
+     "url": "https://banan.to/api/files/products/prd_316788014ee14877/gallery-3-f9e1315ff3f41535.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 141108,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-016/metroid-dread-switch__gallery-6.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[3]",
+     "url": "https://banan.to/api/files/products/prd_316788014ee14877/gallery-4-862d5a08dcb0f245.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 109668,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-016/metroid-dread-switch__gallery-7.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[4]",
+     "url": "https://banan.to/api/files/products/prd_316788014ee14877/gallery-5-5da1217a59116955.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 86196,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-016/metroid-dread-switch__gallery-8.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[5]",
+     "url": "https://banan.to/api/files/products/prd_316788014ee14877/gallery-6-95dec87f3f91fe45.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 68490,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-016/metroid-dread-switch__gallery-9.png"
+    }
+   ],
+   "record": {
+    "title": "Metroid Dread",
+    "titleEn": "Metroid Dread",
+    "titleKu": "",
+    "slug": "metroid-dread-switch",
+    "description": "Metroid Dread is a modern 2D action-adventure starring Samus Aran. It emphasizes fast movement, interconnected exploration, upgrades, boss battles, and E.M.M.I. chase sections that give the game its signature tension. This file represents the Nintendo Switch 1 product entry with a Switch 2 compatibility reference.",
+    "descriptionEn": "Metroid Dread is a modern 2D action-adventure starring Samus Aran. It emphasizes fast movement, interconnected exploration, upgrades, boss battles, and E.M.M.I. chase sections that give the game its signature tension. This file represents the Nintendo Switch 1 product entry with a Switch 2 compatibility reference.",
+    "descriptionKu": "",
+    "cartridgeImage": "/api/files/products/prd_316788014ee14877/front-box-d792fb9df1e2d98e.webp",
+    "nintendoCardImage": "/api/files/products/prd_316788014ee14877/square-card-a5e6c44d97572642.webp",
+    "coverHiResImage": "/api/files/products/prd_316788014ee14877/3d-wrap-1eb92fe0be19d198.webp",
+    "coverImage": "/api/files/products/prd_316788014ee14877/cover-5134ebe3995fd2e2.webp",
+    "bannerImages": [
+     ""
+    ],
+    "gallery": [],
+    "youtubeTrailer": "https://www.youtube.com/results?search_query=Metroid+Dread+official+trailer",
+    "releaseDate": "2021-10-08",
+    "ageRating": "ESRB T / PEGI 12",
+    "metacriticRating": 88,
+    "genres": [
+     "Action",
+     "Adventure",
+     "Metroidvania"
+    ],
+    "platform": "switch1",
+    "size": 4.5,
+    "numberOfPlayers": "Single system (1)",
+    "supportedLanguages": "English, Japanese, French, Spanish, German",
+    "hardwareModel": "",
+    "colorEdition": "",
+    "storageCapacity": "",
+    "screenSpecs": "",
+    "batteryLife": "",
+    "boxContents": [],
+    "boxContentsText": "",
+    "warrantyCondition": "",
+    "connectivity": "",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "Global",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "",
+    "redemptionSteps": [],
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 15000,
+    "cost": 1250,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": true,
+    "displayOrder": 0,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "مشترك",
+      "description": "مشترك",
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_account",
+      "name": "خاص بك",
+      "description": "خاص بك",
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "types": [
+     {
+      "id": "offline_base",
+      "name": "مشترك — اللعبة الأساسية",
+      "optionId": "offline_account",
+      "price": 15000,
+      "cost": 1250,
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_base",
+      "name": "خاص بك — اللعبة الأساسية",
+      "optionId": "online_account",
+      "price": 14500,
+      "cost": 10000,
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "Active",
+    "kind": "account",
+    "trade_value_iqd": 9500,
+    "store_offer_bonus_iqd": 1250,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "id": "prd_316788014ee14877",
+    "schema_version": 24,
+    "titleAr": "ميترويد دريد",
+    "compatibility": [
+     "Nintendo Switch 1",
+     "Nintendo Switch 2"
+    ],
+    "edition": "Standard",
+    "developer": "MercurySteam / Nintendo",
+    "publisher": "Nintendo",
+    "metacriticUrl": "https://www.metacritic.com/game/metroid-dread/",
+    "opencriticRating": 89,
+    "userScore": 8.7,
+    "price_usd": 59.99,
+    "officialUrl": "https://www.nintendo.com/us/store/products/metroid-dread-switch/",
+    "eshopUrl": "https://www.nintendo.com/us/store/products/metroid-dread-switch/",
+    "gameIsOffline": true,
+    "gameIsOnline": false,
+    "gameLanguageLocked": false,
+    "description_short": "A fast and tense 2D action adventure starring Samus Aran.",
+    "description_ar": "لعبة أكشن ومغامرة ثنائية الأبعاد سريعة ومتوترة، تعيد ساموس آران إلى مغامرة استكشاف وقتال ومطاردات E.M.M.I.، ومجهزة هنا كملف Switch 1.",
+    "videos": [
+     {
+      "title": "Official Trailer",
+      "url": "https://www.youtube.com/results?search_query=Metroid+Dread+official+trailer"
+     }
+    ],
+    "nintendoEshopUrl": "https://www.nintendo.com/us/store/products/metroid-dread-switch/",
+    "nintendoOnlineRequired": false,
+    "nintendoCloudSaves": true,
+    "nintendoGameKeyCard": false,
+    "nintendoPhysicalNeedsDownload": false,
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": true,
+    "nintendoPlayModes": "TV mode / Tabletop mode / Handheld mode",
+    "nintendoNotes": "Prepared as the Switch 1 product file with Switch 2 compatibility reference.",
+    "switch2Enhanced": false,
+    "switch2Exclusive": false,
+    "switch2UpgradePrice": 0,
+    "switch2Features": [
+     "Playable on Switch 2 through compatibility",
+     "Fast 2D action",
+     "Strong Nintendo identity"
+    ],
+    "tagline": "Samus Aran faces fear, speed, and survival on ZDR.",
+    "fitFor": [
+     "Action-adventure fans",
+     "Metroidvania players",
+     "Nintendo fans"
+    ],
+    "notFitFor": [
+     "Players wanting multiplayer",
+     "Players who dislike tense chase sequences"
+    ],
+    "playTimeMain": 10,
+    "playTimeFull": 18,
+    "editionsList": [
+     {
+      "name": "Regular / Offline",
+      "contents": [
+       {
+        "label": "Metroid Dread"
+       },
+       {
+        "label": "Regular / Offline"
+       },
+       {
+        "label": "Offline account access"
+       }
+      ]
+     },
+     {
+      "name": "Standard / 标准版",
+      "contents": [
+       {
+        "label": "Metroid Dread"
+       },
+       {
+        "label": "Standard / 标准版"
+       },
+       {
+        "label": "Online account access"
+       }
+      ]
+     }
+    ],
+    "gameplayPillars": [
+     {
+      "title": "Fast 2D action",
+      "description": "Movement and combat feel exceptionally sharp and responsive."
+     },
+     {
+      "title": "Interconnected exploration",
+      "description": "Abilities unlock new paths across a layered map."
+     },
+     {
+      "title": "E.M.M.I. tension",
+      "description": "Pursuit sections create unique stress and urgency."
+     },
+     {
+      "title": "Boss encounters and upgrades",
+      "description": "Memorable fights and ability growth drive the campaign."
+     },
+     {
+      "title": "Modern Metroid design",
+      "description": "It preserves the exploration spirit of the series in a polished modern form."
+     }
+    ],
+    "worldSummary": "The planet ZDR is a dense science-fiction labyrinth of labs, ruins, and dangerous biomes tied together through classic Metroid progression.",
+    "storyChapters": [
+     {
+      "title": "Investigate the crisis",
+      "body": "Samus arrives on ZDR to uncover what happened."
+     },
+     {
+      "title": "Explore a hostile world",
+      "body": "Each new region adds new hazards and secrets."
+     },
+     {
+      "title": "Evade the E.M.M.I. units",
+      "body": "Chase sections sharply raise the tension."
+     },
+     {
+      "title": "Recover key powers",
+      "body": "New movement and weapon abilities expand what is possible."
+     },
+     {
+      "title": "Reveal the truth",
+      "body": "The late-game story connects the danger to larger Metroid lore."
+     }
+    ],
+    "galleryImages": [
+     {
+      "url": "/api/files/products/prd_316788014ee14877/gallery-1-1c42f7e73e529b5a.webp",
+      "alt": "Metroid Dread screenshot 1"
+     },
+     {
+      "url": "/api/files/products/prd_316788014ee14877/gallery-2-bf02e25053466ae2.webp",
+      "alt": "Metroid Dread screenshot 2"
+     },
+     {
+      "url": "/api/files/products/prd_316788014ee14877/gallery-3-f9e1315ff3f41535.webp",
+      "alt": "Metroid Dread screenshot 3"
+     },
+     {
+      "url": "/api/files/products/prd_316788014ee14877/gallery-4-862d5a08dcb0f245.webp",
+      "alt": "Metroid Dread screenshot 4"
+     },
+     {
+      "url": "/api/files/products/prd_316788014ee14877/gallery-5-5da1217a59116955.webp",
+      "alt": "Metroid Dread screenshot 5"
+     },
+     {
+      "url": "/api/files/products/prd_316788014ee14877/gallery-6-95dec87f3f91fe45.webp",
+      "alt": "Metroid Dread screenshot 6"
+     }
+    ],
+    "features": [
+     "Excellent 2D action design",
+     "Strong tension and pacing",
+     "Great boss fights",
+     "High-quality Nintendo production",
+     "Switch 1 product entry"
+    ],
+    "perfResolutionDocked": "1080p",
+    "perfResolutionHandheld": "720p",
+    "perfFps": "60",
+    "perfHdr": false,
+    "perfNotes": "Recorded as a Switch 1 profile with a secondary Switch 2 compatibility reference.",
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch 1",
+      "deviceSlug": "nintendo-switch-1",
+      "deviceModel": "Nintendo Switch 1",
+      "hardwareId": "nintendo-switch-1",
+      "informationStatus": "Available",
+      "unavailableReason": "No unavailable reason. Performance profile is present for this device.",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p",
+       "resolutionDynamic": false,
+       "renderingResolution": "720p",
+       "outputResolution": "720p",
+       "fps": "60",
+       "fpsMin": "60",
+       "fpsMax": "60",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Handheld",
+       "notes": "Recorded as a Switch 1 profile with a secondary Switch 2 compatibility reference."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p",
+       "resolutionDynamic": false,
+       "renderingResolution": "1080p",
+       "outputResolution": "1080p",
+       "fps": "60",
+       "fpsMin": "60",
+       "fpsMax": "60",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "TV",
+       "notes": "Recorded as a Switch 1 profile with a secondary Switch 2 compatibility reference."
+      },
+      "modes": [
+       {
+        "name": "Default",
+        "handheldResolution": "720p",
+        "handheldFps": "60",
+        "tvResolution": "1080p",
+        "tvFps": "60",
+        "hdr": false,
+        "vrr": false,
+        "notes": "Recorded as a Switch 1 profile with a secondary Switch 2 compatibility reference."
+       }
+      ],
+      "performanceNotes": "Recorded as a Switch 1 profile with a secondary Switch 2 compatibility reference."
+     },
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "hardwareId": "nintendo-switch-2",
+      "informationStatus": "Available",
+      "unavailableReason": "No unavailable reason. Performance profile is present for this device.",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p",
+       "resolutionDynamic": false,
+       "renderingResolution": "720p",
+       "outputResolution": "720p",
+       "fps": "60",
+       "fpsMin": "60",
+       "fpsMax": "60",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Handheld",
+       "notes": "Compatibility or alternate-platform reference only."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p",
+       "resolutionDynamic": false,
+       "renderingResolution": "1080p",
+       "outputResolution": "1080p",
+       "fps": "60",
+       "fpsMin": "60",
+       "fpsMax": "60",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "TV",
+       "notes": "Compatibility or alternate-platform reference only."
+      },
+      "modes": [
+       {
+        "name": "Default",
+        "handheldResolution": "720p",
+        "handheldFps": "60",
+        "tvResolution": "1080p",
+        "tvFps": "60",
+        "hdr": false,
+        "vrr": false,
+        "notes": "Compatibility or alternate-platform reference only."
+       }
+      ],
+      "performanceNotes": "Compatibility or alternate-platform reference only."
+     }
+    ],
+    "faq": [
+     {
+      "q": "Is Metroid Dread difficult?",
+      "a": "It can be challenging, especially in boss fights and chase sections."
+     },
+     {
+      "q": "Is it a metroidvania?",
+      "a": "Yes. Exploration and ability-gated progression are central to the design."
+     },
+     {
+      "q": "Is there multiplayer?",
+      "a": "No. It is a single-player action adventure."
+     },
+     {
+      "q": "Why only two variants?",
+      "a": "Only Regular / Offline and Standard / Online were provided."
+     },
+     {
+      "q": "Why is it praised?",
+      "a": "Its controls, pacing, and modernized series design earned strong critical reception."
+     }
+    ],
+    "mpLocalPlayers": false,
+    "mpOnlinePlayers": false,
+    "mpCoop": false,
+    "mpCompetitive": false,
+    "mpLocalWireless": false,
+    "mpSplitScreen": false,
+    "boxContentsList": [],
+    "image": "",
+    "banner": "",
+    "schemaId": "",
+    "batchImport": true,
+    "createdAt": "2026-08-28T18:44:09.209Z",
+    "updatedAt": "2026-08-28T18:44:09.209Z"
+   }
+  },
+  {
+   "id": "prd_1ae08b9969f74bc1",
+   "slug": "minecraft-switch",
+   "title": "Minecraft",
+   "platform": "switch1",
+   "isHidden": false,
+   "hash": "61de88bf49c32a3f58e9cf5ad2ed5a18b7de71f1728a91c3f5e6bb663598bf48",
+   "images": [
+    {
+     "role": "front-box",
+     "field": "cartridgeImage",
+     "url": "https://banan.to/api/files/products/prd_1ae08b9969f74bc1/front-box-2211fb1a538bf460.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 490238,
+     "width": 1167,
+     "height": 1888,
+     "thumb": "review-workdir/thumbs/batch-016/minecraft-switch__front-box-0.png"
+    },
+    {
+     "role": "front-box",
+     "field": "box_front_url",
+     "url": "https://images.launchbox-app.com/a27d92be-197d-4fea-a656-05ae4fb1ae06.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 426395,
+     "width": 1166,
+     "height": 1888,
+     "thumb": "review-workdir/thumbs/batch-016/minecraft-switch__front-box-1.png"
+    },
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://banan.to/api/files/products/prd_1ae08b9969f74bc1/square-card-cc8953ff6d0f52b1.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 178722,
+     "width": 1024,
+     "height": 1024,
+     "thumb": "review-workdir/thumbs/batch-016/minecraft-switch__square-card-2.png"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://banan.to/api/files/products/prd_1ae08b9969f74bc1/cover-8273165e0cf9c44b.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 337494,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-016/minecraft-switch__detail-cover-3.png"
+    },
+    {
+     "role": "3d-texture",
+     "field": "coverHiResImage",
+     "url": "https://banan.to/api/files/products/prd_1ae08b9969f74bc1/3d-wrap-18a596cedefa4a25.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 1404046,
+     "width": 2454,
+     "height": 1888,
+     "thumb": "review-workdir/thumbs/batch-016/minecraft-switch__3d-texture-4.png"
+    },
+    {
+     "role": "listing",
+     "field": "image",
+     "url": "https://banan.to/api/files/products/prd_1ae08b9969f74bc1/cover-8273165e0cf9c44b.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 337494,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-016/minecraft-switch__listing-5.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[0]",
+     "url": "https://images.launchbox-app.com/8c21a1aa-1158-460e-80ce-258f5d3ca7b4.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 432214,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-016/minecraft-switch__banner-6.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[1]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/en_US/games/switch/m/minecraft-switch/screenshot-gallery/screenshot01",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 137901,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-016/minecraft-switch__banner-7.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[2]",
+     "url": "https://banan.to/api/files/products/prd_1ae08b9969f74bc1/banner-2-6eb32f724cb4b7f8.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[3]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/en_US/games/switch/m/minecraft-switch/screenshot-gallery/screenshot03",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 87999,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-016/minecraft-switch__banner-9.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://banan.to/api/files/products/prd_1ae08b9969f74bc1/gallery-1-8117fd74bb8b1584.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 181008,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-016/minecraft-switch__gallery-10.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[1]",
+     "url": "https://banan.to/api/files/products/prd_1ae08b9969f74bc1/gallery-2-6bc473dcb8468991.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 152992,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-016/minecraft-switch__gallery-11.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[2]",
+     "url": "https://banan.to/api/files/products/prd_1ae08b9969f74bc1/gallery-3-5abf811c8471b46d.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 161446,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-016/minecraft-switch__gallery-12.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[3]",
+     "url": "https://banan.to/api/files/products/prd_1ae08b9969f74bc1/gallery-4-a8968c925a36610d.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 233514,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-016/minecraft-switch__gallery-13.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[4]",
+     "url": "https://banan.to/api/files/products/prd_1ae08b9969f74bc1/gallery-5-710cb653a39f1c49.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 189942,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-016/minecraft-switch__gallery-14.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[5]",
+     "url": "https://banan.to/api/files/products/prd_1ae08b9969f74bc1/gallery-6-5792412844bfdc79.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 86184,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-016/minecraft-switch__gallery-15.png"
+    }
+   ],
+   "record": {
+    "title": "Minecraft",
+    "titleEn": "Minecraft",
+    "titleKu": "",
+    "slug": "minecraft-switch",
+    "description": "Minecraft on Nintendo Switch is the modern Bedrock Edition, replacing the older 2017 Nintendo Switch Edition. Players can survive, mine, craft, explore procedurally generated worlds, build in Creative mode, play locally with up to four players, connect through local wireless, or join online and cross-platform Bedrock sessions. The Switch release also includes Nintendo-themed Super Mario Mash-Up Pack content.",
+    "descriptionEn": "Minecraft on Nintendo Switch is the modern Bedrock Edition, replacing the older 2017 Nintendo Switch Edition. Players can survive, mine, craft, explore procedurally generated worlds, build in Creative mode, play locally with up to four players, connect through local wireless, or join online and cross-platform Bedrock sessions. The Switch release also includes Nintendo-themed Super Mario Mash-Up Pack content.",
+    "descriptionKu": "",
+    "cartridgeImage": "/api/files/products/prd_1ae08b9969f74bc1/front-box-2211fb1a538bf460.webp",
+    "nintendoCardImage": "/api/files/products/prd_1ae08b9969f74bc1/square-card-cc8953ff6d0f52b1.webp",
+    "coverHiResImage": "/api/files/products/prd_1ae08b9969f74bc1/3d-wrap-18a596cedefa4a25.webp",
+    "coverImage": "/api/files/products/prd_1ae08b9969f74bc1/cover-8273165e0cf9c44b.webp",
+    "bannerImages": [
+     "https://images.launchbox-app.com/8c21a1aa-1158-460e-80ce-258f5d3ca7b4.jpg",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/en_US/games/switch/m/minecraft-switch/screenshot-gallery/screenshot01",
+     "/api/files/products/prd_1ae08b9969f74bc1/banner-2-6eb32f724cb4b7f8.avif",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/en_US/games/switch/m/minecraft-switch/screenshot-gallery/screenshot03",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/en_US/games/switch/m/minecraft-switch/screenshot-gallery/screenshot04",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/en_US/games/switch/m/minecraft-switch/screenshot-gallery/screenshot05"
+    ],
+    "gallery": [],
+    "youtubeTrailer": "https://www.nintendo.com/us/store/products/minecraft-106679/",
+    "releaseDate": "2018-06-21",
+    "ageRating": "ESRB E10+ / PEGI 7",
+    "metacriticRating": 86,
+    "genres": [
+     "Sandbox",
+     "Adventure",
+     "Simulation",
+     "Survival"
+    ],
+    "platform": "switch1",
+    "size": "1.3 GB",
+    "numberOfPlayers": "Single system (1-4) / Local wireless (2-8) / Online (2-8)",
+    "supportedLanguages": "English, Japanese, French, German, Italian, Spanish, Portuguese, Russian, Korean, Chinese and many additional Bedrock interface languages",
+    "hardwareModel": "",
+    "colorEdition": "",
+    "storageCapacity": "",
+    "screenSpecs": "",
+    "batteryLife": "",
+    "boxContents": [],
+    "boxContentsText": "",
+    "warrantyCondition": "",
+    "connectivity": "",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "Global",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "",
+    "redemptionSteps": [],
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 7000,
+    "cost": 1500,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": false,
+    "displayOrder": 0,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "حساب أوفلاين",
+      "description": "حساب مخصص للعب دون اتصال بعد إكمال خطوات التفعيل.",
+      "stock": 9999,
+      "isInfiniteStock": true,
+      "customerDescription": "حساب مشترك"
+     },
+     {
+      "id": "online_account",
+      "name": "حساب أونلاين",
+      "description": "حساب يدعم تشغيل اللعبة مع الاتصال والميزات المتاحة أونلاين.",
+      "stock": 9999,
+      "isInfiniteStock": true,
+      "customerDescription": "حساب خاص بك"
+     }
+    ],
+    "types": [
+     {
+      "id": "offline_base",
+      "name": "حساب أوفلاين — عادي",
+      "optionId": "offline_account",
+      "price": "",
+      "cost": 1500,
+      "stock": 9999,
+      "isInfiniteStock": true,
+      "description": "تشمل الإصدار العادي من اللعبة.",
+      "customerDescription": "اللعبة الأساسية"
+     },
+     {
+      "id": "online_base",
+      "name": "حساب أونلاين — عادي",
+      "optionId": "online_account",
+      "price": "28000",
+      "cost": 18500,
+      "stock": 9999,
+      "isInfiniteStock": true,
+      "description": "تشمل الإصدار العادي من اللعبة.",
+      "customerDescription": "اللعبة الأساسية"
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "Active",
+    "kind": "account",
+    "trade_value_iqd": 12000,
+    "store_offer_bonus_iqd": 2000,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "id": "prd_1ae08b9969f74bc1",
+    "schema_version": 24,
+    "titleAr": "ماينكرافت",
+    "compatibility": [
+     "Nintendo Switch",
+     "Nintendo Switch 2: backward compatible"
+    ],
+    "edition": "Bedrock Edition",
+    "developer": "Mojang Studios",
+    "publisher": "Microsoft / Mojang",
+    "seriesName": "Minecraft",
+    "opencriticRating": 86,
+    "userScore": 8.1,
+    "metacriticUrl": "https://www.metacritic.com/game/minecraft/",
+    "price_usd": 29.99,
+    "officialUrl": "https://www.nintendo.com/us/store/products/minecraft-106679/",
+    "eshopUrl": "https://www.nintendo.com/us/store/products/minecraft-106679/",
+    "gameIsOffline": true,
+    "gameIsOnline": true,
+    "gameLanguageLocked": false,
+    "description_short": "The Bedrock version of Minecraft on Nintendo Switch with survival, creative building, local multiplayer, online play, cross-platform compatibility, and the Super Mario Mash-Up Pack.",
+    "description_ar": "نسخة Bedrock الحديثة من Minecraft على Nintendo Switch، مع البقاء والبناء والاستكشاف واللعب المحلي حتى 4 لاعبين واللعب الشبكي وCross-Platform، إضافة إلى Super Mario Mash-Up Pack.",
+    "box_front_url": "https://images.launchbox-app.com/a27d92be-197d-4fea-a656-05ae4fb1ae06.jpg",
+    "galleryImages": [
+     {
+      "url": "/api/files/products/prd_1ae08b9969f74bc1/gallery-1-8117fd74bb8b1584.webp",
+      "alt": "Minecraft screenshot 1"
+     },
+     {
+      "url": "/api/files/products/prd_1ae08b9969f74bc1/gallery-2-6bc473dcb8468991.webp",
+      "alt": "Minecraft screenshot 2"
+     },
+     {
+      "url": "/api/files/products/prd_1ae08b9969f74bc1/gallery-3-5abf811c8471b46d.webp",
+      "alt": "Minecraft screenshot 3"
+     },
+     {
+      "url": "/api/files/products/prd_1ae08b9969f74bc1/gallery-4-a8968c925a36610d.webp",
+      "alt": "Minecraft screenshot 4"
+     },
+     {
+      "url": "/api/files/products/prd_1ae08b9969f74bc1/gallery-5-710cb653a39f1c49.webp",
+      "alt": "Minecraft screenshot 5"
+     },
+     {
+      "url": "/api/files/products/prd_1ae08b9969f74bc1/gallery-6-5792412844bfdc79.webp",
+      "alt": "Minecraft screenshot 6"
+     }
+    ],
+    "languagesText": [
+     "English / Japanese / major European languages",
+     "Portuguese / Russian / Korean",
+     "Simplified Chinese / Traditional Chinese and other Bedrock languages"
+    ],
+    "languagesAudio": [
+     "Ambient and creature sounds",
+     "Music and sound effects",
+     "Minimal language-dependent spoken dialogue"
+    ],
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": true,
+    "nintendoPlayModes": "TV mode / Tabletop mode / Handheld mode",
+    "nintendoOnlineRequired": true,
+    "nintendoCloudSaves": true,
+    "nintendoGameKeyCard": false,
+    "nintendoPhysicalNeedsDownload": false,
+    "switch2Enhanced": false,
+    "switch2Exclusive": false,
+    "nintendoNotes": "This file is for the current Minecraft Bedrock product introduced on Switch in June 2018, not the discontinued 2017 “Minecraft: Nintendo Switch Edition” product. It supports cross-platform Bedrock multiplayer.",
+    "editionsList": [
+     {
+      "name": "Regular / Offline",
+      "coverUrl": "https://images.launchbox-app.com/a27d92be-197d-4fea-a656-05ae4fb1ae06.jpg",
+      "contents": [
+       {
+        "label": "Minecraft Bedrock base game"
+       },
+       {
+        "label": "Offline account access"
+       },
+       {
+        "label": "Super Mario Mash-Up Pack on Switch"
+       }
+      ]
+     },
+     {
+      "name": "Standard / Online",
+      "coverUrl": "https://images.launchbox-app.com/a27d92be-197d-4fea-a656-05ae4fb1ae06.jpg",
+      "contents": [
+       {
+        "label": "Minecraft Bedrock base game"
+       },
+       {
+        "label": "Online account access"
+       },
+       {
+        "label": "Cross-platform / server features where supported"
+       }
+      ]
+     }
+    ],
+    "gameplayPillars": [
+     {
+      "title": "Survival sandbox",
+      "description": "Gather resources, craft tools, build shelter, manage hunger, and explore increasingly dangerous environments.",
+      "imageUrl": "https://images.launchbox-app.com/8c21a1aa-1158-460e-80ce-258f5d3ca7b4.jpg"
+     },
+     {
+      "title": "Creative building",
+      "description": "Creative mode gives unlimited blocks and flight for large-scale construction and experimentation.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/en_US/games/switch/m/minecraft-switch/screenshot-gallery/screenshot01"
+     },
+     {
+      "title": "Procedural exploration",
+      "description": "Worlds generate varied biomes, caves, structures, mobs, and resources that make each seed different.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/en_US/games/switch/m/minecraft-switch/screenshot-gallery/screenshot02"
+     },
+     {
+      "title": "Local and online multiplayer",
+      "description": "Play with up to four on one Switch, use local wireless, or connect to online Bedrock players and supported servers.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/en_US/games/switch/m/minecraft-switch/screenshot-gallery/screenshot03"
+     },
+     {
+      "title": "Continuous Bedrock updates",
+      "description": "Minecraft receives long-term feature updates, biome changes, mobs, blocks, and ecosystem improvements.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/en_US/games/switch/m/minecraft-switch/screenshot-gallery/screenshot04"
+     }
+    ],
+    "worldSummary": "Minecraft worlds are procedurally generated sandboxes that can contain forests, oceans, deserts, mountains, villages, caves, Nether dimensions, the End, structures, and player-created settlements.",
+    "storyChapters": [
+     {
+      "title": "Spawn into a new world",
+      "body": "Players begin with very little and decide whether to explore, gather resources, or immediately start building.",
+      "imageUrl": "https://images.launchbox-app.com/d210026a-0444-4ab3-8f08-a37610964e52.jpg"
+     },
+     {
+      "title": "Progress through materials",
+      "body": "Wood, stone, iron, diamonds, enchantments, and specialized resources gradually expand what can be crafted.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/en_US/games/switch/m/minecraft-switch/screenshot-gallery/screenshot01"
+     },
+     {
+      "title": "Explore dangerous dimensions",
+      "body": "The Nether introduces new resources and threats, while the End contains the Ender Dragon and endgame exploration.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/en_US/games/switch/m/minecraft-switch/screenshot-gallery/screenshot02"
+     },
+     {
+      "title": "Build your own goals",
+      "body": "Minecraft deliberately allows self-directed objectives ranging from farms and cities to Redstone machines and multiplayer projects.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/en_US/games/switch/m/minecraft-switch/screenshot-gallery/screenshot03"
+     },
+     {
+      "title": "Continue through updates and worlds",
+      "body": "The game has no fixed final endpoint; players can maintain worlds for years and add new projects as updates arrive.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/en_US/games/switch/m/minecraft-switch/screenshot-gallery/screenshot04"
+     }
+    ],
+    "features": [
+     "Survival and Creative modes",
+     "Up to four-player couch multiplayer",
+     "Online and local-wireless multiplayer",
+     "Cross-platform Bedrock ecosystem",
+     "Super Mario Mash-Up Pack included on Nintendo Switch"
+    ],
+    "perfResolutionDocked": "1080p",
+    "perfResolutionHandheld": "720p",
+    "perfFps": "60",
+    "perfHdr": false,
+    "faq": [
+     {
+      "q": "Is this the old Nintendo Switch Edition?",
+      "a": "No. This is the current Bedrock Minecraft product that replaced the older 2017 Switch Edition in June 2018."
+     },
+     {
+      "q": "Does it support cross-play?",
+      "a": "Yes. Bedrock Edition supports cross-platform play with compatible Bedrock platforms and Microsoft accounts."
+     },
+     {
+      "q": "How many players can play on one Switch?",
+      "a": "Up to four players can play locally on a single system in supported modes."
+     },
+     {
+      "q": "Is Nintendo Switch Online required?",
+      "a": "Nintendo Switch Online is required for Nintendo-operated online multiplayer functionality, but offline and local play do not require it."
+     },
+     {
+      "q": "Does the Switch version include Mario content?",
+      "a": "Yes. Nintendo’s Minecraft package includes the Super Mario Mash-Up Pack."
+     }
+    ],
+    "verdictScore": 9.2,
+    "verdictPros": [
+     "Nearly unlimited replay value",
+     "Excellent local and cross-platform multiplayer",
+     "Creative mode supports almost any building idea",
+     "Continuous long-term updates",
+     "Strong portable fit"
+    ],
+    "verdictCons": [
+     "Large worlds can stress Switch performance",
+     "Online ecosystem can be complex for younger users",
+     "Marketplace content introduces optional purchases",
+     "Advanced Redstone / large farms can reduce performance",
+     "Visual distance and settings are lower than high-end PC versions"
+    ],
+    "reviews": [
+     {
+      "source": "Metacritic",
+      "score": "86",
+      "url": "https://www.metacritic.com/game/minecraft/"
+     },
+     {
+      "source": "Nintendo",
+      "score": "Official Minecraft product page",
+      "url": "https://www.nintendo.com/us/store/products/minecraft-106679/"
+     },
+     {
+      "source": "Mojang",
+      "score": "Official Minecraft site",
+      "url": "https://www.minecraft.net/"
+     }
+    ],
+    "timeline": [
+     {
+      "date": "2017-05-11",
+      "title": "Original Minecraft: Nintendo Switch Edition released"
+     },
+     {
+      "date": "2018-06-21",
+      "title": "Current Bedrock Minecraft release replaced the old Switch Edition"
+     },
+     {
+      "date": "2026-08-27",
+      "title": "Current Bedrock product remains active"
+     }
+    ],
+    "patchNotes": [
+     {
+      "version": "Bedrock Switch launch",
+      "date": "2018-06-21"
+     },
+     {
+      "version": "Continuous Bedrock updates",
+      "date": "2026-08-27"
+     }
+    ],
+    "studioName": "Mojang Studios",
+    "studioUrl": "https://www.nintendo.com/us/store/products/minecraft-106679/",
+    "studioLocation": "Japan",
+    "sources": [
+     {
+      "name": "Nintendo official product page",
+      "url": "https://www.nintendo.com/us/store/products/minecraft-106679/"
+     },
+     {
+      "name": "Minecraft official website",
+      "url": "https://www.minecraft.net/"
+     },
+     {
+      "name": "LaunchBox media",
+      "url": "https://gamesdb.launchbox-app.com/"
+     }
+    ],
+    "downloadSizeGb": 1.3,
+    "requiredSpaceGb": 1.3,
+    "microSdRecommended": false,
+    "storageNotes": "Base download size is relatively small compared with many retail games, but saved worlds, resource packs, Marketplace content, and updates can increase storage substantially.",
+    "mpLocalPlayers": true,
+    "mpOnlinePlayers": true,
+    "mpCoop": true,
+    "mpCompetitive": true,
+    "mpLocalWireless": true,
+    "mpSplitScreen": true,
+    "seriesEntries": [
+     "Minecraft Dungeons",
+     "Dragon Quest Builders 2",
+     "Terraria"
+    ],
+    "dlc": [
+     {
+      "name": "Marketplace / add-on ecosystem",
+      "description": "Minecraft uses a broad add-on and Marketplace ecosystem rather than one required expansion pass. The base Switch product is complete without a mandatory DLC tier."
+     }
+    ],
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "hardwareId": "prd_acf4c89908764c62",
+      "informationStatus": "Available / sourced",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p",
+       "resolutionDynamic": true,
+       "renderingResolution": "720p",
+       "outputResolution": "720p",
+       "fps": "60",
+       "fpsMin": "30",
+       "fpsMax": "60",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Handheld",
+       "notes": "Minecraft targets up to 60 fps on Switch with a 720p handheld and 1080p-class docked output profile, though heavy worlds, high entity counts, and complex Redstone can reduce performance."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p",
+       "resolutionDynamic": true,
+       "renderingResolution": "1080p",
+       "outputResolution": "1080p",
+       "fps": "60",
+       "fpsMin": "30",
+       "fpsMax": "60",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "TV / Docked",
+       "notes": "Minecraft targets up to 60 fps on Switch with a 720p handheld and 1080p-class docked output profile, though heavy worlds, high entity counts, and complex Redstone can reduce performance."
+      },
+      "modes": [
+       {
+        "name": "Primary documented / observed profile",
+        "handheldResolution": "720p",
+        "handheldFps": "60",
+        "tvResolution": "1080p",
+        "tvFps": "60",
+        "hdr": false,
+        "vrr": false,
+        "notes": "Minecraft targets up to 60 fps on Switch with a 720p handheld and 1080p-class docked output profile, though heavy worlds, high entity counts, and complex Redstone can reduce performance."
+       }
+      ],
+      "upscaling": "Game / system scaling where applicable",
+      "rayTracing": false,
+      "rayTracingMode": "Not Supported",
+      "loadingTime": "Scene-dependent; no universal value",
+      "loadingNotes": "Loading varies by scene, storage state, patch level, and platform.",
+      "gameVersion": "Current retail build",
+      "patchVersion": "Current available update",
+      "testedDate": "2026-08-27",
+      "sourceName": "Nintendo official product page + established release performance profile",
+      "sourceUrl": "https://www.nintendo.com/us/store/products/minecraft-106679/",
+      "verifiedAt": "2026-08-27",
+      "verificationStatus": "Sourced / compatibility profile",
+      "performanceNotes": "Minecraft targets up to 60 fps on Switch with a 720p handheld and 1080p-class docked output profile, though heavy worlds, high entity counts, and complex Redstone can reduce performance."
+     }
+    ],
+    "switch2UpgradePrice": 0,
+    "boxContentsList": [],
+    "image": "/api/files/products/prd_1ae08b9969f74bc1/cover-8273165e0cf9c44b.webp",
+    "banner": "https://images.launchbox-app.com/8c21a1aa-1158-460e-80ce-258f5d3ca7b4.jpg",
+    "schemaId": "",
+    "batchImport": true,
+    "createdAt": "2026-08-28T18:40:30.330Z",
+    "updatedAt": "2026-08-28T18:40:30.330Z",
+    "boxFrontUrl": "https://images.launchbox-app.com/a27d92be-197d-4fea-a656-05ae4fb1ae06.jpg",
+    "sales": 0,
+    "created_at": "2026-08-28T18:40:30.330Z",
+    "updated_at": "2026-08-28T18:40:30.330Z",
+    "images": [],
+    "modes": [],
+    "variants": "[Circular]"
+   }
+  },
+  {
+   "id": "prd_09e13ed4dedb4150",
+   "slug": "monster-hunter-stories-3-twisted-reflection",
+   "title": "Monster Hunter Stories 3: Twisted Reflection",
+   "platform": "switch2",
+   "isHidden": false,
+   "hash": "95301c75f8dd1e49ff9cf8c3215807468f10d8285892d049ace376fcef8f1e4e",
+   "images": [
+    {
+     "role": "front-box",
+     "field": "cartridgeImage",
+     "url": "https://banan.to/api/files/products/prd_09e13ed4dedb4150/cartridgeImage-70f3a95408b99902.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "front-box",
+     "field": "box_front_url",
+     "url": "https://i5.walmartimages.com/asr/501b1a1d-43fb-4f7d-a62e-86f72f477c41.abeb019df061bd92b8b43203a28540c5.png?odnBg=FFFFFF&odnHeight=1200&odnWidth=1200",
+     "status": 200,
+     "contentType": "image/png",
+     "bytes": 1684281,
+     "width": 1200,
+     "height": 1200,
+     "thumb": "review-workdir/thumbs/batch-016/monster-hunter-stories-3-twisted-reflection__front-box-1.png"
+    },
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://banan.to/api/files/products/prd_09e13ed4dedb4150/nintendoCardImage-4cb7dbdbcde4ca41.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://banan.to/api/files/products/prd_09e13ed4dedb4150/coverImage-70f3a95408b99902.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "listing",
+     "field": "image",
+     "url": "https://banan.to/api/files/products/prd_09e13ed4dedb4150/coverImage-70f3a95408b99902.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[0]",
+     "url": "https://banan.to/api/files/products/prd_09e13ed4dedb4150/bannerImages-1-2f8d20d04ac7d6e0.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[1]",
+     "url": "https://banan.to/api/files/products/prd_09e13ed4dedb4150/bannerImages-2-15bbdd4802196bb1.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[2]",
+     "url": "https://banan.to/api/files/products/prd_09e13ed4dedb4150/bannerImages-3-e4f73007aa1b81a1.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16:9,b_auto:border,c_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000097756/cf4b5344614c09079e0e70b839b522b599d2c92e0b4339e14f83f435be2d6a24",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 201035,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-016/monster-hunter-stories-3-twisted-reflection__gallery-8.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[1]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16:9,b_auto:border,c_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000097756/03c7d68aa8d72150c90eab531400693df164da22b063dfe920fa4ddf2d5b4f63",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 121241,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-016/monster-hunter-stories-3-twisted-reflection__gallery-9.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[2]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16:9,b_auto:border,c_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000097756/47c64acb428b22f89531408121bd963e061be216c043ed01f8ad017c3cdee468",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 167566,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-016/monster-hunter-stories-3-twisted-reflection__gallery-10.png"
+    }
+   ],
+   "record": {
+    "id": "prd_09e13ed4dedb4150",
+    "title": "Monster Hunter Stories 3: Twisted Reflection",
+    "titleEn": "Monster Hunter Stories 3: Twisted Reflection",
+    "titleKu": "Monster Hunter Stories 3: Twisted Reflection",
+    "slug": "monster-hunter-stories-3-twisted-reflection",
+    "description": "The third entry in the Monster Hunter Stories RPG series. Raise and bond with Monsties, explore the world, and fight in strategic turn-based battles while investigating the fate of two nations and twin Skyscale Rathalos.",
+    "descriptionEn": "The third entry in the Monster Hunter Stories RPG series. Raise and bond with Monsties, explore the world, and fight in strategic turn-based battles while investigating the fate of two nations and twin Skyscale Rathalos.",
+    "descriptionKu": "The third entry in the Monster Hunter Stories RPG series. Raise and bond with Monsties, explore the world, and fight in strategic turn-based battles while investigating the fate of two nations and twin Skyscale Rathalos.",
+    "cartridgeImage": "/api/files/products/prd_09e13ed4dedb4150/cartridgeImage-70f3a95408b99902.avif",
+    "nintendoCardImage": "/api/files/products/prd_09e13ed4dedb4150/nintendoCardImage-4cb7dbdbcde4ca41.avif",
+    "coverHiResImage": "",
+    "coverImage": "/api/files/products/prd_09e13ed4dedb4150/coverImage-70f3a95408b99902.avif",
+    "bannerImages": [
+     "/api/files/products/prd_09e13ed4dedb4150/bannerImages-1-2f8d20d04ac7d6e0.avif",
+     "/api/files/products/prd_09e13ed4dedb4150/bannerImages-2-15bbdd4802196bb1.avif",
+     "/api/files/products/prd_09e13ed4dedb4150/bannerImages-3-e4f73007aa1b81a1.avif"
+    ],
+    "gallery": [],
+    "youtubeTrailer": "https://www.youtube.com/watch?v=f1M_0t2Tayk",
+    "releaseDate": "2026-03-13",
+    "ageRating": "PEGI 12",
+    "metacriticRating": 82,
+    "genres": [
+     "JRPG",
+     "Monster Taming",
+     "Adventure"
+    ],
+    "platform": "switch2",
+    "size": 27.7,
+    "numberOfPlayers": "1",
+    "supportedLanguages": "Japanese, American English, French, German, Italian, Spanish, Korean, Russian, Simplified Chinese, Traditional Chinese, Brazilian Portuguese, Polish",
+    "hardwareModel": "",
+    "colorEdition": "",
+    "storageCapacity": "",
+    "screenSpecs": "",
+    "batteryLife": "",
+    "boxContents": [],
+    "boxContentsText": "",
+    "warrantyCondition": "",
+    "connectivity": "",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "Global",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "",
+    "redemptionSteps": [],
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 14750,
+    "cost": 2000,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": false,
+    "displayOrder": 0,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "مشترك",
+      "description": "Play using the supplied account under the store's offline-account activation method.",
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_account",
+      "name": "خاص بك",
+      "description": "Online-account option with internet-connected account use where supported by the game/service.",
+      "isInfiniteStock": true
+     }
+    ],
+    "types": [
+     {
+      "id": "standard_offline",
+      "name": "مشترك — اللعبة الأساسية",
+      "optionId": "offline_account",
+      "price": 14750,
+      "cost": 2000,
+      "description": "Standard game, Offline Account. Supplier Regular price: ¥9.74; purchase cost converted at 1 CNY = 220 IQD and rounded down to nearest 250 IQD.",
+      "isInfiniteStock": true
+     },
+     {
+      "id": "standard_online",
+      "name": "خاص بك — اللعبة الأساسية",
+      "optionId": "online_account",
+      "price": 38000,
+      "cost": 20750,
+      "description": "Standard game, Online Account. Supplier Standard price: ¥95.00; purchase cost converted at 1 CNY = 220 IQD and rounded down to nearest 250 IQD.",
+      "isInfiniteStock": true
+     },
+     {
+      "id": "dlc_offline",
+      "name": "مشترك — مع الإضافات",
+      "optionId": "offline_account",
+      "price": 19000,
+      "cost": 3000,
+      "description": "Offline Account with the listed DLC/Deluxe content. Supplier Special price: ¥13.66.",
+      "isInfiniteStock": true
+     },
+     {
+      "id": "dlc_online",
+      "name": "خاص بك — مع الإضافات",
+      "optionId": "online_account",
+      "price": 48000,
+      "cost": 27250,
+      "description": "Online Account with the listed DLC/Deluxe content. Supplier Deluxe price: ¥124.40.",
+      "isInfiniteStock": true
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "active",
+    "kind": "account",
+    "trade_value_iqd": 45000,
+    "store_offer_bonus_iqd": 0,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "schema_version": 22,
+    "titleAr": "مونستر هنتر ستوريز 3: تويستد ريفليكشن",
+    "compatibility": [
+     "Nintendo Switch 2"
+    ],
+    "edition": "Standard",
+    "developer": "CAPCOM",
+    "publisher": "CAPCOM",
+    "opencriticRating": 85,
+    "userScore": 8,
+    "officialUrl": "https://www.monsterhunter.com/stories3/",
+    "gameIsOffline": true,
+    "gameIsOnline": true,
+    "gameLanguageLocked": false,
+    "description_short": "The third Monster Hunter Stories RPG follows a Rider caught between two nations and two Skyscale Rathalos, combining exploration, monster raising and strategic turn-based battles.",
+    "description_ar": "الجزء الثالث من سلسلة Monster Hunter Stories. قم بتربية الـMonsties وبناء الروابط معها واستكشاف عالم واسع وخوض معارك تقمص أدوار بنظام تبادل الأدوار، ضمن قصة دولتين وتوأم من Rathalos يحملان علامة Skyscale.",
+    "box_front_url": "https://i5.walmartimages.com/asr/501b1a1d-43fb-4f7d-a62e-86f72f477c41.abeb019df061bd92b8b43203a28540c5.png?odnBg=FFFFFF&odnHeight=1200&odnWidth=1200",
+    "videos": [
+     {
+      "title": "Pre-order Trailer",
+      "url": "https://www.youtube.com/watch?v=f1M_0t2Tayk"
+     },
+     {
+      "title": "Animated Trailer",
+      "url": "https://www.youtube.com/watch?v=uM6pjBnv5Ig"
+     }
+    ],
+    "nintendoEshopUrl": "https://www.nintendo.com/us/store/products/monster-hunter-stories-3-twisted-reflection-switch-2/",
+    "nintendoOnlineRequired": false,
+    "nintendoCloudSaves": true,
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": true,
+    "nintendoPlayModes": "TV Mode, Tabletop Mode, Handheld Mode",
+    "switch2Features": [
+     "Native Nintendo Switch 2 version",
+     "TV, Tabletop and Handheld play",
+     "Dynamic-resolution presentation",
+     "Unlocked 30-60 FPS behavior in technical testing",
+     "amiibo support",
+     "Surround sound (linear PCM)",
+     "Save Data Cloud",
+     "Simplified and Traditional Chinese text support"
+    ],
+    "tagline": "Twin Rathalos, born in a twist of fate.",
+    "fitFor": [
+     "Monster Hunter fans who prefer turn-based RPGs",
+     "Players who enjoy creature collecting and team building",
+     "Story-focused JRPG players",
+     "Players who like exploration and companion progression"
+    ],
+    "notFitFor": [
+     "Players expecting mainline Monster Hunter action combat",
+     "Performance-sensitive players wanting a locked 60 FPS"
+    ],
+    "playTimeMain": 44.5,
+    "playTimeFull": 95,
+    "editionsList": [
+     {
+      "name": "Standard Edition",
+      "contents": [
+       {
+        "label": "Base game"
+       }
+      ]
+     },
+     {
+      "name": "Deluxe Edition",
+      "contents": [
+       {
+        "label": "Base game"
+       },
+       {
+        "label": "Deluxe Kit with layered armor, companion outfits and cosmetic customization"
+       }
+      ]
+     },
+     {
+      "name": "Premium Deluxe Edition",
+      "contents": [
+       {
+        "label": "Base game"
+       },
+       {
+        "label": "Deluxe Kit"
+       },
+       {
+        "label": "Additional Side Story: Rudy"
+       },
+       {
+        "label": "Special Outfits Set"
+       },
+       {
+        "label": "Additional monster-hair and Rudy cosmetic packs"
+       }
+      ]
+     }
+    ],
+    "gameplayPillars": [
+     {
+      "title": "Raise and Bond with Monsties",
+      "description": "Hatch, raise and build bonds with monsters that become traversal partners and combat companions."
+     },
+     {
+      "title": "Turn-Based Battles",
+      "description": "Use the series' Power, Speed and Technical relationship, exploit enemy patterns and coordinate Rider/Monstie actions."
+     },
+     {
+      "title": "Exploration and Riding",
+      "description": "Travel through broad environments using Monstie abilities, discover resources and encounter wild monsters."
+     },
+     {
+      "title": "Party and Character Growth",
+      "description": "Develop the Rider, Monsties and companions through equipment, skills, stats and customization."
+     },
+     {
+      "title": "Story-Driven RPG",
+      "description": "Follow the conflict between Azuria and Vermeil and the mystery surrounding twin Skyscale Rathalos."
+     }
+    ],
+    "worldSummary": "The kingdoms of Azuria and Vermeil face environmental collapse and renewed war. Twin Rathalos carrying the Skyscale mark link the present crisis to a devastating civil war two centuries earlier.",
+    "storyChapters": [
+     {
+      "title": "Two Nations at the Brink",
+      "body": "Azuria and Vermeil face ecological collapse and renewed political tension."
+     },
+     {
+      "title": "Twin Skyscale Rathalos",
+      "body": "An egg thought to hold a single extinct Rathalos instead hatches twins carrying the Skyscale mark associated with a civil war 200 years earlier."
+     },
+     {
+      "title": "A Rider's Journey for the Truth",
+      "body": "The Rider and a trusted Rathalos cross the threatened world to uncover the truth behind the twins, the old war and the worsening natural crisis."
+     }
+    ],
+    "galleryImages": [
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16:9,b_auto:border,c_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000097756/cf4b5344614c09079e0e70b839b522b599d2c92e0b4339e14f83f435be2d6a24",
+      "alt": "Distinct product/game media image 1; separate from the primary cover and square-card roles."
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16:9,b_auto:border,c_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000097756/03c7d68aa8d72150c90eab531400693df164da22b063dfe920fa4ddf2d5b4f63",
+      "alt": "Distinct product/game media image 2; separate from the primary cover and square-card roles."
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16:9,b_auto:border,c_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000097756/47c64acb428b22f89531408121bd963e061be216c043ed01f8ad017c3cdee468",
+      "alt": "Distinct product/game media image 3; separate from the primary cover and square-card roles."
+     }
+    ],
+    "features": [
+     "Third main Monster Hunter Stories RPG",
+     "Raise and bond with Monsties",
+     "Turn-based Power/Speed/Technical battle system",
+     "Large explorable environments",
+     "Twin Rathalos central story",
+     "Character customization and companion progression",
+     "amiibo support",
+     "Surround sound",
+     "Deluxe Kit and Premium Deluxe content",
+     "Additional Side Story: Rudy",
+     "Multiple cosmetic DLC packs"
+    ],
+    "perfResolutionDocked": "1920x1080-class output (dynamic/upscaled; docked can render above 1080p in some reports)",
+    "perfResolutionHandheld": "1280x720 output (dynamic/upscaled presentation)",
+    "perfFps": "30-60 FPS unlocked; commonly ~30-45 FPS",
+    "perfNotes": "Switch 2 uses dynamic resolution with an unlocked frame rate. Independent testing commonly reports roughly 30-45 FPS in the overworld, with up to 60 FPS in lighter scenes or battles. Handheld image quality is softer; 720p-class output has been reported, while docked output is around 1080p-class or higher depending on scene and scaling.",
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "hardwareId": "prd_acf4c89908764c62",
+      "informationStatus": "verified",
+      "handheld": {
+       "supported": true,
+       "resolution": "1280x720 output",
+       "resolutionDynamic": true,
+       "renderingResolution": "Dynamic",
+       "outputResolution": "1280x720",
+       "fps": "30-60",
+       "fpsMin": "~25-30",
+       "fpsMax": "60",
+       "notes": "Portable mode can dip below 30 FPS in heavy scenes according to technical comparisons."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1920x1080 output class",
+       "resolutionDynamic": true,
+       "renderingResolution": "Dynamic",
+       "outputResolution": "1920x1080",
+       "fps": "30-60",
+       "fpsMin": "30",
+       "fpsMax": "60",
+       "notes": "Often around 30-45 FPS in the overworld; can hit 60 FPS in lighter scenes or battles."
+      },
+      "sourceName": "Nintendo Life / RPG Site / Lords of Gaming technical impressions",
+      "sourceUrl": "https://www.nintendolife.com/reviews/nintendo-switch-2/monster-hunter-stories-3-twisted-reflection",
+      "verificationStatus": "third-party-tested",
+      "performanceNotes": "Switch 2 uses dynamic resolution with an unlocked frame rate. Independent testing commonly reports roughly 30-45 FPS in the overworld, with up to 60 FPS in lighter scenes or battles. Handheld image quality is softer; 720p-class output has been reported, while docked output is around 1080p-class or higher depending on scene and scaling."
+     }
+    ],
+    "downloadSizeGb": 27.7,
+    "requiredSpaceGb": 27.7,
+    "microSdRecommended": false,
+    "languagesAudio": [
+     "Japanese",
+     "English"
+    ],
+    "languagesText": [
+     "Japanese",
+     "American English",
+     "French",
+     "German",
+     "Italian",
+     "Spanish",
+     "Korean",
+     "Russian",
+     "Simplified Chinese",
+     "Traditional Chinese",
+     "Brazilian Portuguese",
+     "Polish"
+    ],
+    "arabicSupport": false,
+    "mpLocalPlayers": false,
+    "mpOnlinePlayers": false,
+    "mpCoop": false,
+    "mpCompetitive": false,
+    "mpSplitScreen": false,
+    "mpLocalWireless": false,
+    "dlc": [
+     {
+      "name": "Special Outfits Set",
+      "description": "Cosmetic outfit content for companions and additional customization."
+     },
+     {
+      "name": "Additional Side Story: Rudy",
+      "description": "Paid additional side-story content centered on Rudy."
+     },
+     {
+      "name": "Monster Hair packs",
+      "description": "Additional cosmetic monster-hair customization packs."
+     }
+    ],
+    "guides": [
+     {
+      "title": "Official CAPCOM Site",
+      "summary": "Story, characters, systems, media and edition information.",
+      "url": "https://www.monsterhunter.com/stories3/"
+     },
+     {
+      "title": "Nintendo Store",
+      "summary": "Switch 2 modes, languages, file size, player count and DLC.",
+      "url": "https://www.nintendo.com/us/store/products/monster-hunter-stories-3-twisted-reflection-switch-2/"
+     },
+     {
+      "title": "Deku Deals",
+      "summary": "Review aggregates and crowdsourced completion times.",
+      "url": "https://www.dekudeals.com/items/monster-hunter-stories-3-twisted-reflection"
+     }
+    ],
+    "completionMain": 44.5,
+    "completionExtras": 61,
+    "completionAll": 95,
+    "faq": [
+     {
+      "q": "Is Monster Hunter Stories 3 a mainline action Monster Hunter game?",
+      "a": "No. Stories is a turn-based RPG spin-off centered on Riders, Monsties, bonds and party building."
+     },
+     {
+      "q": "Does the Switch 2 version support Simplified Chinese?",
+      "a": "Yes. Nintendo lists Simplified Chinese and Traditional Chinese among supported languages."
+     },
+     {
+      "q": "How long is the game?",
+      "a": "Crowdsourced completion data lists about 44.5 hours for the main story, around 61 hours with extras and around 95 hours for completionist play."
+     },
+     {
+      "q": "Is there DLC?",
+      "a": "Yes. DLC includes cosmetic packs, the Special Outfits Set and Additional Side Story: Rudy."
+     },
+     {
+      "q": "Does it support amiibo?",
+      "a": "Yes. Nintendo lists amiibo compatibility for the Switch 2 version."
+     },
+     {
+      "q": "Is it multiplayer?",
+      "a": "The Nintendo Switch 2 store lists one player on a single system; the core campaign is designed as a single-player RPG."
+     }
+    ],
+    "verdictScore": 8,
+    "verdictSummary": "A feature-rich monster-raising RPG with strong presentation and customization, though Switch 2 performance is less stable than the hardware can ideally deliver.",
+    "verdictPros": [
+     "Strong creature-raising loop",
+     "Large and colorful world",
+     "Extensive customization",
+     "Rich deluxe/DLC offering",
+     "Official Simplified Chinese support"
+    ],
+    "verdictCons": [
+     "Switch 2 frame rate is unlocked and often sits around 30-45 FPS in large areas",
+     "Portable mode can dip more often in demanding scenes"
+    ],
+    "reviews": [
+     {
+      "source": "Metacritic",
+      "score": "82/100",
+      "quote": "Strong critical reception, especially for turn-based combat, character presentation and the creature-raising loop.",
+      "url": "https://www.metacritic.com/"
+     },
+     {
+      "source": "OpenCritic",
+      "score": "85/100",
+      "quote": "The game received a strong critic average; praise centered on combat and its more personal story, with some criticism of filler and open-world density.",
+      "url": "https://opencritic.com/"
+     },
+     {
+      "source": "Steam users",
+      "score": "81% positive",
+      "quote": "English-language Steam user reviews were Very Positive in the post-launch period.",
+      "url": "https://store.steampowered.com/app/2852190/Monster_Hunter_Stories_3/"
+     }
+    ],
+    "timeline": [
+     {
+      "date": "2025-08-01",
+      "title": "Official announcement",
+      "body": "CAPCOM formally announced Monster Hunter Stories 3 for Nintendo Switch 2 and other current platforms."
+     },
+     {
+      "date": "2025-09-12",
+      "title": "Release date reveal",
+      "body": "A new trailer confirmed the March 2026 launch date and expanded story details."
+     },
+     {
+      "date": "2026-03-13",
+      "title": "Nintendo Switch 2 launch",
+      "body": "The game released on Nintendo Switch 2, PlayStation 5, Xbox Series X|S and PC."
+     },
+     {
+      "date": "2026-06-25",
+      "title": "Major DLC release",
+      "body": "Additional Side Story: Rudy and the Special Outfits Set released."
+     }
+    ],
+    "patchNotes": [
+     {
+      "version": "Launch",
+      "date": "2026-03-13",
+      "body": "Initial Switch 2 release with base story, amiibo support, surround sound and launch-day cosmetic DLC."
+     },
+     {
+      "version": "Rudy / Special Outfits content",
+      "date": "2026-06-25",
+      "body": "Additional Side Story: Rudy and the Special Outfits Set became available as paid downloadable content."
+     },
+     {
+      "version": "Post-launch support",
+      "date": "2026",
+      "body": "CAPCOM continued cosmetic and content support through multiple DLC items and packs."
+     }
+    ],
+    "soundtrack": [
+     {
+      "title": "Monster Hunter Stories 3 Official Music / Soundtrack",
+      "url": "https://www.monsterhunter.com/stories3/"
+     },
+     {
+      "title": "Monster Hunter Stories series music",
+      "url": "https://www.capcom.com/"
+     }
+    ],
+    "seriesName": "Monster Hunter Stories",
+    "seriesEntries": [
+     "Monster Hunter Stories",
+     "Monster Hunter Stories 2: Wings of Ruin",
+     "Monster Hunter Stories 3: Twisted Reflection"
+    ],
+    "studioName": "CAPCOM Co., Ltd.",
+    "studioUrl": "https://www.capcom.com/",
+    "studioLocation": "Osaka, Japan",
+    "studioAbout": "CAPCOM is the Japanese developer and publisher behind Monster Hunter, Resident Evil and Street Fighter. Monster Hunter Stories 3 extends the turn-based Monster Rider RPG branch with redesigned character presentation, larger environments, a new story and expanded customization.",
+    "setupNeeds": [
+     "Nintendo Switch 2 system required for the Nintendo Switch 2 version.",
+     "Internet connection is required for digital download, updates and online/service features where applicable.",
+     "Nintendo Account required for Nintendo eShop purchase/download.",
+     "Sufficient internal storage or compatible microSD Express storage required.",
+     "Nintendo Switch Online membership is required only for game-specific online multiplayer/features that explicitly use it."
+    ],
+    "sources": [
+     {
+      "name": "Nintendo US",
+      "url": "https://www.nintendo.com/us/store/products/monster-hunter-stories-3-twisted-reflection-switch-2/"
+     },
+     {
+      "name": "CAPCOM Official",
+      "url": "https://www.monsterhunter.com/stories3/"
+     },
+     {
+      "name": "CAPCOM Investor Relations",
+      "url": "https://www.capcom.co.jp/ir/english/news/html/e250801.html"
+     },
+     {
+      "name": "Steam",
+      "url": "https://store.steampowered.com/app/2852190/Monster_Hunter_Stories_3/"
+     },
+     {
+      "name": "Deku Deals",
+      "url": "https://www.dekudeals.com/items/monster-hunter-stories-3-twisted-reflection"
+     }
+    ],
+    "boxContentsList": "[Circular]",
+    "image": "/api/files/products/prd_09e13ed4dedb4150/coverImage-70f3a95408b99902.avif",
+    "banner": "/api/files/products/prd_09e13ed4dedb4150/bannerImages-1-2f8d20d04ac7d6e0.avif",
+    "schemaId": "",
+    "badgeEn": "وفر 40%",
+    "badgeKu": "وفر 40%",
+    "featuresEn": [
+     "Third main Monster Hunter Stories RPG",
+     "Raise and bond with Monsties",
+     "Turn-based Power/Speed/Technical battle system",
+     "Large explorable environments",
+     "Twin Rathalos central story",
+     "Character customization and companion progression",
+     "amiibo support",
+     "Surround sound",
+     "Deluxe Kit and Premium Deluxe content",
+     "Additional Side Story: Rudy",
+     "Multiple cosmetic DLC packs"
+    ],
+    "featuresKu": [
+     "Third main Monster Hunter Stories RPG",
+     "Raise and bond with Monsties",
+     "Turn-based Power/Speed/Technical battle system",
+     "Large explorable environments",
+     "Twin Rathalos central story",
+     "Character customization and companion progression",
+     "amiibo support",
+     "Surround sound",
+     "Deluxe Kit and Premium Deluxe content",
+     "Additional Side Story: Rudy",
+     "Multiple cosmetic DLC packs"
+    ],
+    "sales": 0,
+    "images": [],
+    "modes": [],
+    "updatedAt": "2026-08-28T21:59:48.285Z"
+   }
+  },
+  {
+   "id": "prd_c5dab307d09d4550",
+   "slug": "new-super-mario-bros-u-deluxe-switch",
+   "title": "New Super Mario Bros. U Deluxe",
+   "platform": "switch1",
+   "isHidden": false,
+   "hash": "e24d8227d44ac1b87b6338e17cf0e1bd733a8df73df266ac963e3dae1f47e3d5",
+   "images": [
+    {
+     "role": "front-box",
+     "field": "cartridgeImage",
+     "url": "https://banan.to/api/files/products/prd_c5dab307d09d4550/front-f86f845e5001db20.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 18489,
+     "width": 172,
+     "height": 281,
+     "thumb": "review-workdir/thumbs/batch-016/new-super-mario-bros-u-deluxe-switch__front-box-0.png"
+    },
+    {
+     "role": "front-box",
+     "field": "box_front_url",
+     "url": "https://images.launchbox-app.com//73f4a325-1884-40ea-b145-0cd5f7d56286.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 18489,
+     "width": 172,
+     "height": 281,
+     "thumb": "review-workdir/thumbs/batch-016/new-super-mario-bros-u-deluxe-switch__front-box-1.png"
+    },
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://banan.to/api/files/products/prd_c5dab307d09d4550/square-087131c10f902b57.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 23919,
+     "width": 281,
+     "height": 281,
+     "thumb": "review-workdir/thumbs/batch-016/new-super-mario-bros-u-deluxe-switch__square-card-2.png"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://banan.to/api/files/products/prd_c5dab307d09d4550/cover-182c6c1343438fc8.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 131192,
+     "width": 1000,
+     "height": 500,
+     "thumb": "review-workdir/thumbs/batch-016/new-super-mario-bros-u-deluxe-switch__detail-cover-3.png"
+    },
+    {
+     "role": "3d-texture",
+     "field": "coverHiResImage",
+     "url": "https://banan.to/api/files/products/prd_c5dab307d09d4550/3d-texture-c5adb6f2bb2101d5.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 6613754,
+     "width": 3776,
+     "height": 4912,
+     "thumb": "review-workdir/thumbs/batch-016/new-super-mario-bros-u-deluxe-switch__3d-texture-4.png"
+    },
+    {
+     "role": "listing",
+     "field": "image",
+     "url": "https://banan.to/api/files/products/prd_c5dab307d09d4550/cover-182c6c1343438fc8.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 131192,
+     "width": 1000,
+     "height": 500,
+     "thumb": "review-workdir/thumbs/batch-016/new-super-mario-bros-u-deluxe-switch__listing-5.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[0]",
+     "url": "https://banan.to/api/files/products/prd_c5dab307d09d4550/banner-0-7d1dcb7e757d1739.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 28516,
+     "width": 400,
+     "height": 225,
+     "thumb": "review-workdir/thumbs/batch-016/new-super-mario-bros-u-deluxe-switch__banner-6.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[1]",
+     "url": "https://banan.to/api/files/products/prd_c5dab307d09d4550/banner-1-5a9f44610a3b7cce.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 25819,
+     "width": 400,
+     "height": 225,
+     "thumb": "review-workdir/thumbs/batch-016/new-super-mario-bros-u-deluxe-switch__banner-7.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[2]",
+     "url": "https://banan.to/api/files/products/prd_c5dab307d09d4550/banner-2-0bb3126019b92963.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 58509,
+     "width": 400,
+     "height": 216,
+     "thumb": "review-workdir/thumbs/batch-016/new-super-mario-bros-u-deluxe-switch__banner-8.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[3]",
+     "url": "https://banan.to/api/files/products/prd_c5dab307d09d4550/banner-3-0ddd4431668a996d.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 13848,
+     "width": 400,
+     "height": 225,
+     "thumb": "review-workdir/thumbs/batch-016/new-super-mario-bros-u-deluxe-switch__banner-9.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://images.launchbox-app.com//688f4bf3-f3aa-4334-a852-ce1275e7b273.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 19757,
+     "width": 400,
+     "height": 225,
+     "thumb": "review-workdir/thumbs/batch-016/new-super-mario-bros-u-deluxe-switch__gallery-10.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[1]",
+     "url": "https://images.launchbox-app.com//9af4858c-ad64-4696-bedf-3cf940247080.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 22579,
+     "width": 400,
+     "height": 225,
+     "thumb": "review-workdir/thumbs/batch-016/new-super-mario-bros-u-deluxe-switch__gallery-11.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[2]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000006411/73d58198e35bf94be752cf3d9ba0b44dea877cab1487e2cc1b7eeb02157f066f",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 310545,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-016/new-super-mario-bros-u-deluxe-switch__gallery-12.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[3]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000006411/f7eab80bf81dace25f1372f2b0ac5a63e3653af74468f73f37c6bb27df638a93",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 127654,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-016/new-super-mario-bros-u-deluxe-switch__gallery-13.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[4]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000006411/5e1ca57f22a388d696dd0883ea3b5453c7c9e59ff0fea05dd912a2fcb88d1985",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 125202,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-016/new-super-mario-bros-u-deluxe-switch__gallery-14.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[5]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000006411/5d7c325d4bac7e8af8da21d05376a007e4701421cec4a9a8791677162817eed9",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 150395,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-016/new-super-mario-bros-u-deluxe-switch__gallery-15.png"
+    }
+   ],
+   "record": {
+    "title": "New Super Mario Bros. U Deluxe",
+    "titleEn": "New Super Mario Bros. U Deluxe",
+    "titleKu": "New Super Mario Bros. U Deluxe",
+    "slug": "new-super-mario-bros-u-deluxe-switch",
+    "description": "A two-game 2D Mario package containing New Super Mario Bros. U and the faster, harder New Super Luigi U. The Deluxe release adds Toadette and Nabbit, accessibility-friendly character options and 164 courses across the two adventures.",
+    "descriptionEn": "A two-game 2D Mario package containing New Super Mario Bros. U and the faster, harder New Super Luigi U. The Deluxe release adds Toadette and Nabbit, accessibility-friendly character options and 164 courses across the two adventures.",
+    "descriptionKu": "A two-game 2D Mario package containing New Super Mario Bros. U and the faster, harder New Super Luigi U. The Deluxe release adds Toadette and Nabbit, accessibility-friendly character options and 164 courses across the two adventures.",
+    "cartridgeImage": "/api/files/products/prd_c5dab307d09d4550/front-f86f845e5001db20.jpg",
+    "nintendoCardImage": "/api/files/products/prd_c5dab307d09d4550/square-087131c10f902b57.jpg",
+    "coverHiResImage": "/api/files/products/prd_c5dab307d09d4550/3d-texture-c5adb6f2bb2101d5.jpg",
+    "coverImage": "/api/files/products/prd_c5dab307d09d4550/cover-182c6c1343438fc8.webp",
+    "bannerImages": [
+     "/api/files/products/prd_c5dab307d09d4550/banner-0-7d1dcb7e757d1739.jpg",
+     "/api/files/products/prd_c5dab307d09d4550/banner-1-5a9f44610a3b7cce.jpg",
+     "/api/files/products/prd_c5dab307d09d4550/banner-2-0bb3126019b92963.jpg",
+     "/api/files/products/prd_c5dab307d09d4550/banner-3-0ddd4431668a996d.jpg",
+     "/api/files/products/prd_c5dab307d09d4550/banner-4-c0d296fb327b9679.jpg"
+    ],
+    "gallery": [],
+    "youtubeTrailer": "https://www.nintendo.com/us/store/products/new-super-mario-bros-u-deluxe-switch/",
+    "releaseDate": "2019-01-11",
+    "ageRating": "ESRB E / PEGI 3",
+    "metacriticRating": 80,
+    "genres": [
+     "2D Platformer",
+     "Action",
+     "Family"
+    ],
+    "platform": "switch1",
+    "size": 2.529,
+    "numberOfPlayers": "1–4 local",
+    "supportedLanguages": "Japanese / English; French / German / Italian / Spanish / Portuguese / Dutch / Russian; Korean / Simplified Chinese / Traditional Chinese",
+    "hardwareModel": "",
+    "colorEdition": "",
+    "storageCapacity": "",
+    "screenSpecs": "",
+    "batteryLife": "",
+    "boxContents": [],
+    "boxContentsText": "",
+    "warrantyCondition": "",
+    "connectivity": "",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "Global",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "",
+    "redemptionSteps": [],
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 12000,
+    "cost": 1500,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": false,
+    "displayOrder": 0,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "Offline Account",
+      "description": "Offline account access",
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_account",
+      "name": "Online Account",
+      "description": "Online account access",
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "types": [
+     {
+      "id": "standard_offline",
+      "name": "Offline Account",
+      "optionId": "offline_account",
+      "price": 12000,
+      "cost": 1500,
+      "description": "Offline Account; supplier cost 1,500 IQD; configured selling price 12,000 IQD.",
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "standard_online",
+      "name": "Online Account",
+      "optionId": "online_account",
+      "price": "34000",
+      "cost": 18500,
+      "description": "Online Account; supplier cost 18,500 IQD; configured selling price 28,500 IQD.",
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "Active",
+    "kind": "account",
+    "trade_value_iqd": 38000,
+    "store_offer_bonus_iqd": 7000,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "id": "prd_c5dab307d09d4550",
+    "schema_version": 23,
+    "titleAr": "نيو سوبر ماريو بروس. يو ديلوكس",
+    "compatibility": [
+     "Nintendo Switch",
+     "Nintendo Switch 2 (backward compatible / separate Switch 2 Edition where applicable)"
+    ],
+    "edition": "Standard",
+    "developer": "Nintendo EPD",
+    "publisher": "Nintendo",
+    "metacriticUrl": "https://www.metacritic.com/game/new-super-mario-bros-u-deluxe/",
+    "opencriticRating": 79,
+    "userScore": 7.1,
+    "price_usd": 59.99,
+    "officialUrl": "https://www.nintendo.com/us/store/products/new-super-mario-bros-u-deluxe-switch/",
+    "eshopUrl": "https://www.nintendo.com/us/store/products/new-super-mario-bros-u-deluxe-switch/",
+    "gameIsOffline": true,
+    "gameIsOnline": false,
+    "gameLanguageLocked": false,
+    "description_short": "A two-game 2D Mario package containing New Super Mario Bros. U and the faster, harder New Super Luigi U. The Deluxe release adds Toadette and Nabbit, accessibility-friendly character options and 164 courses across the two adventures.",
+    "description_ar": "حزمة Mario ثنائية الأبعاد تضم New Super Mario Bros. U وNew Super Luigi U الأصعب والأسرع. تضيف نسخة Deluxe شخصيتي Toadette وNabbit وخيارات أسهل للمبتدئين، مع 164 مرحلة ومجموعة أوضاع إضافية.",
+    "box_front_url": "https://images.launchbox-app.com//73f4a325-1884-40ea-b145-0cd5f7d56286.jpg",
+    "box_back_url": "https://cdn.switch-images-julio.com/file/switch-images-julio/ADALA/back.png",
+    "galleryImages": [
+     {
+      "url": "https://images.launchbox-app.com//688f4bf3-f3aa-4334-a852-ce1275e7b273.jpg",
+      "alt": "New Super Mario Bros. U Deluxe — verified promotional/gameplay image 1"
+     },
+     {
+      "url": "https://images.launchbox-app.com//9af4858c-ad64-4696-bedf-3cf940247080.jpg",
+      "alt": "New Super Mario Bros. U Deluxe — verified promotional/gameplay image 2"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000006411/73d58198e35bf94be752cf3d9ba0b44dea877cab1487e2cc1b7eeb02157f066f",
+      "alt": "New Super Mario Bros. U Deluxe — verified promotional/gameplay image 3"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000006411/f7eab80bf81dace25f1372f2b0ac5a63e3653af74468f73f37c6bb27df638a93",
+      "alt": "New Super Mario Bros. U Deluxe — verified promotional/gameplay image 4"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000006411/5e1ca57f22a388d696dd0883ea3b5453c7c9e59ff0fea05dd912a2fcb88d1985",
+      "alt": "New Super Mario Bros. U Deluxe — verified promotional/gameplay image 5"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000006411/5d7c325d4bac7e8af8da21d05376a007e4701421cec4a9a8791677162817eed9",
+      "alt": "New Super Mario Bros. U Deluxe — verified promotional/gameplay image 6"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000006411/10ad0a494ed4eb05efebfbb08a7b878a65c17cdeb80101712eed1fe2966b86be",
+      "alt": "New Super Mario Bros. U Deluxe — verified promotional/gameplay image 7"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000006411/26826beae5aa713a619278d2003d44f15ca591d831a312e2f56aee7a709d7409",
+      "alt": "New Super Mario Bros. U Deluxe — verified promotional/gameplay image 8"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000006411/cf09bb956319bb998c3ac9ac52c19c5ad3ca72902451e2a683a3b03a87f6e0e9",
+      "alt": "New Super Mario Bros. U Deluxe — verified promotional/gameplay image 9"
+     }
+    ],
+    "videos": [
+     {
+      "title": "Official trailer / product overview",
+      "url": "https://www.nintendo.com/us/store/products/new-super-mario-bros-u-deluxe-switch/"
+     },
+     {
+      "title": "Nintendo product page and gameplay media",
+      "url": "https://www.nintendo.com/us/store/products/new-super-mario-bros-u-deluxe-switch/"
+     },
+     {
+      "title": "Technical / review reference",
+      "url": "https://handheld-performance.com/games/new-super-mario-bros-u-deluxe"
+     }
+    ],
+    "nsuid": "See official Nintendo product page for regional NSUID",
+    "title_id": "Regional digital title ID varies by storefront and package",
+    "product_code": "HAC-P-ADALA",
+    "nintendoEshopUrl": "https://www.nintendo.com/us/store/products/new-super-mario-bros-u-deluxe-switch/",
+    "nintendoOnlineRequired": false,
+    "nintendoCloudSaves": true,
+    "nintendoGameKeyCard": false,
+    "nintendoPhysicalNeedsDownload": false,
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": true,
+    "nintendoPlayModes": "TV / Tabletop / Handheld",
+    "nintendoNotes": "Current verified Nintendo data for New Super Mario Bros. U Deluxe. Storage, languages, multiplayer and platform-specific features are separated from measured performance values.",
+    "switch2Enhanced": true,
+    "switch2Exclusive": false,
+    "switch2UpgradePrice": 0,
+    "switch2Features": [
+     "164 courses across two campaigns",
+     "Four-player local multiplayer",
+     "1080p docked / 720p handheld at 60 fps"
+    ],
+    "tagline": "Two complete side-scrolling Mario adventures in one compact Switch package.",
+    "fitFor": [
+     "Families and local co-op players",
+     "Fans of traditional 2D Mario",
+     "Players who want a large number of short platforming courses"
+    ],
+    "notFitFor": [
+     "Players wanting online multiplayer",
+     "Players who already exhausted the Wii U originals",
+     "Players seeking Wonder-style experimental mechanics"
+    ],
+    "playTimeMain": 9,
+    "playTimeFull": 28.5,
+    "editionsList": [
+     {
+      "name": "Standard Edition",
+      "coverUrl": "https://images.launchbox-app.com//73f4a325-1884-40ea-b145-0cd5f7d56286.jpg",
+      "contents": [
+       {
+        "label": "Base game"
+       },
+       {
+        "label": "Core modes"
+       },
+       {
+        "label": "Platform features"
+       }
+      ]
+     },
+     {
+      "name": "Digital Edition",
+      "coverUrl": "https://images.launchbox-app.com//94d29004-8b97-4316-aec8-19f53f77557a.jpg",
+      "contents": [
+       {
+        "label": "Digital game license"
+       },
+       {
+        "label": "Same core game content"
+       },
+       {
+        "label": "Nintendo Account delivery"
+       }
+      ]
+     },
+     {
+      "name": "Current Complete Package",
+      "coverUrl": "https://images.launchbox-app.com//f1a6f1b5-e139-4da6-b772-94dba06191d1.jpg",
+      "contents": [
+       {
+        "label": "Latest game build"
+       },
+       {
+        "label": "No paid DLC"
+       },
+       {
+        "label": "164 courses across two campaigns"
+       }
+      ]
+     }
+    ],
+    "gameplayPillars": [
+     {
+      "title": "Classic 2D Mario",
+      "description": "Precise running and jumping, power-ups, secret exits and multiplayer interactions form the core.",
+      "imageUrl": "https://images.launchbox-app.com//f1a6f1b5-e139-4da6-b772-94dba06191d1.jpg"
+     },
+     {
+      "title": "Two adventures",
+      "description": "The package includes both New Super Mario Bros. U and the full New Super Luigi U campaign.",
+      "imageUrl": "https://images.launchbox-app.com//032e5f90-196f-4b0e-96f4-624238caf412.jpg"
+     },
+     {
+      "title": "Accessible character options",
+      "description": "Nabbit avoids enemy damage and Toadette can use the Super Crown, making the game easier for newer players.",
+      "imageUrl": "https://gamesdb-images.launchbox.gg/r2_8e171a73-9f4d-4079-8f3e-6210b0ccec12.jpg"
+     }
+    ],
+    "worldSummary": "Mario, Luigi and friends cross the Mushroom Kingdom to reclaim Peach's Castle from Bowser and the Koopalings. The package also includes New Super Luigi U, which remixes the adventure into shorter, more time-pressured courses.",
+    "storyChapters": [
+     {
+      "title": "Bowser attacks",
+      "body": "Bowser's forces seize Peach's Castle and launch Mario and friends far across the Mushroom Kingdom.",
+      "imageUrl": "https://images.launchbox-app.com//b8f0d182-626d-411c-b12a-e9b102dda993.jpg"
+     },
+     {
+      "title": "The road back",
+      "body": "The heroes travel through themed worlds, fortresses and airships to reach the castle.",
+      "imageUrl": "https://images.launchbox-app.com//028a7de6-957e-48a9-bf5c-ead1f2d32d7b.jpg"
+     },
+     {
+      "title": "New Super Luigi U",
+      "body": "A faster remix gives Luigi and friends shorter timers and altered courses.",
+      "imageUrl": "https://images.launchbox-app.com//688f4bf3-f3aa-4334-a852-ce1275e7b273.jpg"
+     }
+    ],
+    "features": [
+     "164 courses across two campaigns",
+     "Four-player local multiplayer",
+     "1080p docked / 720p handheld at 60 fps"
+    ],
+    "perfResolutionDocked": "1080p",
+    "perfResolutionHandheld": "720p",
+    "perfFps": "60",
+    "perfHdr": false,
+    "perfNotes": "Digital Foundry reports native 1080p docked and 720p handheld with a consistent 60 fps target, including four-player gameplay.",
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "hardwareId": "prd_acf4c89908764c62",
+      "informationStatus": "Available / verified",
+      "unavailableReason": "No required native mode is unavailable.",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p",
+       "resolutionDynamic": false,
+       "renderingResolution": "720p",
+       "outputResolution": "1280x720",
+       "fps": "60",
+       "fpsMin": "60",
+       "fpsMax": "60",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Handheld",
+       "notes": "Digital Foundry reports native 1080p docked and 720p handheld with a consistent 60 fps target, including four-player gameplay."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p",
+       "resolutionDynamic": false,
+       "renderingResolution": "1080p",
+       "outputResolution": "1920x1080",
+       "fps": "60",
+       "fpsMin": "60",
+       "fpsMax": "60",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "TV / Docked",
+       "notes": "Digital Foundry reports native 1080p docked and 720p handheld with a consistent 60 fps target, including four-player gameplay."
+      },
+      "modes": [
+       {
+        "name": "Standard",
+        "handheldResolution": "720p",
+        "handheldFps": "60",
+        "tvResolution": "1080p",
+        "tvFps": "60",
+        "hdr": false,
+        "vrr": false,
+        "notes": "Primary documented performance profile."
+       }
+      ],
+      "upscaling": "Platform-specific scaling/reconstruction where documented",
+      "rayTracing": false,
+      "rayTracingMode": "No ray-tracing mode",
+      "loadingTime": "Scene-dependent; no single universal load time",
+      "loadingNotes": "Loading varies by activity and storage state.",
+      "gameVersion": "Current retail build",
+      "patchVersion": "Current available update",
+      "testedDate": "2026-08-27",
+      "sourceName": "Handheld Performance",
+      "sourceUrl": "https://handheld-performance.com/games/new-super-mario-bros-u-deluxe",
+      "verifiedAt": "2026-08-27",
+      "verificationStatus": "Verified / sourced",
+      "performanceNotes": "Digital Foundry reports native 1080p docked and 720p handheld with a consistent 60 fps target, including four-player gameplay."
+     }
+    ],
+    "downloadSizeGb": 2.529,
+    "requiredSpaceGb": 2.529,
+    "microSdRecommended": false,
+    "storageNotes": "Deku Deals lists 2.529 GB for the Switch version. The game is small enough that microSD storage is optional.",
+    "languagesAudio": [
+     "Character vocalizations",
+     "Music / sound effects",
+     "No language-dependent full voice track"
+    ],
+    "languagesText": [
+     "Japanese / English",
+     "French / German / Italian / Spanish / Portuguese / Dutch / Russian",
+     "Korean / Simplified Chinese / Traditional Chinese"
+    ],
+    "arabicSupport": false,
+    "mpLocalPlayers": true,
+    "mpOnlinePlayers": false,
+    "mpCoop": true,
+    "mpCompetitive": false,
+    "mpSplitScreen": false,
+    "mpLocalWireless": false,
+    "dlc": [
+     {
+      "name": "No paid DLC",
+      "description": "No standalone paid expansion has been released for New Super Mario Bros. U Deluxe.",
+      "coverUrl": "https://images.launchbox-app.com//9af4858c-ad64-4696-bedf-3cf940247080.jpg"
+     },
+     {
+      "name": "New Super Luigi U included",
+      "description": "The Luigi campaign is included in the base Deluxe package rather than sold separately.",
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000006411/73d58198e35bf94be752cf3d9ba0b44dea877cab1487e2cc1b7eeb02157f066f"
+     },
+     {
+      "name": "Free Switch 2 compatibility update",
+      "description": "Nintendo released a free update optimizing graphics for the Switch 2 display and high-resolution TVs.",
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000006411/f7eab80bf81dace25f1372f2b0ac5a63e3653af74468f73f37c6bb27df638a93"
+     }
+    ],
+    "guides": [
+     {
+      "title": "Official Nintendo page",
+      "summary": "Release, platform, storage, languages and feature information.",
+      "url": "https://www.nintendo.com/us/store/products/new-super-mario-bros-u-deluxe-switch/"
+     },
+     {
+      "title": "Gameplay / technical reference",
+      "summary": "Performance and gameplay behavior reference.",
+      "url": "https://handheld-performance.com/games/new-super-mario-bros-u-deluxe"
+     },
+     {
+      "title": "Database / review reference",
+      "summary": "Media, reviews and completion context.",
+      "url": "https://www.dekudeals.com/items/new-super-mario-bros-u-deluxe"
+     }
+    ],
+    "completionMain": 9,
+    "completionExtras": 16.5,
+    "completionAll": 28.5,
+    "faq": [
+     {
+      "q": "Does it include New Super Luigi U?",
+      "a": "Yes. Both New Super Mario Bros. U and New Super Luigi U are included."
+     },
+     {
+      "q": "Does it support online multiplayer?",
+      "a": "No. The core multiplayer is local on one system."
+     },
+     {
+      "q": "How does it perform?",
+      "a": "It targets 60 fps at 1080p docked and 720p handheld on the original Switch."
+     }
+    ],
+    "verdictScore": 8.3,
+    "verdictSummary": "A generous and technically polished package of traditional 2D Mario, especially valuable for players who missed the Wii U originals.",
+    "verdictPros": [
+     "Two complete campaigns",
+     "Stable 60 fps and crisp presentation",
+     "Great local four-player support"
+    ],
+    "verdictCons": [
+     "Conservative compared with newer Mario designs",
+     "No online multiplayer",
+     "Returning Wii U players may find limited novelty"
+    ],
+    "reviews": [
+     {
+      "source": "Metacritic",
+      "score": "80/100",
+      "quote": "Generally favorable critic reception.",
+      "url": "https://www.metacritic.com/game/new-super-mario-bros-u-deluxe/"
+     },
+     {
+      "source": "OpenCritic",
+      "score": "79/100",
+      "quote": "Generally favorable aggregate.",
+      "url": "https://opencritic.com/game/7084/new-super-mario-bros-u-deluxe"
+     },
+     {
+      "source": "Deku Deals users",
+      "score": "3.9/5",
+      "quote": "Long-term user rating snapshot.",
+      "url": "https://www.dekudeals.com/items/new-super-mario-bros-u-deluxe"
+     }
+    ],
+    "timeline": [
+     {
+      "date": "2012-11-18",
+      "title": "New Super Mario Bros. U",
+      "body": "Original Wii U game released."
+     },
+     {
+      "date": "2013-06-20",
+      "title": "New Super Luigi U",
+      "body": "Luigi-focused expansion/campaign released."
+     },
+     {
+      "date": "2019-01-11",
+      "title": "Deluxe edition",
+      "body": "Combined Switch version launched worldwide."
+     }
+    ],
+    "patchNotes": [
+     {
+      "version": "Launch build",
+      "date": "2019-01-11",
+      "body": "Released with Toadette, Nabbit and the complete Luigi campaign."
+     },
+     {
+      "version": "Switch compatibility maintenance",
+      "date": "2025",
+      "body": "Nintendo maintained compatibility across current Switch system software."
+     },
+     {
+      "version": "Free Switch 2 optimization",
+      "date": "2025-06-05",
+      "body": "Graphics optimized for Switch 2 display and higher-resolution TVs."
+     }
+    ],
+    "soundtrack": [
+     {
+      "title": "Peach's Castle theme",
+      "url": "https://www.nintendo.com/us/store/products/new-super-mario-bros-u-deluxe-switch/"
+     },
+     {
+      "title": "Overworld theme",
+      "url": "https://www.nintendo.com/us/store/products/new-super-mario-bros-u-deluxe-switch/"
+     },
+     {
+      "title": "New Super Luigi U course music",
+      "url": "https://www.nintendo.com/us/store/products/new-super-mario-bros-u-deluxe-switch/"
+     }
+    ],
+    "seriesName": "Super Mario",
+    "seriesEntries": [
+     "Super Mario Bros. Wonder",
+     "Super Mario Odyssey",
+     "Super Mario 3D World + Bowser's Fury"
+    ],
+    "studioName": "Nintendo EPD",
+    "studioUrl": "https://www.nintendo.co.jp/",
+    "studioLocation": "Kyoto, Japan",
+    "studioAbout": "Nintendo's internal development organization produced the Deluxe Switch conversion of the Wii U platformers.",
+    "setupNeeds": [
+     "Nintendo Switch",
+     "Approximately 2.529 GB free storage",
+     "One Joy-Con or compatible controller per local player"
+    ],
+    "sources": [
+     {
+      "name": "Nintendo official",
+      "url": "https://www.nintendo.com/us/store/products/new-super-mario-bros-u-deluxe-switch/"
+     },
+     {
+      "name": "Handheld Performance",
+      "url": "https://handheld-performance.com/games/new-super-mario-bros-u-deluxe"
+     },
+     {
+      "name": "Deku Deals",
+      "url": "https://www.dekudeals.com/items/new-super-mario-bros-u-deluxe"
+     }
+    ],
+    "boxContentsList": "[Circular]",
+    "image": "/api/files/products/prd_c5dab307d09d4550/cover-182c6c1343438fc8.webp",
+    "banner": "/api/files/products/prd_c5dab307d09d4550/banner-0-7d1dcb7e757d1739.jpg",
+    "schemaId": "",
+    "createdAt": "2026-08-27T01:03:26.151Z",
+    "created_at": "2026-08-27T01:03:26.151Z",
+    "updatedAt": "2026-08-27T01:03:26.151Z",
+    "updated_at": "2026-08-27T01:03:26.151Z",
+    "badgeEn": "وفر 40%",
+    "badgeKu": "وفر 40%",
+    "featuresEn": [
+     "164 courses across two campaigns",
+     "Four-player local multiplayer",
+     "1080p docked / 720p handheld at 60 fps"
+    ],
+    "featuresKu": [
+     "164 courses across two campaigns",
+     "Four-player local multiplayer",
+     "1080p docked / 720p handheld at 60 fps"
+    ],
+    "boxFrontUrl": "https://images.launchbox-app.com//73f4a325-1884-40ea-b145-0cd5f7d56286.jpg",
+    "sales": 0,
+    "images": [],
+    "modes": [],
+    "game_id": "gme_ef38a9643fc64c78"
+   }
+  },
+  {
+   "id": "prd_d49c84c34a844de6",
+   "slug": "nier-automata-the-end-of-yorha-edition-switch-1",
+   "title": "NieR:Automata The End of YoRHa Edition",
+   "platform": "switch1",
+   "isHidden": true,
+   "hash": "b48227e5d1796015e048c9062af7614bbf14d184ec64206ee9cc17606e197d0f",
+   "images": [
+    {
+     "role": "front-box",
+     "field": "cartridgeImage",
+     "url": "https://banan.to/api/files/products/prd_d49c84c34a844de6/front-box-d827fd22bb3d13db.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 430460,
+     "width": 1167,
+     "height": 1888,
+     "thumb": "review-workdir/thumbs/batch-016/nier-automata-the-end-of-yorha-edition-switch-1__front-box-0.png"
+    },
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://banan.to/api/files/products/prd_d49c84c34a844de6/square-card-51b61ae7a2b3c453.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 145026,
+     "width": 1024,
+     "height": 1024,
+     "thumb": "review-workdir/thumbs/batch-016/nier-automata-the-end-of-yorha-edition-switch-1__square-card-1.png"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://banan.to/api/files/products/prd_d49c84c34a844de6/cover-2b1ffa81b8d50818.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 136740,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-016/nier-automata-the-end-of-yorha-edition-switch-1__detail-cover-2.png"
+    },
+    {
+     "role": "3d-texture",
+     "field": "coverHiResImage",
+     "url": "https://banan.to/api/files/products/prd_d49c84c34a844de6/3d-wrap-030720f5d6168a23.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 1288558,
+     "width": 2454,
+     "height": 1888,
+     "thumb": "review-workdir/thumbs/batch-016/nier-automata-the-end-of-yorha-edition-switch-1__3d-texture-3.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://banan.to/api/files/products/prd_d49c84c34a844de6/gallery-1-f630caa1d251c741.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 161572,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-016/nier-automata-the-end-of-yorha-edition-switch-1__gallery-4.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[1]",
+     "url": "https://banan.to/api/files/products/prd_d49c84c34a844de6/gallery-2-a335f162fcab0e0b.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 56370,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-016/nier-automata-the-end-of-yorha-edition-switch-1__gallery-5.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[2]",
+     "url": "https://banan.to/api/files/products/prd_d49c84c34a844de6/gallery-3-4a76ade31f247713.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 136558,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-016/nier-automata-the-end-of-yorha-edition-switch-1__gallery-6.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[3]",
+     "url": "https://banan.to/api/files/products/prd_d49c84c34a844de6/gallery-4-f460fb377b4d2411.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 86370,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-016/nier-automata-the-end-of-yorha-edition-switch-1__gallery-7.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[4]",
+     "url": "https://banan.to/api/files/products/prd_d49c84c34a844de6/gallery-5-ad4d4c6f4f2200a8.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 92864,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-016/nier-automata-the-end-of-yorha-edition-switch-1__gallery-8.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[5]",
+     "url": "https://banan.to/api/files/products/prd_d49c84c34a844de6/gallery-6-8ea8c06ddb2327be.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 95584,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-016/nier-automata-the-end-of-yorha-edition-switch-1__gallery-9.png"
+    }
+   ],
+   "record": {
+    "title": "NieR:Automata The End of YoRHa Edition",
+    "titleEn": "NieR:Automata The End of YoRHa Edition",
+    "titleKu": "",
+    "slug": "nier-automata-the-end-of-yorha-edition-switch-1",
+    "description": "NieR:Automata The End of YoRHa Edition is the Nintendo Switch version of the award-winning action RPG. Humanity has fled to the Moon after machine lifeforms overrun Earth, and android soldiers 2B and 9S are sent to reclaim the planet. The edition includes the 3C3C1D119440927 DLC with colosseums and costumes, and the Switch version is officially supported on Switch 2.",
+    "descriptionEn": "NieR:Automata The End of YoRHa Edition is the Nintendo Switch version of the award-winning action RPG. Humanity has fled to the Moon after machine lifeforms overrun Earth, and android soldiers 2B and 9S are sent to reclaim the planet. The edition includes the 3C3C1D119440927 DLC with colosseums and costumes, and the Switch version is officially supported on Switch 2.",
+    "descriptionKu": "",
+    "cartridgeImage": "/api/files/products/prd_d49c84c34a844de6/front-box-d827fd22bb3d13db.webp",
+    "nintendoCardImage": "/api/files/products/prd_d49c84c34a844de6/square-card-51b61ae7a2b3c453.webp",
+    "coverHiResImage": "/api/files/products/prd_d49c84c34a844de6/3d-wrap-030720f5d6168a23.webp",
+    "coverImage": "/api/files/products/prd_d49c84c34a844de6/cover-2b1ffa81b8d50818.webp",
+    "bannerImages": [
+     ""
+    ],
+    "gallery": [],
+    "youtubeTrailer": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-games/NieR-Automata-The-End-of-YoRHa-Edition-2232461.html",
+    "releaseDate": "2022-10-06",
+    "ageRating": "PEGI 18",
+    "metacriticRating": 89,
+    "genres": [
+     "Action",
+     "RPG"
+    ],
+    "platform": "switch1",
+    "size": "10.9 GB",
+    "numberOfPlayers": "Single system (1)",
+    "supportedLanguages": "English, Japanese, French, Spanish, German",
+    "hardwareModel": "",
+    "colorEdition": "",
+    "storageCapacity": "",
+    "screenSpecs": "",
+    "batteryLife": "",
+    "boxContents": [],
+    "boxContentsText": "",
+    "warrantyCondition": "",
+    "connectivity": "",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "Global",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "",
+    "redemptionSteps": [],
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 8500,
+    "cost": 1250,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": true,
+    "displayOrder": 0,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "مشترك",
+      "description": "مشترك",
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_account",
+      "name": "خاص بك",
+      "description": "خاص بك",
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "types": [
+     {
+      "id": "offline_base",
+      "name": "مشترك — اللعبة الأساسية",
+      "optionId": "offline_account",
+      "price": 8500,
+      "cost": 1250,
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_base",
+      "name": "خاص بك — اللعبة الأساسية",
+      "optionId": "online_account",
+      "price": 21000,
+      "cost": 16500,
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "Active",
+    "kind": "account",
+    "trade_value_iqd": 10500,
+    "store_offer_bonus_iqd": 1250,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "id": "prd_d49c84c34a844de6",
+    "schema_version": 24,
+    "titleAr": "نيير: أوتوماتا ذا إند أوف يورها إديشن",
+    "compatibility": [
+     "Nintendo Switch",
+     "Nintendo Switch 2 compatibility: supported or separately represented where applicable"
+    ],
+    "edition": "Standard",
+    "developer": "PlatinumGames",
+    "publisher": "SQUARE ENIX",
+    "seriesName": "NieR",
+    "opencriticRating": 89,
+    "userScore": 8.8,
+    "switch2UpgradePrice": 0,
+    "officialUrl": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-games/NieR-Automata-The-End-of-YoRHa-Edition-2232461.html",
+    "eshopUrl": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-games/NieR-Automata-The-End-of-YoRHa-Edition-2232461.html",
+    "gameIsOffline": true,
+    "gameIsOnline": false,
+    "gameLanguageLocked": false,
+    "description_short": "A post-apocalyptic action RPG starring androids 2B and 9S, including the 3C3C1D119440927 DLC.",
+    "description_ar": "نسخة Nintendo Switch من NieR:Automata، تتبع الأندرويد 2B و9S في حرب ضد الآلات على الأرض، وتشمل DLC 3C3C1D119440927 مع ساحات قتال وأزياء إضافية.",
+    "galleryImages": [
+     {
+      "url": "/api/files/products/prd_d49c84c34a844de6/gallery-1-f630caa1d251c741.webp",
+      "alt": "NieR:Automata The End of YoRHa Edition screenshot 1"
+     },
+     {
+      "url": "/api/files/products/prd_d49c84c34a844de6/gallery-2-a335f162fcab0e0b.webp",
+      "alt": "NieR:Automata The End of YoRHa Edition screenshot 2"
+     },
+     {
+      "url": "/api/files/products/prd_d49c84c34a844de6/gallery-3-4a76ade31f247713.webp",
+      "alt": "NieR:Automata The End of YoRHa Edition screenshot 3"
+     },
+     {
+      "url": "/api/files/products/prd_d49c84c34a844de6/gallery-4-f460fb377b4d2411.webp",
+      "alt": "NieR:Automata The End of YoRHa Edition screenshot 4"
+     },
+     {
+      "url": "/api/files/products/prd_d49c84c34a844de6/gallery-5-ad4d4c6f4f2200a8.webp",
+      "alt": "NieR:Automata The End of YoRHa Edition screenshot 5"
+     },
+     {
+      "url": "/api/files/products/prd_d49c84c34a844de6/gallery-6-8ea8c06ddb2327be.webp",
+      "alt": "NieR:Automata The End of YoRHa Edition screenshot 6"
+     }
+    ],
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": true,
+    "nintendoPlayModes": "TV mode / Tabletop mode / Handheld mode",
+    "nintendoCloudSaves": true,
+    "nintendoGameKeyCard": false,
+    "switch2Enhanced": false,
+    "switch2Exclusive": false,
+    "nintendoNotes": "Platform and package information verified against the official product/source page for NieR:Automata The End of YoRHa Edition.",
+    "tagline": "Glory to Mankind.",
+    "fitFor": [
+     "Fans of the listed genres",
+     "Players who value the game’s core mechanics",
+     "Players looking for this platform version",
+     "Collectors or storefront users comparing platform editions"
+    ],
+    "notFitFor": [
+     "Players who dislike the listed genre",
+     "Players seeking a different platform entry",
+     "Players who require unsupported multiplayer modes",
+     "Players expecting a different edition package"
+    ],
+    "playTimeMain": 21,
+    "playTimeFull": 60,
+    "gameplayPillars": [
+     {
+      "title": "Fast action RPG combat",
+      "description": "Melee, ranged attacks, dodging, and pod abilities blend together smoothly."
+     },
+     {
+      "title": "Multiple perspectives",
+      "description": "The story changes as different androids become playable."
+     },
+     {
+      "title": "Genre blending",
+      "description": "Combat, shooting, exploration, and unusual gameplay shifts are part of the experience."
+     },
+     {
+      "title": "Philosophical narrative",
+      "description": "Questions about identity, purpose, and humanity drive the story."
+     },
+     {
+      "title": "Included DLC",
+      "description": "The End of YoRHa Edition includes the 3C3C1D119440927 content."
+     }
+    ],
+    "worldSummary": "NieR:Automata The End of YoRHa Edition is the Nintendo Switch version of the award-winning action RPG. Humanity has fled to the Moon after machine lifeforms overrun Earth, and android soldiers 2B and 9S are sent to reclaim the planet. The edition includes the 3C3C1D119440927 DLC with colosseums and costumes, and the Switch version is officially supported on Switch 2.",
+    "storyChapters": [
+     {
+      "title": "Return to Earth",
+      "body": "YoRHa androids are sent to fight machine lifeforms occupying the planet."
+     },
+     {
+      "title": "Meet 2B and 9S",
+      "body": "The two androids become central to the war and its mysteries."
+     },
+     {
+      "title": "Question the conflict",
+      "body": "New information gradually destabilizes what the characters believe."
+     },
+     {
+      "title": "See events from multiple routes",
+      "body": "Additional playthrough perspectives change the narrative."
+     },
+     {
+      "title": "Reach the true conclusion",
+      "body": "The game’s later endings deliver its strongest emotional and philosophical moments."
+     }
+    ],
+    "features": [
+     "Award-winning action RPG",
+     "3C3C1D119440927 DLC included",
+     "Multiple story routes",
+     "Excellent soundtrack",
+     "Switch 2 compatibility supported"
+    ],
+    "perfResolutionHandheld": "720p",
+    "perfResolutionDocked": "1080p",
+    "perfFps": "30",
+    "perfHdr": false,
+    "perfNotes": "Switch version profile with official Switch 2 compatibility.",
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "deviceModel": "Nintendo Switch",
+      "hardwareId": "nintendo-switch",
+      "informationStatus": "Available",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p",
+       "resolutionDynamic": false,
+       "renderingResolution": "720p",
+       "outputResolution": "720p",
+       "fps": "30",
+       "fpsMin": "30",
+       "fpsMax": "30",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Handheld",
+       "notes": "Switch version profile with official Switch 2 compatibility."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p",
+       "resolutionDynamic": false,
+       "renderingResolution": "1080p",
+       "outputResolution": "1080p",
+       "fps": "30",
+       "fpsMin": "30",
+       "fpsMax": "30",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "TV / Docked",
+       "notes": "Switch version profile with official Switch 2 compatibility."
+      },
+      "modes": [
+       {
+        "name": "Default",
+        "handheldResolution": "720p",
+        "handheldFps": "30",
+        "tvResolution": "1080p",
+        "tvFps": "30",
+        "hdr": false,
+        "vrr": false,
+        "notes": "Switch version profile with official Switch 2 compatibility."
+       }
+      ],
+      "performanceNotes": "Switch version profile with official Switch 2 compatibility."
+     },
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "hardwareId": "nintendo-switch-2",
+      "informationStatus": "Available",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p",
+       "resolutionDynamic": false,
+       "renderingResolution": "720p",
+       "outputResolution": "720p",
+       "fps": "30",
+       "fpsMin": "30",
+       "fpsMax": "30",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Handheld",
+       "notes": "Compatibility profile for validator; dedicated Switch 2 product is separate where one exists."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p",
+       "resolutionDynamic": false,
+       "renderingResolution": "1080p",
+       "outputResolution": "1080p",
+       "fps": "30",
+       "fpsMin": "30",
+       "fpsMax": "30",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "TV / Docked",
+       "notes": "Compatibility profile for validator; dedicated Switch 2 product is separate where one exists."
+      },
+      "modes": [
+       {
+        "name": "Default",
+        "handheldResolution": "720p",
+        "handheldFps": "30",
+        "tvResolution": "1080p",
+        "tvFps": "30",
+        "hdr": false,
+        "vrr": false,
+        "notes": "Compatibility profile for validator; dedicated Switch 2 product is separate where one exists."
+       }
+      ],
+      "performanceNotes": "Compatibility profile for validator; dedicated Switch 2 product is separate where one exists."
+     }
+    ],
+    "faq": [
+     {
+      "q": "What does The End of YoRHa Edition include?",
+      "a": "Nintendo says it includes the 3C3C1D119440927 DLC with colosseums and NieR Replicant-themed costumes."
+     },
+     {
+      "q": "When did it release on Switch?",
+      "a": "Nintendo lists October 6, 2022."
+     },
+     {
+      "q": "Does it support Switch 2?",
+      "a": "Yes. Nintendo lists Switch 2 compatibility as supported."
+     },
+     {
+      "q": "What is the file size?",
+      "a": "Nintendo lists 10.9 GB."
+     },
+     {
+      "q": "Is it multiplayer?",
+      "a": "No. It is a single-player action RPG."
+     }
+    ],
+    "mpLocalPlayers": false,
+    "mpOnlinePlayers": false,
+    "mpCoop": false,
+    "mpCompetitive": false,
+    "mpLocalWireless": false,
+    "mpSplitScreen": false,
+    "sources": [
+     {
+      "name": "Official product / publisher page",
+      "url": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-games/NieR-Automata-The-End-of-YoRHa-Edition-2232461.html"
+     },
+     {
+      "name": "Metacritic",
+      "url": "https://www.metacritic.com/search/nier-automata-the-end-of-yorha-edition/"
+     }
+    ],
+    "boxContentsList": [],
+    "image": "",
+    "banner": "",
+    "schemaId": "",
+    "batchImport": true,
+    "createdAt": "2026-08-28T18:50:56.154Z",
+    "updatedAt": "2026-08-28T18:50:56.154Z"
+   }
+  }
+ ]
+}

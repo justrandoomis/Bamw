@@ -1,0 +1,51 @@
+{
+ "batch": "016",
+ "apply": false,
+ "games": [
+  {
+   "id": "prd_316788014ee14877",
+   "slug": "metroid-dread-switch",
+   "baseHash": "45ebdccefef4bbfd810e26c122e252c38240aa42b079c4db1fc4124941295053",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  },
+  {
+   "id": "prd_1ae08b9969f74bc1",
+   "slug": "minecraft-switch",
+   "baseHash": "61de88bf49c32a3f58e9cf5ad2ed5a18b7de71f1728a91c3f5e6bb663598bf48",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  },
+  {
+   "id": "prd_09e13ed4dedb4150",
+   "slug": "monster-hunter-stories-3-twisted-reflection",
+   "baseHash": "95301c75f8dd1e49ff9cf8c3215807468f10d8285892d049ace376fcef8f1e4e",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  },
+  {
+   "id": "prd_c5dab307d09d4550",
+   "slug": "new-super-mario-bros-u-deluxe-switch",
+   "baseHash": "e24d8227d44ac1b87b6338e17cf0e1bd733a8df73df266ac963e3dae1f47e3d5",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  },
+  {
+   "id": "prd_d49c84c34a844de6",
+   "slug": "nier-automata-the-end-of-yorha-edition-switch-1",
+   "baseHash": "b48227e5d1796015e048c9062af7614bbf14d184ec64206ee9cc17606e197d0f",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  }
+ ]
+}

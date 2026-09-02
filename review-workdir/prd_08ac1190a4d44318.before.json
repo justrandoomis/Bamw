@@ -1,0 +1,502 @@
+{
+ "title": "Mario vs. Donkey Kong",
+ "titleEn": "Mario vs. Donkey Kong",
+ "titleKu": "Mario vs. Donkey Kong",
+ "slug": "mario-vs-donkey-kong-switch-1",
+ "description": "Run, jump, and backflip your way to rescuing the stolen Mini-Mario toys in this puzzling twist on Mario action. Obstacles like spikes, moving platforms, and falling bricks stand in your way—put your brain to work and figure out the best way to reach the Mini-Marios! You’ll have to master Color Switches, Warp Boxes, and more as the difficulty ramps up across more than 130 levels, including challenging Plus and Expert levels.\n\nTailor the challenge to your playstyle or bring a friend along in local multiplayer!\n\nSeeking a laid-back experience? The newly-added Casual Style removes time limits and adds checkpoints so you can relax and think. Looking for a tough puzzle-platforming challenge? Classic Style has got you covered with the timed levels and one-hit defeats of the original Game Boy™ Advance game. But that’s not all—you can bring a friend along in the newly-added Two-Player Mode, which adds an extra objective for Mario and Toad to take on together!\n\nA classic rivalry reignites with updated visuals, new levels, and more ways to play!\n\nWith overhauled graphics, music, and cutscenes, this revitalized classic is looking better than ever. But wait—there’s more! Not only do you get new ways to play with Casual Style and Two-Player Mode, you also get two brand new worlds: Merry Mini-Land and Slippery Summit! That’s two new worlds, each with eight levels (and even more Plus levels), featuring new environments, enemies, and mechanics. And that’s not all! When you finish with those, you can test your skills in a newly-added Time Attack mode that will push your puzzle-platforming speed to the limit!",
+ "descriptionEn": "Run, jump, and backflip your way to rescuing the stolen Mini-Mario toys in this puzzling twist on Mario action. Obstacles like spikes, moving platforms, and falling bricks stand in your way—put your brain to work and figure out the best way to reach the Mini-Marios! You’ll have to master Color Switches, Warp Boxes, and more as the difficulty ramps up across more than 130 levels, including challenging Plus and Expert levels.\n\nTailor the challenge to your playstyle or bring a friend along in local multiplayer!\n\nSeeking a laid-back experience? The newly-added Casual Style removes time limits and adds checkpoints so you can relax and think. Looking for a tough puzzle-platforming challenge? Classic Style has got you covered with the timed levels and one-hit defeats of the original Game Boy™ Advance game. But that’s not all—you can bring a friend along in the newly-added Two-Player Mode, which adds an extra objective for Mario and Toad to take on together!\n\nA classic rivalry reignites with updated visuals, new levels, and more ways to play!\n\nWith overhauled graphics, music, and cutscenes, this revitalized classic is looking better than ever. But wait—there’s more! Not only do you get new ways to play with Casual Style and Two-Player Mode, you also get two brand new worlds: Merry Mini-Land and Slippery Summit! That’s two new worlds, each with eight levels (and even more Plus levels), featuring new environments, enemies, and mechanics. And that’s not all! When you finish with those, you can test your skills in a newly-added Time Attack mode that will push your puzzle-platforming speed to the limit!",
+ "descriptionKu": "The Game Boy Advance rivalry returns with over 130 puzzle-platforming stages, local two-player co-op, classic and casual styles, plus new worlds and remade visuals. Run, jump, climb, handstand and backflip through handcrafted levels while solving hazards and rescuing the stolen Mini-Marios from Donkey Kong.",
+ "cartridgeImage": "/api/files/products/prd_08ac1190a4d44318/front-fc093110a410c2d3.jpg",
+ "nintendoCardImage": "/api/files/products/prd_08ac1190a4d44318/square-ed77c6561c58c3dc.avif",
+ "coverHiResImage": "/api/files/products/prd_08ac1190a4d44318/3d-wrap-81ccf288fa6155e8.webp",
+ "coverImage": "/api/files/products/prd_08ac1190a4d44318/cover-6621d58dd4fdf6df.avif",
+ "bannerImages": [
+  "/api/files/products/prd_08ac1190a4d44318/banner-0-f63915a38b62fef1.avif",
+  "/api/files/products/prd_08ac1190a4d44318/banner-1-93a83351144ea4fc.avif",
+  "/api/files/products/prd_08ac1190a4d44318/banner-2-24b53e125f265b74.avif",
+  "/api/files/products/prd_08ac1190a4d44318/banner-3-3091e32d2952322b.avif",
+  "/api/files/products/prd_08ac1190a4d44318/banner-4-ef6aeef4d806edb4.avif",
+  "/api/files/products/prd_08ac1190a4d44318/banner-5-29a0cb4bee3b96e5.avif"
+ ],
+ "youtubeTrailer": "https://www.youtube.com/watch?v=p_RypCfeXp4",
+ "releaseDate": "2024-02-16",
+ "ageRating": "Everyone",
+ "metacriticRating": 76,
+ "genres": [
+  "Action",
+  "Puzzle"
+ ],
+ "platform": "switch1",
+ "size": "1.31 GB",
+ "numberOfPlayers": "1-2",
+ "supportedLanguages": "Japanese, British English, French, German, Italian, Spanish, Korean, Dutch, Simplified Chinese, Latin American Spanish, Canadian French, Traditional Chinese, American English",
+ "price": 11500,
+ "cost": 1500,
+ "stock": 999999,
+ "isInfiniteStock": true,
+ "isHidden": false,
+ "displayOrder": 0,
+ "category": "nintendo-switch-games",
+ "categoryId": "nintendo-switch-games",
+ "options": [
+  {
+   "id": "offline_account",
+   "name": "مشترك",
+   "description": "حساب مشترك",
+   "stock": 9999,
+   "isInfiniteStock": true,
+   "customerDescription": "حساب مشترك"
+  },
+  {
+   "id": "online_account",
+   "name": "خاص بك",
+   "description": "حساب خاص بك",
+   "stock": 9999,
+   "isInfiniteStock": true,
+   "customerDescription": "حساب خاص بك"
+  }
+ ],
+ "types": [
+  {
+   "id": "standard_offline",
+   "name": "مشترك — اللعبة الأساسية",
+   "optionId": "offline_account",
+   "price": 11500,
+   "cost": 1500,
+   "description": "Offline Account; supplier cost 1,500 IQD; selling price 16,500 IQD.",
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "standard_online",
+   "name": "خاص بك — اللعبة الأساسية",
+   "optionId": "online_account",
+   "price": 26500,
+   "cost": 16500,
+   "description": "Online Account; supplier cost 16,500 IQD; selling price 26,500 IQD.",
+   "stock": 9999,
+   "isInfiniteStock": true
+  }
+ ],
+ "editions": [],
+ "dlcs": [],
+ "isActive": true,
+ "status": "Active",
+ "kind": "account",
+ "trade_value_iqd": 20000,
+ "store_offer_bonus_iqd": 3000,
+ "trade_enabled": true,
+ "trade_value_locked": false,
+ "id": "prd_08ac1190a4d44318",
+ "schema_version": 24,
+ "titleAr": "ماريو ضد دونكي كونغ",
+ "compatibility": [
+  "Nintendo Switch",
+  "Nintendo Switch 2: supported with behavior consistent with Nintendo Switch"
+ ],
+ "edition": "Standard",
+ "developer": "Nintendo Software Technology",
+ "publisher": "Nintendo",
+ "seriesName": "Mario vs. Donkey Kong",
+ "userScore": 7.8,
+ "price_usd": 49.99,
+ "officialUrl": "https://www.nintendo.com/us/store/products/mario-vs-donkey-kong-switch/",
+ "eshopUrl": "https://www.nintendo.com/us/store/products/mario-vs-donkey-kong-switch/",
+ "galleryImages": [
+  {
+   "alt": "Verified direct image URL 1",
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000072191/f1b4785bcc442c5817427defebb9d98ab73838685b54ac5a13bfaefe5aba8013"
+  },
+  {
+   "alt": "Verified direct image URL 2",
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000072191/aba6bff3d9ed7f28faf4084fa9a5819fad427ee2e3c293ba43ad95f8ab30bdd1"
+  },
+  {
+   "alt": "Verified direct image URL 3",
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000072191/21876b9547f4851156094dd786bbba491ee05e39819aa994ea2ab69925e6a202"
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000072191/387f623e74f4763ddebbebf0f8b884a80f02b4112d9de06377fc8718177d3316"
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000072191/7d5a6f196c7b74134c1d94a536800832e395810ec170df62ec08e6f3c6eaeaea"
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000072191/40568c3fcd39ec53006044fb302d66d233c8d972b675ef6d8316d5c73eb7fa26"
+  }
+ ],
+ "gameIsOffline": true,
+ "gameIsOnline": false,
+ "gameLanguageLocked": false,
+ "description_short": "The Game Boy Advance rivalry returns with over 130 puzzle-platforming stages, local two-player co-op, classic and casual styles, plus new worlds and remade visuals.",
+ "description_ar": "تعود منافسة Game Boy Advance الشهيرة مع أكثر من 130 مرحلة من الألغاز والمنصات، ودعم لعب تعاوني محلي لشخصين، وأنماط Classic وCasual، وعوالم جديدة ورسوم محسنة. اركض واقفز وتسلق ونفّذ الحركات الخاصة لحل المراحل وإنقاذ Mini-Marios من دونكي كونغ.",
+ "box_front_url": "https://gameplay.com.co/cdn/shop/files/MandK.jpg?v=1746200793",
+ "box_back_url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000072191/f1b4785bcc442c5817427defebb9d98ab73838685b54ac5a13bfaefe5aba8013",
+ "editionsList": [
+  {
+   "name": "Standard Edition",
+   "coverUrl": "https://gameplay.com.co/cdn/shop/files/MandK.jpg?v=1746200793",
+   "contents": [
+    {
+     "label": "Base game"
+    },
+    {
+     "label": "Over 130 levels"
+    },
+    {
+     "label": "Classic and Casual styles"
+    }
+   ]
+  },
+  {
+   "name": "Digital Edition",
+   "coverUrl": "https://assets.nintendo.com/image/upload/ar_1:1,c_fill,g_auto,w_1000/f_auto/q_auto/dpr_1.5/store/software/switch/70010000072191/2fda60f3007987817be456876e7755f5120522a75e477961fbb622fd32f9e588",
+   "contents": [
+    {
+     "label": "Nintendo eShop release"
+    },
+    {
+     "label": "Local co-op included"
+    },
+    {
+     "label": "Save Data Cloud support"
+    }
+   ]
+  },
+  {
+   "name": "Current Store Package",
+   "coverUrl": "https://assets.nintendo.com/image/upload/ar_16:9,c_fill,g_auto,w_1600/f_auto/q_auto/dpr_1.5/store/software/switch/70010000072191/2fda60f3007987817be456876e7755f5120522a75e477961fbb622fd32f9e588",
+   "contents": [
+    {
+     "label": "Offline account option"
+    },
+    {
+     "label": "Online account option"
+    },
+    {
+     "label": "Hidden by default until review"
+    }
+   ]
+  }
+ ],
+ "gameplayPillars": [
+  {
+   "title": "Puzzle-platforming",
+   "description": "Every stage asks you to observe hazards, plan movement and use Mario’s acrobatics to retrieve the Mini-Marios.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000072191/f1b4785bcc442c5817427defebb9d98ab73838685b54ac5a13bfaefe5aba8013"
+  },
+  {
+   "title": "Multiple play styles",
+   "description": "Classic Style recreates a more demanding arcade feel, while Casual Style lowers frustration for newer players.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000072191/aba6bff3d9ed7f28faf4084fa9a5819fad427ee2e3c293ba43ad95f8ab30bdd1"
+  },
+  {
+   "title": "Local co-op",
+   "description": "A second player can join as Toad and help solve the stages on the same system.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000072191/21876b9547f4851156094dd786bbba491ee05e39819aa994ea2ab69925e6a202"
+  },
+  {
+   "title": "Puzzle-platform precision",
+   "description": "Stages focus on timing, switches, keys, ladders, and object interactions, rewarding observation and careful movement more than speed.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000072191/387f623e74f4763ddebbebf0f8b884a80f02b4112d9de06377fc8718177d3316"
+  },
+  {
+   "title": "Co-op and new content in the remake",
+   "description": "The Nintendo Switch version adds local co-op support and extra content, giving the classic puzzle-platform formula more replay value.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000072191/7d5a6f196c7b74134c1d94a536800832e395810ec170df62ec08e6f3c6eaeaea"
+  }
+ ],
+ "worldSummary": "Donkey Kong steals the Mini-Marios from the toy factory, sending Mario across a sequence of puzzle-platforming worlds full of enemies, switches, traps and collectible challenges. The Switch remake expands the content with new worlds, co-op and updated visuals.",
+ "storyChapters": [
+  {
+   "title": "Mini-Marios stolen",
+   "body": "Donkey Kong grabs every Mini-Mario toy from the factory, triggering Mario’s chase.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000072191/f1b4785bcc442c5817427defebb9d98ab73838685b54ac5a13bfaefe5aba8013"
+  },
+  {
+   "title": "Solve the stages",
+   "body": "Mario clears stage after stage by collecting keys, avoiding hazards and guiding the Mini-Marios to safety.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000072191/aba6bff3d9ed7f28faf4084fa9a5819fad427ee2e3c293ba43ad95f8ab30bdd1"
+  },
+  {
+   "title": "Face Donkey Kong again",
+   "body": "At the end of each world, Mario battles Donkey Kong in platforming boss encounters that test what you learned.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000072191/21876b9547f4851156094dd786bbba491ee05e39819aa994ea2ab69925e6a202"
+  },
+  {
+   "title": "Chase Donkey Kong across themed worlds",
+   "body": "After Donkey Kong steals Mini-Mario toys, Mario pursues him through themed stages filled with hazards, puzzles, and toy-rescue objectives.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000072191/40568c3fcd39ec53006044fb302d66d233c8d972b675ef6d8316d5c73eb7fa26"
+  },
+  {
+   "title": "Rescue toys and clear extra content",
+   "body": "Later stages build on the core formula with trickier puzzle rooms, expert-level solutions, and replay-friendly objectives for careful players.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000072191/f1b4785bcc442c5817427defebb9d98ab73838685b54ac5a13bfaefe5aba8013"
+  }
+ ],
+ "features": [
+  "Over 130 puzzle-platforming stages",
+  "Classic and Casual styles",
+  "New two-player co-op and new worlds on Switch",
+  "Careful puzzle solving rather than pure platform speed",
+  "Local co-op helps make the remake more accessible",
+  "Short stages make it ideal for portable stop-and-start play"
+ ],
+ "perfResolutionDocked": "Not published by Nintendo",
+ "perfResolutionHandheld": "Not published by Nintendo",
+ "perfFps": "Not published by Nintendo",
+ "perfHdr": false,
+ "faq": [
+  {
+   "q": "Is this a remake?",
+   "a": "Yes. It is a Switch remake of the Game Boy Advance title with new visuals, co-op and extra content."
+  },
+  {
+   "q": "How many players can play?",
+   "a": "The game supports one or two players on a single system."
+  },
+  {
+   "q": "What makes it special?",
+   "a": "It blends platforming movement with puzzle-solving, making every stage feel like a small challenge box."
+  },
+  {
+   "q": "Does Mario vs. Donkey Kong have multiplayer?",
+   "a": "Yes. The Nintendo Switch remake includes local co-op support, allowing two players to work together through the puzzle-platform stages."
+  },
+  {
+   "q": "Is it an action platformer or a puzzle game?",
+   "a": "It is primarily a puzzle-platformer. Movement matters, but most stages are built around planning routes, using objects, and solving room layouts."
+  }
+ ],
+ "verdictScore": 8.1,
+ "verdictSummary": "Overall score: 8.1/10. Strengths include Clever stage design; Excellent remake presentation; Co-op and accessibility options. Main drawbacks include Relatively compact scope; Not every challenge is equally inventive.",
+ "verdictPros": [
+  "Clever stage design",
+  "Excellent remake presentation",
+  "Co-op and accessibility options",
+  "Excellent fit for short play sessions",
+  "Puzzle variety stays engaging across worlds"
+ ],
+ "verdictCons": [
+  "Relatively compact scope",
+  "Not every challenge is equally inventive",
+  "Short main run for veterans",
+  "Less action-focused than many Mario platformers",
+  "Completionists may need patience for late-stage puzzles"
+ ],
+ "reviews": [
+  {
+   "source": "Nintendo",
+   "score": "Official",
+   "quote": "Nintendo highlights over 130 levels, local co-op and multiple play styles.",
+   "url": "https://www.nintendo.com/us/store/products/mario-vs-donkey-kong-switch/"
+  },
+  {
+   "source": "Metacritic",
+   "score": "76/100",
+   "quote": "Critical reception was generally positive for its charming remake approach.",
+   "url": "https://www.metacritic.com/game/mario-vs-donkey-kong/"
+  },
+  {
+   "source": "Overview Trailer",
+   "score": "Official Trailer",
+   "quote": "The overview trailer shows the puzzle structure and co-op play.",
+   "url": "https://www.youtube.com/watch?v=p_RypCfeXp4"
+  }
+ ],
+ "timeline": [
+  {
+   "date": "2023-09-14",
+   "title": "Announcement",
+   "body": "Nintendo announced the Switch remake during a Nintendo Direct."
+  },
+  {
+   "date": "2024-02-16",
+   "title": "Worldwide release",
+   "body": "Mario vs. Donkey Kong launched on Nintendo Switch."
+  },
+  {
+   "date": "2024-01-31",
+   "title": "Demo released",
+   "body": "Nintendo released a free demo ahead of launch."
+  }
+ ],
+ "patchNotes": [
+  {
+   "version": "Launch build",
+   "date": "2024-02",
+   "body": "Base game release."
+  },
+  {
+   "version": "Post-launch patches",
+   "date": "2024",
+   "body": "Minor stability and compatibility adjustments."
+  },
+  {
+   "version": "Current build",
+   "date": "2026-08-27",
+   "body": "Stable retail version with Nintendo Switch 2 compatibility support."
+  }
+ ],
+ "studioName": "Nintendo Software Technology",
+ "studioUrl": "https://www.nintendo.com/",
+ "studioLocation": "Redmond, Washington / Kyoto, Japan",
+ "studioAbout": "Nintendo Software Technology is credited as the developer of this Nintendo Switch release. Nintendo is credited as the publisher.",
+ "sources": [
+  {
+   "name": "Nintendo eShop (US)",
+   "url": "https://www.nintendo.com/us/store/products/mario-vs-donkey-kong-switch/"
+  }
+ ],
+ "devicePerformance": [
+  {
+   "device": "Nintendo Switch 2",
+   "deviceSlug": "nintendo-switch-2",
+   "deviceModel": "Nintendo Switch 2",
+   "hardwareId": "prd_acf4c89908764c62",
+   "informationStatus": "available",
+   "handheld": {
+    "supported": true,
+    "resolution": "Not published by Nintendo",
+    "fps": "Not published by Nintendo",
+    "mode": "Handheld"
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "Not published by Nintendo",
+    "fps": "Not published by Nintendo",
+    "mode": "TV"
+   },
+   "sourceName": "Nintendo official product page",
+   "sourceUrl": "https://www.nintendo.com/us/store/products/mario-vs-donkey-kong-switch/",
+   "verificationStatus": "official",
+   "verifiedAt": "2026-09-02",
+   "performanceNotes": "Backward-compatible on Switch 2; exact resolution and FPS are not published by Nintendo."
+  }
+ ],
+ "switch2UpgradePrice": 0,
+ "nintendoEshopUrl": "https://www.nintendo.com/us/store/products/mario-vs-donkey-kong-switch/",
+ "arabicSupport": false,
+ "tagline": "Donkey Kong has stolen the Mini-Marios—solve platforming puzzles to get them back.",
+ "fitFor": [
+  "Players looking for puzzle, platformer gameplay.",
+  "Players who want the game modes supported by the official player-count specification: Single system (1-2).",
+  "Players who enjoy bite-sized stages and puzzle-platform structure.",
+  "Families looking for approachable local co-op content."
+ ],
+ "notFitFor": [
+  "Players specifically seeking online multiplayer; this title does not list online multiplayer support.",
+  "Players specifically seeking local multiplayer; this title does not list local multiplayer support.",
+  "Players expecting a long cinematic Mario adventure.",
+  "Players who prefer combat-heavy platformers over deliberate puzzle rooms."
+ ],
+ "setupNeeds": [
+  "Nintendo Switch-compatible hardware for this release.",
+  "Internet connection is required for online features."
+ ],
+ "dlc": [
+  {
+   "name": "No standalone DLC announced",
+   "description": "No standalone paid DLC expansion is included in this extraction. Free updates, when applicable, are listed in the Updates section instead."
+  }
+ ],
+ "guides": [
+  {
+   "title": "Nintendo official product page",
+   "summary": "Official modes, player count, remake additions, language, size, and compatibility information.",
+   "url": "https://www.nintendo.com/us/store/products/mario-vs-donkey-kong-switch/"
+  }
+ ],
+ "image": "/api/files/products/prd_08ac1190a4d44318/cover-6621d58dd4fdf6df.avif",
+ "banner": "/api/files/products/prd_08ac1190a4d44318/banner-0-f63915a38b62fef1.avif",
+ "createdAt": "2026-08-27T16:59:46.365Z",
+ "created_at": "2026-08-27T16:59:46.365Z",
+ "updatedAt": "2026-09-02T00:32:23.824Z",
+ "updated_at": "2026-08-27T16:59:46.365Z",
+ "badgeEn": "وفر 40%",
+ "badgeKu": "وفر 40%",
+ "featuresEn": [
+  "Over 130 puzzle-platforming stages",
+  "Classic and Casual styles",
+  "New two-player co-op and new worlds on Switch",
+  "Careful puzzle solving rather than pure platform speed",
+  "Local co-op helps make the remake more accessible",
+  "Short stages make it ideal for portable stop-and-start play"
+ ],
+ "featuresKu": [
+  "Over 130 puzzle-platforming stages",
+  "Classic and Casual styles",
+  "New two-player co-op and new worlds on Switch",
+  "Careful puzzle solving rather than pure platform speed",
+  "Local co-op helps make the remake more accessible",
+  "Short stages make it ideal for portable stop-and-start play"
+ ],
+ "boxFrontUrl": "https://gameplay.com.co/cdn/shop/files/MandK.jpg?v=1746200793",
+ "sales": 0,
+ "nsuid": "70010000072191",
+ "product_code": "HACPA97PA",
+ "title_id": "0100b99019412000",
+ "nintendoPlayModes": [
+  "TV mode",
+  "Tabletop mode",
+  "Handheld mode"
+ ],
+ "tvMode": true,
+ "tabletopMode": true,
+ "handheldMode": true,
+ "nintendoCloudSaves": true,
+ "nintendoOnlineRequired": false,
+ "downloadSizeGb": 1.31,
+ "requiredSpaceGb": 1.31,
+ "microSdRecommended": false,
+ "languagesText": [
+  "Japanese",
+  "British English",
+  "French",
+  "German",
+  "Italian",
+  "Spanish",
+  "Korean",
+  "Dutch",
+  "Simplified Chinese",
+  "Latin American Spanish",
+  "Canadian French",
+  "Traditional Chinese",
+  "American English"
+ ],
+ "storageNotes": "Nintendo lists a 1.31 GB download. Free-space requirements can increase with updates.",
+ "nintendoNotes": "Nintendo product identity and store facts were verified against the official listing on 2026-09-02. Performance values are included only where an official source publishes them.",
+ "mpLocalPlayers": 2,
+ "mpOnlinePlayers": 0,
+ "mpCoop": true,
+ "mpCompetitive": false,
+ "mpLocalWireless": false,
+ "storySummary": "Donkey Kong steals the Mini-Mario toys from the factory, and Mario pursues him through puzzle-filled worlds to recover them.",
+ "dlcList": [
+  {
+   "name": "No standalone DLC announced",
+   "description": "Nintendo’s official product page lists no paid gameplay DLC; the full remake content is included in the base game."
+  }
+ ],
+ "updates": [
+  {
+   "date": "2024-02-16",
+   "title": "Launch version",
+   "description": "The remake launched with Casual Style, Two-Player Mode, Time Attack, Merry Mini-Land, and Slippery Summit included."
+  }
+ ],
+ "music": "The remake features overhauled music and sound alongside its rebuilt visuals and cutscenes; Nintendo does not list a standalone soundtrack product.",
+ "completionTime": "Nintendo does not publish an official story-hour estimate; playtime varies by puzzle solving, Classic or Casual Style, and co-op use.",
+ "completionistTime": "Nintendo does not publish an official 100% time; Plus levels, Expert levels, Time Attack, and full collectible completion extend playtime.",
+ "pros": [
+  "More than 130 focused puzzle-platform stages",
+  "Accessible Casual Style and local co-op",
+  "New worlds and polished remake presentation"
+ ],
+ "cons": [
+  "No online multiplayer",
+  "Short stages may feel repetitive in long sessions",
+  "The structure is puzzle-first rather than a traditional Mario platformer"
+ ],
+ "perfNotes": "Nintendo confirms all three play modes and Switch 2 compatibility but does not publish exact rendering resolution or FPS."
+}

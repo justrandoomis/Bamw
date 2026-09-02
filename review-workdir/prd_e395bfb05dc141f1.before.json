@@ -1,0 +1,530 @@
+{
+ "title": "Mario Strikers: Battle League",
+ "titleEn": "Mario Strikers: Battle League",
+ "titleKu": "Mario Strikers: Battle League",
+ "slug": "mario-strikers-battle-league-switch-1",
+ "description": "Rule-free five-on-five soccer returns with hard tackles, items, Hyper Strikes, gear customization and hectic local or online competition. Pick Mushroom Kingdom stars, build a squad, and crash into opponents while trying to outscore them in fast, aggressive matches.",
+ "descriptionEn": "Rule-free five-on-five soccer returns with hard tackles, items, Hyper Strikes, gear customization and hectic local or online competition. Pick Mushroom Kingdom stars, build a squad, and crash into opponents while trying to outscore them in fast, aggressive matches.",
+ "descriptionKu": "Rule-free five-on-five soccer returns with hard tackles, items, Hyper Strikes, gear customization and hectic local or online competition. Pick Mushroom Kingdom stars, build a squad, and crash into opponents while trying to outscore them in fast, aggressive matches.",
+ "cartridgeImage": "/api/files/products/prd_e395bfb05dc141f1/front-d52ab9424e2fd7d3.webp",
+ "nintendoCardImage": "/api/files/products/prd_e395bfb05dc141f1/square-9619b0351c509eef.avif",
+ "coverHiResImage": "/api/files/products/prd_e395bfb05dc141f1/3d-texture-83a2a088f551629d.jpg",
+ "coverImage": "/api/files/products/prd_e395bfb05dc141f1/cover-2425ad804ab4a523.avif",
+ "bannerImages": [
+  "/api/files/products/prd_e395bfb05dc141f1/banner-0-47e81a66c3e9d97b.avif",
+  "/api/files/products/prd_e395bfb05dc141f1/banner-1-cda8a42207d6cd12.avif",
+  "/api/files/products/prd_e395bfb05dc141f1/banner-2-5afa58b34353cd7a.avif",
+  "/api/files/products/prd_e395bfb05dc141f1/banner-3-ecdd1631a8011a12.avif",
+  "/api/files/products/prd_e395bfb05dc141f1/banner-4-10f35a782e94283c.avif",
+  "/api/files/products/prd_e395bfb05dc141f1/banner-5-6049bdad035d4f9a.avif"
+ ],
+ "gallery": [],
+ "youtubeTrailer": "https://www.youtube.com/watch?v=cLAzzYz92r4",
+ "releaseDate": "2022-06-10",
+ "ageRating": "ESRB E10+ / PEGI 7",
+ "metacriticRating": 73,
+ "genres": [
+  "Sports",
+  "Arcade",
+  "Multiplayer"
+ ],
+ "platform": "switch1",
+ "size": 4.2,
+ "numberOfPlayers": "Single system (1-8); Local wireless and online support",
+ "supportedLanguages": "English, Japanese, French, Spanish, German",
+ "hardwareModel": "",
+ "colorEdition": "",
+ "storageCapacity": "",
+ "screenSpecs": "",
+ "batteryLife": "",
+ "boxContents": [],
+ "boxContentsText": "",
+ "warrantyCondition": "",
+ "connectivity": "",
+ "characterName": "Link",
+ "amiiboSeries": "The Legend of Zelda",
+ "figureType": "figure",
+ "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+ "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+ "boxCondition": "mib",
+ "releaseWave": "Wave 2 (Restock)",
+ "rarity": "standard",
+ "accessoryType": "حقيبة حماية وتنقل Carry Case",
+ "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+ "brand": "Nintendo Official",
+ "material": "Hard EVA Shockproof Shell",
+ "availableColors": "Black, Neon Red/Blue, White",
+ "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+ "cardValue": "$20 eShop Balance",
+ "region": "Global",
+ "cardType": "eshop",
+ "deliveryMethod": "instant_code",
+ "redemptionGuide": "",
+ "redemptionSteps": [],
+ "validity": "no_expiry",
+ "usedType": "cartridge",
+ "conditionGrade": "like_new",
+ "packaging": "cib",
+ "guaranteeStatus": "tested_30days",
+ "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+ "accountType": "primary",
+ "badge": "وفر 40%",
+ "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+ "price": 7000,
+ "cost": 1250,
+ "stock": 999999,
+ "isInfiniteStock": true,
+ "isHidden": false,
+ "displayOrder": 0,
+ "category": "nintendo-switch-games",
+ "categoryId": "nintendo-switch-games",
+ "categoryEn": "",
+ "categoryKu": "",
+ "options": [
+  {
+   "id": "offline_account",
+   "name": "Offline Account",
+   "description": "حساب مشترك",
+   "stock": 9999,
+   "isInfiniteStock": true,
+   "customerDescription": "حساب مشترك"
+  },
+  {
+   "id": "online_account",
+   "name": "Online Account",
+   "description": "حساب خاص بك",
+   "stock": 9999,
+   "isInfiniteStock": true,
+   "customerDescription": "حساب خاص بك"
+  }
+ ],
+ "types": [
+  {
+   "id": "standard_offline",
+   "name": "Standard Account",
+   "optionId": "offline_account",
+   "price": 13500,
+   "cost": 1250,
+   "description": "",
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "standard_online",
+   "name": "Standard Account",
+   "optionId": "online_account",
+   "price": 22250,
+   "cost": 12250,
+   "description": "",
+   "stock": 9999,
+   "isInfiniteStock": true
+  }
+ ],
+ "editions": [],
+ "dlcs": [],
+ "isActive": true,
+ "status": "Active",
+ "kind": "account",
+ "trade_value_iqd": 25000,
+ "store_offer_bonus_iqd": 2500,
+ "trade_enabled": true,
+ "trade_value_locked": false,
+ "id": "prd_e395bfb05dc141f1",
+ "schema_version": 24,
+ "titleAr": "ماريو سترايكرز: باتل ليغ",
+ "compatibility": [
+  "Nintendo Switch",
+  "Nintendo Switch 2 compatibility: Supported – game behavior is consistent with Nintendo Switch"
+ ],
+ "edition": "Standard",
+ "developer": "Next Level Games",
+ "publisher": "Nintendo",
+ "seriesName": "Mario Strikers",
+ "userScore": 7.1,
+ "price_usd": 59.99,
+ "officialUrl": "https://www.nintendo.com/us/store/products/mario-strikers-battle-league-switch/",
+ "eshopUrl": "https://www.nintendo.com/us/store/products/mario-strikers-battle-league-switch/",
+ "galleryImages": [
+  {
+   "alt": "Verified direct image URL 1",
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000049936/b251b331f6d0f691121d1df78f9461c66c7537013205a60af431bb33206d454f"
+  },
+  {
+   "alt": "Verified direct image URL 2",
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000049936/197c3c4a052ac6990e96c5827f67a4a2631c6853331007a2cda87851500f50ec"
+  },
+  {
+   "alt": "Verified direct image URL 3",
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000049936/ce363f4712ccdad748af43d96e13a1c3260912d920a2b9bda93ac67aff02d619"
+  },
+  {
+   "alt": "Verified direct image URL 4",
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000049936/f2678b33615746fb4e0bb0ab7d91404e726ad1e59623434eff83ff30392943dc"
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000049936/646ea61ae1da2ed1b87ade13d115cc61a5840e8d4c1d5502ea8db3708f253341"
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000049936/1f3bcb3dc0d91c95af22b2e25d3f5e5e6eb26b8aa38c58c1b7212d94a7d9c708"
+  }
+ ],
+ "gameIsOffline": true,
+ "gameIsOnline": true,
+ "gameLanguageLocked": false,
+ "description_short": "Rule-free five-on-five soccer returns with hard tackles, items, Hyper Strikes, gear customization and hectic local or online competition.",
+ "description_ar": "تعود كرة القدم الفوضوية خمسة ضد خمسة بدون قوانين مع الالتحامات القوية، والعناصر، وHyper Strikes، وتخصيص العتاد، ومنافسات محلية وأونلاين سريعة. اختر نجوم مملكة الفطر، كوّن فريقك، واصطدم بالخصوم للفوز بأكبر عدد من الأهداف.",
+ "box_front_url": "https://images.launchbox-app.com/e43f9275-2834-4f46-8c74-e0ae9ed1af4a.jpg",
+ "box_back_url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000049936/b251b331f6d0f691121d1df78f9461c66c7537013205a60af431bb33206d454f",
+ "editionsList": [
+  {
+   "name": "Standard Edition",
+   "coverUrl": "https://images.launchbox-app.com/e43f9275-2834-4f46-8c74-e0ae9ed1af4a.jpg",
+   "contents": [
+    {
+     "label": "Base game"
+    },
+    {
+     "label": "Quick Battle"
+    },
+    {
+     "label": "Cup Battles"
+    }
+   ]
+  },
+  {
+   "name": "Digital Edition",
+   "coverUrl": "https://assets.nintendo.com/image/upload/ar_1:1,c_fill,g_auto,w_1000/f_auto/q_auto/dpr_1.5/store/software/switch/70010000049936/c280b6843af262757f041d2aa3543992ec076b97545abea4dbadda797d9056fc",
+   "contents": [
+    {
+     "label": "Nintendo eShop release"
+    },
+    {
+     "label": "Strikers Club online"
+    },
+    {
+     "label": "Save Data Cloud support"
+    }
+   ]
+  },
+  {
+   "name": "Current Store Package",
+   "coverUrl": "https://assets.nintendo.com/image/upload/ar_16:9,c_fill,g_auto,w_1600/f_auto/q_auto/dpr_1.5/store/software/switch/70010000049936/c280b6843af262757f041d2aa3543992ec076b97545abea4dbadda797d9056fc",
+   "contents": [
+    {
+     "label": "Offline account option"
+    },
+    {
+     "label": "Online account option"
+    },
+    {
+     "label": "Hidden by default until review"
+    }
+   ]
+  }
+ ],
+ "gameplayPillars": [
+  {
+   "title": "Anything-goes soccer",
+   "description": "Matches are played without fouls, so tackles, item attacks and chaotic rebounds are all part of the strategy.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000049936/b251b331f6d0f691121d1df78f9461c66c7537013205a60af431bb33206d454f"
+  },
+  {
+   "title": "Hyper Strikes and gear",
+   "description": "Special powered shots can swing the score, while gear sets modify character stats and play style.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000049936/197c3c4a052ac6990e96c5827f67a4a2631c6853331007a2cda87851500f50ec"
+  },
+  {
+   "title": "Online clubs and local chaos",
+   "description": "The game supports local sessions, online matches and club-based competition through Strikers Club.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000049936/ce363f4712ccdad748af43d96e13a1c3260912d920a2b9bda93ac67aff02d619"
+  },
+  {
+   "title": "Hyper Strikes and item chaos",
+   "description": "Matches blend football basics with hard tackles, items, and dramatic Hyper Strikes that can swing a match instantly when set up well.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000049936/f2678b33615746fb4e0bb0ab7d91404e726ad1e59623434eff83ff30392943dc"
+  },
+  {
+   "title": "Gear customization and club play",
+   "description": "Character gear changes stats like speed, technique, power, and passing, while online clubs encourage long-term team identity and group play.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000049936/646ea61ae1da2ed1b87ade13d115cc61a5840e8d4c1d5502ea8db3708f253341"
+  }
+ ],
+ "worldSummary": "Mushroom Kingdom characters collide on electrified pitches in a high-intensity sport where clean play is optional and style is everything. Build a team, customize stats with gear and chase goals through explosive matches.",
+ "storyChapters": [
+  {
+   "title": "Form your squad",
+   "body": "Select strikers from the Mario cast and tailor their roles through character choice and gear.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000049936/b251b331f6d0f691121d1df78f9461c66c7537013205a60af431bb33206d454f"
+  },
+  {
+   "title": "Dominate the pitch",
+   "body": "Tackle rivals, use items and line up Hyper Strikes to create massive swings in match momentum.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000049936/197c3c4a052ac6990e96c5827f67a4a2631c6853331007a2cda87851500f50ec"
+  },
+  {
+   "title": "Compete with friends",
+   "body": "Take the action online or locally and develop a club identity in Strikers Club.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000049936/ce363f4712ccdad748af43d96e13a1c3260912d920a2b9bda93ac67aff02d619"
+  },
+  {
+   "title": "Build a roster and learn roles",
+   "body": "The early game is about finding the right captain, teammates, and gear setups for your preferred style, whether offensive pressure or defensive control.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000049936/1f3bcb3dc0d91c95af22b2e25d3f5e5e6eb26b8aa38c58c1b7212d94a7d9c708"
+  },
+  {
+   "title": "Push through cups and online seasons",
+   "body": "The long-term loop centers on cup battles, ranked competition, and online club play rather than a traditional narrative-driven campaign.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000049936/b251b331f6d0f691121d1df78f9461c66c7537013205a60af431bb33206d454f"
+  }
+ ],
+ "features": [
+  "No-rules arcade soccer",
+  "Hyper Strikes and gear customization",
+  "Local and online competitive modes",
+  "Fast arcade football with chaotic Mario items",
+  "Gear system lets players tune stats and roles",
+  "Online Clubs extend the experience beyond offline cups"
+ ],
+ "perfResolutionDocked": "Up to 1080p docked",
+ "perfResolutionHandheld": "Up to 720p handheld",
+ "perfFps": "60",
+ "perfHdr": false,
+ "faq": [
+  {
+   "q": "Is this realistic football?",
+   "a": "No. It is an exaggerated arcade sports game with items, heavy tackles and special scoring moves."
+  },
+  {
+   "q": "Does it support many players?",
+   "a": "Yes. The game supports large local sessions and online competition depending on mode."
+  },
+  {
+   "q": "What is Strikers Club?",
+   "a": "It is the game’s online club system where players join a club and compete in seasons and ranked matches."
+  },
+  {
+   "q": "Does Mario Strikers: Battle League support online play?",
+   "a": "Yes. It supports online play, including club-based competition, and Nintendo Switch Online is required for Nintendo-operated online features."
+  },
+  {
+   "q": "Is there a story mode?",
+   "a": "No traditional story campaign exists. The main structured content comes from cup battles, local versus play, training, and online club competition."
+  }
+ ],
+ "verdictScore": 7.7,
+ "verdictSummary": "Overall score: 7.7/10. Strengths include Great match energy and presentation; Strong local multiplayer fun; Gear system adds variety. Main drawbacks include Content depth at launch was thin; Single-player appeal is limited.",
+ "verdictPros": [
+  "Great match energy and presentation",
+  "Strong local multiplayer fun",
+  "Gear system adds variety",
+  "Energetic matches are great with friends",
+  "Gear system adds extra strategy to team building"
+ ],
+ "verdictCons": [
+  "Content depth at launch was thin",
+  "Single-player appeal is limited",
+  "Online infrastructure can feel barebones",
+  "Single-player content is thinner than multiplayer content",
+  "Chaotic item swings may frustrate players seeking pure sports balance"
+ ],
+ "reviews": [
+  {
+   "source": "Nintendo",
+   "score": "Official",
+   "quote": "Nintendo’s page emphasizes 5-on-5 strike matches, Hyper Strikes and online/local play.",
+   "url": "https://www.nintendo.com/us/store/products/mario-strikers-battle-league-switch/"
+  },
+  {
+   "source": "Metacritic",
+   "score": "73/100",
+   "quote": "Critical reaction praised the core match action but criticized content volume.",
+   "url": "https://www.metacritic.com/game/mario-strikers-battle-league/"
+  },
+  {
+   "source": "Announcement Trailer",
+   "score": "Official Trailer",
+   "quote": "The reveal trailer established the game’s aggressive arcade football tone.",
+   "url": "https://www.youtube.com/watch?v=cLAzzYz92r4"
+  }
+ ],
+ "timeline": [
+  {
+   "date": "2022-02-09",
+   "title": "Announcement",
+   "body": "Nintendo announced Mario Strikers: Battle League during a Nintendo Direct."
+  },
+  {
+   "date": "2022-06-10",
+   "title": "Worldwide release",
+   "body": "The game launched on Nintendo Switch."
+  },
+  {
+   "date": "2022-07-21",
+   "title": "First free update",
+   "body": "Daisy, Shy Guy and additional gear arrived in the first content update."
+  }
+ ],
+ "patchNotes": [
+  {
+   "version": "Launch build",
+   "date": "2022-06",
+   "body": "Base game release."
+  },
+  {
+   "version": "Free updates",
+   "date": "2022",
+   "body": "New characters, new gear and additional stadium content were added."
+  },
+  {
+   "version": "Current build",
+   "date": "2026-08-27",
+   "body": "Stable retail version with Nintendo Switch 2 compatibility status supported."
+  }
+ ],
+ "studioName": "Next Level Games",
+ "studioUrl": "https://www.nextlevelgames.com/",
+ "studioLocation": "Vancouver, Canada",
+ "studioAbout": "Next Level Games is credited as the developer of this Nintendo Switch release. Nintendo is credited as the publisher.",
+ "sources": [
+  {
+   "name": "Nintendo Store",
+   "url": "https://www.nintendo.com/us/store/products/mario-strikers-battle-league-switch/"
+  },
+  {
+   "name": "Announcement Trailer",
+   "url": "https://www.youtube.com/watch?v=cLAzzYz92r4"
+  },
+  {
+   "name": "LaunchBox art reference",
+   "url": "https://gamesdb.launchbox-app.com/games/details/75372-mario-strikers-battle-league"
+  }
+ ],
+ "devicePerformance": [
+  {
+   "device": "Nintendo Switch 2",
+   "deviceSlug": "nintendo-switch-2",
+   "deviceModel": "Nintendo Switch 2",
+   "hardwareId": "prd_acf4c89908764c62",
+   "informationStatus": "Available / Backward Compatible",
+   "unavailableReason": "No required Handheld or TV mode is marked unsupported.",
+   "handheld": {
+    "supported": true,
+    "resolution": "720p",
+    "resolutionDynamic": false,
+    "renderingResolution": "1280x720",
+    "outputResolution": "1920x1080 system output / backward-compatible rendering profile",
+    "fps": "60",
+    "fpsMin": "60",
+    "fpsMax": "60",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "Handheld / Backward Compatibility",
+    "notes": "Backward-compatible Nintendo Switch version. No native Switch 2 graphics mode is used; the original 720p handheld / 1080p docked 60 fps gameplay profile is retained."
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "1080p",
+    "resolutionDynamic": false,
+    "renderingResolution": "1920x1080",
+    "outputResolution": "1920x1080",
+    "fps": "60",
+    "fpsMin": "60",
+    "fpsMax": "60",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "TV / Docked / Backward Compatibility",
+    "notes": "Backward-compatible Nintendo Switch version. No native Switch 2 graphics mode is used; the original 720p handheld / 1080p docked 60 fps gameplay profile is retained."
+   },
+   "modes": [
+    {
+     "name": "Backward Compatibility",
+     "handheldResolution": "720p",
+     "handheldFps": "60",
+     "tvResolution": "1080p",
+     "tvFps": "60",
+     "hdr": false,
+     "vrr": false,
+     "notes": "Backward-compatible Nintendo Switch version. No native Switch 2 graphics mode is used; the original 720p handheld / 1080p docked 60 fps gameplay profile is retained."
+    }
+   ],
+   "upscaling": "System output scaling only; no native Switch 2 edition assumed",
+   "rayTracing": false,
+   "rayTracingMode": "Not Supported",
+   "loadingTime": "Generally faster system/storage access may occur; exact loading time varies by scene",
+   "loadingNotes": "Backward compatibility can reduce some loading bottlenecks, but no single universal loading-time value is used.",
+   "gameVersion": "Current Nintendo Switch retail build",
+   "patchVersion": "Current available Switch update",
+   "testedDate": "2026-08-27",
+   "sourceName": "Nintendo Switch 2 backward compatibility + established Nintendo Switch performance profile",
+   "sourceUrl": "https://www.nintendo.com/us/gaming-systems/switch-2/",
+   "verifiedAt": "2026-08-27",
+   "verificationStatus": "Verified profile / Backward Compatible",
+   "performanceNotes": "Backward-compatible Nintendo Switch version. No native Switch 2 graphics mode is used; the original 720p handheld / 1080p docked 60 fps gameplay profile is retained."
+  }
+ ],
+ "switch2UpgradePrice": 0,
+ "nintendoEshopUrl": "https://www.nintendo.com/us/store/products/mario-strikers-battle-league-switch/",
+ "arabicSupport": false,
+ "tagline": "Rule-free five-on-five soccer returns with hard tackles, items, Hyper Strikes, gear customization and hectic local or online competition.",
+ "fitFor": [
+  "Players looking for sports, arcade gameplay.",
+  "Players who want the game modes supported by the official player-count specification: Single system (1-8); Local wireless and online support.",
+  "Players who enjoy aggressive arcade sports and competitive couch play.",
+  "Groups looking for online team identity through clubs and seasonal competition."
+ ],
+ "notFitFor": [
+  "Players specifically seeking online multiplayer; this title does not list online multiplayer support.",
+  "Players specifically seeking local multiplayer; this title does not list local multiplayer support.",
+  "Players seeking a deep single-player narrative mode.",
+  "Players who want realistic football simulation instead of chaotic arcade action."
+ ],
+ "setupNeeds": [
+  "Nintendo Switch-compatible hardware for this release.",
+  "Internet connection is required for online features."
+ ],
+ "dlc": [
+  {
+   "name": "No standalone DLC announced",
+   "description": "No standalone paid DLC expansion is included in this extraction. Free updates, when applicable, are listed in the Updates section instead."
+  }
+ ],
+ "guides": [
+  {
+   "title": "Official Nintendo game page",
+   "summary": "Official Nintendo reference for game description, supported modes, player counts, languages, file size, and compatibility information.",
+   "url": "https://www.nintendo.com/us/store/products/mario-strikers-battle-league-switch/"
+  }
+ ],
+ "boxContentsList": "[Circular]",
+ "image": "/api/files/products/prd_e395bfb05dc141f1/cover-2425ad804ab4a523.avif",
+ "banner": "/api/files/products/prd_e395bfb05dc141f1/banner-0-47e81a66c3e9d97b.avif",
+ "schemaId": "",
+ "createdAt": "2026-08-27T16:59:48.168Z",
+ "created_at": "2026-08-27T16:59:48.168Z",
+ "updatedAt": "2026-08-27T16:59:48.168Z",
+ "updated_at": "2026-08-27T16:59:48.168Z",
+ "badgeEn": "وفر 40%",
+ "badgeKu": "وفر 40%",
+ "featuresEn": [
+  "No-rules arcade soccer",
+  "Hyper Strikes and gear customization",
+  "Local and online competitive modes",
+  "Fast arcade football with chaotic Mario items",
+  "Gear system lets players tune stats and roles",
+  "Online Clubs extend the experience beyond offline cups"
+ ],
+ "featuresKu": [
+  "No-rules arcade soccer",
+  "Hyper Strikes and gear customization",
+  "Local and online competitive modes",
+  "Fast arcade football with chaotic Mario items",
+  "Gear system lets players tune stats and roles",
+  "Online Clubs extend the experience beyond offline cups"
+ ],
+ "boxFrontUrl": "https://images.launchbox-app.com/e43f9275-2834-4f46-8c74-e0ae9ed1af4a.jpg",
+ "sales": 0,
+ "images": [],
+ "modes": []
+}
