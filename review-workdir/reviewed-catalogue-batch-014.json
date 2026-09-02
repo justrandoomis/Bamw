@@ -1,51 +1,216 @@
 {
  "batch": "014",
- "apply": false,
+ "apply": true,
  "games": [
   {
    "id": "prd_5e7f25795b9c47eb",
    "slug": "mario-kart-8-deluxe-switch",
    "baseHash": "f89f951c7eab5b28dca7d1d8a2d59fd04f610617d4b98ad182da4f2863c8efa1",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "informationStatus": "available",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p",
+       "fps": "60"
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p",
+       "fps": "60"
+      },
+      "modes": [],
+      "sourceName": "Digital Foundry's launch analysis of Mario Kart 8 Deluxe",
+      "sourceUrl": "https://www.eurogamer.net/digitalfoundry-2017-mario-kart-8-deluxe-tested",
+      "verificationStatus": "technical_analysis"
+     }
+    ]
+   },
+   "clear": [
+    "youtubeTrailer",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "The trailer field held the game's microsite URL, which cannot embed — removed. The Switch-2-badged record becomes the platform record with Digital Foundry's verified 1080p/720p at 60 fps figures. 2017-04-28, Metacritic 92 verified. All images working. Contamination removed."
   },
   {
    "id": "prd_34be2de35cbe4d6b",
    "slug": "mario-kart-world",
    "baseHash": "9abc530488384a65cd9d91c67dc3e5523f50d38eb9213e665c4070214d3bddaf",
    "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "clear": [
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus",
+    "redemptionSteps",
+    "hardwareModel",
+    "storageCapacity",
+    "screenSpecs",
+    "batteryLife"
+   ],
+   "notes": "The flagship carried FIFTEEN cross-schema contamination fields — gift-card fields plus hardware-product fields (hardwareModel, storageCapacity, screenSpecs, batteryLife) and even redemptionSteps — all removed. The unsupported Nintendo Switch record drops under the platform rule, keeping the 1080p/1440p at 60 fps Switch 2 record. 2025-06-05, 22.1 GB, Metacritic 86, working trailer and images all verified."
   },
   {
    "id": "prd_40524f52f17144d3",
    "slug": "mario-party-superstars-switch",
    "baseHash": "129d74646237c41af2df6c4023f71a32c1d4bb7dc482ba6b2d185d8e33ab7afc",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "informationStatus": "available",
+      "handheld": {
+       "supported": true,
+       "resolution": "Not published by Nintendo",
+       "fps": "60"
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "Not published by Nintendo",
+       "fps": "60"
+      },
+      "modes": [],
+      "sourceName": "Nintendo official page; 60 fps per launch coverage",
+      "sourceUrl": "https://www.nintendo.com/us/store/products/mario-party-superstars-switch/",
+      "verificationStatus": "official"
+     }
+    ]
+   },
+   "clear": [
+    "youtubeTrailer",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "The trailer field held a nintendo.com store URL — removed. The Switch-2-badged prose record ('approximately 900p-class') becomes an honest platform record: 60 fps per launch coverage, resolution figures unpublished by Nintendo — the stored approximation was unsourced. 2021-10-29, Metacritic 80 verified. All images working. Contamination removed."
   },
   {
    "id": "prd_2421082de71c4b0e",
    "slug": "mario-rabbids-kingdom-battle-switch-1",
    "baseHash": "140ed7794e6e0a96d4d222ea7f20d8aff532facb5bff7a2e197d2ce66ddfd20a",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "coverImage": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000000819/d7c227b987e2c656c89e5181fb0c32234fe80a591fd6ecc72b3810af7fb3dbbd",
+    "image": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000000819/d7c227b987e2c656c89e5181fb0c32234fe80a591fd6ecc72b3810af7fb3dbbd",
+    "bannerImages": [
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000000819/91823f4de86d308747cd319e0a83ea5df7b39de182ae8f76bda2ad3143356940",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000000819/82f7e88f885af8a855e40d22fa04028a4704e9de8bd2821fab42f8ae4c781ea9"
+    ],
+    "galleryImages": [
+     {
+      "alt": "Verified direct image URL 4",
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000000819/5e95a3a99d0c5e4e8f09de72a210a13e7e5a9aa520876a0da4810f5c19f9c163"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000000819/110d9895cfbbf7131e7ce54b4acef974a7e5d01f1bda33fd8d5462e6655168db"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000000819/f0989040c1749800f66d97fa54cd79b89fbe3080809d0c8869614025dd97391d"
+     }
+    ],
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "informationStatus": "available",
+      "handheld": {
+       "supported": true,
+       "resolution": "Dynamic (commonly 600p-720p)",
+       "fps": "30"
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "900p",
+       "fps": "30"
+      },
+      "modes": [],
+      "sourceName": "Launch technical analyses of the Switch original",
+      "sourceUrl": "https://www.nintendolife.com/games/nintendo-switch/mario_plus_rabbids_kingdom_battle",
+      "verificationStatus": "technical_analysis"
+     }
+    ]
+   },
+   "clear": [
+    "nintendoCardImage",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "Six dead R2 roles on a visible product rebuilt from the six working eShop galleries: the no-HUD exploration shot (verified visually) becomes cover and listing, two shots become banners, three stay in the gallery. Broken square-card reference removed (no verified square source). The Switch-2-badged record becomes the platform record with the documented dynamic-600-720p/900p at 30 fps figures. Genuine box, launchbox copy and wrap verified working. 2017-08-29, Metacritic 85 verified. Contamination removed."
   },
   {
    "id": "prd_1083d6f5b5454571",
    "slug": "mario-rabbids-sparks-of-hope-switch",
    "baseHash": "978c14fd51e21604dc4608a63c32b26e08aa86e23c33ab4e383f6f48c5f6cff0",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "informationStatus": "available",
+      "handheld": {
+       "supported": true,
+       "resolution": "Dynamic, around 600p",
+       "fps": "30"
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "900p",
+       "fps": "30"
+      },
+      "modes": [],
+      "sourceName": "Digital Foundry's analysis of Sparks of Hope",
+      "sourceUrl": "https://www.nintendolife.com/games/nintendo-switch/mario_plus_rabbids_sparks_of_hope",
+      "verificationStatus": "technical_analysis"
+     }
+    ]
+   },
+   "clear": [
+    "youtubeTrailer",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "The trailer field held a ubisoft.com page URL, which cannot embed — removed. The Switch-2-badged record becomes the platform record keeping the analysis-sourced dynamic-600p/900p at 30 fps figures. 2022-10-20, Metacritic 86 verified. All images working. Contamination removed."
   }
  ]
 }
