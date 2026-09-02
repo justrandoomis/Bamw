@@ -1,0 +1,51 @@
+{
+ "batch": "004",
+ "apply": false,
+ "games": [
+  {
+   "id": "prd_6f3eaa73a1d14946",
+   "slug": "devil-may-cry-5-devil-hunter-edition-switch-2",
+   "baseHash": "fda2e7b8d3af96baf6c85914a3453dc3929a4ed2246c3da776dd26054a9e0e4b",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  },
+  {
+   "id": "prd_9c97bcae3d9e4162",
+   "slug": "donkey-kong-bananza-switch-2",
+   "baseHash": "1528a7e4fa2eab18883b684df0e5983a40908dfdadedbefc9443f8987aa0f469",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  },
+  {
+   "id": "prd_1c5ea5fc72b443c1",
+   "slug": "dragon-ball-sparking-zero-switch2",
+   "baseHash": "86aad93ff3045f0def4802587a1d2beb4f8c60284e3c8dae92ab860eee2ad480",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  },
+  {
+   "id": "prd_75d643ddb1194fff",
+   "slug": "dynasty-warriors-origins",
+   "baseHash": "1f6ab11d788442a49a24e8c39f157069502490b66a42e48de300f42ae4e73f7d",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  },
+  {
+   "id": "prd_e907e5625fb9410d",
+   "slug": "ea-sports-fc-24",
+   "baseHash": "420f07acaaffeae670e7fb65ddda5900f0675238df6dc4ec2599d14aa4f23192",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  }
+ ]
+}

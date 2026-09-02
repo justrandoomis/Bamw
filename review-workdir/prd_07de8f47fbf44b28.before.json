@@ -1,0 +1,532 @@
+{
+ "title": "Dead by Daylight",
+ "titleEn": "Dead by Daylight",
+ "titleKu": "",
+ "slug": "dead-by-daylight-switch",
+ "description": "Trapped forever in a realm of eldritch evil where even death is not an escape, four determined Survivors face a bloodthirsty Killer in a vicious game of nerve and wits. Pick a side and step into a world of tension and terror with horror gaming's best asymmetrical multiplayer.\n\nSURVIVE TOGETHER… OR NOT - Survivors can either cooperate with the others or be selfish. Your chance of survival will vary depending on whether you work together as a team or if you go at it alone. Will you be able to outwit the Killer and escape their Killing Ground?\n\nA FEAST FOR KILLERS - Dead by Daylight draws from all corners of the horror world. As a Killer, you can play as anything from a powerful slasher to terrifying paranormal entities. Familiarize yourself with your killing grounds and master each Killer’s unique power to be able to hunt, catch and sacrifice your victims. This deadly game of cat and mouse also lets you meet some of the most iconic Killers and Survivors from horror franchises.\n\nDEEPER AND DEEPER - Each Killer and Survivor has their own deep progression system and plenty of unlockables that can be customized to fit your own personal strategy. Experience, skills and understanding of the environment are key to being able to hunt or outwit the Killer.\n\nREAL PEOPLE, REAL FEAR - The unique levels and real human reactions to pure horror make each game session an unexpected scenario. You will never be able to tell how it’s going to turn out. Ambience, music, and chilling environments combine into a terrifying experience. With enough time, you might even discover what’s hiding in The Fog.",
+ "descriptionEn": "Trapped forever in a realm of eldritch evil where even death is not an escape, four determined Survivors face a bloodthirsty Killer in a vicious game of nerve and wits. Pick a side and step into a world of tension and terror with horror gaming's best asymmetrical multiplayer.\n\nSURVIVE TOGETHER… OR NOT - Survivors can either cooperate with the others or be selfish. Your chance of survival will vary depending on whether you work together as a team or if you go at it alone. Will you be able to outwit the Killer and escape their Killing Ground?\n\nA FEAST FOR KILLERS - Dead by Daylight draws from all corners of the horror world. As a Killer, you can play as anything from a powerful slasher to terrifying paranormal entities. Familiarize yourself with your killing grounds and master each Killer’s unique power to be able to hunt, catch and sacrifice your victims. This deadly game of cat and mouse also lets you meet some of the most iconic Killers and Survivors from horror franchises.\n\nDEEPER AND DEEPER - Each Killer and Survivor has their own deep progression system and plenty of unlockables that can be customized to fit your own personal strategy. Experience, skills and understanding of the environment are key to being able to hunt or outwit the Killer.\n\nREAL PEOPLE, REAL FEAR - The unique levels and real human reactions to pure horror make each game session an unexpected scenario. You will never be able to tell how it’s going to turn out. Ambience, music, and chilling environments combine into a terrifying experience. With enough time, you might even discover what’s hiding in The Fog.",
+ "descriptionKu": "",
+ "cartridgeImage": "/api/files/products/prd_07de8f47fbf44b28/front-box-09d681c507601874.webp",
+ "nintendoCardImage": "/api/files/products/prd_07de8f47fbf44b28/square-card-fe11392f41c1152a.webp",
+ "coverHiResImage": "/api/files/products/prd_07de8f47fbf44b28/3d-wrap-c2beb609b5452b07.webp",
+ "coverImage": "/api/files/products/prd_07de8f47fbf44b28/cover-917e88c931fedd2a.webp",
+ "bannerImages": [],
+ "gallery": [],
+ "youtubeTrailer": "https://www.youtube.com/results?search_query=Dead+by+Daylight+official+trailer",
+ "releaseDate": "2019-09-24",
+ "ageRating": "Mature",
+ "genres": [
+  "Action"
+ ],
+ "platform": "switch1",
+ "size": "24.95 GB",
+ "numberOfPlayers": "1",
+ "supportedLanguages": "Japanese, German, Italian, Spanish, Korean, Russian, Simplified Chinese, Canadian French, Traditional Chinese, American English",
+ "price": 14750,
+ "cost": 1250,
+ "stock": 999999,
+ "isInfiniteStock": true,
+ "isHidden": true,
+ "displayOrder": 0,
+ "category": "nintendo-switch-games",
+ "categoryId": "nintendo-switch-games",
+ "categoryEn": "",
+ "categoryKu": "",
+ "options": [
+  {
+   "id": "offline_account",
+   "name": "مشترك",
+   "description": "مشترك",
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_account",
+   "name": "خاص بك",
+   "description": "خاص بك",
+   "stock": 9999,
+   "isInfiniteStock": true
+  }
+ ],
+ "types": [
+  {
+   "id": "offline_base",
+   "name": "مشترك — اللعبة الأساسية",
+   "optionId": "offline_account",
+   "price": 14750,
+   "cost": 1250,
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "offline_extras",
+   "name": "مشترك — مع الإضافات",
+   "optionId": "offline_account",
+   "price": 17250,
+   "cost": 2500,
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_base",
+   "name": "خاص بك — اللعبة الأساسية",
+   "optionId": "online_account",
+   "price": 19250,
+   "cost": 14250,
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_extras",
+   "name": "خاص بك — مع الإضافات",
+   "optionId": "online_account",
+   "price": 28000,
+   "cost": 20750,
+   "stock": 9999,
+   "isInfiniteStock": true
+  }
+ ],
+ "editions": [],
+ "dlcs": [],
+ "isActive": true,
+ "status": "Active",
+ "kind": "account",
+ "trade_value_iqd": 9500,
+ "store_offer_bonus_iqd": 2500,
+ "trade_enabled": true,
+ "trade_value_locked": false,
+ "id": "prd_07de8f47fbf44b28",
+ "schema_version": 24,
+ "titleAr": "ديد باي دايلايت",
+ "compatibility": [
+  "Nintendo Switch",
+  "Nintendo Switch 2"
+ ],
+ "edition": "Standard Edition",
+ "developer": "Behaviour Interactive Inc.",
+ "publisher": "Behaviour Interactive",
+ "metacriticUrl": "https://www.metacritic.com/game/dead-by-daylight/",
+ "price_usd": 29.99,
+ "officialUrl": "http://www.deadbydaylight.com",
+ "eshopUrl": "https://www.nintendo.com/us/store/products/dead-by-daylight-switch/",
+ "gameIsOffline": false,
+ "gameIsOnline": true,
+ "gameLanguageLocked": false,
+ "description_short": "مواجهات رعب 4 ضد 1 عبر الإنترنت بين ناجين وقاتل، مع اللعب المشترك والتقدم المشترك.",
+ "description_ar": "لعبة رعب جماعية غير متناظرة عبر الإنترنت: أربعة ناجين يحاولون إصلاح المولدات والهرب، بينما يطاردهم لاعب خامس بدور القاتل. إصدار Nintendo الرسمي هو إصدار Switch، ولا توجد حالياً نسخة ترقية مستقلة لـ Switch 2 بحسب دعم Behaviour.",
+ "videos": [
+  {
+   "title": "Official Trailer",
+   "url": "https://www.youtube.com/results?search_query=Dead+by+Daylight+official+trailer"
+  }
+ ],
+ "nintendoEshopUrl": "https://www.nintendo.com/us/store/products/dead-by-daylight-switch/",
+ "nintendoOnlineRequired": true,
+ "nintendoCloudSaves": false,
+ "nintendoGameKeyCard": false,
+ "nintendoPhysicalNeedsDownload": false,
+ "tvMode": true,
+ "tabletopMode": true,
+ "handheldMode": true,
+ "nintendoPlayModes": [
+  "TV mode",
+  "Tabletop mode",
+  "Handheld mode"
+ ],
+ "nintendoNotes": "Nintendo product identity and store facts were verified against the official listing on 2026-09-01. Performance values are included only where an official source publishes them.",
+ "switch2Enhanced": false,
+ "switch2Exclusive": false,
+ "switch2UpgradePrice": 0,
+ "switch2Features": [
+  "Dedicated Switch 2 storefront entry",
+  "Portable online horror sessions",
+  "Live-service progression"
+ ],
+ "tagline": "Death Is Not an Escape.",
+ "fitFor": [
+  "Players who enjoy competitive online horror",
+  "Groups who want cross-platform matchmaking",
+  "Players who like perk builds and live-service progression"
+ ],
+ "notFitFor": [
+  "Players without a stable internet connection and Nintendo Switch Online",
+  "Players looking for offline play or local split-screen",
+  "Players expecting a dedicated Switch 2 upgrade"
+ ],
+ "playTimeMain": 0,
+ "playTimeFull": 0,
+ "editionsList": [
+  {
+   "name": "Standard Edition"
+  }
+ ],
+ "gameplayPillars": [
+  {
+   "title": "Four Survivors",
+   "description": "Repair generators, rescue teammates, and escape while managing limited information."
+  },
+  {
+   "title": "One Killer",
+   "description": "Track, chase, down, and sacrifice Survivors using a distinct power."
+  },
+  {
+   "title": "Perks and progression",
+   "description": "Build character loadouts and adapt tactics across changing Trials."
+  },
+  {
+   "title": "Cross-platform community",
+   "description": "Nintendo Switch participates in official cross-play and cross-progression, with documented Switch restrictions."
+  }
+ ],
+ "worldSummary": "Trials take place inside the Entity’s Fog, where Survivors and Killers repeat unpredictable hunts across themed realms.",
+ "storyChapters": [
+  {
+   "title": "Enter The Entity’s realm",
+   "body": "Survivors wake in a supernatural trial where death is never the end."
+  },
+  {
+   "title": "Learn the survivor routine",
+   "body": "Repair generators, rescue allies, and open the exit before the killer stops you."
+  },
+  {
+   "title": "Master the killer role",
+   "body": "Track movement and use your killer power to dominate the map."
+  },
+  {
+   "title": "Grow stronger through progression",
+   "body": "Bloodweb systems gradually unlock better tools and builds."
+  },
+  {
+   "title": "Expand through chapters",
+   "body": "New killers, survivors, and themes continue to broaden the game."
+  }
+ ],
+ "galleryImages": [
+  {
+   "url": "/api/files/products/prd_07de8f47fbf44b28/gallery-1-d573981fa0ec4ffd.webp",
+   "alt": "Dead by Daylight screenshot 1"
+  },
+  {
+   "url": "/api/files/products/prd_07de8f47fbf44b28/gallery-2-2db7224f440de062.webp",
+   "alt": "Dead by Daylight screenshot 2"
+  },
+  {
+   "url": "/api/files/products/prd_07de8f47fbf44b28/gallery-3-8538c352480e52d6.webp",
+   "alt": "Dead by Daylight screenshot 3"
+  },
+  {
+   "url": "/api/files/products/prd_07de8f47fbf44b28/gallery-4-63bae2cfb67b77c5.webp",
+   "alt": "Dead by Daylight screenshot 4"
+  },
+  {
+   "url": "/api/files/products/prd_07de8f47fbf44b28/gallery-5-00925dde65ddd284.webp",
+   "alt": "Dead by Daylight screenshot 5"
+  }
+ ],
+ "features": [
+  "Asymmetrical online 4v1 matches",
+  "Cross-play with supported PC and console platforms",
+  "Cross-progression through a Behaviour Account",
+  "Distinct Killer powers and Survivor perks",
+  "Ongoing licensed and original chapters"
+ ],
+ "perfResolutionDocked": "",
+ "perfResolutionHandheld": "",
+ "perfFps": "",
+ "perfNotes": "Nintendo and Behaviour do not publish verified game-specific resolution or FPS figures for this Switch build or its Switch 2 compatibility mode.",
+ "devicePerformance": [
+  {
+   "device": "Nintendo Switch",
+   "deviceSlug": "nintendo-switch",
+   "deviceModel": "Nintendo Switch",
+   "informationStatus": "not_published",
+   "unavailableReason": "Official sources do not publish verified game-specific Nintendo Switch resolution and FPS figures.",
+   "sourceName": "Nintendo eShop (US)",
+   "sourceUrl": "https://www.nintendo.com/us/store/products/dead-by-daylight-switch/",
+   "verificationStatus": "official",
+   "verifiedAt": "2026-09-01"
+  },
+  {
+   "device": "Nintendo Switch 2",
+   "deviceSlug": "nintendo-switch-2",
+   "deviceModel": "Nintendo Switch 2",
+   "informationStatus": "not_published",
+   "unavailableReason": "The Switch game is supported on Switch 2 with consistent behavior, but Behaviour publishes no dedicated upgrade or verified resolution/FPS profile.",
+   "sourceName": "Behaviour Nintendo Switch Release Timing FAQ",
+   "sourceUrl": "https://support.deadbydaylight.com/hc/en-us/articles/41351715602580-FAQ-for-Nintendo-Switch-Release-Time-Changes",
+   "verificationStatus": "official",
+   "verifiedAt": "2026-09-01"
+  }
+ ],
+ "faq": [
+  {
+   "q": "Is this a native Nintendo Switch 2 edition?",
+   "a": "No. Behaviour states there are currently no plans for a Switch 2 upgrade; this catalogue entry is the Nintendo Switch version running through compatibility."
+  },
+  {
+   "q": "Is an internet connection required?",
+   "a": "Yes. The game is online multiplayer and Nintendo lists Nintendo Switch Online as required."
+  },
+  {
+   "q": "How many players are in a match?",
+   "a": "Up to five online players: four Survivors and one Killer."
+  },
+  {
+   "q": "Does Nintendo Switch support cross-play?",
+   "a": "Yes, when platforms are on compatible game versions."
+  },
+  {
+   "q": "Does Nintendo Switch support cross-progression?",
+   "a": "Yes through a Behaviour Account, with platform-specific restrictions for Auric Cells and DLC transfer direction."
+  }
+ ],
+ "mpLocalPlayers": 1,
+ "mpOnlinePlayers": 5,
+ "mpCoop": true,
+ "mpCompetitive": true,
+ "mpLocalWireless": false,
+ "mpSplitScreen": false,
+ "image": "",
+ "banner": "",
+ "schemaId": "",
+ "batchImport": true,
+ "createdAt": "2026-08-28T18:33:45.223Z",
+ "updatedAt": "2026-09-01T09:48:42.054Z",
+ "nsuid": "70010000016124",
+ "product_code": "HACPASR5A",
+ "title_id": "01004c400cf96000",
+ "downloadSizeGb": 24.95,
+ "requiredSpaceGb": 24.95,
+ "microSdRecommended": true,
+ "arabicSupport": false,
+ "dlc": [
+  {
+   "name": "Dead by Daylight: Ghost Face®",
+   "description": ""
+  },
+  {
+   "name": "Dead by Daylight: Ash vs Evil Dead",
+   "description": ""
+  },
+  {
+   "name": "Dead by Daylight: The SAW® Chapter",
+   "description": ""
+  },
+  {
+   "name": "Dead by Daylight: CHARITY CASE",
+   "description": ""
+  },
+  {
+   "name": "Dead by Daylight: Leatherface™",
+   "description": ""
+  },
+  {
+   "name": "Dead by Daylight: Silent Hill Chapter",
+   "description": ""
+  },
+  {
+   "name": "Dead by Daylight: A Nightmare on Elm Street™",
+   "description": ""
+  },
+  {
+   "name": "Dead by Daylight: Resident Evil Chapter",
+   "description": ""
+  },
+  {
+   "name": "Dead by Daylight: Terror Expansion Pack",
+   "description": ""
+  },
+  {
+   "name": "Dead by Daylight: Escape Expansion Pack",
+   "description": ""
+  },
+  {
+   "name": "Dead by Daylight: Portrait of a Murder Chapter",
+   "description": ""
+  },
+  {
+   "name": "Dead by Daylight: Sadako Rising Chapter",
+   "description": ""
+  },
+  {
+   "name": "Dead by Daylight: Roots of Dread Chapter",
+   "description": ""
+  },
+  {
+   "name": "Dead by Daylight: Resident Evil: PROJECT W Chapter",
+   "description": ""
+  },
+  {
+   "name": "Dead by Daylight: Forged in Fog Chapter",
+   "description": ""
+  },
+  {
+   "name": "Dead by Daylight: Tools Of Torment Chapter",
+   "description": ""
+  },
+  {
+   "name": "Dead by Daylight: End Transmission Chapter",
+   "description": ""
+  },
+  {
+   "name": "Dead by Daylight: Nicolas Cage Chapter Pack",
+   "description": ""
+  },
+  {
+   "name": "Dead by Daylight: Alien Chapter Pack",
+   "description": ""
+  },
+  {
+   "name": "Dead by Daylight: Old Wounds Pack",
+   "description": ""
+  },
+  {
+   "name": "Dead by Daylight: Macabre Tales Pack",
+   "description": ""
+  },
+  {
+   "name": "Dead by Daylight: STRANGER THINGS Chapter",
+   "description": ""
+  },
+  {
+   "name": "Dead by Daylight: Chucky Chapter",
+   "description": ""
+  },
+  {
+   "name": "Dead by Daylight: Alan Wake Chapter",
+   "description": ""
+  },
+  {
+   "name": "Dead by Daylight: All Things Wicked Chapter",
+   "description": ""
+  },
+  {
+   "name": "Dead by Daylight: Endless Hunt Pack",
+   "description": ""
+  },
+  {
+   "name": "Dead by Daylight: Dungeons & Dragons",
+   "description": ""
+  },
+  {
+   "name": "Dead by Daylight: Tomb Raider",
+   "description": ""
+  },
+  {
+   "name": "Dead by Daylight: Castlevania",
+   "description": ""
+  },
+  {
+   "name": "Dead by Daylight: Doomed Course",
+   "description": ""
+  },
+  {
+   "name": "Dead by Daylight: Tokyo Ghoul",
+   "description": ""
+  },
+  {
+   "name": "Dead by Daylight: Cursed Legacy Chapter",
+   "description": ""
+  },
+  {
+   "name": "Dead by Daylight: Steady Pulse",
+   "description": ""
+  },
+  {
+   "name": "Dead by Daylight: Five Nights at Freddy's",
+   "description": ""
+  },
+  {
+   "name": "Dead by Daylight: The Walking Dead",
+   "description": ""
+  },
+  {
+   "name": "Dead by Daylight: Sinister Grace ",
+   "description": ""
+  },
+  {
+   "name": "Dead by Daylight: Stranger Things Chapter 2",
+   "description": ""
+  },
+  {
+   "name": "Dead by Daylight: Chains Of Hate Chapter",
+   "description": ""
+  },
+  {
+   "name": "Dead by Daylight: Hour of the Witch Chapter",
+   "description": ""
+  },
+  {
+   "name": "Dead by Daylight: Jason",
+   "description": ""
+  },
+  {
+   "name": "Dead by Daylight: Chorus of Sin ",
+   "description": ""
+  }
+ ],
+ "languagesText": [
+  "Japanese",
+  "German",
+  "Italian",
+  "Spanish",
+  "Korean",
+  "Russian",
+  "Simplified Chinese",
+  "Canadian French",
+  "Traditional Chinese",
+  "American English"
+ ],
+ "storageNotes": "Nintendo lists a 24.95 GB download. Free-space requirements can increase with updates.",
+ "seriesName": "Dead by Daylight",
+ "studioName": "Behaviour Interactive",
+ "timeline": [
+  {
+   "date": "2019-09-24",
+   "kind": "release",
+   "title": "Nintendo Switch release"
+  },
+  {
+   "date": "2024-07-22",
+   "kind": "update",
+   "title": "Expanded cross-progression",
+   "detail": "Behaviour enabled the current cross-progression program across participating platforms."
+  },
+  {
+   "date": "2025-09-18",
+   "kind": "update",
+   "title": "Switch support and update timing FAQ",
+   "detail": "Behaviour confirmed continued Switch support and no current Switch 2 upgrade plan."
+  }
+ ],
+ "guides": [
+  {
+   "title": "Cross-Progression FAQ",
+   "summary": "Official setup, supported platforms, and Nintendo Switch restrictions.",
+   "url": "https://support.deadbydaylight.com/hc/en-us/articles/28143341034644-Cross-Progression-FAQ"
+  },
+  {
+   "title": "Cross-play platforms",
+   "summary": "Official list of platforms included in cross-play.",
+   "url": "https://support.deadbydaylight.com/hc/en-us/articles/360047727671-Which-platforms-are-included-in-cross-play"
+  }
+ ],
+ "sources": [
+  {
+   "name": "Nintendo eShop (US)",
+   "url": "https://www.nintendo.com/us/store/products/dead-by-daylight-switch/"
+  },
+  {
+   "name": "Behaviour Cross-Progression FAQ",
+   "url": "https://support.deadbydaylight.com/hc/en-us/articles/28143341034644-Cross-Progression-FAQ"
+  },
+  {
+   "name": "Behaviour Cross-play Support",
+   "url": "https://support.deadbydaylight.com/hc/en-us/articles/360047727671-Which-platforms-are-included-in-cross-play"
+  },
+  {
+   "name": "Behaviour Nintendo Switch Release Timing FAQ",
+   "url": "https://support.deadbydaylight.com/hc/en-us/articles/41351715602580-FAQ-for-Nintendo-Switch-Release-Time-Changes"
+  }
+ ]
+}

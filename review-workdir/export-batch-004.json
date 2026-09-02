@@ -1,0 +1,2945 @@
+{
+ "batch": "004",
+ "generatedAt": "2026-09-02T02:21:54.046Z",
+ "totalGames": 310,
+ "reviewedSoFar": 14,
+ "games": [
+  {
+   "id": "prd_6f3eaa73a1d14946",
+   "slug": "devil-may-cry-5-devil-hunter-edition-switch-2",
+   "title": "Devil May Cry 5 Devil Hunter Edition",
+   "platform": "switch2",
+   "isHidden": true,
+   "hash": "fda2e7b8d3af96baf6c85914a3453dc3929a4ed2246c3da776dd26054a9e0e4b",
+   "images": [
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://banan.to/api/files/products/prd_6f3eaa73a1d14946/square-card-111e94355e709ecd.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 291246,
+     "width": 1024,
+     "height": 1024,
+     "thumb": "review-workdir/thumbs/batch-004/devil-may-cry-5-devil-hunter-edition-switch-2__square-card-0.png"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://banan.to/api/files/products/prd_6f3eaa73a1d14946/cover-ea1e88cd041a84ca.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 497372,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-004/devil-may-cry-5-devil-hunter-edition-switch-2__detail-cover-1.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://banan.to/api/files/products/prd_6f3eaa73a1d14946/gallery-1-b231d41aef35d489.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 92892,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-004/devil-may-cry-5-devil-hunter-edition-switch-2__gallery-2.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[1]",
+     "url": "https://banan.to/api/files/products/prd_6f3eaa73a1d14946/gallery-2-bdaf1f679b652919.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 352264,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-004/devil-may-cry-5-devil-hunter-edition-switch-2__gallery-3.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[2]",
+     "url": "https://banan.to/api/files/products/prd_6f3eaa73a1d14946/gallery-3-3c0cac62dd1c48d5.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 207134,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-004/devil-may-cry-5-devil-hunter-edition-switch-2__gallery-4.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[3]",
+     "url": "https://banan.to/api/files/products/prd_6f3eaa73a1d14946/gallery-4-5c7cb529ce4a0076.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 238476,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-004/devil-may-cry-5-devil-hunter-edition-switch-2__gallery-5.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[4]",
+     "url": "https://banan.to/api/files/products/prd_6f3eaa73a1d14946/gallery-5-126397c3c15e6d78.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 403506,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-004/devil-may-cry-5-devil-hunter-edition-switch-2__gallery-6.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[5]",
+     "url": "https://banan.to/api/files/products/prd_6f3eaa73a1d14946/gallery-6-c8f3a8dea6f814b8.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 127030,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-004/devil-may-cry-5-devil-hunter-edition-switch-2__gallery-7.png"
+    }
+   ],
+   "record": {
+    "title": "Devil May Cry 5 Devil Hunter Edition",
+    "titleEn": "Devil May Cry 5 Devil Hunter Edition",
+    "titleKu": "",
+    "slug": "devil-may-cry-5-devil-hunter-edition-switch-2",
+    "description": "With its signature blend of high-octane action and otherworldly characters, Devil May Cry 5 Devil Hunter Edition harnesses the latest Capcom gaming technology to deliver a graphically groundbreaking action-adventure masterpiece at 60fps in both TV and Handheld modes.",
+    "descriptionEn": "With its signature blend of high-octane action and otherworldly characters, Devil May Cry 5 Devil Hunter Edition harnesses the latest Capcom gaming technology to deliver a graphically groundbreaking action-adventure masterpiece at 60fps in both TV and Handheld modes.",
+    "descriptionKu": "",
+    "cartridgeImage": "",
+    "nintendoCardImage": "/api/files/products/prd_6f3eaa73a1d14946/square-card-111e94355e709ecd.webp",
+    "coverHiResImage": "",
+    "coverImage": "/api/files/products/prd_6f3eaa73a1d14946/cover-ea1e88cd041a84ca.webp",
+    "bannerImages": [],
+    "gallery": [],
+    "youtubeTrailer": "https://www.youtube.com/results?search_query=Devil+May+Cry+5+Special+Edition+official+trailer",
+    "releaseDate": "2026-06-23",
+    "ageRating": "Mature",
+    "genres": [
+     "Action"
+    ],
+    "platform": "switch2",
+    "size": "27.88 GB",
+    "numberOfPlayers": "1",
+    "supportedLanguages": "Japanese, French, German, Italian, Spanish, Korean, Russian, Simplified Chinese, Brazilian Portuguese, Traditional Chinese, American English, Polish",
+    "price": 10250,
+    "cost": 1500,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": true,
+    "displayOrder": 0,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "مشترك",
+      "description": "مشترك",
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_account",
+      "name": "خاص بك",
+      "description": "خاص بك",
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "types": [
+     {
+      "id": "offline_base",
+      "name": "مشترك — اللعبة الأساسية",
+      "optionId": "offline_account",
+      "price": 10250,
+      "cost": 1500,
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_base",
+      "name": "خاص بك — اللعبة الأساسية",
+      "optionId": "online_account",
+      "price": 18250,
+      "cost": 14250,
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "Active",
+    "kind": "account",
+    "trade_value_iqd": 10000,
+    "store_offer_bonus_iqd": 1500,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "id": "prd_6f3eaa73a1d14946",
+    "schema_version": 24,
+    "titleAr": "ديفل ماي كراي 5 — إصدار ديفل هنتر",
+    "compatibility": [
+     "Nintendo Switch 2"
+    ],
+    "edition": "Devil Hunter Edition",
+    "developer": "Capcom",
+    "publisher": "CAPCOM",
+    "metacriticUrl": "https://www.metacritic.com/game/devil-may-cry-5-special-edition/",
+    "price_usd": 39.99,
+    "officialUrl": "https://www.nintendo.com/us/store/products/devil-may-cry-5-devil-hunter-edition-switch-2/",
+    "eshopUrl": "https://www.nintendo.com/us/store/products/devil-may-cry-5-devil-hunter-edition-switch-2/",
+    "gameIsOffline": true,
+    "gameIsOnline": false,
+    "gameLanguageLocked": false,
+    "description_short": "أكشن سريع وأسلوب قتال استعراضي على Switch 2 بمعدل 60 FPS في وضعي التلفاز والمحمول.",
+    "description_ar": "نسخة Nintendo Switch 2 الرسمية من لعبة الأكشن السريعة Devil May Cry 5. تقدم قتال السيوف والأسلحة النارية وشخصيات متعددة بأساليب مختلفة، وتؤكد Nintendo وCapcom تشغيلها بمعدل 60 إطاراً في الثانية في وضعي التلفاز والمحمول.",
+    "videos": [
+     {
+      "title": "Official Trailer",
+      "url": "https://www.youtube.com/results?search_query=Devil+May+Cry+5+Special+Edition+official+trailer"
+     }
+    ],
+    "nintendoEshopUrl": "https://www.nintendo.com/us/store/products/devil-may-cry-5-devil-hunter-edition-switch-2/",
+    "nintendoOnlineRequired": false,
+    "nintendoCloudSaves": true,
+    "nintendoGameKeyCard": true,
+    "nintendoPhysicalNeedsDownload": true,
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": true,
+    "nintendoPlayModes": [
+     "TV mode",
+     "Tabletop mode",
+     "Handheld mode"
+    ],
+    "nintendoNotes": "Nintendo product identity and store facts were verified against the official listing on 2026-09-01. Performance values are included only where an official source publishes them.",
+    "switch2Enhanced": true,
+    "switch2Exclusive": false,
+    "switch2UpgradePrice": 0,
+    "switch2Features": [
+     "Dedicated Switch 2 entry",
+     "High-speed combat focus",
+     "Special Edition packaging"
+    ],
+    "tagline": "Devil May Cry 5 brings stylish action to Nintendo Switch 2.",
+    "fitFor": [
+     "Players who enjoy technical character-action combat",
+     "Players who replay missions to improve style ranks",
+     "Players who want a portable 60 FPS Devil May Cry 5 release"
+    ],
+    "notFitFor": [
+     "Players looking for multiplayer or local co-op",
+     "Players who expect the Nintendo SKU to be titled Special Edition",
+     "Players who cannot download a Game-Key Card installation"
+    ],
+    "playTimeMain": 11,
+    "playTimeFull": 24,
+    "editionsList": [
+     {
+      "name": "Devil Hunter Edition",
+      "contents": [
+       {
+        "label": "Base game"
+       },
+       {
+        "label": "Additional content included with this Nintendo Switch 2 edition"
+       }
+      ]
+     }
+    ],
+    "gameplayPillars": [
+     {
+      "title": "Three distinct hunters",
+      "description": "Dante, Nero, and V use different weapons, abilities, and combat systems."
+     },
+     {
+      "title": "Style-driven combat",
+      "description": "Varied attacks and precise execution raise the style rank."
+     },
+     {
+      "title": "Demonic campaign",
+      "description": "Story missions combine exploration, cinematic encounters, and large boss battles."
+     },
+     {
+      "title": "Portable performance",
+      "description": "Nintendo and Capcom officially state 60 FPS in TV and handheld modes."
+     }
+    ],
+    "worldSummary": "Demon hunters converge on Red Grave City as a massive demonic invasion grows around the Qliphoth tree.",
+    "storyChapters": [
+     {
+      "title": "A demonic crisis begins",
+      "body": "Powerful enemies throw the world into chaos."
+     },
+     {
+      "title": "Fight through urban battlegrounds",
+      "body": "Each mission escalates the spectacle and difficulty."
+     },
+     {
+      "title": "Switch combat styles",
+      "body": "Character variety keeps the action fresh."
+     },
+     {
+      "title": "Push skill higher",
+      "body": "Player improvement unlocks the full joy of the combat system."
+     },
+     {
+      "title": "Close the family conflict",
+      "body": "The story culminates in a dramatic confrontation."
+     }
+    ],
+    "galleryImages": [
+     {
+      "url": "/api/files/products/prd_6f3eaa73a1d14946/gallery-1-b231d41aef35d489.webp",
+      "alt": "Devil May Cry 5 Devil Hunter Edition screenshot 1"
+     },
+     {
+      "url": "/api/files/products/prd_6f3eaa73a1d14946/gallery-2-bdaf1f679b652919.webp",
+      "alt": "Devil May Cry 5 Devil Hunter Edition screenshot 2"
+     },
+     {
+      "url": "/api/files/products/prd_6f3eaa73a1d14946/gallery-3-3c0cac62dd1c48d5.webp",
+      "alt": "Devil May Cry 5 Devil Hunter Edition screenshot 3"
+     },
+     {
+      "url": "/api/files/products/prd_6f3eaa73a1d14946/gallery-4-5c7cb529ce4a0076.webp",
+      "alt": "Devil May Cry 5 Devil Hunter Edition screenshot 4"
+     },
+     {
+      "url": "/api/files/products/prd_6f3eaa73a1d14946/gallery-5-126397c3c15e6d78.webp",
+      "alt": "Devil May Cry 5 Devil Hunter Edition screenshot 5"
+     },
+     {
+      "url": "/api/files/products/prd_6f3eaa73a1d14946/gallery-6-c8f3a8dea6f814b8.webp",
+      "alt": "Devil May Cry 5 Devil Hunter Edition screenshot 6"
+     }
+    ],
+    "features": [
+     "60 FPS in both TV and handheld modes",
+     "Multiple playable characters with distinct combat styles",
+     "Sword-and-gun stylish action combat",
+     "Additional Devil Hunter Edition content",
+     "Complete In-game Unlock Bundle available as DLC"
+    ],
+    "perfResolutionDocked": "Not published by CAPCOM",
+    "perfResolutionHandheld": "Not published by CAPCOM",
+    "perfFps": "60",
+    "perfNotes": "Nintendo and CAPCOM publish 60 FPS in TV and handheld modes; exact resolutions are not published.",
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "informationStatus": "available",
+      "handheld": {
+       "supported": true,
+       "resolution": "Not published by CAPCOM",
+       "fps": "60",
+       "mode": "Handheld"
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "Not published by CAPCOM",
+       "fps": "60",
+       "mode": "TV"
+      },
+      "sourceName": "Nintendo Australia",
+      "sourceUrl": "https://www.nintendo.com/au/games/nintendo-switch-2/devil-may-cry-5-devil-hunter-edition/",
+      "verificationStatus": "official",
+      "verifiedAt": "2026-09-01",
+      "performanceNotes": "Officially stated 60 FPS in both TV and handheld modes; exact resolution is not published."
+     }
+    ],
+    "faq": [
+     {
+      "q": "Is this the Special Edition?",
+      "a": "The official Nintendo Switch 2 product title is Devil May Cry 5 Devil Hunter Edition; the catalogue has been corrected to that SKU identity."
+     },
+     {
+      "q": "What frame rate does it support?",
+      "a": "Nintendo and Capcom state 60 FPS in both TV and handheld modes."
+     },
+     {
+      "q": "What resolution does it use?",
+      "a": "The official sources reviewed do not publish exact rendering or output resolutions."
+     },
+     {
+      "q": "When did it release?",
+      "a": "The digital version released June 23, 2026; Capcom lists the physical version for August 28, 2026."
+     },
+     {
+      "q": "Is it multiplayer?",
+      "a": "Nintendo lists one player; this is a single-player action game."
+     }
+    ],
+    "mpLocalPlayers": 1,
+    "mpOnlinePlayers": 0,
+    "mpCoop": false,
+    "mpCompetitive": false,
+    "mpLocalWireless": false,
+    "mpSplitScreen": false,
+    "image": "",
+    "banner": "",
+    "schemaId": "",
+    "batchImport": true,
+    "createdAt": "2026-08-28T18:36:20.241Z",
+    "updatedAt": "2026-09-01T09:48:59.596Z",
+    "nsuid": "70010000113876",
+    "product_code": "BEEPABQBA",
+    "title_id": "0400a2b026600000",
+    "downloadSizeGb": 27.88,
+    "requiredSpaceGb": 27.88,
+    "microSdRecommended": true,
+    "arabicSupport": false,
+    "dlc": [
+     {
+      "name": "Complete In-game Unlock Bundle",
+      "description": ""
+     }
+    ],
+    "languagesText": [
+     "Japanese",
+     "French",
+     "German",
+     "Italian",
+     "Spanish",
+     "Korean",
+     "Russian",
+     "Simplified Chinese",
+     "Brazilian Portuguese",
+     "Traditional Chinese",
+     "American English",
+     "Polish"
+    ],
+    "storageNotes": "Nintendo lists a 27.88 GB download. Free-space requirements can increase with updates.",
+    "seriesName": "Devil May Cry",
+    "studioName": "CAPCOM",
+    "timeline": [
+     {
+      "date": "2026-06-10",
+      "kind": "announcement",
+      "title": "Capcom launch announcement"
+     },
+     {
+      "date": "2026-06-23",
+      "kind": "release",
+      "title": "Digital release"
+     },
+     {
+      "date": "2026-08-28",
+      "kind": "release",
+      "title": "Physical release",
+      "detail": "Physical release date published by Capcom."
+     }
+    ],
+    "guides": [
+     {
+      "title": "Official Nintendo product information",
+      "summary": "Official performance, player count, languages, storage, and release data.",
+      "url": "https://www.nintendo.com/au/games/nintendo-switch-2/devil-may-cry-5-devil-hunter-edition/"
+     }
+    ],
+    "sources": [
+     {
+      "name": "Nintendo eShop (US)",
+      "url": "https://www.nintendo.com/us/store/products/devil-may-cry-5-devil-hunter-edition-switch-2/"
+     },
+     {
+      "name": "Nintendo Australia",
+      "url": "https://www.nintendo.com/au/games/nintendo-switch-2/devil-may-cry-5-devil-hunter-edition/"
+     },
+     {
+      "name": "CAPCOM launch announcement",
+      "url": "https://www.capcom.co.jp/ir/english/news/html/260610b.html"
+     }
+    ]
+   }
+  },
+  {
+   "id": "prd_9c97bcae3d9e4162",
+   "slug": "donkey-kong-bananza-switch-2",
+   "title": "Donkey Kong Bananza [Switch 2]",
+   "platform": "switch2",
+   "isHidden": false,
+   "hash": "1528a7e4fa2eab18883b684df0e5983a40908dfdadedbefc9443f8987aa0f469",
+   "images": [
+    {
+     "role": "front-box",
+     "field": "cartridgeImage",
+     "url": "https://banan.to/api/files/products/prd_9c97bcae3d9e4162/front-75dd948eb1c4f0a6.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 84051,
+     "width": 435,
+     "height": 705,
+     "thumb": "review-workdir/thumbs/batch-004/donkey-kong-bananza-switch-2__front-box-0.png"
+    },
+    {
+     "role": "front-box",
+     "field": "box_front_url",
+     "url": "https://cdn.mobygames.com/covers/20423223-donkey-kong-bananza-nintendo-switch-2-front-cover.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 100985,
+     "width": 495,
+     "height": 800,
+     "thumb": "review-workdir/thumbs/batch-004/donkey-kong-bananza-switch-2__front-box-1.png"
+    },
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://banan.to/api/files/products/prd_9c97bcae3d9e4162/square-d7dbc59a63b5dc69.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 204700,
+     "width": 718,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-004/donkey-kong-bananza-switch-2__square-card-2.png"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://banan.to/api/files/products/prd_9c97bcae3d9e4162/cover-fbcf57e51562d382.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 5087462,
+     "width": 3840,
+     "height": 2160,
+     "thumb": "review-workdir/thumbs/batch-004/donkey-kong-bananza-switch-2__detail-cover-3.png"
+    },
+    {
+     "role": "3d-texture",
+     "field": "coverHiResImage",
+     "url": "https://banan.to/api/files/products/prd_9c97bcae3d9e4162/3d-texture-595d2368941f0664.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 2504724,
+     "width": 4953,
+     "height": 3800,
+     "thumb": "review-workdir/thumbs/batch-004/donkey-kong-bananza-switch-2__3d-texture-4.png"
+    },
+    {
+     "role": "listing",
+     "field": "image",
+     "url": "https://banan.to/api/files/products/prd_9c97bcae3d9e4162/cover-fbcf57e51562d382.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 5087462,
+     "width": 3840,
+     "height": 2160,
+     "thumb": "review-workdir/thumbs/batch-004/donkey-kong-bananza-switch-2__listing-5.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[0]",
+     "url": "https://banan.to/api/files/products/prd_9c97bcae3d9e4162/banner-0-e2389353dce14b5f.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[1]",
+     "url": "https://banan.to/api/files/products/prd_9c97bcae3d9e4162/banner-1-2dc7c673a626a908.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[2]",
+     "url": "https://banan.to/api/files/products/prd_9c97bcae3d9e4162/banner-2-7881f75ff8ce8888.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[3]",
+     "url": "https://banan.to/api/files/products/prd_9c97bcae3d9e4162/banner-3-9dc65b3be190475a.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing/pmp-nkscdulw/deep-underground/underground-canyon-medium-up-2x",
+     "status": 200,
+     "contentType": "image/png",
+     "bytes": 584396,
+     "width": 1840,
+     "height": 956,
+     "thumb": "review-workdir/thumbs/batch-004/donkey-kong-bananza-switch-2__gallery-10.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[1]",
+     "url": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing/pmp-nkscdulw/deep-underground/underground-forest-medium-up-2x",
+     "status": 200,
+     "contentType": "image/png",
+     "bytes": 2561357,
+     "width": 1840,
+     "height": 954,
+     "thumb": "review-workdir/thumbs/batch-004/donkey-kong-bananza-switch-2__gallery-11.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[2]",
+     "url": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing/pmp-nkscdulw/deep-underground/underground-resort-medium-up-2x",
+     "status": 200,
+     "contentType": "image/png",
+     "bytes": 2106092,
+     "width": 1840,
+     "height": 956,
+     "thumb": "review-workdir/thumbs/batch-004/donkey-kong-bananza-switch-2__gallery-12.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[3]",
+     "url": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing/pmp-nkscdulw/deep-underground/underground-tempest-medium-up-2x",
+     "status": 200,
+     "contentType": "image/png",
+     "bytes": 828818,
+     "width": 1840,
+     "height": 964,
+     "thumb": "review-workdir/thumbs/batch-004/donkey-kong-bananza-switch-2__gallery-13.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[4]",
+     "url": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing/pmp-nkscdulw/companion/dkb-transform-kong-2x",
+     "status": 200,
+     "contentType": "image/png",
+     "bytes": 4001342,
+     "width": 1604,
+     "height": 1632,
+     "thumb": "review-workdir/thumbs/batch-004/donkey-kong-bananza-switch-2__gallery-14.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[5]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000096809/3c8219fbdcd3bdd0ebd6239cf32c651fe10f2157aa7730fcc6a7d96cd27460e5",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 252170,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-004/donkey-kong-bananza-switch-2__gallery-15.png"
+    }
+   ],
+   "record": {
+    "title": "Donkey Kong Bananza [Switch 2]",
+    "titleEn": "Donkey Kong Bananza [Switch 2]",
+    "titleKu": "Donkey Kong Bananza",
+    "slug": "donkey-kong-bananza-switch-2",
+    "description": "A destruction-driven 3D action-platformer built for Nintendo Switch 2. Donkey Kong and young Pauline descend through a layered underground world, smashing terrain, collecting Banandium Gems and using Bananza transformations.",
+    "descriptionEn": "A destruction-driven 3D action-platformer built for Nintendo Switch 2. Donkey Kong and young Pauline descend through a layered underground world, smashing terrain, collecting Banandium Gems and using Bananza transformations.",
+    "descriptionKu": "A destruction-driven 3D action-platformer built for Nintendo Switch 2. Donkey Kong and young Pauline descend through a layered underground world, smashing terrain, collecting Banandium Gems and using Bananza transformations.",
+    "cartridgeImage": "/api/files/products/prd_9c97bcae3d9e4162/front-75dd948eb1c4f0a6.jpg",
+    "nintendoCardImage": "/api/files/products/prd_9c97bcae3d9e4162/square-d7dbc59a63b5dc69.jpg",
+    "coverHiResImage": "/api/files/products/prd_9c97bcae3d9e4162/3d-texture-595d2368941f0664.webp",
+    "coverImage": "/api/files/products/prd_9c97bcae3d9e4162/cover-fbcf57e51562d382.jpg",
+    "bannerImages": [
+     "/api/files/products/prd_9c97bcae3d9e4162/banner-0-e2389353dce14b5f.avif",
+     "/api/files/products/prd_9c97bcae3d9e4162/banner-1-2dc7c673a626a908.avif",
+     "/api/files/products/prd_9c97bcae3d9e4162/banner-2-7881f75ff8ce8888.avif",
+     "/api/files/products/prd_9c97bcae3d9e4162/banner-3-9dc65b3be190475a.avif",
+     "/api/files/products/prd_9c97bcae3d9e4162/banner-4-93e84a02258a164b.avif"
+    ],
+    "gallery": [],
+    "youtubeTrailer": "https://www.nintendo.com/us/gaming-systems/switch-2/featured-games/donkey-kong-bananza/",
+    "releaseDate": "2025-07-17",
+    "ageRating": "ESRB E10+ Fantasy Violence / In-Game Purchases",
+    "metacriticRating": 91,
+    "genres": [
+     "3D Platformer",
+     "Action Adventure",
+     "Exploration"
+    ],
+    "platform": "switch2",
+    "size": 9,
+    "numberOfPlayers": "1–2",
+    "supportedLanguages": "Japanese / English; French / German / Italian / Spanish / Portuguese / Dutch / Russian; Korean / Simplified Chinese / Traditional Chinese / Polish / Thai",
+    "hardwareModel": "",
+    "colorEdition": "",
+    "storageCapacity": "",
+    "screenSpecs": "",
+    "batteryLife": "",
+    "boxContents": [],
+    "boxContentsText": "",
+    "warrantyCondition": "",
+    "connectivity": "",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "Global",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "",
+    "redemptionSteps": [],
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 17500,
+    "cost": 1500,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": false,
+    "displayOrder": 0,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "Offline Account",
+      "description": "Offline account access supplied for this game",
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_account",
+      "name": "Online Account",
+      "description": "Online account access supplied for this game",
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "types": [
+     {
+      "id": "standard_offline",
+      "name": "Offline Account",
+      "optionId": "offline_account",
+      "price": "17500",
+      "cost": 1500,
+      "description": "Offline Account: supplier cost 1,500 IQD; selling price 21,000 IQD.",
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "dlc_offline",
+      "name": "Offline Special/DLC",
+      "optionId": "offline_account",
+      "price": "21000",
+      "cost": 3500,
+      "description": "Offline Special/DLC: supplier cost 3,500 IQD; selling price 24,000 IQD.",
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "standard_online",
+      "name": "Online Account",
+      "optionId": "online_account",
+      "price": "45000",
+      "cost": 27250,
+      "description": "Online Account: supplier cost 27,250 IQD; selling price 37,250 IQD.",
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "dlc_online",
+      "name": "Online Deluxe/DLC",
+      "optionId": "online_account",
+      "price": "55000",
+      "cost": 38000,
+      "description": "Online Deluxe/DLC: supplier cost 38,000 IQD; selling price 48,000 IQD.",
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "Active",
+    "kind": "account",
+    "trade_value_iqd": 62000,
+    "store_offer_bonus_iqd": 10000,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "id": "prd_9c97bcae3d9e4162",
+    "schema_version": 23,
+    "titleAr": "دونكي كونغ بانانزا",
+    "compatibility": [
+     "Nintendo Switch 2"
+    ],
+    "edition": "Standard / available account variants",
+    "developer": "Nintendo EPD",
+    "publisher": "Nintendo",
+    "metacriticUrl": "https://www.metacritic.com/game/donkey-kong-bananza/",
+    "opencriticRating": 91,
+    "userScore": 8.9,
+    "price_usd": 69.99,
+    "officialUrl": "https://www.nintendo.com/us/gaming-systems/switch-2/featured-games/donkey-kong-bananza/",
+    "eshopUrl": "https://www.nintendo.com/us/store/products/70010000096809/",
+    "gameIsOffline": true,
+    "gameIsOnline": false,
+    "gameLanguageLocked": false,
+    "description_short": "A destruction-driven 3D action-platformer built for Nintendo Switch 2. Donkey Kong and young Pauline descend through a layered underground world, smashing terrain, collecting Banandium Gems and using Bananza transformations.",
+    "description_ar": "لعبة منصات ومغامرات ثلاثية الأبعاد تعتمد على تدمير البيئة. ينطلق Donkey Kong مع Pauline عبر طبقات عالم ضخم تحت الأرض، ويحطم الصخور والجدران ويجمع Banandium Gems ويستخدم تحولات Bananza، مع تعاون محلي لشخصين وDLC باسم DK Island & Emerald Rush.",
+    "box_front_url": "https://cdn.mobygames.com/covers/20423223-donkey-kong-bananza-nintendo-switch-2-front-cover.jpg",
+    "box_back_url": "https://gamefaqs.gamespot.com/a/box/2/1/5/1109215_back.jpg",
+    "galleryImages": [
+     {
+      "url": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing/pmp-nkscdulw/deep-underground/underground-canyon-medium-up-2x",
+      "alt": "Distinct verified game media image 1"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing/pmp-nkscdulw/deep-underground/underground-forest-medium-up-2x",
+      "alt": "Distinct verified game media image 2"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing/pmp-nkscdulw/deep-underground/underground-resort-medium-up-2x",
+      "alt": "Distinct verified game media image 3"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing/pmp-nkscdulw/deep-underground/underground-tempest-medium-up-2x",
+      "alt": "Distinct verified game media image 4"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing/pmp-nkscdulw/companion/dkb-transform-kong-2x",
+      "alt": "Distinct verified game media image 5"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000096809/3c8219fbdcd3bdd0ebd6239cf32c651fe10f2157aa7730fcc6a7d96cd27460e5",
+      "alt": "Distinct verified game media image 6"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000096809/c111819ae2b07f446ab92d64c8d37e9ef8e541e30b687121fa6d5976096b61f9",
+      "alt": "Distinct verified game media image 7"
+     }
+    ],
+    "videos": [
+     {
+      "title": "Official trailer",
+      "url": "https://www.nintendo.com/us/gaming-systems/switch-2/featured-games/donkey-kong-bananza/"
+     },
+     {
+      "title": "Nintendo / publisher overview",
+      "url": "https://www.nintendo.com/us/store/products/70010000096809/"
+     },
+     {
+      "title": "Gameplay and feature media",
+      "url": "https://www.nintendo.com/us/store/products/70010000096809/"
+     }
+    ],
+    "nsuid": "See official Nintendo product page",
+    "title_id": "Nintendo internal title ID not exposed as a user-facing retail identifier",
+    "product_code": "Platform retail/digital product code varies by region",
+    "nintendoEshopUrl": "https://www.nintendo.com/us/store/products/70010000096809/",
+    "nintendoOnlineRequired": false,
+    "nintendoCloudSaves": true,
+    "nintendoGameKeyCard": false,
+    "nintendoPhysicalNeedsDownload": false,
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": true,
+    "nintendoPlayModes": "TV / Tabletop / Handheld",
+    "nintendoNotes": "Verified platform/store information for Donkey Kong Bananza. Online features require Nintendo Switch Online where applicable. Storage and supported-language values are taken from current Nintendo/publisher listings.",
+    "switch2Enhanced": false,
+    "switch2Exclusive": true,
+    "switch2UpgradePrice": 0,
+    "switch2Features": [
+     "Terrain destruction as a core traversal mechanic",
+     "Bananza transformations powered by Pauline's singing",
+     "Two-player co-op plus GameShare support"
+    ],
+    "tagline": "Smash through a world built to be broken.",
+    "fitFor": [
+     "Players who love exploratory 3D platformers",
+     "Completionists who enjoy collectibles and secrets",
+     "Families wanting a polished two-player option"
+    ],
+    "notFitFor": [
+     "Players who dislike collectible-heavy platformers",
+     "Players who demand perfectly locked performance at all times",
+     "Players who prefer traditional 2D Donkey Kong gameplay"
+    ],
+    "playTimeMain": 19,
+    "playTimeFull": 49,
+    "editionsList": [
+     {
+      "name": "Standard Edition",
+      "coverUrl": "https://cdn.mobygames.com/covers/20423223-donkey-kong-bananza-nintendo-switch-2-front-cover.jpg",
+      "contents": [
+       {
+        "label": "Base game"
+       },
+       {
+        "label": "Standard content"
+       },
+       {
+        "label": "Platform features"
+       }
+      ]
+     },
+     {
+      "name": "DLC / Special Edition",
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_1%3A1%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000096809/3c8219fbdcd3bdd0ebd6239cf32c651fe10f2157aa7730fcc6a7d96cd27460e5",
+      "contents": [
+       {
+        "label": "DK Island & Emerald Rush"
+       },
+       {
+        "label": "Base game + DLC account option"
+       },
+       {
+        "label": "Additional edition content"
+       }
+      ]
+     },
+     {
+      "name": "Base + DK Island & Emerald Rush",
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000096809/c111819ae2b07f446ab92d64c8d37e9ef8e541e30b687121fa6d5976096b61f9",
+      "contents": [
+       {
+        "label": "Base game"
+       },
+       {
+        "label": "DK Island"
+       },
+       {
+        "label": "Emerald Rush"
+       }
+      ]
+     }
+    ],
+    "gameplayPillars": [
+     {
+      "title": "Break almost everything",
+      "description": "Punch through walls, tunnel downward and tear chunks of terrain free to use as weapons or traversal tools.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000096809/3c8219fbdcd3bdd0ebd6239cf32c651fe10f2157aa7730fcc6a7d96cd27460e5"
+     },
+     {
+      "title": "Transform with Bananza",
+      "description": "Pauline's songs unlock powerful forms including Kong, Zebra and Ostrich Bananza.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000096809/c111819ae2b07f446ab92d64c8d37e9ef8e541e30b687121fa6d5976096b61f9"
+     },
+     {
+      "title": "Explore every layer",
+      "description": "Each underground layer hides Banandium Gems, fossils, challenges, characters and alternate routes.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000096809/b8ae4b278d62fb9683adf9939c79a3fc5ac71a671d1d644eb8774c4904e34ee2"
+     }
+    ],
+    "worldSummary": "The Underground World is divided into distinct layers ranging from canyons and forests to frozen regions, resorts and dangerous industrial areas. DK and Pauline descend toward the Planet Core while Void Company races to claim its wish-granting power.",
+    "storyChapters": [
+     {
+      "title": "The descent begins",
+      "body": "DK and Pauline enter the Underground World and begin moving toward the Planet Core.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000096809/1db3e042985d95332cb7750d9353a343b33415b12fbb82be6bffbcf0848949c3"
+     },
+     {
+      "title": "Void Company",
+      "body": "Void Kong and his company race the heroes through the layers in pursuit of the Core's power.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000096809/eedd5cf569384e972df7ee8cebb8a84ec86a7ab7f382f3f34b40e2cc4d22b8e1"
+     },
+     {
+      "title": "Planet Core",
+      "body": "The adventure culminates deep below the surface where the conflict over the world's greatest treasure is resolved.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000096809/760dd462413e23f48dd733041689430bf6446b9f88494c4edee7a44fd86ebabf"
+     }
+    ],
+    "features": [
+     "Terrain destruction as a core traversal mechanic",
+     "Bananza transformations powered by Pauline's singing",
+     "Two-player co-op plus GameShare support"
+    ],
+    "perfResolutionDocked": "1080p–1200p dynamic class",
+    "perfResolutionHandheld": "1080p-class dynamic",
+    "perfFps": "60 target",
+    "perfHdr": true,
+    "perfNotes": "Nintendo targets 60 fps. Technical analysis shows a dynamic-resolution presentation with occasional brief drops during heavy destruction and effects.",
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "hardwareId": "prd_acf4c89908764c62",
+      "informationStatus": "Available / verified",
+      "unavailableReason": "No required native mode is unavailable.",
+      "handheld": {
+       "supported": true,
+       "resolution": "1080p-class dynamic",
+       "resolutionDynamic": true,
+       "renderingResolution": "1080p-class dynamic",
+       "outputResolution": "1920x1080",
+       "fps": "60 target",
+       "fpsMin": "60 target",
+       "fpsMax": "60 target",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Handheld",
+       "notes": "Nintendo targets 60 fps. Technical analysis shows a dynamic-resolution presentation with occasional brief drops during heavy destruction and effects."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p–1200p dynamic class",
+       "resolutionDynamic": true,
+       "renderingResolution": "1080p–1200p dynamic class",
+       "outputResolution": "1920x1080",
+       "fps": "60 target",
+       "fpsMin": "60 target",
+       "fpsMax": "60 target",
+       "refreshRate": "60",
+       "hdr": true,
+       "vrr": false,
+       "mode": "TV / Docked",
+       "notes": "Nintendo targets 60 fps. Technical analysis shows a dynamic-resolution presentation with occasional brief drops during heavy destruction and effects."
+      },
+      "modes": [
+       {
+        "name": "Standard",
+        "handheldResolution": "1080p-class dynamic",
+        "handheldFps": "60 target",
+        "tvResolution": "1080p–1200p dynamic class",
+        "tvFps": "60 target",
+        "hdr": false,
+        "vrr": false,
+        "notes": "Primary documented performance mode."
+       }
+      ],
+      "upscaling": "Platform-specific reconstruction / scaling where used",
+      "rayTracing": false,
+      "rayTracingMode": "No verified ray-tracing mode",
+      "loadingTime": "Fast SSD-based loading; exact scene-dependent time varies",
+      "loadingNotes": "Loading varies by scene and save location; no single universal loading time is published.",
+      "gameVersion": "Current retail build",
+      "patchVersion": "Current available update",
+      "testedDate": "2026-08-27",
+      "sourceName": "Nintendo Store",
+      "sourceUrl": "https://www.nintendo.com/us/store/products/70010000096809/",
+      "verifiedAt": "2026-08-27",
+      "verificationStatus": "Verified / sourced",
+      "performanceNotes": "Nintendo targets 60 fps. Technical analysis shows a dynamic-resolution presentation with occasional brief drops during heavy destruction and effects."
+     }
+    ],
+    "downloadSizeGb": 9,
+    "requiredSpaceGb": 9,
+    "microSdRecommended": false,
+    "storageNotes": "Nintendo lists 9 GB for the base game. DK Island & Emerald Rush adds about 919 MB. microSD Express is optional if additional storage is needed.",
+    "languagesAudio": [
+     "English",
+     "Japanese",
+     "Character vocalizations / songs"
+    ],
+    "languagesText": [
+     "Japanese / English",
+     "French / German / Italian / Spanish / Portuguese / Dutch / Russian",
+     "Korean / Simplified Chinese / Traditional Chinese / Polish / Thai"
+    ],
+    "arabicSupport": false,
+    "mpLocalPlayers": true,
+    "mpOnlinePlayers": false,
+    "mpCoop": true,
+    "mpCompetitive": false,
+    "mpSplitScreen": false,
+    "mpLocalWireless": false,
+    "dlc": [
+     {
+      "name": "DK Island & Emerald Rush",
+      "description": "Paid DLC released September 12, 2025; adds DK Island and the repeatable Emerald Rush mode.",
+      "coverUrl": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing/pmp-nkscdulw/deep-underground/underground-resort-medium-up-2x"
+     },
+     {
+      "name": "Emerald Rush events",
+      "description": "Periodic limited-time events offer special challenges and rewards.",
+      "coverUrl": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing/pmp-nkscdulw/deep-underground/underground-tempest-medium-up-2x"
+     },
+     {
+      "name": "amiibo support",
+      "description": "Compatible amiibo can provide in-game benefits; this is a feature rather than paid DLC.",
+      "coverUrl": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing/pmp-nkscdulw/companion/dkb-transform-kong-2x"
+     }
+    ],
+    "guides": [
+     {
+      "title": "Official product information",
+      "summary": "Platform, release, storage, language and feature information for Donkey Kong Bananza.",
+      "url": "https://www.nintendo.com/us/store/products/70010000096809/"
+     },
+     {
+      "title": "Official game overview",
+      "summary": "Publisher/developer overview of story, gameplay and features.",
+      "url": "https://www.nintendo.com/us/gaming-systems/switch-2/featured-games/donkey-kong-bananza/"
+     },
+     {
+      "title": "Reviews and playtime reference",
+      "summary": "Critic/user scores and completion-time context.",
+      "url": "https://www.dekudeals.com/items/donkey-kong-bananza"
+     }
+    ],
+    "completionMain": 19,
+    "completionExtras": 30.5,
+    "completionAll": 49,
+    "faq": [
+     {
+      "q": "How many players are supported?",
+      "a": "The base game supports 1–2 players on one system; the second player controls Pauline."
+     },
+     {
+      "q": "What does the DLC add?",
+      "a": "DK Island & Emerald Rush adds DK Island, character interactions, statues, bonus stages and the repeatable Emerald Rush challenge mode."
+     },
+     {
+      "q": "How large is the game?",
+      "a": "Nintendo lists 9 GB for the base game; the DLC is approximately 919 MB."
+     }
+    ],
+    "verdictScore": 9.2,
+    "verdictSummary": "One of Nintendo's strongest modern 3D platformers, built around an unusually tactile destruction system and constant discovery. Its combination of movement, smashing, transformations and layered exploration gives Donkey Kong a distinct 3D identity.",
+    "verdictPros": [
+     "Exceptional destruction and exploration",
+     "Creative Bananza transformations",
+     "Excellent level design and polish"
+    ],
+    "verdictCons": [
+     "Occasional performance dips",
+     "Completion can become collectible-heavy",
+     "Paid DLC is separate"
+    ],
+    "reviews": [
+     {
+      "source": "Metacritic",
+      "score": "91/100",
+      "quote": "Universal acclaim on Nintendo Switch 2.",
+      "url": "https://www.metacritic.com/game/donkey-kong-bananza/"
+     },
+     {
+      "source": "OpenCritic",
+      "score": "91/100",
+      "quote": "Top-tier critic aggregate.",
+      "url": "https://opencritic.com/game/18500/donkey-kong-bananza"
+     },
+     {
+      "source": "Metacritic users",
+      "score": "8.9/10",
+      "quote": "Generally favorable player score.",
+      "url": "https://www.metacritic.com/game/donkey-kong-bananza/"
+     }
+    ],
+    "timeline": [
+     {
+      "date": "2025-04-02",
+      "title": "Game revealed",
+      "body": "Nintendo introduced Donkey Kong Bananza for Switch 2."
+     },
+     {
+      "date": "2025-07-17",
+      "title": "Worldwide release",
+      "body": "Donkey Kong Bananza launched for Nintendo Switch 2."
+     },
+     {
+      "date": "2025-09-12",
+      "title": "DK Island & Emerald Rush",
+      "body": "Paid DLC launched worldwide."
+     }
+    ],
+    "patchNotes": [
+     {
+      "version": "Launch version",
+      "date": "2025-07-17",
+      "body": "Base adventure released."
+     },
+     {
+      "version": "DK Island & Emerald Rush",
+      "date": "2025-09-12",
+      "body": "Added DK Island and Emerald Rush."
+     },
+     {
+      "version": "Emerald Rush events",
+      "date": "2026",
+      "body": "Nintendo continued periodic challenge events and special rewards."
+     }
+    ],
+    "soundtrack": [
+     {
+      "title": "Donkey Kong Bananza Main Theme",
+      "url": "https://www.nintendo.com/us/gaming-systems/switch-2/featured-games/donkey-kong-bananza/"
+     },
+     {
+      "title": "Bananza transformation songs",
+      "url": "https://www.nintendo.com/us/gaming-systems/switch-2/featured-games/donkey-kong-bananza/"
+     },
+     {
+      "title": "DK Island music",
+      "url": "https://www.nintendo.com/us/gaming-systems/switch-2/featured-games/donkey-kong-bananza/"
+     }
+    ],
+    "seriesName": "Donkey Kong Bananza",
+    "seriesEntries": [
+     "Donkey Kong Country: Tropical Freeze",
+     "Donkey Kong Bananza",
+     "Mario vs. Donkey Kong"
+    ],
+    "studioName": "Nintendo EPD",
+    "studioUrl": "https://www.nintendo.co.jp/",
+    "studioLocation": "Kyoto, Japan",
+    "studioAbout": "Nintendo's internal development organization; the Bananza team built a destruction-heavy 3D platforming system specifically around Switch 2.",
+    "setupNeeds": [
+     "Nintendo Switch 2",
+     "9 GB free storage for base game",
+     "Additional storage for DLC; compatible controller for local co-op"
+    ],
+    "sources": [
+     {
+      "name": "Nintendo Store",
+      "url": "https://www.nintendo.com/us/store/products/70010000096809/"
+     },
+     {
+      "name": "Nintendo DLC page",
+      "url": "https://www.nintendo.com/us/store/products/donkey-kong-bananza-dk-island-and-emerald-rush-70050000062442-switch-2/"
+     },
+     {
+      "name": "Deku Deals",
+      "url": "https://www.dekudeals.com/items/donkey-kong-bananza"
+     }
+    ],
+    "boxContentsList": "[Circular]",
+    "image": "/api/files/products/prd_9c97bcae3d9e4162/cover-fbcf57e51562d382.jpg",
+    "banner": "/api/files/products/prd_9c97bcae3d9e4162/banner-0-e2389353dce14b5f.avif",
+    "schemaId": "",
+    "createdAt": "2026-08-27T00:27:57.072Z",
+    "created_at": "2026-08-27T00:27:57.072Z",
+    "updatedAt": "2026-08-27T00:27:57.072Z",
+    "updated_at": "2026-08-27T00:27:57.072Z",
+    "badgeEn": "وفر 40%",
+    "badgeKu": "وفر 40%",
+    "featuresEn": [
+     "Terrain destruction as a core traversal mechanic",
+     "Bananza transformations powered by Pauline's singing",
+     "Two-player co-op plus GameShare support"
+    ],
+    "featuresKu": [
+     "Terrain destruction as a core traversal mechanic",
+     "Bananza transformations powered by Pauline's singing",
+     "Two-player co-op plus GameShare support"
+    ],
+    "boxFrontUrl": "https://cdn.mobygames.com/covers/20423223-donkey-kong-bananza-nintendo-switch-2-front-cover.jpg",
+    "sales": 0,
+    "images": [],
+    "modes": [],
+    "game_id": "gme_e7792b4272be4c26"
+   }
+  },
+  {
+   "id": "prd_1c5ea5fc72b443c1",
+   "slug": "dragon-ball-sparking-zero-switch2",
+   "title": "Dragon Ball: Sparking! ZERO [Switch 2]",
+   "platform": "switch2",
+   "isHidden": false,
+   "hash": "86aad93ff3045f0def4802587a1d2beb4f8c60284e3c8dae92ab860eee2ad480",
+   "images": [
+    {
+     "role": "front-box",
+     "field": "cartridgeImage",
+     "url": "https://banan.to/api/files/products/prd_1c5ea5fc72b443c1/cartridgeImage-f000f004473318c2.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 27254,
+     "width": 171,
+     "height": 280,
+     "thumb": "review-workdir/thumbs/batch-004/dragon-ball-sparking-zero-switch2__front-box-0.png"
+    },
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://banan.to/api/files/products/prd_1c5ea5fc72b443c1/nintendoCardImage-6c7ce11e7fc5f43c.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 39538,
+     "width": 281,
+     "height": 281,
+     "thumb": "review-workdir/thumbs/batch-004/dragon-ball-sparking-zero-switch2__square-card-1.png"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://banan.to/api/files/products/prd_1c5ea5fc72b443c1/coverImage-27d977113d2bdc27.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 12403,
+     "width": 400,
+     "height": 129,
+     "thumb": "review-workdir/thumbs/batch-004/dragon-ball-sparking-zero-switch2__detail-cover-2.png"
+    },
+    {
+     "role": "3d-texture",
+     "field": "coverHiResImage",
+     "url": "https://banan.to/api/files/products/prd_1c5ea5fc72b443c1/3d-texture-1c38958075225c50.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 224908,
+     "width": 1080,
+     "height": 831,
+     "thumb": "review-workdir/thumbs/batch-004/dragon-ball-sparking-zero-switch2__3d-texture-3.png"
+    },
+    {
+     "role": "listing",
+     "field": "image",
+     "url": "https://banan.to/api/files/products/prd_1c5ea5fc72b443c1/coverImage-27d977113d2bdc27.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 12403,
+     "width": 400,
+     "height": 129,
+     "thumb": "review-workdir/thumbs/batch-004/dragon-ball-sparking-zero-switch2__listing-4.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[0]",
+     "url": "https://banan.to/api/files/products/prd_1c5ea5fc72b443c1/bannerImages-d947de497adc1184.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 24342,
+     "width": 400,
+     "height": 225,
+     "thumb": "review-workdir/thumbs/batch-004/dragon-ball-sparking-zero-switch2__banner-5.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[1]",
+     "url": "https://banan.to/api/files/products/prd_1c5ea5fc72b443c1/bannerImages-f47da24ff821ec5b.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 25334,
+     "width": 400,
+     "height": 225,
+     "thumb": "review-workdir/thumbs/batch-004/dragon-ball-sparking-zero-switch2__banner-6.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://images.launchbox-app.com/b2d0b193-75f8-4938-a825-403bac6d0d0c.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 20418,
+     "width": 400,
+     "height": 225,
+     "thumb": "review-workdir/thumbs/batch-004/dragon-ball-sparking-zero-switch2__gallery-7.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[1]",
+     "url": "https://images.launchbox-app.com/8341638b-12c6-46d0-b5eb-5b05752ee6c6.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 14283,
+     "width": 400,
+     "height": 225,
+     "thumb": "review-workdir/thumbs/batch-004/dragon-ball-sparking-zero-switch2__gallery-8.png"
+    }
+   ],
+   "record": {
+    "id": "prd_1c5ea5fc72b443c1",
+    "title": "Dragon Ball: Sparking! ZERO [Switch 2]",
+    "titleEn": "Dragon Ball: Sparking! ZERO [Switch 2]",
+    "titleKu": "Dragon Ball: Sparking! ZERO [Switch 2]",
+    "slug": "dragon-ball-sparking-zero-switch2",
+    "description": "DRAGON BALL: Sparking! ZERO revives the arena-brawler structure associated with the Budokai Tenkaichi series. The base game features more than 180 fighters from Dragon Ball Z, Dragon Ball Super, Dragon Ball GT and selected films, with transformations, signature techniques and large destructible battle arenas.\n\nEpisode Battle revisits major story conflicts from the viewpoints of several fighters and includes branching scenarios. Custom Battle allows players to build and share their own encounters. The Nintendo Switch 2 version supports local play, local wireless and online multiplayer, as well as motion-control options using Joy-Con controllers.",
+    "descriptionEn": "DRAGON BALL: Sparking! ZERO revives the arena-brawler structure associated with the Budokai Tenkaichi series. The base game features more than 180 fighters from Dragon Ball Z, Dragon Ball Super, Dragon Ball GT and selected films, with transformations, signature techniques and large destructible battle arenas.\n\nEpisode Battle revisits major story conflicts from the viewpoints of several fighters and includes branching scenarios. Custom Battle allows players to build and share their own encounters. The Nintendo Switch 2 version supports local play, local wireless and online multiplayer, as well as motion-control options using Joy-Con controllers.",
+    "descriptionKu": "DRAGON BALL: Sparking! ZERO revives the arena-brawler structure associated with the Budokai Tenkaichi series. The base game features more than 180 fighters from Dragon Ball Z, Dragon Ball Super, Dragon Ball GT and selected films, with transformations, signature techniques and large destructible battle arenas.\n\nEpisode Battle revisits major story conflicts from the viewpoints of several fighters and includes branching scenarios. Custom Battle allows players to build and share their own encounters. The Nintendo Switch 2 version supports local play, local wireless and online multiplayer, as well as motion-control options using Joy-Con controllers.",
+    "cartridgeImage": "/api/files/products/prd_1c5ea5fc72b443c1/cartridgeImage-f000f004473318c2.webp",
+    "nintendoCardImage": "/api/files/products/prd_1c5ea5fc72b443c1/nintendoCardImage-6c7ce11e7fc5f43c.webp",
+    "coverHiResImage": "/api/files/products/prd_1c5ea5fc72b443c1/3d-texture-1c38958075225c50.webp",
+    "coverImage": "/api/files/products/prd_1c5ea5fc72b443c1/coverImage-27d977113d2bdc27.webp",
+    "bannerImages": [
+     "/api/files/products/prd_1c5ea5fc72b443c1/bannerImages-d947de497adc1184.webp",
+     "/api/files/products/prd_1c5ea5fc72b443c1/bannerImages-f47da24ff821ec5b.webp"
+    ],
+    "gallery": [],
+    "youtubeTrailer": "https://www.youtube.com/watch?v=cIS55Z_WYug",
+    "releaseDate": "2025-11-14",
+    "ageRating": "ESRB Teen",
+    "metacriticRating": 78,
+    "genres": [
+     "Fighting",
+     "Action"
+    ],
+    "platform": "switch2",
+    "size": 12,
+    "numberOfPlayers": "8",
+    "supportedLanguages": "Japanese, British English, French, German, Italian, Spanish, Korean, Russian, Simplified Chinese, Latin American Spanish, Canadian French, Brazilian Portuguese, Traditional Chinese, American English, Polish, Thai",
+    "hardwareModel": "",
+    "colorEdition": "",
+    "storageCapacity": "",
+    "screenSpecs": "",
+    "batteryLife": "",
+    "boxContents": [],
+    "boxContentsText": "",
+    "warrantyCondition": "",
+    "connectivity": "",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "US",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "",
+    "redemptionSteps": [],
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 14000,
+    "cost": 3000,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": false,
+    "displayOrder": 0,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "حساب أوفلاين",
+      "description": "حساب مخصص للعب دون اتصال بعد إكمال خطوات التفعيل.",
+      "isInfiniteStock": true,
+      "customerDescription": "حساب مشترك"
+     },
+     {
+      "id": "online_account",
+      "name": "حساب أونلاين",
+      "description": "حساب يدعم تشغيل اللعبة مع الاتصال والميزات المتاحة أونلاين.",
+      "isInfiniteStock": true,
+      "customerDescription": "حساب خاص بك"
+     }
+    ],
+    "types": [
+     {
+      "id": "standard_offline",
+      "name": "حساب أوفلاين — عادي",
+      "optionId": "offline_account",
+      "price": "16000",
+      "cost": 3000,
+      "description": "تشمل الإصدار العادي من اللعبة.",
+      "isInfiniteStock": true,
+      "customerDescription": "اللعبة الأساسية",
+      "internalNote": "Supplier 普通版 mapped to Offline / Standard. Cost ¥14.64 -> 3,000 IQD."
+     },
+     {
+      "id": "dlc_offline",
+      "name": "حساب أوفلاين — مع الإضافات",
+      "optionId": "offline_account",
+      "price": "19000",
+      "cost": 4250,
+      "description": "تشمل اللعبة الأساسية والمحتوى الإضافي المثبت في هذا الإصدار.",
+      "isInfiniteStock": true,
+      "customerDescription": "اللعبة مع الإضافات",
+      "internalNote": "Supplier 特典版 mapped to Offline / DLC. Cost ¥19.54 -> 4,250 IQD."
+     },
+     {
+      "id": "standard_online",
+      "name": "حساب أونلاين — عادي",
+      "optionId": "online_account",
+      "price": "65000",
+      "cost": 42250,
+      "description": "تشمل الإصدار العادي من اللعبة.",
+      "isInfiniteStock": true,
+      "customerDescription": "اللعبة الأساسية",
+      "internalNote": "Supplier 标准版 mapped to Online / Standard. Cost ¥193 -> 42,250 IQD."
+     },
+     {
+      "id": "dlc_online",
+      "name": "حساب أونلاين — مع الإضافات",
+      "optionId": "online_account",
+      "price": "78000",
+      "cost": 51000,
+      "description": "تشمل اللعبة الأساسية والمحتوى الإضافي المثبت في هذا الإصدار.",
+      "isInfiniteStock": true,
+      "customerDescription": "اللعبة مع الإضافات",
+      "internalNote": "Supplier 豪华版 mapped to Online / DLC. Cost ¥232.20 -> 51,000 IQD."
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "active",
+    "kind": "account",
+    "trade_value_iqd": 38000,
+    "store_offer_bonus_iqd": 5000,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "schema_version": 21,
+    "compatibility": [
+     "Nintendo Switch 2"
+    ],
+    "edition": "Standard",
+    "developer": "Spike Chunsoft",
+    "publisher": "BANDAI NAMCO Entertainment",
+    "opencriticRating": 82,
+    "userScore": 8.2,
+    "officialUrl": "https://www.nintendo.com/us/store/products/dragon-ball-sparking-zero-switch-2/",
+    "eshopUrl": "https://www.nintendo.com/us/store/products/dragon-ball-sparking-zero-switch-2/",
+    "gameIsOffline": true,
+    "gameIsOnline": true,
+    "description_short": "A large-scale 3D arena fighter with more than 180 base-game fighters from Dragon Ball Z, Super, GT and the movies, built around transformations, signature attacks and destructible battlefields.",
+    "description_ar": "لعبة قتال ثلاثية الأبعاد ضخمة من عالم Dragon Ball تضم أكثر من 180 مقاتلًا، مع معارك قصصية متفرعة وطور Custom Battle ولعب محلي وأونلاين.",
+    "videos": [
+     {
+      "title": "DRAGON BALL: Sparking! ZERO — Official Trailer",
+      "url": "https://www.youtube.com/watch?v=cIS55Z_WYug"
+     }
+    ],
+    "nintendoEshopUrl": "https://www.nintendo.com/us/store/products/dragon-ball-sparking-zero-switch-2/",
+    "nintendoOnlineRequired": false,
+    "nintendoCloudSaves": true,
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": true,
+    "nintendoPlayModes": "TV Mode, Tabletop Mode, Handheld Mode",
+    "nintendoNotes": "Nintendo lists the Switch 2 version as a Dragon Ball arena fighter with Simplified Chinese support and a large roster. Supplier four-tier pricing is mapped to Offline/Online Standard and DLC types according to the current import rule. No verified Full Wrap image was found, so 3D texture fields are blank.",
+    "switch2Exclusive": false,
+    "tagline": "Bring Dragon Ball’s biggest clashes to life with a huge roster, explosive 3D arenas, transformations, Episode Battle and player-created Custom Battles.",
+    "fitFor": [
+     "Dragon Ball fans who want a huge roster covering many eras, transformations and signature techniques.",
+     "Players who enjoy fast 3D arena fighting rather than traditional 2D fighting-game lanes.",
+     "Players who want both story recreations and custom/online battle formats."
+    ],
+    "notFitFor": [
+     "Players looking for a deep exploration RPG rather than a dedicated fighting game.",
+     "Players who prefer slow, highly technical 2D tournament fighters with small tightly balanced rosters.",
+     "Players sensitive to rapid camera movement and very effects-heavy battles."
+    ],
+    "playTimeMain": 11,
+    "playTimeFull": 44,
+    "gameplayPillars": [
+     {
+      "title": "High-Speed 3D Combat",
+      "description": "Fly, dash, counter, transform and unleash signature attacks across large arenas designed to reproduce the scale and spectacle of Dragon Ball battles."
+     },
+     {
+      "title": "Massive Character Roster",
+      "description": "Choose from more than 180 base-game fighters, including multiple forms and eras from Z, Super, GT and the films."
+     },
+     {
+      "title": "Episode and Custom Battles",
+      "description": "Replay famous confrontations through character-focused Episode Battles or build original what-if scenarios with Custom Battle tools."
+     }
+    ],
+    "worldSummary": "Sparking! ZERO is not built around one explorable overworld. Instead, it recreates locations and battles from across the Dragon Ball timeline as large 3D combat arenas. Episode Battle revisits major events through selected character perspectives, while Custom Battle lets players construct and share alternative match scenarios and conditions.",
+    "storyChapters": [
+     {
+      "title": "Episode Battle Perspectives",
+      "body": "The story mode follows major Dragon Ball events from the perspective of eight playable characters rather than using one single continuous protagonist."
+     },
+     {
+      "title": "Iconic Sagas and What-If Paths",
+      "body": "Battles revisit recognizable conflicts while selected choices and conditions can lead to alternate Sparking Episode outcomes."
+     },
+     {
+      "title": "Custom Battle Creation",
+      "body": "Beyond the official scenarios, Custom Battle allows players to configure characters, conditions and presentation to create their own Dragon Ball match stories."
+     }
+    ],
+    "galleryImages": [
+     {
+      "url": "https://images.launchbox-app.com/b2d0b193-75f8-4938-a825-403bac6d0d0c.jpg",
+      "alt": "DRAGON BALL: Sparking! ZERO gameplay image."
+     },
+     {
+      "url": "https://images.launchbox-app.com/8341638b-12c6-46d0-b5eb-5b05752ee6c6.jpg",
+      "alt": "Additional Sparking! ZERO gameplay/media image."
+     }
+    ],
+    "features": [
+     "The base game includes more than 180 playable fighters drawn from Dragon Ball Z, Dragon Ball Super, Dragon Ball GT and selected films.",
+     "High-speed 3D arena battles feature transformations, beam clashes, rush attacks and large-scale signature techniques.",
+     "Episode Battle retells major story conflicts from the perspectives of eight characters and also includes alternate encounters.",
+     "Custom Battle lets players create, play and share custom scenarios and dream matchups.",
+     "The Nintendo versions support local multiplayer, local wireless and online play, with player counts depending on the mode.",
+     "Joy-Con motion controls are supported on Nintendo Switch and Nintendo Switch 2 versions for an alternative control style."
+    ],
+    "perfResolutionDocked": "Up to 810p, dynamic",
+    "perfResolutionHandheld": "Up to 810p, dynamic",
+    "perfFps": "30 FPS",
+    "perfHdr": true,
+    "perfNotes": "Bandai Namco’s platform comparison reports a maximum 810p presentation using dynamic resolution and 30 FPS in both docked and portable modes on Nintendo Switch 2, with HDR support. Nintendo Life’s later review confirms the 30 FPS cap and notes some performance issues.",
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "hardwareId": "prd_acf4c89908764c62",
+      "informationStatus": "verified",
+      "handheld": {
+       "supported": true,
+       "resolution": "Up to 810p dynamic",
+       "resolutionDynamic": true,
+       "outputResolution": "810p max",
+       "fps": "30",
+       "hdr": true
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "Up to 810p dynamic",
+       "resolutionDynamic": true,
+       "outputResolution": "810p max",
+       "fps": "30",
+       "hdr": true
+      },
+      "sourceName": "Bandai Namco official comparison summarized by Nintendo Life",
+      "sourceUrl": "https://www.nintendolife.com/news/2025/08/dragon-ball-sparking-zero-switch-and-switch-2-performance-and-resolution-detailed",
+      "verifiedAt": "2026-08-25",
+      "verificationStatus": "verified",
+      "performanceNotes": "Official comparison information reports dynamic resolution up to 810p and 30 FPS in both Switch 2 play modes, with HDR supported."
+     }
+    ],
+    "downloadSizeGb": 12,
+    "arabicSupport": false,
+    "mpLocalPlayers": true,
+    "mpOnlinePlayers": true,
+    "mpCoop": false,
+    "mpCompetitive": true,
+    "mpLocalWireless": true,
+    "dlc": [
+     {
+      "name": "Season Pass / Season Pass Bonus",
+      "description": "Official season-pass content and related bonus content for additional playable characters."
+     },
+     {
+      "name": "HERO OF JUSTICE Pack",
+      "description": "Official paid character/content pack listed by Nintendo."
+     },
+     {
+      "name": "Dragon Ball DAIMA: Character Pack 1",
+      "description": "Official Dragon Ball DAIMA character pack listed by Nintendo."
+     }
+    ],
+    "guides": [
+     {
+      "title": "Nintendo — DRAGON BALL: Sparking! ZERO",
+      "summary": "Official Nintendo Switch 2 product information.",
+      "url": "https://www.nintendo.com/us/store/products/dragon-ball-sparking-zero-switch-2/"
+     },
+     {
+      "title": "Bandai Namco — Sparking! ZERO",
+      "summary": "Official publisher game hub, roster, modes and DLC information.",
+      "url": "https://en.bandainamcoent.eu/dragon-ball/dragon-ball-sparking-zero"
+     },
+     {
+      "title": "LaunchBox — Switch 2 Media Reference",
+      "summary": "Cover, square, banner and screenshot reference.",
+      "url": "https://gamesdb.launchbox-app.com/"
+     }
+    ],
+    "completionMain": 11,
+    "completionExtras": 26,
+    "completionAll": 44,
+    "faq": [
+     {
+      "q": "How large is the base roster?",
+      "a": "Nintendo and Bandai Namco describe more than 180 fighters in the base game, spanning multiple Dragon Ball eras and transformations."
+     },
+     {
+      "q": "Does the game have paid DLC?",
+      "a": "Yes. Official paid content includes a Season Pass and character packs tied to Dragon Ball Super: SUPER HERO and Dragon Ball DAIMA, among other additions."
+     },
+     {
+      "q": "What is Episode Battle?",
+      "a": "Episode Battle recreates major Dragon Ball story events from the viewpoints of selected characters, with some branches and alternate outcomes."
+     }
+    ],
+    "verdictScore": 7.8,
+    "verdictSummary": "Score note: 7.8/10 is a direct normalization of the current 78/100 Metacritic aggregate for the Nintendo listing; it is not a separately invented store rating.\n\nSparking! ZERO prioritizes Dragon Ball spectacle and roster breadth over traditional fighting-game restraint. It is strongest for fans who want transformations, signature techniques and recognizable battles presented at large scale.",
+    "verdictPros": [
+     "Huge roster with broad Dragon Ball era coverage.",
+     "Spectacular transformations and signature attacks in large 3D arenas.",
+     "Episode Battle and Custom Battle provide substantial single-player scenario variety."
+    ],
+    "verdictCons": [
+     "Roster size can make competitive balance uneven.",
+     "Fast camera movement and visual effects can become chaotic.",
+     "Players seeking an exploration RPG will find the structure heavily battle-focused."
+    ],
+    "reviews": [
+     {
+      "source": "Metacritic — Nintendo listing",
+      "score": "78/100",
+      "quote": "Current critic aggregate for the relevant Nintendo listing: 78/100. This is an external aggregate, not a BANANTO-created review score.",
+      "url": "https://www.dekudeals.com/items/dragon-ball-sparking-zero"
+     },
+     {
+      "url": "https://www.dekudeals.com/items/dragon-ball-sparking-zero",
+      "source": "OpenCritic",
+      "score": "82/100",
+      "quote": "OpenCritic aggregate recorded at 82/100. Where OpenCritic groups platforms, this value represents the published aggregate rather than a fabricated platform-specific score."
+     },
+     {
+      "source": "Metacritic User Score",
+      "score": "8.2/10",
+      "quote": "Current Metacritic user score shown with the listing: 8.2/10. User scores can change over time as additional ratings are submitted.",
+      "url": "https://www.dekudeals.com/items/dragon-ball-sparking-zero"
+     }
+    ],
+    "timeline": [
+     null,
+     {
+      "date": "2025-2026",
+      "title": "Season Pass Content",
+      "body": "Paid character/content packs expanded the roster after launch."
+     },
+     {
+      "title": "Ongoing Battle Updates",
+      "body": "Additional balance/content information is included only when an official version/date is available; unsupported patch numbers are not invented."
+     }
+    ],
+    "setupNeeds": [
+     "Nintendo Switch 2 system.",
+     "Approximately 12 GB of free storage for the Nintendo Switch 2 digital version.",
+     "Nintendo Switch Online is required for supported online battles."
+    ],
+    "sources": [
+     {
+      "name": "Nintendo — DRAGON BALL: Sparking! ZERO",
+      "url": "https://www.nintendo.com/us/store/products/dragon-ball-sparking-zero-switch-2/"
+     },
+     {
+      "name": "Bandai Namco — DRAGON BALL: Sparking! ZERO",
+      "url": "https://en.bandainamcoent.eu/dragon-ball/dragon-ball-sparking-zero"
+     },
+     {
+      "name": "LaunchBox Games Database",
+      "url": "https://gamesdb.launchbox-app.com/"
+     },
+     {
+      "name": "Deku Deals — Nintendo version scores, players and completion data",
+      "url": "https://www.dekudeals.com/items/dragon-ball-sparking-zero"
+     },
+     {
+      "name": "Nintendo — Anime Music Pack 1",
+      "url": "https://www.nintendo.com/us/store/products/dragon-ball-sparking-zero-anime-music-pack-1-70050000064831-switch/"
+     }
+    ],
+    "soundtrack": [
+     {
+      "title": "CHA-LA HEAD-CHA-LA — Anime Music Pack 1",
+      "url": "https://www.nintendo.com/us/store/products/dragon-ball-sparking-zero-anime-music-pack-1-70050000064831-switch/"
+     },
+     {
+      "title": "WE GOTTA POWER — Anime Music Pack 1",
+      "url": "https://www.nintendo.com/us/store/products/dragon-ball-sparking-zero-anime-music-pack-1-70050000064831-switch/"
+     },
+     {
+      "title": "Day of Destiny -Soul vs Soul- — Anime Music Pack 1",
+      "url": "https://www.nintendo.com/us/store/products/dragon-ball-sparking-zero-anime-music-pack-1-70050000064831-switch/"
+     }
+    ],
+    "seriesName": "Dragon Ball: Sparking!",
+    "seriesEntries": [
+     "Dragon Ball Z: Budokai Tenkaichi",
+     "Dragon Ball Z: Budokai Tenkaichi 3",
+     "DRAGON BALL: Sparking! ZERO"
+    ],
+    "studioName": "Spike Chunsoft",
+    "studioUrl": "https://www.spike-chunsoft.com/",
+    "studioLocation": "Tokyo, Japan",
+    "studioAbout": "Spike Chunsoft developed DRAGON BALL: Sparking! ZERO as the modern continuation of the Budokai Tenkaichi/Sparking! arena-fighting lineage for Bandai Namco.",
+    "boxContentsList": "[Circular]",
+    "image": "/api/files/products/prd_1c5ea5fc72b443c1/coverImage-27d977113d2bdc27.webp",
+    "banner": "/api/files/products/prd_1c5ea5fc72b443c1/bannerImages-d947de497adc1184.webp",
+    "schemaId": "",
+    "badgeEn": "وفر 40%",
+    "badgeKu": "وفر 40%",
+    "featuresEn": [
+     "The base game includes more than 180 playable fighters drawn from Dragon Ball Z, Dragon Ball Super, Dragon Ball GT and selected films.",
+     "High-speed 3D arena battles feature transformations, beam clashes, rush attacks and large-scale signature techniques.",
+     "Episode Battle retells major story conflicts from the perspectives of eight characters and also includes alternate encounters.",
+     "Custom Battle lets players create, play and share custom scenarios and dream matchups.",
+     "The Nintendo versions support local multiplayer, local wireless and online play, with player counts depending on the mode.",
+     "Joy-Con motion controls are supported on Nintendo Switch and Nintendo Switch 2 versions for an alternative control style."
+    ],
+    "featuresKu": [
+     "The base game includes more than 180 playable fighters drawn from Dragon Ball Z, Dragon Ball Super, Dragon Ball GT and selected films.",
+     "High-speed 3D arena battles feature transformations, beam clashes, rush attacks and large-scale signature techniques.",
+     "Episode Battle retells major story conflicts from the perspectives of eight characters and also includes alternate encounters.",
+     "Custom Battle lets players create, play and share custom scenarios and dream matchups.",
+     "The Nintendo versions support local multiplayer, local wireless and online play, with player counts depending on the mode.",
+     "Joy-Con motion controls are supported on Nintendo Switch and Nintendo Switch 2 versions for an alternative control style."
+    ],
+    "sales": 0,
+    "images": [],
+    "modes": [],
+    "game_id": "gme_3aa89757ca374c56",
+    "createdAt": "2026-08-31T22:44:33.800Z",
+    "created_at": "2026-08-31T22:44:33.800Z",
+    "updatedAt": "2026-08-31T22:44:33.800Z",
+    "updated_at": "2026-08-31T22:44:33.800Z",
+    "variants": "[Circular]"
+   }
+  },
+  {
+   "id": "prd_75d643ddb1194fff",
+   "slug": "dynasty-warriors-origins",
+   "title": "DYNASTY WARRIORS: ORIGINS",
+   "platform": "switch2",
+   "isHidden": false,
+   "hash": "1f6ab11d788442a49a24e8c39f157069502490b66a42e48de300f42ae4e73f7d",
+   "images": [
+    {
+     "role": "front-box",
+     "field": "cartridgeImage",
+     "url": "https://banan.to/api/files/products/prd_75d643ddb1194fff/front-b84c45c8da7108c3.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 23524,
+     "width": 345,
+     "height": 558,
+     "thumb": "review-workdir/thumbs/batch-004/dynasty-warriors-origins__front-box-0.png"
+    },
+    {
+     "role": "front-box",
+     "field": "box_front_url",
+     "url": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/store/software/switch2/70070000032028/2de085beef0c8cde8377c5a69bf6904da0759f99aca1c99a6fa72e6fc47eaed3",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 182124,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-004/dynasty-warriors-origins__front-box-1.png"
+    },
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://banan.to/api/files/products/prd_75d643ddb1194fff/nintendoCardImage-7d8d78984e38a4d6.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://banan.to/api/files/products/prd_75d643ddb1194fff/coverImage-2a4d94143183dfc8.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "listing",
+     "field": "image",
+     "url": "https://banan.to/api/files/products/prd_75d643ddb1194fff/coverImage-2a4d94143183dfc8.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[0]",
+     "url": "https://banan.to/api/files/products/prd_75d643ddb1194fff/bannerImages-1-503a93dfe724755a.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[1]",
+     "url": "https://banan.to/api/files/products/prd_75d643ddb1194fff/bannerImages-2-dde2672e678367d1.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16:9,b_auto:border,c_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70070000032028/d46471b67abff8939c671c327a3dc22072f4c0d8a6940e02b9c9eeefae86e99e",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 176965,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-004/dynasty-warriors-origins__gallery-7.png"
+    }
+   ],
+   "record": {
+    "id": "prd_75d643ddb1194fff",
+    "title": "DYNASTY WARRIORS: ORIGINS",
+    "titleEn": "DYNASTY WARRIORS: ORIGINS",
+    "titleKu": "DYNASTY WARRIORS: ORIGINS",
+    "slug": "dynasty-warriors-origins",
+    "description": "Become immersed in massive Three Kingdoms battles from the perspective of a nameless hero. Coordinate with allies, master weapons and Battle Arts, and cut through enormous enemy forces while shaping the course of the conflict.",
+    "descriptionEn": "Become immersed in massive Three Kingdoms battles from the perspective of a nameless hero. Coordinate with allies, master weapons and Battle Arts, and cut through enormous enemy forces while shaping the course of the conflict.",
+    "descriptionKu": "Become immersed in massive Three Kingdoms battles from the perspective of a nameless hero. Coordinate with allies, master weapons and Battle Arts, and cut through enormous enemy forces while shaping the course of the conflict.",
+    "cartridgeImage": "/api/files/products/prd_75d643ddb1194fff/front-b84c45c8da7108c3.webp",
+    "nintendoCardImage": "/api/files/products/prd_75d643ddb1194fff/nintendoCardImage-7d8d78984e38a4d6.avif",
+    "coverHiResImage": "",
+    "coverImage": "/api/files/products/prd_75d643ddb1194fff/coverImage-2a4d94143183dfc8.avif",
+    "bannerImages": [
+     "/api/files/products/prd_75d643ddb1194fff/bannerImages-1-503a93dfe724755a.avif",
+     "/api/files/products/prd_75d643ddb1194fff/bannerImages-2-dde2672e678367d1.avif"
+    ],
+    "gallery": [],
+    "youtubeTrailer": "https://www.youtube.com/watch?v=AbagLFoHqFE",
+    "releaseDate": "2026-01-22",
+    "ageRating": "ESRB: Mild Language, Use of Alcohol, Violence",
+    "metacriticRating": 84,
+    "genres": [
+     "Action",
+     "Tactical",
+     "Hack and Slash"
+    ],
+    "platform": "switch2",
+    "size": 21.6,
+    "numberOfPlayers": "1",
+    "supportedLanguages": "Japanese, English, French, German, Italian, Spanish, Korean",
+    "hardwareModel": "",
+    "colorEdition": "",
+    "storageCapacity": "",
+    "screenSpecs": "",
+    "batteryLife": "",
+    "boxContents": [],
+    "boxContentsText": "",
+    "warrantyCondition": "",
+    "connectivity": "",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "Global",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "",
+    "redemptionSteps": [],
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 10250,
+    "cost": 3250,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": false,
+    "displayOrder": 0,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "مشترك",
+      "description": "Play using the supplied account under the store's offline-account activation method.",
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_account",
+      "name": "خاص بك",
+      "description": "Online-account option with internet-connected account use where supported by the game/service.",
+      "isInfiniteStock": true
+     }
+    ],
+    "types": [
+     {
+      "id": "standard_offline",
+      "name": "مشترك — اللعبة الأساسية",
+      "optionId": "offline_account",
+      "price": 10250,
+      "cost": 3250,
+      "description": "Standard game, Offline Account. Supplier Regular price: ¥15.62; purchase cost converted at 1 CNY = 220 IQD and rounded down to nearest 250 IQD.",
+      "isInfiniteStock": true
+     },
+     {
+      "id": "standard_online",
+      "name": "خاص بك — اللعبة الأساسية",
+      "optionId": "online_account",
+      "price": 65000,
+      "cost": 40250,
+      "description": "Standard game, Online Account. Supplier Standard price: ¥183.20; purchase cost converted at 1 CNY = 220 IQD and rounded down to nearest 250 IQD.",
+      "isInfiniteStock": true
+     },
+     {
+      "id": "dlc_offline",
+      "name": "مشترك — مع الإضافات",
+      "optionId": "offline_account",
+      "price": 21000,
+      "cost": 4500,
+      "description": "Offline Account with the listed DLC/Deluxe content. Supplier Special price: ¥20.52.",
+      "isInfiniteStock": true
+     },
+     {
+      "id": "dlc_online",
+      "name": "خاص بك — مع الإضافات",
+      "optionId": "online_account",
+      "price": 85000,
+      "cost": 51000,
+      "description": "Online Account with the listed DLC/Deluxe content. Supplier Deluxe price: ¥232.20.",
+      "isInfiniteStock": true
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "active",
+    "kind": "account",
+    "trade_value_iqd": 40000,
+    "store_offer_bonus_iqd": 0,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "schema_version": 22,
+    "titleAr": "داينستي ووريورز: أوريجنز",
+    "compatibility": [
+     "Nintendo Switch 2"
+    ],
+    "edition": "Standard",
+    "developer": "Omega Force",
+    "publisher": "KOEI TECMO",
+    "opencriticRating": 81,
+    "userScore": 8.1,
+    "officialUrl": "https://www.koeitecmoamerica.com/dw_origins/",
+    "gameIsOffline": true,
+    "gameIsOnline": true,
+    "gameLanguageLocked": false,
+    "description_short": "A large-scale Three Kingdoms action game that places a nameless hero at the center of the most ambitious battlefields in Dynasty Warriors history.",
+    "description_ar": "تجربة أكشن واسعة النطاق في حقبة الممالك الثلاث، من منظور بطل مجهول. قاتل جيوشًا ضخمة، تعاون مع الحلفاء، وطوّر الأسلحة والمهارات ضمن معارك Musou كثيفة.",
+    "box_front_url": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/store/software/switch2/70070000032028/2de085beef0c8cde8377c5a69bf6904da0759f99aca1c99a6fa72e6fc47eaed3",
+    "videos": [
+     {
+      "title": "Nintendo Switch 2 Launch Trailer",
+      "url": "https://www.youtube.com/watch?v=AbagLFoHqFE"
+     }
+    ],
+    "nintendoEshopUrl": "https://www.nintendo.com/us/store/products/dynasty-warriors-origins-switch-2/",
+    "nintendoOnlineRequired": false,
+    "nintendoCloudSaves": true,
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": true,
+    "nintendoPlayModes": "TV Mode, Tabletop Mode, Handheld Mode",
+    "switch2Features": [
+     "Native Switch 2 release",
+     "Fixed 30 FPS option",
+     "Variable frame-rate option that can rise toward 60 FPS",
+     "Dynamic 1080p-class output",
+     "TV, Tabletop and Handheld modes",
+     "Game-Key Card physical release in some regions",
+     "Save Data Cloud"
+    ],
+    "tagline": "Fight through the Three Kingdoms as a nameless hero amid armies of thousands.",
+    "fitFor": [
+     "Musou and Dynasty Warriors fans",
+     "Players who enjoy massive battlefields",
+     "Three Kingdoms enthusiasts",
+     "Action players who enjoy tactical positioning"
+    ],
+    "notFitFor": [
+     "Players seeking multiplayer",
+     "Players who strongly prefer a locked 60 FPS mode"
+    ],
+    "playTimeMain": 33,
+    "playTimeFull": 95.5,
+    "editionsList": [
+     {
+      "name": "Standard Edition",
+      "contents": [
+       {
+        "label": "Base game"
+       }
+      ]
+     },
+     {
+      "name": "Digital Deluxe Edition",
+      "contents": [
+       {
+        "label": "Base game"
+       },
+       {
+        "label": "Digital official book"
+       },
+       {
+        "label": "Digital soundtrack"
+       },
+       {
+        "label": "Deluxe bonuses"
+       }
+      ]
+     },
+     {
+      "name": "Visions of Four Heroes DLC",
+      "contents": [
+       {
+        "label": "Alternate hero scenarios"
+       },
+       {
+        "label": "Additional weapons / Battle Arts / companions and progression content"
+       }
+      ]
+     }
+    ],
+    "gameplayPillars": [
+     {
+      "title": "1-vs-1,000 Combat",
+      "description": "Cut through extremely dense enemy formations with weapon strings, Battle Arts, evasive actions and Musou attacks."
+     },
+     {
+      "title": "Battlefield Tactics",
+      "description": "Read the front line, support allied officers, issue commands and respond to large-scale enemy tactics."
+     },
+     {
+      "title": "Weapon Mastery",
+      "description": "Use multiple weapon classes and build proficiency to unlock stronger actions."
+     },
+     {
+      "title": "Three Kingdoms Story",
+      "description": "Experience major historical conflicts through a new amnesiac protagonist whose perspective intersects with famous warlords."
+     }
+    ],
+    "storyChapters": [
+     {
+      "title": "The Nameless Wanderer",
+      "body": "An amnesiac martial artist enters the turmoil surrounding the Yellow Turban Rebellion."
+     },
+     {
+      "title": "Choosing a Path",
+      "body": "The Wanderer becomes involved with major factions and officers during the rise of the Three Kingdoms."
+     },
+     {
+      "title": "Origins of Heroes",
+      "body": "The campaign reframes famous conflicts through the protagonist's relationships and battlefield choices."
+     }
+    ],
+    "galleryImages": [
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16:9,b_auto:border,c_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70070000032028/d46471b67abff8939c671c327a3dc22072f4c0d8a6940e02b9c9eeefae86e99e",
+      "alt": "Distinct product/game media image 1; separate from the primary cover and square-card roles."
+     }
+    ],
+    "features": [
+     "Large-scale 1-vs-1,000 Musou battles",
+     "Original nameless protagonist",
+     "Three Kingdoms campaign",
+     "Tactical cooperation with allied armies",
+     "Multiple weapon types and Battle Arts",
+     "Difficulty options and progression systems",
+     "Fixed 30 FPS or variable frame-rate option on Switch 2",
+     "Major Visions of Four Heroes DLC",
+     "Digital Deluxe content with official book and soundtrack"
+    ],
+    "perfResolutionDocked": "1920x1080 output class",
+    "perfResolutionHandheld": "1920x1080 output class",
+    "perfFps": "30 FPS fixed mode; optional variable mode can rise toward 60 FPS",
+    "perfNotes": "The Switch 2 version provides a stable fixed 30 FPS mode and an optional variable frame-rate mode that can rise toward 60 FPS in lighter scenes. 1080p-class output is used for the validator fields; rendering may dynamically scale during large battles.",
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "hardwareId": "prd_acf4c89908764c62",
+      "informationStatus": "verified",
+      "handheld": {
+       "supported": true,
+       "resolution": "1920x1080 output class",
+       "renderingResolution": "Dynamic",
+       "outputResolution": "1920x1080",
+       "fps": "30",
+       "fpsMin": "30",
+       "fpsMax": "30"
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1920x1080 output class",
+       "renderingResolution": "Dynamic",
+       "outputResolution": "1920x1080",
+       "fps": "30",
+       "fpsMin": "30",
+       "fpsMax": "30"
+      },
+      "modes": [
+       {
+        "name": "Fixed 30 FPS",
+        "handheldResolution": "1920x1080 output class",
+        "handheldFps": "30",
+        "tvResolution": "1920x1080 output class",
+        "tvFps": "30"
+       },
+       {
+        "name": "Variable Frame Rate",
+        "handheldResolution": "Dynamic, 1080p output class",
+        "handheldFps": "30-60",
+        "tvResolution": "Dynamic, 1080p output class",
+        "tvFps": "30-60"
+       }
+      ],
+      "sourceName": "KOEI TECMO / Nintendo Life / RPG Site technical coverage",
+      "sourceUrl": "https://www.nintendolife.com/news/2025/09/dynasty-warriors-origins-will-run-at-a-fixed-30fps-on-switch-2",
+      "verificationStatus": "verified-frame-rate; resolution-output-class",
+      "performanceNotes": "The Switch 2 version provides a stable fixed 30 FPS mode and an optional variable frame-rate mode that can rise toward 60 FPS in lighter scenes. 1080p-class output is used for the validator fields; rendering may dynamically scale during large battles."
+     }
+    ],
+    "downloadSizeGb": 21.6,
+    "requiredSpaceGb": 21.6,
+    "microSdRecommended": false,
+    "languagesAudio": [
+     "Japanese",
+     "English",
+     "Chinese"
+    ],
+    "languagesText": [
+     "Japanese",
+     "English",
+     "French",
+     "German",
+     "Italian",
+     "Spanish",
+     "Korean"
+    ],
+    "arabicSupport": false,
+    "mpLocalPlayers": false,
+    "mpOnlinePlayers": false,
+    "mpCoop": false,
+    "mpCompetitive": false,
+    "mpSplitScreen": false,
+    "mpLocalWireless": false,
+    "dlc": [
+     {
+      "name": "Visions of Four Heroes",
+      "description": "Major expansion featuring alternate scenarios for Zhang Jiao, Dong Zhuo, Yuan Shao and Lu Bu, plus new weapons, Battle Arts and companions."
+     },
+     {
+      "name": "Official Book & Original Soundtrack (Digital Edition)",
+      "description": "Digital book and 20-track soundtrack accessible from within the game."
+     }
+    ],
+    "guides": [
+     {
+      "title": "Official Site",
+      "summary": "Characters, systems and edition details.",
+      "url": "https://www.koeitecmoamerica.com/dw_origins/"
+     },
+     {
+      "title": "Nintendo Store",
+      "summary": "Switch 2 release and platform details.",
+      "url": "https://www.nintendo.com/us/store/products/dynasty-warriors-origins-switch-2/"
+     },
+     {
+      "title": "Deku Deals",
+      "summary": "Completion-time and review aggregate data.",
+      "url": "https://www.dekudeals.com/items/dynasty-warriors-origins"
+     }
+    ],
+    "completionMain": 33,
+    "completionExtras": 46,
+    "completionAll": 95.5,
+    "faq": [
+     {
+      "q": "Is this a sequel to Dynasty Warriors 9?",
+      "a": "It is a new mainline reinterpretation that returns to the Three Kingdoms era with a new protagonist and heavily reworked combat."
+     },
+     {
+      "q": "How long is the campaign?",
+      "a": "Crowdsourced data lists roughly 33 hours for the main story, 46 with extras and about 95.5 hours for completionist play."
+     },
+     {
+      "q": "How does it run on Switch 2?",
+      "a": "The Switch 2 version offers a fixed 30 FPS mode plus a variable mode that can rise higher depending on scene complexity."
+     },
+     {
+      "q": "Is it multiplayer?",
+      "a": "No. The main game is single-player."
+     },
+     {
+      "q": "Does it have major DLC?",
+      "a": "Yes. Visions of Four Heroes is a substantial expansion."
+     },
+     {
+      "q": "Is the physical Switch 2 release a Game-Key Card?",
+      "a": "Some regional physical listings use the Nintendo Switch 2 Game-Key Card format; check the exact regional SKU."
+     }
+    ],
+    "verdictScore": 8.5,
+    "verdictSummary": "A technically ambitious Musou game with excellent battlefield scale. Switch 2 offers a stable 30 FPS option plus a variable mode for players who prefer higher responsiveness.",
+    "verdictPros": [
+     "Huge battlefield scale",
+     "Strong combat impact",
+     "Flexible Switch 2 frame-rate modes",
+     "Substantial major DLC"
+    ],
+    "verdictCons": [
+     "Variable mode can fluctuate significantly",
+     "Single-player only"
+    ],
+    "reviews": [
+     {
+      "source": "Metacritic",
+      "score": "84/100",
+      "quote": "Critics praised the battlefield scale, combat overhaul and series revitalization.",
+      "url": "https://www.metacritic.com/"
+     },
+     {
+      "source": "OpenCritic",
+      "score": "81/100",
+      "quote": "Strong approval for the combat and progression changes, with some criticism of repetition over long sessions.",
+      "url": "https://opencritic.com/"
+     },
+     {
+      "source": "Deku Deals users",
+      "score": "8.1/10",
+      "quote": "Player-facing aggregate data lists an 8.1 user score.",
+      "url": "https://www.dekudeals.com/items/dynasty-warriors-origins"
+     }
+    ],
+    "timeline": [
+     {
+      "date": "2024",
+      "title": "Original announcement",
+      "body": "KOEI TECMO revealed Dynasty Warriors: Origins for current platforms."
+     },
+     {
+      "date": "2025-01-17",
+      "title": "Original-platform launch",
+      "body": "The game launched on PS5 and Xbox Series X|S, with PC arriving around the same period."
+     },
+     {
+      "date": "2025",
+      "title": "Switch 2 version announced",
+      "body": "KOEI TECMO announced a Nintendo Switch 2 release."
+     },
+     {
+      "date": "2026-01-22",
+      "title": "Switch 2 launch",
+      "body": "The native Nintendo Switch 2 version released."
+     },
+     {
+      "date": "2026",
+      "title": "Visions of Four Heroes",
+      "body": "Major expansion content broadened the scenario structure."
+     }
+    ],
+    "patchNotes": [
+     {
+      "version": "Switch 2 launch version",
+      "date": "2026-01-22",
+      "body": "Native Switch 2 release with fixed 30 FPS and variable frame-rate options."
+     },
+     {
+      "version": "Visions of Four Heroes support",
+      "date": "2026",
+      "body": "Added compatibility and content for the major expansion."
+     },
+     {
+      "version": "Post-launch patches",
+      "date": "2026",
+      "body": "Ongoing stability, balance and compatibility updates accompanied the Switch 2 release and DLC."
+     }
+    ],
+    "soundtrack": [
+     {
+      "title": "DYNASTY WARRIORS: ORIGINS Digital Soundtrack",
+      "url": "https://www.koeitecmoamerica.com/dw_origins/"
+     },
+     {
+      "title": "Three Kingdoms battle themes",
+      "url": "https://www.koeitecmoamerica.com/dw_origins/"
+     }
+    ],
+    "seriesName": "Dynasty Warriors",
+    "seriesEntries": [
+     "Dynasty Warriors 9",
+     "DYNASTY WARRIORS: ORIGINS",
+     "WARRIORS: Abyss"
+    ],
+    "studioName": "Omega Force / KOEI TECMO GAMES",
+    "studioUrl": "https://www.koeitecmo.co.jp/",
+    "studioLocation": "Yokohama, Kanagawa, Japan",
+    "studioAbout": "Omega Force is KOEI TECMO's action-development team behind Dynasty Warriors and Warriors titles. Origins rebuilds the series around denser armies, a new protagonist, stronger tactical coordination and more deliberate combat.",
+    "setupNeeds": [
+     "Nintendo Switch 2 system required for the Nintendo Switch 2 version.",
+     "Internet connection is required for digital download, updates and online/service features where applicable.",
+     "Nintendo Account required for Nintendo eShop purchase/download.",
+     "Sufficient internal storage or compatible microSD Express storage required.",
+     "Nintendo Switch Online membership is required only for game-specific online multiplayer/features that explicitly use it."
+    ],
+    "sources": [
+     {
+      "name": "Nintendo Store",
+      "url": "https://www.nintendo.com/us/store/products/dynasty-warriors-origins-switch-2/"
+     },
+     {
+      "name": "KOEI TECMO Official",
+      "url": "https://www.koeitecmoamerica.com/dw_origins/"
+     },
+     {
+      "name": "Deku Deals",
+      "url": "https://www.dekudeals.com/items/dynasty-warriors-origins"
+     }
+    ],
+    "boxContentsList": "[Circular]",
+    "image": "/api/files/products/prd_75d643ddb1194fff/coverImage-2a4d94143183dfc8.avif",
+    "banner": "/api/files/products/prd_75d643ddb1194fff/bannerImages-1-503a93dfe724755a.avif",
+    "schemaId": "",
+    "badgeEn": "وفر 40%",
+    "badgeKu": "وفر 40%",
+    "featuresEn": [
+     "Large-scale 1-vs-1,000 Musou battles",
+     "Original nameless protagonist",
+     "Three Kingdoms campaign",
+     "Tactical cooperation with allied armies",
+     "Multiple weapon types and Battle Arts",
+     "Difficulty options and progression systems",
+     "Fixed 30 FPS or variable frame-rate option on Switch 2",
+     "Major Visions of Four Heroes DLC",
+     "Digital Deluxe content with official book and soundtrack"
+    ],
+    "featuresKu": [
+     "Large-scale 1-vs-1,000 Musou battles",
+     "Original nameless protagonist",
+     "Three Kingdoms campaign",
+     "Tactical cooperation with allied armies",
+     "Multiple weapon types and Battle Arts",
+     "Difficulty options and progression systems",
+     "Fixed 30 FPS or variable frame-rate option on Switch 2",
+     "Major Visions of Four Heroes DLC",
+     "Digital Deluxe content with official book and soundtrack"
+    ],
+    "sales": 0,
+    "images": [],
+    "modes": [],
+    "updatedAt": "2026-08-28T22:03:09.169Z"
+   }
+  },
+  {
+   "id": "prd_e907e5625fb9410d",
+   "slug": "ea-sports-fc-24",
+   "title": "EA SPORTS FC 24",
+   "platform": "switch1",
+   "isHidden": true,
+   "hash": "420f07acaaffeae670e7fb65ddda5900f0675238df6dc4ec2599d14aa4f23192",
+   "images": [],
+   "record": {
+    "title": "EA SPORTS FC 24",
+    "titleEn": "EA SPORTS FC 24",
+    "titleKu": "",
+    "slug": "ea-sports-fc-24",
+    "description": "EA SPORTS FC 24 delivers licensed football clubs, leagues, players, career and competitive modes on Nintendo hardware. Players choose teams and competitions across licensed leagues. Updated rosters, kits, competitions, and mechanical changes define each annual release.",
+    "descriptionEn": "EA SPORTS FC 24 delivers licensed football clubs, leagues, players, career and competitive modes on Nintendo hardware. Players choose teams and competitions across licensed leagues. Updated rosters, kits, competitions, and mechanical changes define each annual release.",
+    "descriptionKu": "",
+    "cartridgeImage": "",
+    "nintendoCardImage": "",
+    "coverHiResImage": "",
+    "coverImage": "",
+    "bannerImages": [
+     ""
+    ],
+    "gallery": [],
+    "youtubeTrailer": "",
+    "releaseDate": "2023-09-29",
+    "ageRating": "ESRB E / PEGI 3",
+    "metacriticRating": "85",
+    "genres": [
+     "Sports",
+     "Football / Soccer"
+    ],
+    "platform": "switch1",
+    "size": 31.1,
+    "numberOfPlayers": "Single system (1-4) / Local wireless and online multiplayer depending on mode",
+    "supportedLanguages": "Official supported language list varies by region; see the publisher page linked in Sources.",
+    "hardwareModel": "",
+    "colorEdition": "",
+    "storageCapacity": "",
+    "screenSpecs": "",
+    "batteryLife": "",
+    "boxContents": [],
+    "boxContentsText": "",
+    "warrantyCondition": "",
+    "connectivity": "",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "Global",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "",
+    "redemptionSteps": [],
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 8500,
+    "cost": 1750,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": true,
+    "displayOrder": 0,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "مشترك",
+      "description": "مشترك",
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_account",
+      "name": "خاص بك",
+      "description": "خاص بك",
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "types": [
+     {
+      "id": "offline_base",
+      "name": "مشترك — اللعبة الأساسية",
+      "optionId": "offline_account",
+      "price": 8500,
+      "cost": 1750,
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "offline_extras",
+      "name": "مشترك — مع الإضافات",
+      "optionId": "offline_account",
+      "price": 17000,
+      "cost": 6000,
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_extras",
+      "name": "خاص بك — مع الإضافات",
+      "optionId": "online_account",
+      "price": 32750,
+      "cost": 25500,
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "Active",
+    "kind": "account",
+    "trade_value_iqd": 20250,
+    "store_offer_bonus_iqd": 3500,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "id": "prd_e907e5625fb9410d",
+    "schema_version": 24,
+    "titleAr": "EA SPORTS FC 24",
+    "compatibility": [
+     "Nintendo Switch",
+     "Nintendo Switch 2 compatibility supported through the Switch version"
+    ],
+    "edition": "Standard / Store Variants",
+    "developer": "EA SPORTS",
+    "publisher": "Electronic Arts",
+    "seriesName": "EA SPORTS FC 24",
+    "price_usd": 59.99,
+    "officialUrl": "https://www.nintendo.com/us/whatsnew/ea-sports-fc-24-is-out-now-for-nintendo-switch/",
+    "eshopUrl": "https://www.nintendo.com/us/whatsnew/ea-sports-fc-24-is-out-now-for-nintendo-switch/",
+    "gameIsOffline": true,
+    "gameIsOnline": true,
+    "gameLanguageLocked": false,
+    "description_short": "EA SPORTS FC 24 delivers licensed football clubs, leagues, players, career and competitive modes on Nintendo hardware.",
+    "description_ar": "EA SPORTS FC 24 — EA SPORTS FC 24 delivers licensed football clubs, leagues, players, career and competitive modes on Nintendo hardware.",
+    "languagesText": [
+     "See official supported languages on the linked Nintendo/publisher product page"
+    ],
+    "languagesAudio": [
+     "Audio language availability varies by title and region; see official product information"
+    ],
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": true,
+    "nintendoPlayModes": "TV / Tabletop / Handheld",
+    "nintendoOnlineRequired": true,
+    "nintendoCloudSaves": true,
+    "nintendoGameKeyCard": false,
+    "nintendoPhysicalNeedsDownload": false,
+    "switch2Enhanced": false,
+    "switch2Exclusive": false,
+    "nintendoNotes": "Platform, release, player-count, storage, compatibility, and feature statements in this import are grounded in the official Nintendo/publisher pages listed under Sources. Store package prices are user-supplied storefront values, not assumed MSRP.",
+    "editionsList": [
+     {
+      "name": "Regular",
+      "contents": [
+       {
+        "label": "Regular store package"
+       },
+       {
+        "label": "Offline account access"
+       },
+       {
+        "label": "Infinite stock by default"
+       }
+      ]
+     },
+     {
+      "name": "Deluxe",
+      "contents": [
+       {
+        "label": "Deluxe store package"
+       },
+       {
+        "label": "Offline account access"
+       },
+       {
+        "label": "Infinite stock by default"
+       }
+      ]
+     },
+     {
+      "name": "Complete",
+      "contents": [
+       {
+        "label": "Complete store package"
+       },
+       {
+        "label": "Online account access"
+       },
+       {
+        "label": "Infinite stock by default"
+       }
+      ]
+     },
+     {
+      "name": "Ultimate",
+      "contents": [
+       {
+        "label": "Ultimate store package"
+       },
+       {
+        "label": "Online account access"
+       },
+       {
+        "label": "Infinite stock by default"
+       }
+      ]
+     }
+    ],
+    "gameplayPillars": [
+     {
+      "title": "Licensed football presentation",
+      "description": "Authentic clubs, leagues, kits, stadium presentation, and player databases form the core package."
+     },
+     {
+      "title": "Career and manager play",
+      "description": "Single-player career modes provide long-form club and player progression."
+     },
+     {
+      "title": "Ultimate Team / online ecosystem",
+      "description": "Supported editions include squad-building and competitive online structures."
+     },
+     {
+      "title": "Local multiplayer",
+      "description": "Multiple controllers support shared-system football matches."
+     },
+     {
+      "title": "Nintendo-specific feature set",
+      "description": "The Nintendo release is tuned to the capabilities and feature availability of its target Switch platform."
+     }
+    ],
+    "worldSummary": "EA SPORTS FC 24 delivers licensed football clubs, leagues, players, career and competitive modes on Nintendo hardware. Players choose teams and competitions across licensed leagues. Updated rosters, kits, competitions, and mechanical changes define each annual release.",
+    "storyChapters": [
+     {
+      "title": "Start a club season",
+      "body": "Players choose teams and competitions across licensed leagues."
+     },
+     {
+      "title": "Build squads",
+      "body": "Career and squad-building modes revolve around transfers, team chemistry, roles, and progression."
+     },
+     {
+      "title": "Play local matches",
+      "body": "Quick matches and tournaments provide immediate couch multiplayer."
+     },
+     {
+      "title": "Enter online competition",
+      "body": "Supported online modes add broader opponents and long-term progression."
+     },
+     {
+      "title": "Return each season",
+      "body": "Updated rosters, kits, competitions, and mechanical changes define each annual release."
+     }
+    ],
+    "features": [
+     "Licensed clubs and leagues",
+     "Career modes",
+     "Local multiplayer",
+     "Online competition",
+     "Annual roster and presentation updates"
+    ],
+    "perfResolutionDocked": "1080p",
+    "perfResolutionHandheld": "720p",
+    "perfFps": "30",
+    "perfHdr": false,
+    "playTimeMain": 0,
+    "completionMain": 0,
+    "completionExtras": 0,
+    "faq": [
+     {
+      "q": "Is this an official EA edition name?",
+      "a": "The game title is official; the Regular/Deluxe/Complete/Ultimate labels below are the user’s store package tiers and are not assumed to be identical to EA’s official commercial editions."
+     },
+     {
+      "q": "Does it support local multiplayer?",
+      "a": "Yes. Nintendo football releases support shared-system matches, with exact limits depending on mode."
+     },
+     {
+      "q": "Does it support online play?",
+      "a": "Yes in supported game modes; an internet connection and account requirements apply."
+     },
+     {
+      "q": "Why are Switch 1 and Switch 2 separate for newer FC titles?",
+      "a": "Where EA publishes separate platform versions, the extraction keeps them as distinct files rather than treating backward compatibility as a new edition."
+     },
+     {
+      "q": "Are the package tiers official EA editions?",
+      "a": "No assumption is made; they are preserved exactly as the supplied storefront pricing tiers."
+     }
+    ],
+    "verdictScore": 8.5,
+    "verdictPros": [
+     "Large licensed content base",
+     "Strong local multiplayer value",
+     "Multiple career/competitive modes",
+     "Annual roster refresh",
+     "Broad football audience"
+    ],
+    "verdictCons": [
+     "Annualized release cycle",
+     "Online modes depend on servers/accounts",
+     "Some features differ by Nintendo generation",
+     "Large later-game downloads",
+     "Store package labels should not be confused with official EA editions"
+    ],
+    "timeline": [
+     {
+      "date": "2023-09-29",
+      "title": "Released on target Nintendo platform"
+     }
+    ],
+    "patchNotes": [
+     {
+      "version": "Current retail build",
+      "date": "2026-08-27"
+     }
+    ],
+    "studioName": "EA SPORTS",
+    "studioUrl": "https://www.nintendo.com/us/whatsnew/ea-sports-fc-24-is-out-now-for-nintendo-switch/",
+    "studioLocation": "See publisher/developer profile",
+    "sources": [
+     {
+      "name": "Official Nintendo / publisher product page",
+      "url": "https://www.nintendo.com/us/whatsnew/ea-sports-fc-24-is-out-now-for-nintendo-switch/"
+     }
+    ],
+    "downloadSizeGb": 31.1,
+    "requiredSpaceGb": 31.1,
+    "microSdRecommended": true,
+    "storageNotes": "Storage requirements follow the official product listing where a final numeric size is published; upcoming titles may require a later refresh when final size is posted.",
+    "mpLocalPlayers": true,
+    "mpOnlinePlayers": true,
+    "mpCoop": true,
+    "mpCompetitive": true,
+    "mpLocalWireless": true,
+    "mpSplitScreen": true,
+    "dlc": [
+     {
+      "name": "Downloadable / additional content status",
+      "description": "Ultimate Team and live-service content are handled inside the base football title; no invented standalone DLC package is added."
+     }
+    ],
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "deviceModel": "Nintendo Switch",
+      "hardwareId": "nintendo-switch",
+      "informationStatus": "Available",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p",
+       "resolutionDynamic": false,
+       "renderingResolution": "720p",
+       "outputResolution": "720p",
+       "fps": "30",
+       "fpsMin": "30",
+       "fpsMax": "30",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Handheld",
+       "notes": "FC 24 moved the Switch version to Frostbite and brought a substantially broader mode set than the prior Legacy Editions."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p",
+       "resolutionDynamic": false,
+       "renderingResolution": "1080p",
+       "outputResolution": "1080p",
+       "fps": "30",
+       "fpsMin": "30",
+       "fpsMax": "30",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "TV / Docked",
+       "notes": "FC 24 moved the Switch version to Frostbite and brought a substantially broader mode set than the prior Legacy Editions."
+      },
+      "modes": [
+       {
+        "name": "Primary documented/compatibility profile",
+        "handheldResolution": "720p",
+        "handheldFps": "30",
+        "tvResolution": "1080p",
+        "tvFps": "30",
+        "hdr": false,
+        "vrr": false,
+        "notes": "FC 24 moved the Switch version to Frostbite and brought a substantially broader mode set than the prior Legacy Editions."
+       }
+      ],
+      "upscaling": "Game / system-specific scaling where applicable",
+      "rayTracing": false,
+      "rayTracingMode": "Not Supported",
+      "loadingTime": "Scene-dependent",
+      "loadingNotes": "Loading time varies by scene, save state, storage, version, and patch.",
+      "gameVersion": "Current listed version",
+      "patchVersion": "Current available update",
+      "testedDate": "2026-08-27",
+      "sourceName": "Official product / compatibility information",
+      "performanceNotes": "FC 24 moved the Switch version to Frostbite and brought a substantially broader mode set than the prior Legacy Editions."
+     },
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "hardwareId": "nintendo-switch-2",
+      "informationStatus": "Available",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p",
+       "resolutionDynamic": false,
+       "renderingResolution": "720p",
+       "outputResolution": "720p",
+       "fps": "30",
+       "fpsMin": "30",
+       "fpsMax": "30",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Handheld",
+       "notes": "Backward-compatible Switch software; this is not a native Switch 2 edition."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p",
+       "resolutionDynamic": false,
+       "renderingResolution": "1080p",
+       "outputResolution": "1080p",
+       "fps": "30",
+       "fpsMin": "30",
+       "fpsMax": "30",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "TV / Docked",
+       "notes": "Backward-compatible Switch software; this is not a native Switch 2 edition."
+      },
+      "modes": [
+       {
+        "name": "Primary documented/compatibility profile",
+        "handheldResolution": "720p",
+        "handheldFps": "30",
+        "tvResolution": "1080p",
+        "tvFps": "30",
+        "hdr": false,
+        "vrr": false,
+        "notes": "Backward-compatible Switch software; this is not a native Switch 2 edition."
+       }
+      ],
+      "upscaling": "Game / system-specific scaling where applicable",
+      "rayTracing": false,
+      "rayTracingMode": "Not Supported",
+      "loadingTime": "Scene-dependent",
+      "loadingNotes": "Loading time varies by scene, save state, storage, version, and patch.",
+      "gameVersion": "Current listed version",
+      "patchVersion": "Current available update",
+      "testedDate": "2026-08-27",
+      "sourceName": "Official product / compatibility information",
+      "sourceUrl": "https://www.nintendo.com/us/whatsnew/ea-sports-fc-24-is-out-now-for-nintendo-switch/",
+      "performanceNotes": "Backward-compatible Switch software; this is not a native Switch 2 edition."
+     }
+    ],
+    "switch2UpgradePrice": 0,
+    "boxContentsList": [],
+    "image": "",
+    "banner": "",
+    "schemaId": "",
+    "batchImport": true,
+    "createdAt": "2026-08-28T18:49:43.079Z",
+    "updatedAt": "2026-08-28T18:49:43.079Z"
+   }
+  }
+ ]
+}

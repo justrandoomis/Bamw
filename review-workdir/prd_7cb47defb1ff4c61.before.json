@@ -1,0 +1,384 @@
+{
+ "title": "Cuphead",
+ "titleEn": "Cuphead",
+ "titleKu": "",
+ "slug": "cuphead-switch",
+ "description": "Cuphead is a classic run and gun action game heavily focused on boss battles. Inspired by cartoons of the 1930s, the visuals and audio are painstakingly created with the same techniques of the era: traditional hand drawn cel animation, watercolor backgrounds, and original jazz recordings.\n\nPlay as Cuphead or Mugman (in single player or local co-op) as you traverse strange worlds, acquire new weapons, learn powerful super moves, and discover hidden secrets while you try to pay your debt back to the devil!",
+ "descriptionEn": "Cuphead is a classic run and gun action game heavily focused on boss battles. Inspired by cartoons of the 1930s, the visuals and audio are painstakingly created with the same techniques of the era: traditional hand drawn cel animation, watercolor backgrounds, and original jazz recordings.\n\nPlay as Cuphead or Mugman (in single player or local co-op) as you traverse strange worlds, acquire new weapons, learn powerful super moves, and discover hidden secrets while you try to pay your debt back to the devil!",
+ "descriptionKu": "",
+ "cartridgeImage": "",
+ "nintendoCardImage": "/api/files/products/prd_7cb47defb1ff4c61/square-card-6b10f70dc9593279.webp",
+ "coverHiResImage": "",
+ "coverImage": "/api/files/products/prd_7cb47defb1ff4c61/cover-3bf66dae30f13cf8.webp",
+ "bannerImages": [],
+ "gallery": [],
+ "youtubeTrailer": "https://www.youtube.com/results?search_query=Cuphead+official+trailer",
+ "releaseDate": "2019-04-18",
+ "ageRating": "Everyone 10+",
+ "genres": [
+  "Action",
+  "Shooting"
+ ],
+ "platform": "switch1",
+ "size": "3.55 GB",
+ "numberOfPlayers": "1-2",
+ "supportedLanguages": "Japanese, French, German, Italian, Spanish, Korean, Portuguese, Russian, Simplified Chinese, Latin American Spanish, Brazilian Portuguese, American English",
+ "price": 8500,
+ "cost": 1250,
+ "stock": 999999,
+ "isInfiniteStock": true,
+ "isHidden": true,
+ "displayOrder": 0,
+ "category": "nintendo-switch-games",
+ "categoryId": "nintendo-switch-games",
+ "categoryEn": "",
+ "categoryKu": "",
+ "options": [
+  {
+   "id": "offline_account",
+   "name": "مشترك",
+   "description": "مشترك",
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_account",
+   "name": "خاص بك",
+   "description": "خاص بك",
+   "stock": 9999,
+   "isInfiniteStock": true
+  }
+ ],
+ "types": [
+  {
+   "id": "offline_base",
+   "name": "مشترك — اللعبة الأساسية",
+   "optionId": "offline_account",
+   "price": 8500,
+   "cost": 1250,
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "offline_extras",
+   "name": "مشترك — مع الإضافات",
+   "optionId": "offline_account",
+   "price": 11000,
+   "cost": 2500,
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_base",
+   "name": "خاص بك — اللعبة الأساسية",
+   "optionId": "online_account",
+   "price": 12750,
+   "cost": 10000,
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_extras",
+   "name": "خاص بك — مع الإضافات",
+   "optionId": "online_account",
+   "price": 21000,
+   "cost": 16500,
+   "stock": 9999,
+   "isInfiniteStock": true
+  }
+ ],
+ "editions": [],
+ "dlcs": [],
+ "isActive": true,
+ "status": "Active",
+ "kind": "account",
+ "trade_value_iqd": 8000,
+ "store_offer_bonus_iqd": 2500,
+ "trade_enabled": true,
+ "trade_value_locked": false,
+ "id": "prd_7cb47defb1ff4c61",
+ "schema_version": 24,
+ "titleAr": "كابهيد",
+ "compatibility": [
+  "Nintendo Switch",
+  "Nintendo Switch 2"
+ ],
+ "edition": "Standard Edition",
+ "developer": "Studio MDHR",
+ "publisher": "StudioMDHR",
+ "metacriticUrl": "https://www.metacritic.com/game/cuphead/",
+ "price_usd": 19.99,
+ "officialUrl": "http://www.cupheadgame.com/",
+ "eshopUrl": "https://www.nintendo.com/us/store/products/cuphead-switch/",
+ "gameIsOffline": true,
+ "gameIsOnline": false,
+ "gameLanguageLocked": false,
+ "description_short": "أكشن مرسوم يدوياً يركز على الزعماء الصعبين ويدعم التعاون المحلي للاعبين.",
+ "description_ar": "لعبة أكشن وتصويب كلاسيكية تركز على معارك الزعماء، برسوم مرسومة يدوياً وخلفيات مائية وتسجيلات جاز أصلية مستوحاة من رسوم الثلاثينيات. يمكن لعبها فردياً أو بتعاون محلي للاعبين على الجهاز نفسه.",
+ "videos": [
+  {
+   "title": "Official Trailer",
+   "url": "https://www.youtube.com/results?search_query=Cuphead+official+trailer"
+  }
+ ],
+ "nintendoEshopUrl": "https://www.nintendo.com/us/store/products/cuphead-switch/",
+ "nintendoOnlineRequired": false,
+ "nintendoCloudSaves": true,
+ "nintendoGameKeyCard": false,
+ "nintendoPhysicalNeedsDownload": false,
+ "tvMode": true,
+ "tabletopMode": true,
+ "handheldMode": true,
+ "nintendoPlayModes": [
+  "TV mode",
+  "Tabletop mode",
+  "Handheld mode"
+ ],
+ "nintendoNotes": "Nintendo product identity and store facts were verified against the official listing on 2026-09-01. Performance values are included only where an official source publishes them.",
+ "switch2Enhanced": false,
+ "switch2Exclusive": false,
+ "switch2UpgradePrice": 0,
+ "switch2Features": [
+  "Switch 2 compatible via original release",
+  "Hand-drawn art style",
+  "Strong portable fit"
+ ],
+ "tagline": "Classic cartoon style meets intense boss-rush action.",
+ "fitFor": [
+  "Players who enjoy difficult pattern-based boss fights",
+  "Players who value hand-crafted art and music",
+  "Two players looking for same-system local co-op"
+ ],
+ "notFitFor": [
+  "Players who strongly dislike repeated attempts and high difficulty",
+  "Players looking for online co-op",
+  "Players looking for split-screen or local wireless play"
+ ],
+ "playTimeMain": 10,
+ "playTimeFull": 22,
+ "editionsList": [
+  {
+   "name": "Standard Edition"
+  },
+  {
+   "name": "Base game + The Delicious Last Course DLC"
+  }
+ ],
+ "gameplayPillars": [
+  {
+   "title": "Boss battles",
+   "description": "Learn attack patterns, react precisely, and refine loadouts across repeated attempts."
+  },
+  {
+   "title": "Run-and-gun stages",
+   "description": "Platforming stages complement the boss-focused campaign."
+  },
+  {
+   "title": "Weapons, charms, and supers",
+   "description": "Different equipment supports different strategies."
+  },
+  {
+   "title": "Local co-op",
+   "description": "Cuphead and Mugman can complete the adventure together on one Nintendo Switch system."
+  }
+ ],
+ "worldSummary": "Cuphead and Mugman travel across the Inkwell Isles collecting soul contracts after losing a dangerous wager with the Devil.",
+ "storyChapters": [
+  {
+   "title": "A dangerous debt is made",
+   "body": "Cuphead and Mugman find themselves forced into collecting soul contracts."
+  },
+  {
+   "title": "Travel across Inkwell Isle",
+   "body": "Each region introduces new bosses and mechanics."
+  },
+  {
+   "title": "Learn through repeated attempts",
+   "body": "Mastery comes from reading patterns and improving execution."
+  },
+  {
+   "title": "Expand your toolkit",
+   "body": "Weapons, supers, and charms give you more control over your style."
+  },
+  {
+   "title": "Confront the final challenge",
+   "body": "The contract-collecting journey ends in a dramatic last test."
+  }
+ ],
+ "galleryImages": [
+  {
+   "url": "/api/files/products/prd_7cb47defb1ff4c61/gallery-1-2ba216bb54b13032.webp",
+   "alt": "Cuphead screenshot 1"
+  },
+  {
+   "url": "/api/files/products/prd_7cb47defb1ff4c61/gallery-2-f7a0c96922082fea.webp",
+   "alt": "Cuphead screenshot 2"
+  },
+  {
+   "url": "/api/files/products/prd_7cb47defb1ff4c61/gallery-3-ad86c7992b30811e.webp",
+   "alt": "Cuphead screenshot 3"
+  },
+  {
+   "url": "/api/files/products/prd_7cb47defb1ff4c61/gallery-4-20e93e426878f6a3.webp",
+   "alt": "Cuphead screenshot 4"
+  },
+  {
+   "url": "/api/files/products/prd_7cb47defb1ff4c61/gallery-5-ecb573fd6d3aded5.webp",
+   "alt": "Cuphead screenshot 5"
+  },
+  {
+   "url": "/api/files/products/prd_7cb47defb1ff4c61/gallery-6-b6b19c0af5e2b687.webp",
+   "alt": "Cuphead screenshot 6"
+  }
+ ],
+ "features": [
+  "Traditional hand-drawn cel animation",
+  "Watercolor backgrounds and original jazz recordings",
+  "Boss-focused run-and-gun action",
+  "Single-player or two-player local co-op",
+  "The Delicious Last Course expansion available separately"
+ ],
+ "perfResolutionDocked": "",
+ "perfResolutionHandheld": "",
+ "perfFps": "",
+ "perfNotes": "Nintendo and Studio MDHR do not publish exact verified Nintendo Switch or Switch 2 compatibility resolution/FPS figures in the reviewed sources.",
+ "devicePerformance": [
+  {
+   "device": "Nintendo Switch",
+   "deviceSlug": "nintendo-switch",
+   "deviceModel": "Nintendo Switch",
+   "informationStatus": "not_published",
+   "unavailableReason": "Official sources reviewed do not publish exact game-specific Nintendo Switch resolution and FPS figures.",
+   "sourceName": "Nintendo eShop (US)",
+   "sourceUrl": "https://www.nintendo.com/us/store/products/cuphead-switch/",
+   "verificationStatus": "official",
+   "verifiedAt": "2026-09-01"
+  },
+  {
+   "device": "Nintendo Switch 2",
+   "deviceSlug": "nintendo-switch-2",
+   "deviceModel": "Nintendo Switch 2",
+   "informationStatus": "not_published",
+   "unavailableReason": "Nintendo lists compatible behavior, but does not publish a dedicated Switch 2 resolution or FPS profile.",
+   "sourceName": "Nintendo eShop (US)",
+   "sourceUrl": "https://www.nintendo.com/us/store/products/cuphead-switch/",
+   "verificationStatus": "official",
+   "verifiedAt": "2026-09-01"
+  }
+ ],
+ "faq": [
+  {
+   "q": "Does Cuphead support co-op on Nintendo Switch?",
+   "a": "Yes. Studio MDHR and Nintendo confirm local co-op for two players on the same system."
+  },
+  {
+   "q": "Does it support online co-op?",
+   "a": "No official online multiplayer mode is listed for this Nintendo Switch release."
+  },
+  {
+   "q": "Is the screen split in co-op?",
+   "a": "No. Both players share the same game view; this is local co-op, not split-screen."
+  },
+  {
+   "q": "Is The Delicious Last Course included in the base game?",
+   "a": "It is a separate DLC and requires the original Cuphead game."
+  },
+  {
+   "q": "Does it work on Nintendo Switch 2?",
+   "a": "Nintendo lists it as supported with behavior consistent with Nintendo Switch."
+  }
+ ],
+ "mpLocalPlayers": 2,
+ "mpOnlinePlayers": 0,
+ "mpCoop": true,
+ "mpCompetitive": false,
+ "mpLocalWireless": false,
+ "mpSplitScreen": false,
+ "image": "",
+ "banner": "",
+ "schemaId": "",
+ "batchImport": true,
+ "createdAt": "2026-08-28T18:39:57.267Z",
+ "updatedAt": "2026-09-01T09:49:12.621Z",
+ "nsuid": "70010000016330",
+ "product_code": "HACPASVUA",
+ "title_id": "0100a5c00d162000",
+ "downloadSizeGb": 3.55,
+ "requiredSpaceGb": 3.55,
+ "microSdRecommended": false,
+ "arabicSupport": false,
+ "dlc": [
+  {
+   "name": "Cuphead - The Delicious Last Course",
+   "description": "Adds Ms. Chalice, a new island, new bosses, weapons, charms, and secrets; the base game is required."
+  }
+ ],
+ "languagesText": [
+  "Japanese",
+  "French",
+  "German",
+  "Italian",
+  "Spanish",
+  "Korean",
+  "Portuguese",
+  "Russian",
+  "Simplified Chinese",
+  "Latin American Spanish",
+  "Brazilian Portuguese",
+  "American English"
+ ],
+ "storageNotes": "Nintendo lists a 3.55 GB download. Free-space requirements can increase with updates.",
+ "seriesName": "Cuphead",
+ "studioName": "Studio MDHR",
+ "timeline": [
+  {
+   "date": "2019-04-18",
+   "kind": "release",
+   "title": "Nintendo Switch release and free content update"
+  },
+  {
+   "date": "2022-06-30",
+   "kind": "dlc",
+   "title": "The Delicious Last Course released"
+  }
+ ],
+ "patchNotes": [
+  {
+   "version": "2019 free content update",
+   "date": "2019-04-18",
+   "body": "Added Mugman character selection, animated cinematics, additional localization, new animation and art, bug fixes, and tweaks."
+  }
+ ],
+ "soundtrack": [
+  {
+   "title": "Original jazz soundtrack information",
+   "url": "https://studiomdhr.com/cuphead-is-coming-to-nintendo-switch-plus-new-free-content-for-everyone/"
+  }
+ ],
+ "guides": [
+  {
+   "title": "Nintendo Switch release and local co-op",
+   "summary": "Official release details, co-op support, localization, and free update content.",
+   "url": "https://studiomdhr.com/cuphead-is-coming-to-nintendo-switch-plus-new-free-content-for-everyone/"
+  },
+  {
+   "title": "The Delicious Last Course",
+   "summary": "Official DLC content and access requirements.",
+   "url": "https://studiomdhr.com/the-delicious-last-course-is-served-out-now-on-all-platforms/"
+  }
+ ],
+ "sources": [
+  {
+   "name": "Nintendo eShop (US)",
+   "url": "https://www.nintendo.com/us/store/products/cuphead-switch/"
+  },
+  {
+   "name": "Studio MDHR Nintendo Switch announcement",
+   "url": "https://studiomdhr.com/cuphead-is-coming-to-nintendo-switch-plus-new-free-content-for-everyone/"
+  },
+  {
+   "name": "Studio MDHR Delicious Last Course release",
+   "url": "https://studiomdhr.com/the-delicious-last-course-is-served-out-now-on-all-platforms/"
+  }
+ ]
+}

@@ -1,6 +1,6 @@
 {
  "batch": "003",
- "apply": true,
+ "apply": false,
  "games": [
   {
    "id": "prd_7cb47defb1ff4c61",
@@ -18,13 +18,28 @@
     "verdictSummaryEn": "A nigh-on flawless port of one of the finest run-and-gun games ever made: the hand-drawn 1930s animation survives intact and the 60 fps lock never breaks, docked or handheld.",
     "verdictSummary": "منفذ شبه مثالي لواحدة من أفضل ألعاب التصويب والركض على الإطلاق: الرسوم المتحركة المرسومة يدوياً بأسلوب الثلاثينيات باقية كما هي، وثبات 60 إطاراً لا ينكسر سواء على التلفاز أو باليد.",
     "verdictPros": [
-     {"value": "رسوم متحركة يدوية بأسلوب كرتون الثلاثينيات لا مثيل لها", "valueEn": "Unmatched hand-drawn 1930s cartoon animation"},
-     {"value": "أداء 60 إطاراً مقفل في الوضعين المحمول والتلفاز", "valueEn": "Locked 60 fps in both handheld and docked play"},
-     {"value": "توسعة The Delicious Last Course تضيف شخصية Ms. Chalice وجزيرة جديدة", "valueEn": "The Delicious Last Course expansion adds Ms. Chalice and a new isle"}
+     {
+      "value": "رسوم متحركة يدوية بأسلوب كرتون الثلاثينيات لا مثيل لها",
+      "valueEn": "Unmatched hand-drawn 1930s cartoon animation"
+     },
+     {
+      "value": "أداء 60 إطاراً مقفل في الوضعين المحمول والتلفاز",
+      "valueEn": "Locked 60 fps in both handheld and docked play"
+     },
+     {
+      "value": "توسعة The Delicious Last Course تضيف شخصية Ms. Chalice وجزيرة جديدة",
+      "valueEn": "The Delicious Last Course expansion adds Ms. Chalice and a new isle"
+     }
     ],
     "verdictCons": [
-     {"value": "صعوبة مرتفعة جداً قد لا تناسب الجميع", "valueEn": "Very high difficulty that will not suit everyone"},
-     {"value": "اللعب التعاوني محلي فقط", "valueEn": "Co-op is local only"}
+     {
+      "value": "صعوبة مرتفعة جداً قد لا تناسب الجميع",
+      "valueEn": "Very high difficulty that will not suit everyone"
+     },
+     {
+      "value": "اللعب التعاوني محلي فقط",
+      "valueEn": "Co-op is local only"
+     }
     ],
     "devicePerformance": [
      {
@@ -100,13 +115,28 @@
     "verdictSummaryEn": "The full asymmetric-horror experience runs on Switch and is genuinely playable in handheld at a stable 30 fps, but heavy visual downgrades and docked frame drops make this the weakest way to play it.",
     "verdictSummary": "تجربة الرعب غير المتكافئ الكاملة تعمل على سويتش وقابلة للعب فعلاً باليد بثبات 30 إطاراً، لكن التنازلات البصرية الكبيرة وهبوط الإطارات في وضع التلفاز تجعلها أضعف طريقة للعبها.",
     "verdictPros": [
-     {"value": "تجربة Dead by Daylight كاملة بشكل محمول", "valueEn": "The complete Dead by Daylight experience, portable"},
-     {"value": "مكتبة فصول ضخمة من الشخصيات المرخصة", "valueEn": "A huge roster of licensed chapters"}
+     {
+      "value": "تجربة Dead by Daylight كاملة بشكل محمول",
+      "valueEn": "The complete Dead by Daylight experience, portable"
+     },
+     {
+      "value": "مكتبة فصول ضخمة من الشخصيات المرخصة",
+      "valueEn": "A huge roster of licensed chapters"
+     }
     ],
     "verdictCons": [
-     {"value": "تنازلات بصرية كبيرة في الدقة والتفاصيل", "valueEn": "Heavy visual downgrades in resolution and detail"},
-     {"value": "وضع التلفاز يهبط دون 30 إطاراً في الضغط", "valueEn": "Docked play drops below 30 fps under load"},
-     {"value": "لعب عبر الإنترنت فقط", "valueEn": "Online-only play"}
+     {
+      "value": "تنازلات بصرية كبيرة في الدقة والتفاصيل",
+      "valueEn": "Heavy visual downgrades in resolution and detail"
+     },
+     {
+      "value": "وضع التلفاز يهبط دون 30 إطاراً في الضغط",
+      "valueEn": "Docked play drops below 30 fps under load"
+     },
+     {
+      "value": "لعب عبر الإنترنت فقط",
+      "valueEn": "Online-only play"
+     }
     ],
     "devicePerformance": [
      {
@@ -161,6 +191,98 @@
     "box_front_url"
    ],
    "notes": "Chapter model verified (paid release carries Chapters 1–4; future chapters free) and recorded in dlcSummary. The one dead R2 banner removed from the six-entry array; the five official eShop CDN banners remain and are re-verified at apply time. box_front_url removed: a third-party CDN copy of the wide key art cropped 4:3 sitting in the front-box role, while cartridgeImage holds the proper vertical box. Perf record (1080p/60 both modes, sourced) verified. The ten contamination fields removed. Cover is correct content at 500x281 — no verified higher-resolution source reachable; kept."
+  }
+ ],
+ "appliedAt": "2026-09-02T02:21:35.836Z",
+ "results": [
+  {
+   "id": "prd_7cb47defb1ff4c61",
+   "action": "APPLIED",
+   "changed": [
+    "publisher",
+    "metacriticRating",
+    "youtubeTrailer",
+    "completionMain",
+    "completionExtras",
+    "completionAll",
+    "verdictScore",
+    "verdictSummaryEn",
+    "verdictSummary",
+    "verdictPros",
+    "verdictCons",
+    "devicePerformance"
+   ],
+   "removed": []
+  },
+  {
+   "id": "prd_0fb9102af8c2450f",
+   "action": "APPLIED",
+   "changed": [],
+   "removed": [
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ]
+  },
+  {
+   "id": "prd_032470e4f7dd4cf0",
+   "action": "APPLIED",
+   "changed": [],
+   "removed": [
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus",
+    "box_front_url"
+   ]
+  },
+  {
+   "id": "prd_07de8f47fbf44b28",
+   "action": "APPLIED",
+   "changed": [
+    "youtubeTrailer",
+    "verdictScore",
+    "verdictSummaryEn",
+    "verdictSummary",
+    "verdictPros",
+    "verdictCons",
+    "devicePerformance"
+   ],
+   "removed": []
+  },
+  {
+   "id": "prd_0e08ad1311134765",
+   "action": "APPLIED",
+   "changed": [
+    "dlcSummary",
+    "bannerImages"
+   ],
+   "removed": [
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus",
+    "box_front_url"
+   ]
   }
  ]
 }
