@@ -1,51 +1,244 @@
 {
  "batch": "001",
- "apply": false,
+ "apply": true,
  "games": [
   {
    "id": "prd_49ac50b2e7e041fa",
    "slug": "1-2-switch",
    "baseHash": "0421f6cc39ecd60314a733d52c883dfae2b42b1e3a6f9d194e459d818f04db8b",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "downloadSizeGb": 1.3,
+    "size": 1.3,
+    "youtubeTrailer": "https://www.youtube.com/watch?v=ws3Owo6ceOQ",
+    "dlcSummary": "No DLC has been released for 1-2-Switch.",
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "informationStatus": "not_published",
+      "unavailableReason": "Nintendo does not publish resolution or frame-rate figures for 1-2-Switch and no reputable technical analysis exists. Handheld play is not supported: the game is built around detached Joy-Con play in TV and Tabletop modes.",
+      "handheld": {
+       "supported": false
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "Not published by Nintendo",
+       "fps": "Not published by Nintendo"
+      },
+      "modes": [],
+      "sourceName": "Nintendo official product page",
+      "sourceUrl": "https://www.nintendo.com/us/store/products/1-2-switch-switch/",
+      "verificationStatus": "official"
+     }
+    ]
+   },
+   "clear": [
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "Size corrected 1.4→1.3 GB (eShop). Official presentation trailer added. Perf figures were unsourced 1080p/60 — replaced with the honest not-published record; handheld unsupported per official play modes. Cover/box art verified visually: correct."
   },
   {
    "id": "prd_b73635742b2649fc",
    "slug": "a-plague-tale-innocence-cloud-version-switch1",
    "baseHash": "86184e7dbae3b854c6767600ee7a8048397507c1906445a2a4f41f609db2d3f7",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "informationStatus": "not_published",
+      "unavailableReason": "Cloud-streamed version: delivered resolution and frame rate depend on the streaming service and the player's connection. Nintendo and Focus Entertainment publish no fixed figures.",
+      "handheld": {
+       "supported": true,
+       "resolution": "Cloud stream — not published",
+       "fps": "Cloud stream — not published"
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "Cloud stream — not published",
+       "fps": "Cloud stream — not published"
+      },
+      "modes": [],
+      "sourceName": "Nintendo eShop product page (Cloud Version)",
+      "sourceUrl": "https://www.nintendo.com/us/store/products/a-plague-tale-innocence-cloud-version-switch/",
+      "verificationStatus": "official"
+     }
+    ]
+   },
+   "clear": [
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "Two legacy device records collapse to the platform record with an honest cloud-streaming statement. Images verified: square card, wide cover and galleries all valid; product stays hidden (commercial surface untouched)."
   },
   {
    "id": "prd_e056bfabbf914721",
    "slug": "arcade-archives-vs-super-mario-bros-switch",
    "baseHash": "e7ec8c4c8c999a8f4f7106bfb8fb6af15dfed4a1342798242cd1152b1e50bad1",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "developer": "HAMSTER (original arcade game by Nintendo)",
+    "youtubeTrailer": "https://www.youtube.com/watch?v=bNICBT2un5c",
+    "coverImage": "",
+    "image": "",
+    "bannerImages": [
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000003432/03df298cde9e5da4aed7d4f3b8f276def99614410f061c06ea8f546c4fdfc48b",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000003432/b083e720569cb85a516bbc7821ad8b65ebd2fa03ec0fb6b0364237427dcfe544"
+    ],
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "informationStatus": "available",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p (emulated arcade output)",
+       "fps": "60"
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p (emulated arcade output)",
+       "fps": "60"
+      },
+      "modes": [],
+      "sourceName": "Arcade Archives series emulation behaviour (HAMSTER)",
+      "sourceUrl": "https://www.arcadearchives.com/en/title/aca-061/",
+      "verificationStatus": "technical_analysis"
+     }
+    ]
+   },
+   "clear": [
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus",
+    "box_front_url"
+   ],
+   "notes": "coverImage/image/bannerImages[0] returned 403 — broken references cleared and banners rebuilt from the two working Nintendo CDN URLs. box_front_url held the square eShop icon (wrong role; proper vertical box art already in cartridgeImage — verified visually). Official promo trailer added."
   },
   {
    "id": "prd_ad958aa523e24052",
    "slug": "assassins-creed-shadows-switch-2",
    "baseHash": "ca4afd2e4011f5d94248f28438174d246b53b38cf4b6ff15b047d62570613970",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "downloadSizeGb": 62.8,
+    "size": 62.8,
+    "metacriticRating": 81,
+    "metacriticUrl": "https://www.metacritic.com/game/assassins-creed-shadows/",
+    "youtubeTrailer": "https://www.youtube.com/watch?v=3oTfnzXb8OE",
+    "dlc": [
+     {
+      "name": "The Claws of Awaji",
+      "title": "The Claws of Awaji",
+      "description": "Story expansion set on Awaji island (around 10 extra hours). Not included with the Nintendo Switch 2 release — sold separately, arriving in 2026.",
+      "releaseDate": ""
+     }
+    ],
+    "bannerImages": [
+     "https://banan.to/api/files/products/prd_ad958aa523e24052/banner-2-6f8802f4c2a9205b.jpg",
+     "https://banan.to/api/files/products/prd_ad958aa523e24052/banner-3-6475af012b5c8f44.jpg"
+    ],
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "informationStatus": "available",
+      "handheld": {
+       "supported": true,
+       "resolution": "1080p output target via reconstruction",
+       "fps": "30"
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p output target via reconstruction",
+       "fps": "30"
+      },
+      "modes": [],
+      "sourceName": "Switch 2 launch coverage; Ubisoft has not published a full official spec sheet",
+      "sourceUrl": "https://www.ubisoft.com/en-us/game/assassins-creed/shadows",
+      "verificationStatus": "unverified"
+     }
+    ]
+   },
+   "clear": [
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus",
+    "box_front_url"
+   ],
+   "notes": "Size corrected 68.9→62.8 GB (eShop listing). Metacritic set to the base game's 81 with its page. Official Switch 2 announce trailer added. Claws of Awaji recorded as a separate 2026 purchase. Two 403 banners dropped (two working kept). box_front_url was an angled third-party retail photo (kabum.com.br) — cleared; the flat Switch 2 box art in cartridgeImage is correct (verified visually). Perf figures kept but labelled unverified."
   },
   {
    "id": "prd_b66558151b784a6f",
    "slug": "bayonetta",
    "baseHash": "e19d4c3c70182b08799f6f639cd930867cedc4b0f8f471f25b1bd4131d129ca7",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "ageRating": "ESRB M (Mature 17+)",
+    "youtubeTrailer": "https://www.youtube.com/watch?v=XN-lQc2slvM",
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "informationStatus": "available",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p",
+       "fps": "60"
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "720p (upscaled to 1080p output)",
+       "fps": "60"
+      },
+      "modes": [],
+      "sourceName": "Digital Foundry analysis of the Switch port",
+      "sourceUrl": "https://www.eurogamer.net/digitalfoundry-2018-bayonetta-1-and-2-on-switch-tested",
+      "verificationStatus": "technical_analysis"
+     }
+    ]
+   },
+   "clear": [
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "Stored trailer id was unverifiable — replaced with the official Bayonetta & Bayonetta 2 Switch launch trailer. Perf record re-labelled to the platform device with the Digital Foundry source. Box art verified visually: correct."
   }
  ]
 }
