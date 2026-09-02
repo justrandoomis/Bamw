@@ -53,3 +53,21 @@ export function redactDiscTradeForMember<T extends Record<string, unknown>>(row:
 
   return { ...publicRow, status_history: statusHistory };
 }
+
+/**
+ * Remove the staff-only note from a product request before a customer reads it.
+ *
+ * `admin_note` is where staff record what a supplier is charging and whether a
+ * request is worth taking — the admin form labels it "ملاحظات إدارية (داخلية
+ * فقط)". The customer's own request history is served by the same endpoint as
+ * the admin list, and while every camelCase field was arriving `undefined` the
+ * note was accidentally unreachable; translating the row correctly makes it
+ * real, so it has to be dropped here on the way out.
+ *
+ * `userVisibleNote` is deliberately kept: it is the reply written *for* the
+ * customer. So are the status-trail notes, which carry that same reply.
+ */
+export function redactProductRequestForMember<T extends { adminNote?: string }>(request: T) {
+  const { adminNote: _adminNote, ...visible } = request;
+  return visible;
+}

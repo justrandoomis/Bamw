@@ -5,6 +5,8 @@ import { body, guard, json } from "@/lib/http.server";
 import { getSessionUser, requireAdmin, requireUser } from "@/lib/session.server";
 import { consumeRateLimit, rateLimitResponse } from "@/lib/rate-limit.server";
 import type { ProductRequest } from "@/lib/types";
+import { toProductRequest, type ProductRequestRow } from "@/lib/product-requests";
+import { redactProductRequestForMember } from "@/lib/redaction";
 
 const clean = (value: unknown, max: number) =>
   typeof value === "string" ? value.trim().slice(0, max) : "";
@@ -19,28 +21,28 @@ export const Route = createFileRoute("/api/game-requests")({
           const user = await getSessionUser(request);
           if (!user) return json({ requests: [] });
 
+          /*
+            Rows are translated, never spread. The columns are snake_case and
+            every reader — this screen, the customer's own history, the
+            notifications — expects camelCase, so returning `...r` handed them a
+            request whose name, date, contact method and status trail were all
+            `undefined`. That is the blank game name in the admin list.
+          */
           if (user.isAdmin) {
-            const rows = await d1All<ProductRequest>(
+            const rows = await d1All<ProductRequestRow>(
               "SELECT * FROM product_requests ORDER BY created_at DESC",
             );
-            return json({
-              requests: rows.map((r) => ({
-                ...r,
-                statusHistory: JSON.parse((r.statusHistory as unknown as string) || "[]"),
-              })),
-            });
-          } else {
-            const rows = await d1All<ProductRequest>(
-              "SELECT * FROM product_requests WHERE user_id = ? ORDER BY created_at DESC",
-              user.id,
-            );
-            return json({
-              requests: rows.map((r) => ({
-                ...r,
-                statusHistory: JSON.parse((r.statusHistory as unknown as string) || "[]"),
-              })),
-            });
+            return json({ requests: rows.map(toProductRequest) });
           }
+
+          // A customer sees their own requests, without the staff-only note.
+          const rows = await d1All<ProductRequestRow>(
+            "SELECT * FROM product_requests WHERE user_id = ? ORDER BY created_at DESC",
+            user.id,
+          );
+          return json({
+            requests: rows.map((row) => redactProductRequestForMember(toProductRequest(row))),
+          });
         }),
 
       POST: async ({ request }) =>
@@ -149,16 +151,37 @@ export const Route = createFileRoute("/api/game-requests")({
           const id = clean(input.id, 60);
           if (!id) return json({ error: "invalid_input" }, { status: 400 });
 
-          const existing = await d1First<ProductRequest>(
+          const existingRow = await d1First<ProductRequestRow>(
             `SELECT * FROM product_requests WHERE id = ?`,
             id,
           );
-          if (!existing) return json({ error: "not_found" }, { status: 404 });
+          if (!existingRow) return json({ error: "not_found" }, { status: 404 });
+          /*
+            Translated before it is read. Reading camelCase off the raw row made
+            every `|| existing.x || null` fall through to null, so accepting a
+            request erased the admin note, the customer-visible note and the
+            linked product id; the status trail was re-read as `[]` and rewritten
+            over the real one; and `existing.userId` being undefined meant the
+            customer was never told their request had moved.
+          */
+          const existing = toProductRequest(existingRow);
 
           const now = new Date().toISOString();
           const newStatus = clean(input.status, 40) || existing.status;
 
-          const history = JSON.parse((existing.statusHistory as unknown as string) || "[]");
+          /*
+            A field that is absent from the request keeps its stored value; a
+            field that is present keeps what was sent, empty included. The
+            quick-action buttons send only `status` and a customer note, so the
+            internal note and the linked product must survive them — but an
+            admin who clears the textarea and saves means it, and
+            `clean(x) || existing.x` could only ever rewrite the old value,
+            leaving a wrong customer-visible message with no way to remove it.
+          */
+          const patched = (incoming: string | undefined, max: number, current?: string) =>
+            incoming === undefined ? (current ?? null) : clean(incoming, max) || null;
+
+          const history = [...existing.statusHistory];
           if (newStatus !== existing.status) {
             history.push({
               status: newStatus,
@@ -172,9 +195,9 @@ export const Route = createFileRoute("/api/game-requests")({
              status = ?, admin_note = ?, user_visible_note = ?, linked_product_id = ?, status_history = ?, updated_at = ?
              WHERE id = ?`,
             newStatus,
-            clean(input.adminNote, 500) || existing.adminNote || null,
-            clean(input.userVisibleNote, 500) || existing.userVisibleNote || null,
-            clean(input.linkedProductId, 100) || existing.linkedProductId || null,
+            patched(input.adminNote, 500, existing.adminNote),
+            patched(input.userVisibleNote, 500, existing.userVisibleNote),
+            patched(input.linkedProductId, 100, existing.linkedProductId),
             JSON.stringify(history),
             now,
             id,
