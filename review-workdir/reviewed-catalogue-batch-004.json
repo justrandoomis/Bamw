@@ -1,6 +1,6 @@
 {
  "batch": "004",
- "apply": true,
+ "apply": false,
  "games": [
   {
    "id": "prd_6f3eaa73a1d14946",
@@ -148,6 +148,84 @@
     "guaranteeStatus"
    ],
    "notes": "metacriticRating removed: it held the string '85', which matches no verifiable score for the Switch release (the PS5 aggregate is 76) — a wrong number shown to customers is worse than none. supportedLanguages removed: it held a 'varies by region' referral sentence, not a language list. Two device records collapse to the platform's Nintendo Switch record with the existing officially-sourced 720p/1080p/30 figures. Tagline written from the documented reception (Nintendo Life: the first full EA SPORTS FC on a Nintendo system). Product is hidden and carries no images at all; none can be sourced and verified from this environment — flagged for the owner."
+  }
+ ],
+ "appliedAt": "2026-09-02T02:27:56.639Z",
+ "results": [
+  {
+   "id": "prd_6f3eaa73a1d14946",
+   "action": "APPLIED",
+   "changed": [],
+   "removed": [
+    "youtubeTrailer"
+   ]
+  },
+  {
+   "id": "prd_9c97bcae3d9e4162",
+   "action": "REFUSED_IMAGE_URL"
+  },
+  {
+   "id": "prd_1c5ea5fc72b443c1",
+   "action": "APPLIED",
+   "changed": [],
+   "removed": [
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ]
+  },
+  {
+   "id": "prd_75d643ddb1194fff",
+   "action": "APPLIED",
+   "changed": [
+    "bannerImages"
+   ],
+   "removed": [
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus",
+    "nintendoCardImage",
+    "coverImage",
+    "image",
+    "box_front_url",
+    "galleryImages"
+   ]
+  },
+  {
+   "id": "prd_e907e5625fb9410d",
+   "action": "APPLIED",
+   "changed": [
+    "tagline",
+    "devicePerformance"
+   ],
+   "removed": [
+    "metacriticRating",
+    "supportedLanguages",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ]
   }
  ]
 }

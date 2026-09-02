@@ -1,0 +1,456 @@
+{
+ "id": "prd_1c5ea5fc72b443c1",
+ "title": "Dragon Ball: Sparking! ZERO [Switch 2]",
+ "titleEn": "Dragon Ball: Sparking! ZERO [Switch 2]",
+ "titleKu": "Dragon Ball: Sparking! ZERO [Switch 2]",
+ "slug": "dragon-ball-sparking-zero-switch2",
+ "description": "DRAGON BALL: Sparking! ZERO revives the arena-brawler structure associated with the Budokai Tenkaichi series. The base game features more than 180 fighters from Dragon Ball Z, Dragon Ball Super, Dragon Ball GT and selected films, with transformations, signature techniques and large destructible battle arenas.\n\nEpisode Battle revisits major story conflicts from the viewpoints of several fighters and includes branching scenarios. Custom Battle allows players to build and share their own encounters. The Nintendo Switch 2 version supports local play, local wireless and online multiplayer, as well as motion-control options using Joy-Con controllers.",
+ "descriptionEn": "DRAGON BALL: Sparking! ZERO revives the arena-brawler structure associated with the Budokai Tenkaichi series. The base game features more than 180 fighters from Dragon Ball Z, Dragon Ball Super, Dragon Ball GT and selected films, with transformations, signature techniques and large destructible battle arenas.\n\nEpisode Battle revisits major story conflicts from the viewpoints of several fighters and includes branching scenarios. Custom Battle allows players to build and share their own encounters. The Nintendo Switch 2 version supports local play, local wireless and online multiplayer, as well as motion-control options using Joy-Con controllers.",
+ "descriptionKu": "DRAGON BALL: Sparking! ZERO revives the arena-brawler structure associated with the Budokai Tenkaichi series. The base game features more than 180 fighters from Dragon Ball Z, Dragon Ball Super, Dragon Ball GT and selected films, with transformations, signature techniques and large destructible battle arenas.\n\nEpisode Battle revisits major story conflicts from the viewpoints of several fighters and includes branching scenarios. Custom Battle allows players to build and share their own encounters. The Nintendo Switch 2 version supports local play, local wireless and online multiplayer, as well as motion-control options using Joy-Con controllers.",
+ "cartridgeImage": "/api/files/products/prd_1c5ea5fc72b443c1/cartridgeImage-f000f004473318c2.webp",
+ "nintendoCardImage": "/api/files/products/prd_1c5ea5fc72b443c1/nintendoCardImage-6c7ce11e7fc5f43c.webp",
+ "coverHiResImage": "/api/files/products/prd_1c5ea5fc72b443c1/3d-texture-1c38958075225c50.webp",
+ "coverImage": "/api/files/products/prd_1c5ea5fc72b443c1/coverImage-27d977113d2bdc27.webp",
+ "bannerImages": [
+  "/api/files/products/prd_1c5ea5fc72b443c1/bannerImages-d947de497adc1184.webp",
+  "/api/files/products/prd_1c5ea5fc72b443c1/bannerImages-f47da24ff821ec5b.webp"
+ ],
+ "gallery": [],
+ "youtubeTrailer": "https://www.youtube.com/watch?v=cIS55Z_WYug",
+ "releaseDate": "2025-11-14",
+ "ageRating": "ESRB Teen",
+ "metacriticRating": 78,
+ "genres": [
+  "Fighting",
+  "Action"
+ ],
+ "platform": "switch2",
+ "size": 12,
+ "numberOfPlayers": "8",
+ "supportedLanguages": "Japanese, British English, French, German, Italian, Spanish, Korean, Russian, Simplified Chinese, Latin American Spanish, Canadian French, Brazilian Portuguese, Traditional Chinese, American English, Polish, Thai",
+ "hardwareModel": "",
+ "colorEdition": "",
+ "storageCapacity": "",
+ "screenSpecs": "",
+ "batteryLife": "",
+ "boxContents": [],
+ "boxContentsText": "",
+ "warrantyCondition": "",
+ "connectivity": "",
+ "characterName": "Link",
+ "amiiboSeries": "The Legend of Zelda",
+ "figureType": "figure",
+ "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+ "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+ "boxCondition": "mib",
+ "releaseWave": "Wave 2 (Restock)",
+ "rarity": "standard",
+ "accessoryType": "حقيبة حماية وتنقل Carry Case",
+ "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+ "brand": "Nintendo Official",
+ "material": "Hard EVA Shockproof Shell",
+ "availableColors": "Black, Neon Red/Blue, White",
+ "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+ "cardValue": "$20 eShop Balance",
+ "region": "US",
+ "cardType": "eshop",
+ "deliveryMethod": "instant_code",
+ "redemptionGuide": "",
+ "redemptionSteps": [],
+ "validity": "no_expiry",
+ "usedType": "cartridge",
+ "conditionGrade": "like_new",
+ "packaging": "cib",
+ "guaranteeStatus": "tested_30days",
+ "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+ "accountType": "primary",
+ "badge": "وفر 40%",
+ "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+ "price": 14000,
+ "cost": 3000,
+ "stock": 999999,
+ "isInfiniteStock": true,
+ "isHidden": false,
+ "displayOrder": 0,
+ "category": "nintendo-switch-games",
+ "categoryId": "nintendo-switch-games",
+ "categoryEn": "",
+ "categoryKu": "",
+ "options": [
+  {
+   "id": "offline_account",
+   "name": "حساب أوفلاين",
+   "description": "حساب مخصص للعب دون اتصال بعد إكمال خطوات التفعيل.",
+   "isInfiniteStock": true,
+   "customerDescription": "حساب مشترك"
+  },
+  {
+   "id": "online_account",
+   "name": "حساب أونلاين",
+   "description": "حساب يدعم تشغيل اللعبة مع الاتصال والميزات المتاحة أونلاين.",
+   "isInfiniteStock": true,
+   "customerDescription": "حساب خاص بك"
+  }
+ ],
+ "types": [
+  {
+   "id": "standard_offline",
+   "name": "حساب أوفلاين — عادي",
+   "optionId": "offline_account",
+   "price": "16000",
+   "cost": 3000,
+   "description": "تشمل الإصدار العادي من اللعبة.",
+   "isInfiniteStock": true,
+   "customerDescription": "اللعبة الأساسية",
+   "internalNote": "Supplier 普通版 mapped to Offline / Standard. Cost ¥14.64 -> 3,000 IQD."
+  },
+  {
+   "id": "dlc_offline",
+   "name": "حساب أوفلاين — مع الإضافات",
+   "optionId": "offline_account",
+   "price": "19000",
+   "cost": 4250,
+   "description": "تشمل اللعبة الأساسية والمحتوى الإضافي المثبت في هذا الإصدار.",
+   "isInfiniteStock": true,
+   "customerDescription": "اللعبة مع الإضافات",
+   "internalNote": "Supplier 特典版 mapped to Offline / DLC. Cost ¥19.54 -> 4,250 IQD."
+  },
+  {
+   "id": "standard_online",
+   "name": "حساب أونلاين — عادي",
+   "optionId": "online_account",
+   "price": "65000",
+   "cost": 42250,
+   "description": "تشمل الإصدار العادي من اللعبة.",
+   "isInfiniteStock": true,
+   "customerDescription": "اللعبة الأساسية",
+   "internalNote": "Supplier 标准版 mapped to Online / Standard. Cost ¥193 -> 42,250 IQD."
+  },
+  {
+   "id": "dlc_online",
+   "name": "حساب أونلاين — مع الإضافات",
+   "optionId": "online_account",
+   "price": "78000",
+   "cost": 51000,
+   "description": "تشمل اللعبة الأساسية والمحتوى الإضافي المثبت في هذا الإصدار.",
+   "isInfiniteStock": true,
+   "customerDescription": "اللعبة مع الإضافات",
+   "internalNote": "Supplier 豪华版 mapped to Online / DLC. Cost ¥232.20 -> 51,000 IQD."
+  }
+ ],
+ "editions": [],
+ "dlcs": [],
+ "isActive": true,
+ "status": "active",
+ "kind": "account",
+ "trade_value_iqd": 38000,
+ "store_offer_bonus_iqd": 5000,
+ "trade_enabled": true,
+ "trade_value_locked": false,
+ "schema_version": 21,
+ "compatibility": [
+  "Nintendo Switch 2"
+ ],
+ "edition": "Standard",
+ "developer": "Spike Chunsoft",
+ "publisher": "BANDAI NAMCO Entertainment",
+ "opencriticRating": 82,
+ "userScore": 8.2,
+ "officialUrl": "https://www.nintendo.com/us/store/products/dragon-ball-sparking-zero-switch-2/",
+ "eshopUrl": "https://www.nintendo.com/us/store/products/dragon-ball-sparking-zero-switch-2/",
+ "gameIsOffline": true,
+ "gameIsOnline": true,
+ "description_short": "A large-scale 3D arena fighter with more than 180 base-game fighters from Dragon Ball Z, Super, GT and the movies, built around transformations, signature attacks and destructible battlefields.",
+ "description_ar": "لعبة قتال ثلاثية الأبعاد ضخمة من عالم Dragon Ball تضم أكثر من 180 مقاتلًا، مع معارك قصصية متفرعة وطور Custom Battle ولعب محلي وأونلاين.",
+ "videos": [
+  {
+   "title": "DRAGON BALL: Sparking! ZERO — Official Trailer",
+   "url": "https://www.youtube.com/watch?v=cIS55Z_WYug"
+  }
+ ],
+ "nintendoEshopUrl": "https://www.nintendo.com/us/store/products/dragon-ball-sparking-zero-switch-2/",
+ "nintendoOnlineRequired": false,
+ "nintendoCloudSaves": true,
+ "tvMode": true,
+ "tabletopMode": true,
+ "handheldMode": true,
+ "nintendoPlayModes": "TV Mode, Tabletop Mode, Handheld Mode",
+ "nintendoNotes": "Nintendo lists the Switch 2 version as a Dragon Ball arena fighter with Simplified Chinese support and a large roster. Supplier four-tier pricing is mapped to Offline/Online Standard and DLC types according to the current import rule. No verified Full Wrap image was found, so 3D texture fields are blank.",
+ "switch2Exclusive": false,
+ "tagline": "Bring Dragon Ball’s biggest clashes to life with a huge roster, explosive 3D arenas, transformations, Episode Battle and player-created Custom Battles.",
+ "fitFor": [
+  "Dragon Ball fans who want a huge roster covering many eras, transformations and signature techniques.",
+  "Players who enjoy fast 3D arena fighting rather than traditional 2D fighting-game lanes.",
+  "Players who want both story recreations and custom/online battle formats."
+ ],
+ "notFitFor": [
+  "Players looking for a deep exploration RPG rather than a dedicated fighting game.",
+  "Players who prefer slow, highly technical 2D tournament fighters with small tightly balanced rosters.",
+  "Players sensitive to rapid camera movement and very effects-heavy battles."
+ ],
+ "playTimeMain": 11,
+ "playTimeFull": 44,
+ "gameplayPillars": [
+  {
+   "title": "High-Speed 3D Combat",
+   "description": "Fly, dash, counter, transform and unleash signature attacks across large arenas designed to reproduce the scale and spectacle of Dragon Ball battles."
+  },
+  {
+   "title": "Massive Character Roster",
+   "description": "Choose from more than 180 base-game fighters, including multiple forms and eras from Z, Super, GT and the films."
+  },
+  {
+   "title": "Episode and Custom Battles",
+   "description": "Replay famous confrontations through character-focused Episode Battles or build original what-if scenarios with Custom Battle tools."
+  }
+ ],
+ "worldSummary": "Sparking! ZERO is not built around one explorable overworld. Instead, it recreates locations and battles from across the Dragon Ball timeline as large 3D combat arenas. Episode Battle revisits major events through selected character perspectives, while Custom Battle lets players construct and share alternative match scenarios and conditions.",
+ "storyChapters": [
+  {
+   "title": "Episode Battle Perspectives",
+   "body": "The story mode follows major Dragon Ball events from the perspective of eight playable characters rather than using one single continuous protagonist."
+  },
+  {
+   "title": "Iconic Sagas and What-If Paths",
+   "body": "Battles revisit recognizable conflicts while selected choices and conditions can lead to alternate Sparking Episode outcomes."
+  },
+  {
+   "title": "Custom Battle Creation",
+   "body": "Beyond the official scenarios, Custom Battle allows players to configure characters, conditions and presentation to create their own Dragon Ball match stories."
+  }
+ ],
+ "galleryImages": [
+  {
+   "url": "https://images.launchbox-app.com/b2d0b193-75f8-4938-a825-403bac6d0d0c.jpg",
+   "alt": "DRAGON BALL: Sparking! ZERO gameplay image."
+  },
+  {
+   "url": "https://images.launchbox-app.com/8341638b-12c6-46d0-b5eb-5b05752ee6c6.jpg",
+   "alt": "Additional Sparking! ZERO gameplay/media image."
+  }
+ ],
+ "features": [
+  "The base game includes more than 180 playable fighters drawn from Dragon Ball Z, Dragon Ball Super, Dragon Ball GT and selected films.",
+  "High-speed 3D arena battles feature transformations, beam clashes, rush attacks and large-scale signature techniques.",
+  "Episode Battle retells major story conflicts from the perspectives of eight characters and also includes alternate encounters.",
+  "Custom Battle lets players create, play and share custom scenarios and dream matchups.",
+  "The Nintendo versions support local multiplayer, local wireless and online play, with player counts depending on the mode.",
+  "Joy-Con motion controls are supported on Nintendo Switch and Nintendo Switch 2 versions for an alternative control style."
+ ],
+ "perfResolutionDocked": "Up to 810p, dynamic",
+ "perfResolutionHandheld": "Up to 810p, dynamic",
+ "perfFps": "30 FPS",
+ "perfHdr": true,
+ "perfNotes": "Bandai Namco’s platform comparison reports a maximum 810p presentation using dynamic resolution and 30 FPS in both docked and portable modes on Nintendo Switch 2, with HDR support. Nintendo Life’s later review confirms the 30 FPS cap and notes some performance issues.",
+ "devicePerformance": [
+  {
+   "device": "Nintendo Switch 2",
+   "deviceSlug": "nintendo-switch-2",
+   "deviceModel": "Nintendo Switch 2",
+   "hardwareId": "prd_acf4c89908764c62",
+   "informationStatus": "verified",
+   "handheld": {
+    "supported": true,
+    "resolution": "Up to 810p dynamic",
+    "resolutionDynamic": true,
+    "outputResolution": "810p max",
+    "fps": "30",
+    "hdr": true
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "Up to 810p dynamic",
+    "resolutionDynamic": true,
+    "outputResolution": "810p max",
+    "fps": "30",
+    "hdr": true
+   },
+   "sourceName": "Bandai Namco official comparison summarized by Nintendo Life",
+   "sourceUrl": "https://www.nintendolife.com/news/2025/08/dragon-ball-sparking-zero-switch-and-switch-2-performance-and-resolution-detailed",
+   "verifiedAt": "2026-08-25",
+   "verificationStatus": "verified",
+   "performanceNotes": "Official comparison information reports dynamic resolution up to 810p and 30 FPS in both Switch 2 play modes, with HDR supported."
+  }
+ ],
+ "downloadSizeGb": 12,
+ "arabicSupport": false,
+ "mpLocalPlayers": true,
+ "mpOnlinePlayers": true,
+ "mpCoop": false,
+ "mpCompetitive": true,
+ "mpLocalWireless": true,
+ "dlc": [
+  {
+   "name": "Season Pass / Season Pass Bonus",
+   "description": "Official season-pass content and related bonus content for additional playable characters."
+  },
+  {
+   "name": "HERO OF JUSTICE Pack",
+   "description": "Official paid character/content pack listed by Nintendo."
+  },
+  {
+   "name": "Dragon Ball DAIMA: Character Pack 1",
+   "description": "Official Dragon Ball DAIMA character pack listed by Nintendo."
+  }
+ ],
+ "guides": [
+  {
+   "title": "Nintendo — DRAGON BALL: Sparking! ZERO",
+   "summary": "Official Nintendo Switch 2 product information.",
+   "url": "https://www.nintendo.com/us/store/products/dragon-ball-sparking-zero-switch-2/"
+  },
+  {
+   "title": "Bandai Namco — Sparking! ZERO",
+   "summary": "Official publisher game hub, roster, modes and DLC information.",
+   "url": "https://en.bandainamcoent.eu/dragon-ball/dragon-ball-sparking-zero"
+  },
+  {
+   "title": "LaunchBox — Switch 2 Media Reference",
+   "summary": "Cover, square, banner and screenshot reference.",
+   "url": "https://gamesdb.launchbox-app.com/"
+  }
+ ],
+ "completionMain": 11,
+ "completionExtras": 26,
+ "completionAll": 44,
+ "faq": [
+  {
+   "q": "How large is the base roster?",
+   "a": "Nintendo and Bandai Namco describe more than 180 fighters in the base game, spanning multiple Dragon Ball eras and transformations."
+  },
+  {
+   "q": "Does the game have paid DLC?",
+   "a": "Yes. Official paid content includes a Season Pass and character packs tied to Dragon Ball Super: SUPER HERO and Dragon Ball DAIMA, among other additions."
+  },
+  {
+   "q": "What is Episode Battle?",
+   "a": "Episode Battle recreates major Dragon Ball story events from the viewpoints of selected characters, with some branches and alternate outcomes."
+  }
+ ],
+ "verdictScore": 7.8,
+ "verdictSummary": "Score note: 7.8/10 is a direct normalization of the current 78/100 Metacritic aggregate for the Nintendo listing; it is not a separately invented store rating.\n\nSparking! ZERO prioritizes Dragon Ball spectacle and roster breadth over traditional fighting-game restraint. It is strongest for fans who want transformations, signature techniques and recognizable battles presented at large scale.",
+ "verdictPros": [
+  "Huge roster with broad Dragon Ball era coverage.",
+  "Spectacular transformations and signature attacks in large 3D arenas.",
+  "Episode Battle and Custom Battle provide substantial single-player scenario variety."
+ ],
+ "verdictCons": [
+  "Roster size can make competitive balance uneven.",
+  "Fast camera movement and visual effects can become chaotic.",
+  "Players seeking an exploration RPG will find the structure heavily battle-focused."
+ ],
+ "reviews": [
+  {
+   "source": "Metacritic — Nintendo listing",
+   "score": "78/100",
+   "quote": "Current critic aggregate for the relevant Nintendo listing: 78/100. This is an external aggregate, not a BANANTO-created review score.",
+   "url": "https://www.dekudeals.com/items/dragon-ball-sparking-zero"
+  },
+  {
+   "url": "https://www.dekudeals.com/items/dragon-ball-sparking-zero",
+   "source": "OpenCritic",
+   "score": "82/100",
+   "quote": "OpenCritic aggregate recorded at 82/100. Where OpenCritic groups platforms, this value represents the published aggregate rather than a fabricated platform-specific score."
+  },
+  {
+   "source": "Metacritic User Score",
+   "score": "8.2/10",
+   "quote": "Current Metacritic user score shown with the listing: 8.2/10. User scores can change over time as additional ratings are submitted.",
+   "url": "https://www.dekudeals.com/items/dragon-ball-sparking-zero"
+  }
+ ],
+ "timeline": [
+  null,
+  {
+   "date": "2025-2026",
+   "title": "Season Pass Content",
+   "body": "Paid character/content packs expanded the roster after launch."
+  },
+  {
+   "title": "Ongoing Battle Updates",
+   "body": "Additional balance/content information is included only when an official version/date is available; unsupported patch numbers are not invented."
+  }
+ ],
+ "setupNeeds": [
+  "Nintendo Switch 2 system.",
+  "Approximately 12 GB of free storage for the Nintendo Switch 2 digital version.",
+  "Nintendo Switch Online is required for supported online battles."
+ ],
+ "sources": [
+  {
+   "name": "Nintendo — DRAGON BALL: Sparking! ZERO",
+   "url": "https://www.nintendo.com/us/store/products/dragon-ball-sparking-zero-switch-2/"
+  },
+  {
+   "name": "Bandai Namco — DRAGON BALL: Sparking! ZERO",
+   "url": "https://en.bandainamcoent.eu/dragon-ball/dragon-ball-sparking-zero"
+  },
+  {
+   "name": "LaunchBox Games Database",
+   "url": "https://gamesdb.launchbox-app.com/"
+  },
+  {
+   "name": "Deku Deals — Nintendo version scores, players and completion data",
+   "url": "https://www.dekudeals.com/items/dragon-ball-sparking-zero"
+  },
+  {
+   "name": "Nintendo — Anime Music Pack 1",
+   "url": "https://www.nintendo.com/us/store/products/dragon-ball-sparking-zero-anime-music-pack-1-70050000064831-switch/"
+  }
+ ],
+ "soundtrack": [
+  {
+   "title": "CHA-LA HEAD-CHA-LA — Anime Music Pack 1",
+   "url": "https://www.nintendo.com/us/store/products/dragon-ball-sparking-zero-anime-music-pack-1-70050000064831-switch/"
+  },
+  {
+   "title": "WE GOTTA POWER — Anime Music Pack 1",
+   "url": "https://www.nintendo.com/us/store/products/dragon-ball-sparking-zero-anime-music-pack-1-70050000064831-switch/"
+  },
+  {
+   "title": "Day of Destiny -Soul vs Soul- — Anime Music Pack 1",
+   "url": "https://www.nintendo.com/us/store/products/dragon-ball-sparking-zero-anime-music-pack-1-70050000064831-switch/"
+  }
+ ],
+ "seriesName": "Dragon Ball: Sparking!",
+ "seriesEntries": [
+  "Dragon Ball Z: Budokai Tenkaichi",
+  "Dragon Ball Z: Budokai Tenkaichi 3",
+  "DRAGON BALL: Sparking! ZERO"
+ ],
+ "studioName": "Spike Chunsoft",
+ "studioUrl": "https://www.spike-chunsoft.com/",
+ "studioLocation": "Tokyo, Japan",
+ "studioAbout": "Spike Chunsoft developed DRAGON BALL: Sparking! ZERO as the modern continuation of the Budokai Tenkaichi/Sparking! arena-fighting lineage for Bandai Namco.",
+ "boxContentsList": "[Circular]",
+ "image": "/api/files/products/prd_1c5ea5fc72b443c1/coverImage-27d977113d2bdc27.webp",
+ "banner": "/api/files/products/prd_1c5ea5fc72b443c1/bannerImages-d947de497adc1184.webp",
+ "schemaId": "",
+ "badgeEn": "وفر 40%",
+ "badgeKu": "وفر 40%",
+ "featuresEn": [
+  "The base game includes more than 180 playable fighters drawn from Dragon Ball Z, Dragon Ball Super, Dragon Ball GT and selected films.",
+  "High-speed 3D arena battles feature transformations, beam clashes, rush attacks and large-scale signature techniques.",
+  "Episode Battle retells major story conflicts from the perspectives of eight characters and also includes alternate encounters.",
+  "Custom Battle lets players create, play and share custom scenarios and dream matchups.",
+  "The Nintendo versions support local multiplayer, local wireless and online play, with player counts depending on the mode.",
+  "Joy-Con motion controls are supported on Nintendo Switch and Nintendo Switch 2 versions for an alternative control style."
+ ],
+ "featuresKu": [
+  "The base game includes more than 180 playable fighters drawn from Dragon Ball Z, Dragon Ball Super, Dragon Ball GT and selected films.",
+  "High-speed 3D arena battles feature transformations, beam clashes, rush attacks and large-scale signature techniques.",
+  "Episode Battle retells major story conflicts from the perspectives of eight characters and also includes alternate encounters.",
+  "Custom Battle lets players create, play and share custom scenarios and dream matchups.",
+  "The Nintendo versions support local multiplayer, local wireless and online play, with player counts depending on the mode.",
+  "Joy-Con motion controls are supported on Nintendo Switch and Nintendo Switch 2 versions for an alternative control style."
+ ],
+ "sales": 0,
+ "images": [],
+ "modes": [],
+ "game_id": "gme_3aa89757ca374c56",
+ "createdAt": "2026-08-31T22:44:33.800Z",
+ "created_at": "2026-08-31T22:44:33.800Z",
+ "updatedAt": "2026-08-31T22:44:33.800Z",
+ "updated_at": "2026-08-31T22:44:33.800Z",
+ "variants": "[Circular]"
+}

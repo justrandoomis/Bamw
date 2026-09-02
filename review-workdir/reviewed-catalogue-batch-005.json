@@ -1,0 +1,51 @@
+{
+ "batch": "005",
+ "apply": false,
+ "games": [
+  {
+   "id": "prd_9c97bcae3d9e4162",
+   "slug": "donkey-kong-bananza-switch-2",
+   "baseHash": "1528a7e4fa2eab18883b684df0e5983a40908dfdadedbefc9443f8987aa0f469",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  },
+  {
+   "id": "prd_db09416253cf4760",
+   "slug": "ea-sports-fc-25",
+   "baseHash": "b3af723da87f2cc1eda5a4e2296d0e5165add87766b008ffe670939abca8c48a",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  },
+  {
+   "id": "prd_b185a38dcf644622",
+   "slug": "ea-sports-fc-26",
+   "baseHash": "4a43b88fe19ae2dbe409eec9d40dc2edc47902dcdf7b47c764b092d89989c8b9",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  },
+  {
+   "id": "prd_391864a55b884a32",
+   "slug": "ea-sports-fc-26-switch-2",
+   "baseHash": "e1e0b87fc613d8b89977c41b6add0120abe06ccef6ea7680ed51a508b9bbb41e",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  },
+  {
+   "id": "prd_87ae580ce1e54856",
+   "slug": "ea-sports-fc-27",
+   "baseHash": "91a142f6d421bea84705af025dde3b391fc48426c4615bd5cddbf6af640ab8d1",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  }
+ ]
+}

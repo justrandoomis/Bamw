@@ -1,0 +1,358 @@
+{
+ "title": "Devil May Cry 5 Devil Hunter Edition",
+ "titleEn": "Devil May Cry 5 Devil Hunter Edition",
+ "titleKu": "",
+ "slug": "devil-may-cry-5-devil-hunter-edition-switch-2",
+ "description": "With its signature blend of high-octane action and otherworldly characters, Devil May Cry 5 Devil Hunter Edition harnesses the latest Capcom gaming technology to deliver a graphically groundbreaking action-adventure masterpiece at 60fps in both TV and Handheld modes.",
+ "descriptionEn": "With its signature blend of high-octane action and otherworldly characters, Devil May Cry 5 Devil Hunter Edition harnesses the latest Capcom gaming technology to deliver a graphically groundbreaking action-adventure masterpiece at 60fps in both TV and Handheld modes.",
+ "descriptionKu": "",
+ "cartridgeImage": "",
+ "nintendoCardImage": "/api/files/products/prd_6f3eaa73a1d14946/square-card-111e94355e709ecd.webp",
+ "coverHiResImage": "",
+ "coverImage": "/api/files/products/prd_6f3eaa73a1d14946/cover-ea1e88cd041a84ca.webp",
+ "bannerImages": [],
+ "gallery": [],
+ "youtubeTrailer": "https://www.youtube.com/results?search_query=Devil+May+Cry+5+Special+Edition+official+trailer",
+ "releaseDate": "2026-06-23",
+ "ageRating": "Mature",
+ "genres": [
+  "Action"
+ ],
+ "platform": "switch2",
+ "size": "27.88 GB",
+ "numberOfPlayers": "1",
+ "supportedLanguages": "Japanese, French, German, Italian, Spanish, Korean, Russian, Simplified Chinese, Brazilian Portuguese, Traditional Chinese, American English, Polish",
+ "price": 10250,
+ "cost": 1500,
+ "stock": 999999,
+ "isInfiniteStock": true,
+ "isHidden": true,
+ "displayOrder": 0,
+ "category": "nintendo-switch-games",
+ "categoryId": "nintendo-switch-games",
+ "categoryEn": "",
+ "categoryKu": "",
+ "options": [
+  {
+   "id": "offline_account",
+   "name": "مشترك",
+   "description": "مشترك",
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_account",
+   "name": "خاص بك",
+   "description": "خاص بك",
+   "stock": 9999,
+   "isInfiniteStock": true
+  }
+ ],
+ "types": [
+  {
+   "id": "offline_base",
+   "name": "مشترك — اللعبة الأساسية",
+   "optionId": "offline_account",
+   "price": 10250,
+   "cost": 1500,
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_base",
+   "name": "خاص بك — اللعبة الأساسية",
+   "optionId": "online_account",
+   "price": 18250,
+   "cost": 14250,
+   "stock": 9999,
+   "isInfiniteStock": true
+  }
+ ],
+ "editions": [],
+ "dlcs": [],
+ "isActive": true,
+ "status": "Active",
+ "kind": "account",
+ "trade_value_iqd": 10000,
+ "store_offer_bonus_iqd": 1500,
+ "trade_enabled": true,
+ "trade_value_locked": false,
+ "id": "prd_6f3eaa73a1d14946",
+ "schema_version": 24,
+ "titleAr": "ديفل ماي كراي 5 — إصدار ديفل هنتر",
+ "compatibility": [
+  "Nintendo Switch 2"
+ ],
+ "edition": "Devil Hunter Edition",
+ "developer": "Capcom",
+ "publisher": "CAPCOM",
+ "metacriticUrl": "https://www.metacritic.com/game/devil-may-cry-5-special-edition/",
+ "price_usd": 39.99,
+ "officialUrl": "https://www.nintendo.com/us/store/products/devil-may-cry-5-devil-hunter-edition-switch-2/",
+ "eshopUrl": "https://www.nintendo.com/us/store/products/devil-may-cry-5-devil-hunter-edition-switch-2/",
+ "gameIsOffline": true,
+ "gameIsOnline": false,
+ "gameLanguageLocked": false,
+ "description_short": "أكشن سريع وأسلوب قتال استعراضي على Switch 2 بمعدل 60 FPS في وضعي التلفاز والمحمول.",
+ "description_ar": "نسخة Nintendo Switch 2 الرسمية من لعبة الأكشن السريعة Devil May Cry 5. تقدم قتال السيوف والأسلحة النارية وشخصيات متعددة بأساليب مختلفة، وتؤكد Nintendo وCapcom تشغيلها بمعدل 60 إطاراً في الثانية في وضعي التلفاز والمحمول.",
+ "videos": [
+  {
+   "title": "Official Trailer",
+   "url": "https://www.youtube.com/results?search_query=Devil+May+Cry+5+Special+Edition+official+trailer"
+  }
+ ],
+ "nintendoEshopUrl": "https://www.nintendo.com/us/store/products/devil-may-cry-5-devil-hunter-edition-switch-2/",
+ "nintendoOnlineRequired": false,
+ "nintendoCloudSaves": true,
+ "nintendoGameKeyCard": true,
+ "nintendoPhysicalNeedsDownload": true,
+ "tvMode": true,
+ "tabletopMode": true,
+ "handheldMode": true,
+ "nintendoPlayModes": [
+  "TV mode",
+  "Tabletop mode",
+  "Handheld mode"
+ ],
+ "nintendoNotes": "Nintendo product identity and store facts were verified against the official listing on 2026-09-01. Performance values are included only where an official source publishes them.",
+ "switch2Enhanced": true,
+ "switch2Exclusive": false,
+ "switch2UpgradePrice": 0,
+ "switch2Features": [
+  "Dedicated Switch 2 entry",
+  "High-speed combat focus",
+  "Special Edition packaging"
+ ],
+ "tagline": "Devil May Cry 5 brings stylish action to Nintendo Switch 2.",
+ "fitFor": [
+  "Players who enjoy technical character-action combat",
+  "Players who replay missions to improve style ranks",
+  "Players who want a portable 60 FPS Devil May Cry 5 release"
+ ],
+ "notFitFor": [
+  "Players looking for multiplayer or local co-op",
+  "Players who expect the Nintendo SKU to be titled Special Edition",
+  "Players who cannot download a Game-Key Card installation"
+ ],
+ "playTimeMain": 11,
+ "playTimeFull": 24,
+ "editionsList": [
+  {
+   "name": "Devil Hunter Edition",
+   "contents": [
+    {
+     "label": "Base game"
+    },
+    {
+     "label": "Additional content included with this Nintendo Switch 2 edition"
+    }
+   ]
+  }
+ ],
+ "gameplayPillars": [
+  {
+   "title": "Three distinct hunters",
+   "description": "Dante, Nero, and V use different weapons, abilities, and combat systems."
+  },
+  {
+   "title": "Style-driven combat",
+   "description": "Varied attacks and precise execution raise the style rank."
+  },
+  {
+   "title": "Demonic campaign",
+   "description": "Story missions combine exploration, cinematic encounters, and large boss battles."
+  },
+  {
+   "title": "Portable performance",
+   "description": "Nintendo and Capcom officially state 60 FPS in TV and handheld modes."
+  }
+ ],
+ "worldSummary": "Demon hunters converge on Red Grave City as a massive demonic invasion grows around the Qliphoth tree.",
+ "storyChapters": [
+  {
+   "title": "A demonic crisis begins",
+   "body": "Powerful enemies throw the world into chaos."
+  },
+  {
+   "title": "Fight through urban battlegrounds",
+   "body": "Each mission escalates the spectacle and difficulty."
+  },
+  {
+   "title": "Switch combat styles",
+   "body": "Character variety keeps the action fresh."
+  },
+  {
+   "title": "Push skill higher",
+   "body": "Player improvement unlocks the full joy of the combat system."
+  },
+  {
+   "title": "Close the family conflict",
+   "body": "The story culminates in a dramatic confrontation."
+  }
+ ],
+ "galleryImages": [
+  {
+   "url": "/api/files/products/prd_6f3eaa73a1d14946/gallery-1-b231d41aef35d489.webp",
+   "alt": "Devil May Cry 5 Devil Hunter Edition screenshot 1"
+  },
+  {
+   "url": "/api/files/products/prd_6f3eaa73a1d14946/gallery-2-bdaf1f679b652919.webp",
+   "alt": "Devil May Cry 5 Devil Hunter Edition screenshot 2"
+  },
+  {
+   "url": "/api/files/products/prd_6f3eaa73a1d14946/gallery-3-3c0cac62dd1c48d5.webp",
+   "alt": "Devil May Cry 5 Devil Hunter Edition screenshot 3"
+  },
+  {
+   "url": "/api/files/products/prd_6f3eaa73a1d14946/gallery-4-5c7cb529ce4a0076.webp",
+   "alt": "Devil May Cry 5 Devil Hunter Edition screenshot 4"
+  },
+  {
+   "url": "/api/files/products/prd_6f3eaa73a1d14946/gallery-5-126397c3c15e6d78.webp",
+   "alt": "Devil May Cry 5 Devil Hunter Edition screenshot 5"
+  },
+  {
+   "url": "/api/files/products/prd_6f3eaa73a1d14946/gallery-6-c8f3a8dea6f814b8.webp",
+   "alt": "Devil May Cry 5 Devil Hunter Edition screenshot 6"
+  }
+ ],
+ "features": [
+  "60 FPS in both TV and handheld modes",
+  "Multiple playable characters with distinct combat styles",
+  "Sword-and-gun stylish action combat",
+  "Additional Devil Hunter Edition content",
+  "Complete In-game Unlock Bundle available as DLC"
+ ],
+ "perfResolutionDocked": "Not published by CAPCOM",
+ "perfResolutionHandheld": "Not published by CAPCOM",
+ "perfFps": "60",
+ "perfNotes": "Nintendo and CAPCOM publish 60 FPS in TV and handheld modes; exact resolutions are not published.",
+ "devicePerformance": [
+  {
+   "device": "Nintendo Switch 2",
+   "deviceSlug": "nintendo-switch-2",
+   "deviceModel": "Nintendo Switch 2",
+   "informationStatus": "available",
+   "handheld": {
+    "supported": true,
+    "resolution": "Not published by CAPCOM",
+    "fps": "60",
+    "mode": "Handheld"
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "Not published by CAPCOM",
+    "fps": "60",
+    "mode": "TV"
+   },
+   "sourceName": "Nintendo Australia",
+   "sourceUrl": "https://www.nintendo.com/au/games/nintendo-switch-2/devil-may-cry-5-devil-hunter-edition/",
+   "verificationStatus": "official",
+   "verifiedAt": "2026-09-01",
+   "performanceNotes": "Officially stated 60 FPS in both TV and handheld modes; exact resolution is not published."
+  }
+ ],
+ "faq": [
+  {
+   "q": "Is this the Special Edition?",
+   "a": "The official Nintendo Switch 2 product title is Devil May Cry 5 Devil Hunter Edition; the catalogue has been corrected to that SKU identity."
+  },
+  {
+   "q": "What frame rate does it support?",
+   "a": "Nintendo and Capcom state 60 FPS in both TV and handheld modes."
+  },
+  {
+   "q": "What resolution does it use?",
+   "a": "The official sources reviewed do not publish exact rendering or output resolutions."
+  },
+  {
+   "q": "When did it release?",
+   "a": "The digital version released June 23, 2026; Capcom lists the physical version for August 28, 2026."
+  },
+  {
+   "q": "Is it multiplayer?",
+   "a": "Nintendo lists one player; this is a single-player action game."
+  }
+ ],
+ "mpLocalPlayers": 1,
+ "mpOnlinePlayers": 0,
+ "mpCoop": false,
+ "mpCompetitive": false,
+ "mpLocalWireless": false,
+ "mpSplitScreen": false,
+ "image": "",
+ "banner": "",
+ "schemaId": "",
+ "batchImport": true,
+ "createdAt": "2026-08-28T18:36:20.241Z",
+ "updatedAt": "2026-09-01T09:48:59.596Z",
+ "nsuid": "70010000113876",
+ "product_code": "BEEPABQBA",
+ "title_id": "0400a2b026600000",
+ "downloadSizeGb": 27.88,
+ "requiredSpaceGb": 27.88,
+ "microSdRecommended": true,
+ "arabicSupport": false,
+ "dlc": [
+  {
+   "name": "Complete In-game Unlock Bundle",
+   "description": ""
+  }
+ ],
+ "languagesText": [
+  "Japanese",
+  "French",
+  "German",
+  "Italian",
+  "Spanish",
+  "Korean",
+  "Russian",
+  "Simplified Chinese",
+  "Brazilian Portuguese",
+  "Traditional Chinese",
+  "American English",
+  "Polish"
+ ],
+ "storageNotes": "Nintendo lists a 27.88 GB download. Free-space requirements can increase with updates.",
+ "seriesName": "Devil May Cry",
+ "studioName": "CAPCOM",
+ "timeline": [
+  {
+   "date": "2026-06-10",
+   "kind": "announcement",
+   "title": "Capcom launch announcement"
+  },
+  {
+   "date": "2026-06-23",
+   "kind": "release",
+   "title": "Digital release"
+  },
+  {
+   "date": "2026-08-28",
+   "kind": "release",
+   "title": "Physical release",
+   "detail": "Physical release date published by Capcom."
+  }
+ ],
+ "guides": [
+  {
+   "title": "Official Nintendo product information",
+   "summary": "Official performance, player count, languages, storage, and release data.",
+   "url": "https://www.nintendo.com/au/games/nintendo-switch-2/devil-may-cry-5-devil-hunter-edition/"
+  }
+ ],
+ "sources": [
+  {
+   "name": "Nintendo eShop (US)",
+   "url": "https://www.nintendo.com/us/store/products/devil-may-cry-5-devil-hunter-edition-switch-2/"
+  },
+  {
+   "name": "Nintendo Australia",
+   "url": "https://www.nintendo.com/au/games/nintendo-switch-2/devil-may-cry-5-devil-hunter-edition/"
+  },
+  {
+   "name": "CAPCOM launch announcement",
+   "url": "https://www.capcom.co.jp/ir/english/news/html/260610b.html"
+  }
+ ]
+}

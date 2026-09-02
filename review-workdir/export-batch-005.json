@@ -1,0 +1,3076 @@
+{
+ "batch": "005",
+ "generatedAt": "2026-09-02T02:28:20.385Z",
+ "totalGames": 310,
+ "reviewedSoFar": 18,
+ "games": [
+  {
+   "id": "prd_9c97bcae3d9e4162",
+   "slug": "donkey-kong-bananza-switch-2",
+   "title": "Donkey Kong Bananza [Switch 2]",
+   "platform": "switch2",
+   "isHidden": false,
+   "hash": "1528a7e4fa2eab18883b684df0e5983a40908dfdadedbefc9443f8987aa0f469",
+   "images": [
+    {
+     "role": "front-box",
+     "field": "cartridgeImage",
+     "url": "https://banan.to/api/files/products/prd_9c97bcae3d9e4162/front-75dd948eb1c4f0a6.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 84051,
+     "width": 435,
+     "height": 705,
+     "thumb": "review-workdir/thumbs/batch-005/donkey-kong-bananza-switch-2__front-box-0.png"
+    },
+    {
+     "role": "front-box",
+     "field": "box_front_url",
+     "url": "https://cdn.mobygames.com/covers/20423223-donkey-kong-bananza-nintendo-switch-2-front-cover.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 100985,
+     "width": 495,
+     "height": 800,
+     "thumb": "review-workdir/thumbs/batch-005/donkey-kong-bananza-switch-2__front-box-1.png"
+    },
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://banan.to/api/files/products/prd_9c97bcae3d9e4162/square-d7dbc59a63b5dc69.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 204700,
+     "width": 718,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-005/donkey-kong-bananza-switch-2__square-card-2.png"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://banan.to/api/files/products/prd_9c97bcae3d9e4162/cover-fbcf57e51562d382.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 5087462,
+     "width": 3840,
+     "height": 2160,
+     "thumb": "review-workdir/thumbs/batch-005/donkey-kong-bananza-switch-2__detail-cover-3.png"
+    },
+    {
+     "role": "3d-texture",
+     "field": "coverHiResImage",
+     "url": "https://banan.to/api/files/products/prd_9c97bcae3d9e4162/3d-texture-595d2368941f0664.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 2504724,
+     "width": 4953,
+     "height": 3800,
+     "thumb": "review-workdir/thumbs/batch-005/donkey-kong-bananza-switch-2__3d-texture-4.png"
+    },
+    {
+     "role": "listing",
+     "field": "image",
+     "url": "https://banan.to/api/files/products/prd_9c97bcae3d9e4162/cover-fbcf57e51562d382.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 5087462,
+     "width": 3840,
+     "height": 2160,
+     "thumb": "review-workdir/thumbs/batch-005/donkey-kong-bananza-switch-2__listing-5.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[0]",
+     "url": "https://banan.to/api/files/products/prd_9c97bcae3d9e4162/banner-0-e2389353dce14b5f.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[1]",
+     "url": "https://banan.to/api/files/products/prd_9c97bcae3d9e4162/banner-1-2dc7c673a626a908.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[2]",
+     "url": "https://banan.to/api/files/products/prd_9c97bcae3d9e4162/banner-2-7881f75ff8ce8888.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[3]",
+     "url": "https://banan.to/api/files/products/prd_9c97bcae3d9e4162/banner-3-9dc65b3be190475a.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing/pmp-nkscdulw/deep-underground/underground-canyon-medium-up-2x",
+     "status": 200,
+     "contentType": "image/png",
+     "bytes": 584396,
+     "width": 1840,
+     "height": 956,
+     "thumb": "review-workdir/thumbs/batch-005/donkey-kong-bananza-switch-2__gallery-10.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[1]",
+     "url": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing/pmp-nkscdulw/deep-underground/underground-forest-medium-up-2x",
+     "status": 200,
+     "contentType": "image/png",
+     "bytes": 2561357,
+     "width": 1840,
+     "height": 954,
+     "thumb": "review-workdir/thumbs/batch-005/donkey-kong-bananza-switch-2__gallery-11.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[2]",
+     "url": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing/pmp-nkscdulw/deep-underground/underground-resort-medium-up-2x",
+     "status": 200,
+     "contentType": "image/png",
+     "bytes": 2106092,
+     "width": 1840,
+     "height": 956,
+     "thumb": "review-workdir/thumbs/batch-005/donkey-kong-bananza-switch-2__gallery-12.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[3]",
+     "url": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing/pmp-nkscdulw/deep-underground/underground-tempest-medium-up-2x",
+     "status": 200,
+     "contentType": "image/png",
+     "bytes": 828818,
+     "width": 1840,
+     "height": 964,
+     "thumb": "review-workdir/thumbs/batch-005/donkey-kong-bananza-switch-2__gallery-13.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[4]",
+     "url": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing/pmp-nkscdulw/companion/dkb-transform-kong-2x",
+     "status": 200,
+     "contentType": "image/png",
+     "bytes": 4001342,
+     "width": 1604,
+     "height": 1632,
+     "thumb": "review-workdir/thumbs/batch-005/donkey-kong-bananza-switch-2__gallery-14.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[5]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000096809/3c8219fbdcd3bdd0ebd6239cf32c651fe10f2157aa7730fcc6a7d96cd27460e5",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 252170,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-005/donkey-kong-bananza-switch-2__gallery-15.png"
+    }
+   ],
+   "record": {
+    "title": "Donkey Kong Bananza [Switch 2]",
+    "titleEn": "Donkey Kong Bananza [Switch 2]",
+    "titleKu": "Donkey Kong Bananza",
+    "slug": "donkey-kong-bananza-switch-2",
+    "description": "A destruction-driven 3D action-platformer built for Nintendo Switch 2. Donkey Kong and young Pauline descend through a layered underground world, smashing terrain, collecting Banandium Gems and using Bananza transformations.",
+    "descriptionEn": "A destruction-driven 3D action-platformer built for Nintendo Switch 2. Donkey Kong and young Pauline descend through a layered underground world, smashing terrain, collecting Banandium Gems and using Bananza transformations.",
+    "descriptionKu": "A destruction-driven 3D action-platformer built for Nintendo Switch 2. Donkey Kong and young Pauline descend through a layered underground world, smashing terrain, collecting Banandium Gems and using Bananza transformations.",
+    "cartridgeImage": "/api/files/products/prd_9c97bcae3d9e4162/front-75dd948eb1c4f0a6.jpg",
+    "nintendoCardImage": "/api/files/products/prd_9c97bcae3d9e4162/square-d7dbc59a63b5dc69.jpg",
+    "coverHiResImage": "/api/files/products/prd_9c97bcae3d9e4162/3d-texture-595d2368941f0664.webp",
+    "coverImage": "/api/files/products/prd_9c97bcae3d9e4162/cover-fbcf57e51562d382.jpg",
+    "bannerImages": [
+     "/api/files/products/prd_9c97bcae3d9e4162/banner-0-e2389353dce14b5f.avif",
+     "/api/files/products/prd_9c97bcae3d9e4162/banner-1-2dc7c673a626a908.avif",
+     "/api/files/products/prd_9c97bcae3d9e4162/banner-2-7881f75ff8ce8888.avif",
+     "/api/files/products/prd_9c97bcae3d9e4162/banner-3-9dc65b3be190475a.avif",
+     "/api/files/products/prd_9c97bcae3d9e4162/banner-4-93e84a02258a164b.avif"
+    ],
+    "gallery": [],
+    "youtubeTrailer": "https://www.nintendo.com/us/gaming-systems/switch-2/featured-games/donkey-kong-bananza/",
+    "releaseDate": "2025-07-17",
+    "ageRating": "ESRB E10+ Fantasy Violence / In-Game Purchases",
+    "metacriticRating": 91,
+    "genres": [
+     "3D Platformer",
+     "Action Adventure",
+     "Exploration"
+    ],
+    "platform": "switch2",
+    "size": 9,
+    "numberOfPlayers": "1–2",
+    "supportedLanguages": "Japanese / English; French / German / Italian / Spanish / Portuguese / Dutch / Russian; Korean / Simplified Chinese / Traditional Chinese / Polish / Thai",
+    "hardwareModel": "",
+    "colorEdition": "",
+    "storageCapacity": "",
+    "screenSpecs": "",
+    "batteryLife": "",
+    "boxContents": [],
+    "boxContentsText": "",
+    "warrantyCondition": "",
+    "connectivity": "",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "Global",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "",
+    "redemptionSteps": [],
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 17500,
+    "cost": 1500,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": false,
+    "displayOrder": 0,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "Offline Account",
+      "description": "Offline account access supplied for this game",
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_account",
+      "name": "Online Account",
+      "description": "Online account access supplied for this game",
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "types": [
+     {
+      "id": "standard_offline",
+      "name": "Offline Account",
+      "optionId": "offline_account",
+      "price": "17500",
+      "cost": 1500,
+      "description": "Offline Account: supplier cost 1,500 IQD; selling price 21,000 IQD.",
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "dlc_offline",
+      "name": "Offline Special/DLC",
+      "optionId": "offline_account",
+      "price": "21000",
+      "cost": 3500,
+      "description": "Offline Special/DLC: supplier cost 3,500 IQD; selling price 24,000 IQD.",
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "standard_online",
+      "name": "Online Account",
+      "optionId": "online_account",
+      "price": "45000",
+      "cost": 27250,
+      "description": "Online Account: supplier cost 27,250 IQD; selling price 37,250 IQD.",
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "dlc_online",
+      "name": "Online Deluxe/DLC",
+      "optionId": "online_account",
+      "price": "55000",
+      "cost": 38000,
+      "description": "Online Deluxe/DLC: supplier cost 38,000 IQD; selling price 48,000 IQD.",
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "Active",
+    "kind": "account",
+    "trade_value_iqd": 62000,
+    "store_offer_bonus_iqd": 10000,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "id": "prd_9c97bcae3d9e4162",
+    "schema_version": 23,
+    "titleAr": "دونكي كونغ بانانزا",
+    "compatibility": [
+     "Nintendo Switch 2"
+    ],
+    "edition": "Standard / available account variants",
+    "developer": "Nintendo EPD",
+    "publisher": "Nintendo",
+    "metacriticUrl": "https://www.metacritic.com/game/donkey-kong-bananza/",
+    "opencriticRating": 91,
+    "userScore": 8.9,
+    "price_usd": 69.99,
+    "officialUrl": "https://www.nintendo.com/us/gaming-systems/switch-2/featured-games/donkey-kong-bananza/",
+    "eshopUrl": "https://www.nintendo.com/us/store/products/70010000096809/",
+    "gameIsOffline": true,
+    "gameIsOnline": false,
+    "gameLanguageLocked": false,
+    "description_short": "A destruction-driven 3D action-platformer built for Nintendo Switch 2. Donkey Kong and young Pauline descend through a layered underground world, smashing terrain, collecting Banandium Gems and using Bananza transformations.",
+    "description_ar": "لعبة منصات ومغامرات ثلاثية الأبعاد تعتمد على تدمير البيئة. ينطلق Donkey Kong مع Pauline عبر طبقات عالم ضخم تحت الأرض، ويحطم الصخور والجدران ويجمع Banandium Gems ويستخدم تحولات Bananza، مع تعاون محلي لشخصين وDLC باسم DK Island & Emerald Rush.",
+    "box_front_url": "https://cdn.mobygames.com/covers/20423223-donkey-kong-bananza-nintendo-switch-2-front-cover.jpg",
+    "box_back_url": "https://gamefaqs.gamespot.com/a/box/2/1/5/1109215_back.jpg",
+    "galleryImages": [
+     {
+      "url": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing/pmp-nkscdulw/deep-underground/underground-canyon-medium-up-2x",
+      "alt": "Distinct verified game media image 1"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing/pmp-nkscdulw/deep-underground/underground-forest-medium-up-2x",
+      "alt": "Distinct verified game media image 2"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing/pmp-nkscdulw/deep-underground/underground-resort-medium-up-2x",
+      "alt": "Distinct verified game media image 3"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing/pmp-nkscdulw/deep-underground/underground-tempest-medium-up-2x",
+      "alt": "Distinct verified game media image 4"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing/pmp-nkscdulw/companion/dkb-transform-kong-2x",
+      "alt": "Distinct verified game media image 5"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000096809/3c8219fbdcd3bdd0ebd6239cf32c651fe10f2157aa7730fcc6a7d96cd27460e5",
+      "alt": "Distinct verified game media image 6"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000096809/c111819ae2b07f446ab92d64c8d37e9ef8e541e30b687121fa6d5976096b61f9",
+      "alt": "Distinct verified game media image 7"
+     }
+    ],
+    "videos": [
+     {
+      "title": "Official trailer",
+      "url": "https://www.nintendo.com/us/gaming-systems/switch-2/featured-games/donkey-kong-bananza/"
+     },
+     {
+      "title": "Nintendo / publisher overview",
+      "url": "https://www.nintendo.com/us/store/products/70010000096809/"
+     },
+     {
+      "title": "Gameplay and feature media",
+      "url": "https://www.nintendo.com/us/store/products/70010000096809/"
+     }
+    ],
+    "nsuid": "See official Nintendo product page",
+    "title_id": "Nintendo internal title ID not exposed as a user-facing retail identifier",
+    "product_code": "Platform retail/digital product code varies by region",
+    "nintendoEshopUrl": "https://www.nintendo.com/us/store/products/70010000096809/",
+    "nintendoOnlineRequired": false,
+    "nintendoCloudSaves": true,
+    "nintendoGameKeyCard": false,
+    "nintendoPhysicalNeedsDownload": false,
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": true,
+    "nintendoPlayModes": "TV / Tabletop / Handheld",
+    "nintendoNotes": "Verified platform/store information for Donkey Kong Bananza. Online features require Nintendo Switch Online where applicable. Storage and supported-language values are taken from current Nintendo/publisher listings.",
+    "switch2Enhanced": false,
+    "switch2Exclusive": true,
+    "switch2UpgradePrice": 0,
+    "switch2Features": [
+     "Terrain destruction as a core traversal mechanic",
+     "Bananza transformations powered by Pauline's singing",
+     "Two-player co-op plus GameShare support"
+    ],
+    "tagline": "Smash through a world built to be broken.",
+    "fitFor": [
+     "Players who love exploratory 3D platformers",
+     "Completionists who enjoy collectibles and secrets",
+     "Families wanting a polished two-player option"
+    ],
+    "notFitFor": [
+     "Players who dislike collectible-heavy platformers",
+     "Players who demand perfectly locked performance at all times",
+     "Players who prefer traditional 2D Donkey Kong gameplay"
+    ],
+    "playTimeMain": 19,
+    "playTimeFull": 49,
+    "editionsList": [
+     {
+      "name": "Standard Edition",
+      "coverUrl": "https://cdn.mobygames.com/covers/20423223-donkey-kong-bananza-nintendo-switch-2-front-cover.jpg",
+      "contents": [
+       {
+        "label": "Base game"
+       },
+       {
+        "label": "Standard content"
+       },
+       {
+        "label": "Platform features"
+       }
+      ]
+     },
+     {
+      "name": "DLC / Special Edition",
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_1%3A1%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000096809/3c8219fbdcd3bdd0ebd6239cf32c651fe10f2157aa7730fcc6a7d96cd27460e5",
+      "contents": [
+       {
+        "label": "DK Island & Emerald Rush"
+       },
+       {
+        "label": "Base game + DLC account option"
+       },
+       {
+        "label": "Additional edition content"
+       }
+      ]
+     },
+     {
+      "name": "Base + DK Island & Emerald Rush",
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000096809/c111819ae2b07f446ab92d64c8d37e9ef8e541e30b687121fa6d5976096b61f9",
+      "contents": [
+       {
+        "label": "Base game"
+       },
+       {
+        "label": "DK Island"
+       },
+       {
+        "label": "Emerald Rush"
+       }
+      ]
+     }
+    ],
+    "gameplayPillars": [
+     {
+      "title": "Break almost everything",
+      "description": "Punch through walls, tunnel downward and tear chunks of terrain free to use as weapons or traversal tools.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000096809/3c8219fbdcd3bdd0ebd6239cf32c651fe10f2157aa7730fcc6a7d96cd27460e5"
+     },
+     {
+      "title": "Transform with Bananza",
+      "description": "Pauline's songs unlock powerful forms including Kong, Zebra and Ostrich Bananza.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000096809/c111819ae2b07f446ab92d64c8d37e9ef8e541e30b687121fa6d5976096b61f9"
+     },
+     {
+      "title": "Explore every layer",
+      "description": "Each underground layer hides Banandium Gems, fossils, challenges, characters and alternate routes.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000096809/b8ae4b278d62fb9683adf9939c79a3fc5ac71a671d1d644eb8774c4904e34ee2"
+     }
+    ],
+    "worldSummary": "The Underground World is divided into distinct layers ranging from canyons and forests to frozen regions, resorts and dangerous industrial areas. DK and Pauline descend toward the Planet Core while Void Company races to claim its wish-granting power.",
+    "storyChapters": [
+     {
+      "title": "The descent begins",
+      "body": "DK and Pauline enter the Underground World and begin moving toward the Planet Core.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000096809/1db3e042985d95332cb7750d9353a343b33415b12fbb82be6bffbcf0848949c3"
+     },
+     {
+      "title": "Void Company",
+      "body": "Void Kong and his company race the heroes through the layers in pursuit of the Core's power.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000096809/eedd5cf569384e972df7ee8cebb8a84ec86a7ab7f382f3f34b40e2cc4d22b8e1"
+     },
+     {
+      "title": "Planet Core",
+      "body": "The adventure culminates deep below the surface where the conflict over the world's greatest treasure is resolved.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000096809/760dd462413e23f48dd733041689430bf6446b9f88494c4edee7a44fd86ebabf"
+     }
+    ],
+    "features": [
+     "Terrain destruction as a core traversal mechanic",
+     "Bananza transformations powered by Pauline's singing",
+     "Two-player co-op plus GameShare support"
+    ],
+    "perfResolutionDocked": "1080p–1200p dynamic class",
+    "perfResolutionHandheld": "1080p-class dynamic",
+    "perfFps": "60 target",
+    "perfHdr": true,
+    "perfNotes": "Nintendo targets 60 fps. Technical analysis shows a dynamic-resolution presentation with occasional brief drops during heavy destruction and effects.",
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "hardwareId": "prd_acf4c89908764c62",
+      "informationStatus": "Available / verified",
+      "unavailableReason": "No required native mode is unavailable.",
+      "handheld": {
+       "supported": true,
+       "resolution": "1080p-class dynamic",
+       "resolutionDynamic": true,
+       "renderingResolution": "1080p-class dynamic",
+       "outputResolution": "1920x1080",
+       "fps": "60 target",
+       "fpsMin": "60 target",
+       "fpsMax": "60 target",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Handheld",
+       "notes": "Nintendo targets 60 fps. Technical analysis shows a dynamic-resolution presentation with occasional brief drops during heavy destruction and effects."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p–1200p dynamic class",
+       "resolutionDynamic": true,
+       "renderingResolution": "1080p–1200p dynamic class",
+       "outputResolution": "1920x1080",
+       "fps": "60 target",
+       "fpsMin": "60 target",
+       "fpsMax": "60 target",
+       "refreshRate": "60",
+       "hdr": true,
+       "vrr": false,
+       "mode": "TV / Docked",
+       "notes": "Nintendo targets 60 fps. Technical analysis shows a dynamic-resolution presentation with occasional brief drops during heavy destruction and effects."
+      },
+      "modes": [
+       {
+        "name": "Standard",
+        "handheldResolution": "1080p-class dynamic",
+        "handheldFps": "60 target",
+        "tvResolution": "1080p–1200p dynamic class",
+        "tvFps": "60 target",
+        "hdr": false,
+        "vrr": false,
+        "notes": "Primary documented performance mode."
+       }
+      ],
+      "upscaling": "Platform-specific reconstruction / scaling where used",
+      "rayTracing": false,
+      "rayTracingMode": "No verified ray-tracing mode",
+      "loadingTime": "Fast SSD-based loading; exact scene-dependent time varies",
+      "loadingNotes": "Loading varies by scene and save location; no single universal loading time is published.",
+      "gameVersion": "Current retail build",
+      "patchVersion": "Current available update",
+      "testedDate": "2026-08-27",
+      "sourceName": "Nintendo Store",
+      "sourceUrl": "https://www.nintendo.com/us/store/products/70010000096809/",
+      "verifiedAt": "2026-08-27",
+      "verificationStatus": "Verified / sourced",
+      "performanceNotes": "Nintendo targets 60 fps. Technical analysis shows a dynamic-resolution presentation with occasional brief drops during heavy destruction and effects."
+     }
+    ],
+    "downloadSizeGb": 9,
+    "requiredSpaceGb": 9,
+    "microSdRecommended": false,
+    "storageNotes": "Nintendo lists 9 GB for the base game. DK Island & Emerald Rush adds about 919 MB. microSD Express is optional if additional storage is needed.",
+    "languagesAudio": [
+     "English",
+     "Japanese",
+     "Character vocalizations / songs"
+    ],
+    "languagesText": [
+     "Japanese / English",
+     "French / German / Italian / Spanish / Portuguese / Dutch / Russian",
+     "Korean / Simplified Chinese / Traditional Chinese / Polish / Thai"
+    ],
+    "arabicSupport": false,
+    "mpLocalPlayers": true,
+    "mpOnlinePlayers": false,
+    "mpCoop": true,
+    "mpCompetitive": false,
+    "mpSplitScreen": false,
+    "mpLocalWireless": false,
+    "dlc": [
+     {
+      "name": "DK Island & Emerald Rush",
+      "description": "Paid DLC released September 12, 2025; adds DK Island and the repeatable Emerald Rush mode.",
+      "coverUrl": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing/pmp-nkscdulw/deep-underground/underground-resort-medium-up-2x"
+     },
+     {
+      "name": "Emerald Rush events",
+      "description": "Periodic limited-time events offer special challenges and rewards.",
+      "coverUrl": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing/pmp-nkscdulw/deep-underground/underground-tempest-medium-up-2x"
+     },
+     {
+      "name": "amiibo support",
+      "description": "Compatible amiibo can provide in-game benefits; this is a feature rather than paid DLC.",
+      "coverUrl": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing/pmp-nkscdulw/companion/dkb-transform-kong-2x"
+     }
+    ],
+    "guides": [
+     {
+      "title": "Official product information",
+      "summary": "Platform, release, storage, language and feature information for Donkey Kong Bananza.",
+      "url": "https://www.nintendo.com/us/store/products/70010000096809/"
+     },
+     {
+      "title": "Official game overview",
+      "summary": "Publisher/developer overview of story, gameplay and features.",
+      "url": "https://www.nintendo.com/us/gaming-systems/switch-2/featured-games/donkey-kong-bananza/"
+     },
+     {
+      "title": "Reviews and playtime reference",
+      "summary": "Critic/user scores and completion-time context.",
+      "url": "https://www.dekudeals.com/items/donkey-kong-bananza"
+     }
+    ],
+    "completionMain": 19,
+    "completionExtras": 30.5,
+    "completionAll": 49,
+    "faq": [
+     {
+      "q": "How many players are supported?",
+      "a": "The base game supports 1–2 players on one system; the second player controls Pauline."
+     },
+     {
+      "q": "What does the DLC add?",
+      "a": "DK Island & Emerald Rush adds DK Island, character interactions, statues, bonus stages and the repeatable Emerald Rush challenge mode."
+     },
+     {
+      "q": "How large is the game?",
+      "a": "Nintendo lists 9 GB for the base game; the DLC is approximately 919 MB."
+     }
+    ],
+    "verdictScore": 9.2,
+    "verdictSummary": "One of Nintendo's strongest modern 3D platformers, built around an unusually tactile destruction system and constant discovery. Its combination of movement, smashing, transformations and layered exploration gives Donkey Kong a distinct 3D identity.",
+    "verdictPros": [
+     "Exceptional destruction and exploration",
+     "Creative Bananza transformations",
+     "Excellent level design and polish"
+    ],
+    "verdictCons": [
+     "Occasional performance dips",
+     "Completion can become collectible-heavy",
+     "Paid DLC is separate"
+    ],
+    "reviews": [
+     {
+      "source": "Metacritic",
+      "score": "91/100",
+      "quote": "Universal acclaim on Nintendo Switch 2.",
+      "url": "https://www.metacritic.com/game/donkey-kong-bananza/"
+     },
+     {
+      "source": "OpenCritic",
+      "score": "91/100",
+      "quote": "Top-tier critic aggregate.",
+      "url": "https://opencritic.com/game/18500/donkey-kong-bananza"
+     },
+     {
+      "source": "Metacritic users",
+      "score": "8.9/10",
+      "quote": "Generally favorable player score.",
+      "url": "https://www.metacritic.com/game/donkey-kong-bananza/"
+     }
+    ],
+    "timeline": [
+     {
+      "date": "2025-04-02",
+      "title": "Game revealed",
+      "body": "Nintendo introduced Donkey Kong Bananza for Switch 2."
+     },
+     {
+      "date": "2025-07-17",
+      "title": "Worldwide release",
+      "body": "Donkey Kong Bananza launched for Nintendo Switch 2."
+     },
+     {
+      "date": "2025-09-12",
+      "title": "DK Island & Emerald Rush",
+      "body": "Paid DLC launched worldwide."
+     }
+    ],
+    "patchNotes": [
+     {
+      "version": "Launch version",
+      "date": "2025-07-17",
+      "body": "Base adventure released."
+     },
+     {
+      "version": "DK Island & Emerald Rush",
+      "date": "2025-09-12",
+      "body": "Added DK Island and Emerald Rush."
+     },
+     {
+      "version": "Emerald Rush events",
+      "date": "2026",
+      "body": "Nintendo continued periodic challenge events and special rewards."
+     }
+    ],
+    "soundtrack": [
+     {
+      "title": "Donkey Kong Bananza Main Theme",
+      "url": "https://www.nintendo.com/us/gaming-systems/switch-2/featured-games/donkey-kong-bananza/"
+     },
+     {
+      "title": "Bananza transformation songs",
+      "url": "https://www.nintendo.com/us/gaming-systems/switch-2/featured-games/donkey-kong-bananza/"
+     },
+     {
+      "title": "DK Island music",
+      "url": "https://www.nintendo.com/us/gaming-systems/switch-2/featured-games/donkey-kong-bananza/"
+     }
+    ],
+    "seriesName": "Donkey Kong Bananza",
+    "seriesEntries": [
+     "Donkey Kong Country: Tropical Freeze",
+     "Donkey Kong Bananza",
+     "Mario vs. Donkey Kong"
+    ],
+    "studioName": "Nintendo EPD",
+    "studioUrl": "https://www.nintendo.co.jp/",
+    "studioLocation": "Kyoto, Japan",
+    "studioAbout": "Nintendo's internal development organization; the Bananza team built a destruction-heavy 3D platforming system specifically around Switch 2.",
+    "setupNeeds": [
+     "Nintendo Switch 2",
+     "9 GB free storage for base game",
+     "Additional storage for DLC; compatible controller for local co-op"
+    ],
+    "sources": [
+     {
+      "name": "Nintendo Store",
+      "url": "https://www.nintendo.com/us/store/products/70010000096809/"
+     },
+     {
+      "name": "Nintendo DLC page",
+      "url": "https://www.nintendo.com/us/store/products/donkey-kong-bananza-dk-island-and-emerald-rush-70050000062442-switch-2/"
+     },
+     {
+      "name": "Deku Deals",
+      "url": "https://www.dekudeals.com/items/donkey-kong-bananza"
+     }
+    ],
+    "boxContentsList": "[Circular]",
+    "image": "/api/files/products/prd_9c97bcae3d9e4162/cover-fbcf57e51562d382.jpg",
+    "banner": "/api/files/products/prd_9c97bcae3d9e4162/banner-0-e2389353dce14b5f.avif",
+    "schemaId": "",
+    "createdAt": "2026-08-27T00:27:57.072Z",
+    "created_at": "2026-08-27T00:27:57.072Z",
+    "updatedAt": "2026-08-27T00:27:57.072Z",
+    "updated_at": "2026-08-27T00:27:57.072Z",
+    "badgeEn": "وفر 40%",
+    "badgeKu": "وفر 40%",
+    "featuresEn": [
+     "Terrain destruction as a core traversal mechanic",
+     "Bananza transformations powered by Pauline's singing",
+     "Two-player co-op plus GameShare support"
+    ],
+    "featuresKu": [
+     "Terrain destruction as a core traversal mechanic",
+     "Bananza transformations powered by Pauline's singing",
+     "Two-player co-op plus GameShare support"
+    ],
+    "boxFrontUrl": "https://cdn.mobygames.com/covers/20423223-donkey-kong-bananza-nintendo-switch-2-front-cover.jpg",
+    "sales": 0,
+    "images": [],
+    "modes": [],
+    "game_id": "gme_e7792b4272be4c26"
+   }
+  },
+  {
+   "id": "prd_db09416253cf4760",
+   "slug": "ea-sports-fc-25",
+   "title": "EA SPORTS FC 25",
+   "platform": "switch1",
+   "isHidden": true,
+   "hash": "b3af723da87f2cc1eda5a4e2296d0e5165add87766b008ffe670939abca8c48a",
+   "images": [],
+   "record": {
+    "title": "EA SPORTS FC 25",
+    "titleEn": "EA SPORTS FC 25",
+    "titleKu": "",
+    "slug": "ea-sports-fc-25",
+    "description": "EA SPORTS FC 25 delivers licensed football clubs, leagues, players, career and competitive modes on Nintendo hardware. Players choose teams and competitions across licensed leagues. Updated rosters, kits, competitions, and mechanical changes define each annual release.",
+    "descriptionEn": "EA SPORTS FC 25 delivers licensed football clubs, leagues, players, career and competitive modes on Nintendo hardware. Players choose teams and competitions across licensed leagues. Updated rosters, kits, competitions, and mechanical changes define each annual release.",
+    "descriptionKu": "",
+    "cartridgeImage": "",
+    "nintendoCardImage": "",
+    "coverHiResImage": "",
+    "coverImage": "",
+    "bannerImages": [
+     ""
+    ],
+    "gallery": [],
+    "youtubeTrailer": "",
+    "releaseDate": "2024-09-27",
+    "ageRating": "ESRB E / PEGI 3",
+    "metacriticRating": "85",
+    "genres": [
+     "Sports",
+     "Football / Soccer"
+    ],
+    "platform": "switch1",
+    "size": 32.1,
+    "numberOfPlayers": "Single system (1-4) / Local wireless and online multiplayer depending on mode",
+    "supportedLanguages": "Official supported language list varies by region; see the publisher page linked in Sources.",
+    "hardwareModel": "",
+    "colorEdition": "",
+    "storageCapacity": "",
+    "screenSpecs": "",
+    "batteryLife": "",
+    "boxContents": [],
+    "boxContentsText": "",
+    "warrantyCondition": "",
+    "connectivity": "",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "Global",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "",
+    "redemptionSteps": [],
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 8500,
+    "cost": 1750,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": true,
+    "displayOrder": 0,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "مشترك",
+      "description": "مشترك",
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_account",
+      "name": "خاص بك",
+      "description": "خاص بك",
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "types": [
+     {
+      "id": "offline_base",
+      "name": "مشترك — اللعبة الأساسية",
+      "optionId": "offline_account",
+      "price": 8500,
+      "cost": 1750,
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "offline_extras",
+      "name": "مشترك — مع الإضافات",
+      "optionId": "offline_account",
+      "price": 17000,
+      "cost": 6000,
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_extras",
+      "name": "خاص بك — مع الإضافات",
+      "optionId": "online_account",
+      "price": 32750,
+      "cost": 25500,
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "Active",
+    "kind": "account",
+    "trade_value_iqd": 20250,
+    "store_offer_bonus_iqd": 3500,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "id": "prd_db09416253cf4760",
+    "schema_version": 24,
+    "titleAr": "EA SPORTS FC 25",
+    "compatibility": [
+     "Nintendo Switch",
+     "Nintendo Switch 2 compatibility supported through the Switch version"
+    ],
+    "edition": "Standard / Store Variants",
+    "developer": "EA SPORTS",
+    "publisher": "Electronic Arts",
+    "seriesName": "EA SPORTS FC 25",
+    "price_usd": 59.99,
+    "officialUrl": "https://www.nintendo.com/us/store/products/ea-sports-fc-25-switch/",
+    "eshopUrl": "https://www.nintendo.com/us/store/products/ea-sports-fc-25-switch/",
+    "gameIsOffline": true,
+    "gameIsOnline": true,
+    "gameLanguageLocked": false,
+    "description_short": "EA SPORTS FC 25 delivers licensed football clubs, leagues, players, career and competitive modes on Nintendo hardware.",
+    "description_ar": "EA SPORTS FC 25 — EA SPORTS FC 25 delivers licensed football clubs, leagues, players, career and competitive modes on Nintendo hardware.",
+    "languagesText": [
+     "See official supported languages on the linked Nintendo/publisher product page"
+    ],
+    "languagesAudio": [
+     "Audio language availability varies by title and region; see official product information"
+    ],
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": true,
+    "nintendoPlayModes": "TV / Tabletop / Handheld",
+    "nintendoOnlineRequired": true,
+    "nintendoCloudSaves": true,
+    "nintendoGameKeyCard": false,
+    "nintendoPhysicalNeedsDownload": false,
+    "switch2Enhanced": false,
+    "switch2Exclusive": false,
+    "nintendoNotes": "Platform, release, player-count, storage, compatibility, and feature statements in this import are grounded in the official Nintendo/publisher pages listed under Sources. Store package prices are user-supplied storefront values, not assumed MSRP.",
+    "editionsList": [
+     {
+      "name": "Regular",
+      "contents": [
+       {
+        "label": "Regular store package"
+       },
+       {
+        "label": "Offline account access"
+       },
+       {
+        "label": "Infinite stock by default"
+       }
+      ]
+     },
+     {
+      "name": "Deluxe",
+      "contents": [
+       {
+        "label": "Deluxe store package"
+       },
+       {
+        "label": "Offline account access"
+       },
+       {
+        "label": "Infinite stock by default"
+       }
+      ]
+     },
+     {
+      "name": "Complete",
+      "contents": [
+       {
+        "label": "Complete store package"
+       },
+       {
+        "label": "Online account access"
+       },
+       {
+        "label": "Infinite stock by default"
+       }
+      ]
+     },
+     {
+      "name": "Ultimate",
+      "contents": [
+       {
+        "label": "Ultimate store package"
+       },
+       {
+        "label": "Online account access"
+       },
+       {
+        "label": "Infinite stock by default"
+       }
+      ]
+     }
+    ],
+    "gameplayPillars": [
+     {
+      "title": "Licensed football presentation",
+      "description": "Authentic clubs, leagues, kits, stadium presentation, and player databases form the core package."
+     },
+     {
+      "title": "Career and manager play",
+      "description": "Single-player career modes provide long-form club and player progression."
+     },
+     {
+      "title": "Ultimate Team / online ecosystem",
+      "description": "Supported editions include squad-building and competitive online structures."
+     },
+     {
+      "title": "Local multiplayer",
+      "description": "Multiple controllers support shared-system football matches."
+     },
+     {
+      "title": "Nintendo-specific feature set",
+      "description": "The Nintendo release is tuned to the capabilities and feature availability of its target Switch platform."
+     }
+    ],
+    "worldSummary": "EA SPORTS FC 25 delivers licensed football clubs, leagues, players, career and competitive modes on Nintendo hardware. Players choose teams and competitions across licensed leagues. Updated rosters, kits, competitions, and mechanical changes define each annual release.",
+    "storyChapters": [
+     {
+      "title": "Start a club season",
+      "body": "Players choose teams and competitions across licensed leagues."
+     },
+     {
+      "title": "Build squads",
+      "body": "Career and squad-building modes revolve around transfers, team chemistry, roles, and progression."
+     },
+     {
+      "title": "Play local matches",
+      "body": "Quick matches and tournaments provide immediate couch multiplayer."
+     },
+     {
+      "title": "Enter online competition",
+      "body": "Supported online modes add broader opponents and long-term progression."
+     },
+     {
+      "title": "Return each season",
+      "body": "Updated rosters, kits, competitions, and mechanical changes define each annual release."
+     }
+    ],
+    "features": [
+     "Licensed clubs and leagues",
+     "Career modes",
+     "Local multiplayer",
+     "Online competition",
+     "Annual roster and presentation updates"
+    ],
+    "perfResolutionDocked": "1080p",
+    "perfResolutionHandheld": "720p",
+    "perfFps": "30",
+    "perfHdr": false,
+    "playTimeMain": 0,
+    "completionMain": 0,
+    "completionExtras": 0,
+    "faq": [
+     {
+      "q": "Is this an official EA edition name?",
+      "a": "The game title is official; the Regular/Deluxe/Complete/Ultimate labels below are the user’s store package tiers and are not assumed to be identical to EA’s official commercial editions."
+     },
+     {
+      "q": "Does it support local multiplayer?",
+      "a": "Yes. Nintendo football releases support shared-system matches, with exact limits depending on mode."
+     },
+     {
+      "q": "Does it support online play?",
+      "a": "Yes in supported game modes; an internet connection and account requirements apply."
+     },
+     {
+      "q": "Why are Switch 1 and Switch 2 separate for newer FC titles?",
+      "a": "Where EA publishes separate platform versions, the extraction keeps them as distinct files rather than treating backward compatibility as a new edition."
+     },
+     {
+      "q": "Are the package tiers official EA editions?",
+      "a": "No assumption is made; they are preserved exactly as the supplied storefront pricing tiers."
+     }
+    ],
+    "verdictScore": 8.5,
+    "verdictPros": [
+     "Large licensed content base",
+     "Strong local multiplayer value",
+     "Multiple career/competitive modes",
+     "Annual roster refresh",
+     "Broad football audience"
+    ],
+    "verdictCons": [
+     "Annualized release cycle",
+     "Online modes depend on servers/accounts",
+     "Some features differ by Nintendo generation",
+     "Large later-game downloads",
+     "Store package labels should not be confused with official EA editions"
+    ],
+    "timeline": [
+     {
+      "date": "2024-09-27",
+      "title": "Released on target Nintendo platform"
+     }
+    ],
+    "patchNotes": [
+     {
+      "version": "Current retail build",
+      "date": "2026-08-27"
+     }
+    ],
+    "studioName": "EA SPORTS",
+    "studioUrl": "https://www.nintendo.com/us/store/products/ea-sports-fc-25-switch/",
+    "studioLocation": "See publisher/developer profile",
+    "sources": [
+     {
+      "name": "Official Nintendo / publisher product page",
+      "url": "https://www.nintendo.com/us/store/products/ea-sports-fc-25-switch/"
+     }
+    ],
+    "downloadSizeGb": 32.1,
+    "requiredSpaceGb": 32.1,
+    "microSdRecommended": true,
+    "storageNotes": "Storage requirements follow the official product listing where a final numeric size is published; upcoming titles may require a later refresh when final size is posted.",
+    "mpLocalPlayers": true,
+    "mpOnlinePlayers": true,
+    "mpCoop": true,
+    "mpCompetitive": true,
+    "mpLocalWireless": true,
+    "mpSplitScreen": true,
+    "dlc": [
+     {
+      "name": "Downloadable / additional content status",
+      "description": "Ultimate Team and live-service content are handled inside the base football title; no invented standalone DLC package is added."
+     }
+    ],
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "deviceModel": "Nintendo Switch",
+      "hardwareId": "nintendo-switch",
+      "informationStatus": "Available",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p",
+       "resolutionDynamic": false,
+       "renderingResolution": "720p",
+       "outputResolution": "720p",
+       "fps": "30",
+       "fpsMin": "30",
+       "fpsMax": "30",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Handheld",
+       "notes": "FC 25 adds 5v5 Rush, FC IQ tactical changes, women’s career integration, and updated licenses on Switch."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p",
+       "resolutionDynamic": false,
+       "renderingResolution": "1080p",
+       "outputResolution": "1080p",
+       "fps": "30",
+       "fpsMin": "30",
+       "fpsMax": "30",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "TV / Docked",
+       "notes": "FC 25 adds 5v5 Rush, FC IQ tactical changes, women’s career integration, and updated licenses on Switch."
+      },
+      "modes": [
+       {
+        "name": "Primary documented/compatibility profile",
+        "handheldResolution": "720p",
+        "handheldFps": "30",
+        "tvResolution": "1080p",
+        "tvFps": "30",
+        "hdr": false,
+        "vrr": false,
+        "notes": "FC 25 adds 5v5 Rush, FC IQ tactical changes, women’s career integration, and updated licenses on Switch."
+       }
+      ],
+      "upscaling": "Game / system-specific scaling where applicable",
+      "rayTracing": false,
+      "rayTracingMode": "Not Supported",
+      "loadingTime": "Scene-dependent",
+      "loadingNotes": "Loading time varies by scene, save state, storage, version, and patch.",
+      "gameVersion": "Current listed version",
+      "patchVersion": "Current available update",
+      "testedDate": "2026-08-27",
+      "sourceName": "Official product / compatibility information",
+      "performanceNotes": "FC 25 adds 5v5 Rush, FC IQ tactical changes, women’s career integration, and updated licenses on Switch."
+     },
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "hardwareId": "nintendo-switch-2",
+      "informationStatus": "Available",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p",
+       "resolutionDynamic": false,
+       "renderingResolution": "720p",
+       "outputResolution": "720p",
+       "fps": "30",
+       "fpsMin": "30",
+       "fpsMax": "30",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Handheld",
+       "notes": "Backward-compatible Switch software; this is not a native Switch 2 edition."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p",
+       "resolutionDynamic": false,
+       "renderingResolution": "1080p",
+       "outputResolution": "1080p",
+       "fps": "30",
+       "fpsMin": "30",
+       "fpsMax": "30",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "TV / Docked",
+       "notes": "Backward-compatible Switch software; this is not a native Switch 2 edition."
+      },
+      "modes": [
+       {
+        "name": "Primary documented/compatibility profile",
+        "handheldResolution": "720p",
+        "handheldFps": "30",
+        "tvResolution": "1080p",
+        "tvFps": "30",
+        "hdr": false,
+        "vrr": false,
+        "notes": "Backward-compatible Switch software; this is not a native Switch 2 edition."
+       }
+      ],
+      "upscaling": "Game / system-specific scaling where applicable",
+      "rayTracing": false,
+      "rayTracingMode": "Not Supported",
+      "loadingTime": "Scene-dependent",
+      "loadingNotes": "Loading time varies by scene, save state, storage, version, and patch.",
+      "gameVersion": "Current listed version",
+      "patchVersion": "Current available update",
+      "testedDate": "2026-08-27",
+      "sourceName": "Official product / compatibility information",
+      "sourceUrl": "https://www.nintendo.com/us/store/products/ea-sports-fc-25-switch/",
+      "performanceNotes": "Backward-compatible Switch software; this is not a native Switch 2 edition."
+     }
+    ],
+    "switch2UpgradePrice": 0,
+    "boxContentsList": [],
+    "image": "",
+    "banner": "",
+    "schemaId": "",
+    "batchImport": true,
+    "createdAt": "2026-08-28T18:50:31.170Z",
+    "updatedAt": "2026-08-28T18:50:31.170Z"
+   }
+  },
+  {
+   "id": "prd_b185a38dcf644622",
+   "slug": "ea-sports-fc-26",
+   "title": "EA SPORTS FC 26",
+   "platform": "switch1",
+   "isHidden": true,
+   "hash": "4a43b88fe19ae2dbe409eec9d40dc2edc47902dcdf7b47c764b092d89989c8b9",
+   "images": [
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://banan.to/api/files/products/prd_b185a38dcf644622/square-card-67f30a628010cf6b.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 39208,
+     "width": 1024,
+     "height": 1024,
+     "thumb": "review-workdir/thumbs/batch-005/ea-sports-fc-26__square-card-0.png"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://banan.to/api/files/products/prd_b185a38dcf644622/cover-a7a28a23e10df6f2.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 327666,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-005/ea-sports-fc-26__detail-cover-1.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://banan.to/api/files/products/prd_b185a38dcf644622/gallery-1-cb33cb98842c75a3.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 167652,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-005/ea-sports-fc-26__gallery-2.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[1]",
+     "url": "https://banan.to/api/files/products/prd_b185a38dcf644622/gallery-2-3492b0dfc7755bc6.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 191158,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-005/ea-sports-fc-26__gallery-3.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[2]",
+     "url": "https://banan.to/api/files/products/prd_b185a38dcf644622/gallery-3-c655cad42db8d213.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 74694,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-005/ea-sports-fc-26__gallery-4.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[3]",
+     "url": "https://banan.to/api/files/products/prd_b185a38dcf644622/gallery-4-216fcce869fe4bc2.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 99602,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-005/ea-sports-fc-26__gallery-5.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[4]",
+     "url": "https://banan.to/api/files/products/prd_b185a38dcf644622/gallery-5-a2ddf638eafc5a92.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 166336,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-005/ea-sports-fc-26__gallery-6.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[5]",
+     "url": "https://banan.to/api/files/products/prd_b185a38dcf644622/gallery-6-e88a19e77177f39c.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 142034,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-005/ea-sports-fc-26__gallery-7.png"
+    }
+   ],
+   "record": {
+    "title": "EA SPORTS FC 26",
+    "titleEn": "EA SPORTS FC 26",
+    "titleKu": "",
+    "slug": "ea-sports-fc-26",
+    "description": "EA SPORTS FC 26 delivers licensed football clubs, leagues, players, career and competitive modes on Nintendo hardware. Players choose teams and competitions across licensed leagues. Updated rosters, kits, competitions, and mechanical changes define each annual release.",
+    "descriptionEn": "EA SPORTS FC 26 delivers licensed football clubs, leagues, players, career and competitive modes on Nintendo hardware. Players choose teams and competitions across licensed leagues. Updated rosters, kits, competitions, and mechanical changes define each annual release.",
+    "descriptionKu": "",
+    "cartridgeImage": "",
+    "nintendoCardImage": "/api/files/products/prd_b185a38dcf644622/square-card-67f30a628010cf6b.webp",
+    "coverHiResImage": "",
+    "coverImage": "/api/files/products/prd_b185a38dcf644622/cover-a7a28a23e10df6f2.webp",
+    "bannerImages": [
+     ""
+    ],
+    "gallery": [],
+    "youtubeTrailer": "",
+    "releaseDate": "2025-09-26",
+    "ageRating": "ESRB E / PEGI 3",
+    "metacriticRating": "85",
+    "genres": [
+     "Sports",
+     "Football / Soccer"
+    ],
+    "platform": "switch1",
+    "size": 40,
+    "numberOfPlayers": "Single system (1-4) / Local wireless and online multiplayer depending on mode",
+    "supportedLanguages": "Official supported language list varies by region; see the publisher page linked in Sources.",
+    "hardwareModel": "",
+    "colorEdition": "",
+    "storageCapacity": "",
+    "screenSpecs": "",
+    "batteryLife": "",
+    "boxContents": [],
+    "boxContentsText": "",
+    "warrantyCondition": "",
+    "connectivity": "",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "Global",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "",
+    "redemptionSteps": [],
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 11500,
+    "cost": 2500,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": true,
+    "displayOrder": 0,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "مشترك",
+      "description": "مشترك",
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_account",
+      "name": "خاص بك",
+      "description": "خاص بك",
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "types": [
+     {
+      "id": "offline_base",
+      "name": "مشترك — اللعبة الأساسية",
+      "optionId": "offline_account",
+      "price": 11500,
+      "cost": 2500,
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "offline_extras",
+      "name": "مشترك — مع الإضافات",
+      "optionId": "offline_account",
+      "price": 43000,
+      "cost": 18250,
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_extras",
+      "name": "خاص بك — مع الإضافات",
+      "optionId": "online_account",
+      "price": 69250,
+      "cost": 51250,
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "Active",
+    "kind": "account",
+    "trade_value_iqd": 28000,
+    "store_offer_bonus_iqd": 5000,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "id": "prd_b185a38dcf644622",
+    "schema_version": 24,
+    "titleAr": "EA SPORTS FC 26",
+    "compatibility": [
+     "Nintendo Switch",
+     "Nintendo Switch 2 compatibility supported through the Switch version"
+    ],
+    "edition": "Standard / Store Variants",
+    "developer": "EA SPORTS",
+    "publisher": "Electronic Arts",
+    "seriesName": "EA SPORTS FC 26",
+    "price_usd": 59.99,
+    "officialUrl": "https://www.nintendo.com/en-au/Games/Nintendo-Switch-games/EA-SPORTS-FC-26-2875008.html",
+    "eshopUrl": "https://www.nintendo.com/en-au/Games/Nintendo-Switch-games/EA-SPORTS-FC-26-2875008.html",
+    "gameIsOffline": true,
+    "gameIsOnline": true,
+    "gameLanguageLocked": false,
+    "description_short": "EA SPORTS FC 26 delivers licensed football clubs, leagues, players, career and competitive modes on Nintendo hardware.",
+    "description_ar": "EA SPORTS FC 26 — EA SPORTS FC 26 delivers licensed football clubs, leagues, players, career and competitive modes on Nintendo hardware.",
+    "languagesText": [
+     "See official supported languages on the linked Nintendo/publisher product page"
+    ],
+    "languagesAudio": [
+     "Audio language availability varies by title and region; see official product information"
+    ],
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": true,
+    "nintendoPlayModes": "TV / Tabletop / Handheld",
+    "nintendoOnlineRequired": true,
+    "nintendoCloudSaves": true,
+    "nintendoGameKeyCard": false,
+    "nintendoPhysicalNeedsDownload": false,
+    "switch2Enhanced": false,
+    "switch2Exclusive": false,
+    "nintendoNotes": "Platform, release, player-count, storage, compatibility, and feature statements in this import are grounded in the official Nintendo/publisher pages listed under Sources. Store package prices are user-supplied storefront values, not assumed MSRP.",
+    "editionsList": [
+     {
+      "name": "Regular",
+      "contents": [
+       {
+        "label": "Regular store package"
+       },
+       {
+        "label": "Offline account access"
+       },
+       {
+        "label": "Infinite stock by default"
+       }
+      ]
+     },
+     {
+      "name": "Deluxe",
+      "contents": [
+       {
+        "label": "Deluxe store package"
+       },
+       {
+        "label": "Offline account access"
+       },
+       {
+        "label": "Infinite stock by default"
+       }
+      ]
+     },
+     {
+      "name": "Complete",
+      "contents": [
+       {
+        "label": "Complete store package"
+       },
+       {
+        "label": "Online account access"
+       },
+       {
+        "label": "Infinite stock by default"
+       }
+      ]
+     }
+    ],
+    "gameplayPillars": [
+     {
+      "title": "Licensed football presentation",
+      "description": "Authentic clubs, leagues, kits, stadium presentation, and player databases form the core package."
+     },
+     {
+      "title": "Career and manager play",
+      "description": "Single-player career modes provide long-form club and player progression."
+     },
+     {
+      "title": "Ultimate Team / online ecosystem",
+      "description": "Supported editions include squad-building and competitive online structures."
+     },
+     {
+      "title": "Local multiplayer",
+      "description": "Multiple controllers support shared-system football matches."
+     },
+     {
+      "title": "Nintendo-specific feature set",
+      "description": "The Nintendo release is tuned to the capabilities and feature availability of its target Switch platform."
+     }
+    ],
+    "worldSummary": "EA SPORTS FC 26 delivers licensed football clubs, leagues, players, career and competitive modes on Nintendo hardware. Players choose teams and competitions across licensed leagues. Updated rosters, kits, competitions, and mechanical changes define each annual release.",
+    "storyChapters": [
+     {
+      "title": "Start a club season",
+      "body": "Players choose teams and competitions across licensed leagues."
+     },
+     {
+      "title": "Build squads",
+      "body": "Career and squad-building modes revolve around transfers, team chemistry, roles, and progression."
+     },
+     {
+      "title": "Play local matches",
+      "body": "Quick matches and tournaments provide immediate couch multiplayer."
+     },
+     {
+      "title": "Enter online competition",
+      "body": "Supported online modes add broader opponents and long-term progression."
+     },
+     {
+      "title": "Return each season",
+      "body": "Updated rosters, kits, competitions, and mechanical changes define each annual release."
+     }
+    ],
+    "features": [
+     "Licensed clubs and leagues",
+     "Career modes",
+     "Local multiplayer",
+     "Online competition",
+     "Annual roster and presentation updates"
+    ],
+    "perfResolutionDocked": "1080p",
+    "perfResolutionHandheld": "720p",
+    "perfFps": "30",
+    "perfHdr": false,
+    "playTimeMain": 0,
+    "completionMain": 0,
+    "completionExtras": 0,
+    "faq": [
+     {
+      "q": "Is this an official EA edition name?",
+      "a": "The game title is official; the Regular/Deluxe/Complete/Ultimate labels below are the user’s store package tiers and are not assumed to be identical to EA’s official commercial editions."
+     },
+     {
+      "q": "Does it support local multiplayer?",
+      "a": "Yes. Nintendo football releases support shared-system matches, with exact limits depending on mode."
+     },
+     {
+      "q": "Does it support online play?",
+      "a": "Yes in supported game modes; an internet connection and account requirements apply."
+     },
+     {
+      "q": "Why are Switch 1 and Switch 2 separate for newer FC titles?",
+      "a": "Where EA publishes separate platform versions, the extraction keeps them as distinct files rather than treating backward compatibility as a new edition."
+     },
+     {
+      "q": "Are the package tiers official EA editions?",
+      "a": "No assumption is made; they are preserved exactly as the supplied storefront pricing tiers."
+     }
+    ],
+    "verdictScore": 8.5,
+    "verdictPros": [
+     "Large licensed content base",
+     "Strong local multiplayer value",
+     "Multiple career/competitive modes",
+     "Annual roster refresh",
+     "Broad football audience"
+    ],
+    "verdictCons": [
+     "Annualized release cycle",
+     "Online modes depend on servers/accounts",
+     "Some features differ by Nintendo generation",
+     "Large later-game downloads",
+     "Store package labels should not be confused with official EA editions"
+    ],
+    "timeline": [
+     {
+      "date": "2025-09-26",
+      "title": "Released on target Nintendo platform"
+     }
+    ],
+    "patchNotes": [
+     {
+      "version": "Current retail build",
+      "date": "2026-08-27"
+     }
+    ],
+    "studioName": "EA SPORTS",
+    "studioUrl": "https://www.nintendo.com/en-au/Games/Nintendo-Switch-games/EA-SPORTS-FC-26-2875008.html",
+    "studioLocation": "See publisher/developer profile",
+    "sources": [
+     {
+      "name": "Official Nintendo / publisher product page",
+      "url": "https://www.nintendo.com/en-au/Games/Nintendo-Switch-games/EA-SPORTS-FC-26-2875008.html"
+     }
+    ],
+    "downloadSizeGb": 40,
+    "requiredSpaceGb": 40,
+    "microSdRecommended": true,
+    "storageNotes": "Storage requirements follow the official product listing where a final numeric size is published; upcoming titles may require a later refresh when final size is posted.",
+    "mpLocalPlayers": true,
+    "mpOnlinePlayers": true,
+    "mpCoop": true,
+    "mpCompetitive": true,
+    "mpLocalWireless": true,
+    "mpSplitScreen": true,
+    "dlc": [
+     {
+      "name": "Downloadable / additional content status",
+      "description": "Ultimate Team and live-service content are handled inside the base football title; no invented standalone DLC package is added."
+     }
+    ],
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "deviceModel": "Nintendo Switch",
+      "hardwareId": "nintendo-switch",
+      "informationStatus": "Available",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p",
+       "resolutionDynamic": false,
+       "renderingResolution": "720p",
+       "outputResolution": "720p",
+       "fps": "30",
+       "fpsMin": "30",
+       "fpsMax": "30",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Handheld",
+       "notes": "Switch 1 version has the annual FC 26 content set but does not have full next-generation feature parity."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p",
+       "resolutionDynamic": false,
+       "renderingResolution": "1080p",
+       "outputResolution": "1080p",
+       "fps": "30",
+       "fpsMin": "30",
+       "fpsMax": "30",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "TV / Docked",
+       "notes": "Switch 1 version has the annual FC 26 content set but does not have full next-generation feature parity."
+      },
+      "modes": [
+       {
+        "name": "Primary documented/compatibility profile",
+        "handheldResolution": "720p",
+        "handheldFps": "30",
+        "tvResolution": "1080p",
+        "tvFps": "30",
+        "hdr": false,
+        "vrr": false,
+        "notes": "Switch 1 version has the annual FC 26 content set but does not have full next-generation feature parity."
+       }
+      ],
+      "upscaling": "Game / system-specific scaling where applicable",
+      "rayTracing": false,
+      "rayTracingMode": "Not Supported",
+      "loadingTime": "Scene-dependent",
+      "loadingNotes": "Loading time varies by scene, save state, storage, version, and patch.",
+      "gameVersion": "Current listed version",
+      "patchVersion": "Current available update",
+      "testedDate": "2026-08-27",
+      "sourceName": "Official product / compatibility information",
+      "performanceNotes": "Switch 1 version has the annual FC 26 content set but does not have full next-generation feature parity."
+     },
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "hardwareId": "nintendo-switch-2",
+      "informationStatus": "Available",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p",
+       "resolutionDynamic": false,
+       "renderingResolution": "720p",
+       "outputResolution": "720p",
+       "fps": "30",
+       "fpsMin": "30",
+       "fpsMax": "30",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Handheld",
+       "notes": "Backward-compatible Switch software; this is not a native Switch 2 edition."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p",
+       "resolutionDynamic": false,
+       "renderingResolution": "1080p",
+       "outputResolution": "1080p",
+       "fps": "30",
+       "fpsMin": "30",
+       "fpsMax": "30",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "TV / Docked",
+       "notes": "Backward-compatible Switch software; this is not a native Switch 2 edition."
+      },
+      "modes": [
+       {
+        "name": "Primary documented/compatibility profile",
+        "handheldResolution": "720p",
+        "handheldFps": "30",
+        "tvResolution": "1080p",
+        "tvFps": "30",
+        "hdr": false,
+        "vrr": false,
+        "notes": "Backward-compatible Switch software; this is not a native Switch 2 edition."
+       }
+      ],
+      "upscaling": "Game / system-specific scaling where applicable",
+      "rayTracing": false,
+      "rayTracingMode": "Not Supported",
+      "loadingTime": "Scene-dependent",
+      "loadingNotes": "Loading time varies by scene, save state, storage, version, and patch.",
+      "gameVersion": "Current listed version",
+      "patchVersion": "Current available update",
+      "testedDate": "2026-08-27",
+      "sourceName": "Official product / compatibility information",
+      "sourceUrl": "https://www.nintendo.com/en-au/Games/Nintendo-Switch-games/EA-SPORTS-FC-26-2875008.html",
+      "performanceNotes": "Backward-compatible Switch software; this is not a native Switch 2 edition."
+     }
+    ],
+    "switch2UpgradePrice": 0,
+    "boxContentsList": [],
+    "image": "",
+    "banner": "",
+    "schemaId": "",
+    "batchImport": true,
+    "galleryImages": [
+     {
+      "url": "/api/files/products/prd_b185a38dcf644622/gallery-1-cb33cb98842c75a3.webp",
+      "alt": "EA SPORTS FC 26 screenshot 1"
+     },
+     {
+      "url": "/api/files/products/prd_b185a38dcf644622/gallery-2-3492b0dfc7755bc6.webp",
+      "alt": "EA SPORTS FC 26 screenshot 2"
+     },
+     {
+      "url": "/api/files/products/prd_b185a38dcf644622/gallery-3-c655cad42db8d213.webp",
+      "alt": "EA SPORTS FC 26 screenshot 3"
+     },
+     {
+      "url": "/api/files/products/prd_b185a38dcf644622/gallery-4-216fcce869fe4bc2.webp",
+      "alt": "EA SPORTS FC 26 screenshot 4"
+     },
+     {
+      "url": "/api/files/products/prd_b185a38dcf644622/gallery-5-a2ddf638eafc5a92.webp",
+      "alt": "EA SPORTS FC 26 screenshot 5"
+     },
+     {
+      "url": "/api/files/products/prd_b185a38dcf644622/gallery-6-e88a19e77177f39c.webp",
+      "alt": "EA SPORTS FC 26 screenshot 6"
+     }
+    ],
+    "createdAt": "2026-08-28T18:51:17.007Z",
+    "updatedAt": "2026-08-28T18:51:17.007Z"
+   }
+  },
+  {
+   "id": "prd_391864a55b884a32",
+   "slug": "ea-sports-fc-26-switch-2",
+   "title": "EA SPORTS FC 26",
+   "platform": "switch2",
+   "isHidden": true,
+   "hash": "e1e0b87fc613d8b89977c41b6add0120abe06ccef6ea7680ed51a508b9bbb41e",
+   "images": [
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://banan.to/api/files/products/prd_391864a55b884a32/square-card-8ba228bcf34aa1ff.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 202562,
+     "width": 1024,
+     "height": 1024,
+     "thumb": "review-workdir/thumbs/batch-005/ea-sports-fc-26-switch-2__square-card-0.png"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://banan.to/api/files/products/prd_391864a55b884a32/cover-a4199039889e239d.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 320714,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-005/ea-sports-fc-26-switch-2__detail-cover-1.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://banan.to/api/files/products/prd_391864a55b884a32/gallery-1-f0f3bfd5731cbc8e.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 276104,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-005/ea-sports-fc-26-switch-2__gallery-2.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[1]",
+     "url": "https://banan.to/api/files/products/prd_391864a55b884a32/gallery-2-397b48fd626e845b.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 340356,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-005/ea-sports-fc-26-switch-2__gallery-3.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[2]",
+     "url": "https://banan.to/api/files/products/prd_391864a55b884a32/gallery-3-add9d99a342d3911.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 133472,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-005/ea-sports-fc-26-switch-2__gallery-4.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[3]",
+     "url": "https://banan.to/api/files/products/prd_391864a55b884a32/gallery-4-b07fdb8ff87c3026.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 214448,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-005/ea-sports-fc-26-switch-2__gallery-5.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[4]",
+     "url": "https://banan.to/api/files/products/prd_391864a55b884a32/gallery-5-815edbb56c7f1bb7.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 307460,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-005/ea-sports-fc-26-switch-2__gallery-6.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[5]",
+     "url": "https://banan.to/api/files/products/prd_391864a55b884a32/gallery-6-1c8b4c272c07aba7.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 295232,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-005/ea-sports-fc-26-switch-2__gallery-7.png"
+    }
+   ],
+   "record": {
+    "title": "EA SPORTS FC 26",
+    "titleEn": "EA SPORTS FC 26",
+    "titleKu": "",
+    "slug": "ea-sports-fc-26-switch-2",
+    "description": "EA SPORTS FC 26 delivers licensed football clubs, leagues, players, career and competitive modes on Nintendo hardware. Players choose teams and competitions across licensed leagues. Updated rosters, kits, competitions, and mechanical changes define each annual release.",
+    "descriptionEn": "EA SPORTS FC 26 delivers licensed football clubs, leagues, players, career and competitive modes on Nintendo hardware. Players choose teams and competitions across licensed leagues. Updated rosters, kits, competitions, and mechanical changes define each annual release.",
+    "descriptionKu": "",
+    "cartridgeImage": "",
+    "nintendoCardImage": "/api/files/products/prd_391864a55b884a32/square-card-8ba228bcf34aa1ff.webp",
+    "coverHiResImage": "",
+    "coverImage": "/api/files/products/prd_391864a55b884a32/cover-a4199039889e239d.webp",
+    "bannerImages": [
+     ""
+    ],
+    "gallery": [],
+    "youtubeTrailer": "",
+    "releaseDate": "2025-09-26",
+    "ageRating": "ESRB E / PEGI 3",
+    "metacriticRating": "85",
+    "genres": [
+     "Sports",
+     "Football / Soccer"
+    ],
+    "platform": "switch2",
+    "size": 74.8,
+    "numberOfPlayers": "Single system (1-4) / Local wireless and online multiplayer depending on mode",
+    "supportedLanguages": "Official supported language list varies by region; see the publisher page linked in Sources.",
+    "hardwareModel": "",
+    "colorEdition": "",
+    "storageCapacity": "",
+    "screenSpecs": "",
+    "batteryLife": "",
+    "boxContents": [],
+    "boxContentsText": "",
+    "warrantyCondition": "",
+    "connectivity": "",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "Global",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "",
+    "redemptionSteps": [],
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 14750,
+    "cost": 4500,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": true,
+    "displayOrder": 0,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "مشترك",
+      "description": "مشترك",
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_account",
+      "name": "خاص بك",
+      "description": "خاص بك",
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "types": [
+     {
+      "id": "offline_base",
+      "name": "مشترك — اللعبة الأساسية",
+      "optionId": "offline_account",
+      "price": 14750,
+      "cost": 4500,
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "offline_extras",
+      "name": "مشترك — مع الإضافات",
+      "optionId": "offline_account",
+      "price": 42250,
+      "cost": 18250,
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_extras",
+      "name": "خاص بك — مع الإضافات",
+      "optionId": "online_account",
+      "price": 54250,
+      "cost": 40250,
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "Active",
+    "kind": "account",
+    "trade_value_iqd": 22000,
+    "store_offer_bonus_iqd": 4000,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "id": "prd_391864a55b884a32",
+    "schema_version": 24,
+    "titleAr": "EA SPORTS FC 26",
+    "compatibility": [
+     "Nintendo Switch 2",
+     "Nintendo Switch 1 version exists separately"
+    ],
+    "edition": "Standard / Store Variants",
+    "developer": "EA SPORTS",
+    "publisher": "Electronic Arts",
+    "seriesName": "EA SPORTS FC 26",
+    "price_usd": 59.99,
+    "officialUrl": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-2-games/EA-SPORTS-FC-26-2904986.html",
+    "eshopUrl": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-2-games/EA-SPORTS-FC-26-2904986.html",
+    "gameIsOffline": true,
+    "gameIsOnline": true,
+    "gameLanguageLocked": false,
+    "description_short": "EA SPORTS FC 26 delivers licensed football clubs, leagues, players, career and competitive modes on Nintendo hardware.",
+    "description_ar": "EA SPORTS FC 26 — EA SPORTS FC 26 delivers licensed football clubs, leagues, players, career and competitive modes on Nintendo hardware.",
+    "languagesText": [
+     "See official supported languages on the linked Nintendo/publisher product page"
+    ],
+    "languagesAudio": [
+     "Audio language availability varies by title and region; see official product information"
+    ],
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": true,
+    "nintendoPlayModes": "TV / Tabletop / Handheld",
+    "nintendoOnlineRequired": true,
+    "nintendoCloudSaves": true,
+    "nintendoGameKeyCard": false,
+    "nintendoPhysicalNeedsDownload": false,
+    "switch2Enhanced": true,
+    "switch2Exclusive": false,
+    "nintendoNotes": "Platform, release, player-count, storage, compatibility, and feature statements in this import are grounded in the official Nintendo/publisher pages listed under Sources. Store package prices are user-supplied storefront values, not assumed MSRP.",
+    "editionsList": [
+     {
+      "name": "Regular",
+      "contents": [
+       {
+        "label": "Regular store package"
+       },
+       {
+        "label": "Offline account access"
+       },
+       {
+        "label": "Infinite stock by default"
+       }
+      ]
+     },
+     {
+      "name": "Deluxe",
+      "contents": [
+       {
+        "label": "Deluxe store package"
+       },
+       {
+        "label": "Offline account access"
+       },
+       {
+        "label": "Infinite stock by default"
+       }
+      ]
+     },
+     {
+      "name": "Complete",
+      "contents": [
+       {
+        "label": "Complete store package"
+       },
+       {
+        "label": "Online account access"
+       },
+       {
+        "label": "Infinite stock by default"
+       }
+      ]
+     }
+    ],
+    "gameplayPillars": [
+     {
+      "title": "Licensed football presentation",
+      "description": "Authentic clubs, leagues, kits, stadium presentation, and player databases form the core package."
+     },
+     {
+      "title": "Career and manager play",
+      "description": "Single-player career modes provide long-form club and player progression."
+     },
+     {
+      "title": "Ultimate Team / online ecosystem",
+      "description": "Supported editions include squad-building and competitive online structures."
+     },
+     {
+      "title": "Local multiplayer",
+      "description": "Multiple controllers support shared-system football matches."
+     },
+     {
+      "title": "Nintendo-specific feature set",
+      "description": "The Nintendo release is tuned to the capabilities and feature availability of its target Switch platform."
+     }
+    ],
+    "worldSummary": "EA SPORTS FC 26 delivers licensed football clubs, leagues, players, career and competitive modes on Nintendo hardware. Players choose teams and competitions across licensed leagues. Updated rosters, kits, competitions, and mechanical changes define each annual release.",
+    "storyChapters": [
+     {
+      "title": "Start a club season",
+      "body": "Players choose teams and competitions across licensed leagues."
+     },
+     {
+      "title": "Build squads",
+      "body": "Career and squad-building modes revolve around transfers, team chemistry, roles, and progression."
+     },
+     {
+      "title": "Play local matches",
+      "body": "Quick matches and tournaments provide immediate couch multiplayer."
+     },
+     {
+      "title": "Enter online competition",
+      "body": "Supported online modes add broader opponents and long-term progression."
+     },
+     {
+      "title": "Return each season",
+      "body": "Updated rosters, kits, competitions, and mechanical changes define each annual release."
+     }
+    ],
+    "features": [
+     "Licensed clubs and leagues",
+     "Career modes",
+     "Local multiplayer",
+     "Online competition",
+     "Annual roster and presentation updates"
+    ],
+    "perfResolutionDocked": "1440p",
+    "perfResolutionHandheld": "1080p",
+    "perfFps": "60",
+    "perfHdr": false,
+    "playTimeMain": 0,
+    "completionMain": 0,
+    "completionExtras": 0,
+    "faq": [
+     {
+      "q": "Is this an official EA edition name?",
+      "a": "The game title is official; the Regular/Deluxe/Complete/Ultimate labels below are the user’s store package tiers and are not assumed to be identical to EA’s official commercial editions."
+     },
+     {
+      "q": "Does it support local multiplayer?",
+      "a": "Yes. Nintendo football releases support shared-system matches, with exact limits depending on mode."
+     },
+     {
+      "q": "Does it support online play?",
+      "a": "Yes in supported game modes; an internet connection and account requirements apply."
+     },
+     {
+      "q": "Why are Switch 1 and Switch 2 separate for newer FC titles?",
+      "a": "Where EA publishes separate platform versions, the extraction keeps them as distinct files rather than treating backward compatibility as a new edition."
+     },
+     {
+      "q": "Are the package tiers official EA editions?",
+      "a": "No assumption is made; they are preserved exactly as the supplied storefront pricing tiers."
+     }
+    ],
+    "verdictScore": 8.5,
+    "verdictPros": [
+     "Large licensed content base",
+     "Strong local multiplayer value",
+     "Multiple career/competitive modes",
+     "Annual roster refresh",
+     "Broad football audience"
+    ],
+    "verdictCons": [
+     "Annualized release cycle",
+     "Online modes depend on servers/accounts",
+     "Some features differ by Nintendo generation",
+     "Large later-game downloads",
+     "Store package labels should not be confused with official EA editions"
+    ],
+    "timeline": [
+     {
+      "date": "2025-09-26",
+      "title": "Released on target Nintendo platform"
+     }
+    ],
+    "patchNotes": [
+     {
+      "version": "Current retail build",
+      "date": "2026-08-27"
+     }
+    ],
+    "studioName": "EA SPORTS",
+    "studioUrl": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-2-games/EA-SPORTS-FC-26-2904986.html",
+    "studioLocation": "See publisher/developer profile",
+    "sources": [
+     {
+      "name": "Official Nintendo / publisher product page",
+      "url": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-2-games/EA-SPORTS-FC-26-2904986.html"
+     }
+    ],
+    "downloadSizeGb": 74.8,
+    "requiredSpaceGb": 74.8,
+    "microSdRecommended": true,
+    "storageNotes": "Storage requirements follow the official product listing where a final numeric size is published; upcoming titles may require a later refresh when final size is posted.",
+    "mpLocalPlayers": true,
+    "mpOnlinePlayers": true,
+    "mpCoop": true,
+    "mpCompetitive": true,
+    "mpLocalWireless": true,
+    "mpSplitScreen": true,
+    "dlc": [
+     {
+      "name": "Downloadable / additional content status",
+      "description": "Ultimate Team and live-service content are handled inside the base football title; no invented standalone DLC package is added."
+     }
+    ],
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "hardwareId": "nintendo-switch-2",
+      "informationStatus": "Available",
+      "handheld": {
+       "supported": true,
+       "resolution": "1080p",
+       "resolutionDynamic": false,
+       "renderingResolution": "1080p",
+       "outputResolution": "1080p",
+       "fps": "60",
+       "fpsMin": "60",
+       "fpsMax": "60",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Handheld",
+       "notes": "EA describes the Switch 2 version as much closer to PC/PS5/Xbox Series feature parity and supports Switch 2 communication/sharing features where available."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1440p",
+       "resolutionDynamic": false,
+       "renderingResolution": "1440p",
+       "outputResolution": "1440p",
+       "fps": "60",
+       "fpsMin": "60",
+       "fpsMax": "60",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "TV / Docked",
+       "notes": "EA describes the Switch 2 version as much closer to PC/PS5/Xbox Series feature parity and supports Switch 2 communication/sharing features where available."
+      },
+      "modes": [
+       {
+        "name": "Primary documented/compatibility profile",
+        "handheldResolution": "1080p",
+        "handheldFps": "60",
+        "tvResolution": "1440p",
+        "tvFps": "60",
+        "hdr": false,
+        "vrr": false,
+        "notes": "EA describes the Switch 2 version as much closer to PC/PS5/Xbox Series feature parity and supports Switch 2 communication/sharing features where available."
+       }
+      ],
+      "upscaling": "Game / system-specific scaling where applicable",
+      "rayTracing": false,
+      "rayTracingMode": "Not Supported",
+      "loadingTime": "Scene-dependent",
+      "loadingNotes": "Loading time varies by scene, save state, storage, version, and patch.",
+      "gameVersion": "Current listed version",
+      "patchVersion": "Current available update",
+      "testedDate": "2026-08-27",
+      "sourceName": "Official product / compatibility information",
+      "sourceUrl": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-2-games/EA-SPORTS-FC-26-2904986.html",
+      "performanceNotes": "EA describes the Switch 2 version as much closer to PC/PS5/Xbox Series feature parity and supports Switch 2 communication/sharing features where available."
+     },
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "deviceModel": "Nintendo Switch",
+      "hardwareId": "nintendo-switch",
+      "informationStatus": "Available",
+      "handheld": {
+       "supported": false,
+       "resolution": "Not Supported",
+       "resolutionDynamic": false,
+       "renderingResolution": "Not Supported",
+       "outputResolution": "Not Supported",
+       "fps": "Not Supported",
+       "fpsMin": "Not Supported",
+       "fpsMax": "Not Supported",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Handheld",
+       "notes": "This file is for the Switch 2 edition."
+      },
+      "tv": {
+       "supported": false,
+       "resolution": "Not Supported",
+       "resolutionDynamic": false,
+       "renderingResolution": "Not Supported",
+       "outputResolution": "Not Supported",
+       "fps": "Not Supported",
+       "fpsMin": "Not Supported",
+       "fpsMax": "Not Supported",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "TV / Docked",
+       "notes": "This file is for the Switch 2 edition."
+      },
+      "modes": [
+       {
+        "name": "Primary documented/compatibility profile",
+        "handheldResolution": "Not Supported",
+        "handheldFps": "Not Supported",
+        "tvResolution": "Not Supported",
+        "tvFps": "Not Supported",
+        "hdr": false,
+        "vrr": false,
+        "notes": "This file is for the Switch 2 edition."
+       }
+      ],
+      "upscaling": "Game / system-specific scaling where applicable",
+      "rayTracing": false,
+      "rayTracingMode": "Not Supported",
+      "loadingTime": "Scene-dependent",
+      "loadingNotes": "Loading time varies by scene, save state, storage, version, and patch.",
+      "gameVersion": "Current listed version",
+      "patchVersion": "Current available update",
+      "testedDate": "2026-08-27",
+      "sourceName": "Official product / compatibility information",
+      "performanceNotes": "This file is for the Switch 2 edition."
+     }
+    ],
+    "switch2UpgradePrice": 0,
+    "boxContentsList": [],
+    "image": "",
+    "banner": "",
+    "schemaId": "",
+    "batchImport": true,
+    "galleryImages": [
+     {
+      "url": "/api/files/products/prd_391864a55b884a32/gallery-1-f0f3bfd5731cbc8e.webp",
+      "alt": "EA SPORTS FC 26 screenshot 1"
+     },
+     {
+      "url": "/api/files/products/prd_391864a55b884a32/gallery-2-397b48fd626e845b.webp",
+      "alt": "EA SPORTS FC 26 screenshot 2"
+     },
+     {
+      "url": "/api/files/products/prd_391864a55b884a32/gallery-3-add9d99a342d3911.webp",
+      "alt": "EA SPORTS FC 26 screenshot 3"
+     },
+     {
+      "url": "/api/files/products/prd_391864a55b884a32/gallery-4-b07fdb8ff87c3026.webp",
+      "alt": "EA SPORTS FC 26 screenshot 4"
+     },
+     {
+      "url": "/api/files/products/prd_391864a55b884a32/gallery-5-815edbb56c7f1bb7.webp",
+      "alt": "EA SPORTS FC 26 screenshot 5"
+     },
+     {
+      "url": "/api/files/products/prd_391864a55b884a32/gallery-6-1c8b4c272c07aba7.webp",
+      "alt": "EA SPORTS FC 26 screenshot 6"
+     }
+    ],
+    "createdAt": "2026-08-28T18:51:37.558Z",
+    "updatedAt": "2026-08-28T18:51:37.558Z"
+   }
+  },
+  {
+   "id": "prd_87ae580ce1e54856",
+   "slug": "ea-sports-fc-27",
+   "title": "EA SPORTS FC 27",
+   "platform": "switch1",
+   "isHidden": true,
+   "hash": "91a142f6d421bea84705af025dde3b391fc48426c4615bd5cddbf6af640ab8d1",
+   "images": [
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://banan.to/api/files/products/prd_87ae580ce1e54856/square-card-f43821c5134870ec.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 234186,
+     "width": 1024,
+     "height": 1024,
+     "thumb": "review-workdir/thumbs/batch-005/ea-sports-fc-27__square-card-0.png"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://banan.to/api/files/products/prd_87ae580ce1e54856/cover-2ee07f5c0130d40d.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 481036,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-005/ea-sports-fc-27__detail-cover-1.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://banan.to/api/files/products/prd_87ae580ce1e54856/gallery-1-9187e7d2a74b1354.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 98768,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-005/ea-sports-fc-27__gallery-2.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[1]",
+     "url": "https://banan.to/api/files/products/prd_87ae580ce1e54856/gallery-2-dd58f200887059b5.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 121602,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-005/ea-sports-fc-27__gallery-3.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[2]",
+     "url": "https://banan.to/api/files/products/prd_87ae580ce1e54856/gallery-3-dfbf40a5a4bbdd7a.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 131532,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-005/ea-sports-fc-27__gallery-4.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[3]",
+     "url": "https://banan.to/api/files/products/prd_87ae580ce1e54856/gallery-4-950dd7d631788f69.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 96912,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-005/ea-sports-fc-27__gallery-5.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[4]",
+     "url": "https://banan.to/api/files/products/prd_87ae580ce1e54856/gallery-5-f2c30c36b8b13c27.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 118268,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-005/ea-sports-fc-27__gallery-6.png"
+    }
+   ],
+   "record": {
+    "title": "EA SPORTS FC 27",
+    "titleEn": "EA SPORTS FC 27",
+    "titleKu": "",
+    "slug": "ea-sports-fc-27",
+    "description": "EA SPORTS FC 27 delivers licensed football clubs, leagues, players, career and competitive modes on Nintendo hardware. Players choose teams and competitions across licensed leagues. Updated rosters, kits, competitions, and mechanical changes define each annual release.",
+    "descriptionEn": "EA SPORTS FC 27 delivers licensed football clubs, leagues, players, career and competitive modes on Nintendo hardware. Players choose teams and competitions across licensed leagues. Updated rosters, kits, competitions, and mechanical changes define each annual release.",
+    "descriptionKu": "",
+    "cartridgeImage": "",
+    "nintendoCardImage": "/api/files/products/prd_87ae580ce1e54856/square-card-f43821c5134870ec.webp",
+    "coverHiResImage": "",
+    "coverImage": "/api/files/products/prd_87ae580ce1e54856/cover-2ee07f5c0130d40d.webp",
+    "bannerImages": [
+     ""
+    ],
+    "gallery": [],
+    "youtubeTrailer": "",
+    "releaseDate": "2026-09-25",
+    "ageRating": "ESRB E / PEGI 3",
+    "metacriticRating": "85",
+    "genres": [
+     "Sports",
+     "Football / Soccer"
+    ],
+    "platform": "switch1",
+    "size": 0,
+    "numberOfPlayers": "Single system (1-4) / Local wireless and online multiplayer depending on mode",
+    "supportedLanguages": "Official supported language list varies by region; see the publisher page linked in Sources.",
+    "hardwareModel": "",
+    "colorEdition": "",
+    "storageCapacity": "",
+    "screenSpecs": "",
+    "batteryLife": "",
+    "boxContents": [],
+    "boxContentsText": "",
+    "warrantyCondition": "",
+    "connectivity": "",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "Global",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "",
+    "redemptionSteps": [],
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 11500,
+    "cost": 9500,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": true,
+    "displayOrder": 0,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "مشترك",
+      "description": "مشترك",
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_account",
+      "name": "خاص بك",
+      "description": "خاص بك",
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "types": [
+     {
+      "id": "offline_base",
+      "name": "مشترك — اللعبة الأساسية",
+      "optionId": "offline_account",
+      "price": 11500,
+      "cost": 9500,
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "offline_extras",
+      "name": "مشترك — مع الإضافات",
+      "optionId": "offline_account",
+      "price": 29000,
+      "cost": 18250,
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_extras",
+      "name": "خاص بك — مع الإضافات",
+      "optionId": "online_account",
+      "price": 42500,
+      "cost": 31500,
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "Coming Soon",
+    "kind": "account",
+    "trade_value_iqd": 40250,
+    "store_offer_bonus_iqd": 7250,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "id": "prd_87ae580ce1e54856",
+    "schema_version": 24,
+    "titleAr": "EA SPORTS FC 27",
+    "compatibility": [
+     "Nintendo Switch",
+     "Nintendo Switch 2 compatibility supported through the Switch version"
+    ],
+    "edition": "Standard / Store Variants",
+    "developer": "EA SPORTS",
+    "publisher": "Electronic Arts",
+    "seriesName": "EA SPORTS FC 27",
+    "price_usd": 69.99,
+    "officialUrl": "https://www.ea.com/games/ea-sports-fc/fc-27/news/fc-27-editions-and-release-dates",
+    "eshopUrl": "https://www.ea.com/games/ea-sports-fc/fc-27/news/fc-27-editions-and-release-dates",
+    "gameIsOffline": true,
+    "gameIsOnline": true,
+    "gameLanguageLocked": false,
+    "description_short": "EA SPORTS FC 27 delivers licensed football clubs, leagues, players, career and competitive modes on Nintendo hardware.",
+    "description_ar": "EA SPORTS FC 27 — EA SPORTS FC 27 delivers licensed football clubs, leagues, players, career and competitive modes on Nintendo hardware.",
+    "languagesText": [
+     "See official supported languages on the linked Nintendo/publisher product page"
+    ],
+    "languagesAudio": [
+     "Audio language availability varies by title and region; see official product information"
+    ],
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": true,
+    "nintendoPlayModes": "TV / Tabletop / Handheld",
+    "nintendoOnlineRequired": true,
+    "nintendoCloudSaves": true,
+    "nintendoGameKeyCard": false,
+    "nintendoPhysicalNeedsDownload": false,
+    "switch2Enhanced": false,
+    "switch2Exclusive": false,
+    "nintendoNotes": "Platform, release, player-count, storage, compatibility, and feature statements in this import are grounded in the official Nintendo/publisher pages listed under Sources. Store package prices are user-supplied storefront values, not assumed MSRP.",
+    "editionsList": [
+     {
+      "name": "Regular",
+      "contents": [
+       {
+        "label": "Regular store package"
+       },
+       {
+        "label": "Offline account access"
+       },
+       {
+        "label": "Infinite stock by default"
+       }
+      ]
+     },
+     {
+      "name": "Deluxe",
+      "contents": [
+       {
+        "label": "Deluxe store package"
+       },
+       {
+        "label": "Offline account access"
+       },
+       {
+        "label": "Infinite stock by default"
+       }
+      ]
+     },
+     {
+      "name": "Complete",
+      "contents": [
+       {
+        "label": "Complete store package"
+       },
+       {
+        "label": "Online account access"
+       },
+       {
+        "label": "Infinite stock by default"
+       }
+      ]
+     },
+     {
+      "name": "Ultimate",
+      "contents": [
+       {
+        "label": "Ultimate store package"
+       },
+       {
+        "label": "Online account access"
+       },
+       {
+        "label": "Infinite stock by default"
+       }
+      ]
+     }
+    ],
+    "gameplayPillars": [
+     {
+      "title": "Licensed football presentation",
+      "description": "Authentic clubs, leagues, kits, stadium presentation, and player databases form the core package."
+     },
+     {
+      "title": "Career and manager play",
+      "description": "Single-player career modes provide long-form club and player progression."
+     },
+     {
+      "title": "Ultimate Team / online ecosystem",
+      "description": "Supported editions include squad-building and competitive online structures."
+     },
+     {
+      "title": "Local multiplayer",
+      "description": "Multiple controllers support shared-system football matches."
+     },
+     {
+      "title": "Nintendo-specific feature set",
+      "description": "The Nintendo release is tuned to the capabilities and feature availability of its target Switch platform."
+     }
+    ],
+    "worldSummary": "EA SPORTS FC 27 delivers licensed football clubs, leagues, players, career and competitive modes on Nintendo hardware. Players choose teams and competitions across licensed leagues. Updated rosters, kits, competitions, and mechanical changes define each annual release.",
+    "storyChapters": [
+     {
+      "title": "Start a club season",
+      "body": "Players choose teams and competitions across licensed leagues."
+     },
+     {
+      "title": "Build squads",
+      "body": "Career and squad-building modes revolve around transfers, team chemistry, roles, and progression."
+     },
+     {
+      "title": "Play local matches",
+      "body": "Quick matches and tournaments provide immediate couch multiplayer."
+     },
+     {
+      "title": "Enter online competition",
+      "body": "Supported online modes add broader opponents and long-term progression."
+     },
+     {
+      "title": "Return each season",
+      "body": "Updated rosters, kits, competitions, and mechanical changes define each annual release."
+     }
+    ],
+    "features": [
+     "Licensed clubs and leagues",
+     "Career modes",
+     "Local multiplayer",
+     "Online competition",
+     "Annual roster and presentation updates"
+    ],
+    "perfResolutionDocked": "1080p",
+    "perfResolutionHandheld": "720p",
+    "perfFps": "30",
+    "perfHdr": false,
+    "playTimeMain": 0,
+    "completionMain": 0,
+    "completionExtras": 0,
+    "faq": [
+     {
+      "q": "Is this an official EA edition name?",
+      "a": "The game title is official; the Regular/Deluxe/Complete/Ultimate labels below are the user’s store package tiers and are not assumed to be identical to EA’s official commercial editions."
+     },
+     {
+      "q": "Does it support local multiplayer?",
+      "a": "Yes. Nintendo football releases support shared-system matches, with exact limits depending on mode."
+     },
+     {
+      "q": "Does it support online play?",
+      "a": "Yes in supported game modes; an internet connection and account requirements apply."
+     },
+     {
+      "q": "Why are Switch 1 and Switch 2 separate for newer FC titles?",
+      "a": "Where EA publishes separate platform versions, the extraction keeps them as distinct files rather than treating backward compatibility as a new edition."
+     },
+     {
+      "q": "Is FC 27 already released?",
+      "a": "No. FC 27 is marked Upcoming in this extraction because EA lists a September 25, 2026 global launch date."
+     }
+    ],
+    "verdictScore": 0,
+    "verdictPros": [
+     "Large licensed content base",
+     "Strong local multiplayer value",
+     "Multiple career/competitive modes",
+     "Annual roster refresh",
+     "Broad football audience"
+    ],
+    "verdictCons": [
+     "Annualized release cycle",
+     "Online modes depend on servers/accounts",
+     "Some features differ by Nintendo generation",
+     "Large later-game downloads",
+     "Store package labels should not be confused with official EA editions"
+    ],
+    "timeline": [
+     {
+      "date": "2026-09-25",
+      "title": "Scheduled global launch"
+     }
+    ],
+    "patchNotes": [
+     {
+      "version": "Pre-release listing",
+      "date": "2026-08-27"
+     }
+    ],
+    "studioName": "EA SPORTS",
+    "studioUrl": "https://www.ea.com/games/ea-sports-fc/fc-27/news/fc-27-editions-and-release-dates",
+    "studioLocation": "See publisher/developer profile",
+    "sources": [
+     {
+      "name": "Official Nintendo / publisher product page",
+      "url": "https://www.ea.com/games/ea-sports-fc/fc-27/news/fc-27-editions-and-release-dates"
+     }
+    ],
+    "downloadSizeGb": 0,
+    "requiredSpaceGb": 0,
+    "microSdRecommended": false,
+    "storageNotes": "Storage requirements follow the official product listing where a final numeric size is published; upcoming titles may require a later refresh when final size is posted.",
+    "mpLocalPlayers": true,
+    "mpOnlinePlayers": true,
+    "mpCoop": true,
+    "mpCompetitive": true,
+    "mpLocalWireless": true,
+    "mpSplitScreen": true,
+    "dlc": [
+     {
+      "name": "Downloadable / additional content status",
+      "description": "Ultimate Team and live-service content are handled inside the base football title; no invented standalone DLC package is added."
+     }
+    ],
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "deviceModel": "Nintendo Switch",
+      "hardwareId": "nintendo-switch",
+      "informationStatus": "Available",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p",
+       "resolutionDynamic": false,
+       "renderingResolution": "720p",
+       "outputResolution": "720p",
+       "fps": "30",
+       "fpsMin": "30",
+       "fpsMax": "30",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Handheld",
+       "notes": "EA lists global launch on September 25, 2026. Some newer-generation features are not available on Switch 1."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p",
+       "resolutionDynamic": false,
+       "renderingResolution": "1080p",
+       "outputResolution": "1080p",
+       "fps": "30",
+       "fpsMin": "30",
+       "fpsMax": "30",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "TV / Docked",
+       "notes": "EA lists global launch on September 25, 2026. Some newer-generation features are not available on Switch 1."
+      },
+      "modes": [
+       {
+        "name": "Primary documented/compatibility profile",
+        "handheldResolution": "720p",
+        "handheldFps": "30",
+        "tvResolution": "1080p",
+        "tvFps": "30",
+        "hdr": false,
+        "vrr": false,
+        "notes": "EA lists global launch on September 25, 2026. Some newer-generation features are not available on Switch 1."
+       }
+      ],
+      "upscaling": "Game / system-specific scaling where applicable",
+      "rayTracing": false,
+      "rayTracingMode": "Not Supported",
+      "loadingTime": "Scene-dependent",
+      "loadingNotes": "Loading time varies by scene, save state, storage, version, and patch.",
+      "gameVersion": "Current listed version",
+      "patchVersion": "Current available update",
+      "testedDate": "2026-08-27",
+      "sourceName": "Official product / compatibility information",
+      "performanceNotes": "EA lists global launch on September 25, 2026. Some newer-generation features are not available on Switch 1."
+     },
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "hardwareId": "nintendo-switch-2",
+      "informationStatus": "Available",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p",
+       "resolutionDynamic": false,
+       "renderingResolution": "720p",
+       "outputResolution": "720p",
+       "fps": "30",
+       "fpsMin": "30",
+       "fpsMax": "30",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Handheld",
+       "notes": "Backward-compatible Switch software; this is not a native Switch 2 edition."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p",
+       "resolutionDynamic": false,
+       "renderingResolution": "1080p",
+       "outputResolution": "1080p",
+       "fps": "30",
+       "fpsMin": "30",
+       "fpsMax": "30",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "TV / Docked",
+       "notes": "Backward-compatible Switch software; this is not a native Switch 2 edition."
+      },
+      "modes": [
+       {
+        "name": "Primary documented/compatibility profile",
+        "handheldResolution": "720p",
+        "handheldFps": "30",
+        "tvResolution": "1080p",
+        "tvFps": "30",
+        "hdr": false,
+        "vrr": false,
+        "notes": "Backward-compatible Switch software; this is not a native Switch 2 edition."
+       }
+      ],
+      "upscaling": "Game / system-specific scaling where applicable",
+      "rayTracing": false,
+      "rayTracingMode": "Not Supported",
+      "loadingTime": "Scene-dependent",
+      "loadingNotes": "Loading time varies by scene, save state, storage, version, and patch.",
+      "gameVersion": "Current listed version",
+      "patchVersion": "Current available update",
+      "testedDate": "2026-08-27",
+      "sourceName": "Official product / compatibility information",
+      "sourceUrl": "https://www.ea.com/games/ea-sports-fc/fc-27/news/fc-27-editions-and-release-dates",
+      "performanceNotes": "Backward-compatible Switch software; this is not a native Switch 2 edition."
+     }
+    ],
+    "switch2UpgradePrice": 0,
+    "boxContentsList": [],
+    "image": "",
+    "banner": "",
+    "schemaId": "",
+    "batchImport": true,
+    "galleryImages": [
+     {
+      "url": "/api/files/products/prd_87ae580ce1e54856/gallery-1-9187e7d2a74b1354.webp",
+      "alt": "EA SPORTS FC 27 screenshot 1"
+     },
+     {
+      "url": "/api/files/products/prd_87ae580ce1e54856/gallery-2-dd58f200887059b5.webp",
+      "alt": "EA SPORTS FC 27 screenshot 2"
+     },
+     {
+      "url": "/api/files/products/prd_87ae580ce1e54856/gallery-3-dfbf40a5a4bbdd7a.webp",
+      "alt": "EA SPORTS FC 27 screenshot 3"
+     },
+     {
+      "url": "/api/files/products/prd_87ae580ce1e54856/gallery-4-950dd7d631788f69.webp",
+      "alt": "EA SPORTS FC 27 screenshot 4"
+     },
+     {
+      "url": "/api/files/products/prd_87ae580ce1e54856/gallery-5-f2c30c36b8b13c27.webp",
+      "alt": "EA SPORTS FC 27 screenshot 5"
+     }
+    ],
+    "createdAt": "2026-08-28T18:51:59.243Z",
+    "updatedAt": "2026-08-28T18:51:59.243Z"
+   }
+  }
+ ]
+}

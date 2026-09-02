@@ -1,0 +1,560 @@
+{
+ "id": "prd_75d643ddb1194fff",
+ "title": "DYNASTY WARRIORS: ORIGINS",
+ "titleEn": "DYNASTY WARRIORS: ORIGINS",
+ "titleKu": "DYNASTY WARRIORS: ORIGINS",
+ "slug": "dynasty-warriors-origins",
+ "description": "Become immersed in massive Three Kingdoms battles from the perspective of a nameless hero. Coordinate with allies, master weapons and Battle Arts, and cut through enormous enemy forces while shaping the course of the conflict.",
+ "descriptionEn": "Become immersed in massive Three Kingdoms battles from the perspective of a nameless hero. Coordinate with allies, master weapons and Battle Arts, and cut through enormous enemy forces while shaping the course of the conflict.",
+ "descriptionKu": "Become immersed in massive Three Kingdoms battles from the perspective of a nameless hero. Coordinate with allies, master weapons and Battle Arts, and cut through enormous enemy forces while shaping the course of the conflict.",
+ "cartridgeImage": "/api/files/products/prd_75d643ddb1194fff/front-b84c45c8da7108c3.webp",
+ "nintendoCardImage": "/api/files/products/prd_75d643ddb1194fff/nintendoCardImage-7d8d78984e38a4d6.avif",
+ "coverHiResImage": "",
+ "coverImage": "/api/files/products/prd_75d643ddb1194fff/coverImage-2a4d94143183dfc8.avif",
+ "bannerImages": [
+  "/api/files/products/prd_75d643ddb1194fff/bannerImages-1-503a93dfe724755a.avif",
+  "/api/files/products/prd_75d643ddb1194fff/bannerImages-2-dde2672e678367d1.avif"
+ ],
+ "gallery": [],
+ "youtubeTrailer": "https://www.youtube.com/watch?v=AbagLFoHqFE",
+ "releaseDate": "2026-01-22",
+ "ageRating": "ESRB: Mild Language, Use of Alcohol, Violence",
+ "metacriticRating": 84,
+ "genres": [
+  "Action",
+  "Tactical",
+  "Hack and Slash"
+ ],
+ "platform": "switch2",
+ "size": 21.6,
+ "numberOfPlayers": "1",
+ "supportedLanguages": "Japanese, English, French, German, Italian, Spanish, Korean",
+ "hardwareModel": "",
+ "colorEdition": "",
+ "storageCapacity": "",
+ "screenSpecs": "",
+ "batteryLife": "",
+ "boxContents": [],
+ "boxContentsText": "",
+ "warrantyCondition": "",
+ "connectivity": "",
+ "characterName": "Link",
+ "amiiboSeries": "The Legend of Zelda",
+ "figureType": "figure",
+ "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+ "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+ "boxCondition": "mib",
+ "releaseWave": "Wave 2 (Restock)",
+ "rarity": "standard",
+ "accessoryType": "حقيبة حماية وتنقل Carry Case",
+ "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+ "brand": "Nintendo Official",
+ "material": "Hard EVA Shockproof Shell",
+ "availableColors": "Black, Neon Red/Blue, White",
+ "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+ "cardValue": "$20 eShop Balance",
+ "region": "Global",
+ "cardType": "eshop",
+ "deliveryMethod": "instant_code",
+ "redemptionGuide": "",
+ "redemptionSteps": [],
+ "validity": "no_expiry",
+ "usedType": "cartridge",
+ "conditionGrade": "like_new",
+ "packaging": "cib",
+ "guaranteeStatus": "tested_30days",
+ "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+ "accountType": "primary",
+ "badge": "وفر 40%",
+ "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+ "price": 10250,
+ "cost": 3250,
+ "stock": 999999,
+ "isInfiniteStock": true,
+ "isHidden": false,
+ "displayOrder": 0,
+ "category": "nintendo-switch-games",
+ "categoryId": "nintendo-switch-games",
+ "categoryEn": "",
+ "categoryKu": "",
+ "options": [
+  {
+   "id": "offline_account",
+   "name": "مشترك",
+   "description": "Play using the supplied account under the store's offline-account activation method.",
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_account",
+   "name": "خاص بك",
+   "description": "Online-account option with internet-connected account use where supported by the game/service.",
+   "isInfiniteStock": true
+  }
+ ],
+ "types": [
+  {
+   "id": "standard_offline",
+   "name": "مشترك — اللعبة الأساسية",
+   "optionId": "offline_account",
+   "price": 10250,
+   "cost": 3250,
+   "description": "Standard game, Offline Account. Supplier Regular price: ¥15.62; purchase cost converted at 1 CNY = 220 IQD and rounded down to nearest 250 IQD.",
+   "isInfiniteStock": true
+  },
+  {
+   "id": "standard_online",
+   "name": "خاص بك — اللعبة الأساسية",
+   "optionId": "online_account",
+   "price": 65000,
+   "cost": 40250,
+   "description": "Standard game, Online Account. Supplier Standard price: ¥183.20; purchase cost converted at 1 CNY = 220 IQD and rounded down to nearest 250 IQD.",
+   "isInfiniteStock": true
+  },
+  {
+   "id": "dlc_offline",
+   "name": "مشترك — مع الإضافات",
+   "optionId": "offline_account",
+   "price": 21000,
+   "cost": 4500,
+   "description": "Offline Account with the listed DLC/Deluxe content. Supplier Special price: ¥20.52.",
+   "isInfiniteStock": true
+  },
+  {
+   "id": "dlc_online",
+   "name": "خاص بك — مع الإضافات",
+   "optionId": "online_account",
+   "price": 85000,
+   "cost": 51000,
+   "description": "Online Account with the listed DLC/Deluxe content. Supplier Deluxe price: ¥232.20.",
+   "isInfiniteStock": true
+  }
+ ],
+ "editions": [],
+ "dlcs": [],
+ "isActive": true,
+ "status": "active",
+ "kind": "account",
+ "trade_value_iqd": 40000,
+ "store_offer_bonus_iqd": 0,
+ "trade_enabled": true,
+ "trade_value_locked": false,
+ "schema_version": 22,
+ "titleAr": "داينستي ووريورز: أوريجنز",
+ "compatibility": [
+  "Nintendo Switch 2"
+ ],
+ "edition": "Standard",
+ "developer": "Omega Force",
+ "publisher": "KOEI TECMO",
+ "opencriticRating": 81,
+ "userScore": 8.1,
+ "officialUrl": "https://www.koeitecmoamerica.com/dw_origins/",
+ "gameIsOffline": true,
+ "gameIsOnline": true,
+ "gameLanguageLocked": false,
+ "description_short": "A large-scale Three Kingdoms action game that places a nameless hero at the center of the most ambitious battlefields in Dynasty Warriors history.",
+ "description_ar": "تجربة أكشن واسعة النطاق في حقبة الممالك الثلاث، من منظور بطل مجهول. قاتل جيوشًا ضخمة، تعاون مع الحلفاء، وطوّر الأسلحة والمهارات ضمن معارك Musou كثيفة.",
+ "box_front_url": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/store/software/switch2/70070000032028/2de085beef0c8cde8377c5a69bf6904da0759f99aca1c99a6fa72e6fc47eaed3",
+ "videos": [
+  {
+   "title": "Nintendo Switch 2 Launch Trailer",
+   "url": "https://www.youtube.com/watch?v=AbagLFoHqFE"
+  }
+ ],
+ "nintendoEshopUrl": "https://www.nintendo.com/us/store/products/dynasty-warriors-origins-switch-2/",
+ "nintendoOnlineRequired": false,
+ "nintendoCloudSaves": true,
+ "tvMode": true,
+ "tabletopMode": true,
+ "handheldMode": true,
+ "nintendoPlayModes": "TV Mode, Tabletop Mode, Handheld Mode",
+ "switch2Features": [
+  "Native Switch 2 release",
+  "Fixed 30 FPS option",
+  "Variable frame-rate option that can rise toward 60 FPS",
+  "Dynamic 1080p-class output",
+  "TV, Tabletop and Handheld modes",
+  "Game-Key Card physical release in some regions",
+  "Save Data Cloud"
+ ],
+ "tagline": "Fight through the Three Kingdoms as a nameless hero amid armies of thousands.",
+ "fitFor": [
+  "Musou and Dynasty Warriors fans",
+  "Players who enjoy massive battlefields",
+  "Three Kingdoms enthusiasts",
+  "Action players who enjoy tactical positioning"
+ ],
+ "notFitFor": [
+  "Players seeking multiplayer",
+  "Players who strongly prefer a locked 60 FPS mode"
+ ],
+ "playTimeMain": 33,
+ "playTimeFull": 95.5,
+ "editionsList": [
+  {
+   "name": "Standard Edition",
+   "contents": [
+    {
+     "label": "Base game"
+    }
+   ]
+  },
+  {
+   "name": "Digital Deluxe Edition",
+   "contents": [
+    {
+     "label": "Base game"
+    },
+    {
+     "label": "Digital official book"
+    },
+    {
+     "label": "Digital soundtrack"
+    },
+    {
+     "label": "Deluxe bonuses"
+    }
+   ]
+  },
+  {
+   "name": "Visions of Four Heroes DLC",
+   "contents": [
+    {
+     "label": "Alternate hero scenarios"
+    },
+    {
+     "label": "Additional weapons / Battle Arts / companions and progression content"
+    }
+   ]
+  }
+ ],
+ "gameplayPillars": [
+  {
+   "title": "1-vs-1,000 Combat",
+   "description": "Cut through extremely dense enemy formations with weapon strings, Battle Arts, evasive actions and Musou attacks."
+  },
+  {
+   "title": "Battlefield Tactics",
+   "description": "Read the front line, support allied officers, issue commands and respond to large-scale enemy tactics."
+  },
+  {
+   "title": "Weapon Mastery",
+   "description": "Use multiple weapon classes and build proficiency to unlock stronger actions."
+  },
+  {
+   "title": "Three Kingdoms Story",
+   "description": "Experience major historical conflicts through a new amnesiac protagonist whose perspective intersects with famous warlords."
+  }
+ ],
+ "storyChapters": [
+  {
+   "title": "The Nameless Wanderer",
+   "body": "An amnesiac martial artist enters the turmoil surrounding the Yellow Turban Rebellion."
+  },
+  {
+   "title": "Choosing a Path",
+   "body": "The Wanderer becomes involved with major factions and officers during the rise of the Three Kingdoms."
+  },
+  {
+   "title": "Origins of Heroes",
+   "body": "The campaign reframes famous conflicts through the protagonist's relationships and battlefield choices."
+  }
+ ],
+ "galleryImages": [
+  {
+   "url": "https://assets.nintendo.com/image/upload/ar_16:9,b_auto:border,c_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70070000032028/d46471b67abff8939c671c327a3dc22072f4c0d8a6940e02b9c9eeefae86e99e",
+   "alt": "Distinct product/game media image 1; separate from the primary cover and square-card roles."
+  }
+ ],
+ "features": [
+  "Large-scale 1-vs-1,000 Musou battles",
+  "Original nameless protagonist",
+  "Three Kingdoms campaign",
+  "Tactical cooperation with allied armies",
+  "Multiple weapon types and Battle Arts",
+  "Difficulty options and progression systems",
+  "Fixed 30 FPS or variable frame-rate option on Switch 2",
+  "Major Visions of Four Heroes DLC",
+  "Digital Deluxe content with official book and soundtrack"
+ ],
+ "perfResolutionDocked": "1920x1080 output class",
+ "perfResolutionHandheld": "1920x1080 output class",
+ "perfFps": "30 FPS fixed mode; optional variable mode can rise toward 60 FPS",
+ "perfNotes": "The Switch 2 version provides a stable fixed 30 FPS mode and an optional variable frame-rate mode that can rise toward 60 FPS in lighter scenes. 1080p-class output is used for the validator fields; rendering may dynamically scale during large battles.",
+ "devicePerformance": [
+  {
+   "device": "Nintendo Switch 2",
+   "deviceSlug": "nintendo-switch-2",
+   "deviceModel": "Nintendo Switch 2",
+   "hardwareId": "prd_acf4c89908764c62",
+   "informationStatus": "verified",
+   "handheld": {
+    "supported": true,
+    "resolution": "1920x1080 output class",
+    "renderingResolution": "Dynamic",
+    "outputResolution": "1920x1080",
+    "fps": "30",
+    "fpsMin": "30",
+    "fpsMax": "30"
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "1920x1080 output class",
+    "renderingResolution": "Dynamic",
+    "outputResolution": "1920x1080",
+    "fps": "30",
+    "fpsMin": "30",
+    "fpsMax": "30"
+   },
+   "modes": [
+    {
+     "name": "Fixed 30 FPS",
+     "handheldResolution": "1920x1080 output class",
+     "handheldFps": "30",
+     "tvResolution": "1920x1080 output class",
+     "tvFps": "30"
+    },
+    {
+     "name": "Variable Frame Rate",
+     "handheldResolution": "Dynamic, 1080p output class",
+     "handheldFps": "30-60",
+     "tvResolution": "Dynamic, 1080p output class",
+     "tvFps": "30-60"
+    }
+   ],
+   "sourceName": "KOEI TECMO / Nintendo Life / RPG Site technical coverage",
+   "sourceUrl": "https://www.nintendolife.com/news/2025/09/dynasty-warriors-origins-will-run-at-a-fixed-30fps-on-switch-2",
+   "verificationStatus": "verified-frame-rate; resolution-output-class",
+   "performanceNotes": "The Switch 2 version provides a stable fixed 30 FPS mode and an optional variable frame-rate mode that can rise toward 60 FPS in lighter scenes. 1080p-class output is used for the validator fields; rendering may dynamically scale during large battles."
+  }
+ ],
+ "downloadSizeGb": 21.6,
+ "requiredSpaceGb": 21.6,
+ "microSdRecommended": false,
+ "languagesAudio": [
+  "Japanese",
+  "English",
+  "Chinese"
+ ],
+ "languagesText": [
+  "Japanese",
+  "English",
+  "French",
+  "German",
+  "Italian",
+  "Spanish",
+  "Korean"
+ ],
+ "arabicSupport": false,
+ "mpLocalPlayers": false,
+ "mpOnlinePlayers": false,
+ "mpCoop": false,
+ "mpCompetitive": false,
+ "mpSplitScreen": false,
+ "mpLocalWireless": false,
+ "dlc": [
+  {
+   "name": "Visions of Four Heroes",
+   "description": "Major expansion featuring alternate scenarios for Zhang Jiao, Dong Zhuo, Yuan Shao and Lu Bu, plus new weapons, Battle Arts and companions."
+  },
+  {
+   "name": "Official Book & Original Soundtrack (Digital Edition)",
+   "description": "Digital book and 20-track soundtrack accessible from within the game."
+  }
+ ],
+ "guides": [
+  {
+   "title": "Official Site",
+   "summary": "Characters, systems and edition details.",
+   "url": "https://www.koeitecmoamerica.com/dw_origins/"
+  },
+  {
+   "title": "Nintendo Store",
+   "summary": "Switch 2 release and platform details.",
+   "url": "https://www.nintendo.com/us/store/products/dynasty-warriors-origins-switch-2/"
+  },
+  {
+   "title": "Deku Deals",
+   "summary": "Completion-time and review aggregate data.",
+   "url": "https://www.dekudeals.com/items/dynasty-warriors-origins"
+  }
+ ],
+ "completionMain": 33,
+ "completionExtras": 46,
+ "completionAll": 95.5,
+ "faq": [
+  {
+   "q": "Is this a sequel to Dynasty Warriors 9?",
+   "a": "It is a new mainline reinterpretation that returns to the Three Kingdoms era with a new protagonist and heavily reworked combat."
+  },
+  {
+   "q": "How long is the campaign?",
+   "a": "Crowdsourced data lists roughly 33 hours for the main story, 46 with extras and about 95.5 hours for completionist play."
+  },
+  {
+   "q": "How does it run on Switch 2?",
+   "a": "The Switch 2 version offers a fixed 30 FPS mode plus a variable mode that can rise higher depending on scene complexity."
+  },
+  {
+   "q": "Is it multiplayer?",
+   "a": "No. The main game is single-player."
+  },
+  {
+   "q": "Does it have major DLC?",
+   "a": "Yes. Visions of Four Heroes is a substantial expansion."
+  },
+  {
+   "q": "Is the physical Switch 2 release a Game-Key Card?",
+   "a": "Some regional physical listings use the Nintendo Switch 2 Game-Key Card format; check the exact regional SKU."
+  }
+ ],
+ "verdictScore": 8.5,
+ "verdictSummary": "A technically ambitious Musou game with excellent battlefield scale. Switch 2 offers a stable 30 FPS option plus a variable mode for players who prefer higher responsiveness.",
+ "verdictPros": [
+  "Huge battlefield scale",
+  "Strong combat impact",
+  "Flexible Switch 2 frame-rate modes",
+  "Substantial major DLC"
+ ],
+ "verdictCons": [
+  "Variable mode can fluctuate significantly",
+  "Single-player only"
+ ],
+ "reviews": [
+  {
+   "source": "Metacritic",
+   "score": "84/100",
+   "quote": "Critics praised the battlefield scale, combat overhaul and series revitalization.",
+   "url": "https://www.metacritic.com/"
+  },
+  {
+   "source": "OpenCritic",
+   "score": "81/100",
+   "quote": "Strong approval for the combat and progression changes, with some criticism of repetition over long sessions.",
+   "url": "https://opencritic.com/"
+  },
+  {
+   "source": "Deku Deals users",
+   "score": "8.1/10",
+   "quote": "Player-facing aggregate data lists an 8.1 user score.",
+   "url": "https://www.dekudeals.com/items/dynasty-warriors-origins"
+  }
+ ],
+ "timeline": [
+  {
+   "date": "2024",
+   "title": "Original announcement",
+   "body": "KOEI TECMO revealed Dynasty Warriors: Origins for current platforms."
+  },
+  {
+   "date": "2025-01-17",
+   "title": "Original-platform launch",
+   "body": "The game launched on PS5 and Xbox Series X|S, with PC arriving around the same period."
+  },
+  {
+   "date": "2025",
+   "title": "Switch 2 version announced",
+   "body": "KOEI TECMO announced a Nintendo Switch 2 release."
+  },
+  {
+   "date": "2026-01-22",
+   "title": "Switch 2 launch",
+   "body": "The native Nintendo Switch 2 version released."
+  },
+  {
+   "date": "2026",
+   "title": "Visions of Four Heroes",
+   "body": "Major expansion content broadened the scenario structure."
+  }
+ ],
+ "patchNotes": [
+  {
+   "version": "Switch 2 launch version",
+   "date": "2026-01-22",
+   "body": "Native Switch 2 release with fixed 30 FPS and variable frame-rate options."
+  },
+  {
+   "version": "Visions of Four Heroes support",
+   "date": "2026",
+   "body": "Added compatibility and content for the major expansion."
+  },
+  {
+   "version": "Post-launch patches",
+   "date": "2026",
+   "body": "Ongoing stability, balance and compatibility updates accompanied the Switch 2 release and DLC."
+  }
+ ],
+ "soundtrack": [
+  {
+   "title": "DYNASTY WARRIORS: ORIGINS Digital Soundtrack",
+   "url": "https://www.koeitecmoamerica.com/dw_origins/"
+  },
+  {
+   "title": "Three Kingdoms battle themes",
+   "url": "https://www.koeitecmoamerica.com/dw_origins/"
+  }
+ ],
+ "seriesName": "Dynasty Warriors",
+ "seriesEntries": [
+  "Dynasty Warriors 9",
+  "DYNASTY WARRIORS: ORIGINS",
+  "WARRIORS: Abyss"
+ ],
+ "studioName": "Omega Force / KOEI TECMO GAMES",
+ "studioUrl": "https://www.koeitecmo.co.jp/",
+ "studioLocation": "Yokohama, Kanagawa, Japan",
+ "studioAbout": "Omega Force is KOEI TECMO's action-development team behind Dynasty Warriors and Warriors titles. Origins rebuilds the series around denser armies, a new protagonist, stronger tactical coordination and more deliberate combat.",
+ "setupNeeds": [
+  "Nintendo Switch 2 system required for the Nintendo Switch 2 version.",
+  "Internet connection is required for digital download, updates and online/service features where applicable.",
+  "Nintendo Account required for Nintendo eShop purchase/download.",
+  "Sufficient internal storage or compatible microSD Express storage required.",
+  "Nintendo Switch Online membership is required only for game-specific online multiplayer/features that explicitly use it."
+ ],
+ "sources": [
+  {
+   "name": "Nintendo Store",
+   "url": "https://www.nintendo.com/us/store/products/dynasty-warriors-origins-switch-2/"
+  },
+  {
+   "name": "KOEI TECMO Official",
+   "url": "https://www.koeitecmoamerica.com/dw_origins/"
+  },
+  {
+   "name": "Deku Deals",
+   "url": "https://www.dekudeals.com/items/dynasty-warriors-origins"
+  }
+ ],
+ "boxContentsList": "[Circular]",
+ "image": "/api/files/products/prd_75d643ddb1194fff/coverImage-2a4d94143183dfc8.avif",
+ "banner": "/api/files/products/prd_75d643ddb1194fff/bannerImages-1-503a93dfe724755a.avif",
+ "schemaId": "",
+ "badgeEn": "وفر 40%",
+ "badgeKu": "وفر 40%",
+ "featuresEn": [
+  "Large-scale 1-vs-1,000 Musou battles",
+  "Original nameless protagonist",
+  "Three Kingdoms campaign",
+  "Tactical cooperation with allied armies",
+  "Multiple weapon types and Battle Arts",
+  "Difficulty options and progression systems",
+  "Fixed 30 FPS or variable frame-rate option on Switch 2",
+  "Major Visions of Four Heroes DLC",
+  "Digital Deluxe content with official book and soundtrack"
+ ],
+ "featuresKu": [
+  "Large-scale 1-vs-1,000 Musou battles",
+  "Original nameless protagonist",
+  "Three Kingdoms campaign",
+  "Tactical cooperation with allied armies",
+  "Multiple weapon types and Battle Arts",
+  "Difficulty options and progression systems",
+  "Fixed 30 FPS or variable frame-rate option on Switch 2",
+  "Major Visions of Four Heroes DLC",
+  "Digital Deluxe content with official book and soundtrack"
+ ],
+ "sales": 0,
+ "images": [],
+ "modes": [],
+ "updatedAt": "2026-08-28T22:03:09.169Z"
+}
