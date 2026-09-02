@@ -1,0 +1,610 @@
+{
+ "title": "Super Mario Bros. Wonder",
+ "titleEn": "Super Mario Bros. Wonder",
+ "titleKu": "Super Mario Bros. Wonder",
+ "slug": "super-mario-bros-wonder-switch",
+ "description": "A colorful evolution of 2D Mario set in the Flower Kingdom. Wonder Flowers transform courses in unexpected ways, while badges, Elephant Mario and a large playable cast create new approaches to classic side-scrolling platforming.",
+ "descriptionEn": "A colorful evolution of 2D Mario set in the Flower Kingdom. Wonder Flowers transform courses in unexpected ways, while badges, Elephant Mario and a large playable cast create new approaches to classic side-scrolling platforming.",
+ "descriptionKu": "A colorful evolution of 2D Mario set in the Flower Kingdom. Wonder Flowers transform courses in unexpected ways, while badges, Elephant Mario and a large playable cast create new approaches to classic side-scrolling platforming.",
+ "cartridgeImage": "/api/files/products/prd_99e5727e6bc7469f/front-20956222f30ef265.jpg",
+ "nintendoCardImage": "/api/files/products/prd_99e5727e6bc7469f/square-6a3e28837cb228fe.jpg",
+ "coverHiResImage": "/api/files/products/prd_99e5727e6bc7469f/3d-texture-31535f6bb9e4a015.jpg",
+ "coverImage": "/api/files/products/prd_99e5727e6bc7469f/cover-d366a61f7bd3500b.jpg",
+ "bannerImages": [
+  "/api/files/products/prd_99e5727e6bc7469f/banner-1-4850c509beea2560.jpg",
+  "/api/files/products/prd_99e5727e6bc7469f/banner-2-818838a2d9794cd4.jpg",
+  "/api/files/products/prd_99e5727e6bc7469f/banner-3-beaa34c2ad711390.jpg",
+  "/api/files/products/prd_99e5727e6bc7469f/banner-4-75cd48b6b2790004.jpg",
+  "/api/files/products/prd_99e5727e6bc7469f/banner-5-91f3e558fd34a477.webp",
+  "/api/files/products/prd_99e5727e6bc7469f/banner-5-52c1d00291f39aec.png"
+ ],
+ "gallery": [],
+ "youtubeTrailer": "https://supermariobroswonder.nintendo.com/",
+ "releaseDate": "2023-10-20",
+ "ageRating": "ESRB E / PEGI 3",
+ "metacriticRating": 92,
+ "genres": [
+  "Platformer",
+  "2D Action",
+  "Family"
+ ],
+ "platform": "switch1",
+ "size": 3.7,
+ "numberOfPlayers": "1–4 local; 1–4 online",
+ "supportedLanguages": "Japanese / English; French / German / Italian / Spanish / Portuguese / Dutch / Russian; Korean / Simplified Chinese / Traditional Chinese / Polish / Thai",
+ "hardwareModel": "",
+ "colorEdition": "",
+ "storageCapacity": "",
+ "screenSpecs": "",
+ "batteryLife": "",
+ "boxContents": [],
+ "boxContentsText": "",
+ "warrantyCondition": "",
+ "connectivity": "",
+ "characterName": "Link",
+ "amiiboSeries": "The Legend of Zelda",
+ "figureType": "figure",
+ "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+ "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+ "boxCondition": "mib",
+ "releaseWave": "Wave 2 (Restock)",
+ "rarity": "standard",
+ "accessoryType": "حقيبة حماية وتنقل Carry Case",
+ "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+ "brand": "Nintendo Official",
+ "material": "Hard EVA Shockproof Shell",
+ "availableColors": "Black, Neon Red/Blue, White",
+ "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+ "cardValue": "$20 eShop Balance",
+ "region": "Global",
+ "cardType": "eshop",
+ "deliveryMethod": "instant_code",
+ "redemptionGuide": "",
+ "redemptionSteps": [],
+ "validity": "no_expiry",
+ "usedType": "cartridge",
+ "conditionGrade": "like_new",
+ "packaging": "cib",
+ "guaranteeStatus": "tested_30days",
+ "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+ "accountType": "primary",
+ "badge": "وفر 40%",
+ "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+ "price": 12000,
+ "cost": 2500,
+ "stock": 999999,
+ "isInfiniteStock": true,
+ "isHidden": false,
+ "displayOrder": 0,
+ "category": "nintendo-switch-games",
+ "categoryId": "nintendo-switch-games",
+ "categoryEn": "",
+ "categoryKu": "",
+ "options": [
+  {
+   "id": "offline_account",
+   "name": "Offline Account",
+   "description": "Offline account access",
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_account",
+   "name": "Online Account",
+   "description": "Online account access",
+   "stock": 9999,
+   "isInfiniteStock": true
+  }
+ ],
+ "types": [
+  {
+   "id": "standard_offline",
+   "name": "Offline Account",
+   "optionId": "offline_account",
+   "price": "12000",
+   "cost": 2500,
+   "description": "Offline Account; supplier cost 2,500 IQD; configured selling price 15,000 IQD.",
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "standard_online",
+   "name": "Online Account",
+   "optionId": "online_account",
+   "price": "38000",
+   "cost": 25000,
+   "description": "Online Account; supplier cost 25,000 IQD; configured selling price 35,000 IQD.",
+   "stock": 9999,
+   "isInfiniteStock": true
+  }
+ ],
+ "editions": [],
+ "dlcs": [],
+ "isActive": true,
+ "status": "Active",
+ "kind": "account",
+ "trade_value_iqd": 44000,
+ "store_offer_bonus_iqd": 8000,
+ "trade_enabled": true,
+ "trade_value_locked": false,
+ "id": "prd_99e5727e6bc7469f",
+ "schema_version": 23,
+ "titleAr": "سوبر ماريو بروس. وندر",
+ "compatibility": [
+  "Nintendo Switch",
+  "Nintendo Switch 2 (backward compatible / separate Switch 2 Edition where applicable)"
+ ],
+ "edition": "Standard",
+ "developer": "Nintendo EPD",
+ "publisher": "Nintendo",
+ "metacriticUrl": "https://www.metacritic.com/game/super-mario-bros-wonder/",
+ "opencriticRating": 92,
+ "userScore": 8.9,
+ "price_usd": 59.99,
+ "officialUrl": "https://supermariobroswonder.nintendo.com/",
+ "eshopUrl": "https://www.nintendo.com/us/store/products/super-mario-bros-wonder-switch/",
+ "gameIsOffline": true,
+ "gameIsOnline": true,
+ "gameLanguageLocked": false,
+ "description_short": "A colorful evolution of 2D Mario set in the Flower Kingdom. Wonder Flowers transform courses in unexpected ways, while badges, Elephant Mario and a large playable cast create new approaches to classic side-scrolling platforming.",
+ "description_ar": "تطور كبير لألعاب Mario ثنائية الأبعاد في مملكة الزهور. تغيّر Wonder Flowers المراحل بطرق مفاجئة، وتضيف Badges وقدرة Elephant Mario وشخصيات عديدة أساليب لعب متنوعة، مع تعاون محلي وأونلاين.",
+ "box_front_url": "https://images.launchbox-app.com//f78a724a-e900-45bc-af80-c42ae5de005a.jpg",
+ "box_back_url": "https://images.launchbox-app.com//7f1c97fe-c67f-4049-92a2-c32855b41514.jpg",
+ "galleryImages": [
+  {
+   "url": "https://images.launchbox-app.com//acc8ff81-396a-499f-8e74-826b30525e6f.jpg",
+   "alt": "Super Mario Bros. Wonder — verified promotional/gameplay image 1"
+  },
+  {
+   "url": "https://images.launchbox-app.com//414947bf-268f-4dec-921a-c9b4d8c2305d.jpg",
+   "alt": "Super Mario Bros. Wonder — verified promotional/gameplay image 2"
+  },
+  {
+   "url": "https://images.launchbox-app.com//fc2d2cdf-1a33-4b22-a7c2-199e7b17d1fb.jpg",
+   "alt": "Super Mario Bros. Wonder — verified promotional/gameplay image 3"
+  },
+  {
+   "url": "https://images.launchbox-app.com//112a9edf-a936-42b1-8a02-a3970d87bc27.jpg",
+   "alt": "Super Mario Bros. Wonder — verified promotional/gameplay image 4"
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000068688/87e8aa5f1fdc950b88eae7d7c62ed185c8a6373c845090bbdb2e2cf039b38da1",
+   "alt": "Super Mario Bros. Wonder — verified promotional/gameplay image 5"
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000068688/7f1845a5e8d8ec895ad188a6b0f46b59036a363db1b2d9b79d23b913b0b9ab8a",
+   "alt": "Super Mario Bros. Wonder — verified promotional/gameplay image 6"
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000068688/e3024df668cdead60e62865924652c811323b0e7c46f51567fe80907f2637cc4",
+   "alt": "Super Mario Bros. Wonder — verified promotional/gameplay image 7"
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000068688/e1ee4f690cec788fc2a75e85ddc12f6d7ef69501bbb362ad918e1ffcbc14936f",
+   "alt": "Super Mario Bros. Wonder — verified promotional/gameplay image 8"
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000068688/c77b1b26934fa04c01bbadcd5081b7a2cbfe787f4cd7d8a8e59445f67beb73c3",
+   "alt": "Super Mario Bros. Wonder — verified promotional/gameplay image 9"
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000068688/9669405e5f3f899993cddbc02bd570d530eb39410ed3b50e6bd102381fbe6916",
+   "alt": "Super Mario Bros. Wonder — verified promotional/gameplay image 10"
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000068688/befae68cae3bdd5e0cce98fc224ccdbb4b5885d2df3a642855f2c272fa4e7033",
+   "alt": "Super Mario Bros. Wonder — verified promotional/gameplay image 11"
+  }
+ ],
+ "videos": [
+  {
+   "title": "Official trailer / product overview",
+   "url": "https://supermariobroswonder.nintendo.com/"
+  },
+  {
+   "title": "Nintendo product page and gameplay media",
+   "url": "https://www.nintendo.com/us/store/products/super-mario-bros-wonder-switch/"
+  },
+  {
+   "title": "Technical / review reference",
+   "url": "https://nintendoeverything.com/super-mario-bros-wonder-tech-analysis-frame-rate-resolution/"
+  }
+ ],
+ "nsuid": "See official Nintendo product page for regional NSUID",
+ "title_id": "Regional digital title ID varies by storefront and package",
+ "product_code": "HAC-P-AQMXA",
+ "nintendoEshopUrl": "https://www.nintendo.com/us/store/products/super-mario-bros-wonder-switch/",
+ "nintendoOnlineRequired": true,
+ "nintendoCloudSaves": true,
+ "nintendoGameKeyCard": false,
+ "nintendoPhysicalNeedsDownload": false,
+ "tvMode": true,
+ "tabletopMode": true,
+ "handheldMode": true,
+ "nintendoPlayModes": "TV / Tabletop / Handheld",
+ "nintendoNotes": "Current verified Nintendo data for Super Mario Bros. Wonder. Storage, languages, multiplayer and platform-specific features are separated from measured performance values.",
+ "switch2Enhanced": true,
+ "switch2Exclusive": false,
+ "switch2UpgradePrice": 0,
+ "switch2Features": [
+  "Wonder Flowers and highly varied Wonder Effects",
+  "12 playable characters with different accessibility traits",
+  "Local four-player play plus online cooperative features"
+ ],
+ "tagline": "Expect the unexpected in Mario's most inventive modern 2D adventure.",
+ "fitFor": [
+  "Fans of 2D Mario and polished platformers",
+  "Families wanting up to four-player local play",
+  "Players who enjoy creative secrets and collectibles"
+ ],
+ "notFitFor": [
+  "Players who only want difficult precision platforming",
+  "Players looking for a long RPG-style campaign",
+  "Players who dislike shared-screen multiplayer"
+ ],
+ "playTimeMain": 10,
+ "playTimeFull": 20,
+ "editionsList": [
+  {
+   "name": "Standard Edition",
+   "coverUrl": "https://images.launchbox-app.com//f78a724a-e900-45bc-af80-c42ae5de005a.jpg",
+   "contents": [
+    {
+     "label": "Base game"
+    },
+    {
+     "label": "Core modes"
+    },
+    {
+     "label": "Platform features"
+    }
+   ]
+  },
+  {
+   "name": "Digital Edition",
+   "coverUrl": "https://images.launchbox-app.com//4917dc4b-b5ca-4720-ad67-8e082fae556e.jpg",
+   "contents": [
+    {
+     "label": "Digital game license"
+    },
+    {
+     "label": "Same core game content"
+    },
+    {
+     "label": "Nintendo Account delivery"
+    }
+   ]
+  },
+  {
+   "name": "Current Complete Package",
+   "coverUrl": "https://images.launchbox-app.com//116a73ff-e22d-4545-87cb-6272c5cab2bc.jpg",
+   "contents": [
+    {
+     "label": "Latest game build"
+    },
+    {
+     "label": "Nintendo Switch 2 Edition Upgrade Pack"
+    },
+    {
+     "label": "Wonder Flowers and highly varied Wonder Effects"
+    }
+   ]
+  }
+ ],
+ "gameplayPillars": [
+  {
+   "title": "Wonder Effects",
+   "description": "Touch a Wonder Flower and the course can transform dramatically: pipes move, perspectives change, enemies multiply and entirely new rules appear.",
+   "imageUrl": "https://images.launchbox-app.com//116a73ff-e22d-4545-87cb-6272c5cab2bc.jpg"
+  },
+  {
+   "title": "Badges and power-ups",
+   "description": "Equip badges that alter movement or provide assistance, while new power-ups such as Elephant Fruit create new interactions.",
+   "imageUrl": "https://images.launchbox-app.com//2c03c780-5b60-46a5-94ac-014fc5f3504e.jpg"
+  },
+  {
+   "title": "Share the adventure",
+   "description": "Up to four people can play on one system, and online features add live player ghosts, standees and cooperative assistance.",
+   "imageUrl": "https://images.launchbox-app.com//fb96b8f1-f190-4162-b408-76431528f7f3.jpg"
+  }
+ ],
+ "worldSummary": "The adventure takes place in the Flower Kingdom, made up of six main worlds plus the Petal Isles. Bowser uses a Wonder Flower to merge with Prince Florian's castle, while Mario and friends travel across varied regions collecting Wonder Seeds.",
+ "storyChapters": [
+  {
+   "title": "The Flower Kingdom",
+   "body": "Prince Florian welcomes Mario and friends before Bowser transforms the castle into a flying fortress.",
+   "imageUrl": "https://images.launchbox-app.com//de58e88d-f185-4ca6-b950-d2c9dfa61ca1.jpg"
+  },
+  {
+   "title": "Six worlds and Petal Isles",
+   "body": "The heroes cross colorful regions, finding Wonder Seeds and confronting Bowser Jr. in multiple palaces.",
+   "imageUrl": "https://images.launchbox-app.com//0ce8624c-adf6-47fe-ba04-606f5e91d4f9.jpg"
+  },
+  {
+   "title": "Castle Bowser",
+   "body": "The journey culminates in the transformed castle and the final effort to free the Flower Kingdom.",
+   "imageUrl": "https://images.launchbox-app.com//acc8ff81-396a-499f-8e74-826b30525e6f.jpg"
+  }
+ ],
+ "features": [
+  "Wonder Flowers and highly varied Wonder Effects",
+  "12 playable characters with different accessibility traits",
+  "Local four-player play plus online cooperative features"
+ ],
+ "perfResolutionDocked": "1080p native; some map scenes can dynamically reduce to around 864p",
+ "perfResolutionHandheld": "720p native",
+ "perfFps": "60",
+ "perfHdr": false,
+ "perfNotes": "Digital Foundry analysis reports 1080p docked gameplay and 720p handheld at a near-perfect 60 fps, with only selected overworld/map situations dynamically reducing resolution.",
+ "devicePerformance": [
+  {
+   "device": "Nintendo Switch 2",
+   "deviceSlug": "nintendo-switch-2",
+   "deviceModel": "Nintendo Switch 2",
+   "hardwareId": "prd_acf4c89908764c62",
+   "informationStatus": "Available / verified",
+   "unavailableReason": "No required native mode is unavailable.",
+   "handheld": {
+    "supported": true,
+    "resolution": "720p native",
+    "resolutionDynamic": false,
+    "renderingResolution": "720p native",
+    "outputResolution": "1280x720",
+    "fps": "60",
+    "fpsMin": "60",
+    "fpsMax": "60",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "Handheld",
+    "notes": "Digital Foundry analysis reports 1080p docked gameplay and 720p handheld at a near-perfect 60 fps, with only selected overworld/map situations dynamically reducing resolution."
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "1080p native; some map scenes can dynamically reduce to around 864p",
+    "resolutionDynamic": true,
+    "renderingResolution": "1080p native; some map scenes can dynamically reduce to around 864p",
+    "outputResolution": "1920x1080",
+    "fps": "60",
+    "fpsMin": "60",
+    "fpsMax": "60",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "TV / Docked",
+    "notes": "Digital Foundry analysis reports 1080p docked gameplay and 720p handheld at a near-perfect 60 fps, with only selected overworld/map situations dynamically reducing resolution."
+   },
+   "modes": [
+    {
+     "name": "Standard",
+     "handheldResolution": "720p native",
+     "handheldFps": "60",
+     "tvResolution": "1080p native; some map scenes can dynamically reduce to around 864p",
+     "tvFps": "60",
+     "hdr": false,
+     "vrr": false,
+     "notes": "Primary documented performance profile."
+    }
+   ],
+   "upscaling": "Platform-specific scaling/reconstruction where documented",
+   "rayTracing": false,
+   "rayTracingMode": "No ray-tracing mode",
+   "loadingTime": "Scene-dependent; no single universal load time",
+   "loadingNotes": "Loading varies by activity and storage state.",
+   "gameVersion": "Current retail build",
+   "patchVersion": "Current available update",
+   "testedDate": "2026-08-27",
+   "sourceName": "Digital Foundry performance summary",
+   "sourceUrl": "https://nintendoeverything.com/super-mario-bros-wonder-tech-analysis-frame-rate-resolution/",
+   "verifiedAt": "2026-08-27",
+   "verificationStatus": "Verified / sourced",
+   "performanceNotes": "Digital Foundry analysis reports 1080p docked gameplay and 720p handheld at a near-perfect 60 fps, with only selected overworld/map situations dynamically reducing resolution."
+  }
+ ],
+ "downloadSizeGb": 3.7,
+ "requiredSpaceGb": 3.7,
+ "microSdRecommended": false,
+ "storageNotes": "Nintendo lists about 3.7 GB for the original Switch version. A microSD card is optional rather than required.",
+ "languagesAudio": [
+  "English character vocalizations",
+  "Japanese character vocalizations",
+  "Music / sound effects are language-independent"
+ ],
+ "languagesText": [
+  "Japanese / English",
+  "French / German / Italian / Spanish / Portuguese / Dutch / Russian",
+  "Korean / Simplified Chinese / Traditional Chinese / Polish / Thai"
+ ],
+ "arabicSupport": false,
+ "mpLocalPlayers": true,
+ "mpOnlinePlayers": true,
+ "mpCoop": true,
+ "mpCompetitive": false,
+ "mpSplitScreen": false,
+ "mpLocalWireless": false,
+ "dlc": [
+  {
+   "name": "Nintendo Switch 2 Edition Upgrade Pack",
+   "description": "Paid upgrade path for owners of the Switch version; adds Switch 2 enhancements and Meetup in Bellabel Park.",
+   "coverUrl": "https://images.launchbox-app.com//414947bf-268f-4dec-921a-c9b4d8c2305d.jpg"
+  },
+  {
+   "name": "No standalone Switch 1 story DLC",
+   "description": "The original Switch release has no separate paid story expansion of its own.",
+   "coverUrl": "https://images.launchbox-app.com//fc2d2cdf-1a33-4b22-a7c2-199e7b17d1fb.jpg"
+  },
+  {
+   "name": "Online features",
+   "description": "Online player shadows and standees are part of the base software and require Nintendo Switch Online.",
+   "coverUrl": "https://images.launchbox-app.com//112a9edf-a936-42b1-8a02-a3970d87bc27.jpg"
+  }
+ ],
+ "guides": [
+  {
+   "title": "Official Nintendo page",
+   "summary": "Release, platform, storage, languages and feature information.",
+   "url": "https://www.nintendo.com/us/store/products/super-mario-bros-wonder-switch/"
+  },
+  {
+   "title": "Gameplay / technical reference",
+   "summary": "Performance and gameplay behavior reference.",
+   "url": "https://nintendoeverything.com/super-mario-bros-wonder-tech-analysis-frame-rate-resolution/"
+  },
+  {
+   "title": "Database / review reference",
+   "summary": "Media, reviews and completion context.",
+   "url": "https://gamesdb.launchbox-app.com/games/details/371985-super-mario-bros-wonder"
+  }
+ ],
+ "completionMain": 10,
+ "completionExtras": 14,
+ "completionAll": 20,
+ "faq": [
+  {
+   "q": "Does the original Switch version support four players?",
+   "a": "Yes. Up to four players can play locally on one Nintendo Switch system."
+  },
+  {
+   "q": "What resolution and frame rate does it use?",
+   "a": "The original Switch version targets 60 fps, with 1080p docked and 720p handheld gameplay."
+  },
+  {
+   "q": "Can this version be upgraded on Switch 2?",
+   "a": "Yes. Nintendo sells a Switch 2 Edition upgrade pack that adds enhanced graphics and Bellabel Park content."
+  }
+ ],
+ "verdictScore": 9.2,
+ "verdictSummary": "A benchmark modern 2D platformer: inventive without abandoning Mario's immediate controls, full of surprises, and technically excellent on the original Switch.",
+ "verdictPros": [
+  "Constantly inventive Wonder Effects",
+  "Near-perfect 60 fps performance",
+  "Excellent local/online accessibility"
+ ],
+ "verdictCons": [
+  "Main story is relatively short",
+  "Online interaction is cooperative rather than traditional matchmaking",
+  "Some characters intentionally remove damage challenge"
+ ],
+ "reviews": [
+  {
+   "source": "Metacritic",
+   "score": "92/100",
+   "quote": "Universal acclaim from critics.",
+   "url": "https://www.metacritic.com/game/super-mario-bros-wonder/"
+  },
+  {
+   "source": "OpenCritic",
+   "score": "92/100",
+   "quote": "Top-tier aggregate reception.",
+   "url": "https://opencritic.com/game/15196/super-mario-bros-wonder"
+  },
+  {
+   "source": "Metacritic users",
+   "score": "8.9/10",
+   "quote": "Generally favorable user reception.",
+   "url": "https://www.metacritic.com/game/super-mario-bros-wonder/user-reviews/"
+  }
+ ],
+ "timeline": [
+  {
+   "date": "2023-06-21",
+   "title": "Revealed",
+   "body": "Nintendo announced a new 2D Mario adventure during a Nintendo Direct."
+  },
+  {
+   "date": "2023-10-20",
+   "title": "Nintendo Switch release",
+   "body": "Super Mario Bros. Wonder launched worldwide."
+  },
+  {
+   "date": "2026-03-26",
+   "title": "Switch 2 Edition released",
+   "body": "An enhanced Switch 2 Edition with Meetup in Bellabel Park launched."
+  }
+ ],
+ "patchNotes": [
+  {
+   "version": "Version 1.0.1",
+   "date": "2023-10-20",
+   "body": "Launch-period stability and online adjustments."
+  },
+  {
+   "version": "Switch 2 compatibility era",
+   "date": "2025-06-05",
+   "body": "Original Switch software became playable on Nintendo Switch 2 via backward compatibility."
+  },
+  {
+   "version": "Switch 2 Edition Upgrade Pack",
+   "date": "2026-03-26",
+   "body": "Optional upgrade added Bellabel Park, enhanced resolution and additional multiplayer features."
+  }
+ ],
+ "soundtrack": [
+  {
+   "title": "Title Theme",
+   "url": "https://supermariobroswonder.nintendo.com/"
+  },
+  {
+   "title": "Flower Kingdom course themes",
+   "url": "https://supermariobroswonder.nintendo.com/"
+  },
+  {
+   "title": "Bowser / Wonder battle themes",
+   "url": "https://supermariobroswonder.nintendo.com/"
+  }
+ ],
+ "seriesName": "Super Mario",
+ "seriesEntries": [
+  "Super Mario Bros. Wonder",
+  "Super Mario Odyssey",
+  "Super Mario 3D World + Bowser's Fury"
+ ],
+ "studioName": "Nintendo EPD",
+ "studioUrl": "https://www.nintendo.co.jp/",
+ "studioLocation": "Kyoto, Japan",
+ "studioAbout": "Nintendo's internal development division responsible for many flagship Super Mario titles.",
+ "setupNeeds": [
+  "Nintendo Switch",
+  "Approximately 3.7 GB free storage for the digital version",
+  "Nintendo Switch Online membership for online play"
+ ],
+ "sources": [
+  {
+   "name": "Nintendo official product page",
+   "url": "https://www.nintendo.com/us/store/products/super-mario-bros-wonder-switch/"
+  },
+  {
+   "name": "Digital Foundry performance summary",
+   "url": "https://nintendoeverything.com/super-mario-bros-wonder-tech-analysis-frame-rate-resolution/"
+  },
+  {
+   "name": "LaunchBox Games Database",
+   "url": "https://gamesdb.launchbox-app.com/games/details/371985-super-mario-bros-wonder"
+  }
+ ],
+ "boxContentsList": "[Circular]",
+ "image": "/api/files/products/prd_99e5727e6bc7469f/cover-d366a61f7bd3500b.jpg",
+ "banner": "/api/files/products/prd_99e5727e6bc7469f/banner-1-4850c509beea2560.jpg",
+ "schemaId": "",
+ "createdAt": "2026-08-27T01:03:18.505Z",
+ "created_at": "2026-08-27T01:03:18.505Z",
+ "updatedAt": "2026-08-27T01:03:18.505Z",
+ "updated_at": "2026-08-27T01:03:18.505Z",
+ "badgeEn": "وفر 40%",
+ "badgeKu": "وفر 40%",
+ "featuresEn": [
+  "Wonder Flowers and highly varied Wonder Effects",
+  "12 playable characters with different accessibility traits",
+  "Local four-player play plus online cooperative features"
+ ],
+ "featuresKu": [
+  "Wonder Flowers and highly varied Wonder Effects",
+  "12 playable characters with different accessibility traits",
+  "Local four-player play plus online cooperative features"
+ ],
+ "boxFrontUrl": "https://images.launchbox-app.com//f78a724a-e900-45bc-af80-c42ae5de005a.jpg",
+ "sales": 0,
+ "images": [],
+ "modes": [],
+ "game_id": "gme_0967374339004425"
+}

@@ -1,6 +1,6 @@
 {
  "batch": "024",
- "apply": true,
+ "apply": false,
  "games": [
   {
    "id": "prd_99e5727e6bc7469f",
@@ -207,6 +207,102 @@
     "guaranteeStatus"
    ],
    "notes": "Cover and listing were dead R2 references, the box_front_url and all eight gallery entries were MarioWiki hotlinks the wiki blocks — the first working banner becomes cover and listing, the other three verified banners remain as banners, the wiki-dead gallery is removed (section hides), and the genuine box, square card and wrap stay. Unprobed banner entries excluded per the verified-only rule. 2026-03-26, Metacritic 90, sourced 1080p/4K-output record kept. Contamination removed."
+  }
+ ],
+ "appliedAt": "2026-09-02T04:06:16.125Z",
+ "results": [
+  {
+   "id": "prd_99e5727e6bc7469f",
+   "action": "APPLIED",
+   "changed": [
+    "devicePerformance"
+   ],
+   "removed": [
+    "youtubeTrailer",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ]
+  },
+  {
+   "id": "prd_d74598d589434852",
+   "action": "REFUSED_IMAGE_URL"
+  },
+  {
+   "id": "prd_8305beacb7f14685",
+   "action": "APPLIED",
+   "changed": [
+    "dlcSummary",
+    "devicePerformance"
+   ],
+   "removed": [
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus",
+    "redemptionSteps",
+    "hardwareModel",
+    "storageCapacity",
+    "screenSpecs",
+    "batteryLife"
+   ]
+  },
+  {
+   "id": "prd_91e34a020d374ca5",
+   "action": "APPLIED",
+   "changed": [
+    "devicePerformance"
+   ],
+   "removed": [
+    "nintendoCardImage",
+    "coverHiResImage",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ]
+  },
+  {
+   "id": "prd_eddd0a3519bd4681",
+   "action": "APPLIED",
+   "changed": [
+    "coverImage",
+    "image",
+    "bannerImages"
+   ],
+   "removed": [
+    "box_front_url",
+    "galleryImages",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ]
   }
  ]
 }

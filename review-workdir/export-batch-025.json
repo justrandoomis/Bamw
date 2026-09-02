@@ -1,0 +1,3736 @@
+{
+ "batch": "025",
+ "generatedAt": "2026-09-02T04:06:38.612Z",
+ "totalGames": 145,
+ "reviewedSoFar": 115,
+ "games": [
+  {
+   "id": "prd_d74598d589434852",
+   "slug": "super-mario-galaxy-plus-super-mario-galaxy-2-switch",
+   "title": "Super Mario Galaxy + Super Mario Galaxy 2",
+   "platform": "switch1",
+   "isHidden": false,
+   "hash": "43e71a4dca43f697ee82fb35fffaf481dbdbf73e902d6c21034758be50c72bf6",
+   "images": [
+    {
+     "role": "front-box",
+     "field": "cartridgeImage",
+     "url": "https://banan.to/api/files/products/prd_d74598d589434852/front-aa68ee4b70238322.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 105601,
+     "width": 494,
+     "height": 800,
+     "thumb": "review-workdir/thumbs/batch-025/super-mario-galaxy-plus-super-mario-galaxy-2-switch__front-box-0.png"
+    },
+    {
+     "role": "front-box",
+     "field": "box_front_url",
+     "url": "https://cdn.mobygames.com/covers/21870288-super-mario-galaxy-super-mario-galaxy-2-nintendo-switch-front-co.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 105601,
+     "width": 494,
+     "height": 800,
+     "thumb": "review-workdir/thumbs/batch-025/super-mario-galaxy-plus-super-mario-galaxy-2-switch__front-box-1.png"
+    },
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://banan.to/api/files/products/prd_d74598d589434852/square-8c579eef9070b890.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 334841,
+     "width": 992,
+     "height": 992,
+     "thumb": "review-workdir/thumbs/batch-025/super-mario-galaxy-plus-super-mario-galaxy-2-switch__square-card-2.png"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://banan.to/api/files/products/prd_d74598d589434852/cover-2e466cee872b01ec.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 88041,
+     "width": 500,
+     "height": 281,
+     "thumb": "review-workdir/thumbs/batch-025/super-mario-galaxy-plus-super-mario-galaxy-2-switch__detail-cover-3.png"
+    },
+    {
+     "role": "3d-texture",
+     "field": "coverHiResImage",
+     "url": "https://banan.to/api/files/products/prd_d74598d589434852/3d-texture-b6ecbc7df6874061.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 3851387,
+     "width": 2495,
+     "height": 1910,
+     "thumb": "review-workdir/thumbs/batch-025/super-mario-galaxy-plus-super-mario-galaxy-2-switch__3d-texture-4.png"
+    },
+    {
+     "role": "listing",
+     "field": "image",
+     "url": "https://banan.to/api/files/products/prd_d74598d589434852/cover-2e466cee872b01ec.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 88041,
+     "width": 500,
+     "height": 281,
+     "thumb": "review-workdir/thumbs/batch-025/super-mario-galaxy-plus-super-mario-galaxy-2-switch__listing-5.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[0]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000030770/2eafc395d5c6fbbcbccc7e151a2552f15d83d5d881bb074d3bc881a38191e440",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 84213,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-025/super-mario-galaxy-plus-super-mario-galaxy-2-switch__banner-6.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[1]",
+     "url": "https://banan.to/api/files/products/prd_d74598d589434852/banner-1-c9d0d4473b2f7fcb.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[2]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000030770/f33b4687628c37c083e6c34f077f5432696ea413048751e8da684ea3b4f1481b",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 93252,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-025/super-mario-galaxy-plus-super-mario-galaxy-2-switch__banner-8.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[3]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000030770/92e54844116c79ebb07e3b4f56c454238d2e777fa61ed84c88b2f79909c51ab7",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 76085,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-025/super-mario-galaxy-plus-super-mario-galaxy-2-switch__banner-9.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing/7k9mX2qR8vN4pL6sY1uE3wA5zT0hB9jC/marquee-smg12/marquee-smg1-1-2x",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 169081,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-025/super-mario-galaxy-plus-super-mario-galaxy-2-switch__gallery-10.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[1]",
+     "url": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing/7k9mX2qR8vN4pL6sY1uE3wA5zT0hB9jC/marquee-smg12/marquee-smg2-1-2x",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 309032,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-025/super-mario-galaxy-plus-super-mario-galaxy-2-switch__gallery-11.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[2]",
+     "url": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing/7k9mX2qR8vN4pL6sY1uE3wA5zT0hB9jC/marquee-smg12/marquee-smg1-2-2x",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 210569,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-025/super-mario-galaxy-plus-super-mario-galaxy-2-switch__gallery-12.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[3]",
+     "url": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing/7k9mX2qR8vN4pL6sY1uE3wA5zT0hB9jC/marquee-smg12/marquee-smg2-2-2x",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 194089,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-025/super-mario-galaxy-plus-super-mario-galaxy-2-switch__gallery-13.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[4]",
+     "url": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing/7k9mX2qR8vN4pL6sY1uE3wA5zT0hB9jC/marquee-smg12/marquee-smg1-5-2x",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 142198,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-025/super-mario-galaxy-plus-super-mario-galaxy-2-switch__gallery-14.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[5]",
+     "url": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing/7k9mX2qR8vN4pL6sY1uE3wA5zT0hB9jC/marquee-smg12/marquee-smg2-6-2x",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 226663,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-025/super-mario-galaxy-plus-super-mario-galaxy-2-switch__gallery-15.png"
+    }
+   ],
+   "record": {
+    "title": "Super Mario Galaxy + Super Mario Galaxy 2",
+    "titleEn": "Super Mario Galaxy + Super Mario Galaxy 2",
+    "titleKu": "Super Mario Galaxy + Super Mario Galaxy 2",
+    "slug": "super-mario-galaxy-plus-super-mario-galaxy-2-switch",
+    "description": "A two-game Nintendo Switch collection of enhanced Super Mario Galaxy and Super Mario Galaxy 2, featuring 1080p Switch presentation, improved UI, Assist Mode, new Storybook chapters, Soundtrack Mode and amiibo support. A free Switch 2 update enables 4K TV output and 1080p handheld visuals.",
+    "descriptionEn": "A two-game Nintendo Switch collection of enhanced Super Mario Galaxy and Super Mario Galaxy 2, featuring 1080p Switch presentation, improved UI, Assist Mode, new Storybook chapters, Soundtrack Mode and amiibo support. A free Switch 2 update enables 4K TV output and 1080p handheld visuals.",
+    "descriptionKu": "A two-game Nintendo Switch collection of enhanced Super Mario Galaxy and Super Mario Galaxy 2, featuring 1080p Switch presentation, improved UI, Assist Mode, new Storybook chapters, Soundtrack Mode and amiibo support. A free Switch 2 update enables 4K TV output and 1080p handheld visuals.",
+    "cartridgeImage": "/api/files/products/prd_d74598d589434852/front-aa68ee4b70238322.jpg",
+    "nintendoCardImage": "/api/files/products/prd_d74598d589434852/square-8c579eef9070b890.jpg",
+    "coverHiResImage": "/api/files/products/prd_d74598d589434852/3d-texture-b6ecbc7df6874061.jpg",
+    "coverImage": "/api/files/products/prd_d74598d589434852/cover-2e466cee872b01ec.jpg",
+    "bannerImages": [
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000030770/2eafc395d5c6fbbcbccc7e151a2552f15d83d5d881bb074d3bc881a38191e440",
+     "/api/files/products/prd_d74598d589434852/banner-1-c9d0d4473b2f7fcb.avif",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000030770/f33b4687628c37c083e6c34f077f5432696ea413048751e8da684ea3b4f1481b",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000030770/92e54844116c79ebb07e3b4f56c454238d2e777fa61ed84c88b2f79909c51ab7",
+     "/api/files/products/prd_d74598d589434852/banner-4-8cdc3a9e72faaadb.avif"
+    ],
+    "gallery": [],
+    "youtubeTrailer": "https://www.nintendo.com/us/store/products/super-mario-galaxy-plus-super-mario-galaxy-2-switch/",
+    "releaseDate": "2025-10-02",
+    "ageRating": "ESRB Mild Fantasy Violence",
+    "metacriticRating": 87,
+    "genres": [
+     "3D Platformer",
+     "Action Adventure",
+     "Compilation"
+    ],
+    "platform": "switch1",
+    "size": 6.5,
+    "numberOfPlayers": "1–2",
+    "supportedLanguages": "Japanese / English; French / German / Italian / Spanish / Dutch / Portuguese; Korean / Simplified Chinese / Traditional Chinese",
+    "hardwareModel": "",
+    "colorEdition": "",
+    "storageCapacity": "",
+    "screenSpecs": "",
+    "batteryLife": "",
+    "boxContents": [],
+    "boxContentsText": "",
+    "warrantyCondition": "",
+    "connectivity": "",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "Global",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "",
+    "redemptionSteps": [],
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 14000,
+    "cost": 2750,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": false,
+    "displayOrder": 0,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "حساب أوفلاين",
+      "description": "حساب مخصص للعب دون اتصال بعد إكمال خطوات التفعيل.",
+      "stock": 9999,
+      "isInfiniteStock": true,
+      "customerDescription": "حساب مشترك"
+     },
+     {
+      "id": "online_account",
+      "name": "حساب أونلاين",
+      "description": "حساب يدعم تشغيل اللعبة مع الاتصال والميزات المتاحة أونلاين.",
+      "stock": 9999,
+      "isInfiniteStock": true,
+      "customerDescription": "حساب خاص بك"
+     }
+    ],
+    "types": [
+     {
+      "id": "standard_offline",
+      "name": "حساب أوفلاين — عادي",
+      "optionId": "offline_account",
+      "price": 15000,
+      "cost": 2750,
+      "description": "تشمل الإصدار العادي من اللعبة.",
+      "stock": 9999,
+      "isInfiniteStock": true,
+      "internalNote": "Offline Account: supplier cost 2,750 IQD; selling price 15,000 IQD."
+     },
+     {
+      "id": "standard_online",
+      "name": "حساب أونلاين — عادي",
+      "optionId": "online_account",
+      "price": "65000",
+      "cost": 40250,
+      "description": "تشمل الإصدار العادي من اللعبة.",
+      "stock": 9999,
+      "isInfiniteStock": true,
+      "internalNote": "Online Account: supplier cost 40,250 IQD; selling price 50,250 IQD."
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "Active",
+    "kind": "account",
+    "trade_value_iqd": 49000,
+    "store_offer_bonus_iqd": 10000,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "id": "prd_d74598d589434852",
+    "schema_version": 23,
+    "titleAr": "سوبر ماريو غالاكسي + سوبر ماريو غالاكسي 2",
+    "compatibility": [
+     "Nintendo Switch"
+    ],
+    "edition": "Standard / available account variants",
+    "developer": "Nintendo",
+    "publisher": "Nintendo",
+    "metacriticUrl": "https://www.metacritic.com/game/super-mario-galaxy-plus-super-mario-galaxy-2/",
+    "opencriticRating": 87,
+    "userScore": 7.6,
+    "price_usd": 69.99,
+    "officialUrl": "https://www.nintendo.com/us/store/products/super-mario-galaxy-plus-super-mario-galaxy-2-switch/",
+    "eshopUrl": "https://www.nintendo.com/us/store/products/super-mario-galaxy-plus-super-mario-galaxy-2-switch/",
+    "gameIsOffline": true,
+    "gameIsOnline": false,
+    "gameLanguageLocked": false,
+    "description_short": "A two-game Nintendo Switch collection of enhanced Super Mario Galaxy and Super Mario Galaxy 2, featuring 1080p Switch presentation, improved UI, Assist Mode, new Storybook chapters, Soundtrack Mode and amiibo support. A free Switch 2 update enables 4K TV output and 1080p handheld visuals.",
+    "description_ar": "حزمة تضم نسخًا محسنة من Super Mario Galaxy وSuper Mario Galaxy 2 على Nintendo Switch. تتضمن دقة محسنة وواجهة مطورة وAssist Mode وفصول Storybook إضافية وSoundtrack Mode ودعم amiibo، مع تحديث مجاني لـSwitch 2 يرفع العرض إلى 4K على التلفاز و1080p في المحمول.",
+    "box_front_url": "https://cdn.mobygames.com/covers/21870288-super-mario-galaxy-super-mario-galaxy-2-nintendo-switch-front-co.jpg",
+    "box_back_url": "https://i.ebayimg.com/images/g/PWYAAeSwdXFo3s-R/s-l1200.png",
+    "galleryImages": [
+     {
+      "url": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing/7k9mX2qR8vN4pL6sY1uE3wA5zT0hB9jC/marquee-smg12/marquee-smg1-1-2x",
+      "alt": "Distinct verified game media image 1"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing/7k9mX2qR8vN4pL6sY1uE3wA5zT0hB9jC/marquee-smg12/marquee-smg2-1-2x",
+      "alt": "Distinct verified game media image 2"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing/7k9mX2qR8vN4pL6sY1uE3wA5zT0hB9jC/marquee-smg12/marquee-smg1-2-2x",
+      "alt": "Distinct verified game media image 3"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing/7k9mX2qR8vN4pL6sY1uE3wA5zT0hB9jC/marquee-smg12/marquee-smg2-2-2x",
+      "alt": "Distinct verified game media image 4"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing/7k9mX2qR8vN4pL6sY1uE3wA5zT0hB9jC/marquee-smg12/marquee-smg1-5-2x",
+      "alt": "Distinct verified game media image 5"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing/7k9mX2qR8vN4pL6sY1uE3wA5zT0hB9jC/marquee-smg12/marquee-smg2-6-2x",
+      "alt": "Distinct verified game media image 6"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing/7k9mX2qR8vN4pL6sY1uE3wA5zT0hB9jC/marquee-smg12/marquee-smg1-6-2x",
+      "alt": "Distinct verified game media image 7"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing/7k9mX2qR8vN4pL6sY1uE3wA5zT0hB9jC/marquee-smg12/marquee-smg2-11-2x",
+      "alt": "Distinct verified game media image 8"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing/7k9mX2qR8vN4pL6sY1uE3wA5zT0hB9jC/marquee-smg12/marquee-smg1-7-2x",
+      "alt": "Distinct verified game media image 9"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing/7k9mX2qR8vN4pL6sY1uE3wA5zT0hB9jC/marquee-smg12/marquee-smg2-8-2x",
+      "alt": "Distinct verified game media image 10"
+     }
+    ],
+    "videos": [
+     {
+      "title": "Official trailer",
+      "url": "https://www.nintendo.com/us/store/products/super-mario-galaxy-plus-super-mario-galaxy-2-switch/"
+     },
+     {
+      "title": "Nintendo / publisher overview",
+      "url": "https://www.nintendo.com/us/store/products/super-mario-galaxy-plus-super-mario-galaxy-2-switch/"
+     },
+     {
+      "title": "Gameplay and feature media",
+      "url": "https://www.nintendo.com/us/store/products/super-mario-galaxy-plus-super-mario-galaxy-2-switch/"
+     }
+    ],
+    "nsuid": "See official Nintendo product page",
+    "title_id": "Nintendo internal title ID not exposed as a user-facing retail identifier",
+    "product_code": "Platform retail/digital product code varies by region",
+    "nintendoEshopUrl": "https://www.nintendo.com/us/store/products/super-mario-galaxy-plus-super-mario-galaxy-2-switch/",
+    "nintendoOnlineRequired": false,
+    "nintendoCloudSaves": true,
+    "nintendoGameKeyCard": false,
+    "nintendoPhysicalNeedsDownload": false,
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": true,
+    "nintendoPlayModes": "TV / Tabletop / Handheld",
+    "nintendoNotes": "Verified platform/store information for Super Mario Galaxy + Super Mario Galaxy 2. Online features require Nintendo Switch Online where applicable. Storage and supported-language values are taken from current Nintendo/publisher listings.",
+    "switch2Enhanced": true,
+    "switch2Exclusive": false,
+    "switch2UpgradePrice": 0,
+    "switch2Features": [
+     "Two complete Galaxy games in one collection",
+     "1080p Switch visuals and free 4K Switch 2 update",
+     "Assist Mode, Storybook additions, Soundtrack Mode and amiibo support"
+    ],
+    "tagline": "Two gravity-defying Mario classics, enhanced for modern Nintendo hardware.",
+    "fitFor": [
+     "Players who want two landmark 3D Mario adventures",
+     "Families and platforming fans",
+     "Switch 2 owners who want the free 4K enhancement"
+    ],
+    "notFitFor": [
+     "Players who dislike pointer/motion-derived mechanics",
+     "Players looking for a completely new Mario campaign",
+     "Players who already own both games and do not value the enhancements"
+    ],
+    "playTimeMain": 32,
+    "playTimeFull": 70,
+    "editionsList": [
+     {
+      "name": "Standard Edition",
+      "coverUrl": "https://cdn.mobygames.com/covers/21870288-super-mario-galaxy-super-mario-galaxy-2-nintendo-switch-front-co.jpg",
+      "contents": [
+       {
+        "label": "Base game"
+       },
+       {
+        "label": "Standard content"
+       },
+       {
+        "label": "Platform features"
+       }
+      ]
+     },
+     {
+      "name": "Digital Edition",
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_1%3A1%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000030770/0acaf709e29c57e125e90032853562562843757d238fec2815a52ec0409c6fd1",
+      "contents": [
+       {
+        "label": "Digital game access"
+       },
+       {
+        "label": "Same core game content"
+       },
+       {
+        "label": "Nintendo Account delivery"
+       }
+      ]
+     },
+     {
+      "name": "Two-Game Bundle",
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000030770/dd17fbca346376ffe7db5e53b5500dd475f50c610098099fe03e18bff3731d26",
+      "contents": [
+       {
+        "label": "Super Mario Galaxy"
+       },
+       {
+        "label": "Super Mario Galaxy 2"
+       },
+       {
+        "label": "Free Switch 2 enhancement"
+       }
+      ]
+     }
+    ],
+    "gameplayPillars": [
+     {
+      "title": "Gravity platforming",
+      "description": "Run around spherical worlds, launch between planets and use shifting gravity as part of the level design.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000030770/0acaf709e29c57e125e90032853562562843757d238fec2815a52ec0409c6fd1"
+     },
+     {
+      "title": "Two full adventures",
+      "description": "Play the complete enhanced Super Mario Galaxy and Super Mario Galaxy 2 campaigns.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000030770/dd17fbca346376ffe7db5e53b5500dd475f50c610098099fe03e18bff3731d26"
+     },
+     {
+      "title": "Modern quality-of-life features",
+      "description": "Improved UI, Assist Mode, new Storybook chapters, Soundtrack Mode, amiibo support and Switch 2 enhancements.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000030770/2eafc395d5c6fbbcbccc7e151a2552f15d83d5d881bb074d3bc881a38191e440"
+     }
+    ],
+    "worldSummary": "Both adventures turn outer space into a playground of small planets, gravity fields, observatories, starships and themed galaxies. Super Mario Galaxy centers on Rosalina's Comet Observatory, while Galaxy 2 uses Starship Mario as its hub and expands the formula with Yoshi.",
+    "storyChapters": [
+     {
+      "title": "Super Mario Galaxy",
+      "body": "Mario meets Rosalina and the Lumas while recovering Power Stars and rescuing Peach from Bowser.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000030770/3504cc11a769b7e29a25148fe5d92a7c0cc308d7889723b11e2c56b02d73400f"
+     },
+     {
+      "title": "Super Mario Galaxy 2",
+      "body": "Mario travels aboard Starship Mario, teams with Yoshi and explores another huge set of galaxies.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000030770/f33b4687628c37c083e6c34f077f5432696ea413048751e8da684ea3b4f1481b"
+     },
+     {
+      "title": "Enhanced collection",
+      "body": "The 2025 Switch release adds modern presentation and accessibility features while preserving the original level design.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000030770/92e54844116c79ebb07e3b4f56c454238d2e777fa61ed84c88b2f79909c51ab7"
+     }
+    ],
+    "features": [
+     "Two complete Galaxy games in one collection",
+     "1080p Switch visuals and free 4K Switch 2 update",
+     "Assist Mode, Storybook additions, Soundtrack Mode and amiibo support"
+    ],
+    "perfResolutionDocked": "1080p docked on Switch 1 / 4K with free Switch 2 update",
+    "perfResolutionHandheld": "720p-class handheld on Switch 1 / 1080p on Switch 2",
+    "perfFps": "60",
+    "perfHdr": false,
+    "perfNotes": "Nintendo officially states 1080p on Nintendo Switch and 4K on Switch 2 with the free update. Switch 2 handheld output is 1080p. Both games target 60 fps.",
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "hardwareId": "prd_acf4c89908764c62",
+      "informationStatus": "Available / verified",
+      "unavailableReason": "No required native mode is unavailable.",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p-class handheld on Switch 1 / 1080p on Switch 2",
+       "resolutionDynamic": false,
+       "renderingResolution": "720p-class handheld on Switch 1 / 1080p on Switch 2",
+       "outputResolution": "1280x720",
+       "fps": "60",
+       "fpsMin": "60",
+       "fpsMax": "60",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Handheld",
+       "notes": "Nintendo officially states 1080p on Nintendo Switch and 4K on Switch 2 with the free update. Switch 2 handheld output is 1080p. Both games target 60 fps."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p docked on Switch 1 / 4K with free Switch 2 update",
+       "resolutionDynamic": false,
+       "renderingResolution": "1080p docked on Switch 1 / 4K with free Switch 2 update",
+       "outputResolution": "1920x1080",
+       "fps": "60",
+       "fpsMin": "60",
+       "fpsMax": "60",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "TV / Docked",
+       "notes": "Nintendo officially states 1080p on Nintendo Switch and 4K on Switch 2 with the free update. Switch 2 handheld output is 1080p. Both games target 60 fps."
+      },
+      "modes": [
+       {
+        "name": "Standard",
+        "handheldResolution": "720p-class handheld on Switch 1 / 1080p on Switch 2",
+        "handheldFps": "60",
+        "tvResolution": "1080p docked on Switch 1 / 4K with free Switch 2 update",
+        "tvFps": "60",
+        "hdr": false,
+        "vrr": false,
+        "notes": "Primary documented performance mode."
+       }
+      ],
+      "upscaling": "Platform-specific reconstruction / scaling where used",
+      "rayTracing": false,
+      "rayTracingMode": "No verified ray-tracing mode",
+      "loadingTime": "Fast SSD-based loading; exact scene-dependent time varies",
+      "loadingNotes": "Loading varies by scene and save location; no single universal loading time is published.",
+      "gameVersion": "Current retail build",
+      "patchVersion": "Current available update",
+      "testedDate": "2026-08-27",
+      "sourceName": "Nintendo Store",
+      "sourceUrl": "https://www.nintendo.com/us/store/products/super-mario-galaxy-plus-super-mario-galaxy-2-switch/",
+      "verifiedAt": "2026-08-27",
+      "verificationStatus": "Verified / sourced",
+      "performanceNotes": "Nintendo officially states 1080p on Nintendo Switch and 4K on Switch 2 with the free update. Switch 2 handheld output is 1080p. Both games target 60 fps."
+     }
+    ],
+    "downloadSizeGb": 6.5,
+    "requiredSpaceGb": 6.5,
+    "microSdRecommended": false,
+    "storageNotes": "Nintendo/Deku Deals list the combined collection at about 6.5 GB. A microSD card is optional. Switch 2 can apply the free enhancement update.",
+    "languagesAudio": [
+     "Character vocalizations",
+     "Orchestral soundtrack",
+     "Language-independent gameplay voices"
+    ],
+    "languagesText": [
+     "Japanese / English",
+     "French / German / Italian / Spanish / Dutch / Portuguese",
+     "Korean / Simplified Chinese / Traditional Chinese"
+    ],
+    "arabicSupport": false,
+    "mpLocalPlayers": true,
+    "mpOnlinePlayers": false,
+    "mpCoop": true,
+    "mpCompetitive": false,
+    "mpSplitScreen": false,
+    "mpLocalWireless": false,
+    "dlc": [
+     {
+      "name": "Free Nintendo Switch 2 update",
+      "description": "Free enhancement enables 4K TV visuals, 1080p handheld visuals and additional Switch 2 control features.",
+      "coverUrl": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing/7k9mX2qR8vN4pL6sY1uE3wA5zT0hB9jC/marquee-smg12/marquee-smg1-2-2x"
+     },
+     {
+      "name": "No paid story DLC",
+      "description": "No standalone paid story expansion has been announced for the collection.",
+      "coverUrl": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing/7k9mX2qR8vN4pL6sY1uE3wA5zT0hB9jC/marquee-smg12/marquee-smg2-2-2x"
+     },
+     {
+      "name": "amiibo features",
+      "description": "Compatible amiibo provide helpful in-game items; this is built into the game rather than sold as DLC.",
+      "coverUrl": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing/7k9mX2qR8vN4pL6sY1uE3wA5zT0hB9jC/marquee-smg12/marquee-smg1-5-2x"
+     }
+    ],
+    "guides": [
+     {
+      "title": "Official product information",
+      "summary": "Platform, release, storage, language and feature information for Super Mario Galaxy + Super Mario Galaxy 2.",
+      "url": "https://www.nintendo.com/us/store/products/super-mario-galaxy-plus-super-mario-galaxy-2-switch/"
+     },
+     {
+      "title": "Official game overview",
+      "summary": "Publisher/developer overview of story, gameplay and features.",
+      "url": "https://www.nintendo.com/us/store/products/super-mario-galaxy-plus-super-mario-galaxy-2-switch/"
+     },
+     {
+      "title": "Reviews and playtime reference",
+      "summary": "Critic/user scores and completion-time context.",
+      "url": "https://www.dekudeals.com/items/super-mario-galaxy-and-super-mario-galaxy-2"
+     }
+    ],
+    "completionMain": 32,
+    "completionExtras": 45,
+    "completionAll": 70,
+    "faq": [
+     {
+      "q": "Are both Galaxy games included?",
+      "a": "Yes. The package includes enhanced versions of Super Mario Galaxy and Super Mario Galaxy 2."
+     },
+     {
+      "q": "What changes on Nintendo Switch 2?",
+      "a": "A free update enables 4K TV output and 1080p handheld visuals, plus Switch 2-specific control enhancements."
+     },
+     {
+      "q": "Does the collection support two players?",
+      "a": "Yes. Both games retain an assist-style second-player role on one system."
+     }
+    ],
+    "verdictScore": 9.3,
+    "verdictSummary": "A superb double package of two of Nintendo's most inventive 3D platformers. The remaster work is conservative, but sharper presentation, quality-of-life additions and the Switch 2 enhancement make this the most convenient modern release of the pair.",
+    "verdictPros": [
+     "Two all-time-great platformers",
+     "Excellent 60 fps presentation",
+     "Strong Switch 2 enhancement"
+    ],
+    "verdictCons": [
+     "Pointer-style mechanics still show Wii-era roots",
+     "Mostly remastered rather than newly rebuilt",
+     "Premium price for older games"
+    ],
+    "reviews": [
+     {
+      "source": "Metacritic",
+      "score": "87/100",
+      "quote": "Generally favorable aggregate for the Switch collection.",
+      "url": "https://www.metacritic.com/game/super-mario-galaxy-plus-super-mario-galaxy-2/"
+     },
+     {
+      "source": "OpenCritic",
+      "score": "87/100",
+      "quote": "Strong cross-outlet aggregate.",
+      "url": "https://opencritic.com/"
+     },
+     {
+      "source": "Metacritic users",
+      "score": "7.6/10",
+      "quote": "Current user aggregate for the Switch collection.",
+      "url": "https://www.metacritic.com/game/super-mario-galaxy-plus-super-mario-galaxy-2/user-reviews/"
+     }
+    ],
+    "timeline": [
+     {
+      "date": "2007-11-12",
+      "title": "Super Mario Galaxy",
+      "body": "The first Galaxy launched on Wii."
+     },
+     {
+      "date": "2010-05-23",
+      "title": "Super Mario Galaxy 2",
+      "body": "The sequel launched on Wii."
+     },
+     {
+      "date": "2025-10-02",
+      "title": "Switch collection",
+      "body": "Both enhanced games released together for Nintendo Switch with a free Switch 2 enhancement."
+     }
+    ],
+    "patchNotes": [
+     {
+      "version": "Collection launch",
+      "date": "2025-10-02",
+      "body": "Enhanced Switch versions released with UI, Assist Mode, Storybook and Soundtrack additions."
+     },
+     {
+      "version": "Switch 2 enhancement",
+      "date": "2025-10-02",
+      "body": "Free update enabled 4K TV / 1080p handheld presentation on Switch 2."
+     },
+     {
+      "version": "Storybook addition",
+      "date": "2026-04-29",
+      "body": "Nintendo added an additional Storybook chapter to Super Mario Galaxy 2."
+     }
+    ],
+    "soundtrack": [
+     {
+      "title": "Gusty Garden Galaxy",
+      "url": "https://www.nintendo.com/us/store/products/super-mario-galaxy-plus-super-mario-galaxy-2-switch/"
+     },
+     {
+      "title": "Super Mario Galaxy Main Theme",
+      "url": "https://www.nintendo.com/us/store/products/super-mario-galaxy-plus-super-mario-galaxy-2-switch/"
+     },
+     {
+      "title": "Super Mario Galaxy 2 Main Theme",
+      "url": "https://www.nintendo.com/us/store/products/super-mario-galaxy-plus-super-mario-galaxy-2-switch/"
+     }
+    ],
+    "seriesName": "Super Mario Galaxy 2",
+    "seriesEntries": [
+     "Super Mario Galaxy",
+     "Super Mario Galaxy 2",
+     "Super Mario Odyssey"
+    ],
+    "studioName": "Nintendo",
+    "studioUrl": "https://www.nintendo.co.jp/",
+    "studioLocation": "Kyoto, Japan",
+    "studioAbout": "Nintendo developed the original Galaxy games and produced the enhanced Switch collection, preserving their gravity-focused platforming while modernizing presentation and accessibility.",
+    "setupNeeds": [
+     "Nintendo Switch or Nintendo Switch 2",
+     "Approximately 6.5 GB free storage",
+     "Compatible controller; motion/pointer-style interactions remain part of the experience"
+    ],
+    "sources": [
+     {
+      "name": "Nintendo Store",
+      "url": "https://www.nintendo.com/us/store/products/super-mario-galaxy-plus-super-mario-galaxy-2-switch/"
+     },
+     {
+      "name": "Metacritic",
+      "url": "https://www.metacritic.com/game/super-mario-galaxy-plus-super-mario-galaxy-2/"
+     },
+     {
+      "name": "Deku Deals",
+      "url": "https://www.dekudeals.com/items/super-mario-galaxy-and-super-mario-galaxy-2"
+     }
+    ],
+    "boxContentsList": "[Circular]",
+    "image": "/api/files/products/prd_d74598d589434852/cover-2e466cee872b01ec.jpg",
+    "banner": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000030770/2eafc395d5c6fbbcbccc7e151a2552f15d83d5d881bb074d3bc881a38191e440",
+    "schemaId": "",
+    "createdAt": "2026-08-27T00:28:06.310Z",
+    "created_at": "2026-08-27T00:28:06.310Z",
+    "updatedAt": "2026-08-27T00:28:06.310Z",
+    "updated_at": "2026-08-27T00:28:06.310Z",
+    "badgeEn": "وفر 40%",
+    "badgeKu": "وفر 40%",
+    "featuresEn": [
+     "Two complete Galaxy games in one collection",
+     "1080p Switch visuals and free 4K Switch 2 update",
+     "Assist Mode, Storybook additions, Soundtrack Mode and amiibo support"
+    ],
+    "featuresKu": [
+     "Two complete Galaxy games in one collection",
+     "1080p Switch visuals and free 4K Switch 2 update",
+     "Assist Mode, Storybook additions, Soundtrack Mode and amiibo support"
+    ],
+    "boxFrontUrl": "https://cdn.mobygames.com/covers/21870288-super-mario-galaxy-super-mario-galaxy-2-nintendo-switch-front-co.jpg",
+    "sales": 0,
+    "images": [],
+    "modes": [],
+    "game_id": "gme_4eb89ae9b5f34019",
+    "variants": "[Circular]"
+   }
+  },
+  {
+   "id": "prd_dfb6ac13472d4624",
+   "slug": "super-mario-party-switch",
+   "title": "Super Mario Party",
+   "platform": "switch1",
+   "isHidden": false,
+   "hash": "9a504ac0f08b0db4732def3e684852033b4e8fe2a2dc067e47253c04f308bbd8",
+   "images": [
+    {
+     "role": "front-box",
+     "field": "cartridgeImage",
+     "url": "https://banan.to/api/files/products/prd_dfb6ac13472d4624/front-4cc05277a59e3517.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 19314,
+     "width": 173,
+     "height": 281,
+     "thumb": "review-workdir/thumbs/batch-025/super-mario-party-switch__front-box-0.png"
+    },
+    {
+     "role": "front-box",
+     "field": "box_front_url",
+     "url": "https://images.launchbox-app.com//21e297b2-ae1e-44ac-bc34-2a10e9317ef8.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 19314,
+     "width": 173,
+     "height": 281,
+     "thumb": "review-workdir/thumbs/batch-025/super-mario-party-switch__front-box-1.png"
+    },
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://banan.to/api/files/products/prd_dfb6ac13472d4624/square-05ba2c0f7a2eff21.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 1221996,
+     "width": 1200,
+     "height": 1200,
+     "thumb": "review-workdir/thumbs/batch-025/super-mario-party-switch__square-card-2.png"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://banan.to/api/files/products/prd_dfb6ac13472d4624/cover-146ce94efb61f82f.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 103762,
+     "width": 600,
+     "height": 338,
+     "thumb": "review-workdir/thumbs/batch-025/super-mario-party-switch__detail-cover-3.png"
+    },
+    {
+     "role": "3d-texture",
+     "field": "coverHiResImage",
+     "url": "https://banan.to/api/files/products/prd_dfb6ac13472d4624/3d-texture-813e720ee72a1253.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 6040826,
+     "width": 3760,
+     "height": 4880,
+     "thumb": "review-workdir/thumbs/batch-025/super-mario-party-switch__3d-texture-4.png"
+    },
+    {
+     "role": "listing",
+     "field": "image",
+     "url": "https://banan.to/api/files/products/prd_dfb6ac13472d4624/cover-146ce94efb61f82f.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 103762,
+     "width": 600,
+     "height": 338,
+     "thumb": "review-workdir/thumbs/batch-025/super-mario-party-switch__listing-5.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[0]",
+     "url": "https://banan.to/api/files/products/prd_dfb6ac13472d4624/banner-0-fc6774b5d517c52d.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 21692,
+     "width": 400,
+     "height": 225,
+     "thumb": "review-workdir/thumbs/batch-025/super-mario-party-switch__banner-6.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[1]",
+     "url": "https://banan.to/api/files/products/prd_dfb6ac13472d4624/banner-2-b056425e7d322a49.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 26402,
+     "width": 400,
+     "height": 225,
+     "thumb": "review-workdir/thumbs/batch-025/super-mario-party-switch__banner-7.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/en_US/games/switch/s/super-mario-party-switch/screenshot-gallery/screenshot01",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 237716,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-025/super-mario-party-switch__gallery-8.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[1]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/en_US/games/switch/s/super-mario-party-switch/screenshot-gallery/screenshot02",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 199603,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-025/super-mario-party-switch__gallery-9.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[2]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/en_US/games/switch/s/super-mario-party-switch/screenshot-gallery/screenshot03",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 216457,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-025/super-mario-party-switch__gallery-10.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[3]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/en_US/games/switch/s/super-mario-party-switch/screenshot-gallery/screenshot04",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 172636,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-025/super-mario-party-switch__gallery-11.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[4]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/en_US/games/switch/s/super-mario-party-switch/screenshot-gallery/screenshot05",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 198941,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-025/super-mario-party-switch__gallery-12.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[5]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/en_US/games/switch/s/super-mario-party-switch/screenshot-gallery/screenshot06",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 194291,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-025/super-mario-party-switch__gallery-13.png"
+    }
+   ],
+   "record": {
+    "title": "Super Mario Party",
+    "titleEn": "Super Mario Party",
+    "titleKu": "Super Mario Party",
+    "slug": "super-mario-party-switch",
+    "description": "A motion-focused Mario Party entry built around Joy-Con minigames, character-specific Dice Blocks, traditional four-player boards, Partner Party, River Survival, Sound Stage, Challenge Road and Toad's Rec Room.",
+    "descriptionEn": "A motion-focused Mario Party entry built around Joy-Con minigames, character-specific Dice Blocks, traditional four-player boards, Partner Party, River Survival, Sound Stage, Challenge Road and Toad's Rec Room.",
+    "descriptionKu": "A motion-focused Mario Party entry built around Joy-Con minigames, character-specific Dice Blocks, traditional four-player boards, Partner Party, River Survival, Sound Stage, Challenge Road and Toad's Rec Room.",
+    "cartridgeImage": "/api/files/products/prd_dfb6ac13472d4624/front-4cc05277a59e3517.jpg",
+    "nintendoCardImage": "/api/files/products/prd_dfb6ac13472d4624/square-05ba2c0f7a2eff21.webp",
+    "coverHiResImage": "/api/files/products/prd_dfb6ac13472d4624/3d-texture-813e720ee72a1253.jpg",
+    "coverImage": "/api/files/products/prd_dfb6ac13472d4624/cover-146ce94efb61f82f.jpg",
+    "bannerImages": [
+     "/api/files/products/prd_dfb6ac13472d4624/banner-0-fc6774b5d517c52d.jpg",
+     "/api/files/products/prd_dfb6ac13472d4624/banner-2-b056425e7d322a49.jpg"
+    ],
+    "gallery": [],
+    "youtubeTrailer": "https://www.nintendo.com/us/store/products/super-mario-party-switch/",
+    "releaseDate": "2018-10-05",
+    "ageRating": "ESRB E / PEGI 3",
+    "metacriticRating": 76,
+    "genres": [
+     "Party",
+     "Board Game",
+     "Minigames"
+    ],
+    "platform": "switch1",
+    "size": 2.904,
+    "numberOfPlayers": "1–4 local; 2–4 local wireless; 1–4 online",
+    "supportedLanguages": "Japanese / English; French / German / Italian / Spanish / Dutch / Russian; Korean / Simplified Chinese / Traditional Chinese",
+    "hardwareModel": "",
+    "colorEdition": "",
+    "storageCapacity": "",
+    "screenSpecs": "",
+    "batteryLife": "",
+    "boxContents": [],
+    "boxContentsText": "",
+    "warrantyCondition": "",
+    "connectivity": "",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "Global",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "",
+    "redemptionSteps": [],
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 8000,
+    "cost": 1250,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": false,
+    "displayOrder": 0,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "Offline Account",
+      "description": "Offline account access",
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_account",
+      "name": "Online Account",
+      "description": "Online account access",
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "types": [
+     {
+      "id": "standard_offline",
+      "name": "Offline Account",
+      "optionId": "offline_account",
+      "price": "8000",
+      "cost": 1250,
+      "description": "Offline Account; supplier cost 1,250 IQD; configured selling price 10,000 IQD.",
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "standard_online",
+      "name": "Online Account",
+      "optionId": "online_account",
+      "price": "32000",
+      "cost": 16500,
+      "description": "Online Account; supplier cost 16,500 IQD; configured selling price 26,500 IQD.",
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "Active",
+    "kind": "account",
+    "trade_value_iqd": 35000,
+    "store_offer_bonus_iqd": 2500,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "id": "prd_dfb6ac13472d4624",
+    "schema_version": 23,
+    "titleAr": "سوبر ماريو بارتي",
+    "compatibility": [
+     "Nintendo Switch",
+     "Nintendo Switch 2 (backward compatible / separate Switch 2 Edition where applicable)"
+    ],
+    "edition": "Standard",
+    "developer": "NDcube / Nintendo",
+    "publisher": "Nintendo",
+    "metacriticUrl": "https://www.metacritic.com/game/super-mario-party/",
+    "opencriticRating": 77,
+    "userScore": 7,
+    "price_usd": 59.99,
+    "officialUrl": "https://www.nintendo.com/us/store/products/super-mario-party-switch/",
+    "eshopUrl": "https://www.nintendo.com/us/store/products/super-mario-party-switch/",
+    "gameIsOffline": true,
+    "gameIsOnline": true,
+    "gameLanguageLocked": false,
+    "description_short": "A motion-focused Mario Party entry built around Joy-Con minigames, character-specific Dice Blocks, traditional four-player boards, Partner Party, River Survival, Sound Stage, Challenge Road and Toad's Rec Room.",
+    "description_ar": "جزء Mario Party مصمم حول ألعاب Joy-Con الحركية، ويضم لوحات Mario Party التقليدية وPartner Party وRiver Survival وSound Stage وChallenge Road وToad's Rec Room، مع 80 لعبة مصغرة.",
+    "box_front_url": "https://images.launchbox-app.com//21e297b2-ae1e-44ac-bc34-2a10e9317ef8.jpg",
+    "box_back_url": "https://cdn.switch-images-julio.com/file/switch-images-julio/ADFJA/back.png",
+    "galleryImages": [
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/en_US/games/switch/s/super-mario-party-switch/screenshot-gallery/screenshot01",
+      "alt": "Super Mario Party — verified promotional/gameplay image 1"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/en_US/games/switch/s/super-mario-party-switch/screenshot-gallery/screenshot02",
+      "alt": "Super Mario Party — verified promotional/gameplay image 2"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/en_US/games/switch/s/super-mario-party-switch/screenshot-gallery/screenshot03",
+      "alt": "Super Mario Party — verified promotional/gameplay image 3"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/en_US/games/switch/s/super-mario-party-switch/screenshot-gallery/screenshot04",
+      "alt": "Super Mario Party — verified promotional/gameplay image 4"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/en_US/games/switch/s/super-mario-party-switch/screenshot-gallery/screenshot05",
+      "alt": "Super Mario Party — verified promotional/gameplay image 5"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/en_US/games/switch/s/super-mario-party-switch/screenshot-gallery/screenshot06",
+      "alt": "Super Mario Party — verified promotional/gameplay image 6"
+     }
+    ],
+    "videos": [
+     {
+      "title": "Official trailer / product overview",
+      "url": "https://www.nintendo.com/us/store/products/super-mario-party-switch/"
+     },
+     {
+      "title": "Nintendo product page and gameplay media",
+      "url": "https://www.nintendo.com/us/store/products/super-mario-party-switch/"
+     },
+     {
+      "title": "Technical / review reference",
+      "url": "https://handheld-performance.com/games/super-mario-party"
+     }
+    ],
+    "nsuid": "See official Nintendo product page for regional NSUID",
+    "title_id": "Regional digital title ID varies by storefront and package",
+    "product_code": "HAC-P-ADFJA",
+    "nintendoEshopUrl": "https://www.nintendo.com/us/store/products/super-mario-party-switch/",
+    "nintendoOnlineRequired": true,
+    "nintendoCloudSaves": true,
+    "nintendoGameKeyCard": false,
+    "nintendoPhysicalNeedsDownload": false,
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": false,
+    "nintendoPlayModes": "TV / Tabletop; detached Joy-Con required",
+    "nintendoNotes": "Current verified Nintendo data for Super Mario Party. Storage, languages, multiplayer and platform-specific features are separated from measured performance values.",
+    "switch2Enhanced": false,
+    "switch2Exclusive": false,
+    "switch2UpgradePrice": 0,
+    "switch2Features": [
+     "80 minigames designed around Joy-Con controllers",
+     "Mario Party, Partner Party and multiple side modes",
+     "Online minigame/board functionality added through updates"
+    ],
+    "tagline": "A Joy-Con-driven Mario Party packed with 80 minigames and varied party modes.",
+    "fitFor": [
+     "Families and couch multiplayer groups",
+     "Players who enjoy motion-control minigames",
+     "Groups wanting short competitive or cooperative sessions"
+    ],
+    "notFitFor": [
+     "Handheld-only players",
+     "Players who dislike motion controls",
+     "Players wanting the largest board selection in the series"
+    ],
+    "playTimeMain": 7.5,
+    "playTimeFull": 23.5,
+    "editionsList": [
+     {
+      "name": "Standard Edition",
+      "coverUrl": "https://images.launchbox-app.com//21e297b2-ae1e-44ac-bc34-2a10e9317ef8.jpg",
+      "contents": [
+       {
+        "label": "Base game"
+       },
+       {
+        "label": "Core modes"
+       },
+       {
+        "label": "Platform features"
+       }
+      ]
+     },
+     {
+      "name": "Digital Edition",
+      "coverUrl": "https://images.launchbox-app.com//412a714b-e925-4d22-b8eb-0085d328a8be.jpg",
+      "contents": [
+       {
+        "label": "Digital game license"
+       },
+       {
+        "label": "Same core game content"
+       },
+       {
+        "label": "Nintendo Account delivery"
+       }
+      ]
+     },
+     {
+      "name": "Current Complete Package",
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/en_US/products/games/switch/super-mario-party/108391-switch-super-mario-party-us-1200x675",
+      "contents": [
+       {
+        "label": "Latest game build"
+       },
+       {
+        "label": "No paid DLC"
+       },
+       {
+        "label": "80 minigames designed around Joy-Con controllers"
+       }
+      ]
+     }
+    ],
+    "gameplayPillars": [
+     {
+      "title": "Board-game competition",
+      "description": "Roll character-specific Dice Blocks, move around boards, buy Stars and use items strategically.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/en_US/products/games/switch/super-mario-party/108391-switch-super-mario-party-us-1200x675"
+     },
+     {
+      "title": "80 Joy-Con minigames",
+      "description": "Free-for-all, 2-vs-2 and 1-vs-3 games use buttons, motion and HD Rumble.",
+      "imageUrl": "https://images.launchbox-app.com//e53e0db6-6366-4911-9ef1-9fb55769f39f.jpg"
+     },
+     {
+      "title": "Mode variety",
+      "description": "Partner Party, River Survival, Sound Stage, Challenge Road and Toad's Rec Room alter the usual formula.",
+      "imageUrl": "https://images.launchbox-app.com//d076f58f-b504-435e-84a3-34b0c826e137.jpg"
+     }
+    ],
+    "worldSummary": "Mario and friends gather across colorful digital game boards and themed minigame arenas. Unlike story-heavy Mario titles, progression centers on Party Points, Challenge Road and unlocking characters, boards and activities.",
+    "storyChapters": [
+     {
+      "title": "Start the party",
+      "body": "Choose characters and enter the central plaza of available modes.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/en_US/games/switch/s/super-mario-party-switch/screenshot-gallery/screenshot01"
+     },
+     {
+      "title": "Challenge Road",
+      "body": "A solo route strings together the game's minigames as a progression challenge.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/en_US/games/switch/s/super-mario-party-switch/screenshot-gallery/screenshot02"
+     },
+     {
+      "title": "Party mastery",
+      "body": "Unlock characters and content while mastering boards, minigames and cooperative modes.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/en_US/games/switch/s/super-mario-party-switch/screenshot-gallery/screenshot03"
+     }
+    ],
+    "features": [
+     "80 minigames designed around Joy-Con controllers",
+     "Mario Party, Partner Party and multiple side modes",
+     "Online minigame/board functionality added through updates"
+    ],
+    "perfResolutionDocked": "1080p",
+    "perfResolutionHandheld": "720p / tabletop rendering profile",
+    "perfFps": "60",
+    "perfHdr": false,
+    "perfNotes": "Performance analysis reports 1080p docked and 720p portable/tabletop rendering at a highly stable 60 fps. The software's control design is centered on detached Joy-Con use and does not support ordinary handheld play in the same way as most Switch titles.",
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "hardwareId": "prd_acf4c89908764c62",
+      "informationStatus": "Available / verified",
+      "unavailableReason": "Normal handheld play requires detached Joy-Con for Super Mario Party; other standard modes are supported.",
+      "handheld": {
+       "supported": false,
+       "resolution": "720p / tabletop rendering profile",
+       "resolutionDynamic": false,
+       "renderingResolution": "720p / tabletop rendering profile",
+       "outputResolution": "1280x720",
+       "fps": "60",
+       "fpsMin": "60",
+       "fpsMax": "60",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Not supported as normal attached-Joy-Con handheld play",
+       "notes": "Performance analysis reports 1080p docked and 720p portable/tabletop rendering at a highly stable 60 fps. The software's control design is centered on detached Joy-Con use and does not support ordinary handheld play in the same way as most Switch titles."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p",
+       "resolutionDynamic": false,
+       "renderingResolution": "1080p",
+       "outputResolution": "1920x1080",
+       "fps": "60",
+       "fpsMin": "60",
+       "fpsMax": "60",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "TV / Docked",
+       "notes": "Performance analysis reports 1080p docked and 720p portable/tabletop rendering at a highly stable 60 fps. The software's control design is centered on detached Joy-Con use and does not support ordinary handheld play in the same way as most Switch titles."
+      },
+      "modes": [
+       {
+        "name": "Standard",
+        "handheldResolution": "720p / tabletop rendering profile",
+        "handheldFps": "60",
+        "tvResolution": "1080p",
+        "tvFps": "60",
+        "hdr": false,
+        "vrr": false,
+        "notes": "Primary documented performance profile."
+       }
+      ],
+      "upscaling": "Platform-specific scaling/reconstruction where documented",
+      "rayTracing": false,
+      "rayTracingMode": "No ray-tracing mode",
+      "loadingTime": "Scene-dependent; no single universal load time",
+      "loadingNotes": "Loading varies by activity and storage state.",
+      "gameVersion": "Current retail build",
+      "patchVersion": "Current available update",
+      "testedDate": "2026-08-27",
+      "sourceName": "Handheld Performance",
+      "sourceUrl": "https://handheld-performance.com/games/super-mario-party",
+      "verifiedAt": "2026-08-27",
+      "verificationStatus": "Verified / sourced",
+      "performanceNotes": "Performance analysis reports 1080p docked and 720p portable/tabletop rendering at a highly stable 60 fps. The software's control design is centered on detached Joy-Con use and does not support ordinary handheld play in the same way as most Switch titles."
+     }
+    ],
+    "downloadSizeGb": 2.904,
+    "requiredSpaceGb": 2.904,
+    "microSdRecommended": false,
+    "storageNotes": "Deku Deals lists approximately 2.904 GB. microSD storage is optional.",
+    "languagesAudio": [
+     "Character vocalizations",
+     "Minigame announcer / effects",
+     "Music is language-independent"
+    ],
+    "languagesText": [
+     "Japanese / English",
+     "French / German / Italian / Spanish / Dutch / Russian",
+     "Korean / Simplified Chinese / Traditional Chinese"
+    ],
+    "arabicSupport": false,
+    "mpLocalPlayers": true,
+    "mpOnlinePlayers": true,
+    "mpCoop": true,
+    "mpCompetitive": true,
+    "mpSplitScreen": false,
+    "mpLocalWireless": true,
+    "dlc": [
+     {
+      "name": "No paid DLC",
+      "description": "No standalone paid DLC expansion was released.",
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/en_US/games/switch/s/super-mario-party-switch/screenshot-gallery/screenshot04"
+     },
+     {
+      "name": "Online-play update",
+      "description": "A free 2021 update expanded online play to Mario Party, Partner Party and 70 minigames.",
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/en_US/games/switch/s/super-mario-party-switch/screenshot-gallery/screenshot05"
+     },
+     {
+      "name": "Controller requirement",
+      "description": "Motion-focused minigames require compatible Joy-Con controllers; this is a hardware requirement, not DLC.",
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/en_US/games/switch/s/super-mario-party-switch/screenshot-gallery/screenshot06"
+     }
+    ],
+    "guides": [
+     {
+      "title": "Official Nintendo page",
+      "summary": "Release, platform, storage, languages and feature information.",
+      "url": "https://www.nintendo.com/us/store/products/super-mario-party-switch/"
+     },
+     {
+      "title": "Gameplay / technical reference",
+      "summary": "Performance and gameplay behavior reference.",
+      "url": "https://handheld-performance.com/games/super-mario-party"
+     },
+     {
+      "title": "Database / review reference",
+      "summary": "Media, reviews and completion context.",
+      "url": "https://www.dekudeals.com/items/super-mario-party"
+     }
+    ],
+    "completionMain": 7.5,
+    "completionExtras": 15.5,
+    "completionAll": 23.5,
+    "faq": [
+     {
+      "q": "Can it be played in handheld mode?",
+      "a": "The game is designed around detached Joy-Con controllers and is primarily intended for TV/tabletop configurations rather than normal attached-Joy-Con handheld play."
+     },
+     {
+      "q": "How many minigames are included?",
+      "a": "The game includes 80 minigames."
+     },
+     {
+      "q": "Does it support online play?",
+      "a": "Yes. A free update expanded online support to board modes and most minigames."
+     }
+    ],
+    "verdictScore": 7.8,
+    "verdictSummary": "A lively party package with clever Joy-Con ideas and strong local multiplayer, though its limited board selection and control requirements make it less flexible than later entries.",
+    "verdictPros": [
+     "Creative motion-control minigames",
+     "Several distinct party/co-op modes",
+     "Stable 60 fps presentation"
+    ],
+    "verdictCons": [
+     "Limited number of main boards",
+     "Strong dependence on Joy-Con motion controls",
+     "Less convenient for handheld-only use"
+    ],
+    "reviews": [
+     {
+      "source": "Metacritic",
+      "score": "76/100",
+      "quote": "Generally favorable critic reception.",
+      "url": "https://www.metacritic.com/game/super-mario-party/"
+     },
+     {
+      "source": "OpenCritic",
+      "score": "77/100",
+      "quote": "Generally favorable aggregate.",
+      "url": "https://opencritic.com/game/6682/super-mario-party"
+     },
+     {
+      "source": "Deku Deals users",
+      "score": "3.5/5",
+      "quote": "Current long-term user rating snapshot.",
+      "url": "https://www.dekudeals.com/items/super-mario-party"
+     }
+    ],
+    "timeline": [
+     {
+      "date": "2018-06-12",
+      "title": "Announced",
+      "body": "Nintendo revealed Super Mario Party at E3."
+     },
+     {
+      "date": "2018-10-05",
+      "title": "Worldwide release",
+      "body": "Super Mario Party launched on Nintendo Switch."
+     },
+     {
+      "date": "2021-04-27",
+      "title": "Major online update",
+      "body": "Nintendo added online board play and broader online minigame support."
+     }
+    ],
+    "patchNotes": [
+     {
+      "version": "Version 1.0.1",
+      "date": "2018",
+      "body": "Early stability update."
+     },
+     {
+      "version": "Version 1.1.0",
+      "date": "2021-04-27",
+      "body": "Added online play to Mario Party, Partner Party and Free Play minigames."
+     },
+     {
+      "version": "Current compatibility",
+      "date": "2026",
+      "body": "Remains playable on Switch 2 through backward compatibility."
+     }
+    ],
+    "soundtrack": [
+     {
+      "title": "Super Mario Party Main Theme",
+      "url": "https://www.nintendo.com/us/store/products/super-mario-party-switch/"
+     },
+     {
+      "title": "River Survival themes",
+      "url": "https://www.nintendo.com/us/store/products/super-mario-party-switch/"
+     },
+     {
+      "title": "Sound Stage rhythm tracks",
+      "url": "https://www.nintendo.com/us/store/products/super-mario-party-switch/"
+     }
+    ],
+    "seriesName": "Mario Party",
+    "seriesEntries": [
+     "Mario Party Superstars",
+     "Super Mario Party",
+     "Super Mario Party Jamboree"
+    ],
+    "studioName": "Nintendo Cube / NDcube",
+    "studioUrl": "https://www.nintendo.co.jp/",
+    "studioLocation": "Tokyo, Japan",
+    "studioAbout": "Nintendo Cube (formerly NDcube) specializes in party-game development and has led many modern Mario Party entries.",
+    "setupNeeds": [
+     "Nintendo Switch or compatible Switch 2 backward compatibility",
+     "Approximately 2.904 GB free storage",
+     "Compatible Joy-Con controllers; Nintendo Switch Online for online play"
+    ],
+    "sources": [
+     {
+      "name": "Nintendo official",
+      "url": "https://www.nintendo.com/us/store/products/super-mario-party-switch/"
+     },
+     {
+      "name": "Handheld Performance",
+      "url": "https://handheld-performance.com/games/super-mario-party"
+     },
+     {
+      "name": "Deku Deals",
+      "url": "https://www.dekudeals.com/items/super-mario-party"
+     }
+    ],
+    "boxContentsList": "[Circular]",
+    "image": "/api/files/products/prd_dfb6ac13472d4624/cover-146ce94efb61f82f.jpg",
+    "banner": "/api/files/products/prd_dfb6ac13472d4624/banner-0-fc6774b5d517c52d.jpg",
+    "schemaId": "",
+    "createdAt": "2026-08-27T01:03:33.739Z",
+    "created_at": "2026-08-27T01:03:33.739Z",
+    "updatedAt": "2026-08-27T01:03:33.739Z",
+    "updated_at": "2026-08-27T01:03:33.739Z",
+    "badgeEn": "وفر 40%",
+    "badgeKu": "وفر 40%",
+    "featuresEn": [
+     "80 minigames designed around Joy-Con controllers",
+     "Mario Party, Partner Party and multiple side modes",
+     "Online minigame/board functionality added through updates"
+    ],
+    "featuresKu": [
+     "80 minigames designed around Joy-Con controllers",
+     "Mario Party, Partner Party and multiple side modes",
+     "Online minigame/board functionality added through updates"
+    ],
+    "boxFrontUrl": "https://images.launchbox-app.com//21e297b2-ae1e-44ac-bc34-2a10e9317ef8.jpg",
+    "sales": 0,
+    "images": [],
+    "modes": []
+   }
+  },
+  {
+   "id": "prd_028b26bf1f5d4e0b",
+   "slug": "super-mario-rpg-switch-1",
+   "title": "Super Mario RPG",
+   "platform": "switch1",
+   "isHidden": false,
+   "hash": "2fb3c287505d8af80346b7a792869f93c4133c036c513f69ba157a6311723477",
+   "images": [
+    {
+     "role": "front-box",
+     "field": "cartridgeImage",
+     "url": "https://banan.to/api/files/products/prd_028b26bf1f5d4e0b/front-e6013a6cb90aa94d.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 1111508,
+     "width": 1238,
+     "height": 2000,
+     "thumb": "review-workdir/thumbs/batch-025/super-mario-rpg-switch-1__front-box-0.png"
+    },
+    {
+     "role": "front-box",
+     "field": "box_front_url",
+     "url": "https://images.launchbox-app.com/0be66a78-ae3b-4280-aa4e-8d6005373f15.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 1111508,
+     "width": 1238,
+     "height": 2000,
+     "thumb": "review-workdir/thumbs/batch-025/super-mario-rpg-switch-1__front-box-1.png"
+    },
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://banan.to/api/files/products/prd_028b26bf1f5d4e0b/square-b613c2bb37daf464.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://banan.to/api/files/products/prd_028b26bf1f5d4e0b/cover-b013690780c57622.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "3d-texture",
+     "field": "coverHiResImage",
+     "url": "https://banan.to/api/files/products/prd_028b26bf1f5d4e0b/3d-texture-d4d2230ef1092243.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 3386238,
+     "width": 2455,
+     "height": 1879,
+     "thumb": "review-workdir/thumbs/batch-025/super-mario-rpg-switch-1__3d-texture-4.png"
+    },
+    {
+     "role": "listing",
+     "field": "image",
+     "url": "https://banan.to/api/files/products/prd_028b26bf1f5d4e0b/cover-b013690780c57622.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[0]",
+     "url": "https://banan.to/api/files/products/prd_028b26bf1f5d4e0b/banner-0-644989ad6806ffcc.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[1]",
+     "url": "https://banan.to/api/files/products/prd_028b26bf1f5d4e0b/banner-1-43853995e40ce5c4.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[2]",
+     "url": "https://banan.to/api/files/products/prd_028b26bf1f5d4e0b/banner-2-848ab7fbecf83317.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[3]",
+     "url": "https://banan.to/api/files/products/prd_028b26bf1f5d4e0b/banner-3-25328678297120cb.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000068683/dad2dfa044f3b1809bfb65e0145f824e25d2a363e446a142b5d46b27766463ea",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 78027,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-025/super-mario-rpg-switch-1__gallery-10.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[1]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000068683/4c7e8dd48d4502fe6e055a4123edb756884df4c3b9e38b6e0b2e6467f0e3f156",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 134777,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-025/super-mario-rpg-switch-1__gallery-11.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[2]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000068683/6f1e4ece77f40f695a7589fb098bc07c26ea34dcb740f31ad65f5b6fe157d006",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 138284,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-025/super-mario-rpg-switch-1__gallery-12.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[3]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000068683/9e65faa68da4e6401bec610a841c4767843058906b4dbca5b809a9fe7eb7bc81",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 66549,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-025/super-mario-rpg-switch-1__gallery-13.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[4]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000068683/163e4c00b087ebce4aba847ea045c6447847f8441799cff4742ca0b96e16fbb5",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 99414,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-025/super-mario-rpg-switch-1__gallery-14.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[5]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000068683/b6ddbc898fcb6c78c6d186d914c9cbdf446652b930d16eabb30b169fbf9b94c1",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 67962,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-025/super-mario-rpg-switch-1__gallery-15.png"
+    }
+   ],
+   "record": {
+    "title": "Super Mario RPG",
+    "titleEn": "Super Mario RPG",
+    "titleKu": "Super Mario RPG",
+    "slug": "super-mario-rpg-switch-1",
+    "description": "Team up with an oddball group of heroes to save Star Road and stop the troublemaking Smithy Gang. This colorful RPG has updated graphics and cinematics that add even more charm to the unexpected alliance between Mario, Bowser, Peach, and original characters Mallow and Geno. Enter (or revisit) this world of eccentric allies and offbeat enemies in an RPG for everyone.\n\nJump through a colorful world and give attacks some extra oomph in battle!\n\nExplore the vibrant environments with your party and jump towards your next goal! Run into monsters to enter turn-based battles with your party of three. Press the button at the right time for a satisfying dose of extra damage or helpful guard.",
+    "descriptionEn": "Team up with an oddball group of heroes to save Star Road and stop the troublemaking Smithy Gang. This colorful RPG has updated graphics and cinematics that add even more charm to the unexpected alliance between Mario, Bowser, Peach, and original characters Mallow and Geno. Enter (or revisit) this world of eccentric allies and offbeat enemies in an RPG for everyone.\n\nJump through a colorful world and give attacks some extra oomph in battle!\n\nExplore the vibrant environments with your party and jump towards your next goal! Run into monsters to enter turn-based battles with your party of three. Press the button at the right time for a satisfying dose of extra damage or helpful guard.",
+    "descriptionKu": "Enter—or revisit—a world of whimsy with Mario on a quest to repair Star Road and defeat the troublemaking Smithy Gang. Team up with a party of unlikely allies, including Bowser, Peach, Mallow, and Geno, in a story-rich RPG packed with laughs, remastered music, refreshed graphics, and new battle refinements.",
+    "cartridgeImage": "/api/files/products/prd_028b26bf1f5d4e0b/front-e6013a6cb90aa94d.jpg",
+    "nintendoCardImage": "/api/files/products/prd_028b26bf1f5d4e0b/square-b613c2bb37daf464.avif",
+    "coverHiResImage": "/api/files/products/prd_028b26bf1f5d4e0b/3d-texture-d4d2230ef1092243.jpg",
+    "coverImage": "/api/files/products/prd_028b26bf1f5d4e0b/cover-b013690780c57622.avif",
+    "bannerImages": [
+     "/api/files/products/prd_028b26bf1f5d4e0b/banner-0-644989ad6806ffcc.avif",
+     "/api/files/products/prd_028b26bf1f5d4e0b/banner-1-43853995e40ce5c4.avif",
+     "/api/files/products/prd_028b26bf1f5d4e0b/banner-2-848ab7fbecf83317.avif",
+     "/api/files/products/prd_028b26bf1f5d4e0b/banner-3-25328678297120cb.avif",
+     "/api/files/products/prd_028b26bf1f5d4e0b/banner-4-239ed11aa0c3a70f.avif",
+     "/api/files/products/prd_028b26bf1f5d4e0b/banner-5-a1f2f2c70448daa2.avif"
+    ],
+    "youtubeTrailer": "https://www.nintendo.com/us/store/products/super-mario-rpg-switch/",
+    "releaseDate": "2023-11-17",
+    "ageRating": "Everyone",
+    "metacriticRating": 84,
+    "genres": [
+     "Action",
+     "Role playing"
+    ],
+    "platform": "switch1",
+    "size": "6.53 GB",
+    "numberOfPlayers": "1",
+    "supportedLanguages": "Japanese, British English, French, German, Italian, Spanish, Korean, Dutch, Simplified Chinese, Latin American Spanish, Canadian French, Traditional Chinese, American English",
+    "price": 11500,
+    "cost": 1250,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": false,
+    "displayOrder": 0,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "مشترك",
+      "description": "حساب مشترك",
+      "stock": 9999,
+      "isInfiniteStock": true,
+      "customerDescription": "حساب مشترك"
+     },
+     {
+      "id": "online_account",
+      "name": "خاص بك",
+      "description": "حساب خاص بك",
+      "stock": 9999,
+      "isInfiniteStock": true,
+      "customerDescription": "حساب خاص بك"
+     }
+    ],
+    "types": [
+     {
+      "id": "standard_offline",
+      "name": "مشترك — اللعبة الأساسية",
+      "optionId": "offline_account",
+      "price": 11500,
+      "cost": 1250,
+      "description": "",
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "standard_online",
+      "name": "خاص بك — اللعبة الأساسية",
+      "optionId": "online_account",
+      "price": 35000,
+      "cost": 20750,
+      "description": "",
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "Active",
+    "kind": "account",
+    "trade_value_iqd": 30000,
+    "store_offer_bonus_iqd": 3000,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "id": "prd_028b26bf1f5d4e0b",
+    "schema_version": 24,
+    "titleAr": "سوبر ماريو آر بي جي",
+    "compatibility": [
+     "Nintendo Switch",
+     "Nintendo Switch 2: supported with behavior consistent with Nintendo Switch"
+    ],
+    "edition": "Standard",
+    "developer": "Nintendo",
+    "publisher": "Nintendo",
+    "seriesName": "Mario RPG",
+    "metacriticUrl": "https://www.metacritic.com/game/super-mario-rpg/",
+    "opencriticRating": 84,
+    "userScore": 8.6,
+    "price_usd": 59.99,
+    "officialUrl": "https://www.nintendo.com/us/store/products/super-mario-rpg-switch/",
+    "eshopUrl": "https://www.nintendo.com/us/store/products/super-mario-rpg-switch/",
+    "galleryImages": [
+     {
+      "alt": "Super Mario RPG official promotional media 1",
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000068683/dad2dfa044f3b1809bfb65e0145f824e25d2a363e446a142b5d46b27766463ea"
+     },
+     {
+      "alt": "Super Mario RPG official promotional media 2",
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000068683/4c7e8dd48d4502fe6e055a4123edb756884df4c3b9e38b6e0b2e6467f0e3f156"
+     },
+     {
+      "alt": "Super Mario RPG official promotional media 3",
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000068683/6f1e4ece77f40f695a7589fb098bc07c26ea34dcb740f31ad65f5b6fe157d006"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000068683/9e65faa68da4e6401bec610a841c4767843058906b4dbca5b809a9fe7eb7bc81"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000068683/163e4c00b087ebce4aba847ea045c6447847f8441799cff4742ca0b96e16fbb5"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000068683/b6ddbc898fcb6c78c6d186d914c9cbdf446652b930d16eabb30b169fbf9b94c1"
+     }
+    ],
+    "videos": [
+     {
+      "title": "Official product page / trailer",
+      "url": "https://www.nintendo.com/us/store/products/super-mario-rpg-switch/"
+     },
+     {
+      "title": "Nintendo news",
+      "url": "https://www.nintendo.com/us/search/#q=Super%20Mario%20RPG&p=1&cat=news"
+     },
+     {
+      "title": "Metacritic review hub",
+      "url": "https://www.metacritic.com/game/super-mario-rpg/"
+     }
+    ],
+    "soundtrack": [
+     {
+      "title": "Official game page",
+      "url": "https://www.nintendo.com/us/store/products/super-mario-rpg-switch/"
+     },
+     {
+      "title": "Nintendo news",
+      "url": "https://www.nintendo.com/us/search/#q=Super%20Mario%20RPG&p=1&cat=news"
+     },
+     {
+      "title": "Metacritic / reviews",
+      "url": "https://www.metacritic.com/game/super-mario-rpg/"
+     }
+    ],
+    "gameIsOffline": true,
+    "gameIsOnline": false,
+    "gameLanguageLocked": false,
+    "description_short": "Set out on a classic Mario adventure. Repair Star Road, battle the Smithy Gang, and team up with oddball allies in a story-rich RPG remade for Nintendo Switch.",
+    "description_ar": "إعادة صنع للعبة RPG الكلاسيكية حيث ينطلق ماريو لإصلاح Star Road وإيقاف عصابة Smithy Gang، مع حلفاء مثل Bowser وPeach وMallow وGeno، ورسوم محسنة وموسيقى مجددة وتطويرات على القتال.",
+    "box_front_url": "https://images.launchbox-app.com/0be66a78-ae3b-4280-aa4e-8d6005373f15.jpg",
+    "box_back_url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000068683/dad2dfa044f3b1809bfb65e0145f824e25d2a363e446a142b5d46b27766463ea",
+    "languagesAudio": [
+     "Character vocalizations",
+     "Music / sound effects",
+     "No full language-dependent dub confirmed"
+    ],
+    "languagesText": [
+     "Japanese",
+     "British English",
+     "French",
+     "German",
+     "Italian",
+     "Spanish",
+     "Korean",
+     "Dutch",
+     "Simplified Chinese",
+     "Latin American Spanish",
+     "Canadian French",
+     "Traditional Chinese",
+     "American English"
+    ],
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": true,
+    "nintendoPlayModes": [
+     "TV mode",
+     "Tabletop mode",
+     "Handheld mode"
+    ],
+    "nintendoOnlineRequired": false,
+    "nintendoCloudSaves": true,
+    "nintendoGameKeyCard": false,
+    "nintendoPhysicalNeedsDownload": false,
+    "switch2Enhanced": false,
+    "switch2Exclusive": false,
+    "nintendoNotes": "Nintendo product identity and store facts were verified against the official listing on 2026-09-02. Performance values are included only where an official source publishes them.",
+    "editionsList": [
+     {
+      "name": "Standard Edition",
+      "coverUrl": "https://images.launchbox-app.com/0be66a78-ae3b-4280-aa4e-8d6005373f15.jpg",
+      "contents": [
+       {
+        "label": "Base game"
+       },
+       {
+        "label": "Story-rich turn-based RPG adventure"
+       },
+       {
+        "label": "Breezy difficulty mode for easier progression"
+       }
+      ]
+     },
+     {
+      "name": "Digital Edition",
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_1:1,c_fill,g_auto,w_1000/f_auto/q_auto/dpr_1.5/store/software/switch/70010000068683/fe4afe940b0e707798332e86f0af56cdbde48da59dc37cdfb8d59febb88ac72a",
+      "contents": [
+       {
+        "label": "Nintendo eShop release"
+       },
+       {
+        "label": "Remastered soundtrack plus Classic SNES soundtrack option"
+       },
+       {
+        "label": "Save Data Cloud support"
+       }
+      ]
+     },
+     {
+      "name": "Current Store Package",
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_16:9,c_fill,g_auto,w_1600/f_auto/q_auto/dpr_1.5/store/software/switch/70010000068683/fe4afe940b0e707798332e86f0af56cdbde48da59dc37cdfb8d59febb88ac72a",
+      "contents": [
+       {
+        "label": "Offline account option"
+       },
+       {
+        "label": "Online account option"
+       },
+       {
+        "label": "Hidden by default until review"
+       }
+      ]
+     }
+    ],
+    "gameplayPillars": [
+     {
+      "title": "Action Commands",
+      "description": "Time button presses to deal extra damage or guard effectively in battle.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000068683/dad2dfa044f3b1809bfb65e0145f824e25d2a363e446a142b5d46b27766463ea"
+     },
+     {
+      "title": "Chain and Triple Moves",
+      "description": "Use Action Commands to build gauge and unleash powerful Chain and Triple Moves.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000068683/4c7e8dd48d4502fe6e055a4123edb756884df4c3b9e38b6e0b2e6467f0e3f156"
+     },
+     {
+      "title": "Exploration and boss battles",
+      "description": "Explore colorful areas, complete mini-games, and take on memorable bosses across the world.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000068683/6f1e4ece77f40f695a7589fb098bc07c26ea34dcb740f31ad65f5b6fe157d006"
+     },
+     {
+      "title": "Timed defense and party rhythm",
+      "description": "Action Commands are used on offense and defense, keeping battles active and rewarding good timing rather than purely menu-based play.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000068683/9e65faa68da4e6401bec610a841c4767843058906b4dbca5b809a9fe7eb7bc81"
+     },
+     {
+      "title": "Secrets, minigames, and side content",
+      "description": "The adventure includes hidden chests, optional bosses, minigames, and post-story challenges that add more to do beyond the critical path.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000068683/163e4c00b087ebce4aba847ea045c6447847f8441799cff4742ca0b96e16fbb5"
+     }
+    ],
+    "worldSummary": "Super Mario RPG delivers a whimsical quest through a colorful world full of towns, dungeons, mini-games, expressive characters, and classic turn-based battles with modern presentation upgrades.",
+    "storyChapters": [
+     {
+      "title": "Repair Star Road",
+      "body": "Mario sets out to restore wishes after Star Road is disrupted.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000068683/dad2dfa044f3b1809bfb65e0145f824e25d2a363e446a142b5d46b27766463ea"
+     },
+     {
+      "title": "Gather unlikely allies",
+      "body": "Peach, Bowser, Mallow, and Geno each bring distinct abilities and personalities to the party.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000068683/4c7e8dd48d4502fe6e055a4123edb756884df4c3b9e38b6e0b2e6467f0e3f156"
+     },
+     {
+      "title": "Defeat the Smithy Gang",
+      "body": "The adventure culminates in battles against the Smithy Gang and its leaders.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000068683/6f1e4ece77f40f695a7589fb098bc07c26ea34dcb740f31ad65f5b6fe157d006"
+     },
+     {
+      "title": "Meet Geno, Mallow, and unexpected allies",
+      "body": "Mario gradually builds a memorable party whose personalities, abilities, and interactions carry much of the game's charm and humor.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000068683/b6ddbc898fcb6c78c6d186d914c9cbdf446652b930d16eabb30b169fbf9b94c1"
+     },
+     {
+      "title": "Optional challenges after the finale",
+      "body": "Even after the main story, players can tackle stronger rematch content, finish side objectives, and hunt down missed treasures and secrets.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000068683/dad2dfa044f3b1809bfb65e0145f824e25d2a363e446a142b5d46b27766463ea"
+     }
+    ],
+    "features": [
+     "Story-rich turn-based RPG adventure",
+     "Breezy difficulty mode for easier progression",
+     "Remastered soundtrack plus Classic SNES soundtrack option",
+     "Action Commands keep turn-based battles lively",
+     "Short pacing makes it easy to finish without filler",
+     "Optional postgame content adds extra challenge beyond the story"
+    ],
+    "perfResolutionDocked": "Not published by Nintendo",
+    "perfResolutionHandheld": "Not published by Nintendo",
+    "perfFps": "Not published by Nintendo",
+    "perfHdr": false,
+    "playTimeMain": 11,
+    "completionMain": 16,
+    "completionExtras": 20,
+    "faq": [
+     {
+      "q": "Is Super Mario RPG multiplayer?",
+      "a": "No. This remake is a single-player RPG."
+     },
+     {
+      "q": "Does it support Nintendo Switch 2?",
+      "a": "Yes. Nintendo lists it as Supported – game behavior is consistent with Nintendo Switch."
+     },
+     {
+      "q": "What is new in the remake?",
+      "a": "The Switch version adds remastered visuals, new CGI cutscenes, the Chain and Triple Move battle systems, Breezy mode, and the option to use a remastered or classic soundtrack."
+     },
+     {
+      "q": "How long is Super Mario RPG?",
+      "a": "The main story is relatively approachable in length, while side content, optional bosses, and completion goals extend the overall playtime meaningfully."
+     },
+     {
+      "q": "Is the remake faithful to the original?",
+      "a": "Yes. It preserves the core structure, characters, and battle flow of the SNES classic while updating visuals, audio, accessibility, and battle conveniences."
+     }
+    ],
+    "verdictScore": 8.8,
+    "verdictPros": [
+     "Charming remake of a beloved classic",
+     "Excellent pacing and approachable RPG mechanics",
+     "Great music options and polished presentation",
+     "Action Command timing keeps battles engaging",
+     "Optional secrets give the short adventure extra replay value"
+    ],
+    "verdictCons": [
+     "Relatively short for an RPG",
+     "Low challenge for genre veterans outside selected encounters",
+     "Limited postgame compared with larger modern RPGs",
+     "Veteran RPG players may outgrow its simple systems quickly",
+     "The compact runtime may leave some players wanting a bigger adventure"
+    ],
+    "reviews": [
+     {
+      "source": "Metacritic",
+      "score": "84",
+      "url": "https://www.metacritic.com/game/super-mario-rpg/"
+     },
+     {
+      "source": "OpenCritic",
+      "score": "84",
+      "url": "https://opencritic.com/game/15689/super-mario-rpg"
+     },
+     {
+      "source": "IGN",
+      "score": "8/10",
+      "url": "https://www.ign.com/games/super-mario-rpg"
+     }
+    ],
+    "timeline": [
+     {
+      "date": "2023-06-21",
+      "title": "Announced during Nintendo Direct",
+      "body": "Announced during Nintendo Direct — recorded milestone dated 2023-06-21."
+     },
+     {
+      "date": "2023-11-17",
+      "title": "Released on Nintendo Switch",
+      "body": "Released on Nintendo Switch — recorded milestone dated 2023-11-17."
+     },
+     {
+      "date": "2024-01-22",
+      "title": "Nintendo published follow-up tips / secrets coverage",
+      "body": "Nintendo published follow-up tips / secrets coverage — recorded milestone dated 2024-01-22."
+     }
+    ],
+    "patchNotes": [
+     {
+      "version": "Launch version",
+      "date": "2023-11-17",
+      "body": "Update entry for Launch version, dated 2023-11-17. No additional change list was included in the prior verified extraction."
+     },
+     {
+      "version": "Current retail build",
+      "date": "2026-08-27",
+      "body": "Update entry for Current retail build, dated 2026-08-27. No additional change list was included in the prior verified extraction."
+     },
+     {
+      "version": "Save Data Cloud support active",
+      "date": "2026-08-27",
+      "body": "Update entry for Save Data Cloud support active, dated 2026-08-27. No additional change list was included in the prior verified extraction."
+     }
+    ],
+    "studioName": "Nintendo / ArtePiazza",
+    "studioUrl": "https://www.nintendo.com/us/store/products/super-mario-rpg-switch/",
+    "studioLocation": "Japan",
+    "sources": [
+     {
+      "name": "Nintendo eShop (US)",
+      "url": "https://www.nintendo.com/us/store/products/super-mario-rpg-switch/"
+     }
+    ],
+    "downloadSizeGb": 6.53,
+    "requiredSpaceGb": 6.53,
+    "microSdRecommended": false,
+    "storageNotes": "Nintendo lists a 6.53 GB download. Free-space requirements can increase with updates.",
+    "mpLocalPlayers": 1,
+    "mpOnlinePlayers": 0,
+    "mpCoop": false,
+    "mpCompetitive": false,
+    "mpLocalWireless": false,
+    "mpSplitScreen": false,
+    "seriesEntries": [
+     "Paper Mario: The Thousand-Year Door",
+     "Mario & Luigi: Brothership",
+     "Bug Fables: The Everlasting Sapling"
+    ],
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "hardwareId": "prd_acf4c89908764c62",
+      "informationStatus": "available",
+      "handheld": {
+       "supported": true,
+       "resolution": "Not published by Nintendo",
+       "fps": "Not published by Nintendo",
+       "mode": "Handheld"
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "Not published by Nintendo",
+       "fps": "Not published by Nintendo",
+       "mode": "TV"
+      },
+      "sourceName": "Nintendo official product page",
+      "sourceUrl": "https://www.nintendo.com/us/store/products/super-mario-rpg-switch/",
+      "verificationStatus": "official",
+      "verifiedAt": "2026-09-02",
+      "performanceNotes": "Backward-compatible on Switch 2; exact resolution and FPS are not published by Nintendo."
+     }
+    ],
+    "switch2UpgradePrice": 0,
+    "nintendoEshopUrl": "https://www.nintendo.com/us/store/products/super-mario-rpg-switch/",
+    "arabicSupport": false,
+    "tagline": "Mario, Bowser, and Peach partner up to repair the wish-granting Star Road.",
+    "fitFor": [
+     "Players looking for role playing, action gameplay.",
+     "Players who want the game modes supported by the official player-count specification: Single system (1).",
+     "Players curious about turn-based RPGs but wanting an easy starting point.",
+     "Nintendo fans who value charm, humor, and brisk pacing over huge scale."
+    ],
+    "notFitFor": [
+     "Players specifically seeking online multiplayer; this title does not list online multiplayer support.",
+     "Players specifically seeking local multiplayer; this title does not list local multiplayer support.",
+     "Players wanting a very long, system-heavy RPG.",
+     "Players who prefer fully real-time combat over command-based encounters."
+    ],
+    "perfNotes": "Nintendo confirms TV, Tabletop, Handheld, and Switch 2 compatibility but publishes no exact rendering resolution or FPS.",
+    "verdictSummary": "Overall score: 8.8/10. Strengths include Charming remake of a beloved classic; Excellent pacing and approachable RPG mechanics; Great music options and polished presentation. Main drawbacks include Relatively short for an RPG; Low challenge for genre veterans outside selected encounters.",
+    "studioAbout": "Nintendo is credited as the developer of this Nintendo Switch release. Nintendo is credited as the publisher.",
+    "setupNeeds": [
+     "Nintendo Switch-compatible hardware for this release.",
+     "Online multiplayer is not required for the core single-player experience."
+    ],
+    "dlc": [
+     {
+      "name": "No standalone DLC announced",
+      "description": "No standalone paid DLC expansion is included in this extraction. Free updates, when applicable, are listed in the Updates section instead."
+     }
+    ],
+    "guides": [
+     {
+      "title": "Nintendo official product page",
+      "summary": "Official story, play modes, language, size, and compatibility information.",
+      "url": "https://www.nintendo.com/us/store/products/super-mario-rpg-switch/"
+     }
+    ],
+    "image": "/api/files/products/prd_028b26bf1f5d4e0b/cover-b013690780c57622.avif",
+    "banner": "/api/files/products/prd_028b26bf1f5d4e0b/banner-0-644989ad6806ffcc.avif",
+    "createdAt": "2026-08-27T16:59:54.167Z",
+    "created_at": "2026-08-27T16:59:54.167Z",
+    "updatedAt": "2026-09-02T00:32:15.816Z",
+    "updated_at": "2026-08-27T16:59:54.167Z",
+    "badgeEn": "وفر 40%",
+    "badgeKu": "وفر 40%",
+    "featuresEn": [
+     "Story-rich turn-based RPG adventure",
+     "Breezy difficulty mode for easier progression",
+     "Remastered soundtrack plus Classic SNES soundtrack option",
+     "Action Commands keep turn-based battles lively",
+     "Short pacing makes it easy to finish without filler",
+     "Optional postgame content adds extra challenge beyond the story"
+    ],
+    "featuresKu": [
+     "Story-rich turn-based RPG adventure",
+     "Breezy difficulty mode for easier progression",
+     "Remastered soundtrack plus Classic SNES soundtrack option",
+     "Action Commands keep turn-based battles lively",
+     "Short pacing makes it easy to finish without filler",
+     "Optional postgame content adds extra challenge beyond the story"
+    ],
+    "boxFrontUrl": "https://images.launchbox-app.com/0be66a78-ae3b-4280-aa4e-8d6005373f15.jpg",
+    "sales": 0,
+    "cartridgeImageTrim": {
+     "left": 0,
+     "top": 0,
+     "width": 1,
+     "height": 0.984375,
+     "confidence": 0.9176356589147286,
+     "mode": "luminance",
+     "sourceWidth": 198,
+     "sourceHeight": 320,
+     "version": 1
+    },
+    "nsuid": "70010000068683",
+    "product_code": "HACPA8LUA",
+    "title_id": "0100bc0018138000",
+    "storySummary": "The Smithy Gang shatters Star Road and scatters its pieces. Mario forms an unlikely party with Peach, Bowser, Mallow, and Geno to restore wishes and stop Smithy.",
+    "dlcList": [
+     {
+      "name": "No standalone DLC announced",
+      "description": "Nintendo’s official product page lists no paid gameplay DLC for Super Mario RPG."
+     }
+    ],
+    "updates": [
+     {
+      "date": "2024-02-21",
+      "title": "Version 1.0.1",
+      "description": "Nintendo published a bug-fix update for progression and battle issues."
+     }
+    ],
+    "music": "The remake includes a newly arranged soundtrack and an option to switch to the original Super NES music.",
+    "completionTime": "Nintendo does not publish an official story-hour estimate; playtime varies with battles, exploration, and difficulty choice.",
+    "completionistTime": "Nintendo does not publish an official 100% time; hidden chests, minigames, optional bosses, and post-game rematches extend playtime.",
+    "pros": [
+     "Faithful and charming remake",
+     "Approachable timed-input combat",
+     "Remastered and classic soundtrack options"
+    ],
+    "cons": [
+     "Single-player only",
+     "Relatively compact for an RPG",
+     "Experienced RPG players may find the main path easy"
+    ]
+   }
+  },
+  {
+   "id": "prd_b9c50887a24849fa",
+   "slug": "super-smash-bros-ultimate",
+   "title": "Super Smash Bros. Ultimate",
+   "platform": "switch1",
+   "isHidden": false,
+   "hash": "beae9a286301a041d1d1c956ea66bdbc5ca0e9bb6f9fb92493972aff718dce66",
+   "images": [
+    {
+     "role": "front-box",
+     "field": "cartridgeImage",
+     "url": "https://banan.to/api/files/products/prd_b9c50887a24849fa/front-fb394dfb3da705ea.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 85659,
+     "width": 374,
+     "height": 606,
+     "thumb": "review-workdir/thumbs/batch-025/super-smash-bros-ultimate__front-box-0.png"
+    },
+    {
+     "role": "front-box",
+     "field": "box_front_url",
+     "url": "https://assets.nintendo.com/image/upload/ar_3:4,c_fit,g_auto,w_1000/f_auto/q_auto/dpr_1.5/store/software/switch/70010000012332/ac4d1fc9824876ce756406f0525d50c57ded4b2a666f6dfe40a6ac5c3563fad9",
+     "status": 400,
+     "contentType": "image/gif"
+    },
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://banan.to/api/files/products/prd_b9c50887a24849fa/square-card-520c12542c2d3cef.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 288986,
+     "width": 1024,
+     "height": 1024,
+     "thumb": "review-workdir/thumbs/batch-025/super-smash-bros-ultimate__square-card-2.png"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://banan.to/api/files/products/prd_b9c50887a24849fa/cover-87e1d75e06c2fd92.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 2014557,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-025/super-smash-bros-ultimate__detail-cover-3.png"
+    },
+    {
+     "role": "3d-texture",
+     "field": "coverHiResImage",
+     "url": "https://banan.to/api/files/products/prd_b9c50887a24849fa/3d-texture-bea421de5ed04054.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 6168537,
+     "width": 3776,
+     "height": 4912,
+     "thumb": "review-workdir/thumbs/batch-025/super-smash-bros-ultimate__3d-texture-4.png"
+    },
+    {
+     "role": "listing",
+     "field": "image",
+     "url": "https://banan.to/api/files/products/prd_b9c50887a24849fa/cover-87e1d75e06c2fd92.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 2014557,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-025/super-smash-bros-ultimate__listing-5.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[0]",
+     "url": "https://banan.to/api/files/products/prd_b9c50887a24849fa/banner-0-242e9640abfbddd1.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[1]",
+     "url": "https://banan.to/api/files/products/prd_b9c50887a24849fa/banner-1-0cec3fddee5fdb1e.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[2]",
+     "url": "https://banan.to/api/files/products/prd_b9c50887a24849fa/banner-2-a29991e13dd7b598.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[3]",
+     "url": "https://banan.to/api/files/products/prd_b9c50887a24849fa/banner-3-20845f0d253094ef.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000012332/245420c78ce40337bdca7ce9c2dd819bd4ae33b022da9b922c0710b8420b59dd",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 128677,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-025/super-smash-bros-ultimate__gallery-10.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[1]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000012332/0a381c9a157deda7997e47a40ebedf5d6357daa54eadb8747c85535247b5966a",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 143825,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-025/super-smash-bros-ultimate__gallery-11.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[2]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000012332/039c33416d22f81d72efa2f1646bb97627f2be0a0bfaea7f4a3638ce0ce73eba",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 90162,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-025/super-smash-bros-ultimate__gallery-12.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[3]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000012332/4a0b002c60e6fd1cbbf3165fb666fde994decf73d60902957963f7d17113a3e5",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 139327,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-025/super-smash-bros-ultimate__gallery-13.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[4]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000012332/a1194f11c5397e5134cad94a723d9afb2c9ab274ee5d824aa80c6ea4d60f0dc7",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 53909,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-025/super-smash-bros-ultimate__gallery-14.png"
+    }
+   ],
+   "record": {
+    "title": "Super Smash Bros. Ultimate",
+    "titleEn": "Super Smash Bros. Ultimate",
+    "titleKu": "Super Smash Bros. Ultimate",
+    "slug": "super-smash-bros-ultimate",
+    "description": "Gaming icons clash in the ultimate brawl you can play anytime, anywhere! Smash rivals off the stage as new characters Simon Belmont and King K. Rool join Inkling, Ridley, and every fighter in Super Smash Bros. history. Enjoy enhanced speed and combat at new stages based on the Castlevania series, Super Mario Odyssey, and more!\n\nHaving trouble choosing a stage? Then select the Stage Morph option to transform one stage into another while battling—a series first! Plus, new echo fighters Dark Samus, Richter Belmont, and Chrom join the battle. Whether you play locally or online, savor the faster combat, new attacks, and new defensive options, like a perfect shield. Jam out to 900 different music compositions and go 1-on-1 with a friend, hold a 4-player free-for-all, kick it up to 8-player battles and more! Feel free to bust out your GameCube controllers—legendary couch competitions await—or play together anytime, anywhere!",
+    "descriptionEn": "Gaming icons clash in the ultimate brawl you can play anytime, anywhere! Smash rivals off the stage as new characters Simon Belmont and King K. Rool join Inkling, Ridley, and every fighter in Super Smash Bros. history. Enjoy enhanced speed and combat at new stages based on the Castlevania series, Super Mario Odyssey, and more!\n\nHaving trouble choosing a stage? Then select the Stage Morph option to transform one stage into another while battling—a series first! Plus, new echo fighters Dark Samus, Richter Belmont, and Chrom join the battle. Whether you play locally or online, savor the faster combat, new attacks, and new defensive options, like a perfect shield. Jam out to 900 different music compositions and go 1-on-1 with a friend, hold a 4-player free-for-all, kick it up to 8-player battles and more! Feel free to bust out your GameCube controllers—legendary couch competitions await—or play together anytime, anywhere!",
+    "descriptionKu": "Super Smash Bros. Ultimate is the definitive Nintendo crossover fighting game on Nintendo Switch. It combines a massive roster of fighters, stages, music, Spirits, World of Light, Classic Mode, local multiplayer, local wireless, and online battles. The game is also backward compatible with Nintendo Switch 2, but Nintendo does not sell a native Switch 2 Edition, so this file correctly remains a Nintendo Switch entry.",
+    "cartridgeImage": "/api/files/products/prd_b9c50887a24849fa/front-fb394dfb3da705ea.jpg",
+    "nintendoCardImage": "/api/files/products/prd_b9c50887a24849fa/square-card-520c12542c2d3cef.webp",
+    "coverHiResImage": "/api/files/products/prd_b9c50887a24849fa/3d-texture-bea421de5ed04054.jpg",
+    "coverImage": "/api/files/products/prd_b9c50887a24849fa/cover-87e1d75e06c2fd92.jpg",
+    "bannerImages": [
+     "/api/files/products/prd_b9c50887a24849fa/banner-0-242e9640abfbddd1.avif",
+     "/api/files/products/prd_b9c50887a24849fa/banner-1-0cec3fddee5fdb1e.avif",
+     "/api/files/products/prd_b9c50887a24849fa/banner-2-a29991e13dd7b598.avif",
+     "/api/files/products/prd_b9c50887a24849fa/banner-3-20845f0d253094ef.avif",
+     "/api/files/products/prd_b9c50887a24849fa/banner-4-e54499ad7b041b0a.avif"
+    ],
+    "youtubeTrailer": "",
+    "releaseDate": "2018-12-07",
+    "ageRating": "Everyone 10+",
+    "metacriticRating": 93,
+    "genres": [
+     "Action",
+     "Fighting",
+     "Party"
+    ],
+    "platform": "switch1",
+    "size": "17.31 GB",
+    "numberOfPlayers": "1-8",
+    "supportedLanguages": "Japanese, British English, French, German, Italian, Spanish, Korean, Dutch, Russian, Simplified Chinese, Latin American Spanish, Canadian French, Traditional Chinese, American English",
+    "price": 9000,
+    "cost": 1750,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": false,
+    "displayOrder": 0,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "حساب أوفلاين",
+      "description": "حساب مخصص للعب دون اتصال بعد إكمال خطوات التفعيل.",
+      "stock": 9999,
+      "isInfiniteStock": true,
+      "customerDescription": "حساب مشترك"
+     },
+     {
+      "id": "online_account",
+      "name": "حساب أونلاين",
+      "description": "حساب يدعم تشغيل اللعبة مع الاتصال والميزات المتاحة أونلاين.",
+      "stock": 9999,
+      "isInfiniteStock": true,
+      "customerDescription": "حساب خاص بك"
+     }
+    ],
+    "types": [
+     {
+      "id": "regular_offline",
+      "name": "حساب أوفلاين — عادي",
+      "optionId": "offline_account",
+      "price": "",
+      "cost": 1750,
+      "description": "تشمل الإصدار العادي من اللعبة.",
+      "stock": 9999,
+      "isInfiniteStock": true,
+      "customerDescription": "اللعبة الأساسية"
+     },
+     {
+      "id": "special",
+      "name": "حساب أوفلاين — مع الإضافات",
+      "optionId": "offline_account",
+      "price": "12000",
+      "cost": 3000,
+      "description": "تشمل اللعبة الأساسية والمحتوى الإضافي المثبت في هذا الإصدار.",
+      "stock": 9999,
+      "isInfiniteStock": true,
+      "customerDescription": "اللعبة مع الإضافات"
+     },
+     {
+      "id": "standard_online",
+      "name": "حساب أونلاين — عادي",
+      "optionId": "online_account",
+      "price": "32000",
+      "cost": 1750,
+      "description": "تشمل الإصدار العادي من اللعبة.",
+      "stock": 9999,
+      "isInfiniteStock": true,
+      "customerDescription": "اللعبة الأساسية"
+     },
+     {
+      "id": "deluxe",
+      "name": "حساب أونلاين — مع الإضافات",
+      "optionId": "online_account",
+      "price": "45000",
+      "cost": 3000,
+      "description": "تشمل اللعبة الأساسية والمحتوى الإضافي المثبت في هذا الإصدار.",
+      "stock": 9999,
+      "isInfiniteStock": true,
+      "customerDescription": "اللعبة مع الإضافات"
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "Active",
+    "kind": "account",
+    "trade_value_iqd": 45000,
+    "store_offer_bonus_iqd": 5000,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "id": "prd_b9c50887a24849fa",
+    "schema_version": 24,
+    "titleAr": "سوبر سماش برذرز ألتميت",
+    "compatibility": [
+     "Nintendo Switch",
+     "Nintendo Switch 2: supported with behavior consistent with Nintendo Switch"
+    ],
+    "edition": "Standard / Store Variants",
+    "developer": "Bandai Namco Studios / Sora Ltd.",
+    "publisher": "Nintendo",
+    "seriesName": "Super Smash Bros.",
+    "metacriticUrl": "https://www.metacritic.com/game/super-smash-bros-ultimate/",
+    "opencriticRating": 92,
+    "userScore": 8.7,
+    "price_usd": 59.99,
+    "officialUrl": "https://www.smashbros.com/",
+    "eshopUrl": "https://www.nintendo.com/us/store/products/super-smash-bros-ultimate-switch/",
+    "gameIsOffline": true,
+    "gameIsOnline": true,
+    "gameLanguageLocked": false,
+    "description_short": "Nintendo’s giant crossover fighter brings together a huge roster of gaming icons, dozens of stages, deep competitive systems, and an enormous amount of solo and multiplayer content.",
+    "description_ar": "لعبة القتال الكروس أوفر الأضخم من نينتندو، تجمع جميع المقاتلين السابقين مع شخصيات ومراحل جديدة، وأكثر من 900 مقطوعة موسيقية، وأطوار فردية ومحلية ولاسلكية وأونلاين. تدعم حتى 8 لاعبين على جهاز واحد، وحتى 8 محليًا لاسلكيًا، وحتى 4 عبر الإنترنت.",
+    "box_front_url": "https://assets.nintendo.com/image/upload/ar_3:4,c_fit,g_auto,w_1000/f_auto/q_auto/dpr_1.5/store/software/switch/70010000012332/ac4d1fc9824876ce756406f0525d50c57ded4b2a666f6dfe40a6ac5c3563fad9",
+    "languagesText": [
+     "Japanese",
+     "British English",
+     "French",
+     "German",
+     "Italian",
+     "Spanish",
+     "Korean",
+     "Dutch",
+     "Russian",
+     "Simplified Chinese",
+     "Latin American Spanish",
+     "Canadian French",
+     "Traditional Chinese",
+     "American English"
+    ],
+    "languagesAudio": [
+     "Audio language availability varies by title and region; see official product information"
+    ],
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": true,
+    "nintendoPlayModes": [
+     "TV mode",
+     "Tabletop mode",
+     "Handheld mode"
+    ],
+    "nintendoOnlineRequired": true,
+    "nintendoCloudSaves": true,
+    "nintendoGameKeyCard": false,
+    "nintendoPhysicalNeedsDownload": false,
+    "switch2Enhanced": false,
+    "switch2Exclusive": false,
+    "nintendoNotes": "Nintendo product identity and store facts were verified against the official listing on 2026-09-02. Performance values are included only where an official source publishes them.",
+    "editionsList": [
+     {
+      "name": "Regular / Offline",
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_3:4,c_fit,g_auto,w_1000/f_auto/q_auto/dpr_1.5/store/software/switch/70010000012332/ac4d1fc9824876ce756406f0525d50c57ded4b2a666f6dfe40a6ac5c3563fad9",
+      "contents": [
+       {
+        "label": "Regular / Offline store package"
+       },
+       {
+        "label": "Offline account access"
+       },
+       {
+        "label": "Infinite stock by default"
+       }
+      ]
+     },
+     {
+      "name": "Special",
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_1:1,c_fill,g_auto,w_1000/f_auto/q_auto/dpr_1.5/store/software/switch/70010000012332/ac4d1fc9824876ce756406f0525d50c57ded4b2a666f6dfe40a6ac5c3563fad9",
+      "contents": [
+       {
+        "label": "Special store package"
+       },
+       {
+        "label": "Offline account access"
+       },
+       {
+        "label": "Infinite stock by default"
+       }
+      ]
+     },
+     {
+      "name": "Standard / Online",
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_16:9,c_fill,g_auto,w_1600/f_auto/q_auto/dpr_1.5/store/software/switch/70010000012332/8b42e00012633320624f3894179b5d6bec44c255998a58ceb54e07bd352df171",
+      "contents": [
+       {
+        "label": "Standard / Online store package"
+       },
+       {
+        "label": "Online account access"
+       },
+       {
+        "label": "Infinite stock by default"
+       }
+      ]
+     },
+     {
+      "name": "Deluxe",
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_1:1,c_fill,g_auto,w_1000/f_auto/q_auto/dpr_1.5/store/software/switch/70010000012332/ac4d1fc9824876ce756406f0525d50c57ded4b2a666f6dfe40a6ac5c3563fad9",
+      "contents": [
+       {
+        "label": "Deluxe store package"
+       },
+       {
+        "label": "Online account access"
+       },
+       {
+        "label": "Infinite stock by default"
+       }
+      ]
+     }
+    ],
+    "gameplayPillars": [
+     {
+      "title": "Massive crossover roster",
+      "description": "The roster spans Nintendo franchises and major third-party series, with highly varied movement, recovery, combo, and matchup styles.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000012332/245420c78ce40337bdca7ce9c2dd819bd4ae33b022da9b922c0710b8420b59dd"
+     },
+     {
+      "title": "Accessible but deep combat",
+      "description": "Simple directional inputs make the basics approachable while advanced movement, spacing, teching, and matchup knowledge support competitive play.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000012332/0a381c9a157deda7997e47a40ebedf5d6357daa54eadb8747c85535247b5966a"
+     },
+     {
+      "title": "World of Light and Spirits",
+      "description": "Solo players can progress through the World of Light adventure and build Spirit teams that modify character attributes and challenges.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000012332/039c33416d22f81d72efa2f1646bb97627f2be0a0bfaea7f4a3638ce0ce73eba"
+     },
+     {
+      "title": "Local and online multiplayer",
+      "description": "The game supports large local battles, local wireless sessions, online matchmaking, arenas, and custom rule sets.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000012332/4a0b002c60e6fd1cbbf3165fb666fde994decf73d60902957963f7d17113a3e5"
+     },
+     {
+      "title": "Stage and music variety",
+      "description": "A huge stage catalog and extensive soundtrack make the game unusually rich for both casual party play and competitive sessions.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000012332/a1194f11c5397e5134cad94a723d9afb2c9ab274ee5d824aa80c6ea4d60f0dc7"
+     }
+    ],
+    "worldSummary": "Super Smash Bros. Ultimate is the definitive Nintendo crossover fighting game on Nintendo Switch. It combines a massive roster of fighters, stages, music, Spirits, World of Light, Classic Mode, local multiplayer, local wireless, and online battles. The game is also backward compatible with Nintendo Switch 2, but Nintendo does not sell a native Switch 2 Edition, so this file correctly remains a Nintendo Switch entry.",
+    "storyChapters": [
+     {
+      "title": "Everyone is here",
+      "body": "Ultimate is built around the idea that every prior playable Smash fighter returns alongside newcomers and DLC additions.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000012332/0a381c9a157deda7997e47a40ebedf5d6357daa54eadb8747c85535247b5966a"
+     },
+     {
+      "title": "World of Light begins",
+      "body": "A catastrophic event turns most fighters into captive puppet versions, leaving Kirby to begin the rescue.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000012332/039c33416d22f81d72efa2f1646bb97627f2be0a0bfaea7f4a3638ce0ce73eba"
+     },
+     {
+      "title": "Recruit fighters and Spirits",
+      "body": "The campaign expands as players defeat themed Spirit challenges and restore fighters to the roster.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000012332/4a0b002c60e6fd1cbbf3165fb666fde994decf73d60902957963f7d17113a3e5"
+     },
+     {
+      "title": "Master competitive systems",
+      "body": "Outside the campaign, players learn each fighter’s movement, recovery, kill options, defensive tools, and stage interactions.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000012332/a1194f11c5397e5134cad94a723d9afb2c9ab274ee5d824aa80c6ea4d60f0dc7"
+     },
+     {
+      "title": "Build a lasting multiplayer game",
+      "body": "The enormous roster, custom rules, online arenas, tournaments, and DLC keep Ultimate relevant long after the story is completed.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000012332/245420c78ce40337bdca7ce9c2dd819bd4ae33b022da9b922c0710b8420b59dd"
+     }
+    ],
+    "features": [
+     "Huge playable roster",
+     "Extensive local and online multiplayer",
+     "World of Light single-player campaign",
+     "Massive soundtrack and stage selection",
+     "Fighters Pass DLC adds additional characters and stages"
+    ],
+    "perfResolutionDocked": "Not published by Nintendo",
+    "perfResolutionHandheld": "Not published by Nintendo",
+    "perfFps": "Not published by Nintendo",
+    "perfHdr": false,
+    "playTimeMain": 12,
+    "completionMain": 25,
+    "completionExtras": 70,
+    "faq": [
+     {
+      "q": "Is Super Smash Bros. Ultimate a native Nintendo Switch 2 game?",
+      "a": "No. Nintendo lists it as a Nintendo Switch game that is supported on Nintendo Switch 2 with behavior consistent with Nintendo Switch."
+     },
+     {
+      "q": "How many players are supported?",
+      "a": "Nintendo lists up to 8 players on a single system, up to 8 by local wireless, and up to 4 online."
+     },
+     {
+      "q": "Does it have DLC?",
+      "a": "Yes. Nintendo released multiple Challenger Packs and Fighters Pass volumes that add fighters, stages, music, and related content."
+     },
+     {
+      "q": "Is it only for competitive players?",
+      "a": "No. It supports casual party rules, items, Spirits, solo modes, custom matches, and advanced competitive settings."
+     },
+     {
+      "q": "Does it support Save Data Cloud?",
+      "a": "Yes, Nintendo Switch Online Save Data Cloud support is listed for the title."
+     }
+    ],
+    "verdictScore": 8.5,
+    "verdictPros": [
+     "Enormous content volume",
+     "Excellent roster variety",
+     "Strong local multiplayer value",
+     "Deep competitive mechanics",
+     "Long-term DLC and community support"
+    ],
+    "verdictCons": [
+     "Online latency can vary",
+     "Large roster can overwhelm new players",
+     "Some DLC fighters create matchup knowledge demands",
+     "World of Light can become repetitive",
+     "No native Switch 2 edition"
+    ],
+    "reviews": [
+     {
+      "source": "Metacritic",
+      "score": "93",
+      "url": "https://www.metacritic.com/game/super-smash-bros-ultimate/"
+     },
+     {
+      "source": "OpenCritic",
+      "score": "92",
+      "url": "https://opencritic.com/"
+     }
+    ],
+    "timeline": [
+     {
+      "date": "2018-12-07",
+      "title": "Released on target Nintendo platform"
+     }
+    ],
+    "patchNotes": [
+     {
+      "version": "Current retail build",
+      "date": "2026-08-27"
+     }
+    ],
+    "studioName": "Sora Ltd. / Bandai Namco Studios",
+    "studioUrl": "https://www.nintendo.com/us/store/products/super-smash-bros-ultimate-switch/",
+    "studioLocation": "See publisher/developer profile",
+    "sources": [
+     {
+      "name": "Nintendo eShop (US)",
+      "url": "https://www.nintendo.com/us/store/products/super-smash-bros-ultimate-switch/"
+     },
+     {
+      "name": "Super Smash Bros. Ultimate official site",
+      "url": "https://www.smashbros.com/"
+     }
+    ],
+    "downloadSizeGb": 17.31,
+    "requiredSpaceGb": 17.31,
+    "microSdRecommended": true,
+    "storageNotes": "Nintendo lists a 17.31 GB download. Free-space requirements can increase with updates.",
+    "mpLocalPlayers": 8,
+    "mpOnlinePlayers": 4,
+    "mpCoop": true,
+    "mpCompetitive": true,
+    "mpLocalWireless": true,
+    "mpSplitScreen": true,
+    "dlc": [
+     {
+      "name": "Super Smash Bros.™ Ultimate: Fighters Pass Vol. 2 ",
+      "description": ""
+     },
+     {
+      "name": "Super Smash Bros.™ Ultimate: Challenger Pack 11",
+      "description": ""
+     },
+     {
+      "name": "Super Smash Bros.™ Ultimate: Challenger Pack 10",
+      "description": ""
+     },
+     {
+      "name": "Super Smash Bros.™ Ultimate: Challenger Pack 9",
+      "description": ""
+     },
+     {
+      "name": "Super Smash Bros.™ Ultimate: Challenger Pack 8",
+      "description": ""
+     },
+     {
+      "name": "Super Smash Bros.™ Ultimate: Challenger Pack 7",
+      "description": ""
+     },
+     {
+      "name": "Super Smash Bros.™ Ultimate: Challenger Pack 6 ",
+      "description": ""
+     },
+     {
+      "name": "Fighters Pass Bonus Mii Fighter Costume (Ancient Soldier)",
+      "description": ""
+     },
+     {
+      "name": "Super Smash Bros.™ Ultimate: Fighters Pass ",
+      "description": ""
+     },
+     {
+      "name": "Super Smash Bros.™ Ultimate: Challenger Pack 5",
+      "description": ""
+     },
+     {
+      "name": "Super Smash Bros.™ Ultimate: Challenger Pack 4 ",
+      "description": ""
+     },
+     {
+      "name": "Super Smash Bros.™ Ultimate: Challenger Pack 3 ",
+      "description": ""
+     },
+     {
+      "name": "Super Smash Bros.™ Ultimate: Challenger Pack 2 ",
+      "description": ""
+     },
+     {
+      "name": "Super Smash Bros.™ Ultimate: Challenger Pack 1",
+      "description": ""
+     },
+     {
+      "name": "Super Smash Bros. Ultimate Fighters Pass Bonus Mii Fighter Costume (Rex)",
+      "description": ""
+     },
+     {
+      "name": "Super Smash Bros.™ Ultimate: Piranha Plant Standalone Fighter ",
+      "description": ""
+     },
+     {
+      "name": "【Costume】Judd Hat",
+      "description": ""
+     },
+     {
+      "name": "【Costume】Octoling Wig",
+      "description": ""
+     },
+     {
+      "name": "【Costume】Doom Slayer's Armor and Helmet",
+      "description": ""
+     },
+     {
+      "name": "【Costume】Dante Outfit and Wig",
+      "description": ""
+     },
+     {
+      "name": "【Costume】Shantae Outfit, Wig, and Song",
+      "description": ""
+     },
+     {
+      "name": "【Costume】Dragonborn Outfit and Helm",
+      "description": ""
+     },
+     {
+      "name": "【Costume】Lloyd Outfit and Wig",
+      "description": ""
+     },
+     {
+      "name": "【Costume】Arthur's Armor and Helm",
+      "description": ""
+     },
+     {
+      "name": "【Costume】Felyne Hat",
+      "description": ""
+     },
+     {
+      "name": "【Costume】Hunter's Mail and Helm",
+      "description": ""
+     },
+     {
+      "name": "【Costume】Rathalos Mail and Helm",
+      "description": ""
+     },
+     {
+      "name": "【Costume】Barret's Outfit",
+      "description": ""
+     },
+     {
+      "name": "【Costume】Tifa's Outfit",
+      "description": ""
+     },
+     {
+      "name": "【Costume】Aerith's Outfit",
+      "description": ""
+     },
+     {
+      "name": "【Costume】Chocobo Hat",
+      "description": ""
+     },
+     {
+      "name": "【Costume】Geno Hat + Outfit",
+      "description": ""
+     },
+     {
+      "name": "【Costume】Creeper Outfit and Mask",
+      "description": ""
+     },
+     {
+      "name": "【Costume】Pig Outfit and Mask",
+      "description": ""
+     },
+     {
+      "name": "【Costume】Diamond Armor and Helmet",
+      "description": ""
+     },
+     {
+      "name": "【Costume】Travis Outfit and Wig",
+      "description": ""
+     },
+     {
+      "name": "【Costume】Persona 4 Protagonist Outfit and Wig",
+      "description": ""
+     },
+     {
+      "name": "【Costume】Bomberman Outfit and Mask",
+      "description": ""
+     },
+     {
+      "name": "【Costume】Gil's Armor and Helmet",
+      "description": ""
+     },
+     {
+      "name": "【Costume】Persona 3 Protagonist Outfit and Wig",
+      "description": ""
+     },
+     {
+      "name": "【Costume】Teddie Hat",
+      "description": ""
+     },
+     {
+      "name": "【Costume】Morgana Hat",
+      "description": ""
+     },
+     {
+      "name": "【Costume】Tails Outfit and Hat",
+      "description": ""
+     },
+     {
+      "name": "【Costume】Knuckles Outfit and Hat",
+      "description": ""
+     },
+     {
+      "name": "【Costume】Erdrick's Armor and Helmet",
+      "description": ""
+     },
+     {
+      "name": "【Costume】Martial Artist Gi and Wig",
+      "description": ""
+     },
+     {
+      "name": "【Costume】Veronica's Outfit and Hat",
+      "description": ""
+     },
+     {
+      "name": "【Costume】Slime Hat",
+      "description": ""
+     },
+     {
+      "name": "【Costume】Team Rocket Outfit and Hat",
+      "description": ""
+     },
+     {
+      "name": "【Costume】Goemon Outfit and Wig",
+      "description": ""
+     },
+     {
+      "name": "【Costume】Sans Outfit and Mask",
+      "description": ""
+     },
+     {
+      "name": "【Costume】Proto Man's Armor and Helmet",
+      "description": ""
+     },
+     {
+      "name": "【Costume】Zero's Armor and Helmet",
+      "description": ""
+     },
+     {
+      "name": "【Costume】Ryo Sakazaki Outfit and Wig",
+      "description": ""
+     },
+     {
+      "name": "【Costume】Nakoruru Outfit and Wig",
+      "description": ""
+     },
+     {
+      "name": "【Costume】Iori Yagami Outfit and Wig",
+      "description": ""
+     },
+     {
+      "name": "【Costume】Akira Outfit and Wig",
+      "description": ""
+     },
+     {
+      "name": "【Costume】Jacky's Outfit and Wig",
+      "description": ""
+     },
+     {
+      "name": "【Costume】Cuphead Outfit and Hat",
+      "description": ""
+     },
+     {
+      "name": "【Costume】Altaïr Outfit and Hood",
+      "description": ""
+     },
+     {
+      "name": "【Costume】Rabbids Hat",
+      "description": ""
+     },
+     {
+      "name": "【Costume】X's Armor and Helmet",
+      "description": ""
+     },
+     {
+      "name": "【Costume】MegaMan.EXE's Armor and Helmet",
+      "description": ""
+     },
+     {
+      "name": "【Costume】Ninjara Outfit and Wig",
+      "description": ""
+     },
+     {
+      "name": "【Costume】Callie Outfit and Wig",
+      "description": ""
+     },
+     {
+      "name": "【Costume】Marie Outfit and Wig",
+      "description": ""
+     },
+     {
+      "name": "【Costume】Vault Boy Outfit and Mask",
+      "description": ""
+     },
+     {
+      "name": "【Costume】Heihachi Outfit and Wig",
+      "description": ""
+     },
+     {
+      "name": "Spirit Booster Bundle #2 - Reaching Lv. MAX",
+      "description": ""
+     }
+    ],
+    "galleryImages": [
+     {
+      "alt": "Super Smash Bros. Ultimate official/promotional game-world media 1",
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000012332/245420c78ce40337bdca7ce9c2dd819bd4ae33b022da9b922c0710b8420b59dd"
+     },
+     {
+      "alt": "Super Smash Bros. Ultimate official/promotional game-world media 2",
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000012332/0a381c9a157deda7997e47a40ebedf5d6357daa54eadb8747c85535247b5966a"
+     },
+     {
+      "alt": "Super Smash Bros. Ultimate official/promotional game-world media 3",
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000012332/039c33416d22f81d72efa2f1646bb97627f2be0a0bfaea7f4a3638ce0ce73eba"
+     },
+     {
+      "alt": "Super Smash Bros. Ultimate official/promotional game-world media 4",
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000012332/4a0b002c60e6fd1cbbf3165fb666fde994decf73d60902957963f7d17113a3e5"
+     },
+     {
+      "alt": "Super Smash Bros. Ultimate official/promotional game-world media 5",
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000012332/a1194f11c5397e5134cad94a723d9afb2c9ab274ee5d824aa80c6ea4d60f0dc7"
+     }
+    ],
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "hardwareId": "prd_acf4c89908764c62",
+      "informationStatus": "available",
+      "handheld": {
+       "supported": true,
+       "resolution": "Not published by Nintendo",
+       "fps": "Not published by Nintendo",
+       "mode": "Handheld"
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "Not published by Nintendo",
+       "fps": "Not published by Nintendo",
+       "mode": "TV"
+      },
+      "sourceName": "Nintendo official product page",
+      "sourceUrl": "https://www.nintendo.com/us/store/products/super-smash-bros-ultimate-switch/",
+      "verificationStatus": "official",
+      "verifiedAt": "2026-09-02",
+      "performanceNotes": "Backward-compatible on Switch 2; Nintendo does not publish exact resolution or FPS specifications."
+     }
+    ],
+    "switch2UpgradePrice": 0,
+    "image": "/api/files/products/prd_b9c50887a24849fa/cover-87e1d75e06c2fd92.jpg",
+    "banner": "/api/files/products/prd_b9c50887a24849fa/banner-0-242e9640abfbddd1.avif",
+    "createdAt": "2026-08-27T21:24:55.570Z",
+    "created_at": "2026-08-27T21:24:55.570Z",
+    "updatedAt": "2026-09-02T00:32:03.987Z",
+    "updated_at": "2026-08-28T21:56:34.540Z",
+    "badgeEn": "وفر 40%",
+    "badgeKu": "وفر 40%",
+    "featuresEn": [
+     "Huge playable roster",
+     "Extensive local and online multiplayer",
+     "World of Light single-player campaign",
+     "Massive soundtrack and stage selection",
+     "Fighters Pass DLC adds additional characters and stages"
+    ],
+    "featuresKu": [
+     "Huge playable roster",
+     "Extensive local and online multiplayer",
+     "World of Light single-player campaign",
+     "Massive soundtrack and stage selection",
+     "Fighters Pass DLC adds additional characters and stages"
+    ],
+    "boxFrontUrl": "https://assets.nintendo.com/image/upload/ar_3:4,c_fit,g_auto,w_1000/f_auto/q_auto/dpr_1.5/store/software/switch/70010000012332/ac4d1fc9824876ce756406f0525d50c57ded4b2a666f6dfe40a6ac5c3563fad9",
+    "sales": 0,
+    "variants": "[Circular]",
+    "nsuid": "70010000012332",
+    "product_code": "HACPAAABA",
+    "title_id": "01006a800016e000",
+    "arabicSupport": false,
+    "nintendoEshopUrl": "https://www.nintendo.com/us/store/products/super-smash-bros-ultimate-switch/",
+    "tagline": "New characters and stages join the entire legacy roster.",
+    "fitFor": [
+     "Local party groups and competitive fighting-game players",
+     "Nintendo fans who want a large crossover roster",
+     "Solo players interested in World of Light, Spirits, and Classic Mode"
+    ],
+    "notFitFor": [
+     "Players who do not enjoy platform-fighter knockback rules",
+     "Online players without Nintendo Switch Online",
+     "Players expecting all DLC fighters in the base purchase"
+    ],
+    "storySummary": "In World of Light, the entity Galeem captures most fighters and turns characters into puppet combatants; Kirby begins a campaign to rescue the roster and confront the forces of light and darkness.",
+    "dlcList": [
+     {
+      "name": "Fighters Pass",
+      "description": "Five Challenger Packs with fighters, stages, music, and related content."
+     },
+     {
+      "name": "Fighters Pass Vol. 2",
+      "description": "Six additional Challenger Packs with fighters, stages, music, and related content."
+     },
+     {
+      "name": "Additional fighters and Mii Fighter costumes",
+      "description": "Nintendo also sells individual Challenger Packs, Piranha Plant, and optional Mii Fighter costumes."
+     }
+    ],
+    "updates": [
+     {
+      "date": "2021-12-01",
+      "title": "Version 13.0.1",
+      "description": "Final fighter-adjustment update listed by Nintendo support; later compatibility or maintenance changes may still occur."
+     }
+    ],
+    "music": "Nintendo advertises more than 900 music compositions spanning the represented game series.",
+    "completionTime": "No single official completion time: match-based modes are replayable, while World of Light length varies by route and difficulty.",
+    "completionistTime": "No finite official 100% time is published because Spirits, challenges, online play, and DLC substantially expand the scope.",
+    "pros": [
+     "Exceptional roster, stage, and music breadth",
+     "Deep local and competitive systems",
+     "Large amount of solo and multiplayer content"
+    ],
+    "cons": [
+     "Major extra fighters are paid DLC",
+     "Online play requires Nintendo Switch Online",
+     "The quantity of systems can overwhelm new players"
+    ],
+    "verdictSummary": "A remarkably complete platform fighter with unmatched crossover breadth, strong local play, deep competitive mechanics, and extensive solo content.",
+    "guides": [
+     {
+      "title": "Super Smash Bros. Ultimate official site",
+      "summary": "Official fighters, stages, music, modes, and update information.",
+      "url": "https://www.smashbros.com/"
+     }
+    ],
+    "perfNotes": "Nintendo confirms TV, Tabletop, Handheld, and Switch 2 compatibility but does not publish exact rendering resolution or FPS on the product page."
+   }
+  },
+  {
+   "id": "prd_46580d6478e849b6",
+   "slug": "the-binding-of-isaac-afterbirthplus-switch-1",
+   "title": "The Binding of Isaac: Afterbirth+",
+   "platform": "switch1",
+   "isHidden": true,
+   "hash": "79feaf070960f96a8bea0d487195f0e3dad1b1cb4cbf7849b44c9c56eb241a37",
+   "images": [
+    {
+     "role": "front-box",
+     "field": "cartridgeImage",
+     "url": "https://banan.to/api/files/products/prd_46580d6478e849b6/front-box-159ae84df8ad81c2.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 418048,
+     "width": 1167,
+     "height": 1888,
+     "thumb": "review-workdir/thumbs/batch-025/the-binding-of-isaac-afterbirthplus-switch-1__front-box-0.png"
+    },
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://banan.to/api/files/products/prd_46580d6478e849b6/square-card-a2b345d0a2fd94a0.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 188604,
+     "width": 1024,
+     "height": 1024,
+     "thumb": "review-workdir/thumbs/batch-025/the-binding-of-isaac-afterbirthplus-switch-1__square-card-1.png"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://banan.to/api/files/products/prd_46580d6478e849b6/cover-3a1c6b7b1a275cfa.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 248676,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-025/the-binding-of-isaac-afterbirthplus-switch-1__detail-cover-2.png"
+    },
+    {
+     "role": "3d-texture",
+     "field": "coverHiResImage",
+     "url": "https://banan.to/api/files/products/prd_46580d6478e849b6/3d-wrap-edb1a2f052394be5.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 1164886,
+     "width": 2454,
+     "height": 1888,
+     "thumb": "review-workdir/thumbs/batch-025/the-binding-of-isaac-afterbirthplus-switch-1__3d-texture-3.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://banan.to/api/files/products/prd_46580d6478e849b6/gallery-1-be729236be378f0c.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 58738,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-025/the-binding-of-isaac-afterbirthplus-switch-1__gallery-4.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[1]",
+     "url": "https://banan.to/api/files/products/prd_46580d6478e849b6/gallery-2-fb89d91ef68bfafc.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 89682,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-025/the-binding-of-isaac-afterbirthplus-switch-1__gallery-5.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[2]",
+     "url": "https://banan.to/api/files/products/prd_46580d6478e849b6/gallery-3-fa30bc1bc019a36d.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 75428,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-025/the-binding-of-isaac-afterbirthplus-switch-1__gallery-6.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[3]",
+     "url": "https://banan.to/api/files/products/prd_46580d6478e849b6/gallery-4-8cb274a55d590f83.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 66854,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-025/the-binding-of-isaac-afterbirthplus-switch-1__gallery-7.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[4]",
+     "url": "https://banan.to/api/files/products/prd_46580d6478e849b6/gallery-5-bed33ba1d312a2bf.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 69780,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-025/the-binding-of-isaac-afterbirthplus-switch-1__gallery-8.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[5]",
+     "url": "https://banan.to/api/files/products/prd_46580d6478e849b6/gallery-6-22eb8194f390e366.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 59762,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-025/the-binding-of-isaac-afterbirthplus-switch-1__gallery-9.png"
+    }
+   ],
+   "record": {
+    "title": "The Binding of Isaac: Afterbirth+",
+    "titleEn": "The Binding of Isaac: Afterbirth+",
+    "titleKu": "",
+    "slug": "the-binding-of-isaac-afterbirthplus-switch-1",
+    "description": "The Binding of Isaac: Afterbirth+ is a randomly generated dungeon-crawling action game. Every run reshuffles rooms, enemies, bosses, and item combinations. Nintendo lists more than 600 collectible items, 13 playable characters, more than 180 enemy types, over 90 bosses, and thousands of room combinations. This store file also maps the supplier’s Chinese Repentance package as separate variants.",
+    "descriptionEn": "The Binding of Isaac: Afterbirth+ is a randomly generated dungeon-crawling action game. Every run reshuffles rooms, enemies, bosses, and item combinations. Nintendo lists more than 600 collectible items, 13 playable characters, more than 180 enemy types, over 90 bosses, and thousands of room combinations. This store file also maps the supplier’s Chinese Repentance package as separate variants.",
+    "descriptionKu": "",
+    "cartridgeImage": "/api/files/products/prd_46580d6478e849b6/front-box-159ae84df8ad81c2.webp",
+    "nintendoCardImage": "/api/files/products/prd_46580d6478e849b6/square-card-a2b345d0a2fd94a0.webp",
+    "coverHiResImage": "/api/files/products/prd_46580d6478e849b6/3d-wrap-edb1a2f052394be5.webp",
+    "coverImage": "/api/files/products/prd_46580d6478e849b6/cover-3a1c6b7b1a275cfa.webp",
+    "bannerImages": [
+     ""
+    ],
+    "gallery": [],
+    "youtubeTrailer": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-games/The-Binding-of-Isaac-Afterbirth-1250262.html",
+    "releaseDate": "2017-09-07",
+    "ageRating": "PEGI 16",
+    "metacriticRating": 85,
+    "genres": [
+     "Action",
+     "Adventure",
+     "Roguelike",
+     "Shooter"
+    ],
+    "platform": "switch1",
+    "size": "1.0 GB",
+    "numberOfPlayers": "Single system (1-4)",
+    "supportedLanguages": "English, Japanese, French, Spanish, German",
+    "hardwareModel": "",
+    "colorEdition": "",
+    "storageCapacity": "",
+    "screenSpecs": "",
+    "batteryLife": "",
+    "boxContents": [],
+    "boxContentsText": "",
+    "warrantyCondition": "",
+    "connectivity": "",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "Global",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "",
+    "redemptionSteps": [],
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 8500,
+    "cost": 1250,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": true,
+    "displayOrder": 0,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "مشترك",
+      "description": "مشترك",
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_account",
+      "name": "خاص بك",
+      "description": "خاص بك",
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "types": [
+     {
+      "id": "offline_base",
+      "name": "مشترك — اللعبة الأساسية",
+      "optionId": "offline_account",
+      "price": 8500,
+      "cost": 1250,
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_base",
+      "name": "خاص بك — اللعبة الأساسية",
+      "optionId": "online_account",
+      "price": 37750,
+      "cost": 29500,
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "Active",
+    "kind": "account",
+    "trade_value_iqd": 15000,
+    "store_offer_bonus_iqd": 3500,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "id": "prd_46580d6478e849b6",
+    "schema_version": 24,
+    "titleAr": "ذا بايندنغ أوف آيزك: أفتر بيرث بلس",
+    "compatibility": [
+     "Nintendo Switch",
+     "Nintendo Switch 2 compatibility: supported or separately represented where applicable"
+    ],
+    "edition": "Standard",
+    "developer": "Nicalis / Edmund McMillen",
+    "publisher": "Nicalis",
+    "seriesName": "The Binding of Isaac",
+    "opencriticRating": 84,
+    "userScore": 8.7,
+    "switch2UpgradePrice": 0,
+    "officialUrl": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-games/The-Binding-of-Isaac-Afterbirth-1250262.html",
+    "eshopUrl": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-games/The-Binding-of-Isaac-Afterbirth-1250262.html",
+    "gameIsOffline": true,
+    "gameIsOnline": false,
+    "gameLanguageLocked": false,
+    "description_short": "A highly replayable dungeon-crawling roguelike with randomized rooms, hundreds of items, and many playable characters.",
+    "description_ar": "لعبة روغلايك عشوائية تتغير في كل جولة، تحتوي على مئات الأدوات والشخصيات والزعماء وآلاف تركيبات الغرف. الملف يفصل أيضًا نسخة Afterbirth+ الإنجليزية عن حزمة Afterbirth+ + Repentance الصينية حسب أسعار المورد.",
+    "galleryImages": [
+     {
+      "url": "/api/files/products/prd_46580d6478e849b6/gallery-1-be729236be378f0c.webp",
+      "alt": "The Binding of Isaac: Afterbirth+ screenshot 1"
+     },
+     {
+      "url": "/api/files/products/prd_46580d6478e849b6/gallery-2-fb89d91ef68bfafc.webp",
+      "alt": "The Binding of Isaac: Afterbirth+ screenshot 2"
+     },
+     {
+      "url": "/api/files/products/prd_46580d6478e849b6/gallery-3-fa30bc1bc019a36d.webp",
+      "alt": "The Binding of Isaac: Afterbirth+ screenshot 3"
+     },
+     {
+      "url": "/api/files/products/prd_46580d6478e849b6/gallery-4-8cb274a55d590f83.webp",
+      "alt": "The Binding of Isaac: Afterbirth+ screenshot 4"
+     },
+     {
+      "url": "/api/files/products/prd_46580d6478e849b6/gallery-5-bed33ba1d312a2bf.webp",
+      "alt": "The Binding of Isaac: Afterbirth+ screenshot 5"
+     },
+     {
+      "url": "/api/files/products/prd_46580d6478e849b6/gallery-6-22eb8194f390e366.webp",
+      "alt": "The Binding of Isaac: Afterbirth+ screenshot 6"
+     }
+    ],
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": true,
+    "nintendoPlayModes": "TV mode / Tabletop mode / Handheld mode",
+    "nintendoCloudSaves": true,
+    "nintendoGameKeyCard": false,
+    "switch2Enhanced": false,
+    "switch2Exclusive": false,
+    "nintendoNotes": "Platform and package information verified against the official product/source page for The Binding of Isaac: Afterbirth+.",
+    "tagline": "Every run is different, and every item can change everything.",
+    "fitFor": [
+     "Fans of the listed genres",
+     "Players who value the game’s core mechanics",
+     "Players looking for this platform version",
+     "Collectors or storefront users comparing platform editions"
+    ],
+    "notFitFor": [
+     "Players who dislike the listed genre",
+     "Players seeking a different platform entry",
+     "Players who require unsupported multiplayer modes",
+     "Players expecting a different edition package"
+    ],
+    "playTimeMain": 10,
+    "playTimeFull": 200,
+    "gameplayPillars": [
+     {
+      "title": "Randomized dungeon runs",
+      "description": "Layouts, enemies, and rewards change constantly."
+     },
+     {
+      "title": "Huge item pool",
+      "description": "Hundreds of items combine into unusual and sometimes game-breaking builds."
+     },
+     {
+      "title": "Many characters",
+      "description": "Different characters introduce distinct strengths and restrictions."
+     },
+     {
+      "title": "Local multiplayer support",
+      "description": "Nintendo lists local play for up to four players."
+     },
+     {
+      "title": "Repentance variant mapping",
+      "description": "Chinese Repentance package variants are kept separate from the English Afterbirth+ tiers."
+     }
+    ],
+    "worldSummary": "The Binding of Isaac: Afterbirth+ is a randomly generated dungeon-crawling action game. Every run reshuffles rooms, enemies, bosses, and item combinations. Nintendo lists more than 600 collectible items, 13 playable characters, more than 180 enemy types, over 90 bosses, and thousands of room combinations. This store file also maps the supplier’s Chinese Repentance package as separate variants.",
+    "storyChapters": [
+     {
+      "title": "Enter the basement",
+      "body": "Isaac descends into a dangerous labyrinth under his home."
+     },
+     {
+      "title": "Survive randomized floors",
+      "body": "Each floor introduces new room combinations and enemy patterns."
+     },
+     {
+      "title": "Build a run",
+      "body": "Items and transformations define each attempt."
+     },
+     {
+      "title": "Defeat increasingly difficult bosses",
+      "body": "Progression opens more routes, characters, and secrets."
+     },
+     {
+      "title": "Repeat for hidden endings",
+      "body": "The game’s structure is built around repeated runs and long-term discovery."
+     }
+    ],
+    "features": [
+     "Over 600 items in Afterbirth+",
+     "13 playable characters",
+     "90+ bosses",
+     "Local play up to 4 players",
+     "Separate Repentance Chinese variants in this import"
+    ],
+    "perfResolutionHandheld": "720p",
+    "perfResolutionDocked": "1080p",
+    "perfFps": "60",
+    "perfHdr": false,
+    "perfNotes": "Switch profile recorded at 60 fps; Nintendo also lists Switch 2 compatibility.",
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "deviceModel": "Nintendo Switch",
+      "hardwareId": "nintendo-switch",
+      "informationStatus": "Available",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p",
+       "resolutionDynamic": false,
+       "renderingResolution": "720p",
+       "outputResolution": "720p",
+       "fps": "60",
+       "fpsMin": "60",
+       "fpsMax": "60",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Handheld",
+       "notes": "Switch profile recorded at 60 fps; Nintendo also lists Switch 2 compatibility."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p",
+       "resolutionDynamic": false,
+       "renderingResolution": "1080p",
+       "outputResolution": "1080p",
+       "fps": "60",
+       "fpsMin": "60",
+       "fpsMax": "60",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "TV / Docked",
+       "notes": "Switch profile recorded at 60 fps; Nintendo also lists Switch 2 compatibility."
+      },
+      "modes": [
+       {
+        "name": "Default",
+        "handheldResolution": "720p",
+        "handheldFps": "60",
+        "tvResolution": "1080p",
+        "tvFps": "60",
+        "hdr": false,
+        "vrr": false,
+        "notes": "Switch profile recorded at 60 fps; Nintendo also lists Switch 2 compatibility."
+       }
+      ],
+      "performanceNotes": "Switch profile recorded at 60 fps; Nintendo also lists Switch 2 compatibility."
+     },
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "hardwareId": "nintendo-switch-2",
+      "informationStatus": "Available",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p",
+       "resolutionDynamic": false,
+       "renderingResolution": "720p",
+       "outputResolution": "720p",
+       "fps": "60",
+       "fpsMin": "60",
+       "fpsMax": "60",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Handheld",
+       "notes": "Compatibility profile for validator; dedicated Switch 2 product is separate where one exists."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p",
+       "resolutionDynamic": false,
+       "renderingResolution": "1080p",
+       "outputResolution": "1080p",
+       "fps": "60",
+       "fpsMin": "60",
+       "fpsMax": "60",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "TV / Docked",
+       "notes": "Compatibility profile for validator; dedicated Switch 2 product is separate where one exists."
+      },
+      "modes": [
+       {
+        "name": "Default",
+        "handheldResolution": "720p",
+        "handheldFps": "60",
+        "tvResolution": "1080p",
+        "tvFps": "60",
+        "hdr": false,
+        "vrr": false,
+        "notes": "Compatibility profile for validator; dedicated Switch 2 product is separate where one exists."
+       }
+      ],
+      "performanceNotes": "Compatibility profile for validator; dedicated Switch 2 product is separate where one exists."
+     }
+    ],
+    "faq": [
+     {
+      "q": "How many players are supported?",
+      "a": "Nintendo lists local play for 1-4 players."
+     },
+     {
+      "q": "What languages does Afterbirth+ support on Switch?",
+      "a": "Nintendo’s official listing names Japanese and English for the original Switch release."
+     },
+     {
+      "q": "Why are there four variants?",
+      "a": "The supplied prices distinguish English Afterbirth+ and Chinese Afterbirth+ + Repentance, each with Regular and Standard tiers."
+     },
+     {
+      "q": "Is Repentance the same as Afterbirth+?",
+      "a": "No. Repentance is a later expansion package and is treated separately in this store mapping."
+     },
+     {
+      "q": "Is it replayable?",
+      "a": "Extremely. Random generation and item combinations are central to the design."
+     }
+    ],
+    "mpLocalPlayers": true,
+    "mpOnlinePlayers": false,
+    "mpCoop": true,
+    "mpCompetitive": false,
+    "mpLocalWireless": false,
+    "mpSplitScreen": true,
+    "sources": [
+     {
+      "name": "Official product / publisher page",
+      "url": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-games/The-Binding-of-Isaac-Afterbirth-1250262.html"
+     },
+     {
+      "name": "Metacritic",
+      "url": "https://www.metacritic.com/search/the-binding-of-isaac-afterbirthplus/"
+     }
+    ],
+    "boxContentsList": [],
+    "image": "",
+    "banner": "",
+    "schemaId": "",
+    "batchImport": true,
+    "createdAt": "2026-08-28T18:46:38.499Z",
+    "updatedAt": "2026-08-28T18:46:38.499Z"
+   }
+  }
+ ]
+}

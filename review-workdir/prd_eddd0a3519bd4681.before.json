@@ -1,0 +1,597 @@
+{
+ "title": "Super Mario Party Jamboree – Nintendo Switch 2 Edition + Jamboree TV",
+ "titleEn": "Super Mario Party Jamboree – Nintendo Switch 2 Edition + Jamboree TV",
+ "titleKu": "Super Mario Bros. Wonder – Nintendo Switch 2 Edition + Meetup in Bellabel Park",
+ "slug": "super-mario-party-jamboree-nintendo-switch-2-edition-plus-jamboree-tv",
+ "description": "The enhanced Nintendo Switch 2 Edition of Super Mario Bros. Wonder, combining the complete Flower Kingdom adventure with Meetup in Bellabel Park, expanded online/local-wireless multiplayer, Rosalina, Co-Star Luma, new Koopalings content and higher-resolution presentation.",
+ "descriptionEn": "The enhanced Nintendo Switch 2 Edition of Super Mario Bros. Wonder, combining the complete Flower Kingdom adventure with Meetup in Bellabel Park, expanded online/local-wireless multiplayer, Rosalina, Co-Star Luma, new Koopalings content and higher-resolution presentation.",
+ "descriptionKu": "The enhanced Nintendo Switch 2 Edition of Super Mario Bros. Wonder, combining the complete Flower Kingdom adventure with Meetup in Bellabel Park, expanded online/local-wireless multiplayer, Rosalina, Co-Star Luma, new Koopalings content and higher-resolution presentation.",
+ "cartridgeImage": "/api/files/products/prd_eddd0a3519bd4681/front-ab8d2711d7e4db91.webp",
+ "nintendoCardImage": "/api/files/products/prd_eddd0a3519bd4681/square-62ecd94b58344ebc.jpg",
+ "coverHiResImage": "/api/files/products/prd_eddd0a3519bd4681/3d-texture-8c7fb486be95bc6e.webp",
+ "coverImage": "/api/files/products/prd_eddd0a3519bd4681/cover-1db2f761f90a3488.avif",
+ "bannerImages": [
+  "/api/files/products/prd_eddd0a3519bd4681/banner-0-a2bd7726a54dfe05.webp",
+  "/api/files/products/prd_eddd0a3519bd4681/banner-1-c476915d7678eb15.webp",
+  "/api/files/products/prd_eddd0a3519bd4681/banner-2-faa07f9b00973079.webp",
+  "/api/files/products/prd_eddd0a3519bd4681/banner-3-f6fa26639791554c.webp",
+  "/api/files/products/prd_eddd0a3519bd4681/banner-4-d8b670f3e69d0d95.webp",
+  "/api/files/products/prd_eddd0a3519bd4681/banner-5-cc7e41fd8471f7ec.webp"
+ ],
+ "gallery": [],
+ "youtubeTrailer": "https://www.nintendo.com/us/store/products/super-mario-bros-wonder-nintendo-switch-2-edition-plus-meetup-in-bellabel-park-switch-2/",
+ "releaseDate": "2026-03-26",
+ "ageRating": "ESRB E / PEGI 3",
+ "metacriticRating": 90,
+ "genres": [
+  "Platformer",
+  "Party / Multiplayer",
+  "2D Action"
+ ],
+ "platform": "switch2",
+ "size": 8.8,
+ "numberOfPlayers": "1–4 local adventure; up to 8 local wireless; up to 12 online Bellabel Park",
+ "supportedLanguages": "Japanese / English; French / German / Italian / Spanish / Portuguese / Dutch / Russian; Korean / Simplified Chinese / Traditional Chinese / Polish / Thai",
+ "hardwareModel": "",
+ "colorEdition": "",
+ "storageCapacity": "",
+ "screenSpecs": "",
+ "batteryLife": "",
+ "boxContents": [],
+ "boxContentsText": "",
+ "warrantyCondition": "",
+ "connectivity": "",
+ "characterName": "Link",
+ "amiiboSeries": "The Legend of Zelda",
+ "figureType": "figure",
+ "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+ "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+ "boxCondition": "mib",
+ "releaseWave": "Wave 2 (Restock)",
+ "rarity": "standard",
+ "accessoryType": "حقيبة حماية وتنقل Carry Case",
+ "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+ "brand": "Nintendo Official",
+ "material": "Hard EVA Shockproof Shell",
+ "availableColors": "Black, Neon Red/Blue, White",
+ "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+ "cardValue": "$20 eShop Balance",
+ "region": "Global",
+ "cardType": "eshop",
+ "deliveryMethod": "instant_code",
+ "redemptionGuide": "",
+ "redemptionSteps": [],
+ "validity": "no_expiry",
+ "usedType": "cartridge",
+ "conditionGrade": "like_new",
+ "packaging": "cib",
+ "guaranteeStatus": "tested_30days",
+ "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+ "accountType": "primary",
+ "badge": "وفر 40%",
+ "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+ "price": 18000,
+ "cost": 4500,
+ "stock": 999999,
+ "isInfiniteStock": true,
+ "isHidden": false,
+ "displayOrder": 0,
+ "category": "nintendo-switch-games",
+ "categoryId": "nintendo-switch-games",
+ "categoryEn": "",
+ "categoryKu": "",
+ "options": [
+  {
+   "id": "offline_account",
+   "name": "Offline Account",
+   "description": "Offline account access",
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_account",
+   "name": "Online Account",
+   "description": "Online account access",
+   "stock": 9999,
+   "isInfiniteStock": true
+  }
+ ],
+ "types": [
+  {
+   "id": "standard_offline",
+   "name": "Offline Account",
+   "optionId": "offline_account",
+   "price": "18000",
+   "cost": 4500,
+   "description": "Offline Account; supplier cost 4,500 IQD; configured selling price 20,000 IQD.",
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "standard_online",
+   "name": "Online Account",
+   "optionId": "online_account",
+   "price": "44000",
+   "cost": 27250,
+   "description": "Online Account; supplier cost 27,250 IQD; configured selling price 37,250 IQD.",
+   "stock": 9999,
+   "isInfiniteStock": true
+  }
+ ],
+ "editions": [],
+ "dlcs": [],
+ "isActive": true,
+ "status": "Active",
+ "kind": "account",
+ "trade_value_iqd": 56000,
+ "store_offer_bonus_iqd": 8000,
+ "trade_enabled": true,
+ "trade_value_locked": false,
+ "id": "prd_eddd0a3519bd4681",
+ "schema_version": 23,
+ "titleAr": "سوبر ماريو بروس. وندر – إصدار نينتندو سويتش 2 + ملتقى بيلابيل بارك",
+ "compatibility": [
+  "Nintendo Switch 2"
+ ],
+ "edition": "Standard",
+ "developer": "Nintendo EPD",
+ "publisher": "Nintendo",
+ "metacriticUrl": "https://www.nintendo.com/us/store/products/super-mario-bros-wonder-nintendo-switch-2-edition-plus-meetup-in-bellabel-park-switch-2/",
+ "opencriticRating": 90,
+ "userScore": 8.5,
+ "price_usd": 59.99,
+ "officialUrl": "https://www.nintendo.com/us/store/products/super-mario-bros-wonder-nintendo-switch-2-edition-plus-meetup-in-bellabel-park-switch-2/",
+ "eshopUrl": "https://ec.nintendo.com/AU/en/titles/70010000115568",
+ "gameIsOffline": true,
+ "gameIsOnline": true,
+ "gameLanguageLocked": false,
+ "description_short": "The enhanced Nintendo Switch 2 Edition of Super Mario Bros. Wonder, combining the complete Flower Kingdom adventure with Meetup in Bellabel Park, expanded online/local-wireless multiplayer, Rosalina, Co-Star Luma, new Koopalings content and higher-resolution presentation.",
+ "description_ar": "الإصدار المحسن لـNintendo Switch 2 من Super Mario Bros. Wonder، ويضم المغامرة الأصلية كاملة إضافة إلى Meetup in Bellabel Park، ومحتوى جماعي أوسع، Rosalina وCo-Star Luma، مواجهات Koopalings، وتحسينات رسومية تصل إلى 4K على التلفاز.",
+ "box_front_url": "https://www.mariowiki.com/Special:Redirect/file/SMBW%20Switch%202%20AU%20boxart.png",
+ "box_back_url": "https://www.mariowiki.com/Special:Redirect/file/SMBW%20Switch%202%20AU%20boxart.png",
+ "galleryImages": [
+  {
+   "url": "https://www.mariowiki.com/Special:Redirect/file/SMBW%20NS2E%20Battle%20Royale%20Survival%20Challenge.png",
+   "alt": "Super Mario Bros. Wonder – Nintendo Switch 2 Edition + Meetup in Bellabel Park — verified promotional/gameplay image 1"
+  },
+  {
+   "url": "https://www.mariowiki.com/Special:Redirect/file/SMBW%20NS2E%20Phanto%20Tag.png",
+   "alt": "Super Mario Bros. Wonder – Nintendo Switch 2 Edition + Meetup in Bellabel Park — verified promotional/gameplay image 2"
+  },
+  {
+   "url": "https://www.mariowiki.com/Special:Redirect/file/SMBW-NS2E+MIBP%20-%20Bellabel%20Park%20entrance.png",
+   "alt": "Super Mario Bros. Wonder – Nintendo Switch 2 Edition + Meetup in Bellabel Park — verified promotional/gameplay image 3"
+  },
+  {
+   "url": "https://www.mariowiki.com/Special:Redirect/file/SMBW%20NS2E%20Fast%20Cash%20Balloons.png",
+   "alt": "Super Mario Bros. Wonder – Nintendo Switch 2 Edition + Meetup in Bellabel Park — verified promotional/gameplay image 4"
+  },
+  {
+   "url": "https://www.mariowiki.com/Special:Redirect/file/SMBW%20NS2E%20Shocking%20Zap%20Frenzy.png",
+   "alt": "Super Mario Bros. Wonder – Nintendo Switch 2 Edition + Meetup in Bellabel Park — verified promotional/gameplay image 5"
+  },
+  {
+   "url": "https://www.mariowiki.com/Special:Redirect/file/SMBW%20NS2E%20Pumped%20Up%20Jump.png",
+   "alt": "Super Mario Bros. Wonder – Nintendo Switch 2 Edition + Meetup in Bellabel Park — verified promotional/gameplay image 6"
+  },
+  {
+   "url": "https://www.mariowiki.com/Special:Redirect/file/SMBW%20NS2E%20Bob-omb%20Relay.png",
+   "alt": "Super Mario Bros. Wonder – Nintendo Switch 2 Edition + Meetup in Bellabel Park — verified promotional/gameplay image 7"
+  },
+  {
+   "url": "https://www.mariowiki.com/Special:Redirect/file/SMBW%20NS2E%20Rollerskates%20Race.png",
+   "alt": "Super Mario Bros. Wonder – Nintendo Switch 2 Edition + Meetup in Bellabel Park — verified promotional/gameplay image 8"
+  }
+ ],
+ "videos": [
+  {
+   "title": "Official trailer / product overview",
+   "url": "https://www.nintendo.com/us/store/products/super-mario-bros-wonder-nintendo-switch-2-edition-plus-meetup-in-bellabel-park-switch-2/"
+  },
+  {
+   "title": "Nintendo product page and gameplay media",
+   "url": "https://ec.nintendo.com/AU/en/titles/70010000115568"
+  },
+  {
+   "title": "Technical / review reference",
+   "url": "https://ec.nintendo.com/AU/en/titles/70010000115568"
+  }
+ ],
+ "nsuid": "See official Nintendo product page for regional NSUID",
+ "title_id": "Regional digital title ID varies by storefront and package",
+ "product_code": "BEE-P-SMBW (regional physical code varies)",
+ "nintendoEshopUrl": "https://ec.nintendo.com/AU/en/titles/70010000115568",
+ "nintendoOnlineRequired": true,
+ "nintendoCloudSaves": true,
+ "nintendoGameKeyCard": false,
+ "nintendoPhysicalNeedsDownload": false,
+ "tvMode": true,
+ "tabletopMode": true,
+ "handheldMode": true,
+ "nintendoPlayModes": "TV / Tabletop / Handheld",
+ "nintendoNotes": "Current verified Nintendo data for Super Mario Bros. Wonder – Nintendo Switch 2 Edition + Meetup in Bellabel Park. Storage, languages, multiplayer and platform-specific features are separated from measured performance values.",
+ "switch2Enhanced": true,
+ "switch2Exclusive": true,
+ "switch2UpgradePrice": 0,
+ "switch2Features": [
+  "Up to 4K TV output and 1080p handheld presentation",
+  "Bellabel Park attractions with up to 12 online players",
+  "Rosalina, Co-Star Luma, Koopalings, Assist Mode and new challenges"
+ ],
+ "tagline": "Wonder gets bigger: enhanced visuals, Bellabel Park and multiplayer for up to 12.",
+ "fitFor": [
+  "Owners who want the definitive Super Mario Bros. Wonder package",
+  "Groups interested in local/online Bellabel Park attractions",
+  "Players with a 4K TV or Switch 2 handheld display"
+ ],
+ "notFitFor": [
+  "Players satisfied with the original Switch version and no extra content",
+  "Players who only play solo and do not value Bellabel Park",
+  "Players expecting a completely separate sequel"
+ ],
+ "playTimeMain": 10,
+ "playTimeFull": 28,
+ "editionsList": [
+  {
+   "name": "Standard Edition",
+   "coverUrl": "https://www.mariowiki.com/Special:Redirect/file/SMBW%20Switch%202%20AU%20boxart.png",
+   "contents": [
+    {
+     "label": "Base game"
+    },
+    {
+     "label": "Core modes"
+    },
+    {
+     "label": "Platform features"
+    }
+   ]
+  },
+  {
+   "name": "Digital Edition",
+   "coverUrl": "https://assets.nintendo.com/image/upload/ar_1%3A1%2Cc_lpad%2Cb_white/f_auto/q_auto/store/software/switch2/70010000115567/901218f8b149d63c90c125a3969db5f6d06f3a7cc649300b3e788116a21a84cd",
+   "contents": [
+    {
+     "label": "Digital game license"
+    },
+    {
+     "label": "Same core game content"
+    },
+    {
+     "label": "Nintendo Account delivery"
+    }
+   ]
+  },
+  {
+   "name": "Current Complete Package",
+   "coverUrl": "https://www.mariowiki.com/Special:Redirect/file/SMBW%20NS2E%20Key%20artwork%20wide.jpg",
+   "contents": [
+    {
+     "label": "Latest game build"
+    },
+    {
+     "label": "Meetup in Bellabel Park"
+    },
+    {
+     "label": "Up to 4K TV output and 1080p handheld presentation"
+    }
+   ]
+  }
+ ],
+ "gameplayPillars": [
+  {
+   "title": "Bellabel Park",
+   "description": "Play 17 same-system attractions and six Game Room attractions, with larger groups supported online or through local wireless.",
+   "imageUrl": "https://www.mariowiki.com/Special:Redirect/file/SMBW%20NS2E%20Key%20artwork%20wide.jpg"
+  },
+  {
+   "title": "Switch 2 enhancements",
+   "description": "Enjoy up to 4K resolution on compatible TVs, 1080p handheld presentation, smoother performance and faster loading.",
+   "imageUrl": "https://www.mariowiki.com/Special:Redirect/file/SMBW%20NS2%20Key%20artwork.jpg"
+  },
+  {
+   "title": "Expanded cast and co-op",
+   "description": "Rosalina joins the playable cast, while Co-Star Luma can assist another player and supports mouse controls.",
+   "imageUrl": "https://www.mariowiki.com/Special:Redirect/file/SMBW%20NS2E%20Battle%20Royale%20Survival%20Challenge.png"
+  }
+ ],
+ "worldSummary": "The original Flower Kingdom returns with all of its six worlds and Petal Isles, while Bellabel Park adds a dedicated multiplayer hub filled with competitive and cooperative attractions, Toad Brigade training and new Koopalings encounters.",
+ "storyChapters": [
+  {
+   "title": "The Flower Kingdom returns",
+   "body": "The full original Super Mario Bros. Wonder campaign is included.",
+   "imageUrl": "https://www.mariowiki.com/Special:Redirect/file/SMBW%20NS2E%20Phanto%20Tag.png"
+  },
+  {
+   "title": "Meetup in Bellabel Park",
+   "body": "A new multiplayer-focused area introduces attractions, training challenges and group play.",
+   "imageUrl": "https://www.mariowiki.com/Special:Redirect/file/SMBW-NS2E+MIBP%20-%20Bellabel%20Park%20entrance.png"
+  },
+  {
+   "title": "Koopalings' mischief",
+   "body": "The seven Koopalings appear in additional content scattered throughout the expanded adventure.",
+   "imageUrl": "https://www.mariowiki.com/Special:Redirect/file/SMBW%20NS2E%20Fast%20Cash%20Balloons.png"
+  }
+ ],
+ "features": [
+  "Up to 4K TV output and 1080p handheld presentation",
+  "Bellabel Park attractions with up to 12 online players",
+  "Rosalina, Co-Star Luma, Koopalings, Assist Mode and new challenges"
+ ],
+ "perfResolutionDocked": "Up to 4K (3840×2160 output on compatible display)",
+ "perfResolutionHandheld": "1080p",
+ "perfFps": "60",
+ "perfHdr": false,
+ "perfNotes": "Nintendo advertises up to 4K resolution in TV mode; the game is capped at 60 fps for 4K output. Reviews report a clean 1080p handheld presentation and smooth 60 fps gameplay.",
+ "devicePerformance": [
+  {
+   "device": "Nintendo Switch 2",
+   "deviceSlug": "nintendo-switch-2",
+   "deviceModel": "Nintendo Switch 2",
+   "hardwareId": "prd_acf4c89908764c62",
+   "informationStatus": "Available / verified",
+   "unavailableReason": "No required native mode is unavailable.",
+   "handheld": {
+    "supported": true,
+    "resolution": "1080p",
+    "resolutionDynamic": false,
+    "renderingResolution": "1080p",
+    "outputResolution": "1920x1080",
+    "fps": "60",
+    "fpsMin": "60",
+    "fpsMax": "60",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "Handheld",
+    "notes": "Nintendo advertises up to 4K resolution in TV mode; the game is capped at 60 fps for 4K output. Reviews report a clean 1080p handheld presentation and smooth 60 fps gameplay."
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "Up to 4K (3840×2160 output on compatible display)",
+    "resolutionDynamic": false,
+    "renderingResolution": "Up to 4K (3840×2160 output on compatible display)",
+    "outputResolution": "3840x2160",
+    "fps": "60",
+    "fpsMin": "60",
+    "fpsMax": "60",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "TV / Docked",
+    "notes": "Nintendo advertises up to 4K resolution in TV mode; the game is capped at 60 fps for 4K output. Reviews report a clean 1080p handheld presentation and smooth 60 fps gameplay."
+   },
+   "modes": [
+    {
+     "name": "Standard",
+     "handheldResolution": "1080p",
+     "handheldFps": "60",
+     "tvResolution": "Up to 4K (3840×2160 output on compatible display)",
+     "tvFps": "60",
+     "hdr": false,
+     "vrr": false,
+     "notes": "Primary documented performance profile."
+    }
+   ],
+   "upscaling": "Platform-specific scaling/reconstruction where documented",
+   "rayTracing": false,
+   "rayTracingMode": "No ray-tracing mode",
+   "loadingTime": "Scene-dependent; no single universal load time",
+   "loadingNotes": "Loading varies by activity and storage state.",
+   "gameVersion": "Current retail build",
+   "patchVersion": "Current available update",
+   "testedDate": "2026-08-27",
+   "sourceName": "Nintendo eShop",
+   "sourceUrl": "https://ec.nintendo.com/AU/en/titles/70010000115568",
+   "verifiedAt": "2026-08-27",
+   "verificationStatus": "Verified / sourced",
+   "performanceNotes": "Nintendo advertises up to 4K resolution in TV mode; the game is capped at 60 fps for 4K output. Reviews report a clean 1080p handheld presentation and smooth 60 fps gameplay."
+  }
+ ],
+ "downloadSizeGb": 8.8,
+ "requiredSpaceGb": 8.8,
+ "microSdRecommended": false,
+ "storageNotes": "Nintendo eShop lists 8.8 GB required space for the Switch 2 Edition. microSD Express is optional if system storage is insufficient.",
+ "languagesAudio": [
+  "English character vocalizations",
+  "Japanese character vocalizations",
+  "Music / sound effects are language-independent"
+ ],
+ "languagesText": [
+  "Japanese / English",
+  "French / German / Italian / Spanish / Portuguese / Dutch / Russian",
+  "Korean / Simplified Chinese / Traditional Chinese / Polish / Thai"
+ ],
+ "arabicSupport": false,
+ "mpLocalPlayers": true,
+ "mpOnlinePlayers": true,
+ "mpCoop": true,
+ "mpCompetitive": true,
+ "mpSplitScreen": false,
+ "mpLocalWireless": true,
+ "dlc": [
+  {
+   "name": "Meetup in Bellabel Park",
+   "description": "Included Switch 2 Edition content with new competitive and cooperative attractions.",
+   "coverUrl": "https://www.mariowiki.com/Special:Redirect/file/SMBW%20NS2E%20Shocking%20Zap%20Frenzy.png"
+  },
+  {
+   "name": "Switch 2 Edition Upgrade Pack",
+   "description": "Owners of the original Switch release can buy an upgrade pack rather than repurchase the full game.",
+   "coverUrl": "https://www.mariowiki.com/Special:Redirect/file/SMBW%20NS2E%20Pumped%20Up%20Jump.png"
+  },
+  {
+   "name": "No separate post-launch story expansion announced",
+   "description": "No additional standalone story DLC beyond the Switch 2 Edition content has been announced as of August 27, 2026.",
+   "coverUrl": "https://www.mariowiki.com/Special:Redirect/file/SMBW%20NS2E%20Bob-omb%20Relay.png"
+  }
+ ],
+ "guides": [
+  {
+   "title": "Official Nintendo page",
+   "summary": "Release, platform, storage, languages and feature information.",
+   "url": "https://ec.nintendo.com/AU/en/titles/70010000115568"
+  },
+  {
+   "title": "Gameplay / technical reference",
+   "summary": "Performance and gameplay behavior reference.",
+   "url": "https://ec.nintendo.com/AU/en/titles/70010000115568"
+  },
+  {
+   "title": "Database / review reference",
+   "summary": "Media, reviews and completion context.",
+   "url": "https://www.mariowiki.com/Super_Mario_Bros._Wonder_%E2%80%93_Nintendo_Switch_2_Edition_%2B_Meetup_in_Bellabel_Park"
+  }
+ ],
+ "completionMain": 10,
+ "completionExtras": 18,
+ "completionAll": 28,
+ "faq": [
+  {
+   "q": "Is this a separate Switch 2 Edition?",
+   "a": "Yes. It is an official Nintendo Switch 2 Edition containing the original game plus the upgrade content."
+  },
+  {
+   "q": "What is new?",
+   "a": "Bellabel Park, larger multiplayer options, Rosalina, Co-Star Luma, Koopalings content, mouse-control support, Assist Mode and visual/loading improvements."
+  },
+  {
+   "q": "What is the maximum online player count?",
+   "a": "Bellabel Park Game Room attractions can support up to 12 players online."
+  }
+ ],
+ "verdictScore": 9,
+ "verdictSummary": "The most complete version of an already outstanding 2D Mario game. Bellabel Park expands its social side while the higher-resolution presentation is a meaningful Switch 2 upgrade.",
+ "verdictPros": [
+  "Includes the full acclaimed Wonder campaign",
+  "Excellent 4K/1080p 60 fps presentation",
+  "Substantial new multiplayer content"
+ ],
+ "verdictCons": [
+  "Upgrade value depends on interest in multiplayer",
+  "Not a full sequel",
+  "Some attractions are group-focused"
+ ],
+ "reviews": [
+  {
+   "source": "Nintendo official",
+   "score": "Enhanced Edition",
+   "quote": "Nintendo positions it as the definitive Switch 2 version with new content.",
+   "url": "https://www.nintendo.com/us/store/products/super-mario-bros-wonder-nintendo-switch-2-edition-plus-meetup-in-bellabel-park-switch-2/"
+  },
+  {
+   "source": "Original game Metacritic",
+   "score": "92/100",
+   "quote": "The included original campaign received universal acclaim.",
+   "url": "https://www.metacritic.com/game/super-mario-bros-wonder/"
+  },
+  {
+   "source": "Press reviews",
+   "score": "Strong reception",
+   "quote": "Reviews praised the smoother presentation and Bellabel Park additions.",
+   "url": "https://www.maniac.de/tests/super-mario-bros-wonder-gemeinsam-im-bellabel-park-im-test-switch-2/"
+  }
+ ],
+ "timeline": [
+  {
+   "date": "2023-10-20",
+   "title": "Original game released",
+   "body": "Super Mario Bros. Wonder launched on Nintendo Switch."
+  },
+  {
+   "date": "2026-01-22",
+   "title": "Expanded Switch 2 details",
+   "body": "Nintendo detailed Bellabel Park, Rosalina, Co-Star Luma and additional attractions."
+  },
+  {
+   "date": "2026-03-26",
+   "title": "Switch 2 Edition launch",
+   "body": "The enhanced edition launched worldwide."
+  }
+ ],
+ "patchNotes": [
+  {
+   "version": "Switch 2 Edition launch",
+   "date": "2026-03-26",
+   "body": "Added Bellabel Park and Switch 2-specific enhancements."
+  },
+  {
+   "version": "Bellabel Park feature set",
+   "date": "2026-03-26",
+   "body": "Added local wireless, larger online groups, Toad Brigade and Koopalings content."
+  },
+  {
+   "version": "Current build",
+   "date": "2026-08-27",
+   "body": "Current retail build includes launch fixes and the complete Switch 2 Edition feature set."
+  }
+ ],
+ "soundtrack": [
+  {
+   "title": "Original Super Mario Bros. Wonder soundtrack",
+   "url": "https://www.nintendo.com/us/store/products/super-mario-bros-wonder-nintendo-switch-2-edition-plus-meetup-in-bellabel-park-switch-2/"
+  },
+  {
+   "title": "Bellabel Park attraction music",
+   "url": "https://www.nintendo.com/us/store/products/super-mario-bros-wonder-nintendo-switch-2-edition-plus-meetup-in-bellabel-park-switch-2/"
+  },
+  {
+   "title": "New Koopalings / challenge themes",
+   "url": "https://www.nintendo.com/us/store/products/super-mario-bros-wonder-nintendo-switch-2-edition-plus-meetup-in-bellabel-park-switch-2/"
+  }
+ ],
+ "seriesName": "Super Mario",
+ "seriesEntries": [
+  "Super Mario Bros. Wonder",
+  "Super Mario Odyssey",
+  "Super Mario 3D World + Bowser's Fury"
+ ],
+ "studioName": "Nintendo EPD",
+ "studioUrl": "https://www.nintendo.co.jp/",
+ "studioLocation": "Kyoto, Japan",
+ "studioAbout": "Nintendo's internal development organization expanded the original Wonder design for Nintendo Switch 2.",
+ "setupNeeds": [
+  "Nintendo Switch 2",
+  "Approximately 8.8 GB free storage",
+  "Nintendo Switch Online for online multiplayer; compatible display required for 4K output"
+ ],
+ "sources": [
+  {
+   "name": "Nintendo official Switch 2 page",
+   "url": "https://www.nintendo.com/us/store/products/super-mario-bros-wonder-nintendo-switch-2-edition-plus-meetup-in-bellabel-park-switch-2/"
+  },
+  {
+   "name": "Nintendo eShop",
+   "url": "https://ec.nintendo.com/AU/en/titles/70010000115568"
+  },
+  {
+   "name": "Super Mario Wiki media attribution",
+   "url": "https://www.mariowiki.com/Super_Mario_Bros._Wonder_%E2%80%93_Nintendo_Switch_2_Edition_%2B_Meetup_in_Bellabel_Park"
+  }
+ ],
+ "boxContentsList": "[Circular]",
+ "image": "/api/files/products/prd_eddd0a3519bd4681/cover-1db2f761f90a3488.avif",
+ "banner": "/api/files/products/prd_eddd0a3519bd4681/banner-0-a2bd7726a54dfe05.webp",
+ "schemaId": "",
+ "createdAt": "2026-08-27T01:03:20.129Z",
+ "created_at": "2026-08-27T01:03:20.129Z",
+ "updatedAt": "2026-08-29T02:52:54.116Z",
+ "updated_at": "2026-08-27T01:03:20.129Z",
+ "badgeEn": "وفر 40%",
+ "badgeKu": "وفر 40%",
+ "featuresEn": [
+  "Up to 4K TV output and 1080p handheld presentation",
+  "Bellabel Park attractions with up to 12 online players",
+  "Rosalina, Co-Star Luma, Koopalings, Assist Mode and new challenges"
+ ],
+ "featuresKu": [
+  "Up to 4K TV output and 1080p handheld presentation",
+  "Bellabel Park attractions with up to 12 online players",
+  "Rosalina, Co-Star Luma, Koopalings, Assist Mode and new challenges"
+ ],
+ "boxFrontUrl": "https://www.mariowiki.com/Special:Redirect/file/SMBW%20Switch%202%20AU%20boxart.png",
+ "sales": 0,
+ "images": [],
+ "modes": [],
+ "game_id": "gme_e45e612e9db3441d"
+}

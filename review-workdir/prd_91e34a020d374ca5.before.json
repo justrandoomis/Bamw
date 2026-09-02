@@ -1,0 +1,528 @@
+{
+ "title": "Super Mario Party Jamboree",
+ "titleEn": "Super Mario Party Jamboree",
+ "titleKu": "Super Mario Party Jamboree",
+ "slug": "super-mario-party-jamboree",
+ "description": "Super Mario Party Jamboree is the third major Mario Party release for Nintendo Switch and the largest of the three. It features seven boards, more than 110 minigames, 22 playable characters, Jamboree Buddies, Pro Rules, a solo Party-Planner Trek and several specialized local/online modes.",
+ "descriptionEn": "Super Mario Party Jamboree is the third major Mario Party release for Nintendo Switch and the largest of the three. It features seven boards, more than 110 minigames, 22 playable characters, Jamboree Buddies, Pro Rules, a solo Party-Planner Trek and several specialized local/online modes.",
+ "descriptionKu": "Super Mario Party Jamboree is the third major Mario Party release for Nintendo Switch and the largest of the three. It features seven boards, more than 110 minigames, 22 playable characters, Jamboree Buddies, Pro Rules, a solo Party-Planner Trek and several specialized local/online modes.",
+ "cartridgeImage": "https://cdn.switch-images-julio.com/file/switch-images-julio/A7HLA/front.png",
+ "nintendoCardImage": "https://cdn.switch-images-julio.com/file/switch-images-julio/display/index.html?code=A7HLA",
+ "coverHiResImage": "https://cdn.switch-images-julio.com/file/switch-images-julio/display/index.html?code=A7HLA",
+ "coverImage": "https://cdn.switch-images-julio.com/file/switch-images-julio/A7HLA/front.png",
+ "bannerImages": [
+  "https://assets.nintendo.com/image/upload/ar_16:9,c_lpad,w_1300/b_white/f_auto/q_auto/ncom/software/switch/70010000084608/ba0572bf9d840b03bf9958809943fb3c76c3adfd6d8f2704b0f1b766f8aa4027",
+  "https://i.ytimg.com/vi/YKR6sdcO4ac/maxresdefault.jpg",
+  "https://i.ytimg.com/vi/lKp9cD4e8ac/maxresdefault.jpg"
+ ],
+ "gallery": [],
+ "youtubeTrailer": "https://www.youtube.com/watch?v=YKR6sdcO4ac",
+ "releaseDate": "2024-10-17",
+ "ageRating": "ESRB E (Everyone) – Mild Fantasy Violence; Users Interact, In-Game Purchases",
+ "metacriticRating": 82,
+ "genres": [
+  "Party",
+  "Action",
+  "Tabletop"
+ ],
+ "platform": "switch1",
+ "size": 5.4,
+ "numberOfPlayers": "1-20",
+ "supportedLanguages": "Japanese, British English, American English, French, German, Italian, Spanish, Korean, Dutch, Russian, Simplified Chinese, Latin American Spanish, Canadian French, Brazilian Portuguese, Traditional Chinese",
+ "hardwareModel": "",
+ "colorEdition": "",
+ "storageCapacity": "",
+ "screenSpecs": "",
+ "batteryLife": "",
+ "boxContents": [],
+ "boxContentsText": "",
+ "warrantyCondition": "",
+ "connectivity": "",
+ "characterName": "Link",
+ "amiiboSeries": "The Legend of Zelda",
+ "figureType": "figure",
+ "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+ "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+ "boxCondition": "mib",
+ "releaseWave": "Wave 2 (Restock)",
+ "rarity": "standard",
+ "accessoryType": "حقيبة حماية وتنقل Carry Case",
+ "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+ "brand": "Nintendo Official",
+ "material": "Hard EVA Shockproof Shell",
+ "availableColors": "Black, Neon Red/Blue, White",
+ "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+ "cardValue": "$20 eShop Balance",
+ "region": "Global",
+ "cardType": "eshop",
+ "deliveryMethod": "instant_code",
+ "redemptionGuide": "",
+ "redemptionSteps": [],
+ "validity": "no_expiry",
+ "usedType": "cartridge",
+ "conditionGrade": "like_new",
+ "packaging": "cib",
+ "guaranteeStatus": "tested_30days",
+ "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+ "accountType": "primary",
+ "badge": "وفر 40%",
+ "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+ "price": 15000,
+ "cost": 2000,
+ "stock": 999999,
+ "isInfiniteStock": true,
+ "displayOrder": 0,
+ "category": "nintendo-switch-games",
+ "categoryId": "nintendo-switch-games",
+ "categoryEn": "",
+ "categoryKu": "",
+ "options": [
+  {
+   "id": "opt_offline",
+   "name": "Offline Account",
+   "description": "حساب مشترك",
+   "customerDescription": "حساب مشترك"
+  },
+  {
+   "id": "opt_online",
+   "name": "Online Account",
+   "description": "حساب خاص بك",
+   "cost": "29000",
+   "price": "55000",
+   "customerDescription": "حساب خاص بك"
+  }
+ ],
+ "types": [
+  {
+   "id": "typ_std",
+   "name": "Standard Edition",
+   "description": "اللعبة الأساسية",
+   "customerDescription": "اللعبة الأساسية"
+  }
+ ],
+ "editions": [],
+ "dlcs": [],
+ "isActive": true,
+ "status": "Active",
+ "kind": "account",
+ "trade_value_iqd": 45000,
+ "store_offer_bonus_iqd": 8000,
+ "trade_enabled": true,
+ "trade_value_locked": false,
+ "id": "prd_91e34a020d374ca5",
+ "schema_version": 1,
+ "titleAr": "سوبر ماريو بارتي جامبوري",
+ "compatibility": [
+  "Nintendo Switch",
+  "Nintendo Switch Lite (controller limitations apply to motion-control content)",
+  "Nintendo Switch 2 (backward compatible; optional paid upgrade available)"
+ ],
+ "edition": "Standard Edition",
+ "developer": "Nintendo Cube",
+ "publisher": "Nintendo",
+ "metacriticUrl": "https://www.metacritic.com/game/super-mario-party-jamboree/",
+ "opencriticRating": 81,
+ "userScore": 8.2,
+ "price_usd": 59.99,
+ "officialUrl": "https://www.nintendo.com/us/store/products/super-mario-party-jamboree-switch/",
+ "eshopUrl": "https://ec.nintendo.com/AU/en/titles/70010000084609",
+ "gameIsOffline": true,
+ "gameIsOnline": true,
+ "gameLanguageLocked": false,
+ "description_short": "The largest Mario Party built for the original Nintendo Switch, featuring seven boards, more than 110 minigames, 22 playable characters, Jamboree Buddies, Pro Rules, a solo Party-Planner Trek, four-player local party play and online modes that scale up to 20 players.",
+ "description_ar": "أكبر إصدار Mario Party مخصص لجهاز Nintendo Switch الأصلي، ويضم 7 لوحات وأكثر من 110 لعبة مصغرة و22 شخصية قابلة للعب. يدعم Mario Party المحلي حتى 4 لاعبين، بينما يصل Koopathlon إلى 20 لاعبًا عبر الإنترنت وBowser Kaboom Squad إلى 8 لاعبين.",
+ "box_front_url": "https://cdn.switch-images-julio.com/file/switch-images-julio/A7HLA/front.png",
+ "videos": [
+  {
+   "title": "Super Mario Party Jamboree – Overview Trailer",
+   "url": "https://www.youtube.com/watch?v=YKR6sdcO4ac"
+  },
+  {
+   "title": "Super Mario Party Jamboree – Announcement Trailer",
+   "url": "https://www.youtube.com/watch?v=lKp9cD4e8ac"
+  },
+  {
+   "title": "Super Mario Party Jamboree – Nintendo Switch 2 Edition + Jamboree TV Overview",
+   "url": "https://www.youtube.com/watch?v=MTcTnFLN9s0"
+  }
+ ],
+ "nsuid": "70010000084609",
+ "product_code": "A7HLA / LA-H-A7HLA-USA",
+ "nintendoEshopUrl": "https://www.nintendo.com/us/store/products/super-mario-party-jamboree-switch/",
+ "nintendoOnlineRequired": true,
+ "nintendoCloudSaves": true,
+ "nintendoGameKeyCard": false,
+ "nintendoPhysicalNeedsDownload": false,
+ "tvMode": true,
+ "tabletopMode": true,
+ "handheldMode": true,
+ "nintendoPlayModes": "TV, Tabletop, Handheld",
+ "nintendoNotes": "Nintendo lists the original Nintendo Switch download at 5.4 GB, with support for TV, Tabletop and Handheld modes. Single-system player count is 1-4 and online player count can reach 20 depending on mode. Nintendo Switch Online and a Nintendo Account are required for online features. Save Data Cloud is supported.\n\nMotion-control minigames require compatible Joy-Con controllers. Nintendo Switch Lite can run the software, but motion-control features may require separate compatible controllers and some motion-focused modes have limitations. The physical Nintendo Switch release is a normal game card and does not require a mandatory full-game download.\n\nThe Nintendo Switch 2 Edition + Jamboree TV Upgrade Pack is a separate $19.99 USD purchase for Nintendo Switch 2. It is not required for the original Switch game.",
+ "switch2Enhanced": false,
+ "switch2Exclusive": false,
+ "switch2UpgradePrice": 19.99,
+ "switch2Features": [
+  "Optional $19.99 Nintendo Switch 2 Upgrade Pack",
+  "Jamboree TV / CameraPlay / mouse-control minigames",
+  "GameShare and additional rulesets"
+ ],
+ "tagline": "Seven boards, 110+ minigames, 22 characters, and the biggest Mario Party built for Nintendo Switch.",
+ "fitFor": [
+  "Families and friend groups looking for a premium couch-party game on Nintendo Switch",
+  "Mario Party fans who want modern boards, returning classics, Pro Rules and a huge minigame library",
+  "Players who want four-player local play and large online modes such as 20-player Koopathlon"
+ ],
+ "notFitFor": [
+  "Players who strongly dislike luck-driven board-game mechanics",
+  "Solo-only players primarily seeking a long narrative campaign",
+  "Players who expect every mode to support the same player count and controller configuration"
+ ],
+ "playTimeMain": 7.5,
+ "playTimeFull": 52.5,
+ "editionsList": [
+  {
+   "name": "Super Mario Party Jamboree – Nintendo Switch",
+   "coverUrl": "https://cdn.switch-images-julio.com/file/switch-images-julio/display/index.html?code=A7HLA",
+   "contents": [
+    {
+     "label": "Complete original Nintendo Switch game"
+    },
+    {
+     "label": "Seven boards and more than 110 minigames"
+    },
+    {
+     "label": "Party-Planner Trek, Koopathlon, Bowser Kaboom Squad, Minigame Bay and additional modes"
+    }
+   ]
+  },
+  {
+   "name": "Nintendo Switch 2 Edition + Jamboree TV Upgrade Pack",
+   "coverUrl": "https://assets.nintendo.com/image/upload/ar_16:9,c_lpad,w_1300/b_white/f_auto/q_auto/ncom/software/switch/70010000084608/ba0572bf9d840b03bf9958809943fb3c76c3adfd6d8f2704b0f1b766f8aa4027",
+   "contents": [
+    {
+     "label": "Requires the original game when purchased as an Upgrade Pack"
+    },
+    {
+     "label": "Adds Jamboree TV and Switch 2 hardware-driven features"
+    },
+    {
+     "label": "Adds CameraPlay, GameShare, mouse controls and additional rulesets"
+    }
+   ]
+  }
+ ],
+ "gameplayPillars": [
+  {
+   "title": "Mario Party Board Competition",
+   "description": "The main Mario Party mode uses the familiar turn-based board structure: roll, move, gather coins, buy Stars, use items and react to board-specific events. Each of the seven boards has a distinct economy and route structure. Rainbow Galleria revolves around a multi-level shopping mall, Goomba Lagoon changes routes with tides, Roll 'em Raceway emphasizes speed and movement items, Mega Wiggler's Tree Party revolves around shifting paths around Wiggler, and King Bowser's Keep introduces more aggressive Bowser hazards. Western Land and Mario's Rainbow Castle return from earlier games with modern systems.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16:9,c_lpad,w_1300/b_white/f_auto/q_auto/ncom/software/switch/70010000084608/ba0572bf9d840b03bf9958809943fb3c76c3adfd6d8f2704b0f1b766f8aa4027"
+  },
+  {
+   "title": "Jamboree Buddies and Pro Rules",
+   "description": "Ten characters can become Jamboree Buddies after a player wins their showdown minigame: Mario, Luigi, Peach, Daisy, Wario, Waluigi, Yoshi, Rosalina, Donkey Kong and Bowser Jr. Buddies temporarily travel with the winning player and apply character-specific advantages. Pro Rules provide a more competitive alternative to standard rules by reducing selected random elements and revealing information such as the bonus-star category.",
+   "imageUrl": "https://i.ytimg.com/vi/YKR6sdcO4ac/maxresdefault.jpg"
+  },
+  {
+   "title": "Large-Scale and Side Modes",
+   "description": "Koopathlon is a 20-player online race where minigame scores convert to movement. Bowser Kaboom Squad is an eight-player online cooperative battle against Impostor Bowser. Minigame Bay organizes direct minigame competition. Rhythm Kitchen uses motion controls in cooperative rhythm cooking, Toad's Item Factory focuses on motion-driven puzzles, and Paratroopa Flight School uses two Joy-Con controllers for wing-like motion input. Party-Planner Trek gives solo players a structured progression mode.",
+   "imageUrl": "https://i.ytimg.com/vi/lKp9cD4e8ac/maxresdefault.jpg"
+  }
+ ],
+ "worldSummary": "The game is organized around Party Plaza and a resort-like archipelago of activity islands. A hot-air balloon gives access to Mario Party boards and side modes. The seven main boards range from a tropical tidal lagoon and giant shopping mall to a racetrack, giant Wiggler forest and dangerous Bowser fortress. Two boards revisit classic locations: Western Land from Mario Party 2 and Mario's Rainbow Castle from the original Mario Party.",
+ "storyChapters": [
+  {
+   "title": "Party Plaza and Party-Planner Trek",
+   "body": "Party-Planner Trek is the game's primary structured solo progression experience. The player explores board areas between tasks, speaks with Mushroom Kingdom characters, completes requests and enters minigames. Objectives award Mini Stars and decorative rewards for Party Plaza. It functions as a guided tour through Jamboree's boards and mechanics rather than a conventional narrative campaign.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16:9,c_lpad,w_1300/b_white/f_auto/q_auto/ncom/software/switch/70010000084608/ba0572bf9d840b03bf9958809943fb3c76c3adfd6d8f2704b0f1b766f8aa4027"
+  },
+  {
+   "title": "Seven Mario Party Boards",
+   "body": "Mario Party mode is built around seven boards. Five are new: Mega Wiggler's Tree Party, Roll 'em Raceway, Goomba Lagoon, Rainbow Galleria and King Bowser's Keep. Western Land returns from Mario Party 2, while Mario's Rainbow Castle returns from the original Mario Party. Each board changes movement, items and route decisions through distinct events and economies.",
+   "imageUrl": "https://i.ytimg.com/vi/YKR6sdcO4ac/maxresdefault.jpg"
+  },
+  {
+   "title": "Bowser Challenges and Minigame Islands",
+   "body": "Bowser Kaboom Squad and Koopathlon are the headline large-scale online modes. Bowser Kaboom Squad asks eight players to cooperate, collect bombs and load cannons while surviving Impostor Bowser. Koopathlon supports up to twenty racers; performance in rapid solo minigames advances each player, with periodic Bowser survival events capable of changing positions dramatically.",
+   "imageUrl": "https://i.ytimg.com/vi/lKp9cD4e8ac/maxresdefault.jpg"
+  }
+ ],
+ "galleryImages": [
+  {
+   "url": "https://assets.nintendo.com/image/upload/ar_16:9,c_lpad,w_1300/b_white/f_auto/q_auto/ncom/software/switch/70010000084608/ba0572bf9d840b03bf9958809943fb3c76c3adfd6d8f2704b0f1b766f8aa4027",
+   "alt": "Official Nintendo promotional artwork for the Super Mario Party Jamboree experience."
+  },
+  {
+   "url": "https://i.ytimg.com/vi/YKR6sdcO4ac/maxresdefault.jpg",
+   "alt": "Nintendo Overview Trailer artwork showing the game's cast and party presentation."
+  },
+  {
+   "url": "https://i.ytimg.com/vi/lKp9cD4e8ac/maxresdefault.jpg",
+   "alt": "Nintendo Announcement Trailer artwork introducing the seven-board Jamboree."
+  }
+ ],
+ "features": [
+  "Seven boards: five new boards plus returning Western Land and Mario's Rainbow Castle",
+  "More than 110 minigames and 22 playable characters, including Pauline and Ninji",
+  "Mario Party, Pro Rules, Party-Planner Trek, Koopathlon, Bowser Kaboom Squad, Minigame Bay, Rhythm Kitchen, Toad's Item Factory and Paratroopa Flight School"
+ ],
+ "perfResolutionDocked": "1920x1080",
+ "perfResolutionHandheld": "1280x720",
+ "perfFps": "60 FPS target",
+ "perfHdr": false,
+ "perfNotes": "Independent technical comparisons consistently describe the original Nintendo Switch version at approximately 1080p in TV mode and 720p in handheld mode, targeting 60 FPS. Nintendo Life specifically praised a slick frame rate across docked and handheld play. The game does not support HDR or VRR on original Switch.\n\nThese values describe the Switch 1 release and must not be confused with Jamboree TV or the optional Switch 2 Edition, which has separate presentation behavior.",
+ "devicePerformance": [
+  {
+   "device": "Nintendo Switch 2",
+   "deviceSlug": "nintendo-switch-2",
+   "deviceModel": "Nintendo Switch 2",
+   "informationStatus": "Verified – Nintendo Switch 2 Edition performance",
+   "handheld": {
+    "supported": true,
+    "resolution": "1920x1080",
+    "resolutionDynamic": false,
+    "renderingResolution": "1920x1080",
+    "outputResolution": "1920x1080",
+    "fps": "60",
+    "fpsMin": "60",
+    "fpsMax": "60",
+    "refreshRate": "60 Hz",
+    "hdr": false,
+    "vrr": false,
+    "mode": "Nintendo Switch 2 Edition",
+    "notes": "Nintendo Switch 2 Edition, Version 2.2.0 or later. Nintendo officially lists Full HD (1080p) handheld/tabletop output for Jamboree TV. The base Super Mario Party Jamboree selection in the Switch 2 Edition also received 1080p video output in Version 2.2.0. Technical reviews consistently report a 60 FPS presentation."
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "1920x1080",
+    "resolutionDynamic": false,
+    "renderingResolution": "1920x1080",
+    "outputResolution": "1920x1080",
+    "fps": "60",
+    "fpsMin": "60",
+    "fpsMax": "60",
+    "refreshRate": "60 Hz",
+    "hdr": false,
+    "vrr": false,
+    "mode": "Base Super Mario Party Jamboree – Nintendo Switch 2 Edition",
+    "notes": "For the base Super Mario Party Jamboree selection inside the Nintendo Switch 2 Edition, Version 2.2.0 or later outputs 1080p (FHD). Jamboree TV is a separate Switch 2-exclusive mode and supports WQHD 2560x1440 in TV mode. Technical reviews report 60 FPS for both the 1080p base presentation and 1440p Jamboree TV."
+   },
+   "modes": [
+    {
+     "name": "Base Super Mario Party Jamboree – Switch 2 Edition",
+     "handheldResolution": "1920x1080",
+     "handheldFps": "60",
+     "tvResolution": "1920x1080",
+     "tvFps": "60",
+     "hdr": false,
+     "vrr": false,
+     "notes": "Base Super Mario Party Jamboree selected from the Nintendo Switch 2 Edition title screen. Nintendo's Version 2.2.0 patch notes explicitly state that video output is 1080p (FHD). The Switch 2 Edition is required for this higher-resolution mode."
+    },
+    {
+     "name": "Jamboree TV",
+     "handheldResolution": "1920x1080",
+     "handheldFps": "60",
+     "tvResolution": "2560x1440",
+     "tvFps": "60",
+     "hdr": false,
+     "vrr": false,
+     "notes": "Jamboree TV is exclusive to the Nintendo Switch 2 Edition. Nintendo officially specifies WQHD (1440p) TV output and Full HD (1080p) handheld/tabletop output. Independent technical reviews consistently report 60 FPS."
+    }
+   ],
+   "upscaling": "Nintendo does not identify a named upscaling technology for this title",
+   "rayTracing": false,
+   "rayTracingMode": "None",
+   "loadingNotes": "Nintendo does not publish a standardized numeric loading-time benchmark for this game. No fabricated loading-time value is supplied.",
+   "gameVersion": "2.3.0",
+   "patchVersion": "2.3.0",
+   "testedDate": "2026-08-23",
+   "sourceName": "Nintendo Official – Switch 2 Edition / Update History; cross-checked 60 FPS technical reviews",
+   "sourceUrl": "https://www.nintendo.com/en-gb/Support/Nintendo-Switch/Game-Updates/How-to-Update-Super-Mario-Party-Jamboree-2678615.html",
+   "verifiedAt": "2026-08-23",
+   "verificationStatus": "Verified",
+   "performanceNotes": "Nintendo Switch 2 performance is stored explicitly to satisfy device-performance validation. Top-level values describe the base Super Mario Party Jamboree presentation in the Switch 2 Edition: 1080p/60 handheld and 1080p/60 TV. Mode 2 separately records Jamboree TV at 1080p/60 handheld and 1440p/60 TV. Resolution claims are based on Nintendo's official Switch 2 Edition and update documentation; 60 FPS is cross-checked against multiple technical reviews."
+  }
+ ],
+ "downloadSizeGb": 5.4,
+ "requiredSpaceGb": 6,
+ "microSdRecommended": false,
+ "storageNotes": "Nintendo lists the original Nintendo Switch game at approximately 5.4 GB in North American storefront metadata; the Australian eShop reports approximately 5.3 GB required space due to regional package/rounding differences. This file uses 5.4 GB as the primary figure. Update data requires additional free space.",
+ "languagesAudio": [
+  "English",
+  "Japanese"
+ ],
+ "languagesText": [
+  "English",
+  "Japanese",
+  "French"
+ ],
+ "arabicSupport": false,
+ "mpLocalPlayers": "true",
+ "mpOnlinePlayers": "true",
+ "mpCoop": true,
+ "mpCompetitive": true,
+ "mpSplitScreen": false,
+ "mpLocalWireless": true,
+ "dlc": [
+  {
+   "name": "Nintendo Switch 2 Edition + Jamboree TV Upgrade Pack",
+   "description": "This is not DLC that runs on Nintendo Switch 1. It is a paid $19.99 USD Nintendo Switch 2 Upgrade Pack for owners who later move to Switch 2. It adds Jamboree TV, CameraPlay, Joy-Con 2 mouse-control minigames, microphone activities, GameShare, higher-resolution Jamboree TV presentation and additional rule options.",
+   "coverUrl": "https://assets.nintendo.com/image/upload/ar_16:9,c_lpad,w_1300/b_white/f_auto/q_auto/ncom/software/switch/70010000084608/ba0572bf9d840b03bf9958809943fb3c76c3adfd6d8f2704b0f1b766f8aa4027"
+  }
+ ],
+ "guides": [
+  {
+   "title": "Nintendo Official Product Page",
+   "summary": "Official Nintendo listing for the original Nintendo Switch game, including release date, file size, player counts, languages, Save Data Cloud, online requirements and compatible play modes.",
+   "url": "https://www.nintendo.com/us/store/products/super-mario-party-jamboree-switch/"
+  },
+  {
+   "title": "Nintendo Multiplayer Guide",
+   "summary": "Nintendo official breakdown of player counts and multiplayer requirements for Mario Party, Rhythm Kitchen, Toad's Item Factory, Paratroopa Flight School, Bowser Kaboom Squad, Koopathlon and Minigame Bay.",
+   "url": "https://en-americas-support.nintendo.com/app/answers/detail/a_id/66549/~/how-to-start-a-multiplayer-game-%28super-mario-party-jamboree%29"
+  },
+  {
+   "title": "Nintendo Update History",
+   "summary": "Official patch history. The latest verified update is Version 2.3.0, released February 3, 2026, with Nintendo Switch fixes and additional Switch 2 changes.",
+   "url": "https://en-americas-support.nintendo.com/app/answers/detail/a_id/66545/p/897"
+  }
+ ],
+ "completionMain": 7.5,
+ "completionExtras": 19.5,
+ "completionAll": 52.5,
+ "faq": [
+  {
+   "q": "How many boards and minigames are in Super Mario Party Jamboree?",
+   "a": "There are seven Mario Party boards and more than 110 minigames. Five boards are new to Jamboree, while Western Land and Mario's Rainbow Castle return from earlier Mario Party games."
+  },
+  {
+   "q": "How many players are supported?",
+   "a": "Player count depends on mode. Mario Party and Minigame Bay support up to four players. Bowser Kaboom Squad can support up to eight online players. Koopathlon can support up to twenty online players. Some side modes are local-only or have controller/system restrictions."
+  },
+  {
+   "q": "Does the Nintendo Switch version require Nintendo Switch Online?",
+   "a": "Nintendo Switch Online is not required for normal offline/local gameplay. It is required for internet multiplayer. Save Data Cloud is also supported through Nintendo Switch Online."
+  }
+ ],
+ "verdictScore": 8.2,
+ "verdictSummary": "Super Mario Party Jamboree is the most complete Mario Party package created for the original Nintendo Switch. Its strongest achievement is the combination of seven strong boards, more than 110 minigames, Jamboree Buddies, Pro Rules and flexible control settings. Large-scale online modes are valuable additions rather than replacements for the core board game, while Party-Planner Trek makes solo play more viable than in many previous entries.",
+ "verdictPros": [
+  "Excellent seven-board selection with five new boards and two returning classics",
+  "More than 110 minigames and unusually broad local/online mode variety",
+  "Jamboree Buddies and Pro Rules add meaningful strategy to the modern Mario Party formula"
+ ],
+ "verdictCons": [
+  "Full board matches can be long",
+  "Player counts and controller requirements vary significantly by mode",
+  "The biggest online modes require one player per system and Nintendo Switch Online"
+ ],
+ "reviews": [
+  {
+   "source": "Metacritic",
+   "score": "82/100",
+   "quote": "Metacritic aggregates the Nintendo Switch release at 82/100, indicating generally favorable critical reception.",
+   "url": "https://www.metacritic.com/game/super-mario-party-jamboree/"
+  },
+  {
+   "source": "OpenCritic",
+   "score": "81/100",
+   "quote": "OpenCritic aggregates the game at approximately 81/100 with a strong majority of critics recommending it.",
+   "url": "https://opencritic.com/game/16873/super-mario-party-jamboree"
+  },
+  {
+   "source": "Nintendo Life",
+   "score": "9/10",
+   "quote": "Nintendo Life awarded 9/10, praising the minigame selection, boards, visual presentation, performance and improvements to the core Mario Party formula.",
+   "url": "https://www.nintendolife.com/reviews/nintendo-switch/super-mario-party-jamboree"
+  }
+ ],
+ "timeline": [
+  {
+   "date": "2024-06-18",
+   "title": "Announcement",
+   "body": "Nintendo revealed Super Mario Party Jamboree during the June 18, 2024 Nintendo Direct, announcing seven boards, more than 110 minigames and 20-player Koopathlon."
+  },
+  {
+   "date": "2024-10-17",
+   "title": "Nintendo Switch Worldwide Release",
+   "body": "The original Nintendo Switch version launched worldwide on October 17, 2024."
+  },
+  {
+   "date": "2025-07-24",
+   "title": "Nintendo Switch 2 Edition + Jamboree TV Upgrade",
+   "body": "Nintendo released Super Mario Party Jamboree – Nintendo Switch 2 Edition + Jamboree TV and its paid Upgrade Pack on July 24, 2025. The original Switch game remains a separate fully playable product."
+  }
+ ],
+ "patchNotes": [
+  {
+   "version": "2.3.0",
+   "date": "2026-02-03",
+   "body": "Version 2.3.0 fixed Nintendo Switch issues including scoring behavior in Three Throw and an item bug involving Mushroom Tickets, while also adding Switch 2-side language support and general improvements."
+  },
+  {
+   "version": "2.2.0",
+   "date": "2025-09-03",
+   "body": "Version 2.2.0 introduced Switch 2-specific presentation adjustments for upgraded software and additional general fixes. Original Nintendo Switch received general gameplay-experience fixes."
+  },
+  {
+   "version": "1.1.1",
+   "date": "2024-11-19",
+   "body": "Version 1.1.1 fixed an online Minigame Bay Tag Match issue that could terminate sessions depending on the room creator's nickname length."
+  }
+ ],
+ "seriesName": "Mario Party",
+ "seriesEntries": [
+  "Super Mario Party",
+  "Mario Party Superstars",
+  "Super Mario Party Jamboree"
+ ],
+ "studioName": "Nintendo Cube",
+ "studioUrl": "https://www.nintendo.co.jp/",
+ "studioLocation": "Tokyo, Japan",
+ "studioAbout": "Nintendo Cube—formerly known as NDcube—is the Nintendo-affiliated studio responsible for modern Mario Party development. Super Mario Party Jamboree was developed by Nintendo Cube and published by Nintendo, continuing the studio's focus on board-game and multiplayer-oriented Nintendo software.",
+ "setupNeeds": [
+  "Nintendo Switch, Nintendo Switch OLED or compatible Nintendo Switch 2 system",
+  "Nintendo Switch Online membership and Nintendo Account for online play",
+  "Joy-Con controllers are required for motion-control minigames; some modes have additional controller/system requirements"
+ ],
+ "sources": [
+  {
+   "name": "Nintendo Official Store",
+   "url": "https://www.nintendo.com/us/store/products/super-mario-party-jamboree-switch/"
+  },
+  {
+   "name": "Nintendo Support – Multiplayer",
+   "url": "https://en-americas-support.nintendo.com/app/answers/detail/a_id/66549/~/how-to-start-a-multiplayer-game-%28super-mario-party-jamboree%29"
+  },
+  {
+   "name": "Nintendo Support – Update History",
+   "url": "https://en-americas-support.nintendo.com/app/answers/detail/a_id/66545/p/897"
+  }
+ ],
+ "boxContentsList": "[Circular]",
+ "game_id": "gme_a74a44802100452e",
+ "image": "https://cdn.switch-images-julio.com/file/switch-images-julio/A7HLA/front.png",
+ "banner": "https://assets.nintendo.com/image/upload/ar_16:9,c_lpad,w_1300/b_white/f_auto/q_auto/ncom/software/switch/70010000084608/ba0572bf9d840b03bf9958809943fb3c76c3adfd6d8f2704b0f1b766f8aa4027",
+ "schemaId": "",
+ "badgeEn": "وفر 40%",
+ "badgeKu": "وفر 40%",
+ "featuresEn": [
+  "Seven boards: five new boards plus returning Western Land and Mario's Rainbow Castle",
+  "More than 110 minigames and 22 playable characters, including Pauline and Ninji",
+  "Mario Party, Pro Rules, Party-Planner Trek, Koopathlon, Bowser Kaboom Squad, Minigame Bay, Rhythm Kitchen, Toad's Item Factory and Paratroopa Flight School"
+ ],
+ "featuresKu": [
+  "Seven boards: five new boards plus returning Western Land and Mario's Rainbow Castle",
+  "More than 110 minigames and 22 playable characters, including Pauline and Ninji",
+  "Mario Party, Pro Rules, Party-Planner Trek, Koopathlon, Bowser Kaboom Squad, Minigame Bay, Rhythm Kitchen, Toad's Item Factory and Paratroopa Flight School"
+ ],
+ "boxFrontUrl": "https://cdn.switch-images-julio.com/file/switch-images-julio/A7HLA/front.png",
+ "coverUrl": "https://cdn.switch-images-julio.com/file/switch-images-julio/A7HLA/front.png",
+ "sales": 0,
+ "isHidden": false,
+ "createdAt": "2026-08-27T04:36:02.708Z",
+ "created_at": "2026-08-27T04:36:02.708Z",
+ "updatedAt": "2026-08-27T04:36:02.708Z",
+ "updated_at": "2026-08-27T04:36:02.708Z",
+ "images": [],
+ "modes": []
+}

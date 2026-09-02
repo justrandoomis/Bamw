@@ -1,0 +1,51 @@
+{
+ "batch": "025",
+ "apply": false,
+ "games": [
+  {
+   "id": "prd_d74598d589434852",
+   "slug": "super-mario-galaxy-plus-super-mario-galaxy-2-switch",
+   "baseHash": "43e71a4dca43f697ee82fb35fffaf481dbdbf73e902d6c21034758be50c72bf6",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  },
+  {
+   "id": "prd_dfb6ac13472d4624",
+   "slug": "super-mario-party-switch",
+   "baseHash": "9a504ac0f08b0db4732def3e684852033b4e8fe2a2dc067e47253c04f308bbd8",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  },
+  {
+   "id": "prd_028b26bf1f5d4e0b",
+   "slug": "super-mario-rpg-switch-1",
+   "baseHash": "2fb3c287505d8af80346b7a792869f93c4133c036c513f69ba157a6311723477",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  },
+  {
+   "id": "prd_b9c50887a24849fa",
+   "slug": "super-smash-bros-ultimate",
+   "baseHash": "beae9a286301a041d1d1c956ea66bdbc5ca0e9bb6f9fb92493972aff718dce66",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  },
+  {
+   "id": "prd_46580d6478e849b6",
+   "slug": "the-binding-of-isaac-afterbirthplus-switch-1",
+   "baseHash": "79feaf070960f96a8bea0d487195f0e3dad1b1cb4cbf7849b44c9c56eb241a37",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  }
+ ]
+}
