@@ -1,51 +1,196 @@
 {
  "batch": "005",
- "apply": false,
+ "apply": true,
  "games": [
   {
    "id": "prd_9c97bcae3d9e4162",
    "slug": "donkey-kong-bananza-switch-2",
    "baseHash": "1528a7e4fa2eab18883b684df0e5983a40908dfdadedbefc9443f8987aa0f469",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "youtubeTrailer": "https://www.youtube.com/watch?v=jAKPbABwuqQ",
+    "bannerImages": [
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000096809/3c8219fbdcd3bdd0ebd6239cf32c651fe10f2157aa7730fcc6a7d96cd27460e5",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000096809/c111819ae2b07f446ab92d64c8d37e9ef8e541e30b687121fa6d5976096b61f9"
+    ],
+    "galleryImages": [
+     {
+      "url": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing/pmp-nkscdulw/deep-underground/underground-canyon-medium-up-2x",
+      "alt": "Donkey Kong smashing through an underground canyon at sunset"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing/pmp-nkscdulw/deep-underground/underground-forest-medium-up-2x",
+      "alt": "Underground forest layer with destructible terrain"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing/pmp-nkscdulw/deep-underground/underground-resort-medium-up-2x",
+      "alt": "Golden resort layer deep underground"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing/pmp-nkscdulw/deep-underground/underground-tempest-medium-up-2x",
+      "alt": "Storm-swept tempest layer"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing/pmp-nkscdulw/companion/dkb-transform-kong-2x",
+      "alt": "DK's Kong Bananza transformation with Pauline"
+     }
+    ]
+   },
+   "clear": [
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "Retry of the batch-004 entry the image guard refused: three gallery URLs had been extrapolated instead of copied and did not exist — every URL here is copied verbatim from the live record (resort, tempest, transform-kong) and the apply step re-verifies each. Dead R2 banners replaced by the two official eShop CDN heroes; trailer replaced with the embeddable official reveal trailer; real alt descriptions replace generic filler; contamination fields removed."
   },
   {
    "id": "prd_db09416253cf4760",
    "slug": "ea-sports-fc-25",
    "baseHash": "b3af723da87f2cc1eda5a4e2296d0e5165add87766b008ffe670939abca8c48a",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "informationStatus": "available",
+      "handheld": { "supported": true, "resolution": "720p", "fps": "30" },
+      "tv": { "supported": true, "resolution": "1080p", "fps": "30" },
+      "modes": [],
+      "sourceName": "Official product and compatibility information",
+      "sourceUrl": "https://www.ea.com/games/ea-sports-fc/fc-25",
+      "verificationStatus": "official"
+     }
+    ]
+   },
+   "clear": [
+    "metacriticRating",
+    "supportedLanguages",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "Same copy-pasted defects as FC 24: a string '85' matching no verifiable Switch score (removed — wrong data beats no data only in the other direction) and a varies-by-region referral sentence in the customer-facing language field (removed). Two device records collapse to the platform's Nintendo Switch record with the officially-sourced figures. Hidden product with no images stored; none can be sourced and verified from this environment."
   },
   {
    "id": "prd_b185a38dcf644622",
    "slug": "ea-sports-fc-26",
    "baseHash": "4a43b88fe19ae2dbe409eec9d40dc2edc47902dcdf7b47c764b092d89989c8b9",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "informationStatus": "available",
+      "handheld": { "supported": true, "resolution": "720p", "fps": "30" },
+      "tv": { "supported": true, "resolution": "1080p", "fps": "30" },
+      "modes": [],
+      "sourceName": "Official product and compatibility information",
+      "sourceUrl": "https://www.ea.com/games/ea-sports-fc/fc-26",
+      "verificationStatus": "official"
+     }
+    ]
+   },
+   "clear": [
+    "metacriticRating",
+    "supportedLanguages",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "Switch 1 SKU of FC 26 (2025-09-26, 40 GB). Same removals as the rest of the series: unverifiable '85' string and referral language sentence. Two device records collapse to the platform record. Square card, cover and six gallery screenshots verified working."
   },
   {
    "id": "prd_391864a55b884a32",
    "slug": "ea-sports-fc-26-switch-2",
    "baseHash": "e1e0b87fc613d8b89977c41b6add0120abe06ccef6ea7680ed51a508b9bbb41e",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "informationStatus": "available",
+      "handheld": { "supported": true, "resolution": "1080p", "fps": "60" },
+      "tv": { "supported": true, "resolution": "1440p", "fps": "60" },
+      "modes": [],
+      "sourceName": "Official product and compatibility information",
+      "sourceUrl": "https://www.ea.com/games/ea-sports-fc/fc-26",
+      "verificationStatus": "official"
+     }
+    ]
+   },
+   "clear": [
+    "metacriticRating",
+    "supportedLanguages",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "Switch 2 SKU of FC 26 (74.8 GB). The stray 'Not Supported' Nintendo Switch record drops under the platform-owned rule, keeping the sourced 1080p/1440p at 60 fps Switch 2 record. Same series removals: '85' string and referral language sentence. Square card, cover and six 1080p gallery screenshots verified working."
   },
   {
    "id": "prd_87ae580ce1e54856",
    "slug": "ea-sports-fc-27",
    "baseHash": "91a142f6d421bea84705af025dde3b391fc48426c4615bd5cddbf6af640ab8d1",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "informationStatus": "not_published",
+      "unavailableReason": "EA SPORTS FC 27 releases on 2026-09-25; EA has not published Switch performance figures ahead of launch.",
+      "handheld": { "supported": true },
+      "tv": { "supported": true },
+      "modes": [],
+      "sourceName": "EA SPORTS FC official announcement",
+      "sourceUrl": "https://www.ea.com/games/ea-sports-fc",
+      "verificationStatus": "official"
+     }
+    ]
+   },
+   "clear": [
+    "metacriticRating",
+    "supportedLanguages",
+    "size",
+    "downloadSizeGb",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "Unreleased title (2026-09-25, after today). A Metacritic score cannot exist yet — the '85' string removed; download size was stored as 0 and removed (unpublished); the referral language sentence removed. The two guessed 720p/1080p records are replaced by one honest not-published platform record: EA has not announced Switch performance figures for FC 27. Square card, cover and five gallery screenshots verified working."
   }
  ]
 }
