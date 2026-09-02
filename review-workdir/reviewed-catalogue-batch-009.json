@@ -1,0 +1,51 @@
+{
+ "batch": "009",
+ "apply": false,
+ "games": [
+  {
+   "id": "prd_7c8bc4a553ff4edd",
+   "slug": "fitness-boxing-3-your-personal-trainer-nintendo-switch-2-edition-switch-2",
+   "baseHash": "de71107284e9243adb4320c5aca25f8afac8935945a5ec51a63f750bc9d80d7b",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  },
+  {
+   "id": "prd_0acfbb9a3c5546d7",
+   "slug": "gear-club-unlimited-3",
+   "baseHash": "3718a888aa98220c787d62f263d3d02fff58cf0995296879b4143d943d2874a8",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  },
+  {
+   "id": "prd_cddf0823d4eb4a54",
+   "slug": "go-go-town-nintendo-switch-2-edition-switch-2",
+   "baseHash": "f84dfdd1a3e4ec40fa77ba1519dab83d1b8b74c654654ff73ed576e86b9a752b",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  },
+  {
+   "id": "prd_30e5d438518b461f",
+   "slug": "go-go-town-switch-1",
+   "baseHash": "84de4ff01933a21b7a9ce0e7b52c1c51241c50b6765ed54c8054e815b8d4c3eb",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  },
+  {
+   "id": "prd_a7b05b105b274f97",
+   "slug": "grid-legends-deluxe-edition",
+   "baseHash": "e7c4aa1df54eb9f27d19bbd8642e86e7a292e0e83a31c4239de12e2f1f908f82",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  }
+ ]
+}

@@ -1,0 +1,514 @@
+{
+ "title": "FINAL FANTASY VII REMAKE INTERGRADE",
+ "titleEn": "FINAL FANTASY VII REMAKE INTERGRADE",
+ "titleKu": "",
+ "slug": "final-fantasy-vii-remake-intergrade-switch-2",
+ "description": "The Midgar chapter of FINAL FANTASY VII is rebuilt as a cinematic action RPG, and INTERGRADE includes the Yuffie-focused FF7R EPISODE INTERmission side story. Cloud takes a mercenary job with Avalanche and becomes involved in the bombing of Mako Reactor 1. The remake concludes the first major arc while opening the path toward the wider FINAL FANTASY VII story.",
+ "descriptionEn": "The Midgar chapter of FINAL FANTASY VII is rebuilt as a cinematic action RPG, and INTERGRADE includes the Yuffie-focused FF7R EPISODE INTERmission side story. Cloud takes a mercenary job with Avalanche and becomes involved in the bombing of Mako Reactor 1. The remake concludes the first major arc while opening the path toward the wider FINAL FANTASY VII story.",
+ "descriptionKu": "",
+ "cartridgeImage": "https://assets.nintendo.com/image/upload/ar_3:4,c_fit,g_auto,w_1000/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101698/833214b25828c4b093c4abde2564f399991438c9498594b3d88f3fc54dad4d75",
+ "nintendoCardImage": "/api/files/products/prd_d4b4bb4e61994709/square-card-b54bbcdfd8095969.webp",
+ "coverHiResImage": "",
+ "coverImage": "/api/files/products/prd_d4b4bb4e61994709/cover-58b892b4920afd4d.webp",
+ "bannerImages": [
+  "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101698/4100b329a61be50f3aa125d6141d8838a3367ef41149ca4d97da53e4497a04dc",
+  "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101698/821373a2e0ecabf1e4027953a149e6d4b164c78e20921030d489eabbcace00a3",
+  "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101698/92a3f2749e2330b7b50b252acab3adf8807d96ca72bd3a8ca7004729941f33be",
+  "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101698/394429d630a5a72e74cb70005f5992bd6d22cde0dd2ee2fc266e5eb3f022318b",
+  "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101698/2547e52ce2a8de6df016b13178b31c0c1d11c81cb259be287594442a2f109fc0"
+ ],
+ "gallery": [],
+ "youtubeTrailer": "",
+ "releaseDate": "2026-01-22",
+ "ageRating": "ESRB T — Blood, Language, Suggestive Themes, Use of Alcohol and Tobacco, Violence",
+ "metacriticRating": 89,
+ "genres": [
+  "RPG",
+  "Action",
+  "Adventure"
+ ],
+ "platform": "switch2",
+ "size": 90.4,
+ "numberOfPlayers": "Single system (1)",
+ "supportedLanguages": "Official supported language list varies by region; see the publisher page linked in Sources.",
+ "hardwareModel": "",
+ "colorEdition": "",
+ "storageCapacity": "",
+ "screenSpecs": "",
+ "batteryLife": "",
+ "boxContents": [],
+ "boxContentsText": "",
+ "warrantyCondition": "",
+ "connectivity": "",
+ "characterName": "Link",
+ "amiiboSeries": "The Legend of Zelda",
+ "figureType": "figure",
+ "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+ "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+ "boxCondition": "mib",
+ "releaseWave": "Wave 2 (Restock)",
+ "rarity": "standard",
+ "accessoryType": "حقيبة حماية وتنقل Carry Case",
+ "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+ "brand": "Nintendo Official",
+ "material": "Hard EVA Shockproof Shell",
+ "availableColors": "Black, Neon Red/Blue, White",
+ "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+ "cardValue": "$20 eShop Balance",
+ "region": "Global",
+ "cardType": "eshop",
+ "deliveryMethod": "instant_code",
+ "redemptionGuide": "",
+ "redemptionSteps": [],
+ "validity": "no_expiry",
+ "usedType": "cartridge",
+ "conditionGrade": "like_new",
+ "packaging": "cib",
+ "guaranteeStatus": "tested_30days",
+ "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+ "accountType": "primary",
+ "badge": "وفر 40%",
+ "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+ "price": 14750,
+ "cost": 1500,
+ "stock": 999999,
+ "isInfiniteStock": true,
+ "isHidden": true,
+ "displayOrder": 0,
+ "category": "nintendo-switch-games",
+ "categoryId": "nintendo-switch-games",
+ "categoryEn": "",
+ "categoryKu": "",
+ "options": [
+  {
+   "id": "offline_account",
+   "name": "مشترك",
+   "description": "مشترك",
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_account",
+   "name": "خاص بك",
+   "description": "خاص بك",
+   "stock": 9999,
+   "isInfiniteStock": true
+  }
+ ],
+ "types": [
+  {
+   "id": "offline_base",
+   "name": "مشترك — اللعبة الأساسية",
+   "optionId": "offline_account",
+   "price": 14750,
+   "cost": 1500,
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_base",
+   "name": "خاص بك — اللعبة الأساسية",
+   "optionId": "online_account",
+   "price": 19250,
+   "cost": 14250,
+   "stock": 9999,
+   "isInfiniteStock": true
+  }
+ ],
+ "editions": [],
+ "dlcs": [],
+ "isActive": true,
+ "status": "Active",
+ "kind": "account",
+ "trade_value_iqd": 7750,
+ "store_offer_bonus_iqd": 1250,
+ "trade_enabled": true,
+ "trade_value_locked": false,
+ "id": "prd_d4b4bb4e61994709",
+ "schema_version": 24,
+ "titleAr": "فاينل فانتسي 7 ريميك إنتَرغريد",
+ "compatibility": [
+  "Nintendo Switch 2",
+  "Not supported on Nintendo Switch 1"
+ ],
+ "edition": "Standard / Store Variants",
+ "developer": "SQUARE ENIX",
+ "publisher": "SQUARE ENIX",
+ "seriesName": "FINAL FANTASY VII REMAKE INTERGRADE",
+ "metacriticUrl": "https://www.metacritic.com/game/final-fantasy-vii-remake-intergrade/",
+ "opencriticRating": 89,
+ "userScore": 8.8,
+ "price_usd": 69.99,
+ "officialUrl": "https://www.nintendo.com/us/store/products/final-fantasy-vii-remake-intergrade-switch-2/",
+ "eshopUrl": "https://www.nintendo.com/us/store/products/final-fantasy-vii-remake-intergrade-switch-2/",
+ "gameIsOffline": true,
+ "gameIsOnline": false,
+ "gameLanguageLocked": false,
+ "description_short": "The Midgar chapter of FINAL FANTASY VII is rebuilt as a cinematic action RPG, and INTERGRADE includes the Yuffie-focused FF7R EPISODE INTERmission side story.",
+ "description_ar": "فاينل فانتسي 7 ريميك إنتَرغريد — The Midgar chapter of FINAL FANTASY VII is rebuilt as a cinematic action RPG, and INTERGRADE includes the Yuffie-focused FF7R EPISODE INTERmission side story.",
+ "box_front_url": "https://assets.nintendo.com/image/upload/ar_3:4,c_fit,g_auto,w_1000/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101698/833214b25828c4b093c4abde2564f399991438c9498594b3d88f3fc54dad4d75",
+ "languagesText": [
+  "See official supported languages on the linked Nintendo/publisher product page"
+ ],
+ "languagesAudio": [
+  "Audio language availability varies by title and region; see official product information"
+ ],
+ "tvMode": true,
+ "tabletopMode": true,
+ "handheldMode": true,
+ "nintendoPlayModes": "TV / Tabletop / Handheld",
+ "nintendoOnlineRequired": false,
+ "nintendoCloudSaves": true,
+ "nintendoGameKeyCard": false,
+ "nintendoPhysicalNeedsDownload": false,
+ "switch2Enhanced": true,
+ "switch2Exclusive": false,
+ "nintendoNotes": "Platform, release, player-count, storage, compatibility, and feature statements in this import are grounded in the official Nintendo/publisher pages listed under Sources. Store package prices are user-supplied storefront values, not assumed MSRP.",
+ "editionsList": [
+  {
+   "name": "Regular / Offline",
+   "coverUrl": "https://assets.nintendo.com/image/upload/ar_3:4,c_fit,g_auto,w_1000/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101698/833214b25828c4b093c4abde2564f399991438c9498594b3d88f3fc54dad4d75",
+   "contents": [
+    {
+     "label": "Regular / Offline store package"
+    },
+    {
+     "label": "Offline account access"
+    },
+    {
+     "label": "Infinite stock by default"
+    }
+   ]
+  },
+  {
+   "name": "Standard / Online",
+   "coverUrl": "https://assets.nintendo.com/image/upload/ar_1:1,c_fill,g_auto,w_1000/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101698/833214b25828c4b093c4abde2564f399991438c9498594b3d88f3fc54dad4d75",
+   "contents": [
+    {
+     "label": "Standard / Online store package"
+    },
+    {
+     "label": "Online account access"
+    },
+    {
+     "label": "Infinite stock by default"
+    }
+   ]
+  }
+ ],
+ "gameplayPillars": [
+  {
+   "title": "Hybrid real-time and command combat",
+   "description": "Players attack and move in real time, then slow combat to spend ATB on abilities, spells, and items.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101698/4100b329a61be50f3aa125d6141d8838a3367ef41149ca4d97da53e4497a04dc"
+  },
+  {
+   "title": "Character switching",
+   "description": "Cloud, Barret, Tifa, Aerith, and others fill distinct combat roles and can be switched during battle.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101698/821373a2e0ecabf1e4027953a149e6d4b164c78e20921030d489eabbcace00a3"
+  },
+  {
+   "title": "Detailed Midgar recreation",
+   "description": "The remake greatly expands districts, side stories, character interactions, and Shinra locations.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101698/92a3f2749e2330b7b50b252acab3adf8807d96ca72bd3a8ca7004729941f33be"
+  },
+  {
+   "title": "INTERmission included",
+   "description": "Yuffie’s side story runs parallel to the main journey and adds unique combat mechanics and characters.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101698/394429d630a5a72e74cb70005f5992bd6d22cde0dd2ee2fc266e5eb3f022318b"
+  },
+  {
+   "title": "HDR-capable Switch 2 release",
+   "description": "Nintendo lists HDR output on compatible TVs for the Switch 2 version.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101698/2547e52ce2a8de6df016b13178b31c0c1d11c81cb259be287594442a2f109fc0"
+  }
+ ],
+ "worldSummary": "The Midgar chapter of FINAL FANTASY VII is rebuilt as a cinematic action RPG, and INTERGRADE includes the Yuffie-focused FF7R EPISODE INTERmission side story. Cloud takes a mercenary job with Avalanche and becomes involved in the bombing of Mako Reactor 1. The remake concludes the first major arc while opening the path toward the wider FINAL FANTASY VII story.",
+ "storyChapters": [
+  {
+   "title": "Join Avalanche",
+   "body": "Cloud takes a mercenary job with Avalanche and becomes involved in the bombing of Mako Reactor 1.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101698/821373a2e0ecabf1e4027953a149e6d4b164c78e20921030d489eabbcace00a3"
+  },
+  {
+   "title": "Explore Midgar",
+   "body": "The group crosses slums, plates, markets, and industrial areas while Shinra tightens control.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101698/92a3f2749e2330b7b50b252acab3adf8807d96ca72bd3a8ca7004729941f33be"
+  },
+  {
+   "title": "Build the party",
+   "body": "Each playable character contributes a distinct battle style and emotional role in the story.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101698/394429d630a5a72e74cb70005f5992bd6d22cde0dd2ee2fc266e5eb3f022318b"
+  },
+  {
+   "title": "Play Yuffie’s INTERmission",
+   "body": "The included side episode follows Yuffie during events that overlap the main game.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101698/2547e52ce2a8de6df016b13178b31c0c1d11c81cb259be287594442a2f109fc0"
+  },
+  {
+   "title": "Escape Midgar",
+   "body": "The remake concludes the first major arc while opening the path toward the wider FINAL FANTASY VII story.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101698/4100b329a61be50f3aa125d6141d8838a3367ef41149ca4d97da53e4497a04dc"
+  }
+ ],
+ "features": [
+  "Full FINAL FANTASY VII REMAKE included",
+  "FF7R EPISODE INTERmission included",
+  "Hybrid action/command combat",
+  "90.4 GB Switch 2 package",
+  "HDR output on compatible TVs"
+ ],
+ "perfResolutionDocked": "Official exact TV resolution not published",
+ "perfResolutionHandheld": "Official exact resolution not published",
+ "perfFps": "0",
+ "perfHdr": false,
+ "playTimeMain": 33,
+ "completionMain": 40,
+ "completionExtras": 45,
+ "faq": [
+  {
+   "q": "What does INTERGRADE include?",
+   "a": "Nintendo lists the full FINAL FANTASY VII REMAKE plus FF7R EPISODE INTERmission and several bonus items."
+  },
+  {
+   "q": "How large is the Switch 2 download?",
+   "a": "Nintendo lists 90.4 GB."
+  },
+  {
+   "q": "Is it multiplayer?",
+   "a": "No. It is a single-player RPG."
+  },
+  {
+   "q": "Does the Switch 2 version support HDR?",
+   "a": "Yes. Nintendo lists HDR output on compatible TVs."
+  },
+  {
+   "q": "Where does the story end?",
+   "a": "This remake covers the Midgar portion of the original FINAL FANTASY VII story, expanded into a full game-sized arc."
+  }
+ ],
+ "verdictScore": 8.5,
+ "verdictPros": [
+  "Excellent combat system",
+  "Strong character writing",
+  "INTERmission included",
+  "High production values",
+  "HDR-capable Switch 2 release"
+ ],
+ "verdictCons": [
+  "Very large download",
+  "Covers only the Midgar arc",
+  "Some side quests interrupt pacing",
+  "Single-player only",
+  "Exact official resolution/FPS figures are not listed on Nintendo’s page"
+ ],
+ "reviews": [
+  {
+   "source": "Metacritic",
+   "score": "89",
+   "url": "https://www.metacritic.com/game/final-fantasy-vii-remake-intergrade/"
+  },
+  {
+   "source": "OpenCritic",
+   "score": "89",
+   "url": "https://opencritic.com/"
+  }
+ ],
+ "timeline": [
+  {
+   "date": "2026-01-22",
+   "title": "Released on target Nintendo platform"
+  }
+ ],
+ "patchNotes": [
+  {
+   "version": "Current retail build",
+   "date": "2026-08-27"
+  }
+ ],
+ "studioName": "SQUARE ENIX",
+ "studioUrl": "https://www.nintendo.com/us/store/products/final-fantasy-vii-remake-intergrade-switch-2/",
+ "studioLocation": "See publisher/developer profile",
+ "sources": [
+  {
+   "name": "Official Nintendo / publisher product page",
+   "url": "https://www.nintendo.com/us/store/products/final-fantasy-vii-remake-intergrade-switch-2/"
+  },
+  {
+   "name": "Metacritic",
+   "url": "https://www.metacritic.com/game/final-fantasy-vii-remake-intergrade/"
+  }
+ ],
+ "downloadSizeGb": 90.4,
+ "requiredSpaceGb": 90.4,
+ "microSdRecommended": true,
+ "storageNotes": "Storage requirements follow the official product listing where a final numeric size is published; upcoming titles may require a later refresh when final size is posted.",
+ "mpLocalPlayers": false,
+ "mpOnlinePlayers": false,
+ "mpCoop": false,
+ "mpCompetitive": false,
+ "mpLocalWireless": false,
+ "mpSplitScreen": false,
+ "dlc": [
+  {
+   "name": "Downloadable / additional content status",
+   "description": "FF7R EPISODE INTERmission is included in INTERGRADE rather than treated as a separate paid variant here."
+  }
+ ],
+ "devicePerformance": [
+  {
+   "device": "Nintendo Switch 2",
+   "deviceSlug": "nintendo-switch-2",
+   "deviceModel": "Nintendo Switch 2",
+   "hardwareId": "nintendo-switch-2",
+   "informationStatus": "Available",
+   "handheld": {
+    "supported": true,
+    "resolution": "Official exact resolution not published",
+    "resolutionDynamic": false,
+    "renderingResolution": "Official exact resolution not published",
+    "outputResolution": "Official exact resolution not published",
+    "fps": "Official exact FPS not published",
+    "fpsMin": "Official exact FPS not published",
+    "fpsMax": "Official exact FPS not published",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "Handheld",
+    "notes": "Nintendo confirms the Switch 2 release and HDR output but does not publish exact resolution/FPS figures on the store page."
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "Official exact TV resolution not published",
+    "resolutionDynamic": false,
+    "renderingResolution": "Official exact TV resolution not published",
+    "outputResolution": "Official exact TV resolution not published",
+    "fps": "Official exact FPS not published",
+    "fpsMin": "Official exact FPS not published",
+    "fpsMax": "Official exact FPS not published",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "TV / Docked",
+    "notes": "Nintendo confirms the Switch 2 release and HDR output but does not publish exact resolution/FPS figures on the store page."
+   },
+   "modes": [
+    {
+     "name": "Primary documented/compatibility profile",
+     "handheldResolution": "Official exact resolution not published",
+     "handheldFps": "Official exact FPS not published",
+     "tvResolution": "Official exact TV resolution not published",
+     "tvFps": "Official exact FPS not published",
+     "hdr": false,
+     "vrr": false,
+     "notes": "Nintendo confirms the Switch 2 release and HDR output but does not publish exact resolution/FPS figures on the store page."
+    }
+   ],
+   "upscaling": "Game / system-specific scaling where applicable",
+   "rayTracing": false,
+   "rayTracingMode": "Not Supported",
+   "loadingTime": "Scene-dependent",
+   "loadingNotes": "Loading time varies by scene, save state, storage, version, and patch.",
+   "gameVersion": "Current listed version",
+   "patchVersion": "Current available update",
+   "testedDate": "2026-08-27",
+   "sourceName": "Official product / compatibility information",
+   "sourceUrl": "https://www.nintendo.com/us/store/products/final-fantasy-vii-remake-intergrade-switch-2/",
+   "performanceNotes": "Nintendo confirms the Switch 2 release and HDR output but does not publish exact resolution/FPS figures on the store page."
+  },
+  {
+   "device": "Nintendo Switch",
+   "deviceSlug": "nintendo-switch",
+   "deviceModel": "Nintendo Switch",
+   "hardwareId": "nintendo-switch",
+   "informationStatus": "Available",
+   "handheld": {
+    "supported": false,
+    "resolution": "Not Supported",
+    "resolutionDynamic": false,
+    "renderingResolution": "Not Supported",
+    "outputResolution": "Not Supported",
+    "fps": "Not Supported",
+    "fpsMin": "Not Supported",
+    "fpsMax": "Not Supported",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "Handheld",
+    "notes": "No Nintendo Switch 1 version is tracked for this product."
+   },
+   "tv": {
+    "supported": false,
+    "resolution": "Not Supported",
+    "resolutionDynamic": false,
+    "renderingResolution": "Not Supported",
+    "outputResolution": "Not Supported",
+    "fps": "Not Supported",
+    "fpsMin": "Not Supported",
+    "fpsMax": "Not Supported",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "TV / Docked",
+    "notes": "No Nintendo Switch 1 version is tracked for this product."
+   },
+   "modes": [
+    {
+     "name": "Primary documented/compatibility profile",
+     "handheldResolution": "Not Supported",
+     "handheldFps": "Not Supported",
+     "tvResolution": "Not Supported",
+     "tvFps": "Not Supported",
+     "hdr": false,
+     "vrr": false,
+     "notes": "No Nintendo Switch 1 version is tracked for this product."
+    }
+   ],
+   "upscaling": "Game / system-specific scaling where applicable",
+   "rayTracing": false,
+   "rayTracingMode": "Not Supported",
+   "loadingTime": "Scene-dependent",
+   "loadingNotes": "Loading time varies by scene, save state, storage, version, and patch.",
+   "gameVersion": "Current listed version",
+   "patchVersion": "Current available update",
+   "testedDate": "2026-08-27",
+   "sourceName": "Official product / compatibility information",
+   "sourceUrl": "https://www.nintendo.com/us/store/products/final-fantasy-vii-remake-intergrade-switch-2/",
+   "performanceNotes": "No Nintendo Switch 1 version is tracked for this product."
+  }
+ ],
+ "switch2UpgradePrice": 0,
+ "galleryImages": [
+  {
+   "url": "/api/files/products/prd_d4b4bb4e61994709/gallery-1-f16f048f121abb32.webp",
+   "alt": "FINAL FANTASY VII REMAKE INTERGRADE screenshot 1"
+  },
+  {
+   "url": "/api/files/products/prd_d4b4bb4e61994709/gallery-2-53fc8da084980e99.webp",
+   "alt": "FINAL FANTASY VII REMAKE INTERGRADE screenshot 2"
+  },
+  {
+   "url": "/api/files/products/prd_d4b4bb4e61994709/gallery-3-31e0e4169f41779e.webp",
+   "alt": "FINAL FANTASY VII REMAKE INTERGRADE screenshot 3"
+  },
+  {
+   "url": "/api/files/products/prd_d4b4bb4e61994709/gallery-4-d3643efb29790a9e.webp",
+   "alt": "FINAL FANTASY VII REMAKE INTERGRADE screenshot 4"
+  },
+  {
+   "url": "/api/files/products/prd_d4b4bb4e61994709/gallery-5-63c392c162252958.webp",
+   "alt": "FINAL FANTASY VII REMAKE INTERGRADE screenshot 5"
+  },
+  {
+   "url": "/api/files/products/prd_d4b4bb4e61994709/gallery-6-9509fa09451bb3fe.webp",
+   "alt": "FINAL FANTASY VII REMAKE INTERGRADE screenshot 6"
+  }
+ ],
+ "boxContentsList": [],
+ "image": "https://assets.nintendo.com/image/upload/ar_16:9,c_fill,g_auto,w_1600/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101698/8e35ead634c04d2bc8370277bb70c2a37184fda3c64ab10929bb9fc6c922c272",
+ "banner": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101698/4100b329a61be50f3aa125d6141d8838a3367ef41149ca4d97da53e4497a04dc",
+ "schemaId": "",
+ "batchImport": true,
+ "createdAt": "2026-08-28T18:44:28.489Z",
+ "updatedAt": "2026-08-28T18:44:28.489Z"
+}

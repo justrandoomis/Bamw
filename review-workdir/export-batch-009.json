@@ -1,0 +1,3033 @@
+{
+ "batch": "009",
+ "generatedAt": "2026-09-02T02:47:53.220Z",
+ "totalGames": 310,
+ "reviewedSoFar": 38,
+ "games": [
+  {
+   "id": "prd_7c8bc4a553ff4edd",
+   "slug": "fitness-boxing-3-your-personal-trainer-nintendo-switch-2-edition-switch-2",
+   "title": "Fitness Boxing 3: Your Personal Trainer — Nintendo Switch 2 Edition",
+   "platform": "switch2",
+   "isHidden": true,
+   "hash": "de71107284e9243adb4320c5aca25f8afac8935945a5ec51a63f750bc9d80d7b",
+   "images": [
+    {
+     "role": "front-box",
+     "field": "cartridgeImage",
+     "url": "https://banan.to/api/files/products/prd_7c8bc4a553ff4edd/front-box-de4cc1207bd1ce0e.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 222136,
+     "width": 1167,
+     "height": 1888,
+     "thumb": "review-workdir/thumbs/batch-009/fitness-boxing-3-your-personal-trainer-nintendo-switch-2-edition-switch-2__front-box-0.png"
+    },
+    {
+     "role": "front-box",
+     "field": "box_front_url",
+     "url": "https://assets.nintendo.com/image/upload/ar_3:4,c_fit,g_auto,w_1000/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000120066/6ec83542de00a10ef871eb3a3dff9238e57c1782f5453e0079dd36ed90cff665",
+     "status": 400,
+     "contentType": "image/gif"
+    },
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://banan.to/api/files/products/prd_7c8bc4a553ff4edd/square-card-595dc3ff40f63283.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 135484,
+     "width": 1024,
+     "height": 1024,
+     "thumb": "review-workdir/thumbs/batch-009/fitness-boxing-3-your-personal-trainer-nintendo-switch-2-edition-switch-2__square-card-2.png"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://banan.to/api/files/products/prd_7c8bc4a553ff4edd/cover-139ea70e390b25d2.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 170044,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-009/fitness-boxing-3-your-personal-trainer-nintendo-switch-2-edition-switch-2__detail-cover-3.png"
+    },
+    {
+     "role": "3d-texture",
+     "field": "coverHiResImage",
+     "url": "https://banan.to/api/files/products/prd_7c8bc4a553ff4edd/3d-wrap-7aeb86067f57750b.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 773222,
+     "width": 2454,
+     "height": 1888,
+     "thumb": "review-workdir/thumbs/batch-009/fitness-boxing-3-your-personal-trainer-nintendo-switch-2-edition-switch-2__3d-texture-4.png"
+    },
+    {
+     "role": "listing",
+     "field": "image",
+     "url": "https://assets.nintendo.com/image/upload/ar_16:9,c_fill,g_auto,w_1600/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000120066/e78baa00848a9c8c0a67d493ad416b21e5280c785578455edefdcb7a0a7102db",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 228769,
+     "width": 2400,
+     "height": 1350,
+     "thumb": "review-workdir/thumbs/batch-009/fitness-boxing-3-your-personal-trainer-nintendo-switch-2-edition-switch-2__listing-5.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[0]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000120066/3f31c12f8fdc1988c9e6fff6993b7c4e61662aa39bc1b702947249b2edb1de32",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 156565,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-009/fitness-boxing-3-your-personal-trainer-nintendo-switch-2-edition-switch-2__banner-6.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[1]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000120066/484dbc1d6dc1a5dc39b1f814bcb5391d79fb39fc7f5660e272e4c309b17de83f",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 143418,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-009/fitness-boxing-3-your-personal-trainer-nintendo-switch-2-edition-switch-2__banner-7.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[2]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000120066/f24f10aaab870df6ab31c8c576df29a022f411c95047920945edef011bbcfd1f",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 164621,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-009/fitness-boxing-3-your-personal-trainer-nintendo-switch-2-edition-switch-2__banner-8.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[3]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000120066/0227b403402d0e94bb08b1c2db83dc61b0163e18053e022922b935dc78583634",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 188589,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-009/fitness-boxing-3-your-personal-trainer-nintendo-switch-2-edition-switch-2__banner-9.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://banan.to/api/files/products/prd_7c8bc4a553ff4edd/gallery-1-05992017faa06e20.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 198434,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-009/fitness-boxing-3-your-personal-trainer-nintendo-switch-2-edition-switch-2__gallery-10.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[1]",
+     "url": "https://banan.to/api/files/products/prd_7c8bc4a553ff4edd/gallery-2-de252daaba08b72c.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 154952,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-009/fitness-boxing-3-your-personal-trainer-nintendo-switch-2-edition-switch-2__gallery-11.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[2]",
+     "url": "https://banan.to/api/files/products/prd_7c8bc4a553ff4edd/gallery-3-b652558e839eda07.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 167522,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-009/fitness-boxing-3-your-personal-trainer-nintendo-switch-2-edition-switch-2__gallery-12.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[3]",
+     "url": "https://banan.to/api/files/products/prd_7c8bc4a553ff4edd/gallery-4-0da0ad45e3ca6501.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 165110,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-009/fitness-boxing-3-your-personal-trainer-nintendo-switch-2-edition-switch-2__gallery-13.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[4]",
+     "url": "https://banan.to/api/files/products/prd_7c8bc4a553ff4edd/gallery-5-eff85a3d8e120fea.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 202578,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-009/fitness-boxing-3-your-personal-trainer-nintendo-switch-2-edition-switch-2__gallery-14.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[5]",
+     "url": "https://banan.to/api/files/products/prd_7c8bc4a553ff4edd/gallery-6-b036177d8e2a28a3.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 252172,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-009/fitness-boxing-3-your-personal-trainer-nintendo-switch-2-edition-switch-2__gallery-15.png"
+    }
+   ],
+   "record": {
+    "title": "Fitness Boxing 3: Your Personal Trainer — Nintendo Switch 2 Edition",
+    "titleEn": "Fitness Boxing 3: Your Personal Trainer — Nintendo Switch 2 Edition",
+    "titleKu": "",
+    "slug": "fitness-boxing-3-your-personal-trainer-nintendo-switch-2-edition-switch-2",
+    "description": "The Switch 2 Edition enhances resolution and frame rate, adds Advanced Scoring, Boost Up, CameraPlay support, and local GameShare while keeping the core boxing workout system. The Switch 2 Edition starts from the established Fitness Boxing 3 workout structure. GameShare allows local workout sharing to another compatible Nintendo system.",
+    "descriptionEn": "The Switch 2 Edition enhances resolution and frame rate, adds Advanced Scoring, Boost Up, CameraPlay support, and local GameShare while keeping the core boxing workout system. The Switch 2 Edition starts from the established Fitness Boxing 3 workout structure. GameShare allows local workout sharing to another compatible Nintendo system.",
+    "descriptionKu": "",
+    "cartridgeImage": "/api/files/products/prd_7c8bc4a553ff4edd/front-box-de4cc1207bd1ce0e.webp",
+    "nintendoCardImage": "/api/files/products/prd_7c8bc4a553ff4edd/square-card-595dc3ff40f63283.webp",
+    "coverHiResImage": "/api/files/products/prd_7c8bc4a553ff4edd/3d-wrap-7aeb86067f57750b.webp",
+    "coverImage": "/api/files/products/prd_7c8bc4a553ff4edd/cover-139ea70e390b25d2.webp",
+    "bannerImages": [
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000120066/3f31c12f8fdc1988c9e6fff6993b7c4e61662aa39bc1b702947249b2edb1de32",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000120066/484dbc1d6dc1a5dc39b1f814bcb5391d79fb39fc7f5660e272e4c309b17de83f",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000120066/f24f10aaab870df6ab31c8c576df29a022f411c95047920945edef011bbcfd1f",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000120066/0227b403402d0e94bb08b1c2db83dc61b0163e18053e022922b935dc78583634",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000120066/705e59b7c52cad88c0c37d75dd4ed83ef23a52c280d7c2bc7c3f4d5f5d3d59cc"
+    ],
+    "gallery": [],
+    "youtubeTrailer": "",
+    "releaseDate": "2026-07-16",
+    "ageRating": "ESRB E — In-Game Purchases",
+    "metacriticRating": "85",
+    "genres": [
+     "Sports",
+     "Training",
+     "Fitness"
+    ],
+    "platform": "switch2",
+    "size": 10,
+    "numberOfPlayers": "Single system (1-2) / GameShare local",
+    "supportedLanguages": "Official supported language list varies by region; see the publisher page linked in Sources.",
+    "hardwareModel": "",
+    "colorEdition": "",
+    "storageCapacity": "",
+    "screenSpecs": "",
+    "batteryLife": "",
+    "boxContents": [],
+    "boxContentsText": "",
+    "warrantyCondition": "",
+    "connectivity": "",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "Global",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "",
+    "redemptionSteps": [],
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 10250,
+    "cost": 5750,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": true,
+    "displayOrder": 0,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "مشترك",
+      "description": "مشترك",
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_account",
+      "name": "خاص بك",
+      "description": "خاص بك",
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "types": [
+     {
+      "id": "offline_base",
+      "name": "مشترك — اللعبة الأساسية",
+      "optionId": "offline_account",
+      "price": 10250,
+      "cost": 5750,
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_base",
+      "name": "خاص بك — اللعبة الأساسية",
+      "optionId": "online_account",
+      "price": 40250,
+      "cost": 31500,
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "Active",
+    "kind": "account",
+    "trade_value_iqd": 17250,
+    "store_offer_bonus_iqd": 3000,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "id": "prd_7c8bc4a553ff4edd",
+    "schema_version": 24,
+    "titleAr": "فيتنس بوكسينغ 3 — إصدار نينتندو سويتش 2",
+    "compatibility": [
+     "Nintendo Switch 2",
+     "Nintendo Switch 1 version exists separately"
+    ],
+    "edition": "Standard / Store Variants",
+    "developer": "Imagineer",
+    "publisher": "Nintendo",
+    "seriesName": "Fitness Boxing 3",
+    "price_usd": 59.99,
+    "officialUrl": "https://www.nintendo.com/us/store/products/fitness-boxing-3-your-personal-trainer-nintendo-switch-2-edition-switch-2/",
+    "eshopUrl": "https://www.nintendo.com/us/store/products/fitness-boxing-3-your-personal-trainer-nintendo-switch-2-edition-switch-2/",
+    "gameIsOffline": true,
+    "gameIsOnline": false,
+    "gameLanguageLocked": false,
+    "description_short": "The Switch 2 Edition enhances resolution and frame rate, adds Advanced Scoring, Boost Up, CameraPlay support, and local GameShare while keeping the core boxing workout system.",
+    "description_ar": "فيتنس بوكسينغ 3 — إصدار نينتندو سويتش 2 — The Switch 2 Edition enhances resolution and frame rate, adds Advanced Scoring, Boost Up, CameraPlay support, and local GameShare while keeping the core boxing workout system.",
+    "box_front_url": "https://assets.nintendo.com/image/upload/ar_3:4,c_fit,g_auto,w_1000/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000120066/6ec83542de00a10ef871eb3a3dff9238e57c1782f5453e0079dd36ed90cff665",
+    "languagesText": [
+     "See official supported languages on the linked Nintendo/publisher product page"
+    ],
+    "languagesAudio": [
+     "Audio language availability varies by title and region; see official product information"
+    ],
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": false,
+    "nintendoPlayModes": "TV / Tabletop",
+    "nintendoOnlineRequired": false,
+    "nintendoCloudSaves": true,
+    "nintendoGameKeyCard": false,
+    "nintendoPhysicalNeedsDownload": false,
+    "switch2Enhanced": true,
+    "switch2Exclusive": false,
+    "nintendoNotes": "Platform, release, player-count, storage, compatibility, and feature statements in this import are grounded in the official Nintendo/publisher pages listed under Sources. Store package prices are user-supplied storefront values, not assumed MSRP.",
+    "editionsList": [
+     {
+      "name": "Regular / Offline",
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_3:4,c_fit,g_auto,w_1000/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000120066/6ec83542de00a10ef871eb3a3dff9238e57c1782f5453e0079dd36ed90cff665",
+      "contents": [
+       {
+        "label": "Regular / Offline store package"
+       },
+       {
+        "label": "Offline account access"
+       },
+       {
+        "label": "Infinite stock by default"
+       }
+      ]
+     },
+     {
+      "name": "Standard / Online",
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_1:1,c_fill,g_auto,w_1000/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000120066/6ec83542de00a10ef871eb3a3dff9238e57c1782f5453e0079dd36ed90cff665",
+      "contents": [
+       {
+        "label": "Standard / Online store package"
+       },
+       {
+        "label": "Online account access"
+       },
+       {
+        "label": "Infinite stock by default"
+       }
+      ]
+     }
+    ],
+    "gameplayPillars": [
+     {
+      "title": "Enhanced performance",
+      "description": "Nintendo explicitly states that the Switch 2 Edition increases resolution and frame rate.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000120066/3f31c12f8fdc1988c9e6fff6993b7c4e61662aa39bc1b702947249b2edb1de32"
+     },
+     {
+      "title": "Advanced Scoring Mode",
+      "description": "A new scoring option evaluates hit timing more strictly.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000120066/484dbc1d6dc1a5dc39b1f814bcb5391d79fb39fc7f5660e272e4c309b17de83f"
+     },
+     {
+      "title": "Boost Up workouts",
+      "description": "Workout speed can gradually increase round by round for added challenge.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000120066/f24f10aaab870df6ab31c8c576df29a022f411c95047920945edef011bbcfd1f"
+     },
+     {
+      "title": "CameraPlay support",
+      "description": "Compatible camera use can show the player’s movements on screen during workouts.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000120066/0227b403402d0e94bb08b1c2db83dc61b0163e18053e022922b935dc78583634"
+     },
+     {
+      "title": "GameShare local",
+      "description": "Owners can share the game locally with another Nintendo Switch or Switch 2 system for supported sessions.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000120066/705e59b7c52cad88c0c37d75dd4ed83ef23a52c280d7c2bc7c3f4d5f5d3d59cc"
+     }
+    ],
+    "worldSummary": "The Switch 2 Edition enhances resolution and frame rate, adds Advanced Scoring, Boost Up, CameraPlay support, and local GameShare while keeping the core boxing workout system. The Switch 2 Edition starts from the established Fitness Boxing 3 workout structure. GameShare allows local workout sharing to another compatible Nintendo system.",
+    "storyChapters": [
+     {
+      "title": "Upgrade the training setup",
+      "body": "The Switch 2 Edition starts from the established Fitness Boxing 3 workout structure.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000120066/484dbc1d6dc1a5dc39b1f814bcb5391d79fb39fc7f5660e272e4c309b17de83f"
+     },
+     {
+      "title": "Use improved scoring",
+      "body": "Advanced Scoring rewards more precise timing and encourages better technique.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000120066/f24f10aaab870df6ab31c8c576df29a022f411c95047920945edef011bbcfd1f"
+     },
+     {
+      "title": "Increase intensity",
+      "body": "Boost Up can progressively accelerate a workout to raise the challenge.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000120066/0227b403402d0e94bb08b1c2db83dc61b0163e18053e022922b935dc78583634"
+     },
+     {
+      "title": "Add CameraPlay",
+      "body": "Compatible camera support brings visual feedback into the training experience.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000120066/705e59b7c52cad88c0c37d75dd4ed83ef23a52c280d7c2bc7c3f4d5f5d3d59cc"
+     },
+     {
+      "title": "Share a workout locally",
+      "body": "GameShare allows local workout sharing to another compatible Nintendo system.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000120066/3f31c12f8fdc1988c9e6fff6993b7c4e61662aa39bc1b702947249b2edb1de32"
+     }
+    ],
+    "features": [
+     "Enhanced resolution and frame rate",
+     "Advanced Scoring Mode",
+     "Boost Up feature",
+     "CameraPlay support",
+     "Local GameShare"
+    ],
+    "perfResolutionDocked": "Enhanced resolution — exact official number not published",
+    "perfResolutionHandheld": "Not Supported",
+    "perfFps": "0",
+    "perfHdr": false,
+    "playTimeMain": 0,
+    "completionMain": 0,
+    "completionExtras": 0,
+    "faq": [
+     {
+      "q": "When was the Switch 2 Edition released?",
+      "a": "Nintendo lists July 16, 2026."
+     },
+     {
+      "q": "What is the file size?",
+      "a": "Nintendo lists 10 GB for the Switch 2 Edition."
+     },
+     {
+      "q": "Does it support Handheld mode?",
+      "a": "No. Nintendo lists TV and Tabletop modes."
+     },
+     {
+      "q": "Can original owners upgrade?",
+      "a": "Yes. Nintendo sells a separate Switch 2 Edition Upgrade Pack."
+     },
+     {
+      "q": "What does GameShare do?",
+      "a": "It can share supported local play to another Nintendo Switch or Switch 2 system."
+     }
+    ],
+    "verdictScore": 8.5,
+    "verdictPros": [
+     "Clear enhancements over Switch 1",
+     "Advanced scoring improves training feedback",
+     "CameraPlay is a useful new option",
+     "GameShare expands local access",
+     "Higher resolution/frame-rate profile"
+    ],
+    "verdictCons": [
+     "Requires Joy-Con motion play",
+     "Handheld mode remains unsupported",
+     "CameraPlay needs compatible hardware",
+     "Workout value depends on personal routine consistency",
+     "Upgrade is a separate product for original owners"
+    ],
+    "timeline": [
+     {
+      "date": "2026-07-16",
+      "title": "Released on target Nintendo platform"
+     }
+    ],
+    "patchNotes": [
+     {
+      "version": "Current retail build",
+      "date": "2026-08-27"
+     }
+    ],
+    "studioName": "Imagineer",
+    "studioUrl": "https://www.nintendo.com/us/store/products/fitness-boxing-3-your-personal-trainer-nintendo-switch-2-edition-switch-2/",
+    "studioLocation": "See publisher/developer profile",
+    "sources": [
+     {
+      "name": "Official Nintendo / publisher product page",
+      "url": "https://www.nintendo.com/us/store/products/fitness-boxing-3-your-personal-trainer-nintendo-switch-2-edition-switch-2/"
+     }
+    ],
+    "downloadSizeGb": 10,
+    "requiredSpaceGb": 10,
+    "microSdRecommended": true,
+    "storageNotes": "Storage requirements follow the official product listing where a final numeric size is published; upcoming titles may require a later refresh when final size is posted.",
+    "mpLocalPlayers": true,
+    "mpOnlinePlayers": false,
+    "mpCoop": true,
+    "mpCompetitive": false,
+    "mpLocalWireless": false,
+    "mpSplitScreen": true,
+    "dlc": [
+     {
+      "name": "Downloadable / additional content status",
+      "description": "Optional music/cosmetic packs remain available; the Switch 2 Upgrade Pack is a migration path from the original version."
+     }
+    ],
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "hardwareId": "nintendo-switch-2",
+      "informationStatus": "Available",
+      "handheld": {
+       "supported": false,
+       "resolution": "Not Supported",
+       "resolutionDynamic": false,
+       "renderingResolution": "Not Supported",
+       "outputResolution": "Not Supported",
+       "fps": "Enhanced frame rate — exact official number not published",
+       "fpsMin": "Enhanced frame rate — exact official number not published",
+       "fpsMax": "Enhanced frame rate — exact official number not published",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Handheld",
+       "notes": "Nintendo confirms enhanced resolution and frame rate but does not publish exact resolution/FPS figures on the product page."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "Enhanced resolution — exact official number not published",
+       "resolutionDynamic": false,
+       "renderingResolution": "Enhanced resolution — exact official number not published",
+       "outputResolution": "Enhanced resolution — exact official number not published",
+       "fps": "Enhanced frame rate — exact official number not published",
+       "fpsMin": "Enhanced frame rate — exact official number not published",
+       "fpsMax": "Enhanced frame rate — exact official number not published",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "TV / Docked",
+       "notes": "Nintendo confirms enhanced resolution and frame rate but does not publish exact resolution/FPS figures on the product page."
+      },
+      "modes": [
+       {
+        "name": "Primary documented/compatibility profile",
+        "handheldResolution": "Not Supported",
+        "handheldFps": "Enhanced frame rate — exact official number not published",
+        "tvResolution": "Enhanced resolution — exact official number not published",
+        "tvFps": "Enhanced frame rate — exact official number not published",
+        "hdr": false,
+        "vrr": false,
+        "notes": "Nintendo confirms enhanced resolution and frame rate but does not publish exact resolution/FPS figures on the product page."
+       }
+      ],
+      "upscaling": "Game / system-specific scaling where applicable",
+      "rayTracing": false,
+      "rayTracingMode": "Not Supported",
+      "loadingTime": "Scene-dependent",
+      "loadingNotes": "Loading time varies by scene, save state, storage, version, and patch.",
+      "gameVersion": "Current listed version",
+      "patchVersion": "Current available update",
+      "testedDate": "2026-08-27",
+      "sourceName": "Official product / compatibility information",
+      "sourceUrl": "https://www.nintendo.com/us/store/products/fitness-boxing-3-your-personal-trainer-nintendo-switch-2-edition-switch-2/",
+      "performanceNotes": "Nintendo confirms enhanced resolution and frame rate but does not publish exact resolution/FPS figures on the product page."
+     },
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "deviceModel": "Nintendo Switch",
+      "hardwareId": "nintendo-switch",
+      "informationStatus": "Available",
+      "handheld": {
+       "supported": false,
+       "resolution": "Not Supported",
+       "resolutionDynamic": false,
+       "renderingResolution": "Not Supported",
+       "outputResolution": "Not Supported",
+       "fps": "Not Supported",
+       "fpsMin": "Not Supported",
+       "fpsMax": "Not Supported",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Handheld",
+       "notes": "This file is for the native Switch 2 Edition. The original Switch 1 version is a separate product."
+      },
+      "tv": {
+       "supported": false,
+       "resolution": "Not Supported",
+       "resolutionDynamic": false,
+       "renderingResolution": "Not Supported",
+       "outputResolution": "Not Supported",
+       "fps": "Not Supported",
+       "fpsMin": "Not Supported",
+       "fpsMax": "Not Supported",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "TV / Docked",
+       "notes": "This file is for the native Switch 2 Edition. The original Switch 1 version is a separate product."
+      },
+      "modes": [
+       {
+        "name": "Primary documented/compatibility profile",
+        "handheldResolution": "Not Supported",
+        "handheldFps": "Not Supported",
+        "tvResolution": "Not Supported",
+        "tvFps": "Not Supported",
+        "hdr": false,
+        "vrr": false,
+        "notes": "This file is for the native Switch 2 Edition. The original Switch 1 version is a separate product."
+       }
+      ],
+      "upscaling": "Game / system-specific scaling where applicable",
+      "rayTracing": false,
+      "rayTracingMode": "Not Supported",
+      "loadingTime": "Scene-dependent",
+      "loadingNotes": "Loading time varies by scene, save state, storage, version, and patch.",
+      "gameVersion": "Current listed version",
+      "patchVersion": "Current available update",
+      "testedDate": "2026-08-27",
+      "sourceName": "Official product / compatibility information",
+      "sourceUrl": "https://www.nintendo.com/us/store/products/fitness-boxing-3-your-personal-trainer-121188/",
+      "performanceNotes": "This file is for the native Switch 2 Edition. The original Switch 1 version is a separate product."
+     }
+    ],
+    "switch2UpgradePrice": 0,
+    "galleryImages": [
+     {
+      "url": "/api/files/products/prd_7c8bc4a553ff4edd/gallery-1-05992017faa06e20.webp",
+      "alt": "Fitness Boxing 3: Your Personal Trainer — Nintendo Switch 2 Edition screenshot 1"
+     },
+     {
+      "url": "/api/files/products/prd_7c8bc4a553ff4edd/gallery-2-de252daaba08b72c.webp",
+      "alt": "Fitness Boxing 3: Your Personal Trainer — Nintendo Switch 2 Edition screenshot 2"
+     },
+     {
+      "url": "/api/files/products/prd_7c8bc4a553ff4edd/gallery-3-b652558e839eda07.webp",
+      "alt": "Fitness Boxing 3: Your Personal Trainer — Nintendo Switch 2 Edition screenshot 3"
+     },
+     {
+      "url": "/api/files/products/prd_7c8bc4a553ff4edd/gallery-4-0da0ad45e3ca6501.webp",
+      "alt": "Fitness Boxing 3: Your Personal Trainer — Nintendo Switch 2 Edition screenshot 4"
+     },
+     {
+      "url": "/api/files/products/prd_7c8bc4a553ff4edd/gallery-5-eff85a3d8e120fea.webp",
+      "alt": "Fitness Boxing 3: Your Personal Trainer — Nintendo Switch 2 Edition screenshot 5"
+     },
+     {
+      "url": "/api/files/products/prd_7c8bc4a553ff4edd/gallery-6-b036177d8e2a28a3.webp",
+      "alt": "Fitness Boxing 3: Your Personal Trainer — Nintendo Switch 2 Edition screenshot 6"
+     }
+    ],
+    "boxContentsList": [],
+    "image": "https://assets.nintendo.com/image/upload/ar_16:9,c_fill,g_auto,w_1600/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000120066/e78baa00848a9c8c0a67d493ad416b21e5280c785578455edefdcb7a0a7102db",
+    "banner": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000120066/3f31c12f8fdc1988c9e6fff6993b7c4e61662aa39bc1b702947249b2edb1de32",
+    "schemaId": "",
+    "batchImport": true,
+    "createdAt": "2026-08-28T18:42:53.882Z",
+    "updatedAt": "2026-08-28T18:42:53.882Z"
+   }
+  },
+  {
+   "id": "prd_0acfbb9a3c5546d7",
+   "slug": "gear-club-unlimited-3",
+   "title": "Gear.Club Unlimited 3",
+   "platform": "switch2",
+   "isHidden": false,
+   "hash": "3718a888aa98220c787d62f263d3d02fff58cf0995296879b4143d943d2874a8",
+   "images": [
+    {
+     "role": "front-box",
+     "field": "cartridgeImage",
+     "url": "https://banan.to/api/files/products/prd_0acfbb9a3c5546d7/front-ca749e89761599a6.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 120926,
+     "width": 674,
+     "height": 1092,
+     "thumb": "review-workdir/thumbs/batch-009/gear-club-unlimited-3__front-box-0.png"
+    },
+    {
+     "role": "front-box",
+     "field": "box_front_url",
+     "url": "https://cdn.shopify.com/s/files/1/0415/6345/files/Gear_Club_Unlimited_3_Switch_2.jpg",
+     "status": 404,
+     "contentType": "text/html; charset=utf-8"
+    },
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://banan.to/api/files/products/prd_0acfbb9a3c5546d7/square-09a52dedb37bf987.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 511788,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-009/gear-club-unlimited-3__square-card-2.png"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://banan.to/api/files/products/prd_0acfbb9a3c5546d7/cover-73195ab36b4a4f79.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 604559,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-009/gear-club-unlimited-3__detail-cover-3.png"
+    },
+    {
+     "role": "listing",
+     "field": "image",
+     "url": "https://banan.to/api/files/products/prd_0acfbb9a3c5546d7/cover-73195ab36b4a4f79.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 604559,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-009/gear-club-unlimited-3__listing-4.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[0]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000100541/d4040c13a3fbd336462473110af6e9b94dd18e868a93a5b98ad4711468359192",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 179468,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-009/gear-club-unlimited-3__banner-5.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[1]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000100541/40bcc92c2e94bec129118990cf95866681dd54eb16cef62a03b37711677aac08",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 196112,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-009/gear-club-unlimited-3__banner-6.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[2]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000100541/dbea893fe714b5dbff1711ff8cf9e29f0118fb56026651de1a020b37dee878df",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 209772,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-009/gear-club-unlimited-3__banner-7.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[3]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000100541/d049f0000018089080cc81c947114ff66dc6248f19dc8f3436b6d5dabb8945a2",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 176824,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-009/gear-club-unlimited-3__banner-8.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000100541/d049f0000018089080cc81c947114ff66dc6248f19dc8f3436b6d5dabb8945a2",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 176824,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-009/gear-club-unlimited-3__gallery-9.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[1]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000100541/cb017a2b23e49797e38936959afa807cb0b1d035b21c0c0ac40e96795b58400c",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 189467,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-009/gear-club-unlimited-3__gallery-10.png"
+    }
+   ],
+   "record": {
+    "title": "Gear.Club Unlimited 3",
+    "titleEn": "Gear.Club Unlimited 3",
+    "titleKu": "Gear.Club Unlimited 3",
+    "slug": "gear-club-unlimited-3",
+    "description": "A racing game spanning France and Japan with more than 40 licensed cars, dozens of tracks, a Japanese car-culture story mode, highway traffic races, and extensive mechanical and cosmetic customization.\n\nThe career mode moves between France and Japan, emphasizing regional racing cultures and event identity. Japanese roads, tuning culture and vehicle style are especially important to this entry. Progression is built around unlocking faster cars, tougher events and deeper customization options. The overall structure mixes collection, customization and racing progression rather than a character-heavy narrative.",
+    "descriptionEn": "A racing game spanning France and Japan with more than 40 licensed cars, dozens of tracks, a Japanese car-culture story mode, highway traffic races, and extensive mechanical and cosmetic customization.\n\nThe career mode moves between France and Japan, emphasizing regional racing cultures and event identity. Japanese roads, tuning culture and vehicle style are especially important to this entry. Progression is built around unlocking faster cars, tougher events and deeper customization options. The overall structure mixes collection, customization and racing progression rather than a character-heavy narrative.",
+    "descriptionKu": "A racing game spanning France and Japan with more than 40 licensed cars, dozens of tracks, a Japanese car-culture story mode, highway traffic races, and extensive mechanical and cosmetic customization.\n\nThe career mode moves between France and Japan, emphasizing regional racing cultures and event identity. Japanese roads, tuning culture and vehicle style are especially important to this entry. Progression is built around unlocking faster cars, tougher events and deeper customization options. The overall structure mixes collection, customization and racing progression rather than a character-heavy narrative.",
+    "cartridgeImage": "/api/files/products/prd_0acfbb9a3c5546d7/front-ca749e89761599a6.jpg",
+    "nintendoCardImage": "/api/files/products/prd_0acfbb9a3c5546d7/square-09a52dedb37bf987.jpg",
+    "coverHiResImage": "",
+    "coverImage": "/api/files/products/prd_0acfbb9a3c5546d7/cover-73195ab36b4a4f79.jpg",
+    "bannerImages": [
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000100541/d4040c13a3fbd336462473110af6e9b94dd18e868a93a5b98ad4711468359192",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000100541/40bcc92c2e94bec129118990cf95866681dd54eb16cef62a03b37711677aac08",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000100541/dbea893fe714b5dbff1711ff8cf9e29f0118fb56026651de1a020b37dee878df",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000100541/d049f0000018089080cc81c947114ff66dc6248f19dc8f3436b6d5dabb8945a2",
+     "/api/files/products/prd_0acfbb9a3c5546d7/banner-4-b5119b6672f10d00.avif",
+     "https://cdn-ak.f.st-hatena.com/images/fotolife/m/megane3gou/20260219/20260219223551.jpg"
+    ],
+    "gallery": [],
+    "youtubeTrailer": "https://www.youtube.com/results?search_query=Gear+Club+Unlimited+3+Nintendo+Switch+2+trailer",
+    "releaseDate": "2026-02-19",
+    "ageRating": "PEGI 12",
+    "metacriticRating": 82,
+    "genres": [
+     "Racing",
+     "Driving",
+     "Sports",
+     "Cars",
+     "Arcade Sim",
+     "Simulation"
+    ],
+    "platform": "switch2",
+    "size": 45.2,
+    "numberOfPlayers": "1",
+    "supportedLanguages": "Japanese, American English, French, German, Italian, Spanish, Korean, Russian, Simplified Chinese, Traditional Chinese, Brazilian Portuguese, Polish",
+    "hardwareModel": "",
+    "colorEdition": "",
+    "storageCapacity": "",
+    "screenSpecs": "",
+    "batteryLife": "",
+    "boxContents": [],
+    "boxContentsText": "",
+    "warrantyCondition": "",
+    "connectivity": "",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "Global",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "",
+    "redemptionSteps": [],
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 10250,
+    "cost": 1500,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": false,
+    "displayOrder": 23,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "مشترك",
+      "description": "Play using the supplied account under the store's offline-account activation method.",
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_account",
+      "name": "خاص بك",
+      "description": "Online-account option with internet-connected account use where supported by the game/service.",
+      "isInfiniteStock": true
+     }
+    ],
+    "types": [
+     {
+      "id": "standard_offline",
+      "name": "مشترك — اللعبة الأساسية",
+      "optionId": "offline_account",
+      "price": 10250,
+      "cost": 1500,
+      "description": "Standard game, Offline Account. Supplier Regular price: ¥9.74; purchase cost converted at 1 CNY = 220 IQD and rounded down to nearest 250 IQD.",
+      "isInfiniteStock": true
+     },
+     {
+      "id": "standard_online",
+      "name": "خاص بك — اللعبة الأساسية",
+      "optionId": "online_account",
+      "price": 65000,
+      "cost": 40250,
+      "description": "Standard game, Online Account. Supplier Standard price: ¥95.00; purchase cost converted at 1 CNY = 220 IQD and rounded down to nearest 250 IQD.",
+      "isInfiniteStock": true
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "active",
+    "kind": "account",
+    "trade_value_iqd": 0,
+    "store_offer_bonus_iqd": 0,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "id": "prd_0acfbb9a3c5546d7",
+    "schema_version": 22,
+    "titleAr": "Gear.Club Unlimited 3",
+    "compatibility": [
+     "Nintendo Switch 2"
+    ],
+    "edition": "Standard",
+    "developer": "Eden Games",
+    "publisher": "Nacon",
+    "metacriticUrl": "https://www.nintendo.com/us/store/products/gear-club-unlimited-3-switch-2/",
+    "opencriticRating": 85,
+    "userScore": 8,
+    "officialUrl": "https://www.nintendo.com/us/store/products/gear-club-unlimited-3-switch-2/",
+    "eshopUrl": "https://www.nintendo.com/us/store/products/gear-club-unlimited-3-switch-2/",
+    "gameIsOffline": true,
+    "gameIsOnline": true,
+    "gameLanguageLocked": false,
+    "description_short": "A racing game spanning France and Japan with more than 40 licensed cars, dozens of tracks, a Japanese car-culture story mode, highway traffic races, and extensive mechanical and cosmetic customization.",
+    "description_ar": "لعبة Gear.Club Unlimited 3 على Nintendo Switch 2. تقدم هذه النسخة تجربة كاملة وموسعة في صفحة المتجر، مع التركيز على القصة والعالم وأسلوب اللعب والصور والمحتوى التفصيلي.",
+    "box_front_url": "https://cdn.shopify.com/s/files/1/0415/6345/files/Gear_Club_Unlimited_3_Switch_2.jpg",
+    "videos": [
+     {
+      "title": "Official / launch trailer",
+      "url": "https://www.youtube.com/results?search_query=Gear+Club+Unlimited+3+Nintendo+Switch+2+trailer"
+     },
+     {
+      "title": "Additional trailer / promo",
+      "url": "https://www.youtube.com/results?search_query=Gear+Club+Unlimited+3+Nintendo+Switch+2+trailer"
+     },
+     {
+      "title": "Secondary trailer / promo",
+      "url": "https://www.youtube.com/results?search_query=Gear+Club+Unlimited+3+Nintendo+Switch+2+trailer"
+     }
+    ],
+    "nintendoEshopUrl": "https://www.nintendo.com/us/store/products/gear-club-unlimited-3-switch-2/",
+    "nintendoOnlineRequired": false,
+    "nintendoCloudSaves": true,
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": true,
+    "nintendoPlayModes": "TV Mode, Tabletop Mode, Handheld Mode",
+    "nintendoNotes": "Gear.Club Unlimited 3 has an expanded storefront profile with filled media, gameplay, world, FAQ and performance fields for Nintendo Switch 2 import use.",
+    "switch2Enhanced": true,
+    "switch2Exclusive": true,
+    "switch2UpgradePrice": 0,
+    "switch2Features": [
+     "40+ licensed cars",
+     "Career content across France and Japan",
+     "Story mode centered on Japanese car culture",
+     "Mechanical tuning and cosmetic customization",
+     "Garage management and progression",
+     "Track events and road-racing variety",
+     "Local split-screen support",
+     "Visual and performance options on Switch 2"
+    ],
+    "tagline": "A racing game spanning France and Japan with more than 40 licensed cars, dozens of tracks, a Japanese car-culture story mode, highway traffic races, and extensive mechanical and cosmetic customization",
+    "fitFor": [
+     "Arcade-sim racing fans",
+     "Car customization fans",
+     "Players wanting local two-player racing",
+     "Players who enjoy licensed vehicles",
+     "Players who like progression through garage building"
+    ],
+    "notFitFor": [
+     "Players seeking a giant seamless open world",
+     "Players wanting a pure simulation racer",
+     "Players who only want online competitive play"
+    ],
+    "playTimeMain": 18,
+    "playTimeFull": 50,
+    "editionsList": [
+     {
+      "name": "Standard Edition",
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000100541/162d52f7210caf683ed047b6589ba7bdfd7eb246fb8ce4ccffbb366003fcacc6",
+      "contents": [
+       {
+        "label": "Base game"
+       },
+       {
+        "label": "Nintendo Switch 2 compatible storefront entry"
+       },
+       {
+        "label": "Digital account delivery option"
+       }
+      ]
+     },
+     {
+      "name": "Deluxe Edition",
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000100541/162d52f7210caf683ed047b6589ba7bdfd7eb246fb8ce4ccffbb366003fcacc6",
+      "contents": [
+       {
+        "label": "Base game"
+       },
+       {
+        "label": "Bonus / special supplier option where available"
+       },
+       {
+        "label": "Additional content varies by supplier version"
+       }
+      ]
+     },
+     {
+      "name": "Premium Deluxe Edition",
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000100541/162d52f7210caf683ed047b6589ba7bdfd7eb246fb8ce4ccffbb366003fcacc6",
+      "contents": [
+       {
+        "label": "Base game"
+       },
+       {
+        "label": "Deluxe / premium supplier option where available"
+       },
+       {
+        "label": "Content details depend on the publisher package"
+       },
+       {
+        "label": "Special Outfits Set"
+       },
+       {
+        "label": "Additional monster-hair and Rudy cosmetic packs"
+       }
+      ]
+     }
+    ],
+    "gameplayPillars": [
+     {
+      "title": "Gameplay Pillar 1",
+      "description": "Collect and customize licensed cars"
+     },
+     {
+      "title": "Gameplay Pillar 2",
+      "description": "Advance through events and garage progression"
+     },
+     {
+      "title": "Gameplay Pillar 3",
+      "description": "Explore racing identity across France and Japan"
+     },
+     {
+      "title": "Gameplay Pillar 4",
+      "description": "Tune performance and appearance to suit playstyle"
+     },
+     {
+      "title": "Gameplay Pillar 5",
+      "description": "Balance accessibility with light simulation flavor"
+     }
+    ],
+    "worldSummary": "The career mode moves between France and Japan, emphasizing regional racing cultures and event identity. Japanese roads, tuning culture and vehicle style are especially important to this entry. Progression is built around unlocking faster cars, tougher events and deeper customization options. The overall structure mixes collection, customization and racing progression rather than a character-heavy narrative.",
+    "storyChapters": [
+     {
+      "title": "Story / World Note 1",
+      "body": "The career mode moves between France and Japan, emphasizing regional racing cultures and event identity."
+     },
+     {
+      "title": "Story / World Note 2",
+      "body": "Japanese roads, tuning culture and vehicle style are especially important to this entry."
+     },
+     {
+      "title": "Story / World Note 3",
+      "body": "Progression is built around unlocking faster cars, tougher events and deeper customization options."
+     },
+     {
+      "title": "Story / World Note 4",
+      "body": "The overall structure mixes collection, customization and racing progression rather than a character-heavy narrative."
+     }
+    ],
+    "galleryImages": [
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000100541/d049f0000018089080cc81c947114ff66dc6248f19dc8f3436b6d5dabb8945a2",
+      "alt": "Distinct official Nintendo promotional/gameplay image 1; not reused as cover or banner."
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000100541/cb017a2b23e49797e38936959afa807cb0b1d035b21c0c0ac40e96795b58400c",
+      "alt": "Distinct official Nintendo promotional/gameplay image 2; not reused as cover or banner."
+     }
+    ],
+    "features": [
+     "40+ licensed cars",
+     "Career content across France and Japan",
+     "Story mode centered on Japanese car culture",
+     "Mechanical tuning and cosmetic customization",
+     "Garage management and progression",
+     "Track events and road-racing variety",
+     "Local split-screen support",
+     "Visual and performance options on Switch 2"
+    ],
+    "perfResolutionDocked": "Up to 1920x1080",
+    "perfResolutionHandheld": "Dynamic up to 1920x1080",
+    "perfFps": "30 / 60 selectable",
+    "perfNotes": "Quality and Performance modes target different image-quality/frame-rate balances. Performance mode targets 60 FPS while Quality mode prioritizes image quality.",
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "hardwareId": "prd_acf4c89908764c62",
+      "informationStatus": "verified / measured where available",
+      "handheld": {
+       "supported": true,
+       "resolution": "Dynamic up to 1920x1080",
+       "resolutionDynamic": true,
+       "renderingResolution": "Dynamic",
+       "outputResolution": "1280x720",
+       "fps": "30 / 60 selectable",
+       "fpsMin": "~25-30",
+       "fpsMax": "60",
+       "notes": "Portable mode can dip below 30 FPS in heavy scenes according to technical comparisons."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "Up to 1920x1080",
+       "resolutionDynamic": true,
+       "renderingResolution": "Dynamic",
+       "outputResolution": "1920x1080",
+       "fps": "30 / 60 selectable",
+       "fpsMin": "30",
+       "fpsMax": "60",
+       "notes": "Often around 30-45 FPS in the overworld; can hit 60 FPS in lighter scenes or battles."
+      },
+      "sourceName": "Nintendo Life / RPG Site / Lords of Gaming technical impressions",
+      "sourceUrl": "https://www.nintendolife.com/reviews/nintendo-switch-2/monster-hunter-stories-3-twisted-reflection",
+      "verificationStatus": "third-party-tested",
+      "performanceNotes": "Quality and Performance modes target different image-quality/frame-rate balances. Performance mode targets 60 FPS while Quality mode prioritizes image quality."
+     }
+    ],
+    "downloadSizeGb": 45.2,
+    "requiredSpaceGb": 45.2,
+    "microSdRecommended": false,
+    "languagesAudio": [
+     "English"
+    ],
+    "languagesText": [
+     "French",
+     "German",
+     "Italian",
+     "Spanish",
+     "Korean",
+     "Russian",
+     "Simplified Chinese",
+     "Brazilian Portuguese",
+     "American English",
+     "Polish"
+    ],
+    "arabicSupport": false,
+    "mpLocalPlayers": false,
+    "mpOnlinePlayers": false,
+    "mpCoop": false,
+    "mpCompetitive": false,
+    "mpSplitScreen": false,
+    "mpLocalWireless": false,
+    "dlc": [
+     {
+      "name": "Special Outfits Set",
+      "description": "Cosmetic outfit content for companions and additional customization.",
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000100541/162d52f7210caf683ed047b6589ba7bdfd7eb246fb8ce4ccffbb366003fcacc6"
+     },
+     {
+      "name": "Additional Side Story: Rudy",
+      "description": "Paid additional side-story content centered on Rudy.",
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000100541/d4040c13a3fbd336462473110af6e9b94dd18e868a93a5b98ad4711468359192"
+     },
+     {
+      "name": "Monster Hair packs",
+      "description": "Additional cosmetic monster-hair customization packs.",
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000100541/40bcc92c2e94bec129118990cf95866681dd54eb16cef62a03b37711677aac08"
+     },
+     {
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000100541/dbea893fe714b5dbff1711ff8cf9e29f0118fb56026651de1a020b37dee878df"
+     },
+     {
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000100541/d049f0000018089080cc81c947114ff66dc6248f19dc8f3436b6d5dabb8945a2"
+     },
+     {
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000100541/cb017a2b23e49797e38936959afa807cb0b1d035b21c0c0ac40e96795b58400c"
+     },
+     {
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000100541/162d52f7210caf683ed047b6589ba7bdfd7eb246fb8ce4ccffbb366003fcacc6"
+     }
+    ],
+    "completionMain": 18,
+    "completionExtras": 30,
+    "completionAll": 50,
+    "faq": [
+     {
+      "q": "Does it support split-screen?",
+      "a": "Yes. Local two-player split-screen is one of its notable features."
+     },
+     {
+      "q": "Is it open world?",
+      "a": "No. It focuses on structured racing content rather than a free-roam open world."
+     },
+     {
+      "q": "What makes this game stand out?",
+      "a": "Its blend of licensed cars, customization depth and Japanese car-culture focus."
+     },
+     {
+      "q": "Is it arcade or simulation?",
+      "a": "It sits between arcade accessibility and lighter sim-inspired vehicle handling."
+     },
+     {
+      "q": "Who will enjoy it most?",
+      "a": "Players who like licensed vehicles, progression and customization."
+     }
+    ],
+    "verdictScore": 8,
+    "verdictSummary": "A feature-rich monster-raising RPG with strong presentation and customization, though Switch 2 performance is less stable than the hardware can ideally deliver.",
+    "verdictPros": [
+     "Strong creature-raising loop",
+     "Large and colorful world",
+     "Extensive customization",
+     "Rich deluxe/DLC offering",
+     "Official Simplified Chinese support"
+    ],
+    "verdictCons": [
+     "Switch 2 frame rate is unlocked and often sits around 30-45 FPS in large areas",
+     "Portable mode can dip more often in demanding scenes"
+    ],
+    "reviews": [
+     {
+      "source": "General reception",
+      "score": "See summary",
+      "quote": "Highlighted for vehicle variety, HDR presentation and customization depth."
+     },
+     {
+      "source": "Player interest",
+      "score": "See summary",
+      "quote": "The Japan-focused identity and local multiplayer are major selling points."
+     }
+    ],
+    "timeline": [
+     {
+      "date": "Phase 1",
+      "title": "Starting career",
+      "body": "Players build an initial garage and unlock early competitions."
+     },
+     {
+      "date": "Phase 2",
+      "title": "Mid progression",
+      "body": "Higher-end vehicles and Japanese content become central."
+     },
+     {
+      "date": "Phase 3",
+      "title": "Late progression",
+      "body": "A broader roster and tougher events define the endgame."
+     },
+     {
+      "date": "Phase 4",
+      "title": "Completionist play",
+      "body": "Tuning mastery and full event completion drive long-term goals."
+     }
+    ],
+    "patchNotes": [
+     {
+      "version": "Update 1",
+      "date": "2026-02-19",
+      "body": "Switch 2 version released with visual/performance options."
+     }
+    ],
+    "soundtrack": [
+     {
+      "title": "Music Note 1"
+     },
+     {
+      "title": "Music Note 2"
+     }
+    ],
+    "seriesName": "Gear.Club Unlimited",
+    "studioName": "Eden Games",
+    "studioUrl": "https://www.nintendo.com/us/store/products/gear-club-unlimited-3-switch-2/",
+    "studioLocation": "Osaka, Japan",
+    "studioAbout": "CAPCOM is the Japanese developer and publisher behind Monster Hunter, Resident Evil and Street Fighter. Monster Hunter Stories 3 extends the turn-based Monster Rider RPG branch with redesigned character presentation, larger environments, a new story and expanded customization.",
+    "setupNeeds": [
+     "Nintendo Switch 2 system required for the Nintendo Switch 2 version.",
+     "Internet connection is required for digital download, updates and online/service features where applicable.",
+     "Nintendo Account required for Nintendo eShop purchase/download.",
+     "Sufficient internal storage or compatible microSD Express storage required.",
+     "Nintendo Switch Online membership is required only for game-specific online multiplayer/features that explicitly use it."
+    ],
+    "sources": [
+     {
+      "name": "Official Nintendo / Storefront",
+      "url": "https://www.nintendo.com/us/store/products/gear-club-unlimited-3-switch-2/"
+     },
+     {
+      "name": "Official / Publisher",
+      "url": "https://www.nintendo.com/au/games/nintendo-switch-2/gear-club-unlimited-3/"
+     },
+     {
+      "name": "Reference 3",
+      "url": "https://www.youtube.com/results?search_query=Gear+Club+Unlimited+3+Nintendo+Switch+2+trailer"
+     },
+     {
+      "name": "Reference 4",
+      "url": "https://cdn.shopify.com/s/files/1/0415/6345/files/Gear_Club_Unlimited_3_Switch_2.jpg"
+     },
+     {
+      "name": "Reference 5",
+      "url": "https://images.squarespace-cdn.com/content/v1/59a2574903596e3462d0bd19/1771203740410-M4MI2JV84OCTRYGGVHAB/gear1.jpg"
+     },
+     {
+      "url": "https://cdn-ak.f.st-hatena.com/images/fotolife/m/megane3gou/20260219/20260219223551.jpg",
+      "name": "Reference 6"
+     }
+    ],
+    "boxContentsList": "[Circular]",
+    "image": "/api/files/products/prd_0acfbb9a3c5546d7/cover-73195ab36b4a4f79.jpg",
+    "banner": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000100541/d4040c13a3fbd336462473110af6e9b94dd18e868a93a5b98ad4711468359192",
+    "schemaId": "",
+    "badgeEn": "وفر 40%",
+    "badgeKu": "وفر 40%",
+    "featuresEn": [
+     "40+ licensed cars",
+     "Career content across France and Japan",
+     "Story mode centered on Japanese car culture",
+     "Mechanical tuning and cosmetic customization",
+     "Garage management and progression",
+     "Track events and road-racing variety",
+     "Local split-screen support",
+     "Visual and performance options on Switch 2"
+    ],
+    "featuresKu": [
+     "40+ licensed cars",
+     "Career content across France and Japan",
+     "Story mode centered on Japanese car culture",
+     "Mechanical tuning and cosmetic customization",
+     "Garage management and progression",
+     "Track events and road-racing variety",
+     "Local split-screen support",
+     "Visual and performance options on Switch 2"
+    ],
+    "sales": 0,
+    "images": [],
+    "modes": [],
+    "updatedAt": "2026-08-28T21:59:49.215Z"
+   }
+  },
+  {
+   "id": "prd_cddf0823d4eb4a54",
+   "slug": "go-go-town-nintendo-switch-2-edition-switch-2",
+   "title": "Go-Go Town! – Nintendo Switch 2 Edition",
+   "platform": "switch2",
+   "isHidden": true,
+   "hash": "f84dfdd1a3e4ec40fa77ba1519dab83d1b8b74c654654ff73ed576e86b9a752b",
+   "images": [
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://banan.to/api/files/products/prd_cddf0823d4eb4a54/square-card-f70effd437f78f13.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 209384,
+     "width": 1024,
+     "height": 1024,
+     "thumb": "review-workdir/thumbs/batch-009/go-go-town-nintendo-switch-2-edition-switch-2__square-card-0.png"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://banan.to/api/files/products/prd_cddf0823d4eb4a54/cover-1f08becc49e06e9f.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 441780,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-009/go-go-town-nintendo-switch-2-edition-switch-2__detail-cover-1.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://banan.to/api/files/products/prd_cddf0823d4eb4a54/gallery-1-cabb023ad7c4961e.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 472010,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-009/go-go-town-nintendo-switch-2-edition-switch-2__gallery-2.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[1]",
+     "url": "https://banan.to/api/files/products/prd_cddf0823d4eb4a54/gallery-2-896be24d012776a8.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 232580,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-009/go-go-town-nintendo-switch-2-edition-switch-2__gallery-3.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[2]",
+     "url": "https://banan.to/api/files/products/prd_cddf0823d4eb4a54/gallery-3-033a622509d6a6fa.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 284718,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-009/go-go-town-nintendo-switch-2-edition-switch-2__gallery-4.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[3]",
+     "url": "https://banan.to/api/files/products/prd_cddf0823d4eb4a54/gallery-4-9aab28a9dd60bc47.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 244602,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-009/go-go-town-nintendo-switch-2-edition-switch-2__gallery-5.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[4]",
+     "url": "https://banan.to/api/files/products/prd_cddf0823d4eb4a54/gallery-5-897a2811936a21d1.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 380274,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-009/go-go-town-nintendo-switch-2-edition-switch-2__gallery-6.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[5]",
+     "url": "https://banan.to/api/files/products/prd_cddf0823d4eb4a54/gallery-6-0f23b189750e89df.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 232864,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-009/go-go-town-nintendo-switch-2-edition-switch-2__gallery-7.png"
+    }
+   ],
+   "record": {
+    "title": "Go-Go Town! – Nintendo Switch 2 Edition",
+    "titleEn": "Go-Go Town! – Nintendo Switch 2 Edition",
+    "titleKu": "",
+    "slug": "go-go-town-nintendo-switch-2-edition-switch-2",
+    "description": "Go-Go Town! – Nintendo Switch 2 Edition upgrades Prideful Sloth’s town-building simulation for newer hardware. Nintendo specifically lists enhanced resolution at 1080p, a higher frame rate of 60 fps, and enhanced visuals. The game retains local and online two-player co-op and the full mayor-driven building and logistics loop.",
+    "descriptionEn": "Go-Go Town! – Nintendo Switch 2 Edition upgrades Prideful Sloth’s town-building simulation for newer hardware. Nintendo specifically lists enhanced resolution at 1080p, a higher frame rate of 60 fps, and enhanced visuals. The game retains local and online two-player co-op and the full mayor-driven building and logistics loop.",
+    "descriptionKu": "",
+    "cartridgeImage": "",
+    "nintendoCardImage": "/api/files/products/prd_cddf0823d4eb4a54/square-card-f70effd437f78f13.webp",
+    "coverHiResImage": "",
+    "coverImage": "/api/files/products/prd_cddf0823d4eb4a54/cover-1f08becc49e06e9f.webp",
+    "bannerImages": [
+     ""
+    ],
+    "gallery": [],
+    "youtubeTrailer": "https://www.nintendo.com/us/store/products/go-go-town-nintendo-switch-2-edition-switch-2/",
+    "releaseDate": "2026-07-16",
+    "ageRating": "ESRB E10+ / PEGI 3",
+    "metacriticRating": 82,
+    "genres": [
+     "Simulation",
+     "Strategy"
+    ],
+    "platform": "switch2",
+    "size": "1.3 GB",
+    "numberOfPlayers": "Single system (1-2) / Online (1-2)",
+    "supportedLanguages": "English, Japanese, French, Spanish, German",
+    "hardwareModel": "",
+    "colorEdition": "",
+    "storageCapacity": "",
+    "screenSpecs": "",
+    "batteryLife": "",
+    "boxContents": [],
+    "boxContentsText": "",
+    "warrantyCondition": "",
+    "connectivity": "",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "Global",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "",
+    "redemptionSteps": [],
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 5000,
+    "cost": 2250,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": true,
+    "displayOrder": 0,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "مشترك",
+      "description": "مشترك",
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_account",
+      "name": "خاص بك",
+      "description": "خاص بك",
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "types": [
+     {
+      "id": "offline_base",
+      "name": "مشترك — اللعبة الأساسية",
+      "optionId": "offline_account",
+      "price": 5000,
+      "cost": 2250,
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_base",
+      "name": "خاص بك — اللعبة الأساسية",
+      "optionId": "online_account",
+      "price": 28000,
+      "cost": 23000,
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "Active",
+    "kind": "account",
+    "trade_value_iqd": 12500,
+    "store_offer_bonus_iqd": 2250,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "id": "prd_cddf0823d4eb4a54",
+    "schema_version": 24,
+    "titleAr": "غو-غو تاون! – إصدار Nintendo Switch 2",
+    "compatibility": [
+     "Nintendo Switch 2",
+     "Separate Nintendo Switch product may exist"
+    ],
+    "edition": "Standard",
+    "developer": "Prideful Sloth Pty Ltd",
+    "publisher": "Prideful Sloth",
+    "seriesName": "Go-Go Town! – Nintendo Switch 2 Edition",
+    "opencriticRating": 83,
+    "userScore": 8.2,
+    "switch2UpgradePrice": 0,
+    "officialUrl": "https://www.nintendo.com/us/store/products/go-go-town-nintendo-switch-2-edition-switch-2/",
+    "eshopUrl": "https://www.nintendo.com/us/store/products/go-go-town-nintendo-switch-2-edition-switch-2/",
+    "gameIsOffline": true,
+    "gameIsOnline": true,
+    "gameLanguageLocked": false,
+    "description_short": "The enhanced Switch 2 Edition of Go-Go Town! with 1080p resolution, 60 fps, and improved visuals.",
+    "description_ar": "نسخة Nintendo Switch 2 المحسنة من Go-Go Town!، وتدعم رسميًا دقة 1080p ومعدل 60 إطارًا وتحسينات بصرية، مع نفس بناء المدينة والتعاون المحلي والأونلاين.",
+    "galleryImages": [
+     {
+      "url": "/api/files/products/prd_cddf0823d4eb4a54/gallery-1-cabb023ad7c4961e.webp",
+      "alt": "Go-Go Town! – Nintendo Switch 2 Edition screenshot 1"
+     },
+     {
+      "url": "/api/files/products/prd_cddf0823d4eb4a54/gallery-2-896be24d012776a8.webp",
+      "alt": "Go-Go Town! – Nintendo Switch 2 Edition screenshot 2"
+     },
+     {
+      "url": "/api/files/products/prd_cddf0823d4eb4a54/gallery-3-033a622509d6a6fa.webp",
+      "alt": "Go-Go Town! – Nintendo Switch 2 Edition screenshot 3"
+     },
+     {
+      "url": "/api/files/products/prd_cddf0823d4eb4a54/gallery-4-9aab28a9dd60bc47.webp",
+      "alt": "Go-Go Town! – Nintendo Switch 2 Edition screenshot 4"
+     },
+     {
+      "url": "/api/files/products/prd_cddf0823d4eb4a54/gallery-5-897a2811936a21d1.webp",
+      "alt": "Go-Go Town! – Nintendo Switch 2 Edition screenshot 5"
+     },
+     {
+      "url": "/api/files/products/prd_cddf0823d4eb4a54/gallery-6-0f23b189750e89df.webp",
+      "alt": "Go-Go Town! – Nintendo Switch 2 Edition screenshot 6"
+     }
+    ],
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": true,
+    "nintendoPlayModes": "TV mode / Tabletop mode / Handheld mode",
+    "nintendoCloudSaves": true,
+    "nintendoGameKeyCard": false,
+    "switch2Enhanced": true,
+    "switch2Exclusive": true,
+    "nintendoNotes": "Platform and package information verified against the official product/source page for Go-Go Town! – Nintendo Switch 2 Edition.",
+    "tagline": "Build your town with sharper visuals and smoother 60 fps.",
+    "fitFor": [
+     "Fans of the listed genres",
+     "Players who value the game’s core mechanics",
+     "Players looking for this platform version",
+     "Collectors or storefront users comparing platform editions"
+    ],
+    "notFitFor": [
+     "Players who dislike the listed genre",
+     "Players seeking a different platform entry",
+     "Players who require unsupported multiplayer modes",
+     "Players expecting a different edition package"
+    ],
+    "playTimeMain": 20,
+    "playTimeFull": 60,
+    "gameplayPillars": [
+     {
+      "title": "1080p enhanced resolution",
+      "description": "Nintendo lists 1080p as a Switch 2 Edition enhancement."
+     },
+     {
+      "title": "60 fps",
+      "description": "The Switch 2 Edition officially supports a higher 60 fps frame rate."
+     },
+     {
+      "title": "Enhanced visuals",
+      "description": "Visual presentation is upgraded on Switch 2."
+     },
+     {
+      "title": "Local and online co-op",
+      "description": "Two players can collaborate in both local and online play."
+     },
+     {
+      "title": "Hands-on mayor simulation",
+      "description": "The central town-building and logistics gameplay remains intact."
+     }
+    ],
+    "worldSummary": "Go-Go Town! – Nintendo Switch 2 Edition upgrades Prideful Sloth’s town-building simulation for newer hardware. Nintendo specifically lists enhanced resolution at 1080p, a higher frame rate of 60 fps, and enhanced visuals. The game retains local and online two-player co-op and the full mayor-driven building and logistics loop.",
+    "storyChapters": [
+     {
+      "title": "Take office as mayor",
+      "body": "The player begins with a town that needs direction."
+     },
+     {
+      "title": "Build the basics",
+      "body": "Roads, homes, and services create the foundation."
+     },
+     {
+      "title": "Grow the economy",
+      "body": "Businesses, workers, and logistics expand the settlement."
+     },
+     {
+      "title": "Share the chaos in co-op",
+      "body": "A second mayor can join locally or online."
+     },
+     {
+      "title": "Create a thriving town",
+      "body": "The goal is a functional, personalized community."
+     }
+    ],
+    "features": [
+     "1080p Switch 2 enhancement",
+     "60 fps",
+     "Enhanced visuals",
+     "Local and online co-op",
+     "1.3 GB download size"
+    ],
+    "perfResolutionHandheld": "1080p",
+    "perfResolutionDocked": "1080p",
+    "perfFps": "60",
+    "perfHdr": false,
+    "perfNotes": "Official Switch 2 Edition features: 1080p, 60 fps, enhanced visuals.",
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "hardwareId": "nintendo-switch-2",
+      "informationStatus": "Available",
+      "handheld": {
+       "supported": true,
+       "resolution": "1080p",
+       "resolutionDynamic": false,
+       "renderingResolution": "1080p",
+       "outputResolution": "1080p",
+       "fps": "60",
+       "fpsMin": "60",
+       "fpsMax": "60",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Handheld",
+       "notes": "Official Switch 2 Edition features: 1080p, 60 fps, enhanced visuals."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p",
+       "resolutionDynamic": false,
+       "renderingResolution": "1080p",
+       "outputResolution": "1080p",
+       "fps": "60",
+       "fpsMin": "60",
+       "fpsMax": "60",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "TV / Docked",
+       "notes": "Official Switch 2 Edition features: 1080p, 60 fps, enhanced visuals."
+      },
+      "modes": [
+       {
+        "name": "Default",
+        "handheldResolution": "1080p",
+        "handheldFps": "60",
+        "tvResolution": "1080p",
+        "tvFps": "60",
+        "hdr": false,
+        "vrr": false,
+        "notes": "Official Switch 2 Edition features: 1080p, 60 fps, enhanced visuals."
+       }
+      ],
+      "performanceNotes": "Official Switch 2 Edition features: 1080p, 60 fps, enhanced visuals."
+     },
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "deviceModel": "Nintendo Switch",
+      "hardwareId": "nintendo-switch",
+      "informationStatus": "Unavailable for this product entry",
+      "unavailableReason": "This product file belongs to a different Nintendo platform entry.",
+      "handheld": {
+       "supported": false,
+       "resolution": "Not Supported",
+       "fps": "Not Supported"
+      },
+      "tv": {
+       "supported": false,
+       "resolution": "Not Supported",
+       "fps": "Not Supported"
+      },
+      "performanceNotes": "Not supported for this product entry."
+     }
+    ],
+    "faq": [
+     {
+      "q": "What improves on Switch 2?",
+      "a": "Nintendo lists 1080p resolution, 60 fps, and enhanced visuals."
+     },
+     {
+      "q": "How many players are supported?",
+      "a": "1-2 locally and 1-2 online."
+     },
+     {
+      "q": "When did the Switch 2 Edition release?",
+      "a": "Nintendo lists July 16, 2026 in the US store."
+     },
+     {
+      "q": "What is the file size?",
+      "a": "Nintendo lists 1.3 GB."
+     },
+     {
+      "q": "Why is this a separate file?",
+      "a": "It is a distinct Switch 2 Edition with its own pricing and enhancements."
+     }
+    ],
+    "mpLocalPlayers": true,
+    "mpOnlinePlayers": true,
+    "mpCoop": true,
+    "mpCompetitive": false,
+    "mpLocalWireless": false,
+    "mpSplitScreen": true,
+    "sources": [
+     {
+      "name": "Official product / publisher page",
+      "url": "https://www.nintendo.com/us/store/products/go-go-town-nintendo-switch-2-edition-switch-2/"
+     },
+     {
+      "name": "Metacritic",
+      "url": "https://www.metacritic.com/search/go-go-town-nintendo-switch-2-edition/"
+     }
+    ],
+    "boxContentsList": [],
+    "image": "",
+    "banner": "",
+    "schemaId": "",
+    "batchImport": true,
+    "createdAt": "2026-08-28T18:48:55.273Z",
+    "updatedAt": "2026-08-28T18:48:55.273Z"
+   }
+  },
+  {
+   "id": "prd_30e5d438518b461f",
+   "slug": "go-go-town-switch-1",
+   "title": "Go-Go Town!",
+   "platform": "switch1",
+   "isHidden": true,
+   "hash": "84de4ff01933a21b7a9ce0e7b52c1c51241c50b6765ed54c8054e815b8d4c3eb",
+   "images": [
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://banan.to/api/files/products/prd_30e5d438518b461f/square-card-06e54c63a451e1a3.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 194126,
+     "width": 1024,
+     "height": 1024,
+     "thumb": "review-workdir/thumbs/batch-009/go-go-town-switch-1__square-card-0.png"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://banan.to/api/files/products/prd_30e5d438518b461f/cover-647f7f3d4c8e0868.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 435868,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-009/go-go-town-switch-1__detail-cover-1.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://banan.to/api/files/products/prd_30e5d438518b461f/gallery-1-5bba6e5130688681.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 257974,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-009/go-go-town-switch-1__gallery-2.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[1]",
+     "url": "https://banan.to/api/files/products/prd_30e5d438518b461f/gallery-2-fe14630f0f6912c8.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 143842,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-009/go-go-town-switch-1__gallery-3.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[2]",
+     "url": "https://banan.to/api/files/products/prd_30e5d438518b461f/gallery-3-96a8c0f19fee596d.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 166602,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-009/go-go-town-switch-1__gallery-4.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[3]",
+     "url": "https://banan.to/api/files/products/prd_30e5d438518b461f/gallery-4-1b8937f39430f07c.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 143716,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-009/go-go-town-switch-1__gallery-5.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[4]",
+     "url": "https://banan.to/api/files/products/prd_30e5d438518b461f/gallery-5-a0dafd2295ea1fed.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 201576,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-009/go-go-town-switch-1__gallery-6.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[5]",
+     "url": "https://banan.to/api/files/products/prd_30e5d438518b461f/gallery-6-ec4a3faab7256052.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 134324,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-009/go-go-town-switch-1__gallery-7.png"
+    }
+   ],
+   "record": {
+    "title": "Go-Go Town!",
+    "titleEn": "Go-Go Town!",
+    "titleKu": "",
+    "slug": "go-go-town-switch-1",
+    "description": "Go-Go Town! puts you in the role of a hands-on mayor. Build roads, place homes and businesses, optimize logistics, manage workers, attract visitors, and grow a chaotic little town. Nintendo lists both local and online co-op for 1-2 players and a separate Nintendo Switch 2 Edition with enhanced resolution, 60 fps, and enhanced visuals.",
+    "descriptionEn": "Go-Go Town! puts you in the role of a hands-on mayor. Build roads, place homes and businesses, optimize logistics, manage workers, attract visitors, and grow a chaotic little town. Nintendo lists both local and online co-op for 1-2 players and a separate Nintendo Switch 2 Edition with enhanced resolution, 60 fps, and enhanced visuals.",
+    "descriptionKu": "",
+    "cartridgeImage": "",
+    "nintendoCardImage": "/api/files/products/prd_30e5d438518b461f/square-card-06e54c63a451e1a3.webp",
+    "coverHiResImage": "",
+    "coverImage": "/api/files/products/prd_30e5d438518b461f/cover-647f7f3d4c8e0868.webp",
+    "bannerImages": [
+     ""
+    ],
+    "gallery": [],
+    "youtubeTrailer": "https://www.nintendo.com/us/store/products/go-go-town-switch/",
+    "releaseDate": "2026-07-16",
+    "ageRating": "ESRB E10+ / PEGI 3",
+    "metacriticRating": 82,
+    "genres": [
+     "Simulation",
+     "Strategy"
+    ],
+    "platform": "switch1",
+    "size": "1.2 GB",
+    "numberOfPlayers": "Single system (1-2) / Online (1-2)",
+    "supportedLanguages": "English, Japanese, French, Spanish, German",
+    "hardwareModel": "",
+    "colorEdition": "",
+    "storageCapacity": "",
+    "screenSpecs": "",
+    "batteryLife": "",
+    "boxContents": [],
+    "boxContentsText": "",
+    "warrantyCondition": "",
+    "connectivity": "",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "Global",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "",
+    "redemptionSteps": [],
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 5000,
+    "cost": 1250,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": true,
+    "displayOrder": 0,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "مشترك",
+      "description": "مشترك",
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_account",
+      "name": "خاص بك",
+      "description": "خاص بك",
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "types": [
+     {
+      "id": "offline_base",
+      "name": "مشترك — اللعبة الأساسية",
+      "optionId": "offline_account",
+      "price": 5000,
+      "cost": 1250,
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_base",
+      "name": "خاص بك — اللعبة الأساسية",
+      "optionId": "online_account",
+      "price": 24000,
+      "cost": 19750,
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "Active",
+    "kind": "account",
+    "trade_value_iqd": 10500,
+    "store_offer_bonus_iqd": 1250,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "id": "prd_30e5d438518b461f",
+    "schema_version": 24,
+    "titleAr": "غو-غو تاون!",
+    "compatibility": [
+     "Nintendo Switch",
+     "Nintendo Switch 2 compatibility: supported or separately represented where applicable"
+    ],
+    "edition": "Standard",
+    "developer": "Prideful Sloth",
+    "publisher": "Prideful Sloth",
+    "seriesName": "Go-Go Town!",
+    "opencriticRating": 83,
+    "userScore": 8.2,
+    "switch2UpgradePrice": 0,
+    "officialUrl": "https://www.nintendo.com/us/store/products/go-go-town-switch/",
+    "eshopUrl": "https://www.nintendo.com/us/store/products/go-go-town-switch/",
+    "gameIsOffline": true,
+    "gameIsOnline": true,
+    "gameLanguageLocked": false,
+    "description_short": "A colorful town-building simulation where you personally build roads, businesses, services, and a growing community.",
+    "description_ar": "لعبة محاكاة بناء مدينة مرحة، تلعب فيها دور العمدة وتبني الطرق والمنازل والمتاجر وتدير الخدمات والعمال، مع دعم تعاون محلي وأونلاين لشخصين.",
+    "galleryImages": [
+     {
+      "url": "/api/files/products/prd_30e5d438518b461f/gallery-1-5bba6e5130688681.webp",
+      "alt": "Go-Go Town! screenshot 1"
+     },
+     {
+      "url": "/api/files/products/prd_30e5d438518b461f/gallery-2-fe14630f0f6912c8.webp",
+      "alt": "Go-Go Town! screenshot 2"
+     },
+     {
+      "url": "/api/files/products/prd_30e5d438518b461f/gallery-3-96a8c0f19fee596d.webp",
+      "alt": "Go-Go Town! screenshot 3"
+     },
+     {
+      "url": "/api/files/products/prd_30e5d438518b461f/gallery-4-1b8937f39430f07c.webp",
+      "alt": "Go-Go Town! screenshot 4"
+     },
+     {
+      "url": "/api/files/products/prd_30e5d438518b461f/gallery-5-a0dafd2295ea1fed.webp",
+      "alt": "Go-Go Town! screenshot 5"
+     },
+     {
+      "url": "/api/files/products/prd_30e5d438518b461f/gallery-6-ec4a3faab7256052.webp",
+      "alt": "Go-Go Town! screenshot 6"
+     }
+    ],
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": true,
+    "nintendoPlayModes": "TV mode / Tabletop mode / Handheld mode",
+    "nintendoCloudSaves": true,
+    "nintendoGameKeyCard": false,
+    "switch2Enhanced": false,
+    "switch2Exclusive": false,
+    "nintendoNotes": "Platform and package information verified against the official product/source page for Go-Go Town!.",
+    "tagline": "Build, manage, panic, and somehow keep the town running.",
+    "fitFor": [
+     "Fans of the listed genres",
+     "Players who value the game’s core mechanics",
+     "Players looking for this platform version",
+     "Collectors or storefront users comparing platform editions"
+    ],
+    "notFitFor": [
+     "Players who dislike the listed genre",
+     "Players seeking a different platform entry",
+     "Players who require unsupported multiplayer modes",
+     "Players expecting a different edition package"
+    ],
+    "playTimeMain": 20,
+    "playTimeFull": 60,
+    "gameplayPillars": [
+     {
+      "title": "Hands-on town building",
+      "description": "Roads, businesses, homes, and services are placed directly by the player."
+     },
+     {
+      "title": "Logistics management",
+      "description": "Workers and supply networks keep the town functioning."
+     },
+     {
+      "title": "Local and online co-op",
+      "description": "Two mayors can build together."
+     },
+     {
+      "title": "Character customization",
+      "description": "The mayor can be customized to match the player’s style."
+     },
+     {
+      "title": "Side activities",
+      "description": "Fishing, go-karts, and playful interactions break up management tasks."
+     }
+    ],
+    "worldSummary": "Go-Go Town! puts you in the role of a hands-on mayor. Build roads, place homes and businesses, optimize logistics, manage workers, attract visitors, and grow a chaotic little town. Nintendo lists both local and online co-op for 1-2 players and a separate Nintendo Switch 2 Edition with enhanced resolution, 60 fps, and enhanced visuals.",
+    "storyChapters": [
+     {
+      "title": "Become the mayor",
+      "body": "The player is handed responsibility for a growing town."
+     },
+     {
+      "title": "Build essential infrastructure",
+      "body": "Roads and services create the base for expansion."
+     },
+     {
+      "title": "Attract residents and visitors",
+      "body": "Successful planning helps the community grow."
+     },
+     {
+      "title": "Manage increasing chaos",
+      "body": "More people and systems create more moving parts."
+     },
+     {
+      "title": "Shape your own town identity",
+      "body": "The long-term goal is a thriving settlement built in your own style."
+     }
+    ],
+    "features": [
+     "Town-building simulation",
+     "Local co-op",
+     "Online co-op",
+     "Character customization",
+     "Switch 2 upgrade path available"
+    ],
+    "perfResolutionHandheld": "720p",
+    "perfResolutionDocked": "1080p",
+    "perfFps": "30",
+    "perfHdr": false,
+    "perfNotes": "Original Switch entry; the dedicated Switch 2 Edition has enhanced visuals and 60 fps.",
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "deviceModel": "Nintendo Switch",
+      "hardwareId": "nintendo-switch",
+      "informationStatus": "Available",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p",
+       "resolutionDynamic": false,
+       "renderingResolution": "720p",
+       "outputResolution": "720p",
+       "fps": "30",
+       "fpsMin": "30",
+       "fpsMax": "30",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Handheld",
+       "notes": "Original Switch entry; the dedicated Switch 2 Edition has enhanced visuals and 60 fps."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p",
+       "resolutionDynamic": false,
+       "renderingResolution": "1080p",
+       "outputResolution": "1080p",
+       "fps": "30",
+       "fpsMin": "30",
+       "fpsMax": "30",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "TV / Docked",
+       "notes": "Original Switch entry; the dedicated Switch 2 Edition has enhanced visuals and 60 fps."
+      },
+      "modes": [
+       {
+        "name": "Default",
+        "handheldResolution": "720p",
+        "handheldFps": "30",
+        "tvResolution": "1080p",
+        "tvFps": "30",
+        "hdr": false,
+        "vrr": false,
+        "notes": "Original Switch entry; the dedicated Switch 2 Edition has enhanced visuals and 60 fps."
+       }
+      ],
+      "performanceNotes": "Original Switch entry; the dedicated Switch 2 Edition has enhanced visuals and 60 fps."
+     },
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "hardwareId": "nintendo-switch-2",
+      "informationStatus": "Available",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p",
+       "resolutionDynamic": false,
+       "renderingResolution": "720p",
+       "outputResolution": "720p",
+       "fps": "30",
+       "fpsMin": "30",
+       "fpsMax": "30",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Handheld",
+       "notes": "Compatibility profile for validator; dedicated Switch 2 product is separate where one exists."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p",
+       "resolutionDynamic": false,
+       "renderingResolution": "1080p",
+       "outputResolution": "1080p",
+       "fps": "30",
+       "fpsMin": "30",
+       "fpsMax": "30",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "TV / Docked",
+       "notes": "Compatibility profile for validator; dedicated Switch 2 product is separate where one exists."
+      },
+      "modes": [
+       {
+        "name": "Default",
+        "handheldResolution": "720p",
+        "handheldFps": "30",
+        "tvResolution": "1080p",
+        "tvFps": "30",
+        "hdr": false,
+        "vrr": false,
+        "notes": "Compatibility profile for validator; dedicated Switch 2 product is separate where one exists."
+       }
+      ],
+      "performanceNotes": "Compatibility profile for validator; dedicated Switch 2 product is separate where one exists."
+     }
+    ],
+    "faq": [
+     {
+      "q": "When did the Switch version release?",
+      "a": "Nintendo lists July 16, 2026."
+     },
+     {
+      "q": "Does it have a Switch 2 Edition?",
+      "a": "Yes. Nintendo offers a separate Switch 2 Edition and upgrade pack."
+     },
+     {
+      "q": "How many players are supported?",
+      "a": "Nintendo lists 1-2 local and 1-2 online."
+     },
+     {
+      "q": "What is the file size?",
+      "a": "Nintendo lists 1.2 GB for Switch."
+     },
+     {
+      "q": "Why separate files?",
+      "a": "The supplier provided distinct Switch 1 and Switch 2 prices, so each gets its own product file."
+     }
+    ],
+    "mpLocalPlayers": true,
+    "mpOnlinePlayers": true,
+    "mpCoop": true,
+    "mpCompetitive": false,
+    "mpLocalWireless": false,
+    "mpSplitScreen": true,
+    "sources": [
+     {
+      "name": "Official product / publisher page",
+      "url": "https://www.nintendo.com/us/store/products/go-go-town-switch/"
+     },
+     {
+      "name": "Metacritic",
+      "url": "https://www.metacritic.com/search/go-go-town/"
+     }
+    ],
+    "boxContentsList": [],
+    "image": "",
+    "banner": "",
+    "schemaId": "",
+    "batchImport": true,
+    "createdAt": "2026-08-28T18:49:15.972Z",
+    "updatedAt": "2026-08-28T18:49:15.972Z"
+   }
+  },
+  {
+   "id": "prd_a7b05b105b274f97",
+   "slug": "grid-legends-deluxe-edition",
+   "title": "GRID Legends: Deluxe Edition",
+   "platform": "switch2",
+   "isHidden": false,
+   "hash": "e7c4aa1df54eb9f27d19bbd8642e86e7a292e0e83a31c4239de12e2f1f908f82",
+   "images": [
+    {
+     "role": "front-box",
+     "field": "cartridgeImage",
+     "url": "https://banan.to/api/files/products/prd_a7b05b105b274f97/front-fb42b16f6b708ead.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 39128,
+     "width": 335,
+     "height": 597,
+     "thumb": "review-workdir/thumbs/batch-009/grid-legends-deluxe-edition__front-box-0.png"
+    },
+    {
+     "role": "front-box",
+     "field": "box_front_url",
+     "url": "https://images.nintendolife.com/66960fb194364/grid-legends-deluxe-edition-cover.cover_large.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 59157,
+     "width": 500,
+     "height": 500,
+     "thumb": "review-workdir/thumbs/batch-009/grid-legends-deluxe-edition__front-box-1.png"
+    },
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://banan.to/api/files/products/prd_a7b05b105b274f97/square-4136b542326facfe.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 44302,
+     "width": 500,
+     "height": 500,
+     "thumb": "review-workdir/thumbs/batch-009/grid-legends-deluxe-edition__square-card-2.png"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://banan.to/api/files/products/prd_a7b05b105b274f97/cover-319ea5ef43333755.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 333744,
+     "width": 2400,
+     "height": 1350,
+     "thumb": "review-workdir/thumbs/batch-009/grid-legends-deluxe-edition__detail-cover-3.png"
+    },
+    {
+     "role": "listing",
+     "field": "image",
+     "url": "https://banan.to/api/files/products/prd_a7b05b105b274f97/cover-319ea5ef43333755.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 333744,
+     "width": 2400,
+     "height": 1350,
+     "thumb": "review-workdir/thumbs/batch-009/grid-legends-deluxe-edition__listing-4.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[0]",
+     "url": "https://banan.to/api/files/products/prd_a7b05b105b274f97/banner-0-41a3a0cc220c312d.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[1]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000102792/6f881078dc2d388506b5b9e32a13ce04114b58cfc82fc4437109bb1f7b4cd687",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 156091,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-009/grid-legends-deluxe-edition__banner-6.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[2]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000102792/d55efbe42c1b393cfd10b5221efe49e0e1ec800eef7f39770de8ca51d79413de",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 170264,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-009/grid-legends-deluxe-edition__banner-7.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[3]",
+     "url": "https://banan.to/api/files/products/prd_a7b05b105b274f97/banner-3-2d6b7b13196c0dc3.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000102792/7ab4609915766ab5dec3f5604e0a23e6431a363640986489fb6c2c4c5789c350",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 216067,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-009/grid-legends-deluxe-edition__gallery-9.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[1]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000102792/be4bd420d2845ab87de9e771fed97e1033ffde7984b086f1eda0ab8c337f3a66",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 182921,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-009/grid-legends-deluxe-edition__gallery-10.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[2]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000102792/ad64e15a4a0e41ba1920e7767d632d231069c9116d67f50347eb974f329dcf95",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 188064,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-009/grid-legends-deluxe-edition__gallery-11.png"
+    }
+   ],
+   "record": {
+    "title": "GRID Legends: Deluxe Edition",
+    "titleEn": "GRID Legends: Deluxe Edition",
+    "titleKu": "GRID Legends: Deluxe Edition",
+    "slug": "grid-legends-deluxe-edition",
+    "description": "Codemasters' circuit racer arrives on Nintendo Switch 2 in a complete Deluxe Edition with the Driven to Glory story, a large career mode, event creator, and the released DLC package.\n\nDriven to Glory adds a live-action documentary-style narrative layer to the racing structure. Outside of the story mode, the larger career spans many disciplines, classes and event types. The Deluxe package broadens the value proposition through included content and long-term progression. The overall experience emphasizes variety, speed and technical flexibility on Switch 2.",
+    "descriptionEn": "Codemasters' circuit racer arrives on Nintendo Switch 2 in a complete Deluxe Edition with the Driven to Glory story, a large career mode, event creator, and the released DLC package.\n\nDriven to Glory adds a live-action documentary-style narrative layer to the racing structure. Outside of the story mode, the larger career spans many disciplines, classes and event types. The Deluxe package broadens the value proposition through included content and long-term progression. The overall experience emphasizes variety, speed and technical flexibility on Switch 2.",
+    "descriptionKu": "Codemasters' circuit racer arrives on Nintendo Switch 2 in a complete Deluxe Edition with the Driven to Glory story, a large career mode, event creator, and the released DLC package.\n\nDriven to Glory adds a live-action documentary-style narrative layer to the racing structure. Outside of the story mode, the larger career spans many disciplines, classes and event types. The Deluxe package broadens the value proposition through included content and long-term progression. The overall experience emphasizes variety, speed and technical flexibility on Switch 2.",
+    "cartridgeImage": "/api/files/products/prd_a7b05b105b274f97/front-fb42b16f6b708ead.jpg",
+    "nintendoCardImage": "/api/files/products/prd_a7b05b105b274f97/square-4136b542326facfe.jpg",
+    "coverHiResImage": "",
+    "coverImage": "/api/files/products/prd_a7b05b105b274f97/cover-319ea5ef43333755.jpg",
+    "bannerImages": [
+     "/api/files/products/prd_a7b05b105b274f97/banner-0-41a3a0cc220c312d.avif",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000102792/6f881078dc2d388506b5b9e32a13ce04114b58cfc82fc4437109bb1f7b4cd687",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000102792/d55efbe42c1b393cfd10b5221efe49e0e1ec800eef7f39770de8ca51d79413de",
+     "/api/files/products/prd_a7b05b105b274f97/banner-3-2d6b7b13196c0dc3.avif",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000102792/be4bd420d2845ab87de9e771fed97e1033ffde7984b086f1eda0ab8c337f3a66",
+     "/api/files/products/prd_a7b05b105b274f97/banner-5-52530fc65d80591f.avif"
+    ],
+    "gallery": [],
+    "youtubeTrailer": "https://www.youtube.com/results?search_query=GRID+Legends+Deluxe+Edition+Nintendo+Switch+2+trailer",
+    "releaseDate": "2026-01-29",
+    "ageRating": "PEGI 12",
+    "metacriticRating": 82,
+    "genres": [
+     "Racing",
+     "Driving",
+     "Sports",
+     "Motorsport",
+     "Cars",
+     "Simulation"
+    ],
+    "platform": "switch2",
+    "size": 28.4,
+    "numberOfPlayers": "1",
+    "supportedLanguages": "Japanese, American English, French, German, Italian, Spanish, Korean, Russian, Simplified Chinese, Traditional Chinese, Brazilian Portuguese, Polish",
+    "hardwareModel": "",
+    "colorEdition": "",
+    "storageCapacity": "",
+    "screenSpecs": "",
+    "batteryLife": "",
+    "boxContents": [],
+    "boxContentsText": "",
+    "warrantyCondition": "",
+    "connectivity": "",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "Global",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "",
+    "redemptionSteps": [],
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 10250,
+    "cost": 1500,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": false,
+    "displayOrder": 26,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "مشترك",
+      "description": "Play using the supplied account under the store's offline-account activation method.",
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_account",
+      "name": "خاص بك",
+      "description": "Online-account option with internet-connected account use where supported by the game/service.",
+      "isInfiniteStock": true
+     }
+    ],
+    "types": [
+     {
+      "id": "standard_offline",
+      "name": "مشترك — اللعبة الأساسية",
+      "optionId": "offline_account",
+      "price": 10250,
+      "cost": 1500,
+      "description": "Standard game, Offline Account. Supplier Regular price: ¥9.74; purchase cost converted at 1 CNY = 220 IQD and rounded down to nearest 250 IQD.",
+      "isInfiniteStock": true
+     },
+     {
+      "id": "standard_online",
+      "name": "خاص بك — اللعبة الأساسية",
+      "optionId": "online_account",
+      "price": 45000,
+      "cost": 29500,
+      "description": "Standard game, Online Account. Supplier Standard price: ¥95.00; purchase cost converted at 1 CNY = 220 IQD and rounded down to nearest 250 IQD.",
+      "isInfiniteStock": true
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "active",
+    "kind": "account",
+    "trade_value_iqd": 0,
+    "store_offer_bonus_iqd": 0,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "id": "prd_a7b05b105b274f97",
+    "schema_version": 22,
+    "titleAr": "GRID Legends: Deluxe Edition",
+    "compatibility": [
+     "Nintendo Switch 2"
+    ],
+    "edition": "Standard",
+    "developer": "Codemasters / Feral Interactive",
+    "publisher": "Feral Interactive",
+    "metacriticUrl": "https://www.feralinteractive.com/en/games/gridlegends/switch/",
+    "opencriticRating": 85,
+    "userScore": 8,
+    "officialUrl": "https://www.feralinteractive.com/en/games/gridlegends/switch/",
+    "eshopUrl": "https://www.feralinteractive.com/en/games/gridlegends/switch/",
+    "gameIsOffline": true,
+    "gameIsOnline": true,
+    "gameLanguageLocked": false,
+    "description_short": "Codemasters' circuit racer arrives on Nintendo Switch 2 in a complete Deluxe Edition with the Driven to Glory story, a large career mode, event creator, and the released DLC package.",
+    "description_ar": "لعبة GRID Legends: Deluxe Edition على Nintendo Switch 2. تقدم هذه النسخة تجربة كاملة وموسعة في صفحة المتجر، مع التركيز على القصة والعالم وأسلوب اللعب والصور والمحتوى التفصيلي.",
+    "box_front_url": "https://images.nintendolife.com/66960fb194364/grid-legends-deluxe-edition-cover.cover_large.jpg",
+    "videos": [
+     {
+      "title": "Official / launch trailer",
+      "url": "https://www.youtube.com/results?search_query=GRID+Legends+Deluxe+Edition+Nintendo+Switch+2+trailer"
+     },
+     {
+      "title": "Additional trailer / promo",
+      "url": "https://www.youtube.com/results?search_query=GRID+Legends+Deluxe+Edition+Nintendo+Switch+2+trailer"
+     },
+     {
+      "title": "Secondary trailer / promo",
+      "url": "https://www.youtube.com/results?search_query=GRID+Legends+Deluxe+Edition+Nintendo+Switch+2+trailer"
+     }
+    ],
+    "nintendoEshopUrl": "https://www.feralinteractive.com/en/games/gridlegends/switch/",
+    "nintendoOnlineRequired": false,
+    "nintendoCloudSaves": true,
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": true,
+    "nintendoPlayModes": "TV Mode, Tabletop Mode, Handheld Mode",
+    "nintendoNotes": "GRID Legends: Deluxe Edition has an expanded storefront profile with filled media, gameplay, world, FAQ and performance fields for Nintendo Switch 2 import use.",
+    "switch2Enhanced": true,
+    "switch2Exclusive": true,
+    "switch2UpgradePrice": 0,
+    "switch2Features": [
+     "Driven to Glory live-action story mode",
+     "Large motorsport career structure",
+     "Event creator tools",
+     "Multiple racing disciplines",
+     "Deluxe package content included",
+     "Graphics and Performance modes",
+     "Balanced and Battery Saver handheld presets",
+     "Strong Switch 2 technical showing"
+    ],
+    "tagline": "Codemasters' circuit racer arrives on Nintendo Switch 2 in a complete Deluxe Edition with the Driven to Glory story, a large career mode, event creator, and the released DLC package",
+    "fitFor": [
+     "Motorsport fans",
+     "Players wanting a strong 60 FPS racing option",
+     "Career-mode racing fans",
+     "Players who enjoy many vehicle classes",
+     "Players who want flexible performance presets"
+    ],
+    "notFitFor": [
+     "Players seeking open-world driving",
+     "Players wanting arcade-only handling",
+     "Players who are uninterested in motorsport variety"
+    ],
+    "playTimeMain": 18,
+    "playTimeFull": 80,
+    "editionsList": [
+     {
+      "name": "Standard Edition",
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000102792/22f2f3e23fcef5715fa981bdb66dae4117e2b671b2945926420d8c0120fc0291",
+      "contents": [
+       {
+        "label": "Base game"
+       },
+       {
+        "label": "Nintendo Switch 2 compatible storefront entry"
+       },
+       {
+        "label": "Digital account delivery option"
+       }
+      ]
+     },
+     {
+      "name": "Deluxe Edition",
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000102792/22f2f3e23fcef5715fa981bdb66dae4117e2b671b2945926420d8c0120fc0291",
+      "contents": [
+       {
+        "label": "Base game"
+       },
+       {
+        "label": "Bonus / special supplier option where available"
+       },
+       {
+        "label": "Additional content varies by supplier version"
+       }
+      ]
+     },
+     {
+      "name": "Premium Deluxe Edition",
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000102792/22f2f3e23fcef5715fa981bdb66dae4117e2b671b2945926420d8c0120fc0291",
+      "contents": [
+       {
+        "label": "Base game"
+       },
+       {
+        "label": "Deluxe / premium supplier option where available"
+       },
+       {
+        "label": "Content details depend on the publisher package"
+       },
+       {
+        "label": "Special Outfits Set"
+       },
+       {
+        "label": "Additional monster-hair and Rudy cosmetic packs"
+       }
+      ]
+     }
+    ],
+    "gameplayPillars": [
+     {
+      "title": "Gameplay Pillar 1",
+      "description": "Race across many motorsport disciplines"
+     },
+     {
+      "title": "Gameplay Pillar 2",
+      "description": "Progress through a broad career structure"
+     },
+     {
+      "title": "Gameplay Pillar 3",
+      "description": "Experience the documentary-style Driven to Glory campaign"
+     },
+     {
+      "title": "Gameplay Pillar 4",
+      "description": "Create custom event combinations"
+     },
+     {
+      "title": "Gameplay Pillar 5",
+      "description": "Choose technical presets that suit performance or visual quality"
+     }
+    ],
+    "worldSummary": "Driven to Glory adds a live-action documentary-style narrative layer to the racing structure. Outside of the story mode, the larger career spans many disciplines, classes and event types. The Deluxe package broadens the value proposition through included content and long-term progression. The overall experience emphasizes variety, speed and technical flexibility on Switch 2.",
+    "storyChapters": [
+     {
+      "title": "Story / World Note 1",
+      "body": "Driven to Glory adds a live-action documentary-style narrative layer to the racing structure."
+     },
+     {
+      "title": "Story / World Note 2",
+      "body": "Outside of the story mode, the larger career spans many disciplines, classes and event types."
+     },
+     {
+      "title": "Story / World Note 3",
+      "body": "The Deluxe package broadens the value proposition through included content and long-term progression."
+     },
+     {
+      "title": "Story / World Note 4",
+      "body": "The overall experience emphasizes variety, speed and technical flexibility on Switch 2."
+     }
+    ],
+    "galleryImages": [
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000102792/7ab4609915766ab5dec3f5604e0a23e6431a363640986489fb6c2c4c5789c350",
+      "alt": "Distinct official Nintendo promotional/gameplay image 1; not reused as cover or banner."
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000102792/be4bd420d2845ab87de9e771fed97e1033ffde7984b086f1eda0ab8c337f3a66",
+      "alt": "Distinct official Nintendo promotional/gameplay image 2; not reused as cover or banner."
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000102792/ad64e15a4a0e41ba1920e7767d632d231069c9116d67f50347eb974f329dcf95",
+      "alt": "Distinct official Nintendo promotional/gameplay image 3; not reused as cover or banner."
+     }
+    ],
+    "features": [
+     "Driven to Glory live-action story mode",
+     "Large motorsport career structure",
+     "Event creator tools",
+     "Multiple racing disciplines",
+     "Deluxe package content included",
+     "Graphics and Performance modes",
+     "Balanced and Battery Saver handheld presets",
+     "Strong Switch 2 technical showing"
+    ],
+    "perfResolutionDocked": "792p-1440p dynamic depending on mode",
+    "perfResolutionHandheld": "684p-1080p dynamic depending on mode",
+    "perfFps": "30 / 60 selectable",
+    "perfNotes": "Technical analysis reports docked Graphics around 1080p-1440p/30 and Performance around 792p-1080p/60; handheld modes trade resolution for frame rate.",
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "hardwareId": "prd_acf4c89908764c62",
+      "informationStatus": "verified / measured where available",
+      "handheld": {
+       "supported": true,
+       "resolution": "684p-1080p dynamic depending on mode",
+       "resolutionDynamic": true,
+       "renderingResolution": "Dynamic",
+       "outputResolution": "1280x720",
+       "fps": "30 / 40 / 60 selectable",
+       "fpsMin": "~25-30",
+       "fpsMax": "60",
+       "notes": "Portable mode can dip below 30 FPS in heavy scenes according to technical comparisons."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "792p-1440p dynamic depending on mode",
+       "resolutionDynamic": true,
+       "renderingResolution": "Dynamic",
+       "outputResolution": "1920x1080",
+       "fps": "30 / 60 selectable",
+       "fpsMin": "30",
+       "fpsMax": "60",
+       "notes": "Often around 30-45 FPS in the overworld; can hit 60 FPS in lighter scenes or battles."
+      },
+      "sourceName": "Nintendo Life / RPG Site / Lords of Gaming technical impressions",
+      "sourceUrl": "https://www.nintendolife.com/reviews/nintendo-switch-2/monster-hunter-stories-3-twisted-reflection",
+      "verificationStatus": "third-party-tested",
+      "performanceNotes": "Technical analysis reports docked Graphics around 1080p-1440p/30 and Performance around 792p-1080p/60; handheld modes trade resolution for frame rate."
+     }
+    ],
+    "downloadSizeGb": 28.4,
+    "requiredSpaceGb": 28.4,
+    "microSdRecommended": false,
+    "languagesAudio": [
+     "English"
+    ],
+    "languagesText": [
+     "English",
+     "French",
+     "German",
+     "Italian",
+     "Spanish",
+     "Japanese",
+     "Simplified Chinese"
+    ],
+    "arabicSupport": false,
+    "mpLocalPlayers": false,
+    "mpOnlinePlayers": false,
+    "mpCoop": false,
+    "mpCompetitive": false,
+    "mpSplitScreen": false,
+    "mpLocalWireless": false,
+    "dlc": [
+     {
+      "name": "Special Outfits Set",
+      "description": "Cosmetic outfit content for companions and additional customization.",
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000102792/22f2f3e23fcef5715fa981bdb66dae4117e2b671b2945926420d8c0120fc0291"
+     },
+     {
+      "name": "Additional Side Story: Rudy",
+      "description": "Paid additional side-story content centered on Rudy.",
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000102792/b2644b7387534a83df17ac0b02f6a4f8d493a4f6f5d6365dc1e08b0119eb49b0"
+     },
+     {
+      "name": "Monster Hair packs",
+      "description": "Additional cosmetic monster-hair customization packs.",
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000102792/6f881078dc2d388506b5b9e32a13ce04114b58cfc82fc4437109bb1f7b4cd687"
+     },
+     {
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000102792/d55efbe42c1b393cfd10b5221efe49e0e1ec800eef7f39770de8ca51d79413de"
+     },
+     {
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000102792/7ab4609915766ab5dec3f5604e0a23e6431a363640986489fb6c2c4c5789c350"
+     },
+     {
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000102792/be4bd420d2845ab87de9e771fed97e1033ffde7984b086f1eda0ab8c337f3a66"
+     },
+     {
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000102792/ad64e15a4a0e41ba1920e7767d632d231069c9116d67f50347eb974f329dcf95"
+     }
+    ],
+    "completionMain": 18,
+    "completionExtras": 45,
+    "completionAll": 80,
+    "faq": [
+     {
+      "q": "Does it include DLC?",
+      "a": "Yes. This Deluxe Edition is positioned as a content-rich release."
+     },
+     {
+      "q": "Is there a 60 FPS mode?",
+      "a": "Yes. Performance-focused presets are one of the port's biggest strengths."
+     },
+     {
+      "q": "Is it realistic or arcade?",
+      "a": "It sits between sim and arcade with accessible but disciplined handling."
+     },
+     {
+      "q": "Why is the port notable?",
+      "a": "Because it combines strong content value with flexible technical settings."
+     },
+     {
+      "q": "Who will like it most?",
+      "a": "Players who enjoy motorsport variety and career progression."
+     }
+    ],
+    "verdictScore": 8,
+    "verdictSummary": "A feature-rich monster-raising RPG with strong presentation and customization, though Switch 2 performance is less stable than the hardware can ideally deliver.",
+    "verdictPros": [
+     "Strong creature-raising loop",
+     "Large and colorful world",
+     "Extensive customization",
+     "Rich deluxe/DLC offering",
+     "Official Simplified Chinese support"
+    ],
+    "verdictCons": [
+     "Switch 2 frame rate is unlocked and often sits around 30-45 FPS in large areas",
+     "Portable mode can dip more often in demanding scenes"
+    ],
+    "reviews": [
+     {
+      "source": "Technical praise",
+      "score": "See summary",
+      "quote": "Often noted as one of the stronger racing-game technical showings on Switch 2."
+     },
+     {
+      "source": "Player appeal",
+      "score": "See summary",
+      "quote": "Variety and performance flexibility are major selling points."
+     }
+    ],
+    "timeline": [
+     {
+      "date": "Phase 1",
+      "title": "Opening",
+      "body": "Players begin with entry events and early story races."
+     },
+     {
+      "date": "Phase 2",
+      "title": "Mid progression",
+      "body": "New disciplines and stronger rivals expand the career."
+     },
+     {
+      "date": "Phase 3",
+      "title": "Advanced play",
+      "body": "Higher-speed classes and more demanding events open up."
+     },
+     {
+      "date": "Phase 4",
+      "title": "Long-term play",
+      "body": "Completion and event creation support extended replay value."
+     }
+    ],
+    "patchNotes": [
+     {
+      "version": "Update 1",
+      "date": "2026-01-29",
+      "body": "Switch 2 Deluxe Edition released."
+     },
+     {
+      "version": "Update 2",
+      "date": "Post-launch",
+      "body": "Coverage highlighted the strength of the port and its performance options."
+     }
+    ],
+    "soundtrack": [
+     {
+      "title": "Music Note 1"
+     },
+     {
+      "title": "Music Note 2"
+     }
+    ],
+    "seriesName": "GRID Legends",
+    "studioName": "Codemasters / Feral Interactive",
+    "studioUrl": "https://www.feralinteractive.com/en/games/gridlegends/switch/",
+    "studioLocation": "Osaka, Japan",
+    "studioAbout": "CAPCOM is the Japanese developer and publisher behind Monster Hunter, Resident Evil and Street Fighter. Monster Hunter Stories 3 extends the turn-based Monster Rider RPG branch with redesigned character presentation, larger environments, a new story and expanded customization.",
+    "setupNeeds": [
+     "Nintendo Switch 2 system required for the Nintendo Switch 2 version.",
+     "Internet connection is required for digital download, updates and online/service features where applicable.",
+     "Nintendo Account required for Nintendo eShop purchase/download.",
+     "Sufficient internal storage or compatible microSD Express storage required.",
+     "Nintendo Switch Online membership is required only for game-specific online multiplayer/features that explicitly use it."
+    ],
+    "sources": [
+     {
+      "name": "Official Nintendo / Storefront",
+      "url": "https://www.feralinteractive.com/en/games/gridlegends/switch/"
+     },
+     {
+      "name": "Official / Publisher",
+      "url": "https://www.nintendo.com/"
+     },
+     {
+      "name": "Reference 3",
+      "url": "https://www.youtube.com/results?search_query=GRID+Legends+Deluxe+Edition+Nintendo+Switch+2+trailer"
+     },
+     {
+      "name": "Reference 4",
+      "url": "https://images.nintendolife.com/66960fb194364/grid-legends-deluxe-edition-cover.cover_large.jpg"
+     },
+     {
+      "name": "Reference 5",
+      "url": "https://images.nintendolife.com/screenshots/152897/large.jpg"
+     }
+    ],
+    "boxContentsList": "[Circular]",
+    "image": "/api/files/products/prd_a7b05b105b274f97/cover-319ea5ef43333755.jpg",
+    "banner": "/api/files/products/prd_a7b05b105b274f97/banner-0-41a3a0cc220c312d.avif",
+    "schemaId": "",
+    "badgeEn": "وفر 40%",
+    "badgeKu": "وفر 40%",
+    "featuresEn": [
+     "Driven to Glory live-action story mode",
+     "Large motorsport career structure",
+     "Event creator tools",
+     "Multiple racing disciplines",
+     "Deluxe package content included",
+     "Graphics and Performance modes",
+     "Balanced and Battery Saver handheld presets",
+     "Strong Switch 2 technical showing"
+    ],
+    "featuresKu": [
+     "Driven to Glory live-action story mode",
+     "Large motorsport career structure",
+     "Event creator tools",
+     "Multiple racing disciplines",
+     "Deluxe package content included",
+     "Graphics and Performance modes",
+     "Balanced and Battery Saver handheld presets",
+     "Strong Switch 2 technical showing"
+    ],
+    "sales": 0,
+    "images": [],
+    "modes": [],
+    "boxFrontUrl": "https://images.nintendolife.com/66960fb194364/grid-legends-deluxe-edition-cover.cover_large.jpg",
+    "createdAt": "2026-08-27T01:53:19.367Z",
+    "created_at": "2026-08-27T01:53:19.367Z",
+    "updatedAt": "2026-08-28T22:06:47.801Z",
+    "updated_at": "2026-08-27T01:53:19.367Z"
+   }
+  }
+ ]
+}

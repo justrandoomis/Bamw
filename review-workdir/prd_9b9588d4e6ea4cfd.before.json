@@ -1,0 +1,511 @@
+{
+ "title": "FINAL FANTASY VI",
+ "titleEn": "FINAL FANTASY VI",
+ "titleKu": "",
+ "slug": "final-fantasy-vi",
+ "description": "The Pixel Remaster of FINAL FANTASY VI preserves its ensemble story, Active Time Battle combat, Espers, and iconic soundtrack with modern UI and convenience options. The early game follows an empire, resistance movement, and a mysterious young woman connected to magic. Players can recover companions, complete optional stories, and prepare to confront Kefka’s final domain.",
+ "descriptionEn": "The Pixel Remaster of FINAL FANTASY VI preserves its ensemble story, Active Time Battle combat, Espers, and iconic soundtrack with modern UI and convenience options. The early game follows an empire, resistance movement, and a mysterious young woman connected to magic. Players can recover companions, complete optional stories, and prepare to confront Kefka’s final domain.",
+ "descriptionKu": "",
+ "cartridgeImage": "https://images.launchbox-app.com/b09d81bf-b265-4744-9385-74be2d21eed9.jpg",
+ "nintendoCardImage": "/api/files/products/prd_9b9588d4e6ea4cfd/square-card-75c7ccb00ddbd019.webp",
+ "coverHiResImage": "",
+ "coverImage": "/api/files/products/prd_9b9588d4e6ea4cfd/cover-599284e9a6609045.webp",
+ "bannerImages": [
+  "https://images.launchbox-app.com/r2_7d94a5fd-9a47-48fb-9657-df979245ae07.jpg",
+  "https://images.launchbox-app.com/ed2e409b-175c-4471-85e3-d93a82d4a8da.jpg",
+  "https://images.launchbox-app.com/20d48a28-c10c-4b00-a399-5f27052cc58c.jpg",
+  "https://images.launchbox-app.com/f4586008-dc74-408a-a8a5-723a743429d3.jpg"
+ ],
+ "gallery": [],
+ "youtubeTrailer": "",
+ "releaseDate": "2023-04-19",
+ "ageRating": "ESRB T / PEGI 12",
+ "metacriticRating": 88,
+ "genres": [
+  "RPG"
+ ],
+ "platform": "switch1",
+ "size": 1.5,
+ "numberOfPlayers": "Single system (1)",
+ "supportedLanguages": "Official supported language list varies by region; see the publisher page linked in Sources.",
+ "hardwareModel": "",
+ "colorEdition": "",
+ "storageCapacity": "",
+ "screenSpecs": "",
+ "batteryLife": "",
+ "boxContents": [],
+ "boxContentsText": "",
+ "warrantyCondition": "",
+ "connectivity": "",
+ "characterName": "Link",
+ "amiiboSeries": "The Legend of Zelda",
+ "figureType": "figure",
+ "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+ "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+ "boxCondition": "mib",
+ "releaseWave": "Wave 2 (Restock)",
+ "rarity": "standard",
+ "accessoryType": "حقيبة حماية وتنقل Carry Case",
+ "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+ "brand": "Nintendo Official",
+ "material": "Hard EVA Shockproof Shell",
+ "availableColors": "Black, Neon Red/Blue, White",
+ "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+ "cardValue": "$20 eShop Balance",
+ "region": "Global",
+ "cardType": "eshop",
+ "deliveryMethod": "instant_code",
+ "redemptionGuide": "",
+ "redemptionSteps": [],
+ "validity": "no_expiry",
+ "usedType": "cartridge",
+ "conditionGrade": "like_new",
+ "packaging": "cib",
+ "guaranteeStatus": "tested_30days",
+ "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+ "accountType": "primary",
+ "badge": "وفر 40%",
+ "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+ "price": 8500,
+ "cost": 1500,
+ "stock": 999999,
+ "isInfiniteStock": true,
+ "isHidden": true,
+ "displayOrder": 0,
+ "category": "nintendo-switch-games",
+ "categoryId": "nintendo-switch-games",
+ "categoryEn": "",
+ "categoryKu": "",
+ "options": [
+  {
+   "id": "offline_account",
+   "name": "مشترك",
+   "description": "مشترك",
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_account",
+   "name": "خاص بك",
+   "description": "خاص بك",
+   "stock": 9999,
+   "isInfiniteStock": true
+  }
+ ],
+ "types": [
+  {
+   "id": "offline_base",
+   "name": "مشترك — اللعبة الأساسية",
+   "optionId": "offline_account",
+   "price": 8500,
+   "cost": 1500,
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_base",
+   "name": "خاص بك — اللعبة الأساسية",
+   "optionId": "online_account",
+   "price": 15750,
+   "cost": 12250,
+   "stock": 9999,
+   "isInfiniteStock": true
+  }
+ ],
+ "editions": [],
+ "dlcs": [],
+ "isActive": true,
+ "status": "Active",
+ "kind": "account",
+ "trade_value_iqd": 6500,
+ "store_offer_bonus_iqd": 1000,
+ "trade_enabled": true,
+ "trade_value_locked": false,
+ "id": "prd_9b9588d4e6ea4cfd",
+ "schema_version": 24,
+ "titleAr": "فاينل فانتسي 6",
+ "compatibility": [
+  "Nintendo Switch",
+  "Nintendo Switch 2 compatibility: Supported"
+ ],
+ "edition": "Standard / Store Variants",
+ "developer": "SQUARE ENIX",
+ "publisher": "SQUARE ENIX",
+ "seriesName": "FINAL FANTASY VI",
+ "metacriticUrl": "https://www.metacritic.com/game/final-fantasy-vi-pixel-remaster/",
+ "opencriticRating": 88,
+ "userScore": 9,
+ "price_usd": 17.99,
+ "officialUrl": "https://www.nintendo.com/us/store/products/final-fantasy-vi-switch/",
+ "eshopUrl": "https://www.nintendo.com/us/store/products/final-fantasy-vi-switch/",
+ "gameIsOffline": true,
+ "gameIsOnline": false,
+ "gameLanguageLocked": false,
+ "description_short": "The Pixel Remaster of FINAL FANTASY VI preserves its ensemble story, Active Time Battle combat, Espers, and iconic soundtrack with modern UI and convenience options.",
+ "description_ar": "فاينل فانتسي 6 — The Pixel Remaster of FINAL FANTASY VI preserves its ensemble story, Active Time Battle combat, Espers, and iconic soundtrack with modern UI and convenience options.",
+ "box_front_url": "https://images.launchbox-app.com/b09d81bf-b265-4744-9385-74be2d21eed9.jpg",
+ "languagesText": [
+  "See official supported languages on the linked Nintendo/publisher product page"
+ ],
+ "languagesAudio": [
+  "Audio language availability varies by title and region; see official product information"
+ ],
+ "tvMode": true,
+ "tabletopMode": true,
+ "handheldMode": true,
+ "nintendoPlayModes": "TV / Tabletop / Handheld",
+ "nintendoOnlineRequired": false,
+ "nintendoCloudSaves": true,
+ "nintendoGameKeyCard": false,
+ "nintendoPhysicalNeedsDownload": false,
+ "switch2Enhanced": false,
+ "switch2Exclusive": false,
+ "nintendoNotes": "Platform, release, player-count, storage, compatibility, and feature statements in this import are grounded in the official Nintendo/publisher pages listed under Sources. Store package prices are user-supplied storefront values, not assumed MSRP.",
+ "editionsList": [
+  {
+   "name": "Regular / Offline",
+   "coverUrl": "https://images.launchbox-app.com/b09d81bf-b265-4744-9385-74be2d21eed9.jpg",
+   "contents": [
+    {
+     "label": "Regular / Offline store package"
+    },
+    {
+     "label": "Offline account access"
+    },
+    {
+     "label": "Infinite stock by default"
+    }
+   ]
+  },
+  {
+   "name": "Standard / Online",
+   "coverUrl": "https://images.launchbox-app.com/f9dae770-6e83-4fe3-b2e0-40d1645293a5.png",
+   "contents": [
+    {
+     "label": "Standard / Online store package"
+    },
+    {
+     "label": "Online account access"
+    },
+    {
+     "label": "Infinite stock by default"
+    }
+   ]
+  }
+ ],
+ "gameplayPillars": [
+  {
+   "title": "Large ensemble cast",
+   "description": "The story distributes major roles across Terra, Locke, Celes, Edgar, Sabin, Cyan, and many other characters.",
+   "imageUrl": "https://images.launchbox-app.com/r2_7d94a5fd-9a47-48fb-9657-df979245ae07.jpg"
+  },
+  {
+   "title": "Esper and magic growth",
+   "description": "Espers teach magic and can influence character development as the party levels.",
+   "imageUrl": "https://images.launchbox-app.com/ed2e409b-175c-4471-85e3-d93a82d4a8da.jpg"
+  },
+  {
+   "title": "Active Time Battle",
+   "description": "Classic ATB combat combines character-specific abilities with spells, equipment, and status strategy.",
+   "imageUrl": "https://images.launchbox-app.com/20d48a28-c10c-4b00-a399-5f27052cc58c.jpg"
+  },
+  {
+   "title": "Pixel Remaster enhancements",
+   "description": "Updated pixel art, rearranged soundtrack options, modern UI, and convenience boosts improve accessibility.",
+   "imageUrl": "https://images.launchbox-app.com/f4586008-dc74-408a-a8a5-723a743429d3.jpg"
+  },
+  {
+   "title": "World-changing second half",
+   "description": "The game dramatically reshapes its world and party structure, creating one of the series’ most memorable late-game arcs.",
+   "imageUrl": "https://images.launchbox-app.com/r2_7d94a5fd-9a47-48fb-9657-df979245ae07.jpg"
+  }
+ ],
+ "worldSummary": "The Pixel Remaster of FINAL FANTASY VI preserves its ensemble story, Active Time Battle combat, Espers, and iconic soundtrack with modern UI and convenience options. The early game follows an empire, resistance movement, and a mysterious young woman connected to magic. Players can recover companions, complete optional stories, and prepare to confront Kefka’s final domain.",
+ "storyChapters": [
+  {
+   "title": "Meet Terra and the Returners",
+   "body": "The early game follows an empire, resistance movement, and a mysterious young woman connected to magic.",
+   "imageUrl": "https://images.launchbox-app.com/ed2e409b-175c-4471-85e3-d93a82d4a8da.jpg"
+  },
+  {
+   "title": "Build a diverse party",
+   "body": "Multiple characters join, each with unique commands and personal stories.",
+   "imageUrl": "https://images.launchbox-app.com/20d48a28-c10c-4b00-a399-5f27052cc58c.jpg"
+  },
+  {
+   "title": "Confront Kefka",
+   "body": "The conflict with the Empire becomes increasingly tied to Kefka and the balance of magic.",
+   "imageUrl": "https://images.launchbox-app.com/f4586008-dc74-408a-a8a5-723a743429d3.jpg"
+  },
+  {
+   "title": "Survive the ruined world",
+   "body": "A major event transforms the world and opens a more nonlinear phase of rebuilding the party.",
+   "imageUrl": "https://images.launchbox-app.com/r2_7d94a5fd-9a47-48fb-9657-df979245ae07.jpg"
+  },
+  {
+   "title": "Gather allies for the finale",
+   "body": "Players can recover companions, complete optional stories, and prepare to confront Kefka’s final domain.",
+   "imageUrl": "https://images.launchbox-app.com/ed2e409b-175c-4471-85e3-d93a82d4a8da.jpg"
+  }
+ ],
+ "features": [
+  "Pixel Remaster presentation",
+  "Large playable cast",
+  "Esper magic system",
+  "Classic ATB combat",
+  "Modern boost and soundtrack options"
+ ],
+ "perfResolutionDocked": "1080p",
+ "perfResolutionHandheld": "720p",
+ "perfFps": "60",
+ "perfHdr": false,
+ "playTimeMain": 35,
+ "completionMain": 45,
+ "completionExtras": 60,
+ "faq": [
+  {
+   "q": "Which version is this?",
+   "a": "This is the Pixel Remaster release available on Nintendo Switch."
+  },
+  {
+   "q": "Does it support Switch 2?",
+   "a": "Nintendo lists the Switch version as compatible with Switch 2."
+  },
+  {
+   "q": "Is it single-player?",
+   "a": "Yes."
+  },
+  {
+   "q": "Does it include modern conveniences?",
+   "a": "Yes. Pixel Remaster releases include modern UI and configurable boost/convenience functions."
+  },
+  {
+   "q": "Why is FFVI famous?",
+   "a": "It is widely praised for its ensemble cast, villain, soundtrack, and dramatic world structure."
+  }
+ ],
+ "verdictScore": 8.5,
+ "verdictPros": [
+  "One of the strongest classic FF stories",
+  "Excellent ensemble cast",
+  "Great music",
+  "Pixel Remaster conveniences",
+  "Very small storage footprint"
+ ],
+ "verdictCons": [
+  "Older JRPG structure remains visible",
+  "Random encounters are central to classic pacing",
+  "Some optional characters are easy to miss",
+  "No voice acting",
+  "No native Switch 2 edition"
+ ],
+ "reviews": [
+  {
+   "source": "Metacritic",
+   "score": "88",
+   "url": "https://www.metacritic.com/game/final-fantasy-vi-pixel-remaster/"
+  },
+  {
+   "source": "OpenCritic",
+   "score": "88",
+   "url": "https://opencritic.com/"
+  }
+ ],
+ "timeline": [
+  {
+   "date": "2023-04-19",
+   "title": "Released on target Nintendo platform"
+  }
+ ],
+ "patchNotes": [
+  {
+   "version": "Current retail build",
+   "date": "2026-08-27"
+  }
+ ],
+ "studioName": "SQUARE ENIX",
+ "studioUrl": "https://www.nintendo.com/us/store/products/final-fantasy-vi-switch/",
+ "studioLocation": "See publisher/developer profile",
+ "sources": [
+  {
+   "name": "Official Nintendo / publisher product page",
+   "url": "https://www.nintendo.com/us/store/products/final-fantasy-vi-switch/"
+  },
+  {
+   "name": "Metacritic",
+   "url": "https://www.metacritic.com/game/final-fantasy-vi-pixel-remaster/"
+  }
+ ],
+ "downloadSizeGb": 1.5,
+ "requiredSpaceGb": 1.5,
+ "microSdRecommended": false,
+ "storageNotes": "Storage requirements follow the official product listing where a final numeric size is published; upcoming titles may require a later refresh when final size is posted.",
+ "mpLocalPlayers": false,
+ "mpOnlinePlayers": false,
+ "mpCoop": false,
+ "mpCompetitive": false,
+ "mpLocalWireless": false,
+ "mpSplitScreen": false,
+ "dlc": [
+  {
+   "name": "Downloadable / additional content status",
+   "description": "No standalone story DLC is required."
+  }
+ ],
+ "devicePerformance": [
+  {
+   "device": "Nintendo Switch",
+   "deviceSlug": "nintendo-switch",
+   "deviceModel": "Nintendo Switch",
+   "hardwareId": "nintendo-switch",
+   "informationStatus": "Available",
+   "handheld": {
+    "supported": true,
+    "resolution": "720p",
+    "resolutionDynamic": false,
+    "renderingResolution": "720p",
+    "outputResolution": "720p",
+    "fps": "60",
+    "fpsMin": "60",
+    "fpsMax": "60",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "Handheld",
+    "notes": "2D Pixel Remaster presentation uses a smooth 60 fps UI/gameplay profile."
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "1080p",
+    "resolutionDynamic": false,
+    "renderingResolution": "1080p",
+    "outputResolution": "1080p",
+    "fps": "60",
+    "fpsMin": "60",
+    "fpsMax": "60",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "TV / Docked",
+    "notes": "2D Pixel Remaster presentation uses a smooth 60 fps UI/gameplay profile."
+   },
+   "modes": [
+    {
+     "name": "Primary documented/compatibility profile",
+     "handheldResolution": "720p",
+     "handheldFps": "60",
+     "tvResolution": "1080p",
+     "tvFps": "60",
+     "hdr": false,
+     "vrr": false,
+     "notes": "2D Pixel Remaster presentation uses a smooth 60 fps UI/gameplay profile."
+    }
+   ],
+   "upscaling": "Game / system-specific scaling where applicable",
+   "rayTracing": false,
+   "rayTracingMode": "Not Supported",
+   "loadingTime": "Scene-dependent",
+   "loadingNotes": "Loading time varies by scene, save state, storage, version, and patch.",
+   "gameVersion": "Current listed version",
+   "patchVersion": "Current available update",
+   "testedDate": "2026-08-27",
+   "sourceName": "Official product / compatibility information",
+   "sourceUrl": "https://www.nintendo.com/us/store/products/final-fantasy-vi-switch/",
+   "performanceNotes": "2D Pixel Remaster presentation uses a smooth 60 fps UI/gameplay profile."
+  },
+  {
+   "device": "Nintendo Switch 2",
+   "deviceSlug": "nintendo-switch-2",
+   "deviceModel": "Nintendo Switch 2",
+   "hardwareId": "nintendo-switch-2",
+   "informationStatus": "Available",
+   "handheld": {
+    "supported": true,
+    "resolution": "720p",
+    "resolutionDynamic": false,
+    "renderingResolution": "720p",
+    "outputResolution": "720p",
+    "fps": "60",
+    "fpsMin": "60",
+    "fpsMax": "60",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "Handheld",
+    "notes": "Backward-compatible Nintendo Switch software on Nintendo Switch 2; no native Switch 2 edition assumed."
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "1080p",
+    "resolutionDynamic": false,
+    "renderingResolution": "1080p",
+    "outputResolution": "1080p",
+    "fps": "60",
+    "fpsMin": "60",
+    "fpsMax": "60",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "TV / Docked",
+    "notes": "Backward-compatible Nintendo Switch software on Nintendo Switch 2; no native Switch 2 edition assumed."
+   },
+   "modes": [
+    {
+     "name": "Primary documented/compatibility profile",
+     "handheldResolution": "720p",
+     "handheldFps": "60",
+     "tvResolution": "1080p",
+     "tvFps": "60",
+     "hdr": false,
+     "vrr": false,
+     "notes": "Backward-compatible Nintendo Switch software on Nintendo Switch 2; no native Switch 2 edition assumed."
+    }
+   ],
+   "upscaling": "Game / system-specific scaling where applicable",
+   "rayTracing": false,
+   "rayTracingMode": "Not Supported",
+   "loadingTime": "Scene-dependent",
+   "loadingNotes": "Loading time varies by scene, save state, storage, version, and patch.",
+   "gameVersion": "Current listed version",
+   "patchVersion": "Current available update",
+   "testedDate": "2026-08-27",
+   "sourceName": "Official product / compatibility information",
+   "sourceUrl": "https://www.nintendo.com/us/store/products/final-fantasy-vi-switch/",
+   "performanceNotes": "Backward-compatible Nintendo Switch software on Nintendo Switch 2; no native Switch 2 edition assumed."
+  }
+ ],
+ "switch2UpgradePrice": 0,
+ "galleryImages": [
+  {
+   "url": "/api/files/products/prd_9b9588d4e6ea4cfd/gallery-1-42a9320b0e7800e6.webp",
+   "alt": "FINAL FANTASY VI screenshot 1"
+  },
+  {
+   "url": "/api/files/products/prd_9b9588d4e6ea4cfd/gallery-2-53afda8bb52c0ff6.webp",
+   "alt": "FINAL FANTASY VI screenshot 2"
+  },
+  {
+   "url": "/api/files/products/prd_9b9588d4e6ea4cfd/gallery-3-934238e7e61daefa.webp",
+   "alt": "FINAL FANTASY VI screenshot 3"
+  },
+  {
+   "url": "/api/files/products/prd_9b9588d4e6ea4cfd/gallery-4-2d0f905c3a63a42d.webp",
+   "alt": "FINAL FANTASY VI screenshot 4"
+  },
+  {
+   "url": "/api/files/products/prd_9b9588d4e6ea4cfd/gallery-5-cc4059be7b620d5b.webp",
+   "alt": "FINAL FANTASY VI screenshot 5"
+  },
+  {
+   "url": "/api/files/products/prd_9b9588d4e6ea4cfd/gallery-6-3bfa5a2b2969d87c.webp",
+   "alt": "FINAL FANTASY VI screenshot 6"
+  }
+ ],
+ "boxContentsList": [],
+ "image": "https://images.launchbox-app.com/20d48a28-c10c-4b00-a399-5f27052cc58c.jpg",
+ "banner": "https://images.launchbox-app.com/r2_7d94a5fd-9a47-48fb-9657-df979245ae07.jpg",
+ "schemaId": "",
+ "batchImport": true,
+ "createdAt": "2026-08-28T18:46:56.041Z",
+ "updatedAt": "2026-08-28T18:46:56.041Z"
+}

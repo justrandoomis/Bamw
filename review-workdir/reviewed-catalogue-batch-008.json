@@ -1,6 +1,6 @@
 {
  "batch": "008",
- "apply": true,
+ "apply": false,
  "games": [
   {
    "id": "prd_9b9588d4e6ea4cfd",
@@ -190,6 +190,110 @@
     "guaranteeStatus"
    ],
    "notes": "The '85' string plague again — no verifiable aggregate matches it; removed. Referral language sentence removed. The malformed handheld entry (resolution literally 'Not Supported' with a 60 fps value) becomes a proper unsupported-mode flag on the single platform record: the game requires detached Joy-Con motion controls. 2024-12-05, 4.6 GB verified (hidden product)."
+  }
+ ],
+ "appliedAt": "2026-09-02T02:47:14.199Z",
+ "results": [
+  {
+   "id": "prd_9b9588d4e6ea4cfd",
+   "action": "APPLIED",
+   "changed": [
+    "devicePerformance"
+   ],
+   "removed": [
+    "supportedLanguages",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ]
+  },
+  {
+   "id": "prd_d4b4bb4e61994709",
+   "action": "APPLIED",
+   "changed": [],
+   "removed": [
+    "cartridgeImage",
+    "box_front_url",
+    "supportedLanguages",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ]
+  },
+  {
+   "id": "prd_8a8e7b0dc7b9483a",
+   "action": "APPLIED",
+   "changed": [
+    "devicePerformance"
+   ],
+   "removed": [
+    "supportedLanguages",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ]
+  },
+  {
+   "id": "prd_17105a2338f648ee",
+   "action": "APPLIED",
+   "changed": [
+    "devicePerformance"
+   ],
+   "removed": [
+    "supportedLanguages",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ]
+  },
+  {
+   "id": "prd_6378a049ed4f454f",
+   "action": "APPLIED",
+   "changed": [
+    "devicePerformance"
+   ],
+   "removed": [
+    "metacriticRating",
+    "supportedLanguages",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ]
   }
  ]
 }

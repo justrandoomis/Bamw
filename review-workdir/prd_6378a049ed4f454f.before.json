@@ -1,0 +1,496 @@
+{
+ "title": "Fitness Boxing 3: Your Personal Trainer",
+ "titleEn": "Fitness Boxing 3: Your Personal Trainer",
+ "titleKu": "",
+ "slug": "fitness-boxing-3-your-personal-trainer",
+ "description": "Rhythm-based boxing workouts combine daily plans, virtual trainers, quick routines, Mitt Drills, and accessible exercise options for one or two players. Players select a trainer and establish a workout profile. Optional DLC packs add additional music and cosmetic content.",
+ "descriptionEn": "Rhythm-based boxing workouts combine daily plans, virtual trainers, quick routines, Mitt Drills, and accessible exercise options for one or two players. Players select a trainer and establish a workout profile. Optional DLC packs add additional music and cosmetic content.",
+ "descriptionKu": "",
+ "cartridgeImage": "/api/files/products/prd_6378a049ed4f454f/front-box-de4cc1207bd1ce0e.webp",
+ "nintendoCardImage": "/api/files/products/prd_6378a049ed4f454f/square-card-d43d81c33535be8d.webp",
+ "coverHiResImage": "/api/files/products/prd_6378a049ed4f454f/3d-wrap-7aeb86067f57750b.webp",
+ "coverImage": "/api/files/products/prd_6378a049ed4f454f/cover-61d0ee4c057f928a.webp",
+ "bannerImages": [
+  "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/My%20Nintendo%20Store/EN-US/Nintendo%20Switch%20Software/fitness-boxing-3-your-personal-trainer-121188/121188-121189-fitness-boxing-3-your-personal-trainer-ss-1-1280x720",
+  "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/My%20Nintendo%20Store/EN-US/Nintendo%20Switch%20Software/fitness-boxing-3-your-personal-trainer-121188/121188-121189-fitness-boxing-3-your-personal-trainer-ss-2-1280x720",
+  "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/My%20Nintendo%20Store/EN-US/Nintendo%20Switch%20Software/fitness-boxing-3-your-personal-trainer-121188/121188-121189-fitness-boxing-3-your-personal-trainer-ss-3-1280x720",
+  "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/My%20Nintendo%20Store/EN-US/Nintendo%20Switch%20Software/fitness-boxing-3-your-personal-trainer-121188/121188-121189-fitness-boxing-3-your-personal-trainer-ss-4-1280x720",
+  "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/My%20Nintendo%20Store/EN-US/Nintendo%20Switch%20Software/fitness-boxing-3-your-personal-trainer-121188/121188-121189-fitness-boxing-3-your-personal-trainer-ss-5-1280x720",
+  "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/My%20Nintendo%20Store/EN-US/Nintendo%20Switch%20Software/fitness-boxing-3-your-personal-trainer-121188/121188-121189-fitness-boxing-3-your-personal-trainer-ss-6-1280x720"
+ ],
+ "gallery": [],
+ "youtubeTrailer": "",
+ "releaseDate": "2024-12-05",
+ "ageRating": "ESRB E — In-Game Purchases",
+ "metacriticRating": "85",
+ "genres": [
+  "Sports",
+  "Training",
+  "Fitness"
+ ],
+ "platform": "switch1",
+ "size": 4.6,
+ "numberOfPlayers": "Single system (1-2)",
+ "supportedLanguages": "Official supported language list varies by region; see the publisher page linked in Sources.",
+ "hardwareModel": "",
+ "colorEdition": "",
+ "storageCapacity": "",
+ "screenSpecs": "",
+ "batteryLife": "",
+ "boxContents": [],
+ "boxContentsText": "",
+ "warrantyCondition": "",
+ "connectivity": "",
+ "characterName": "Link",
+ "amiiboSeries": "The Legend of Zelda",
+ "figureType": "figure",
+ "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+ "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+ "boxCondition": "mib",
+ "releaseWave": "Wave 2 (Restock)",
+ "rarity": "standard",
+ "accessoryType": "حقيبة حماية وتنقل Carry Case",
+ "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+ "brand": "Nintendo Official",
+ "material": "Hard EVA Shockproof Shell",
+ "availableColors": "Black, Neon Red/Blue, White",
+ "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+ "cardValue": "$20 eShop Balance",
+ "region": "Global",
+ "cardType": "eshop",
+ "deliveryMethod": "instant_code",
+ "redemptionGuide": "",
+ "redemptionSteps": [],
+ "validity": "no_expiry",
+ "usedType": "cartridge",
+ "conditionGrade": "like_new",
+ "packaging": "cib",
+ "guaranteeStatus": "tested_30days",
+ "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+ "accountType": "primary",
+ "badge": "وفر 40%",
+ "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+ "price": 8500,
+ "cost": 2500,
+ "stock": 999999,
+ "isInfiniteStock": true,
+ "isHidden": true,
+ "displayOrder": 0,
+ "category": "nintendo-switch-games",
+ "categoryId": "nintendo-switch-games",
+ "categoryEn": "",
+ "categoryKu": "",
+ "options": [
+  {
+   "id": "offline_account",
+   "name": "مشترك",
+   "description": "مشترك",
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_account",
+   "name": "خاص بك",
+   "description": "خاص بك",
+   "stock": 9999,
+   "isInfiniteStock": true
+  }
+ ],
+ "types": [
+  {
+   "id": "offline_base",
+   "name": "مشترك — اللعبة الأساسية",
+   "optionId": "offline_account",
+   "price": 8500,
+   "cost": 2500,
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_base",
+   "name": "خاص بك — اللعبة الأساسية",
+   "optionId": "online_account",
+   "price": 32000,
+   "cost": 25000,
+   "stock": 9999,
+   "isInfiniteStock": true
+  }
+ ],
+ "editions": [],
+ "dlcs": [],
+ "isActive": true,
+ "status": "Active",
+ "kind": "account",
+ "trade_value_iqd": 13750,
+ "store_offer_bonus_iqd": 2500,
+ "trade_enabled": true,
+ "trade_value_locked": false,
+ "id": "prd_6378a049ed4f454f",
+ "schema_version": 24,
+ "titleAr": "فيتنس بوكسينغ 3: يور بيرسونال ترينر",
+ "compatibility": [
+  "Nintendo Switch",
+  "Nintendo Switch 2 compatibility: Supported; native Switch 2 Edition available separately"
+ ],
+ "edition": "Standard / Store Variants",
+ "developer": "Imagineer",
+ "publisher": "Nintendo",
+ "seriesName": "Fitness Boxing 3",
+ "price_usd": 49.99,
+ "officialUrl": "https://www.nintendo.com/us/store/products/fitness-boxing-3-your-personal-trainer-121188/",
+ "eshopUrl": "https://www.nintendo.com/us/store/products/fitness-boxing-3-your-personal-trainer-121188/",
+ "gameIsOffline": true,
+ "gameIsOnline": false,
+ "gameLanguageLocked": false,
+ "description_short": "Rhythm-based boxing workouts combine daily plans, virtual trainers, quick routines, Mitt Drills, and accessible exercise options for one or two players.",
+ "description_ar": "فيتنس بوكسينغ 3: يور بيرسونال ترينر — Rhythm-based boxing workouts combine daily plans, virtual trainers, quick routines, Mitt Drills, and accessible exercise options for one or two players.",
+ "box_front_url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/My%20Nintendo%20Store/EN-US/Nintendo%20Switch%20Software/fitness-boxing-3-your-personal-trainer-121188/121188-fitness-boxing-3-your-personal-trainer-1200x675",
+ "languagesText": [
+  "See official supported languages on the linked Nintendo/publisher product page"
+ ],
+ "languagesAudio": [
+  "Audio language availability varies by title and region; see official product information"
+ ],
+ "tvMode": true,
+ "tabletopMode": true,
+ "handheldMode": false,
+ "nintendoPlayModes": "TV / Tabletop",
+ "nintendoOnlineRequired": false,
+ "nintendoCloudSaves": true,
+ "nintendoGameKeyCard": false,
+ "nintendoPhysicalNeedsDownload": false,
+ "switch2Enhanced": false,
+ "switch2Exclusive": false,
+ "nintendoNotes": "Platform, release, player-count, storage, compatibility, and feature statements in this import are grounded in the official Nintendo/publisher pages listed under Sources. Store package prices are user-supplied storefront values, not assumed MSRP.",
+ "editionsList": [
+  {
+   "name": "Regular / Offline",
+   "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/My%20Nintendo%20Store/EN-US/Nintendo%20Switch%20Software/fitness-boxing-3-your-personal-trainer-121188/121188-fitness-boxing-3-your-personal-trainer-1200x675",
+   "contents": [
+    {
+     "label": "Regular / Offline store package"
+    },
+    {
+     "label": "Offline account access"
+    },
+    {
+     "label": "Infinite stock by default"
+    }
+   ]
+  },
+  {
+   "name": "Standard / Online",
+   "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/My%20Nintendo%20Store/EN-US/Nintendo%20Switch%20Software/fitness-boxing-3-your-personal-trainer-121188/121188-fitness-boxing-3-your-personal-trainer-1200x675",
+   "contents": [
+    {
+     "label": "Standard / Online store package"
+    },
+    {
+     "label": "Online account access"
+    },
+    {
+     "label": "Infinite stock by default"
+    }
+   ]
+  }
+ ],
+ "gameplayPillars": [
+  {
+   "title": "Rhythm boxing workouts",
+   "description": "Punch and dodge in time with 30 instrumental tracks and guided routines.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/My%20Nintendo%20Store/EN-US/Nintendo%20Switch%20Software/fitness-boxing-3-your-personal-trainer-121188/121188-121189-fitness-boxing-3-your-personal-trainer-ss-1-1280x720"
+  },
+  {
+   "title": "Personal Program",
+   "description": "Daily routines can be tailored around training goals and available time.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/My%20Nintendo%20Store/EN-US/Nintendo%20Switch%20Software/fitness-boxing-3-your-personal-trainer-121188/121188-121189-fitness-boxing-3-your-personal-trainer-ss-2-1280x720"
+  },
+  {
+   "title": "Nine virtual instructors",
+   "description": "Trainers are fully voiced and support customizable clothing and hairstyles.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/My%20Nintendo%20Store/EN-US/Nintendo%20Switch%20Software/fitness-boxing-3-your-personal-trainer-121188/121188-121189-fitness-boxing-3-your-personal-trainer-ss-3-1280x720"
+  },
+  {
+   "title": "Sit Fit Boxing and Mitt Drills",
+   "description": "Special modes broaden accessibility and provide focused practice.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/My%20Nintendo%20Store/EN-US/Nintendo%20Switch%20Software/fitness-boxing-3-your-personal-trainer-121188/121188-121189-fitness-boxing-3-your-personal-trainer-ss-4-1280x720"
+  },
+  {
+   "title": "Two-player workouts",
+   "description": "Supported routines let two local players exercise together on one system.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/My%20Nintendo%20Store/EN-US/Nintendo%20Switch%20Software/fitness-boxing-3-your-personal-trainer-121188/121188-121189-fitness-boxing-3-your-personal-trainer-ss-5-1280x720"
+  }
+ ],
+ "worldSummary": "Rhythm-based boxing workouts combine daily plans, virtual trainers, quick routines, Mitt Drills, and accessible exercise options for one or two players. Players select a trainer and establish a workout profile. Optional DLC packs add additional music and cosmetic content.",
+ "storyChapters": [
+  {
+   "title": "Choose an instructor",
+   "body": "Players select a trainer and establish a workout profile.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/My%20Nintendo%20Store/EN-US/Nintendo%20Switch%20Software/fitness-boxing-3-your-personal-trainer-121188/121188-121189-fitness-boxing-3-your-personal-trainer-ss-2-1280x720"
+  },
+  {
+   "title": "Build a daily routine",
+   "body": "Personal Programs and Quick Workouts make it easy to fit sessions around a schedule.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/My%20Nintendo%20Store/EN-US/Nintendo%20Switch%20Software/fitness-boxing-3-your-personal-trainer-121188/121188-121189-fitness-boxing-3-your-personal-trainer-ss-3-1280x720"
+  },
+  {
+   "title": "Practice technique",
+   "body": "Mitt Drills and targeted exercises focus on combinations and movement.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/My%20Nintendo%20Store/EN-US/Nintendo%20Switch%20Software/fitness-boxing-3-your-personal-trainer-121188/121188-121189-fitness-boxing-3-your-personal-trainer-ss-4-1280x720"
+  },
+  {
+   "title": "Track progress",
+   "body": "Session history and training metrics encourage regular use.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/My%20Nintendo%20Store/EN-US/Nintendo%20Switch%20Software/fitness-boxing-3-your-personal-trainer-121188/121188-121189-fitness-boxing-3-your-personal-trainer-ss-5-1280x720"
+  },
+  {
+   "title": "Expand music and cosmetics",
+   "body": "Optional DLC packs add additional music and cosmetic content.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/My%20Nintendo%20Store/EN-US/Nintendo%20Switch%20Software/fitness-boxing-3-your-personal-trainer-121188/121188-121189-fitness-boxing-3-your-personal-trainer-ss-6-1280x720"
+  }
+ ],
+ "features": [
+  "30 instrumental songs",
+  "Nine voiced trainers",
+  "Personal Program",
+  "Sit Fit Boxing and Mitt Drills",
+  "Two-player local workouts"
+ ],
+ "perfResolutionDocked": "1080p",
+ "perfResolutionHandheld": "Not Supported",
+ "perfFps": "60",
+ "perfHdr": false,
+ "playTimeMain": 0,
+ "completionMain": 0,
+ "completionExtras": 0,
+ "faq": [
+  {
+   "q": "Does it support Handheld mode?",
+   "a": "No. Nintendo lists TV and Tabletop modes because detached Joy-Con motion input is required."
+  },
+  {
+   "q": "How many players are supported?",
+   "a": "Nintendo lists 1-2 players on a single system."
+  },
+  {
+   "q": "Does it have DLC?",
+   "a": "Yes. Nintendo Support lists additional music and cosmetic packs."
+  },
+  {
+   "q": "Is there a Switch 2 Edition?",
+   "a": "Yes. A separate Nintendo Switch 2 Edition released in 2026 and should be treated as a separate file."
+  },
+  {
+   "q": "Can the Switch 1 version be upgraded?",
+   "a": "Yes. Nintendo provides a Switch 2 Edition Upgrade Pack for owners who want the enhanced version on Switch 2."
+  }
+ ],
+ "verdictScore": 8.5,
+ "verdictPros": [
+  "Good daily workout structure",
+  "Accessible training modes",
+  "Strong instructor customization",
+  "Local two-player support",
+  "Expandable with music DLC"
+ ],
+ "verdictCons": [
+  "Requires motion space",
+  "Handheld mode not supported",
+  "Not a substitute for professional medical/fitness advice",
+  "Music selection may not suit everyone",
+  "Advanced Switch 2 features require the separate edition"
+ ],
+ "timeline": [
+  {
+   "date": "2024-12-05",
+   "title": "Released on target Nintendo platform"
+  }
+ ],
+ "patchNotes": [
+  {
+   "version": "Current retail build",
+   "date": "2026-08-27"
+  }
+ ],
+ "studioName": "Imagineer",
+ "studioUrl": "https://www.nintendo.com/us/store/products/fitness-boxing-3-your-personal-trainer-121188/",
+ "studioLocation": "See publisher/developer profile",
+ "sources": [
+  {
+   "name": "Official Nintendo / publisher product page",
+   "url": "https://www.nintendo.com/us/store/products/fitness-boxing-3-your-personal-trainer-121188/"
+  }
+ ],
+ "downloadSizeGb": 4.6,
+ "requiredSpaceGb": 4.6,
+ "microSdRecommended": false,
+ "storageNotes": "Storage requirements follow the official product listing where a final numeric size is published; upcoming titles may require a later refresh when final size is posted.",
+ "mpLocalPlayers": true,
+ "mpOnlinePlayers": false,
+ "mpCoop": true,
+ "mpCompetitive": false,
+ "mpLocalWireless": false,
+ "mpSplitScreen": true,
+ "dlc": [
+  {
+   "name": "Downloadable / additional content status",
+   "description": "Nintendo Support lists optional music/cosmetic packs and a separate Switch 2 Edition Upgrade Pack."
+  }
+ ],
+ "devicePerformance": [
+  {
+   "device": "Nintendo Switch",
+   "deviceSlug": "nintendo-switch",
+   "deviceModel": "Nintendo Switch",
+   "hardwareId": "nintendo-switch",
+   "informationStatus": "Available",
+   "handheld": {
+    "supported": false,
+    "resolution": "Not Supported",
+    "resolutionDynamic": false,
+    "renderingResolution": "Not Supported",
+    "outputResolution": "Not Supported",
+    "fps": "60",
+    "fpsMin": "60",
+    "fpsMax": "60",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "Handheld",
+    "notes": "Handheld mode is not supported. TV/Tabletop motion-controlled workouts use a 60 fps presentation target."
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "1080p",
+    "resolutionDynamic": false,
+    "renderingResolution": "1080p",
+    "outputResolution": "1080p",
+    "fps": "60",
+    "fpsMin": "60",
+    "fpsMax": "60",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "TV / Docked",
+    "notes": "Handheld mode is not supported. TV/Tabletop motion-controlled workouts use a 60 fps presentation target."
+   },
+   "modes": [
+    {
+     "name": "Primary documented/compatibility profile",
+     "handheldResolution": "Not Supported",
+     "handheldFps": "60",
+     "tvResolution": "1080p",
+     "tvFps": "60",
+     "hdr": false,
+     "vrr": false,
+     "notes": "Handheld mode is not supported. TV/Tabletop motion-controlled workouts use a 60 fps presentation target."
+    }
+   ],
+   "upscaling": "Game / system-specific scaling where applicable",
+   "rayTracing": false,
+   "rayTracingMode": "Not Supported",
+   "loadingTime": "Scene-dependent",
+   "loadingNotes": "Loading time varies by scene, save state, storage, version, and patch.",
+   "gameVersion": "Current listed version",
+   "patchVersion": "Current available update",
+   "testedDate": "2026-08-27",
+   "sourceName": "Official product / compatibility information",
+   "sourceUrl": "https://www.nintendo.com/us/store/products/fitness-boxing-3-your-personal-trainer-121188/",
+   "performanceNotes": "Handheld mode is not supported. TV/Tabletop motion-controlled workouts use a 60 fps presentation target."
+  },
+  {
+   "device": "Nintendo Switch 2",
+   "deviceSlug": "nintendo-switch-2",
+   "deviceModel": "Nintendo Switch 2",
+   "hardwareId": "nintendo-switch-2",
+   "informationStatus": "Available",
+   "handheld": {
+    "supported": false,
+    "resolution": "Not Supported",
+    "resolutionDynamic": false,
+    "renderingResolution": "Not Supported",
+    "outputResolution": "Not Supported",
+    "fps": "60",
+    "fpsMin": "60",
+    "fpsMax": "60",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "Handheld",
+    "notes": "Original Switch version is playable on Switch 2; the enhanced Switch 2 Edition is a separate product and should be used for its additional features."
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "1080p",
+    "resolutionDynamic": false,
+    "renderingResolution": "1080p",
+    "outputResolution": "1080p",
+    "fps": "60",
+    "fpsMin": "60",
+    "fpsMax": "60",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "TV / Docked",
+    "notes": "Original Switch version is playable on Switch 2; the enhanced Switch 2 Edition is a separate product and should be used for its additional features."
+   },
+   "modes": [
+    {
+     "name": "Primary documented/compatibility profile",
+     "handheldResolution": "Not Supported",
+     "handheldFps": "60",
+     "tvResolution": "1080p",
+     "tvFps": "60",
+     "hdr": false,
+     "vrr": false,
+     "notes": "Original Switch version is playable on Switch 2; the enhanced Switch 2 Edition is a separate product and should be used for its additional features."
+    }
+   ],
+   "upscaling": "Game / system-specific scaling where applicable",
+   "rayTracing": false,
+   "rayTracingMode": "Not Supported",
+   "loadingTime": "Scene-dependent",
+   "loadingNotes": "Loading time varies by scene, save state, storage, version, and patch.",
+   "gameVersion": "Current listed version",
+   "patchVersion": "Current available update",
+   "testedDate": "2026-08-27",
+   "sourceName": "Official product / compatibility information",
+   "sourceUrl": "https://www.nintendo.com/us/store/products/fitness-boxing-3-your-personal-trainer-121188/",
+   "performanceNotes": "Original Switch version is playable on Switch 2; the enhanced Switch 2 Edition is a separate product and should be used for its additional features."
+  }
+ ],
+ "switch2UpgradePrice": 0,
+ "galleryImages": [
+  {
+   "url": "/api/files/products/prd_6378a049ed4f454f/gallery-1-f69201ccf6ba973b.webp",
+   "alt": "Fitness Boxing 3: Your Personal Trainer screenshot 1"
+  },
+  {
+   "url": "/api/files/products/prd_6378a049ed4f454f/gallery-2-33adf1cafc3623af.webp",
+   "alt": "Fitness Boxing 3: Your Personal Trainer screenshot 2"
+  },
+  {
+   "url": "/api/files/products/prd_6378a049ed4f454f/gallery-3-bfd6cd43bcd3620a.webp",
+   "alt": "Fitness Boxing 3: Your Personal Trainer screenshot 3"
+  },
+  {
+   "url": "/api/files/products/prd_6378a049ed4f454f/gallery-4-b06cc90e9b29a8e6.webp",
+   "alt": "Fitness Boxing 3: Your Personal Trainer screenshot 4"
+  },
+  {
+   "url": "/api/files/products/prd_6378a049ed4f454f/gallery-5-1027d824f888d3b6.webp",
+   "alt": "Fitness Boxing 3: Your Personal Trainer screenshot 5"
+  },
+  {
+   "url": "/api/files/products/prd_6378a049ed4f454f/gallery-6-ab80182343b867c2.webp",
+   "alt": "Fitness Boxing 3: Your Personal Trainer screenshot 6"
+  }
+ ],
+ "boxContentsList": [],
+ "image": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/My%20Nintendo%20Store/EN-US/Nintendo%20Switch%20Software/fitness-boxing-3-your-personal-trainer-121188/121188-fitness-boxing-3-your-personal-trainer-1200x675",
+ "banner": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/My%20Nintendo%20Store/EN-US/Nintendo%20Switch%20Software/fitness-boxing-3-your-personal-trainer-121188/121188-121189-fitness-boxing-3-your-personal-trainer-ss-1-1280x720",
+ "schemaId": "",
+ "batchImport": true,
+ "createdAt": "2026-08-28T18:42:27.668Z",
+ "updatedAt": "2026-08-28T18:42:27.668Z"
+}

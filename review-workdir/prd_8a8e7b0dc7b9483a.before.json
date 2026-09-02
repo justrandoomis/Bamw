@@ -1,0 +1,511 @@
+{
+ "title": "FINAL FANTASY VIII Remastered",
+ "titleEn": "FINAL FANTASY VIII Remastered",
+ "titleKu": "",
+ "slug": "final-fantasy-viii-remastered",
+ "description": "The classic Squall and Rinoa RPG returns with remastered character visuals and convenience features such as Battle Assist, x3 speed, and an option to disable random encounters. Squall trains at Balamb Garden and begins military missions with other students. The game culminates in a surreal late-game confrontation shaped by the sorceress storyline.",
+ "descriptionEn": "The classic Squall and Rinoa RPG returns with remastered character visuals and convenience features such as Battle Assist, x3 speed, and an option to disable random encounters. Squall trains at Balamb Garden and begins military missions with other students. The game culminates in a surreal late-game confrontation shaped by the sorceress storyline.",
+ "descriptionKu": "",
+ "cartridgeImage": "https://images.launchbox-app.com/13ead5bf-b619-4f2b-a369-683b56593b46.png",
+ "nintendoCardImage": "/api/files/products/prd_8a8e7b0dc7b9483a/square-card-cd7eca4a91497cdd.webp",
+ "coverHiResImage": "",
+ "coverImage": "/api/files/products/prd_8a8e7b0dc7b9483a/cover-15abb66cc1417d0d.webp",
+ "bannerImages": [
+  "https://images.launchbox-app.com/94612194-adee-45d8-a1a7-a421b8d5fcd4.jpg",
+  "https://images.launchbox-app.com/0e5e2066-60f7-4dfa-bf5b-eea1677d26ae.jpg",
+  "https://images.launchbox-app.com/a9b17167-8ff2-48fd-8b31-e6e35fbeaabc.jpg",
+  "https://images.launchbox-app.com/cdd9977b-2a32-4afd-a4c4-1c12fd6dc45e.jpg"
+ ],
+ "gallery": [],
+ "youtubeTrailer": "",
+ "releaseDate": "2019-09-03",
+ "ageRating": "ESRB T / PEGI 16",
+ "metacriticRating": 80,
+ "genres": [
+  "RPG"
+ ],
+ "platform": "switch1",
+ "size": 3.1,
+ "numberOfPlayers": "Single system (1)",
+ "supportedLanguages": "Official supported language list varies by region; see the publisher page linked in Sources.",
+ "hardwareModel": "",
+ "colorEdition": "",
+ "storageCapacity": "",
+ "screenSpecs": "",
+ "batteryLife": "",
+ "boxContents": [],
+ "boxContentsText": "",
+ "warrantyCondition": "",
+ "connectivity": "",
+ "characterName": "Link",
+ "amiiboSeries": "The Legend of Zelda",
+ "figureType": "figure",
+ "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+ "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+ "boxCondition": "mib",
+ "releaseWave": "Wave 2 (Restock)",
+ "rarity": "standard",
+ "accessoryType": "حقيبة حماية وتنقل Carry Case",
+ "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+ "brand": "Nintendo Official",
+ "material": "Hard EVA Shockproof Shell",
+ "availableColors": "Black, Neon Red/Blue, White",
+ "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+ "cardValue": "$20 eShop Balance",
+ "region": "Global",
+ "cardType": "eshop",
+ "deliveryMethod": "instant_code",
+ "redemptionGuide": "",
+ "redemptionSteps": [],
+ "validity": "no_expiry",
+ "usedType": "cartridge",
+ "conditionGrade": "like_new",
+ "packaging": "cib",
+ "guaranteeStatus": "tested_30days",
+ "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+ "accountType": "primary",
+ "badge": "وفر 40%",
+ "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+ "price": 8500,
+ "cost": 2000,
+ "stock": 999999,
+ "isInfiniteStock": true,
+ "isHidden": true,
+ "displayOrder": 0,
+ "category": "nintendo-switch-games",
+ "categoryId": "nintendo-switch-games",
+ "categoryEn": "",
+ "categoryKu": "",
+ "options": [
+  {
+   "id": "offline_account",
+   "name": "مشترك",
+   "description": "مشترك",
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_account",
+   "name": "خاص بك",
+   "description": "خاص بك",
+   "stock": 9999,
+   "isInfiniteStock": true
+  }
+ ],
+ "types": [
+  {
+   "id": "offline_base",
+   "name": "مشترك — اللعبة الأساسية",
+   "optionId": "offline_account",
+   "price": 8500,
+   "cost": 2000,
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_base",
+   "name": "خاص بك — اللعبة الأساسية",
+   "optionId": "online_account",
+   "price": 29500,
+   "cost": 23000,
+   "stock": 9999,
+   "isInfiniteStock": true
+  }
+ ],
+ "editions": [],
+ "dlcs": [],
+ "isActive": true,
+ "status": "Active",
+ "kind": "account",
+ "trade_value_iqd": 12500,
+ "store_offer_bonus_iqd": 2250,
+ "trade_enabled": true,
+ "trade_value_locked": false,
+ "id": "prd_8a8e7b0dc7b9483a",
+ "schema_version": 24,
+ "titleAr": "فاينل فانتسي 8 ريمسترد",
+ "compatibility": [
+  "Nintendo Switch",
+  "Nintendo Switch 2 compatibility: Supported"
+ ],
+ "edition": "Standard / Store Variants",
+ "developer": "SQUARE ENIX",
+ "publisher": "SQUARE ENIX",
+ "seriesName": "FINAL FANTASY VIII Remastered",
+ "metacriticUrl": "https://www.metacritic.com/game/final-fantasy-viii-remastered/",
+ "opencriticRating": 80,
+ "userScore": 8.2,
+ "price_usd": 19.99,
+ "officialUrl": "https://www.nintendo.com/us/store/products/final-fantasy-viii-remastered-switch/",
+ "eshopUrl": "https://www.nintendo.com/us/store/products/final-fantasy-viii-remastered-switch/",
+ "gameIsOffline": true,
+ "gameIsOnline": false,
+ "gameLanguageLocked": false,
+ "description_short": "The classic Squall and Rinoa RPG returns with remastered character visuals and convenience features such as Battle Assist, x3 speed, and an option to disable random encounters.",
+ "description_ar": "فاينل فانتسي 8 ريمسترد — The classic Squall and Rinoa RPG returns with remastered character visuals and convenience features such as Battle Assist, x3 speed, and an option to disable random encounters.",
+ "box_front_url": "https://images.launchbox-app.com/13ead5bf-b619-4f2b-a369-683b56593b46.png",
+ "languagesText": [
+  "See official supported languages on the linked Nintendo/publisher product page"
+ ],
+ "languagesAudio": [
+  "Audio language availability varies by title and region; see official product information"
+ ],
+ "tvMode": true,
+ "tabletopMode": true,
+ "handheldMode": true,
+ "nintendoPlayModes": "TV / Tabletop / Handheld",
+ "nintendoOnlineRequired": false,
+ "nintendoCloudSaves": true,
+ "nintendoGameKeyCard": false,
+ "nintendoPhysicalNeedsDownload": false,
+ "switch2Enhanced": false,
+ "switch2Exclusive": false,
+ "nintendoNotes": "Platform, release, player-count, storage, compatibility, and feature statements in this import are grounded in the official Nintendo/publisher pages listed under Sources. Store package prices are user-supplied storefront values, not assumed MSRP.",
+ "editionsList": [
+  {
+   "name": "Regular / Offline",
+   "coverUrl": "https://images.launchbox-app.com/13ead5bf-b619-4f2b-a369-683b56593b46.png",
+   "contents": [
+    {
+     "label": "Regular / Offline store package"
+    },
+    {
+     "label": "Offline account access"
+    },
+    {
+     "label": "Infinite stock by default"
+    }
+   ]
+  },
+  {
+   "name": "Standard / Online",
+   "coverUrl": "https://images.launchbox-app.com/13ead5bf-b619-4f2b-a369-683b56593b46.png",
+   "contents": [
+    {
+     "label": "Standard / Online store package"
+    },
+    {
+     "label": "Online account access"
+    },
+    {
+     "label": "Infinite stock by default"
+    }
+   ]
+  }
+ ],
+ "gameplayPillars": [
+  {
+   "title": "Junction system",
+   "description": "Guardian Forces and magic can be junctioned to character stats, creating a highly flexible but unusual progression system.",
+   "imageUrl": "https://images.launchbox-app.com/94612194-adee-45d8-a1a7-a421b8d5fcd4.jpg"
+  },
+  {
+   "title": "Active Time Battle combat",
+   "description": "Classic command-based encounters use ATB timing, Limit Breaks, Guardian Forces, and draw/cast mechanics.",
+   "imageUrl": "https://images.launchbox-app.com/0e5e2066-60f7-4dfa-bf5b-eea1677d26ae.jpg"
+  },
+  {
+   "title": "Triple Triad",
+   "description": "The famous card minigame is deeply integrated into side content and can influence item/magic progression.",
+   "imageUrl": "https://images.launchbox-app.com/a9b17167-8ff2-48fd-8b31-e6e35fbeaabc.jpg"
+  },
+  {
+   "title": "Remaster boosters",
+   "description": "Battle Assist, x3 speed, and no-random-encounter options reduce friction for modern replay.",
+   "imageUrl": "https://images.launchbox-app.com/cdd9977b-2a32-4afd-a4c4-1c12fd6dc45e.jpg"
+  },
+  {
+   "title": "Story-driven world tour",
+   "description": "The adventure moves from military school drama into global conflict, romance, and increasingly surreal events.",
+   "imageUrl": "https://images.launchbox-app.com/94612194-adee-45d8-a1a7-a421b8d5fcd4.jpg"
+  }
+ ],
+ "worldSummary": "The classic Squall and Rinoa RPG returns with remastered character visuals and convenience features such as Battle Assist, x3 speed, and an option to disable random encounters. Squall trains at Balamb Garden and begins military missions with other students. The game culminates in a surreal late-game confrontation shaped by the sorceress storyline.",
+ "storyChapters": [
+  {
+   "title": "Become a SeeD candidate",
+   "body": "Squall trains at Balamb Garden and begins military missions with other students.",
+   "imageUrl": "https://images.launchbox-app.com/0e5e2066-60f7-4dfa-bf5b-eea1677d26ae.jpg"
+  },
+  {
+   "title": "Meet Rinoa",
+   "body": "A resistance mission introduces Rinoa and changes the emotional direction of the story.",
+   "imageUrl": "https://images.launchbox-app.com/a9b17167-8ff2-48fd-8b31-e6e35fbeaabc.jpg"
+  },
+  {
+   "title": "Enter a global conflict",
+   "body": "The party becomes involved with Gardens, sorceresses, and political struggles across multiple regions.",
+   "imageUrl": "https://images.launchbox-app.com/cdd9977b-2a32-4afd-a4c4-1c12fd6dc45e.jpg"
+  },
+  {
+   "title": "Uncover character histories",
+   "body": "Dream sequences and later revelations reframe the identities and connections between major characters.",
+   "imageUrl": "https://images.launchbox-app.com/94612194-adee-45d8-a1a7-a421b8d5fcd4.jpg"
+  },
+  {
+   "title": "Reach the final time-compression conflict",
+   "body": "The game culminates in a surreal late-game confrontation shaped by the sorceress storyline.",
+   "imageUrl": "https://images.launchbox-app.com/0e5e2066-60f7-4dfa-bf5b-eea1677d26ae.jpg"
+  }
+ ],
+ "features": [
+  "Remastered character visuals",
+  "x3 speed booster",
+  "Battle Assist",
+  "Disable random encounters",
+  "Triple Triad card game"
+ ],
+ "perfResolutionDocked": "1080p",
+ "perfResolutionHandheld": "720p",
+ "perfFps": "30",
+ "perfHdr": false,
+ "playTimeMain": 40,
+ "completionMain": 55,
+ "completionExtras": 75,
+ "faq": [
+  {
+   "q": "Is this the original FFVIII or a remaster?",
+   "a": "It is the remastered version with upgraded character models and quality-of-life options."
+  },
+  {
+   "q": "Does it support Switch 2?",
+   "a": "Nintendo lists the Switch version as compatible with Switch 2."
+  },
+  {
+   "q": "Is it multiplayer?",
+   "a": "No. It is a single-player RPG."
+  },
+  {
+   "q": "What is Junction?",
+   "a": "A system that equips Guardian Forces and attaches stocked magic to stats for large build customization."
+  },
+  {
+   "q": "Can random encounters be disabled?",
+   "a": "Yes. The remaster includes a no-random-encounter option."
+  }
+ ],
+ "verdictScore": 8.5,
+ "verdictPros": [
+  "Distinctive progression system",
+  "Excellent music",
+  "Useful remaster boosters",
+  "Triple Triad remains addictive",
+  "Strong portable version"
+ ],
+ "verdictCons": [
+  "Junction system is confusing initially",
+  "Drawing magic can feel repetitive",
+  "Story becomes very surreal",
+  "Backgrounds show age compared with character models",
+  "No native Switch 2 edition"
+ ],
+ "reviews": [
+  {
+   "source": "Metacritic",
+   "score": "80",
+   "url": "https://www.metacritic.com/game/final-fantasy-viii-remastered/"
+  },
+  {
+   "source": "OpenCritic",
+   "score": "80",
+   "url": "https://opencritic.com/"
+  }
+ ],
+ "timeline": [
+  {
+   "date": "2019-09-03",
+   "title": "Released on target Nintendo platform"
+  }
+ ],
+ "patchNotes": [
+  {
+   "version": "Current retail build",
+   "date": "2026-08-27"
+  }
+ ],
+ "studioName": "SQUARE ENIX",
+ "studioUrl": "https://www.nintendo.com/us/store/products/final-fantasy-viii-remastered-switch/",
+ "studioLocation": "See publisher/developer profile",
+ "sources": [
+  {
+   "name": "Official Nintendo / publisher product page",
+   "url": "https://www.nintendo.com/us/store/products/final-fantasy-viii-remastered-switch/"
+  },
+  {
+   "name": "Metacritic",
+   "url": "https://www.metacritic.com/game/final-fantasy-viii-remastered/"
+  }
+ ],
+ "downloadSizeGb": 3.1,
+ "requiredSpaceGb": 3.1,
+ "microSdRecommended": false,
+ "storageNotes": "Storage requirements follow the official product listing where a final numeric size is published; upcoming titles may require a later refresh when final size is posted.",
+ "mpLocalPlayers": false,
+ "mpOnlinePlayers": false,
+ "mpCoop": false,
+ "mpCompetitive": false,
+ "mpLocalWireless": false,
+ "mpSplitScreen": false,
+ "dlc": [
+  {
+   "name": "Downloadable / additional content status",
+   "description": "No standalone DLC expansion is required."
+  }
+ ],
+ "devicePerformance": [
+  {
+   "device": "Nintendo Switch",
+   "deviceSlug": "nintendo-switch",
+   "deviceModel": "Nintendo Switch",
+   "hardwareId": "nintendo-switch",
+   "informationStatus": "Available",
+   "handheld": {
+    "supported": true,
+    "resolution": "720p",
+    "resolutionDynamic": false,
+    "renderingResolution": "720p",
+    "outputResolution": "720p",
+    "fps": "30",
+    "fpsMin": "30",
+    "fpsMax": "30",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "Handheld",
+    "notes": "Remastered Switch release recorded at a 30 fps gameplay profile with 720p handheld and 1080p TV output."
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "1080p",
+    "resolutionDynamic": false,
+    "renderingResolution": "1080p",
+    "outputResolution": "1080p",
+    "fps": "30",
+    "fpsMin": "30",
+    "fpsMax": "30",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "TV / Docked",
+    "notes": "Remastered Switch release recorded at a 30 fps gameplay profile with 720p handheld and 1080p TV output."
+   },
+   "modes": [
+    {
+     "name": "Primary documented/compatibility profile",
+     "handheldResolution": "720p",
+     "handheldFps": "30",
+     "tvResolution": "1080p",
+     "tvFps": "30",
+     "hdr": false,
+     "vrr": false,
+     "notes": "Remastered Switch release recorded at a 30 fps gameplay profile with 720p handheld and 1080p TV output."
+    }
+   ],
+   "upscaling": "Game / system-specific scaling where applicable",
+   "rayTracing": false,
+   "rayTracingMode": "Not Supported",
+   "loadingTime": "Scene-dependent",
+   "loadingNotes": "Loading time varies by scene, save state, storage, version, and patch.",
+   "gameVersion": "Current listed version",
+   "patchVersion": "Current available update",
+   "testedDate": "2026-08-27",
+   "sourceName": "Official product / compatibility information",
+   "sourceUrl": "https://www.nintendo.com/us/store/products/final-fantasy-viii-remastered-switch/",
+   "performanceNotes": "Remastered Switch release recorded at a 30 fps gameplay profile with 720p handheld and 1080p TV output."
+  },
+  {
+   "device": "Nintendo Switch 2",
+   "deviceSlug": "nintendo-switch-2",
+   "deviceModel": "Nintendo Switch 2",
+   "hardwareId": "nintendo-switch-2",
+   "informationStatus": "Available",
+   "handheld": {
+    "supported": true,
+    "resolution": "720p",
+    "resolutionDynamic": false,
+    "renderingResolution": "720p",
+    "outputResolution": "720p",
+    "fps": "30",
+    "fpsMin": "30",
+    "fpsMax": "30",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "Handheld",
+    "notes": "Backward-compatible Nintendo Switch software on Nintendo Switch 2; no native Switch 2 edition assumed."
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "1080p",
+    "resolutionDynamic": false,
+    "renderingResolution": "1080p",
+    "outputResolution": "1080p",
+    "fps": "30",
+    "fpsMin": "30",
+    "fpsMax": "30",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "TV / Docked",
+    "notes": "Backward-compatible Nintendo Switch software on Nintendo Switch 2; no native Switch 2 edition assumed."
+   },
+   "modes": [
+    {
+     "name": "Primary documented/compatibility profile",
+     "handheldResolution": "720p",
+     "handheldFps": "30",
+     "tvResolution": "1080p",
+     "tvFps": "30",
+     "hdr": false,
+     "vrr": false,
+     "notes": "Backward-compatible Nintendo Switch software on Nintendo Switch 2; no native Switch 2 edition assumed."
+    }
+   ],
+   "upscaling": "Game / system-specific scaling where applicable",
+   "rayTracing": false,
+   "rayTracingMode": "Not Supported",
+   "loadingTime": "Scene-dependent",
+   "loadingNotes": "Loading time varies by scene, save state, storage, version, and patch.",
+   "gameVersion": "Current listed version",
+   "patchVersion": "Current available update",
+   "testedDate": "2026-08-27",
+   "sourceName": "Official product / compatibility information",
+   "sourceUrl": "https://www.nintendo.com/us/store/products/final-fantasy-viii-remastered-switch/",
+   "performanceNotes": "Backward-compatible Nintendo Switch software on Nintendo Switch 2; no native Switch 2 edition assumed."
+  }
+ ],
+ "switch2UpgradePrice": 0,
+ "galleryImages": [
+  {
+   "url": "/api/files/products/prd_8a8e7b0dc7b9483a/gallery-1-ca881ab70146c969.webp",
+   "alt": "FINAL FANTASY VIII Remastered screenshot 1"
+  },
+  {
+   "url": "/api/files/products/prd_8a8e7b0dc7b9483a/gallery-2-e793c431161d783e.webp",
+   "alt": "FINAL FANTASY VIII Remastered screenshot 2"
+  },
+  {
+   "url": "/api/files/products/prd_8a8e7b0dc7b9483a/gallery-3-2fcbfa356d56d2cb.webp",
+   "alt": "FINAL FANTASY VIII Remastered screenshot 3"
+  },
+  {
+   "url": "/api/files/products/prd_8a8e7b0dc7b9483a/gallery-4-8d12e246bb62568d.webp",
+   "alt": "FINAL FANTASY VIII Remastered screenshot 4"
+  },
+  {
+   "url": "/api/files/products/prd_8a8e7b0dc7b9483a/gallery-5-b22c96b6219bb69f.webp",
+   "alt": "FINAL FANTASY VIII Remastered screenshot 5"
+  },
+  {
+   "url": "/api/files/products/prd_8a8e7b0dc7b9483a/gallery-6-269aec3527317eb4.webp",
+   "alt": "FINAL FANTASY VIII Remastered screenshot 6"
+  }
+ ],
+ "boxContentsList": [],
+ "image": "https://images.launchbox-app.com/2c90ebfb-1c5a-4ee9-8a03-1a1d4fc0b3a3.jpg",
+ "banner": "https://images.launchbox-app.com/94612194-adee-45d8-a1a7-a421b8d5fcd4.jpg",
+ "schemaId": "",
+ "batchImport": true,
+ "createdAt": "2026-08-28T18:46:12.015Z",
+ "updatedAt": "2026-08-28T18:46:12.015Z"
+}

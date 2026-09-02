@@ -1,0 +1,513 @@
+{
+ "title": "FINAL FANTASY XII THE ZODIAC AGE",
+ "titleEn": "FINAL FANTASY XII THE ZODIAC AGE",
+ "titleKu": "",
+ "slug": "final-fantasy-xii-the-zodiac-age",
+ "description": "The remastered Ivalice RPG combines gambit-driven real-time party combat with the Zodiac Job System and portable Nintendo Switch play. Vaan’s life in Rabanastre intersects with a resistance movement and a larger imperial conflict. The final acts resolve the party’s struggle over power, freedom, and the future of Dalmasca.",
+ "descriptionEn": "The remastered Ivalice RPG combines gambit-driven real-time party combat with the Zodiac Job System and portable Nintendo Switch play. Vaan’s life in Rabanastre intersects with a resistance movement and a larger imperial conflict. The final acts resolve the party’s struggle over power, freedom, and the future of Dalmasca.",
+ "descriptionKu": "",
+ "cartridgeImage": "/api/files/products/prd_17105a2338f648ee/front-box-f5f752c78c26bcd8.webp",
+ "nintendoCardImage": "/api/files/products/prd_17105a2338f648ee/square-card-0928795ce0e7eddd.webp",
+ "coverHiResImage": "/api/files/products/prd_17105a2338f648ee/3d-wrap-703e69629e9d88c7.webp",
+ "coverImage": "/api/files/products/prd_17105a2338f648ee/cover-588eb169ba700f78.webp",
+ "bannerImages": [
+  "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000009746/199d08daecf6f6008b36ed6aaeca5ee9a24d187b1ea69c8af500d1bb0f65c3e5",
+  "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000009746/33a72d02315185e5b3728ce4b2c135671f45c253d1ea8b3e1641c3bbcb2696f6",
+  "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000009746/28998e758c45dc925b0268117f7dbdcbf884cc96c0a7d6fd6c0e7e1f2f31388c",
+  "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000009746/7c384f5cc44dbd1259b7914df776da401737e2031e2b1d812da5432df06f8560",
+  "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000009746/111b6437fdbeeeda09500e972eabd1afa87da16b057f6b77984c0fd846d1239a"
+ ],
+ "gallery": [],
+ "youtubeTrailer": "",
+ "releaseDate": "2019-04-30",
+ "ageRating": "ESRB T / PEGI 16",
+ "metacriticRating": 85,
+ "genres": [
+  "RPG",
+  "Adventure"
+ ],
+ "platform": "switch1",
+ "size": 12.7,
+ "numberOfPlayers": "Single system (1)",
+ "supportedLanguages": "Official supported language list varies by region; see the publisher page linked in Sources.",
+ "hardwareModel": "",
+ "colorEdition": "",
+ "storageCapacity": "",
+ "screenSpecs": "",
+ "batteryLife": "",
+ "boxContents": [],
+ "boxContentsText": "",
+ "warrantyCondition": "",
+ "connectivity": "",
+ "characterName": "Link",
+ "amiiboSeries": "The Legend of Zelda",
+ "figureType": "figure",
+ "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+ "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+ "boxCondition": "mib",
+ "releaseWave": "Wave 2 (Restock)",
+ "rarity": "standard",
+ "accessoryType": "حقيبة حماية وتنقل Carry Case",
+ "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+ "brand": "Nintendo Official",
+ "material": "Hard EVA Shockproof Shell",
+ "availableColors": "Black, Neon Red/Blue, White",
+ "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+ "cardValue": "$20 eShop Balance",
+ "region": "Global",
+ "cardType": "eshop",
+ "deliveryMethod": "instant_code",
+ "redemptionGuide": "",
+ "redemptionSteps": [],
+ "validity": "no_expiry",
+ "usedType": "cartridge",
+ "conditionGrade": "like_new",
+ "packaging": "cib",
+ "guaranteeStatus": "tested_30days",
+ "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+ "accountType": "primary",
+ "badge": "وفر 40%",
+ "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+ "price": 8500,
+ "cost": 1500,
+ "stock": 999999,
+ "isInfiniteStock": true,
+ "isHidden": true,
+ "displayOrder": 0,
+ "category": "nintendo-switch-games",
+ "categoryId": "nintendo-switch-games",
+ "categoryEn": "",
+ "categoryKu": "",
+ "options": [
+  {
+   "id": "offline_account",
+   "name": "مشترك",
+   "description": "مشترك",
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_account",
+   "name": "خاص بك",
+   "description": "خاص بك",
+   "stock": 9999,
+   "isInfiniteStock": true
+  }
+ ],
+ "types": [
+  {
+   "id": "offline_base",
+   "name": "مشترك — اللعبة الأساسية",
+   "optionId": "offline_account",
+   "price": 8500,
+   "cost": 1500,
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_base",
+   "name": "خاص بك — اللعبة الأساسية",
+   "optionId": "online_account",
+   "price": 21000,
+   "cost": 16500,
+   "stock": 9999,
+   "isInfiniteStock": true
+  }
+ ],
+ "editions": [],
+ "dlcs": [],
+ "isActive": true,
+ "status": "Active",
+ "kind": "account",
+ "trade_value_iqd": 9000,
+ "store_offer_bonus_iqd": 1500,
+ "trade_enabled": true,
+ "trade_value_locked": false,
+ "id": "prd_17105a2338f648ee",
+ "schema_version": 24,
+ "titleAr": "فاينل فانتسي 12: ذا زودياك إيج",
+ "compatibility": [
+  "Nintendo Switch",
+  "Nintendo Switch 2 compatibility: Supported"
+ ],
+ "edition": "Standard / Store Variants",
+ "developer": "SQUARE ENIX",
+ "publisher": "SQUARE ENIX",
+ "seriesName": "FINAL FANTASY XII THE ZODIAC AGE",
+ "metacriticUrl": "https://www.metacritic.com/game/final-fantasy-xii-the-zodiac-age/",
+ "opencriticRating": 85,
+ "userScore": 8.5,
+ "price_usd": 49.99,
+ "officialUrl": "https://www.nintendo.com/us/store/products/final-fantasy-xii-the-zodiac-age-switch/",
+ "eshopUrl": "https://www.nintendo.com/us/store/products/final-fantasy-xii-the-zodiac-age-switch/",
+ "gameIsOffline": true,
+ "gameIsOnline": false,
+ "gameLanguageLocked": false,
+ "description_short": "The remastered Ivalice RPG combines gambit-driven real-time party combat with the Zodiac Job System and portable Nintendo Switch play.",
+ "description_ar": "فاينل فانتسي 12: ذا زودياك إيج — The remastered Ivalice RPG combines gambit-driven real-time party combat with the Zodiac Job System and portable Nintendo Switch play.",
+ "box_front_url": "https://b.scdn.gr/images/sku_main_images/017505/17505147/20190227095937_final_fantasy_xii_the_zodiac_age_switch.jpeg",
+ "languagesText": [
+  "See official supported languages on the linked Nintendo/publisher product page"
+ ],
+ "languagesAudio": [
+  "Audio language availability varies by title and region; see official product information"
+ ],
+ "tvMode": true,
+ "tabletopMode": true,
+ "handheldMode": true,
+ "nintendoPlayModes": "TV / Tabletop / Handheld",
+ "nintendoOnlineRequired": false,
+ "nintendoCloudSaves": true,
+ "nintendoGameKeyCard": false,
+ "nintendoPhysicalNeedsDownload": false,
+ "switch2Enhanced": false,
+ "switch2Exclusive": false,
+ "nintendoNotes": "Platform, release, player-count, storage, compatibility, and feature statements in this import are grounded in the official Nintendo/publisher pages listed under Sources. Store package prices are user-supplied storefront values, not assumed MSRP.",
+ "editionsList": [
+  {
+   "name": "Regular / Offline",
+   "coverUrl": "https://b.scdn.gr/images/sku_main_images/017505/17505147/20190227095937_final_fantasy_xii_the_zodiac_age_switch.jpeg",
+   "contents": [
+    {
+     "label": "Regular / Offline store package"
+    },
+    {
+     "label": "Offline account access"
+    },
+    {
+     "label": "Infinite stock by default"
+    }
+   ]
+  },
+  {
+   "name": "Standard / Online",
+   "coverUrl": "https://assets.nintendo.com/image/upload/ar_1:1,c_fill,g_auto,w_1000/f_auto/q_auto/dpr_1.5/store/software/switch/70010000009746/5bcb8b7802294acb31bc57de2d50a34c1e7a3bd10d8d00f931aa297e20948196",
+   "contents": [
+    {
+     "label": "Standard / Online store package"
+    },
+    {
+     "label": "Online account access"
+    },
+    {
+     "label": "Infinite stock by default"
+    }
+   ]
+  }
+ ],
+ "gameplayPillars": [
+  {
+   "title": "Gambit automation",
+   "description": "Players program party priorities and conditional actions, creating detailed AI behavior for long battles.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000009746/199d08daecf6f6008b36ed6aaeca5ee9a24d187b1ea69c8af500d1bb0f65c3e5"
+  },
+  {
+   "title": "Zodiac Job System",
+   "description": "Characters select specialized jobs and develop through License Boards that define weapons, armor, magic, and skills.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000009746/33a72d02315185e5b3728ce4b2c135671f45c253d1ea8b3e1641c3bbcb2696f6"
+  },
+  {
+   "title": "Large Ivalice world",
+   "description": "Towns, wilderness zones, hunts, optional bosses, and political story arcs make exploration a major part of progression.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000009746/28998e758c45dc925b0268117f7dbdcbf884cc96c0a7d6fd6c0e7e1f2f31388c"
+  },
+  {
+   "title": "Hunts and superbosses",
+   "description": "Optional marks and high-level enemies provide long-term challenges beyond the main story.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000009746/7c384f5cc44dbd1259b7914df776da401737e2031e2b1d812da5432df06f8560"
+  },
+  {
+   "title": "Remastered quality-of-life features",
+   "description": "The Zodiac Age improves visuals, speed options, soundtrack choices, and progression systems over the original release.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000009746/111b6437fdbeeeda09500e972eabd1afa87da16b057f6b77984c0fd846d1239a"
+  }
+ ],
+ "worldSummary": "The remastered Ivalice RPG combines gambit-driven real-time party combat with the Zodiac Job System and portable Nintendo Switch play. Vaan’s life in Rabanastre intersects with a resistance movement and a larger imperial conflict. The final acts resolve the party’s struggle over power, freedom, and the future of Dalmasca.",
+ "storyChapters": [
+  {
+   "title": "Vaan enters the resistance",
+   "body": "Vaan’s life in Rabanastre intersects with a resistance movement and a larger imperial conflict.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000009746/33a72d02315185e5b3728ce4b2c135671f45c253d1ea8b3e1641c3bbcb2696f6"
+  },
+  {
+   "title": "Meet Ashe and the party",
+   "body": "The group forms around Princess Ashe, Balthier, Fran, Basch, Penelo, and Vaan.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000009746/28998e758c45dc925b0268117f7dbdcbf884cc96c0a7d6fd6c0e7e1f2f31388c"
+  },
+  {
+   "title": "Cross Ivalice",
+   "body": "The story travels through multiple nations and environments while political stakes continue to grow.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000009746/7c384f5cc44dbd1259b7914df776da401737e2031e2b1d812da5432df06f8560"
+  },
+  {
+   "title": "Master jobs and hunts",
+   "body": "Optional hunts, Espers, equipment, and job combinations become major progression goals.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000009746/111b6437fdbeeeda09500e972eabd1afa87da16b057f6b77984c0fd846d1239a"
+  },
+  {
+   "title": "Challenge the Empire",
+   "body": "The final acts resolve the party’s struggle over power, freedom, and the future of Dalmasca.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000009746/199d08daecf6f6008b36ed6aaeca5ee9a24d187b1ea69c8af500d1bb0f65c3e5"
+  }
+ ],
+ "features": [
+  "Zodiac Job System",
+  "Gambit party automation",
+  "Large hunt/boss catalog",
+  "Remastered soundtrack options",
+  "Strong portable RPG value"
+ ],
+ "perfResolutionDocked": "1080p",
+ "perfResolutionHandheld": "720p",
+ "perfFps": "30",
+ "perfHdr": false,
+ "playTimeMain": 40,
+ "completionMain": 60,
+ "completionExtras": 100,
+ "faq": [
+  {
+   "q": "Is The Zodiac Age turn-based?",
+   "a": "Combat runs in real time with commands, pause-style planning, and programmable Gambits rather than a strict traditional turn queue."
+  },
+  {
+   "q": "What is the file size?",
+   "a": "Nintendo lists 12.7 GB."
+  },
+  {
+   "q": "Does it support Switch 2?",
+   "a": "It is a Switch 1 game and Nintendo lists backward compatibility on Switch 2."
+  },
+  {
+   "q": "Is it multiplayer?",
+   "a": "No. It is a single-player RPG."
+  },
+  {
+   "q": "What is the Zodiac Job System?",
+   "a": "Each character develops through selected job License Boards that shape equipment and abilities."
+  }
+ ],
+ "verdictScore": 8.5,
+ "verdictPros": [
+  "Deep party automation",
+  "Excellent remaster features",
+  "Rich Ivalice setting",
+  "Strong optional hunt content",
+  "Flexible job builds"
+ ],
+ "verdictCons": [
+  "Gambit system has a learning curve",
+  "Political story can feel dense",
+  "Large maps involve substantial travel",
+  "Some rare loot systems are opaque",
+  "No native Switch 2 edition"
+ ],
+ "reviews": [
+  {
+   "source": "Metacritic",
+   "score": "85",
+   "url": "https://www.metacritic.com/game/final-fantasy-xii-the-zodiac-age/"
+  },
+  {
+   "source": "OpenCritic",
+   "score": "85",
+   "url": "https://opencritic.com/"
+  }
+ ],
+ "timeline": [
+  {
+   "date": "2019-04-30",
+   "title": "Released on target Nintendo platform"
+  }
+ ],
+ "patchNotes": [
+  {
+   "version": "Current retail build",
+   "date": "2026-08-27"
+  }
+ ],
+ "studioName": "SQUARE ENIX",
+ "studioUrl": "https://www.nintendo.com/us/store/products/final-fantasy-xii-the-zodiac-age-switch/",
+ "studioLocation": "See publisher/developer profile",
+ "sources": [
+  {
+   "name": "Official Nintendo / publisher product page",
+   "url": "https://www.nintendo.com/us/store/products/final-fantasy-xii-the-zodiac-age-switch/"
+  },
+  {
+   "name": "Metacritic",
+   "url": "https://www.metacritic.com/game/final-fantasy-xii-the-zodiac-age/"
+  }
+ ],
+ "downloadSizeGb": 12.7,
+ "requiredSpaceGb": 12.7,
+ "microSdRecommended": true,
+ "storageNotes": "Storage requirements follow the official product listing where a final numeric size is published; upcoming titles may require a later refresh when final size is posted.",
+ "mpLocalPlayers": false,
+ "mpOnlinePlayers": false,
+ "mpCoop": false,
+ "mpCompetitive": false,
+ "mpLocalWireless": false,
+ "mpSplitScreen": false,
+ "dlc": [
+  {
+   "name": "Downloadable / additional content status",
+   "description": "No standalone story expansion pass is required."
+  }
+ ],
+ "devicePerformance": [
+  {
+   "device": "Nintendo Switch",
+   "deviceSlug": "nintendo-switch",
+   "deviceModel": "Nintendo Switch",
+   "hardwareId": "nintendo-switch",
+   "informationStatus": "Available",
+   "handheld": {
+    "supported": true,
+    "resolution": "720p",
+    "resolutionDynamic": false,
+    "renderingResolution": "720p",
+    "outputResolution": "720p",
+    "fps": "30",
+    "fpsMin": "30",
+    "fpsMax": "30",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "Handheld",
+    "notes": "Targets 30 fps; 720p handheld and 1080p docked are the established Switch presentation profiles."
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "1080p",
+    "resolutionDynamic": false,
+    "renderingResolution": "1080p",
+    "outputResolution": "1080p",
+    "fps": "30",
+    "fpsMin": "30",
+    "fpsMax": "30",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "TV / Docked",
+    "notes": "Targets 30 fps; 720p handheld and 1080p docked are the established Switch presentation profiles."
+   },
+   "modes": [
+    {
+     "name": "Primary documented/compatibility profile",
+     "handheldResolution": "720p",
+     "handheldFps": "30",
+     "tvResolution": "1080p",
+     "tvFps": "30",
+     "hdr": false,
+     "vrr": false,
+     "notes": "Targets 30 fps; 720p handheld and 1080p docked are the established Switch presentation profiles."
+    }
+   ],
+   "upscaling": "Game / system-specific scaling where applicable",
+   "rayTracing": false,
+   "rayTracingMode": "Not Supported",
+   "loadingTime": "Scene-dependent",
+   "loadingNotes": "Loading time varies by scene, save state, storage, version, and patch.",
+   "gameVersion": "Current listed version",
+   "patchVersion": "Current available update",
+   "testedDate": "2026-08-27",
+   "sourceName": "Official product / compatibility information",
+   "sourceUrl": "https://www.nintendo.com/us/store/products/final-fantasy-xii-the-zodiac-age-switch/",
+   "performanceNotes": "Targets 30 fps; 720p handheld and 1080p docked are the established Switch presentation profiles."
+  },
+  {
+   "device": "Nintendo Switch 2",
+   "deviceSlug": "nintendo-switch-2",
+   "deviceModel": "Nintendo Switch 2",
+   "hardwareId": "nintendo-switch-2",
+   "informationStatus": "Available",
+   "handheld": {
+    "supported": true,
+    "resolution": "720p",
+    "resolutionDynamic": false,
+    "renderingResolution": "720p",
+    "outputResolution": "720p",
+    "fps": "30",
+    "fpsMin": "30",
+    "fpsMax": "30",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "Handheld",
+    "notes": "Backward-compatible Nintendo Switch software on Nintendo Switch 2; no native Switch 2 edition assumed."
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "1080p",
+    "resolutionDynamic": false,
+    "renderingResolution": "1080p",
+    "outputResolution": "1080p",
+    "fps": "30",
+    "fpsMin": "30",
+    "fpsMax": "30",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "TV / Docked",
+    "notes": "Backward-compatible Nintendo Switch software on Nintendo Switch 2; no native Switch 2 edition assumed."
+   },
+   "modes": [
+    {
+     "name": "Primary documented/compatibility profile",
+     "handheldResolution": "720p",
+     "handheldFps": "30",
+     "tvResolution": "1080p",
+     "tvFps": "30",
+     "hdr": false,
+     "vrr": false,
+     "notes": "Backward-compatible Nintendo Switch software on Nintendo Switch 2; no native Switch 2 edition assumed."
+    }
+   ],
+   "upscaling": "Game / system-specific scaling where applicable",
+   "rayTracing": false,
+   "rayTracingMode": "Not Supported",
+   "loadingTime": "Scene-dependent",
+   "loadingNotes": "Loading time varies by scene, save state, storage, version, and patch.",
+   "gameVersion": "Current listed version",
+   "patchVersion": "Current available update",
+   "testedDate": "2026-08-27",
+   "sourceName": "Official product / compatibility information",
+   "sourceUrl": "https://www.nintendo.com/us/store/products/final-fantasy-xii-the-zodiac-age-switch/",
+   "performanceNotes": "Backward-compatible Nintendo Switch software on Nintendo Switch 2; no native Switch 2 edition assumed."
+  }
+ ],
+ "switch2UpgradePrice": 0,
+ "galleryImages": [
+  {
+   "url": "/api/files/products/prd_17105a2338f648ee/gallery-1-0e4ea0f29e2c28a7.webp",
+   "alt": "FINAL FANTASY XII THE ZODIAC AGE screenshot 1"
+  },
+  {
+   "url": "/api/files/products/prd_17105a2338f648ee/gallery-2-dbd6f8a30fa71f89.webp",
+   "alt": "FINAL FANTASY XII THE ZODIAC AGE screenshot 2"
+  },
+  {
+   "url": "/api/files/products/prd_17105a2338f648ee/gallery-3-c31094e0db0ced82.webp",
+   "alt": "FINAL FANTASY XII THE ZODIAC AGE screenshot 3"
+  },
+  {
+   "url": "/api/files/products/prd_17105a2338f648ee/gallery-4-437f41c225caa3f1.webp",
+   "alt": "FINAL FANTASY XII THE ZODIAC AGE screenshot 4"
+  },
+  {
+   "url": "/api/files/products/prd_17105a2338f648ee/gallery-5-bd6bf6f1d2342dea.webp",
+   "alt": "FINAL FANTASY XII THE ZODIAC AGE screenshot 5"
+  },
+  {
+   "url": "/api/files/products/prd_17105a2338f648ee/gallery-6-bc7243e156f2f99e.webp",
+   "alt": "FINAL FANTASY XII THE ZODIAC AGE screenshot 6"
+  }
+ ],
+ "boxContentsList": [],
+ "image": "https://assets.nintendo.com/image/upload/ar_16:9,c_fill,g_auto,w_1600/f_auto/q_auto/dpr_1.5/store/software/switch/70010000009746/c5a2dda1188be7c74588911efb2ec8907968d7409937d65219ab212037ba209a",
+ "banner": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000009746/199d08daecf6f6008b36ed6aaeca5ee9a24d187b1ea69c8af500d1bb0f65c3e5",
+ "schemaId": "",
+ "batchImport": true,
+ "createdAt": "2026-08-28T18:45:24.044Z",
+ "updatedAt": "2026-08-28T18:45:24.044Z"
+}
