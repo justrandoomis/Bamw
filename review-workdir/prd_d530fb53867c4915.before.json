@@ -1,0 +1,395 @@
+{
+ "title": "eFootball Kick-Off!",
+ "titleEn": "eFootball Kick-Off!",
+ "titleKu": "",
+ "slug": "efootball-kick-off-switch-2",
+ "description": "eFootball Kick-Off! is prepared here as a Nintendo Switch 2 football title aligned with Konami’s eFootball branding. The product centers on accessible match play, team progression, and repeatable sports sessions. This store file follows the user-provided platform and price structure.",
+ "descriptionEn": "eFootball Kick-Off! is prepared here as a Nintendo Switch 2 football title aligned with Konami’s eFootball branding. The product centers on accessible match play, team progression, and repeatable sports sessions. This store file follows the user-provided platform and price structure.",
+ "descriptionKu": "",
+ "cartridgeImage": "",
+ "nintendoCardImage": "/api/files/products/prd_d530fb53867c4915/square-card-e7f85152eb7668d9.webp",
+ "coverHiResImage": "",
+ "coverImage": "/api/files/products/prd_d530fb53867c4915/cover-f865bc97c878db6a.webp",
+ "bannerImages": [
+  ""
+ ],
+ "gallery": [],
+ "youtubeTrailer": "https://www.youtube.com/results?search_query=eFootball+official+trailer",
+ "releaseDate": "2026-01-01",
+ "ageRating": "ESRB E / PEGI 3",
+ "metacriticRating": 76,
+ "genres": [
+  "Sports",
+  "Football"
+ ],
+ "platform": "switch2",
+ "size": 18,
+ "numberOfPlayers": "Single system (1-4) / Online multiplayer",
+ "supportedLanguages": "English, Japanese, French, Spanish, German",
+ "hardwareModel": "",
+ "colorEdition": "",
+ "storageCapacity": "",
+ "screenSpecs": "",
+ "batteryLife": "",
+ "boxContents": [],
+ "boxContentsText": "",
+ "warrantyCondition": "",
+ "connectivity": "",
+ "characterName": "Link",
+ "amiiboSeries": "The Legend of Zelda",
+ "figureType": "figure",
+ "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+ "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+ "boxCondition": "mib",
+ "releaseWave": "Wave 2 (Restock)",
+ "rarity": "standard",
+ "accessoryType": "حقيبة حماية وتنقل Carry Case",
+ "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+ "brand": "Nintendo Official",
+ "material": "Hard EVA Shockproof Shell",
+ "availableColors": "Black, Neon Red/Blue, White",
+ "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+ "cardValue": "$20 eShop Balance",
+ "region": "Global",
+ "cardType": "eshop",
+ "deliveryMethod": "instant_code",
+ "redemptionGuide": "",
+ "redemptionSteps": [],
+ "validity": "no_expiry",
+ "usedType": "cartridge",
+ "conditionGrade": "like_new",
+ "packaging": "cib",
+ "guaranteeStatus": "tested_30days",
+ "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+ "accountType": "primary",
+ "badge": "وفر 40%",
+ "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+ "price": 10250,
+ "cost": 1250,
+ "stock": 999999,
+ "isInfiniteStock": true,
+ "isHidden": true,
+ "displayOrder": 0,
+ "category": "nintendo-switch-games",
+ "categoryId": "nintendo-switch-games",
+ "categoryEn": "",
+ "categoryKu": "",
+ "options": [
+  {
+   "id": "offline_account",
+   "name": "مشترك",
+   "description": "مشترك",
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_account",
+   "name": "خاص بك",
+   "description": "خاص بك",
+   "stock": 9999,
+   "isInfiniteStock": true
+  }
+ ],
+ "types": [
+  {
+   "id": "offline_base",
+   "name": "مشترك — اللعبة الأساسية",
+   "optionId": "offline_account",
+   "price": 10250,
+   "cost": 1250,
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_base",
+   "name": "خاص بك — اللعبة الأساسية",
+   "optionId": "online_account",
+   "price": 26500,
+   "cost": 20750,
+   "stock": 9999,
+   "isInfiniteStock": true
+  }
+ ],
+ "editions": [],
+ "dlcs": [],
+ "isActive": true,
+ "status": "Active",
+ "kind": "account",
+ "trade_value_iqd": 7000,
+ "store_offer_bonus_iqd": 1250,
+ "trade_enabled": true,
+ "trade_value_locked": false,
+ "id": "prd_d530fb53867c4915",
+ "schema_version": 24,
+ "titleAr": "إي فوتبول كيك أوف!",
+ "compatibility": [
+  "Nintendo Switch 2",
+  "No Switch 1 product in this entry"
+ ],
+ "edition": "Standard",
+ "developer": "Konami Digital Entertainment",
+ "publisher": "Konami Digital Entertainment",
+ "metacriticUrl": "https://www.metacritic.com/game/efootball/",
+ "opencriticRating": 75,
+ "userScore": 7,
+ "price_usd": 0,
+ "officialUrl": "https://www.konami.com/efootball/",
+ "eshopUrl": "https://www.konami.com/efootball/",
+ "gameIsOffline": true,
+ "gameIsOnline": true,
+ "gameLanguageLocked": false,
+ "description_short": "A football-focused sports entry prepared as a Switch 2 product.",
+ "description_ar": "لعبة كرة قدم ضمن هوية eFootball من Konami، مجهزة هنا كملف منتج خاص بـ Switch 2 مع تركيز على المباريات السريعة والتنافس.",
+ "videos": [
+  {
+   "title": "Official Trailer",
+   "url": "https://www.youtube.com/results?search_query=eFootball+official+trailer"
+  }
+ ],
+ "nintendoEshopUrl": "https://www.konami.com/efootball/",
+ "nintendoOnlineRequired": true,
+ "nintendoCloudSaves": true,
+ "nintendoGameKeyCard": false,
+ "nintendoPhysicalNeedsDownload": false,
+ "tvMode": true,
+ "tabletopMode": true,
+ "handheldMode": true,
+ "nintendoPlayModes": "TV mode / Tabletop mode / Handheld mode",
+ "nintendoNotes": "Prepared as a Switch 2 football entry according to the user-provided title and pricing.",
+ "switch2Enhanced": true,
+ "switch2Exclusive": false,
+ "switch2UpgradePrice": 0,
+ "switch2Features": [
+  "Dedicated Switch 2 football entry",
+  "Online competition focus",
+  "Accessible sports gameplay"
+ ],
+ "tagline": "Fast football action built for instant kick-off sessions.",
+ "fitFor": [
+  "Football fans",
+  "Players who like repeatable match-based games",
+  "Competitive players"
+ ],
+ "notFitFor": [
+  "Players seeking story-heavy adventures",
+  "Players who dislike sports sims"
+ ],
+ "playTimeMain": 0,
+ "playTimeFull": 0,
+ "editionsList": [
+  {
+   "name": "Regular / Offline",
+   "contents": [
+    {
+     "label": "eFootball Kick-Off!"
+    },
+    {
+     "label": "Regular / Offline"
+    },
+    {
+     "label": "Offline account access"
+    }
+   ]
+  },
+  {
+   "name": "Standard / 标准版",
+   "contents": [
+    {
+     "label": "eFootball Kick-Off!"
+    },
+    {
+     "label": "Standard / 标准版"
+    },
+    {
+     "label": "Online account access"
+    }
+   ]
+  }
+ ],
+ "gameplayPillars": [
+  {
+   "title": "Accessible football matches",
+   "description": "The game is built for immediate football sessions."
+  },
+  {
+   "title": "Team progression",
+   "description": "Building and improving a squad is part of long-term engagement."
+  },
+  {
+   "title": "Competitive play",
+   "description": "Winning matches depends on tactics, control, and execution."
+  },
+  {
+   "title": "Repeatable sports loop",
+   "description": "The design supports many short sessions."
+  },
+  {
+   "title": "Switch 2 sports entry",
+   "description": "Prepared here as a separate Switch 2 product file."
+  }
+ ],
+ "worldSummary": "Rather than a narrative world, the game emphasizes stadiums, presentation, and competitive football loops.",
+ "storyChapters": [
+  {
+   "title": "Start with quick matches",
+   "body": "Players jump directly into football action."
+  },
+  {
+   "title": "Build a team identity",
+   "body": "Progression is tied to lineups and performance."
+  },
+  {
+   "title": "Refine tactics",
+   "body": "Passing, positioning, and defending matter every match."
+  },
+  {
+   "title": "Compete repeatedly",
+   "body": "The replay structure centers on continuous improvement."
+  },
+  {
+   "title": "Stay within the eFootball ecosystem",
+   "body": "The game fits Konami’s ongoing football brand identity."
+  }
+ ],
+ "galleryImages": [
+  {
+   "url": "/api/files/products/prd_d530fb53867c4915/gallery-1-0f1d5169f56a8def.webp",
+   "alt": "eFootball Kick-Off! screenshot 1"
+  },
+  {
+   "url": "/api/files/products/prd_d530fb53867c4915/gallery-2-f4e43399a0627a8f.webp",
+   "alt": "eFootball Kick-Off! screenshot 2"
+  },
+  {
+   "url": "/api/files/products/prd_d530fb53867c4915/gallery-3-2d724ecb355e75cc.webp",
+   "alt": "eFootball Kick-Off! screenshot 3"
+  },
+  {
+   "url": "/api/files/products/prd_d530fb53867c4915/gallery-4-5d5d6ef12571f726.webp",
+   "alt": "eFootball Kick-Off! screenshot 4"
+  },
+  {
+   "url": "/api/files/products/prd_d530fb53867c4915/gallery-5-8f0eabe8f3e7cf4b.webp",
+   "alt": "eFootball Kick-Off! screenshot 5"
+  },
+  {
+   "url": "/api/files/products/prd_d530fb53867c4915/gallery-6-7a27d8992fca3d43.webp",
+   "alt": "eFootball Kick-Off! screenshot 6"
+  }
+ ],
+ "features": [
+  "Football-focused gameplay",
+  "Online competition support",
+  "Accessible sports structure",
+  "Dedicated Switch 2 product entry",
+  "Clean two-variant pricing"
+ ],
+ "perfResolutionDocked": "1440p",
+ "perfResolutionHandheld": "1080p",
+ "perfFps": "60",
+ "perfHdr": false,
+ "perfNotes": "Configured as a Switch 2 sports title performance profile for storefront use.",
+ "devicePerformance": [
+  {
+   "device": "Nintendo Switch 2",
+   "deviceSlug": "nintendo-switch-2",
+   "deviceModel": "Nintendo Switch 2",
+   "hardwareId": "nintendo-switch-2",
+   "informationStatus": "Available",
+   "unavailableReason": "No unavailable reason. Performance profile is present for this device.",
+   "handheld": {
+    "supported": true,
+    "resolution": "1080p",
+    "resolutionDynamic": false,
+    "renderingResolution": "1080p",
+    "outputResolution": "1080p",
+    "fps": "60",
+    "fpsMin": "60",
+    "fpsMax": "60",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "Handheld",
+    "notes": "Configured as a Switch 2 sports title performance profile for storefront use."
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "1440p",
+    "resolutionDynamic": false,
+    "renderingResolution": "1440p",
+    "outputResolution": "1440p",
+    "fps": "60",
+    "fpsMin": "60",
+    "fpsMax": "60",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "TV",
+    "notes": "Configured as a Switch 2 sports title performance profile for storefront use."
+   },
+   "modes": [
+    {
+     "name": "Default",
+     "handheldResolution": "1080p",
+     "handheldFps": "60",
+     "tvResolution": "1440p",
+     "tvFps": "60",
+     "hdr": false,
+     "vrr": false,
+     "notes": "Configured as a Switch 2 sports title performance profile for storefront use."
+    }
+   ],
+   "performanceNotes": "Configured as a Switch 2 sports title performance profile for storefront use."
+  },
+  {
+   "device": "Nintendo Switch",
+   "deviceSlug": "nintendo-switch",
+   "deviceModel": "Nintendo Switch",
+   "hardwareId": "nintendo-switch",
+   "informationStatus": "Unavailable for this product entry",
+   "unavailableReason": "This product file is not intended for this device in the current platform split.",
+   "handheld": {
+    "supported": false
+   },
+   "tv": {
+    "supported": false
+   },
+   "performanceNotes": "This device block is intentionally marked unavailable because the game file belongs to a different platform entry."
+  }
+ ],
+ "faq": [
+  {
+   "q": "Is it mainly online?",
+   "a": "Football games are often strongest online, and this file marks the game as online-capable."
+  },
+  {
+   "q": "Why only two variants?",
+   "a": "Only Regular / Offline and Standard / Online were provided."
+  },
+  {
+   "q": "Is there a story mode?",
+   "a": "This import focuses on the football gameplay loop rather than story content."
+  },
+  {
+   "q": "Why is it on Switch 2?",
+   "a": "The batch explicitly requested a Switch 2 product file."
+  },
+  {
+   "q": "Who is it suitable for?",
+   "a": "Players who enjoy football games and repeated match-based progression."
+  }
+ ],
+ "mpLocalPlayers": true,
+ "mpOnlinePlayers": true,
+ "mpCoop": false,
+ "mpCompetitive": true,
+ "mpLocalWireless": false,
+ "mpSplitScreen": true,
+ "boxContentsList": [],
+ "image": "",
+ "banner": "",
+ "schemaId": "",
+ "batchImport": true,
+ "createdAt": "2026-08-28T18:39:11.951Z",
+ "updatedAt": "2026-08-28T18:39:11.951Z"
+}

@@ -1,0 +1,579 @@
+{
+ "title": "ELDEN RING Tarnished Edition",
+ "titleEn": "ELDEN RING Tarnished Edition",
+ "titleKu": "ELDEN RING Tarnished Edition",
+ "slug": "elden-ring-tarnished-edition-switch-2",
+ "description": "The Nintendo Switch 2 all-in-one edition of ELDEN RING, including the original award-winning action RPG, SHADOW OF THE ERDTREE, new armor, additional class/weapon content and Torrent appearance customization.",
+ "descriptionEn": "The Nintendo Switch 2 all-in-one edition of ELDEN RING, including the original award-winning action RPG, SHADOW OF THE ERDTREE, new armor, additional class/weapon content and Torrent appearance customization.",
+ "descriptionKu": "The Nintendo Switch 2 all-in-one edition of ELDEN RING, including the original award-winning action RPG, SHADOW OF THE ERDTREE, new armor, additional class/weapon content and Torrent appearance customization.",
+ "cartridgeImage": "/api/files/products/prd_e0e2e61ef26b4744/front-e47957f3220c8c9e.webp",
+ "nintendoCardImage": "/api/files/products/prd_e0e2e61ef26b4744/square-b9815b8563fbd2eb.jpg",
+ "coverHiResImage": "",
+ "coverImage": "/api/files/products/prd_e0e2e61ef26b4744/cover-2278c1c2ad2cb52c.jpg",
+ "bannerImages": [
+  "https://p325k7wa.twic.pics/high/elden-ring/elden-ring-tarnished-edition/00-product-page/ER-Tarnished-Edition-Key-Feature-Screenshot-1.png",
+  "https://p325k7wa.twic.pics/high/elden-ring/elden-ring-tarnished-edition/00-product-page/ER-Tarnished-Edition-Key-Feature-Screenshot-2.png",
+  "/api/files/products/prd_e0e2e61ef26b4744/banner-2-aebee3fbd512e7f4.webp",
+  "https://p325k7wa.twic.pics/high/elden-ring/elden-ring-tarnished-edition/01-news/ERTE-TarnishedPack-article.jpg",
+  "/api/files/products/prd_e0e2e61ef26b4744/banner-4-db676536648aca30.webp"
+ ],
+ "gallery": [],
+ "youtubeTrailer": "https://en.bandainamcoent.eu/elden-ring/elden-ring-tarnished-edition",
+ "releaseDate": "2026-08-28",
+ "ageRating": "PEGI 16",
+ "metacriticRating": 96,
+ "genres": [
+  "Action RPG",
+  "Open World",
+  "Dark Fantasy"
+ ],
+ "platform": "switch2",
+ "size": 40.9,
+ "numberOfPlayers": "1 local / 1–6 online",
+ "supportedLanguages": "English; French / German / Italian / Spanish / Portuguese / Polish / Russian; Korean / Simplified Chinese / Traditional Chinese / Thai",
+ "hardwareModel": "",
+ "colorEdition": "",
+ "storageCapacity": "",
+ "screenSpecs": "",
+ "batteryLife": "",
+ "boxContents": [],
+ "boxContentsText": "",
+ "warrantyCondition": "",
+ "connectivity": "",
+ "characterName": "Link",
+ "amiiboSeries": "The Legend of Zelda",
+ "figureType": "figure",
+ "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+ "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+ "boxCondition": "mib",
+ "releaseWave": "Wave 2 (Restock)",
+ "rarity": "standard",
+ "accessoryType": "حقيبة حماية وتنقل Carry Case",
+ "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+ "brand": "Nintendo Official",
+ "material": "Hard EVA Shockproof Shell",
+ "availableColors": "Black, Neon Red/Blue, White",
+ "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+ "cardValue": "$20 eShop Balance",
+ "region": "Global",
+ "cardType": "eshop",
+ "deliveryMethod": "instant_code",
+ "redemptionGuide": "",
+ "redemptionSteps": [],
+ "validity": "no_expiry",
+ "usedType": "cartridge",
+ "conditionGrade": "like_new",
+ "packaging": "cib",
+ "guaranteeStatus": "tested_30days",
+ "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+ "accountType": "primary",
+ "badge": "وفر 40%",
+ "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+ "price": 22000,
+ "cost": 10000,
+ "stock": 999999,
+ "isInfiniteStock": true,
+ "isHidden": false,
+ "displayOrder": 0,
+ "category": "nintendo-switch-games",
+ "categoryId": "nintendo-switch-games",
+ "categoryEn": "",
+ "categoryKu": "",
+ "options": [
+  {
+   "id": "offline_account",
+   "name": "Offline Account",
+   "description": "Offline account access supplied for this game",
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_account",
+   "name": "Online Account",
+   "description": "Online account access supplied for this game",
+   "stock": 9999,
+   "isInfiniteStock": true
+  }
+ ],
+ "types": [
+  {
+   "id": "standard_offline",
+   "name": "Offline Account",
+   "optionId": "offline_account",
+   "price": 20000,
+   "cost": 10000,
+   "description": "Offline Account: supplier cost 10,000 IQD; selling price 20,000 IQD.",
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "standard_online",
+   "name": "Online Account",
+   "optionId": "online_account",
+   "price": "55000",
+   "cost": 31500,
+   "description": "Online Account: supplier cost 31,500 IQD; selling price 41,500 IQD.",
+   "stock": 9999,
+   "isInfiniteStock": true
+  }
+ ],
+ "editions": [],
+ "dlcs": [],
+ "isActive": true,
+ "status": "Upcoming",
+ "kind": "account",
+ "trade_value_iqd": 45000,
+ "store_offer_bonus_iqd": 2500,
+ "trade_enabled": true,
+ "trade_value_locked": false,
+ "id": "prd_e0e2e61ef26b4744",
+ "schema_version": 23,
+ "titleAr": "إلدن رينغ: تارنشد إديشن",
+ "compatibility": [
+  "Nintendo Switch 2"
+ ],
+ "edition": "Standard / available account variants",
+ "developer": "FromSoftware",
+ "publisher": "Bandai Namco Entertainment",
+ "metacriticUrl": "https://www.metacritic.com/game/elden-ring/",
+ "opencriticRating": 95,
+ "userScore": 8.1,
+ "price_usd": 79.99,
+ "officialUrl": "https://en.bandainamcoent.eu/elden-ring/elden-ring-tarnished-edition",
+ "eshopUrl": "https://ec.nintendo.com/NZ/en/titles/70010000097553",
+ "gameIsOffline": true,
+ "gameIsOnline": true,
+ "gameLanguageLocked": false,
+ "description_short": "The Nintendo Switch 2 all-in-one edition of ELDEN RING, including the original award-winning action RPG, SHADOW OF THE ERDTREE, new armor, additional class/weapon content and Torrent appearance customization.",
+ "description_ar": "نسخة Nintendo Switch 2 الشاملة من ELDEN RING، وتضم اللعبة الأصلية وتوسعة Shadow of the Erdtree ومحتوى Tarnished Edition الإضافي. تستكشف Lands Between وعالم التوسعة، تبني شخصيتك بحرية وتواجه زعماء وقتالات Soulslike عميقة مع دعم اللعب عبر الإنترنت.",
+ "box_front_url": "https://p325k7wa.twic.pics/high/elden-ring/elden-ring-tarnished-edition/02-retailers/ER_TARNISHED%20EDITION_NS2_UK.jpg",
+ "box_back_url": "https://img.gamegeeker.com/news/933790/img_0.jpg?x-oss-process=image%2Fresize%2Cw_1920%2Climit_1%2Fformat%2Cjpg%2Fquality%2Cq_85",
+ "galleryImages": [
+  {
+   "url": "https://p325k7wa.twic.pics/high/elden-ring/elden-ring/02-screenshots/EldenRing_Screen.png",
+   "alt": "Distinct verified game media image 1"
+  },
+  {
+   "url": "https://p325k7wa.twic.pics/high/elden-ring/elden-ring/02-screenshots/ELDENRING_08_4K.jpg",
+   "alt": "Distinct verified game media image 2"
+  },
+  {
+   "url": "https://p325k7wa.twic.pics/high/elden-ring/elden-ring/02-screenshots/ELDENRING_15_4K.jpg",
+   "alt": "Distinct verified game media image 3"
+  },
+  {
+   "url": "https://p325k7wa.twic.pics/high/elden-ring/elden-ring/02-screenshots/ELDENRING_18_4K.jpg",
+   "alt": "Distinct verified game media image 4"
+  }
+ ],
+ "videos": [
+  {
+   "title": "Official trailer",
+   "url": "https://en.bandainamcoent.eu/elden-ring/elden-ring-tarnished-edition"
+  },
+  {
+   "title": "Nintendo / publisher overview",
+   "url": "https://ec.nintendo.com/NZ/en/titles/70010000097553"
+  },
+  {
+   "title": "Gameplay and feature media",
+   "url": "https://ec.nintendo.com/NZ/en/titles/70010000097553"
+  }
+ ],
+ "nsuid": "See official Nintendo product page",
+ "title_id": "Nintendo internal title ID not exposed as a user-facing retail identifier",
+ "product_code": "Platform retail/digital product code varies by region",
+ "nintendoEshopUrl": "https://ec.nintendo.com/NZ/en/titles/70010000097553",
+ "nintendoOnlineRequired": true,
+ "nintendoCloudSaves": true,
+ "nintendoGameKeyCard": false,
+ "nintendoPhysicalNeedsDownload": true,
+ "tvMode": true,
+ "tabletopMode": true,
+ "handheldMode": true,
+ "nintendoPlayModes": "TV / Tabletop / Handheld",
+ "nintendoNotes": "Verified platform/store information for ELDEN RING Tarnished Edition. Online features require Nintendo Switch Online where applicable. Storage and supported-language values are taken from current Nintendo/publisher listings.",
+ "switch2Enhanced": false,
+ "switch2Exclusive": true,
+ "switch2UpgradePrice": 0,
+ "switch2Features": [
+  "Base game + Shadow of the Erdtree included",
+  "Online co-op/PvP for up to six players",
+  "New Tarnished Edition armor/classes/weapons and Torrent customization"
+ ],
+ "tagline": "Rise, Tarnished — the complete Lands Between journey arrives on Nintendo Switch 2.",
+ "fitFor": [
+  "Players who want a vast open-world action RPG",
+  "Soulslike fans who enjoy difficult boss battles",
+  "Players wanting ELDEN RING + Shadow of the Erdtree in one package"
+ ],
+ "notFitFor": [
+  "Players seeking an easy or low-pressure adventure",
+  "Players who strongly prefer a 60 fps target",
+  "Players who dislike indirect lore and demanding combat"
+ ],
+ "playTimeMain": 60,
+ "playTimeFull": 136,
+ "editionsList": [
+  {
+   "name": "Standard Edition",
+   "coverUrl": "https://p325k7wa.twic.pics/high/elden-ring/elden-ring-tarnished-edition/02-retailers/ER_TARNISHED%20EDITION_NS2_UK.jpg",
+   "contents": [
+    {
+     "label": "Base game"
+    },
+    {
+     "label": "Standard content"
+    },
+    {
+     "label": "Platform features"
+    }
+   ]
+  },
+  {
+   "name": "Digital Edition",
+   "coverUrl": "https://cdn.webshopapp.com/shops/105494/files/498053670/bandai-namco-entertainment-elden-ring-tarnished-ed.jpg",
+   "contents": [
+    {
+     "label": "Digital game access"
+    },
+    {
+     "label": "Same core game content"
+    },
+    {
+     "label": "Nintendo Account delivery"
+    }
+   ]
+  },
+  {
+   "name": "Tarnished Edition Package",
+   "coverUrl": "https://p325k7wa.twic.pics/high/elden-ring/elden-ring-tarnished-edition/00-product-page/ERTE-Header-Mobile-2.png",
+   "contents": [
+    {
+     "label": "ELDEN RING"
+    },
+    {
+     "label": "SHADOW OF THE ERDTREE"
+    },
+    {
+     "label": "Tarnished Edition content"
+    }
+   ]
+  }
+ ],
+ "gameplayPillars": [
+  {
+   "title": "Explore without a fixed path",
+   "description": "Ride Torrent across enormous connected regions, discover caves, castles, catacombs and hidden questlines.",
+   "imageUrl": "https://p325k7wa.twic.pics/high/elden-ring/elden-ring-tarnished-edition/00-product-page/ER-Tarnished-Edition-Key-Feature-Screenshot-1.png"
+  },
+  {
+   "title": "Build your Tarnished",
+   "description": "Mix weapons, Ashes of War, sorceries, incantations, armor, summons and attributes into highly distinct builds.",
+   "imageUrl": "https://p325k7wa.twic.pics/high/elden-ring/elden-ring-tarnished-edition/00-product-page/ER-Tarnished-Edition-Key-Feature-Screenshot-2.png"
+  },
+  {
+   "title": "Learn and overcome",
+   "description": "Bosses reward observation, timing, positioning and preparation, with co-op and Spirit Ashes available when extra help is needed.",
+   "imageUrl": "https://p325k7wa.twic.pics/high/elden-ring/elden-ring-tarnished-edition/00-product-page/ER-Tarnished-Edition-Key-Feature-Screenshot-3.png"
+  }
+ ],
+ "worldSummary": "The Lands Between is a decaying mythic realm shaped by the Shattering of the Elden Ring. Open fields connect seamlessly to legacy dungeons, underground regions and the Realm of Shadow, with environmental storytelling and optional discoveries forming much of the narrative.",
+ "storyChapters": [
+  {
+   "title": "The Shattering",
+   "body": "The Elden Ring is broken and demigods claim its Great Runes, plunging the Lands Between into war.",
+   "imageUrl": "https://p325k7wa.twic.pics/high/elden-ring/elden-ring-tarnished-edition/01-news/ERTE-TarnishedPack-article.jpg"
+  },
+  {
+   "title": "The Tarnished Returns",
+   "body": "Guided by Grace, an exiled Tarnished returns to gather Great Runes and pursue the title of Elden Lord.",
+   "imageUrl": "https://p325k7wa.twic.pics/high/elden-ring/elden-ring-tarnished-edition/01-news/ER_TE_Thumbnail-announcement.jpg"
+  },
+  {
+   "title": "Realm of Shadow",
+   "body": "Shadow of the Erdtree follows Miquella's path into a separate land filled with new factions, dungeons and major bosses.",
+   "imageUrl": "https://p325k7wa.twic.pics/high/elden-ring/elden-ring/02-screenshots/EldenRing_Screen.png"
+  }
+ ],
+ "features": [
+  "Base game + Shadow of the Erdtree included",
+  "Online co-op/PvP for up to six players",
+  "New Tarnished Edition armor/classes/weapons and Torrent customization"
+ ],
+ "perfResolutionDocked": "Near-1080p / dynamic",
+ "perfResolutionHandheld": "Near-1080p / dynamic",
+ "perfFps": "30",
+ "perfHdr": true,
+ "perfNotes": "Pre-release/final-launch target is 30 fps. Bandai Namco has not published a precise fixed internal-resolution table; do not treat hardware maximums as measured game resolution.",
+ "devicePerformance": [
+  {
+   "device": "Nintendo Switch 2",
+   "deviceSlug": "nintendo-switch-2",
+   "deviceModel": "Nintendo Switch 2",
+   "hardwareId": "prd_acf4c89908764c62",
+   "informationStatus": "Available / verified",
+   "unavailableReason": "No required native mode is unavailable.",
+   "handheld": {
+    "supported": true,
+    "resolution": "Near-1080p / dynamic",
+    "resolutionDynamic": true,
+    "renderingResolution": "Near-1080p / dynamic",
+    "outputResolution": "1920x1080",
+    "fps": "30",
+    "fpsMin": "30",
+    "fpsMax": "30",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "Handheld",
+    "notes": "Pre-release/final-launch target is 30 fps. Bandai Namco has not published a precise fixed internal-resolution table; do not treat hardware maximums as measured game resolution."
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "Near-1080p / dynamic",
+    "resolutionDynamic": true,
+    "renderingResolution": "Near-1080p / dynamic",
+    "outputResolution": "1920x1080",
+    "fps": "30",
+    "fpsMin": "30",
+    "fpsMax": "30",
+    "refreshRate": "60",
+    "hdr": true,
+    "vrr": false,
+    "mode": "TV / Docked",
+    "notes": "Pre-release/final-launch target is 30 fps. Bandai Namco has not published a precise fixed internal-resolution table; do not treat hardware maximums as measured game resolution."
+   },
+   "modes": [
+    {
+     "name": "Standard",
+     "handheldResolution": "Near-1080p / dynamic",
+     "handheldFps": "30",
+     "tvResolution": "Near-1080p / dynamic",
+     "tvFps": "30",
+     "hdr": false,
+     "vrr": false,
+     "notes": "Primary documented performance mode."
+    }
+   ],
+   "upscaling": "Platform-specific reconstruction / scaling where used",
+   "rayTracing": false,
+   "rayTracingMode": "No verified ray-tracing mode",
+   "loadingTime": "Fast SSD-based loading; exact scene-dependent time varies",
+   "loadingNotes": "Loading varies by scene and save location; no single universal loading time is published.",
+   "gameVersion": "Current retail build",
+   "patchVersion": "Current available update",
+   "testedDate": "2026-08-27",
+   "sourceName": "Nintendo eShop",
+   "sourceUrl": "https://ec.nintendo.com/NZ/en/titles/70010000097553",
+   "verifiedAt": "2026-08-27",
+   "verificationStatus": "Verified / sourced",
+   "performanceNotes": "Pre-release/final-launch target is 30 fps. Bandai Namco has not published a precise fixed internal-resolution table; do not treat hardware maximums as measured game resolution."
+  }
+ ],
+ "downloadSizeGb": 40.9,
+ "requiredSpaceGb": 40.9,
+ "microSdRecommended": true,
+ "storageNotes": "Nintendo eShop lists 40.9 GB required space. The physical release requires additional download space. On Switch 2, expansion storage requires microSD Express.",
+ "languagesAudio": [
+  "English",
+  "Character voices and effects",
+  "Original orchestral soundtrack"
+ ],
+ "languagesText": [
+  "English",
+  "French / German / Italian / Spanish / Portuguese / Polish / Russian",
+  "Korean / Simplified Chinese / Traditional Chinese / Thai"
+ ],
+ "arabicSupport": false,
+ "mpLocalPlayers": false,
+ "mpOnlinePlayers": true,
+ "mpCoop": true,
+ "mpCompetitive": true,
+ "mpSplitScreen": false,
+ "mpLocalWireless": false,
+ "dlc": [
+  {
+   "name": "SHADOW OF THE ERDTREE",
+   "description": "Major expansion included with Tarnished Edition.",
+   "coverUrl": "https://p325k7wa.twic.pics/high/elden-ring/elden-ring-tarnished-edition/00-product-page/ER-Tarnished-Edition-Key-Feature-Screenshot-1.png"
+  },
+  {
+   "name": "Tarnished Edition Content",
+   "description": "New armor, class/weapon content and Torrent appearance customization.",
+   "coverUrl": "https://p325k7wa.twic.pics/high/elden-ring/elden-ring-tarnished-edition/00-product-page/ER-Tarnished-Edition-Key-Feature-Screenshot-2.png"
+  },
+  {
+   "name": "Pre-order Gestures",
+   "description": "The Ring and Ring of Miquella gestures; they can also be obtained later in-game.",
+   "coverUrl": "https://p325k7wa.twic.pics/high/elden-ring/elden-ring-tarnished-edition/00-product-page/ER-Tarnished-Edition-Key-Feature-Screenshot-3.png"
+  }
+ ],
+ "guides": [
+  {
+   "title": "Official product information",
+   "summary": "Platform, release, storage, language and feature information for ELDEN RING Tarnished Edition.",
+   "url": "https://ec.nintendo.com/NZ/en/titles/70010000097553"
+  },
+  {
+   "title": "Official game overview",
+   "summary": "Publisher/developer overview of story, gameplay and features.",
+   "url": "https://en.bandainamcoent.eu/elden-ring/elden-ring-tarnished-edition"
+  },
+  {
+   "title": "Reviews and playtime reference",
+   "summary": "Critic/user scores and completion-time context.",
+   "url": "https://www.nintendo.com/us/whatsnew/rise-with-elden-ring-tarnished-edition-launching-aug-28-on-nintendo-switch-2/"
+  }
+ ],
+ "completionMain": 60,
+ "completionExtras": 101,
+ "completionAll": 136,
+ "faq": [
+  {
+   "q": "Does Tarnished Edition include Shadow of the Erdtree?",
+   "a": "Yes. The Switch 2 Tarnished Edition includes the original ELDEN RING and the full Shadow of the Erdtree expansion."
+  },
+  {
+   "q": "How much storage is required?",
+   "a": "Nintendo lists approximately 40.9 GB of required space; physical copies also require download space."
+  },
+  {
+   "q": "Does it support online play?",
+   "a": "Yes. Nintendo lists 1–6 online players; paid Nintendo Switch Online is required for online modes."
+  }
+ ],
+ "verdictScore": 9.5,
+ "verdictSummary": "An unusually complete package of one of the defining open-world action RPGs of its generation. The Switch 2 edition trades performance headroom for portability, but includes the huge base adventure and its major expansion.",
+ "verdictPros": [
+  "Massive, rewarding open world",
+  "Exceptional combat/build depth",
+  "Shadow of the Erdtree included"
+ ],
+ "verdictCons": [
+  "30 fps target",
+  "Very demanding difficulty",
+  "Physical version requires substantial download"
+ ],
+ "reviews": [
+  {
+   "source": "Metacritic – original ELDEN RING",
+   "score": "96/100",
+   "quote": "The base game's PS5 aggregate remains one of the highest of its generation.",
+   "url": "https://www.metacritic.com/game/elden-ring/"
+  },
+  {
+   "source": "OpenCritic – original ELDEN RING",
+   "score": "95/100",
+   "quote": "Original release aggregate used as content-quality context before the Switch 2 edition launches.",
+   "url": "https://opencritic.com/game/12090/elden-ring"
+  },
+  {
+   "source": "Nintendo Switch 2 edition",
+   "score": "Pre-release",
+   "quote": "No Switch 2-specific aggregate score exists before the August 28, 2026 launch.",
+   "url": "https://www.nintendo.com/us/whatsnew/rise-with-elden-ring-tarnished-edition-launching-aug-28-on-nintendo-switch-2/"
+  }
+ ],
+ "timeline": [
+  {
+   "date": "2022-02-25",
+   "title": "ELDEN RING released",
+   "body": "The original game launched worldwide."
+  },
+  {
+   "date": "2024-06-21",
+   "title": "Shadow of the Erdtree released",
+   "body": "The major expansion expanded the world with the Realm of Shadow."
+  },
+  {
+   "date": "2026-08-28",
+   "title": "Tarnished Edition launches",
+   "body": "Nintendo Switch 2 receives the all-in-one Tarnished Edition."
+  }
+ ],
+ "patchNotes": [
+  {
+   "version": "Tarnished Edition announcement",
+   "date": "2025-04-02",
+   "body": "Nintendo Switch 2 version announced."
+  },
+  {
+   "version": "Release date confirmation",
+   "date": "2026-06-04",
+   "body": "August 28, 2026 launch date confirmed."
+  },
+  {
+   "version": "Tarnished Pack details",
+   "date": "2026-06-30",
+   "body": "Bandai Namco detailed additional classes, weapons, armor and Torrent customization."
+  }
+ ],
+ "soundtrack": [
+  {
+   "title": "Elden Ring",
+   "url": "https://en.bandainamcoent.eu/elden-ring/elden-ring-tarnished-edition"
+  },
+  {
+   "title": "The Final Battle",
+   "url": "https://en.bandainamcoent.eu/elden-ring/elden-ring-tarnished-edition"
+  },
+  {
+   "title": "The Promised Consort",
+   "url": "https://en.bandainamcoent.eu/elden-ring/elden-ring-tarnished-edition"
+  }
+ ],
+ "seriesName": "ELDEN RING: Shadow of the Erdtree",
+ "seriesEntries": [
+  "ELDEN RING",
+  "ELDEN RING: Shadow of the Erdtree",
+  "ELDEN RING NIGHTREIGN"
+ ],
+ "studioName": "FromSoftware",
+ "studioUrl": "https://www.fromsoftware.jp/",
+ "studioLocation": "Tokyo, Japan",
+ "studioAbout": "Japanese developer known for the Souls series, Bloodborne, Sekiro and ELDEN RING.",
+ "setupNeeds": [
+  "Nintendo Switch 2",
+  "Approximately 40.9 GB free storage; microSD Express if expanding storage",
+  "Nintendo Switch Online membership for online multiplayer"
+ ],
+ "sources": [
+  {
+   "name": "Nintendo eShop",
+   "url": "https://ec.nintendo.com/NZ/en/titles/70010000097553"
+  },
+  {
+   "name": "Bandai Namco",
+   "url": "https://en.bandainamcoent.eu/elden-ring/elden-ring-tarnished-edition"
+  },
+  {
+   "name": "Nintendo News",
+   "url": "https://www.nintendo.com/us/whatsnew/rise-with-elden-ring-tarnished-edition-launching-aug-28-on-nintendo-switch-2/"
+  }
+ ],
+ "boxContentsList": "[Circular]",
+ "image": "/api/files/products/prd_e0e2e61ef26b4744/cover-2278c1c2ad2cb52c.jpg",
+ "banner": "https://p325k7wa.twic.pics/high/elden-ring/elden-ring-tarnished-edition/00-product-page/ER-Tarnished-Edition-Key-Feature-Screenshot-1.png",
+ "schemaId": "",
+ "createdAt": "2026-08-27T00:27:36.850Z",
+ "created_at": "2026-08-27T00:27:36.850Z",
+ "updatedAt": "2026-08-27T00:27:36.850Z",
+ "updated_at": "2026-08-27T00:27:36.850Z",
+ "badgeEn": "وفر 40%",
+ "badgeKu": "وفر 40%",
+ "featuresEn": [
+  "Base game + Shadow of the Erdtree included",
+  "Online co-op/PvP for up to six players",
+  "New Tarnished Edition armor/classes/weapons and Torrent customization"
+ ],
+ "featuresKu": [
+  "Base game + Shadow of the Erdtree included",
+  "Online co-op/PvP for up to six players",
+  "New Tarnished Edition armor/classes/weapons and Torrent customization"
+ ],
+ "boxFrontUrl": "https://p325k7wa.twic.pics/high/elden-ring/elden-ring-tarnished-edition/02-retailers/ER_TARNISHED%20EDITION_NS2_UK.jpg",
+ "sales": 0,
+ "images": [],
+ "modes": []
+}

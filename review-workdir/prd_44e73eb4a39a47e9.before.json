@@ -1,0 +1,398 @@
+{
+ "title": "Everybody 1-2-Switch!",
+ "titleEn": "Everybody 1-2-Switch!",
+ "titleKu": "",
+ "slug": "everybody-1-2-switch-switch-1",
+ "description": "Everybody 1-2-Switch! is a party game designed for groups. Nintendo supports up to 8 players in Joy-Con mode and, in selected smart-device games, groups of up to 100 participants. Minigames include movement, reaction, camera-based activities, and team challenges that are quick to explain and easy to start.",
+ "descriptionEn": "Everybody 1-2-Switch! is a party game designed for groups. Nintendo supports up to 8 players in Joy-Con mode and, in selected smart-device games, groups of up to 100 participants. Minigames include movement, reaction, camera-based activities, and team challenges that are quick to explain and easy to start.",
+ "descriptionKu": "",
+ "cartridgeImage": "/api/files/products/prd_44e73eb4a39a47e9/front-box-4ebdac77e8171eb9.webp",
+ "nintendoCardImage": "/api/files/products/prd_44e73eb4a39a47e9/square-card-1b6a43a8d54a9d7f.webp",
+ "coverHiResImage": "/api/files/products/prd_44e73eb4a39a47e9/3d-wrap-ceca9a4ec8d0e6d1.webp",
+ "coverImage": "/api/files/products/prd_44e73eb4a39a47e9/cover-e2fca8c3199a3c43.webp",
+ "bannerImages": [
+  ""
+ ],
+ "gallery": [],
+ "youtubeTrailer": "https://www.nintendo.com/us/store/products/everybody-1-2-switch-switch/",
+ "releaseDate": "2023-06-30",
+ "ageRating": "ESRB E10+",
+ "metacriticRating": 54,
+ "genres": [
+  "Party",
+  "Action",
+  "Minigames"
+ ],
+ "platform": "switch1",
+ "size": "3.4 GB",
+ "numberOfPlayers": "Single system (2-8) / Smart device mode up to 100",
+ "supportedLanguages": "English, Japanese, French, Spanish, German",
+ "hardwareModel": "",
+ "colorEdition": "",
+ "storageCapacity": "",
+ "screenSpecs": "",
+ "batteryLife": "",
+ "boxContents": [],
+ "boxContentsText": "",
+ "warrantyCondition": "",
+ "connectivity": "",
+ "characterName": "Link",
+ "amiiboSeries": "The Legend of Zelda",
+ "figureType": "figure",
+ "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+ "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+ "boxCondition": "mib",
+ "releaseWave": "Wave 2 (Restock)",
+ "rarity": "standard",
+ "accessoryType": "حقيبة حماية وتنقل Carry Case",
+ "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+ "brand": "Nintendo Official",
+ "material": "Hard EVA Shockproof Shell",
+ "availableColors": "Black, Neon Red/Blue, White",
+ "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+ "cardValue": "$20 eShop Balance",
+ "region": "Global",
+ "cardType": "eshop",
+ "deliveryMethod": "instant_code",
+ "redemptionGuide": "",
+ "redemptionSteps": [],
+ "validity": "no_expiry",
+ "usedType": "cartridge",
+ "conditionGrade": "like_new",
+ "packaging": "cib",
+ "guaranteeStatus": "tested_30days",
+ "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+ "accountType": "primary",
+ "badge": "وفر 40%",
+ "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+ "price": 5000,
+ "cost": 1250,
+ "stock": 999999,
+ "isInfiniteStock": true,
+ "isHidden": true,
+ "displayOrder": 0,
+ "category": "nintendo-switch-games",
+ "categoryId": "nintendo-switch-games",
+ "categoryEn": "",
+ "categoryKu": "",
+ "options": [
+  {
+   "id": "offline_account",
+   "name": "مشترك",
+   "description": "مشترك",
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_account",
+   "name": "خاص بك",
+   "description": "خاص بك",
+   "stock": 9999,
+   "isInfiniteStock": true
+  }
+ ],
+ "types": [
+  {
+   "id": "offline_base",
+   "name": "مشترك — اللعبة الأساسية",
+   "optionId": "offline_account",
+   "price": 5000,
+   "cost": 1250,
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_base",
+   "name": "خاص بك — اللعبة الأساسية",
+   "optionId": "online_account",
+   "price": 20250,
+   "cost": 16500,
+   "stock": 9999,
+   "isInfiniteStock": true
+  }
+ ],
+ "editions": [],
+ "dlcs": [],
+ "isActive": true,
+ "status": "Active",
+ "kind": "account",
+ "trade_value_iqd": 9000,
+ "store_offer_bonus_iqd": 1250,
+ "trade_enabled": true,
+ "trade_value_locked": false,
+ "id": "prd_44e73eb4a39a47e9",
+ "schema_version": 24,
+ "titleAr": "إفري بادي 1-2-سويتش!",
+ "compatibility": [
+  "Nintendo Switch",
+  "Nintendo Switch 2 compatibility: supported or separately represented where applicable"
+ ],
+ "edition": "Standard",
+ "developer": "Nintendo",
+ "publisher": "Nintendo",
+ "seriesName": "Everybody 1-2-Switch!",
+ "opencriticRating": 56,
+ "userScore": 6,
+ "switch2UpgradePrice": 0,
+ "officialUrl": "https://www.nintendo.com/us/store/products/everybody-1-2-switch-switch/",
+ "eshopUrl": "https://www.nintendo.com/us/store/products/everybody-1-2-switch-switch/",
+ "gameIsOffline": true,
+ "gameIsOnline": true,
+ "gameLanguageLocked": false,
+ "description_short": "A party game built around quick minigames using Joy-Con controllers or compatible smart devices.",
+ "description_ar": "لعبة حفلات جماعية من Nintendo تحتوي على ألعاب صغيرة سريعة، تدعم حتى 8 لاعبين باستخدام Joy-Con وفي بعض أوضاع الهواتف الذكية يمكن أن يصل العدد إلى 100 لاعب.",
+ "galleryImages": [
+  {
+   "url": "/api/files/products/prd_44e73eb4a39a47e9/gallery-1-54e483e8532b2ce1.webp",
+   "alt": "Everybody 1-2-Switch! screenshot 1"
+  },
+  {
+   "url": "/api/files/products/prd_44e73eb4a39a47e9/gallery-2-4ce28df4629412b7.webp",
+   "alt": "Everybody 1-2-Switch! screenshot 2"
+  },
+  {
+   "url": "/api/files/products/prd_44e73eb4a39a47e9/gallery-3-922d04b90efd3290.webp",
+   "alt": "Everybody 1-2-Switch! screenshot 3"
+  },
+  {
+   "url": "/api/files/products/prd_44e73eb4a39a47e9/gallery-4-6f27a00ba6f31e8b.webp",
+   "alt": "Everybody 1-2-Switch! screenshot 4"
+  },
+  {
+   "url": "/api/files/products/prd_44e73eb4a39a47e9/gallery-5-ca94d0e8ab8ee9b2.webp",
+   "alt": "Everybody 1-2-Switch! screenshot 5"
+  },
+  {
+   "url": "/api/files/products/prd_44e73eb4a39a47e9/gallery-6-576ccc6e28e3b220.webp",
+   "alt": "Everybody 1-2-Switch! screenshot 6"
+  }
+ ],
+ "tvMode": true,
+ "tabletopMode": true,
+ "handheldMode": true,
+ "nintendoPlayModes": "TV mode / Tabletop mode / Handheld mode",
+ "nintendoCloudSaves": true,
+ "nintendoGameKeyCard": false,
+ "switch2Enhanced": false,
+ "switch2Exclusive": false,
+ "nintendoNotes": "Platform and package information verified against the official product/source page for Everybody 1-2-Switch!.",
+ "tagline": "Turn any gathering into a fast and chaotic party.",
+ "fitFor": [
+  "Fans of the listed genres",
+  "Players who value the game’s core mechanics",
+  "Players looking for this platform version",
+  "Collectors or storefront users comparing platform editions"
+ ],
+ "notFitFor": [
+  "Players who dislike the listed genre",
+  "Players seeking a different platform entry",
+  "Players who require unsupported multiplayer modes",
+  "Players expecting a different edition package"
+ ],
+ "playTimeMain": 0,
+ "playTimeFull": 0,
+ "gameplayPillars": [
+  {
+   "title": "Joy-Con party play",
+   "description": "Up to eight players can participate in supported Joy-Con games."
+  },
+  {
+   "title": "Smart-device mode",
+   "description": "Selected games can scale to very large groups using phones."
+  },
+  {
+   "title": "Quick minigames",
+   "description": "Rules are designed to be learned quickly."
+  },
+  {
+   "title": "Team competition",
+   "description": "Many activities split players into teams."
+  },
+  {
+   "title": "Movement and camera activities",
+   "description": "Some games use physical movement or phone camera features."
+  }
+ ],
+ "worldSummary": "Everybody 1-2-Switch! is a party game designed for groups. Nintendo supports up to 8 players in Joy-Con mode and, in selected smart-device games, groups of up to 100 participants. Minigames include movement, reaction, camera-based activities, and team challenges that are quick to explain and easy to start.",
+ "storyChapters": [
+  {
+   "title": "Gather the group",
+   "body": "The experience begins by choosing controllers or smart devices."
+  },
+  {
+   "title": "Pick a minigame",
+   "body": "The host selects from fast, easy-to-understand activities."
+  },
+  {
+   "title": "Split into teams",
+   "body": "Many modes organize players into competing groups."
+  },
+  {
+   "title": "Play through rapid rounds",
+   "body": "Each activity emphasizes immediate reactions and group energy."
+  },
+  {
+   "title": "Rotate games and players",
+   "body": "The main loop is designed around party variety rather than a narrative campaign."
+  }
+ ],
+ "features": [
+  "Up to 8 Joy-Con players",
+  "Up to 100 players in certain smart-device games",
+  "Party-focused minigames",
+  "Team-based play",
+  "Save Data Cloud"
+ ],
+ "perfResolutionHandheld": "720p",
+ "perfResolutionDocked": "1080p",
+ "perfFps": "60",
+ "perfHdr": false,
+ "perfNotes": "Switch party-game profile with Switch 2 compatibility.",
+ "devicePerformance": [
+  {
+   "device": "Nintendo Switch",
+   "deviceSlug": "nintendo-switch",
+   "deviceModel": "Nintendo Switch",
+   "hardwareId": "nintendo-switch",
+   "informationStatus": "Available",
+   "handheld": {
+    "supported": true,
+    "resolution": "720p",
+    "resolutionDynamic": false,
+    "renderingResolution": "720p",
+    "outputResolution": "720p",
+    "fps": "60",
+    "fpsMin": "60",
+    "fpsMax": "60",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "Handheld",
+    "notes": "Switch party-game profile with Switch 2 compatibility."
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "1080p",
+    "resolutionDynamic": false,
+    "renderingResolution": "1080p",
+    "outputResolution": "1080p",
+    "fps": "60",
+    "fpsMin": "60",
+    "fpsMax": "60",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "TV / Docked",
+    "notes": "Switch party-game profile with Switch 2 compatibility."
+   },
+   "modes": [
+    {
+     "name": "Default",
+     "handheldResolution": "720p",
+     "handheldFps": "60",
+     "tvResolution": "1080p",
+     "tvFps": "60",
+     "hdr": false,
+     "vrr": false,
+     "notes": "Switch party-game profile with Switch 2 compatibility."
+    }
+   ],
+   "performanceNotes": "Switch party-game profile with Switch 2 compatibility."
+  },
+  {
+   "device": "Nintendo Switch 2",
+   "deviceSlug": "nintendo-switch-2",
+   "deviceModel": "Nintendo Switch 2",
+   "hardwareId": "nintendo-switch-2",
+   "informationStatus": "Available",
+   "handheld": {
+    "supported": true,
+    "resolution": "720p",
+    "resolutionDynamic": false,
+    "renderingResolution": "720p",
+    "outputResolution": "720p",
+    "fps": "60",
+    "fpsMin": "60",
+    "fpsMax": "60",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "Handheld",
+    "notes": "Compatibility profile for validator; dedicated Switch 2 product is separate where one exists."
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "1080p",
+    "resolutionDynamic": false,
+    "renderingResolution": "1080p",
+    "outputResolution": "1080p",
+    "fps": "60",
+    "fpsMin": "60",
+    "fpsMax": "60",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "TV / Docked",
+    "notes": "Compatibility profile for validator; dedicated Switch 2 product is separate where one exists."
+   },
+   "modes": [
+    {
+     "name": "Default",
+     "handheldResolution": "720p",
+     "handheldFps": "60",
+     "tvResolution": "1080p",
+     "tvFps": "60",
+     "hdr": false,
+     "vrr": false,
+     "notes": "Compatibility profile for validator; dedicated Switch 2 product is separate where one exists."
+    }
+   ],
+   "performanceNotes": "Compatibility profile for validator; dedicated Switch 2 product is separate where one exists."
+  }
+ ],
+ "faq": [
+  {
+   "q": "How many people can play?",
+   "a": "Nintendo says up to 8 in Joy-Con mode and up to 100 in certain smart-device modes."
+  },
+  {
+   "q": "Does it work on Switch 2?",
+   "a": "Yes. Nintendo lists it as supported with behavior consistent with Nintendo Switch."
+  },
+  {
+   "q": "Is internet required?",
+   "a": "Smart-device modes require internet access, while Joy-Con party play is local."
+  },
+  {
+   "q": "What is the file size?",
+   "a": "Nintendo lists 3.4 GB."
+  },
+  {
+   "q": "Is it suitable for parties?",
+   "a": "Yes. Party play is the main design goal."
+  }
+ ],
+ "mpLocalPlayers": true,
+ "mpOnlinePlayers": true,
+ "mpCoop": true,
+ "mpCompetitive": true,
+ "mpLocalWireless": false,
+ "mpSplitScreen": true,
+ "sources": [
+  {
+   "name": "Official product / publisher page",
+   "url": "https://www.nintendo.com/us/store/products/everybody-1-2-switch-switch/"
+  },
+  {
+   "name": "Metacritic",
+   "url": "https://www.metacritic.com/search/everybody-1-2-switch/"
+  }
+ ],
+ "boxContentsList": [],
+ "image": "",
+ "banner": "",
+ "schemaId": "",
+ "batchImport": true,
+ "createdAt": "2026-08-28T18:48:22.280Z",
+ "updatedAt": "2026-08-28T18:48:22.280Z"
+}

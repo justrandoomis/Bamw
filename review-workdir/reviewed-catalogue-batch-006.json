@@ -1,6 +1,6 @@
 {
  "batch": "006",
- "apply": true,
+ "apply": false,
  "games": [
   {
    "id": "prd_ddd43641059248a3",
@@ -13,8 +13,12 @@
       "deviceSlug": "nintendo-switch-2",
       "informationStatus": "not_published",
       "unavailableReason": "EA SPORTS FC 27 releases on 2026-09-25; EA has not published Switch 2 performance figures ahead of launch.",
-      "handheld": { "supported": true },
-      "tv": { "supported": true },
+      "handheld": {
+       "supported": true
+      },
+      "tv": {
+       "supported": true
+      },
       "modes": [],
       "sourceName": "EA SPORTS FC official announcement",
       "sourceUrl": "https://www.ea.com/games/ea-sports-fc",
@@ -50,8 +54,16 @@
       "device": "Nintendo Switch",
       "deviceSlug": "nintendo-switch",
       "informationStatus": "available",
-      "handheld": { "supported": true, "resolution": "720p", "fps": "30" },
-      "tv": { "supported": true, "resolution": "1080p", "fps": "30" },
+      "handheld": {
+       "supported": true,
+       "resolution": "720p",
+       "fps": "30"
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p",
+       "fps": "30"
+      },
       "modes": [],
       "sourceName": "Official product and compatibility information",
       "sourceUrl": "https://www.ea.com/games/fifa/fifa-23",
@@ -168,8 +180,16 @@
       "device": "Nintendo Switch",
       "deviceSlug": "nintendo-switch",
       "informationStatus": "available",
-      "handheld": { "supported": true, "resolution": "720p", "fps": "60" },
-      "tv": { "supported": true, "resolution": "1080p", "fps": "60" },
+      "handheld": {
+       "supported": true,
+       "resolution": "720p",
+       "fps": "60"
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p",
+       "fps": "60"
+      },
       "modes": [],
       "sourceName": "Official product information",
       "sourceUrl": "https://www.nintendo.com/us/store/products/everybody-1-2-switch-switch/",
@@ -191,6 +211,119 @@
     "guaranteeStatus"
    ],
    "notes": "Size was stored as the string '3.4 GB', which the storage section cannot parse — replaced with the number. The trailer field held a nintendo.com store page URL that cannot embed — removed (no verified video id confirmed from here). Device records collapse to the platform record. Metacritic 54 left as stored — consistent with the game's documented weak reception. Genuine box, square card, cover, full wrap and six galleries verified working."
+  }
+ ],
+ "appliedAt": "2026-09-02T02:37:42.389Z",
+ "results": [
+  {
+   "id": "prd_ddd43641059248a3",
+   "action": "APPLIED",
+   "changed": [
+    "devicePerformance"
+   ],
+   "removed": [
+    "metacriticRating",
+    "supportedLanguages",
+    "size",
+    "downloadSizeGb",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ]
+  },
+  {
+   "id": "prd_69ea08de9fcb4869",
+   "action": "APPLIED",
+   "changed": [
+    "devicePerformance"
+   ],
+   "removed": [
+    "metacriticRating",
+    "supportedLanguages",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ]
+  },
+  {
+   "id": "prd_d530fb53867c4915",
+   "action": "APPLIED",
+   "changed": [
+    "releaseDate",
+    "dlcSummary"
+   ],
+   "removed": [
+    "youtubeTrailer",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ]
+  },
+  {
+   "id": "prd_e0e2e61ef26b4744",
+   "action": "APPLIED",
+   "changed": [
+    "metacriticRating",
+    "metacriticUrl",
+    "devicePerformance",
+    "galleryImages"
+   ],
+   "removed": [
+    "box_front_url",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ]
+  },
+  {
+   "id": "prd_44e73eb4a39a47e9",
+   "action": "APPLIED",
+   "changed": [
+    "size",
+    "downloadSizeGb",
+    "devicePerformance"
+   ],
+   "removed": [
+    "youtubeTrailer",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ]
   }
  ]
 }

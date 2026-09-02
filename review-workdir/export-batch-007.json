@@ -1,0 +1,3119 @@
+{
+ "batch": "007",
+ "generatedAt": "2026-09-02T02:38:05.948Z",
+ "totalGames": 310,
+ "reviewedSoFar": 28,
+ "games": [
+  {
+   "id": "prd_0ca27f5eefe44dd5",
+   "slug": "fallout-4-anniversary-edition",
+   "title": "Fallout 4: Anniversary Edition",
+   "platform": "switch2",
+   "isHidden": false,
+   "hash": "093cae06700c32222ca3a56a6a0e87691fee75b4c17c26986139b3cec25d8d3e",
+   "images": [
+    {
+     "role": "front-box",
+     "field": "cartridgeImage",
+     "url": "https://banan.to/api/files/products/prd_0ca27f5eefe44dd5/cartridgeImage-457f2aa15bd06e74.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 40396,
+     "width": 500,
+     "height": 500,
+     "thumb": "review-workdir/thumbs/batch-007/fallout-4-anniversary-edition__front-box-0.png"
+    },
+    {
+     "role": "front-box",
+     "field": "box_front_url",
+     "url": "https://multimedia.bbycastatic.ca/multimedia/products/500x500/197/19748/19748598.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 40396,
+     "width": 500,
+     "height": 500,
+     "thumb": "review-workdir/thumbs/batch-007/fallout-4-anniversary-edition__front-box-1.png"
+    },
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://banan.to/api/files/products/prd_0ca27f5eefe44dd5/nintendoCardImage-319f3f75f023d52f.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 1333198,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-007/fallout-4-anniversary-edition__square-card-2.png"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://banan.to/api/files/products/prd_0ca27f5eefe44dd5/coverImage-457f2aa15bd06e74.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 40396,
+     "width": 500,
+     "height": 500,
+     "thumb": "review-workdir/thumbs/batch-007/fallout-4-anniversary-edition__detail-cover-3.png"
+    },
+    {
+     "role": "listing",
+     "field": "image",
+     "url": "https://banan.to/api/files/products/prd_0ca27f5eefe44dd5/coverImage-457f2aa15bd06e74.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 40396,
+     "width": 500,
+     "height": 500,
+     "thumb": "review-workdir/thumbs/batch-007/fallout-4-anniversary-edition__listing-4.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[0]",
+     "url": "https://banan.to/api/files/products/prd_0ca27f5eefe44dd5/bannerImages-1-860d9c129fd0f72a.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 485873,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-007/fallout-4-anniversary-edition__banner-5.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[1]",
+     "url": "https://banan.to/api/files/products/prd_0ca27f5eefe44dd5/bannerImages-2-5292342f7f542155.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 197809,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-007/fallout-4-anniversary-edition__banner-6.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://img-eshop.cdn.nintendo.net/i/ec17cbc1afc8a7d453fe4f1dc7a88ae277b04e13d230d88359fcb7bbb3409f11.jpg",
+     "status": 200,
+     "contentType": "application/octet-stream",
+     "bytes": 325508,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-007/fallout-4-anniversary-edition__gallery-7.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[1]",
+     "url": "https://img-eshop.cdn.nintendo.net/i/af8c0eb31377456217a26585034f61b5e67486c5081a6cebbba663c36a3a1514.jpg",
+     "status": 200,
+     "contentType": "application/octet-stream",
+     "bytes": 380073,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-007/fallout-4-anniversary-edition__gallery-8.png"
+    }
+   ],
+   "record": {
+    "id": "prd_0ca27f5eefe44dd5",
+    "title": "Fallout 4: Anniversary Edition",
+    "titleEn": "Fallout 4: Anniversary Edition",
+    "titleKu": "Fallout 4: Anniversary Edition",
+    "slug": "fallout-4-anniversary-edition",
+    "description": "The definitive Fallout 4 package combines the base game, all six official expansions and more than 150 Creation Club items. Explore the Commonwealth, build settlements, craft equipment, join or oppose factions and shape the story through your choices.",
+    "descriptionEn": "The definitive Fallout 4 package combines the base game, all six official expansions and more than 150 Creation Club items. Explore the Commonwealth, build settlements, craft equipment, join or oppose factions and shape the story through your choices.",
+    "descriptionKu": "The definitive Fallout 4 package combines the base game, all six official expansions and more than 150 Creation Club items. Explore the Commonwealth, build settlements, craft equipment, join or oppose factions and shape the story through your choices.",
+    "cartridgeImage": "/api/files/products/prd_0ca27f5eefe44dd5/cartridgeImage-457f2aa15bd06e74.jpg",
+    "nintendoCardImage": "/api/files/products/prd_0ca27f5eefe44dd5/nintendoCardImage-319f3f75f023d52f.jpg",
+    "coverHiResImage": "",
+    "coverImage": "/api/files/products/prd_0ca27f5eefe44dd5/coverImage-457f2aa15bd06e74.jpg",
+    "bannerImages": [
+     "/api/files/products/prd_0ca27f5eefe44dd5/bannerImages-1-860d9c129fd0f72a.jpg",
+     "/api/files/products/prd_0ca27f5eefe44dd5/bannerImages-2-5292342f7f542155.jpg"
+    ],
+    "gallery": [],
+    "youtubeTrailer": "https://www.youtube.com/watch?v=57Dj9vrW20g",
+    "releaseDate": "2026-02-24",
+    "ageRating": "Mature / Strong Violence",
+    "metacriticRating": 84,
+    "genres": [
+     "Open-World RPG",
+     "Action RPG",
+     "Post-Apocalyptic"
+    ],
+    "platform": "switch2",
+    "size": 64.2,
+    "numberOfPlayers": "1",
+    "supportedLanguages": "Japanese, English, French, German, Italian, Spanish, Russian, Portuguese, Traditional Chinese",
+    "hardwareModel": "",
+    "colorEdition": "",
+    "storageCapacity": "",
+    "screenSpecs": "",
+    "batteryLife": "",
+    "boxContents": [],
+    "boxContentsText": "",
+    "warrantyCondition": "",
+    "connectivity": "",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "Global",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "",
+    "redemptionSteps": [],
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 10250,
+    "cost": 1750,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": false,
+    "displayOrder": 0,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "مشترك",
+      "description": "Play using the supplied account under the store's offline-account activation method.",
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_account",
+      "name": "خاص بك",
+      "description": "Online-account option with internet-connected account use where supported by the game/service.",
+      "isInfiniteStock": true
+     }
+    ],
+    "types": [
+     {
+      "id": "standard_offline",
+      "name": "مشترك — اللعبة الأساسية",
+      "optionId": "offline_account",
+      "price": 10250,
+      "cost": 1750,
+      "description": "Standard game, Offline Account. Supplier Regular price: ¥8.76; purchase cost converted at 1 CNY = 220 IQD and rounded down to nearest 250 IQD.",
+      "isInfiniteStock": true
+     },
+     {
+      "id": "standard_online",
+      "name": "خاص بك — اللعبة الأساسية",
+      "optionId": "online_account",
+      "price": 55000,
+      "cost": 38000,
+      "description": "Standard game, Online Account. Supplier Standard price: ¥173.40; purchase cost converted at 1 CNY = 220 IQD and rounded down to nearest 250 IQD.",
+      "isInfiniteStock": true
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "active",
+    "kind": "account",
+    "trade_value_iqd": 40000,
+    "store_offer_bonus_iqd": 0,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "schema_version": 22,
+    "titleAr": "فال آوت 4: أنيفرسري إديشن",
+    "compatibility": [
+     "Nintendo Switch 2"
+    ],
+    "edition": "Anniversary Edition",
+    "developer": "Bethesda Game Studios",
+    "publisher": "Bethesda Softworks",
+    "opencriticRating": 87,
+    "userScore": 8.2,
+    "officialUrl": "https://fallout.bethesda.net/",
+    "gameIsOffline": true,
+    "gameIsOnline": true,
+    "gameLanguageLocked": false,
+    "description_short": "The complete Fallout 4 package for Nintendo Switch 2, including the base game, six official expansions and more than 150 curated Creation Club items.",
+    "description_ar": "الحزمة الكاملة من Fallout 4 على Nintendo Switch 2، وتشمل اللعبة الأساسية وجميع الإضافات الرسمية الست وأكثر من 150 عنصرًا من Creation Club. استكشف الـCommonwealth وابنِ المستوطنات وطوّر الأسلحة واختر الفصائل التي تتعاون معها أو تحاربها.",
+    "box_front_url": "https://multimedia.bbycastatic.ca/multimedia/products/500x500/197/19748/19748598.jpg",
+    "videos": [
+     {
+      "title": "Nintendo Switch 2 Teaser Trailer",
+      "url": "https://www.youtube.com/watch?v=57Dj9vrW20g"
+     }
+    ],
+    "nintendoEshopUrl": "https://www.nintendo.com/au/games/nintendo-switch-2/fallout-4-anniversary-edition/",
+    "nintendoOnlineRequired": false,
+    "nintendoCloudSaves": true,
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": true,
+    "nintendoPlayModes": "TV Mode, Tabletop Mode, Handheld Mode",
+    "switch2Features": [
+     "Native Nintendo Switch 2 release",
+     "30 FPS Quality mode",
+     "40 FPS Balanced mode",
+     "60 FPS Performance mode",
+     "Up to 1080p-class handheld output in higher-quality mode",
+     "Up to 1440p-class TV output in higher-quality mode",
+     "All six official expansions included",
+     "150+ curated Creation Club items"
+    ],
+    "tagline": "The complete post-nuclear Commonwealth adventure arrives on Nintendo Switch 2.",
+    "fitFor": [
+     "Open-world RPG fans",
+     "Fallout fans",
+     "Players who enjoy exploration and character builds",
+     "Players who enjoy settlement construction and crafting",
+     "Players seeking a very large single-player package"
+    ],
+    "notFitFor": [
+     "Players who dislike mature post-apocalyptic themes",
+     "Players looking for multiplayer"
+    ],
+    "playTimeMain": 27,
+    "playTimeFull": 159,
+    "editionsList": [
+     {
+      "name": "Anniversary Edition",
+      "contents": [
+       {
+        "label": "Fallout 4 base game"
+       },
+       {
+        "label": "Automatron"
+       },
+       {
+        "label": "Wasteland Workshop"
+       },
+       {
+        "label": "Far Harbor"
+       },
+       {
+        "label": "Contraptions Workshop"
+       },
+       {
+        "label": "Vault-Tec Workshop"
+       },
+       {
+        "label": "Nuka-World"
+       },
+       {
+        "label": "150+ curated Creation Club items"
+       }
+      ]
+     }
+    ],
+    "gameplayPillars": [
+     {
+      "title": "Open-World Exploration",
+      "description": "Roam the Commonwealth, discover settlements, ruins, vaults and faction-controlled locations."
+     },
+     {
+      "title": "Character Building",
+      "description": "Use SPECIAL stats, perks, equipment and combat styles to define the Sole Survivor."
+     },
+     {
+      "title": "Settlement Construction",
+      "description": "Build and manage settlements using gathered resources, defenses, power and supply lines."
+     },
+     {
+      "title": "Factions and Choices",
+      "description": "Join or oppose major factions whose conflicts determine the direction of the main story."
+     },
+     {
+      "title": "Crafting and Loot",
+      "description": "Modify weapons, armor and power armor using extensive crafting systems."
+     }
+    ],
+    "storyChapters": [
+     {
+      "title": "Vault 111",
+      "body": "The Sole Survivor awakens after the destruction of the old world and leaves Vault 111 to search for a missing child."
+     },
+     {
+      "title": "The Commonwealth",
+      "body": "The search leads through post-war Boston and into conflict among the Minutemen, Brotherhood of Steel, Railroad and Institute."
+     },
+     {
+      "title": "A New Future",
+      "body": "Faction choices shape the ending while expansions open additional stories including Far Harbor and Nuka-World."
+     }
+    ],
+    "galleryImages": [
+     {
+      "url": "https://img-eshop.cdn.nintendo.net/i/ec17cbc1afc8a7d453fe4f1dc7a88ae277b04e13d230d88359fcb7bbb3409f11.jpg",
+      "alt": "Distinct product/game media image 1; separate from the primary cover and square-card roles."
+     },
+     {
+      "url": "https://img-eshop.cdn.nintendo.net/i/af8c0eb31377456217a26585034f61b5e67486c5081a6cebbba663c36a3a1514.jpg",
+      "alt": "Distinct product/game media image 2; separate from the primary cover and square-card roles."
+     }
+    ],
+    "features": [
+     "Complete Fallout 4 base game",
+     "All six official expansions",
+     "Automatron",
+     "Wasteland Workshop",
+     "Far Harbor",
+     "Contraptions Workshop",
+     "Vault-Tec Workshop",
+     "Nuka-World",
+     "More than 150 curated Creation Club items",
+     "Open-world exploration",
+     "Settlement building",
+     "Weapon and armor crafting",
+     "Faction-driven quest structure",
+     "First Nintendo console release of Fallout 4"
+    ],
+    "perfResolutionDocked": "2560x1440 target (30 FPS Quality mode)",
+    "perfResolutionHandheld": "1920x1080 target (30 FPS Quality mode)",
+    "perfFps": "30 / 40 / 60 selectable",
+    "perfNotes": "Bethesda officially provides 30, 40 and 60 FPS targets on Switch 2. Quality mode targets up to 1080p handheld and 1440p docked; Balanced 40 FPS uses lower dynamic resolutions, including roughly 810p-990p handheld and around 1080p docked in third-party testing. Higher-frame-rate modes trade image quality for performance.",
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "hardwareId": "prd_acf4c89908764c62",
+      "informationStatus": "verified",
+      "unavailableReason": "Reliable measured rendering resolution/FPS values were not established from the official sources used here.",
+      "handheld": {
+       "supported": true,
+       "resolution": "1920x1080 target",
+       "renderingResolution": "Up to 1920x1080 in 30 FPS Quality mode",
+       "outputResolution": "1920x1080",
+       "fps": "30",
+       "fpsMin": "30",
+       "fpsMax": "30"
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "2560x1440 target",
+       "renderingResolution": "2560x1440 target in 30 FPS Quality mode",
+       "outputResolution": "2560x1440",
+       "fps": "30",
+       "fpsMin": "30",
+       "fpsMax": "30"
+      },
+      "modes": [
+       {
+        "name": "Quality",
+        "handheldResolution": "Up to 1920x1080",
+        "handheldFps": "30",
+        "tvResolution": "2560x1440 target",
+        "tvFps": "30"
+       },
+       {
+        "name": "Balanced",
+        "handheldResolution": "Dynamic ~810p-990p",
+        "handheldFps": "40",
+        "tvResolution": "Dynamic around 1920x1080",
+        "tvFps": "40"
+       },
+       {
+        "name": "Performance",
+        "handheldResolution": "Dynamic, reduced from Quality mode",
+        "handheldFps": "60",
+        "tvResolution": "Dynamic, reduced from Quality mode",
+        "tvFps": "60"
+       }
+      ],
+      "sourceName": "Bethesda Support + Switch 2 technical review",
+      "sourceUrl": "https://help.bethesda.net/app/answers/detail/a_id/73860/",
+      "verificationStatus": "official-frame-rate-modes; third-party-resolution-tested",
+      "performanceNotes": "Bethesda officially provides 30, 40 and 60 FPS targets on Switch 2. Quality mode targets up to 1080p handheld and 1440p docked; Balanced 40 FPS uses lower dynamic resolutions, including roughly 810p-990p handheld and around 1080p docked in third-party testing. Higher-frame-rate modes trade image quality for performance."
+     }
+    ],
+    "downloadSizeGb": 64.2,
+    "requiredSpaceGb": 64.2,
+    "microSdRecommended": true,
+    "languagesAudio": [
+     "English",
+     "Japanese",
+     "French",
+     "German",
+     "Italian",
+     "Spanish"
+    ],
+    "languagesText": [
+     "Japanese",
+     "English",
+     "French",
+     "German",
+     "Italian",
+     "Spanish",
+     "Russian",
+     "Portuguese",
+     "Traditional Chinese"
+    ],
+    "arabicSupport": false,
+    "mpLocalPlayers": false,
+    "mpOnlinePlayers": false,
+    "mpCoop": false,
+    "mpCompetitive": false,
+    "mpSplitScreen": false,
+    "mpLocalWireless": false,
+    "dlc": [
+     {
+      "name": "Automatron",
+      "description": "Official expansion featuring robotic enemies and custom robot construction."
+     },
+     {
+      "name": "Far Harbor",
+      "description": "Large story expansion set on a dangerous island with new factions, quests, creatures and equipment."
+     },
+     {
+      "name": "Nuka-World and Workshop expansions",
+      "description": "Anniversary Edition also includes Wasteland Workshop, Contraptions Workshop, Vault-Tec Workshop and Nuka-World."
+     }
+    ],
+    "guides": [
+     {
+      "title": "Bethesda Fallout Site",
+      "summary": "Official franchise and product information.",
+      "url": "https://fallout.bethesda.net/"
+     },
+     {
+      "title": "Bethesda Switch 2 Frame-Rate Support",
+      "summary": "Official guidance for target frame-rate selection.",
+      "url": "https://help.bethesda.net/app/answers/detail/a_id/73860/"
+     },
+     {
+      "title": "Nintendo Switch 2 Teaser",
+      "summary": "Official announcement trailer.",
+      "url": "https://www.youtube.com/watch?v=57Dj9vrW20g"
+     }
+    ],
+    "completionMain": 27,
+    "completionExtras": 82,
+    "completionAll": 159,
+    "faq": [
+     {
+      "q": "What is included in Anniversary Edition?",
+      "a": "The base game, all six official expansions and more than 150 curated Creation Club items."
+     },
+     {
+      "q": "What frame-rate modes are available on Switch 2?",
+      "a": "Bethesda provides 30, 40 and 60 FPS target modes."
+     },
+     {
+      "q": "How long is Fallout 4?",
+      "a": "The main story is roughly 27 hours in long-standing crowdsourced data, while exploration and DLC can push a full playthrough well beyond 80 hours."
+     },
+     {
+      "q": "Is it multiplayer?",
+      "a": "No. Fallout 4 is a single-player RPG."
+     },
+     {
+      "q": "Does it include Far Harbor and Nuka-World?",
+      "a": "Yes. Both are included along with Automatron and the Workshop expansions."
+     },
+     {
+      "q": "Is this the first native Fallout 4 release on a Nintendo console?",
+      "a": "Yes. Anniversary Edition brought Fallout 4 natively to Nintendo Switch 2."
+     }
+    ],
+    "verdictScore": 9,
+    "verdictSummary": "An enormous open-world RPG package and the first native Fallout 4 release on a Nintendo console, combining the base game, all major expansions and a very large Creation Club collection.",
+    "verdictPros": [
+     "Huge amount of included content",
+     "Strong exploration freedom",
+     "Six full expansions included",
+     "150+ Creation Club items built into the Switch 2 version"
+    ],
+    "verdictCons": [
+     "Large 64.2 GB installation",
+     "Nintendo Switch 2 version does not expose the full Creations menu",
+     "Single-player only"
+    ],
+    "reviews": [
+     {
+      "source": "Original Fallout 4 Metacritic",
+      "score": "84+/100",
+      "quote": "The original release was critically acclaimed for world exploration, crafting and player freedom, though dialogue and technical issues were common criticisms.",
+      "url": "https://www.metacritic.com/game/fallout-4/"
+     },
+     {
+      "source": "Switch 2 technical reviews",
+      "score": "Mixed-positive",
+      "quote": "Reviewers praised portability and mode flexibility while noting image-quality compromises, especially at higher frame rates.",
+      "url": "https://www.youtube.com/watch?v=0ls0khdg63g"
+     },
+     {
+      "source": "Anniversary value",
+      "score": "Content-rich package",
+      "quote": "The edition includes the base game, all six expansions and more than 150 curated Creation Club items.",
+      "url": "https://www.youtube.com/watch?v=57Dj9vrW20g"
+     }
+    ],
+    "timeline": [
+     {
+      "date": "2015-11-10",
+      "title": "Original Fallout 4 release",
+      "body": "Fallout 4 launched on PlayStation 4, Xbox One and PC."
+     },
+     {
+      "date": "2016",
+      "title": "Expansion cycle",
+      "body": "Automatron, Far Harbor, Nuka-World and the Workshop expansions released."
+     },
+     {
+      "date": "2025-10-23",
+      "title": "Switch 2 teaser",
+      "body": "Bethesda announced Anniversary Edition for Nintendo Switch 2."
+     },
+     {
+      "date": "2026-02-24",
+      "title": "Switch 2 launch",
+      "body": "Fallout 4: Anniversary Edition released on Nintendo Switch 2."
+     }
+    ],
+    "patchNotes": [
+     {
+      "version": "Anniversary / Switch 2 launch",
+      "date": "2026-02-24",
+      "body": "Nintendo Switch 2 version launched with all official add-ons and curated Creation Club content."
+     },
+     {
+      "version": "Performance mode support",
+      "date": "2026",
+      "body": "Switch 2 version provides selectable 30, 40 and 60 FPS targets."
+     },
+     {
+      "version": "Post-launch fixes",
+      "date": "2026",
+      "body": "Bethesda support continued with technical and stability updates after the Switch 2 launch."
+     }
+    ],
+    "soundtrack": [
+     {
+      "title": "Fallout 4 Original Game Soundtrack",
+      "url": "https://fallout.bethesda.net/"
+     },
+     {
+      "title": "Fallout 4 Main Theme",
+      "url": "https://fallout.bethesda.net/"
+     }
+    ],
+    "seriesName": "Fallout",
+    "seriesEntries": [
+     "Fallout 3",
+     "Fallout: New Vegas",
+     "Fallout 4",
+     "Fallout 76"
+    ],
+    "studioName": "Bethesda Game Studios",
+    "studioUrl": "https://bethesdagamestudios.com/",
+    "studioLocation": "Rockville, Maryland, USA",
+    "studioAbout": "Bethesda Game Studios develops large open-world role-playing games including Fallout and The Elder Scrolls. Anniversary Edition packages Fallout 4 with all six official expansions and more than 150 curated Creation Club items.",
+    "setupNeeds": [
+     "Nintendo Switch 2 system required for the Nintendo Switch 2 version.",
+     "Internet connection is required for digital download, updates and online/service features where applicable.",
+     "Nintendo Account required for Nintendo eShop purchase/download.",
+     "Sufficient internal storage or compatible microSD Express storage required.",
+     "Nintendo Switch Online membership is required only for game-specific online multiplayer/features that explicitly use it."
+    ],
+    "sources": [
+     {
+      "name": "Bethesda",
+      "url": "https://fallout.bethesda.net/"
+     },
+     {
+      "name": "Bethesda Support",
+      "url": "https://help.bethesda.net/app/answers/detail/a_id/73860/"
+     },
+     {
+      "name": "Bethesda Teaser Trailer",
+      "url": "https://www.youtube.com/watch?v=57Dj9vrW20g"
+     },
+     {
+      "name": "SwitchUp Performance Review",
+      "url": "https://www.youtube.com/watch?v=0ls0khdg63g"
+     }
+    ],
+    "boxContentsList": "[Circular]",
+    "image": "/api/files/products/prd_0ca27f5eefe44dd5/coverImage-457f2aa15bd06e74.jpg",
+    "banner": "/api/files/products/prd_0ca27f5eefe44dd5/bannerImages-1-860d9c129fd0f72a.jpg",
+    "schemaId": "",
+    "badgeEn": "وفر 40%",
+    "badgeKu": "وفر 40%",
+    "featuresEn": [
+     "Complete Fallout 4 base game",
+     "All six official expansions",
+     "Automatron",
+     "Wasteland Workshop",
+     "Far Harbor",
+     "Contraptions Workshop",
+     "Vault-Tec Workshop",
+     "Nuka-World",
+     "More than 150 curated Creation Club items",
+     "Open-world exploration",
+     "Settlement building",
+     "Weapon and armor crafting",
+     "Faction-driven quest structure",
+     "First Nintendo console release of Fallout 4"
+    ],
+    "featuresKu": [
+     "Complete Fallout 4 base game",
+     "All six official expansions",
+     "Automatron",
+     "Wasteland Workshop",
+     "Far Harbor",
+     "Contraptions Workshop",
+     "Vault-Tec Workshop",
+     "Nuka-World",
+     "More than 150 curated Creation Club items",
+     "Open-world exploration",
+     "Settlement building",
+     "Weapon and armor crafting",
+     "Faction-driven quest structure",
+     "First Nintendo console release of Fallout 4"
+    ],
+    "sales": 0,
+    "images": [],
+    "modes": [],
+    "cartridgeImageTrim": {
+     "left": 0.19375,
+     "top": 0.00625,
+     "width": 0.6125,
+     "height": 0.9875,
+     "confidence": 1,
+     "mode": "luminance",
+     "sourceWidth": 320,
+     "sourceHeight": 320,
+     "version": 1
+    },
+    "coverImageTrim": {
+     "left": 0.19375,
+     "top": 0.00625,
+     "width": 0.6125,
+     "height": 0.9875,
+     "confidence": 1,
+     "mode": "luminance",
+     "sourceWidth": 320,
+     "sourceHeight": 320,
+     "version": 1
+    },
+    "updatedAt": "2026-08-28T21:59:50.140Z"
+   }
+  },
+  {
+   "id": "prd_ed0f0c2742ab46d8",
+   "slug": "fantasy-life-i-the-girl-who-steals-time-switch1",
+   "title": "FANTASY LIFE i: The Girl Who Steals Time",
+   "platform": "switch1",
+   "isHidden": false,
+   "hash": "3aa071931f7eef1ca19540058cdb7f42d2f5290a131d0f56469f5c6cc0dda334",
+   "images": [
+    {
+     "role": "front-box",
+     "field": "cartridgeImage",
+     "url": "https://banan.to/api/files/products/prd_ed0f0c2742ab46d8/cartridgeImage-456f5c1ea5593b0d.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 193249,
+     "width": 808,
+     "height": 1200,
+     "thumb": "review-workdir/thumbs/batch-007/fantasy-life-i-the-girl-who-steals-time-switch1__front-box-0.png"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://banan.to/api/files/products/prd_ed0f0c2742ab46d8/coverImage-2bcd0bbfc5b1706a.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 128002,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-007/fantasy-life-i-the-girl-who-steals-time-switch1__detail-cover-1.png"
+    },
+    {
+     "role": "3d-texture",
+     "field": "coverHiResImage",
+     "url": "https://banan.to/api/files/products/prd_ed0f0c2742ab46d8/3d-texture-bc809fedd3bff97c.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 79006,
+     "width": 640,
+     "height": 492,
+     "thumb": "review-workdir/thumbs/batch-007/fantasy-life-i-the-girl-who-steals-time-switch1__3d-texture-2.png"
+    },
+    {
+     "role": "listing",
+     "field": "image",
+     "url": "https://banan.to/api/files/products/prd_ed0f0c2742ab46d8/image-2bcd0bbfc5b1706a.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 128002,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-007/fantasy-life-i-the-girl-who-steals-time-switch1__listing-3.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[0]",
+     "url": "https://banan.to/api/files/products/prd_ed0f0c2742ab46d8/bannerImages-7a24a55f9d42976b.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 64588,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-007/fantasy-life-i-the-girl-who-steals-time-switch1__banner-4.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[1]",
+     "url": "https://banan.to/api/files/products/prd_ed0f0c2742ab46d8/bannerImages-f9d6949b356ff307.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 66795,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-007/fantasy-life-i-the-girl-who-steals-time-switch1__banner-5.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000078577/a052db27e61532be6e9af004c028e28950675f845f3e923c4946c229af242270",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 134851,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-007/fantasy-life-i-the-girl-who-steals-time-switch1__gallery-6.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[1]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000078577/760ba402b52841d1a378c021a136ce9bbd0007d11841853734690aab55e61913",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 92056,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-007/fantasy-life-i-the-girl-who-steals-time-switch1__gallery-7.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[2]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000078577/7ba9ec2d4376b9a0ebdd168160170ed0b4f7436a4ddf6c263daef9101208855e",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 94196,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-007/fantasy-life-i-the-girl-who-steals-time-switch1__gallery-8.png"
+    }
+   ],
+   "record": {
+    "id": "prd_ed0f0c2742ab46d8",
+    "title": "FANTASY LIFE i: The Girl Who Steals Time",
+    "titleEn": "FANTASY LIFE i: The Girl Who Steals Time",
+    "titleKu": "FANTASY LIFE i: The Girl Who Steals Time",
+    "slug": "fantasy-life-i-the-girl-who-steals-time-switch1",
+    "description": "FANTASY LIFE i: The Girl Who Steals Time is a social slow-life RPG from LEVEL5 built around 14 selectable Lives. Players can fight monsters, gather materials, cook, craft equipment, build and decorate, develop an island, and explore a large fantasy world.\n\nThe story follows an adventurer who reaches a mysterious island and moves between its present state and a past era a thousand years earlier while investigating the events that led to its downfall. Multiplayer supports up to four players online or through local wireless, while Family Co-op allows a second player to join on one system with two controllers.",
+    "descriptionEn": "FANTASY LIFE i: The Girl Who Steals Time is a social slow-life RPG from LEVEL5 built around 14 selectable Lives. Players can fight monsters, gather materials, cook, craft equipment, build and decorate, develop an island, and explore a large fantasy world.\n\nThe story follows an adventurer who reaches a mysterious island and moves between its present state and a past era a thousand years earlier while investigating the events that led to its downfall. Multiplayer supports up to four players online or through local wireless, while Family Co-op allows a second player to join on one system with two controllers.",
+    "descriptionKu": "FANTASY LIFE i: The Girl Who Steals Time is a social slow-life RPG from LEVEL5 built around 14 selectable Lives. Players can fight monsters, gather materials, cook, craft equipment, build and decorate, develop an island, and explore a large fantasy world.\n\nThe story follows an adventurer who reaches a mysterious island and moves between its present state and a past era a thousand years earlier while investigating the events that led to its downfall. Multiplayer supports up to four players online or through local wireless, while Family Co-op allows a second player to join on one system with two controllers.",
+    "cartridgeImage": "/api/files/products/prd_ed0f0c2742ab46d8/cartridgeImage-456f5c1ea5593b0d.webp",
+    "nintendoCardImage": "",
+    "coverHiResImage": "/api/files/products/prd_ed0f0c2742ab46d8/3d-texture-bc809fedd3bff97c.webp",
+    "coverImage": "/api/files/products/prd_ed0f0c2742ab46d8/coverImage-2bcd0bbfc5b1706a.webp",
+    "bannerImages": [
+     "/api/files/products/prd_ed0f0c2742ab46d8/bannerImages-7a24a55f9d42976b.webp",
+     "/api/files/products/prd_ed0f0c2742ab46d8/bannerImages-f9d6949b356ff307.webp"
+    ],
+    "gallery": [],
+    "youtubeTrailer": "https://www.youtube.com/watch?v=ZmbC_dS-FjY",
+    "releaseDate": "2025-05-21",
+    "ageRating": "PEGI 7",
+    "metacriticRating": 86,
+    "genres": [
+     "RPG",
+     "Simulation",
+     "Adventure"
+    ],
+    "platform": "switch1",
+    "size": 7.7,
+    "numberOfPlayers": "4",
+    "supportedLanguages": "Japanese, French, German, Italian, Spanish, Korean, Simplified Chinese, Traditional Chinese, American English",
+    "hardwareModel": "",
+    "colorEdition": "",
+    "storageCapacity": "",
+    "screenSpecs": "",
+    "batteryLife": "",
+    "boxContents": [],
+    "boxContentsText": "",
+    "warrantyCondition": "",
+    "connectivity": "",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "US",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "",
+    "redemptionSteps": [],
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 8000,
+    "cost": 1500,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": false,
+    "displayOrder": 0,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "Offline Account",
+      "description": "Account delivery option intended for offline-account use.",
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_account",
+      "name": "Online Account",
+      "description": "Account delivery option intended for online-account use where the game supports online features.",
+      "isInfiniteStock": true
+     }
+    ],
+    "types": [
+     {
+      "id": "standard_offline",
+      "name": "Standard",
+      "optionId": "offline_account",
+      "price": "8000",
+      "cost": 1500,
+      "description": "Supplier 普通版 mapped to Offline / Standard. Supplier cost: ¥7.78 after platform subsidy -> 1,500 IQD. Stock remains infinite in the store model.",
+      "isInfiniteStock": true
+     },
+     {
+      "id": "standard_online",
+      "name": "Standard",
+      "optionId": "online_account",
+      "price": 25000,
+      "cost": 14250,
+      "description": "Supplier 标准版 mapped to Online / Standard. Supplier cost: ¥65.60 after platform subsidy -> 14,250 IQD. Supplier marked this tier 即将售罄 (almost sold out), recorded as a sourcing note only; store inventory remains infinite by rule.",
+      "isInfiniteStock": true
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "active",
+    "kind": "account",
+    "trade_value_iqd": 30000,
+    "store_offer_bonus_iqd": 0,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "schema_version": 21,
+    "compatibility": [
+     "Nintendo Switch",
+     "Nintendo Switch 2 (backward compatible; separate Switch 2 Edition also exists)"
+    ],
+    "edition": "Standard",
+    "developer": "LEVEL5 Inc.",
+    "publisher": "LEVEL5",
+    "opencriticRating": 85,
+    "userScore": 8.4,
+    "officialUrl": "https://www.nintendo.com/us/store/products/fantasy-life-i-the-girl-who-steals-time-switch/",
+    "eshopUrl": "https://www.nintendo.com/us/store/products/fantasy-life-i-the-girl-who-steals-time-switch/",
+    "gameIsOffline": true,
+    "gameIsOnline": true,
+    "description_short": "A social slow-life RPG where you can switch freely among 14 Lives, gather and craft, fight monsters, reshape an island, explore a large continent and play with friends.",
+    "description_ar": "لعبة تقمص أدوار بأسلوب حياة هادئ من LEVEL5 تتيح التبديل بين 14 مهنة مختلفة، مع الاستكشاف والقتال والجمع والتصنيع وبناء الجزيرة واللعب الجماعي حتى أربعة لاعبين.",
+    "videos": [
+     {
+      "title": "FANTASY LIFE i: The Girl Who Steals Time — Official Trailer",
+      "url": "https://www.youtube.com/watch?v=ZmbC_dS-FjY"
+     }
+    ],
+    "nintendoEshopUrl": "https://www.nintendo.com/us/store/products/fantasy-life-i-the-girl-who-steals-time-switch/",
+    "nintendoOnlineRequired": false,
+    "nintendoCloudSaves": true,
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": true,
+    "nintendoPlayModes": "TV Mode, Tabletop Mode, Handheld Mode",
+    "nintendoNotes": "Nintendo lists the original Nintendo Switch version at 7.7 GB with one-to-two players on one system, one-to-four via local wireless and one-to-four online. Simplified Chinese is officially supported. Nintendo also lists a separate Switch 2 Edition/upgrade path. The supplier provided only two tiers, so this store product keeps Standard Offline/Online types and does not create DLC product variants.",
+    "switch2Exclusive": false,
+    "tagline": "Choose among 14 Lives, travel between past and present, rebuild a mysterious island and create your own rhythm of combat, gathering, crafting and exploration.",
+    "fitFor": [
+     "Players who enjoy life simulation mixed with action RPG progression, crafting and collecting.",
+     "Players who want freedom to change jobs and activities instead of following a single combat class.",
+     "Families and friends who value online/local-wireless multiplayer and two-player Family Co-op."
+    ],
+    "notFitFor": [
+     "Players who want a tightly linear action game with little crafting or resource gathering.",
+     "Players who dislike long-term collection, job progression and town/island customization systems.",
+     "Players seeking a purely competitive multiplayer game rather than cooperative/social play."
+    ],
+    "playTimeMain": 34,
+    "playTimeFull": 139,
+    "gameplayPillars": [
+     {
+      "title": "Fourteen Lives",
+      "description": "Combat, Gathering and Crafting Lives each offer their own progression and activities, and the player can switch between them freely instead of being locked to one class."
+     },
+     {
+      "title": "Restore and Shape the Island",
+      "description": "Gather materials, build structures, alter terrain, draw roads and rivers, expand your home and decorate interiors as the island develops."
+     },
+     {
+      "title": "Open-World Adventure and Multiplayer",
+      "description": "Explore Ginormosia and other regions using climbing, swimming and mounts, then invite friends for exploration, dungeons and cooperative activities."
+     }
+    ],
+    "worldSummary": "The adventure begins on Mysteria Island in the seas of Reveria. A dragon fossil guides the player and archaeologist Edward’s expedition to an uncharted island marked by a vast abyss, a Bone Dragon and a message from a mysterious girl. The player can travel between the island’s ruined present and its flourishing state 1,000 years in the past, gathering materials and clues that help restore the present-day settlement.",
+    "storyChapters": [
+     {
+      "title": "A Dragon Guides the Expedition",
+      "body": "The player sails with archaeologist Edward’s team and follows light from a fossilized dragon toward a deserted, uncharted island."
+     },
+     {
+      "title": "One Thousand Years in the Past",
+      "body": "A mysterious event opens a way to the island as it existed 1,000 years earlier, letting the player investigate what caused its downfall."
+     },
+     {
+      "title": "Restore the Present",
+      "body": "Materials, relationships and discoveries gathered across the adventure feed into rebuilding the present-day island and uncovering its central mystery."
+     }
+    ],
+    "galleryImages": [
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000078577/a052db27e61532be6e9af004c028e28950675f845f3e923c4946c229af242270",
+      "alt": "Official Nintendo gameplay screenshot from FANTASY LIFE i."
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000078577/760ba402b52841d1a378c021a136ce9bbd0007d11841853734690aab55e61913",
+      "alt": "Official Nintendo gameplay screenshot showing exploration/life activities."
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000078577/7ba9ec2d4376b9a0ebdd168160170ed0b4f7436a4ddf6c263daef9101208855e",
+      "alt": "Additional official Nintendo media image."
+     }
+    ],
+    "features": [
+     "Switch freely among 14 Lives spanning combat, gathering and crafting professions.",
+     "The story alternates between a deserted present-day island and its thriving past roughly 1,000 years earlier.",
+     "Island restoration includes placing buildings and objects, changing terrain, and drawing roads and rivers.",
+     "Ginormosia provides a large open-world area with swimming, climbing and mounts for broad exploration.",
+     "Multiplayer supports up to four players for exploration and activities, with local Family Co-op also supported for two players.",
+     "Version 2.2.0 added crossplay support with the mobile release, celebration costume rewards, font changes and multiple bug fixes."
+    ],
+    "perfHdr": false,
+    "perfNotes": "No sufficiently verified game-specific Nintendo Switch resolution/FPS table was found in the official sources used for this extraction. Exact performance values are therefore left blank. Separate Switch 2 Edition improvements are not applied to this Switch 1 product.",
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "informationStatus": "verified / secondary resolution measurement",
+      "handheld": {
+       "supported": true,
+       "resolution": "1080p output",
+       "resolutionDynamic": true,
+       "renderingResolution": "dynamic / reconstructed",
+       "outputResolution": "1080p",
+       "fps": "60 target",
+       "fpsMin": "minor dips below 60 in larger areas",
+       "fpsMax": "60",
+       "refreshRate": "60 Hz",
+       "hdr": false,
+       "mode": "Nintendo Switch 2 Edition",
+       "notes": "Switch 2 Edition improves resolution, framerate and load times; handheld output is reported at 1080p with a 60 FPS target."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1440p output",
+       "resolutionDynamic": true,
+       "renderingResolution": "dynamic / reconstructed",
+       "outputResolution": "1440p",
+       "fps": "60 target",
+       "fpsMin": "minor dips below 60 in larger areas",
+       "fpsMax": "60",
+       "refreshRate": "60 Hz",
+       "hdr": false,
+       "mode": "Nintendo Switch 2 Edition",
+       "notes": "Docked output is reported around 1440p with a 60 FPS target. Nintendo/LEVEL5 officially confirm improved resolution and framerate but do not publish numeric resolution targets."
+      },
+      "upscaling": "Reconstruction/upscaling used; exact method not officially specified",
+      "rayTracing": false,
+      "sourceName": "LEVEL5/Nintendo official + RPG Site + secondary resolution report",
+      "sourceUrl": "https://www.fantasylife.jp/fli/en/",
+      "verifiedAt": "2026-08-25",
+      "verificationStatus": "cross-checked",
+      "performanceNotes": "Official sources confirm higher resolution, higher framerate and faster loads. Reviews confirm a 60 FPS target; numeric 1080p handheld / 1440p docked output is secondary technical reporting.",
+      "hardwareId": "prd_acf4c89908764c62"
+     }
+    ],
+    "downloadSizeGb": 7.7,
+    "arabicSupport": false,
+    "mpLocalPlayers": true,
+    "mpOnlinePlayers": true,
+    "mpCoop": true,
+    "mpCompetitive": false,
+    "mpSplitScreen": false,
+    "mpLocalWireless": true,
+    "guides": [
+     {
+      "title": "Nintendo — FANTASY LIFE i",
+      "summary": "Official Nintendo product page with story, Lives, multiplayer, language and storage information.",
+      "url": "https://www.nintendo.com/us/store/products/fantasy-life-i-the-girl-who-steals-time-switch/"
+     },
+     {
+      "title": "LEVEL5 — Official FANTASY LIFE i Site",
+      "summary": "Official publisher/developer site with trailers, platform details, updates and Switch 2 information.",
+      "url": "https://www.fantasylife.jp/fli/en/"
+     },
+     {
+      "title": "Nintendo Life — FANTASY LIFE i",
+      "summary": "Nintendo-focused review and guide hub for the Switch release.",
+      "url": "https://www.nintendolife.com/games/switch-eshop/fantasy_life_i_the_girl_who_steals_time"
+     }
+    ],
+    "completionMain": 34,
+    "completionExtras": 60,
+    "completionAll": 139,
+    "faq": [
+     {
+      "q": "How many Lives are available?",
+      "a": "There are 14 Lives spanning combat, gathering and crafting, and the player can switch between them during the adventure."
+     },
+     {
+      "q": "Does FANTASY LIFE i support multiplayer?",
+      "a": "Yes. Nintendo lists one-to-two players on one system, one-to-four local wireless and one-to-four online, plus a two-player Family Co-op feature."
+     },
+     {
+      "q": "Is there a Nintendo Switch 2 Edition?",
+      "a": "Yes. LEVEL5 released a separate Nintendo Switch 2 Edition and an upgrade path with higher resolution, higher frame rate and faster loading."
+     }
+    ],
+    "verdictScore": 8.6,
+    "verdictSummary": "Score note: 8.6/10 is a direct normalization of the current 86/100 Metacritic aggregate for the Nintendo listing; it is not a separately invented store rating.\n\nFANTASY LIFE i succeeds by letting the player decide how much time to spend fighting, crafting, gathering, decorating or exploring. The time-travel island structure gives those relaxed systems a clear story purpose, while extensive multiplayer makes the world easy to share.",
+    "verdictPros": [
+     "Fourteen Lives create unusually broad activity and progression variety.",
+     "Island restoration and open-world exploration reinforce the slow-life fantasy theme.",
+     "Strong cooperative options including online, local wireless and Family Co-op."
+    ],
+    "verdictCons": [
+     "Players who dislike gathering/crafting loops may find progression repetitive.",
+     "The large number of systems can feel busy at the beginning.",
+     "Original Switch presentation is less advanced than the dedicated Switch 2 Edition."
+    ],
+    "reviews": [
+     {
+      "source": "Metacritic — Nintendo listing",
+      "score": "86/100",
+      "quote": "Current critic aggregate for the relevant Nintendo listing: 86/100. This is an external aggregate, not a BANANTO-created review score.",
+      "url": "https://www.dekudeals.com/items/fantasy-life-i-the-girl-who-steals-time"
+     },
+     {
+      "url": "https://www.dekudeals.com/items/fantasy-life-i-the-girl-who-steals-time",
+      "source": "OpenCritic",
+      "score": "85/100",
+      "quote": "OpenCritic aggregate recorded at 85/100. Where OpenCritic groups platforms, this value represents the published aggregate rather than a fabricated platform-specific score."
+     },
+     {
+      "source": "Metacritic User Score",
+      "score": "8.4/10",
+      "quote": "Current Metacritic user score shown with the listing: 8.4/10. User scores can change over time as additional ratings are submitted.",
+      "url": "https://www.dekudeals.com/items/fantasy-life-i-the-girl-who-steals-time"
+     }
+    ],
+    "timeline": [
+     null,
+     {
+      "date": "2025-06-05",
+      "title": "Nintendo Switch 2 Edition",
+      "body": "LEVEL5 launched the Nintendo Switch 2 Edition with improved resolution, frame rate and loading."
+     },
+     {
+      "date": "2025-12",
+      "title": "The Sinister Broker Bazario’s Schemes",
+      "body": "LEVEL5 released major free additional content expanding the game after launch."
+     }
+    ],
+    "patchNotes": [
+     {
+      "version": "Ver. 2.2.0",
+      "date": "2026-08-20",
+      "body": "LEVEL5 added crossplay support with the mobile version, distributed celebration costume packs, changed fonts for selected languages and fixed multiple gameplay issues. This version is listed for Nintendo Switch and Nintendo Switch 2 as well as the other supported platforms."
+     }
+    ],
+    "setupNeeds": [
+     "Nintendo Switch or compatible Nintendo Switch 2 hardware.",
+     "Approximately 7.7 GB of free storage for the Nintendo Switch digital version.",
+     "Nintendo Switch Online is required for online multiplayer; local and single-system options are also available."
+    ],
+    "sources": [
+     {
+      "name": "Nintendo — FANTASY LIFE i",
+      "url": "https://www.nintendo.com/us/store/products/fantasy-life-i-the-girl-who-steals-time-switch/"
+     },
+     {
+      "name": "LEVEL5 — FANTASY LIFE i",
+      "url": "https://www.fantasylife.jp/fli/en/"
+     },
+     {
+      "name": "Play-Asia — physical Switch cover reference",
+      "url": "https://www.play-asia.com/en/fantasy-life-i-the-girl-who-steals-time-multi-language/13/70g01l"
+     },
+     {
+      "name": "Deku Deals — scores, player counts and completion data",
+      "url": "https://www.dekudeals.com/items/fantasy-life-i-the-girl-who-steals-time"
+     },
+     {
+      "name": "LEVEL5 — Version 2.2.0 update notes",
+      "url": "https://www.fantasylife.jp/fli/en/patchnote/ver_2_2_0/"
+     },
+     {
+      "name": "MobyGames — music/credits reference",
+      "url": "https://www.mobygames.com/game/242403/fantasy-life-i-the-girl-who-steals-time/credits/windows/"
+     }
+    ],
+    "soundtrack": [
+     {
+      "title": "Of Helms and White Flowers",
+      "url": "https://www.mobygames.com/game/242403/fantasy-life-i-the-girl-who-steals-time/credits/windows/"
+     },
+     {
+      "title": "Circle of Love",
+      "url": "https://www.mobygames.com/game/242403/fantasy-life-i-the-girl-who-steals-time/credits/windows/"
+     },
+     {
+      "title": "The Hunt Goes On",
+      "url": "https://www.mobygames.com/game/242403/fantasy-life-i-the-girl-who-steals-time/credits/windows/"
+     }
+    ],
+    "seriesName": "FANTASY LIFE",
+    "seriesEntries": [
+     "FANTASY LIFE",
+     "FANTASY LIFE Online",
+     "FANTASY LIFE i: The Girl Who Steals Time"
+    ],
+    "studioName": "LEVEL5 Inc.",
+    "studioUrl": "https://www.level5.co.jp/",
+    "studioLocation": "Fukuoka, Japan",
+    "studioAbout": "LEVEL5 develops and publishes FANTASY LIFE i, combining role-playing progression with social simulation, crafting, exploration and town-building systems.",
+    "boxContentsList": "[Circular]",
+    "image": "/api/files/products/prd_ed0f0c2742ab46d8/image-2bcd0bbfc5b1706a.webp",
+    "banner": "/api/files/products/prd_ed0f0c2742ab46d8/banner-7a24a55f9d42976b.webp",
+    "schemaId": "",
+    "badgeEn": "وفر 40%",
+    "badgeKu": "وفر 40%",
+    "featuresEn": [
+     "Switch freely among 14 Lives spanning combat, gathering and crafting professions.",
+     "The story alternates between a deserted present-day island and its thriving past roughly 1,000 years earlier.",
+     "Island restoration includes placing buildings and objects, changing terrain, and drawing roads and rivers.",
+     "Ginormosia provides a large open-world area with swimming, climbing and mounts for broad exploration.",
+     "Multiplayer supports up to four players for exploration and activities, with local Family Co-op also supported for two players.",
+     "Version 2.2.0 added crossplay support with the mobile release, celebration costume rewards, font changes and multiple bug fixes."
+    ],
+    "featuresKu": [
+     "Switch freely among 14 Lives spanning combat, gathering and crafting professions.",
+     "The story alternates between a deserted present-day island and its thriving past roughly 1,000 years earlier.",
+     "Island restoration includes placing buildings and objects, changing terrain, and drawing roads and rivers.",
+     "Ginormosia provides a large open-world area with swimming, climbing and mounts for broad exploration.",
+     "Multiplayer supports up to four players for exploration and activities, with local Family Co-op also supported for two players.",
+     "Version 2.2.0 added crossplay support with the mobile release, celebration costume rewards, font changes and multiple bug fixes."
+    ],
+    "sales": 0,
+    "images": [],
+    "modes": [],
+    "cartridgeImageTrim": {
+     "left": 0.07906976744186046,
+     "top": 0.040625,
+     "width": 0.8418604651162791,
+     "height": 0.915625,
+     "confidence": 1,
+     "mode": "luminance",
+     "sourceWidth": 215,
+     "sourceHeight": 320,
+     "version": 1
+    }
+   }
+  },
+  {
+   "id": "prd_c8e3dc9b206043e3",
+   "slug": "fatal-frame-ii-crimson-butterfly-remake",
+   "title": "FATAL FRAME II: Crimson Butterfly REMAKE",
+   "platform": "switch2",
+   "isHidden": false,
+   "hash": "7f0385d792638b225081642e411b890eca8b9c821ff6f62aca359d8d1794e412",
+   "images": [
+    {
+     "role": "front-box",
+     "field": "cartridgeImage",
+     "url": "https://banan.to/api/files/products/prd_c8e3dc9b206043e3/cartridgeImage-97aff1f2b2768dfe.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "front-box",
+     "field": "box_front_url",
+     "url": "https://i5.walmartimages.com/seo/FATAL-nbsp-FRAME-nbsp-II-nbsp-Crimson-Butterfly-REMAKE-Nintendo-Switch-2-Game_8579ec98-53f2-4342-9953-76f830097735.1993ce518fb467b8f599d2fae21d172a.jpeg?odnBg=FFFFFF&odnHeight=1200&odnWidth=1200",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 146941,
+     "width": 1200,
+     "height": 1200,
+     "thumb": "review-workdir/thumbs/batch-007/fatal-frame-ii-crimson-butterfly-remake__front-box-1.png"
+    },
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://banan.to/api/files/products/prd_c8e3dc9b206043e3/nintendoCardImage-3787dce27b0a922d.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://banan.to/api/files/products/prd_c8e3dc9b206043e3/coverImage-97aff1f2b2768dfe.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "listing",
+     "field": "image",
+     "url": "https://banan.to/api/files/products/prd_c8e3dc9b206043e3/coverImage-97aff1f2b2768dfe.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[0]",
+     "url": "https://banan.to/api/files/products/prd_c8e3dc9b206043e3/bannerImages-1-b0521c7f19590a32.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 1157556,
+     "width": 3840,
+     "height": 2160,
+     "thumb": "review-workdir/thumbs/batch-007/fatal-frame-ii-crimson-butterfly-remake__banner-5.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://assets.nintendo.com/image/upload/q_auto%3Abest/f_auto/dpr_2.0/store/software/switch2/70010000105942/0c72a534282bbae5922a7abb9b0a9817b6b25ed9c5d9f5a3f7a9d688a657aa3c",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 318518,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-007/fatal-frame-ii-crimson-butterfly-remake__gallery-6.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[1]",
+     "url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3920610/a828a70ae0df14b3b458df96d6ca1cccf5c2e9fc/ss_a828a70ae0df14b3b458df96d6ca1cccf5c2e9fc.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 1157556,
+     "width": 3840,
+     "height": 2160,
+     "thumb": "review-workdir/thumbs/batch-007/fatal-frame-ii-crimson-butterfly-remake__gallery-7.png"
+    }
+   ],
+   "record": {
+    "id": "prd_c8e3dc9b206043e3",
+    "title": "FATAL FRAME II: Crimson Butterfly REMAKE",
+    "titleEn": "FATAL FRAME II: Crimson Butterfly REMAKE",
+    "titleKu": "FATAL FRAME II: Crimson Butterfly REMAKE",
+    "slug": "fatal-frame-ii-crimson-butterfly-remake",
+    "description": "A full remake of the second FATAL FRAME / PROJECT ZERO game. Explore Minakami Village, protect Mayu, uncover the forbidden ritual, and repel spirits using the Camera Obscura. The remake includes rebuilt graphics and sound, revised controls, new Camera Obscura functions, new areas and side stories.",
+    "descriptionEn": "A full remake of the second FATAL FRAME / PROJECT ZERO game. Explore Minakami Village, protect Mayu, uncover the forbidden ritual, and repel spirits using the Camera Obscura. The remake includes rebuilt graphics and sound, revised controls, new Camera Obscura functions, new areas and side stories.",
+    "descriptionKu": "A full remake of the second FATAL FRAME / PROJECT ZERO game. Explore Minakami Village, protect Mayu, uncover the forbidden ritual, and repel spirits using the Camera Obscura. The remake includes rebuilt graphics and sound, revised controls, new Camera Obscura functions, new areas and side stories.",
+    "cartridgeImage": "/api/files/products/prd_c8e3dc9b206043e3/cartridgeImage-97aff1f2b2768dfe.avif",
+    "nintendoCardImage": "/api/files/products/prd_c8e3dc9b206043e3/nintendoCardImage-3787dce27b0a922d.avif",
+    "coverHiResImage": "",
+    "coverImage": "/api/files/products/prd_c8e3dc9b206043e3/coverImage-97aff1f2b2768dfe.avif",
+    "bannerImages": [
+     "/api/files/products/prd_c8e3dc9b206043e3/bannerImages-1-b0521c7f19590a32.jpg"
+    ],
+    "gallery": [],
+    "youtubeTrailer": "https://www.youtube.com/watch?v=CC71I1r3cE4",
+    "releaseDate": "2026-03-12",
+    "ageRating": "PEGI 16",
+    "metacriticRating": 78,
+    "genres": [
+     "Horror",
+     "Adventure",
+     "Action"
+    ],
+    "platform": "switch2",
+    "size": 27.3,
+    "numberOfPlayers": "1",
+    "supportedLanguages": "Japanese, English, Spanish, French, German, Italian, Korean, Arabic",
+    "hardwareModel": "",
+    "colorEdition": "",
+    "storageCapacity": "",
+    "screenSpecs": "",
+    "batteryLife": "",
+    "boxContents": [],
+    "boxContentsText": "",
+    "warrantyCondition": "",
+    "connectivity": "",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "Global",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "",
+    "redemptionSteps": [],
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 12000,
+    "cost": 1500,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": false,
+    "displayOrder": 0,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "حساب أوفلاين",
+      "description": "حساب مخصص للعب دون اتصال بعد إكمال خطوات التفعيل.",
+      "isInfiniteStock": true,
+      "customerDescription": "حساب مشترك"
+     },
+     {
+      "id": "online_account",
+      "name": "حساب أونلاين",
+      "description": "حساب يدعم تشغيل اللعبة مع الاتصال والميزات المتاحة أونلاين.",
+      "isInfiniteStock": true,
+      "customerDescription": "حساب خاص بك"
+     }
+    ],
+    "types": [
+     {
+      "id": "standard_offline",
+      "name": "حساب أوفلاين — عادي",
+      "optionId": "offline_account",
+      "price": "",
+      "cost": 1500,
+      "description": "تشمل الإصدار العادي من اللعبة.",
+      "isInfiniteStock": true,
+      "customerDescription": "اللعبة الأساسية",
+      "internalNote": "Standard game, Offline Account. Supplier Regular price: ¥7.78; purchase cost converted at 1 CNY = 220 IQD and rounded down to nearest 250 IQD."
+     },
+     {
+      "id": "standard_online",
+      "name": "حساب أونلاين — عادي",
+      "optionId": "online_account",
+      "price": "38000",
+      "cost": 20750,
+      "description": "تشمل الإصدار العادي من اللعبة.",
+      "isInfiniteStock": true,
+      "customerDescription": "اللعبة الأساسية",
+      "internalNote": "Standard game, Online Account. Supplier Standard price: ¥95.00; purchase cost converted at 1 CNY = 220 IQD and rounded down to nearest 250 IQD."
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "active",
+    "kind": "account",
+    "trade_value_iqd": 40000,
+    "store_offer_bonus_iqd": 0,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "schema_version": 22,
+    "titleAr": "فاتال فريم 2: كريمسون باترفلاي ريميك",
+    "compatibility": [
+     "Nintendo Switch 2"
+    ],
+    "edition": "Standard",
+    "developer": "Team NINJA",
+    "publisher": "KOEI TECMO",
+    "opencriticRating": 76,
+    "userScore": 8,
+    "officialUrl": "https://www.koeitecmoeurope.com/zero/crimson-re/uk/",
+    "eshopUrl": "https://ec.nintendo.com/AU/en/titles/70010000105943",
+    "gameIsOffline": true,
+    "gameIsOnline": true,
+    "gameLanguageLocked": false,
+    "description_short": "A full remake of the acclaimed Japanese horror adventure following twin sisters Mio and Mayu Amakura in the haunted Minakami Village.",
+    "description_ar": "إعادة صنع كاملة للجزء الثاني من سلسلة Fatal Frame / Project Zero. تتبع القصة الشقيقتين التوأم ميو ومايو داخل قرية ميناکامي المسكونة، مع الاعتماد على Camera Obscura لمواجهة الأرواح وكشف أسرار الطقس المحرّم. النسخة الجديدة تعيد بناء الرسوم والصوت والتحكم وتضيف مناطق وقصصًا جانبية وميكانيكيات جديدة.",
+    "box_front_url": "https://i5.walmartimages.com/seo/FATAL-nbsp-FRAME-nbsp-II-nbsp-Crimson-Butterfly-REMAKE-Nintendo-Switch-2-Game_8579ec98-53f2-4342-9953-76f830097735.1993ce518fb467b8f599d2fae21d172a.jpeg?odnBg=FFFFFF&odnHeight=1200&odnWidth=1200",
+    "videos": [
+     {
+      "title": "Launch Trailer",
+      "url": "https://www.youtube.com/watch?v=CC71I1r3cE4"
+     },
+     {
+      "title": "Official Launch Trailer (US)",
+      "url": "https://www.youtube.com/watch?v=nqgbZ_2puYw"
+     },
+     {
+      "title": "Japanese Launch Trailer",
+      "url": "https://www.youtube.com/watch?v=FA7dCq8IdOU"
+     }
+    ],
+    "nintendoEshopUrl": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-2-games/FATAL-FRAME-II-Crimson-Butterfly-REMAKE--3014309.html",
+    "nintendoOnlineRequired": false,
+    "nintendoCloudSaves": true,
+    "nintendoGameKeyCard": true,
+    "nintendoPhysicalNeedsDownload": true,
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": true,
+    "nintendoPlayModes": "TV Mode, Tabletop Mode, Handheld Mode",
+    "switch2Enhanced": false,
+    "switch2Exclusive": false,
+    "switch2Features": [
+     "Native Nintendo Switch 2 version",
+     "Up to 1920x1080 output",
+     "30 FPS target",
+     "TV, Tabletop and Handheld modes",
+     "Gyroscope aiming support for Camera Obscura in handheld play",
+     "3D / surround-sound presentation",
+     "Save Data Cloud",
+     "Arabic text support added by update 1.04.00"
+    ],
+    "tagline": "Together, always.",
+    "fitFor": [
+     "Players who enjoy Japanese psychological horror",
+     "Fans of exploration-heavy survival horror",
+     "Players interested in atmospheric ghost stories and photography mechanics",
+     "Returning Fatal Frame / Project Zero fans"
+    ],
+    "notFitFor": [
+     "Players uncomfortable with intense horror themes",
+     "Players seeking fast action or multiplayer",
+     "Players who require a 60 FPS experience on Switch 2"
+    ],
+    "playTimeMain": 12.5,
+    "playTimeFull": 39.5,
+    "editionsList": [
+     {
+      "name": "Standard Edition",
+      "contents": [
+       {
+        "label": "Full game"
+       }
+      ]
+     },
+     {
+      "name": "Digital Deluxe Edition",
+      "contents": [
+       {
+        "label": "Full game"
+       },
+       {
+        "label": "Digital Art Book"
+       },
+       {
+        "label": "Digital Soundtrack"
+       },
+       {
+        "label": "Lace Gloves (White/Black)"
+       },
+       {
+        "label": "Japanese Gothic Dress costumes"
+       },
+       {
+        "label": "Deluxe Charm"
+       }
+      ]
+     },
+     {
+      "name": "Digital Deluxe Upgrade",
+      "contents": [
+       {
+        "label": "Digital Art Book"
+       },
+       {
+        "label": "Digital Soundtrack"
+       },
+       {
+        "label": "Digital Deluxe cosmetic bonuses"
+       }
+      ]
+     }
+    ],
+    "gameplayPillars": [
+     {
+      "title": "Camera Obscura Combat",
+      "description": "Photograph hostile spirits at the right moment, manage positioning and use Focus, Zoom and filters to maximize damage and control encounters."
+     },
+     {
+      "title": "Haunted Exploration",
+      "description": "Search Minakami Village through dark homes, shrines, passages and new areas while following traces of the village's forbidden ritual."
+     },
+     {
+      "title": "Twin-Sister Bond",
+      "description": "The remake adds a Hold Mayu's Hand interaction and expands moments centered on Mio and Mayu's relationship."
+     },
+     {
+      "title": "Remade Presentation",
+      "description": "Characters, environments, lighting, sound and controls are rebuilt for modern hardware while preserving the original story structure."
+     }
+    ],
+    "worldSummary": "Minakami Village exists in an endless night shaped by a catastrophic forbidden ritual. Mio searches for Mayu through abandoned homes, shrines and dark paths while spirits replay fragments of the village's tragic past.",
+    "storyChapters": [
+     {
+      "title": "Lost in Minakami Village",
+      "body": "Twin sisters Mio and Mayu Amakura become trapped in an abandoned village that appears to exist in an endless night."
+     },
+     {
+      "title": "The Crimson Sacrifice",
+      "body": "Clues reveal a forbidden ritual and the tragedy that left the village filled with vengeful spirits."
+     },
+     {
+      "title": "Together, Always",
+      "body": "Mio's search for Mayu and the sisters' bond become inseparable from the mystery of the village and its past."
+     }
+    ],
+    "galleryImages": [
+     {
+      "url": "https://assets.nintendo.com/image/upload/q_auto%3Abest/f_auto/dpr_2.0/store/software/switch2/70010000105942/0c72a534282bbae5922a7abb9b0a9817b6b25ed9c5d9f5a3f7a9d688a657aa3c",
+      "alt": "Distinct product/game media image 1; separate from the primary cover and square-card roles."
+     },
+     {
+      "url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3920610/a828a70ae0df14b3b458df96d6ca1cccf5c2e9fc/ss_a828a70ae0df14b3b458df96d6ca1cccf5c2e9fc.jpg",
+      "alt": "Distinct product/game media image 2; separate from the primary cover and square-card roles."
+     }
+    ],
+    "features": [
+     "Complete remake of the 2003 horror classic",
+     "Rebuilt graphics, audio, controls and gameplay systems",
+     "Camera Obscura combat with Focus, Zoom and filter switching",
+     "New Hold Mayu's Hand mechanic",
+     "New side stories and areas",
+     "3D/spatial audio presentation",
+     "Demo with save-data transfer",
+     "Digital Deluxe edition with art book, soundtrack, costumes and charm",
+     "Arabic text support added in version 1.04.00"
+    ],
+    "perfResolutionDocked": "1920x1080 (upscaled output; may temporarily decrease)",
+    "perfResolutionHandheld": "1920x1080 output",
+    "perfFps": "30",
+    "perfHdr": false,
+    "perfNotes": "Official platform specifications list Nintendo Switch 2 at up to 1080p and 30 FPS in TV, tabletop and handheld modes. Resolution may temporarily decrease. HDR is not supported on Switch 2. Handheld mode supports Camera Obscura gyroscope controls.",
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "hardwareId": "prd_acf4c89908764c62",
+      "informationStatus": "verified",
+      "handheld": {
+       "supported": true,
+       "resolution": "1920x1080 output",
+       "resolutionDynamic": true,
+       "outputResolution": "1920x1080",
+       "fps": "30",
+       "fpsMin": "30",
+       "fpsMax": "30",
+       "hdr": false,
+       "mode": "Quality / Standard",
+       "notes": "Official maximum output 1080p; resolution may temporarily decrease. Gyro aiming for Camera Obscura is supported in handheld mode."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1920x1080 output",
+       "resolutionDynamic": true,
+       "outputResolution": "1920x1080",
+       "fps": "30",
+       "fpsMin": "30",
+       "fpsMax": "30",
+       "hdr": false,
+       "mode": "Standard",
+       "notes": "Official maximum 1080p/30 FPS; resolution can temporarily decrease."
+      },
+      "sourceName": "KOEI TECMO Official Specs",
+      "sourceUrl": "https://www.koeitecmoamerica.com/fatalframe/crimson-re/us/specs/",
+      "verificationStatus": "verified"
+     }
+    ],
+    "downloadSizeGb": 27.3,
+    "requiredSpaceGb": 27.3,
+    "microSdRecommended": false,
+    "languagesAudio": [
+     "Japanese"
+    ],
+    "languagesText": [
+     "Japanese",
+     "English",
+     "Spanish",
+     "French",
+     "German",
+     "Italian",
+     "Korean",
+     "Arabic"
+    ],
+    "arabicSupport": true,
+    "mpLocalPlayers": false,
+    "mpOnlinePlayers": false,
+    "mpCoop": false,
+    "mpCompetitive": false,
+    "mpSplitScreen": false,
+    "mpLocalWireless": false,
+    "dlc": [
+     {
+      "name": "Digital Deluxe Upgrade",
+      "description": "Adds the Digital Art Book, Digital Soundtrack, Lace Gloves, Japanese Gothic costumes and Deluxe Charm."
+     },
+     {
+      "name": "SILENT HILL f Costume Set",
+      "description": "Collaboration costume content featuring the Navy Sailor School Uniform and Fox Mask."
+     }
+    ],
+    "guides": [
+     {
+      "title": "Official Game Site",
+      "summary": "Official feature, edition and platform information.",
+      "url": "https://www.koeitecmoeurope.com/zero/crimson-re/uk/"
+     },
+     {
+      "title": "Official Updates",
+      "summary": "Patch notes and language-support changes.",
+      "url": "https://www.koeitecmoeurope.com/zero/crimson-re/uk/update/"
+     },
+     {
+      "title": "Nintendo Store Page",
+      "summary": "Nintendo Switch 2 specifications, modes, size and languages.",
+      "url": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-2-games/FATAL-FRAME-II-Crimson-Butterfly-REMAKE--3014309.html"
+     }
+    ],
+    "completionMain": 12.5,
+    "completionExtras": 16,
+    "completionAll": 39.5,
+    "faq": [
+     {
+      "q": "Is this a remaster or a full remake?",
+      "a": "It is a full remake of FATAL FRAME / PROJECT ZERO II: Crimson Butterfly, with rebuilt visuals, audio, controls and gameplay systems."
+     },
+     {
+      "q": "Does the Switch 2 version support Arabic?",
+      "a": "Yes. Arabic language support was added to Nintendo Switch 2 with version 1.04.00 on June 22, 2026."
+     },
+     {
+      "q": "How does it run on Nintendo Switch 2?",
+      "a": "The official platform specification lists up to 1080p output at 30 FPS; resolution can temporarily decrease."
+     },
+     {
+      "q": "Is it single-player?",
+      "a": "Yes. It is a single-player horror adventure."
+     },
+     {
+      "q": "What is included in Digital Deluxe?",
+      "a": "The full game, Digital Art Book, Digital Soundtrack and several cosmetic/accessory bonuses."
+     },
+     {
+      "q": "Does it use a Game-Key Card physically?",
+      "a": "Physical-format details vary by region. The Nintendo Switch 2 product should be checked against the exact regional physical release before purchase."
+     }
+    ],
+    "verdictScore": 8.5,
+    "verdictSummary": "A strong modern reconstruction of one of the genre's most distinctive horror games. Its atmosphere, sound and Camera Obscura gameplay remain the main strengths, while the 30 FPS cap is the main technical limitation on Switch 2.",
+    "verdictPros": [
+     "Exceptional atmosphere and sound design",
+     "Faithful yet substantially rebuilt remake",
+     "Distinctive Camera Obscura combat",
+     "Strong narrative focus on Mio and Mayu",
+     "Official post-launch Arabic language support"
+    ],
+    "verdictCons": [
+     "Switch 2 version is capped at 30 FPS",
+     "No HDR support on Switch 2 according to official platform comparison",
+     "Single-player only"
+    ],
+    "reviews": [
+     {
+      "source": "Metacritic",
+      "score": "78/100",
+      "quote": "Generally favorable critical reception with strong praise for atmosphere, visuals and horror presentation.",
+      "url": "https://www.metacritic.com/game/fatal-frame-ii-crimson-butterfly-remake/"
+     },
+     {
+      "source": "OpenCritic",
+      "score": "76/100",
+      "quote": "Critics broadly praised the remake's atmosphere and presentation while noting some legacy clunkiness.",
+      "url": "https://opencritic.com/"
+     },
+     {
+      "source": "Deku Deals / user data",
+      "score": "8.0/10",
+      "quote": "Player-facing aggregate data lists an 8.0 user score alongside critic aggregates.",
+      "url": "https://www.dekudeals.com/items/fatal-frame-ii-crimson-butterfly-remake"
+     }
+    ],
+    "timeline": [
+     {
+      "date": "2003-11-27",
+      "title": "Original Japanese release",
+      "body": "Fatal Frame II: Crimson Butterfly originally launched on PlayStation 2 in Japan."
+     },
+     {
+      "date": "2025",
+      "title": "Remake announced",
+      "body": "KOEI TECMO revealed a full modern remake for current platforms including Nintendo Switch 2."
+     },
+     {
+      "date": "2026-03-12",
+      "title": "Worldwide remake launch",
+      "body": "The remake released on Nintendo Switch 2, PS5, Xbox Series X|S and PC."
+     },
+     {
+      "date": "2026-06-22",
+      "title": "Version 1.04.00",
+      "body": "Nintendo Switch 2 update added Arabic language support and stability/progression fixes."
+     }
+    ],
+    "patchNotes": [
+     {
+      "version": "1.04.00",
+      "date": "2026-06-22",
+      "body": "Added Arabic language support, fixed the Chapter Four Light Key progression issue, improved stability and applied other minor bug fixes."
+     },
+     {
+      "version": "1.03.x",
+      "date": "2026-04",
+      "body": "Post-launch fixes targeted visual/stability issues on supported platforms; exact Switch 2 applicability varies by patch."
+     },
+     {
+      "version": "1.01.00",
+      "date": "2026-03",
+      "body": "Launch-period update support for the game and Digital Art Book / Digital Soundtrack."
+     }
+    ],
+    "soundtrack": [
+     {
+      "title": "FATAL FRAME II: Crimson Butterfly REMAKE Digital Soundtrack",
+      "url": "https://www.koeitecmoeurope.com/zero/crimson-re/uk/"
+     },
+     {
+      "title": "Remake soundtrack and 3D audio presentation",
+      "url": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-2-games/FATAL-FRAME-II-Crimson-Butterfly-REMAKE--3014309.html"
+     }
+    ],
+    "seriesName": "FATAL FRAME / PROJECT ZERO",
+    "seriesEntries": [
+     "FATAL FRAME: Maiden of Black Water",
+     "FATAL FRAME: Mask of the Lunar Eclipse",
+     "FATAL FRAME II: Crimson Butterfly REMAKE"
+    ],
+    "studioName": "KOEI TECMO GAMES / Team NINJA",
+    "studioUrl": "https://www.koeitecmo.co.jp/",
+    "studioLocation": "Yokohama, Kanagawa, Japan",
+    "studioAbout": "KOEI TECMO GAMES develops and publishes Japanese console and PC titles. The remake rebuilds the 2003 horror classic with new visuals, audio, controls, exploration systems and Camera Obscura mechanics.",
+    "setupNeeds": [
+     "Nintendo Switch 2 system required for the Nintendo Switch 2 version.",
+     "Internet connection is required for digital download, updates and online/service features where applicable.",
+     "Nintendo Account required for Nintendo eShop purchase/download.",
+     "Sufficient internal storage or compatible microSD Express storage required.",
+     "Nintendo Switch Online membership is required only for game-specific online multiplayer/features that explicitly use it."
+    ],
+    "sources": [
+     {
+      "name": "Nintendo UK",
+      "url": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-2-games/FATAL-FRAME-II-Crimson-Butterfly-REMAKE--3014309.html"
+     },
+     {
+      "name": "KOEI TECMO Official",
+      "url": "https://www.koeitecmoeurope.com/zero/crimson-re/uk/"
+     },
+     {
+      "name": "KOEI TECMO Updates",
+      "url": "https://www.koeitecmoeurope.com/zero/crimson-re/uk/update/"
+     },
+     {
+      "name": "Deku Deals",
+      "url": "https://www.dekudeals.com/items/fatal-frame-ii-crimson-butterfly-remake"
+     }
+    ],
+    "boxContentsList": "[Circular]",
+    "image": "/api/files/products/prd_c8e3dc9b206043e3/coverImage-97aff1f2b2768dfe.avif",
+    "banner": "/api/files/products/prd_c8e3dc9b206043e3/bannerImages-1-b0521c7f19590a32.jpg",
+    "schemaId": "",
+    "badgeEn": "وفر 40%",
+    "badgeKu": "وفر 40%",
+    "featuresEn": [
+     "Complete remake of the 2003 horror classic",
+     "Rebuilt graphics, audio, controls and gameplay systems",
+     "Camera Obscura combat with Focus, Zoom and filter switching",
+     "New Hold Mayu's Hand mechanic",
+     "New side stories and areas",
+     "3D/spatial audio presentation",
+     "Demo with save-data transfer",
+     "Digital Deluxe edition with art book, soundtrack, costumes and charm",
+     "Arabic text support added in version 1.04.00"
+    ],
+    "featuresKu": [
+     "Complete remake of the 2003 horror classic",
+     "Rebuilt graphics, audio, controls and gameplay systems",
+     "Camera Obscura combat with Focus, Zoom and filter switching",
+     "New Hold Mayu's Hand mechanic",
+     "New side stories and areas",
+     "3D/spatial audio presentation",
+     "Demo with save-data transfer",
+     "Digital Deluxe edition with art book, soundtrack, costumes and charm",
+     "Arabic text support added in version 1.04.00"
+    ],
+    "sales": 0,
+    "images": [],
+    "modes": [],
+    "boxFrontUrl": "https://i5.walmartimages.com/seo/FATAL-nbsp-FRAME-nbsp-II-nbsp-Crimson-Butterfly-REMAKE-Nintendo-Switch-2-Game_8579ec98-53f2-4342-9953-76f830097735.1993ce518fb467b8f599d2fae21d172a.jpeg?odnBg=FFFFFF&odnHeight=1200&odnWidth=1200",
+    "createdAt": "2026-08-31T22:50:06.612Z",
+    "created_at": "2026-08-31T22:50:06.612Z",
+    "updatedAt": "2026-08-31T22:50:06.612Z",
+    "updated_at": "2026-08-31T22:50:06.612Z",
+    "variants": "[Circular]"
+   }
+  },
+  {
+   "id": "prd_d2f92910a35d45f0",
+   "slug": "fifa-22-nintendo-switch-legacy-edition",
+   "title": "FIFA 22 Nintendo Switch Legacy Edition",
+   "platform": "switch1",
+   "isHidden": true,
+   "hash": "49f261771780adc9e2bd8bcd298b44f1238d702141ce8d843c0545220be81250",
+   "images": [],
+   "record": {
+    "title": "FIFA 22 Nintendo Switch Legacy Edition",
+    "titleEn": "FIFA 22 Nintendo Switch Legacy Edition",
+    "titleKu": "",
+    "slug": "fifa-22-nintendo-switch-legacy-edition",
+    "description": "FIFA 22 Nintendo Switch Legacy Edition delivers licensed football clubs, leagues, players, career and competitive modes on Nintendo hardware. Players choose teams and competitions across licensed leagues. Updated rosters, kits, competitions, and mechanical changes define each annual release.",
+    "descriptionEn": "FIFA 22 Nintendo Switch Legacy Edition delivers licensed football clubs, leagues, players, career and competitive modes on Nintendo hardware. Players choose teams and competitions across licensed leagues. Updated rosters, kits, competitions, and mechanical changes define each annual release.",
+    "descriptionKu": "",
+    "cartridgeImage": "",
+    "nintendoCardImage": "",
+    "coverHiResImage": "",
+    "coverImage": "",
+    "bannerImages": [
+     ""
+    ],
+    "gallery": [],
+    "youtubeTrailer": "",
+    "releaseDate": "2021-10-01",
+    "ageRating": "ESRB E / PEGI 3",
+    "metacriticRating": "85",
+    "genres": [
+     "Sports",
+     "Football / Soccer"
+    ],
+    "platform": "switch1",
+    "size": 14,
+    "numberOfPlayers": "Single system (1-4) / Local wireless and online multiplayer depending on mode",
+    "supportedLanguages": "Official supported language list varies by region; see the publisher page linked in Sources.",
+    "hardwareModel": "",
+    "colorEdition": "",
+    "storageCapacity": "",
+    "screenSpecs": "",
+    "batteryLife": "",
+    "boxContents": [],
+    "boxContentsText": "",
+    "warrantyCondition": "",
+    "connectivity": "",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "Global",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "",
+    "redemptionSteps": [],
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 5000,
+    "cost": 1750,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": true,
+    "displayOrder": 0,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "مشترك",
+      "description": "مشترك",
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_account",
+      "name": "خاص بك",
+      "description": "خاص بك",
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "types": [
+     {
+      "id": "offline_base",
+      "name": "مشترك — اللعبة الأساسية",
+      "optionId": "offline_account",
+      "price": 5000,
+      "cost": 1750,
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "offline_extras",
+      "name": "مشترك — مع الإضافات",
+      "optionId": "offline_account",
+      "price": 13500,
+      "cost": 6000,
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_extras",
+      "name": "خاص بك — مع الإضافات",
+      "optionId": "online_account",
+      "price": 31000,
+      "cost": 25500,
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "Active",
+    "kind": "account",
+    "trade_value_iqd": 20250,
+    "store_offer_bonus_iqd": 3500,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "id": "prd_d2f92910a35d45f0",
+    "schema_version": 24,
+    "titleAr": "FIFA 22 Nintendo Switch Legacy Edition",
+    "compatibility": [
+     "Nintendo Switch",
+     "Nintendo Switch 2 compatibility supported through the Switch version"
+    ],
+    "edition": "Standard / Store Variants",
+    "developer": "EA SPORTS",
+    "publisher": "Electronic Arts",
+    "seriesName": "FIFA 22 Nintendo Switch Legacy Edition",
+    "price_usd": 59.99,
+    "officialUrl": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-games/EA-SPORTS-FIFA-22-Nintendo-Switch-Legacy-Edition-2049250.html",
+    "eshopUrl": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-games/EA-SPORTS-FIFA-22-Nintendo-Switch-Legacy-Edition-2049250.html",
+    "gameIsOffline": true,
+    "gameIsOnline": true,
+    "gameLanguageLocked": false,
+    "description_short": "FIFA 22 Nintendo Switch Legacy Edition delivers licensed football clubs, leagues, players, career and competitive modes on Nintendo hardware.",
+    "description_ar": "FIFA 22 Nintendo Switch Legacy Edition — FIFA 22 Nintendo Switch Legacy Edition delivers licensed football clubs, leagues, players, career and competitive modes on Nintendo hardware.",
+    "languagesText": [
+     "See official supported languages on the linked Nintendo/publisher product page"
+    ],
+    "languagesAudio": [
+     "Audio language availability varies by title and region; see official product information"
+    ],
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": true,
+    "nintendoPlayModes": "TV / Tabletop / Handheld",
+    "nintendoOnlineRequired": true,
+    "nintendoCloudSaves": true,
+    "nintendoGameKeyCard": false,
+    "nintendoPhysicalNeedsDownload": false,
+    "switch2Enhanced": false,
+    "switch2Exclusive": false,
+    "nintendoNotes": "Platform, release, player-count, storage, compatibility, and feature statements in this import are grounded in the official Nintendo/publisher pages listed under Sources. Store package prices are user-supplied storefront values, not assumed MSRP.",
+    "editionsList": [
+     {
+      "name": "Regular",
+      "contents": [
+       {
+        "label": "Regular store package"
+       },
+       {
+        "label": "Offline account access"
+       },
+       {
+        "label": "Infinite stock by default"
+       }
+      ]
+     },
+     {
+      "name": "Deluxe",
+      "contents": [
+       {
+        "label": "Deluxe store package"
+       },
+       {
+        "label": "Offline account access"
+       },
+       {
+        "label": "Infinite stock by default"
+       }
+      ]
+     },
+     {
+      "name": "Complete",
+      "contents": [
+       {
+        "label": "Complete store package"
+       },
+       {
+        "label": "Online account access"
+       },
+       {
+        "label": "Infinite stock by default"
+       }
+      ]
+     },
+     {
+      "name": "Ultimate",
+      "contents": [
+       {
+        "label": "Ultimate store package"
+       },
+       {
+        "label": "Online account access"
+       },
+       {
+        "label": "Infinite stock by default"
+       }
+      ]
+     }
+    ],
+    "gameplayPillars": [
+     {
+      "title": "Licensed football presentation",
+      "description": "Authentic clubs, leagues, kits, stadium presentation, and player databases form the core package."
+     },
+     {
+      "title": "Career and manager play",
+      "description": "Single-player career modes provide long-form club and player progression."
+     },
+     {
+      "title": "Ultimate Team / online ecosystem",
+      "description": "Supported editions include squad-building and competitive online structures."
+     },
+     {
+      "title": "Local multiplayer",
+      "description": "Multiple controllers support shared-system football matches."
+     },
+     {
+      "title": "Nintendo-specific feature set",
+      "description": "The Nintendo release is tuned to the capabilities and feature availability of its target Switch platform."
+     }
+    ],
+    "worldSummary": "FIFA 22 Nintendo Switch Legacy Edition delivers licensed football clubs, leagues, players, career and competitive modes on Nintendo hardware. Players choose teams and competitions across licensed leagues. Updated rosters, kits, competitions, and mechanical changes define each annual release.",
+    "storyChapters": [
+     {
+      "title": "Start a club season",
+      "body": "Players choose teams and competitions across licensed leagues."
+     },
+     {
+      "title": "Build squads",
+      "body": "Career and squad-building modes revolve around transfers, team chemistry, roles, and progression."
+     },
+     {
+      "title": "Play local matches",
+      "body": "Quick matches and tournaments provide immediate couch multiplayer."
+     },
+     {
+      "title": "Enter online competition",
+      "body": "Supported online modes add broader opponents and long-term progression."
+     },
+     {
+      "title": "Return each season",
+      "body": "Updated rosters, kits, competitions, and mechanical changes define each annual release."
+     }
+    ],
+    "features": [
+     "Licensed clubs and leagues",
+     "Career modes",
+     "Local multiplayer",
+     "Online competition",
+     "Annual roster and presentation updates"
+    ],
+    "perfResolutionDocked": "1080p",
+    "perfResolutionHandheld": "720p",
+    "perfFps": "30",
+    "perfHdr": false,
+    "playTimeMain": 0,
+    "completionMain": 0,
+    "completionExtras": 0,
+    "faq": [
+     {
+      "q": "Is this an official EA edition name?",
+      "a": "The game title is official; the Regular/Deluxe/Complete/Ultimate labels below are the user’s store package tiers and are not assumed to be identical to EA’s official commercial editions."
+     },
+     {
+      "q": "Does it support local multiplayer?",
+      "a": "Yes. Nintendo football releases support shared-system matches, with exact limits depending on mode."
+     },
+     {
+      "q": "Does it support online play?",
+      "a": "Yes in supported game modes; an internet connection and account requirements apply."
+     },
+     {
+      "q": "Why are Switch 1 and Switch 2 separate for newer FC titles?",
+      "a": "Where EA publishes separate platform versions, the extraction keeps them as distinct files rather than treating backward compatibility as a new edition."
+     },
+     {
+      "q": "Are the package tiers official EA editions?",
+      "a": "No assumption is made; they are preserved exactly as the supplied storefront pricing tiers."
+     }
+    ],
+    "verdictScore": 8.5,
+    "verdictPros": [
+     "Large licensed content base",
+     "Strong local multiplayer value",
+     "Multiple career/competitive modes",
+     "Annual roster refresh",
+     "Broad football audience"
+    ],
+    "verdictCons": [
+     "Annualized release cycle",
+     "Online modes depend on servers/accounts",
+     "Some features differ by Nintendo generation",
+     "Large later-game downloads",
+     "Store package labels should not be confused with official EA editions"
+    ],
+    "timeline": [
+     {
+      "date": "2021-10-01",
+      "title": "Released on target Nintendo platform"
+     }
+    ],
+    "patchNotes": [
+     {
+      "version": "Current retail build",
+      "date": "2026-08-27"
+     }
+    ],
+    "studioName": "EA SPORTS",
+    "studioUrl": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-games/EA-SPORTS-FIFA-22-Nintendo-Switch-Legacy-Edition-2049250.html",
+    "studioLocation": "See publisher/developer profile",
+    "sources": [
+     {
+      "name": "Official Nintendo / publisher product page",
+      "url": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-games/EA-SPORTS-FIFA-22-Nintendo-Switch-Legacy-Edition-2049250.html"
+     }
+    ],
+    "downloadSizeGb": 14,
+    "requiredSpaceGb": 14,
+    "microSdRecommended": true,
+    "storageNotes": "Storage requirements follow the official product listing where a final numeric size is published; upcoming titles may require a later refresh when final size is posted.",
+    "mpLocalPlayers": true,
+    "mpOnlinePlayers": true,
+    "mpCoop": true,
+    "mpCompetitive": true,
+    "mpLocalWireless": true,
+    "mpSplitScreen": true,
+    "dlc": [
+     {
+      "name": "Downloadable / additional content status",
+      "description": "Ultimate Team and live-service content are handled inside the base football title; no invented standalone DLC package is added."
+     }
+    ],
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "deviceModel": "Nintendo Switch",
+      "hardwareId": "nintendo-switch",
+      "informationStatus": "Available",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p",
+       "resolutionDynamic": false,
+       "renderingResolution": "720p",
+       "outputResolution": "720p",
+       "fps": "30",
+       "fpsMin": "30",
+       "fpsMax": "30",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Handheld",
+       "notes": "Legacy Edition keeps the established Switch gameplay foundation while updating kits, clubs, and presentation."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p",
+       "resolutionDynamic": false,
+       "renderingResolution": "1080p",
+       "outputResolution": "1080p",
+       "fps": "30",
+       "fpsMin": "30",
+       "fpsMax": "30",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "TV / Docked",
+       "notes": "Legacy Edition keeps the established Switch gameplay foundation while updating kits, clubs, and presentation."
+      },
+      "modes": [
+       {
+        "name": "Primary documented/compatibility profile",
+        "handheldResolution": "720p",
+        "handheldFps": "30",
+        "tvResolution": "1080p",
+        "tvFps": "30",
+        "hdr": false,
+        "vrr": false,
+        "notes": "Legacy Edition keeps the established Switch gameplay foundation while updating kits, clubs, and presentation."
+       }
+      ],
+      "upscaling": "Game / system-specific scaling where applicable",
+      "rayTracing": false,
+      "rayTracingMode": "Not Supported",
+      "loadingTime": "Scene-dependent",
+      "loadingNotes": "Loading time varies by scene, save state, storage, version, and patch.",
+      "gameVersion": "Current listed version",
+      "patchVersion": "Current available update",
+      "testedDate": "2026-08-27",
+      "sourceName": "Official product / compatibility information",
+      "performanceNotes": "Legacy Edition keeps the established Switch gameplay foundation while updating kits, clubs, and presentation."
+     },
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "hardwareId": "nintendo-switch-2",
+      "informationStatus": "Available",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p",
+       "resolutionDynamic": false,
+       "renderingResolution": "720p",
+       "outputResolution": "720p",
+       "fps": "30",
+       "fpsMin": "30",
+       "fpsMax": "30",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Handheld",
+       "notes": "Backward-compatible Switch software; this is not a native Switch 2 edition."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p",
+       "resolutionDynamic": false,
+       "renderingResolution": "1080p",
+       "outputResolution": "1080p",
+       "fps": "30",
+       "fpsMin": "30",
+       "fpsMax": "30",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "TV / Docked",
+       "notes": "Backward-compatible Switch software; this is not a native Switch 2 edition."
+      },
+      "modes": [
+       {
+        "name": "Primary documented/compatibility profile",
+        "handheldResolution": "720p",
+        "handheldFps": "30",
+        "tvResolution": "1080p",
+        "tvFps": "30",
+        "hdr": false,
+        "vrr": false,
+        "notes": "Backward-compatible Switch software; this is not a native Switch 2 edition."
+       }
+      ],
+      "upscaling": "Game / system-specific scaling where applicable",
+      "rayTracing": false,
+      "rayTracingMode": "Not Supported",
+      "loadingTime": "Scene-dependent",
+      "loadingNotes": "Loading time varies by scene, save state, storage, version, and patch.",
+      "gameVersion": "Current listed version",
+      "patchVersion": "Current available update",
+      "testedDate": "2026-08-27",
+      "sourceName": "Official product / compatibility information",
+      "sourceUrl": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-games/EA-SPORTS-FIFA-22-Nintendo-Switch-Legacy-Edition-2049250.html",
+      "performanceNotes": "Backward-compatible Switch software; this is not a native Switch 2 edition."
+     }
+    ],
+    "switch2UpgradePrice": 0,
+    "boxContentsList": [],
+    "image": "",
+    "banner": "",
+    "schemaId": "",
+    "batchImport": true,
+    "createdAt": "2026-08-28T18:48:30.757Z",
+    "updatedAt": "2026-08-28T18:48:30.757Z"
+   }
+  },
+  {
+   "id": "prd_4db08fe5ba464314",
+   "slug": "final-fantasy-tactics-the-ivalice-chronicles-nintendo-switch-2-edition-switch-2",
+   "title": "FINAL FANTASY TACTICS - The Ivalice Chronicles — Nintendo Switch 2 Edition",
+   "platform": "switch2",
+   "isHidden": true,
+   "hash": "b4a9d6ca4fd9ffe60770a9398740a7037c64284894e555ee273ca02adc416f0c",
+   "images": [
+    {
+     "role": "front-box",
+     "field": "cartridgeImage",
+     "url": "https://banan.to/api/files/products/prd_4db08fe5ba464314/front-box-41a19a52a5b7205b.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 876350,
+     "width": 1167,
+     "height": 1888,
+     "thumb": "review-workdir/thumbs/batch-007/final-fantasy-tactics-the-ivalice-chronicles-nintendo-switch-2-edition-switch-2__front-box-0.png"
+    },
+    {
+     "role": "front-box",
+     "field": "box_front_url",
+     "url": "https://assets.nintendo.com/image/upload/ar_3:4,c_fit,g_auto,w_1000/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000100754/a79ce10127b30deb1b647f11aa85333fee47cb1237bc1b23c8a3a4ef3b1aef1a",
+     "status": 400,
+     "contentType": "image/gif"
+    },
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://banan.to/api/files/products/prd_4db08fe5ba464314/square-card-a44d9f88cc6c9a05.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 224588,
+     "width": 1024,
+     "height": 1024,
+     "thumb": "review-workdir/thumbs/batch-007/final-fantasy-tactics-the-ivalice-chronicles-nintendo-switch-2-edition-switch-2__square-card-2.png"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://banan.to/api/files/products/prd_4db08fe5ba464314/cover-f9d71052ce9407cc.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 392120,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-007/final-fantasy-tactics-the-ivalice-chronicles-nintendo-switch-2-edition-switch-2__detail-cover-3.png"
+    },
+    {
+     "role": "3d-texture",
+     "field": "coverHiResImage",
+     "url": "https://banan.to/api/files/products/prd_4db08fe5ba464314/3d-wrap-71f92c4aacb07cb2.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 1870316,
+     "width": 2454,
+     "height": 1888,
+     "thumb": "review-workdir/thumbs/batch-007/final-fantasy-tactics-the-ivalice-chronicles-nintendo-switch-2-edition-switch-2__3d-texture-4.png"
+    },
+    {
+     "role": "listing",
+     "field": "image",
+     "url": "https://assets.nintendo.com/image/upload/ar_16:9,c_fill,g_auto,w_1600/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000100754/830654ca35accbee0ac86e1ec4c73674879679728f268b908dce90111d23561b",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 90899,
+     "width": 2400,
+     "height": 1350,
+     "thumb": "review-workdir/thumbs/batch-007/final-fantasy-tactics-the-ivalice-chronicles-nintendo-switch-2-edition-switch-2__listing-5.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[0]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000100754/fc3d6a8a3b8ac47058cd9dedcf7bc28721dca6fa5e806ab231d553848e6d95be",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 34978,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-007/final-fantasy-tactics-the-ivalice-chronicles-nintendo-switch-2-edition-switch-2__banner-6.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[1]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000100754/84ad1ef921eb2d59e09ef2d4a7d573415de2e1e97fe4f1784e2b3c43f096de95",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 36498,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-007/final-fantasy-tactics-the-ivalice-chronicles-nintendo-switch-2-edition-switch-2__banner-7.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[2]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000100754/9932b6d1503f0fe1d359c2f677cefc9352446e5316ec5c881aa2d81d09c14b3b",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 57123,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-007/final-fantasy-tactics-the-ivalice-chronicles-nintendo-switch-2-edition-switch-2__banner-8.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[3]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000100754/b48e58d583d5bae4d2aabc6c6b3eee195f2720051fd6ace09c62c54b3bce3534",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 43133,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-007/final-fantasy-tactics-the-ivalice-chronicles-nintendo-switch-2-edition-switch-2__banner-9.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://banan.to/api/files/products/prd_4db08fe5ba464314/gallery-1-698561e3216bac34.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 30904,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-007/final-fantasy-tactics-the-ivalice-chronicles-nintendo-switch-2-edition-switch-2__gallery-10.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[1]",
+     "url": "https://banan.to/api/files/products/prd_4db08fe5ba464314/gallery-2-32679b261531f261.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 39260,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-007/final-fantasy-tactics-the-ivalice-chronicles-nintendo-switch-2-edition-switch-2__gallery-11.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[2]",
+     "url": "https://banan.to/api/files/products/prd_4db08fe5ba464314/gallery-3-8b4302b79b9c36de.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 49030,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-007/final-fantasy-tactics-the-ivalice-chronicles-nintendo-switch-2-edition-switch-2__gallery-12.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[3]",
+     "url": "https://banan.to/api/files/products/prd_4db08fe5ba464314/gallery-4-6669a3db0482c3dd.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 40308,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-007/final-fantasy-tactics-the-ivalice-chronicles-nintendo-switch-2-edition-switch-2__gallery-13.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[4]",
+     "url": "https://banan.to/api/files/products/prd_4db08fe5ba464314/gallery-5-da99d36de99f24ac.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 63146,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-007/final-fantasy-tactics-the-ivalice-chronicles-nintendo-switch-2-edition-switch-2__gallery-14.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[5]",
+     "url": "https://banan.to/api/files/products/prd_4db08fe5ba464314/gallery-6-8e09bf0eb81f796d.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 68784,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-007/final-fantasy-tactics-the-ivalice-chronicles-nintendo-switch-2-edition-switch-2__gallery-15.png"
+    }
+   ],
+   "record": {
+    "title": "FINAL FANTASY TACTICS - The Ivalice Chronicles — Nintendo Switch 2 Edition",
+    "titleEn": "FINAL FANTASY TACTICS - The Ivalice Chronicles — Nintendo Switch 2 Edition",
+    "titleKu": "",
+    "slug": "final-fantasy-tactics-the-ivalice-chronicles-nintendo-switch-2-edition-switch-2",
+    "description": "A modernized release of the classic tactical RPG, offering an enhanced presentation, improved usability, and Switch 2 performance/resolution improvements without changing the underlying game content. The story follows Ramza Beoulve as political and personal tensions destabilize Ivalice. The final chapters reveal the larger forces behind the political war and test the player’s strongest tactical builds.",
+    "descriptionEn": "A modernized release of the classic tactical RPG, offering an enhanced presentation, improved usability, and Switch 2 performance/resolution improvements without changing the underlying game content. The story follows Ramza Beoulve as political and personal tensions destabilize Ivalice. The final chapters reveal the larger forces behind the political war and test the player’s strongest tactical builds.",
+    "descriptionKu": "",
+    "cartridgeImage": "/api/files/products/prd_4db08fe5ba464314/front-box-41a19a52a5b7205b.webp",
+    "nintendoCardImage": "/api/files/products/prd_4db08fe5ba464314/square-card-a44d9f88cc6c9a05.webp",
+    "coverHiResImage": "/api/files/products/prd_4db08fe5ba464314/3d-wrap-71f92c4aacb07cb2.webp",
+    "coverImage": "/api/files/products/prd_4db08fe5ba464314/cover-f9d71052ce9407cc.webp",
+    "bannerImages": [
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000100754/fc3d6a8a3b8ac47058cd9dedcf7bc28721dca6fa5e806ab231d553848e6d95be",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000100754/84ad1ef921eb2d59e09ef2d4a7d573415de2e1e97fe4f1784e2b3c43f096de95",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000100754/9932b6d1503f0fe1d359c2f677cefc9352446e5316ec5c881aa2d81d09c14b3b",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000100754/b48e58d583d5bae4d2aabc6c6b3eee195f2720051fd6ace09c62c54b3bce3534"
+    ],
+    "gallery": [],
+    "youtubeTrailer": "",
+    "releaseDate": "2025-09-30",
+    "ageRating": "ESRB T — Blood, Drug Reference, Fantasy Violence, Mild Language, Mild Suggestive Themes",
+    "metacriticRating": 87,
+    "genres": [
+     "Strategy",
+     "RPG",
+     "Tactical RPG"
+    ],
+    "platform": "switch2",
+    "size": 10.3,
+    "numberOfPlayers": "Single system (1)",
+    "supportedLanguages": "Official supported language list varies by region; see the publisher page linked in Sources.",
+    "hardwareModel": "",
+    "colorEdition": "",
+    "storageCapacity": "",
+    "screenSpecs": "",
+    "batteryLife": "",
+    "boxContents": [],
+    "boxContentsText": "",
+    "warrantyCondition": "",
+    "connectivity": "",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "Global",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "",
+    "redemptionSteps": [],
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 10250,
+    "cost": 3500,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": true,
+    "displayOrder": 0,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "مشترك",
+      "description": "مشترك",
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_account",
+      "name": "خاص بك",
+      "description": "خاص بك",
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "types": [
+     {
+      "id": "offline_base",
+      "name": "مشترك — اللعبة الأساسية",
+      "optionId": "offline_account",
+      "price": 10250,
+      "cost": 3500,
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_base",
+      "name": "خاص بك — اللعبة الأساسية",
+      "optionId": "online_account",
+      "price": 35000,
+      "cost": 27250,
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "Active",
+    "kind": "account",
+    "trade_value_iqd": 14750,
+    "store_offer_bonus_iqd": 2500,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "id": "prd_4db08fe5ba464314",
+    "schema_version": 24,
+    "titleAr": "فاينل فانتسي تاكتيكس: ذا إيفاليس كرونيكلز — إصدار سويتش 2",
+    "compatibility": [
+     "Nintendo Switch 2",
+     "Nintendo Switch version exists separately"
+    ],
+    "edition": "Standard / Store Variants",
+    "developer": "SQUARE ENIX",
+    "publisher": "SQUARE ENIX",
+    "seriesName": "FINAL FANTASY TACTICS - The Ivalice Chronicles — Nintendo Switch 2 Edition",
+    "metacriticUrl": "https://www.metacritic.com/game/final-fantasy-tactics-the-ivalice-chronicles/",
+    "opencriticRating": 87,
+    "userScore": 8.8,
+    "price_usd": 49.99,
+    "officialUrl": "https://www.nintendo.com/us/store/products/final-fantasy-tactics-the-ivalice-chronicles-nintendo-switch-2-edition-switch-2/",
+    "eshopUrl": "https://www.nintendo.com/us/store/products/final-fantasy-tactics-the-ivalice-chronicles-nintendo-switch-2-edition-switch-2/",
+    "gameIsOffline": true,
+    "gameIsOnline": false,
+    "gameLanguageLocked": false,
+    "description_short": "A modernized release of the classic tactical RPG, offering an enhanced presentation, improved usability, and Switch 2 performance/resolution improvements without changing the underlying game content.",
+    "description_ar": "فاينل فانتسي تاكتيكس: ذا إيفاليس كرونيكلز — إصدار سويتش 2 — A modernized release of the classic tactical RPG, offering an enhanced presentation, improved usability, and Switch 2 performance/resolution improvements without changing the underlying game content.",
+    "box_front_url": "https://assets.nintendo.com/image/upload/ar_3:4,c_fit,g_auto,w_1000/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000100754/a79ce10127b30deb1b647f11aa85333fee47cb1237bc1b23c8a3a4ef3b1aef1a",
+    "languagesText": [
+     "See official supported languages on the linked Nintendo/publisher product page"
+    ],
+    "languagesAudio": [
+     "Audio language availability varies by title and region; see official product information"
+    ],
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": true,
+    "nintendoPlayModes": "TV / Tabletop / Handheld",
+    "nintendoOnlineRequired": false,
+    "nintendoCloudSaves": true,
+    "nintendoGameKeyCard": false,
+    "nintendoPhysicalNeedsDownload": false,
+    "switch2Enhanced": true,
+    "switch2Exclusive": true,
+    "nintendoNotes": "Platform, release, player-count, storage, compatibility, and feature statements in this import are grounded in the official Nintendo/publisher pages listed under Sources. Store package prices are user-supplied storefront values, not assumed MSRP.",
+    "editionsList": [
+     {
+      "name": "Regular / Offline",
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_3:4,c_fit,g_auto,w_1000/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000100754/a79ce10127b30deb1b647f11aa85333fee47cb1237bc1b23c8a3a4ef3b1aef1a",
+      "contents": [
+       {
+        "label": "Regular / Offline store package"
+       },
+       {
+        "label": "Offline account access"
+       },
+       {
+        "label": "Infinite stock by default"
+       }
+      ]
+     },
+     {
+      "name": "Standard / Online",
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_1:1,c_fill,g_auto,w_1000/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000100754/a79ce10127b30deb1b647f11aa85333fee47cb1237bc1b23c8a3a4ef3b1aef1a",
+      "contents": [
+       {
+        "label": "Standard / Online store package"
+       },
+       {
+        "label": "Online account access"
+       },
+       {
+        "label": "Infinite stock by default"
+       }
+      ]
+     }
+    ],
+    "gameplayPillars": [
+     {
+      "title": "Grid-based tactical combat",
+      "description": "Turn order, elevation, positioning, terrain, and ability ranges define every encounter.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000100754/fc3d6a8a3b8ac47058cd9dedcf7bc28721dca6fa5e806ab231d553848e6d95be"
+     },
+     {
+      "title": "Deep job system",
+      "description": "Characters can unlock and combine many jobs, skills, reactions, supports, and movement abilities.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000100754/84ad1ef921eb2d59e09ef2d4a7d573415de2e1e97fe4f1784e2b3c43f096de95"
+     },
+     {
+      "title": "Political Ivalice story",
+      "description": "The narrative follows war, class conflict, betrayal, religion, and personal loyalty in Ivalice.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000100754/9932b6d1503f0fe1d359c2f677cefc9352446e5316ec5c881aa2d81d09c14b3b"
+     },
+     {
+      "title": "Enhanced presentation",
+      "description": "The Ivalice Chronicles modernizes interface and presentation while preserving the strategic core.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000100754/b48e58d583d5bae4d2aabc6c6b3eee195f2720051fd6ace09c62c54b3bce3534"
+     },
+     {
+      "title": "Switch 2 performance upgrade",
+      "description": "Nintendo states that the Switch 2 version offers improved frame rates and resolution for enhanced visual fidelity.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000100754/fc3d6a8a3b8ac47058cd9dedcf7bc28721dca6fa5e806ab231d553848e6d95be"
+     }
+    ],
+    "worldSummary": "A modernized release of the classic tactical RPG, offering an enhanced presentation, improved usability, and Switch 2 performance/resolution improvements without changing the underlying game content. The story follows Ramza Beoulve as political and personal tensions destabilize Ivalice. The final chapters reveal the larger forces behind the political war and test the player’s strongest tactical builds.",
+    "storyChapters": [
+     {
+      "title": "Ramza enters the conflict",
+      "body": "The story follows Ramza Beoulve as political and personal tensions destabilize Ivalice.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000100754/84ad1ef921eb2d59e09ef2d4a7d573415de2e1e97fe4f1784e2b3c43f096de95"
+     },
+     {
+      "title": "Build a flexible party",
+      "body": "Players train a roster through multiple jobs and ability combinations.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000100754/9932b6d1503f0fe1d359c2f677cefc9352446e5316ec5c881aa2d81d09c14b3b"
+     },
+     {
+      "title": "Navigate war and intrigue",
+      "body": "Battles are tied to a dense narrative of noble houses, mercenaries, church power, and hidden agendas.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000100754/b48e58d583d5bae4d2aabc6c6b3eee195f2720051fd6ace09c62c54b3bce3534"
+     },
+     {
+      "title": "Master late-game jobs",
+      "body": "Advanced classes and optimized skill combinations reward long-term planning.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000100754/fc3d6a8a3b8ac47058cd9dedcf7bc28721dca6fa5e806ab231d553848e6d95be"
+     },
+     {
+      "title": "Resolve the Ivalice conflict",
+      "body": "The final chapters reveal the larger forces behind the political war and test the player’s strongest tactical builds.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000100754/84ad1ef921eb2d59e09ef2d4a7d573415de2e1e97fe4f1784e2b3c43f096de95"
+     }
+    ],
+    "features": [
+     "Classic tactical RPG restored",
+     "Deep job/ability system",
+     "Enhanced interface and presentation",
+     "Improved Switch 2 frame rate and resolution",
+     "Single-player strategy campaign"
+    ],
+    "perfResolutionDocked": "Improved resolution — exact official number not published",
+    "perfResolutionHandheld": "Improved resolution — exact official number not published",
+    "perfFps": "0",
+    "perfHdr": false,
+    "playTimeMain": 45,
+    "completionMain": 65,
+    "completionExtras": 90,
+    "faq": [
+     {
+      "q": "What does the Switch 2 Edition improve?",
+      "a": "Nintendo explicitly states improved frame rates and resolution; the game content itself is unchanged."
+     },
+     {
+      "q": "Are exact resolution and FPS numbers published?",
+      "a": "Nintendo’s product/upgrade page confirms improvements but does not provide exact numeric targets."
+     },
+     {
+      "q": "Is there an upgrade path?",
+      "a": "Yes. Nintendo lists a Switch 2 Edition Upgrade Pack."
+     },
+     {
+      "q": "Is it multiplayer?",
+      "a": "No. It is a single-player tactical RPG."
+     },
+     {
+      "q": "What is the core progression system?",
+      "a": "Characters change jobs, learn abilities, and combine skills to create specialized tactical builds."
+     }
+    ],
+    "verdictScore": 8.5,
+    "verdictPros": [
+     "Excellent tactical depth",
+     "Deep job customization",
+     "Strong political story",
+     "Useful modern quality-of-life improvements",
+     "Native Switch 2 performance enhancements"
+    ],
+    "verdictCons": [
+     "Steep systems learning curve",
+     "Battles can be slow for action-focused players",
+     "Grinding jobs may appeal mainly to strategy fans",
+     "Exact Switch 2 performance figures are not officially published",
+     "Story is text-heavy"
+    ],
+    "reviews": [
+     {
+      "source": "Metacritic",
+      "score": "87",
+      "url": "https://www.metacritic.com/game/final-fantasy-tactics-the-ivalice-chronicles/"
+     },
+     {
+      "source": "OpenCritic",
+      "score": "87",
+      "url": "https://opencritic.com/"
+     }
+    ],
+    "timeline": [
+     {
+      "date": "2025-09-30",
+      "title": "Released on target Nintendo platform"
+     }
+    ],
+    "patchNotes": [
+     {
+      "version": "Current retail build",
+      "date": "2026-08-27"
+     }
+    ],
+    "studioName": "SQUARE ENIX",
+    "studioUrl": "https://www.nintendo.com/us/store/products/final-fantasy-tactics-the-ivalice-chronicles-nintendo-switch-2-edition-switch-2/",
+    "studioLocation": "See publisher/developer profile",
+    "sources": [
+     {
+      "name": "Official Nintendo / publisher product page",
+      "url": "https://www.nintendo.com/us/store/products/final-fantasy-tactics-the-ivalice-chronicles-nintendo-switch-2-edition-switch-2/"
+     },
+     {
+      "name": "Metacritic",
+      "url": "https://www.metacritic.com/game/final-fantasy-tactics-the-ivalice-chronicles/"
+     }
+    ],
+    "downloadSizeGb": 10.3,
+    "requiredSpaceGb": 10.3,
+    "microSdRecommended": true,
+    "storageNotes": "Storage requirements follow the official product listing where a final numeric size is published; upcoming titles may require a later refresh when final size is posted.",
+    "mpLocalPlayers": false,
+    "mpOnlinePlayers": false,
+    "mpCoop": false,
+    "mpCompetitive": false,
+    "mpLocalWireless": false,
+    "mpSplitScreen": false,
+    "dlc": [
+     {
+      "name": "Downloadable / additional content status",
+      "description": "No separate story DLC is required for this entry."
+     }
+    ],
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "hardwareId": "nintendo-switch-2",
+      "informationStatus": "Available",
+      "handheld": {
+       "supported": true,
+       "resolution": "Improved resolution — exact official number not published",
+       "resolutionDynamic": false,
+       "renderingResolution": "Improved resolution — exact official number not published",
+       "outputResolution": "Improved resolution — exact official number not published",
+       "fps": "Improved frame rate — exact official number not published",
+       "fpsMin": "Improved frame rate — exact official number not published",
+       "fpsMax": "Improved frame rate — exact official number not published",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Handheld",
+       "notes": "Nintendo confirms improved frame rates and resolution but does not publish exact numbers."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "Improved resolution — exact official number not published",
+       "resolutionDynamic": false,
+       "renderingResolution": "Improved resolution — exact official number not published",
+       "outputResolution": "Improved resolution — exact official number not published",
+       "fps": "Improved frame rate — exact official number not published",
+       "fpsMin": "Improved frame rate — exact official number not published",
+       "fpsMax": "Improved frame rate — exact official number not published",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "TV / Docked",
+       "notes": "Nintendo confirms improved frame rates and resolution but does not publish exact numbers."
+      },
+      "modes": [
+       {
+        "name": "Primary documented/compatibility profile",
+        "handheldResolution": "Improved resolution — exact official number not published",
+        "handheldFps": "Improved frame rate — exact official number not published",
+        "tvResolution": "Improved resolution — exact official number not published",
+        "tvFps": "Improved frame rate — exact official number not published",
+        "hdr": false,
+        "vrr": false,
+        "notes": "Nintendo confirms improved frame rates and resolution but does not publish exact numbers."
+       }
+      ],
+      "upscaling": "Game / system-specific scaling where applicable",
+      "rayTracing": false,
+      "rayTracingMode": "Not Supported",
+      "loadingTime": "Scene-dependent",
+      "loadingNotes": "Loading time varies by scene, save state, storage, version, and patch.",
+      "gameVersion": "Current listed version",
+      "patchVersion": "Current available update",
+      "testedDate": "2026-08-27",
+      "sourceName": "Official product / compatibility information",
+      "sourceUrl": "https://www.nintendo.com/us/store/products/final-fantasy-tactics-the-ivalice-chronicles-nintendo-switch-2-edition-upgrade-pack-switch-2/",
+      "performanceNotes": "Nintendo confirms improved frame rates and resolution but does not publish exact numbers."
+     },
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "deviceModel": "Nintendo Switch",
+      "hardwareId": "nintendo-switch",
+      "informationStatus": "Available",
+      "handheld": {
+       "supported": false,
+       "resolution": "Not Supported",
+       "resolutionDynamic": false,
+       "renderingResolution": "Not Supported",
+       "outputResolution": "Not Supported",
+       "fps": "Not Supported",
+       "fpsMin": "Not Supported",
+       "fpsMax": "Not Supported",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Handheld",
+       "notes": "This file is for the Switch 2 Edition; the Switch 1 version is a separate product."
+      },
+      "tv": {
+       "supported": false,
+       "resolution": "Not Supported",
+       "resolutionDynamic": false,
+       "renderingResolution": "Not Supported",
+       "outputResolution": "Not Supported",
+       "fps": "Not Supported",
+       "fpsMin": "Not Supported",
+       "fpsMax": "Not Supported",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "TV / Docked",
+       "notes": "This file is for the Switch 2 Edition; the Switch 1 version is a separate product."
+      },
+      "modes": [
+       {
+        "name": "Primary documented/compatibility profile",
+        "handheldResolution": "Not Supported",
+        "handheldFps": "Not Supported",
+        "tvResolution": "Not Supported",
+        "tvFps": "Not Supported",
+        "hdr": false,
+        "vrr": false,
+        "notes": "This file is for the Switch 2 Edition; the Switch 1 version is a separate product."
+       }
+      ],
+      "upscaling": "Game / system-specific scaling where applicable",
+      "rayTracing": false,
+      "rayTracingMode": "Not Supported",
+      "loadingTime": "Scene-dependent",
+      "loadingNotes": "Loading time varies by scene, save state, storage, version, and patch.",
+      "gameVersion": "Current listed version",
+      "patchVersion": "Current available update",
+      "testedDate": "2026-08-27",
+      "sourceName": "Official product / compatibility information",
+      "sourceUrl": "https://www.nintendo.com/us/store/products/final-fantasy-tactics-the-ivalice-chronicles-switch/",
+      "performanceNotes": "This file is for the Switch 2 Edition; the Switch 1 version is a separate product."
+     }
+    ],
+    "switch2UpgradePrice": 0,
+    "galleryImages": [
+     {
+      "url": "/api/files/products/prd_4db08fe5ba464314/gallery-1-698561e3216bac34.webp",
+      "alt": "FINAL FANTASY TACTICS - The Ivalice Chronicles — Nintendo Switch 2 Edition screenshot 1"
+     },
+     {
+      "url": "/api/files/products/prd_4db08fe5ba464314/gallery-2-32679b261531f261.webp",
+      "alt": "FINAL FANTASY TACTICS - The Ivalice Chronicles — Nintendo Switch 2 Edition screenshot 2"
+     },
+     {
+      "url": "/api/files/products/prd_4db08fe5ba464314/gallery-3-8b4302b79b9c36de.webp",
+      "alt": "FINAL FANTASY TACTICS - The Ivalice Chronicles — Nintendo Switch 2 Edition screenshot 3"
+     },
+     {
+      "url": "/api/files/products/prd_4db08fe5ba464314/gallery-4-6669a3db0482c3dd.webp",
+      "alt": "FINAL FANTASY TACTICS - The Ivalice Chronicles — Nintendo Switch 2 Edition screenshot 4"
+     },
+     {
+      "url": "/api/files/products/prd_4db08fe5ba464314/gallery-5-da99d36de99f24ac.webp",
+      "alt": "FINAL FANTASY TACTICS - The Ivalice Chronicles — Nintendo Switch 2 Edition screenshot 5"
+     },
+     {
+      "url": "/api/files/products/prd_4db08fe5ba464314/gallery-6-8e09bf0eb81f796d.webp",
+      "alt": "FINAL FANTASY TACTICS - The Ivalice Chronicles — Nintendo Switch 2 Edition screenshot 6"
+     }
+    ],
+    "boxContentsList": [],
+    "image": "https://assets.nintendo.com/image/upload/ar_16:9,c_fill,g_auto,w_1600/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000100754/830654ca35accbee0ac86e1ec4c73674879679728f268b908dce90111d23561b",
+    "banner": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000100754/fc3d6a8a3b8ac47058cd9dedcf7bc28721dca6fa5e806ab231d553848e6d95be",
+    "schemaId": "",
+    "batchImport": true,
+    "createdAt": "2026-08-28T18:43:18.495Z",
+    "updatedAt": "2026-08-28T18:43:18.495Z"
+   }
+  }
+ ]
+}

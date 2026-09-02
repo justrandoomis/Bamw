@@ -1,0 +1,51 @@
+{
+ "batch": "007",
+ "apply": false,
+ "games": [
+  {
+   "id": "prd_0ca27f5eefe44dd5",
+   "slug": "fallout-4-anniversary-edition",
+   "baseHash": "093cae06700c32222ca3a56a6a0e87691fee75b4c17c26986139b3cec25d8d3e",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  },
+  {
+   "id": "prd_ed0f0c2742ab46d8",
+   "slug": "fantasy-life-i-the-girl-who-steals-time-switch1",
+   "baseHash": "3aa071931f7eef1ca19540058cdb7f42d2f5290a131d0f56469f5c6cc0dda334",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  },
+  {
+   "id": "prd_c8e3dc9b206043e3",
+   "slug": "fatal-frame-ii-crimson-butterfly-remake",
+   "baseHash": "7f0385d792638b225081642e411b890eca8b9c821ff6f62aca359d8d1794e412",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  },
+  {
+   "id": "prd_d2f92910a35d45f0",
+   "slug": "fifa-22-nintendo-switch-legacy-edition",
+   "baseHash": "49f261771780adc9e2bd8bcd298b44f1238d702141ce8d843c0545220be81250",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  },
+  {
+   "id": "prd_4db08fe5ba464314",
+   "slug": "final-fantasy-tactics-the-ivalice-chronicles-nintendo-switch-2-edition-switch-2",
+   "baseHash": "b4a9d6ca4fd9ffe60770a9398740a7037c64284894e555ee273ca02adc416f0c",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  }
+ ]
+}
