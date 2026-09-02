@@ -1,51 +1,188 @@
 {
  "batch": "027",
- "apply": false,
+ "apply": true,
  "games": [
   {
    "id": "prd_5b18e929c72c41e0",
    "slug": "the-legend-of-zelda-skyward-sword-hd-switch",
    "baseHash": "2d6210818905fad7792a21b17aba3bf64774e42f544e2e4fee11685f1e46ae80",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "informationStatus": "available",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p",
+       "fps": "60"
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p",
+       "fps": "60"
+      },
+      "modes": [],
+      "sourceName": "Digital Foundry's analysis of Skyward Sword HD",
+      "sourceUrl": "https://www.nintendolife.com/games/nintendo-switch/the_legend_of_zelda_skyward_sword_hd",
+      "verificationStatus": "technical_analysis"
+     }
+    ]
+   },
+   "clear": [
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "Doubled records collapse to the platform record at the documented 60 fps. 2021-07-16, Metacritic 81 verified (hidden product)."
   },
   {
    "id": "prd_5c41a894eedd416e",
    "slug": "the-legend-of-zelda-tears-of-the-kingdom-switch-1",
    "baseHash": "d2ac77af8761d44fe42c72c916971e838fd5c5ee9cf7363bfa612393d73565ac",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "informationStatus": "available",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p",
+       "fps": "30"
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "900p (dynamic)",
+       "fps": "30"
+      },
+      "modes": [],
+      "sourceName": "Digital Foundry's analysis of Tears of the Kingdom",
+      "sourceUrl": "https://www.nintendolife.com/games/nintendo-switch/the_legend_of_zelda_tears_of_the_kingdom",
+      "verificationStatus": "technical_analysis"
+     }
+    ]
+   },
+   "clear": [
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "Doubled records collapse to the platform record with Digital Foundry's canonical dynamic-900p/720p at 30 fps figures. 2023-05-12, Metacritic 96 verified (hidden product)."
   },
   {
    "id": "prd_37ef136392094c4c",
    "slug": "the-legend-of-zelda-tears-of-the-kingdom-switch-2-edition",
    "baseHash": "73a7ea318f54c80b3336cbfa2f36d972baac1bba4a5dc105a8ef75a3d0a9d57c",
    "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "clear": [
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "The unsupported Nintendo Switch record drops under the platform rule, keeping the documented 1080p/1440p at 60 fps Switch 2 Edition record. Hidden product with no images stored — flagged for the owner alongside the BotW NS2 Edition. 2025-06-05, Metacritic 96 kept."
   },
   {
    "id": "prd_b3c4ab1e54a144a8",
    "slug": "the-witcher-3-wild-hunt-complete-edition-switch",
    "baseHash": "285264d052aab2698f878f3b717a045348d316c1816039a90bcfe5fe94f10441",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "informationStatus": "available",
+      "handheld": {
+       "supported": true,
+       "resolution": "Dynamic, around 540p",
+       "fps": "30"
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "Dynamic, up to 720p",
+       "fps": "30"
+      },
+      "modes": [],
+      "sourceName": "Digital Foundry's analysis of the Switch port",
+      "sourceUrl": "https://www.nintendolife.com/games/nintendo-switch/the_witcher_3_wild_hunt_complete_edition",
+      "verificationStatus": "technical_analysis"
+     }
+    ]
+   },
+   "clear": [
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "Doubled records collapse to the platform record with Digital Foundry's documented dynamic 540p/720p at 30 fps findings. 2019-10-15, Metacritic 85 verified (hidden product)."
   },
   {
    "id": "prd_47940c99a7f5442e",
    "slug": "the-witcher-3-wild-hunt-remastered-switch-2",
    "baseHash": "40e5d596bbb97433513ed21cf78391a425158e4164e2057bbafceff95c19453a",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "informationStatus": "not_published",
+      "unavailableReason": "The Witcher 3 Remastered releases 2026-09-29; CD PROJEKT RED has not announced Switch 2 performance figures.",
+      "handheld": {
+       "supported": true
+      },
+      "tv": {
+       "supported": true
+      },
+      "modes": [],
+      "sourceName": "CD PROJEKT RED official announcement",
+      "sourceUrl": "https://www.thewitcher.com/",
+      "verificationStatus": "official"
+     }
+    ]
+   },
+   "clear": [
+    "metacriticRating",
+    "youtubeTrailer",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "Unreleased title (2026-09-29, after today): the '85' string removed — no score can exist yet — and the bare youtube.com homepage URL in the trailer field removed. The 'Not Announced' prose records become one proper not-published Switch 2 record. 31.5 GB kept as announced (hidden product)."
   }
  ]
 }
