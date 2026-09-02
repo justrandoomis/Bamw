@@ -1,51 +1,212 @@
 {
  "batch": "029",
- "apply": false,
+ "apply": true,
  "games": [
   {
    "id": "prd_1901d23608684404",
    "slug": "warhammer-40-000-rogue-trader",
    "baseHash": "0c0d80acf419d9e8568402b4c8d0c40876c7dbc7a6be18c7149276738c8df919",
    "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "clear": [
+    "youtubeTrailer",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "Search-link trailer removed. The detailed dynamic-resolution record with its honest low-frame-rate ranges kept as sourced. 2025-12-11, 36.2 GB, Metacritic 82 verified; images working. Contamination removed."
   },
   {
    "id": "prd_6fe1da3c0f9940dc",
    "slug": "wolfenstein-ii-the-new-colossus",
    "baseHash": "d16f184c9fda5b79b828b487c44a12dd7c0fdf4160a5d293ec0ab33788ba817b",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "informationStatus": "available",
+      "handheld": {
+       "supported": true,
+       "resolution": "Dynamic, up to 720p",
+       "fps": "30"
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "Dynamic, up to 720p",
+       "fps": "30"
+      },
+      "modes": [],
+      "sourceName": "Digital Foundry's analysis of the Switch port",
+      "sourceUrl": "https://www.nintendolife.com/games/nintendo-switch/wolfenstein_ii_the_new_colossus",
+      "verificationStatus": "technical_analysis"
+     }
+    ]
+   },
+   "clear": [
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "Doubled records collapse to the platform record with the port's documented dynamic-720p at 30 fps figures. 2018-06-29, Metacritic 79 verified (hidden product)."
   },
   {
    "id": "prd_acae6edb0a1b4f5c",
    "slug": "world-of-final-fantasy-maxima",
    "baseHash": "15d0e706f3fc6ede494db3b18245183c8eff4539da6545ec3fdda6b6d890dcb9",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "informationStatus": "available",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p",
+       "fps": "30"
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p",
+       "fps": "30"
+      },
+      "modes": [],
+      "sourceName": "Port coverage of Maxima on Switch",
+      "sourceUrl": "https://www.nintendolife.com/games/nintendo-switch/world_of_final_fantasy_maxima",
+      "verificationStatus": "technical_analysis"
+     }
+    ]
+   },
+   "clear": [
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "Doubled records collapse to the platform record at the documented 30 fps. 2018-11-06, Metacritic 79 verified (hidden product)."
   },
   {
    "id": "prd_930cf6dc6e644af0",
    "slug": "xenoblade-chronicles-2-switch",
    "baseHash": "78f0fb14b9b8dfce7d13e0ea11411808fa5ece3984bc49236a75e92772bad2b5",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "bannerImages": [
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000000707/070d1f7be9a836c7064e1b9d33fc6388191f8bdfbefe0b5d9c284c1b471c163f",
+     "https://images.launchbox-app.com//824803dd-d70e-42fb-a233-1b8f8eb0ee21.jpg"
+    ],
+    "galleryImages": [
+     {
+      "url": "https://images.launchbox-app.com//feacda3b-39a1-4fe8-9c8a-a2052986190d.png",
+      "alt": "Alrest environment artwork"
+     },
+     {
+      "url": "https://images.launchbox-app.com//b01faef5-2447-407c-ae47-b895634511a4.jpg",
+      "alt": "Character and Blade artwork"
+     },
+     {
+      "url": "https://images.launchbox-app.com//fda3b3bf-42cd-4595-8e91-d69c4f3cae2e.jpg",
+      "alt": "Additional promotional artwork"
+     }
+    ],
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "informationStatus": "available",
+      "handheld": {
+       "supported": true,
+       "resolution": "Dynamic 368p-552p",
+       "fps": "30"
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "Dynamic, up to 720p",
+       "fps": "30"
+      },
+      "modes": [],
+      "sourceName": "Digital Foundry's analysis of Xenoblade Chronicles 2",
+      "sourceUrl": "https://www.nintendolife.com/games/nintendo-switch/xenoblade_chronicles_2",
+      "verificationStatus": "technical_analysis"
+     }
+    ]
+   },
+   "clear": [
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "Three dead banners dropped; the one verified banner keeps its place and one gallery shot joins it (three galleries remain). The Switch-2-badged record becomes the platform record keeping Digital Foundry's famous dynamic 368p-552p/720p at 30 fps findings. 2017-12-01, Metacritic 83 verified. Contamination removed."
   },
   {
    "id": "prd_5f5f9c74db8d4052",
    "slug": "xenoblade-chronicles-2-switch-2-edition",
    "baseHash": "ff735bc642f0af15feed9ba1f5a0c7cdcb09740c2c2ed8f74c0ed7170122217b",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "coverImage": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000000707/e6680b0381aa7c47b0d4a251de4b40a840b9746021aab9a48cc05121d73059d5",
+    "image": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000000707/e6680b0381aa7c47b0d4a251de4b40a840b9746021aab9a48cc05121d73059d5",
+    "bannerImages": [
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000000707/e94cf7b5e50297aaaf224be3d215d5b524e35d40ed8338065dae4d58fb3742da",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000000707/070d1f7be9a836c7064e1b9d33fc6388191f8bdfbefe0b5d9c284c1b471c163f",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000000707/85883546315ee943d54f8d29686705fb9ba9828099f876e3e27ee82e6fd40f5e"
+    ],
+    "galleryImages": [
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000000707/3bdd5ab14edb0b72d215460b0a4fcef337fb8c7ec9d56ae2023d411f810fa51f",
+      "alt": "Official Nintendo gameplay image"
+     },
+     {
+      "url": "https://images.launchbox-app.com//a2841985-37b9-44cd-a8fb-6713973dbe3b.png",
+      "alt": "Official Nintendo gameplay image"
+     },
+     {
+      "url": "https://images.launchbox-app.com//78146993-b111-4144-a6fe-575bcd50849f.png",
+      "alt": "Official Nintendo feature image"
+     },
+     {
+      "url": "https://images.launchbox-app.com//b01faef5-2447-407c-ae47-b895634511a4.jpg",
+      "alt": "Official Nintendo gallery image"
+     }
+    ]
+   },
+   "clear": [
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "Dead cover and listing rebuilt from the first verified eShop gallery; the one dead banner dropped, three verified banners kept. Metacritic 83 checked against the Switch 2 Edition's own aggregate — correct (83 from 92 critics, verified, not inherited). 2026-07-30, announced 1080p/4K at 60 fps record kept. Contamination removed."
   }
  ]
 }
