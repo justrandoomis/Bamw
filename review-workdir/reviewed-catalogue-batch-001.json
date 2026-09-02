@@ -95,8 +95,6 @@
    "set": {
     "developer": "HAMSTER (original arcade game by Nintendo)",
     "youtubeTrailer": "https://www.youtube.com/watch?v=bNICBT2un5c",
-    "coverImage": "",
-    "image": "",
     "bannerImages": [
      "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000003432/03df298cde9e5da4aed7d4f3b8f276def99614410f061c06ea8f546c4fdfc48b",
      "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000003432/b083e720569cb85a516bbc7821ad8b65ebd2fa03ec0fb6b0364237427dcfe544"
@@ -134,9 +132,11 @@
     "conditionGrade",
     "packaging",
     "guaranteeStatus",
-    "box_front_url"
+    "box_front_url",
+    "coverImage",
+    "image"
    ],
-   "notes": "coverImage/image/bannerImages[0] returned 403 — broken references cleared and banners rebuilt from the two working Nintendo CDN URLs. box_front_url held the square eShop icon (wrong role; proper vertical box art already in cartridgeImage — verified visually). Official promo trailer added."
+   "notes": "coverImage/image/bannerImages[0] returned 403 — broken references cleared (via the clear list; empty-string sets are blocked by the merge guard) and banners rebuilt from the two working Nintendo CDN URLs. box_front_url held the square eShop icon (wrong role; proper vertical box art already in cartridgeImage — verified visually). Official promo trailer added."
   },
   {
    "id": "prd_ad958aa523e24052",
