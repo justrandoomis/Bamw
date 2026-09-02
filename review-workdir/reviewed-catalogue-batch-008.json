@@ -1,51 +1,195 @@
 {
  "batch": "008",
- "apply": false,
+ "apply": true,
  "games": [
   {
    "id": "prd_9b9588d4e6ea4cfd",
    "slug": "final-fantasy-vi",
    "baseHash": "1f1724f2d8da01b1bbc33331e6cde037fd516dedabc6cfbeeefce7d498035b05",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "informationStatus": "available",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p",
+       "fps": "60"
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p",
+       "fps": "60"
+      },
+      "modes": [],
+      "sourceName": "Official product information",
+      "sourceUrl": "https://www.square-enix-games.com/en_US/games/final-fantasy-vi",
+      "verificationStatus": "official"
+     }
+    ]
+   },
+   "clear": [
+    "supportedLanguages",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "Pixel Remaster on Switch (2023-04-19, Metacritic 88 kept). Referral language sentence removed; two device records collapse to the platform record with the sourced 60 fps figures. Box, square card, cover, banners and galleries verified working (hidden product)."
   },
   {
    "id": "prd_d4b4bb4e61994709",
    "slug": "final-fantasy-vii-remake-intergrade-switch-2",
    "baseHash": "f169e19bda074ecfe370355485f6eb2be803d0f0a77b9385153df5be8520a66c",
    "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "clear": [
+    "cartridgeImage",
+    "box_front_url",
+    "supportedLanguages",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "Both box-role references are malformed Nintendo CDN transformation URLs answering HTTP 400 — removed; square card, cover, listing, four eShop banners and six galleries all verified working. Referral language sentence removed. The stray unsupported Nintendo Switch record drops under the platform rule, keeping the honest exact-figures-not-published Switch 2 record. 2026-01-22, 90.4 GB verified (hidden product)."
   },
   {
    "id": "prd_8a8e7b0dc7b9483a",
    "slug": "final-fantasy-viii-remastered",
    "baseHash": "ee17babe3f6a07679f2628ccbddf45914c24253f90836cb004535eb84e5d5be0",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "informationStatus": "available",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p",
+       "fps": "30"
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p",
+       "fps": "30"
+      },
+      "modes": [],
+      "sourceName": "Official product information",
+      "sourceUrl": "https://www.square-enix-games.com/en_US/games/final-fantasy-viii-remastered",
+      "verificationStatus": "official"
+     }
+    ]
+   },
+   "clear": [
+    "supportedLanguages",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "2019-09-03, Metacritic 80 kept. Referral language sentence removed; device records collapse to the platform record. Box, square card, cover, banners and galleries verified working (hidden product)."
   },
   {
    "id": "prd_17105a2338f648ee",
    "slug": "final-fantasy-xii-the-zodiac-age",
    "baseHash": "1b2ee359d1f53bf461a3e6032b067d808e178a1a574701b0e5e445c561ccf76c",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "informationStatus": "available",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p",
+       "fps": "30"
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p",
+       "fps": "30"
+      },
+      "modes": [],
+      "sourceName": "Official product information",
+      "sourceUrl": "https://www.square-enix-games.com/en_US/games/final-fantasy-xii-the-zodiac-age",
+      "verificationStatus": "official"
+     }
+    ]
+   },
+   "clear": [
+    "supportedLanguages",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "2019-04-30, Metacritic 85 kept. Referral language sentence removed; device records collapse to the platform record. Genuine box, wrap, square card, cover, eShop banners and galleries verified working (hidden product)."
   },
   {
    "id": "prd_6378a049ed4f454f",
    "slug": "fitness-boxing-3-your-personal-trainer",
    "baseHash": "fa2a965f1f2c212fbce015ac45a2bf10ee622de6f36404ee4c3cb1d0387becf4",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "informationStatus": "available",
+      "handheld": {
+       "supported": false
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p",
+       "fps": "60"
+      },
+      "modes": [],
+      "sourceName": "Official product information — handheld play unsupported (detached Joy-Con motion controls required)",
+      "sourceUrl": "https://www.nintendo.com/us/store/products/fitness-boxing-3-your-personal-trainer-switch/",
+      "verificationStatus": "official"
+     }
+    ]
+   },
+   "clear": [
+    "metacriticRating",
+    "supportedLanguages",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "The '85' string plague again — no verifiable aggregate matches it; removed. Referral language sentence removed. The malformed handheld entry (resolution literally 'Not Supported' with a 60 fps value) becomes a proper unsupported-mode flag on the single platform record: the game requires detached Joy-Con motion controls. 2024-12-05, 4.6 GB verified (hidden product)."
   }
  ]
 }
