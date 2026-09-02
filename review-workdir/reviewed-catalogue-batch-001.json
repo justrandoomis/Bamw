@@ -1,0 +1,51 @@
+{
+ "batch": "001",
+ "apply": false,
+ "games": [
+  {
+   "id": "prd_49ac50b2e7e041fa",
+   "slug": "1-2-switch",
+   "baseHash": "0421f6cc39ecd60314a733d52c883dfae2b42b1e3a6f9d194e459d818f04db8b",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  },
+  {
+   "id": "prd_b73635742b2649fc",
+   "slug": "a-plague-tale-innocence-cloud-version-switch1",
+   "baseHash": "86184e7dbae3b854c6767600ee7a8048397507c1906445a2a4f41f609db2d3f7",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  },
+  {
+   "id": "prd_e056bfabbf914721",
+   "slug": "arcade-archives-vs-super-mario-bros-switch",
+   "baseHash": "e7ec8c4c8c999a8f4f7106bfb8fb6af15dfed4a1342798242cd1152b1e50bad1",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  },
+  {
+   "id": "prd_ad958aa523e24052",
+   "slug": "assassins-creed-shadows-switch-2",
+   "baseHash": "ca4afd2e4011f5d94248f28438174d246b53b38cf4b6ff15b047d62570613970",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  },
+  {
+   "id": "prd_b66558151b784a6f",
+   "slug": "bayonetta",
+   "baseHash": "e19d4c3c70182b08799f6f639cd930867cedc4b0f8f471f25b1bd4131d129ca7",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  }
+ ]
+}

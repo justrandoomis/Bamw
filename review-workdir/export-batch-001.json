@@ -1,0 +1,3903 @@
+{
+ "batch": "001",
+ "generatedAt": "2026-09-02T01:36:52.305Z",
+ "totalGames": 310,
+ "reviewedSoFar": 0,
+ "games": [
+  {
+   "id": "prd_49ac50b2e7e041fa",
+   "slug": "1-2-switch",
+   "title": "1-2-Switch",
+   "platform": "switch1",
+   "isHidden": false,
+   "hash": "0421f6cc39ecd60314a733d52c883dfae2b42b1e3a6f9d194e459d818f04db8b",
+   "images": [
+    {
+     "role": "front-box",
+     "field": "cartridgeImage",
+     "url": "https://banan.to/api/files/products/prd_49ac50b2e7e041fa/cartridgeImage-4aaed5b708b214a7.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 1087862,
+     "width": 1166,
+     "height": 1888,
+     "thumb": "review-workdir/thumbs/batch-001/1-2-switch__front-box-0.png"
+    },
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://banan.to/api/files/products/prd_49ac50b2e7e041fa/nintendoCardImage-99e0bf84068477e0.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 124833,
+     "width": 800,
+     "height": 800,
+     "thumb": "review-workdir/thumbs/batch-001/1-2-switch__square-card-1.png"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://banan.to/api/files/products/prd_49ac50b2e7e041fa/coverImage-c8eeb1214e6c48cc.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 64595,
+     "width": 970,
+     "height": 300,
+     "thumb": "review-workdir/thumbs/batch-001/1-2-switch__detail-cover-2.png"
+    },
+    {
+     "role": "3d-texture",
+     "field": "coverHiResImage",
+     "url": "https://banan.to/api/files/products/prd_49ac50b2e7e041fa/3d-texture-949dcde734f47d05.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 4504766,
+     "width": 2473,
+     "height": 1902,
+     "thumb": "review-workdir/thumbs/batch-001/1-2-switch__3d-texture-3.png"
+    },
+    {
+     "role": "listing",
+     "field": "image",
+     "url": "https://banan.to/api/files/products/prd_49ac50b2e7e041fa/image-c8eeb1214e6c48cc.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 64595,
+     "width": 970,
+     "height": 300,
+     "thumb": "review-workdir/thumbs/batch-001/1-2-switch__listing-4.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[0]",
+     "url": "https://banan.to/api/files/products/prd_49ac50b2e7e041fa/bannerImages-e3f0dc76a0f192ba.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 806781,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-001/1-2-switch__banner-5.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[1]",
+     "url": "https://banan.to/api/files/products/prd_49ac50b2e7e041fa/bannerImages-ca6464efd8a90b35.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 445984,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-001/1-2-switch__banner-6.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[2]",
+     "url": "https://banan.to/api/files/products/prd_49ac50b2e7e041fa/bannerImages-d718b50420c134c9.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 498826,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-001/1-2-switch__banner-7.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://images.launchbox-app.com/84cff0c0-f37d-4d7a-9cab-6637bfaf7867.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 68777,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-001/1-2-switch__gallery-8.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[1]",
+     "url": "https://images.launchbox-app.com/01c3df49-0a57-4c20-bf41-9947cd545a5e.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 84196,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-001/1-2-switch__gallery-9.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[2]",
+     "url": "https://images.launchbox-app.com/542bacac-3324-4732-956d-2cd91090078f.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 7291,
+     "width": 400,
+     "height": 225,
+     "thumb": "review-workdir/thumbs/batch-001/1-2-switch__gallery-10.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[3]",
+     "url": "https://images.launchbox-app.com/8e51cc32-1878-4b5c-aca7-5f0a77424daf.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 7946,
+     "width": 400,
+     "height": 225,
+     "thumb": "review-workdir/thumbs/batch-001/1-2-switch__gallery-11.png"
+    }
+   ],
+   "record": {
+    "id": "prd_49ac50b2e7e041fa",
+    "title": "1-2-Switch",
+    "titleEn": "1-2-Switch",
+    "titleKu": "1-2-Switch",
+    "slug": "1-2-switch",
+    "description": "1-2-Switch is a collection of 28 compact party activities created to demonstrate the original Nintendo Switch Joy-Con controllers. Many games deliberately ask players to stop watching the display and instead react to one another's body language, timing, sounds and controller feedback. Quick Draw turns two players into Wild West duelists; Milk uses repeated motion input; Ball Count demonstrates HD Rumble by simulating objects rolling inside the controller; Safe Crack asks players to rotate a Joy-Con while feeling subtle vibration feedback; Eating Contest uses the right Joy-Con's IR Motion Camera; Samurai Training, Sword Fight, Table Tennis, Wizard, Copy Dance and other activities explore motion, timing and social interaction. The title has no story campaign, progression economy or online multiplayer. Its value comes almost entirely from short face-to-face sessions with another person.",
+    "descriptionEn": "1-2-Switch is a collection of 28 compact party activities created to demonstrate the original Nintendo Switch Joy-Con controllers. Many games deliberately ask players to stop watching the display and instead react to one another's body language, timing, sounds and controller feedback. Quick Draw turns two players into Wild West duelists; Milk uses repeated motion input; Ball Count demonstrates HD Rumble by simulating objects rolling inside the controller; Safe Crack asks players to rotate a Joy-Con while feeling subtle vibration feedback; Eating Contest uses the right Joy-Con's IR Motion Camera; Samurai Training, Sword Fight, Table Tennis, Wizard, Copy Dance and other activities explore motion, timing and social interaction. The title has no story campaign, progression economy or online multiplayer. Its value comes almost entirely from short face-to-face sessions with another person.",
+    "descriptionKu": "1-2-Switch is a collection of 28 compact party activities created to demonstrate the original Nintendo Switch Joy-Con controllers. Many games deliberately ask players to stop watching the display and instead react to one another's body language, timing, sounds and controller feedback. Quick Draw turns two players into Wild West duelists; Milk uses repeated motion input; Ball Count demonstrates HD Rumble by simulating objects rolling inside the controller; Safe Crack asks players to rotate a Joy-Con while feeling subtle vibration feedback; Eating Contest uses the right Joy-Con's IR Motion Camera; Samurai Training, Sword Fight, Table Tennis, Wizard, Copy Dance and other activities explore motion, timing and social interaction. The title has no story campaign, progression economy or online multiplayer. Its value comes almost entirely from short face-to-face sessions with another person.",
+    "cartridgeImage": "/api/files/products/prd_49ac50b2e7e041fa/cartridgeImage-4aaed5b708b214a7.webp",
+    "nintendoCardImage": "/api/files/products/prd_49ac50b2e7e041fa/nintendoCardImage-99e0bf84068477e0.webp",
+    "coverHiResImage": "/api/files/products/prd_49ac50b2e7e041fa/3d-texture-949dcde734f47d05.jpg",
+    "coverImage": "/api/files/products/prd_49ac50b2e7e041fa/coverImage-c8eeb1214e6c48cc.webp",
+    "bannerImages": [
+     "/api/files/products/prd_49ac50b2e7e041fa/bannerImages-e3f0dc76a0f192ba.webp",
+     "/api/files/products/prd_49ac50b2e7e041fa/bannerImages-ca6464efd8a90b35.webp",
+     "/api/files/products/prd_49ac50b2e7e041fa/bannerImages-d718b50420c134c9.webp"
+    ],
+    "gallery": [],
+    "youtubeTrailer": "",
+    "releaseDate": "2017-03-03",
+    "ageRating": "ESRB E10+ (Everyone 10+) – Mild Violence",
+    "metacriticRating": 58,
+    "genres": [
+     "Family",
+     "Action"
+    ],
+    "platform": "switch1",
+    "size": 1.4,
+    "numberOfPlayers": "2",
+    "supportedLanguages": "Japanese, English, French, German, Italian, Spanish, Dutch, Russian",
+    "hardwareModel": "",
+    "colorEdition": "",
+    "storageCapacity": "",
+    "screenSpecs": "",
+    "batteryLife": "",
+    "boxContents": [],
+    "boxContentsText": "",
+    "warrantyCondition": "",
+    "connectivity": "",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "Global",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "",
+    "redemptionSteps": [],
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 8000,
+    "cost": 2000,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": false,
+    "displayOrder": 0,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "Offline Account",
+      "description": "Account delivery option intended for offline/local play.",
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_account",
+      "name": "Online Account",
+      "description": "Account delivery option for account use; the game itself has no online multiplayer.",
+      "isInfiniteStock": true
+     }
+    ],
+    "types": [
+     {
+      "id": "standard_offline",
+      "name": "Standard",
+      "optionId": "offline_account",
+      "price": "8000",
+      "cost": 2000,
+      "description": "Supplier 普通版 mapped to Offline / Standard. Cost ¥9.74 -> 2,000 IQD.",
+      "isInfiniteStock": true
+     },
+     {
+      "id": "standard_online",
+      "name": "Standard",
+      "optionId": "online_account",
+      "price": "28000",
+      "cost": 16500,
+      "description": "Supplier 标准版 mapped to Online / Standard. Cost ¥75.40 -> 16,500 IQD.",
+      "isInfiniteStock": true
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "Active",
+    "kind": "account",
+    "trade_value_iqd": 0,
+    "store_offer_bonus_iqd": 0,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "schema_version": 1,
+    "titleAr": "1-2-سويتش",
+    "compatibility": [
+     "Nintendo Switch",
+     "Nintendo Switch Lite where supported by control requirements",
+     "Nintendo Switch 2 – backward compatible"
+    ],
+    "edition": "Standard Edition",
+    "developer": "Nintendo",
+    "publisher": "Nintendo",
+    "opencriticRating": 55,
+    "userScore": 4.8,
+    "officialUrl": "https://www.nintendo.com/au/games/nintendo-switch/1-2-switch/",
+    "eshopUrl": "https://www.nintendo.com/au/games/nintendo-switch/1-2-switch/",
+    "gameIsOffline": true,
+    "gameIsOnline": false,
+    "gameLanguageLocked": false,
+    "description_short": "A face-to-face party collection built around Joy-Con motion controls, HD Rumble and the IR Motion Camera, designed for two people to watch each other instead of the screen.",
+    "description_ar": "لعبة حفلات لشخصين صُممت عند إطلاق Nintendo Switch لاستعراض Joy-Con. تضم 28 لعبة مصغرة تستخدم الحركة وHD Rumble وIR Motion Camera، وكثير منها يجعل اللاعبين ينظرون لبعضهما بدل الشاشة. لا تحتوي على طور قصة تقليدي أو أونلاين.",
+    "product_code": "AACCA",
+    "nintendoEshopUrl": "https://www.nintendo.com/au/games/nintendo-switch/1-2-switch/",
+    "nintendoOnlineRequired": false,
+    "nintendoCloudSaves": false,
+    "nintendoGameKeyCard": false,
+    "nintendoPhysicalNeedsDownload": false,
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": false,
+    "nintendoPlayModes": "TV, Tabletop; Handheld Mode is not supported",
+    "nintendoNotes": "Nintendo lists 1-2-Switch as a two-player-focused party game supporting TV and Tabletop modes. Handheld Mode is not supported. Some activities rely on original Joy-Con-specific hardware features, including the IR Motion Camera. No verified Full Wrap was used for 3D texture.",
+    "switch2Enhanced": false,
+    "switch2Exclusive": false,
+    "tagline": "Put the screen aside and face your opponent in a collection of quick Joy-Con party games built around motion, HD Rumble and social reactions.",
+    "fitFor": [
+     "Two-player gatherings where people want simple, immediately understandable party activities.",
+     "Players interested in the original Joy-Con’s motion, HD Rumble and IR Motion Camera features.",
+     "Families and casual groups who prefer short competitive activities rather than a long campaign."
+    ],
+    "notFitFor": [
+     "Solo players; the experience is designed primarily around two people facing each other.",
+     "Players looking for Handheld Mode; Nintendo does not support handheld play for 1-2-Switch.",
+     "Players looking for a narrative campaign, online progression or deep single-player systems."
+    ],
+    "playTimeMain": 1.5,
+    "playTimeFull": 3,
+    "gameplayPillars": [
+     {
+      "title": "Face-to-Face Play",
+      "description": "Many activities deliberately ask players to watch each other rather than stare at the television, making body language and reactions part of the game."
+     },
+     {
+      "title": "Joy-Con Technology",
+      "description": "Motion sensing, HD Rumble and the right Joy-Con IR Motion Camera drive different minigame mechanics and demonstrations."
+     },
+     {
+      "title": "Quick Party Challenges",
+      "description": "Short activities can be selected rapidly for gatherings, with simple rules designed to be understood with minimal setup."
+     }
+    ],
+    "worldSummary": "1-2-Switch does not have a traditional story world. It is structured as a collection of short party scenarios presented through live-action-style prompts and simple visual feedback. The real focus is the physical space between the two players, with the television acting as an instruction and score display rather than the center of attention.",
+    "galleryImages": [
+     {
+      "url": "https://images.launchbox-app.com/84cff0c0-f37d-4d7a-9cab-6637bfaf7867.jpg",
+      "alt": "1-2-Switch gameplay/promotional image."
+     },
+     {
+      "url": "https://images.launchbox-app.com/01c3df49-0a57-4c20-bf41-9947cd545a5e.jpg",
+      "alt": "1-2-Switch gameplay image."
+     },
+     {
+      "url": "https://images.launchbox-app.com/542bacac-3324-4732-956d-2cd91090078f.jpg",
+      "alt": "Additional 1-2-Switch gameplay image."
+     },
+     {
+      "url": "https://images.launchbox-app.com/8e51cc32-1878-4b5c-aca7-5f0a77424daf.jpg",
+      "alt": "Additional 1-2-Switch media image."
+     }
+    ],
+    "features": [
+     "A face-to-face party-game format encourages players to watch each other instead of staring at the television.",
+     "A collection of short competitive activities demonstrates motion controls, HD Rumble and other Joy-Con functions.",
+     "Designed primarily around two-player local play with simple rules that can be explained quickly to new players.",
+     "Activities include reaction tests, duels, rhythm-like challenges and physical-comedy minigames.",
+     "The presentation is intentionally social, making spectators part of the experience even when they are not holding a controller.",
+     "Nintendo’s Ver. 1.1 update added gameplay video capture compatibility on supported system software."
+    ],
+    "perfResolutionDocked": "1920x1080",
+    "perfResolutionHandheld": "Not Supported",
+    "perfFps": "60 FPS class presentation",
+    "perfHdr": false,
+    "perfNotes": "Resolution database analysis identifies 1920x1080 docked output and 1280x720 assets/handheld profile, but Nintendo officially marks Handheld Mode itself as unsupported. The game is visually simple and presented at a 60 Hz/60 FPS class rate.",
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "hardwareId": "prd_acf4c89908764c62",
+      "informationStatus": "Cross-checked",
+      "handheld": {
+       "supported": false,
+       "resolution": "Not Supported",
+       "resolutionDynamic": false,
+       "renderingResolution": "Not Supported",
+       "outputResolution": "Not Supported",
+       "fps": "Not Supported",
+       "refreshRate": "Not Supported",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Not Supported",
+       "notes": "Handheld Mode remains unsupported. Some games also require an original Joy-Con due to the missing IR Motion Camera in Joy-Con 2."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1920x1080",
+       "resolutionDynamic": false,
+       "renderingResolution": "1920x1080",
+       "outputResolution": "1920x1080",
+       "fps": "60",
+       "fpsMin": "60",
+       "fpsMax": "60",
+       "refreshRate": "60 Hz",
+       "hdr": false,
+       "vrr": false,
+       "mode": "TV",
+       "notes": "Backward-compatible software behavior is consistent with Nintendo Switch. TV output remains 1080p-class."
+      },
+      "modes": [
+       {
+        "name": "Standard",
+        "handheldResolution": "Not Supported",
+        "handheldFps": "Not Supported",
+        "tvResolution": "1920x1080",
+        "tvFps": "60",
+        "hdr": false,
+        "vrr": false,
+        "notes": "Original Joy-Con controllers are required for Motion IR Camera minigames on Switch 2."
+       }
+      ],
+      "upscaling": "No named upscaling technology officially documented",
+      "rayTracing": false,
+      "rayTracingMode": "None",
+      "gameVersion": "1.1.0",
+      "patchVersion": "1.1.0",
+      "testedDate": "2026-08-23",
+      "sourceName": "Nintendo eShop Compatibility + original Switch resolution analysis",
+      "sourceUrl": "https://ec.nintendo.com/HK/zh/titles/70010000009374",
+      "verifiedAt": "2026-08-23",
+      "verificationStatus": "Cross-checked",
+      "performanceNotes": "Original Joy-Con controllers are required for Motion IR Camera minigames on Switch 2."
+     }
+    ],
+    "downloadSizeGb": 1.4,
+    "requiredSpaceGb": 1.5,
+    "microSdRecommended": false,
+    "storageNotes": "Nintendo currently lists 1.4 GB required space for both Switch and Switch 2 compatibility.",
+    "languagesAudio": [
+     "English",
+     "Japanese"
+    ],
+    "languagesText": [
+     "English",
+     "Japanese",
+     "French"
+    ],
+    "arabicSupport": false,
+    "mpLocalPlayers": true,
+    "mpOnlinePlayers": false,
+    "mpCoop": true,
+    "mpCompetitive": true,
+    "mpSplitScreen": false,
+    "mpLocalWireless": false,
+    "guides": [
+     {
+      "title": "Nintendo — 1-2-Switch Official Page",
+      "summary": "Official product information, play modes and game overview.",
+      "url": "https://www.nintendo.com/au/games/nintendo-switch/1-2-switch/"
+     },
+     {
+      "title": "Nintendo eShop — 1-2-Switch",
+      "summary": "Official Nintendo eShop product record.",
+      "url": "https://ec.nintendo.com/NZ/en/titles/70010000000024"
+     },
+     {
+      "title": "Switch Images Julio — AACCA",
+      "summary": "Nintendo Switch cover/card asset reference for 1-2-Switch.",
+      "url": "https://cdn.switch-images-julio.com/file/switch-images-julio/display/index.html?code=AACCA"
+     }
+    ],
+    "completionMain": 1.5,
+    "completionExtras": 2,
+    "completionAll": 3,
+    "faq": [
+     {
+      "q": "Can 1-2-Switch be played in Handheld Mode?",
+      "a": "No. Nintendo marks Handheld Mode as unsupported; TV or Tabletop play is required."
+     },
+     {
+      "q": "How many players does 1-2-Switch support?",
+      "a": "The core experience is designed for two players."
+     },
+     {
+      "q": "Is 1-2-Switch a story game?",
+      "a": "No. It is a party-game collection made up of independent minigames rather than a narrative campaign."
+     }
+    ],
+    "verdictScore": 5.8,
+    "verdictSummary": "Score note: 5.8/10 is a direct normalization of the current 58/100 Metacritic aggregate for the Nintendo listing; it is not a separately invented store rating.\n\n1-2-Switch works best as a social hardware showcase: its appeal comes from direct two-person interaction and unusual Joy-Con mechanics rather than depth or a traditional campaign.",
+    "verdictPros": [
+     "Distinctive face-to-face party design.",
+     "Strong demonstration of original Joy-Con hardware features.",
+     "Easy to introduce to casual players at gatherings."
+    ],
+    "verdictCons": [
+     "Little value for players seeking a solo campaign.",
+     "Handheld Mode is not supported.",
+     "Some minigames depend on original Joy-Con-specific hardware features."
+    ],
+    "reviews": [
+     {
+      "source": "Metacritic — Nintendo listing",
+      "score": "58/100",
+      "quote": "Current critic aggregate for the relevant Nintendo listing: 58/100. This is an external aggregate, not a BANANTO-created review score.",
+      "url": "https://www.dekudeals.com/items/1-2-switch"
+     },
+     {
+      "source": "OpenCritic",
+      "score": "55/100",
+      "quote": "OpenCritic aggregate recorded at 55/100. Where OpenCritic groups platforms, this value represents the published aggregate rather than a fabricated platform-specific score.",
+      "url": "https://www.dekudeals.com/items/1-2-switch"
+     },
+     {
+      "source": "Metacritic User Score",
+      "score": "4.8/10",
+      "quote": "Current Metacritic user score shown with the listing: 4.8/10. User scores can change over time as additional ratings are submitted.",
+      "url": "https://www.dekudeals.com/items/1-2-switch"
+     }
+    ],
+    "timeline": [
+     null,
+     {
+      "date": "2017-03-03",
+      "title": "Worldwide Release",
+      "body": "1-2-Switch launched alongside Nintendo Switch."
+     },
+     {
+      "date": "2023-06-30",
+      "title": "Series Follow-up",
+      "body": "Nintendo released Everybody 1-2-Switch! as a separate follow-up game."
+     }
+    ],
+    "patchNotes": [
+     {
+      "version": "Ver. 1.1",
+      "date": "2017-10-31",
+      "body": "Nintendo added gameplay video capture compatibility. Holding the Capture Button can save up to 30 seconds of previous footage when the console system software supports the feature."
+     }
+    ],
+    "soundtrack": [
+     {
+      "title": "Title Screen"
+     },
+     {
+      "title": "Table Tennis"
+     },
+     {
+      "title": "Shuffle"
+     }
+    ],
+    "seriesName": "1-2-Switch",
+    "seriesEntries": [
+     "1-2-Switch",
+     "Everybody 1-2-Switch!"
+    ],
+    "studioName": "Nintendo",
+    "studioUrl": "https://www.nintendo.com/",
+    "studioLocation": "Kyoto, Japan",
+    "studioAbout": "Nintendo developed and published 1-2-Switch as a launch showcase for the interaction features of the Nintendo Switch Joy-Con controllers.",
+    "setupNeeds": [
+     "Two human players are recommended for the intended experience.",
+     "TV Mode or Tabletop Mode; Handheld Mode is not supported.",
+     "Original Joy-Con hardware is required for minigames that use the IR Motion Camera."
+    ],
+    "sources": [
+     {
+      "name": "Nintendo Australia — 1-2-Switch",
+      "url": "https://www.nintendo.com/au/games/nintendo-switch/1-2-switch/"
+     },
+     {
+      "name": "Nintendo eShop — 1-2-Switch",
+      "url": "https://ec.nintendo.com/NZ/en/titles/70010000000024"
+     },
+     {
+      "name": "Switch Images Julio — AACCA",
+      "url": "https://cdn.switch-images-julio.com/file/switch-images-julio/display/index.html?code=AACCA"
+     },
+     {
+      "name": "Deku Deals — Nintendo Switch scores and completion data",
+      "url": "https://www.dekudeals.com/items/1-2-switch"
+     },
+     {
+      "name": "Nintendo Support — Ver. 1.1 update history",
+      "url": "https://en-americas-support.nintendo.com/app/answers/detail/a_id/27796/p/1095/c/950"
+     }
+    ],
+    "boxContentsList": "[Circular]",
+    "image": "/api/files/products/prd_49ac50b2e7e041fa/image-c8eeb1214e6c48cc.webp",
+    "banner": "/api/files/products/prd_49ac50b2e7e041fa/banner-e3f0dc76a0f192ba.webp",
+    "schemaId": "",
+    "badgeEn": "وفر 40%",
+    "badgeKu": "وفر 40%",
+    "featuresEn": [
+     "A face-to-face party-game format encourages players to watch each other instead of staring at the television.",
+     "A collection of short competitive activities demonstrates motion controls, HD Rumble and other Joy-Con functions.",
+     "Designed primarily around two-player local play with simple rules that can be explained quickly to new players.",
+     "Activities include reaction tests, duels, rhythm-like challenges and physical-comedy minigames.",
+     "The presentation is intentionally social, making spectators part of the experience even when they are not holding a controller.",
+     "Nintendo’s Ver. 1.1 update added gameplay video capture compatibility on supported system software."
+    ],
+    "featuresKu": [
+     "A face-to-face party-game format encourages players to watch each other instead of staring at the television.",
+     "A collection of short competitive activities demonstrates motion controls, HD Rumble and other Joy-Con functions.",
+     "Designed primarily around two-player local play with simple rules that can be explained quickly to new players.",
+     "Activities include reaction tests, duels, rhythm-like challenges and physical-comedy minigames.",
+     "The presentation is intentionally social, making spectators part of the experience even when they are not holding a controller.",
+     "Nintendo’s Ver. 1.1 update added gameplay video capture compatibility on supported system software."
+    ],
+    "sales": 0,
+    "images": [],
+    "modes": []
+   }
+  },
+  {
+   "id": "prd_b73635742b2649fc",
+   "slug": "a-plague-tale-innocence-cloud-version-switch1",
+   "title": "A Plague Tale: Innocence - Cloud Version",
+   "platform": "switch1",
+   "isHidden": true,
+   "hash": "86184e7dbae3b854c6767600ee7a8048397507c1906445a2a4f41f609db2d3f7",
+   "images": [
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://banan.to/api/files/products/prd_b73635742b2649fc/square-card-146cfcff091c9776.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 116216,
+     "width": 1024,
+     "height": 1024,
+     "thumb": "review-workdir/thumbs/batch-001/a-plague-tale-innocence-cloud-version-switch1__square-card-0.png"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://banan.to/api/files/products/prd_b73635742b2649fc/cover-d9cb23a14e319e92.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 126016,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-001/a-plague-tale-innocence-cloud-version-switch1__detail-cover-1.png"
+    },
+    {
+     "role": "listing",
+     "field": "image",
+     "url": "https://www.asobostudio.com/files/games/top/plague-tale-top.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 131378,
+     "width": 1800,
+     "height": 800,
+     "thumb": "review-workdir/thumbs/batch-001/a-plague-tale-innocence-cloud-version-switch1__listing-2.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[0]",
+     "url": "https://www.asobostudio.com/files/games/gallery/aplaguetale-innocence-17logo.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 642823,
+     "width": 1067,
+     "height": 600,
+     "thumb": "review-workdir/thumbs/batch-001/a-plague-tale-innocence-cloud-version-switch1__banner-3.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[1]",
+     "url": "https://www.asobostudio.com/files/games/gallery/aplaguetale-innocence-08logo.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 533226,
+     "width": 1067,
+     "height": 600,
+     "thumb": "review-workdir/thumbs/batch-001/a-plague-tale-innocence-cloud-version-switch1__banner-4.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[2]",
+     "url": "https://www.asobostudio.com/files/games/gallery/aplaguetale-innocence-15logo.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 418036,
+     "width": 1067,
+     "height": 600,
+     "thumb": "review-workdir/thumbs/batch-001/a-plague-tale-innocence-cloud-version-switch1__banner-5.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[3]",
+     "url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/752590/ss_b3eee5fa907fe897c650f4720629931db65b4dbb.1920x1080.jpg?t=1784712345",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 1223737,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-001/a-plague-tale-innocence-cloud-version-switch1__banner-6.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://banan.to/api/files/products/prd_b73635742b2649fc/gallery-1-8f8bff86a65d0612.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 186574,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-001/a-plague-tale-innocence-cloud-version-switch1__gallery-7.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[1]",
+     "url": "https://banan.to/api/files/products/prd_b73635742b2649fc/gallery-2-2ae8d10b36394695.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 74472,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-001/a-plague-tale-innocence-cloud-version-switch1__gallery-8.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[2]",
+     "url": "https://banan.to/api/files/products/prd_b73635742b2649fc/gallery-3-8f69bb6003e3ea76.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 101998,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-001/a-plague-tale-innocence-cloud-version-switch1__gallery-9.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[3]",
+     "url": "https://banan.to/api/files/products/prd_b73635742b2649fc/gallery-4-cc82fe16d043ebc1.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 87610,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-001/a-plague-tale-innocence-cloud-version-switch1__gallery-10.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[4]",
+     "url": "https://banan.to/api/files/products/prd_b73635742b2649fc/gallery-5-f2c16cd8eb17798e.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 108102,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-001/a-plague-tale-innocence-cloud-version-switch1__gallery-11.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[5]",
+     "url": "https://banan.to/api/files/products/prd_b73635742b2649fc/gallery-6-c47901e4594daf3f.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 71460,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-001/a-plague-tale-innocence-cloud-version-switch1__gallery-12.png"
+    }
+   ],
+   "record": {
+    "title": "A Plague Tale: Innocence - Cloud Version",
+    "titleEn": "A Plague Tale: Innocence - Cloud Version",
+    "titleKu": "",
+    "slug": "a-plague-tale-innocence-cloud-version-switch1",
+    "description": "Protect a younger brother while crossing a frightening, fictionalized fourteenth-century France. Amicia and Hugo face soldiers, ruined settlements and unnatural rat swarms in a linear adventure built around stealth, observation and environmental puzzles.\n\nAmicia uses a sling, distractions and crafted alchemical ammunition. Light creates routes through the rats; darkness can turn an apparently safe passage into danger. Companions help with obstacles, while scavenged materials improve equipment. Optional gifts, curiosities and flowers reward exploration. The campaign contains 16 main chapters and an epilogue, rather than an open-world map.\n\nThis product is the Nintendo Switch CLOUD VERSION. The game runs on remote servers, not as a complete local installation. The Offline Account and Online Account labels describe the supplied account options; neither removes the internet requirement. Try the free launcher/demo using the intended connection and location before purchasing. The full game requires the appropriate paid access entitlement.\n\nThere is no physical Switch cartridge or genuine Switch retail box to include with this listing. This file leaves retail-front, back-cover and 3D-wrap fields empty deliberately; it uses real digital artwork and sourced imagery in their appropriate roles.\n\nNintendo lists multiple languages for its European release. The supplier account region and language restrictions still require confirmation. No Arabic localization is listed. Performance depends on the streaming service and connection; the reviews below are attributed historical reports, not a new hands-on benchmark.",
+    "descriptionEn": "Protect a younger brother while crossing a frightening, fictionalized fourteenth-century France. Amicia and Hugo face soldiers, ruined settlements and unnatural rat swarms in a linear adventure built around stealth, observation and environmental puzzles.\n\nAmicia uses a sling, distractions and crafted alchemical ammunition. Light creates routes through the rats; darkness can turn an apparently safe passage into danger. Companions help with obstacles, while scavenged materials improve equipment. Optional gifts, curiosities and flowers reward exploration. The campaign contains 16 main chapters and an epilogue, rather than an open-world map.\n\nThis product is the Nintendo Switch CLOUD VERSION. The game runs on remote servers, not as a complete local installation. The Offline Account and Online Account labels describe the supplied account options; neither removes the internet requirement. Try the free launcher/demo using the intended connection and location before purchasing. The full game requires the appropriate paid access entitlement.\n\nThere is no physical Switch cartridge or genuine Switch retail box to include with this listing. This file leaves retail-front, back-cover and 3D-wrap fields empty deliberately; it uses real digital artwork and sourced imagery in their appropriate roles.\n\nNintendo lists multiple languages for its European release. The supplier account region and language restrictions still require confirmation. No Arabic localization is listed. Performance depends on the streaming service and connection; the reviews below are attributed historical reports, not a new hands-on benchmark.",
+    "descriptionKu": "",
+    "cartridgeImage": "",
+    "nintendoCardImage": "/api/files/products/prd_b73635742b2649fc/square-card-146cfcff091c9776.webp",
+    "coverHiResImage": "",
+    "coverImage": "/api/files/products/prd_b73635742b2649fc/cover-d9cb23a14e319e92.webp",
+    "bannerImages": [
+     "https://www.asobostudio.com/files/games/gallery/aplaguetale-innocence-17logo.jpg",
+     "https://www.asobostudio.com/files/games/gallery/aplaguetale-innocence-08logo.jpg",
+     "https://www.asobostudio.com/files/games/gallery/aplaguetale-innocence-15logo.jpg",
+     "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/752590/ss_b3eee5fa907fe897c650f4720629931db65b4dbb.1920x1080.jpg?t=1784712345"
+    ],
+    "gallery": [],
+    "youtubeTrailer": "https://www.youtube.com/watch?v=Evv-ECAk35g",
+    "releaseDate": "2021-07-06",
+    "ageRating": "PEGI 18 / ESRB Mature 17+",
+    "metacriticRating": "85",
+    "genres": [
+     "Action",
+     "Adventure",
+     "Stealth",
+     "Puzzle",
+     "Dark Fantasy"
+    ],
+    "platform": "switch1",
+    "size": 0.087,
+    "numberOfPlayers": "1",
+    "supportedLanguages": "Nintendo Europe lists: Japanese, English, Spanish, French, German, Italian, Portuguese, Russian, Korean, Chinese. No Arabic is listed. Nintendo does not give a complete voice/text split here. The original PC release documents English/French/German voices, but the supplied Switch account region and voice menu remain unverified.",
+    "hardwareModel": "",
+    "colorEdition": "",
+    "storageCapacity": "",
+    "screenSpecs": "",
+    "batteryLife": "",
+    "boxContents": [],
+    "boxContentsText": "",
+    "warrantyCondition": "",
+    "connectivity": "",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "US",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "",
+    "redemptionSteps": [],
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 5000,
+    "cost": 2750,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": true,
+    "displayOrder": 0,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "مشترك",
+      "description": "مشترك",
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_account",
+      "name": "خاص بك",
+      "description": "خاص بك",
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "types": [
+     {
+      "id": "offline_base",
+      "name": "مشترك — اللعبة الأساسية",
+      "optionId": "offline_account",
+      "price": 5000,
+      "cost": 2750,
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_base",
+      "name": "خاص بك — اللعبة الأساسية",
+      "optionId": "online_account",
+      "price": 55000,
+      "cost": 45000,
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "active",
+    "kind": "account",
+    "trade_value_iqd": 0,
+    "store_offer_bonus_iqd": 0,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "id": "prd_b73635742b2649fc",
+    "titleAr": "حكاية الطاعون: البراءة — النسخة السحابية",
+    "compatibility": [
+     "Nintendo Switch",
+     "Nintendo Switch Lite",
+     "Nintendo Switch - OLED Model",
+     "Nintendo Switch 2"
+    ],
+    "edition": "Standard - Cloud Version",
+    "developer": "Asobo Studio",
+    "publisher": "Focus Entertainment",
+    "officialUrl": "https://www.focus-entmt.com/en/games/a-plague-tale-innocence",
+    "eshopUrl": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-download-software/A-Plague-Tale-Innocence-Cloud-Version-2002534.html",
+    "gameIsOffline": false,
+    "gameIsOnline": true,
+    "description_short": "A single-player stealth adventure following Amicia and Hugo through plague-stricken medieval France. Cloud streaming and continuous internet are required, including with the Offline Account option.",
+    "description_ar": "رافق أميسيا وأخيها الصغير هوغو في رحلة نجاة داخل فرنسا في القرن الرابع عشر، وسط الجنود والقرى المدمرة وأسراب الجرذان. تعتمد التجربة على التسلل، حل الألغاز البيئية، استخدام المقلاع والخيمياء، والتحكم بالضوء لتأمين الطريق. تجمع القصة الخطية بين التوتر والعلاقة الإنسانية بين الأخوين، مع مقتنيات ومواد لتطوير المعدات.\n\nمهم: هذه نسخة سحابية وليست لعبة كاملة تعمل محليًا على الجهاز. يتطلب خيار «حساب أوفلاين» أيضًا اتصال إنترنت مستمرًا ومستقرًا؛ اسم الخيار يصف طريقة استخدام الحساب فقط. جرّب الديمو من موقعك وعلى اتصالك قبل الشراء، لأن توفر الخدمة وجودة البث قد يختلفان، ولم يُختبر تشغيلها من العراق ضمن هذا البحث.\n\nاللعبة فردية ولا تدعم اللعب الجماعي، ولا يلزم اشتراك Nintendo Switch Online للبث نفسه. لا توجد خرطوشة سويتش فعلية أو غلاف علبة حقيقي لهذا الإصدار. العربية غير مدرجة ضمن اللغات الرسمية التي تم التحقق منها، ولم تُحدد منطقة حساب المورد بعد، لذلك لا يوجد تأكيد لقفل لغته أو غيابه.\n\nتنبيه للمحتوى: اللعبة موجهة للبالغين، وتتضمن عنفًا شديدًا ومشاهد موت ومعاناة وجرذان ومحتوى قد يكون مزعجًا. مراجعة الأداء في الصفحة تشرح قيود البث وملاحظات المراجعين دون نسب أرقام 4K أو 60FPS الخاصة بمنصات أخرى إلى نسخة Switch.",
+    "videos": [
+     {
+      "title": "Official 2021 announcement: Switch Cloud release; 4K/60 claims apply to PS5/Xbox, not Switch",
+      "url": "https://www.youtube.com/watch?v=Evv-ECAk35g"
+     },
+     {
+      "title": "Official original-game launch trailer - story and atmosphere",
+      "url": "https://www.youtube.com/watch?v=gjIb9dQgUF0"
+     },
+     {
+      "title": "Official accolades trailer - original-game reception, not Switch-only scores",
+      "url": "https://www.youtube.com/watch?v=C0DUQD7vQ3M"
+     },
+     {
+      "title": "The Little Boy Lost - official promotional film with Sean Bean",
+      "url": "https://www.youtube.com/watch?v=LtPclEoODrc"
+     },
+     {
+      "title": "SwitchUp - Nintendo Switch performance review (external historical review)",
+      "url": "https://www.youtube.com/watch?v=HbuH2hZWs7w"
+     },
+     {
+      "title": "Nintendo Switch Cloud gameplay - external gameplay capture",
+      "url": "https://www.youtube.com/watch?v=bGcpEv5hq_w"
+     }
+    ],
+    "nsuid": "70010000041419",
+    "product_code": "HACPA4QRA",
+    "nintendoEshopUrl": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-download-software/A-Plague-Tale-Innocence-Cloud-Version-2002534.html",
+    "nintendoOnlineRequired": false,
+    "nintendoCloudSaves": false,
+    "nintendoGameKeyCard": false,
+    "nintendoPhysicalNeedsDownload": false,
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": true,
+    "nintendoPlayModes": "TV, Tabletop, Handheld",
+    "nintendoNotes": "REFERENCE EDITION: Nintendo Europe; supplier account region is unconfirmed. European metadata lists English, French, German, Italian, Spanish, Portuguese, Russian, Japanese, Korean and Chinese. It does not split every listed language into voice and text categories. English, French and German audio are documented for the original PC game; the exact voice menu on the supplied Switch cloud account has not been inspected. Do not promise a specific voice pack or absence of account-specific language restrictions without checking.\n\nCLOUD ACCESS: Use the account carrying the paid access entitlement. A free launcher alone is not a purchase of the full game. Internet is mandatory; there is no multiplayer mode. Nintendo Switch Online membership is not needed for streaming, and its Save Data Cloud backup feature is not supported here.\n\nSWITCH 2: Nintendo Europe currently lists backward compatibility as Supported, with no issues found. This is still a Switch 1 Cloud release, not a Nintendo Switch 2 Edition. No separate measured Switch 2 performance dataset was verified; hardware specifications are not game benchmarks.\n\nMEDIA: The square image is official Switch Cloud artwork. Banners are distinct official promotional scenes. The gallery uses Nintendo's Switch product screenshots. Gameplay/world illustrations also include clearly credited community captures published by PlayStation Blog; these are not represented as Switch output. No genuine physical Switch box exists, so its front/back/3D fields are intentionally inapplicable.\n\nTRADE-IN: There is no physical cartridge for trade-in. The numerical trade value of zero means no offer configured; no digital-account buyback commitment is promised.\n\nAll research was checked on 2026-08-28. Cloud service availability in Iraq, the supplied account entitlement and its region were not tested.",
+    "switch2Enhanced": false,
+    "switch2Exclusive": false,
+    "switch2Features": [
+     "Backward compatibility is listed as supported by Nintendo; this is not a Switch 2 Edition.",
+     "Cloud streaming still requires internet on a compatible newer console; no native-performance uplift is promised."
+    ],
+    "tagline": "Two siblings, a hostile world, and a fragile path through the darkness.",
+    "fitFor": [
+     "Players who enjoy linear, story-led adventures.",
+     "Fans of stealth, environmental puzzles and careful observation.",
+     "Adults comfortable with bleak themes and graphic violence.",
+     "Players interested in sibling relationships and character-driven storytelling.",
+     "Players with a successfully tested, stable cloud connection.",
+     "Collectors who enjoy optional objects and environmental details."
+    ],
+    "notFitFor": [
+     "Anyone needing play without an internet connection.",
+     "Players expecting local or online multiplayer.",
+     "Players seeking a physical Switch cartridge.",
+     "Anyone particularly sensitive to rats, blood, death or child endangerment.",
+     "Players seeking a large open world or deep action-combat sandbox.",
+     "Players unable to test regional cloud access before paying.",
+     "Customers requiring a confirmed Arabic localization."
+    ],
+    "playTimeMain": 13,
+    "playTimeFull": 15,
+    "editionsList": [
+     {
+      "name": "Standard - Nintendo Switch Cloud Version",
+      "coverUrl": "https://ubitus.ai/wp-content/uploads/2021/07/Ubitus_A_Plague_Tale.jpg",
+      "contents": [
+       {
+        "label": "Full single-player Innocence campaign via a paid cloud access entitlement."
+       },
+       {
+        "label": "Nintendo Switch launcher and ongoing internet connection are required."
+       },
+       {
+        "label": "Offline Account and Online Account are merchant access options for the same game, not different story editions."
+       },
+       {
+        "label": "No physical cartridge, retail case or native offline installation."
+       },
+       {
+        "label": "No separately verified paid DLC entitlement is included in the supplier offer."
+       },
+       {
+        "label": "A Plague Tale: Requiem is a separate sequel, not included here."
+       }
+      ]
+     }
+    ],
+    "gameplayPillars": [
+     {
+      "title": "Observe before moving",
+      "description": "Watch routes, cover and sightlines before crossing exposed ground. Direct confrontation is not the default solution; a carefully timed distraction can make a safer opening.",
+      "imageUrl": "https://www.asobostudio.com/files/games/gallery/aplaguetale-innocence-14logo.jpg"
+     },
+     {
+      "title": "Protect Hugo",
+      "description": "The journey links movement and decisions to the safety of Amicia's younger brother. Staying together and using companion assistance are part of progressing through obstacles.",
+      "imageUrl": "https://www.asobostudio.com/files/games/gallery/aplaguetale-innocence-06logo.jpg"
+     },
+     {
+      "title": "Light against the swarm",
+      "description": "Torches, braziers and other light sources establish safe space around the rats. Read the environment before committing to a route that may leave the children exposed.",
+      "imageUrl": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/752590/ss_ba6b32d1aa79e4d45b8fdc81b99bbfe30cf2b848.1920x1080.jpg?t=1784712345"
+     },
+     {
+      "title": "The sling as a tool",
+      "description": "Amicia's sling supports both combat and environmental interaction. Different situations ask for precise timing and ammunition choices rather than indiscriminate shooting.",
+      "imageUrl": "https://www.asobostudio.com/files/games/gallery/aplaguetale-innocence-05logo.jpg"
+     },
+     {
+      "title": "Alchemy changes the route",
+      "description": "Crafted ammunition can ignite or extinguish fires, distract threats or open opportunities. Unlocks broaden the available solutions as the story advances. Illustration: kuanpunchman, featured by PlayStation Blog (2021); not a Switch performance capture.",
+      "imageUrl": "https://live.staticflickr.com/65535/51343847898_eae79752b8_b.jpg"
+     },
+     {
+      "title": "Companions and traversal",
+      "description": "Allies contribute to obstacles and puzzles. Ruins, mechanisms and narrow routes interrupt the journey with tasks that require more than simply following a waypoint.",
+      "imageUrl": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/752590/ss_1a943974c938d370f33f1c0727b77d75f66168bb.1920x1080.jpg?t=1784712345"
+     },
+     {
+      "title": "Scavenge and upgrade",
+      "description": "Look for materials and workbenches to improve the sling, carrying capacity and crafting. Spending everything on consumables can delay useful equipment improvements.",
+      "imageUrl": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/752590/ss_dc1d4b2aef9ee44b300229f47fff802dd075ffc9.1920x1080.jpg?t=1784712345"
+     },
+     {
+      "title": "Optional discoveries",
+      "description": "Gifts, curiosities and Hugo's flowers add context beyond the main path. Chapter selection helps revisit missed discoveries; exploration remains within authored levels.",
+      "imageUrl": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/752590/ss_bc6e26af8421956951d735902fe4d79e9e4c81d8.1920x1080.jpg?t=1784712345"
+     }
+    ],
+    "worldSummary": "The setting is a fictionalized France in 1348, shaped by war, plague and a supernatural mystery. Amicia and Hugo are children trying to survive these forces, not soldiers conquering a map. Their bond provides continuity as the route moves through villages, fields, churches, battlefields and ruined architecture.\n\nThe panels below explore characters and world themes without retelling the ending; they are editorial story sections, not a replacement for the game's chapter names. The complete chapter guide is linked separately. This is historical fantasy, not a documentary account of medieval events.",
+    "storyChapters": [
+     {
+      "title": "Amicia: learning to protect",
+      "body": "Amicia becomes responsible for a vulnerable younger brother while confronting dangers far beyond her previous life. The story follows the emotional cost of that responsibility. Illustration: AloyUltra, featured in PlayStation Blog, 7 June 2019; a game-world image, not a Switch graphics benchmark.",
+      "imageUrl": "https://live.staticflickr.com/65535/48016283682_35bd315514_b.jpg"
+     },
+     {
+      "title": "The bond between siblings",
+      "body": "Hugo and Amicia must learn how to rely on one another. Moments of trust and reassurance matter alongside escape sequences and threats. Illustration: tantfuriosa, featured in PlayStation Blog, 7 June 2019; a game-world image, not a Switch graphics benchmark.",
+      "imageUrl": "https://live.staticflickr.com/65535/48016208738_41843a805e_b.jpg"
+     },
+     {
+      "title": "Searching for shelter",
+      "body": "An imposing castle can suggest safety, but the journey repeatedly asks what it takes to make a hostile place habitable. Refuge is a continuing need rather than a permanent guarantee. Illustration: IceWolfWarFare, featured in PlayStation Blog, 7 June 2019; a game-world image, not a Switch graphics benchmark.",
+      "imageUrl": "https://live.staticflickr.com/65535/48016283567_92d131b062_b.jpg"
+     },
+     {
+      "title": "The plague made visible",
+      "body": "The rats are a supernatural threat as well as the central visual symbol of devastation. Their swarms turn architecture and darkness into immediate obstacles. Illustration: hokkai.do_ga, featured in PlayStation Blog, 7 June 2019; a game-world image, not a Switch graphics benchmark.",
+      "imageUrl": "https://live.staticflickr.com/65535/48016197421_217568916e_b.jpg"
+     },
+     {
+      "title": "Violence beyond the rats",
+      "body": "Human pursuers and the traces of war make the setting threatening even where the swarm is absent. The children navigate a society destabilized by fear. Illustration: tinymarsh_gamer, featured in PlayStation Blog, 7 June 2019; a game-world image, not a Switch graphics benchmark.",
+      "imageUrl": "https://live.staticflickr.com/65535/48016283447_bf762a2cc0_b.jpg"
+     },
+     {
+      "title": "A fragile circle of light",
+      "body": "Light offers temporary protection in a world where darkness may conceal danger. This recurring visual idea also underpins the environmental puzzles. Illustration: torqueman_captures, featured in PlayStation Blog, 7 June 2019; a game-world image, not a Switch graphics benchmark.",
+      "imageUrl": "https://live.staticflickr.com/65535/48016197221_7886db1086_b.jpg"
+     }
+    ],
+    "galleryImages": [
+     {
+      "url": "/api/files/products/prd_b73635742b2649fc/gallery-1-8f8bff86a65d0612.webp",
+      "alt": "A Plague Tale: Innocence - Cloud Version screenshot 1"
+     },
+     {
+      "url": "/api/files/products/prd_b73635742b2649fc/gallery-2-2ae8d10b36394695.webp",
+      "alt": "A Plague Tale: Innocence - Cloud Version screenshot 2"
+     },
+     {
+      "url": "/api/files/products/prd_b73635742b2649fc/gallery-3-8f69bb6003e3ea76.webp",
+      "alt": "A Plague Tale: Innocence - Cloud Version screenshot 3"
+     },
+     {
+      "url": "/api/files/products/prd_b73635742b2649fc/gallery-4-cc82fe16d043ebc1.webp",
+      "alt": "A Plague Tale: Innocence - Cloud Version screenshot 4"
+     },
+     {
+      "url": "/api/files/products/prd_b73635742b2649fc/gallery-5-f2c16cd8eb17798e.webp",
+      "alt": "A Plague Tale: Innocence - Cloud Version screenshot 5"
+     },
+     {
+      "url": "/api/files/products/prd_b73635742b2649fc/gallery-6-c47901e4594daf3f.webp",
+      "alt": "A Plague Tale: Innocence - Cloud Version screenshot 6"
+     }
+    ],
+    "features": [
+     "Single-player narrative adventure.",
+     "Third-person stealth and observation.",
+     "Environmental puzzles built around light and rats.",
+     "Sling-based interactions and combat.",
+     "Craftable alchemical ammunition.",
+     "Equipment upgrades using scavenged materials.",
+     "Companion assistance during traversal.",
+     "Optional gifts, curiosities and flowers.",
+     "Sixteen main chapters plus an epilogue.",
+     "Original score by Olivier Deriviere.",
+     "Free cloud trial/launcher for connection testing.",
+     "TV, tabletop and handheld play with internet."
+    ],
+    "perfResolutionDocked": "Cloud-streamed; exact TV stream/rendering resolution was not verified.",
+    "perfResolutionHandheld": "Cloud-streamed; exact handheld stream/rendering resolution was not verified.",
+    "perfHdr": false,
+    "perfNotes": "PERFORMANCE REVIEW - NINTENDO SWITCH CLOUD VERSION\n\nArchitecture: Ubitus streams a remotely rendered game to the console. The launcher size is not the full game size. Stream quality, response and stability must be evaluated on the connection actually used. Neither the console's display resolution nor an uploaded video's resolution proves the game's rendering resolution. Sources: https://ubitus.ai/ubitus-assisted-with-focus-home-interactive-to-release-a-plague-tale-innocence-cloud-version-on-nintendo-switch-for-major-market-worldwide/ and https://www.nintendo.com/en-gb/Support/Purchases-Subscriptions/Games-Using-Cloud-Streaming-Technology-FAQ-1864576.html\n\nImage clarity and startup: Nintendo World Report's review, published 12 August 2021, described a soft, muddy image, difficult small text and approximately two-and-a-half minutes from the HOME screen to gameplay. It also reported reloads after breaks, visible pop-in and occasional missing-ground glitches. These were that reviewer's observations, not guaranteed behavior today. Source: https://www.nintendoworldreport.com/review/58068/a-plague-tale-innocence-cloud-edition-switch-review\n\nConnection variation: Rapid Reviews UK, published 22 August 2021, reported a generally successful streaming experience with occasional visual-quality drops when the connection weakened. Pure Nintendo, published 24 August 2021, reported slow loads and inactivity timeouts, including during waits, while still enjoying the game. These differing reports support testing rather than promising uniform results. Sources: https://www.rapidreviewsuk.com/a-plague-tale-innocence-making-the-switch-cloud-version/ and https://purenintendo.com/review-a-plague-tale-innocence-cloud-version-nintendo-switch/\n\nHandheld and TV: both modes are supported, but neither mode removes network dependence. No defensible current per-mode FPS range, exact stream resolution, bitrate, latency measurement, dynamic-resolution behavior or server graphics preset was verified. Those numeric/boolean fields remain unset where necessary. The published PS5/Xbox 4K and 60 FPS upgrade claims are not Switch Cloud measurements.\n\nPractical recommendation: use the free demo at the intended location, check responsiveness and dark-scene clarity, and test a longer session before paying. Do not rely on sleep mode as if the remote session were a locally suspended game. A successful test does not guarantee future connection quality. Iraq service availability and the supplied account were not tested.\n\nEvidence reviewed on 2026-08-28. No original hands-on performance test was conducted for this file. No unverified Switch patch number is assigned.",
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "deviceModel": "Nintendo Switch family",
+      "informationStatus": "partial",
+      "unavailableReason": "Supported play modes and historical qualitative cloud reviews are documented. Exact current per-mode resolution, FPS, network latency, server preset and tested hardware revision are not independently established.",
+      "handheld": {
+       "supported": true,
+       "resolution": "Cloud stream; exact delivered resolution not verified.",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Cloud streaming",
+       "notes": "Supported by Nintendo. Not a native local render; no measured resolution/FPS pair is claimed. Nintendo Switch 1 does not output HDR or VRR. Internet remains mandatory in this mode."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "Cloud stream; exact delivered resolution not verified.",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Cloud streaming",
+       "notes": "Supported by Nintendo. Not a native local render; no measured resolution/FPS pair is claimed. Nintendo Switch 1 does not output HDR or VRR. Internet remains mandatory in this mode."
+      },
+      "modes": [
+       {
+        "name": "Cloud streaming",
+        "hdr": false,
+        "vrr": false,
+        "notes": "No separately verified performance/quality selection or per-mode benchmark is asserted for this cloud launcher."
+       }
+      ],
+      "upscaling": "The server upscaling implementation has not been verified for this Switch stream.",
+      "rayTracingMode": "No ray-tracing mode has been verified for this Switch Cloud release.",
+      "loadingTime": "Approximately 150 seconds in a historical review",
+      "loadingNotes": "Nintendo World Report reported roughly 2.5 minutes from the HOME screen to gameplay in its review published 2021-08-12. This includes cloud connection/startup; it is not a controlled local-storage benchmark or a present-day guarantee.",
+      "sourceName": "Nintendo product/support pages; Ubitus; Nintendo World Report; Rapid Reviews UK; Pure Nintendo",
+      "sourceUrl": "https://www.nintendoworldreport.com/review/58068/a-plague-tale-innocence-cloud-edition-switch-review",
+      "verifiedAt": "2026-08-28",
+      "verificationStatus": "partial",
+      "performanceNotes": "See the full Performance Review above for attributed reports and evidence limitations. The separate Nintendo Switch 2 record documents compatibility and explicitly identifies unverified cloud-stream measurements; it is not a new benchmark."
+     },
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "informationStatus": "partial",
+      "unavailableReason": "Nintendo's product metadata lists Nintendo Switch 2 compatibility as supported with no issues found. This confirms compatibility, not measured resolution or frame rate. No independently verified Nintendo Switch 2 handheld or TV cloud-stream resolution/FPS measurement was established. The game remains a Nintendo Switch Cloud release, not a native Switch 2 edition.",
+      "handheld": {
+       "supported": true,
+       "resolution": "Cloud streaming; exact Nintendo Switch 2 handheld resolution has not been verified.",
+       "fps": "Cloud streaming; Nintendo Switch 2 handheld FPS has not been independently measured.",
+       "mode": "Cloud streaming via backward compatibility",
+       "notes": "The handheld display's maximum resolution and refresh rate do not establish the resolution or FPS delivered by this game. Continuous internet is required. No 1080p, 60 FPS or 120 FPS performance guarantee is made."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "Cloud streaming; exact Nintendo Switch 2 TV-mode resolution has not been verified.",
+       "fps": "Cloud streaming; Nintendo Switch 2 TV-mode FPS has not been independently measured.",
+       "mode": "Cloud streaming via backward compatibility",
+       "notes": "TV mode does not turn this cloud release into the enhanced PS5/Xbox version. No 4K or 60 FPS guarantee is made. Actual stream quality depends on the service and connection; test the demo at the intended location."
+      },
+      "sourceName": "Nintendo Europe - product compatibility metadata and cloud requirements",
+      "sourceUrl": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-download-software/A-Plague-Tale-Innocence-Cloud-Version-2002534.html",
+      "verifiedAt": "2026-08-28",
+      "verificationStatus": "partial",
+      "performanceNotes": "Compatibility evidence is separate from performance evidence. This record was added because the importer requires Nintendo Switch 2 information. It does not claim a hands-on test, a native Switch 2 upgrade or unsupported handheld/TV modes. Use the complete Performance Review for historical Switch 1 reports, which must not be relabeled as Switch 2 measurements."
+     }
+    ],
+    "downloadSizeGb": 0.087,
+    "microSdRecommended": false,
+    "storageNotes": "Nintendo Europe lists an 87.0 MB launcher download (0.087 GB using decimal units), checked 2026-08-28. The main game is streamed, so PC/PS/Xbox installation sizes must not be imported here. Ubitus mentioned approximately 50 MB at the 2021 launch; the current Nintendo listing takes precedence. Allow spare space for the launcher and updates. No full offline installation is provided.",
+    "languagesAudio": [
+     "English"
+    ],
+    "languagesText": [
+     "English",
+     "French",
+     "German",
+     "Italian",
+     "Spanish",
+     "Portuguese",
+     "Russian",
+     "Japanese",
+     "Korean",
+     "Chinese"
+    ],
+    "arabicSupport": false,
+    "mpLocalPlayers": false,
+    "mpOnlinePlayers": false,
+    "mpCoop": false,
+    "mpCompetitive": false,
+    "mpSplitScreen": false,
+    "mpLocalWireless": false,
+    "dlc": [
+     {
+      "name": "Switch Cloud DLC availability",
+      "description": "No separately purchasable Switch Cloud DLC or DLC entitlement in the supplied offer was verified. Coats of Arms is a real cosmetic add-on on other platforms, offering alternative outfits; that does not establish inclusion or separate availability for this account. No DLC account types are created. Requiem is a separate game, not a story expansion for Innocence."
+     }
+    ],
+    "guides": [
+     {
+      "title": "Full campaign chapter index",
+      "summary": "Walkthrough links for all 16 chapters and the epilogue. Contains spoilers; useful when stuck rather than required reading before playing.",
+      "url": "https://www.powerpyx.com/a-plague-tale-innocence-full-walkthrough-all-chapters/"
+     },
+     {
+      "title": "Gifts, curiosities, flowers and alchemist carts",
+      "summary": "Locations for the optional collectibles. There are 50 codex collectibles plus five alchemist carts; these are separate categories, not 55 flowers.",
+      "url": "https://www.powerpyx.com/a-plague-tale-innocence-all-collectible-locations-herbariums-curiosities-gifts-carts/"
+     },
+     {
+      "title": "Completion planning and equipment upgrades",
+      "summary": "A guide to a thorough original-game completion route. Trophy instructions are PlayStation-specific; do not promise a Nintendo trophy system. Core collectible and upgrade guidance remains useful.",
+      "url": "https://www.powerpyx.com/a-plague-tale-innocence-trophy-guide-roadmap/"
+     },
+     {
+      "title": "Chapter 7: companion and light puzzles",
+      "summary": "Guidance for the watermill, companion controls, aqueduct and moving-light puzzles. Includes story spoilers and platform-specific button notation.",
+      "url": "https://www.powerpyx.com/a-plague-tale-innocence-chapter-7-the-path-before-us-walkthrough/"
+     },
+     {
+      "title": "Chapter 9: entering the town",
+      "summary": "Stealth and environmental guidance for In the Shadow of Ramparts. Read only once you reach that chapter.",
+      "url": "https://www.powerpyx.com/a-plague-tale-innocence-chapter-9-in-the-shadow-of-ramparts-walkthrough/"
+     },
+     {
+      "title": "Chapter 10: the university",
+      "summary": "A route through The Way of Roses, with collectible guidance. Spoilers are present.",
+      "url": "https://www.powerpyx.com/a-plague-tale-innocence-chapter-10-the-way-of-roses-walkthrough/"
+     },
+     {
+      "title": "Chapter 8: exploring the refuge",
+      "summary": "Guidance for Our Home and its optional discoveries. The guide describes the original game; control labels may differ on Switch.",
+      "url": "https://www.powerpyx.com/a-plague-tale-innocence-chapter-8-our-home-walkthrough/"
+     },
+     {
+      "title": "Nintendo cloud access and connection guide",
+      "summary": "Explains the free trial, paid access, account requirements and why stable internet is necessary.",
+      "url": "https://www.nintendo.com/en-gb/Support/Purchases-Subscriptions/Games-Using-Cloud-Streaming-Technology-FAQ-1864576.html"
+     }
+    ],
+    "completionMain": 13,
+    "completionAll": 15,
+    "faq": [
+     {
+      "q": "Can I play the Offline Account option without internet?",
+      "a": "No. Offline Account is the merchant's account-use label. This Cloud Version still needs a stable, continuous internet connection."
+     },
+     {
+      "q": "Is this a native Nintendo Switch port?",
+      "a": "No. A small launcher connects to a remotely running game. The full game is not installed locally."
+     },
+     {
+      "q": "Is the free download the complete purchased game?",
+      "a": "No. The launcher/trial checks the service; full play requires the appropriate paid access entitlement."
+     },
+     {
+      "q": "Should I test it before purchase?",
+      "a": "Yes. Try the free demo from your intended location and connection. Cloud availability and quality in Iraq were not verified in this research."
+     },
+     {
+      "q": "Does Nintendo Switch Online membership replace the access pass?",
+      "a": "No. Streaming itself does not require Nintendo Switch Online, and that membership does not buy this game's access entitlement."
+     },
+     {
+      "q": "Does internet access mean this is a multiplayer game?",
+      "a": "No. It is a one-player adventure. There is no co-op, competitive, split-screen or local-wireless mode."
+     },
+     {
+      "q": "Is the game locked to Chinese?",
+      "a": "No Chinese-only restriction is established by the evidence. Nintendo Europe lists several languages. The supplied account's region and restrictions remain unconfirmed, so an unrestricted-language guarantee is not made."
+     },
+     {
+      "q": "Is Arabic supported?",
+      "a": "Arabic is not listed among the checked official languages."
+     },
+     {
+      "q": "Which voice languages are guaranteed for this account?",
+      "a": "The supplier account voice menu has not been inspected. English speech is evidenced in Switch material. The original PC game lists English, French and German voices, but that list should not be assumed to confirm every Switch account."
+     },
+     {
+      "q": "Can I play in handheld or TV mode?",
+      "a": "Yes. Nintendo lists handheld, tabletop and TV modes; all continue to require cloud connectivity."
+     },
+     {
+      "q": "Will it work on Nintendo Switch 2?",
+      "a": "Nintendo lists backward compatibility as supported. This does not make the product a Switch 2 Edition or establish improved frame rate/resolution."
+     },
+     {
+      "q": "Does it support 4K and 60 FPS on Switch?",
+      "a": "Those claims in the 2021 announcement concern PS5/Xbox enhancements. No verified per-mode Switch resolution/FPS pair is assigned here."
+     },
+     {
+      "q": "What happens when I pause or use sleep mode?",
+      "a": "Historical Switch reviews report server timeouts and reconnect/loading delays after breaks. Do not treat the remote session as guaranteed local suspend/resume."
+     },
+     {
+      "q": "Is Nintendo Switch Online Save Data Cloud supported?",
+      "a": "Nintendo explicitly lists that backup feature as unsupported for this software; server-run gameplay is a different use of cloud technology."
+     },
+     {
+      "q": "How much storage is needed?",
+      "a": "The checked Nintendo Europe page lists an 87.0 MB launcher download. A separate exact required-free-space figure was not published there."
+     },
+     {
+      "q": "How long is the campaign?",
+      "a": "Plan roughly 12-15 hours for a first campaign according to Rapid Reviews UK. Completion time varies with exploration, replay and cloud loading; the numeric 13/15-hour values are planning estimates."
+     },
+     {
+      "q": "Are the score fields based on the Switch edition?",
+      "a": "The four selected reviews cover the Switch Cloud release. Their normalized arithmetic mean is 8.1/10. No unverified Switch-specific Metacritic, OpenCritic or user aggregate is substituted."
+     },
+     {
+      "q": "Does this offer include DLC or Requiem?",
+      "a": "Neither a separate Switch DLC entitlement nor Requiem is confirmed in the supplied offer. Only the base Innocence cloud game is listed."
+     },
+     {
+      "q": "Can I receive or trade a physical Switch cartridge?",
+      "a": "No physical cartridge is part of this cloud product. No trade-in offer is configured; the zero value is not a used-cartridge valuation."
+     },
+     {
+      "q": "Is it appropriate for young children?",
+      "a": "The checked ratings are PEGI 18 and ESRB Mature. Expect intense violence, death, distressing situations, strong language and frightening rat swarms."
+     },
+     {
+      "q": "Can I return later for missed collectibles?",
+      "a": "The game has chapter selection. Collection guides can help revisit discoveries; equipment-upgrade planning may still require replaying material-gathering sections."
+     }
+    ],
+    "verdictScore": 8.1,
+    "verdictSummary": "Review roundup: 8.1/10 is the arithmetic mean of four identified Switch Cloud reviews, with Rapid Reviews UK's 4.5/5 normalized to 9/10. This is a sourced editorial summary, not a new test.\n\nThe attraction is a focused story, memorable atmosphere and the interaction between stealth, light and the rat swarms. The trade-off is reliance on a live cloud service: reviewers differ on clarity and smoothness, and several mention loading or timeout friction. For this edition, a successful local demo test matters more than an attractive specification borrowed from another console.\n\nNo separately verified Switch-specific Metacritic, OpenCritic or user aggregate is assigned. The original PC game's Metacritic listing and the broader OpenCritic page do not establish a Cloud Version score. All performance observations in this file retain their source and historical context.",
+    "verdictPros": [
+     "An emotionally engaging sibling-centered story.",
+     "Strong atmosphere and carefully staged environments.",
+     "Light and rat swarms give environmental puzzles a distinct identity.",
+     "Voice performances and music support the dramatic tone.",
+     "Stealth, crafting and exploration complement the narrative.",
+     "A free trial allows checking cloud suitability before purchase."
+    ],
+    "verdictCons": [
+     "Continuous internet and live service access are mandatory.",
+     "Visual clarity can deteriorate with the stream.",
+     "Historical reviews report slow startup and reloads.",
+     "Idle timeouts can interrupt the pace.",
+     "Portability depends on a suitable connection, not only battery life.",
+     "No local offline installation or physical Switch cartridge.",
+     "No verified per-mode Switch performance measurements are supplied."
+    ],
+    "reviews": [
+     {
+      "source": "Nintendo World Report - Alex Orona - Switch Cloud - 2021-08-12",
+      "score": "7/10",
+      "quote": "Summary, not a verbatim quote: admired the narrative and performances, but found the streamed image soft and the startup/reconnect process inconvenient.",
+      "url": "https://www.nintendoworldreport.com/review/58068/a-plague-tale-innocence-cloud-edition-switch-review"
+     },
+     {
+      "source": "Pure Nintendo - Kirstie Summers - Switch Cloud - 2021-08-24",
+      "score": "9/10",
+      "quote": "Summary, not a verbatim quote: strongly praised the story and design while acknowledging lengthy loads and inactivity timeouts.",
+      "url": "https://purenintendo.com/review-a-plague-tale-innocence-cloud-version-nintendo-switch/"
+     },
+     {
+      "source": "Rapid Reviews UK - Toby Mortaro - Switch Cloud - 2021-08-22",
+      "score": "4.5/5",
+      "quote": "Summary, not a verbatim quote: reported an enjoyable, generally stable experience on the tested connection, with occasional visual drops and praise for the score.",
+      "url": "https://www.rapidreviewsuk.com/a-plague-tale-innocence-making-the-switch-cloud-version/"
+     },
+     {
+      "source": "Nindie Spotlight - Justin Nation - Switch Cloud - 2021-07-06",
+      "score": "7.4/10",
+      "quote": "Summary, not a verbatim quote: highlighted engrossing storytelling, voice work and the combination of tense stealth and puzzles.",
+      "url": "https://www.nindiespotlight.com/game_profile.cfm?game=a-plague-tale-innocence-cloud-version-switch"
+     }
+    ],
+    "timeline": [
+     {
+      "date": "2018-12-06",
+      "title": "Official environment showcase",
+      "body": "Focus presented the game's castles, villages, catacombs, battlefields and forests ahead of the original release."
+     },
+     {
+      "date": "2019-05-07",
+      "title": "Original soundtrack album",
+      "body": "Olivier Deriviere's Bandcamp album lists this release date; the Deluxe soundtrack includes bonus music, not a Switch game edition."
+     },
+     {
+      "date": "2019-05-09",
+      "title": "Asobo explains the rat technology",
+      "body": "The developer published a technical article on PlayStation Blog about the swarm simulation; it is original-game background, not a Switch benchmark."
+     },
+     {
+      "date": "2019-05-14",
+      "title": "Original game release",
+      "body": "Innocence first launched on PC, PlayStation 4 and Xbox One. This is not its Switch release date."
+     },
+     {
+      "date": "2021-06-17",
+      "title": "Nintendo Switch Cloud release announced",
+      "body": "Focus announced the Switch cloud version alongside separate enhancements for PS5 and Xbox Series consoles."
+     },
+     {
+      "date": "2021-07-06",
+      "title": "Nintendo Switch Cloud Version released",
+      "body": "The Switch edition launched as a streamed game with a launcher and paid access."
+     },
+     {
+      "date": "2021-07-07",
+      "title": "Ubitus describes the cloud service",
+      "body": "The cloud provider published its release announcement and explained the remote-rendering approach."
+     },
+     {
+      "date": "2021-08-12",
+      "title": "Nintendo World Report review",
+      "body": "A Switch Cloud review documented both narrative strengths and streaming limitations."
+     },
+     {
+      "date": "2021-08-22",
+      "title": "Rapid Reviews UK review",
+      "body": "A separate Switch review described a more positive connection experience."
+     },
+     {
+      "date": "2021-08-24",
+      "title": "Pure Nintendo review",
+      "body": "Another Switch review praised the adventure while noting loading and timeout issues."
+     }
+    ],
+    "patchNotes": [
+     {
+      "version": "Switch Cloud maintenance information",
+      "body": "No reliable public numbered Switch Cloud changelog was verified as of 2026-08-28. The launcher and remote service can have different maintenance paths. Do not copy Steam build numbers or the PlayStation cross-generation save patch into this listing. Follow Nintendo and the publisher for service notices; this statement does not claim that the service has never been updated."
+     }
+    ],
+    "soundtrack": [
+     {
+      "title": "A Plague Tale",
+      "url": "https://olivierderiviere.bandcamp.com/track/a-plague-tale"
+     },
+     {
+      "title": "Father",
+      "url": "https://olivierderiviere.bandcamp.com/track/father"
+     },
+     {
+      "title": "Grieving",
+      "url": "https://olivierderiviere.bandcamp.com/track/grieving"
+     },
+     {
+      "title": "In Shock",
+      "url": "https://olivierderiviere.bandcamp.com/track/in-shock"
+     },
+     {
+      "title": "The Inquisition",
+      "url": "https://olivierderiviere.bandcamp.com/track/the-inquisition"
+     },
+     {
+      "title": "Orphans",
+      "url": "https://olivierderiviere.bandcamp.com/track/orphans"
+     },
+     {
+      "title": "Strangers",
+      "url": "https://olivierderiviere.bandcamp.com/track/strangers"
+     },
+     {
+      "title": "Escape",
+      "url": "https://olivierderiviere.bandcamp.com/track/escape"
+     },
+     {
+      "title": "Big Sister",
+      "url": "https://olivierderiviere.bandcamp.com/track/big-sister"
+     },
+     {
+      "title": "The Killing",
+      "url": "https://olivierderiviere.bandcamp.com/track/the-killing"
+     },
+     {
+      "title": "Adulthood",
+      "url": "https://olivierderiviere.bandcamp.com/track/adulthood"
+     },
+     {
+      "title": "Together Forever",
+      "url": "https://olivierderiviere.bandcamp.com/track/together-forever"
+     },
+     {
+      "title": "The Rats",
+      "url": "https://olivierderiviere.bandcamp.com/track/the-rats"
+     },
+     {
+      "title": "Little Brother",
+      "url": "https://olivierderiviere.bandcamp.com/track/little-brother"
+     },
+     {
+      "title": "By The River",
+      "url": "https://olivierderiviere.bandcamp.com/track/by-the-river"
+     },
+     {
+      "title": "Massacre",
+      "url": "https://olivierderiviere.bandcamp.com/track/massacre"
+     },
+     {
+      "title": "Prisoners",
+      "url": "https://olivierderiviere.bandcamp.com/track/prisoners"
+     },
+     {
+      "title": "Mystical Castle",
+      "url": "https://olivierderiviere.bandcamp.com/track/mystical-castle"
+     },
+     {
+      "title": "The Shelter",
+      "url": "https://olivierderiviere.bandcamp.com/track/the-shelter"
+     },
+     {
+      "title": "Exodus",
+      "url": "https://olivierderiviere.bandcamp.com/track/exodus"
+     },
+     {
+      "title": "The son of a Blacksmith",
+      "url": "https://olivierderiviere.bandcamp.com/track/the-son-of-a-blacksmith"
+     },
+     {
+      "title": "She Is Alive",
+      "url": "https://olivierderiviere.bandcamp.com/track/she-is-alive"
+     },
+     {
+      "title": "Beyond The Horizon",
+      "url": "https://olivierderiviere.bandcamp.com/track/beyond-the-horizon"
+     },
+     {
+      "title": "Reunited",
+      "url": "https://olivierderiviere.bandcamp.com/track/reunited"
+     },
+     {
+      "title": "I'm Sorry",
+      "url": "https://olivierderiviere.bandcamp.com/track/im-sorry"
+     },
+     {
+      "title": "The Wrath",
+      "url": "https://olivierderiviere.bandcamp.com/track/the-wrath"
+     },
+     {
+      "title": "Bedtime Story (Bandcamp Exclusive)",
+      "url": "https://olivierderiviere.bandcamp.com/track/bedtime-story-bandcamp-exclusive"
+     },
+     {
+      "title": "Deceiving Appearences (Bandcamp Exclusive)",
+      "url": "https://olivierderiviere.bandcamp.com/track/deceiving-appearences-bandcamp-exclusive"
+     },
+     {
+      "title": "No Turning Back (Bandcamp Exclusive)",
+      "url": "https://olivierderiviere.bandcamp.com/track/no-turning-back-bandcamp-exclusive"
+     },
+     {
+      "title": "Sacrifice (Bandcamp Exclusive)",
+      "url": "https://olivierderiviere.bandcamp.com/track/sacrifice-bandcamp-exclusive"
+     },
+     {
+      "title": "Sister's love (Bandcamp Exclusive)",
+      "url": "https://olivierderiviere.bandcamp.com/track/sisters-love-bandcamp-exclusive"
+     },
+     {
+      "title": "The Alchemy (Bandcamp Exclusive)",
+      "url": "https://olivierderiviere.bandcamp.com/track/the-alchemy-bandcamp-exclusive"
+     },
+     {
+      "title": "The Call (Bandcamp Exclusive)",
+      "url": "https://olivierderiviere.bandcamp.com/track/the-call-bandcamp-exclusive"
+     },
+     {
+      "title": "The Plague (Bandcamp Exclusive)",
+      "url": "https://olivierderiviere.bandcamp.com/track/the-plague-bandcamp-exclusive"
+     },
+     {
+      "title": "The Night Before Leaving (Bandcamp Exclusive)",
+      "url": "https://olivierderiviere.bandcamp.com/track/the-night-before-leaving-bandcamp-exclusive"
+     },
+     {
+      "title": "They Don't Know (Bandcamp Exclusive)",
+      "url": "https://olivierderiviere.bandcamp.com/track/they-dont-know-bandcamp-exclusive"
+     },
+     {
+      "title": "Freedom (Bandcamp Exclusive)",
+      "url": "https://olivierderiviere.bandcamp.com/track/freedom-bandcamp-exclusive"
+     },
+     {
+      "title": "The Bound (Bandcamp Exclusive)",
+      "url": "https://olivierderiviere.bandcamp.com/track/the-bound-bandcamp-exclusive"
+     }
+    ],
+    "seriesName": "A Plague Tale",
+    "seriesEntries": [
+     "A Plague Tale: Requiem",
+     "Resonance: A Plague Tale Legacy"
+    ],
+    "studioName": "Asobo Studio",
+    "studioUrl": "https://www.asobostudio.com/",
+    "studioLocation": "Bordeaux, France",
+    "studioAbout": "Asobo Studio is a French development studio founded in 2002. Its work includes A Plague Tale and Microsoft Flight Simulator. Asobo developed Innocence, Focus published it, and Ubitus supplied the Switch cloud-streaming solution. These are separate roles; Ubitus is not substituted as the original game developer.",
+    "setupNeeds": [
+     "A compatible Nintendo Switch-family console with an up-to-date system.",
+     "A Nintendo Account with the appropriate paid cloud-game entitlement.",
+     "Download and use the cloud launcher; a free trial is not full-game ownership.",
+     "A stable, continuous internet connection throughout play.",
+     "A successful local demo test before purchase.",
+     "Enough free storage for the small launcher and subsequent updates.",
+     "Suitable controls for the selected TV, tabletop or handheld mode.",
+     "No Nintendo Switch Online subscription is required for the streaming itself.",
+     "Use the licensed account as required by the service; do not assume another profile inherits cloud access.",
+     "Offline Account does not mean offline gameplay for this title."
+    ],
+    "sources": [
+     {
+      "name": "Nintendo Europe - Switch release, languages, modes, launcher size, NSUID/product metadata and Switch 2 compatibility",
+      "url": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-download-software/A-Plague-Tale-Innocence-Cloud-Version-2002534.html"
+     },
+     {
+      "name": "Nintendo Support - cloud access, account entitlement and internet/NSO requirements",
+      "url": "https://www.nintendo.com/en-gb/Support/Purchases-Subscriptions/Games-Using-Cloud-Streaming-Technology-FAQ-1864576.html"
+     },
+     {
+      "name": "Asobo Studio - original game, setting, official media and trailers",
+      "url": "https://www.asobostudio.com/games/plague-tale-innocence"
+     },
+     {
+      "name": "Focus Entertainment - original game overview",
+      "url": "https://www.focus-entmt.com/en/games/a-plague-tale-innocence"
+     },
+     {
+      "name": "Focus - Switch Cloud announcement, 17 June 2021",
+      "url": "https://www.focus-entmt.com/en/news/a-plague-tale-innocence-comes-in-4k-uhd-to-xbox-series-x-playstation-5-and-as-a-cloud-version-to-nintendo-switch-on-july-6"
+     },
+     {
+      "name": "Focus - Switch Cloud launch, 6 July 2021",
+      "url": "https://www.focus-entmt.com/en/news/a-plague-tale-innocence-now-available-on-xbox-series-xs-and-playstation-5-up-to-4k-uhd-and-as-a-cloud-version-on-nintendo-switch"
+     },
+     {
+      "name": "Ubitus - Switch Cloud technology and launch",
+      "url": "https://ubitus.ai/ubitus-assisted-with-focus-home-interactive-to-release-a-plague-tale-innocence-cloud-version-on-nintendo-switch-for-major-market-worldwide/"
+     },
+     {
+      "name": "Nintendo World Report - original Switch Cloud review",
+      "url": "https://www.nintendoworldreport.com/review/58068/a-plague-tale-innocence-cloud-edition-switch-review"
+     },
+     {
+      "name": "Pure Nintendo - original Switch Cloud review",
+      "url": "https://purenintendo.com/review-a-plague-tale-innocence-cloud-version-nintendo-switch/"
+     },
+     {
+      "name": "Rapid Reviews UK - original Switch Cloud review and campaign duration",
+      "url": "https://www.rapidreviewsuk.com/a-plague-tale-innocence-making-the-switch-cloud-version/"
+     },
+     {
+      "name": "Nindie Spotlight - original Switch Cloud review",
+      "url": "https://www.nindiespotlight.com/game_profile.cfm?game=a-plague-tale-innocence-cloud-version-switch"
+     },
+     {
+      "name": "Switch Scores - cross-check of four Switch Cloud review scores",
+      "url": "https://www.switchscores.com/games/6172/a-plague-tale-innocence-cloud-version"
+     },
+     {
+      "name": "Olivier Deriviere - official 38-track soundtrack album",
+      "url": "https://olivierderiviere.bandcamp.com/album/a-plague-tale-innocence-deluxe-edition"
+     },
+     {
+      "name": "PowerPyx - complete chapter index",
+      "url": "https://www.powerpyx.com/a-plague-tale-innocence-full-walkthrough-all-chapters/"
+     },
+     {
+      "name": "PowerPyx - collectible categories and locations",
+      "url": "https://www.powerpyx.com/a-plague-tale-innocence-all-collectible-locations-herbariums-curiosities-gifts-carts/"
+     },
+     {
+      "name": "PowerPyx - original-game completion and upgrade planning; trophy platform caveat",
+      "url": "https://www.powerpyx.com/a-plague-tale-innocence-trophy-guide-roadmap/"
+     },
+     {
+      "name": "PowerPyx - Chapter 7 mechanics and puzzles",
+      "url": "https://www.powerpyx.com/a-plague-tale-innocence-chapter-7-the-path-before-us-walkthrough/"
+     },
+     {
+      "name": "PowerPyx - Chapter 9 walkthrough",
+      "url": "https://www.powerpyx.com/a-plague-tale-innocence-chapter-9-in-the-shadow-of-ramparts-walkthrough/"
+     },
+     {
+      "name": "PowerPyx - Chapter 10 walkthrough",
+      "url": "https://www.powerpyx.com/a-plague-tale-innocence-chapter-10-the-way-of-roses-walkthrough/"
+     },
+     {
+      "name": "PowerPyx - Chapter 8 walkthrough",
+      "url": "https://www.powerpyx.com/a-plague-tale-innocence-chapter-8-our-home-walkthrough/"
+     },
+     {
+      "name": "Publisher Steam listing - promotional screenshots and original PC voice data; not Switch performance",
+      "url": "https://store.steampowered.com/app/752590/A_Plague_Tale_Innocence/"
+     },
+     {
+      "name": "Publisher Steam DLC list - Coats of Arms exists on PC, not proof of Switch inclusion",
+      "url": "https://store.steampowered.com/dlc/752590/A_Plague_Tale_Innocence/"
+     },
+     {
+      "name": "Publisher Epic listing - original PC language split and broader OpenCritic context",
+      "url": "https://store.epicgames.com/p/a-plague-tale-innocence?lang=en-US"
+     },
+     {
+      "name": "PlayStation Blog - Asobo explains the original rat simulation",
+      "url": "https://blog.playstation.com/2019/05/09/creating-a-sea-of-rats-in-a-plague-tale-innocence-out-may-14-on-ps4/"
+     },
+     {
+      "name": "PlayStation Blog - credited community world illustrations, 7 June 2019",
+      "url": "https://blog.playstation.com/2019/06/07/share-of-the-week-a-plague-tale-innocence/"
+     },
+     {
+      "name": "PlayStation Blog - credited light/puzzle illustration, 30 July 2021",
+      "url": "https://blog.playstation.com/2021/07/30/share-of-the-week-a-plague-tale-innocence-2/"
+     },
+     {
+      "name": "Focus - environment showcase, 6 December 2018",
+      "url": "https://www.focus-entmt.com/en/news/beautiful-screenshots-for-a-plague-tale-innocence-highlight-new-environments"
+     },
+     {
+      "name": "Asobo Studio - founding and studio background",
+      "url": "https://www.asobostudio.com/about-us"
+     },
+     {
+      "name": "Asobo Studio - series cross-check",
+      "url": "https://www.asobostudio.com/games"
+     }
+    ],
+    "boxContentsList": [],
+    "image": "https://www.asobostudio.com/files/games/top/plague-tale-top.jpg",
+    "banner": "https://www.asobostudio.com/files/games/gallery/aplaguetale-innocence-17logo.jpg",
+    "schemaId": "",
+    "batchImport": true,
+    "createdAt": "2026-08-28T18:53:08.757Z",
+    "updatedAt": "2026-08-28T18:53:08.757Z"
+   }
+  },
+  {
+   "id": "prd_e056bfabbf914721",
+   "slug": "arcade-archives-vs-super-mario-bros-switch",
+   "title": "Arcade Archives VS. SUPER MARIO BROS.",
+   "platform": "switch1",
+   "isHidden": false,
+   "hash": "e7ec8c4c8c999a8f4f7106bfb8fb6af15dfed4a1342798242cd1152b1e50bad1",
+   "images": [
+    {
+     "role": "front-box",
+     "field": "cartridgeImage",
+     "url": "https://banan.to/api/files/products/prd_e056bfabbf914721/front-7443cca46ce5cab2.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 96229,
+     "width": 303,
+     "height": 486,
+     "thumb": "review-workdir/thumbs/batch-001/arcade-archives-vs-super-mario-bros-switch__front-box-0.png"
+    },
+    {
+     "role": "front-box",
+     "field": "box_front_url",
+     "url": "https://images.launchbox-app.com/a150a641-02e7-4bbf-adeb-7fb79b0e4969.png",
+     "status": 200,
+     "contentType": "image/png",
+     "bytes": 76443,
+     "width": 293,
+     "height": 281,
+     "thumb": "review-workdir/thumbs/batch-001/arcade-archives-vs-super-mario-bros-switch__front-box-1.png"
+    },
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://banan.to/api/files/products/prd_e056bfabbf914721/square-ffb1ef3cf21beef1.png",
+     "status": 200,
+     "contentType": "image/png",
+     "bytes": 76443,
+     "width": 293,
+     "height": 281,
+     "thumb": "review-workdir/thumbs/batch-001/arcade-archives-vs-super-mario-bros-switch__square-card-2.png"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://banan.to/api/files/products/prd_e056bfabbf914721/cover-dfc48c5debe793b0.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "3d-texture",
+     "field": "coverHiResImage",
+     "url": "https://banan.to/api/files/products/prd_e056bfabbf914721/3d-texture-0662364bffe8c41c.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 527562,
+     "width": 2473,
+     "height": 1902,
+     "thumb": "review-workdir/thumbs/batch-001/arcade-archives-vs-super-mario-bros-switch__3d-texture-4.png"
+    },
+    {
+     "role": "listing",
+     "field": "image",
+     "url": "https://banan.to/api/files/products/prd_e056bfabbf914721/cover-dfc48c5debe793b0.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[0]",
+     "url": "https://banan.to/api/files/products/prd_e056bfabbf914721/banner-0-dfc48c5debe793b0.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[1]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000003432/03df298cde9e5da4aed7d4f3b8f276def99614410f061c06ea8f546c4fdfc48b",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 75444,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-001/arcade-archives-vs-super-mario-bros-switch__banner-7.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[2]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000003432/b083e720569cb85a516bbc7821ad8b65ebd2fa03ec0fb6b0364237427dcfe544",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 34624,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-001/arcade-archives-vs-super-mario-bros-switch__banner-8.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000003432/96f97ea7cfa5387f0be97718289a29d5b37fe909457c4ba9b68c52ebf40a6907",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 125024,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-001/arcade-archives-vs-super-mario-bros-switch__gallery-9.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[1]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000003432/8f2f8fd13f75a5b2107ba69f0b712bcd89d9827f669067d5ca3b6d577107c361",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 59375,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-001/arcade-archives-vs-super-mario-bros-switch__gallery-10.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[2]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000003432/2fe603deaa8624872a56fd20c836dba3fb5d6d917db948b90be0acb70769f95b",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 43790,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-001/arcade-archives-vs-super-mario-bros-switch__gallery-11.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[3]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000003432/ad78786e3c41b4753d60b5f88d4b161ab2d51ad9731d7871cda5b199604dde8d",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 72484,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-001/arcade-archives-vs-super-mario-bros-switch__gallery-12.png"
+    }
+   ],
+   "record": {
+    "title": "Arcade Archives VS. SUPER MARIO BROS.",
+    "titleEn": "Arcade Archives VS. SUPER MARIO BROS.",
+    "titleKu": "Arcade Archives VS. SUPER MARIO BROS.",
+    "slug": "arcade-archives-vs-super-mario-bros-switch",
+    "description": "A faithful emulation of Nintendo's 1986 VS. System arcade version of Super Mario Bros. Enemy and item placement differs from the NES home version, and Arcade Archives adds difficulty settings, CRT-style display options and online high-score rankings.",
+    "descriptionEn": "A faithful emulation of Nintendo's 1986 VS. System arcade version of Super Mario Bros. Enemy and item placement differs from the NES home version, and Arcade Archives adds difficulty settings, CRT-style display options and online high-score rankings.",
+    "descriptionKu": "A faithful emulation of Nintendo's 1986 VS. System arcade version of Super Mario Bros. Enemy and item placement differs from the NES home version, and Arcade Archives adds difficulty settings, CRT-style display options and online high-score rankings.",
+    "cartridgeImage": "/api/files/products/prd_e056bfabbf914721/front-7443cca46ce5cab2.jpg",
+    "nintendoCardImage": "/api/files/products/prd_e056bfabbf914721/square-ffb1ef3cf21beef1.png",
+    "coverHiResImage": "/api/files/products/prd_e056bfabbf914721/3d-texture-0662364bffe8c41c.webp",
+    "coverImage": "/api/files/products/prd_e056bfabbf914721/cover-dfc48c5debe793b0.avif",
+    "bannerImages": [
+     "/api/files/products/prd_e056bfabbf914721/banner-0-dfc48c5debe793b0.avif",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000003432/03df298cde9e5da4aed7d4f3b8f276def99614410f061c06ea8f546c4fdfc48b",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000003432/b083e720569cb85a516bbc7821ad8b65ebd2fa03ec0fb6b0364237427dcfe544"
+    ],
+    "gallery": [],
+    "youtubeTrailer": "https://www.arcadearchives.com/en/title/aca-061/",
+    "releaseDate": "2017-12-22",
+    "ageRating": "ESRB E / Mild Fantasy Violence",
+    "metacriticRating": 75,
+    "genres": [
+     "Arcade",
+     "2D Platformer",
+     "Action"
+    ],
+    "platform": "switch1",
+    "size": 0.098,
+    "numberOfPlayers": "1–2 local",
+    "supportedLanguages": "Japanese / English; French / German / Italian / Spanish; Additional regional English/French variants in Nintendo storefront",
+    "hardwareModel": "",
+    "colorEdition": "",
+    "storageCapacity": "",
+    "screenSpecs": "",
+    "batteryLife": "",
+    "boxContents": [],
+    "boxContentsText": "",
+    "warrantyCondition": "",
+    "connectivity": "",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "Global",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "",
+    "redemptionSteps": [],
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 5000,
+    "cost": 1250,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": false,
+    "displayOrder": 0,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "Offline Account",
+      "description": "Offline account access",
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_account",
+      "name": "Online Account",
+      "description": "Online account access",
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "types": [
+     {
+      "id": "standard_offline",
+      "name": "Offline Account",
+      "optionId": "offline_account",
+      "price": "5000",
+      "cost": 1250,
+      "description": "Offline Account; supplier cost 1,250 IQD; selling price 7,500 IQD.",
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "standard_online",
+      "name": "Online Account",
+      "optionId": "online_account",
+      "price": "12000",
+      "cost": 5750,
+      "description": "Online Account; supplier cost 5,750 IQD; selling price 15,750 IQD.",
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "Active",
+    "kind": "account",
+    "trade_value_iqd": 5000,
+    "store_offer_bonus_iqd": 2500,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "id": "prd_e056bfabbf914721",
+    "schema_version": 23,
+    "titleAr": "أركيد أركايفز VS. سوبر ماريو بروس.",
+    "compatibility": [
+     "Nintendo Switch",
+     "Nintendo Switch 2 (backward compatible / enhanced where applicable)"
+    ],
+    "edition": "Standard",
+    "developer": "HAMSTER / Nintendo original arcade game",
+    "publisher": "HAMSTER",
+    "metacriticUrl": "https://www.nintendolife.com/reviews/switch-eshop/arcade_archives_vs_super_mario_bros",
+    "opencriticRating": 75,
+    "userScore": 7.5,
+    "price_usd": 59.99,
+    "officialUrl": "https://www.arcadearchives.com/en/title/aca-061/",
+    "eshopUrl": "https://www.nintendo.com/us/store/products/arcade-archives-vs-super-mario-bros-switch/",
+    "gameIsOffline": true,
+    "gameIsOnline": false,
+    "gameLanguageLocked": false,
+    "description_short": "A faithful emulation of Nintendo's 1986 VS. System arcade version of Super Mario Bros. Enemy and item placement differs from the NES home version, and Arcade Archives adds difficulty settings, CRT-style display options and online high-score rankings.",
+    "description_ar": "محاكاة دقيقة لإصدار VS. System الأركيدي من Super Mario Bros. لعام 1986. تختلف أماكن الأعداء والعناصر عن نسخة NES، وتضيف Arcade Archives إعدادات للصعوبة والعرض بأسلوب CRT وتصنيفات عالمية للنقاط.",
+    "box_front_url": "https://images.launchbox-app.com/a150a641-02e7-4bbf-adeb-7fb79b0e4969.png",
+    "box_back_url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000003432/7f1c647eef54f9ea832d956f6579cc47a437f32673ef6b02551b5b065008ece3",
+    "galleryImages": [
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000003432/96f97ea7cfa5387f0be97718289a29d5b37fe909457c4ba9b68c52ebf40a6907",
+      "alt": "Arcade Archives VS. SUPER MARIO BROS. — distinct gameplay/promotional image 1"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000003432/8f2f8fd13f75a5b2107ba69f0b712bcd89d9827f669067d5ca3b6d577107c361",
+      "alt": "Arcade Archives VS. SUPER MARIO BROS. — distinct gameplay/promotional image 2"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000003432/2fe603deaa8624872a56fd20c836dba3fb5d6d917db948b90be0acb70769f95b",
+      "alt": "Arcade Archives VS. SUPER MARIO BROS. — distinct gameplay/promotional image 3"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000003432/ad78786e3c41b4753d60b5f88d4b161ab2d51ad9731d7871cda5b199604dde8d",
+      "alt": "Arcade Archives VS. SUPER MARIO BROS. — distinct gameplay/promotional image 4"
+     }
+    ],
+    "videos": [
+     {
+      "title": "Official game page / trailer",
+      "url": "https://www.arcadearchives.com/en/title/aca-061/"
+     },
+     {
+      "title": "Nintendo / publisher product information",
+      "url": "https://www.nintendo.com/us/store/products/arcade-archives-vs-super-mario-bros-switch/"
+     },
+     {
+      "title": "Technical or database reference",
+      "url": "https://www.arcadearchives.com/en/title/aca-061/"
+     }
+    ],
+    "nsuid": "See regional Nintendo eShop listing",
+    "title_id": "Regional title identifier varies by Nintendo storefront",
+    "product_code": "Digital-only Nintendo eShop release",
+    "nintendoEshopUrl": "https://www.nintendo.com/us/store/products/arcade-archives-vs-super-mario-bros-switch/",
+    "nintendoOnlineRequired": false,
+    "nintendoCloudSaves": true,
+    "nintendoGameKeyCard": false,
+    "nintendoPhysicalNeedsDownload": false,
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": true,
+    "nintendoPlayModes": "TV / Tabletop / Handheld",
+    "nintendoNotes": "Verified game-page data for Arcade Archives VS. SUPER MARIO BROS.; measured performance is separated from system maximum capabilities.",
+    "switch2Enhanced": false,
+    "switch2Exclusive": false,
+    "switch2UpgradePrice": 0,
+    "switch2Features": [
+     "Faithful 1986 VS. System emulation",
+     "CRT/display and difficulty configuration",
+     "Online high-score ranking"
+    ],
+    "tagline": "The tougher 1986 arcade remix of Super Mario Bros., preserved through Arcade Archives.",
+    "fitFor": [
+     "Retro arcade players",
+     "Super Mario history fans",
+     "High-score players"
+    ],
+    "notFitFor": [
+     "Players wanting modern Mario visuals",
+     "Players looking for a long campaign",
+     "Players who want online cooperative multiplayer"
+    ],
+    "playTimeMain": 2,
+    "playTimeFull": 8,
+    "editionsList": [
+     {
+      "name": "Standard Edition",
+      "coverUrl": "https://images.launchbox-app.com/a150a641-02e7-4bbf-adeb-7fb79b0e4969.png",
+      "contents": [
+       {
+        "label": "Base game"
+       },
+       {
+        "label": "Core content"
+       },
+       {
+        "label": "Current updates"
+       }
+      ]
+     },
+     {
+      "name": "Digital Edition",
+      "coverUrl": "https://images.launchbox-app.com/a150a641-02e7-4bbf-adeb-7fb79b0e4969.png",
+      "contents": [
+       {
+        "label": "Digital entitlement"
+       },
+       {
+        "label": "Same core game"
+       },
+       {
+        "label": "Nintendo Account delivery"
+       }
+      ]
+     },
+     {
+      "name": "Current Complete Package",
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000003432/7f1c647eef54f9ea832d956f6579cc47a437f32673ef6b02551b5b065008ece3",
+      "contents": [
+       {
+        "label": "Latest build"
+       },
+       {
+        "label": "No paid DLC"
+       },
+       {
+        "label": "Faithful 1986 VS. System emulation"
+       }
+      ]
+     }
+    ],
+    "gameplayPillars": [
+     {
+      "title": "Arcade-authentic Mario",
+      "description": "Play Nintendo's VS. System version rather than the standard NES home release.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000003432/7f1c647eef54f9ea832d956f6579cc47a437f32673ef6b02551b5b065008ece3"
+     },
+     {
+      "title": "Higher difficulty",
+      "description": "Course layouts and item/enemy placement are tuned to a more demanding arcade experience.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000003432/03df298cde9e5da4aed7d4f3b8f276def99614410f061c06ea8f546c4fdfc48b"
+     },
+     {
+      "title": "Arcade Archives tools",
+      "description": "Change difficulty and display options and compete on online high-score rankings.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000003432/b083e720569cb85a516bbc7821ad8b65ebd2fa03ec0fb6b0364237427dcfe544"
+     }
+    ],
+    "worldSummary": "The familiar Mushroom Kingdom appears in a more difficult arcade arrangement. VS. SUPER MARIO BROS. reuses the core structure of the original but changes enemy and item placement and incorporates more demanding course layouts.",
+    "storyChapters": [
+     {
+      "title": "World 1",
+      "body": "The classic rescue begins with familiar Mushroom Kingdom imagery but arcade-specific placements.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000003432/96f97ea7cfa5387f0be97718289a29d5b37fe909457c4ba9b68c52ebf40a6907"
+     },
+     {
+      "title": "Harder worlds",
+      "body": "Later stages incorporate more difficult layouts and patterns.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000003432/8f2f8fd13f75a5b2107ba69f0b712bcd89d9827f669067d5ca3b6d577107c361"
+     },
+     {
+      "title": "Rescue Peach",
+      "body": "Reach Bowser's final castle and complete the original arcade challenge.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000003432/2fe603deaa8624872a56fd20c836dba3fb5d6d917db948b90be0acb70769f95b"
+     }
+    ],
+    "features": [
+     "Faithful 1986 VS. System emulation",
+     "CRT/display and difficulty configuration",
+     "Online high-score ranking"
+    ],
+    "perfResolutionDocked": "Original arcade framebuffer presented through 1080p Switch output",
+    "perfResolutionHandheld": "Original arcade framebuffer presented through 720p Switch output",
+    "perfFps": "60-class arcade emulation",
+    "perfHdr": false,
+    "perfNotes": "The title emulates an 1986 arcade game; Nintendo does not publish a modern native rendering-resolution metric. Switch and Switch 2 compatibility preserve the game's original behavior with system-level output scaling.",
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "hardwareId": "prd_acf4c89908764c62",
+      "informationStatus": "Available / verified",
+      "unavailableReason": "No standard supported mode is unavailable.",
+      "handheld": {
+       "supported": true,
+       "resolution": "Original arcade framebuffer presented through 720p Switch output",
+       "resolutionDynamic": false,
+       "renderingResolution": "Original arcade framebuffer presented through 720p Switch output",
+       "outputResolution": "1280x720",
+       "fps": "60-class arcade emulation",
+       "fpsMin": "30",
+       "fpsMax": "60",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Handheld",
+       "notes": "The title emulates an 1986 arcade game; Nintendo does not publish a modern native rendering-resolution metric. Switch and Switch 2 compatibility preserve the game's original behavior with system-level output scaling."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "Original arcade framebuffer presented through 1080p Switch output",
+       "resolutionDynamic": false,
+       "renderingResolution": "Original arcade framebuffer presented through 1080p Switch output",
+       "outputResolution": "1920x1080",
+       "fps": "60-class arcade emulation",
+       "fpsMin": "30",
+       "fpsMax": "60",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "TV / Docked",
+       "notes": "The title emulates an 1986 arcade game; Nintendo does not publish a modern native rendering-resolution metric. Switch and Switch 2 compatibility preserve the game's original behavior with system-level output scaling."
+      },
+      "modes": [
+       {
+        "name": "Primary documented mode",
+        "handheldResolution": "Original arcade framebuffer presented through 720p Switch output",
+        "handheldFps": "60-class arcade emulation",
+        "tvResolution": "Original arcade framebuffer presented through 1080p Switch output",
+        "tvFps": "60-class arcade emulation",
+        "hdr": false,
+        "vrr": false,
+        "notes": "Primary documented performance profile."
+       }
+      ],
+      "upscaling": "System/game-specific scaling where applicable",
+      "rayTracing": false,
+      "rayTracingMode": "No verified ray-tracing mode",
+      "loadingTime": "Scene-dependent; no single universal loading time",
+      "loadingNotes": "Loading varies by scene, save and storage state.",
+      "gameVersion": "Current retail build",
+      "patchVersion": "Current available update",
+      "testedDate": "2026-08-27",
+      "sourceName": "HAMSTER Arcade Archives",
+      "sourceUrl": "https://www.arcadearchives.com/en/title/aca-061/",
+      "verifiedAt": "2026-08-27",
+      "verificationStatus": "Verified / sourced",
+      "performanceNotes": "The title emulates an 1986 arcade game; Nintendo does not publish a modern native rendering-resolution metric. Switch and Switch 2 compatibility preserve the game's original behavior with system-level output scaling."
+     }
+    ],
+    "downloadSizeGb": 0.098,
+    "requiredSpaceGb": 0.098,
+    "microSdRecommended": false,
+    "storageNotes": "Nintendo lists 98 MB on both Switch and Switch 2. microSD storage is unnecessary for most users.",
+    "languagesAudio": [
+     "Original arcade game audio",
+     "No voice track",
+     "Menu/interface audio"
+    ],
+    "languagesText": [
+     "Japanese / English",
+     "French / German / Italian / Spanish",
+     "Additional regional English/French variants in Nintendo storefront"
+    ],
+    "arabicSupport": false,
+    "mpLocalPlayers": true,
+    "mpOnlinePlayers": false,
+    "mpCoop": false,
+    "mpCompetitive": true,
+    "mpSplitScreen": false,
+    "mpLocalWireless": false,
+    "dlc": [
+     {
+      "name": "No paid DLC",
+      "description": "This digital Arcade Archives release has no paid expansion.",
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000003432/ad78786e3c41b4753d60b5f88d4b161ab2d51ad9731d7871cda5b199604dde8d"
+     },
+     {
+      "name": "Arcade Archives features included",
+      "description": "Difficulty, display and ranking features are part of the base purchase.",
+      "coverUrl": "https://images.launchbox-app.com/a150a641-02e7-4bbf-adeb-7fb79b0e4969.png"
+     },
+     {
+      "name": "No physical edition",
+      "description": "Nintendo lists the title as a digital edition; therefore no genuine retail box/full-wrap texture exists.",
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000003432/7f1c647eef54f9ea832d956f6579cc47a437f32673ef6b02551b5b065008ece3"
+     }
+    ],
+    "guides": [
+     {
+      "title": "Official product page",
+      "summary": "Platform, release, languages and features.",
+      "url": "https://www.nintendo.com/us/store/products/arcade-archives-vs-super-mario-bros-switch/"
+     },
+     {
+      "title": "Performance / update reference",
+      "summary": "Technical or update information.",
+      "url": "https://www.arcadearchives.com/en/title/aca-061/"
+     },
+     {
+      "title": "Media / database reference",
+      "summary": "Images and catalog metadata.",
+      "url": "https://gamesdb.launchbox-app.com/games/details/140018-arcade-archives-vs-super-mario-bros"
+     }
+    ],
+    "completionMain": 2,
+    "completionExtras": 4,
+    "completionAll": 8,
+    "faq": [
+     {
+      "q": "Is this the same as the NES Super Mario Bros.?",
+      "a": "No. It is the 1986 Nintendo VS. System arcade version with different enemy/item placement and harder layouts."
+     },
+     {
+      "q": "How large is the download?",
+      "a": "Nintendo lists 98 MB."
+     },
+     {
+      "q": "Does it work on Switch 2?",
+      "a": "Yes. Nintendo marks it as supported with behavior consistent with Nintendo Switch."
+     }
+    ],
+    "verdictScore": 7.5,
+    "verdictSummary": "A historically interesting and well-preserved arcade variation of Super Mario Bros.; its main appeal is challenge, authenticity and score chasing rather than new content.",
+    "verdictPros": [
+     "Faithful arcade preservation",
+     "Small download and useful emulator options",
+     "Interesting harder layouts for Mario historians"
+    ],
+    "verdictCons": [
+     "Very short by modern standards",
+     "No true retail box or physical edition",
+     "Less accessible than the normal NES version"
+    ],
+    "reviews": [
+     {
+      "source": "Nintendo Life",
+      "score": "7/10",
+      "quote": "A tougher but enjoyable alternative to the home-console original.",
+      "url": "https://www.nintendolife.com/reviews/switch-eshop/arcade_archives_vs_super_mario_bros"
+     },
+     {
+      "source": "Nintendo official",
+      "score": "Supported",
+      "quote": "Official listing confirms Switch 2 compatibility and 98 MB size.",
+      "url": "https://www.nintendo.com/us/store/products/arcade-archives-vs-super-mario-bros-switch/"
+     },
+     {
+      "source": "HAMSTER",
+      "score": "Official preservation release",
+      "quote": "Arcade Archives publisher page confirms the 1986 origin and 1–2 player support.",
+      "url": "https://www.arcadearchives.com/en/title/aca-061/"
+     }
+    ],
+    "timeline": [
+     {
+      "date": "1986",
+      "title": "Original arcade release",
+      "body": "Nintendo released VS. SUPER MARIO BROS. for the VS. System."
+     },
+     {
+      "date": "2017-12-22",
+      "title": "Nintendo Switch release",
+      "body": "HAMSTER released the Arcade Archives version."
+     },
+     {
+      "date": "2025-06-05",
+      "title": "Switch 2 compatibility",
+      "body": "Nintendo confirms behavior consistent with the original Switch release."
+     }
+    ],
+    "patchNotes": [
+     {
+      "version": "Launch version",
+      "date": "2017-12-22",
+      "body": "Arcade Archives emulation released on Switch."
+     },
+     {
+      "version": "System compatibility updates",
+      "date": "2018–2025",
+      "body": "General Arcade Archives platform compatibility maintained."
+     },
+     {
+      "version": "Current status",
+      "date": "2026-08-27",
+      "body": "Nintendo continues to list the title as Switch 2-compatible."
+     }
+    ],
+    "soundtrack": [
+     {
+      "title": "Ground Theme",
+      "url": "https://www.arcadearchives.com/en/title/aca-061/"
+     },
+     {
+      "title": "Underground Theme",
+      "url": "https://www.arcadearchives.com/en/title/aca-061/"
+     },
+     {
+      "title": "Castle Theme",
+      "url": "https://www.arcadearchives.com/en/title/aca-061/"
+     }
+    ],
+    "seriesName": "Super Mario",
+    "seriesEntries": [
+     "Super Mario Bros.",
+     "Arcade Archives Mario Bros.",
+     "Arcade Archives VS. SUPER MARIO BROS."
+    ],
+    "studioName": "HAMSTER Corporation",
+    "studioUrl": "https://www.hamster.co.jp/",
+    "studioLocation": "Tokyo, Japan",
+    "studioAbout": "HAMSTER develops and publishes the Arcade Archives preservation series.",
+    "setupNeeds": [
+     "Nintendo Switch or backward-compatible Switch 2",
+     "98 MB free storage",
+     "Internet only for download and online ranking features"
+    ],
+    "sources": [
+     {
+      "name": "Nintendo official",
+      "url": "https://www.nintendo.com/us/store/products/arcade-archives-vs-super-mario-bros-switch/"
+     },
+     {
+      "name": "HAMSTER Arcade Archives",
+      "url": "https://www.arcadearchives.com/en/title/aca-061/"
+     },
+     {
+      "name": "LaunchBox Games Database",
+      "url": "https://gamesdb.launchbox-app.com/games/details/140018-arcade-archives-vs-super-mario-bros"
+     }
+    ],
+    "boxContentsList": "[Circular]",
+    "image": "/api/files/products/prd_e056bfabbf914721/cover-dfc48c5debe793b0.avif",
+    "banner": "/api/files/products/prd_e056bfabbf914721/banner-0-dfc48c5debe793b0.avif",
+    "schemaId": "",
+    "createdAt": "2026-08-27T01:24:47.124Z",
+    "created_at": "2026-08-27T01:24:47.124Z",
+    "updatedAt": "2026-08-27T01:24:47.124Z",
+    "updated_at": "2026-08-27T01:24:47.124Z",
+    "badgeEn": "وفر 40%",
+    "badgeKu": "وفر 40%",
+    "featuresEn": [
+     "Faithful 1986 VS. System emulation",
+     "CRT/display and difficulty configuration",
+     "Online high-score ranking"
+    ],
+    "featuresKu": [
+     "Faithful 1986 VS. System emulation",
+     "CRT/display and difficulty configuration",
+     "Online high-score ranking"
+    ],
+    "boxFrontUrl": "https://images.launchbox-app.com/a150a641-02e7-4bbf-adeb-7fb79b0e4969.png",
+    "sales": 0,
+    "images": [],
+    "modes": []
+   }
+  },
+  {
+   "id": "prd_ad958aa523e24052",
+   "slug": "assassins-creed-shadows-switch-2",
+   "title": "Assassin's Creed Shadows",
+   "platform": "switch2",
+   "isHidden": false,
+   "hash": "ca4afd2e4011f5d94248f28438174d246b53b38cf4b6ff15b047d62570613970",
+   "images": [
+    {
+     "role": "front-box",
+     "field": "cartridgeImage",
+     "url": "https://banan.to/api/files/products/prd_ad958aa523e24052/front-410ddd3a72ecaa7b.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 37404,
+     "width": 309,
+     "height": 500,
+     "thumb": "review-workdir/thumbs/batch-001/assassins-creed-shadows-switch-2__front-box-0.png"
+    },
+    {
+     "role": "front-box",
+     "field": "box_front_url",
+     "url": "https://images.kabum.com.br/produtos/fotos/952237/jogo-assassinos-creed-shadows-para-nintendo-switch-2-ub000084nsw_1765543878_gg.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 126495,
+     "width": 1000,
+     "height": 1000,
+     "thumb": "review-workdir/thumbs/batch-001/assassins-creed-shadows-switch-2__front-box-1.png"
+    },
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://banan.to/api/files/products/prd_ad958aa523e24052/square-2c2b52268e4d090b.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 106518,
+     "width": 1080,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-001/assassins-creed-shadows-switch-2__square-card-2.png"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://banan.to/api/files/products/prd_ad958aa523e24052/cover-9ceffdcf1e83ce6d.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 333176,
+     "width": 1600,
+     "height": 900,
+     "thumb": "review-workdir/thumbs/batch-001/assassins-creed-shadows-switch-2__detail-cover-3.png"
+    },
+    {
+     "role": "listing",
+     "field": "image",
+     "url": "https://banan.to/api/files/products/prd_ad958aa523e24052/cover-9ceffdcf1e83ce6d.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 333176,
+     "width": 1600,
+     "height": 900,
+     "thumb": "review-workdir/thumbs/batch-001/assassins-creed-shadows-switch-2__listing-4.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[0]",
+     "url": "https://banan.to/api/files/products/prd_ad958aa523e24052/banner-0-23b344afdd37e1c2.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[1]",
+     "url": "https://banan.to/api/files/products/prd_ad958aa523e24052/banner-4-61bafb950c039954.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[2]",
+     "url": "https://banan.to/api/files/products/prd_ad958aa523e24052/banner-2-6f8802f4c2a9205b.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 119797,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-001/assassins-creed-shadows-switch-2__banner-7.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[3]",
+     "url": "https://banan.to/api/files/products/prd_ad958aa523e24052/banner-3-6475af012b5c8f44.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 898970,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-001/assassins-creed-shadows-switch-2__banner-8.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101043/a84d3fc77995ec699dc770fe1a3b2e5dc2aa3521c0d9e8c130f51d5c30b60678",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 261312,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-001/assassins-creed-shadows-switch-2__gallery-9.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[1]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101043/01a5078449adce58986dd9657b50dd49bebcba9995d3f0e760e356451269a419",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 232491,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-001/assassins-creed-shadows-switch-2__gallery-10.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[2]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101043/cd78f78516fc3ad03c703ebff2f4f48fefc62dc02fb50b2f6de08ff97257decf",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 243753,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-001/assassins-creed-shadows-switch-2__gallery-11.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[3]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101043/2013a2278a51465fca7758c7cd3587f30f7fb78e53ce4efefc1d5058b00f779b",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 158503,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-001/assassins-creed-shadows-switch-2__gallery-12.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[4]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101043/a007ce4d5dd7b763d73ac5a9f282bedb7b618225902b300fa3bfd4cc7ba1fe41",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 179659,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-001/assassins-creed-shadows-switch-2__gallery-13.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[5]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101043/97fac375415ac25c7999610f381dbb6a8a8355facc2973423f07531e8c272488",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 142384,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-001/assassins-creed-shadows-switch-2__gallery-14.png"
+    }
+   ],
+   "record": {
+    "title": "Assassin's Creed Shadows",
+    "titleEn": "Assassin's Creed Shadows",
+    "titleKu": "Assassin's Creed Shadows",
+    "slug": "assassins-creed-shadows-switch-2",
+    "description": "An open-world Assassin's Creed adventure set in late Sengoku-period Japan, starring shinobi Naoe and samurai Yasuke. The Switch 2 version targets 30 fps, supports touch controls, HDR output, save-data cloud and Ubisoft Connect cross-progression.",
+    "descriptionEn": "An open-world Assassin's Creed adventure set in late Sengoku-period Japan, starring shinobi Naoe and samurai Yasuke. The Switch 2 version targets 30 fps, supports touch controls, HDR output, save-data cloud and Ubisoft Connect cross-progression.",
+    "descriptionKu": "An open-world Assassin's Creed adventure set in late Sengoku-period Japan, starring shinobi Naoe and samurai Yasuke. The Switch 2 version targets 30 fps, supports touch controls, HDR output, save-data cloud and Ubisoft Connect cross-progression.",
+    "cartridgeImage": "/api/files/products/prd_ad958aa523e24052/front-410ddd3a72ecaa7b.webp",
+    "nintendoCardImage": "/api/files/products/prd_ad958aa523e24052/square-2c2b52268e4d090b.webp",
+    "coverHiResImage": "",
+    "coverImage": "/api/files/products/prd_ad958aa523e24052/cover-9ceffdcf1e83ce6d.jpg",
+    "bannerImages": [
+     "/api/files/products/prd_ad958aa523e24052/banner-0-23b344afdd37e1c2.avif",
+     "/api/files/products/prd_ad958aa523e24052/banner-4-61bafb950c039954.avif",
+     "/api/files/products/prd_ad958aa523e24052/banner-2-6f8802f4c2a9205b.jpg",
+     "/api/files/products/prd_ad958aa523e24052/banner-3-6475af012b5c8f44.jpg"
+    ],
+    "gallery": [],
+    "youtubeTrailer": "https://www.ubisoft.com/en-us/game/assassins-creed/shadows",
+    "releaseDate": "2025-12-02",
+    "ageRating": "ESRB Mature 17+ / PEGI 18",
+    "metacriticRating": 80,
+    "genres": [
+     "Open-World Action",
+     "Stealth",
+     "Action Adventure"
+    ],
+    "platform": "switch2",
+    "size": 68.9,
+    "numberOfPlayers": "1",
+    "supportedLanguages": "English / Japanese; French / German / Italian / Spanish / Portuguese / Russian; Korean / Simplified Chinese / Traditional Chinese",
+    "hardwareModel": "",
+    "colorEdition": "",
+    "storageCapacity": "",
+    "screenSpecs": "",
+    "batteryLife": "",
+    "boxContents": [],
+    "boxContentsText": "",
+    "warrantyCondition": "",
+    "connectivity": "",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "Global",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "",
+    "redemptionSteps": [],
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 15000,
+    "cost": 3000,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": false,
+    "displayOrder": 0,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "حساب أوفلاين",
+      "description": "حساب مخصص للعب دون اتصال بعد إكمال خطوات التفعيل.",
+      "stock": 9999,
+      "isInfiniteStock": true,
+      "customerDescription": "حساب مشترك"
+     },
+     {
+      "id": "online_account",
+      "name": "حساب أونلاين",
+      "description": "حساب يدعم تشغيل اللعبة مع الاتصال والميزات المتاحة أونلاين.",
+      "stock": 9999,
+      "isInfiniteStock": true,
+      "customerDescription": "حساب خاص بك"
+     }
+    ],
+    "types": [
+     {
+      "id": "standard_offline",
+      "name": "حساب أوفلاين — عادي",
+      "optionId": "offline_account",
+      "price": "",
+      "cost": 3000,
+      "description": "تشمل الإصدار العادي من اللعبة.",
+      "stock": 9999,
+      "isInfiniteStock": true,
+      "internalNote": "Offline Account: supplier cost 3,000 IQD; selling price 18,000 IQD."
+     },
+     {
+      "id": "dlc_offline",
+      "name": "حساب أوفلاين — مع الإضافات",
+      "optionId": "offline_account",
+      "price": "19000",
+      "cost": 7750,
+      "description": "تشمل اللعبة الأساسية والمحتوى الإضافي المثبت في هذا الإصدار.",
+      "stock": 9999,
+      "isInfiniteStock": true,
+      "customerDescription": "اللعبة مع الإضافات",
+      "internalNote": "Offline Special/DLC: supplier cost 7,750 IQD; selling price 22,000 IQD."
+     },
+     {
+      "id": "standard_online",
+      "name": "حساب أونلاين — عادي",
+      "optionId": "online_account",
+      "price": "45000",
+      "cost": 25000,
+      "description": "تشمل الإصدار العادي من اللعبة.",
+      "stock": 9999,
+      "isInfiniteStock": true,
+      "internalNote": "Online Account: supplier cost 25,000 IQD; selling price 35,000 IQD."
+     },
+     {
+      "id": "dlc_online",
+      "name": "حساب أونلاين — مع الإضافات",
+      "optionId": "online_account",
+      "price": "58000",
+      "cost": 38000,
+      "description": "تشمل اللعبة الأساسية والمحتوى الإضافي المثبت في هذا الإصدار.",
+      "stock": 9999,
+      "isInfiniteStock": true,
+      "customerDescription": "اللعبة مع الإضافات",
+      "internalNote": "Online Deluxe/DLC: supplier cost 38,000 IQD; selling price 48,000 IQD."
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "Active",
+    "kind": "account",
+    "trade_value_iqd": 45000,
+    "store_offer_bonus_iqd": 2500,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "id": "prd_ad958aa523e24052",
+    "schema_version": 23,
+    "titleAr": "أساسنز كريد شادوز",
+    "compatibility": [
+     "Nintendo Switch 2"
+    ],
+    "edition": "Standard / available account variants",
+    "developer": "Ubisoft Quebec",
+    "publisher": "Ubisoft",
+    "metacriticUrl": "https://www.metacritic.com/game/assassins-creed-shadows/critic-reviews/",
+    "opencriticRating": 81,
+    "userScore": 6.1,
+    "price_usd": 59.99,
+    "officialUrl": "https://www.ubisoft.com/en-us/game/assassins-creed/shadows",
+    "eshopUrl": "https://ec.nintendo.com/NZ/en/titles/70010000101040",
+    "gameIsOffline": true,
+    "gameIsOnline": false,
+    "gameLanguageLocked": false,
+    "description_short": "An open-world Assassin's Creed adventure set in late Sengoku-period Japan, starring shinobi Naoe and samurai Yasuke. The Switch 2 version targets 30 fps, supports touch controls, HDR output, save-data cloud and Ubisoft Connect cross-progression.",
+    "description_ar": "مغامرة Assassin's Creed بعالم مفتوح في اليابان خلال أواخر حقبة Sengoku، بشخصيتين مختلفتين: Naoe الشينوبي المتخصصة بالتسلل وYasuke الساموراي المتخصص بالقتال المباشر. نسخة Switch 2 تستهدف 30fps وتدعم اللمس وHDR وcross-progression عبر Ubisoft Connect.",
+    "box_front_url": "https://images.kabum.com.br/produtos/fotos/952237/jogo-assassinos-creed-shadows-para-nintendo-switch-2-ub000084nsw_1765543878_gg.jpg",
+    "box_back_url": "https://www.jnlgame.com/cdn/shop/files/D8102474-78BA-466B-ACCC-B674358E8635.jpg?v=1764356582&width=5760",
+    "galleryImages": [
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101043/a84d3fc77995ec699dc770fe1a3b2e5dc2aa3521c0d9e8c130f51d5c30b60678",
+      "alt": "Distinct verified game media image 1"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101043/01a5078449adce58986dd9657b50dd49bebcba9995d3f0e760e356451269a419",
+      "alt": "Distinct verified game media image 2"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101043/cd78f78516fc3ad03c703ebff2f4f48fefc62dc02fb50b2f6de08ff97257decf",
+      "alt": "Distinct verified game media image 3"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101043/2013a2278a51465fca7758c7cd3587f30f7fb78e53ce4efefc1d5058b00f779b",
+      "alt": "Distinct verified game media image 4"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101043/a007ce4d5dd7b763d73ac5a9f282bedb7b618225902b300fa3bfd4cc7ba1fe41",
+      "alt": "Distinct verified game media image 5"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101043/97fac375415ac25c7999610f381dbb6a8a8355facc2973423f07531e8c272488",
+      "alt": "Distinct verified game media image 6"
+     },
+     {
+      "url": "https://staticctf.ubisoft.com/J3yJr34U2pZ2Ieem48Dwy9uqj5PNUQTn/7KOVYSn44FSTaCnFUjTZkB/b96d4ea8a4ab5b64eeacef9669a86a53/Nowaki.jpg",
+      "alt": "Distinct verified game media image 7"
+     },
+     {
+      "url": "https://staticctf.ubisoft.com/J3yJr34U2pZ2Ieem48Dwy9uqj5PNUQTn/m5wQaaNZpdIihXZqtYTgG/9d5bb2eaff395257c4c4ecbbf3232898/yasuke.jpg",
+      "alt": "Distinct verified game media image 8"
+     },
+     {
+      "url": "https://staticctf.ubisoft.com/J3yJr34U2pZ2Ieem48Dwy9uqj5PNUQTn/3jEOSdKv9TXCfBYh510RWB/61df1c5418172f0657e03e34600658b1/Eshima.jpg",
+      "alt": "Distinct verified game media image 9"
+     }
+    ],
+    "videos": [
+     {
+      "title": "Official trailer",
+      "url": "https://www.ubisoft.com/en-us/game/assassins-creed/shadows"
+     },
+     {
+      "title": "Nintendo / publisher overview",
+      "url": "https://ec.nintendo.com/NZ/en/titles/70010000101040"
+     },
+     {
+      "title": "Gameplay and feature media",
+      "url": "https://ec.nintendo.com/NZ/en/titles/70010000101040"
+     }
+    ],
+    "nsuid": "See official Nintendo product page",
+    "title_id": "Nintendo internal title ID not exposed as a user-facing retail identifier",
+    "product_code": "Platform retail/digital product code varies by region",
+    "nintendoEshopUrl": "https://ec.nintendo.com/NZ/en/titles/70010000101040",
+    "nintendoOnlineRequired": false,
+    "nintendoCloudSaves": true,
+    "nintendoGameKeyCard": true,
+    "nintendoPhysicalNeedsDownload": true,
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": true,
+    "nintendoPlayModes": "TV / Tabletop / Handheld",
+    "nintendoNotes": "Verified platform/store information for Assassin's Creed Shadows. Online features require Nintendo Switch Online where applicable. Storage and supported-language values are taken from current Nintendo/publisher listings.",
+    "switch2Enhanced": false,
+    "switch2Exclusive": true,
+    "switch2UpgradePrice": 0,
+    "switch2Features": [
+     "Two protagonists with distinct stealth/combat systems",
+     "Dynamic seasons, weather and reactive environments",
+     "Touchscreen UI and Ubisoft Connect cross-progression on Switch 2"
+    ],
+    "tagline": "Become a shinobi in the shadows or a samurai in the open fields of feudal Japan.",
+    "fitFor": [
+     "Players who enjoy large historical open worlds",
+     "Stealth players who want a dedicated shinobi toolkit",
+     "Action players who prefer heavy samurai combat"
+    ],
+    "notFitFor": [
+     "Players who require 60 fps",
+     "Players who dislike very large maps and long campaigns",
+     "Players who want multiplayer-focused Assassin's Creed"
+    ],
+    "playTimeMain": 36,
+    "playTimeFull": 99.5,
+    "editionsList": [
+     {
+      "name": "Standard Edition",
+      "coverUrl": "https://images.kabum.com.br/produtos/fotos/952237/jogo-assassinos-creed-shadows-para-nintendo-switch-2-ub000084nsw_1765543878_gg.jpg",
+      "contents": [
+       {
+        "label": "Base game"
+       },
+       {
+        "label": "Standard content"
+       },
+       {
+        "label": "Platform features"
+       }
+      ]
+     },
+     {
+      "name": "DLC / Special Edition",
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_1%3A1%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101043/27e7c0866bfdf82d63a1486122e2dff215a5604794b7c8311256fb5d60a650b0",
+      "contents": [
+       {
+        "label": "Claws of Awaji"
+       },
+       {
+        "label": "Base game + DLC account option"
+       },
+       {
+        "label": "Additional edition content"
+       }
+      ]
+     },
+     {
+      "name": "Premium Edition",
+      "coverUrl": "https://staticctf.ubisoft.com/J3yJr34U2pZ2Ieem48Dwy9uqj5PNUQTn/36Us9qk99eRH7CJEj0xF1O/6eb7544aa5a5812cc9615d31e5875080/ACS_Switch2_launchArticle_asset2.jpg",
+      "contents": [
+       {
+        "label": "Base game"
+       },
+       {
+        "label": "Claws of Awaji"
+       },
+       {
+        "label": "Sekiryu packs + Mastery Points"
+       }
+      ]
+     }
+    ],
+    "gameplayPillars": [
+     {
+      "title": "Shinobi stealth",
+      "description": "Naoe uses shadows, sound, prone movement, grappling, kunai, shuriken and the Hidden Blade.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101043/27e7c0866bfdf82d63a1486122e2dff215a5604794b7c8311256fb5d60a650b0"
+     },
+     {
+      "title": "Samurai combat",
+      "description": "Yasuke relies on powerful melee weapons, posture attacks, blocks and parries.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101043/a84d3fc77995ec699dc770fe1a3b2e5dc2aa3521c0d9e8c130f51d5c30b60678"
+     },
+     {
+      "title": "Reactive open world",
+      "description": "Weather and seasons affect stealth, traversal and the visual state of the environment.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101043/01a5078449adce58986dd9657b50dd49bebcba9995d3f0e760e356451269a419"
+     }
+    ],
+    "worldSummary": "The game recreates late-16th-century Japan across castle towns, ports, shrines, countryside and forests. Seasonal changes alter vegetation, water, visibility and infiltration opportunities, while a spy network and scouts help uncover targets and locations.",
+    "storyChapters": [
+     {
+      "title": "Naoe's path",
+      "body": "A shinobi from Iga pursues revenge and an impossible promise after conflict reaches her homeland.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101043/cd78f78516fc3ad03c703ebff2f4f48fefc62dc02fb50b2f6de08ff97257decf"
+     },
+     {
+      "title": "Yasuke's path",
+      "body": "The historical African samurai serves as the game's combat-focused protagonist while confronting his past.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101043/2013a2278a51465fca7758c7cd3587f30f7fb78e53ce4efefc1d5058b00f779b"
+     },
+     {
+      "title": "A shared destiny",
+      "body": "Their stories intersect amid political upheaval, secret factions and the struggle surrounding Japan's unification.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000101043/a007ce4d5dd7b763d73ac5a9f282bedb7b618225902b300fa3bfd4cc7ba1fe41"
+     }
+    ],
+    "features": [
+     "Two protagonists with distinct stealth/combat systems",
+     "Dynamic seasons, weather and reactive environments",
+     "Touchscreen UI and Ubisoft Connect cross-progression on Switch 2"
+    ],
+    "perfResolutionDocked": "1080p output target via reconstruction",
+    "perfResolutionHandheld": "1080p output target via reconstruction",
+    "perfFps": "30",
+    "perfHdr": true,
+    "perfNotes": "Ubisoft officially targets 30 fps in both modes. Technical analysis reports aggressive dynamic internal resolution and reconstruction; the exact internal pixel count varies by scene.",
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "hardwareId": "nintendo-switch-2",
+      "informationStatus": "Available / verified",
+      "unavailableReason": "No required native mode is unavailable.",
+      "handheld": {
+       "supported": true,
+       "resolution": "1080p output target via reconstruction",
+       "resolutionDynamic": false,
+       "renderingResolution": "1080p output target via reconstruction",
+       "outputResolution": "1920x1080",
+       "fps": "30",
+       "fpsMin": "30",
+       "fpsMax": "30",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Handheld",
+       "notes": "Ubisoft officially targets 30 fps in both modes. Technical analysis reports aggressive dynamic internal resolution and reconstruction; the exact internal pixel count varies by scene."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p output target via reconstruction",
+       "resolutionDynamic": false,
+       "renderingResolution": "1080p output target via reconstruction",
+       "outputResolution": "1920x1080",
+       "fps": "30",
+       "fpsMin": "30",
+       "fpsMax": "30",
+       "refreshRate": "60",
+       "hdr": true,
+       "vrr": false,
+       "mode": "TV / Docked",
+       "notes": "Ubisoft officially targets 30 fps in both modes. Technical analysis reports aggressive dynamic internal resolution and reconstruction; the exact internal pixel count varies by scene."
+      },
+      "modes": [
+       {
+        "name": "Standard",
+        "handheldResolution": "1080p output target via reconstruction",
+        "handheldFps": "30",
+        "tvResolution": "1080p output target via reconstruction",
+        "tvFps": "30",
+        "hdr": false,
+        "vrr": false,
+        "notes": "Primary documented performance mode."
+       }
+      ],
+      "upscaling": "Platform-specific reconstruction / scaling where used",
+      "rayTracing": false,
+      "rayTracingMode": "No verified ray-tracing mode",
+      "loadingTime": "Fast SSD-based loading; exact scene-dependent time varies",
+      "loadingNotes": "Loading varies by scene and save location; no single universal loading time is published.",
+      "gameVersion": "Current retail build",
+      "patchVersion": "Current available update",
+      "testedDate": "2026-08-27",
+      "sourceName": "Nintendo eShop",
+      "sourceUrl": "https://ec.nintendo.com/NZ/en/titles/70010000101040",
+      "verifiedAt": "2026-08-27",
+      "verificationStatus": "Verified / sourced",
+      "performanceNotes": "Ubisoft officially targets 30 fps in both modes. Technical analysis reports aggressive dynamic internal resolution and reconstruction; the exact internal pixel count varies by scene."
+     }
+    ],
+    "downloadSizeGb": 68.9,
+    "requiredSpaceGb": 68.9,
+    "microSdRecommended": true,
+    "storageNotes": "Nintendo eShop lists 68.9 GB required space for the base Switch 2 game. The Game-Key Card requires the full game download. Premium Edition is larger because it includes Claws of Awaji and additional content.",
+    "languagesAudio": [
+     "English",
+     "Japanese",
+     "French / German / Italian / Spanish / Portuguese"
+    ],
+    "languagesText": [
+     "English / Japanese",
+     "French / German / Italian / Spanish / Portuguese / Russian",
+     "Korean / Simplified Chinese / Traditional Chinese"
+    ],
+    "arabicSupport": false,
+    "mpLocalPlayers": false,
+    "mpOnlinePlayers": false,
+    "mpCoop": false,
+    "mpCompetitive": false,
+    "mpSplitScreen": false,
+    "mpLocalWireless": false,
+    "dlc": [
+     {
+      "name": "Claws of Awaji",
+      "description": "Major expansion; Switch 2 release March 10, 2026. Adds a new island, story, bosses, skills, gear and 10+ hours of content.",
+      "coverUrl": "https://staticctf.ubisoft.com/J3yJr34U2pZ2Ieem48Dwy9uqj5PNUQTn/6bJF2taV192D5r1ZW7TC5f/df594c7442232bef034ee93691a2feff/ACS_Switch2_launchArticle_asset3.jpg"
+     },
+     {
+      "name": "Sekiryu Dual Pack",
+      "description": "Digital content included with higher-tier editions.",
+      "coverUrl": "https://staticctf.ubisoft.com/J3yJr34U2pZ2Ieem48Dwy9uqj5PNUQTn/2LTWgHkFc8KCn7X4OJiLya/e803eb4c8657319b1b322e460e043bbf/ubisoft-news-ac-shadows-gameplay-article-img1.jpg"
+     },
+     {
+      "name": "Helix / Premium content",
+      "description": "Optional cosmetic and in-game item packs are available separately.",
+      "coverUrl": "https://staticctf.ubisoft.com/J3yJr34U2pZ2Ieem48Dwy9uqj5PNUQTn/58l3ErN2MB217ehsO6cJkd/02ef178b21b3b226ddcc8096f66d5ef4/ubisoft-news-ac-shadows-gameplay-article-img2.jpg"
+     }
+    ],
+    "guides": [
+     {
+      "title": "Official product information",
+      "summary": "Platform, release, storage, language and feature information for Assassin's Creed Shadows.",
+      "url": "https://ec.nintendo.com/NZ/en/titles/70010000101040"
+     },
+     {
+      "title": "Official game overview",
+      "summary": "Publisher/developer overview of story, gameplay and features.",
+      "url": "https://www.ubisoft.com/en-us/game/assassins-creed/shadows"
+     },
+     {
+      "title": "Reviews and playtime reference",
+      "summary": "Critic/user scores and completion-time context.",
+      "url": "https://www.dekudeals.com/items/assassin-s-creed-shadows"
+     }
+    ],
+    "completionMain": 36,
+    "completionExtras": 65,
+    "completionAll": 99.5,
+    "faq": [
+     {
+      "q": "Can the Switch 2 version be played offline?",
+      "a": "Yes after installation. Ubisoft states an internet connection is required for installation, after which the main game can be played offline."
+     },
+     {
+      "q": "What is the frame-rate target?",
+      "a": "Ubisoft officially targets 30 fps in both handheld and docked modes."
+     },
+     {
+      "q": "Is Claws of Awaji available on Switch 2?",
+      "a": "Yes. The expansion released for Switch 2 on March 10, 2026."
+     }
+    ],
+    "verdictScore": 8.2,
+    "verdictSummary": "A technically ambitious portable conversion of Ubisoft's feudal-Japan open world. The dual-protagonist design is its biggest strength, while the Switch 2 version necessarily uses aggressive reconstruction and a 30 fps target.",
+    "verdictPros": [
+     "Excellent Naoe/Yasuke gameplay contrast",
+     "Rich feudal-Japan world and seasonal systems",
+     "Touch controls and cross-progression"
+    ],
+    "verdictCons": [
+     "30 fps target",
+     "Very large 68.9 GB download",
+     "Game-Key Card requires full download"
+    ],
+    "reviews": [
+     {
+      "source": "Metacritic – Switch 2",
+      "score": "80/100",
+      "quote": "Generally favorable Switch 2 aggregate.",
+      "url": "https://www.metacritic.com/game/assassins-creed-shadows/critic-reviews/"
+     },
+     {
+      "source": "OpenCritic",
+      "score": "81/100",
+      "quote": "Cross-platform critic aggregate.",
+      "url": "https://opencritic.com/game/16782/assassins-creed-shadows"
+     },
+     {
+      "source": "Deku Deals user rating",
+      "score": "3.8/5",
+      "quote": "Current Nintendo-store-linked user rating snapshot.",
+      "url": "https://www.dekudeals.com/items/assassin-s-creed-shadows"
+     }
+    ],
+    "timeline": [
+     {
+      "date": "2025-03-20",
+      "title": "Original release",
+      "body": "Assassin's Creed Shadows launched on PS5, Xbox Series and PC."
+     },
+     {
+      "date": "2025-12-02",
+      "title": "Nintendo Switch 2 release",
+      "body": "Switch 2 version launched with accumulated updates and touch controls."
+     },
+     {
+      "date": "2026-03-10",
+      "title": "Claws of Awaji on Switch 2",
+      "body": "The major expansion arrived on Nintendo Switch 2."
+     }
+    ],
+    "patchNotes": [
+     {
+      "version": "Switch 2 launch build",
+      "date": "2025-12-02",
+      "body": "Included New Game+, Nightmare difficulty, parkour improvements and previous free updates."
+     },
+     {
+      "version": "Claws of Awaji",
+      "date": "2026-03-10",
+      "body": "Major expansion released on Switch 2."
+     },
+     {
+      "version": "Ongoing title updates",
+      "date": "2026",
+      "body": "Ubisoft continues bug fixes, quality-of-life changes and content support."
+     }
+    ],
+    "soundtrack": [
+     {
+      "title": "Assassin's Creed Shadows Main Theme",
+      "url": "https://www.ubisoft.com/en-us/game/assassins-creed/shadows"
+     },
+     {
+      "title": "Naoe's Theme",
+      "url": "https://www.ubisoft.com/en-us/game/assassins-creed/shadows"
+     },
+     {
+      "title": "Yasuke's Theme",
+      "url": "https://www.ubisoft.com/en-us/game/assassins-creed/shadows"
+     }
+    ],
+    "seriesName": "Assassin's Creed Shadows",
+    "seriesEntries": [
+     "Assassin's Creed Mirage",
+     "Assassin's Creed Shadows",
+     "Assassin's Creed Valhalla"
+    ],
+    "studioName": "Ubisoft Quebec",
+    "studioUrl": "https://quebec.ubisoft.com/",
+    "studioLocation": "Quebec City, Canada",
+    "studioAbout": "Lead studio for Assassin's Creed Shadows, supported by a large network of Ubisoft studios worldwide.",
+    "setupNeeds": [
+     "Nintendo Switch 2",
+     "68.9 GB free storage for the base game",
+     "Internet connection for initial Game-Key Card installation; Ubisoft Account for applicable online/cross-progression features"
+    ],
+    "sources": [
+     {
+      "name": "Nintendo eShop",
+      "url": "https://ec.nintendo.com/NZ/en/titles/70010000101040"
+     },
+     {
+      "name": "Ubisoft Switch 2 launch article",
+      "url": "https://www.ubisoft.com/en-us/game/assass-creed/news/SkxXq98e1wMmzWMsCkRqY"
+     },
+     {
+      "name": "Deku Deals",
+      "url": "https://www.dekudeals.com/items/assassin-s-creed-shadows"
+     }
+    ],
+    "boxContentsList": "[Circular]",
+    "image": "/api/files/products/prd_ad958aa523e24052/cover-9ceffdcf1e83ce6d.jpg",
+    "banner": "/api/files/products/prd_ad958aa523e24052/banner-0-23b344afdd37e1c2.avif",
+    "schemaId": "",
+    "createdAt": "2026-08-27T00:27:47.504Z",
+    "created_at": "2026-08-27T00:27:47.504Z",
+    "updatedAt": "2026-08-27T00:27:47.504Z",
+    "updated_at": "2026-08-27T00:27:47.504Z",
+    "badgeEn": "وفر 40%",
+    "badgeKu": "وفر 40%",
+    "featuresEn": [
+     "Two protagonists with distinct stealth/combat systems",
+     "Dynamic seasons, weather and reactive environments",
+     "Touchscreen UI and Ubisoft Connect cross-progression on Switch 2"
+    ],
+    "featuresKu": [
+     "Two protagonists with distinct stealth/combat systems",
+     "Dynamic seasons, weather and reactive environments",
+     "Touchscreen UI and Ubisoft Connect cross-progression on Switch 2"
+    ],
+    "boxFrontUrl": "https://images.kabum.com.br/produtos/fotos/952237/jogo-assassinos-creed-shadows-para-nintendo-switch-2-ub000084nsw_1765543878_gg.jpg",
+    "sales": 0,
+    "images": [],
+    "modes": [],
+    "variants": "[Circular]"
+   }
+  },
+  {
+   "id": "prd_b66558151b784a6f",
+   "slug": "bayonetta",
+   "title": "Bayonetta",
+   "platform": "switch1",
+   "isHidden": false,
+   "hash": "e19d4c3c70182b08799f6f639cd930867cedc4b0f8f471f25b1bd4131d129ca7",
+   "images": [
+    {
+     "role": "front-box",
+     "field": "cartridgeImage",
+     "url": "https://banan.to/api/files/products/prd_b66558151b784a6f/front-d05d61994e4b1fe1.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 858440,
+     "width": 1166,
+     "height": 1888,
+     "thumb": "review-workdir/thumbs/batch-001/bayonetta__front-box-0.png"
+    },
+    {
+     "role": "front-box",
+     "field": "box_front_url",
+     "url": "https://images.launchbox-app.com/52d670d3-013b-488f-b262-6d66f5782576.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 858440,
+     "width": 1166,
+     "height": 1888,
+     "thumb": "review-workdir/thumbs/batch-001/bayonetta__front-box-1.png"
+    },
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://banan.to/api/files/products/prd_b66558151b784a6f/square-a6e89391e7eb3a2d.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 609437,
+     "width": 1024,
+     "height": 1024,
+     "thumb": "review-workdir/thumbs/batch-001/bayonetta__square-card-2.png"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://banan.to/api/files/products/prd_b66558151b784a6f/cover-699dbf09e7e7b758.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 565158,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-001/bayonetta__detail-cover-3.png"
+    },
+    {
+     "role": "3d-texture",
+     "field": "coverHiResImage",
+     "url": "https://banan.to/api/files/products/general/image-3471ce7f786c47be.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 4031580,
+     "width": 4935,
+     "height": 3820,
+     "thumb": "review-workdir/thumbs/batch-001/bayonetta__3d-texture-4.png"
+    },
+    {
+     "role": "listing",
+     "field": "image",
+     "url": "https://banan.to/api/files/products/prd_b66558151b784a6f/cover-699dbf09e7e7b758.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 565158,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-001/bayonetta__listing-5.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[0]",
+     "url": "https://banan.to/api/files/products/prd_b66558151b784a6f/banner-0-077ace3d7dc181d7.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 494655,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-001/bayonetta__banner-6.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[1]",
+     "url": "https://banan.to/api/files/products/prd_b66558151b784a6f/banner-1-56371d7c4e65630d.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 464942,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-001/bayonetta__banner-7.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[2]",
+     "url": "https://banan.to/api/files/products/prd_b66558151b784a6f/banner-2-4c8033eaf1501102.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 474449,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-001/bayonetta__banner-8.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[3]",
+     "url": "https://banan.to/api/files/products/prd_b66558151b784a6f/banner-3-28c1a2b94e51b6ad.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 465898,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-001/bayonetta__banner-9.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://images.launchbox-app.com/bf543e3b-ea5d-4afd-b9c2-20b717c609d2.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 1149359,
+     "width": 3840,
+     "height": 2160,
+     "thumb": "review-workdir/thumbs/batch-001/bayonetta__gallery-10.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[1]",
+     "url": "https://images.launchbox-app.com/fd7b25aa-603d-4782-9903-914e8c8f1da7.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 229519,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-001/bayonetta__gallery-11.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[2]",
+     "url": "https://images.launchbox-app.com/fba8741d-41af-40cf-befc-8c5765259aba.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 425203,
+     "width": 3840,
+     "height": 2160,
+     "thumb": "review-workdir/thumbs/batch-001/bayonetta__gallery-12.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[3]",
+     "url": "https://images.launchbox-app.com/70c999ff-b7a1-47c3-880b-b0fffae6239e.png",
+     "status": 200,
+     "contentType": "image/png",
+     "bytes": 1572258,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-001/bayonetta__gallery-13.png"
+    }
+   ],
+   "record": {
+    "title": "Bayonetta",
+    "titleEn": "Bayonetta",
+    "titleKu": "Bayonetta",
+    "slug": "bayonetta",
+    "description": "Bayonetta is PlatinumGames’ stylish character-action game starring the last Umbra Witch. Combat centers on fast combos, gunplay, weapon sets, dodge-triggered Witch Time, Torture Attacks and enormous Infernal Demon finishers. The Nintendo Switch version brings the original game to handheld, tabletop and TV play.",
+    "descriptionEn": "Bayonetta is PlatinumGames’ stylish character-action game starring the last Umbra Witch. Combat centers on fast combos, gunplay, weapon sets, dodge-triggered Witch Time, Torture Attacks and enormous Infernal Demon finishers. The Nintendo Switch version brings the original game to handheld, tabletop and TV play.",
+    "descriptionKu": "Bayonetta is PlatinumGames’ stylish character-action game starring the last Umbra Witch. Combat centers on fast combos, gunplay, weapon sets, dodge-triggered Witch Time, Torture Attacks and enormous Infernal Demon finishers. The Nintendo Switch version brings the original game to handheld, tabletop and TV play.",
+    "cartridgeImage": "/api/files/products/prd_b66558151b784a6f/front-d05d61994e4b1fe1.jpg",
+    "nintendoCardImage": "/api/files/products/prd_b66558151b784a6f/square-a6e89391e7eb3a2d.jpg",
+    "coverHiResImage": "/api/files/products/general/image-3471ce7f786c47be.jpg",
+    "coverImage": "/api/files/products/prd_b66558151b784a6f/cover-699dbf09e7e7b758.jpg",
+    "bannerImages": [
+     "/api/files/products/prd_b66558151b784a6f/banner-0-077ace3d7dc181d7.jpg",
+     "/api/files/products/prd_b66558151b784a6f/banner-1-56371d7c4e65630d.jpg",
+     "/api/files/products/prd_b66558151b784a6f/banner-2-4c8033eaf1501102.jpg",
+     "/api/files/products/prd_b66558151b784a6f/banner-3-28c1a2b94e51b6ad.jpg",
+     "/api/files/products/prd_b66558151b784a6f/banner-4-2875d3a70c970971.jpg",
+     "/api/files/products/prd_b66558151b784a6f/banner-5-977049aa74b53213.jpg"
+    ],
+    "gallery": [],
+    "youtubeTrailer": "https://www.youtube.com/watch?v=3DjY6JK-WT0",
+    "releaseDate": "2018-02-16",
+    "ageRating": "ESRB Mature",
+    "metacriticRating": 84,
+    "genres": [
+     "Action",
+     "Hack and Slash",
+     "Character Action",
+     "Adventure"
+    ],
+    "platform": "switch1",
+    "size": 8.793,
+    "numberOfPlayers": "1",
+    "supportedLanguages": "Official Western Nintendo Switch listing: Japanese, English, French, German, Italian and Spanish. Supplier SKU supplied by user: English.",
+    "hardwareModel": "",
+    "colorEdition": "",
+    "storageCapacity": "",
+    "screenSpecs": "",
+    "batteryLife": "",
+    "boxContents": [],
+    "boxContentsText": "",
+    "warrantyCondition": "",
+    "connectivity": "",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "Global / region-dependent",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "",
+    "redemptionSteps": [],
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 8500,
+    "cost": 1250,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": false,
+    "displayOrder": 0,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "مشترك",
+      "description": "Offline account access from the supplier listing.",
+      "stock": 999999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_account",
+      "name": "خاص بك",
+      "description": "Online account access from the supplier listing.",
+      "stock": 999999,
+      "isInfiniteStock": true
+     }
+    ],
+    "types": [
+     {
+      "id": "standard_offline",
+      "name": "مشترك — اللعبة الأساسية",
+      "optionId": "offline_account",
+      "price": 8500,
+      "cost": 1250,
+      "description": "Supplier Regular / 普通版; ¥6.8 converted to IQD.",
+      "stock": 999999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "standard_online",
+      "name": "خاص بك — اللعبة الأساسية",
+      "optionId": "online_account",
+      "price": 25000,
+      "cost": 12250,
+      "description": "Supplier Standard / 标准版; ¥55.8 converted to IQD.",
+      "stock": 999999,
+      "isInfiniteStock": true
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "active",
+    "kind": "account",
+    "trade_value_iqd": 0,
+    "store_offer_bonus_iqd": 0,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "id": "prd_b66558151b784a6f",
+    "schema_version": 1,
+    "titleAr": "بايونيتا",
+    "compatibility": [
+     "Nintendo Switch",
+     "Nintendo Switch 2 (backward compatibility)",
+     "Nintendo Switch Lite"
+    ],
+    "edition": "Standard",
+    "developer": "PlatinumGames",
+    "publisher": "Nintendo",
+    "metacriticUrl": "https://www.metacritic.com/game/bayonetta/",
+    "opencriticRating": 85,
+    "userScore": 8.3,
+    "price_usd": 29.99,
+    "officialUrl": "https://www.nintendo.com/au/games/nintendo-switch/bayonetta/",
+    "eshopUrl": "https://www.nintendo.com/au/games/nintendo-switch/bayonetta/",
+    "gameIsOffline": true,
+    "gameIsOnline": false,
+    "description_short": "The original stylish action classic on Nintendo Switch, built around Witch Time, weapon switching and spectacular combo-driven battles.",
+    "description_ar": "الجزء الأصلي من سلسلة الأكشن السريع Bayonetta. يعتمد القتال على الكومبوهات والأسلحة وإطلاق النار وميزة Witch Time التي تتفعّل مع المراوغة الدقيقة، إضافة إلى الهجمات الضخمة واستدعاءات الشياطين.",
+    "box_front_url": "https://images.launchbox-app.com/52d670d3-013b-488f-b262-6d66f5782576.jpg",
+    "box_back_url": "https://images.launchbox-app.com/4271e926-e202-4079-a0d1-1a25cbf04f9a.png",
+    "videos": [
+     {
+      "title": "Bayonetta — Nintendo Switch trailer",
+      "url": "https://www.youtube.com/watch?v=3DjY6JK-WT0"
+     },
+     {
+      "title": "Bayonetta — technical analysis reference",
+      "url": "https://www.youtube.com/results?search_query=Digital+Foundry+Bayonetta+Switch"
+     },
+     {
+      "title": "PlatinumGames — Bayonetta series",
+      "url": "https://www.platinumgames.com/games/bayonetta/"
+     }
+    ],
+    "nintendoEshopUrl": "https://www.nintendo.com/au/games/nintendo-switch/bayonetta/",
+    "nintendoOnlineRequired": false,
+    "nintendoCloudSaves": true,
+    "nintendoGameKeyCard": false,
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": true,
+    "nintendoPlayModes": "TV / Tabletop / Handheld",
+    "nintendoNotes": "Native Nintendo Switch software released February 16, 2018. The Western Switch listing supports Japanese, English, French, German, Italian and Spanish. The supplier option supplied by the user is marked English. Nintendo Switch 2 compatibility is backward compatibility rather than a native Switch 2 Edition.",
+    "switch2Enhanced": false,
+    "switch2Exclusive": false,
+    "switch2Features": [
+     "Official backward compatibility support",
+     "No native Switch 2 Edition",
+     "Original 720p rendering profile",
+     "Potentially steadier backward-compatible execution without a new graphics mode"
+    ],
+    "tagline": "Climax action with the last Umbra Witch.",
+    "fitFor": [
+     "Players who love high-skill action games",
+     "Players who enjoy combo systems and score chasing",
+     "Fans of extravagant cinematic action",
+     "Players who want a replayable campaign"
+    ],
+    "notFitFor": [
+     "Players who dislike fast reaction-based combat",
+     "Players seeking a slow narrative RPG",
+     "Players who require native 1080p rendering",
+     "Players who dislike mature fantasy violence"
+    ],
+    "playTimeMain": 11.5,
+    "playTimeFull": 41.5,
+    "editionsList": [
+     {
+      "name": "Bayonetta — Nintendo Switch",
+      "coverUrl": "https://images.launchbox-app.com/52d670d3-013b-488f-b262-6d66f5782576.jpg",
+      "contents": [
+       {
+        "label": "Full Bayonetta campaign"
+       },
+       {
+        "label": "Nintendo Switch play modes"
+       },
+       {
+        "label": "Switch-version bonus compatibility/features"
+       }
+      ]
+     }
+    ],
+    "gameplayPillars": [
+     {
+      "title": "Witch Time",
+      "description": "Dodge at the last possible moment to slow enemies and create powerful openings.",
+      "imageUrl": "https://images.launchbox-app.com/bf543e3b-ea5d-4afd-b9c2-20b717c609d2.jpg"
+     },
+     {
+      "title": "Combo Expression",
+      "description": "Mix punches, kicks, guns and equipped weapons into long customizable combo strings.",
+      "imageUrl": "https://images.launchbox-app.com/fd7b25aa-603d-4782-9903-914e8c8f1da7.jpg"
+     },
+     {
+      "title": "Climax Spectacle",
+      "description": "Finish encounters with Torture Attacks and large Infernal Demon sequences.",
+      "imageUrl": "https://images.launchbox-app.com/fba8741d-41af-40cf-befc-8c5765259aba.jpg"
+     },
+     {
+      "title": "Replay for Mastery",
+      "description": "Ranks, difficulties, collectibles and unlocks reward repeated play and mechanical mastery.",
+      "imageUrl": "https://images.launchbox-app.com/70c999ff-b7a1-47c3-880b-b0fffae6239e.png"
+     }
+    ],
+    "worldSummary": "Bayonetta awakens with fragmented memories and is drawn into a conflict involving the Umbra Witches, Lumen Sages and celestial forces. Her journey across Vigrid gradually reconstructs her past while escalating into increasingly extravagant battles.",
+    "storyChapters": [
+     {
+      "title": "The Witch Awakens",
+      "body": "Bayonetta fights angels while searching for the truth behind her lost memories.",
+      "imageUrl": "https://images.launchbox-app.com/bf543e3b-ea5d-4afd-b9c2-20b717c609d2.jpg"
+     },
+     {
+      "title": "Vigrid and the Past",
+      "body": "The journey through Vigrid reveals links to the Umbra Witches, Lumen Sages and Bayonetta’s origin.",
+      "imageUrl": "https://images.launchbox-app.com/fd7b25aa-603d-4782-9903-914e8c8f1da7.jpg"
+     },
+     {
+      "title": "The Eyes of the World",
+      "body": "The conflict expands into a struggle over ancient powers tied to the balance of the world.",
+      "imageUrl": "https://images.launchbox-app.com/fba8741d-41af-40cf-befc-8c5765259aba.jpg"
+     },
+     {
+      "title": "Climax",
+      "body": "The story culminates in the series’ signature mixture of supernatural mythology and oversized action spectacle.",
+      "imageUrl": "https://images.launchbox-app.com/70c999ff-b7a1-47c3-880b-b0fffae6239e.png"
+     }
+    ],
+    "galleryImages": [
+     {
+      "url": "https://images.launchbox-app.com/bf543e3b-ea5d-4afd-b9c2-20b717c609d2.jpg",
+      "alt": "Bayonetta high-resolution background artwork"
+     },
+     {
+      "url": "https://images.launchbox-app.com/fd7b25aa-603d-4782-9903-914e8c8f1da7.jpg",
+      "alt": "Bayonetta high-resolution fanart background"
+     },
+     {
+      "url": "https://images.launchbox-app.com/fba8741d-41af-40cf-befc-8c5765259aba.jpg",
+      "alt": "Bayonetta character artwork"
+     },
+     {
+      "url": "https://images.launchbox-app.com/70c999ff-b7a1-47c3-880b-b0fffae6239e.png",
+      "alt": "Nintendo Switch gameplay screenshot"
+     }
+    ],
+    "features": [
+     "Witch Time rewarded by last-second dodges",
+     "Deep combo and weapon-switching system",
+     "Torture Attacks and Infernal Demon finishers",
+     "Multiple difficulties and score chasing",
+     "Handheld, tabletop and TV play",
+     "Extensive unlocks and replay value"
+    ],
+    "perfResolutionDocked": "720p",
+    "perfResolutionHandheld": "720p",
+    "perfFps": "60",
+    "perfHdr": false,
+    "perfNotes": "The Switch port uses 720p in both docked and portable modes and targets 60 fps. Docked play is more stable; handheld can show more noticeable dips.",
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "hardwareId": "prd_acf4c89908764c62",
+      "informationStatus": "measured / technical analysis",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p",
+       "resolutionDynamic": false,
+       "renderingResolution": "1280x720",
+       "outputResolution": "1280x720",
+       "fps": "60",
+       "fpsMax": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Handheld",
+       "notes": "Handheld mode renders at 720p and targets 60 fps, with more frequent performance dips than docked play."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "720p",
+       "resolutionDynamic": false,
+       "renderingResolution": "1280x720",
+       "outputResolution": "1920x1080",
+       "fps": "60",
+       "fpsMax": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Docked",
+       "notes": "Docked mode renders at 720p and targets 60 fps, generally holding performance more consistently than handheld."
+      },
+      "rayTracing": false,
+      "sourceName": "Digital Foundry / technical coverage of Nintendo Switch version",
+      "sourceUrl": "https://www.eurogamer.net/digitalfoundry-2018-bayonetta-switch-analysis",
+      "verificationStatus": "verified / source-qualified",
+      "performanceNotes": "The Switch port uses 720p in both docked and portable modes and targets 60 fps. Docked play is more stable; handheld can show more noticeable dips."
+     }
+    ],
+    "downloadSizeGb": 8.793,
+    "requiredSpaceGb": 8.793,
+    "microSdRecommended": false,
+    "storageNotes": "Official/reliable listing reports approximately 8.793 GB for the Nintendo Switch download. Leave additional free space for save data and future updates.",
+    "languagesAudio": [
+     "English",
+     "Japanese"
+    ],
+    "languagesText": [
+     "English",
+     "Japanese",
+     "French",
+     "German",
+     "Italian",
+     "Spanish"
+    ],
+    "arabicSupport": false,
+    "mpLocalPlayers": false,
+    "mpOnlinePlayers": false,
+    "mpCoop": false,
+    "mpCompetitive": false,
+    "mpSplitScreen": false,
+    "mpLocalWireless": false,
+    "completionMain": 11.5,
+    "completionExtras": 15.5,
+    "completionAll": 41.5,
+    "faq": [
+     {
+      "q": "Does Bayonetta work on Nintendo Switch 2?",
+      "a": "Yes through backward compatibility where Nintendo marks the Nintendo Switch release as supported. This file does not classify it as a native Nintendo Switch 2 Edition."
+     },
+     {
+      "q": "What language is the supplier version of Bayonetta?",
+      "a": "Supplier listing language supplied by the user: English. Official/regional language details are preserved separately in supported_languages_raw and nintendo_notes so the supplier SKU is not generalized to every region."
+     },
+     {
+      "q": "Is Bayonetta multiplayer?",
+      "a": "The main game is single-player; no multiplayer mode is asserted in this file."
+     },
+     {
+      "q": "Why are some Switch 2 performance resolution fields blank for Bayonetta?",
+      "a": "Because exact measured Switch 2 backward-compatibility rendering values were not verified. The template is intentionally left blank rather than filled with hardware maximums or guesses."
+     }
+    ],
+    "verdictScore": 8.8,
+    "verdictSummary": "A foundational stylish-action game with unusually deep combat and enduring replay value. The Switch port is technically modest in resolution but remains a strong way to play the original on a portable Nintendo system.",
+    "reviews": [
+     {
+      "source": "Metacritic",
+      "score": "84/100",
+      "quote": "Nintendo Switch aggregate critic score.",
+      "url": "https://www.metacritic.com/game/bayonetta/"
+     },
+     {
+      "source": "OpenCritic",
+      "score": "85/100",
+      "quote": "Aggregate critic score recorded for Bayonetta.",
+      "url": "https://opencritic.com/game/5617/bayonetta"
+     },
+     {
+      "source": "Deku Deals user metadata",
+      "score": "8.3/10",
+      "quote": "User-score metadata shown with the Switch listing.",
+      "url": "https://www.dekudeals.com/items/bayonetta-digital-version"
+     }
+    ],
+    "timeline": [
+     {
+      "date": "2009-10-29",
+      "title": "Original Japanese debut",
+      "body": "Bayonetta first launched in Japan on its original platforms."
+     },
+     {
+      "date": "2018-02-16",
+      "title": "Nintendo Switch release",
+      "body": "The original Bayonetta released on Nintendo Switch."
+     },
+     {
+      "date": "2022-09-30",
+      "title": "Standalone Switch physical release period",
+      "body": "A standalone physical Switch release followed in select regions years after the initial Switch digital release."
+     }
+    ],
+    "seriesName": "Bayonetta",
+    "seriesEntries": [
+     "Bayonetta 2",
+     "Bayonetta 3",
+     "Bayonetta Origins: Cereza and the Lost Demon",
+     "Bayonetta & Vanquish 10th Anniversary Bundle"
+    ],
+    "studioName": "PlatinumGames",
+    "studioUrl": "https://www.platinumgames.com/",
+    "studioLocation": "Tokyo, Japan",
+    "studioAbout": "PlatinumGames is an Osaka-based Japanese developer known for high-speed character-action combat and technically expressive action games.",
+    "setupNeeds": [
+     "Nintendo Switch family system",
+     "Nintendo Account for digital purchase/download",
+     "Sufficient storage for approximately 8.8 GB plus updates",
+     "Nintendo Switch Online membership for cloud-save backup"
+    ],
+    "sources": [
+     {
+      "name": "Nintendo Australia — Bayonetta",
+      "url": "https://www.nintendo.com/au/games/nintendo-switch/bayonetta/"
+     },
+     {
+      "name": "Deku Deals — Bayonetta",
+      "url": "https://www.dekudeals.com/items/bayonetta-digital-version"
+     },
+     {
+      "name": "LaunchBox — Bayonetta Switch media",
+      "url": "https://gamesdb.launchbox-app.com/games/images/95452-bayonetta"
+     },
+     {
+      "name": "Eurogamer / Digital Foundry — Switch analysis",
+      "url": "https://www.eurogamer.net/digitalfoundry-2018-bayonetta-switch-analysis"
+     },
+     {
+      "name": "PlatinumGames",
+      "url": "https://www.platinumgames.com/games/bayonetta/"
+     }
+    ],
+    "boxContentsList": "[Circular]",
+    "image": "/api/files/products/prd_b66558151b784a6f/cover-699dbf09e7e7b758.jpg",
+    "banner": "/api/files/products/prd_b66558151b784a6f/banner-0-077ace3d7dc181d7.jpg",
+    "schemaId": "",
+    "createdAt": "2026-08-26T22:24:24.597Z",
+    "created_at": "2026-08-26T22:24:24.597Z",
+    "updatedAt": "2026-08-28T22:06:48.910Z",
+    "updated_at": "2026-08-26T22:24:24.597Z",
+    "badgeEn": "وفر 40%",
+    "badgeKu": "وفر 40%",
+    "featuresEn": [
+     "Witch Time rewarded by last-second dodges",
+     "Deep combo and weapon-switching system",
+     "Torture Attacks and Infernal Demon finishers",
+     "Multiple difficulties and score chasing",
+     "Handheld, tabletop and TV play",
+     "Extensive unlocks and replay value"
+    ],
+    "featuresKu": [
+     "Witch Time rewarded by last-second dodges",
+     "Deep combo and weapon-switching system",
+     "Torture Attacks and Infernal Demon finishers",
+     "Multiple difficulties and score chasing",
+     "Handheld, tabletop and TV play",
+     "Extensive unlocks and replay value"
+    ],
+    "boxFrontUrl": "https://images.launchbox-app.com/52d670d3-013b-488f-b262-6d66f5782576.jpg",
+    "sales": 0,
+    "images": [],
+    "modes": []
+   }
+  }
+ ]
+}
