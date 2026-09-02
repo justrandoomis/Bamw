@@ -309,12 +309,18 @@ export function SmartImage({
   const [state, setState] = useState<"loading" | "ready" | "failed">("loading");
 
   if (!src || state === "failed") {
+    /*
+      The placeholder takes the wrapper's classes only. `className` styles the
+      inner <img> — usually "h-full w-full object-cover" — and merging it here
+      let tailwind-merge's w-full defeat the wrapper's fixed width, so a card
+      whose artwork failed to load grew to the full row and pushed the page
+      into horizontal overflow (the empty left band on RTL phones).
+    */
     return (
       <div
         className={cn(
           "flex items-center justify-center bg-gradient-to-br from-ink-800 to-ink-850",
           wrapperClassName,
-          className,
         )}
         aria-label={alt}
         role="img"

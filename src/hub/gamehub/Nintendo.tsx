@@ -914,7 +914,7 @@ export function LanguagesSection() {
             {visible.map((language, langIdx) => (
               <div
                 key={`${language.code || language.name}-${langIdx}`}
-                className="flex items-center justify-between gap-3 rounded-xl bg-white/[0.035] px-3 py-2.5"
+                className="flex min-w-0 items-center justify-between gap-3 rounded-xl bg-white/[0.035] px-3 py-2.5"
               >
                 <span className="min-w-0">
                   <span className="block truncate text-sm font-bold">{language.name}</span>
