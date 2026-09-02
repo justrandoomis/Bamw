@@ -104,7 +104,11 @@ export default function ProductRequestsView() {
     if (searchTerm) {
       const s = searchTerm.toLowerCase();
       return (
-        r.productName.toLowerCase().includes(s) ||
+        // Optional-chained like the clauses below it: a request that somehow
+        // reaches the list without a name must not throw during render. The
+        // only boundary above this screen is the root route's, so an uncaught
+        // TypeError here replaced the whole admin panel with the error page.
+        r.productName?.toLowerCase().includes(s) ||
         r.contactMethod?.toLowerCase().includes(s) ||
         r.gameId?.toLowerCase().includes(s) ||
         r.id.toLowerCase().includes(s)
@@ -175,12 +179,22 @@ export default function ProductRequestsView() {
               onChange={(e) => setFilterStatus(e.target.value)}
               className="bg-card border border-border rounded-lg px-4 py-2 text-sm focus:border-primary focus:outline-none"
             >
+              {/*
+                Every status the list can hold. Three of them — sourcing,
+                available and cancelled — had no option at all, and the one
+                that named sourcing filtered on "accepted", so an admin
+                checking what was in progress got an empty list and concluded
+                nothing was.
+              */}
               <option value="all">{t("كل الحالات")}</option>
               <option value="submitted">{t("طلبات جديدة")}</option>
               <option value="under_review">{t("قيد المراجعة")}</option>
-              <option value="accepted">{t("مقبول / جارٍ البحث")}</option>
-              <option value="added">{t("تم توفيره")}</option>
+              <option value="accepted">{t("مقبول")}</option>
+              <option value="sourcing">{t("جارٍ البحث عن مورد")}</option>
+              <option value="available">{t("متوفر")}</option>
+              <option value="added">{t("تمت الإضافة للمتجر")}</option>
               <option value="rejected">{t("مرفوض")}</option>
+              <option value="cancelled">{t("ملغي")}</option>
             </select>
           </div>
 
@@ -236,6 +250,21 @@ function RequestCard({
   const [adminNote, setAdminNote] = useState(req.adminNote || "");
   const [userVisibleNote, setUserVisibleNote] = useState(req.userVisibleNote || "");
   const [linkedProductId, setLinkedProductId] = useState(req.linkedProductId || "");
+
+  /*
+    The card is keyed by request id, so a refetch re-renders it without
+    remounting and these initialisers never run again. After a quick "قبول
+    الطلب" — which stores a canned message for the customer — the form still
+    held the values from page load, and opening "تعديل كامل" and saving wrote
+    them back over the newer ones. Re-seeding whenever the stored request
+    changes keeps the form showing what is actually saved.
+  */
+  React.useEffect(() => {
+    setStatus(req.status);
+    setAdminNote(req.adminNote || "");
+    setUserVisibleNote(req.userVisibleNote || "");
+    setLinkedProductId(req.linkedProductId || "");
+  }, [req.updatedAt, req.status, req.adminNote, req.userVisibleNote, req.linkedProductId]);
 
   const handleSave = () => {
     onSave({ status, adminNote, userVisibleNote, linkedProductId });
@@ -358,6 +387,38 @@ function RequestCard({
             {t("وسيلة التواصل")}
           </span>
           <div className="text-sm font-mono">{req.contactMethod || "-"}</div>
+        </div>
+        {/*
+          The customer picks a region on the request form and it is stored, but
+          the admin sourcing the game could not see it — after the title it is
+          the field that decides price and availability. The reference link the
+          customer supplied was likewise collected and never shown.
+        */}
+        <div>
+          <span className="block text-xs font-bold text-muted-foreground mb-1">
+            {t("المنطقة المطلوبة")}
+          </span>
+          <div className="text-sm">{req.preferredRegion || "-"}</div>
+        </div>
+        <div>
+          <span className="block text-xs font-bold text-muted-foreground mb-1">
+            {t("رابط مرجعي")}
+          </span>
+          <div className="text-sm truncate">
+            {req.referenceUrl ? (
+              <a
+                href={req.referenceUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-primary hover:underline inline-flex items-center gap-1"
+              >
+                <ExternalLink className="w-3 h-3 shrink-0" />
+                <span className="truncate">{req.referenceUrl}</span>
+              </a>
+            ) : (
+              "-"
+            )}
+          </div>
         </div>
         <div className="md:col-span-2">
           <span className="block text-xs font-bold text-muted-foreground mb-1">

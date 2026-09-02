@@ -288,7 +288,11 @@ export async function notifyAdminGameRequest(params: {
   const replyMarkup = buildInlineAppButton(
     `🎮 فتح طلبات الألعاب في MiniApp`,
     `gamereq_${request.id}`,
-    `/game-request`,
+    // The browser fallback, for an admin who cannot open the Mini App. There
+    // is no `/game-request` page — the requests screen lives under the admin
+    // panel, and `/add_game` is the customer-facing one — so that link was a
+    // 404 every time it was tapped.
+    `/admin`,
   );
 
   try {
