@@ -1,6 +1,6 @@
 {
  "batch": "022",
- "apply": true,
+ "apply": false,
  "games": [
   {
    "id": "prd_1f71e51f89264fbc",
@@ -157,6 +157,110 @@
     "guaranteeStatus"
    ],
    "notes": "The verified Friend's Pass model recorded (same as It Takes Two — Hazelight's standard). 2025-06-05, 69.2 GB, Metacritic 88, sourced up-to-1080p/30 Switch 2 record and working images all verified. Contamination removed."
+  }
+ ],
+ "appliedAt": "2026-09-02T03:57:02.013Z",
+ "results": [
+  {
+   "id": "prd_1f71e51f89264fbc",
+   "action": "APPLIED",
+   "changed": [
+    "bannerImages"
+   ],
+   "removed": [
+    "box_front_url",
+    "youtubeTrailer",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ]
+  },
+  {
+   "id": "prd_6bf0d5403c564fe4",
+   "action": "APPLIED",
+   "changed": [],
+   "removed": [
+    "box_front_url",
+    "youtubeTrailer",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ]
+  },
+  {
+   "id": "prd_6d36bcc691b34fc1",
+   "action": "APPLIED",
+   "changed": [
+    "devicePerformance"
+   ],
+   "removed": [
+    "cartridgeImage",
+    "box_front_url",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ]
+  },
+  {
+   "id": "prd_ca00c669a42241f6",
+   "action": "APPLIED",
+   "changed": [
+    "bannerImages",
+    "galleryImages"
+   ],
+   "removed": [
+    "youtubeTrailer",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ]
+  },
+  {
+   "id": "prd_f5dc0c57193d4c81",
+   "action": "APPLIED",
+   "changed": [
+    "dlcSummary"
+   ],
+   "removed": [
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ]
   }
  ]
 }

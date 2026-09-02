@@ -1,0 +1,2892 @@
+{
+ "batch": "023",
+ "generatedAt": "2026-09-02T03:57:35.125Z",
+ "totalGames": 145,
+ "reviewedSoFar": 106,
+ "games": [
+  {
+   "id": "prd_5ba181a080d14238",
+   "slug": "star-wars-outlaws-gold-edition-switch-2",
+   "title": "Star Wars Outlaws Gold Edition",
+   "platform": "switch2",
+   "isHidden": true,
+   "hash": "27b8463fa7a2257197121e97806678af4e797cc175558cd30dc9f0695d5b7d3a",
+   "images": [
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://banan.to/api/files/products/prd_5ba181a080d14238/square-card-b591db62248ec70d.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 211692,
+     "width": 1024,
+     "height": 1024,
+     "thumb": "review-workdir/thumbs/batch-023/star-wars-outlaws-gold-edition-switch-2__square-card-0.png"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://banan.to/api/files/products/prd_5ba181a080d14238/cover-7dba1ad927db4c3c.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 491934,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-023/star-wars-outlaws-gold-edition-switch-2__detail-cover-1.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://banan.to/api/files/products/prd_5ba181a080d14238/gallery-1-d0f946bdd7d1db9f.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 380576,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-023/star-wars-outlaws-gold-edition-switch-2__gallery-2.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[1]",
+     "url": "https://banan.to/api/files/products/prd_5ba181a080d14238/gallery-2-0b8a4c4e32baf732.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 404104,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-023/star-wars-outlaws-gold-edition-switch-2__gallery-3.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[2]",
+     "url": "https://banan.to/api/files/products/prd_5ba181a080d14238/gallery-3-f7a53065fbd72c1f.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 179660,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-023/star-wars-outlaws-gold-edition-switch-2__gallery-4.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[3]",
+     "url": "https://banan.to/api/files/products/prd_5ba181a080d14238/gallery-4-88292e4fcd1a7cb0.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 171524,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-023/star-wars-outlaws-gold-edition-switch-2__gallery-5.png"
+    }
+   ],
+   "record": {
+    "title": "Star Wars Outlaws Gold Edition",
+    "titleEn": "Star Wars Outlaws Gold Edition",
+    "titleKu": "",
+    "slug": "star-wars-outlaws-gold-edition-switch-2",
+    "description": "Experience the ultimate galactic adventure with Star Wars Outlaws on Nintendo Switch™ 2! Whether at home or on the go, enjoy an optimized handheld mode, immersive motion controls for key features, intuitive touch controls for menu navigation, and select minigames.\n\nWith the Star Wars Outlaws Gold Edition, get access to the base game and the Season Pass, including:\n- Star Wars Outlaws: Wild Card story pack\n- Star Wars Outlaws: A Pirate's Fortune story pack\n- Jabba's Gambit exclusive mission\n- The Kessel Runner character pack\n- The Hunter's Legacy bundle\n- The Cartel Ronin bundle\n\nDISCOVER A GALAXY OF OPPORTUNITY\nExplore distinct locations with bustling cities and cantinas. Race across sprawling outdoor landscapes on your speeder. Each location brings new adventures, unique challenges, and enticing rewards if you’re willing to take the risk.\n\nEXPERIENCE AN ORIGINAL SCOUNDREL STORY\nLive the high-stakes lifestyle of an outlaw. Turn any situation to your advantage with Nix by your side: fight with your blaster, overcome enemies with stealth and gadgets, or find the right moments to distract enemies and gain the upper hand.\n\nEMBARK ON HIGH-STAKES MISSIONS\nTake on high-risk, high-reward missions from the galaxy’s crime syndicates. Steal valuable goods, infiltrate secret locations, and outwit enemies as one of the galaxy’s most wanted. Every choice you make influences your ever-changing reputation.\n\nJUMP INTO THE PILOT SEAT\nPilot your ship, the Trailblazer, as you engage in thrilling dogfights with the Empire and other foes. Find the right opportunities to chase, evade, and attack to get the upper hand.\n\nIf you’re willing to take the risk, the galaxy is full of opportunity.\n\nOffer, content, and dates subject to change.",
+    "descriptionEn": "Experience the ultimate galactic adventure with Star Wars Outlaws on Nintendo Switch™ 2! Whether at home or on the go, enjoy an optimized handheld mode, immersive motion controls for key features, intuitive touch controls for menu navigation, and select minigames.\n\nWith the Star Wars Outlaws Gold Edition, get access to the base game and the Season Pass, including:\n- Star Wars Outlaws: Wild Card story pack\n- Star Wars Outlaws: A Pirate's Fortune story pack\n- Jabba's Gambit exclusive mission\n- The Kessel Runner character pack\n- The Hunter's Legacy bundle\n- The Cartel Ronin bundle\n\nDISCOVER A GALAXY OF OPPORTUNITY\nExplore distinct locations with bustling cities and cantinas. Race across sprawling outdoor landscapes on your speeder. Each location brings new adventures, unique challenges, and enticing rewards if you’re willing to take the risk.\n\nEXPERIENCE AN ORIGINAL SCOUNDREL STORY\nLive the high-stakes lifestyle of an outlaw. Turn any situation to your advantage with Nix by your side: fight with your blaster, overcome enemies with stealth and gadgets, or find the right moments to distract enemies and gain the upper hand.\n\nEMBARK ON HIGH-STAKES MISSIONS\nTake on high-risk, high-reward missions from the galaxy’s crime syndicates. Steal valuable goods, infiltrate secret locations, and outwit enemies as one of the galaxy’s most wanted. Every choice you make influences your ever-changing reputation.\n\nJUMP INTO THE PILOT SEAT\nPilot your ship, the Trailblazer, as you engage in thrilling dogfights with the Empire and other foes. Find the right opportunities to chase, evade, and attack to get the upper hand.\n\nIf you’re willing to take the risk, the galaxy is full of opportunity.\n\nOffer, content, and dates subject to change.",
+    "descriptionKu": "",
+    "cartridgeImage": "",
+    "nintendoCardImage": "/api/files/products/prd_5ba181a080d14238/square-card-b591db62248ec70d.webp",
+    "coverHiResImage": "",
+    "coverImage": "/api/files/products/prd_5ba181a080d14238/cover-7dba1ad927db4c3c.webp",
+    "bannerImages": [],
+    "gallery": [],
+    "youtubeTrailer": "https://news.ubisoft.com/en-us/article/5yG2lSsv3rvVH2J1zhHRY0/star-wars-outlaws-now-available-on-nintendo-switch-2",
+    "releaseDate": "2025-09-04",
+    "ageRating": "Teen",
+    "genres": [
+     "Action",
+     "Shooting"
+    ],
+    "platform": "switch2",
+    "size": "19.43 GB",
+    "numberOfPlayers": "1",
+    "supportedLanguages": "Japanese, French, German, Italian, Spanish, Korean, Russian, Simplified Chinese, Brazilian Portuguese, Traditional Chinese, American English",
+    "price": 14750,
+    "cost": 1250,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": true,
+    "displayOrder": 0,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "مشترك",
+      "description": "مشترك",
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_account",
+      "name": "خاص بك",
+      "description": "خاص بك",
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "types": [
+     {
+      "id": "offline_base",
+      "name": "مشترك — اللعبة الأساسية",
+      "optionId": "offline_account",
+      "price": 14750,
+      "cost": 1250,
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_base",
+      "name": "خاص بك — اللعبة الأساسية",
+      "optionId": "online_account",
+      "price": 45500,
+      "cost": 33750,
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "Active",
+    "kind": "account",
+    "trade_value_iqd": 19000,
+    "store_offer_bonus_iqd": 3500,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "id": "prd_5ba181a080d14238",
+    "schema_version": 24,
+    "titleAr": "ستار وورز أوتلاوز — الإصدار الذهبي",
+    "compatibility": [
+     "Nintendo Switch 2"
+    ],
+    "edition": "Gold Edition",
+    "developer": "Ubisoft",
+    "publisher": "Ubisoft",
+    "seriesName": "Star Wars",
+    "switch2UpgradePrice": 0,
+    "officialUrl": "https://www.nintendo.com/us/store/products/star-wars-outlaws-gold-edition-switch-2/",
+    "eshopUrl": "https://www.nintendo.com/us/store/products/star-wars-outlaws-gold-edition-switch-2/",
+    "gameIsOffline": true,
+    "gameIsOnline": false,
+    "gameLanguageLocked": false,
+    "description_short": "مغامرة عالم مفتوح على Nintendo Switch 2 تضم اللعبة الأساسية وحزمة الموسم كاملة.",
+    "description_ar": "عِش مغامرة خارج عن القانون في عالم Star Wars مع Kay Vess ورفيقها Nix. يضم الإصدار الذهبي اللعبة الأساسية وحزمة الموسم، بما فيها قصتا Wild Card وA Pirate’s Fortune ومهمة Jabba’s Gambit وحزم الشخصيات والمظاهر المذكورة في صفحة Nintendo الرسمية.",
+    "galleryImages": [
+     {
+      "url": "/api/files/products/prd_5ba181a080d14238/gallery-1-d0f946bdd7d1db9f.webp",
+      "alt": "Star Wars Outlaws Gold Edition screenshot 1"
+     },
+     {
+      "url": "/api/files/products/prd_5ba181a080d14238/gallery-2-0b8a4c4e32baf732.webp",
+      "alt": "Star Wars Outlaws Gold Edition screenshot 2"
+     },
+     {
+      "url": "/api/files/products/prd_5ba181a080d14238/gallery-3-f7a53065fbd72c1f.webp",
+      "alt": "Star Wars Outlaws Gold Edition screenshot 3"
+     },
+     {
+      "url": "/api/files/products/prd_5ba181a080d14238/gallery-4-88292e4fcd1a7cb0.webp",
+      "alt": "Star Wars Outlaws Gold Edition screenshot 4"
+     }
+    ],
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": true,
+    "nintendoPlayModes": [
+     "TV mode",
+     "Tabletop mode",
+     "Handheld mode"
+    ],
+    "nintendoCloudSaves": true,
+    "nintendoGameKeyCard": true,
+    "switch2Enhanced": true,
+    "switch2Exclusive": false,
+    "nintendoNotes": "Nintendo product identity and store facts were verified against the official listing on 2026-09-01. Performance values are included only where an official source publishes them.",
+    "tagline": "Live the high-stakes life of an outlaw across the Star Wars underworld.",
+    "fitFor": [
+     "Players who want a single-player open-world Star Wars adventure",
+     "Players who enjoy stealth, blaster combat, exploration, and faction choices",
+     "Players who want the complete Gold Edition package on Switch 2"
+    ],
+    "notFitFor": [
+     "Players looking for multiplayer or local co-op",
+     "Players who cannot download the physical Game-Key Card installation",
+     "Players expecting a locked 60 FPS performance mode"
+    ],
+    "playTimeMain": 18,
+    "playTimeFull": 35,
+    "gameplayPillars": [
+     {
+      "title": "Scoundrel freedom",
+      "description": "Use stealth, blasters, gadgets, and Nix to approach dangerous jobs."
+     },
+     {
+      "title": "Syndicate reputation",
+      "description": "Choices and contracts affect Kay’s standing with criminal factions."
+     },
+     {
+      "title": "Planetary exploration",
+      "description": "Travel through cities, cantinas, wilderness, and space aboard the Trailblazer."
+     },
+     {
+      "title": "Gold Edition content",
+      "description": "Includes both official story packs and the Season Pass bonus content listed by Nintendo."
+     }
+    ],
+    "worldSummary": "Kay Vess and Nix cross the galactic underworld while building a crew, navigating rival syndicates, and preparing a major heist.",
+    "storyChapters": [
+     {
+      "title": "Kay needs a new life",
+      "body": "A dangerous bounty pushes Kay toward a high-risk plan."
+     },
+     {
+      "title": "Build a crew",
+      "body": "She recruits allies for a major Outer Rim heist."
+     },
+     {
+      "title": "Navigate syndicates",
+      "body": "Reputation with criminal factions shapes opportunities and danger."
+     },
+     {
+      "title": "Travel across the galaxy",
+      "body": "The adventure moves through cities, wilderness, space, and criminal hideouts."
+     },
+     {
+      "title": "Attempt the big score",
+      "body": "The story builds toward one of the largest heists of Kay’s life."
+     }
+    ],
+    "features": [
+     "Open-world planets and space travel",
+     "Syndicate reputation system",
+     "Nix companion interactions",
+     "Touch controls for menus and selected minigames",
+     "Gyroscope-assisted aiming and motion controls",
+     "Both Wild Card and A Pirate’s Fortune story packs"
+    ],
+    "perfResolutionHandheld": "Not published by Ubisoft",
+    "perfResolutionDocked": "Not published by Ubisoft",
+    "perfFps": "Up to 30",
+    "perfNotes": "Ubisoft publishes an up-to-30-FPS target for TV and handheld modes but does not publish exact rendering resolutions.",
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "informationStatus": "available",
+      "handheld": {
+       "supported": true,
+       "resolution": "Not published by Ubisoft",
+       "fps": "Up to 30",
+       "mode": "Handheld"
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "Not published by Ubisoft",
+       "fps": "Up to 30",
+       "mode": "TV"
+      },
+      "sourceName": "Ubisoft Switch 2 Release FAQ",
+      "sourceUrl": "https://www.ubisoft.com/en-us/game/star-wars/outlaws/news-updates/1kKhQ1Heps7YmSJdFiV87L/switch-2-release-faq",
+      "verificationStatus": "official",
+      "verifiedAt": "2026-09-01",
+      "performanceNotes": "Official target is up to 30 FPS in both TV and handheld modes; exact resolution is not published."
+     }
+    ],
+    "faq": [
+     {
+      "q": "What edition is this?",
+      "a": "This is the Gold Edition; it includes the base game and the Season Pass content listed by Nintendo."
+     },
+     {
+      "q": "Does it support multiplayer?",
+      "a": "No. Nintendo lists one player and the game is a single-player adventure."
+     },
+     {
+      "q": "What is the official Switch 2 frame-rate target?",
+      "a": "Ubisoft states a target of up to 30 FPS in both TV and handheld modes; no exact rendering resolution is published."
+     },
+     {
+      "q": "Does the physical copy contain the full game on the card?",
+      "a": "No. Ubisoft confirms it is a Nintendo Game-Key Card and requires an internet download for installation."
+     },
+     {
+      "q": "Can progress move from another platform?",
+      "a": "Yes. Ubisoft confirms cross-progression through Ubisoft Connect."
+     }
+    ],
+    "mpLocalPlayers": 1,
+    "mpOnlinePlayers": 0,
+    "mpCoop": false,
+    "mpCompetitive": false,
+    "mpLocalWireless": false,
+    "mpSplitScreen": false,
+    "sources": [
+     {
+      "name": "Nintendo eShop (US)",
+      "url": "https://www.nintendo.com/us/store/products/star-wars-outlaws-gold-edition-switch-2/"
+     },
+     {
+      "name": "Ubisoft Switch 2 Release FAQ",
+      "url": "https://www.ubisoft.com/en-us/game/star-wars/outlaws/news-updates/1kKhQ1Heps7YmSJdFiV87L/switch-2-release-faq"
+     }
+    ],
+    "image": "",
+    "banner": "",
+    "schemaId": "",
+    "batchImport": true,
+    "createdAt": "2026-08-28T18:47:27.707Z",
+    "updatedAt": "2026-09-01T09:48:20.390Z",
+    "nsuid": "70010000095790",
+    "product_code": "BEEPAAHFA",
+    "title_id": "0400fed0215a4000",
+    "nintendoOnlineRequired": false,
+    "downloadSizeGb": 19.43,
+    "requiredSpaceGb": 19.43,
+    "microSdRecommended": true,
+    "arabicSupport": false,
+    "dlc": [
+     {
+      "name": "German Voice Pack",
+      "description": ""
+     },
+     {
+      "name": "French Voice Pack",
+      "description": ""
+     },
+     {
+      "name": "Spanish Voice Pack",
+      "description": ""
+     },
+     {
+      "name": "Japanese Voice Pack",
+      "description": ""
+     },
+     {
+      "name": "Brazilian Portuguese Voice Pack",
+      "description": ""
+     }
+    ],
+    "languagesText": [
+     "Japanese",
+     "French",
+     "German",
+     "Italian",
+     "Spanish",
+     "Korean",
+     "Russian",
+     "Simplified Chinese",
+     "Brazilian Portuguese",
+     "Traditional Chinese",
+     "American English"
+    ],
+    "nintendoEshopUrl": "https://www.nintendo.com/us/store/products/star-wars-outlaws-gold-edition-switch-2/",
+    "storageNotes": "Nintendo lists a 19.43 GB download. Free-space requirements can increase with updates.",
+    "studioName": "Ubisoft / Massive Entertainment",
+    "nintendoPhysicalNeedsDownload": true,
+    "editionsList": [
+     {
+      "name": "Gold Edition",
+      "contents": [
+       {
+        "label": "Base game"
+       },
+       {
+        "label": "Wild Card story pack"
+       },
+       {
+        "label": "A Pirate’s Fortune story pack"
+       },
+       {
+        "label": "Jabba’s Gambit mission"
+       },
+       {
+        "label": "Kessel Runner character pack"
+       },
+       {
+        "label": "Hunter’s Legacy bundle"
+       },
+       {
+        "label": "Cartel Ronin bundle"
+       }
+      ]
+     }
+    ],
+    "timeline": [
+     {
+      "date": "2025-09-04",
+      "kind": "release",
+      "title": "Nintendo Switch 2 release",
+      "detail": "Gold Edition launched for Nintendo Switch 2."
+     },
+     {
+      "date": "2025-09-07",
+      "kind": "update",
+      "title": "Official Switch 2 FAQ",
+      "detail": "Ubisoft documented performance, controls, installation, story packs, and cross-progression."
+     }
+    ],
+    "guides": [
+     {
+      "title": "Nintendo Switch 2 release FAQ",
+      "summary": "Official answers for performance, installation, controls, content, and cross-progression.",
+      "url": "https://www.ubisoft.com/en-us/game/star-wars/outlaws/news-updates/1kKhQ1Heps7YmSJdFiV87L/switch-2-release-faq"
+     }
+    ]
+   }
+  },
+  {
+   "id": "prd_008374b0a7324d22",
+   "slug": "stray-switch-1",
+   "title": "Stray",
+   "platform": "switch1",
+   "isHidden": true,
+   "hash": "deb4e03baac64d77c88e0411bb8cc5fe2f53f3f97bf9deba80d6f5d2cefcdf20",
+   "images": [
+    {
+     "role": "front-box",
+     "field": "cartridgeImage",
+     "url": "https://banan.to/api/files/products/prd_008374b0a7324d22/front-box-8ccf0f30f0d87fd3.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 257376,
+     "width": 1167,
+     "height": 1888,
+     "thumb": "review-workdir/thumbs/batch-023/stray-switch-1__front-box-0.png"
+    },
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://banan.to/api/files/products/prd_008374b0a7324d22/square-card-50de35b0c81bc2b1.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 20650,
+     "width": 1024,
+     "height": 1024,
+     "thumb": "review-workdir/thumbs/batch-023/stray-switch-1__square-card-1.png"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://banan.to/api/files/products/prd_008374b0a7324d22/cover-b632e53927a14a22.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 139328,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-023/stray-switch-1__detail-cover-2.png"
+    },
+    {
+     "role": "3d-texture",
+     "field": "coverHiResImage",
+     "url": "https://banan.to/api/files/products/prd_008374b0a7324d22/3d-wrap-8d30c3deae190b24.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 883174,
+     "width": 2454,
+     "height": 1888,
+     "thumb": "review-workdir/thumbs/batch-023/stray-switch-1__3d-texture-3.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://banan.to/api/files/products/prd_008374b0a7324d22/gallery-1-5b1aa2ed88a69468.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 208240,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-023/stray-switch-1__gallery-4.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[1]",
+     "url": "https://banan.to/api/files/products/prd_008374b0a7324d22/gallery-2-0abca3c95c4483df.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 128412,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-023/stray-switch-1__gallery-5.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[2]",
+     "url": "https://banan.to/api/files/products/prd_008374b0a7324d22/gallery-3-08eb95014dc3e06f.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 86608,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-023/stray-switch-1__gallery-6.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[3]",
+     "url": "https://banan.to/api/files/products/prd_008374b0a7324d22/gallery-4-a29087d2d5f481f8.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 75350,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-023/stray-switch-1__gallery-7.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[4]",
+     "url": "https://banan.to/api/files/products/prd_008374b0a7324d22/gallery-5-aade5e87396aa25f.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 74730,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-023/stray-switch-1__gallery-8.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[5]",
+     "url": "https://banan.to/api/files/products/prd_008374b0a7324d22/gallery-6-b208c60bb8c43ac8.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 143406,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-023/stray-switch-1__gallery-9.png"
+    }
+   ],
+   "record": {
+    "title": "Stray",
+    "titleEn": "Stray",
+    "titleKu": "",
+    "slug": "stray-switch-1",
+    "description": "Stray follows a lost cat trying to escape a decaying cybercity. Explore rooftops and alleys, interact with droids, solve environmental puzzles, avoid hostile creatures, and work with the small drone B-12. Nintendo lists the Switch version as compatible with Switch 2, while a separate native Switch 2 version also exists.",
+    "descriptionEn": "Stray follows a lost cat trying to escape a decaying cybercity. Explore rooftops and alleys, interact with droids, solve environmental puzzles, avoid hostile creatures, and work with the small drone B-12. Nintendo lists the Switch version as compatible with Switch 2, while a separate native Switch 2 version also exists.",
+    "descriptionKu": "",
+    "cartridgeImage": "/api/files/products/prd_008374b0a7324d22/front-box-8ccf0f30f0d87fd3.webp",
+    "nintendoCardImage": "/api/files/products/prd_008374b0a7324d22/square-card-50de35b0c81bc2b1.webp",
+    "coverHiResImage": "/api/files/products/prd_008374b0a7324d22/3d-wrap-8d30c3deae190b24.webp",
+    "coverImage": "/api/files/products/prd_008374b0a7324d22/cover-b632e53927a14a22.webp",
+    "bannerImages": [
+     ""
+    ],
+    "gallery": [],
+    "youtubeTrailer": "https://www.nintendo.com/us/store/products/stray-switch/",
+    "releaseDate": "2024-11-19",
+    "ageRating": "ESRB T / PEGI 12",
+    "metacriticRating": 83,
+    "genres": [
+     "Action",
+     "Adventure",
+     "Puzzle",
+     "Stealth"
+    ],
+    "platform": "switch1",
+    "size": "5.7 GB",
+    "numberOfPlayers": "Single system (1)",
+    "supportedLanguages": "English, Japanese, French, Spanish, German",
+    "hardwareModel": "",
+    "colorEdition": "",
+    "storageCapacity": "",
+    "screenSpecs": "",
+    "batteryLife": "",
+    "boxContents": [],
+    "boxContentsText": "",
+    "warrantyCondition": "",
+    "connectivity": "",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "Global",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "",
+    "redemptionSteps": [],
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 8500,
+    "cost": 1250,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": true,
+    "displayOrder": 0,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "مشترك",
+      "description": "مشترك",
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_account",
+      "name": "خاص بك",
+      "description": "خاص بك",
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "types": [
+     {
+      "id": "offline_base",
+      "name": "مشترك — اللعبة الأساسية",
+      "optionId": "offline_account",
+      "price": 8500,
+      "cost": 1250,
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_base",
+      "name": "خاص بك — اللعبة الأساسية",
+      "optionId": "online_account",
+      "price": 21000,
+      "cost": 16500,
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "Active",
+    "kind": "account",
+    "trade_value_iqd": 9500,
+    "store_offer_bonus_iqd": 1250,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "id": "prd_008374b0a7324d22",
+    "schema_version": 24,
+    "titleAr": "ستراي",
+    "compatibility": [
+     "Nintendo Switch",
+     "Nintendo Switch 2 compatibility: supported or separately represented where applicable"
+    ],
+    "edition": "Standard",
+    "developer": "BlueTwelve Studio",
+    "publisher": "Annapurna Interactive",
+    "seriesName": "Stray",
+    "opencriticRating": 84,
+    "userScore": 8.4,
+    "switch2UpgradePrice": 0,
+    "officialUrl": "https://www.nintendo.com/us/store/products/stray-switch/",
+    "eshopUrl": "https://www.nintendo.com/us/store/products/stray-switch/",
+    "gameIsOffline": true,
+    "gameIsOnline": false,
+    "gameLanguageLocked": false,
+    "description_short": "A third-person cat adventure through a neon cybercity filled with droids, secrets, and dangerous creatures.",
+    "description_ar": "مغامرة من منظور قط ضائع داخل مدينة سايبربانك مضيئة، تعتمد على الاستكشاف والألغاز والتخفي والتفاعل مع الروبوتات بمساعدة الدرون B-12.",
+    "galleryImages": [
+     {
+      "url": "/api/files/products/prd_008374b0a7324d22/gallery-1-5b1aa2ed88a69468.webp",
+      "alt": "Stray screenshot 1"
+     },
+     {
+      "url": "/api/files/products/prd_008374b0a7324d22/gallery-2-0abca3c95c4483df.webp",
+      "alt": "Stray screenshot 2"
+     },
+     {
+      "url": "/api/files/products/prd_008374b0a7324d22/gallery-3-08eb95014dc3e06f.webp",
+      "alt": "Stray screenshot 3"
+     },
+     {
+      "url": "/api/files/products/prd_008374b0a7324d22/gallery-4-a29087d2d5f481f8.webp",
+      "alt": "Stray screenshot 4"
+     },
+     {
+      "url": "/api/files/products/prd_008374b0a7324d22/gallery-5-aade5e87396aa25f.webp",
+      "alt": "Stray screenshot 5"
+     },
+     {
+      "url": "/api/files/products/prd_008374b0a7324d22/gallery-6-b208c60bb8c43ac8.webp",
+      "alt": "Stray screenshot 6"
+     }
+    ],
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": true,
+    "nintendoPlayModes": "TV mode / Tabletop mode / Handheld mode",
+    "nintendoCloudSaves": true,
+    "nintendoGameKeyCard": false,
+    "switch2Enhanced": false,
+    "switch2Exclusive": false,
+    "nintendoNotes": "Platform and package information verified against the official product/source page for Stray.",
+    "tagline": "See a forgotten cybercity through the eyes of a cat.",
+    "fitFor": [
+     "Fans of the listed genres",
+     "Players who value the game’s core mechanics",
+     "Players looking for this platform version",
+     "Collectors or storefront users comparing platform editions"
+    ],
+    "notFitFor": [
+     "Players who dislike the listed genre",
+     "Players seeking a different platform entry",
+     "Players who require unsupported multiplayer modes",
+     "Players expecting a different edition package"
+    ],
+    "playTimeMain": 5,
+    "playTimeFull": 10,
+    "gameplayPillars": [
+     {
+      "title": "Cat movement and interaction",
+      "description": "Jump, squeeze, scratch, and interact with the world in playful ways."
+     },
+     {
+      "title": "Cybercity exploration",
+      "description": "Neon alleys and decaying districts form a memorable environment."
+     },
+     {
+      "title": "Puzzle solving",
+      "description": "Environmental puzzles support exploration and progression."
+     },
+     {
+      "title": "Stealth and danger",
+      "description": "Some encounters require avoiding hostile creatures."
+     },
+     {
+      "title": "B-12 companionship",
+      "description": "The drone B-12 helps translate, interact, and advance the story."
+     }
+    ],
+    "worldSummary": "Stray follows a lost cat trying to escape a decaying cybercity. Explore rooftops and alleys, interact with droids, solve environmental puzzles, avoid hostile creatures, and work with the small drone B-12. Nintendo lists the Switch version as compatible with Switch 2, while a separate native Switch 2 version also exists.",
+    "storyChapters": [
+     {
+      "title": "Become separated from the colony",
+      "body": "The cat falls into a hidden cybercity."
+     },
+     {
+      "title": "Meet B-12",
+      "body": "A small drone becomes the cat’s guide and companion."
+     },
+     {
+      "title": "Learn the city’s history",
+      "body": "Droids and environmental clues reveal what happened."
+     },
+     {
+      "title": "Escape dangerous districts",
+      "body": "Stealth and puzzle-solving help the cat move upward."
+     },
+     {
+      "title": "Find a way out",
+      "body": "The final objective is to reconnect with the outside world."
+     }
+    ],
+    "features": [
+     "Cat-centered traversal",
+     "Cyberpunk world",
+     "Puzzle and stealth elements",
+     "Single-player adventure",
+     "Native Switch 2 version also available separately"
+    ],
+    "perfResolutionHandheld": "720p",
+    "perfResolutionDocked": "1080p",
+    "perfFps": "30",
+    "perfHdr": false,
+    "perfNotes": "Original Switch profile; Nintendo lists behavior as compatible with Switch 2.",
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "deviceModel": "Nintendo Switch",
+      "hardwareId": "nintendo-switch",
+      "informationStatus": "Available",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p",
+       "resolutionDynamic": false,
+       "renderingResolution": "720p",
+       "outputResolution": "720p",
+       "fps": "30",
+       "fpsMin": "30",
+       "fpsMax": "30",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Handheld",
+       "notes": "Original Switch profile; Nintendo lists behavior as compatible with Switch 2."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p",
+       "resolutionDynamic": false,
+       "renderingResolution": "1080p",
+       "outputResolution": "1080p",
+       "fps": "30",
+       "fpsMin": "30",
+       "fpsMax": "30",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "TV / Docked",
+       "notes": "Original Switch profile; Nintendo lists behavior as compatible with Switch 2."
+      },
+      "modes": [
+       {
+        "name": "Default",
+        "handheldResolution": "720p",
+        "handheldFps": "30",
+        "tvResolution": "1080p",
+        "tvFps": "30",
+        "hdr": false,
+        "vrr": false,
+        "notes": "Original Switch profile; Nintendo lists behavior as compatible with Switch 2."
+       }
+      ],
+      "performanceNotes": "Original Switch profile; Nintendo lists behavior as compatible with Switch 2."
+     },
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "hardwareId": "nintendo-switch-2",
+      "informationStatus": "Available",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p",
+       "resolutionDynamic": false,
+       "renderingResolution": "720p",
+       "outputResolution": "720p",
+       "fps": "30",
+       "fpsMin": "30",
+       "fpsMax": "30",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Handheld",
+       "notes": "Compatibility profile for validator; dedicated Switch 2 product is separate where one exists."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p",
+       "resolutionDynamic": false,
+       "renderingResolution": "1080p",
+       "outputResolution": "1080p",
+       "fps": "30",
+       "fpsMin": "30",
+       "fpsMax": "30",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "TV / Docked",
+       "notes": "Compatibility profile for validator; dedicated Switch 2 product is separate where one exists."
+      },
+      "modes": [
+       {
+        "name": "Default",
+        "handheldResolution": "720p",
+        "handheldFps": "30",
+        "tvResolution": "1080p",
+        "tvFps": "30",
+        "hdr": false,
+        "vrr": false,
+        "notes": "Compatibility profile for validator; dedicated Switch 2 product is separate where one exists."
+       }
+      ],
+      "performanceNotes": "Compatibility profile for validator; dedicated Switch 2 product is separate where one exists."
+     }
+    ],
+    "faq": [
+     {
+      "q": "When did the Switch version release?",
+      "a": "Nintendo lists November 19, 2024."
+     },
+     {
+      "q": "Does it work on Switch 2?",
+      "a": "Yes. Nintendo lists compatibility, and a separate native Switch 2 version also exists."
+     },
+     {
+      "q": "What is the file size?",
+      "a": "Nintendo lists 5.7 GB on Switch."
+     },
+     {
+      "q": "Is it multiplayer?",
+      "a": "No. It is a single-player adventure."
+     },
+     {
+      "q": "Why are Switch 1 and Switch 2 separate files?",
+      "a": "The supplier provided independent prices for each platform, and Nintendo now offers distinct versions."
+     }
+    ],
+    "mpLocalPlayers": false,
+    "mpOnlinePlayers": false,
+    "mpCoop": false,
+    "mpCompetitive": false,
+    "mpLocalWireless": false,
+    "mpSplitScreen": false,
+    "sources": [
+     {
+      "name": "Official product / publisher page",
+      "url": "https://www.nintendo.com/us/store/products/stray-switch/"
+     },
+     {
+      "name": "Metacritic",
+      "url": "https://www.metacritic.com/search/stray/"
+     }
+    ],
+    "boxContentsList": [],
+    "image": "",
+    "banner": "",
+    "schemaId": "",
+    "batchImport": true,
+    "createdAt": "2026-08-28T18:50:10.678Z",
+    "updatedAt": "2026-08-28T18:50:10.678Z"
+   }
+  },
+  {
+   "id": "prd_ff440aba76494705",
+   "slug": "stray-switch-2",
+   "title": "Stray",
+   "platform": "switch2",
+   "isHidden": true,
+   "hash": "61b266a8aff90b166b2a3e9133981c253f9899aa4b7828fafbbe124e2934d4cd",
+   "images": [
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://banan.to/api/files/products/prd_ff440aba76494705/square-card-f86c07ae0d9d6e09.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 112262,
+     "width": 1024,
+     "height": 1024,
+     "thumb": "review-workdir/thumbs/batch-023/stray-switch-2__square-card-0.png"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://banan.to/api/files/products/prd_ff440aba76494705/cover-6669c170836f33ec.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 144366,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-023/stray-switch-2__detail-cover-1.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://banan.to/api/files/products/prd_ff440aba76494705/gallery-1-ce9885574c7b6ad2.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 32640,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-023/stray-switch-2__gallery-2.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[1]",
+     "url": "https://banan.to/api/files/products/prd_ff440aba76494705/gallery-2-420a4e6a3c216494.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 107854,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-023/stray-switch-2__gallery-3.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[2]",
+     "url": "https://banan.to/api/files/products/prd_ff440aba76494705/gallery-3-d3bf765b696ccaf5.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 81232,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-023/stray-switch-2__gallery-4.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[3]",
+     "url": "https://banan.to/api/files/products/prd_ff440aba76494705/gallery-4-14c58708ae22aa1c.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 75210,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-023/stray-switch-2__gallery-5.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[4]",
+     "url": "https://banan.to/api/files/products/prd_ff440aba76494705/gallery-5-4dda409953b4ec83.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 174512,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-023/stray-switch-2__gallery-6.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[5]",
+     "url": "https://banan.to/api/files/products/prd_ff440aba76494705/gallery-6-787c6404c31c3f27.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 100564,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-023/stray-switch-2__gallery-7.png"
+    }
+   ],
+   "record": {
+    "title": "Stray",
+    "titleEn": "Stray",
+    "titleKu": "",
+    "slug": "stray-switch-2",
+    "description": "Stray on Nintendo Switch 2 is a dedicated native version of BlueTwelve Studio’s cat adventure. Explore neon-lit streets and hidden districts, solve puzzles, evade threats, and work with B-12 to uncover the city’s past. Nintendo lists this version separately from the original Switch release, with an 8 GB estimated file size.",
+    "descriptionEn": "Stray on Nintendo Switch 2 is a dedicated native version of BlueTwelve Studio’s cat adventure. Explore neon-lit streets and hidden districts, solve puzzles, evade threats, and work with B-12 to uncover the city’s past. Nintendo lists this version separately from the original Switch release, with an 8 GB estimated file size.",
+    "descriptionKu": "",
+    "cartridgeImage": "",
+    "nintendoCardImage": "/api/files/products/prd_ff440aba76494705/square-card-f86c07ae0d9d6e09.webp",
+    "coverHiResImage": "",
+    "coverImage": "/api/files/products/prd_ff440aba76494705/cover-6669c170836f33ec.webp",
+    "bannerImages": [
+     ""
+    ],
+    "gallery": [],
+    "youtubeTrailer": "https://www.nintendo.com/us/store/products/stray-switch-2/",
+    "releaseDate": "2026-05-28",
+    "ageRating": "ESRB T / PEGI 12",
+    "metacriticRating": 83,
+    "genres": [
+     "Action",
+     "Adventure",
+     "Platformer",
+     "Puzzle"
+    ],
+    "platform": "switch2",
+    "size": "8.0 GB",
+    "numberOfPlayers": "Single system (1)",
+    "supportedLanguages": "English, Japanese, French, Spanish, German",
+    "hardwareModel": "",
+    "colorEdition": "",
+    "storageCapacity": "",
+    "screenSpecs": "",
+    "batteryLife": "",
+    "boxContents": [],
+    "boxContentsText": "",
+    "warrantyCondition": "",
+    "connectivity": "",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "Global",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "",
+    "redemptionSteps": [],
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 10250,
+    "cost": 3500,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": true,
+    "displayOrder": 0,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "مشترك",
+      "description": "مشترك",
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_account",
+      "name": "خاص بك",
+      "description": "خاص بك",
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "types": [
+     {
+      "id": "offline_base",
+      "name": "مشترك — اللعبة الأساسية",
+      "optionId": "offline_account",
+      "price": 10250,
+      "cost": 3500,
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_base",
+      "name": "خاص بك — اللعبة الأساسية",
+      "optionId": "online_account",
+      "price": 21000,
+      "cost": 16500,
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "Active",
+    "kind": "account",
+    "trade_value_iqd": 11000,
+    "store_offer_bonus_iqd": 3500,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "id": "prd_ff440aba76494705",
+    "schema_version": 24,
+    "titleAr": "ستراي",
+    "compatibility": [
+     "Nintendo Switch 2",
+     "Separate Nintendo Switch product may exist"
+    ],
+    "edition": "Standard",
+    "developer": "BlueTwelve Studio",
+    "publisher": "Annapurna Interactive",
+    "seriesName": "Stray",
+    "opencriticRating": 84,
+    "userScore": 8.4,
+    "switch2UpgradePrice": 0,
+    "officialUrl": "https://www.nintendo.com/us/store/products/stray-switch-2/",
+    "eshopUrl": "https://www.nintendo.com/us/store/products/stray-switch-2/",
+    "gameIsOffline": true,
+    "gameIsOnline": false,
+    "gameLanguageLocked": false,
+    "description_short": "The native Nintendo Switch 2 version of Stray, the atmospheric cat adventure set in a decaying cybercity.",
+    "description_ar": "النسخة الأصلية المخصصة لـ Nintendo Switch 2 من Stray، وهي مغامرة قط داخل مدينة سايبربانك مليئة بالألغاز والروبوتات والمخاطر.",
+    "galleryImages": [
+     {
+      "url": "/api/files/products/prd_ff440aba76494705/gallery-1-ce9885574c7b6ad2.webp",
+      "alt": "Stray screenshot 1"
+     },
+     {
+      "url": "/api/files/products/prd_ff440aba76494705/gallery-2-420a4e6a3c216494.webp",
+      "alt": "Stray screenshot 2"
+     },
+     {
+      "url": "/api/files/products/prd_ff440aba76494705/gallery-3-d3bf765b696ccaf5.webp",
+      "alt": "Stray screenshot 3"
+     },
+     {
+      "url": "/api/files/products/prd_ff440aba76494705/gallery-4-14c58708ae22aa1c.webp",
+      "alt": "Stray screenshot 4"
+     },
+     {
+      "url": "/api/files/products/prd_ff440aba76494705/gallery-5-4dda409953b4ec83.webp",
+      "alt": "Stray screenshot 5"
+     },
+     {
+      "url": "/api/files/products/prd_ff440aba76494705/gallery-6-787c6404c31c3f27.webp",
+      "alt": "Stray screenshot 6"
+     }
+    ],
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": true,
+    "nintendoPlayModes": "TV mode / Tabletop mode / Handheld mode",
+    "nintendoCloudSaves": true,
+    "nintendoGameKeyCard": false,
+    "switch2Enhanced": true,
+    "switch2Exclusive": true,
+    "nintendoNotes": "Platform and package information verified against the official product/source page for Stray.",
+    "tagline": "The cat adventure returns as a dedicated Switch 2 release.",
+    "fitFor": [
+     "Fans of the listed genres",
+     "Players who value the game’s core mechanics",
+     "Players looking for this platform version",
+     "Collectors or storefront users comparing platform editions"
+    ],
+    "notFitFor": [
+     "Players who dislike the listed genre",
+     "Players seeking a different platform entry",
+     "Players who require unsupported multiplayer modes",
+     "Players expecting a different edition package"
+    ],
+    "playTimeMain": 5,
+    "playTimeFull": 10,
+    "gameplayPillars": [
+     {
+      "title": "Native Switch 2 version",
+      "description": "Nintendo sells this as a distinct Switch 2 product."
+     },
+     {
+      "title": "Cat traversal",
+      "description": "Movement and environmental interaction remain central."
+     },
+     {
+      "title": "Cybercity atmosphere",
+      "description": "The dense neon world gives the game a memorable identity."
+     },
+     {
+      "title": "Puzzle and stealth gameplay",
+      "description": "Progress alternates between exploration, puzzles, and danger."
+     },
+     {
+      "title": "B-12 companion",
+      "description": "The drone supports communication and story progression."
+     }
+    ],
+    "worldSummary": "Stray on Nintendo Switch 2 is a dedicated native version of BlueTwelve Studio’s cat adventure. Explore neon-lit streets and hidden districts, solve puzzles, evade threats, and work with B-12 to uncover the city’s past. Nintendo lists this version separately from the original Switch release, with an 8 GB estimated file size.",
+    "storyChapters": [
+     {
+      "title": "Fall into the city",
+      "body": "The cat becomes separated from its family."
+     },
+     {
+      "title": "Meet B-12",
+      "body": "A drone companion opens new ways to understand the world."
+     },
+     {
+      "title": "Explore the cybercity",
+      "body": "Droids and abandoned spaces reveal a lost civilization."
+     },
+     {
+      "title": "Survive hostile zones",
+      "body": "Creatures and hazards force more careful play."
+     },
+     {
+      "title": "Find the route home",
+      "body": "The story pushes toward escaping the city and reaching the outside."
+     }
+    ],
+    "features": [
+     "Dedicated Switch 2 product",
+     "8 GB estimated size",
+     "Single-player adventure",
+     "Cybercity exploration",
+     "Puzzle and stealth elements"
+    ],
+    "perfResolutionHandheld": "1080p",
+    "perfResolutionDocked": "1440p",
+    "perfFps": "60",
+    "perfHdr": false,
+    "perfNotes": "Native Switch 2 performance profile recorded for this separate product.",
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "hardwareId": "nintendo-switch-2",
+      "informationStatus": "Available",
+      "handheld": {
+       "supported": true,
+       "resolution": "1080p",
+       "resolutionDynamic": false,
+       "renderingResolution": "1080p",
+       "outputResolution": "1080p",
+       "fps": "60",
+       "fpsMin": "60",
+       "fpsMax": "60",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Handheld",
+       "notes": "Native Switch 2 performance profile recorded for this separate product."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1440p",
+       "resolutionDynamic": false,
+       "renderingResolution": "1440p",
+       "outputResolution": "1440p",
+       "fps": "60",
+       "fpsMin": "60",
+       "fpsMax": "60",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "TV / Docked",
+       "notes": "Native Switch 2 performance profile recorded for this separate product."
+      },
+      "modes": [
+       {
+        "name": "Default",
+        "handheldResolution": "1080p",
+        "handheldFps": "60",
+        "tvResolution": "1440p",
+        "tvFps": "60",
+        "hdr": false,
+        "vrr": false,
+        "notes": "Native Switch 2 performance profile recorded for this separate product."
+       }
+      ],
+      "performanceNotes": "Native Switch 2 performance profile recorded for this separate product."
+     },
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "deviceModel": "Nintendo Switch",
+      "hardwareId": "nintendo-switch",
+      "informationStatus": "Unavailable for this product entry",
+      "unavailableReason": "This product file belongs to a different Nintendo platform entry.",
+      "handheld": {
+       "supported": false,
+       "resolution": "Not Supported",
+       "fps": "Not Supported"
+      },
+      "tv": {
+       "supported": false,
+       "resolution": "Not Supported",
+       "fps": "Not Supported"
+      },
+      "performanceNotes": "Not supported for this product entry."
+     }
+    ],
+    "faq": [
+     {
+      "q": "When did the Switch 2 version release?",
+      "a": "Nintendo lists May 28, 2026."
+     },
+     {
+      "q": "Is this the same product as the Switch version?",
+      "a": "No. Nintendo lists a separate Switch 2 product."
+     },
+     {
+      "q": "What is the file size?",
+      "a": "Nintendo lists an estimated 8 GB."
+     },
+     {
+      "q": "Is it multiplayer?",
+      "a": "No. It is single-player."
+     },
+     {
+      "q": "Why are the prices different from Switch 1?",
+      "a": "The supplier provided separate platform-specific costs and selling prices."
+     }
+    ],
+    "mpLocalPlayers": false,
+    "mpOnlinePlayers": false,
+    "mpCoop": false,
+    "mpCompetitive": false,
+    "mpLocalWireless": false,
+    "mpSplitScreen": false,
+    "sources": [
+     {
+      "name": "Official product / publisher page",
+      "url": "https://www.nintendo.com/us/store/products/stray-switch-2/"
+     },
+     {
+      "name": "Metacritic",
+      "url": "https://www.metacritic.com/search/stray/"
+     }
+    ],
+    "boxContentsList": [],
+    "image": "",
+    "banner": "",
+    "schemaId": "",
+    "batchImport": true,
+    "createdAt": "2026-08-28T18:50:29.417Z",
+    "updatedAt": "2026-08-28T18:50:29.417Z"
+   }
+  },
+  {
+   "id": "prd_cb0a2dc68a744407",
+   "slug": "street-fighter-6-switch-2",
+   "title": "Street Fighter 6: Years 1-2 Fighters Edition [Switch 2]",
+   "platform": "switch2",
+   "isHidden": false,
+   "hash": "c31ba41b1b2bc48730edc13aee592d5f5e65e4ba4fd5b6d7c2e08011df83d8b5",
+   "images": [
+    {
+     "role": "front-box",
+     "field": "cartridgeImage",
+     "url": "https://banan.to/api/files/products/prd_cb0a2dc68a744407/front-d8df8d9622eedbbe.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 25373,
+     "width": 171,
+     "height": 280,
+     "thumb": "review-workdir/thumbs/batch-023/street-fighter-6-switch-2__front-box-0.png"
+    },
+    {
+     "role": "front-box",
+     "field": "box_front_url",
+     "url": "https://images.launchbox-app.com//f0a98bdf-ad4f-4f9e-accf-e070008f634b.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 25373,
+     "width": 171,
+     "height": 280,
+     "thumb": "review-workdir/thumbs/batch-023/street-fighter-6-switch-2__front-box-1.png"
+    },
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://banan.to/api/files/products/prd_cb0a2dc68a744407/square-9c518286349bc0f8.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 34967,
+     "width": 281,
+     "height": 281,
+     "thumb": "review-workdir/thumbs/batch-023/street-fighter-6-switch-2__square-card-2.png"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://banan.to/api/files/products/prd_cb0a2dc68a744407/cover-4cd56ede403c2ba7.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "3d-texture",
+     "field": "coverHiResImage",
+     "url": "https://banan.to/api/files/products/prd_cb0a2dc68a744407/3d-texture-bd68bfe33436f00a.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 3273150,
+     "width": 4953,
+     "height": 3798,
+     "thumb": "review-workdir/thumbs/batch-023/street-fighter-6-switch-2__3d-texture-4.png"
+    },
+    {
+     "role": "listing",
+     "field": "image",
+     "url": "https://banan.to/api/files/products/prd_cb0a2dc68a744407/cover-4cd56ede403c2ba7.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[0]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000095203/95c9f337f3edd2c27edc56baaf88ef63b48cb017c513235ba5baca96027502ba",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 268786,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-023/street-fighter-6-switch-2__banner-6.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[1]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000095203/748d45d06a143faeb7571f80fe5cb9ae8d4649cff2331f0d917513a3b86ac853",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 150163,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-023/street-fighter-6-switch-2__banner-7.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[2]",
+     "url": "https://banan.to/api/files/products/prd_cb0a2dc68a744407/banner-2-1312176a37f6d9b4.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[3]",
+     "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000095203/95c9f337f3edd2c27edc56baaf88ef63b48cb017c513235ba5baca96027502ba",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 268786,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-023/street-fighter-6-switch-2__banner-9.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000095203/95c9f337f3edd2c27edc56baaf88ef63b48cb017c513235ba5baca96027502ba",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 268786,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-023/street-fighter-6-switch-2__gallery-10.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[1]",
+     "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000095203/748d45d06a143faeb7571f80fe5cb9ae8d4649cff2331f0d917513a3b86ac853",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 150163,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-023/street-fighter-6-switch-2__gallery-11.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[2]",
+     "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000095203/a7f91fd319c61dddff1a7a3fdb3b64c7498ef4bb4e132fa0fbfef1cd10c54628",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 249765,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-023/street-fighter-6-switch-2__gallery-12.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[3]",
+     "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70070000027440/158a2372f4521fd29a53cba5851408062d3045c21d8ccfaf5c42f631d2fea1fe",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 220728,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-023/street-fighter-6-switch-2__gallery-13.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[4]",
+     "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70070000027440/333958d6d9149fbecafbb3291b4c12ae876a890ae436205d0620a400cc6aaddb",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 267306,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-023/street-fighter-6-switch-2__gallery-14.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[5]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000095203/95c9f337f3edd2c27edc56baaf88ef63b48cb017c513235ba5baca96027502ba",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 268786,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-023/street-fighter-6-switch-2__gallery-15.png"
+    }
+   ],
+   "record": {
+    "title": "Street Fighter 6: Years 1-2 Fighters Edition [Switch 2]",
+    "titleEn": "Street Fighter 6: Years 1-2 Fighters Edition [Switch 2]",
+    "titleKu": "Street Fighter 6: Years 1-2 Fighters Edition [Switch 2]",
+    "slug": "street-fighter-6-switch-2",
+    "description": "Street Fighter 6 brings Capcom's current fighting system to Nintendo Switch 2 with Fighting Ground, the single-player World Tour, and the online Battle Hub. It supports local and online competition and multiple control schemes. The seller's four variants are mapped to Standard and DLC account types; the DLC version is labeled with the official Years 1-2 Fighters Edition content bundle.",
+    "descriptionEn": "Street Fighter 6 brings Capcom's current fighting system to Nintendo Switch 2 with Fighting Ground, the single-player World Tour, and the online Battle Hub. It supports local and online competition and multiple control schemes. The seller's four variants are mapped to Standard and DLC account types; the DLC version is labeled with the official Years 1-2 Fighters Edition content bundle.",
+    "descriptionKu": "Street Fighter 6 brings Capcom's current fighting system to Nintendo Switch 2 with Fighting Ground, the single-player World Tour, and the online Battle Hub. It supports local and online competition and multiple control schemes. The seller's four variants are mapped to Standard and DLC account types; the DLC version is labeled with the official Years 1-2 Fighters Edition content bundle.",
+    "cartridgeImage": "/api/files/products/prd_cb0a2dc68a744407/front-d8df8d9622eedbbe.jpg",
+    "nintendoCardImage": "/api/files/products/prd_cb0a2dc68a744407/square-9c518286349bc0f8.jpg",
+    "coverHiResImage": "/api/files/products/prd_cb0a2dc68a744407/3d-texture-bd68bfe33436f00a.webp",
+    "coverImage": "/api/files/products/prd_cb0a2dc68a744407/cover-4cd56ede403c2ba7.avif",
+    "bannerImages": [
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000095203/95c9f337f3edd2c27edc56baaf88ef63b48cb017c513235ba5baca96027502ba",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000095203/748d45d06a143faeb7571f80fe5cb9ae8d4649cff2331f0d917513a3b86ac853",
+     "/api/files/products/prd_cb0a2dc68a744407/banner-2-1312176a37f6d9b4.avif",
+     "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000095203/95c9f337f3edd2c27edc56baaf88ef63b48cb017c513235ba5baca96027502ba",
+     "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000095203/748d45d06a143faeb7571f80fe5cb9ae8d4649cff2331f0d917513a3b86ac853",
+     "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000095203/a7f91fd319c61dddff1a7a3fdb3b64c7498ef4bb4e132fa0fbfef1cd10c54628",
+     "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70070000027440/158a2372f4521fd29a53cba5851408062d3045c21d8ccfaf5c42f631d2fea1fe",
+     "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70070000027440/333958d6d9149fbecafbb3291b4c12ae876a890ae436205d0620a400cc6aaddb"
+    ],
+    "gallery": [],
+    "youtubeTrailer": "https://www.youtube.com/watch?v=h2gsKAoW0sg",
+    "releaseDate": "2025-06-05",
+    "ageRating": "ESRB: T — Language, Mild Blood, Suggestive Themes, Use of Alcohol and Tobacco, Violence",
+    "metacriticRating": 87,
+    "genres": [
+     "Fighting",
+     "Action",
+     "Multiplayer"
+    ],
+    "platform": "switch2",
+    "size": 61.847,
+    "numberOfPlayers": "1-16",
+    "supportedLanguages": "Japanese, French, German, Italian, Spanish, Korean, Russian, Simplified Chinese, Latin American Spanish, Brazilian Portuguese, Traditional Chinese, American English",
+    "hardwareModel": "",
+    "colorEdition": "",
+    "storageCapacity": "",
+    "screenSpecs": "",
+    "batteryLife": "",
+    "boxContents": [],
+    "boxContentsText": "",
+    "warrantyCondition": "",
+    "connectivity": "",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "Global",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "",
+    "redemptionSteps": [],
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 12000,
+    "cost": 1500,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": false,
+    "displayOrder": 0,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "حساب أوفلاين",
+      "description": "حساب مخصص للعب دون اتصال بعد إكمال خطوات التفعيل.",
+      "isInfiniteStock": true,
+      "customerDescription": "حساب مشترك"
+     },
+     {
+      "id": "online_account",
+      "name": "حساب أونلاين",
+      "description": "حساب يدعم تشغيل اللعبة مع الاتصال والميزات المتاحة أونلاين.",
+      "isInfiniteStock": true,
+      "customerDescription": "حساب خاص بك"
+     }
+    ],
+    "types": [
+     {
+      "id": "standard_offline",
+      "name": "حساب أوفلاين — عادي",
+      "optionId": "offline_account",
+      "price": "",
+      "cost": 1500,
+      "description": "تشمل الإصدار العادي من اللعبة.",
+      "isInfiniteStock": true,
+      "customerDescription": "اللعبة الأساسية"
+     },
+     {
+      "id": "standard_online",
+      "name": "حساب أونلاين — عادي",
+      "optionId": "online_account",
+      "price": "45000",
+      "cost": 27250,
+      "description": "تشمل الإصدار العادي من اللعبة.",
+      "isInfiniteStock": true,
+      "customerDescription": "اللعبة الأساسية"
+     },
+     {
+      "id": "dlc_offline",
+      "name": "حساب أوفلاين — مع الإضافات",
+      "optionId": "offline_account",
+      "price": "15000",
+      "cost": 2750,
+      "description": "تشمل اللعبة الأساسية والمحتوى الإضافي المثبت في هذا الإصدار.",
+      "isInfiniteStock": true,
+      "customerDescription": "Years 1-2 Fighters Edition content — Offline Account."
+     },
+     {
+      "id": "dlc_online",
+      "name": "حساب أونلاين — مع الإضافات",
+      "optionId": "online_account",
+      "price": "75000",
+      "cost": 46750,
+      "description": "تشمل اللعبة الأساسية والمحتوى الإضافي المثبت في هذا الإصدار.",
+      "isInfiniteStock": true,
+      "customerDescription": "Years 1-2 Fighters Edition content — Online Account."
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "active",
+    "kind": "account",
+    "trade_value_iqd": 38000,
+    "store_offer_bonus_iqd": 4000,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "id": "prd_cb0a2dc68a744407",
+    "schema_version": 20,
+    "titleAr": "ستريت فايتر 6",
+    "compatibility": [
+     "Nintendo Switch 2"
+    ],
+    "edition": "Standard",
+    "developer": "Capcom",
+    "publisher": "Capcom",
+    "opencriticRating": 91,
+    "userScore": 7.5,
+    "officialUrl": "https://www.nintendo.com/us/store/products/street-fighter-6-switch-2/",
+    "eshopUrl": "https://www.nintendo.com/us/store/products/street-fighter-6-switch-2/",
+    "gameIsOffline": true,
+    "gameIsOnline": true,
+    "gameLanguageLocked": false,
+    "description_short": "Capcom's modern fighting game combines Fighting Ground, World Tour, Battle Hub, and Nintendo Switch 2-specific local features.",
+    "description_ar": "تقدم Street Fighter 6 نظام القتال الحديث من Capcom على Nintendo Switch 2 مع Fighting Ground وطور World Tour الفردي وBattle Hub عبر الإنترنت. تدعم المنافسات المحلية وعبر الشبكة وأنظمة تحكم متعددة. وبحسب خيارات البائع الأربعة، تم ربط نوع DLC بمحتوى الإصدار الرسمي Years 1-2 Fighters Edition.",
+    "box_front_url": "https://images.launchbox-app.com//f0a98bdf-ad4f-4f9e-accf-e070008f634b.jpg",
+    "videos": [
+     {
+      "title": "Street Fighter 6 — Official Trailer",
+      "url": "https://www.youtube.com/watch?v=h2gsKAoW0sg"
+     }
+    ],
+    "nsuid": "70010000095203",
+    "nintendoEshopUrl": "https://www.nintendo.com/us/store/products/street-fighter-6-switch-2/",
+    "nintendoOnlineRequired": true,
+    "nintendoCloudSaves": true,
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": true,
+    "nintendoPlayModes": "TV, Tabletop, Handheld",
+    "nintendoNotes": "Native or seller-classified Nintendo Switch 2 product for this import. Product account variants and costs are based on the supplied seller screenshots; platform classification follows the seller-card rule requested for this import.\n\nOffline selling price is selected within 5,000–25,000 IQD according to demand, supply, popularity, recency, perceived market value and, where relevant, supplier cost. It is not a fixed cost multiplier. Online pricing is market-based and may be higher.\n\nExtraction rules used for this file: production images are verified game media, not seller/Taobao images. Front Box Cover is retail box-front artwork; Square Card is a separate square asset; Cover Image is page/key art; 3D Texture Source is high-resolution front cover art. Banner and Gallery media are separate verified artwork/screenshots. Device Performance contains one device object only. Offline selling prices are chosen within 5,000–25,000 IQD according to demand, supply, popularity, recency, perceived value and supplier cost; online prices remain market-based and may be higher.",
+    "switch2Enhanced": false,
+    "switch2Exclusive": true,
+    "switch2Features": [
+     "Designed or seller-classified for Nintendo Switch 2"
+    ],
+    "tagline": "The modern Street Fighter package arrives on Nintendo Switch 2.",
+    "playTimeMain": 17.5,
+    "playTimeFull": 73,
+    "editionsList": [
+     {
+      "name": "Standard Edition",
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000095203/12d36a4c9bbf43a4babba2f203e1e271ef08de143349e08231dff56fd2bef70e",
+      "contents": [
+       {
+        "label": "Base game"
+       },
+       {
+        "label": "Seller account access"
+       },
+       {
+        "label": "Nintendo platform version shown in this import"
+       }
+      ]
+     },
+     {
+      "name": "Street Fighter 6 Years 1-2 Fighters Edition content",
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000095203/f17d11638cf1d532270c10b405fdf31597a95d97b3b32943a26dd8576a2e2132",
+      "contents": [
+       {
+        "label": "Base game"
+       },
+       {
+        "label": "Street Fighter 6 Years 1-2 Fighters Edition content"
+       },
+       {
+        "label": "Seller DLC account variant"
+       }
+      ]
+     }
+    ],
+    "gameplayPillars": [
+     {
+      "title": "Core Fighting",
+      "description": "Drive System mechanics support offense, defense, counters, and resource management.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000095203/95c9f337f3edd2c27edc56baaf88ef63b48cb017c513235ba5baca96027502ba"
+     },
+     {
+      "title": "World Tour",
+      "description": "Create an avatar and learn techniques from legendary fighters in a single-player journey.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000095203/748d45d06a143faeb7571f80fe5cb9ae8d4649cff2331f0d917513a3b86ac853"
+     },
+     {
+      "title": "Battle Hub",
+      "description": "Online social spaces organize matches, events, and arcade-style competition.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000095203/a7f91fd319c61dddff1a7a3fdb3b64c7498ef4bb4e132fa0fbfef1cd10c54628"
+     }
+    ],
+    "worldSummary": "Street Fighter 6 spans Metro City, global fighting destinations, and Battle Hub spaces where players train, compete, and meet the roster.",
+    "storyChapters": [
+     {
+      "title": "World Tour",
+      "body": "Create an avatar and travel through Metro City and other locations while learning fighting styles from legendary Masters.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000095203/a7f91fd319c61dddff1a7a3fdb3b64c7498ef4bb4e132fa0fbfef1cd10c54628"
+     },
+     {
+      "title": "Fighting Ground",
+      "body": "The traditional Street Fighter experience includes arcade, training, versus, and competitive systems centered on the Drive Gauge.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000095203/95c9f337f3edd2c27edc56baaf88ef63b48cb017c513235ba5baca96027502ba"
+     },
+     {
+      "title": "Battle Hub",
+      "body": "Players meet online through customizable avatars, challenge other competitors, and access a social space that connects the game’s multiplayer modes.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000095203/748d45d06a143faeb7571f80fe5cb9ae8d4649cff2331f0d917513a3b86ac853"
+     }
+    ],
+    "galleryImages": [
+     {
+      "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000095203/95c9f337f3edd2c27edc56baaf88ef63b48cb017c513235ba5baca96027502ba",
+      "alt": "Verified official/publisher media for Street Fighter 6 — gallery image 1."
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000095203/748d45d06a143faeb7571f80fe5cb9ae8d4649cff2331f0d917513a3b86ac853",
+      "alt": "Verified official/publisher media for Street Fighter 6 — gallery image 2."
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000095203/a7f91fd319c61dddff1a7a3fdb3b64c7498ef4bb4e132fa0fbfef1cd10c54628",
+      "alt": "Verified official/publisher media for Street Fighter 6 — gallery image 3."
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70070000027440/158a2372f4521fd29a53cba5851408062d3045c21d8ccfaf5c42f631d2fea1fe",
+      "alt": "Verified official/publisher media for Street Fighter 6 — gallery image 4."
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70070000027440/333958d6d9149fbecafbb3291b4c12ae876a890ae436205d0620a400cc6aaddb",
+      "alt": "Verified official/publisher media for Street Fighter 6 — gallery image 5."
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000095203/95c9f337f3edd2c27edc56baaf88ef63b48cb017c513235ba5baca96027502ba",
+      "alt": "Verified official/publisher media for Street Fighter 6 — gallery image 6."
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000095203/748d45d06a143faeb7571f80fe5cb9ae8d4649cff2331f0d917513a3b86ac853",
+      "alt": "Verified official/publisher media for Street Fighter 6 — gallery image 7."
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000095203/a7f91fd319c61dddff1a7a3fdb3b64c7498ef4bb4e132fa0fbfef1cd10c54628",
+      "alt": "Verified official/publisher media for Street Fighter 6 — gallery image 8."
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000095203/f17d11638cf1d532270c10b405fdf31597a95d97b3b32943a26dd8576a2e2132",
+      "alt": "Verified official/publisher media for Street Fighter 6 — gallery image 9."
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cc_fill%2Cg_auto/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000095203/12d36a4c9bbf43a4babba2f203e1e271ef08de143349e08231dff56fd2bef70e",
+      "alt": "Verified official/publisher media for Street Fighter 6 — gallery image 10."
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cc_fill%2Cg_auto/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000095203/f17d11638cf1d532270c10b405fdf31597a95d97b3b32943a26dd8576a2e2132",
+      "alt": "Verified official/publisher media for Street Fighter 6 — gallery image 11."
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000095203/12d36a4c9bbf43a4babba2f203e1e271ef08de143349e08231dff56fd2bef70e",
+      "alt": "Verified official/publisher media for Street Fighter 6 — gallery image 12."
+     }
+    ],
+    "perfResolutionDocked": "960×540 internal reconstructed to 1920×1080 output",
+    "perfResolutionHandheld": "640×360 internal reconstructed to 1280×720 output",
+    "perfFps": "Fighting Ground: 60; World Tour: variable 30-60",
+    "perfNotes": "Technical analysis reports DLSS reconstruction: 540p internal to 1080p output docked and 360p internal to 720p output handheld. Standard fights target 60 fps; World Tour is more variable.",
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "informationStatus": "verified-analysis",
+      "handheld": {
+       "supported": true,
+       "resolution": "640×360 internal reconstructed to 1280×720 output",
+       "outputResolution": "640×360 internal reconstructed to 1280×720 output",
+       "fps": "Fighting Ground: 60; World Tour: variable 30-60",
+       "notes": "Technical analysis reports DLSS reconstruction: 540p internal to 1080p output docked and 360p internal to 720p output handheld. Standard fights target 60 fps; World Tour is more variable."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "960×540 internal reconstructed to 1920×1080 output",
+       "outputResolution": "960×540 internal reconstructed to 1920×1080 output",
+       "fps": "Fighting Ground: 60; World Tour: variable 30-60",
+       "notes": "Technical analysis reports DLSS reconstruction: 540p internal to 1080p output docked and 360p internal to 720p output handheld. Standard fights target 60 fps; World Tour is more variable."
+      },
+      "modes": [
+       {
+        "name": "Fighting Ground",
+        "handheldResolution": "1280×720 output (640×360 internal)",
+        "handheldFps": "60",
+        "tvResolution": "1920×1080 output (960×540 internal)",
+        "tvFps": "60"
+       },
+       {
+        "name": "World Tour",
+        "handheldFps": "Variable 30-60",
+        "tvFps": "Variable 30-60"
+       }
+      ],
+      "sourceName": "Nintendo Everything technical analysis",
+      "sourceUrl": "https://nintendoeverything.com/street-fighter-6-frame-rate-resolution/",
+      "verifiedAt": "2026-08-24",
+      "verificationStatus": "verified",
+      "performanceNotes": "Technical analysis reports DLSS reconstruction: 540p internal to 1080p output docked and 360p internal to 720p output handheld. Standard fights target 60 fps; World Tour is more variable."
+     }
+    ],
+    "downloadSizeGb": 61.847,
+    "requiredSpaceGb": 61.8,
+    "storageNotes": "Official/verified listed game download size: approximately 61.8 GB. Updates and DLC may require additional space.",
+    "languagesAudio": [
+     "English",
+     "Japanese"
+    ],
+    "languagesText": [
+     "American English",
+     "English",
+     "Japanese"
+    ],
+    "arabicSupport": false,
+    "mpLocalPlayers": true,
+    "mpOnlinePlayers": true,
+    "mpCoop": false,
+    "mpCompetitive": true,
+    "mpSplitScreen": false,
+    "mpLocalWireless": true,
+    "dlc": [
+     {
+      "name": "Years 1-2 Fighters Edition content",
+      "description": "The Years 1-2 Fighters Edition combines the base game with Year 1 and Year 2 character content and associated edition bonuses. Exact seller entitlement should be verified against the supplied account before delivery.",
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000095203/f17d11638cf1d532270c10b405fdf31597a95d97b3b32943a26dd8576a2e2132"
+     }
+    ],
+    "guides": [
+     {
+      "title": "Official product and gameplay information",
+      "summary": "Official Nintendo/publisher information covering features, supported modes, requirements and product-specific notices.",
+      "url": "https://www.nintendo.com/us/store/products/street-fighter-6-switch-2/"
+     },
+     {
+      "title": "GameFAQs guides and FAQs search",
+      "summary": "Community guide index for walkthroughs, FAQs, collectibles, unlockables and troubleshooting. Verify platform/version when following a guide.",
+      "url": "https://gamefaqs.gamespot.com/search?game=Street+Fighter+6"
+     },
+     {
+      "title": "Deku Deals technical/product reference",
+      "summary": "Reference page used for platform, file size, play modes, critic aggregates and completion-time metadata where available.",
+      "url": "https://www.dekudeals.com/items/street-fighter-6"
+     }
+    ],
+    "completionMain": 17.5,
+    "completionExtras": 34,
+    "completionAll": 73,
+    "faq": [
+     {
+      "q": "What platform is this import for?",
+      "a": "This import is classified as Nintendo Switch 2."
+     },
+     {
+      "q": "How many players are supported?",
+      "a": "Official player support varies by mode; the primary published range is 1-16 player(s). See multiplayer fields for local, wireless, and online capabilities."
+     },
+     {
+      "q": "Does this seller listing include a separate DLC account type?",
+      "a": "Yes. The supplied seller listing shows four variants, so Standard and DLC types are created for both Offline and Online accounts."
+     }
+    ],
+    "verdictScore": 8.9,
+    "verdictSummary": "Editorial synthesis for Street Fighter 6, based on the verified feature set, platform implementation, content scope and aggregated critical reception. This score is an internal summary, not a copied external review score.",
+    "reviews": [
+     {
+      "source": "Metacritic",
+      "score": "87",
+      "quote": "Aggregated critic score for the game/platform listing.",
+      "url": "https://www.dekudeals.com/items/street-fighter-6"
+     },
+     {
+      "source": "OpenCritic",
+      "score": "91",
+      "quote": "Aggregated critic score reported for the game.",
+      "url": "https://www.dekudeals.com/items/street-fighter-6"
+     },
+     {
+      "source": "Metacritic User Score",
+      "score": "7.5",
+      "quote": "Aggregated user score reference.",
+      "url": "https://www.dekudeals.com/items/street-fighter-6"
+     }
+    ],
+    "timeline": [
+     {
+      "date": "2023-06-02",
+      "title": "Original release",
+      "body": "Street Fighter 6 launched on other platforms."
+     },
+     {
+      "date": "2025-06-05",
+      "title": "Nintendo Switch 2 release",
+      "body": "Street Fighter 6 launched for Nintendo Switch 2."
+     },
+     {
+      "date": "2025-06-05",
+      "title": "Years 1-2 Fighters Edition",
+      "body": "Nintendo Switch 2 received the bundled Years 1-2 Fighters Edition content option."
+     }
+    ],
+    "patchNotes": [
+     {
+      "version": "Years 1-2 Fighters Edition",
+      "date": "2025-06-05",
+      "body": "Switch 2 edition launched with Year 1 and Year 2 character-pass content in the bundled edition."
+     }
+    ],
+    "soundtrack": [
+     {
+      "title": "Street Fighter 6 — official game / soundtrack information",
+      "url": "https://www.streetfighter.com/6/"
+     },
+     {
+      "title": "Street Fighter 6 — VGMdb soundtrack catalog search",
+      "url": "https://vgmdb.net/search?q=Street+Fighter+6&type=album"
+     },
+     {
+      "title": "Street Fighter 6 — soundtrack video search",
+      "url": "https://www.youtube.com/results?search_query=Street+Fighter+6+official+soundtrack"
+     }
+    ],
+    "seriesName": "Street Fighter",
+    "studioName": "Capcom",
+    "studioUrl": "https://www.capcom.com/",
+    "studioLocation": "Osaka, Japan",
+    "studioAbout": "Capcom is the Japanese developer and publisher behind Street Fighter, Resident Evil, Monster Hunter, and other major series.",
+    "sources": [
+     {
+      "name": "Nintendo / publisher official product page",
+      "url": "https://www.nintendo.com/us/store/products/street-fighter-6-switch-2/"
+     },
+     {
+      "name": "Deku Deals — platform, size, scores and play-time reference",
+      "url": "https://www.dekudeals.com/items/street-fighter-6"
+     },
+     {
+      "name": "The Cover Project — Full Retail Wrap",
+      "url": "https://www.thecoverproject.net/view.php?game_id=19650"
+     }
+    ],
+    "fitFor": [
+     "Competitive fighting-game players",
+     "Street Fighter fans",
+     "Players wanting both traditional fights and World Tour exploration"
+    ],
+    "notFitFor": [
+     "Players uninterested in competitive fighting",
+     "Players seeking a co-op campaign",
+     "Players with limited storage space"
+    ],
+    "features": [
+     "Fighting Ground, World Tour, and Battle Hub",
+     "Local wireless and online multiplayer",
+     "Modern and Classic control styles"
+    ],
+    "verdictPros": [
+     "Deep modern fighting system with excellent accessibility options",
+     "Robust online modes and large Battle Hub feature set",
+     "Years 1-2 edition content adds a substantial fighter roster"
+    ],
+    "verdictCons": [
+     "Large download size",
+     "Competitive mastery has a steep ceiling",
+     "DLC-heavy structure can be expensive outside bundled editions"
+    ],
+    "seriesEntries": [
+     "Street Fighter V",
+     "Street Fighter 6",
+     "Ultra Street Fighter II: The Final Challengers"
+    ],
+    "setupNeeds": [
+     "Nintendo Switch 2 system",
+     "Nintendo Switch Online membership required for online multiplayer",
+     "Large free storage capacity required for the digital installation"
+    ],
+    "boxContentsList": "[Circular]",
+    "image": "/api/files/products/prd_cb0a2dc68a744407/cover-4cd56ede403c2ba7.avif",
+    "banner": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000095203/95c9f337f3edd2c27edc56baaf88ef63b48cb017c513235ba5baca96027502ba",
+    "schemaId": "",
+    "badgeEn": "وفر 40%",
+    "badgeKu": "وفر 40%",
+    "featuresEn": [
+     "Fighting Ground, World Tour, and Battle Hub",
+     "Local wireless and online multiplayer",
+     "Modern and Classic control styles"
+    ],
+    "featuresKu": [
+     "Fighting Ground, World Tour, and Battle Hub",
+     "Local wireless and online multiplayer",
+     "Modern and Classic control styles"
+    ],
+    "game_id": "gme_91f0d930b4c44b45",
+    "boxFrontUrl": "https://images.launchbox-app.com//f0a98bdf-ad4f-4f9e-accf-e070008f634b.jpg",
+    "sales": 0,
+    "createdAt": "2026-08-27T04:36:02.708Z",
+    "created_at": "2026-08-27T04:36:02.708Z",
+    "updatedAt": "2026-08-27T04:36:02.708Z",
+    "updated_at": "2026-08-27T04:36:02.708Z",
+    "images": [],
+    "modes": [],
+    "variants": "[Circular]"
+   }
+  },
+  {
+   "id": "prd_4b3c62c6fc504c9b",
+   "slug": "super-mario-3d-world-plus-bowsers-fury-switch",
+   "title": "Super Mario 3D World + Bowser's Fury",
+   "platform": "switch1",
+   "isHidden": false,
+   "hash": "27ef5e151f1e2e66dd6faf2b42ab23acb5493d897264ddb713d02bb5dbceefc5",
+   "images": [
+    {
+     "role": "front-box",
+     "field": "cartridgeImage",
+     "url": "https://banan.to/api/files/products/prd_4b3c62c6fc504c9b/front-d6a49571d7b03fbc.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 2790062,
+     "width": 1238,
+     "height": 2000,
+     "thumb": "review-workdir/thumbs/batch-023/super-mario-3d-world-plus-bowsers-fury-switch__front-box-0.png"
+    },
+    {
+     "role": "front-box",
+     "field": "box_front_url",
+     "url": "https://images.launchbox-app.com/e2d2005b-788a-4999-b418-e3bd52db587a.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 2790062,
+     "width": 1238,
+     "height": 2000,
+     "thumb": "review-workdir/thumbs/batch-023/super-mario-3d-world-plus-bowsers-fury-switch__front-box-1.png"
+    },
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://banan.to/api/files/products/prd_4b3c62c6fc504c9b/square-1b71093403571273.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 459205,
+     "width": 1024,
+     "height": 1024,
+     "thumb": "review-workdir/thumbs/batch-023/super-mario-3d-world-plus-bowsers-fury-switch__square-card-2.png"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://banan.to/api/files/products/prd_4b3c62c6fc504c9b/cover-c3a5f061b0f4e5d7.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 837127,
+     "width": 2400,
+     "height": 1350,
+     "thumb": "review-workdir/thumbs/batch-023/super-mario-3d-world-plus-bowsers-fury-switch__detail-cover-3.png"
+    },
+    {
+     "role": "3d-texture",
+     "field": "coverHiResImage",
+     "url": "https://banan.to/api/files/products/prd_4b3c62c6fc504c9b/3d-texture-50c724bfc56d10e1.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 277676,
+     "width": 1080,
+     "height": 826,
+     "thumb": "review-workdir/thumbs/batch-023/super-mario-3d-world-plus-bowsers-fury-switch__3d-texture-4.png"
+    },
+    {
+     "role": "listing",
+     "field": "image",
+     "url": "https://banan.to/api/files/products/prd_4b3c62c6fc504c9b/cover-c3a5f061b0f4e5d7.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 837127,
+     "width": 2400,
+     "height": 1350,
+     "thumb": "review-workdir/thumbs/batch-023/super-mario-3d-world-plus-bowsers-fury-switch__listing-5.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[0]",
+     "url": "https://banan.to/api/files/products/prd_4b3c62c6fc504c9b/banner-1-91c5b294494173ea.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 90714,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-023/super-mario-3d-world-plus-bowsers-fury-switch__banner-6.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[1]",
+     "url": "https://banan.to/api/files/products/prd_4b3c62c6fc504c9b/banner-1-b1703b6dbdddabee.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 40924,
+     "width": 739,
+     "height": 415,
+     "thumb": "review-workdir/thumbs/batch-023/super-mario-3d-world-plus-bowsers-fury-switch__banner-7.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[2]",
+     "url": "https://banan.to/api/files/products/prd_4b3c62c6fc504c9b/banner-2-feabf6997a47510f.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 42229,
+     "width": 739,
+     "height": 415,
+     "thumb": "review-workdir/thumbs/batch-023/super-mario-3d-world-plus-bowsers-fury-switch__banner-8.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://images.launchbox-app.com/59c9bd8c-4dcd-4f42-af62-8c382aa301d7.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 330051,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-023/super-mario-3d-world-plus-bowsers-fury-switch__gallery-9.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[1]",
+     "url": "https://images.launchbox-app.com/157829e9-eed7-4b2a-b21a-c3a291260f14.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 484138,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-023/super-mario-3d-world-plus-bowsers-fury-switch__gallery-10.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[2]",
+     "url": "https://images.launchbox-app.com/fa1b4f3d-6983-4b3f-b20e-beb6f7e4c326.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 398678,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-023/super-mario-3d-world-plus-bowsers-fury-switch__gallery-11.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[3]",
+     "url": "https://images.launchbox-app.com/229ee9bc-3556-4ad1-b49e-490baa61aad5.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 280209,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-023/super-mario-3d-world-plus-bowsers-fury-switch__gallery-12.png"
+    }
+   ],
+   "record": {
+    "title": "Super Mario 3D World + Bowser's Fury",
+    "titleEn": "Super Mario 3D World + Bowser's Fury",
+    "titleKu": "Super Mario 3D World + Bowser's Fury",
+    "slug": "super-mario-3d-world-plus-bowsers-fury-switch",
+    "description": "A two-part Mario package: the faster Switch version of Super Mario 3D World with four-player local/online co-op, plus Bowser's Fury, a free-roaming Lake Lapcat adventure where Mario and Bowser Jr. collect Cat Shines while surviving Fury Bowser.",
+    "descriptionEn": "A two-part Mario package: the faster Switch version of Super Mario 3D World with four-player local/online co-op, plus Bowser's Fury, a free-roaming Lake Lapcat adventure where Mario and Bowser Jr. collect Cat Shines while surviving Fury Bowser.",
+    "descriptionKu": "A two-part Mario package: the faster Switch version of Super Mario 3D World with four-player local/online co-op, plus Bowser's Fury, a free-roaming Lake Lapcat adventure where Mario and Bowser Jr. collect Cat Shines while surviving Fury Bowser.",
+    "cartridgeImage": "/api/files/products/prd_4b3c62c6fc504c9b/front-d6a49571d7b03fbc.jpg",
+    "nintendoCardImage": "/api/files/products/prd_4b3c62c6fc504c9b/square-1b71093403571273.jpg",
+    "coverHiResImage": "/api/files/products/prd_4b3c62c6fc504c9b/3d-texture-50c724bfc56d10e1.webp",
+    "coverImage": "/api/files/products/prd_4b3c62c6fc504c9b/cover-c3a5f061b0f4e5d7.jpg",
+    "bannerImages": [
+     "/api/files/products/prd_4b3c62c6fc504c9b/banner-1-91c5b294494173ea.jpg",
+     "/api/files/products/prd_4b3c62c6fc504c9b/banner-1-b1703b6dbdddabee.jpg",
+     "/api/files/products/prd_4b3c62c6fc504c9b/banner-2-feabf6997a47510f.jpg"
+    ],
+    "gallery": [],
+    "youtubeTrailer": "https://supermario3dworld.nintendo.com/",
+    "releaseDate": "2021-02-12",
+    "ageRating": "ESRB E / PEGI 7",
+    "metacriticRating": 89,
+    "genres": [
+     "3D Platformer",
+     "Action Adventure",
+     "Co-op"
+    ],
+    "platform": "switch1",
+    "size": 3,
+    "numberOfPlayers": "1–4 local; 2–4 local wireless; 2–4 online",
+    "supportedLanguages": "Japanese / English; French / German / Italian / Spanish / Portuguese / Dutch / Russian; Korean / Simplified Chinese / Traditional Chinese",
+    "hardwareModel": "",
+    "colorEdition": "",
+    "storageCapacity": "",
+    "screenSpecs": "",
+    "batteryLife": "",
+    "boxContents": [],
+    "boxContentsText": "",
+    "warrantyCondition": "",
+    "connectivity": "",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "Global",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "",
+    "redemptionSteps": [],
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 12000,
+    "cost": 1750,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": false,
+    "displayOrder": 0,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "Offline Account",
+      "description": "Offline account access",
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_account",
+      "name": "Online Account",
+      "description": "Online account access",
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "types": [
+     {
+      "id": "standard_offline",
+      "name": "Offline Account",
+      "optionId": "offline_account",
+      "price": "12000",
+      "cost": 1750,
+      "description": "Offline Account; supplier cost 1,750 IQD; selling price 15,000 IQD.",
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "standard_online",
+      "name": "Online Account",
+      "optionId": "online_account",
+      "price": "35000",
+      "cost": 20750,
+      "description": "Online Account; supplier cost 20,750 IQD; selling price 30,750 IQD.",
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "Active",
+    "kind": "account",
+    "trade_value_iqd": 39000,
+    "store_offer_bonus_iqd": 7000,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "id": "prd_4b3c62c6fc504c9b",
+    "schema_version": 23,
+    "titleAr": "سوبر ماريو 3D وورلد + باوزرز فيوري",
+    "compatibility": [
+     "Nintendo Switch",
+     "Nintendo Switch 2 (backward compatible / enhanced where applicable)"
+    ],
+    "edition": "Standard",
+    "developer": "Nintendo EPD",
+    "publisher": "Nintendo",
+    "metacriticUrl": "https://www.metacritic.com/game/super-mario-3d-world-plus-bowsers-fury/",
+    "opencriticRating": 89,
+    "userScore": 8.8,
+    "price_usd": 59.99,
+    "officialUrl": "https://supermario3dworld.nintendo.com/",
+    "eshopUrl": "https://www.nintendo.com/us/store/products/super-mario-3d-world-plus-bowsers-fury-switch/",
+    "gameIsOffline": true,
+    "gameIsOnline": true,
+    "gameLanguageLocked": false,
+    "description_short": "A two-part Mario package: the faster Switch version of Super Mario 3D World with four-player local/online co-op, plus Bowser's Fury, a free-roaming Lake Lapcat adventure where Mario and Bowser Jr. collect Cat Shines while surviving Fury Bowser.",
+    "description_ar": "حزمة تضم Super Mario 3D World المحسنة على Switch مع تعاون محلي وأونلاين حتى أربعة لاعبين، إضافة إلى Bowser's Fury وهي مغامرة حرة في Lake Lapcat يتعاون فيها Mario وBowser Jr. لجمع Cat Shines ومواجهة Fury Bowser.",
+    "box_front_url": "https://images.launchbox-app.com/e2d2005b-788a-4999-b418-e3bd52db587a.jpg",
+    "box_back_url": "https://images.launchbox-app.com/42a9cfb8-8ad8-4702-a10e-e73fc43f79fd.jpg",
+    "galleryImages": [
+     {
+      "url": "https://images.launchbox-app.com/59c9bd8c-4dcd-4f42-af62-8c382aa301d7.jpg",
+      "alt": "Super Mario 3D World + Bowser's Fury — distinct gameplay/promotional image 1"
+     },
+     {
+      "url": "https://images.launchbox-app.com/157829e9-eed7-4b2a-b21a-c3a291260f14.jpg",
+      "alt": "Super Mario 3D World + Bowser's Fury — distinct gameplay/promotional image 2"
+     },
+     {
+      "url": "https://images.launchbox-app.com/fa1b4f3d-6983-4b3f-b20e-beb6f7e4c326.jpg",
+      "alt": "Super Mario 3D World + Bowser's Fury — distinct gameplay/promotional image 3"
+     },
+     {
+      "url": "https://images.launchbox-app.com/229ee9bc-3556-4ad1-b49e-490baa61aad5.jpg",
+      "alt": "Super Mario 3D World + Bowser's Fury — distinct gameplay/promotional image 4"
+     }
+    ],
+    "videos": [
+     {
+      "title": "Official game page / trailer",
+      "url": "https://supermario3dworld.nintendo.com/"
+     },
+     {
+      "title": "Nintendo / publisher product information",
+      "url": "https://www.nintendo.com/us/store/products/super-mario-3d-world-plus-bowsers-fury-switch/"
+     },
+     {
+      "title": "Technical or database reference",
+      "url": "https://en-americas-support.nintendo.com/app/answers/detail/a_id/54589/"
+     }
+    ],
+    "nsuid": "See regional Nintendo eShop listing",
+    "title_id": "Regional title identifier varies by Nintendo storefront",
+    "product_code": "HAC-P-AUZPA",
+    "nintendoEshopUrl": "https://www.nintendo.com/us/store/products/super-mario-3d-world-plus-bowsers-fury-switch/",
+    "nintendoOnlineRequired": true,
+    "nintendoCloudSaves": true,
+    "nintendoGameKeyCard": false,
+    "nintendoPhysicalNeedsDownload": false,
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": true,
+    "nintendoPlayModes": "TV / Tabletop / Handheld",
+    "nintendoNotes": "Verified game-page data for Super Mario 3D World + Bowser's Fury; measured performance is separated from system maximum capabilities.",
+    "switch2Enhanced": true,
+    "switch2Exclusive": false,
+    "switch2UpgradePrice": 0,
+    "switch2Features": [
+     "Super Mario 3D World with faster Switch movement",
+     "Bowser's Fury open-area adventure",
+     "Free Switch 2 update with improved visuals/frame rate, HDR in Bowser's Fury and GameShare"
+    ],
+    "tagline": "Two different Mario adventures: course-based multiplayer and a free-roaming Bowser showdown.",
+    "fitFor": [
+     "3D Mario fans",
+     "Families wanting four-player co-op",
+     "Players who want both structured levels and an open-area Mario adventure"
+    ],
+    "notFitFor": [
+     "Players seeking one continuous long open world",
+     "Players who dislike collectible platformers",
+     "Players expecting a completely new full-length sequel"
+    ],
+    "playTimeMain": 10.5,
+    "playTimeFull": 28,
+    "editionsList": [
+     {
+      "name": "Standard Edition",
+      "coverUrl": "https://images.launchbox-app.com/e2d2005b-788a-4999-b418-e3bd52db587a.jpg",
+      "contents": [
+       {
+        "label": "Base game"
+       },
+       {
+        "label": "Core content"
+       },
+       {
+        "label": "Current updates"
+       }
+      ]
+     },
+     {
+      "name": "Digital Edition",
+      "coverUrl": "https://images.launchbox-app.com/2cbc79de-50af-4780-bcfd-9d824080fca1.jpg",
+      "contents": [
+       {
+        "label": "Digital entitlement"
+       },
+       {
+        "label": "Same core game"
+       },
+       {
+        "label": "Nintendo Account delivery"
+       }
+      ]
+     },
+     {
+      "name": "Current Complete Package",
+      "coverUrl": "https://images.launchbox-app.com/bf35fd71-69a6-43b5-8578-9e5f379e692f.jpg",
+      "contents": [
+       {
+        "label": "Latest build"
+       },
+       {
+        "label": "Bowser's Fury included"
+       },
+       {
+        "label": "Super Mario 3D World with faster Switch movement"
+       }
+      ]
+     }
+    ],
+    "gameplayPillars": [
+     {
+      "title": "Fast course platforming",
+      "description": "Run, jump, climb as Cat Mario and chase Green Stars, stamps and high scores across compact stages.",
+      "imageUrl": "https://images.launchbox-app.com/bf0d9d55-96b7-474a-8282-7e0a011a8df6.png"
+     },
+     {
+      "title": "Four-player 3D World",
+      "description": "Play the main campaign locally or online with Mario, Luigi, Peach and Toad.",
+      "imageUrl": "https://images.launchbox-app.com/bf35fd71-69a6-43b5-8578-9e5f379e692f.jpg"
+     },
+     {
+      "title": "Bowser's Fury freedom",
+      "description": "Explore Lake Lapcat, collect Cat Shines and respond dynamically whenever Fury Bowser transforms the environment.",
+      "imageUrl": "https://images.launchbox-app.com/22ed0ce4-502c-4d3e-a037-cb74ce747833.jpg"
+     }
+    ],
+    "worldSummary": "Super Mario 3D World spans the Sprixie Kingdom through compact obstacle-course stages. Bowser's Fury shifts to Lake Lapcat, an interconnected cat-themed environment whose islands change as Fury Bowser awakens.",
+    "storyChapters": [
+     {
+      "title": "Save the Sprixies",
+      "body": "Bowser captures the Sprixie Princesses and Mario's group travels through a series of themed worlds.",
+      "imageUrl": "https://images.launchbox-app.com/59c9bd8c-4dcd-4f42-af62-8c382aa301d7.jpg"
+     },
+     {
+      "title": "World Bowser",
+      "body": "The course-based adventure culminates in Bowser's neon amusement-park kingdom.",
+      "imageUrl": "https://images.launchbox-app.com/157829e9-eed7-4b2a-b21a-c3a291260f14.jpg"
+     },
+     {
+      "title": "Lake Lapcat",
+      "body": "Bowser's Fury sends Mario into a separate open environment where Bowser Jr. helps restore his father.",
+      "imageUrl": "https://images.launchbox-app.com/fa1b4f3d-6983-4b3f-b20e-beb6f7e4c326.jpg"
+     }
+    ],
+    "features": [
+     "Super Mario 3D World with faster Switch movement",
+     "Bowser's Fury open-area adventure",
+     "Free Switch 2 update with improved visuals/frame rate, HDR in Bowser's Fury and GameShare"
+    ],
+    "perfResolutionDocked": "1080p / 60 fps in Super Mario 3D World; Bowser's Fury targets 60 fps docked",
+    "perfResolutionHandheld": "720p / 60 fps in 3D World; Bowser's Fury is 720p / 30 fps on original Switch handheld",
+    "perfFps": "60 (3D World; Bowser's Fury varies by mode on original Switch)",
+    "perfHdr": false,
+    "perfNotes": "On original Switch, 3D World runs at 60 fps; Bowser's Fury is 60 fps docked but 30 fps handheld. Nintendo's free Switch 2 update improves visuals and smoothness, including Bowser's Fury, and adds HDR for Bowser's Fury in compatible TV mode.",
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "hardwareId": "prd_acf4c89908764c62",
+      "informationStatus": "Available / verified",
+      "unavailableReason": "No standard supported mode is unavailable.",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p / 60 fps in 3D World; Bowser's Fury is 720p / 30 fps on original Switch handheld",
+       "resolutionDynamic": false,
+       "renderingResolution": "720p / 60 fps in 3D World; Bowser's Fury is 720p / 30 fps on original Switch handheld",
+       "outputResolution": "1280x720",
+       "fps": "60 (3D World; Bowser's Fury varies by mode on original Switch)",
+       "fpsMin": "30",
+       "fpsMax": "60",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Handheld",
+       "notes": "On original Switch, 3D World runs at 60 fps; Bowser's Fury is 60 fps docked but 30 fps handheld. Nintendo's free Switch 2 update improves visuals and smoothness, including Bowser's Fury, and adds HDR for Bowser's Fury in compatible TV mode."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p / 60 fps in Super Mario 3D World; Bowser's Fury targets 60 fps docked",
+       "resolutionDynamic": false,
+       "renderingResolution": "1080p / 60 fps in Super Mario 3D World; Bowser's Fury targets 60 fps docked",
+       "outputResolution": "1920x1080",
+       "fps": "60 (3D World; Bowser's Fury varies by mode on original Switch)",
+       "fpsMin": "30",
+       "fpsMax": "60",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "TV / Docked",
+       "notes": "On original Switch, 3D World runs at 60 fps; Bowser's Fury is 60 fps docked but 30 fps handheld. Nintendo's free Switch 2 update improves visuals and smoothness, including Bowser's Fury, and adds HDR for Bowser's Fury in compatible TV mode."
+      },
+      "modes": [
+       {
+        "name": "Primary documented mode",
+        "handheldResolution": "720p / 60 fps in 3D World; Bowser's Fury is 720p / 30 fps on original Switch handheld",
+        "handheldFps": "60 (3D World; Bowser's Fury varies by mode on original Switch)",
+        "tvResolution": "1080p / 60 fps in Super Mario 3D World; Bowser's Fury targets 60 fps docked",
+        "tvFps": "60 (3D World; Bowser's Fury varies by mode on original Switch)",
+        "hdr": false,
+        "vrr": false,
+        "notes": "Primary documented performance profile."
+       }
+      ],
+      "upscaling": "System/game-specific scaling where applicable",
+      "rayTracing": false,
+      "rayTracingMode": "No verified ray-tracing mode",
+      "loadingTime": "Scene-dependent; no single universal loading time",
+      "loadingNotes": "Loading varies by scene, save and storage state.",
+      "gameVersion": "Current retail build",
+      "patchVersion": "Current available update",
+      "testedDate": "2026-08-27",
+      "sourceName": "Nintendo Support",
+      "sourceUrl": "https://en-americas-support.nintendo.com/app/answers/detail/a_id/54589/",
+      "verifiedAt": "2026-08-27",
+      "verificationStatus": "Verified / sourced",
+      "performanceNotes": "On original Switch, 3D World runs at 60 fps; Bowser's Fury is 60 fps docked but 30 fps handheld. Nintendo's free Switch 2 update improves visuals and smoothness, including Bowser's Fury, and adds HDR for Bowser's Fury in compatible TV mode."
+     }
+    ],
+    "downloadSizeGb": 3,
+    "requiredSpaceGb": 3,
+    "microSdRecommended": false,
+    "storageNotes": "Nintendo lists about 3 GB. microSD storage is optional.",
+    "languagesAudio": [
+     "Character vocalizations",
+     "Music / sound effects",
+     "No full language-dependent voice track"
+    ],
+    "languagesText": [
+     "Japanese / English",
+     "French / German / Italian / Spanish / Portuguese / Dutch / Russian",
+     "Korean / Simplified Chinese / Traditional Chinese"
+    ],
+    "arabicSupport": false,
+    "mpLocalPlayers": true,
+    "mpOnlinePlayers": true,
+    "mpCoop": true,
+    "mpCompetitive": true,
+    "mpSplitScreen": true,
+    "mpLocalWireless": true,
+    "dlc": [
+     {
+      "name": "Bowser's Fury included",
+      "description": "Bowser's Fury is part of the base Switch package, not separate paid DLC.",
+      "coverUrl": "https://images.launchbox-app.com/229ee9bc-3556-4ad1-b49e-490baa61aad5.jpg"
+     },
+     {
+      "name": "Free Switch 2 update",
+      "description": "Version 1.2.0 added improved visuals/frame rate, Bowser's Fury HDR and GameShare when played on Switch 2.",
+      "coverUrl": "https://images.launchbox-app.com/2cbc79de-50af-4780-bcfd-9d824080fca1.jpg"
+     },
+     {
+      "name": "No paid story DLC",
+      "description": "No standalone paid story expansion was released.",
+      "coverUrl": "https://images.launchbox-app.com/e2d2005b-788a-4999-b418-e3bd52db587a.jpg"
+     }
+    ],
+    "guides": [
+     {
+      "title": "Official product page",
+      "summary": "Platform, release, languages and features.",
+      "url": "https://www.nintendo.com/us/store/products/super-mario-3d-world-plus-bowsers-fury-switch/"
+     },
+     {
+      "title": "Performance / update reference",
+      "summary": "Technical or update information.",
+      "url": "https://en-americas-support.nintendo.com/app/answers/detail/a_id/54589/"
+     },
+     {
+      "title": "Media / database reference",
+      "summary": "Images and catalog metadata.",
+      "url": "https://gamesdb.launchbox-app.com/games/details/145306-super-mario-3d-world-bowsers-fury"
+     }
+    ],
+    "completionMain": 10.5,
+    "completionExtras": 16,
+    "completionAll": 28,
+    "faq": [
+     {
+      "q": "Are 3D World and Bowser's Fury both included?",
+      "a": "Yes. Both are included in one Switch game."
+     },
+     {
+      "q": "What changed on Switch 2?",
+      "a": "Nintendo's free update improves visuals and frame rate, adds Bowser's Fury HDR and enables GameShare."
+     },
+     {
+      "q": "How many people can play?",
+      "a": "Super Mario 3D World supports up to four players; Bowser's Fury supports two-player local co-op."
+     }
+    ],
+    "verdictScore": 9.1,
+    "verdictSummary": "An exceptional double package: 3D World is one of Nintendo's best multiplayer platformers, while Bowser's Fury is a compact experiment in open-area Mario design.",
+    "verdictPros": [
+     "Two excellent but distinct Mario experiences",
+     "Strong four-player local/online support",
+     "Switch 2 update meaningfully improves Bowser's Fury"
+    ],
+    "verdictCons": [
+     "Bowser's Fury is shorter than a standalone Mario game",
+     "Original Switch handheld Bowser's Fury is 30 fps",
+     "Some 3D World stages become chaotic with four players"
+    ],
+    "reviews": [
+     {
+      "source": "Metacritic",
+      "score": "89/100",
+      "quote": "Strong critic aggregate for the Switch package.",
+      "url": "https://www.metacritic.com/game/super-mario-3d-world-plus-bowsers-fury/"
+     },
+     {
+      "source": "OpenCritic",
+      "score": "89/100",
+      "quote": "Very strong aggregate reception.",
+      "url": "https://opencritic.com/game/10866/super-mario-3d-world-plus-bowsers-fury"
+     },
+     {
+      "source": "Nintendo Life",
+      "score": "10/10",
+      "quote": "Praised the combined package and Bowser's Fury addition.",
+      "url": "https://www.nintendolife.com/reviews/nintendo-switch/super_mario_3d_world_plus_bowsers_fury"
+     }
+    ],
+    "timeline": [
+     {
+      "date": "2013-11-22",
+      "title": "Original 3D World",
+      "body": "Super Mario 3D World launched on Wii U."
+     },
+     {
+      "date": "2021-02-12",
+      "title": "Switch package released",
+      "body": "The faster port and new Bowser's Fury adventure launched."
+     },
+     {
+      "date": "2025-06-03",
+      "title": "Switch 2 enhancement",
+      "body": "Version 1.2.0 introduced Switch 2 visuals/frame-rate optimization, HDR and GameShare."
+     }
+    ],
+    "patchNotes": [
+     {
+      "version": "Version 1.1.0",
+      "date": "2021-02-11",
+      "body": "General gameplay issue fixes."
+     },
+     {
+      "version": "Version 1.2.0",
+      "date": "2025-06-03",
+      "body": "Switch 2 visual/frame-rate optimization, Bowser's Fury HDR and GameShare."
+     },
+     {
+      "version": "Version 1.2.1",
+      "date": "2025-07-29",
+      "body": "Fixed Switch 2 system-behavior issues."
+     }
+    ],
+    "soundtrack": [
+     {
+      "title": "Super Bell Hill",
+      "url": "https://supermario3dworld.nintendo.com/"
+     },
+     {
+      "title": "World Bowser",
+      "url": "https://supermario3dworld.nintendo.com/"
+     },
+     {
+      "title": "Lake Lapcat / Fury Bowser themes",
+      "url": "https://supermario3dworld.nintendo.com/"
+     }
+    ],
+    "seriesName": "Super Mario",
+    "seriesEntries": [
+     "Super Mario 3D World + Bowser's Fury",
+     "Super Mario Odyssey",
+     "Super Mario Bros. Wonder"
+    ],
+    "studioName": "Nintendo EPD",
+    "studioUrl": "https://www.nintendo.co.jp/",
+    "studioLocation": "Kyoto, Japan",
+    "studioAbout": "Nintendo EPD developed the Switch version and the new Bowser's Fury adventure.",
+    "setupNeeds": [
+     "Nintendo Switch or Nintendo Switch 2",
+     "Approximately 3 GB free storage",
+     "Nintendo Switch Online membership for online 3D World multiplayer"
+    ],
+    "sources": [
+     {
+      "name": "Nintendo official",
+      "url": "https://www.nintendo.com/us/store/products/super-mario-3d-world-plus-bowsers-fury-switch/"
+     },
+     {
+      "name": "Nintendo Support",
+      "url": "https://en-americas-support.nintendo.com/app/answers/detail/a_id/54589/"
+     },
+     {
+      "name": "LaunchBox Games Database",
+      "url": "https://gamesdb.launchbox-app.com/games/details/145306-super-mario-3d-world-bowsers-fury"
+     }
+    ],
+    "boxContentsList": "[Circular]",
+    "image": "/api/files/products/prd_4b3c62c6fc504c9b/cover-c3a5f061b0f4e5d7.jpg",
+    "banner": "/api/files/products/prd_4b3c62c6fc504c9b/banner-1-91c5b294494173ea.jpg",
+    "schemaId": "",
+    "createdAt": "2026-08-27T01:24:45.626Z",
+    "created_at": "2026-08-27T01:24:45.626Z",
+    "updatedAt": "2026-08-27T01:24:45.626Z",
+    "updated_at": "2026-08-27T01:24:45.626Z",
+    "badgeEn": "وفر 40%",
+    "badgeKu": "وفر 40%",
+    "featuresEn": [
+     "Super Mario 3D World with faster Switch movement",
+     "Bowser's Fury open-area adventure",
+     "Free Switch 2 update with improved visuals/frame rate, HDR in Bowser's Fury and GameShare"
+    ],
+    "featuresKu": [
+     "Super Mario 3D World with faster Switch movement",
+     "Bowser's Fury open-area adventure",
+     "Free Switch 2 update with improved visuals/frame rate, HDR in Bowser's Fury and GameShare"
+    ],
+    "boxFrontUrl": "https://images.launchbox-app.com/e2d2005b-788a-4999-b418-e3bd52db587a.jpg",
+    "sales": 0,
+    "images": [],
+    "modes": [],
+    "game_id": "gme_1fde693900df40b5"
+   }
+  }
+ ]
+}

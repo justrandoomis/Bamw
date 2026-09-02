@@ -1,0 +1,604 @@
+{
+ "title": "Splatoon Raiders",
+ "titleEn": "Splatoon Raiders",
+ "titleKu": "Splatoon Raiders",
+ "slug": "splatoon-raiders-switch-2",
+ "description": "A single-player-focused Splatoon spin-off where the Mechanic and Deep Cut raid the Spirhalite Islands, fight Salmonids, recover salvage, craft gadgets and upgrade three specialized Tanks. Up to four players can join through online or local wireless co-op.",
+ "descriptionEn": "A single-player-focused Splatoon spin-off where the Mechanic and Deep Cut raid the Spirhalite Islands, fight Salmonids, recover salvage, craft gadgets and upgrade three specialized Tanks. Up to four players can join through online or local wireless co-op.",
+ "descriptionKu": "A single-player-focused Splatoon spin-off where the Mechanic and Deep Cut raid the Spirhalite Islands, fight Salmonids, recover salvage, craft gadgets and upgrade three specialized Tanks. Up to four players can join through online or local wireless co-op.",
+ "cartridgeImage": "/api/files/products/prd_ca00c669a42241f6/front-09b79427a9775c19.png",
+ "nintendoCardImage": "/api/files/products/prd_ca00c669a42241f6/square-698a2392183b75c0.jpg",
+ "coverHiResImage": "/api/files/products/prd_ca00c669a42241f6/3d-texture-1ed2160084ae1bb9.jpg",
+ "coverImage": "/api/files/products/prd_ca00c669a42241f6/cover-010850fac3dd9f90.jpg",
+ "bannerImages": [
+  "/api/files/products/prd_ca00c669a42241f6/banner-0-e1d53089b11fec7b.avif",
+  "/api/files/products/prd_ca00c669a42241f6/banner-1-e819c22e97f5e319.avif",
+  "/api/files/products/prd_ca00c669a42241f6/banner-2-204bea93e79a0b2d.avif",
+  "/api/files/products/prd_ca00c669a42241f6/banner-3-f33a56b8648a14e9.avif",
+  "/api/files/products/prd_ca00c669a42241f6/banner-4-bd0846cecf014c70.avif"
+ ],
+ "gallery": [],
+ "youtubeTrailer": "https://splatoon.nintendo.com/",
+ "releaseDate": "2026-07-23",
+ "ageRating": "ESRB E10+ Fantasy Violence / PEGI 7",
+ "metacriticRating": 81,
+ "genres": [
+  "Action",
+  "Third-Person Shooter",
+  "Action RPG / Looting"
+ ],
+ "platform": "switch2",
+ "size": 13.1,
+ "numberOfPlayers": "1 local / 2–4 local wireless / 2–4 online",
+ "supportedLanguages": "Japanese / English; French / German / Italian / Spanish / Dutch; Korean / Simplified Chinese / Traditional Chinese",
+ "hardwareModel": "",
+ "colorEdition": "",
+ "storageCapacity": "",
+ "screenSpecs": "",
+ "batteryLife": "",
+ "boxContents": [],
+ "boxContentsText": "",
+ "warrantyCondition": "",
+ "connectivity": "",
+ "characterName": "Link",
+ "amiiboSeries": "The Legend of Zelda",
+ "figureType": "figure",
+ "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+ "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+ "boxCondition": "mib",
+ "releaseWave": "Wave 2 (Restock)",
+ "rarity": "standard",
+ "accessoryType": "حقيبة حماية وتنقل Carry Case",
+ "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+ "brand": "Nintendo Official",
+ "material": "Hard EVA Shockproof Shell",
+ "availableColors": "Black, Neon Red/Blue, White",
+ "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+ "cardValue": "$20 eShop Balance",
+ "region": "Global",
+ "cardType": "eshop",
+ "deliveryMethod": "instant_code",
+ "redemptionGuide": "",
+ "redemptionSteps": [],
+ "validity": "no_expiry",
+ "usedType": "cartridge",
+ "conditionGrade": "like_new",
+ "packaging": "cib",
+ "guaranteeStatus": "tested_30days",
+ "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+ "accountType": "primary",
+ "badge": "وفر 40%",
+ "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+ "price": 16000,
+ "cost": 2250,
+ "stock": 999999,
+ "isInfiniteStock": true,
+ "isHidden": false,
+ "displayOrder": 0,
+ "category": "nintendo-switch-games",
+ "categoryId": "nintendo-switch-games",
+ "categoryEn": "",
+ "categoryKu": "",
+ "options": [
+  {
+   "id": "offline_account",
+   "name": "حساب أوفلاين",
+   "description": "حساب مخصص للعب دون اتصال بعد إكمال خطوات التفعيل.",
+   "stock": 9999,
+   "isInfiniteStock": true,
+   "customerDescription": "حساب مشترك"
+  },
+  {
+   "id": "online_account",
+   "name": "حساب أونلاين",
+   "description": "حساب يدعم تشغيل اللعبة مع الاتصال والميزات المتاحة أونلاين.",
+   "stock": 9999,
+   "isInfiniteStock": true,
+   "customerDescription": "حساب خاص بك"
+  }
+ ],
+ "types": [
+  {
+   "id": "standard_offline",
+   "name": "حساب أوفلاين — عادي",
+   "optionId": "offline_account",
+   "price": "",
+   "cost": 2250,
+   "description": "تشمل الإصدار العادي من اللعبة.",
+   "stock": 9999,
+   "isInfiniteStock": true,
+   "internalNote": "Offline Account: supplier cost 2,250 IQD; selling price 21,000 IQD."
+  },
+  {
+   "id": "standard_online",
+   "name": "حساب أونلاين — عادي",
+   "optionId": "online_account",
+   "price": "42000",
+   "cost": 27250,
+   "description": "تشمل الإصدار العادي من اللعبة.",
+   "stock": 9999,
+   "isInfiniteStock": true,
+   "internalNote": "Online Account: supplier cost 27,250 IQD; selling price 37,250 IQD."
+  }
+ ],
+ "editions": [],
+ "dlcs": [],
+ "isActive": true,
+ "status": "Active",
+ "kind": "account",
+ "trade_value_iqd": 50000,
+ "store_offer_bonus_iqd": 2500,
+ "trade_enabled": true,
+ "trade_value_locked": false,
+ "id": "prd_ca00c669a42241f6",
+ "schema_version": 23,
+ "titleAr": "سبلاتون رايدرز",
+ "compatibility": [
+  "Nintendo Switch 2"
+ ],
+ "edition": "Standard / available account variants",
+ "developer": "Nintendo EPD",
+ "publisher": "Nintendo",
+ "metacriticUrl": "https://www.metacritic.com/game/splatoon-raiders/",
+ "opencriticRating": 80,
+ "userScore": 9.2,
+ "price_usd": 49.99,
+ "officialUrl": "https://splatoon.nintendo.com/",
+ "eshopUrl": "https://www.nintendo.com/us/store/products/splatoon-raiders-switch-2/",
+ "gameIsOffline": true,
+ "gameIsOnline": true,
+ "gameLanguageLocked": false,
+ "description_short": "A single-player-focused Splatoon spin-off where the Mechanic and Deep Cut raid the Spirhalite Islands, fight Salmonids, recover salvage, craft gadgets and upgrade three specialized Tanks. Up to four players can join through online or local wireless co-op.",
+ "description_ar": "لعبة فرعية من Splatoon تركز على المغامرة والـPvE. تلعب بدور Mechanic مع Deep Cut في جزر Spirhalite، وتنفذ غارات ضد Salmonids وتجمع الغنائم وتطوّر الأسلحة والأجهزة وثلاثة أنواع من Tanks، مع تعاون حتى أربعة لاعبين عبر الإنترنت أو الاتصال اللاسلكي المحلي.",
+ "box_front_url": "https://online.apitashop.com/Contents/ProductImages/0/4902370554359_LL.jpg",
+ "box_back_url": "https://www.jnlgame.com/cdn/shop/files/5D154E1F-EC99-4E5A-842C-52443EB28BF7.jpg?v=1784743338&width=5760",
+ "galleryImages": [
+  {
+   "url": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing2/s4Yw7nKpL2mXeR9vBqT6cFdA0hZuG3iNjW8tVoP5bMsE1rCxOyJgHQk/intro/marquee/marquee-image-1-2x",
+   "alt": "Distinct verified game media image 1"
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing2/s4Yw7nKpL2mXeR9vBqT6cFdA0hZuG3iNjW8tVoP5bMsE1rCxOyJgHQk/intro/marquee/marquee-image-2-2x",
+   "alt": "Distinct verified game media image 2"
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing2/s4Yw7nKpL2mXeR9vBqT6cFdA0hZuG3iNjW8tVoP5bMsE1rCxOyJgHQk/intro/marquee/marquee-image-3-2x",
+   "alt": "Distinct verified game media image 3"
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing2/s4Yw7nKpL2mXeR9vBqT6cFdA0hZuG3iNjW8tVoP5bMsE1rCxOyJgHQk/intro/marquee/marquee-image-4-2x",
+   "alt": "Distinct verified game media image 4"
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing2/s4Yw7nKpL2mXeR9vBqT6cFdA0hZuG3iNjW8tVoP5bMsE1rCxOyJgHQk/intro/marquee/marquee-image-5-2x",
+   "alt": "Distinct verified game media image 5"
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing2/s4Yw7nKpL2mXeR9vBqT6cFdA0hZuG3iNjW8tVoP5bMsE1rCxOyJgHQk/intro/marquee/marquee-image-6-2x",
+   "alt": "Distinct verified game media image 6"
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing2/s4Yw7nKpL2mXeR9vBqT6cFdA0hZuG3iNjW8tVoP5bMsE1rCxOyJgHQk/intro/marquee/marquee-image-7-2x",
+   "alt": "Distinct verified game media image 7"
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing2/s4Yw7nKpL2mXeR9vBqT6cFdA0hZuG3iNjW8tVoP5bMsE1rCxOyJgHQk/intro/marquee/marquee-image-8-2x",
+   "alt": "Distinct verified game media image 8"
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing2/s4Yw7nKpL2mXeR9vBqT6cFdA0hZuG3iNjW8tVoP5bMsE1rCxOyJgHQk/intro/marquee/marquee-image-9-2x",
+   "alt": "Distinct verified game media image 9"
+  }
+ ],
+ "videos": [
+  {
+   "title": "Official trailer",
+   "url": "https://splatoon.nintendo.com/"
+  },
+  {
+   "title": "Nintendo / publisher overview",
+   "url": "https://www.nintendo.com/us/store/products/splatoon-raiders-switch-2/"
+  },
+  {
+   "title": "Gameplay and feature media",
+   "url": "https://www.nintendo.com/us/store/products/splatoon-raiders-switch-2/"
+  }
+ ],
+ "nsuid": "See official Nintendo product page",
+ "title_id": "Nintendo internal title ID not exposed as a user-facing retail identifier",
+ "product_code": "Platform retail/digital product code varies by region",
+ "nintendoEshopUrl": "https://www.nintendo.com/us/store/products/splatoon-raiders-switch-2/",
+ "nintendoOnlineRequired": true,
+ "nintendoCloudSaves": true,
+ "nintendoGameKeyCard": false,
+ "nintendoPhysicalNeedsDownload": false,
+ "tvMode": true,
+ "tabletopMode": true,
+ "handheldMode": true,
+ "nintendoPlayModes": "TV / Tabletop / Handheld",
+ "nintendoNotes": "Verified platform/store information for Splatoon Raiders. Online features require Nintendo Switch Online where applicable. Storage and supported-language values are taken from current Nintendo/publisher listings.",
+ "switch2Enhanced": false,
+ "switch2Exclusive": true,
+ "switch2UpgradePrice": 0,
+ "switch2Features": [
+  "Three customizable Tank archetypes and 100+ weapon variations",
+  "Solo campaign with 2–4 player online/local-wireless assistance",
+  "amiibo outfits, difficulty selection and extensive post-game"
+ ],
+ "tagline": "Splat, loot, upgrade, repeat across the mysterious Spirhalite Islands.",
+ "fitFor": [
+  "Splatoon fans who want a substantial PvE campaign",
+  "Players who enjoy loot/build progression",
+  "Solo players and small co-op groups"
+ ],
+ "notFitFor": [
+  "Players looking primarily for competitive Turf War",
+  "Players without a Switch 2",
+  "Players who dislike repeated raid-and-upgrade loops"
+ ],
+ "playTimeMain": 14,
+ "playTimeFull": 40.5,
+ "editionsList": [
+  {
+   "name": "Standard Edition",
+   "coverUrl": "https://online.apitashop.com/Contents/ProductImages/0/4902370554359_LL.jpg",
+   "contents": [
+    {
+     "label": "Base game"
+    },
+    {
+     "label": "Standard content"
+    },
+    {
+     "label": "Platform features"
+    }
+   ]
+  },
+  {
+   "name": "Digital Edition",
+   "coverUrl": "https://assets.nintendo.com/image/upload/ar_1%3A1%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000122824/cf587e01f6f115398f411f280dba21e025795eb69f234a41722341ea999d170d",
+   "contents": [
+    {
+     "label": "Digital game access"
+    },
+    {
+     "label": "Same core game content"
+    },
+    {
+     "label": "Nintendo Account delivery"
+    }
+   ]
+  },
+  {
+   "name": "Physical Edition",
+   "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000122824/75002eca12da1b8a345ef023464242c51ae8a6e3aa50c29dea05ac6c84837d8a",
+   "contents": [
+    {
+     "label": "Physical retail package"
+    },
+    {
+     "label": "Same base game"
+    },
+    {
+     "label": "Retail box edition"
+    }
+   ]
+  }
+ ],
+ "gameplayPillars": [
+  {
+   "title": "Raid for treasure",
+   "description": "Choose destinations, fight Salmonids and bring salvage back to the Hideout Ship.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000122824/75002eca12da1b8a345ef023464242c51ae8a6e3aa50c29dea05ac6c84837d8a"
+  },
+  {
+   "title": "Build your loadout",
+   "description": "Upgrade Speed, Power or Tactical Tanks, craft gadgets and hunt weapon variants with different bonuses.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000122824/4e189b3a29faa8d723a3d578f07a7c6ac097a220ef3bd3cd4b548e0afb76bbe1"
+  },
+  {
+   "title": "Bring friends",
+   "description": "Play solo or call in up to three other players online or via local wireless; player power scales to the group.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000122824/2df5c209e5e765630bd9a5946107b40db652fea6838ad17e3dcd4009b86614c7"
+  }
+ ],
+ "worldSummary": "A storm strands Deep Cut and the Mechanic on the Spirhalite Islands, a varied archipelago of beaches, volcanic terrain, ruins and underground areas occupied by increasingly strange Salmonids and traces of an ancient civilization.",
+ "storyChapters": [
+  {
+   "title": "Mayday on Spirhalite",
+   "body": "A strange storm forces Deep Cut's helicopter down on the islands.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000122824/36cdb9d8f92eef60aeea6c9147176b4a0cf469c2613245696c40a14273d20020"
+  },
+  {
+   "title": "Splat, loot, upgrade",
+   "body": "The crew builds a Hideout Ship and begins raiding nearby islands for treasure and a route home.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000122824/a864a8505bd11fd6d9404bf8b9166cd33f360f9c4858de3b30ea25a8f4d18256"
+  },
+  {
+   "title": "The deeper mystery",
+   "body": "New biomes, stronger Salmonids and buried ruins point toward an older secret beneath the archipelago.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000122824/d4a5160b5ba6dfb0a1d1088d6fe1e78bd00494e1fc4c1544c8ef54e13a6b19b2"
+  }
+ ],
+ "features": [
+  "Three customizable Tank archetypes and 100+ weapon variations",
+  "Solo campaign with 2–4 player online/local-wireless assistance",
+  "amiibo outfits, difficulty selection and extensive post-game"
+ ],
+ "perfResolutionDocked": "1440p-class TV presentation",
+ "perfResolutionHandheld": "1080p handheld presentation",
+ "perfFps": "60",
+ "perfHdr": true,
+ "perfNotes": "Reviews consistently describe a smooth 60 fps presentation. Exact internal dynamic-resolution bounds are not officially published, so the file records observed/output-class values rather than invented pixel counts.",
+ "devicePerformance": [
+  {
+   "device": "Nintendo Switch 2",
+   "deviceSlug": "nintendo-switch-2",
+   "deviceModel": "Nintendo Switch 2",
+   "hardwareId": "nintendo-switch-2",
+   "informationStatus": "Available / verified",
+   "unavailableReason": "No required native mode is unavailable.",
+   "handheld": {
+    "supported": true,
+    "resolution": "1080p handheld presentation",
+    "resolutionDynamic": false,
+    "renderingResolution": "1080p handheld presentation",
+    "outputResolution": "1920x1080",
+    "fps": "60",
+    "fpsMin": "60",
+    "fpsMax": "60",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "Handheld",
+    "notes": "Reviews consistently describe a smooth 60 fps presentation. Exact internal dynamic-resolution bounds are not officially published, so the file records observed/output-class values rather than invented pixel counts."
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "1440p-class TV presentation",
+    "resolutionDynamic": false,
+    "renderingResolution": "1440p-class TV presentation",
+    "outputResolution": "1920x1080",
+    "fps": "60",
+    "fpsMin": "60",
+    "fpsMax": "60",
+    "refreshRate": "60",
+    "hdr": true,
+    "vrr": false,
+    "mode": "TV / Docked",
+    "notes": "Reviews consistently describe a smooth 60 fps presentation. Exact internal dynamic-resolution bounds are not officially published, so the file records observed/output-class values rather than invented pixel counts."
+   },
+   "modes": [
+    {
+     "name": "Standard",
+     "handheldResolution": "1080p handheld presentation",
+     "handheldFps": "60",
+     "tvResolution": "1440p-class TV presentation",
+     "tvFps": "60",
+     "hdr": false,
+     "vrr": false,
+     "notes": "Primary documented performance mode."
+    }
+   ],
+   "upscaling": "Platform-specific reconstruction / scaling where used",
+   "rayTracing": false,
+   "rayTracingMode": "No verified ray-tracing mode",
+   "loadingTime": "Fast SSD-based loading; exact scene-dependent time varies",
+   "loadingNotes": "Loading varies by scene and save location; no single universal loading time is published.",
+   "gameVersion": "Current retail build",
+   "patchVersion": "Current available update",
+   "testedDate": "2026-08-27",
+   "sourceName": "Nintendo Store",
+   "sourceUrl": "https://www.nintendo.com/us/store/products/splatoon-raiders-switch-2/",
+   "verifiedAt": "2026-08-27",
+   "verificationStatus": "Verified / sourced",
+   "performanceNotes": "Reviews consistently describe a smooth 60 fps presentation. Exact internal dynamic-resolution bounds are not officially published, so the file records observed/output-class values rather than invented pixel counts."
+  }
+ ],
+ "downloadSizeGb": 13.1,
+ "requiredSpaceGb": 13.1,
+ "microSdRecommended": false,
+ "storageNotes": "Current Nintendo US listing reports 13.1 GB; some earlier preorder pages estimated 20 GB. Use 13.1 GB as the current store value. microSD Express is optional, not required.",
+ "languagesAudio": [
+  "Fictional Inkling/Octoling vocal performances",
+  "Character vocalizations",
+  "Music and sound effects"
+ ],
+ "languagesText": [
+  "Japanese / English",
+  "French / German / Italian / Spanish / Dutch",
+  "Korean / Simplified Chinese / Traditional Chinese"
+ ],
+ "arabicSupport": false,
+ "mpLocalPlayers": false,
+ "mpOnlinePlayers": true,
+ "mpCoop": true,
+ "mpCompetitive": false,
+ "mpSplitScreen": false,
+ "mpLocalWireless": true,
+ "dlc": [
+  {
+   "name": "No paid story DLC announced",
+   "description": "No standalone paid expansion has been announced as of August 27, 2026.",
+   "coverUrl": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing2/s4Yw7nKpL2mXeR9vBqT6cFdA0hZuG3iNjW8tVoP5bMsE1rCxOyJgHQk/intro/marquee/marquee-image-4-2x"
+  },
+  {
+   "name": "amiibo outfits",
+   "description": "Compatible Splatoon amiibo unlock outfits for the Mechanic.",
+   "coverUrl": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing2/s4Yw7nKpL2mXeR9vBqT6cFdA0hZuG3iNjW8tVoP5bMsE1rCxOyJgHQk/intro/marquee/marquee-image-5-2x"
+  },
+  {
+   "name": "Post-game content",
+   "description": "Super Spicy stages, Hidden Ruins and Bottomless Buffet are included in the base game rather than sold separately.",
+   "coverUrl": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing2/s4Yw7nKpL2mXeR9vBqT6cFdA0hZuG3iNjW8tVoP5bMsE1rCxOyJgHQk/intro/marquee/marquee-image-6-2x"
+  }
+ ],
+ "guides": [
+  {
+   "title": "Official product information",
+   "summary": "Platform, release, storage, language and feature information for Splatoon Raiders.",
+   "url": "https://www.nintendo.com/us/store/products/splatoon-raiders-switch-2/"
+  },
+  {
+   "title": "Official game overview",
+   "summary": "Publisher/developer overview of story, gameplay and features.",
+   "url": "https://splatoon.nintendo.com/"
+  },
+  {
+   "title": "Reviews and playtime reference",
+   "summary": "Critic/user scores and completion-time context.",
+   "url": "https://www.dekudeals.com/items/splatoon-raiders"
+  }
+ ],
+ "completionMain": 14,
+ "completionExtras": 19.5,
+ "completionAll": 40.5,
+ "faq": [
+  {
+   "q": "Is Splatoon Raiders mainly single-player?",
+   "a": "Yes. It is a single-player-focused adventure, but 2–4 players can cooperate online or through local wireless."
+  },
+  {
+   "q": "How large is the download?",
+   "a": "Nintendo's current US product page lists 13.1 GB."
+  },
+  {
+   "q": "Does it have normal Splatoon competitive multiplayer?",
+   "a": "The focus is PvE raiding and co-op rather than the traditional competitive Turf War structure."
+  }
+ ],
+ "verdictScore": 9,
+ "verdictSummary": "A confident Splatoon spin-off that turns the series' movement and shooting into a deep raid-and-upgrade adventure. Its strongest qualities are build variety, excellent controls, strong performance and an unusually substantial post-game.",
+ "verdictPros": [
+  "Fast, polished 60 fps action",
+  "Deep Tank/gadget/weapon progression",
+  "Strong solo and co-op flexibility"
+ ],
+ "verdictCons": [
+  "No traditional competitive Turf War focus",
+  "Some repetition is inherent to the raid loop",
+  "100% completion requires a long post-game grind"
+ ],
+ "reviews": [
+  {
+   "source": "Metacritic",
+   "score": "81/100",
+   "quote": "Generally favorable aggregate for Nintendo Switch 2.",
+   "url": "https://www.metacritic.com/game/splatoon-raiders/"
+  },
+  {
+   "source": "Nintendo Life",
+   "score": "9/10",
+   "quote": "Praised the game's variety, loop, visuals and performance.",
+   "url": "https://www.nintendolife.com/reviews/nintendo-switch-2/splatoon-raiders"
+  },
+  {
+   "source": "Deku Deals user rating",
+   "score": "4.6/5",
+   "quote": "Current user rating and store metadata snapshot.",
+   "url": "https://www.dekudeals.com/items/splatoon-raiders"
+  }
+ ],
+ "timeline": [
+  {
+   "date": "2025-04-02",
+   "title": "Splatoon Raiders announced",
+   "body": "Nintendo revealed the Switch 2-exclusive Splatoon spin-off."
+  },
+  {
+   "date": "2026-06-30",
+   "title": "Splatoon Raiders Direct",
+   "body": "Nintendo detailed raids, Tanks, gadgets, co-op and amiibo features."
+  },
+  {
+   "date": "2026-07-23",
+   "title": "Worldwide release",
+   "body": "Splatoon Raiders launched for Nintendo Switch 2."
+  }
+ ],
+ "patchNotes": [
+  {
+   "version": "Launch version",
+   "date": "2026-07-23",
+   "body": "Full campaign, co-op, amiibo support and post-game content available."
+  },
+  {
+   "version": "My Nintendo July Wrap-Up",
+   "date": "2026-08-03",
+   "body": "Nintendo highlighted the game's launch and related content."
+  },
+  {
+   "version": "Current status",
+   "date": "2026-08-27",
+   "body": "No standalone paid expansion announced; current release remains the complete base package."
+  }
+ ],
+ "soundtrack": [
+  {
+   "title": "Splatoon Raiders main theme",
+   "url": "https://splatoon.nintendo.com/"
+  },
+  {
+   "title": "Deep Cut raid music",
+   "url": "https://splatoon.nintendo.com/"
+  },
+  {
+   "title": "Spirhalite Islands battle/exploration soundtrack",
+   "url": "https://splatoon.nintendo.com/"
+  }
+ ],
+ "seriesName": "Splatoon 2",
+ "seriesEntries": [
+  "Splatoon",
+  "Splatoon 2",
+  "Splatoon 3"
+ ],
+ "studioName": "Nintendo EPD",
+ "studioUrl": "https://www.nintendo.co.jp/",
+ "studioLocation": "Kyoto, Japan",
+ "studioAbout": "Nintendo's internal development organization; Splatoon Raiders expands the Splatoon universe into a campaign-focused raid adventure.",
+ "setupNeeds": [
+  "Nintendo Switch 2",
+  "13.1 GB free storage",
+  "Nintendo Switch Online membership for online co-op; local wireless does not require the paid online service"
+ ],
+ "sources": [
+  {
+   "name": "Nintendo Store",
+   "url": "https://www.nintendo.com/us/store/products/splatoon-raiders-switch-2/"
+  },
+  {
+   "name": "Official Splatoon Raiders site",
+   "url": "https://splatoon.nintendo.com/"
+  },
+  {
+   "name": "Deku Deals",
+   "url": "https://www.dekudeals.com/items/splatoon-raiders"
+  }
+ ],
+ "boxContentsList": "[Circular]",
+ "image": "/api/files/products/prd_ca00c669a42241f6/cover-010850fac3dd9f90.jpg",
+ "banner": "/api/files/products/prd_ca00c669a42241f6/banner-0-e1d53089b11fec7b.avif",
+ "schemaId": "",
+ "createdAt": "2026-08-27T00:27:45.999Z",
+ "created_at": "2026-08-27T00:27:45.999Z",
+ "updatedAt": "2026-08-27T00:27:45.999Z",
+ "updated_at": "2026-08-27T00:27:45.999Z",
+ "badgeEn": "وفر 40%",
+ "badgeKu": "وفر 40%",
+ "featuresEn": [
+  "Three customizable Tank archetypes and 100+ weapon variations",
+  "Solo campaign with 2–4 player online/local-wireless assistance",
+  "amiibo outfits, difficulty selection and extensive post-game"
+ ],
+ "featuresKu": [
+  "Three customizable Tank archetypes and 100+ weapon variations",
+  "Solo campaign with 2–4 player online/local-wireless assistance",
+  "amiibo outfits, difficulty selection and extensive post-game"
+ ],
+ "boxFrontUrl": "https://online.apitashop.com/Contents/ProductImages/0/4902370554359_LL.jpg",
+ "sales": 0,
+ "images": [],
+ "modes": [],
+ "variants": "[Circular]"
+}

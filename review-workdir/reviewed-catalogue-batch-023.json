@@ -1,0 +1,51 @@
+{
+ "batch": "023",
+ "apply": false,
+ "games": [
+  {
+   "id": "prd_5ba181a080d14238",
+   "slug": "star-wars-outlaws-gold-edition-switch-2",
+   "baseHash": "27b8463fa7a2257197121e97806678af4e797cc175558cd30dc9f0695d5b7d3a",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  },
+  {
+   "id": "prd_008374b0a7324d22",
+   "slug": "stray-switch-1",
+   "baseHash": "deb4e03baac64d77c88e0411bb8cc5fe2f53f3f97bf9deba80d6f5d2cefcdf20",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  },
+  {
+   "id": "prd_ff440aba76494705",
+   "slug": "stray-switch-2",
+   "baseHash": "61b266a8aff90b166b2a3e9133981c253f9899aa4b7828fafbbe124e2934d4cd",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  },
+  {
+   "id": "prd_cb0a2dc68a744407",
+   "slug": "street-fighter-6-switch-2",
+   "baseHash": "c31ba41b1b2bc48730edc13aee592d5f5e65e4ba4fd5b6d7c2e08011df83d8b5",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  },
+  {
+   "id": "prd_4b3c62c6fc504c9b",
+   "slug": "super-mario-3d-world-plus-bowsers-fury-switch",
+   "baseHash": "27ef5e151f1e2e66dd6faf2b42ab23acb5493d897264ddb713d02bb5dbceefc5",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  }
+ ]
+}

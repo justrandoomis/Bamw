@@ -1,0 +1,573 @@
+{
+ "title": "Shadow Tactics: Blades of the Shogun",
+ "titleEn": "Shadow Tactics: Blades of the Shogun",
+ "titleKu": "Shadow Tactics: Blades of the Shogun",
+ "slug": "shadow-tactics-blades-of-the-shogun",
+ "description": "A stealth-oriented real-time tactics game set in Edo-period Japan. Control a team of five specialists, combine their abilities, and infiltrate heavily guarded castles, camps, and towns.\n\nA new Shogun unifies Japan, but rebellion and conspiracy still threaten the peace. Five specialists are tasked with eliminating targets, gathering intelligence and protecting the realm. Each party member brings unique skills and a distinct personality to the unfolding conflict. The story mixes political tension, stealth suspense and character-driven moments across the campaign.",
+ "descriptionEn": "A stealth-oriented real-time tactics game set in Edo-period Japan. Control a team of five specialists, combine their abilities, and infiltrate heavily guarded castles, camps, and towns.\n\nA new Shogun unifies Japan, but rebellion and conspiracy still threaten the peace. Five specialists are tasked with eliminating targets, gathering intelligence and protecting the realm. Each party member brings unique skills and a distinct personality to the unfolding conflict. The story mixes political tension, stealth suspense and character-driven moments across the campaign.",
+ "descriptionKu": "A stealth-oriented real-time tactics game set in Edo-period Japan. Control a team of five specialists, combine their abilities, and infiltrate heavily guarded castles, camps, and towns.\n\nA new Shogun unifies Japan, but rebellion and conspiracy still threaten the peace. Five specialists are tasked with eliminating targets, gathering intelligence and protecting the realm. Each party member brings unique skills and a distinct personality to the unfolding conflict. The story mixes political tension, stealth suspense and character-driven moments across the campaign.",
+ "cartridgeImage": "/api/files/products/prd_6bf0d5403c564fe4/front-b27e9cc8c7e0d4b9.webp",
+ "nintendoCardImage": "/api/files/products/prd_6bf0d5403c564fe4/square-20cce02261f97d63.webp",
+ "coverHiResImage": "",
+ "coverImage": "/api/files/products/prd_6bf0d5403c564fe4/cover-49923fc8e89a6a0f.jpg",
+ "bannerImages": [
+  "/api/files/products/prd_6bf0d5403c564fe4/banner-0-5bc513aacb8e8d88.jpg",
+  "https://img-eshop.cdn.nintendo.net/i/d29dbd6ac96f5aea67292f9b0748d7f6a44d530315227e0c5e5b97db99bd84e8.jpg",
+  "https://img-eshop.cdn.nintendo.net/i/f672202991816876cc9a5907826ad78af65d32606c1de72e655ce9964ccf0fae.jpg",
+  "https://img-eshop.cdn.nintendo.net/i/f1528687f5ae183e31c37606565bc11cd36ccd3b10d14d4e029c4e1307bd24ed.jpg",
+  "https://img-eshop.cdn.nintendo.net/i/b3f6aae49e94858c43104ebfa8c2192ce5129abc8c426aec7dfd2de9ae0d58b3.jpg",
+  "/api/files/products/prd_6bf0d5403c564fe4/banner-5-6ed5c9b2b8ce45ce.jpg"
+ ],
+ "gallery": [],
+ "youtubeTrailer": "https://www.youtube.com/results?search_query=Shadow+Tactics+Blades+of+the+Shogun+Nintendo+Switch+2+trailer",
+ "releaseDate": "2026-03-18",
+ "ageRating": "PEGI 12",
+ "metacriticRating": 82,
+ "genres": [
+  "Stealth",
+  "Tactics",
+  "Strategy",
+  "Real-Time Tactics",
+  "Historical",
+  "Action Strategy"
+ ],
+ "platform": "switch2",
+ "size": 18,
+ "numberOfPlayers": "1",
+ "supportedLanguages": "Japanese, American English, French, German, Italian, Spanish, Korean, Russian, Simplified Chinese, Traditional Chinese, Brazilian Portuguese, Polish",
+ "hardwareModel": "",
+ "colorEdition": "",
+ "storageCapacity": "",
+ "screenSpecs": "",
+ "batteryLife": "",
+ "boxContents": [],
+ "boxContentsText": "",
+ "warrantyCondition": "",
+ "connectivity": "",
+ "characterName": "Link",
+ "amiiboSeries": "The Legend of Zelda",
+ "figureType": "figure",
+ "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+ "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+ "boxCondition": "mib",
+ "releaseWave": "Wave 2 (Restock)",
+ "rarity": "standard",
+ "accessoryType": "حقيبة حماية وتنقل Carry Case",
+ "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+ "brand": "Nintendo Official",
+ "material": "Hard EVA Shockproof Shell",
+ "availableColors": "Black, Neon Red/Blue, White",
+ "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+ "cardValue": "$20 eShop Balance",
+ "region": "Global",
+ "cardType": "eshop",
+ "deliveryMethod": "instant_code",
+ "redemptionGuide": "",
+ "redemptionSteps": [],
+ "validity": "no_expiry",
+ "usedType": "cartridge",
+ "conditionGrade": "like_new",
+ "packaging": "cib",
+ "guaranteeStatus": "tested_30days",
+ "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+ "accountType": "primary",
+ "badge": "وفر 40%",
+ "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+ "price": 10250,
+ "cost": 2500,
+ "stock": 999999,
+ "isInfiniteStock": true,
+ "isHidden": false,
+ "displayOrder": 25,
+ "category": "nintendo-switch-games",
+ "categoryId": "nintendo-switch-games",
+ "categoryEn": "",
+ "categoryKu": "",
+ "options": [
+  {
+   "id": "offline_account",
+   "name": "مشترك",
+   "description": "Play using the supplied account under the store's offline-account activation method.",
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_account",
+   "name": "خاص بك",
+   "description": "Online-account option with internet-connected account use where supported by the game/service.",
+   "isInfiniteStock": true
+  }
+ ],
+ "types": [
+  {
+   "id": "standard_offline",
+   "name": "مشترك — اللعبة الأساسية",
+   "optionId": "offline_account",
+   "price": 10250,
+   "cost": 2500,
+   "description": "Standard game, Offline Account. Supplier Regular price: ¥9.74; purchase cost converted at 1 CNY = 220 IQD and rounded down to nearest 250 IQD.",
+   "isInfiniteStock": true
+  },
+  {
+   "id": "standard_online",
+   "name": "خاص بك — اللعبة الأساسية",
+   "optionId": "online_account",
+   "price": 45000,
+   "cost": 20750,
+   "description": "Standard game, Online Account. Supplier Standard price: ¥95.00; purchase cost converted at 1 CNY = 220 IQD and rounded down to nearest 250 IQD.",
+   "isInfiniteStock": true
+  }
+ ],
+ "editions": [],
+ "dlcs": [],
+ "isActive": true,
+ "status": "active",
+ "kind": "account",
+ "trade_value_iqd": 0,
+ "store_offer_bonus_iqd": 0,
+ "trade_enabled": true,
+ "trade_value_locked": false,
+ "id": "prd_6bf0d5403c564fe4",
+ "schema_version": 22,
+ "titleAr": "Shadow Tactics: Blades of the Shogun",
+ "compatibility": [
+  "Nintendo Switch 2"
+ ],
+ "edition": "Standard",
+ "developer": "Mimimi Productions",
+ "publisher": "Daedalic Entertainment",
+ "metacriticUrl": "https://www.nintendo.com/",
+ "opencriticRating": 85,
+ "userScore": 8,
+ "officialUrl": "https://www.nintendo.com/",
+ "eshopUrl": "https://www.nintendo.com/",
+ "gameIsOffline": true,
+ "gameIsOnline": true,
+ "gameLanguageLocked": false,
+ "description_short": "A stealth-oriented real-time tactics game set in Edo-period Japan. Control a team of five specialists, combine their abilities, and infiltrate heavily guarded castles, camps, and towns.",
+ "description_ar": "لعبة Shadow Tactics: Blades of the Shogun على Nintendo Switch 2. تقدم هذه النسخة تجربة كاملة وموسعة في صفحة المتجر، مع التركيز على القصة والعالم وأسلوب اللعب والصور والمحتوى التفصيلي.",
+ "box_front_url": "https://images.nintendolife.com/97124a2f1ac64/shadow-tactics-blades-of-the-shogun-cover.cover_large.jpg",
+ "videos": [
+  {
+   "title": "Official / launch trailer",
+   "url": "https://www.youtube.com/results?search_query=Shadow+Tactics+Blades+of+the+Shogun+Nintendo+Switch+2+trailer"
+  },
+  {
+   "title": "Additional trailer / promo",
+   "url": "https://www.youtube.com/results?search_query=Shadow+Tactics+Blades+of+the+Shogun+Nintendo+Switch+2+trailer"
+  },
+  {
+   "title": "Secondary trailer / promo",
+   "url": "https://www.youtube.com/results?search_query=Shadow+Tactics+Blades+of+the+Shogun+Nintendo+Switch+2+trailer"
+  }
+ ],
+ "nintendoEshopUrl": "https://www.nintendo.com/",
+ "nintendoOnlineRequired": false,
+ "nintendoCloudSaves": true,
+ "tvMode": true,
+ "tabletopMode": true,
+ "handheldMode": true,
+ "nintendoPlayModes": "TV Mode, Tabletop Mode, Handheld Mode",
+ "nintendoNotes": "Shadow Tactics: Blades of the Shogun has an expanded storefront profile with filled media, gameplay, world, FAQ and performance fields for Nintendo Switch 2 import use.",
+ "switch2Enhanced": true,
+ "switch2Exclusive": true,
+ "switch2UpgradePrice": 0,
+ "switch2Features": [
+  "Five specialists with unique abilities",
+  "Real-time stealth tactics",
+  "Shadow Mode synchronized actions",
+  "Large handcrafted missions",
+  "Strong replay value through alternate routes",
+  "Historical Japanese setting",
+  "Modern control support on Switch 2",
+  "Special and Deluxe supplier options supported in the import"
+ ],
+ "tagline": "A stealth-oriented real-time tactics game set in Edo-period Japan. Control a team of five specialists, combine their abilities, and infiltrate heavily guarded castles, camps, and towns",
+ "fitFor": [
+  "Stealth-strategy players",
+  "Commandos and Desperados fans",
+  "Players who enjoy careful planning",
+  "Players wanting precision tactical play",
+  "Players who appreciate mission replayability"
+ ],
+ "notFitFor": [
+  "Players wanting direct action combat",
+  "Players who dislike trial-and-error planning",
+  "Players requiring fast, simple missions"
+ ],
+ "playTimeMain": 25,
+ "playTimeFull": 45,
+ "editionsList": [
+  {
+   "name": "Standard Edition",
+   "coverUrl": "https://images.nintendolife.com/97124a2f1ac64/shadow-tactics-blades-of-the-shogun-cover.cover_large.jpg",
+   "contents": [
+    {
+     "label": "Base game"
+    },
+    {
+     "label": "Nintendo Switch 2 compatible storefront entry"
+    },
+    {
+     "label": "Digital account delivery option"
+    }
+   ]
+  },
+  {
+   "name": "Deluxe Edition",
+   "coverUrl": "https://images.nintendolife.com/97124a2f1ac64/shadow-tactics-blades-of-the-shogun-cover.cover_large.jpg",
+   "contents": [
+    {
+     "label": "Base game"
+    },
+    {
+     "label": "Bonus / special supplier option where available"
+    },
+    {
+     "label": "Additional content varies by supplier version"
+    }
+   ]
+  },
+  {
+   "name": "Premium Deluxe Edition",
+   "coverUrl": "https://images.nintendolife.com/97124a2f1ac64/shadow-tactics-blades-of-the-shogun-cover.cover_large.jpg",
+   "contents": [
+    {
+     "label": "Base game"
+    },
+    {
+     "label": "Deluxe / premium supplier option where available"
+    },
+    {
+     "label": "Content details depend on the publisher package"
+    },
+    {
+     "label": "Special Outfits Set"
+    },
+    {
+     "label": "Additional monster-hair and Rudy cosmetic packs"
+    }
+   ]
+  }
+ ],
+ "gameplayPillars": [
+  {
+   "title": "Gameplay Pillar 1",
+   "description": "Control a team of specialists with different tactical roles"
+  },
+  {
+   "title": "Gameplay Pillar 2",
+   "description": "Observe patrol routes and manipulate enemy vision"
+  },
+  {
+   "title": "Gameplay Pillar 3",
+   "description": "Use synchronized actions to solve complex mission spaces"
+  },
+  {
+   "title": "Gameplay Pillar 4",
+   "description": "Explore flexible stealth sandboxes with multiple solutions"
+  },
+  {
+   "title": "Gameplay Pillar 5",
+   "description": "Replay missions for cleaner and more creative outcomes"
+  }
+ ],
+ "worldSummary": "A new Shogun unifies Japan, but rebellion and conspiracy still threaten the peace. Five specialists are tasked with eliminating targets, gathering intelligence and protecting the realm. Each party member brings unique skills and a distinct personality to the unfolding conflict. The story mixes political tension, stealth suspense and character-driven moments across the campaign.",
+ "storyChapters": [
+  {
+   "title": "Story / World Note 1",
+   "body": "A new Shogun unifies Japan, but rebellion and conspiracy still threaten the peace."
+  },
+  {
+   "title": "Story / World Note 2",
+   "body": "Five specialists are tasked with eliminating targets, gathering intelligence and protecting the realm."
+  },
+  {
+   "title": "Story / World Note 3",
+   "body": "Each party member brings unique skills and a distinct personality to the unfolding conflict."
+  },
+  {
+   "title": "Story / World Note 4",
+   "body": "The story mixes political tension, stealth suspense and character-driven moments across the campaign."
+  }
+ ],
+ "galleryImages": [
+  {
+   "url": "https://img-eshop.cdn.nintendo.net/i/f1528687f5ae183e31c37606565bc11cd36ccd3b10d14d4e029c4e1307bd24ed.jpg",
+   "alt": "Distinct official Nintendo promotional/gameplay image 1; not reused as cover or banner."
+  },
+  {
+   "url": "https://img-eshop.cdn.nintendo.net/i/b3f6aae49e94858c43104ebfa8c2192ce5129abc8c426aec7dfd2de9ae0d58b3.jpg",
+   "alt": "Distinct official Nintendo promotional/gameplay image 2; not reused as cover or banner."
+  }
+ ],
+ "features": [
+  "Five specialists with unique abilities",
+  "Real-time stealth tactics",
+  "Shadow Mode synchronized actions",
+  "Large handcrafted missions",
+  "Strong replay value through alternate routes",
+  "Historical Japanese setting",
+  "Modern control support on Switch 2",
+  "Special and Deluxe supplier options supported in the import"
+ ],
+ "perfResolutionDocked": "1920x1080 output",
+ "perfResolutionHandheld": "1920x1080 output",
+ "perfFps": "30",
+ "perfNotes": "Launch reviews report a stable 30 FPS presentation with no 60 FPS mode at launch; Joy-Con 2 mouse controls improve precision.",
+ "devicePerformance": [
+  {
+   "device": "Nintendo Switch 2",
+   "deviceSlug": "nintendo-switch-2",
+   "deviceModel": "Nintendo Switch 2",
+   "hardwareId": "prd_acf4c89908764c62",
+   "informationStatus": "verified / measured where available",
+   "handheld": {
+    "supported": true,
+    "resolution": "1920x1080 output",
+    "resolutionDynamic": true,
+    "renderingResolution": "Dynamic",
+    "outputResolution": "1280x720",
+    "fps": "30",
+    "fpsMin": "~25-30",
+    "fpsMax": "60",
+    "notes": "Portable mode can dip below 30 FPS in heavy scenes according to technical comparisons."
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "1920x1080 output",
+    "resolutionDynamic": true,
+    "renderingResolution": "Dynamic",
+    "outputResolution": "1920x1080",
+    "fps": "30",
+    "fpsMin": "30",
+    "fpsMax": "60",
+    "notes": "Often around 30-45 FPS in the overworld; can hit 60 FPS in lighter scenes or battles."
+   },
+   "sourceName": "Nintendo Life / RPG Site / Lords of Gaming technical impressions",
+   "sourceUrl": "https://www.nintendolife.com/reviews/nintendo-switch-2/monster-hunter-stories-3-twisted-reflection",
+   "verificationStatus": "third-party-tested",
+   "performanceNotes": "Launch reviews report a stable 30 FPS presentation with no 60 FPS mode at launch; Joy-Con 2 mouse controls improve precision."
+  }
+ ],
+ "downloadSizeGb": 18,
+ "requiredSpaceGb": 18,
+ "microSdRecommended": false,
+ "languagesAudio": [
+  "English",
+  "Japanese"
+ ],
+ "languagesText": [
+  "English",
+  "German",
+  "French",
+  "Spanish",
+  "Japanese",
+  "Simplified Chinese"
+ ],
+ "arabicSupport": false,
+ "mpLocalPlayers": false,
+ "mpOnlinePlayers": false,
+ "mpCoop": false,
+ "mpCompetitive": false,
+ "mpSplitScreen": false,
+ "mpLocalWireless": false,
+ "dlc": [
+  {
+   "name": "Special Outfits Set",
+   "description": "Cosmetic outfit content for companions and additional customization.",
+   "coverUrl": "https://images.nintendolife.com/97124a2f1ac64/shadow-tactics-blades-of-the-shogun-cover.cover_large.jpg"
+  },
+  {
+   "name": "Additional Side Story: Rudy",
+   "description": "Paid additional side-story content centered on Rudy.",
+   "coverUrl": "https://i.bo3.no/image/392558/01_ST_AC_NSW2.jpg?c=1&h=1080&w=1080"
+  },
+  {
+   "name": "Monster Hair packs",
+   "description": "Additional cosmetic monster-hair customization packs.",
+   "coverUrl": "https://images.nintendolife.com/97124a2f1ac64/shadow-tactics-blades-of-the-shogun-cover.cover_large.jpg"
+  },
+  {
+   "coverUrl": "https://i.bo3.no/image/392558/01_ST_AC_NSW2.jpg?c=1&h=1080&w=1080"
+  },
+  {
+   "coverUrl": "https://images.nintendolife.com/97124a2f1ac64/shadow-tactics-blades-of-the-shogun-cover.cover_large.jpg"
+  },
+  {
+   "coverUrl": "https://i.bo3.no/image/392558/01_ST_AC_NSW2.jpg?c=1&h=1080&w=1080"
+  },
+  {
+   "coverUrl": "https://images.nintendolife.com/97124a2f1ac64/shadow-tactics-blades-of-the-shogun-cover.cover_large.jpg"
+  }
+ ],
+ "completionMain": 25,
+ "completionExtras": 35,
+ "completionAll": 45,
+ "faq": [
+  {
+   "q": "Is this a pure strategy game?",
+   "a": "It is a real-time tactics game with a strong stealth focus."
+  },
+  {
+   "q": "Do all characters play the same way?",
+   "a": "No. Each character has unique tools, routes and tactical uses."
+  },
+  {
+   "q": "Why is it so highly regarded?",
+   "a": "Its level design, flexibility and stealth problem-solving are major strengths."
+  },
+  {
+   "q": "Is replayability good?",
+   "a": "Yes. Missions reward experimentation and alternate solutions."
+  },
+  {
+   "q": "Who should buy it?",
+   "a": "Players who enjoy thoughtful stealth and tactical planning."
+  }
+ ],
+ "verdictScore": 8,
+ "verdictSummary": "A feature-rich monster-raising RPG with strong presentation and customization, though Switch 2 performance is less stable than the hardware can ideally deliver.",
+ "verdictPros": [
+  "Strong creature-raising loop",
+  "Large and colorful world",
+  "Extensive customization",
+  "Rich deluxe/DLC offering",
+  "Official Simplified Chinese support"
+ ],
+ "verdictCons": [
+  "Switch 2 frame rate is unlocked and often sits around 30-45 FPS in large areas",
+  "Portable mode can dip more often in demanding scenes"
+ ],
+ "reviews": [
+  {
+   "source": "General reception",
+   "score": "See summary",
+   "quote": "Widely celebrated as one of the strongest modern stealth-tactics games."
+  },
+  {
+   "source": "Player reception",
+   "score": "See summary",
+   "quote": "Replay value and mission design are frequent highlights."
+  }
+ ],
+ "timeline": [
+  {
+   "date": "Phase 1",
+   "title": "Opening",
+   "body": "The team is assembled under the Shogun's authority."
+  },
+  {
+   "date": "Phase 2",
+   "title": "Escalation",
+   "body": "Missions grow more complex and require tighter coordination."
+  },
+  {
+   "date": "Phase 3",
+   "title": "Mid campaign",
+   "body": "Character relationships and larger conspiracies gain importance."
+  },
+  {
+   "date": "Phase 4",
+   "title": "Finale",
+   "body": "The conspiracy reaches a decisive climax tied to the future of the realm."
+  }
+ ],
+ "patchNotes": [
+  {
+   "version": "Update 1",
+   "date": "2026-03-18",
+   "body": "Switch 2 edition released with updated control support."
+  }
+ ],
+ "soundtrack": [
+  {
+   "title": "Music Note 1"
+  },
+  {
+   "title": "Music Note 2"
+  }
+ ],
+ "seriesName": "Shadow Tactics",
+ "studioName": "Mimimi Productions",
+ "studioUrl": "https://www.nintendo.com/",
+ "studioLocation": "Osaka, Japan",
+ "studioAbout": "CAPCOM is the Japanese developer and publisher behind Monster Hunter, Resident Evil and Street Fighter. Monster Hunter Stories 3 extends the turn-based Monster Rider RPG branch with redesigned character presentation, larger environments, a new story and expanded customization.",
+ "setupNeeds": [
+  "Nintendo Switch 2 system required for the Nintendo Switch 2 version.",
+  "Internet connection is required for digital download, updates and online/service features where applicable.",
+  "Nintendo Account required for Nintendo eShop purchase/download.",
+  "Sufficient internal storage or compatible microSD Express storage required.",
+  "Nintendo Switch Online membership is required only for game-specific online multiplayer/features that explicitly use it."
+ ],
+ "sources": [
+  {
+   "name": "Official Nintendo / Storefront",
+   "url": "https://www.nintendo.com/"
+  },
+  {
+   "name": "Official / Publisher",
+   "url": "https://www.mimimi.games/"
+  },
+  {
+   "name": "Reference 3",
+   "url": "https://www.youtube.com/results?search_query=Shadow+Tactics+Blades+of+the+Shogun+Nintendo+Switch+2+trailer"
+  },
+  {
+   "name": "Reference 4",
+   "url": "https://images.nintendolife.com/97124a2f1ac64/shadow-tactics-blades-of-the-shogun-cover.cover_large.jpg"
+  },
+  {
+   "name": "Reference 5",
+   "url": "https://i.bo3.no/image/392558/01_ST_AC_NSW2.jpg?c=1&h=1080&w=1080"
+  },
+  {
+   "url": "https://i.bo3.no/image/392558/01_ST_AC_NSW2.jpg?c=0&h=1080&w=1920",
+   "name": "Reference 6"
+  }
+ ],
+ "boxContentsList": "[Circular]",
+ "image": "/api/files/products/prd_6bf0d5403c564fe4/cover-49923fc8e89a6a0f.jpg",
+ "banner": "/api/files/products/prd_6bf0d5403c564fe4/banner-0-5bc513aacb8e8d88.jpg",
+ "schemaId": "",
+ "badgeEn": "وفر 40%",
+ "badgeKu": "وفر 40%",
+ "featuresEn": [
+  "Five specialists with unique abilities",
+  "Real-time stealth tactics",
+  "Shadow Mode synchronized actions",
+  "Large handcrafted missions",
+  "Strong replay value through alternate routes",
+  "Historical Japanese setting",
+  "Modern control support on Switch 2",
+  "Special and Deluxe supplier options supported in the import"
+ ],
+ "featuresKu": [
+  "Five specialists with unique abilities",
+  "Real-time stealth tactics",
+  "Shadow Mode synchronized actions",
+  "Large handcrafted missions",
+  "Strong replay value through alternate routes",
+  "Historical Japanese setting",
+  "Modern control support on Switch 2",
+  "Special and Deluxe supplier options supported in the import"
+ ],
+ "sales": 0,
+ "images": [],
+ "modes": [],
+ "nintendoCardImageTrim": {
+  "left": 0,
+  "top": 0.043478260869565216,
+  "width": 1,
+  "height": 0.9565217391304348,
+  "confidence": 0.9172727272727272,
+  "mode": "luminance",
+  "sourceWidth": 276,
+  "sourceHeight": 276,
+  "version": 1
+ },
+ "boxFrontUrl": "https://images.nintendolife.com/97124a2f1ac64/shadow-tactics-blades-of-the-shogun-cover.cover_large.jpg",
+ "createdAt": "2026-08-27T01:53:58.161Z",
+ "created_at": "2026-08-27T01:53:58.161Z",
+ "updatedAt": "2026-08-28T22:03:08.156Z",
+ "updated_at": "2026-08-27T01:53:58.161Z"
+}

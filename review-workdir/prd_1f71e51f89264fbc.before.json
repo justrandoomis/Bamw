@@ -1,0 +1,565 @@
+{
+ "title": "Rotwood",
+ "titleEn": "Rotwood",
+ "titleKu": "Rotwood",
+ "slug": "rotwood",
+ "description": "A roguelike action brawler from Klei where up to four players hunt corrupted beasts, master weapons, combine run-based power-ups, and upgrade gear between expeditions.\n\nPlayers enter the Rotwood to fight corrupted beasts and push back a spreading blight. The game focuses more on repeated expeditions and combat progression than on cutscene-heavy storytelling. Progression comes through mastery, upgrades and deeper runs into increasingly dangerous zones. The world is defined by Klei's stylized presentation and strange creature designs.",
+ "descriptionEn": "A roguelike action brawler from Klei where up to four players hunt corrupted beasts, master weapons, combine run-based power-ups, and upgrade gear between expeditions.\n\nPlayers enter the Rotwood to fight corrupted beasts and push back a spreading blight. The game focuses more on repeated expeditions and combat progression than on cutscene-heavy storytelling. Progression comes through mastery, upgrades and deeper runs into increasingly dangerous zones. The world is defined by Klei's stylized presentation and strange creature designs.",
+ "descriptionKu": "A roguelike action brawler from Klei where up to four players hunt corrupted beasts, master weapons, combine run-based power-ups, and upgrade gear between expeditions.\n\nPlayers enter the Rotwood to fight corrupted beasts and push back a spreading blight. The game focuses more on repeated expeditions and combat progression than on cutscene-heavy storytelling. Progression comes through mastery, upgrades and deeper runs into increasingly dangerous zones. The world is defined by Klei's stylized presentation and strange creature designs.",
+ "cartridgeImage": "/api/files/products/prd_1f71e51f89264fbc/front-e6c0c0a5c90ac9d0.jpg",
+ "nintendoCardImage": "/api/files/products/prd_1f71e51f89264fbc/square-e6c0c0a5c90ac9d0.jpg",
+ "coverHiResImage": "",
+ "coverImage": "/api/files/products/prd_1f71e51f89264fbc/cover-5d8566a1e270e95b.jpg",
+ "bannerImages": [
+  "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000099153/3e9c08f1106df39f4d5cc49a8b05be6d42af31e0f5a5c91cf53bef5390339692",
+  "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000099153/78449e59a366d00e7988eefc1980aadea2e139fd12dcef562e836995badd30d7",
+  "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000099153/2ccac1a25886e1c9d0d998cf9c201e2594ec394e1058d992d51d86d4ec02097d",
+  "/api/files/products/prd_1f71e51f89264fbc/banner-3-8da21bf715ddd75b.avif",
+  "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000099153/ce131a6761012151a506125867b942733de1eb872a4f0c2363ea84bdc4f8f397",
+  "/api/files/products/prd_1f71e51f89264fbc/banner-5-5f3b8096354fc538.avif"
+ ],
+ "gallery": [],
+ "youtubeTrailer": "https://www.youtube.com/results?search_query=Rotwood+Nintendo+Switch+2+trailer",
+ "releaseDate": "2026-03-03",
+ "ageRating": "PEGI 12",
+ "metacriticRating": 82,
+ "genres": [
+  "Action",
+  "Roguelike",
+  "Co-op",
+  "Beat 'em Up",
+  "Indie",
+  "Adventure"
+ ],
+ "platform": "switch2",
+ "size": 2.1,
+ "numberOfPlayers": "1",
+ "supportedLanguages": "Japanese, American English, French, German, Italian, Spanish, Korean, Russian, Simplified Chinese, Traditional Chinese, Brazilian Portuguese, Polish",
+ "hardwareModel": "",
+ "colorEdition": "",
+ "storageCapacity": "",
+ "screenSpecs": "",
+ "batteryLife": "",
+ "boxContents": [],
+ "boxContentsText": "",
+ "warrantyCondition": "",
+ "connectivity": "",
+ "characterName": "Link",
+ "amiiboSeries": "The Legend of Zelda",
+ "figureType": "figure",
+ "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+ "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+ "boxCondition": "mib",
+ "releaseWave": "Wave 2 (Restock)",
+ "rarity": "standard",
+ "accessoryType": "حقيبة حماية وتنقل Carry Case",
+ "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+ "brand": "Nintendo Official",
+ "material": "Hard EVA Shockproof Shell",
+ "availableColors": "Black, Neon Red/Blue, White",
+ "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+ "cardValue": "$20 eShop Balance",
+ "region": "Global",
+ "cardType": "eshop",
+ "deliveryMethod": "instant_code",
+ "redemptionGuide": "",
+ "redemptionSteps": [],
+ "validity": "no_expiry",
+ "usedType": "cartridge",
+ "conditionGrade": "like_new",
+ "packaging": "cib",
+ "guaranteeStatus": "tested_30days",
+ "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+ "accountType": "primary",
+ "badge": "وفر 40%",
+ "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+ "price": 10250,
+ "cost": 1250,
+ "stock": 999999,
+ "isInfiniteStock": true,
+ "isHidden": false,
+ "displayOrder": 28,
+ "category": "nintendo-switch-games",
+ "categoryId": "nintendo-switch-games",
+ "categoryEn": "",
+ "categoryKu": "",
+ "options": [
+  {
+   "id": "offline_account",
+   "name": "مشترك",
+   "description": "Play using the supplied account under the store's offline-account activation method.",
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_account",
+   "name": "خاص بك",
+   "description": "Online-account option with internet-connected account use where supported by the game/service.",
+   "isInfiniteStock": true
+  }
+ ],
+ "types": [
+  {
+   "id": "standard_offline",
+   "name": "مشترك — اللعبة الأساسية",
+   "optionId": "offline_account",
+   "price": 10250,
+   "cost": 1250,
+   "description": "Standard game, Offline Account. Supplier Regular price: ¥9.74; purchase cost converted at 1 CNY = 220 IQD and rounded down to nearest 250 IQD.",
+   "isInfiniteStock": true
+  },
+  {
+   "id": "standard_online",
+   "name": "خاص بك — اللعبة الأساسية",
+   "optionId": "online_account",
+   "price": 28000,
+   "cost": 16500,
+   "description": "Standard game, Online Account. Supplier Standard price: ¥95.00; purchase cost converted at 1 CNY = 220 IQD and rounded down to nearest 250 IQD.",
+   "isInfiniteStock": true
+  }
+ ],
+ "editions": [],
+ "dlcs": [],
+ "isActive": true,
+ "status": "active",
+ "kind": "account",
+ "trade_value_iqd": 0,
+ "store_offer_bonus_iqd": 0,
+ "trade_enabled": true,
+ "trade_value_locked": false,
+ "id": "prd_1f71e51f89264fbc",
+ "schema_version": 22,
+ "titleAr": "Rotwood",
+ "compatibility": [
+  "Nintendo Switch 2"
+ ],
+ "edition": "Standard",
+ "developer": "Klei Entertainment Inc.",
+ "publisher": "Klei Entertainment",
+ "metacriticUrl": "https://www.nintendo.com/us/store/products/rotwood-switch-2/",
+ "opencriticRating": 85,
+ "userScore": 8,
+ "officialUrl": "https://www.nintendo.com/us/store/products/rotwood-switch-2/",
+ "eshopUrl": "https://www.nintendo.com/us/store/products/rotwood-switch-2/",
+ "gameIsOffline": true,
+ "gameIsOnline": true,
+ "gameLanguageLocked": false,
+ "description_short": "A roguelike action brawler from Klei where up to four players hunt corrupted beasts, master weapons, combine run-based power-ups, and upgrade gear between expeditions.",
+ "description_ar": "لعبة Rotwood على Nintendo Switch 2. تقدم هذه النسخة تجربة كاملة وموسعة في صفحة المتجر، مع التركيز على القصة والعالم وأسلوب اللعب والصور والمحتوى التفصيلي.",
+ "box_front_url": "https://www.ntower.de/images/newsPictures/4e/27677-1000-500-4ea2e1878c116e9d9f1c1c3995597570d842d577.jpeg",
+ "videos": [
+  {
+   "title": "Official / launch trailer",
+   "url": "https://www.youtube.com/results?search_query=Rotwood+Nintendo+Switch+2+trailer"
+  },
+  {
+   "title": "Additional trailer / promo",
+   "url": "https://www.youtube.com/results?search_query=Rotwood+Nintendo+Switch+2+trailer"
+  },
+  {
+   "title": "Secondary trailer / promo",
+   "url": "https://www.youtube.com/results?search_query=Rotwood+Nintendo+Switch+2+trailer"
+  }
+ ],
+ "nintendoEshopUrl": "https://www.nintendo.com/us/store/products/rotwood-switch-2/",
+ "nintendoOnlineRequired": false,
+ "nintendoCloudSaves": true,
+ "tvMode": true,
+ "tabletopMode": true,
+ "handheldMode": true,
+ "nintendoPlayModes": "TV Mode, Tabletop Mode, Handheld Mode",
+ "nintendoNotes": "Rotwood has an expanded storefront profile with filled media, gameplay, world, FAQ and performance fields for Nintendo Switch 2 import use.",
+ "switch2Enhanced": true,
+ "switch2Exclusive": true,
+ "switch2UpgradePrice": 0,
+ "switch2Features": [
+  "Roguelike action brawler structure",
+  "Solo or co-op play",
+  "Multiple weapon classes",
+  "Boss hunts and beast encounters",
+  "Build experimentation through run-based upgrades",
+  "Safe-haven progression between hunts",
+  "Klei art direction and creature design",
+  "Strong replayability through repeated expeditions"
+ ],
+ "tagline": "A roguelike action brawler from Klei where up to four players hunt corrupted beasts, master weapons, combine run-based power-ups, and upgrade gear between expeditions",
+ "fitFor": [
+  "Co-op action fans",
+  "Roguelike players",
+  "Beat-'em-up fans",
+  "Players who enjoy skill-based weapon mastery",
+  "Players who like replay-driven combat loops"
+ ],
+ "notFitFor": [
+  "Players seeking a traditional story-driven RPG",
+  "Players who dislike run-based repetition",
+  "Players who want a slow-paced narrative game"
+ ],
+ "playTimeMain": 15,
+ "playTimeFull": 50,
+ "editionsList": [
+  {
+   "name": "Standard Edition",
+   "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000099153/5413317e516cfbe19cb0e61ded9dc183eb497d8f23e742de16a9fd82b54c3966",
+   "contents": [
+    {
+     "label": "Base game"
+    },
+    {
+     "label": "Nintendo Switch 2 compatible storefront entry"
+    },
+    {
+     "label": "Digital account delivery option"
+    }
+   ]
+  },
+  {
+   "name": "Deluxe Edition",
+   "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000099153/5413317e516cfbe19cb0e61ded9dc183eb497d8f23e742de16a9fd82b54c3966",
+   "contents": [
+    {
+     "label": "Base game"
+    },
+    {
+     "label": "Bonus / special supplier option where available"
+    },
+    {
+     "label": "Additional content varies by supplier version"
+    }
+   ]
+  },
+  {
+   "name": "Premium Deluxe Edition",
+   "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000099153/5413317e516cfbe19cb0e61ded9dc183eb497d8f23e742de16a9fd82b54c3966",
+   "contents": [
+    {
+     "label": "Base game"
+    },
+    {
+     "label": "Deluxe / premium supplier option where available"
+    },
+    {
+     "label": "Content details depend on the publisher package"
+    },
+    {
+     "label": "Special Outfits Set"
+    },
+    {
+     "label": "Additional monster-hair and Rudy cosmetic packs"
+    }
+   ]
+  }
+ ],
+ "gameplayPillars": [
+  {
+   "title": "Gameplay Pillar 1",
+   "description": "Hunt corrupted beasts in repeated expeditions"
+  },
+  {
+   "title": "Gameplay Pillar 2",
+   "description": "Master different weapons and combat styles"
+  },
+  {
+   "title": "Gameplay Pillar 3",
+   "description": "Experiment with builds across roguelike runs"
+  },
+  {
+   "title": "Gameplay Pillar 4",
+   "description": "Play solo or in cooperative sessions"
+  },
+  {
+   "title": "Gameplay Pillar 5",
+   "description": "Push deeper into the Rotwood for stronger rewards and tougher enemies"
+  }
+ ],
+ "worldSummary": "Players enter the Rotwood to fight corrupted beasts and push back a spreading blight. The game focuses more on repeated expeditions and combat progression than on cutscene-heavy storytelling. Progression comes through mastery, upgrades and deeper runs into increasingly dangerous zones. The world is defined by Klei's stylized presentation and strange creature designs.",
+ "storyChapters": [
+  {
+   "title": "Story / World Note 1",
+   "body": "Players enter the Rotwood to fight corrupted beasts and push back a spreading blight."
+  },
+  {
+   "title": "Story / World Note 2",
+   "body": "The game focuses more on repeated expeditions and combat progression than on cutscene-heavy storytelling."
+  },
+  {
+   "title": "Story / World Note 3",
+   "body": "Progression comes through mastery, upgrades and deeper runs into increasingly dangerous zones."
+  },
+  {
+   "title": "Story / World Note 4",
+   "body": "The world is defined by Klei's stylized presentation and strange creature designs."
+  }
+ ],
+ "galleryImages": [
+  {
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000099153/748cbe280fab327fccea6179e7b6a802640f4695a904121dc772009cc783f59e",
+   "alt": "Distinct official Nintendo promotional/gameplay image 1; not reused as cover or banner."
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000099153/ce131a6761012151a506125867b942733de1eb872a4f0c2363ea84bdc4f8f397",
+   "alt": "Distinct official Nintendo promotional/gameplay image 2; not reused as cover or banner."
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000099153/b5f6f4a8c748e8551923c11c08a919daa0c3d607d4524e8b8143f20ffd6fa936",
+   "alt": "Distinct official Nintendo promotional/gameplay image 3; not reused as cover or banner."
+  }
+ ],
+ "features": [
+  "Roguelike action brawler structure",
+  "Solo or co-op play",
+  "Multiple weapon classes",
+  "Boss hunts and beast encounters",
+  "Build experimentation through run-based upgrades",
+  "Safe-haven progression between hunts",
+  "Klei art direction and creature design",
+  "Strong replayability through repeated expeditions"
+ ],
+ "perfResolutionDocked": "1920x1080 output",
+ "perfResolutionHandheld": "1920x1080 output",
+ "perfFps": "60",
+ "perfNotes": "The Switch 2 version targets a smooth 60 FPS presentation; exact dynamic internal rendering values are not consistently published.",
+ "devicePerformance": [
+  {
+   "device": "Nintendo Switch 2",
+   "deviceSlug": "nintendo-switch-2",
+   "deviceModel": "Nintendo Switch 2",
+   "hardwareId": "prd_acf4c89908764c62",
+   "informationStatus": "verified / measured where available",
+   "handheld": {
+    "supported": true,
+    "resolution": "1920x1080 output",
+    "resolutionDynamic": true,
+    "renderingResolution": "Dynamic",
+    "outputResolution": "1280x720",
+    "fps": "60",
+    "fpsMin": "~25-30",
+    "fpsMax": "60",
+    "notes": "Portable mode can dip below 30 FPS in heavy scenes according to technical comparisons."
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "1920x1080 output",
+    "resolutionDynamic": true,
+    "renderingResolution": "Dynamic",
+    "outputResolution": "1920x1080",
+    "fps": "60",
+    "fpsMin": "30",
+    "fpsMax": "60",
+    "notes": "Often around 30-45 FPS in the overworld; can hit 60 FPS in lighter scenes or battles."
+   },
+   "sourceName": "Nintendo Life / RPG Site / Lords of Gaming technical impressions",
+   "sourceUrl": "https://www.nintendolife.com/reviews/nintendo-switch-2/monster-hunter-stories-3-twisted-reflection",
+   "verificationStatus": "third-party-tested",
+   "performanceNotes": "The Switch 2 version targets a smooth 60 FPS presentation; exact dynamic internal rendering values are not consistently published."
+  }
+ ],
+ "downloadSizeGb": 2.1,
+ "requiredSpaceGb": 2.1,
+ "microSdRecommended": false,
+ "languagesAudio": [
+  "English"
+ ],
+ "languagesText": [
+  "Japanese",
+  "French",
+  "German",
+  "Italian",
+  "Spanish",
+  "Simplified Chinese",
+  "Latin American Spanish",
+  "Brazilian Portuguese",
+  "American English"
+ ],
+ "arabicSupport": false,
+ "mpLocalPlayers": false,
+ "mpOnlinePlayers": false,
+ "mpCoop": false,
+ "mpCompetitive": false,
+ "mpSplitScreen": false,
+ "mpLocalWireless": false,
+ "dlc": [
+  {
+   "name": "Special Outfits Set",
+   "description": "Cosmetic outfit content for companions and additional customization.",
+   "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000099153/5413317e516cfbe19cb0e61ded9dc183eb497d8f23e742de16a9fd82b54c3966"
+  },
+  {
+   "name": "Additional Side Story: Rudy",
+   "description": "Paid additional side-story content centered on Rudy.",
+   "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000099153/3e9c08f1106df39f4d5cc49a8b05be6d42af31e0f5a5c91cf53bef5390339692"
+  },
+  {
+   "name": "Monster Hair packs",
+   "description": "Additional cosmetic monster-hair customization packs.",
+   "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000099153/78449e59a366d00e7988eefc1980aadea2e139fd12dcef562e836995badd30d7"
+  },
+  {
+   "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000099153/2ccac1a25886e1c9d0d998cf9c201e2594ec394e1058d992d51d86d4ec02097d"
+  },
+  {
+   "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000099153/748cbe280fab327fccea6179e7b6a802640f4695a904121dc772009cc783f59e"
+  },
+  {
+   "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000099153/ce131a6761012151a506125867b942733de1eb872a4f0c2363ea84bdc4f8f397"
+  },
+  {
+   "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000099153/b5f6f4a8c748e8551923c11c08a919daa0c3d607d4524e8b8143f20ffd6fa936"
+  }
+ ],
+ "completionMain": 15,
+ "completionExtras": 28,
+ "completionAll": 50,
+ "faq": [
+  {
+   "q": "Is it single-player only?",
+   "a": "No. Co-op is one of the core parts of the game's identity."
+  },
+  {
+   "q": "Is it story-heavy?",
+   "a": "No. World flavor exists, but the core loop is action and replayable progression."
+  },
+  {
+   "q": "What kind of game is it?",
+   "a": "It is a roguelike action brawler with boss hunts and cooperative play."
+  },
+  {
+   "q": "Why might players like it?",
+   "a": "Because of its combat loop, replayability and Klei art direction."
+  },
+  {
+   "q": "Who should buy it?",
+   "a": "Players who enjoy action-heavy, run-based cooperative games."
+  }
+ ],
+ "verdictScore": 8,
+ "verdictSummary": "A feature-rich monster-raising RPG with strong presentation and customization, though Switch 2 performance is less stable than the hardware can ideally deliver.",
+ "verdictPros": [
+  "Strong creature-raising loop",
+  "Large and colorful world",
+  "Extensive customization",
+  "Rich deluxe/DLC offering",
+  "Official Simplified Chinese support"
+ ],
+ "verdictCons": [
+  "Switch 2 frame rate is unlocked and often sits around 30-45 FPS in large areas",
+  "Portable mode can dip more often in demanding scenes"
+ ],
+ "reviews": [
+  {
+   "source": "General reception",
+   "score": "See summary",
+   "quote": "Attention often focuses on the co-op loop, replayability and art direction."
+  },
+  {
+   "source": "Player appeal",
+   "score": "See summary",
+   "quote": "The weapon mastery and repeatable hunt structure are major draws."
+  }
+ ],
+ "timeline": [
+  {
+   "date": "Phase 1",
+   "title": "First runs",
+   "body": "Players learn weapon basics, movement and enemy behavior."
+  },
+  {
+   "date": "Phase 2",
+   "title": "Mid progression",
+   "body": "Stronger beasts and better gear broaden tactical choices."
+  },
+  {
+   "date": "Phase 3",
+   "title": "Advanced play",
+   "body": "Build optimization and team synergy become more important."
+  },
+  {
+   "date": "Phase 4",
+   "title": "Long-term play",
+   "body": "Boss mastery and cooperative replay value drive ongoing sessions."
+  }
+ ],
+ "patchNotes": [
+  {
+   "version": "Update 1",
+   "date": "2026-03-03",
+   "body": "Nintendo Switch 2 version released."
+  },
+  {
+   "version": "Update 2",
+   "date": "Post-launch",
+   "body": "Balance and content updates are likely to matter for long-term replay value."
+  }
+ ],
+ "soundtrack": [
+  {
+   "title": "Music Note 1"
+  },
+  {
+   "title": "Music Note 2"
+  }
+ ],
+ "seriesName": "Rotwood",
+ "studioName": "Klei Entertainment Inc.",
+ "studioUrl": "https://www.nintendo.com/us/store/products/rotwood-switch-2/",
+ "studioLocation": "Osaka, Japan",
+ "studioAbout": "CAPCOM is the Japanese developer and publisher behind Monster Hunter, Resident Evil and Street Fighter. Monster Hunter Stories 3 extends the turn-based Monster Rider RPG branch with redesigned character presentation, larger environments, a new story and expanded customization.",
+ "setupNeeds": [
+  "Nintendo Switch 2 system required for the Nintendo Switch 2 version.",
+  "Internet connection is required for digital download, updates and online/service features where applicable.",
+  "Nintendo Account required for Nintendo eShop purchase/download.",
+  "Sufficient internal storage or compatible microSD Express storage required.",
+  "Nintendo Switch Online membership is required only for game-specific online multiplayer/features that explicitly use it."
+ ],
+ "sources": [
+  {
+   "name": "Official Nintendo / Storefront",
+   "url": "https://www.nintendo.com/us/store/products/rotwood-switch-2/"
+  },
+  {
+   "name": "Official / Publisher",
+   "url": "https://www.klei.com/games/rotwood"
+  },
+  {
+   "name": "Reference 3",
+   "url": "https://www.youtube.com/results?search_query=Rotwood+Nintendo+Switch+2+trailer"
+  },
+  {
+   "name": "Reference 4",
+   "url": "https://www.ntower.de/images/newsPictures/4e/27677-1000-500-4ea2e1878c116e9d9f1c1c3995597570d842d577.jpeg"
+  }
+ ],
+ "boxContentsList": "[Circular]",
+ "image": "/api/files/products/prd_1f71e51f89264fbc/cover-5d8566a1e270e95b.jpg",
+ "banner": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000099153/3e9c08f1106df39f4d5cc49a8b05be6d42af31e0f5a5c91cf53bef5390339692",
+ "schemaId": "",
+ "badgeEn": "وفر 40%",
+ "badgeKu": "وفر 40%",
+ "featuresEn": [
+  "Roguelike action brawler structure",
+  "Solo or co-op play",
+  "Multiple weapon classes",
+  "Boss hunts and beast encounters",
+  "Build experimentation through run-based upgrades",
+  "Safe-haven progression between hunts",
+  "Klei art direction and creature design",
+  "Strong replayability through repeated expeditions"
+ ],
+ "featuresKu": [
+  "Roguelike action brawler structure",
+  "Solo or co-op play",
+  "Multiple weapon classes",
+  "Boss hunts and beast encounters",
+  "Build experimentation through run-based upgrades",
+  "Safe-haven progression between hunts",
+  "Klei art direction and creature design",
+  "Strong replayability through repeated expeditions"
+ ],
+ "sales": 0,
+ "images": [],
+ "modes": [],
+ "boxFrontUrl": "https://www.ntower.de/images/newsPictures/4e/27677-1000-500-4ea2e1878c116e9d9f1c1c3995597570d842d577.jpeg",
+ "createdAt": "2026-08-27T01:38:38.996Z",
+ "created_at": "2026-08-27T01:38:38.996Z",
+ "updatedAt": "2026-08-28T22:01:15.112Z",
+ "updated_at": "2026-08-27T01:38:38.996Z"
+}

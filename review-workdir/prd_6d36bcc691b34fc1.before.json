@@ -1,0 +1,558 @@
+{
+ "title": "Splatoon 3 + Expansion Pass",
+ "titleEn": "Splatoon 3 + Expansion Pass",
+ "titleKu": "",
+ "slug": "splatoon-3-expansion-pass",
+ "description": "The bundle combines Splatoon 3 with the Expansion Pass, including Inkopolis content and the Side Order single-player roguelite campaign. Splatsville becomes the hub for battles, shops, customization, and competitive progression. Turf War, Anarchy, Salmon Run, events, and gear systems provide the long-term multiplayer loop.",
+ "descriptionEn": "The bundle combines Splatoon 3 with the Expansion Pass, including Inkopolis content and the Side Order single-player roguelite campaign. Splatsville becomes the hub for battles, shops, customization, and competitive progression. Turf War, Anarchy, Salmon Run, events, and gear systems provide the long-term multiplayer loop.",
+ "descriptionKu": "",
+ "cartridgeImage": "https://assets.nintendo.com/image/upload/ar_3:4,c_fit,g_auto,w_1000/f_auto/q_auto/dpr_1.5/store/software/switch/70070000016793/07bf231db5b44048c4ba1a8874fd5495094243c88958ddfceb5430682c456c1e",
+ "nintendoCardImage": "https://assets.nintendo.com/image/upload/ar_1:1,c_fill,g_auto,w_1000/f_auto/q_auto/dpr_1.5/store/software/switch/70070000016793/07bf231db5b44048c4ba1a8874fd5495094243c88958ddfceb5430682c456c1e",
+ "coverHiResImage": "",
+ "coverImage": "https://assets.nintendo.com/image/upload/ar_16:9,c_fill,g_auto,w_1600/f_auto/q_auto/dpr_1.5/store/software/switch/70070000016793/35c22829b4226bb96a59f3945759ad001bab2cc7745dcff0db50099694f75681",
+ "bannerImages": [
+  "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000016793/ca1c9fed48b7d2906855956a53f6fe3eba6d868f4d5a22a2376e5740111f01a6",
+  "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000016793/e67088f57a0775b090824fb7fa38b5dc450dfca24fbadf237081c1a5783abe38",
+  "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000016793/0acb7055768b4b910439bf79d4b9baf50a0aafe0d97db389fe3b1c5508faab54",
+  "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000016793/9c325e78365434f55d314bf87d60bd8f33a191aeb1f0eee6aa20773bbce7904a",
+  "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000016793/209b5fe1ef2d3eb422b1b0a268f953254706e116e87022cb234834e704d2c092"
+ ],
+ "gallery": [],
+ "youtubeTrailer": "",
+ "releaseDate": "2022-09-09",
+ "ageRating": "ESRB E10+ — Cartoon Violence, Users Interact, In-Game Purchases",
+ "metacriticRating": 83,
+ "genres": [
+  "Shooter",
+  "Action",
+  "Multiplayer"
+ ],
+ "platform": "switch1",
+ "size": 8.2,
+ "numberOfPlayers": "Single system (1) / Local wireless and Online multiplayer in supported modes",
+ "supportedLanguages": "Official supported language list varies by region; see the publisher page linked in Sources.",
+ "hardwareModel": "",
+ "colorEdition": "",
+ "storageCapacity": "",
+ "screenSpecs": "",
+ "batteryLife": "",
+ "boxContents": [],
+ "boxContentsText": "",
+ "warrantyCondition": "",
+ "connectivity": "",
+ "characterName": "Link",
+ "amiiboSeries": "The Legend of Zelda",
+ "figureType": "figure",
+ "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+ "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+ "boxCondition": "mib",
+ "releaseWave": "Wave 2 (Restock)",
+ "rarity": "standard",
+ "accessoryType": "حقيبة حماية وتنقل Carry Case",
+ "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+ "brand": "Nintendo Official",
+ "material": "Hard EVA Shockproof Shell",
+ "availableColors": "Black, Neon Red/Blue, White",
+ "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+ "cardValue": "$20 eShop Balance",
+ "region": "Global",
+ "cardType": "eshop",
+ "deliveryMethod": "instant_code",
+ "redemptionGuide": "",
+ "redemptionSteps": [],
+ "validity": "no_expiry",
+ "usedType": "cartridge",
+ "conditionGrade": "like_new",
+ "packaging": "cib",
+ "guaranteeStatus": "tested_30days",
+ "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+ "accountType": "primary",
+ "badge": "وفر 40%",
+ "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+ "price": 11500,
+ "cost": 1750,
+ "stock": 999999,
+ "isInfiniteStock": true,
+ "isHidden": true,
+ "displayOrder": 0,
+ "category": "nintendo-switch-games",
+ "categoryId": "nintendo-switch-games",
+ "categoryEn": "",
+ "categoryKu": "",
+ "options": [
+  {
+   "id": "offline_account",
+   "name": "مشترك",
+   "description": "مشترك",
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_account",
+   "name": "خاص بك",
+   "description": "خاص بك",
+   "stock": 9999,
+   "isInfiniteStock": true
+  }
+ ],
+ "types": [
+  {
+   "id": "offline_base",
+   "name": "مشترك — اللعبة الأساسية",
+   "optionId": "offline_account",
+   "price": 11500,
+   "cost": 1750,
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "offline_extras",
+   "name": "مشترك — مع الإضافات",
+   "optionId": "offline_account",
+   "price": 15000,
+   "cost": 3500,
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_base",
+   "name": "خاص بك — اللعبة الأساسية",
+   "optionId": "online_account",
+   "price": 39750,
+   "cost": 29500,
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_extras",
+   "name": "خاص بك — مع الإضافات",
+   "optionId": "online_account",
+   "price": 54250,
+   "cost": 40250,
+   "stock": 9999,
+   "isInfiniteStock": true
+  }
+ ],
+ "editions": [],
+ "dlcs": [],
+ "isActive": true,
+ "status": "Active",
+ "kind": "account",
+ "trade_value_iqd": 22000,
+ "store_offer_bonus_iqd": 4000,
+ "trade_enabled": true,
+ "trade_value_locked": false,
+ "id": "prd_6d36bcc691b34fc1",
+ "schema_version": 24,
+ "titleAr": "سبلاتون 3 + إكسبانشن باس",
+ "compatibility": [
+  "Nintendo Switch",
+  "Nintendo Switch 2 compatibility: Supported"
+ ],
+ "edition": "Standard / Store Variants",
+ "developer": "Nintendo",
+ "publisher": "Nintendo",
+ "seriesName": "Splatoon 3 + Expansion Pass",
+ "metacriticUrl": "https://www.metacritic.com/game/splatoon-3/",
+ "opencriticRating": 83,
+ "userScore": 8.2,
+ "price_usd": 84.98,
+ "officialUrl": "https://www.nintendo.com/us/store/products/splatoon-3-bundle-game-plus-expansion-pass-switch/",
+ "eshopUrl": "https://www.nintendo.com/us/store/products/splatoon-3-bundle-game-plus-expansion-pass-switch/",
+ "gameIsOffline": true,
+ "gameIsOnline": true,
+ "gameLanguageLocked": false,
+ "description_short": "The bundle combines Splatoon 3 with the Expansion Pass, including Inkopolis content and the Side Order single-player roguelite campaign.",
+ "description_ar": "سبلاتون 3 + إكسبانشن باس — The bundle combines Splatoon 3 with the Expansion Pass, including Inkopolis content and the Side Order single-player roguelite campaign.",
+ "box_front_url": "https://assets.nintendo.com/image/upload/ar_3:4,c_fit,g_auto,w_1000/f_auto/q_auto/dpr_1.5/store/software/switch/70070000016793/07bf231db5b44048c4ba1a8874fd5495094243c88958ddfceb5430682c456c1e",
+ "languagesText": [
+  "See official supported languages on the linked Nintendo/publisher product page"
+ ],
+ "languagesAudio": [
+  "Audio language availability varies by title and region; see official product information"
+ ],
+ "tvMode": true,
+ "tabletopMode": true,
+ "handheldMode": true,
+ "nintendoPlayModes": "TV / Tabletop / Handheld",
+ "nintendoOnlineRequired": true,
+ "nintendoCloudSaves": true,
+ "nintendoGameKeyCard": false,
+ "nintendoPhysicalNeedsDownload": false,
+ "switch2Enhanced": false,
+ "switch2Exclusive": false,
+ "nintendoNotes": "Platform, release, player-count, storage, compatibility, and feature statements in this import are grounded in the official Nintendo/publisher pages listed under Sources. Store package prices are user-supplied storefront values, not assumed MSRP.",
+ "editionsList": [
+  {
+   "name": "Regular / Offline",
+   "coverUrl": "https://assets.nintendo.com/image/upload/ar_3:4,c_fit,g_auto,w_1000/f_auto/q_auto/dpr_1.5/store/software/switch/70070000016793/07bf231db5b44048c4ba1a8874fd5495094243c88958ddfceb5430682c456c1e",
+   "contents": [
+    {
+     "label": "Regular / Offline store package"
+    },
+    {
+     "label": "Offline account access"
+    },
+    {
+     "label": "Infinite stock by default"
+    }
+   ]
+  },
+  {
+   "name": "Special",
+   "coverUrl": "https://assets.nintendo.com/image/upload/ar_1:1,c_fill,g_auto,w_1000/f_auto/q_auto/dpr_1.5/store/software/switch/70070000016793/07bf231db5b44048c4ba1a8874fd5495094243c88958ddfceb5430682c456c1e",
+   "contents": [
+    {
+     "label": "Special store package"
+    },
+    {
+     "label": "Offline account access"
+    },
+    {
+     "label": "Infinite stock by default"
+    }
+   ]
+  },
+  {
+   "name": "Standard / Online",
+   "coverUrl": "https://assets.nintendo.com/image/upload/ar_16:9,c_fill,g_auto,w_1600/f_auto/q_auto/dpr_1.5/store/software/switch/70070000016793/35c22829b4226bb96a59f3945759ad001bab2cc7745dcff0db50099694f75681",
+   "contents": [
+    {
+     "label": "Standard / Online store package"
+    },
+    {
+     "label": "Online account access"
+    },
+    {
+     "label": "Infinite stock by default"
+    }
+   ]
+  },
+  {
+   "name": "Deluxe",
+   "coverUrl": "https://assets.nintendo.com/image/upload/ar_1:1,c_fill,g_auto,w_1000/f_auto/q_auto/dpr_1.5/store/software/switch/70070000016793/07bf231db5b44048c4ba1a8874fd5495094243c88958ddfceb5430682c456c1e",
+   "contents": [
+    {
+     "label": "Deluxe store package"
+    },
+    {
+     "label": "Online account access"
+    },
+    {
+     "label": "Infinite stock by default"
+    }
+   ]
+  }
+ ],
+ "gameplayPillars": [
+  {
+   "title": "Turf War ink battles",
+   "description": "Two teams compete to cover the most territory with their ink while controlling movement, routes, and fights.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000016793/ca1c9fed48b7d2906855956a53f6fe3eba6d868f4d5a22a2376e5740111f01a6"
+  },
+  {
+   "title": "Anarchy Battles",
+   "description": "Ranked objective modes add competitive rules such as Splat Zones, Tower Control, Rainmaker, and Clam Blitz.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000016793/e67088f57a0775b090824fb7fa38b5dc450dfca24fbadf237081c1a5783abe38"
+  },
+  {
+   "title": "Salmon Run co-op",
+   "description": "Teams fight waves of Salmonids and bosses while collecting Golden Eggs under shifting hazards.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000016793/0acb7055768b4b910439bf79d4b9baf50a0aafe0d97db389fe3b1c5508faab54"
+  },
+  {
+   "title": "Story campaign",
+   "description": "Return of the Mammalians offers solo stages built around movement, weapons, and puzzle-shooter challenges.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000016793/9c325e78365434f55d314bf87d60bd8f33a191aeb1f0eee6aa20773bbce7904a"
+  },
+  {
+   "title": "Expansion Pass: Side Order",
+   "description": "Wave 2 adds a replayable single-player tower-climbing structure with palettes, upgrades, and escalating challenges.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000016793/209b5fe1ef2d3eb422b1b0a268f953254706e116e87022cb234834e704d2c092"
+  }
+ ],
+ "worldSummary": "The bundle combines Splatoon 3 with the Expansion Pass, including Inkopolis content and the Side Order single-player roguelite campaign. Splatsville becomes the hub for battles, shops, customization, and competitive progression. Turf War, Anarchy, Salmon Run, events, and gear systems provide the long-term multiplayer loop.",
+ "storyChapters": [
+  {
+   "title": "Arrive in the Splatlands",
+   "body": "Splatsville becomes the hub for battles, shops, customization, and competitive progression.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000016793/e67088f57a0775b090824fb7fa38b5dc450dfca24fbadf237081c1a5783abe38"
+  },
+  {
+   "title": "Investigate Alterna",
+   "body": "The base story campaign sends Agent 3 through challenge stages to uncover the truth behind a strange new threat.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000016793/0acb7055768b4b910439bf79d4b9baf50a0aafe0d97db389fe3b1c5508faab54"
+  },
+  {
+   "title": "Return to Inkopolis",
+   "body": "Expansion Pass Wave 1 adds Inkopolis Plaza as an alternate hub.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000016793/9c325e78365434f55d314bf87d60bd8f33a191aeb1f0eee6aa20773bbce7904a"
+  },
+  {
+   "title": "Enter the Spire of Order",
+   "body": "Side Order follows Agent 8 and Pearl in a transformed world with repeated tower ascents and upgrades.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000016793/209b5fe1ef2d3eb422b1b0a268f953254706e116e87022cb234834e704d2c092"
+  },
+  {
+   "title": "Keep competing after the story",
+   "body": "Turf War, Anarchy, Salmon Run, events, and gear systems provide the long-term multiplayer loop.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000016793/ca1c9fed48b7d2906855956a53f6fe3eba6d868f4d5a22a2376e5740111f01a6"
+  }
+ ],
+ "features": [
+  "Base Splatoon 3 included",
+  "Expansion Pass included",
+  "Competitive online modes",
+  "Salmon Run cooperative mode",
+  "Side Order roguelite-style campaign"
+ ],
+ "perfResolutionDocked": "1080p",
+ "perfResolutionHandheld": "720p",
+ "perfFps": "60",
+ "perfHdr": false,
+ "playTimeMain": 8,
+ "completionMain": 20,
+ "completionExtras": 50,
+ "faq": [
+  {
+   "q": "What does this bundle include?",
+   "a": "The Splatoon 3 base game plus the Expansion Pass, including Inkopolis and Side Order content."
+  },
+  {
+   "q": "Is online play important?",
+   "a": "Yes. Most competitive and cooperative multiplayer modes require Nintendo Switch Online."
+  },
+  {
+   "q": "Can it be played offline?",
+   "a": "Yes. The story campaign and Side Order can be played as single-player content, while the major competitive modes are online-focused."
+  },
+  {
+   "q": "Does it support Switch 2?",
+   "a": "It is a Nintendo Switch game and Nintendo lists compatibility with Nintendo Switch 2."
+  },
+  {
+   "q": "Why are there four store variants?",
+   "a": "The supplied store pricing separates offline/online access and standard/premium Expansion Pass-aware packages."
+  }
+ ],
+ "verdictScore": 8.5,
+ "verdictPros": [
+  "Excellent competitive shooter design",
+  "Expansion Pass adds meaningful solo content",
+  "Strong cooperative Salmon Run",
+  "Distinctive art and music",
+  "Long-term event/community value"
+ ],
+ "verdictCons": [
+  "Best experience depends on online population",
+  "Competitive matchmaking can be demanding",
+  "Gear optimization takes time",
+  "Some event content is time-limited",
+  "No native Switch 2 edition"
+ ],
+ "reviews": [
+  {
+   "source": "Metacritic",
+   "score": "83",
+   "url": "https://www.metacritic.com/game/splatoon-3/"
+  },
+  {
+   "source": "OpenCritic",
+   "score": "83",
+   "url": "https://opencritic.com/"
+  }
+ ],
+ "timeline": [
+  {
+   "date": "2022-09-09",
+   "title": "Released on target Nintendo platform"
+  }
+ ],
+ "patchNotes": [
+  {
+   "version": "Current retail build",
+   "date": "2026-08-27"
+  }
+ ],
+ "studioName": "Nintendo",
+ "studioUrl": "https://www.nintendo.com/us/store/products/splatoon-3-bundle-game-plus-expansion-pass-switch/",
+ "studioLocation": "See publisher/developer profile",
+ "sources": [
+  {
+   "name": "Official Nintendo / publisher product page",
+   "url": "https://www.nintendo.com/us/store/products/splatoon-3-bundle-game-plus-expansion-pass-switch/"
+  },
+  {
+   "name": "Metacritic",
+   "url": "https://www.metacritic.com/game/splatoon-3/"
+  }
+ ],
+ "downloadSizeGb": 8.2,
+ "requiredSpaceGb": 8.2,
+ "microSdRecommended": true,
+ "storageNotes": "Storage requirements follow the official product listing where a final numeric size is published; upcoming titles may require a later refresh when final size is posted.",
+ "mpLocalPlayers": true,
+ "mpOnlinePlayers": true,
+ "mpCoop": true,
+ "mpCompetitive": true,
+ "mpLocalWireless": true,
+ "mpSplitScreen": true,
+ "dlc": [
+  {
+   "name": "Downloadable / additional content status",
+   "description": "Expansion Pass includes Wave 1 Inkopolis and Wave 2 Side Order."
+  }
+ ],
+ "devicePerformance": [
+  {
+   "device": "Nintendo Switch",
+   "deviceSlug": "nintendo-switch",
+   "deviceModel": "Nintendo Switch",
+   "hardwareId": "nintendo-switch",
+   "informationStatus": "Available",
+   "handheld": {
+    "supported": true,
+    "resolution": "720p",
+    "resolutionDynamic": false,
+    "renderingResolution": "720p",
+    "outputResolution": "720p",
+    "fps": "60",
+    "fpsMin": "60",
+    "fpsMax": "60",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "Handheld",
+    "notes": "Targets 60 fps in active gameplay with dynamic resolution behavior."
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "1080p",
+    "resolutionDynamic": false,
+    "renderingResolution": "1080p",
+    "outputResolution": "1080p",
+    "fps": "60",
+    "fpsMin": "60",
+    "fpsMax": "60",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "TV / Docked",
+    "notes": "Targets 60 fps in active gameplay with dynamic resolution behavior."
+   },
+   "modes": [
+    {
+     "name": "Primary documented/compatibility profile",
+     "handheldResolution": "720p",
+     "handheldFps": "60",
+     "tvResolution": "1080p",
+     "tvFps": "60",
+     "hdr": false,
+     "vrr": false,
+     "notes": "Targets 60 fps in active gameplay with dynamic resolution behavior."
+    }
+   ],
+   "upscaling": "Game / system-specific scaling where applicable",
+   "rayTracing": false,
+   "rayTracingMode": "Not Supported",
+   "loadingTime": "Scene-dependent",
+   "loadingNotes": "Loading time varies by scene, save state, storage, version, and patch.",
+   "gameVersion": "Current listed version",
+   "patchVersion": "Current available update",
+   "testedDate": "2026-08-27",
+   "sourceName": "Official product / compatibility information",
+   "sourceUrl": "https://www.nintendo.com/us/store/products/splatoon-3-switch/",
+   "performanceNotes": "Targets 60 fps in active gameplay with dynamic resolution behavior."
+  },
+  {
+   "device": "Nintendo Switch 2",
+   "deviceSlug": "nintendo-switch-2",
+   "deviceModel": "Nintendo Switch 2",
+   "hardwareId": "nintendo-switch-2",
+   "informationStatus": "Available",
+   "handheld": {
+    "supported": true,
+    "resolution": "720p",
+    "resolutionDynamic": false,
+    "renderingResolution": "720p",
+    "outputResolution": "720p",
+    "fps": "60",
+    "fpsMin": "60",
+    "fpsMax": "60",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "Handheld",
+    "notes": "Backward-compatible Nintendo Switch software on Nintendo Switch 2; no native Switch 2 edition assumed."
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "1080p",
+    "resolutionDynamic": false,
+    "renderingResolution": "1080p",
+    "outputResolution": "1080p",
+    "fps": "60",
+    "fpsMin": "60",
+    "fpsMax": "60",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "TV / Docked",
+    "notes": "Backward-compatible Nintendo Switch software on Nintendo Switch 2; no native Switch 2 edition assumed."
+   },
+   "modes": [
+    {
+     "name": "Primary documented/compatibility profile",
+     "handheldResolution": "720p",
+     "handheldFps": "60",
+     "tvResolution": "1080p",
+     "tvFps": "60",
+     "hdr": false,
+     "vrr": false,
+     "notes": "Backward-compatible Nintendo Switch software on Nintendo Switch 2; no native Switch 2 edition assumed."
+    }
+   ],
+   "upscaling": "Game / system-specific scaling where applicable",
+   "rayTracing": false,
+   "rayTracingMode": "Not Supported",
+   "loadingTime": "Scene-dependent",
+   "loadingNotes": "Loading time varies by scene, save state, storage, version, and patch.",
+   "gameVersion": "Current listed version",
+   "patchVersion": "Current available update",
+   "testedDate": "2026-08-27",
+   "sourceName": "Official product / compatibility information",
+   "sourceUrl": "https://www.nintendo.com/us/store/products/splatoon-3-bundle-game-plus-expansion-pass-switch/",
+   "performanceNotes": "Backward-compatible Nintendo Switch software on Nintendo Switch 2; no native Switch 2 edition assumed."
+  }
+ ],
+ "switch2UpgradePrice": 0,
+ "galleryImages": [
+  {
+   "alt": "Verified game-world/promotional media 1",
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000016793/ca1c9fed48b7d2906855956a53f6fe3eba6d868f4d5a22a2376e5740111f01a6"
+  },
+  {
+   "alt": "Verified game-world/promotional media 2",
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000016793/e67088f57a0775b090824fb7fa38b5dc450dfca24fbadf237081c1a5783abe38"
+  },
+  {
+   "alt": "Verified game-world/promotional media 3",
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000016793/0acb7055768b4b910439bf79d4b9baf50a0aafe0d97db389fe3b1c5508faab54"
+  },
+  {
+   "alt": "Verified game-world/promotional media 4",
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000016793/9c325e78365434f55d314bf87d60bd8f33a191aeb1f0eee6aa20773bbce7904a"
+  },
+  {
+   "alt": "Verified game-world/promotional media 5",
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000016793/209b5fe1ef2d3eb422b1b0a268f953254706e116e87022cb234834e704d2c092"
+  }
+ ],
+ "boxContentsList": [],
+ "image": "https://assets.nintendo.com/image/upload/ar_16:9,c_fill,g_auto,w_1600/f_auto/q_auto/dpr_1.5/store/software/switch/70070000016793/35c22829b4226bb96a59f3945759ad001bab2cc7745dcff0db50099694f75681",
+ "banner": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000016793/ca1c9fed48b7d2906855956a53f6fe3eba6d868f4d5a22a2376e5740111f01a6",
+ "schemaId": "",
+ "batchImport": true,
+ "createdAt": "2026-08-28T18:40:32.414Z",
+ "updatedAt": "2026-08-28T18:40:32.414Z"
+}

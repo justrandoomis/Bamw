@@ -1,0 +1,484 @@
+{
+ "title": "Split Fiction",
+ "titleEn": "Split Fiction",
+ "titleKu": "Split Fiction",
+ "slug": "split-fiction",
+ "description": "Split Fiction is a two-player cooperative action-adventure by Hazelight Studios. Writers Mio and Zoe become trapped in a simulation built from their contrasting science-fiction and fantasy stories, forcing them to cooperate through rapidly changing mechanics, platforming, action, and puzzle sequences. The Nintendo Switch 2 version supports cooperative play and Friend's Pass features.",
+ "descriptionEn": "Split Fiction is a two-player cooperative action-adventure by Hazelight Studios. Writers Mio and Zoe become trapped in a simulation built from their contrasting science-fiction and fantasy stories, forcing them to cooperate through rapidly changing mechanics, platforming, action, and puzzle sequences. The Nintendo Switch 2 version supports cooperative play and Friend's Pass features.",
+ "descriptionKu": "Split Fiction is a two-player cooperative action-adventure by Hazelight Studios. Writers Mio and Zoe become trapped in a simulation built from their contrasting science-fiction and fantasy stories, forcing them to cooperate through rapidly changing mechanics, platforming, action, and puzzle sequences. The Nintendo Switch 2 version supports cooperative play and Friend's Pass features.",
+ "cartridgeImage": "https://images.launchbox-app.com//ea58077f-3de2-436f-81b6-e37307fa11db.jpg",
+ "nintendoCardImage": "https://gamesdb-images.launchbox.gg/r2_2f28d57f-39a6-459a-8a42-fa8c12ee9186.jpg",
+ "coverHiResImage": "",
+ "coverImage": "https://gamesdb-images.launchbox.gg/r2_2c46254b-a38e-4cfc-8fb7-6ccb419aade5.jpeg",
+ "bannerImages": [
+  "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000097434/412e83b7bb3645076ccfb8d8d52b69b0f88708094d4bd9aa5f874b212d206066",
+  "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000097434/315f8e5eecf3249963ab13a9ec3771118ae93e1cbf00ec406d62d00d106464bf",
+  "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000097434/d5406e9f7519ef49b00f8a532b8fe4632ca3609a432786f22930b380b620d0ee",
+  "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000097434/e532c0dbc188e84af7288a8101e94dc9942c506dfcc286b2272773fc665efec1",
+  "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000097434/be249cd6be25b898fbbc76fbe4b825dd4b349242fcbf17d58e3c285ff11ac4dd",
+  "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000097434/93235aacc0a0b6832ac84dc51c234064e0fd858cccd7ef247c765c155df14ce6",
+  "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000097434/412e83b7bb3645076ccfb8d8d52b69b0f88708094d4bd9aa5f874b212d206066",
+  "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000097434/315f8e5eecf3249963ab13a9ec3771118ae93e1cbf00ec406d62d00d106464bf"
+ ],
+ "gallery": [],
+ "youtubeTrailer": "https://www.youtube.com/watch?v=zXQ7sjNV35k",
+ "releaseDate": "2025-06-05",
+ "ageRating": "ESRB: T — Blood and Gore, Crude Humor, Language, Violence",
+ "metacriticRating": 88,
+ "genres": [
+  "Action",
+  "Adventure",
+  "Platformer"
+ ],
+ "platform": "switch2",
+ "size": 69.23,
+ "numberOfPlayers": "2",
+ "supportedLanguages": "English, French, German, Italian, Spanish, Japanese, Korean, Simplified Chinese, Traditional Chinese, Brazilian Portuguese",
+ "hardwareModel": "",
+ "colorEdition": "",
+ "storageCapacity": "",
+ "screenSpecs": "",
+ "batteryLife": "",
+ "boxContents": [],
+ "boxContentsText": "",
+ "warrantyCondition": "",
+ "connectivity": "",
+ "characterName": "Link",
+ "amiiboSeries": "The Legend of Zelda",
+ "figureType": "figure",
+ "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+ "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+ "boxCondition": "mib",
+ "releaseWave": "Wave 2 (Restock)",
+ "rarity": "standard",
+ "accessoryType": "حقيبة حماية وتنقل Carry Case",
+ "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+ "brand": "Nintendo Official",
+ "material": "Hard EVA Shockproof Shell",
+ "availableColors": "Black, Neon Red/Blue, White",
+ "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+ "cardValue": "$20 eShop Balance",
+ "region": "Global",
+ "cardType": "eshop",
+ "deliveryMethod": "instant_code",
+ "redemptionGuide": "",
+ "redemptionSteps": [],
+ "validity": "no_expiry",
+ "usedType": "cartridge",
+ "conditionGrade": "like_new",
+ "packaging": "cib",
+ "guaranteeStatus": "tested_30days",
+ "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+ "accountType": "primary",
+ "badge": "وفر 40%",
+ "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+ "price": 15000,
+ "cost": 2250,
+ "stock": 999999,
+ "isInfiniteStock": true,
+ "isHidden": false,
+ "displayOrder": 0,
+ "category": "nintendo-switch-games",
+ "categoryId": "nintendo-switch-games",
+ "categoryEn": "",
+ "categoryKu": "",
+ "options": [
+  {
+   "id": "offline_account",
+   "name": "Offline Account",
+   "description": "Offline account option",
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_account",
+   "name": "Online Account",
+   "description": "Online account option",
+   "isInfiniteStock": true
+  }
+ ],
+ "types": [
+  {
+   "id": "standard_offline",
+   "name": "Standard Edition",
+   "optionId": "offline_account",
+   "price": "15000",
+   "cost": 2250,
+   "description": "Standard game access — Offline Account.",
+   "isInfiniteStock": true
+  },
+  {
+   "id": "standard_online",
+   "name": "Standard Edition",
+   "optionId": "online_account",
+   "price": "45000",
+   "cost": 27250,
+   "description": "Standard game access — Online Account.",
+   "isInfiniteStock": true
+  }
+ ],
+ "editions": [],
+ "dlcs": [],
+ "isActive": true,
+ "status": "active",
+ "kind": "account",
+ "trade_value_iqd": 40000,
+ "store_offer_bonus_iqd": 10000,
+ "trade_enabled": true,
+ "trade_value_locked": false,
+ "id": "prd_f5dc0c57193d4c81",
+ "schema_version": 20,
+ "titleAr": "سبليت فيكشن",
+ "compatibility": [
+  "Nintendo Switch 2"
+ ],
+ "edition": "Standard",
+ "developer": "Hazelight Studios",
+ "publisher": "Electronic Arts",
+ "opencriticRating": 91,
+ "userScore": 8.6,
+ "officialUrl": "https://www.nintendo.com/us/store/products/split-fiction-switch-2/",
+ "eshopUrl": "https://www.nintendo.com/us/store/products/split-fiction-switch-2/",
+ "gameIsOffline": true,
+ "gameIsOnline": true,
+ "gameLanguageLocked": false,
+ "description_short": "Hazelight's two-player co-op adventure jumps between science-fiction and fantasy worlds with constantly changing mechanics.",
+ "description_ar": "Split Fiction هي مغامرة أكشن تعاونية للاعبين من Hazelight Studios. تجد الكاتبتان Mio وZoe نفسيهما داخل محاكاة تمزج قصص الخيال العلمي والفانتازيا الخاصة بهما، ويجب عليهما التعاون عبر آليات لعب متغيرة باستمرار ومنصات وأكشن وألغاز. يدعم إصدار Nintendo Switch 2 اللعب التعاوني وميزات Friend's Pass.",
+ "box_front_url": "https://images.launchbox-app.com//ea58077f-3de2-436f-81b6-e37307fa11db.jpg",
+ "videos": [
+  {
+   "title": "Split Fiction — Official Trailer",
+   "url": "https://www.youtube.com/watch?v=zXQ7sjNV35k"
+  }
+ ],
+ "nsuid": "70010000097434",
+ "nintendoEshopUrl": "https://www.nintendo.com/us/store/products/split-fiction-switch-2/",
+ "nintendoOnlineRequired": true,
+ "nintendoCloudSaves": true,
+ "tvMode": true,
+ "tabletopMode": true,
+ "handheldMode": true,
+ "nintendoPlayModes": "TV, Tabletop, Handheld",
+ "nintendoNotes": "Native or seller-classified Nintendo Switch 2 product for this import. Product account variants and costs are based on the supplied seller screenshots; platform classification follows the seller-card rule requested for this import.\n\nOffline selling price is selected within 5,000–25,000 IQD according to demand, supply, popularity, recency, perceived market value and, where relevant, supplier cost. It is not a fixed cost multiplier. Online pricing is market-based and may be higher.\n\nExtraction rules used for this file: production images are verified game media, not seller/Taobao images. Front Box Cover is retail box-front artwork; Square Card is a separate square asset; Cover Image is page/key art; 3D Texture Source is high-resolution front cover art. Banner and Gallery media are separate verified artwork/screenshots. Device Performance contains one device object only. Offline selling prices are chosen within 5,000–25,000 IQD according to demand, supply, popularity, recency, perceived value and supplier cost; online prices remain market-based and may be higher.",
+ "switch2Enhanced": false,
+ "switch2Exclusive": true,
+ "switch2Features": [
+  "Designed or seller-classified for Nintendo Switch 2"
+ ],
+ "tagline": "Two writers, two genres, one co-op adventure built on constant reinvention.",
+ "playTimeMain": 14,
+ "playTimeFull": 16,
+ "editionsList": [
+  {
+   "name": "Standard Edition",
+   "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000097434/6de085f1efb6c90b754e383fe810f3cb0e847105bb584c706f4cd3b5c66491f4",
+   "contents": [
+    {
+     "label": "Base game"
+    },
+    {
+     "label": "Seller account access"
+    },
+    {
+     "label": "Nintendo platform version shown in this import"
+    }
+   ]
+  }
+ ],
+ "gameplayPillars": [
+  {
+   "title": "Two-Player Cooperation",
+   "description": "Progress depends on synchronized actions and complementary roles.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000097434/412e83b7bb3645076ccfb8d8d52b69b0f88708094d4bd9aa5f874b212d206066"
+  },
+  {
+   "title": "Genre Switching",
+   "description": "The adventure jumps between science fiction, fantasy, and many one-off gameplay concepts.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000097434/315f8e5eecf3249963ab13a9ec3771118ae93e1cbf00ec406d62d00d106464bf"
+  },
+  {
+   "title": "Spectacle and Movement",
+   "description": "Platforming, vehicles, bosses, and cinematic action constantly reshape the pacing.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000097434/d5406e9f7519ef49b00f8a532b8fe4632ca3609a432786f22930b380b620d0ee"
+  }
+ ],
+ "worldSummary": "Mio's science-fiction ideas and Zoe's fantasy stories collide inside a machine that steals creative ideas, creating shifting worlds the pair must escape.",
+ "storyChapters": [
+  {
+   "title": "Trapped in the Machine",
+   "body": "Writers Mio and Zoe are pulled into a technology designed to extract their creative ideas, trapping them inside simulated worlds based on their fiction.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000097434/d5406e9f7519ef49b00f8a532b8fe4632ca3609a432786f22930b380b620d0ee"
+  },
+  {
+   "title": "Sci-Fi and Fantasy Collide",
+   "body": "The pair jump between radically different science-fiction and fantasy scenarios, relying on complementary co-op mechanics unique to each chapter.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000097434/e532c0dbc188e84af7288a8101e94dc9942c506dfcc286b2272773fc665efec1"
+  },
+  {
+   "title": "Escape Through Cooperation",
+   "body": "To break free, Mio and Zoe must learn to trust one another, confront personal fears reflected by their stories, and overcome the system controlling the simulations.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000097434/be249cd6be25b898fbbc76fbe4b825dd4b349242fcbf17d58e3c285ff11ac4dd"
+  }
+ ],
+ "galleryImages": [
+  {
+   "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000097434/e532c0dbc188e84af7288a8101e94dc9942c506dfcc286b2272773fc665efec1",
+   "alt": "Verified official/publisher media for Split Fiction — gallery image 1."
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000097434/be249cd6be25b898fbbc76fbe4b825dd4b349242fcbf17d58e3c285ff11ac4dd",
+   "alt": "Verified official/publisher media for Split Fiction — gallery image 2."
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000097434/93235aacc0a0b6832ac84dc51c234064e0fd858cccd7ef247c765c155df14ce6",
+   "alt": "Verified official/publisher media for Split Fiction — gallery image 3."
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000097434/412e83b7bb3645076ccfb8d8d52b69b0f88708094d4bd9aa5f874b212d206066",
+   "alt": "Verified official/publisher media for Split Fiction — gallery image 4."
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000097434/315f8e5eecf3249963ab13a9ec3771118ae93e1cbf00ec406d62d00d106464bf",
+   "alt": "Verified official/publisher media for Split Fiction — gallery image 5."
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000097434/d5406e9f7519ef49b00f8a532b8fe4632ca3609a432786f22930b380b620d0ee",
+   "alt": "Verified official/publisher media for Split Fiction — gallery image 6."
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000097434/412e83b7bb3645076ccfb8d8d52b69b0f88708094d4bd9aa5f874b212d206066",
+   "alt": "Verified official/publisher media for Split Fiction — gallery image 7."
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000097434/315f8e5eecf3249963ab13a9ec3771118ae93e1cbf00ec406d62d00d106464bf",
+   "alt": "Verified official/publisher media for Split Fiction — gallery image 8."
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000097434/d5406e9f7519ef49b00f8a532b8fe4632ca3609a432786f22930b380b620d0ee",
+   "alt": "Verified official/publisher media for Split Fiction — gallery image 9."
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cc_fill%2Cg_auto/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000097434/6de085f1efb6c90b754e383fe810f3cb0e847105bb584c706f4cd3b5c66491f4",
+   "alt": "Verified official/publisher media for Split Fiction — gallery image 10."
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000097434/6de085f1efb6c90b754e383fe810f3cb0e847105bb584c706f4cd3b5c66491f4",
+   "alt": "Verified official/publisher media for Split Fiction — gallery image 11."
+  },
+  {
+   "url": "https://gamesdb-images.launchbox.gg/r2_2c46254b-a38e-4cfc-8fb7-6ccb419aade5.jpeg",
+   "alt": "Verified official/publisher media for Split Fiction — gallery image 12."
+  }
+ ],
+ "perfResolutionDocked": "Up to 1920×1080 output",
+ "perfResolutionHandheld": "Up to 1920×1080 output",
+ "perfFps": "30",
+ "perfNotes": "The Nintendo Switch 2 version targets 30 fps; review coverage reports 1080p output.",
+ "devicePerformance": [
+  {
+   "device": "Nintendo Switch 2",
+   "deviceSlug": "nintendo-switch-2",
+   "deviceModel": "Nintendo Switch 2",
+   "informationStatus": "review-analysis",
+   "handheld": {
+    "supported": true,
+    "resolution": "Up to 1920×1080 output",
+    "outputResolution": "Up to 1920×1080 output",
+    "fps": "30",
+    "notes": "The Nintendo Switch 2 version targets 30 fps; review coverage reports 1080p output."
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "Up to 1920×1080 output",
+    "outputResolution": "Up to 1920×1080 output",
+    "fps": "30",
+    "notes": "The Nintendo Switch 2 version targets 30 fps; review coverage reports 1080p output."
+   },
+   "sourceName": "TechRadar Switch 2 review",
+   "sourceUrl": "https://www.techradar.com/gaming/nintendo-switch/split-fiction-switch-2-review",
+   "verifiedAt": "2026-08-24",
+   "verificationStatus": "verified",
+   "performanceNotes": "The Nintendo Switch 2 version targets 30 fps; review coverage reports 1080p output."
+  }
+ ],
+ "downloadSizeGb": 69.23,
+ "requiredSpaceGb": 69.2,
+ "storageNotes": "Official/verified listed game download size: approximately 69.2 GB. Updates and DLC may require additional space.",
+ "languagesAudio": [
+  "English"
+ ],
+ "languagesText": [
+  "English",
+  "Japanese",
+  "Simplified Chinese"
+ ],
+ "arabicSupport": false,
+ "mpLocalPlayers": true,
+ "mpOnlinePlayers": true,
+ "mpCoop": true,
+ "mpCompetitive": false,
+ "mpSplitScreen": true,
+ "mpLocalWireless": true,
+ "guides": [
+  {
+   "title": "Official product and gameplay information",
+   "summary": "Official Nintendo/publisher information covering features, supported modes, requirements and product-specific notices.",
+   "url": "https://www.nintendo.com/us/store/products/split-fiction-switch-2/"
+  },
+  {
+   "title": "GameFAQs guides and FAQs search",
+   "summary": "Community guide index for walkthroughs, FAQs, collectibles, unlockables and troubleshooting. Verify platform/version when following a guide.",
+   "url": "https://gamefaqs.gamespot.com/search?game=Split+Fiction"
+  },
+  {
+   "title": "Deku Deals technical/product reference",
+   "summary": "Reference page used for platform, file size, play modes, critic aggregates and completion-time metadata where available.",
+   "url": "https://www.dekudeals.com/items/split-fiction"
+  }
+ ],
+ "completionMain": 14,
+ "completionExtras": 15,
+ "completionAll": 16,
+ "faq": [
+  {
+   "q": "What platform is this import for?",
+   "a": "This import is classified as Nintendo Switch 2."
+  },
+  {
+   "q": "How many players are supported?",
+   "a": "Official player support varies by mode; the primary published range is 2 player(s). See multiplayer fields for local, wireless, and online capabilities."
+  },
+  {
+   "q": "Does this seller listing include a separate DLC account type?",
+   "a": "No. The supplied seller listing shows two variants, so only Standard Offline and Standard Online account types are created."
+  }
+ ],
+ "verdictScore": 9,
+ "verdictSummary": "Editorial synthesis for Split Fiction, based on the verified feature set, platform implementation, content scope and aggregated critical reception. This score is an internal summary, not a copied external review score.",
+ "reviews": [
+  {
+   "source": "Metacritic",
+   "score": "88",
+   "quote": "Aggregated critic score for the game/platform listing.",
+   "url": "https://www.dekudeals.com/items/split-fiction"
+  },
+  {
+   "source": "OpenCritic",
+   "score": "91",
+   "quote": "Aggregated critic score reported for the game.",
+   "url": "https://www.dekudeals.com/items/split-fiction"
+  },
+  {
+   "source": "Metacritic User Score",
+   "score": "8.6",
+   "quote": "Aggregated user score reference.",
+   "url": "https://www.dekudeals.com/items/split-fiction"
+  }
+ ],
+ "timeline": [
+  {
+   "date": "2025-03-06",
+   "title": "Original release",
+   "body": "Split Fiction launched on PC, PlayStation 5 and Xbox Series X|S."
+  },
+  {
+   "date": "2025-06-05",
+   "title": "Nintendo Switch 2 release",
+   "body": "The Switch 2 version launched alongside the new hardware."
+  },
+  {
+   "date": "2025-06-05",
+   "title": "Friend’s Pass on Switch 2",
+   "body": "The Nintendo release supports the game’s two-player Friend’s Pass model."
+  }
+ ],
+ "patchNotes": [
+  {
+   "version": "Switch 2 launch build",
+   "date": "2025-06-05",
+   "body": "Nintendo Switch 2 edition released with local/online co-op features."
+  }
+ ],
+ "soundtrack": [
+  {
+   "title": "Split Fiction — official game music information",
+   "url": "https://www.ea.com/games/split-fiction/split-fiction"
+  },
+  {
+   "title": "Split Fiction — VGMdb soundtrack catalog search",
+   "url": "https://vgmdb.net/search?q=Split+Fiction&type=album"
+  },
+  {
+   "title": "Split Fiction — soundtrack video search",
+   "url": "https://www.youtube.com/results?search_query=Split+Fiction+official+soundtrack"
+  }
+ ],
+ "seriesName": "Split Fiction",
+ "studioName": "Hazelight Studios",
+ "studioUrl": "https://www.hazelight.se/",
+ "studioLocation": "Stockholm, Sweden",
+ "studioAbout": "Hazelight Studios specializes in games designed around two-player cooperation.",
+ "sources": [
+  {
+   "name": "Nintendo / publisher official product page",
+   "url": "https://www.nintendo.com/us/store/products/split-fiction-switch-2/"
+  },
+  {
+   "name": "Deku Deals — platform, size, scores and play-time reference",
+   "url": "https://www.dekudeals.com/items/split-fiction"
+  },
+  {
+   "name": "The Cover Project — Full Retail Cover page",
+   "url": "https://www.thecoverproject.net/view.php?game_id=19649"
+  }
+ ],
+ "fitFor": [
+  "Two-player co-op fans",
+  "Players who enjoy rapid gameplay variety",
+  "Fans of It Takes Two and Hazelight games"
+ ],
+ "notFitFor": [
+  "Solo-only players",
+  "Players seeking competitive multiplayer",
+  "Players who prefer one consistent gameplay system"
+ ],
+ "features": [
+  "Two-player cooperative campaign",
+  "Science-fiction and fantasy worlds",
+  "Frequent mechanic changes and Friend's Pass support"
+ ],
+ "verdictPros": [
+  "Excellent purpose-built two-player co-op design",
+  "Rapid variety between science-fiction and fantasy mechanics",
+  "Friend’s Pass lowers the barrier for online co-op"
+ ],
+ "verdictCons": [
+  "Requires two players",
+  "Very large download size on Switch 2",
+  "Constant mechanical changes can feel demanding to less experienced players"
+ ],
+ "seriesEntries": [
+  "It Takes Two",
+  "Split Fiction"
+ ],
+ "setupNeeds": [
+  "Nintendo Switch 2 system",
+  "Two players required",
+  "Nintendo Switch Online membership required for online play"
+ ],
+ "boxContentsList": "[Circular]",
+ "image": "https://gamesdb-images.launchbox.gg/r2_2c46254b-a38e-4cfc-8fb7-6ccb419aade5.jpeg",
+ "banner": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000097434/412e83b7bb3645076ccfb8d8d52b69b0f88708094d4bd9aa5f874b212d206066",
+ "schemaId": "",
+ "badgeEn": "وفر 40%",
+ "badgeKu": "وفر 40%",
+ "featuresEn": [
+  "Two-player cooperative campaign",
+  "Science-fiction and fantasy worlds",
+  "Frequent mechanic changes and Friend's Pass support"
+ ],
+ "featuresKu": [
+  "Two-player cooperative campaign",
+  "Science-fiction and fantasy worlds",
+  "Frequent mechanic changes and Friend's Pass support"
+ ]
+}
