@@ -1,51 +1,187 @@
 {
  "batch": "026",
- "apply": false,
+ "apply": true,
  "games": [
   {
    "id": "prd_3b080bbbeb5a406e",
    "slug": "the-hundred-line-last-defense-academy-switch",
    "baseHash": "125c0fb5b114a9bc6ca15674725fd51cff9614dd8335f037bb71f3b684143a46",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "informationStatus": "not_published",
+      "unavailableReason": "Aniplex and Too Kyo Games publish no resolution or frame-rate figures for the Switch release.",
+      "handheld": {
+       "supported": true
+      },
+      "tv": {
+       "supported": true
+      },
+      "modes": [],
+      "sourceName": "Official product information",
+      "sourceUrl": "https://www.nintendolife.com/games/nintendo-switch/the_hundred_line_last_defense_academy",
+      "verificationStatus": "official"
+     }
+    ]
+   },
+   "clear": [
+    "youtubeTrailer",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "The trailer field held a Steam video-CDN URL, which the YouTube embed cannot play — removed. The doubled 'Not Officially Published' prose records become one proper not-published platform record. 2025-04-24, Metacritic 86 verified (hidden product)."
   },
   {
    "id": "prd_928548e6394f46ae",
    "slug": "the-legend-of-zelda-breath-of-the-wild-switch-1",
    "baseHash": "54c3995c13fc76eaa6475efbc3dfdc97f90bd442e8433b47e7ae3a7abda90c36",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "informationStatus": "available",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p",
+       "fps": "30"
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "900p",
+       "fps": "30"
+      },
+      "modes": [],
+      "sourceName": "Digital Foundry's analysis of Breath of the Wild",
+      "sourceUrl": "https://www.nintendolife.com/games/nintendo-switch/the_legend_of_zelda_breath_of_the_wild",
+      "verificationStatus": "technical_analysis"
+     }
+    ]
+   },
+   "clear": [
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "Doubled records collapse to the platform record with Digital Foundry's canonical 900p/720p at 30 fps figures. 2017-03-03, Metacritic 97 verified (hidden product)."
   },
   {
    "id": "prd_bbbc07d460f44474",
    "slug": "the-legend-of-zelda-breath-of-the-wild-switch-2-edition",
    "baseHash": "6bf6f52fdfd16839288ece72e0fc930c92aed76d5aac8b07a4e2afa275d7d386",
    "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "clear": [
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "The unsupported Nintendo Switch record drops under the platform rule, keeping the documented 1080p/1440p at 60 fps Switch 2 Edition record. Hidden product with no images stored; none can be sourced and verified from this environment — flagged for the owner. 2025-06-05, Metacritic 97 kept."
   },
   {
    "id": "prd_26f23d46e1c542da",
    "slug": "the-legend-of-zelda-echoes-of-wisdom-switch",
    "baseHash": "319201a3b42916617e363484362e1140550afd5297201c23691a141bcfe3bf1f",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "informationStatus": "available",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p",
+       "fps": "60"
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p",
+       "fps": "60"
+      },
+      "modes": [],
+      "sourceName": "Technical coverage of Echoes of Wisdom",
+      "sourceUrl": "https://www.nintendolife.com/games/nintendo-switch/the_legend_of_zelda_echoes_of_wisdom",
+      "verificationStatus": "technical_analysis"
+     }
+    ]
+   },
+   "clear": [
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "Doubled records collapse to the platform record at the documented 60 fps. 2024-09-26, Metacritic 86 verified (hidden product)."
   },
   {
    "id": "prd_45936dd725184027",
    "slug": "the-legend-of-zelda-links-awakening-switch",
    "baseHash": "f0be24b235804c2985c6b09852d00252ee0623b7aec48fb1f0d371ed50a48c16",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "informationStatus": "available",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p",
+       "fps": "60 (occasional dips)"
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p",
+       "fps": "60 (occasional dips)"
+      },
+      "modes": [],
+      "sourceName": "Digital Foundry's analysis of Link's Awakening",
+      "sourceUrl": "https://www.nintendolife.com/games/nintendo-switch/the_legend_of_zelda_links_awakening",
+      "verificationStatus": "technical_analysis"
+     }
+    ]
+   },
+   "clear": [
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "Doubled records collapse to the platform record; the documented occasional frame dips noted alongside the 60 fps target. 2019-09-20, Metacritic 87 verified (hidden product)."
   }
  ]
 }
