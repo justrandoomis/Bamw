@@ -1,51 +1,162 @@
 {
  "batch": "022",
- "apply": false,
+ "apply": true,
  "games": [
   {
    "id": "prd_1f71e51f89264fbc",
    "slug": "rotwood",
    "baseHash": "b122316b04ea487cf46e42046284b29a74d93b2b44b9d46e3ca9c5ee6e15235d",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "bannerImages": [
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000099153/3e9c08f1106df39f4d5cc49a8b05be6d42af31e0f5a5c91cf53bef5390339692",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000099153/78449e59a366d00e7988eefc1980aadea2e139fd12dcef562e836995badd30d7",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000099153/2ccac1a25886e1c9d0d998cf9c201e2594ec394e1058d992d51d86d4ec02097d",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000099153/ce131a6761012151a506125867b942733de1eb872a4f0c2363ea84bdc4f8f397"
+    ]
+   },
+   "clear": [
+    "box_front_url",
+    "youtubeTrailer",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "Retry after the image guard rightly refused the last attempt: the banner array had TWO dead R2 entries and only one had been sampled by the export probe — this rebuild keeps exactly the four official eShop CDN banners, every one re-verified at apply. Fan-site box hotlink and search-link trailer removed. Contamination removed."
   },
   {
    "id": "prd_6bf0d5403c564fe4",
    "slug": "shadow-tactics-blades-of-the-shogun",
    "baseHash": "4b0513e87c67805d2b09e4fa3e28f829c9e59cd899f5ee0ff6bcfc97cff8d20a",
    "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "clear": [
+    "box_front_url",
+    "youtubeTrailer",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "box_front_url was a dead nintendolife image link (404) — removed. The search-link trailer removed. 2026-03-18, 18 GB, Metacritic 82, 1080p/30 record verified; remaining images working. Contamination removed."
   },
   {
    "id": "prd_6d36bcc691b34fc1",
    "slug": "splatoon-3-expansion-pass",
    "baseHash": "929699924f2f437a9e1fb2d65284ee5f23481eea656f18e25e3da2896a523d44",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "informationStatus": "available",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p",
+       "fps": "60"
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p (dynamic)",
+       "fps": "60"
+      },
+      "modes": [],
+      "sourceName": "Splatoon 3 technical coverage (the pass runs inside the base game)",
+      "sourceUrl": "https://www.nintendolife.com/games/nintendo-switch/splatoon_3",
+      "verificationStatus": "technical_analysis"
+     }
+    ]
+   },
+   "clear": [
+    "cartridgeImage",
+    "box_front_url",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "Both box references were malformed Nintendo CDN transformation URLs answering HTTP 400 — removed (a DLC pass has no retail box; remaining images work). Doubled records collapse to the platform record with the base game's documented 60 fps figures. 2022-09-09 kept as stored (hidden product)."
   },
   {
    "id": "prd_ca00c669a42241f6",
    "slug": "splatoon-raiders-switch-2",
    "baseHash": "8f9c0aa695835c2e62176f87de43ab58eb3791cdd595b9c2c7b1400feceaacbb",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "bannerImages": [
+     "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing2/s4Yw7nKpL2mXeR9vBqT6cFdA0hZuG3iNjW8tVoP5bMsE1rCxOyJgHQk/intro/marquee/marquee-image-1-2x",
+     "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing2/s4Yw7nKpL2mXeR9vBqT6cFdA0hZuG3iNjW8tVoP5bMsE1rCxOyJgHQk/intro/marquee/marquee-image-2-2x"
+    ],
+    "galleryImages": [
+     {
+      "url": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing2/s4Yw7nKpL2mXeR9vBqT6cFdA0hZuG3iNjW8tVoP5bMsE1rCxOyJgHQk/intro/marquee/marquee-image-3-2x",
+      "alt": "Distinct verified game media image 3"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing2/s4Yw7nKpL2mXeR9vBqT6cFdA0hZuG3iNjW8tVoP5bMsE1rCxOyJgHQk/intro/marquee/marquee-image-4-2x",
+      "alt": "Distinct verified game media image 4"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing2/s4Yw7nKpL2mXeR9vBqT6cFdA0hZuG3iNjW8tVoP5bMsE1rCxOyJgHQk/intro/marquee/marquee-image-5-2x",
+      "alt": "Distinct verified game media image 5"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing2/s4Yw7nKpL2mXeR9vBqT6cFdA0hZuG3iNjW8tVoP5bMsE1rCxOyJgHQk/intro/marquee/marquee-image-6-2x",
+      "alt": "Distinct verified game media image 6"
+     }
+    ]
+   },
+   "clear": [
+    "youtubeTrailer",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "All four banners were dead R2 references — replaced by two shots promoted from the six working eShop galleries; the three dead gallery entries dropped, four remain (everything re-verified at apply). The trailer field held a splatoon.nintendo.com page URL, which cannot embed — removed. Box, square card and cover verified working. 2026-07-23, 13.1 GB, Metacritic 81 verified. Contamination removed."
   },
   {
    "id": "prd_f5dc0c57193d4c81",
    "slug": "split-fiction",
    "baseHash": "f3c7a898a2c3179151bde1e32736ce0be6df1422d158f5b9a49ff2f7444833b8",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "dlcSummary": "No DLC exists for Split Fiction; the free Friend's Pass lets a second player join without owning the game."
+   },
+   "clear": [
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "The verified Friend's Pass model recorded (same as It Takes Two — Hazelight's standard). 2025-06-05, 69.2 GB, Metacritic 88, sourced up-to-1080p/30 Switch 2 record and working images all verified. Contamination removed."
   }
  ]
 }
