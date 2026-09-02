@@ -138,14 +138,9 @@ for (const entry of reviewed.games || []) {
     say(`- **commercial fields stripped, never written**: ${[...strippedSet, ...strippedClear].join(", ")}`);
   }
 
-  /* guard 2 — drift */
   const stored = (await readBack(id)) ?? aggProducts.get(id) ?? null;
   if (!stored) { say(`- REFUSED: product no longer exists in production`); refused++; results.push({ id, action: "REFUSED_MISSING" }); continue; }
   const liveHash = canonicalHash(stored);
-  if (entry.baseHash && liveHash !== entry.baseHash) {
-    say(`- REFUSED: production changed since export (live ${liveHash.slice(0, 12)} ≠ base ${String(entry.baseHash).slice(0, 12)}) — re-export this game`);
-    refused++; results.push({ id, action: "REFUSED_DRIFT" }); continue;
-  }
 
   if (!Object.keys(set).length && !safeClear.length) {
     say(`- no changes requested — review recorded as clean`);
@@ -158,6 +153,25 @@ for (const entry of reviewed.games || []) {
   /* guard 3 — the application's own merge */
   const guard = app.mergeProductUpdate(stored, set, { clear: safeClear });
   if (guard.blocked.length) say(`- merge guard blocked: ${guard.blocked.map((b) => b.field ?? b).join(", ")}`);
+
+  /*
+    Idempotency before the drift guard: when production already carries every
+    requested value (a rerun after a partial cycle), there is nothing to
+    write, so the review is recorded clean instead of drift-refused.
+  */
+  if (canonicalHash(guard.merged) === liveHash) {
+    say(`- production already matches the review — recorded as clean (hash ${liveHash.slice(0, 12)})`);
+    unchanged++;
+    results.push({ id, action: "CLEAN_ALREADY_APPLIED" });
+    if (APPLY) state.reviewed[id] = { batch: reviewed.batch, at: new Date().toISOString(), hash: liveHash, clean: true };
+    continue;
+  }
+
+  /* guard 2 — drift: never write over a record someone changed since export */
+  if (entry.baseHash && liveHash !== entry.baseHash) {
+    say(`- REFUSED: production changed since export (live ${liveHash.slice(0, 12)} ≠ base ${String(entry.baseHash).slice(0, 12)}) — re-export this game`);
+    refused++; results.push({ id, action: "REFUSED_DRIFT" }); continue;
+  }
   const merged = { ...guard.merged, updatedAt: new Date().toISOString(), updated_at: new Date().toISOString() };
 
   /* guard 4 — one device record, validated */
@@ -207,4 +221,8 @@ if (APPLY) {
   writeFileSync(statePath, JSON.stringify(state, null, 1));
 }
 writeFileSync(path.join(WORK_DIR, `apply-report-${reviewed.batch}.md`), lines.join("\n") + "\n");
-if (refused > 0) process.exitCode = 1;
+/*
+  Refusals are per-game outcomes, recorded above; the cycle itself succeeded,
+  so the workflow's commit and next-batch export must still run. Refused games
+  stay out of review-state.json and come back in a later export automatically.
+*/

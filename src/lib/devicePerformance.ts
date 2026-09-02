@@ -463,16 +463,22 @@ export function validateGameDevicePerformance(
     });
   }
 
-  if (!productSupportsSwitch2(product)) return issues;
-
+  /*
+    A game owns exactly one performance record: the one for its platform's
+    device. A Switch 1 game whose compatibility notes mention Switch 2 still
+    validates against its Nintendo Switch record — compatibility text never
+    creates a second device requirement.
+  */
+  const requiredDevice = PLATFORM_DEVICE[resolveGamePlatformKey(product["platform"])];
   const records = getDevicePerformanceList(product);
-  const record = records.find((item) => item.deviceSlug === "nintendo-switch-2");
+  const record =
+    records.find((item) => item.deviceSlug === requiredDevice.slug) ??
+    (records.length === 1 ? records[0] : undefined);
   if (!record) {
     issues.push({
       key: "device_performance",
       severity: "error",
-      message:
-        "Nintendo Switch 2 performance information is required. Please provide Handheld resolution/FPS and TV resolution/FPS, or mark an unsupported mode as Not Supported.",
+      message: `${requiredDevice.name} performance information is required. Please provide Handheld resolution/FPS and TV resolution/FPS, or mark an unsupported mode as Not Supported.`,
     });
     return issues;
   }
@@ -497,7 +503,7 @@ export function validateGameDevicePerformance(
     issues.push({
       key: "device_performance",
       severity: "error",
-      message: `Import validation error: Nintendo Switch 2 performance data is required. Missing: ${missing.join(", ")}. If a mode is not supported, mark it as Not Supported.`,
+      message: `Import validation error: ${requiredDevice.name} performance data is required. Missing: ${missing.join(", ")}. If a mode is not supported, mark it as Not Supported.`,
     });
   }
 
@@ -506,7 +512,7 @@ export function validateGameDevicePerformance(
 
 export function requiresPerformanceReview(product: Record_ | null | undefined): boolean {
   if (!product || typeof product !== "object") return false;
-  return productSupportsSwitch2(product) && validateGameDevicePerformance(product).length > 0;
+  return validateGameDevicePerformance(product).length > 0;
 }
 
 function modeSummary(label: string, mode?: DeviceModePerformance): string {
