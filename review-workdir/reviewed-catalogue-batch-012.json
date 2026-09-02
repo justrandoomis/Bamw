@@ -1,51 +1,179 @@
 {
  "batch": "012",
- "apply": false,
+ "apply": true,
  "games": [
   {
    "id": "prd_b9ca0595530f4d17",
    "slug": "it-takes-two",
    "baseHash": "d4f26a5feedf4b4505a51ebd3c8d9b2e90df2eeaf34bdbdfdfeb66c1a92ce129",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "dlcSummary": "No DLC exists for It Takes Two; the free Friend's Pass lets a second player join without owning the game.",
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "informationStatus": "available",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p output",
+       "fps": "30"
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p output",
+       "fps": "30"
+      },
+      "modes": [],
+      "sourceName": "Turn Me Up Games developer interview on the Switch port's resolution and frame rate",
+      "sourceUrl": "https://www.gonintendo.com/contents/11741-it-takes-two-devs-talk-switch-resolution-framerate-think-the-game-will-exceed",
+      "verificationStatus": "official"
+     }
+    ]
+   },
+   "clear": [
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "Retry of the batch-011 entry: the platform rule rightly refused to inherit figures from a Switch-2-badged record, so this sets the Nintendo Switch record explicitly — the port developer's stated 720p/1080p output at 30 fps, with the interview as source. Friend's Pass model recorded. Contamination removed."
   },
   {
    "id": "prd_e035ee51b91d4187",
    "slug": "just-dance-2026-edition",
    "baseHash": "f0ad6a3f22437f2bebf741464b663d7010657931223224c7c98999d87c79c10d",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "dlcSummary": "The song catalogue grows through the paid Just Dance+ subscription; no traditional DLC packs are sold.",
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "informationStatus": "not_published",
+      "unavailableReason": "Ubisoft publishes no resolution or frame-rate figures for Just Dance 2026 Edition. Handheld play is not supported: the game is danced with detached Joy-Con in front of the screen.",
+      "handheld": {
+       "supported": false
+      },
+      "tv": {
+       "supported": true
+      },
+      "modes": [],
+      "sourceName": "Ubisoft official product page",
+      "sourceUrl": "https://www.ubisoft.com/en-us/game/just-dance/2026",
+      "verificationStatus": "official"
+     }
+    ]
+   },
+   "clear": [
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "The record's prose 'Not Supported/Not Published' strings become proper structure: handheld correctly flagged unsupported (detached Joy-Con dancing), TV figures honestly not published by Ubisoft. Just Dance+ subscription model recorded in dlcSummary. 2025-10-14, Metacritic 74 kept. All images verified working. Contamination removed."
   },
   {
    "id": "prd_0744b9276a164853",
    "slug": "kingdom-hearts-integrum-masterpiece-for-cloud",
    "baseHash": "8ca68fa49270ae1e7b42ac5aef77d677d089bceb86bb1374a1d19e36e65ce743",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "informationStatus": "not_published",
+      "unavailableReason": "Cloud-streamed collection: delivered resolution and frame rate depend on the streaming service and the player's connection. Square Enix publishes no fixed figures.",
+      "handheld": {
+       "supported": true,
+       "resolution": "Cloud stream — not published",
+       "fps": "Cloud stream — not published"
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "Cloud stream — not published",
+       "fps": "Cloud stream — not published"
+      },
+      "modes": [],
+      "sourceName": "Nintendo eShop product page (Cloud Version)",
+      "sourceUrl": "https://www.nintendo.com/us/store/products/kingdom-hearts-integrum-masterpiece-for-cloud-switch/",
+      "verificationStatus": "official"
+     }
+    ]
+   },
+   "clear": [
+    "metacriticRating",
+    "supportedLanguages",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "The recurring '85' string removed (no verifiable aggregate for the cloud collection) along with the referral language sentence. The doubled cloud records collapse to one honest cloud-streaming platform record, same pattern as the Plague Tale cloud SKU in batch 001. 2022-02-10, 0.1 GB launcher size verified plausible (hidden, imageless product)."
   },
   {
    "id": "prd_f2f7233a58f94d1c",
    "slug": "kirby-air-riders",
    "baseHash": "4752971711ed74c1b129691a23dd4e18ae3f0f12525cc393dfee2105257d6ff2",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "size": 8.5,
+    "downloadSizeGb": 8.5
+   },
+   "clear": [
+    "cartridgeImage",
+    "nintendoCardImage",
+    "coverImage",
+    "image",
+    "bannerImages",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "ATTENTION OWNER: every image reference on this VISIBLE product was a dead R2 file (403) — box, square card, cover, listing image and all three banners — and no verified official replacement is reachable from this environment (Nintendo CDN URLs cannot be discovered without eShop access). The broken references are removed so listings fall back cleanly instead of rendering broken; the product needs its images re-uploaded through the admin. Size string '8.5 GB' becomes a number. 2025-11-20, Metacritic 79, 900p/1080p at 60 fps record verified. Contamination removed."
   },
   {
    "id": "prd_950ae4b861754153",
    "slug": "layers-of-fear-the-final-masterpiece-edition",
    "baseHash": "dc91f814f5b694e1f750f1df46989169c68a4d522523e5514e2d9d6c5624dda3",
    "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "clear": [
+    "box_front_url",
+    "youtubeTrailer",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "box_front_url was a dead Amazon link (404) — removed; the working box remains in cartridgeImage. The trailer field held a YouTube SEARCH link — removed. 2025-12-19, 18.2 GB, Metacritic 82, dynamic 1080p-class record verified. Remaining images working. Contamination removed."
   }
  ]
 }
