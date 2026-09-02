@@ -1,51 +1,253 @@
 {
  "batch": "030",
- "apply": false,
+ "apply": true,
  "games": [
   {
    "id": "prd_4febaa0136bd4f7f",
    "slug": "xenoblade-chronicles-3-switch",
    "baseHash": "c7994b97de87e876e1b65514b14bd59a452f3f6659f01f65a19d64e7a6e090db",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "bannerImages": [
+     "https://images.launchbox-app.com//ae39d379-1cdf-4ad4-8151-b3ed29da1a7d.jpg",
+     "https://images.launchbox-app.com//49811b28-a83c-4697-95b9-3e2a4baab324.jpg"
+    ],
+    "galleryImages": [
+     {
+      "url": "https://images.launchbox-app.com//2cbf9443-a7b0-4cd3-b00d-fa32070e05d7.png",
+      "alt": "Battle artwork"
+     },
+     {
+      "url": "https://images.launchbox-app.com//5596a2b7-134b-4402-9cff-86eb757c864c.png",
+      "alt": "Additional promotional artwork"
+     }
+    ],
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "informationStatus": "available",
+      "handheld": {
+       "supported": true,
+       "resolution": "Up to 720p (reconstructed)",
+       "fps": "30"
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "Up to 1080p (reconstructed)",
+       "fps": "30"
+      },
+      "modes": [],
+      "sourceName": "Digital Foundry's analysis of Xenoblade Chronicles 3",
+      "sourceUrl": "https://www.nintendolife.com/games/nintendo-switch/xenoblade_chronicles_3",
+      "verificationStatus": "technical_analysis"
+     }
+    ]
+   },
+   "clear": [
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "All three banners were dead R2 references — two verified gallery shots promoted, two remain in the gallery. The Switch-2-badged record becomes the platform record keeping the documented reconstruction figures. 2022-07-29, Metacritic 89 verified. Contamination removed."
   },
   {
    "id": "prd_c171d6530cf74141",
    "slug": "xenoblade-chronicles-3-switch-2-edition",
    "baseHash": "df01831a52a3c7d97a486a99267bb63a68a8cd72ee8923fd74f124f16c9e3ab9",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "coverImage": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/en_US/products/games/switch/xenoblade-chronicles-3/114559-3-nintendo-switch-xenoblade-chron-3-se-ss-2-1280x720",
+    "image": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/en_US/products/games/switch/xenoblade-chronicles-3/114559-3-nintendo-switch-xenoblade-chron-3-se-ss-2-1280x720",
+    "bannerImages": [
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/en_US/products/games/switch/xenoblade-chronicles-3/114559-3-nintendo-switch-xenoblade-chron-3-se-ss-4-1280x720"
+    ],
+    "galleryImages": [
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/en_US/products/games/switch/xenoblade-chronicles-3/114559-3-nintendo-switch-xenoblade-chron-3-se-ss-5-1280x720",
+      "alt": "Official Nintendo gameplay image"
+     },
+     {
+      "url": "https://images.launchbox-app.com//dcd7b5c0-cd1f-453c-9811-419d9c70562d.jpg",
+      "alt": "Official Nintendo gameplay image"
+     },
+     {
+      "url": "https://images.launchbox-app.com//f556af34-e40d-4874-ba38-8c3b33138290.png",
+      "alt": "Official Nintendo feature image"
+     },
+     {
+      "url": "https://images.launchbox-app.com//5009d573-15de-4316-9625-82ee24790cca.png",
+      "alt": "Official Nintendo gallery image"
+     }
+    ]
+   },
+   "clear": [
+    "metacriticRating",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "Unreleased edition (2026-12-03): the inherited 89 removed — no aggregate can exist yet for this SKU. Dead cover and listing rebuilt from the first verified gallery; the one verified banner kept, three dead ones dropped. Announced 1080p/4K at 60 fps record kept. Contamination removed."
   },
   {
    "id": "prd_e5d365e777e043dd",
    "slug": "xenoblade-chronicles-definitive-edition-switch",
    "baseHash": "4c66f7fd9956d6b27a1dc88ea9446d1e48c3ddf5ae824c7870e0c646d6bef8c5",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "bannerImages": [
+     "https://images.launchbox-app.com//47f72f94-dd14-47ea-a8d2-c0347376e34e.jpg",
+     "https://images.launchbox-app.com//526f5189-c508-4636-893e-a296e597ca61.jpg"
+    ],
+    "galleryImages": [
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000029711/b7021497da254503844e542fe2ec9d276ce33694da4a4d729f417a43e2a590f0",
+      "alt": "Official Nintendo gameplay image"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000029711/f7d32fd2c563cdc060e7dd7e81c64a1768e4dae499964878f8dd157569d5fc32",
+      "alt": "Official Nintendo gameplay image"
+     }
+    ],
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "informationStatus": "available",
+      "handheld": {
+       "supported": true,
+       "resolution": "Dynamic 378p-540p",
+       "fps": "30"
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "Dynamic 504p-720p",
+       "fps": "30"
+      },
+      "modes": [],
+      "sourceName": "Digital Foundry's analysis of the Definitive Edition",
+      "sourceUrl": "https://www.nintendolife.com/games/nintendo-switch/xenoblade_chronicles_definitive_edition",
+      "verificationStatus": "technical_analysis"
+     }
+    ]
+   },
+   "clear": [
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "All four banners were dead — two verified gallery shots promoted, two remain. The Switch-2-badged record becomes the platform record keeping Digital Foundry's documented dynamic figures. 2020-05-29, Metacritic 89 verified. Contamination removed."
   },
   {
    "id": "prd_9e05c55e9e4f4c59",
    "slug": "xenoblade-chronicles-definitive-edition-switch-2-edition",
    "baseHash": "e91b26d8fc97c384ec2367bb7f1443afe4fbf803b0b2ee9c0c9eaf3abaed6305",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "metacriticRating": 85,
+    "metacriticUrl": "https://www.metacritic.com/game/xenoblade-chronicles-definitive-edition/critic-reviews/?platform=nintendo-switch-2",
+    "coverImage": "https://images.launchbox-app.com//4b3a0aef-4fc6-4a87-b949-08e32817d75c.jpg",
+    "image": "https://images.launchbox-app.com//4b3a0aef-4fc6-4a87-b949-08e32817d75c.jpg",
+    "bannerImages": [
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000029711/84970b80dc13a98cd389cf0e68ed1ed1dae571b7adbafa58588f0438a4202708",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000029711/37173d7f0b5b5fe1c586aaf9572510daf25292b7427a274e2760c08b3b433f72",
+     "https://images.launchbox-app.com//a23d5096-f19f-4a9c-9b8e-1f529a11e62b.jpg"
+    ],
+    "galleryImages": [
+     {
+      "url": "https://images.launchbox-app.com//7eed887f-c46d-4b80-b973-b1fe459c100c.jpg",
+      "alt": "Official Nintendo gameplay image"
+     },
+     {
+      "url": "https://images.launchbox-app.com//5618c4b3-d1a6-49b3-ad5c-8d48dc380175.jpg",
+      "alt": "Official Nintendo gameplay image"
+     },
+     {
+      "url": "https://images.launchbox-app.com//bb60150c-02b8-4264-b1bb-7c9115dda769.jpg",
+      "alt": "Official Nintendo feature image"
+     },
+     {
+      "url": "https://images.launchbox-app.com//64a16877-2bc0-4739-9989-88bf6062b7f2.jpg",
+      "alt": "Official Nintendo gallery image"
+     }
+    ]
+   },
+   "clear": [
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "Metacritic corrected 89 to 85 — 89 is the 2020 original's score, 85 is this Switch 2 Edition's own verified aggregate (19 critics). Dead cover and listing rebuilt from the first verified gallery; three verified banners kept, one dead dropped. 2026-06-09, announced 1080p/4K at 60 fps record kept. Contamination removed."
   },
   {
    "id": "prd_8eaacbcb18d549d6",
    "slug": "xenoblade-chronicles-x-definitive-edition-switch",
    "baseHash": "fa6e7fc25d0f83e601e35251d43c74c3b37b966578dfe2391ef7ad3efdc8f5d8",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "bannerImages": [
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000088832/905b34aef7513719641a558c612a0d43b92db62ddd15561776f2ac380c096e40",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000088832/cb260b77797e7c5cb106595fcd8486139048239497120cdf0f81e7b46a40ecda",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000088832/b1472a0c9662255b09f0aa3b19c4875f3e4cdca90a20e569bd42bfc81df26db0"
+    ],
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "informationStatus": "available",
+      "handheld": {
+       "supported": true,
+       "resolution": "Up to 720p",
+       "fps": "30"
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "Up to 1080p",
+       "fps": "30"
+      },
+      "modes": [],
+      "sourceName": "Technical coverage of X: Definitive Edition",
+      "sourceUrl": "https://www.nintendolife.com/games/nintendo-switch/xenoblade_chronicles_x_definitive_edition",
+      "verificationStatus": "technical_analysis"
+     }
+    ]
+   },
+   "clear": [
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "One dead banner dropped and, per the verified-only rule, the three unprobed entries excluded — three verified banners remain. The Switch-2-badged record becomes the platform record at the documented 30 fps. 2025-03-20, Metacritic 87 kept. Contamination removed."
   }
  ]
 }
