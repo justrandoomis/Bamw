@@ -1,51 +1,233 @@
 {
  "batch": "017",
- "apply": false,
+ "apply": true,
  "games": [
   {
    "id": "prd_37d91330c3514080",
    "slug": "nintendo-switch-2-welcome-tour",
    "baseHash": "3b2b47ff6e7dceed6c64c373f792bcc7db1909e9f180294616afb82481eb4ced",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "coverImage": "https://assets.nintendo.com/image/upload/ar_16:9,b_auto:border,c_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000096813/f1cfed90050a442c6a0025b9f19e64c279f8dba6d2f4a91530dc6097e8ce39b6",
+    "image": "https://assets.nintendo.com/image/upload/ar_16:9,b_auto:border,c_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000096813/f1cfed90050a442c6a0025b9f19e64c279f8dba6d2f4a91530dc6097e8ce39b6",
+    "bannerImages": [
+     "https://assets.nintendo.com/image/upload/ar_16:9,b_auto:border,c_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000096813/9f6f8dfdc663b241013211ad7b6006ae5f6b64dfa0f89fb6772e6eaad3de9902"
+    ],
+    "dlcSummary": "No DLC has been released for Nintendo Switch 2 Welcome Tour."
+   },
+   "clear": [
+    "nintendoCardImage",
+    "galleryImages",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "Five dead R2 roles on a visible product rebuilt from its two working official screenshots: one becomes cover and listing, the other the banner (the two-image gallery moves entirely, so the section hides rather than duplicating). Broken square-card removed. Genuine box and wrap remain. 2025-06-05, 1.7 GB, Metacritic 54 verified, 1080p/60 record kept. Contamination removed."
   },
   {
    "id": "prd_4241c51108d849b2",
    "slug": "nintendo-switch-sports",
    "baseHash": "88c71de1c381b37eed89f5cccd19fdbd328746d4f4e22471e34f6d05effb74db",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "informationStatus": "not_published",
+      "unavailableReason": "Nintendo publishes no resolution or frame-rate figures for Nintendo Switch Sports. Handheld play is not supported: the games are played with detached Joy-Con motion controls.",
+      "handheld": {
+       "supported": false
+      },
+      "tv": {
+       "supported": true
+      },
+      "modes": [],
+      "sourceName": "Nintendo official product page",
+      "sourceUrl": "https://www.nintendo.com/us/store/products/nintendo-switch-sports-switch/",
+      "verificationStatus": "official"
+     }
+    ]
+   },
+   "clear": [
+    "box_front_url",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "box_front_url was a malformed Nintendo CDN transformation URL answering HTTP 400 — removed; the working box remains. The Switch-2-badged record becomes an honest platform record: handheld correctly unsupported (detached Joy-Con motion play), TV figures unpublished. 2022-04-29, Metacritic 72 verified (hidden product)."
   },
   {
    "id": "prd_1ad4955cc45d4ef1",
    "slug": "paper-mario-the-origami-king-switch-1",
    "baseHash": "59215f9d58801d9477e17b565fb981ed2c0302eb59b2d92aa8cf88673798dfea",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "coverImage": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000029726/2a40327a93dcf9f68a65cdefaeac2f7d6ef2c15b1fd07c1c1b80533a6570f7e8",
+    "image": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000029726/2a40327a93dcf9f68a65cdefaeac2f7d6ef2c15b1fd07c1c1b80533a6570f7e8",
+    "bannerImages": [
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000029726/63e790d041c0db75ec2c5f4a5cadebbf7b99454b671e53842d59c648ddcf2f1c",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000029726/3d03359a28c83765b444582eb5001748e6790dcae373846b7c99fac13e0931e2"
+    ],
+    "galleryImages": [
+     {
+      "alt": "Verified direct image URL 4",
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000029726/e76b968799ccae115fc0bff9e5b51c8cad851c38eccaa4e1dbf3b171a58de7c7"
+     },
+     {
+      "alt": "Verified direct image URL 5"
+     }
+    ],
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "informationStatus": "available",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p",
+       "fps": "30"
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p",
+       "fps": "30"
+      },
+      "modes": [],
+      "sourceName": "Launch technical coverage of The Origami King",
+      "sourceUrl": "https://www.nintendolife.com/games/nintendo-switch/paper_mario_the_origami_king",
+      "verificationStatus": "technical_analysis"
+     }
+    ]
+   },
+   "clear": [
+    "nintendoCardImage",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "Six dead R2 roles rebuilt from the working eShop galleries: the no-HUD Mario-and-Bowser scene (verified visually) becomes cover and listing, two shots become banners, the rest stay in the gallery (each re-verified at apply). Broken square-card removed. The Switch-2 badge becomes the platform record with the documented 30 fps figures. Genuine box and wrap working. 2020-07-17, Metacritic 80 verified. Contamination removed."
   },
   {
    "id": "prd_e29d75e0daf94fd6",
    "slug": "paper-mario-the-thousand-year-door-switch-1",
    "baseHash": "b33f0888b00b2a71d43a613a6459e57c343feb3f8938705ea1bc75540bf5562f",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "coverImage": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000072957/a99700700483e5f8b14cbff4693843503c7d007c8332d574a4cc76a037aa4843",
+    "image": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000072957/a99700700483e5f8b14cbff4693843503c7d007c8332d574a4cc76a037aa4843",
+    "bannerImages": [
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000072957/003a7c28435db6efe0a3fa83a900f36ce7b494e811b73844c6f5923aedf6cd98",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000072957/1270d1fc2312cd1fdeeff4845cb812531ab9f3a06e0ae9f1f7cac26a58c706c0"
+    ],
+    "galleryImages": [
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000072957/60ac2e24dd6bb93adee264161f259d4ced43711ad6c365febd99d49451d54721"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000072957/c24881011ba3bbb6f6c78a4bb1b7e04a457594b462cfaddcdc2faa85bacf0c36"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000072957/9f5e069de49fa3644732f1c7073dea13a059a86e433da60e042d4f0f35b165bb"
+     }
+    ],
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "informationStatus": "available",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p",
+       "fps": "30"
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p",
+       "fps": "30"
+      },
+      "modes": [],
+      "sourceName": "Digital Foundry's analysis of the TTYD remake",
+      "sourceUrl": "https://www.nintendolife.com/games/nintendo-switch/paper_mario_the_thousand_year_door",
+      "verificationStatus": "technical_analysis"
+     }
+    ]
+   },
+   "clear": [
+    "nintendoCardImage",
+    "youtubeTrailer",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "Same six-dead-roles rebuild from the six working eShop galleries (lead scene verified visually). The nintendo.com store URL in the trailer field removed. Switch-2 badge becomes the platform record with the documented 30 fps remake figures. Genuine box and wrap working. 2024-05-23, Metacritic 88 verified. Contamination removed."
   },
   {
    "id": "prd_d48481255a0f44f8",
    "slug": "persona-3-portable",
    "baseHash": "441d1a8e5b381b73cdfcd8b8945caa7ba7484f93f04428018444c5c3d8960b11",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "supportedLanguages": "English, Japanese, French, German, Italian, Spanish, Korean, Simplified Chinese, Traditional Chinese",
+    "dlcSummary": "No DLC has been released for Persona 3 Portable on Nintendo Switch.",
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "informationStatus": "available",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p-class",
+       "fps": "60"
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p",
+       "fps": "60"
+      },
+      "modes": [],
+      "sourceName": "Port coverage of Persona 3 Portable on Switch",
+      "sourceUrl": "https://www.nintendolife.com/games/nintendo-switch/persona_3_portable",
+      "verificationStatus": "technical_analysis"
+     }
+    ]
+   },
+   "clear": [
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "The language field mixed retail-facing prefixes ('Nintendo AU:') and an internal supplier-selection note into customer-facing text — replaced with the clean official language list. Switch-2 badge becomes the platform record with the documented 60 fps figures. dlcSummary records the verified no-DLC situation. 2023-01-19, Metacritic 81 verified. All images working. Contamination removed."
   }
  ]
 }
