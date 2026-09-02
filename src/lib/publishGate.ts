@@ -13,6 +13,8 @@
  * warning is the right response; here the response is a refusal.
  */
 
+import { hiddenToggleState } from "./purchasable";
+
 export interface PublishCheck {
   ok: boolean;
   /** Arabic, admin-facing: exactly what to fill in before publishing. */
@@ -100,13 +102,17 @@ export function checkPublishable(product: Record<string, unknown> | undefined): 
  * records that were created hidden on purpose and could be revealed in bulk.
  *
  * A save that leaves the product hidden: nothing reaches a customer.
+ *
+ * Hidden state is judged by `hiddenToggleState`, not `isHidden` alone: many of
+ * the deliberately-hidden records carry their state as `is_hidden`,
+ * `visibility` or `status: "مخفي"`, and now that an unhide save releases those
+ * spellings too, reading only `isHidden` would let exactly those products
+ * bypass the floor.
  */
 export function isPublishing(
   stored: Record<string, unknown> | undefined,
   next: Record<string, unknown>,
 ): boolean {
   if (!stored) return false;
-  const wasHidden = stored["isHidden"] === true;
-  const willBeHidden = next["isHidden"] === true;
-  return wasHidden && !willBeHidden;
+  return hiddenToggleState(stored) && !hiddenToggleState(next);
 }

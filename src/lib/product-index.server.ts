@@ -405,6 +405,38 @@ export async function productIndexCount(): Promise<number> {
 }
 
 /**
+ * Brings one product's projection row in line with the document just written.
+ *
+ * The full-store path writes the projection in the same batch as the
+ * catalogue, but a granular `store:product:<id>` save never touched it: an
+ * admin could unhide a product, get a success toast, and watch the listing —
+ * which reads this table — flip it back to hidden on the next load, because
+ * the row still carried the old flags until the next full rebuild.
+ *
+ * A tombstone deletes the row; anything else is one INSERT OR REPLACE at the
+ * catalogue's current revision. Failures are logged and swallowed: a stale
+ * projection row is recoverable by the rebuild, a failed save is not.
+ */
+export async function refreshProductIndexRow(product: Row): Promise<void> {
+  const id = text(product?.["id"]);
+  if (!id) return;
+  try {
+    if (product["_deleted"] === true || product["isDeleted"] === true) {
+      await d1BatchRun([{ sql: `DELETE FROM product_index WHERE id = ?`, binds: [id] }]);
+      return;
+    }
+    const row = await d1First<{ rev: number | null }>(`SELECT MAX(rev) AS rev FROM store_rev`);
+    const rev = Number(row?.rev ?? 0);
+    const statement = insertStatement([product], rev);
+    await d1BatchRun([
+      { sql: statement.sql.replace(/^INSERT/, "INSERT OR REPLACE"), binds: statement.params },
+    ]);
+  } catch (err) {
+    console.warn(`[product_index:row_refresh_failed] id=${id}`, err);
+  }
+}
+
+/**
  * `ORDER BY` per sort field.
  *
  * Missing values sort last in *both* directions — a product with no price yet

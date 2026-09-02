@@ -56,6 +56,50 @@ export function isProductHidden(product: unknown): boolean {
 }
 
 /**
+ * What the admin's hide checkbox should show for this product.
+ *
+ * `isProductHidden` minus the deletion signals: a deleted product is not
+ * "hidden by a toggle", and initialising the checkbox from the full check
+ * would let an unhide save quietly resurrect it. The form used to read only
+ * `isHidden`, so a product hidden through `is_hidden`, `hidden`, a hidden-ish
+ * `visibility` or `status: "مخفي"` showed an unchecked box, the admin saved
+ * "visible", and nothing changed — the legacy flag kept the product hidden.
+ */
+export function hiddenToggleState(product: unknown): boolean {
+  if (!product || typeof product !== "object") return false;
+  const p = product as Record<string, unknown>;
+  if (p["isHidden"] === true || p["is_hidden"] === true || p["hidden"] === true) return true;
+  const vis = String(p["visibility"] ?? "").trim().toLowerCase();
+  if (vis === "hidden" || vis === "private" || vis === "draft") return true;
+  const st = String(p["status"] ?? "").trim().toLowerCase();
+  return st === "مخفي" || st === "hidden";
+}
+
+/**
+ * Makes an explicit hide/unhide decision hold, whatever spelling the stored
+ * record used.
+ *
+ * The visibility check honours five signals; the save wrote one. Unhiding a
+ * product that was hidden through `is_hidden` or `status: "مخفي"` therefore
+ * changed nothing the storefront could see. Both boolean spellings are kept in
+ * step, the loose `hidden` flag follows, and — only when the stored value is
+ * one of the hidden words — `visibility`/`status` are released. Deletion
+ * markers are none of this function's business: unhiding must never
+ * resurrect a deleted product.
+ */
+export function applyHiddenIntent(product: Record<string, unknown>, hiddenValue: boolean): void {
+  product["isHidden"] = hiddenValue;
+  product["is_hidden"] = hiddenValue;
+  if ("hidden" in product) product["hidden"] = hiddenValue;
+  if (!hiddenValue) {
+    const vis = String(product["visibility"] ?? "").trim().toLowerCase();
+    if (vis === "hidden" || vis === "private" || vis === "draft") delete product["visibility"];
+    const st = String(product["status"] ?? "").trim().toLowerCase();
+    if (st === "مخفي" || st === "hidden") product["status"] = "نشط";
+  }
+}
+
+/**
  * Single source of truth for public storefront visibility.
  * Products that are hidden, inactive, disabled, or drafts are NOT visible to the public.
  */
