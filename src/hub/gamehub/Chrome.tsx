@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { Bell, Heart, Share2, ShoppingBag } from "lucide-react";
+import { isAwaitingRelease } from "@/lib/release";
 import { useHub } from "./hubContext";
 import { useActiveSection } from "@/hub/hooks/useActiveSection";
 import { useI18n } from "@/hub/i18n";
@@ -198,8 +199,9 @@ export function StickyBuyBar() {
               onClick={() => openBuy()}
               className="btn btn-primary h-12 shrink-0 px-6 text-sm"
             >
+              {/* Before launch this opens the release panel, not a purchase. */}
               <ShoppingBag className="h-4 w-4" />
-              {t("hero.buyNow")}
+              {isAwaitingRelease(game.rawProduct ?? {}) ? "سجّل مسبقاً" : t("hero.buyNow")}
             </button>
           </div>
         </motion.div>

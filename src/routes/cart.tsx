@@ -557,6 +557,27 @@ function CartPage() {
       } else if (err.message === "insufficient_balance") {
         toast.error("رصيد المحفظة غير كافٍ لإتمام الدفع.");
         setShowInsufficientModal(true);
+      } else if (err.message === "product_not_released") {
+        /*
+          A game in this cart has not come out yet. It can only have got here
+          before the release gate existed, or in a tab left open since then, so
+          the message names it and offers to take it out — the customer can
+          then register for the launch alert on its page.
+        */
+        const details = err as Error & { productTitle?: string; releaseDate?: string | null; productId?: string };
+        const name = details.productTitle || "إحدى الألعاب";
+        const when = details.releaseDate ? ` (تصدر في ${details.releaseDate})` : "";
+        toast.error(`${name} لم تصدر بعد${when} — أزلها من السلة وفعّل التنبيه من صفحتها.`, {
+          duration: 10000,
+          ...(details.productId
+            ? {
+                action: {
+                  label: "إزالة من السلة",
+                  onClick: () => removeLocal(String(details.productId)),
+                },
+              }
+            : {}),
+        });
       } else {
         toast.error(err.message || "فشلت عملية الدفع، يرجى المحاولة مرة أخرى.");
       }

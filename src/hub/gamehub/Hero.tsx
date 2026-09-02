@@ -11,6 +11,7 @@ import {
   Languages,
   Play,
   Shapes,
+  BellRing,
   ShoppingBag,
   Star,
   Trophy,
@@ -25,6 +26,7 @@ import { PLATFORM_META } from "@/hub/ui/Icons";
 import { SmartImage } from "@/hub/ui/Bits";
 import { formatBytes, formatDate, formatRange } from "@/hub/utils/format";
 import { cn } from "@/hub/utils/cn";
+import { isAwaitingRelease } from "@/lib/release";
 import { playSound } from "@/hub/utils/audio";
 import { sleeveFor } from "@/hub/services/coverArtService";
 import { cdnImage } from "@/lib/img";
@@ -55,6 +57,8 @@ export function Hero() {
     openLightbox,
     priceVerdict,
   } = useHub();
+
+  const awaitingRelease = isAwaitingRelease(game.rawProduct ?? {});
 
   const reduceMotion = useReducedMotion();
   const { scrollY } = useScroll();
@@ -411,8 +415,23 @@ export function Hero() {
                   id="hero-buy-button"
                   className="btn btn-primary h-12 flex-1 px-7 text-sm sm:flex-none"
                 >
-                  <ShoppingBag className="h-4 w-4" />
-                  {t("hero.buyNow")}
+                  {/*
+                    Before launch this opens the release panel rather than the
+                    purchase sheet, so it must not promise a sale. `openBuy`
+                    itself is what enforces that; this only tells the truth
+                    about what the tap will do.
+                  */}
+                  {awaitingRelease ? (
+                    <>
+                      <BellRing className="h-4 w-4" />
+                      سجّل مسبقاً
+                    </>
+                  ) : (
+                    <>
+                      <ShoppingBag className="h-4 w-4" />
+                      {t("hero.buyNow")}
+                    </>
+                  )}
                 </button>
                 <button
                   onClick={toggleWishlist}

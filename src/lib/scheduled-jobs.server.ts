@@ -205,3 +205,96 @@ export async function processDigitalDeliveryMaintenance(now = new Date().toISOSt
     console.error("[scheduled-jobs] digital delivery maintenance error:", err);
   }
 }
+
+/**
+ * Tell everyone who registered for a pre-order that it is out.
+ *
+ * The buy button needs nothing from this job — the release gate reads the date
+ * on every request, so a product sells itself the moment its date passes. This
+ * only carries the message, which is the half a customer cannot discover on
+ * their own.
+ *
+ * Cloudflare Cron is at-least-once, so `notified_at` is what stops a repeated
+ * firing telling the same person twice: a row is claimed by stamping it, and
+ * only rows still unstamped are ever read. A message that fails to send leaves
+ * the row stamped rather than retrying forever — a duplicate "it's out!" days
+ * later is worse than a missed one, and the product is on the shelf either way.
+ */
+export async function processReleaseAlerts(now = new Date()) {
+  try {
+    const pending = await d1All<{
+      id: string;
+      user_id: string;
+      product_id: string;
+      product_title: string | null;
+    }>(
+      `SELECT id, user_id, product_id, product_title FROM product_release_alerts
+       WHERE notified_at IS NULL LIMIT 200`,
+    );
+    if (!pending.length) return;
+
+    const { getStore } = await import("./db.server");
+    const { isReleased, releaseDayISO } = await import("./release");
+    const store = await getStore();
+    const products = new Map(
+      (store.products || []).map((product) => [String(product.id), product] as const),
+    );
+
+    let sent = 0;
+    for (const row of pending) {
+      const product = products.get(String(row.product_id));
+      // A product that has been deleted since the customer registered can
+      // never be released; the row would otherwise sit here forever.
+      if (!product) {
+        await d1Run(
+          `UPDATE product_release_alerts SET notified_at = ? WHERE id = ?`,
+          now.toISOString(),
+          row.id,
+        );
+        continue;
+      }
+      if (!isReleased(product, now)) continue;
+
+      // Claim the row before sending, so a second run cannot send it again.
+      await d1Run(
+        `UPDATE product_release_alerts SET notified_at = ?, release_date = ? WHERE id = ? AND notified_at IS NULL`,
+        now.toISOString(),
+        releaseDayISO(product),
+        row.id,
+      );
+
+      const title = String(product.title || product.titleEn || row.product_title || "اللعبة");
+      const link = `/product/${encodeURIComponent(String(product.id))}`;
+      try {
+        await createNotification(
+          row.user_id,
+          "صدرت اللعبة التي تنتظرها 🎮",
+          `${title} أصبحت متوفرة الآن ويمكنك شراؤها من المتجر.`,
+          link,
+        );
+      } catch (err) {
+        console.warn("[scheduled-jobs:release-alert] in-app notification failed", err);
+      }
+
+      try {
+        const { getUserTelegramChatId } = await import("./telegram-notifications.server");
+        const chatId = await getUserTelegramChatId(row.user_id);
+        if (chatId) {
+          const { sendTelegramMessage } = await import("./telegram.server");
+          await sendTelegramMessage(
+            chatId,
+            `🎮 <b>صدرت اللعبة التي تنتظرها!</b>\n\n<b>${title}</b> أصبحت متوفرة الآن في متجر بنانتو ويمكنك شراؤها.`,
+            { parse_mode: "HTML" },
+          );
+        }
+      } catch (err) {
+        console.warn("[scheduled-jobs:release-alert] telegram notification failed", err);
+      }
+      sent++;
+    }
+
+    if (sent) console.log(`[scheduled-jobs:release-alerts] notified=${sent}`);
+  } catch (err) {
+    console.error("[scheduled-jobs] release alerts error:", err);
+  }
+}

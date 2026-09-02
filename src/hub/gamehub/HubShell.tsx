@@ -4,10 +4,13 @@ import { HubProvider, type HubActions } from "./hubContext";
 import { BuySheet, FollowDialog, PriceAlertDialog, VideoDialog } from "./Dialogs";
 import { Lightbox } from "./Lightbox";
 import { GuideModal } from "./GuideModal";
+import { Modal } from "@/hub/ui/Modal";
 import { useI18n } from "@/hub/i18n";
 import { useUser } from "@/hub/context/UserContext";
 import { useNotifications } from "@/hub/context/NotificationContext";
 import { playSound } from "@/hub/utils/audio";
+import { isAwaitingRelease } from "@/lib/release";
+import { ReleaseAlertPanel } from "@/components/ReleaseAlertPanel";
 
 /**
  * Everything a hub surface needs around it: shared state, the dialog set, and
@@ -38,6 +41,19 @@ export function HubShell({
   const [video, setVideo] = useState<GameVideo | null>(null);
   const [lightboxId, setLightboxId] = useState<string | null>(null);
   const [guideSlug, setGuideSlug] = useState<string | null>(null);
+  const [releaseOpen, setReleaseOpen] = useState(false);
+
+  /*
+    A game that is not out yet is not for sale.
+
+    Every buy affordance in the hub — the hero button, the sticky bar, each
+    edition row, the closing call to action — goes through `openBuy`, so the
+    check belongs here rather than in four components that could each be
+    missed. Instead of the purchase sheet the customer gets the release panel,
+    which registers them for the launch alert. The date is read on every render,
+    so the sheet returns by itself the moment the game is out.
+  */
+  const awaitingRelease = isAwaitingRelease(game.rawProduct ?? {});
 
   useEffect(() => {
     recordView(game.slug);
@@ -53,6 +69,10 @@ export function HubShell({
   const actions = useMemo<HubActions>(
     () => ({
       openBuy: (editionId) => {
+        if (awaitingRelease) {
+          setReleaseOpen(true);
+          return;
+        }
         setBuyEdition(editionId);
         setBuyOpen(true);
       },
@@ -65,7 +85,7 @@ export function HubShell({
       toggleWishlist: handleWishlist,
       setRegion,
     }),
-    [handleWishlist, onNavigateGuide],
+    [awaitingRelease, handleWishlist, onNavigateGuide],
   );
 
   const activeGuide = guideSlug
@@ -77,6 +97,19 @@ export function HubShell({
       {children}
 
       <BuySheet open={buyOpen} editionId={buyEdition} onClose={() => setBuyOpen(false)} />
+      {/*
+        Shown in place of the purchase sheet before launch: the price is real
+        and the game is not, so the customer registers for the release instead
+        of paying for something that cannot be delivered.
+      */}
+      <Modal
+        open={releaseOpen}
+        onClose={() => setReleaseOpen(false)}
+        title={t("hero.buyNow")}
+        size="md"
+      >
+        <ReleaseAlertPanel product={(game.rawProduct ?? {}) as Record<string, unknown>} />
+      </Modal>
       <PriceAlertDialog open={alertOpen} onClose={() => setAlertOpen(false)} />
       <FollowDialog
         open={followOpen && isWishlisted(game.slug)}

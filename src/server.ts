@@ -9,6 +9,7 @@ import {
   processAutoScheduledTasks,
   processBotTrading,
   processDigitalDeliveryMaintenance,
+  processReleaseAlerts,
 } from "./lib/scheduled-jobs.server";
 
 // Cloudflare binds existing Durable Object instances to this exact named export.
@@ -71,6 +72,7 @@ export default {
       processAutoScheduledTasks(),
       processDigitalDeliveryMaintenance(),
       processBotTrading(),
+      processReleaseAlerts(),
     ]);
     for (const result of results) {
       if (result.status === "rejected") {

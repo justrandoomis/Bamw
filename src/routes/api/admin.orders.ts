@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import {
   appendMessage,
+  createNotification,
   getOrder,
   listOrders,
   saveOrder,
@@ -480,17 +481,17 @@ export const Route = createFileRoute("/api/admin/orders")({
 
               // 6. In-app user notification
               try {
-                await d1Run(
-                  `INSERT INTO notifications (id, user_id, title, body, link, is_read, created_at)
-                   VALUES (?, ?, ?, ?, ?, 0, ?)`,
-                  randomId("notif"),
+                // Through the shared helper: this wrote a `link` column the
+                // table does not have, so the customer was never told their
+                // order had been cancelled and refunded.
+                await createNotification(
                   order.userId,
                   "تم إلغاء الطلب واسترجاع المبلغ",
                   wasPaidByWallet
                     ? `تم إلغاء طلبك #${order.code} وإرجاع مبلغ ${refundAmount.toLocaleString()} IQD إلى محفظتك بنجاح.`
                     : `تم إلغاء طلبك #${order.code} من قبل الإدارة.`,
                   `/orders`,
-                  now,
+                  "order_cancelled",
                 );
               } catch {
                 // Ignore notification table errors

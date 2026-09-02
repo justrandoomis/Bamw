@@ -21,6 +21,7 @@ import {
   type CouponRow,
 } from "./coupons";
 import { claimCouponUse, readCouponUsage, releaseCouponUse } from "./coupon-usage.server";
+import { isAwaitingRelease, releaseDayISO } from "./release";
 import type {
   Address,
   Order,
@@ -75,6 +76,27 @@ function isInvalidTitle(title: string | undefined | null): boolean {
 }
 
 /**
+ * Thrown when a checkout line names a product that has not been released.
+ *
+ * A distinct type rather than a dropped line: dropping it would empty the cart
+ * and report "cart_empty", which tells the customer nothing about why. The
+ * order endpoint turns this into a message naming the game and its date.
+ */
+export class AwaitingReleaseError extends Error {
+  readonly productId: string;
+  readonly productTitle: string;
+  readonly releaseDate: string | null;
+
+  constructor(productId: string, productTitle: string, releaseDate: string | null) {
+    super("product_not_released");
+    this.name = "AwaitingReleaseError";
+    this.productId = productId;
+    this.productTitle = productTitle;
+    this.releaseDate = releaseDate;
+  }
+}
+
+/**
  * Server-side validation of a cart line to ensure price and availability are real.
  */
 async function validateLine(
@@ -91,6 +113,24 @@ async function validateLine(
     if (!Number.isFinite(unitPrice) || unitPrice <= 0 || isInvalidTitle(bundle.title)) {
       return null;
     }
+
+    /*
+      A bundle is only as available as the games in it. This branch returns
+      before the product gate below, so without this a bundle carrying an
+      unreleased game would sell that game anyway — the same order the gate
+      exists to refuse, one indirection further out.
+    */
+    const unreleasedInBundle = (bundle.gameIds ?? [])
+      .map((gameId) => store.products.find((p) => String(p.id) === String(gameId)))
+      .find((game) => game && isAwaitingRelease(game));
+    if (unreleasedInBundle) {
+      throw new AwaitingReleaseError(
+        String(unreleasedInBundle.id),
+        unreleasedInBundle.title,
+        releaseDayISO(unreleasedInBundle),
+      );
+    }
+
     return {
       id: randomId("itm"),
       productId: bundle.id,
@@ -108,6 +148,21 @@ async function validateLine(
   }
 
   if (!product || product.isActive === false || (product as any).status === "غير نشط") return null;
+
+  /*
+    A game that is not out yet cannot be sold, whatever the cart says.
+
+    Pre-orders are ordinary priced products with a future release date, and the
+    only thing standing between one and a completed order used to be the
+    storefront choosing not to draw a buy button. The cart is client state and
+    a checkout request names product ids, so the refusal has to live here —
+    every order line, from every surface, is resolved through this function.
+    The customer registers for a release alert instead; the moment the date
+    passes this stops matching and the same product sells itself.
+  */
+  if (isAwaitingRelease(product)) {
+    throw new AwaitingReleaseError(String(product.id), product.title, releaseDayISO(product));
+  }
 
   let unitPrice = toNumber(product.price);
   let title = product.title;

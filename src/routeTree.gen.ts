@@ -47,6 +47,7 @@ import { Route as ApiOrdersRouteImport } from './routes/api/orders'
 import { Route as ApiOtpRouteImport } from './routes/api/otp'
 import { Route as ApiProductRouteImport } from './routes/api/product'
 import { Route as ApiProfileRouteImport } from './routes/api/profile'
+import { Route as ApiReleaseAlertsRouteImport } from './routes/api/release-alerts'
 import { Route as ApiRevealPasswordRouteImport } from './routes/api/reveal-password'
 import { Route as ApiReviewsRouteImport } from './routes/api/reviews'
 import { Route as ApiStoreAdvisorRouteImport } from './routes/api/store-advisor'
@@ -312,6 +313,11 @@ const ApiProductRoute = ApiProductRouteImport.update({
 const ApiProfileRoute = ApiProfileRouteImport.update({
   id: '/api/profile',
   path: '/api/profile',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiReleaseAlertsRoute = ApiReleaseAlertsRouteImport.update({
+  id: '/api/release-alerts',
+  path: '/api/release-alerts',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ApiRevealPasswordRoute = ApiRevealPasswordRouteImport.update({
@@ -749,6 +755,7 @@ export interface FileRoutesByFullPath {
   '/api/otp': typeof ApiOtpRoute
   '/api/product': typeof ApiProductRoute
   '/api/profile': typeof ApiProfileRoute
+  '/api/release-alerts': typeof ApiReleaseAlertsRoute
   '/api/reveal-password': typeof ApiRevealPasswordRoute
   '/api/reviews': typeof ApiReviewsRoute
   '/api/store-advisor': typeof ApiStoreAdvisorRoute
@@ -865,6 +872,7 @@ export interface FileRoutesByTo {
   '/api/otp': typeof ApiOtpRoute
   '/api/product': typeof ApiProductRoute
   '/api/profile': typeof ApiProfileRoute
+  '/api/release-alerts': typeof ApiReleaseAlertsRoute
   '/api/reveal-password': typeof ApiRevealPasswordRoute
   '/api/reviews': typeof ApiReviewsRoute
   '/api/store-advisor': typeof ApiStoreAdvisorRoute
@@ -982,6 +990,7 @@ export interface FileRoutesById {
   '/api/otp': typeof ApiOtpRoute
   '/api/product': typeof ApiProductRoute
   '/api/profile': typeof ApiProfileRoute
+  '/api/release-alerts': typeof ApiReleaseAlertsRoute
   '/api/reveal-password': typeof ApiRevealPasswordRoute
   '/api/reviews': typeof ApiReviewsRoute
   '/api/store-advisor': typeof ApiStoreAdvisorRoute
@@ -1100,6 +1109,7 @@ export interface FileRouteTypes {
     | '/api/otp'
     | '/api/product'
     | '/api/profile'
+    | '/api/release-alerts'
     | '/api/reveal-password'
     | '/api/reviews'
     | '/api/store-advisor'
@@ -1216,6 +1226,7 @@ export interface FileRouteTypes {
     | '/api/otp'
     | '/api/product'
     | '/api/profile'
+    | '/api/release-alerts'
     | '/api/reveal-password'
     | '/api/reviews'
     | '/api/store-advisor'
@@ -1332,6 +1343,7 @@ export interface FileRouteTypes {
     | '/api/otp'
     | '/api/product'
     | '/api/profile'
+    | '/api/release-alerts'
     | '/api/reveal-password'
     | '/api/reviews'
     | '/api/store-advisor'
@@ -1449,6 +1461,7 @@ export interface RootRouteChildren {
   ApiOtpRoute: typeof ApiOtpRoute
   ApiProductRoute: typeof ApiProductRoute
   ApiProfileRoute: typeof ApiProfileRoute
+  ApiReleaseAlertsRoute: typeof ApiReleaseAlertsRoute
   ApiRevealPasswordRoute: typeof ApiRevealPasswordRoute
   ApiReviewsRoute: typeof ApiReviewsRoute
   ApiStoreAdvisorRoute: typeof ApiStoreAdvisorRoute
@@ -1782,6 +1795,13 @@ declare module '@tanstack/react-router' {
       path: '/api/profile'
       fullPath: '/api/profile'
       preLoaderRoute: typeof ApiProfileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/release-alerts': {
+      id: '/api/release-alerts'
+      path: '/api/release-alerts'
+      fullPath: '/api/release-alerts'
+      preLoaderRoute: typeof ApiReleaseAlertsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/api/reveal-password': {
@@ -2419,6 +2439,7 @@ const rootRouteChildren: RootRouteChildren = {
   ApiOtpRoute: ApiOtpRoute,
   ApiProductRoute: ApiProductRoute,
   ApiProfileRoute: ApiProfileRoute,
+  ApiReleaseAlertsRoute: ApiReleaseAlertsRoute,
   ApiRevealPasswordRoute: ApiRevealPasswordRoute,
   ApiReviewsRoute: ApiReviewsRoute,
   ApiStoreAdvisorRoute: ApiStoreAdvisorRoute,

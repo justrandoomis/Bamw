@@ -95,19 +95,31 @@ export async function d1Batch(sqls: { sql: string; params: unknown[] }[]) {
   }
 }
 
+/**
+ * Store an in-app notice for one member.
+ *
+ * The table has `type` and `reference_id`; it has never had a `link` column.
+ * This function wrote `link`, so every insert failed with "no such column" and
+ * no in-app notification was ever stored — the failure was invisible because a
+ * second, losing `CREATE TABLE IF NOT EXISTS notifications` elsewhere in the
+ * schema described the shape this code was written against. That duplicate is
+ * gone, and `schema-coverage.test.ts` now holds this honest.
+ */
 export async function createNotification(
   userId: string,
   title: string,
   body: string,
   link?: string,
+  type = "general",
 ) {
   await d1RawRun(
-    `INSERT INTO notifications (id, user_id, title, body, link, is_read, created_at)
-     VALUES (?, ?, ?, ?, ?, 0, ?)`,
+    `INSERT INTO notifications (id, user_id, title, body, type, reference_id, is_read, created_at)
+     VALUES (?, ?, ?, ?, ?, ?, 0, ?)`,
     randomId("ntf"),
     userId,
     title,
     body,
+    type,
     link || null,
     new Date().toISOString(),
   );

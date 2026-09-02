@@ -38,6 +38,8 @@ import { buildProductView, type ProductView } from "@/lib/productImport/productV
 import { navSections, resolveSections, type SectionDef } from "@/lib/productImport/sectionRegistry";
 import type { ProductSchema } from "@/lib/productImport/types";
 import { useCartStore } from "@/store/useCartStore";
+import { ReleaseAlertPanel } from "@/components/ReleaseAlertPanel";
+import { isAwaitingRelease } from "@/lib/release";
 import type { ProductKind } from "@/lib/types";
 import { showAddToCartToast } from "@/utils/cart-toast";
 import { resolvePurchaseImage } from "@/lib/nintendoImages";
@@ -121,6 +123,13 @@ function DetailsBody({
     ? Number.POSITIVE_INFINITY
     : (selectedVariant?.stock ?? selectedOption?.stock ?? view.stock);
   const soldOut = effectiveStock <= 0;
+  /*
+    Not out yet: the price is real and set by the admin, but the game does not
+    exist to hand over. The quantity picker and the buy button are replaced by
+    the release-alert panel — and the server refuses the line anyway, so a
+    stale tab cannot get around this.
+  */
+  const awaitingRelease = isAwaitingRelease(product);
 
   const sections = useMemo(() => resolveSections(view), [view]);
   const navItems = useMemo(() => navSections(sections), [sections]);
@@ -128,6 +137,10 @@ function DetailsBody({
   const handleAddToCart = () => {
     if (soldOut) {
       toast.error(t("errors.productOutOfStock"));
+      return;
+    }
+    if (awaitingRelease) {
+      toast.error("هذه اللعبة لم تصدر بعد — فعّل التنبيه وسنخبرك فور صدورها");
       return;
     }
     const labelParts = [selectedOption?.name, selectedVariant?.name].filter(Boolean);
@@ -322,7 +335,12 @@ function DetailsBody({
             </div>
           )}
 
-          {/* Quantity + add to cart */}
+          {/* Quantity + add to cart — or the release alert, before launch */}
+          {awaitingRelease ? (
+            <div className="pt-2">
+              <ReleaseAlertPanel product={product} lang={locale} />
+            </div>
+          ) : (
           <div className="flex flex-wrap items-center gap-3 pt-2">
             <div className="flex items-center rounded-xl border border-border">
               <button
@@ -356,6 +374,7 @@ function DetailsBody({
               {t("product.addToCart")}
             </button>
           </div>
+          )}
         </div>
       </div>
 

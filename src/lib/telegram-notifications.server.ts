@@ -26,21 +26,40 @@ export function getAdminTelegramChatId(): string {
  */
 export async function getUserTelegramChatId(userId: string): Promise<string | undefined> {
   if (!userId) return undefined;
-  try {
-    const user = await d1First<{ telegram_id?: string | number }>(
-      "SELECT telegram_id FROM users WHERE id = ?",
-      userId,
-    );
-    if (user?.telegram_id) return String(user.telegram_id);
 
+  /*
+    `telegram_links` is where the mapping actually lives — the table the login
+    flow writes when a member connects their account.
+
+    It used to be consulted second, after `SELECT telegram_id FROM users`, and
+    `users` has no `telegram_id` column: that statement threw "no such column",
+    the one try/catch around both queries swallowed it, and the function
+    returned undefined every time it was called. Every per-user Telegram
+    message in the app depended on it — order status, game-request updates,
+    release alerts — so none of them ever reached anybody. The real table is
+    read first now, and the legacy column is its own attempt so a schema that
+    lacks it cannot abort the lookup.
+  */
+  try {
     const link = await d1First<{ telegram_chat_id: string | number }>(
       "SELECT telegram_chat_id FROM telegram_links WHERE user_id = ?",
       userId,
     );
     if (link?.telegram_chat_id) return String(link.telegram_chat_id);
   } catch (err) {
-    console.warn("[telegram:notify] Failed to lookup user chat ID:", err);
+    console.warn("[telegram:notify] telegram_links lookup failed:", err);
   }
+
+  try {
+    const user = await d1First<{ telegram_id?: string | number }>(
+      "SELECT telegram_id FROM users WHERE id = ?",
+      userId,
+    );
+    if (user?.telegram_id) return String(user.telegram_id);
+  } catch {
+    // Deployments without the legacy column: not an error, just nothing here.
+  }
+
   return undefined;
 }
 
