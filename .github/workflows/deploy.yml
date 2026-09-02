@@ -162,12 +162,53 @@ jobs:
             --config wrangler.jsonc \
             --message "${{ github.sha }} from ${{ github.ref_name }}"
 
-      - name: Deploy
+      # Upload the version, then give it the traffic — the two halves of a
+      # deploy, run as two commands.
+      #
+      # `wrangler deploy` does both in one, and then reconciles the zone's
+      # worker routes, which this API token is not permitted to read: the first
+      # release run uploaded the Worker, took 100% of traffic, and *then* failed
+      # on GET /zones/…/workers/routes with "Authentication error [code:
+      # 10000]". A red job for a deploy that had already succeeded is worse than
+      # useless — it invites someone to roll back a release that was fine.
+      #
+      # The routes for banan.to already exist and this pipeline never changes
+      # them, so the reconciliation had nothing to do. Splitting the deploy
+      # skips it entirely and uses the same traffic-shift call the rollback path
+      # has always used. If the token is ever granted Zone → Workers Routes,
+      # `wrangler deploy` becomes an option again — it is not needed for this.
+      - name: Deploy — upload the version
+        id: upload_release
         if: ${{ env.MODE == 'release' && !inputs.rollback_to }}
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-        run: npx wrangler deploy --config wrangler.jsonc
+        run: |
+          set -o pipefail
+          npx wrangler versions upload \
+            --config wrangler.jsonc \
+            --message "${{ github.sha }} from ${{ github.ref_name }}" | tee upload.log
+          # Wrangler prints "Worker Version ID: <uuid>". Take it from there
+          # rather than guessing at the newest version, which would race
+          # anything else uploading.
+          version="$(grep -oiE 'Worker Version ID:[[:space:]]*[0-9a-f-]{8,}' upload.log \
+            | tail -1 | grep -oiE '[0-9a-f-]{8,}$')"
+          if [ -z "$version" ]; then
+            echo "could not read the uploaded version id from wrangler output" >&2
+            exit 1
+          fi
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+          echo "uploaded version $version"
+
+      - name: Deploy — send it the traffic
+        if: ${{ env.MODE == 'release' && !inputs.rollback_to }}
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          npx wrangler versions deploy "${{ steps.upload_release.outputs.version }}@100%" \
+            --config wrangler.jsonc --yes \
+            --message "release ${{ github.sha }}"
 
       # Shifts all traffic to a version that already exists. Nothing is built,
       # nothing is uploaded, and the routes are not touched — which matters,
