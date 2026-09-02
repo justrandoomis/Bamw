@@ -8,6 +8,12 @@ import {
   createNotification,
 } from "./db.server";
 import type { BananaBot, BananaMarketOffer } from "./types";
+import {
+  toBananaBot,
+  toBananaMarketOffer,
+  type BananaBotRow,
+  type BananaMarketOfferRow,
+} from "./banana-rows";
 
 /**
  * Worker function to process automated Banana Market trades by bots.
@@ -16,8 +22,15 @@ import type { BananaBot, BananaMarketOffer } from "./types";
 export async function processBotTrading() {
   const now = new Date().toISOString();
 
-  // 1. Get active bots
-  const bots = await d1All<BananaBot>(`SELECT * FROM banana_bots WHERE is_active = 1`);
+  /*
+    Rows are translated, never cast. The columns are snake_case and everything
+    below reads camelCase, so `d1All<BananaBot>` handed this loop bots whose
+    budget was `undefined` and offers whose price and timestamp were too — and
+    a NaN comparison is false, so the bots have never bought anything.
+  */
+  const bots = (await d1All<BananaBotRow>(`SELECT * FROM banana_bots WHERE is_active = 1`)).map(
+    toBananaBot,
+  );
   if (!bots.length) return;
 
   // 2. Get current market price
@@ -28,13 +41,15 @@ export async function processBotTrading() {
 
   for (const bot of bots) {
     // 3. Find cheap offers from users (Anti-Fraud: Check seller is not another bot)
-    const offers = await d1All<BananaMarketOffer>(
-      `SELECT o.* FROM banana_market_offers o
+    const offers = (
+      await d1All<BananaMarketOfferRow>(
+        `SELECT o.* FROM banana_market_offers o
        LEFT JOIN banana_bots b ON o.user_id = b.id
        WHERE o.status = 'active' AND b.id IS NULL
        AND o.price_iqd <= ?`,
-      marketPrice,
-    );
+        marketPrice,
+      )
+    ).map(toBananaMarketOffer);
 
     for (const offer of offers) {
       // Logic for price deviation and waiting period
@@ -43,6 +58,15 @@ export async function processBotTrading() {
 
       const offerTime = new Date(offer.createdAt).getTime();
       const nowTime = Date.now();
+
+      /*
+        An offer whose timestamp cannot be read is left alone rather than
+        treated as infinitely old. `NaN` used to make this test false and skip
+        everything; making it true instead would buy every such offer the
+        instant it appeared, which is the wrong direction for a job that spends
+        money on its own.
+      */
+      if (!Number.isFinite(offerTime)) continue;
 
       if (nowTime - offerTime > waitingMinutes * 60 * 1000) {
         // Atomic Trade Execution
@@ -97,10 +121,19 @@ async function executeBotPurchase(bot: BananaBot, offer: BananaMarketOffer, now:
           offer.id,
         ],
       },
-      // Seller Deduct Locked Banana
+      /*
+        Seller: release the bananas this offer had locked.
+
+        `ELSE NULL` wrote NULL into a balance column whenever the locked figure
+        was somehow short — and every later `banana_locked + ?` or comparison
+        against NULL yields NULL, so one mismatched offer would have made that
+        member's locked balance permanently unreadable. `MAX(0, …)` is what the
+        rest of the banana code does (banana.server.ts:301, :332) and it floors
+        instead of poisoning.
+      */
       {
-        sql: `UPDATE users SET banana_locked = CASE WHEN banana_locked >= ? THEN banana_locked - ? ELSE NULL END WHERE id = ?`,
-        params: [offer.lockedBanana, offer.lockedBanana, offer.userId],
+        sql: `UPDATE users SET banana_locked = MAX(0, COALESCE(banana_locked, 0) - ?) WHERE id = ?`,
+        params: [offer.lockedBanana, offer.userId],
       },
       // Close Offer
       {
