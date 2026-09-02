@@ -1,51 +1,166 @@
 {
  "batch": "003",
- "apply": false,
+ "apply": true,
  "games": [
   {
    "id": "prd_7cb47defb1ff4c61",
    "slug": "cuphead-switch",
    "baseHash": "d246b70d4ea7a2db206650ca8f152eea6148815b4a91aafe4e2538013eee8168",
-   "set": {},
+   "set": {
+    "publisher": "Studio MDHR",
+    "metacriticRating": 87,
+    "metacriticUrl": "https://www.metacritic.com/game/cuphead/",
+    "youtubeTrailer": "https://www.youtube.com/watch?v=eLKsUbnxKws",
+    "completionMain": 10.5,
+    "completionExtras": 16,
+    "completionAll": 27,
+    "verdictScore": 9,
+    "verdictSummaryEn": "A nigh-on flawless port of one of the finest run-and-gun games ever made: the hand-drawn 1930s animation survives intact and the 60 fps lock never breaks, docked or handheld.",
+    "verdictSummary": "منفذ شبه مثالي لواحدة من أفضل ألعاب التصويب والركض على الإطلاق: الرسوم المتحركة المرسومة يدوياً بأسلوب الثلاثينيات باقية كما هي، وثبات 60 إطاراً لا ينكسر سواء على التلفاز أو باليد.",
+    "verdictPros": [
+     {"value": "رسوم متحركة يدوية بأسلوب كرتون الثلاثينيات لا مثيل لها", "valueEn": "Unmatched hand-drawn 1930s cartoon animation"},
+     {"value": "أداء 60 إطاراً مقفل في الوضعين المحمول والتلفاز", "valueEn": "Locked 60 fps in both handheld and docked play"},
+     {"value": "توسعة The Delicious Last Course تضيف شخصية Ms. Chalice وجزيرة جديدة", "valueEn": "The Delicious Last Course expansion adds Ms. Chalice and a new isle"}
+    ],
+    "verdictCons": [
+     {"value": "صعوبة مرتفعة جداً قد لا تناسب الجميع", "valueEn": "Very high difficulty that will not suit everyone"},
+     {"value": "اللعب التعاوني محلي فقط", "valueEn": "Co-op is local only"}
+    ],
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "informationStatus": "available",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p",
+       "fps": "60 (locked)"
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p",
+       "fps": "60 (locked)"
+      },
+      "modes": [],
+      "sourceName": "Digital Foundry analysis of Cuphead on Switch",
+      "sourceUrl": "https://www.nintendolife.com/news/2019/04/video_digital_foundrys_analysis_of_cuphead_on_the_nintendo_switch",
+      "verificationStatus": "technical_analysis"
+     }
+    ]
+   },
    "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "notes": "Metacritic filled with the verified 87 (not a guess — checked). The stored trailer was a YouTube SEARCH link; replaced with Nintendo's official launch trailer. Two stale not-published device records collapse to one Nintendo Switch record carrying Digital Foundry's verified 1080p/720p locked-60 figures. Completion times are the widely-cited HowLongToBeat aggregates (community data, stated as such). Publisher spacing normalised to the official Studio MDHR. Editorial verdict written from the documented critical consensus. Square card and wide cover verified visually: official art, correct roles, kept. No box-front image exists in the record and no verified source is reachable from this environment — left absent rather than risk a wrong image (product is currently hidden)."
   },
   {
    "id": "prd_0fb9102af8c2450f",
    "slug": "cyberpunk-2077-ultimate-edition-nintendo-switch-2",
    "baseHash": "ad1d21e836cf3df068780e9b88efee248b6173a80ad4dd4b5e6adf40b4162876",
    "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "clear": [
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "Record verified full and accurate: CD PROJEKT RED's official Quality/Performance mode figures with the support-page source, correct 2025-06-05 release, 60.6 GB, Metacritic 85, working eShop CDN banners and galleries, correct box/cover/square roles (square card is small at 281px but correct content — no verified higher-resolution source reachable). Only the ten cross-schema contamination fields needed removal."
   },
   {
    "id": "prd_032470e4f7dd4cf0",
    "slug": "dave-the-diver-nintendo-switch-2-edition",
    "baseHash": "8682d2c71393ce81d1c38e121c33a219a26894d272a5cdab6cbccdedc7509763",
    "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "clear": [
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus",
+    "box_front_url"
+   ],
+   "notes": "Release date 2025-11-06 verified against launch coverage; publisher performance statement (1080p-class, up to 60 fps) already recorded with its MINTROCKET source. box_front_url removed: it held the same wide 400x225 key art as the cover — wrong role — while cartridgeImage carries a genuine Switch 2 retail box (the physical Complete Edition box; the closest existing physical art for this game, kept deliberately). Wide cover is correct content at low resolution; the game's Nintendo CDN banners are gameplay screenshots, not key art, so no better verified replacement exists — kept. The ten contamination fields removed."
   },
   {
    "id": "prd_07de8f47fbf44b28",
    "slug": "dead-by-daylight-switch",
    "baseHash": "d0fa40c3e5f78233559b5340bcaef9236dd629398560c3d6fdee9d3eee67cf2e",
-   "set": {},
+   "set": {
+    "youtubeTrailer": "https://www.youtube.com/watch?v=jk-2-PLaqDY",
+    "verdictScore": 6,
+    "verdictSummaryEn": "The full asymmetric-horror experience runs on Switch and is genuinely playable in handheld at a stable 30 fps, but heavy visual downgrades and docked frame drops make this the weakest way to play it.",
+    "verdictSummary": "تجربة الرعب غير المتكافئ الكاملة تعمل على سويتش وقابلة للعب فعلاً باليد بثبات 30 إطاراً، لكن التنازلات البصرية الكبيرة وهبوط الإطارات في وضع التلفاز تجعلها أضعف طريقة للعبها.",
+    "verdictPros": [
+     {"value": "تجربة Dead by Daylight كاملة بشكل محمول", "valueEn": "The complete Dead by Daylight experience, portable"},
+     {"value": "مكتبة فصول ضخمة من الشخصيات المرخصة", "valueEn": "A huge roster of licensed chapters"}
+    ],
+    "verdictCons": [
+     {"value": "تنازلات بصرية كبيرة في الدقة والتفاصيل", "valueEn": "Heavy visual downgrades in resolution and detail"},
+     {"value": "وضع التلفاز يهبط دون 30 إطاراً في الضغط", "valueEn": "Docked play drops below 30 fps under load"},
+     {"value": "لعب عبر الإنترنت فقط", "valueEn": "Online-only play"}
+    ],
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "informationStatus": "available",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p",
+       "fps": "30 (stable)"
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "Not published by the developer",
+       "fps": "30 target with occasional drops"
+      },
+      "modes": [],
+      "sourceName": "Nintendo Life review and Rely on Horror port report",
+      "sourceUrl": "https://www.nintendolife.com/reviews/nintendo-switch/dead_by_daylight",
+      "verificationStatus": "technical_analysis"
+     }
+    ]
+   },
    "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "notes": "The stored trailer was a YouTube SEARCH link; replaced with the official Switch launch trailer. Two stale not-published device records collapse to one Nintendo Switch record: handheld 720p/30 stable and docked 30-target with drops per published port analyses; docked resolution honestly marked not published. Metacritic left absent — no verifiable Switch-specific score found, and a wrong number is worse than a hidden row. Editorial verdict written from the documented reception. The 41-chapter DLC list, box art, square card, wide cover and genuine full-wrap texture all verified: correct and kept. Product is currently hidden; visibility untouched."
   },
   {
    "id": "prd_0e08ad1311134765",
    "slug": "deltarune",
    "baseHash": "52908168b3ce769edfb06c2ccae4d6e0fa47c3ebdfa8a4c3da0f0c598e0127e5",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "dlcSummary": "DELTARUNE includes Chapters 1–4; Toby Fox has stated additional chapters will be delivered to owners as free updates, so no paid DLC exists.",
+    "bannerImages": [
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000096640/f85e18c6d55c8b7dc065db218ce4d3fbad2f6dca788a7e09ea2331ae00b28ede",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000096640/a36ee7a4e762afb488387a4bebeae94325d8e75be6df4ecccf159a24c75b4250",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000096640/bdd08f52f7f68d3c4d752a9fffc9b6b07d557ad02224c64059926e80acb0fe5b",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000096640/3f164868961c804db3c33cbedcb0ad8148680b3d8e2576442fee6baab490d342",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000096640/f433f74e142846c67cfe429b9214e8d94d8a33605a7db8b996fa527565bc355c"
+    ]
+   },
+   "clear": [
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus",
+    "box_front_url"
+   ],
+   "notes": "Chapter model verified (paid release carries Chapters 1–4; future chapters free) and recorded in dlcSummary. The one dead R2 banner removed from the six-entry array; the five official eShop CDN banners remain and are re-verified at apply time. box_front_url removed: a third-party CDN copy of the wide key art cropped 4:3 sitting in the front-box role, while cartridgeImage holds the proper vertical box. Perf record (1080p/60 both modes, sourced) verified. The ten contamination fields removed. Cover is correct content at 500x281 — no verified higher-resolution source reachable; kept."
   }
  ]
 }
