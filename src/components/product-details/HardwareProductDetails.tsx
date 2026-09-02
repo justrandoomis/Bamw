@@ -32,6 +32,8 @@ import { buildProductView } from "@/lib/productImport/productView";
 import type { ProductSchema } from "@/lib/productImport/types";
 import { resolvePurchaseImage } from "@/lib/nintendoImages";
 import { useCartStore } from "@/store/useCartStore";
+import { ReleaseAlertPanel } from "@/components/ReleaseAlertPanel";
+import { isAwaitingRelease } from "@/lib/release";
 
 import { ProductGallery } from "./ProductGallery";
 import { BulletList, Section, SpecTable } from "./Section";
@@ -581,9 +583,21 @@ export function HardwareProductDetails({
     ["faq", "FAQ", view.faq.length > 0],
   ] as const;
 
+  /*
+    Hardware is announced before it ships too, and the same rule applies: a
+    console with a future release date is not for sale yet. The server refuses
+    the order either way — this keeps the page from offering something the
+    checkout will reject.
+  */
+  const awaitingRelease = isAwaitingRelease(product);
+
   const handleCart = () => {
     if (view.stock <= 0 && !view.isInfiniteStock) {
       toast.error(t("errors.productOutOfStock"));
+      return;
+    }
+    if (awaitingRelease) {
+      toast.error("هذا المنتج لم يصدر بعد — فعّل التنبيه وسنخبرك فور توفره");
       return;
     }
     addToCart({
@@ -664,15 +678,21 @@ export function HardwareProductDetails({
                 {formatIQDPrice(view.price)}
               </span>
             ) : null}
-            <button
-              type="button"
-              onClick={handleCart}
-              className="inline-flex flex-1 min-w-[200px] items-center justify-center gap-2 rounded-xl bg-primary px-5 py-3.5 font-bold text-primary-foreground shadow-sm transition hover:opacity-90 disabled:opacity-40"
-              disabled={view.stock <= 0 && !view.isInfiniteStock}
-            >
-              <ShoppingCart className="h-5 w-5" />
-              {t("product.addToCart")}
-            </button>
+            {awaitingRelease ? (
+              <div className="min-w-[200px] flex-1">
+                <ReleaseAlertPanel product={product as Record<string, unknown>} />
+              </div>
+            ) : (
+              <button
+                type="button"
+                onClick={handleCart}
+                className="inline-flex flex-1 min-w-[200px] items-center justify-center gap-2 rounded-xl bg-primary px-5 py-3.5 font-bold text-primary-foreground shadow-sm transition hover:opacity-90 disabled:opacity-40"
+                disabled={view.stock <= 0 && !view.isInfiniteStock}
+              >
+                <ShoppingCart className="h-5 w-5" />
+                {t("product.addToCart")}
+              </button>
+            )}
           </div>
           <a
             href="#specifications"
