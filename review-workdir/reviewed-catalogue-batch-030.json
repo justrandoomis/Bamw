@@ -1,0 +1,51 @@
+{
+ "batch": "030",
+ "apply": false,
+ "games": [
+  {
+   "id": "prd_4febaa0136bd4f7f",
+   "slug": "xenoblade-chronicles-3-switch",
+   "baseHash": "c7994b97de87e876e1b65514b14bd59a452f3f6659f01f65a19d64e7a6e090db",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  },
+  {
+   "id": "prd_c171d6530cf74141",
+   "slug": "xenoblade-chronicles-3-switch-2-edition",
+   "baseHash": "df01831a52a3c7d97a486a99267bb63a68a8cd72ee8923fd74f124f16c9e3ab9",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  },
+  {
+   "id": "prd_e5d365e777e043dd",
+   "slug": "xenoblade-chronicles-definitive-edition-switch",
+   "baseHash": "4c66f7fd9956d6b27a1dc88ea9446d1e48c3ddf5ae824c7870e0c646d6bef8c5",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  },
+  {
+   "id": "prd_9e05c55e9e4f4c59",
+   "slug": "xenoblade-chronicles-definitive-edition-switch-2-edition",
+   "baseHash": "e91b26d8fc97c384ec2367bb7f1443afe4fbf803b0b2ee9c0c9eaf3abaed6305",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  },
+  {
+   "id": "prd_8eaacbcb18d549d6",
+   "slug": "xenoblade-chronicles-x-definitive-edition-switch",
+   "baseHash": "fa6e7fc25d0f83e601e35251d43c74c3b37b966578dfe2391ef7ad3efdc8f5d8",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  }
+ ]
+}

@@ -1,6 +1,6 @@
 {
  "batch": "029",
- "apply": true,
+ "apply": false,
  "games": [
   {
    "id": "prd_1901d23608684404",
@@ -207,6 +207,108 @@
     "guaranteeStatus"
    ],
    "notes": "Dead cover and listing rebuilt from the first verified eShop gallery; the one dead banner dropped, three verified banners kept. Metacritic 83 checked against the Switch 2 Edition's own aggregate — correct (83 from 92 critics, verified, not inherited). 2026-07-30, announced 1080p/4K at 60 fps record kept. Contamination removed."
+  }
+ ],
+ "appliedAt": "2026-09-02T04:29:34.566Z",
+ "results": [
+  {
+   "id": "prd_1901d23608684404",
+   "action": "APPLIED",
+   "changed": [],
+   "removed": [
+    "youtubeTrailer",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ]
+  },
+  {
+   "id": "prd_6fe1da3c0f9940dc",
+   "action": "APPLIED",
+   "changed": [
+    "devicePerformance"
+   ],
+   "removed": [
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ]
+  },
+  {
+   "id": "prd_acae6edb0a1b4f5c",
+   "action": "APPLIED",
+   "changed": [
+    "devicePerformance"
+   ],
+   "removed": [
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ]
+  },
+  {
+   "id": "prd_930cf6dc6e644af0",
+   "action": "APPLIED",
+   "changed": [
+    "bannerImages",
+    "galleryImages",
+    "devicePerformance"
+   ],
+   "removed": [
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ]
+  },
+  {
+   "id": "prd_5f5f9c74db8d4052",
+   "action": "APPLIED",
+   "changed": [
+    "coverImage",
+    "image",
+    "bannerImages",
+    "galleryImages"
+   ],
+   "removed": [
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ]
   }
  ]
 }

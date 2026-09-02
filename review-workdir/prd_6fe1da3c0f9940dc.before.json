@@ -1,0 +1,496 @@
+{
+ "title": "Wolfenstein II: The New Colossus",
+ "titleEn": "Wolfenstein II: The New Colossus",
+ "titleKu": "",
+ "slug": "wolfenstein-ii-the-new-colossus",
+ "description": "A story-driven first-person shooter adapted to Nintendo Switch, featuring motion aiming, a full single-player campaign, and large-scale combat against a fictional fascist regime. The protagonist continues the alternate-history conflict after the events of The New Order. The campaign’s final chapters build around resistance operations and high-intensity assaults.",
+ "descriptionEn": "A story-driven first-person shooter adapted to Nintendo Switch, featuring motion aiming, a full single-player campaign, and large-scale combat against a fictional fascist regime. The protagonist continues the alternate-history conflict after the events of The New Order. The campaign’s final chapters build around resistance operations and high-intensity assaults.",
+ "descriptionKu": "",
+ "cartridgeImage": "/api/files/products/prd_6fe1da3c0f9940dc/front-box-6c4d23ef63071345.webp",
+ "nintendoCardImage": "/api/files/products/prd_6fe1da3c0f9940dc/square-card-70eae85670854f2c.webp",
+ "coverHiResImage": "/api/files/products/prd_6fe1da3c0f9940dc/3d-wrap-04164f50e85cbb5c.webp",
+ "coverImage": "/api/files/products/prd_6fe1da3c0f9940dc/cover-f9107ed6c0fe116b.webp",
+ "bannerImages": [
+  ""
+ ],
+ "gallery": [],
+ "youtubeTrailer": "",
+ "releaseDate": "2018-06-29",
+ "ageRating": "ESRB M / PEGI 18",
+ "metacriticRating": 79,
+ "genres": [
+  "Action",
+  "First-Person Shooter"
+ ],
+ "platform": "switch1",
+ "size": 22,
+ "numberOfPlayers": "Single system (1)",
+ "supportedLanguages": "Official supported language list varies by region; see the publisher page linked in Sources.",
+ "hardwareModel": "",
+ "colorEdition": "",
+ "storageCapacity": "",
+ "screenSpecs": "",
+ "batteryLife": "",
+ "boxContents": [],
+ "boxContentsText": "",
+ "warrantyCondition": "",
+ "connectivity": "",
+ "characterName": "Link",
+ "amiiboSeries": "The Legend of Zelda",
+ "figureType": "figure",
+ "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+ "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+ "boxCondition": "mib",
+ "releaseWave": "Wave 2 (Restock)",
+ "rarity": "standard",
+ "accessoryType": "حقيبة حماية وتنقل Carry Case",
+ "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+ "brand": "Nintendo Official",
+ "material": "Hard EVA Shockproof Shell",
+ "availableColors": "Black, Neon Red/Blue, White",
+ "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+ "cardValue": "$20 eShop Balance",
+ "region": "Global",
+ "cardType": "eshop",
+ "deliveryMethod": "instant_code",
+ "redemptionGuide": "",
+ "redemptionSteps": [],
+ "validity": "no_expiry",
+ "usedType": "cartridge",
+ "conditionGrade": "like_new",
+ "packaging": "cib",
+ "guaranteeStatus": "tested_30days",
+ "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+ "accountType": "primary",
+ "badge": "وفر 40%",
+ "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+ "price": 8500,
+ "cost": 2750,
+ "stock": 999999,
+ "isInfiniteStock": true,
+ "isHidden": true,
+ "displayOrder": 0,
+ "category": "nintendo-switch-games",
+ "categoryId": "nintendo-switch-games",
+ "categoryEn": "",
+ "categoryKu": "",
+ "options": [
+  {
+   "id": "offline_account",
+   "name": "مشترك",
+   "description": "مشترك",
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_account",
+   "name": "خاص بك",
+   "description": "خاص بك",
+   "stock": 9999,
+   "isInfiniteStock": true
+  }
+ ],
+ "types": [
+  {
+   "id": "offline_base",
+   "name": "مشترك — اللعبة الأساسية",
+   "optionId": "offline_account",
+   "price": 8500,
+   "cost": 2750,
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_extras",
+   "name": "خاص بك — مع الإضافات",
+   "optionId": "online_account",
+   "price": 21500,
+   "cost": 16750,
+   "stock": 9999,
+   "isInfiniteStock": true
+  }
+ ],
+ "editions": [],
+ "dlcs": [],
+ "isActive": true,
+ "status": "Active",
+ "kind": "account",
+ "trade_value_iqd": 9000,
+ "store_offer_bonus_iqd": 1500,
+ "trade_enabled": true,
+ "trade_value_locked": false,
+ "id": "prd_6fe1da3c0f9940dc",
+ "schema_version": 24,
+ "titleAr": "وولفنشتاين 2: ذا نيو كولوسس",
+ "compatibility": [
+  "Nintendo Switch",
+  "Nintendo Switch 2 can run the Switch version through backward compatibility"
+ ],
+ "edition": "Standard / Store Variants",
+ "developer": "MachineGames",
+ "publisher": "Bethesda Softworks",
+ "seriesName": "Wolfenstein II",
+ "metacriticUrl": "https://www.metacritic.com/game/wolfenstein-ii-the-new-colossus/",
+ "opencriticRating": 80,
+ "userScore": 8.1,
+ "price_usd": 59.99,
+ "officialUrl": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-games/Wolfenstein-II-The-New-Colossus-1276093.html",
+ "eshopUrl": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-games/Wolfenstein-II-The-New-Colossus-1276093.html",
+ "gameIsOffline": true,
+ "gameIsOnline": false,
+ "gameLanguageLocked": false,
+ "description_short": "A story-driven first-person shooter adapted to Nintendo Switch, featuring motion aiming, a full single-player campaign, and large-scale combat against a fictional fascist regime.",
+ "description_ar": "وولفنشتاين 2: ذا نيو كولوسس — A story-driven first-person shooter adapted to Nintendo Switch, featuring motion aiming, a full single-player campaign, and large-scale combat against a fictional fascist regime.",
+ "languagesText": [
+  "See official supported languages on the linked Nintendo/publisher product page"
+ ],
+ "languagesAudio": [
+  "Audio language availability varies by title and region; see official product information"
+ ],
+ "tvMode": true,
+ "tabletopMode": true,
+ "handheldMode": true,
+ "nintendoPlayModes": "TV / Tabletop / Handheld",
+ "nintendoOnlineRequired": false,
+ "nintendoCloudSaves": true,
+ "nintendoGameKeyCard": false,
+ "nintendoPhysicalNeedsDownload": false,
+ "switch2Enhanced": false,
+ "switch2Exclusive": false,
+ "nintendoNotes": "Platform, release, player-count, storage, compatibility, and feature statements in this import are grounded in the official Nintendo/publisher pages listed under Sources. Store package prices are user-supplied storefront values, not assumed MSRP.",
+ "editionsList": [
+  {
+   "name": "Standard",
+   "contents": [
+    {
+     "label": "Standard store package"
+    },
+    {
+     "label": "Offline account access"
+    },
+    {
+     "label": "Infinite stock by default"
+    }
+   ]
+  },
+  {
+   "name": "Deluxe",
+   "contents": [
+    {
+     "label": "Deluxe store package"
+    },
+    {
+     "label": "Online account access"
+    },
+    {
+     "label": "Infinite stock by default"
+    }
+   ]
+  }
+ ],
+ "gameplayPillars": [
+  {
+   "title": "Fast first-person gunplay",
+   "description": "Dual wielding, heavy weapons, stealth, and aggressive movement support several combat approaches."
+  },
+  {
+   "title": "Story-focused campaign",
+   "description": "The game follows BJ Blazkowicz through a heavily cinematic single-player campaign."
+  },
+  {
+   "title": "Weapon upgrades",
+   "description": "Guns can be modified with upgrades that change handling, damage, and tactical use."
+  },
+  {
+   "title": "Stealth or assault choices",
+   "description": "Many encounters can be approached quietly or through direct firefights."
+  },
+  {
+   "title": "Switch motion aiming",
+   "description": "Nintendo highlights motion aiming support as a platform-specific control option."
+  }
+ ],
+ "worldSummary": "A story-driven first-person shooter adapted to Nintendo Switch, featuring motion aiming, a full single-player campaign, and large-scale combat against a fictional fascist regime. The protagonist continues the alternate-history conflict after the events of The New Order. The campaign’s final chapters build around resistance operations and high-intensity assaults.",
+ "storyChapters": [
+  {
+   "title": "Return as BJ Blazkowicz",
+   "body": "The protagonist continues the alternate-history conflict after the events of The New Order."
+  },
+  {
+   "title": "Reunite the resistance",
+   "body": "The story focuses on building and protecting a resistance movement across occupied America."
+  },
+  {
+   "title": "Travel through distinct regions",
+   "body": "Missions move through several visually different locations and set pieces."
+  },
+  {
+   "title": "Upgrade the arsenal",
+   "body": "Combat progression expands through weapons, perks, and tactical choices."
+  },
+  {
+   "title": "Push toward revolution",
+   "body": "The campaign’s final chapters build around resistance operations and high-intensity assaults."
+  }
+ ],
+ "features": [
+  "Full single-player campaign",
+  "Motion aiming support",
+  "Weapon upgrade system",
+  "Stealth and assault approaches",
+  "Portable Switch adaptation"
+ ],
+ "perfResolutionDocked": "Dynamic resolution up to 720p",
+ "perfResolutionHandheld": "Dynamic resolution up to 720p",
+ "perfFps": "30",
+ "perfHdr": false,
+ "playTimeMain": 11,
+ "completionMain": 16,
+ "completionExtras": 20,
+ "faq": [
+  {
+   "q": "Is Wolfenstein II multiplayer?",
+   "a": "No. The main game is a single-player first-person shooter."
+  },
+  {
+   "q": "Does the Switch version have motion aiming?",
+   "a": "Yes. Nintendo’s Switch materials highlight motion aiming support."
+  },
+  {
+   "q": "How large is it?",
+   "a": "Nintendo UK lists a download around 22 GB, with some regional listings varying slightly."
+  },
+  {
+   "q": "Does it have mature content?",
+   "a": "Yes. It carries an adults-only/mature age rating because of strong violence, language, and themes."
+  },
+  {
+   "q": "Are Standard and Deluxe official Nintendo editions here?",
+   "a": "They are preserved as the user’s store package labels; this extraction does not assume they match Bethesda’s original retail edition naming."
+  }
+ ],
+ "verdictScore": 8.5,
+ "verdictPros": [
+  "Impressive portable conversion",
+  "Strong single-player shooting",
+  "Good motion aiming",
+  "Varied combat approaches",
+  "Memorable story presentation"
+ ],
+ "verdictCons": [
+  "30 fps target on Switch",
+  "Visual resolution is heavily dynamic",
+  "Mature content limits audience",
+  "Large download size",
+  "No multiplayer"
+ ],
+ "reviews": [
+  {
+   "source": "Metacritic",
+   "score": "79",
+   "url": "https://www.metacritic.com/game/wolfenstein-ii-the-new-colossus/"
+  },
+  {
+   "source": "OpenCritic",
+   "score": "80",
+   "url": "https://opencritic.com/"
+  }
+ ],
+ "timeline": [
+  {
+   "date": "2018-06-29",
+   "title": "Released on target Nintendo platform"
+  }
+ ],
+ "patchNotes": [
+  {
+   "version": "Current retail build",
+   "date": "2026-08-27"
+  }
+ ],
+ "studioName": "MachineGames",
+ "studioUrl": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-games/Wolfenstein-II-The-New-Colossus-1276093.html",
+ "studioLocation": "See publisher/developer profile",
+ "sources": [
+  {
+   "name": "Official Nintendo / publisher product page",
+   "url": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-games/Wolfenstein-II-The-New-Colossus-1276093.html"
+  },
+  {
+   "name": "Metacritic",
+   "url": "https://www.metacritic.com/game/wolfenstein-ii-the-new-colossus/"
+  }
+ ],
+ "downloadSizeGb": 22,
+ "requiredSpaceGb": 22,
+ "microSdRecommended": true,
+ "storageNotes": "Storage requirements follow the official product listing where a final numeric size is published; upcoming titles may require a later refresh when final size is posted.",
+ "mpLocalPlayers": false,
+ "mpOnlinePlayers": false,
+ "mpCoop": false,
+ "mpCompetitive": false,
+ "mpLocalWireless": false,
+ "mpSplitScreen": false,
+ "dlc": [
+  {
+   "name": "Downloadable / additional content status",
+   "description": "No separate DLC variant is inferred from the supplied two store tiers."
+  }
+ ],
+ "devicePerformance": [
+  {
+   "device": "Nintendo Switch",
+   "deviceSlug": "nintendo-switch",
+   "deviceModel": "Nintendo Switch",
+   "hardwareId": "nintendo-switch",
+   "informationStatus": "Available",
+   "handheld": {
+    "supported": true,
+    "resolution": "Dynamic resolution up to 720p",
+    "resolutionDynamic": false,
+    "renderingResolution": "Dynamic resolution up to 720p",
+    "outputResolution": "Dynamic resolution up to 720p",
+    "fps": "30",
+    "fpsMin": "30",
+    "fpsMax": "30",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "Handheld",
+    "notes": "The Switch conversion targets 30 fps with aggressive dynamic resolution scaling; exact internal resolution varies by scene."
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "Dynamic resolution up to 720p",
+    "resolutionDynamic": false,
+    "renderingResolution": "Dynamic resolution up to 720p",
+    "outputResolution": "Dynamic resolution up to 720p",
+    "fps": "30",
+    "fpsMin": "30",
+    "fpsMax": "30",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "TV / Docked",
+    "notes": "The Switch conversion targets 30 fps with aggressive dynamic resolution scaling; exact internal resolution varies by scene."
+   },
+   "modes": [
+    {
+     "name": "Primary documented/compatibility profile",
+     "handheldResolution": "Dynamic resolution up to 720p",
+     "handheldFps": "30",
+     "tvResolution": "Dynamic resolution up to 720p",
+     "tvFps": "30",
+     "hdr": false,
+     "vrr": false,
+     "notes": "The Switch conversion targets 30 fps with aggressive dynamic resolution scaling; exact internal resolution varies by scene."
+    }
+   ],
+   "upscaling": "Game / system-specific scaling where applicable",
+   "rayTracing": false,
+   "rayTracingMode": "Not Supported",
+   "loadingTime": "Scene-dependent",
+   "loadingNotes": "Loading time varies by scene, save state, storage, version, and patch.",
+   "gameVersion": "Current listed version",
+   "patchVersion": "Current available update",
+   "testedDate": "2026-08-27",
+   "sourceName": "Official product / compatibility information",
+   "sourceUrl": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-games/Wolfenstein-II-The-New-Colossus-1276093.html",
+   "performanceNotes": "The Switch conversion targets 30 fps with aggressive dynamic resolution scaling; exact internal resolution varies by scene."
+  },
+  {
+   "device": "Nintendo Switch 2",
+   "deviceSlug": "nintendo-switch-2",
+   "deviceModel": "Nintendo Switch 2",
+   "hardwareId": "nintendo-switch-2",
+   "informationStatus": "Available",
+   "handheld": {
+    "supported": true,
+    "resolution": "Dynamic up to 720p",
+    "resolutionDynamic": false,
+    "renderingResolution": "Dynamic up to 720p",
+    "outputResolution": "Dynamic up to 720p",
+    "fps": "30",
+    "fpsMin": "30",
+    "fpsMax": "30",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "Handheld",
+    "notes": "Backward-compatible Nintendo Switch software on Nintendo Switch 2; no native Switch 2 edition assumed."
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "Dynamic up to 720p",
+    "resolutionDynamic": false,
+    "renderingResolution": "Dynamic up to 720p",
+    "outputResolution": "Dynamic up to 720p",
+    "fps": "30",
+    "fpsMin": "30",
+    "fpsMax": "30",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "TV / Docked",
+    "notes": "Backward-compatible Nintendo Switch software on Nintendo Switch 2; no native Switch 2 edition assumed."
+   },
+   "modes": [
+    {
+     "name": "Primary documented/compatibility profile",
+     "handheldResolution": "Dynamic up to 720p",
+     "handheldFps": "30",
+     "tvResolution": "Dynamic up to 720p",
+     "tvFps": "30",
+     "hdr": false,
+     "vrr": false,
+     "notes": "Backward-compatible Nintendo Switch software on Nintendo Switch 2; no native Switch 2 edition assumed."
+    }
+   ],
+   "upscaling": "Game / system-specific scaling where applicable",
+   "rayTracing": false,
+   "rayTracingMode": "Not Supported",
+   "loadingTime": "Scene-dependent",
+   "loadingNotes": "Loading time varies by scene, save state, storage, version, and patch.",
+   "gameVersion": "Current listed version",
+   "patchVersion": "Current available update",
+   "testedDate": "2026-08-27",
+   "sourceName": "Official product / compatibility information",
+   "sourceUrl": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-games/Wolfenstein-II-The-New-Colossus-1276093.html",
+   "performanceNotes": "Backward-compatible Nintendo Switch software on Nintendo Switch 2; no native Switch 2 edition assumed."
+  }
+ ],
+ "switch2UpgradePrice": 0,
+ "boxContentsList": [],
+ "image": "",
+ "banner": "",
+ "schemaId": "",
+ "batchImport": true,
+ "galleryImages": [
+  {
+   "url": "/api/files/products/prd_6fe1da3c0f9940dc/gallery-1-4930c2333de232a5.webp",
+   "alt": "Wolfenstein II: The New Colossus screenshot 1"
+  },
+  {
+   "url": "/api/files/products/prd_6fe1da3c0f9940dc/gallery-2-6175b61b288eeaee.webp",
+   "alt": "Wolfenstein II: The New Colossus screenshot 2"
+  },
+  {
+   "url": "/api/files/products/prd_6fe1da3c0f9940dc/gallery-3-a8fc69ebf5b2467f.webp",
+   "alt": "Wolfenstein II: The New Colossus screenshot 3"
+  },
+  {
+   "url": "/api/files/products/prd_6fe1da3c0f9940dc/gallery-4-0cf7e7fd9017d31c.webp",
+   "alt": "Wolfenstein II: The New Colossus screenshot 4"
+  },
+  {
+   "url": "/api/files/products/prd_6fe1da3c0f9940dc/gallery-5-3515929688fd86b4.webp",
+   "alt": "Wolfenstein II: The New Colossus screenshot 5"
+  },
+  {
+   "url": "/api/files/products/prd_6fe1da3c0f9940dc/gallery-6-30d62597de322c7f.webp",
+   "alt": "Wolfenstein II: The New Colossus screenshot 6"
+  }
+ ],
+ "createdAt": "2026-08-28T18:52:49.343Z",
+ "updatedAt": "2026-08-28T18:52:49.343Z"
+}

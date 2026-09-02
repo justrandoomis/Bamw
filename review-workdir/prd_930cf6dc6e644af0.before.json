@@ -1,0 +1,548 @@
+{
+ "title": "Xenoblade Chronicles 2",
+ "titleEn": "Xenoblade Chronicles 2",
+ "titleKu": "Xenoblade Chronicles 2",
+ "slug": "xenoblade-chronicles-2-switch",
+ "description": "Lead Rex, Pyra, and their allies across Alrest in search of Elysium. Explore the Titans, collect and develop Blades, master layered real-time combat, and expand the adventure with the official Expansion Pass and Torna story.",
+ "descriptionEn": "Lead Rex, Pyra, and their allies across Alrest in search of Elysium. Explore the Titans, collect and develop Blades, master layered real-time combat, and expand the adventure with the official Expansion Pass and Torna story.",
+ "descriptionKu": "Lead Rex, Pyra, and their allies across Alrest in search of Elysium. Explore the Titans, collect and develop Blades, master layered real-time combat, and expand the adventure with the official Expansion Pass and Torna story.",
+ "cartridgeImage": "/api/files/products/prd_930cf6dc6e644af0/front-4f3790e97d83419a.jpg",
+ "nintendoCardImage": "/api/files/products/prd_930cf6dc6e644af0/square-9d7cf581b6e00bd8.jpg",
+ "coverHiResImage": "/api/files/products/prd_930cf6dc6e644af0/3d-texture-f872bd737a5a2546.jpg",
+ "coverImage": "/api/files/products/prd_930cf6dc6e644af0/cover-4f3790e97d83419a.jpg",
+ "bannerImages": [
+  "/api/files/products/prd_930cf6dc6e644af0/banner-0-ab953b6d3344cd5a.avif",
+  "/api/files/products/prd_930cf6dc6e644af0/banner-1-c7efab308bdb87cd.avif",
+  "/api/files/products/prd_930cf6dc6e644af0/banner-2-f30da022f5643557.avif",
+  "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000000707/070d1f7be9a836c7064e1b9d33fc6388191f8bdfbefe0b5d9c284c1b471c163f"
+ ],
+ "gallery": [],
+ "youtubeTrailer": "https://www.youtube.com/watch?v=Xjpao-nD5YU",
+ "releaseDate": "2017-12-01",
+ "ageRating": "ESRB Teen",
+ "metacriticRating": 83,
+ "genres": [
+  "Action",
+  "Role-Playing",
+  "Adventure"
+ ],
+ "platform": "switch1",
+ "size": 13.2,
+ "numberOfPlayers": "1",
+ "supportedLanguages": "Japanese, British English, French, German, Italian, Spanish, Korean, Simplified Chinese, Latin American Spanish, Canadian French, Traditional Chinese, American English",
+ "hardwareModel": "",
+ "colorEdition": "",
+ "storageCapacity": "",
+ "screenSpecs": "",
+ "batteryLife": "",
+ "boxContents": [],
+ "boxContentsText": "",
+ "warrantyCondition": "",
+ "connectivity": "",
+ "characterName": "Link",
+ "amiiboSeries": "The Legend of Zelda",
+ "figureType": "figure",
+ "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+ "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+ "boxCondition": "mib",
+ "releaseWave": "Wave 2 (Restock)",
+ "rarity": "standard",
+ "accessoryType": "حقيبة حماية وتنقل Carry Case",
+ "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+ "brand": "Nintendo Official",
+ "material": "Hard EVA Shockproof Shell",
+ "availableColors": "Black, Neon Red/Blue, White",
+ "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+ "cardValue": "$20 eShop Balance",
+ "region": "Global",
+ "cardType": "eshop",
+ "deliveryMethod": "instant_code",
+ "redemptionGuide": "",
+ "redemptionSteps": [],
+ "validity": "no_expiry",
+ "usedType": "cartridge",
+ "conditionGrade": "like_new",
+ "packaging": "cib",
+ "guaranteeStatus": "tested_30days",
+ "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+ "accountType": "primary",
+ "badge": "وفر 40%",
+ "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+ "price": 11500,
+ "cost": 1250,
+ "stock": 999999,
+ "isInfiniteStock": true,
+ "isHidden": false,
+ "displayOrder": 0,
+ "category": "nintendo-switch-games",
+ "categoryId": "nintendo-switch-games",
+ "categoryEn": "",
+ "categoryKu": "",
+ "options": [
+  {
+   "id": "offline_account",
+   "name": "مشترك",
+   "description": "Offline account access for this game.",
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_account",
+   "name": "خاص بك",
+   "description": "Online-capable account access option sold by the supplier.",
+   "isInfiniteStock": true
+  }
+ ],
+ "types": [
+  {
+   "id": "standard_offline",
+   "name": "مشترك — اللعبة الأساسية",
+   "optionId": "offline_account",
+   "price": 11500,
+   "cost": 1250,
+   "description": "Supplier Regular / 普通版. Dual-platform costs retained in notes.",
+   "stock": 999999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "dlc_offline",
+   "name": "مشترك — مع الإضافات",
+   "optionId": "offline_account",
+   "price": 14000,
+   "cost": 2500,
+   "description": "Supplier Special / 特典版 mapped to the DLC-bearing offline variant. Dual-platform costs retained in notes.",
+   "stock": 999999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "standard_online",
+   "name": "خاص بك — اللعبة الأساسية",
+   "optionId": "online_account",
+   "price": 35000,
+   "cost": 20750,
+   "description": "Supplier Standard / 标准版. Dual-platform costs retained in notes.",
+   "stock": 999999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "dlc_online",
+   "name": "خاص بك — مع الإضافات",
+   "optionId": "online_account",
+   "price": 42000,
+   "cost": 25000,
+   "description": "Supplier Deluxe / 豪华版 mapped to the DLC-bearing online variant. Dual-platform costs retained in notes.",
+   "stock": 999999,
+   "isInfiniteStock": true
+  }
+ ],
+ "editions": [],
+ "dlcs": [],
+ "isActive": true,
+ "status": "active",
+ "kind": "account",
+ "trade_value_iqd": 0,
+ "store_offer_bonus_iqd": 0,
+ "trade_enabled": true,
+ "trade_value_locked": false,
+ "id": "prd_930cf6dc6e644af0",
+ "titleAr": "Xenoblade Chronicles 2",
+ "compatibility": [
+  "Nintendo Switch"
+ ],
+ "edition": "Standard",
+ "developer": "MONOLITHSOFT",
+ "publisher": "Nintendo",
+ "metacriticUrl": "https://www.metacritic.com/game/xenoblade-chronicles-2/",
+ "opencriticRating": 83,
+ "userScore": 8.5,
+ "officialUrl": "https://www.nintendo.com/us/store/products/xenoblade-chronicles-2-switch/",
+ "eshopUrl": "https://www.nintendo.com/us/store/products/xenoblade-chronicles-2-switch/",
+ "gameIsOffline": true,
+ "gameIsOnline": false,
+ "description_short": "A story-driven action RPG following Rex and Pyra across the Titans of Alrest in search of Elysium.",
+ "description_ar": "قاد ريكس وبايرا ورفاقهما عبر عالم ألريست بحثًا عن Elysium. استكشف العمالقة الأحياء، واجمع الـBlades وطوّرها، وأتقن نظام قتال متدرج وعميق، مع توسعة رسمية كبيرة تتضمن Torna ~ The Golden Country.",
+ "box_front_url": "https://images.launchbox-app.com//acc8a6b4-60c7-454f-9e01-d9b04ef152cd.jpg",
+ "box_back_url": "https://images.launchbox-app.com//816d9755-8600-4581-85d3-b2e512525780.jpg",
+ "videos": [
+  {
+   "title": "Official Nintendo Switch trailer",
+   "url": "https://www.youtube.com/watch?v=Xjpao-nD5YU"
+  }
+ ],
+ "nsuid": "70010000000707",
+ "nintendoEshopUrl": "https://www.nintendo.com/us/store/products/xenoblade-chronicles-2-nintendo-switch-2-edition-switch-2/",
+ "nintendoOnlineRequired": false,
+ "nintendoCloudSaves": true,
+ "tvMode": true,
+ "tabletopMode": true,
+ "handheldMode": true,
+ "nintendoPlayModes": "TV, Tabletop, Handheld",
+ "nintendoNotes": "Official platform status: Nintendo Switch version released 2017-12-01. Native Nintendo Switch 2 Edition released digitally on 2026-07-30; Nintendo lists 4K TV / full-HD handheld at 60 fps plus MOMO, Merc Assault and new Pyra/Mythra outfit designs.\n\nSupplier language selection: Simplified Chinese. Four supplier variants per platform are mapped using the established rule: Regular=Offline Standard; Special=Offline DLC; Standard=Online Standard; Deluxe=Online DLC.\nNS1: ¥6.8 / ¥11.7 / ¥95 / ¥114.6 => 1,250 / 2,500 / 20,750 / 25,000 IQD.\nNS2: ¥16.6 / ¥21.5 / ¥114.6 / ¥124.4 => 3,500 / 4,500 / 25,000 / 27,250 IQD.\nDual-platform type.cost fields are left blank because the template cannot encode two platform costs safely.",
+ "switch2Enhanced": true,
+ "switch2Exclusive": false,
+ "switch2Features": [
+  "4K TV output",
+  "1080p handheld output",
+  "60 fps",
+  "New Rare Blade MOMO",
+  "Merc Assault action-battle mode",
+  "New Pyra and Mythra outfit designs"
+ ],
+ "tagline": "Lead Rex and Pyra across a sea of clouds in search of Elysium.",
+ "fitFor": [
+  "Fans of long story-driven JRPGs",
+  "Players who enjoy party and build customization",
+  "Players interested in a large DLC expansion and postgame",
+  "Players who enjoy extensive postgame and DLC"
+ ],
+ "notFitFor": [
+  "Players seeking a short campaign",
+  "Players who dislike layered combat systems",
+  "Players who prefer minimal character-management systems"
+ ],
+ "playTimeMain": 62,
+ "playTimeFull": 255.5,
+ "editionsList": [
+  {
+   "name": "Nintendo Switch Standard",
+   "coverUrl": "https://images.launchbox-app.com//acc8a6b4-60c7-454f-9e01-d9b04ef152cd.jpg",
+   "contents": [
+    {
+     "label": "Base game"
+    },
+    {
+     "label": "Single-player story across Alrest"
+    },
+    {
+     "label": "Blade collection and party progression"
+    }
+   ]
+  },
+  {
+   "name": "Nintendo Switch 2 Edition",
+   "contents": [
+    {
+     "label": "Base game + Switch 2 Upgrade Pack"
+    },
+    {
+     "label": "4K TV / 1080p handheld at 60 fps"
+    },
+    {
+     "label": "MOMO, Merc Assault, new Pyra/Mythra designs"
+    }
+   ]
+  },
+  {
+   "name": "Expansion Pass",
+   "contents": [
+    {
+     "label": "Torna ~ The Golden Country"
+    },
+    {
+     "label": "New quests, Blades and challenge content"
+    },
+    {
+     "label": "Helpful items and additional content"
+    }
+   ]
+  }
+ ],
+ "gameplayPillars": [
+  {
+   "title": "Driver and Blade combat",
+   "description": "Drivers fight alongside Blades, combining Arts, Specials, elemental routes, Driver Combos, Blade Combos, and Chain Attacks.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000000707/85883546315ee943d54f8d29686705fb9ba9828099f876e3e27ee82e6fd40f5e"
+  },
+  {
+   "title": "Explore the Titans",
+   "description": "The Titans function as large adventure regions filled with quests, enemies, collection points, landmarks, towns, and hidden paths.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000000707/e6680b0381aa7c47b0d4a251de4b40a840b9746021aab9a48cc05121d73059d5"
+  },
+  {
+   "title": "Build affinity and teams",
+   "description": "Blade affinity charts, equipment, Aux Cores, pouch items, roles, elements, and party composition create a large customization layer.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000000707/3bdd5ab14edb0b72d215460b0a4fcef337fb8c7ec9d56ae2023d411f810fa51f"
+  }
+ ],
+ "worldSummary": "Alrest is a cloud-covered world where civilizations live on the backs of enormous Titans. Each Titan has distinctive terrain, settlements, wildlife, politics, and routes that change the shape of exploration.",
+ "storyChapters": [
+  {
+   "title": "Rex and Pyra",
+   "body": "Rex forms a bond with Pyra and accepts her request to reach Elysium, drawing him into a conflict involving Drivers, Blades, and rival powers.",
+   "imageUrl": "https://images.launchbox-app.com//a2841985-37b9-44cd-a8fb-6713973dbe3b.png"
+  },
+  {
+   "title": "The search for Elysium",
+   "body": "The party journeys between Titans as dwindling land and political tension push Alrest toward crisis.",
+   "imageUrl": "https://images.launchbox-app.com//78146993-b111-4144-a6fe-575bcd50849f.png"
+  },
+  {
+   "title": "Conflict over Alrest’s future",
+   "body": "The search for Elysium reveals deeper truths about Blades, Titans, and the history that shaped Alrest."
+  }
+ ],
+ "galleryImages": [
+  {
+   "url": "https://images.launchbox-app.com//824803dd-d70e-42fb-a233-1b8f8eb0ee21.jpg",
+   "alt": "Battle and exploration artwork"
+  },
+  {
+   "url": "https://images.launchbox-app.com//feacda3b-39a1-4fe8-9c8a-a2052986190d.png",
+   "alt": "Alrest environment artwork"
+  },
+  {
+   "url": "https://images.launchbox-app.com//b01faef5-2447-407c-ae47-b895634511a4.jpg",
+   "alt": "Character and Blade artwork"
+  },
+  {
+   "url": "https://images.launchbox-app.com//fda3b3bf-42cd-4595-8e91-d69c4f3cae2e.jpg",
+   "alt": "Additional promotional artwork"
+  }
+ ],
+ "features": [
+  "Driver and Blade party system",
+  "Large regions built on living Titans",
+  "Elemental combos, Chain Attacks, and affinity progression",
+  "Rare Blade collection and affinity charts",
+  "Extensive Expansion Pass",
+  "Torna prequel story"
+ ],
+ "perfResolutionDocked": "720p dynamic",
+ "perfResolutionHandheld": "368p-552p dynamic",
+ "perfFps": "30",
+ "perfNotes": "Original Switch: docked 720p with a 30 fps target and occasional dips; handheld uses aggressive dynamic resolution roughly 368p-552p. Switch 2 Edition: official 4K TV / 1080p handheld output at 60 fps; measured internal resolution is lower and temporally upscaled.",
+ "devicePerformance": [
+  {
+   "device": "Nintendo Switch 2",
+   "deviceSlug": "nintendo-switch-2",
+   "deviceModel": "Nintendo Switch 2",
+   "hardwareId": "prd_acf4c89908764c62",
+   "informationStatus": "Published / verified",
+   "handheld": {
+    "supported": true,
+    "resolution": "368p-552p dynamic",
+    "outputResolution": "368p-552p dynamic",
+    "fps": "30"
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "720p dynamic",
+    "outputResolution": "720p dynamic",
+    "fps": "30"
+   },
+   "sourceName": "Nintendo Official",
+   "sourceUrl": "https://www.nintendo.com/us/store/products/xenoblade-chronicles-2-switch/",
+   "verificationStatus": "verified"
+  }
+ ],
+ "downloadSizeGb": 13.2,
+ "requiredSpaceGb": 37.6,
+ "microSdRecommended": false,
+ "storageNotes": "Nintendo lists 13.2 GB for the Switch game and 37.6 GB for the Switch 2 Edition.",
+ "languagesAudio": [
+  "English",
+  "Japanese"
+ ],
+ "languagesText": [
+  "Japanese",
+  "British English",
+  "French",
+  "German",
+  "Italian",
+  "Spanish",
+  "Korean",
+  "Simplified Chinese",
+  "Latin American Spanish",
+  "Canadian French",
+  "Traditional Chinese",
+  "American English"
+ ],
+ "arabicSupport": false,
+ "mpLocalPlayers": false,
+ "mpOnlinePlayers": false,
+ "mpCoop": false,
+ "mpCompetitive": false,
+ "mpSplitScreen": false,
+ "mpLocalWireless": false,
+ "dlc": [
+  {
+   "name": "Xenoblade Chronicles 2 Expansion Pass"
+  },
+  {
+   "name": "Helpful Items Pack"
+  },
+  {
+   "name": "New Quests Pack"
+  },
+  {
+   "name": "New Rare Blade Pack",
+   "description": "Adds additional Rare Blades through the official Expansion Pass."
+  },
+  {
+   "name": "New Challenge Mode Pack",
+   "description": "Adds Challenge Battle Mode and related rewards."
+  },
+  {
+   "name": "Xenoblade Chronicles 2: Torna ~ The Golden Country",
+   "description": "A major story expansion set 500 years before the base game."
+  },
+  {
+   "name": "Japanese-Voice Pack",
+   "description": "Free Japanese voice-language add-on for supported regional versions."
+  }
+ ],
+ "completionMain": 62,
+ "completionExtras": 105,
+ "completionAll": 255.5,
+ "verdictSummary": "A large, ambitious JRPG with a memorable cast, expansive world design, and an unusually deep combat/build system. The Switch 2 Edition substantially improves image clarity and frame rate.",
+ "reviews": [
+  {
+   "source": "Metacritic",
+   "score": "83/100",
+   "url": "https://www.metacritic.com/game/xenoblade-chronicles-2/"
+  },
+  {
+   "source": "OpenCritic aggregate",
+   "score": "83/100",
+   "url": "https://www.dekudeals.com/items/xenoblade-chronicles-2"
+  },
+  {
+   "source": "Metacritic user score",
+   "score": "8.5/10",
+   "url": "https://www.metacritic.com/game/xenoblade-chronicles-2/"
+  }
+ ],
+ "timeline": [
+  {
+   "date": "2017-12-01",
+   "title": "Nintendo Switch release",
+   "body": "Original Nintendo Switch launch."
+  },
+  {
+   "date": "2018-09-14",
+   "title": "Torna ~ The Golden Country expansion",
+   "body": "Torna story expansion released as part of the game’s Expansion Pass and as a standalone package."
+  },
+  {
+   "date": "2026-07-30",
+   "title": "Nintendo Switch 2 Edition digital release",
+   "body": "Nintendo Switch 2 Edition launched digitally with new performance and content enhancements."
+  }
+ ],
+ "seriesName": "Xenoblade Chronicles",
+ "seriesEntries": [
+  "Xenoblade Chronicles: Definitive Edition",
+  "Xenoblade Chronicles 3",
+  "Xenoblade Chronicles 2: Torna ~ The Golden Country"
+ ],
+ "studioName": "MONOLITHSOFT",
+ "studioUrl": "https://www.monolithsoft.co.jp/",
+ "studioLocation": "Tokyo, Japan",
+ "studioAbout": "MONOLITHSOFT is a Japanese developer whose Xenoblade titles are known for large environments, complex RPG systems, and cinematic storytelling.",
+ "setupNeeds": [
+  "Nintendo Switch or Nintendo Switch 2",
+  "Nintendo Account for digital purchases",
+  "Expansion Pass required for Torna when accessed as DLC",
+  "Internet required for digital content and updates"
+ ],
+ "sources": [
+  {
+   "name": "Nintendo official — Switch",
+   "url": "https://www.nintendo.com/us/store/products/xenoblade-chronicles-2-switch/"
+  },
+  {
+   "name": "Nintendo official — Switch 2 Edition",
+   "url": "https://www.nintendo.com/us/store/products/xenoblade-chronicles-2-nintendo-switch-2-edition-switch-2/"
+  },
+  {
+   "name": "Nintendo official — DLC list",
+   "url": "https://www.nintendo.com/us/store/products/xenoblade-chronicles-2-switch/dlc/"
+  }
+ ],
+ "boxContentsList": "[Circular]",
+ "image": "/api/files/products/prd_930cf6dc6e644af0/cover-4f3790e97d83419a.jpg",
+ "banner": "/api/files/products/prd_930cf6dc6e644af0/banner-0-ab953b6d3344cd5a.avif",
+ "schemaId": "",
+ "createdAt": "2026-08-26T21:39:21.674Z",
+ "created_at": "2026-08-26T21:39:21.674Z",
+ "updatedAt": "2026-08-28T22:05:01.198Z",
+ "updated_at": "2026-08-26T21:39:21.674Z",
+ "badgeEn": "وفر 40%",
+ "badgeKu": "وفر 40%",
+ "featuresEn": [
+  "Driver and Blade party system",
+  "Large regions built on living Titans",
+  "Elemental combos, Chain Attacks, and affinity progression",
+  "Rare Blade collection and affinity charts",
+  "Extensive Expansion Pass",
+  "Torna prequel story"
+ ],
+ "featuresKu": [
+  "Driver and Blade party system",
+  "Large regions built on living Titans",
+  "Elemental combos, Chain Attacks, and affinity progression",
+  "Rare Blade collection and affinity charts",
+  "Extensive Expansion Pass",
+  "Torna prequel story"
+ ],
+ "boxFrontUrl": "https://images.launchbox-app.com//acc8a6b4-60c7-454f-9e01-d9b04ef152cd.jpg",
+ "sales": 0,
+ "images": [],
+ "modes": [],
+ "price_usd": 59.99,
+ "gameLanguageLocked": false,
+ "nintendoGameKeyCard": false,
+ "nintendoPhysicalNeedsDownload": false,
+ "perfHdr": false,
+ "faq": [
+  {
+   "q": "Is Xenoblade Chronicles 2 turn-based?",
+   "a": "No. Combat occurs in real time with auto-attacks, timed Arts, Blade switching, combos, and party management."
+  },
+  {
+   "q": "Does the Expansion Pass include Torna?",
+   "a": "Yes. The official Expansion Pass includes Torna – The Golden Country along with quests, items, and challenge content."
+  },
+  {
+   "q": "Is this the Switch 2 Edition?",
+   "a": "No. This file is specifically for the original Nintendo Switch release."
+  },
+  {
+   "q": "Does it work on Switch 2?",
+   "a": "Yes, the original release is compatible, but a separate Switch 2 Edition also exists and should not be confused with this file."
+  },
+  {
+   "q": "How long is it?",
+   "a": "The main story is very long, and side quests, Blade affinity charts, postgame bosses, and expansion content can greatly extend playtime."
+  }
+ ],
+ "verdictScore": 9,
+ "verdictPros": [
+  "Memorable characters and soundtrack",
+  "Deep combat becomes highly rewarding",
+  "Large and distinctive world design",
+  "Expansion Pass adds major value",
+  "Excellent long-form JRPG progression"
+ ],
+ "verdictCons": [
+  "Combat tutorials can be overwhelming",
+  "Early pacing is slower than later chapters",
+  "Handheld image quality can be soft on original Switch",
+  "Randomized Blade acquisition is divisive",
+  "Large time commitment"
+ ],
+ "patchNotes": [
+  {
+   "version": "Launch version",
+   "date": "2017-12-01"
+  },
+  {
+   "version": "Expansion Pass complete",
+   "date": "2018-09-14"
+  },
+  {
+   "version": "Current original Switch build",
+   "date": "2026-08-27"
+  }
+ ],
+ "switch2UpgradePrice": 0
+}
