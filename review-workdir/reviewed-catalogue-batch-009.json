@@ -1,51 +1,123 @@
 {
  "batch": "009",
- "apply": false,
+ "apply": true,
  "games": [
   {
    "id": "prd_7c8bc4a553ff4edd",
    "slug": "fitness-boxing-3-your-personal-trainer-nintendo-switch-2-edition-switch-2",
    "baseHash": "de71107284e9243adb4320c5aca25f8afac8935945a5ec51a63f750bc9d80d7b",
    "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "clear": [
+    "metacriticRating",
+    "supportedLanguages",
+    "box_front_url",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "The '85' string (no verifiable aggregate) and the referral language sentence removed; the malformed HTTP-400 box URL removed — the genuine box, wrap, square card, cover, four eShop banners and six galleries all verified working. The stray unsupported Nintendo Switch record drops under the platform rule, keeping the Switch 2 record whose handheld mode is correctly flagged unsupported (detached Joy-Con controls required). 2026-07-16, 10 GB (hidden product)."
   },
   {
    "id": "prd_0acfbb9a3c5546d7",
    "slug": "gear-club-unlimited-3",
    "baseHash": "3718a888aa98220c787d62f263d3d02fff58cf0995296879b4143d943d2874a8",
    "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "clear": [
+    "youtubeTrailer",
+    "box_front_url",
+    "nintendoCardImage",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "The trailer field held a YouTube SEARCH link — removed (no verified id confirmable from here). box_front_url was a dead Shopify link (404) and the square-card slot held wide 1920x1080 key art (wrong shape for the role) — both removed; the genuine vertical box in cartridgeImage and the working wide cover remain, and listings fall back cleanly. Fields verified: 2026-02-19, 45.2 GB, Metacritic 82, detailed dynamic-resolution Switch 2 record kept, seven DLC entries, four eShop banners and galleries working. Contamination removed."
   },
   {
    "id": "prd_cddf0823d4eb4a54",
    "slug": "go-go-town-nintendo-switch-2-edition-switch-2",
    "baseHash": "f84dfdd1a3e4ec40fa77ba1519dab83d1b8b74c654654ff73ed576e86b9a752b",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "size": 1.3,
+    "downloadSizeGb": 1.3
+   },
+   "clear": [
+    "youtubeTrailer",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "Size was the string '1.3 GB', which the storage section cannot parse — now the number. The trailer field held a nintendo.com store URL that cannot embed — removed. The unsupported Nintendo Switch record drops under the platform rule, keeping the 1080p/60 Switch 2 record. Square card, cover and six galleries verified working (hidden product)."
   },
   {
    "id": "prd_30e5d438518b461f",
    "slug": "go-go-town-switch-1",
    "baseHash": "84de4ff01933a21b7a9ce0e7b52c1c51241c50b6765ed54c8054e815b8d4c3eb",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "size": 1.2,
+    "downloadSizeGb": 1.2
+   },
+   "clear": [
+    "youtubeTrailer",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "Same fixes as the Switch 2 SKU: '1.2 GB' string becomes a number, the non-embeddable store URL trailer removed, records collapse to the platform's Nintendo Switch record (720p/30, 1080p/30). Square card, cover and six galleries verified working (hidden product)."
   },
   {
    "id": "prd_a7b05b105b274f97",
    "slug": "grid-legends-deluxe-edition",
    "baseHash": "e7c4aa1df54eb9f27d19bbd8642e86e7a292e0e83a31c4239de12e2f1f908f82",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "bannerImages": [
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000102792/6f881078dc2d388506b5b9e32a13ce04114b58cfc82fc4437109bb1f7b4cd687",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000102792/d55efbe42c1b393cfd10b5221efe49e0e1ec800eef7f39770de8ca51d79413de",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000102792/be4bd420d2845ab87de9e771fed97e1033ffde7984b086f1eda0ab8c337f3a66"
+    ]
+   },
+   "clear": [
+    "youtubeTrailer",
+    "box_front_url",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "Two of five banner entries were dead R2 references — the array is rebuilt from the three working eShop CDN entries (verbatim URLs, re-verified at apply). The trailer field held a YouTube SEARCH link — removed. box_front_url held the square eShop icon (the same art as the square card) in the box role — removed; the genuine vertical box in cartridgeImage remains and the square card keeps its correct copy. Fields verified: 2026-01-29, 28.4 GB, Metacritic 82, detailed dynamic-resolution Switch 2 record kept, seven DLC entries. Contamination removed."
   }
  ]
 }
