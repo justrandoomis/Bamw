@@ -1,0 +1,506 @@
+{
+ "title": "Persona 4 Golden",
+ "titleEn": "Persona 4 Golden",
+ "titleKu": "Persona 4 Golden",
+ "slug": "persona-4-golden",
+ "description": "Move to Inaba, build relationships, investigate the Midnight Channel, and pursue the truth behind a chain of murders. Persona 4 Golden combines a calendar-driven social RPG with Persona fusion and turn-based dungeon combat.",
+ "descriptionEn": "Move to Inaba, build relationships, investigate the Midnight Channel, and pursue the truth behind a chain of murders. Persona 4 Golden combines a calendar-driven social RPG with Persona fusion and turn-based dungeon combat.",
+ "descriptionKu": "Move to Inaba, build relationships, investigate the Midnight Channel, and pursue the truth behind a chain of murders. Persona 4 Golden combines a calendar-driven social RPG with Persona fusion and turn-based dungeon combat.",
+ "cartridgeImage": "/api/files/products/prd_0635e35ca407487d/front-2019ab924cdded66.jpg",
+ "nintendoCardImage": "/api/files/products/prd_0635e35ca407487d/square-4085eb124121dba8.jpg",
+ "coverHiResImage": "/api/files/products/prd_0635e35ca407487d/3d-texture-fac5cb42f14ad7aa.webp",
+ "coverImage": "/api/files/products/prd_0635e35ca407487d/cover-51493c41e6d2f9b8.jpg",
+ "bannerImages": [
+  "/api/files/products/prd_0635e35ca407487d/banner-0-d3c703d65f84d31b.jpg",
+  "/api/files/products/prd_0635e35ca407487d/banner-2-5b479ce03c4a76b8.jpg",
+  "/api/files/products/prd_0635e35ca407487d/banner-2-affbe8cca2be4901.jpg",
+  "/api/files/products/prd_0635e35ca407487d/banner-3-d989ab83178e5fd8.jpg",
+  "/api/files/products/prd_0635e35ca407487d/banner-4-86cf9a569ef5e609.jpg",
+  "/api/files/products/prd_0635e35ca407487d/banner-5-67129d60e90c62e1.jpg"
+ ],
+ "gallery": [],
+ "youtubeTrailer": "https://www.youtube.com/watch?v=HnmCs0pUSNk",
+ "releaseDate": "2023-01-19",
+ "ageRating": "ESRB Mature",
+ "metacriticRating": 90,
+ "genres": [
+  "Role-Playing Game",
+  "JRPG",
+  "Turn-Based RPG",
+  "Social Simulation"
+ ],
+ "platform": "switch1",
+ "size": 9.1,
+ "numberOfPlayers": "1",
+ "supportedLanguages": "Nintendo AU: Japanese, French, German, Italian, Spanish, Korean, Chinese (Simplified), Chinese (Traditional), English. Supplier selection supplied by user: Simplified Chinese.",
+ "hardwareModel": "",
+ "colorEdition": "",
+ "storageCapacity": "",
+ "screenSpecs": "",
+ "batteryLife": "",
+ "boxContents": [],
+ "boxContentsText": "",
+ "warrantyCondition": "",
+ "connectivity": "",
+ "characterName": "Link",
+ "amiiboSeries": "The Legend of Zelda",
+ "figureType": "figure",
+ "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+ "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+ "boxCondition": "mib",
+ "releaseWave": "Wave 2 (Restock)",
+ "rarity": "standard",
+ "accessoryType": "حقيبة حماية وتنقل Carry Case",
+ "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+ "brand": "Nintendo Official",
+ "material": "Hard EVA Shockproof Shell",
+ "availableColors": "Black, Neon Red/Blue, White",
+ "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+ "cardValue": "$20 eShop Balance",
+ "region": "Global / region-dependent",
+ "cardType": "eshop",
+ "deliveryMethod": "instant_code",
+ "redemptionGuide": "",
+ "redemptionSteps": [],
+ "validity": "no_expiry",
+ "usedType": "cartridge",
+ "conditionGrade": "like_new",
+ "packaging": "cib",
+ "guaranteeStatus": "tested_30days",
+ "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+ "accountType": "primary",
+ "badge": "وفر 40%",
+ "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+ "price": 9000,
+ "cost": 1250,
+ "stock": 999999,
+ "isInfiniteStock": true,
+ "isHidden": false,
+ "displayOrder": 0,
+ "category": "nintendo-switch-games",
+ "categoryId": "nintendo-switch-games",
+ "categoryEn": "",
+ "categoryKu": "",
+ "options": [
+  {
+   "id": "offline_account",
+   "name": "Offline Account",
+   "description": "Offline account access supplied as Regular / 普通版.",
+   "stock": 999999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_account",
+   "name": "Online Account",
+   "description": "Online account access supplied as Standard / 标准版.",
+   "stock": 999999,
+   "isInfiniteStock": true
+  }
+ ],
+ "types": [
+  {
+   "id": "standard_offline",
+   "name": "Standard Offline",
+   "optionId": "offline_account",
+   "price": 9000,
+   "cost": 1250,
+   "description": "Supplier Regular / 普通版 converted to IQD using 1 CNY = 220 IQD and rounded down to nearest 250 IQD.",
+   "stock": 999999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "standard_online",
+   "name": "Standard Online",
+   "optionId": "online_account",
+   "price": "22000",
+   "cost": 10000,
+   "description": "Supplier Standard / 标准版 converted to IQD using 1 CNY = 220 IQD and rounded down to nearest 250 IQD.",
+   "stock": 999999,
+   "isInfiniteStock": true
+  }
+ ],
+ "editions": [],
+ "dlcs": [],
+ "isActive": true,
+ "status": "active",
+ "kind": "account",
+ "trade_value_iqd": 0,
+ "store_offer_bonus_iqd": 0,
+ "trade_enabled": true,
+ "trade_value_locked": false,
+ "id": "prd_0635e35ca407487d",
+ "schema_version": 1,
+ "titleAr": "بيرسونا 4 غولدن",
+ "compatibility": [
+  "Nintendo Switch",
+  "Nintendo Switch 2 (backward compatibility)",
+  "Nintendo Switch Lite"
+ ],
+ "edition": "Standard",
+ "developer": "ATLUS",
+ "publisher": "SEGA",
+ "metacriticUrl": "https://www.metacritic.com/game/persona-4-golden/",
+ "opencriticRating": 88,
+ "userScore": 9.1,
+ "price_usd": 19.99,
+ "officialUrl": "https://persona.atlus.com/p4g/",
+ "eshopUrl": "https://www.nintendo.com/au/games/nintendo-switch/persona-4-golden/",
+ "gameIsOffline": true,
+ "gameIsOnline": true,
+ "description_short": "A murder mystery RPG set in rural Inaba, combining turn-based dungeon combat with school life, friendships, and Social Links.",
+ "description_ar": "تنتقل إلى بلدة إينابا وتجد نفسك وسط سلسلة جرائم غامضة مرتبطة بقناة منتصف الليل. تجمع اللعبة بين الحياة المدرسية وبناء العلاقات وSocial Links واستكشاف الزنزانات والقتال بالتناوب باستخدام الـPersona.",
+ "box_front_url": "https://images.launchbox-app.com/r2_12e63a2e-6797-4e7b-8c17-79ea38470568.jpg",
+ "videos": [
+  {
+   "title": "Persona 3 Portable & Persona 4 Golden — Available Now on Nintendo Switch",
+   "url": "https://www.youtube.com/watch?v=HnmCs0pUSNk"
+  }
+ ],
+ "nsuid": "70010000060321",
+ "nintendoEshopUrl": "https://www.nintendo.com/au/games/nintendo-switch/persona-4-golden/",
+ "nintendoOnlineRequired": true,
+ "nintendoCloudSaves": true,
+ "nintendoGameKeyCard": false,
+ "tvMode": true,
+ "tabletopMode": true,
+ "handheldMode": true,
+ "nintendoPlayModes": "TV / Tabletop / Handheld",
+ "nintendoNotes": "Official Nintendo AU data confirms Nintendo Switch release, Nintendo Switch 2 backward compatibility, 9.1 GB file size, TV/Tabletop/Handheld play, Save Data Cloud, and Simplified/Traditional Chinese among the supported languages.\n\nSupplier selection supplied by user: Simplified Chinese. Supplier has exactly two product options, so no supplier DLC product type is created. Regular / 普通版 ¥6.8 (pre-discount ¥10); Standard / 标准版 ¥46 (pre-discount ¥50). Converted purchase costs: Regular 1,250 IQD; Standard 10,000 IQD.\n\nNintendo Switch 2 support is backward compatibility only; this is not a native Switch 2 edition and switch2_enhanced remains false.",
+ "switch2Enhanced": false,
+ "switch2Exclusive": false,
+ "switch2Features": [
+  "Nintendo Switch 2 backward compatibility supported",
+  "Same 9.1 GB Switch software profile",
+  "No native Switch 2 Edition",
+  "No official Switch 2 enhancement patch advertised"
+ ],
+ "tagline": "Seek the truth behind Inaba’s Midnight Channel murders.",
+ "fitFor": [
+  "Players who enjoy long story-driven JRPGs",
+  "Fans of murder mysteries and character-driven stories",
+  "Players who enjoy turn-based Persona combat",
+  "Players who value character relationships and a long campaign"
+ ],
+ "notFitFor": [
+  "Players seeking real-time action combat",
+  "Players who dislike dialogue-heavy games",
+  "Players wanting a short campaign",
+  "Players who dislike calendar/time-management systems"
+ ],
+ "playTimeMain": 67,
+ "playTimeFull": 133,
+ "editionsList": [
+  {
+   "name": "Persona 4 Golden",
+   "coverUrl": "https://images.launchbox-app.com/r2_12e63a2e-6797-4e7b-8c17-79ea38470568.jpg",
+   "contents": [
+    {
+     "label": "Base Persona 4 Golden game"
+    },
+    {
+     "label": "Quick save and difficulty selection"
+    },
+    {
+     "label": "Japanese and English voice options"
+    }
+   ]
+  },
+  {
+   "name": "Persona 3 Portable & Persona 4 Golden Bundle",
+   "contents": [
+    {
+     "label": "Persona 4 Golden"
+    },
+    {
+     "label": "Persona 3 Portable"
+    },
+    {
+     "label": "Two remastered Persona RPGs"
+    }
+   ]
+  }
+ ],
+ "gameplayPillars": [
+  {
+   "title": "Investigate the Midnight Channel",
+   "description": "Use Personas, elemental weaknesses, buffs, debuffs and All-Out Attacks in turn-based battles against Shadows.",
+   "imageUrl": "https://images.launchbox-app.com/6a2a28d5-59c6-4693-ae4d-4d04dfefbdc1.png"
+  },
+  {
+   "title": "Build Social Links",
+   "description": "Spend calendar days with friends, classmates and townspeople to strengthen Social Links and unlock stronger Persona fusion bonuses.",
+   "imageUrl": "https://images.launchbox-app.com/8e27e5c5-8bae-4822-81a7-24ad82a9be8a.png"
+  },
+  {
+   "title": "Master Persona Combat",
+   "description": "Investigate the murder case, explore themed dungeons and gather clues as the Investigation Team pursues the truth.",
+   "imageUrl": "https://images.launchbox-app.com/2da6f010-7c7d-4726-83a4-555978b389a9.png"
+  },
+  {
+   "title": "Fuse and Customize Personas",
+   "description": "Collect and fuse Personas to build coverage for elemental weaknesses, support skills and boss strategies."
+  }
+ ],
+ "worldSummary": "Inaba is a quiet rural Japanese town whose ordinary school life is disrupted by a serial murder case and a supernatural world accessed through television screens. The contrast between everyday friendships and dangerous fog-filled dungeons drives the game’s mystery.",
+ "storyChapters": [
+  {
+   "title": "Arrival in Inaba",
+   "body": "The protagonist moves to Inaba and soon discovers that a strange television world may be connected to recent murders."
+  },
+  {
+   "title": "The Investigation Team",
+   "body": "A group of students forms the Investigation Team, entering the TV World to rescue victims and confront Shadows."
+  },
+  {
+   "title": "The Search for the Truth",
+   "body": "As months pass, the team builds relationships, uncovers new suspects and moves closer to the truth behind the Midnight Channel."
+  },
+  {
+   "title": "The Final Truth",
+   "body": "Late-game revelations challenge the Investigation Team to separate convenient answers from the real truth behind Inaba’s supernatural events."
+  }
+ ],
+ "galleryImages": [
+  {
+   "url": "https://images.launchbox-app.com/6a2a28d5-59c6-4693-ae4d-4d04dfefbdc1.png",
+   "alt": "Investigation Team gameplay scene"
+  },
+  {
+   "url": "https://images.launchbox-app.com/b879a3f0-ae25-4bf8-adc6-2d5002faca73.png",
+   "alt": "Dungeon exploration and Shadows"
+  },
+  {
+   "url": "https://images.launchbox-app.com/8e27e5c5-8bae-4822-81a7-24ad82a9be8a.png",
+   "alt": "Social and school-life scene in Inaba"
+  },
+  {
+   "url": "https://images.launchbox-app.com/2da6f010-7c7d-4726-83a4-555978b389a9.png",
+   "alt": "Turn-based Persona combat"
+  },
+  {
+   "url": "https://images.launchbox-app.com/fd920538-3d14-4270-9b32-f1802b1958aa.jpg",
+   "alt": "Persona 4 Golden key artwork / background"
+  },
+  {
+   "url": "https://images.launchbox-app.com/4e97ed54-990f-4760-b61d-7f9b692c6ae6.png",
+   "alt": "Inaba exploration and character interaction"
+  },
+  {
+   "url": "https://images.launchbox-app.com/cbb06ab2-5b04-41d8-8b44-2f6373ef6805.png",
+   "alt": "Additional Persona 4 Golden gameplay scene"
+  }
+ ],
+ "features": [
+  "Turn-based Persona combat and dungeon exploration",
+  "Social Links and character relationships",
+  "Daily school-life calendar in Inaba",
+  "Quick Save support in the modern remaster",
+  "Selectable difficulty options",
+  "Japanese and English voice-over"
+ ],
+ "perfResolutionDocked": "1080p output reported",
+ "perfResolutionHandheld": "720p output reported",
+ "perfFps": "60",
+ "perfHdr": false,
+ "perfNotes": "The Switch remaster is widely measured/reviewed at 60 fps. 1080p docked and 720p handheld output are reported by secondary technical/community sources; because Nintendo does not publish rendering-resolution measurements, the fields are marked as reported output rather than claimed internal render resolution.",
+ "devicePerformance": [
+  {
+   "device": "Nintendo Switch 2",
+   "deviceSlug": "nintendo-switch-2",
+   "deviceModel": "Nintendo Switch 2",
+   "hardwareId": "prd_acf4c89908764c62",
+   "informationStatus": "verified / measured and reviewed",
+   "handheld": {
+    "supported": true,
+    "resolution": "720p output reported",
+    "outputResolution": "1280x720",
+    "fps": "60",
+    "fpsMin": "60",
+    "fpsMax": "60",
+    "hdr": false,
+    "mode": "Handheld",
+    "notes": "60 fps is supported and the port is consistently described as smooth. 720p handheld output is secondary-source reporting, not an official Nintendo render-resolution specification."
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "1080p output reported",
+    "outputResolution": "1920x1080",
+    "fps": "60",
+    "fpsMin": "60",
+    "fpsMax": "60",
+    "hdr": false,
+    "mode": "Docked",
+    "notes": "60 fps. 1080p docked output is secondary-source reporting; internal render resolution is not independently published by Nintendo."
+   },
+   "modes": [
+    {
+     "name": "Handheld",
+     "handheldResolution": "720p output reported",
+     "handheldFps": "60",
+     "hdr": false
+    },
+    {
+     "name": "Docked",
+     "tvResolution": "1080p output reported",
+     "tvFps": "60",
+     "hdr": false
+    }
+   ],
+   "rayTracing": false,
+   "gameVersion": "Nintendo Switch remaster",
+   "sourceName": "Nintendo Life / NintendoGalaxy / secondary resolution cross-check",
+   "verificationStatus": "verified FPS; output resolution corroborated by secondary sources",
+   "performanceNotes": "FPS is strongly supported by performance tests/reviews. Exact internal rendering resolution is intentionally not asserted."
+  }
+ ],
+ "downloadSizeGb": 9.1,
+ "requiredSpaceGb": 9.1,
+ "microSdRecommended": false,
+ "storageNotes": "Nintendo AU lists a 9.1 GB game file on both Nintendo Switch and Nintendo Switch 2 backward compatibility.",
+ "languagesAudio": [
+  "Japanese",
+  "English"
+ ],
+ "languagesText": [
+  "Chinese (Simplified)",
+  "Chinese (Traditional)",
+  "English",
+  "Japanese",
+  "French",
+  "German",
+  "Italian",
+  "Spanish",
+  "Korean"
+ ],
+ "arabicSupport": false,
+ "mpLocalPlayers": false,
+ "mpOnlinePlayers": false,
+ "mpCoop": false,
+ "mpCompetitive": false,
+ "mpSplitScreen": false,
+ "mpLocalWireless": false,
+ "completionMain": 67,
+ "completionAll": 133,
+ "faq": [
+  {
+   "q": "Does Persona 4 Golden support Simplified Chinese on Switch?",
+   "a": "Yes. Nintendo lists Simplified Chinese and Traditional Chinese among the supported Switch languages."
+  },
+  {
+   "q": "Does Persona 4 Golden work on Nintendo Switch 2?",
+   "a": "Yes. Nintendo lists Nintendo Switch 2 compatibility as supported, but the game remains the Switch version running through backward compatibility."
+  },
+  {
+   "q": "Is Persona 4 Golden multiplayer?",
+   "a": "No. The game is primarily single-player. Nintendo lists online-supported functions, but they are not competitive or cooperative multiplayer."
+  },
+  {
+   "q": "Does the supplier listing include a DLC product option?",
+   "a": "No. The supplier data contains only Regular / 普通版 and Standard / 标准版. Under the store extraction rule, this creates only Offline Standard and Online Standard product types."
+  }
+ ],
+ "reviews": [
+  {
+   "source": "Metacritic",
+   "score": "90/100",
+   "url": "https://www.metacritic.com/game/persona-4-golden/"
+  },
+  {
+   "source": "OpenCritic",
+   "score": "88/100",
+   "url": "https://opencritic.com/game/14302/persona-4-golden"
+  },
+  {
+   "source": "Metacritic user score",
+   "score": "9.1/10",
+   "url": "https://www.metacritic.com/game/persona-4-golden/"
+  }
+ ],
+ "timeline": [
+  {
+   "date": "2008-07-10",
+   "title": "Original Persona 4 released in Japan"
+  },
+  {
+   "date": "2012-06-14",
+   "title": "Persona 4 Golden debuted on PlayStation Vita in Japan"
+  },
+  {
+   "date": "2023-01-19",
+   "title": "Persona 4 Golden released for Nintendo Switch"
+  }
+ ],
+ "seriesName": "Persona",
+ "seriesEntries": [
+  "Persona 3 Portable",
+  "Persona 5 Royal",
+  "Persona 5 Strikers",
+  "Persona 3 Reload",
+  "Persona 4 Arena Ultimax"
+ ],
+ "studioName": "ATLUS",
+ "studioUrl": "https://www.atlus.com/",
+ "studioLocation": "Tokyo, Japan",
+ "studioAbout": "ATLUS is the Japanese developer and publisher group behind the Persona series. Persona 4 Golden was developed by ATLUS and is published on Nintendo Switch by SEGA in many regions.",
+ "setupNeeds": [
+  "Nintendo Switch family system",
+  "Nintendo Account for digital purchase and online features",
+  "Nintendo Switch Online membership for online-supported functions and cloud backup"
+ ],
+ "sources": [
+  {
+   "name": "Nintendo Australia — Persona 4 Golden",
+   "url": "https://www.nintendo.com/au/games/nintendo-switch/persona-4-golden/"
+  },
+  {
+   "name": "Nintendo UK — Persona 4 Golden",
+   "url": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-download-software/Persona-4-Golden-2232935.html?nsuid=70010000060321"
+  },
+  {
+   "name": "Deku Deals — metadata and aggregate scores",
+   "url": "https://www.dekudeals.com/items/persona-4-golden"
+  },
+  {
+   "name": "Nintendo Life — Persona 4 Golden review / performance",
+   "url": "https://www.nintendolife.com/reviews/switch-eshop/persona-4-golden"
+  },
+  {
+   "name": "LaunchBox Games Database — Switch media",
+   "url": "https://gamesdb.launchbox-app.com/games/details/153043-persona-4-golden"
+  },
+  {
+   "name": "NintendoGalaxy — Switch frame-rate test",
+   "url": "https://www.youtube.com/watch?v=TKPcOXQh9w0"
+  }
+ ],
+ "boxContentsList": "[Circular]",
+ "image": "/api/files/products/prd_0635e35ca407487d/cover-51493c41e6d2f9b8.jpg",
+ "banner": "/api/files/products/prd_0635e35ca407487d/banner-0-d3c703d65f84d31b.jpg",
+ "schemaId": "",
+ "createdAt": "2026-08-26T22:09:08.526Z",
+ "created_at": "2026-08-26T22:09:08.526Z",
+ "updatedAt": "2026-08-26T22:09:08.526Z",
+ "updated_at": "2026-08-26T22:09:08.526Z",
+ "badgeEn": "وفر 40%",
+ "badgeKu": "وفر 40%",
+ "featuresEn": [
+  "Turn-based Persona combat and dungeon exploration",
+  "Social Links and character relationships",
+  "Daily school-life calendar in Inaba",
+  "Quick Save support in the modern remaster",
+  "Selectable difficulty options",
+  "Japanese and English voice-over"
+ ],
+ "featuresKu": [
+  "Turn-based Persona combat and dungeon exploration",
+  "Social Links and character relationships",
+  "Daily school-life calendar in Inaba",
+  "Quick Save support in the modern remaster",
+  "Selectable difficulty options",
+  "Japanese and English voice-over"
+ ],
+ "boxFrontUrl": "https://images.launchbox-app.com/r2_12e63a2e-6797-4e7b-8c17-79ea38470568.jpg",
+ "sales": 0,
+ "images": [],
+ "modes": []
+}

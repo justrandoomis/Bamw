@@ -1,0 +1,51 @@
+{
+ "batch": "019",
+ "apply": false,
+ "games": [
+  {
+   "id": "prd_9368a12095754e53",
+   "slug": "persona-5-tactica",
+   "baseHash": "c1161f00d097366e76e30d46650eb1efdee894b28e9b6b3b82f9705659975ba5",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  },
+  {
+   "id": "prd_307e4cacf6024fa1",
+   "slug": "phoenix-wright-ace-attorney-trilogy-switch1",
+   "baseHash": "aebe4fbf7ba559bd3abc4c9e1873eead63af0643ac6a4bd4e504531c130e3653",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  },
+  {
+   "id": "prd_290a310cb5754d83",
+   "slug": "pikmin-1-2-switch",
+   "baseHash": "a2f14a2a8c730417bc53524267da4a2d6325432eaa1d67fc96745f4427fd40f8",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  },
+  {
+   "id": "prd_2355716be2864bc7",
+   "slug": "pikmin-3-deluxe-switch",
+   "baseHash": "48056361667633b437372323b992e025cfdd9f86bbae522e350031f1b7216965",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  },
+  {
+   "id": "prd_ffdd17fc7ef14e0f",
+   "slug": "pikmin-4-switch",
+   "baseHash": "94415b04e8ebe4fdc2dcff3e55f32cea8842f31751f07143c6bcc39e5eeedf0d",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  }
+ ]
+}

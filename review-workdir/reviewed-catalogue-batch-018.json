@@ -1,6 +1,6 @@
 {
  "batch": "018",
- "apply": true,
+ "apply": false,
  "games": [
   {
    "id": "prd_efd67851b0b44837",
@@ -216,6 +216,110 @@
     "guaranteeStatus"
    ],
    "notes": "Same supplier-prose language cleanup with the officially-listed western text set. The Switch-2-badged prose record becomes the platform record with the documented dynamic-resolution 30 fps figures. 2021-02-23, Metacritic 81 verified. All images working. Contamination removed."
+  }
+ ],
+ "appliedAt": "2026-09-02T03:37:23.492Z",
+ "results": [
+  {
+   "id": "prd_efd67851b0b44837",
+   "action": "APPLIED",
+   "changed": [],
+   "removed": [
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ]
+  },
+  {
+   "id": "prd_1da85016b1ea440f",
+   "action": "APPLIED",
+   "changed": [
+    "supportedLanguages",
+    "bannerImages",
+    "galleryImages",
+    "dlcSummary",
+    "devicePerformance"
+   ],
+   "removed": [
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ]
+  },
+  {
+   "id": "prd_0635e35ca407487d",
+   "action": "APPLIED",
+   "changed": [
+    "supportedLanguages",
+    "dlcSummary",
+    "devicePerformance"
+   ],
+   "removed": [
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ]
+  },
+  {
+   "id": "prd_3a93e24db910403d",
+   "action": "APPLIED",
+   "changed": [
+    "supportedLanguages",
+    "devicePerformance"
+   ],
+   "removed": [
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ]
+  },
+  {
+   "id": "prd_96ddda9955af40e8",
+   "action": "APPLIED",
+   "changed": [
+    "supportedLanguages",
+    "devicePerformance"
+   ],
+   "removed": [
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ]
   }
  ]
 }

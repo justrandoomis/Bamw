@@ -1,0 +1,477 @@
+{
+ "title": "Persona 5 Royal",
+ "titleEn": "Persona 5 Royal",
+ "titleKu": "Persona 5 Royal",
+ "slug": "persona-5-royal",
+ "description": "Join the Phantom Thieves of Hearts, infiltrate the distorted Palaces of corrupt adults, build relationships across Tokyo, fuse Personas and plan stylish turn-based heists. Royal expands the original Persona 5 with additional characters, story content and systems.",
+ "descriptionEn": "Join the Phantom Thieves of Hearts, infiltrate the distorted Palaces of corrupt adults, build relationships across Tokyo, fuse Personas and plan stylish turn-based heists. Royal expands the original Persona 5 with additional characters, story content and systems.",
+ "descriptionKu": "Join the Phantom Thieves of Hearts, infiltrate the distorted Palaces of corrupt adults, build relationships across Tokyo, fuse Personas and plan stylish turn-based heists. Royal expands the original Persona 5 with additional characters, story content and systems.",
+ "cartridgeImage": "/api/files/products/prd_3a93e24db910403d/front-55c2db5871e8cf25.jpg",
+ "nintendoCardImage": "/api/files/products/prd_3a93e24db910403d/square-2222cb20eb7c471c.webp",
+ "coverHiResImage": "/api/files/products/prd_3a93e24db910403d/3d-texture-ae0816618f7a604c.webp",
+ "coverImage": "/api/files/products/prd_3a93e24db910403d/banner-0-684bd8b00abcbf6d.jpg",
+ "bannerImages": [
+  "/api/files/products/prd_3a93e24db910403d/banner-0-684bd8b00abcbf6d.jpg",
+  "/api/files/products/prd_3a93e24db910403d/banner-1-0a241b140ef01af1.jpg",
+  "/api/files/products/prd_3a93e24db910403d/banner-2-81a408cc7662bdfe.jpg",
+  "/api/files/products/prd_3a93e24db910403d/banner-3-0fa802388f919d6c.jpg",
+  "/api/files/products/prd_3a93e24db910403d/banner-4-47c6bf3229838fc8.jpg",
+  "/api/files/products/prd_3a93e24db910403d/banner-5-300fd6f65fdb4005.jpg",
+  "/api/files/products/prd_3a93e24db910403d/banner-6-3e73e1fb3a78fd4c.jpg"
+ ],
+ "gallery": [],
+ "youtubeTrailer": "https://www.youtube.com/watch?v=MDSXGIigC3Q",
+ "releaseDate": "2022-10-21",
+ "ageRating": "ESRB Mature",
+ "metacriticRating": 94,
+ "genres": [
+  "Role-Playing Game",
+  "JRPG",
+  "Turn-Based RPG",
+  "Social Simulation"
+ ],
+ "platform": "switch1",
+ "size": 14.2,
+ "numberOfPlayers": "1",
+ "supportedLanguages": "Supplier selection supplied by user: Simplified Chinese. Nintendo AU western listing: English, French, German, Italian, Spanish. Chinese support is preserved as supplier regional/SKU information and is not generalized to all western copies.",
+ "hardwareModel": "",
+ "colorEdition": "",
+ "storageCapacity": "",
+ "screenSpecs": "",
+ "batteryLife": "",
+ "boxContents": [],
+ "boxContentsText": "",
+ "warrantyCondition": "",
+ "connectivity": "",
+ "characterName": "Link",
+ "amiiboSeries": "The Legend of Zelda",
+ "figureType": "figure",
+ "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+ "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+ "boxCondition": "mib",
+ "releaseWave": "Wave 2 (Restock)",
+ "rarity": "standard",
+ "accessoryType": "حقيبة حماية وتنقل Carry Case",
+ "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+ "brand": "Nintendo Official",
+ "material": "Hard EVA Shockproof Shell",
+ "availableColors": "Black, Neon Red/Blue, White",
+ "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+ "cardValue": "$20 eShop Balance",
+ "region": "Global / region-dependent",
+ "cardType": "eshop",
+ "deliveryMethod": "instant_code",
+ "redemptionGuide": "",
+ "redemptionSteps": [],
+ "validity": "no_expiry",
+ "usedType": "cartridge",
+ "conditionGrade": "like_new",
+ "packaging": "cib",
+ "guaranteeStatus": "tested_30days",
+ "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+ "accountType": "primary",
+ "badge": "وفر 40%",
+ "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+ "price": 8000,
+ "cost": 1250,
+ "stock": 999999,
+ "isInfiniteStock": true,
+ "isHidden": false,
+ "displayOrder": 0,
+ "category": "nintendo-switch-games",
+ "categoryId": "nintendo-switch-games",
+ "categoryEn": "",
+ "categoryKu": "",
+ "options": [
+  {
+   "id": "offline_account",
+   "name": "Offline Account",
+   "description": "Offline account access supplied as Regular / 普通版.",
+   "stock": 999999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_account",
+   "name": "Online Account",
+   "description": "Online account access supplied as Standard / 标准版.",
+   "stock": 999999,
+   "isInfiniteStock": true
+  }
+ ],
+ "types": [
+  {
+   "id": "standard_offline",
+   "name": "Standard Offline",
+   "optionId": "offline_account",
+   "price": 12500,
+   "cost": 1250,
+   "description": "Supplier Regular / 普通版 converted to IQD using 1 CNY = 220 IQD and rounded down to nearest 250 IQD.",
+   "stock": 999999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "standard_online",
+   "name": "Standard Online",
+   "optionId": "online_account",
+   "price": "28000",
+   "cost": 14250,
+   "description": "Supplier Standard / 标准版 converted to IQD using 1 CNY = 220 IQD and rounded down to nearest 250 IQD.",
+   "stock": 999999,
+   "isInfiniteStock": true
+  }
+ ],
+ "editions": [],
+ "dlcs": [],
+ "isActive": true,
+ "status": "active",
+ "kind": "account",
+ "trade_value_iqd": 0,
+ "store_offer_bonus_iqd": 0,
+ "trade_enabled": true,
+ "trade_value_locked": false,
+ "id": "prd_3a93e24db910403d",
+ "schema_version": 1,
+ "titleAr": "بيرسونا 5 رويال",
+ "compatibility": [
+  "Nintendo Switch",
+  "Nintendo Switch 2 (backward compatibility)",
+  "Nintendo Switch Lite"
+ ],
+ "edition": "Standard",
+ "developer": "P-Studio / ATLUS",
+ "publisher": "SEGA",
+ "metacriticUrl": "https://www.metacritic.com/game/persona-5-royal/",
+ "opencriticRating": 94,
+ "userScore": 8.8,
+ "price_usd": 59.99,
+ "officialUrl": "https://persona.atlus.com/p5r/?lang=en",
+ "eshopUrl": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-download-software/Persona-5-Royal-2232781.html",
+ "gameIsOffline": true,
+ "gameIsOnline": true,
+ "description_short": "A massive turn-based JRPG about the Phantom Thieves of Hearts, combining stylish dungeon heists, school life, Confidants and Persona fusion.",
+ "description_ar": "انضم إلى اللصوص الوهميين وتسلل إلى قصور تنشأ من رغبات الفاسدين لتغيير قلوبهم. خارج العالم الغامض تعيش عامًا دراسيًا في طوكيو، وتبني Confidants، وتطوّر قدراتك، وتدمج الـPersona ضمن واحدة من أضخم تجارب الـJRPG.",
+ "box_front_url": "https://images.launchbox-app.com/dd27efb2-674d-4dd4-b366-d4c2ab74e1ff.jpg",
+ "box_back_url": "https://images.launchbox-app.com/8568b598-d14f-4a1f-be70-1133acdb8e7a.jpg",
+ "videos": [
+  {
+   "title": "Persona 5 Royal — Trailer",
+   "url": "https://www.youtube.com/watch?v=MDSXGIigC3Q"
+  }
+ ],
+ "nintendoEshopUrl": "https://www.nintendo.com/au/games/nintendo-switch/persona-5-royal/",
+ "nintendoOnlineRequired": true,
+ "nintendoCloudSaves": true,
+ "nintendoGameKeyCard": false,
+ "tvMode": true,
+ "tabletopMode": true,
+ "handheldMode": true,
+ "nintendoPlayModes": "TV / Tabletop / Handheld",
+ "nintendoNotes": "Nintendo AU confirms a 14.2 GB Switch version, Nintendo Switch 2 backward compatibility, one local and one online-supported player slot, all three play modes, Save Data Cloud, English/Japanese voice-over, and more than 40 previously released DLC items included in the Switch release.\n\nSupplier selection supplied by user: Simplified Chinese. The western Nintendo AU listing does not include Chinese in its text-language list, so Chinese is preserved as supplier regional/SKU information.\n\nSupplier variants: Regular / 普通版 ¥6.8 (pre-discount ¥10); Standard / 标准版 ¥65.6 (pre-discount ¥70). Converted costs: Regular 1,250 IQD; Standard 14,250 IQD. Only two supplier variants exist, so no separate DLC product types are created because the included DLC is part of the Switch base release rather than a separate supplier purchase option.",
+ "switch2Enhanced": false,
+ "switch2Exclusive": false,
+ "switch2Features": [
+  "Nintendo Switch 2 backward compatibility supported",
+  "No native Switch 2 Edition",
+  "No official 60 fps enhancement patch",
+  "Backward compatibility can reduce loading slightly"
+ ],
+ "tagline": "Don the mask and steal the hearts of the corrupt.",
+ "fitFor": [
+  "Players who want a very long story-rich JRPG",
+  "Fans of turn-based combat and Persona fusion",
+  "Players who enjoy social simulation and character relationships",
+  "Players who want 100+ hours of RPG content"
+ ],
+ "notFitFor": [
+  "Players wanting a short campaign",
+  "Players who dislike extensive dialogue and calendar systems",
+  "Players looking for real-time action combat",
+  "Players sensitive to sub-native 3D resolution on Switch"
+ ],
+ "playTimeMain": 101.5,
+ "playTimeFull": 140.5,
+ "editionsList": [
+  {
+   "name": "Persona 5 Royal for Nintendo Switch",
+   "coverUrl": "https://images.launchbox-app.com/dd27efb2-674d-4dd4-b366-d4c2ab74e1ff.jpg",
+   "contents": [
+    {
+     "label": "Complete Persona 5 Royal base game"
+    },
+    {
+     "label": "More than 40 previously released DLC items included"
+    },
+    {
+     "label": "English and Japanese voice-over"
+    }
+   ]
+  }
+ ],
+ "gameplayPillars": [
+  {
+   "title": "Plan Palace Heists",
+   "description": "Plan turn-based encounters around weaknesses, Baton Pass chains, technical damage, gunfire and Persona abilities.",
+   "imageUrl": "https://images.launchbox-app.com/5de2e762-e555-4da5-9c4c-c1ea33ab3cc6.jpg"
+  },
+  {
+   "title": "Master Turn-Based Combat",
+   "description": "Explore handcrafted Palaces and Mementos, solve traversal puzzles, ambush enemies and secure routes to each Treasure.",
+   "imageUrl": "https://images.launchbox-app.com/b82863e6-6e80-4824-b105-0e21a7196fb5.jpg"
+  },
+  {
+   "title": "Live a Year in Tokyo",
+   "description": "Spend calendar time with Confidants, jobs, study and activities that improve social stats and unlock combat benefits.",
+   "imageUrl": "https://images.launchbox-app.com/b43747c0-245c-4896-a84b-38058327e806.jpg"
+  },
+  {
+   "title": "Fuse Personas and Grow Confidants",
+   "description": "Persona fusion, social stats and Confidant abilities reinforce one another, rewarding careful use of each day in the calendar."
+  }
+ ],
+ "worldSummary": "Modern Tokyo forms the everyday half of the game, while the Metaverse contains Palaces shaped by corrupted desires and the sprawling Mementos dungeon. The two worlds interlock through a calendar where choices influence combat progression.",
+ "storyChapters": [
+  {
+   "title": "The Birth of the Phantom Thieves",
+   "body": "The protagonist arrives in Tokyo on probation and awakens to Persona power after discovering a Palace born from a corrupt adult’s desires."
+  },
+  {
+   "title": "Changing Hearts Across Tokyo",
+   "body": "The Phantom Thieves grow into a public phenomenon as they target increasingly powerful figures and face greater consequences."
+  },
+  {
+   "title": "Royal’s Expanded Final Arc",
+   "body": "Royal expands the final portion of the story with new relationships, conflicts and an additional major narrative arc."
+  },
+  {
+   "title": "The Third Semester",
+   "body": "Royal’s expanded third-semester storyline presents a new reality and asks the Phantom Thieves to confront difficult questions about happiness and choice."
+  }
+ ],
+ "galleryImages": [
+  {
+   "url": "https://images.launchbox-app.com/b82863e6-6e80-4824-b105-0e21a7196fb5.jpg",
+   "alt": "Persona 5 Royal Phantom Thieves artwork"
+  },
+  {
+   "url": "https://images.launchbox-app.com/b43747c0-245c-4896-a84b-38058327e806.jpg",
+   "alt": "Tokyo / Phantom Thieves key art"
+  },
+  {
+   "url": "https://images.launchbox-app.com/4063fd84-6dc2-431b-9dc7-77ca04e63808.jpg",
+   "alt": "Persona 5 Royal character artwork"
+  },
+  {
+   "url": "https://images.launchbox-app.com/5de2e762-e555-4da5-9c4c-c1ea33ab3cc6.jpg",
+   "alt": "Palace / Metaverse themed artwork"
+  },
+  {
+   "url": "https://images.launchbox-app.com/928cf4cd-0e57-46ab-9283-c83f267e9490.jpg",
+   "alt": "Persona 5 Royal group artwork"
+  },
+  {
+   "url": "https://images.launchbox-app.com/82f0e508-c70e-4467-a5b7-de5fb854aa0c.png",
+   "alt": "Nintendo Switch cartridge artwork"
+  }
+ ],
+ "features": [
+  "Turn-based combat built around weaknesses, Baton Pass and technical attacks",
+  "Palace infiltration and Mementos exploration",
+  "Confidant relationships and school-life calendar",
+  "Persona fusion and extensive build customization",
+  "Mementos exploration alongside handcrafted Palaces",
+  "More than 40 previously released DLC items included"
+ ],
+ "perfResolutionDocked": "810p internal 3D rendering reported; UI at 1080p output",
+ "perfResolutionHandheld": "540p internal 3D rendering reported; UI at 720p output",
+ "perfFps": "30",
+ "perfHdr": false,
+ "perfNotes": "Technical analysis reports a stable locked 30 fps. The 3D game renders at approximately 810p docked and 540p handheld with UI/output elements at native 1080p/720p respectively. The rendering resolution is fixed rather than dynamically scaling in the cited analysis.",
+ "devicePerformance": [
+  {
+   "device": "Nintendo Switch 2",
+   "deviceSlug": "nintendo-switch-2",
+   "deviceModel": "Nintendo Switch 2",
+   "hardwareId": "prd_acf4c89908764c62",
+   "informationStatus": "measured / Digital Foundry technical reporting",
+   "handheld": {
+    "supported": true,
+    "resolution": "540p 3D rendering",
+    "resolutionDynamic": false,
+    "renderingResolution": "approximately 960x540 for 3D content",
+    "outputResolution": "1280x720 UI/output",
+    "fps": "30",
+    "fpsMin": "30",
+    "fpsMax": "30",
+    "hdr": false,
+    "mode": "Handheld",
+    "notes": "3D content is approximately 540p while UI/output remains 720p. Frame rate is a stable 30 fps."
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "810p 3D rendering",
+    "resolutionDynamic": false,
+    "renderingResolution": "approximately 1440x810 for 3D content",
+    "outputResolution": "1920x1080 UI/output",
+    "fps": "30",
+    "fpsMin": "30",
+    "fpsMax": "30",
+    "hdr": false,
+    "mode": "Docked",
+    "notes": "3D content is approximately 810p while UI/output is 1080p. Stable 30 fps."
+   },
+   "rayTracing": false,
+   "sourceName": "Digital Foundry technical analysis / cross-source reporting",
+   "verificationStatus": "verified stable 30 fps and fixed sub-native 3D rendering",
+   "performanceNotes": "Performance is highly stable; the principal compromise is reduced 3D rendering resolution and some asset quality compared with more powerful platforms."
+  }
+ ],
+ "downloadSizeGb": 14.2,
+ "requiredSpaceGb": 14.2,
+ "microSdRecommended": false,
+ "storageNotes": "Nintendo AU lists a 14.2 GB game file.",
+ "languagesAudio": [
+  "English",
+  "Japanese"
+ ],
+ "languagesText": [
+  "Chinese (Simplified) — supplier regional SKU",
+  "English",
+  "French",
+  "German",
+  "Italian",
+  "Spanish"
+ ],
+ "arabicSupport": false,
+ "mpLocalPlayers": false,
+ "mpOnlinePlayers": false,
+ "mpCoop": false,
+ "mpCompetitive": false,
+ "mpSplitScreen": false,
+ "mpLocalWireless": false,
+ "dlc": [
+  {
+   "name": "40+ previously released Persona 5 Royal DLC items included",
+   "description": "Nintendo states that the Switch release includes more than 40 items of previously released downloadable content from Persona 5 Royal."
+  }
+ ],
+ "completionMain": 101.5,
+ "completionAll": 140.5,
+ "faq": [
+  {
+   "q": "Does Persona 5 Royal support Simplified Chinese?",
+   "a": "The supplied seller option says Simplified Chinese. Nintendo AU’s western product page does not list Chinese, so the file treats this as region/SKU-dependent language information."
+  },
+  {
+   "q": "Does Persona 5 Royal work on Nintendo Switch 2?",
+   "a": "Yes. Nintendo lists the game as compatible with Nintendo Switch 2, but it runs as the Switch version rather than a native Switch 2 Edition."
+  },
+  {
+   "q": "Is Persona 5 Royal multiplayer?",
+   "a": "The main game is single-player. Nintendo lists some online-supported functionality, but there is no cooperative or competitive multiplayer campaign."
+  },
+  {
+   "q": "Why is there no DLC purchase type even though 40+ DLC items are listed?",
+   "a": "Nintendo states that the Switch release already includes more than 40 previously released DLC items. The supplier data also contains only two variants, so the storefront correctly keeps only Standard Offline and Standard Online product types."
+  }
+ ],
+ "reviews": [
+  {
+   "source": "Metacritic",
+   "score": "94/100",
+   "url": "https://www.metacritic.com/game/persona-5-royal/"
+  },
+  {
+   "source": "OpenCritic",
+   "score": "94/100",
+   "url": "https://opencritic.com/game/8784/persona-5-royal"
+  },
+  {
+   "source": "Metacritic user score",
+   "score": "8.8/10",
+   "url": "https://www.metacritic.com/game/persona-5-royal/"
+  }
+ ],
+ "timeline": [
+  {
+   "date": "2019-10-31",
+   "title": "Persona 5 Royal released in Japan"
+  },
+  {
+   "date": "2020-03-31",
+   "title": "Persona 5 Royal released internationally on PlayStation 4"
+  },
+  {
+   "date": "2022-10-21",
+   "title": "Persona 5 Royal released for Nintendo Switch"
+  }
+ ],
+ "seriesName": "Persona",
+ "seriesEntries": [
+  "Persona 5 Strikers",
+  "Persona 4 Golden",
+  "Persona 3 Portable",
+  "Persona 4 Arena Ultimax",
+  "Persona 3 Reload"
+ ],
+ "studioName": "P-Studio / ATLUS",
+ "studioUrl": "https://p-ch.jp/",
+ "studioLocation": "Tokyo, Japan",
+ "studioAbout": "P-Studio is ATLUS’s internal Persona development team, responsible for Persona 5 Royal and much of the modern Persona series.",
+ "setupNeeds": [
+  "Nintendo Switch family system",
+  "Nintendo Account for digital purchase and network features",
+  "Nintendo Switch Online membership required for online-supported features and cloud backup"
+ ],
+ "sources": [
+  {
+   "name": "Nintendo Australia — Persona 5 Royal",
+   "url": "https://www.nintendo.com/au/games/nintendo-switch/persona-5-royal/"
+  },
+  {
+   "name": "Deku Deals — metadata and aggregate scores",
+   "url": "https://www.dekudeals.com/items/persona-5-royal"
+  },
+  {
+   "name": "Digital Foundry / technical analysis reference",
+   "url": "https://www.youtube.com/watch?v=6XlIpSOI40Q"
+  },
+  {
+   "name": "RPG Site — Switch 2 backward-compatibility testing",
+   "url": "https://www.rpgsite.net/feature/18157-nintendo-switch-2-backwards-compatibility-testing-major-jrpgs-tested"
+  },
+  {
+   "name": "LaunchBox Games Database — Switch media",
+   "url": "https://gamesdb.launchbox-app.com/games/details/153767-persona-5-royal"
+  }
+ ],
+ "boxContentsList": "[Circular]",
+ "image": "/api/files/products/prd_3a93e24db910403d/banner-0-684bd8b00abcbf6d.jpg",
+ "banner": "/api/files/products/prd_3a93e24db910403d/banner-0-684bd8b00abcbf6d.jpg",
+ "schemaId": "",
+ "createdAt": "2026-08-26T22:01:59.073Z",
+ "created_at": "2026-08-26T22:01:59.073Z",
+ "updatedAt": "2026-08-26T22:01:59.073Z",
+ "updated_at": "2026-08-26T22:01:59.073Z",
+ "badgeEn": "وفر 40%",
+ "badgeKu": "وفر 40%",
+ "featuresEn": [
+  "Turn-based combat built around weaknesses, Baton Pass and technical attacks",
+  "Palace infiltration and Mementos exploration",
+  "Confidant relationships and school-life calendar",
+  "Persona fusion and extensive build customization",
+  "Mementos exploration alongside handcrafted Palaces",
+  "More than 40 previously released DLC items included"
+ ],
+ "featuresKu": [
+  "Turn-based combat built around weaknesses, Baton Pass and technical attacks",
+  "Palace infiltration and Mementos exploration",
+  "Confidant relationships and school-life calendar",
+  "Persona fusion and extensive build customization",
+  "Mementos exploration alongside handcrafted Palaces",
+  "More than 40 previously released DLC items included"
+ ],
+ "boxFrontUrl": "https://images.launchbox-app.com/dd27efb2-674d-4dd4-b366-d4c2ab74e1ff.jpg",
+ "sales": 0,
+ "images": [],
+ "modes": []
+}

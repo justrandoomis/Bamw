@@ -1,0 +1,473 @@
+{
+ "title": "Persona 4 Arena Ultimax",
+ "titleEn": "Persona 4 Arena Ultimax",
+ "titleKu": "Persona 4 Arena Ultimax",
+ "slug": "persona-4-arena-ultimax",
+ "description": "Enter the P-1 CLIMAX with Persona 3 and Persona 4 fighters. Use normals, special moves and Persona attacks in a deep Arc System Works fighting system, with story content from both Persona 4 Arena and Ultimax included.",
+ "descriptionEn": "Enter the P-1 CLIMAX with Persona 3 and Persona 4 fighters. Use normals, special moves and Persona attacks in a deep Arc System Works fighting system, with story content from both Persona 4 Arena and Ultimax included.",
+ "descriptionKu": "Enter the P-1 CLIMAX with Persona 3 and Persona 4 fighters. Use normals, special moves and Persona attacks in a deep Arc System Works fighting system, with story content from both Persona 4 Arena and Ultimax included.",
+ "cartridgeImage": "/api/files/products/prd_1da85016b1ea440f/front-5c0b574ca24a8ffe.webp",
+ "nintendoCardImage": "/api/files/products/prd_1da85016b1ea440f/square-97c1b968463613a6.webp",
+ "coverHiResImage": "",
+ "coverImage": "/api/files/products/prd_1da85016b1ea440f/cover-faa6239da6dd15ce.webp",
+ "bannerImages": [
+  "/api/files/products/prd_1da85016b1ea440f/banner-0-5d6c1c768cef6d7e.avif",
+  "/api/files/products/prd_1da85016b1ea440f/banner-1-257d4b79f9e1011a.avif",
+  "/api/files/products/prd_1da85016b1ea440f/banner-2-e17f8e5e6cd978a1.avif",
+  "/api/files/products/prd_1da85016b1ea440f/banner-3-83e1b5b2f25c9c5e.avif",
+  "/api/files/products/prd_1da85016b1ea440f/banner-4-4a383896656d92a7.avif",
+  "/api/files/products/prd_1da85016b1ea440f/banner-5-13125ce10b5450db.avif",
+  "/api/files/products/prd_1da85016b1ea440f/banner-6-f03aed3355de144b.avif"
+ ],
+ "gallery": [],
+ "youtubeTrailer": "https://www.youtube.com/watch?v=rBbtdKZoqlA",
+ "releaseDate": "2022-03-17",
+ "ageRating": "ESRB Teen",
+ "metacriticRating": 81,
+ "genres": [
+  "Fighting",
+  "2D Fighting",
+  "Narrative Adventure",
+  "Competitive Multiplayer"
+ ],
+ "platform": "switch1",
+ "size": 14.7,
+ "numberOfPlayers": "1-2 local; 2-8 online",
+ "supportedLanguages": "Supplier selection supplied by user: Simplified Chinese. Nintendo US/Canada western listing provides western-language support and does not list Chinese, so Chinese is preserved as region/SKU-dependent supplier information.",
+ "hardwareModel": "",
+ "colorEdition": "",
+ "storageCapacity": "",
+ "screenSpecs": "",
+ "batteryLife": "",
+ "boxContents": [],
+ "boxContentsText": "",
+ "warrantyCondition": "",
+ "connectivity": "",
+ "characterName": "Link",
+ "amiiboSeries": "The Legend of Zelda",
+ "figureType": "figure",
+ "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+ "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+ "boxCondition": "mib",
+ "releaseWave": "Wave 2 (Restock)",
+ "rarity": "standard",
+ "accessoryType": "حقيبة حماية وتنقل Carry Case",
+ "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+ "brand": "Nintendo Official",
+ "material": "Hard EVA Shockproof Shell",
+ "availableColors": "Black, Neon Red/Blue, White",
+ "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+ "cardValue": "$20 eShop Balance",
+ "region": "Global / region-dependent",
+ "cardType": "eshop",
+ "deliveryMethod": "instant_code",
+ "redemptionGuide": "",
+ "redemptionSteps": [],
+ "validity": "no_expiry",
+ "usedType": "cartridge",
+ "conditionGrade": "like_new",
+ "packaging": "cib",
+ "guaranteeStatus": "tested_30days",
+ "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+ "accountType": "primary",
+ "badge": "وفر 40%",
+ "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+ "price": 7000,
+ "cost": 1250,
+ "stock": 999999,
+ "isInfiniteStock": true,
+ "isHidden": false,
+ "displayOrder": 0,
+ "category": "nintendo-switch-games",
+ "categoryId": "nintendo-switch-games",
+ "categoryEn": "",
+ "categoryKu": "",
+ "options": [
+  {
+   "id": "offline_account",
+   "name": "Offline Account",
+   "description": "Offline account access supplied as Regular / 普通版.",
+   "stock": 999999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_account",
+   "name": "Online Account",
+   "description": "Online account access supplied as Standard / 标准版.",
+   "stock": 999999,
+   "isInfiniteStock": true
+  }
+ ],
+ "types": [
+  {
+   "id": "standard_offline",
+   "name": "Standard Offline",
+   "optionId": "offline_account",
+   "price": 6500,
+   "cost": 1250,
+   "description": "Supplier Regular / 普通版 converted to IQD using 1 CNY = 220 IQD and rounded down to nearest 250 IQD.",
+   "stock": 999999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "standard_online",
+   "name": "Standard Online",
+   "optionId": "online_account",
+   "price": "25000",
+   "cost": 12250,
+   "description": "Supplier Standard / 标准版 converted to IQD using 1 CNY = 220 IQD and rounded down to nearest 250 IQD.",
+   "stock": 999999,
+   "isInfiniteStock": true
+  }
+ ],
+ "editions": [],
+ "dlcs": [],
+ "isActive": true,
+ "status": "active",
+ "kind": "account",
+ "trade_value_iqd": 0,
+ "store_offer_bonus_iqd": 0,
+ "trade_enabled": true,
+ "trade_value_locked": false,
+ "id": "prd_1da85016b1ea440f",
+ "schema_version": 1,
+ "titleAr": "بيرسونا 4 أرينا ألتيماكس",
+ "compatibility": [
+  "Nintendo Switch",
+  "Nintendo Switch 2 (backward compatibility)",
+  "Nintendo Switch Lite"
+ ],
+ "edition": "Standard",
+ "developer": "Arc System Works / ATLUS",
+ "publisher": "SEGA",
+ "metacriticUrl": "https://www.metacritic.com/game/persona-4-arena-ultimax/",
+ "opencriticRating": 79,
+ "userScore": 7.7,
+ "price_usd": 29.99,
+ "officialUrl": "https://www.nintendo.com/us/store/products/persona-4-arena-ultimax-switch/",
+ "eshopUrl": "https://www.nintendo.com/us/store/products/persona-4-arena-ultimax-switch/",
+ "gameIsOffline": true,
+ "gameIsOnline": true,
+ "description_short": "A 2D Persona fighting game by Arc System Works that includes the Ultimax content package and the original Persona 4 Arena story.",
+ "description_ar": "ادخل بطولة P-1 CLIMAX مع شخصيات من Persona 3 وPersona 4 في لعبة قتال ثنائية الأبعاد من Arc System Works. تستخدم الضربات الخاصة واستدعاءات الـPersona وأنظمة قتال متقدمة، مع تضمين قصة Persona 4 Arena الأصلية ومحتوى Ultimax.",
+ "box_front_url": "https://images.launchbox-app.com/78ed118b-a1f3-4317-9453-d58639aa85b5.jpg",
+ "videos": [
+  {
+   "title": "Persona 4 Arena Ultimax — Trailer",
+   "url": "https://www.youtube.com/watch?v=rBbtdKZoqlA"
+  },
+  {
+   "title": "Nintendo trailer",
+   "url": "https://www.youtube.com/watch?v=X8c0fnoOJBQ"
+  },
+  {
+   "title": "ATLUS announcement trailer",
+   "url": "https://www.youtube.com/watch?v=znZJLRW8v4w"
+  }
+ ],
+ "nintendoEshopUrl": "https://www.nintendo.com/us/store/products/persona-4-arena-ultimax-switch/",
+ "nintendoOnlineRequired": true,
+ "nintendoCloudSaves": true,
+ "nintendoGameKeyCard": false,
+ "tvMode": true,
+ "tabletopMode": true,
+ "handheldMode": true,
+ "nintendoPlayModes": "TV / Tabletop / Handheld",
+ "nintendoNotes": "Nintendo lists Persona 4 Arena Ultimax as supported on Nintendo Switch 2 with behavior consistent with Nintendo Switch. The Switch release supports TV/Tabletop/Handheld modes, 1–2 local players and online play for multiple players.\n\nThe modern Ultimax release includes previously released P4AU content and the original Persona 4 Arena story.\n\nSupplier selection supplied by user: Simplified Chinese. Western Nintendo listings do not list Chinese, so this is preserved as supplier regional/SKU information. Regular / 普通版 ¥6.8 (pre-discount ¥10); Standard / 标准版 ¥55.8 (pre-discount ¥60). Converted costs: Regular 1,250 IQD; Standard 12,250 IQD. Supplier Standard is marked 即将售罄 / near sold out, so type.2 stock is overridden to low_supplier_stock below.\n\nOnly two supplier variants exist; no separate supplier DLC types are created.",
+ "switch2Enhanced": false,
+ "switch2Exclusive": false,
+ "switch2Features": [
+  "Nintendo Switch 2 backward compatibility supported",
+  "Nintendo says game behavior is consistent with Switch",
+  "Faster loading in backward-compatibility tests",
+  "No native Switch 2 resolution/frame-rate patch"
+ ],
+ "tagline": "The Persona 4 cast enters the P-1 CLIMAX for a high-speed 2D showdown.",
+ "fitFor": [
+  "Persona fans who enjoy competitive fighting games",
+  "Arc System Works fighting-game players",
+  "Players who want more Persona 4 and Persona 3 character stories",
+  "Players interested in story continuation after Persona 4 Golden / Arena"
+ ],
+ "notFitFor": [
+  "Players expecting a traditional turn-based Persona RPG",
+  "Players who dislike technical fighting-game systems",
+  "Players wanting rollback netcode on the Switch version",
+  "Players for whom rollback netcode is essential on Switch"
+ ],
+ "playTimeMain": 10.5,
+ "playTimeFull": 67,
+ "editionsList": [
+  {
+   "name": "Ultimax Version",
+   "coverUrl": "https://images.launchbox-app.com/78ed118b-a1f3-4317-9453-d58639aa85b5.jpg",
+   "contents": [
+    {
+     "label": "Persona 4 Arena Ultimax game"
+    },
+    {
+     "label": "Previously released P4AU content included"
+    },
+    {
+     "label": "Original Persona 4 Arena story included"
+    }
+   ]
+  }
+ ],
+ "gameplayPillars": [
+  {
+   "title": "Arc System Works Combat",
+   "description": "Use Arc System Works-style normals, special moves, supers, bursts and Persona-assisted attacks in fast one-on-one fights.",
+   "imageUrl": "https://images.launchbox-app.com/b5cdc185-701f-4c0a-9a70-0744caaafccc.jpg"
+  },
+  {
+   "title": "Persona-Powered Roster",
+   "description": "Choose from Persona 4 and Persona 3 fighters, including Shadow variants with distinct mechanics and play styles.",
+   "imageUrl": "https://images.launchbox-app.com/977b68b3-8fcd-4200-887d-7f22fff8dc58.jpg"
+  },
+  {
+   "title": "Story and Competitive Modes",
+   "description": "Follow cinematic story routes that connect the original Persona 4 Arena narrative with Ultimax’s continuation.",
+   "imageUrl": "https://images.launchbox-app.com/b2c1db53-205f-4fae-8323-b0e062260a27.jpg"
+  },
+  {
+   "title": "Train and Compete",
+   "description": "Use training and local/online versus modes to practice character-specific combos, Persona pressure and defensive systems."
+  }
+ ],
+ "worldSummary": "The story returns to Inaba and the Midnight Channel setting, escalating into the P-1 CLIMAX where familiar Persona users are forced into a new fighting tournament tied to a larger supernatural incident.",
+ "storyChapters": [
+  {
+   "title": "Return of the P-1 Tournament",
+   "body": "After the earlier P-1 Grand Prix, a new tournament appears with higher stakes and familiar fighters drawn back into the Midnight Channel conflict."
+  },
+  {
+   "title": "Persona 3 and Persona 4 Collide",
+   "body": "Persona 3 and Persona 4 characters investigate the source of the P-1 CLIMAX while facing opponents and Shadow versions across multiple perspectives."
+  },
+  {
+   "title": "The Ultimax Confrontation",
+   "body": "The combined story content incorporates the original Persona 4 Arena events and Ultimax’s continuation toward the confrontation behind the tournament."
+  },
+  {
+   "title": "After the P-1 CLIMAX",
+   "body": "The conclusion resolves the immediate tournament conflict while reconnecting characters and threads from the broader Persona 3 and Persona 4 stories."
+  }
+ ],
+ "galleryImages": [
+  {
+   "url": "https://images.launchbox-app.com/b5cdc185-701f-4c0a-9a70-0744caaafccc.jpg",
+   "alt": "Persona 4 Arena Ultimax fight scene"
+  },
+  {
+   "url": "https://images.launchbox-app.com/59384393-4b0e-4d38-92f5-447d1f979336.jpg",
+   "alt": "2D fighting gameplay"
+  },
+  {
+   "url": "https://images.launchbox-app.com/db4aea1b-29eb-4b26-919c-c0f78b9e707a.jpg",
+   "alt": "Character matchup gameplay"
+  },
+  {
+   "url": "https://images.launchbox-app.com/977b68b3-8fcd-4200-887d-7f22fff8dc58.jpg",
+   "alt": "Persona-assisted combat scene"
+  },
+  {
+   "url": "https://images.launchbox-app.com/b2c1db53-205f-4fae-8323-b0e062260a27.jpg",
+   "alt": "Arena story / character scene"
+  },
+  {
+   "url": "https://images.launchbox-app.com/8f73ca78-823f-4f1c-9e00-cf752d4faf8a.jpg",
+   "alt": "Persona 4 Arena Ultimax key artwork"
+  },
+  {
+   "url": "https://images.launchbox-app.com/919cd6c9-d0ce-4caf-9aac-4f6b294c68ee.jpg",
+   "alt": "Persona 4 Arena Ultimax banner artwork"
+  }
+ ],
+ "features": [
+  "Fast 2D fighting system with Persona summons",
+  "Large roster including Persona 3 and Persona 4 characters",
+  "Ultimax package includes previously released P4AU content and original P4A story",
+  "Local competitive multiplayer",
+  "Online multiplayer",
+  "Dual English/Japanese audio"
+ ],
+ "perfFps": "60",
+ "perfHdr": false,
+ "perfNotes": "The Switch version targets the 60 fps standard expected for the Arc System Works fighting system. Exact rendering resolution was not confidently verified from a strong technical source, so resolution fields are intentionally left blank. Switch 2 backward compatibility retains the same game behavior and improves loading times in testing.",
+ "devicePerformance": [
+  {
+   "device": "Nintendo Switch 2",
+   "deviceSlug": "nintendo-switch-2",
+   "deviceModel": "Nintendo Switch 2",
+   "hardwareId": "prd_acf4c89908764c62",
+   "informationStatus": "reviewed / fighting-game 60 fps target",
+   "handheld": {
+    "supported": true,
+    "resolution": "720",
+    "fps": "60",
+    "fpsMax": "60",
+    "hdr": false,
+    "mode": "Handheld",
+    "notes": "60 fps fighting-game target. Exact internal resolution not confidently published, so no invented resolution is entered."
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "1080",
+    "fps": "60",
+    "fpsMax": "60",
+    "hdr": false,
+    "mode": "Docked",
+    "notes": "60 fps target. Exact rendering resolution intentionally left blank."
+   },
+   "rayTracing": false,
+   "sourceName": "Nintendo compatibility / review and backward-compatibility testing",
+   "verificationStatus": "60 fps fighting-game target; exact rendering resolution left blank",
+   "performanceNotes": "Performance is appropriate for competitive play, but Switch did not receive the rollback-netcode update available on some other platforms."
+  }
+ ],
+ "downloadSizeGb": 14.7,
+ "requiredSpaceGb": 14.7,
+ "microSdRecommended": false,
+ "storageNotes": "Nintendo lists approximately 14.7 GB for the Switch version.",
+ "languagesAudio": [
+  "English",
+  "Japanese"
+ ],
+ "languagesText": [
+  "Chinese (Simplified) — supplier regional SKU",
+  "English",
+  "French",
+  "German",
+  "Italian",
+  "Spanish"
+ ],
+ "arabicSupport": false,
+ "mpLocalPlayers": true,
+ "mpOnlinePlayers": true,
+ "mpCoop": false,
+ "mpCompetitive": true,
+ "mpSplitScreen": false,
+ "mpLocalWireless": false,
+ "completionMain": 10.5,
+ "completionAll": 67,
+ "faq": [
+  {
+   "q": "Does Persona 4 Arena Ultimax support Simplified Chinese?",
+   "a": "The supplier listing says Simplified Chinese, but western Nintendo pages do not list Chinese. It is therefore stored as regional/SKU-specific supplier language rather than universal language support."
+  },
+  {
+   "q": "Does Persona 4 Arena Ultimax work on Switch 2?",
+   "a": "Yes. Nintendo explicitly lists Nintendo Switch 2 compatibility as supported with behavior consistent with Nintendo Switch."
+  },
+  {
+   "q": "Does Persona 4 Arena Ultimax have multiplayer?",
+   "a": "Yes. It supports local competitive play and online multiplayer. Nintendo Switch Online is required for online matches."
+  },
+  {
+   "q": "Why is only the Online/Standard supplier stock marked low?",
+   "a": "The supplied seller data specifically marks Standard / 标准版 as 即将售罄. Therefore the overall item remains available, Offline/Regular remains available, and Online/Standard is preserved as low_supplier_stock."
+  }
+ ],
+ "reviews": [
+  {
+   "source": "Metacritic",
+   "score": "81/100",
+   "url": "https://www.metacritic.com/game/persona-4-arena-ultimax/"
+  },
+  {
+   "source": "OpenCritic",
+   "score": "79/100",
+   "url": "https://opencritic.com/game/12876/persona-4-arena-ultimax"
+  },
+  {
+   "source": "Metacritic user score",
+   "score": "7.7/10",
+   "url": "https://www.metacritic.com/game/persona-4-arena-ultimax/"
+  }
+ ],
+ "timeline": [
+  {
+   "date": "2013-11-28",
+   "title": "Persona 4 Arena Ultimax debuted in Japanese arcades"
+  },
+  {
+   "date": "2014-08-28",
+   "title": "Original console release began in Japan"
+  },
+  {
+   "date": "2022-03-17",
+   "title": "Persona 4 Arena Ultimax released for Nintendo Switch"
+  }
+ ],
+ "seriesName": "Persona",
+ "seriesEntries": [
+  "Persona 4 Golden",
+  "Persona 3 Portable",
+  "Persona 5 Royal",
+  "Persona 5 Strikers",
+  "Persona 3 Reload"
+ ],
+ "studioName": "Arc System Works / ATLUS",
+ "studioUrl": "https://www.arcsystemworks.com/",
+ "studioLocation": "Yokohama, Japan",
+ "studioAbout": "Arc System Works is a Japanese studio specializing in 2D fighting games and is known for Guilty Gear and BlazBlue. It developed Persona 4 Arena Ultimax in collaboration with ATLUS.",
+ "setupNeeds": [
+  "Nintendo Switch family system",
+  "Nintendo Account for digital purchase and network play",
+  "Nintendo Switch Online membership required for online multiplayer"
+ ],
+ "sources": [
+  {
+   "name": "Nintendo US — Persona 4 Arena Ultimax",
+   "url": "https://www.nintendo.com/us/store/products/persona-4-arena-ultimax-switch/"
+  },
+  {
+   "name": "Nintendo Canada — compatibility / product details",
+   "url": "https://www.nintendo.com/en-ca/store/products/persona-4-arena-ultimax-switch/"
+  },
+  {
+   "name": "Deku Deals — metadata and aggregate scores",
+   "url": "https://www.dekudeals.com/items/persona-4-arena-ultimax"
+  },
+  {
+   "name": "RPG Site — Switch 2 backward compatibility / loading",
+   "url": "https://www.rpgsite.net/feature/18157-nintendo-switch-2-backwards-compatibility-testing-major-jrpgs-tested"
+  },
+  {
+   "name": "LaunchBox Games Database — Switch media",
+   "url": "https://gamesdb.launchbox-app.com/games/details/152617-persona-4-arena-ultimax"
+  }
+ ],
+ "boxContentsList": "[Circular]",
+ "image": "/api/files/products/prd_1da85016b1ea440f/cover-faa6239da6dd15ce.webp",
+ "banner": "/api/files/products/prd_1da85016b1ea440f/banner-0-5d6c1c768cef6d7e.avif",
+ "schemaId": "",
+ "createdAt": "2026-08-26T22:09:15.242Z",
+ "created_at": "2026-08-26T22:09:15.242Z",
+ "updatedAt": "2026-08-26T22:09:15.242Z",
+ "updated_at": "2026-08-26T22:09:15.242Z",
+ "badgeEn": "وفر 40%",
+ "badgeKu": "وفر 40%",
+ "featuresEn": [
+  "Fast 2D fighting system with Persona summons",
+  "Large roster including Persona 3 and Persona 4 characters",
+  "Ultimax package includes previously released P4AU content and original P4A story",
+  "Local competitive multiplayer",
+  "Online multiplayer",
+  "Dual English/Japanese audio"
+ ],
+ "featuresKu": [
+  "Fast 2D fighting system with Persona summons",
+  "Large roster including Persona 3 and Persona 4 characters",
+  "Ultimax package includes previously released P4AU content and original P4A story",
+  "Local competitive multiplayer",
+  "Online multiplayer",
+  "Dual English/Japanese audio"
+ ],
+ "boxFrontUrl": "https://images.launchbox-app.com/78ed118b-a1f3-4317-9453-d58639aa85b5.jpg",
+ "sales": 0,
+ "images": [],
+ "modes": [],
+ "lendPreorder": true
+}

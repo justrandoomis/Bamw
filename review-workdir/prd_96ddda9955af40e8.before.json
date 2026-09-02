@@ -1,0 +1,502 @@
+{
+ "title": "Persona 5 Strikers",
+ "titleEn": "Persona 5 Strikers",
+ "titleKu": "Persona 5 Strikers",
+ "slug": "persona-5-strikers",
+ "description": "Rejoin the Phantom Thieves for a summer trip across Japan as mysterious Jails begin stealing people’s desires. Switch characters in real time, summon Personas and fight large groups of enemies while investigating each city’s crisis.",
+ "descriptionEn": "Rejoin the Phantom Thieves for a summer trip across Japan as mysterious Jails begin stealing people’s desires. Switch characters in real time, summon Personas and fight large groups of enemies while investigating each city’s crisis.",
+ "descriptionKu": "Rejoin the Phantom Thieves for a summer trip across Japan as mysterious Jails begin stealing people’s desires. Switch characters in real time, summon Personas and fight large groups of enemies while investigating each city’s crisis.",
+ "cartridgeImage": "/api/files/products/prd_96ddda9955af40e8/front-ced50028e195722e.jpg",
+ "nintendoCardImage": "/api/files/products/prd_96ddda9955af40e8/square-3b0813a24a232ba3.jpg",
+ "coverHiResImage": "/api/files/products/general/image-e9a232ce1119b016.jpg",
+ "coverImage": "/api/files/products/prd_96ddda9955af40e8/cover-2057a93572c69389.jpg",
+ "bannerImages": [
+  "/api/files/products/prd_96ddda9955af40e8/banner-0-3e845eb398a1b6e7.jpg",
+  "/api/files/products/prd_96ddda9955af40e8/banner-1-4133bc9ea18947eb.jpg",
+  "/api/files/products/prd_96ddda9955af40e8/banner-2-b19dc15e52c218a2.jpg",
+  "/api/files/products/prd_96ddda9955af40e8/banner-3-f3a9c7d300071e32.jpg",
+  "/api/files/products/prd_96ddda9955af40e8/banner-4-dbac56cef1feeeef.jpg",
+  "/api/files/products/prd_96ddda9955af40e8/banner-5-bf6be47ccd10beff.jpg",
+  "/api/files/products/prd_96ddda9955af40e8/banner-6-821f3512edc4c267.jpg"
+ ],
+ "gallery": [],
+ "youtubeTrailer": "https://www.youtube.com/watch?v=yDaG0fE6HHw",
+ "releaseDate": "2021-02-23",
+ "ageRating": "ESRB Mature",
+ "metacriticRating": 81,
+ "genres": [
+  "Action",
+  "Role-Playing Game",
+  "Action RPG",
+  "Hack and Slash"
+ ],
+ "platform": "switch1",
+ "size": 12,
+ "numberOfPlayers": "1",
+ "supportedLanguages": "Supplier selection supplied by user: Traditional Chinese. Nintendo Australia western listing: French, German, Italian, Spanish, English. Chinese availability therefore appears region/SKU-dependent and is not silently treated as a language of the western Nintendo listing.",
+ "hardwareModel": "",
+ "colorEdition": "",
+ "storageCapacity": "",
+ "screenSpecs": "",
+ "batteryLife": "",
+ "boxContents": [],
+ "boxContentsText": "",
+ "warrantyCondition": "",
+ "connectivity": "",
+ "characterName": "Link",
+ "amiiboSeries": "The Legend of Zelda",
+ "figureType": "figure",
+ "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+ "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+ "boxCondition": "mib",
+ "releaseWave": "Wave 2 (Restock)",
+ "rarity": "standard",
+ "accessoryType": "حقيبة حماية وتنقل Carry Case",
+ "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+ "brand": "Nintendo Official",
+ "material": "Hard EVA Shockproof Shell",
+ "availableColors": "Black, Neon Red/Blue, White",
+ "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+ "cardValue": "$20 eShop Balance",
+ "region": "Global / region-dependent",
+ "cardType": "eshop",
+ "deliveryMethod": "instant_code",
+ "redemptionGuide": "",
+ "redemptionSteps": [],
+ "validity": "no_expiry",
+ "usedType": "cartridge",
+ "conditionGrade": "like_new",
+ "packaging": "cib",
+ "guaranteeStatus": "tested_30days",
+ "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+ "accountType": "primary",
+ "badge": "وفر 40%",
+ "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+ "price": 7500,
+ "cost": 1250,
+ "stock": 999999,
+ "isInfiniteStock": true,
+ "isHidden": false,
+ "displayOrder": 0,
+ "category": "nintendo-switch-games",
+ "categoryId": "nintendo-switch-games",
+ "categoryEn": "",
+ "categoryKu": "",
+ "options": [
+  {
+   "id": "offline_account",
+   "name": "Offline Account",
+   "description": "Offline account access supplied as Regular / 普通版.",
+   "stock": 999999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_account",
+   "name": "Online Account",
+   "description": "Online account access supplied as Standard / 标准版.",
+   "stock": 999999,
+   "isInfiniteStock": true
+  }
+ ],
+ "types": [
+  {
+   "id": "standard_offline",
+   "name": "Standard Offline",
+   "optionId": "offline_account",
+   "price": 7500,
+   "cost": 1250,
+   "description": "Supplier Regular / 普通版 converted to IQD using 1 CNY = 220 IQD and rounded down to nearest 250 IQD.",
+   "stock": 999999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "standard_online",
+   "name": "Standard Online",
+   "optionId": "online_account",
+   "price": 12000,
+   "cost": 5750,
+   "description": "Supplier Standard / 标准版 converted to IQD using 1 CNY = 220 IQD and rounded down to nearest 250 IQD.",
+   "stock": 999999,
+   "isInfiniteStock": true
+  }
+ ],
+ "editions": [],
+ "dlcs": [],
+ "isActive": true,
+ "status": "active",
+ "kind": "account",
+ "trade_value_iqd": 0,
+ "store_offer_bonus_iqd": 0,
+ "trade_enabled": true,
+ "trade_value_locked": false,
+ "id": "prd_96ddda9955af40e8",
+ "schema_version": 1,
+ "titleAr": "بيرسونا 5 سترايكرز",
+ "compatibility": [
+  "Nintendo Switch",
+  "Nintendo Switch 2 (backward compatibility)",
+  "Nintendo Switch Lite"
+ ],
+ "edition": "Standard",
+ "developer": "P-Studio / Omega Force",
+ "publisher": "SEGA",
+ "metacriticUrl": "https://www.metacritic.com/game/persona-5-strikers/",
+ "opencriticRating": 83,
+ "userScore": 7.8,
+ "price_usd": 59.99,
+ "officialUrl": "https://atlus.com/p5s/",
+ "eshopUrl": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-games/Persona-5-Strikers-1892623.html",
+ "gameIsOffline": true,
+ "gameIsOnline": false,
+ "description_short": "An action-RPG sequel-style adventure for the Phantom Thieves, blending Persona mechanics with large real-time battles during a road trip across Japan.",
+ "description_ar": "يجتمع اللصوص الوهميون من جديد في رحلة صيفية عبر اليابان، لكن ظهور سجون غامضة يدفعهم إلى مواجهة أزمة جديدة. القتال هنا لحظي وسريع، مع التبديل بين الشخصيات واستخدام مهارات الـPersona ونقاط ضعف الأعداء.",
+ "box_front_url": "https://images.launchbox-app.com/8a72a795-5a25-4136-bebb-a5c36b5c5454.jpg",
+ "videos": [
+  {
+   "title": "Persona 5 Strikers — All-Out-Action Trailer — Nintendo Switch",
+   "url": "https://www.youtube.com/watch?v=yDaG0fE6HHw"
+  }
+ ],
+ "nintendoEshopUrl": "https://www.nintendo.com/au/games/nintendo-switch/persona-5-strikers/",
+ "nintendoOnlineRequired": false,
+ "nintendoCloudSaves": true,
+ "nintendoGameKeyCard": false,
+ "tvMode": true,
+ "tabletopMode": true,
+ "handheldMode": true,
+ "nintendoPlayModes": "TV / Tabletop / Handheld",
+ "nintendoNotes": "Official Nintendo AU lists Persona 5 Strikers as a Nintendo Switch title compatible with Nintendo Switch 2, 11.9 GB, one local player, TV/Tabletop/Handheld modes, and Save Data Cloud. The western Nintendo AU language list is French, German, Italian, Spanish and English.\n\nSupplier selection supplied by user is Traditional Chinese. Because the western Nintendo listing does not show Chinese, the file preserves this as a supplier regional/SKU language and does not overwrite the western official language list.\n\nSupplier variants: Regular / 普通版 ¥6.8 (pre-discount ¥10); Standard / 标准版 ¥26.4 (pre-discount ¥30). Costs: Regular 1,250 IQD; Standard 5,750 IQD. Only two supplier variants exist, so no DLC product types are created even though the game has real official DLC metadata.",
+ "switch2Enhanced": false,
+ "switch2Exclusive": false,
+ "switch2Features": [
+  "Nintendo Switch 2 backward compatibility supported",
+  "More stable 30 fps in compatibility testing",
+  "Substantially faster loading in measured tests",
+  "No native Switch 2 enhancement / no 60 fps patch"
+ ],
+ "tagline": "Take the Phantom Thieves on an action-packed summer road trip across Japan.",
+ "fitFor": [
+  "Persona 5 fans who want a new Phantom Thieves story",
+  "Players who enjoy fast real-time action combat",
+  "Players who like character switching and party builds",
+  "Players who enjoyed Persona 5’s cast and want a continuation-style adventure"
+ ],
+ "notFitFor": [
+  "Players expecting Persona 5 Royal’s turn-based combat",
+  "Players who dislike musou-style crowds and action",
+  "Players unfamiliar with Persona 5 who want a standalone introduction",
+  "Players who only want traditional turn-based Persona combat"
+ ],
+ "playTimeMain": 35,
+ "playTimeFull": 71,
+ "editionsList": [
+  {
+   "name": "Standard Edition",
+   "coverUrl": "https://images.launchbox-app.com/8a72a795-5a25-4136-bebb-a5c36b5c5454.jpg",
+   "contents": [
+    {
+     "label": "Persona 5 Strikers base game"
+    },
+    {
+     "label": "Full Phantom Thieves road-trip campaign"
+    },
+    {
+     "label": "Single-player action RPG"
+    }
+   ]
+  },
+  {
+   "name": "Digital Deluxe Edition",
+   "contents": [
+    {
+     "label": "Bonus soundtrack, art book and behind-the-scenes video"
+    },
+    {
+     "label": "Persona Legacy BGM"
+    },
+    {
+     "label": "All-Out Attack Pack"
+    }
+   ]
+  }
+ ],
+ "gameplayPillars": [
+  {
+   "title": "Hybrid Persona Action",
+   "description": "Fight crowds in real time while still exploiting Persona elemental weaknesses, buffs, debuffs and technical effects.",
+   "imageUrl": "https://images.launchbox-app.com/e69d5887-9081-4ee4-b22a-1e64bc178333.jpg"
+  },
+  {
+   "title": "Control the Phantom Thieves",
+   "description": "Switch directly among Phantom Thieves, each with unique weapons, Master Arts and combat roles.",
+   "imageUrl": "https://images.launchbox-app.com/80213ca6-3c02-4f39-9d70-22316000fd9a.jpg"
+  },
+  {
+   "title": "Road Trip Across Japan",
+   "description": "Travel across Japanese cities, investigate local corruption and infiltrate themed Jails.",
+   "imageUrl": "https://images.launchbox-app.com/ad304e13-e26c-4bab-8a9c-c882c1ad0131.jpg"
+  },
+  {
+   "title": "Build BOND Skills",
+   "description": "Earn BOND points across exploration, requests and combat to unlock party-wide bonuses and customize progression."
+  }
+ ],
+ "worldSummary": "The Phantom Thieves travel across Japan, where distorted Jails are manipulating people’s desires. Each city becomes a new investigation, mixing road-trip downtime with infiltration and combat.",
+ "storyChapters": [
+  {
+   "title": "The Summer Reunion",
+   "body": "The Phantom Thieves reunite for a summer vacation but discover that a new Metaverse-like crisis is spreading through Japan."
+  },
+  {
+   "title": "Jails Across Japan",
+   "body": "As the group travels from city to city, they investigate Monarchs whose Jails manipulate the desires of ordinary people."
+  },
+  {
+   "title": "The Source of the Crisis",
+   "body": "New allies and deeper revelations connect the individual cases to a broader threat affecting society."
+  },
+  {
+   "title": "The Road Trip Finale",
+   "body": "The Phantom Thieves trace the connected crises to their source and bring the nationwide road trip toward its final confrontation."
+  }
+ ],
+ "galleryImages": [
+  {
+   "url": "https://images.launchbox-app.com/e69d5887-9081-4ee4-b22a-1e64bc178333.jpg",
+   "alt": "Phantom Thieves action combat"
+  },
+  {
+   "url": "https://images.launchbox-app.com/ad304e13-e26c-4bab-8a9c-c882c1ad0131.jpg",
+   "alt": "Persona 5 Strikers road-trip scene"
+  },
+  {
+   "url": "https://images.launchbox-app.com/0c6633cb-39fd-4fe7-9877-16374e35dfcb.jpg",
+   "alt": "Large-scale enemy battle"
+  },
+  {
+   "url": "https://images.launchbox-app.com/076e94f3-8675-4de8-af70-9c0952f16333.jpg",
+   "alt": "Jail exploration gameplay"
+  },
+  {
+   "url": "https://images.launchbox-app.com/a4c902e4-5d11-4f56-ac94-82108b0cbf5f.jpg",
+   "alt": "Character and story scene"
+  },
+  {
+   "url": "https://images.launchbox-app.com/80213ca6-3c02-4f39-9d70-22316000fd9a.jpg",
+   "alt": "Phantom Thieves team combat"
+  },
+  {
+   "url": "https://images.launchbox-app.com/40243a05-cd99-4108-9197-1421b542a74d.jpg",
+   "alt": "Additional Persona 5 Strikers artwork"
+  }
+ ],
+ "features": [
+  "Real-time action combat with Persona skills",
+  "Direct control of multiple Phantom Thieves",
+  "Road-trip story across multiple Japanese cities",
+  "Persona fusion and elemental weakness systems",
+  "BOND progression shared across the party",
+  "Official Persona Legacy BGM and All-Out Attack DLC available"
+ ],
+ "perfResolutionDocked": "approximately 864p reported",
+ "perfResolutionHandheld": "approximately 648p reported",
+ "perfFps": "30",
+ "perfHdr": false,
+ "perfNotes": "Switch targets 30 fps. Backward-compatibility testing on Switch 2 reports a much steadier 30 fps and significantly shorter loading. Approximate ~864p docked / ~648p handheld figures come from secondary technical reporting, so they are explicitly marked as reported rather than official Nintendo measurements.",
+ "devicePerformance": [
+  {
+   "device": "Nintendo Switch 2",
+   "deviceSlug": "nintendo-switch-2",
+   "deviceModel": "Nintendo Switch 2",
+   "hardwareId": "prd_acf4c89908764c62",
+   "informationStatus": "verified / backward compatibility performance test",
+   "handheld": {
+    "supported": true,
+    "resolution": "up to 1080p TV-profile rendering with Handheld Mode Boost; 720p without Boost",
+    "resolutionDynamic": true,
+    "outputResolution": "1920x1080 display output with Handheld Mode Boost",
+    "fps": "30",
+    "fpsMin": "30",
+    "fpsMax": "30",
+    "mode": "Handheld Mode Boost",
+    "notes": "Backward compatibility stabilizes the 30 fps target noticeably compared with original Switch in testing."
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "up to 1080p dynamic, system-upscaled to 4K output",
+    "resolutionDynamic": true,
+    "renderingResolution": "up to 1920x1080",
+    "outputResolution": "up to 3840x2160 system output",
+    "fps": "30",
+    "fpsMin": "30",
+    "fpsMax": "30",
+    "mode": "TV mode / backward compatibility",
+    "notes": "Backward-compatible 30 fps with improved consistency; no native higher-frame-rate patch."
+   },
+   "upscaling": "System-level upscaling to 4K output in TV mode",
+   "rayTracing": false,
+   "loadingNotes": "RPG Site testing reports dashboard-to-game loading around 20–21 seconds on Switch 2 versus roughly 40–42 seconds on original Switch, and save-related loads around 7–8 seconds versus roughly 18–20 seconds.",
+   "sourceName": "RPG Site / Nitchigamer / Switch 2 Handheld Mode Boost testing",
+   "sourceUrl": "https://nitchigamer.com/2025/06/22/persona-5-strikers-nintendo-switch-2-4k-gameplay/",
+   "verificationStatus": "verified",
+   "performanceNotes": "Backward compatibility materially improves frame-rate stability and loading. Before Handheld Mode Boost, Switch 2 handheld uses the fixed 720p profile. With Boost enabled it can use the higher TV-mode rendering profile. TV mode renders up to 1080p dynamically and the system can output an upscaled 4K signal; the game itself remains capped at 30 fps."
+  }
+ ],
+ "downloadSizeGb": 11.9,
+ "requiredSpaceGb": 11.9,
+ "microSdRecommended": false,
+ "storageNotes": "Nintendo AU lists an 11.9 GB file size.",
+ "languagesAudio": [
+  "English",
+  "Japanese"
+ ],
+ "languagesText": [
+  "Chinese (Traditional) — supplier regional SKU",
+  "English",
+  "French",
+  "German",
+  "Italian",
+  "Spanish"
+ ],
+ "arabicSupport": false,
+ "mpLocalPlayers": false,
+ "mpOnlinePlayers": false,
+ "mpCoop": false,
+ "mpCompetitive": false,
+ "mpSplitScreen": false,
+ "mpLocalWireless": false,
+ "dlc": [
+  {
+   "name": "Persona Legacy BGM",
+   "description": "Official DLC adding legacy battle tracks from Persona 1, Persona 2, Persona 3 / Portable, and Persona 4 / Golden."
+  },
+  {
+   "name": "All-Out Attack Pack",
+   "description": "Official item/skill pack containing boost skills, affinity support, armor, Persona points, enemy debuffs and ally buffs."
+  },
+  {
+   "name": "Digital Deluxe Bonus Content",
+   "description": "The Digital Deluxe package includes bonus soundtrack, digital art book, behind-the-scenes video and the two gameplay DLC packs."
+  }
+ ],
+ "completionMain": 35,
+ "completionAll": 71,
+ "faq": [
+  {
+   "q": "Does Persona 5 Strikers support Traditional Chinese?",
+   "a": "The supplier listing supplied by the user says Traditional Chinese. Nintendo AU’s western page does not list Chinese, so Chinese support is treated as region/SKU-dependent rather than generalized to every copy."
+  },
+  {
+   "q": "Does Persona 5 Strikers work on Nintendo Switch 2?",
+   "a": "Yes. Nintendo lists Switch 2 compatibility as supported, but it remains the Switch version via backward compatibility."
+  },
+  {
+   "q": "Is Persona 5 Strikers multiplayer?",
+   "a": "No. Nintendo lists one local player and the campaign is single-player."
+  },
+  {
+   "q": "Why are there DLC metadata fields but no DLC product type?",
+   "a": "Official Nintendo lists real DLC for Persona 5 Strikers, so the informational DLC section is populated. The supplier data, however, has only two variants (Regular and Standard), so under the store rule there are only Standard Offline and Standard Online product types."
+  }
+ ],
+ "reviews": [
+  {
+   "source": "Metacritic",
+   "score": "81/100",
+   "url": "https://www.metacritic.com/game/persona-5-strikers/"
+  },
+  {
+   "source": "OpenCritic",
+   "score": "83/100",
+   "url": "https://opencritic.com/game/10826/persona-5-strikers"
+  },
+  {
+   "source": "Metacritic user score",
+   "score": "7.8/10",
+   "url": "https://www.metacritic.com/game/persona-5-strikers/"
+  }
+ ],
+ "timeline": [
+  {
+   "date": "2020-02-20",
+   "title": "Persona 5 Scramble released in Japan"
+  },
+  {
+   "date": "2021-02-23",
+   "title": "Persona 5 Strikers released internationally on Nintendo Switch"
+  },
+  {
+   "date": "2025-06-05",
+   "title": "Nintendo Switch 2 backward compatibility era begins"
+  }
+ ],
+ "seriesName": "Persona",
+ "seriesEntries": [
+  "Persona 5 Royal",
+  "Persona 4 Golden",
+  "Persona 3 Portable",
+  "Persona 4 Arena Ultimax",
+  "Persona 3 Reload"
+ ],
+ "studioName": "P-Studio / Omega Force",
+ "studioUrl": "https://p-ch.jp/",
+ "studioLocation": "Japan",
+ "studioAbout": "Persona 5 Strikers was co-developed by ATLUS/P-Studio and Koei Tecmo’s Omega Force, combining Persona RPG systems with Omega Force’s action expertise.",
+ "setupNeeds": [
+  "Nintendo Switch family system",
+  "Nintendo Account for digital purchase",
+  "No paid Nintendo Switch Online membership required for the single-player campaign"
+ ],
+ "sources": [
+  {
+   "name": "Nintendo Australia — Persona 5 Strikers",
+   "url": "https://www.nintendo.com/au/games/nintendo-switch/persona-5-strikers/"
+  },
+  {
+   "name": "Deku Deals — metadata and aggregate scores",
+   "url": "https://www.dekudeals.com/items/persona-5-strikers"
+  },
+  {
+   "name": "RPG Site — Switch 2 backward-compatibility performance comparison",
+   "url": "https://www.rpgsite.net/feature/18157-nintendo-switch-2-backwards-compatibility-testing-major-jrpgs-tested"
+  },
+  {
+   "name": "LaunchBox Games Database — Switch media",
+   "url": "https://gamesdb.launchbox-app.com/games/details/106792-persona-5-strikers"
+  },
+  {
+   "name": "The Cover Project — Persona 5 Strikers cover entry",
+   "url": "https://www.thecoverproject.net/view.php?game_id=10760"
+  }
+ ],
+ "boxContentsList": "[Circular]",
+ "image": "/api/files/products/prd_96ddda9955af40e8/cover-2057a93572c69389.jpg",
+ "banner": "/api/files/products/prd_96ddda9955af40e8/banner-0-3e845eb398a1b6e7.jpg",
+ "schemaId": "",
+ "createdAt": "2026-08-26T22:09:13.564Z",
+ "created_at": "2026-08-26T22:09:13.564Z",
+ "updatedAt": "2026-08-26T22:09:13.564Z",
+ "updated_at": "2026-08-26T22:09:13.564Z",
+ "badgeEn": "وفر 40%",
+ "badgeKu": "وفر 40%",
+ "featuresEn": [
+  "Real-time action combat with Persona skills",
+  "Direct control of multiple Phantom Thieves",
+  "Road-trip story across multiple Japanese cities",
+  "Persona fusion and elemental weakness systems",
+  "BOND progression shared across the party",
+  "Official Persona Legacy BGM and All-Out Attack DLC available"
+ ],
+ "featuresKu": [
+  "Real-time action combat with Persona skills",
+  "Direct control of multiple Phantom Thieves",
+  "Road-trip story across multiple Japanese cities",
+  "Persona fusion and elemental weakness systems",
+  "BOND progression shared across the party",
+  "Official Persona Legacy BGM and All-Out Attack DLC available"
+ ],
+ "boxFrontUrl": "https://images.launchbox-app.com/8a72a795-5a25-4136-bebb-a5c36b5c5454.jpg",
+ "sales": 0,
+ "images": [],
+ "modes": []
+}

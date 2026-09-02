@@ -1,0 +1,549 @@
+{
+ "title": "Persona 3 Reload [Switch 2]",
+ "titleEn": "Persona 3 Reload [Switch 2]",
+ "titleKu": "Persona 3 Reload",
+ "slug": "persona-3-reload",
+ "description": "Live through a school year in Port Island, build bonds and social stats by day, then explore Tartarus and fight Shadows during the Dark Hour. Persona 3 Reload modernizes the original with rebuilt visuals, interface, battle systems, extra scenes, and additional voice work.",
+ "descriptionEn": "Live through a school year in Port Island, build bonds and social stats by day, then explore Tartarus and fight Shadows during the Dark Hour. Persona 3 Reload modernizes the original with rebuilt visuals, interface, battle systems, extra scenes, and additional voice work.",
+ "descriptionKu": "Live through a school year in Port Island, build bonds and social stats by day, then explore Tartarus and fight Shadows during the Dark Hour. Persona 3 Reload modernizes the original with rebuilt visuals, interface, battle systems, extra scenes, and additional voice work.",
+ "cartridgeImage": "/api/files/products/prd_efd67851b0b44837/front-91196c927f2947f2.jpg",
+ "nintendoCardImage": "/api/files/products/prd_efd67851b0b44837/square-fbd86d87d803ecef.jpg",
+ "coverHiResImage": "",
+ "coverImage": "/api/files/products/prd_efd67851b0b44837/cover-91196c927f2947f2.jpg",
+ "bannerImages": [
+  "https://asia.sega.com/p3r/en/switch2/resources/img/top/system-pict-daytime-1_f9f909f9f6d081690a11.webp",
+  "https://asia.sega.com/p3r/en/switch2/resources/img/top/system-pict-daytime-2_7dc0ff47189ef0177bc2.webp",
+  "/api/files/products/prd_efd67851b0b44837/banner-2-2676f1e0089344bd.webp",
+  "/api/files/products/prd_efd67851b0b44837/banner-3-87bc0a9f851fc936.webp"
+ ],
+ "gallery": [],
+ "youtubeTrailer": "https://www.youtube.com/watch?v=kzQxzbM5gMQ",
+ "releaseDate": "2025-10-23",
+ "ageRating": "ESRB Mature",
+ "metacriticRating": 80,
+ "genres": [
+  "Role-Playing",
+  "Turn-Based",
+  "Social Simulation"
+ ],
+ "platform": "switch2",
+ "size": 21.7,
+ "numberOfPlayers": "1",
+ "supportedLanguages": "Japanese, English, Spanish, French, German, Italian, Portuguese, Russian, Korean, Chinese (Simplified), Chinese (Traditional)",
+ "hardwareModel": "",
+ "colorEdition": "",
+ "storageCapacity": "",
+ "screenSpecs": "",
+ "batteryLife": "",
+ "boxContents": [],
+ "boxContentsText": "",
+ "warrantyCondition": "",
+ "connectivity": "",
+ "characterName": "Link",
+ "amiiboSeries": "The Legend of Zelda",
+ "figureType": "figure",
+ "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+ "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+ "boxCondition": "mib",
+ "releaseWave": "Wave 2 (Restock)",
+ "rarity": "standard",
+ "accessoryType": "حقيبة حماية وتنقل Carry Case",
+ "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+ "brand": "Nintendo Official",
+ "material": "Hard EVA Shockproof Shell",
+ "availableColors": "Black, Neon Red/Blue, White",
+ "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+ "cardValue": "$20 eShop Balance",
+ "region": "Global",
+ "cardType": "eshop",
+ "deliveryMethod": "instant_code",
+ "redemptionGuide": "",
+ "redemptionSteps": [],
+ "validity": "no_expiry",
+ "usedType": "cartridge",
+ "conditionGrade": "like_new",
+ "packaging": "cib",
+ "guaranteeStatus": "tested_30days",
+ "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+ "accountType": "primary",
+ "badge": "وفر 40%",
+ "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+ "price": 12000,
+ "cost": 3000,
+ "stock": 999999,
+ "isInfiniteStock": true,
+ "isHidden": false,
+ "displayOrder": 0,
+ "category": "nintendo-switch-games",
+ "categoryId": "nintendo-switch-games",
+ "categoryEn": "",
+ "categoryKu": "",
+ "options": [
+  {
+   "id": "offline_account",
+   "name": "حساب أوفلاين",
+   "description": "حساب مخصص للعب دون اتصال بعد إكمال خطوات التفعيل.",
+   "isInfiniteStock": true,
+   "customerDescription": "حساب مشترك"
+  },
+  {
+   "id": "online_account",
+   "name": "حساب أونلاين",
+   "description": "حساب يدعم تشغيل اللعبة مع الاتصال والميزات المتاحة أونلاين.",
+   "isInfiniteStock": true,
+   "customerDescription": "حساب خاص بك",
+   "internalNote": "Online-capable account access option sold by the supplier."
+  }
+ ],
+ "types": [
+  {
+   "id": "standard_offline",
+   "name": "حساب أوفلاين — عادي",
+   "optionId": "offline_account",
+   "cost": 3000,
+   "description": "تشمل الإصدار العادي من اللعبة.",
+   "isInfiniteStock": true,
+   "price": 14750,
+   "customerDescription": "اللعبة الأساسية",
+   "internalNote": "Supplier Regular / 普通版. Supplier source price ¥14.64 (pre-discount ¥18)."
+  },
+  {
+   "id": "dlc_offline",
+   "name": "حساب أوفلاين — مع الإضافات",
+   "optionId": "offline_account",
+   "cost": 3500,
+   "description": "تشمل اللعبة الأساسية والمحتوى الإضافي المثبت في هذا الإصدار.",
+   "isInfiniteStock": true,
+   "price": 17500,
+   "customerDescription": "اللعبة مع الإضافات",
+   "internalNote": "Supplier Special / 特典版 mapped to DLC offline. Supplier price ¥16.6 (pre-discount ¥20)."
+  },
+  {
+   "id": "standard_online",
+   "name": "حساب أونلاين — عادي",
+   "optionId": "online_account",
+   "cost": 35750,
+   "description": "تشمل الإصدار العادي من اللعبة.",
+   "isInfiniteStock": true,
+   "price": 55000,
+   "customerDescription": "اللعبة الأساسية",
+   "internalNote": "Supplier Standard / 标准版. Supplier price ¥163.6 (pre-discount ¥170)."
+  },
+  {
+   "id": "dlc_online",
+   "name": "حساب أونلاين — مع الإضافات",
+   "optionId": "online_account",
+   "cost": 38000,
+   "description": "تشمل اللعبة الأساسية والمحتوى الإضافي المثبت في هذا الإصدار.",
+   "isInfiniteStock": true,
+   "price": 60000,
+   "customerDescription": "اللعبة مع الإضافات",
+   "internalNote": "Supplier Deluxe / 豪华版 mapped to DLC online. Supplier price ¥173.4 (pre-discount ¥180)."
+  }
+ ],
+ "editions": [],
+ "dlcs": [],
+ "isActive": true,
+ "status": "active",
+ "kind": "account",
+ "trade_value_iqd": 39000,
+ "store_offer_bonus_iqd": 4000,
+ "trade_enabled": true,
+ "trade_value_locked": false,
+ "id": "prd_efd67851b0b44837",
+ "titleAr": "Persona 3 Reload",
+ "compatibility": [
+  "Nintendo Switch 2"
+ ],
+ "edition": "Standard",
+ "developer": "ATLUS / P-Studio",
+ "publisher": "SEGA",
+ "metacriticUrl": "https://www.metacritic.com/game/persona-3-reload/",
+ "opencriticRating": 87,
+ "userScore": 8.6,
+ "officialUrl": "https://asia.sega.com/p3r/en/switch2/",
+ "eshopUrl": "https://asia.sega.com/p3r/en/switch2/",
+ "gameIsOffline": true,
+ "gameIsOnline": false,
+ "description_short": "A modern remake of Persona 3 combining daily school life, Social Links, Persona fusion, and turn-based battles in Tartarus.",
+ "description_ar": "عِش عامًا دراسيًا في Port Island، وابنِ العلاقات وSocial Links وطوّر الإحصائيات الاجتماعية نهارًا، ثم استكشف Tartarus وقاتل الـShadows خلال Dark Hour. تعيد Persona 3 Reload بناء اللعبة الأصلية بصريًا وتحدّث الواجهة والقتال وتضيف مشاهد وأداءً صوتيًا إضافيًا.",
+ "box_front_url": "https://images.launchbox-app.com//89198ab6-ec18-4982-bceb-e3663fa7e3f3.jpg",
+ "box_back_url": "https://images.launchbox-app.com//e8c1616e-72f8-45d1-bcd3-1ed95c0e1b4c.jpg",
+ "videos": [
+  {
+   "title": "SEGA Launch Trailer — Nintendo Switch 2",
+   "url": "https://www.youtube.com/watch?v=kzQxzbM5gMQ"
+  },
+  {
+   "title": "Nintendo of America Launch Trailer",
+   "url": "https://www.youtube.com/watch?v=d6pFZODjB34"
+  },
+  {
+   "title": "Digital Foundry — Patch 1.03 performance test",
+   "url": "https://www.youtube.com/watch?v=RbakVeQAajE"
+  }
+ ],
+ "nintendoEshopUrl": "https://asia.sega.com/p3r/en/switch2/",
+ "nintendoOnlineRequired": false,
+ "nintendoCloudSaves": true,
+ "nintendoGameKeyCard": true,
+ "nintendoPhysicalNeedsDownload": true,
+ "tvMode": true,
+ "tabletopMode": true,
+ "handheldMode": true,
+ "nintendoPlayModes": "TV, Tabletop, Handheld",
+ "nintendoNotes": "Nintendo platform: native Nintendo Switch 2 release on 2025-10-23. No Nintendo Switch 1 version. The physical Switch 2 version uses a Game-Key Card and therefore requires an internet download.\n\nSupplier language selection: Simplified Chinese. Four supplier variants mapped by established rule: Regular=Offline Standard, Special=Offline DLC, Standard=Online Standard, Deluxe=Online DLC.\nSupplier costs after platform subsidy: ¥14.64 / ¥16.6 / ¥163.6 / ¥173.4 => 3,000 / 3,500 / 35,750 / 38,000 IQD. Pre-discount values: ¥18 / ¥20 / ¥170 / ¥180.\nPatch 1.03 adds a 60 fps Performance Mode in docked/TV mode and fixes frame-pacing issues; handheld remains 30 fps in Digital Foundry testing.",
+ "switch2Enhanced": false,
+ "switch2Exclusive": true,
+ "tagline": "Dive into the Dark Hour and awaken the depths of your heart.",
+ "fitFor": [
+  "Players who enjoy story-heavy turn-based RPGs",
+  "Fans of relationship and time-management systems",
+  "Players who like Persona fusion and party customization",
+  "Players who enjoy 60+ hour narrative RPGs"
+ ],
+ "notFitFor": [
+  "Players who want constant real-time action",
+  "Players who dislike long dialogue and calendar progression",
+  "Players seeking a short RPG"
+ ],
+ "playTimeMain": 65,
+ "playTimeFull": 99.5,
+ "editionsList": [
+  {
+   "name": "Standard",
+   "coverUrl": "https://images.launchbox-app.com//89198ab6-ec18-4982-bceb-e3663fa7e3f3.jpg",
+   "contents": [
+    {
+     "label": "Base game"
+    },
+    {
+     "label": "Full Persona 3 Reload remake"
+    },
+    {
+     "label": "Nintendo Switch 2 version"
+    }
+   ]
+  },
+  {
+   "name": "Digital Deluxe Edition",
+   "contents": [
+    {
+     "label": "Base game"
+    },
+    {
+     "label": "34-page digital artbook app"
+    },
+    {
+     "label": "60-track digital soundtrack app"
+    }
+   ]
+  },
+  {
+   "name": "Digital Premium Edition",
+   "contents": [
+    {
+     "label": "Base game + digital artbook + soundtrack"
+    },
+    {
+     "label": "Persona 3 Reload DLC Pack"
+    },
+    {
+     "label": "Episode Aigis -The Answer- is not included"
+    }
+   ]
+  },
+  {
+   "name": "Physical Standard — Game-Key Card",
+   "contents": [
+    {
+     "label": "Physical Game-Key Card package"
+    },
+    {
+     "label": "Internet download of full game data required"
+    },
+    {
+     "label": "Nintendo Switch 2 only"
+    }
+   ]
+  }
+ ],
+ "gameplayPillars": [
+  {
+   "title": "Daily life and relationships",
+   "description": "The calendar system makes time a resource: school, Social Links, activities, social-stat growth, and evening options compete for limited days and time slots.",
+   "imageUrl": "https://asia.sega.com/p3r/en/switch2/resources/img/top/system-pict-darkhour-2_b0a5548030aa4e22b28c.webp"
+  },
+  {
+   "title": "Tartarus and turn-based combat",
+   "description": "Battles emphasize elemental weaknesses, One More turns, Shift actions, Theurgy attacks, party roles, and Persona skills while Tartarus provides the main dungeon progression.",
+   "imageUrl": "https://asia.sega.com/p3r/en/switch2/resources/img/top/system-pict-darkhour-3_dfdead8597f574e1b1b5.webp"
+  },
+  {
+   "title": "Persona fusion and growth",
+   "description": "The protagonist can hold multiple Personas, fuse them into new forms, inherit skills, register them in the Compendium, and build specialized combat setups.",
+   "imageUrl": "https://asia.sega.com/p3r/en/switch2/resources/img/top/dlc-persona-pict1_37a9fd489179bffd0fff.webp"
+  }
+ ],
+ "worldSummary": "The game takes place primarily around Tatsumi Port Island, Gekkoukan High School, Iwatodai, and the supernatural Dark Hour. Tartarus is a towering labyrinth that appears during the hidden hour after midnight.",
+ "storyChapters": [
+  {
+   "title": "Arrival in Port Island",
+   "body": "A transfer student arrives in Port Island, experiences the Dark Hour, awakens Persona power, and becomes involved with S.E.E.S.",
+   "imageUrl": "https://asia.sega.com/p3r/en/switch2/resources/img/top/dlc-episode-aegis-pict1_970634d1fafc7051f966.webp"
+  },
+  {
+   "title": "The Dark Hour and S.E.E.S.",
+   "body": "S.E.E.S. explores Tartarus and confronts Shadows while trying to understand the Dark Hour and the unusual events affecting the city."
+  },
+  {
+   "title": "Confronting mortality and fate",
+   "body": "The story increasingly focuses on mortality, grief, bonds, personal responsibility, and the consequences of the group’s discoveries."
+  }
+ ],
+ "galleryImages": [
+  {
+   "url": "https://asia.sega.com/p3r/en/switch2/resources/img/top/dlc-episode-aegis-pict2_6926e555e02e46cfb979.webp",
+   "alt": "Episode Aigis official image"
+  },
+  {
+   "url": "https://asia.sega.com/p3r/en/switch2/resources/img/top/dlc-costume-pict1_7e7a838eec50eb4f9dd0.webp",
+   "alt": "Yasogami High costume set image"
+  },
+  {
+   "url": "https://asia.sega.com/p3r/en/switch2/resources/img/top/dlc-costume-pict4_8f59752e8a910c59d87f.webp",
+   "alt": "Phantom Thieves costume set image"
+  },
+  {
+   "url": "https://asia.sega.com/p3r/en/switch2/resources/img/top/dlc-costume-pict7_2645ef0a8b4da60cbf9f.webp",
+   "alt": "Shujin Academy costume set image"
+  },
+  {
+   "url": "https://gamesdb-images.launchbox.gg/r2_dcb56315-0960-4ac6-80a3-5806815ae25a.jpg",
+   "alt": "Persona 3 Reload promotional artwork"
+  }
+ ],
+ "features": [
+  "Daily calendar and Social Link progression",
+  "Turn-based combat with Shift and Theurgy systems",
+  "Persona fusion and customization",
+  "Modernized visual presentation and UI",
+  "Additional scenes and voiceover",
+  "Large DLC catalog including Episode Aigis"
+ ],
+ "perfResolutionDocked": "1080p output on Nintendo Switch 2",
+ "perfResolutionHandheld": "1080p output on Nintendo Switch 2",
+ "perfFps": "60 TV Performance Mode / 30 handheld",
+ "perfNotes": "Nintendo Switch 2 launch version targeted 30 fps. Patch 1.03 added a 60 fps Performance Mode for docked/TV play and corrected inconsistent frame pacing. Digital Foundry reports only small dips from 60 in that mode; handheld remains 30 fps.",
+ "devicePerformance": [
+  {
+   "device": "Nintendo Switch 2",
+   "deviceSlug": "nintendo-switch-2",
+   "deviceModel": "Nintendo Switch 2",
+   "hardwareId": "prd_acf4c89908764c62",
+   "informationStatus": "measured",
+   "handheld": {
+    "supported": true,
+    "resolution": "1080p output",
+    "outputResolution": "1080p",
+    "fps": "30",
+    "fpsMax": "30",
+    "mode": "Handheld",
+    "notes": "Handheld remains at 30 fps after patch 1.03; frame pacing was improved by the patch."
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "1080p output",
+    "outputResolution": "1080p",
+    "fps": "60",
+    "fpsMax": "60",
+    "mode": "Performance Mode (patch 1.03)",
+    "notes": "Patch 1.03 adds a 60 fps Performance Mode in docked/TV mode with small dips from target in measured testing."
+   },
+   "gameVersion": "1.03",
+   "sourceName": "Digital Foundry",
+   "sourceUrl": "https://www.youtube.com/watch?v=RbakVeQAajE",
+   "verificationStatus": "verified-measured",
+   "performanceNotes": "Performance data reflects patch 1.03 testing. Input latency remains a noted issue in Digital Foundry’s analysis."
+  }
+ ],
+ "downloadSizeGb": 21.7,
+ "requiredSpaceGb": 30,
+ "microSdRecommended": false,
+ "storageNotes": "Nintendo Europe lists a 21.7 GB download. Physical copies are Game-Key Cards and require downloading the game data; package notices can require additional free space beyond the listed download size.",
+ "languagesAudio": [
+  "English",
+  "Japanese"
+ ],
+ "languagesText": [
+  "Japanese",
+  "English",
+  "Spanish",
+  "French",
+  "German",
+  "Italian",
+  "Portuguese",
+  "Russian",
+  "Korean",
+  "Chinese (Simplified)",
+  "Chinese (Traditional)"
+ ],
+ "arabicSupport": false,
+ "mpLocalPlayers": false,
+ "mpOnlinePlayers": false,
+ "mpCoop": false,
+ "mpCompetitive": false,
+ "mpSplitScreen": false,
+ "mpLocalWireless": false,
+ "dlc": [
+  {
+   "name": "Persona 3 Reload Episode Aigis -The Answer- Pack"
+  },
+  {
+   "name": "Persona 3 Reload - Premium DLC Pack"
+  },
+  {
+   "name": "Persona 3 Reload - DLC Pack"
+  },
+  {
+   "name": "Persona 5 Royal Phantom Thieves Costume Set",
+   "description": "Allows S.E.E.S. members to use Phantom Thieves costumes while exploring and battling in Tartarus."
+  },
+  {
+   "name": "Persona 5 Royal Shujin Academy Costume Set",
+   "description": "Allows S.E.E.S. members to use Shujin Academy costumes in Tartarus."
+  },
+  {
+   "name": "Persona 5 Royal Persona Set 1",
+   "description": "Adds summonable/fusable Personas associated with Persona 5 Royal characters."
+  },
+  {
+   "name": "Persona 5 Royal Persona Set 2",
+   "description": "Adds a second set of Persona 5 Royal Personas."
+  },
+  {
+   "name": "Persona 5 Royal BGM Set",
+   "description": "Adds Persona 5 / Persona 5 Royal battle BGM selections."
+  },
+  {
+   "name": "Persona 4 Golden Yasogami High Costume Set",
+   "description": "Adds Yasogami High costumes from Persona 4 Golden."
+  },
+  {
+   "name": "Persona 4 Golden Persona Set",
+   "description": "Adds Persona 4 Golden Personas including Izanagi, Magatsu-Izanagi, and Kaguya."
+  },
+  {
+   "name": "Persona 5 Royal EX BGM Set",
+   "description": "Adds additional Persona 5 Royal BGM selections for Episode Aigis content."
+  },
+  {
+   "name": "Persona 4 Golden EX BGM Set",
+   "description": "Adds additional Persona 4 Golden BGM selections for Episode Aigis content."
+  },
+  {
+   "name": "Velvet Costume & BGM Set",
+   "description": "Adds Velvet Room-themed costumes and music."
+  }
+ ],
+ "completionMain": 65,
+ "completionExtras": 85.5,
+ "completionAll": 99.5,
+ "verdictSummary": "A critically acclaimed modern remake with strong turn-based combat, relationship systems, presentation, and soundtrack. The Switch 2 port improved materially after patch 1.03 due to the new docked 60 fps mode and corrected frame pacing.",
+ "reviews": [
+  {
+   "source": "Metacritic — Switch 2",
+   "score": "80/100",
+   "url": "https://www.metacritic.com/game/persona-3-reload/"
+  },
+  {
+   "source": "OpenCritic aggregate",
+   "score": "87/100",
+   "url": "https://www.dekudeals.com/items/persona-3-reload"
+  },
+  {
+   "source": "Metacritic user score",
+   "score": "8.6/10",
+   "url": "https://www.metacritic.com/game/persona-3-reload/"
+  }
+ ],
+ "timeline": [
+  {
+   "date": "2024-02-02",
+   "title": "Original multi-platform Persona 3 Reload release",
+   "body": "Persona 3 Reload first launched on other modern platforms in February 2024."
+  },
+  {
+   "date": "2025-10-23",
+   "title": "Nintendo Switch 2 release",
+   "body": "Nintendo Switch 2 version launched worldwide."
+  },
+  {
+   "date": "2025-12-30",
+   "title": "Patch 1.03 performance analysis published",
+   "body": "Digital Foundry tested patch 1.03, confirming the new 60 fps docked Performance Mode and frame-pacing fix."
+  }
+ ],
+ "seriesName": "Persona",
+ "seriesEntries": [
+  "Persona 3 Portable",
+  "Persona 4 Golden",
+  "Persona 5 Royal"
+ ],
+ "studioName": "ATLUS / P-Studio",
+ "studioUrl": "https://www.atlus.com/",
+ "studioLocation": "Tokyo, Japan",
+ "studioAbout": "ATLUS / P-Studio develops the modern Persona series, combining turn-based RPG systems with calendar-driven social simulation and highly stylized presentation.",
+ "setupNeeds": [
+  "Nintendo Switch 2 system",
+  "Internet connection required to download the full game from a Game-Key Card",
+  "At least roughly 30 GB free space recommended for the physical Game-Key Card download",
+  "Nintendo Account / internet connectivity required for eShop downloads and updates"
+ ],
+ "sources": [
+  {
+   "name": "ATLUS / SEGA official Switch 2 site",
+   "url": "https://asia.sega.com/p3r/en/switch2/"
+  },
+  {
+   "name": "Nintendo official UK — game specifications",
+   "url": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-2-games/Persona-3-Reload-2882297.html"
+  },
+  {
+   "name": "Nintendo official — DLC list",
+   "url": "https://www.nintendo.com/us/store/products/persona-3-reload-switch-2/dlc/"
+  }
+ ],
+ "boxContentsList": "[Circular]",
+ "image": "/api/files/products/prd_efd67851b0b44837/cover-91196c927f2947f2.jpg",
+ "banner": "https://asia.sega.com/p3r/en/switch2/resources/img/top/system-pict-daytime-1_f9f909f9f6d081690a11.webp",
+ "schemaId": "",
+ "badgeEn": "وفر 40%",
+ "badgeKu": "وفر 40%",
+ "featuresEn": [
+  "Daily calendar and Social Link progression",
+  "Turn-based combat with Shift and Theurgy systems",
+  "Persona fusion and customization",
+  "Modernized visual presentation and UI",
+  "Additional scenes and voiceover",
+  "Large DLC catalog including Episode Aigis"
+ ],
+ "featuresKu": [
+  "Daily calendar and Social Link progression",
+  "Turn-based combat with Shift and Theurgy systems",
+  "Persona fusion and customization",
+  "Modernized visual presentation and UI",
+  "Additional scenes and voiceover",
+  "Large DLC catalog including Episode Aigis"
+ ],
+ "sales": 0,
+ "images": [],
+ "modes": [],
+ "game_id": "gme_9088b17d20444ae4",
+ "updatedAt": "2026-08-28T22:06:51.221Z",
+ "boxFrontUrl": "https://images.launchbox-app.com//89198ab6-ec18-4982-bceb-e3663fa7e3f3.jpg",
+ "createdAt": "2026-08-31T22:39:01.870Z",
+ "created_at": "2026-08-31T22:39:01.870Z",
+ "updated_at": "2026-08-28T22:06:51.221Z",
+ "variants": "[Circular]"
+}
