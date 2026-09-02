@@ -1,0 +1,522 @@
+{
+ "title": "Hyrule Warriors: Definitive Edition",
+ "titleEn": "Hyrule Warriors: Definitive Edition",
+ "titleKu": "",
+ "slug": "hyrule-warriors-definitive-edition-switch",
+ "description": "Hyrule Warriors: Definitive Edition packages together the musou Zelda crossover content from previous versions into one expansive Nintendo Switch release. Players choose from a giant roster of characters drawn from across the Zelda franchise and battle through large maps, mission objectives, and mode variations. It is a content-rich action spin-off built for fans who want scale, replay value, and a celebratory crossover structure.",
+ "descriptionEn": "Hyrule Warriors: Definitive Edition packages together the musou Zelda crossover content from previous versions into one expansive Nintendo Switch release. Players choose from a giant roster of characters drawn from across the Zelda franchise and battle through large maps, mission objectives, and mode variations. It is a content-rich action spin-off built for fans who want scale, replay value, and a celebratory crossover structure.",
+ "descriptionKu": "",
+ "cartridgeImage": "/api/files/products/prd_6e169cd5731f4e2b/front-box-04f4eb2d75b2a8c2.webp",
+ "nintendoCardImage": "/api/files/products/prd_6e169cd5731f4e2b/square-card-09f69b0957252a18.webp",
+ "coverHiResImage": "/api/files/products/prd_6e169cd5731f4e2b/3d-wrap-e3058b64229e8277.webp",
+ "coverImage": "/api/files/products/prd_6e169cd5731f4e2b/cover-9aae86034d5f7b21.webp",
+ "bannerImages": [
+  ""
+ ],
+ "gallery": [],
+ "youtubeTrailer": "",
+ "releaseDate": "2018-05-18",
+ "ageRating": "ESRB T / PEGI 12",
+ "metacriticRating": 76,
+ "genres": [
+  "Action",
+  "Adventure",
+  "Musou"
+ ],
+ "platform": "switch1",
+ "size": 13.8,
+ "numberOfPlayers": "Single system (1-2)",
+ "supportedLanguages": "Japanese / British English / French / German / Italian / Spanish / Korean / Dutch / Simplified Chinese / Latin American Spanish / Canadian French / Traditional Chinese / American English",
+ "hardwareModel": "",
+ "colorEdition": "",
+ "storageCapacity": "",
+ "screenSpecs": "",
+ "batteryLife": "",
+ "boxContents": [],
+ "boxContentsText": "",
+ "warrantyCondition": "",
+ "connectivity": "",
+ "characterName": "Link",
+ "amiiboSeries": "The Legend of Zelda",
+ "figureType": "figure",
+ "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+ "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+ "boxCondition": "mib",
+ "releaseWave": "Wave 2 (Restock)",
+ "rarity": "standard",
+ "accessoryType": "حقيبة حماية وتنقل Carry Case",
+ "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+ "brand": "Nintendo Official",
+ "material": "Hard EVA Shockproof Shell",
+ "availableColors": "Black, Neon Red/Blue, White",
+ "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+ "cardValue": "$20 eShop Balance",
+ "region": "Global",
+ "cardType": "eshop",
+ "deliveryMethod": "instant_code",
+ "redemptionGuide": "",
+ "redemptionSteps": [],
+ "validity": "no_expiry",
+ "usedType": "cartridge",
+ "conditionGrade": "like_new",
+ "packaging": "cib",
+ "guaranteeStatus": "tested_30days",
+ "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+ "accountType": "primary",
+ "badge": "وفر 40%",
+ "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+ "price": 8500,
+ "cost": 1500,
+ "stock": 999999,
+ "isInfiniteStock": true,
+ "isHidden": true,
+ "displayOrder": 0,
+ "category": "nintendo-switch-games",
+ "categoryId": "nintendo-switch-games",
+ "categoryEn": "",
+ "categoryKu": "",
+ "options": [
+  {
+   "id": "offline_account",
+   "name": "مشترك",
+   "description": "مشترك",
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_account",
+   "name": "خاص بك",
+   "description": "خاص بك",
+   "stock": 9999,
+   "isInfiniteStock": true
+  }
+ ],
+ "types": [
+  {
+   "id": "offline_base",
+   "name": "مشترك — اللعبة الأساسية",
+   "optionId": "offline_account",
+   "price": 8500,
+   "cost": 1500,
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_base",
+   "name": "خاص بك — اللعبة الأساسية",
+   "optionId": "online_account",
+   "price": 21000,
+   "cost": 16500,
+   "stock": 9999,
+   "isInfiniteStock": true
+  }
+ ],
+ "editions": [],
+ "dlcs": [],
+ "isActive": true,
+ "status": "Active",
+ "kind": "account",
+ "trade_value_iqd": 10000,
+ "store_offer_bonus_iqd": 2000,
+ "trade_enabled": true,
+ "trade_value_locked": false,
+ "id": "prd_6e169cd5731f4e2b",
+ "schema_version": 24,
+ "titleAr": "هايرول ووريرز: النسخة النهائية",
+ "compatibility": [
+  "Nintendo Switch",
+  "Nintendo Switch 2 compatibility: Supported – game behavior is consistent with Nintendo Switch"
+ ],
+ "edition": "Definitive Edition",
+ "developer": "Koei Tecmo Games",
+ "publisher": "Nintendo",
+ "seriesName": "The Legend of Zelda / Hyrule Warriors",
+ "metacriticUrl": "https://www.metacritic.com/game/hyrule-warriors-definitive-edition/",
+ "opencriticRating": 76,
+ "userScore": 8,
+ "price_usd": 59.99,
+ "officialUrl": "https://www.nintendo.com/us/store/products/hyrule-warriors-definitive-edition-switch/",
+ "eshopUrl": "https://www.nintendo.com/us/store/products/hyrule-warriors-definitive-edition-switch/",
+ "gameIsOffline": true,
+ "gameIsOnline": false,
+ "gameLanguageLocked": false,
+ "description_short": "The complete Hyrule Warriors package on Switch, combining musou battlefield action with a huge roster and extensive content.",
+ "description_ar": "نسخة شاملة وغنية بالمحتوى من Hyrule Warriors على سويتش، تجمع شخصيات كثيرة من سلسلة زيلدا ومعارك موسو ضخمة وكمية كبيرة من المراحل والأنماط والمحتوى.",
+ "languagesText": [
+  "Japanese / English",
+  "French / German / Italian / Spanish / Dutch",
+  "Korean / Simplified Chinese / Traditional Chinese"
+ ],
+ "languagesAudio": [
+  "Music / sound effects",
+  "Character vocalizations where applicable",
+  "No full language-selectable dub beyond the shipped release build information"
+ ],
+ "tvMode": true,
+ "tabletopMode": true,
+ "handheldMode": true,
+ "nintendoPlayModes": "TV / Tabletop / Handheld",
+ "nintendoOnlineRequired": false,
+ "nintendoCloudSaves": true,
+ "nintendoGameKeyCard": false,
+ "nintendoPhysicalNeedsDownload": false,
+ "switch2Enhanced": false,
+ "switch2Exclusive": false,
+ "nintendoNotes": "Nintendo describes this as the complete Hyrule Warriors experience on Switch, making it the most content-rich version of the original musou crossover.",
+ "editionsList": [
+  {
+   "name": "Offline Regular",
+   "contents": [
+    {
+     "label": "Base game"
+    },
+    {
+     "label": "Offline account package"
+    },
+    {
+     "label": "Complete Hyrule Warriors package"
+    }
+   ]
+  },
+  {
+   "name": "Online Standard",
+   "contents": [
+    {
+     "label": "Base game"
+    },
+    {
+     "label": "Online account package"
+    },
+    {
+     "label": "Complete Hyrule Warriors package"
+    }
+   ]
+  }
+ ],
+ "gameplayPillars": [
+  {
+   "title": "Complete musou crossover package",
+   "description": "This release combines the broader Hyrule Warriors content set into a single large Nintendo Switch edition."
+  },
+  {
+   "title": "Huge playable roster",
+   "description": "A wide range of Zelda-series characters keeps the combat styles and progression variety high."
+  },
+  {
+   "title": "Objective-driven battlefield combat",
+   "description": "Players capture keeps, defeat officers, escort allies, and manage map flow across large battle stages."
+  },
+  {
+   "title": "Many side modes and replay hooks",
+   "description": "Adventure maps, unlockables, materials, and character growth create a large amount of optional content."
+  },
+  {
+   "title": "Fan-service celebration of Zelda history",
+   "description": "The crossover approach turns the game into a broad celebration of settings, costumes, and characters from across the series."
+  }
+ ],
+ "worldSummary": "Definitive Edition is less about one focused Zelda story and more about providing a giant musou playground packed with franchise references, character variety, and long-term completion goals.",
+ "storyChapters": [
+  {
+   "title": "Unite a crossover cast",
+   "body": "Characters from many Zelda entries converge in a musou-style conflict that pulls together a celebratory roster."
+  },
+  {
+   "title": "Battle through story chapters",
+   "body": "The main story provides structure, but the larger appeal quickly expands into side maps, unlockables, and mastery."
+  },
+  {
+   "title": "Grow your favorite warriors",
+   "body": "Leveling, weapons, badges, and materials give players reasons to specialize and keep improving characters."
+  },
+  {
+   "title": "Explore Adventure Mode depth",
+   "body": "Adventure maps extend replay value tremendously and often become the main long-term progression path."
+  },
+  {
+   "title": "Build a completionist endgame",
+   "body": "The content volume makes Definitive Edition one of the most replay-heavy Zelda spin-offs available."
+  }
+ ],
+ "features": [
+  "Definitive edition bundles enormous content",
+  "Large roster of Zelda-series warriors",
+  "Good local co-op action on a single system",
+  "High replay value for completionists",
+  "Best version of the original Hyrule Warriors concept on Switch"
+ ],
+ "perfResolutionDocked": "1080p",
+ "perfResolutionHandheld": "720p",
+ "perfFps": "60",
+ "perfHdr": false,
+ "playTimeMain": 18,
+ "completionMain": 60,
+ "completionExtras": 120,
+ "faq": [
+  {
+   "q": "Is this the complete Hyrule Warriors package?",
+   "a": "Yes. Definitive Edition is designed as the most complete Nintendo Switch version of the original Hyrule Warriors content set."
+  },
+  {
+   "q": "Does it support multiplayer?",
+   "a": "Yes. It supports local cooperative play for up to two players on a single system."
+  },
+  {
+   "q": "How does it differ from Age of Calamity?",
+   "a": "Definitive Edition is a broader crossover celebration of Zelda history, while Age of Calamity focuses specifically on the Breath of the Wild setting and characters."
+  },
+  {
+   "q": "Is the game story-focused?",
+   "a": "It has a story mode, but much of its appeal comes from Adventure Mode, unlockables, character growth, and replay-heavy side content."
+  },
+  {
+   "q": "Who is this game best for?",
+   "a": "It is ideal for players who enjoy musou action, large rosters, and long-term completion goals."
+  }
+ ],
+ "verdictScore": 7.9,
+ "verdictPros": [
+  "Huge amount of content",
+  "Great roster variety",
+  "Strong value for musou fans",
+  "Local co-op is a plus",
+  "Definitive Edition is the right version to own"
+ ],
+ "verdictCons": [
+  "Musou combat loop can feel repetitive",
+  "Story is less focused than mainline Zelda adventures",
+  "Visuals reflect its earlier cross-platform origins",
+  "Completionism can become very grind-heavy",
+  "Not all players enjoy the large amount of side-map repetition"
+ ],
+ "reviews": [
+  {
+   "source": "Metacritic",
+   "score": "76",
+   "url": "https://www.metacritic.com/game/hyrule-warriors-definitive-edition/"
+  },
+  {
+   "source": "OpenCritic",
+   "score": "76",
+   "url": "https://opencritic.com/game/6114/hyrule-warriors-definitive-edition"
+  },
+  {
+   "source": "IGN",
+   "score": "8/10",
+   "url": "https://www.ign.com/games/hyrule-warriors-definitive-edition"
+  }
+ ],
+ "timeline": [
+  {
+   "date": "2018-05-18",
+   "title": "Released on Nintendo Switch"
+  },
+  {
+   "date": "2025-06-05",
+   "title": "Backward compatible on Nintendo Switch 2 ecosystem"
+  }
+ ],
+ "patchNotes": [
+  {
+   "version": "Launch version",
+   "date": "2018-05-18"
+  },
+  {
+   "version": "Current retail build",
+   "date": "2026-08-27"
+  }
+ ],
+ "studioName": "Nintendo",
+ "studioUrl": "https://www.nintendo.com/us/store/products/hyrule-warriors-definitive-edition-switch/",
+ "studioLocation": "Japan",
+ "sources": [
+  {
+   "name": "Nintendo official product page",
+   "url": "https://www.nintendo.com/us/store/products/hyrule-warriors-definitive-edition-switch/"
+  },
+  {
+   "name": "Metacritic",
+   "url": "https://www.metacritic.com/game/hyrule-warriors-definitive-edition/"
+  },
+  {
+   "name": "OpenCritic",
+   "url": "https://opencritic.com/game/6114/hyrule-warriors-definitive-edition"
+  }
+ ],
+ "downloadSizeGb": 13.8,
+ "requiredSpaceGb": 13.8,
+ "microSdRecommended": true,
+ "storageNotes": "The recorded storage size for Hyrule Warriors: Definitive Edition is approximately 13.8 GB.",
+ "mpLocalPlayers": true,
+ "mpOnlinePlayers": false,
+ "mpCoop": true,
+ "mpCompetitive": false,
+ "mpLocalWireless": false,
+ "mpSplitScreen": true,
+ "seriesEntries": [
+  "Hyrule Warriors: Age of Calamity",
+  "Hyrule Warriors: Age of Imprisonment",
+  "The Legend of Zelda: Breath of the Wild"
+ ],
+ "dlc": [
+  {
+   "name": "No separate DLC package needed in this entry",
+   "description": "Definitive Edition is already positioned as the complete packaged release, so this extraction keeps only base-game variants."
+  }
+ ],
+ "devicePerformance": [
+  {
+   "device": "Nintendo Switch",
+   "deviceSlug": "nintendo-switch",
+   "deviceModel": "Nintendo Switch",
+   "hardwareId": "nintendo-switch",
+   "informationStatus": "Available / verified",
+   "handheld": {
+    "supported": true,
+    "resolution": "720p",
+    "resolutionDynamic": false,
+    "renderingResolution": "1280x720",
+    "outputResolution": "1280x720",
+    "fps": "60",
+    "fpsMin": "30",
+    "fpsMax": "60",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "Handheld",
+    "notes": "Definitive Edition targets a high-refresh musou presentation with a 720p handheld / 1080p TV profile, though some intense scenes can reduce effective smoothness."
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "1080p",
+    "resolutionDynamic": false,
+    "renderingResolution": "1920x1080",
+    "outputResolution": "1920x1080",
+    "fps": "60",
+    "fpsMin": "30",
+    "fpsMax": "60",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "TV / Docked",
+    "notes": "Definitive Edition targets a high-refresh musou presentation with a 720p handheld / 1080p TV profile, though some intense scenes can reduce effective smoothness."
+   },
+   "modes": [
+    {
+     "name": "Primary documented mode",
+     "handheldResolution": "720p",
+     "handheldFps": "60",
+     "tvResolution": "1080p",
+     "tvFps": "60",
+     "hdr": false,
+     "vrr": false,
+     "notes": "Definitive Edition targets a high-refresh musou presentation with a 720p handheld / 1080p TV profile, though some intense scenes can reduce effective smoothness."
+    }
+   ],
+   "upscaling": "Game / system-specific scaling where applicable",
+   "rayTracing": false,
+   "rayTracingMode": "Not Supported",
+   "loadingTime": "Scene-dependent; no single universal loading time",
+   "loadingNotes": "Loading time varies by scene, save progress, storage state, and whether the software is running in its standard build or an enhanced edition.",
+   "gameVersion": "Current retail build",
+   "patchVersion": "Current available update",
+   "testedDate": "2026-08-27",
+   "sourceName": "Nintendo official product page",
+   "sourceUrl": "https://www.nintendo.com/us/store/products/hyrule-warriors-definitive-edition-switch/",
+   "performanceNotes": "Definitive Edition targets a high-refresh musou presentation with a 720p handheld / 1080p TV profile, though some intense scenes can reduce effective smoothness."
+  },
+  {
+   "device": "Nintendo Switch 2",
+   "deviceSlug": "nintendo-switch-2",
+   "deviceModel": "Nintendo Switch 2",
+   "hardwareId": "nintendo-switch-2",
+   "informationStatus": "Available / verified",
+   "handheld": {
+    "supported": true,
+    "resolution": "720p",
+    "resolutionDynamic": false,
+    "renderingResolution": "1280x720",
+    "outputResolution": "1280x720",
+    "fps": "60",
+    "fpsMin": "60",
+    "fpsMax": "60",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "Handheld",
+    "notes": "Nintendo lists the title as supported on Nintendo Switch 2. This extraction records a compatibility profile consistent with the original release."
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "1080p",
+    "resolutionDynamic": false,
+    "renderingResolution": "1920x1080",
+    "outputResolution": "1920x1080",
+    "fps": "60",
+    "fpsMin": "60",
+    "fpsMax": "60",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "TV / Docked",
+    "notes": "Nintendo lists the title as supported on Nintendo Switch 2. This extraction records a compatibility profile consistent with the original release."
+   },
+   "modes": [
+    {
+     "name": "Primary documented mode",
+     "handheldResolution": "720p",
+     "handheldFps": "60",
+     "tvResolution": "1080p",
+     "tvFps": "60",
+     "hdr": false,
+     "vrr": false,
+     "notes": "Nintendo lists the title as supported on Nintendo Switch 2. This extraction records a compatibility profile consistent with the original release."
+    }
+   ],
+   "upscaling": "Game / system-specific scaling where applicable",
+   "rayTracing": false,
+   "rayTracingMode": "Not Supported",
+   "loadingTime": "Scene-dependent; no single universal loading time",
+   "loadingNotes": "Loading time varies by scene, save progress, storage state, and whether the software is running in its standard build or an enhanced edition.",
+   "gameVersion": "Current retail build",
+   "patchVersion": "Current available update",
+   "testedDate": "2026-08-27",
+   "sourceName": "Nintendo official product page / compatibility context",
+   "sourceUrl": "https://www.nintendo.com/us/store/products/hyrule-warriors-definitive-edition-switch/",
+   "performanceNotes": "Nintendo lists the title as supported on Nintendo Switch 2. This extraction records a compatibility profile consistent with the original release."
+  }
+ ],
+ "boxContentsList": [],
+ "image": "",
+ "banner": "",
+ "schemaId": "",
+ "batchImport": true,
+ "galleryImages": [
+  {
+   "url": "/api/files/products/prd_6e169cd5731f4e2b/gallery-1-5f2bac3988986b00.webp",
+   "alt": "Hyrule Warriors: Definitive Edition screenshot 1"
+  },
+  {
+   "url": "/api/files/products/prd_6e169cd5731f4e2b/gallery-2-7b2723ab996f0701.webp",
+   "alt": "Hyrule Warriors: Definitive Edition screenshot 2"
+  },
+  {
+   "url": "/api/files/products/prd_6e169cd5731f4e2b/gallery-3-1a157d3c6a1a2578.webp",
+   "alt": "Hyrule Warriors: Definitive Edition screenshot 3"
+  },
+  {
+   "url": "/api/files/products/prd_6e169cd5731f4e2b/gallery-4-c59bbe12a3d361b8.webp",
+   "alt": "Hyrule Warriors: Definitive Edition screenshot 4"
+  },
+  {
+   "url": "/api/files/products/prd_6e169cd5731f4e2b/gallery-5-1fcf5a52af6b106a.webp",
+   "alt": "Hyrule Warriors: Definitive Edition screenshot 5"
+  },
+  {
+   "url": "/api/files/products/prd_6e169cd5731f4e2b/gallery-6-3ca7c6aedac7ac3f.webp",
+   "alt": "Hyrule Warriors: Definitive Edition screenshot 6"
+  }
+ ],
+ "createdAt": "2026-08-28T18:43:44.926Z",
+ "updatedAt": "2026-08-28T18:43:44.926Z"
+}

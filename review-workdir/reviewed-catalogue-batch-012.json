@@ -1,0 +1,51 @@
+{
+ "batch": "012",
+ "apply": false,
+ "games": [
+  {
+   "id": "prd_b9ca0595530f4d17",
+   "slug": "it-takes-two",
+   "baseHash": "d4f26a5feedf4b4505a51ebd3c8d9b2e90df2eeaf34bdbdfdfeb66c1a92ce129",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  },
+  {
+   "id": "prd_e035ee51b91d4187",
+   "slug": "just-dance-2026-edition",
+   "baseHash": "f0ad6a3f22437f2bebf741464b663d7010657931223224c7c98999d87c79c10d",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  },
+  {
+   "id": "prd_0744b9276a164853",
+   "slug": "kingdom-hearts-integrum-masterpiece-for-cloud",
+   "baseHash": "8ca68fa49270ae1e7b42ac5aef77d677d089bceb86bb1374a1d19e36e65ce743",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  },
+  {
+   "id": "prd_f2f7233a58f94d1c",
+   "slug": "kirby-air-riders",
+   "baseHash": "4752971711ed74c1b129691a23dd4e18ae3f0f12525cc393dfee2105257d6ff2",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  },
+  {
+   "id": "prd_950ae4b861754153",
+   "slug": "layers-of-fear-the-final-masterpiece-edition",
+   "baseHash": "dc91f814f5b694e1f750f1df46989169c68a4d522523e5514e2d9d6c5624dda3",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  }
+ ]
+}

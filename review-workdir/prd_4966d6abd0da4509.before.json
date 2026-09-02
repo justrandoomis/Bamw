@@ -1,0 +1,398 @@
+{
+ "title": "Hollow Knight",
+ "titleEn": "Hollow Knight",
+ "titleKu": "",
+ "slug": "hollow-knight-switch-1",
+ "description": "Hollow Knight is a hand-drawn 2D action-adventure set in the fallen kingdom of Hallownest. Explore interconnected caverns, ancient cities, fungal wastes, and hidden passages while learning new abilities, fighting strange creatures, and uncovering a mysterious history. The Switch release includes the major free content packs.",
+ "descriptionEn": "Hollow Knight is a hand-drawn 2D action-adventure set in the fallen kingdom of Hallownest. Explore interconnected caverns, ancient cities, fungal wastes, and hidden passages while learning new abilities, fighting strange creatures, and uncovering a mysterious history. The Switch release includes the major free content packs.",
+ "descriptionKu": "",
+ "cartridgeImage": "/api/files/products/prd_4966d6abd0da4509/front-box-2ca0ebacd0f50149.webp",
+ "nintendoCardImage": "/api/files/products/prd_4966d6abd0da4509/square-card-4c397052974cad43.webp",
+ "coverHiResImage": "/api/files/products/prd_4966d6abd0da4509/3d-wrap-38cd0611bcbfc67d.webp",
+ "coverImage": "/api/files/products/prd_4966d6abd0da4509/cover-f9678ffe0820568c.webp",
+ "bannerImages": [
+  ""
+ ],
+ "gallery": [],
+ "youtubeTrailer": "https://www.nintendo.com/store/products/hollow-knight-switch/",
+ "releaseDate": "2018-06-12",
+ "ageRating": "PEGI 7 / ESRB E10+",
+ "metacriticRating": 90,
+ "genres": [
+  "Action",
+  "Adventure",
+  "Metroidvania"
+ ],
+ "platform": "switch1",
+ "size": "5.2 GB",
+ "numberOfPlayers": "Single system (1)",
+ "supportedLanguages": "English, Japanese, French, Spanish, German",
+ "hardwareModel": "",
+ "colorEdition": "",
+ "storageCapacity": "",
+ "screenSpecs": "",
+ "batteryLife": "",
+ "boxContents": [],
+ "boxContentsText": "",
+ "warrantyCondition": "",
+ "connectivity": "",
+ "characterName": "Link",
+ "amiiboSeries": "The Legend of Zelda",
+ "figureType": "figure",
+ "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+ "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+ "boxCondition": "mib",
+ "releaseWave": "Wave 2 (Restock)",
+ "rarity": "standard",
+ "accessoryType": "حقيبة حماية وتنقل Carry Case",
+ "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+ "brand": "Nintendo Official",
+ "material": "Hard EVA Shockproof Shell",
+ "availableColors": "Black, Neon Red/Blue, White",
+ "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+ "cardValue": "$20 eShop Balance",
+ "region": "Global",
+ "cardType": "eshop",
+ "deliveryMethod": "instant_code",
+ "redemptionGuide": "",
+ "redemptionSteps": [],
+ "validity": "no_expiry",
+ "usedType": "cartridge",
+ "conditionGrade": "like_new",
+ "packaging": "cib",
+ "guaranteeStatus": "tested_30days",
+ "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+ "accountType": "primary",
+ "badge": "وفر 40%",
+ "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+ "price": 11500,
+ "cost": 1250,
+ "stock": 999999,
+ "isInfiniteStock": true,
+ "isHidden": true,
+ "displayOrder": 0,
+ "category": "nintendo-switch-games",
+ "categoryId": "nintendo-switch-games",
+ "categoryEn": "",
+ "categoryKu": "",
+ "options": [
+  {
+   "id": "offline_account",
+   "name": "مشترك",
+   "description": "مشترك",
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_account",
+   "name": "خاص بك",
+   "description": "خاص بك",
+   "stock": 9999,
+   "isInfiniteStock": true
+  }
+ ],
+ "types": [
+  {
+   "id": "offline_base",
+   "name": "مشترك — اللعبة الأساسية",
+   "optionId": "offline_account",
+   "price": 11500,
+   "cost": 1250,
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_base",
+   "name": "خاص بك — اللعبة الأساسية",
+   "optionId": "online_account",
+   "price": 10500,
+   "cost": 7750,
+   "stock": 9999,
+   "isInfiniteStock": true
+  }
+ ],
+ "editions": [],
+ "dlcs": [],
+ "isActive": true,
+ "status": "Active",
+ "kind": "account",
+ "trade_value_iqd": 6500,
+ "store_offer_bonus_iqd": 1250,
+ "trade_enabled": true,
+ "trade_value_locked": false,
+ "id": "prd_4966d6abd0da4509",
+ "schema_version": 24,
+ "titleAr": "هولو نايت",
+ "compatibility": [
+  "Nintendo Switch",
+  "Nintendo Switch 2 compatibility: supported or separately represented where applicable"
+ ],
+ "edition": "Standard",
+ "developer": "Team Cherry",
+ "publisher": "Team Cherry",
+ "seriesName": "Hollow Knight",
+ "opencriticRating": 90,
+ "userScore": 9,
+ "switch2UpgradePrice": 0,
+ "officialUrl": "https://www.nintendo.com/store/products/hollow-knight-switch/",
+ "eshopUrl": "https://www.nintendo.com/store/products/hollow-knight-switch/",
+ "gameIsOffline": true,
+ "gameIsOnline": false,
+ "gameLanguageLocked": false,
+ "description_short": "Explore the ruined insect kingdom of Hallownest in a challenging, atmospheric 2D action adventure.",
+ "description_ar": "مغامرة أكشن ثنائية الأبعاد داخل مملكة Hallownest المدمرة، تعتمد على الاستكشاف والقتال والزعماء وفتح قدرات جديدة في عالم مترابط وغامض.",
+ "galleryImages": [
+  {
+   "url": "/api/files/products/prd_4966d6abd0da4509/gallery-1-11ebdaf13b889f7b.webp",
+   "alt": "Hollow Knight screenshot 1"
+  },
+  {
+   "url": "/api/files/products/prd_4966d6abd0da4509/gallery-2-8193266ef36cdea9.webp",
+   "alt": "Hollow Knight screenshot 2"
+  },
+  {
+   "url": "/api/files/products/prd_4966d6abd0da4509/gallery-3-218cdff14802061e.webp",
+   "alt": "Hollow Knight screenshot 3"
+  },
+  {
+   "url": "/api/files/products/prd_4966d6abd0da4509/gallery-4-071dd09c79178d02.webp",
+   "alt": "Hollow Knight screenshot 4"
+  },
+  {
+   "url": "/api/files/products/prd_4966d6abd0da4509/gallery-5-9924fb863e0af765.webp",
+   "alt": "Hollow Knight screenshot 5"
+  },
+  {
+   "url": "/api/files/products/prd_4966d6abd0da4509/gallery-6-1e75d708d496f10d.webp",
+   "alt": "Hollow Knight screenshot 6"
+  }
+ ],
+ "tvMode": true,
+ "tabletopMode": true,
+ "handheldMode": true,
+ "nintendoPlayModes": "TV mode / Tabletop mode / Handheld mode",
+ "nintendoCloudSaves": true,
+ "nintendoGameKeyCard": false,
+ "switch2Enhanced": false,
+ "switch2Exclusive": false,
+ "nintendoNotes": "Platform and package information verified against the official product/source page for Hollow Knight.",
+ "tagline": "Forge your own path through a beautiful ruined kingdom.",
+ "fitFor": [
+  "Fans of the listed genres",
+  "Players who value the game’s core mechanics",
+  "Players looking for this platform version",
+  "Collectors or storefront users comparing platform editions"
+ ],
+ "notFitFor": [
+  "Players who dislike the listed genre",
+  "Players seeking a different platform entry",
+  "Players who require unsupported multiplayer modes",
+  "Players expecting a different edition package"
+ ],
+ "playTimeMain": 27,
+ "playTimeFull": 65,
+ "gameplayPillars": [
+  {
+   "title": "Interconnected exploration",
+   "description": "Hallownest is a large, layered world built around backtracking and newly unlocked abilities."
+  },
+  {
+   "title": "Precise combat",
+   "description": "Simple controls hide a demanding combat system built around spacing, timing, and charm builds."
+  },
+  {
+   "title": "Boss mastery",
+   "description": "A large boss roster rewards pattern recognition and patience."
+  },
+  {
+   "title": "Charm customization",
+   "description": "Charms let players reshape combat, healing, mobility, and exploration strategies."
+  },
+  {
+   "title": "Free content packs",
+   "description": "The Switch version includes major free content additions with extra bosses and challenges."
+  }
+ ],
+ "worldSummary": "Hollow Knight is a hand-drawn 2D action-adventure set in the fallen kingdom of Hallownest. Explore interconnected caverns, ancient cities, fungal wastes, and hidden passages while learning new abilities, fighting strange creatures, and uncovering a mysterious history. The Switch release includes the major free content packs.",
+ "storyChapters": [
+  {
+   "title": "Descend into Hallownest",
+   "body": "A silent knight enters the fallen underground kingdom."
+  },
+  {
+   "title": "Learn the kingdom’s history",
+   "body": "Ruins, characters, and environmental details slowly reveal what happened."
+  },
+  {
+   "title": "Grow stronger",
+   "body": "Movement abilities, charms, and upgrades open new regions."
+  },
+  {
+   "title": "Face corrupted guardians",
+   "body": "Bosses and hostile creatures block the path toward the kingdom’s deepest truths."
+  },
+  {
+   "title": "Choose how far to go",
+   "body": "Multiple endings and optional challenges reward deeper exploration."
+  }
+ ],
+ "features": [
+  "Large interconnected world",
+  "Excellent boss design",
+  "Charm build system",
+  "Atmospheric hand-drawn art",
+  "Multiple free content packs"
+ ],
+ "perfResolutionHandheld": "720p",
+ "perfResolutionDocked": "1080p",
+ "perfFps": "60",
+ "perfHdr": false,
+ "perfNotes": "Original Switch profile recorded at 60 fps with Switch 2 compatibility.",
+ "devicePerformance": [
+  {
+   "device": "Nintendo Switch",
+   "deviceSlug": "nintendo-switch",
+   "deviceModel": "Nintendo Switch",
+   "hardwareId": "nintendo-switch",
+   "informationStatus": "Available",
+   "handheld": {
+    "supported": true,
+    "resolution": "720p",
+    "resolutionDynamic": false,
+    "renderingResolution": "720p",
+    "outputResolution": "720p",
+    "fps": "60",
+    "fpsMin": "60",
+    "fpsMax": "60",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "Handheld",
+    "notes": "Original Switch profile recorded at 60 fps with Switch 2 compatibility."
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "1080p",
+    "resolutionDynamic": false,
+    "renderingResolution": "1080p",
+    "outputResolution": "1080p",
+    "fps": "60",
+    "fpsMin": "60",
+    "fpsMax": "60",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "TV / Docked",
+    "notes": "Original Switch profile recorded at 60 fps with Switch 2 compatibility."
+   },
+   "modes": [
+    {
+     "name": "Default",
+     "handheldResolution": "720p",
+     "handheldFps": "60",
+     "tvResolution": "1080p",
+     "tvFps": "60",
+     "hdr": false,
+     "vrr": false,
+     "notes": "Original Switch profile recorded at 60 fps with Switch 2 compatibility."
+    }
+   ],
+   "performanceNotes": "Original Switch profile recorded at 60 fps with Switch 2 compatibility."
+  },
+  {
+   "device": "Nintendo Switch 2",
+   "deviceSlug": "nintendo-switch-2",
+   "deviceModel": "Nintendo Switch 2",
+   "hardwareId": "nintendo-switch-2",
+   "informationStatus": "Available",
+   "handheld": {
+    "supported": true,
+    "resolution": "720p",
+    "resolutionDynamic": false,
+    "renderingResolution": "720p",
+    "outputResolution": "720p",
+    "fps": "60",
+    "fpsMin": "60",
+    "fpsMax": "60",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "Handheld",
+    "notes": "Compatibility profile for validator; dedicated Switch 2 product is separate where one exists."
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "1080p",
+    "resolutionDynamic": false,
+    "renderingResolution": "1080p",
+    "outputResolution": "1080p",
+    "fps": "60",
+    "fpsMin": "60",
+    "fpsMax": "60",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "TV / Docked",
+    "notes": "Compatibility profile for validator; dedicated Switch 2 product is separate where one exists."
+   },
+   "modes": [
+    {
+     "name": "Default",
+     "handheldResolution": "720p",
+     "handheldFps": "60",
+     "tvResolution": "1080p",
+     "tvFps": "60",
+     "hdr": false,
+     "vrr": false,
+     "notes": "Compatibility profile for validator; dedicated Switch 2 product is separate where one exists."
+    }
+   ],
+   "performanceNotes": "Compatibility profile for validator; dedicated Switch 2 product is separate where one exists."
+  }
+ ],
+ "faq": [
+  {
+   "q": "Does Hollow Knight work on Switch 2?",
+   "a": "Yes. Nintendo lists the Switch version as supported with behavior consistent with Nintendo Switch."
+  },
+  {
+   "q": "Is it difficult?",
+   "a": "It can be demanding, especially bosses and late-game optional challenges."
+  },
+  {
+   "q": "Does it include DLC?",
+   "a": "Nintendo notes that the Switch version includes the major free content packs."
+  },
+  {
+   "q": "Is it multiplayer?",
+   "a": "No. It is a single-player adventure."
+  },
+  {
+   "q": "Why only two variants?",
+   "a": "Only Regular and Standard pricing was supplied."
+  }
+ ],
+ "mpLocalPlayers": false,
+ "mpOnlinePlayers": false,
+ "mpCoop": false,
+ "mpCompetitive": false,
+ "mpLocalWireless": false,
+ "mpSplitScreen": false,
+ "sources": [
+  {
+   "name": "Official product / publisher page",
+   "url": "https://www.nintendo.com/store/products/hollow-knight-switch/"
+  },
+  {
+   "name": "Metacritic",
+   "url": "https://www.metacritic.com/search/hollow-knight/"
+  }
+ ],
+ "boxContentsList": [],
+ "image": "",
+ "banner": "",
+ "schemaId": "",
+ "batchImport": true,
+ "createdAt": "2026-08-28T18:45:51.917Z",
+ "updatedAt": "2026-08-28T18:45:51.917Z"
+}

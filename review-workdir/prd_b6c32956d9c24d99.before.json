@@ -1,0 +1,580 @@
+{
+ "title": "Hyrule Warriors: Age of Calamity",
+ "titleEn": "Hyrule Warriors: Age of Calamity",
+ "titleKu": "",
+ "slug": "hyrule-warriors-age-of-calamity-switch",
+ "description": "Hyrule Warriors: Age of Calamity revisits the world and characters of Breath of the Wild through the large-scale musou action formula. Players take command of Link, Zelda, the Champions, and other fighters across cinematic battlefields packed with enemies, captains, bosses, and mission objectives. The game also received an Expansion Pass that adds new characters, stages, and challenges.",
+ "descriptionEn": "Hyrule Warriors: Age of Calamity revisits the world and characters of Breath of the Wild through the large-scale musou action formula. Players take command of Link, Zelda, the Champions, and other fighters across cinematic battlefields packed with enemies, captains, bosses, and mission objectives. The game also received an Expansion Pass that adds new characters, stages, and challenges.",
+ "descriptionKu": "",
+ "cartridgeImage": "/api/files/products/prd_b6c32956d9c24d99/front-box-b8b6adcac680239f.webp",
+ "nintendoCardImage": "/api/files/products/prd_b6c32956d9c24d99/square-card-cc37ded321a95f29.webp",
+ "coverHiResImage": "/api/files/products/prd_b6c32956d9c24d99/3d-wrap-55a50cefa0c5401f.webp",
+ "coverImage": "/api/files/products/prd_b6c32956d9c24d99/cover-5ac2d2f24831a563.webp",
+ "bannerImages": [
+  ""
+ ],
+ "gallery": [],
+ "youtubeTrailer": "",
+ "releaseDate": "2020-11-20",
+ "ageRating": "ESRB T / PEGI 12",
+ "metacriticRating": 78,
+ "genres": [
+  "Action",
+  "Adventure",
+  "Musou"
+ ],
+ "platform": "switch1",
+ "size": 10.6,
+ "numberOfPlayers": "Single system (1-2)",
+ "supportedLanguages": "Japanese / British English / French / German / Italian / Spanish / Korean / Dutch / Simplified Chinese / Latin American Spanish / Canadian French / Traditional Chinese / American English",
+ "hardwareModel": "",
+ "colorEdition": "",
+ "storageCapacity": "",
+ "screenSpecs": "",
+ "batteryLife": "",
+ "boxContents": [],
+ "boxContentsText": "",
+ "warrantyCondition": "",
+ "connectivity": "",
+ "characterName": "Link",
+ "amiiboSeries": "The Legend of Zelda",
+ "figureType": "figure",
+ "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+ "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+ "boxCondition": "mib",
+ "releaseWave": "Wave 2 (Restock)",
+ "rarity": "standard",
+ "accessoryType": "حقيبة حماية وتنقل Carry Case",
+ "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+ "brand": "Nintendo Official",
+ "material": "Hard EVA Shockproof Shell",
+ "availableColors": "Black, Neon Red/Blue, White",
+ "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+ "cardValue": "$20 eShop Balance",
+ "region": "Global",
+ "cardType": "eshop",
+ "deliveryMethod": "instant_code",
+ "redemptionGuide": "",
+ "redemptionSteps": [],
+ "validity": "no_expiry",
+ "usedType": "cartridge",
+ "conditionGrade": "like_new",
+ "packaging": "cib",
+ "guaranteeStatus": "tested_30days",
+ "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+ "accountType": "primary",
+ "badge": "وفر 40%",
+ "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+ "price": 11500,
+ "cost": 1250,
+ "stock": 999999,
+ "isInfiniteStock": true,
+ "isHidden": true,
+ "displayOrder": 0,
+ "category": "nintendo-switch-games",
+ "categoryId": "nintendo-switch-games",
+ "categoryEn": "",
+ "categoryKu": "",
+ "options": [
+  {
+   "id": "offline_account",
+   "name": "مشترك",
+   "description": "مشترك",
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_account",
+   "name": "خاص بك",
+   "description": "خاص بك",
+   "stock": 9999,
+   "isInfiniteStock": true
+  }
+ ],
+ "types": [
+  {
+   "id": "offline_base",
+   "name": "مشترك — اللعبة الأساسية",
+   "optionId": "offline_account",
+   "price": 11500,
+   "cost": 1250,
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "offline_extras",
+   "name": "مشترك — مع الإضافات",
+   "optionId": "offline_account",
+   "price": 14000,
+   "cost": 2500,
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_base",
+   "name": "خاص بك — اللعبة الأساسية",
+   "optionId": "online_account",
+   "price": 22250,
+   "cost": 16500,
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_extras",
+   "name": "خاص بك — مع الإضافات",
+   "optionId": "online_account",
+   "price": 33750,
+   "cost": 25000,
+   "stock": 9999,
+   "isInfiniteStock": true
+  }
+ ],
+ "editions": [],
+ "dlcs": [],
+ "isActive": true,
+ "status": "Active",
+ "kind": "account",
+ "trade_value_iqd": 11000,
+ "store_offer_bonus_iqd": 2000,
+ "trade_enabled": true,
+ "trade_value_locked": false,
+ "id": "prd_b6c32956d9c24d99",
+ "schema_version": 24,
+ "titleAr": "هايرول ووريرز: عصر الكارثة",
+ "compatibility": [
+  "Nintendo Switch",
+  "Nintendo Switch 2 compatibility: Supported – game behavior is consistent with Nintendo Switch"
+ ],
+ "edition": "Standard",
+ "developer": "Koei Tecmo Games",
+ "publisher": "Nintendo",
+ "seriesName": "The Legend of Zelda / Hyrule Warriors",
+ "metacriticUrl": "https://www.metacritic.com/game/hyrule-warriors-age-of-calamity/",
+ "opencriticRating": 80,
+ "userScore": 8.1,
+ "price_usd": 59.99,
+ "officialUrl": "https://www.nintendo.com/us/store/products/hyrule-warriors-age-of-calamity-switch/",
+ "eshopUrl": "https://www.nintendo.com/us/store/products/hyrule-warriors-age-of-calamity-switch/",
+ "gameIsOffline": true,
+ "gameIsOnline": false,
+ "gameLanguageLocked": false,
+ "description_short": "Battle through the era leading to Breath of the Wild in a musou action game full of heroes, combos, and battlefield objectives.",
+ "description_ar": "لعبة أكشن جماعية بأسلوب موسو تعود إلى زمن ما قبل أحداث Breath of the Wild، مع شخصيات الأبطال ومعارك واسعة ومهام ساحة قتال ومحتوى إضافي عبر Expansion Pass.",
+ "languagesText": [
+  "Japanese / English",
+  "French / German / Italian / Spanish / Dutch",
+  "Korean / Simplified Chinese / Traditional Chinese"
+ ],
+ "languagesAudio": [
+  "Music / sound effects",
+  "Character vocalizations where applicable",
+  "No full language-selectable dub beyond the shipped release build information"
+ ],
+ "tvMode": true,
+ "tabletopMode": true,
+ "handheldMode": true,
+ "nintendoPlayModes": "TV / Tabletop / Handheld",
+ "nintendoOnlineRequired": false,
+ "nintendoCloudSaves": true,
+ "nintendoGameKeyCard": false,
+ "nintendoPhysicalNeedsDownload": false,
+ "switch2Enhanced": false,
+ "switch2Exclusive": false,
+ "nintendoNotes": "Nintendo sells both the base game and a separate Expansion Pass. This extraction maps the user's Special and Deluxe pricing tiers to Expansion Pass-aware variants.",
+ "editionsList": [
+  {
+   "name": "Offline Regular",
+   "contents": [
+    {
+     "label": "Base game"
+    },
+    {
+     "label": "Offline account package"
+    },
+    {
+     "label": "Musou action adventure"
+    }
+   ]
+  },
+  {
+   "name": "Offline Special / Expansion Pass",
+   "contents": [
+    {
+     "label": "Base game"
+    },
+    {
+     "label": "Expansion Pass included"
+    },
+    {
+     "label": "Offline account package"
+    }
+   ]
+  },
+  {
+   "name": "Online Standard",
+   "contents": [
+    {
+     "label": "Base game"
+    },
+    {
+     "label": "Online account package"
+    },
+    {
+     "label": "Musou action adventure"
+    }
+   ]
+  },
+  {
+   "name": "Online Deluxe / Expansion Pass",
+   "contents": [
+    {
+     "label": "Base game"
+    },
+    {
+     "label": "Expansion Pass included"
+    },
+    {
+     "label": "Online account package"
+    }
+   ]
+  }
+ ],
+ "gameplayPillars": [
+  {
+   "title": "Large-scale battlefield action",
+   "description": "Fight through waves of enemies while capturing keeps, defeating bosses, and protecting allied positions."
+  },
+  {
+   "title": "Breath of the Wild cast and setting",
+   "description": "The game draws heavily from the characters, aesthetics, and regions of Breath of the Wild."
+  },
+  {
+   "title": "Distinct hero movesets",
+   "description": "Each playable character has unique attacks, special mechanics, and combo styles that keep battles varied."
+  },
+  {
+   "title": "Story-driven campaign",
+   "description": "Unlike some musou titles that rely mostly on loose scenarios, Age of Calamity presents a cinematic story campaign with frequent cutscenes."
+  },
+  {
+   "title": "Expansion Pass content",
+   "description": "Post-launch content adds more weapons, characters, and challenges for players who want a broader package."
+  }
+ ],
+ "worldSummary": "Age of Calamity reframes Zelda lore through wide battlefields, hero swapping, hordes of enemies, and a campaign that tries to connect directly to Breath of the Wild's world and themes.",
+ "storyChapters": [
+  {
+   "title": "Hyrule prepares for war",
+   "body": "The kingdom mobilizes as Calamity Ganon's threat grows, gathering heroes and warriors from across Hyrule."
+  },
+  {
+   "title": "Recruit the Champions and allies",
+   "body": "Link and Zelda join forces with the Champions and other important characters to resist the coming calamity."
+  },
+  {
+   "title": "Fight across major regions",
+   "body": "Campaign stages send the player across familiar areas with objectives, bosses, and large enemy forces."
+  },
+  {
+   "title": "Unlock stronger tools and movesets",
+   "body": "Progression rewards weapon upgrades, side missions, and additional playable characters."
+  },
+  {
+   "title": "Reach the climax of the conflict",
+   "body": "The later chapters push toward a large-scale showdown tied to the fate of Hyrule."
+  }
+ ],
+ "features": [
+  "Breath of the Wild-themed musou action",
+  "Strong roster variety and flashy combat",
+  "Story campaign with many cutscenes",
+  "Expansion Pass support for premium variants",
+  "Good option for players who enjoy battlefield-heavy action"
+ ],
+ "perfResolutionDocked": "1080p",
+ "perfResolutionHandheld": "720p",
+ "perfFps": "30",
+ "perfHdr": false,
+ "playTimeMain": 21,
+ "completionMain": 35,
+ "completionExtras": 45,
+ "faq": [
+  {
+   "q": "Does Age of Calamity have DLC?",
+   "a": "Yes. Nintendo released an Expansion Pass that adds new content, which is why this extraction includes Special and Deluxe variant tiers."
+  },
+  {
+   "q": "Is the game multiplayer?",
+   "a": "Yes. It supports local cooperative play for up to two players on a single system."
+  },
+  {
+   "q": "Is this an open-world Zelda game?",
+   "a": "No. It is a mission-based musou action game, not a free-roaming open-world structure like Breath of the Wild."
+  },
+  {
+   "q": "Can I enjoy it without playing Breath of the Wild?",
+   "a": "Yes, but familiarity with the Breath of the Wild cast and setting will make many story moments more meaningful."
+  },
+  {
+   "q": "Why are the online account tiers more expensive?",
+   "a": "That follows the store's pricing structure, while the gameplay content remains tied to the base game and its optional Expansion Pass."
+  }
+ ],
+ "verdictScore": 8,
+ "verdictPros": [
+  "Fun musou combat with a strong Zelda theme",
+  "Good roster variety and flashy special attacks",
+  "Local co-op is a welcome feature",
+  "Expansion Pass adds value to premium tiers",
+  "Cinematic story framing appeals to BOTW fans"
+ ],
+ "verdictCons": [
+  "Performance can dip during very busy battles",
+  "Mission structure is less free than mainline Zelda games",
+  "Musou combat is not for everyone",
+  "Some story expectations depend on player familiarity with BOTW",
+  "Grinding side content may feel repetitive for completionists"
+ ],
+ "reviews": [
+  {
+   "source": "Metacritic",
+   "score": "78",
+   "url": "https://www.metacritic.com/game/hyrule-warriors-age-of-calamity/"
+  },
+  {
+   "source": "OpenCritic",
+   "score": "80",
+   "url": "https://opencritic.com/game/10284/hyrule-warriors-age-of-calamity"
+  },
+  {
+   "source": "IGN",
+   "score": "9/10",
+   "url": "https://www.ign.com/games/hyrule-warriors-age-of-calamity"
+  }
+ ],
+ "timeline": [
+  {
+   "date": "2020-11-20",
+   "title": "Released on Nintendo Switch"
+  },
+  {
+   "date": "2021-05-28",
+   "title": "Expansion Pass announced / purchase bonus active"
+  },
+  {
+   "date": "2021-10-29",
+   "title": "Guardian of Remembrance wave released"
+  }
+ ],
+ "patchNotes": [
+  {
+   "version": "Launch version",
+   "date": "2020-11-20"
+  },
+  {
+   "version": "Expansion Pass content complete",
+   "date": "2021-10-29"
+  },
+  {
+   "version": "Current retail build",
+   "date": "2026-08-27"
+  }
+ ],
+ "studioName": "Nintendo",
+ "studioUrl": "https://www.nintendo.com/us/store/products/hyrule-warriors-age-of-calamity-switch/",
+ "studioLocation": "Japan",
+ "sources": [
+  {
+   "name": "Nintendo official product page",
+   "url": "https://www.nintendo.com/us/store/products/hyrule-warriors-age-of-calamity-switch/"
+  },
+  {
+   "name": "Nintendo Expansion Pass page",
+   "url": "https://www.nintendo.com/us/store/products/hyrule-warriors-age-of-calamity-expansion-pass-70070000011785-switch/"
+  },
+  {
+   "name": "Metacritic",
+   "url": "https://www.metacritic.com/game/hyrule-warriors-age-of-calamity/"
+  },
+  {
+   "name": "OpenCritic",
+   "url": "https://opencritic.com/game/10284/hyrule-warriors-age-of-calamity"
+  }
+ ],
+ "downloadSizeGb": 10.6,
+ "requiredSpaceGb": 10.6,
+ "microSdRecommended": true,
+ "storageNotes": "Nintendo lists the base game at roughly 10.6 GB. Extra content from the Expansion Pass is handled as downloadable expansion content.",
+ "mpLocalPlayers": true,
+ "mpOnlinePlayers": false,
+ "mpCoop": true,
+ "mpCompetitive": false,
+ "mpLocalWireless": false,
+ "mpSplitScreen": true,
+ "seriesEntries": [
+  "Hyrule Warriors: Age of Imprisonment",
+  "Hyrule Warriors: Definitive Edition",
+  "The Legend of Zelda: Breath of the Wild"
+ ],
+ "dlc": [
+  {
+   "name": "Age of Calamity Expansion Pass",
+   "description": "The Expansion Pass adds new playable content, stages, weapons, and battle scenarios. In this extraction, Special and Deluxe variants map to Expansion Pass-aware package tiers."
+  }
+ ],
+ "devicePerformance": [
+  {
+   "device": "Nintendo Switch",
+   "deviceSlug": "nintendo-switch",
+   "deviceModel": "Nintendo Switch",
+   "hardwareId": "nintendo-switch",
+   "informationStatus": "Available / verified",
+   "handheld": {
+    "supported": true,
+    "resolution": "720p",
+    "resolutionDynamic": true,
+    "renderingResolution": "1280x720",
+    "outputResolution": "1280x720",
+    "fps": "30",
+    "fpsMin": "20",
+    "fpsMax": "30",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "Handheld",
+    "notes": "Age of Calamity targets 30 fps with dynamic resolution behavior and occasional drops during particularly intense musou scenes."
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "1080p",
+    "resolutionDynamic": true,
+    "renderingResolution": "1920x1080",
+    "outputResolution": "1920x1080",
+    "fps": "30",
+    "fpsMin": "20",
+    "fpsMax": "30",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "TV / Docked",
+    "notes": "Age of Calamity targets 30 fps with dynamic resolution behavior and occasional drops during particularly intense musou scenes."
+   },
+   "modes": [
+    {
+     "name": "Primary documented mode",
+     "handheldResolution": "720p",
+     "handheldFps": "30",
+     "tvResolution": "1080p",
+     "tvFps": "30",
+     "hdr": false,
+     "vrr": false,
+     "notes": "Age of Calamity targets 30 fps with dynamic resolution behavior and occasional drops during particularly intense musou scenes."
+    }
+   ],
+   "upscaling": "Game / system-specific scaling where applicable",
+   "rayTracing": false,
+   "rayTracingMode": "Not Supported",
+   "loadingTime": "Scene-dependent; no single universal loading time",
+   "loadingNotes": "Loading time varies by scene, save progress, storage state, and whether the software is running in its standard build or an enhanced edition.",
+   "gameVersion": "Current retail build",
+   "patchVersion": "Current available update",
+   "testedDate": "2026-08-27",
+   "sourceName": "Nintendo official product page",
+   "sourceUrl": "https://www.nintendo.com/us/store/products/hyrule-warriors-age-of-calamity-switch/",
+   "performanceNotes": "Age of Calamity targets 30 fps with dynamic resolution behavior and occasional drops during particularly intense musou scenes."
+  },
+  {
+   "device": "Nintendo Switch 2",
+   "deviceSlug": "nintendo-switch-2",
+   "deviceModel": "Nintendo Switch 2",
+   "hardwareId": "nintendo-switch-2",
+   "informationStatus": "Available / verified",
+   "handheld": {
+    "supported": true,
+    "resolution": "720p",
+    "resolutionDynamic": false,
+    "renderingResolution": "1280x720",
+    "outputResolution": "1280x720",
+    "fps": "30",
+    "fpsMin": "30",
+    "fpsMax": "30",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "Handheld",
+    "notes": "Nintendo lists the original title as supported on Nintendo Switch 2. This extraction records a compatibility profile consistent with the original release."
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "1080p",
+    "resolutionDynamic": false,
+    "renderingResolution": "1920x1080",
+    "outputResolution": "1920x1080",
+    "fps": "30",
+    "fpsMin": "30",
+    "fpsMax": "30",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "TV / Docked",
+    "notes": "Nintendo lists the original title as supported on Nintendo Switch 2. This extraction records a compatibility profile consistent with the original release."
+   },
+   "modes": [
+    {
+     "name": "Primary documented mode",
+     "handheldResolution": "720p",
+     "handheldFps": "30",
+     "tvResolution": "1080p",
+     "tvFps": "30",
+     "hdr": false,
+     "vrr": false,
+     "notes": "Nintendo lists the original title as supported on Nintendo Switch 2. This extraction records a compatibility profile consistent with the original release."
+    }
+   ],
+   "upscaling": "Game / system-specific scaling where applicable",
+   "rayTracing": false,
+   "rayTracingMode": "Not Supported",
+   "loadingTime": "Scene-dependent; no single universal loading time",
+   "loadingNotes": "Loading time varies by scene, save progress, storage state, and whether the software is running in its standard build or an enhanced edition.",
+   "gameVersion": "Current retail build",
+   "patchVersion": "Current available update",
+   "testedDate": "2026-08-27",
+   "sourceName": "Nintendo official product page / compatibility context",
+   "sourceUrl": "https://www.nintendo.com/us/store/products/hyrule-warriors-age-of-calamity-switch/",
+   "performanceNotes": "Nintendo lists the original title as supported on Nintendo Switch 2. This extraction records a compatibility profile consistent with the original release."
+  }
+ ],
+ "boxContentsList": [],
+ "image": "",
+ "banner": "",
+ "schemaId": "",
+ "batchImport": true,
+ "galleryImages": [
+  {
+   "url": "/api/files/products/prd_b6c32956d9c24d99/gallery-1-4d898f6c5437baa3.webp",
+   "alt": "Hyrule Warriors: Age of Calamity screenshot 1"
+  },
+  {
+   "url": "/api/files/products/prd_b6c32956d9c24d99/gallery-2-c900ee3415e338e6.webp",
+   "alt": "Hyrule Warriors: Age of Calamity screenshot 2"
+  },
+  {
+   "url": "/api/files/products/prd_b6c32956d9c24d99/gallery-3-632ea14cc8c088c4.webp",
+   "alt": "Hyrule Warriors: Age of Calamity screenshot 3"
+  },
+  {
+   "url": "/api/files/products/prd_b6c32956d9c24d99/gallery-4-49048af51ec5a887.webp",
+   "alt": "Hyrule Warriors: Age of Calamity screenshot 4"
+  },
+  {
+   "url": "/api/files/products/prd_b6c32956d9c24d99/gallery-5-757ba5c99241f5e1.webp",
+   "alt": "Hyrule Warriors: Age of Calamity screenshot 5"
+  },
+  {
+   "url": "/api/files/products/prd_b6c32956d9c24d99/gallery-6-9dacd2122a244f76.webp",
+   "alt": "Hyrule Warriors: Age of Calamity screenshot 6"
+  }
+ ],
+ "createdAt": "2026-08-28T18:42:00.998Z",
+ "updatedAt": "2026-08-28T18:42:00.998Z"
+}

@@ -1,0 +1,3118 @@
+{
+ "batch": "012",
+ "generatedAt": "2026-09-02T03:03:37.229Z",
+ "totalGames": 310,
+ "reviewedSoFar": 52,
+ "games": [
+  {
+   "id": "prd_b9ca0595530f4d17",
+   "slug": "it-takes-two",
+   "title": "It Takes Two",
+   "platform": "switch1",
+   "isHidden": false,
+   "hash": "d4f26a5feedf4b4505a51ebd3c8d9b2e90df2eeaf34bdbdfdfeb66c1a92ce129",
+   "images": [
+    {
+     "role": "front-box",
+     "field": "cartridgeImage",
+     "url": "https://images.launchbox-app.com//37c4f187-49f1-4568-b984-b8f9ca43efbf.png",
+     "status": 200,
+     "contentType": "image/png",
+     "bytes": 132873,
+     "width": 173,
+     "height": 281,
+     "thumb": "review-workdir/thumbs/batch-012/it-takes-two__front-box-0.png"
+    },
+    {
+     "role": "front-box",
+     "field": "box_front_url",
+     "url": "https://images.launchbox-app.com//37c4f187-49f1-4568-b984-b8f9ca43efbf.png",
+     "status": 200,
+     "contentType": "image/png",
+     "bytes": 132873,
+     "width": 173,
+     "height": 281,
+     "thumb": "review-workdir/thumbs/batch-012/it-takes-two__front-box-1.png"
+    },
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://assets.nintendo.com/image/upload/ar_1%3A1%2Cc_fill%2Cg_auto/f_auto/q_auto/dpr_1.5/store/software/switch/70070000014924/e7200824041808289d4a65589ed368f7e08dc2e538a5fd7ee9f8d39e58015c24",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 136644,
+     "width": 1080,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-012/it-takes-two__square-card-2.png"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://images.launchbox-app.com//22562538-da20-4589-ad20-c91c4e570c19.png",
+     "status": 200,
+     "contentType": "image/png",
+     "bytes": 223854,
+     "width": 400,
+     "height": 225,
+     "thumb": "review-workdir/thumbs/batch-012/it-takes-two__detail-cover-3.png"
+    },
+    {
+     "role": "listing",
+     "field": "image",
+     "url": "https://images.launchbox-app.com//22562538-da20-4589-ad20-c91c4e570c19.png",
+     "status": 200,
+     "contentType": "image/png",
+     "bytes": 223854,
+     "width": 400,
+     "height": 225,
+     "thumb": "review-workdir/thumbs/batch-012/it-takes-two__listing-4.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[0]",
+     "url": "https://images.launchbox-app.com//303addc0-2646-434a-9475-f5a980523441.png",
+     "status": 200,
+     "contentType": "image/png",
+     "bytes": 219719,
+     "width": 400,
+     "height": 225,
+     "thumb": "review-workdir/thumbs/batch-012/it-takes-two__banner-5.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[1]",
+     "url": "https://images.launchbox-app.com//ff5ae30d-7bf6-4230-8819-1ed66fea4e6a.png",
+     "status": 200,
+     "contentType": "image/png",
+     "bytes": 256620,
+     "width": 400,
+     "height": 225,
+     "thumb": "review-workdir/thumbs/batch-012/it-takes-two__banner-6.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[2]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000014924/c942c07a0e6500f8a5354e7ba6300cb8962fe83888b41cc71690fa772012267b",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 214161,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-012/it-takes-two__banner-7.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[3]",
+     "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch/70010000049281/7d4781f639c29fab428d9dec8ea53297838294db4efb847b51b92f04e2987711",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 80551,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-012/it-takes-two__banner-8.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch/70010000049281/7d4781f639c29fab428d9dec8ea53297838294db4efb847b51b92f04e2987711",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 80551,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-012/it-takes-two__gallery-9.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[1]",
+     "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch/70010000049281/4fba2aed43196cce5c459bffcede7869d2be7a48b0bb237907a1f52dc000580d",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 107975,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-012/it-takes-two__gallery-10.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[2]",
+     "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch/70010000049281/a980423f43a1d37f7338a7f1c723583bcb9f41af2aa02aadb918c793f8d6f75c",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 111849,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-012/it-takes-two__gallery-11.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[3]",
+     "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch/70010000049281/219bf5ca843b0087fc6f0937536157113c8924cafc0dfe72e6b614ba6b3d34fb",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 113254,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-012/it-takes-two__gallery-12.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[4]",
+     "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch/70010000049281/17c1edf90923ecbb824fc3deb8cef390bd3eefcb6597bc222805256f51e1c2ce",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 111752,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-012/it-takes-two__gallery-13.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[5]",
+     "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch/70010000049281/c942c07a0e6500f8a5354e7ba6300cb8962fe83888b41cc71690fa772012267b",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 214161,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-012/it-takes-two__gallery-14.png"
+    }
+   ],
+   "record": {
+    "title": "It Takes Two",
+    "titleEn": "It Takes Two",
+    "titleKu": "It Takes Two",
+    "slug": "it-takes-two",
+    "description": "It Takes Two is a co-op-only action-adventure platformer by Hazelight Studios. Two players control Cody and May, a couple transformed into dolls, and must cooperate through highly varied levels where new mechanics appear constantly. On Nintendo Switch it supports same-system co-op, local wireless, and online play, with Friend's Pass allowing a friend to join without owning the full game.",
+    "descriptionEn": "It Takes Two is a co-op-only action-adventure platformer by Hazelight Studios. Two players control Cody and May, a couple transformed into dolls, and must cooperate through highly varied levels where new mechanics appear constantly. On Nintendo Switch it supports same-system co-op, local wireless, and online play, with Friend's Pass allowing a friend to join without owning the full game.",
+    "descriptionKu": "It Takes Two is a co-op-only action-adventure platformer by Hazelight Studios. Two players control Cody and May, a couple transformed into dolls, and must cooperate through highly varied levels where new mechanics appear constantly. On Nintendo Switch it supports same-system co-op, local wireless, and online play, with Friend's Pass allowing a friend to join without owning the full game.",
+    "cartridgeImage": "https://images.launchbox-app.com//37c4f187-49f1-4568-b984-b8f9ca43efbf.png",
+    "nintendoCardImage": "https://assets.nintendo.com/image/upload/ar_1%3A1%2Cc_fill%2Cg_auto/f_auto/q_auto/dpr_1.5/store/software/switch/70070000014924/e7200824041808289d4a65589ed368f7e08dc2e538a5fd7ee9f8d39e58015c24",
+    "coverHiResImage": "",
+    "coverImage": "https://images.launchbox-app.com//22562538-da20-4589-ad20-c91c4e570c19.png",
+    "bannerImages": [
+     "https://images.launchbox-app.com//303addc0-2646-434a-9475-f5a980523441.png",
+     "https://images.launchbox-app.com//ff5ae30d-7bf6-4230-8819-1ed66fea4e6a.png",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000014924/c942c07a0e6500f8a5354e7ba6300cb8962fe83888b41cc71690fa772012267b",
+     "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch/70010000049281/7d4781f639c29fab428d9dec8ea53297838294db4efb847b51b92f04e2987711",
+     "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch/70010000049281/4fba2aed43196cce5c459bffcede7869d2be7a48b0bb237907a1f52dc000580d",
+     "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch/70010000049281/a980423f43a1d37f7338a7f1c723583bcb9f41af2aa02aadb918c793f8d6f75c",
+     "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch/70010000049281/219bf5ca843b0087fc6f0937536157113c8924cafc0dfe72e6b614ba6b3d34fb",
+     "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch/70010000049281/17c1edf90923ecbb824fc3deb8cef390bd3eefcb6597bc222805256f51e1c2ce"
+    ],
+    "gallery": [],
+    "youtubeTrailer": "https://www.youtube.com/watch?v=F7MpUspVRwM",
+    "releaseDate": "2022-11-04",
+    "ageRating": "ESRB: T — Animated Blood, Comic Mischief, Fantasy Violence, Language; Users Interact",
+    "metacriticRating": 82,
+    "genres": [
+     "Action",
+     "Adventure",
+     "Platformer"
+    ],
+    "platform": "switch1",
+    "size": 9.473,
+    "numberOfPlayers": "2",
+    "supportedLanguages": "Japanese, French, German, Italian, Korean, Russian, Simplified Chinese, Latin American Spanish, Brazilian Portuguese, Traditional Chinese, American English",
+    "hardwareModel": "",
+    "colorEdition": "",
+    "storageCapacity": "",
+    "screenSpecs": "",
+    "batteryLife": "",
+    "boxContents": [],
+    "boxContentsText": "",
+    "warrantyCondition": "",
+    "connectivity": "",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "Global",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "",
+    "redemptionSteps": [],
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 8000,
+    "cost": 1500,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": false,
+    "displayOrder": 0,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "Offline Account",
+      "description": "Offline account option",
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_account",
+      "name": "Online Account",
+      "description": "Online account option",
+      "isInfiniteStock": true
+     }
+    ],
+    "types": [
+     {
+      "id": "standard_offline",
+      "name": "Standard Edition",
+      "optionId": "offline_account",
+      "price": "8000",
+      "cost": 1500,
+      "description": "Standard game access — Offline Account.",
+      "isInfiniteStock": true
+     },
+     {
+      "id": "standard_online",
+      "name": "Standard Edition",
+      "optionId": "online_account",
+      "price": "28000",
+      "cost": 14250,
+      "description": "Standard game access — Online Account.",
+      "isInfiniteStock": true
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "active",
+    "kind": "account",
+    "trade_value_iqd": 30000,
+    "store_offer_bonus_iqd": 5000,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "id": "prd_b9ca0595530f4d17",
+    "schema_version": 20,
+    "titleAr": "إت تيكس تو",
+    "compatibility": [
+     "Nintendo Switch",
+     "Nintendo Switch 2 (backward compatible)"
+    ],
+    "edition": "Standard",
+    "developer": "Hazelight Studios",
+    "publisher": "Electronic Arts",
+    "opencriticRating": 88,
+    "userScore": 8.8,
+    "officialUrl": "https://www.nintendo.com/us/store/products/it-takes-two-switch/",
+    "eshopUrl": "https://www.nintendo.com/us/store/products/it-takes-two-switch/",
+    "gameIsOffline": true,
+    "gameIsOnline": true,
+    "gameLanguageLocked": false,
+    "description_short": "A co-op-only platform adventure in which Cody and May must work together through constantly changing mechanics and imaginative levels.",
+    "description_ar": "It Takes Two هي لعبة مغامرات ومنصات مصممة بالكامل للعب التعاوني من Hazelight Studios. يتحكم لاعبان بكودي وماي بعد تحولهما إلى دميتين، ويجب عليهما التعاون عبر مراحل متنوعة تتغير فيها الآليات باستمرار. على Nintendo Switch تدعم اللعب على جهاز واحد والاتصال اللاسلكي المحلي واللعب عبر الإنترنت، كما تسمح Friend's Pass لصديق بالانضمام دون امتلاك النسخة الكاملة.",
+    "box_front_url": "https://images.launchbox-app.com//37c4f187-49f1-4568-b984-b8f9ca43efbf.png",
+    "videos": [
+     {
+      "title": "It Takes Two — Official Trailer",
+      "url": "https://www.youtube.com/watch?v=F7MpUspVRwM"
+     }
+    ],
+    "nsuid": "70070000014924",
+    "nintendoEshopUrl": "https://www.nintendo.com/us/store/products/it-takes-two-switch/",
+    "nintendoOnlineRequired": true,
+    "nintendoCloudSaves": true,
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": true,
+    "nintendoPlayModes": "TV, Tabletop, Handheld",
+    "nintendoNotes": "Nintendo Switch product; compatible with Nintendo Switch 2 where Nintendo lists backward compatibility. Product account variants and costs are based on the supplied seller screenshots; platform classification follows the seller-card rule requested for this import.\n\nOffline selling price is selected within 5,000–25,000 IQD according to demand, supply, popularity, recency, perceived market value and, where relevant, supplier cost. It is not a fixed cost multiplier. Online pricing is market-based and may be higher.\n\nExtraction rules used for this file: production images are verified game media, not seller/Taobao images. Front Box Cover is retail box-front artwork; Square Card is a separate square asset; Cover Image is page/key art; 3D Texture Source is high-resolution front cover art. Banner and Gallery media are separate verified artwork/screenshots. Device Performance contains one device object only. Offline selling prices are chosen within 5,000–25,000 IQD according to demand, supply, popularity, recency, perceived value and supplier cost; online prices remain market-based and may be higher.",
+    "switch2Enhanced": false,
+    "switch2Exclusive": false,
+    "tagline": "A genre-bending adventure designed from the ground up for two players.",
+    "playTimeMain": 13,
+    "playTimeFull": 16,
+    "editionsList": [
+     {
+      "name": "Standard Edition",
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000014924/e7200824041808289d4a65589ed368f7e08dc2e538a5fd7ee9f8d39e58015c24",
+      "contents": [
+       {
+        "label": "Base game"
+       },
+       {
+        "label": "Seller account access"
+       },
+       {
+        "label": "Nintendo platform version shown in this import"
+       }
+      ]
+     }
+    ],
+    "gameplayPillars": [
+     {
+      "title": "Co-op Mechanics",
+      "description": "Every major challenge is built around two complementary player roles.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000014924/219bf5ca843b0087fc6f0937536157113c8924cafc0dfe72e6b614ba6b3d34fb"
+     },
+     {
+      "title": "Constant Variety",
+      "description": "Levels introduce new tools, movement systems, minigames, and puzzle concepts.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000014924/17c1edf90923ecbb824fc3deb8cef390bd3eefcb6597bc222805256f51e1c2ce"
+     },
+     {
+      "title": "Shared Story",
+      "description": "Gameplay and narrative focus on Cody and May learning to work together.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000014924/c942c07a0e6500f8a5354e7ba6300cb8962fe83888b41cc71690fa772012267b"
+     }
+    ],
+    "worldSummary": "Cody and May are transformed into dolls and pushed through a surreal journey shaped by their home, memories, and relationship.",
+    "storyChapters": [
+     {
+      "title": "A Family in Crisis",
+      "body": "Cody and May plan to separate, but their daughter Rose wishes they could stay together. The parents are magically transformed into small handmade dolls.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000014924/c942c07a0e6500f8a5354e7ba6300cb8962fe83888b41cc71690fa772012267b"
+     },
+     {
+      "title": "Forced to Cooperate",
+      "body": "Guided by Dr. Hakim, Cody and May must work together through a series of surreal environments where each area gives them complementary abilities.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch/70010000049281/7d4781f639c29fab428d9dec8ea53297838294db4efb847b51b92f04e2987711"
+     },
+     {
+      "title": "Rebuilding the Bond",
+      "body": "Their adventure forces them to confront resentment, forgotten passions, and the reasons their relationship broke down as they try to return to their daughter.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch/70010000049281/4fba2aed43196cce5c459bffcede7869d2be7a48b0bb237907a1f52dc000580d"
+     }
+    ],
+    "galleryImages": [
+     {
+      "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch/70010000049281/7d4781f639c29fab428d9dec8ea53297838294db4efb847b51b92f04e2987711",
+      "alt": "Verified official/publisher media for It Takes Two — gallery image 1."
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch/70010000049281/4fba2aed43196cce5c459bffcede7869d2be7a48b0bb237907a1f52dc000580d",
+      "alt": "Verified official/publisher media for It Takes Two — gallery image 2."
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch/70010000049281/a980423f43a1d37f7338a7f1c723583bcb9f41af2aa02aadb918c793f8d6f75c",
+      "alt": "Verified official/publisher media for It Takes Two — gallery image 3."
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch/70010000049281/219bf5ca843b0087fc6f0937536157113c8924cafc0dfe72e6b614ba6b3d34fb",
+      "alt": "Verified official/publisher media for It Takes Two — gallery image 4."
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch/70010000049281/17c1edf90923ecbb824fc3deb8cef390bd3eefcb6597bc222805256f51e1c2ce",
+      "alt": "Verified official/publisher media for It Takes Two — gallery image 5."
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch/70010000049281/c942c07a0e6500f8a5354e7ba6300cb8962fe83888b41cc71690fa772012267b",
+      "alt": "Verified official/publisher media for It Takes Two — gallery image 6."
+     },
+     {
+      "url": "https://images.launchbox-app.com//303addc0-2646-434a-9475-f5a980523441.png",
+      "alt": "Verified official/publisher media for It Takes Two — gallery image 7."
+     },
+     {
+      "url": "https://images.launchbox-app.com//ff5ae30d-7bf6-4230-8819-1ed66fea4e6a.png",
+      "alt": "Verified official/publisher media for It Takes Two — gallery image 8."
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000014924/c942c07a0e6500f8a5354e7ba6300cb8962fe83888b41cc71690fa772012267b",
+      "alt": "Verified official/publisher media for It Takes Two — gallery image 9."
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000014924/219bf5ca843b0087fc6f0937536157113c8924cafc0dfe72e6b614ba6b3d34fb",
+      "alt": "Verified official/publisher media for It Takes Two — gallery image 10."
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000014924/17c1edf90923ecbb824fc3deb8cef390bd3eefcb6597bc222805256f51e1c2ce",
+      "alt": "Verified official/publisher media for It Takes Two — gallery image 11."
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cc_fill%2Cg_auto/f_auto/q_auto/dpr_1.5/store/software/switch/70070000014924/e7200824041808289d4a65589ed368f7e08dc2e538a5fd7ee9f8d39e58015c24",
+      "alt": "Verified official/publisher media for It Takes Two — gallery image 12."
+     }
+    ],
+    "perfResolutionDocked": "1920×1080 output",
+    "perfResolutionHandheld": "1280×720 output",
+    "perfFps": "30",
+    "perfNotes": "The Switch port targets 30 fps with 1080p output in TV mode and 720p output in handheld mode.",
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "informationStatus": "backward-compatible-verified",
+      "handheld": {
+       "supported": true,
+       "resolution": "1280×720 output",
+       "outputResolution": "1280×720",
+       "fps": "30",
+       "notes": "Nintendo lists the game as supported on Nintendo Switch 2 with behavior consistent with Nintendo Switch. The Switch port targets 30 fps with 720p handheld output and 1080p TV output; no Switch 2-specific enhancement is claimed here."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1920×1080 output",
+       "outputResolution": "1920×1080",
+       "fps": "30",
+       "notes": "Nintendo lists the game as supported on Nintendo Switch 2 with behavior consistent with Nintendo Switch. The Switch port targets 30 fps with 720p handheld output and 1080p TV output; no Switch 2-specific enhancement is claimed here."
+      },
+      "sourceName": "VentureBeat / Turn Me Up Games interview",
+      "sourceUrl": "https://venturebeat.com/business/it-takes-two-porting-2021s-game-of-the-year-to-switch",
+      "verifiedAt": "2026-08-24",
+      "verificationStatus": "verified",
+      "performanceNotes": "Nintendo lists the game as supported on Nintendo Switch 2 with behavior consistent with Nintendo Switch. The Switch port targets 30 fps with 720p handheld output and 1080p TV output; no Switch 2-specific enhancement is claimed here."
+     }
+    ],
+    "downloadSizeGb": 9.473,
+    "requiredSpaceGb": 12.1,
+    "storageNotes": "Official/verified listed game download size: approximately 12.1 GB. Updates and DLC may require additional space.",
+    "languagesAudio": [
+     "English"
+    ],
+    "languagesText": [
+     "American English",
+     "English",
+     "Japanese"
+    ],
+    "arabicSupport": false,
+    "mpLocalPlayers": true,
+    "mpOnlinePlayers": true,
+    "mpCoop": true,
+    "mpCompetitive": false,
+    "mpSplitScreen": true,
+    "mpLocalWireless": true,
+    "guides": [
+     {
+      "title": "Official product and gameplay information",
+      "summary": "Official Nintendo/publisher information covering features, supported modes, requirements and product-specific notices.",
+      "url": "https://www.nintendo.com/us/store/products/it-takes-two-switch/"
+     },
+     {
+      "title": "GameFAQs guides and FAQs search",
+      "summary": "Community guide index for walkthroughs, FAQs, collectibles, unlockables and troubleshooting. Verify platform/version when following a guide.",
+      "url": "https://gamefaqs.gamespot.com/search?game=It+Takes+Two"
+     },
+     {
+      "title": "Deku Deals technical/product reference",
+      "summary": "Reference page used for platform, file size, play modes, critic aggregates and completion-time metadata where available.",
+      "url": "https://www.dekudeals.com/items/it-takes-two"
+     }
+    ],
+    "completionMain": 13,
+    "completionExtras": 14,
+    "completionAll": 16,
+    "faq": [
+     {
+      "q": "What platform is this import for?",
+      "a": "This import is classified as Nintendo Switch."
+     },
+     {
+      "q": "How many players are supported?",
+      "a": "Official player support varies by mode; the primary published range is 2 player(s). See multiplayer fields for local, wireless, and online capabilities."
+     },
+     {
+      "q": "Does this seller listing include a separate DLC account type?",
+      "a": "No. The supplied seller listing shows two variants, so only Standard Offline and Standard Online account types are created."
+     }
+    ],
+    "verdictScore": 8.5,
+    "verdictSummary": "Editorial synthesis for It Takes Two, based on the verified feature set, platform implementation, content scope and aggregated critical reception. This score is an internal summary, not a copied external review score.",
+    "reviews": [
+     {
+      "source": "Metacritic",
+      "score": "82",
+      "quote": "Aggregated critic score for the game/platform listing.",
+      "url": "https://www.dekudeals.com/items/it-takes-two"
+     },
+     {
+      "source": "OpenCritic",
+      "score": "88",
+      "quote": "Aggregated critic score reported for the game.",
+      "url": "https://www.dekudeals.com/items/it-takes-two"
+     },
+     {
+      "source": "Metacritic User Score",
+      "score": "8.8",
+      "quote": "Aggregated user score reference.",
+      "url": "https://www.dekudeals.com/items/it-takes-two"
+     }
+    ],
+    "timeline": [
+     {
+      "date": "2021-03-26",
+      "title": "Original release",
+      "body": "It Takes Two launched on other platforms."
+     },
+     {
+      "date": "2021-12-09",
+      "title": "Game of the Year recognition",
+      "body": "The game won Game of the Year at The Game Awards 2021."
+     },
+     {
+      "date": "2022-11-04",
+      "title": "Nintendo Switch release",
+      "body": "The Nintendo Switch port launched with local and online co-op support."
+     }
+    ],
+    "patchNotes": [
+     {
+      "version": "Switch launch build",
+      "date": "2022-11-04",
+      "body": "Nintendo Switch version released with split-screen, local wireless, online play and Friend’s Pass support."
+     }
+    ],
+    "soundtrack": [
+     {
+      "title": "It Takes Two — Original Soundtrack",
+      "url": "https://store.steampowered.com/app/4110940/It_Takes_Two__Original_Soundtrack/?l=english"
+     },
+     {
+      "title": "It Takes Two — VGMdb soundtrack catalog search",
+      "url": "https://vgmdb.net/search?q=It+Takes+Two&type=album"
+     },
+     {
+      "title": "It Takes Two — soundtrack video search",
+      "url": "https://www.youtube.com/results?search_query=It+Takes+Two+official+soundtrack"
+     }
+    ],
+    "seriesName": "It Takes Two",
+    "studioName": "Hazelight Studios",
+    "studioUrl": "https://www.hazelight.se/",
+    "studioLocation": "Stockholm, Sweden",
+    "studioAbout": "Hazelight Studios is a Swedish developer focused on cooperative narrative games.",
+    "sources": [
+     {
+      "name": "Nintendo / publisher official product page",
+      "url": "https://www.nintendo.com/us/store/products/it-takes-two-switch/"
+     },
+     {
+      "name": "Deku Deals — platform, size, scores and play-time reference",
+      "url": "https://www.dekudeals.com/items/it-takes-two"
+     },
+     {
+      "name": "The Cover Project — Full Retail Cover page",
+      "url": "https://www.thecoverproject.net/view.php?game_id=18292"
+     }
+    ],
+    "fitFor": [
+     "Two players looking for a full co-op campaign",
+     "Couples, friends, or family who enjoy teamwork",
+     "Players who like frequent gameplay variety"
+    ],
+    "notFitFor": [
+     "Solo-only players",
+     "Players who dislike split-screen or co-op dependency",
+     "Players seeking competitive multiplayer"
+    ],
+    "features": [
+     "Mandatory two-player cooperative design",
+     "Friend's Pass support",
+     "Same-system, local wireless, and online co-op"
+    ],
+    "verdictPros": [
+     "Inventive co-op mechanics that constantly change",
+     "Strong split-screen and Friend’s Pass design",
+     "Memorable environments and set pieces"
+    ],
+    "verdictCons": [
+     "Requires exactly two players",
+     "Some story beats may divide players",
+     "No traditional single-player mode"
+    ],
+    "seriesEntries": [
+     "It Takes Two",
+     "Split Fiction"
+    ],
+    "setupNeeds": [
+     "Two players are required",
+     "Two compatible controllers for same-system play",
+     "Nintendo Switch Online membership required for online play"
+    ],
+    "boxContentsList": "[Circular]",
+    "image": "https://images.launchbox-app.com//22562538-da20-4589-ad20-c91c4e570c19.png",
+    "banner": "https://images.launchbox-app.com//303addc0-2646-434a-9475-f5a980523441.png",
+    "schemaId": "",
+    "badgeEn": "وفر 40%",
+    "badgeKu": "وفر 40%",
+    "featuresEn": [
+     "Mandatory two-player cooperative design",
+     "Friend's Pass support",
+     "Same-system, local wireless, and online co-op"
+    ],
+    "featuresKu": [
+     "Mandatory two-player cooperative design",
+     "Friend's Pass support",
+     "Same-system, local wireless, and online co-op"
+    ]
+   }
+  },
+  {
+   "id": "prd_e035ee51b91d4187",
+   "slug": "just-dance-2026-edition",
+   "title": "JUST DANCE 2026 EDITION",
+   "platform": "switch2",
+   "isHidden": false,
+   "hash": "f0ad6a3f22437f2bebf741464b663d7010657931223224c7c98999d87c79c10d",
+   "images": [
+    {
+     "role": "front-box",
+     "field": "cartridgeImage",
+     "url": "https://banan.to/api/files/cartridges/usr_b947dbb97217464c/f_a1dd20e5d52c4a75.png",
+     "status": 200,
+     "contentType": "image/png",
+     "bytes": 3107294,
+     "width": 1232,
+     "height": 1994,
+     "thumb": "review-workdir/thumbs/batch-012/just-dance-2026-edition__front-box-0.png"
+    },
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://assets.nintendo.com/image/upload/ar_1%3A1%2Cc_fill%2Cg_auto/f_auto/q_auto/dpr_1.5/store/software/switch/70070000028929/93dc6060a9dd96800995c66d7cc2bcb01949065ee12e7b49092544eda967f938",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 177920,
+     "width": 1080,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-012/just-dance-2026-edition__square-card-1.png"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000028929/ff61f4e820cb7f1d490f979f5e8aabf4af6f60224c2ed17f96f826a8e4be319c",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 127529,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-012/just-dance-2026-edition__detail-cover-2.png"
+    },
+    {
+     "role": "listing",
+     "field": "image",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000028929/ff61f4e820cb7f1d490f979f5e8aabf4af6f60224c2ed17f96f826a8e4be319c",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 127529,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-012/just-dance-2026-edition__listing-3.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[0]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000028929/b4c3437a811cc3eb6e597bb78eb9caead8aa8837bf5dd1d021ed67c0f85a9beb",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 94170,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-012/just-dance-2026-edition__banner-4.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[1]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000028929/f96e9ecd574534da5a37505a95efe9ad053f645023334220c6ea7002154077de",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 97501,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-012/just-dance-2026-edition__banner-5.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[2]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000028929/28a65bf93308e76c9119598785cf41c471e80aaf677cadfa78b7a5e36cd4bc1b",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 115842,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-012/just-dance-2026-edition__banner-6.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[3]",
+     "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch/70070000028929/add6a35d447039971a8b616796cde80b80e1df4e355ba2729e48e57c8da7fcac",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 89259,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-012/just-dance-2026-edition__banner-7.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch/70070000028929/add6a35d447039971a8b616796cde80b80e1df4e355ba2729e48e57c8da7fcac",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 89259,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-012/just-dance-2026-edition__gallery-8.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[1]",
+     "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch/70070000028929/ff61f4e820cb7f1d490f979f5e8aabf4af6f60224c2ed17f96f826a8e4be319c",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 127529,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-012/just-dance-2026-edition__gallery-9.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[2]",
+     "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch/70070000028929/b4c3437a811cc3eb6e597bb78eb9caead8aa8837bf5dd1d021ed67c0f85a9beb",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 94170,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-012/just-dance-2026-edition__gallery-10.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[3]",
+     "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch/70070000028929/f96e9ecd574534da5a37505a95efe9ad053f645023334220c6ea7002154077de",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 97501,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-012/just-dance-2026-edition__gallery-11.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[4]",
+     "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch/70070000028929/28a65bf93308e76c9119598785cf41c471e80aaf677cadfa78b7a5e36cd4bc1b",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 115842,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-012/just-dance-2026-edition__gallery-12.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[5]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000028929/b4c3437a811cc3eb6e597bb78eb9caead8aa8837bf5dd1d021ed67c0f85a9beb",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 94170,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-012/just-dance-2026-edition__gallery-13.png"
+    }
+   ],
+   "record": {
+    "title": "JUST DANCE 2026 EDITION",
+    "titleEn": "JUST DANCE 2026 EDITION",
+    "titleKu": "JUST DANCE 2026 EDITION",
+    "slug": "just-dance-2026-edition",
+    "description": "JUST DANCE 2026 EDITION adds the 2026 song catalog to Ubisoft's current Just Dance platform. Players use motion controls to follow choreography, compete or cooperate locally, and access connected services where supported. The seller card is red and explicitly categorized as a Switch 2 listing, so this import follows the seller platform rule; however, Nintendo's official store lists the entitlement as Nintendo Switch software that can be used on Nintendo Switch 2 through compatibility.",
+    "descriptionEn": "JUST DANCE 2026 EDITION adds the 2026 song catalog to Ubisoft's current Just Dance platform. Players use motion controls to follow choreography, compete or cooperate locally, and access connected services where supported. The seller card is red and explicitly categorized as a Switch 2 listing, so this import follows the seller platform rule; however, Nintendo's official store lists the entitlement as Nintendo Switch software that can be used on Nintendo Switch 2 through compatibility.",
+    "descriptionKu": "JUST DANCE 2026 EDITION adds the 2026 song catalog to Ubisoft's current Just Dance platform. Players use motion controls to follow choreography, compete or cooperate locally, and access connected services where supported. The seller card is red and explicitly categorized as a Switch 2 listing, so this import follows the seller platform rule; however, Nintendo's official store lists the entitlement as Nintendo Switch software that can be used on Nintendo Switch 2 through compatibility.",
+    "cartridgeImage": "/api/files/cartridges/usr_b947dbb97217464c/f_a1dd20e5d52c4a75.png",
+    "nintendoCardImage": "https://assets.nintendo.com/image/upload/ar_1%3A1%2Cc_fill%2Cg_auto/f_auto/q_auto/dpr_1.5/store/software/switch/70070000028929/93dc6060a9dd96800995c66d7cc2bcb01949065ee12e7b49092544eda967f938",
+    "coverHiResImage": "",
+    "coverImage": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000028929/ff61f4e820cb7f1d490f979f5e8aabf4af6f60224c2ed17f96f826a8e4be319c",
+    "bannerImages": [
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000028929/b4c3437a811cc3eb6e597bb78eb9caead8aa8837bf5dd1d021ed67c0f85a9beb",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000028929/f96e9ecd574534da5a37505a95efe9ad053f645023334220c6ea7002154077de",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000028929/28a65bf93308e76c9119598785cf41c471e80aaf677cadfa78b7a5e36cd4bc1b",
+     "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch/70070000028929/add6a35d447039971a8b616796cde80b80e1df4e355ba2729e48e57c8da7fcac",
+     "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch/70070000028929/ff61f4e820cb7f1d490f979f5e8aabf4af6f60224c2ed17f96f826a8e4be319c",
+     "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch/70070000028929/b4c3437a811cc3eb6e597bb78eb9caead8aa8837bf5dd1d021ed67c0f85a9beb",
+     "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch/70070000028929/f96e9ecd574534da5a37505a95efe9ad053f645023334220c6ea7002154077de",
+     "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch/70070000028929/28a65bf93308e76c9119598785cf41c471e80aaf677cadfa78b7a5e36cd4bc1b"
+    ],
+    "gallery": [],
+    "youtubeTrailer": "https://www.youtube.com/watch?v=9kTZDfeR-Lg",
+    "releaseDate": "2025-10-14",
+    "ageRating": "ESRB: E10+ — Mild Lyrics; Users Interact, In-Game Purchases",
+    "metacriticRating": 74,
+    "genres": [
+     "Music",
+     "Party",
+     "Fitness"
+    ],
+    "platform": "switch2",
+    "size": 1.015,
+    "numberOfPlayers": "1-6",
+    "supportedLanguages": "Japanese, British English, French, German, Italian, Spanish, Korean, Dutch, Portuguese, Russian, Simplified Chinese, Brazilian Portuguese, Traditional Chinese, American English",
+    "hardwareModel": "",
+    "colorEdition": "",
+    "storageCapacity": "",
+    "screenSpecs": "",
+    "batteryLife": "",
+    "boxContents": [],
+    "boxContentsText": "",
+    "warrantyCondition": "",
+    "connectivity": "",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "Global",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "",
+    "redemptionSteps": [],
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 12000,
+    "cost": 1250,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": false,
+    "displayOrder": 0,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "Offline Account",
+      "description": "حساب مشترك",
+      "isInfiniteStock": true,
+      "customerDescription": "حساب مشترك"
+     },
+     {
+      "id": "online_account",
+      "name": "Online Account",
+      "description": "حساب خاص بك",
+      "isInfiniteStock": true,
+      "customerDescription": "حساب خاص بك"
+     }
+    ],
+    "types": [
+     {
+      "id": "standard_offline",
+      "name": "Standard Edition",
+      "optionId": "offline_account",
+      "price": "9000",
+      "cost": 1250,
+      "description": "اللعبة الأساسية",
+      "isInfiniteStock": true,
+      "customerDescription": "اللعبة الأساسية"
+     },
+     {
+      "id": "standard_online",
+      "name": "Standard Edition",
+      "optionId": "online_account",
+      "price": 39000,
+      "cost": 29500,
+      "description": "اللعبة الأساسية",
+      "isInfiniteStock": true,
+      "customerDescription": "اللعبة الأساسية"
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "active",
+    "kind": "account",
+    "trade_value_iqd": 0,
+    "store_offer_bonus_iqd": 0,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "id": "prd_e035ee51b91d4187",
+    "schema_version": 20,
+    "titleAr": "جاست دانس 2026 إديشن",
+    "compatibility": [
+     "Nintendo Switch 2 (seller-classified listing)",
+     "Nintendo Switch software via compatibility"
+    ],
+    "edition": "Standard",
+    "developer": "Ubisoft Paris",
+    "publisher": "Ubisoft",
+    "opencriticRating": 76,
+    "userScore": 4.3,
+    "officialUrl": "https://www.nintendo.com/us/store/products/just-dance-2026-edition-70050000058674-switch/",
+    "eshopUrl": "https://www.nintendo.com/us/store/products/just-dance-2026-edition-70050000058674-switch/",
+    "gameIsOffline": true,
+    "gameIsOnline": true,
+    "gameLanguageLocked": false,
+    "description_short": "Ubisoft's 2026 Just Dance song pack and entitlement for the Just Dance platform, supporting local motion-controlled dancing and connected features.",
+    "description_ar": "يضيف JUST DANCE 2026 EDITION مكتبة أغاني 2026 إلى منصة Just Dance الحالية من Ubisoft. يستخدم اللاعبون التحكم بالحركة لمتابعة الرقصات والمنافسة أو التعاون محليًا والوصول إلى الخدمات المتصلة عند توفرها. بطاقة البائع حمراء ومصنفة كعرض Switch 2، لذلك يتبع هذا الاستيراد قاعدة منصة البائع، مع ملاحظة أن متجر Nintendo الرسمي يعرض الاستحقاق كبرنامج Nintendo Switch يمكن تشغيله على Nintendo Switch 2 عبر التوافق.",
+    "videos": [
+     {
+      "title": "JUST DANCE 2026 EDITION — Official Trailer",
+      "url": "https://www.youtube.com/watch?v=9kTZDfeR-Lg"
+     }
+    ],
+    "nintendoEshopUrl": "https://www.nintendo.com/us/store/products/just-dance-2026-edition-70050000058674-switch/",
+    "nintendoOnlineRequired": true,
+    "nintendoCloudSaves": true,
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": false,
+    "nintendoPlayModes": "TV, Tabletop",
+    "nintendoNotes": "Seller screenshot classification: Nintendo Switch 2 (red seller card). Nintendo's official store lists JUST DANCE 2026 EDITION as Nintendo Switch software; this import keeps platform=switch2 solely to follow the seller-platform rule, while recording the official classification here. Product account variants and costs are based on the supplied seller screenshots; platform classification follows the seller-card rule requested for this import.\n\nOffline selling price is selected within 5,000–25,000 IQD according to demand, supply, popularity, recency, perceived market value and, where relevant, supplier cost. It is not a fixed cost multiplier. Online pricing is market-based and may be higher.\n\nExtraction rules used for this file: production images are verified game media, not seller/Taobao images. Front Box Cover is retail box-front artwork; Square Card is a separate square asset; Cover Image is page/key art; 3D Texture Source is high-resolution front cover art. Banner and Gallery media are separate verified artwork/screenshots. Device Performance contains one device object only. Offline selling prices are chosen within 5,000–25,000 IQD according to demand, supply, popularity, recency, perceived value and supplier cost; online prices remain market-based and may be higher.",
+    "switch2Enhanced": false,
+    "switch2Exclusive": false,
+    "switch2Features": [
+     "Designed or seller-classified for Nintendo Switch 2"
+    ],
+    "tagline": "Dance to the 2026 song catalog through Ubisoft's current Just Dance platform.",
+    "playTimeMain": 10,
+    "playTimeFull": 10,
+    "editionsList": [
+     {
+      "name": "Standard Edition",
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000028929/93dc6060a9dd96800995c66d7cc2bcb01949065ee12e7b49092544eda967f938",
+      "contents": [
+       {
+        "label": "Base game"
+       },
+       {
+        "label": "Seller account access"
+       },
+       {
+        "label": "Nintendo platform version shown in this import"
+       }
+      ]
+     }
+    ],
+    "gameplayPillars": [
+     {
+      "title": "Dance Tracking",
+      "description": "Motion input scores how closely players follow choreography.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000028929/b4c3437a811cc3eb6e597bb78eb9caead8aa8837bf5dd1d021ed67c0f85a9beb"
+     },
+     {
+      "title": "Song Variety",
+      "description": "A broad pop-focused song catalog supports solo and group sessions.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000028929/f96e9ecd574534da5a37505a95efe9ad053f645023334220c6ea7002154077de"
+     },
+     {
+      "title": "Party Play",
+      "description": "Local multiplayer and shared routines are designed for social play.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000028929/28a65bf93308e76c9119598785cf41c471e80aaf677cadfa78b7a5e36cd4bc1b"
+     }
+    ],
+    "worldSummary": "A stylized collection of music-video-like dance maps, each built around a song, coach choreography, scoring, and themed visual direction.",
+    "storyChapters": [
+     {
+      "title": "Choose a Song",
+      "body": "Players select tracks from the 2026 song list and follow the on-screen coach using motion tracking and scoring.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000028929/28a65bf93308e76c9119598785cf41c471e80aaf677cadfa78b7a5e36cd4bc1b"
+     },
+     {
+      "title": "Dance Together",
+      "body": "Local multiplayer and connected Just Dance services turn songs into party sessions, challenges, and shared playlists.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch/70070000028929/add6a35d447039971a8b616796cde80b80e1df4e355ba2729e48e57c8da7fcac"
+     },
+     {
+      "title": "Keep the Library Growing",
+      "body": "Seasonal content and the Just Dance+ ecosystem expand the available music beyond the base track list where supported.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch/70070000028929/ff61f4e820cb7f1d490f979f5e8aabf4af6f60224c2ed17f96f826a8e4be319c"
+     }
+    ],
+    "galleryImages": [
+     {
+      "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch/70070000028929/add6a35d447039971a8b616796cde80b80e1df4e355ba2729e48e57c8da7fcac",
+      "alt": "Verified official/publisher media for JUST DANCE 2026 EDITION — gallery image 1."
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch/70070000028929/ff61f4e820cb7f1d490f979f5e8aabf4af6f60224c2ed17f96f826a8e4be319c",
+      "alt": "Verified official/publisher media for JUST DANCE 2026 EDITION — gallery image 2."
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch/70070000028929/b4c3437a811cc3eb6e597bb78eb9caead8aa8837bf5dd1d021ed67c0f85a9beb",
+      "alt": "Verified official/publisher media for JUST DANCE 2026 EDITION — gallery image 3."
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch/70070000028929/f96e9ecd574534da5a37505a95efe9ad053f645023334220c6ea7002154077de",
+      "alt": "Verified official/publisher media for JUST DANCE 2026 EDITION — gallery image 4."
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch/70070000028929/28a65bf93308e76c9119598785cf41c471e80aaf677cadfa78b7a5e36cd4bc1b",
+      "alt": "Verified official/publisher media for JUST DANCE 2026 EDITION — gallery image 5."
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000028929/b4c3437a811cc3eb6e597bb78eb9caead8aa8837bf5dd1d021ed67c0f85a9beb",
+      "alt": "Verified official/publisher media for JUST DANCE 2026 EDITION — gallery image 6."
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000028929/f96e9ecd574534da5a37505a95efe9ad053f645023334220c6ea7002154077de",
+      "alt": "Verified official/publisher media for JUST DANCE 2026 EDITION — gallery image 7."
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000028929/28a65bf93308e76c9119598785cf41c471e80aaf677cadfa78b7a5e36cd4bc1b",
+      "alt": "Verified official/publisher media for JUST DANCE 2026 EDITION — gallery image 8."
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cc_fill%2Cg_auto/f_auto/q_auto/dpr_1.5/store/software/switch/70070000028929/93dc6060a9dd96800995c66d7cc2bcb01949065ee12e7b49092544eda967f938",
+      "alt": "Verified official/publisher media for JUST DANCE 2026 EDITION — gallery image 9."
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000028929/93dc6060a9dd96800995c66d7cc2bcb01949065ee12e7b49092544eda967f938",
+      "alt": "Verified official/publisher media for JUST DANCE 2026 EDITION — gallery image 10."
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_1%3A1%2Cc_fill%2Cg_auto/f_auto/q_auto/dpr_1.5/store/software/switch/70070000028929/93dc6060a9dd96800995c66d7cc2bcb01949065ee12e7b49092544eda967f938",
+      "alt": "Verified official/publisher media for JUST DANCE 2026 EDITION — gallery image 11."
+     },
+     {
+      "alt": "Verified official/publisher media for JUST DANCE 2026 EDITION — gallery image 12."
+     }
+    ],
+    "perfNotes": "No verified official rendering-resolution or frame-rate specification is asserted. Official Nintendo product classification is Nintendo Switch software; seller classification is Switch 2.",
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "hardwareId": "prd_acf4c89908764c62",
+      "informationStatus": "compatible-no-published-performance-spec",
+      "unavailableReason": "No reliable public exact rendering-resolution/frame-rate specification was verified.",
+      "handheld": {
+       "supported": false,
+       "resolution": "Not Supported",
+       "outputResolution": "Not Supported",
+       "fps": "Not Supported",
+       "notes": "The seller classifies this product as Switch 2, while the official software release is Nintendo Switch software playable on Switch 2. Handheld Mode is not treated as supported for motion-control play. Nintendo/Ubisoft do not publish a verified Switch 2 TV resolution/FPS specification, so those values are explicitly marked Not Published."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "Not Published",
+       "outputResolution": "Not Published",
+       "fps": "Not Published",
+       "notes": "The seller classifies this product as Switch 2, while the official software release is Nintendo Switch software playable on Switch 2. Handheld Mode is not treated as supported for motion-control play. Nintendo/Ubisoft do not publish a verified Switch 2 TV resolution/FPS specification, so those values are explicitly marked Not Published."
+      },
+      "sourceName": "Nintendo / Ubisoft product information + Switch 2 compatibility reviews",
+      "sourceUrl": "https://www.nintendo.com/us/store/products/just-dance-2026-edition-70050000058674-switch/",
+      "verifiedAt": "2026-08-24",
+      "verificationStatus": "limited",
+      "performanceNotes": "The seller classifies this product as Switch 2, while the official software release is Nintendo Switch software playable on Switch 2. Handheld Mode is not treated as supported for motion-control play. Nintendo/Ubisoft do not publish a verified Switch 2 TV resolution/FPS specification, so those values are explicitly marked Not Published."
+     }
+    ],
+    "downloadSizeGb": 1.015,
+    "storageNotes": "Storage note: 3 MB entitlement; Just Dance Free Experience app requires additional storage. Additional application data, songs, updates, or DLC may require more space.",
+    "languagesAudio": [
+     "Original song vocals in multiple languages"
+    ],
+    "languagesText": [
+     "American English",
+     "English",
+     "Japanese"
+    ],
+    "arabicSupport": false,
+    "mpLocalPlayers": true,
+    "mpOnlinePlayers": true,
+    "mpCoop": true,
+    "mpCompetitive": true,
+    "mpSplitScreen": false,
+    "mpLocalWireless": false,
+    "guides": [
+     {
+      "title": "Official product and gameplay information",
+      "summary": "Official Nintendo/publisher information covering features, supported modes, requirements and product-specific notices.",
+      "url": "https://www.nintendo.com/us/store/products/just-dance-2026-edition-70050000058674-switch/"
+     },
+     {
+      "title": "GameFAQs guides and FAQs search",
+      "summary": "Community guide index for walkthroughs, FAQs, collectibles, unlockables and troubleshooting. Verify platform/version when following a guide.",
+      "url": "https://gamefaqs.gamespot.com/search?game=JUST+DANCE+2026+EDITION"
+     },
+     {
+      "title": "Deku Deals technical/product reference",
+      "summary": "Reference page used for platform, file size, play modes, critic aggregates and completion-time metadata where available.",
+      "url": "https://www.dekudeals.com/items/just-dance-2026"
+     }
+    ],
+    "completionMain": 10,
+    "completionExtras": 10,
+    "completionAll": 10,
+    "faq": [
+     {
+      "q": "What platform is this import for?",
+      "a": "This import is classified as Nintendo Switch 2. See Nintendo Notes for the seller-vs-official platform distinction."
+     },
+     {
+      "q": "How many players are supported?",
+      "a": "Official player support varies by mode; the primary published range is 1-6 player(s). See multiplayer fields for local, wireless, and online capabilities."
+     },
+     {
+      "q": "Does this seller listing include a separate DLC account type?",
+      "a": "No. The supplied seller listing shows two variants, so only Standard Offline and Standard Online account types are created."
+     }
+    ],
+    "verdictScore": 7.5,
+    "verdictSummary": "Editorial synthesis for JUST DANCE 2026 EDITION, based on the verified feature set, platform implementation, content scope and aggregated critical reception. This score is an internal summary, not a copied external review score.",
+    "reviews": [
+     {
+      "source": "Metacritic",
+      "score": "74",
+      "quote": "Aggregated critic score for the game/platform listing.",
+      "url": "https://www.dekudeals.com/items/just-dance-2026"
+     },
+     {
+      "source": "OpenCritic",
+      "score": "76",
+      "quote": "Aggregated critic score reported for the game.",
+      "url": "https://www.dekudeals.com/items/just-dance-2026"
+     },
+     {
+      "source": "Metacritic User Score",
+      "score": "4.3",
+      "quote": "Aggregated user score reference.",
+      "url": "https://www.dekudeals.com/items/just-dance-2026"
+     }
+    ],
+    "timeline": [
+     {
+      "date": "2025-10-14",
+      "title": "JUST DANCE 2026 EDITION release",
+      "body": "The 2026 edition launched with 40 new songs."
+     },
+     {
+      "date": "2025-10-14",
+      "title": "Party and Challenge features",
+      "body": "The edition launched with new party/challenge play options."
+     },
+     {
+      "date": "2025-10-14",
+      "title": "Just Dance+ trial",
+      "body": "The game includes limited trial access to the subscription song catalog."
+     }
+    ],
+    "patchNotes": [
+     {
+      "version": "2026 Edition launch",
+      "date": "2025-10-14",
+      "body": "Launched with 40 new songs, local multiplayer and Just Dance+ integration."
+     }
+    ],
+    "soundtrack": [
+     {
+      "title": "JUST DANCE 2026 EDITION — official song list",
+      "url": "https://www.ubisoft.com/en-us/game/just-dance/2026"
+     },
+     {
+      "title": "JUST DANCE 2026 EDITION — VGMdb soundtrack catalog search",
+      "url": "https://vgmdb.net/search?q=JUST+DANCE+2026+EDITION&type=album"
+     },
+     {
+      "title": "JUST DANCE 2026 EDITION — soundtrack video search",
+      "url": "https://www.youtube.com/results?search_query=JUST+DANCE+2026+EDITION+official+soundtrack"
+     }
+    ],
+    "seriesName": "Just Dance",
+    "studioName": "Ubisoft",
+    "studioUrl": "https://www.ubisoft.com/",
+    "studioLocation": "Paris, France / international production teams",
+    "studioAbout": "Ubisoft develops and publishes the long-running Just Dance music and party-game series.",
+    "sources": [
+     {
+      "name": "Nintendo / publisher official product page",
+      "url": "https://www.nintendo.com/us/store/products/just-dance-2026-edition-70050000058674-switch/"
+     },
+     {
+      "name": "Deku Deals — platform, size, scores and play-time reference",
+      "url": "https://www.dekudeals.com/items/just-dance-2026"
+     },
+     {
+      "name": "The Cover Project — Full Retail Wrap",
+      "url": "https://www.thecoverproject.net/view.php?game_id=20550"
+     }
+    ],
+    "fitFor": [
+     "Party and dance-game players",
+     "Families and local groups",
+     "Players who enjoy motion-controlled fitness and music"
+    ],
+    "notFitFor": [
+     "Handheld-only players",
+     "Players who cannot use motion controls",
+     "Players seeking traditional controller-based gameplay"
+    ],
+    "features": [
+     "2026 Just Dance song catalog",
+     "Up to six local dancers in supported modes",
+     "Connected Just Dance platform and optional subscription services"
+    ],
+    "verdictPros": [
+     "Forty new songs plus access to the unified Just Dance platform",
+     "Local multiplayer for up to six dancers",
+     "Multiple fitness, party and challenge modes"
+    ],
+    "verdictCons": [
+     "Best experience requires space and motion/phone controls",
+     "Just Dance+ catalog requires a paid subscription after trial access",
+     "No traditional narrative campaign"
+    ],
+    "seriesEntries": [
+     "Just Dance 2025 Edition",
+     "JUST DANCE 2026 EDITION"
+    ],
+    "setupNeeds": [
+     "Nintendo Switch 2 system under the seller's platform classification",
+     "Just Dance Free Experience/base platform installation required",
+     "Compatible Joy-Con or supported controller setup required"
+    ],
+    "boxContentsList": "[Circular]",
+    "image": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000028929/ff61f4e820cb7f1d490f979f5e8aabf4af6f60224c2ed17f96f826a8e4be319c",
+    "banner": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000028929/b4c3437a811cc3eb6e597bb78eb9caead8aa8837bf5dd1d021ed67c0f85a9beb",
+    "schemaId": "",
+    "badgeEn": "وفر 40%",
+    "badgeKu": "وفر 40%",
+    "featuresEn": [
+     "2026 Just Dance song catalog",
+     "Up to six local dancers in supported modes",
+     "Connected Just Dance platform and optional subscription services"
+    ],
+    "featuresKu": [
+     "2026 Just Dance song catalog",
+     "Up to six local dancers in supported modes",
+     "Connected Just Dance platform and optional subscription services"
+    ],
+    "sales": 0,
+    "createdAt": "2026-08-27T04:36:02.708Z",
+    "created_at": "2026-08-27T04:36:02.708Z",
+    "updatedAt": "2026-08-27T04:36:02.708Z",
+    "updated_at": "2026-08-27T04:36:02.708Z",
+    "images": [],
+    "modes": []
+   }
+  },
+  {
+   "id": "prd_0744b9276a164853",
+   "slug": "kingdom-hearts-integrum-masterpiece-for-cloud",
+   "title": "KINGDOM HEARTS INTEGRUM MASTERPIECE for Cloud",
+   "platform": "switch1",
+   "isHidden": true,
+   "hash": "8ca68fa49270ae1e7b42ac5aef77d677d089bceb86bb1374a1d19e36e65ce743",
+   "images": [
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://banan.to/api/files/products/prd_0744b9276a164853/cover-af6bf40078a21788.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 365268,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-012/kingdom-hearts-integrum-masterpiece-for-cloud__detail-cover-0.png"
+    }
+   ],
+   "record": {
+    "title": "KINGDOM HEARTS INTEGRUM MASTERPIECE for Cloud",
+    "titleEn": "KINGDOM HEARTS INTEGRUM MASTERPIECE for Cloud",
+    "titleKu": "",
+    "slug": "kingdom-hearts-integrum-masterpiece-for-cloud",
+    "description": "The official Switch 1 Kingdom Hearts collection is the cloud-streaming Integrum Masterpiece bundle, combining HD 1.5+2.5, HD 2.8, and Kingdom Hearts III + Re Mind. Kingdom Hearts introduces Sora, Donald, and Goofy as they travel between worlds searching for friends. The bundle culminates in Kingdom Hearts III and its Re Mind content.",
+    "descriptionEn": "The official Switch 1 Kingdom Hearts collection is the cloud-streaming Integrum Masterpiece bundle, combining HD 1.5+2.5, HD 2.8, and Kingdom Hearts III + Re Mind. Kingdom Hearts introduces Sora, Donald, and Goofy as they travel between worlds searching for friends. The bundle culminates in Kingdom Hearts III and its Re Mind content.",
+    "descriptionKu": "",
+    "cartridgeImage": "",
+    "nintendoCardImage": "",
+    "coverHiResImage": "",
+    "coverImage": "/api/files/products/prd_0744b9276a164853/cover-af6bf40078a21788.webp",
+    "bannerImages": [
+     ""
+    ],
+    "gallery": [],
+    "youtubeTrailer": "",
+    "releaseDate": "2022-02-10",
+    "ageRating": "ESRB E10+ / T depending on included title",
+    "metacriticRating": "85",
+    "genres": [
+     "Action RPG",
+     "Adventure"
+    ],
+    "platform": "switch1",
+    "size": 0.1,
+    "numberOfPlayers": "Single system (1)",
+    "supportedLanguages": "Official supported language list varies by region; see the publisher page linked in Sources.",
+    "hardwareModel": "",
+    "colorEdition": "",
+    "storageCapacity": "",
+    "screenSpecs": "",
+    "batteryLife": "",
+    "boxContents": [],
+    "boxContentsText": "",
+    "warrantyCondition": "",
+    "connectivity": "",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "Global",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "",
+    "redemptionSteps": [],
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 8500,
+    "cost": 1500,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": true,
+    "displayOrder": 0,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "مشترك",
+      "description": "مشترك",
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_account",
+      "name": "خاص بك",
+      "description": "خاص بك",
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "types": [
+     {
+      "id": "offline_base",
+      "name": "مشترك — اللعبة الأساسية",
+      "optionId": "offline_account",
+      "price": 8500,
+      "cost": 1500,
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_base",
+      "name": "خاص بك — اللعبة الأساسية",
+      "optionId": "online_account",
+      "price": 18250,
+      "cost": 14250,
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "Active",
+    "kind": "account",
+    "trade_value_iqd": 7750,
+    "store_offer_bonus_iqd": 1250,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "id": "prd_0744b9276a164853",
+    "schema_version": 24,
+    "titleAr": "كينغدوم هارتس إنتيغروم ماستر بيس فور كلاود",
+    "compatibility": [
+     "Nintendo Switch Cloud Version",
+     "Nintendo Switch 2 can run the Switch cloud software, but native Switch 2 collection is separate"
+    ],
+    "edition": "Standard / Store Variants",
+    "developer": "SQUARE ENIX",
+    "publisher": "SQUARE ENIX",
+    "seriesName": "KINGDOM HEARTS INTEGRUM MASTERPIECE for Cloud",
+    "price_usd": 89.99,
+    "officialUrl": "https://www.nintendo.com/us/store/products/kingdom-hearts-integrum-masterpiece-for-cloud-switch/",
+    "eshopUrl": "https://www.nintendo.com/us/store/products/kingdom-hearts-integrum-masterpiece-for-cloud-switch/",
+    "gameIsOffline": true,
+    "gameIsOnline": true,
+    "gameLanguageLocked": false,
+    "description_short": "The official Switch 1 Kingdom Hearts collection is the cloud-streaming Integrum Masterpiece bundle, combining HD 1.5+2.5, HD 2.8, and Kingdom Hearts III + Re Mind.",
+    "description_ar": "كينغدوم هارتس إنتيغروم ماستر بيس فور كلاود — The official Switch 1 Kingdom Hearts collection is the cloud-streaming Integrum Masterpiece bundle, combining HD 1.5+2.5, HD 2.8, and Kingdom Hearts III + Re Mind.",
+    "languagesText": [
+     "See official supported languages on the linked Nintendo/publisher product page"
+    ],
+    "languagesAudio": [
+     "Audio language availability varies by title and region; see official product information"
+    ],
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": true,
+    "nintendoPlayModes": "TV / Tabletop / Handheld",
+    "nintendoOnlineRequired": true,
+    "nintendoCloudSaves": false,
+    "nintendoGameKeyCard": false,
+    "nintendoPhysicalNeedsDownload": false,
+    "switch2Enhanced": false,
+    "switch2Exclusive": false,
+    "nintendoNotes": "Platform, release, player-count, storage, compatibility, and feature statements in this import are grounded in the official Nintendo/publisher pages listed under Sources. Store package prices are user-supplied storefront values, not assumed MSRP.",
+    "editionsList": [
+     {
+      "name": "Regular / Offline",
+      "contents": [
+       {
+        "label": "Regular / Offline store package"
+       },
+       {
+        "label": "Offline account access"
+       },
+       {
+        "label": "Infinite stock by default"
+       }
+      ]
+     },
+     {
+      "name": "Standard / Online",
+      "contents": [
+       {
+        "label": "Standard / Online store package"
+       },
+       {
+        "label": "Online account access"
+       },
+       {
+        "label": "Infinite stock by default"
+       }
+      ]
+     }
+    ],
+    "gameplayPillars": [
+     {
+      "title": "Large series compilation",
+      "description": "The bundle packages the main Kingdom Hearts collections and Kingdom Hearts III into one Switch purchase."
+     },
+     {
+      "title": "Action RPG combat",
+      "description": "Real-time Keyblade combat combines physical attacks, magic, forms, summons, and character-specific systems."
+     },
+     {
+      "title": "Disney and Square Enix worlds",
+      "description": "The series crosses original Kingdom Hearts characters with Disney settings and recurring FINAL FANTASY elements."
+     },
+     {
+      "title": "Cloud streaming requirement",
+      "description": "The Switch 1 versions in this bundle are cloud-based and require a persistent internet connection for gameplay."
+     },
+     {
+      "title": "Long-form connected story",
+      "description": "Multiple games and cinematic collections connect a large timeline spanning Sora, Roxas, Aqua, Terra, Ventus, and others."
+     }
+    ],
+    "worldSummary": "The official Switch 1 Kingdom Hearts collection is the cloud-streaming Integrum Masterpiece bundle, combining HD 1.5+2.5, HD 2.8, and Kingdom Hearts III + Re Mind. Kingdom Hearts introduces Sora, Donald, and Goofy as they travel between worlds searching for friends. The bundle culminates in Kingdom Hearts III and its Re Mind content.",
+    "storyChapters": [
+     {
+      "title": "Begin Sora’s journey",
+      "body": "Kingdom Hearts introduces Sora, Donald, and Goofy as they travel between worlds searching for friends."
+     },
+     {
+      "title": "Follow the wider timeline",
+      "body": "Prequels and side stories expand the histories of Keyblade wielders and Organization XIII."
+     },
+     {
+      "title": "Reach Kingdom Hearts II and beyond",
+      "body": "The narrative broadens through multiple games with increasingly interconnected lore."
+     },
+     {
+      "title": "Play the 2.8 collection",
+      "body": "Dream Drop Distance and related content bridge major story threads toward Kingdom Hearts III."
+     },
+     {
+      "title": "Complete Kingdom Hearts III + Re Mind",
+      "body": "The bundle culminates in Kingdom Hearts III and its Re Mind content."
+     }
+    ],
+    "features": [
+     "Three major Kingdom Hearts packages",
+     "Cloud-streaming Switch versions",
+     "Large amount of story content",
+     "Real-time action RPG combat",
+     "Re Mind content included with KHIII package"
+    ],
+    "perfResolutionDocked": "Cloud stream — client output varies",
+    "perfResolutionHandheld": "Cloud stream — client output varies",
+    "perfFps": "0",
+    "perfHdr": false,
+    "playTimeMain": 150,
+    "completionMain": 250,
+    "completionExtras": 350,
+    "faq": [
+     {
+      "q": "What is the actual Switch 1 collection called?",
+      "a": "Nintendo sells KINGDOM HEARTS INTEGRUM MASTERPIECE for Cloud as the Switch 1 collection."
+     },
+     {
+      "q": "Does it require internet?",
+      "a": "Yes. These are cloud versions and require a stable internet connection to play."
+     },
+     {
+      "q": "Is it a native download of all games?",
+      "a": "No. The Switch 1 collection streams the games from cloud servers."
+     },
+     {
+      "q": "What is included?",
+      "a": "HD 1.5+2.5 ReMIX Cloud Version, HD 2.8 Final Chapter Prologue Cloud Version, and Kingdom Hearts III + Re Mind Cloud Version."
+     },
+     {
+      "q": "Is there a different Switch 2 collection?",
+      "a": "A separate native Switch 2 collection has been announced for 2026, so it should not be confused with this Switch 1 cloud bundle."
+     }
+    ],
+    "verdictScore": 8.5,
+    "verdictPros": [
+     "Huge series compilation",
+     "Includes major story arcs",
+     "Strong action-RPG variety",
+     "Convenient single purchase structure",
+     "Re Mind included"
+    ],
+    "verdictCons": [
+     "Requires persistent internet",
+     "Cloud latency/quality depends on connection",
+     "Cannot be treated like a normal offline native Switch game",
+     "Very dense series story",
+     "Switch 2 native collection is a separate future product"
+    ],
+    "timeline": [
+     {
+      "date": "2022-02-10",
+      "title": "Released on target Nintendo platform"
+     }
+    ],
+    "patchNotes": [
+     {
+      "version": "Current retail build",
+      "date": "2026-08-27"
+     }
+    ],
+    "studioName": "SQUARE ENIX",
+    "studioUrl": "https://www.nintendo.com/us/store/products/kingdom-hearts-integrum-masterpiece-for-cloud-switch/",
+    "studioLocation": "See publisher/developer profile",
+    "sources": [
+     {
+      "name": "Official Nintendo / publisher product page",
+      "url": "https://www.nintendo.com/us/store/products/kingdom-hearts-integrum-masterpiece-for-cloud-switch/"
+     }
+    ],
+    "downloadSizeGb": 0.1,
+    "requiredSpaceGb": 0.1,
+    "microSdRecommended": false,
+    "storageNotes": "Storage requirements follow the official product listing where a final numeric size is published; upcoming titles may require a later refresh when final size is posted.",
+    "mpLocalPlayers": false,
+    "mpOnlinePlayers": true,
+    "mpCoop": false,
+    "mpCompetitive": true,
+    "mpLocalWireless": false,
+    "mpSplitScreen": false,
+    "dlc": [
+     {
+      "name": "Downloadable / additional content status",
+      "description": "The bundle already includes the Re Mind content within the Kingdom Hearts III package; no separate store DLC variant is required."
+     }
+    ],
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "deviceModel": "Nintendo Switch",
+      "hardwareId": "nintendo-switch",
+      "informationStatus": "Available",
+      "handheld": {
+       "supported": true,
+       "resolution": "Cloud stream — client output varies",
+       "resolutionDynamic": false,
+       "renderingResolution": "Cloud stream — client output varies",
+       "outputResolution": "Cloud stream — client output varies",
+       "fps": "Cloud stream — connection dependent",
+       "fpsMin": "Cloud stream — connection dependent",
+       "fpsMax": "Cloud stream — connection dependent",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Handheld",
+       "notes": "The games are streamed from cloud servers; delivered resolution and frame rate depend on connection quality and service conditions."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "Cloud stream — client output varies",
+       "resolutionDynamic": false,
+       "renderingResolution": "Cloud stream — client output varies",
+       "outputResolution": "Cloud stream — client output varies",
+       "fps": "Cloud stream — connection dependent",
+       "fpsMin": "Cloud stream — connection dependent",
+       "fpsMax": "Cloud stream — connection dependent",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "TV / Docked",
+       "notes": "The games are streamed from cloud servers; delivered resolution and frame rate depend on connection quality and service conditions."
+      },
+      "modes": [
+       {
+        "name": "Primary documented/compatibility profile",
+        "handheldResolution": "Cloud stream — client output varies",
+        "handheldFps": "Cloud stream — connection dependent",
+        "tvResolution": "Cloud stream — client output varies",
+        "tvFps": "Cloud stream — connection dependent",
+        "hdr": false,
+        "vrr": false,
+        "notes": "The games are streamed from cloud servers; delivered resolution and frame rate depend on connection quality and service conditions."
+       }
+      ],
+      "upscaling": "Game / system-specific scaling where applicable",
+      "rayTracing": false,
+      "rayTracingMode": "Not Supported",
+      "loadingTime": "Scene-dependent",
+      "loadingNotes": "Loading time varies by scene, save state, storage, version, and patch.",
+      "gameVersion": "Current listed version",
+      "patchVersion": "Current available update",
+      "testedDate": "2026-08-27",
+      "sourceName": "Official product / compatibility information",
+      "sourceUrl": "https://www.nintendo.com/us/store/products/kingdom-hearts-integrum-masterpiece-for-cloud-switch/",
+      "performanceNotes": "The games are streamed from cloud servers; delivered resolution and frame rate depend on connection quality and service conditions."
+     },
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "hardwareId": "nintendo-switch-2",
+      "informationStatus": "Available",
+      "handheld": {
+       "supported": true,
+       "resolution": "Cloud stream — client output varies",
+       "resolutionDynamic": false,
+       "renderingResolution": "Cloud stream — client output varies",
+       "outputResolution": "Cloud stream — client output varies",
+       "fps": "Cloud stream — connection dependent",
+       "fpsMin": "Cloud stream — connection dependent",
+       "fpsMax": "Cloud stream — connection dependent",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Handheld",
+       "notes": "Backward compatibility does not convert the cloud release into a native Switch 2 version."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "Cloud stream — client output varies",
+       "resolutionDynamic": false,
+       "renderingResolution": "Cloud stream — client output varies",
+       "outputResolution": "Cloud stream — client output varies",
+       "fps": "Cloud stream — connection dependent",
+       "fpsMin": "Cloud stream — connection dependent",
+       "fpsMax": "Cloud stream — connection dependent",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "TV / Docked",
+       "notes": "Backward compatibility does not convert the cloud release into a native Switch 2 version."
+      },
+      "modes": [
+       {
+        "name": "Primary documented/compatibility profile",
+        "handheldResolution": "Cloud stream — client output varies",
+        "handheldFps": "Cloud stream — connection dependent",
+        "tvResolution": "Cloud stream — client output varies",
+        "tvFps": "Cloud stream — connection dependent",
+        "hdr": false,
+        "vrr": false,
+        "notes": "Backward compatibility does not convert the cloud release into a native Switch 2 version."
+       }
+      ],
+      "upscaling": "Game / system-specific scaling where applicable",
+      "rayTracing": false,
+      "rayTracingMode": "Not Supported",
+      "loadingTime": "Scene-dependent",
+      "loadingNotes": "Loading time varies by scene, save state, storage, version, and patch.",
+      "gameVersion": "Current listed version",
+      "patchVersion": "Current available update",
+      "testedDate": "2026-08-27",
+      "sourceName": "Official product / compatibility information",
+      "sourceUrl": "https://www.nintendo.com/us/store/products/kingdom-hearts-integrum-masterpiece-for-cloud-switch/",
+      "performanceNotes": "Backward compatibility does not convert the cloud release into a native Switch 2 version."
+     }
+    ],
+    "switch2UpgradePrice": 0,
+    "boxContentsList": [],
+    "image": "",
+    "banner": "",
+    "schemaId": "",
+    "batchImport": true,
+    "createdAt": "2026-08-28T18:48:28.562Z",
+    "updatedAt": "2026-08-28T18:48:28.562Z"
+   }
+  },
+  {
+   "id": "prd_f2f7233a58f94d1c",
+   "slug": "kirby-air-riders",
+   "title": "Kirby Air Riders",
+   "platform": "switch2",
+   "isHidden": false,
+   "hash": "4752971711ed74c1b129691a23dd4e18ae3f0f12525cc393dfee2105257d6ff2",
+   "images": [
+    {
+     "role": "front-box",
+     "field": "cartridgeImage",
+     "url": "https://banan.to/api/files/products/prd_f2f7233a58f94d1c/cartridgeImage-e852a694c8d3edba.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "front-box",
+     "field": "box_front_url",
+     "url": "https://i5.walmartimages.com/seo/Kirby-Air-Riders-Nintendo-Switch-2_8e868687-e419-4be9-b4ab-f48bce5bb9b7.7b7c407943733785fbd491ce84f59a98.jpeg?odnBg=FFFFFF&odnHeight=1200&odnWidth=1200",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 169071,
+     "width": 1200,
+     "height": 1200,
+     "thumb": "review-workdir/thumbs/batch-012/kirby-air-riders__front-box-1.png"
+    },
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://banan.to/api/files/products/prd_f2f7233a58f94d1c/nintendoCardImage-1afe5957b95e3382.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://banan.to/api/files/products/prd_f2f7233a58f94d1c/coverImage-e852a694c8d3edba.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "3d-texture",
+     "field": "coverHiResImage",
+     "url": "https://banan.to/api/files/products/prd_f2f7233a58f94d1c/coverHiResImage-d15f34a6f6952506.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 4953870,
+     "width": 4932,
+     "height": 3817,
+     "thumb": "review-workdir/thumbs/batch-012/kirby-air-riders__3d-texture-4.png"
+    },
+    {
+     "role": "listing",
+     "field": "image",
+     "url": "https://banan.to/api/files/products/prd_f2f7233a58f94d1c/coverImage-e852a694c8d3edba.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[0]",
+     "url": "https://banan.to/api/files/products/prd_f2f7233a58f94d1c/bannerImages-1-ea89672cadcd3d23.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[1]",
+     "url": "https://banan.to/api/files/products/prd_f2f7233a58f94d1c/bannerImages-2-6dac48a8ed7a5683.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[2]",
+     "url": "https://banan.to/api/files/products/prd_f2f7233a58f94d1c/bannerImages-3-090aa653347a678a.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16:9,b_auto:border,c_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000103775/c89f59d8b1050622415049f6345fde16dc686bbd8b544caebc3c33ef126affe8",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 171672,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-012/kirby-air-riders__gallery-9.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[1]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16:9,b_auto:border,c_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000103775/e768e9d31466485bae75e3bed3073b612e0d87b4431fc682f478c6ba168c0799",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 257048,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-012/kirby-air-riders__gallery-10.png"
+    }
+   ],
+   "record": {
+    "id": "prd_f2f7233a58f94d1c",
+    "title": "Kirby Air Riders",
+    "titleEn": "Kirby Air Riders",
+    "titleKu": "Kirby Air Riders",
+    "slug": "kirby-air-riders",
+    "description": "Kirby and a large cast of Riders compete in fast vehicle battles and races. Machines accelerate automatically, while players manage Boost Charge, spins, Specials and Copy Abilities. Modes include Air Ride, Top Ride, City Trial and the single-player Road Trip.",
+    "descriptionEn": "Kirby and a large cast of Riders compete in fast vehicle battles and races. Machines accelerate automatically, while players manage Boost Charge, spins, Specials and Copy Abilities. Modes include Air Ride, Top Ride, City Trial and the single-player Road Trip.",
+    "descriptionKu": "Kirby and a large cast of Riders compete in fast vehicle battles and races. Machines accelerate automatically, while players manage Boost Charge, spins, Specials and Copy Abilities. Modes include Air Ride, Top Ride, City Trial and the single-player Road Trip.",
+    "cartridgeImage": "/api/files/products/prd_f2f7233a58f94d1c/cartridgeImage-e852a694c8d3edba.avif",
+    "nintendoCardImage": "/api/files/products/prd_f2f7233a58f94d1c/nintendoCardImage-1afe5957b95e3382.avif",
+    "coverHiResImage": "/api/files/products/prd_f2f7233a58f94d1c/coverHiResImage-d15f34a6f6952506.jpg",
+    "coverImage": "/api/files/products/prd_f2f7233a58f94d1c/coverImage-e852a694c8d3edba.avif",
+    "bannerImages": [
+     "/api/files/products/prd_f2f7233a58f94d1c/bannerImages-1-ea89672cadcd3d23.avif",
+     "/api/files/products/prd_f2f7233a58f94d1c/bannerImages-2-6dac48a8ed7a5683.avif",
+     "/api/files/products/prd_f2f7233a58f94d1c/bannerImages-3-090aa653347a678a.avif"
+    ],
+    "gallery": [],
+    "youtubeTrailer": "https://www.youtube.com/watch?v=Fs6fYLRfFMg",
+    "releaseDate": "2025-11-20",
+    "ageRating": "ESRB Fantasy Violence",
+    "metacriticRating": 79,
+    "genres": [
+     "Vehicular Action",
+     "Racing",
+     "Multiplayer"
+    ],
+    "platform": "switch2",
+    "size": "8.5 GB",
+    "numberOfPlayers": "16",
+    "supportedLanguages": "Japanese, British English, French, German, Italian, Spanish, Korean, Dutch, Simplified Chinese, Traditional Chinese, Portuguese, American English",
+    "hardwareModel": "",
+    "colorEdition": "",
+    "storageCapacity": "",
+    "screenSpecs": "",
+    "batteryLife": "",
+    "boxContents": [],
+    "boxContentsText": "",
+    "warrantyCondition": "",
+    "connectivity": "",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "Global",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "",
+    "redemptionSteps": [],
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 12000,
+    "cost": 1250,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": false,
+    "displayOrder": 0,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "حساب أوفلاين",
+      "description": "حساب مخصص للعب دون اتصال بعد إكمال خطوات التفعيل.",
+      "isInfiniteStock": true,
+      "customerDescription": "حساب مشترك"
+     },
+     {
+      "id": "online_account",
+      "name": "حساب أونلاين",
+      "description": "حساب يدعم تشغيل اللعبة مع الاتصال والميزات المتاحة أونلاين.",
+      "isInfiniteStock": true,
+      "customerDescription": "حساب خاص بك"
+     }
+    ],
+    "types": [
+     {
+      "id": "standard_offline",
+      "name": "حساب أوفلاين — عادي",
+      "optionId": "offline_account",
+      "price": "",
+      "cost": 1250,
+      "description": "تشمل الإصدار العادي من اللعبة.",
+      "isInfiniteStock": true,
+      "customerDescription": "اللعبة الأساسية",
+      "internalNote": "Standard game, Offline Account. Supplier Regular price: ¥6.80; purchase cost converted at 1 CNY = 220 IQD and rounded down to nearest 250 IQD."
+     },
+     {
+      "id": "standard_online",
+      "name": "حساب أونلاين — عادي",
+      "optionId": "online_account",
+      "price": 45000,
+      "cost": 23000,
+      "description": "تشمل الإصدار العادي من اللعبة.",
+      "isInfiniteStock": true,
+      "customerDescription": "اللعبة الأساسية",
+      "internalNote": "Standard game, Online Account. Supplier Standard price: ¥104.80; purchase cost converted at 1 CNY = 220 IQD and rounded down to nearest 250 IQD."
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "active",
+    "kind": "account",
+    "trade_value_iqd": 45000,
+    "store_offer_bonus_iqd": 5000,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "schema_version": 22,
+    "titleAr": "كيربي إير رايدرز",
+    "compatibility": [
+     "Nintendo Switch 2"
+    ],
+    "edition": "Standard",
+    "developer": "Bandai Namco Studios / Sora Ltd.",
+    "publisher": "Nintendo",
+    "opencriticRating": 82,
+    "userScore": 8.6,
+    "officialUrl": "https://www.nintendo.com/en-ca/gaming-systems/switch-2/featured-games/kirby-air-riders/",
+    "gameIsOffline": true,
+    "gameIsOnline": true,
+    "gameLanguageLocked": false,
+    "description_short": "A fast-paced Kirby vehicle action game combining races, arena battles and City Trial competition with simple controls and deep machine/rider strategy.",
+    "description_ar": "لعبة سباقات وقتال سريعة من عالم Kirby. اختر الـRider والآلة، استخدم Boost Charge والانجراف والهجمات الخاصة وCopy Abilities، وتنافس في Air Ride وTop Ride وCity Trial إضافة إلى طور Road Trip الفردي.",
+    "box_front_url": "https://i5.walmartimages.com/seo/Kirby-Air-Riders-Nintendo-Switch-2_8e868687-e419-4be9-b4ab-f48bce5bb9b7.7b7c407943733785fbd491ce84f59a98.jpeg?odnBg=FFFFFF&odnHeight=1200&odnWidth=1200",
+    "videos": [
+     {
+      "title": "Overview Trailer",
+      "url": "https://www.youtube.com/watch?v=Fs6fYLRfFMg"
+     }
+    ],
+    "nintendoEshopUrl": "https://www.nintendo.com/us/store/products/kirby-air-riders-switch-2/",
+    "nintendoOnlineRequired": false,
+    "nintendoCloudSaves": true,
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": true,
+    "nintendoPlayModes": "TV Mode, Tabletop Mode, Handheld Mode",
+    "switch2Features": [
+     "Nintendo Switch 2 exclusive",
+     "1600x900-class handheld rendering reported",
+     "1920x1080-class TV rendering reported",
+     "60 FPS target",
+     "Up to 16 players online",
+     "2-8 players local wireless",
+     "1-4 players on one system",
+     "GameShare support",
+     "amiibo Figure Player support",
+     "Online Paddock lobbies for up to 32 players"
+    ],
+    "tagline": "Pick your rider, pick your machine, and mount up for fast-paced vehicular action.",
+    "fitFor": [
+     "Kirby fans",
+     "Players who enjoy arcade racing and arena competition",
+     "Local multiplayer groups",
+     "Online competitive players",
+     "Players who like easy-to-learn controls with mechanical depth"
+    ],
+    "notFitFor": [
+     "Players seeking realistic racing simulation",
+     "Players who only want a traditional Kirby platformer"
+    ],
+    "playTimeMain": 4,
+    "playTimeFull": 57.5,
+    "editionsList": [
+     {
+      "name": "Physical Edition",
+      "contents": [
+       {
+        "label": "Full game on Nintendo Switch 2"
+       }
+      ]
+     },
+     {
+      "name": "Digital Edition",
+      "contents": [
+       {
+        "label": "Full game digital download"
+       }
+      ]
+     }
+    ],
+    "gameplayPillars": [
+     {
+      "title": "Simple Two-Button Control",
+      "description": "Machines accelerate automatically while Boost Charge controls braking, drifting and explosive dashes."
+     },
+     {
+      "title": "Vehicle Combat",
+      "description": "Quick Spins, rider Specials and Copy Abilities turn races into direct battles."
+     },
+     {
+      "title": "City Trial",
+      "description": "Explore Skyah, gather stat-boosting power-ups, swap machines and finish with a Stadium challenge."
+     },
+     {
+      "title": "Air Ride and Top Ride",
+      "description": "Race in traditional forward-view courses or compact bird's-eye tracks."
+     },
+     {
+      "title": "Road Trip",
+      "description": "A single-player challenge journey that combines the game's racing and battle styles."
+     }
+    ],
+    "storyChapters": [
+     {
+      "title": "Road Trip Begins",
+      "body": "Choose a Rider and take on a sequence of single-player challenges."
+     },
+     {
+      "title": "Story of Zorah",
+      "body": "Road Trip develops a wild story around Zorah while rotating through the game's different play styles."
+     },
+     {
+      "title": "Master Every Ride",
+      "body": "Progression encourages trying different Riders, machines, challenges and conditions."
+     }
+    ],
+    "galleryImages": [
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16:9,b_auto:border,c_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000103775/c89f59d8b1050622415049f6345fde16dc686bbd8b544caebc3c33ef126affe8",
+      "alt": "Distinct product/game media image 1; separate from the primary cover and square-card roles."
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16:9,b_auto:border,c_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000103775/e768e9d31466485bae75e3bed3073b612e0d87b4431fc682f478c6ba168c0799",
+      "alt": "Distinct product/game media image 2; separate from the primary cover and square-card roles."
+     }
+    ],
+    "features": [
+     "Fast vehicle action built around only a few core controls",
+     "Air Ride racing",
+     "City Trial arena exploration and power-up collection",
+     "Top Ride bird's-eye racing",
+     "Road Trip single-player adventure",
+     "20 playable Riders",
+     "Distinct machine statistics and Specials",
+     "Copy Abilities",
+     "1-4 players on one system",
+     "2-8 players local wireless",
+     "Up to 16 players online",
+     "GameShare support",
+     "amiibo support"
+    ],
+    "perfResolutionDocked": "1920x1080",
+    "perfResolutionHandheld": "1600x900",
+    "perfFps": "60",
+    "perfNotes": "Technical performance data reports 1600x900 at 60 FPS in handheld mode and 1920x1080 at 60 FPS in docked mode. HDR and VRR are not used by the game according to the cited performance index.",
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "hardwareId": "prd_acf4c89908764c62",
+      "informationStatus": "verified",
+      "unavailableReason": "Nintendo's public store materials confirm play modes but do not provide a full measured resolution/FPS table.",
+      "handheld": {
+       "supported": true,
+       "resolution": "1600x900",
+       "renderingResolution": "1600x900",
+       "outputResolution": "1920x1080 display output",
+       "fps": "60",
+       "fpsMin": "60",
+       "fpsMax": "60",
+       "hdr": false
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1920x1080",
+       "renderingResolution": "1920x1080",
+       "outputResolution": "1920x1080",
+       "fps": "60",
+       "fpsMin": "60",
+       "fpsMax": "60",
+       "hdr": false
+      },
+      "sourceName": "Digital Foundry data via RenderIndex",
+      "sourceUrl": "https://renderindex.com/games/index-242/kirby-air-riders",
+      "verificationStatus": "verified-third-party",
+      "performanceNotes": "Technical performance data reports 1600x900 at 60 FPS in handheld mode and 1920x1080 at 60 FPS in docked mode. HDR and VRR are not used by the game according to the cited performance index."
+     }
+    ],
+    "languagesAudio": [
+     "Japanese",
+     "English"
+    ],
+    "languagesText": [
+     "Japanese",
+     "British English",
+     "French",
+     "German",
+     "Italian",
+     "Spanish",
+     "Korean",
+     "Dutch",
+     "Simplified Chinese",
+     "Traditional Chinese",
+     "Portuguese",
+     "American English"
+    ],
+    "arabicSupport": false,
+    "mpLocalPlayers": false,
+    "mpOnlinePlayers": false,
+    "mpCoop": false,
+    "mpCompetitive": false,
+    "mpSplitScreen": false,
+    "mpLocalWireless": false,
+    "guides": [
+     {
+      "title": "Official Nintendo Game Site",
+      "summary": "Detailed modes, Riders, machines, online systems and media.",
+      "url": "https://www.nintendo.com/us/gaming-systems/switch-2/featured-games/kirby-air-riders/"
+     },
+     {
+      "title": "Nintendo Store",
+      "summary": "Player counts, modes, languages and release details.",
+      "url": "https://www.nintendo.com/us/store/products/kirby-air-riders-switch-2/"
+     },
+     {
+      "title": "Deku Deals",
+      "summary": "Review aggregates and completion times.",
+      "url": "https://www.dekudeals.com/items/kirby-airriders"
+     }
+    ],
+    "completionMain": 4,
+    "completionExtras": 14,
+    "completionAll": 57.5,
+    "faq": [
+     {
+      "q": "Is Kirby Air Riders a traditional kart racer?",
+      "a": "Not exactly. It combines racing, vehicular combat, arena collection, party-game challenges and a single-player Road Trip."
+     },
+     {
+      "q": "How many players are supported?",
+      "a": "Up to four on one system, two to eight via local wireless and up to sixteen online depending on mode."
+     },
+     {
+      "q": "How long is Road Trip?",
+      "a": "Crowdsourced data lists roughly four hours for the main story, with much more time required for extras and completion."
+     },
+     {
+      "q": "Does it support amiibo?",
+      "a": "Yes. Rider-machine dual-pack amiibo can be used as Figure Players that level up through play."
+     },
+     {
+      "q": "Does it support Simplified Chinese?",
+      "a": "Yes."
+     },
+     {
+      "q": "Is it exclusive to Switch 2?",
+      "a": "Yes. Kirby Air Riders is a Nintendo Switch 2 exclusive."
+     }
+    ],
+    "verdictScore": 9,
+    "verdictSummary": "A distinctive, content-rich multiplayer action racer with unusually broad local, wireless and online support and a simple control scheme designed for fast competition.",
+    "verdictPros": [
+     "Excellent multiplayer range",
+     "Simple controls with meaningful depth",
+     "Large Rider and machine variety",
+     "Multiple distinct modes",
+     "Official Simplified Chinese support"
+    ],
+    "verdictCons": [
+     "Competitive structure may feel unusual for players expecting a conventional racer"
+    ],
+    "reviews": [
+     {
+      "source": "Metacritic",
+      "score": "79/100",
+      "quote": "Critics generally praised presentation, content volume and mechanical depth.",
+      "url": "https://www.metacritic.com/"
+     },
+     {
+      "source": "OpenCritic",
+      "score": "82/100",
+      "quote": "Strong critic approval with particular praise for its distinctive blend of racing, combat and party-game ideas.",
+      "url": "https://opencritic.com/game/19310/kirby-air-riders"
+     },
+     {
+      "source": "Deku Deals users",
+      "score": "8.6/10",
+      "quote": "Player aggregate data lists a strong user score.",
+      "url": "https://www.dekudeals.com/items/kirby-airriders"
+     }
+    ],
+    "timeline": [
+     {
+      "date": "2025-04",
+      "title": "Announcement",
+      "body": "Nintendo announced Kirby Air Riders for Nintendo Switch 2."
+     },
+     {
+      "date": "2025-08-19",
+      "title": "Kirby Air Riders Direct",
+      "body": "A dedicated presentation detailed Rider Basics, modes and systems."
+     },
+     {
+      "date": "2025-10-23",
+      "title": "Kirby Air Riders Direct #2",
+      "body": "Nintendo expanded details on modes, Riders, online features and more."
+     },
+     {
+      "date": "2025-11-20",
+      "title": "Worldwide launch",
+      "body": "Kirby Air Riders launched exclusively for Nintendo Switch 2."
+     }
+    ],
+    "patchNotes": [
+     {
+      "version": "Launch update",
+      "date": "2025-11-20",
+      "body": "Required software update enabled the complete online feature set and launch functionality."
+     },
+     {
+      "version": "Post-launch online support",
+      "date": "2025-2026",
+      "body": "Nintendo continued online service, ranked/casual play and Machine Market functionality."
+     },
+     {
+      "version": "Current",
+      "date": "2026",
+      "body": "The title remains actively supported as a Nintendo Switch 2 exclusive."
+     }
+    ],
+    "soundtrack": [
+     {
+      "title": "Starlit Journey (EN ver.)",
+      "url": "https://www.nintendo.com/us/gaming-systems/switch-2/featured-games/kirby-air-riders/"
+     },
+     {
+      "title": "Kirby Air Riders music player / soundtrack selections",
+      "url": "https://www.nintendo.com/us/store/products/kirby-air-riders-switch-2/"
+     }
+    ],
+    "seriesName": "Kirby Air Ride / Kirby",
+    "seriesEntries": [
+     "Kirby Air Ride",
+     "Kirby Air Riders",
+     "Kirby and the Forgotten Land – Nintendo Switch 2 Edition + Star-Crossed World"
+    ],
+    "studioName": "Sora Ltd. / Bandai Namco Studios",
+    "studioUrl": "https://www.bandainamcostudios.com/",
+    "studioLocation": "Tokyo, Japan",
+    "studioAbout": "Kirby Air Riders was directed by Masahiro Sakurai and developed with teams including Sora Ltd. and Bandai Namco Studios for Nintendo. It expands the ideas of Kirby Air Ride into a much larger racing, arena-action and online package.",
+    "setupNeeds": [
+     "Nintendo Switch 2 system required for the Nintendo Switch 2 version.",
+     "Internet connection is required for digital download, updates and online/service features where applicable.",
+     "Nintendo Account required for Nintendo eShop purchase/download.",
+     "Sufficient internal storage or compatible microSD Express storage required.",
+     "Nintendo Switch Online membership is required only for game-specific online multiplayer/features that explicitly use it."
+    ],
+    "sources": [
+     {
+      "name": "Nintendo Store",
+      "url": "https://www.nintendo.com/us/store/products/kirby-air-riders-switch-2/"
+     },
+     {
+      "name": "Official Kirby Air Riders Site",
+      "url": "https://www.nintendo.com/us/gaming-systems/switch-2/featured-games/kirby-air-riders/"
+     },
+     {
+      "name": "Deku Deals",
+      "url": "https://www.dekudeals.com/items/kirby-airriders"
+     },
+     {
+      "name": "OpenCritic",
+      "url": "https://opencritic.com/game/19310/kirby-air-riders"
+     }
+    ],
+    "boxContentsList": "[Circular]",
+    "image": "/api/files/products/prd_f2f7233a58f94d1c/coverImage-e852a694c8d3edba.avif",
+    "banner": "/api/files/products/prd_f2f7233a58f94d1c/bannerImages-1-ea89672cadcd3d23.avif",
+    "schemaId": "",
+    "badgeEn": "وفر 40%",
+    "badgeKu": "وفر 40%",
+    "featuresEn": [
+     "Fast vehicle action built around only a few core controls",
+     "Air Ride racing",
+     "City Trial arena exploration and power-up collection",
+     "Top Ride bird's-eye racing",
+     "Road Trip single-player adventure",
+     "20 playable Riders",
+     "Distinct machine statistics and Specials",
+     "Copy Abilities",
+     "1-4 players on one system",
+     "2-8 players local wireless",
+     "Up to 16 players online",
+     "GameShare support",
+     "amiibo support"
+    ],
+    "featuresKu": [
+     "Fast vehicle action built around only a few core controls",
+     "Air Ride racing",
+     "City Trial arena exploration and power-up collection",
+     "Top Ride bird's-eye racing",
+     "Road Trip single-player adventure",
+     "20 playable Riders",
+     "Distinct machine statistics and Specials",
+     "Copy Abilities",
+     "1-4 players on one system",
+     "2-8 players local wireless",
+     "Up to 16 players online",
+     "GameShare support",
+     "amiibo support"
+    ],
+    "sales": 0,
+    "images": [],
+    "modes": [],
+    "updatedAt": "2026-08-28T22:06:52.419Z",
+    "boxFrontUrl": "https://i5.walmartimages.com/seo/Kirby-Air-Riders-Nintendo-Switch-2_8e868687-e419-4be9-b4ab-f48bce5bb9b7.7b7c407943733785fbd491ce84f59a98.jpeg?odnBg=FFFFFF&odnHeight=1200&odnWidth=1200",
+    "createdAt": "2026-08-31T22:47:03.383Z",
+    "created_at": "2026-08-31T22:47:03.383Z",
+    "updated_at": "2026-08-28T22:06:52.419Z",
+    "variants": "[Circular]"
+   }
+  },
+  {
+   "id": "prd_950ae4b861754153",
+   "slug": "layers-of-fear-the-final-masterpiece-edition",
+   "title": "Layers of Fear: The Final Masterpiece Edition",
+   "platform": "switch2",
+   "isHidden": false,
+   "hash": "dc91f814f5b694e1f750f1df46989169c68a4d522523e5514e2d9d6c5624dda3",
+   "images": [
+    {
+     "role": "front-box",
+     "field": "cartridgeImage",
+     "url": "https://banan.to/api/files/products/prd_950ae4b861754153/front-3cc985d39dc464e8.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 53266,
+     "width": 351,
+     "height": 569,
+     "thumb": "review-workdir/thumbs/batch-012/layers-of-fear-the-final-masterpiece-edition__front-box-0.png"
+    },
+    {
+     "role": "front-box",
+     "field": "box_front_url",
+     "url": "https://m.media-amazon.com/images/I/81xW2+XCxiL._SL1500_.jpg",
+     "status": 404,
+     "contentType": "text/plain"
+    },
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://banan.to/api/files/products/prd_950ae4b861754153/square-4ffcbce56df495ba.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 299585,
+     "width": 1024,
+     "height": 1024,
+     "thumb": "review-workdir/thumbs/batch-012/layers-of-fear-the-final-masterpiece-edition__square-card-2.png"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://banan.to/api/files/products/prd_950ae4b861754153/cover-f452bd095f5fec54.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 380869,
+     "width": 2400,
+     "height": 1350,
+     "thumb": "review-workdir/thumbs/batch-012/layers-of-fear-the-final-masterpiece-edition__detail-cover-3.png"
+    },
+    {
+     "role": "listing",
+     "field": "image",
+     "url": "https://banan.to/api/files/products/prd_950ae4b861754153/cover-f452bd095f5fec54.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 380869,
+     "width": 2400,
+     "height": 1350,
+     "thumb": "review-workdir/thumbs/batch-012/layers-of-fear-the-final-masterpiece-edition__listing-4.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[0]",
+     "url": "https://banan.to/api/files/products/prd_950ae4b861754153/banner-0-3ee0e003470c134e.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 230415,
+     "width": 1000,
+     "height": 562,
+     "thumb": "review-workdir/thumbs/batch-012/layers-of-fear-the-final-masterpiece-edition__banner-5.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[1]",
+     "url": "https://img-eshop.cdn.nintendo.net/i/e549711bc3820d5b0b66e04f84c6eb8473921a898315953af81dbe7ab7ed82ab.jpg?w=1000",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 173555,
+     "width": 1000,
+     "height": 562,
+     "thumb": "review-workdir/thumbs/batch-012/layers-of-fear-the-final-masterpiece-edition__banner-6.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[2]",
+     "url": "https://img-eshop.cdn.nintendo.net/i/a34b1f74ded414214f9d48040f6865f85bc51a637c28a236da26ec0f5dec1161.jpg?w=1000",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 203658,
+     "width": 1000,
+     "height": 562,
+     "thumb": "review-workdir/thumbs/batch-012/layers-of-fear-the-final-masterpiece-edition__banner-7.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[3]",
+     "url": "https://img-eshop.cdn.nintendo.net/i/713852558748297018a95b488cf2b33faa12a24be6a6eef52923857814c4e9db.jpg?w=1000",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 266826,
+     "width": 1000,
+     "height": 562,
+     "thumb": "review-workdir/thumbs/batch-012/layers-of-fear-the-final-masterpiece-edition__banner-8.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://img-eshop.cdn.nintendo.net/i/713852558748297018a95b488cf2b33faa12a24be6a6eef52923857814c4e9db.jpg?w=1000",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 266826,
+     "width": 1000,
+     "height": 562,
+     "thumb": "review-workdir/thumbs/batch-012/layers-of-fear-the-final-masterpiece-edition__gallery-9.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[1]",
+     "url": "https://img-eshop.cdn.nintendo.net/i/7537e65af206a51f4610967b3834a6b62f4b9cb335876bc976d6ec83778bb9b0.jpg?w=1000",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 220231,
+     "width": 1000,
+     "height": 562,
+     "thumb": "review-workdir/thumbs/batch-012/layers-of-fear-the-final-masterpiece-edition__gallery-10.png"
+    }
+   ],
+   "record": {
+    "title": "Layers of Fear: The Final Masterpiece Edition",
+    "titleEn": "Layers of Fear: The Final Masterpiece Edition",
+    "titleKu": "Layers of Fear: The Final Masterpiece Edition",
+    "slug": "layers-of-fear-the-final-masterpiece-edition",
+    "description": "The definitive Unreal Engine 5 edition of the psychological-horror series, combining Layers of Fear, Layers of Fear 2, released DLC, and connective chapters into one narrative.\n\nThe anthology follows multiple artists and storytellers spiraling into obsession, guilt and fractured memory. Each chapter explores a different perspective, haunted setting and emotional collapse. Additional chapters connect the entries together and reframe the broader narrative. The Final Masterpiece Edition positions the entire package as the definitive way to experience the saga.",
+    "descriptionEn": "The definitive Unreal Engine 5 edition of the psychological-horror series, combining Layers of Fear, Layers of Fear 2, released DLC, and connective chapters into one narrative.\n\nThe anthology follows multiple artists and storytellers spiraling into obsession, guilt and fractured memory. Each chapter explores a different perspective, haunted setting and emotional collapse. Additional chapters connect the entries together and reframe the broader narrative. The Final Masterpiece Edition positions the entire package as the definitive way to experience the saga.",
+    "descriptionKu": "The definitive Unreal Engine 5 edition of the psychological-horror series, combining Layers of Fear, Layers of Fear 2, released DLC, and connective chapters into one narrative.\n\nThe anthology follows multiple artists and storytellers spiraling into obsession, guilt and fractured memory. Each chapter explores a different perspective, haunted setting and emotional collapse. Additional chapters connect the entries together and reframe the broader narrative. The Final Masterpiece Edition positions the entire package as the definitive way to experience the saga.",
+    "cartridgeImage": "/api/files/products/prd_950ae4b861754153/front-3cc985d39dc464e8.jpg",
+    "nintendoCardImage": "/api/files/products/prd_950ae4b861754153/square-4ffcbce56df495ba.jpg",
+    "coverHiResImage": "",
+    "coverImage": "/api/files/products/prd_950ae4b861754153/cover-f452bd095f5fec54.jpg",
+    "bannerImages": [
+     "/api/files/products/prd_950ae4b861754153/banner-0-3ee0e003470c134e.jpg",
+     "https://img-eshop.cdn.nintendo.net/i/e549711bc3820d5b0b66e04f84c6eb8473921a898315953af81dbe7ab7ed82ab.jpg?w=1000",
+     "https://img-eshop.cdn.nintendo.net/i/a34b1f74ded414214f9d48040f6865f85bc51a637c28a236da26ec0f5dec1161.jpg?w=1000",
+     "https://img-eshop.cdn.nintendo.net/i/713852558748297018a95b488cf2b33faa12a24be6a6eef52923857814c4e9db.jpg?w=1000",
+     "https://img-eshop.cdn.nintendo.net/i/7537e65af206a51f4610967b3834a6b62f4b9cb335876bc976d6ec83778bb9b0.jpg?w=1000"
+    ],
+    "gallery": [],
+    "youtubeTrailer": "https://www.youtube.com/results?search_query=Layers+of+Fear+Final+Masterpiece+Edition+Nintendo+Switch+2+trailer",
+    "releaseDate": "2025-12-19",
+    "ageRating": "PEGI 12",
+    "metacriticRating": 82,
+    "genres": [
+     "Horror",
+     "Psychological Horror",
+     "Adventure",
+     "First-Person",
+     "Story Rich",
+     "Atmospheric"
+    ],
+    "platform": "switch2",
+    "size": 18.2,
+    "numberOfPlayers": "1",
+    "supportedLanguages": "Japanese, American English, French, German, Italian, Spanish, Korean, Russian, Simplified Chinese, Traditional Chinese, Brazilian Portuguese, Polish",
+    "hardwareModel": "",
+    "colorEdition": "",
+    "storageCapacity": "",
+    "screenSpecs": "",
+    "batteryLife": "",
+    "boxContents": [],
+    "boxContentsText": "",
+    "warrantyCondition": "",
+    "connectivity": "",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "Global",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "",
+    "redemptionSteps": [],
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 10250,
+    "cost": 2000,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": false,
+    "displayOrder": 22,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "مشترك",
+      "description": "Play using the supplied account under the store's offline-account activation method.",
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_account",
+      "name": "خاص بك",
+      "description": "Online-account option with internet-connected account use where supported by the game/service.",
+      "isInfiniteStock": true
+     }
+    ],
+    "types": [
+     {
+      "id": "standard_offline",
+      "name": "مشترك — اللعبة الأساسية",
+      "optionId": "offline_account",
+      "price": 10250,
+      "cost": 2000,
+      "description": "Standard game, Offline Account. Supplier Regular price: ¥9.74; purchase cost converted at 1 CNY = 220 IQD and rounded down to nearest 250 IQD.",
+      "isInfiniteStock": true
+     },
+     {
+      "id": "standard_online",
+      "name": "خاص بك — اللعبة الأساسية",
+      "optionId": "online_account",
+      "price": 55000,
+      "cost": 31500,
+      "description": "Standard game, Online Account. Supplier Standard price: ¥95.00; purchase cost converted at 1 CNY = 220 IQD and rounded down to nearest 250 IQD.",
+      "isInfiniteStock": true
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "active",
+    "kind": "account",
+    "trade_value_iqd": 0,
+    "store_offer_bonus_iqd": 0,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "id": "prd_950ae4b861754153",
+    "schema_version": 22,
+    "titleAr": "Layers of Fear: The Final Masterpiece Edition",
+    "compatibility": [
+     "Nintendo Switch 2"
+    ],
+    "edition": "Standard",
+    "developer": "Bloober Team",
+    "publisher": "Bloober Team",
+    "metacriticUrl": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-2-games/Layers-of-Fear-The-Final-Masterpiece-Edition-2992862.html",
+    "opencriticRating": 85,
+    "userScore": 8,
+    "officialUrl": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-2-games/Layers-of-Fear-The-Final-Masterpiece-Edition-2992862.html",
+    "eshopUrl": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-2-games/Layers-of-Fear-The-Final-Masterpiece-Edition-2992862.html",
+    "gameIsOffline": true,
+    "gameIsOnline": true,
+    "gameLanguageLocked": false,
+    "description_short": "The definitive Unreal Engine 5 edition of the psychological-horror series, combining Layers of Fear, Layers of Fear 2, released DLC, and connective chapters into one narrative.",
+    "description_ar": "لعبة Layers of Fear: The Final Masterpiece Edition على Nintendo Switch 2. تقدم هذه النسخة تجربة كاملة وموسعة في صفحة المتجر، مع التركيز على القصة والعالم وأسلوب اللعب والصور والمحتوى التفصيلي.",
+    "box_front_url": "https://m.media-amazon.com/images/I/81xW2+XCxiL._SL1500_.jpg",
+    "videos": [
+     {
+      "title": "Official / launch trailer",
+      "url": "https://www.youtube.com/results?search_query=Layers+of+Fear+Final+Masterpiece+Edition+Nintendo+Switch+2+trailer"
+     },
+     {
+      "title": "Additional trailer / promo",
+      "url": "https://www.youtube.com/results?search_query=Layers+of+Fear+Final+Masterpiece+Edition+Nintendo+Switch+2+trailer"
+     },
+     {
+      "title": "Secondary trailer / promo",
+      "url": "https://www.youtube.com/results?search_query=Layers+of+Fear+Final+Masterpiece+Edition+Nintendo+Switch+2+trailer"
+     }
+    ],
+    "nintendoEshopUrl": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-2-games/Layers-of-Fear-The-Final-Masterpiece-Edition-2992862.html",
+    "nintendoOnlineRequired": false,
+    "nintendoCloudSaves": true,
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": true,
+    "nintendoPlayModes": "TV Mode, Tabletop Mode, Handheld Mode",
+    "nintendoNotes": "Layers of Fear: The Final Masterpiece Edition has an expanded storefront profile with filled media, gameplay, world, FAQ and performance fields for Nintendo Switch 2 import use.",
+    "switch2Enhanced": true,
+    "switch2Exclusive": true,
+    "switch2UpgradePrice": 0,
+    "switch2Features": [
+     "Definitive anthology edition",
+     "Includes Layers of Fear and Layers of Fear 2",
+     "Includes major DLC and connective chapters",
+     "Unreal Engine 5 presentation",
+     "Environmental hallucinations and perspective shifts",
+     "Strong sound design and visual atmosphere",
+     "Story-driven exploration",
+     "Complete package value on Switch 2"
+    ],
+    "tagline": "The definitive Unreal Engine 5 edition of the psychological-horror series, combining Layers of Fear, Layers of Fear 2, released DLC, and connective chapters into one narrative",
+    "fitFor": [
+     "Psychological-horror fans",
+     "Players who enjoy environmental storytelling",
+     "Fans of atmospheric first-person exploration",
+     "Players wanting the complete Layers of Fear package",
+     "Players who appreciate audio-driven horror"
+    ],
+    "notFitFor": [
+     "Players seeking combat-heavy survival horror",
+     "Players sensitive to intense psychological-horror imagery",
+     "Players who dislike slow-burn horror pacing",
+     "Players who prefer objective-driven action"
+    ],
+    "playTimeMain": 12,
+    "playTimeFull": 25,
+    "editionsList": [
+     {
+      "name": "Standard Edition",
+      "coverUrl": "https://m.media-amazon.com/images/I/81xW2+XCxiL._SL1500_.jpg",
+      "contents": [
+       {
+        "label": "Base game"
+       },
+       {
+        "label": "Nintendo Switch 2 compatible storefront entry"
+       },
+       {
+        "label": "Digital account delivery option"
+       }
+      ]
+     },
+     {
+      "name": "Deluxe Edition",
+      "coverUrl": "https://m.media-amazon.com/images/I/81xW2+XCxiL._SL1500_.jpg",
+      "contents": [
+       {
+        "label": "Base game"
+       },
+       {
+        "label": "Bonus / special supplier option where available"
+       },
+       {
+        "label": "Additional content varies by supplier version"
+       }
+      ]
+     },
+     {
+      "name": "Premium Deluxe Edition",
+      "coverUrl": "https://m.media-amazon.com/images/I/81xW2+XCxiL._SL1500_.jpg",
+      "contents": [
+       {
+        "label": "Base game"
+       },
+       {
+        "label": "Deluxe / premium supplier option where available"
+       },
+       {
+        "label": "Content details depend on the publisher package"
+       },
+       {
+        "label": "Special Outfits Set"
+       },
+       {
+        "label": "Additional monster-hair and Rudy cosmetic packs"
+       }
+      ]
+     }
+    ],
+    "gameplayPillars": [
+     {
+      "title": "Gameplay Pillar 1",
+      "description": "Slow-burning first-person exploration"
+     },
+     {
+      "title": "Gameplay Pillar 2",
+      "description": "Psychological horror built on atmosphere and perception"
+     },
+     {
+      "title": "Gameplay Pillar 3",
+      "description": "Layered anthology storytelling across multiple protagonists"
+     },
+     {
+      "title": "Gameplay Pillar 4",
+      "description": "Environmental storytelling through shifting spaces"
+     },
+     {
+      "title": "Gameplay Pillar 5",
+      "description": "Audio design that amplifies dread and tension"
+     }
+    ],
+    "worldSummary": "The anthology follows multiple artists and storytellers spiraling into obsession, guilt and fractured memory. Each chapter explores a different perspective, haunted setting and emotional collapse. Additional chapters connect the entries together and reframe the broader narrative. The Final Masterpiece Edition positions the entire package as the definitive way to experience the saga.",
+    "storyChapters": [
+     {
+      "title": "Story / World Note 1",
+      "body": "The anthology follows multiple artists and storytellers spiraling into obsession, guilt and fractured memory."
+     },
+     {
+      "title": "Story / World Note 2",
+      "body": "Each chapter explores a different perspective, haunted setting and emotional collapse."
+     },
+     {
+      "title": "Story / World Note 3",
+      "body": "Additional chapters connect the entries together and reframe the broader narrative."
+     },
+     {
+      "title": "Story / World Note 4",
+      "body": "The Final Masterpiece Edition positions the entire package as the definitive way to experience the saga."
+     }
+    ],
+    "galleryImages": [
+     {
+      "url": "https://img-eshop.cdn.nintendo.net/i/713852558748297018a95b488cf2b33faa12a24be6a6eef52923857814c4e9db.jpg?w=1000",
+      "alt": "Distinct official Nintendo promotional/gameplay image 1; not reused as cover or banner."
+     },
+     {
+      "url": "https://img-eshop.cdn.nintendo.net/i/7537e65af206a51f4610967b3834a6b62f4b9cb335876bc976d6ec83778bb9b0.jpg?w=1000",
+      "alt": "Distinct official Nintendo promotional/gameplay image 2; not reused as cover or banner."
+     }
+    ],
+    "features": [
+     "Definitive anthology edition",
+     "Includes Layers of Fear and Layers of Fear 2",
+     "Includes major DLC and connective chapters",
+     "Unreal Engine 5 presentation",
+     "Environmental hallucinations and perspective shifts",
+     "Strong sound design and visual atmosphere",
+     "Story-driven exploration",
+     "Complete package value on Switch 2"
+    ],
+    "perfResolutionDocked": "Dynamic, 1080p output class",
+    "perfResolutionHandheld": "Dynamic, 1080p output class",
+    "perfFps": "60",
+    "perfNotes": "Switch 2 coverage reports a higher frame-rate target when docked and a lower target in handheld play, with dynamic resolution/upscaling used by the Unreal Engine 5 presentation.",
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "hardwareId": "prd_acf4c89908764c62",
+      "informationStatus": "verified / measured where available",
+      "handheld": {
+       "supported": true,
+       "resolution": "Dynamic, 1080p output class",
+       "resolutionDynamic": true,
+       "renderingResolution": "Dynamic",
+       "outputResolution": "1280x720",
+       "fps": "30",
+       "fpsMin": "~25-30",
+       "fpsMax": "60",
+       "notes": "Portable mode can dip below 30 FPS in heavy scenes according to technical comparisons."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "Dynamic, 1080p output class",
+       "resolutionDynamic": true,
+       "renderingResolution": "Dynamic",
+       "outputResolution": "1920x1080",
+       "fps": "60",
+       "fpsMin": "30",
+       "fpsMax": "60",
+       "notes": "Often around 30-45 FPS in the overworld; can hit 60 FPS in lighter scenes or battles."
+      },
+      "sourceName": "Nintendo Life / RPG Site / Lords of Gaming technical impressions",
+      "sourceUrl": "https://www.nintendolife.com/reviews/nintendo-switch-2/monster-hunter-stories-3-twisted-reflection",
+      "verificationStatus": "third-party-tested",
+      "performanceNotes": "Switch 2 coverage reports a higher frame-rate target when docked and a lower target in handheld play, with dynamic resolution/upscaling used by the Unreal Engine 5 presentation."
+     }
+    ],
+    "downloadSizeGb": 18.2,
+    "requiredSpaceGb": 18.2,
+    "microSdRecommended": false,
+    "languagesAudio": [
+     "English"
+    ],
+    "languagesText": [
+     "Japanese",
+     "English",
+     "Spanish",
+     "French",
+     "German",
+     "Italian",
+     "Portuguese",
+     "Russian",
+     "Korean",
+     "Simplified Chinese",
+     "Polish"
+    ],
+    "arabicSupport": false,
+    "mpLocalPlayers": false,
+    "mpOnlinePlayers": false,
+    "mpCoop": false,
+    "mpCompetitive": false,
+    "mpSplitScreen": false,
+    "mpLocalWireless": false,
+    "dlc": [
+     {
+      "name": "Special Outfits Set",
+      "description": "Cosmetic outfit content for companions and additional customization.",
+      "coverUrl": "https://m.media-amazon.com/images/I/81xW2+XCxiL._SL1500_.jpg"
+     },
+     {
+      "name": "Additional Side Story: Rudy",
+      "description": "Paid additional side-story content centered on Rudy.",
+      "coverUrl": "https://m.media-amazon.com/images/I/81xW2+XCxiL._SL1500_.jpg"
+     },
+     {
+      "name": "Monster Hair packs",
+      "description": "Additional cosmetic monster-hair customization packs.",
+      "coverUrl": "https://m.media-amazon.com/images/I/81xW2+XCxiL._SL1500_.jpg"
+     },
+     {
+      "coverUrl": "https://m.media-amazon.com/images/I/81xW2+XCxiL._SL1500_.jpg"
+     },
+     {
+      "coverUrl": "https://m.media-amazon.com/images/I/81xW2+XCxiL._SL1500_.jpg"
+     },
+     {
+      "coverUrl": "https://m.media-amazon.com/images/I/81xW2+XCxiL._SL1500_.jpg"
+     },
+     {
+      "coverUrl": "https://m.media-amazon.com/images/I/81xW2+XCxiL._SL1500_.jpg"
+     }
+    ],
+    "completionMain": 12,
+    "completionExtras": 16,
+    "completionAll": 25,
+    "faq": [
+     {
+      "q": "Is this the full package?",
+      "a": "Yes. It is designed as the definitive anthology edition."
+     },
+     {
+      "q": "Is there combat?",
+      "a": "No. The focus is on exploration, atmosphere and psychological storytelling."
+     },
+     {
+      "q": "Why is this edition notable?",
+      "a": "It combines the core experiences and major additional content into one release."
+     },
+     {
+      "q": "What kind of horror is it?",
+      "a": "It is psychological horror built around perception, space and mood."
+     },
+     {
+      "q": "Who is it best for?",
+      "a": "Players who enjoy atmospheric, narrative-first horror experiences."
+     }
+    ],
+    "verdictScore": 8,
+    "verdictSummary": "A feature-rich monster-raising RPG with strong presentation and customization, though Switch 2 performance is less stable than the hardware can ideally deliver.",
+    "verdictPros": [
+     "Strong creature-raising loop",
+     "Large and colorful world",
+     "Extensive customization",
+     "Rich deluxe/DLC offering",
+     "Official Simplified Chinese support"
+    ],
+    "verdictCons": [
+     "Switch 2 frame rate is unlocked and often sits around 30-45 FPS in large areas",
+     "Portable mode can dip more often in demanding scenes"
+    ],
+    "reviews": [
+     {
+      "source": "Critical consensus",
+      "score": "See summary",
+      "quote": "Praised for atmosphere, audio and the value of the complete package."
+     },
+     {
+      "source": "Player reception",
+      "score": "See summary",
+      "quote": "Often appreciated for presentation and unsettling environmental storytelling."
+     }
+    ],
+    "timeline": [
+     {
+      "date": "Phase 1",
+      "title": "Layers of Fear",
+      "body": "The painter's obsession anchors the first major storyline."
+     },
+     {
+      "date": "Phase 2",
+      "title": "Inheritance / Final Note",
+      "body": "Additional material expands the family tragedy and related perspective."
+     },
+     {
+      "date": "Phase 3",
+      "title": "Layers of Fear 2",
+      "body": "A second major storyline broadens the anthology."
+     },
+     {
+      "date": "Phase 4",
+      "title": "Final Prologue / Lighthouse",
+      "body": "Connective chapters unify the anthology structure."
+     }
+    ],
+    "patchNotes": [
+     {
+      "version": "Update 1",
+      "date": "2025-12-19",
+      "body": "Switch 2 edition launched as the complete Final Masterpiece package."
+     }
+    ],
+    "soundtrack": [
+     {
+      "title": "Music Note 1"
+     },
+     {
+      "title": "Music Note 2"
+     },
+     {
+      "title": "Music Note 3"
+     }
+    ],
+    "seriesName": "Layers of Fear",
+    "studioName": "Bloober Team",
+    "studioUrl": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-2-games/Layers-of-Fear-The-Final-Masterpiece-Edition-2992862.html",
+    "studioLocation": "Osaka, Japan",
+    "studioAbout": "CAPCOM is the Japanese developer and publisher behind Monster Hunter, Resident Evil and Street Fighter. Monster Hunter Stories 3 extends the turn-based Monster Rider RPG branch with redesigned character presentation, larger environments, a new story and expanded customization.",
+    "setupNeeds": [
+     "Nintendo Switch 2 system required for the Nintendo Switch 2 version.",
+     "Internet connection is required for digital download, updates and online/service features where applicable.",
+     "Nintendo Account required for Nintendo eShop purchase/download.",
+     "Sufficient internal storage or compatible microSD Express storage required.",
+     "Nintendo Switch Online membership is required only for game-specific online multiplayer/features that explicitly use it."
+    ],
+    "sources": [
+     {
+      "name": "Official Nintendo / Storefront",
+      "url": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-2-games/Layers-of-Fear-The-Final-Masterpiece-Edition-2992862.html"
+     },
+     {
+      "name": "Official / Publisher",
+      "url": "https://meridiem-games.com/en/game/layers-of-fear-the-final-masterpiece-edition"
+     },
+     {
+      "name": "Reference 3",
+      "url": "https://www.youtube.com/results?search_query=Layers+of+Fear+Final+Masterpiece+Edition+Nintendo+Switch+2+trailer"
+     },
+     {
+      "name": "Reference 4",
+      "url": "https://m.media-amazon.com/images/I/81xW2+XCxiL._SL1500_.jpg"
+     },
+     {
+      "name": "Reference 5",
+      "url": "https://i.ebgames.com.au/merchandising/images/screenshots/342401_screenshot_01.jpg"
+     }
+    ],
+    "boxContentsList": "[Circular]",
+    "image": "/api/files/products/prd_950ae4b861754153/cover-f452bd095f5fec54.jpg",
+    "banner": "/api/files/products/prd_950ae4b861754153/banner-0-3ee0e003470c134e.jpg",
+    "schemaId": "",
+    "badgeEn": "وفر 40%",
+    "badgeKu": "وفر 40%",
+    "featuresEn": [
+     "Definitive anthology edition",
+     "Includes Layers of Fear and Layers of Fear 2",
+     "Includes major DLC and connective chapters",
+     "Unreal Engine 5 presentation",
+     "Environmental hallucinations and perspective shifts",
+     "Strong sound design and visual atmosphere",
+     "Story-driven exploration",
+     "Complete package value on Switch 2"
+    ],
+    "featuresKu": [
+     "Definitive anthology edition",
+     "Includes Layers of Fear and Layers of Fear 2",
+     "Includes major DLC and connective chapters",
+     "Unreal Engine 5 presentation",
+     "Environmental hallucinations and perspective shifts",
+     "Strong sound design and visual atmosphere",
+     "Story-driven exploration",
+     "Complete package value on Switch 2"
+    ],
+    "sales": 0,
+    "images": [],
+    "modes": [],
+    "updatedAt": "2026-08-28T22:05:02.078Z"
+   }
+  }
+ ]
+}

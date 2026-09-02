@@ -1,0 +1,530 @@
+{
+ "title": "Hyrule Warriors: Age of Imprisonment [Switch 2]",
+ "titleEn": "Hyrule Warriors: Age of Imprisonment [Switch 2]",
+ "titleKu": "Hyrule Warriors: Age of Imprisonment [Switch 2]",
+ "slug": "hyrule-warriors-age-of-imprisonment",
+ "description": "Hyrule Warriors: Age of Imprisonment is a large-scale action game set in the ancient era connected to The Legend of Zelda: Tears of the Kingdom. It combines Hyrule Warriors-style battles against large enemy forces with character-specific abilities and cooperative play features on Nintendo Switch 2. The game is a native Nintendo Switch 2 release.",
+ "descriptionEn": "Hyrule Warriors: Age of Imprisonment is a large-scale action game set in the ancient era connected to The Legend of Zelda: Tears of the Kingdom. It combines Hyrule Warriors-style battles against large enemy forces with character-specific abilities and cooperative play features on Nintendo Switch 2. The game is a native Nintendo Switch 2 release.",
+ "descriptionKu": "Hyrule Warriors: Age of Imprisonment is a large-scale action game set in the ancient era connected to The Legend of Zelda: Tears of the Kingdom. It combines Hyrule Warriors-style battles against large enemy forces with character-specific abilities and cooperative play features on Nintendo Switch 2. The game is a native Nintendo Switch 2 release.",
+ "cartridgeImage": "/api/files/products/prd_14259a3bda924632/front-7d30c2303a91d168.jpg",
+ "nintendoCardImage": "/api/files/products/prd_14259a3bda924632/square-0595e1da0eff36a5.jpg",
+ "coverHiResImage": "/api/files/cartridges/usr_b947dbb97217464c/f_294bf0a6c83e4f08.jpg",
+ "coverImage": "/api/files/products/prd_14259a3bda924632/cover-244d2043f1940abd.jpg",
+ "bannerImages": [
+  "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000103459/fbe77762b0ba94c9f42514a67214b710e7f43dc659fceab58c29d780e9a89aa9",
+  "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000103459/8d0350383a2af078565350a1a11450738bace496269690a8d07e1faf7bc346e5",
+  "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000103459/688342401661bbc6d50eb97b4e6f706184e58341e6e3e5f59775bddfc0e7638d",
+  "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000103459/5c64f5f77b2337252b379076edc705712a5beeaff08a104269a2ccf8fc9445c9",
+  "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000103459/6c233749c2311251c1df347f5e46016b95c293d1568e1196b44d6712dcfae308",
+  "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000103459/d436e6809b6e3cb0ae48d70d27fe405c39045a4248098439f9ac431f8f2e167c",
+  "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000103459/fbe77762b0ba94c9f42514a67214b710e7f43dc659fceab58c29d780e9a89aa9",
+  "/api/files/products/prd_14259a3bda924632/banner-7-7ddd4dab02162b22.avif"
+ ],
+ "gallery": [],
+ "youtubeTrailer": "https://www.youtube.com/watch?v=vuSV9Sy28Mw",
+ "releaseDate": "2025-11-06",
+ "ageRating": "ESRB: T — Fantasy Violence",
+ "metacriticRating": 79,
+ "genres": [
+  "Action",
+  "Hack and Slash",
+  "Adventure"
+ ],
+ "platform": "switch2",
+ "size": 43.525,
+ "numberOfPlayers": "1-2",
+ "supportedLanguages": "Japanese, English, French, German, Italian, Spanish, Korean, Dutch, Russian, Simplified Chinese, Traditional Chinese",
+ "hardwareModel": "",
+ "colorEdition": "",
+ "storageCapacity": "",
+ "screenSpecs": "",
+ "batteryLife": "",
+ "boxContents": [],
+ "boxContentsText": "",
+ "warrantyCondition": "",
+ "connectivity": "",
+ "characterName": "Link",
+ "amiiboSeries": "The Legend of Zelda",
+ "figureType": "figure",
+ "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+ "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+ "boxCondition": "mib",
+ "releaseWave": "Wave 2 (Restock)",
+ "rarity": "standard",
+ "accessoryType": "حقيبة حماية وتنقل Carry Case",
+ "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+ "brand": "Nintendo Official",
+ "material": "Hard EVA Shockproof Shell",
+ "availableColors": "Black, Neon Red/Blue, White",
+ "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+ "cardValue": "$20 eShop Balance",
+ "region": "Global",
+ "cardType": "eshop",
+ "deliveryMethod": "instant_code",
+ "redemptionGuide": "",
+ "redemptionSteps": [],
+ "validity": "no_expiry",
+ "usedType": "cartridge",
+ "conditionGrade": "like_new",
+ "packaging": "cib",
+ "guaranteeStatus": "tested_30days",
+ "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+ "accountType": "primary",
+ "badge": "وفر 40%",
+ "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+ "price": 12000,
+ "cost": 1500,
+ "stock": 999999,
+ "isInfiniteStock": true,
+ "isHidden": false,
+ "displayOrder": 0,
+ "category": "nintendo-switch-games",
+ "categoryId": "nintendo-switch-games",
+ "categoryEn": "",
+ "categoryKu": "",
+ "options": [
+  {
+   "id": "offline_account",
+   "name": "حساب أوفلاين",
+   "description": "حساب مخصص للعب دون اتصال بعد إكمال خطوات التفعيل.",
+   "isInfiniteStock": true,
+   "customerDescription": "حساب مشترك"
+  },
+  {
+   "id": "online_account",
+   "name": "حساب أونلاين",
+   "description": "حساب يدعم تشغيل اللعبة مع الاتصال والميزات المتاحة أونلاين.",
+   "isInfiniteStock": true,
+   "customerDescription": "حساب خاص بك"
+  }
+ ],
+ "types": [
+  {
+   "id": "standard_offline",
+   "name": "حساب أوفلاين — عادي",
+   "optionId": "offline_account",
+   "price": "",
+   "cost": 1500,
+   "description": "تشمل الإصدار العادي من اللعبة.",
+   "isInfiniteStock": true,
+   "customerDescription": "اللعبة الأساسية"
+  },
+  {
+   "id": "standard_online",
+   "name": "حساب أونلاين — عادي",
+   "optionId": "online_account",
+   "price": "38000",
+   "cost": 25000,
+   "description": "تشمل الإصدار العادي من اللعبة.",
+   "isInfiniteStock": true,
+   "customerDescription": "اللعبة الأساسية"
+  }
+ ],
+ "editions": [],
+ "dlcs": [],
+ "isActive": true,
+ "status": "active",
+ "kind": "account",
+ "trade_value_iqd": 53000,
+ "store_offer_bonus_iqd": 7000,
+ "trade_enabled": true,
+ "trade_value_locked": false,
+ "id": "prd_14259a3bda924632",
+ "schema_version": 20,
+ "titleAr": "هايرول واريورز: إيج أوف إمبريزنمنت",
+ "compatibility": [
+  "Nintendo Switch 2"
+ ],
+ "edition": "Standard",
+ "developer": "KOEI TECMO GAMES / AAA Studio",
+ "publisher": "Nintendo",
+ "opencriticRating": 79,
+ "userScore": 8.4,
+ "officialUrl": "https://www.nintendo.com/us/store/products/hyrule-warriors-age-of-imprisonment-switch-2/",
+ "eshopUrl": "https://www.nintendo.com/us/store/products/hyrule-warriors-age-of-imprisonment-switch-2/",
+ "gameIsOffline": true,
+ "gameIsOnline": true,
+ "gameLanguageLocked": false,
+ "description_short": "A Nintendo Switch 2 Hyrule Warriors action game depicting the ancient Imprisoning War with large-scale battles and two-player options.",
+ "description_ar": "Hyrule Warriors: Age of Imprisonment هي لعبة أكشن واسعة النطاق تدور في الحقبة القديمة المرتبطة بأحداث The Legend of Zelda: Tears of the Kingdom. تجمع بين معارك Hyrule Warriors ضد أعداد كبيرة من الأعداء وقدرات خاصة بكل شخصية وخيارات للعب التعاوني على Nintendo Switch 2، وهي إصدار أصلي للجهاز.",
+ "box_front_url": "https://gamesdb-images.launchbox.gg/r2_927c4138-1d9f-4802-a264-a477a54e62a3.jpg",
+ "videos": [
+  {
+   "title": "Hyrule Warriors: Age of Imprisonment — Official Trailer",
+   "url": "https://www.youtube.com/watch?v=vuSV9Sy28Mw"
+  }
+ ],
+ "nsuid": "70010000103459",
+ "nintendoEshopUrl": "https://www.nintendo.com/us/store/products/hyrule-warriors-age-of-imprisonment-switch-2/",
+ "nintendoOnlineRequired": true,
+ "nintendoCloudSaves": true,
+ "tvMode": true,
+ "tabletopMode": true,
+ "handheldMode": true,
+ "nintendoPlayModes": "TV, Tabletop, Handheld",
+ "nintendoNotes": "Native or seller-classified Nintendo Switch 2 product for this import. Product account variants and costs are based on the supplied seller screenshots; platform classification follows the seller-card rule requested for this import.\n\nOffline selling price is selected within 5,000–25,000 IQD according to demand, supply, popularity, recency, perceived market value and, where relevant, supplier cost. It is not a fixed cost multiplier. Online pricing is market-based and may be higher.\n\nExtraction rules used for this file: production images are verified game media, not seller/Taobao images. Front Box Cover is retail box-front artwork; Square Card is a separate square asset; Cover Image is page/key art; 3D Texture Source is high-resolution front cover art. Banner and Gallery media are separate verified artwork/screenshots. Device Performance contains one device object only. Offline selling prices are chosen within 5,000–25,000 IQD according to demand, supply, popularity, recency, perceived value and supplier cost; online prices remain market-based and may be higher.",
+ "switch2Enhanced": false,
+ "switch2Exclusive": true,
+ "switch2Features": [
+  "Designed or seller-classified for Nintendo Switch 2"
+ ],
+ "tagline": "Fight the ancient Imprisoning War in large-scale Hyrule Warriors battles.",
+ "playTimeMain": 22,
+ "playTimeFull": 52.5,
+ "editionsList": [
+  {
+   "name": "Standard Edition",
+   "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000103459/463c88b9defa517be9227d851857d27926c9e2ffe18337790d47a948a3af1ef5",
+   "contents": [
+    {
+     "label": "Base game"
+    },
+    {
+     "label": "Seller account access"
+    },
+    {
+     "label": "Nintendo platform version shown in this import"
+    }
+   ]
+  }
+ ],
+ "gameplayPillars": [
+  {
+   "title": "Large-Scale Combat",
+   "description": "Fight dense enemy forces using sweeping combos and character abilities.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000103459/fbe77762b0ba94c9f42514a67214b710e7f43dc659fceab58c29d780e9a89aa9"
+  },
+  {
+   "title": "Zelda Lore",
+   "description": "The campaign focuses on the ancient conflict that shaped Hyrule's later history.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000103459/8d0350383a2af078565350a1a11450738bace496269690a8d07e1faf7bc346e5"
+  },
+  {
+   "title": "Co-op Action",
+   "description": "Two-player options let players tackle battles together.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000103459/688342401661bbc6d50eb97b4e6f706184e58341e6e3e5f59775bddfc0e7638d"
+  }
+ ],
+ "worldSummary": "The story explores ancient Hyrule during the Imprisoning War, before the modern-era events depicted in Tears of the Kingdom.",
+ "storyChapters": [
+  {
+   "title": "The Imprisoning War",
+   "body": "The story explores the ancient conflict surrounding Rauru, Sonia, Zelda, and Ganondorf during the era referenced in The Legend of Zelda: Tears of the Kingdom.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000103459/688342401661bbc6d50eb97b4e6f706184e58341e6e3e5f59775bddfc0e7638d"
+  },
+  {
+   "title": "Hyrule at War",
+   "body": "Players command multiple heroes across large battlefields, defending settlements and completing objectives while the Demon King expands his forces.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000103459/5c64f5f77b2337252b379076edc705712a5beeaff08a104269a2ccf8fc9445c9"
+  },
+  {
+   "title": "The Battle for the Kingdom",
+   "body": "The campaign builds toward the decisive struggle that establishes the history later remembered as the Imprisoning War.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000103459/6c233749c2311251c1df347f5e46016b95c293d1568e1196b44d6712dcfae308"
+  }
+ ],
+ "galleryImages": [
+  {
+   "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000103459/5c64f5f77b2337252b379076edc705712a5beeaff08a104269a2ccf8fc9445c9",
+   "alt": "Verified official/publisher media for Hyrule Warriors: Age of Imprisonment — gallery image 1."
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000103459/6c233749c2311251c1df347f5e46016b95c293d1568e1196b44d6712dcfae308",
+   "alt": "Verified official/publisher media for Hyrule Warriors: Age of Imprisonment — gallery image 2."
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000103459/d436e6809b6e3cb0ae48d70d27fe405c39045a4248098439f9ac431f8f2e167c",
+   "alt": "Verified official/publisher media for Hyrule Warriors: Age of Imprisonment — gallery image 3."
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000103459/fbe77762b0ba94c9f42514a67214b710e7f43dc659fceab58c29d780e9a89aa9",
+   "alt": "Verified official/publisher media for Hyrule Warriors: Age of Imprisonment — gallery image 4."
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000103459/8d0350383a2af078565350a1a11450738bace496269690a8d07e1faf7bc346e5",
+   "alt": "Verified official/publisher media for Hyrule Warriors: Age of Imprisonment — gallery image 5."
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000103459/688342401661bbc6d50eb97b4e6f706184e58341e6e3e5f59775bddfc0e7638d",
+   "alt": "Verified official/publisher media for Hyrule Warriors: Age of Imprisonment — gallery image 6."
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000103459/098d46c06e02364741a89c96bd91a194e817905c7f45b5f08ea76346d328742c",
+   "alt": "Verified official/publisher media for Hyrule Warriors: Age of Imprisonment — gallery image 7."
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000103459/fbe77762b0ba94c9f42514a67214b710e7f43dc659fceab58c29d780e9a89aa9",
+   "alt": "Verified official/publisher media for Hyrule Warriors: Age of Imprisonment — gallery image 8."
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000103459/8d0350383a2af078565350a1a11450738bace496269690a8d07e1faf7bc346e5",
+   "alt": "Verified official/publisher media for Hyrule Warriors: Age of Imprisonment — gallery image 9."
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000103459/688342401661bbc6d50eb97b4e6f706184e58341e6e3e5f59775bddfc0e7638d",
+   "alt": "Verified official/publisher media for Hyrule Warriors: Age of Imprisonment — gallery image 10."
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cc_fill%2Cg_auto/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000103459/463c88b9defa517be9227d851857d27926c9e2ffe18337790d47a948a3af1ef5",
+   "alt": "Verified official/publisher media for Hyrule Warriors: Age of Imprisonment — gallery image 11."
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000103459/463c88b9defa517be9227d851857d27926c9e2ffe18337790d47a948a3af1ef5",
+   "alt": "Verified official/publisher media for Hyrule Warriors: Age of Imprisonment — gallery image 12."
+  }
+ ],
+ "perfResolutionDocked": "Dynamic 1280×720 to 1600×900 (technical analysis)",
+ "perfResolutionHandheld": "Dynamic 832×468 to 1152×648 (technical analysis)",
+ "perfFps": "Target 60; split-screen capped at 30",
+ "perfNotes": "Technical analysis reports a 60 fps target in single-player with dynamic resolution and a 30 fps cap in split-screen.",
+ "devicePerformance": [
+  {
+   "device": "Nintendo Switch 2",
+   "deviceSlug": "nintendo-switch-2",
+   "deviceModel": "Nintendo Switch 2",
+   "informationStatus": "verified-analysis",
+   "handheld": {
+    "supported": true,
+    "resolution": "Dynamic 832×468 to 1152×648 (technical analysis)",
+    "outputResolution": "Dynamic 832×468 to 1152×648 (technical analysis)",
+    "fps": "Target 60; split-screen capped at 30",
+    "notes": "Technical analysis reports a 60 fps target in single-player with dynamic resolution and a 30 fps cap in split-screen."
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "Dynamic 1280×720 to 1600×900 (technical analysis)",
+    "outputResolution": "Dynamic 1280×720 to 1600×900 (technical analysis)",
+    "fps": "Target 60; split-screen capped at 30",
+    "notes": "Technical analysis reports a 60 fps target in single-player with dynamic resolution and a 30 fps cap in split-screen."
+   },
+   "modes": [
+    {
+     "name": "Single-player",
+     "handheldResolution": "Dynamic 832×468 to 1152×648 (technical analysis)",
+     "handheldFps": "Target 60",
+     "tvResolution": "Dynamic 1280×720 to 1600×900 (technical analysis)",
+     "tvFps": "Target 60"
+    },
+    {
+     "name": "Two-player split-screen",
+     "tvFps": "30"
+    }
+   ],
+   "sourceName": "Nintendo Everything technical analysis",
+   "sourceUrl": "https://nintendoeverything.com/hyrule-warriors-age-of-imprisonment-frame-rate-resolution/",
+   "verifiedAt": "2026-08-24",
+   "verificationStatus": "verified",
+   "performanceNotes": "Technical analysis reports a 60 fps target in single-player with dynamic resolution and a 30 fps cap in split-screen."
+  }
+ ],
+ "downloadSizeGb": 43.525,
+ "requiredSpaceGb": 43.5,
+ "storageNotes": "Official/verified listed game download size: approximately 43.5 GB. Updates and DLC may require additional space.",
+ "languagesAudio": [
+  "English",
+  "Japanese"
+ ],
+ "languagesText": [
+  "English",
+  "Japanese",
+  "Simplified Chinese"
+ ],
+ "arabicSupport": false,
+ "mpLocalPlayers": true,
+ "mpOnlinePlayers": true,
+ "mpCoop": true,
+ "mpCompetitive": false,
+ "mpSplitScreen": true,
+ "mpLocalWireless": true,
+ "guides": [
+  {
+   "title": "Official product and gameplay information",
+   "summary": "Official Nintendo/publisher information covering features, supported modes, requirements and product-specific notices.",
+   "url": "https://www.nintendo.com/us/store/products/hyrule-warriors-age-of-imprisonment-switch-2/"
+  },
+  {
+   "title": "GameFAQs guides and FAQs search",
+   "summary": "Community guide index for walkthroughs, FAQs, collectibles, unlockables and troubleshooting. Verify platform/version when following a guide.",
+   "url": "https://gamefaqs.gamespot.com/search?game=Hyrule+Warriors%3A+Age+of+Imprisonment"
+  },
+  {
+   "title": "Deku Deals technical/product reference",
+   "summary": "Reference page used for platform, file size, play modes, critic aggregates and completion-time metadata where available.",
+   "url": "https://www.dekudeals.com/items/hyrule-warriors-age-of-imprisonment"
+  }
+ ],
+ "completionMain": 22,
+ "completionExtras": 30,
+ "completionAll": 52.5,
+ "faq": [
+  {
+   "q": "What platform is this import for?",
+   "a": "This import is classified as Nintendo Switch 2."
+  },
+  {
+   "q": "How many players are supported?",
+   "a": "Official player support varies by mode; the primary published range is 1-2 player(s). See multiplayer fields for local, wireless, and online capabilities."
+  },
+  {
+   "q": "Does this seller listing include a separate DLC account type?",
+   "a": "No. The supplied seller listing shows two variants, so only Standard Offline and Standard Online account types are created."
+  }
+ ],
+ "verdictScore": 7.9,
+ "verdictSummary": "Editorial synthesis for Hyrule Warriors: Age of Imprisonment, based on the verified feature set, platform implementation, content scope and aggregated critical reception. This score is an internal summary, not a copied external review score.",
+ "reviews": [
+  {
+   "source": "Metacritic",
+   "score": "79",
+   "quote": "Aggregated critic score for the game/platform listing.",
+   "url": "https://www.dekudeals.com/items/hyrule-warriors-age-of-imprisonment"
+  },
+  {
+   "source": "OpenCritic",
+   "score": "79",
+   "quote": "Aggregated critic score reported for the game.",
+   "url": "https://www.dekudeals.com/items/hyrule-warriors-age-of-imprisonment"
+  },
+  {
+   "source": "Metacritic User Score",
+   "score": "8.4",
+   "quote": "Aggregated user score reference.",
+   "url": "https://www.dekudeals.com/items/hyrule-warriors-age-of-imprisonment"
+  }
+ ],
+ "timeline": [
+  {
+   "date": "2025-04-02",
+   "title": "Announcement",
+   "body": "Nintendo revealed Hyrule Warriors: Age of Imprisonment for Nintendo Switch 2."
+  },
+  {
+   "date": "2025-11-06",
+   "title": "Nintendo Switch 2 release",
+   "body": "The game launched for Nintendo Switch 2."
+  },
+  {
+   "date": "2025-12-18",
+   "title": "Second free content update available",
+   "body": "Nintendo confirmed both free post-launch updates were available by December 18, 2025, including new challenges, enemies, weapons and Forbidden Difficulty."
+  }
+ ],
+ "patchNotes": [
+  {
+   "version": "1.0.2",
+   "date": "2025-11-26",
+   "body": "Added post-story challenges and quests, new Vicious enemy variants, new weapons, Pure Zonaite Steel and a Zelda/Calamo Sync Strike."
+  },
+  {
+   "version": "1.0.3",
+   "date": "2025-12-17",
+   "body": "Added Phantom Ganon, Forbidden Difficulty, additional high-difficulty content and related rewards/features."
+  }
+ ],
+ "soundtrack": [
+  {
+   "title": "Hyrule Warriors: Age of Imprisonment — official game music information",
+   "url": "https://www.nintendo.com/us/store/products/hyrule-warriors-age-of-imprisonment-switch-2/"
+  },
+  {
+   "title": "Hyrule Warriors: Age of Imprisonment — VGMdb soundtrack catalog search",
+   "url": "https://vgmdb.net/search?q=Hyrule+Warriors%3A+Age+of+Imprisonment&type=album"
+  },
+  {
+   "title": "Hyrule Warriors: Age of Imprisonment — soundtrack video search",
+   "url": "https://www.youtube.com/results?search_query=Hyrule+Warriors%3A+Age+of+Imprisonment+official+soundtrack"
+  }
+ ],
+ "seriesName": "Hyrule Warriors / The Legend of Zelda",
+ "studioName": "KOEI TECMO GAMES",
+ "studioUrl": "https://www.koeitecmo.co.jp/e/",
+ "studioLocation": "Yokohama, Japan",
+ "studioAbout": "KOEI TECMO develops the Warriors series and has collaborated with Nintendo on multiple Hyrule Warriors titles.",
+ "sources": [
+  {
+   "name": "Nintendo / publisher official product page",
+   "url": "https://www.nintendo.com/us/store/products/hyrule-warriors-age-of-imprisonment-switch-2/"
+  },
+  {
+   "name": "Deku Deals — platform, size, scores and play-time reference",
+   "url": "https://www.dekudeals.com/items/hyrule-warriors-age-of-imprisonment"
+  },
+  {
+   "name": "The Cover Project — Full Retail Wrap",
+   "url": "https://www.thecoverproject.net/view.php?game_id=20053"
+  }
+ ],
+ "fitFor": [
+  "Zelda and Hyrule Warriors fans",
+  "Players who enjoy large enemy crowds and combo combat",
+  "Two-player action fans"
+ ],
+ "notFitFor": [
+  "Players seeking traditional Zelda dungeon structure",
+  "Players who dislike musou-style combat",
+  "Players seeking turn-based gameplay"
+ ],
+ "features": [
+  "Large-scale battles in ancient Hyrule",
+  "Distinct playable character abilities",
+  "Two-player cooperative options on Nintendo Switch 2"
+ ],
+ "verdictPros": [
+  "Large-scale Warriors battles set in Zelda history",
+  "Playable characters and story tied to the Imprisoning War",
+  "Two-player local cooperative play"
+ ],
+ "verdictCons": [
+  "Musou repetition remains central to the experience",
+  "Large download size",
+  "Busy battlefields may not appeal to players seeking traditional Zelda exploration"
+ ],
+ "seriesEntries": [
+  "Hyrule Warriors: Definitive Edition",
+  "Hyrule Warriors: Age of Calamity",
+  "The Legend of Zelda: Tears of the Kingdom"
+ ],
+ "setupNeeds": [
+  "Nintendo Switch 2 system",
+  "Additional compatible controller required for local two-player play",
+  "Nintendo Switch Online may be required for supported online features"
+ ],
+ "boxContentsList": "[Circular]",
+ "image": "/api/files/products/prd_14259a3bda924632/cover-244d2043f1940abd.jpg",
+ "banner": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000103459/fbe77762b0ba94c9f42514a67214b710e7f43dc659fceab58c29d780e9a89aa9",
+ "schemaId": "",
+ "badgeEn": "وفر 40%",
+ "badgeKu": "وفر 40%",
+ "featuresEn": [
+  "Large-scale battles in ancient Hyrule",
+  "Distinct playable character abilities",
+  "Two-player cooperative options on Nintendo Switch 2"
+ ],
+ "featuresKu": [
+  "Large-scale battles in ancient Hyrule",
+  "Distinct playable character abilities",
+  "Two-player cooperative options on Nintendo Switch 2"
+ ],
+ "game_id": "gme_3ed6755e8be54e51",
+ "boxFrontUrl": "https://gamesdb-images.launchbox.gg/r2_927c4138-1d9f-4802-a264-a477a54e62a3.jpg",
+ "sales": 0,
+ "createdAt": "2026-08-27T04:36:02.708Z",
+ "created_at": "2026-08-27T04:36:02.708Z",
+ "updatedAt": "2026-08-28T23:31:45.186Z",
+ "updated_at": "2026-08-28T23:31:45.186Z",
+ "images": [],
+ "modes": [],
+ "price_usd": 69.99,
+ "nintendoGameKeyCard": false,
+ "nintendoPhysicalNeedsDownload": false,
+ "perfHdr": true,
+ "microSdRecommended": true,
+ "dlc": [
+  {
+   "name": "No standalone DLC has been announced",
+   "description": "No official standalone DLC or expansion-pass announcement is available for Age of Imprisonment at the time of this extraction."
+  }
+ ],
+ "batchImport": true,
+ "variants": "[Circular]"
+}

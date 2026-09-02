@@ -1,6 +1,6 @@
 {
  "batch": "011",
- "apply": true,
+ "apply": false,
  "games": [
   {
    "id": "prd_4966d6abd0da4509",
@@ -167,6 +167,90 @@
     "guaranteeStatus"
    ],
    "notes": "The sole record carried the correct Switch-port figures under a Switch 2 badge — the platform rule re-badges it to Nintendo Switch at apply time with figures preserved. dlcSummary records the verified Friend's Pass model. 2022-11-04, Metacritic 82 verified. All images working. Contamination removed."
+  }
+ ],
+ "appliedAt": "2026-09-02T03:03:15.458Z",
+ "results": [
+  {
+   "id": "prd_4966d6abd0da4509",
+   "action": "APPLIED",
+   "changed": [
+    "size",
+    "downloadSizeGb",
+    "devicePerformance"
+   ],
+   "removed": [
+    "youtubeTrailer",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ]
+  },
+  {
+   "id": "prd_b6c32956d9c24d99",
+   "action": "APPLIED",
+   "changed": [
+    "devicePerformance"
+   ],
+   "removed": [
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ]
+  },
+  {
+   "id": "prd_14259a3bda924632",
+   "action": "APPLIED",
+   "changed": [],
+   "removed": [
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ]
+  },
+  {
+   "id": "prd_6e169cd5731f4e2b",
+   "action": "APPLIED",
+   "changed": [
+    "devicePerformance"
+   ],
+   "removed": [
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ]
+  },
+  {
+   "id": "prd_b9ca0595530f4d17",
+   "action": "REFUSED_VALIDATION"
   }
  ]
 }
