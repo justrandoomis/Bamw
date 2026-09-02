@@ -50,7 +50,7 @@ export function VideosSection() {
       weight="primary"
       action={
         kinds.length > 1 ? (
-          <Segmented
+          <Segmented<VideoKind | "all">
             size="sm"
             value={kind}
             onChange={setKind}
@@ -173,7 +173,7 @@ export function GallerySection() {
       weight="support"
       action={
         categories.length > 1 ? (
-          <Segmented
+          <Segmented<ImageCategory | "all">
             size="sm"
             value={category}
             onChange={setCategory}

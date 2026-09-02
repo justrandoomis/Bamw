@@ -177,7 +177,7 @@ async function validateLine(
   }
 
   // Handle DLCs
-  const selectedDlcs = [];
+  const selectedDlcs: string[] = [];
   if (line.dlcIds && product.dlcs) {
     for (const dlcId of line.dlcIds) {
       const dlc = product.dlcs.find((d) => d.id === dlcId);

@@ -96,7 +96,7 @@ export const approveReview = createServerFn({ method: "POST" })
     const sevenDaysAgo = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString();
     const isEligibleForCoupon = !cooldown || cooldown.last_rewarded_at < sevenDaysAgo;
 
-    let couponCode = null;
+    let couponCode: string | null = null;
 
     // Start Batch
     const batch: { sql: string; params: unknown[] }[] = [

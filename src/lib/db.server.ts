@@ -2529,7 +2529,9 @@ export async function searchMessagesInThread(
   const cleanQ = normalizeSearchText(query);
   if (!cleanQ) return [];
 
-  let rows = [];
+  // Annotated: `let rows = []` infers `never[]` under strictNullChecks, and
+  // every field read on a message below then failed to type.
+  let rows: ChatMessage[] = [];
   if (await d1Ready()) {
     // If we have D1, we can just grab the docs, we don't need to load the whole JSON into memory array first,
     // but without FTS we still have to parse and search in JS.
