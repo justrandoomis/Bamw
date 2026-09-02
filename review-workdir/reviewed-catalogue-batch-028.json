@@ -1,0 +1,51 @@
+{
+ "batch": "028",
+ "apply": false,
+ "games": [
+  {
+   "id": "prd_073b4bb198534514",
+   "slug": "tomb-raider-definitive-edition-switch-1",
+   "baseHash": "2f64dc9eeca1f936915d7564b8bd0d6d22e293e508640711cf4dde71e0e91800",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  },
+  {
+   "id": "prd_ce036843bb8c42f2",
+   "slug": "tomb-raider-definitive-edition-switch-2",
+   "baseHash": "5637f8a0f34952ffea7277236f61bdf76e08a900bb10ff9bc012e943e6d7a212",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  },
+  {
+   "id": "prd_675d26dff95a422f",
+   "slug": "tomodachi-life-living-the-dream",
+   "baseHash": "c1314d070c2f2fba7abe5fa9d524f1bb3be58cf7f3ae9b0737a0d95b5c061cf1",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  },
+  {
+   "id": "prd_3aa29ae292b84ad5",
+   "slug": "two-point-museum",
+   "baseHash": "73b6e25b5ea2b23d78409b1ee6755aa5bf0c78953b431530e616fe3182057b7c",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  },
+  {
+   "id": "prd_02876a10c3914082",
+   "slug": "unravel-two-switch-1",
+   "baseHash": "5ae9330950cdb30cddeffe6e94eb1e51c47cb20b6e211a3346ecd3a5d910cc26",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  }
+ ]
+}

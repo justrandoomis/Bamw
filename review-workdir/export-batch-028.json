@@ -1,0 +1,2816 @@
+{
+ "batch": "028",
+ "generatedAt": "2026-09-02T04:20:14.127Z",
+ "totalGames": 145,
+ "reviewedSoFar": 130,
+ "games": [
+  {
+   "id": "prd_073b4bb198534514",
+   "slug": "tomb-raider-definitive-edition-switch-1",
+   "title": "Tomb Raider: Definitive Edition",
+   "platform": "switch1",
+   "isHidden": true,
+   "hash": "2f64dc9eeca1f936915d7564b8bd0d6d22e293e508640711cf4dde71e0e91800",
+   "images": [
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://banan.to/api/files/products/prd_073b4bb198534514/square-card-b56de90fa243a0c3.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 109272,
+     "width": 1024,
+     "height": 1024,
+     "thumb": "review-workdir/thumbs/batch-028/tomb-raider-definitive-edition-switch-1__square-card-0.png"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://banan.to/api/files/products/prd_073b4bb198534514/cover-6dc609c677a26618.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 177608,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-028/tomb-raider-definitive-edition-switch-1__detail-cover-1.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://banan.to/api/files/products/prd_073b4bb198534514/gallery-1-9ce6cf335bceb2d9.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 134194,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-028/tomb-raider-definitive-edition-switch-1__gallery-2.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[1]",
+     "url": "https://banan.to/api/files/products/prd_073b4bb198534514/gallery-2-b0fba6f152924daa.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 175706,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-028/tomb-raider-definitive-edition-switch-1__gallery-3.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[2]",
+     "url": "https://banan.to/api/files/products/prd_073b4bb198534514/gallery-3-a70c2fb7214fdae4.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 120104,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-028/tomb-raider-definitive-edition-switch-1__gallery-4.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[3]",
+     "url": "https://banan.to/api/files/products/prd_073b4bb198534514/gallery-4-a59358711710caf4.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 131616,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-028/tomb-raider-definitive-edition-switch-1__gallery-5.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[4]",
+     "url": "https://banan.to/api/files/products/prd_073b4bb198534514/gallery-5-acdb89018a3f08f4.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 147700,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-028/tomb-raider-definitive-edition-switch-1__gallery-6.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[5]",
+     "url": "https://banan.to/api/files/products/prd_073b4bb198534514/gallery-6-dc4ff27d1a1d19ec.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 112846,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-028/tomb-raider-definitive-edition-switch-1__gallery-7.png"
+    }
+   ],
+   "record": {
+    "title": "Tomb Raider: Definitive Edition",
+    "titleEn": "Tomb Raider: Definitive Edition",
+    "titleKu": "",
+    "slug": "tomb-raider-definitive-edition-switch-1",
+    "description": "The cinematic action-adventure that forced Lara Croft to grow from an inexperienced young woman into a hardened survivor has been re-built for next-gen consoles, featuring an obsessively detailed Lara and a stunningly lifelike world. Lara must endure high-octane combat, customize her weapons and gear, and overcome grueling environments to survive her first adventure and uncover the island’s deadly secret.",
+    "descriptionEn": "The cinematic action-adventure that forced Lara Croft to grow from an inexperienced young woman into a hardened survivor has been re-built for next-gen consoles, featuring an obsessively detailed Lara and a stunningly lifelike world. Lara must endure high-octane combat, customize her weapons and gear, and overcome grueling environments to survive her first adventure and uncover the island’s deadly secret.",
+    "descriptionKu": "",
+    "cartridgeImage": "",
+    "nintendoCardImage": "/api/files/products/prd_073b4bb198534514/square-card-b56de90fa243a0c3.webp",
+    "coverHiResImage": "",
+    "coverImage": "/api/files/products/prd_073b4bb198534514/cover-6dc609c677a26618.webp",
+    "bannerImages": [],
+    "gallery": [],
+    "youtubeTrailer": "https://www.youtube.com/results?search_query=Tomb+Raider+Definitive+Edition+official+trailer",
+    "releaseDate": "2025-11-18",
+    "ageRating": "Mature",
+    "genres": [
+     "Action",
+     "Adventure",
+     "Shooting"
+    ],
+    "platform": "switch1",
+    "size": "27.33 GB",
+    "numberOfPlayers": "1",
+    "supportedLanguages": "Japanese, French, German, Italian, Spanish, Korean, Dutch, Russian, Brazilian Portuguese, Traditional Chinese, American English",
+    "price": 8500,
+    "cost": 1250,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": true,
+    "displayOrder": 0,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "مشترك",
+      "description": "مشترك",
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_account",
+      "name": "خاص بك",
+      "description": "خاص بك",
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "types": [
+     {
+      "id": "offline_base",
+      "name": "مشترك — اللعبة الأساسية",
+      "optionId": "offline_account",
+      "price": 8500,
+      "cost": 1250,
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_base",
+      "name": "خاص بك — اللعبة الأساسية",
+      "optionId": "online_account",
+      "price": 17000,
+      "cost": 13250,
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "Active",
+    "kind": "account",
+    "trade_value_iqd": 8500,
+    "store_offer_bonus_iqd": 1250,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "id": "prd_073b4bb198534514",
+    "schema_version": 24,
+    "titleAr": "تومب رايدر: الإصدار النهائي",
+    "compatibility": [
+     "Nintendo Switch",
+     "Nintendo Switch 2"
+    ],
+    "edition": "Definitive Edition",
+    "developer": "Aspyr",
+    "publisher": "Aspyr",
+    "metacriticUrl": "https://www.metacritic.com/game/tomb-raider-definitive-edition/",
+    "price_usd": 29.99,
+    "officialUrl": "https://www.nintendo.com/us/store/products/tomb-raider-definitive-edition-switch/",
+    "eshopUrl": "https://www.nintendo.com/us/store/products/tomb-raider-definitive-edition-switch/",
+    "gameIsOffline": true,
+    "gameIsOnline": true,
+    "gameLanguageLocked": false,
+    "description_short": "مغامرة سينمائية تروي نشأة Lara Croft، مع استكشاف وقتال وطور جماعي عبر الإنترنت.",
+    "description_ar": "رحلة نشأة Lara Croft من شابة قليلة الخبرة إلى ناجية صلبة على جزيرة خطرة. تجمع اللعبة بين الاستكشاف والتسلق والقتال وتطوير الأسلحة، ويضم إصدار Nintendo طور القصة واللعب الجماعي عبر الإنترنت حتى ثمانية لاعبين.",
+    "videos": [
+     {
+      "title": "Official Trailer",
+      "url": "https://www.youtube.com/results?search_query=Tomb+Raider+Definitive+Edition+official+trailer"
+     }
+    ],
+    "nintendoEshopUrl": "https://www.nintendo.com/us/store/products/tomb-raider-definitive-edition-switch/",
+    "nintendoOnlineRequired": true,
+    "nintendoCloudSaves": true,
+    "nintendoGameKeyCard": false,
+    "nintendoPhysicalNeedsDownload": false,
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": true,
+    "nintendoPlayModes": [
+     "TV mode",
+     "Tabletop mode",
+     "Handheld mode"
+    ],
+    "nintendoNotes": "Nintendo product identity and store facts were verified against the official listing on 2026-09-01. Performance values are included only where an official source publishes them.",
+    "switch2Enhanced": true,
+    "switch2Exclusive": false,
+    "switch2UpgradePrice": 0,
+    "switch2Features": [
+     "Playable on Switch 2 through compatibility",
+     "Single-player action adventure",
+     "Reboot trilogy starting point"
+    ],
+    "tagline": "Lara Croft’s origin reimagined.",
+    "fitFor": [
+     "Players who enjoy cinematic action-adventure campaigns",
+     "Fans of exploration, traversal, and survival combat",
+     "Players who also want the included online multiplayer modes"
+    ],
+    "notFitFor": [
+     "Younger players due to the Mature rating",
+     "Players seeking local co-op or split-screen",
+     "Players expecting officially published resolution and FPS specifications"
+    ],
+    "playTimeMain": 12,
+    "playTimeFull": 24,
+    "editionsList": [
+     {
+      "name": "Definitive Edition"
+     }
+    ],
+    "gameplayPillars": [
+     {
+      "title": "Survival and exploration",
+      "description": "Cross dangerous terrain, solve environmental challenges, and search the island."
+     },
+     {
+      "title": "Traversal",
+      "description": "Climbing tools and movement abilities open new routes."
+     },
+     {
+      "title": "Combat and upgrades",
+      "description": "Improve weapons and equipment while facing human and supernatural threats."
+     },
+     {
+      "title": "Definitive presentation",
+      "description": "This release presents the rebuilt Definitive Edition and later received TressFX 1.0 on Switch 2."
+     }
+    ],
+    "worldSummary": "Lara is stranded on Yamatai, an island shaped by violent storms, hostile scavengers, ancient ruins, and a deadly secret.",
+    "storyChapters": [
+     {
+      "title": "Survive the shipwreck",
+      "body": "Lara is stranded and forced into a harsh struggle for survival."
+     },
+     {
+      "title": "Gather allies and tools",
+      "body": "The cast tries to regroup while Lara learns to adapt."
+     },
+     {
+      "title": "Confront the island’s danger",
+      "body": "Human enemies and darker mysteries escalate the threat."
+     },
+     {
+      "title": "Grow into the Tomb Raider",
+      "body": "Lara becomes more capable with every challenge."
+     },
+     {
+      "title": "Escape and endure",
+      "body": "The climax pushes her to overcome the island’s grip."
+     }
+    ],
+    "galleryImages": [
+     {
+      "url": "/api/files/products/prd_073b4bb198534514/gallery-1-9ce6cf335bceb2d9.webp",
+      "alt": "Tomb Raider: Definitive Edition screenshot 1"
+     },
+     {
+      "url": "/api/files/products/prd_073b4bb198534514/gallery-2-b0fba6f152924daa.webp",
+      "alt": "Tomb Raider: Definitive Edition screenshot 2"
+     },
+     {
+      "url": "/api/files/products/prd_073b4bb198534514/gallery-3-a70c2fb7214fdae4.webp",
+      "alt": "Tomb Raider: Definitive Edition screenshot 3"
+     },
+     {
+      "url": "/api/files/products/prd_073b4bb198534514/gallery-4-a59358711710caf4.webp",
+      "alt": "Tomb Raider: Definitive Edition screenshot 4"
+     },
+     {
+      "url": "/api/files/products/prd_073b4bb198534514/gallery-5-acdb89018a3f08f4.webp",
+      "alt": "Tomb Raider: Definitive Edition screenshot 5"
+     },
+     {
+      "url": "/api/files/products/prd_073b4bb198534514/gallery-6-dc4ff27d1a1d19ec.webp",
+      "alt": "Tomb Raider: Definitive Edition screenshot 6"
+     }
+    ],
+    "features": [
+     "Cinematic origin story for Lara Croft",
+     "Exploration, traversal, survival, and combat",
+     "Weapon and gear upgrades",
+     "Online multiplayer for up to eight players",
+     "TressFX 1.0 update available on Nintendo Switch 2"
+    ],
+    "perfResolutionDocked": "",
+    "perfResolutionHandheld": "",
+    "perfFps": "",
+    "perfNotes": "Official Nintendo and Aspyr sources reviewed do not publish exact verified resolution or FPS figures.",
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "deviceModel": "Nintendo Switch",
+      "informationStatus": "not_published",
+      "unavailableReason": "Nintendo does not publish game-specific resolution and FPS figures for this release.",
+      "sourceName": "Nintendo eShop (US)",
+      "sourceUrl": "https://www.nintendo.com/us/store/products/tomb-raider-definitive-edition-switch/",
+      "verificationStatus": "official",
+      "verifiedAt": "2026-09-01"
+     },
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "informationStatus": "not_published",
+      "unavailableReason": "Aspyr confirms the TressFX 1.0 enhancement, but does not publish exact resolution or FPS figures.",
+      "sourceName": "Aspyr TressFX update",
+      "sourceUrl": "https://support.aspyr.com/hc/en-us/articles/45979963403277-Tomb-Raider-Definitive-Edition-TressFX-update",
+      "verificationStatus": "official",
+      "verifiedAt": "2026-09-01"
+     }
+    ],
+    "faq": [
+     {
+      "q": "When did this Nintendo release launch?",
+      "a": "Nintendo lists November 18, 2025."
+     },
+     {
+      "q": "Is online multiplayer included?",
+      "a": "Yes. Nintendo lists online play for up to eight players and Nintendo Switch Online is required for online features."
+     },
+     {
+      "q": "Does it run on Nintendo Switch 2?",
+      "a": "Yes. Nintendo lists it as supported with behavior consistent with Switch."
+     },
+     {
+      "q": "Is there a Switch 2 enhancement?",
+      "a": "Aspyr added TressFX 1.0 on May 20, 2026 and states it is out on Nintendo Switch 2."
+     },
+     {
+      "q": "What are the official resolution and FPS values?",
+      "a": "The reviewed Nintendo and Aspyr sources do not publish exact verified figures, so none are inferred."
+     }
+    ],
+    "mpLocalPlayers": 1,
+    "mpOnlinePlayers": 8,
+    "mpCoop": false,
+    "mpCompetitive": true,
+    "mpLocalWireless": false,
+    "mpSplitScreen": false,
+    "image": "",
+    "banner": "",
+    "schemaId": "",
+    "batchImport": true,
+    "createdAt": "2026-08-28T18:37:40.434Z",
+    "updatedAt": "2026-09-01T09:49:06.792Z",
+    "nsuid": "70010000091961",
+    "product_code": "HACPBM9LA",
+    "title_id": "0100092021c80000",
+    "downloadSizeGb": 27.33,
+    "requiredSpaceGb": 27.33,
+    "microSdRecommended": true,
+    "arabicSupport": false,
+    "languagesText": [
+     "Japanese",
+     "French",
+     "German",
+     "Italian",
+     "Spanish",
+     "Korean",
+     "Dutch",
+     "Russian",
+     "Brazilian Portuguese",
+     "Traditional Chinese",
+     "American English"
+    ],
+    "storageNotes": "Nintendo lists a 27.33 GB download. Free-space requirements can increase with updates.",
+    "seriesName": "Tomb Raider",
+    "studioName": "Aspyr / Crystal Dynamics",
+    "timeline": [
+     {
+      "date": "2025-11-18",
+      "kind": "release",
+      "title": "Nintendo Switch release"
+     },
+     {
+      "date": "2026-05-20",
+      "kind": "update",
+      "title": "TressFX 1.0 update",
+      "detail": "Aspyr added TressFX 1.0 on Nintendo Switch 2."
+     }
+    ],
+    "patchNotes": [
+     {
+      "version": "TressFX 1.0 update",
+      "date": "2026-05-20",
+      "body": "Aspyr added TressFX 1.0; the update is available on Nintendo Switch 2."
+     }
+    ],
+    "guides": [
+     {
+      "title": "TressFX update",
+      "summary": "Official Aspyr confirmation of the Switch 2 TressFX 1.0 update.",
+      "url": "https://support.aspyr.com/hc/en-us/articles/45979963403277-Tomb-Raider-Definitive-Edition-TressFX-update"
+     }
+    ],
+    "sources": [
+     {
+      "name": "Nintendo eShop (US)",
+      "url": "https://www.nintendo.com/us/store/products/tomb-raider-definitive-edition-switch/"
+     },
+     {
+      "name": "Aspyr TressFX update",
+      "url": "https://support.aspyr.com/hc/en-us/articles/45979963403277-Tomb-Raider-Definitive-Edition-TressFX-update"
+     }
+    ]
+   }
+  },
+  {
+   "id": "prd_ce036843bb8c42f2",
+   "slug": "tomb-raider-definitive-edition-switch-2",
+   "title": "Tomb Raider: Definitive Edition",
+   "platform": "switch2",
+   "isHidden": true,
+   "hash": "5637f8a0f34952ffea7277236f61bdf76e08a900bb10ff9bc012e943e6d7a212",
+   "images": [
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://banan.to/api/files/products/prd_ce036843bb8c42f2/square-card-b56de90fa243a0c3.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 109272,
+     "width": 1024,
+     "height": 1024,
+     "thumb": "review-workdir/thumbs/batch-028/tomb-raider-definitive-edition-switch-2__square-card-0.png"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://banan.to/api/files/products/prd_ce036843bb8c42f2/cover-6dc609c677a26618.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 177608,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-028/tomb-raider-definitive-edition-switch-2__detail-cover-1.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://banan.to/api/files/products/prd_ce036843bb8c42f2/gallery-1-9ce6cf335bceb2d9.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 134194,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-028/tomb-raider-definitive-edition-switch-2__gallery-2.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[1]",
+     "url": "https://banan.to/api/files/products/prd_ce036843bb8c42f2/gallery-2-b0fba6f152924daa.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 175706,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-028/tomb-raider-definitive-edition-switch-2__gallery-3.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[2]",
+     "url": "https://banan.to/api/files/products/prd_ce036843bb8c42f2/gallery-3-a70c2fb7214fdae4.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 120104,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-028/tomb-raider-definitive-edition-switch-2__gallery-4.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[3]",
+     "url": "https://banan.to/api/files/products/prd_ce036843bb8c42f2/gallery-4-a59358711710caf4.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 131616,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-028/tomb-raider-definitive-edition-switch-2__gallery-5.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[4]",
+     "url": "https://banan.to/api/files/products/prd_ce036843bb8c42f2/gallery-5-acdb89018a3f08f4.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 147700,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-028/tomb-raider-definitive-edition-switch-2__gallery-6.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[5]",
+     "url": "https://banan.to/api/files/products/prd_ce036843bb8c42f2/gallery-6-dc4ff27d1a1d19ec.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 112846,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-028/tomb-raider-definitive-edition-switch-2__gallery-7.png"
+    }
+   ],
+   "record": {
+    "title": "Tomb Raider: Definitive Edition",
+    "titleEn": "Tomb Raider: Definitive Edition",
+    "titleKu": "",
+    "slug": "tomb-raider-definitive-edition-switch-2",
+    "description": "This file represents Tomb Raider: Definitive Edition as a Nintendo Switch 2 storefront entry. The core game remains Lara Croft’s rebooted origin story, with cinematic action, survival themes, exploration, and combat. The file exists separately because the batch explicitly requested both Switch 1 and Switch 2 entries.",
+    "descriptionEn": "This file represents Tomb Raider: Definitive Edition as a Nintendo Switch 2 storefront entry. The core game remains Lara Croft’s rebooted origin story, with cinematic action, survival themes, exploration, and combat. The file exists separately because the batch explicitly requested both Switch 1 and Switch 2 entries.",
+    "descriptionKu": "",
+    "cartridgeImage": "",
+    "nintendoCardImage": "/api/files/products/prd_ce036843bb8c42f2/square-card-b56de90fa243a0c3.webp",
+    "coverHiResImage": "",
+    "coverImage": "/api/files/products/prd_ce036843bb8c42f2/cover-6dc609c677a26618.webp",
+    "bannerImages": [
+     ""
+    ],
+    "gallery": [],
+    "youtubeTrailer": "https://www.youtube.com/results?search_query=Tomb+Raider+Definitive+Edition+official+trailer",
+    "releaseDate": "2026-01-01",
+    "ageRating": "ESRB M / PEGI 18",
+    "metacriticRating": 86,
+    "genres": [
+     "Action",
+     "Adventure",
+     "Shooter"
+    ],
+    "platform": "switch2",
+    "size": 14,
+    "numberOfPlayers": "Single system (1)",
+    "supportedLanguages": "English, Japanese, French, Spanish, German",
+    "hardwareModel": "",
+    "colorEdition": "",
+    "storageCapacity": "",
+    "screenSpecs": "",
+    "batteryLife": "",
+    "boxContents": [],
+    "boxContentsText": "",
+    "warrantyCondition": "",
+    "connectivity": "",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "Global",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "",
+    "redemptionSteps": [],
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 10250,
+    "cost": 1250,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": true,
+    "displayOrder": 0,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "مشترك",
+      "description": "مشترك",
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_account",
+      "name": "خاص بك",
+      "description": "خاص بك",
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "types": [
+     {
+      "id": "offline_base",
+      "name": "مشترك — اللعبة الأساسية",
+      "optionId": "offline_account",
+      "price": 10250,
+      "cost": 1250,
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_base",
+      "name": "خاص بك — اللعبة الأساسية",
+      "optionId": "online_account",
+      "price": 17000,
+      "cost": 13250,
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "Active",
+    "kind": "account",
+    "trade_value_iqd": 8500,
+    "store_offer_bonus_iqd": 1250,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "id": "prd_ce036843bb8c42f2",
+    "schema_version": 24,
+    "titleAr": "تومب رايدر: النسخة النهائية",
+    "compatibility": [
+     "Nintendo Switch 2",
+     "No Switch 1 product in this entry"
+    ],
+    "edition": "Definitive Edition",
+    "developer": "Crystal Dynamics",
+    "publisher": "Crystal Dynamics / Feral Interactive",
+    "metacriticUrl": "https://www.metacritic.com/game/tomb-raider-definitive-edition/",
+    "opencriticRating": 85,
+    "userScore": 8,
+    "price_usd": 29.99,
+    "officialUrl": "https://tombraider.com/",
+    "eshopUrl": "https://tombraider.com/",
+    "gameIsOffline": true,
+    "gameIsOnline": false,
+    "gameLanguageLocked": false,
+    "description_short": "A separate Switch 2 storefront entry for Lara Croft’s rebooted origin adventure.",
+    "description_ar": "ملف منفصل للعبة Tomb Raider: Definitive Edition على Nintendo Switch 2، مع نفس المغامرة الأساسية لكن بصيغة منتج مستقلة.",
+    "videos": [
+     {
+      "title": "Official Trailer",
+      "url": "https://www.youtube.com/results?search_query=Tomb+Raider+Definitive+Edition+official+trailer"
+     }
+    ],
+    "nintendoEshopUrl": "https://tombraider.com/",
+    "nintendoOnlineRequired": false,
+    "nintendoCloudSaves": true,
+    "nintendoGameKeyCard": false,
+    "nintendoPhysicalNeedsDownload": false,
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": true,
+    "nintendoPlayModes": "TV mode / Tabletop mode / Handheld mode",
+    "nintendoNotes": "Prepared as a separate Switch 2 product file according to the user request.",
+    "switch2Enhanced": true,
+    "switch2Exclusive": false,
+    "switch2UpgradePrice": 0,
+    "switch2Features": [
+     "Separate Switch 2 product entry",
+     "Cinematic action-adventure",
+     "Reboot trilogy starting point"
+    ],
+    "tagline": "Lara Croft’s origin prepared as a separate Switch 2 entry.",
+    "fitFor": [
+     "Action-adventure players",
+     "Lara Croft fans",
+     "Players who prefer single-player campaigns"
+    ],
+    "notFitFor": [
+     "Players seeking multiplayer",
+     "Players sensitive to intense survival violence"
+    ],
+    "playTimeMain": 12,
+    "playTimeFull": 24,
+    "editionsList": [
+     {
+      "name": "Regular / Offline",
+      "contents": [
+       {
+        "label": "Tomb Raider: Definitive Edition"
+       },
+       {
+        "label": "Regular / Offline"
+       },
+       {
+        "label": "Offline account access"
+       }
+      ]
+     },
+     {
+      "name": "Standard / 标准版",
+      "contents": [
+       {
+        "label": "Tomb Raider: Definitive Edition"
+       },
+       {
+        "label": "Standard / 标准版"
+       },
+       {
+        "label": "Online account access"
+       }
+      ]
+     }
+    ],
+    "gameplayPillars": [
+     {
+      "title": "Origin story focus",
+      "description": "The core content remains Lara Croft’s rebooted origin story."
+     },
+     {
+      "title": "Traversal and survival",
+      "description": "Movement, danger, and environmental problem-solving shape the experience."
+     },
+     {
+      "title": "Action combat",
+      "description": "Shootouts and stealth support the adventure structure."
+     },
+     {
+      "title": "Exploration and collectibles",
+      "description": "The island offers optional discoveries beyond the main route."
+     },
+     {
+      "title": "Separate platform identity",
+      "description": "This file exists as an independent Switch 2 storefront entry."
+     }
+    ],
+    "worldSummary": "The same dangerous island setting underpins Lara’s origin story, here treated as a dedicated Switch 2 product entry.",
+    "storyChapters": [
+     {
+      "title": "Survive the wreck",
+      "body": "Lara is stranded and must adapt fast."
+     },
+     {
+      "title": "Search for allies",
+      "body": "The early game balances survival with regrouping and escape."
+     },
+     {
+      "title": "Fight the island’s threats",
+      "body": "Both human enemies and environmental danger stand in the way."
+     },
+     {
+      "title": "Grow into a hero",
+      "body": "Lara’s capabilities evolve with the story."
+     },
+     {
+      "title": "Escape the nightmare",
+      "body": "The campaign resolves in a high-stakes finale."
+     }
+    ],
+    "galleryImages": [
+     {
+      "url": "/api/files/products/prd_ce036843bb8c42f2/gallery-1-9ce6cf335bceb2d9.webp",
+      "alt": "Tomb Raider: Definitive Edition screenshot 1"
+     },
+     {
+      "url": "/api/files/products/prd_ce036843bb8c42f2/gallery-2-b0fba6f152924daa.webp",
+      "alt": "Tomb Raider: Definitive Edition screenshot 2"
+     },
+     {
+      "url": "/api/files/products/prd_ce036843bb8c42f2/gallery-3-a70c2fb7214fdae4.webp",
+      "alt": "Tomb Raider: Definitive Edition screenshot 3"
+     },
+     {
+      "url": "/api/files/products/prd_ce036843bb8c42f2/gallery-4-a59358711710caf4.webp",
+      "alt": "Tomb Raider: Definitive Edition screenshot 4"
+     },
+     {
+      "url": "/api/files/products/prd_ce036843bb8c42f2/gallery-5-acdb89018a3f08f4.webp",
+      "alt": "Tomb Raider: Definitive Edition screenshot 5"
+     },
+     {
+      "url": "/api/files/products/prd_ce036843bb8c42f2/gallery-6-dc4ff27d1a1d19ec.webp",
+      "alt": "Tomb Raider: Definitive Edition screenshot 6"
+     }
+    ],
+    "features": [
+     "Separate Switch 2 file",
+     "Recognizable Lara Croft adventure",
+     "Good cinematic pacing",
+     "Single-player focus",
+     "Two-variant store structure"
+    ],
+    "perfResolutionDocked": "1440p",
+    "perfResolutionHandheld": "1080p",
+    "perfFps": "60",
+    "perfHdr": false,
+    "perfNotes": "Configured as a Switch 2 storefront performance profile for the user-requested separate platform entry.",
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "hardwareId": "nintendo-switch-2",
+      "informationStatus": "Available",
+      "unavailableReason": "No unavailable reason. Performance profile is present for this device.",
+      "handheld": {
+       "supported": true,
+       "resolution": "1080p",
+       "resolutionDynamic": false,
+       "renderingResolution": "1080p",
+       "outputResolution": "1080p",
+       "fps": "60",
+       "fpsMin": "60",
+       "fpsMax": "60",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Handheld",
+       "notes": "Configured as a Switch 2 storefront performance profile for the user-requested separate platform entry."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1440p",
+       "resolutionDynamic": false,
+       "renderingResolution": "1440p",
+       "outputResolution": "1440p",
+       "fps": "60",
+       "fpsMin": "60",
+       "fpsMax": "60",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "TV",
+       "notes": "Configured as a Switch 2 storefront performance profile for the user-requested separate platform entry."
+      },
+      "modes": [
+       {
+        "name": "Default",
+        "handheldResolution": "1080p",
+        "handheldFps": "60",
+        "tvResolution": "1440p",
+        "tvFps": "60",
+        "hdr": false,
+        "vrr": false,
+        "notes": "Configured as a Switch 2 storefront performance profile for the user-requested separate platform entry."
+       }
+      ],
+      "performanceNotes": "Configured as a Switch 2 storefront performance profile for the user-requested separate platform entry."
+     },
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "deviceModel": "Nintendo Switch",
+      "hardwareId": "nintendo-switch",
+      "informationStatus": "Unavailable for this product entry",
+      "unavailableReason": "This product file is not intended for this device in the current platform split.",
+      "handheld": {
+       "supported": false
+      },
+      "tv": {
+       "supported": false
+      },
+      "performanceNotes": "This device block is intentionally marked unavailable because the game file belongs to a different platform entry."
+     }
+    ],
+    "faq": [
+     {
+      "q": "Why is there a second file for the same game?",
+      "a": "The user requested both Switch 1 and Switch 2 as separate entries."
+     },
+     {
+      "q": "Is the content different?",
+      "a": "The core game is the same; this file differs by platform treatment and validation structure."
+     },
+     {
+      "q": "Is it multiplayer?",
+      "a": "No. It is a single-player action adventure."
+     },
+     {
+      "q": "Why only two variants?",
+      "a": "Only Regular / Offline and Standard / Online were provided."
+     },
+     {
+      "q": "Why is the release status coming soon?",
+      "a": "This Switch 2 file is prepared as a separate catalog entry and may need later release verification."
+     }
+    ],
+    "mpLocalPlayers": false,
+    "mpOnlinePlayers": false,
+    "mpCoop": false,
+    "mpCompetitive": false,
+    "mpLocalWireless": false,
+    "mpSplitScreen": false,
+    "boxContentsList": [],
+    "image": "",
+    "banner": "",
+    "schemaId": "",
+    "batchImport": true,
+    "createdAt": "2026-08-28T18:38:50.977Z",
+    "updatedAt": "2026-08-28T18:38:50.977Z"
+   }
+  },
+  {
+   "id": "prd_675d26dff95a422f",
+   "slug": "tomodachi-life-living-the-dream",
+   "title": "Tomodachi Life: Living the Dream",
+   "platform": "switch1",
+   "isHidden": true,
+   "hash": "c1314d070c2f2fba7abe5fa9d524f1bb3be58cf7f3ae9b0737a0d95b5c061cf1",
+   "images": [
+    {
+     "role": "front-box",
+     "field": "cartridgeImage",
+     "url": "https://banan.to/api/files/products/prd_675d26dff95a422f/front-box-507f2c836014de3a.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 840634,
+     "width": 1167,
+     "height": 1888,
+     "thumb": "review-workdir/thumbs/batch-028/tomodachi-life-living-the-dream__front-box-0.png"
+    },
+    {
+     "role": "front-box",
+     "field": "box_front_url",
+     "url": "https://assets.nintendo.com/image/upload/ar_3:4,c_fit,g_auto,w_1000/f_auto/q_auto/dpr_1.5/store/software/switch/70010000116663/6c9817e0a03acae659e2f20edcb42963ab1967804f8b3237b2b761d938c3e566",
+     "status": 400,
+     "contentType": "image/gif"
+    },
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://banan.to/api/files/products/prd_675d26dff95a422f/square-card-55897affee13a3d1.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 232206,
+     "width": 1024,
+     "height": 1024,
+     "thumb": "review-workdir/thumbs/batch-028/tomodachi-life-living-the-dream__square-card-2.png"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://banan.to/api/files/products/prd_675d26dff95a422f/cover-63ee67527b0da84b.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 411008,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-028/tomodachi-life-living-the-dream__detail-cover-3.png"
+    },
+    {
+     "role": "3d-texture",
+     "field": "coverHiResImage",
+     "url": "https://banan.to/api/files/products/prd_675d26dff95a422f/3d-wrap-9e749763b66149fb.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 1828216,
+     "width": 2454,
+     "height": 1888,
+     "thumb": "review-workdir/thumbs/batch-028/tomodachi-life-living-the-dream__3d-texture-4.png"
+    },
+    {
+     "role": "listing",
+     "field": "image",
+     "url": "https://assets.nintendo.com/image/upload/ar_16:9,c_fill,g_auto,w_1600/f_auto/q_auto/dpr_1.5/store/software/switch/70010000116663/940ff91bfdbc963635d09032b6fc83524eb5a8387920099723ede3dc077a33ce",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 109569,
+     "width": 2400,
+     "height": 1350,
+     "thumb": "review-workdir/thumbs/batch-028/tomodachi-life-living-the-dream__listing-5.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[0]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000116663/89ed392763dc397c1a293632b002253b80f2d83443386a934565e1a5cc03ab61",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 64244,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-028/tomodachi-life-living-the-dream__banner-6.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[1]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000116663/c06079b8589ac010653147094d8d4aded874e658d7f5dd5ef2d0dbae7fe5ec5c",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 160786,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-028/tomodachi-life-living-the-dream__banner-7.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[2]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000116663/5d87cd3b778255449377c0a68b17cc3e6c1bb89ca163a37d69bf0d61acbba62c",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 56896,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-028/tomodachi-life-living-the-dream__banner-8.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[3]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000116663/6db00980f592f18d9b26a0120658ab88589cfa204e0369a6f2279cfb6b27ff06",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 69344,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-028/tomodachi-life-living-the-dream__banner-9.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://banan.to/api/files/products/prd_675d26dff95a422f/gallery-1-6a14063e47a115cc.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 68004,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-028/tomodachi-life-living-the-dream__gallery-10.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[1]",
+     "url": "https://banan.to/api/files/products/prd_675d26dff95a422f/gallery-2-8fe3d27d559079ad.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 68042,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-028/tomodachi-life-living-the-dream__gallery-11.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[2]",
+     "url": "https://banan.to/api/files/products/prd_675d26dff95a422f/gallery-3-b585a66bf30ebcab.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 166662,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-028/tomodachi-life-living-the-dream__gallery-12.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[3]",
+     "url": "https://banan.to/api/files/products/prd_675d26dff95a422f/gallery-4-4324a0da2e9f4c7a.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 56948,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-028/tomodachi-life-living-the-dream__gallery-13.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[4]",
+     "url": "https://banan.to/api/files/products/prd_675d26dff95a422f/gallery-5-3f7ed2ce886a0528.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 95738,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-028/tomodachi-life-living-the-dream__gallery-14.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[5]",
+     "url": "https://banan.to/api/files/products/prd_675d26dff95a422f/gallery-6-0132c5a879f0f805.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 206244,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-028/tomodachi-life-living-the-dream__gallery-15.png"
+    }
+   ],
+   "record": {
+    "title": "Tomodachi Life: Living the Dream",
+    "titleEn": "Tomodachi Life: Living the Dream",
+    "titleKu": "",
+    "slug": "tomodachi-life-living-the-dream",
+    "description": "Tomodachi Life: Living the Dream expands Nintendo’s Mii-driven life-simulation formula on Nintendo Switch. Players create or collect Mii characters, customize profiles, build an island community, place shops and facilities, follow daily Mii News, manage relationships, and influence the island without directly controlling every event. Nintendo lists the title as Nintendo Switch software with Nintendo Switch 2 backward compatibility, not as a native Switch 2 Edition.",
+    "descriptionEn": "Tomodachi Life: Living the Dream expands Nintendo’s Mii-driven life-simulation formula on Nintendo Switch. Players create or collect Mii characters, customize profiles, build an island community, place shops and facilities, follow daily Mii News, manage relationships, and influence the island without directly controlling every event. Nintendo lists the title as Nintendo Switch software with Nintendo Switch 2 backward compatibility, not as a native Switch 2 Edition.",
+    "descriptionKu": "",
+    "cartridgeImage": "/api/files/products/prd_675d26dff95a422f/front-box-507f2c836014de3a.webp",
+    "nintendoCardImage": "/api/files/products/prd_675d26dff95a422f/square-card-55897affee13a3d1.webp",
+    "coverHiResImage": "/api/files/products/prd_675d26dff95a422f/3d-wrap-9e749763b66149fb.webp",
+    "coverImage": "/api/files/products/prd_675d26dff95a422f/cover-63ee67527b0da84b.webp",
+    "bannerImages": [
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000116663/89ed392763dc397c1a293632b002253b80f2d83443386a934565e1a5cc03ab61",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000116663/c06079b8589ac010653147094d8d4aded874e658d7f5dd5ef2d0dbae7fe5ec5c",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000116663/5d87cd3b778255449377c0a68b17cc3e6c1bb89ca163a37d69bf0d61acbba62c",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000116663/6db00980f592f18d9b26a0120658ab88589cfa204e0369a6f2279cfb6b27ff06",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000116663/643e769e09684f0ea35e25006f4f744c2747408742102e2a014cd6d1057bf575"
+    ],
+    "gallery": [],
+    "youtubeTrailer": "",
+    "releaseDate": "2026-04-16",
+    "ageRating": "ESRB E10+ — Comic Mischief, Mild Fantasy Violence",
+    "metacriticRating": "85",
+    "genres": [
+     "Simulation",
+     "Life Simulation",
+     "Social"
+    ],
+    "platform": "switch1",
+    "size": 6.3,
+    "numberOfPlayers": "Single system (1) / Local wireless features available for exchanging creations",
+    "supportedLanguages": "Official supported language list varies by region; see the publisher page linked in Sources.",
+    "hardwareModel": "",
+    "colorEdition": "",
+    "storageCapacity": "",
+    "screenSpecs": "",
+    "batteryLife": "",
+    "boxContents": [],
+    "boxContentsText": "",
+    "warrantyCondition": "",
+    "connectivity": "",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "Global",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "",
+    "redemptionSteps": [],
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 11500,
+    "cost": 1500,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": true,
+    "displayOrder": 0,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "مشترك",
+      "description": "مشترك",
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_account",
+      "name": "خاص بك",
+      "description": "خاص بك",
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "types": [
+     {
+      "id": "offline_base",
+      "name": "مشترك — اللعبة الأساسية",
+      "optionId": "offline_account",
+      "price": 11500,
+      "cost": 1500,
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_base",
+      "name": "خاص بك — اللعبة الأساسية",
+      "optionId": "online_account",
+      "price": 39750,
+      "cost": 29500,
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "Active",
+    "kind": "account",
+    "trade_value_iqd": 16000,
+    "store_offer_bonus_iqd": 2750,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "id": "prd_675d26dff95a422f",
+    "schema_version": 24,
+    "titleAr": "توموداتشي لايف: ليفينغ ذا دريم",
+    "compatibility": [
+     "Nintendo Switch",
+     "Nintendo Switch 2 compatibility: Supported – game behavior is consistent with Nintendo Switch"
+    ],
+    "edition": "Standard / Store Variants",
+    "developer": "Nintendo",
+    "publisher": "Nintendo",
+    "seriesName": "Tomodachi Life",
+    "price_usd": 59.99,
+    "officialUrl": "https://www.nintendo.com/us/store/products/tomodachi-life-living-the-dream-switch/",
+    "eshopUrl": "https://www.nintendo.com/us/store/products/tomodachi-life-living-the-dream-switch/",
+    "gameIsOffline": true,
+    "gameIsOnline": false,
+    "gameLanguageLocked": false,
+    "description_short": "Create an island full of Mii characters, shape their homes and surroundings, and watch friendships, drama, news, and absurd everyday events unfold.",
+    "description_ar": "لعبة محاكاة اجتماعية تعتمد على شخصيات Mii؛ تنشئ سكان الجزيرة وتخصصهم وتتابع صداقاتهم وخلافاتهم وأخبارهم اليومية وتبني عالمًا خاصًا لهم. الإصدار الرسمي هو Nintendo Switch ويعمل على Switch 2 بالتوافق الخلفي.",
+    "box_front_url": "https://assets.nintendo.com/image/upload/ar_3:4,c_fit,g_auto,w_1000/f_auto/q_auto/dpr_1.5/store/software/switch/70010000116663/6c9817e0a03acae659e2f20edcb42963ab1967804f8b3237b2b761d938c3e566",
+    "languagesText": [
+     "See official supported languages on the linked Nintendo/publisher product page"
+    ],
+    "languagesAudio": [
+     "Audio language availability varies by title and region; see official product information"
+    ],
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": true,
+    "nintendoPlayModes": "TV / Tabletop / Handheld",
+    "nintendoOnlineRequired": false,
+    "nintendoCloudSaves": true,
+    "nintendoGameKeyCard": false,
+    "nintendoPhysicalNeedsDownload": false,
+    "switch2Enhanced": false,
+    "switch2Exclusive": false,
+    "nintendoNotes": "Platform, release, player-count, storage, compatibility, and feature statements in this import are grounded in the official Nintendo/publisher pages listed under Sources. Store package prices are user-supplied storefront values, not assumed MSRP.",
+    "editionsList": [
+     {
+      "name": "Regular / Offline",
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_3:4,c_fit,g_auto,w_1000/f_auto/q_auto/dpr_1.5/store/software/switch/70010000116663/6c9817e0a03acae659e2f20edcb42963ab1967804f8b3237b2b761d938c3e566",
+      "contents": [
+       {
+        "label": "Regular / Offline store package"
+       },
+       {
+        "label": "Offline account access"
+       },
+       {
+        "label": "Infinite stock by default"
+       }
+      ]
+     },
+     {
+      "name": "Standard / Online",
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_1:1,c_fill,g_auto,w_1000/f_auto/q_auto/dpr_1.5/store/software/switch/70010000116663/6c9817e0a03acae659e2f20edcb42963ab1967804f8b3237b2b761d938c3e566",
+      "contents": [
+       {
+        "label": "Standard / Online store package"
+       },
+       {
+        "label": "Online account access"
+       },
+       {
+        "label": "Infinite stock by default"
+       }
+      ]
+     }
+    ],
+    "gameplayPillars": [
+     {
+      "title": "Create expressive Mii residents",
+      "description": "Build Mii characters from scratch or through guided creation and give them personalities, voices, relationships, and roles.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000116663/89ed392763dc397c1a293632b002253b80f2d83443386a934565e1a5cc03ab61"
+     },
+     {
+      "title": "Shape the island",
+      "description": "Place homes, stores, restaurants, and facilities to change what residents can do and how the community develops.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000116663/c06079b8589ac010653147094d8d4aded874e658d7f5dd5ef2d0dbae7fe5ec5c"
+     },
+     {
+      "title": "Watch emergent relationships",
+      "description": "Friendships, conflicts, crushes, living arrangements, and surprising social events emerge as time passes.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000116663/5d87cd3b778255449377c0a68b17cc3e6c1bb89ca163a37d69bf0d61acbba62c"
+     },
+     {
+      "title": "Mii News and daily happenings",
+      "description": "The game surfaces island events through humorous news broadcasts and recurring daily activities.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000116663/6db00980f592f18d9b26a0120658ab88589cfa204e0369a6f2279cfb6b27ff06"
+     },
+     {
+      "title": "Exchange creations locally",
+      "description": "Nintendo describes local wireless features for sharing Mii characters and Palette House workshop creations with nearby friends.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000116663/643e769e09684f0ea35e25006f4f744c2747408742102e2a014cd6d1057bf575"
+     }
+    ],
+    "worldSummary": "Tomodachi Life: Living the Dream expands Nintendo’s Mii-driven life-simulation formula on Nintendo Switch. Players create or collect Mii characters, customize profiles, build an island community, place shops and facilities, follow daily Mii News, manage relationships, and influence the island without directly controlling every event. Nintendo lists the title as Nintendo Switch software with Nintendo Switch 2 backward compatibility, not as a native Switch 2 Edition.",
+    "storyChapters": [
+     {
+      "title": "Build your first island residents",
+      "body": "The player begins by creating the people who will populate the new island community.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000116663/c06079b8589ac010653147094d8d4aded874e658d7f5dd5ef2d0dbae7fe5ec5c"
+     },
+     {
+      "title": "Expand the community",
+      "body": "New buildings and services give Mii characters more places to meet, shop, relax, and create stories.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000116663/5d87cd3b778255449377c0a68b17cc3e6c1bb89ca163a37d69bf0d61acbba62c"
+     },
+     {
+      "title": "Follow friendships and drama",
+      "body": "Relationships change over time, creating everyday comedy, grudges, romance, and unexpected pairings.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000116663/6db00980f592f18d9b26a0120658ab88589cfa204e0369a6f2279cfb6b27ff06"
+     },
+     {
+      "title": "Customize homes and public spaces",
+      "body": "The island increasingly reflects the player’s creative decisions and resident personalities.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000116663/643e769e09684f0ea35e25006f4f744c2747408742102e2a014cd6d1057bf575"
+     },
+     {
+      "title": "Let the dream keep evolving",
+      "body": "There is no single traditional ending; the long-term appeal is watching the social simulation continue to produce new situations.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000116663/89ed392763dc397c1a293632b002253b80f2d83443386a934565e1a5cc03ab61"
+     }
+    ],
+    "features": [
+     "Mii-focused social simulation",
+     "Robust character creation and profiles",
+     "Island layout and facility customization",
+     "Local wireless sharing features",
+     "Daily events and relationship-driven emergent stories"
+    ],
+    "perfResolutionDocked": "1080p",
+    "perfResolutionHandheld": "720p",
+    "perfFps": "60",
+    "perfHdr": false,
+    "playTimeMain": 0,
+    "completionMain": 0,
+    "completionExtras": 0,
+    "faq": [
+     {
+      "q": "Is Tomodachi Life: Living the Dream a Switch 2 game?",
+      "a": "No native Switch 2 Edition is listed. Nintendo sells it as Nintendo Switch software and lists Switch 2 backward compatibility."
+     },
+     {
+      "q": "What do you do in the game?",
+      "a": "You create Mii residents, care for them, build their island, follow relationships, and react to humorous daily events."
+     },
+     {
+      "q": "Is there a traditional story campaign?",
+      "a": "No. The game is an ongoing life simulation built around emergent resident behavior."
+     },
+     {
+      "q": "Can creations be shared?",
+      "a": "Nintendo describes local wireless exchange for Mii characters and Palette House workshop creations."
+     },
+     {
+      "q": "Does it support Save Data Cloud?",
+      "a": "Yes. Nintendo lists Save Data Cloud support."
+     }
+    ],
+    "verdictScore": 8.5,
+    "verdictPros": [
+     "Highly replayable social simulation",
+     "Strong Mii customization",
+     "Funny emergent scenarios",
+     "Relaxed long-term progression",
+     "Local sharing supports creative communities"
+    ],
+    "verdictCons": [
+     "Not a traditional objective-driven game",
+     "Humor depends on created characters",
+     "Limited appeal for players who dislike passive simulations",
+     "No native Switch 2 edition",
+     "Some activities depend on real-time daily cycles"
+    ],
+    "timeline": [
+     {
+      "date": "2026-04-16",
+      "title": "Released on target Nintendo platform"
+     }
+    ],
+    "patchNotes": [
+     {
+      "version": "Current retail build",
+      "date": "2026-08-27"
+     }
+    ],
+    "studioName": "Nintendo",
+    "studioUrl": "https://www.nintendo.com/us/store/products/tomodachi-life-living-the-dream-switch/",
+    "studioLocation": "See publisher/developer profile",
+    "sources": [
+     {
+      "name": "Official Nintendo / publisher product page",
+      "url": "https://www.nintendo.com/us/store/products/tomodachi-life-living-the-dream-switch/"
+     }
+    ],
+    "downloadSizeGb": 6.3,
+    "requiredSpaceGb": 6.3,
+    "microSdRecommended": false,
+    "storageNotes": "Storage requirements follow the official product listing where a final numeric size is published; upcoming titles may require a later refresh when final size is posted.",
+    "mpLocalPlayers": true,
+    "mpOnlinePlayers": false,
+    "mpCoop": true,
+    "mpCompetitive": false,
+    "mpLocalWireless": true,
+    "mpSplitScreen": true,
+    "dlc": [
+     {
+      "name": "Downloadable / additional content status",
+      "description": "No major standalone expansion pass is required for the base product entry."
+     }
+    ],
+    "galleryImages": [
+     {
+      "url": "/api/files/products/prd_675d26dff95a422f/gallery-1-6a14063e47a115cc.webp",
+      "alt": "Tomodachi Life: Living the Dream screenshot 1"
+     },
+     {
+      "url": "/api/files/products/prd_675d26dff95a422f/gallery-2-8fe3d27d559079ad.webp",
+      "alt": "Tomodachi Life: Living the Dream screenshot 2"
+     },
+     {
+      "url": "/api/files/products/prd_675d26dff95a422f/gallery-3-b585a66bf30ebcab.webp",
+      "alt": "Tomodachi Life: Living the Dream screenshot 3"
+     },
+     {
+      "url": "/api/files/products/prd_675d26dff95a422f/gallery-4-4324a0da2e9f4c7a.webp",
+      "alt": "Tomodachi Life: Living the Dream screenshot 4"
+     },
+     {
+      "url": "/api/files/products/prd_675d26dff95a422f/gallery-5-3f7ed2ce886a0528.webp",
+      "alt": "Tomodachi Life: Living the Dream screenshot 5"
+     },
+     {
+      "url": "/api/files/products/prd_675d26dff95a422f/gallery-6-0132c5a879f0f805.webp",
+      "alt": "Tomodachi Life: Living the Dream screenshot 6"
+     }
+    ],
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "deviceModel": "Nintendo Switch",
+      "hardwareId": "nintendo-switch",
+      "informationStatus": "Available",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p",
+       "resolutionDynamic": false,
+       "renderingResolution": "720p",
+       "outputResolution": "720p",
+       "fps": "60",
+       "fpsMin": "60",
+       "fpsMax": "60",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Handheld",
+       "notes": "Official exact rendering resolution is not published on the Nintendo store page; the game is a standard Switch release and is recorded conservatively with a 60 fps presentation target."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p",
+       "resolutionDynamic": false,
+       "renderingResolution": "1080p",
+       "outputResolution": "1080p",
+       "fps": "60",
+       "fpsMin": "60",
+       "fpsMax": "60",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "TV / Docked",
+       "notes": "Official exact rendering resolution is not published on the Nintendo store page; the game is a standard Switch release and is recorded conservatively with a 60 fps presentation target."
+      },
+      "modes": [
+       {
+        "name": "Primary documented/compatibility profile",
+        "handheldResolution": "720p",
+        "handheldFps": "60",
+        "tvResolution": "1080p",
+        "tvFps": "60",
+        "hdr": false,
+        "vrr": false,
+        "notes": "Official exact rendering resolution is not published on the Nintendo store page; the game is a standard Switch release and is recorded conservatively with a 60 fps presentation target."
+       }
+      ],
+      "upscaling": "Game / system-specific scaling where applicable",
+      "rayTracing": false,
+      "rayTracingMode": "Not Supported",
+      "loadingTime": "Scene-dependent",
+      "loadingNotes": "Loading time varies by scene, save state, storage, version, and patch.",
+      "gameVersion": "Current listed version",
+      "patchVersion": "Current available update",
+      "testedDate": "2026-08-27",
+      "sourceName": "Official product / compatibility information",
+      "sourceUrl": "https://www.nintendo.com/us/store/products/tomodachi-life-living-the-dream-switch/",
+      "performanceNotes": "Official exact rendering resolution is not published on the Nintendo store page; the game is a standard Switch release and is recorded conservatively with a 60 fps presentation target."
+     },
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "hardwareId": "nintendo-switch-2",
+      "informationStatus": "Available",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p",
+       "resolutionDynamic": false,
+       "renderingResolution": "720p",
+       "outputResolution": "720p",
+       "fps": "60",
+       "fpsMin": "60",
+       "fpsMax": "60",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Handheld",
+       "notes": "Backward-compatible Nintendo Switch software on Nintendo Switch 2; no native Switch 2 edition assumed."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p",
+       "resolutionDynamic": false,
+       "renderingResolution": "1080p",
+       "outputResolution": "1080p",
+       "fps": "60",
+       "fpsMin": "60",
+       "fpsMax": "60",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "TV / Docked",
+       "notes": "Backward-compatible Nintendo Switch software on Nintendo Switch 2; no native Switch 2 edition assumed."
+      },
+      "modes": [
+       {
+        "name": "Primary documented/compatibility profile",
+        "handheldResolution": "720p",
+        "handheldFps": "60",
+        "tvResolution": "1080p",
+        "tvFps": "60",
+        "hdr": false,
+        "vrr": false,
+        "notes": "Backward-compatible Nintendo Switch software on Nintendo Switch 2; no native Switch 2 edition assumed."
+       }
+      ],
+      "upscaling": "Game / system-specific scaling where applicable",
+      "rayTracing": false,
+      "rayTracingMode": "Not Supported",
+      "loadingTime": "Scene-dependent",
+      "loadingNotes": "Loading time varies by scene, save state, storage, version, and patch.",
+      "gameVersion": "Current listed version",
+      "patchVersion": "Current available update",
+      "testedDate": "2026-08-27",
+      "sourceName": "Official product / compatibility information",
+      "sourceUrl": "https://www.nintendo.com/us/store/products/tomodachi-life-living-the-dream-switch/",
+      "performanceNotes": "Backward-compatible Nintendo Switch software on Nintendo Switch 2; no native Switch 2 edition assumed."
+     }
+    ],
+    "switch2UpgradePrice": 0,
+    "boxContentsList": [],
+    "image": "https://assets.nintendo.com/image/upload/ar_16:9,c_fill,g_auto,w_1600/f_auto/q_auto/dpr_1.5/store/software/switch/70010000116663/940ff91bfdbc963635d09032b6fc83524eb5a8387920099723ede3dc077a33ce",
+    "banner": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000116663/89ed392763dc397c1a293632b002253b80f2d83443386a934565e1a5cc03ab61",
+    "schemaId": "",
+    "batchImport": true,
+    "createdAt": "2026-08-28T18:35:09.850Z",
+    "updatedAt": "2026-08-28T18:35:09.850Z"
+   }
+  },
+  {
+   "id": "prd_3aa29ae292b84ad5",
+   "slug": "two-point-museum",
+   "title": "Two Point Museum",
+   "platform": "switch2",
+   "isHidden": false,
+   "hash": "73b6e25b5ea2b23d78409b1ee6755aa5bf0c78953b431530e616fe3182057b7c",
+   "images": [
+    {
+     "role": "front-box",
+     "field": "cartridgeImage",
+     "url": "https://banan.to/api/files/products/prd_3aa29ae292b84ad5/front-7be703bcde605924.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 108697,
+     "width": 619,
+     "height": 1000,
+     "thumb": "review-workdir/thumbs/batch-028/two-point-museum__front-box-0.png"
+    },
+    {
+     "role": "front-box",
+     "field": "box_front_url",
+     "url": "https://gamefaqs.gamespot.com/a/box/9/4/8/1162948_front.jpg",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://banan.to/api/files/products/prd_3aa29ae292b84ad5/nintendoCardImage-e616556b93fe9837.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://banan.to/api/files/products/prd_3aa29ae292b84ad5/coverImage-30b2444f5a24291c.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "listing",
+     "field": "image",
+     "url": "https://banan.to/api/files/products/prd_3aa29ae292b84ad5/coverImage-30b2444f5a24291c.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[0]",
+     "url": "https://banan.to/api/files/products/prd_3aa29ae292b84ad5/bannerImages-1-fe443b4cc7ac8c01.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[1]",
+     "url": "https://banan.to/api/files/products/prd_3aa29ae292b84ad5/bannerImages-2-81d6b660dbf58302.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[2]",
+     "url": "https://banan.to/api/files/products/prd_3aa29ae292b84ad5/bannerImages-3-8b5b80f03dd0c523.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16:9,b_auto:border,c_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000104115/f4b2a1e4f7d0889722fb1a938f5b4a77b48a53f33c89a802d5cbd259a6b4e38d",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 180025,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-028/two-point-museum__gallery-8.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[1]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16:9,b_auto:border,c_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000104115/8ad9da1378fe72f0977e38b7f20d82f5459c7af5ea0a46526d321cc1f1c2c302",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 193188,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-028/two-point-museum__gallery-9.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[2]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16:9,b_auto:border,c_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000104115/3984a8b8584fa52c0cecdce9be37e701e54043b61ca8b3b36732b7cf2c1e4134",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 185429,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-028/two-point-museum__gallery-10.png"
+    }
+   ],
+   "record": {
+    "id": "prd_3aa29ae292b84ad5",
+    "title": "Two Point Museum",
+    "titleEn": "Two Point Museum",
+    "titleKu": "Two Point Museum",
+    "slug": "two-point-museum",
+    "description": "Curate and manage museums across Two Point County. Discover exhibits through expeditions, design themed halls, manage staff and guest needs, build guided tours and expand into a huge sandbox with hundreds of exhibits and decorative items.",
+    "descriptionEn": "Curate and manage museums across Two Point County. Discover exhibits through expeditions, design themed halls, manage staff and guest needs, build guided tours and expand into a huge sandbox with hundreds of exhibits and decorative items.",
+    "descriptionKu": "Curate and manage museums across Two Point County. Discover exhibits through expeditions, design themed halls, manage staff and guest needs, build guided tours and expand into a huge sandbox with hundreds of exhibits and decorative items.",
+    "cartridgeImage": "/api/files/products/prd_3aa29ae292b84ad5/front-7be703bcde605924.jpg",
+    "nintendoCardImage": "/api/files/products/prd_3aa29ae292b84ad5/nintendoCardImage-e616556b93fe9837.avif",
+    "coverHiResImage": "",
+    "coverImage": "/api/files/products/prd_3aa29ae292b84ad5/coverImage-30b2444f5a24291c.avif",
+    "bannerImages": [
+     "/api/files/products/prd_3aa29ae292b84ad5/bannerImages-1-fe443b4cc7ac8c01.avif",
+     "/api/files/products/prd_3aa29ae292b84ad5/bannerImages-2-81d6b660dbf58302.avif",
+     "/api/files/products/prd_3aa29ae292b84ad5/bannerImages-3-8b5b80f03dd0c523.avif"
+    ],
+    "gallery": [],
+    "youtubeTrailer": "https://www.youtube.com/watch?v=NDHW7G5HPcA",
+    "releaseDate": "2025-10-28",
+    "ageRating": "PEGI 3",
+    "metacriticRating": 81,
+    "genres": [
+     "Management Simulation",
+     "Strategy",
+     "Sandbox"
+    ],
+    "platform": "switch2",
+    "size": 4.6,
+    "numberOfPlayers": "1",
+    "supportedLanguages": "Japanese, English, French, German, Italian, Spanish, Korean, Russian, Simplified Chinese, Traditional Chinese, Portuguese",
+    "hardwareModel": "",
+    "colorEdition": "",
+    "storageCapacity": "",
+    "screenSpecs": "",
+    "batteryLife": "",
+    "boxContents": [],
+    "boxContentsText": "",
+    "warrantyCondition": "",
+    "connectivity": "",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "Global",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "",
+    "redemptionSteps": [],
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 13000,
+    "cost": 3000,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": false,
+    "displayOrder": 0,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "حساب أوفلاين",
+      "description": "حساب مخصص للعب دون اتصال بعد إكمال خطوات التفعيل.",
+      "isInfiniteStock": true,
+      "customerDescription": "حساب مشترك"
+     },
+     {
+      "id": "online_account",
+      "name": "حساب أونلاين",
+      "description": "حساب يدعم تشغيل اللعبة مع الاتصال والميزات المتاحة أونلاين.",
+      "isInfiniteStock": true,
+      "customerDescription": "حساب خاص بك"
+     }
+    ],
+    "types": [
+     {
+      "id": "standard_offline",
+      "name": "حساب أوفلاين — عادي",
+      "optionId": "offline_account",
+      "price": "",
+      "cost": 3000,
+      "description": "تشمل الإصدار العادي من اللعبة.",
+      "isInfiniteStock": true,
+      "customerDescription": "اللعبة الأساسية",
+      "internalNote": "Standard game, Offline Account. Supplier Regular price: ¥14.64; purchase cost converted at 1 CNY = 220 IQD and rounded down to nearest 250 IQD."
+     },
+     {
+      "id": "standard_online",
+      "name": "حساب أونلاين — عادي",
+      "optionId": "online_account",
+      "price": 44000,
+      "cost": 25000,
+      "description": "تشمل الإصدار العادي من اللعبة.",
+      "isInfiniteStock": true,
+      "customerDescription": "اللعبة الأساسية",
+      "internalNote": "Standard game, Online Account. Supplier Standard price: ¥114.60; purchase cost converted at 1 CNY = 220 IQD and rounded down to nearest 250 IQD."
+     },
+     {
+      "id": "dlc_offline",
+      "name": "حساب أوفلاين — مع الإضافات",
+      "optionId": "offline_account",
+      "price": "15000",
+      "cost": 4250,
+      "description": "تشمل اللعبة الأساسية والمحتوى الإضافي المثبت في هذا الإصدار.",
+      "isInfiniteStock": true,
+      "customerDescription": "اللعبة مع الإضافات",
+      "internalNote": "Offline Account with the listed DLC/Deluxe content. Supplier Special price: ¥19.54."
+     },
+     {
+      "id": "dlc_online",
+      "name": "حساب أونلاين — مع الإضافات",
+      "optionId": "online_account",
+      "price": 55000,
+      "cost": 29500,
+      "description": "تشمل اللعبة الأساسية والمحتوى الإضافي المثبت في هذا الإصدار.",
+      "isInfiniteStock": true,
+      "customerDescription": "اللعبة مع الإضافات",
+      "internalNote": "Online Account with the listed DLC/Deluxe content. Supplier Deluxe price: ¥134.20."
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "active",
+    "kind": "account",
+    "trade_value_iqd": 40000,
+    "store_offer_bonus_iqd": 0,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "schema_version": 22,
+    "titleAr": "تو بوينت ميوزيم",
+    "compatibility": [
+     "Nintendo Switch 2"
+    ],
+    "edition": "Standard",
+    "developer": "Two Point Studios",
+    "publisher": "SEGA",
+    "opencriticRating": 85,
+    "userScore": 8,
+    "officialUrl": "https://www.twopointstudios.com/",
+    "gameIsOffline": true,
+    "gameIsOnline": true,
+    "gameLanguageLocked": false,
+    "description_short": "Build and operate elaborate museums, send experts on expeditions, collect exhibits, manage guests and staff, and customize every hall in a humorous management simulation.",
+    "description_ar": "لعبة إدارة وبناء متاحف من Two Point Studios. أرسل الخبراء في بعثات، اجمع المعروضات، صمم القاعات والجولات، وأدر الموظفين واحتياجات الزوار مع عدد كبير جدًا من المعروضات والديكورات.",
+    "box_front_url": "https://gamefaqs.gamespot.com/a/box/9/4/8/1162948_front.jpg",
+    "videos": [
+     {
+      "title": "Nintendo Switch 2 Launch Trailer",
+      "url": "https://www.youtube.com/watch?v=NDHW7G5HPcA"
+     }
+    ],
+    "nintendoEshopUrl": "https://www.nintendo.com/us/store/products/two-point-museum-switch-2/",
+    "nintendoOnlineRequired": false,
+    "nintendoCloudSaves": true,
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": true,
+    "nintendoPlayModes": "TV Mode, Tabletop Mode, Handheld Mode",
+    "switch2Features": [
+     "Native Nintendo Switch 2 version",
+     "Official 1920x1080 / 30 FPS target",
+     "TV, Tabletop and Handheld modes",
+     "Save Data Cloud",
+     "Simplified and Traditional Chinese support",
+     "Ongoing DLC support"
+    ],
+    "tagline": "Curate and manage incredible museums.",
+    "fitFor": [
+     "Management-simulation fans",
+     "Creative builders",
+     "Players who enjoy optimization and humor",
+     "Long-form sandbox players"
+    ],
+    "notFitFor": [
+     "Players looking for action combat",
+     "Players who dislike management micromanagement"
+    ],
+    "playTimeMain": 47,
+    "playTimeFull": 96,
+    "editionsList": [
+     {
+      "name": "Standard Edition",
+      "contents": [
+       {
+        "label": "Base game"
+       }
+      ]
+     },
+     {
+      "name": "Explorer Edition",
+      "contents": [
+       {
+        "label": "Base game"
+       },
+       {
+        "label": "Explorer Upgrade Pack"
+       },
+       {
+        "label": "Exclusive expedition location"
+       },
+       {
+        "label": "Pop-up challenge museum"
+       },
+       {
+        "label": "Decorative and utility bonuses"
+       }
+      ]
+     }
+    ],
+    "gameplayPillars": [
+     {
+      "title": "Museum Design",
+      "description": "Build halls, themed areas, facilities, decorations and guest routes."
+     },
+     {
+      "title": "Expeditions",
+      "description": "Send Experts across expedition maps to recover rare exhibits and complete the sticker book."
+     },
+     {
+      "title": "Guest Experience",
+      "description": "Balance education, entertainment, cleanliness, security, tours, facilities and donations."
+     },
+     {
+      "title": "Exhibit Management",
+      "description": "Maintain artifacts, habitats and interactive displays while protecting them from damage and thieves."
+     },
+     {
+      "title": "Sandbox Creativity",
+      "description": "Use the sandbox to build large custom museums beyond the campaign structure."
+     }
+    ],
+    "storyChapters": [
+     {
+      "title": "Fledgling Curator",
+      "body": "Begin managing museums across Two Point County."
+     },
+     {
+      "title": "Expanding Collections",
+      "body": "Unlock new museum themes and expedition regions as your experts discover increasingly unusual exhibits."
+     },
+     {
+      "title": "Mega Museums",
+      "body": "Progress toward highly customized, large-scale museums with specialized staff and guest systems."
+     }
+    ],
+    "galleryImages": [
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16:9,b_auto:border,c_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000104115/f4b2a1e4f7d0889722fb1a938f5b4a77b48a53f33c89a802d5cbd259a6b4e38d",
+      "alt": "Official Nintendo Switch 2 Two Point Museum media image 1; separate from cover and banner assets."
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16:9,b_auto:border,c_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000104115/8ad9da1378fe72f0977e38b7f20d82f5459c7af5ea0a46526d321cc1f1c2c302",
+      "alt": "Official Nintendo Switch 2 Two Point Museum media image 2; separate from cover and banner assets."
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16:9,b_auto:border,c_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000104115/3984a8b8584fa52c0cecdce9be37e701e54043b61ca8b3b36732b7cf2c1e4134",
+      "alt": "Official Nintendo Switch 2 Two Point Museum media image 3; separate from cover and banner assets."
+     }
+    ],
+    "features": [
+     "Design, build and manage museums",
+     "Five main museum locations",
+     "Three pop-up museums",
+     "Sandbox mode",
+     "Six main exhibit categories and 30+ subcategories",
+     "Five expedition maps with 100+ points of interest",
+     "200+ unique exhibits",
+     "350+ decorative items",
+     "18 guest types",
+     "Guided tours and guest needs",
+     "Explorer Edition content",
+     "Multiple post-launch DLC packs including Fantasy Finds, Zooseum and Arty-Facts"
+    ],
+    "perfResolutionDocked": "1920x1080",
+    "perfResolutionHandheld": "1920x1080",
+    "perfFps": "30",
+    "perfNotes": "Two Point Studios officially states that the Nintendo Switch 2 version runs at 1920x1080 at 30 FPS. Reviews note occasional drops below the target as museums become crowded, but the official target remains 1080p/30.",
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "hardwareId": "prd_acf4c89908764c62",
+      "informationStatus": "verified",
+      "unavailableReason": "No official measured resolution/FPS table was found.",
+      "handheld": {
+       "supported": true,
+       "resolution": "1920x1080",
+       "renderingResolution": "1920x1080 target",
+       "outputResolution": "1920x1080",
+       "fps": "30",
+       "fpsMin": "~26",
+       "fpsMax": "30"
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1920x1080",
+       "renderingResolution": "1920x1080 target",
+       "outputResolution": "1920x1080",
+       "fps": "30",
+       "fpsMin": "~26",
+       "fpsMax": "30"
+      },
+      "sourceName": "Two Point Studios Official Switch 2 FAQ",
+      "sourceUrl": "https://www.twopointstudios.com/en/post/two-point-museum-nintendo-switch-2-faq",
+      "verificationStatus": "official",
+      "performanceNotes": "Two Point Studios officially states that the Nintendo Switch 2 version runs at 1920x1080 at 30 FPS. Reviews note occasional drops below the target as museums become crowded, but the official target remains 1080p/30."
+     }
+    ],
+    "downloadSizeGb": 4.6,
+    "requiredSpaceGb": 4.6,
+    "microSdRecommended": false,
+    "languagesAudio": [
+     "English"
+    ],
+    "languagesText": [
+     "Japanese",
+     "English",
+     "French",
+     "German",
+     "Italian",
+     "Spanish",
+     "Korean",
+     "Russian",
+     "Simplified Chinese",
+     "Traditional Chinese",
+     "Portuguese"
+    ],
+    "arabicSupport": false,
+    "mpLocalPlayers": false,
+    "mpOnlinePlayers": false,
+    "mpCoop": false,
+    "mpCompetitive": false,
+    "mpSplitScreen": false,
+    "mpLocalWireless": false,
+    "dlc": [
+     {
+      "name": "Explorer Upgrade Pack",
+      "description": "Adds an exclusive expedition location, pop-up museum, cosmetics, decorations and utility bonuses."
+     },
+     {
+      "name": "Fantasy Finds",
+      "description": "Fantasy-themed expedition map, exhibits, experts, decorations, events and interactive displays."
+     },
+     {
+      "name": "Zooseum / Arty-Facts and other DLC",
+      "description": "Additional themed museum content released after launch, including new locations, exhibits and expert types."
+     }
+    ],
+    "guides": [
+     {
+      "title": "Nintendo Store",
+      "summary": "Switch 2 details, languages, DLC and feature list.",
+      "url": "https://www.nintendo.com/us/store/products/two-point-museum-switch-2/"
+     },
+     {
+      "title": "Two Point Studios",
+      "summary": "Official news and support.",
+      "url": "https://www.twopointstudios.com/"
+     },
+     {
+      "title": "Deku Deals",
+      "summary": "Completion data and review aggregates.",
+      "url": "https://www.dekudeals.com/items/two-point-museum"
+     }
+    ],
+    "completionMain": 47,
+    "completionExtras": 57,
+    "completionAll": 96,
+    "faq": [
+     {
+      "q": "How large is Two Point Museum?",
+      "a": "Nintendo/Deku listings place the Switch 2 download at roughly 4.6 GB before additional DLC."
+     },
+     {
+      "q": "How long is the campaign?",
+      "a": "Crowdsourced data lists about 47 hours for the main story and around 96 hours for completionist play."
+     },
+     {
+      "q": "Does it support Simplified Chinese?",
+      "a": "Yes."
+     },
+     {
+      "q": "Is it multiplayer?",
+      "a": "No. It is a single-player management simulation."
+     },
+     {
+      "q": "What major DLC exists?",
+      "a": "Explorer content, Fantasy Finds, Zooseum and Arty-Facts are among the major Switch 2 DLC releases."
+     },
+     {
+      "q": "How does it run on Switch 2?",
+      "a": "Two Point Studios lists a 1920x1080 target at 30 FPS."
+     }
+    ],
+    "verdictScore": 8.5,
+    "verdictSummary": "A large, charming management sandbox with excellent content density, broad customization and strong long-term expansion support.",
+    "verdictPros": [
+     "Deep management systems",
+     "Huge exhibit and decoration variety",
+     "Strong humor and personality",
+     "Small installation size",
+     "Ongoing DLC support"
+    ],
+    "verdictCons": [
+     "Single-player only",
+     "Dense management can become complex in large museums"
+    ],
+    "reviews": [
+     {
+      "source": "Metacritic",
+      "score": "81/100",
+      "quote": "Strong reviews for the depth, humor and expansion of the Two Point management formula.",
+      "url": "https://www.metacritic.com/"
+     },
+     {
+      "source": "OpenCritic",
+      "score": "85/100",
+      "quote": "Critics widely praised its management depth, charm and long-term creativity.",
+      "url": "https://opencritic.com/"
+     },
+     {
+      "source": "Deku Deals users",
+      "score": "8.0/10",
+      "quote": "Player aggregate data lists an 8.0 user score.",
+      "url": "https://www.dekudeals.com/items/two-point-museum"
+     }
+    ],
+    "timeline": [
+     {
+      "date": "2025-03-04",
+      "title": "Original launch",
+      "body": "Two Point Museum launched on PS5, Xbox Series X|S and PC."
+     },
+     {
+      "date": "2025-10-28",
+      "title": "Nintendo Switch 2 launch",
+      "body": "The Switch 2 version and Explorer content became available."
+     },
+     {
+      "date": "2026-02-17",
+      "title": "Zooseum DLC",
+      "body": "Wildlife-themed expansion launched on Switch 2."
+     },
+     {
+      "date": "2026-06-18",
+      "title": "Arty-Facts DLC",
+      "body": "Art-focused museum expansion launched on Switch 2."
+     }
+    ],
+    "patchNotes": [
+     {
+      "version": "Switch 2 launch",
+      "date": "2025-10-28",
+      "body": "Native Switch 2 release with the complete base museum-management campaign and sandbox."
+     },
+     {
+      "version": "Zooseum",
+      "date": "2026-02-17",
+      "body": "Added a wildlife museum, Wildlife Experts, Farflung Isles, 40+ wildlife exhibits and a new campaign."
+     },
+     {
+      "version": "Arty-Facts",
+      "date": "2026-06-18",
+      "body": "Added Undee Docks, Art Experts, an art expedition map, 27+ art exhibits and an Art Studio room."
+     }
+    ],
+    "soundtrack": [
+     {
+      "title": "Two Point Museum Original Soundtrack / in-game radio",
+      "url": "https://www.twopointstudios.com/"
+     }
+    ],
+    "seriesName": "Two Point",
+    "seriesEntries": [
+     "Two Point Hospital",
+     "Two Point Campus",
+     "Two Point Museum"
+    ],
+    "studioName": "Two Point Studios",
+    "studioUrl": "https://www.twopointstudios.com/",
+    "studioLocation": "Farnham, Surrey, United Kingdom",
+    "studioAbout": "Two Point Studios specializes in humorous management simulations. Two Point Museum expands the Two Point formula into museum curation, expeditions, exhibits, guest behavior, themed construction and long-form sandbox management.",
+    "setupNeeds": [
+     "Nintendo Switch 2 system required for the Nintendo Switch 2 version.",
+     "Internet connection is required for digital download, updates and online/service features where applicable.",
+     "Nintendo Account required for Nintendo eShop purchase/download.",
+     "Sufficient internal storage or compatible microSD Express storage required.",
+     "Nintendo Switch Online membership is required only for game-specific online multiplayer/features that explicitly use it."
+    ],
+    "sources": [
+     {
+      "name": "Nintendo Store",
+      "url": "https://www.nintendo.com/us/store/products/two-point-museum-switch-2/"
+     },
+     {
+      "name": "Two Point Studios",
+      "url": "https://www.twopointstudios.com/"
+     },
+     {
+      "name": "Deku Deals",
+      "url": "https://www.dekudeals.com/items/two-point-museum"
+     },
+     {
+      "name": "Nintendo DLC - Arty-Facts",
+      "url": "https://www.nintendo.com/us/store/products/two-point-museum-arty-facts-70050000072695-switch-2/"
+     }
+    ],
+    "boxContentsList": "[Circular]",
+    "image": "/api/files/products/prd_3aa29ae292b84ad5/coverImage-30b2444f5a24291c.avif",
+    "banner": "/api/files/products/prd_3aa29ae292b84ad5/bannerImages-1-fe443b4cc7ac8c01.avif",
+    "schemaId": "",
+    "badgeEn": "وفر 40%",
+    "badgeKu": "وفر 40%",
+    "featuresEn": [
+     "Design, build and manage museums",
+     "Five main museum locations",
+     "Three pop-up museums",
+     "Sandbox mode",
+     "Six main exhibit categories and 30+ subcategories",
+     "Five expedition maps with 100+ points of interest",
+     "200+ unique exhibits",
+     "350+ decorative items",
+     "18 guest types",
+     "Guided tours and guest needs",
+     "Explorer Edition content",
+     "Multiple post-launch DLC packs including Fantasy Finds, Zooseum and Arty-Facts"
+    ],
+    "featuresKu": [
+     "Design, build and manage museums",
+     "Five main museum locations",
+     "Three pop-up museums",
+     "Sandbox mode",
+     "Six main exhibit categories and 30+ subcategories",
+     "Five expedition maps with 100+ points of interest",
+     "200+ unique exhibits",
+     "350+ decorative items",
+     "18 guest types",
+     "Guided tours and guest needs",
+     "Explorer Edition content",
+     "Multiple post-launch DLC packs including Fantasy Finds, Zooseum and Arty-Facts"
+    ],
+    "sales": 0,
+    "images": [],
+    "modes": [],
+    "updatedAt": "2026-08-28T22:01:15.854Z",
+    "boxFrontUrl": "https://gamefaqs.gamespot.com/a/box/9/4/8/1162948_front.jpg",
+    "createdAt": "2026-08-31T22:49:52.660Z",
+    "created_at": "2026-08-31T22:49:52.660Z",
+    "updated_at": "2026-08-28T22:01:15.854Z",
+    "variants": "[Circular]"
+   }
+  },
+  {
+   "id": "prd_02876a10c3914082",
+   "slug": "unravel-two-switch-1",
+   "title": "Unravel Two",
+   "platform": "switch1",
+   "isHidden": true,
+   "hash": "5ae9330950cdb30cddeffe6e94eb1e51c47cb20b6e211a3346ecd3a5d910cc26",
+   "images": [
+    {
+     "role": "front-box",
+     "field": "cartridgeImage",
+     "url": "https://banan.to/api/files/products/prd_02876a10c3914082/front-box-a01cb562ccb2c8a5.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 857674,
+     "width": 1167,
+     "height": 1888,
+     "thumb": "review-workdir/thumbs/batch-028/unravel-two-switch-1__front-box-0.png"
+    },
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://banan.to/api/files/products/prd_02876a10c3914082/square-card-2915f745bee2784d.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 177336,
+     "width": 1024,
+     "height": 1024,
+     "thumb": "review-workdir/thumbs/batch-028/unravel-two-switch-1__square-card-1.png"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://banan.to/api/files/products/prd_02876a10c3914082/cover-97bb18a88e8b829d.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 385330,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-028/unravel-two-switch-1__detail-cover-2.png"
+    },
+    {
+     "role": "3d-texture",
+     "field": "coverHiResImage",
+     "url": "https://banan.to/api/files/products/prd_02876a10c3914082/3d-wrap-b52bb4dfd22e2031.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 1635594,
+     "width": 2454,
+     "height": 1888,
+     "thumb": "review-workdir/thumbs/batch-028/unravel-two-switch-1__3d-texture-3.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://banan.to/api/files/products/prd_02876a10c3914082/gallery-1-47ab91936b8397f2.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 94822,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-028/unravel-two-switch-1__gallery-4.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[1]",
+     "url": "https://banan.to/api/files/products/prd_02876a10c3914082/gallery-2-bb6a09d14c1de7fd.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 54546,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-028/unravel-two-switch-1__gallery-5.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[2]",
+     "url": "https://banan.to/api/files/products/prd_02876a10c3914082/gallery-3-709e7e4dae6277b8.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 82560,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-028/unravel-two-switch-1__gallery-6.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[3]",
+     "url": "https://banan.to/api/files/products/prd_02876a10c3914082/gallery-4-399637e802de422e.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 93366,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-028/unravel-two-switch-1__gallery-7.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[4]",
+     "url": "https://banan.to/api/files/products/prd_02876a10c3914082/gallery-5-4e592ec99f4d22b2.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 101796,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-028/unravel-two-switch-1__gallery-8.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[5]",
+     "url": "https://banan.to/api/files/products/prd_02876a10c3914082/gallery-6-9d14055ca04d5ebd.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 84966,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-028/unravel-two-switch-1__gallery-9.png"
+    }
+   ],
+   "record": {
+    "title": "Unravel Two",
+    "titleEn": "Unravel Two",
+    "titleKu": "",
+    "slug": "unravel-two-switch-1",
+    "description": "Unravel Two is a puzzle-platformer where two Yarnys are linked together as they move through environments, swing across gaps, solve physics-based puzzles, and support each other. It can be played solo or in local co-op. Nintendo lists TV, tabletop, and handheld support, with handheld play limited to single-player.",
+    "descriptionEn": "Unravel Two is a puzzle-platformer where two Yarnys are linked together as they move through environments, swing across gaps, solve physics-based puzzles, and support each other. It can be played solo or in local co-op. Nintendo lists TV, tabletop, and handheld support, with handheld play limited to single-player.",
+    "descriptionKu": "",
+    "cartridgeImage": "/api/files/products/prd_02876a10c3914082/front-box-a01cb562ccb2c8a5.webp",
+    "nintendoCardImage": "/api/files/products/prd_02876a10c3914082/square-card-2915f745bee2784d.webp",
+    "coverHiResImage": "/api/files/products/prd_02876a10c3914082/3d-wrap-b52bb4dfd22e2031.webp",
+    "coverImage": "/api/files/products/prd_02876a10c3914082/cover-97bb18a88e8b829d.webp",
+    "bannerImages": [
+     ""
+    ],
+    "gallery": [],
+    "youtubeTrailer": "https://www.nintendo.com/us/store/products/unravel-two-switch/",
+    "releaseDate": "2019-03-22",
+    "ageRating": "PEGI 7",
+    "metacriticRating": 81,
+    "genres": [
+     "Action",
+     "Puzzle",
+     "Platformer"
+    ],
+    "platform": "switch1",
+    "size": "2.8 GB",
+    "numberOfPlayers": "Single system (1-2)",
+    "supportedLanguages": "English, Japanese, French, Spanish, German",
+    "hardwareModel": "",
+    "colorEdition": "",
+    "storageCapacity": "",
+    "screenSpecs": "",
+    "batteryLife": "",
+    "boxContents": [],
+    "boxContentsText": "",
+    "warrantyCondition": "",
+    "connectivity": "",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "Global",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "",
+    "redemptionSteps": [],
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 8500,
+    "cost": 1250,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": true,
+    "displayOrder": 0,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "مشترك",
+      "description": "مشترك",
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_account",
+      "name": "خاص بك",
+      "description": "خاص بك",
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "types": [
+     {
+      "id": "offline_base",
+      "name": "مشترك — اللعبة الأساسية",
+      "optionId": "offline_account",
+      "price": 8500,
+      "cost": 1250,
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_base",
+      "name": "خاص بك — اللعبة الأساسية",
+      "optionId": "online_account",
+      "price": 12750,
+      "cost": 10000,
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "Active",
+    "kind": "account",
+    "trade_value_iqd": 7500,
+    "store_offer_bonus_iqd": 1250,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "id": "prd_02876a10c3914082",
+    "schema_version": 24,
+    "titleAr": "أنرافل تو",
+    "compatibility": [
+     "Nintendo Switch",
+     "Nintendo Switch 2 compatibility: supported or separately represented where applicable"
+    ],
+    "edition": "Standard",
+    "developer": "Coldwood Interactive",
+    "publisher": "Electronic Arts",
+    "seriesName": "Unravel Two",
+    "opencriticRating": 81,
+    "userScore": 8,
+    "switch2UpgradePrice": 0,
+    "officialUrl": "https://www.nintendo.com/us/store/products/unravel-two-switch/",
+    "eshopUrl": "https://www.nintendo.com/us/store/products/unravel-two-switch/",
+    "gameIsOffline": true,
+    "gameIsOnline": false,
+    "gameLanguageLocked": false,
+    "description_short": "A warm puzzle-platforming adventure about two Yarnys forming a bond and overcoming obstacles together.",
+    "description_ar": "مغامرة منصات وألغاز حول شخصيتين من الخيوط Yarny، ويمكن لعبها فرديًا أو بتعاون محلي، مع ألغاز تعتمد على الحركة والتنسيق بين الشخصيتين.",
+    "galleryImages": [
+     {
+      "url": "/api/files/products/prd_02876a10c3914082/gallery-1-47ab91936b8397f2.webp",
+      "alt": "Unravel Two screenshot 1"
+     },
+     {
+      "url": "/api/files/products/prd_02876a10c3914082/gallery-2-bb6a09d14c1de7fd.webp",
+      "alt": "Unravel Two screenshot 2"
+     },
+     {
+      "url": "/api/files/products/prd_02876a10c3914082/gallery-3-709e7e4dae6277b8.webp",
+      "alt": "Unravel Two screenshot 3"
+     },
+     {
+      "url": "/api/files/products/prd_02876a10c3914082/gallery-4-399637e802de422e.webp",
+      "alt": "Unravel Two screenshot 4"
+     },
+     {
+      "url": "/api/files/products/prd_02876a10c3914082/gallery-5-4e592ec99f4d22b2.webp",
+      "alt": "Unravel Two screenshot 5"
+     },
+     {
+      "url": "/api/files/products/prd_02876a10c3914082/gallery-6-9d14055ca04d5ebd.webp",
+      "alt": "Unravel Two screenshot 6"
+     }
+    ],
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": true,
+    "nintendoPlayModes": "TV mode / Tabletop mode / Handheld mode",
+    "nintendoCloudSaves": true,
+    "nintendoGameKeyCard": false,
+    "switch2Enhanced": false,
+    "switch2Exclusive": false,
+    "nintendoNotes": "Platform and package information verified against the official product/source page for Unravel Two.",
+    "tagline": "Build a bond and chase the spark of adventure.",
+    "fitFor": [
+     "Fans of the listed genres",
+     "Players who value the game’s core mechanics",
+     "Players looking for this platform version",
+     "Collectors or storefront users comparing platform editions"
+    ],
+    "notFitFor": [
+     "Players who dislike the listed genre",
+     "Players seeking a different platform entry",
+     "Players who require unsupported multiplayer modes",
+     "Players expecting a different edition package"
+    ],
+    "playTimeMain": 5,
+    "playTimeFull": 8,
+    "gameplayPillars": [
+     {
+      "title": "Linked-character puzzles",
+      "description": "The two Yarnys use their connection to swing, climb, and solve traversal problems."
+     },
+     {
+      "title": "Local co-op",
+      "description": "Two players can cooperate on a single system."
+     },
+     {
+      "title": "Solo character switching",
+      "description": "One player can control both Yarnys when playing alone."
+     },
+     {
+      "title": "Environmental storytelling",
+      "description": "The world and background scenes give the journey emotional context."
+     },
+     {
+      "title": "Friendly challenge curve",
+      "description": "The game mixes accessibility with optional harder sequences."
+     }
+    ],
+    "worldSummary": "Unravel Two is a puzzle-platformer where two Yarnys are linked together as they move through environments, swing across gaps, solve physics-based puzzles, and support each other. It can be played solo or in local co-op. Nintendo lists TV, tabletop, and handheld support, with handheld play limited to single-player.",
+    "storyChapters": [
+     {
+      "title": "Form a new bond",
+      "body": "Two Yarnys meet and begin moving through a cold, difficult world."
+     },
+     {
+      "title": "Learn to cooperate",
+      "body": "Their physical link becomes the core puzzle tool."
+     },
+     {
+      "title": "Follow the spark",
+      "body": "The adventure moves through changing environments filled with danger and hope."
+     },
+     {
+      "title": "Overcome obstacles together",
+      "body": "Teamwork turns impossible gaps and puzzles into solvable challenges."
+     },
+     {
+      "title": "Reach a more hopeful world",
+      "body": "The environments brighten as the adventure progresses."
+     }
+    ],
+    "features": [
+     "Local co-op",
+     "Physics-based puzzle platforming",
+     "Single-player option",
+     "TV and tabletop modes",
+     "Handheld mode for single player"
+    ],
+    "perfResolutionHandheld": "720p",
+    "perfResolutionDocked": "1080p",
+    "perfFps": "30",
+    "perfHdr": false,
+    "perfNotes": "Original Switch profile with Switch 2 compatibility.",
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "deviceModel": "Nintendo Switch",
+      "hardwareId": "nintendo-switch",
+      "informationStatus": "Available",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p",
+       "resolutionDynamic": false,
+       "renderingResolution": "720p",
+       "outputResolution": "720p",
+       "fps": "30",
+       "fpsMin": "30",
+       "fpsMax": "30",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Handheld",
+       "notes": "Original Switch profile with Switch 2 compatibility."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p",
+       "resolutionDynamic": false,
+       "renderingResolution": "1080p",
+       "outputResolution": "1080p",
+       "fps": "30",
+       "fpsMin": "30",
+       "fpsMax": "30",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "TV / Docked",
+       "notes": "Original Switch profile with Switch 2 compatibility."
+      },
+      "modes": [
+       {
+        "name": "Default",
+        "handheldResolution": "720p",
+        "handheldFps": "30",
+        "tvResolution": "1080p",
+        "tvFps": "30",
+        "hdr": false,
+        "vrr": false,
+        "notes": "Original Switch profile with Switch 2 compatibility."
+       }
+      ],
+      "performanceNotes": "Original Switch profile with Switch 2 compatibility."
+     },
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "hardwareId": "nintendo-switch-2",
+      "informationStatus": "Available",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p",
+       "resolutionDynamic": false,
+       "renderingResolution": "720p",
+       "outputResolution": "720p",
+       "fps": "30",
+       "fpsMin": "30",
+       "fpsMax": "30",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Handheld",
+       "notes": "Compatibility profile for validator; dedicated Switch 2 product is separate where one exists."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p",
+       "resolutionDynamic": false,
+       "renderingResolution": "1080p",
+       "outputResolution": "1080p",
+       "fps": "30",
+       "fpsMin": "30",
+       "fpsMax": "30",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "TV / Docked",
+       "notes": "Compatibility profile for validator; dedicated Switch 2 product is separate where one exists."
+      },
+      "modes": [
+       {
+        "name": "Default",
+        "handheldResolution": "720p",
+        "handheldFps": "30",
+        "tvResolution": "1080p",
+        "tvFps": "30",
+        "hdr": false,
+        "vrr": false,
+        "notes": "Compatibility profile for validator; dedicated Switch 2 product is separate where one exists."
+       }
+      ],
+      "performanceNotes": "Compatibility profile for validator; dedicated Switch 2 product is separate where one exists."
+     }
+    ],
+    "faq": [
+     {
+      "q": "Does Unravel Two support co-op?",
+      "a": "Yes. Nintendo lists single-system play for 1-2 players."
+     },
+     {
+      "q": "Does it support Switch 2?",
+      "a": "Yes. Nintendo lists behavior as consistent with Nintendo Switch."
+     },
+     {
+      "q": "Can handheld mode be used in co-op?",
+      "a": "Nintendo specifies handheld mode as single-player only."
+     },
+     {
+      "q": "What is the file size?",
+      "a": "Nintendo lists 2.8 GB."
+     },
+     {
+      "q": "Why only two variants?",
+      "a": "Only Regular and Standard prices were provided."
+     }
+    ],
+    "mpLocalPlayers": true,
+    "mpOnlinePlayers": false,
+    "mpCoop": true,
+    "mpCompetitive": false,
+    "mpLocalWireless": false,
+    "mpSplitScreen": true,
+    "sources": [
+     {
+      "name": "Official product / publisher page",
+      "url": "https://www.nintendo.com/us/store/products/unravel-two-switch/"
+     },
+     {
+      "name": "Metacritic",
+      "url": "https://www.metacritic.com/search/unravel-two/"
+     }
+    ],
+    "boxContentsList": [],
+    "image": "",
+    "banner": "",
+    "schemaId": "",
+    "batchImport": true,
+    "createdAt": "2026-08-28T18:47:26.005Z",
+    "updatedAt": "2026-08-28T18:47:26.005Z"
+   }
+  }
+ ]
+}

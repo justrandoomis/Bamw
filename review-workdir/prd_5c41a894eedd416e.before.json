@@ -1,0 +1,531 @@
+{
+ "title": "The Legend of Zelda: Tears of the Kingdom",
+ "titleEn": "The Legend of Zelda: Tears of the Kingdom",
+ "titleKu": "",
+ "slug": "the-legend-of-zelda-tears-of-the-kingdom-switch-1",
+ "description": "The Legend of Zelda: Tears of the Kingdom builds on Breath of the Wild with a larger and denser version of Hyrule that now spans the surface, the sky, and the mysterious Depths below. Link gains abilities such as Ultrahand, Fuse, Ascend, and Recall, enabling players to build vehicles, combine equipment creatively, and solve problems in highly flexible ways. It is one of Nintendo's most ambitious adventure games.",
+ "descriptionEn": "The Legend of Zelda: Tears of the Kingdom builds on Breath of the Wild with a larger and denser version of Hyrule that now spans the surface, the sky, and the mysterious Depths below. Link gains abilities such as Ultrahand, Fuse, Ascend, and Recall, enabling players to build vehicles, combine equipment creatively, and solve problems in highly flexible ways. It is one of Nintendo's most ambitious adventure games.",
+ "descriptionKu": "",
+ "cartridgeImage": "/api/files/products/prd_5c41a894eedd416e/front-box-e047ddcfe96bdf08.webp",
+ "nintendoCardImage": "/api/files/products/prd_5c41a894eedd416e/square-card-e80a1007de412198.webp",
+ "coverHiResImage": "/api/files/products/prd_5c41a894eedd416e/3d-wrap-c40d03949c527cc2.webp",
+ "coverImage": "/api/files/products/prd_5c41a894eedd416e/cover-946586ef4983c2fb.webp",
+ "bannerImages": [
+  ""
+ ],
+ "gallery": [],
+ "youtubeTrailer": "",
+ "releaseDate": "2023-05-12",
+ "ageRating": "ESRB E10+ / PEGI 12",
+ "metacriticRating": 96,
+ "genres": [
+  "Action",
+  "Adventure",
+  "Open World",
+  "RPG"
+ ],
+ "platform": "switch1",
+ "size": 16.3,
+ "numberOfPlayers": "Single system (1)",
+ "supportedLanguages": "Japanese / British English / French / German / Italian / Spanish / Korean / Dutch / Simplified Chinese / Latin American Spanish / Canadian French / Traditional Chinese / American English",
+ "hardwareModel": "",
+ "colorEdition": "",
+ "storageCapacity": "",
+ "screenSpecs": "",
+ "batteryLife": "",
+ "boxContents": [],
+ "boxContentsText": "",
+ "warrantyCondition": "",
+ "connectivity": "",
+ "characterName": "Link",
+ "amiiboSeries": "The Legend of Zelda",
+ "figureType": "figure",
+ "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+ "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+ "boxCondition": "mib",
+ "releaseWave": "Wave 2 (Restock)",
+ "rarity": "standard",
+ "accessoryType": "حقيبة حماية وتنقل Carry Case",
+ "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+ "brand": "Nintendo Official",
+ "material": "Hard EVA Shockproof Shell",
+ "availableColors": "Black, Neon Red/Blue, White",
+ "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+ "cardValue": "$20 eShop Balance",
+ "region": "Global",
+ "cardType": "eshop",
+ "deliveryMethod": "instant_code",
+ "redemptionGuide": "",
+ "redemptionSteps": [],
+ "validity": "no_expiry",
+ "usedType": "cartridge",
+ "conditionGrade": "like_new",
+ "packaging": "cib",
+ "guaranteeStatus": "tested_30days",
+ "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+ "accountType": "primary",
+ "badge": "وفر 40%",
+ "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+ "price": 15000,
+ "cost": 1500,
+ "stock": 999999,
+ "isInfiniteStock": true,
+ "isHidden": true,
+ "displayOrder": 0,
+ "category": "nintendo-switch-games",
+ "categoryId": "nintendo-switch-games",
+ "categoryEn": "",
+ "categoryKu": "",
+ "options": [
+  {
+   "id": "offline_account",
+   "name": "مشترك",
+   "description": "مشترك",
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_account",
+   "name": "خاص بك",
+   "description": "خاص بك",
+   "stock": 9999,
+   "isInfiniteStock": true
+  }
+ ],
+ "types": [
+  {
+   "id": "offline_base",
+   "name": "مشترك — اللعبة الأساسية",
+   "optionId": "offline_account",
+   "price": 15000,
+   "cost": 1500,
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_base",
+   "name": "خاص بك — اللعبة الأساسية",
+   "optionId": "online_account",
+   "price": 36250,
+   "cost": 25000,
+   "stock": 9999,
+   "isInfiniteStock": true
+  }
+ ],
+ "editions": [],
+ "dlcs": [],
+ "isActive": true,
+ "status": "Active",
+ "kind": "account",
+ "trade_value_iqd": 17000,
+ "store_offer_bonus_iqd": 3500,
+ "trade_enabled": true,
+ "trade_value_locked": false,
+ "id": "prd_5c41a894eedd416e",
+ "schema_version": 24,
+ "titleAr": "أسطورة زيلدا: دموع المملكة",
+ "compatibility": [
+  "Nintendo Switch",
+  "Nintendo Switch 2 compatibility: Supported – original version playable; dedicated Switch 2 Edition also exists"
+ ],
+ "edition": "Standard",
+ "developer": "Nintendo",
+ "publisher": "Nintendo",
+ "seriesName": "The Legend of Zelda",
+ "metacriticUrl": "https://www.metacritic.com/game/the-legend-of-zelda-tears-of-the-kingdom/",
+ "opencriticRating": 96,
+ "userScore": 8.7,
+ "price_usd": 69.99,
+ "officialUrl": "https://www.nintendo.com/us/store/products/the-legend-of-zelda-tears-of-the-kingdom-switch/",
+ "eshopUrl": "https://www.nintendo.com/us/store/products/the-legend-of-zelda-tears-of-the-kingdom-switch/",
+ "gameIsOffline": true,
+ "gameIsOnline": false,
+ "gameLanguageLocked": false,
+ "description_short": "Expand beyond the land of Hyrule and take Link across sky islands and underground depths in a vast sequel built around invention and experimentation.",
+ "description_ar": "تكملة ضخمة لـ Breath of the Wild توسع عالم هايرول إلى السماء والأعماق، وتضيف قدرات مثل Ultrahand وFuse وAscend وRecall، ما يمنح اللاعب حرية هائلة في القتال والحل والاستكشاف.",
+ "languagesText": [
+  "Japanese / English",
+  "French / German / Italian / Spanish / Dutch",
+  "Korean / Simplified Chinese / Traditional Chinese"
+ ],
+ "languagesAudio": [
+  "Music / sound effects",
+  "Character vocalizations where applicable",
+  "No full language-selectable dub beyond the shipped release build information"
+ ],
+ "tvMode": true,
+ "tabletopMode": true,
+ "handheldMode": true,
+ "nintendoPlayModes": "TV / Tabletop / Handheld",
+ "nintendoOnlineRequired": false,
+ "nintendoCloudSaves": true,
+ "nintendoGameKeyCard": false,
+ "nintendoPhysicalNeedsDownload": false,
+ "switch2Enhanced": false,
+ "switch2Exclusive": false,
+ "nintendoNotes": "The original Nintendo Switch release remains a distinct product even though Nintendo also offers a separate Nintendo Switch 2 Edition and an upgrade pack.",
+ "editionsList": [
+  {
+   "name": "Offline Regular",
+   "contents": [
+    {
+     "label": "Base game"
+    },
+    {
+     "label": "Offline account package"
+    },
+    {
+     "label": "Original Nintendo Switch release"
+    }
+   ]
+  },
+  {
+   "name": "Online Standard",
+   "contents": [
+    {
+     "label": "Base game"
+    },
+    {
+     "label": "Online account package"
+    },
+    {
+     "label": "Original Nintendo Switch release"
+    }
+   ]
+  }
+ ],
+ "gameplayPillars": [
+  {
+   "title": "Ultrahand building",
+   "description": "Players can assemble vehicles, machines, and problem-solving contraptions using a flexible construction system."
+  },
+  {
+   "title": "Fuse experimentation",
+   "description": "Weapons, shields, and arrows can be fused with items and monster materials, dramatically expanding combat options."
+  },
+  {
+   "title": "Three-layer world design",
+   "description": "The surface, sky islands, and underground Depths create a much more vertical adventure space than the previous game."
+  },
+  {
+   "title": "Open-ended puzzle solving",
+   "description": "Ascend, Recall, and physics systems allow players to solve shrines, traversal problems, and combat scenarios creatively."
+  },
+  {
+   "title": "Epic main quest progression",
+   "description": "Regional stories, major dungeons, and a powerful late-game arc make the sequel feel more directed while keeping openness intact."
+  }
+ ],
+ "worldSummary": "Tears of the Kingdom takes Hyrule in three directions at once: upward into floating islands, downward into a shadowy underground realm, and deeper across the original surface world through more systems and secrets.",
+ "storyChapters": [
+  {
+   "title": "Investigate the Upheaval",
+   "body": "Link and Zelda uncover a disaster beneath Hyrule Castle, setting in motion a crisis that reshapes the entire kingdom."
+  },
+  {
+   "title": "Master new powers",
+   "body": "Ultrahand, Fuse, Ascend, and Recall define the sequel's structure and let players overcome obstacles in highly creative ways."
+  },
+  {
+   "title": "Travel across regions and temples",
+   "body": "Each major region offers its own story arc, hazards, allies, and dungeon-like objectives tied to the central quest."
+  },
+  {
+   "title": "Explore the skies and the Depths",
+   "body": "The sequel constantly expands its sense of discovery by layering additional spaces above and below Hyrule."
+  },
+  {
+   "title": "Resolve the fate of Hyrule",
+   "body": "The story ultimately delivers a larger-scale finale with strong emotional stakes and memorable late-game revelations."
+  }
+ ],
+ "features": [
+  "Massive expansion of Breath of the Wild's formula",
+  "Ultrahand and Fuse redefine traversal and combat creativity",
+  "Three-layer world structure greatly increases exploration depth",
+  "Large-scale dungeons and regional quest arcs",
+  "One of the highest-rated adventure games on Nintendo Switch"
+ ],
+ "perfResolutionDocked": "900p",
+ "perfResolutionHandheld": "720p",
+ "perfFps": "30",
+ "perfHdr": false,
+ "playTimeMain": 60,
+ "completionMain": 120,
+ "completionExtras": 200,
+ "faq": [
+  {
+   "q": "Is this the original Nintendo Switch version?",
+   "a": "Yes. This file is for the original Nintendo Switch release of Tears of the Kingdom, not the separate Nintendo Switch 2 Edition."
+  },
+  {
+   "q": "Does the game have DLC?",
+   "a": "No official standalone DLC has been announced for Tears of the Kingdom. This extraction therefore keeps only the base game variants."
+  },
+  {
+   "q": "Is multiplayer supported?",
+   "a": "No. Tears of the Kingdom is a single-player adventure."
+  },
+  {
+   "q": "What makes the sequel different from Breath of the Wild?",
+   "a": "The new abilities, layered world design, denser quest structure, and construction systems create a much more experimental sequel."
+  },
+  {
+   "q": "Why is the game so popular?",
+   "a": "Its sense of discovery, creative problem solving, and ambitious expansion of open-world Zelda design have been praised almost universally."
+  }
+ ],
+ "verdictScore": 9.7,
+ "verdictPros": [
+  "Exceptional creativity tools",
+  "Dense and expansive world design",
+  "Outstanding sense of discovery",
+  "Regional arcs and dungeons add structure",
+  "Long-term exploration remains consistently rewarding"
+ ],
+ "verdictCons": [
+  "30 fps target on original Switch hardware",
+  "Building systems can feel overwhelming at first",
+  "Inventory and material management can get busy",
+  "Some puzzle solutions can trivialize challenge if over-optimized",
+  "Huge scale can extend completion time significantly"
+ ],
+ "reviews": [
+  {
+   "source": "Metacritic",
+   "score": "96",
+   "url": "https://www.metacritic.com/game/the-legend-of-zelda-tears-of-the-kingdom/"
+  },
+  {
+   "source": "OpenCritic",
+   "score": "96",
+   "url": "https://opencritic.com/game/14346/the-legend-of-zelda-tears-of-the-kingdom"
+  },
+  {
+   "source": "IGN",
+   "score": "10/10",
+   "url": "https://www.ign.com/games/the-legend-of-zelda-tears-of-the-kingdom"
+  }
+ ],
+ "timeline": [
+  {
+   "date": "2023-05-12",
+   "title": "Released on Nintendo Switch"
+  },
+  {
+   "date": "2025-06-05",
+   "title": "Separate Nintendo Switch 2 Edition released"
+  },
+  {
+   "date": "2025-06-05",
+   "title": "Nintendo published the Upgrade Pack listing"
+  }
+ ],
+ "patchNotes": [
+  {
+   "version": "Launch version",
+   "date": "2023-05-12"
+  },
+  {
+   "version": "Current retail build",
+   "date": "2026-08-27"
+  }
+ ],
+ "studioName": "Nintendo",
+ "studioUrl": "https://www.nintendo.com/us/store/products/the-legend-of-zelda-tears-of-the-kingdom-switch/",
+ "studioLocation": "Japan",
+ "sources": [
+  {
+   "name": "Nintendo original product page",
+   "url": "https://www.nintendo.com/us/store/products/the-legend-of-zelda-tears-of-the-kingdom-switch/"
+  },
+  {
+   "name": "Nintendo Switch 2 Edition page",
+   "url": "https://www.nintendo.com/us/store/products/the-legend-of-zelda-tears-of-the-kingdom-nintendo-switch-2-edition-switch-2/"
+  },
+  {
+   "name": "Metacritic",
+   "url": "https://www.metacritic.com/game/the-legend-of-zelda-tears-of-the-kingdom/"
+  },
+  {
+   "name": "OpenCritic",
+   "url": "https://opencritic.com/game/14346/the-legend-of-zelda-tears-of-the-kingdom"
+  }
+ ],
+ "downloadSizeGb": 16.3,
+ "requiredSpaceGb": 16.3,
+ "microSdRecommended": true,
+ "storageNotes": "Nintendo lists the original Tears of the Kingdom at approximately 16.3 GB on Nintendo Switch.",
+ "mpLocalPlayers": false,
+ "mpOnlinePlayers": false,
+ "mpCoop": false,
+ "mpCompetitive": false,
+ "mpLocalWireless": false,
+ "mpSplitScreen": false,
+ "seriesEntries": [
+  "The Legend of Zelda: Breath of the Wild",
+  "The Legend of Zelda: Tears of the Kingdom — Nintendo Switch 2 Edition",
+  "The Legend of Zelda: Echoes of Wisdom"
+ ],
+ "dlc": [
+  {
+   "name": "No standalone DLC has been announced",
+   "description": "Nintendo has not announced a separate paid expansion pass or standalone DLC package for Tears of the Kingdom."
+  }
+ ],
+ "devicePerformance": [
+  {
+   "device": "Nintendo Switch",
+   "deviceSlug": "nintendo-switch",
+   "deviceModel": "Nintendo Switch",
+   "hardwareId": "nintendo-switch",
+   "informationStatus": "Available / verified",
+   "handheld": {
+    "supported": true,
+    "resolution": "720p",
+    "resolutionDynamic": true,
+    "renderingResolution": "1280x720",
+    "outputResolution": "1280x720",
+    "fps": "30",
+    "fpsMin": "20",
+    "fpsMax": "30",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "Handheld",
+    "notes": "The original Nintendo Switch build targets 30 fps with dynamic resolution behavior and a handheld 720p / docked 900p presentation profile."
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "900p",
+    "resolutionDynamic": true,
+    "renderingResolution": "1600x900",
+    "outputResolution": "1600x900",
+    "fps": "30",
+    "fpsMin": "20",
+    "fpsMax": "30",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "TV / Docked",
+    "notes": "The original Nintendo Switch build targets 30 fps with dynamic resolution behavior and a handheld 720p / docked 900p presentation profile."
+   },
+   "modes": [
+    {
+     "name": "Primary documented mode",
+     "handheldResolution": "720p",
+     "handheldFps": "30",
+     "tvResolution": "900p",
+     "tvFps": "30",
+     "hdr": false,
+     "vrr": false,
+     "notes": "The original Nintendo Switch build targets 30 fps with dynamic resolution behavior and a handheld 720p / docked 900p presentation profile."
+    }
+   ],
+   "upscaling": "Game / system-specific scaling where applicable",
+   "rayTracing": false,
+   "rayTracingMode": "Not Supported",
+   "loadingTime": "Scene-dependent; no single universal loading time",
+   "loadingNotes": "Loading time varies by scene, save progress, storage state, and whether the software is running in its standard build or an enhanced edition.",
+   "gameVersion": "Current retail build",
+   "patchVersion": "Current available update",
+   "testedDate": "2026-08-27",
+   "sourceName": "Nintendo official product page",
+   "sourceUrl": "https://www.nintendo.com/us/store/products/the-legend-of-zelda-tears-of-the-kingdom-switch/",
+   "performanceNotes": "The original Nintendo Switch build targets 30 fps with dynamic resolution behavior and a handheld 720p / docked 900p presentation profile."
+  },
+  {
+   "device": "Nintendo Switch 2",
+   "deviceSlug": "nintendo-switch-2",
+   "deviceModel": "Nintendo Switch 2",
+   "hardwareId": "nintendo-switch-2",
+   "informationStatus": "Available / verified",
+   "handheld": {
+    "supported": true,
+    "resolution": "720p",
+    "resolutionDynamic": false,
+    "renderingResolution": "1280x720",
+    "outputResolution": "1280x720",
+    "fps": "30",
+    "fpsMin": "30",
+    "fpsMax": "30",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "Handheld",
+    "notes": "The original version is playable on Nintendo Switch 2, while Nintendo also sells a separate enhanced Nintendo Switch 2 Edition. This block records the original-version compatibility profile."
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "900p",
+    "resolutionDynamic": false,
+    "renderingResolution": "1600x900",
+    "outputResolution": "1600x900",
+    "fps": "30",
+    "fpsMin": "30",
+    "fpsMax": "30",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "TV / Docked",
+    "notes": "The original version is playable on Nintendo Switch 2, while Nintendo also sells a separate enhanced Nintendo Switch 2 Edition. This block records the original-version compatibility profile."
+   },
+   "modes": [
+    {
+     "name": "Primary documented mode",
+     "handheldResolution": "720p",
+     "handheldFps": "30",
+     "tvResolution": "900p",
+     "tvFps": "30",
+     "hdr": false,
+     "vrr": false,
+     "notes": "The original version is playable on Nintendo Switch 2, while Nintendo also sells a separate enhanced Nintendo Switch 2 Edition. This block records the original-version compatibility profile."
+    }
+   ],
+   "upscaling": "Game / system-specific scaling where applicable",
+   "rayTracing": false,
+   "rayTracingMode": "Not Supported",
+   "loadingTime": "Scene-dependent; no single universal loading time",
+   "loadingNotes": "Loading time varies by scene, save progress, storage state, and whether the software is running in its standard build or an enhanced edition.",
+   "gameVersion": "Current retail build",
+   "patchVersion": "Current available update",
+   "testedDate": "2026-08-27",
+   "sourceName": "Nintendo official ecosystem listing",
+   "sourceUrl": "https://www.nintendo.com/us/store/products/the-legend-of-zelda-tears-of-the-kingdom-switch/",
+   "performanceNotes": "The original version is playable on Nintendo Switch 2, while Nintendo also sells a separate enhanced Nintendo Switch 2 Edition. This block records the original-version compatibility profile."
+  }
+ ],
+ "boxContentsList": [],
+ "image": "",
+ "banner": "",
+ "schemaId": "",
+ "batchImport": true,
+ "galleryImages": [
+  {
+   "url": "/api/files/products/prd_5c41a894eedd416e/gallery-1-116dc2fcf9ba744e.webp",
+   "alt": "The Legend of Zelda: Tears of the Kingdom screenshot 1"
+  },
+  {
+   "url": "/api/files/products/prd_5c41a894eedd416e/gallery-2-f7208f389f6387ce.webp",
+   "alt": "The Legend of Zelda: Tears of the Kingdom screenshot 2"
+  },
+  {
+   "url": "/api/files/products/prd_5c41a894eedd416e/gallery-3-2589702bf5235f3b.webp",
+   "alt": "The Legend of Zelda: Tears of the Kingdom screenshot 3"
+  },
+  {
+   "url": "/api/files/products/prd_5c41a894eedd416e/gallery-4-8c7360b4d574bd84.webp",
+   "alt": "The Legend of Zelda: Tears of the Kingdom screenshot 4"
+  },
+  {
+   "url": "/api/files/products/prd_5c41a894eedd416e/gallery-5-73c84e677f89b5c3.webp",
+   "alt": "The Legend of Zelda: Tears of the Kingdom screenshot 5"
+  },
+  {
+   "url": "/api/files/products/prd_5c41a894eedd416e/gallery-6-d99fc93d344611e1.webp",
+   "alt": "The Legend of Zelda: Tears of the Kingdom screenshot 6"
+  }
+ ],
+ "createdAt": "2026-08-28T18:36:18.579Z",
+ "updatedAt": "2026-08-28T18:36:18.579Z"
+}

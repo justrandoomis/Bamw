@@ -1,0 +1,614 @@
+{
+ "title": "The Witcher 3: Wild Hunt — Complete Edition",
+ "titleEn": "The Witcher 3: Wild Hunt — Complete Edition",
+ "titleKu": "",
+ "slug": "the-witcher-3-wild-hunt-complete-edition-switch",
+ "description": "The Witcher 3: Wild Hunt — Complete Edition brings Geralt of Rivia’s enormous open-world RPG to Nintendo Switch. Players hunt monsters, investigate contracts, make difficult story choices, and search for Ciri across the Northern Kingdoms. The Complete Edition includes the base game and the major expansions Hearts of Stone and Blood and Wine, plus the released DLC package.",
+ "descriptionEn": "The Witcher 3: Wild Hunt — Complete Edition brings Geralt of Rivia’s enormous open-world RPG to Nintendo Switch. Players hunt monsters, investigate contracts, make difficult story choices, and search for Ciri across the Northern Kingdoms. The Complete Edition includes the base game and the major expansions Hearts of Stone and Blood and Wine, plus the released DLC package.",
+ "descriptionKu": "",
+ "cartridgeImage": "https://images.launchbox-app.com//460f77b6-6b0d-4bce-9d9d-c7e9932dba44.jpg",
+ "nintendoCardImage": "/api/files/products/prd_b3c4ab1e54a144a8/square-card-5a82936f37097ec1.webp",
+ "coverHiResImage": "",
+ "coverImage": "/api/files/products/prd_b3c4ab1e54a144a8/cover-7260362fd29e44d0.webp",
+ "bannerImages": [
+  "https://images.launchbox-app.com//f64cbe3a-4863-4841-b85e-dd070f7641a8.jpg",
+  "https://images.launchbox-app.com//b24b4879-113e-4eb2-8fdf-954fd7746a80.jpg",
+  "https://images.launchbox-app.com//415d2cab-1eb1-40e5-9f81-c85fac1512a1.jpg",
+  "https://images.launchbox-app.com//3e559872-c878-4e5b-832b-5f0777fa3355.jpg",
+  "https://images.launchbox-app.com//b468458f-f075-4720-8ebd-1e017df627cb.jpg",
+  "https://images.launchbox-app.com//ccd85bcc-ae01-4e5e-9064-24ff8c58aa4c.jpg"
+ ],
+ "gallery": [],
+ "youtubeTrailer": "https://www.youtube.com/watch?v=nBT2SP21f3Q",
+ "releaseDate": "2019-10-15",
+ "ageRating": "ESRB M / PEGI 18",
+ "metacriticRating": 85,
+ "genres": [
+  "Action",
+  "Role-Playing",
+  "Open World",
+  "Adventure"
+ ],
+ "platform": "switch1",
+ "size": "31.5 GB",
+ "numberOfPlayers": "Single system (1)",
+ "supportedLanguages": "English, French, German, Italian, Spanish, Russian, Polish, Brazilian Portuguese, Japanese, Korean, Chinese and additional regional text/audio options depending on build",
+ "hardwareModel": "",
+ "colorEdition": "",
+ "storageCapacity": "",
+ "screenSpecs": "",
+ "batteryLife": "",
+ "boxContents": [],
+ "boxContentsText": "",
+ "warrantyCondition": "",
+ "connectivity": "",
+ "characterName": "Link",
+ "amiiboSeries": "The Legend of Zelda",
+ "figureType": "figure",
+ "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+ "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+ "boxCondition": "mib",
+ "releaseWave": "Wave 2 (Restock)",
+ "rarity": "standard",
+ "accessoryType": "حقيبة حماية وتنقل Carry Case",
+ "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+ "brand": "Nintendo Official",
+ "material": "Hard EVA Shockproof Shell",
+ "availableColors": "Black, Neon Red/Blue, White",
+ "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+ "cardValue": "$20 eShop Balance",
+ "region": "Global",
+ "cardType": "eshop",
+ "deliveryMethod": "instant_code",
+ "redemptionGuide": "",
+ "redemptionSteps": [],
+ "validity": "no_expiry",
+ "usedType": "cartridge",
+ "conditionGrade": "like_new",
+ "packaging": "cib",
+ "guaranteeStatus": "tested_30days",
+ "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+ "accountType": "primary",
+ "badge": "وفر 40%",
+ "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+ "price": 11500,
+ "cost": 1250,
+ "stock": 999999,
+ "isInfiniteStock": true,
+ "isHidden": true,
+ "displayOrder": 0,
+ "category": "nintendo-switch-games",
+ "categoryId": "nintendo-switch-games",
+ "categoryEn": "",
+ "categoryKu": "",
+ "options": [
+  {
+   "id": "offline_account",
+   "name": "مشترك",
+   "description": "مشترك",
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_account",
+   "name": "خاص بك",
+   "description": "خاص بك",
+   "stock": 9999,
+   "isInfiniteStock": true
+  }
+ ],
+ "types": [
+  {
+   "id": "offline_base",
+   "name": "مشترك — اللعبة الأساسية",
+   "optionId": "offline_account",
+   "price": 11500,
+   "cost": 1250,
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "offline_extras",
+   "name": "مشترك — مع الإضافات",
+   "optionId": "offline_account",
+   "price": 14000,
+   "cost": 2500,
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_base",
+   "name": "خاص بك — اللعبة الأساسية",
+   "optionId": "online_account",
+   "price": 13500,
+   "cost": 10000,
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_extras",
+   "name": "خاص بك — مع الإضافات",
+   "optionId": "online_account",
+   "price": 16500,
+   "cost": 12250,
+   "stock": 9999,
+   "isInfiniteStock": true
+  }
+ ],
+ "editions": [],
+ "dlcs": [],
+ "isActive": true,
+ "status": "Active",
+ "kind": "account",
+ "trade_value_iqd": 8000,
+ "store_offer_bonus_iqd": 1500,
+ "trade_enabled": true,
+ "trade_value_locked": false,
+ "id": "prd_b3c4ab1e54a144a8",
+ "schema_version": 24,
+ "titleAr": "ذا ويتشر 3: وايلد هانت — النسخة الكاملة",
+ "compatibility": [
+  "Nintendo Switch",
+  "Nintendo Switch 2: original Switch build can run through compatibility; native Remastered release is a separate product"
+ ],
+ "edition": "Complete Edition",
+ "developer": "Saber Interactive / CD PROJEKT RED",
+ "publisher": "CD PROJEKT RED",
+ "seriesName": "The Witcher",
+ "opencriticRating": 85,
+ "userScore": 8.4,
+ "metacriticUrl": "https://www.metacritic.com/game/the-witcher-3-wild-hunt-complete-edition/",
+ "price_usd": 59.99,
+ "officialUrl": "https://www.thewitcher.com/",
+ "eshopUrl": "https://www.nintendo.com/us/search/#q=The%20Witcher%203&p=1&cat=all&sort=df",
+ "gameIsOffline": true,
+ "gameIsOnline": false,
+ "gameLanguageLocked": false,
+ "description_short": "Geralt’s complete open-world dark-fantasy adventure on Nintendo Switch, including Hearts of Stone, Blood and Wine, and the released DLC.",
+ "description_ar": "النسخة الكاملة من The Witcher 3 على Nintendo Switch وتضم اللعبة الأساسية وHearts of Stone وBlood and Wine ومحتوى DLC، مع عالم مفتوح ضخم وقصة تعتمد على الاختيارات.",
+ "box_front_url": "https://images.launchbox-app.com//460f77b6-6b0d-4bce-9d9d-c7e9932dba44.jpg",
+ "galleryImages": [
+  {
+   "url": "/api/files/products/prd_b3c4ab1e54a144a8/gallery-1-5172638f7ce00872.webp",
+   "alt": "The Witcher 3: Wild Hunt — Complete Edition screenshot 1"
+  },
+  {
+   "url": "/api/files/products/prd_b3c4ab1e54a144a8/gallery-2-63829b85dc573df9.webp",
+   "alt": "The Witcher 3: Wild Hunt — Complete Edition screenshot 2"
+  },
+  {
+   "url": "/api/files/products/prd_b3c4ab1e54a144a8/gallery-3-f4ada94b307795d5.webp",
+   "alt": "The Witcher 3: Wild Hunt — Complete Edition screenshot 3"
+  },
+  {
+   "url": "/api/files/products/prd_b3c4ab1e54a144a8/gallery-4-5c1294ed8f1c4fda.webp",
+   "alt": "The Witcher 3: Wild Hunt — Complete Edition screenshot 4"
+  },
+  {
+   "url": "/api/files/products/prd_b3c4ab1e54a144a8/gallery-5-f635a0cece6e33b3.webp",
+   "alt": "The Witcher 3: Wild Hunt — Complete Edition screenshot 5"
+  },
+  {
+   "url": "/api/files/products/prd_b3c4ab1e54a144a8/gallery-6-0cc73378eda53913.webp",
+   "alt": "The Witcher 3: Wild Hunt — Complete Edition screenshot 6"
+  }
+ ],
+ "languagesText": [
+  "English / French / German / Italian / Spanish",
+  "Polish / Russian / Brazilian Portuguese",
+  "Japanese / Korean / Chinese options by regional build"
+ ],
+ "languagesAudio": [
+  "English and selected full voice languages by regional installation",
+  "Music and voiced dialogue",
+  "Regional language pack availability can vary"
+ ],
+ "tvMode": true,
+ "tabletopMode": true,
+ "handheldMode": true,
+ "nintendoPlayModes": "TV mode / Tabletop mode / Handheld mode",
+ "nintendoOnlineRequired": false,
+ "nintendoCloudSaves": true,
+ "nintendoGameKeyCard": false,
+ "nintendoPhysicalNeedsDownload": false,
+ "switch2Enhanced": false,
+ "switch2Exclusive": false,
+ "nintendoNotes": "This file is for the 2019 Nintendo Switch Complete Edition. A newly announced native Nintendo Switch 2 Remastered version is kept as a separate product file. The Complete Edition contains the base game and the two major expansions.",
+ "editionsList": [
+  {
+   "name": "Regular / Offline",
+   "coverUrl": "https://images.launchbox-app.com//460f77b6-6b0d-4bce-9d9d-c7e9932dba44.jpg",
+   "contents": [
+    {
+     "label": "Complete Edition base package"
+    },
+    {
+     "label": "Offline account tier"
+    },
+    {
+     "label": "All core game content"
+    }
+   ]
+  },
+  {
+   "name": "Bonus Edition / Offline",
+   "coverUrl": "https://images.launchbox-app.com//460f77b6-6b0d-4bce-9d9d-c7e9932dba44.jpg",
+   "contents": [
+    {
+     "label": "Complete Edition package"
+    },
+    {
+     "label": "Supplier Bonus tier"
+    },
+    {
+     "label": "Offline account access"
+    }
+   ]
+  },
+  {
+   "name": "Standard / Online",
+   "coverUrl": "https://images.launchbox-app.com//460f77b6-6b0d-4bce-9d9d-c7e9932dba44.jpg",
+   "contents": [
+    {
+     "label": "Complete Edition package"
+    },
+    {
+     "label": "Online account access"
+    },
+    {
+     "label": "All core game content"
+    }
+   ]
+  },
+  {
+   "name": "Deluxe Edition / Online",
+   "coverUrl": "https://images.launchbox-app.com//460f77b6-6b0d-4bce-9d9d-c7e9932dba44.jpg",
+   "contents": [
+    {
+     "label": "Complete Edition package"
+    },
+    {
+     "label": "Supplier Deluxe tier"
+    },
+    {
+     "label": "Online account access"
+    }
+   ]
+  }
+ ],
+ "gameplayPillars": [
+  {
+   "title": "Open-world monster hunting",
+   "description": "Geralt travels between large regions, tracks monsters, prepares oils and potions, and takes contracts.",
+   "imageUrl": "https://images.launchbox-app.com//f64cbe3a-4863-4841-b85e-dd070f7641a8.jpg"
+  },
+  {
+   "title": "Choice-driven quests",
+   "description": "Main and side stories frequently react to dialogue choices and decisions with lasting consequences.",
+   "imageUrl": "https://images.launchbox-app.com//b24b4879-113e-4eb2-8fdf-954fd7746a80.jpg"
+  },
+  {
+   "title": "Real-time Witcher combat",
+   "description": "Swordplay, dodges, Signs, bombs, crossbows, and alchemy combine into a flexible combat system.",
+   "imageUrl": "https://images.launchbox-app.com//415d2cab-1eb1-40e5-9f81-c85fac1512a1.jpg"
+  },
+  {
+   "title": "Deep RPG progression",
+   "description": "Skill trees, gear sets, crafting, mutagens, and character builds support different play styles.",
+   "imageUrl": "https://images.launchbox-app.com//3e559872-c878-4e5b-832b-5f0777fa3355.jpg"
+  },
+  {
+   "title": "Huge expansion content",
+   "description": "Hearts of Stone and Blood and Wine add substantial story regions, characters, bosses, and endgame content.",
+   "imageUrl": "https://images.launchbox-app.com//b468458f-f075-4720-8ebd-1e017df627cb.jpg"
+  }
+ ],
+ "worldSummary": "The Northern Kingdoms span war-torn villages, cities, islands, forests, swamps, mountains, and the colorful duchy of Toussaint, with dense side quests and environmental storytelling.",
+ "storyChapters": [
+  {
+   "title": "Search for Ciri",
+   "body": "Geralt follows clues across the Continent while the Wild Hunt pursues his adopted daughter.",
+   "imageUrl": "https://images.launchbox-app.com//b24b4879-113e-4eb2-8fdf-954fd7746a80.jpg"
+  },
+  {
+   "title": "Navigate political conflict",
+   "body": "The search intersects with rulers, mages, criminals, soldiers, and ordinary people caught in war.",
+   "imageUrl": "https://images.launchbox-app.com//415d2cab-1eb1-40e5-9f81-c85fac1512a1.jpg"
+  },
+  {
+   "title": "Confront the Wild Hunt",
+   "body": "The central story escalates toward the supernatural riders pursuing Ciri and threatening the people around Geralt.",
+   "imageUrl": "https://images.launchbox-app.com//3e559872-c878-4e5b-832b-5f0777fa3355.jpg"
+  },
+  {
+   "title": "Hearts of Stone",
+   "body": "The first major expansion introduces Olgierd von Everec and the mysterious Gaunter O’Dimm.",
+   "imageUrl": "https://images.launchbox-app.com//b468458f-f075-4720-8ebd-1e017df627cb.jpg"
+  },
+  {
+   "title": "Blood and Wine",
+   "body": "The second major expansion sends Geralt to Toussaint for a large new mystery and a fitting late-game conclusion.",
+   "imageUrl": "https://images.launchbox-app.com//ccd85bcc-ae01-4e5e-9064-24ff8c58aa4c.jpg"
+  }
+ ],
+ "features": [
+  "Base game plus Hearts of Stone and Blood and Wine",
+  "Massive open-world RPG adapted for portable play",
+  "Meaningful quest choices with multiple outcomes",
+  "Cross-save support was added through later Switch updates",
+  "Dozens of hours of high-quality side quests and contracts"
+ ],
+ "perfResolutionDocked": "Dynamic up to ~720p",
+ "perfResolutionHandheld": "Dynamic ~540p",
+ "perfFps": "30",
+ "perfHdr": false,
+ "playTimeMain": 52,
+ "completionMain": 105,
+ "completionExtras": 180,
+ "faq": [
+  {
+   "q": "Does the Switch Complete Edition include both major expansions?",
+   "a": "Yes. The Complete Edition includes Hearts of Stone and Blood and Wine along with the base game and released DLC."
+  },
+  {
+   "q": "Is this the new Switch 2 Remastered version?",
+   "a": "No. This file is for the original Nintendo Switch Complete Edition. The 2026 native Switch 2 Remastered release is separate."
+  },
+  {
+   "q": "Can save data be moved to other platforms?",
+   "a": "Later updates added cross-save support with supported PC ecosystems."
+  },
+  {
+   "q": "Is the game multiplayer?",
+   "a": "No. The Witcher 3 is a single-player RPG."
+  },
+  {
+   "q": "How compromised is the Switch version?",
+   "a": "It uses reduced resolution and visual settings relative to more powerful platforms, but preserves the complete gameplay and story package."
+  }
+ ],
+ "verdictScore": 9,
+ "verdictPros": [
+  "Extraordinary story and quest writing",
+  "Complete package includes two excellent expansions",
+  "Huge world with memorable locations",
+  "Portable version preserves an enormous RPG",
+  "Excellent value in terms of content length"
+ ],
+ "verdictCons": [
+  "Visual quality is reduced on original Switch",
+  "30 fps target can dip in demanding areas",
+  "Small text/UI may need adjustment in handheld play",
+  "Combat is less precise than the strongest dedicated action games",
+  "Large install size for Switch storage"
+ ],
+ "reviews": [
+  {
+   "source": "LaunchBox",
+   "score": "Nintendo Switch release data",
+   "url": "https://gamesdb.launchbox-app.com/games/details/124619-the-witcher-iii-wild-hunt-complete-edition"
+  },
+  {
+   "source": "Metacritic",
+   "score": "Complete Edition reviews",
+   "url": "https://www.metacritic.com/game/the-witcher-3-wild-hunt-complete-edition/"
+  },
+  {
+   "source": "CD PROJEKT RED",
+   "score": "Official Witcher site",
+   "url": "https://www.thewitcher.com/"
+  }
+ ],
+ "timeline": [
+  {
+   "date": "2015-05-19",
+   "title": "Original The Witcher 3 released"
+  },
+  {
+   "date": "2016-05-31",
+   "title": "Blood and Wine expansion released"
+  },
+  {
+   "date": "2019-10-15",
+   "title": "Nintendo Switch Complete Edition released"
+  },
+  {
+   "date": "2020-02-18",
+   "title": "Switch update added cross-save and graphics options"
+  },
+  {
+   "date": "2026-08-25",
+   "title": "CD PROJEKT RED announced Remastered for Switch 2"
+  }
+ ],
+ "patchNotes": [
+  {
+   "version": "Nintendo Switch Complete Edition launch",
+   "date": "2019-10-15"
+  },
+  {
+   "version": "Update 3.6 cross-save / graphics options",
+   "date": "2020-02-18"
+  },
+  {
+   "version": "Current Switch build",
+   "date": "2026-08-27"
+  }
+ ],
+ "studioName": "Saber Interactive / CD PROJEKT RED",
+ "studioUrl": "https://www.thewitcher.com/",
+ "studioLocation": "Japan",
+ "sources": [
+  {
+   "name": "LaunchBox Nintendo Switch entry",
+   "url": "https://gamesdb.launchbox-app.com/games/details/124619-the-witcher-iii-wild-hunt-complete-edition"
+  },
+  {
+   "name": "CD PROJEKT RED Remastered announcement",
+   "url": "https://press.cdprojektred.com/en/news/1839/the-witcher-3-wild-hunt-remastered-announced-songs-of-the-past-gets-first-look"
+  },
+  {
+   "name": "Official Witcher site",
+   "url": "https://www.thewitcher.com/"
+  }
+ ],
+ "downloadSizeGb": 31.5,
+ "requiredSpaceGb": 31.5,
+ "microSdRecommended": true,
+ "storageNotes": "The physical Complete Edition originally shipped with the full game content on cartridge in key regions, while digital installation size and update storage can vary by region and patch.",
+ "mpLocalPlayers": false,
+ "mpOnlinePlayers": false,
+ "mpCoop": false,
+ "mpCompetitive": false,
+ "mpLocalWireless": false,
+ "mpSplitScreen": false,
+ "seriesEntries": [
+  "The Witcher 3: Wild Hunt — Remastered",
+  "The Elder Scrolls V: Skyrim",
+  "Kingdom Come: Deliverance"
+ ],
+ "dlc": [
+  {
+   "name": "Hearts of Stone",
+   "description": "Major story expansion featuring Olgierd von Everec and Gaunter O’Dimm. Included in Complete Edition."
+  },
+  {
+   "name": "Blood and Wine",
+   "description": "Large expansion set in Toussaint with a new region and late-game story. Included in Complete Edition."
+  }
+ ],
+ "devicePerformance": [
+  {
+   "device": "Nintendo Switch",
+   "deviceSlug": "nintendo-switch",
+   "deviceModel": "Nintendo Switch",
+   "hardwareId": "nintendo-switch",
+   "informationStatus": "Available / sourced",
+   "handheld": {
+    "supported": true,
+    "resolution": "Dynamic ~540p",
+    "resolutionDynamic": true,
+    "renderingResolution": "Dynamic ~540p",
+    "outputResolution": "Dynamic ~540p",
+    "fps": "30",
+    "fpsMin": "20",
+    "fpsMax": "30",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "Handheld",
+    "notes": "The original Switch port targets 30 fps and uses dynamic resolution, commonly around 540p handheld and up to roughly 720p docked depending on scene."
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "Dynamic up to ~720p",
+    "resolutionDynamic": true,
+    "renderingResolution": "Dynamic up to ~720p",
+    "outputResolution": "Dynamic up to ~720p",
+    "fps": "30",
+    "fpsMin": "20",
+    "fpsMax": "30",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "TV / Docked",
+    "notes": "The original Switch port targets 30 fps and uses dynamic resolution, commonly around 540p handheld and up to roughly 720p docked depending on scene."
+   },
+   "modes": [
+    {
+     "name": "Primary documented / observed profile",
+     "handheldResolution": "Dynamic ~540p",
+     "handheldFps": "30",
+     "tvResolution": "Dynamic up to ~720p",
+     "tvFps": "30",
+     "hdr": false,
+     "vrr": false,
+     "notes": "The original Switch port targets 30 fps and uses dynamic resolution, commonly around 540p handheld and up to roughly 720p docked depending on scene."
+    }
+   ],
+   "upscaling": "Game / system scaling where applicable",
+   "rayTracing": false,
+   "rayTracingMode": "Not Supported",
+   "loadingTime": "Scene-dependent; no universal value",
+   "loadingNotes": "Loading varies by scene, storage state, patch level, and platform.",
+   "gameVersion": "Current retail build",
+   "patchVersion": "Current available update",
+   "testedDate": "2026-08-27",
+   "sourceName": "Nintendo official product page + established release performance profile",
+   "sourceUrl": "https://gamesdb.launchbox-app.com/games/details/124619-the-witcher-iii-wild-hunt-complete-edition",
+   "verifiedAt": "2026-08-27",
+   "verificationStatus": "Sourced / compatibility profile",
+   "performanceNotes": "The original Switch port targets 30 fps and uses dynamic resolution, commonly around 540p handheld and up to roughly 720p docked depending on scene."
+  },
+  {
+   "device": "Nintendo Switch 2",
+   "deviceSlug": "nintendo-switch-2",
+   "deviceModel": "Nintendo Switch 2",
+   "hardwareId": "nintendo-switch-2",
+   "informationStatus": "Available / sourced",
+   "handheld": {
+    "supported": true,
+    "resolution": "Dynamic ~540p",
+    "resolutionDynamic": false,
+    "renderingResolution": "Dynamic ~540p",
+    "outputResolution": "Dynamic ~540p",
+    "fps": "30",
+    "fpsMin": "30",
+    "fpsMax": "30",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "Handheld / Backward Compatibility",
+    "notes": "Original Switch build running through backward compatibility. A native Remastered Switch 2 release is tracked separately."
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "Dynamic up to ~720p",
+    "resolutionDynamic": false,
+    "renderingResolution": "Dynamic up to ~720p",
+    "outputResolution": "Dynamic up to ~720p",
+    "fps": "30",
+    "fpsMin": "30",
+    "fpsMax": "30",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "TV / Docked / Backward Compatibility",
+    "notes": "Original Switch build running through backward compatibility. A native Remastered Switch 2 release is tracked separately."
+   },
+   "modes": [
+    {
+     "name": "Primary documented / observed profile",
+     "handheldResolution": "Dynamic ~540p",
+     "handheldFps": "30",
+     "tvResolution": "Dynamic up to ~720p",
+     "tvFps": "30",
+     "hdr": false,
+     "vrr": false,
+     "notes": "Original Switch build running through backward compatibility. A native Remastered Switch 2 release is tracked separately."
+    }
+   ],
+   "upscaling": "Game / system scaling where applicable",
+   "rayTracing": false,
+   "rayTracingMode": "Not Supported",
+   "loadingTime": "Scene-dependent; no universal value",
+   "loadingNotes": "Loading varies by scene, storage state, patch level, and platform.",
+   "gameVersion": "Current retail build",
+   "patchVersion": "Current available update",
+   "testedDate": "2026-08-27",
+   "sourceName": "Nintendo Switch 2 compatibility + original game performance profile",
+   "sourceUrl": "https://gamesdb.launchbox-app.com/games/details/124619-the-witcher-iii-wild-hunt-complete-edition",
+   "verifiedAt": "2026-08-27",
+   "verificationStatus": "Sourced / compatibility profile",
+   "performanceNotes": "Original Switch build running through backward compatibility. A native Remastered Switch 2 release is tracked separately."
+  }
+ ],
+ "switch2UpgradePrice": 0,
+ "boxContentsList": [],
+ "image": "https://images.launchbox-app.com//8c70e827-8f88-4591-96ed-ad9838862b0a.jpg",
+ "banner": "https://images.launchbox-app.com//f64cbe3a-4863-4841-b85e-dd070f7641a8.jpg",
+ "schemaId": "",
+ "batchImport": true,
+ "createdAt": "2026-08-28T18:36:52.952Z",
+ "updatedAt": "2026-08-28T18:36:52.952Z"
+}

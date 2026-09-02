@@ -1,0 +1,526 @@
+{
+ "title": "The Legend of Zelda: Skyward Sword HD",
+ "titleEn": "The Legend of Zelda: Skyward Sword HD",
+ "titleKu": "",
+ "slug": "the-legend-of-zelda-skyward-sword-hd-switch",
+ "description": "The Legend of Zelda: Skyward Sword HD remasters the Wii-era adventure that explores the origin of the Master Sword and the earliest known era of Zelda lore. This version sharpens the visuals, adds quality-of-life improvements, and supports both motion controls and button-only controls. Its structure leans more toward classic dungeons, item-based progression, and puzzle-driven exploration than the open-air Zelda entries.",
+ "descriptionEn": "The Legend of Zelda: Skyward Sword HD remasters the Wii-era adventure that explores the origin of the Master Sword and the earliest known era of Zelda lore. This version sharpens the visuals, adds quality-of-life improvements, and supports both motion controls and button-only controls. Its structure leans more toward classic dungeons, item-based progression, and puzzle-driven exploration than the open-air Zelda entries.",
+ "descriptionKu": "",
+ "cartridgeImage": "/api/files/products/prd_5b18e929c72c41e0/front-box-09a43c0c26a229ae.webp",
+ "nintendoCardImage": "/api/files/products/prd_5b18e929c72c41e0/square-card-89eabe1dd6c82485.webp",
+ "coverHiResImage": "/api/files/products/prd_5b18e929c72c41e0/3d-wrap-6cc8b01b5f871167.webp",
+ "coverImage": "/api/files/products/prd_5b18e929c72c41e0/cover-a24b5efdc1993d85.webp",
+ "bannerImages": [
+  ""
+ ],
+ "gallery": [],
+ "youtubeTrailer": "",
+ "releaseDate": "2021-07-16",
+ "ageRating": "ESRB E10+ / PEGI 12",
+ "metacriticRating": 81,
+ "genres": [
+  "Action",
+  "Adventure",
+  "Puzzle"
+ ],
+ "platform": "switch1",
+ "size": 7.1,
+ "numberOfPlayers": "Single system (1)",
+ "supportedLanguages": "Japanese / British English / French / German / Italian / Spanish / Korean / Dutch / Simplified Chinese / Latin American Spanish / Canadian French / Traditional Chinese / American English",
+ "hardwareModel": "",
+ "colorEdition": "",
+ "storageCapacity": "",
+ "screenSpecs": "",
+ "batteryLife": "",
+ "boxContents": [],
+ "boxContentsText": "",
+ "warrantyCondition": "",
+ "connectivity": "",
+ "characterName": "Link",
+ "amiiboSeries": "The Legend of Zelda",
+ "figureType": "figure",
+ "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+ "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+ "boxCondition": "mib",
+ "releaseWave": "Wave 2 (Restock)",
+ "rarity": "standard",
+ "accessoryType": "حقيبة حماية وتنقل Carry Case",
+ "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+ "brand": "Nintendo Official",
+ "material": "Hard EVA Shockproof Shell",
+ "availableColors": "Black, Neon Red/Blue, White",
+ "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+ "cardValue": "$20 eShop Balance",
+ "region": "Global",
+ "cardType": "eshop",
+ "deliveryMethod": "instant_code",
+ "redemptionGuide": "",
+ "redemptionSteps": [],
+ "validity": "no_expiry",
+ "usedType": "cartridge",
+ "conditionGrade": "like_new",
+ "packaging": "cib",
+ "guaranteeStatus": "tested_30days",
+ "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+ "accountType": "primary",
+ "badge": "وفر 40%",
+ "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+ "price": 11500,
+ "cost": 1250,
+ "stock": 999999,
+ "isInfiniteStock": true,
+ "isHidden": true,
+ "displayOrder": 0,
+ "category": "nintendo-switch-games",
+ "categoryId": "nintendo-switch-games",
+ "categoryEn": "",
+ "categoryKu": "",
+ "options": [
+  {
+   "id": "offline_account",
+   "name": "مشترك",
+   "description": "مشترك",
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_account",
+   "name": "خاص بك",
+   "description": "خاص بك",
+   "stock": 9999,
+   "isInfiniteStock": true
+  }
+ ],
+ "types": [
+  {
+   "id": "offline_base",
+   "name": "مشترك — اللعبة الأساسية",
+   "optionId": "offline_account",
+   "price": 11500,
+   "cost": 1250,
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_base",
+   "name": "خاص بك — اللعبة الأساسية",
+   "optionId": "online_account",
+   "price": 10500,
+   "cost": 7750,
+   "stock": 9999,
+   "isInfiniteStock": true
+  }
+ ],
+ "editions": [],
+ "dlcs": [],
+ "isActive": true,
+ "status": "Active",
+ "kind": "account",
+ "trade_value_iqd": 9000,
+ "store_offer_bonus_iqd": 1500,
+ "trade_enabled": true,
+ "trade_value_locked": false,
+ "id": "prd_5b18e929c72c41e0",
+ "schema_version": 24,
+ "titleAr": "أسطورة زيلدا: سكايوورد سورد إتش دي",
+ "compatibility": [
+  "Nintendo Switch",
+  "Nintendo Switch 2 compatibility: Supported – game behavior is consistent with Nintendo Switch"
+ ],
+ "edition": "HD",
+ "developer": "Nintendo",
+ "publisher": "Nintendo",
+ "seriesName": "The Legend of Zelda",
+ "metacriticUrl": "https://www.metacritic.com/game/the-legend-of-zelda-skyward-sword-hd/",
+ "opencriticRating": 82,
+ "userScore": 7.7,
+ "price_usd": 59.99,
+ "officialUrl": "https://www.nintendo.com/us/store/products/the-legend-of-zelda-skyward-sword-hd-switch/",
+ "eshopUrl": "https://www.nintendo.com/us/store/products/the-legend-of-zelda-skyward-sword-hd-switch/",
+ "gameIsOffline": true,
+ "gameIsOnline": false,
+ "gameLanguageLocked": false,
+ "description_short": "Return to the earliest story in the Zelda timeline in a motion-control-focused adventure refined for Nintendo Switch.",
+ "description_ar": "نسخة محسنة من اللعبة التي تروي البدايات الزمنية لسلسلة زيلدا وأصل Master Sword، مع تحسينات جودة الحياة ودعم التحكم الحركي أو الأزرار على نينتندو سويتش.",
+ "languagesText": [
+  "Japanese / English",
+  "French / German / Italian / Spanish / Dutch",
+  "Korean / Simplified Chinese / Traditional Chinese"
+ ],
+ "languagesAudio": [
+  "Music / sound effects",
+  "Character vocalizations where applicable",
+  "No full language-selectable dub beyond the shipped release build information"
+ ],
+ "tvMode": true,
+ "tabletopMode": false,
+ "handheldMode": true,
+ "nintendoPlayModes": "TV / Handheld",
+ "nintendoOnlineRequired": false,
+ "nintendoCloudSaves": true,
+ "nintendoGameKeyCard": false,
+ "nintendoPhysicalNeedsDownload": false,
+ "switch2Enhanced": false,
+ "switch2Exclusive": false,
+ "nintendoNotes": "Nintendo highlights support for both motion controls and newly added button-only controls, making this HD version more flexible than the original Wii release.",
+ "editionsList": [
+  {
+   "name": "Offline Regular",
+   "contents": [
+    {
+     "label": "Base game"
+    },
+    {
+     "label": "Offline account package"
+    },
+    {
+     "label": "Button-only and motion-control support"
+    }
+   ]
+  },
+  {
+   "name": "Online Standard",
+   "contents": [
+    {
+     "label": "Base game"
+    },
+    {
+     "label": "Online account package"
+    },
+    {
+     "label": "HD remaster of the Wii title"
+    }
+   ]
+  }
+ ],
+ "gameplayPillars": [
+  {
+   "title": "Classic dungeon progression",
+   "description": "Skyward Sword HD places strong emphasis on directed progression through themed dungeons and item-based exploration."
+  },
+  {
+   "title": "Swordplay and motion controls",
+   "description": "The combat system was originally built around directional sword attacks and still supports motion-driven play on Switch."
+  },
+  {
+   "title": "Button-only alternative controls",
+   "description": "Nintendo added a non-motion control scheme that makes the game more comfortable for portable and traditional controller play."
+  },
+  {
+   "title": "Origin story of the Master Sword",
+   "description": "The narrative explores the beginnings of iconic Zelda lore and the relationship between Link, Zelda, and Fi."
+  },
+  {
+   "title": "Puzzle-focused structure",
+   "description": "Environmental riddles, dungeon mechanisms, and item usage are central to the game's identity."
+  }
+ ],
+ "worldSummary": "Unlike the open-air Zelda entries, Skyward Sword HD emphasizes a more traditional adventure structure built around the sky hub, surface regions, dungeons, and story-driven progression.",
+ "storyChapters": [
+  {
+   "title": "Life above the clouds",
+   "body": "Link begins his journey on Skyloft, a floating settlement in the sky where everyday life seems peaceful."
+  },
+  {
+   "title": "Descend to the surface",
+   "body": "After Zelda is swept below, Link must travel to the dangerous world beneath the clouds to begin the rescue mission."
+  },
+  {
+   "title": "Forge the Master Sword",
+   "body": "The quest becomes a foundational Zelda tale as Link strengthens the Goddess Sword and advances toward its legendary form."
+  },
+  {
+   "title": "Confront ancient evil",
+   "body": "Classic Zelda dungeons and bosses gradually push the story toward the source of the kingdom's danger."
+  },
+  {
+   "title": "Resolve the origin-era conflict",
+   "body": "The ending ties together the series' oldest mythology and the emotional stakes around Link and Zelda."
+  }
+ ],
+ "features": [
+  "Traditional Zelda dungeon and item structure",
+  "Supports motion controls and button-only controls",
+  "Improved visuals and quality-of-life upgrades",
+  "Important lore about the origin of the Master Sword",
+  "Good fit for players who prefer classic Zelda design"
+ ],
+ "perfResolutionDocked": "1080p",
+ "perfResolutionHandheld": "720p",
+ "perfFps": "60",
+ "perfHdr": false,
+ "playTimeMain": 38,
+ "completionMain": 45,
+ "completionExtras": 50,
+ "faq": [
+  {
+   "q": "Does Skyward Sword HD support button-only controls?",
+   "a": "Yes. The HD release added a full button-control option in addition to the motion-control scheme."
+  },
+  {
+   "q": "Is multiplayer supported?",
+   "a": "No. Skyward Sword HD is a single-player adventure."
+  },
+  {
+   "q": "Is it related to Breath of the Wild in gameplay style?",
+   "a": "Not directly. Skyward Sword HD is much more structured and dungeon-driven than Nintendo's open-air Zelda titles."
+  },
+  {
+   "q": "Why is this game important to Zelda lore?",
+   "a": "It tells an origin-era story about the Master Sword and major themes that echo throughout the series."
+  },
+  {
+   "q": "Does it run well on Switch?",
+   "a": "Yes. The HD release targets 60 fps and is widely regarded as technically smoother than the original Wii version."
+  }
+ ],
+ "verdictScore": 8.3,
+ "verdictPros": [
+  "Strong classic Zelda dungeon design",
+  "60 fps presentation feels smooth",
+  "Button-only controls improve accessibility",
+  "Important lore and memorable boss encounters",
+  "Good remaster of a previously divisive game"
+ ],
+ "verdictCons": [
+  "Backtracking can feel repetitive",
+  "Motion controls remain imperfect for some players",
+  "Less freedom than modern open-world Zelda games",
+  "Early pacing is slower than some later entries",
+  "World structure is more segmented than expansive"
+ ],
+ "reviews": [
+  {
+   "source": "Metacritic",
+   "score": "81",
+   "url": "https://www.metacritic.com/game/the-legend-of-zelda-skyward-sword-hd/"
+  },
+  {
+   "source": "OpenCritic",
+   "score": "82",
+   "url": "https://opencritic.com/game/11637/the-legend-of-zelda-skyward-sword-hd"
+  },
+  {
+   "source": "IGN",
+   "score": "8/10",
+   "url": "https://www.ign.com/games/the-legend-of-zelda-skyward-sword-hd"
+  }
+ ],
+ "timeline": [
+  {
+   "date": "2011-11-20",
+   "title": "Original Wii release launched"
+  },
+  {
+   "date": "2021-07-16",
+   "title": "Skyward Sword HD released on Nintendo Switch"
+  },
+  {
+   "date": "2025-06-05",
+   "title": "Backward compatible on Nintendo Switch 2 ecosystem"
+  }
+ ],
+ "patchNotes": [
+  {
+   "version": "Nintendo Switch HD remaster launch version",
+   "date": "2021-07-16"
+  },
+  {
+   "version": "Current retail build",
+   "date": "2026-08-27"
+  }
+ ],
+ "studioName": "Nintendo",
+ "studioUrl": "https://www.nintendo.com/us/store/products/the-legend-of-zelda-skyward-sword-hd-switch/",
+ "studioLocation": "Japan",
+ "sources": [
+  {
+   "name": "Nintendo official product page",
+   "url": "https://www.nintendo.com/us/store/products/the-legend-of-zelda-skyward-sword-hd-switch/"
+  },
+  {
+   "name": "Metacritic",
+   "url": "https://www.metacritic.com/game/the-legend-of-zelda-skyward-sword-hd/"
+  },
+  {
+   "name": "OpenCritic",
+   "url": "https://opencritic.com/game/11637/the-legend-of-zelda-skyward-sword-hd"
+  }
+ ],
+ "downloadSizeGb": 7.1,
+ "requiredSpaceGb": 7.1,
+ "microSdRecommended": false,
+ "storageNotes": "Nintendo lists Skyward Sword HD at approximately 7.1 GB.",
+ "mpLocalPlayers": false,
+ "mpOnlinePlayers": false,
+ "mpCoop": false,
+ "mpCompetitive": false,
+ "mpLocalWireless": false,
+ "mpSplitScreen": false,
+ "seriesEntries": [
+  "The Legend of Zelda: Link's Awakening",
+  "The Legend of Zelda: Breath of the Wild",
+  "The Legend of Zelda: Echoes of Wisdom"
+ ],
+ "dlc": [
+  {
+   "name": "No standalone DLC has been announced",
+   "description": "Skyward Sword HD does not have a separate expansion pass or standalone DLC package."
+  }
+ ],
+ "devicePerformance": [
+  {
+   "device": "Nintendo Switch",
+   "deviceSlug": "nintendo-switch",
+   "deviceModel": "Nintendo Switch",
+   "hardwareId": "nintendo-switch",
+   "informationStatus": "Available / verified",
+   "handheld": {
+    "supported": true,
+    "resolution": "720p",
+    "resolutionDynamic": false,
+    "renderingResolution": "1280x720",
+    "outputResolution": "1280x720",
+    "fps": "60",
+    "fpsMin": "60",
+    "fpsMax": "60",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "Handheld",
+    "notes": "Skyward Sword HD targets a stable 60 fps presentation at 720p handheld and 1080p docked, reflecting its HD remaster positioning on Nintendo Switch."
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "1080p",
+    "resolutionDynamic": false,
+    "renderingResolution": "1920x1080",
+    "outputResolution": "1920x1080",
+    "fps": "60",
+    "fpsMin": "60",
+    "fpsMax": "60",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "TV / Docked",
+    "notes": "Skyward Sword HD targets a stable 60 fps presentation at 720p handheld and 1080p docked, reflecting its HD remaster positioning on Nintendo Switch."
+   },
+   "modes": [
+    {
+     "name": "Primary documented mode",
+     "handheldResolution": "720p",
+     "handheldFps": "60",
+     "tvResolution": "1080p",
+     "tvFps": "60",
+     "hdr": false,
+     "vrr": false,
+     "notes": "Skyward Sword HD targets a stable 60 fps presentation at 720p handheld and 1080p docked, reflecting its HD remaster positioning on Nintendo Switch."
+    }
+   ],
+   "upscaling": "Game / system-specific scaling where applicable",
+   "rayTracing": false,
+   "rayTracingMode": "Not Supported",
+   "loadingTime": "Scene-dependent; no single universal loading time",
+   "loadingNotes": "Loading time varies by scene, save progress, storage state, and whether the software is running in its standard build or an enhanced edition.",
+   "gameVersion": "Current retail build",
+   "patchVersion": "Current available update",
+   "testedDate": "2026-08-27",
+   "sourceName": "Nintendo official product page",
+   "sourceUrl": "https://www.nintendo.com/us/store/products/the-legend-of-zelda-skyward-sword-hd-switch/",
+   "performanceNotes": "Skyward Sword HD targets a stable 60 fps presentation at 720p handheld and 1080p docked, reflecting its HD remaster positioning on Nintendo Switch."
+  },
+  {
+   "device": "Nintendo Switch 2",
+   "deviceSlug": "nintendo-switch-2",
+   "deviceModel": "Nintendo Switch 2",
+   "hardwareId": "nintendo-switch-2",
+   "informationStatus": "Available / verified",
+   "handheld": {
+    "supported": true,
+    "resolution": "720p",
+    "resolutionDynamic": false,
+    "renderingResolution": "1280x720",
+    "outputResolution": "1280x720",
+    "fps": "60",
+    "fpsMin": "60",
+    "fpsMax": "60",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "Handheld",
+    "notes": "Nintendo lists the original game as supported on Nintendo Switch 2. This extraction records a compatibility profile consistent with the original release."
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "1080p",
+    "resolutionDynamic": false,
+    "renderingResolution": "1920x1080",
+    "outputResolution": "1920x1080",
+    "fps": "60",
+    "fpsMin": "60",
+    "fpsMax": "60",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "TV / Docked",
+    "notes": "Nintendo lists the original game as supported on Nintendo Switch 2. This extraction records a compatibility profile consistent with the original release."
+   },
+   "modes": [
+    {
+     "name": "Primary documented mode",
+     "handheldResolution": "720p",
+     "handheldFps": "60",
+     "tvResolution": "1080p",
+     "tvFps": "60",
+     "hdr": false,
+     "vrr": false,
+     "notes": "Nintendo lists the original game as supported on Nintendo Switch 2. This extraction records a compatibility profile consistent with the original release."
+    }
+   ],
+   "upscaling": "Game / system-specific scaling where applicable",
+   "rayTracing": false,
+   "rayTracingMode": "Not Supported",
+   "loadingTime": "Scene-dependent; no single universal loading time",
+   "loadingNotes": "Loading time varies by scene, save progress, storage state, and whether the software is running in its standard build or an enhanced edition.",
+   "gameVersion": "Current retail build",
+   "patchVersion": "Current available update",
+   "testedDate": "2026-08-27",
+   "sourceName": "Nintendo official product page / compatibility context",
+   "sourceUrl": "https://www.nintendo.com/us/store/products/the-legend-of-zelda-skyward-sword-hd-switch/",
+   "performanceNotes": "Nintendo lists the original game as supported on Nintendo Switch 2. This extraction records a compatibility profile consistent with the original release."
+  }
+ ],
+ "boxContentsList": [],
+ "image": "",
+ "banner": "",
+ "schemaId": "",
+ "batchImport": true,
+ "galleryImages": [
+  {
+   "url": "/api/files/products/prd_5b18e929c72c41e0/gallery-1-fce08e50198fecc0.webp",
+   "alt": "The Legend of Zelda: Skyward Sword HD screenshot 1"
+  },
+  {
+   "url": "/api/files/products/prd_5b18e929c72c41e0/gallery-2-ca9c53731cad59de.webp",
+   "alt": "The Legend of Zelda: Skyward Sword HD screenshot 2"
+  },
+  {
+   "url": "/api/files/products/prd_5b18e929c72c41e0/gallery-3-c3d3b51ef9aa43cc.webp",
+   "alt": "The Legend of Zelda: Skyward Sword HD screenshot 3"
+  },
+  {
+   "url": "/api/files/products/prd_5b18e929c72c41e0/gallery-4-220a1284ee3b3844.webp",
+   "alt": "The Legend of Zelda: Skyward Sword HD screenshot 4"
+  },
+  {
+   "url": "/api/files/products/prd_5b18e929c72c41e0/gallery-5-e61d93a722e25b46.webp",
+   "alt": "The Legend of Zelda: Skyward Sword HD screenshot 5"
+  },
+  {
+   "url": "/api/files/products/prd_5b18e929c72c41e0/gallery-6-67b9f6ad1053e0ef.webp",
+   "alt": "The Legend of Zelda: Skyward Sword HD screenshot 6"
+  }
+ ],
+ "createdAt": "2026-08-28T18:37:15.404Z",
+ "updatedAt": "2026-08-28T18:37:15.404Z"
+}
