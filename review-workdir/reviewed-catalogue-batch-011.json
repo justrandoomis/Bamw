@@ -1,51 +1,172 @@
 {
  "batch": "011",
- "apply": false,
+ "apply": true,
  "games": [
   {
    "id": "prd_4966d6abd0da4509",
    "slug": "hollow-knight-switch-1",
    "baseHash": "48b84a2db17431254cb6f4498c96916db5d6587f030e7015608f43b3ef50fe43",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "size": 5.2,
+    "downloadSizeGb": 5.2,
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "informationStatus": "available",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p",
+       "fps": "60"
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p",
+       "fps": "60"
+      },
+      "modes": [],
+      "sourceName": "Team Cherry / documented Switch performance",
+      "sourceUrl": "https://www.hollowknight.com/",
+      "verificationStatus": "official"
+     }
+    ]
+   },
+   "clear": [
+    "youtubeTrailer",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "Size string '5.2 GB' becomes a number; non-embeddable store-page trailer removed; the doubled records collapse to one explicit platform record with the documented 60 fps figures. Metacritic 90 verified correct. Box, wrap, square, cover and galleries verified working (hidden product)."
   },
   {
    "id": "prd_b6c32956d9c24d99",
    "slug": "hyrule-warriors-age-of-calamity-switch",
    "baseHash": "682467ff3a65b07034ceb2b8694ff85f9884a43e787c3ccd67cace505db19bef",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "informationStatus": "available",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p-class dynamic",
+       "fps": "30 target (frequent drops documented)"
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "Dynamic, up to 1080p",
+       "fps": "30 target (frequent drops documented)"
+      },
+      "modes": [],
+      "sourceName": "Digital Foundry and launch coverage of Age of Calamity's performance",
+      "sourceUrl": "https://www.nintendolife.com/games/nintendo-switch/hyrule_warriors_age_of_calamity",
+      "verificationStatus": "technical_analysis"
+     }
+    ]
+   },
+   "clear": [
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "The doubled records collapse to one platform record; the flat '30' becomes the honest documented reality — Age of Calamity targets 30 fps with well-documented heavy drops. Metacritic 78 verified correct. Images verified working (hidden product)."
   },
   {
    "id": "prd_14259a3bda924632",
    "slug": "hyrule-warriors-age-of-imprisonment",
    "baseHash": "b82db8e397b3c6167ccff9b6a30e28aef33fdb0693a2b47a99f6d1ae356e0c81",
    "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "clear": [
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "Record verified full and accurate: 2025-11-06 release, 43.5 GB, detailed dynamic-resolution analysis figures, working trailer, complete sections, all images working. Only the ten contamination fields removed."
   },
   {
    "id": "prd_6e169cd5731f4e2b",
    "slug": "hyrule-warriors-definitive-edition-switch",
    "baseHash": "0a7c5345906ada2cebf3431f369c6484b50f75c9630bd0a9cb42e76a0cf64c2d",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "informationStatus": "available",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p",
+       "fps": "60 target (drops in heavy scenes; lower in co-op)"
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p",
+       "fps": "60 target (drops in heavy scenes; lower in co-op)"
+      },
+      "modes": [],
+      "sourceName": "Launch technical coverage of the Definitive Edition",
+      "sourceUrl": "https://www.nintendolife.com/games/nintendo-switch/hyrule_warriors_definitive_edition",
+      "verificationStatus": "technical_analysis"
+     }
+    ]
+   },
+   "clear": [
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "The doubled records collapse to one platform record with target-framing instead of a flat 60 — the Definitive Edition's documented drops in crowded scenes and co-op are stated. Metacritic 76 verified correct. Images verified working (hidden product)."
   },
   {
    "id": "prd_b9ca0595530f4d17",
    "slug": "it-takes-two",
    "baseHash": "d4f26a5feedf4b4505a51ebd3c8d9b2e90df2eeaf34bdbdfdfeb66c1a92ce129",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "dlcSummary": "No DLC exists for It Takes Two; the free Friend's Pass lets a second player join without owning the game."
+   },
+   "clear": [
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "The sole record carried the correct Switch-port figures under a Switch 2 badge — the platform rule re-badges it to Nintendo Switch at apply time with figures preserved. dlcSummary records the verified Friend's Pass model. 2022-11-04, Metacritic 82 verified. All images working. Contamination removed."
   }
  ]
 }
