@@ -1,6 +1,6 @@
 {
  "batch": "017",
- "apply": true,
+ "apply": false,
  "games": [
   {
    "id": "prd_37d91330c3514080",
@@ -228,6 +228,113 @@
     "guaranteeStatus"
    ],
    "notes": "The language field mixed retail-facing prefixes ('Nintendo AU:') and an internal supplier-selection note into customer-facing text — replaced with the clean official language list. Switch-2 badge becomes the platform record with the documented 60 fps figures. dlcSummary records the verified no-DLC situation. 2023-01-19, Metacritic 81 verified. All images working. Contamination removed."
+  }
+ ],
+ "appliedAt": "2026-09-02T03:33:01.140Z",
+ "results": [
+  {
+   "id": "prd_37d91330c3514080",
+   "action": "APPLIED",
+   "changed": [
+    "coverImage",
+    "image",
+    "bannerImages",
+    "dlcSummary"
+   ],
+   "removed": [
+    "nintendoCardImage",
+    "galleryImages",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ]
+  },
+  {
+   "id": "prd_4241c51108d849b2",
+   "action": "APPLIED",
+   "changed": [
+    "devicePerformance"
+   ],
+   "removed": [
+    "box_front_url"
+   ]
+  },
+  {
+   "id": "prd_1ad4955cc45d4ef1",
+   "action": "APPLIED",
+   "changed": [
+    "coverImage",
+    "image",
+    "bannerImages",
+    "galleryImages",
+    "devicePerformance"
+   ],
+   "removed": [
+    "nintendoCardImage",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ]
+  },
+  {
+   "id": "prd_e29d75e0daf94fd6",
+   "action": "APPLIED",
+   "changed": [
+    "coverImage",
+    "image",
+    "bannerImages",
+    "galleryImages",
+    "devicePerformance"
+   ],
+   "removed": [
+    "nintendoCardImage",
+    "youtubeTrailer",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ]
+  },
+  {
+   "id": "prd_d48481255a0f44f8",
+   "action": "APPLIED",
+   "changed": [
+    "supportedLanguages",
+    "dlcSummary",
+    "devicePerformance"
+   ],
+   "removed": [
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ]
   }
  ]
 }

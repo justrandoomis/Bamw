@@ -1,0 +1,525 @@
+{
+ "title": "Paper Mario: The Origami King",
+ "titleEn": "Paper Mario: The Origami King",
+ "titleKu": "Paper Mario: The Origami King",
+ "slug": "paper-mario-the-origami-king-switch-1",
+ "description": "A paper-crafted adventure sends Mario and Olivia across a folded world of streamers, quirky allies, ring-based battles and visual creativity. Explore varied themed regions, rescue Toads, solve environmental puzzles and take on origami enemies and giant bosses as you try to stop King Olly.",
+ "descriptionEn": "A paper-crafted adventure sends Mario and Olivia across a folded world of streamers, quirky allies, ring-based battles and visual creativity. Explore varied themed regions, rescue Toads, solve environmental puzzles and take on origami enemies and giant bosses as you try to stop King Olly.",
+ "descriptionKu": "A paper-crafted adventure sends Mario and Olivia across a folded world of streamers, quirky allies, ring-based battles and visual creativity. Explore varied themed regions, rescue Toads, solve environmental puzzles and take on origami enemies and giant bosses as you try to stop King Olly.",
+ "cartridgeImage": "/api/files/products/prd_1ad4955cc45d4ef1/front-811032eecdd365a0.jpg",
+ "nintendoCardImage": "/api/files/products/prd_1ad4955cc45d4ef1/square-18f2e959032f5dfd.avif",
+ "coverHiResImage": "/api/files/products/prd_1ad4955cc45d4ef1/3d-texture-53746fb34208da81.jpg",
+ "coverImage": "/api/files/products/prd_1ad4955cc45d4ef1/cover-4503b4cd04e04baa.avif",
+ "bannerImages": [
+  "/api/files/products/prd_1ad4955cc45d4ef1/banner-0-79414a3a257e9db7.avif",
+  "/api/files/products/prd_1ad4955cc45d4ef1/banner-1-1ca3e5b5b87b8dde.avif",
+  "/api/files/products/prd_1ad4955cc45d4ef1/banner-2-76beccf456cc2307.avif",
+  "/api/files/products/prd_1ad4955cc45d4ef1/banner-3-6da1d6362473623b.avif"
+ ],
+ "gallery": [],
+ "youtubeTrailer": "https://www.youtube.com/watch?v=FX6DTLcWUdY",
+ "releaseDate": "2020-07-17",
+ "ageRating": "ESRB E / PEGI 7",
+ "metacriticRating": 80,
+ "genres": [
+  "Adventure",
+  "Puzzle",
+  "Action"
+ ],
+ "platform": "switch1",
+ "size": 6.5,
+ "numberOfPlayers": "Single system (1)",
+ "supportedLanguages": "English, Japanese, French, Spanish, German",
+ "hardwareModel": "",
+ "colorEdition": "",
+ "storageCapacity": "",
+ "screenSpecs": "",
+ "batteryLife": "",
+ "boxContents": [],
+ "boxContentsText": "",
+ "warrantyCondition": "",
+ "connectivity": "",
+ "characterName": "Link",
+ "amiiboSeries": "The Legend of Zelda",
+ "figureType": "figure",
+ "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+ "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+ "boxCondition": "mib",
+ "releaseWave": "Wave 2 (Restock)",
+ "rarity": "standard",
+ "accessoryType": "حقيبة حماية وتنقل Carry Case",
+ "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+ "brand": "Nintendo Official",
+ "material": "Hard EVA Shockproof Shell",
+ "availableColors": "Black, Neon Red/Blue, White",
+ "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+ "cardValue": "$20 eShop Balance",
+ "region": "Global",
+ "cardType": "eshop",
+ "deliveryMethod": "instant_code",
+ "redemptionGuide": "",
+ "redemptionSteps": [],
+ "validity": "no_expiry",
+ "usedType": "cartridge",
+ "conditionGrade": "like_new",
+ "packaging": "cib",
+ "guaranteeStatus": "tested_30days",
+ "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+ "accountType": "primary",
+ "badge": "وفر 40%",
+ "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+ "price": 8000,
+ "cost": 1500,
+ "stock": 999999,
+ "isInfiniteStock": true,
+ "isHidden": false,
+ "displayOrder": 0,
+ "category": "nintendo-switch-games",
+ "categoryId": "nintendo-switch-games",
+ "categoryEn": "",
+ "categoryKu": "",
+ "options": [
+  {
+   "id": "offline_account",
+   "name": "Offline Account",
+   "description": "حساب مشترك",
+   "stock": 9999,
+   "isInfiniteStock": true,
+   "customerDescription": "حساب مشترك"
+  },
+  {
+   "id": "online_account",
+   "name": "Online Account",
+   "description": "حساب خاص بك",
+   "stock": 9999,
+   "isInfiniteStock": true,
+   "customerDescription": "حساب خاص بك"
+  }
+ ],
+ "types": [
+  {
+   "id": "standard_offline",
+   "name": "Offline Account",
+   "optionId": "offline_account",
+   "price": 20000,
+   "cost": 1500,
+   "description": ".",
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "standard_online",
+   "name": "Online Account",
+   "optionId": "online_account",
+   "price": 30750,
+   "cost": 20750,
+   "description": "",
+   "stock": 9999,
+   "isInfiniteStock": true
+  }
+ ],
+ "editions": [],
+ "dlcs": [],
+ "isActive": true,
+ "status": "Active",
+ "kind": "account",
+ "trade_value_iqd": 30000,
+ "store_offer_bonus_iqd": 3500,
+ "trade_enabled": true,
+ "trade_value_locked": false,
+ "id": "prd_1ad4955cc45d4ef1",
+ "schema_version": 24,
+ "titleAr": "بيبر ماريو: ذا أوريغامي كينغ",
+ "compatibility": [
+  "Nintendo Switch",
+  "Nintendo Switch 2 compatibility: Supported – game behavior is consistent with Nintendo Switch"
+ ],
+ "edition": "Standard",
+ "developer": "Intelligent Systems",
+ "publisher": "Nintendo",
+ "seriesName": "Paper Mario",
+ "userScore": 8,
+ "price_usd": 59.99,
+ "officialUrl": "https://www.nintendo.com/us/store/products/paper-mario-the-origami-king-switch/",
+ "eshopUrl": "https://www.nintendo.com/us/store/products/paper-mario-the-origami-king-switch/",
+ "galleryImages": [
+  {
+   "alt": "Verified direct image URL 1",
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000029726/2a40327a93dcf9f68a65cdefaeac2f7d6ef2c15b1fd07c1c1b80533a6570f7e8"
+  },
+  {
+   "alt": "Verified direct image URL 2",
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000029726/63e790d041c0db75ec2c5f4a5cadebbf7b99454b671e53842d59c648ddcf2f1c"
+  },
+  {
+   "alt": "Verified direct image URL 3",
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000029726/3d03359a28c83765b444582eb5001748e6790dcae373846b7c99fac13e0931e2"
+  },
+  {
+   "alt": "Verified direct image URL 4",
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000029726/e76b968799ccae115fc0bff9e5b51c8cad851c38eccaa4e1dbf3b171a58de7c7"
+  },
+  {
+   "alt": "Verified direct image URL 5"
+  }
+ ],
+ "gameIsOffline": true,
+ "gameIsOnline": true,
+ "gameLanguageLocked": false,
+ "description_short": "A paper-crafted adventure sends Mario and Olivia across a folded world of streamers, quirky allies, ring-based battles and visual creativity.",
+ "description_ar": "تنطلق مغامرة ورقية مع ماريو وأوليفيا عبر عالم مطوي مليء بالشرائط العملاقة والحلفاء الطريفين والمعارك الدائرية والإبداع البصري. استكشف مناطق متنوعة، وأنقذ Toads، وحل الألغاز البيئية، وواجه أعداء الأوريغامي والزعماء الكبار لإيقاف King Olly.",
+ "box_front_url": "https://images.launchbox-app.com/a89024a5-33ef-400c-939e-d15665b08632.jpg",
+ "box_back_url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000029726/2a40327a93dcf9f68a65cdefaeac2f7d6ef2c15b1fd07c1c1b80533a6570f7e8",
+ "editionsList": [
+  {
+   "name": "Standard Edition",
+   "coverUrl": "https://images.launchbox-app.com/a89024a5-33ef-400c-939e-d15665b08632.jpg",
+   "contents": [
+    {
+     "label": "Base game"
+    },
+    {
+     "label": "Full story adventure"
+    },
+    {
+     "label": "Ring-based battle system"
+    }
+   ]
+  },
+  {
+   "name": "Digital Edition",
+   "coverUrl": "https://assets.nintendo.com/image/upload/ar_1:1,c_fill,g_auto,w_1000/f_auto/q_auto/dpr_1.5/store/software/switch/70010000029726/7f079a1e3927ea4752fb448ea7f2ccbd86933f5483ad9dd6de23ec96ed4df70b",
+   "contents": [
+    {
+     "label": "Nintendo eShop release"
+    },
+    {
+     "label": "6.5 GB download size"
+    },
+    {
+     "label": "Save Data Cloud support"
+    }
+   ]
+  },
+  {
+   "name": "Current Store Package",
+   "coverUrl": "https://assets.nintendo.com/image/upload/ar_16:9,c_fill,g_auto,w_1600/f_auto/q_auto/dpr_1.5/store/software/switch/70010000029726/7f079a1e3927ea4752fb448ea7f2ccbd86933f5483ad9dd6de23ec96ed4df70b",
+   "contents": [
+    {
+     "label": "Offline account option"
+    },
+    {
+     "label": "Online account option"
+    },
+    {
+     "label": "Hidden by default until review"
+    }
+   ]
+  }
+ ],
+ "gameplayPillars": [
+  {
+   "title": "Ring-based battles",
+   "description": "Rearrange circles of enemies to line them up for stronger attacks and more efficient turns.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000029726/2a40327a93dcf9f68a65cdefaeac2f7d6ef2c15b1fd07c1c1b80533a6570f7e8"
+  },
+  {
+   "title": "Paper-crafted exploration",
+   "description": "Travel through visually distinctive areas, rescue hidden Toads and solve environmental interactions using 1,000-Fold Arms.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000029726/63e790d041c0db75ec2c5f4a5cadebbf7b99454b671e53842d59c648ddcf2f1c"
+  },
+  {
+   "title": "Memorable bosses and companions",
+   "description": "Boss battles and traveling companions add variety, humor and structure throughout the adventure.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000029726/3d03359a28c83765b444582eb5001748e6790dcae373846b7c99fac13e0931e2"
+  },
+  {
+   "title": "Ring-based battle puzzles",
+   "description": "Regular battles ask players to rotate and slide ring layers so enemies line up efficiently before attacks, turning combat into a positioning puzzle.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000029726/e76b968799ccae115fc0bff9e5b51c8cad851c38eccaa4e1dbf3b171a58de7c7"
+  },
+  {
+   "title": "Exploration, secrets, and collectibles",
+   "description": "Large themed regions hide Toad rescues, treasure, optional encounters, and environmental puzzles that reward curiosity beyond the main path.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000029726/2a40327a93dcf9f68a65cdefaeac2f7d6ef2c15b1fd07c1c1b80533a6570f7e8"
+  }
+ ],
+ "worldSummary": "King Olly’s origami takeover twists Princess Peach’s kingdom into a folded crisis. Mario and Olivia set out across varied regions to remove giant streamers, rescue allies and stop the transformation of the world into origami.",
+ "storyChapters": [
+  {
+   "title": "The origami threat begins",
+   "body": "Mario and Luigi arrive for a festival only to discover Princess Peach and the kingdom have been transformed by King Olly.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000029726/2a40327a93dcf9f68a65cdefaeac2f7d6ef2c15b1fd07c1c1b80533a6570f7e8"
+  },
+  {
+   "title": "Travel the folded world",
+   "body": "Mario and Olivia journey through forests, deserts, seas and themed regions while removing magical streamers.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000029726/63e790d041c0db75ec2c5f4a5cadebbf7b99454b671e53842d59c648ddcf2f1c"
+  },
+  {
+   "title": "Confront King Olly",
+   "body": "The final stretch unites the game’s humor, emotion and puzzle-combat systems as Mario moves to stop the Origami King.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000029726/3d03359a28c83765b444582eb5001748e6790dcae373846b7c99fac13e0931e2"
+  },
+  {
+   "title": "Unfold the crisis across paper kingdoms",
+   "body": "Mario and Olivia travel through streamers wrapped around Peach's Castle, visiting varied paper-crafted regions to undo King Olly's plans.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000029726/63e790d041c0db75ec2c5f4a5cadebbf7b99454b671e53842d59c648ddcf2f1c"
+  },
+  {
+   "title": "Rescue allies and confront King Olly",
+   "body": "The journey mixes humor, boss battles, puzzle solving, and emotional moments before culminating in the showdown against the folded threat.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000029726/3d03359a28c83765b444582eb5001748e6790dcae373846b7c99fac13e0931e2"
+  }
+ ],
+ "features": [
+  "Ring-based turn battles",
+  "Large paper-crafted world with secrets",
+  "Distinct companions, bosses and environmental puzzles",
+  "Inventive ring battles distinguish it from prior entries",
+  "Large regions reward exploration and collectible hunting",
+  "Memorable boss battles remix the puzzle concept in clever ways"
+ ],
+ "perfResolutionDocked": "Up to 1080p docked",
+ "perfResolutionHandheld": "Up to 720p handheld",
+ "perfFps": "30",
+ "perfHdr": false,
+ "faq": [
+  {
+   "q": "Is it a traditional RPG?",
+   "a": "It mixes action-adventure structure with puzzle-like ring battles rather than focusing on a classic stat-heavy RPG system."
+  },
+  {
+   "q": "How many players can play?",
+   "a": "This is a single-player adventure."
+  },
+  {
+   "q": "What stands out most?",
+   "a": "Its paper-crafted art direction, witty writing and strong world design are the most frequently praised elements."
+  },
+  {
+   "q": "Is The Origami King a turn-based RPG?",
+   "a": "It has turn-based elements, but its regular battle system is heavily puzzle-based. Exploration, boss design, and story presentation are just as important as combat."
+  },
+  {
+   "q": "Does the game have a large world to explore?",
+   "a": "Yes. While it is structured by major regions, each area includes side activities, hidden Toads, collectibles, and optional discoveries that reward exploration."
+  }
+ ],
+ "verdictScore": 8.4,
+ "verdictSummary": "Overall score: 8.4/10. Strengths include Excellent art direction and world variety; Charming humor and character writing; Strong environmental puzzle design. Main drawbacks include Battle system divides opinion; 30 fps presentation.",
+ "verdictPros": [
+  "Excellent art direction and world variety",
+  "Charming humor and character writing",
+  "Strong environmental puzzle design",
+  "Creative art direction gives every region a distinct identity",
+  "Boss encounters are especially memorable"
+ ],
+ "verdictCons": [
+  "Battle system divides opinion",
+  "30 fps presentation",
+  "Progression systems are lighter than classic Paper Mario",
+  "Regular battles may divide players who prefer classic RPG combat",
+  "Some collectible cleanup can become repetitive late in the game"
+ ],
+ "reviews": [
+  {
+   "source": "Nintendo",
+   "score": "Official",
+   "quote": "Nintendo describes an origami-twisted adventure with ring-based battles and a vibrant paper-crafted world.",
+   "url": "https://www.nintendo.com/us/store/products/paper-mario-the-origami-king-switch/"
+  },
+  {
+   "source": "Metacritic",
+   "score": "80/100",
+   "quote": "Critical reaction was generally favorable, especially for presentation and writing.",
+   "url": "https://www.metacritic.com/game/paper-mario-the-origami-king/"
+  },
+  {
+   "source": "Announcement Trailer",
+   "score": "Official Trailer",
+   "quote": "The announcement trailer introduced King Olly, Olivia and the folded world premise.",
+   "url": "https://www.youtube.com/watch?v=FX6DTLcWUdY"
+  }
+ ],
+ "timeline": [
+  {
+   "date": "2020-05-14",
+   "title": "Announcement",
+   "body": "Nintendo revealed Paper Mario: The Origami King with a surprise trailer."
+  },
+  {
+   "date": "2020-07-17",
+   "title": "Worldwide release",
+   "body": "The game launched on Nintendo Switch."
+  },
+  {
+   "date": "2020-07-17",
+   "title": "Launch content complete",
+   "body": "The title shipped as a full single-player adventure without major DLC cadence."
+  }
+ ],
+ "patchNotes": [
+  {
+   "version": "Launch build",
+   "date": "2020-07",
+   "body": "Base game release."
+  },
+  {
+   "version": "Post-launch patches",
+   "date": "2020",
+   "body": "Minor fixes and stability updates."
+  },
+  {
+   "version": "Current build",
+   "date": "2026-08-27",
+   "body": "Stable retail version with supported Nintendo Switch 2 compatibility behavior."
+  }
+ ],
+ "studioName": "Intelligent Systems",
+ "studioUrl": "https://www.nintendo.com/",
+ "studioLocation": "Kyoto, Japan",
+ "studioAbout": "Intelligent Systems is credited as the developer of this Nintendo Switch release. Nintendo is credited as the publisher.",
+ "sources": [
+  {
+   "name": "Nintendo Store",
+   "url": "https://www.nintendo.com/us/store/products/paper-mario-the-origami-king-switch/"
+  },
+  {
+   "name": "Announcement Trailer",
+   "url": "https://www.youtube.com/watch?v=FX6DTLcWUdY"
+  },
+  {
+   "name": "Metacritic",
+   "url": "https://www.metacritic.com/game/paper-mario-the-origami-king/"
+  }
+ ],
+ "devicePerformance": [
+  {
+   "device": "Nintendo Switch 2",
+   "deviceSlug": "nintendo-switch-2",
+   "deviceModel": "Nintendo Switch 2",
+   "hardwareId": "prd_acf4c89908764c62",
+   "informationStatus": "Available / Backward Compatible",
+   "unavailableReason": "No required Handheld or TV mode is marked unsupported.",
+   "handheld": {
+    "supported": true,
+    "resolution": "720p",
+    "resolutionDynamic": false,
+    "renderingResolution": "1280x720",
+    "outputResolution": "1920x1080 system output / backward-compatible rendering profile",
+    "fps": "30",
+    "fpsMin": "30",
+    "fpsMax": "30",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "Handheld / Backward Compatibility",
+    "notes": "Backward-compatible Nintendo Switch version. No native Switch 2 edition is used; the original Switch 720p handheld / 1080p docked presentation and 30 fps cap are retained."
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "1080p",
+    "resolutionDynamic": false,
+    "renderingResolution": "1920x1080",
+    "outputResolution": "1920x1080",
+    "fps": "30",
+    "fpsMin": "30",
+    "fpsMax": "30",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "TV / Docked / Backward Compatibility",
+    "notes": "Backward-compatible Nintendo Switch version. No native Switch 2 edition is used; the original Switch 720p handheld / 1080p docked presentation and 30 fps cap are retained."
+   },
+   "modes": [
+    {
+     "name": "Backward Compatibility",
+     "handheldResolution": "720p",
+     "handheldFps": "30",
+     "tvResolution": "1080p",
+     "tvFps": "30",
+     "hdr": false,
+     "vrr": false,
+     "notes": "Backward-compatible Nintendo Switch version. No native Switch 2 edition is used; the original Switch 720p handheld / 1080p docked presentation and 30 fps cap are retained."
+    }
+   ],
+   "upscaling": "System output scaling only; no native Switch 2 edition assumed",
+   "rayTracing": false,
+   "rayTracingMode": "Not Supported",
+   "loadingTime": "Generally faster system/storage access may occur; exact loading time varies by scene",
+   "loadingNotes": "Backward compatibility can reduce some loading bottlenecks, but no single universal loading-time value is used.",
+   "gameVersion": "Current Nintendo Switch retail build",
+   "patchVersion": "Current available Switch update",
+   "testedDate": "2026-08-27",
+   "sourceName": "Nintendo Switch 2 backward compatibility + established Nintendo Switch performance profile",
+   "sourceUrl": "https://www.nintendo.com/us/gaming-systems/switch-2/",
+   "verifiedAt": "2026-08-27",
+   "verificationStatus": "Verified profile / Backward Compatible",
+   "performanceNotes": "Backward-compatible Nintendo Switch version. No native Switch 2 edition is used; the original Switch 720p handheld / 1080p docked presentation and 30 fps cap are retained."
+  }
+ ],
+ "switch2UpgradePrice": 0,
+ "nintendoEshopUrl": "https://www.nintendo.com/us/store/products/paper-mario-the-origami-king-switch/",
+ "arabicSupport": false,
+ "tagline": "A paper-crafted adventure sends Mario and Olivia across a folded world of streamers, quirky allies, ring-based battles and visual creativity.",
+ "fitFor": [
+  "Players looking for adventure, puzzle gameplay.",
+  "Players who want the game modes supported by the official player-count specification: Single system (1).",
+  "Players who enjoy humor, exploration, and puzzle-flavored battles.",
+  "Fans of colorful Nintendo adventures with strong presentation and character charm."
+ ],
+ "notFitFor": [
+  "Players specifically seeking online multiplayer; this title does not list online multiplayer support.",
+  "Players specifically seeking local multiplayer; this title does not list local multiplayer support.",
+  "Players looking for traditional deep party-building RPG systems.",
+  "Players who strongly dislike combat systems built around spatial puzzles."
+ ],
+ "setupNeeds": [
+  "Nintendo Switch-compatible hardware for this release.",
+  "Internet connection is required for online features."
+ ],
+ "dlc": [
+  {
+   "name": "No standalone DLC announced",
+   "description": "No standalone paid DLC expansion is included in this extraction. Free updates, when applicable, are listed in the Updates section instead."
+  }
+ ],
+ "guides": [
+  {
+   "title": "Official Nintendo game page",
+   "summary": "Official Nintendo reference for game description, supported modes, player counts, languages, file size, and compatibility information.",
+   "url": "https://www.nintendo.com/us/store/products/paper-mario-the-origami-king-switch/"
+  }
+ ],
+ "boxContentsList": "[Circular]",
+ "image": "/api/files/products/prd_1ad4955cc45d4ef1/cover-4503b4cd04e04baa.avif",
+ "banner": "/api/files/products/prd_1ad4955cc45d4ef1/banner-0-79414a3a257e9db7.avif",
+ "schemaId": "",
+ "createdAt": "2026-08-27T16:59:50.086Z",
+ "created_at": "2026-08-27T16:59:50.086Z",
+ "updatedAt": "2026-08-27T16:59:50.086Z",
+ "updated_at": "2026-08-27T16:59:50.086Z",
+ "badgeEn": "وفر 40%",
+ "badgeKu": "وفر 40%",
+ "featuresEn": [
+  "Ring-based turn battles",
+  "Large paper-crafted world with secrets",
+  "Distinct companions, bosses and environmental puzzles",
+  "Inventive ring battles distinguish it from prior entries",
+  "Large regions reward exploration and collectible hunting",
+  "Memorable boss battles remix the puzzle concept in clever ways"
+ ],
+ "featuresKu": [
+  "Ring-based turn battles",
+  "Large paper-crafted world with secrets",
+  "Distinct companions, bosses and environmental puzzles",
+  "Inventive ring battles distinguish it from prior entries",
+  "Large regions reward exploration and collectible hunting",
+  "Memorable boss battles remix the puzzle concept in clever ways"
+ ],
+ "boxFrontUrl": "https://images.launchbox-app.com/a89024a5-33ef-400c-939e-d15665b08632.jpg",
+ "sales": 0,
+ "images": [],
+ "modes": []
+}

@@ -1,0 +1,3396 @@
+{
+ "batch": "018",
+ "generatedAt": "2026-09-02T03:34:01.938Z",
+ "totalGames": 310,
+ "reviewedSoFar": 82,
+ "games": [
+  {
+   "id": "prd_efd67851b0b44837",
+   "slug": "persona-3-reload",
+   "title": "Persona 3 Reload [Switch 2]",
+   "platform": "switch2",
+   "isHidden": false,
+   "hash": "76ee7cd6c0121c76afa12a9d6ca90eb0b4148e6d5052b3aa3fd67b0350518176",
+   "images": [
+    {
+     "role": "front-box",
+     "field": "cartridgeImage",
+     "url": "https://banan.to/api/files/products/prd_efd67851b0b44837/front-91196c927f2947f2.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 27566,
+     "width": 172,
+     "height": 280,
+     "thumb": "review-workdir/thumbs/batch-018/persona-3-reload__front-box-0.png"
+    },
+    {
+     "role": "front-box",
+     "field": "box_front_url",
+     "url": "https://images.launchbox-app.com//89198ab6-ec18-4982-bceb-e3663fa7e3f3.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 27566,
+     "width": 172,
+     "height": 280,
+     "thumb": "review-workdir/thumbs/batch-018/persona-3-reload__front-box-1.png"
+    },
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://banan.to/api/files/products/prd_efd67851b0b44837/square-fbd86d87d803ecef.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 39642,
+     "width": 281,
+     "height": 281,
+     "thumb": "review-workdir/thumbs/batch-018/persona-3-reload__square-card-2.png"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://banan.to/api/files/products/prd_efd67851b0b44837/cover-91196c927f2947f2.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 27566,
+     "width": 172,
+     "height": 280,
+     "thumb": "review-workdir/thumbs/batch-018/persona-3-reload__detail-cover-3.png"
+    },
+    {
+     "role": "listing",
+     "field": "image",
+     "url": "https://banan.to/api/files/products/prd_efd67851b0b44837/cover-91196c927f2947f2.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 27566,
+     "width": 172,
+     "height": 280,
+     "thumb": "review-workdir/thumbs/batch-018/persona-3-reload__listing-4.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[0]",
+     "url": "https://asia.sega.com/p3r/en/switch2/resources/img/top/system-pict-daytime-1_f9f909f9f6d081690a11.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 352812,
+     "width": 960,
+     "height": 611,
+     "thumb": "review-workdir/thumbs/batch-018/persona-3-reload__banner-5.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[1]",
+     "url": "https://asia.sega.com/p3r/en/switch2/resources/img/top/system-pict-daytime-2_7dc0ff47189ef0177bc2.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 360404,
+     "width": 960,
+     "height": 611,
+     "thumb": "review-workdir/thumbs/batch-018/persona-3-reload__banner-6.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[2]",
+     "url": "https://banan.to/api/files/products/prd_efd67851b0b44837/banner-2-2676f1e0089344bd.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 386182,
+     "width": 960,
+     "height": 611,
+     "thumb": "review-workdir/thumbs/batch-018/persona-3-reload__banner-7.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[3]",
+     "url": "https://banan.to/api/files/products/prd_efd67851b0b44837/banner-3-87bc0a9f851fc936.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 349044,
+     "width": 960,
+     "height": 611,
+     "thumb": "review-workdir/thumbs/batch-018/persona-3-reload__banner-8.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://asia.sega.com/p3r/en/switch2/resources/img/top/dlc-episode-aegis-pict2_6926e555e02e46cfb979.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 95940,
+     "width": 440,
+     "height": 187,
+     "thumb": "review-workdir/thumbs/batch-018/persona-3-reload__gallery-9.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[1]",
+     "url": "https://asia.sega.com/p3r/en/switch2/resources/img/top/dlc-costume-pict1_7e7a838eec50eb4f9dd0.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 145844,
+     "width": 396,
+     "height": 457,
+     "thumb": "review-workdir/thumbs/batch-018/persona-3-reload__gallery-10.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[2]",
+     "url": "https://asia.sega.com/p3r/en/switch2/resources/img/top/dlc-costume-pict4_8f59752e8a910c59d87f.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 149794,
+     "width": 396,
+     "height": 457,
+     "thumb": "review-workdir/thumbs/batch-018/persona-3-reload__gallery-11.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[3]",
+     "url": "https://asia.sega.com/p3r/en/switch2/resources/img/top/dlc-costume-pict7_2645ef0a8b4da60cbf9f.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 147876,
+     "width": 396,
+     "height": 457,
+     "thumb": "review-workdir/thumbs/batch-018/persona-3-reload__gallery-12.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[4]",
+     "url": "https://gamesdb-images.launchbox.gg/r2_dcb56315-0960-4ac6-80a3-5806815ae25a.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 77684,
+     "width": 400,
+     "height": 225,
+     "thumb": "review-workdir/thumbs/batch-018/persona-3-reload__gallery-13.png"
+    }
+   ],
+   "record": {
+    "title": "Persona 3 Reload [Switch 2]",
+    "titleEn": "Persona 3 Reload [Switch 2]",
+    "titleKu": "Persona 3 Reload",
+    "slug": "persona-3-reload",
+    "description": "Live through a school year in Port Island, build bonds and social stats by day, then explore Tartarus and fight Shadows during the Dark Hour. Persona 3 Reload modernizes the original with rebuilt visuals, interface, battle systems, extra scenes, and additional voice work.",
+    "descriptionEn": "Live through a school year in Port Island, build bonds and social stats by day, then explore Tartarus and fight Shadows during the Dark Hour. Persona 3 Reload modernizes the original with rebuilt visuals, interface, battle systems, extra scenes, and additional voice work.",
+    "descriptionKu": "Live through a school year in Port Island, build bonds and social stats by day, then explore Tartarus and fight Shadows during the Dark Hour. Persona 3 Reload modernizes the original with rebuilt visuals, interface, battle systems, extra scenes, and additional voice work.",
+    "cartridgeImage": "/api/files/products/prd_efd67851b0b44837/front-91196c927f2947f2.jpg",
+    "nintendoCardImage": "/api/files/products/prd_efd67851b0b44837/square-fbd86d87d803ecef.jpg",
+    "coverHiResImage": "",
+    "coverImage": "/api/files/products/prd_efd67851b0b44837/cover-91196c927f2947f2.jpg",
+    "bannerImages": [
+     "https://asia.sega.com/p3r/en/switch2/resources/img/top/system-pict-daytime-1_f9f909f9f6d081690a11.webp",
+     "https://asia.sega.com/p3r/en/switch2/resources/img/top/system-pict-daytime-2_7dc0ff47189ef0177bc2.webp",
+     "/api/files/products/prd_efd67851b0b44837/banner-2-2676f1e0089344bd.webp",
+     "/api/files/products/prd_efd67851b0b44837/banner-3-87bc0a9f851fc936.webp"
+    ],
+    "gallery": [],
+    "youtubeTrailer": "https://www.youtube.com/watch?v=kzQxzbM5gMQ",
+    "releaseDate": "2025-10-23",
+    "ageRating": "ESRB Mature",
+    "metacriticRating": 80,
+    "genres": [
+     "Role-Playing",
+     "Turn-Based",
+     "Social Simulation"
+    ],
+    "platform": "switch2",
+    "size": 21.7,
+    "numberOfPlayers": "1",
+    "supportedLanguages": "Japanese, English, Spanish, French, German, Italian, Portuguese, Russian, Korean, Chinese (Simplified), Chinese (Traditional)",
+    "hardwareModel": "",
+    "colorEdition": "",
+    "storageCapacity": "",
+    "screenSpecs": "",
+    "batteryLife": "",
+    "boxContents": [],
+    "boxContentsText": "",
+    "warrantyCondition": "",
+    "connectivity": "",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "Global",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "",
+    "redemptionSteps": [],
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 12000,
+    "cost": 3000,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": false,
+    "displayOrder": 0,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "حساب أوفلاين",
+      "description": "حساب مخصص للعب دون اتصال بعد إكمال خطوات التفعيل.",
+      "isInfiniteStock": true,
+      "customerDescription": "حساب مشترك"
+     },
+     {
+      "id": "online_account",
+      "name": "حساب أونلاين",
+      "description": "حساب يدعم تشغيل اللعبة مع الاتصال والميزات المتاحة أونلاين.",
+      "isInfiniteStock": true,
+      "customerDescription": "حساب خاص بك",
+      "internalNote": "Online-capable account access option sold by the supplier."
+     }
+    ],
+    "types": [
+     {
+      "id": "standard_offline",
+      "name": "حساب أوفلاين — عادي",
+      "optionId": "offline_account",
+      "cost": 3000,
+      "description": "تشمل الإصدار العادي من اللعبة.",
+      "isInfiniteStock": true,
+      "price": 14750,
+      "customerDescription": "اللعبة الأساسية",
+      "internalNote": "Supplier Regular / 普通版. Supplier source price ¥14.64 (pre-discount ¥18)."
+     },
+     {
+      "id": "dlc_offline",
+      "name": "حساب أوفلاين — مع الإضافات",
+      "optionId": "offline_account",
+      "cost": 3500,
+      "description": "تشمل اللعبة الأساسية والمحتوى الإضافي المثبت في هذا الإصدار.",
+      "isInfiniteStock": true,
+      "price": 17500,
+      "customerDescription": "اللعبة مع الإضافات",
+      "internalNote": "Supplier Special / 特典版 mapped to DLC offline. Supplier price ¥16.6 (pre-discount ¥20)."
+     },
+     {
+      "id": "standard_online",
+      "name": "حساب أونلاين — عادي",
+      "optionId": "online_account",
+      "cost": 35750,
+      "description": "تشمل الإصدار العادي من اللعبة.",
+      "isInfiniteStock": true,
+      "price": 55000,
+      "customerDescription": "اللعبة الأساسية",
+      "internalNote": "Supplier Standard / 标准版. Supplier price ¥163.6 (pre-discount ¥170)."
+     },
+     {
+      "id": "dlc_online",
+      "name": "حساب أونلاين — مع الإضافات",
+      "optionId": "online_account",
+      "cost": 38000,
+      "description": "تشمل اللعبة الأساسية والمحتوى الإضافي المثبت في هذا الإصدار.",
+      "isInfiniteStock": true,
+      "price": 60000,
+      "customerDescription": "اللعبة مع الإضافات",
+      "internalNote": "Supplier Deluxe / 豪华版 mapped to DLC online. Supplier price ¥173.4 (pre-discount ¥180)."
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "active",
+    "kind": "account",
+    "trade_value_iqd": 39000,
+    "store_offer_bonus_iqd": 4000,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "id": "prd_efd67851b0b44837",
+    "titleAr": "Persona 3 Reload",
+    "compatibility": [
+     "Nintendo Switch 2"
+    ],
+    "edition": "Standard",
+    "developer": "ATLUS / P-Studio",
+    "publisher": "SEGA",
+    "metacriticUrl": "https://www.metacritic.com/game/persona-3-reload/",
+    "opencriticRating": 87,
+    "userScore": 8.6,
+    "officialUrl": "https://asia.sega.com/p3r/en/switch2/",
+    "eshopUrl": "https://asia.sega.com/p3r/en/switch2/",
+    "gameIsOffline": true,
+    "gameIsOnline": false,
+    "description_short": "A modern remake of Persona 3 combining daily school life, Social Links, Persona fusion, and turn-based battles in Tartarus.",
+    "description_ar": "عِش عامًا دراسيًا في Port Island، وابنِ العلاقات وSocial Links وطوّر الإحصائيات الاجتماعية نهارًا، ثم استكشف Tartarus وقاتل الـShadows خلال Dark Hour. تعيد Persona 3 Reload بناء اللعبة الأصلية بصريًا وتحدّث الواجهة والقتال وتضيف مشاهد وأداءً صوتيًا إضافيًا.",
+    "box_front_url": "https://images.launchbox-app.com//89198ab6-ec18-4982-bceb-e3663fa7e3f3.jpg",
+    "box_back_url": "https://images.launchbox-app.com//e8c1616e-72f8-45d1-bcd3-1ed95c0e1b4c.jpg",
+    "videos": [
+     {
+      "title": "SEGA Launch Trailer — Nintendo Switch 2",
+      "url": "https://www.youtube.com/watch?v=kzQxzbM5gMQ"
+     },
+     {
+      "title": "Nintendo of America Launch Trailer",
+      "url": "https://www.youtube.com/watch?v=d6pFZODjB34"
+     },
+     {
+      "title": "Digital Foundry — Patch 1.03 performance test",
+      "url": "https://www.youtube.com/watch?v=RbakVeQAajE"
+     }
+    ],
+    "nintendoEshopUrl": "https://asia.sega.com/p3r/en/switch2/",
+    "nintendoOnlineRequired": false,
+    "nintendoCloudSaves": true,
+    "nintendoGameKeyCard": true,
+    "nintendoPhysicalNeedsDownload": true,
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": true,
+    "nintendoPlayModes": "TV, Tabletop, Handheld",
+    "nintendoNotes": "Nintendo platform: native Nintendo Switch 2 release on 2025-10-23. No Nintendo Switch 1 version. The physical Switch 2 version uses a Game-Key Card and therefore requires an internet download.\n\nSupplier language selection: Simplified Chinese. Four supplier variants mapped by established rule: Regular=Offline Standard, Special=Offline DLC, Standard=Online Standard, Deluxe=Online DLC.\nSupplier costs after platform subsidy: ¥14.64 / ¥16.6 / ¥163.6 / ¥173.4 => 3,000 / 3,500 / 35,750 / 38,000 IQD. Pre-discount values: ¥18 / ¥20 / ¥170 / ¥180.\nPatch 1.03 adds a 60 fps Performance Mode in docked/TV mode and fixes frame-pacing issues; handheld remains 30 fps in Digital Foundry testing.",
+    "switch2Enhanced": false,
+    "switch2Exclusive": true,
+    "tagline": "Dive into the Dark Hour and awaken the depths of your heart.",
+    "fitFor": [
+     "Players who enjoy story-heavy turn-based RPGs",
+     "Fans of relationship and time-management systems",
+     "Players who like Persona fusion and party customization",
+     "Players who enjoy 60+ hour narrative RPGs"
+    ],
+    "notFitFor": [
+     "Players who want constant real-time action",
+     "Players who dislike long dialogue and calendar progression",
+     "Players seeking a short RPG"
+    ],
+    "playTimeMain": 65,
+    "playTimeFull": 99.5,
+    "editionsList": [
+     {
+      "name": "Standard",
+      "coverUrl": "https://images.launchbox-app.com//89198ab6-ec18-4982-bceb-e3663fa7e3f3.jpg",
+      "contents": [
+       {
+        "label": "Base game"
+       },
+       {
+        "label": "Full Persona 3 Reload remake"
+       },
+       {
+        "label": "Nintendo Switch 2 version"
+       }
+      ]
+     },
+     {
+      "name": "Digital Deluxe Edition",
+      "contents": [
+       {
+        "label": "Base game"
+       },
+       {
+        "label": "34-page digital artbook app"
+       },
+       {
+        "label": "60-track digital soundtrack app"
+       }
+      ]
+     },
+     {
+      "name": "Digital Premium Edition",
+      "contents": [
+       {
+        "label": "Base game + digital artbook + soundtrack"
+       },
+       {
+        "label": "Persona 3 Reload DLC Pack"
+       },
+       {
+        "label": "Episode Aigis -The Answer- is not included"
+       }
+      ]
+     },
+     {
+      "name": "Physical Standard — Game-Key Card",
+      "contents": [
+       {
+        "label": "Physical Game-Key Card package"
+       },
+       {
+        "label": "Internet download of full game data required"
+       },
+       {
+        "label": "Nintendo Switch 2 only"
+       }
+      ]
+     }
+    ],
+    "gameplayPillars": [
+     {
+      "title": "Daily life and relationships",
+      "description": "The calendar system makes time a resource: school, Social Links, activities, social-stat growth, and evening options compete for limited days and time slots.",
+      "imageUrl": "https://asia.sega.com/p3r/en/switch2/resources/img/top/system-pict-darkhour-2_b0a5548030aa4e22b28c.webp"
+     },
+     {
+      "title": "Tartarus and turn-based combat",
+      "description": "Battles emphasize elemental weaknesses, One More turns, Shift actions, Theurgy attacks, party roles, and Persona skills while Tartarus provides the main dungeon progression.",
+      "imageUrl": "https://asia.sega.com/p3r/en/switch2/resources/img/top/system-pict-darkhour-3_dfdead8597f574e1b1b5.webp"
+     },
+     {
+      "title": "Persona fusion and growth",
+      "description": "The protagonist can hold multiple Personas, fuse them into new forms, inherit skills, register them in the Compendium, and build specialized combat setups.",
+      "imageUrl": "https://asia.sega.com/p3r/en/switch2/resources/img/top/dlc-persona-pict1_37a9fd489179bffd0fff.webp"
+     }
+    ],
+    "worldSummary": "The game takes place primarily around Tatsumi Port Island, Gekkoukan High School, Iwatodai, and the supernatural Dark Hour. Tartarus is a towering labyrinth that appears during the hidden hour after midnight.",
+    "storyChapters": [
+     {
+      "title": "Arrival in Port Island",
+      "body": "A transfer student arrives in Port Island, experiences the Dark Hour, awakens Persona power, and becomes involved with S.E.E.S.",
+      "imageUrl": "https://asia.sega.com/p3r/en/switch2/resources/img/top/dlc-episode-aegis-pict1_970634d1fafc7051f966.webp"
+     },
+     {
+      "title": "The Dark Hour and S.E.E.S.",
+      "body": "S.E.E.S. explores Tartarus and confronts Shadows while trying to understand the Dark Hour and the unusual events affecting the city."
+     },
+     {
+      "title": "Confronting mortality and fate",
+      "body": "The story increasingly focuses on mortality, grief, bonds, personal responsibility, and the consequences of the group’s discoveries."
+     }
+    ],
+    "galleryImages": [
+     {
+      "url": "https://asia.sega.com/p3r/en/switch2/resources/img/top/dlc-episode-aegis-pict2_6926e555e02e46cfb979.webp",
+      "alt": "Episode Aigis official image"
+     },
+     {
+      "url": "https://asia.sega.com/p3r/en/switch2/resources/img/top/dlc-costume-pict1_7e7a838eec50eb4f9dd0.webp",
+      "alt": "Yasogami High costume set image"
+     },
+     {
+      "url": "https://asia.sega.com/p3r/en/switch2/resources/img/top/dlc-costume-pict4_8f59752e8a910c59d87f.webp",
+      "alt": "Phantom Thieves costume set image"
+     },
+     {
+      "url": "https://asia.sega.com/p3r/en/switch2/resources/img/top/dlc-costume-pict7_2645ef0a8b4da60cbf9f.webp",
+      "alt": "Shujin Academy costume set image"
+     },
+     {
+      "url": "https://gamesdb-images.launchbox.gg/r2_dcb56315-0960-4ac6-80a3-5806815ae25a.jpg",
+      "alt": "Persona 3 Reload promotional artwork"
+     }
+    ],
+    "features": [
+     "Daily calendar and Social Link progression",
+     "Turn-based combat with Shift and Theurgy systems",
+     "Persona fusion and customization",
+     "Modernized visual presentation and UI",
+     "Additional scenes and voiceover",
+     "Large DLC catalog including Episode Aigis"
+    ],
+    "perfResolutionDocked": "1080p output on Nintendo Switch 2",
+    "perfResolutionHandheld": "1080p output on Nintendo Switch 2",
+    "perfFps": "60 TV Performance Mode / 30 handheld",
+    "perfNotes": "Nintendo Switch 2 launch version targeted 30 fps. Patch 1.03 added a 60 fps Performance Mode for docked/TV play and corrected inconsistent frame pacing. Digital Foundry reports only small dips from 60 in that mode; handheld remains 30 fps.",
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "hardwareId": "prd_acf4c89908764c62",
+      "informationStatus": "measured",
+      "handheld": {
+       "supported": true,
+       "resolution": "1080p output",
+       "outputResolution": "1080p",
+       "fps": "30",
+       "fpsMax": "30",
+       "mode": "Handheld",
+       "notes": "Handheld remains at 30 fps after patch 1.03; frame pacing was improved by the patch."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p output",
+       "outputResolution": "1080p",
+       "fps": "60",
+       "fpsMax": "60",
+       "mode": "Performance Mode (patch 1.03)",
+       "notes": "Patch 1.03 adds a 60 fps Performance Mode in docked/TV mode with small dips from target in measured testing."
+      },
+      "gameVersion": "1.03",
+      "sourceName": "Digital Foundry",
+      "sourceUrl": "https://www.youtube.com/watch?v=RbakVeQAajE",
+      "verificationStatus": "verified-measured",
+      "performanceNotes": "Performance data reflects patch 1.03 testing. Input latency remains a noted issue in Digital Foundry’s analysis."
+     }
+    ],
+    "downloadSizeGb": 21.7,
+    "requiredSpaceGb": 30,
+    "microSdRecommended": false,
+    "storageNotes": "Nintendo Europe lists a 21.7 GB download. Physical copies are Game-Key Cards and require downloading the game data; package notices can require additional free space beyond the listed download size.",
+    "languagesAudio": [
+     "English",
+     "Japanese"
+    ],
+    "languagesText": [
+     "Japanese",
+     "English",
+     "Spanish",
+     "French",
+     "German",
+     "Italian",
+     "Portuguese",
+     "Russian",
+     "Korean",
+     "Chinese (Simplified)",
+     "Chinese (Traditional)"
+    ],
+    "arabicSupport": false,
+    "mpLocalPlayers": false,
+    "mpOnlinePlayers": false,
+    "mpCoop": false,
+    "mpCompetitive": false,
+    "mpSplitScreen": false,
+    "mpLocalWireless": false,
+    "dlc": [
+     {
+      "name": "Persona 3 Reload Episode Aigis -The Answer- Pack"
+     },
+     {
+      "name": "Persona 3 Reload - Premium DLC Pack"
+     },
+     {
+      "name": "Persona 3 Reload - DLC Pack"
+     },
+     {
+      "name": "Persona 5 Royal Phantom Thieves Costume Set",
+      "description": "Allows S.E.E.S. members to use Phantom Thieves costumes while exploring and battling in Tartarus."
+     },
+     {
+      "name": "Persona 5 Royal Shujin Academy Costume Set",
+      "description": "Allows S.E.E.S. members to use Shujin Academy costumes in Tartarus."
+     },
+     {
+      "name": "Persona 5 Royal Persona Set 1",
+      "description": "Adds summonable/fusable Personas associated with Persona 5 Royal characters."
+     },
+     {
+      "name": "Persona 5 Royal Persona Set 2",
+      "description": "Adds a second set of Persona 5 Royal Personas."
+     },
+     {
+      "name": "Persona 5 Royal BGM Set",
+      "description": "Adds Persona 5 / Persona 5 Royal battle BGM selections."
+     },
+     {
+      "name": "Persona 4 Golden Yasogami High Costume Set",
+      "description": "Adds Yasogami High costumes from Persona 4 Golden."
+     },
+     {
+      "name": "Persona 4 Golden Persona Set",
+      "description": "Adds Persona 4 Golden Personas including Izanagi, Magatsu-Izanagi, and Kaguya."
+     },
+     {
+      "name": "Persona 5 Royal EX BGM Set",
+      "description": "Adds additional Persona 5 Royal BGM selections for Episode Aigis content."
+     },
+     {
+      "name": "Persona 4 Golden EX BGM Set",
+      "description": "Adds additional Persona 4 Golden BGM selections for Episode Aigis content."
+     },
+     {
+      "name": "Velvet Costume & BGM Set",
+      "description": "Adds Velvet Room-themed costumes and music."
+     }
+    ],
+    "completionMain": 65,
+    "completionExtras": 85.5,
+    "completionAll": 99.5,
+    "verdictSummary": "A critically acclaimed modern remake with strong turn-based combat, relationship systems, presentation, and soundtrack. The Switch 2 port improved materially after patch 1.03 due to the new docked 60 fps mode and corrected frame pacing.",
+    "reviews": [
+     {
+      "source": "Metacritic — Switch 2",
+      "score": "80/100",
+      "url": "https://www.metacritic.com/game/persona-3-reload/"
+     },
+     {
+      "source": "OpenCritic aggregate",
+      "score": "87/100",
+      "url": "https://www.dekudeals.com/items/persona-3-reload"
+     },
+     {
+      "source": "Metacritic user score",
+      "score": "8.6/10",
+      "url": "https://www.metacritic.com/game/persona-3-reload/"
+     }
+    ],
+    "timeline": [
+     {
+      "date": "2024-02-02",
+      "title": "Original multi-platform Persona 3 Reload release",
+      "body": "Persona 3 Reload first launched on other modern platforms in February 2024."
+     },
+     {
+      "date": "2025-10-23",
+      "title": "Nintendo Switch 2 release",
+      "body": "Nintendo Switch 2 version launched worldwide."
+     },
+     {
+      "date": "2025-12-30",
+      "title": "Patch 1.03 performance analysis published",
+      "body": "Digital Foundry tested patch 1.03, confirming the new 60 fps docked Performance Mode and frame-pacing fix."
+     }
+    ],
+    "seriesName": "Persona",
+    "seriesEntries": [
+     "Persona 3 Portable",
+     "Persona 4 Golden",
+     "Persona 5 Royal"
+    ],
+    "studioName": "ATLUS / P-Studio",
+    "studioUrl": "https://www.atlus.com/",
+    "studioLocation": "Tokyo, Japan",
+    "studioAbout": "ATLUS / P-Studio develops the modern Persona series, combining turn-based RPG systems with calendar-driven social simulation and highly stylized presentation.",
+    "setupNeeds": [
+     "Nintendo Switch 2 system",
+     "Internet connection required to download the full game from a Game-Key Card",
+     "At least roughly 30 GB free space recommended for the physical Game-Key Card download",
+     "Nintendo Account / internet connectivity required for eShop downloads and updates"
+    ],
+    "sources": [
+     {
+      "name": "ATLUS / SEGA official Switch 2 site",
+      "url": "https://asia.sega.com/p3r/en/switch2/"
+     },
+     {
+      "name": "Nintendo official UK — game specifications",
+      "url": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-2-games/Persona-3-Reload-2882297.html"
+     },
+     {
+      "name": "Nintendo official — DLC list",
+      "url": "https://www.nintendo.com/us/store/products/persona-3-reload-switch-2/dlc/"
+     }
+    ],
+    "boxContentsList": "[Circular]",
+    "image": "/api/files/products/prd_efd67851b0b44837/cover-91196c927f2947f2.jpg",
+    "banner": "https://asia.sega.com/p3r/en/switch2/resources/img/top/system-pict-daytime-1_f9f909f9f6d081690a11.webp",
+    "schemaId": "",
+    "badgeEn": "وفر 40%",
+    "badgeKu": "وفر 40%",
+    "featuresEn": [
+     "Daily calendar and Social Link progression",
+     "Turn-based combat with Shift and Theurgy systems",
+     "Persona fusion and customization",
+     "Modernized visual presentation and UI",
+     "Additional scenes and voiceover",
+     "Large DLC catalog including Episode Aigis"
+    ],
+    "featuresKu": [
+     "Daily calendar and Social Link progression",
+     "Turn-based combat with Shift and Theurgy systems",
+     "Persona fusion and customization",
+     "Modernized visual presentation and UI",
+     "Additional scenes and voiceover",
+     "Large DLC catalog including Episode Aigis"
+    ],
+    "sales": 0,
+    "images": [],
+    "modes": [],
+    "game_id": "gme_9088b17d20444ae4",
+    "updatedAt": "2026-08-28T22:06:51.221Z",
+    "boxFrontUrl": "https://images.launchbox-app.com//89198ab6-ec18-4982-bceb-e3663fa7e3f3.jpg",
+    "createdAt": "2026-08-31T22:39:01.870Z",
+    "created_at": "2026-08-31T22:39:01.870Z",
+    "updated_at": "2026-08-28T22:06:51.221Z",
+    "variants": "[Circular]"
+   }
+  },
+  {
+   "id": "prd_1da85016b1ea440f",
+   "slug": "persona-4-arena-ultimax",
+   "title": "Persona 4 Arena Ultimax",
+   "platform": "switch1",
+   "isHidden": false,
+   "hash": "0ac07b33b7542d5dc0a38343b437cba8dbcf14586abe9d09a1c3a92bb9e54464",
+   "images": [
+    {
+     "role": "front-box",
+     "field": "cartridgeImage",
+     "url": "https://banan.to/api/files/products/prd_1da85016b1ea440f/front-5c0b574ca24a8ffe.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 144412,
+     "width": 620,
+     "height": 1000,
+     "thumb": "review-workdir/thumbs/batch-018/persona-4-arena-ultimax__front-box-0.png"
+    },
+    {
+     "role": "front-box",
+     "field": "box_front_url",
+     "url": "https://images.launchbox-app.com/78ed118b-a1f3-4317-9453-d58639aa85b5.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 986346,
+     "width": 800,
+     "height": 1294,
+     "thumb": "review-workdir/thumbs/batch-018/persona-4-arena-ultimax__front-box-1.png"
+    },
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://banan.to/api/files/products/prd_1da85016b1ea440f/square-97c1b968463613a6.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 465502,
+     "width": 1252,
+     "height": 1561,
+     "thumb": "review-workdir/thumbs/batch-018/persona-4-arena-ultimax__square-card-2.png"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://banan.to/api/files/products/prd_1da85016b1ea440f/cover-faa6239da6dd15ce.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 227612,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-018/persona-4-arena-ultimax__detail-cover-3.png"
+    },
+    {
+     "role": "listing",
+     "field": "image",
+     "url": "https://banan.to/api/files/products/prd_1da85016b1ea440f/cover-faa6239da6dd15ce.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 227612,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-018/persona-4-arena-ultimax__listing-4.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[0]",
+     "url": "https://banan.to/api/files/products/prd_1da85016b1ea440f/banner-0-5d6c1c768cef6d7e.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[1]",
+     "url": "https://banan.to/api/files/products/prd_1da85016b1ea440f/banner-1-257d4b79f9e1011a.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[2]",
+     "url": "https://banan.to/api/files/products/prd_1da85016b1ea440f/banner-2-e17f8e5e6cd978a1.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[3]",
+     "url": "https://banan.to/api/files/products/prd_1da85016b1ea440f/banner-3-83e1b5b2f25c9c5e.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://images.launchbox-app.com/b5cdc185-701f-4c0a-9a70-0744caaafccc.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 516490,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-018/persona-4-arena-ultimax__gallery-9.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[1]",
+     "url": "https://images.launchbox-app.com/59384393-4b0e-4d38-92f5-447d1f979336.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 455928,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-018/persona-4-arena-ultimax__gallery-10.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[2]",
+     "url": "https://images.launchbox-app.com/db4aea1b-29eb-4b26-919c-c0f78b9e707a.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 399463,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-018/persona-4-arena-ultimax__gallery-11.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[3]",
+     "url": "https://images.launchbox-app.com/977b68b3-8fcd-4200-887d-7f22fff8dc58.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 629048,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-018/persona-4-arena-ultimax__gallery-12.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[4]",
+     "url": "https://images.launchbox-app.com/b2c1db53-205f-4fae-8323-b0e062260a27.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 678023,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-018/persona-4-arena-ultimax__gallery-13.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[5]",
+     "url": "https://images.launchbox-app.com/8f73ca78-823f-4f1c-9e00-cf752d4faf8a.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 572721,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-018/persona-4-arena-ultimax__gallery-14.png"
+    }
+   ],
+   "record": {
+    "title": "Persona 4 Arena Ultimax",
+    "titleEn": "Persona 4 Arena Ultimax",
+    "titleKu": "Persona 4 Arena Ultimax",
+    "slug": "persona-4-arena-ultimax",
+    "description": "Enter the P-1 CLIMAX with Persona 3 and Persona 4 fighters. Use normals, special moves and Persona attacks in a deep Arc System Works fighting system, with story content from both Persona 4 Arena and Ultimax included.",
+    "descriptionEn": "Enter the P-1 CLIMAX with Persona 3 and Persona 4 fighters. Use normals, special moves and Persona attacks in a deep Arc System Works fighting system, with story content from both Persona 4 Arena and Ultimax included.",
+    "descriptionKu": "Enter the P-1 CLIMAX with Persona 3 and Persona 4 fighters. Use normals, special moves and Persona attacks in a deep Arc System Works fighting system, with story content from both Persona 4 Arena and Ultimax included.",
+    "cartridgeImage": "/api/files/products/prd_1da85016b1ea440f/front-5c0b574ca24a8ffe.webp",
+    "nintendoCardImage": "/api/files/products/prd_1da85016b1ea440f/square-97c1b968463613a6.webp",
+    "coverHiResImage": "",
+    "coverImage": "/api/files/products/prd_1da85016b1ea440f/cover-faa6239da6dd15ce.webp",
+    "bannerImages": [
+     "/api/files/products/prd_1da85016b1ea440f/banner-0-5d6c1c768cef6d7e.avif",
+     "/api/files/products/prd_1da85016b1ea440f/banner-1-257d4b79f9e1011a.avif",
+     "/api/files/products/prd_1da85016b1ea440f/banner-2-e17f8e5e6cd978a1.avif",
+     "/api/files/products/prd_1da85016b1ea440f/banner-3-83e1b5b2f25c9c5e.avif",
+     "/api/files/products/prd_1da85016b1ea440f/banner-4-4a383896656d92a7.avif",
+     "/api/files/products/prd_1da85016b1ea440f/banner-5-13125ce10b5450db.avif",
+     "/api/files/products/prd_1da85016b1ea440f/banner-6-f03aed3355de144b.avif"
+    ],
+    "gallery": [],
+    "youtubeTrailer": "https://www.youtube.com/watch?v=rBbtdKZoqlA",
+    "releaseDate": "2022-03-17",
+    "ageRating": "ESRB Teen",
+    "metacriticRating": 81,
+    "genres": [
+     "Fighting",
+     "2D Fighting",
+     "Narrative Adventure",
+     "Competitive Multiplayer"
+    ],
+    "platform": "switch1",
+    "size": 14.7,
+    "numberOfPlayers": "1-2 local; 2-8 online",
+    "supportedLanguages": "Supplier selection supplied by user: Simplified Chinese. Nintendo US/Canada western listing provides western-language support and does not list Chinese, so Chinese is preserved as region/SKU-dependent supplier information.",
+    "hardwareModel": "",
+    "colorEdition": "",
+    "storageCapacity": "",
+    "screenSpecs": "",
+    "batteryLife": "",
+    "boxContents": [],
+    "boxContentsText": "",
+    "warrantyCondition": "",
+    "connectivity": "",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "Global / region-dependent",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "",
+    "redemptionSteps": [],
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 7000,
+    "cost": 1250,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": false,
+    "displayOrder": 0,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "Offline Account",
+      "description": "Offline account access supplied as Regular / 普通版.",
+      "stock": 999999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_account",
+      "name": "Online Account",
+      "description": "Online account access supplied as Standard / 标准版.",
+      "stock": 999999,
+      "isInfiniteStock": true
+     }
+    ],
+    "types": [
+     {
+      "id": "standard_offline",
+      "name": "Standard Offline",
+      "optionId": "offline_account",
+      "price": 6500,
+      "cost": 1250,
+      "description": "Supplier Regular / 普通版 converted to IQD using 1 CNY = 220 IQD and rounded down to nearest 250 IQD.",
+      "stock": 999999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "standard_online",
+      "name": "Standard Online",
+      "optionId": "online_account",
+      "price": "25000",
+      "cost": 12250,
+      "description": "Supplier Standard / 标准版 converted to IQD using 1 CNY = 220 IQD and rounded down to nearest 250 IQD.",
+      "stock": 999999,
+      "isInfiniteStock": true
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "active",
+    "kind": "account",
+    "trade_value_iqd": 0,
+    "store_offer_bonus_iqd": 0,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "id": "prd_1da85016b1ea440f",
+    "schema_version": 1,
+    "titleAr": "بيرسونا 4 أرينا ألتيماكس",
+    "compatibility": [
+     "Nintendo Switch",
+     "Nintendo Switch 2 (backward compatibility)",
+     "Nintendo Switch Lite"
+    ],
+    "edition": "Standard",
+    "developer": "Arc System Works / ATLUS",
+    "publisher": "SEGA",
+    "metacriticUrl": "https://www.metacritic.com/game/persona-4-arena-ultimax/",
+    "opencriticRating": 79,
+    "userScore": 7.7,
+    "price_usd": 29.99,
+    "officialUrl": "https://www.nintendo.com/us/store/products/persona-4-arena-ultimax-switch/",
+    "eshopUrl": "https://www.nintendo.com/us/store/products/persona-4-arena-ultimax-switch/",
+    "gameIsOffline": true,
+    "gameIsOnline": true,
+    "description_short": "A 2D Persona fighting game by Arc System Works that includes the Ultimax content package and the original Persona 4 Arena story.",
+    "description_ar": "ادخل بطولة P-1 CLIMAX مع شخصيات من Persona 3 وPersona 4 في لعبة قتال ثنائية الأبعاد من Arc System Works. تستخدم الضربات الخاصة واستدعاءات الـPersona وأنظمة قتال متقدمة، مع تضمين قصة Persona 4 Arena الأصلية ومحتوى Ultimax.",
+    "box_front_url": "https://images.launchbox-app.com/78ed118b-a1f3-4317-9453-d58639aa85b5.jpg",
+    "videos": [
+     {
+      "title": "Persona 4 Arena Ultimax — Trailer",
+      "url": "https://www.youtube.com/watch?v=rBbtdKZoqlA"
+     },
+     {
+      "title": "Nintendo trailer",
+      "url": "https://www.youtube.com/watch?v=X8c0fnoOJBQ"
+     },
+     {
+      "title": "ATLUS announcement trailer",
+      "url": "https://www.youtube.com/watch?v=znZJLRW8v4w"
+     }
+    ],
+    "nintendoEshopUrl": "https://www.nintendo.com/us/store/products/persona-4-arena-ultimax-switch/",
+    "nintendoOnlineRequired": true,
+    "nintendoCloudSaves": true,
+    "nintendoGameKeyCard": false,
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": true,
+    "nintendoPlayModes": "TV / Tabletop / Handheld",
+    "nintendoNotes": "Nintendo lists Persona 4 Arena Ultimax as supported on Nintendo Switch 2 with behavior consistent with Nintendo Switch. The Switch release supports TV/Tabletop/Handheld modes, 1–2 local players and online play for multiple players.\n\nThe modern Ultimax release includes previously released P4AU content and the original Persona 4 Arena story.\n\nSupplier selection supplied by user: Simplified Chinese. Western Nintendo listings do not list Chinese, so this is preserved as supplier regional/SKU information. Regular / 普通版 ¥6.8 (pre-discount ¥10); Standard / 标准版 ¥55.8 (pre-discount ¥60). Converted costs: Regular 1,250 IQD; Standard 12,250 IQD. Supplier Standard is marked 即将售罄 / near sold out, so type.2 stock is overridden to low_supplier_stock below.\n\nOnly two supplier variants exist; no separate supplier DLC types are created.",
+    "switch2Enhanced": false,
+    "switch2Exclusive": false,
+    "switch2Features": [
+     "Nintendo Switch 2 backward compatibility supported",
+     "Nintendo says game behavior is consistent with Switch",
+     "Faster loading in backward-compatibility tests",
+     "No native Switch 2 resolution/frame-rate patch"
+    ],
+    "tagline": "The Persona 4 cast enters the P-1 CLIMAX for a high-speed 2D showdown.",
+    "fitFor": [
+     "Persona fans who enjoy competitive fighting games",
+     "Arc System Works fighting-game players",
+     "Players who want more Persona 4 and Persona 3 character stories",
+     "Players interested in story continuation after Persona 4 Golden / Arena"
+    ],
+    "notFitFor": [
+     "Players expecting a traditional turn-based Persona RPG",
+     "Players who dislike technical fighting-game systems",
+     "Players wanting rollback netcode on the Switch version",
+     "Players for whom rollback netcode is essential on Switch"
+    ],
+    "playTimeMain": 10.5,
+    "playTimeFull": 67,
+    "editionsList": [
+     {
+      "name": "Ultimax Version",
+      "coverUrl": "https://images.launchbox-app.com/78ed118b-a1f3-4317-9453-d58639aa85b5.jpg",
+      "contents": [
+       {
+        "label": "Persona 4 Arena Ultimax game"
+       },
+       {
+        "label": "Previously released P4AU content included"
+       },
+       {
+        "label": "Original Persona 4 Arena story included"
+       }
+      ]
+     }
+    ],
+    "gameplayPillars": [
+     {
+      "title": "Arc System Works Combat",
+      "description": "Use Arc System Works-style normals, special moves, supers, bursts and Persona-assisted attacks in fast one-on-one fights.",
+      "imageUrl": "https://images.launchbox-app.com/b5cdc185-701f-4c0a-9a70-0744caaafccc.jpg"
+     },
+     {
+      "title": "Persona-Powered Roster",
+      "description": "Choose from Persona 4 and Persona 3 fighters, including Shadow variants with distinct mechanics and play styles.",
+      "imageUrl": "https://images.launchbox-app.com/977b68b3-8fcd-4200-887d-7f22fff8dc58.jpg"
+     },
+     {
+      "title": "Story and Competitive Modes",
+      "description": "Follow cinematic story routes that connect the original Persona 4 Arena narrative with Ultimax’s continuation.",
+      "imageUrl": "https://images.launchbox-app.com/b2c1db53-205f-4fae-8323-b0e062260a27.jpg"
+     },
+     {
+      "title": "Train and Compete",
+      "description": "Use training and local/online versus modes to practice character-specific combos, Persona pressure and defensive systems."
+     }
+    ],
+    "worldSummary": "The story returns to Inaba and the Midnight Channel setting, escalating into the P-1 CLIMAX where familiar Persona users are forced into a new fighting tournament tied to a larger supernatural incident.",
+    "storyChapters": [
+     {
+      "title": "Return of the P-1 Tournament",
+      "body": "After the earlier P-1 Grand Prix, a new tournament appears with higher stakes and familiar fighters drawn back into the Midnight Channel conflict."
+     },
+     {
+      "title": "Persona 3 and Persona 4 Collide",
+      "body": "Persona 3 and Persona 4 characters investigate the source of the P-1 CLIMAX while facing opponents and Shadow versions across multiple perspectives."
+     },
+     {
+      "title": "The Ultimax Confrontation",
+      "body": "The combined story content incorporates the original Persona 4 Arena events and Ultimax’s continuation toward the confrontation behind the tournament."
+     },
+     {
+      "title": "After the P-1 CLIMAX",
+      "body": "The conclusion resolves the immediate tournament conflict while reconnecting characters and threads from the broader Persona 3 and Persona 4 stories."
+     }
+    ],
+    "galleryImages": [
+     {
+      "url": "https://images.launchbox-app.com/b5cdc185-701f-4c0a-9a70-0744caaafccc.jpg",
+      "alt": "Persona 4 Arena Ultimax fight scene"
+     },
+     {
+      "url": "https://images.launchbox-app.com/59384393-4b0e-4d38-92f5-447d1f979336.jpg",
+      "alt": "2D fighting gameplay"
+     },
+     {
+      "url": "https://images.launchbox-app.com/db4aea1b-29eb-4b26-919c-c0f78b9e707a.jpg",
+      "alt": "Character matchup gameplay"
+     },
+     {
+      "url": "https://images.launchbox-app.com/977b68b3-8fcd-4200-887d-7f22fff8dc58.jpg",
+      "alt": "Persona-assisted combat scene"
+     },
+     {
+      "url": "https://images.launchbox-app.com/b2c1db53-205f-4fae-8323-b0e062260a27.jpg",
+      "alt": "Arena story / character scene"
+     },
+     {
+      "url": "https://images.launchbox-app.com/8f73ca78-823f-4f1c-9e00-cf752d4faf8a.jpg",
+      "alt": "Persona 4 Arena Ultimax key artwork"
+     },
+     {
+      "url": "https://images.launchbox-app.com/919cd6c9-d0ce-4caf-9aac-4f6b294c68ee.jpg",
+      "alt": "Persona 4 Arena Ultimax banner artwork"
+     }
+    ],
+    "features": [
+     "Fast 2D fighting system with Persona summons",
+     "Large roster including Persona 3 and Persona 4 characters",
+     "Ultimax package includes previously released P4AU content and original P4A story",
+     "Local competitive multiplayer",
+     "Online multiplayer",
+     "Dual English/Japanese audio"
+    ],
+    "perfFps": "60",
+    "perfHdr": false,
+    "perfNotes": "The Switch version targets the 60 fps standard expected for the Arc System Works fighting system. Exact rendering resolution was not confidently verified from a strong technical source, so resolution fields are intentionally left blank. Switch 2 backward compatibility retains the same game behavior and improves loading times in testing.",
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "hardwareId": "prd_acf4c89908764c62",
+      "informationStatus": "reviewed / fighting-game 60 fps target",
+      "handheld": {
+       "supported": true,
+       "resolution": "720",
+       "fps": "60",
+       "fpsMax": "60",
+       "hdr": false,
+       "mode": "Handheld",
+       "notes": "60 fps fighting-game target. Exact internal resolution not confidently published, so no invented resolution is entered."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080",
+       "fps": "60",
+       "fpsMax": "60",
+       "hdr": false,
+       "mode": "Docked",
+       "notes": "60 fps target. Exact rendering resolution intentionally left blank."
+      },
+      "rayTracing": false,
+      "sourceName": "Nintendo compatibility / review and backward-compatibility testing",
+      "verificationStatus": "60 fps fighting-game target; exact rendering resolution left blank",
+      "performanceNotes": "Performance is appropriate for competitive play, but Switch did not receive the rollback-netcode update available on some other platforms."
+     }
+    ],
+    "downloadSizeGb": 14.7,
+    "requiredSpaceGb": 14.7,
+    "microSdRecommended": false,
+    "storageNotes": "Nintendo lists approximately 14.7 GB for the Switch version.",
+    "languagesAudio": [
+     "English",
+     "Japanese"
+    ],
+    "languagesText": [
+     "Chinese (Simplified) — supplier regional SKU",
+     "English",
+     "French",
+     "German",
+     "Italian",
+     "Spanish"
+    ],
+    "arabicSupport": false,
+    "mpLocalPlayers": true,
+    "mpOnlinePlayers": true,
+    "mpCoop": false,
+    "mpCompetitive": true,
+    "mpSplitScreen": false,
+    "mpLocalWireless": false,
+    "completionMain": 10.5,
+    "completionAll": 67,
+    "faq": [
+     {
+      "q": "Does Persona 4 Arena Ultimax support Simplified Chinese?",
+      "a": "The supplier listing says Simplified Chinese, but western Nintendo pages do not list Chinese. It is therefore stored as regional/SKU-specific supplier language rather than universal language support."
+     },
+     {
+      "q": "Does Persona 4 Arena Ultimax work on Switch 2?",
+      "a": "Yes. Nintendo explicitly lists Nintendo Switch 2 compatibility as supported with behavior consistent with Nintendo Switch."
+     },
+     {
+      "q": "Does Persona 4 Arena Ultimax have multiplayer?",
+      "a": "Yes. It supports local competitive play and online multiplayer. Nintendo Switch Online is required for online matches."
+     },
+     {
+      "q": "Why is only the Online/Standard supplier stock marked low?",
+      "a": "The supplied seller data specifically marks Standard / 标准版 as 即将售罄. Therefore the overall item remains available, Offline/Regular remains available, and Online/Standard is preserved as low_supplier_stock."
+     }
+    ],
+    "reviews": [
+     {
+      "source": "Metacritic",
+      "score": "81/100",
+      "url": "https://www.metacritic.com/game/persona-4-arena-ultimax/"
+     },
+     {
+      "source": "OpenCritic",
+      "score": "79/100",
+      "url": "https://opencritic.com/game/12876/persona-4-arena-ultimax"
+     },
+     {
+      "source": "Metacritic user score",
+      "score": "7.7/10",
+      "url": "https://www.metacritic.com/game/persona-4-arena-ultimax/"
+     }
+    ],
+    "timeline": [
+     {
+      "date": "2013-11-28",
+      "title": "Persona 4 Arena Ultimax debuted in Japanese arcades"
+     },
+     {
+      "date": "2014-08-28",
+      "title": "Original console release began in Japan"
+     },
+     {
+      "date": "2022-03-17",
+      "title": "Persona 4 Arena Ultimax released for Nintendo Switch"
+     }
+    ],
+    "seriesName": "Persona",
+    "seriesEntries": [
+     "Persona 4 Golden",
+     "Persona 3 Portable",
+     "Persona 5 Royal",
+     "Persona 5 Strikers",
+     "Persona 3 Reload"
+    ],
+    "studioName": "Arc System Works / ATLUS",
+    "studioUrl": "https://www.arcsystemworks.com/",
+    "studioLocation": "Yokohama, Japan",
+    "studioAbout": "Arc System Works is a Japanese studio specializing in 2D fighting games and is known for Guilty Gear and BlazBlue. It developed Persona 4 Arena Ultimax in collaboration with ATLUS.",
+    "setupNeeds": [
+     "Nintendo Switch family system",
+     "Nintendo Account for digital purchase and network play",
+     "Nintendo Switch Online membership required for online multiplayer"
+    ],
+    "sources": [
+     {
+      "name": "Nintendo US — Persona 4 Arena Ultimax",
+      "url": "https://www.nintendo.com/us/store/products/persona-4-arena-ultimax-switch/"
+     },
+     {
+      "name": "Nintendo Canada — compatibility / product details",
+      "url": "https://www.nintendo.com/en-ca/store/products/persona-4-arena-ultimax-switch/"
+     },
+     {
+      "name": "Deku Deals — metadata and aggregate scores",
+      "url": "https://www.dekudeals.com/items/persona-4-arena-ultimax"
+     },
+     {
+      "name": "RPG Site — Switch 2 backward compatibility / loading",
+      "url": "https://www.rpgsite.net/feature/18157-nintendo-switch-2-backwards-compatibility-testing-major-jrpgs-tested"
+     },
+     {
+      "name": "LaunchBox Games Database — Switch media",
+      "url": "https://gamesdb.launchbox-app.com/games/details/152617-persona-4-arena-ultimax"
+     }
+    ],
+    "boxContentsList": "[Circular]",
+    "image": "/api/files/products/prd_1da85016b1ea440f/cover-faa6239da6dd15ce.webp",
+    "banner": "/api/files/products/prd_1da85016b1ea440f/banner-0-5d6c1c768cef6d7e.avif",
+    "schemaId": "",
+    "createdAt": "2026-08-26T22:09:15.242Z",
+    "created_at": "2026-08-26T22:09:15.242Z",
+    "updatedAt": "2026-08-26T22:09:15.242Z",
+    "updated_at": "2026-08-26T22:09:15.242Z",
+    "badgeEn": "وفر 40%",
+    "badgeKu": "وفر 40%",
+    "featuresEn": [
+     "Fast 2D fighting system with Persona summons",
+     "Large roster including Persona 3 and Persona 4 characters",
+     "Ultimax package includes previously released P4AU content and original P4A story",
+     "Local competitive multiplayer",
+     "Online multiplayer",
+     "Dual English/Japanese audio"
+    ],
+    "featuresKu": [
+     "Fast 2D fighting system with Persona summons",
+     "Large roster including Persona 3 and Persona 4 characters",
+     "Ultimax package includes previously released P4AU content and original P4A story",
+     "Local competitive multiplayer",
+     "Online multiplayer",
+     "Dual English/Japanese audio"
+    ],
+    "boxFrontUrl": "https://images.launchbox-app.com/78ed118b-a1f3-4317-9453-d58639aa85b5.jpg",
+    "sales": 0,
+    "images": [],
+    "modes": [],
+    "lendPreorder": true
+   }
+  },
+  {
+   "id": "prd_0635e35ca407487d",
+   "slug": "persona-4-golden",
+   "title": "Persona 4 Golden",
+   "platform": "switch1",
+   "isHidden": false,
+   "hash": "d4c624fa5b872cb3689670c0ca2a394f3486d8076829db919e26dfd057f14b78",
+   "images": [
+    {
+     "role": "front-box",
+     "field": "cartridgeImage",
+     "url": "https://banan.to/api/files/products/prd_0635e35ca407487d/front-2019ab924cdded66.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 2934472,
+     "width": 2340,
+     "height": 3806,
+     "thumb": "review-workdir/thumbs/batch-018/persona-4-golden__front-box-0.png"
+    },
+    {
+     "role": "front-box",
+     "field": "box_front_url",
+     "url": "https://images.launchbox-app.com/r2_12e63a2e-6797-4e7b-8c17-79ea38470568.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 2934472,
+     "width": 2340,
+     "height": 3806,
+     "thumb": "review-workdir/thumbs/batch-018/persona-4-golden__front-box-1.png"
+    },
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://banan.to/api/files/products/prd_0635e35ca407487d/square-4085eb124121dba8.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 1160496,
+     "width": 2160,
+     "height": 2160,
+     "thumb": "review-workdir/thumbs/batch-018/persona-4-golden__square-card-2.png"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://banan.to/api/files/products/prd_0635e35ca407487d/cover-51493c41e6d2f9b8.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 704519,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-018/persona-4-golden__detail-cover-3.png"
+    },
+    {
+     "role": "3d-texture",
+     "field": "coverHiResImage",
+     "url": "https://banan.to/api/files/products/prd_0635e35ca407487d/3d-texture-fac5cb42f14ad7aa.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 117548,
+     "width": 640,
+     "height": 492,
+     "thumb": "review-workdir/thumbs/batch-018/persona-4-golden__3d-texture-4.png"
+    },
+    {
+     "role": "listing",
+     "field": "image",
+     "url": "https://banan.to/api/files/products/prd_0635e35ca407487d/cover-51493c41e6d2f9b8.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 704519,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-018/persona-4-golden__listing-5.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[0]",
+     "url": "https://banan.to/api/files/products/prd_0635e35ca407487d/banner-0-d3c703d65f84d31b.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 110035,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-018/persona-4-golden__banner-6.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[1]",
+     "url": "https://banan.to/api/files/products/prd_0635e35ca407487d/banner-2-5b479ce03c4a76b8.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 166146,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-018/persona-4-golden__banner-7.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[2]",
+     "url": "https://banan.to/api/files/products/prd_0635e35ca407487d/banner-2-affbe8cca2be4901.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 183406,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-018/persona-4-golden__banner-8.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[3]",
+     "url": "https://banan.to/api/files/products/prd_0635e35ca407487d/banner-3-d989ab83178e5fd8.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 121618,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-018/persona-4-golden__banner-9.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://images.launchbox-app.com/6a2a28d5-59c6-4693-ae4d-4d04dfefbdc1.png",
+     "status": 200,
+     "contentType": "image/png",
+     "bytes": 827343,
+     "width": 2550,
+     "height": 1434,
+     "thumb": "review-workdir/thumbs/batch-018/persona-4-golden__gallery-10.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[1]",
+     "url": "https://images.launchbox-app.com/b879a3f0-ae25-4bf8-adc6-2d5002faca73.png",
+     "status": 200,
+     "contentType": "image/png",
+     "bytes": 4395109,
+     "width": 2550,
+     "height": 1434,
+     "thumb": "review-workdir/thumbs/batch-018/persona-4-golden__gallery-11.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[2]",
+     "url": "https://images.launchbox-app.com/8e27e5c5-8bae-4822-81a7-24ad82a9be8a.png",
+     "status": 200,
+     "contentType": "image/png",
+     "bytes": 2915374,
+     "width": 2550,
+     "height": 1434,
+     "thumb": "review-workdir/thumbs/batch-018/persona-4-golden__gallery-12.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[3]",
+     "url": "https://images.launchbox-app.com/2da6f010-7c7d-4726-83a4-555978b389a9.png",
+     "status": 200,
+     "contentType": "image/png",
+     "bytes": 4302004,
+     "width": 2550,
+     "height": 1434,
+     "thumb": "review-workdir/thumbs/batch-018/persona-4-golden__gallery-13.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[4]",
+     "url": "https://images.launchbox-app.com/fd920538-3d14-4270-9b32-f1802b1958aa.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 549803,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-018/persona-4-golden__gallery-14.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[5]",
+     "url": "https://images.launchbox-app.com/4e97ed54-990f-4760-b61d-7f9b692c6ae6.png",
+     "status": 200,
+     "contentType": "image/png",
+     "bytes": 4269634,
+     "width": 2550,
+     "height": 1434,
+     "thumb": "review-workdir/thumbs/batch-018/persona-4-golden__gallery-15.png"
+    }
+   ],
+   "record": {
+    "title": "Persona 4 Golden",
+    "titleEn": "Persona 4 Golden",
+    "titleKu": "Persona 4 Golden",
+    "slug": "persona-4-golden",
+    "description": "Move to Inaba, build relationships, investigate the Midnight Channel, and pursue the truth behind a chain of murders. Persona 4 Golden combines a calendar-driven social RPG with Persona fusion and turn-based dungeon combat.",
+    "descriptionEn": "Move to Inaba, build relationships, investigate the Midnight Channel, and pursue the truth behind a chain of murders. Persona 4 Golden combines a calendar-driven social RPG with Persona fusion and turn-based dungeon combat.",
+    "descriptionKu": "Move to Inaba, build relationships, investigate the Midnight Channel, and pursue the truth behind a chain of murders. Persona 4 Golden combines a calendar-driven social RPG with Persona fusion and turn-based dungeon combat.",
+    "cartridgeImage": "/api/files/products/prd_0635e35ca407487d/front-2019ab924cdded66.jpg",
+    "nintendoCardImage": "/api/files/products/prd_0635e35ca407487d/square-4085eb124121dba8.jpg",
+    "coverHiResImage": "/api/files/products/prd_0635e35ca407487d/3d-texture-fac5cb42f14ad7aa.webp",
+    "coverImage": "/api/files/products/prd_0635e35ca407487d/cover-51493c41e6d2f9b8.jpg",
+    "bannerImages": [
+     "/api/files/products/prd_0635e35ca407487d/banner-0-d3c703d65f84d31b.jpg",
+     "/api/files/products/prd_0635e35ca407487d/banner-2-5b479ce03c4a76b8.jpg",
+     "/api/files/products/prd_0635e35ca407487d/banner-2-affbe8cca2be4901.jpg",
+     "/api/files/products/prd_0635e35ca407487d/banner-3-d989ab83178e5fd8.jpg",
+     "/api/files/products/prd_0635e35ca407487d/banner-4-86cf9a569ef5e609.jpg",
+     "/api/files/products/prd_0635e35ca407487d/banner-5-67129d60e90c62e1.jpg"
+    ],
+    "gallery": [],
+    "youtubeTrailer": "https://www.youtube.com/watch?v=HnmCs0pUSNk",
+    "releaseDate": "2023-01-19",
+    "ageRating": "ESRB Mature",
+    "metacriticRating": 90,
+    "genres": [
+     "Role-Playing Game",
+     "JRPG",
+     "Turn-Based RPG",
+     "Social Simulation"
+    ],
+    "platform": "switch1",
+    "size": 9.1,
+    "numberOfPlayers": "1",
+    "supportedLanguages": "Nintendo AU: Japanese, French, German, Italian, Spanish, Korean, Chinese (Simplified), Chinese (Traditional), English. Supplier selection supplied by user: Simplified Chinese.",
+    "hardwareModel": "",
+    "colorEdition": "",
+    "storageCapacity": "",
+    "screenSpecs": "",
+    "batteryLife": "",
+    "boxContents": [],
+    "boxContentsText": "",
+    "warrantyCondition": "",
+    "connectivity": "",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "Global / region-dependent",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "",
+    "redemptionSteps": [],
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 9000,
+    "cost": 1250,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": false,
+    "displayOrder": 0,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "Offline Account",
+      "description": "Offline account access supplied as Regular / 普通版.",
+      "stock": 999999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_account",
+      "name": "Online Account",
+      "description": "Online account access supplied as Standard / 标准版.",
+      "stock": 999999,
+      "isInfiniteStock": true
+     }
+    ],
+    "types": [
+     {
+      "id": "standard_offline",
+      "name": "Standard Offline",
+      "optionId": "offline_account",
+      "price": 9000,
+      "cost": 1250,
+      "description": "Supplier Regular / 普通版 converted to IQD using 1 CNY = 220 IQD and rounded down to nearest 250 IQD.",
+      "stock": 999999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "standard_online",
+      "name": "Standard Online",
+      "optionId": "online_account",
+      "price": "22000",
+      "cost": 10000,
+      "description": "Supplier Standard / 标准版 converted to IQD using 1 CNY = 220 IQD and rounded down to nearest 250 IQD.",
+      "stock": 999999,
+      "isInfiniteStock": true
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "active",
+    "kind": "account",
+    "trade_value_iqd": 0,
+    "store_offer_bonus_iqd": 0,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "id": "prd_0635e35ca407487d",
+    "schema_version": 1,
+    "titleAr": "بيرسونا 4 غولدن",
+    "compatibility": [
+     "Nintendo Switch",
+     "Nintendo Switch 2 (backward compatibility)",
+     "Nintendo Switch Lite"
+    ],
+    "edition": "Standard",
+    "developer": "ATLUS",
+    "publisher": "SEGA",
+    "metacriticUrl": "https://www.metacritic.com/game/persona-4-golden/",
+    "opencriticRating": 88,
+    "userScore": 9.1,
+    "price_usd": 19.99,
+    "officialUrl": "https://persona.atlus.com/p4g/",
+    "eshopUrl": "https://www.nintendo.com/au/games/nintendo-switch/persona-4-golden/",
+    "gameIsOffline": true,
+    "gameIsOnline": true,
+    "description_short": "A murder mystery RPG set in rural Inaba, combining turn-based dungeon combat with school life, friendships, and Social Links.",
+    "description_ar": "تنتقل إلى بلدة إينابا وتجد نفسك وسط سلسلة جرائم غامضة مرتبطة بقناة منتصف الليل. تجمع اللعبة بين الحياة المدرسية وبناء العلاقات وSocial Links واستكشاف الزنزانات والقتال بالتناوب باستخدام الـPersona.",
+    "box_front_url": "https://images.launchbox-app.com/r2_12e63a2e-6797-4e7b-8c17-79ea38470568.jpg",
+    "videos": [
+     {
+      "title": "Persona 3 Portable & Persona 4 Golden — Available Now on Nintendo Switch",
+      "url": "https://www.youtube.com/watch?v=HnmCs0pUSNk"
+     }
+    ],
+    "nsuid": "70010000060321",
+    "nintendoEshopUrl": "https://www.nintendo.com/au/games/nintendo-switch/persona-4-golden/",
+    "nintendoOnlineRequired": true,
+    "nintendoCloudSaves": true,
+    "nintendoGameKeyCard": false,
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": true,
+    "nintendoPlayModes": "TV / Tabletop / Handheld",
+    "nintendoNotes": "Official Nintendo AU data confirms Nintendo Switch release, Nintendo Switch 2 backward compatibility, 9.1 GB file size, TV/Tabletop/Handheld play, Save Data Cloud, and Simplified/Traditional Chinese among the supported languages.\n\nSupplier selection supplied by user: Simplified Chinese. Supplier has exactly two product options, so no supplier DLC product type is created. Regular / 普通版 ¥6.8 (pre-discount ¥10); Standard / 标准版 ¥46 (pre-discount ¥50). Converted purchase costs: Regular 1,250 IQD; Standard 10,000 IQD.\n\nNintendo Switch 2 support is backward compatibility only; this is not a native Switch 2 edition and switch2_enhanced remains false.",
+    "switch2Enhanced": false,
+    "switch2Exclusive": false,
+    "switch2Features": [
+     "Nintendo Switch 2 backward compatibility supported",
+     "Same 9.1 GB Switch software profile",
+     "No native Switch 2 Edition",
+     "No official Switch 2 enhancement patch advertised"
+    ],
+    "tagline": "Seek the truth behind Inaba’s Midnight Channel murders.",
+    "fitFor": [
+     "Players who enjoy long story-driven JRPGs",
+     "Fans of murder mysteries and character-driven stories",
+     "Players who enjoy turn-based Persona combat",
+     "Players who value character relationships and a long campaign"
+    ],
+    "notFitFor": [
+     "Players seeking real-time action combat",
+     "Players who dislike dialogue-heavy games",
+     "Players wanting a short campaign",
+     "Players who dislike calendar/time-management systems"
+    ],
+    "playTimeMain": 67,
+    "playTimeFull": 133,
+    "editionsList": [
+     {
+      "name": "Persona 4 Golden",
+      "coverUrl": "https://images.launchbox-app.com/r2_12e63a2e-6797-4e7b-8c17-79ea38470568.jpg",
+      "contents": [
+       {
+        "label": "Base Persona 4 Golden game"
+       },
+       {
+        "label": "Quick save and difficulty selection"
+       },
+       {
+        "label": "Japanese and English voice options"
+       }
+      ]
+     },
+     {
+      "name": "Persona 3 Portable & Persona 4 Golden Bundle",
+      "contents": [
+       {
+        "label": "Persona 4 Golden"
+       },
+       {
+        "label": "Persona 3 Portable"
+       },
+       {
+        "label": "Two remastered Persona RPGs"
+       }
+      ]
+     }
+    ],
+    "gameplayPillars": [
+     {
+      "title": "Investigate the Midnight Channel",
+      "description": "Use Personas, elemental weaknesses, buffs, debuffs and All-Out Attacks in turn-based battles against Shadows.",
+      "imageUrl": "https://images.launchbox-app.com/6a2a28d5-59c6-4693-ae4d-4d04dfefbdc1.png"
+     },
+     {
+      "title": "Build Social Links",
+      "description": "Spend calendar days with friends, classmates and townspeople to strengthen Social Links and unlock stronger Persona fusion bonuses.",
+      "imageUrl": "https://images.launchbox-app.com/8e27e5c5-8bae-4822-81a7-24ad82a9be8a.png"
+     },
+     {
+      "title": "Master Persona Combat",
+      "description": "Investigate the murder case, explore themed dungeons and gather clues as the Investigation Team pursues the truth.",
+      "imageUrl": "https://images.launchbox-app.com/2da6f010-7c7d-4726-83a4-555978b389a9.png"
+     },
+     {
+      "title": "Fuse and Customize Personas",
+      "description": "Collect and fuse Personas to build coverage for elemental weaknesses, support skills and boss strategies."
+     }
+    ],
+    "worldSummary": "Inaba is a quiet rural Japanese town whose ordinary school life is disrupted by a serial murder case and a supernatural world accessed through television screens. The contrast between everyday friendships and dangerous fog-filled dungeons drives the game’s mystery.",
+    "storyChapters": [
+     {
+      "title": "Arrival in Inaba",
+      "body": "The protagonist moves to Inaba and soon discovers that a strange television world may be connected to recent murders."
+     },
+     {
+      "title": "The Investigation Team",
+      "body": "A group of students forms the Investigation Team, entering the TV World to rescue victims and confront Shadows."
+     },
+     {
+      "title": "The Search for the Truth",
+      "body": "As months pass, the team builds relationships, uncovers new suspects and moves closer to the truth behind the Midnight Channel."
+     },
+     {
+      "title": "The Final Truth",
+      "body": "Late-game revelations challenge the Investigation Team to separate convenient answers from the real truth behind Inaba’s supernatural events."
+     }
+    ],
+    "galleryImages": [
+     {
+      "url": "https://images.launchbox-app.com/6a2a28d5-59c6-4693-ae4d-4d04dfefbdc1.png",
+      "alt": "Investigation Team gameplay scene"
+     },
+     {
+      "url": "https://images.launchbox-app.com/b879a3f0-ae25-4bf8-adc6-2d5002faca73.png",
+      "alt": "Dungeon exploration and Shadows"
+     },
+     {
+      "url": "https://images.launchbox-app.com/8e27e5c5-8bae-4822-81a7-24ad82a9be8a.png",
+      "alt": "Social and school-life scene in Inaba"
+     },
+     {
+      "url": "https://images.launchbox-app.com/2da6f010-7c7d-4726-83a4-555978b389a9.png",
+      "alt": "Turn-based Persona combat"
+     },
+     {
+      "url": "https://images.launchbox-app.com/fd920538-3d14-4270-9b32-f1802b1958aa.jpg",
+      "alt": "Persona 4 Golden key artwork / background"
+     },
+     {
+      "url": "https://images.launchbox-app.com/4e97ed54-990f-4760-b61d-7f9b692c6ae6.png",
+      "alt": "Inaba exploration and character interaction"
+     },
+     {
+      "url": "https://images.launchbox-app.com/cbb06ab2-5b04-41d8-8b44-2f6373ef6805.png",
+      "alt": "Additional Persona 4 Golden gameplay scene"
+     }
+    ],
+    "features": [
+     "Turn-based Persona combat and dungeon exploration",
+     "Social Links and character relationships",
+     "Daily school-life calendar in Inaba",
+     "Quick Save support in the modern remaster",
+     "Selectable difficulty options",
+     "Japanese and English voice-over"
+    ],
+    "perfResolutionDocked": "1080p output reported",
+    "perfResolutionHandheld": "720p output reported",
+    "perfFps": "60",
+    "perfHdr": false,
+    "perfNotes": "The Switch remaster is widely measured/reviewed at 60 fps. 1080p docked and 720p handheld output are reported by secondary technical/community sources; because Nintendo does not publish rendering-resolution measurements, the fields are marked as reported output rather than claimed internal render resolution.",
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "hardwareId": "prd_acf4c89908764c62",
+      "informationStatus": "verified / measured and reviewed",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p output reported",
+       "outputResolution": "1280x720",
+       "fps": "60",
+       "fpsMin": "60",
+       "fpsMax": "60",
+       "hdr": false,
+       "mode": "Handheld",
+       "notes": "60 fps is supported and the port is consistently described as smooth. 720p handheld output is secondary-source reporting, not an official Nintendo render-resolution specification."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p output reported",
+       "outputResolution": "1920x1080",
+       "fps": "60",
+       "fpsMin": "60",
+       "fpsMax": "60",
+       "hdr": false,
+       "mode": "Docked",
+       "notes": "60 fps. 1080p docked output is secondary-source reporting; internal render resolution is not independently published by Nintendo."
+      },
+      "modes": [
+       {
+        "name": "Handheld",
+        "handheldResolution": "720p output reported",
+        "handheldFps": "60",
+        "hdr": false
+       },
+       {
+        "name": "Docked",
+        "tvResolution": "1080p output reported",
+        "tvFps": "60",
+        "hdr": false
+       }
+      ],
+      "rayTracing": false,
+      "gameVersion": "Nintendo Switch remaster",
+      "sourceName": "Nintendo Life / NintendoGalaxy / secondary resolution cross-check",
+      "verificationStatus": "verified FPS; output resolution corroborated by secondary sources",
+      "performanceNotes": "FPS is strongly supported by performance tests/reviews. Exact internal rendering resolution is intentionally not asserted."
+     }
+    ],
+    "downloadSizeGb": 9.1,
+    "requiredSpaceGb": 9.1,
+    "microSdRecommended": false,
+    "storageNotes": "Nintendo AU lists a 9.1 GB game file on both Nintendo Switch and Nintendo Switch 2 backward compatibility.",
+    "languagesAudio": [
+     "Japanese",
+     "English"
+    ],
+    "languagesText": [
+     "Chinese (Simplified)",
+     "Chinese (Traditional)",
+     "English",
+     "Japanese",
+     "French",
+     "German",
+     "Italian",
+     "Spanish",
+     "Korean"
+    ],
+    "arabicSupport": false,
+    "mpLocalPlayers": false,
+    "mpOnlinePlayers": false,
+    "mpCoop": false,
+    "mpCompetitive": false,
+    "mpSplitScreen": false,
+    "mpLocalWireless": false,
+    "completionMain": 67,
+    "completionAll": 133,
+    "faq": [
+     {
+      "q": "Does Persona 4 Golden support Simplified Chinese on Switch?",
+      "a": "Yes. Nintendo lists Simplified Chinese and Traditional Chinese among the supported Switch languages."
+     },
+     {
+      "q": "Does Persona 4 Golden work on Nintendo Switch 2?",
+      "a": "Yes. Nintendo lists Nintendo Switch 2 compatibility as supported, but the game remains the Switch version running through backward compatibility."
+     },
+     {
+      "q": "Is Persona 4 Golden multiplayer?",
+      "a": "No. The game is primarily single-player. Nintendo lists online-supported functions, but they are not competitive or cooperative multiplayer."
+     },
+     {
+      "q": "Does the supplier listing include a DLC product option?",
+      "a": "No. The supplier data contains only Regular / 普通版 and Standard / 标准版. Under the store extraction rule, this creates only Offline Standard and Online Standard product types."
+     }
+    ],
+    "reviews": [
+     {
+      "source": "Metacritic",
+      "score": "90/100",
+      "url": "https://www.metacritic.com/game/persona-4-golden/"
+     },
+     {
+      "source": "OpenCritic",
+      "score": "88/100",
+      "url": "https://opencritic.com/game/14302/persona-4-golden"
+     },
+     {
+      "source": "Metacritic user score",
+      "score": "9.1/10",
+      "url": "https://www.metacritic.com/game/persona-4-golden/"
+     }
+    ],
+    "timeline": [
+     {
+      "date": "2008-07-10",
+      "title": "Original Persona 4 released in Japan"
+     },
+     {
+      "date": "2012-06-14",
+      "title": "Persona 4 Golden debuted on PlayStation Vita in Japan"
+     },
+     {
+      "date": "2023-01-19",
+      "title": "Persona 4 Golden released for Nintendo Switch"
+     }
+    ],
+    "seriesName": "Persona",
+    "seriesEntries": [
+     "Persona 3 Portable",
+     "Persona 5 Royal",
+     "Persona 5 Strikers",
+     "Persona 3 Reload",
+     "Persona 4 Arena Ultimax"
+    ],
+    "studioName": "ATLUS",
+    "studioUrl": "https://www.atlus.com/",
+    "studioLocation": "Tokyo, Japan",
+    "studioAbout": "ATLUS is the Japanese developer and publisher group behind the Persona series. Persona 4 Golden was developed by ATLUS and is published on Nintendo Switch by SEGA in many regions.",
+    "setupNeeds": [
+     "Nintendo Switch family system",
+     "Nintendo Account for digital purchase and online features",
+     "Nintendo Switch Online membership for online-supported functions and cloud backup"
+    ],
+    "sources": [
+     {
+      "name": "Nintendo Australia — Persona 4 Golden",
+      "url": "https://www.nintendo.com/au/games/nintendo-switch/persona-4-golden/"
+     },
+     {
+      "name": "Nintendo UK — Persona 4 Golden",
+      "url": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-download-software/Persona-4-Golden-2232935.html?nsuid=70010000060321"
+     },
+     {
+      "name": "Deku Deals — metadata and aggregate scores",
+      "url": "https://www.dekudeals.com/items/persona-4-golden"
+     },
+     {
+      "name": "Nintendo Life — Persona 4 Golden review / performance",
+      "url": "https://www.nintendolife.com/reviews/switch-eshop/persona-4-golden"
+     },
+     {
+      "name": "LaunchBox Games Database — Switch media",
+      "url": "https://gamesdb.launchbox-app.com/games/details/153043-persona-4-golden"
+     },
+     {
+      "name": "NintendoGalaxy — Switch frame-rate test",
+      "url": "https://www.youtube.com/watch?v=TKPcOXQh9w0"
+     }
+    ],
+    "boxContentsList": "[Circular]",
+    "image": "/api/files/products/prd_0635e35ca407487d/cover-51493c41e6d2f9b8.jpg",
+    "banner": "/api/files/products/prd_0635e35ca407487d/banner-0-d3c703d65f84d31b.jpg",
+    "schemaId": "",
+    "createdAt": "2026-08-26T22:09:08.526Z",
+    "created_at": "2026-08-26T22:09:08.526Z",
+    "updatedAt": "2026-08-26T22:09:08.526Z",
+    "updated_at": "2026-08-26T22:09:08.526Z",
+    "badgeEn": "وفر 40%",
+    "badgeKu": "وفر 40%",
+    "featuresEn": [
+     "Turn-based Persona combat and dungeon exploration",
+     "Social Links and character relationships",
+     "Daily school-life calendar in Inaba",
+     "Quick Save support in the modern remaster",
+     "Selectable difficulty options",
+     "Japanese and English voice-over"
+    ],
+    "featuresKu": [
+     "Turn-based Persona combat and dungeon exploration",
+     "Social Links and character relationships",
+     "Daily school-life calendar in Inaba",
+     "Quick Save support in the modern remaster",
+     "Selectable difficulty options",
+     "Japanese and English voice-over"
+    ],
+    "boxFrontUrl": "https://images.launchbox-app.com/r2_12e63a2e-6797-4e7b-8c17-79ea38470568.jpg",
+    "sales": 0,
+    "images": [],
+    "modes": []
+   }
+  },
+  {
+   "id": "prd_3a93e24db910403d",
+   "slug": "persona-5-royal",
+   "title": "Persona 5 Royal",
+   "platform": "switch1",
+   "isHidden": false,
+   "hash": "ef142a4d27ca52a1d565fe3ff2f9aded5e64d22f88824eb60195f7e5403ab691",
+   "images": [
+    {
+     "role": "front-box",
+     "field": "cartridgeImage",
+     "url": "https://banan.to/api/files/products/prd_3a93e24db910403d/front-55c2db5871e8cf25.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 238876,
+     "width": 921,
+     "height": 1499,
+     "thumb": "review-workdir/thumbs/batch-018/persona-5-royal__front-box-0.png"
+    },
+    {
+     "role": "front-box",
+     "field": "box_front_url",
+     "url": "https://images.launchbox-app.com/dd27efb2-674d-4dd4-b366-d4c2ab74e1ff.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 238876,
+     "width": 921,
+     "height": 1499,
+     "thumb": "review-workdir/thumbs/batch-018/persona-5-royal__front-box-1.png"
+    },
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://banan.to/api/files/products/prd_3a93e24db910403d/square-2222cb20eb7c471c.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 16364,
+     "width": 225,
+     "height": 225,
+     "thumb": "review-workdir/thumbs/batch-018/persona-5-royal__square-card-2.png"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://banan.to/api/files/products/prd_3a93e24db910403d/banner-0-684bd8b00abcbf6d.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 1060078,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-018/persona-5-royal__detail-cover-3.png"
+    },
+    {
+     "role": "3d-texture",
+     "field": "coverHiResImage",
+     "url": "https://banan.to/api/files/products/prd_3a93e24db910403d/3d-texture-ae0816618f7a604c.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 750424,
+     "width": 2473,
+     "height": 1902,
+     "thumb": "review-workdir/thumbs/batch-018/persona-5-royal__3d-texture-4.png"
+    },
+    {
+     "role": "listing",
+     "field": "image",
+     "url": "https://banan.to/api/files/products/prd_3a93e24db910403d/banner-0-684bd8b00abcbf6d.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 1060078,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-018/persona-5-royal__listing-5.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[0]",
+     "url": "https://banan.to/api/files/products/prd_3a93e24db910403d/banner-0-684bd8b00abcbf6d.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 1060078,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-018/persona-5-royal__banner-6.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[1]",
+     "url": "https://banan.to/api/files/products/prd_3a93e24db910403d/banner-1-0a241b140ef01af1.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 409355,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-018/persona-5-royal__banner-7.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[2]",
+     "url": "https://banan.to/api/files/products/prd_3a93e24db910403d/banner-2-81a408cc7662bdfe.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 357545,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-018/persona-5-royal__banner-8.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[3]",
+     "url": "https://banan.to/api/files/products/prd_3a93e24db910403d/banner-3-0fa802388f919d6c.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 421751,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-018/persona-5-royal__banner-9.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://images.launchbox-app.com/b82863e6-6e80-4824-b105-0e21a7196fb5.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 515694,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-018/persona-5-royal__gallery-10.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[1]",
+     "url": "https://images.launchbox-app.com/b43747c0-245c-4896-a84b-38058327e806.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 558467,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-018/persona-5-royal__gallery-11.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[2]",
+     "url": "https://images.launchbox-app.com/4063fd84-6dc2-431b-9dc7-77ca04e63808.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 373458,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-018/persona-5-royal__gallery-12.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[3]",
+     "url": "https://images.launchbox-app.com/5de2e762-e555-4da5-9c4c-c1ea33ab3cc6.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 509895,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-018/persona-5-royal__gallery-13.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[4]",
+     "url": "https://images.launchbox-app.com/928cf4cd-0e57-46ab-9283-c83f267e9490.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 522273,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-018/persona-5-royal__gallery-14.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[5]",
+     "url": "https://images.launchbox-app.com/82f0e508-c70e-4467-a5b7-de5fb854aa0c.png",
+     "status": 200,
+     "contentType": "image/png",
+     "bytes": 304135,
+     "width": 392,
+     "height": 567,
+     "thumb": "review-workdir/thumbs/batch-018/persona-5-royal__gallery-15.png"
+    }
+   ],
+   "record": {
+    "title": "Persona 5 Royal",
+    "titleEn": "Persona 5 Royal",
+    "titleKu": "Persona 5 Royal",
+    "slug": "persona-5-royal",
+    "description": "Join the Phantom Thieves of Hearts, infiltrate the distorted Palaces of corrupt adults, build relationships across Tokyo, fuse Personas and plan stylish turn-based heists. Royal expands the original Persona 5 with additional characters, story content and systems.",
+    "descriptionEn": "Join the Phantom Thieves of Hearts, infiltrate the distorted Palaces of corrupt adults, build relationships across Tokyo, fuse Personas and plan stylish turn-based heists. Royal expands the original Persona 5 with additional characters, story content and systems.",
+    "descriptionKu": "Join the Phantom Thieves of Hearts, infiltrate the distorted Palaces of corrupt adults, build relationships across Tokyo, fuse Personas and plan stylish turn-based heists. Royal expands the original Persona 5 with additional characters, story content and systems.",
+    "cartridgeImage": "/api/files/products/prd_3a93e24db910403d/front-55c2db5871e8cf25.jpg",
+    "nintendoCardImage": "/api/files/products/prd_3a93e24db910403d/square-2222cb20eb7c471c.webp",
+    "coverHiResImage": "/api/files/products/prd_3a93e24db910403d/3d-texture-ae0816618f7a604c.webp",
+    "coverImage": "/api/files/products/prd_3a93e24db910403d/banner-0-684bd8b00abcbf6d.jpg",
+    "bannerImages": [
+     "/api/files/products/prd_3a93e24db910403d/banner-0-684bd8b00abcbf6d.jpg",
+     "/api/files/products/prd_3a93e24db910403d/banner-1-0a241b140ef01af1.jpg",
+     "/api/files/products/prd_3a93e24db910403d/banner-2-81a408cc7662bdfe.jpg",
+     "/api/files/products/prd_3a93e24db910403d/banner-3-0fa802388f919d6c.jpg",
+     "/api/files/products/prd_3a93e24db910403d/banner-4-47c6bf3229838fc8.jpg",
+     "/api/files/products/prd_3a93e24db910403d/banner-5-300fd6f65fdb4005.jpg",
+     "/api/files/products/prd_3a93e24db910403d/banner-6-3e73e1fb3a78fd4c.jpg"
+    ],
+    "gallery": [],
+    "youtubeTrailer": "https://www.youtube.com/watch?v=MDSXGIigC3Q",
+    "releaseDate": "2022-10-21",
+    "ageRating": "ESRB Mature",
+    "metacriticRating": 94,
+    "genres": [
+     "Role-Playing Game",
+     "JRPG",
+     "Turn-Based RPG",
+     "Social Simulation"
+    ],
+    "platform": "switch1",
+    "size": 14.2,
+    "numberOfPlayers": "1",
+    "supportedLanguages": "Supplier selection supplied by user: Simplified Chinese. Nintendo AU western listing: English, French, German, Italian, Spanish. Chinese support is preserved as supplier regional/SKU information and is not generalized to all western copies.",
+    "hardwareModel": "",
+    "colorEdition": "",
+    "storageCapacity": "",
+    "screenSpecs": "",
+    "batteryLife": "",
+    "boxContents": [],
+    "boxContentsText": "",
+    "warrantyCondition": "",
+    "connectivity": "",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "Global / region-dependent",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "",
+    "redemptionSteps": [],
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 8000,
+    "cost": 1250,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": false,
+    "displayOrder": 0,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "Offline Account",
+      "description": "Offline account access supplied as Regular / 普通版.",
+      "stock": 999999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_account",
+      "name": "Online Account",
+      "description": "Online account access supplied as Standard / 标准版.",
+      "stock": 999999,
+      "isInfiniteStock": true
+     }
+    ],
+    "types": [
+     {
+      "id": "standard_offline",
+      "name": "Standard Offline",
+      "optionId": "offline_account",
+      "price": 12500,
+      "cost": 1250,
+      "description": "Supplier Regular / 普通版 converted to IQD using 1 CNY = 220 IQD and rounded down to nearest 250 IQD.",
+      "stock": 999999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "standard_online",
+      "name": "Standard Online",
+      "optionId": "online_account",
+      "price": "28000",
+      "cost": 14250,
+      "description": "Supplier Standard / 标准版 converted to IQD using 1 CNY = 220 IQD and rounded down to nearest 250 IQD.",
+      "stock": 999999,
+      "isInfiniteStock": true
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "active",
+    "kind": "account",
+    "trade_value_iqd": 0,
+    "store_offer_bonus_iqd": 0,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "id": "prd_3a93e24db910403d",
+    "schema_version": 1,
+    "titleAr": "بيرسونا 5 رويال",
+    "compatibility": [
+     "Nintendo Switch",
+     "Nintendo Switch 2 (backward compatibility)",
+     "Nintendo Switch Lite"
+    ],
+    "edition": "Standard",
+    "developer": "P-Studio / ATLUS",
+    "publisher": "SEGA",
+    "metacriticUrl": "https://www.metacritic.com/game/persona-5-royal/",
+    "opencriticRating": 94,
+    "userScore": 8.8,
+    "price_usd": 59.99,
+    "officialUrl": "https://persona.atlus.com/p5r/?lang=en",
+    "eshopUrl": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-download-software/Persona-5-Royal-2232781.html",
+    "gameIsOffline": true,
+    "gameIsOnline": true,
+    "description_short": "A massive turn-based JRPG about the Phantom Thieves of Hearts, combining stylish dungeon heists, school life, Confidants and Persona fusion.",
+    "description_ar": "انضم إلى اللصوص الوهميين وتسلل إلى قصور تنشأ من رغبات الفاسدين لتغيير قلوبهم. خارج العالم الغامض تعيش عامًا دراسيًا في طوكيو، وتبني Confidants، وتطوّر قدراتك، وتدمج الـPersona ضمن واحدة من أضخم تجارب الـJRPG.",
+    "box_front_url": "https://images.launchbox-app.com/dd27efb2-674d-4dd4-b366-d4c2ab74e1ff.jpg",
+    "box_back_url": "https://images.launchbox-app.com/8568b598-d14f-4a1f-be70-1133acdb8e7a.jpg",
+    "videos": [
+     {
+      "title": "Persona 5 Royal — Trailer",
+      "url": "https://www.youtube.com/watch?v=MDSXGIigC3Q"
+     }
+    ],
+    "nintendoEshopUrl": "https://www.nintendo.com/au/games/nintendo-switch/persona-5-royal/",
+    "nintendoOnlineRequired": true,
+    "nintendoCloudSaves": true,
+    "nintendoGameKeyCard": false,
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": true,
+    "nintendoPlayModes": "TV / Tabletop / Handheld",
+    "nintendoNotes": "Nintendo AU confirms a 14.2 GB Switch version, Nintendo Switch 2 backward compatibility, one local and one online-supported player slot, all three play modes, Save Data Cloud, English/Japanese voice-over, and more than 40 previously released DLC items included in the Switch release.\n\nSupplier selection supplied by user: Simplified Chinese. The western Nintendo AU listing does not include Chinese in its text-language list, so Chinese is preserved as supplier regional/SKU information.\n\nSupplier variants: Regular / 普通版 ¥6.8 (pre-discount ¥10); Standard / 标准版 ¥65.6 (pre-discount ¥70). Converted costs: Regular 1,250 IQD; Standard 14,250 IQD. Only two supplier variants exist, so no separate DLC product types are created because the included DLC is part of the Switch base release rather than a separate supplier purchase option.",
+    "switch2Enhanced": false,
+    "switch2Exclusive": false,
+    "switch2Features": [
+     "Nintendo Switch 2 backward compatibility supported",
+     "No native Switch 2 Edition",
+     "No official 60 fps enhancement patch",
+     "Backward compatibility can reduce loading slightly"
+    ],
+    "tagline": "Don the mask and steal the hearts of the corrupt.",
+    "fitFor": [
+     "Players who want a very long story-rich JRPG",
+     "Fans of turn-based combat and Persona fusion",
+     "Players who enjoy social simulation and character relationships",
+     "Players who want 100+ hours of RPG content"
+    ],
+    "notFitFor": [
+     "Players wanting a short campaign",
+     "Players who dislike extensive dialogue and calendar systems",
+     "Players looking for real-time action combat",
+     "Players sensitive to sub-native 3D resolution on Switch"
+    ],
+    "playTimeMain": 101.5,
+    "playTimeFull": 140.5,
+    "editionsList": [
+     {
+      "name": "Persona 5 Royal for Nintendo Switch",
+      "coverUrl": "https://images.launchbox-app.com/dd27efb2-674d-4dd4-b366-d4c2ab74e1ff.jpg",
+      "contents": [
+       {
+        "label": "Complete Persona 5 Royal base game"
+       },
+       {
+        "label": "More than 40 previously released DLC items included"
+       },
+       {
+        "label": "English and Japanese voice-over"
+       }
+      ]
+     }
+    ],
+    "gameplayPillars": [
+     {
+      "title": "Plan Palace Heists",
+      "description": "Plan turn-based encounters around weaknesses, Baton Pass chains, technical damage, gunfire and Persona abilities.",
+      "imageUrl": "https://images.launchbox-app.com/5de2e762-e555-4da5-9c4c-c1ea33ab3cc6.jpg"
+     },
+     {
+      "title": "Master Turn-Based Combat",
+      "description": "Explore handcrafted Palaces and Mementos, solve traversal puzzles, ambush enemies and secure routes to each Treasure.",
+      "imageUrl": "https://images.launchbox-app.com/b82863e6-6e80-4824-b105-0e21a7196fb5.jpg"
+     },
+     {
+      "title": "Live a Year in Tokyo",
+      "description": "Spend calendar time with Confidants, jobs, study and activities that improve social stats and unlock combat benefits.",
+      "imageUrl": "https://images.launchbox-app.com/b43747c0-245c-4896-a84b-38058327e806.jpg"
+     },
+     {
+      "title": "Fuse Personas and Grow Confidants",
+      "description": "Persona fusion, social stats and Confidant abilities reinforce one another, rewarding careful use of each day in the calendar."
+     }
+    ],
+    "worldSummary": "Modern Tokyo forms the everyday half of the game, while the Metaverse contains Palaces shaped by corrupted desires and the sprawling Mementos dungeon. The two worlds interlock through a calendar where choices influence combat progression.",
+    "storyChapters": [
+     {
+      "title": "The Birth of the Phantom Thieves",
+      "body": "The protagonist arrives in Tokyo on probation and awakens to Persona power after discovering a Palace born from a corrupt adult’s desires."
+     },
+     {
+      "title": "Changing Hearts Across Tokyo",
+      "body": "The Phantom Thieves grow into a public phenomenon as they target increasingly powerful figures and face greater consequences."
+     },
+     {
+      "title": "Royal’s Expanded Final Arc",
+      "body": "Royal expands the final portion of the story with new relationships, conflicts and an additional major narrative arc."
+     },
+     {
+      "title": "The Third Semester",
+      "body": "Royal’s expanded third-semester storyline presents a new reality and asks the Phantom Thieves to confront difficult questions about happiness and choice."
+     }
+    ],
+    "galleryImages": [
+     {
+      "url": "https://images.launchbox-app.com/b82863e6-6e80-4824-b105-0e21a7196fb5.jpg",
+      "alt": "Persona 5 Royal Phantom Thieves artwork"
+     },
+     {
+      "url": "https://images.launchbox-app.com/b43747c0-245c-4896-a84b-38058327e806.jpg",
+      "alt": "Tokyo / Phantom Thieves key art"
+     },
+     {
+      "url": "https://images.launchbox-app.com/4063fd84-6dc2-431b-9dc7-77ca04e63808.jpg",
+      "alt": "Persona 5 Royal character artwork"
+     },
+     {
+      "url": "https://images.launchbox-app.com/5de2e762-e555-4da5-9c4c-c1ea33ab3cc6.jpg",
+      "alt": "Palace / Metaverse themed artwork"
+     },
+     {
+      "url": "https://images.launchbox-app.com/928cf4cd-0e57-46ab-9283-c83f267e9490.jpg",
+      "alt": "Persona 5 Royal group artwork"
+     },
+     {
+      "url": "https://images.launchbox-app.com/82f0e508-c70e-4467-a5b7-de5fb854aa0c.png",
+      "alt": "Nintendo Switch cartridge artwork"
+     }
+    ],
+    "features": [
+     "Turn-based combat built around weaknesses, Baton Pass and technical attacks",
+     "Palace infiltration and Mementos exploration",
+     "Confidant relationships and school-life calendar",
+     "Persona fusion and extensive build customization",
+     "Mementos exploration alongside handcrafted Palaces",
+     "More than 40 previously released DLC items included"
+    ],
+    "perfResolutionDocked": "810p internal 3D rendering reported; UI at 1080p output",
+    "perfResolutionHandheld": "540p internal 3D rendering reported; UI at 720p output",
+    "perfFps": "30",
+    "perfHdr": false,
+    "perfNotes": "Technical analysis reports a stable locked 30 fps. The 3D game renders at approximately 810p docked and 540p handheld with UI/output elements at native 1080p/720p respectively. The rendering resolution is fixed rather than dynamically scaling in the cited analysis.",
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "hardwareId": "prd_acf4c89908764c62",
+      "informationStatus": "measured / Digital Foundry technical reporting",
+      "handheld": {
+       "supported": true,
+       "resolution": "540p 3D rendering",
+       "resolutionDynamic": false,
+       "renderingResolution": "approximately 960x540 for 3D content",
+       "outputResolution": "1280x720 UI/output",
+       "fps": "30",
+       "fpsMin": "30",
+       "fpsMax": "30",
+       "hdr": false,
+       "mode": "Handheld",
+       "notes": "3D content is approximately 540p while UI/output remains 720p. Frame rate is a stable 30 fps."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "810p 3D rendering",
+       "resolutionDynamic": false,
+       "renderingResolution": "approximately 1440x810 for 3D content",
+       "outputResolution": "1920x1080 UI/output",
+       "fps": "30",
+       "fpsMin": "30",
+       "fpsMax": "30",
+       "hdr": false,
+       "mode": "Docked",
+       "notes": "3D content is approximately 810p while UI/output is 1080p. Stable 30 fps."
+      },
+      "rayTracing": false,
+      "sourceName": "Digital Foundry technical analysis / cross-source reporting",
+      "verificationStatus": "verified stable 30 fps and fixed sub-native 3D rendering",
+      "performanceNotes": "Performance is highly stable; the principal compromise is reduced 3D rendering resolution and some asset quality compared with more powerful platforms."
+     }
+    ],
+    "downloadSizeGb": 14.2,
+    "requiredSpaceGb": 14.2,
+    "microSdRecommended": false,
+    "storageNotes": "Nintendo AU lists a 14.2 GB game file.",
+    "languagesAudio": [
+     "English",
+     "Japanese"
+    ],
+    "languagesText": [
+     "Chinese (Simplified) — supplier regional SKU",
+     "English",
+     "French",
+     "German",
+     "Italian",
+     "Spanish"
+    ],
+    "arabicSupport": false,
+    "mpLocalPlayers": false,
+    "mpOnlinePlayers": false,
+    "mpCoop": false,
+    "mpCompetitive": false,
+    "mpSplitScreen": false,
+    "mpLocalWireless": false,
+    "dlc": [
+     {
+      "name": "40+ previously released Persona 5 Royal DLC items included",
+      "description": "Nintendo states that the Switch release includes more than 40 items of previously released downloadable content from Persona 5 Royal."
+     }
+    ],
+    "completionMain": 101.5,
+    "completionAll": 140.5,
+    "faq": [
+     {
+      "q": "Does Persona 5 Royal support Simplified Chinese?",
+      "a": "The supplied seller option says Simplified Chinese. Nintendo AU’s western product page does not list Chinese, so the file treats this as region/SKU-dependent language information."
+     },
+     {
+      "q": "Does Persona 5 Royal work on Nintendo Switch 2?",
+      "a": "Yes. Nintendo lists the game as compatible with Nintendo Switch 2, but it runs as the Switch version rather than a native Switch 2 Edition."
+     },
+     {
+      "q": "Is Persona 5 Royal multiplayer?",
+      "a": "The main game is single-player. Nintendo lists some online-supported functionality, but there is no cooperative or competitive multiplayer campaign."
+     },
+     {
+      "q": "Why is there no DLC purchase type even though 40+ DLC items are listed?",
+      "a": "Nintendo states that the Switch release already includes more than 40 previously released DLC items. The supplier data also contains only two variants, so the storefront correctly keeps only Standard Offline and Standard Online product types."
+     }
+    ],
+    "reviews": [
+     {
+      "source": "Metacritic",
+      "score": "94/100",
+      "url": "https://www.metacritic.com/game/persona-5-royal/"
+     },
+     {
+      "source": "OpenCritic",
+      "score": "94/100",
+      "url": "https://opencritic.com/game/8784/persona-5-royal"
+     },
+     {
+      "source": "Metacritic user score",
+      "score": "8.8/10",
+      "url": "https://www.metacritic.com/game/persona-5-royal/"
+     }
+    ],
+    "timeline": [
+     {
+      "date": "2019-10-31",
+      "title": "Persona 5 Royal released in Japan"
+     },
+     {
+      "date": "2020-03-31",
+      "title": "Persona 5 Royal released internationally on PlayStation 4"
+     },
+     {
+      "date": "2022-10-21",
+      "title": "Persona 5 Royal released for Nintendo Switch"
+     }
+    ],
+    "seriesName": "Persona",
+    "seriesEntries": [
+     "Persona 5 Strikers",
+     "Persona 4 Golden",
+     "Persona 3 Portable",
+     "Persona 4 Arena Ultimax",
+     "Persona 3 Reload"
+    ],
+    "studioName": "P-Studio / ATLUS",
+    "studioUrl": "https://p-ch.jp/",
+    "studioLocation": "Tokyo, Japan",
+    "studioAbout": "P-Studio is ATLUS’s internal Persona development team, responsible for Persona 5 Royal and much of the modern Persona series.",
+    "setupNeeds": [
+     "Nintendo Switch family system",
+     "Nintendo Account for digital purchase and network features",
+     "Nintendo Switch Online membership required for online-supported features and cloud backup"
+    ],
+    "sources": [
+     {
+      "name": "Nintendo Australia — Persona 5 Royal",
+      "url": "https://www.nintendo.com/au/games/nintendo-switch/persona-5-royal/"
+     },
+     {
+      "name": "Deku Deals — metadata and aggregate scores",
+      "url": "https://www.dekudeals.com/items/persona-5-royal"
+     },
+     {
+      "name": "Digital Foundry / technical analysis reference",
+      "url": "https://www.youtube.com/watch?v=6XlIpSOI40Q"
+     },
+     {
+      "name": "RPG Site — Switch 2 backward-compatibility testing",
+      "url": "https://www.rpgsite.net/feature/18157-nintendo-switch-2-backwards-compatibility-testing-major-jrpgs-tested"
+     },
+     {
+      "name": "LaunchBox Games Database — Switch media",
+      "url": "https://gamesdb.launchbox-app.com/games/details/153767-persona-5-royal"
+     }
+    ],
+    "boxContentsList": "[Circular]",
+    "image": "/api/files/products/prd_3a93e24db910403d/banner-0-684bd8b00abcbf6d.jpg",
+    "banner": "/api/files/products/prd_3a93e24db910403d/banner-0-684bd8b00abcbf6d.jpg",
+    "schemaId": "",
+    "createdAt": "2026-08-26T22:01:59.073Z",
+    "created_at": "2026-08-26T22:01:59.073Z",
+    "updatedAt": "2026-08-26T22:01:59.073Z",
+    "updated_at": "2026-08-26T22:01:59.073Z",
+    "badgeEn": "وفر 40%",
+    "badgeKu": "وفر 40%",
+    "featuresEn": [
+     "Turn-based combat built around weaknesses, Baton Pass and technical attacks",
+     "Palace infiltration and Mementos exploration",
+     "Confidant relationships and school-life calendar",
+     "Persona fusion and extensive build customization",
+     "Mementos exploration alongside handcrafted Palaces",
+     "More than 40 previously released DLC items included"
+    ],
+    "featuresKu": [
+     "Turn-based combat built around weaknesses, Baton Pass and technical attacks",
+     "Palace infiltration and Mementos exploration",
+     "Confidant relationships and school-life calendar",
+     "Persona fusion and extensive build customization",
+     "Mementos exploration alongside handcrafted Palaces",
+     "More than 40 previously released DLC items included"
+    ],
+    "boxFrontUrl": "https://images.launchbox-app.com/dd27efb2-674d-4dd4-b366-d4c2ab74e1ff.jpg",
+    "sales": 0,
+    "images": [],
+    "modes": []
+   }
+  },
+  {
+   "id": "prd_96ddda9955af40e8",
+   "slug": "persona-5-strikers",
+   "title": "Persona 5 Strikers",
+   "platform": "switch1",
+   "isHidden": false,
+   "hash": "72124046e9dbb2070ec9295afc54a3b88ab1c007326e28428ed1dc0e97785b76",
+   "images": [
+    {
+     "role": "front-box",
+     "field": "cartridgeImage",
+     "url": "https://banan.to/api/files/products/prd_96ddda9955af40e8/front-ced50028e195722e.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 724853,
+     "width": 999,
+     "height": 1621,
+     "thumb": "review-workdir/thumbs/batch-018/persona-5-strikers__front-box-0.png"
+    },
+    {
+     "role": "front-box",
+     "field": "box_front_url",
+     "url": "https://images.launchbox-app.com/8a72a795-5a25-4136-bebb-a5c36b5c5454.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 724853,
+     "width": 999,
+     "height": 1621,
+     "thumb": "review-workdir/thumbs/batch-018/persona-5-strikers__front-box-1.png"
+    },
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://banan.to/api/files/products/prd_96ddda9955af40e8/square-3b0813a24a232ba3.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 114674,
+     "width": 570,
+     "height": 578,
+     "thumb": "review-workdir/thumbs/batch-018/persona-5-strikers__square-card-2.png"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://banan.to/api/files/products/prd_96ddda9955af40e8/cover-2057a93572c69389.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 731963,
+     "width": 2400,
+     "height": 1350,
+     "thumb": "review-workdir/thumbs/batch-018/persona-5-strikers__detail-cover-3.png"
+    },
+    {
+     "role": "3d-texture",
+     "field": "coverHiResImage",
+     "url": "https://banan.to/api/files/products/general/image-e9a232ce1119b016.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 7930000,
+     "width": 4707,
+     "height": 3619,
+     "thumb": "review-workdir/thumbs/batch-018/persona-5-strikers__3d-texture-4.png"
+    },
+    {
+     "role": "listing",
+     "field": "image",
+     "url": "https://banan.to/api/files/products/prd_96ddda9955af40e8/cover-2057a93572c69389.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 731963,
+     "width": 2400,
+     "height": 1350,
+     "thumb": "review-workdir/thumbs/batch-018/persona-5-strikers__listing-5.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[0]",
+     "url": "https://banan.to/api/files/products/prd_96ddda9955af40e8/banner-0-3e845eb398a1b6e7.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 352086,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-018/persona-5-strikers__banner-6.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[1]",
+     "url": "https://banan.to/api/files/products/prd_96ddda9955af40e8/banner-1-4133bc9ea18947eb.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 431849,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-018/persona-5-strikers__banner-7.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[2]",
+     "url": "https://banan.to/api/files/products/prd_96ddda9955af40e8/banner-2-b19dc15e52c218a2.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 433188,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-018/persona-5-strikers__banner-8.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[3]",
+     "url": "https://banan.to/api/files/products/prd_96ddda9955af40e8/banner-3-f3a9c7d300071e32.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 380955,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-018/persona-5-strikers__banner-9.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://images.launchbox-app.com/e69d5887-9081-4ee4-b22a-1e64bc178333.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 1352025,
+     "width": 3840,
+     "height": 2160,
+     "thumb": "review-workdir/thumbs/batch-018/persona-5-strikers__gallery-10.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[1]",
+     "url": "https://images.launchbox-app.com/ad304e13-e26c-4bab-8a9c-c882c1ad0131.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 436481,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-018/persona-5-strikers__gallery-11.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[2]",
+     "url": "https://images.launchbox-app.com/0c6633cb-39fd-4fe7-9877-16374e35dfcb.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 431849,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-018/persona-5-strikers__gallery-12.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[3]",
+     "url": "https://images.launchbox-app.com/076e94f3-8675-4de8-af70-9c0952f16333.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 437349,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-018/persona-5-strikers__gallery-13.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[4]",
+     "url": "https://images.launchbox-app.com/a4c902e4-5d11-4f56-ac94-82108b0cbf5f.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 1859778,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-018/persona-5-strikers__gallery-14.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[5]",
+     "url": "https://images.launchbox-app.com/80213ca6-3c02-4f39-9d70-22316000fd9a.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 433188,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-018/persona-5-strikers__gallery-15.png"
+    }
+   ],
+   "record": {
+    "title": "Persona 5 Strikers",
+    "titleEn": "Persona 5 Strikers",
+    "titleKu": "Persona 5 Strikers",
+    "slug": "persona-5-strikers",
+    "description": "Rejoin the Phantom Thieves for a summer trip across Japan as mysterious Jails begin stealing people’s desires. Switch characters in real time, summon Personas and fight large groups of enemies while investigating each city’s crisis.",
+    "descriptionEn": "Rejoin the Phantom Thieves for a summer trip across Japan as mysterious Jails begin stealing people’s desires. Switch characters in real time, summon Personas and fight large groups of enemies while investigating each city’s crisis.",
+    "descriptionKu": "Rejoin the Phantom Thieves for a summer trip across Japan as mysterious Jails begin stealing people’s desires. Switch characters in real time, summon Personas and fight large groups of enemies while investigating each city’s crisis.",
+    "cartridgeImage": "/api/files/products/prd_96ddda9955af40e8/front-ced50028e195722e.jpg",
+    "nintendoCardImage": "/api/files/products/prd_96ddda9955af40e8/square-3b0813a24a232ba3.jpg",
+    "coverHiResImage": "/api/files/products/general/image-e9a232ce1119b016.jpg",
+    "coverImage": "/api/files/products/prd_96ddda9955af40e8/cover-2057a93572c69389.jpg",
+    "bannerImages": [
+     "/api/files/products/prd_96ddda9955af40e8/banner-0-3e845eb398a1b6e7.jpg",
+     "/api/files/products/prd_96ddda9955af40e8/banner-1-4133bc9ea18947eb.jpg",
+     "/api/files/products/prd_96ddda9955af40e8/banner-2-b19dc15e52c218a2.jpg",
+     "/api/files/products/prd_96ddda9955af40e8/banner-3-f3a9c7d300071e32.jpg",
+     "/api/files/products/prd_96ddda9955af40e8/banner-4-dbac56cef1feeeef.jpg",
+     "/api/files/products/prd_96ddda9955af40e8/banner-5-bf6be47ccd10beff.jpg",
+     "/api/files/products/prd_96ddda9955af40e8/banner-6-821f3512edc4c267.jpg"
+    ],
+    "gallery": [],
+    "youtubeTrailer": "https://www.youtube.com/watch?v=yDaG0fE6HHw",
+    "releaseDate": "2021-02-23",
+    "ageRating": "ESRB Mature",
+    "metacriticRating": 81,
+    "genres": [
+     "Action",
+     "Role-Playing Game",
+     "Action RPG",
+     "Hack and Slash"
+    ],
+    "platform": "switch1",
+    "size": 12,
+    "numberOfPlayers": "1",
+    "supportedLanguages": "Supplier selection supplied by user: Traditional Chinese. Nintendo Australia western listing: French, German, Italian, Spanish, English. Chinese availability therefore appears region/SKU-dependent and is not silently treated as a language of the western Nintendo listing.",
+    "hardwareModel": "",
+    "colorEdition": "",
+    "storageCapacity": "",
+    "screenSpecs": "",
+    "batteryLife": "",
+    "boxContents": [],
+    "boxContentsText": "",
+    "warrantyCondition": "",
+    "connectivity": "",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "Global / region-dependent",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "",
+    "redemptionSteps": [],
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 7500,
+    "cost": 1250,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": false,
+    "displayOrder": 0,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "Offline Account",
+      "description": "Offline account access supplied as Regular / 普通版.",
+      "stock": 999999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_account",
+      "name": "Online Account",
+      "description": "Online account access supplied as Standard / 标准版.",
+      "stock": 999999,
+      "isInfiniteStock": true
+     }
+    ],
+    "types": [
+     {
+      "id": "standard_offline",
+      "name": "Standard Offline",
+      "optionId": "offline_account",
+      "price": 7500,
+      "cost": 1250,
+      "description": "Supplier Regular / 普通版 converted to IQD using 1 CNY = 220 IQD and rounded down to nearest 250 IQD.",
+      "stock": 999999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "standard_online",
+      "name": "Standard Online",
+      "optionId": "online_account",
+      "price": 12000,
+      "cost": 5750,
+      "description": "Supplier Standard / 标准版 converted to IQD using 1 CNY = 220 IQD and rounded down to nearest 250 IQD.",
+      "stock": 999999,
+      "isInfiniteStock": true
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "active",
+    "kind": "account",
+    "trade_value_iqd": 0,
+    "store_offer_bonus_iqd": 0,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "id": "prd_96ddda9955af40e8",
+    "schema_version": 1,
+    "titleAr": "بيرسونا 5 سترايكرز",
+    "compatibility": [
+     "Nintendo Switch",
+     "Nintendo Switch 2 (backward compatibility)",
+     "Nintendo Switch Lite"
+    ],
+    "edition": "Standard",
+    "developer": "P-Studio / Omega Force",
+    "publisher": "SEGA",
+    "metacriticUrl": "https://www.metacritic.com/game/persona-5-strikers/",
+    "opencriticRating": 83,
+    "userScore": 7.8,
+    "price_usd": 59.99,
+    "officialUrl": "https://atlus.com/p5s/",
+    "eshopUrl": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-games/Persona-5-Strikers-1892623.html",
+    "gameIsOffline": true,
+    "gameIsOnline": false,
+    "description_short": "An action-RPG sequel-style adventure for the Phantom Thieves, blending Persona mechanics with large real-time battles during a road trip across Japan.",
+    "description_ar": "يجتمع اللصوص الوهميون من جديد في رحلة صيفية عبر اليابان، لكن ظهور سجون غامضة يدفعهم إلى مواجهة أزمة جديدة. القتال هنا لحظي وسريع، مع التبديل بين الشخصيات واستخدام مهارات الـPersona ونقاط ضعف الأعداء.",
+    "box_front_url": "https://images.launchbox-app.com/8a72a795-5a25-4136-bebb-a5c36b5c5454.jpg",
+    "videos": [
+     {
+      "title": "Persona 5 Strikers — All-Out-Action Trailer — Nintendo Switch",
+      "url": "https://www.youtube.com/watch?v=yDaG0fE6HHw"
+     }
+    ],
+    "nintendoEshopUrl": "https://www.nintendo.com/au/games/nintendo-switch/persona-5-strikers/",
+    "nintendoOnlineRequired": false,
+    "nintendoCloudSaves": true,
+    "nintendoGameKeyCard": false,
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": true,
+    "nintendoPlayModes": "TV / Tabletop / Handheld",
+    "nintendoNotes": "Official Nintendo AU lists Persona 5 Strikers as a Nintendo Switch title compatible with Nintendo Switch 2, 11.9 GB, one local player, TV/Tabletop/Handheld modes, and Save Data Cloud. The western Nintendo AU language list is French, German, Italian, Spanish and English.\n\nSupplier selection supplied by user is Traditional Chinese. Because the western Nintendo listing does not show Chinese, the file preserves this as a supplier regional/SKU language and does not overwrite the western official language list.\n\nSupplier variants: Regular / 普通版 ¥6.8 (pre-discount ¥10); Standard / 标准版 ¥26.4 (pre-discount ¥30). Costs: Regular 1,250 IQD; Standard 5,750 IQD. Only two supplier variants exist, so no DLC product types are created even though the game has real official DLC metadata.",
+    "switch2Enhanced": false,
+    "switch2Exclusive": false,
+    "switch2Features": [
+     "Nintendo Switch 2 backward compatibility supported",
+     "More stable 30 fps in compatibility testing",
+     "Substantially faster loading in measured tests",
+     "No native Switch 2 enhancement / no 60 fps patch"
+    ],
+    "tagline": "Take the Phantom Thieves on an action-packed summer road trip across Japan.",
+    "fitFor": [
+     "Persona 5 fans who want a new Phantom Thieves story",
+     "Players who enjoy fast real-time action combat",
+     "Players who like character switching and party builds",
+     "Players who enjoyed Persona 5’s cast and want a continuation-style adventure"
+    ],
+    "notFitFor": [
+     "Players expecting Persona 5 Royal’s turn-based combat",
+     "Players who dislike musou-style crowds and action",
+     "Players unfamiliar with Persona 5 who want a standalone introduction",
+     "Players who only want traditional turn-based Persona combat"
+    ],
+    "playTimeMain": 35,
+    "playTimeFull": 71,
+    "editionsList": [
+     {
+      "name": "Standard Edition",
+      "coverUrl": "https://images.launchbox-app.com/8a72a795-5a25-4136-bebb-a5c36b5c5454.jpg",
+      "contents": [
+       {
+        "label": "Persona 5 Strikers base game"
+       },
+       {
+        "label": "Full Phantom Thieves road-trip campaign"
+       },
+       {
+        "label": "Single-player action RPG"
+       }
+      ]
+     },
+     {
+      "name": "Digital Deluxe Edition",
+      "contents": [
+       {
+        "label": "Bonus soundtrack, art book and behind-the-scenes video"
+       },
+       {
+        "label": "Persona Legacy BGM"
+       },
+       {
+        "label": "All-Out Attack Pack"
+       }
+      ]
+     }
+    ],
+    "gameplayPillars": [
+     {
+      "title": "Hybrid Persona Action",
+      "description": "Fight crowds in real time while still exploiting Persona elemental weaknesses, buffs, debuffs and technical effects.",
+      "imageUrl": "https://images.launchbox-app.com/e69d5887-9081-4ee4-b22a-1e64bc178333.jpg"
+     },
+     {
+      "title": "Control the Phantom Thieves",
+      "description": "Switch directly among Phantom Thieves, each with unique weapons, Master Arts and combat roles.",
+      "imageUrl": "https://images.launchbox-app.com/80213ca6-3c02-4f39-9d70-22316000fd9a.jpg"
+     },
+     {
+      "title": "Road Trip Across Japan",
+      "description": "Travel across Japanese cities, investigate local corruption and infiltrate themed Jails.",
+      "imageUrl": "https://images.launchbox-app.com/ad304e13-e26c-4bab-8a9c-c882c1ad0131.jpg"
+     },
+     {
+      "title": "Build BOND Skills",
+      "description": "Earn BOND points across exploration, requests and combat to unlock party-wide bonuses and customize progression."
+     }
+    ],
+    "worldSummary": "The Phantom Thieves travel across Japan, where distorted Jails are manipulating people’s desires. Each city becomes a new investigation, mixing road-trip downtime with infiltration and combat.",
+    "storyChapters": [
+     {
+      "title": "The Summer Reunion",
+      "body": "The Phantom Thieves reunite for a summer vacation but discover that a new Metaverse-like crisis is spreading through Japan."
+     },
+     {
+      "title": "Jails Across Japan",
+      "body": "As the group travels from city to city, they investigate Monarchs whose Jails manipulate the desires of ordinary people."
+     },
+     {
+      "title": "The Source of the Crisis",
+      "body": "New allies and deeper revelations connect the individual cases to a broader threat affecting society."
+     },
+     {
+      "title": "The Road Trip Finale",
+      "body": "The Phantom Thieves trace the connected crises to their source and bring the nationwide road trip toward its final confrontation."
+     }
+    ],
+    "galleryImages": [
+     {
+      "url": "https://images.launchbox-app.com/e69d5887-9081-4ee4-b22a-1e64bc178333.jpg",
+      "alt": "Phantom Thieves action combat"
+     },
+     {
+      "url": "https://images.launchbox-app.com/ad304e13-e26c-4bab-8a9c-c882c1ad0131.jpg",
+      "alt": "Persona 5 Strikers road-trip scene"
+     },
+     {
+      "url": "https://images.launchbox-app.com/0c6633cb-39fd-4fe7-9877-16374e35dfcb.jpg",
+      "alt": "Large-scale enemy battle"
+     },
+     {
+      "url": "https://images.launchbox-app.com/076e94f3-8675-4de8-af70-9c0952f16333.jpg",
+      "alt": "Jail exploration gameplay"
+     },
+     {
+      "url": "https://images.launchbox-app.com/a4c902e4-5d11-4f56-ac94-82108b0cbf5f.jpg",
+      "alt": "Character and story scene"
+     },
+     {
+      "url": "https://images.launchbox-app.com/80213ca6-3c02-4f39-9d70-22316000fd9a.jpg",
+      "alt": "Phantom Thieves team combat"
+     },
+     {
+      "url": "https://images.launchbox-app.com/40243a05-cd99-4108-9197-1421b542a74d.jpg",
+      "alt": "Additional Persona 5 Strikers artwork"
+     }
+    ],
+    "features": [
+     "Real-time action combat with Persona skills",
+     "Direct control of multiple Phantom Thieves",
+     "Road-trip story across multiple Japanese cities",
+     "Persona fusion and elemental weakness systems",
+     "BOND progression shared across the party",
+     "Official Persona Legacy BGM and All-Out Attack DLC available"
+    ],
+    "perfResolutionDocked": "approximately 864p reported",
+    "perfResolutionHandheld": "approximately 648p reported",
+    "perfFps": "30",
+    "perfHdr": false,
+    "perfNotes": "Switch targets 30 fps. Backward-compatibility testing on Switch 2 reports a much steadier 30 fps and significantly shorter loading. Approximate ~864p docked / ~648p handheld figures come from secondary technical reporting, so they are explicitly marked as reported rather than official Nintendo measurements.",
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "hardwareId": "prd_acf4c89908764c62",
+      "informationStatus": "verified / backward compatibility performance test",
+      "handheld": {
+       "supported": true,
+       "resolution": "up to 1080p TV-profile rendering with Handheld Mode Boost; 720p without Boost",
+       "resolutionDynamic": true,
+       "outputResolution": "1920x1080 display output with Handheld Mode Boost",
+       "fps": "30",
+       "fpsMin": "30",
+       "fpsMax": "30",
+       "mode": "Handheld Mode Boost",
+       "notes": "Backward compatibility stabilizes the 30 fps target noticeably compared with original Switch in testing."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "up to 1080p dynamic, system-upscaled to 4K output",
+       "resolutionDynamic": true,
+       "renderingResolution": "up to 1920x1080",
+       "outputResolution": "up to 3840x2160 system output",
+       "fps": "30",
+       "fpsMin": "30",
+       "fpsMax": "30",
+       "mode": "TV mode / backward compatibility",
+       "notes": "Backward-compatible 30 fps with improved consistency; no native higher-frame-rate patch."
+      },
+      "upscaling": "System-level upscaling to 4K output in TV mode",
+      "rayTracing": false,
+      "loadingNotes": "RPG Site testing reports dashboard-to-game loading around 20–21 seconds on Switch 2 versus roughly 40–42 seconds on original Switch, and save-related loads around 7–8 seconds versus roughly 18–20 seconds.",
+      "sourceName": "RPG Site / Nitchigamer / Switch 2 Handheld Mode Boost testing",
+      "sourceUrl": "https://nitchigamer.com/2025/06/22/persona-5-strikers-nintendo-switch-2-4k-gameplay/",
+      "verificationStatus": "verified",
+      "performanceNotes": "Backward compatibility materially improves frame-rate stability and loading. Before Handheld Mode Boost, Switch 2 handheld uses the fixed 720p profile. With Boost enabled it can use the higher TV-mode rendering profile. TV mode renders up to 1080p dynamically and the system can output an upscaled 4K signal; the game itself remains capped at 30 fps."
+     }
+    ],
+    "downloadSizeGb": 11.9,
+    "requiredSpaceGb": 11.9,
+    "microSdRecommended": false,
+    "storageNotes": "Nintendo AU lists an 11.9 GB file size.",
+    "languagesAudio": [
+     "English",
+     "Japanese"
+    ],
+    "languagesText": [
+     "Chinese (Traditional) — supplier regional SKU",
+     "English",
+     "French",
+     "German",
+     "Italian",
+     "Spanish"
+    ],
+    "arabicSupport": false,
+    "mpLocalPlayers": false,
+    "mpOnlinePlayers": false,
+    "mpCoop": false,
+    "mpCompetitive": false,
+    "mpSplitScreen": false,
+    "mpLocalWireless": false,
+    "dlc": [
+     {
+      "name": "Persona Legacy BGM",
+      "description": "Official DLC adding legacy battle tracks from Persona 1, Persona 2, Persona 3 / Portable, and Persona 4 / Golden."
+     },
+     {
+      "name": "All-Out Attack Pack",
+      "description": "Official item/skill pack containing boost skills, affinity support, armor, Persona points, enemy debuffs and ally buffs."
+     },
+     {
+      "name": "Digital Deluxe Bonus Content",
+      "description": "The Digital Deluxe package includes bonus soundtrack, digital art book, behind-the-scenes video and the two gameplay DLC packs."
+     }
+    ],
+    "completionMain": 35,
+    "completionAll": 71,
+    "faq": [
+     {
+      "q": "Does Persona 5 Strikers support Traditional Chinese?",
+      "a": "The supplier listing supplied by the user says Traditional Chinese. Nintendo AU’s western page does not list Chinese, so Chinese support is treated as region/SKU-dependent rather than generalized to every copy."
+     },
+     {
+      "q": "Does Persona 5 Strikers work on Nintendo Switch 2?",
+      "a": "Yes. Nintendo lists Switch 2 compatibility as supported, but it remains the Switch version via backward compatibility."
+     },
+     {
+      "q": "Is Persona 5 Strikers multiplayer?",
+      "a": "No. Nintendo lists one local player and the campaign is single-player."
+     },
+     {
+      "q": "Why are there DLC metadata fields but no DLC product type?",
+      "a": "Official Nintendo lists real DLC for Persona 5 Strikers, so the informational DLC section is populated. The supplier data, however, has only two variants (Regular and Standard), so under the store rule there are only Standard Offline and Standard Online product types."
+     }
+    ],
+    "reviews": [
+     {
+      "source": "Metacritic",
+      "score": "81/100",
+      "url": "https://www.metacritic.com/game/persona-5-strikers/"
+     },
+     {
+      "source": "OpenCritic",
+      "score": "83/100",
+      "url": "https://opencritic.com/game/10826/persona-5-strikers"
+     },
+     {
+      "source": "Metacritic user score",
+      "score": "7.8/10",
+      "url": "https://www.metacritic.com/game/persona-5-strikers/"
+     }
+    ],
+    "timeline": [
+     {
+      "date": "2020-02-20",
+      "title": "Persona 5 Scramble released in Japan"
+     },
+     {
+      "date": "2021-02-23",
+      "title": "Persona 5 Strikers released internationally on Nintendo Switch"
+     },
+     {
+      "date": "2025-06-05",
+      "title": "Nintendo Switch 2 backward compatibility era begins"
+     }
+    ],
+    "seriesName": "Persona",
+    "seriesEntries": [
+     "Persona 5 Royal",
+     "Persona 4 Golden",
+     "Persona 3 Portable",
+     "Persona 4 Arena Ultimax",
+     "Persona 3 Reload"
+    ],
+    "studioName": "P-Studio / Omega Force",
+    "studioUrl": "https://p-ch.jp/",
+    "studioLocation": "Japan",
+    "studioAbout": "Persona 5 Strikers was co-developed by ATLUS/P-Studio and Koei Tecmo’s Omega Force, combining Persona RPG systems with Omega Force’s action expertise.",
+    "setupNeeds": [
+     "Nintendo Switch family system",
+     "Nintendo Account for digital purchase",
+     "No paid Nintendo Switch Online membership required for the single-player campaign"
+    ],
+    "sources": [
+     {
+      "name": "Nintendo Australia — Persona 5 Strikers",
+      "url": "https://www.nintendo.com/au/games/nintendo-switch/persona-5-strikers/"
+     },
+     {
+      "name": "Deku Deals — metadata and aggregate scores",
+      "url": "https://www.dekudeals.com/items/persona-5-strikers"
+     },
+     {
+      "name": "RPG Site — Switch 2 backward-compatibility performance comparison",
+      "url": "https://www.rpgsite.net/feature/18157-nintendo-switch-2-backwards-compatibility-testing-major-jrpgs-tested"
+     },
+     {
+      "name": "LaunchBox Games Database — Switch media",
+      "url": "https://gamesdb.launchbox-app.com/games/details/106792-persona-5-strikers"
+     },
+     {
+      "name": "The Cover Project — Persona 5 Strikers cover entry",
+      "url": "https://www.thecoverproject.net/view.php?game_id=10760"
+     }
+    ],
+    "boxContentsList": "[Circular]",
+    "image": "/api/files/products/prd_96ddda9955af40e8/cover-2057a93572c69389.jpg",
+    "banner": "/api/files/products/prd_96ddda9955af40e8/banner-0-3e845eb398a1b6e7.jpg",
+    "schemaId": "",
+    "createdAt": "2026-08-26T22:09:13.564Z",
+    "created_at": "2026-08-26T22:09:13.564Z",
+    "updatedAt": "2026-08-26T22:09:13.564Z",
+    "updated_at": "2026-08-26T22:09:13.564Z",
+    "badgeEn": "وفر 40%",
+    "badgeKu": "وفر 40%",
+    "featuresEn": [
+     "Real-time action combat with Persona skills",
+     "Direct control of multiple Phantom Thieves",
+     "Road-trip story across multiple Japanese cities",
+     "Persona fusion and elemental weakness systems",
+     "BOND progression shared across the party",
+     "Official Persona Legacy BGM and All-Out Attack DLC available"
+    ],
+    "featuresKu": [
+     "Real-time action combat with Persona skills",
+     "Direct control of multiple Phantom Thieves",
+     "Road-trip story across multiple Japanese cities",
+     "Persona fusion and elemental weakness systems",
+     "BOND progression shared across the party",
+     "Official Persona Legacy BGM and All-Out Attack DLC available"
+    ],
+    "boxFrontUrl": "https://images.launchbox-app.com/8a72a795-5a25-4136-bebb-a5c36b5c5454.jpg",
+    "sales": 0,
+    "images": [],
+    "modes": []
+   }
+  }
+ ]
+}

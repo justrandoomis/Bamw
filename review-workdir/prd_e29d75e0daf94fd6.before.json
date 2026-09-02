@@ -1,0 +1,596 @@
+{
+ "title": "Paper Mario: The Thousand-Year Door",
+ "titleEn": "Paper Mario: The Thousand-Year Door",
+ "titleKu": "Paper Mario: The Thousand-Year Door",
+ "slug": "paper-mario-the-thousand-year-door-switch-1",
+ "description": "A classic story unfolds on Nintendo Switch. With a map from Princess Peach and the help of a colorful cast of locals, Mario journeys across a paper-crafted world to collect the Crystal Stars before the X-Nauts and uncover the mystery behind the Thousand-Year Door.",
+ "descriptionEn": "A classic story unfolds on Nintendo Switch. With a map from Princess Peach and the help of a colorful cast of locals, Mario journeys across a paper-crafted world to collect the Crystal Stars before the X-Nauts and uncover the mystery behind the Thousand-Year Door.",
+ "descriptionKu": "A classic story unfolds on Nintendo Switch. With a map from Princess Peach and the help of a colorful cast of locals, Mario journeys across a paper-crafted world to collect the Crystal Stars before the X-Nauts and uncover the mystery behind the Thousand-Year Door.",
+ "cartridgeImage": "/api/files/products/prd_e29d75e0daf94fd6/front-e3644a55af48c962.jpg",
+ "nintendoCardImage": "/api/files/products/prd_e29d75e0daf94fd6/square-64ab5751f73dedd3.avif",
+ "coverHiResImage": "/api/files/products/prd_e29d75e0daf94fd6/3d-texture-9c22318f945ca7f2.jpg",
+ "coverImage": "/api/files/products/prd_e29d75e0daf94fd6/cover-9b637c1157d16316.avif",
+ "bannerImages": [
+  "/api/files/products/prd_e29d75e0daf94fd6/banner-0-1b80ae964c23841f.avif",
+  "/api/files/products/prd_e29d75e0daf94fd6/banner-1-852cb3ae8585bd5b.avif",
+  "/api/files/products/prd_e29d75e0daf94fd6/banner-2-2846eec3457a972c.avif",
+  "/api/files/products/prd_e29d75e0daf94fd6/banner-3-662f70cb4e15af61.avif",
+  "/api/files/products/prd_e29d75e0daf94fd6/banner-4-a3153df6e9e6bee3.avif",
+  "/api/files/products/prd_e29d75e0daf94fd6/banner-5-882ee8bc1f373cc4.avif"
+ ],
+ "gallery": [],
+ "youtubeTrailer": "https://www.nintendo.com/us/store/products/paper-mario-the-thousand-year-door-switch/",
+ "releaseDate": "2024-05-23",
+ "ageRating": "ESRB E10+ / PEGI 7",
+ "metacriticRating": 88,
+ "genres": [
+  "Role Playing",
+  "Action",
+  "Adventure"
+ ],
+ "platform": "switch1",
+ "size": 5.1,
+ "numberOfPlayers": "Single system (1)",
+ "supportedLanguages": "Japanese / British English / French / German / Italian / Spanish / Korean / Dutch / Simplified Chinese / Latin American Spanish / Canadian French / Traditional Chinese / American English",
+ "hardwareModel": "",
+ "colorEdition": "",
+ "storageCapacity": "",
+ "screenSpecs": "",
+ "batteryLife": "",
+ "boxContents": [],
+ "boxContentsText": "",
+ "warrantyCondition": "",
+ "connectivity": "",
+ "characterName": "Link",
+ "amiiboSeries": "The Legend of Zelda",
+ "figureType": "figure",
+ "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+ "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+ "boxCondition": "mib",
+ "releaseWave": "Wave 2 (Restock)",
+ "rarity": "standard",
+ "accessoryType": "حقيبة حماية وتنقل Carry Case",
+ "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+ "brand": "Nintendo Official",
+ "material": "Hard EVA Shockproof Shell",
+ "availableColors": "Black, Neon Red/Blue, White",
+ "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+ "cardValue": "$20 eShop Balance",
+ "region": "Global",
+ "cardType": "eshop",
+ "deliveryMethod": "instant_code",
+ "redemptionGuide": "",
+ "redemptionSteps": [],
+ "validity": "no_expiry",
+ "usedType": "cartridge",
+ "conditionGrade": "like_new",
+ "packaging": "cib",
+ "guaranteeStatus": "tested_30days",
+ "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+ "accountType": "primary",
+ "badge": "وفر 40%",
+ "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+ "price": 11500,
+ "cost": 1500,
+ "stock": 999999,
+ "isInfiniteStock": true,
+ "isHidden": false,
+ "displayOrder": 0,
+ "category": "nintendo-switch-games",
+ "categoryId": "nintendo-switch-games",
+ "categoryEn": "",
+ "categoryKu": "",
+ "options": [
+  {
+   "id": "offline_account",
+   "name": "مشترك",
+   "description": "حساب مشترك",
+   "stock": 9999,
+   "isInfiniteStock": true,
+   "customerDescription": "حساب مشترك"
+  },
+  {
+   "id": "online_account",
+   "name": "خاص بك",
+   "description": "حساب خاص بك",
+   "stock": 9999,
+   "isInfiniteStock": true,
+   "customerDescription": "حساب خاص بك"
+  }
+ ],
+ "types": [
+  {
+   "id": "standard_offline",
+   "name": "مشترك — اللعبة الأساسية",
+   "optionId": "offline_account",
+   "price": 11500,
+   "cost": 1500,
+   "description": "",
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "standard_online",
+   "name": "خاص بك — اللعبة الأساسية",
+   "optionId": "online_account",
+   "price": 32000,
+   "cost": 14250,
+   "description": "",
+   "stock": 9999,
+   "isInfiniteStock": true
+  }
+ ],
+ "editions": [],
+ "dlcs": [],
+ "isActive": true,
+ "status": "Active",
+ "kind": "account",
+ "trade_value_iqd": 11500,
+ "store_offer_bonus_iqd": 3000,
+ "trade_enabled": true,
+ "trade_value_locked": false,
+ "id": "prd_e29d75e0daf94fd6",
+ "schema_version": 24,
+ "titleAr": "بيبر ماريو: الباب ذو الألف عام",
+ "compatibility": [
+  "Nintendo Switch",
+  "Nintendo Switch 2 compatibility: Supported – game behavior is consistent with Nintendo Switch"
+ ],
+ "edition": "Standard",
+ "developer": "Intelligent Systems",
+ "publisher": "Nintendo",
+ "seriesName": "Paper Mario",
+ "metacriticUrl": "https://www.metacritic.com/game/paper-mario-the-thousand-year-door/",
+ "opencriticRating": 88,
+ "userScore": 8.8,
+ "price_usd": 59.99,
+ "officialUrl": "https://www.nintendo.com/us/store/products/paper-mario-the-thousand-year-door-switch/",
+ "eshopUrl": "https://www.nintendo.com/us/store/products/paper-mario-the-thousand-year-door-switch/",
+ "galleryImages": [
+  {
+   "alt": "Paper Mario: The Thousand-Year Door official promotional media 1",
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000072957/a99700700483e5f8b14cbff4693843503c7d007c8332d574a4cc76a037aa4843"
+  },
+  {
+   "alt": "Paper Mario: The Thousand-Year Door official promotional media 2",
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000072957/003a7c28435db6efe0a3fa83a900f36ce7b494e811b73844c6f5923aedf6cd98"
+  },
+  {
+   "alt": "Paper Mario: The Thousand-Year Door official promotional media 3",
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000072957/1270d1fc2312cd1fdeeff4845cb812531ab9f3a06e0ae9f1f7cac26a58c706c0"
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000072957/60ac2e24dd6bb93adee264161f259d4ced43711ad6c365febd99d49451d54721"
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000072957/c24881011ba3bbb6f6c78a4bb1b7e04a457594b462cfaddcdc2faa85bacf0c36"
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000072957/9f5e069de49fa3644732f1c7073dea13a059a86e433da60e042d4f0f35b165bb"
+  }
+ ],
+ "videos": [
+  {
+   "title": "Official product page / trailer",
+   "url": "https://www.nintendo.com/us/store/products/paper-mario-the-thousand-year-door-switch/"
+  },
+  {
+   "title": "Nintendo news",
+   "url": "https://www.nintendo.com/us/search/#q=Paper%20Mario%20The%20Thousand-Year%20Door&p=1&cat=news"
+  },
+  {
+   "title": "Metacritic review hub",
+   "url": "https://www.metacritic.com/game/paper-mario-the-thousand-year-door/"
+  }
+ ],
+ "soundtrack": [
+  {
+   "title": "Official game page",
+   "url": "https://www.nintendo.com/us/store/products/paper-mario-the-thousand-year-door-switch/"
+  },
+  {
+   "title": "Nintendo news",
+   "url": "https://www.nintendo.com/us/search/#q=Paper%20Mario%20The%20Thousand-Year%20Door&p=1&cat=news"
+  },
+  {
+   "title": "Metacritic / reviews",
+   "url": "https://www.metacritic.com/game/paper-mario-the-thousand-year-door/"
+  }
+ ],
+ "gameIsOffline": true,
+ "gameIsOnline": false,
+ "gameLanguageLocked": false,
+ "description_short": "Join Mario and friends on an epic paper adventure. Collect the Crystal Stars, explore Rogueport and beyond, and master timing-based combat in this Nintendo Switch remake.",
+ "description_ar": "إعادة صنع للعبة Paper Mario الكلاسيكية، حيث ينطلق ماريو لجمع Crystal Stars قبل X-Nauts واستكشاف عالم ورقي مليء بالشخصيات والحوارات والطابع المسرحي والقتال بالتوقيت.",
+ "box_front_url": "https://images.launchbox-app.com/cf77184b-57df-4835-9300-a4813e8d8937.jpg",
+ "box_back_url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000072957/a99700700483e5f8b14cbff4693843503c7d007c8332d574a4cc76a037aa4843",
+ "languagesAudio": [
+  "Character vocalizations",
+  "Music / sound effects",
+  "No full language-dependent dub confirmed"
+ ],
+ "languagesText": [
+  "Japanese / English",
+  "French / German / Italian / Spanish / Dutch",
+  "Korean / Simplified Chinese / Traditional Chinese / additional regional English variants"
+ ],
+ "tvMode": true,
+ "tabletopMode": true,
+ "handheldMode": true,
+ "nintendoPlayModes": "TV / Tabletop / Handheld",
+ "nintendoOnlineRequired": false,
+ "nintendoCloudSaves": true,
+ "nintendoGameKeyCard": false,
+ "nintendoPhysicalNeedsDownload": false,
+ "switch2Enhanced": false,
+ "switch2Exclusive": false,
+ "nintendoNotes": "Official Nintendo store page confirms supported play modes, file size, supported languages, and Nintendo Switch 2 compatibility for Paper Mario: The Thousand-Year Door.",
+ "editionsList": [
+  {
+   "name": "Standard Edition",
+   "coverUrl": "https://images.launchbox-app.com/cf77184b-57df-4835-9300-a4813e8d8937.jpg",
+   "contents": [
+    {
+     "label": "Base game"
+    },
+    {
+     "label": "Timing-based turn-based battles with badges and special moves"
+    },
+    {
+     "label": "Paper abilities for traversal such as plane, tube, and boat forms"
+    }
+   ]
+  },
+  {
+   "name": "Digital Edition",
+   "coverUrl": "https://assets.nintendo.com/image/upload/ar_1:1,c_fill,g_auto,w_1000/f_auto/q_auto/dpr_1.5/store/software/switch/70010000072957/fdd5d8ca46d7ea4e45397ae560e807742de2d7d744570297ddbabf69d6d23f33",
+   "contents": [
+    {
+     "label": "Nintendo eShop release"
+    },
+    {
+     "label": "Revamped graphics, updated soundtrack, and quality-of-life additions"
+    },
+    {
+     "label": "Save Data Cloud support"
+    }
+   ]
+  },
+  {
+   "name": "Current Store Package",
+   "coverUrl": "https://assets.nintendo.com/image/upload/ar_16:9,c_fill,g_auto,w_1600/f_auto/q_auto/dpr_1.5/store/software/switch/70010000072957/fdd5d8ca46d7ea4e45397ae560e807742de2d7d744570297ddbabf69d6d23f33",
+   "contents": [
+    {
+     "label": "Offline account option"
+    },
+    {
+     "label": "Online account option"
+    },
+    {
+     "label": "Hidden by default until review"
+    }
+   ]
+  }
+ ],
+ "gameplayPillars": [
+  {
+   "title": "Action Commands and badges",
+   "description": "Master timing-based attacks and defenses, then customize builds by equipping badges.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000072957/a99700700483e5f8b14cbff4693843503c7d007c8332d574a4cc76a037aa4843"
+  },
+  {
+   "title": "Paper traversal abilities",
+   "description": "Use paper transformations to glide, squeeze through gaps, and reach hidden areas.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000072957/003a7c28435db6efe0a3fa83a900f36ce7b494e811b73844c6f5923aedf6cd98"
+  },
+  {
+   "title": "Storybook exploration",
+   "description": "Travel from Rogueport to themed regions while collecting Crystal Stars and recruiting partners.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000072957/1270d1fc2312cd1fdeeff4845cb812531ab9f3a06e0ae9f1f7cac26a58c706c0"
+  },
+  {
+   "title": "Audience-based stage battles",
+   "description": "Turn-based combat plays out on a stage, where timing, Stylish moves, partner abilities, and audience reactions add flair and mechanical depth.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000072957/60ac2e24dd6bb93adee264161f259d4ced43711ad6c365febd99d49451d54721"
+  },
+  {
+   "title": "Partners, badges, and build variety",
+   "description": "Different partner skills and Badge combinations let players tune Mario's approach, creating more strategy than the series' papercraft visuals first suggest.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000072957/c24881011ba3bbb6f6c78a4bb1b7e04a457594b462cfaddcdc2faa85bacf0c36"
+  }
+ ],
+ "worldSummary": "Paper Mario: The Thousand-Year Door mixes theatrical turn-based combat, exploration, witty writing, and memorable partner characters inside a handcrafted paper world spanning towns, dungeons, arenas, and cursed abilities.",
+ "storyChapters": [
+  {
+   "title": "Search for the Crystal Stars",
+   "body": "Mario follows Peach’s map and races the X-Nauts to legendary treasure.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000072957/a99700700483e5f8b14cbff4693843503c7d007c8332d574a4cc76a037aa4843"
+  },
+  {
+   "title": "Meet a colorful cast",
+   "body": "Partners like Goombella, Koops, Flurrie, Yoshi, and others help Mario in and out of battle.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000072957/003a7c28435db6efe0a3fa83a900f36ce7b494e811b73844c6f5923aedf6cd98"
+  },
+  {
+   "title": "Uncover the Thousand-Year Door mystery",
+   "body": "As the story advances, the truth behind the ancient door and its treasure gradually unfolds.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000072957/1270d1fc2312cd1fdeeff4845cb812531ab9f3a06e0ae9f1f7cac26a58c706c0"
+  },
+  {
+   "title": "Search for Crystal Stars across Rogueport's worlds",
+   "body": "Mario travels from Rogueport into varied chapters and themed locations while pursuing the Crystal Stars and unraveling a larger mystery.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000072957/9f5e069de49fa3644732f1c7073dea13a059a86e433da60e042d4f0f35b165bb"
+  },
+  {
+   "title": "Partners and chapter twists drive the journey",
+   "body": "Each chapter introduces memorable characters, self-contained arcs, and tonal variety that make the adventure one of Nintendo's most beloved RPGs.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000072957/a99700700483e5f8b14cbff4693843503c7d007c8332d574a4cc76a037aa4843"
+  }
+ ],
+ "features": [
+  "Timing-based turn-based battles with badges and special moves",
+  "Paper abilities for traversal such as plane, tube, and boat forms",
+  "Revamped graphics, updated soundtrack, and quality-of-life additions",
+  "Excellent chapter structure keeps the adventure memorable",
+  "Badge system allows flexible builds and experimentation",
+  "Partners remain central both in battle and in exploration"
+ ],
+ "perfResolutionDocked": "1080p",
+ "perfResolutionHandheld": "720p",
+ "perfFps": "30",
+ "perfHdr": false,
+ "playTimeMain": 28,
+ "completionMain": 34,
+ "completionExtras": 40,
+ "faq": [
+  {
+   "q": "Is Paper Mario: The Thousand-Year Door single-player only?",
+   "a": "Yes. This remake is a single-player RPG adventure."
+  },
+  {
+   "q": "Does it support Nintendo Switch 2?",
+   "a": "Yes. Nintendo lists it as Supported – game behavior is consistent with Nintendo Switch."
+  },
+  {
+   "q": "What is new in the Nintendo Switch version?",
+   "a": "The remake features revamped graphics, an updated soundtrack, quick-travel improvements, and additions like the Partner Ring."
+  },
+  {
+   "q": "Does The Thousand-Year Door have deep RPG customization?",
+   "a": "Yes. The Badge system, partner abilities, and resource management give the game more build flexibility and mechanical depth than many lighter Mario spin-offs."
+  },
+  {
+   "q": "Why is this game so highly regarded?",
+   "a": "It is widely praised for its writing, chapter design, combat depth, humor, and memorable cast, all of which help it stand out in Nintendo's RPG catalog."
+  }
+ ],
+ "verdictScore": 9,
+ "verdictPros": [
+  "Outstanding humor and writing",
+  "Rewarding timing-based combat with strong customization",
+  "Beautiful remake presentation and music",
+  "Outstanding writing and chapter variety",
+  "Combat depth holds up extremely well"
+ ],
+ "verdictCons": [
+  "30 fps target may disappoint some players",
+  "Backtracking remains part of the original structure",
+  "Some chapter pacing can feel slower on replays",
+  "Some segments involve noticeable backtracking",
+  "Its slower text-heavy pacing will not suit every player"
+ ],
+ "reviews": [
+  {
+   "source": "Metacritic",
+   "score": "88",
+   "url": "https://www.metacritic.com/game/paper-mario-the-thousand-year-door/"
+  },
+  {
+   "source": "OpenCritic",
+   "score": "88",
+   "url": "https://opencritic.com/game/16769/paper-mario-the-thousand-year-door"
+  },
+  {
+   "source": "IGN",
+   "score": "9/10",
+   "url": "https://www.ign.com/games/paper-mario-the-thousand-year-door"
+  }
+ ],
+ "timeline": [
+  {
+   "date": "2023-09-14",
+   "title": "Announced for Nintendo Switch",
+   "body": "Announced for Nintendo Switch — recorded milestone dated 2023-09-14."
+  },
+  {
+   "date": "2024-05-23",
+   "title": "Released on Nintendo Switch",
+   "body": "Released on Nintendo Switch — recorded milestone dated 2024-05-23."
+  },
+  {
+   "date": "2024-07-24",
+   "title": "Nintendo published gameplay tips coverage",
+   "body": "Nintendo published gameplay tips coverage — recorded milestone dated 2024-07-24."
+  }
+ ],
+ "patchNotes": [
+  {
+   "version": "Launch version",
+   "date": "2024-05-23",
+   "body": "Update entry for Launch version, dated 2024-05-23. No additional change list was included in the prior verified extraction."
+  },
+  {
+   "version": "Current retail build",
+   "date": "2026-08-27",
+   "body": "Update entry for Current retail build, dated 2026-08-27. No additional change list was included in the prior verified extraction."
+  },
+  {
+   "version": "Save Data Cloud support active",
+   "date": "2026-08-27",
+   "body": "Update entry for Save Data Cloud support active, dated 2026-08-27. No additional change list was included in the prior verified extraction."
+  }
+ ],
+ "studioName": "Intelligent Systems",
+ "studioUrl": "https://www.nintendo.com/us/store/products/paper-mario-the-thousand-year-door-switch/",
+ "studioLocation": "Japan",
+ "sources": [
+  {
+   "name": "Nintendo official product page",
+   "url": "https://www.nintendo.com/us/store/products/paper-mario-the-thousand-year-door-switch/"
+  },
+  {
+   "name": "Nintendo Support / Switch 2 compatibility",
+   "url": "https://support.nintendo.com/"
+  },
+  {
+   "name": "Metacritic",
+   "url": "https://www.metacritic.com/game/paper-mario-the-thousand-year-door/"
+  }
+ ],
+ "downloadSizeGb": 5.1,
+ "requiredSpaceGb": 5.1,
+ "microSdRecommended": false,
+ "storageNotes": "Nintendo lists approximately 5.1 GB of game file size for both Nintendo Switch and Nintendo Switch 2 compatibility listings.",
+ "mpLocalPlayers": false,
+ "mpOnlinePlayers": false,
+ "mpCoop": false,
+ "mpCompetitive": false,
+ "mpLocalWireless": false,
+ "mpSplitScreen": false,
+ "seriesEntries": [
+  "Paper Mario",
+  "Paper Mario: The Origami King",
+  "Super Mario RPG"
+ ],
+ "devicePerformance": [
+  {
+   "device": "Nintendo Switch 2",
+   "deviceSlug": "nintendo-switch-2",
+   "deviceModel": "Nintendo Switch 2",
+   "hardwareId": "prd_acf4c89908764c62",
+   "informationStatus": "Available / verified",
+   "unavailableReason": "No required Handheld or TV mode is marked unsupported.",
+   "handheld": {
+    "supported": true,
+    "resolution": "720p",
+    "resolutionDynamic": false,
+    "renderingResolution": "1280x720",
+    "outputResolution": "1280x720",
+    "fps": "30",
+    "fpsMin": "30",
+    "fpsMax": "30",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "Handheld",
+    "notes": "Original Nintendo Switch performance profile; the remake is commonly presented as a 30 fps title with 720p handheld and 1080p docked targets."
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "1080p",
+    "resolutionDynamic": false,
+    "renderingResolution": "1920x1080",
+    "outputResolution": "1920x1080",
+    "fps": "30",
+    "fpsMin": "30",
+    "fpsMax": "30",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "TV / Docked",
+    "notes": "Original Nintendo Switch performance profile; the remake is commonly presented as a 30 fps title with 720p handheld and 1080p docked targets."
+   },
+   "modes": [
+    {
+     "name": "Primary documented mode",
+     "handheldResolution": "720p",
+     "handheldFps": "30",
+     "tvResolution": "1080p",
+     "tvFps": "30",
+     "hdr": false,
+     "vrr": false,
+     "notes": "Original Nintendo Switch performance profile; the remake is commonly presented as a 30 fps title with 720p handheld and 1080p docked targets."
+    }
+   ],
+   "upscaling": "Game / system-specific scaling where applicable",
+   "rayTracing": false,
+   "rayTracingMode": "Not Supported",
+   "loadingTime": "Scene-dependent; no single universal loading time",
+   "loadingNotes": "Loading time varies by scene, save progress, and storage state.",
+   "gameVersion": "Current retail build",
+   "patchVersion": "Current available update",
+   "testedDate": "2026-08-27",
+   "sourceName": "Nintendo official product page",
+   "sourceUrl": "https://www.nintendo.com/us/store/products/paper-mario-the-thousand-year-door-switch/",
+   "verifiedAt": "2026-08-27",
+   "verificationStatus": "Verified / sourced",
+   "performanceNotes": "Original Nintendo Switch performance profile; the remake is commonly presented as a 30 fps title with 720p handheld and 1080p docked targets."
+  }
+ ],
+ "switch2UpgradePrice": 0,
+ "nintendoEshopUrl": "https://www.nintendo.com/us/store/products/paper-mario-the-thousand-year-door-switch/",
+ "arabicSupport": false,
+ "tagline": "Join Mario and friends on an epic paper adventure. Collect the Crystal Stars, explore Rogueport and beyond, and master timing-based combat in this Nintendo Switch remake.",
+ "fitFor": [
+  "Players looking for role playing, action gameplay.",
+  "Players who want the game modes supported by the official player-count specification: Single system (1).",
+  "Players who want a story-rich Mario RPG with strong writing.",
+  "Players who enjoy turn-based systems that still feel expressive and varied."
+ ],
+ "notFitFor": [
+  "Players specifically seeking online multiplayer; this title does not list online multiplayer support.",
+  "Players specifically seeking local multiplayer; this title does not list local multiplayer support.",
+  "Players seeking fast real-time action with minimal reading.",
+  "Players who dislike backtracking in older adventure structures."
+ ],
+ "perfNotes": "Original Nintendo Switch performance profile; the remake is commonly presented as a 30 fps title with 720p handheld and 1080p docked targets.",
+ "verdictSummary": "Overall score: 9.0/10. Strengths include Outstanding humor and writing; Rewarding timing-based combat with strong customization; Beautiful remake presentation and music. Main drawbacks include 30 fps target may disappoint some players; Backtracking remains part of the original structure.",
+ "studioAbout": "Intelligent Systems is credited as the developer of this Nintendo Switch release. Nintendo is credited as the publisher.",
+ "setupNeeds": [
+  "Nintendo Switch-compatible hardware for this release.",
+  "Online multiplayer is not required for the core single-player experience."
+ ],
+ "dlc": [
+  {
+   "name": "No standalone DLC announced",
+   "description": "No standalone paid DLC expansion is included in this extraction. Free updates, when applicable, are listed in the Updates section instead."
+  }
+ ],
+ "guides": [
+  {
+   "title": "Official Nintendo game page",
+   "summary": "Official Nintendo reference for game description, supported modes, player counts, languages, file size, and compatibility information.",
+   "url": "https://www.nintendo.com/us/store/products/paper-mario-the-thousand-year-door-switch/"
+  }
+ ],
+ "boxContentsList": "[Circular]",
+ "image": "/api/files/products/prd_e29d75e0daf94fd6/cover-9b637c1157d16316.avif",
+ "banner": "/api/files/products/prd_e29d75e0daf94fd6/banner-0-1b80ae964c23841f.avif",
+ "schemaId": "",
+ "createdAt": "2026-08-27T16:59:56.093Z",
+ "created_at": "2026-08-27T16:59:56.093Z",
+ "updatedAt": "2026-08-28T21:58:07.712Z",
+ "updated_at": "2026-08-27T16:59:56.093Z",
+ "badgeEn": "وفر 40%",
+ "badgeKu": "وفر 40%",
+ "featuresEn": [
+  "Timing-based turn-based battles with badges and special moves",
+  "Paper abilities for traversal such as plane, tube, and boat forms",
+  "Revamped graphics, updated soundtrack, and quality-of-life additions",
+  "Excellent chapter structure keeps the adventure memorable",
+  "Badge system allows flexible builds and experimentation",
+  "Partners remain central both in battle and in exploration"
+ ],
+ "featuresKu": [
+  "Timing-based turn-based battles with badges and special moves",
+  "Paper abilities for traversal such as plane, tube, and boat forms",
+  "Revamped graphics, updated soundtrack, and quality-of-life additions",
+  "Excellent chapter structure keeps the adventure memorable",
+  "Badge system allows flexible builds and experimentation",
+  "Partners remain central both in battle and in exploration"
+ ],
+ "boxFrontUrl": "https://images.launchbox-app.com/cf77184b-57df-4835-9300-a4813e8d8937.jpg",
+ "sales": 0,
+ "images": [],
+ "modes": []
+}

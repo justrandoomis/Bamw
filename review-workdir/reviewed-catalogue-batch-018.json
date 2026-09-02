@@ -1,0 +1,51 @@
+{
+ "batch": "018",
+ "apply": false,
+ "games": [
+  {
+   "id": "prd_efd67851b0b44837",
+   "slug": "persona-3-reload",
+   "baseHash": "76ee7cd6c0121c76afa12a9d6ca90eb0b4148e6d5052b3aa3fd67b0350518176",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  },
+  {
+   "id": "prd_1da85016b1ea440f",
+   "slug": "persona-4-arena-ultimax",
+   "baseHash": "0ac07b33b7542d5dc0a38343b437cba8dbcf14586abe9d09a1c3a92bb9e54464",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  },
+  {
+   "id": "prd_0635e35ca407487d",
+   "slug": "persona-4-golden",
+   "baseHash": "d4c624fa5b872cb3689670c0ca2a394f3486d8076829db919e26dfd057f14b78",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  },
+  {
+   "id": "prd_3a93e24db910403d",
+   "slug": "persona-5-royal",
+   "baseHash": "ef142a4d27ca52a1d565fe3ff2f9aded5e64d22f88824eb60195f7e5403ab691",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  },
+  {
+   "id": "prd_96ddda9955af40e8",
+   "slug": "persona-5-strikers",
+   "baseHash": "72124046e9dbb2070ec9295afc54a3b88ab1c007326e28428ed1dc0e97785b76",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  }
+ ]
+}

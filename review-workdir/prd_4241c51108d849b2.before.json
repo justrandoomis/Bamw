@@ -1,0 +1,461 @@
+{
+ "title": "Nintendo Switch Sports",
+ "titleEn": "Nintendo Switch Sports",
+ "titleKu": "Nintendo Switch Sports",
+ "slug": "nintendo-switch-sports",
+ "description": "Get moving* with Basketball**, Golf**, Soccer, Volleyball, Bowling, Tennis, Badminton, and Chambara (swordplay) using Joy-Con™ controllers! Controls are intuitive, so you can hit the court (or lanes, or field, or arena) and get started. With controlled motions you can curve your bowling ball, add spin to a tennis shot, or even use a Joy-Con with the included Leg Strap accessory to kick the ball in Soccer. Family and friends can join in on the fun on the same system*** or online****.\n\nPlay online and face opponents near and far to earn in-game rewards or aim for the Pro League\n\nFace off against opponents worldwide and strive to reach the Pro League in every sport. As you play online in random matchmaking, redeem points you earn for in-game rewards like outfits, sports accessories, gear, and much more for your avatar. The selection of items rotates each week, so check back and see what’s in stock!\n\nPlay with friends and family in the same room or across the world\n\nBowl, spike, and duel with friends in all 8 sports! Pass a Joy-Con controller to a friend for some 1v1, 2v2, or a free-for-all that will get everyone moving. In Bowling, all players can bowl simultaneously—no waiting for your turn. Play each sport online, or team up with a friend on the same system to take on opponents near and far in team sports like Basketball, Volleyball and Tennis.",
+ "descriptionEn": "Get moving* with Basketball**, Golf**, Soccer, Volleyball, Bowling, Tennis, Badminton, and Chambara (swordplay) using Joy-Con™ controllers! Controls are intuitive, so you can hit the court (or lanes, or field, or arena) and get started. With controlled motions you can curve your bowling ball, add spin to a tennis shot, or even use a Joy-Con with the included Leg Strap accessory to kick the ball in Soccer. Family and friends can join in on the fun on the same system*** or online****.\n\nPlay online and face opponents near and far to earn in-game rewards or aim for the Pro League\n\nFace off against opponents worldwide and strive to reach the Pro League in every sport. As you play online in random matchmaking, redeem points you earn for in-game rewards like outfits, sports accessories, gear, and much more for your avatar. The selection of items rotates each week, so check back and see what’s in stock!\n\nPlay with friends and family in the same room or across the world\n\nBowl, spike, and duel with friends in all 8 sports! Pass a Joy-Con controller to a friend for some 1v1, 2v2, or a free-for-all that will get everyone moving. In Bowling, all players can bowl simultaneously—no waiting for your turn. Play each sport online, or team up with a friend on the same system to take on opponents near and far in team sports like Basketball, Volleyball and Tennis.",
+ "descriptionKu": "Nintendo Switch Sports brings motion-controlled sports to Switch with intuitive Joy-Con actions, local party play, online matchmaking, cosmetic rewards, and free post-launch sport additions. Nintendo lists TV and Tabletop modes, but not Handheld mode, because the game relies on detached Joy-Con motion input.",
+ "cartridgeImage": "/api/files/products/prd_4241c51108d849b2/front-box-efc90ebe4368a968.webp",
+ "nintendoCardImage": "https://assets.nintendo.com/image/upload/ar_1:1,c_fill,g_auto,w_1000/f_auto/q_auto/dpr_1.5/store/software/switch/70010000049931/282ce6a96d5855d8b46aa9316314969f731a26ef9c7b2bc1e5aebe62dcf2ece2",
+ "coverHiResImage": "/api/files/products/prd_4241c51108d849b2/3d-wrap-880e1a01ee9545b5.webp",
+ "coverImage": "https://assets.nintendo.com/image/upload/ar_16:9,c_fill,g_auto,w_1600/f_auto/q_auto/dpr_1.5/store/software/switch/70010000049931/ee756f617f2e59e7cb4e09fccda40dfebfed6aaa94f1164f4fed8f6d38253f28",
+ "bannerImages": [
+  "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000049931/08357e380f643e3f73773aef78ab8aa364fff62cc3794e6a3082d7ec48b38aa5",
+  "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000049931/d008f8312312fff3dcb3cf726ded0195f91b5d8b3946ba32d7ef0ac16c515fb3",
+  "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000049931/42d806ffe805de9673f9dc4496e2180832e7a5636fb555faa5279101978fcb2b",
+  "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000049931/a8af665a4e14030240458b5b2fa1c9ac490f7fc4956bc429fd693babe0cfaf9d"
+ ],
+ "youtubeTrailer": "",
+ "releaseDate": "2022-04-29",
+ "ageRating": "Everyone 10+",
+ "metacriticRating": 72,
+ "genres": [
+  "Action",
+  "Party",
+  "Sports"
+ ],
+ "platform": "switch1",
+ "size": "3.25 GB",
+ "numberOfPlayers": "1-4",
+ "supportedLanguages": "Japanese, British English, French, German, Italian, Spanish, Korean, Dutch, Portuguese, Russian, Simplified Chinese, Latin American Spanish, Canadian French, Traditional Chinese, American English",
+ "price": 8500,
+ "cost": 1500,
+ "stock": 999999,
+ "isInfiniteStock": true,
+ "isHidden": true,
+ "displayOrder": 0,
+ "category": "nintendo-switch-games",
+ "categoryId": "nintendo-switch-games",
+ "options": [
+  {
+   "id": "offline_account",
+   "name": "مشترك",
+   "description": "حساب مشترك",
+   "stock": 9999,
+   "isInfiniteStock": true,
+   "customerDescription": "حساب مشترك"
+  },
+  {
+   "id": "online_account",
+   "name": "خاص بك",
+   "description": "حساب خاص بك",
+   "stock": 9999,
+   "isInfiniteStock": true,
+   "customerDescription": "حساب خاص بك"
+  }
+ ],
+ "types": [
+  {
+   "id": "regular_offline",
+   "name": "مشترك — اللعبة الأساسية",
+   "optionId": "offline_account",
+   "price": 8500,
+   "cost": 1500,
+   "description": "اللعبة الأساسية",
+   "stock": 9999,
+   "isInfiniteStock": true,
+   "customerDescription": "اللعبة الأساسية"
+  },
+  {
+   "id": "standard_online",
+   "name": "خاص بك — اللعبة الأساسية",
+   "optionId": "online_account",
+   "price": 14250,
+   "cost": 1500,
+   "description": "اللعبة الأساسية",
+   "stock": 9999,
+   "isInfiniteStock": true,
+   "customerDescription": "اللعبة الأساسية"
+  }
+ ],
+ "editions": [],
+ "dlcs": [],
+ "isActive": true,
+ "status": "Active",
+ "kind": "account",
+ "trade_value_iqd": 7750,
+ "store_offer_bonus_iqd": 1250,
+ "trade_enabled": true,
+ "trade_value_locked": false,
+ "id": "prd_4241c51108d849b2",
+ "schema_version": 24,
+ "titleAr": "نينتندو سويتش سبورتس",
+ "compatibility": [
+  "Nintendo Switch",
+  "Nintendo Switch 2: supported with behavior consistent with Nintendo Switch"
+ ],
+ "edition": "Standard / Store Variants",
+ "developer": "Nintendo",
+ "publisher": "Nintendo",
+ "seriesName": "Nintendo Sports",
+ "metacriticUrl": "https://www.metacritic.com/game/nintendo-switch-sports/",
+ "opencriticRating": 74,
+ "userScore": 6.9,
+ "price_usd": 39.99,
+ "officialUrl": "https://nintendoswitchsports.nintendo.com/",
+ "eshopUrl": "https://www.nintendo.com/us/store/products/nintendo-switch-sports-switch/",
+ "gameIsOffline": true,
+ "gameIsOnline": true,
+ "gameLanguageLocked": false,
+ "description_short": "Play eight motion-controlled sports locally or online using Joy-Con controllers, including Basketball, Golf, Soccer, Volleyball, Bowling, Tennis, Badminton, and Chambara.",
+ "description_ar": "مجموعة رياضية حركية تضم ثماني رياضات: كرة السلة والغولف وكرة القدم والكرة الطائرة والبولينغ والتنس والريشة الطائرة وتشانبارا. تدعم اللعب المحلي والأونلاين باستخدام Joy-Con، ولا تدعم وضع Handheld لأن اللعب يتطلب وحدات تحكم منفصلة.",
+ "box_front_url": "https://assets.nintendo.com/image/upload/ar_3:4,c_fit,g_auto,w_1000/f_auto/q_auto/dpr_1.5/store/software/switch/70010000049931/282ce6a96d5855d8b46aa9316314969f731a26ef9c7b2bc1e5aebe62dcf2ece2",
+ "languagesText": [
+  "Japanese",
+  "British English",
+  "French",
+  "German",
+  "Italian",
+  "Spanish",
+  "Korean",
+  "Dutch",
+  "Portuguese",
+  "Russian",
+  "Simplified Chinese",
+  "Latin American Spanish",
+  "Canadian French",
+  "Traditional Chinese",
+  "American English"
+ ],
+ "languagesAudio": [
+  "Audio language availability varies by title and region; see official product information"
+ ],
+ "tvMode": true,
+ "tabletopMode": true,
+ "handheldMode": false,
+ "nintendoPlayModes": [
+  "TV mode",
+  "Tabletop mode"
+ ],
+ "nintendoOnlineRequired": true,
+ "nintendoCloudSaves": true,
+ "nintendoGameKeyCard": false,
+ "nintendoPhysicalNeedsDownload": false,
+ "switch2Enhanced": false,
+ "switch2Exclusive": false,
+ "nintendoNotes": "Nintendo product identity and store facts were verified against the official listing on 2026-09-02. Performance values are included only where an official source publishes them.",
+ "editionsList": [
+  {
+   "name": "Regular / Offline",
+   "coverUrl": "https://assets.nintendo.com/image/upload/ar_3:4,c_fit,g_auto,w_1000/f_auto/q_auto/dpr_1.5/store/software/switch/70010000049931/282ce6a96d5855d8b46aa9316314969f731a26ef9c7b2bc1e5aebe62dcf2ece2",
+   "contents": [
+    {
+     "label": "Regular / Offline store package"
+    },
+    {
+     "label": "Offline account access"
+    },
+    {
+     "label": "Infinite stock by default"
+    }
+   ]
+  },
+  {
+   "name": "Standard / Online",
+   "coverUrl": "https://assets.nintendo.com/image/upload/ar_1:1,c_fill,g_auto,w_1000/f_auto/q_auto/dpr_1.5/store/software/switch/70010000049931/282ce6a96d5855d8b46aa9316314969f731a26ef9c7b2bc1e5aebe62dcf2ece2",
+   "contents": [
+    {
+     "label": "Standard / Online store package"
+    },
+    {
+     "label": "Online account access"
+    },
+    {
+     "label": "Infinite stock by default"
+    }
+   ]
+  }
+ ],
+ "gameplayPillars": [
+  {
+   "title": "Motion-controlled sports",
+   "description": "Joy-Con motion maps real-world swings, kicks, and throws into sports actions.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000049931/08357e380f643e3f73773aef78ab8aa364fff62cc3794e6a3082d7ec48b38aa5"
+  },
+  {
+   "title": "Eight supported sports",
+   "description": "Basketball, Golf, Soccer, Volleyball, Bowling, Tennis, Badminton, and Chambara provide varied rule sets.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000049931/d008f8312312fff3dcb3cf726ded0195f91b5d8b3946ba32d7ef0ac16c515fb3"
+  },
+  {
+   "title": "Local party play",
+   "description": "Several sports support multiple players on one system for family and party sessions.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000049931/42d806ffe805de9673f9dc4496e2180832e7a5636fb555faa5279101978fcb2b"
+  },
+  {
+   "title": "Online matchmaking",
+   "description": "Players can compete online for ranks and cosmetic rewards through Nintendo Switch Online features.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000049931/a8af665a4e14030240458b5b2fa1c9ac490f7fc4956bc429fd693babe0cfaf9d"
+  },
+  {
+   "title": "Leg Strap support",
+   "description": "Some Soccer activities can use the Leg Strap accessory to translate real kicking motions.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000049931/08357e380f643e3f73773aef78ab8aa364fff62cc3794e6a3082d7ec48b38aa5"
+  }
+ ],
+ "worldSummary": "Nintendo Switch Sports brings motion-controlled sports to Switch with intuitive Joy-Con actions, local party play, online matchmaking, cosmetic rewards, and free post-launch sport additions. Nintendo lists TV and Tabletop modes, but not Handheld mode, because the game relies on detached Joy-Con motion input.",
+ "storyChapters": [
+  {
+   "title": "Choose a Sportmate or Mii",
+   "body": "Players begin by choosing and customizing an avatar for Spocco Square.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000049931/d008f8312312fff3dcb3cf726ded0195f91b5d8b3946ba32d7ef0ac16c515fb3"
+  },
+  {
+   "title": "Learn individual sports",
+   "body": "Each sport uses its own motion gestures, timing systems, scoring rules, and team structure.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000049931/42d806ffe805de9673f9dc4496e2180832e7a5636fb555faa5279101978fcb2b"
+  },
+  {
+   "title": "Play locally with family",
+   "body": "The game is designed around quick shared sessions using multiple Joy-Con controllers.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000049931/a8af665a4e14030240458b5b2fa1c9ac490f7fc4956bc429fd693babe0cfaf9d"
+  },
+  {
+   "title": "Compete online",
+   "body": "Online play unlocks broader matchmaking and reward progression.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000049931/08357e380f643e3f73773aef78ab8aa364fff62cc3794e6a3082d7ec48b38aa5"
+  },
+  {
+   "title": "Return for updated sports",
+   "body": "Free updates expanded the game with Golf and later Basketball, increasing its long-term variety.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000049931/d008f8312312fff3dcb3cf726ded0195f91b5d8b3946ba32d7ef0ac16c515fb3"
+  }
+ ],
+ "features": [
+  "Eight sports",
+  "Motion controls",
+  "Local multiplayer",
+  "Online matchmaking and Pro League",
+  "Mii and Sportsmate customization"
+ ],
+ "perfResolutionDocked": "Not published by Nintendo",
+ "perfResolutionHandheld": "Not Supported",
+ "perfFps": "Not published by Nintendo",
+ "perfHdr": false,
+ "playTimeMain": 0,
+ "completionMain": 0,
+ "completionExtras": 0,
+ "faq": [
+  {
+   "q": "How many sports are included?",
+   "a": "Eight: Basketball, Golf, Soccer, Volleyball, Bowling, Tennis, Badminton, and Chambara."
+  },
+  {
+   "q": "Does it support Handheld mode?",
+   "a": "No. Nintendo lists TV and Tabletop modes only."
+  },
+  {
+   "q": "How many players are supported?",
+   "a": "Nintendo lists 1–4 players on one system and 1–2 players online; individual sports can have additional controller requirements."
+  },
+  {
+   "q": "Does it work on Nintendo Switch 2?",
+   "a": "Yes. Nintendo marks it supported with behavior consistent with Nintendo Switch."
+  }
+ ],
+ "verdictScore": 8.5,
+ "verdictPros": [
+  "Very accessible motion controls",
+  "Strong family and party appeal",
+  "Online play extends replay value",
+  "Free sports updates expanded content",
+  "Simple presentation works well for casual players"
+ ],
+ "verdictCons": [
+  "Handheld mode is not supported",
+  "Depth varies significantly between sports",
+  "Requires space for safe motion play",
+  "Some online rewards rotate over time",
+  "Not designed as a realistic sports simulator"
+ ],
+ "reviews": [
+  {
+   "source": "Metacritic",
+   "score": "72",
+   "url": "https://www.metacritic.com/game/nintendo-switch-sports/"
+  },
+  {
+   "source": "OpenCritic",
+   "score": "74",
+   "url": "https://opencritic.com/"
+  }
+ ],
+ "timeline": [
+  {
+   "date": "2022-04-29",
+   "title": "Released on target Nintendo platform"
+  }
+ ],
+ "patchNotes": [
+  {
+   "version": "Current retail build",
+   "date": "2026-08-27"
+  }
+ ],
+ "studioName": "Nintendo",
+ "studioUrl": "https://www.nintendo.com/us/store/products/nintendo-switch-sports-switch/",
+ "studioLocation": "See publisher/developer profile",
+ "sources": [
+  {
+   "name": "Nintendo eShop (US)",
+   "url": "https://www.nintendo.com/us/store/products/nintendo-switch-sports-switch/"
+  },
+  {
+   "name": "Nintendo Switch Sports official site",
+   "url": "https://nintendoswitchsports.nintendo.com/"
+  }
+ ],
+ "downloadSizeGb": 3.25,
+ "requiredSpaceGb": 3.25,
+ "microSdRecommended": false,
+ "storageNotes": "Nintendo lists a 3.25 GB download. Free-space requirements can increase with updates.",
+ "mpLocalPlayers": 4,
+ "mpOnlinePlayers": 2,
+ "mpCoop": true,
+ "mpCompetitive": true,
+ "mpLocalWireless": false,
+ "mpSplitScreen": false,
+ "dlc": [
+  {
+   "name": "Downloadable / additional content status",
+   "description": "No paid expansion pass is required; major sports additions were delivered through free software updates."
+  }
+ ],
+ "galleryImages": [
+  {
+   "alt": "Nintendo Switch Sports official/promotional game-world media 1",
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000049931/08357e380f643e3f73773aef78ab8aa364fff62cc3794e6a3082d7ec48b38aa5"
+  },
+  {
+   "alt": "Nintendo Switch Sports official/promotional game-world media 2",
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000049931/d008f8312312fff3dcb3cf726ded0195f91b5d8b3946ba32d7ef0ac16c515fb3"
+  },
+  {
+   "alt": "Nintendo Switch Sports official/promotional game-world media 3",
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000049931/42d806ffe805de9673f9dc4496e2180832e7a5636fb555faa5279101978fcb2b"
+  },
+  {
+   "alt": "Nintendo Switch Sports official/promotional game-world media 4",
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000049931/a8af665a4e14030240458b5b2fa1c9ac490f7fc4956bc429fd693babe0cfaf9d"
+  }
+ ],
+ "devicePerformance": [
+  {
+   "device": "Nintendo Switch 2",
+   "deviceSlug": "nintendo-switch-2",
+   "deviceModel": "Nintendo Switch 2",
+   "hardwareId": "prd_acf4c89908764c62",
+   "informationStatus": "available",
+   "handheld": {
+    "supported": false,
+    "resolution": "Not Supported",
+    "fps": "Not Supported",
+    "mode": "Handheld"
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "Not published by Nintendo",
+    "fps": "Not published by Nintendo",
+    "mode": "TV"
+   },
+   "sourceName": "Nintendo official product page",
+   "sourceUrl": "https://www.nintendo.com/us/store/products/nintendo-switch-sports-switch/",
+   "verificationStatus": "official",
+   "verifiedAt": "2026-09-02",
+   "performanceNotes": "Backward-compatible on Switch 2. Nintendo publishes no exact resolution or FPS; Handheld mode remains unsupported."
+  }
+ ],
+ "switch2UpgradePrice": 0,
+ "image": "https://assets.nintendo.com/image/upload/ar_16:9,c_fill,g_auto,w_1600/f_auto/q_auto/dpr_1.5/store/software/switch/70010000049931/ee756f617f2e59e7cb4e09fccda40dfebfed6aaa94f1164f4fed8f6d38253f28",
+ "banner": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000049931/08357e380f643e3f73773aef78ab8aa364fff62cc3794e6a3082d7ec48b38aa5",
+ "createdAt": "2026-08-27T21:25:00.898Z",
+ "created_at": "2026-08-27T21:25:00.898Z",
+ "updatedAt": "2026-09-02T00:31:52.126Z",
+ "updated_at": "2026-08-27T21:25:00.898Z",
+ "badgeEn": "وفر 40%",
+ "badgeKu": "وفر 40%",
+ "featuresEn": [
+  "Eight sports",
+  "Motion controls",
+  "Local multiplayer",
+  "Online matchmaking and Pro League",
+  "Mii and Sportsmate customization"
+ ],
+ "featuresKu": [
+  "Eight sports",
+  "Motion controls",
+  "Local multiplayer",
+  "Online matchmaking and Pro League",
+  "Mii and Sportsmate customization"
+ ],
+ "boxFrontUrl": "https://assets.nintendo.com/image/upload/ar_3:4,c_fit,g_auto,w_1000/f_auto/q_auto/dpr_1.5/store/software/switch/70010000049931/282ce6a96d5855d8b46aa9316314969f731a26ef9c7b2bc1e5aebe62dcf2ece2",
+ "sales": 0,
+ "nsuid": "70010000049931",
+ "product_code": "HACPAS8SA",
+ "title_id": "0100d2f00d5c0000",
+ "arabicSupport": false,
+ "nintendoEshopUrl": "https://www.nintendo.com/us/store/products/nintendo-switch-sports-switch/",
+ "tagline": "Dunk, swing, kick, spike, and bowl your way to victory in eight motion-controlled sports.",
+ "fitFor": [
+  "Families and groups who want active motion-controlled party play",
+  "Players who want local matches for up to four people",
+  "Players who want online competition and rotating cosmetic rewards"
+ ],
+ "notFitFor": [
+  "Nintendo Switch Lite users without separate compatible Joy-Con controllers",
+  "Players who need Handheld mode",
+  "Players looking for a traditional button-only sports simulation"
+ ],
+ "storySummary": "This is a sports collection rather than a story campaign; players visit Spocco Square to compete in eight sports.",
+ "dlcList": [
+  {
+   "name": "No paid gameplay DLC",
+   "description": "Nintendo added Golf and Basketball through free software updates; no paid gameplay expansion is required for the eight listed sports."
+  }
+ ],
+ "updates": [
+  {
+   "date": "2022-11-28",
+   "title": "Golf update",
+   "description": "Nintendo added Golf as a free update."
+  },
+  {
+   "date": "2024-07-09",
+   "title": "Basketball update",
+   "description": "Nintendo added Basketball as a free update."
+  }
+ ],
+ "music": "Nintendo has not published a standalone soundtrack product on the official store page; the game uses original menu and sport-specific music and effects.",
+ "completionTime": "No fixed completion time: matches are session-based and progression continues through online leagues and rotating rewards.",
+ "completionistTime": "No finite completionist time is published because online rewards and competitive progression rotate over time.",
+ "pros": [
+  "Eight distinct motion sports",
+  "Strong local party support",
+  "Online play and free sport updates"
+ ],
+ "cons": [
+  "No Handheld mode",
+  "Some modes require extra Joy-Con accessories",
+  "Online features require Nintendo Switch Online"
+ ],
+ "verdictSummary": "An accessible motion-sports collection that works best for local groups and online competition, with the important limitation that Handheld mode is not supported.",
+ "guides": [
+  {
+   "title": "Nintendo Switch Sports official site",
+   "summary": "Official sport, control, and update information.",
+   "url": "https://nintendoswitchsports.nintendo.com/"
+  }
+ ],
+ "perfNotes": "Nintendo confirms TV and Tabletop support but does not publish exact rendering resolution or frame-rate specifications."
+}

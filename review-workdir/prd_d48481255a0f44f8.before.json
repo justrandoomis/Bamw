@@ -1,0 +1,487 @@
+{
+ "title": "Persona 3 Portable",
+ "titleEn": "Persona 3 Portable",
+ "titleKu": "Persona 3 Portable",
+ "slug": "persona-3-portable",
+ "description": "Transfer to Gekkoukan High School, awaken to the hidden Dark Hour and climb Tartarus with SEES. Build Social Links, fuse Personas and experience the story through either the male or female protagonist route.",
+ "descriptionEn": "Transfer to Gekkoukan High School, awaken to the hidden Dark Hour and climb Tartarus with SEES. Build Social Links, fuse Personas and experience the story through either the male or female protagonist route.",
+ "descriptionKu": "Transfer to Gekkoukan High School, awaken to the hidden Dark Hour and climb Tartarus with SEES. Build Social Links, fuse Personas and experience the story through either the male or female protagonist route.",
+ "cartridgeImage": "/api/files/products/prd_d48481255a0f44f8/front-0f035f7083cb386d.jpg",
+ "nintendoCardImage": "/api/files/products/prd_d48481255a0f44f8/square-55364a9fdd8dbcbd.jpg",
+ "coverHiResImage": "/api/files/products/prd_d48481255a0f44f8/3d-texture-1194e67ddcfefd50.jpg",
+ "coverImage": "/api/files/products/prd_d48481255a0f44f8/cover-46493874c8b573fa.jpg",
+ "bannerImages": [
+  "/api/files/products/prd_d48481255a0f44f8/banner-0-9738085b11bb5b9f.jpg",
+  "/api/files/products/prd_d48481255a0f44f8/banner-1-c64a5464f3aa3bd2.jpg",
+  "/api/files/products/prd_d48481255a0f44f8/banner-2-0959a0a1d31f8aa7.jpg",
+  "/api/files/products/prd_d48481255a0f44f8/banner-4-ce6357ec722653e3.jpg",
+  "https://img-eshop.cdn.nintendo.net/i/9f6d09dac79d0cf40f0d4287882f04e84f979f636dd6bd8a3e7daf83aded4c5c.jpg",
+  "/api/files/products/prd_d48481255a0f44f8/banner-5-9511f2c1801713d8.jpg"
+ ],
+ "gallery": [],
+ "youtubeTrailer": "https://www.youtube.com/watch?v=HnmCs0pUSNk",
+ "releaseDate": "2023-01-19",
+ "ageRating": "ESRB Mature",
+ "metacriticRating": 81,
+ "genres": [
+  "Role-Playing Game",
+  "JRPG",
+  "Turn-Based RPG",
+  "Social Simulation"
+ ],
+ "platform": "switch1",
+ "size": 7.1,
+ "numberOfPlayers": "1",
+ "supportedLanguages": "Nintendo AU: Japanese, French, German, Italian, Spanish, Korean, Chinese (Simplified), Chinese (Traditional), English. Supplier selection: Simplified Chinese.",
+ "hardwareModel": "",
+ "colorEdition": "",
+ "storageCapacity": "",
+ "screenSpecs": "",
+ "batteryLife": "",
+ "boxContents": [],
+ "boxContentsText": "",
+ "warrantyCondition": "",
+ "connectivity": "",
+ "characterName": "Link",
+ "amiiboSeries": "The Legend of Zelda",
+ "figureType": "figure",
+ "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+ "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+ "boxCondition": "mib",
+ "releaseWave": "Wave 2 (Restock)",
+ "rarity": "standard",
+ "accessoryType": "حقيبة حماية وتنقل Carry Case",
+ "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+ "brand": "Nintendo Official",
+ "material": "Hard EVA Shockproof Shell",
+ "availableColors": "Black, Neon Red/Blue, White",
+ "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+ "cardValue": "$20 eShop Balance",
+ "region": "Global / region-dependent",
+ "cardType": "eshop",
+ "deliveryMethod": "instant_code",
+ "redemptionGuide": "",
+ "redemptionSteps": [],
+ "validity": "no_expiry",
+ "usedType": "cartridge",
+ "conditionGrade": "like_new",
+ "packaging": "cib",
+ "guaranteeStatus": "tested_30days",
+ "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+ "accountType": "primary",
+ "badge": "وفر 40%",
+ "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+ "price": 7500,
+ "cost": 1500,
+ "stock": 999999,
+ "isInfiniteStock": true,
+ "isHidden": false,
+ "displayOrder": 0,
+ "category": "nintendo-switch-games",
+ "categoryId": "nintendo-switch-games",
+ "categoryEn": "",
+ "categoryKu": "",
+ "options": [
+  {
+   "id": "offline_account",
+   "name": "Offline Account",
+   "description": "Offline account access supplied as Regular / 普通版.",
+   "stock": 999999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_account",
+   "name": "Online Account",
+   "description": "Online account access supplied as Standard / 标准版.",
+   "stock": 999999,
+   "isInfiniteStock": true
+  }
+ ],
+ "types": [
+  {
+   "id": "standard_offline",
+   "name": "Standard Offline",
+   "optionId": "offline_account",
+   "price": 7500,
+   "cost": 1500,
+   "description": "Supplier Regular / 普通版 converted to IQD using 1 CNY = 220 IQD and rounded down to nearest 250 IQD.",
+   "stock": 999999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "standard_online",
+   "name": "Standard Online",
+   "optionId": "online_account",
+   "price": "25000",
+   "cost": 12250,
+   "description": "Supplier Standard / 标准版 converted to IQD using 1 CNY = 220 IQD and rounded down to nearest 250 IQD.",
+   "stock": 999999,
+   "isInfiniteStock": true
+  }
+ ],
+ "editions": [],
+ "dlcs": [],
+ "isActive": true,
+ "status": "active",
+ "kind": "account",
+ "trade_value_iqd": 0,
+ "store_offer_bonus_iqd": 0,
+ "trade_enabled": true,
+ "trade_value_locked": false,
+ "id": "prd_d48481255a0f44f8",
+ "schema_version": 1,
+ "titleAr": "بيرسونا 3 بورتابل",
+ "compatibility": [
+  "Nintendo Switch",
+  "Nintendo Switch 2 (backward compatibility)",
+  "Nintendo Switch Lite"
+ ],
+ "edition": "Standard",
+ "developer": "ATLUS",
+ "publisher": "SEGA",
+ "metacriticUrl": "https://www.metacritic.com/game/persona-3-portable/",
+ "opencriticRating": 81,
+ "userScore": 8.7,
+ "price_usd": 19.99,
+ "officialUrl": "https://persona.atlus.com/p3p/",
+ "eshopUrl": "https://www.nintendo.com/au/games/nintendo-switch/persona-3-portable/",
+ "gameIsOffline": true,
+ "gameIsOnline": false,
+ "description_short": "A remastered version of the portable Persona 3 experience with two protagonist routes, Tartarus exploration and calendar-based social RPG systems.",
+ "description_ar": "تنتقل إلى مدرسة Gekkoukan وتكتشف الساعة المظلمة المخفية عن بقية العالم. تنضم إلى فريق SEES، وتصعد برج Tartarus، وتبني Social Links، وتدمج الـPersona، مع إمكانية تجربة القصة عبر بطل أو بطلة بما يغيّر عددًا من العلاقات والمشاهد.",
+ "box_front_url": "https://images.launchbox-app.com/99310ba0-7f8e-4de5-849f-5ca1bbbcd3d2.jpg",
+ "box_back_url": "https://images.launchbox-app.com/38235ba8-86a6-438e-98b4-916d29e98479.jpg",
+ "videos": [
+  {
+   "title": "Persona 3 Portable & Persona 4 Golden — Available Now on Nintendo Switch",
+   "url": "https://www.youtube.com/watch?v=HnmCs0pUSNk"
+  }
+ ],
+ "nintendoEshopUrl": "https://www.nintendo.com/au/games/nintendo-switch/persona-3-portable/",
+ "nintendoOnlineRequired": false,
+ "nintendoCloudSaves": true,
+ "nintendoGameKeyCard": false,
+ "tvMode": true,
+ "tabletopMode": true,
+ "handheldMode": true,
+ "nintendoPlayModes": "TV / Tabletop / Handheld",
+ "nintendoNotes": "Nintendo AU confirms Nintendo Switch 2 backward compatibility, 7.1 GB size, TV/Tabletop/Handheld modes, Save Data Cloud, and both Simplified and Traditional Chinese.\n\nSupplier selection supplied by user: Simplified Chinese. Regular / 普通版 ¥7.78 (pre-discount ¥11); Standard / 标准版 ¥55.8 (pre-discount ¥60). Converted costs: Regular 1,500 IQD; Standard 12,250 IQD. Supplier stock is marked 即将售罄 / near sold out; this is preserved as low_supplier_stock while store infinite-stock behavior remains enabled by the import rule.\n\nOnly two supplier variants exist, so no supplier DLC product types are created.",
+ "switch2Enhanced": false,
+ "switch2Exclusive": false,
+ "switch2Features": [
+  "Nintendo Switch 2 backward compatibility supported",
+  "No native Switch 2 Edition",
+  "No official visual enhancement patch",
+  "Faster loading may occur through backward compatibility"
+ ],
+ "tagline": "Uncover the truth of the Dark Hour from two protagonist perspectives.",
+ "fitFor": [
+  "Players who enjoy classic Persona systems",
+  "Fans of long turn-based JRPGs",
+  "Players interested in two protagonist routes",
+  "Players interested in the female protagonist route unavailable in Persona 3 Reload"
+ ],
+ "notFitFor": [
+  "Players expecting Persona 3 Reload presentation",
+  "Players who dislike visual-novel-style town navigation",
+  "Players wanting a short or action-focused game",
+  "Players who require fully explorable 3D social environments"
+ ],
+ "playTimeMain": 64.5,
+ "playTimeFull": 123.5,
+ "editionsList": [
+  {
+   "name": "Persona 3 Portable",
+   "coverUrl": "https://images.launchbox-app.com/99310ba0-7f8e-4de5-849f-5ca1bbbcd3d2.jpg",
+   "contents": [
+    {
+     "label": "Base Persona 3 Portable game"
+    },
+    {
+     "label": "Remastered graphics and smoother gameplay"
+    },
+    {
+     "label": "Quick save and difficulty selection"
+    }
+   ]
+  },
+  {
+   "name": "Persona 3 Portable & Persona 4 Golden Bundle",
+   "contents": [
+    {
+     "label": "Persona 3 Portable"
+    },
+    {
+     "label": "Persona 4 Golden"
+    },
+    {
+     "label": "Two remastered Persona RPGs"
+    }
+   ]
+  }
+ ],
+ "gameplayPillars": [
+  {
+   "title": "Climb Tartarus",
+   "description": "Explore randomized floors of Tartarus, manage party resources and exploit elemental weaknesses in turn-based combat.",
+   "imageUrl": "https://images.launchbox-app.com/14aeee50-5330-4ba5-9bdf-88e272921258.png"
+  },
+  {
+   "title": "Live the School Year",
+   "description": "Balance school days, social activities and Social Links across a calendar while preparing for major lunar events.",
+   "imageUrl": "https://images.launchbox-app.com/6cf20ca5-7070-4575-a5e4-f17b56c8d6d3.png"
+  },
+  {
+   "title": "Choose Your Protagonist",
+   "description": "Choose the male or female protagonist for distinct social routes, relationships and presentation differences.",
+   "imageUrl": "https://images.launchbox-app.com/642b56c5-8cc2-4997-91a1-174470f40479.png"
+  },
+  {
+   "title": "Develop Social Links",
+   "description": "Use limited calendar time to deepen Social Links, strengthen Persona fusion and experience route-specific character stories."
+  }
+ ],
+ "worldSummary": "Modern-day Iwatodai appears ordinary until the Dark Hour transforms the city. Tartarus rises during this hidden hour and Shadows threaten people who cannot perceive what is happening.",
+ "storyChapters": [
+  {
+   "title": "The Dark Hour",
+   "body": "The protagonist transfers to Gekkoukan High and experiences the Dark Hour before awakening the power of Persona."
+  },
+  {
+   "title": "SEES and Tartarus",
+   "body": "SEES explores Tartarus and battles Shadows while investigating the origin and purpose of the Dark Hour."
+  },
+  {
+   "title": "The Truth Behind the Shadows",
+   "body": "The group’s relationships and discoveries deepen as the consequences of the Dark Hour become increasingly personal."
+  },
+  {
+   "title": "The Final Months",
+   "body": "The final months force SEES to confront the meaning of the Dark Hour and the choices surrounding the fate awaiting the world."
+  }
+ ],
+ "galleryImages": [
+  {
+   "url": "https://images.launchbox-app.com/3e05f67e-aae6-48c7-8d05-c6a5ab68c6fc.jpg",
+   "alt": "Persona 3 Portable gameplay scene"
+  },
+  {
+   "url": "https://images.launchbox-app.com/14aeee50-5330-4ba5-9bdf-88e272921258.png",
+   "alt": "Tartarus dungeon exploration"
+  },
+  {
+   "url": "https://images.launchbox-app.com/c4bc7cdb-a99f-4569-8dba-810517fb6a2b.png",
+   "alt": "Turn-based Persona battle"
+  },
+  {
+   "url": "https://images.launchbox-app.com/6cf20ca5-7070-4575-a5e4-f17b56c8d6d3.png",
+   "alt": "School-life visual-novel navigation"
+  },
+  {
+   "url": "https://images.launchbox-app.com/642b56c5-8cc2-4997-91a1-174470f40479.png",
+   "alt": "Character interaction and social scene"
+  },
+  {
+   "url": "https://images.launchbox-app.com/32bb50e7-6cf1-48b1-9010-1a680ed48ab5.png",
+   "alt": "Additional Persona 3 Portable gameplay scene"
+  },
+  {
+   "url": "https://images.launchbox-app.com/abc4b1f1-afea-4557-af65-19705635812b.png",
+   "alt": "Additional Tartarus / battle scene"
+  }
+ ],
+ "features": [
+  "Two protagonist routes with different social experiences",
+  "Tartarus dungeon progression",
+  "Turn-based Persona battles and fusion",
+  "Remastered graphics for modern platforms",
+  "Quick Save support",
+  "Japanese and English voice-over"
+ ],
+ "perfResolutionDocked": "1080p output reported",
+ "perfResolutionHandheld": "720p-class portable output",
+ "perfFps": "60",
+ "perfHdr": false,
+ "perfNotes": "Nintendo Life describes the Switch version as rock-solid 60 fps. NintendoGalaxy provides a Switch frame-rate test recorded at 1080p/60 output, and Sega-Mag also reports 1080p/60 on Switch. Internal rendering resolution is not independently asserted beyond output-class reporting.",
+ "devicePerformance": [
+  {
+   "device": "Nintendo Switch 2",
+   "deviceSlug": "nintendo-switch-2",
+   "deviceModel": "Nintendo Switch 2",
+   "hardwareId": "prd_acf4c89908764c62",
+   "informationStatus": "verified / reviewed",
+   "handheld": {
+    "supported": true,
+    "resolution": "720p-class output",
+    "outputResolution": "1280x720",
+    "fps": "60",
+    "fpsMin": "60",
+    "fpsMax": "60",
+    "hdr": false,
+    "mode": "Handheld",
+    "notes": "Rock-solid 60 fps in handheld review coverage. Portable output is represented conservatively as 720p-class; internal render resolution is not claimed."
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "1080p output reported",
+    "outputResolution": "1920x1080",
+    "fps": "60",
+    "fpsMin": "60",
+    "fpsMax": "60",
+    "hdr": false,
+    "mode": "Docked",
+    "notes": "60 fps. 1080p output is reported by technical/review sources."
+   },
+   "rayTracing": false,
+   "sourceName": "Nintendo Life / NintendoGalaxy / Sega-Mag",
+   "verificationStatus": "verified 60 fps; output-resolution reporting cross-checked",
+   "performanceNotes": "60 fps is the high-confidence performance point. Resolution fields describe reported output rather than an undocumented internal render target."
+  }
+ ],
+ "downloadSizeGb": 7.1,
+ "requiredSpaceGb": 7.1,
+ "microSdRecommended": false,
+ "storageNotes": "Nintendo AU lists a 7.1 GB game file on Switch and on Switch 2 through compatibility.",
+ "languagesAudio": [
+  "Japanese",
+  "English"
+ ],
+ "languagesText": [
+  "Chinese (Simplified)",
+  "Chinese (Traditional)",
+  "English",
+  "Japanese",
+  "French",
+  "German",
+  "Italian",
+  "Spanish",
+  "Korean"
+ ],
+ "arabicSupport": false,
+ "mpLocalPlayers": false,
+ "mpOnlinePlayers": false,
+ "mpCoop": false,
+ "mpCompetitive": false,
+ "mpSplitScreen": false,
+ "mpLocalWireless": false,
+ "completionMain": 64.5,
+ "completionAll": 123.5,
+ "faq": [
+  {
+   "q": "Does Persona 3 Portable support Chinese on Switch?",
+   "a": "Yes. Nintendo AU lists Chinese (Simplified) and Chinese (Traditional) among the supported languages."
+  },
+  {
+   "q": "Does Persona 3 Portable work on Switch 2?",
+   "a": "Yes. Nintendo lists Nintendo Switch 2 compatibility as supported, through backward compatibility rather than a native Switch 2 version."
+  },
+  {
+   "q": "Is Persona 3 Portable multiplayer?",
+   "a": "No. It is a single-player RPG; Nintendo lists one local player."
+  },
+  {
+   "q": "What does the supplier stock warning mean?",
+   "a": "The supplier marked the listing 即将售罄, meaning near sold out. The import file preserves that supplier condition as low_supplier_stock even though the storefront account product uses infinite-stock behavior by default."
+  }
+ ],
+ "reviews": [
+  {
+   "source": "Metacritic",
+   "score": "81/100",
+   "url": "https://www.metacritic.com/game/persona-3-portable/"
+  },
+  {
+   "source": "OpenCritic",
+   "score": "81/100",
+   "url": "https://opencritic.com/game/14295/persona-3-portable"
+  },
+  {
+   "source": "Metacritic user score",
+   "score": "8.7/10",
+   "url": "https://www.metacritic.com/game/persona-3-portable/"
+  }
+ ],
+ "timeline": [
+  {
+   "date": "2009-11-01",
+   "title": "Persona 3 Portable released in Japan for PSP"
+  },
+  {
+   "date": "2022-10-08",
+   "title": "Modern-platform remaster announced for Switch and other platforms"
+  },
+  {
+   "date": "2023-01-19",
+   "title": "Persona 3 Portable released for Nintendo Switch"
+  }
+ ],
+ "seriesName": "Persona",
+ "seriesEntries": [
+  "Persona 4 Golden",
+  "Persona 3 Reload",
+  "Persona 5 Royal",
+  "Persona 4 Arena Ultimax",
+  "Persona 5 Strikers"
+ ],
+ "studioName": "ATLUS",
+ "studioUrl": "https://www.atlus.com/",
+ "studioLocation": "Tokyo, Japan",
+ "studioAbout": "ATLUS developed Persona 3 Portable and the modern remaster. The company is the creator of the Persona series and is part of the SEGA group.",
+ "setupNeeds": [
+  "Nintendo Switch family system",
+  "Nintendo Account for digital purchase",
+  "Nintendo Switch Online is optional; cloud backup requires membership"
+ ],
+ "sources": [
+  {
+   "name": "Nintendo Australia — Persona 3 Portable",
+   "url": "https://www.nintendo.com/au/games/nintendo-switch/persona-3-portable/"
+  },
+  {
+   "name": "Deku Deals — metadata and aggregate scores",
+   "url": "https://www.dekudeals.com/items/persona-3-portable"
+  },
+  {
+   "name": "Nintendo Life — Persona 3 Portable review / 60 fps",
+   "url": "https://www.nintendolife.com/reviews/switch-eshop/persona-3-portable"
+  },
+  {
+   "name": "NintendoGalaxy — Switch frame-rate test",
+   "url": "https://www.youtube.com/watch?v=xidfBqxqXFE"
+  },
+  {
+   "name": "LaunchBox Games Database — Switch media",
+   "url": "https://gamesdb.launchbox-app.com/games/details/166043-persona-3-portable"
+  }
+ ],
+ "boxContentsList": "[Circular]",
+ "image": "/api/files/products/prd_d48481255a0f44f8/cover-46493874c8b573fa.jpg",
+ "banner": "/api/files/products/prd_d48481255a0f44f8/banner-0-9738085b11bb5b9f.jpg",
+ "schemaId": "",
+ "createdAt": "2026-08-26T22:09:10.277Z",
+ "created_at": "2026-08-26T22:09:10.277Z",
+ "updatedAt": "2026-08-26T22:09:10.277Z",
+ "updated_at": "2026-08-26T22:09:10.277Z",
+ "badgeEn": "وفر 40%",
+ "badgeKu": "وفر 40%",
+ "featuresEn": [
+  "Two protagonist routes with different social experiences",
+  "Tartarus dungeon progression",
+  "Turn-based Persona battles and fusion",
+  "Remastered graphics for modern platforms",
+  "Quick Save support",
+  "Japanese and English voice-over"
+ ],
+ "featuresKu": [
+  "Two protagonist routes with different social experiences",
+  "Tartarus dungeon progression",
+  "Turn-based Persona battles and fusion",
+  "Remastered graphics for modern platforms",
+  "Quick Save support",
+  "Japanese and English voice-over"
+ ],
+ "boxFrontUrl": "https://images.launchbox-app.com/99310ba0-7f8e-4de5-849f-5ca1bbbcd3d2.jpg",
+ "sales": 0,
+ "images": [],
+ "modes": []
+}

@@ -1,0 +1,486 @@
+{
+ "id": "prd_37d91330c3514080",
+ "title": "Nintendo Switch 2 Welcome Tour",
+ "titleEn": "Nintendo Switch 2 Welcome Tour",
+ "titleKu": "Nintendo Switch 2 Welcome Tour",
+ "slug": "nintendo-switch-2-welcome-tour",
+ "description": "Nintendo Switch 2 Welcome Tour is an interactive museum-like experience built to explain the system's hardware, design and features through exhibits, quizzes, demonstrations and minigames.",
+ "descriptionEn": "Nintendo Switch 2 Welcome Tour is an interactive museum-like experience built to explain the system's hardware, design and features through exhibits, quizzes, demonstrations and minigames.",
+ "descriptionKu": "Nintendo Switch 2 Welcome Tour is an interactive museum-like experience built to explain the system's hardware, design and features through exhibits, quizzes, demonstrations and minigames.",
+ "cartridgeImage": "/api/files/products/prd_37d91330c3514080/front-9a4efac1b51c5cca.jpg",
+ "nintendoCardImage": "/api/files/products/prd_37d91330c3514080/nintendoCardImage-c90544a2002def9d.avif",
+ "coverHiResImage": "/api/files/products/prd_37d91330c3514080/3d-texture-6b7ae00f56515770.webp",
+ "coverImage": "/api/files/products/prd_37d91330c3514080/coverImage-5cfaafb2d21556e9.avif",
+ "bannerImages": [
+  "/api/files/products/prd_37d91330c3514080/bannerImages-1-dc2c5c1e0a144a20.avif",
+  "/api/files/products/prd_37d91330c3514080/bannerImages-2-b44ffd0c5fa7b675.avif"
+ ],
+ "gallery": [],
+ "youtubeTrailer": "https://www.youtube.com/watch?v=3w2ds-bANLM",
+ "releaseDate": "2025-06-05",
+ "ageRating": "PEGI 7",
+ "metacriticRating": 54,
+ "genres": [
+  "Educational",
+  "Interactive Exhibit",
+  "Minigames"
+ ],
+ "platform": "switch2",
+ "size": 1.7,
+ "numberOfPlayers": "1",
+ "supportedLanguages": "Japanese, British English, French, German, Italian, Spanish, Korean, Dutch, Simplified Chinese, Traditional Chinese, Latin American Spanish, Brazilian Portuguese, American English",
+ "hardwareModel": "",
+ "colorEdition": "",
+ "storageCapacity": "",
+ "screenSpecs": "",
+ "batteryLife": "",
+ "boxContents": [],
+ "boxContentsText": "",
+ "warrantyCondition": "",
+ "connectivity": "",
+ "characterName": "Link",
+ "amiiboSeries": "The Legend of Zelda",
+ "figureType": "figure",
+ "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+ "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+ "boxCondition": "mib",
+ "releaseWave": "Wave 2 (Restock)",
+ "rarity": "standard",
+ "accessoryType": "حقيبة حماية وتنقل Carry Case",
+ "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+ "brand": "Nintendo Official",
+ "material": "Hard EVA Shockproof Shell",
+ "availableColors": "Black, Neon Red/Blue, White",
+ "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+ "cardValue": "$20 eShop Balance",
+ "region": "Global",
+ "cardType": "eshop",
+ "deliveryMethod": "instant_code",
+ "redemptionGuide": "",
+ "redemptionSteps": [],
+ "validity": "no_expiry",
+ "usedType": "cartridge",
+ "conditionGrade": "like_new",
+ "packaging": "cib",
+ "guaranteeStatus": "tested_30days",
+ "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+ "accountType": "primary",
+ "badge": "وفر 40%",
+ "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+ "price": 5000,
+ "cost": 1250,
+ "stock": 999999,
+ "isInfiniteStock": true,
+ "isHidden": false,
+ "displayOrder": 0,
+ "category": "nintendo-switch-games",
+ "categoryId": "nintendo-switch-games",
+ "categoryEn": "",
+ "categoryKu": "",
+ "options": [
+  {
+   "id": "offline_account",
+   "name": "Offline Account",
+   "description": "Play using the supplied account under the store's offline-account activation method.",
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_account",
+   "name": "Online Account",
+   "description": "Online-account option with internet-connected account use where supported by the game/service.",
+   "isInfiniteStock": true
+  }
+ ],
+ "types": [
+  {
+   "id": "standard_offline",
+   "name": "Standard Edition",
+   "optionId": "offline_account",
+   "price": 5000,
+   "cost": 1250,
+   "description": "Standard game, Offline Account. Supplier Regular price: ¥6.80; purchase cost converted at 1 CNY = 220 IQD and rounded down to nearest 250 IQD.",
+   "isInfiniteStock": true
+  },
+  {
+   "id": "standard_online",
+   "name": "Standard Edition",
+   "optionId": "online_account",
+   "price": 7000,
+   "cost": 4500,
+   "description": "Standard game, Online Account. Supplier Standard price: ¥21.50; purchase cost converted at 1 CNY = 220 IQD and rounded down to nearest 250 IQD.",
+   "isInfiniteStock": true
+  }
+ ],
+ "editions": [],
+ "dlcs": [],
+ "isActive": true,
+ "status": "active",
+ "kind": "account",
+ "trade_value_iqd": 0,
+ "store_offer_bonus_iqd": 0,
+ "trade_enabled": true,
+ "trade_value_locked": false,
+ "schema_version": 22,
+ "titleAr": "جولة الترحيب بـ Nintendo Switch 2",
+ "compatibility": [
+  "Nintendo Switch 2"
+ ],
+ "edition": "Digital",
+ "developer": "Nintendo",
+ "publisher": "Nintendo",
+ "opencriticRating": 61,
+ "userScore": 3.9,
+ "officialUrl": "https://www.nintendo.com/us/store/products/nintendo-switch-2-welcome-tour-switch-2/",
+ "gameIsOffline": true,
+ "gameIsOnline": true,
+ "gameLanguageLocked": false,
+ "description_short": "An interactive exhibit that teaches players how Nintendo Switch 2 hardware and features work through demonstrations, quizzes, facts and minigames.",
+ "description_ar": "تجربة تعليمية تفاعلية تشبه المتحف للتعرف على تصميم وتقنيات Nintendo Switch 2. تتضمن معارض وحقائق واختبارات وألعابًا صغيرة وعروضًا لميزات مثل Joy-Con 2 والمغناطيس والتحكم بالماوس وHD Rumble 2.",
+ "box_front_url": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000096813/8a2fc51b02035bf067a473a66938322f1f1570bf21034f0ad2134ce93b0d1cac",
+ "videos": [
+  {
+   "title": "Gameplay Video",
+   "url": "https://www.youtube.com/watch?v=3w2ds-bANLM"
+  }
+ ],
+ "nintendoEshopUrl": "https://www.nintendo.com/us/store/products/nintendo-switch-2-welcome-tour-switch-2/",
+ "nintendoOnlineRequired": false,
+ "nintendoCloudSaves": true,
+ "tvMode": true,
+ "tabletopMode": true,
+ "handheldMode": true,
+ "nintendoPlayModes": "TV Mode, Tabletop Mode, Handheld Mode",
+ "switch2Features": [
+  "Designed exclusively around Nintendo Switch 2 hardware",
+  "Joy-Con 2 magnetic-attachment exhibits",
+  "Mouse-control demonstrations",
+  "HD Rumble 2 demonstrations",
+  "HDR demonstrations on compatible displays",
+  "Interactive exhibits explaining display and system technology",
+  "Some demonstrations require separately sold accessories"
+ ],
+ "tagline": "Get an inside look at the Nintendo Switch 2 system.",
+ "fitFor": [
+  "New Nintendo Switch 2 owners",
+  "Players curious about hardware technology",
+  "Families and younger players",
+  "Players who enjoy quizzes and small score challenges"
+ ],
+ "notFitFor": [
+  "Players expecting a full-scale adventure",
+  "Players looking for multiplayer"
+ ],
+ "playTimeMain": 5.5,
+ "playTimeFull": 10.5,
+ "editionsList": [
+  {
+   "name": "Digital Edition",
+   "contents": [
+    {
+     "label": "Full interactive exhibit experience"
+    }
+   ]
+  }
+ ],
+ "gameplayPillars": [
+  {
+   "title": "Interactive Exhibit",
+   "description": "Walk across and eventually inside a giant virtual Nintendo Switch 2 while accessing signs, diagrams and demonstrations."
+  },
+  {
+   "title": "Tech Demos",
+   "description": "Try experiences designed to show mouse controls, HD Rumble 2 and other hardware features."
+  },
+  {
+   "title": "Quizzes and Secrets",
+   "description": "Find hidden facts and answer knowledge questions about the console."
+  },
+  {
+   "title": "Minigames",
+   "description": "Compete for high scores and fast times in short hardware-themed challenges."
+  }
+ ],
+ "storyChapters": [
+  {
+   "title": "The Exhibition Hall",
+   "body": "Enter a virtual museum built in the shape of Nintendo Switch 2."
+  },
+  {
+   "title": "Learn the Hardware",
+   "body": "Move through exhibits explaining exterior design, controllers, display and internal technology."
+  },
+  {
+   "title": "Inside the System",
+   "body": "Later exhibits let the player explore deeper areas representing the system's internal design."
+  }
+ ],
+ "galleryImages": [
+  {
+   "url": "https://assets.nintendo.com/image/upload/ar_16:9,b_auto:border,c_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000096813/f1cfed90050a442c6a0025b9f19e64c279f8dba6d2f4a91530dc6097e8ce39b6",
+   "alt": "Distinct product/game media image 1; separate from the primary cover and square-card roles."
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/ar_16:9,b_auto:border,c_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000096813/9f6f8dfdc663b241013211ad7b6006ae5f6b64dfa0f89fb6772e6eaad3de9902",
+   "alt": "Distinct product/game media image 2; separate from the primary cover and square-card roles."
+  }
+ ],
+ "features": [
+  "Interactive digital exhibit built around Nintendo Switch 2",
+  "Explains magnetic Joy-Con 2 attachment",
+  "Hardware and display technology exhibits",
+  "Quizzes and hidden facts",
+  "Mouse-control demonstrations",
+  "HD Rumble 2 demonstrations",
+  "Minigames and tech demos",
+  "CameraPlay support in compatible experiences",
+  "HDR output on compatible TVs",
+  "Single-player educational structure"
+ ],
+ "perfResolutionDocked": "1920x1080 output",
+ "perfResolutionHandheld": "1920x1080",
+ "perfFps": "60",
+ "perfHdr": true,
+ "perfNotes": "Welcome Tour is a light first-party interactive hardware showcase. Captured gameplay demonstrates a 60 FPS presentation. The handheld display output is 1920x1080; the validator fields use 1080p-class output for both handheld and TV rather than leaving required fields blank.",
+ "devicePerformance": [
+  {
+   "device": "Nintendo Switch 2",
+   "deviceSlug": "nintendo-switch-2",
+   "deviceModel": "Nintendo Switch 2",
+   "hardwareId": "prd_acf4c89908764c62",
+   "informationStatus": "verified",
+   "unavailableReason": "Nintendo does not publish measured rendering resolution/FPS values for this title.",
+   "handheld": {
+    "supported": true,
+    "resolution": "1920x1080",
+    "renderingResolution": "1920x1080-class",
+    "outputResolution": "1920x1080",
+    "fps": "60",
+    "fpsMin": "60",
+    "fpsMax": "60"
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "1920x1080 output",
+    "renderingResolution": "1920x1080-class",
+    "outputResolution": "1920x1080",
+    "fps": "60",
+    "fpsMin": "60",
+    "fpsMax": "60",
+    "hdr": true
+   },
+   "sourceName": "Nintendo Switch 2 Welcome Tour gameplay capture / hardware demonstrations",
+   "sourceUrl": "https://www.youtube.com/watch?v=n_dHcDAzWZ0",
+   "verificationStatus": "captured-gameplay-output",
+   "performanceNotes": "Welcome Tour is a light first-party interactive hardware showcase. Captured gameplay demonstrates a 60 FPS presentation. The handheld display output is 1920x1080; the validator fields use 1080p-class output for both handheld and TV rather than leaving required fields blank."
+  }
+ ],
+ "downloadSizeGb": 1.7,
+ "requiredSpaceGb": 1.7,
+ "microSdRecommended": false,
+ "languagesAudio": [
+  "Japanese",
+  "English"
+ ],
+ "languagesText": [
+  "Japanese",
+  "British English",
+  "French",
+  "German",
+  "Italian",
+  "Spanish",
+  "Korean",
+  "Dutch",
+  "Simplified Chinese",
+  "Traditional Chinese",
+  "Latin American Spanish",
+  "Brazilian Portuguese",
+  "American English"
+ ],
+ "arabicSupport": false,
+ "mpLocalPlayers": false,
+ "mpOnlinePlayers": false,
+ "mpCoop": false,
+ "mpCompetitive": false,
+ "mpSplitScreen": false,
+ "mpLocalWireless": false,
+ "guides": [
+  {
+   "title": "Nintendo Store",
+   "summary": "Official feature descriptions, modes and supported languages.",
+   "url": "https://www.nintendo.com/us/store/products/nintendo-switch-2-welcome-tour-switch-2/"
+  },
+  {
+   "title": "Nintendo Feature Article",
+   "summary": "Additional explanation of exhibits and later areas.",
+   "url": "https://www.nintendo.com/us/whatsnew/get-an-inside-look-with-nintendo-switch-2-welcome-tour/"
+  },
+  {
+   "title": "Deku Deals",
+   "summary": "Completion times and aggregate scores.",
+   "url": "https://www.dekudeals.com/items/nintendo-switch-2-welcome-tour"
+  }
+ ],
+ "completionMain": 5.5,
+ "completionExtras": 8,
+ "completionAll": 10.5,
+ "faq": [
+  {
+   "q": "Is Welcome Tour free with Nintendo Switch 2?",
+   "a": "No. It is sold as separate digital software."
+  },
+  {
+   "q": "How long does it take?",
+   "a": "Crowdsourced data lists about 5.5 hours for the main path and roughly 10.5 hours for completionist play."
+  },
+  {
+   "q": "Does it support Simplified Chinese?",
+   "a": "Yes."
+  },
+  {
+   "q": "Is it multiplayer?",
+   "a": "No. Nintendo lists one player on a single system."
+  },
+  {
+   "q": "What does it teach?",
+   "a": "It explains Nintendo Switch 2 design and features such as magnetic Joy-Con 2 attachment, mouse controls, HD Rumble 2 and other hardware technology."
+  },
+  {
+   "q": "Are extra accessories required?",
+   "a": "Some demonstrations require additional accessories sold separately."
+  }
+ ],
+ "verdictScore": 7.5,
+ "verdictSummary": "A polished interactive hardware tour that succeeds as an educational companion to Switch 2, though its scope is intentionally smaller than a conventional game.",
+ "verdictPros": [
+  "Excellent introduction to Switch 2 hardware concepts",
+  "Interactive instead of purely instructional",
+  "Very small download size",
+  "Simplified Chinese support"
+ ],
+ "verdictCons": [
+  "Paid software rather than a bundled system app",
+  "Some demonstrations require additional accessories"
+ ],
+ "reviews": [
+  {
+   "source": "Metacritic",
+   "score": "54/100",
+   "quote": "Mixed critical reception; reviewers liked the technical detail but often criticized selling it separately rather than bundling it with the console.",
+   "url": "https://www.metacritic.com/"
+  },
+  {
+   "source": "OpenCritic",
+   "score": "61/100",
+   "quote": "Reviews commonly described it as an interactive manual with surprisingly deep hardware explanations but limited game-like scope.",
+   "url": "https://opencritic.com/"
+  },
+  {
+   "source": "Deku Deals users",
+   "score": "3.9/10",
+   "quote": "User aggregate data is notably weaker than many first-party Switch 2 releases.",
+   "url": "https://www.dekudeals.com/items/nintendo-switch-2-welcome-tour"
+  }
+ ],
+ "timeline": [
+  {
+   "date": "2025-04-02",
+   "title": "Nintendo Switch 2 Direct",
+   "body": "Welcome Tour was revealed alongside Nintendo Switch 2."
+  },
+  {
+   "date": "2025-06-05",
+   "title": "Launch",
+   "body": "Released digitally on the same day as Nintendo Switch 2."
+  },
+  {
+   "date": "2025-07-01",
+   "title": "Nintendo feature article",
+   "body": "Nintendo published a deeper official overview explaining later exhibits and tech-focused content."
+  }
+ ],
+ "patchNotes": [
+  {
+   "version": "Launch version",
+   "date": "2025-06-05",
+   "body": "Initial digital release alongside Nintendo Switch 2."
+  },
+  {
+   "version": "Post-launch system compatibility",
+   "date": "2025-2026",
+   "body": "The software continued to demonstrate current Nintendo Switch 2 hardware features and accessories."
+  },
+  {
+   "version": "Current",
+   "date": "2026",
+   "body": "Available as a digital Nintendo Switch 2 exclusive."
+  }
+ ],
+ "soundtrack": [
+  {
+   "title": "Nintendo Switch 2 Welcome Tour in-game soundtrack",
+   "url": "https://www.nintendo.com/us/store/products/nintendo-switch-2-welcome-tour-switch-2/"
+  }
+ ],
+ "seriesName": "Nintendo hardware experiences",
+ "seriesEntries": [
+  "Nintendo Switch 2 Welcome Tour"
+ ],
+ "studioName": "Nintendo",
+ "studioUrl": "https://www.nintendo.com/",
+ "studioLocation": "Kyoto, Japan",
+ "studioAbout": "Nintendo developed Welcome Tour as an interactive exhibit that explains the hardware, design and technology of Nintendo Switch 2 through facts, quizzes, demonstrations and minigames.",
+ "setupNeeds": [
+  "Nintendo Switch 2 system required for the Nintendo Switch 2 version.",
+  "Internet connection is required for digital download, updates and online/service features where applicable.",
+  "Nintendo Account required for Nintendo eShop purchase/download.",
+  "Sufficient internal storage or compatible microSD Express storage required.",
+  "Nintendo Switch Online membership is required only for game-specific online multiplayer/features that explicitly use it."
+ ],
+ "sources": [
+  {
+   "name": "Nintendo Store",
+   "url": "https://www.nintendo.com/us/store/products/nintendo-switch-2-welcome-tour-switch-2/"
+  },
+  {
+   "name": "Nintendo News",
+   "url": "https://www.nintendo.com/us/whatsnew/get-an-inside-look-with-nintendo-switch-2-welcome-tour/"
+  },
+  {
+   "name": "Deku Deals",
+   "url": "https://www.dekudeals.com/items/nintendo-switch-2-welcome-tour"
+  }
+ ],
+ "boxContentsList": "[Circular]",
+ "image": "/api/files/products/prd_37d91330c3514080/coverImage-5cfaafb2d21556e9.avif",
+ "banner": "/api/files/products/prd_37d91330c3514080/bannerImages-1-dc2c5c1e0a144a20.avif",
+ "schemaId": "",
+ "badgeEn": "وفر 40%",
+ "badgeKu": "وفر 40%",
+ "featuresEn": [
+  "Interactive digital exhibit built around Nintendo Switch 2",
+  "Explains magnetic Joy-Con 2 attachment",
+  "Hardware and display technology exhibits",
+  "Quizzes and hidden facts",
+  "Mouse-control demonstrations",
+  "HD Rumble 2 demonstrations",
+  "Minigames and tech demos",
+  "CameraPlay support in compatible experiences",
+  "HDR output on compatible TVs",
+  "Single-player educational structure"
+ ],
+ "featuresKu": [
+  "Interactive digital exhibit built around Nintendo Switch 2",
+  "Explains magnetic Joy-Con 2 attachment",
+  "Hardware and display technology exhibits",
+  "Quizzes and hidden facts",
+  "Mouse-control demonstrations",
+  "HD Rumble 2 demonstrations",
+  "Minigames and tech demos",
+  "CameraPlay support in compatible experiences",
+  "HDR output on compatible TVs",
+  "Single-player educational structure"
+ ],
+ "sales": 0,
+ "images": [],
+ "modes": []
+}
