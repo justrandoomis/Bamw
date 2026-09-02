@@ -1,51 +1,171 @@
 {
  "batch": "021",
- "apply": false,
+ "apply": true,
  "games": [
   {
    "id": "prd_7f0b34dece8f4245",
    "slug": "raidou-remastered-the-mystery-of-the-soulless-army",
    "baseHash": "90174ffd9027fb029556cd9ec5658c967397a08f023e8ea8a2225b4560d98688",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "coverImage": "https://img-eshop.cdn.nintendo.net/i/7df0dc4d521580ee665243804c5209dd5f3dc20807e424ee4e9f301908833e72.jpg",
+    "image": "https://img-eshop.cdn.nintendo.net/i/7df0dc4d521580ee665243804c5209dd5f3dc20807e424ee4e9f301908833e72.jpg",
+    "galleryImages": [
+     {
+      "url": "https://img-eshop.cdn.nintendo.net/i/45f5b1ccef4aed4db2f53539daf415945f49689fd90ffa3c48c524dbb6db8860.jpg",
+      "alt": "Distinct product/game media image 2; separate from the primary cover and square-card roles."
+     }
+    ]
+   },
+   "clear": [
+    "cartridgeImage",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "Broken box, cover and listing references (403) repaired: the working eShop gallery shot becomes cover and listing (one stays in the gallery), the dead box reference is removed and the working retail box in box_front_url remains as the box image. Cross-platform SKU resolves to its Switch 2 record (1080p/60, sourced). 2025-06-19, 12.8 GB, Metacritic 76 verified. Contamination removed."
   },
   {
    "id": "prd_5e9f053ac60f4412",
    "slug": "red-dead-redemption-switch1",
    "baseHash": "870011a1d71e0c85cd4114c8fbe8ec50c85e640266f3898b4decba86d96aab24",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "dlcSummary": "Undead Nightmare is included in the Switch release; no separate DLC is sold.",
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "informationStatus": "available",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p-class",
+       "fps": "30"
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p",
+       "fps": "30"
+      },
+      "modes": [],
+      "sourceName": "Technical coverage of the 2023 Switch port",
+      "sourceUrl": "https://www.nintendolife.com/games/nintendo-switch/red_dead_redemption",
+      "verificationStatus": "technical_analysis"
+     }
+    ]
+   },
+   "clear": [
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "The record carried Switch 2 back-compat DLSS figures (1440p/60) under a Switch 2 badge on this Switch 1 product — replaced with the platform record at the port's documented 30 fps. The included Undead Nightmare recorded. 2023-08-17, Metacritic 83 verified. All images working. Contamination removed."
   },
   {
    "id": "prd_7037e22716fa4681",
    "slug": "resident-evil-requiem",
    "baseHash": "cea3eb4e5a97ac250cca45115051f88ace638021d97ffb8236740e8fcc212866",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "informationStatus": "not_published",
+      "unavailableReason": "Capcom publishes no Switch 2 resolution or frame-rate figures for Resident Evil Requiem.",
+      "handheld": {
+       "supported": true
+      },
+      "tv": {
+       "supported": true
+      },
+      "modes": [],
+      "sourceName": "Capcom official product information",
+      "sourceUrl": "https://www.residentevil.com/requiem/",
+      "verificationStatus": "official"
+     }
+    ]
+   },
+   "clear": [
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus",
+    "redemptionSteps",
+    "hardwareModel",
+    "storageCapacity",
+    "screenSpecs",
+    "batteryLife"
+   ],
+   "notes": "The record had NO device performance at all — an honest not-published Switch 2 record added so the section renders truthfully instead of failing validation. Like Mario Kart World, the record carried fifteen contamination fields including hardware specs and redemption steps — all removed. 2026-02-27, 28.7 GB, Metacritic 89, working trailer and images verified."
   },
   {
    "id": "prd_e13531f82f00492d",
    "slug": "rise-of-the-tomb-raider-20-year-celebration-switch-2",
    "baseHash": "a3227b32dc14210d8491a9466a596ea6035ec6709f545248e2bc0aec11d06ec9",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "releaseDate": "2026-06-09"
+   },
+   "clear": [
+    "youtubeTrailer",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "Release date corrected from 2016-10-11 (the original PS4 date) to the verified 2026-06-09 Switch 2 shadow-drop release by Aspyr. The YouTube SEARCH link trailer removed. The empty stray Nintendo Switch record drops under the platform rule, keeping the 1080p/1440p at 60 fps Switch 2 record. Metacritic 86 kept (hidden product)."
   },
   {
    "id": "prd_1f71e51f89264fbc",
    "slug": "rotwood",
    "baseHash": "b122316b04ea487cf46e42046284b29a74d93b2b44b9d46e3ca9c5ee6e15235d",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "bannerImages": [
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000099153/3e9c08f1106df39f4d5cc49a8b05be6d42af31e0f5a5c91cf53bef5390339692",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000099153/78449e59a366d00e7988eefc1980aadea2e139fd12dcef562e836995badd30d7",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000099153/2ccac1a25886e1c9d0d998cf9c201e2594ec394e1058d992d51d86d4ec02097d",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000099153/ce131a6761012151a506125867b942733de1eb872a4f0c2363ea84bdc4f8f397",
+     "/api/files/products/prd_1f71e51f89264fbc/banner-5-5f3b8096354fc538.avif"
+    ]
+   },
+   "clear": [
+    "box_front_url",
+    "youtubeTrailer",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "box_front_url was a German fan-site hotlink answering 403 — removed. One dead R2 banner dropped; the working eShop CDN banners remain, re-verified at apply. The YouTube SEARCH link trailer removed. 2026-03-03, 2.1 GB, Metacritic 82, 1080p/60 record verified. Contamination removed."
   }
  ]
 }
