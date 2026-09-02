@@ -1,0 +1,51 @@
+{
+ "batch": "013",
+ "apply": false,
+ "games": [
+  {
+   "id": "prd_2b0afd3037524c80",
+   "slug": "lies-of-p-complete-edition-switch-2",
+   "baseHash": "8efb09cea8442ae1530a50f36f73f7db68708e47f20ad28a3537676ab9ed6500",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  },
+  {
+   "id": "prd_d598766205db4786",
+   "slug": "little-nightmares-i-and-ii-bundle",
+   "baseHash": "f3aae0b4208a9fd44a96d36bddf1128eff42521175ae405e0a94061fe7de0d51",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  },
+  {
+   "id": "prd_ca9a9392db394624",
+   "slug": "little-nightmares-iii-switch1-switch2",
+   "baseHash": "acd44e55c8f986a58a7299aa306b8409a428af00972e8bdf66f7ed49fae2f87c",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  },
+  {
+   "id": "prd_481cc6fd338e4617",
+   "slug": "luigis-mansion-3",
+   "baseHash": "338ec82092a35eaa41e8b2de07a8ecb7a2dfd7fcef0b53779bce77a4b47f82af",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  },
+  {
+   "id": "prd_c666e66b286c4d03",
+   "slug": "mario-golf-super-rush-switch-1",
+   "baseHash": "506abe7ea3e03b24e5967c49047c794c880455694c181061ad6ff632d2dbe612",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  }
+ ]
+}

@@ -1,0 +1,451 @@
+{
+ "title": "KINGDOM HEARTS INTEGRUM MASTERPIECE for Cloud",
+ "titleEn": "KINGDOM HEARTS INTEGRUM MASTERPIECE for Cloud",
+ "titleKu": "",
+ "slug": "kingdom-hearts-integrum-masterpiece-for-cloud",
+ "description": "The official Switch 1 Kingdom Hearts collection is the cloud-streaming Integrum Masterpiece bundle, combining HD 1.5+2.5, HD 2.8, and Kingdom Hearts III + Re Mind. Kingdom Hearts introduces Sora, Donald, and Goofy as they travel between worlds searching for friends. The bundle culminates in Kingdom Hearts III and its Re Mind content.",
+ "descriptionEn": "The official Switch 1 Kingdom Hearts collection is the cloud-streaming Integrum Masterpiece bundle, combining HD 1.5+2.5, HD 2.8, and Kingdom Hearts III + Re Mind. Kingdom Hearts introduces Sora, Donald, and Goofy as they travel between worlds searching for friends. The bundle culminates in Kingdom Hearts III and its Re Mind content.",
+ "descriptionKu": "",
+ "cartridgeImage": "",
+ "nintendoCardImage": "",
+ "coverHiResImage": "",
+ "coverImage": "/api/files/products/prd_0744b9276a164853/cover-af6bf40078a21788.webp",
+ "bannerImages": [
+  ""
+ ],
+ "gallery": [],
+ "youtubeTrailer": "",
+ "releaseDate": "2022-02-10",
+ "ageRating": "ESRB E10+ / T depending on included title",
+ "metacriticRating": "85",
+ "genres": [
+  "Action RPG",
+  "Adventure"
+ ],
+ "platform": "switch1",
+ "size": 0.1,
+ "numberOfPlayers": "Single system (1)",
+ "supportedLanguages": "Official supported language list varies by region; see the publisher page linked in Sources.",
+ "hardwareModel": "",
+ "colorEdition": "",
+ "storageCapacity": "",
+ "screenSpecs": "",
+ "batteryLife": "",
+ "boxContents": [],
+ "boxContentsText": "",
+ "warrantyCondition": "",
+ "connectivity": "",
+ "characterName": "Link",
+ "amiiboSeries": "The Legend of Zelda",
+ "figureType": "figure",
+ "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+ "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+ "boxCondition": "mib",
+ "releaseWave": "Wave 2 (Restock)",
+ "rarity": "standard",
+ "accessoryType": "حقيبة حماية وتنقل Carry Case",
+ "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+ "brand": "Nintendo Official",
+ "material": "Hard EVA Shockproof Shell",
+ "availableColors": "Black, Neon Red/Blue, White",
+ "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+ "cardValue": "$20 eShop Balance",
+ "region": "Global",
+ "cardType": "eshop",
+ "deliveryMethod": "instant_code",
+ "redemptionGuide": "",
+ "redemptionSteps": [],
+ "validity": "no_expiry",
+ "usedType": "cartridge",
+ "conditionGrade": "like_new",
+ "packaging": "cib",
+ "guaranteeStatus": "tested_30days",
+ "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+ "accountType": "primary",
+ "badge": "وفر 40%",
+ "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+ "price": 8500,
+ "cost": 1500,
+ "stock": 999999,
+ "isInfiniteStock": true,
+ "isHidden": true,
+ "displayOrder": 0,
+ "category": "nintendo-switch-games",
+ "categoryId": "nintendo-switch-games",
+ "categoryEn": "",
+ "categoryKu": "",
+ "options": [
+  {
+   "id": "offline_account",
+   "name": "مشترك",
+   "description": "مشترك",
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_account",
+   "name": "خاص بك",
+   "description": "خاص بك",
+   "stock": 9999,
+   "isInfiniteStock": true
+  }
+ ],
+ "types": [
+  {
+   "id": "offline_base",
+   "name": "مشترك — اللعبة الأساسية",
+   "optionId": "offline_account",
+   "price": 8500,
+   "cost": 1500,
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_base",
+   "name": "خاص بك — اللعبة الأساسية",
+   "optionId": "online_account",
+   "price": 18250,
+   "cost": 14250,
+   "stock": 9999,
+   "isInfiniteStock": true
+  }
+ ],
+ "editions": [],
+ "dlcs": [],
+ "isActive": true,
+ "status": "Active",
+ "kind": "account",
+ "trade_value_iqd": 7750,
+ "store_offer_bonus_iqd": 1250,
+ "trade_enabled": true,
+ "trade_value_locked": false,
+ "id": "prd_0744b9276a164853",
+ "schema_version": 24,
+ "titleAr": "كينغدوم هارتس إنتيغروم ماستر بيس فور كلاود",
+ "compatibility": [
+  "Nintendo Switch Cloud Version",
+  "Nintendo Switch 2 can run the Switch cloud software, but native Switch 2 collection is separate"
+ ],
+ "edition": "Standard / Store Variants",
+ "developer": "SQUARE ENIX",
+ "publisher": "SQUARE ENIX",
+ "seriesName": "KINGDOM HEARTS INTEGRUM MASTERPIECE for Cloud",
+ "price_usd": 89.99,
+ "officialUrl": "https://www.nintendo.com/us/store/products/kingdom-hearts-integrum-masterpiece-for-cloud-switch/",
+ "eshopUrl": "https://www.nintendo.com/us/store/products/kingdom-hearts-integrum-masterpiece-for-cloud-switch/",
+ "gameIsOffline": true,
+ "gameIsOnline": true,
+ "gameLanguageLocked": false,
+ "description_short": "The official Switch 1 Kingdom Hearts collection is the cloud-streaming Integrum Masterpiece bundle, combining HD 1.5+2.5, HD 2.8, and Kingdom Hearts III + Re Mind.",
+ "description_ar": "كينغدوم هارتس إنتيغروم ماستر بيس فور كلاود — The official Switch 1 Kingdom Hearts collection is the cloud-streaming Integrum Masterpiece bundle, combining HD 1.5+2.5, HD 2.8, and Kingdom Hearts III + Re Mind.",
+ "languagesText": [
+  "See official supported languages on the linked Nintendo/publisher product page"
+ ],
+ "languagesAudio": [
+  "Audio language availability varies by title and region; see official product information"
+ ],
+ "tvMode": true,
+ "tabletopMode": true,
+ "handheldMode": true,
+ "nintendoPlayModes": "TV / Tabletop / Handheld",
+ "nintendoOnlineRequired": true,
+ "nintendoCloudSaves": false,
+ "nintendoGameKeyCard": false,
+ "nintendoPhysicalNeedsDownload": false,
+ "switch2Enhanced": false,
+ "switch2Exclusive": false,
+ "nintendoNotes": "Platform, release, player-count, storage, compatibility, and feature statements in this import are grounded in the official Nintendo/publisher pages listed under Sources. Store package prices are user-supplied storefront values, not assumed MSRP.",
+ "editionsList": [
+  {
+   "name": "Regular / Offline",
+   "contents": [
+    {
+     "label": "Regular / Offline store package"
+    },
+    {
+     "label": "Offline account access"
+    },
+    {
+     "label": "Infinite stock by default"
+    }
+   ]
+  },
+  {
+   "name": "Standard / Online",
+   "contents": [
+    {
+     "label": "Standard / Online store package"
+    },
+    {
+     "label": "Online account access"
+    },
+    {
+     "label": "Infinite stock by default"
+    }
+   ]
+  }
+ ],
+ "gameplayPillars": [
+  {
+   "title": "Large series compilation",
+   "description": "The bundle packages the main Kingdom Hearts collections and Kingdom Hearts III into one Switch purchase."
+  },
+  {
+   "title": "Action RPG combat",
+   "description": "Real-time Keyblade combat combines physical attacks, magic, forms, summons, and character-specific systems."
+  },
+  {
+   "title": "Disney and Square Enix worlds",
+   "description": "The series crosses original Kingdom Hearts characters with Disney settings and recurring FINAL FANTASY elements."
+  },
+  {
+   "title": "Cloud streaming requirement",
+   "description": "The Switch 1 versions in this bundle are cloud-based and require a persistent internet connection for gameplay."
+  },
+  {
+   "title": "Long-form connected story",
+   "description": "Multiple games and cinematic collections connect a large timeline spanning Sora, Roxas, Aqua, Terra, Ventus, and others."
+  }
+ ],
+ "worldSummary": "The official Switch 1 Kingdom Hearts collection is the cloud-streaming Integrum Masterpiece bundle, combining HD 1.5+2.5, HD 2.8, and Kingdom Hearts III + Re Mind. Kingdom Hearts introduces Sora, Donald, and Goofy as they travel between worlds searching for friends. The bundle culminates in Kingdom Hearts III and its Re Mind content.",
+ "storyChapters": [
+  {
+   "title": "Begin Sora’s journey",
+   "body": "Kingdom Hearts introduces Sora, Donald, and Goofy as they travel between worlds searching for friends."
+  },
+  {
+   "title": "Follow the wider timeline",
+   "body": "Prequels and side stories expand the histories of Keyblade wielders and Organization XIII."
+  },
+  {
+   "title": "Reach Kingdom Hearts II and beyond",
+   "body": "The narrative broadens through multiple games with increasingly interconnected lore."
+  },
+  {
+   "title": "Play the 2.8 collection",
+   "body": "Dream Drop Distance and related content bridge major story threads toward Kingdom Hearts III."
+  },
+  {
+   "title": "Complete Kingdom Hearts III + Re Mind",
+   "body": "The bundle culminates in Kingdom Hearts III and its Re Mind content."
+  }
+ ],
+ "features": [
+  "Three major Kingdom Hearts packages",
+  "Cloud-streaming Switch versions",
+  "Large amount of story content",
+  "Real-time action RPG combat",
+  "Re Mind content included with KHIII package"
+ ],
+ "perfResolutionDocked": "Cloud stream — client output varies",
+ "perfResolutionHandheld": "Cloud stream — client output varies",
+ "perfFps": "0",
+ "perfHdr": false,
+ "playTimeMain": 150,
+ "completionMain": 250,
+ "completionExtras": 350,
+ "faq": [
+  {
+   "q": "What is the actual Switch 1 collection called?",
+   "a": "Nintendo sells KINGDOM HEARTS INTEGRUM MASTERPIECE for Cloud as the Switch 1 collection."
+  },
+  {
+   "q": "Does it require internet?",
+   "a": "Yes. These are cloud versions and require a stable internet connection to play."
+  },
+  {
+   "q": "Is it a native download of all games?",
+   "a": "No. The Switch 1 collection streams the games from cloud servers."
+  },
+  {
+   "q": "What is included?",
+   "a": "HD 1.5+2.5 ReMIX Cloud Version, HD 2.8 Final Chapter Prologue Cloud Version, and Kingdom Hearts III + Re Mind Cloud Version."
+  },
+  {
+   "q": "Is there a different Switch 2 collection?",
+   "a": "A separate native Switch 2 collection has been announced for 2026, so it should not be confused with this Switch 1 cloud bundle."
+  }
+ ],
+ "verdictScore": 8.5,
+ "verdictPros": [
+  "Huge series compilation",
+  "Includes major story arcs",
+  "Strong action-RPG variety",
+  "Convenient single purchase structure",
+  "Re Mind included"
+ ],
+ "verdictCons": [
+  "Requires persistent internet",
+  "Cloud latency/quality depends on connection",
+  "Cannot be treated like a normal offline native Switch game",
+  "Very dense series story",
+  "Switch 2 native collection is a separate future product"
+ ],
+ "timeline": [
+  {
+   "date": "2022-02-10",
+   "title": "Released on target Nintendo platform"
+  }
+ ],
+ "patchNotes": [
+  {
+   "version": "Current retail build",
+   "date": "2026-08-27"
+  }
+ ],
+ "studioName": "SQUARE ENIX",
+ "studioUrl": "https://www.nintendo.com/us/store/products/kingdom-hearts-integrum-masterpiece-for-cloud-switch/",
+ "studioLocation": "See publisher/developer profile",
+ "sources": [
+  {
+   "name": "Official Nintendo / publisher product page",
+   "url": "https://www.nintendo.com/us/store/products/kingdom-hearts-integrum-masterpiece-for-cloud-switch/"
+  }
+ ],
+ "downloadSizeGb": 0.1,
+ "requiredSpaceGb": 0.1,
+ "microSdRecommended": false,
+ "storageNotes": "Storage requirements follow the official product listing where a final numeric size is published; upcoming titles may require a later refresh when final size is posted.",
+ "mpLocalPlayers": false,
+ "mpOnlinePlayers": true,
+ "mpCoop": false,
+ "mpCompetitive": true,
+ "mpLocalWireless": false,
+ "mpSplitScreen": false,
+ "dlc": [
+  {
+   "name": "Downloadable / additional content status",
+   "description": "The bundle already includes the Re Mind content within the Kingdom Hearts III package; no separate store DLC variant is required."
+  }
+ ],
+ "devicePerformance": [
+  {
+   "device": "Nintendo Switch",
+   "deviceSlug": "nintendo-switch",
+   "deviceModel": "Nintendo Switch",
+   "hardwareId": "nintendo-switch",
+   "informationStatus": "Available",
+   "handheld": {
+    "supported": true,
+    "resolution": "Cloud stream — client output varies",
+    "resolutionDynamic": false,
+    "renderingResolution": "Cloud stream — client output varies",
+    "outputResolution": "Cloud stream — client output varies",
+    "fps": "Cloud stream — connection dependent",
+    "fpsMin": "Cloud stream — connection dependent",
+    "fpsMax": "Cloud stream — connection dependent",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "Handheld",
+    "notes": "The games are streamed from cloud servers; delivered resolution and frame rate depend on connection quality and service conditions."
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "Cloud stream — client output varies",
+    "resolutionDynamic": false,
+    "renderingResolution": "Cloud stream — client output varies",
+    "outputResolution": "Cloud stream — client output varies",
+    "fps": "Cloud stream — connection dependent",
+    "fpsMin": "Cloud stream — connection dependent",
+    "fpsMax": "Cloud stream — connection dependent",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "TV / Docked",
+    "notes": "The games are streamed from cloud servers; delivered resolution and frame rate depend on connection quality and service conditions."
+   },
+   "modes": [
+    {
+     "name": "Primary documented/compatibility profile",
+     "handheldResolution": "Cloud stream — client output varies",
+     "handheldFps": "Cloud stream — connection dependent",
+     "tvResolution": "Cloud stream — client output varies",
+     "tvFps": "Cloud stream — connection dependent",
+     "hdr": false,
+     "vrr": false,
+     "notes": "The games are streamed from cloud servers; delivered resolution and frame rate depend on connection quality and service conditions."
+    }
+   ],
+   "upscaling": "Game / system-specific scaling where applicable",
+   "rayTracing": false,
+   "rayTracingMode": "Not Supported",
+   "loadingTime": "Scene-dependent",
+   "loadingNotes": "Loading time varies by scene, save state, storage, version, and patch.",
+   "gameVersion": "Current listed version",
+   "patchVersion": "Current available update",
+   "testedDate": "2026-08-27",
+   "sourceName": "Official product / compatibility information",
+   "sourceUrl": "https://www.nintendo.com/us/store/products/kingdom-hearts-integrum-masterpiece-for-cloud-switch/",
+   "performanceNotes": "The games are streamed from cloud servers; delivered resolution and frame rate depend on connection quality and service conditions."
+  },
+  {
+   "device": "Nintendo Switch 2",
+   "deviceSlug": "nintendo-switch-2",
+   "deviceModel": "Nintendo Switch 2",
+   "hardwareId": "nintendo-switch-2",
+   "informationStatus": "Available",
+   "handheld": {
+    "supported": true,
+    "resolution": "Cloud stream — client output varies",
+    "resolutionDynamic": false,
+    "renderingResolution": "Cloud stream — client output varies",
+    "outputResolution": "Cloud stream — client output varies",
+    "fps": "Cloud stream — connection dependent",
+    "fpsMin": "Cloud stream — connection dependent",
+    "fpsMax": "Cloud stream — connection dependent",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "Handheld",
+    "notes": "Backward compatibility does not convert the cloud release into a native Switch 2 version."
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "Cloud stream — client output varies",
+    "resolutionDynamic": false,
+    "renderingResolution": "Cloud stream — client output varies",
+    "outputResolution": "Cloud stream — client output varies",
+    "fps": "Cloud stream — connection dependent",
+    "fpsMin": "Cloud stream — connection dependent",
+    "fpsMax": "Cloud stream — connection dependent",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "TV / Docked",
+    "notes": "Backward compatibility does not convert the cloud release into a native Switch 2 version."
+   },
+   "modes": [
+    {
+     "name": "Primary documented/compatibility profile",
+     "handheldResolution": "Cloud stream — client output varies",
+     "handheldFps": "Cloud stream — connection dependent",
+     "tvResolution": "Cloud stream — client output varies",
+     "tvFps": "Cloud stream — connection dependent",
+     "hdr": false,
+     "vrr": false,
+     "notes": "Backward compatibility does not convert the cloud release into a native Switch 2 version."
+    }
+   ],
+   "upscaling": "Game / system-specific scaling where applicable",
+   "rayTracing": false,
+   "rayTracingMode": "Not Supported",
+   "loadingTime": "Scene-dependent",
+   "loadingNotes": "Loading time varies by scene, save state, storage, version, and patch.",
+   "gameVersion": "Current listed version",
+   "patchVersion": "Current available update",
+   "testedDate": "2026-08-27",
+   "sourceName": "Official product / compatibility information",
+   "sourceUrl": "https://www.nintendo.com/us/store/products/kingdom-hearts-integrum-masterpiece-for-cloud-switch/",
+   "performanceNotes": "Backward compatibility does not convert the cloud release into a native Switch 2 version."
+  }
+ ],
+ "switch2UpgradePrice": 0,
+ "boxContentsList": [],
+ "image": "",
+ "banner": "",
+ "schemaId": "",
+ "batchImport": true,
+ "createdAt": "2026-08-28T18:48:28.562Z",
+ "updatedAt": "2026-08-28T18:48:28.562Z"
+}

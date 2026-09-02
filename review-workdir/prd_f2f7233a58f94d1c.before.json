@@ -1,0 +1,535 @@
+{
+ "id": "prd_f2f7233a58f94d1c",
+ "title": "Kirby Air Riders",
+ "titleEn": "Kirby Air Riders",
+ "titleKu": "Kirby Air Riders",
+ "slug": "kirby-air-riders",
+ "description": "Kirby and a large cast of Riders compete in fast vehicle battles and races. Machines accelerate automatically, while players manage Boost Charge, spins, Specials and Copy Abilities. Modes include Air Ride, Top Ride, City Trial and the single-player Road Trip.",
+ "descriptionEn": "Kirby and a large cast of Riders compete in fast vehicle battles and races. Machines accelerate automatically, while players manage Boost Charge, spins, Specials and Copy Abilities. Modes include Air Ride, Top Ride, City Trial and the single-player Road Trip.",
+ "descriptionKu": "Kirby and a large cast of Riders compete in fast vehicle battles and races. Machines accelerate automatically, while players manage Boost Charge, spins, Specials and Copy Abilities. Modes include Air Ride, Top Ride, City Trial and the single-player Road Trip.",
+ "cartridgeImage": "/api/files/products/prd_f2f7233a58f94d1c/cartridgeImage-e852a694c8d3edba.avif",
+ "nintendoCardImage": "/api/files/products/prd_f2f7233a58f94d1c/nintendoCardImage-1afe5957b95e3382.avif",
+ "coverHiResImage": "/api/files/products/prd_f2f7233a58f94d1c/coverHiResImage-d15f34a6f6952506.jpg",
+ "coverImage": "/api/files/products/prd_f2f7233a58f94d1c/coverImage-e852a694c8d3edba.avif",
+ "bannerImages": [
+  "/api/files/products/prd_f2f7233a58f94d1c/bannerImages-1-ea89672cadcd3d23.avif",
+  "/api/files/products/prd_f2f7233a58f94d1c/bannerImages-2-6dac48a8ed7a5683.avif",
+  "/api/files/products/prd_f2f7233a58f94d1c/bannerImages-3-090aa653347a678a.avif"
+ ],
+ "gallery": [],
+ "youtubeTrailer": "https://www.youtube.com/watch?v=Fs6fYLRfFMg",
+ "releaseDate": "2025-11-20",
+ "ageRating": "ESRB Fantasy Violence",
+ "metacriticRating": 79,
+ "genres": [
+  "Vehicular Action",
+  "Racing",
+  "Multiplayer"
+ ],
+ "platform": "switch2",
+ "size": "8.5 GB",
+ "numberOfPlayers": "16",
+ "supportedLanguages": "Japanese, British English, French, German, Italian, Spanish, Korean, Dutch, Simplified Chinese, Traditional Chinese, Portuguese, American English",
+ "hardwareModel": "",
+ "colorEdition": "",
+ "storageCapacity": "",
+ "screenSpecs": "",
+ "batteryLife": "",
+ "boxContents": [],
+ "boxContentsText": "",
+ "warrantyCondition": "",
+ "connectivity": "",
+ "characterName": "Link",
+ "amiiboSeries": "The Legend of Zelda",
+ "figureType": "figure",
+ "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+ "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+ "boxCondition": "mib",
+ "releaseWave": "Wave 2 (Restock)",
+ "rarity": "standard",
+ "accessoryType": "حقيبة حماية وتنقل Carry Case",
+ "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+ "brand": "Nintendo Official",
+ "material": "Hard EVA Shockproof Shell",
+ "availableColors": "Black, Neon Red/Blue, White",
+ "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+ "cardValue": "$20 eShop Balance",
+ "region": "Global",
+ "cardType": "eshop",
+ "deliveryMethod": "instant_code",
+ "redemptionGuide": "",
+ "redemptionSteps": [],
+ "validity": "no_expiry",
+ "usedType": "cartridge",
+ "conditionGrade": "like_new",
+ "packaging": "cib",
+ "guaranteeStatus": "tested_30days",
+ "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+ "accountType": "primary",
+ "badge": "وفر 40%",
+ "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+ "price": 12000,
+ "cost": 1250,
+ "stock": 999999,
+ "isInfiniteStock": true,
+ "isHidden": false,
+ "displayOrder": 0,
+ "category": "nintendo-switch-games",
+ "categoryId": "nintendo-switch-games",
+ "categoryEn": "",
+ "categoryKu": "",
+ "options": [
+  {
+   "id": "offline_account",
+   "name": "حساب أوفلاين",
+   "description": "حساب مخصص للعب دون اتصال بعد إكمال خطوات التفعيل.",
+   "isInfiniteStock": true,
+   "customerDescription": "حساب مشترك"
+  },
+  {
+   "id": "online_account",
+   "name": "حساب أونلاين",
+   "description": "حساب يدعم تشغيل اللعبة مع الاتصال والميزات المتاحة أونلاين.",
+   "isInfiniteStock": true,
+   "customerDescription": "حساب خاص بك"
+  }
+ ],
+ "types": [
+  {
+   "id": "standard_offline",
+   "name": "حساب أوفلاين — عادي",
+   "optionId": "offline_account",
+   "price": "",
+   "cost": 1250,
+   "description": "تشمل الإصدار العادي من اللعبة.",
+   "isInfiniteStock": true,
+   "customerDescription": "اللعبة الأساسية",
+   "internalNote": "Standard game, Offline Account. Supplier Regular price: ¥6.80; purchase cost converted at 1 CNY = 220 IQD and rounded down to nearest 250 IQD."
+  },
+  {
+   "id": "standard_online",
+   "name": "حساب أونلاين — عادي",
+   "optionId": "online_account",
+   "price": 45000,
+   "cost": 23000,
+   "description": "تشمل الإصدار العادي من اللعبة.",
+   "isInfiniteStock": true,
+   "customerDescription": "اللعبة الأساسية",
+   "internalNote": "Standard game, Online Account. Supplier Standard price: ¥104.80; purchase cost converted at 1 CNY = 220 IQD and rounded down to nearest 250 IQD."
+  }
+ ],
+ "editions": [],
+ "dlcs": [],
+ "isActive": true,
+ "status": "active",
+ "kind": "account",
+ "trade_value_iqd": 45000,
+ "store_offer_bonus_iqd": 5000,
+ "trade_enabled": true,
+ "trade_value_locked": false,
+ "schema_version": 22,
+ "titleAr": "كيربي إير رايدرز",
+ "compatibility": [
+  "Nintendo Switch 2"
+ ],
+ "edition": "Standard",
+ "developer": "Bandai Namco Studios / Sora Ltd.",
+ "publisher": "Nintendo",
+ "opencriticRating": 82,
+ "userScore": 8.6,
+ "officialUrl": "https://www.nintendo.com/en-ca/gaming-systems/switch-2/featured-games/kirby-air-riders/",
+ "gameIsOffline": true,
+ "gameIsOnline": true,
+ "gameLanguageLocked": false,
+ "description_short": "A fast-paced Kirby vehicle action game combining races, arena battles and City Trial competition with simple controls and deep machine/rider strategy.",
+ "description_ar": "لعبة سباقات وقتال سريعة من عالم Kirby. اختر الـRider والآلة، استخدم Boost Charge والانجراف والهجمات الخاصة وCopy Abilities، وتنافس في Air Ride وTop Ride وCity Trial إضافة إلى طور Road Trip الفردي.",
+ "box_front_url": "https://i5.walmartimages.com/seo/Kirby-Air-Riders-Nintendo-Switch-2_8e868687-e419-4be9-b4ab-f48bce5bb9b7.7b7c407943733785fbd491ce84f59a98.jpeg?odnBg=FFFFFF&odnHeight=1200&odnWidth=1200",
+ "videos": [
+  {
+   "title": "Overview Trailer",
+   "url": "https://www.youtube.com/watch?v=Fs6fYLRfFMg"
+  }
+ ],
+ "nintendoEshopUrl": "https://www.nintendo.com/us/store/products/kirby-air-riders-switch-2/",
+ "nintendoOnlineRequired": false,
+ "nintendoCloudSaves": true,
+ "tvMode": true,
+ "tabletopMode": true,
+ "handheldMode": true,
+ "nintendoPlayModes": "TV Mode, Tabletop Mode, Handheld Mode",
+ "switch2Features": [
+  "Nintendo Switch 2 exclusive",
+  "1600x900-class handheld rendering reported",
+  "1920x1080-class TV rendering reported",
+  "60 FPS target",
+  "Up to 16 players online",
+  "2-8 players local wireless",
+  "1-4 players on one system",
+  "GameShare support",
+  "amiibo Figure Player support",
+  "Online Paddock lobbies for up to 32 players"
+ ],
+ "tagline": "Pick your rider, pick your machine, and mount up for fast-paced vehicular action.",
+ "fitFor": [
+  "Kirby fans",
+  "Players who enjoy arcade racing and arena competition",
+  "Local multiplayer groups",
+  "Online competitive players",
+  "Players who like easy-to-learn controls with mechanical depth"
+ ],
+ "notFitFor": [
+  "Players seeking realistic racing simulation",
+  "Players who only want a traditional Kirby platformer"
+ ],
+ "playTimeMain": 4,
+ "playTimeFull": 57.5,
+ "editionsList": [
+  {
+   "name": "Physical Edition",
+   "contents": [
+    {
+     "label": "Full game on Nintendo Switch 2"
+    }
+   ]
+  },
+  {
+   "name": "Digital Edition",
+   "contents": [
+    {
+     "label": "Full game digital download"
+    }
+   ]
+  }
+ ],
+ "gameplayPillars": [
+  {
+   "title": "Simple Two-Button Control",
+   "description": "Machines accelerate automatically while Boost Charge controls braking, drifting and explosive dashes."
+  },
+  {
+   "title": "Vehicle Combat",
+   "description": "Quick Spins, rider Specials and Copy Abilities turn races into direct battles."
+  },
+  {
+   "title": "City Trial",
+   "description": "Explore Skyah, gather stat-boosting power-ups, swap machines and finish with a Stadium challenge."
+  },
+  {
+   "title": "Air Ride and Top Ride",
+   "description": "Race in traditional forward-view courses or compact bird's-eye tracks."
+  },
+  {
+   "title": "Road Trip",
+   "description": "A single-player challenge journey that combines the game's racing and battle styles."
+  }
+ ],
+ "storyChapters": [
+  {
+   "title": "Road Trip Begins",
+   "body": "Choose a Rider and take on a sequence of single-player challenges."
+  },
+  {
+   "title": "Story of Zorah",
+   "body": "Road Trip develops a wild story around Zorah while rotating through the game's different play styles."
+  },
+  {
+   "title": "Master Every Ride",
+   "body": "Progression encourages trying different Riders, machines, challenges and conditions."
+  }
+ ],
+ "galleryImages": [
+  {
+   "url": "https://assets.nintendo.com/image/upload/ar_16:9,b_auto:border,c_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000103775/c89f59d8b1050622415049f6345fde16dc686bbd8b544caebc3c33ef126affe8",
+   "alt": "Distinct product/game media image 1; separate from the primary cover and square-card roles."
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/ar_16:9,b_auto:border,c_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000103775/e768e9d31466485bae75e3bed3073b612e0d87b4431fc682f478c6ba168c0799",
+   "alt": "Distinct product/game media image 2; separate from the primary cover and square-card roles."
+  }
+ ],
+ "features": [
+  "Fast vehicle action built around only a few core controls",
+  "Air Ride racing",
+  "City Trial arena exploration and power-up collection",
+  "Top Ride bird's-eye racing",
+  "Road Trip single-player adventure",
+  "20 playable Riders",
+  "Distinct machine statistics and Specials",
+  "Copy Abilities",
+  "1-4 players on one system",
+  "2-8 players local wireless",
+  "Up to 16 players online",
+  "GameShare support",
+  "amiibo support"
+ ],
+ "perfResolutionDocked": "1920x1080",
+ "perfResolutionHandheld": "1600x900",
+ "perfFps": "60",
+ "perfNotes": "Technical performance data reports 1600x900 at 60 FPS in handheld mode and 1920x1080 at 60 FPS in docked mode. HDR and VRR are not used by the game according to the cited performance index.",
+ "devicePerformance": [
+  {
+   "device": "Nintendo Switch 2",
+   "deviceSlug": "nintendo-switch-2",
+   "deviceModel": "Nintendo Switch 2",
+   "hardwareId": "prd_acf4c89908764c62",
+   "informationStatus": "verified",
+   "unavailableReason": "Nintendo's public store materials confirm play modes but do not provide a full measured resolution/FPS table.",
+   "handheld": {
+    "supported": true,
+    "resolution": "1600x900",
+    "renderingResolution": "1600x900",
+    "outputResolution": "1920x1080 display output",
+    "fps": "60",
+    "fpsMin": "60",
+    "fpsMax": "60",
+    "hdr": false
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "1920x1080",
+    "renderingResolution": "1920x1080",
+    "outputResolution": "1920x1080",
+    "fps": "60",
+    "fpsMin": "60",
+    "fpsMax": "60",
+    "hdr": false
+   },
+   "sourceName": "Digital Foundry data via RenderIndex",
+   "sourceUrl": "https://renderindex.com/games/index-242/kirby-air-riders",
+   "verificationStatus": "verified-third-party",
+   "performanceNotes": "Technical performance data reports 1600x900 at 60 FPS in handheld mode and 1920x1080 at 60 FPS in docked mode. HDR and VRR are not used by the game according to the cited performance index."
+  }
+ ],
+ "languagesAudio": [
+  "Japanese",
+  "English"
+ ],
+ "languagesText": [
+  "Japanese",
+  "British English",
+  "French",
+  "German",
+  "Italian",
+  "Spanish",
+  "Korean",
+  "Dutch",
+  "Simplified Chinese",
+  "Traditional Chinese",
+  "Portuguese",
+  "American English"
+ ],
+ "arabicSupport": false,
+ "mpLocalPlayers": false,
+ "mpOnlinePlayers": false,
+ "mpCoop": false,
+ "mpCompetitive": false,
+ "mpSplitScreen": false,
+ "mpLocalWireless": false,
+ "guides": [
+  {
+   "title": "Official Nintendo Game Site",
+   "summary": "Detailed modes, Riders, machines, online systems and media.",
+   "url": "https://www.nintendo.com/us/gaming-systems/switch-2/featured-games/kirby-air-riders/"
+  },
+  {
+   "title": "Nintendo Store",
+   "summary": "Player counts, modes, languages and release details.",
+   "url": "https://www.nintendo.com/us/store/products/kirby-air-riders-switch-2/"
+  },
+  {
+   "title": "Deku Deals",
+   "summary": "Review aggregates and completion times.",
+   "url": "https://www.dekudeals.com/items/kirby-airriders"
+  }
+ ],
+ "completionMain": 4,
+ "completionExtras": 14,
+ "completionAll": 57.5,
+ "faq": [
+  {
+   "q": "Is Kirby Air Riders a traditional kart racer?",
+   "a": "Not exactly. It combines racing, vehicular combat, arena collection, party-game challenges and a single-player Road Trip."
+  },
+  {
+   "q": "How many players are supported?",
+   "a": "Up to four on one system, two to eight via local wireless and up to sixteen online depending on mode."
+  },
+  {
+   "q": "How long is Road Trip?",
+   "a": "Crowdsourced data lists roughly four hours for the main story, with much more time required for extras and completion."
+  },
+  {
+   "q": "Does it support amiibo?",
+   "a": "Yes. Rider-machine dual-pack amiibo can be used as Figure Players that level up through play."
+  },
+  {
+   "q": "Does it support Simplified Chinese?",
+   "a": "Yes."
+  },
+  {
+   "q": "Is it exclusive to Switch 2?",
+   "a": "Yes. Kirby Air Riders is a Nintendo Switch 2 exclusive."
+  }
+ ],
+ "verdictScore": 9,
+ "verdictSummary": "A distinctive, content-rich multiplayer action racer with unusually broad local, wireless and online support and a simple control scheme designed for fast competition.",
+ "verdictPros": [
+  "Excellent multiplayer range",
+  "Simple controls with meaningful depth",
+  "Large Rider and machine variety",
+  "Multiple distinct modes",
+  "Official Simplified Chinese support"
+ ],
+ "verdictCons": [
+  "Competitive structure may feel unusual for players expecting a conventional racer"
+ ],
+ "reviews": [
+  {
+   "source": "Metacritic",
+   "score": "79/100",
+   "quote": "Critics generally praised presentation, content volume and mechanical depth.",
+   "url": "https://www.metacritic.com/"
+  },
+  {
+   "source": "OpenCritic",
+   "score": "82/100",
+   "quote": "Strong critic approval with particular praise for its distinctive blend of racing, combat and party-game ideas.",
+   "url": "https://opencritic.com/game/19310/kirby-air-riders"
+  },
+  {
+   "source": "Deku Deals users",
+   "score": "8.6/10",
+   "quote": "Player aggregate data lists a strong user score.",
+   "url": "https://www.dekudeals.com/items/kirby-airriders"
+  }
+ ],
+ "timeline": [
+  {
+   "date": "2025-04",
+   "title": "Announcement",
+   "body": "Nintendo announced Kirby Air Riders for Nintendo Switch 2."
+  },
+  {
+   "date": "2025-08-19",
+   "title": "Kirby Air Riders Direct",
+   "body": "A dedicated presentation detailed Rider Basics, modes and systems."
+  },
+  {
+   "date": "2025-10-23",
+   "title": "Kirby Air Riders Direct #2",
+   "body": "Nintendo expanded details on modes, Riders, online features and more."
+  },
+  {
+   "date": "2025-11-20",
+   "title": "Worldwide launch",
+   "body": "Kirby Air Riders launched exclusively for Nintendo Switch 2."
+  }
+ ],
+ "patchNotes": [
+  {
+   "version": "Launch update",
+   "date": "2025-11-20",
+   "body": "Required software update enabled the complete online feature set and launch functionality."
+  },
+  {
+   "version": "Post-launch online support",
+   "date": "2025-2026",
+   "body": "Nintendo continued online service, ranked/casual play and Machine Market functionality."
+  },
+  {
+   "version": "Current",
+   "date": "2026",
+   "body": "The title remains actively supported as a Nintendo Switch 2 exclusive."
+  }
+ ],
+ "soundtrack": [
+  {
+   "title": "Starlit Journey (EN ver.)",
+   "url": "https://www.nintendo.com/us/gaming-systems/switch-2/featured-games/kirby-air-riders/"
+  },
+  {
+   "title": "Kirby Air Riders music player / soundtrack selections",
+   "url": "https://www.nintendo.com/us/store/products/kirby-air-riders-switch-2/"
+  }
+ ],
+ "seriesName": "Kirby Air Ride / Kirby",
+ "seriesEntries": [
+  "Kirby Air Ride",
+  "Kirby Air Riders",
+  "Kirby and the Forgotten Land – Nintendo Switch 2 Edition + Star-Crossed World"
+ ],
+ "studioName": "Sora Ltd. / Bandai Namco Studios",
+ "studioUrl": "https://www.bandainamcostudios.com/",
+ "studioLocation": "Tokyo, Japan",
+ "studioAbout": "Kirby Air Riders was directed by Masahiro Sakurai and developed with teams including Sora Ltd. and Bandai Namco Studios for Nintendo. It expands the ideas of Kirby Air Ride into a much larger racing, arena-action and online package.",
+ "setupNeeds": [
+  "Nintendo Switch 2 system required for the Nintendo Switch 2 version.",
+  "Internet connection is required for digital download, updates and online/service features where applicable.",
+  "Nintendo Account required for Nintendo eShop purchase/download.",
+  "Sufficient internal storage or compatible microSD Express storage required.",
+  "Nintendo Switch Online membership is required only for game-specific online multiplayer/features that explicitly use it."
+ ],
+ "sources": [
+  {
+   "name": "Nintendo Store",
+   "url": "https://www.nintendo.com/us/store/products/kirby-air-riders-switch-2/"
+  },
+  {
+   "name": "Official Kirby Air Riders Site",
+   "url": "https://www.nintendo.com/us/gaming-systems/switch-2/featured-games/kirby-air-riders/"
+  },
+  {
+   "name": "Deku Deals",
+   "url": "https://www.dekudeals.com/items/kirby-airriders"
+  },
+  {
+   "name": "OpenCritic",
+   "url": "https://opencritic.com/game/19310/kirby-air-riders"
+  }
+ ],
+ "boxContentsList": "[Circular]",
+ "image": "/api/files/products/prd_f2f7233a58f94d1c/coverImage-e852a694c8d3edba.avif",
+ "banner": "/api/files/products/prd_f2f7233a58f94d1c/bannerImages-1-ea89672cadcd3d23.avif",
+ "schemaId": "",
+ "badgeEn": "وفر 40%",
+ "badgeKu": "وفر 40%",
+ "featuresEn": [
+  "Fast vehicle action built around only a few core controls",
+  "Air Ride racing",
+  "City Trial arena exploration and power-up collection",
+  "Top Ride bird's-eye racing",
+  "Road Trip single-player adventure",
+  "20 playable Riders",
+  "Distinct machine statistics and Specials",
+  "Copy Abilities",
+  "1-4 players on one system",
+  "2-8 players local wireless",
+  "Up to 16 players online",
+  "GameShare support",
+  "amiibo support"
+ ],
+ "featuresKu": [
+  "Fast vehicle action built around only a few core controls",
+  "Air Ride racing",
+  "City Trial arena exploration and power-up collection",
+  "Top Ride bird's-eye racing",
+  "Road Trip single-player adventure",
+  "20 playable Riders",
+  "Distinct machine statistics and Specials",
+  "Copy Abilities",
+  "1-4 players on one system",
+  "2-8 players local wireless",
+  "Up to 16 players online",
+  "GameShare support",
+  "amiibo support"
+ ],
+ "sales": 0,
+ "images": [],
+ "modes": [],
+ "updatedAt": "2026-08-28T22:06:52.419Z",
+ "boxFrontUrl": "https://i5.walmartimages.com/seo/Kirby-Air-Riders-Nintendo-Switch-2_8e868687-e419-4be9-b4ab-f48bce5bb9b7.7b7c407943733785fbd491ce84f59a98.jpeg?odnBg=FFFFFF&odnHeight=1200&odnWidth=1200",
+ "createdAt": "2026-08-31T22:47:03.383Z",
+ "created_at": "2026-08-31T22:47:03.383Z",
+ "updated_at": "2026-08-28T22:06:52.419Z",
+ "variants": "[Circular]"
+}

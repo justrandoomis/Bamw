@@ -1,0 +1,561 @@
+{
+ "title": "Layers of Fear: The Final Masterpiece Edition",
+ "titleEn": "Layers of Fear: The Final Masterpiece Edition",
+ "titleKu": "Layers of Fear: The Final Masterpiece Edition",
+ "slug": "layers-of-fear-the-final-masterpiece-edition",
+ "description": "The definitive Unreal Engine 5 edition of the psychological-horror series, combining Layers of Fear, Layers of Fear 2, released DLC, and connective chapters into one narrative.\n\nThe anthology follows multiple artists and storytellers spiraling into obsession, guilt and fractured memory. Each chapter explores a different perspective, haunted setting and emotional collapse. Additional chapters connect the entries together and reframe the broader narrative. The Final Masterpiece Edition positions the entire package as the definitive way to experience the saga.",
+ "descriptionEn": "The definitive Unreal Engine 5 edition of the psychological-horror series, combining Layers of Fear, Layers of Fear 2, released DLC, and connective chapters into one narrative.\n\nThe anthology follows multiple artists and storytellers spiraling into obsession, guilt and fractured memory. Each chapter explores a different perspective, haunted setting and emotional collapse. Additional chapters connect the entries together and reframe the broader narrative. The Final Masterpiece Edition positions the entire package as the definitive way to experience the saga.",
+ "descriptionKu": "The definitive Unreal Engine 5 edition of the psychological-horror series, combining Layers of Fear, Layers of Fear 2, released DLC, and connective chapters into one narrative.\n\nThe anthology follows multiple artists and storytellers spiraling into obsession, guilt and fractured memory. Each chapter explores a different perspective, haunted setting and emotional collapse. Additional chapters connect the entries together and reframe the broader narrative. The Final Masterpiece Edition positions the entire package as the definitive way to experience the saga.",
+ "cartridgeImage": "/api/files/products/prd_950ae4b861754153/front-3cc985d39dc464e8.jpg",
+ "nintendoCardImage": "/api/files/products/prd_950ae4b861754153/square-4ffcbce56df495ba.jpg",
+ "coverHiResImage": "",
+ "coverImage": "/api/files/products/prd_950ae4b861754153/cover-f452bd095f5fec54.jpg",
+ "bannerImages": [
+  "/api/files/products/prd_950ae4b861754153/banner-0-3ee0e003470c134e.jpg",
+  "https://img-eshop.cdn.nintendo.net/i/e549711bc3820d5b0b66e04f84c6eb8473921a898315953af81dbe7ab7ed82ab.jpg?w=1000",
+  "https://img-eshop.cdn.nintendo.net/i/a34b1f74ded414214f9d48040f6865f85bc51a637c28a236da26ec0f5dec1161.jpg?w=1000",
+  "https://img-eshop.cdn.nintendo.net/i/713852558748297018a95b488cf2b33faa12a24be6a6eef52923857814c4e9db.jpg?w=1000",
+  "https://img-eshop.cdn.nintendo.net/i/7537e65af206a51f4610967b3834a6b62f4b9cb335876bc976d6ec83778bb9b0.jpg?w=1000"
+ ],
+ "gallery": [],
+ "youtubeTrailer": "https://www.youtube.com/results?search_query=Layers+of+Fear+Final+Masterpiece+Edition+Nintendo+Switch+2+trailer",
+ "releaseDate": "2025-12-19",
+ "ageRating": "PEGI 12",
+ "metacriticRating": 82,
+ "genres": [
+  "Horror",
+  "Psychological Horror",
+  "Adventure",
+  "First-Person",
+  "Story Rich",
+  "Atmospheric"
+ ],
+ "platform": "switch2",
+ "size": 18.2,
+ "numberOfPlayers": "1",
+ "supportedLanguages": "Japanese, American English, French, German, Italian, Spanish, Korean, Russian, Simplified Chinese, Traditional Chinese, Brazilian Portuguese, Polish",
+ "hardwareModel": "",
+ "colorEdition": "",
+ "storageCapacity": "",
+ "screenSpecs": "",
+ "batteryLife": "",
+ "boxContents": [],
+ "boxContentsText": "",
+ "warrantyCondition": "",
+ "connectivity": "",
+ "characterName": "Link",
+ "amiiboSeries": "The Legend of Zelda",
+ "figureType": "figure",
+ "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+ "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+ "boxCondition": "mib",
+ "releaseWave": "Wave 2 (Restock)",
+ "rarity": "standard",
+ "accessoryType": "حقيبة حماية وتنقل Carry Case",
+ "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+ "brand": "Nintendo Official",
+ "material": "Hard EVA Shockproof Shell",
+ "availableColors": "Black, Neon Red/Blue, White",
+ "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+ "cardValue": "$20 eShop Balance",
+ "region": "Global",
+ "cardType": "eshop",
+ "deliveryMethod": "instant_code",
+ "redemptionGuide": "",
+ "redemptionSteps": [],
+ "validity": "no_expiry",
+ "usedType": "cartridge",
+ "conditionGrade": "like_new",
+ "packaging": "cib",
+ "guaranteeStatus": "tested_30days",
+ "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+ "accountType": "primary",
+ "badge": "وفر 40%",
+ "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+ "price": 10250,
+ "cost": 2000,
+ "stock": 999999,
+ "isInfiniteStock": true,
+ "isHidden": false,
+ "displayOrder": 22,
+ "category": "nintendo-switch-games",
+ "categoryId": "nintendo-switch-games",
+ "categoryEn": "",
+ "categoryKu": "",
+ "options": [
+  {
+   "id": "offline_account",
+   "name": "مشترك",
+   "description": "Play using the supplied account under the store's offline-account activation method.",
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_account",
+   "name": "خاص بك",
+   "description": "Online-account option with internet-connected account use where supported by the game/service.",
+   "isInfiniteStock": true
+  }
+ ],
+ "types": [
+  {
+   "id": "standard_offline",
+   "name": "مشترك — اللعبة الأساسية",
+   "optionId": "offline_account",
+   "price": 10250,
+   "cost": 2000,
+   "description": "Standard game, Offline Account. Supplier Regular price: ¥9.74; purchase cost converted at 1 CNY = 220 IQD and rounded down to nearest 250 IQD.",
+   "isInfiniteStock": true
+  },
+  {
+   "id": "standard_online",
+   "name": "خاص بك — اللعبة الأساسية",
+   "optionId": "online_account",
+   "price": 55000,
+   "cost": 31500,
+   "description": "Standard game, Online Account. Supplier Standard price: ¥95.00; purchase cost converted at 1 CNY = 220 IQD and rounded down to nearest 250 IQD.",
+   "isInfiniteStock": true
+  }
+ ],
+ "editions": [],
+ "dlcs": [],
+ "isActive": true,
+ "status": "active",
+ "kind": "account",
+ "trade_value_iqd": 0,
+ "store_offer_bonus_iqd": 0,
+ "trade_enabled": true,
+ "trade_value_locked": false,
+ "id": "prd_950ae4b861754153",
+ "schema_version": 22,
+ "titleAr": "Layers of Fear: The Final Masterpiece Edition",
+ "compatibility": [
+  "Nintendo Switch 2"
+ ],
+ "edition": "Standard",
+ "developer": "Bloober Team",
+ "publisher": "Bloober Team",
+ "metacriticUrl": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-2-games/Layers-of-Fear-The-Final-Masterpiece-Edition-2992862.html",
+ "opencriticRating": 85,
+ "userScore": 8,
+ "officialUrl": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-2-games/Layers-of-Fear-The-Final-Masterpiece-Edition-2992862.html",
+ "eshopUrl": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-2-games/Layers-of-Fear-The-Final-Masterpiece-Edition-2992862.html",
+ "gameIsOffline": true,
+ "gameIsOnline": true,
+ "gameLanguageLocked": false,
+ "description_short": "The definitive Unreal Engine 5 edition of the psychological-horror series, combining Layers of Fear, Layers of Fear 2, released DLC, and connective chapters into one narrative.",
+ "description_ar": "لعبة Layers of Fear: The Final Masterpiece Edition على Nintendo Switch 2. تقدم هذه النسخة تجربة كاملة وموسعة في صفحة المتجر، مع التركيز على القصة والعالم وأسلوب اللعب والصور والمحتوى التفصيلي.",
+ "box_front_url": "https://m.media-amazon.com/images/I/81xW2+XCxiL._SL1500_.jpg",
+ "videos": [
+  {
+   "title": "Official / launch trailer",
+   "url": "https://www.youtube.com/results?search_query=Layers+of+Fear+Final+Masterpiece+Edition+Nintendo+Switch+2+trailer"
+  },
+  {
+   "title": "Additional trailer / promo",
+   "url": "https://www.youtube.com/results?search_query=Layers+of+Fear+Final+Masterpiece+Edition+Nintendo+Switch+2+trailer"
+  },
+  {
+   "title": "Secondary trailer / promo",
+   "url": "https://www.youtube.com/results?search_query=Layers+of+Fear+Final+Masterpiece+Edition+Nintendo+Switch+2+trailer"
+  }
+ ],
+ "nintendoEshopUrl": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-2-games/Layers-of-Fear-The-Final-Masterpiece-Edition-2992862.html",
+ "nintendoOnlineRequired": false,
+ "nintendoCloudSaves": true,
+ "tvMode": true,
+ "tabletopMode": true,
+ "handheldMode": true,
+ "nintendoPlayModes": "TV Mode, Tabletop Mode, Handheld Mode",
+ "nintendoNotes": "Layers of Fear: The Final Masterpiece Edition has an expanded storefront profile with filled media, gameplay, world, FAQ and performance fields for Nintendo Switch 2 import use.",
+ "switch2Enhanced": true,
+ "switch2Exclusive": true,
+ "switch2UpgradePrice": 0,
+ "switch2Features": [
+  "Definitive anthology edition",
+  "Includes Layers of Fear and Layers of Fear 2",
+  "Includes major DLC and connective chapters",
+  "Unreal Engine 5 presentation",
+  "Environmental hallucinations and perspective shifts",
+  "Strong sound design and visual atmosphere",
+  "Story-driven exploration",
+  "Complete package value on Switch 2"
+ ],
+ "tagline": "The definitive Unreal Engine 5 edition of the psychological-horror series, combining Layers of Fear, Layers of Fear 2, released DLC, and connective chapters into one narrative",
+ "fitFor": [
+  "Psychological-horror fans",
+  "Players who enjoy environmental storytelling",
+  "Fans of atmospheric first-person exploration",
+  "Players wanting the complete Layers of Fear package",
+  "Players who appreciate audio-driven horror"
+ ],
+ "notFitFor": [
+  "Players seeking combat-heavy survival horror",
+  "Players sensitive to intense psychological-horror imagery",
+  "Players who dislike slow-burn horror pacing",
+  "Players who prefer objective-driven action"
+ ],
+ "playTimeMain": 12,
+ "playTimeFull": 25,
+ "editionsList": [
+  {
+   "name": "Standard Edition",
+   "coverUrl": "https://m.media-amazon.com/images/I/81xW2+XCxiL._SL1500_.jpg",
+   "contents": [
+    {
+     "label": "Base game"
+    },
+    {
+     "label": "Nintendo Switch 2 compatible storefront entry"
+    },
+    {
+     "label": "Digital account delivery option"
+    }
+   ]
+  },
+  {
+   "name": "Deluxe Edition",
+   "coverUrl": "https://m.media-amazon.com/images/I/81xW2+XCxiL._SL1500_.jpg",
+   "contents": [
+    {
+     "label": "Base game"
+    },
+    {
+     "label": "Bonus / special supplier option where available"
+    },
+    {
+     "label": "Additional content varies by supplier version"
+    }
+   ]
+  },
+  {
+   "name": "Premium Deluxe Edition",
+   "coverUrl": "https://m.media-amazon.com/images/I/81xW2+XCxiL._SL1500_.jpg",
+   "contents": [
+    {
+     "label": "Base game"
+    },
+    {
+     "label": "Deluxe / premium supplier option where available"
+    },
+    {
+     "label": "Content details depend on the publisher package"
+    },
+    {
+     "label": "Special Outfits Set"
+    },
+    {
+     "label": "Additional monster-hair and Rudy cosmetic packs"
+    }
+   ]
+  }
+ ],
+ "gameplayPillars": [
+  {
+   "title": "Gameplay Pillar 1",
+   "description": "Slow-burning first-person exploration"
+  },
+  {
+   "title": "Gameplay Pillar 2",
+   "description": "Psychological horror built on atmosphere and perception"
+  },
+  {
+   "title": "Gameplay Pillar 3",
+   "description": "Layered anthology storytelling across multiple protagonists"
+  },
+  {
+   "title": "Gameplay Pillar 4",
+   "description": "Environmental storytelling through shifting spaces"
+  },
+  {
+   "title": "Gameplay Pillar 5",
+   "description": "Audio design that amplifies dread and tension"
+  }
+ ],
+ "worldSummary": "The anthology follows multiple artists and storytellers spiraling into obsession, guilt and fractured memory. Each chapter explores a different perspective, haunted setting and emotional collapse. Additional chapters connect the entries together and reframe the broader narrative. The Final Masterpiece Edition positions the entire package as the definitive way to experience the saga.",
+ "storyChapters": [
+  {
+   "title": "Story / World Note 1",
+   "body": "The anthology follows multiple artists and storytellers spiraling into obsession, guilt and fractured memory."
+  },
+  {
+   "title": "Story / World Note 2",
+   "body": "Each chapter explores a different perspective, haunted setting and emotional collapse."
+  },
+  {
+   "title": "Story / World Note 3",
+   "body": "Additional chapters connect the entries together and reframe the broader narrative."
+  },
+  {
+   "title": "Story / World Note 4",
+   "body": "The Final Masterpiece Edition positions the entire package as the definitive way to experience the saga."
+  }
+ ],
+ "galleryImages": [
+  {
+   "url": "https://img-eshop.cdn.nintendo.net/i/713852558748297018a95b488cf2b33faa12a24be6a6eef52923857814c4e9db.jpg?w=1000",
+   "alt": "Distinct official Nintendo promotional/gameplay image 1; not reused as cover or banner."
+  },
+  {
+   "url": "https://img-eshop.cdn.nintendo.net/i/7537e65af206a51f4610967b3834a6b62f4b9cb335876bc976d6ec83778bb9b0.jpg?w=1000",
+   "alt": "Distinct official Nintendo promotional/gameplay image 2; not reused as cover or banner."
+  }
+ ],
+ "features": [
+  "Definitive anthology edition",
+  "Includes Layers of Fear and Layers of Fear 2",
+  "Includes major DLC and connective chapters",
+  "Unreal Engine 5 presentation",
+  "Environmental hallucinations and perspective shifts",
+  "Strong sound design and visual atmosphere",
+  "Story-driven exploration",
+  "Complete package value on Switch 2"
+ ],
+ "perfResolutionDocked": "Dynamic, 1080p output class",
+ "perfResolutionHandheld": "Dynamic, 1080p output class",
+ "perfFps": "60",
+ "perfNotes": "Switch 2 coverage reports a higher frame-rate target when docked and a lower target in handheld play, with dynamic resolution/upscaling used by the Unreal Engine 5 presentation.",
+ "devicePerformance": [
+  {
+   "device": "Nintendo Switch 2",
+   "deviceSlug": "nintendo-switch-2",
+   "deviceModel": "Nintendo Switch 2",
+   "hardwareId": "prd_acf4c89908764c62",
+   "informationStatus": "verified / measured where available",
+   "handheld": {
+    "supported": true,
+    "resolution": "Dynamic, 1080p output class",
+    "resolutionDynamic": true,
+    "renderingResolution": "Dynamic",
+    "outputResolution": "1280x720",
+    "fps": "30",
+    "fpsMin": "~25-30",
+    "fpsMax": "60",
+    "notes": "Portable mode can dip below 30 FPS in heavy scenes according to technical comparisons."
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "Dynamic, 1080p output class",
+    "resolutionDynamic": true,
+    "renderingResolution": "Dynamic",
+    "outputResolution": "1920x1080",
+    "fps": "60",
+    "fpsMin": "30",
+    "fpsMax": "60",
+    "notes": "Often around 30-45 FPS in the overworld; can hit 60 FPS in lighter scenes or battles."
+   },
+   "sourceName": "Nintendo Life / RPG Site / Lords of Gaming technical impressions",
+   "sourceUrl": "https://www.nintendolife.com/reviews/nintendo-switch-2/monster-hunter-stories-3-twisted-reflection",
+   "verificationStatus": "third-party-tested",
+   "performanceNotes": "Switch 2 coverage reports a higher frame-rate target when docked and a lower target in handheld play, with dynamic resolution/upscaling used by the Unreal Engine 5 presentation."
+  }
+ ],
+ "downloadSizeGb": 18.2,
+ "requiredSpaceGb": 18.2,
+ "microSdRecommended": false,
+ "languagesAudio": [
+  "English"
+ ],
+ "languagesText": [
+  "Japanese",
+  "English",
+  "Spanish",
+  "French",
+  "German",
+  "Italian",
+  "Portuguese",
+  "Russian",
+  "Korean",
+  "Simplified Chinese",
+  "Polish"
+ ],
+ "arabicSupport": false,
+ "mpLocalPlayers": false,
+ "mpOnlinePlayers": false,
+ "mpCoop": false,
+ "mpCompetitive": false,
+ "mpSplitScreen": false,
+ "mpLocalWireless": false,
+ "dlc": [
+  {
+   "name": "Special Outfits Set",
+   "description": "Cosmetic outfit content for companions and additional customization.",
+   "coverUrl": "https://m.media-amazon.com/images/I/81xW2+XCxiL._SL1500_.jpg"
+  },
+  {
+   "name": "Additional Side Story: Rudy",
+   "description": "Paid additional side-story content centered on Rudy.",
+   "coverUrl": "https://m.media-amazon.com/images/I/81xW2+XCxiL._SL1500_.jpg"
+  },
+  {
+   "name": "Monster Hair packs",
+   "description": "Additional cosmetic monster-hair customization packs.",
+   "coverUrl": "https://m.media-amazon.com/images/I/81xW2+XCxiL._SL1500_.jpg"
+  },
+  {
+   "coverUrl": "https://m.media-amazon.com/images/I/81xW2+XCxiL._SL1500_.jpg"
+  },
+  {
+   "coverUrl": "https://m.media-amazon.com/images/I/81xW2+XCxiL._SL1500_.jpg"
+  },
+  {
+   "coverUrl": "https://m.media-amazon.com/images/I/81xW2+XCxiL._SL1500_.jpg"
+  },
+  {
+   "coverUrl": "https://m.media-amazon.com/images/I/81xW2+XCxiL._SL1500_.jpg"
+  }
+ ],
+ "completionMain": 12,
+ "completionExtras": 16,
+ "completionAll": 25,
+ "faq": [
+  {
+   "q": "Is this the full package?",
+   "a": "Yes. It is designed as the definitive anthology edition."
+  },
+  {
+   "q": "Is there combat?",
+   "a": "No. The focus is on exploration, atmosphere and psychological storytelling."
+  },
+  {
+   "q": "Why is this edition notable?",
+   "a": "It combines the core experiences and major additional content into one release."
+  },
+  {
+   "q": "What kind of horror is it?",
+   "a": "It is psychological horror built around perception, space and mood."
+  },
+  {
+   "q": "Who is it best for?",
+   "a": "Players who enjoy atmospheric, narrative-first horror experiences."
+  }
+ ],
+ "verdictScore": 8,
+ "verdictSummary": "A feature-rich monster-raising RPG with strong presentation and customization, though Switch 2 performance is less stable than the hardware can ideally deliver.",
+ "verdictPros": [
+  "Strong creature-raising loop",
+  "Large and colorful world",
+  "Extensive customization",
+  "Rich deluxe/DLC offering",
+  "Official Simplified Chinese support"
+ ],
+ "verdictCons": [
+  "Switch 2 frame rate is unlocked and often sits around 30-45 FPS in large areas",
+  "Portable mode can dip more often in demanding scenes"
+ ],
+ "reviews": [
+  {
+   "source": "Critical consensus",
+   "score": "See summary",
+   "quote": "Praised for atmosphere, audio and the value of the complete package."
+  },
+  {
+   "source": "Player reception",
+   "score": "See summary",
+   "quote": "Often appreciated for presentation and unsettling environmental storytelling."
+  }
+ ],
+ "timeline": [
+  {
+   "date": "Phase 1",
+   "title": "Layers of Fear",
+   "body": "The painter's obsession anchors the first major storyline."
+  },
+  {
+   "date": "Phase 2",
+   "title": "Inheritance / Final Note",
+   "body": "Additional material expands the family tragedy and related perspective."
+  },
+  {
+   "date": "Phase 3",
+   "title": "Layers of Fear 2",
+   "body": "A second major storyline broadens the anthology."
+  },
+  {
+   "date": "Phase 4",
+   "title": "Final Prologue / Lighthouse",
+   "body": "Connective chapters unify the anthology structure."
+  }
+ ],
+ "patchNotes": [
+  {
+   "version": "Update 1",
+   "date": "2025-12-19",
+   "body": "Switch 2 edition launched as the complete Final Masterpiece package."
+  }
+ ],
+ "soundtrack": [
+  {
+   "title": "Music Note 1"
+  },
+  {
+   "title": "Music Note 2"
+  },
+  {
+   "title": "Music Note 3"
+  }
+ ],
+ "seriesName": "Layers of Fear",
+ "studioName": "Bloober Team",
+ "studioUrl": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-2-games/Layers-of-Fear-The-Final-Masterpiece-Edition-2992862.html",
+ "studioLocation": "Osaka, Japan",
+ "studioAbout": "CAPCOM is the Japanese developer and publisher behind Monster Hunter, Resident Evil and Street Fighter. Monster Hunter Stories 3 extends the turn-based Monster Rider RPG branch with redesigned character presentation, larger environments, a new story and expanded customization.",
+ "setupNeeds": [
+  "Nintendo Switch 2 system required for the Nintendo Switch 2 version.",
+  "Internet connection is required for digital download, updates and online/service features where applicable.",
+  "Nintendo Account required for Nintendo eShop purchase/download.",
+  "Sufficient internal storage or compatible microSD Express storage required.",
+  "Nintendo Switch Online membership is required only for game-specific online multiplayer/features that explicitly use it."
+ ],
+ "sources": [
+  {
+   "name": "Official Nintendo / Storefront",
+   "url": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-2-games/Layers-of-Fear-The-Final-Masterpiece-Edition-2992862.html"
+  },
+  {
+   "name": "Official / Publisher",
+   "url": "https://meridiem-games.com/en/game/layers-of-fear-the-final-masterpiece-edition"
+  },
+  {
+   "name": "Reference 3",
+   "url": "https://www.youtube.com/results?search_query=Layers+of+Fear+Final+Masterpiece+Edition+Nintendo+Switch+2+trailer"
+  },
+  {
+   "name": "Reference 4",
+   "url": "https://m.media-amazon.com/images/I/81xW2+XCxiL._SL1500_.jpg"
+  },
+  {
+   "name": "Reference 5",
+   "url": "https://i.ebgames.com.au/merchandising/images/screenshots/342401_screenshot_01.jpg"
+  }
+ ],
+ "boxContentsList": "[Circular]",
+ "image": "/api/files/products/prd_950ae4b861754153/cover-f452bd095f5fec54.jpg",
+ "banner": "/api/files/products/prd_950ae4b861754153/banner-0-3ee0e003470c134e.jpg",
+ "schemaId": "",
+ "badgeEn": "وفر 40%",
+ "badgeKu": "وفر 40%",
+ "featuresEn": [
+  "Definitive anthology edition",
+  "Includes Layers of Fear and Layers of Fear 2",
+  "Includes major DLC and connective chapters",
+  "Unreal Engine 5 presentation",
+  "Environmental hallucinations and perspective shifts",
+  "Strong sound design and visual atmosphere",
+  "Story-driven exploration",
+  "Complete package value on Switch 2"
+ ],
+ "featuresKu": [
+  "Definitive anthology edition",
+  "Includes Layers of Fear and Layers of Fear 2",
+  "Includes major DLC and connective chapters",
+  "Unreal Engine 5 presentation",
+  "Environmental hallucinations and perspective shifts",
+  "Strong sound design and visual atmosphere",
+  "Story-driven exploration",
+  "Complete package value on Switch 2"
+ ],
+ "sales": 0,
+ "images": [],
+ "modes": [],
+ "updatedAt": "2026-08-28T22:05:02.078Z"
+}

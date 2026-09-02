@@ -1,0 +1,482 @@
+{
+ "title": "It Takes Two",
+ "titleEn": "It Takes Two",
+ "titleKu": "It Takes Two",
+ "slug": "it-takes-two",
+ "description": "It Takes Two is a co-op-only action-adventure platformer by Hazelight Studios. Two players control Cody and May, a couple transformed into dolls, and must cooperate through highly varied levels where new mechanics appear constantly. On Nintendo Switch it supports same-system co-op, local wireless, and online play, with Friend's Pass allowing a friend to join without owning the full game.",
+ "descriptionEn": "It Takes Two is a co-op-only action-adventure platformer by Hazelight Studios. Two players control Cody and May, a couple transformed into dolls, and must cooperate through highly varied levels where new mechanics appear constantly. On Nintendo Switch it supports same-system co-op, local wireless, and online play, with Friend's Pass allowing a friend to join without owning the full game.",
+ "descriptionKu": "It Takes Two is a co-op-only action-adventure platformer by Hazelight Studios. Two players control Cody and May, a couple transformed into dolls, and must cooperate through highly varied levels where new mechanics appear constantly. On Nintendo Switch it supports same-system co-op, local wireless, and online play, with Friend's Pass allowing a friend to join without owning the full game.",
+ "cartridgeImage": "https://images.launchbox-app.com//37c4f187-49f1-4568-b984-b8f9ca43efbf.png",
+ "nintendoCardImage": "https://assets.nintendo.com/image/upload/ar_1%3A1%2Cc_fill%2Cg_auto/f_auto/q_auto/dpr_1.5/store/software/switch/70070000014924/e7200824041808289d4a65589ed368f7e08dc2e538a5fd7ee9f8d39e58015c24",
+ "coverHiResImage": "",
+ "coverImage": "https://images.launchbox-app.com//22562538-da20-4589-ad20-c91c4e570c19.png",
+ "bannerImages": [
+  "https://images.launchbox-app.com//303addc0-2646-434a-9475-f5a980523441.png",
+  "https://images.launchbox-app.com//ff5ae30d-7bf6-4230-8819-1ed66fea4e6a.png",
+  "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000014924/c942c07a0e6500f8a5354e7ba6300cb8962fe83888b41cc71690fa772012267b",
+  "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch/70010000049281/7d4781f639c29fab428d9dec8ea53297838294db4efb847b51b92f04e2987711",
+  "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch/70010000049281/4fba2aed43196cce5c459bffcede7869d2be7a48b0bb237907a1f52dc000580d",
+  "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch/70010000049281/a980423f43a1d37f7338a7f1c723583bcb9f41af2aa02aadb918c793f8d6f75c",
+  "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch/70010000049281/219bf5ca843b0087fc6f0937536157113c8924cafc0dfe72e6b614ba6b3d34fb",
+  "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch/70010000049281/17c1edf90923ecbb824fc3deb8cef390bd3eefcb6597bc222805256f51e1c2ce"
+ ],
+ "gallery": [],
+ "youtubeTrailer": "https://www.youtube.com/watch?v=F7MpUspVRwM",
+ "releaseDate": "2022-11-04",
+ "ageRating": "ESRB: T — Animated Blood, Comic Mischief, Fantasy Violence, Language; Users Interact",
+ "metacriticRating": 82,
+ "genres": [
+  "Action",
+  "Adventure",
+  "Platformer"
+ ],
+ "platform": "switch1",
+ "size": 9.473,
+ "numberOfPlayers": "2",
+ "supportedLanguages": "Japanese, French, German, Italian, Korean, Russian, Simplified Chinese, Latin American Spanish, Brazilian Portuguese, Traditional Chinese, American English",
+ "hardwareModel": "",
+ "colorEdition": "",
+ "storageCapacity": "",
+ "screenSpecs": "",
+ "batteryLife": "",
+ "boxContents": [],
+ "boxContentsText": "",
+ "warrantyCondition": "",
+ "connectivity": "",
+ "characterName": "Link",
+ "amiiboSeries": "The Legend of Zelda",
+ "figureType": "figure",
+ "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+ "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+ "boxCondition": "mib",
+ "releaseWave": "Wave 2 (Restock)",
+ "rarity": "standard",
+ "accessoryType": "حقيبة حماية وتنقل Carry Case",
+ "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+ "brand": "Nintendo Official",
+ "material": "Hard EVA Shockproof Shell",
+ "availableColors": "Black, Neon Red/Blue, White",
+ "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+ "cardValue": "$20 eShop Balance",
+ "region": "Global",
+ "cardType": "eshop",
+ "deliveryMethod": "instant_code",
+ "redemptionGuide": "",
+ "redemptionSteps": [],
+ "validity": "no_expiry",
+ "usedType": "cartridge",
+ "conditionGrade": "like_new",
+ "packaging": "cib",
+ "guaranteeStatus": "tested_30days",
+ "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+ "accountType": "primary",
+ "badge": "وفر 40%",
+ "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+ "price": 8000,
+ "cost": 1500,
+ "stock": 999999,
+ "isInfiniteStock": true,
+ "isHidden": false,
+ "displayOrder": 0,
+ "category": "nintendo-switch-games",
+ "categoryId": "nintendo-switch-games",
+ "categoryEn": "",
+ "categoryKu": "",
+ "options": [
+  {
+   "id": "offline_account",
+   "name": "Offline Account",
+   "description": "Offline account option",
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_account",
+   "name": "Online Account",
+   "description": "Online account option",
+   "isInfiniteStock": true
+  }
+ ],
+ "types": [
+  {
+   "id": "standard_offline",
+   "name": "Standard Edition",
+   "optionId": "offline_account",
+   "price": "8000",
+   "cost": 1500,
+   "description": "Standard game access — Offline Account.",
+   "isInfiniteStock": true
+  },
+  {
+   "id": "standard_online",
+   "name": "Standard Edition",
+   "optionId": "online_account",
+   "price": "28000",
+   "cost": 14250,
+   "description": "Standard game access — Online Account.",
+   "isInfiniteStock": true
+  }
+ ],
+ "editions": [],
+ "dlcs": [],
+ "isActive": true,
+ "status": "active",
+ "kind": "account",
+ "trade_value_iqd": 30000,
+ "store_offer_bonus_iqd": 5000,
+ "trade_enabled": true,
+ "trade_value_locked": false,
+ "id": "prd_b9ca0595530f4d17",
+ "schema_version": 20,
+ "titleAr": "إت تيكس تو",
+ "compatibility": [
+  "Nintendo Switch",
+  "Nintendo Switch 2 (backward compatible)"
+ ],
+ "edition": "Standard",
+ "developer": "Hazelight Studios",
+ "publisher": "Electronic Arts",
+ "opencriticRating": 88,
+ "userScore": 8.8,
+ "officialUrl": "https://www.nintendo.com/us/store/products/it-takes-two-switch/",
+ "eshopUrl": "https://www.nintendo.com/us/store/products/it-takes-two-switch/",
+ "gameIsOffline": true,
+ "gameIsOnline": true,
+ "gameLanguageLocked": false,
+ "description_short": "A co-op-only platform adventure in which Cody and May must work together through constantly changing mechanics and imaginative levels.",
+ "description_ar": "It Takes Two هي لعبة مغامرات ومنصات مصممة بالكامل للعب التعاوني من Hazelight Studios. يتحكم لاعبان بكودي وماي بعد تحولهما إلى دميتين، ويجب عليهما التعاون عبر مراحل متنوعة تتغير فيها الآليات باستمرار. على Nintendo Switch تدعم اللعب على جهاز واحد والاتصال اللاسلكي المحلي واللعب عبر الإنترنت، كما تسمح Friend's Pass لصديق بالانضمام دون امتلاك النسخة الكاملة.",
+ "box_front_url": "https://images.launchbox-app.com//37c4f187-49f1-4568-b984-b8f9ca43efbf.png",
+ "videos": [
+  {
+   "title": "It Takes Two — Official Trailer",
+   "url": "https://www.youtube.com/watch?v=F7MpUspVRwM"
+  }
+ ],
+ "nsuid": "70070000014924",
+ "nintendoEshopUrl": "https://www.nintendo.com/us/store/products/it-takes-two-switch/",
+ "nintendoOnlineRequired": true,
+ "nintendoCloudSaves": true,
+ "tvMode": true,
+ "tabletopMode": true,
+ "handheldMode": true,
+ "nintendoPlayModes": "TV, Tabletop, Handheld",
+ "nintendoNotes": "Nintendo Switch product; compatible with Nintendo Switch 2 where Nintendo lists backward compatibility. Product account variants and costs are based on the supplied seller screenshots; platform classification follows the seller-card rule requested for this import.\n\nOffline selling price is selected within 5,000–25,000 IQD according to demand, supply, popularity, recency, perceived market value and, where relevant, supplier cost. It is not a fixed cost multiplier. Online pricing is market-based and may be higher.\n\nExtraction rules used for this file: production images are verified game media, not seller/Taobao images. Front Box Cover is retail box-front artwork; Square Card is a separate square asset; Cover Image is page/key art; 3D Texture Source is high-resolution front cover art. Banner and Gallery media are separate verified artwork/screenshots. Device Performance contains one device object only. Offline selling prices are chosen within 5,000–25,000 IQD according to demand, supply, popularity, recency, perceived value and supplier cost; online prices remain market-based and may be higher.",
+ "switch2Enhanced": false,
+ "switch2Exclusive": false,
+ "tagline": "A genre-bending adventure designed from the ground up for two players.",
+ "playTimeMain": 13,
+ "playTimeFull": 16,
+ "editionsList": [
+  {
+   "name": "Standard Edition",
+   "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000014924/e7200824041808289d4a65589ed368f7e08dc2e538a5fd7ee9f8d39e58015c24",
+   "contents": [
+    {
+     "label": "Base game"
+    },
+    {
+     "label": "Seller account access"
+    },
+    {
+     "label": "Nintendo platform version shown in this import"
+    }
+   ]
+  }
+ ],
+ "gameplayPillars": [
+  {
+   "title": "Co-op Mechanics",
+   "description": "Every major challenge is built around two complementary player roles.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000014924/219bf5ca843b0087fc6f0937536157113c8924cafc0dfe72e6b614ba6b3d34fb"
+  },
+  {
+   "title": "Constant Variety",
+   "description": "Levels introduce new tools, movement systems, minigames, and puzzle concepts.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000014924/17c1edf90923ecbb824fc3deb8cef390bd3eefcb6597bc222805256f51e1c2ce"
+  },
+  {
+   "title": "Shared Story",
+   "description": "Gameplay and narrative focus on Cody and May learning to work together.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000014924/c942c07a0e6500f8a5354e7ba6300cb8962fe83888b41cc71690fa772012267b"
+  }
+ ],
+ "worldSummary": "Cody and May are transformed into dolls and pushed through a surreal journey shaped by their home, memories, and relationship.",
+ "storyChapters": [
+  {
+   "title": "A Family in Crisis",
+   "body": "Cody and May plan to separate, but their daughter Rose wishes they could stay together. The parents are magically transformed into small handmade dolls.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000014924/c942c07a0e6500f8a5354e7ba6300cb8962fe83888b41cc71690fa772012267b"
+  },
+  {
+   "title": "Forced to Cooperate",
+   "body": "Guided by Dr. Hakim, Cody and May must work together through a series of surreal environments where each area gives them complementary abilities.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch/70010000049281/7d4781f639c29fab428d9dec8ea53297838294db4efb847b51b92f04e2987711"
+  },
+  {
+   "title": "Rebuilding the Bond",
+   "body": "Their adventure forces them to confront resentment, forgotten passions, and the reasons their relationship broke down as they try to return to their daughter.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch/70010000049281/4fba2aed43196cce5c459bffcede7869d2be7a48b0bb237907a1f52dc000580d"
+  }
+ ],
+ "galleryImages": [
+  {
+   "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch/70010000049281/7d4781f639c29fab428d9dec8ea53297838294db4efb847b51b92f04e2987711",
+   "alt": "Verified official/publisher media for It Takes Two — gallery image 1."
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch/70010000049281/4fba2aed43196cce5c459bffcede7869d2be7a48b0bb237907a1f52dc000580d",
+   "alt": "Verified official/publisher media for It Takes Two — gallery image 2."
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch/70010000049281/a980423f43a1d37f7338a7f1c723583bcb9f41af2aa02aadb918c793f8d6f75c",
+   "alt": "Verified official/publisher media for It Takes Two — gallery image 3."
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch/70010000049281/219bf5ca843b0087fc6f0937536157113c8924cafc0dfe72e6b614ba6b3d34fb",
+   "alt": "Verified official/publisher media for It Takes Two — gallery image 4."
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch/70010000049281/17c1edf90923ecbb824fc3deb8cef390bd3eefcb6597bc222805256f51e1c2ce",
+   "alt": "Verified official/publisher media for It Takes Two — gallery image 5."
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch/70010000049281/c942c07a0e6500f8a5354e7ba6300cb8962fe83888b41cc71690fa772012267b",
+   "alt": "Verified official/publisher media for It Takes Two — gallery image 6."
+  },
+  {
+   "url": "https://images.launchbox-app.com//303addc0-2646-434a-9475-f5a980523441.png",
+   "alt": "Verified official/publisher media for It Takes Two — gallery image 7."
+  },
+  {
+   "url": "https://images.launchbox-app.com//ff5ae30d-7bf6-4230-8819-1ed66fea4e6a.png",
+   "alt": "Verified official/publisher media for It Takes Two — gallery image 8."
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000014924/c942c07a0e6500f8a5354e7ba6300cb8962fe83888b41cc71690fa772012267b",
+   "alt": "Verified official/publisher media for It Takes Two — gallery image 9."
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000014924/219bf5ca843b0087fc6f0937536157113c8924cafc0dfe72e6b614ba6b3d34fb",
+   "alt": "Verified official/publisher media for It Takes Two — gallery image 10."
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000014924/17c1edf90923ecbb824fc3deb8cef390bd3eefcb6597bc222805256f51e1c2ce",
+   "alt": "Verified official/publisher media for It Takes Two — gallery image 11."
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cc_fill%2Cg_auto/f_auto/q_auto/dpr_1.5/store/software/switch/70070000014924/e7200824041808289d4a65589ed368f7e08dc2e538a5fd7ee9f8d39e58015c24",
+   "alt": "Verified official/publisher media for It Takes Two — gallery image 12."
+  }
+ ],
+ "perfResolutionDocked": "1920×1080 output",
+ "perfResolutionHandheld": "1280×720 output",
+ "perfFps": "30",
+ "perfNotes": "The Switch port targets 30 fps with 1080p output in TV mode and 720p output in handheld mode.",
+ "devicePerformance": [
+  {
+   "device": "Nintendo Switch 2",
+   "deviceSlug": "nintendo-switch-2",
+   "deviceModel": "Nintendo Switch 2",
+   "informationStatus": "backward-compatible-verified",
+   "handheld": {
+    "supported": true,
+    "resolution": "1280×720 output",
+    "outputResolution": "1280×720",
+    "fps": "30",
+    "notes": "Nintendo lists the game as supported on Nintendo Switch 2 with behavior consistent with Nintendo Switch. The Switch port targets 30 fps with 720p handheld output and 1080p TV output; no Switch 2-specific enhancement is claimed here."
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "1920×1080 output",
+    "outputResolution": "1920×1080",
+    "fps": "30",
+    "notes": "Nintendo lists the game as supported on Nintendo Switch 2 with behavior consistent with Nintendo Switch. The Switch port targets 30 fps with 720p handheld output and 1080p TV output; no Switch 2-specific enhancement is claimed here."
+   },
+   "sourceName": "VentureBeat / Turn Me Up Games interview",
+   "sourceUrl": "https://venturebeat.com/business/it-takes-two-porting-2021s-game-of-the-year-to-switch",
+   "verifiedAt": "2026-08-24",
+   "verificationStatus": "verified",
+   "performanceNotes": "Nintendo lists the game as supported on Nintendo Switch 2 with behavior consistent with Nintendo Switch. The Switch port targets 30 fps with 720p handheld output and 1080p TV output; no Switch 2-specific enhancement is claimed here."
+  }
+ ],
+ "downloadSizeGb": 9.473,
+ "requiredSpaceGb": 12.1,
+ "storageNotes": "Official/verified listed game download size: approximately 12.1 GB. Updates and DLC may require additional space.",
+ "languagesAudio": [
+  "English"
+ ],
+ "languagesText": [
+  "American English",
+  "English",
+  "Japanese"
+ ],
+ "arabicSupport": false,
+ "mpLocalPlayers": true,
+ "mpOnlinePlayers": true,
+ "mpCoop": true,
+ "mpCompetitive": false,
+ "mpSplitScreen": true,
+ "mpLocalWireless": true,
+ "guides": [
+  {
+   "title": "Official product and gameplay information",
+   "summary": "Official Nintendo/publisher information covering features, supported modes, requirements and product-specific notices.",
+   "url": "https://www.nintendo.com/us/store/products/it-takes-two-switch/"
+  },
+  {
+   "title": "GameFAQs guides and FAQs search",
+   "summary": "Community guide index for walkthroughs, FAQs, collectibles, unlockables and troubleshooting. Verify platform/version when following a guide.",
+   "url": "https://gamefaqs.gamespot.com/search?game=It+Takes+Two"
+  },
+  {
+   "title": "Deku Deals technical/product reference",
+   "summary": "Reference page used for platform, file size, play modes, critic aggregates and completion-time metadata where available.",
+   "url": "https://www.dekudeals.com/items/it-takes-two"
+  }
+ ],
+ "completionMain": 13,
+ "completionExtras": 14,
+ "completionAll": 16,
+ "faq": [
+  {
+   "q": "What platform is this import for?",
+   "a": "This import is classified as Nintendo Switch."
+  },
+  {
+   "q": "How many players are supported?",
+   "a": "Official player support varies by mode; the primary published range is 2 player(s). See multiplayer fields for local, wireless, and online capabilities."
+  },
+  {
+   "q": "Does this seller listing include a separate DLC account type?",
+   "a": "No. The supplied seller listing shows two variants, so only Standard Offline and Standard Online account types are created."
+  }
+ ],
+ "verdictScore": 8.5,
+ "verdictSummary": "Editorial synthesis for It Takes Two, based on the verified feature set, platform implementation, content scope and aggregated critical reception. This score is an internal summary, not a copied external review score.",
+ "reviews": [
+  {
+   "source": "Metacritic",
+   "score": "82",
+   "quote": "Aggregated critic score for the game/platform listing.",
+   "url": "https://www.dekudeals.com/items/it-takes-two"
+  },
+  {
+   "source": "OpenCritic",
+   "score": "88",
+   "quote": "Aggregated critic score reported for the game.",
+   "url": "https://www.dekudeals.com/items/it-takes-two"
+  },
+  {
+   "source": "Metacritic User Score",
+   "score": "8.8",
+   "quote": "Aggregated user score reference.",
+   "url": "https://www.dekudeals.com/items/it-takes-two"
+  }
+ ],
+ "timeline": [
+  {
+   "date": "2021-03-26",
+   "title": "Original release",
+   "body": "It Takes Two launched on other platforms."
+  },
+  {
+   "date": "2021-12-09",
+   "title": "Game of the Year recognition",
+   "body": "The game won Game of the Year at The Game Awards 2021."
+  },
+  {
+   "date": "2022-11-04",
+   "title": "Nintendo Switch release",
+   "body": "The Nintendo Switch port launched with local and online co-op support."
+  }
+ ],
+ "patchNotes": [
+  {
+   "version": "Switch launch build",
+   "date": "2022-11-04",
+   "body": "Nintendo Switch version released with split-screen, local wireless, online play and Friend’s Pass support."
+  }
+ ],
+ "soundtrack": [
+  {
+   "title": "It Takes Two — Original Soundtrack",
+   "url": "https://store.steampowered.com/app/4110940/It_Takes_Two__Original_Soundtrack/?l=english"
+  },
+  {
+   "title": "It Takes Two — VGMdb soundtrack catalog search",
+   "url": "https://vgmdb.net/search?q=It+Takes+Two&type=album"
+  },
+  {
+   "title": "It Takes Two — soundtrack video search",
+   "url": "https://www.youtube.com/results?search_query=It+Takes+Two+official+soundtrack"
+  }
+ ],
+ "seriesName": "It Takes Two",
+ "studioName": "Hazelight Studios",
+ "studioUrl": "https://www.hazelight.se/",
+ "studioLocation": "Stockholm, Sweden",
+ "studioAbout": "Hazelight Studios is a Swedish developer focused on cooperative narrative games.",
+ "sources": [
+  {
+   "name": "Nintendo / publisher official product page",
+   "url": "https://www.nintendo.com/us/store/products/it-takes-two-switch/"
+  },
+  {
+   "name": "Deku Deals — platform, size, scores and play-time reference",
+   "url": "https://www.dekudeals.com/items/it-takes-two"
+  },
+  {
+   "name": "The Cover Project — Full Retail Cover page",
+   "url": "https://www.thecoverproject.net/view.php?game_id=18292"
+  }
+ ],
+ "fitFor": [
+  "Two players looking for a full co-op campaign",
+  "Couples, friends, or family who enjoy teamwork",
+  "Players who like frequent gameplay variety"
+ ],
+ "notFitFor": [
+  "Solo-only players",
+  "Players who dislike split-screen or co-op dependency",
+  "Players seeking competitive multiplayer"
+ ],
+ "features": [
+  "Mandatory two-player cooperative design",
+  "Friend's Pass support",
+  "Same-system, local wireless, and online co-op"
+ ],
+ "verdictPros": [
+  "Inventive co-op mechanics that constantly change",
+  "Strong split-screen and Friend’s Pass design",
+  "Memorable environments and set pieces"
+ ],
+ "verdictCons": [
+  "Requires exactly two players",
+  "Some story beats may divide players",
+  "No traditional single-player mode"
+ ],
+ "seriesEntries": [
+  "It Takes Two",
+  "Split Fiction"
+ ],
+ "setupNeeds": [
+  "Two players are required",
+  "Two compatible controllers for same-system play",
+  "Nintendo Switch Online membership required for online play"
+ ],
+ "boxContentsList": "[Circular]",
+ "image": "https://images.launchbox-app.com//22562538-da20-4589-ad20-c91c4e570c19.png",
+ "banner": "https://images.launchbox-app.com//303addc0-2646-434a-9475-f5a980523441.png",
+ "schemaId": "",
+ "badgeEn": "وفر 40%",
+ "badgeKu": "وفر 40%",
+ "featuresEn": [
+  "Mandatory two-player cooperative design",
+  "Friend's Pass support",
+  "Same-system, local wireless, and online co-op"
+ ],
+ "featuresKu": [
+  "Mandatory two-player cooperative design",
+  "Friend's Pass support",
+  "Same-system, local wireless, and online co-op"
+ ]
+}

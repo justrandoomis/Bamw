@@ -1,0 +1,3092 @@
+{
+ "batch": "013",
+ "generatedAt": "2026-09-02T03:08:16.837Z",
+ "totalGames": 310,
+ "reviewedSoFar": 57,
+ "games": [
+  {
+   "id": "prd_2b0afd3037524c80",
+   "slug": "lies-of-p-complete-edition-switch-2",
+   "title": "Lies of P: Complete Edition",
+   "platform": "switch2",
+   "isHidden": true,
+   "hash": "8efb09cea8442ae1530a50f36f73f7db68708e47f20ad28a3537676ab9ed6500",
+   "images": [
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://banan.to/api/files/products/prd_2b0afd3037524c80/square-card-3159a2c48bce257a.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 298698,
+     "width": 1024,
+     "height": 1024,
+     "thumb": "review-workdir/thumbs/batch-013/lies-of-p-complete-edition-switch-2__square-card-0.png"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://banan.to/api/files/products/prd_2b0afd3037524c80/cover-433b0a0705874734.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 416588,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-013/lies-of-p-complete-edition-switch-2__detail-cover-1.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://banan.to/api/files/products/prd_2b0afd3037524c80/gallery-1-60026762ae32cef1.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 420886,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-013/lies-of-p-complete-edition-switch-2__gallery-2.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[1]",
+     "url": "https://banan.to/api/files/products/prd_2b0afd3037524c80/gallery-2-5a46180ace26d3e2.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 201246,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-013/lies-of-p-complete-edition-switch-2__gallery-3.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[2]",
+     "url": "https://banan.to/api/files/products/prd_2b0afd3037524c80/gallery-3-cca57371685ec052.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 305074,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-013/lies-of-p-complete-edition-switch-2__gallery-4.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[3]",
+     "url": "https://banan.to/api/files/products/prd_2b0afd3037524c80/gallery-4-cc0368948fc00aee.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 180234,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-013/lies-of-p-complete-edition-switch-2__gallery-5.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[4]",
+     "url": "https://banan.to/api/files/products/prd_2b0afd3037524c80/gallery-5-ef69268bb776666a.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 426540,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-013/lies-of-p-complete-edition-switch-2__gallery-6.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[5]",
+     "url": "https://banan.to/api/files/products/prd_2b0afd3037524c80/gallery-6-782066764d495e8d.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 381038,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-013/lies-of-p-complete-edition-switch-2__gallery-7.png"
+    }
+   ],
+   "record": {
+    "title": "Lies of P: Complete Edition",
+    "titleEn": "Lies of P: Complete Edition",
+    "titleKu": "",
+    "slug": "lies-of-p-complete-edition-switch-2",
+    "description": "Lies of P: Complete Edition is the Nintendo Switch 2 release of NEOWIZ’s acclaimed soulslike. It includes the full base game and the Overture expansion, combining the fall of Krat with the prequel story that reveals more about the Puppet Frenzy. Combat centers on precise guarding, weapon assembly, Legion Arms, boss mastery, and dark Belle Époque atmosphere.",
+    "descriptionEn": "Lies of P: Complete Edition is the Nintendo Switch 2 release of NEOWIZ’s acclaimed soulslike. It includes the full base game and the Overture expansion, combining the fall of Krat with the prequel story that reveals more about the Puppet Frenzy. Combat centers on precise guarding, weapon assembly, Legion Arms, boss mastery, and dark Belle Époque atmosphere.",
+    "descriptionKu": "",
+    "cartridgeImage": "",
+    "nintendoCardImage": "/api/files/products/prd_2b0afd3037524c80/square-card-3159a2c48bce257a.webp",
+    "coverHiResImage": "",
+    "coverImage": "/api/files/products/prd_2b0afd3037524c80/cover-433b0a0705874734.webp",
+    "bannerImages": [
+     ""
+    ],
+    "gallery": [],
+    "youtubeTrailer": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-2-games/Lies-of-P-Complete-Edition-3109443.html",
+    "releaseDate": "2026-08-05",
+    "ageRating": "PEGI 16 / ESRB M",
+    "metacriticRating": 84,
+    "genres": [
+     "Action",
+     "RPG",
+     "Soulslike"
+    ],
+    "platform": "switch2",
+    "size": "35.0 GB",
+    "numberOfPlayers": "Single system (1)",
+    "supportedLanguages": "English, Japanese, French, Spanish, German",
+    "hardwareModel": "",
+    "colorEdition": "",
+    "storageCapacity": "",
+    "screenSpecs": "",
+    "batteryLife": "",
+    "boxContents": [],
+    "boxContentsText": "",
+    "warrantyCondition": "",
+    "connectivity": "",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "Global",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "",
+    "redemptionSteps": [],
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 14750,
+    "cost": 6500,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": true,
+    "displayOrder": 0,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "مشترك",
+      "description": "مشترك",
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_account",
+      "name": "خاص بك",
+      "description": "خاص بك",
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "types": [
+     {
+      "id": "offline_base",
+      "name": "مشترك — اللعبة الأساسية",
+      "optionId": "offline_account",
+      "price": 14750,
+      "cost": 6500,
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_base",
+      "name": "خاص بك — اللعبة الأساسية",
+      "optionId": "online_account",
+      "price": 33750,
+      "cost": 25000,
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "Active",
+    "kind": "account",
+    "trade_value_iqd": 17500,
+    "store_offer_bonus_iqd": 6500,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "id": "prd_2b0afd3037524c80",
+    "schema_version": 24,
+    "titleAr": "لايز أوف بي: النسخة الكاملة",
+    "compatibility": [
+     "Nintendo Switch 2",
+     "Separate Nintendo Switch product may exist"
+    ],
+    "edition": "Standard",
+    "developer": "Nough Studio / NEOWIZ",
+    "publisher": "NEOWIZ",
+    "seriesName": "Lies of P",
+    "opencriticRating": 84,
+    "userScore": 8.5,
+    "switch2UpgradePrice": 0,
+    "officialUrl": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-2-games/Lies-of-P-Complete-Edition-3109443.html",
+    "eshopUrl": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-2-games/Lies-of-P-Complete-Edition-3109443.html",
+    "gameIsOffline": true,
+    "gameIsOnline": false,
+    "gameLanguageLocked": false,
+    "description_short": "The complete soulslike adventure through Krat, including the base game and the Overture expansion.",
+    "description_ar": "النسخة الكاملة من Lies of P على Nintendo Switch 2، وتشمل اللعبة الأساسية وتوسعة Overture، مع قتال soulslike دقيق ونظام تركيب الأسلحة وأجواء مدينة Krat المظلمة.",
+    "galleryImages": [
+     {
+      "url": "/api/files/products/prd_2b0afd3037524c80/gallery-1-60026762ae32cef1.webp",
+      "alt": "Lies of P: Complete Edition screenshot 1"
+     },
+     {
+      "url": "/api/files/products/prd_2b0afd3037524c80/gallery-2-5a46180ace26d3e2.webp",
+      "alt": "Lies of P: Complete Edition screenshot 2"
+     },
+     {
+      "url": "/api/files/products/prd_2b0afd3037524c80/gallery-3-cca57371685ec052.webp",
+      "alt": "Lies of P: Complete Edition screenshot 3"
+     },
+     {
+      "url": "/api/files/products/prd_2b0afd3037524c80/gallery-4-cc0368948fc00aee.webp",
+      "alt": "Lies of P: Complete Edition screenshot 4"
+     },
+     {
+      "url": "/api/files/products/prd_2b0afd3037524c80/gallery-5-ef69268bb776666a.webp",
+      "alt": "Lies of P: Complete Edition screenshot 5"
+     },
+     {
+      "url": "/api/files/products/prd_2b0afd3037524c80/gallery-6-782066764d495e8d.webp",
+      "alt": "Lies of P: Complete Edition screenshot 6"
+     }
+    ],
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": true,
+    "nintendoPlayModes": "TV mode / Tabletop mode / Handheld mode",
+    "nintendoCloudSaves": true,
+    "nintendoGameKeyCard": false,
+    "switch2Enhanced": true,
+    "switch2Exclusive": true,
+    "nintendoNotes": "Platform and package information verified against the official product/source page for Lies of P: Complete Edition.",
+    "tagline": "Uncover the complete tragedy of Krat.",
+    "fitFor": [
+     "Fans of the listed genres",
+     "Players who value the game’s core mechanics",
+     "Players looking for this platform version",
+     "Collectors or storefront users comparing platform editions"
+    ],
+    "notFitFor": [
+     "Players who dislike the listed genre",
+     "Players seeking a different platform entry",
+     "Players who require unsupported multiplayer modes",
+     "Players expecting a different edition package"
+    ],
+    "playTimeMain": 30,
+    "playTimeFull": 55,
+    "gameplayPillars": [
+     {
+      "title": "Soulslike combat",
+      "description": "Precise guarding, dodging, stamina control, and boss learning are essential."
+     },
+     {
+      "title": "Weapon assembly",
+      "description": "Blades and handles can be mixed to create personalized weapons."
+     },
+     {
+      "title": "Legion Arms",
+      "description": "Mechanical arms provide specialized combat tools."
+     },
+     {
+      "title": "Overture expansion",
+      "description": "Complete Edition includes the prequel expansion alongside the main game."
+     },
+     {
+      "title": "Belle Époque atmosphere",
+      "description": "Krat’s ornate architecture contrasts with violent puppet horror."
+     }
+    ],
+    "worldSummary": "Lies of P: Complete Edition is the Nintendo Switch 2 release of NEOWIZ’s acclaimed soulslike. It includes the full base game and the Overture expansion, combining the fall of Krat with the prequel story that reveals more about the Puppet Frenzy. Combat centers on precise guarding, weapon assembly, Legion Arms, boss mastery, and dark Belle Époque atmosphere.",
+    "storyChapters": [
+     {
+      "title": "Enter the fallen city of Krat",
+      "body": "A puppet frenzy has transformed the city into a deadly labyrinth."
+     },
+     {
+      "title": "Search for Geppetto",
+      "body": "The protagonist follows clues through a city collapsing under its own secrets."
+     },
+     {
+      "title": "Question truth and lies",
+      "body": "Choices and narrative themes revolve around identity and humanity."
+     },
+     {
+      "title": "Master powerful bosses",
+      "body": "Major encounters test defensive timing and build choices."
+     },
+     {
+      "title": "Explore the Overture prequel",
+      "body": "The expansion reveals events and characters tied to Krat before the main story."
+     }
+    ],
+    "features": [
+     "Base game + Overture expansion",
+     "Weapon assembly",
+     "Legion Arms",
+     "Soulslike boss design",
+     "Native Switch 2 Complete Edition"
+    ],
+    "perfResolutionHandheld": "1080p",
+    "perfResolutionDocked": "1440p",
+    "perfFps": "60",
+    "perfHdr": false,
+    "perfNotes": "Switch 2 Complete Edition performance profile recorded for storefront use.",
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "hardwareId": "nintendo-switch-2",
+      "informationStatus": "Available",
+      "handheld": {
+       "supported": true,
+       "resolution": "1080p",
+       "resolutionDynamic": false,
+       "renderingResolution": "1080p",
+       "outputResolution": "1080p",
+       "fps": "60",
+       "fpsMin": "60",
+       "fpsMax": "60",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Handheld",
+       "notes": "Switch 2 Complete Edition performance profile recorded for storefront use."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1440p",
+       "resolutionDynamic": false,
+       "renderingResolution": "1440p",
+       "outputResolution": "1440p",
+       "fps": "60",
+       "fpsMin": "60",
+       "fpsMax": "60",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "TV / Docked",
+       "notes": "Switch 2 Complete Edition performance profile recorded for storefront use."
+      },
+      "modes": [
+       {
+        "name": "Default",
+        "handheldResolution": "1080p",
+        "handheldFps": "60",
+        "tvResolution": "1440p",
+        "tvFps": "60",
+        "hdr": false,
+        "vrr": false,
+        "notes": "Switch 2 Complete Edition performance profile recorded for storefront use."
+       }
+      ],
+      "performanceNotes": "Switch 2 Complete Edition performance profile recorded for storefront use."
+     },
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "deviceModel": "Nintendo Switch",
+      "hardwareId": "nintendo-switch",
+      "informationStatus": "Unavailable for this product entry",
+      "unavailableReason": "This product file belongs to a different Nintendo platform entry.",
+      "handheld": {
+       "supported": false,
+       "resolution": "Not Supported",
+       "fps": "Not Supported"
+      },
+      "tv": {
+       "supported": false,
+       "resolution": "Not Supported",
+       "fps": "Not Supported"
+      },
+      "performanceNotes": "Not supported for this product entry."
+     }
+    ],
+    "faq": [
+     {
+      "q": "What is the official Switch 2 title?",
+      "a": "Nintendo lists Lies of P: Complete Edition."
+     },
+     {
+      "q": "What is included?",
+      "a": "The base game and Overture expansion."
+     },
+     {
+      "q": "When did it release on Switch 2?",
+      "a": "Nintendo lists August 5, 2026."
+     },
+     {
+      "q": "Is it multiplayer?",
+      "a": "No. It is a single-player action RPG."
+     },
+     {
+      "q": "Why does the file name differ from the supplier title?",
+      "a": "The official Nintendo Switch 2 product is Complete Edition, so the file uses the official name while preserving the supplier prices."
+     }
+    ],
+    "mpLocalPlayers": false,
+    "mpOnlinePlayers": false,
+    "mpCoop": false,
+    "mpCompetitive": false,
+    "mpLocalWireless": false,
+    "mpSplitScreen": false,
+    "sources": [
+     {
+      "name": "Official product / publisher page",
+      "url": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-2-games/Lies-of-P-Complete-Edition-3109443.html"
+     },
+     {
+      "name": "Metacritic",
+      "url": "https://www.metacritic.com/search/lies-of-p-complete-edition/"
+     }
+    ],
+    "boxContentsList": [],
+    "image": "",
+    "banner": "",
+    "schemaId": "",
+    "batchImport": true,
+    "createdAt": "2026-08-28T18:49:40.814Z",
+    "updatedAt": "2026-08-28T18:49:40.814Z"
+   }
+  },
+  {
+   "id": "prd_d598766205db4786",
+   "slug": "little-nightmares-i-and-ii-bundle",
+   "title": "Little Nightmares I & II Bundle",
+   "platform": "switch1",
+   "isHidden": false,
+   "hash": "f3aae0b4208a9fd44a96d36bddf1128eff42521175ae405e0a94061fe7de0d51",
+   "images": [
+    {
+     "role": "front-box",
+     "field": "cartridgeImage",
+     "url": "https://assets.nintendo.com/image/upload/ar_1%3A1%2Cc_fill%2Cg_auto/f_auto/q_auto/dpr_1.5/store/software/switch/70070000014574/bbd1bf7be1b6933b83e027931f85a5fbef414df057b99737c3f457119adc111d",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 77540,
+     "width": 1080,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-013/little-nightmares-i-and-ii-bundle__front-box-0.png"
+    },
+    {
+     "role": "front-box",
+     "field": "box_front_url",
+     "url": "https://assets.nintendo.com/image/upload/ar_1%3A1%2Cc_fill%2Cg_auto/f_auto/q_auto/dpr_1.5/store/software/switch/70070000014574/bbd1bf7be1b6933b83e027931f85a5fbef414df057b99737c3f457119adc111d",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 77540,
+     "width": 1080,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-013/little-nightmares-i-and-ii-bundle__front-box-1.png"
+    },
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://assets.nintendo.com/image/upload/ar_1%3A1%2Cc_fill%2Cg_auto/f_auto/q_auto/dpr_1.5/store/software/switch/70070000014574/bbd1bf7be1b6933b83e027931f85a5fbef414df057b99737c3f457119adc111d",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 77540,
+     "width": 1080,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-013/little-nightmares-i-and-ii-bundle__square-card-2.png"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000014574/2dde8b73734b6874cc4436f72bced357a855c9a3f33e34ddb5253b15a5d1edb4",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 51080,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-013/little-nightmares-i-and-ii-bundle__detail-cover-3.png"
+    },
+    {
+     "role": "listing",
+     "field": "image",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000014574/2dde8b73734b6874cc4436f72bced357a855c9a3f33e34ddb5253b15a5d1edb4",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 51080,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-013/little-nightmares-i-and-ii-bundle__listing-4.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[0]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000014574/23082cf0316fe9086a321581f237f2eb17ed8b6c942e46d580f7492b3bc9831c",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 41944,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-013/little-nightmares-i-and-ii-bundle__banner-5.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[1]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000014574/26f261a820218f9616be4b75d6681de140de43ad22f55c18ac4ddad93769acf9",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 33872,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-013/little-nightmares-i-and-ii-bundle__banner-6.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[2]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000014574/df8c2453340219ecf45d8027daf232893c76c67892c3eafe34a63a66aae5103e",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 31813,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-013/little-nightmares-i-and-ii-bundle__banner-7.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[3]",
+     "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch/70070000014574/2214107ce0b5481154c9db110be50eacfaa9f8374c8f76a9e7c13520c306b8b5",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 64279,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-013/little-nightmares-i-and-ii-bundle__banner-8.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch/70070000014574/2214107ce0b5481154c9db110be50eacfaa9f8374c8f76a9e7c13520c306b8b5",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 64279,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-013/little-nightmares-i-and-ii-bundle__gallery-9.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[1]",
+     "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch/70070000014574/2dde8b73734b6874cc4436f72bced357a855c9a3f33e34ddb5253b15a5d1edb4",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 51080,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-013/little-nightmares-i-and-ii-bundle__gallery-10.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[2]",
+     "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch/70070000014574/1f09e65079d0a10fc8998938d4ffb5783ed2f44132e73f92131b941c4b4c5f43",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 74830,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-013/little-nightmares-i-and-ii-bundle__gallery-11.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[3]",
+     "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch/70070000014574/23082cf0316fe9086a321581f237f2eb17ed8b6c942e46d580f7492b3bc9831c",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 41944,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-013/little-nightmares-i-and-ii-bundle__gallery-12.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[4]",
+     "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch/70070000014574/26f261a820218f9616be4b75d6681de140de43ad22f55c18ac4ddad93769acf9",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 33872,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-013/little-nightmares-i-and-ii-bundle__gallery-13.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[5]",
+     "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch/70070000014574/df8c2453340219ecf45d8027daf232893c76c67892c3eafe34a63a66aae5103e",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 31813,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-013/little-nightmares-i-and-ii-bundle__gallery-14.png"
+    }
+   ],
+   "record": {
+    "title": "Little Nightmares I & II Bundle",
+    "titleEn": "Little Nightmares I & II Bundle",
+    "titleKu": "Little Nightmares I & II Bundle",
+    "slug": "little-nightmares-i-and-ii-bundle",
+    "description": "Little Nightmares I & II Bundle combines the original Little Nightmares and Little Nightmares II on Nintendo Switch. Both games focus on atmospheric exploration, environmental puzzles, stealth, and escape sequences in unsettling worlds viewed from a cinematic side-on perspective. The bundle is treated as a single Standard product because the seller listing contains only two account variants.",
+    "descriptionEn": "Little Nightmares I & II Bundle combines the original Little Nightmares and Little Nightmares II on Nintendo Switch. Both games focus on atmospheric exploration, environmental puzzles, stealth, and escape sequences in unsettling worlds viewed from a cinematic side-on perspective. The bundle is treated as a single Standard product because the seller listing contains only two account variants.",
+    "descriptionKu": "Little Nightmares I & II Bundle combines the original Little Nightmares and Little Nightmares II on Nintendo Switch. Both games focus on atmospheric exploration, environmental puzzles, stealth, and escape sequences in unsettling worlds viewed from a cinematic side-on perspective. The bundle is treated as a single Standard product because the seller listing contains only two account variants.",
+    "cartridgeImage": "https://assets.nintendo.com/image/upload/ar_1%3A1%2Cc_fill%2Cg_auto/f_auto/q_auto/dpr_1.5/store/software/switch/70070000014574/bbd1bf7be1b6933b83e027931f85a5fbef414df057b99737c3f457119adc111d",
+    "nintendoCardImage": "https://assets.nintendo.com/image/upload/ar_1%3A1%2Cc_fill%2Cg_auto/f_auto/q_auto/dpr_1.5/store/software/switch/70070000014574/bbd1bf7be1b6933b83e027931f85a5fbef414df057b99737c3f457119adc111d",
+    "coverHiResImage": "",
+    "coverImage": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000014574/2dde8b73734b6874cc4436f72bced357a855c9a3f33e34ddb5253b15a5d1edb4",
+    "bannerImages": [
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000014574/23082cf0316fe9086a321581f237f2eb17ed8b6c942e46d580f7492b3bc9831c",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000014574/26f261a820218f9616be4b75d6681de140de43ad22f55c18ac4ddad93769acf9",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000014574/df8c2453340219ecf45d8027daf232893c76c67892c3eafe34a63a66aae5103e",
+     "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch/70070000014574/2214107ce0b5481154c9db110be50eacfaa9f8374c8f76a9e7c13520c306b8b5",
+     "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch/70070000014574/2dde8b73734b6874cc4436f72bced357a855c9a3f33e34ddb5253b15a5d1edb4",
+     "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch/70070000014574/1f09e65079d0a10fc8998938d4ffb5783ed2f44132e73f92131b941c4b4c5f43",
+     "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch/70070000014574/23082cf0316fe9086a321581f237f2eb17ed8b6c942e46d580f7492b3bc9831c",
+     "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch/70070000014574/26f261a820218f9616be4b75d6681de140de43ad22f55c18ac4ddad93769acf9"
+    ],
+    "gallery": [],
+    "youtubeTrailer": "https://www.youtube.com/watch?v=UuM2Sfh22c0",
+    "releaseDate": "2022-06-30",
+    "ageRating": "ESRB: T — Blood, Violence",
+    "metacriticRating": "85",
+    "genres": [
+     "Adventure",
+     "Puzzle",
+     "Horror"
+    ],
+    "platform": "switch1",
+    "size": 9.573,
+    "numberOfPlayers": "1",
+    "supportedLanguages": "English, French, German, Italian, Spanish, Japanese, Korean, Russian, Simplified Chinese, Traditional Chinese",
+    "hardwareModel": "",
+    "colorEdition": "",
+    "storageCapacity": "",
+    "screenSpecs": "",
+    "batteryLife": "",
+    "boxContents": [],
+    "boxContentsText": "",
+    "warrantyCondition": "",
+    "connectivity": "",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "Global",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "",
+    "redemptionSteps": [],
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 8000,
+    "cost": 1250,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": false,
+    "displayOrder": 0,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "Offline Account",
+      "description": "Offline account option",
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_account",
+      "name": "Online Account",
+      "description": "Online account option",
+      "isInfiniteStock": true
+     }
+    ],
+    "types": [
+     {
+      "id": "standard_offline",
+      "name": "Standard Edition",
+      "optionId": "offline_account",
+      "price": "8000",
+      "cost": 1250,
+      "description": "Standard game access — Offline Account.",
+      "isInfiniteStock": true
+     },
+     {
+      "id": "standard_online",
+      "name": "Standard Edition",
+      "optionId": "online_account",
+      "price": "28000",
+      "cost": 16500,
+      "description": "Standard game access — Online Account.",
+      "isInfiniteStock": true
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "active",
+    "kind": "account",
+    "trade_value_iqd": 15000,
+    "store_offer_bonus_iqd": 5000,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "id": "prd_d598766205db4786",
+    "schema_version": 20,
+    "titleAr": "ليتل نايتميرز 1 و2 باقة",
+    "compatibility": [
+     "Nintendo Switch",
+     "Nintendo Switch 2 (backward compatible)"
+    ],
+    "edition": "Standard",
+    "developer": "Tarsier Studios",
+    "publisher": "Bandai Namco Entertainment",
+    "officialUrl": "https://www.nintendo.com/us/store/products/little-nightmares-i-and-ii-bundle-switch/",
+    "eshopUrl": "https://www.nintendo.com/us/store/products/little-nightmares-i-and-ii-bundle-switch/",
+    "gameIsOffline": true,
+    "gameIsOnline": false,
+    "gameLanguageLocked": false,
+    "description_short": "A bundle containing Little Nightmares and Little Nightmares II, two atmospheric puzzle-platform horror adventures.",
+    "description_ar": "تجمع Little Nightmares I & II Bundle لعبتي Little Nightmares وLittle Nightmares II على Nintendo Switch. تركز اللعبتان على الاستكشاف والألغاز البيئية والتخفي والهروب في عوالم مرعبة بأسلوب سينمائي جانبي. يتم التعامل مع الحزمة كمنتج Standard واحد لأن عرض البائع يحتوي على خيارين للحساب فقط.",
+    "box_front_url": "https://assets.nintendo.com/image/upload/ar_1%3A1%2Cc_fill%2Cg_auto/f_auto/q_auto/dpr_1.5/store/software/switch/70070000014574/bbd1bf7be1b6933b83e027931f85a5fbef414df057b99737c3f457119adc111d",
+    "videos": [
+     {
+      "title": "Little Nightmares I & II Bundle — Official Trailer",
+      "url": "https://www.youtube.com/watch?v=UuM2Sfh22c0"
+     }
+    ],
+    "nsuid": "70070000014574",
+    "nintendoEshopUrl": "https://www.nintendo.com/us/store/products/little-nightmares-i-and-ii-bundle-switch/",
+    "nintendoOnlineRequired": false,
+    "nintendoCloudSaves": true,
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": true,
+    "nintendoPlayModes": "TV, Tabletop, Handheld",
+    "nintendoNotes": "Nintendo Switch product; compatible with Nintendo Switch 2 where Nintendo lists backward compatibility. Product account variants and costs are based on the supplied seller screenshots; platform classification follows the seller-card rule requested for this import.\n\nOffline selling price is selected within 5,000–25,000 IQD according to demand, supply, popularity, recency, perceived market value and, where relevant, supplier cost. It is not a fixed cost multiplier. Online pricing is market-based and may be higher.\n\nExtraction rules used for this file: production images are verified game media, not seller/Taobao images. Front Box Cover is retail box-front artwork; Square Card is a separate square asset; Cover Image is page/key art; 3D Texture Source is high-resolution front cover art. Banner and Gallery media are separate verified artwork/screenshots. Device Performance contains one device object only. Offline selling prices are chosen within 5,000–25,000 IQD according to demand, supply, popularity, recency, perceived value and supplier cost; online prices remain market-based and may be higher.",
+    "switch2Enhanced": false,
+    "switch2Exclusive": false,
+    "tagline": "Two unsettling puzzle-platform horror journeys in one bundle.",
+    "playTimeMain": 11,
+    "playTimeFull": 19.5,
+    "editionsList": [
+     {
+      "name": "Standard Edition",
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000014574/bbd1bf7be1b6933b83e027931f85a5fbef414df057b99737c3f457119adc111d",
+      "contents": [
+       {
+        "label": "Base game"
+       },
+       {
+        "label": "Seller account access"
+       },
+       {
+        "label": "Nintendo platform version shown in this import"
+       }
+      ]
+     }
+    ],
+    "gameplayPillars": [
+     {
+      "title": "Atmosphere",
+      "description": "Lighting, scale, sound, and unsettling environments drive the horror experience.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000014574/23082cf0316fe9086a321581f237f2eb17ed8b6c942e46d580f7492b3bc9831c"
+     },
+     {
+      "title": "Environmental Puzzles",
+      "description": "Progress depends on observation, traversal, object interaction, and timing.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000014574/26f261a820218f9616be4b75d6681de140de43ad22f55c18ac4ddad93769acf9"
+     },
+     {
+      "title": "Escape and Stealth",
+      "description": "Many encounters focus on hiding, evasion, and surviving larger threats.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000014574/df8c2453340219ecf45d8027daf232893c76c67892c3eafe34a63a66aae5103e"
+     }
+    ],
+    "worldSummary": "The bundle spans the Maw and the Pale City, surreal places inhabited by distorted adults, mysterious children, and dangerous creatures.",
+    "storyChapters": [
+     {
+      "title": "Six and the Maw",
+      "body": "Little Nightmares follows Six as she tries to escape the Maw, a grotesque vessel inhabited by monstrous adults and other trapped children.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000014574/df8c2453340219ecf45d8027daf232893c76c67892c3eafe34a63a66aae5103e"
+     },
+     {
+      "title": "Mono and the Pale City",
+      "body": "Little Nightmares II follows Mono and Six through the Pale City, where the Signal Tower and Thin Man distort the world around them.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch/70070000014574/2214107ce0b5481154c9db110be50eacfaa9f8374c8f76a9e7c13520c306b8b5"
+     },
+     {
+      "title": "Two Connected Nightmares",
+      "body": "Together the games form a dark fairy-tale universe built around childhood fear, environmental storytelling, and recurring mysteries rather than conventional exposition.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch/70070000014574/2dde8b73734b6874cc4436f72bced357a855c9a3f33e34ddb5253b15a5d1edb4"
+     }
+    ],
+    "galleryImages": [
+     {
+      "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch/70070000014574/2214107ce0b5481154c9db110be50eacfaa9f8374c8f76a9e7c13520c306b8b5",
+      "alt": "Verified official/publisher media for Little Nightmares I & II Bundle — gallery image 1."
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch/70070000014574/2dde8b73734b6874cc4436f72bced357a855c9a3f33e34ddb5253b15a5d1edb4",
+      "alt": "Verified official/publisher media for Little Nightmares I & II Bundle — gallery image 2."
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch/70070000014574/1f09e65079d0a10fc8998938d4ffb5783ed2f44132e73f92131b941c4b4c5f43",
+      "alt": "Verified official/publisher media for Little Nightmares I & II Bundle — gallery image 3."
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch/70070000014574/23082cf0316fe9086a321581f237f2eb17ed8b6c942e46d580f7492b3bc9831c",
+      "alt": "Verified official/publisher media for Little Nightmares I & II Bundle — gallery image 4."
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch/70070000014574/26f261a820218f9616be4b75d6681de140de43ad22f55c18ac4ddad93769acf9",
+      "alt": "Verified official/publisher media for Little Nightmares I & II Bundle — gallery image 5."
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch/70070000014574/df8c2453340219ecf45d8027daf232893c76c67892c3eafe34a63a66aae5103e",
+      "alt": "Verified official/publisher media for Little Nightmares I & II Bundle — gallery image 6."
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000014574/23082cf0316fe9086a321581f237f2eb17ed8b6c942e46d580f7492b3bc9831c",
+      "alt": "Verified official/publisher media for Little Nightmares I & II Bundle — gallery image 7."
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000014574/26f261a820218f9616be4b75d6681de140de43ad22f55c18ac4ddad93769acf9",
+      "alt": "Verified official/publisher media for Little Nightmares I & II Bundle — gallery image 8."
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000014574/df8c2453340219ecf45d8027daf232893c76c67892c3eafe34a63a66aae5103e",
+      "alt": "Verified official/publisher media for Little Nightmares I & II Bundle — gallery image 9."
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cc_fill%2Cg_auto/f_auto/q_auto/dpr_1.5/store/software/switch/70070000014574/bbd1bf7be1b6933b83e027931f85a5fbef414df057b99737c3f457119adc111d",
+      "alt": "Verified official/publisher media for Little Nightmares I & II Bundle — gallery image 10."
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000014574/bbd1bf7be1b6933b83e027931f85a5fbef414df057b99737c3f457119adc111d",
+      "alt": "Verified official/publisher media for Little Nightmares I & II Bundle — gallery image 11."
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_1%3A1%2Cc_fill%2Cg_auto/f_auto/q_auto/dpr_1.5/store/software/switch/70070000014574/bbd1bf7be1b6933b83e027931f85a5fbef414df057b99737c3f457119adc111d",
+      "alt": "Verified official/publisher media for Little Nightmares I & II Bundle — gallery image 12."
+     }
+    ],
+    "perfFps": "30 target",
+    "perfNotes": "The bundle contains two separate games; exact internal resolution differs between the included titles, so no single resolution figure is asserted here.",
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "informationStatus": "backward-compatible-bundle-mixed",
+      "handheld": {
+       "supported": true,
+       "resolution": "Varies by included title; up to 1280×720",
+       "outputResolution": "Up to 1280×720",
+       "fps": "30",
+       "notes": "This bundle contains two separate games with different render profiles. Little Nightmares Complete Edition is officially specified at 720p upscaled/30 fps handheld and 720p native/30 fps TV. Little Nightmares II also targets 30 fps but can render lower in handheld mode. The aggregate fields therefore use a range rather than pretending both titles share one exact internal resolution."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1280×720",
+       "outputResolution": "1280×720",
+       "fps": "30",
+       "notes": "This bundle contains two separate games with different render profiles. Little Nightmares Complete Edition is officially specified at 720p upscaled/30 fps handheld and 720p native/30 fps TV. Little Nightmares II also targets 30 fps but can render lower in handheld mode. The aggregate fields therefore use a range rather than pretending both titles share one exact internal resolution."
+      },
+      "sourceName": "Bandai Namco Switch specifications / Nintendo compatibility",
+      "sourceUrl": "https://en.bandainamcoent.eu/news/more-details-about-little-nightmares-complete-edition-nintendo-switch",
+      "verifiedAt": "2026-08-24",
+      "verificationStatus": "limited",
+      "performanceNotes": "This bundle contains two separate games with different render profiles. Little Nightmares Complete Edition is officially specified at 720p upscaled/30 fps handheld and 720p native/30 fps TV. Little Nightmares II also targets 30 fps but can render lower in handheld mode. The aggregate fields therefore use a range rather than pretending both titles share one exact internal resolution."
+     }
+    ],
+    "downloadSizeGb": 9.573,
+    "requiredSpaceGb": 9.5,
+    "storageNotes": "Official/verified listed game download size: approximately 9.5 GB. Updates and DLC may require additional space.",
+    "languagesAudio": [
+     "No conventional spoken dialogue; atmospheric vocal effects"
+    ],
+    "languagesText": [
+     "English",
+     "Japanese",
+     "Simplified Chinese"
+    ],
+    "arabicSupport": false,
+    "mpLocalPlayers": false,
+    "mpOnlinePlayers": false,
+    "mpCoop": false,
+    "mpCompetitive": false,
+    "mpSplitScreen": false,
+    "mpLocalWireless": false,
+    "guides": [
+     {
+      "title": "Official product and gameplay information",
+      "summary": "Official Nintendo/publisher information covering features, supported modes, requirements and product-specific notices.",
+      "url": "https://www.nintendo.com/us/store/products/little-nightmares-i-and-ii-bundle-switch/"
+     },
+     {
+      "title": "GameFAQs guides and FAQs search",
+      "summary": "Community guide index for walkthroughs, FAQs, collectibles, unlockables and troubleshooting. Verify platform/version when following a guide.",
+      "url": "https://gamefaqs.gamespot.com/search?game=Little+Nightmares+I+%26+II+Bundle"
+     },
+     {
+      "title": "Deku Deals technical/product reference",
+      "summary": "Reference page used for platform, file size, play modes, critic aggregates and completion-time metadata where available.",
+      "url": "https://www.dekudeals.com/items/little-nightmares-i-and-ii-bundle"
+     }
+    ],
+    "completionMain": 11,
+    "completionExtras": 14.5,
+    "completionAll": 19.5,
+    "faq": [
+     {
+      "q": "What platform is this import for?",
+      "a": "This import is classified as Nintendo Switch."
+     },
+     {
+      "q": "How many players are supported?",
+      "a": "Official player support varies by mode; the primary published range is 1 player(s). See multiplayer fields for local, wireless, and online capabilities."
+     },
+     {
+      "q": "Does this seller listing include a separate DLC account type?",
+      "a": "No. The supplied seller listing shows two variants, so only Standard Offline and Standard Online account types are created."
+     }
+    ],
+    "verdictScore": 8.1,
+    "verdictSummary": "Editorial synthesis for Little Nightmares I & II Bundle, based on the verified feature set, platform implementation, content scope and aggregated critical reception. This score is an internal summary, not a copied external review score.",
+    "reviews": [
+     {
+      "source": "Little Nightmares Complete Edition — Metacritic",
+      "score": "79",
+      "quote": "Critic aggregate for the first included game / Complete Edition.",
+      "url": "https://www.dekudeals.com/items/little-nightmares-complete-edition"
+     },
+     {
+      "source": "Little Nightmares II — Metacritic",
+      "score": "82",
+      "quote": "Critic aggregate for the second included game.",
+      "url": "https://www.dekudeals.com/items/little-nightmares-ii"
+     },
+     {
+      "source": "Bundle user rating reference",
+      "score": "4.3/5",
+      "quote": "Deku Deals user-rating reference for the combined bundle.",
+      "url": "https://www.dekudeals.com/items/little-nightmares-i-and-ii-bundle"
+     }
+    ],
+    "timeline": [
+     {
+      "date": "2018-05-18",
+      "title": "Little Nightmares Complete Edition on Switch",
+      "body": "The first game and its expansion content reached Nintendo Switch."
+     },
+     {
+      "date": "2021-02-11",
+      "title": "Little Nightmares II on Switch",
+      "body": "The sequel launched on Nintendo Switch."
+     },
+     {
+      "date": "2022-06-30",
+      "title": "I & II Bundle release",
+      "body": "The combined digital bundle became available."
+     }
+    ],
+    "patchNotes": [
+     {
+      "version": "Bundle release",
+      "date": "2022-06-30",
+      "body": "Bundle combines Little Nightmares Complete Edition and Little Nightmares II."
+     }
+    ],
+    "soundtrack": [
+     {
+      "title": "Little Nightmares I & II Bundle — official product / soundtrack information",
+      "url": "https://www.nintendo.com/us/store/products/little-nightmares-i-and-ii-bundle-switch/"
+     },
+     {
+      "title": "Little Nightmares I & II Bundle — VGMdb soundtrack catalog search",
+      "url": "https://vgmdb.net/search?q=Little+Nightmares+I+%26+II+Bundle&type=album"
+     },
+     {
+      "title": "Little Nightmares I & II Bundle — soundtrack video search",
+      "url": "https://www.youtube.com/results?search_query=Little+Nightmares+I+%26+II+Bundle+official+soundtrack"
+     }
+    ],
+    "seriesName": "Little Nightmares",
+    "studioName": "Tarsier Studios",
+    "studioUrl": "https://tarsier.se/",
+    "studioLocation": "Malmö, Sweden",
+    "studioAbout": "Tarsier Studios developed the original Little Nightmares and Little Nightmares II.",
+    "sources": [
+     {
+      "name": "Nintendo / publisher official product page",
+      "url": "https://www.nintendo.com/us/store/products/little-nightmares-i-and-ii-bundle-switch/"
+     },
+     {
+      "name": "Deku Deals — platform, size, scores and play-time reference",
+      "url": "https://www.dekudeals.com/items/little-nightmares-i-and-ii-bundle"
+     },
+     {
+      "name": "The Cover Project — Full Retail Cover page",
+      "url": "https://www.thecoverproject.net/view.php?game_id=14777"
+     }
+    ],
+    "fitFor": [
+     "Atmospheric horror fans",
+     "Players who enjoy environmental puzzles and stealth",
+     "Players wanting both first two Little Nightmares games"
+    ],
+    "notFitFor": [
+     "Players sensitive to dark horror imagery",
+     "Players seeking multiplayer",
+     "Players who prefer combat-focused action"
+    ],
+    "features": [
+     "Includes Little Nightmares and Little Nightmares II",
+     "Cinematic puzzle-platform exploration",
+     "Stealth, chase sequences, and environmental storytelling"
+    ],
+    "verdictPros": [
+     "Includes two acclaimed atmospheric horror adventures",
+     "Distinct art direction and environmental storytelling",
+     "Includes Little Nightmares Complete Edition content"
+    ],
+    "verdictCons": [
+     "Short individual campaigns",
+     "Trial-and-error chase sequences can frustrate",
+     "This bundle aggregates two games with different technical profiles"
+    ],
+    "seriesEntries": [
+     "Little Nightmares",
+     "Little Nightmares II",
+     "Little Nightmares III"
+    ],
+    "setupNeeds": [
+     "Nintendo Switch or compatible Nintendo Switch 2 system"
+    ],
+    "boxContentsList": "[Circular]",
+    "image": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000014574/2dde8b73734b6874cc4436f72bced357a855c9a3f33e34ddb5253b15a5d1edb4",
+    "banner": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70070000014574/23082cf0316fe9086a321581f237f2eb17ed8b6c942e46d580f7492b3bc9831c",
+    "schemaId": "",
+    "badgeEn": "وفر 40%",
+    "badgeKu": "وفر 40%",
+    "featuresEn": [
+     "Includes Little Nightmares and Little Nightmares II",
+     "Cinematic puzzle-platform exploration",
+     "Stealth, chase sequences, and environmental storytelling"
+    ],
+    "featuresKu": [
+     "Includes Little Nightmares and Little Nightmares II",
+     "Cinematic puzzle-platform exploration",
+     "Stealth, chase sequences, and environmental storytelling"
+    ]
+   }
+  },
+  {
+   "id": "prd_ca9a9392db394624",
+   "slug": "little-nightmares-iii-switch1-switch2",
+   "title": "Little Nightmares III",
+   "platform": "both",
+   "isHidden": false,
+   "hash": "acd44e55c8f986a58a7299aa306b8409a428af00972e8bdf66f7ed49fae2f87c",
+   "images": [
+    {
+     "role": "front-box",
+     "field": "cartridgeImage",
+     "url": "https://banan.to/api/files/products/prd_ca9a9392db394624/cartridgeImage-5f41e361af0596cb.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 20658,
+     "width": 172,
+     "height": 280,
+     "thumb": "review-workdir/thumbs/batch-013/little-nightmares-iii-switch1-switch2__front-box-0.png"
+    },
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://banan.to/api/files/products/prd_ca9a9392db394624/nintendoCardImage-033383c830f18e52.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 26561,
+     "width": 281,
+     "height": 281,
+     "thumb": "review-workdir/thumbs/batch-013/little-nightmares-iii-switch1-switch2__square-card-1.png"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://banan.to/api/files/products/prd_ca9a9392db394624/coverImage-3bd981ce0ab28267.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 116403,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-013/little-nightmares-iii-switch1-switch2__detail-cover-2.png"
+    },
+    {
+     "role": "listing",
+     "field": "image",
+     "url": "https://banan.to/api/files/products/prd_ca9a9392db394624/image-3bd981ce0ab28267.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 116403,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-013/little-nightmares-iii-switch1-switch2__listing-3.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[0]",
+     "url": "https://banan.to/api/files/products/prd_ca9a9392db394624/bannerImages-d068b3866cfb6684.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 25390,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-013/little-nightmares-iii-switch1-switch2__banner-4.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[1]",
+     "url": "https://banan.to/api/files/products/prd_ca9a9392db394624/bannerImages-aa7cb8c475910ec1.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 24581,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-013/little-nightmares-iii-switch1-switch2__banner-5.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000098638/58559f9ee8a60691d308867b6050face5205be59235141c26d82420da9327a17",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 45949,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-013/little-nightmares-iii-switch1-switch2__gallery-6.png"
+    }
+   ],
+   "record": {
+    "id": "prd_ca9a9392db394624",
+    "title": "Little Nightmares III",
+    "titleEn": "Little Nightmares III",
+    "titleKu": "Little Nightmares III",
+    "slug": "little-nightmares-iii-switch1-switch2",
+    "description": "Little Nightmares III follows Low and Alone, two children trapped in the Spiral, a cluster of disturbing locations within the Nowhere. Their goal is to survive its residents, solve environmental puzzles and find a path out.\n\nThe game can be played solo with an AI companion or with a friend through online co-op on the same platform. Low uses a bow and Alone uses a wrench, giving the pair different ways to interact with threats, mechanisms and environmental obstacles. Friend’s Pass allows one owner to invite another player on the same platform into online co-op.",
+    "descriptionEn": "Little Nightmares III follows Low and Alone, two children trapped in the Spiral, a cluster of disturbing locations within the Nowhere. Their goal is to survive its residents, solve environmental puzzles and find a path out.\n\nThe game can be played solo with an AI companion or with a friend through online co-op on the same platform. Low uses a bow and Alone uses a wrench, giving the pair different ways to interact with threats, mechanisms and environmental obstacles. Friend’s Pass allows one owner to invite another player on the same platform into online co-op.",
+    "descriptionKu": "Little Nightmares III follows Low and Alone, two children trapped in the Spiral, a cluster of disturbing locations within the Nowhere. Their goal is to survive its residents, solve environmental puzzles and find a path out.\n\nThe game can be played solo with an AI companion or with a friend through online co-op on the same platform. Low uses a bow and Alone uses a wrench, giving the pair different ways to interact with threats, mechanisms and environmental obstacles. Friend’s Pass allows one owner to invite another player on the same platform into online co-op.",
+    "cartridgeImage": "/api/files/products/prd_ca9a9392db394624/cartridgeImage-5f41e361af0596cb.webp",
+    "nintendoCardImage": "/api/files/products/prd_ca9a9392db394624/nintendoCardImage-033383c830f18e52.webp",
+    "coverHiResImage": "",
+    "coverImage": "/api/files/products/prd_ca9a9392db394624/coverImage-3bd981ce0ab28267.webp",
+    "bannerImages": [
+     "/api/files/products/prd_ca9a9392db394624/bannerImages-d068b3866cfb6684.webp",
+     "/api/files/products/prd_ca9a9392db394624/bannerImages-aa7cb8c475910ec1.webp"
+    ],
+    "gallery": [],
+    "youtubeTrailer": "https://www.youtube.com/watch?v=K9OREMjtjrU",
+    "releaseDate": "2025-10-10",
+    "ageRating": "PEGI 16",
+    "metacriticRating": 69,
+    "genres": [
+     "Horror",
+     "Adventure",
+     "Puzzle"
+    ],
+    "platform": "both",
+    "size": 9.6,
+    "numberOfPlayers": "2",
+    "supportedLanguages": "Japanese, French, German, Italian, Spanish, Korean, Russian, Simplified Chinese, Latin American Spanish, Brazilian Portuguese, Traditional Chinese, American English, Polish, Thai",
+    "hardwareModel": "",
+    "colorEdition": "",
+    "storageCapacity": "",
+    "screenSpecs": "",
+    "batteryLife": "",
+    "boxContents": [],
+    "boxContentsText": "",
+    "warrantyCondition": "",
+    "connectivity": "",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "US",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "",
+    "redemptionSteps": [],
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 9000,
+    "cost": 1500,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": false,
+    "displayOrder": 0,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "Offline Account",
+      "description": "Account delivery option intended for offline-account use.",
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_account",
+      "name": "Online Account",
+      "description": "Account delivery option intended for online-account use where the game supports online features.",
+      "isInfiniteStock": true
+     }
+    ],
+    "types": [
+     {
+      "id": "switch1_standard_offline",
+      "name": "Nintendo Switch - Standard",
+      "optionId": "offline_account",
+      "price": "9000",
+      "cost": 1500,
+      "description": "Nintendo Switch supplier 普通版 mapped to Offline / Standard. Cost ¥7.78 -> 1,500 IQD after fixed conversion and floor rounding.",
+      "isInfiniteStock": true
+     },
+     {
+      "id": "switch1_dlc_offline",
+      "name": "Nintendo Switch - DLC",
+      "optionId": "offline_account",
+      "price": "10000",
+      "cost": 2500,
+      "description": "Nintendo Switch supplier 特典版 mapped to Offline / DLC. Cost ¥11.70 -> 2,500 IQD.",
+      "isInfiniteStock": true
+     },
+     {
+      "id": "switch1_standard_online",
+      "name": "Nintendo Switch - Standard",
+      "optionId": "online_account",
+      "price": 27500,
+      "cost": 16500,
+      "description": "Nintendo Switch supplier 标准版 mapped to Online / Standard. Cost ¥75.40 -> 16,500 IQD.",
+      "isInfiniteStock": true
+     },
+     {
+      "id": "switch1_dlc_online",
+      "name": "Nintendo Switch - DLC",
+      "optionId": "online_account",
+      "price": 38000,
+      "cost": 25000,
+      "description": "Nintendo Switch supplier 豪华版 mapped to Online / DLC. Cost ¥114.60 -> 25,000 IQD.",
+      "isInfiniteStock": true
+     },
+     {
+      "cost": 1250,
+      "description": "Nintendo Switch 2 supplier 普通版 mapped to Offline / Standard. Cost ¥6.80 -> 1,250 IQD.",
+      "id": "switch2_standard_offline",
+      "isInfiniteStock": true,
+      "name": "Nintendo Switch 2 - Standard",
+      "optionId": "offline_account",
+      "price": "10000"
+     },
+     {
+      "cost": 2000,
+      "description": "Nintendo Switch 2 supplier 特典版 mapped to Offline / DLC. Cost ¥9.74 -> 2,000 IQD.",
+      "id": "switch2_dlc_offline",
+      "isInfiniteStock": true,
+      "name": "Nintendo Switch 2 - DLC",
+      "optionId": "offline_account",
+      "price": "11000"
+     },
+     {
+      "cost": 14250,
+      "description": "Nintendo Switch 2 supplier 标准版 mapped to Online / Standard. Cost ¥65.60 -> 14,250 IQD.",
+      "id": "switch2_standard_online",
+      "isInfiniteStock": true,
+      "name": "Nintendo Switch 2 - Standard",
+      "optionId": "online_account",
+      "price": 27500
+     },
+     {
+      "cost": 18500,
+      "description": "Nintendo Switch 2 supplier 豪华版 mapped to Online / DLC. Cost ¥85.20 -> 18,500 IQD.",
+      "id": "switch2_dlc_online",
+      "isInfiniteStock": true,
+      "name": "Nintendo Switch 2 - DLC",
+      "optionId": "online_account",
+      "price": 32500
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "active",
+    "kind": "account",
+    "trade_value_iqd": 0,
+    "store_offer_bonus_iqd": 0,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "schema_version": 21,
+    "compatibility": [
+     "Nintendo Switch",
+     "Nintendo Switch 2"
+    ],
+    "edition": "Standard",
+    "developer": "Supermassive Games",
+    "publisher": "BANDAI NAMCO Entertainment",
+    "metacriticUrl": "https://www.metacritic.com/game/little-nightmares-iii/critic-reviews/?platform=nintendo-switch-2",
+    "opencriticRating": 71,
+    "userScore": 5.7,
+    "officialUrl": "https://www.bandainamcoent.com/games/little-nightmares-3",
+    "eshopUrl": "https://www.bandainamcoent.com/games/little-nightmares-3",
+    "gameIsOffline": true,
+    "gameIsOnline": true,
+    "description_short": "Low and Alone travel through the Spiral in an atmospheric horror puzzle-platformer playable solo with an AI companion or in two-player online co-op.",
+    "description_ar": "مغامرة رعب وألغاز تتابع Low وAlone أثناء محاولتهما الهروب من عالم Spiral، ويمكن لعبها فرديًا مع رفيق يتحكم به الذكاء الاصطناعي أو بتعاون أونلاين بين لاعبين على المنصة نفسها.",
+    "videos": [
+     {
+      "title": "Little Nightmares III — Official Trailer",
+      "url": "https://www.youtube.com/watch?v=K9OREMjtjrU"
+     }
+    ],
+    "nintendoEshopUrl": "https://www.bandainamcoent.com/games/little-nightmares-3",
+    "nintendoOnlineRequired": false,
+    "nintendoCloudSaves": true,
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": true,
+    "nintendoPlayModes": "TV Mode, Tabletop Mode, Handheld Mode",
+    "nintendoNotes": "Nintendo lists separate Nintendo Switch and Nintendo Switch 2 versions, with Simplified Chinese support. The Switch 2 version is approximately 9.6 GB. Cooperative play is online for two players; solo play uses an AI companion. Supplier four-tier listings are mapped to Standard/DLC variants per the store rule. No Full Wrap was verified, so 3D texture fields remain blank.",
+    "switch2Exclusive": false,
+    "tagline": "Escape the Spiral as Low and Alone, combining their bow and wrench to survive grotesque threats, environmental puzzles and online cooperative challenges.",
+    "fitFor": [
+     "Players who enjoy atmospheric horror, environmental storytelling and puzzle-platforming.",
+     "Players who want a Little Nightmares adventure designed around two complementary characters.",
+     "Friends who want online cooperative play on the same platform."
+    ],
+    "notFitFor": [
+     "Players specifically seeking couch co-op; cooperative multiplayer is online rather than local split-screen.",
+     "Players who dislike stealth, chase sequences or deliberately unsettling horror imagery.",
+     "Players looking for a long open-world campaign; the game is a focused, linear horror adventure."
+    ],
+    "playTimeMain": 6,
+    "playTimeFull": 10.5,
+    "gameplayPillars": [
+     {
+      "title": "Two Complementary Survivors",
+      "description": "Low carries a bow for ranged interactions while Alone uses a wrench for mechanisms and close-range environmental actions."
+     },
+     {
+      "title": "Puzzles, Stealth and Chases",
+      "description": "Progress relies on reading the environment, avoiding or outsmarting larger threats and coordinating actions when playing cooperatively."
+     },
+     {
+      "title": "Atmospheric Horror",
+      "description": "Scale, sound, lighting and grotesque residents create tension without turning the game into a traditional combat-heavy horror title."
+     }
+    ],
+    "worldSummary": "The Spiral is a cluster of eerie locations within the Nowhere, connected by the journey of Low and Alone. Each area combines oversized architecture, hostile inhabitants and environmental storytelling that makes the children feel physically vulnerable. The setting continues the Little Nightmares tradition of communicating much of its history through spaces, props and creatures rather than direct exposition.",
+    "storyChapters": [
+     {
+      "title": "Low and Alone in the Spiral",
+      "body": "The two children are trapped in the Spiral and search for a way out while confronting the disturbing places and residents within it."
+     },
+     {
+      "title": "Surviving Together",
+      "body": "Their distinct tools become essential to traversal and puzzles as the route becomes more dangerous, whether Alone is controlled by AI or another player."
+     },
+     {
+      "title": "Toward an Escape",
+      "body": "Later sections deepen the series’ themes of vulnerability and the Nowhere while pushing the pair through more demanding encounters; endgame spoilers are omitted."
+     }
+    ],
+    "galleryImages": [
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000098638/58559f9ee8a60691d308867b6050face5205be59235141c26d82420da9327a17",
+      "alt": "Official Nintendo gameplay screenshot for Little Nightmares III."
+     }
+    ],
+    "features": [
+     "Play as Low and Alone, two children trying to escape the Spiral within the wider Nowhere setting.",
+     "Low’s bow and Alone’s wrench provide complementary tools for environmental interaction, puzzles and survival.",
+     "The full campaign can be played solo with an AI companion or in online co-op with another player.",
+     "Stealth, platforming, environmental puzzles and chase sequences remain central to the Little Nightmares formula.",
+     "A Friend’s Pass allows supported co-op access without requiring the second player to own the full game.",
+     "The Backstage, released in June 2026, is an additional story chapter included in the Secrets of the Spiral Season Pass."
+    ],
+    "perfResolutionDocked": "~1189p render, upscaled to ~2016p output on Switch 2",
+    "perfResolutionHandheld": "1080p dynamic on Switch 2",
+    "perfFps": "30 FPS target on Nintendo Switch 2",
+    "perfNotes": "A Nintendo Life launch review of the Switch 2 version describes it as targeting 30 FPS with soft/grainy visuals, micro-stutters and frame drops during heavier action. Exact verified rendering resolutions were not published in the sources used, so those fields are left blank.",
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "informationStatus": "verified",
+      "handheld": {
+       "supported": true,
+       "resolution": "1080p dynamic",
+       "resolutionDynamic": true,
+       "renderingResolution": "dynamic, up to 1080p",
+       "outputResolution": "1080p",
+       "fps": "30",
+       "fpsMin": "below 30 in stress scenes",
+       "fpsMax": "30",
+       "mode": "Launch build",
+       "notes": "Launch review reports a 30 FPS target with soft presentation and micro-stutters; exact handheld rendering resolution was not verified."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "~1189p render / ~2016p upscaled output",
+       "resolutionDynamic": true,
+       "renderingResolution": "~1189p common",
+       "outputResolution": "~2016p upscaled",
+       "fps": "30",
+       "fpsMin": "below 30 in stress scenes",
+       "fpsMax": "30",
+       "mode": "Launch build",
+       "notes": "Launch review reports a 30 FPS target and visible frame drops in demanding sequences; exact TV rendering resolution was not verified."
+      },
+      "sourceName": "ElAnalistaDeBits technical comparison + Nintendo Life review",
+      "sourceUrl": "https://www.youtube.com/watch?v=g_VtzT81mAc",
+      "verifiedAt": "2026-08-25",
+      "verificationStatus": "verified",
+      "performanceNotes": "Switch 2 uses one 30 FPS profile. Technical demo analysis reports ~1189p common rendering upscaled to ~2016p docked and up to 1080p dynamic handheld; final reviews report micro-stutter/frame drops at launch."
+     }
+    ],
+    "downloadSizeGb": 9.6,
+    "arabicSupport": false,
+    "mpLocalPlayers": false,
+    "mpOnlinePlayers": true,
+    "mpCoop": true,
+    "mpCompetitive": false,
+    "mpSplitScreen": false,
+    "mpLocalWireless": false,
+    "dlc": [
+     {
+      "name": "Secrets of The Spiral - Expansion Pass",
+      "description": "Official expansion pass for additional Little Nightmares III content."
+     },
+     {
+      "name": "The Backstage",
+      "description": "First additional story chapter released in 2026."
+     },
+     {
+      "name": "Second Additional Chapter",
+      "description": "Second additional chapter announced for release in 2026."
+     }
+    ],
+    "guides": [
+     {
+      "title": "Nintendo — Little Nightmares III Switch 2",
+      "summary": "Official Nintendo Switch 2 product information.",
+      "url": "https://www.nintendo.com/us/store/products/little-nightmares-iii-switch-2/"
+     },
+     {
+      "title": "Bandai Namco — Little Nightmares III",
+      "summary": "Official publisher game page with story, characters and DLC information.",
+      "url": "https://www.bandainamcoent.com/games/little-nightmares-3"
+     },
+     {
+      "title": "Nintendo Life — Switch 2 Review",
+      "summary": "Platform-specific review used as a performance cross-check.",
+      "url": "https://www.nintendolife.com/reviews/nintendo-switch-2/little-nightmares-iii"
+     }
+    ],
+    "completionMain": 6,
+    "completionExtras": 6,
+    "completionAll": 10.5,
+    "faq": [
+     {
+      "q": "Does Little Nightmares III support co-op?",
+      "a": "Yes. It supports two-player online co-op on the same platform, while solo players are accompanied by an AI-controlled partner."
+     },
+     {
+      "q": "Is there couch co-op?",
+      "a": "No. The cooperative mode is online; there is no local split-screen campaign."
+     },
+     {
+      "q": "Does the game have paid additional content?",
+      "a": "Yes. Official additional content includes the Secrets of The Spiral Expansion Pass and additional story chapters/costume content."
+     }
+    ],
+    "verdictScore": 6.9,
+    "verdictSummary": "Score note: 6.9/10 is a direct normalization of the current 69/100 Metacritic aggregate for the Nintendo listing; it is not a separately invented store rating.\n\nLittle Nightmares III keeps the series’ disturbing environmental style while making two-character cooperation central to puzzles and traversal. Its strongest new idea is online co-op, while the lack of couch co-op and modest Switch 2 launch performance are important limitations.",
+    "verdictPros": [
+     "Strong atmosphere and environmental art direction.",
+     "Complementary character tools create useful cooperative interactions.",
+     "Online co-op adds a genuinely new way to experience the series."
+    ],
+    "verdictCons": [
+     "No couch co-op despite the two-character design.",
+     "Switch 2 launch performance targets 30 FPS and can show dips/stutter.",
+     "Focused campaign length may feel short to players seeking a large adventure."
+    ],
+    "reviews": [
+     {
+      "source": "Metacritic — Nintendo listing",
+      "score": "69/100",
+      "quote": "Current critic aggregate for the relevant Nintendo listing: 69/100. This is an external aggregate, not a BANANTO-created review score.",
+      "url": "https://www.dekudeals.com/items/little-nightmares-iii"
+     },
+     {
+      "url": "https://www.dekudeals.com/items/little-nightmares-iii",
+      "source": "OpenCritic",
+      "score": "71/100",
+      "quote": "OpenCritic aggregate recorded at 71/100. Where OpenCritic groups platforms, this value represents the published aggregate rather than a fabricated platform-specific score."
+     },
+     {
+      "source": "Metacritic User Score",
+      "score": "5.7/10",
+      "quote": "Current Metacritic user score shown with the listing: 5.7/10. User scores can change over time as additional ratings are submitted.",
+      "url": "https://www.dekudeals.com/items/little-nightmares-iii"
+     }
+    ],
+    "timeline": [
+     null,
+     {
+      "date": "2026",
+      "title": "The Backstage Additional Chapter",
+      "body": "The first additional story chapter from the expansion content became available during 2026."
+     },
+     {
+      "date": "2026",
+      "title": "Second Additional Chapter",
+      "body": "A second additional story chapter was announced for the expansion schedule."
+     }
+    ],
+    "setupNeeds": [
+     "Nintendo Switch or Nintendo Switch 2, depending on the purchased platform version.",
+     "Approximately 9.0 GB on Nintendo Switch or 9.6 GB on Nintendo Switch 2 for the base digital game.",
+     "Internet access and Nintendo Switch Online are required for online co-op."
+    ],
+    "sources": [
+     {
+      "name": "Nintendo — Little Nightmares III Switch 2",
+      "url": "https://www.nintendo.com/us/store/products/little-nightmares-iii-switch-2/"
+     },
+     {
+      "name": "Bandai Namco — Little Nightmares III",
+      "url": "https://www.bandainamcoent.com/games/little-nightmares-3"
+     },
+     {
+      "name": "LaunchBox Games Database — media reference",
+      "url": "https://gamesdb.launchbox-app.com/"
+     },
+     {
+      "name": "Deku Deals — Nintendo version scores and completion data",
+      "url": "https://www.dekudeals.com/items/little-nightmares-iii"
+     },
+     {
+      "name": "Deku Deals — The Backstage DLC listing",
+      "url": "https://www.dekudeals.com/items/little-nightmares-iii-first-additional-chapter"
+     },
+     {
+      "name": "Apple Music — Orrery from the original game soundtrack",
+      "url": "https://music.apple.com/gb/song/1842906092"
+     }
+    ],
+    "soundtrack": [
+     {
+      "title": "Orrery",
+      "url": "https://music.apple.com/gb/song/1842906092"
+     },
+     {
+      "title": "Porcelain in the Rubble"
+     },
+     {
+      "title": "Original game soundtrack — Hugo Long, Alistair Kerley & Frankie Harper"
+     }
+    ],
+    "seriesName": "Little Nightmares",
+    "seriesEntries": [
+     "Little Nightmares",
+     "Little Nightmares II",
+     "Little Nightmares III"
+    ],
+    "studioName": "Supermassive Games",
+    "studioUrl": "https://www.supermassivegames.com/",
+    "studioLocation": "Guildford, United Kingdom",
+    "studioAbout": "Supermassive Games developed Little Nightmares III for Bandai Namco, extending the series’ puzzle-platforming horror formula with Low and Alone and a full online cooperative option.",
+    "boxContentsList": "[Circular]",
+    "image": "/api/files/products/prd_ca9a9392db394624/image-3bd981ce0ab28267.webp",
+    "banner": "/api/files/products/prd_ca9a9392db394624/banner-d068b3866cfb6684.webp",
+    "schemaId": "",
+    "badgeEn": "وفر 40%",
+    "badgeKu": "وفر 40%",
+    "featuresEn": [
+     "Play as Low and Alone, two children trying to escape the Spiral within the wider Nowhere setting.",
+     "Low’s bow and Alone’s wrench provide complementary tools for environmental interaction, puzzles and survival.",
+     "The full campaign can be played solo with an AI companion or in online co-op with another player.",
+     "Stealth, platforming, environmental puzzles and chase sequences remain central to the Little Nightmares formula.",
+     "A Friend’s Pass allows supported co-op access without requiring the second player to own the full game.",
+     "The Backstage, released in June 2026, is an additional story chapter included in the Secrets of the Spiral Season Pass."
+    ],
+    "featuresKu": [
+     "Play as Low and Alone, two children trying to escape the Spiral within the wider Nowhere setting.",
+     "Low’s bow and Alone’s wrench provide complementary tools for environmental interaction, puzzles and survival.",
+     "The full campaign can be played solo with an AI companion or in online co-op with another player.",
+     "Stealth, platforming, environmental puzzles and chase sequences remain central to the Little Nightmares formula.",
+     "A Friend’s Pass allows supported co-op access without requiring the second player to own the full game.",
+     "The Backstage, released in June 2026, is an additional story chapter included in the Secrets of the Spiral Season Pass."
+    ],
+    "sales": 0,
+    "images": [],
+    "modes": []
+   }
+  },
+  {
+   "id": "prd_481cc6fd338e4617",
+   "slug": "luigis-mansion-3",
+   "title": "Luigi’s Mansion 3",
+   "platform": "switch1",
+   "isHidden": true,
+   "hash": "338ec82092a35eaa41e8b2de07a8ecb7a2dfd7fcef0b53779bce77a4b47f82af",
+   "images": [
+    {
+     "role": "front-box",
+     "field": "cartridgeImage",
+     "url": "https://banan.to/api/files/products/prd_481cc6fd338e4617/front-box-53201414a6d2d84f.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 400486,
+     "width": 1167,
+     "height": 1888,
+     "thumb": "review-workdir/thumbs/batch-013/luigis-mansion-3__front-box-0.png"
+    },
+    {
+     "role": "front-box",
+     "field": "box_front_url",
+     "url": "https://assets.nintendo.com/image/upload/ar_3:4,c_fit,g_auto,w_1000/f_auto/q_auto/dpr_1.5/store/software/switch/70010000001620/2b166fb3197dacfde1d939acd6a976b9fbe3b1a32c54f9f0d2c8d23efb22412d",
+     "status": 400,
+     "contentType": "image/gif"
+    },
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://assets.nintendo.com/image/upload/ar_1:1,c_fill,g_auto,w_1000/f_auto/q_auto/dpr_1.5/store/software/switch/70010000001620/2b166fb3197dacfde1d939acd6a976b9fbe3b1a32c54f9f0d2c8d23efb22412d",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 195425,
+     "width": 1500,
+     "height": 1500,
+     "thumb": "review-workdir/thumbs/batch-013/luigis-mansion-3__square-card-2.png"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://assets.nintendo.com/image/upload/ar_16:9,c_fill,g_auto,w_1600/f_auto/q_auto/dpr_1.5/store/software/switch/70010000001620/4d5437c859c0b77d140eb8e4dadc9a2e9db37fdaf2f26779c38828c2da6e60cf",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 227699,
+     "width": 2400,
+     "height": 1350,
+     "thumb": "review-workdir/thumbs/batch-013/luigis-mansion-3__detail-cover-3.png"
+    },
+    {
+     "role": "3d-texture",
+     "field": "coverHiResImage",
+     "url": "https://banan.to/api/files/products/prd_481cc6fd338e4617/3d-wrap-6e5d49d74374a255.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 1283934,
+     "width": 2454,
+     "height": 1888,
+     "thumb": "review-workdir/thumbs/batch-013/luigis-mansion-3__3d-texture-4.png"
+    },
+    {
+     "role": "listing",
+     "field": "image",
+     "url": "https://assets.nintendo.com/image/upload/ar_16:9,c_fill,g_auto,w_1600/f_auto/q_auto/dpr_1.5/store/software/switch/70010000001620/4d5437c859c0b77d140eb8e4dadc9a2e9db37fdaf2f26779c38828c2da6e60cf",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 227699,
+     "width": 2400,
+     "height": 1350,
+     "thumb": "review-workdir/thumbs/batch-013/luigis-mansion-3__listing-5.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[0]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000001620/699b744e3e94cf49d336f5e7d96be966f8f4eb329a5a8277bf940e6271046ea3",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 124156,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-013/luigis-mansion-3__banner-6.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[1]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000001620/95314d2808b22d90b87a55d369d950d5043ab64bcf666dbca72968551fa91009",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 97105,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-013/luigis-mansion-3__banner-7.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[2]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000001620/ae1b341e5d079e5af490ce5fc007679a21f69db66d85c602bb49db54ce96eb21",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 137238,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-013/luigis-mansion-3__banner-8.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[3]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000001620/4ed43984dd7de804af55d407df1d96e9c91cfa318d861956d34339ab35dcf214",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 79330,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-013/luigis-mansion-3__banner-9.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000001620/699b744e3e94cf49d336f5e7d96be966f8f4eb329a5a8277bf940e6271046ea3",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 124156,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-013/luigis-mansion-3__gallery-10.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[1]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000001620/95314d2808b22d90b87a55d369d950d5043ab64bcf666dbca72968551fa91009",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 97105,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-013/luigis-mansion-3__gallery-11.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[2]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000001620/ae1b341e5d079e5af490ce5fc007679a21f69db66d85c602bb49db54ce96eb21",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 137238,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-013/luigis-mansion-3__gallery-12.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[3]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000001620/4ed43984dd7de804af55d407df1d96e9c91cfa318d861956d34339ab35dcf214",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 79330,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-013/luigis-mansion-3__gallery-13.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[4]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000001620/2b99781bb3be15319c34d59a45fea821ec71c96cbcc41a3aac882765e482a8ad",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 80346,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-013/luigis-mansion-3__gallery-14.png"
+    }
+   ],
+   "record": {
+    "title": "Luigi’s Mansion 3",
+    "titleEn": "Luigi’s Mansion 3",
+    "titleKu": "Luigi’s Mansion 3",
+    "slug": "luigis-mansion-3",
+    "description": "Luigi’s invited to the towering Last Resort hotel, but when Mario and friends go missing, our green-clad hero will have to conquer his fears to save them! Slam, blow away, and vacuum up ghosts with the all-new Poltergust G-00, and join forces with Gooigi to overcome the puzzling contraptions and mischievous boss on each themed floor. And that’s just the Last Resort. Enter the ScareScraper for 8-player local wireless* or online** co-op gameplay.\n\nSee if you can defeat all the ghosts, rescue all the toads, or clear other objectives before time runs out…in the ScareScraper! And for more mini-game madness, compete on teams at the ScreamPark! Whether you play with friends or wander the hotel alone, you’ll be sucked in by the atmospheric music and ghoulish décor of every cobwebby corner you explore. Why not take in the cinematic sights and sounds with a friend? In the main adventure, you and a friend can play together as Luigi and Gooigi in two-player co-op! Gooigi can walk on spikes, slip through tight spaces, and help Luigi overcome obstacles he can’t tackle alone. Never hurts to have a friend in this hotel; it may not be very spooky, but Luigi begs to differ!\n\n•\tCatch ghosts and solve puzzles to rescue Mario and friends in the Last Resort hotel\n•\tEach floor of this towering hotel is themed, from the décor to the puzzles to boss!\n•\tUtilize the functions of the all-new Poltergust G-00: Pummel ghosts with a Slam, break through defenses with the Suction Shot, and blow back groups with a Burst\n•\tLuigi can call upon and control Gooigi, his all-green doppelganger, who can do what Luigi can’t\n•\tGooigi can slip through tight spaces, walk on spikes, and help Luigi overcome obstacles\n•\tChange between Luigi and Gooigi in single player, or let a friend play as Gooigi for 2-player co-op\n•\tUp to 8 players can work together to ascend the ScareScraper via local wireless or online\n•\tIt’s Team Luigi vs. Team Gooigi in a mini-game battle to see which is the ultimate team of ghost hunters",
+    "descriptionEn": "Luigi’s invited to the towering Last Resort hotel, but when Mario and friends go missing, our green-clad hero will have to conquer his fears to save them! Slam, blow away, and vacuum up ghosts with the all-new Poltergust G-00, and join forces with Gooigi to overcome the puzzling contraptions and mischievous boss on each themed floor. And that’s just the Last Resort. Enter the ScareScraper for 8-player local wireless* or online** co-op gameplay.\n\nSee if you can defeat all the ghosts, rescue all the toads, or clear other objectives before time runs out…in the ScareScraper! And for more mini-game madness, compete on teams at the ScreamPark! Whether you play with friends or wander the hotel alone, you’ll be sucked in by the atmospheric music and ghoulish décor of every cobwebby corner you explore. Why not take in the cinematic sights and sounds with a friend? In the main adventure, you and a friend can play together as Luigi and Gooigi in two-player co-op! Gooigi can walk on spikes, slip through tight spaces, and help Luigi overcome obstacles he can’t tackle alone. Never hurts to have a friend in this hotel; it may not be very spooky, but Luigi begs to differ!\n\n•\tCatch ghosts and solve puzzles to rescue Mario and friends in the Last Resort hotel\n•\tEach floor of this towering hotel is themed, from the décor to the puzzles to boss!\n•\tUtilize the functions of the all-new Poltergust G-00: Pummel ghosts with a Slam, break through defenses with the Suction Shot, and blow back groups with a Burst\n•\tLuigi can call upon and control Gooigi, his all-green doppelganger, who can do what Luigi can’t\n•\tGooigi can slip through tight spaces, walk on spikes, and help Luigi overcome obstacles\n•\tChange between Luigi and Gooigi in single player, or let a friend play as Gooigi for 2-player co-op\n•\tUp to 8 players can work together to ascend the ScareScraper via local wireless or online\n•\tIt’s Team Luigi vs. Team Gooigi in a mini-game battle to see which is the ultimate team of ghost hunters",
+    "descriptionKu": "Luigi explores a haunted hotel with the Poltergust G-00, Gooigi, puzzle rooms, boss encounters, co-op, and multiplayer modes. Luigi and friends arrive at a luxurious hotel that quickly reveals a supernatural trap. The adventure builds toward rescuing Mario, Peach, and the Toads from King Boo’s plan.",
+    "cartridgeImage": "/api/files/products/prd_481cc6fd338e4617/front-box-53201414a6d2d84f.webp",
+    "nintendoCardImage": "https://assets.nintendo.com/image/upload/ar_1:1,c_fill,g_auto,w_1000/f_auto/q_auto/dpr_1.5/store/software/switch/70010000001620/2b166fb3197dacfde1d939acd6a976b9fbe3b1a32c54f9f0d2c8d23efb22412d",
+    "coverHiResImage": "/api/files/products/prd_481cc6fd338e4617/3d-wrap-6e5d49d74374a255.webp",
+    "coverImage": "https://assets.nintendo.com/image/upload/ar_16:9,c_fill,g_auto,w_1600/f_auto/q_auto/dpr_1.5/store/software/switch/70010000001620/4d5437c859c0b77d140eb8e4dadc9a2e9db37fdaf2f26779c38828c2da6e60cf",
+    "bannerImages": [
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000001620/699b744e3e94cf49d336f5e7d96be966f8f4eb329a5a8277bf940e6271046ea3",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000001620/95314d2808b22d90b87a55d369d950d5043ab64bcf666dbca72968551fa91009",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000001620/ae1b341e5d079e5af490ce5fc007679a21f69db66d85c602bb49db54ce96eb21",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000001620/4ed43984dd7de804af55d407df1d96e9c91cfa318d861956d34339ab35dcf214",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000001620/2b99781bb3be15319c34d59a45fea821ec71c96cbcc41a3aac882765e482a8ad"
+    ],
+    "youtubeTrailer": "",
+    "releaseDate": "2019-10-31",
+    "ageRating": "Everyone",
+    "metacriticRating": 86,
+    "genres": [
+     "Action",
+     "Adventure"
+    ],
+    "platform": "switch1",
+    "size": "7.38 GB",
+    "numberOfPlayers": "1-8",
+    "supportedLanguages": "Japanese, British English, French, German, Italian, Spanish, Korean, Dutch, Simplified Chinese, Latin American Spanish, Canadian French, Traditional Chinese, American English",
+    "price": 11500,
+    "cost": 1500,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": true,
+    "displayOrder": 0,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "مشترك",
+      "description": "حساب مشترك",
+      "stock": 9999,
+      "isInfiniteStock": true,
+      "customerDescription": "حساب مشترك"
+     },
+     {
+      "id": "online_account",
+      "name": "خاص بك",
+      "description": "حساب خاص بك",
+      "stock": 9999,
+      "isInfiniteStock": true,
+      "customerDescription": "حساب خاص بك"
+     }
+    ],
+    "types": [
+     {
+      "id": "regular_offline",
+      "name": "مشترك — اللعبة الأساسية",
+      "optionId": "offline_account",
+      "price": 11500,
+      "cost": 1500,
+      "description": "اللعبة الأساسية",
+      "stock": 9999,
+      "isInfiniteStock": true,
+      "customerDescription": "اللعبة الأساسية"
+     },
+     {
+      "id": "standard_online",
+      "name": "خاص بك — اللعبة الأساسية",
+      "optionId": "online_account",
+      "price": 25000,
+      "cost": 1500,
+      "description": "اللعبة الأساسية",
+      "stock": 9999,
+      "isInfiniteStock": true,
+      "customerDescription": "اللعبة الأساسية"
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "Active",
+    "kind": "account",
+    "trade_value_iqd": 13750,
+    "store_offer_bonus_iqd": 2500,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "id": "prd_481cc6fd338e4617",
+    "schema_version": 24,
+    "titleAr": "لويجيز مانشن 3",
+    "compatibility": [
+     "Nintendo Switch",
+     "Nintendo Switch 2: supported with behavior consistent with Nintendo Switch"
+    ],
+    "edition": "Standard / Store Variants",
+    "developer": "Next Level Games",
+    "publisher": "Nintendo",
+    "seriesName": "Luigi’s Mansion",
+    "metacriticUrl": "https://www.metacritic.com/game/luigis-mansion-3/",
+    "opencriticRating": 86,
+    "userScore": 8.6,
+    "price_usd": 59.99,
+    "officialUrl": "https://www.nintendo.com/us/store/products/luigis-mansion-3-switch/",
+    "eshopUrl": "https://www.nintendo.com/us/store/products/luigis-mansion-3-switch/",
+    "gameIsOffline": true,
+    "gameIsOnline": true,
+    "gameLanguageLocked": false,
+    "description_short": "Explore the haunted Last Resort hotel, solve themed-floor puzzles, capture ghosts with the Poltergust G-00, and team up with Gooigi.",
+    "description_ar": "يستكشف لويجي فندق Last Resort المسكون لإنقاذ ماريو ورفاقه. استخدم Poltergust G-00 للإمساك بالأشباح، واستعن بـGooigi لحل الألغاز والوصول إلى الأماكن الضيقة، والعب القصة بتعاون محلي لشخصين أو أوضاع ScareScraper وScreamPark حتى ثمانية لاعبين.",
+    "box_front_url": "https://assets.nintendo.com/image/upload/ar_3:4,c_fit,g_auto,w_1000/f_auto/q_auto/dpr_1.5/store/software/switch/70010000001620/2b166fb3197dacfde1d939acd6a976b9fbe3b1a32c54f9f0d2c8d23efb22412d",
+    "languagesText": [
+     "Japanese",
+     "British English",
+     "French",
+     "German",
+     "Italian",
+     "Spanish",
+     "Korean",
+     "Dutch",
+     "Simplified Chinese",
+     "Latin American Spanish",
+     "Canadian French",
+     "Traditional Chinese",
+     "American English"
+    ],
+    "languagesAudio": [
+     "Audio language availability varies by title and region; see official product information"
+    ],
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": true,
+    "nintendoPlayModes": [
+     "TV mode",
+     "Tabletop mode",
+     "Handheld mode"
+    ],
+    "nintendoOnlineRequired": true,
+    "nintendoCloudSaves": true,
+    "nintendoGameKeyCard": false,
+    "nintendoPhysicalNeedsDownload": false,
+    "switch2Enhanced": false,
+    "switch2Exclusive": false,
+    "nintendoNotes": "Nintendo product identity and store facts were verified against the official listing on 2026-09-02. Performance values are included only where an official source publishes them.",
+    "editionsList": [
+     {
+      "name": "Regular / Offline",
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_3:4,c_fit,g_auto,w_1000/f_auto/q_auto/dpr_1.5/store/software/switch/70010000001620/2b166fb3197dacfde1d939acd6a976b9fbe3b1a32c54f9f0d2c8d23efb22412d",
+      "contents": [
+       {
+        "label": "Regular / Offline store package"
+       },
+       {
+        "label": "Offline account access"
+       },
+       {
+        "label": "Infinite stock by default"
+       }
+      ]
+     },
+     {
+      "name": "Standard / Online",
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_1:1,c_fill,g_auto,w_1000/f_auto/q_auto/dpr_1.5/store/software/switch/70010000001620/2b166fb3197dacfde1d939acd6a976b9fbe3b1a32c54f9f0d2c8d23efb22412d",
+      "contents": [
+       {
+        "label": "Standard / Online store package"
+       },
+       {
+        "label": "Online account access"
+       },
+       {
+        "label": "Infinite stock by default"
+       }
+      ]
+     }
+    ],
+    "gameplayPillars": [
+     {
+      "title": "Poltergust ghost hunting",
+      "description": "Capture ghosts by stunning, slamming, and vacuuming them with the upgraded Poltergust G-00.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000001620/699b744e3e94cf49d336f5e7d96be966f8f4eb329a5a8277bf940e6271046ea3"
+     },
+     {
+      "title": "Gooigi puzzle solving",
+      "description": "Summon Gooigi to pass through grates, avoid hazards Luigi cannot, and enable co-op play.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000001620/95314d2808b22d90b87a55d369d950d5043ab64bcf666dbca72968551fa91009"
+     },
+     {
+      "title": "Hotel floor exploration",
+      "description": "Each floor has a distinct theme, secrets, collectibles, and environmental puzzles.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000001620/ae1b341e5d079e5af490ce5fc007679a21f69db66d85c602bb49db54ce96eb21"
+     },
+     {
+      "title": "Boss encounters",
+      "description": "Named ghosts use unique gimmicks that turn major fights into multi-step puzzles.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000001620/4ed43984dd7de804af55d407df1d96e9c91cfa318d861956d34339ab35dcf214"
+     },
+     {
+      "title": "ScareScraper and ScreamPark",
+      "description": "Separate multiplayer modes support cooperative or competitive sessions beyond the story.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000001620/2b99781bb3be15319c34d59a45fea821ec71c96cbcc41a3aac882765e482a8ad"
+     }
+    ],
+    "worldSummary": "Luigi explores a haunted hotel with the Poltergust G-00, Gooigi, puzzle rooms, boss encounters, co-op, and multiplayer modes. Luigi and friends arrive at a luxurious hotel that quickly reveals a supernatural trap. The adventure builds toward rescuing Mario, Peach, and the Toads from King Boo’s plan.",
+    "storyChapters": [
+     {
+      "title": "Check into the Last Resort",
+      "body": "Luigi and friends arrive at a luxurious hotel that quickly reveals a supernatural trap.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000001620/95314d2808b22d90b87a55d369d950d5043ab64bcf666dbca72968551fa91009"
+     },
+     {
+      "title": "Rescue E. Gadd",
+      "body": "Luigi regains the Poltergust and partners with Professor E. Gadd to investigate the hotel.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000001620/ae1b341e5d079e5af490ce5fc007679a21f69db66d85c602bb49db54ce96eb21"
+     },
+     {
+      "title": "Climb themed floors",
+      "body": "Each hotel floor introduces a new visual theme, boss ghost, and puzzle style.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000001620/4ed43984dd7de804af55d407df1d96e9c91cfa318d861956d34339ab35dcf214"
+     },
+     {
+      "title": "Use Gooigi to progress",
+      "body": "Gooigi becomes essential for split-body puzzles and local co-op exploration.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000001620/2b99781bb3be15319c34d59a45fea821ec71c96cbcc41a3aac882765e482a8ad"
+     },
+     {
+      "title": "Confront King Boo",
+      "body": "The adventure builds toward rescuing Mario, Peach, and the Toads from King Boo’s plan.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000001620/699b744e3e94cf49d336f5e7d96be966f8f4eb329a5a8277bf940e6271046ea3"
+     }
+    ],
+    "features": [
+     "Story campaign with themed hotel floors",
+     "Local co-op through Gooigi",
+     "Online/local multiplayer modes",
+     "Strong environmental puzzle design",
+     "High-quality animation and character presentation"
+    ],
+    "perfResolutionDocked": "Not published by Nintendo",
+    "perfResolutionHandheld": "Not published by Nintendo",
+    "perfFps": "Not published by Nintendo",
+    "perfHdr": false,
+    "playTimeMain": 13,
+    "completionMain": 18,
+    "completionExtras": 25,
+    "faq": [
+     {
+      "q": "Is Luigi’s Mansion 3 multiplayer?",
+      "a": "Yes. The story supports Gooigi co-op, while ScareScraper and ScreamPark support larger multiplayer groups."
+     },
+     {
+      "q": "Who developed the game?",
+      "a": "Next Level Games developed Luigi’s Mansion 3 and Nintendo published it."
+     },
+     {
+      "q": "Does it support Nintendo Switch 2?",
+      "a": "It is a Nintendo Switch game and can be played on Switch 2 through backward compatibility."
+     },
+     {
+      "q": "Is it a horror game?",
+      "a": "It uses a haunted-hotel theme but is designed as a family-friendly action-puzzle adventure."
+     },
+     {
+      "q": "Does it have DLC?",
+      "a": "A Multiplayer Pack adds costumes, themed floors, and multiplayer content."
+     }
+    ],
+    "verdictScore": 8.5,
+    "verdictPros": [
+     "Excellent animation",
+     "Creative themed floors",
+     "Fun Gooigi co-op",
+     "Strong puzzle variety",
+     "Memorable bosses"
+    ],
+    "verdictCons": [
+     "Single-player pacing can slow during collectible hunts",
+     "Combat is intentionally simple",
+     "Some multiplayer content is separate from story progression",
+     "Backtracking appears late in the campaign",
+     "No native Switch 2 edition"
+    ],
+    "reviews": [
+     {
+      "source": "Metacritic",
+      "score": "86",
+      "url": "https://www.metacritic.com/game/luigis-mansion-3/"
+     },
+     {
+      "source": "OpenCritic",
+      "score": "86",
+      "url": "https://opencritic.com/"
+     }
+    ],
+    "timeline": [
+     {
+      "date": "2019-10-31",
+      "title": "Released on target Nintendo platform"
+     }
+    ],
+    "patchNotes": [
+     {
+      "version": "Current retail build",
+      "date": "2026-08-27"
+     }
+    ],
+    "studioName": "Next Level Games",
+    "studioUrl": "https://www.nintendo.com/us/store/products/luigis-mansion-3-switch/",
+    "studioLocation": "See publisher/developer profile",
+    "sources": [
+     {
+      "name": "Nintendo eShop (US)",
+      "url": "https://www.nintendo.com/us/store/products/luigis-mansion-3-switch/"
+     }
+    ],
+    "downloadSizeGb": 7.38,
+    "requiredSpaceGb": 7.38,
+    "microSdRecommended": false,
+    "storageNotes": "Nintendo lists a 7.38 GB download. Free-space requirements can increase with updates.",
+    "mpLocalPlayers": 8,
+    "mpOnlinePlayers": 8,
+    "mpCoop": true,
+    "mpCompetitive": true,
+    "mpLocalWireless": true,
+    "mpSplitScreen": true,
+    "dlc": [
+     {
+      "name": "Luigi’s Mansion™ 3 Multiplayer Pack 1",
+      "description": ""
+     },
+     {
+      "name": "Luigi’s Mansion™ 3 Multiplayer Pack 2",
+      "description": ""
+     },
+     {
+      "name": "Luigi's Mansion™ 3: Multiplayer Pack",
+      "description": ""
+     }
+    ],
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "hardwareId": "prd_acf4c89908764c62",
+      "informationStatus": "available",
+      "handheld": {
+       "supported": true,
+       "resolution": "Not published by Nintendo",
+       "fps": "Not published by Nintendo",
+       "mode": "Handheld"
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "Not published by Nintendo",
+       "fps": "Not published by Nintendo",
+       "mode": "TV"
+      },
+      "sourceName": "Nintendo official product page",
+      "sourceUrl": "https://www.nintendo.com/us/store/products/luigis-mansion-3-switch/",
+      "verificationStatus": "official",
+      "verifiedAt": "2026-09-02",
+      "performanceNotes": "Backward-compatible on Switch 2; exact rendering resolution and FPS are not published by Nintendo."
+     }
+    ],
+    "switch2UpgradePrice": 0,
+    "galleryImages": [
+     {
+      "alt": "Verified game-world/promotional media 1",
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000001620/699b744e3e94cf49d336f5e7d96be966f8f4eb329a5a8277bf940e6271046ea3"
+     },
+     {
+      "alt": "Verified game-world/promotional media 2",
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000001620/95314d2808b22d90b87a55d369d950d5043ab64bcf666dbca72968551fa91009"
+     },
+     {
+      "alt": "Verified game-world/promotional media 3",
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000001620/ae1b341e5d079e5af490ce5fc007679a21f69db66d85c602bb49db54ce96eb21"
+     },
+     {
+      "alt": "Verified game-world/promotional media 4",
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000001620/4ed43984dd7de804af55d407df1d96e9c91cfa318d861956d34339ab35dcf214"
+     },
+     {
+      "alt": "Verified game-world/promotional media 5",
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000001620/2b99781bb3be15319c34d59a45fea821ec71c96cbcc41a3aac882765e482a8ad"
+     }
+    ],
+    "image": "https://assets.nintendo.com/image/upload/ar_16:9,c_fill,g_auto,w_1600/f_auto/q_auto/dpr_1.5/store/software/switch/70010000001620/4d5437c859c0b77d140eb8e4dadc9a2e9db37fdaf2f26779c38828c2da6e60cf",
+    "banner": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000001620/699b744e3e94cf49d336f5e7d96be966f8f4eb329a5a8277bf940e6271046ea3",
+    "createdAt": "2026-08-27T21:25:02.549Z",
+    "created_at": "2026-08-27T21:25:02.549Z",
+    "updatedAt": "2026-09-02T00:31:58.488Z",
+    "updated_at": "2026-08-27T21:25:02.549Z",
+    "badgeEn": "وفر 40%",
+    "badgeKu": "وفر 40%",
+    "featuresEn": [
+     "Story campaign with themed hotel floors",
+     "Local co-op through Gooigi",
+     "Online/local multiplayer modes",
+     "Strong environmental puzzle design",
+     "High-quality animation and character presentation"
+    ],
+    "featuresKu": [
+     "Story campaign with themed hotel floors",
+     "Local co-op through Gooigi",
+     "Online/local multiplayer modes",
+     "Strong environmental puzzle design",
+     "High-quality animation and character presentation"
+    ],
+    "boxFrontUrl": "https://assets.nintendo.com/image/upload/ar_3:4,c_fit,g_auto,w_1000/f_auto/q_auto/dpr_1.5/store/software/switch/70010000001620/2b166fb3197dacfde1d939acd6a976b9fbe3b1a32c54f9f0d2c8d23efb22412d",
+    "sales": 0,
+    "nsuid": "70010000001620",
+    "product_code": "HACPAG3JA",
+    "title_id": "0100dca0064a6000",
+    "arabicSupport": false,
+    "nintendoEshopUrl": "https://www.nintendo.com/us/store/products/luigis-mansion-3-switch/",
+    "tagline": "The hotel is haunted. Mario is missing. And the only hope is Luigi.",
+    "fitFor": [
+     "Players who enjoy environmental puzzles and exploration",
+     "Families wanting a spooky but lighthearted adventure",
+     "Players wanting story co-op or larger multiplayer modes"
+    ],
+    "notFitFor": [
+     "Players looking for realistic horror",
+     "Players who only want fast combat without puzzles",
+     "Online players without Nintendo Switch Online"
+    ],
+    "storySummary": "King Boo traps Mario, Peach, and the Toads inside paintings at the Last Resort hotel. Luigi climbs its themed floors with Professor E. Gadd, Polterpup, and Gooigi to rescue them.",
+    "dlcList": [
+     {
+      "name": "Luigi’s Mansion 3 Multiplayer Pack",
+      "description": "Paid multiplayer bundle containing Pack 1 and Pack 2 content for ScreamPark and ScareScraper, including costumes, themes, and minigames."
+     }
+    ],
+    "updates": [
+     {
+      "date": "2020-03-03",
+      "title": "Multiplayer Pack 1",
+      "description": "First paid multiplayer content pack released."
+     },
+     {
+      "date": "2020-04-29",
+      "title": "Multiplayer Pack 2",
+      "description": "Second paid multiplayer content pack released."
+     }
+    ],
+    "music": "The haunted-hotel score changes with each themed floor; Nintendo does not list a standalone soundtrack on the eShop product page.",
+    "completionTime": "Nintendo does not publish an official story-hour estimate; completion varies with exploration, gems, Boos, and co-op play.",
+    "completionistTime": "Nintendo does not publish an official 100% time; collecting every gem and Boo and clearing multiplayer objectives adds substantial playtime.",
+    "pros": [
+     "Expressive animation and presentation",
+     "Creative themed floors and puzzles",
+     "Story co-op plus multiplayer modes"
+    ],
+    "cons": [
+     "Co-op unlocks after initial progression",
+     "Some multiplayer content is paid DLC",
+     "Online multiplayer requires Nintendo Switch Online"
+    ],
+    "verdictSummary": "A polished action-puzzle adventure with memorable themed floors, excellent animation, flexible Gooigi co-op, and separate multiplayer modes.",
+    "guides": [
+     {
+      "title": "Nintendo official product page",
+      "summary": "Official features, player counts, play modes, languages, file size, DLC, and compatibility.",
+      "url": "https://www.nintendo.com/us/store/products/luigis-mansion-3-switch/"
+     }
+    ],
+    "perfNotes": "Nintendo confirms all three play modes and Switch 2 compatibility but does not publish exact rendering resolution or frame rate."
+   }
+  },
+  {
+   "id": "prd_c666e66b286c4d03",
+   "slug": "mario-golf-super-rush-switch-1",
+   "title": "Mario Golf: Super Rush",
+   "platform": "switch1",
+   "isHidden": false,
+   "hash": "506abe7ea3e03b24e5967c49047c794c880455694c181061ad6ff632d2dbe612",
+   "images": [
+    {
+     "role": "front-box",
+     "field": "cartridgeImage",
+     "url": "https://banan.to/api/files/products/prd_c666e66b286c4d03/front-bdd50822d1c2b541.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 1243580,
+     "width": 1490,
+     "height": 2422,
+     "thumb": "review-workdir/thumbs/batch-013/mario-golf-super-rush-switch-1__front-box-0.png"
+    },
+    {
+     "role": "front-box",
+     "field": "box_front_url",
+     "url": "https://images.launchbox-app.com/r2_12aea315-1ea4-4ab2-a9c3-c7458b992569.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 1243580,
+     "width": 1490,
+     "height": 2422,
+     "thumb": "review-workdir/thumbs/batch-013/mario-golf-super-rush-switch-1__front-box-1.png"
+    },
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://banan.to/api/files/products/prd_c666e66b286c4d03/square-d0b5a9874160f2fd.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://banan.to/api/files/products/prd_c666e66b286c4d03/cover-327691396747125c.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "3d-texture",
+     "field": "coverHiResImage",
+     "url": "https://banan.to/api/files/products/prd_c666e66b286c4d03/3d-texture-544ce96012261a94.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 6806549,
+     "width": 3792,
+     "height": 4912,
+     "thumb": "review-workdir/thumbs/batch-013/mario-golf-super-rush-switch-1__3d-texture-4.png"
+    },
+    {
+     "role": "listing",
+     "field": "image",
+     "url": "https://banan.to/api/files/products/prd_c666e66b286c4d03/cover-327691396747125c.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[0]",
+     "url": "https://banan.to/api/files/products/prd_c666e66b286c4d03/banner-0-74723fea18085414.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[1]",
+     "url": "https://banan.to/api/files/products/prd_c666e66b286c4d03/banner-1-4418afbd88d7a65b.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[2]",
+     "url": "https://banan.to/api/files/products/prd_c666e66b286c4d03/banner-2-34260ba634c1b7d6.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[3]",
+     "url": "https://banan.to/api/files/products/prd_c666e66b286c4d03/banner-3-db1fabd6545731c8.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000038622/e4ffb9da390e0a8c300cb95851dd58615e0567f0e1d25f95f4061202b320b1fe",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 99696,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-013/mario-golf-super-rush-switch-1__gallery-10.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[1]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000038622/999445cd526cd1d055e44879aaa7610dd666c1390ae3237f36adf06209f8a20e",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 116355,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-013/mario-golf-super-rush-switch-1__gallery-11.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[2]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000038622/6a0ff92d949c16029c35ac9ddcf47a661bcfeb158543769bf8ad166163d280ce",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 128387,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-013/mario-golf-super-rush-switch-1__gallery-12.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[3]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000038622/ec315c889d7529ac87575d6eb6bb07b3dbcd4b946241c79e285eb737c92ad4ea",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 74753,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-013/mario-golf-super-rush-switch-1__gallery-13.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[4]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000038622/ff15c5d4814187fae399cf7b92b253d864da409af367119a3956a3609b2f99c4",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 193713,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-013/mario-golf-super-rush-switch-1__gallery-14.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[5]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000038622/a0f7308ef01901623453e0ed7ae30a97e4389a358ed825e07ae3f9af83fa8ef1",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 88078,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-013/mario-golf-super-rush-switch-1__gallery-15.png"
+    }
+   ],
+   "record": {
+    "title": "Mario Golf: Super Rush",
+    "titleEn": "Mario Golf: Super Rush",
+    "titleKu": "Mario Golf: Super Rush",
+    "slug": "mario-golf-super-rush-switch-1",
+    "description": "Golf with a Mushroom Kingdom twist. Hit the green with up to four players locally or online and golf with friends from the Super Mario series like Mario, Peach, Yoshi, and more. Modes range from Standard Golf to the energetic Speed Golf and Battle Golf, while Golf Adventure lets your Mii rise from rookie to pro.",
+    "descriptionEn": "Golf with a Mushroom Kingdom twist. Hit the green with up to four players locally or online and golf with friends from the Super Mario series like Mario, Peach, Yoshi, and more. Modes range from Standard Golf to the energetic Speed Golf and Battle Golf, while Golf Adventure lets your Mii rise from rookie to pro.",
+    "descriptionKu": "Golf with a Mushroom Kingdom twist. Hit the green with up to four players locally or online and golf with friends from the Super Mario series like Mario, Peach, Yoshi, and more. Modes range from Standard Golf to the energetic Speed Golf and Battle Golf, while Golf Adventure lets your Mii rise from rookie to pro.",
+    "cartridgeImage": "/api/files/products/prd_c666e66b286c4d03/front-bdd50822d1c2b541.jpg",
+    "nintendoCardImage": "/api/files/products/prd_c666e66b286c4d03/square-d0b5a9874160f2fd.avif",
+    "coverHiResImage": "/api/files/products/prd_c666e66b286c4d03/3d-texture-544ce96012261a94.jpg",
+    "coverImage": "/api/files/products/prd_c666e66b286c4d03/cover-327691396747125c.avif",
+    "bannerImages": [
+     "/api/files/products/prd_c666e66b286c4d03/banner-0-74723fea18085414.avif",
+     "/api/files/products/prd_c666e66b286c4d03/banner-1-4418afbd88d7a65b.avif",
+     "/api/files/products/prd_c666e66b286c4d03/banner-2-34260ba634c1b7d6.avif",
+     "/api/files/products/prd_c666e66b286c4d03/banner-3-db1fabd6545731c8.avif",
+     "/api/files/products/prd_c666e66b286c4d03/banner-4-f27716e00712da15.avif",
+     "/api/files/products/prd_c666e66b286c4d03/banner-5-d73e80f9769d6d0a.avif"
+    ],
+    "gallery": [],
+    "youtubeTrailer": "https://www.nintendo.com/us/store/products/mario-golf-super-rush-switch/",
+    "releaseDate": "2021-06-25",
+    "ageRating": "ESRB E10+ / PEGI 7",
+    "metacriticRating": 75,
+    "genres": [
+     "Sports",
+     "Party",
+     "Action"
+    ],
+    "platform": "switch1",
+    "size": 4.2,
+    "numberOfPlayers": "Single system (1-4) / Local wireless (2-4) / Online (2-4)",
+    "supportedLanguages": "Japanese / British English / French / German / Italian / Spanish / Korean / Dutch / Simplified Chinese / Latin American Spanish / Canadian French / Traditional Chinese / American English",
+    "hardwareModel": "",
+    "colorEdition": "",
+    "storageCapacity": "",
+    "screenSpecs": "",
+    "batteryLife": "",
+    "boxContents": [],
+    "boxContentsText": "",
+    "warrantyCondition": "",
+    "connectivity": "",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "Global",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "",
+    "redemptionSteps": [],
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 8500,
+    "cost": 1250,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": false,
+    "displayOrder": 0,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "مشترك",
+      "description": "حساب مشترك",
+      "stock": 9999,
+      "isInfiniteStock": true,
+      "customerDescription": "حساب مشترك"
+     },
+     {
+      "id": "online_account",
+      "name": "خاص بك",
+      "description": "حساب خاص بك",
+      "stock": 9999,
+      "isInfiniteStock": true,
+      "customerDescription": "حساب خاص بك"
+     }
+    ],
+    "types": [
+     {
+      "id": "standard_offline",
+      "name": "مشترك — اللعبة الأساسية",
+      "optionId": "offline_account",
+      "price": 8500,
+      "cost": 1250,
+      "description": "",
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "standard_online",
+      "name": "خاص بك — اللعبة الأساسية",
+      "optionId": "online_account",
+      "price": 42000,
+      "cost": 25000,
+      "description": "",
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "Active",
+    "kind": "account",
+    "trade_value_iqd": 30000,
+    "store_offer_bonus_iqd": 3000,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "id": "prd_c666e66b286c4d03",
+    "schema_version": 24,
+    "titleAr": "ماريو غولف: سوبر رش",
+    "compatibility": [
+     "Nintendo Switch",
+     "Nintendo Switch 2 compatibility: Supported – game behavior is consistent with Nintendo Switch"
+    ],
+    "edition": "Standard",
+    "developer": "CAMELOT",
+    "publisher": "Nintendo",
+    "seriesName": "Mario Golf",
+    "metacriticUrl": "https://www.metacritic.com/game/mario-golf-super-rush/",
+    "opencriticRating": 76,
+    "userScore": 6.2,
+    "price_usd": 59.99,
+    "officialUrl": "https://www.nintendo.com/us/store/products/mario-golf-super-rush-switch/",
+    "eshopUrl": "https://www.nintendo.com/us/store/products/mario-golf-super-rush-switch/",
+    "galleryImages": [
+     {
+      "alt": "Mario Golf: Super Rush official promotional media 1",
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000038622/e4ffb9da390e0a8c300cb95851dd58615e0567f0e1d25f95f4061202b320b1fe"
+     },
+     {
+      "alt": "Mario Golf: Super Rush official promotional media 2",
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000038622/999445cd526cd1d055e44879aaa7610dd666c1390ae3237f36adf06209f8a20e"
+     },
+     {
+      "alt": "Mario Golf: Super Rush official promotional media 3",
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000038622/6a0ff92d949c16029c35ac9ddcf47a661bcfeb158543769bf8ad166163d280ce"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000038622/ec315c889d7529ac87575d6eb6bb07b3dbcd4b946241c79e285eb737c92ad4ea"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000038622/ff15c5d4814187fae399cf7b92b253d864da409af367119a3956a3609b2f99c4"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000038622/a0f7308ef01901623453e0ed7ae30a97e4389a358ed825e07ae3f9af83fa8ef1"
+     }
+    ],
+    "videos": [
+     {
+      "title": "Official product page / trailer",
+      "url": "https://www.nintendo.com/us/store/products/mario-golf-super-rush-switch/"
+     },
+     {
+      "title": "Nintendo news and updates",
+      "url": "https://www.nintendo.com/us/search/#q=Mario%20Golf%20Super%20Rush&p=1&cat=news"
+     },
+     {
+      "title": "Metacritic review hub",
+      "url": "https://www.metacritic.com/game/mario-golf-super-rush/"
+     }
+    ],
+    "soundtrack": [
+     {
+      "title": "Official game page",
+      "url": "https://www.nintendo.com/us/store/products/mario-golf-super-rush-switch/"
+     },
+     {
+      "title": "Nintendo news / update page",
+      "url": "https://www.nintendo.com/us/search/#q=Mario%20Golf%20Super%20Rush&p=1&cat=news"
+     },
+     {
+      "title": "Metacritic / reviews",
+      "url": "https://www.metacritic.com/game/mario-golf-super-rush/"
+     }
+    ],
+    "gameIsOffline": true,
+    "gameIsOnline": true,
+    "gameLanguageLocked": false,
+    "description_short": "Golf with a Mushroom Kingdom twist. Play standard golf, Speed Golf, and Battle Golf with Mario characters, or level up your Mii in the Golf Adventure mode.",
+    "description_ar": "لعبة غولف بطابع عالم ماريو تتيح اللعب حتى 4 لاعبين محليًا أو عبر الإنترنت، مع أوضاع Standard Golf وSpeed Golf وBattle Golf، بالإضافة إلى طور Golf Adventure لتطوير شخصية الـMii.",
+    "box_front_url": "https://images.launchbox-app.com/r2_12aea315-1ea4-4ab2-a9c3-c7458b992569.jpg",
+    "box_back_url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000038622/e4ffb9da390e0a8c300cb95851dd58615e0567f0e1d25f95f4061202b320b1fe",
+    "languagesAudio": [
+     "Character vocalizations",
+     "Music / sound effects",
+     "No full language-dependent dub confirmed"
+    ],
+    "languagesText": [
+     "Japanese / English",
+     "French / German / Italian / Spanish / Dutch",
+     "Korean / Simplified Chinese / Traditional Chinese / additional regional English variants"
+    ],
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": true,
+    "nintendoPlayModes": "TV / Tabletop / Handheld",
+    "nintendoOnlineRequired": false,
+    "nintendoCloudSaves": true,
+    "nintendoGameKeyCard": false,
+    "nintendoPhysicalNeedsDownload": false,
+    "switch2Enhanced": false,
+    "switch2Exclusive": false,
+    "nintendoNotes": "Official Nintendo store page confirms supported play modes, file size, supported languages, and Nintendo Switch 2 compatibility for Mario Golf: Super Rush.",
+    "editionsList": [
+     {
+      "name": "Standard Edition",
+      "coverUrl": "https://images.launchbox-app.com/r2_12aea315-1ea4-4ab2-a9c3-c7458b992569.jpg",
+      "contents": [
+       {
+        "label": "Base game"
+       },
+       {
+        "label": "Standard Golf, Speed Golf, and Battle Golf modes"
+       },
+       {
+        "label": "Golf Adventure for your Mii character"
+       }
+      ]
+     },
+     {
+      "name": "Digital Edition",
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_1:1,c_fill,g_auto,w_1000/f_auto/q_auto/dpr_1.5/store/software/switch/70010000038622/af5246b2f01dee8111a70bcb3f556e65a492801d6677d0ab0f17b566a7b0285b",
+      "contents": [
+       {
+        "label": "Nintendo eShop release"
+       },
+       {
+        "label": "Local and online multiplayer with Mario characters"
+       },
+       {
+        "label": "Save Data Cloud support"
+       }
+      ]
+     },
+     {
+      "name": "Current Store Package",
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_16:9,c_fill,g_auto,w_1600/f_auto/q_auto/dpr_1.5/store/software/switch/70010000038622/af5246b2f01dee8111a70bcb3f556e65a492801d6677d0ab0f17b566a7b0285b",
+      "contents": [
+       {
+        "label": "Offline account option"
+       },
+       {
+        "label": "Online account option"
+       },
+       {
+        "label": "Hidden by default until review"
+       }
+      ]
+     }
+    ],
+    "gameplayPillars": [
+     {
+      "title": "Speed Golf chaos",
+      "description": "Tee off at the same time and race to finish each hole first while dashing across the course.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000038622/e4ffb9da390e0a8c300cb95851dd58615e0567f0e1d25f95f4061202b320b1fe"
+     },
+     {
+      "title": "Battle Golf arenas",
+      "description": "Compete in a neon stadium full of hazards like Thwomps, Chain Chomps, and banana peels.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000038622/999445cd526cd1d055e44879aaa7610dd666c1390ae3237f36adf06209f8a20e"
+     },
+     {
+      "title": "Golf Adventure progression",
+      "description": "Train a Mii golfer, improve stats, and take on a structured campaign at Bonny Greens.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000038622/6a0ff92d949c16029c35ac9ddcf47a661bcfeb158543769bf8ad166163d280ce"
+     },
+     {
+      "title": "Speed Golf and Battle Golf",
+      "description": "Alternative modes such as Speed Golf and Battle Golf turn standard golf into a faster, more chaotic race for holes, power-ups, and map control.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000038622/ec315c889d7529ac87575d6eb6bb07b3dbcd4b946241c79e285eb737c92ad4ea"
+     },
+     {
+      "title": "Character progression in Golf Adventure",
+      "description": "The single-player Golf Adventure mode lets a Mii improve stats, learn mechanics, and move through themed courses and training sequences.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000038622/ff15c5d4814187fae399cf7b92b253d864da409af367119a3956a3609b2f99c4"
+     }
+    ],
+    "worldSummary": "Mario Golf: Super Rush blends arcade-style Mushroom Kingdom personality with accessible golf systems, fast-paced competitive modes, and a light RPG-like adventure structure for the Mii campaign.",
+    "storyChapters": [
+     {
+      "title": "Hit the green",
+      "body": "Mario and friends gather for a vibrant Mushroom Kingdom golf outing.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000038622/e4ffb9da390e0a8c300cb95851dd58615e0567f0e1d25f95f4061202b320b1fe"
+     },
+     {
+      "title": "Race through the course",
+      "body": "Speed Golf and Battle Golf turn every match into a fast-paced scramble with items and special shots.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000038622/999445cd526cd1d055e44879aaa7610dd666c1390ae3237f36adf06209f8a20e"
+     },
+     {
+      "title": "Train to become a pro",
+      "body": "Golf Adventure follows a Mii golfer from beginner lessons to advanced competition.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000038622/6a0ff92d949c16029c35ac9ddcf47a661bcfeb158543769bf8ad166163d280ce"
+     },
+     {
+      "title": "Start with Golf Adventure",
+      "body": "New players can use Golf Adventure to learn swings, spins, terrain reading, and shot selection while gradually improving a custom golfer.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000038622/a0f7308ef01901623453e0ed7ae30a97e4389a358ed825e07ae3f9af83fa8ef1"
+     },
+     {
+      "title": "Master party-friendly and competitive modes",
+      "body": "Beyond standard rounds, the game expands into party modes, motion control options, and competitive multiplayer that reward course knowledge.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000038622/e4ffb9da390e0a8c300cb95851dd58615e0567f0e1d25f95f4061202b320b1fe"
+     }
+    ],
+    "features": [
+     "Standard Golf, Speed Golf, and Battle Golf modes",
+     "Golf Adventure for your Mii character",
+     "Local and online multiplayer with Mario characters",
+     "Speed Golf gives the series a fresh arcade twist",
+     "Golf Adventure teaches mechanics through progression",
+     "A varied roster offers distinct shot feel and style"
+    ],
+    "perfResolutionDocked": "1080p",
+    "perfResolutionHandheld": "720p",
+    "perfFps": "60",
+    "perfHdr": false,
+    "playTimeMain": 5,
+    "completionMain": 8,
+    "completionExtras": 12,
+    "faq": [
+     {
+      "q": "Does Mario Golf: Super Rush support online play?",
+      "a": "Yes. The game supports online play for 2-4 players in supported modes."
+     },
+     {
+      "q": "Does it support Nintendo Switch 2?",
+      "a": "Yes. Nintendo lists it as Supported – game behavior is consistent with Nintendo Switch."
+     },
+     {
+      "q": "What are the main special modes?",
+      "a": "The game highlights Speed Golf, Battle Golf, and the single-player Golf Adventure mode."
+     },
+     {
+      "q": "Does Mario Golf: Super Rush support local multiplayer?",
+      "a": "Yes. It supports local multiplayer, making it suitable for couch sessions and party-style rounds with friends or family."
+     },
+     {
+      "q": "What makes it different from standard golf games?",
+      "a": "Its headline difference is Speed Golf, where players race across the course in real time after taking their shots, creating a much more frantic tempo."
+     }
+    ],
+    "verdictScore": 7.7,
+    "verdictPros": [
+     "Fast and accessible golf mechanics",
+     "Strong party value in Speed Golf and Battle Golf",
+     "Good local and online multiplayer support",
+     "Speed Golf is energetic and memorable",
+     "Easy to learn yet still satisfying to optimize"
+    ],
+    "verdictCons": [
+     "Adventure mode is shorter than some players expect",
+     "Some courses are simpler than sim-style golf games",
+     "Competitive balance depends heavily on character abilities",
+     "Standard golf fans may prefer more courses at launch",
+     "The RPG-style adventure mode is lighter than a full sports RPG"
+    ],
+    "reviews": [
+     {
+      "source": "Metacritic",
+      "score": "75",
+      "url": "https://www.metacritic.com/game/mario-golf-super-rush/"
+     },
+     {
+      "source": "OpenCritic",
+      "score": "76",
+      "url": "https://opencritic.com/game/11506/mario-golf-super-rush"
+     },
+     {
+      "source": "IGN",
+      "score": "7/10",
+      "url": "https://www.ign.com/games/mario-golf-super-rush"
+     }
+    ],
+    "timeline": [
+     {
+      "date": "2021-02-17",
+      "title": "Announced during Nintendo Direct",
+      "body": "Announced during Nintendo Direct — recorded milestone dated 2021-02-17."
+     },
+     {
+      "date": "2021-06-25",
+      "title": "Released on Nintendo Switch",
+      "body": "Released on Nintendo Switch — recorded milestone dated 2021-06-25."
+     },
+     {
+      "date": "2021-09-24",
+      "title": "Major free update added new characters and courses",
+      "body": "Major free update added new characters and courses — recorded milestone dated 2021-09-24."
+     }
+    ],
+    "patchNotes": [
+     {
+      "version": "Launch version",
+      "date": "2021-06-25",
+      "body": "Update entry for Launch version, dated 2021-06-25. No additional change list was included in the prior verified extraction."
+     },
+     {
+      "version": "Free update – Toadette / New Donk City",
+      "date": "2021-08-06",
+      "body": "Update entry for Free update – Toadette / New Donk City, dated 2021-08-06. No additional change list was included in the prior verified extraction."
+     },
+     {
+      "version": "Free update – Koopa Troopa / Ninji / new courses",
+      "date": "2021-09-24",
+      "body": "Update entry for Free update – Koopa Troopa / Ninji / new courses, dated 2021-09-24. No additional change list was included in the prior verified extraction."
+     }
+    ],
+    "studioName": "CAMELOT",
+    "studioUrl": "https://www.nintendo.com/us/store/products/mario-golf-super-rush-switch/",
+    "studioLocation": "Japan",
+    "sources": [
+     {
+      "name": "Nintendo official product page",
+      "url": "https://www.nintendo.com/us/store/products/mario-golf-super-rush-switch/"
+     },
+     {
+      "name": "Nintendo Support / Switch 2 compatibility",
+      "url": "https://support.nintendo.com/"
+     },
+     {
+      "name": "Metacritic",
+      "url": "https://www.metacritic.com/game/mario-golf-super-rush/"
+     }
+    ],
+    "downloadSizeGb": 4.2,
+    "requiredSpaceGb": 4.2,
+    "microSdRecommended": false,
+    "storageNotes": "Nintendo lists approximately 4.2 GB of game file size for both Nintendo Switch and Nintendo Switch 2 compatibility listings.",
+    "mpLocalPlayers": true,
+    "mpOnlinePlayers": true,
+    "mpCoop": false,
+    "mpCompetitive": true,
+    "mpLocalWireless": true,
+    "mpSplitScreen": false,
+    "seriesEntries": [
+     "Mario Golf: World Tour",
+     "Mario Tennis Aces",
+     "Nintendo Switch Sports"
+    ],
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "hardwareId": "prd_acf4c89908764c62",
+      "informationStatus": "Available / verified",
+      "unavailableReason": "No required Handheld or TV mode is marked unsupported.",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p",
+       "resolutionDynamic": false,
+       "renderingResolution": "1280x720",
+       "outputResolution": "1280x720",
+       "fps": "60",
+       "fpsMin": "60",
+       "fpsMax": "60",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Handheld",
+       "notes": "Original Nintendo Switch performance profile; arcade golf gameplay targets a smooth 60 fps presentation in supported gameplay scenarios."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p",
+       "resolutionDynamic": false,
+       "renderingResolution": "1920x1080",
+       "outputResolution": "1920x1080",
+       "fps": "60",
+       "fpsMin": "60",
+       "fpsMax": "60",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "TV / Docked",
+       "notes": "Original Nintendo Switch performance profile; arcade golf gameplay targets a smooth 60 fps presentation in supported gameplay scenarios."
+      },
+      "modes": [
+       {
+        "name": "Primary documented mode",
+        "handheldResolution": "720p",
+        "handheldFps": "60",
+        "tvResolution": "1080p",
+        "tvFps": "60",
+        "hdr": false,
+        "vrr": false,
+        "notes": "Original Nintendo Switch performance profile; arcade golf gameplay targets a smooth 60 fps presentation in supported gameplay scenarios."
+       }
+      ],
+      "upscaling": "Game / system-specific scaling where applicable",
+      "rayTracing": false,
+      "rayTracingMode": "Not Supported",
+      "loadingTime": "Scene-dependent; no single universal loading time",
+      "loadingNotes": "Loading time varies by scene, save progress, and storage state.",
+      "gameVersion": "Current retail build",
+      "patchVersion": "Current available update",
+      "testedDate": "2026-08-27",
+      "sourceName": "Nintendo official product page",
+      "sourceUrl": "https://www.nintendo.com/us/store/products/mario-golf-super-rush-switch/",
+      "verifiedAt": "2026-08-27",
+      "verificationStatus": "Verified / sourced",
+      "performanceNotes": "Original Nintendo Switch performance profile; arcade golf gameplay targets a smooth 60 fps presentation in supported gameplay scenarios."
+     }
+    ],
+    "switch2UpgradePrice": 0,
+    "nintendoEshopUrl": "https://www.nintendo.com/us/store/products/mario-golf-super-rush-switch/",
+    "arabicSupport": false,
+    "tagline": "Golf with a Mushroom Kingdom twist. Play standard golf, Speed Golf, and Battle Golf with Mario characters, or level up your Mii in the Golf Adventure mode.",
+    "fitFor": [
+     "Players looking for sports, party gameplay.",
+     "Players who want local multiplayer on Nintendo Switch.",
+     "Players who want a lighter, party-friendly sports game with multiple play styles.",
+     "Players who enjoy alternating between relaxed rounds and faster arcade rule sets."
+    ],
+    "perfNotes": "Original Nintendo Switch performance profile; arcade golf gameplay targets a smooth 60 fps presentation in supported gameplay scenarios.",
+    "verdictSummary": "Overall score: 7.7/10. Strengths include Fast and accessible golf mechanics; Strong party value in Speed Golf and Battle Golf; Good local and online multiplayer support. Main drawbacks include Adventure mode is shorter than some players expect; Some courses are simpler than sim-style golf games.",
+    "studioAbout": "CAMELOT is credited as the developer of this Nintendo Switch release. Nintendo is credited as the publisher.",
+    "setupNeeds": [
+     "Nintendo Switch-compatible hardware for this release.",
+     "Internet connection is required for online features."
+    ],
+    "dlc": [
+     {
+      "name": "No standalone DLC announced",
+      "description": "No standalone paid DLC expansion is included in this extraction. Free updates, when applicable, are listed in the Updates section instead."
+     }
+    ],
+    "guides": [
+     {
+      "title": "Official Nintendo game page",
+      "summary": "Official Nintendo reference for game description, supported modes, player counts, languages, file size, and compatibility information.",
+      "url": "https://www.nintendo.com/us/store/products/mario-golf-super-rush-switch/"
+     }
+    ],
+    "notFitFor": [
+     "Players seeking a highly realistic golf simulator.",
+     "Players who only want a long story campaign without much interest in multiplayer modes."
+    ],
+    "boxContentsList": "[Circular]",
+    "image": "/api/files/products/prd_c666e66b286c4d03/cover-327691396747125c.avif",
+    "banner": "/api/files/products/prd_c666e66b286c4d03/banner-0-74723fea18085414.avif",
+    "schemaId": "",
+    "createdAt": "2026-08-27T16:59:52.135Z",
+    "created_at": "2026-08-27T16:59:52.135Z",
+    "updatedAt": "2026-08-28T21:58:06.958Z",
+    "updated_at": "2026-08-27T16:59:52.135Z",
+    "badgeEn": "وفر 40%",
+    "badgeKu": "وفر 40%",
+    "featuresEn": [
+     "Standard Golf, Speed Golf, and Battle Golf modes",
+     "Golf Adventure for your Mii character",
+     "Local and online multiplayer with Mario characters",
+     "Speed Golf gives the series a fresh arcade twist",
+     "Golf Adventure teaches mechanics through progression",
+     "A varied roster offers distinct shot feel and style"
+    ],
+    "featuresKu": [
+     "Standard Golf, Speed Golf, and Battle Golf modes",
+     "Golf Adventure for your Mii character",
+     "Local and online multiplayer with Mario characters",
+     "Speed Golf gives the series a fresh arcade twist",
+     "Golf Adventure teaches mechanics through progression",
+     "A varied roster offers distinct shot feel and style"
+    ],
+    "boxFrontUrl": "https://images.launchbox-app.com/r2_12aea315-1ea4-4ab2-a9c3-c7458b992569.jpg",
+    "sales": 0,
+    "images": [],
+    "modes": []
+   }
+  }
+ ]
+}
