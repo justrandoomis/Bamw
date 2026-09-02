@@ -1,0 +1,432 @@
+{
+ "title": "Metroid Dread",
+ "titleEn": "Metroid Dread",
+ "titleKu": "",
+ "slug": "metroid-dread-switch",
+ "description": "Metroid Dread is a modern 2D action-adventure starring Samus Aran. It emphasizes fast movement, interconnected exploration, upgrades, boss battles, and E.M.M.I. chase sections that give the game its signature tension. This file represents the Nintendo Switch 1 product entry with a Switch 2 compatibility reference.",
+ "descriptionEn": "Metroid Dread is a modern 2D action-adventure starring Samus Aran. It emphasizes fast movement, interconnected exploration, upgrades, boss battles, and E.M.M.I. chase sections that give the game its signature tension. This file represents the Nintendo Switch 1 product entry with a Switch 2 compatibility reference.",
+ "descriptionKu": "",
+ "cartridgeImage": "/api/files/products/prd_316788014ee14877/front-box-d792fb9df1e2d98e.webp",
+ "nintendoCardImage": "/api/files/products/prd_316788014ee14877/square-card-a5e6c44d97572642.webp",
+ "coverHiResImage": "/api/files/products/prd_316788014ee14877/3d-wrap-1eb92fe0be19d198.webp",
+ "coverImage": "/api/files/products/prd_316788014ee14877/cover-5134ebe3995fd2e2.webp",
+ "bannerImages": [
+  ""
+ ],
+ "gallery": [],
+ "youtubeTrailer": "https://www.youtube.com/results?search_query=Metroid+Dread+official+trailer",
+ "releaseDate": "2021-10-08",
+ "ageRating": "ESRB T / PEGI 12",
+ "metacriticRating": 88,
+ "genres": [
+  "Action",
+  "Adventure",
+  "Metroidvania"
+ ],
+ "platform": "switch1",
+ "size": 4.5,
+ "numberOfPlayers": "Single system (1)",
+ "supportedLanguages": "English, Japanese, French, Spanish, German",
+ "hardwareModel": "",
+ "colorEdition": "",
+ "storageCapacity": "",
+ "screenSpecs": "",
+ "batteryLife": "",
+ "boxContents": [],
+ "boxContentsText": "",
+ "warrantyCondition": "",
+ "connectivity": "",
+ "characterName": "Link",
+ "amiiboSeries": "The Legend of Zelda",
+ "figureType": "figure",
+ "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+ "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+ "boxCondition": "mib",
+ "releaseWave": "Wave 2 (Restock)",
+ "rarity": "standard",
+ "accessoryType": "حقيبة حماية وتنقل Carry Case",
+ "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+ "brand": "Nintendo Official",
+ "material": "Hard EVA Shockproof Shell",
+ "availableColors": "Black, Neon Red/Blue, White",
+ "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+ "cardValue": "$20 eShop Balance",
+ "region": "Global",
+ "cardType": "eshop",
+ "deliveryMethod": "instant_code",
+ "redemptionGuide": "",
+ "redemptionSteps": [],
+ "validity": "no_expiry",
+ "usedType": "cartridge",
+ "conditionGrade": "like_new",
+ "packaging": "cib",
+ "guaranteeStatus": "tested_30days",
+ "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+ "accountType": "primary",
+ "badge": "وفر 40%",
+ "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+ "price": 15000,
+ "cost": 1250,
+ "stock": 999999,
+ "isInfiniteStock": true,
+ "isHidden": true,
+ "displayOrder": 0,
+ "category": "nintendo-switch-games",
+ "categoryId": "nintendo-switch-games",
+ "categoryEn": "",
+ "categoryKu": "",
+ "options": [
+  {
+   "id": "offline_account",
+   "name": "مشترك",
+   "description": "مشترك",
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_account",
+   "name": "خاص بك",
+   "description": "خاص بك",
+   "stock": 9999,
+   "isInfiniteStock": true
+  }
+ ],
+ "types": [
+  {
+   "id": "offline_base",
+   "name": "مشترك — اللعبة الأساسية",
+   "optionId": "offline_account",
+   "price": 15000,
+   "cost": 1250,
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_base",
+   "name": "خاص بك — اللعبة الأساسية",
+   "optionId": "online_account",
+   "price": 14500,
+   "cost": 10000,
+   "stock": 9999,
+   "isInfiniteStock": true
+  }
+ ],
+ "editions": [],
+ "dlcs": [],
+ "isActive": true,
+ "status": "Active",
+ "kind": "account",
+ "trade_value_iqd": 9500,
+ "store_offer_bonus_iqd": 1250,
+ "trade_enabled": true,
+ "trade_value_locked": false,
+ "id": "prd_316788014ee14877",
+ "schema_version": 24,
+ "titleAr": "ميترويد دريد",
+ "compatibility": [
+  "Nintendo Switch 1",
+  "Nintendo Switch 2"
+ ],
+ "edition": "Standard",
+ "developer": "MercurySteam / Nintendo",
+ "publisher": "Nintendo",
+ "metacriticUrl": "https://www.metacritic.com/game/metroid-dread/",
+ "opencriticRating": 89,
+ "userScore": 8.7,
+ "price_usd": 59.99,
+ "officialUrl": "https://www.nintendo.com/us/store/products/metroid-dread-switch/",
+ "eshopUrl": "https://www.nintendo.com/us/store/products/metroid-dread-switch/",
+ "gameIsOffline": true,
+ "gameIsOnline": false,
+ "gameLanguageLocked": false,
+ "description_short": "A fast and tense 2D action adventure starring Samus Aran.",
+ "description_ar": "لعبة أكشن ومغامرة ثنائية الأبعاد سريعة ومتوترة، تعيد ساموس آران إلى مغامرة استكشاف وقتال ومطاردات E.M.M.I.، ومجهزة هنا كملف Switch 1.",
+ "videos": [
+  {
+   "title": "Official Trailer",
+   "url": "https://www.youtube.com/results?search_query=Metroid+Dread+official+trailer"
+  }
+ ],
+ "nintendoEshopUrl": "https://www.nintendo.com/us/store/products/metroid-dread-switch/",
+ "nintendoOnlineRequired": false,
+ "nintendoCloudSaves": true,
+ "nintendoGameKeyCard": false,
+ "nintendoPhysicalNeedsDownload": false,
+ "tvMode": true,
+ "tabletopMode": true,
+ "handheldMode": true,
+ "nintendoPlayModes": "TV mode / Tabletop mode / Handheld mode",
+ "nintendoNotes": "Prepared as the Switch 1 product file with Switch 2 compatibility reference.",
+ "switch2Enhanced": false,
+ "switch2Exclusive": false,
+ "switch2UpgradePrice": 0,
+ "switch2Features": [
+  "Playable on Switch 2 through compatibility",
+  "Fast 2D action",
+  "Strong Nintendo identity"
+ ],
+ "tagline": "Samus Aran faces fear, speed, and survival on ZDR.",
+ "fitFor": [
+  "Action-adventure fans",
+  "Metroidvania players",
+  "Nintendo fans"
+ ],
+ "notFitFor": [
+  "Players wanting multiplayer",
+  "Players who dislike tense chase sequences"
+ ],
+ "playTimeMain": 10,
+ "playTimeFull": 18,
+ "editionsList": [
+  {
+   "name": "Regular / Offline",
+   "contents": [
+    {
+     "label": "Metroid Dread"
+    },
+    {
+     "label": "Regular / Offline"
+    },
+    {
+     "label": "Offline account access"
+    }
+   ]
+  },
+  {
+   "name": "Standard / 标准版",
+   "contents": [
+    {
+     "label": "Metroid Dread"
+    },
+    {
+     "label": "Standard / 标准版"
+    },
+    {
+     "label": "Online account access"
+    }
+   ]
+  }
+ ],
+ "gameplayPillars": [
+  {
+   "title": "Fast 2D action",
+   "description": "Movement and combat feel exceptionally sharp and responsive."
+  },
+  {
+   "title": "Interconnected exploration",
+   "description": "Abilities unlock new paths across a layered map."
+  },
+  {
+   "title": "E.M.M.I. tension",
+   "description": "Pursuit sections create unique stress and urgency."
+  },
+  {
+   "title": "Boss encounters and upgrades",
+   "description": "Memorable fights and ability growth drive the campaign."
+  },
+  {
+   "title": "Modern Metroid design",
+   "description": "It preserves the exploration spirit of the series in a polished modern form."
+  }
+ ],
+ "worldSummary": "The planet ZDR is a dense science-fiction labyrinth of labs, ruins, and dangerous biomes tied together through classic Metroid progression.",
+ "storyChapters": [
+  {
+   "title": "Investigate the crisis",
+   "body": "Samus arrives on ZDR to uncover what happened."
+  },
+  {
+   "title": "Explore a hostile world",
+   "body": "Each new region adds new hazards and secrets."
+  },
+  {
+   "title": "Evade the E.M.M.I. units",
+   "body": "Chase sections sharply raise the tension."
+  },
+  {
+   "title": "Recover key powers",
+   "body": "New movement and weapon abilities expand what is possible."
+  },
+  {
+   "title": "Reveal the truth",
+   "body": "The late-game story connects the danger to larger Metroid lore."
+  }
+ ],
+ "galleryImages": [
+  {
+   "url": "/api/files/products/prd_316788014ee14877/gallery-1-1c42f7e73e529b5a.webp",
+   "alt": "Metroid Dread screenshot 1"
+  },
+  {
+   "url": "/api/files/products/prd_316788014ee14877/gallery-2-bf02e25053466ae2.webp",
+   "alt": "Metroid Dread screenshot 2"
+  },
+  {
+   "url": "/api/files/products/prd_316788014ee14877/gallery-3-f9e1315ff3f41535.webp",
+   "alt": "Metroid Dread screenshot 3"
+  },
+  {
+   "url": "/api/files/products/prd_316788014ee14877/gallery-4-862d5a08dcb0f245.webp",
+   "alt": "Metroid Dread screenshot 4"
+  },
+  {
+   "url": "/api/files/products/prd_316788014ee14877/gallery-5-5da1217a59116955.webp",
+   "alt": "Metroid Dread screenshot 5"
+  },
+  {
+   "url": "/api/files/products/prd_316788014ee14877/gallery-6-95dec87f3f91fe45.webp",
+   "alt": "Metroid Dread screenshot 6"
+  }
+ ],
+ "features": [
+  "Excellent 2D action design",
+  "Strong tension and pacing",
+  "Great boss fights",
+  "High-quality Nintendo production",
+  "Switch 1 product entry"
+ ],
+ "perfResolutionDocked": "1080p",
+ "perfResolutionHandheld": "720p",
+ "perfFps": "60",
+ "perfHdr": false,
+ "perfNotes": "Recorded as a Switch 1 profile with a secondary Switch 2 compatibility reference.",
+ "devicePerformance": [
+  {
+   "device": "Nintendo Switch 1",
+   "deviceSlug": "nintendo-switch-1",
+   "deviceModel": "Nintendo Switch 1",
+   "hardwareId": "nintendo-switch-1",
+   "informationStatus": "Available",
+   "unavailableReason": "No unavailable reason. Performance profile is present for this device.",
+   "handheld": {
+    "supported": true,
+    "resolution": "720p",
+    "resolutionDynamic": false,
+    "renderingResolution": "720p",
+    "outputResolution": "720p",
+    "fps": "60",
+    "fpsMin": "60",
+    "fpsMax": "60",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "Handheld",
+    "notes": "Recorded as a Switch 1 profile with a secondary Switch 2 compatibility reference."
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "1080p",
+    "resolutionDynamic": false,
+    "renderingResolution": "1080p",
+    "outputResolution": "1080p",
+    "fps": "60",
+    "fpsMin": "60",
+    "fpsMax": "60",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "TV",
+    "notes": "Recorded as a Switch 1 profile with a secondary Switch 2 compatibility reference."
+   },
+   "modes": [
+    {
+     "name": "Default",
+     "handheldResolution": "720p",
+     "handheldFps": "60",
+     "tvResolution": "1080p",
+     "tvFps": "60",
+     "hdr": false,
+     "vrr": false,
+     "notes": "Recorded as a Switch 1 profile with a secondary Switch 2 compatibility reference."
+    }
+   ],
+   "performanceNotes": "Recorded as a Switch 1 profile with a secondary Switch 2 compatibility reference."
+  },
+  {
+   "device": "Nintendo Switch 2",
+   "deviceSlug": "nintendo-switch-2",
+   "deviceModel": "Nintendo Switch 2",
+   "hardwareId": "nintendo-switch-2",
+   "informationStatus": "Available",
+   "unavailableReason": "No unavailable reason. Performance profile is present for this device.",
+   "handheld": {
+    "supported": true,
+    "resolution": "720p",
+    "resolutionDynamic": false,
+    "renderingResolution": "720p",
+    "outputResolution": "720p",
+    "fps": "60",
+    "fpsMin": "60",
+    "fpsMax": "60",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "Handheld",
+    "notes": "Compatibility or alternate-platform reference only."
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "1080p",
+    "resolutionDynamic": false,
+    "renderingResolution": "1080p",
+    "outputResolution": "1080p",
+    "fps": "60",
+    "fpsMin": "60",
+    "fpsMax": "60",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "TV",
+    "notes": "Compatibility or alternate-platform reference only."
+   },
+   "modes": [
+    {
+     "name": "Default",
+     "handheldResolution": "720p",
+     "handheldFps": "60",
+     "tvResolution": "1080p",
+     "tvFps": "60",
+     "hdr": false,
+     "vrr": false,
+     "notes": "Compatibility or alternate-platform reference only."
+    }
+   ],
+   "performanceNotes": "Compatibility or alternate-platform reference only."
+  }
+ ],
+ "faq": [
+  {
+   "q": "Is Metroid Dread difficult?",
+   "a": "It can be challenging, especially in boss fights and chase sections."
+  },
+  {
+   "q": "Is it a metroidvania?",
+   "a": "Yes. Exploration and ability-gated progression are central to the design."
+  },
+  {
+   "q": "Is there multiplayer?",
+   "a": "No. It is a single-player action adventure."
+  },
+  {
+   "q": "Why only two variants?",
+   "a": "Only Regular / Offline and Standard / Online were provided."
+  },
+  {
+   "q": "Why is it praised?",
+   "a": "Its controls, pacing, and modernized series design earned strong critical reception."
+  }
+ ],
+ "mpLocalPlayers": false,
+ "mpOnlinePlayers": false,
+ "mpCoop": false,
+ "mpCompetitive": false,
+ "mpLocalWireless": false,
+ "mpSplitScreen": false,
+ "boxContentsList": [],
+ "image": "",
+ "banner": "",
+ "schemaId": "",
+ "batchImport": true,
+ "createdAt": "2026-08-28T18:44:09.209Z",
+ "updatedAt": "2026-08-28T18:44:09.209Z"
+}

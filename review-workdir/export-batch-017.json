@@ -1,0 +1,3303 @@
+{
+ "batch": "017",
+ "generatedAt": "2026-09-02T03:28:29.499Z",
+ "totalGames": 310,
+ "reviewedSoFar": 77,
+ "games": [
+  {
+   "id": "prd_37d91330c3514080",
+   "slug": "nintendo-switch-2-welcome-tour",
+   "title": "Nintendo Switch 2 Welcome Tour",
+   "platform": "switch2",
+   "isHidden": false,
+   "hash": "3b2b47ff6e7dceed6c64c373f792bcc7db1909e9f180294616afb82481eb4ced",
+   "images": [
+    {
+     "role": "front-box",
+     "field": "cartridgeImage",
+     "url": "https://banan.to/api/files/products/prd_37d91330c3514080/front-9a4efac1b51c5cca.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 356426,
+     "width": 1171,
+     "height": 1695,
+     "thumb": "review-workdir/thumbs/batch-017/nintendo-switch-2-welcome-tour__front-box-0.png"
+    },
+    {
+     "role": "front-box",
+     "field": "box_front_url",
+     "url": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000096813/8a2fc51b02035bf067a473a66938322f1f1570bf21034f0ad2134ce93b0d1cac",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 183520,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-017/nintendo-switch-2-welcome-tour__front-box-1.png"
+    },
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://banan.to/api/files/products/prd_37d91330c3514080/nintendoCardImage-c90544a2002def9d.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://banan.to/api/files/products/prd_37d91330c3514080/coverImage-5cfaafb2d21556e9.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "3d-texture",
+     "field": "coverHiResImage",
+     "url": "https://banan.to/api/files/products/prd_37d91330c3514080/3d-texture-6b7ae00f56515770.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 146880,
+     "width": 1080,
+     "height": 830,
+     "thumb": "review-workdir/thumbs/batch-017/nintendo-switch-2-welcome-tour__3d-texture-4.png"
+    },
+    {
+     "role": "listing",
+     "field": "image",
+     "url": "https://banan.to/api/files/products/prd_37d91330c3514080/coverImage-5cfaafb2d21556e9.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[0]",
+     "url": "https://banan.to/api/files/products/prd_37d91330c3514080/bannerImages-1-dc2c5c1e0a144a20.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[1]",
+     "url": "https://banan.to/api/files/products/prd_37d91330c3514080/bannerImages-2-b44ffd0c5fa7b675.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16:9,b_auto:border,c_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000096813/f1cfed90050a442c6a0025b9f19e64c279f8dba6d2f4a91530dc6097e8ce39b6",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 333535,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-017/nintendo-switch-2-welcome-tour__gallery-8.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[1]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16:9,b_auto:border,c_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000096813/9f6f8dfdc663b241013211ad7b6006ae5f6b64dfa0f89fb6772e6eaad3de9902",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 85257,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-017/nintendo-switch-2-welcome-tour__gallery-9.png"
+    }
+   ],
+   "record": {
+    "id": "prd_37d91330c3514080",
+    "title": "Nintendo Switch 2 Welcome Tour",
+    "titleEn": "Nintendo Switch 2 Welcome Tour",
+    "titleKu": "Nintendo Switch 2 Welcome Tour",
+    "slug": "nintendo-switch-2-welcome-tour",
+    "description": "Nintendo Switch 2 Welcome Tour is an interactive museum-like experience built to explain the system's hardware, design and features through exhibits, quizzes, demonstrations and minigames.",
+    "descriptionEn": "Nintendo Switch 2 Welcome Tour is an interactive museum-like experience built to explain the system's hardware, design and features through exhibits, quizzes, demonstrations and minigames.",
+    "descriptionKu": "Nintendo Switch 2 Welcome Tour is an interactive museum-like experience built to explain the system's hardware, design and features through exhibits, quizzes, demonstrations and minigames.",
+    "cartridgeImage": "/api/files/products/prd_37d91330c3514080/front-9a4efac1b51c5cca.jpg",
+    "nintendoCardImage": "/api/files/products/prd_37d91330c3514080/nintendoCardImage-c90544a2002def9d.avif",
+    "coverHiResImage": "/api/files/products/prd_37d91330c3514080/3d-texture-6b7ae00f56515770.webp",
+    "coverImage": "/api/files/products/prd_37d91330c3514080/coverImage-5cfaafb2d21556e9.avif",
+    "bannerImages": [
+     "/api/files/products/prd_37d91330c3514080/bannerImages-1-dc2c5c1e0a144a20.avif",
+     "/api/files/products/prd_37d91330c3514080/bannerImages-2-b44ffd0c5fa7b675.avif"
+    ],
+    "gallery": [],
+    "youtubeTrailer": "https://www.youtube.com/watch?v=3w2ds-bANLM",
+    "releaseDate": "2025-06-05",
+    "ageRating": "PEGI 7",
+    "metacriticRating": 54,
+    "genres": [
+     "Educational",
+     "Interactive Exhibit",
+     "Minigames"
+    ],
+    "platform": "switch2",
+    "size": 1.7,
+    "numberOfPlayers": "1",
+    "supportedLanguages": "Japanese, British English, French, German, Italian, Spanish, Korean, Dutch, Simplified Chinese, Traditional Chinese, Latin American Spanish, Brazilian Portuguese, American English",
+    "hardwareModel": "",
+    "colorEdition": "",
+    "storageCapacity": "",
+    "screenSpecs": "",
+    "batteryLife": "",
+    "boxContents": [],
+    "boxContentsText": "",
+    "warrantyCondition": "",
+    "connectivity": "",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "Global",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "",
+    "redemptionSteps": [],
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 5000,
+    "cost": 1250,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": false,
+    "displayOrder": 0,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "Offline Account",
+      "description": "Play using the supplied account under the store's offline-account activation method.",
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_account",
+      "name": "Online Account",
+      "description": "Online-account option with internet-connected account use where supported by the game/service.",
+      "isInfiniteStock": true
+     }
+    ],
+    "types": [
+     {
+      "id": "standard_offline",
+      "name": "Standard Edition",
+      "optionId": "offline_account",
+      "price": 5000,
+      "cost": 1250,
+      "description": "Standard game, Offline Account. Supplier Regular price: ¥6.80; purchase cost converted at 1 CNY = 220 IQD and rounded down to nearest 250 IQD.",
+      "isInfiniteStock": true
+     },
+     {
+      "id": "standard_online",
+      "name": "Standard Edition",
+      "optionId": "online_account",
+      "price": 7000,
+      "cost": 4500,
+      "description": "Standard game, Online Account. Supplier Standard price: ¥21.50; purchase cost converted at 1 CNY = 220 IQD and rounded down to nearest 250 IQD.",
+      "isInfiniteStock": true
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "active",
+    "kind": "account",
+    "trade_value_iqd": 0,
+    "store_offer_bonus_iqd": 0,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "schema_version": 22,
+    "titleAr": "جولة الترحيب بـ Nintendo Switch 2",
+    "compatibility": [
+     "Nintendo Switch 2"
+    ],
+    "edition": "Digital",
+    "developer": "Nintendo",
+    "publisher": "Nintendo",
+    "opencriticRating": 61,
+    "userScore": 3.9,
+    "officialUrl": "https://www.nintendo.com/us/store/products/nintendo-switch-2-welcome-tour-switch-2/",
+    "gameIsOffline": true,
+    "gameIsOnline": true,
+    "gameLanguageLocked": false,
+    "description_short": "An interactive exhibit that teaches players how Nintendo Switch 2 hardware and features work through demonstrations, quizzes, facts and minigames.",
+    "description_ar": "تجربة تعليمية تفاعلية تشبه المتحف للتعرف على تصميم وتقنيات Nintendo Switch 2. تتضمن معارض وحقائق واختبارات وألعابًا صغيرة وعروضًا لميزات مثل Joy-Con 2 والمغناطيس والتحكم بالماوس وHD Rumble 2.",
+    "box_front_url": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000096813/8a2fc51b02035bf067a473a66938322f1f1570bf21034f0ad2134ce93b0d1cac",
+    "videos": [
+     {
+      "title": "Gameplay Video",
+      "url": "https://www.youtube.com/watch?v=3w2ds-bANLM"
+     }
+    ],
+    "nintendoEshopUrl": "https://www.nintendo.com/us/store/products/nintendo-switch-2-welcome-tour-switch-2/",
+    "nintendoOnlineRequired": false,
+    "nintendoCloudSaves": true,
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": true,
+    "nintendoPlayModes": "TV Mode, Tabletop Mode, Handheld Mode",
+    "switch2Features": [
+     "Designed exclusively around Nintendo Switch 2 hardware",
+     "Joy-Con 2 magnetic-attachment exhibits",
+     "Mouse-control demonstrations",
+     "HD Rumble 2 demonstrations",
+     "HDR demonstrations on compatible displays",
+     "Interactive exhibits explaining display and system technology",
+     "Some demonstrations require separately sold accessories"
+    ],
+    "tagline": "Get an inside look at the Nintendo Switch 2 system.",
+    "fitFor": [
+     "New Nintendo Switch 2 owners",
+     "Players curious about hardware technology",
+     "Families and younger players",
+     "Players who enjoy quizzes and small score challenges"
+    ],
+    "notFitFor": [
+     "Players expecting a full-scale adventure",
+     "Players looking for multiplayer"
+    ],
+    "playTimeMain": 5.5,
+    "playTimeFull": 10.5,
+    "editionsList": [
+     {
+      "name": "Digital Edition",
+      "contents": [
+       {
+        "label": "Full interactive exhibit experience"
+       }
+      ]
+     }
+    ],
+    "gameplayPillars": [
+     {
+      "title": "Interactive Exhibit",
+      "description": "Walk across and eventually inside a giant virtual Nintendo Switch 2 while accessing signs, diagrams and demonstrations."
+     },
+     {
+      "title": "Tech Demos",
+      "description": "Try experiences designed to show mouse controls, HD Rumble 2 and other hardware features."
+     },
+     {
+      "title": "Quizzes and Secrets",
+      "description": "Find hidden facts and answer knowledge questions about the console."
+     },
+     {
+      "title": "Minigames",
+      "description": "Compete for high scores and fast times in short hardware-themed challenges."
+     }
+    ],
+    "storyChapters": [
+     {
+      "title": "The Exhibition Hall",
+      "body": "Enter a virtual museum built in the shape of Nintendo Switch 2."
+     },
+     {
+      "title": "Learn the Hardware",
+      "body": "Move through exhibits explaining exterior design, controllers, display and internal technology."
+     },
+     {
+      "title": "Inside the System",
+      "body": "Later exhibits let the player explore deeper areas representing the system's internal design."
+     }
+    ],
+    "galleryImages": [
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16:9,b_auto:border,c_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000096813/f1cfed90050a442c6a0025b9f19e64c279f8dba6d2f4a91530dc6097e8ce39b6",
+      "alt": "Distinct product/game media image 1; separate from the primary cover and square-card roles."
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16:9,b_auto:border,c_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000096813/9f6f8dfdc663b241013211ad7b6006ae5f6b64dfa0f89fb6772e6eaad3de9902",
+      "alt": "Distinct product/game media image 2; separate from the primary cover and square-card roles."
+     }
+    ],
+    "features": [
+     "Interactive digital exhibit built around Nintendo Switch 2",
+     "Explains magnetic Joy-Con 2 attachment",
+     "Hardware and display technology exhibits",
+     "Quizzes and hidden facts",
+     "Mouse-control demonstrations",
+     "HD Rumble 2 demonstrations",
+     "Minigames and tech demos",
+     "CameraPlay support in compatible experiences",
+     "HDR output on compatible TVs",
+     "Single-player educational structure"
+    ],
+    "perfResolutionDocked": "1920x1080 output",
+    "perfResolutionHandheld": "1920x1080",
+    "perfFps": "60",
+    "perfHdr": true,
+    "perfNotes": "Welcome Tour is a light first-party interactive hardware showcase. Captured gameplay demonstrates a 60 FPS presentation. The handheld display output is 1920x1080; the validator fields use 1080p-class output for both handheld and TV rather than leaving required fields blank.",
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "hardwareId": "prd_acf4c89908764c62",
+      "informationStatus": "verified",
+      "unavailableReason": "Nintendo does not publish measured rendering resolution/FPS values for this title.",
+      "handheld": {
+       "supported": true,
+       "resolution": "1920x1080",
+       "renderingResolution": "1920x1080-class",
+       "outputResolution": "1920x1080",
+       "fps": "60",
+       "fpsMin": "60",
+       "fpsMax": "60"
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1920x1080 output",
+       "renderingResolution": "1920x1080-class",
+       "outputResolution": "1920x1080",
+       "fps": "60",
+       "fpsMin": "60",
+       "fpsMax": "60",
+       "hdr": true
+      },
+      "sourceName": "Nintendo Switch 2 Welcome Tour gameplay capture / hardware demonstrations",
+      "sourceUrl": "https://www.youtube.com/watch?v=n_dHcDAzWZ0",
+      "verificationStatus": "captured-gameplay-output",
+      "performanceNotes": "Welcome Tour is a light first-party interactive hardware showcase. Captured gameplay demonstrates a 60 FPS presentation. The handheld display output is 1920x1080; the validator fields use 1080p-class output for both handheld and TV rather than leaving required fields blank."
+     }
+    ],
+    "downloadSizeGb": 1.7,
+    "requiredSpaceGb": 1.7,
+    "microSdRecommended": false,
+    "languagesAudio": [
+     "Japanese",
+     "English"
+    ],
+    "languagesText": [
+     "Japanese",
+     "British English",
+     "French",
+     "German",
+     "Italian",
+     "Spanish",
+     "Korean",
+     "Dutch",
+     "Simplified Chinese",
+     "Traditional Chinese",
+     "Latin American Spanish",
+     "Brazilian Portuguese",
+     "American English"
+    ],
+    "arabicSupport": false,
+    "mpLocalPlayers": false,
+    "mpOnlinePlayers": false,
+    "mpCoop": false,
+    "mpCompetitive": false,
+    "mpSplitScreen": false,
+    "mpLocalWireless": false,
+    "guides": [
+     {
+      "title": "Nintendo Store",
+      "summary": "Official feature descriptions, modes and supported languages.",
+      "url": "https://www.nintendo.com/us/store/products/nintendo-switch-2-welcome-tour-switch-2/"
+     },
+     {
+      "title": "Nintendo Feature Article",
+      "summary": "Additional explanation of exhibits and later areas.",
+      "url": "https://www.nintendo.com/us/whatsnew/get-an-inside-look-with-nintendo-switch-2-welcome-tour/"
+     },
+     {
+      "title": "Deku Deals",
+      "summary": "Completion times and aggregate scores.",
+      "url": "https://www.dekudeals.com/items/nintendo-switch-2-welcome-tour"
+     }
+    ],
+    "completionMain": 5.5,
+    "completionExtras": 8,
+    "completionAll": 10.5,
+    "faq": [
+     {
+      "q": "Is Welcome Tour free with Nintendo Switch 2?",
+      "a": "No. It is sold as separate digital software."
+     },
+     {
+      "q": "How long does it take?",
+      "a": "Crowdsourced data lists about 5.5 hours for the main path and roughly 10.5 hours for completionist play."
+     },
+     {
+      "q": "Does it support Simplified Chinese?",
+      "a": "Yes."
+     },
+     {
+      "q": "Is it multiplayer?",
+      "a": "No. Nintendo lists one player on a single system."
+     },
+     {
+      "q": "What does it teach?",
+      "a": "It explains Nintendo Switch 2 design and features such as magnetic Joy-Con 2 attachment, mouse controls, HD Rumble 2 and other hardware technology."
+     },
+     {
+      "q": "Are extra accessories required?",
+      "a": "Some demonstrations require additional accessories sold separately."
+     }
+    ],
+    "verdictScore": 7.5,
+    "verdictSummary": "A polished interactive hardware tour that succeeds as an educational companion to Switch 2, though its scope is intentionally smaller than a conventional game.",
+    "verdictPros": [
+     "Excellent introduction to Switch 2 hardware concepts",
+     "Interactive instead of purely instructional",
+     "Very small download size",
+     "Simplified Chinese support"
+    ],
+    "verdictCons": [
+     "Paid software rather than a bundled system app",
+     "Some demonstrations require additional accessories"
+    ],
+    "reviews": [
+     {
+      "source": "Metacritic",
+      "score": "54/100",
+      "quote": "Mixed critical reception; reviewers liked the technical detail but often criticized selling it separately rather than bundling it with the console.",
+      "url": "https://www.metacritic.com/"
+     },
+     {
+      "source": "OpenCritic",
+      "score": "61/100",
+      "quote": "Reviews commonly described it as an interactive manual with surprisingly deep hardware explanations but limited game-like scope.",
+      "url": "https://opencritic.com/"
+     },
+     {
+      "source": "Deku Deals users",
+      "score": "3.9/10",
+      "quote": "User aggregate data is notably weaker than many first-party Switch 2 releases.",
+      "url": "https://www.dekudeals.com/items/nintendo-switch-2-welcome-tour"
+     }
+    ],
+    "timeline": [
+     {
+      "date": "2025-04-02",
+      "title": "Nintendo Switch 2 Direct",
+      "body": "Welcome Tour was revealed alongside Nintendo Switch 2."
+     },
+     {
+      "date": "2025-06-05",
+      "title": "Launch",
+      "body": "Released digitally on the same day as Nintendo Switch 2."
+     },
+     {
+      "date": "2025-07-01",
+      "title": "Nintendo feature article",
+      "body": "Nintendo published a deeper official overview explaining later exhibits and tech-focused content."
+     }
+    ],
+    "patchNotes": [
+     {
+      "version": "Launch version",
+      "date": "2025-06-05",
+      "body": "Initial digital release alongside Nintendo Switch 2."
+     },
+     {
+      "version": "Post-launch system compatibility",
+      "date": "2025-2026",
+      "body": "The software continued to demonstrate current Nintendo Switch 2 hardware features and accessories."
+     },
+     {
+      "version": "Current",
+      "date": "2026",
+      "body": "Available as a digital Nintendo Switch 2 exclusive."
+     }
+    ],
+    "soundtrack": [
+     {
+      "title": "Nintendo Switch 2 Welcome Tour in-game soundtrack",
+      "url": "https://www.nintendo.com/us/store/products/nintendo-switch-2-welcome-tour-switch-2/"
+     }
+    ],
+    "seriesName": "Nintendo hardware experiences",
+    "seriesEntries": [
+     "Nintendo Switch 2 Welcome Tour"
+    ],
+    "studioName": "Nintendo",
+    "studioUrl": "https://www.nintendo.com/",
+    "studioLocation": "Kyoto, Japan",
+    "studioAbout": "Nintendo developed Welcome Tour as an interactive exhibit that explains the hardware, design and technology of Nintendo Switch 2 through facts, quizzes, demonstrations and minigames.",
+    "setupNeeds": [
+     "Nintendo Switch 2 system required for the Nintendo Switch 2 version.",
+     "Internet connection is required for digital download, updates and online/service features where applicable.",
+     "Nintendo Account required for Nintendo eShop purchase/download.",
+     "Sufficient internal storage or compatible microSD Express storage required.",
+     "Nintendo Switch Online membership is required only for game-specific online multiplayer/features that explicitly use it."
+    ],
+    "sources": [
+     {
+      "name": "Nintendo Store",
+      "url": "https://www.nintendo.com/us/store/products/nintendo-switch-2-welcome-tour-switch-2/"
+     },
+     {
+      "name": "Nintendo News",
+      "url": "https://www.nintendo.com/us/whatsnew/get-an-inside-look-with-nintendo-switch-2-welcome-tour/"
+     },
+     {
+      "name": "Deku Deals",
+      "url": "https://www.dekudeals.com/items/nintendo-switch-2-welcome-tour"
+     }
+    ],
+    "boxContentsList": "[Circular]",
+    "image": "/api/files/products/prd_37d91330c3514080/coverImage-5cfaafb2d21556e9.avif",
+    "banner": "/api/files/products/prd_37d91330c3514080/bannerImages-1-dc2c5c1e0a144a20.avif",
+    "schemaId": "",
+    "badgeEn": "وفر 40%",
+    "badgeKu": "وفر 40%",
+    "featuresEn": [
+     "Interactive digital exhibit built around Nintendo Switch 2",
+     "Explains magnetic Joy-Con 2 attachment",
+     "Hardware and display technology exhibits",
+     "Quizzes and hidden facts",
+     "Mouse-control demonstrations",
+     "HD Rumble 2 demonstrations",
+     "Minigames and tech demos",
+     "CameraPlay support in compatible experiences",
+     "HDR output on compatible TVs",
+     "Single-player educational structure"
+    ],
+    "featuresKu": [
+     "Interactive digital exhibit built around Nintendo Switch 2",
+     "Explains magnetic Joy-Con 2 attachment",
+     "Hardware and display technology exhibits",
+     "Quizzes and hidden facts",
+     "Mouse-control demonstrations",
+     "HD Rumble 2 demonstrations",
+     "Minigames and tech demos",
+     "CameraPlay support in compatible experiences",
+     "HDR output on compatible TVs",
+     "Single-player educational structure"
+    ],
+    "sales": 0,
+    "images": [],
+    "modes": []
+   }
+  },
+  {
+   "id": "prd_4241c51108d849b2",
+   "slug": "nintendo-switch-sports",
+   "title": "Nintendo Switch Sports",
+   "platform": "switch1",
+   "isHidden": true,
+   "hash": "88c71de1c381b37eed89f5cccd19fdbd328746d4f4e22471e34f6d05effb74db",
+   "images": [
+    {
+     "role": "front-box",
+     "field": "cartridgeImage",
+     "url": "https://banan.to/api/files/products/prd_4241c51108d849b2/front-box-efc90ebe4368a968.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 457298,
+     "width": 1167,
+     "height": 1888,
+     "thumb": "review-workdir/thumbs/batch-017/nintendo-switch-sports__front-box-0.png"
+    },
+    {
+     "role": "front-box",
+     "field": "box_front_url",
+     "url": "https://assets.nintendo.com/image/upload/ar_3:4,c_fit,g_auto,w_1000/f_auto/q_auto/dpr_1.5/store/software/switch/70010000049931/282ce6a96d5855d8b46aa9316314969f731a26ef9c7b2bc1e5aebe62dcf2ece2",
+     "status": 400,
+     "contentType": "image/gif"
+    },
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://assets.nintendo.com/image/upload/ar_1:1,c_fill,g_auto,w_1000/f_auto/q_auto/dpr_1.5/store/software/switch/70010000049931/282ce6a96d5855d8b46aa9316314969f731a26ef9c7b2bc1e5aebe62dcf2ece2",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 212495,
+     "width": 1500,
+     "height": 1500,
+     "thumb": "review-workdir/thumbs/batch-017/nintendo-switch-sports__square-card-2.png"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://assets.nintendo.com/image/upload/ar_16:9,c_fill,g_auto,w_1600/f_auto/q_auto/dpr_1.5/store/software/switch/70010000049931/ee756f617f2e59e7cb4e09fccda40dfebfed6aaa94f1164f4fed8f6d38253f28",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 285336,
+     "width": 2400,
+     "height": 1350,
+     "thumb": "review-workdir/thumbs/batch-017/nintendo-switch-sports__detail-cover-3.png"
+    },
+    {
+     "role": "3d-texture",
+     "field": "coverHiResImage",
+     "url": "https://banan.to/api/files/products/prd_4241c51108d849b2/3d-wrap-880e1a01ee9545b5.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 1018102,
+     "width": 2454,
+     "height": 1888,
+     "thumb": "review-workdir/thumbs/batch-017/nintendo-switch-sports__3d-texture-4.png"
+    },
+    {
+     "role": "listing",
+     "field": "image",
+     "url": "https://assets.nintendo.com/image/upload/ar_16:9,c_fill,g_auto,w_1600/f_auto/q_auto/dpr_1.5/store/software/switch/70010000049931/ee756f617f2e59e7cb4e09fccda40dfebfed6aaa94f1164f4fed8f6d38253f28",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 285336,
+     "width": 2400,
+     "height": 1350,
+     "thumb": "review-workdir/thumbs/batch-017/nintendo-switch-sports__listing-5.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[0]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000049931/08357e380f643e3f73773aef78ab8aa364fff62cc3794e6a3082d7ec48b38aa5",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 133692,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-017/nintendo-switch-sports__banner-6.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[1]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000049931/d008f8312312fff3dcb3cf726ded0195f91b5d8b3946ba32d7ef0ac16c515fb3",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 142682,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-017/nintendo-switch-sports__banner-7.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[2]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000049931/42d806ffe805de9673f9dc4496e2180832e7a5636fb555faa5279101978fcb2b",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 119677,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-017/nintendo-switch-sports__banner-8.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[3]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000049931/a8af665a4e14030240458b5b2fa1c9ac490f7fc4956bc429fd693babe0cfaf9d",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 134225,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-017/nintendo-switch-sports__banner-9.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000049931/08357e380f643e3f73773aef78ab8aa364fff62cc3794e6a3082d7ec48b38aa5",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 133692,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-017/nintendo-switch-sports__gallery-10.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[1]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000049931/d008f8312312fff3dcb3cf726ded0195f91b5d8b3946ba32d7ef0ac16c515fb3",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 142682,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-017/nintendo-switch-sports__gallery-11.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[2]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000049931/42d806ffe805de9673f9dc4496e2180832e7a5636fb555faa5279101978fcb2b",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 119677,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-017/nintendo-switch-sports__gallery-12.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[3]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000049931/a8af665a4e14030240458b5b2fa1c9ac490f7fc4956bc429fd693babe0cfaf9d",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 134225,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-017/nintendo-switch-sports__gallery-13.png"
+    }
+   ],
+   "record": {
+    "title": "Nintendo Switch Sports",
+    "titleEn": "Nintendo Switch Sports",
+    "titleKu": "Nintendo Switch Sports",
+    "slug": "nintendo-switch-sports",
+    "description": "Get moving* with Basketball**, Golf**, Soccer, Volleyball, Bowling, Tennis, Badminton, and Chambara (swordplay) using Joy-Con™ controllers! Controls are intuitive, so you can hit the court (or lanes, or field, or arena) and get started. With controlled motions you can curve your bowling ball, add spin to a tennis shot, or even use a Joy-Con with the included Leg Strap accessory to kick the ball in Soccer. Family and friends can join in on the fun on the same system*** or online****.\n\nPlay online and face opponents near and far to earn in-game rewards or aim for the Pro League\n\nFace off against opponents worldwide and strive to reach the Pro League in every sport. As you play online in random matchmaking, redeem points you earn for in-game rewards like outfits, sports accessories, gear, and much more for your avatar. The selection of items rotates each week, so check back and see what’s in stock!\n\nPlay with friends and family in the same room or across the world\n\nBowl, spike, and duel with friends in all 8 sports! Pass a Joy-Con controller to a friend for some 1v1, 2v2, or a free-for-all that will get everyone moving. In Bowling, all players can bowl simultaneously—no waiting for your turn. Play each sport online, or team up with a friend on the same system to take on opponents near and far in team sports like Basketball, Volleyball and Tennis.",
+    "descriptionEn": "Get moving* with Basketball**, Golf**, Soccer, Volleyball, Bowling, Tennis, Badminton, and Chambara (swordplay) using Joy-Con™ controllers! Controls are intuitive, so you can hit the court (or lanes, or field, or arena) and get started. With controlled motions you can curve your bowling ball, add spin to a tennis shot, or even use a Joy-Con with the included Leg Strap accessory to kick the ball in Soccer. Family and friends can join in on the fun on the same system*** or online****.\n\nPlay online and face opponents near and far to earn in-game rewards or aim for the Pro League\n\nFace off against opponents worldwide and strive to reach the Pro League in every sport. As you play online in random matchmaking, redeem points you earn for in-game rewards like outfits, sports accessories, gear, and much more for your avatar. The selection of items rotates each week, so check back and see what’s in stock!\n\nPlay with friends and family in the same room or across the world\n\nBowl, spike, and duel with friends in all 8 sports! Pass a Joy-Con controller to a friend for some 1v1, 2v2, or a free-for-all that will get everyone moving. In Bowling, all players can bowl simultaneously—no waiting for your turn. Play each sport online, or team up with a friend on the same system to take on opponents near and far in team sports like Basketball, Volleyball and Tennis.",
+    "descriptionKu": "Nintendo Switch Sports brings motion-controlled sports to Switch with intuitive Joy-Con actions, local party play, online matchmaking, cosmetic rewards, and free post-launch sport additions. Nintendo lists TV and Tabletop modes, but not Handheld mode, because the game relies on detached Joy-Con motion input.",
+    "cartridgeImage": "/api/files/products/prd_4241c51108d849b2/front-box-efc90ebe4368a968.webp",
+    "nintendoCardImage": "https://assets.nintendo.com/image/upload/ar_1:1,c_fill,g_auto,w_1000/f_auto/q_auto/dpr_1.5/store/software/switch/70010000049931/282ce6a96d5855d8b46aa9316314969f731a26ef9c7b2bc1e5aebe62dcf2ece2",
+    "coverHiResImage": "/api/files/products/prd_4241c51108d849b2/3d-wrap-880e1a01ee9545b5.webp",
+    "coverImage": "https://assets.nintendo.com/image/upload/ar_16:9,c_fill,g_auto,w_1600/f_auto/q_auto/dpr_1.5/store/software/switch/70010000049931/ee756f617f2e59e7cb4e09fccda40dfebfed6aaa94f1164f4fed8f6d38253f28",
+    "bannerImages": [
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000049931/08357e380f643e3f73773aef78ab8aa364fff62cc3794e6a3082d7ec48b38aa5",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000049931/d008f8312312fff3dcb3cf726ded0195f91b5d8b3946ba32d7ef0ac16c515fb3",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000049931/42d806ffe805de9673f9dc4496e2180832e7a5636fb555faa5279101978fcb2b",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000049931/a8af665a4e14030240458b5b2fa1c9ac490f7fc4956bc429fd693babe0cfaf9d"
+    ],
+    "youtubeTrailer": "",
+    "releaseDate": "2022-04-29",
+    "ageRating": "Everyone 10+",
+    "metacriticRating": 72,
+    "genres": [
+     "Action",
+     "Party",
+     "Sports"
+    ],
+    "platform": "switch1",
+    "size": "3.25 GB",
+    "numberOfPlayers": "1-4",
+    "supportedLanguages": "Japanese, British English, French, German, Italian, Spanish, Korean, Dutch, Portuguese, Russian, Simplified Chinese, Latin American Spanish, Canadian French, Traditional Chinese, American English",
+    "price": 8500,
+    "cost": 1500,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": true,
+    "displayOrder": 0,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "مشترك",
+      "description": "حساب مشترك",
+      "stock": 9999,
+      "isInfiniteStock": true,
+      "customerDescription": "حساب مشترك"
+     },
+     {
+      "id": "online_account",
+      "name": "خاص بك",
+      "description": "حساب خاص بك",
+      "stock": 9999,
+      "isInfiniteStock": true,
+      "customerDescription": "حساب خاص بك"
+     }
+    ],
+    "types": [
+     {
+      "id": "regular_offline",
+      "name": "مشترك — اللعبة الأساسية",
+      "optionId": "offline_account",
+      "price": 8500,
+      "cost": 1500,
+      "description": "اللعبة الأساسية",
+      "stock": 9999,
+      "isInfiniteStock": true,
+      "customerDescription": "اللعبة الأساسية"
+     },
+     {
+      "id": "standard_online",
+      "name": "خاص بك — اللعبة الأساسية",
+      "optionId": "online_account",
+      "price": 14250,
+      "cost": 1500,
+      "description": "اللعبة الأساسية",
+      "stock": 9999,
+      "isInfiniteStock": true,
+      "customerDescription": "اللعبة الأساسية"
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "Active",
+    "kind": "account",
+    "trade_value_iqd": 7750,
+    "store_offer_bonus_iqd": 1250,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "id": "prd_4241c51108d849b2",
+    "schema_version": 24,
+    "titleAr": "نينتندو سويتش سبورتس",
+    "compatibility": [
+     "Nintendo Switch",
+     "Nintendo Switch 2: supported with behavior consistent with Nintendo Switch"
+    ],
+    "edition": "Standard / Store Variants",
+    "developer": "Nintendo",
+    "publisher": "Nintendo",
+    "seriesName": "Nintendo Sports",
+    "metacriticUrl": "https://www.metacritic.com/game/nintendo-switch-sports/",
+    "opencriticRating": 74,
+    "userScore": 6.9,
+    "price_usd": 39.99,
+    "officialUrl": "https://nintendoswitchsports.nintendo.com/",
+    "eshopUrl": "https://www.nintendo.com/us/store/products/nintendo-switch-sports-switch/",
+    "gameIsOffline": true,
+    "gameIsOnline": true,
+    "gameLanguageLocked": false,
+    "description_short": "Play eight motion-controlled sports locally or online using Joy-Con controllers, including Basketball, Golf, Soccer, Volleyball, Bowling, Tennis, Badminton, and Chambara.",
+    "description_ar": "مجموعة رياضية حركية تضم ثماني رياضات: كرة السلة والغولف وكرة القدم والكرة الطائرة والبولينغ والتنس والريشة الطائرة وتشانبارا. تدعم اللعب المحلي والأونلاين باستخدام Joy-Con، ولا تدعم وضع Handheld لأن اللعب يتطلب وحدات تحكم منفصلة.",
+    "box_front_url": "https://assets.nintendo.com/image/upload/ar_3:4,c_fit,g_auto,w_1000/f_auto/q_auto/dpr_1.5/store/software/switch/70010000049931/282ce6a96d5855d8b46aa9316314969f731a26ef9c7b2bc1e5aebe62dcf2ece2",
+    "languagesText": [
+     "Japanese",
+     "British English",
+     "French",
+     "German",
+     "Italian",
+     "Spanish",
+     "Korean",
+     "Dutch",
+     "Portuguese",
+     "Russian",
+     "Simplified Chinese",
+     "Latin American Spanish",
+     "Canadian French",
+     "Traditional Chinese",
+     "American English"
+    ],
+    "languagesAudio": [
+     "Audio language availability varies by title and region; see official product information"
+    ],
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": false,
+    "nintendoPlayModes": [
+     "TV mode",
+     "Tabletop mode"
+    ],
+    "nintendoOnlineRequired": true,
+    "nintendoCloudSaves": true,
+    "nintendoGameKeyCard": false,
+    "nintendoPhysicalNeedsDownload": false,
+    "switch2Enhanced": false,
+    "switch2Exclusive": false,
+    "nintendoNotes": "Nintendo product identity and store facts were verified against the official listing on 2026-09-02. Performance values are included only where an official source publishes them.",
+    "editionsList": [
+     {
+      "name": "Regular / Offline",
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_3:4,c_fit,g_auto,w_1000/f_auto/q_auto/dpr_1.5/store/software/switch/70010000049931/282ce6a96d5855d8b46aa9316314969f731a26ef9c7b2bc1e5aebe62dcf2ece2",
+      "contents": [
+       {
+        "label": "Regular / Offline store package"
+       },
+       {
+        "label": "Offline account access"
+       },
+       {
+        "label": "Infinite stock by default"
+       }
+      ]
+     },
+     {
+      "name": "Standard / Online",
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_1:1,c_fill,g_auto,w_1000/f_auto/q_auto/dpr_1.5/store/software/switch/70010000049931/282ce6a96d5855d8b46aa9316314969f731a26ef9c7b2bc1e5aebe62dcf2ece2",
+      "contents": [
+       {
+        "label": "Standard / Online store package"
+       },
+       {
+        "label": "Online account access"
+       },
+       {
+        "label": "Infinite stock by default"
+       }
+      ]
+     }
+    ],
+    "gameplayPillars": [
+     {
+      "title": "Motion-controlled sports",
+      "description": "Joy-Con motion maps real-world swings, kicks, and throws into sports actions.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000049931/08357e380f643e3f73773aef78ab8aa364fff62cc3794e6a3082d7ec48b38aa5"
+     },
+     {
+      "title": "Eight supported sports",
+      "description": "Basketball, Golf, Soccer, Volleyball, Bowling, Tennis, Badminton, and Chambara provide varied rule sets.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000049931/d008f8312312fff3dcb3cf726ded0195f91b5d8b3946ba32d7ef0ac16c515fb3"
+     },
+     {
+      "title": "Local party play",
+      "description": "Several sports support multiple players on one system for family and party sessions.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000049931/42d806ffe805de9673f9dc4496e2180832e7a5636fb555faa5279101978fcb2b"
+     },
+     {
+      "title": "Online matchmaking",
+      "description": "Players can compete online for ranks and cosmetic rewards through Nintendo Switch Online features.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000049931/a8af665a4e14030240458b5b2fa1c9ac490f7fc4956bc429fd693babe0cfaf9d"
+     },
+     {
+      "title": "Leg Strap support",
+      "description": "Some Soccer activities can use the Leg Strap accessory to translate real kicking motions.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000049931/08357e380f643e3f73773aef78ab8aa364fff62cc3794e6a3082d7ec48b38aa5"
+     }
+    ],
+    "worldSummary": "Nintendo Switch Sports brings motion-controlled sports to Switch with intuitive Joy-Con actions, local party play, online matchmaking, cosmetic rewards, and free post-launch sport additions. Nintendo lists TV and Tabletop modes, but not Handheld mode, because the game relies on detached Joy-Con motion input.",
+    "storyChapters": [
+     {
+      "title": "Choose a Sportmate or Mii",
+      "body": "Players begin by choosing and customizing an avatar for Spocco Square.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000049931/d008f8312312fff3dcb3cf726ded0195f91b5d8b3946ba32d7ef0ac16c515fb3"
+     },
+     {
+      "title": "Learn individual sports",
+      "body": "Each sport uses its own motion gestures, timing systems, scoring rules, and team structure.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000049931/42d806ffe805de9673f9dc4496e2180832e7a5636fb555faa5279101978fcb2b"
+     },
+     {
+      "title": "Play locally with family",
+      "body": "The game is designed around quick shared sessions using multiple Joy-Con controllers.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000049931/a8af665a4e14030240458b5b2fa1c9ac490f7fc4956bc429fd693babe0cfaf9d"
+     },
+     {
+      "title": "Compete online",
+      "body": "Online play unlocks broader matchmaking and reward progression.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000049931/08357e380f643e3f73773aef78ab8aa364fff62cc3794e6a3082d7ec48b38aa5"
+     },
+     {
+      "title": "Return for updated sports",
+      "body": "Free updates expanded the game with Golf and later Basketball, increasing its long-term variety.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000049931/d008f8312312fff3dcb3cf726ded0195f91b5d8b3946ba32d7ef0ac16c515fb3"
+     }
+    ],
+    "features": [
+     "Eight sports",
+     "Motion controls",
+     "Local multiplayer",
+     "Online matchmaking and Pro League",
+     "Mii and Sportsmate customization"
+    ],
+    "perfResolutionDocked": "Not published by Nintendo",
+    "perfResolutionHandheld": "Not Supported",
+    "perfFps": "Not published by Nintendo",
+    "perfHdr": false,
+    "playTimeMain": 0,
+    "completionMain": 0,
+    "completionExtras": 0,
+    "faq": [
+     {
+      "q": "How many sports are included?",
+      "a": "Eight: Basketball, Golf, Soccer, Volleyball, Bowling, Tennis, Badminton, and Chambara."
+     },
+     {
+      "q": "Does it support Handheld mode?",
+      "a": "No. Nintendo lists TV and Tabletop modes only."
+     },
+     {
+      "q": "How many players are supported?",
+      "a": "Nintendo lists 1–4 players on one system and 1–2 players online; individual sports can have additional controller requirements."
+     },
+     {
+      "q": "Does it work on Nintendo Switch 2?",
+      "a": "Yes. Nintendo marks it supported with behavior consistent with Nintendo Switch."
+     }
+    ],
+    "verdictScore": 8.5,
+    "verdictPros": [
+     "Very accessible motion controls",
+     "Strong family and party appeal",
+     "Online play extends replay value",
+     "Free sports updates expanded content",
+     "Simple presentation works well for casual players"
+    ],
+    "verdictCons": [
+     "Handheld mode is not supported",
+     "Depth varies significantly between sports",
+     "Requires space for safe motion play",
+     "Some online rewards rotate over time",
+     "Not designed as a realistic sports simulator"
+    ],
+    "reviews": [
+     {
+      "source": "Metacritic",
+      "score": "72",
+      "url": "https://www.metacritic.com/game/nintendo-switch-sports/"
+     },
+     {
+      "source": "OpenCritic",
+      "score": "74",
+      "url": "https://opencritic.com/"
+     }
+    ],
+    "timeline": [
+     {
+      "date": "2022-04-29",
+      "title": "Released on target Nintendo platform"
+     }
+    ],
+    "patchNotes": [
+     {
+      "version": "Current retail build",
+      "date": "2026-08-27"
+     }
+    ],
+    "studioName": "Nintendo",
+    "studioUrl": "https://www.nintendo.com/us/store/products/nintendo-switch-sports-switch/",
+    "studioLocation": "See publisher/developer profile",
+    "sources": [
+     {
+      "name": "Nintendo eShop (US)",
+      "url": "https://www.nintendo.com/us/store/products/nintendo-switch-sports-switch/"
+     },
+     {
+      "name": "Nintendo Switch Sports official site",
+      "url": "https://nintendoswitchsports.nintendo.com/"
+     }
+    ],
+    "downloadSizeGb": 3.25,
+    "requiredSpaceGb": 3.25,
+    "microSdRecommended": false,
+    "storageNotes": "Nintendo lists a 3.25 GB download. Free-space requirements can increase with updates.",
+    "mpLocalPlayers": 4,
+    "mpOnlinePlayers": 2,
+    "mpCoop": true,
+    "mpCompetitive": true,
+    "mpLocalWireless": false,
+    "mpSplitScreen": false,
+    "dlc": [
+     {
+      "name": "Downloadable / additional content status",
+      "description": "No paid expansion pass is required; major sports additions were delivered through free software updates."
+     }
+    ],
+    "galleryImages": [
+     {
+      "alt": "Nintendo Switch Sports official/promotional game-world media 1",
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000049931/08357e380f643e3f73773aef78ab8aa364fff62cc3794e6a3082d7ec48b38aa5"
+     },
+     {
+      "alt": "Nintendo Switch Sports official/promotional game-world media 2",
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000049931/d008f8312312fff3dcb3cf726ded0195f91b5d8b3946ba32d7ef0ac16c515fb3"
+     },
+     {
+      "alt": "Nintendo Switch Sports official/promotional game-world media 3",
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000049931/42d806ffe805de9673f9dc4496e2180832e7a5636fb555faa5279101978fcb2b"
+     },
+     {
+      "alt": "Nintendo Switch Sports official/promotional game-world media 4",
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000049931/a8af665a4e14030240458b5b2fa1c9ac490f7fc4956bc429fd693babe0cfaf9d"
+     }
+    ],
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "hardwareId": "prd_acf4c89908764c62",
+      "informationStatus": "available",
+      "handheld": {
+       "supported": false,
+       "resolution": "Not Supported",
+       "fps": "Not Supported",
+       "mode": "Handheld"
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "Not published by Nintendo",
+       "fps": "Not published by Nintendo",
+       "mode": "TV"
+      },
+      "sourceName": "Nintendo official product page",
+      "sourceUrl": "https://www.nintendo.com/us/store/products/nintendo-switch-sports-switch/",
+      "verificationStatus": "official",
+      "verifiedAt": "2026-09-02",
+      "performanceNotes": "Backward-compatible on Switch 2. Nintendo publishes no exact resolution or FPS; Handheld mode remains unsupported."
+     }
+    ],
+    "switch2UpgradePrice": 0,
+    "image": "https://assets.nintendo.com/image/upload/ar_16:9,c_fill,g_auto,w_1600/f_auto/q_auto/dpr_1.5/store/software/switch/70010000049931/ee756f617f2e59e7cb4e09fccda40dfebfed6aaa94f1164f4fed8f6d38253f28",
+    "banner": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000049931/08357e380f643e3f73773aef78ab8aa364fff62cc3794e6a3082d7ec48b38aa5",
+    "createdAt": "2026-08-27T21:25:00.898Z",
+    "created_at": "2026-08-27T21:25:00.898Z",
+    "updatedAt": "2026-09-02T00:31:52.126Z",
+    "updated_at": "2026-08-27T21:25:00.898Z",
+    "badgeEn": "وفر 40%",
+    "badgeKu": "وفر 40%",
+    "featuresEn": [
+     "Eight sports",
+     "Motion controls",
+     "Local multiplayer",
+     "Online matchmaking and Pro League",
+     "Mii and Sportsmate customization"
+    ],
+    "featuresKu": [
+     "Eight sports",
+     "Motion controls",
+     "Local multiplayer",
+     "Online matchmaking and Pro League",
+     "Mii and Sportsmate customization"
+    ],
+    "boxFrontUrl": "https://assets.nintendo.com/image/upload/ar_3:4,c_fit,g_auto,w_1000/f_auto/q_auto/dpr_1.5/store/software/switch/70010000049931/282ce6a96d5855d8b46aa9316314969f731a26ef9c7b2bc1e5aebe62dcf2ece2",
+    "sales": 0,
+    "nsuid": "70010000049931",
+    "product_code": "HACPAS8SA",
+    "title_id": "0100d2f00d5c0000",
+    "arabicSupport": false,
+    "nintendoEshopUrl": "https://www.nintendo.com/us/store/products/nintendo-switch-sports-switch/",
+    "tagline": "Dunk, swing, kick, spike, and bowl your way to victory in eight motion-controlled sports.",
+    "fitFor": [
+     "Families and groups who want active motion-controlled party play",
+     "Players who want local matches for up to four people",
+     "Players who want online competition and rotating cosmetic rewards"
+    ],
+    "notFitFor": [
+     "Nintendo Switch Lite users without separate compatible Joy-Con controllers",
+     "Players who need Handheld mode",
+     "Players looking for a traditional button-only sports simulation"
+    ],
+    "storySummary": "This is a sports collection rather than a story campaign; players visit Spocco Square to compete in eight sports.",
+    "dlcList": [
+     {
+      "name": "No paid gameplay DLC",
+      "description": "Nintendo added Golf and Basketball through free software updates; no paid gameplay expansion is required for the eight listed sports."
+     }
+    ],
+    "updates": [
+     {
+      "date": "2022-11-28",
+      "title": "Golf update",
+      "description": "Nintendo added Golf as a free update."
+     },
+     {
+      "date": "2024-07-09",
+      "title": "Basketball update",
+      "description": "Nintendo added Basketball as a free update."
+     }
+    ],
+    "music": "Nintendo has not published a standalone soundtrack product on the official store page; the game uses original menu and sport-specific music and effects.",
+    "completionTime": "No fixed completion time: matches are session-based and progression continues through online leagues and rotating rewards.",
+    "completionistTime": "No finite completionist time is published because online rewards and competitive progression rotate over time.",
+    "pros": [
+     "Eight distinct motion sports",
+     "Strong local party support",
+     "Online play and free sport updates"
+    ],
+    "cons": [
+     "No Handheld mode",
+     "Some modes require extra Joy-Con accessories",
+     "Online features require Nintendo Switch Online"
+    ],
+    "verdictSummary": "An accessible motion-sports collection that works best for local groups and online competition, with the important limitation that Handheld mode is not supported.",
+    "guides": [
+     {
+      "title": "Nintendo Switch Sports official site",
+      "summary": "Official sport, control, and update information.",
+      "url": "https://nintendoswitchsports.nintendo.com/"
+     }
+    ],
+    "perfNotes": "Nintendo confirms TV and Tabletop support but does not publish exact rendering resolution or frame-rate specifications."
+   }
+  },
+  {
+   "id": "prd_1ad4955cc45d4ef1",
+   "slug": "paper-mario-the-origami-king-switch-1",
+   "title": "Paper Mario: The Origami King",
+   "platform": "switch1",
+   "isHidden": false,
+   "hash": "59215f9d58801d9477e17b565fb981ed2c0302eb59b2d92aa8cf88673798dfea",
+   "images": [
+    {
+     "role": "front-box",
+     "field": "cartridgeImage",
+     "url": "https://banan.to/api/files/products/prd_1ad4955cc45d4ef1/front-811032eecdd365a0.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 662406,
+     "width": 1166,
+     "height": 1888,
+     "thumb": "review-workdir/thumbs/batch-017/paper-mario-the-origami-king-switch-1__front-box-0.png"
+    },
+    {
+     "role": "front-box",
+     "field": "box_front_url",
+     "url": "https://images.launchbox-app.com/a89024a5-33ef-400c-939e-d15665b08632.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 662406,
+     "width": 1166,
+     "height": 1888,
+     "thumb": "review-workdir/thumbs/batch-017/paper-mario-the-origami-king-switch-1__front-box-1.png"
+    },
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://banan.to/api/files/products/prd_1ad4955cc45d4ef1/square-18f2e959032f5dfd.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://banan.to/api/files/products/prd_1ad4955cc45d4ef1/cover-4503b4cd04e04baa.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "3d-texture",
+     "field": "coverHiResImage",
+     "url": "https://banan.to/api/files/products/prd_1ad4955cc45d4ef1/3d-texture-53746fb34208da81.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 8043936,
+     "width": 4012,
+     "height": 3096,
+     "thumb": "review-workdir/thumbs/batch-017/paper-mario-the-origami-king-switch-1__3d-texture-4.png"
+    },
+    {
+     "role": "listing",
+     "field": "image",
+     "url": "https://banan.to/api/files/products/prd_1ad4955cc45d4ef1/cover-4503b4cd04e04baa.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[0]",
+     "url": "https://banan.to/api/files/products/prd_1ad4955cc45d4ef1/banner-0-79414a3a257e9db7.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[1]",
+     "url": "https://banan.to/api/files/products/prd_1ad4955cc45d4ef1/banner-1-1ca3e5b5b87b8dde.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[2]",
+     "url": "https://banan.to/api/files/products/prd_1ad4955cc45d4ef1/banner-2-76beccf456cc2307.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[3]",
+     "url": "https://banan.to/api/files/products/prd_1ad4955cc45d4ef1/banner-3-6da1d6362473623b.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000029726/2a40327a93dcf9f68a65cdefaeac2f7d6ef2c15b1fd07c1c1b80533a6570f7e8",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 96330,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-017/paper-mario-the-origami-king-switch-1__gallery-10.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[1]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000029726/63e790d041c0db75ec2c5f4a5cadebbf7b99454b671e53842d59c648ddcf2f1c",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 159914,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-017/paper-mario-the-origami-king-switch-1__gallery-11.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[2]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000029726/3d03359a28c83765b444582eb5001748e6790dcae373846b7c99fac13e0931e2",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 174861,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-017/paper-mario-the-origami-king-switch-1__gallery-12.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[3]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000029726/e76b968799ccae115fc0bff9e5b51c8cad851c38eccaa4e1dbf3b171a58de7c7",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 112652,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-017/paper-mario-the-origami-king-switch-1__gallery-13.png"
+    }
+   ],
+   "record": {
+    "title": "Paper Mario: The Origami King",
+    "titleEn": "Paper Mario: The Origami King",
+    "titleKu": "Paper Mario: The Origami King",
+    "slug": "paper-mario-the-origami-king-switch-1",
+    "description": "A paper-crafted adventure sends Mario and Olivia across a folded world of streamers, quirky allies, ring-based battles and visual creativity. Explore varied themed regions, rescue Toads, solve environmental puzzles and take on origami enemies and giant bosses as you try to stop King Olly.",
+    "descriptionEn": "A paper-crafted adventure sends Mario and Olivia across a folded world of streamers, quirky allies, ring-based battles and visual creativity. Explore varied themed regions, rescue Toads, solve environmental puzzles and take on origami enemies and giant bosses as you try to stop King Olly.",
+    "descriptionKu": "A paper-crafted adventure sends Mario and Olivia across a folded world of streamers, quirky allies, ring-based battles and visual creativity. Explore varied themed regions, rescue Toads, solve environmental puzzles and take on origami enemies and giant bosses as you try to stop King Olly.",
+    "cartridgeImage": "/api/files/products/prd_1ad4955cc45d4ef1/front-811032eecdd365a0.jpg",
+    "nintendoCardImage": "/api/files/products/prd_1ad4955cc45d4ef1/square-18f2e959032f5dfd.avif",
+    "coverHiResImage": "/api/files/products/prd_1ad4955cc45d4ef1/3d-texture-53746fb34208da81.jpg",
+    "coverImage": "/api/files/products/prd_1ad4955cc45d4ef1/cover-4503b4cd04e04baa.avif",
+    "bannerImages": [
+     "/api/files/products/prd_1ad4955cc45d4ef1/banner-0-79414a3a257e9db7.avif",
+     "/api/files/products/prd_1ad4955cc45d4ef1/banner-1-1ca3e5b5b87b8dde.avif",
+     "/api/files/products/prd_1ad4955cc45d4ef1/banner-2-76beccf456cc2307.avif",
+     "/api/files/products/prd_1ad4955cc45d4ef1/banner-3-6da1d6362473623b.avif"
+    ],
+    "gallery": [],
+    "youtubeTrailer": "https://www.youtube.com/watch?v=FX6DTLcWUdY",
+    "releaseDate": "2020-07-17",
+    "ageRating": "ESRB E / PEGI 7",
+    "metacriticRating": 80,
+    "genres": [
+     "Adventure",
+     "Puzzle",
+     "Action"
+    ],
+    "platform": "switch1",
+    "size": 6.5,
+    "numberOfPlayers": "Single system (1)",
+    "supportedLanguages": "English, Japanese, French, Spanish, German",
+    "hardwareModel": "",
+    "colorEdition": "",
+    "storageCapacity": "",
+    "screenSpecs": "",
+    "batteryLife": "",
+    "boxContents": [],
+    "boxContentsText": "",
+    "warrantyCondition": "",
+    "connectivity": "",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "Global",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "",
+    "redemptionSteps": [],
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 8000,
+    "cost": 1500,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": false,
+    "displayOrder": 0,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "Offline Account",
+      "description": "حساب مشترك",
+      "stock": 9999,
+      "isInfiniteStock": true,
+      "customerDescription": "حساب مشترك"
+     },
+     {
+      "id": "online_account",
+      "name": "Online Account",
+      "description": "حساب خاص بك",
+      "stock": 9999,
+      "isInfiniteStock": true,
+      "customerDescription": "حساب خاص بك"
+     }
+    ],
+    "types": [
+     {
+      "id": "standard_offline",
+      "name": "Offline Account",
+      "optionId": "offline_account",
+      "price": 20000,
+      "cost": 1500,
+      "description": ".",
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "standard_online",
+      "name": "Online Account",
+      "optionId": "online_account",
+      "price": 30750,
+      "cost": 20750,
+      "description": "",
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "Active",
+    "kind": "account",
+    "trade_value_iqd": 30000,
+    "store_offer_bonus_iqd": 3500,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "id": "prd_1ad4955cc45d4ef1",
+    "schema_version": 24,
+    "titleAr": "بيبر ماريو: ذا أوريغامي كينغ",
+    "compatibility": [
+     "Nintendo Switch",
+     "Nintendo Switch 2 compatibility: Supported – game behavior is consistent with Nintendo Switch"
+    ],
+    "edition": "Standard",
+    "developer": "Intelligent Systems",
+    "publisher": "Nintendo",
+    "seriesName": "Paper Mario",
+    "userScore": 8,
+    "price_usd": 59.99,
+    "officialUrl": "https://www.nintendo.com/us/store/products/paper-mario-the-origami-king-switch/",
+    "eshopUrl": "https://www.nintendo.com/us/store/products/paper-mario-the-origami-king-switch/",
+    "galleryImages": [
+     {
+      "alt": "Verified direct image URL 1",
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000029726/2a40327a93dcf9f68a65cdefaeac2f7d6ef2c15b1fd07c1c1b80533a6570f7e8"
+     },
+     {
+      "alt": "Verified direct image URL 2",
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000029726/63e790d041c0db75ec2c5f4a5cadebbf7b99454b671e53842d59c648ddcf2f1c"
+     },
+     {
+      "alt": "Verified direct image URL 3",
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000029726/3d03359a28c83765b444582eb5001748e6790dcae373846b7c99fac13e0931e2"
+     },
+     {
+      "alt": "Verified direct image URL 4",
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000029726/e76b968799ccae115fc0bff9e5b51c8cad851c38eccaa4e1dbf3b171a58de7c7"
+     },
+     {
+      "alt": "Verified direct image URL 5"
+     }
+    ],
+    "gameIsOffline": true,
+    "gameIsOnline": true,
+    "gameLanguageLocked": false,
+    "description_short": "A paper-crafted adventure sends Mario and Olivia across a folded world of streamers, quirky allies, ring-based battles and visual creativity.",
+    "description_ar": "تنطلق مغامرة ورقية مع ماريو وأوليفيا عبر عالم مطوي مليء بالشرائط العملاقة والحلفاء الطريفين والمعارك الدائرية والإبداع البصري. استكشف مناطق متنوعة، وأنقذ Toads، وحل الألغاز البيئية، وواجه أعداء الأوريغامي والزعماء الكبار لإيقاف King Olly.",
+    "box_front_url": "https://images.launchbox-app.com/a89024a5-33ef-400c-939e-d15665b08632.jpg",
+    "box_back_url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000029726/2a40327a93dcf9f68a65cdefaeac2f7d6ef2c15b1fd07c1c1b80533a6570f7e8",
+    "editionsList": [
+     {
+      "name": "Standard Edition",
+      "coverUrl": "https://images.launchbox-app.com/a89024a5-33ef-400c-939e-d15665b08632.jpg",
+      "contents": [
+       {
+        "label": "Base game"
+       },
+       {
+        "label": "Full story adventure"
+       },
+       {
+        "label": "Ring-based battle system"
+       }
+      ]
+     },
+     {
+      "name": "Digital Edition",
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_1:1,c_fill,g_auto,w_1000/f_auto/q_auto/dpr_1.5/store/software/switch/70010000029726/7f079a1e3927ea4752fb448ea7f2ccbd86933f5483ad9dd6de23ec96ed4df70b",
+      "contents": [
+       {
+        "label": "Nintendo eShop release"
+       },
+       {
+        "label": "6.5 GB download size"
+       },
+       {
+        "label": "Save Data Cloud support"
+       }
+      ]
+     },
+     {
+      "name": "Current Store Package",
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_16:9,c_fill,g_auto,w_1600/f_auto/q_auto/dpr_1.5/store/software/switch/70010000029726/7f079a1e3927ea4752fb448ea7f2ccbd86933f5483ad9dd6de23ec96ed4df70b",
+      "contents": [
+       {
+        "label": "Offline account option"
+       },
+       {
+        "label": "Online account option"
+       },
+       {
+        "label": "Hidden by default until review"
+       }
+      ]
+     }
+    ],
+    "gameplayPillars": [
+     {
+      "title": "Ring-based battles",
+      "description": "Rearrange circles of enemies to line them up for stronger attacks and more efficient turns.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000029726/2a40327a93dcf9f68a65cdefaeac2f7d6ef2c15b1fd07c1c1b80533a6570f7e8"
+     },
+     {
+      "title": "Paper-crafted exploration",
+      "description": "Travel through visually distinctive areas, rescue hidden Toads and solve environmental interactions using 1,000-Fold Arms.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000029726/63e790d041c0db75ec2c5f4a5cadebbf7b99454b671e53842d59c648ddcf2f1c"
+     },
+     {
+      "title": "Memorable bosses and companions",
+      "description": "Boss battles and traveling companions add variety, humor and structure throughout the adventure.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000029726/3d03359a28c83765b444582eb5001748e6790dcae373846b7c99fac13e0931e2"
+     },
+     {
+      "title": "Ring-based battle puzzles",
+      "description": "Regular battles ask players to rotate and slide ring layers so enemies line up efficiently before attacks, turning combat into a positioning puzzle.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000029726/e76b968799ccae115fc0bff9e5b51c8cad851c38eccaa4e1dbf3b171a58de7c7"
+     },
+     {
+      "title": "Exploration, secrets, and collectibles",
+      "description": "Large themed regions hide Toad rescues, treasure, optional encounters, and environmental puzzles that reward curiosity beyond the main path.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000029726/2a40327a93dcf9f68a65cdefaeac2f7d6ef2c15b1fd07c1c1b80533a6570f7e8"
+     }
+    ],
+    "worldSummary": "King Olly’s origami takeover twists Princess Peach’s kingdom into a folded crisis. Mario and Olivia set out across varied regions to remove giant streamers, rescue allies and stop the transformation of the world into origami.",
+    "storyChapters": [
+     {
+      "title": "The origami threat begins",
+      "body": "Mario and Luigi arrive for a festival only to discover Princess Peach and the kingdom have been transformed by King Olly.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000029726/2a40327a93dcf9f68a65cdefaeac2f7d6ef2c15b1fd07c1c1b80533a6570f7e8"
+     },
+     {
+      "title": "Travel the folded world",
+      "body": "Mario and Olivia journey through forests, deserts, seas and themed regions while removing magical streamers.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000029726/63e790d041c0db75ec2c5f4a5cadebbf7b99454b671e53842d59c648ddcf2f1c"
+     },
+     {
+      "title": "Confront King Olly",
+      "body": "The final stretch unites the game’s humor, emotion and puzzle-combat systems as Mario moves to stop the Origami King.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000029726/3d03359a28c83765b444582eb5001748e6790dcae373846b7c99fac13e0931e2"
+     },
+     {
+      "title": "Unfold the crisis across paper kingdoms",
+      "body": "Mario and Olivia travel through streamers wrapped around Peach's Castle, visiting varied paper-crafted regions to undo King Olly's plans.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000029726/63e790d041c0db75ec2c5f4a5cadebbf7b99454b671e53842d59c648ddcf2f1c"
+     },
+     {
+      "title": "Rescue allies and confront King Olly",
+      "body": "The journey mixes humor, boss battles, puzzle solving, and emotional moments before culminating in the showdown against the folded threat.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000029726/3d03359a28c83765b444582eb5001748e6790dcae373846b7c99fac13e0931e2"
+     }
+    ],
+    "features": [
+     "Ring-based turn battles",
+     "Large paper-crafted world with secrets",
+     "Distinct companions, bosses and environmental puzzles",
+     "Inventive ring battles distinguish it from prior entries",
+     "Large regions reward exploration and collectible hunting",
+     "Memorable boss battles remix the puzzle concept in clever ways"
+    ],
+    "perfResolutionDocked": "Up to 1080p docked",
+    "perfResolutionHandheld": "Up to 720p handheld",
+    "perfFps": "30",
+    "perfHdr": false,
+    "faq": [
+     {
+      "q": "Is it a traditional RPG?",
+      "a": "It mixes action-adventure structure with puzzle-like ring battles rather than focusing on a classic stat-heavy RPG system."
+     },
+     {
+      "q": "How many players can play?",
+      "a": "This is a single-player adventure."
+     },
+     {
+      "q": "What stands out most?",
+      "a": "Its paper-crafted art direction, witty writing and strong world design are the most frequently praised elements."
+     },
+     {
+      "q": "Is The Origami King a turn-based RPG?",
+      "a": "It has turn-based elements, but its regular battle system is heavily puzzle-based. Exploration, boss design, and story presentation are just as important as combat."
+     },
+     {
+      "q": "Does the game have a large world to explore?",
+      "a": "Yes. While it is structured by major regions, each area includes side activities, hidden Toads, collectibles, and optional discoveries that reward exploration."
+     }
+    ],
+    "verdictScore": 8.4,
+    "verdictSummary": "Overall score: 8.4/10. Strengths include Excellent art direction and world variety; Charming humor and character writing; Strong environmental puzzle design. Main drawbacks include Battle system divides opinion; 30 fps presentation.",
+    "verdictPros": [
+     "Excellent art direction and world variety",
+     "Charming humor and character writing",
+     "Strong environmental puzzle design",
+     "Creative art direction gives every region a distinct identity",
+     "Boss encounters are especially memorable"
+    ],
+    "verdictCons": [
+     "Battle system divides opinion",
+     "30 fps presentation",
+     "Progression systems are lighter than classic Paper Mario",
+     "Regular battles may divide players who prefer classic RPG combat",
+     "Some collectible cleanup can become repetitive late in the game"
+    ],
+    "reviews": [
+     {
+      "source": "Nintendo",
+      "score": "Official",
+      "quote": "Nintendo describes an origami-twisted adventure with ring-based battles and a vibrant paper-crafted world.",
+      "url": "https://www.nintendo.com/us/store/products/paper-mario-the-origami-king-switch/"
+     },
+     {
+      "source": "Metacritic",
+      "score": "80/100",
+      "quote": "Critical reaction was generally favorable, especially for presentation and writing.",
+      "url": "https://www.metacritic.com/game/paper-mario-the-origami-king/"
+     },
+     {
+      "source": "Announcement Trailer",
+      "score": "Official Trailer",
+      "quote": "The announcement trailer introduced King Olly, Olivia and the folded world premise.",
+      "url": "https://www.youtube.com/watch?v=FX6DTLcWUdY"
+     }
+    ],
+    "timeline": [
+     {
+      "date": "2020-05-14",
+      "title": "Announcement",
+      "body": "Nintendo revealed Paper Mario: The Origami King with a surprise trailer."
+     },
+     {
+      "date": "2020-07-17",
+      "title": "Worldwide release",
+      "body": "The game launched on Nintendo Switch."
+     },
+     {
+      "date": "2020-07-17",
+      "title": "Launch content complete",
+      "body": "The title shipped as a full single-player adventure without major DLC cadence."
+     }
+    ],
+    "patchNotes": [
+     {
+      "version": "Launch build",
+      "date": "2020-07",
+      "body": "Base game release."
+     },
+     {
+      "version": "Post-launch patches",
+      "date": "2020",
+      "body": "Minor fixes and stability updates."
+     },
+     {
+      "version": "Current build",
+      "date": "2026-08-27",
+      "body": "Stable retail version with supported Nintendo Switch 2 compatibility behavior."
+     }
+    ],
+    "studioName": "Intelligent Systems",
+    "studioUrl": "https://www.nintendo.com/",
+    "studioLocation": "Kyoto, Japan",
+    "studioAbout": "Intelligent Systems is credited as the developer of this Nintendo Switch release. Nintendo is credited as the publisher.",
+    "sources": [
+     {
+      "name": "Nintendo Store",
+      "url": "https://www.nintendo.com/us/store/products/paper-mario-the-origami-king-switch/"
+     },
+     {
+      "name": "Announcement Trailer",
+      "url": "https://www.youtube.com/watch?v=FX6DTLcWUdY"
+     },
+     {
+      "name": "Metacritic",
+      "url": "https://www.metacritic.com/game/paper-mario-the-origami-king/"
+     }
+    ],
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "hardwareId": "prd_acf4c89908764c62",
+      "informationStatus": "Available / Backward Compatible",
+      "unavailableReason": "No required Handheld or TV mode is marked unsupported.",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p",
+       "resolutionDynamic": false,
+       "renderingResolution": "1280x720",
+       "outputResolution": "1920x1080 system output / backward-compatible rendering profile",
+       "fps": "30",
+       "fpsMin": "30",
+       "fpsMax": "30",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Handheld / Backward Compatibility",
+       "notes": "Backward-compatible Nintendo Switch version. No native Switch 2 edition is used; the original Switch 720p handheld / 1080p docked presentation and 30 fps cap are retained."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p",
+       "resolutionDynamic": false,
+       "renderingResolution": "1920x1080",
+       "outputResolution": "1920x1080",
+       "fps": "30",
+       "fpsMin": "30",
+       "fpsMax": "30",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "TV / Docked / Backward Compatibility",
+       "notes": "Backward-compatible Nintendo Switch version. No native Switch 2 edition is used; the original Switch 720p handheld / 1080p docked presentation and 30 fps cap are retained."
+      },
+      "modes": [
+       {
+        "name": "Backward Compatibility",
+        "handheldResolution": "720p",
+        "handheldFps": "30",
+        "tvResolution": "1080p",
+        "tvFps": "30",
+        "hdr": false,
+        "vrr": false,
+        "notes": "Backward-compatible Nintendo Switch version. No native Switch 2 edition is used; the original Switch 720p handheld / 1080p docked presentation and 30 fps cap are retained."
+       }
+      ],
+      "upscaling": "System output scaling only; no native Switch 2 edition assumed",
+      "rayTracing": false,
+      "rayTracingMode": "Not Supported",
+      "loadingTime": "Generally faster system/storage access may occur; exact loading time varies by scene",
+      "loadingNotes": "Backward compatibility can reduce some loading bottlenecks, but no single universal loading-time value is used.",
+      "gameVersion": "Current Nintendo Switch retail build",
+      "patchVersion": "Current available Switch update",
+      "testedDate": "2026-08-27",
+      "sourceName": "Nintendo Switch 2 backward compatibility + established Nintendo Switch performance profile",
+      "sourceUrl": "https://www.nintendo.com/us/gaming-systems/switch-2/",
+      "verifiedAt": "2026-08-27",
+      "verificationStatus": "Verified profile / Backward Compatible",
+      "performanceNotes": "Backward-compatible Nintendo Switch version. No native Switch 2 edition is used; the original Switch 720p handheld / 1080p docked presentation and 30 fps cap are retained."
+     }
+    ],
+    "switch2UpgradePrice": 0,
+    "nintendoEshopUrl": "https://www.nintendo.com/us/store/products/paper-mario-the-origami-king-switch/",
+    "arabicSupport": false,
+    "tagline": "A paper-crafted adventure sends Mario and Olivia across a folded world of streamers, quirky allies, ring-based battles and visual creativity.",
+    "fitFor": [
+     "Players looking for adventure, puzzle gameplay.",
+     "Players who want the game modes supported by the official player-count specification: Single system (1).",
+     "Players who enjoy humor, exploration, and puzzle-flavored battles.",
+     "Fans of colorful Nintendo adventures with strong presentation and character charm."
+    ],
+    "notFitFor": [
+     "Players specifically seeking online multiplayer; this title does not list online multiplayer support.",
+     "Players specifically seeking local multiplayer; this title does not list local multiplayer support.",
+     "Players looking for traditional deep party-building RPG systems.",
+     "Players who strongly dislike combat systems built around spatial puzzles."
+    ],
+    "setupNeeds": [
+     "Nintendo Switch-compatible hardware for this release.",
+     "Internet connection is required for online features."
+    ],
+    "dlc": [
+     {
+      "name": "No standalone DLC announced",
+      "description": "No standalone paid DLC expansion is included in this extraction. Free updates, when applicable, are listed in the Updates section instead."
+     }
+    ],
+    "guides": [
+     {
+      "title": "Official Nintendo game page",
+      "summary": "Official Nintendo reference for game description, supported modes, player counts, languages, file size, and compatibility information.",
+      "url": "https://www.nintendo.com/us/store/products/paper-mario-the-origami-king-switch/"
+     }
+    ],
+    "boxContentsList": "[Circular]",
+    "image": "/api/files/products/prd_1ad4955cc45d4ef1/cover-4503b4cd04e04baa.avif",
+    "banner": "/api/files/products/prd_1ad4955cc45d4ef1/banner-0-79414a3a257e9db7.avif",
+    "schemaId": "",
+    "createdAt": "2026-08-27T16:59:50.086Z",
+    "created_at": "2026-08-27T16:59:50.086Z",
+    "updatedAt": "2026-08-27T16:59:50.086Z",
+    "updated_at": "2026-08-27T16:59:50.086Z",
+    "badgeEn": "وفر 40%",
+    "badgeKu": "وفر 40%",
+    "featuresEn": [
+     "Ring-based turn battles",
+     "Large paper-crafted world with secrets",
+     "Distinct companions, bosses and environmental puzzles",
+     "Inventive ring battles distinguish it from prior entries",
+     "Large regions reward exploration and collectible hunting",
+     "Memorable boss battles remix the puzzle concept in clever ways"
+    ],
+    "featuresKu": [
+     "Ring-based turn battles",
+     "Large paper-crafted world with secrets",
+     "Distinct companions, bosses and environmental puzzles",
+     "Inventive ring battles distinguish it from prior entries",
+     "Large regions reward exploration and collectible hunting",
+     "Memorable boss battles remix the puzzle concept in clever ways"
+    ],
+    "boxFrontUrl": "https://images.launchbox-app.com/a89024a5-33ef-400c-939e-d15665b08632.jpg",
+    "sales": 0,
+    "images": [],
+    "modes": []
+   }
+  },
+  {
+   "id": "prd_e29d75e0daf94fd6",
+   "slug": "paper-mario-the-thousand-year-door-switch-1",
+   "title": "Paper Mario: The Thousand-Year Door",
+   "platform": "switch1",
+   "isHidden": false,
+   "hash": "b33f0888b00b2a71d43a613a6459e57c343feb3f8938705ea1bc75540bf5562f",
+   "images": [
+    {
+     "role": "front-box",
+     "field": "cartridgeImage",
+     "url": "https://banan.to/api/files/products/prd_e29d75e0daf94fd6/front-e3644a55af48c962.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 1842936,
+     "width": 1162,
+     "height": 1888,
+     "thumb": "review-workdir/thumbs/batch-017/paper-mario-the-thousand-year-door-switch-1__front-box-0.png"
+    },
+    {
+     "role": "front-box",
+     "field": "box_front_url",
+     "url": "https://images.launchbox-app.com/cf77184b-57df-4835-9300-a4813e8d8937.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 1842936,
+     "width": 1162,
+     "height": 1888,
+     "thumb": "review-workdir/thumbs/batch-017/paper-mario-the-thousand-year-door-switch-1__front-box-1.png"
+    },
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://banan.to/api/files/products/prd_e29d75e0daf94fd6/square-64ab5751f73dedd3.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://banan.to/api/files/products/prd_e29d75e0daf94fd6/cover-9b637c1157d16316.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "3d-texture",
+     "field": "coverHiResImage",
+     "url": "https://banan.to/api/files/products/prd_e29d75e0daf94fd6/3d-texture-9c22318f945ca7f2.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 2050516,
+     "width": 4000,
+     "height": 3069,
+     "thumb": "review-workdir/thumbs/batch-017/paper-mario-the-thousand-year-door-switch-1__3d-texture-4.png"
+    },
+    {
+     "role": "listing",
+     "field": "image",
+     "url": "https://banan.to/api/files/products/prd_e29d75e0daf94fd6/cover-9b637c1157d16316.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[0]",
+     "url": "https://banan.to/api/files/products/prd_e29d75e0daf94fd6/banner-0-1b80ae964c23841f.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[1]",
+     "url": "https://banan.to/api/files/products/prd_e29d75e0daf94fd6/banner-1-852cb3ae8585bd5b.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[2]",
+     "url": "https://banan.to/api/files/products/prd_e29d75e0daf94fd6/banner-2-2846eec3457a972c.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[3]",
+     "url": "https://banan.to/api/files/products/prd_e29d75e0daf94fd6/banner-3-662f70cb4e15af61.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000072957/a99700700483e5f8b14cbff4693843503c7d007c8332d574a4cc76a037aa4843",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 351976,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-017/paper-mario-the-thousand-year-door-switch-1__gallery-10.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[1]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000072957/003a7c28435db6efe0a3fa83a900f36ce7b494e811b73844c6f5923aedf6cd98",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 85686,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-017/paper-mario-the-thousand-year-door-switch-1__gallery-11.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[2]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000072957/1270d1fc2312cd1fdeeff4845cb812531ab9f3a06e0ae9f1f7cac26a58c706c0",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 85897,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-017/paper-mario-the-thousand-year-door-switch-1__gallery-12.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[3]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000072957/60ac2e24dd6bb93adee264161f259d4ced43711ad6c365febd99d49451d54721",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 118282,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-017/paper-mario-the-thousand-year-door-switch-1__gallery-13.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[4]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000072957/c24881011ba3bbb6f6c78a4bb1b7e04a457594b462cfaddcdc2faa85bacf0c36",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 155876,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-017/paper-mario-the-thousand-year-door-switch-1__gallery-14.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[5]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000072957/9f5e069de49fa3644732f1c7073dea13a059a86e433da60e042d4f0f35b165bb",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 113757,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-017/paper-mario-the-thousand-year-door-switch-1__gallery-15.png"
+    }
+   ],
+   "record": {
+    "title": "Paper Mario: The Thousand-Year Door",
+    "titleEn": "Paper Mario: The Thousand-Year Door",
+    "titleKu": "Paper Mario: The Thousand-Year Door",
+    "slug": "paper-mario-the-thousand-year-door-switch-1",
+    "description": "A classic story unfolds on Nintendo Switch. With a map from Princess Peach and the help of a colorful cast of locals, Mario journeys across a paper-crafted world to collect the Crystal Stars before the X-Nauts and uncover the mystery behind the Thousand-Year Door.",
+    "descriptionEn": "A classic story unfolds on Nintendo Switch. With a map from Princess Peach and the help of a colorful cast of locals, Mario journeys across a paper-crafted world to collect the Crystal Stars before the X-Nauts and uncover the mystery behind the Thousand-Year Door.",
+    "descriptionKu": "A classic story unfolds on Nintendo Switch. With a map from Princess Peach and the help of a colorful cast of locals, Mario journeys across a paper-crafted world to collect the Crystal Stars before the X-Nauts and uncover the mystery behind the Thousand-Year Door.",
+    "cartridgeImage": "/api/files/products/prd_e29d75e0daf94fd6/front-e3644a55af48c962.jpg",
+    "nintendoCardImage": "/api/files/products/prd_e29d75e0daf94fd6/square-64ab5751f73dedd3.avif",
+    "coverHiResImage": "/api/files/products/prd_e29d75e0daf94fd6/3d-texture-9c22318f945ca7f2.jpg",
+    "coverImage": "/api/files/products/prd_e29d75e0daf94fd6/cover-9b637c1157d16316.avif",
+    "bannerImages": [
+     "/api/files/products/prd_e29d75e0daf94fd6/banner-0-1b80ae964c23841f.avif",
+     "/api/files/products/prd_e29d75e0daf94fd6/banner-1-852cb3ae8585bd5b.avif",
+     "/api/files/products/prd_e29d75e0daf94fd6/banner-2-2846eec3457a972c.avif",
+     "/api/files/products/prd_e29d75e0daf94fd6/banner-3-662f70cb4e15af61.avif",
+     "/api/files/products/prd_e29d75e0daf94fd6/banner-4-a3153df6e9e6bee3.avif",
+     "/api/files/products/prd_e29d75e0daf94fd6/banner-5-882ee8bc1f373cc4.avif"
+    ],
+    "gallery": [],
+    "youtubeTrailer": "https://www.nintendo.com/us/store/products/paper-mario-the-thousand-year-door-switch/",
+    "releaseDate": "2024-05-23",
+    "ageRating": "ESRB E10+ / PEGI 7",
+    "metacriticRating": 88,
+    "genres": [
+     "Role Playing",
+     "Action",
+     "Adventure"
+    ],
+    "platform": "switch1",
+    "size": 5.1,
+    "numberOfPlayers": "Single system (1)",
+    "supportedLanguages": "Japanese / British English / French / German / Italian / Spanish / Korean / Dutch / Simplified Chinese / Latin American Spanish / Canadian French / Traditional Chinese / American English",
+    "hardwareModel": "",
+    "colorEdition": "",
+    "storageCapacity": "",
+    "screenSpecs": "",
+    "batteryLife": "",
+    "boxContents": [],
+    "boxContentsText": "",
+    "warrantyCondition": "",
+    "connectivity": "",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "Global",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "",
+    "redemptionSteps": [],
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 11500,
+    "cost": 1500,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": false,
+    "displayOrder": 0,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "مشترك",
+      "description": "حساب مشترك",
+      "stock": 9999,
+      "isInfiniteStock": true,
+      "customerDescription": "حساب مشترك"
+     },
+     {
+      "id": "online_account",
+      "name": "خاص بك",
+      "description": "حساب خاص بك",
+      "stock": 9999,
+      "isInfiniteStock": true,
+      "customerDescription": "حساب خاص بك"
+     }
+    ],
+    "types": [
+     {
+      "id": "standard_offline",
+      "name": "مشترك — اللعبة الأساسية",
+      "optionId": "offline_account",
+      "price": 11500,
+      "cost": 1500,
+      "description": "",
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "standard_online",
+      "name": "خاص بك — اللعبة الأساسية",
+      "optionId": "online_account",
+      "price": 32000,
+      "cost": 14250,
+      "description": "",
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "Active",
+    "kind": "account",
+    "trade_value_iqd": 11500,
+    "store_offer_bonus_iqd": 3000,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "id": "prd_e29d75e0daf94fd6",
+    "schema_version": 24,
+    "titleAr": "بيبر ماريو: الباب ذو الألف عام",
+    "compatibility": [
+     "Nintendo Switch",
+     "Nintendo Switch 2 compatibility: Supported – game behavior is consistent with Nintendo Switch"
+    ],
+    "edition": "Standard",
+    "developer": "Intelligent Systems",
+    "publisher": "Nintendo",
+    "seriesName": "Paper Mario",
+    "metacriticUrl": "https://www.metacritic.com/game/paper-mario-the-thousand-year-door/",
+    "opencriticRating": 88,
+    "userScore": 8.8,
+    "price_usd": 59.99,
+    "officialUrl": "https://www.nintendo.com/us/store/products/paper-mario-the-thousand-year-door-switch/",
+    "eshopUrl": "https://www.nintendo.com/us/store/products/paper-mario-the-thousand-year-door-switch/",
+    "galleryImages": [
+     {
+      "alt": "Paper Mario: The Thousand-Year Door official promotional media 1",
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000072957/a99700700483e5f8b14cbff4693843503c7d007c8332d574a4cc76a037aa4843"
+     },
+     {
+      "alt": "Paper Mario: The Thousand-Year Door official promotional media 2",
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000072957/003a7c28435db6efe0a3fa83a900f36ce7b494e811b73844c6f5923aedf6cd98"
+     },
+     {
+      "alt": "Paper Mario: The Thousand-Year Door official promotional media 3",
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000072957/1270d1fc2312cd1fdeeff4845cb812531ab9f3a06e0ae9f1f7cac26a58c706c0"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000072957/60ac2e24dd6bb93adee264161f259d4ced43711ad6c365febd99d49451d54721"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000072957/c24881011ba3bbb6f6c78a4bb1b7e04a457594b462cfaddcdc2faa85bacf0c36"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000072957/9f5e069de49fa3644732f1c7073dea13a059a86e433da60e042d4f0f35b165bb"
+     }
+    ],
+    "videos": [
+     {
+      "title": "Official product page / trailer",
+      "url": "https://www.nintendo.com/us/store/products/paper-mario-the-thousand-year-door-switch/"
+     },
+     {
+      "title": "Nintendo news",
+      "url": "https://www.nintendo.com/us/search/#q=Paper%20Mario%20The%20Thousand-Year%20Door&p=1&cat=news"
+     },
+     {
+      "title": "Metacritic review hub",
+      "url": "https://www.metacritic.com/game/paper-mario-the-thousand-year-door/"
+     }
+    ],
+    "soundtrack": [
+     {
+      "title": "Official game page",
+      "url": "https://www.nintendo.com/us/store/products/paper-mario-the-thousand-year-door-switch/"
+     },
+     {
+      "title": "Nintendo news",
+      "url": "https://www.nintendo.com/us/search/#q=Paper%20Mario%20The%20Thousand-Year%20Door&p=1&cat=news"
+     },
+     {
+      "title": "Metacritic / reviews",
+      "url": "https://www.metacritic.com/game/paper-mario-the-thousand-year-door/"
+     }
+    ],
+    "gameIsOffline": true,
+    "gameIsOnline": false,
+    "gameLanguageLocked": false,
+    "description_short": "Join Mario and friends on an epic paper adventure. Collect the Crystal Stars, explore Rogueport and beyond, and master timing-based combat in this Nintendo Switch remake.",
+    "description_ar": "إعادة صنع للعبة Paper Mario الكلاسيكية، حيث ينطلق ماريو لجمع Crystal Stars قبل X-Nauts واستكشاف عالم ورقي مليء بالشخصيات والحوارات والطابع المسرحي والقتال بالتوقيت.",
+    "box_front_url": "https://images.launchbox-app.com/cf77184b-57df-4835-9300-a4813e8d8937.jpg",
+    "box_back_url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000072957/a99700700483e5f8b14cbff4693843503c7d007c8332d574a4cc76a037aa4843",
+    "languagesAudio": [
+     "Character vocalizations",
+     "Music / sound effects",
+     "No full language-dependent dub confirmed"
+    ],
+    "languagesText": [
+     "Japanese / English",
+     "French / German / Italian / Spanish / Dutch",
+     "Korean / Simplified Chinese / Traditional Chinese / additional regional English variants"
+    ],
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": true,
+    "nintendoPlayModes": "TV / Tabletop / Handheld",
+    "nintendoOnlineRequired": false,
+    "nintendoCloudSaves": true,
+    "nintendoGameKeyCard": false,
+    "nintendoPhysicalNeedsDownload": false,
+    "switch2Enhanced": false,
+    "switch2Exclusive": false,
+    "nintendoNotes": "Official Nintendo store page confirms supported play modes, file size, supported languages, and Nintendo Switch 2 compatibility for Paper Mario: The Thousand-Year Door.",
+    "editionsList": [
+     {
+      "name": "Standard Edition",
+      "coverUrl": "https://images.launchbox-app.com/cf77184b-57df-4835-9300-a4813e8d8937.jpg",
+      "contents": [
+       {
+        "label": "Base game"
+       },
+       {
+        "label": "Timing-based turn-based battles with badges and special moves"
+       },
+       {
+        "label": "Paper abilities for traversal such as plane, tube, and boat forms"
+       }
+      ]
+     },
+     {
+      "name": "Digital Edition",
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_1:1,c_fill,g_auto,w_1000/f_auto/q_auto/dpr_1.5/store/software/switch/70010000072957/fdd5d8ca46d7ea4e45397ae560e807742de2d7d744570297ddbabf69d6d23f33",
+      "contents": [
+       {
+        "label": "Nintendo eShop release"
+       },
+       {
+        "label": "Revamped graphics, updated soundtrack, and quality-of-life additions"
+       },
+       {
+        "label": "Save Data Cloud support"
+       }
+      ]
+     },
+     {
+      "name": "Current Store Package",
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_16:9,c_fill,g_auto,w_1600/f_auto/q_auto/dpr_1.5/store/software/switch/70010000072957/fdd5d8ca46d7ea4e45397ae560e807742de2d7d744570297ddbabf69d6d23f33",
+      "contents": [
+       {
+        "label": "Offline account option"
+       },
+       {
+        "label": "Online account option"
+       },
+       {
+        "label": "Hidden by default until review"
+       }
+      ]
+     }
+    ],
+    "gameplayPillars": [
+     {
+      "title": "Action Commands and badges",
+      "description": "Master timing-based attacks and defenses, then customize builds by equipping badges.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000072957/a99700700483e5f8b14cbff4693843503c7d007c8332d574a4cc76a037aa4843"
+     },
+     {
+      "title": "Paper traversal abilities",
+      "description": "Use paper transformations to glide, squeeze through gaps, and reach hidden areas.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000072957/003a7c28435db6efe0a3fa83a900f36ce7b494e811b73844c6f5923aedf6cd98"
+     },
+     {
+      "title": "Storybook exploration",
+      "description": "Travel from Rogueport to themed regions while collecting Crystal Stars and recruiting partners.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000072957/1270d1fc2312cd1fdeeff4845cb812531ab9f3a06e0ae9f1f7cac26a58c706c0"
+     },
+     {
+      "title": "Audience-based stage battles",
+      "description": "Turn-based combat plays out on a stage, where timing, Stylish moves, partner abilities, and audience reactions add flair and mechanical depth.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000072957/60ac2e24dd6bb93adee264161f259d4ced43711ad6c365febd99d49451d54721"
+     },
+     {
+      "title": "Partners, badges, and build variety",
+      "description": "Different partner skills and Badge combinations let players tune Mario's approach, creating more strategy than the series' papercraft visuals first suggest.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000072957/c24881011ba3bbb6f6c78a4bb1b7e04a457594b462cfaddcdc2faa85bacf0c36"
+     }
+    ],
+    "worldSummary": "Paper Mario: The Thousand-Year Door mixes theatrical turn-based combat, exploration, witty writing, and memorable partner characters inside a handcrafted paper world spanning towns, dungeons, arenas, and cursed abilities.",
+    "storyChapters": [
+     {
+      "title": "Search for the Crystal Stars",
+      "body": "Mario follows Peach’s map and races the X-Nauts to legendary treasure.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000072957/a99700700483e5f8b14cbff4693843503c7d007c8332d574a4cc76a037aa4843"
+     },
+     {
+      "title": "Meet a colorful cast",
+      "body": "Partners like Goombella, Koops, Flurrie, Yoshi, and others help Mario in and out of battle.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000072957/003a7c28435db6efe0a3fa83a900f36ce7b494e811b73844c6f5923aedf6cd98"
+     },
+     {
+      "title": "Uncover the Thousand-Year Door mystery",
+      "body": "As the story advances, the truth behind the ancient door and its treasure gradually unfolds.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000072957/1270d1fc2312cd1fdeeff4845cb812531ab9f3a06e0ae9f1f7cac26a58c706c0"
+     },
+     {
+      "title": "Search for Crystal Stars across Rogueport's worlds",
+      "body": "Mario travels from Rogueport into varied chapters and themed locations while pursuing the Crystal Stars and unraveling a larger mystery.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000072957/9f5e069de49fa3644732f1c7073dea13a059a86e433da60e042d4f0f35b165bb"
+     },
+     {
+      "title": "Partners and chapter twists drive the journey",
+      "body": "Each chapter introduces memorable characters, self-contained arcs, and tonal variety that make the adventure one of Nintendo's most beloved RPGs.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000072957/a99700700483e5f8b14cbff4693843503c7d007c8332d574a4cc76a037aa4843"
+     }
+    ],
+    "features": [
+     "Timing-based turn-based battles with badges and special moves",
+     "Paper abilities for traversal such as plane, tube, and boat forms",
+     "Revamped graphics, updated soundtrack, and quality-of-life additions",
+     "Excellent chapter structure keeps the adventure memorable",
+     "Badge system allows flexible builds and experimentation",
+     "Partners remain central both in battle and in exploration"
+    ],
+    "perfResolutionDocked": "1080p",
+    "perfResolutionHandheld": "720p",
+    "perfFps": "30",
+    "perfHdr": false,
+    "playTimeMain": 28,
+    "completionMain": 34,
+    "completionExtras": 40,
+    "faq": [
+     {
+      "q": "Is Paper Mario: The Thousand-Year Door single-player only?",
+      "a": "Yes. This remake is a single-player RPG adventure."
+     },
+     {
+      "q": "Does it support Nintendo Switch 2?",
+      "a": "Yes. Nintendo lists it as Supported – game behavior is consistent with Nintendo Switch."
+     },
+     {
+      "q": "What is new in the Nintendo Switch version?",
+      "a": "The remake features revamped graphics, an updated soundtrack, quick-travel improvements, and additions like the Partner Ring."
+     },
+     {
+      "q": "Does The Thousand-Year Door have deep RPG customization?",
+      "a": "Yes. The Badge system, partner abilities, and resource management give the game more build flexibility and mechanical depth than many lighter Mario spin-offs."
+     },
+     {
+      "q": "Why is this game so highly regarded?",
+      "a": "It is widely praised for its writing, chapter design, combat depth, humor, and memorable cast, all of which help it stand out in Nintendo's RPG catalog."
+     }
+    ],
+    "verdictScore": 9,
+    "verdictPros": [
+     "Outstanding humor and writing",
+     "Rewarding timing-based combat with strong customization",
+     "Beautiful remake presentation and music",
+     "Outstanding writing and chapter variety",
+     "Combat depth holds up extremely well"
+    ],
+    "verdictCons": [
+     "30 fps target may disappoint some players",
+     "Backtracking remains part of the original structure",
+     "Some chapter pacing can feel slower on replays",
+     "Some segments involve noticeable backtracking",
+     "Its slower text-heavy pacing will not suit every player"
+    ],
+    "reviews": [
+     {
+      "source": "Metacritic",
+      "score": "88",
+      "url": "https://www.metacritic.com/game/paper-mario-the-thousand-year-door/"
+     },
+     {
+      "source": "OpenCritic",
+      "score": "88",
+      "url": "https://opencritic.com/game/16769/paper-mario-the-thousand-year-door"
+     },
+     {
+      "source": "IGN",
+      "score": "9/10",
+      "url": "https://www.ign.com/games/paper-mario-the-thousand-year-door"
+     }
+    ],
+    "timeline": [
+     {
+      "date": "2023-09-14",
+      "title": "Announced for Nintendo Switch",
+      "body": "Announced for Nintendo Switch — recorded milestone dated 2023-09-14."
+     },
+     {
+      "date": "2024-05-23",
+      "title": "Released on Nintendo Switch",
+      "body": "Released on Nintendo Switch — recorded milestone dated 2024-05-23."
+     },
+     {
+      "date": "2024-07-24",
+      "title": "Nintendo published gameplay tips coverage",
+      "body": "Nintendo published gameplay tips coverage — recorded milestone dated 2024-07-24."
+     }
+    ],
+    "patchNotes": [
+     {
+      "version": "Launch version",
+      "date": "2024-05-23",
+      "body": "Update entry for Launch version, dated 2024-05-23. No additional change list was included in the prior verified extraction."
+     },
+     {
+      "version": "Current retail build",
+      "date": "2026-08-27",
+      "body": "Update entry for Current retail build, dated 2026-08-27. No additional change list was included in the prior verified extraction."
+     },
+     {
+      "version": "Save Data Cloud support active",
+      "date": "2026-08-27",
+      "body": "Update entry for Save Data Cloud support active, dated 2026-08-27. No additional change list was included in the prior verified extraction."
+     }
+    ],
+    "studioName": "Intelligent Systems",
+    "studioUrl": "https://www.nintendo.com/us/store/products/paper-mario-the-thousand-year-door-switch/",
+    "studioLocation": "Japan",
+    "sources": [
+     {
+      "name": "Nintendo official product page",
+      "url": "https://www.nintendo.com/us/store/products/paper-mario-the-thousand-year-door-switch/"
+     },
+     {
+      "name": "Nintendo Support / Switch 2 compatibility",
+      "url": "https://support.nintendo.com/"
+     },
+     {
+      "name": "Metacritic",
+      "url": "https://www.metacritic.com/game/paper-mario-the-thousand-year-door/"
+     }
+    ],
+    "downloadSizeGb": 5.1,
+    "requiredSpaceGb": 5.1,
+    "microSdRecommended": false,
+    "storageNotes": "Nintendo lists approximately 5.1 GB of game file size for both Nintendo Switch and Nintendo Switch 2 compatibility listings.",
+    "mpLocalPlayers": false,
+    "mpOnlinePlayers": false,
+    "mpCoop": false,
+    "mpCompetitive": false,
+    "mpLocalWireless": false,
+    "mpSplitScreen": false,
+    "seriesEntries": [
+     "Paper Mario",
+     "Paper Mario: The Origami King",
+     "Super Mario RPG"
+    ],
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "hardwareId": "prd_acf4c89908764c62",
+      "informationStatus": "Available / verified",
+      "unavailableReason": "No required Handheld or TV mode is marked unsupported.",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p",
+       "resolutionDynamic": false,
+       "renderingResolution": "1280x720",
+       "outputResolution": "1280x720",
+       "fps": "30",
+       "fpsMin": "30",
+       "fpsMax": "30",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Handheld",
+       "notes": "Original Nintendo Switch performance profile; the remake is commonly presented as a 30 fps title with 720p handheld and 1080p docked targets."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p",
+       "resolutionDynamic": false,
+       "renderingResolution": "1920x1080",
+       "outputResolution": "1920x1080",
+       "fps": "30",
+       "fpsMin": "30",
+       "fpsMax": "30",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "TV / Docked",
+       "notes": "Original Nintendo Switch performance profile; the remake is commonly presented as a 30 fps title with 720p handheld and 1080p docked targets."
+      },
+      "modes": [
+       {
+        "name": "Primary documented mode",
+        "handheldResolution": "720p",
+        "handheldFps": "30",
+        "tvResolution": "1080p",
+        "tvFps": "30",
+        "hdr": false,
+        "vrr": false,
+        "notes": "Original Nintendo Switch performance profile; the remake is commonly presented as a 30 fps title with 720p handheld and 1080p docked targets."
+       }
+      ],
+      "upscaling": "Game / system-specific scaling where applicable",
+      "rayTracing": false,
+      "rayTracingMode": "Not Supported",
+      "loadingTime": "Scene-dependent; no single universal loading time",
+      "loadingNotes": "Loading time varies by scene, save progress, and storage state.",
+      "gameVersion": "Current retail build",
+      "patchVersion": "Current available update",
+      "testedDate": "2026-08-27",
+      "sourceName": "Nintendo official product page",
+      "sourceUrl": "https://www.nintendo.com/us/store/products/paper-mario-the-thousand-year-door-switch/",
+      "verifiedAt": "2026-08-27",
+      "verificationStatus": "Verified / sourced",
+      "performanceNotes": "Original Nintendo Switch performance profile; the remake is commonly presented as a 30 fps title with 720p handheld and 1080p docked targets."
+     }
+    ],
+    "switch2UpgradePrice": 0,
+    "nintendoEshopUrl": "https://www.nintendo.com/us/store/products/paper-mario-the-thousand-year-door-switch/",
+    "arabicSupport": false,
+    "tagline": "Join Mario and friends on an epic paper adventure. Collect the Crystal Stars, explore Rogueport and beyond, and master timing-based combat in this Nintendo Switch remake.",
+    "fitFor": [
+     "Players looking for role playing, action gameplay.",
+     "Players who want the game modes supported by the official player-count specification: Single system (1).",
+     "Players who want a story-rich Mario RPG with strong writing.",
+     "Players who enjoy turn-based systems that still feel expressive and varied."
+    ],
+    "notFitFor": [
+     "Players specifically seeking online multiplayer; this title does not list online multiplayer support.",
+     "Players specifically seeking local multiplayer; this title does not list local multiplayer support.",
+     "Players seeking fast real-time action with minimal reading.",
+     "Players who dislike backtracking in older adventure structures."
+    ],
+    "perfNotes": "Original Nintendo Switch performance profile; the remake is commonly presented as a 30 fps title with 720p handheld and 1080p docked targets.",
+    "verdictSummary": "Overall score: 9.0/10. Strengths include Outstanding humor and writing; Rewarding timing-based combat with strong customization; Beautiful remake presentation and music. Main drawbacks include 30 fps target may disappoint some players; Backtracking remains part of the original structure.",
+    "studioAbout": "Intelligent Systems is credited as the developer of this Nintendo Switch release. Nintendo is credited as the publisher.",
+    "setupNeeds": [
+     "Nintendo Switch-compatible hardware for this release.",
+     "Online multiplayer is not required for the core single-player experience."
+    ],
+    "dlc": [
+     {
+      "name": "No standalone DLC announced",
+      "description": "No standalone paid DLC expansion is included in this extraction. Free updates, when applicable, are listed in the Updates section instead."
+     }
+    ],
+    "guides": [
+     {
+      "title": "Official Nintendo game page",
+      "summary": "Official Nintendo reference for game description, supported modes, player counts, languages, file size, and compatibility information.",
+      "url": "https://www.nintendo.com/us/store/products/paper-mario-the-thousand-year-door-switch/"
+     }
+    ],
+    "boxContentsList": "[Circular]",
+    "image": "/api/files/products/prd_e29d75e0daf94fd6/cover-9b637c1157d16316.avif",
+    "banner": "/api/files/products/prd_e29d75e0daf94fd6/banner-0-1b80ae964c23841f.avif",
+    "schemaId": "",
+    "createdAt": "2026-08-27T16:59:56.093Z",
+    "created_at": "2026-08-27T16:59:56.093Z",
+    "updatedAt": "2026-08-28T21:58:07.712Z",
+    "updated_at": "2026-08-27T16:59:56.093Z",
+    "badgeEn": "وفر 40%",
+    "badgeKu": "وفر 40%",
+    "featuresEn": [
+     "Timing-based turn-based battles with badges and special moves",
+     "Paper abilities for traversal such as plane, tube, and boat forms",
+     "Revamped graphics, updated soundtrack, and quality-of-life additions",
+     "Excellent chapter structure keeps the adventure memorable",
+     "Badge system allows flexible builds and experimentation",
+     "Partners remain central both in battle and in exploration"
+    ],
+    "featuresKu": [
+     "Timing-based turn-based battles with badges and special moves",
+     "Paper abilities for traversal such as plane, tube, and boat forms",
+     "Revamped graphics, updated soundtrack, and quality-of-life additions",
+     "Excellent chapter structure keeps the adventure memorable",
+     "Badge system allows flexible builds and experimentation",
+     "Partners remain central both in battle and in exploration"
+    ],
+    "boxFrontUrl": "https://images.launchbox-app.com/cf77184b-57df-4835-9300-a4813e8d8937.jpg",
+    "sales": 0,
+    "images": [],
+    "modes": []
+   }
+  },
+  {
+   "id": "prd_d48481255a0f44f8",
+   "slug": "persona-3-portable",
+   "title": "Persona 3 Portable",
+   "platform": "switch1",
+   "isHidden": false,
+   "hash": "441d1a8e5b381b73cdfcd8b8945caa7ba7484f93f04428018444c5c3d8960b11",
+   "images": [
+    {
+     "role": "front-box",
+     "field": "cartridgeImage",
+     "url": "https://banan.to/api/files/products/prd_d48481255a0f44f8/front-0f035f7083cb386d.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 365896,
+     "width": 1177,
+     "height": 1902,
+     "thumb": "review-workdir/thumbs/batch-017/persona-3-portable__front-box-0.png"
+    },
+    {
+     "role": "front-box",
+     "field": "box_front_url",
+     "url": "https://images.launchbox-app.com/99310ba0-7f8e-4de5-849f-5ca1bbbcd3d2.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 365896,
+     "width": 1177,
+     "height": 1902,
+     "thumb": "review-workdir/thumbs/batch-017/persona-3-portable__front-box-1.png"
+    },
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://banan.to/api/files/products/prd_d48481255a0f44f8/square-55364a9fdd8dbcbd.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 155856,
+     "width": 640,
+     "height": 640,
+     "thumb": "review-workdir/thumbs/batch-017/persona-3-portable__square-card-2.png"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://banan.to/api/files/products/prd_d48481255a0f44f8/cover-46493874c8b573fa.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 1152186,
+     "width": 3840,
+     "height": 2160,
+     "thumb": "review-workdir/thumbs/batch-017/persona-3-portable__detail-cover-3.png"
+    },
+    {
+     "role": "3d-texture",
+     "field": "coverHiResImage",
+     "url": "https://banan.to/api/files/products/prd_d48481255a0f44f8/3d-texture-1194e67ddcfefd50.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 605733,
+     "width": 2473,
+     "height": 1902,
+     "thumb": "review-workdir/thumbs/batch-017/persona-3-portable__3d-texture-4.png"
+    },
+    {
+     "role": "listing",
+     "field": "image",
+     "url": "https://banan.to/api/files/products/prd_d48481255a0f44f8/cover-46493874c8b573fa.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 1152186,
+     "width": 3840,
+     "height": 2160,
+     "thumb": "review-workdir/thumbs/batch-017/persona-3-portable__listing-5.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[0]",
+     "url": "https://banan.to/api/files/products/prd_d48481255a0f44f8/banner-0-9738085b11bb5b9f.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 77523,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-017/persona-3-portable__banner-6.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[1]",
+     "url": "https://banan.to/api/files/products/prd_d48481255a0f44f8/banner-1-c64a5464f3aa3bd2.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 140933,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-017/persona-3-portable__banner-7.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[2]",
+     "url": "https://banan.to/api/files/products/prd_d48481255a0f44f8/banner-2-0959a0a1d31f8aa7.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 136914,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-017/persona-3-portable__banner-8.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[3]",
+     "url": "https://banan.to/api/files/products/prd_d48481255a0f44f8/banner-4-ce6357ec722653e3.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 135077,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-017/persona-3-portable__banner-9.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://images.launchbox-app.com/3e05f67e-aae6-48c7-8d05-c6a5ab68c6fc.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 303773,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-017/persona-3-portable__gallery-10.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[1]",
+     "url": "https://images.launchbox-app.com/14aeee50-5330-4ba5-9bdf-88e272921258.png",
+     "status": 200,
+     "contentType": "image/png",
+     "bytes": 2383124,
+     "width": 2395,
+     "height": 1345,
+     "thumb": "review-workdir/thumbs/batch-017/persona-3-portable__gallery-11.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[2]",
+     "url": "https://images.launchbox-app.com/c4bc7cdb-a99f-4569-8dba-810517fb6a2b.png",
+     "status": 200,
+     "contentType": "image/png",
+     "bytes": 3686293,
+     "width": 2397,
+     "height": 1345,
+     "thumb": "review-workdir/thumbs/batch-017/persona-3-portable__gallery-12.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[3]",
+     "url": "https://images.launchbox-app.com/6cf20ca5-7070-4575-a5e4-f17b56c8d6d3.png",
+     "status": 200,
+     "contentType": "image/png",
+     "bytes": 3189016,
+     "width": 2401,
+     "height": 1348,
+     "thumb": "review-workdir/thumbs/batch-017/persona-3-portable__gallery-13.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[4]",
+     "url": "https://images.launchbox-app.com/642b56c5-8cc2-4997-91a1-174470f40479.png",
+     "status": 200,
+     "contentType": "image/png",
+     "bytes": 2800575,
+     "width": 2404,
+     "height": 1347,
+     "thumb": "review-workdir/thumbs/batch-017/persona-3-portable__gallery-14.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[5]",
+     "url": "https://images.launchbox-app.com/32bb50e7-6cf1-48b1-9010-1a680ed48ab5.png",
+     "status": 200,
+     "contentType": "image/png",
+     "bytes": 3505967,
+     "width": 2398,
+     "height": 1348,
+     "thumb": "review-workdir/thumbs/batch-017/persona-3-portable__gallery-15.png"
+    }
+   ],
+   "record": {
+    "title": "Persona 3 Portable",
+    "titleEn": "Persona 3 Portable",
+    "titleKu": "Persona 3 Portable",
+    "slug": "persona-3-portable",
+    "description": "Transfer to Gekkoukan High School, awaken to the hidden Dark Hour and climb Tartarus with SEES. Build Social Links, fuse Personas and experience the story through either the male or female protagonist route.",
+    "descriptionEn": "Transfer to Gekkoukan High School, awaken to the hidden Dark Hour and climb Tartarus with SEES. Build Social Links, fuse Personas and experience the story through either the male or female protagonist route.",
+    "descriptionKu": "Transfer to Gekkoukan High School, awaken to the hidden Dark Hour and climb Tartarus with SEES. Build Social Links, fuse Personas and experience the story through either the male or female protagonist route.",
+    "cartridgeImage": "/api/files/products/prd_d48481255a0f44f8/front-0f035f7083cb386d.jpg",
+    "nintendoCardImage": "/api/files/products/prd_d48481255a0f44f8/square-55364a9fdd8dbcbd.jpg",
+    "coverHiResImage": "/api/files/products/prd_d48481255a0f44f8/3d-texture-1194e67ddcfefd50.jpg",
+    "coverImage": "/api/files/products/prd_d48481255a0f44f8/cover-46493874c8b573fa.jpg",
+    "bannerImages": [
+     "/api/files/products/prd_d48481255a0f44f8/banner-0-9738085b11bb5b9f.jpg",
+     "/api/files/products/prd_d48481255a0f44f8/banner-1-c64a5464f3aa3bd2.jpg",
+     "/api/files/products/prd_d48481255a0f44f8/banner-2-0959a0a1d31f8aa7.jpg",
+     "/api/files/products/prd_d48481255a0f44f8/banner-4-ce6357ec722653e3.jpg",
+     "https://img-eshop.cdn.nintendo.net/i/9f6d09dac79d0cf40f0d4287882f04e84f979f636dd6bd8a3e7daf83aded4c5c.jpg",
+     "/api/files/products/prd_d48481255a0f44f8/banner-5-9511f2c1801713d8.jpg"
+    ],
+    "gallery": [],
+    "youtubeTrailer": "https://www.youtube.com/watch?v=HnmCs0pUSNk",
+    "releaseDate": "2023-01-19",
+    "ageRating": "ESRB Mature",
+    "metacriticRating": 81,
+    "genres": [
+     "Role-Playing Game",
+     "JRPG",
+     "Turn-Based RPG",
+     "Social Simulation"
+    ],
+    "platform": "switch1",
+    "size": 7.1,
+    "numberOfPlayers": "1",
+    "supportedLanguages": "Nintendo AU: Japanese, French, German, Italian, Spanish, Korean, Chinese (Simplified), Chinese (Traditional), English. Supplier selection: Simplified Chinese.",
+    "hardwareModel": "",
+    "colorEdition": "",
+    "storageCapacity": "",
+    "screenSpecs": "",
+    "batteryLife": "",
+    "boxContents": [],
+    "boxContentsText": "",
+    "warrantyCondition": "",
+    "connectivity": "",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "Global / region-dependent",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "",
+    "redemptionSteps": [],
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 7500,
+    "cost": 1500,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": false,
+    "displayOrder": 0,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "Offline Account",
+      "description": "Offline account access supplied as Regular / 普通版.",
+      "stock": 999999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_account",
+      "name": "Online Account",
+      "description": "Online account access supplied as Standard / 标准版.",
+      "stock": 999999,
+      "isInfiniteStock": true
+     }
+    ],
+    "types": [
+     {
+      "id": "standard_offline",
+      "name": "Standard Offline",
+      "optionId": "offline_account",
+      "price": 7500,
+      "cost": 1500,
+      "description": "Supplier Regular / 普通版 converted to IQD using 1 CNY = 220 IQD and rounded down to nearest 250 IQD.",
+      "stock": 999999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "standard_online",
+      "name": "Standard Online",
+      "optionId": "online_account",
+      "price": "25000",
+      "cost": 12250,
+      "description": "Supplier Standard / 标准版 converted to IQD using 1 CNY = 220 IQD and rounded down to nearest 250 IQD.",
+      "stock": 999999,
+      "isInfiniteStock": true
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "active",
+    "kind": "account",
+    "trade_value_iqd": 0,
+    "store_offer_bonus_iqd": 0,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "id": "prd_d48481255a0f44f8",
+    "schema_version": 1,
+    "titleAr": "بيرسونا 3 بورتابل",
+    "compatibility": [
+     "Nintendo Switch",
+     "Nintendo Switch 2 (backward compatibility)",
+     "Nintendo Switch Lite"
+    ],
+    "edition": "Standard",
+    "developer": "ATLUS",
+    "publisher": "SEGA",
+    "metacriticUrl": "https://www.metacritic.com/game/persona-3-portable/",
+    "opencriticRating": 81,
+    "userScore": 8.7,
+    "price_usd": 19.99,
+    "officialUrl": "https://persona.atlus.com/p3p/",
+    "eshopUrl": "https://www.nintendo.com/au/games/nintendo-switch/persona-3-portable/",
+    "gameIsOffline": true,
+    "gameIsOnline": false,
+    "description_short": "A remastered version of the portable Persona 3 experience with two protagonist routes, Tartarus exploration and calendar-based social RPG systems.",
+    "description_ar": "تنتقل إلى مدرسة Gekkoukan وتكتشف الساعة المظلمة المخفية عن بقية العالم. تنضم إلى فريق SEES، وتصعد برج Tartarus، وتبني Social Links، وتدمج الـPersona، مع إمكانية تجربة القصة عبر بطل أو بطلة بما يغيّر عددًا من العلاقات والمشاهد.",
+    "box_front_url": "https://images.launchbox-app.com/99310ba0-7f8e-4de5-849f-5ca1bbbcd3d2.jpg",
+    "box_back_url": "https://images.launchbox-app.com/38235ba8-86a6-438e-98b4-916d29e98479.jpg",
+    "videos": [
+     {
+      "title": "Persona 3 Portable & Persona 4 Golden — Available Now on Nintendo Switch",
+      "url": "https://www.youtube.com/watch?v=HnmCs0pUSNk"
+     }
+    ],
+    "nintendoEshopUrl": "https://www.nintendo.com/au/games/nintendo-switch/persona-3-portable/",
+    "nintendoOnlineRequired": false,
+    "nintendoCloudSaves": true,
+    "nintendoGameKeyCard": false,
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": true,
+    "nintendoPlayModes": "TV / Tabletop / Handheld",
+    "nintendoNotes": "Nintendo AU confirms Nintendo Switch 2 backward compatibility, 7.1 GB size, TV/Tabletop/Handheld modes, Save Data Cloud, and both Simplified and Traditional Chinese.\n\nSupplier selection supplied by user: Simplified Chinese. Regular / 普通版 ¥7.78 (pre-discount ¥11); Standard / 标准版 ¥55.8 (pre-discount ¥60). Converted costs: Regular 1,500 IQD; Standard 12,250 IQD. Supplier stock is marked 即将售罄 / near sold out; this is preserved as low_supplier_stock while store infinite-stock behavior remains enabled by the import rule.\n\nOnly two supplier variants exist, so no supplier DLC product types are created.",
+    "switch2Enhanced": false,
+    "switch2Exclusive": false,
+    "switch2Features": [
+     "Nintendo Switch 2 backward compatibility supported",
+     "No native Switch 2 Edition",
+     "No official visual enhancement patch",
+     "Faster loading may occur through backward compatibility"
+    ],
+    "tagline": "Uncover the truth of the Dark Hour from two protagonist perspectives.",
+    "fitFor": [
+     "Players who enjoy classic Persona systems",
+     "Fans of long turn-based JRPGs",
+     "Players interested in two protagonist routes",
+     "Players interested in the female protagonist route unavailable in Persona 3 Reload"
+    ],
+    "notFitFor": [
+     "Players expecting Persona 3 Reload presentation",
+     "Players who dislike visual-novel-style town navigation",
+     "Players wanting a short or action-focused game",
+     "Players who require fully explorable 3D social environments"
+    ],
+    "playTimeMain": 64.5,
+    "playTimeFull": 123.5,
+    "editionsList": [
+     {
+      "name": "Persona 3 Portable",
+      "coverUrl": "https://images.launchbox-app.com/99310ba0-7f8e-4de5-849f-5ca1bbbcd3d2.jpg",
+      "contents": [
+       {
+        "label": "Base Persona 3 Portable game"
+       },
+       {
+        "label": "Remastered graphics and smoother gameplay"
+       },
+       {
+        "label": "Quick save and difficulty selection"
+       }
+      ]
+     },
+     {
+      "name": "Persona 3 Portable & Persona 4 Golden Bundle",
+      "contents": [
+       {
+        "label": "Persona 3 Portable"
+       },
+       {
+        "label": "Persona 4 Golden"
+       },
+       {
+        "label": "Two remastered Persona RPGs"
+       }
+      ]
+     }
+    ],
+    "gameplayPillars": [
+     {
+      "title": "Climb Tartarus",
+      "description": "Explore randomized floors of Tartarus, manage party resources and exploit elemental weaknesses in turn-based combat.",
+      "imageUrl": "https://images.launchbox-app.com/14aeee50-5330-4ba5-9bdf-88e272921258.png"
+     },
+     {
+      "title": "Live the School Year",
+      "description": "Balance school days, social activities and Social Links across a calendar while preparing for major lunar events.",
+      "imageUrl": "https://images.launchbox-app.com/6cf20ca5-7070-4575-a5e4-f17b56c8d6d3.png"
+     },
+     {
+      "title": "Choose Your Protagonist",
+      "description": "Choose the male or female protagonist for distinct social routes, relationships and presentation differences.",
+      "imageUrl": "https://images.launchbox-app.com/642b56c5-8cc2-4997-91a1-174470f40479.png"
+     },
+     {
+      "title": "Develop Social Links",
+      "description": "Use limited calendar time to deepen Social Links, strengthen Persona fusion and experience route-specific character stories."
+     }
+    ],
+    "worldSummary": "Modern-day Iwatodai appears ordinary until the Dark Hour transforms the city. Tartarus rises during this hidden hour and Shadows threaten people who cannot perceive what is happening.",
+    "storyChapters": [
+     {
+      "title": "The Dark Hour",
+      "body": "The protagonist transfers to Gekkoukan High and experiences the Dark Hour before awakening the power of Persona."
+     },
+     {
+      "title": "SEES and Tartarus",
+      "body": "SEES explores Tartarus and battles Shadows while investigating the origin and purpose of the Dark Hour."
+     },
+     {
+      "title": "The Truth Behind the Shadows",
+      "body": "The group’s relationships and discoveries deepen as the consequences of the Dark Hour become increasingly personal."
+     },
+     {
+      "title": "The Final Months",
+      "body": "The final months force SEES to confront the meaning of the Dark Hour and the choices surrounding the fate awaiting the world."
+     }
+    ],
+    "galleryImages": [
+     {
+      "url": "https://images.launchbox-app.com/3e05f67e-aae6-48c7-8d05-c6a5ab68c6fc.jpg",
+      "alt": "Persona 3 Portable gameplay scene"
+     },
+     {
+      "url": "https://images.launchbox-app.com/14aeee50-5330-4ba5-9bdf-88e272921258.png",
+      "alt": "Tartarus dungeon exploration"
+     },
+     {
+      "url": "https://images.launchbox-app.com/c4bc7cdb-a99f-4569-8dba-810517fb6a2b.png",
+      "alt": "Turn-based Persona battle"
+     },
+     {
+      "url": "https://images.launchbox-app.com/6cf20ca5-7070-4575-a5e4-f17b56c8d6d3.png",
+      "alt": "School-life visual-novel navigation"
+     },
+     {
+      "url": "https://images.launchbox-app.com/642b56c5-8cc2-4997-91a1-174470f40479.png",
+      "alt": "Character interaction and social scene"
+     },
+     {
+      "url": "https://images.launchbox-app.com/32bb50e7-6cf1-48b1-9010-1a680ed48ab5.png",
+      "alt": "Additional Persona 3 Portable gameplay scene"
+     },
+     {
+      "url": "https://images.launchbox-app.com/abc4b1f1-afea-4557-af65-19705635812b.png",
+      "alt": "Additional Tartarus / battle scene"
+     }
+    ],
+    "features": [
+     "Two protagonist routes with different social experiences",
+     "Tartarus dungeon progression",
+     "Turn-based Persona battles and fusion",
+     "Remastered graphics for modern platforms",
+     "Quick Save support",
+     "Japanese and English voice-over"
+    ],
+    "perfResolutionDocked": "1080p output reported",
+    "perfResolutionHandheld": "720p-class portable output",
+    "perfFps": "60",
+    "perfHdr": false,
+    "perfNotes": "Nintendo Life describes the Switch version as rock-solid 60 fps. NintendoGalaxy provides a Switch frame-rate test recorded at 1080p/60 output, and Sega-Mag also reports 1080p/60 on Switch. Internal rendering resolution is not independently asserted beyond output-class reporting.",
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "hardwareId": "prd_acf4c89908764c62",
+      "informationStatus": "verified / reviewed",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p-class output",
+       "outputResolution": "1280x720",
+       "fps": "60",
+       "fpsMin": "60",
+       "fpsMax": "60",
+       "hdr": false,
+       "mode": "Handheld",
+       "notes": "Rock-solid 60 fps in handheld review coverage. Portable output is represented conservatively as 720p-class; internal render resolution is not claimed."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p output reported",
+       "outputResolution": "1920x1080",
+       "fps": "60",
+       "fpsMin": "60",
+       "fpsMax": "60",
+       "hdr": false,
+       "mode": "Docked",
+       "notes": "60 fps. 1080p output is reported by technical/review sources."
+      },
+      "rayTracing": false,
+      "sourceName": "Nintendo Life / NintendoGalaxy / Sega-Mag",
+      "verificationStatus": "verified 60 fps; output-resolution reporting cross-checked",
+      "performanceNotes": "60 fps is the high-confidence performance point. Resolution fields describe reported output rather than an undocumented internal render target."
+     }
+    ],
+    "downloadSizeGb": 7.1,
+    "requiredSpaceGb": 7.1,
+    "microSdRecommended": false,
+    "storageNotes": "Nintendo AU lists a 7.1 GB game file on Switch and on Switch 2 through compatibility.",
+    "languagesAudio": [
+     "Japanese",
+     "English"
+    ],
+    "languagesText": [
+     "Chinese (Simplified)",
+     "Chinese (Traditional)",
+     "English",
+     "Japanese",
+     "French",
+     "German",
+     "Italian",
+     "Spanish",
+     "Korean"
+    ],
+    "arabicSupport": false,
+    "mpLocalPlayers": false,
+    "mpOnlinePlayers": false,
+    "mpCoop": false,
+    "mpCompetitive": false,
+    "mpSplitScreen": false,
+    "mpLocalWireless": false,
+    "completionMain": 64.5,
+    "completionAll": 123.5,
+    "faq": [
+     {
+      "q": "Does Persona 3 Portable support Chinese on Switch?",
+      "a": "Yes. Nintendo AU lists Chinese (Simplified) and Chinese (Traditional) among the supported languages."
+     },
+     {
+      "q": "Does Persona 3 Portable work on Switch 2?",
+      "a": "Yes. Nintendo lists Nintendo Switch 2 compatibility as supported, through backward compatibility rather than a native Switch 2 version."
+     },
+     {
+      "q": "Is Persona 3 Portable multiplayer?",
+      "a": "No. It is a single-player RPG; Nintendo lists one local player."
+     },
+     {
+      "q": "What does the supplier stock warning mean?",
+      "a": "The supplier marked the listing 即将售罄, meaning near sold out. The import file preserves that supplier condition as low_supplier_stock even though the storefront account product uses infinite-stock behavior by default."
+     }
+    ],
+    "reviews": [
+     {
+      "source": "Metacritic",
+      "score": "81/100",
+      "url": "https://www.metacritic.com/game/persona-3-portable/"
+     },
+     {
+      "source": "OpenCritic",
+      "score": "81/100",
+      "url": "https://opencritic.com/game/14295/persona-3-portable"
+     },
+     {
+      "source": "Metacritic user score",
+      "score": "8.7/10",
+      "url": "https://www.metacritic.com/game/persona-3-portable/"
+     }
+    ],
+    "timeline": [
+     {
+      "date": "2009-11-01",
+      "title": "Persona 3 Portable released in Japan for PSP"
+     },
+     {
+      "date": "2022-10-08",
+      "title": "Modern-platform remaster announced for Switch and other platforms"
+     },
+     {
+      "date": "2023-01-19",
+      "title": "Persona 3 Portable released for Nintendo Switch"
+     }
+    ],
+    "seriesName": "Persona",
+    "seriesEntries": [
+     "Persona 4 Golden",
+     "Persona 3 Reload",
+     "Persona 5 Royal",
+     "Persona 4 Arena Ultimax",
+     "Persona 5 Strikers"
+    ],
+    "studioName": "ATLUS",
+    "studioUrl": "https://www.atlus.com/",
+    "studioLocation": "Tokyo, Japan",
+    "studioAbout": "ATLUS developed Persona 3 Portable and the modern remaster. The company is the creator of the Persona series and is part of the SEGA group.",
+    "setupNeeds": [
+     "Nintendo Switch family system",
+     "Nintendo Account for digital purchase",
+     "Nintendo Switch Online is optional; cloud backup requires membership"
+    ],
+    "sources": [
+     {
+      "name": "Nintendo Australia — Persona 3 Portable",
+      "url": "https://www.nintendo.com/au/games/nintendo-switch/persona-3-portable/"
+     },
+     {
+      "name": "Deku Deals — metadata and aggregate scores",
+      "url": "https://www.dekudeals.com/items/persona-3-portable"
+     },
+     {
+      "name": "Nintendo Life — Persona 3 Portable review / 60 fps",
+      "url": "https://www.nintendolife.com/reviews/switch-eshop/persona-3-portable"
+     },
+     {
+      "name": "NintendoGalaxy — Switch frame-rate test",
+      "url": "https://www.youtube.com/watch?v=xidfBqxqXFE"
+     },
+     {
+      "name": "LaunchBox Games Database — Switch media",
+      "url": "https://gamesdb.launchbox-app.com/games/details/166043-persona-3-portable"
+     }
+    ],
+    "boxContentsList": "[Circular]",
+    "image": "/api/files/products/prd_d48481255a0f44f8/cover-46493874c8b573fa.jpg",
+    "banner": "/api/files/products/prd_d48481255a0f44f8/banner-0-9738085b11bb5b9f.jpg",
+    "schemaId": "",
+    "createdAt": "2026-08-26T22:09:10.277Z",
+    "created_at": "2026-08-26T22:09:10.277Z",
+    "updatedAt": "2026-08-26T22:09:10.277Z",
+    "updated_at": "2026-08-26T22:09:10.277Z",
+    "badgeEn": "وفر 40%",
+    "badgeKu": "وفر 40%",
+    "featuresEn": [
+     "Two protagonist routes with different social experiences",
+     "Tartarus dungeon progression",
+     "Turn-based Persona battles and fusion",
+     "Remastered graphics for modern platforms",
+     "Quick Save support",
+     "Japanese and English voice-over"
+    ],
+    "featuresKu": [
+     "Two protagonist routes with different social experiences",
+     "Tartarus dungeon progression",
+     "Turn-based Persona battles and fusion",
+     "Remastered graphics for modern platforms",
+     "Quick Save support",
+     "Japanese and English voice-over"
+    ],
+    "boxFrontUrl": "https://images.launchbox-app.com/99310ba0-7f8e-4de5-849f-5ca1bbbcd3d2.jpg",
+    "sales": 0,
+    "images": [],
+    "modes": []
+   }
+  }
+ ]
+}

@@ -1,0 +1,601 @@
+{
+ "title": "New Super Mario Bros. U Deluxe",
+ "titleEn": "New Super Mario Bros. U Deluxe",
+ "titleKu": "New Super Mario Bros. U Deluxe",
+ "slug": "new-super-mario-bros-u-deluxe-switch",
+ "description": "A two-game 2D Mario package containing New Super Mario Bros. U and the faster, harder New Super Luigi U. The Deluxe release adds Toadette and Nabbit, accessibility-friendly character options and 164 courses across the two adventures.",
+ "descriptionEn": "A two-game 2D Mario package containing New Super Mario Bros. U and the faster, harder New Super Luigi U. The Deluxe release adds Toadette and Nabbit, accessibility-friendly character options and 164 courses across the two adventures.",
+ "descriptionKu": "A two-game 2D Mario package containing New Super Mario Bros. U and the faster, harder New Super Luigi U. The Deluxe release adds Toadette and Nabbit, accessibility-friendly character options and 164 courses across the two adventures.",
+ "cartridgeImage": "/api/files/products/prd_c5dab307d09d4550/front-f86f845e5001db20.jpg",
+ "nintendoCardImage": "/api/files/products/prd_c5dab307d09d4550/square-087131c10f902b57.jpg",
+ "coverHiResImage": "/api/files/products/prd_c5dab307d09d4550/3d-texture-c5adb6f2bb2101d5.jpg",
+ "coverImage": "/api/files/products/prd_c5dab307d09d4550/cover-182c6c1343438fc8.webp",
+ "bannerImages": [
+  "/api/files/products/prd_c5dab307d09d4550/banner-0-7d1dcb7e757d1739.jpg",
+  "/api/files/products/prd_c5dab307d09d4550/banner-1-5a9f44610a3b7cce.jpg",
+  "/api/files/products/prd_c5dab307d09d4550/banner-2-0bb3126019b92963.jpg",
+  "/api/files/products/prd_c5dab307d09d4550/banner-3-0ddd4431668a996d.jpg",
+  "/api/files/products/prd_c5dab307d09d4550/banner-4-c0d296fb327b9679.jpg"
+ ],
+ "gallery": [],
+ "youtubeTrailer": "https://www.nintendo.com/us/store/products/new-super-mario-bros-u-deluxe-switch/",
+ "releaseDate": "2019-01-11",
+ "ageRating": "ESRB E / PEGI 3",
+ "metacriticRating": 80,
+ "genres": [
+  "2D Platformer",
+  "Action",
+  "Family"
+ ],
+ "platform": "switch1",
+ "size": 2.529,
+ "numberOfPlayers": "1–4 local",
+ "supportedLanguages": "Japanese / English; French / German / Italian / Spanish / Portuguese / Dutch / Russian; Korean / Simplified Chinese / Traditional Chinese",
+ "hardwareModel": "",
+ "colorEdition": "",
+ "storageCapacity": "",
+ "screenSpecs": "",
+ "batteryLife": "",
+ "boxContents": [],
+ "boxContentsText": "",
+ "warrantyCondition": "",
+ "connectivity": "",
+ "characterName": "Link",
+ "amiiboSeries": "The Legend of Zelda",
+ "figureType": "figure",
+ "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+ "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+ "boxCondition": "mib",
+ "releaseWave": "Wave 2 (Restock)",
+ "rarity": "standard",
+ "accessoryType": "حقيبة حماية وتنقل Carry Case",
+ "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+ "brand": "Nintendo Official",
+ "material": "Hard EVA Shockproof Shell",
+ "availableColors": "Black, Neon Red/Blue, White",
+ "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+ "cardValue": "$20 eShop Balance",
+ "region": "Global",
+ "cardType": "eshop",
+ "deliveryMethod": "instant_code",
+ "redemptionGuide": "",
+ "redemptionSteps": [],
+ "validity": "no_expiry",
+ "usedType": "cartridge",
+ "conditionGrade": "like_new",
+ "packaging": "cib",
+ "guaranteeStatus": "tested_30days",
+ "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+ "accountType": "primary",
+ "badge": "وفر 40%",
+ "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+ "price": 12000,
+ "cost": 1500,
+ "stock": 999999,
+ "isInfiniteStock": true,
+ "isHidden": false,
+ "displayOrder": 0,
+ "category": "nintendo-switch-games",
+ "categoryId": "nintendo-switch-games",
+ "categoryEn": "",
+ "categoryKu": "",
+ "options": [
+  {
+   "id": "offline_account",
+   "name": "Offline Account",
+   "description": "Offline account access",
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_account",
+   "name": "Online Account",
+   "description": "Online account access",
+   "stock": 9999,
+   "isInfiniteStock": true
+  }
+ ],
+ "types": [
+  {
+   "id": "standard_offline",
+   "name": "Offline Account",
+   "optionId": "offline_account",
+   "price": 12000,
+   "cost": 1500,
+   "description": "Offline Account; supplier cost 1,500 IQD; configured selling price 12,000 IQD.",
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "standard_online",
+   "name": "Online Account",
+   "optionId": "online_account",
+   "price": "34000",
+   "cost": 18500,
+   "description": "Online Account; supplier cost 18,500 IQD; configured selling price 28,500 IQD.",
+   "stock": 9999,
+   "isInfiniteStock": true
+  }
+ ],
+ "editions": [],
+ "dlcs": [],
+ "isActive": true,
+ "status": "Active",
+ "kind": "account",
+ "trade_value_iqd": 38000,
+ "store_offer_bonus_iqd": 7000,
+ "trade_enabled": true,
+ "trade_value_locked": false,
+ "id": "prd_c5dab307d09d4550",
+ "schema_version": 23,
+ "titleAr": "نيو سوبر ماريو بروس. يو ديلوكس",
+ "compatibility": [
+  "Nintendo Switch",
+  "Nintendo Switch 2 (backward compatible / separate Switch 2 Edition where applicable)"
+ ],
+ "edition": "Standard",
+ "developer": "Nintendo EPD",
+ "publisher": "Nintendo",
+ "metacriticUrl": "https://www.metacritic.com/game/new-super-mario-bros-u-deluxe/",
+ "opencriticRating": 79,
+ "userScore": 7.1,
+ "price_usd": 59.99,
+ "officialUrl": "https://www.nintendo.com/us/store/products/new-super-mario-bros-u-deluxe-switch/",
+ "eshopUrl": "https://www.nintendo.com/us/store/products/new-super-mario-bros-u-deluxe-switch/",
+ "gameIsOffline": true,
+ "gameIsOnline": false,
+ "gameLanguageLocked": false,
+ "description_short": "A two-game 2D Mario package containing New Super Mario Bros. U and the faster, harder New Super Luigi U. The Deluxe release adds Toadette and Nabbit, accessibility-friendly character options and 164 courses across the two adventures.",
+ "description_ar": "حزمة Mario ثنائية الأبعاد تضم New Super Mario Bros. U وNew Super Luigi U الأصعب والأسرع. تضيف نسخة Deluxe شخصيتي Toadette وNabbit وخيارات أسهل للمبتدئين، مع 164 مرحلة ومجموعة أوضاع إضافية.",
+ "box_front_url": "https://images.launchbox-app.com//73f4a325-1884-40ea-b145-0cd5f7d56286.jpg",
+ "box_back_url": "https://cdn.switch-images-julio.com/file/switch-images-julio/ADALA/back.png",
+ "galleryImages": [
+  {
+   "url": "https://images.launchbox-app.com//688f4bf3-f3aa-4334-a852-ce1275e7b273.jpg",
+   "alt": "New Super Mario Bros. U Deluxe — verified promotional/gameplay image 1"
+  },
+  {
+   "url": "https://images.launchbox-app.com//9af4858c-ad64-4696-bedf-3cf940247080.jpg",
+   "alt": "New Super Mario Bros. U Deluxe — verified promotional/gameplay image 2"
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000006411/73d58198e35bf94be752cf3d9ba0b44dea877cab1487e2cc1b7eeb02157f066f",
+   "alt": "New Super Mario Bros. U Deluxe — verified promotional/gameplay image 3"
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000006411/f7eab80bf81dace25f1372f2b0ac5a63e3653af74468f73f37c6bb27df638a93",
+   "alt": "New Super Mario Bros. U Deluxe — verified promotional/gameplay image 4"
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000006411/5e1ca57f22a388d696dd0883ea3b5453c7c9e59ff0fea05dd912a2fcb88d1985",
+   "alt": "New Super Mario Bros. U Deluxe — verified promotional/gameplay image 5"
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000006411/5d7c325d4bac7e8af8da21d05376a007e4701421cec4a9a8791677162817eed9",
+   "alt": "New Super Mario Bros. U Deluxe — verified promotional/gameplay image 6"
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000006411/10ad0a494ed4eb05efebfbb08a7b878a65c17cdeb80101712eed1fe2966b86be",
+   "alt": "New Super Mario Bros. U Deluxe — verified promotional/gameplay image 7"
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000006411/26826beae5aa713a619278d2003d44f15ca591d831a312e2f56aee7a709d7409",
+   "alt": "New Super Mario Bros. U Deluxe — verified promotional/gameplay image 8"
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000006411/cf09bb956319bb998c3ac9ac52c19c5ad3ca72902451e2a683a3b03a87f6e0e9",
+   "alt": "New Super Mario Bros. U Deluxe — verified promotional/gameplay image 9"
+  }
+ ],
+ "videos": [
+  {
+   "title": "Official trailer / product overview",
+   "url": "https://www.nintendo.com/us/store/products/new-super-mario-bros-u-deluxe-switch/"
+  },
+  {
+   "title": "Nintendo product page and gameplay media",
+   "url": "https://www.nintendo.com/us/store/products/new-super-mario-bros-u-deluxe-switch/"
+  },
+  {
+   "title": "Technical / review reference",
+   "url": "https://handheld-performance.com/games/new-super-mario-bros-u-deluxe"
+  }
+ ],
+ "nsuid": "See official Nintendo product page for regional NSUID",
+ "title_id": "Regional digital title ID varies by storefront and package",
+ "product_code": "HAC-P-ADALA",
+ "nintendoEshopUrl": "https://www.nintendo.com/us/store/products/new-super-mario-bros-u-deluxe-switch/",
+ "nintendoOnlineRequired": false,
+ "nintendoCloudSaves": true,
+ "nintendoGameKeyCard": false,
+ "nintendoPhysicalNeedsDownload": false,
+ "tvMode": true,
+ "tabletopMode": true,
+ "handheldMode": true,
+ "nintendoPlayModes": "TV / Tabletop / Handheld",
+ "nintendoNotes": "Current verified Nintendo data for New Super Mario Bros. U Deluxe. Storage, languages, multiplayer and platform-specific features are separated from measured performance values.",
+ "switch2Enhanced": true,
+ "switch2Exclusive": false,
+ "switch2UpgradePrice": 0,
+ "switch2Features": [
+  "164 courses across two campaigns",
+  "Four-player local multiplayer",
+  "1080p docked / 720p handheld at 60 fps"
+ ],
+ "tagline": "Two complete side-scrolling Mario adventures in one compact Switch package.",
+ "fitFor": [
+  "Families and local co-op players",
+  "Fans of traditional 2D Mario",
+  "Players who want a large number of short platforming courses"
+ ],
+ "notFitFor": [
+  "Players wanting online multiplayer",
+  "Players who already exhausted the Wii U originals",
+  "Players seeking Wonder-style experimental mechanics"
+ ],
+ "playTimeMain": 9,
+ "playTimeFull": 28.5,
+ "editionsList": [
+  {
+   "name": "Standard Edition",
+   "coverUrl": "https://images.launchbox-app.com//73f4a325-1884-40ea-b145-0cd5f7d56286.jpg",
+   "contents": [
+    {
+     "label": "Base game"
+    },
+    {
+     "label": "Core modes"
+    },
+    {
+     "label": "Platform features"
+    }
+   ]
+  },
+  {
+   "name": "Digital Edition",
+   "coverUrl": "https://images.launchbox-app.com//94d29004-8b97-4316-aec8-19f53f77557a.jpg",
+   "contents": [
+    {
+     "label": "Digital game license"
+    },
+    {
+     "label": "Same core game content"
+    },
+    {
+     "label": "Nintendo Account delivery"
+    }
+   ]
+  },
+  {
+   "name": "Current Complete Package",
+   "coverUrl": "https://images.launchbox-app.com//f1a6f1b5-e139-4da6-b772-94dba06191d1.jpg",
+   "contents": [
+    {
+     "label": "Latest game build"
+    },
+    {
+     "label": "No paid DLC"
+    },
+    {
+     "label": "164 courses across two campaigns"
+    }
+   ]
+  }
+ ],
+ "gameplayPillars": [
+  {
+   "title": "Classic 2D Mario",
+   "description": "Precise running and jumping, power-ups, secret exits and multiplayer interactions form the core.",
+   "imageUrl": "https://images.launchbox-app.com//f1a6f1b5-e139-4da6-b772-94dba06191d1.jpg"
+  },
+  {
+   "title": "Two adventures",
+   "description": "The package includes both New Super Mario Bros. U and the full New Super Luigi U campaign.",
+   "imageUrl": "https://images.launchbox-app.com//032e5f90-196f-4b0e-96f4-624238caf412.jpg"
+  },
+  {
+   "title": "Accessible character options",
+   "description": "Nabbit avoids enemy damage and Toadette can use the Super Crown, making the game easier for newer players.",
+   "imageUrl": "https://gamesdb-images.launchbox.gg/r2_8e171a73-9f4d-4079-8f3e-6210b0ccec12.jpg"
+  }
+ ],
+ "worldSummary": "Mario, Luigi and friends cross the Mushroom Kingdom to reclaim Peach's Castle from Bowser and the Koopalings. The package also includes New Super Luigi U, which remixes the adventure into shorter, more time-pressured courses.",
+ "storyChapters": [
+  {
+   "title": "Bowser attacks",
+   "body": "Bowser's forces seize Peach's Castle and launch Mario and friends far across the Mushroom Kingdom.",
+   "imageUrl": "https://images.launchbox-app.com//b8f0d182-626d-411c-b12a-e9b102dda993.jpg"
+  },
+  {
+   "title": "The road back",
+   "body": "The heroes travel through themed worlds, fortresses and airships to reach the castle.",
+   "imageUrl": "https://images.launchbox-app.com//028a7de6-957e-48a9-bf5c-ead1f2d32d7b.jpg"
+  },
+  {
+   "title": "New Super Luigi U",
+   "body": "A faster remix gives Luigi and friends shorter timers and altered courses.",
+   "imageUrl": "https://images.launchbox-app.com//688f4bf3-f3aa-4334-a852-ce1275e7b273.jpg"
+  }
+ ],
+ "features": [
+  "164 courses across two campaigns",
+  "Four-player local multiplayer",
+  "1080p docked / 720p handheld at 60 fps"
+ ],
+ "perfResolutionDocked": "1080p",
+ "perfResolutionHandheld": "720p",
+ "perfFps": "60",
+ "perfHdr": false,
+ "perfNotes": "Digital Foundry reports native 1080p docked and 720p handheld with a consistent 60 fps target, including four-player gameplay.",
+ "devicePerformance": [
+  {
+   "device": "Nintendo Switch 2",
+   "deviceSlug": "nintendo-switch-2",
+   "deviceModel": "Nintendo Switch 2",
+   "hardwareId": "prd_acf4c89908764c62",
+   "informationStatus": "Available / verified",
+   "unavailableReason": "No required native mode is unavailable.",
+   "handheld": {
+    "supported": true,
+    "resolution": "720p",
+    "resolutionDynamic": false,
+    "renderingResolution": "720p",
+    "outputResolution": "1280x720",
+    "fps": "60",
+    "fpsMin": "60",
+    "fpsMax": "60",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "Handheld",
+    "notes": "Digital Foundry reports native 1080p docked and 720p handheld with a consistent 60 fps target, including four-player gameplay."
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "1080p",
+    "resolutionDynamic": false,
+    "renderingResolution": "1080p",
+    "outputResolution": "1920x1080",
+    "fps": "60",
+    "fpsMin": "60",
+    "fpsMax": "60",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "TV / Docked",
+    "notes": "Digital Foundry reports native 1080p docked and 720p handheld with a consistent 60 fps target, including four-player gameplay."
+   },
+   "modes": [
+    {
+     "name": "Standard",
+     "handheldResolution": "720p",
+     "handheldFps": "60",
+     "tvResolution": "1080p",
+     "tvFps": "60",
+     "hdr": false,
+     "vrr": false,
+     "notes": "Primary documented performance profile."
+    }
+   ],
+   "upscaling": "Platform-specific scaling/reconstruction where documented",
+   "rayTracing": false,
+   "rayTracingMode": "No ray-tracing mode",
+   "loadingTime": "Scene-dependent; no single universal load time",
+   "loadingNotes": "Loading varies by activity and storage state.",
+   "gameVersion": "Current retail build",
+   "patchVersion": "Current available update",
+   "testedDate": "2026-08-27",
+   "sourceName": "Handheld Performance",
+   "sourceUrl": "https://handheld-performance.com/games/new-super-mario-bros-u-deluxe",
+   "verifiedAt": "2026-08-27",
+   "verificationStatus": "Verified / sourced",
+   "performanceNotes": "Digital Foundry reports native 1080p docked and 720p handheld with a consistent 60 fps target, including four-player gameplay."
+  }
+ ],
+ "downloadSizeGb": 2.529,
+ "requiredSpaceGb": 2.529,
+ "microSdRecommended": false,
+ "storageNotes": "Deku Deals lists 2.529 GB for the Switch version. The game is small enough that microSD storage is optional.",
+ "languagesAudio": [
+  "Character vocalizations",
+  "Music / sound effects",
+  "No language-dependent full voice track"
+ ],
+ "languagesText": [
+  "Japanese / English",
+  "French / German / Italian / Spanish / Portuguese / Dutch / Russian",
+  "Korean / Simplified Chinese / Traditional Chinese"
+ ],
+ "arabicSupport": false,
+ "mpLocalPlayers": true,
+ "mpOnlinePlayers": false,
+ "mpCoop": true,
+ "mpCompetitive": false,
+ "mpSplitScreen": false,
+ "mpLocalWireless": false,
+ "dlc": [
+  {
+   "name": "No paid DLC",
+   "description": "No standalone paid expansion has been released for New Super Mario Bros. U Deluxe.",
+   "coverUrl": "https://images.launchbox-app.com//9af4858c-ad64-4696-bedf-3cf940247080.jpg"
+  },
+  {
+   "name": "New Super Luigi U included",
+   "description": "The Luigi campaign is included in the base Deluxe package rather than sold separately.",
+   "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000006411/73d58198e35bf94be752cf3d9ba0b44dea877cab1487e2cc1b7eeb02157f066f"
+  },
+  {
+   "name": "Free Switch 2 compatibility update",
+   "description": "Nintendo released a free update optimizing graphics for the Switch 2 display and high-resolution TVs.",
+   "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch/70010000006411/f7eab80bf81dace25f1372f2b0ac5a63e3653af74468f73f37c6bb27df638a93"
+  }
+ ],
+ "guides": [
+  {
+   "title": "Official Nintendo page",
+   "summary": "Release, platform, storage, languages and feature information.",
+   "url": "https://www.nintendo.com/us/store/products/new-super-mario-bros-u-deluxe-switch/"
+  },
+  {
+   "title": "Gameplay / technical reference",
+   "summary": "Performance and gameplay behavior reference.",
+   "url": "https://handheld-performance.com/games/new-super-mario-bros-u-deluxe"
+  },
+  {
+   "title": "Database / review reference",
+   "summary": "Media, reviews and completion context.",
+   "url": "https://www.dekudeals.com/items/new-super-mario-bros-u-deluxe"
+  }
+ ],
+ "completionMain": 9,
+ "completionExtras": 16.5,
+ "completionAll": 28.5,
+ "faq": [
+  {
+   "q": "Does it include New Super Luigi U?",
+   "a": "Yes. Both New Super Mario Bros. U and New Super Luigi U are included."
+  },
+  {
+   "q": "Does it support online multiplayer?",
+   "a": "No. The core multiplayer is local on one system."
+  },
+  {
+   "q": "How does it perform?",
+   "a": "It targets 60 fps at 1080p docked and 720p handheld on the original Switch."
+  }
+ ],
+ "verdictScore": 8.3,
+ "verdictSummary": "A generous and technically polished package of traditional 2D Mario, especially valuable for players who missed the Wii U originals.",
+ "verdictPros": [
+  "Two complete campaigns",
+  "Stable 60 fps and crisp presentation",
+  "Great local four-player support"
+ ],
+ "verdictCons": [
+  "Conservative compared with newer Mario designs",
+  "No online multiplayer",
+  "Returning Wii U players may find limited novelty"
+ ],
+ "reviews": [
+  {
+   "source": "Metacritic",
+   "score": "80/100",
+   "quote": "Generally favorable critic reception.",
+   "url": "https://www.metacritic.com/game/new-super-mario-bros-u-deluxe/"
+  },
+  {
+   "source": "OpenCritic",
+   "score": "79/100",
+   "quote": "Generally favorable aggregate.",
+   "url": "https://opencritic.com/game/7084/new-super-mario-bros-u-deluxe"
+  },
+  {
+   "source": "Deku Deals users",
+   "score": "3.9/5",
+   "quote": "Long-term user rating snapshot.",
+   "url": "https://www.dekudeals.com/items/new-super-mario-bros-u-deluxe"
+  }
+ ],
+ "timeline": [
+  {
+   "date": "2012-11-18",
+   "title": "New Super Mario Bros. U",
+   "body": "Original Wii U game released."
+  },
+  {
+   "date": "2013-06-20",
+   "title": "New Super Luigi U",
+   "body": "Luigi-focused expansion/campaign released."
+  },
+  {
+   "date": "2019-01-11",
+   "title": "Deluxe edition",
+   "body": "Combined Switch version launched worldwide."
+  }
+ ],
+ "patchNotes": [
+  {
+   "version": "Launch build",
+   "date": "2019-01-11",
+   "body": "Released with Toadette, Nabbit and the complete Luigi campaign."
+  },
+  {
+   "version": "Switch compatibility maintenance",
+   "date": "2025",
+   "body": "Nintendo maintained compatibility across current Switch system software."
+  },
+  {
+   "version": "Free Switch 2 optimization",
+   "date": "2025-06-05",
+   "body": "Graphics optimized for Switch 2 display and higher-resolution TVs."
+  }
+ ],
+ "soundtrack": [
+  {
+   "title": "Peach's Castle theme",
+   "url": "https://www.nintendo.com/us/store/products/new-super-mario-bros-u-deluxe-switch/"
+  },
+  {
+   "title": "Overworld theme",
+   "url": "https://www.nintendo.com/us/store/products/new-super-mario-bros-u-deluxe-switch/"
+  },
+  {
+   "title": "New Super Luigi U course music",
+   "url": "https://www.nintendo.com/us/store/products/new-super-mario-bros-u-deluxe-switch/"
+  }
+ ],
+ "seriesName": "Super Mario",
+ "seriesEntries": [
+  "Super Mario Bros. Wonder",
+  "Super Mario Odyssey",
+  "Super Mario 3D World + Bowser's Fury"
+ ],
+ "studioName": "Nintendo EPD",
+ "studioUrl": "https://www.nintendo.co.jp/",
+ "studioLocation": "Kyoto, Japan",
+ "studioAbout": "Nintendo's internal development organization produced the Deluxe Switch conversion of the Wii U platformers.",
+ "setupNeeds": [
+  "Nintendo Switch",
+  "Approximately 2.529 GB free storage",
+  "One Joy-Con or compatible controller per local player"
+ ],
+ "sources": [
+  {
+   "name": "Nintendo official",
+   "url": "https://www.nintendo.com/us/store/products/new-super-mario-bros-u-deluxe-switch/"
+  },
+  {
+   "name": "Handheld Performance",
+   "url": "https://handheld-performance.com/games/new-super-mario-bros-u-deluxe"
+  },
+  {
+   "name": "Deku Deals",
+   "url": "https://www.dekudeals.com/items/new-super-mario-bros-u-deluxe"
+  }
+ ],
+ "boxContentsList": "[Circular]",
+ "image": "/api/files/products/prd_c5dab307d09d4550/cover-182c6c1343438fc8.webp",
+ "banner": "/api/files/products/prd_c5dab307d09d4550/banner-0-7d1dcb7e757d1739.jpg",
+ "schemaId": "",
+ "createdAt": "2026-08-27T01:03:26.151Z",
+ "created_at": "2026-08-27T01:03:26.151Z",
+ "updatedAt": "2026-08-27T01:03:26.151Z",
+ "updated_at": "2026-08-27T01:03:26.151Z",
+ "badgeEn": "وفر 40%",
+ "badgeKu": "وفر 40%",
+ "featuresEn": [
+  "164 courses across two campaigns",
+  "Four-player local multiplayer",
+  "1080p docked / 720p handheld at 60 fps"
+ ],
+ "featuresKu": [
+  "164 courses across two campaigns",
+  "Four-player local multiplayer",
+  "1080p docked / 720p handheld at 60 fps"
+ ],
+ "boxFrontUrl": "https://images.launchbox-app.com//73f4a325-1884-40ea-b145-0cd5f7d56286.jpg",
+ "sales": 0,
+ "images": [],
+ "modes": [],
+ "game_id": "gme_ef38a9643fc64c78"
+}

@@ -1,6 +1,6 @@
 {
  "batch": "016",
- "apply": true,
+ "apply": false,
  "games": [
   {
    "id": "prd_316788014ee14877",
@@ -211,6 +211,116 @@
     "guaranteeStatus"
    ],
    "notes": "Size string '10.9 GB' becomes a number; the trailer field held a nintendo.com page URL — removed. The doubled records collapse to one platform record with Digital Foundry's dynamic 1080p/720p at 30 fps findings. 2022-10-06, Metacritic 89 verified. Images working (hidden product)."
+  }
+ ],
+ "appliedAt": "2026-09-02T03:27:57.065Z",
+ "results": [
+  {
+   "id": "prd_316788014ee14877",
+   "action": "APPLIED",
+   "changed": [
+    "devicePerformance"
+   ],
+   "removed": [
+    "youtubeTrailer",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ]
+  },
+  {
+   "id": "prd_1ae08b9969f74bc1",
+   "action": "APPLIED",
+   "changed": [
+    "bannerImages",
+    "devicePerformance"
+   ],
+   "removed": [
+    "youtubeTrailer",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ]
+  },
+  {
+   "id": "prd_09e13ed4dedb4150",
+   "action": "APPLIED",
+   "changed": [
+    "coverImage",
+    "image",
+    "bannerImages",
+    "galleryImages"
+   ],
+   "removed": [
+    "cartridgeImage",
+    "nintendoCardImage",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ]
+  },
+  {
+   "id": "prd_c5dab307d09d4550",
+   "action": "APPLIED",
+   "changed": [
+    "devicePerformance"
+   ],
+   "removed": [
+    "youtubeTrailer",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ]
+  },
+  {
+   "id": "prd_d49c84c34a844de6",
+   "action": "APPLIED",
+   "changed": [
+    "size",
+    "downloadSizeGb",
+    "devicePerformance"
+   ],
+   "removed": [
+    "youtubeTrailer",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ]
   }
  ]
 }

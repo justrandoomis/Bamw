@@ -1,0 +1,588 @@
+{
+ "id": "prd_09e13ed4dedb4150",
+ "title": "Monster Hunter Stories 3: Twisted Reflection",
+ "titleEn": "Monster Hunter Stories 3: Twisted Reflection",
+ "titleKu": "Monster Hunter Stories 3: Twisted Reflection",
+ "slug": "monster-hunter-stories-3-twisted-reflection",
+ "description": "The third entry in the Monster Hunter Stories RPG series. Raise and bond with Monsties, explore the world, and fight in strategic turn-based battles while investigating the fate of two nations and twin Skyscale Rathalos.",
+ "descriptionEn": "The third entry in the Monster Hunter Stories RPG series. Raise and bond with Monsties, explore the world, and fight in strategic turn-based battles while investigating the fate of two nations and twin Skyscale Rathalos.",
+ "descriptionKu": "The third entry in the Monster Hunter Stories RPG series. Raise and bond with Monsties, explore the world, and fight in strategic turn-based battles while investigating the fate of two nations and twin Skyscale Rathalos.",
+ "cartridgeImage": "/api/files/products/prd_09e13ed4dedb4150/cartridgeImage-70f3a95408b99902.avif",
+ "nintendoCardImage": "/api/files/products/prd_09e13ed4dedb4150/nintendoCardImage-4cb7dbdbcde4ca41.avif",
+ "coverHiResImage": "",
+ "coverImage": "/api/files/products/prd_09e13ed4dedb4150/coverImage-70f3a95408b99902.avif",
+ "bannerImages": [
+  "/api/files/products/prd_09e13ed4dedb4150/bannerImages-1-2f8d20d04ac7d6e0.avif",
+  "/api/files/products/prd_09e13ed4dedb4150/bannerImages-2-15bbdd4802196bb1.avif",
+  "/api/files/products/prd_09e13ed4dedb4150/bannerImages-3-e4f73007aa1b81a1.avif"
+ ],
+ "gallery": [],
+ "youtubeTrailer": "https://www.youtube.com/watch?v=f1M_0t2Tayk",
+ "releaseDate": "2026-03-13",
+ "ageRating": "PEGI 12",
+ "metacriticRating": 82,
+ "genres": [
+  "JRPG",
+  "Monster Taming",
+  "Adventure"
+ ],
+ "platform": "switch2",
+ "size": 27.7,
+ "numberOfPlayers": "1",
+ "supportedLanguages": "Japanese, American English, French, German, Italian, Spanish, Korean, Russian, Simplified Chinese, Traditional Chinese, Brazilian Portuguese, Polish",
+ "hardwareModel": "",
+ "colorEdition": "",
+ "storageCapacity": "",
+ "screenSpecs": "",
+ "batteryLife": "",
+ "boxContents": [],
+ "boxContentsText": "",
+ "warrantyCondition": "",
+ "connectivity": "",
+ "characterName": "Link",
+ "amiiboSeries": "The Legend of Zelda",
+ "figureType": "figure",
+ "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+ "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+ "boxCondition": "mib",
+ "releaseWave": "Wave 2 (Restock)",
+ "rarity": "standard",
+ "accessoryType": "حقيبة حماية وتنقل Carry Case",
+ "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+ "brand": "Nintendo Official",
+ "material": "Hard EVA Shockproof Shell",
+ "availableColors": "Black, Neon Red/Blue, White",
+ "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+ "cardValue": "$20 eShop Balance",
+ "region": "Global",
+ "cardType": "eshop",
+ "deliveryMethod": "instant_code",
+ "redemptionGuide": "",
+ "redemptionSteps": [],
+ "validity": "no_expiry",
+ "usedType": "cartridge",
+ "conditionGrade": "like_new",
+ "packaging": "cib",
+ "guaranteeStatus": "tested_30days",
+ "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+ "accountType": "primary",
+ "badge": "وفر 40%",
+ "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+ "price": 14750,
+ "cost": 2000,
+ "stock": 999999,
+ "isInfiniteStock": true,
+ "isHidden": false,
+ "displayOrder": 0,
+ "category": "nintendo-switch-games",
+ "categoryId": "nintendo-switch-games",
+ "categoryEn": "",
+ "categoryKu": "",
+ "options": [
+  {
+   "id": "offline_account",
+   "name": "مشترك",
+   "description": "Play using the supplied account under the store's offline-account activation method.",
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_account",
+   "name": "خاص بك",
+   "description": "Online-account option with internet-connected account use where supported by the game/service.",
+   "isInfiniteStock": true
+  }
+ ],
+ "types": [
+  {
+   "id": "standard_offline",
+   "name": "مشترك — اللعبة الأساسية",
+   "optionId": "offline_account",
+   "price": 14750,
+   "cost": 2000,
+   "description": "Standard game, Offline Account. Supplier Regular price: ¥9.74; purchase cost converted at 1 CNY = 220 IQD and rounded down to nearest 250 IQD.",
+   "isInfiniteStock": true
+  },
+  {
+   "id": "standard_online",
+   "name": "خاص بك — اللعبة الأساسية",
+   "optionId": "online_account",
+   "price": 38000,
+   "cost": 20750,
+   "description": "Standard game, Online Account. Supplier Standard price: ¥95.00; purchase cost converted at 1 CNY = 220 IQD and rounded down to nearest 250 IQD.",
+   "isInfiniteStock": true
+  },
+  {
+   "id": "dlc_offline",
+   "name": "مشترك — مع الإضافات",
+   "optionId": "offline_account",
+   "price": 19000,
+   "cost": 3000,
+   "description": "Offline Account with the listed DLC/Deluxe content. Supplier Special price: ¥13.66.",
+   "isInfiniteStock": true
+  },
+  {
+   "id": "dlc_online",
+   "name": "خاص بك — مع الإضافات",
+   "optionId": "online_account",
+   "price": 48000,
+   "cost": 27250,
+   "description": "Online Account with the listed DLC/Deluxe content. Supplier Deluxe price: ¥124.40.",
+   "isInfiniteStock": true
+  }
+ ],
+ "editions": [],
+ "dlcs": [],
+ "isActive": true,
+ "status": "active",
+ "kind": "account",
+ "trade_value_iqd": 45000,
+ "store_offer_bonus_iqd": 0,
+ "trade_enabled": true,
+ "trade_value_locked": false,
+ "schema_version": 22,
+ "titleAr": "مونستر هنتر ستوريز 3: تويستد ريفليكشن",
+ "compatibility": [
+  "Nintendo Switch 2"
+ ],
+ "edition": "Standard",
+ "developer": "CAPCOM",
+ "publisher": "CAPCOM",
+ "opencriticRating": 85,
+ "userScore": 8,
+ "officialUrl": "https://www.monsterhunter.com/stories3/",
+ "gameIsOffline": true,
+ "gameIsOnline": true,
+ "gameLanguageLocked": false,
+ "description_short": "The third Monster Hunter Stories RPG follows a Rider caught between two nations and two Skyscale Rathalos, combining exploration, monster raising and strategic turn-based battles.",
+ "description_ar": "الجزء الثالث من سلسلة Monster Hunter Stories. قم بتربية الـMonsties وبناء الروابط معها واستكشاف عالم واسع وخوض معارك تقمص أدوار بنظام تبادل الأدوار، ضمن قصة دولتين وتوأم من Rathalos يحملان علامة Skyscale.",
+ "box_front_url": "https://i5.walmartimages.com/asr/501b1a1d-43fb-4f7d-a62e-86f72f477c41.abeb019df061bd92b8b43203a28540c5.png?odnBg=FFFFFF&odnHeight=1200&odnWidth=1200",
+ "videos": [
+  {
+   "title": "Pre-order Trailer",
+   "url": "https://www.youtube.com/watch?v=f1M_0t2Tayk"
+  },
+  {
+   "title": "Animated Trailer",
+   "url": "https://www.youtube.com/watch?v=uM6pjBnv5Ig"
+  }
+ ],
+ "nintendoEshopUrl": "https://www.nintendo.com/us/store/products/monster-hunter-stories-3-twisted-reflection-switch-2/",
+ "nintendoOnlineRequired": false,
+ "nintendoCloudSaves": true,
+ "tvMode": true,
+ "tabletopMode": true,
+ "handheldMode": true,
+ "nintendoPlayModes": "TV Mode, Tabletop Mode, Handheld Mode",
+ "switch2Features": [
+  "Native Nintendo Switch 2 version",
+  "TV, Tabletop and Handheld play",
+  "Dynamic-resolution presentation",
+  "Unlocked 30-60 FPS behavior in technical testing",
+  "amiibo support",
+  "Surround sound (linear PCM)",
+  "Save Data Cloud",
+  "Simplified and Traditional Chinese text support"
+ ],
+ "tagline": "Twin Rathalos, born in a twist of fate.",
+ "fitFor": [
+  "Monster Hunter fans who prefer turn-based RPGs",
+  "Players who enjoy creature collecting and team building",
+  "Story-focused JRPG players",
+  "Players who like exploration and companion progression"
+ ],
+ "notFitFor": [
+  "Players expecting mainline Monster Hunter action combat",
+  "Performance-sensitive players wanting a locked 60 FPS"
+ ],
+ "playTimeMain": 44.5,
+ "playTimeFull": 95,
+ "editionsList": [
+  {
+   "name": "Standard Edition",
+   "contents": [
+    {
+     "label": "Base game"
+    }
+   ]
+  },
+  {
+   "name": "Deluxe Edition",
+   "contents": [
+    {
+     "label": "Base game"
+    },
+    {
+     "label": "Deluxe Kit with layered armor, companion outfits and cosmetic customization"
+    }
+   ]
+  },
+  {
+   "name": "Premium Deluxe Edition",
+   "contents": [
+    {
+     "label": "Base game"
+    },
+    {
+     "label": "Deluxe Kit"
+    },
+    {
+     "label": "Additional Side Story: Rudy"
+    },
+    {
+     "label": "Special Outfits Set"
+    },
+    {
+     "label": "Additional monster-hair and Rudy cosmetic packs"
+    }
+   ]
+  }
+ ],
+ "gameplayPillars": [
+  {
+   "title": "Raise and Bond with Monsties",
+   "description": "Hatch, raise and build bonds with monsters that become traversal partners and combat companions."
+  },
+  {
+   "title": "Turn-Based Battles",
+   "description": "Use the series' Power, Speed and Technical relationship, exploit enemy patterns and coordinate Rider/Monstie actions."
+  },
+  {
+   "title": "Exploration and Riding",
+   "description": "Travel through broad environments using Monstie abilities, discover resources and encounter wild monsters."
+  },
+  {
+   "title": "Party and Character Growth",
+   "description": "Develop the Rider, Monsties and companions through equipment, skills, stats and customization."
+  },
+  {
+   "title": "Story-Driven RPG",
+   "description": "Follow the conflict between Azuria and Vermeil and the mystery surrounding twin Skyscale Rathalos."
+  }
+ ],
+ "worldSummary": "The kingdoms of Azuria and Vermeil face environmental collapse and renewed war. Twin Rathalos carrying the Skyscale mark link the present crisis to a devastating civil war two centuries earlier.",
+ "storyChapters": [
+  {
+   "title": "Two Nations at the Brink",
+   "body": "Azuria and Vermeil face ecological collapse and renewed political tension."
+  },
+  {
+   "title": "Twin Skyscale Rathalos",
+   "body": "An egg thought to hold a single extinct Rathalos instead hatches twins carrying the Skyscale mark associated with a civil war 200 years earlier."
+  },
+  {
+   "title": "A Rider's Journey for the Truth",
+   "body": "The Rider and a trusted Rathalos cross the threatened world to uncover the truth behind the twins, the old war and the worsening natural crisis."
+  }
+ ],
+ "galleryImages": [
+  {
+   "url": "https://assets.nintendo.com/image/upload/ar_16:9,b_auto:border,c_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000097756/cf4b5344614c09079e0e70b839b522b599d2c92e0b4339e14f83f435be2d6a24",
+   "alt": "Distinct product/game media image 1; separate from the primary cover and square-card roles."
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/ar_16:9,b_auto:border,c_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000097756/03c7d68aa8d72150c90eab531400693df164da22b063dfe920fa4ddf2d5b4f63",
+   "alt": "Distinct product/game media image 2; separate from the primary cover and square-card roles."
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/ar_16:9,b_auto:border,c_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000097756/47c64acb428b22f89531408121bd963e061be216c043ed01f8ad017c3cdee468",
+   "alt": "Distinct product/game media image 3; separate from the primary cover and square-card roles."
+  }
+ ],
+ "features": [
+  "Third main Monster Hunter Stories RPG",
+  "Raise and bond with Monsties",
+  "Turn-based Power/Speed/Technical battle system",
+  "Large explorable environments",
+  "Twin Rathalos central story",
+  "Character customization and companion progression",
+  "amiibo support",
+  "Surround sound",
+  "Deluxe Kit and Premium Deluxe content",
+  "Additional Side Story: Rudy",
+  "Multiple cosmetic DLC packs"
+ ],
+ "perfResolutionDocked": "1920x1080-class output (dynamic/upscaled; docked can render above 1080p in some reports)",
+ "perfResolutionHandheld": "1280x720 output (dynamic/upscaled presentation)",
+ "perfFps": "30-60 FPS unlocked; commonly ~30-45 FPS",
+ "perfNotes": "Switch 2 uses dynamic resolution with an unlocked frame rate. Independent testing commonly reports roughly 30-45 FPS in the overworld, with up to 60 FPS in lighter scenes or battles. Handheld image quality is softer; 720p-class output has been reported, while docked output is around 1080p-class or higher depending on scene and scaling.",
+ "devicePerformance": [
+  {
+   "device": "Nintendo Switch 2",
+   "deviceSlug": "nintendo-switch-2",
+   "deviceModel": "Nintendo Switch 2",
+   "hardwareId": "prd_acf4c89908764c62",
+   "informationStatus": "verified",
+   "handheld": {
+    "supported": true,
+    "resolution": "1280x720 output",
+    "resolutionDynamic": true,
+    "renderingResolution": "Dynamic",
+    "outputResolution": "1280x720",
+    "fps": "30-60",
+    "fpsMin": "~25-30",
+    "fpsMax": "60",
+    "notes": "Portable mode can dip below 30 FPS in heavy scenes according to technical comparisons."
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "1920x1080 output class",
+    "resolutionDynamic": true,
+    "renderingResolution": "Dynamic",
+    "outputResolution": "1920x1080",
+    "fps": "30-60",
+    "fpsMin": "30",
+    "fpsMax": "60",
+    "notes": "Often around 30-45 FPS in the overworld; can hit 60 FPS in lighter scenes or battles."
+   },
+   "sourceName": "Nintendo Life / RPG Site / Lords of Gaming technical impressions",
+   "sourceUrl": "https://www.nintendolife.com/reviews/nintendo-switch-2/monster-hunter-stories-3-twisted-reflection",
+   "verificationStatus": "third-party-tested",
+   "performanceNotes": "Switch 2 uses dynamic resolution with an unlocked frame rate. Independent testing commonly reports roughly 30-45 FPS in the overworld, with up to 60 FPS in lighter scenes or battles. Handheld image quality is softer; 720p-class output has been reported, while docked output is around 1080p-class or higher depending on scene and scaling."
+  }
+ ],
+ "downloadSizeGb": 27.7,
+ "requiredSpaceGb": 27.7,
+ "microSdRecommended": false,
+ "languagesAudio": [
+  "Japanese",
+  "English"
+ ],
+ "languagesText": [
+  "Japanese",
+  "American English",
+  "French",
+  "German",
+  "Italian",
+  "Spanish",
+  "Korean",
+  "Russian",
+  "Simplified Chinese",
+  "Traditional Chinese",
+  "Brazilian Portuguese",
+  "Polish"
+ ],
+ "arabicSupport": false,
+ "mpLocalPlayers": false,
+ "mpOnlinePlayers": false,
+ "mpCoop": false,
+ "mpCompetitive": false,
+ "mpSplitScreen": false,
+ "mpLocalWireless": false,
+ "dlc": [
+  {
+   "name": "Special Outfits Set",
+   "description": "Cosmetic outfit content for companions and additional customization."
+  },
+  {
+   "name": "Additional Side Story: Rudy",
+   "description": "Paid additional side-story content centered on Rudy."
+  },
+  {
+   "name": "Monster Hair packs",
+   "description": "Additional cosmetic monster-hair customization packs."
+  }
+ ],
+ "guides": [
+  {
+   "title": "Official CAPCOM Site",
+   "summary": "Story, characters, systems, media and edition information.",
+   "url": "https://www.monsterhunter.com/stories3/"
+  },
+  {
+   "title": "Nintendo Store",
+   "summary": "Switch 2 modes, languages, file size, player count and DLC.",
+   "url": "https://www.nintendo.com/us/store/products/monster-hunter-stories-3-twisted-reflection-switch-2/"
+  },
+  {
+   "title": "Deku Deals",
+   "summary": "Review aggregates and crowdsourced completion times.",
+   "url": "https://www.dekudeals.com/items/monster-hunter-stories-3-twisted-reflection"
+  }
+ ],
+ "completionMain": 44.5,
+ "completionExtras": 61,
+ "completionAll": 95,
+ "faq": [
+  {
+   "q": "Is Monster Hunter Stories 3 a mainline action Monster Hunter game?",
+   "a": "No. Stories is a turn-based RPG spin-off centered on Riders, Monsties, bonds and party building."
+  },
+  {
+   "q": "Does the Switch 2 version support Simplified Chinese?",
+   "a": "Yes. Nintendo lists Simplified Chinese and Traditional Chinese among supported languages."
+  },
+  {
+   "q": "How long is the game?",
+   "a": "Crowdsourced completion data lists about 44.5 hours for the main story, around 61 hours with extras and around 95 hours for completionist play."
+  },
+  {
+   "q": "Is there DLC?",
+   "a": "Yes. DLC includes cosmetic packs, the Special Outfits Set and Additional Side Story: Rudy."
+  },
+  {
+   "q": "Does it support amiibo?",
+   "a": "Yes. Nintendo lists amiibo compatibility for the Switch 2 version."
+  },
+  {
+   "q": "Is it multiplayer?",
+   "a": "The Nintendo Switch 2 store lists one player on a single system; the core campaign is designed as a single-player RPG."
+  }
+ ],
+ "verdictScore": 8,
+ "verdictSummary": "A feature-rich monster-raising RPG with strong presentation and customization, though Switch 2 performance is less stable than the hardware can ideally deliver.",
+ "verdictPros": [
+  "Strong creature-raising loop",
+  "Large and colorful world",
+  "Extensive customization",
+  "Rich deluxe/DLC offering",
+  "Official Simplified Chinese support"
+ ],
+ "verdictCons": [
+  "Switch 2 frame rate is unlocked and often sits around 30-45 FPS in large areas",
+  "Portable mode can dip more often in demanding scenes"
+ ],
+ "reviews": [
+  {
+   "source": "Metacritic",
+   "score": "82/100",
+   "quote": "Strong critical reception, especially for turn-based combat, character presentation and the creature-raising loop.",
+   "url": "https://www.metacritic.com/"
+  },
+  {
+   "source": "OpenCritic",
+   "score": "85/100",
+   "quote": "The game received a strong critic average; praise centered on combat and its more personal story, with some criticism of filler and open-world density.",
+   "url": "https://opencritic.com/"
+  },
+  {
+   "source": "Steam users",
+   "score": "81% positive",
+   "quote": "English-language Steam user reviews were Very Positive in the post-launch period.",
+   "url": "https://store.steampowered.com/app/2852190/Monster_Hunter_Stories_3/"
+  }
+ ],
+ "timeline": [
+  {
+   "date": "2025-08-01",
+   "title": "Official announcement",
+   "body": "CAPCOM formally announced Monster Hunter Stories 3 for Nintendo Switch 2 and other current platforms."
+  },
+  {
+   "date": "2025-09-12",
+   "title": "Release date reveal",
+   "body": "A new trailer confirmed the March 2026 launch date and expanded story details."
+  },
+  {
+   "date": "2026-03-13",
+   "title": "Nintendo Switch 2 launch",
+   "body": "The game released on Nintendo Switch 2, PlayStation 5, Xbox Series X|S and PC."
+  },
+  {
+   "date": "2026-06-25",
+   "title": "Major DLC release",
+   "body": "Additional Side Story: Rudy and the Special Outfits Set released."
+  }
+ ],
+ "patchNotes": [
+  {
+   "version": "Launch",
+   "date": "2026-03-13",
+   "body": "Initial Switch 2 release with base story, amiibo support, surround sound and launch-day cosmetic DLC."
+  },
+  {
+   "version": "Rudy / Special Outfits content",
+   "date": "2026-06-25",
+   "body": "Additional Side Story: Rudy and the Special Outfits Set became available as paid downloadable content."
+  },
+  {
+   "version": "Post-launch support",
+   "date": "2026",
+   "body": "CAPCOM continued cosmetic and content support through multiple DLC items and packs."
+  }
+ ],
+ "soundtrack": [
+  {
+   "title": "Monster Hunter Stories 3 Official Music / Soundtrack",
+   "url": "https://www.monsterhunter.com/stories3/"
+  },
+  {
+   "title": "Monster Hunter Stories series music",
+   "url": "https://www.capcom.com/"
+  }
+ ],
+ "seriesName": "Monster Hunter Stories",
+ "seriesEntries": [
+  "Monster Hunter Stories",
+  "Monster Hunter Stories 2: Wings of Ruin",
+  "Monster Hunter Stories 3: Twisted Reflection"
+ ],
+ "studioName": "CAPCOM Co., Ltd.",
+ "studioUrl": "https://www.capcom.com/",
+ "studioLocation": "Osaka, Japan",
+ "studioAbout": "CAPCOM is the Japanese developer and publisher behind Monster Hunter, Resident Evil and Street Fighter. Monster Hunter Stories 3 extends the turn-based Monster Rider RPG branch with redesigned character presentation, larger environments, a new story and expanded customization.",
+ "setupNeeds": [
+  "Nintendo Switch 2 system required for the Nintendo Switch 2 version.",
+  "Internet connection is required for digital download, updates and online/service features where applicable.",
+  "Nintendo Account required for Nintendo eShop purchase/download.",
+  "Sufficient internal storage or compatible microSD Express storage required.",
+  "Nintendo Switch Online membership is required only for game-specific online multiplayer/features that explicitly use it."
+ ],
+ "sources": [
+  {
+   "name": "Nintendo US",
+   "url": "https://www.nintendo.com/us/store/products/monster-hunter-stories-3-twisted-reflection-switch-2/"
+  },
+  {
+   "name": "CAPCOM Official",
+   "url": "https://www.monsterhunter.com/stories3/"
+  },
+  {
+   "name": "CAPCOM Investor Relations",
+   "url": "https://www.capcom.co.jp/ir/english/news/html/e250801.html"
+  },
+  {
+   "name": "Steam",
+   "url": "https://store.steampowered.com/app/2852190/Monster_Hunter_Stories_3/"
+  },
+  {
+   "name": "Deku Deals",
+   "url": "https://www.dekudeals.com/items/monster-hunter-stories-3-twisted-reflection"
+  }
+ ],
+ "boxContentsList": "[Circular]",
+ "image": "/api/files/products/prd_09e13ed4dedb4150/coverImage-70f3a95408b99902.avif",
+ "banner": "/api/files/products/prd_09e13ed4dedb4150/bannerImages-1-2f8d20d04ac7d6e0.avif",
+ "schemaId": "",
+ "badgeEn": "وفر 40%",
+ "badgeKu": "وفر 40%",
+ "featuresEn": [
+  "Third main Monster Hunter Stories RPG",
+  "Raise and bond with Monsties",
+  "Turn-based Power/Speed/Technical battle system",
+  "Large explorable environments",
+  "Twin Rathalos central story",
+  "Character customization and companion progression",
+  "amiibo support",
+  "Surround sound",
+  "Deluxe Kit and Premium Deluxe content",
+  "Additional Side Story: Rudy",
+  "Multiple cosmetic DLC packs"
+ ],
+ "featuresKu": [
+  "Third main Monster Hunter Stories RPG",
+  "Raise and bond with Monsties",
+  "Turn-based Power/Speed/Technical battle system",
+  "Large explorable environments",
+  "Twin Rathalos central story",
+  "Character customization and companion progression",
+  "amiibo support",
+  "Surround sound",
+  "Deluxe Kit and Premium Deluxe content",
+  "Additional Side Story: Rudy",
+  "Multiple cosmetic DLC packs"
+ ],
+ "sales": 0,
+ "images": [],
+ "modes": [],
+ "updatedAt": "2026-08-28T21:59:48.285Z"
+}

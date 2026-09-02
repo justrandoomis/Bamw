@@ -1,0 +1,51 @@
+{
+ "batch": "017",
+ "apply": false,
+ "games": [
+  {
+   "id": "prd_37d91330c3514080",
+   "slug": "nintendo-switch-2-welcome-tour",
+   "baseHash": "3b2b47ff6e7dceed6c64c373f792bcc7db1909e9f180294616afb82481eb4ced",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  },
+  {
+   "id": "prd_4241c51108d849b2",
+   "slug": "nintendo-switch-sports",
+   "baseHash": "88c71de1c381b37eed89f5cccd19fdbd328746d4f4e22471e34f6d05effb74db",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  },
+  {
+   "id": "prd_1ad4955cc45d4ef1",
+   "slug": "paper-mario-the-origami-king-switch-1",
+   "baseHash": "59215f9d58801d9477e17b565fb981ed2c0302eb59b2d92aa8cf88673798dfea",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  },
+  {
+   "id": "prd_e29d75e0daf94fd6",
+   "slug": "paper-mario-the-thousand-year-door-switch-1",
+   "baseHash": "b33f0888b00b2a71d43a613a6459e57c343feb3f8938705ea1bc75540bf5562f",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  },
+  {
+   "id": "prd_d48481255a0f44f8",
+   "slug": "persona-3-portable",
+   "baseHash": "441d1a8e5b381b73cdfcd8b8945caa7ba7484f93f04428018444c5c3d8960b11",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  }
+ ]
+}
