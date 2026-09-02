@@ -83,7 +83,18 @@ const confirmed = <T>(value: T, source = "لوحة الإدارة"): Fact<T> => 
 });
 
 function buildCore(p: Record<string, unknown>, locale: "ar" | "en") {
-  const title = str(p["titleEn"]) || str(p["english_name"]) || str(p["title"]);
+  const englishTitle = str(p["titleEn"]) || str(p["english_name"]) || str(p["title"]);
+  /*
+    The import schema stores the Arabic name under `titleAr` (template keys
+    title_ar / name_ar), and legacy rows carry it in `title` when that differs
+    from `titleEn`. Neither was ever read, so every Arabic page showed the
+    English name while the Arabic one sat in the document.
+  */
+  const arabicTitle =
+    str(p["titleAr"]) ||
+    str(p["title_ar"]) ||
+    (str(p["title"]) !== str(p["titleEn"]) ? str(p["title"]) : "");
+  const title = locale === "ar" ? arabicTitle || englishTitle : englishTitle;
 
   /*
     The Arabic description had a spelling nobody read.
