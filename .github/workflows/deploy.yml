@@ -89,46 +89,37 @@ jobs:
           echo "mode:   $MODE"
           echo "migrate: ${{ inputs.migrate }}"
 
-      # The gate.
+      # The gate. Nothing below runs if any of these four fail.
       #
-      # Typecheck, test and lint all fail on `main` today, and did before any of
-      # this work: 101 type errors and 78 failing tests, in code untouched by
-      # the changes waiting to ship. Held as blocking, they do not protect
-      # production — they simply mean nothing can ever be deployed, which is the
-      # state this repository was actually in. They still RUN, and their output
-      # is in the log, but they report rather than block.
+      # These were advisory for exactly one release, because `main` could not
+      # pass them: 101 type errors and 78 failing tests, none of it in the
+      # changes waiting to ship. Held as blocking in that state they protected
+      # nothing — they only meant nothing could ever be deployed, which is the
+      # state this repository was actually in. The baseline is green now
+      # (0 type errors, 1487 tests passing, 0 lint errors), so they block again.
       #
-      # Build stays hard, and it is the one that answers the question a deploy
-      # asks: `npm run build` is `vite build` plus
-      # scripts/verify-cloudflare-bundle.mjs, which checks the Worker entry
-      # points at dist/server/server.js and that fetch, queue, scheduled and the
-      # ChatRealtimeDO binding are all exported. A bundle that fails it cannot
-      # serve, so nothing is uploaded.
-      #
-      # These three go back to blocking the moment the baseline is green. Fixing
-      # the baseline is its own job; shipping fixes to a live store should not
-      # wait on it.
+      # Build is the one that answers the question a deploy asks: `npm run
+      # build` is `vite build` plus scripts/verify-cloudflare-bundle.mjs, which
+      # checks the Worker entry points at dist/server/server.js and that fetch,
+      # queue, scheduled and the ChatRealtimeDO binding are all exported. A
+      # bundle that fails it cannot serve, so nothing is uploaded.
       #
       # A rollback skips all of it. The version being rolled back to was already
       # built, tested and uploaded, and rebuilding it would defeat the point:
       # the reason to roll back is that what is serving now is bad, and the
       # fastest safe move is to serve something known good that already exists.
-      - name: Typecheck (advisory — see the note above)
+      - name: Typecheck
         if: ${{ !inputs.rollback_to }}
-        continue-on-error: true
         run: npm run typecheck
 
-      - name: Test (advisory — see the note above)
+      - name: Test
         if: ${{ !inputs.rollback_to }}
-        continue-on-error: true
         run: npx vitest run
 
-      - name: Lint (advisory — see the note above)
+      - name: Lint
         if: ${{ !inputs.rollback_to }}
-        continue-on-error: true
         run: npx eslint .
 
-      # Blocking. Nothing below runs if this fails.
       - name: Build
         if: ${{ !inputs.rollback_to }}
         run: npm run build
