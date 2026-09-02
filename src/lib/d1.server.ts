@@ -340,6 +340,24 @@ const SCHEMA: string[] = [
     label_en TEXT, percent REAL NOT NULL DEFAULT 0, sort_order INTEGER NOT NULL DEFAULT 0,
     active INTEGER NOT NULL DEFAULT 1, created_at TEXT NOT NULL)`,
   `CREATE UNIQUE INDEX IF NOT EXISTS trade_rules_key_idx ON trade_rules (category, key)`,
+  /*
+    Who asked to be told when an unreleased product comes out.
+
+    A pre-order in this catalogue is a priced product with a future release
+    date, and until now nothing stopped a customer buying one — the store took
+    money for a game it could not hand over. The customer registers here
+    instead; `notified_at` is stamped when the release message goes out, so a
+    restarted job cannot tell the same person twice.
+
+    One row per person per product: the unique index makes a second tap on
+    "notify me" a no-op rather than a duplicate.
+  */
+  `CREATE TABLE IF NOT EXISTS product_release_alerts (
+    id TEXT PRIMARY KEY, user_id TEXT NOT NULL, product_id TEXT NOT NULL,
+    product_title TEXT, release_date TEXT,
+    created_at TEXT NOT NULL, notified_at TEXT)`,
+  `CREATE UNIQUE INDEX IF NOT EXISTS product_release_alerts_unique ON product_release_alerts (user_id, product_id)`,
+  `CREATE INDEX IF NOT EXISTS product_release_alerts_pending_idx ON product_release_alerts (notified_at, product_id)`,
   `CREATE TABLE IF NOT EXISTS product_requests (
     id TEXT PRIMARY KEY, user_id TEXT NOT NULL, request_type TEXT NOT NULL,
     product_name TEXT NOT NULL, game_id TEXT, platform TEXT, product_category TEXT,
@@ -1058,11 +1076,14 @@ const SCHEMA_PATCHES: string[] = [
     created_at TEXT NOT NULL, updated_at TEXT NOT NULL)`,
 
   // 6. Notifications & Audits
-  `CREATE TABLE IF NOT EXISTS notifications (
-    id TEXT PRIMARY KEY, user_id TEXT NOT NULL, title TEXT NOT NULL,
-    body TEXT NOT NULL, link TEXT, is_read INTEGER DEFAULT 0,
-    created_at TEXT NOT NULL)`,
-  `CREATE INDEX IF NOT EXISTS notifications_user_idx ON notifications (user_id, created_at DESC)`,
+  /*
+    `notifications` is declared earlier in this array with `type` and
+    `reference_id`. A second `CREATE TABLE IF NOT EXISTS` for the same name
+    never runs, so this one only ever misled the code that wrote `link` into a
+    table that has no such column — which is why no in-app notification was
+    ever stored. Removed rather than reconciled: one definition, or neither is
+    trustworthy.
+  */
 
   `CREATE TABLE IF NOT EXISTS audit_logs (
     id TEXT PRIMARY KEY, user_id TEXT NOT NULL, action TEXT NOT NULL,
@@ -1749,7 +1770,7 @@ export function ensureCouponsSchema(): Promise<void> {
 // Bumped whenever SCHEMA_PATCHES gains a statement existing databases need.
 // The stamp below short-circuits the bootstrap, so a new patch is invisible to
 // already-deployed databases until this number moves.
-const RUNTIME_SCHEMA_VERSION = 19;
+const RUNTIME_SCHEMA_VERSION = 20;
 
 async function runSchemaStatements(
   db: D1Like,

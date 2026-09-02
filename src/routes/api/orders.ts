@@ -15,6 +15,7 @@ import {
 } from "@/lib/db.server";
 import { body, guard, json } from "@/lib/http.server";
 import {
+  AwaitingReleaseError,
   createOrderForUser,
   type CheckoutLine,
   evaluateOrderAutoCompletion,
@@ -131,6 +132,22 @@ export const Route = createFileRoute("/api/orders")({
             return json({ order: redactOrder(order!) });
           } catch (error) {
             console.error("[api:orders:create_failed]", error);
+            /*
+              A game that has not come out yet is refused by name, with its
+              date, so the cart can say which line to remove and offer the
+              release alert instead of reporting a generic failure.
+            */
+            if (error instanceof AwaitingReleaseError) {
+              return json(
+                {
+                  error: "product_not_released",
+                  productId: error.productId,
+                  productTitle: error.productTitle,
+                  releaseDate: error.releaseDate,
+                },
+                { status: 400 },
+              );
+            }
             const code = error instanceof Error ? error.message : "order_failed";
             const safe = new Set([
               "cart_empty",
