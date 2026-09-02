@@ -1,51 +1,153 @@
 {
  "batch": "004",
- "apply": false,
+ "apply": true,
  "games": [
   {
    "id": "prd_6f3eaa73a1d14946",
    "slug": "devil-may-cry-5-devil-hunter-edition-switch-2",
    "baseHash": "fda2e7b8d3af96baf6c85914a3453dc3929a4ed2246c3da776dd26054a9e0e4b",
    "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "clear": [
+    "youtubeTrailer"
+   ],
+   "notes": "Release 2026-06-23 and the 60 fps both-modes claim verified against Capcom's announcement coverage; resolution honestly marked not published by CAPCOM in the existing sourced record — kept. The stored trailer was a YouTube SEARCH link, which breaks the embed — removed (no verified official video id could be confirmed from this environment; owner can paste the announce trailer). Square card, wide key-art cover and six galleries verified visually: correct DMC5 Devil Hunter Edition media. Product is hidden; Metacritic left absent — the Switch 2 edition has no verifiable aggregate and another platform's score would be wrong."
   },
   {
    "id": "prd_9c97bcae3d9e4162",
    "slug": "donkey-kong-bananza-switch-2",
    "baseHash": "1528a7e4fa2eab18883b684df0e5983a40908dfdadedbefc9443f8987aa0f469",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "youtubeTrailer": "https://www.youtube.com/watch?v=jAKPbABwuqQ",
+    "bannerImages": [
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000096809/3c8219fbdcd3bdd0ebd6239cf32c651fe10f2157aa7730fcc6a7d96cd27460e5"
+    ],
+    "galleryImages": [
+     {
+      "url": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing/pmp-nkscdulw/deep-underground/underground-canyon-medium-up-2x",
+      "alt": "Donkey Kong smashing through an underground canyon at sunset"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing/pmp-nkscdulw/deep-underground/underground-forest-medium-up-2x",
+      "alt": "Underground forest layer with destructible terrain"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing/pmp-nkscdulw/deep-underground/underground-temple-medium-up-2x",
+      "alt": "Golden temple chamber deep underground"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing/pmp-nkscdulw/deep-underground/underground-lava-medium-up-2x",
+      "alt": "Lava layer with hazards to smash through"
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.5/Marketing/pmp-nkscdulw/characters/dk-and-pauline-2x",
+      "alt": "Donkey Kong in Kong Bananza form with Pauline"
+     }
+    ]
+   },
+   "clear": [
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "Record verified accurate (2025-07-17, Metacritic 91, Nintendo EPD, DLC entries present). The trailer field held a nintendo.com page URL that cannot embed — replaced with the official reveal trailer. Four dead R2 banners replaced by the official eShop key-art hero promoted from the gallery; the five marketing gallery images keep their places with real descriptions instead of the generic 'Distinct verified game media image N' filler alts. Both box images, square card, 4K cover and genuine wrap texture verified visually: kept."
   },
   {
    "id": "prd_1c5ea5fc72b443c1",
    "slug": "dragon-ball-sparking-zero-switch2",
    "baseHash": "86aad93ff3045f0def4802587a1d2beb4f8c60284e3c8dae92ab860eee2ad480",
    "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "clear": [
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "Fields verified: 2025-11-14 Switch 2 release, Bandai-sourced dynamic-810p/30 performance record, DLC entries, working trailer. All image roles hold correct Sparking! ZERO art but only small copies (cover 400x129, box 171x280, banners 400x225) — kept because content is right and no higher-resolution source could be verified from this environment; flagged for a future image-quality pass. Only the ten contamination fields removed."
   },
   {
    "id": "prd_75d643ddb1194fff",
    "slug": "dynasty-warriors-origins",
    "baseHash": "1f6ab11d788442a49a24e8c39f157069502490b66a42e48de300f42ae4e73f7d",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "bannerImages": [
+     "https://assets.nintendo.com/image/upload/ar_16:9,b_auto:border,c_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70070000032028/d46471b67abff8939c671c327a3dc22072f4c0d8a6940e02b9c9eeefae86e99e"
+    ]
+   },
+   "clear": [
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus",
+    "nintendoCardImage",
+    "coverImage",
+    "image",
+    "box_front_url",
+    "galleryImages"
+   ],
+   "notes": "Square card, cover, listing image and both banners were dead R2 references (403) — removed; the battlefield screenshot from the gallery becomes the one working banner (moved, not copied), and listings fall back to the verified box art in cartridgeImage. box_front_url removed for two reasons: it is wide key art in the front-box role AND it carries Digital Deluxe Edition branding on the standard product. No verified square-card or cover replacement is reachable from this environment — removal beats a broken or misbranded image; flagged for a future image pass. The ten contamination fields removed."
   },
   {
    "id": "prd_e907e5625fb9410d",
    "slug": "ea-sports-fc-24",
    "baseHash": "420f07acaaffeae670e7fb65ddda5900f0675238df6dc4ec2599d14aa4f23192",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "tagline": "The first full EA SPORTS FC experience on Nintendo Switch.",
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "informationStatus": "available",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p",
+       "fps": "30"
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p",
+       "fps": "30"
+      },
+      "modes": [],
+      "sourceName": "Official product and compatibility information",
+      "sourceUrl": "https://www.ea.com/games/ea-sports-fc/fc-24",
+      "verificationStatus": "official"
+     }
+    ]
+   },
+   "clear": [
+    "metacriticRating",
+    "supportedLanguages",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "metacriticRating removed: it held the string '85', which matches no verifiable score for the Switch release (the PS5 aggregate is 76) — a wrong number shown to customers is worse than none. supportedLanguages removed: it held a 'varies by region' referral sentence, not a language list. Two device records collapse to the platform's Nintendo Switch record with the existing officially-sourced 720p/1080p/30 figures. Tagline written from the documented reception (Nintendo Life: the first full EA SPORTS FC on a Nintendo system). Product is hidden and carries no images at all; none can be sourced and verified from this environment — flagged for the owner."
   }
  ]
 }
