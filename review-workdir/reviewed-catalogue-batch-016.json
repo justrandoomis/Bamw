@@ -1,51 +1,216 @@
 {
  "batch": "016",
- "apply": false,
+ "apply": true,
  "games": [
   {
    "id": "prd_316788014ee14877",
    "slug": "metroid-dread-switch",
    "baseHash": "45ebdccefef4bbfd810e26c122e252c38240aa42b079c4db1fc4124941295053",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "informationStatus": "available",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p",
+       "fps": "60"
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p",
+       "fps": "60"
+      },
+      "modes": [],
+      "sourceName": "Digital Foundry's analysis of Metroid Dread",
+      "sourceUrl": "https://www.nintendolife.com/games/nintendo-switch/metroid_dread",
+      "verificationStatus": "technical_analysis"
+     }
+    ]
+   },
+   "clear": [
+    "youtubeTrailer",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "The trailer field held a YouTube SEARCH link — removed. The nonstandard nintendo-switch-1 slugged records become one explicit platform record with the documented 1080p/720p at 60 fps figures. 2021-10-08, Metacritic 88 verified. Images working (hidden product)."
   },
   {
    "id": "prd_1ae08b9969f74bc1",
    "slug": "minecraft-switch",
    "baseHash": "61de88bf49c32a3f58e9cf5ad2ed5a18b7de71f1728a91c3f5e6bb663598bf48",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "bannerImages": [
+     "https://images.launchbox-app.com/8c21a1aa-1158-460e-80ce-258f5d3ca7b4.jpg",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/en_US/games/switch/m/minecraft-switch/screenshot-gallery/screenshot01",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/en_US/games/switch/m/minecraft-switch/screenshot-gallery/screenshot03",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/en_US/games/switch/m/minecraft-switch/screenshot-gallery/screenshot04",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/en_US/games/switch/m/minecraft-switch/screenshot-gallery/screenshot05"
+    ],
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "informationStatus": "available",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p",
+       "fps": "60"
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p",
+       "fps": "60"
+      },
+      "modes": [],
+      "sourceName": "Digital Foundry's coverage of Minecraft on Switch",
+      "sourceUrl": "https://www.nintendolife.com/games/nintendo-switch/minecraft",
+      "verificationStatus": "technical_analysis"
+     }
+    ]
+   },
+   "clear": [
+    "youtubeTrailer",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "The one dead R2 banner dropped from the five-entry array; the four working entries kept verbatim and re-verified at apply. The trailer field held a nintendo.com store URL — removed. The Switch-2-badged record becomes the platform record with the documented 60 fps figures. 2018-06-21, Metacritic 86 verified. Contamination removed."
   },
   {
    "id": "prd_09e13ed4dedb4150",
    "slug": "monster-hunter-stories-3-twisted-reflection",
    "baseHash": "95301c75f8dd1e49ff9cf8c3215807468f10d8285892d049ace376fcef8f1e4e",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "coverImage": "https://assets.nintendo.com/image/upload/ar_16:9,b_auto:border,c_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000097756/cf4b5344614c09079e0e70b839b522b599d2c92e0b4339e14f83f435be2d6a24",
+    "image": "https://assets.nintendo.com/image/upload/ar_16:9,b_auto:border,c_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000097756/cf4b5344614c09079e0e70b839b522b599d2c92e0b4339e14f83f435be2d6a24",
+    "bannerImages": [
+     "https://assets.nintendo.com/image/upload/ar_16:9,b_auto:border,c_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000097756/03c7d68aa8d72150c90eab531400693df164da22b063dfe920fa4ddf2d5b4f63"
+    ],
+    "galleryImages": [
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16:9,b_auto:border,c_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000097756/47c64acb428b22f89531408121bd963e061be216c043ed01f8ad017c3cdee468",
+      "alt": "Distinct product/game media image 3; separate from the primary cover and square-card roles."
+     }
+    ]
+   },
+   "clear": [
+    "cartridgeImage",
+    "nintendoCardImage",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "Seven dead R2 roles on a visible product: rebuilt from the three working eShop galleries — the cinematic no-HUD shot (verified visually) becomes cover and listing, one shot becomes the banner, one stays in the gallery. Broken box and square-card references removed; the genuine Switch 2 game-key-card retail box in box_front_url (verified visually) remains as the box image. 2026-03-13, 27.7 GB, Metacritic 82, sourced 720p/1080p 30-60 fps record verified. Contamination removed."
   },
   {
    "id": "prd_c5dab307d09d4550",
    "slug": "new-super-mario-bros-u-deluxe-switch",
    "baseHash": "e24d8227d44ac1b87b6338e17cf0e1bd733a8df73df266ac963e3dae1f47e3d5",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "informationStatus": "available",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p",
+       "fps": "60"
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p",
+       "fps": "60"
+      },
+      "modes": [],
+      "sourceName": "Digital Foundry's analysis of NSMBU Deluxe",
+      "sourceUrl": "https://www.nintendolife.com/games/nintendo-switch/new_super_mario_bros_u_deluxe",
+      "verificationStatus": "technical_analysis"
+     }
+    ]
+   },
+   "clear": [
+    "youtubeTrailer",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "The trailer field held a nintendo.com store URL — removed. The Switch-2-badged record becomes the platform record with the documented 1080p/720p at 60 fps figures. 2019-01-11, Metacritic 80 verified. All images working. Contamination removed."
   },
   {
    "id": "prd_d49c84c34a844de6",
    "slug": "nier-automata-the-end-of-yorha-edition-switch-1",
    "baseHash": "b48227e5d1796015e048c9062af7614bbf14d184ec64206ee9cc17606e197d0f",
-   "set": {},
-   "clear": [],
-   "imageNotes": "",
-   "notes": ""
+   "set": {
+    "size": 10.9,
+    "downloadSizeGb": 10.9,
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "informationStatus": "available",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p (dynamic)",
+       "fps": "30"
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p (dynamic)",
+       "fps": "30"
+      },
+      "modes": [],
+      "sourceName": "Digital Foundry's analysis of the Switch port",
+      "sourceUrl": "https://www.nintendolife.com/games/nintendo-switch/nier_automata_the_end_of_yorha_edition",
+      "verificationStatus": "technical_analysis"
+     }
+    ]
+   },
+   "clear": [
+    "youtubeTrailer",
+    "cardValue",
+    "cardType",
+    "deliveryMethod",
+    "amiiboSeries",
+    "characterName",
+    "figureType",
+    "usedType",
+    "conditionGrade",
+    "packaging",
+    "guaranteeStatus"
+   ],
+   "notes": "Size string '10.9 GB' becomes a number; the trailer field held a nintendo.com page URL — removed. The doubled records collapse to one platform record with Digital Foundry's dynamic 1080p/720p at 30 fps findings. 2022-10-06, Metacritic 89 verified. Images working (hidden product)."
   }
  ]
 }
