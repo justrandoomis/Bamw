@@ -1,0 +1,3077 @@
+{
+ "batch": "010",
+ "generatedAt": "2026-09-02T02:53:52.969Z",
+ "totalGames": 310,
+ "reviewedSoFar": 43,
+ "games": [
+  {
+   "id": "prd_3c341c814d254f05",
+   "slug": "hades-ii-nintendo-switch-2-edition",
+   "title": "Hades II – Nintendo Switch 2 Edition",
+   "platform": "switch2",
+   "isHidden": false,
+   "hash": "2265d99863883463088fa1fbdaf29011b7df11bca48f600838e84a2a99ae0e6f",
+   "images": [
+    {
+     "role": "front-box",
+     "field": "cartridgeImage",
+     "url": "https://banan.to/api/files/products/prd_3c341c814d254f05/front-6f193821c665cd5c.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 22158,
+     "width": 171,
+     "height": 280,
+     "thumb": "review-workdir/thumbs/batch-010/hades-ii-nintendo-switch-2-edition__front-box-0.png"
+    },
+    {
+     "role": "front-box",
+     "field": "box_front_url",
+     "url": "https://images.launchbox-app.com//9276e72f-d45b-4eb0-8444-eafc9950ab39.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 22158,
+     "width": 171,
+     "height": 280,
+     "thumb": "review-workdir/thumbs/batch-010/hades-ii-nintendo-switch-2-edition__front-box-1.png"
+    },
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://banan.to/api/files/products/prd_3c341c814d254f05/square-1f55c891aacda157.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 33481,
+     "width": 281,
+     "height": 281,
+     "thumb": "review-workdir/thumbs/batch-010/hades-ii-nintendo-switch-2-edition__square-card-2.png"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://banan.to/api/files/products/prd_3c341c814d254f05/cover-6ebc8cb0ffdbfa07.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 29572,
+     "width": 400,
+     "height": 225,
+     "thumb": "review-workdir/thumbs/batch-010/hades-ii-nintendo-switch-2-edition__detail-cover-3.png"
+    },
+    {
+     "role": "3d-texture",
+     "field": "coverHiResImage",
+     "url": "https://banan.to/api/files/products/prd_3c341c814d254f05/3d-texture-5ccab3212a844826.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 2656817,
+     "width": 4000,
+     "height": 3091,
+     "thumb": "review-workdir/thumbs/batch-010/hades-ii-nintendo-switch-2-edition__3d-texture-4.png"
+    },
+    {
+     "role": "listing",
+     "field": "image",
+     "url": "https://banan.to/api/files/products/prd_3c341c814d254f05/cover-6ebc8cb0ffdbfa07.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 29572,
+     "width": 400,
+     "height": 225,
+     "thumb": "review-workdir/thumbs/batch-010/hades-ii-nintendo-switch-2-edition__listing-5.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[0]",
+     "url": "https://banan.to/api/files/products/prd_3c341c814d254f05/banner-0-f123fb63f6c365c9.avif",
+     "status": 403,
+     "contentType": "text/html; charset=UTF-8"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[1]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000105526/97ca83e1cd65da9fe9a5f849081523c61cc764e090246e12b274a39ad197b77d",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 205473,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-010/hades-ii-nintendo-switch-2-edition__banner-7.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[2]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000105526/50ecd22aee5319d239edbcce4681483c9d300981137a6754bb4857372edc1f58",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 176274,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-010/hades-ii-nintendo-switch-2-edition__banner-8.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[3]",
+     "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000105526/32608044933fa2a4bf912586ef78aced58ccf2c02c754a209394d6fb659a5ac7",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 195535,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-010/hades-ii-nintendo-switch-2-edition__banner-9.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000105526/32608044933fa2a4bf912586ef78aced58ccf2c02c754a209394d6fb659a5ac7",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 195535,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-010/hades-ii-nintendo-switch-2-edition__gallery-10.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[1]",
+     "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000105526/566a78ffa9706838e77a75698ad480f811c1d2bfba31b999e8dc9834ee693fd0",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 213722,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-010/hades-ii-nintendo-switch-2-edition__gallery-11.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[2]",
+     "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000105526/f920391bdff344bdc9e63d06858704a054d11103c8f8b9e244bf9f6795b2c133",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 201474,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-010/hades-ii-nintendo-switch-2-edition__gallery-12.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[3]",
+     "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000105526/e2058a5516c9016f9c09b312b65a1d14962c2861a27068a75cca3dfad9fe3680",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 236146,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-010/hades-ii-nintendo-switch-2-edition__gallery-13.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[4]",
+     "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000105526/97ca83e1cd65da9fe9a5f849081523c61cc764e090246e12b274a39ad197b77d",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 205473,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-010/hades-ii-nintendo-switch-2-edition__gallery-14.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[5]",
+     "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000105526/50ecd22aee5319d239edbcce4681483c9d300981137a6754bb4857372edc1f58",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 176274,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-010/hades-ii-nintendo-switch-2-edition__gallery-15.png"
+    }
+   ],
+   "record": {
+    "title": "Hades II – Nintendo Switch 2 Edition",
+    "titleEn": "Hades II – Nintendo Switch 2 Edition",
+    "titleKu": "Hades II – Nintendo Switch 2 Edition",
+    "slug": "hades-ii-nintendo-switch-2-edition",
+    "description": "Hades II is Supergiant Games' action roguelike sequel starring Melinoë, Princess of the Underworld, in a battle against the Titan of Time. Runs are built around changing boons, weapons, encounters, permanent progression, and an expanding story. The Nintendo Switch 2 Edition adds higher-definition presentation and official performance support up to 120 fps in TV mode at 1080p and 60 fps in handheld mode at 1080p.",
+    "descriptionEn": "Hades II is Supergiant Games' action roguelike sequel starring Melinoë, Princess of the Underworld, in a battle against the Titan of Time. Runs are built around changing boons, weapons, encounters, permanent progression, and an expanding story. The Nintendo Switch 2 Edition adds higher-definition presentation and official performance support up to 120 fps in TV mode at 1080p and 60 fps in handheld mode at 1080p.",
+    "descriptionKu": "Hades II is Supergiant Games' action roguelike sequel starring Melinoë, Princess of the Underworld, in a battle against the Titan of Time. Runs are built around changing boons, weapons, encounters, permanent progression, and an expanding story. The Nintendo Switch 2 Edition adds higher-definition presentation and official performance support up to 120 fps in TV mode at 1080p and 60 fps in handheld mode at 1080p.",
+    "cartridgeImage": "/api/files/products/prd_3c341c814d254f05/front-6f193821c665cd5c.jpg",
+    "nintendoCardImage": "/api/files/products/prd_3c341c814d254f05/square-1f55c891aacda157.jpg",
+    "coverHiResImage": "/api/files/products/prd_3c341c814d254f05/3d-texture-5ccab3212a844826.jpg",
+    "coverImage": "/api/files/products/prd_3c341c814d254f05/cover-6ebc8cb0ffdbfa07.jpg",
+    "bannerImages": [
+     "/api/files/products/prd_3c341c814d254f05/banner-0-f123fb63f6c365c9.avif",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000105526/97ca83e1cd65da9fe9a5f849081523c61cc764e090246e12b274a39ad197b77d",
+     "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000105526/50ecd22aee5319d239edbcce4681483c9d300981137a6754bb4857372edc1f58",
+     "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000105526/32608044933fa2a4bf912586ef78aced58ccf2c02c754a209394d6fb659a5ac7",
+     "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000105526/566a78ffa9706838e77a75698ad480f811c1d2bfba31b999e8dc9834ee693fd0",
+     "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000105526/f920391bdff344bdc9e63d06858704a054d11103c8f8b9e244bf9f6795b2c133",
+     "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000105526/e2058a5516c9016f9c09b312b65a1d14962c2861a27068a75cca3dfad9fe3680",
+     "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000105526/97ca83e1cd65da9fe9a5f849081523c61cc764e090246e12b274a39ad197b77d"
+    ],
+    "gallery": [],
+    "youtubeTrailer": "https://www.youtube.com/watch?v=PQ9pU5cV38Y",
+    "releaseDate": "2025-09-25",
+    "ageRating": "ESRB: T — Alcohol Reference, Blood, Mild Language, Suggestive Themes, Violence",
+    "metacriticRating": 98,
+    "genres": [
+     "Action",
+     "Roguelike",
+     "RPG"
+    ],
+    "platform": "switch2",
+    "size": 10.8,
+    "numberOfPlayers": "1",
+    "supportedLanguages": "Japanese, French, German, Italian, Spanish, Korean, Russian, Simplified Chinese, Brazilian Portuguese, Traditional Chinese, American English",
+    "hardwareModel": "",
+    "colorEdition": "",
+    "storageCapacity": "",
+    "screenSpecs": "",
+    "batteryLife": "",
+    "boxContents": [],
+    "boxContentsText": "",
+    "warrantyCondition": "",
+    "connectivity": "",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "Global",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "",
+    "redemptionSteps": [],
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 9000,
+    "cost": 1250,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": false,
+    "displayOrder": 0,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "Offline Account",
+      "description": "Offline account option",
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_account",
+      "name": "Online Account",
+      "description": "Online account option",
+      "isInfiniteStock": true
+     }
+    ],
+    "types": [
+     {
+      "id": "standard_offline",
+      "name": "Standard Edition",
+      "optionId": "offline_account",
+      "price": "12000",
+      "cost": 1250,
+      "description": "Standard game access — Offline Account.",
+      "isInfiniteStock": true
+     },
+     {
+      "id": "standard_online",
+      "name": "Standard Edition",
+      "optionId": "online_account",
+      "price": "39000",
+      "cost": 25000,
+      "description": "Standard game access — Online Account.",
+      "isInfiniteStock": true
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "active",
+    "kind": "account",
+    "trade_value_iqd": 30000,
+    "store_offer_bonus_iqd": 10000,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "id": "prd_3c341c814d254f05",
+    "schema_version": 20,
+    "titleAr": "هيديز 2 – إصدار نينتندو سويتش 2",
+    "compatibility": [
+     "Nintendo Switch 2"
+    ],
+    "edition": "Standard",
+    "developer": "Supergiant Games",
+    "publisher": "Supergiant Games",
+    "opencriticRating": 94,
+    "userScore": 8.5,
+    "officialUrl": "https://www.nintendo.com/us/store/products/hades-ii-nintendo-switch-2-edition-switch-2/",
+    "eshopUrl": "https://www.nintendo.com/us/store/products/hades-ii-nintendo-switch-2-edition-switch-2/",
+    "gameIsOffline": true,
+    "gameIsOnline": false,
+    "gameLanguageLocked": false,
+    "description_short": "Supergiant's action roguelike sequel follows Melinoë in a mythic war against Chronos, with fast combat and Nintendo Switch 2 enhancements.",
+    "description_ar": "Hades II هي تكملة لعبة الأكشن الروغلايك من Supergiant Games وتدور حول ميلينوي، أميرة العالم السفلي، في حرب ضد كرونوس إله الزمن. تعتمد الجولات على البركات والأسلحة والمواجهات المتغيرة والتقدم الدائم والقصة المتطورة. يضيف إصدار Nintendo Switch 2 عرضًا أوضح ودعمًا رسميًا حتى 120 إطارًا في وضع التلفاز بدقة 1080p و60 إطارًا في الوضع المحمول بدقة 1080p.",
+    "box_front_url": "https://images.launchbox-app.com//9276e72f-d45b-4eb0-8444-eafc9950ab39.jpg",
+    "videos": [
+     {
+      "title": "Hades II – Nintendo Switch 2 Edition — Official Trailer",
+      "url": "https://www.youtube.com/watch?v=PQ9pU5cV38Y"
+     }
+    ],
+    "nsuid": "70010000105526",
+    "nintendoEshopUrl": "https://www.nintendo.com/us/store/products/hades-ii-nintendo-switch-2-edition-switch-2/",
+    "nintendoOnlineRequired": false,
+    "nintendoCloudSaves": true,
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": true,
+    "nintendoPlayModes": "TV, Tabletop, Handheld",
+    "nintendoNotes": "Native or seller-classified Nintendo Switch 2 product for this import. Product account variants and costs are based on the supplied seller screenshots; platform classification follows the seller-card rule requested for this import.\n\nOffline selling price is selected within 5,000–25,000 IQD according to demand, supply, popularity, recency, perceived market value and, where relevant, supplier cost. It is not a fixed cost multiplier. Online pricing is market-based and may be higher.\n\nExtraction rules used for this file: production images are verified game media, not seller/Taobao images. Front Box Cover is retail box-front artwork; Square Card is a separate square asset; Cover Image is page/key art; 3D Texture Source is high-resolution front cover art. Banner and Gallery media are separate verified artwork/screenshots. Device Performance contains one device object only. Offline selling prices are chosen within 5,000–25,000 IQD according to demand, supply, popularity, recency, perceived value and supplier cost; online prices remain market-based and may be higher.",
+    "switch2Enhanced": true,
+    "switch2Exclusive": false,
+    "switch2Features": [
+     "1080p at up to 120 fps in TV mode",
+     "1080p at 60 fps in handheld mode",
+     "Enhanced texture quality and visual effects"
+    ],
+    "tagline": "Descend into a mythic roguelike war against the Titan of Time.",
+    "playTimeMain": 31,
+    "playTimeFull": 104,
+    "editionsList": [
+     {
+      "name": "Standard Edition",
+      "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000105526/4ea19bfcd0c389ee5d02bb0c9bbb562802c40b73eba39e1582ac057ea7f73ad4",
+      "contents": [
+       {
+        "label": "Base game"
+       },
+       {
+        "label": "Seller account access"
+       },
+       {
+        "label": "Nintendo platform version shown in this import"
+       }
+      ]
+     }
+    ],
+    "gameplayPillars": [
+     {
+      "title": "Roguelike Runs",
+      "description": "Every escape attempt remixes encounters, rewards, and divine boons.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000105526/e2058a5516c9016f9c09b312b65a1d14962c2861a27068a75cca3dfad9fe3680"
+     },
+     {
+      "title": "Build Crafting",
+      "description": "Weapons, Arcana, boons, and upgrades create highly varied combat builds.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000105526/97ca83e1cd65da9fe9a5f849081523c61cc764e090246e12b274a39ad197b77d"
+     },
+     {
+      "title": "Reactive Storytelling",
+      "description": "Characters and narrative respond to repeated runs and long-term progression.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000105526/50ecd22aee5319d239edbcce4681483c9d300981137a6754bb4857372edc1f58"
+     }
+    ],
+    "worldSummary": "Melinoë fights through realms of Greek myth in a campaign against Chronos, supported by Olympian gods, witches, and figures from the Underworld.",
+    "storyChapters": [
+     {
+      "title": "The Titan of Time",
+      "body": "Chronos has seized the House of Hades, and Melinoë trains under Hecate to challenge the Titan and free her family.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000105526/50ecd22aee5319d239edbcce4681483c9d300981137a6754bb4857372edc1f58"
+     },
+     {
+      "title": "Nightly Descents",
+      "body": "Each run sends Melinoë through changing regions where she receives boons, gathers resources, strengthens relationships, and expands her arsenal of witchcraft.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000105526/32608044933fa2a4bf912586ef78aced58ccf2c02c754a209394d6fb659a5ac7"
+     },
+     {
+      "title": "War Across Two Fronts",
+      "body": "The conflict extends beyond the Underworld as Melinoë faces threats tied to Olympus and gradually uncovers the full scope of the war against Chronos.",
+      "imageUrl": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000105526/566a78ffa9706838e77a75698ad480f811c1d2bfba31b999e8dc9834ee693fd0"
+     }
+    ],
+    "galleryImages": [
+     {
+      "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000105526/32608044933fa2a4bf912586ef78aced58ccf2c02c754a209394d6fb659a5ac7",
+      "alt": "Verified official/publisher media for Hades II – Nintendo Switch 2 Edition — gallery image 1."
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000105526/566a78ffa9706838e77a75698ad480f811c1d2bfba31b999e8dc9834ee693fd0",
+      "alt": "Verified official/publisher media for Hades II – Nintendo Switch 2 Edition — gallery image 2."
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000105526/f920391bdff344bdc9e63d06858704a054d11103c8f8b9e244bf9f6795b2c133",
+      "alt": "Verified official/publisher media for Hades II – Nintendo Switch 2 Edition — gallery image 3."
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000105526/e2058a5516c9016f9c09b312b65a1d14962c2861a27068a75cca3dfad9fe3680",
+      "alt": "Verified official/publisher media for Hades II – Nintendo Switch 2 Edition — gallery image 4."
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000105526/97ca83e1cd65da9fe9a5f849081523c61cc764e090246e12b274a39ad197b77d",
+      "alt": "Verified official/publisher media for Hades II – Nintendo Switch 2 Edition — gallery image 5."
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000105526/50ecd22aee5319d239edbcce4681483c9d300981137a6754bb4857372edc1f58",
+      "alt": "Verified official/publisher media for Hades II – Nintendo Switch 2 Edition — gallery image 6."
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000105526/e2058a5516c9016f9c09b312b65a1d14962c2861a27068a75cca3dfad9fe3680",
+      "alt": "Verified official/publisher media for Hades II – Nintendo Switch 2 Edition — gallery image 7."
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000105526/97ca83e1cd65da9fe9a5f849081523c61cc764e090246e12b274a39ad197b77d",
+      "alt": "Verified official/publisher media for Hades II – Nintendo Switch 2 Edition — gallery image 8."
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000105526/50ecd22aee5319d239edbcce4681483c9d300981137a6754bb4857372edc1f58",
+      "alt": "Verified official/publisher media for Hades II – Nintendo Switch 2 Edition — gallery image 9."
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cc_fill%2Cg_auto/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000105526/4ea19bfcd0c389ee5d02bb0c9bbb562802c40b73eba39e1582ac057ea7f73ad4",
+      "alt": "Verified official/publisher media for Hades II – Nintendo Switch 2 Edition — gallery image 10."
+     },
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000105526/4ea19bfcd0c389ee5d02bb0c9bbb562802c40b73eba39e1582ac057ea7f73ad4",
+      "alt": "Verified official/publisher media for Hades II – Nintendo Switch 2 Edition — gallery image 11."
+     },
+     {
+      "url": "https://gamesdb-images.launchbox.gg/r2_7d2150c4-4ef8-46d2-94ba-4e014baee1dd.jpg",
+      "alt": "Verified official/publisher media for Hades II – Nintendo Switch 2 Edition — gallery image 12."
+     }
+    ],
+    "perfResolutionDocked": "1920×1080",
+    "perfResolutionHandheld": "1920×1080",
+    "perfFps": "TV: up to 120; Handheld: 60",
+    "perfNotes": "Nintendo states 120 fps performance at 1080p in TV mode on a compatible display and 60 fps at 1080p in handheld mode.",
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "informationStatus": "official",
+      "handheld": {
+       "supported": true,
+       "resolution": "1920×1080",
+       "outputResolution": "1920×1080",
+       "fps": "TV: up to 120; Handheld: 60",
+       "notes": "Nintendo states 120 fps performance at 1080p in TV mode on a compatible display and 60 fps at 1080p in handheld mode."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1920×1080",
+       "outputResolution": "1920×1080",
+       "fps": "TV: up to 120; Handheld: 60",
+       "notes": "Nintendo states 120 fps performance at 1080p in TV mode on a compatible display and 60 fps at 1080p in handheld mode."
+      },
+      "modes": [
+       {
+        "name": "TV 120 fps mode",
+        "handheldResolution": "1920×1080",
+        "handheldFps": "TV: up to 120; Handheld: 60",
+        "tvResolution": "1920×1080",
+        "tvFps": "120"
+       },
+       {
+        "name": "Handheld mode",
+        "handheldResolution": "1920×1080",
+        "handheldFps": "60"
+       }
+      ],
+      "sourceName": "Nintendo official product page",
+      "sourceUrl": "https://www.nintendo.com/us/store/products/hades-ii-nintendo-switch-2-edition-switch-2/",
+      "verifiedAt": "2026-08-24",
+      "verificationStatus": "verified",
+      "performanceNotes": "Nintendo states 120 fps performance at 1080p in TV mode on a compatible display and 60 fps at 1080p in handheld mode."
+     }
+    ],
+    "downloadSizeGb": 10.8,
+    "requiredSpaceGb": 10.8,
+    "storageNotes": "Official/verified listed game download size: approximately 10.8 GB. Updates and DLC may require additional space.",
+    "languagesAudio": [
+     "English"
+    ],
+    "languagesText": [
+     "American English",
+     "English",
+     "Japanese"
+    ],
+    "arabicSupport": false,
+    "mpLocalPlayers": false,
+    "mpOnlinePlayers": false,
+    "mpCoop": false,
+    "mpCompetitive": false,
+    "mpSplitScreen": false,
+    "mpLocalWireless": false,
+    "guides": [
+     {
+      "title": "Official product and gameplay information",
+      "summary": "Official Nintendo/publisher information covering features, supported modes, requirements and product-specific notices.",
+      "url": "https://www.nintendo.com/us/store/products/hades-ii-nintendo-switch-2-edition-switch-2/"
+     },
+     {
+      "title": "GameFAQs guides and FAQs search",
+      "summary": "Community guide index for walkthroughs, FAQs, collectibles, unlockables and troubleshooting. Verify platform/version when following a guide.",
+      "url": "https://gamefaqs.gamespot.com/search?game=Hades+II+%E2%80%93+Nintendo+Switch+2+Edition"
+     },
+     {
+      "title": "Deku Deals technical/product reference",
+      "summary": "Reference page used for platform, file size, play modes, critic aggregates and completion-time metadata where available.",
+      "url": "https://www.dekudeals.com/items/hades-ii"
+     }
+    ],
+    "completionMain": 31,
+    "completionExtras": 52.5,
+    "completionAll": 104,
+    "faq": [
+     {
+      "q": "What platform is this import for?",
+      "a": "This import is classified as Nintendo Switch 2."
+     },
+     {
+      "q": "How many players are supported?",
+      "a": "Official player support varies by mode; the primary published range is 1 player(s). See multiplayer fields for local, wireless, and online capabilities."
+     },
+     {
+      "q": "Does this seller listing include a separate DLC account type?",
+      "a": "No. The supplied seller listing shows two variants, so only Standard Offline and Standard Online account types are created."
+     }
+    ],
+    "verdictScore": 9.6,
+    "verdictSummary": "Editorial synthesis for Hades II – Nintendo Switch 2 Edition, based on the verified feature set, platform implementation, content scope and aggregated critical reception. This score is an internal summary, not a copied external review score.",
+    "reviews": [
+     {
+      "source": "Metacritic",
+      "score": "98",
+      "quote": "Aggregated critic score for the game/platform listing.",
+      "url": "https://www.dekudeals.com/items/hades-ii"
+     },
+     {
+      "source": "OpenCritic",
+      "score": "94",
+      "quote": "Aggregated critic score reported for the game.",
+      "url": "https://www.dekudeals.com/items/hades-ii"
+     },
+     {
+      "source": "Metacritic User Score",
+      "score": "8.5",
+      "quote": "Aggregated user score reference.",
+      "url": "https://www.dekudeals.com/items/hades-ii"
+     }
+    ],
+    "timeline": [
+     {
+      "date": "2024-05-06",
+      "title": "Early Access began",
+      "body": "Hades II entered Early Access on PC."
+     },
+     {
+      "date": "2025-09-25",
+      "title": "Version 1.0 and Nintendo launch",
+      "body": "Hades II reached version 1.0 and launched on Nintendo Switch 2 / Nintendo Switch."
+     },
+     {
+      "date": "2025-09-25",
+      "title": "Nintendo Switch 2 Edition",
+      "body": "The Switch 2 version launched with platform-specific presentation and features."
+     }
+    ],
+    "patchNotes": [
+     {
+      "version": "1.0",
+      "date": "2025-09-25",
+      "body": "Full release with the complete main game and Nintendo versions."
+     }
+    ],
+    "soundtrack": [
+     {
+      "title": "Hades II — Original Soundtrack",
+      "url": "https://www.youtube.com/watch?v=jfIuPRP94WI"
+     },
+     {
+      "title": "Hades II – Nintendo Switch 2 Edition — VGMdb soundtrack catalog search",
+      "url": "https://vgmdb.net/search?q=Hades+II+%E2%80%93+Nintendo+Switch+2+Edition&type=album"
+     },
+     {
+      "title": "Hades II – Nintendo Switch 2 Edition — soundtrack video search",
+      "url": "https://www.youtube.com/results?search_query=Hades+II+%E2%80%93+Nintendo+Switch+2+Edition+official+soundtrack"
+     }
+    ],
+    "seriesName": "Hades",
+    "studioName": "Supergiant Games",
+    "studioUrl": "https://www.supergiantgames.com/",
+    "studioLocation": "San Francisco, California, USA",
+    "studioAbout": "Supergiant Games is an independent studio known for Bastion, Transistor, Pyre, Hades, and Hades II.",
+    "sources": [
+     {
+      "name": "Nintendo / publisher official product page",
+      "url": "https://www.nintendo.com/us/store/products/hades-ii-nintendo-switch-2-edition-switch-2/"
+     },
+     {
+      "name": "Deku Deals — platform, size, scores and play-time reference",
+      "url": "https://www.dekudeals.com/items/hades-ii"
+     },
+     {
+      "name": "The Cover Project — Full Retail Cover page",
+      "url": "https://www.thecoverproject.net/view.php?game_id=20329"
+     }
+    ],
+    "fitFor": [
+     "Action roguelike fans",
+     "Players who value reactive combat and repeated runs",
+     "Hades fans seeking a larger mythic sequel"
+    ],
+    "notFitFor": [
+     "Players who dislike run-based progression",
+     "Players seeking multiplayer",
+     "Players who prefer low-intensity combat"
+    ],
+    "features": [
+     "Fast roguelike action starring Melinoë",
+     "Cross-save support across game versions",
+     "Nintendo Switch 2 support up to 120 fps in TV mode"
+    ],
+    "verdictPros": [
+     "Deep, highly replayable action combat",
+     "Exceptional art, writing and voice performance",
+     "Large progression system with multiple weapons and builds"
+    ],
+    "verdictCons": [
+     "Roguelike repetition is fundamental to progression",
+     "Large number of systems can feel dense at first",
+     "Runs demand significant time investment for full completion"
+    ],
+    "seriesEntries": [
+     "Hades",
+     "Hades II"
+    ],
+    "setupNeeds": [
+     "Nintendo Switch 2 system",
+     "Compatible display capable of 120 Hz required for 120 fps TV mode"
+    ],
+    "boxContentsList": "[Circular]",
+    "image": "/api/files/products/prd_3c341c814d254f05/cover-6ebc8cb0ffdbfa07.jpg",
+    "banner": "/api/files/products/prd_3c341c814d254f05/banner-0-f123fb63f6c365c9.avif",
+    "schemaId": "",
+    "badgeEn": "وفر 40%",
+    "badgeKu": "وفر 40%",
+    "featuresEn": [
+     "Fast roguelike action starring Melinoë",
+     "Cross-save support across game versions",
+     "Nintendo Switch 2 support up to 120 fps in TV mode"
+    ],
+    "featuresKu": [
+     "Fast roguelike action starring Melinoë",
+     "Cross-save support across game versions",
+     "Nintendo Switch 2 support up to 120 fps in TV mode"
+    ],
+    "boxFrontUrl": "https://images.launchbox-app.com//9276e72f-d45b-4eb0-8444-eafc9950ab39.jpg",
+    "sales": 0,
+    "createdAt": "2026-08-27T01:58:02.845Z",
+    "created_at": "2026-08-27T01:58:02.845Z",
+    "updatedAt": "2026-08-28T18:35:10.542Z",
+    "updated_at": "2026-08-27T01:58:02.845Z",
+    "images": [],
+    "modes": [],
+    "metacriticUrl": "https://www.metacritic.com/game/hades-ii/",
+    "price_usd": 29.99,
+    "nintendoGameKeyCard": false,
+    "nintendoPhysicalNeedsDownload": false,
+    "perfHdr": false,
+    "microSdRecommended": true,
+    "dlc": [
+     {
+      "name": "Downloadable / additional content status",
+      "description": "No separate paid story expansion is required for the core Switch 2 Edition entry."
+     }
+    ],
+    "switch2UpgradePrice": 0
+   }
+  },
+  {
+   "id": "prd_bec7f58f8ef14dde",
+   "slug": "hades-switch",
+   "title": "Hades",
+   "platform": "switch1",
+   "isHidden": true,
+   "hash": "af9b628f4105c32641d15529c9f5cb275906806de48dcae996b3d934ccc9e89a",
+   "images": [
+    {
+     "role": "front-box",
+     "field": "cartridgeImage",
+     "url": "https://banan.to/api/files/products/prd_bec7f58f8ef14dde/front-box-769951b23af07d7e.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 435440,
+     "width": 1167,
+     "height": 1888,
+     "thumb": "review-workdir/thumbs/batch-010/hades-switch__front-box-0.png"
+    },
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://banan.to/api/files/products/prd_bec7f58f8ef14dde/square-card-64ac281bb02527e7.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 217026,
+     "width": 1024,
+     "height": 1024,
+     "thumb": "review-workdir/thumbs/batch-010/hades-switch__square-card-1.png"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://banan.to/api/files/products/prd_bec7f58f8ef14dde/cover-6d9253bb40f8bd8d.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 405156,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-010/hades-switch__detail-cover-2.png"
+    },
+    {
+     "role": "3d-texture",
+     "field": "coverHiResImage",
+     "url": "https://banan.to/api/files/products/prd_bec7f58f8ef14dde/3d-wrap-c32dff7950fac3c7.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 1147578,
+     "width": 2454,
+     "height": 1888,
+     "thumb": "review-workdir/thumbs/batch-010/hades-switch__3d-texture-3.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://banan.to/api/files/products/prd_bec7f58f8ef14dde/gallery-1-4c2318f68d48e85f.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 167448,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-010/hades-switch__gallery-4.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[1]",
+     "url": "https://banan.to/api/files/products/prd_bec7f58f8ef14dde/gallery-2-653c41e3c62a6870.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 163560,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-010/hades-switch__gallery-5.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[2]",
+     "url": "https://banan.to/api/files/products/prd_bec7f58f8ef14dde/gallery-3-6b0bb750f8779d75.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 136238,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-010/hades-switch__gallery-6.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[3]",
+     "url": "https://banan.to/api/files/products/prd_bec7f58f8ef14dde/gallery-4-7ac294b35405f77c.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 138892,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-010/hades-switch__gallery-7.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[4]",
+     "url": "https://banan.to/api/files/products/prd_bec7f58f8ef14dde/gallery-5-2d49ad222df3c046.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 221146,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-010/hades-switch__gallery-8.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[5]",
+     "url": "https://banan.to/api/files/products/prd_bec7f58f8ef14dde/gallery-6-cae612351bb4f4a0.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 118978,
+     "width": 1280,
+     "height": 720,
+     "thumb": "review-workdir/thumbs/batch-010/hades-switch__gallery-9.png"
+    }
+   ],
+   "record": {
+    "title": "Hades",
+    "titleEn": "Hades",
+    "titleKu": "",
+    "slug": "hades-switch",
+    "description": "Hades is an action roguelike from Supergiant Games in which Zagreus fights through the Underworld using different weapons, divine boons, and persistent upgrades. It combines highly responsive combat with strong writing, memorable characters, and a structure that makes repeated play rewarding. This file represents the Nintendo Switch 1 product entry.",
+    "descriptionEn": "Hades is an action roguelike from Supergiant Games in which Zagreus fights through the Underworld using different weapons, divine boons, and persistent upgrades. It combines highly responsive combat with strong writing, memorable characters, and a structure that makes repeated play rewarding. This file represents the Nintendo Switch 1 product entry.",
+    "descriptionKu": "",
+    "cartridgeImage": "/api/files/products/prd_bec7f58f8ef14dde/front-box-769951b23af07d7e.webp",
+    "nintendoCardImage": "/api/files/products/prd_bec7f58f8ef14dde/square-card-64ac281bb02527e7.webp",
+    "coverHiResImage": "/api/files/products/prd_bec7f58f8ef14dde/3d-wrap-c32dff7950fac3c7.webp",
+    "coverImage": "/api/files/products/prd_bec7f58f8ef14dde/cover-6d9253bb40f8bd8d.webp",
+    "bannerImages": [
+     ""
+    ],
+    "gallery": [],
+    "youtubeTrailer": "https://www.youtube.com/results?search_query=Hades+official+trailer",
+    "releaseDate": "2020-09-17",
+    "ageRating": "ESRB T / PEGI 12",
+    "metacriticRating": 93,
+    "genres": [
+     "Action",
+     "Roguelike",
+     "RPG"
+    ],
+    "platform": "switch1",
+    "size": 7,
+    "numberOfPlayers": "Single system (1)",
+    "supportedLanguages": "English, Japanese, French, Spanish, German",
+    "hardwareModel": "",
+    "colorEdition": "",
+    "storageCapacity": "",
+    "screenSpecs": "",
+    "batteryLife": "",
+    "boxContents": [],
+    "boxContentsText": "",
+    "warrantyCondition": "",
+    "connectivity": "",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "Global",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "",
+    "redemptionSteps": [],
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 11500,
+    "cost": 1250,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": true,
+    "displayOrder": 0,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "مشترك",
+      "description": "مشترك",
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_account",
+      "name": "خاص بك",
+      "description": "خاص بك",
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "types": [
+     {
+      "id": "offline_base",
+      "name": "مشترك — اللعبة الأساسية",
+      "optionId": "offline_account",
+      "price": 11500,
+      "cost": 1250,
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_base",
+      "name": "خاص بك — اللعبة الأساسية",
+      "optionId": "online_account",
+      "price": 16500,
+      "cost": 12250,
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "Active",
+    "kind": "account",
+    "trade_value_iqd": 8500,
+    "store_offer_bonus_iqd": 1250,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "id": "prd_bec7f58f8ef14dde",
+    "schema_version": 24,
+    "titleAr": "هادِس",
+    "compatibility": [
+     "Nintendo Switch 1",
+     "Nintendo Switch 2"
+    ],
+    "edition": "Standard",
+    "developer": "Supergiant Games",
+    "publisher": "Supergiant Games",
+    "metacriticUrl": "https://www.metacritic.com/game/hades/",
+    "opencriticRating": 94,
+    "userScore": 8.9,
+    "price_usd": 24.99,
+    "officialUrl": "https://www.supergiantgames.com/games/hades/",
+    "eshopUrl": "https://www.supergiantgames.com/games/hades/",
+    "gameIsOffline": true,
+    "gameIsOnline": false,
+    "gameLanguageLocked": false,
+    "description_short": "A fast-paced action roguelike about escaping the Underworld.",
+    "description_ar": "لعبة أكشن روغلايك سريعة من Supergiant Games، تحاول فيها الهروب من العالم السفلي عبر جولات متكررة مليئة بالأسلحة والـ boons والتطويرات، ومجهزة هنا كملف Switch 1.",
+    "videos": [
+     {
+      "title": "Official Trailer",
+      "url": "https://www.youtube.com/results?search_query=Hades+official+trailer"
+     }
+    ],
+    "nintendoEshopUrl": "https://www.supergiantgames.com/games/hades/",
+    "nintendoOnlineRequired": false,
+    "nintendoCloudSaves": true,
+    "nintendoGameKeyCard": false,
+    "nintendoPhysicalNeedsDownload": false,
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": true,
+    "nintendoPlayModes": "TV mode / Tabletop mode / Handheld mode",
+    "nintendoNotes": "Prepared as the Switch 1 product file with Switch 2 compatibility reference.",
+    "switch2Enhanced": false,
+    "switch2Exclusive": false,
+    "switch2UpgradePrice": 0,
+    "switch2Features": [
+     "Playable on Switch 2 through compatibility",
+     "Excellent portable action runs",
+     "Highly replayable structure"
+    ],
+    "tagline": "Fight out of the Underworld, one run at a time.",
+    "fitFor": [
+     "Roguelike fans",
+     "Action game fans",
+     "Players who enjoy short repeatable sessions"
+    ],
+    "notFitFor": [
+     "Players who dislike repetition",
+     "Players seeking multiplayer"
+    ],
+    "playTimeMain": 22,
+    "playTimeFull": 80,
+    "editionsList": [
+     {
+      "name": "Regular / Offline",
+      "contents": [
+       {
+        "label": "Hades"
+       },
+       {
+        "label": "Regular / Offline"
+       },
+       {
+        "label": "Offline account access"
+       }
+      ]
+     },
+     {
+      "name": "Standard / 标准版",
+      "contents": [
+       {
+        "label": "Hades"
+       },
+       {
+        "label": "Standard / 标准版"
+       },
+       {
+        "label": "Online account access"
+       }
+      ]
+     }
+    ],
+    "gameplayPillars": [
+     {
+      "title": "Repeatable escape runs",
+      "description": "Every run through the Underworld offers new decisions and builds."
+     },
+     {
+      "title": "Fast action combat",
+      "description": "Weapons, dashes, and boons create highly responsive combat."
+     },
+     {
+      "title": "Build variety",
+      "description": "Godly blessings and upgrades lead to many play styles."
+     },
+     {
+      "title": "Narrative through repetition",
+      "description": "Characters and story progress across repeated attempts."
+     },
+     {
+      "title": "Long-term mastery",
+      "description": "Failure still contributes to progress and eventual improvement."
+     }
+    ],
+    "worldSummary": "The Greek Underworld is divided into themed regions filled with enemies, gods, allies, and escalating dangers.",
+    "storyChapters": [
+     {
+      "title": "Begin the escape",
+      "body": "Zagreus repeatedly tries to leave the Underworld."
+     },
+     {
+      "title": "Meet the Olympians",
+      "body": "Godly boons change each run and shape combat."
+     },
+     {
+      "title": "Strengthen through attempts",
+      "body": "Upgrades and practice slowly open stronger possibilities."
+     },
+     {
+      "title": "Build relationships",
+      "body": "Conversations and gifts deepen the cast over time."
+     },
+     {
+      "title": "Reach the truth",
+      "body": "The repeated structure gradually reveals the heart of the story."
+     }
+    ],
+    "galleryImages": [
+     {
+      "url": "/api/files/products/prd_bec7f58f8ef14dde/gallery-1-4c2318f68d48e85f.webp",
+      "alt": "Hades screenshot 1"
+     },
+     {
+      "url": "/api/files/products/prd_bec7f58f8ef14dde/gallery-2-653c41e3c62a6870.webp",
+      "alt": "Hades screenshot 2"
+     },
+     {
+      "url": "/api/files/products/prd_bec7f58f8ef14dde/gallery-3-6b0bb750f8779d75.webp",
+      "alt": "Hades screenshot 3"
+     },
+     {
+      "url": "/api/files/products/prd_bec7f58f8ef14dde/gallery-4-7ac294b35405f77c.webp",
+      "alt": "Hades screenshot 4"
+     },
+     {
+      "url": "/api/files/products/prd_bec7f58f8ef14dde/gallery-5-2d49ad222df3c046.webp",
+      "alt": "Hades screenshot 5"
+     },
+     {
+      "url": "/api/files/products/prd_bec7f58f8ef14dde/gallery-6-cae612351bb4f4a0.webp",
+      "alt": "Hades screenshot 6"
+     }
+    ],
+    "features": [
+     "One of the best modern roguelikes",
+     "Excellent combat feel",
+     "Great writing and characters",
+     "Very high replay value",
+     "Switch 1 product entry"
+    ],
+    "perfResolutionDocked": "1080p",
+    "perfResolutionHandheld": "720p",
+    "perfFps": "60",
+    "perfHdr": false,
+    "perfNotes": "Recorded as a Switch 1 profile with a Switch 2 compatibility reference.",
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch 1",
+      "deviceSlug": "nintendo-switch-1",
+      "deviceModel": "Nintendo Switch 1",
+      "hardwareId": "nintendo-switch-1",
+      "informationStatus": "Available",
+      "unavailableReason": "No unavailable reason. Performance profile is present for this device.",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p",
+       "resolutionDynamic": false,
+       "renderingResolution": "720p",
+       "outputResolution": "720p",
+       "fps": "60",
+       "fpsMin": "60",
+       "fpsMax": "60",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Handheld",
+       "notes": "Recorded as a Switch 1 profile with a Switch 2 compatibility reference."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p",
+       "resolutionDynamic": false,
+       "renderingResolution": "1080p",
+       "outputResolution": "1080p",
+       "fps": "60",
+       "fpsMin": "60",
+       "fpsMax": "60",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "TV",
+       "notes": "Recorded as a Switch 1 profile with a Switch 2 compatibility reference."
+      },
+      "modes": [
+       {
+        "name": "Default",
+        "handheldResolution": "720p",
+        "handheldFps": "60",
+        "tvResolution": "1080p",
+        "tvFps": "60",
+        "hdr": false,
+        "vrr": false,
+        "notes": "Recorded as a Switch 1 profile with a Switch 2 compatibility reference."
+       }
+      ],
+      "performanceNotes": "Recorded as a Switch 1 profile with a Switch 2 compatibility reference."
+     },
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "hardwareId": "nintendo-switch-2",
+      "informationStatus": "Available",
+      "unavailableReason": "No unavailable reason. Performance profile is present for this device.",
+      "handheld": {
+       "supported": true,
+       "resolution": "720p",
+       "resolutionDynamic": false,
+       "renderingResolution": "720p",
+       "outputResolution": "720p",
+       "fps": "60",
+       "fpsMin": "60",
+       "fpsMax": "60",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Handheld",
+       "notes": "Compatibility or alternate-platform reference only."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1080p",
+       "resolutionDynamic": false,
+       "renderingResolution": "1080p",
+       "outputResolution": "1080p",
+       "fps": "60",
+       "fpsMin": "60",
+       "fpsMax": "60",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "TV",
+       "notes": "Compatibility or alternate-platform reference only."
+      },
+      "modes": [
+       {
+        "name": "Default",
+        "handheldResolution": "720p",
+        "handheldFps": "60",
+        "tvResolution": "1080p",
+        "tvFps": "60",
+        "hdr": false,
+        "vrr": false,
+        "notes": "Compatibility or alternate-platform reference only."
+       }
+      ],
+      "performanceNotes": "Compatibility or alternate-platform reference only."
+     }
+    ],
+    "faq": [
+     {
+      "q": "Is Hades a roguelike?",
+      "a": "Yes. Repeated runs, randomized upgrades, and persistent progression define the experience."
+     },
+     {
+      "q": "Does the story advance after failure?",
+      "a": "Yes. The narrative continues to unfold across repeated attempts."
+     },
+     {
+      "q": "Why is it so replayable?",
+      "a": "Weapon choice, boon combinations, and evolving story beats keep runs fresh."
+     },
+     {
+      "q": "Is there multiplayer?",
+      "a": "No. Hades is a single-player action roguelike."
+     },
+     {
+      "q": "Why only two variants?",
+      "a": "Only Regular / Offline and Standard / Online were provided."
+     }
+    ],
+    "mpLocalPlayers": false,
+    "mpOnlinePlayers": false,
+    "mpCoop": false,
+    "mpCompetitive": false,
+    "mpLocalWireless": false,
+    "mpSplitScreen": false,
+    "boxContentsList": [],
+    "image": "",
+    "banner": "",
+    "schemaId": "",
+    "batchImport": true,
+    "createdAt": "2026-08-28T18:44:57.039Z",
+    "updatedAt": "2026-08-28T18:44:57.039Z"
+   }
+  },
+  {
+   "id": "prd_502d0bd14c6049b6",
+   "slug": "hitman-world-of-assassination-signature-edition",
+   "title": "HITMAN World of Assassination - Signature Edition",
+   "platform": "switch2",
+   "isHidden": false,
+   "hash": "f9458028542c6c171180141f5c9bea4134db328618ad694fe1a6ca9557867e91",
+   "images": [
+    {
+     "role": "front-box",
+     "field": "cartridgeImage",
+     "url": "https://banan.to/api/files/products/prd_502d0bd14c6049b6/cartridgeImage-8fab9ae51312180d.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 144991,
+     "width": 926,
+     "height": 1500,
+     "thumb": "review-workdir/thumbs/batch-010/hitman-world-of-assassination-signature-edition__front-box-0.png"
+    },
+    {
+     "role": "front-box",
+     "field": "box_front_url",
+     "url": "https://m.media-amazon.com/images/I/81Tt4+qucWL._SL1500_.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 144991,
+     "width": 926,
+     "height": 1500,
+     "thumb": "review-workdir/thumbs/batch-010/hitman-world-of-assassination-signature-edition__front-box-1.png"
+    },
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://banan.to/api/files/products/prd_502d0bd14c6049b6/nintendoCardImage-32244565452126c7.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 664955,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-010/hitman-world-of-assassination-signature-edition__square-card-2.png"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://banan.to/api/files/products/prd_502d0bd14c6049b6/coverImage-8fab9ae51312180d.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 144991,
+     "width": 926,
+     "height": 1500,
+     "thumb": "review-workdir/thumbs/batch-010/hitman-world-of-assassination-signature-edition__detail-cover-3.png"
+    },
+    {
+     "role": "listing",
+     "field": "image",
+     "url": "https://banan.to/api/files/products/prd_502d0bd14c6049b6/coverImage-8fab9ae51312180d.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 144991,
+     "width": 926,
+     "height": 1500,
+     "thumb": "review-workdir/thumbs/batch-010/hitman-world-of-assassination-signature-edition__listing-4.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[0]",
+     "url": "https://banan.to/api/files/products/prd_502d0bd14c6049b6/bannerImages-1-685a53eaefaa363f.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 139008,
+     "width": 1500,
+     "height": 844,
+     "thumb": "review-workdir/thumbs/batch-010/hitman-world-of-assassination-signature-edition__banner-5.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[1]",
+     "url": "https://banan.to/api/files/products/prd_502d0bd14c6049b6/bannerImages-2-07f2f50079320ee3.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 217262,
+     "width": 1500,
+     "height": 844,
+     "thumb": "review-workdir/thumbs/batch-010/hitman-world-of-assassination-signature-edition__banner-6.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://m.media-amazon.com/images/I/71MnD1eLMGL._SL1500_.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 168762,
+     "width": 1500,
+     "height": 844,
+     "thumb": "review-workdir/thumbs/batch-010/hitman-world-of-assassination-signature-edition__gallery-7.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[1]",
+     "url": "https://m.media-amazon.com/images/I/71o8Xq0A1IL._SL1500_.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 114497,
+     "width": 1500,
+     "height": 844,
+     "thumb": "review-workdir/thumbs/batch-010/hitman-world-of-assassination-signature-edition__gallery-8.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[2]",
+     "url": "https://m.media-amazon.com/images/I/61-xuuIJFXL._SL1500_.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 69047,
+     "width": 1500,
+     "height": 844,
+     "thumb": "review-workdir/thumbs/batch-010/hitman-world-of-assassination-signature-edition__gallery-9.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[3]",
+     "url": "https://m.media-amazon.com/images/I/71YwENQJ8UL._SL1500_.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 166146,
+     "width": 1500,
+     "height": 844,
+     "thumb": "review-workdir/thumbs/batch-010/hitman-world-of-assassination-signature-edition__gallery-10.png"
+    }
+   ],
+   "record": {
+    "id": "prd_502d0bd14c6049b6",
+    "title": "HITMAN World of Assassination - Signature Edition",
+    "titleEn": "HITMAN World of Assassination - Signature Edition",
+    "titleKu": "HITMAN World of Assassination - Signature Edition",
+    "slug": "hitman-world-of-assassination-signature-edition",
+    "description": "A massive stealth sandbox anthology combining HITMAN, HITMAN 2 and HITMAN 3 content. Plan assassinations, disguise yourself, exploit environments and replay highly systemic missions across more than twenty locations.",
+    "descriptionEn": "A massive stealth sandbox anthology combining HITMAN, HITMAN 2 and HITMAN 3 content. Plan assassinations, disguise yourself, exploit environments and replay highly systemic missions across more than twenty locations.",
+    "descriptionKu": "A massive stealth sandbox anthology combining HITMAN, HITMAN 2 and HITMAN 3 content. Plan assassinations, disguise yourself, exploit environments and replay highly systemic missions across more than twenty locations.",
+    "cartridgeImage": "/api/files/products/prd_502d0bd14c6049b6/cartridgeImage-8fab9ae51312180d.jpg",
+    "nintendoCardImage": "/api/files/products/prd_502d0bd14c6049b6/nintendoCardImage-32244565452126c7.jpg",
+    "coverHiResImage": "",
+    "coverImage": "/api/files/products/prd_502d0bd14c6049b6/coverImage-8fab9ae51312180d.jpg",
+    "bannerImages": [
+     "/api/files/products/prd_502d0bd14c6049b6/bannerImages-1-685a53eaefaa363f.jpg",
+     "/api/files/products/prd_502d0bd14c6049b6/bannerImages-2-07f2f50079320ee3.jpg"
+    ],
+    "gallery": [],
+    "youtubeTrailer": "https://www.youtube.com/watch?v=FfKQgglhaBU",
+    "releaseDate": "2025-06-05",
+    "ageRating": "PEGI 18",
+    "metacriticRating": 87,
+    "genres": [
+     "Stealth",
+     "Sandbox",
+     "Action"
+    ],
+    "platform": "switch2",
+    "size": 54.1,
+    "numberOfPlayers": "1",
+    "supportedLanguages": "Japanese, English, French, German, Italian, Spanish, Russian, Simplified Chinese, Traditional Chinese",
+    "hardwareModel": "",
+    "colorEdition": "",
+    "storageCapacity": "",
+    "screenSpecs": "",
+    "batteryLife": "",
+    "boxContents": [],
+    "boxContentsText": "",
+    "warrantyCondition": "",
+    "connectivity": "",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "Global",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "",
+    "redemptionSteps": [],
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 14750,
+    "cost": 1500,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": false,
+    "displayOrder": 0,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "مشترك",
+      "description": "Play using the supplied account under the store's offline-account activation method.",
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_account",
+      "name": "خاص بك",
+      "description": "Online-account option with internet-connected account use where supported by the game/service.",
+      "isInfiniteStock": true
+     }
+    ],
+    "types": [
+     {
+      "id": "standard_offline",
+      "name": "مشترك — اللعبة الأساسية",
+      "optionId": "offline_account",
+      "price": 14750,
+      "cost": 1500,
+      "description": "Standard game, Offline Account. Supplier Regular price: ¥7.78; purchase cost converted at 1 CNY = 220 IQD and rounded down to nearest 250 IQD.",
+      "isInfiniteStock": true
+     },
+     {
+      "id": "standard_online",
+      "name": "خاص بك — اللعبة الأساسية",
+      "optionId": "online_account",
+      "price": 35000,
+      "cost": 20750,
+      "description": "Standard game, Online Account. Supplier Standard price: ¥95.00; purchase cost converted at 1 CNY = 220 IQD and rounded down to nearest 250 IQD.",
+      "isInfiniteStock": true
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "active",
+    "kind": "account",
+    "trade_value_iqd": 0,
+    "store_offer_bonus_iqd": 0,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "schema_version": 22,
+    "titleAr": "هيتمان ورلد أوف أساسي نيشن - سيغنتشر إديشن",
+    "compatibility": [
+     "Nintendo Switch 2"
+    ],
+    "edition": "Signature Edition",
+    "developer": "IO Interactive",
+    "publisher": "IO Interactive",
+    "opencriticRating": 85,
+    "userScore": 8.5,
+    "officialUrl": "https://ioi.dk/hitman",
+    "gameIsOffline": true,
+    "gameIsOnline": true,
+    "gameLanguageLocked": false,
+    "description_short": "The complete modern HITMAN sandbox package, combining the trilogy campaign, Freelancer, live modes and major expansion content in a native Switch 2 release.",
+    "description_ar": "الحزمة المتكاملة من ثلاثية HITMAN الحديثة، وتشمل الحملة الرئيسية وأكثر من 20 موقعًا وContracts وEscalations وElusive Target Arcade وFreelancer ومحتوى HITMAN 2 Expansion وHITMAN 3 Deluxe.",
+    "box_front_url": "https://m.media-amazon.com/images/I/81Tt4+qucWL._SL1500_.jpg",
+    "videos": [
+     {
+      "title": "Launch Trailer - Nintendo Switch 2",
+      "url": "https://www.youtube.com/watch?v=FfKQgglhaBU"
+     }
+    ],
+    "nintendoEshopUrl": "https://www.nintendo.com/au/games/nintendo-switch-2/hitman-world-of-assassination-signature-edition/",
+    "nintendoOnlineRequired": false,
+    "nintendoCloudSaves": true,
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": true,
+    "nintendoPlayModes": "TV Mode, Tabletop Mode, Handheld Mode",
+    "switch2Features": [
+     "Native local Switch 2 version rather than cloud streaming",
+     "TV, Tabletop and Handheld modes",
+     "HDR support on compatible TVs",
+     "30 FPS cap option added after launch for consistency",
+     "Signature Edition includes major trilogy/Deluxe content",
+     "More than 20 locations",
+     "Freelancer mode and live content"
+    ],
+    "tagline": "Enter the world of the ultimate assassin.",
+    "fitFor": [
+     "Stealth and sandbox fans",
+     "Players who enjoy experimentation and replayability",
+     "Fans of systemic level design",
+     "Players wanting the complete modern HITMAN package"
+    ],
+    "notFitFor": [
+     "Players uncomfortable with assassination themes",
+     "Players who want local multiplayer"
+    ],
+    "playTimeMain": 25,
+    "playTimeFull": 256,
+    "editionsList": [
+     {
+      "name": "Signature Edition",
+      "contents": [
+       {
+        "label": "World of Assassination campaign"
+       },
+       {
+        "label": "HITMAN 2 Expansion Pack"
+       },
+       {
+        "label": "HITMAN 3 Deluxe Pack"
+       },
+       {
+        "label": "Freelancer"
+       },
+       {
+        "label": "Contracts"
+       },
+       {
+        "label": "Escalations"
+       },
+       {
+        "label": "Elusive Target Arcade and live content"
+       }
+      ]
+     }
+    ],
+    "gameplayPillars": [
+     {
+      "title": "Freedom of Approach",
+      "description": "Use disguises, routes, environmental opportunities, tools and social stealth to create your own solutions."
+     },
+     {
+      "title": "Large Sandbox Locations",
+      "description": "Explore highly detailed spaces with schedules, restricted areas, mission stories and systemic interactions."
+     },
+     {
+      "title": "Replayability",
+      "description": "Challenges, mastery, alternate starting locations and equipment make each mission highly replayable."
+     },
+     {
+      "title": "Freelancer",
+      "description": "A persistent roguelike-style mode adds campaign planning, risk management and long-term progression."
+     }
+    ],
+    "storyChapters": [
+     {
+      "title": "Agent 47 Returns",
+      "body": "The World of Assassination campaign follows Agent 47 through the events of HITMAN, HITMAN 2 and HITMAN 3."
+     },
+     {
+      "title": "Providence Conflict",
+      "body": "47's contracts become entangled with the secretive Providence organization and his own past."
+     },
+     {
+      "title": "A World of Assassination",
+      "body": "The trilogy culminates in a globe-spanning spy-thriller while side modes extend the sandbox far beyond the main narrative."
+     }
+    ],
+    "galleryImages": [
+     {
+      "url": "https://m.media-amazon.com/images/I/71MnD1eLMGL._SL1500_.jpg",
+      "alt": "Distinct product/game media image 1; separate from the primary cover and square-card roles."
+     },
+     {
+      "url": "https://m.media-amazon.com/images/I/71o8Xq0A1IL._SL1500_.jpg",
+      "alt": "Distinct product/game media image 2; separate from the primary cover and square-card roles."
+     },
+     {
+      "url": "https://m.media-amazon.com/images/I/61-xuuIJFXL._SL1500_.jpg",
+      "alt": "Distinct product/game media image 3; separate from the primary cover and square-card roles."
+     },
+     {
+      "url": "https://m.media-amazon.com/images/I/71YwENQJ8UL._SL1500_.jpg",
+      "alt": "Distinct product/game media image 4; separate from the primary cover and square-card roles."
+     }
+    ],
+    "features": [
+     "Full World of Assassination trilogy campaign",
+     "More than 20 locations",
+     "Contracts mode",
+     "Escalations",
+     "Elusive Target Arcade",
+     "Featured live content",
+     "Freelancer mode",
+     "HITMAN 2 Expansion Pack content",
+     "HITMAN 3 Deluxe Pack content",
+     "Native Nintendo Switch 2 version rather than cloud streaming",
+     "HDR support on compatible TVs",
+     "High mission replayability and systemic stealth"
+    ],
+    "perfResolutionDocked": "1920x1080",
+    "perfResolutionHandheld": "1280x720",
+    "perfFps": "30 FPS cap available after patch",
+    "perfHdr": true,
+    "perfNotes": "Technical testing reports approximately 720p in handheld mode and 1080p in docked mode. The launch build used an unlocked frame rate with significant fluctuation; a post-launch patch added a 30 FPS cap for more stable play.",
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "hardwareId": "prd_acf4c89908764c62",
+      "informationStatus": "verified",
+      "handheld": {
+       "supported": true,
+       "resolution": "1280x720",
+       "renderingResolution": "Dynamic around 720p",
+       "outputResolution": "1280x720",
+       "fps": "30",
+       "fpsMin": "30",
+       "fpsMax": "30"
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1920x1080",
+       "renderingResolution": "Dynamic around 1080p",
+       "outputResolution": "1920x1080",
+       "fps": "30",
+       "fpsMin": "30",
+       "fpsMax": "30",
+       "hdr": true
+      },
+      "modes": [
+       {
+        "name": "30 FPS Cap (post-launch patch)",
+        "handheldResolution": "1280x720",
+        "handheldFps": "30",
+        "tvResolution": "1920x1080",
+        "tvFps": "30"
+       }
+      ],
+      "sourceName": "Nintendo Life Switch 2 review + post-launch patch note",
+      "sourceUrl": "https://www.nintendolife.com/reviews/nintendo-switch-2/hitman-world-of-assassination-signature-edition",
+      "verificationStatus": "third-party-tested",
+      "performanceNotes": "Technical testing reports approximately 720p in handheld mode and 1080p in docked mode. The launch build used an unlocked frame rate with significant fluctuation; a post-launch patch added a 30 FPS cap for more stable play."
+     }
+    ],
+    "downloadSizeGb": 54.1,
+    "requiredSpaceGb": 54.5,
+    "microSdRecommended": true,
+    "languagesAudio": [
+     "English"
+    ],
+    "languagesText": [
+     "Japanese",
+     "English",
+     "French",
+     "German",
+     "Italian",
+     "Spanish",
+     "Russian",
+     "Simplified Chinese",
+     "Traditional Chinese"
+    ],
+    "arabicSupport": false,
+    "mpLocalPlayers": false,
+    "mpOnlinePlayers": false,
+    "mpCoop": false,
+    "mpCompetitive": false,
+    "mpSplitScreen": false,
+    "mpLocalWireless": false,
+    "guides": [
+     {
+      "title": "IO Interactive HITMAN Site",
+      "summary": "Official game and live-content information.",
+      "url": "https://ioi.dk/hitman"
+     },
+     {
+      "title": "Nintendo Switch 2 Launch Trailer",
+      "summary": "Official Switch 2 Signature Edition overview.",
+      "url": "https://www.youtube.com/watch?v=FfKQgglhaBU"
+     },
+     {
+      "title": "Nintendo Store",
+      "summary": "Switch 2 features and edition details.",
+      "url": "https://www.nintendo.com/au/games/nintendo-switch-2/hitman-world-of-assassination-signature-edition/"
+     }
+    ],
+    "completionMain": 25,
+    "completionExtras": 48,
+    "completionAll": 256,
+    "faq": [
+     {
+      "q": "Is this the cloud version from the original Switch?",
+      "a": "No. Signature Edition is a native Nintendo Switch 2 release."
+     },
+     {
+      "q": "How much content is included?",
+      "a": "It includes the World of Assassination trilogy campaign plus major expansion/Deluxe content and long-term modes such as Freelancer."
+     },
+     {
+      "q": "How long is it?",
+      "a": "A single pass through the main trilogy is around 25 hours in crowdsourced data, but full completion and replay-driven modes can reach hundreds of hours."
+     },
+     {
+      "q": "Does it support HDR?",
+      "a": "Nintendo lists HDR support on compatible TVs."
+     },
+     {
+      "q": "Is it multiplayer?",
+      "a": "The core game is single-player; online connectivity is used for progression, contracts and live-service features."
+     },
+     {
+      "q": "What is the stable frame-rate option?",
+      "a": "A post-launch Switch 2 update added a 30 FPS cap option for more consistent play."
+     }
+    ],
+    "verdictScore": 7.5,
+    "verdictSummary": "One of the richest stealth packages available, with huge replay value. The native Switch 2 release is a major improvement over cloud-only access, though performance requires compromises.",
+    "verdictPros": [
+     "Enormous amount of content",
+     "Excellent replayability",
+     "Native local execution on Switch 2",
+     "Freelancer adds long-term structure"
+    ],
+    "verdictCons": [
+     "Switch 2 port has technical compromises compared with stronger platforms",
+     "Frame-rate cap option was added after launch to improve consistency"
+    ],
+    "reviews": [
+     {
+      "source": "Metacritic",
+      "score": "87/100",
+      "quote": "The World of Assassination package is widely regarded as one of the strongest modern stealth sandboxes.",
+      "url": "https://www.metacritic.com/"
+     },
+     {
+      "source": "OpenCritic",
+      "score": "85/100",
+      "quote": "Critical consensus strongly favors the systemic level design and replayability.",
+      "url": "https://opencritic.com/"
+     },
+     {
+      "source": "Nintendo Switch 2 reviews",
+      "score": "Mixed technical reception",
+      "quote": "Switch 2 reviews praised having a native version but noted visual/performance compromises compared with stronger platforms.",
+      "url": "https://www.nintendolife.com/reviews/nintendo-switch-2/hitman-world-of-assassination-signature-edition"
+     }
+    ],
+    "timeline": [
+     {
+      "date": "2016",
+      "title": "Modern trilogy begins",
+      "body": "The episodic HITMAN reboot launched."
+     },
+     {
+      "date": "2018",
+      "title": "HITMAN 2",
+      "body": "The campaign expanded with new global locations and systems."
+     },
+     {
+      "date": "2021",
+      "title": "HITMAN 3",
+      "body": "The trilogy concluded and later became the unified World of Assassination platform."
+     },
+     {
+      "date": "2025-06-05",
+      "title": "Switch 2 Signature Edition",
+      "body": "A native Nintendo Switch 2 version launched."
+     },
+     {
+      "date": "2025",
+      "title": "Post-launch performance patch",
+      "body": "A frame-rate option added a 30 FPS cap for more consistent performance."
+     }
+    ],
+    "patchNotes": [
+     {
+      "version": "Switch 2 launch",
+      "date": "2025-06-05",
+      "body": "Native Switch 2 release of Signature Edition."
+     },
+     {
+      "version": "Frame-rate option patch",
+      "date": "2025",
+      "body": "Added a 30 FPS cap option to improve consistency on Nintendo Switch 2."
+     },
+     {
+      "version": "Live service content",
+      "date": "2025-2026",
+      "body": "Elusive targets, featured contracts and other live content continued through the World of Assassination platform."
+     }
+    ],
+    "soundtrack": [
+     {
+      "title": "HITMAN World of Assassination soundtrack",
+      "url": "https://ioi.dk/hitman"
+     },
+     {
+      "title": "HITMAN 3 Deluxe Soundtrack content",
+      "url": "https://ioi.dk/hitman"
+     }
+    ],
+    "seriesName": "HITMAN",
+    "seriesEntries": [
+     "HITMAN",
+     "HITMAN 2",
+     "HITMAN 3 / World of Assassination"
+    ],
+    "studioName": "IO Interactive",
+    "studioUrl": "https://ioi.dk/",
+    "studioLocation": "Copenhagen, Denmark",
+    "studioAbout": "IO Interactive is the independent Danish studio behind the HITMAN franchise. World of Assassination consolidates the modern trilogy into a single systemic stealth sandbox with campaign missions, contracts, escalations, elusive targets and Freelancer.",
+    "setupNeeds": [
+     "Nintendo Switch 2 system required for the Nintendo Switch 2 version.",
+     "Internet connection is required for digital download, updates and online/service features where applicable.",
+     "Nintendo Account required for Nintendo eShop purchase/download.",
+     "Sufficient internal storage or compatible microSD Express storage required.",
+     "Nintendo Switch Online membership is required only for game-specific online multiplayer/features that explicitly use it."
+    ],
+    "sources": [
+     {
+      "name": "IO Interactive",
+      "url": "https://ioi.dk/hitman"
+     },
+     {
+      "name": "Nintendo AU",
+      "url": "https://www.nintendo.com/au/games/nintendo-switch-2/hitman-world-of-assassination-signature-edition/"
+     },
+     {
+      "name": "Nintendo Launch Trailer",
+      "url": "https://www.youtube.com/watch?v=FfKQgglhaBU"
+     },
+     {
+      "name": "Nintendo Life",
+      "url": "https://www.nintendolife.com/reviews/nintendo-switch-2/hitman-world-of-assassination-signature-edition"
+     }
+    ],
+    "boxContentsList": "[Circular]",
+    "image": "/api/files/products/prd_502d0bd14c6049b6/coverImage-8fab9ae51312180d.jpg",
+    "banner": "/api/files/products/prd_502d0bd14c6049b6/bannerImages-1-685a53eaefaa363f.jpg",
+    "schemaId": "",
+    "badgeEn": "وفر 40%",
+    "badgeKu": "وفر 40%",
+    "featuresEn": [
+     "Full World of Assassination trilogy campaign",
+     "More than 20 locations",
+     "Contracts mode",
+     "Escalations",
+     "Elusive Target Arcade",
+     "Featured live content",
+     "Freelancer mode",
+     "HITMAN 2 Expansion Pack content",
+     "HITMAN 3 Deluxe Pack content",
+     "Native Nintendo Switch 2 version rather than cloud streaming",
+     "HDR support on compatible TVs",
+     "High mission replayability and systemic stealth"
+    ],
+    "featuresKu": [
+     "Full World of Assassination trilogy campaign",
+     "More than 20 locations",
+     "Contracts mode",
+     "Escalations",
+     "Elusive Target Arcade",
+     "Featured live content",
+     "Freelancer mode",
+     "HITMAN 2 Expansion Pack content",
+     "HITMAN 3 Deluxe Pack content",
+     "Native Nintendo Switch 2 version rather than cloud streaming",
+     "HDR support on compatible TVs",
+     "High mission replayability and systemic stealth"
+    ],
+    "sales": 0,
+    "images": [],
+    "modes": [],
+    "switch2UpgradePrice": 0,
+    "eshopUrl": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-2-games/HITMAN-World-of-Assassination-Signature-Edition-2792849.html",
+    "nintendoGameKeyCard": false,
+    "switch2Enhanced": true,
+    "switch2Exclusive": true,
+    "nintendoNotes": "Platform and package information verified against the official product/source page for HITMAN World of Assassination – Signature Edition.",
+    "worldSummary": "HITMAN World of Assassination – Signature Edition brings together HITMAN, HITMAN 2, and HITMAN 3 content in a single Nintendo Switch 2 package. Play as Agent 47 across more than 20 locations, using disguises, stealth, gadgets, environmental opportunities, and creative assassination routes. The Signature Edition also includes major expansion and deluxe content.",
+    "updatedAt": "2026-08-28T22:01:17.264Z"
+   }
+  },
+  {
+   "id": "prd_81d7e7d737804445",
+   "slug": "hogwarts-legacy-switch-2",
+   "title": "Hogwarts Legacy",
+   "platform": "switch2",
+   "isHidden": true,
+   "hash": "1eab74d99d85565e7fcc1df32b2a5f3e3e58bcb3906cfb2dedbae2b06589f755",
+   "images": [
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://banan.to/api/files/products/prd_81d7e7d737804445/square-card-f407d5d6454ef3d5.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 166800,
+     "width": 1024,
+     "height": 1024,
+     "thumb": "review-workdir/thumbs/batch-010/hogwarts-legacy-switch-2__square-card-0.png"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://banan.to/api/files/products/prd_81d7e7d737804445/cover-f896d8c4e3e97e44.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 321920,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-010/hogwarts-legacy-switch-2__detail-cover-1.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://banan.to/api/files/products/prd_81d7e7d737804445/gallery-1-204f544d75d9c741.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 273926,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-010/hogwarts-legacy-switch-2__gallery-2.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[1]",
+     "url": "https://banan.to/api/files/products/prd_81d7e7d737804445/gallery-2-603b5d986d0ad5fd.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 211942,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-010/hogwarts-legacy-switch-2__gallery-3.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[2]",
+     "url": "https://banan.to/api/files/products/prd_81d7e7d737804445/gallery-3-5a2fdc1d70da0b76.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 156104,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-010/hogwarts-legacy-switch-2__gallery-4.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[3]",
+     "url": "https://banan.to/api/files/products/prd_81d7e7d737804445/gallery-4-ffd7e38f0408a93a.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 137494,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-010/hogwarts-legacy-switch-2__gallery-5.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[4]",
+     "url": "https://banan.to/api/files/products/prd_81d7e7d737804445/gallery-5-68620343608e4ccf.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 288132,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-010/hogwarts-legacy-switch-2__gallery-6.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[5]",
+     "url": "https://banan.to/api/files/products/prd_81d7e7d737804445/gallery-6-8c058836c5c45b73.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 183510,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-010/hogwarts-legacy-switch-2__gallery-7.png"
+    }
+   ],
+   "record": {
+    "title": "Hogwarts Legacy",
+    "titleEn": "Hogwarts Legacy",
+    "titleKu": "",
+    "slug": "hogwarts-legacy-switch-2",
+    "description": "Hogwarts Legacy is an action RPG built around magical exploration, spell-based combat, and student fantasy immersion. Players learn spells, explore Hogwarts and nearby regions, and pursue a larger mystery within the Wizarding World. This file prepares it as a Nintendo Switch 2 product with four account-based store tiers.",
+    "descriptionEn": "Hogwarts Legacy is an action RPG built around magical exploration, spell-based combat, and student fantasy immersion. Players learn spells, explore Hogwarts and nearby regions, and pursue a larger mystery within the Wizarding World. This file prepares it as a Nintendo Switch 2 product with four account-based store tiers.",
+    "descriptionKu": "",
+    "cartridgeImage": "",
+    "nintendoCardImage": "/api/files/products/prd_81d7e7d737804445/square-card-f407d5d6454ef3d5.webp",
+    "coverHiResImage": "",
+    "coverImage": "/api/files/products/prd_81d7e7d737804445/cover-f896d8c4e3e97e44.webp",
+    "bannerImages": [
+     ""
+    ],
+    "gallery": [],
+    "youtubeTrailer": "https://www.youtube.com/results?search_query=Hogwarts+Legacy+official+trailer",
+    "releaseDate": "2026-01-01",
+    "ageRating": "ESRB T / PEGI 12",
+    "metacriticRating": 84,
+    "genres": [
+     "Action",
+     "RPG",
+     "Adventure"
+    ],
+    "platform": "switch2",
+    "size": 28,
+    "numberOfPlayers": "Single system (1)",
+    "supportedLanguages": "English, Japanese, French, Spanish, German",
+    "hardwareModel": "",
+    "colorEdition": "",
+    "storageCapacity": "",
+    "screenSpecs": "",
+    "batteryLife": "",
+    "boxContents": [],
+    "boxContentsText": "",
+    "warrantyCondition": "",
+    "connectivity": "",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "Global",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "",
+    "redemptionSteps": [],
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 14750,
+    "cost": 1250,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": true,
+    "displayOrder": 0,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "مشترك",
+      "description": "مشترك",
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_account",
+      "name": "خاص بك",
+      "description": "خاص بك",
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "types": [
+     {
+      "id": "offline_base",
+      "name": "مشترك — اللعبة الأساسية",
+      "optionId": "offline_account",
+      "price": 14750,
+      "cost": 1250,
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "offline_extras",
+      "name": "مشترك — مع الإضافات",
+      "optionId": "offline_account",
+      "price": 17250,
+      "cost": 2500,
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_base",
+      "name": "خاص بك — اللعبة الأساسية",
+      "optionId": "online_account",
+      "price": 16500,
+      "cost": 12250,
+      "stock": 9999,
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_extras",
+      "name": "خاص بك — مع الإضافات",
+      "optionId": "online_account",
+      "price": 28000,
+      "cost": 20750,
+      "stock": 9999,
+      "isInfiniteStock": true
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "Active",
+    "kind": "account",
+    "trade_value_iqd": 9500,
+    "store_offer_bonus_iqd": 2500,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "id": "prd_81d7e7d737804445",
+    "schema_version": 24,
+    "titleAr": "هوغوورتس ليغاسي",
+    "compatibility": [
+     "Nintendo Switch 2",
+     "No Switch 1 product in this entry"
+    ],
+    "edition": "Standard",
+    "developer": "Avalanche Software",
+    "publisher": "Warner Bros. Games",
+    "metacriticUrl": "https://www.metacritic.com/game/hogwarts-legacy/",
+    "opencriticRating": 84,
+    "userScore": 8.2,
+    "price_usd": 59.99,
+    "officialUrl": "https://www.hogwartslegacy.com/",
+    "eshopUrl": "https://www.hogwartslegacy.com/",
+    "gameIsOffline": true,
+    "gameIsOnline": false,
+    "gameLanguageLocked": false,
+    "description_short": "An open-world action RPG set in Hogwarts and the wider Wizarding World.",
+    "description_ar": "لعبة أكشن RPG في عالم السحرة، تسمح لك باستكشاف هوغوورتس وما حولها، وتخوض القتال بالتعاويذ، ومجهزة هنا كملف Switch 2.",
+    "videos": [
+     {
+      "title": "Official Trailer",
+      "url": "https://www.youtube.com/results?search_query=Hogwarts+Legacy+official+trailer"
+     }
+    ],
+    "nintendoEshopUrl": "https://www.hogwartslegacy.com/",
+    "nintendoOnlineRequired": false,
+    "nintendoCloudSaves": true,
+    "nintendoGameKeyCard": false,
+    "nintendoPhysicalNeedsDownload": false,
+    "tvMode": true,
+    "tabletopMode": true,
+    "handheldMode": true,
+    "nintendoPlayModes": "TV mode / Tabletop mode / Handheld mode",
+    "nintendoNotes": "Prepared as a Switch 2 file according to the user-provided platform and pricing.",
+    "switch2Enhanced": true,
+    "switch2Exclusive": false,
+    "switch2UpgradePrice": 0,
+    "switch2Features": [
+     "Dedicated Switch 2 product entry",
+     "Open-world magical exploration",
+     "Four-tier store structure"
+    ],
+    "tagline": "Live the student fantasy in the Wizarding World.",
+    "fitFor": [
+     "Wizarding World fans",
+     "Action RPG players",
+     "Players who enjoy exploration"
+    ],
+    "notFitFor": [
+     "Players seeking multiplayer",
+     "Players uninterested in fantasy worlds"
+    ],
+    "playTimeMain": 26,
+    "playTimeFull": 55,
+    "editionsList": [
+     {
+      "name": "Regular / Offline",
+      "contents": [
+       {
+        "label": "Hogwarts Legacy"
+       },
+       {
+        "label": "Regular / Offline"
+       },
+       {
+        "label": "Offline account access"
+       }
+      ]
+     },
+     {
+      "name": "Bonus / 特典版",
+      "contents": [
+       {
+        "label": "Hogwarts Legacy"
+       },
+       {
+        "label": "Bonus / 特典版"
+       },
+       {
+        "label": "Offline bonus package"
+       }
+      ]
+     },
+     {
+      "name": "Standard / 标准版",
+      "contents": [
+       {
+        "label": "Hogwarts Legacy"
+       },
+       {
+        "label": "Standard / 标准版"
+       },
+       {
+        "label": "Online account access"
+       }
+      ]
+     },
+     {
+      "name": "Deluxe / 豪华版",
+      "contents": [
+       {
+        "label": "Hogwarts Legacy"
+       },
+       {
+        "label": "Deluxe / 豪华版"
+       },
+       {
+        "label": "Online premium package"
+       }
+      ]
+     }
+    ],
+    "gameplayPillars": [
+     {
+      "title": "Open-world magical exploration",
+      "description": "Hogwarts, Hogsmeade, and surrounding areas form a broad explorable world."
+     },
+     {
+      "title": "Spell-based combat",
+      "description": "Magic-driven battles rely on combinations, timing, and utility."
+     },
+     {
+      "title": "Student fantasy immersion",
+      "description": "Classes, creatures, and the school setting drive the fantasy appeal."
+     },
+     {
+      "title": "Character progression",
+      "description": "Gear, talents, and upgrades shape your play style."
+     },
+     {
+      "title": "Tiered store structure",
+      "description": "This file includes regular, bonus, standard, and deluxe tiers."
+     }
+    ],
+    "worldSummary": "Hogwarts and the surrounding magical countryside create a detailed fantasy setting packed with quests, secrets, and exploration.",
+    "storyChapters": [
+     {
+      "title": "Arrive as a special student",
+      "body": "The player enters Hogwarts with unusual magical potential."
+     },
+     {
+      "title": "Learn the basics of magic",
+      "body": "Spells, classes, and mentors gradually broaden your abilities."
+     },
+     {
+      "title": "Explore the wider magical world",
+      "body": "The adventure quickly expands beyond the school itself."
+     },
+     {
+      "title": "Confront hidden threats",
+      "body": "Combat and mystery intensify as darker forces appear."
+     },
+     {
+      "title": "Choose your path through the world",
+      "body": "Character growth and choices shape the tone of the journey."
+     }
+    ],
+    "galleryImages": [
+     {
+      "url": "/api/files/products/prd_81d7e7d737804445/gallery-1-204f544d75d9c741.webp",
+      "alt": "Hogwarts Legacy screenshot 1"
+     },
+     {
+      "url": "/api/files/products/prd_81d7e7d737804445/gallery-2-603b5d986d0ad5fd.webp",
+      "alt": "Hogwarts Legacy screenshot 2"
+     },
+     {
+      "url": "/api/files/products/prd_81d7e7d737804445/gallery-3-5a2fdc1d70da0b76.webp",
+      "alt": "Hogwarts Legacy screenshot 3"
+     },
+     {
+      "url": "/api/files/products/prd_81d7e7d737804445/gallery-4-ffd7e38f0408a93a.webp",
+      "alt": "Hogwarts Legacy screenshot 4"
+     },
+     {
+      "url": "/api/files/products/prd_81d7e7d737804445/gallery-5-68620343608e4ccf.webp",
+      "alt": "Hogwarts Legacy screenshot 5"
+     },
+     {
+      "url": "/api/files/products/prd_81d7e7d737804445/gallery-6-8c058836c5c45b73.webp",
+      "alt": "Hogwarts Legacy screenshot 6"
+     }
+    ],
+    "features": [
+     "Rich Wizarding World setting",
+     "Open-world action RPG systems",
+     "Spell-based combat",
+     "Dedicated Switch 2 product file",
+     "Four pricing tiers"
+    ],
+    "perfResolutionDocked": "1440p",
+    "perfResolutionHandheld": "1080p",
+    "perfFps": "60",
+    "perfHdr": false,
+    "perfNotes": "Configured as a Switch 2 product performance profile for storefront use.",
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "hardwareId": "nintendo-switch-2",
+      "informationStatus": "Available",
+      "unavailableReason": "No unavailable reason. Performance profile is present for this device.",
+      "handheld": {
+       "supported": true,
+       "resolution": "1080p",
+       "resolutionDynamic": false,
+       "renderingResolution": "1080p",
+       "outputResolution": "1080p",
+       "fps": "60",
+       "fpsMin": "60",
+       "fpsMax": "60",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "Handheld",
+       "notes": "Configured as a Switch 2 product performance profile for storefront use."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "1440p",
+       "resolutionDynamic": false,
+       "renderingResolution": "1440p",
+       "outputResolution": "1440p",
+       "fps": "60",
+       "fpsMin": "60",
+       "fpsMax": "60",
+       "refreshRate": "60",
+       "hdr": false,
+       "vrr": false,
+       "mode": "TV",
+       "notes": "Configured as a Switch 2 product performance profile for storefront use."
+      },
+      "modes": [
+       {
+        "name": "Default",
+        "handheldResolution": "1080p",
+        "handheldFps": "60",
+        "tvResolution": "1440p",
+        "tvFps": "60",
+        "hdr": false,
+        "vrr": false,
+        "notes": "Configured as a Switch 2 product performance profile for storefront use."
+       }
+      ],
+      "performanceNotes": "Configured as a Switch 2 product performance profile for storefront use."
+     },
+     {
+      "device": "Nintendo Switch",
+      "deviceSlug": "nintendo-switch",
+      "deviceModel": "Nintendo Switch",
+      "hardwareId": "nintendo-switch",
+      "informationStatus": "Unavailable for this product entry",
+      "unavailableReason": "This product file is not intended for this device in the current platform split.",
+      "handheld": {
+       "supported": false
+      },
+      "tv": {
+       "supported": false
+      },
+      "performanceNotes": "This device block is intentionally marked unavailable because the game file belongs to a different platform entry."
+     }
+    ],
+    "faq": [
+     {
+      "q": "Is Hogwarts Legacy open world?",
+      "a": "Yes. It is an action RPG with a broad explorable world."
+     },
+     {
+      "q": "Why are there four variants?",
+      "a": "The user requested regular, bonus, standard, and deluxe tiers."
+     },
+     {
+      "q": "Is it multiplayer?",
+      "a": "No. It is primarily a single-player action RPG."
+     },
+     {
+      "q": "Why is it on Switch 2?",
+      "a": "The batch explicitly requested a Switch 2 product entry."
+     },
+     {
+      "q": "What makes the deluxe tier special?",
+      "a": "In this store structure, it serves as the premium account package tier."
+     }
+    ],
+    "mpLocalPlayers": false,
+    "mpOnlinePlayers": false,
+    "mpCoop": false,
+    "mpCompetitive": false,
+    "mpLocalWireless": false,
+    "mpSplitScreen": false,
+    "boxContentsList": [],
+    "image": "",
+    "banner": "",
+    "schemaId": "",
+    "batchImport": true,
+    "createdAt": "2026-08-28T18:41:33.411Z",
+    "updatedAt": "2026-08-28T18:41:33.412Z"
+   }
+  },
+  {
+   "id": "prd_ebcb11cda2854251",
+   "slug": "hollow-knight-silksong-switch-2",
+   "title": "Hollow Knight: Silksong",
+   "platform": "switch2",
+   "isHidden": false,
+   "hash": "465ef7368a66fc04a5b23058dd3779f542ecd2c384022644d4758054b99600b7",
+   "images": [
+    {
+     "role": "front-box",
+     "field": "cartridgeImage",
+     "url": "https://banan.to/api/files/products/prd_ebcb11cda2854251/cartridgeImage-d4c1c7665b49312f.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 834632,
+     "width": 1200,
+     "height": 1200,
+     "thumb": "review-workdir/thumbs/batch-010/hollow-knight-silksong-switch-2__front-box-0.png"
+    },
+    {
+     "role": "front-box",
+     "field": "box_front_url",
+     "url": "https://art.gametdb.com/switch/cover/US/AKZRA.jpg",
+     "status": 404,
+     "contentType": "text/html"
+    },
+    {
+     "role": "square-card",
+     "field": "nintendoCardImage",
+     "url": "https://banan.to/api/files/products/prd_ebcb11cda2854251/nintendoCardImage-8001614a8a13f223.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 32038,
+     "width": 281,
+     "height": 281,
+     "thumb": "review-workdir/thumbs/batch-010/hollow-knight-silksong-switch-2__square-card-2.png"
+    },
+    {
+     "role": "detail-cover",
+     "field": "coverImage",
+     "url": "https://banan.to/api/files/products/prd_ebcb11cda2854251/coverImage-851b30b4bda9a7ca.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 80381,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-010/hollow-knight-silksong-switch-2__detail-cover-3.png"
+    },
+    {
+     "role": "3d-texture",
+     "field": "coverHiResImage",
+     "url": "https://banan.to/api/files/products/prd_ebcb11cda2854251/3d-texture-3e988f6f11c01085.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 149910,
+     "width": 1080,
+     "height": 830,
+     "thumb": "review-workdir/thumbs/batch-010/hollow-knight-silksong-switch-2__3d-texture-4.png"
+    },
+    {
+     "role": "listing",
+     "field": "image",
+     "url": "https://banan.to/api/files/products/prd_ebcb11cda2854251/coverImage-851b30b4bda9a7ca.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 80381,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-010/hollow-knight-silksong-switch-2__listing-5.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[0]",
+     "url": "https://banan.to/api/files/products/prd_ebcb11cda2854251/bannerImages-dccdfc1e748e9264.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 107712,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-010/hollow-knight-silksong-switch-2__banner-6.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[1]",
+     "url": "https://banan.to/api/files/products/prd_ebcb11cda2854251/bannerImages-4470965f0226372f.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 88815,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-010/hollow-knight-silksong-switch-2__banner-7.png"
+    },
+    {
+     "role": "banner",
+     "field": "bannerImages[2]",
+     "url": "https://banan.to/api/files/products/prd_ebcb11cda2854251/bannerImages-61f291f495566d0f.webp",
+     "status": 200,
+     "contentType": "image/webp",
+     "bytes": 99169,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-010/hollow-knight-silksong-switch-2__banner-8.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[0]",
+     "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000105851/66fa053c1e9b6e068556d73469acab78a630856a766a818752121e78cea8507f",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 150205,
+     "width": 1920,
+     "height": 1080,
+     "thumb": "review-workdir/thumbs/batch-010/hollow-knight-silksong-switch-2__gallery-9.png"
+    },
+    {
+     "role": "gallery",
+     "field": "galleryImages[1]",
+     "url": "https://itstore.pl/252537-large_default/hollow-knight-silksong-nintendo-switch-2.jpg",
+     "status": 200,
+     "contentType": "image/jpeg",
+     "bytes": 602176,
+     "width": 800,
+     "height": 800,
+     "thumb": "review-workdir/thumbs/batch-010/hollow-knight-silksong-switch-2__gallery-10.png"
+    }
+   ],
+   "record": {
+    "id": "prd_ebcb11cda2854251",
+    "title": "Hollow Knight: Silksong",
+    "titleEn": "Hollow Knight: Silksong",
+    "titleKu": "Hollow Knight: Silksong",
+    "slug": "hollow-knight-silksong-switch-2",
+    "description": "Hollow Knight: Silksong follows Hornet, princess-protector of Hallownest, after she is captured and taken to the unfamiliar kingdom of Pharloom. Rather than descending through a ruined realm, Hornet's pilgrimage pushes upward toward the kingdom's shining citadel. Her movement is faster and more acrobatic than the Knight's, with diagonal attacks, mantling, sprinting and silk-powered abilities. Tools can be crafted and equipped through crest systems, while quests, merchants and settlements give the world a more explicit social structure. Team Cherry advertises more than 200 enemies and more than 40 bosses, plus a Steel Soul challenge mode and a full orchestral score by Christopher Larkin.",
+    "descriptionEn": "Hollow Knight: Silksong follows Hornet, princess-protector of Hallownest, after she is captured and taken to the unfamiliar kingdom of Pharloom. Rather than descending through a ruined realm, Hornet's pilgrimage pushes upward toward the kingdom's shining citadel. Her movement is faster and more acrobatic than the Knight's, with diagonal attacks, mantling, sprinting and silk-powered abilities. Tools can be crafted and equipped through crest systems, while quests, merchants and settlements give the world a more explicit social structure. Team Cherry advertises more than 200 enemies and more than 40 bosses, plus a Steel Soul challenge mode and a full orchestral score by Christopher Larkin.",
+    "descriptionKu": "Hollow Knight: Silksong follows Hornet, princess-protector of Hallownest, after she is captured and taken to the unfamiliar kingdom of Pharloom. Rather than descending through a ruined realm, Hornet's pilgrimage pushes upward toward the kingdom's shining citadel. Her movement is faster and more acrobatic than the Knight's, with diagonal attacks, mantling, sprinting and silk-powered abilities. Tools can be crafted and equipped through crest systems, while quests, merchants and settlements give the world a more explicit social structure. Team Cherry advertises more than 200 enemies and more than 40 bosses, plus a Steel Soul challenge mode and a full orchestral score by Christopher Larkin.",
+    "cartridgeImage": "/api/files/products/prd_ebcb11cda2854251/cartridgeImage-d4c1c7665b49312f.webp",
+    "nintendoCardImage": "/api/files/products/prd_ebcb11cda2854251/nintendoCardImage-8001614a8a13f223.webp",
+    "coverHiResImage": "/api/files/products/prd_ebcb11cda2854251/3d-texture-3e988f6f11c01085.webp",
+    "coverImage": "/api/files/products/prd_ebcb11cda2854251/coverImage-851b30b4bda9a7ca.webp",
+    "bannerImages": [
+     "/api/files/products/prd_ebcb11cda2854251/bannerImages-dccdfc1e748e9264.webp",
+     "/api/files/products/prd_ebcb11cda2854251/bannerImages-4470965f0226372f.webp",
+     "/api/files/products/prd_ebcb11cda2854251/bannerImages-61f291f495566d0f.webp"
+    ],
+    "gallery": [],
+    "youtubeTrailer": "",
+    "releaseDate": "2025-09-04",
+    "ageRating": "ESRB E10+ – Animated Blood, Fantasy Violence, Mild Language",
+    "metacriticRating": 94,
+    "genres": [
+     "Action",
+     "Metroidvania",
+     "Platformer"
+    ],
+    "platform": "switch2",
+    "size": 4.1,
+    "numberOfPlayers": "1",
+    "supportedLanguages": "Japanese, French, German, Italian, Spanish, Korean, Russian, Simplified Chinese, Brazilian Portuguese, American English",
+    "hardwareModel": "",
+    "colorEdition": "",
+    "storageCapacity": "",
+    "screenSpecs": "",
+    "batteryLife": "",
+    "boxContents": [],
+    "boxContentsText": "",
+    "warrantyCondition": "",
+    "connectivity": "",
+    "characterName": "Link",
+    "amiiboSeries": "The Legend of Zelda",
+    "figureType": "figure",
+    "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+    "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+    "boxCondition": "mib",
+    "releaseWave": "Wave 2 (Restock)",
+    "rarity": "standard",
+    "accessoryType": "حقيبة حماية وتنقل Carry Case",
+    "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+    "brand": "Nintendo Official",
+    "material": "Hard EVA Shockproof Shell",
+    "availableColors": "Black, Neon Red/Blue, White",
+    "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+    "cardValue": "$20 eShop Balance",
+    "region": "Global",
+    "cardType": "eshop",
+    "deliveryMethod": "instant_code",
+    "redemptionGuide": "",
+    "redemptionSteps": [],
+    "validity": "no_expiry",
+    "usedType": "cartridge",
+    "conditionGrade": "like_new",
+    "packaging": "cib",
+    "guaranteeStatus": "tested_30days",
+    "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+    "accountType": "primary",
+    "badge": "وفر 40%",
+    "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+    "price": 7000,
+    "cost": 1250,
+    "stock": 999999,
+    "isInfiniteStock": true,
+    "isHidden": false,
+    "displayOrder": 0,
+    "category": "nintendo-switch-games",
+    "categoryId": "nintendo-switch-games",
+    "categoryEn": "",
+    "categoryKu": "",
+    "options": [
+     {
+      "id": "offline_account",
+      "name": "Offline Account",
+      "description": "Account delivery option intended for offline-account use.",
+      "isInfiniteStock": true
+     },
+     {
+      "id": "online_account",
+      "name": "Online Account",
+      "description": "Account delivery option intended for online-account use where supported.",
+      "isInfiniteStock": true
+     }
+    ],
+    "types": [
+     {
+      "id": "standard_offline",
+      "name": "Standard",
+      "optionId": "offline_account",
+      "price": "12000",
+      "cost": 1250,
+      "description": "Supplier 普通版 mapped to Offline / Standard. Cost ¥6.80 -> 1,250 IQD.",
+      "isInfiniteStock": true
+     },
+     {
+      "id": "standard_online",
+      "name": "Standard",
+      "optionId": "online_account",
+      "price": "28000",
+      "cost": 11000,
+      "description": "Supplier 标准版 mapped to Online / Standard. Cost ¥50.90 -> 11,000 IQD.",
+      "isInfiniteStock": true
+     }
+    ],
+    "editions": [],
+    "dlcs": [],
+    "isActive": true,
+    "status": "Active",
+    "kind": "account",
+    "trade_value_iqd": 20000,
+    "store_offer_bonus_iqd": 0,
+    "trade_enabled": true,
+    "trade_value_locked": false,
+    "schema_version": 1,
+    "edition": "Standard",
+    "developer": "Team Cherry",
+    "publisher": "Team Cherry",
+    "metacriticUrl": "https://www.metacritic.com/game/hollow-knight-silksong/critic-reviews/?platform=nintendo-switch-2",
+    "opencriticRating": 91,
+    "userScore": 8.9,
+    "officialUrl": "https://www.nintendo.com/us/store/products/hollow-knight-silksong-nintendo-switch-2-edition-switch-2/",
+    "eshopUrl": "https://www.nintendo.com/us/store/products/hollow-knight-silksong-nintendo-switch-2-edition-switch-2/",
+    "gameIsOffline": true,
+    "gameIsOnline": false,
+    "gameLanguageLocked": false,
+    "description_short": "A fast, acrobatic metroidvania starring Hornet as she ascends through Pharloom, with crafted tools, quests, more than 200 enemies and more than 40 bosses, enhanced on Nintendo Switch 2.",
+    "description_ar": "تكملة Hollow Knight وبطلتها Hornet في مملكة Pharloom. تتميز بحركة أسرع وقتال يعتمد على الإبرة والحرير وTools قابلة للصناعة وQuests وأكثر من 200 عدو وأكثر من 40 Boss، إضافة إلى Steel Soul Mode.",
+    "nintendoEshopUrl": "https://www.nintendo.com/us/store/products/hollow-knight-silksong-nintendo-switch-2-edition-switch-2/",
+    "nintendoOnlineRequired": false,
+    "nintendoCloudSaves": true,
+    "nintendoGameKeyCard": false,
+    "nintendoPhysicalNeedsDownload": false,
+    "nintendoPlayModes": "TV, Tabletop, Handheld",
+    "nintendoNotes": "Nintendo lists the Nintendo Switch 2 Edition as an enhanced version with higher resolution, improved frame rates and additional effects. The game is single-player and supports Simplified Chinese. No verified direct Full Wrap image was found during this extraction, so 3D texture fields are intentionally blank.",
+    "switch2Enhanced": true,
+    "switch2Features": [
+     "Higher resolution on Nintendo Switch 2.",
+     "Improved frame rates, including high-refresh-rate presentation in supported modes.",
+     "Additional visual effects in the Nintendo Switch 2 Edition."
+    ],
+    "tagline": "Ascend through the haunted kingdom of Pharloom as Hornet, mastering acrobatic combat, silk abilities, crafted tools and a vast web of quests.",
+    "fitFor": [
+     "Players who enjoy exploration-driven metroidvania worlds with hidden routes, upgrades and challenging bosses.",
+     "Players who want faster, more acrobatic combat than the original Hollow Knight.",
+     "Nintendo Switch 2 owners who want the enhanced version with higher resolution, improved frame rates and additional effects."
+    ],
+    "notFitFor": [
+     "Players who strongly prefer linear progression and constant objective markers.",
+     "Players who dislike demanding boss fights, repeated attempts and exploration without heavy hand-holding.",
+     "Players looking for multiplayer or cooperative play; the adventure is single-player."
+    ],
+    "playTimeMain": 28,
+    "playTimeFull": 65.5,
+    "gameplayPillars": [
+     {
+      "title": "Acrobatic Needle Combat",
+      "description": "Hornet fights with a needle and silk-based techniques, combining aerial movement, fast repositioning, diagonal attacks and healing/ability management."
+     },
+     {
+      "title": "Ascend Through Pharloom",
+      "description": "Explore an interconnected kingdom built around vertical progression, environmental secrets, shortcuts, settlements and increasingly dangerous regions."
+     },
+     {
+      "title": "Tools, Crests and Quests",
+      "description": "Craft and equip tools, tune loadouts through crests, meet inhabitants and complete quests while uncovering the kingdom’s history."
+     }
+    ],
+    "worldSummary": "Pharloom is a vast insect kingdom structured as an upward pilgrimage. Hornet moves through mossy grottos, coral-like forests, industrial settlements, gilded cities and misted regions while climbing toward the shining Citadel. Settlements, merchants, quest givers and hidden paths give the kingdom a stronger social structure than Hallownest while retaining interconnected metroidvania exploration.",
+    "storyChapters": [
+     {
+      "title": "Captured and Taken to Pharloom",
+      "body": "Hornet is captured and carried to an unfamiliar kingdom. After escaping, she begins an upward journey through Pharloom toward the Citadel."
+     },
+     {
+      "title": "The Pilgrimage Upward",
+      "body": "The route expands through varied regions, settlements and dangerous territories as Hornet gathers new tools, abilities and information about the forces shaping the kingdom."
+     },
+     {
+      "title": "Toward the Citadel",
+      "body": "Later progression focuses on increasingly difficult traversal, bosses and revelations surrounding the kingdom’s peak, presented here without endgame spoilers."
+     }
+    ],
+    "galleryImages": [
+     {
+      "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000105851/66fa053c1e9b6e068556d73469acab78a630856a766a818752121e78cea8507f",
+      "alt": "Official Nintendo gameplay screenshot from Pharloom."
+     },
+     {
+      "url": "https://itstore.pl/252537-large_default/hollow-knight-silksong-nintendo-switch-2.jpg",
+      "alt": "Retail Nintendo Switch 2 packaging reference image."
+     }
+    ],
+    "features": [
+     "Explore Pharloom, a new insect kingdom built around vertical ascent, hidden routes and interconnected regions.",
+     "Hornet uses fast acrobatic movement, aerial attacks and silk-based abilities that make traversal and combat more agile than Hollow Knight.",
+     "A broad tool system lets Hornet craft and equip offensive, defensive and utility tools for different situations.",
+     "Quest-style objectives give structured reasons to revisit settlements, characters and previously explored regions.",
+     "Boss encounters emphasize mobility, pattern reading and aggressive counterplay.",
+     "Christopher Larkin returns with an orchestral score written specifically for Pharloom and Hornet’s journey."
+    ],
+    "perfResolutionDocked": "2160p (Quality) / 1080p (120 Hz Performance)",
+    "perfResolutionHandheld": "1080p",
+    "perfFps": "60 FPS Quality; 120 FPS Performance / Handheld",
+    "perfHdr": false,
+    "perfNotes": "Switch 2 provides a clean high-frame-rate presentation. Team Cherry/Nintendo do not publish one universal fixed native resolution number on the store page, so an exact render resolution is not invented.",
+    "devicePerformance": [
+     {
+      "device": "Nintendo Switch 2",
+      "deviceSlug": "nintendo-switch-2",
+      "deviceModel": "Nintendo Switch 2",
+      "hardwareId": "prd_acf4c89908764c62",
+      "informationStatus": "verified",
+      "handheld": {
+       "supported": true,
+       "resolution": "1080p",
+       "resolutionDynamic": false,
+       "renderingResolution": "1080p",
+       "outputResolution": "1080p",
+       "fps": "120",
+       "fpsMin": "120",
+       "fpsMax": "120",
+       "refreshRate": "120 Hz",
+       "hdr": false,
+       "mode": "Performance",
+       "notes": "Switch 2 handheld runs at 1080p up to 120 FPS in the performance mode."
+      },
+      "tv": {
+       "supported": true,
+       "resolution": "2160p Quality / 1080p Performance",
+       "resolutionDynamic": false,
+       "renderingResolution": "2160p Quality / 1080p Performance",
+       "outputResolution": "2160p Quality / 1080p Performance",
+       "fps": "60 Quality / 120 Performance",
+       "fpsMin": "60",
+       "fpsMax": "120",
+       "refreshRate": "60 Hz / 120 Hz",
+       "hdr": false,
+       "mode": "Quality / Performance",
+       "notes": "Quality mode: 4K/60. Performance mode: 1080p/120."
+      },
+      "modes": [
+       {
+        "name": "Quality",
+        "handheldResolution": "1080p",
+        "handheldFps": "120",
+        "tvResolution": "2160p",
+        "tvFps": "60",
+        "hdr": false,
+        "notes": "4K/60 TV quality profile; handheld uses 1080p/120."
+       },
+       {
+        "name": "Performance",
+        "handheldResolution": "1080p",
+        "handheldFps": "120",
+        "tvResolution": "1080p",
+        "tvFps": "120",
+        "hdr": false,
+        "notes": "120 Hz performance profile."
+       }
+      ],
+      "sourceName": "Handheld Performance / technical comparison",
+      "sourceUrl": "https://handheld-performance.com/games/hollow-knight-silksong",
+      "verifiedAt": "2026-08-25",
+      "verificationStatus": "verified",
+      "performanceNotes": "Current Switch 2 performance verified: 2160p/60 or 1080p/120 docked; 1080p/120 handheld."
+     }
+    ],
+    "downloadSizeGb": 4.1,
+    "requiredSpaceGb": 5,
+    "microSdRecommended": false,
+    "storageNotes": "Nintendo lists 4.1 GB for Switch 2 and 2.9 GB for the original Switch version.",
+    "languagesAudio": [
+     "English"
+    ],
+    "languagesText": [
+     "English",
+     "Japanese",
+     "French"
+    ],
+    "arabicSupport": false,
+    "mpLocalPlayers": false,
+    "mpOnlinePlayers": false,
+    "mpCoop": false,
+    "mpCompetitive": false,
+    "mpSplitScreen": false,
+    "mpLocalWireless": false,
+    "guides": [
+     {
+      "title": "Nintendo Switch 2 Edition — Official Game Page",
+      "summary": "Nintendo’s official overview of the Switch 2 Edition, its features and platform information.",
+      "url": "https://www.nintendo.com/us/store/products/hollow-knight-silksong-nintendo-switch-2-edition-switch-2/"
+     },
+     {
+      "title": "Team Cherry — Hollow Knight: Silksong",
+      "summary": "Official developer information and news for Silksong.",
+      "url": "https://hollowknightsilksong.com/"
+     },
+     {
+      "title": "LaunchBox Media Reference",
+      "summary": "Media database entry used for square artwork and additional asset verification.",
+      "url": "https://gamesdb.launchbox-app.com/games/details/428216-hollow-knight-silksong-nintendo-switch-2-edition"
+     }
+    ],
+    "completionMain": 28,
+    "completionExtras": 47,
+    "completionAll": 65.5,
+    "faq": [
+     {
+      "q": "Is Hollow Knight: Silksong a direct sequel to Hollow Knight?",
+      "a": "Yes. It follows Hornet in the new kingdom of Pharloom and builds on the exploration and combat structure of Hollow Knight with a faster protagonist and new systems."
+     },
+     {
+      "q": "What is improved on Nintendo Switch 2?",
+      "a": "Nintendo specifically lists higher resolution, improved frame rates and additional effects for the Nintendo Switch 2 Edition."
+     },
+     {
+      "q": "Is Silksong multiplayer?",
+      "a": "No. The Nintendo release is a single-player adventure."
+     }
+    ],
+    "verdictScore": 9.4,
+    "verdictSummary": "Score note: 9.4/10 is a direct normalization of the current 94/100 Metacritic aggregate for the Nintendo listing; it is not a separately invented store rating.\n\nSilksong expands the Hollow Knight formula around Hornet’s speed and mobility, a new upward-structured kingdom, crafted tools and a large enemy/boss roster. The Switch 2 Edition is especially attractive for players who want the enhanced Nintendo presentation.",
+    "verdictPros": [
+     "Fast, expressive movement and combat built around Hornet.",
+     "Large interconnected world with strong visual variety and exploration depth.",
+     "Switch 2 enhancements improve presentation without changing the core game."
+    ],
+    "verdictCons": [
+     "High difficulty can be demanding for players who prefer relaxed progression.",
+     "Exploration-heavy structure can require backtracking and self-directed navigation.",
+     "Single-player only; there is no cooperative or competitive mode."
+    ],
+    "reviews": [
+     {
+      "source": "Metacritic — Nintendo listing",
+      "score": "94/100",
+      "quote": "Current critic aggregate for the relevant Nintendo listing: 94/100. This is an external aggregate, not a BANANTO-created review score.",
+      "url": "https://www.dekudeals.com/items/hollow-knight-silksong"
+     },
+     {
+      "source": "OpenCritic",
+      "score": "91/100",
+      "quote": "OpenCritic aggregate recorded at 91/100. Where OpenCritic groups platforms, this value represents the published aggregate rather than a fabricated platform-specific score.",
+      "url": "https://www.dekudeals.com/items/hollow-knight-silksong"
+     },
+     {
+      "source": "Metacritic User Score",
+      "score": "8.9/10",
+      "quote": "Current Metacritic user score shown with the listing: 8.9/10. User scores can change over time as additional ratings are submitted.",
+      "url": "https://www.dekudeals.com/items/hollow-knight-silksong"
+     }
+    ],
+    "timeline": [
+     null,
+     {
+      "date": "2025-09-04",
+      "title": "Switch 2 Enhancements Available",
+      "body": "The Switch 2 Edition launched with higher resolution, improved frame rates and additional effects compared with the original Switch version."
+     },
+     {
+      "title": "Ongoing Pharloom Journey",
+      "body": "Post-launch information and updates are tracked only when officially published; no unsupported version number is invented here."
+     }
+    ],
+    "patchNotes": [
+     {
+      "version": "Patch 4",
+      "date": "2025-11-06",
+      "body": "Team Cherry’s fourth major patch introduced the Team Cart Fix Simplified Chinese translation, moved controller handling to Unity’s newer Input System, added controller-support improvements and delivered another broad bug-fix pass. Team Cherry later confirmed the patch live on all platforms."
+     }
+    ],
+    "setupNeeds": [
+     "Nintendo Switch 2 system.",
+     "Approximately 4.1 GB of free storage for the Nintendo Switch 2 digital version.",
+     "One player; Nintendo Switch Online is not required for the main single-player game."
+    ],
+    "sources": [
+     {
+      "name": "Nintendo — Hollow Knight: Silksong Nintendo Switch 2 Edition",
+      "url": "https://www.nintendo.com/us/store/products/hollow-knight-silksong-nintendo-switch-2-edition-switch-2/"
+     },
+     {
+      "name": "Team Cherry — Silksong",
+      "url": "https://hollowknightsilksong.com/"
+     },
+     {
+      "name": "LaunchBox Games Database — Switch 2 media",
+      "url": "https://gamesdb.launchbox-app.com/games/details/428216-hollow-knight-silksong-nintendo-switch-2-edition"
+     },
+     {
+      "name": "Deku Deals — Nintendo version scores and completion data",
+      "url": "https://www.dekudeals.com/items/hollow-knight-silksong"
+     },
+     {
+      "name": "Team Cherry — Patch 4 notes",
+      "url": "https://www.teamcherry.com.au/blog/silksong-patch-4"
+     },
+     {
+      "name": "Christopher Larkin — Official Silksong soundtrack",
+      "url": "https://christopherlarkin.bandcamp.com/album/hollow-knight-silksong-original-soundtrack"
+     }
+    ],
+    "soundtrack": [
+     {
+      "title": "Enter Pharloom",
+      "url": "https://christopherlarkin.bandcamp.com/album/hollow-knight-silksong-original-soundtrack"
+     },
+     {
+      "title": "Lace",
+      "url": "https://christopherlarkin.bandcamp.com/album/hollow-knight-silksong-original-soundtrack"
+     },
+     {
+      "title": "Choral Chambers",
+      "url": "https://christopherlarkin.bandcamp.com/album/hollow-knight-silksong-original-soundtrack"
+     }
+    ],
+    "seriesName": "Hollow Knight",
+    "seriesEntries": [
+     "Hollow Knight",
+     "Hollow Knight: Silksong"
+    ],
+    "studioName": "Team Cherry",
+    "studioUrl": "https://www.teamcherry.com.au/",
+    "studioLocation": "Adelaide, Australia",
+    "studioAbout": "Team Cherry is the independent Australian studio behind Hollow Knight and Hollow Knight: Silksong, known for hand-drawn 2D art, interconnected worlds and precision action-platforming.",
+    "boxContentsList": "[Circular]",
+    "image": "/api/files/products/prd_ebcb11cda2854251/coverImage-851b30b4bda9a7ca.webp",
+    "banner": "/api/files/products/prd_ebcb11cda2854251/bannerImages-dccdfc1e748e9264.webp",
+    "schemaId": "",
+    "badgeEn": "وفر 40%",
+    "badgeKu": "وفر 40%",
+    "featuresEn": [
+     "Explore Pharloom, a new insect kingdom built around vertical ascent, hidden routes and interconnected regions.",
+     "Hornet uses fast acrobatic movement, aerial attacks and silk-based abilities that make traversal and combat more agile than Hollow Knight.",
+     "A broad tool system lets Hornet craft and equip offensive, defensive and utility tools for different situations.",
+     "Quest-style objectives give structured reasons to revisit settlements, characters and previously explored regions.",
+     "Boss encounters emphasize mobility, pattern reading and aggressive counterplay.",
+     "Christopher Larkin returns with an orchestral score written specifically for Pharloom and Hornet’s journey."
+    ],
+    "featuresKu": [
+     "Explore Pharloom, a new insect kingdom built around vertical ascent, hidden routes and interconnected regions.",
+     "Hornet uses fast acrobatic movement, aerial attacks and silk-based abilities that make traversal and combat more agile than Hollow Knight.",
+     "A broad tool system lets Hornet craft and equip offensive, defensive and utility tools for different situations.",
+     "Quest-style objectives give structured reasons to revisit settlements, characters and previously explored regions.",
+     "Boss encounters emphasize mobility, pattern reading and aggressive counterplay.",
+     "Christopher Larkin returns with an orchestral score written specifically for Pharloom and Hornet’s journey."
+    ],
+    "sales": 0,
+    "images": [],
+    "modes": [],
+    "box_front_url": "https://art.gametdb.com/switch/cover/US/AKZRA.jpg",
+    "boxFrontUrl": "https://art.gametdb.com/switch/cover/US/AKZRA.jpg",
+    "coverUrl": "https://art.gametdb.com/switch/cover/US/AKZRA.jpg",
+    "createdAt": "2026-08-27T01:39:49.300Z",
+    "created_at": "2026-08-27T01:39:49.300Z",
+    "updatedAt": "2026-08-27T01:39:49.300Z",
+    "updated_at": "2026-08-27T01:39:49.300Z"
+   }
+  }
+ ]
+}

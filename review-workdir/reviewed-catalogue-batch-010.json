@@ -1,0 +1,51 @@
+{
+ "batch": "010",
+ "apply": false,
+ "games": [
+  {
+   "id": "prd_3c341c814d254f05",
+   "slug": "hades-ii-nintendo-switch-2-edition",
+   "baseHash": "2265d99863883463088fa1fbdaf29011b7df11bca48f600838e84a2a99ae0e6f",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  },
+  {
+   "id": "prd_bec7f58f8ef14dde",
+   "slug": "hades-switch",
+   "baseHash": "af9b628f4105c32641d15529c9f5cb275906806de48dcae996b3d934ccc9e89a",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  },
+  {
+   "id": "prd_502d0bd14c6049b6",
+   "slug": "hitman-world-of-assassination-signature-edition",
+   "baseHash": "f9458028542c6c171180141f5c9bea4134db328618ad694fe1a6ca9557867e91",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  },
+  {
+   "id": "prd_81d7e7d737804445",
+   "slug": "hogwarts-legacy-switch-2",
+   "baseHash": "1eab74d99d85565e7fcc1df32b2a5f3e3e58bcb3906cfb2dedbae2b06589f755",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  },
+  {
+   "id": "prd_ebcb11cda2854251",
+   "slug": "hollow-knight-silksong-switch-2",
+   "baseHash": "465ef7368a66fc04a5b23058dd3779f542ecd2c384022644d4758054b99600b7",
+   "set": {},
+   "clear": [],
+   "imageNotes": "",
+   "notes": ""
+  }
+ ]
+}

@@ -1,0 +1,567 @@
+{
+ "title": "GRID Legends: Deluxe Edition",
+ "titleEn": "GRID Legends: Deluxe Edition",
+ "titleKu": "GRID Legends: Deluxe Edition",
+ "slug": "grid-legends-deluxe-edition",
+ "description": "Codemasters' circuit racer arrives on Nintendo Switch 2 in a complete Deluxe Edition with the Driven to Glory story, a large career mode, event creator, and the released DLC package.\n\nDriven to Glory adds a live-action documentary-style narrative layer to the racing structure. Outside of the story mode, the larger career spans many disciplines, classes and event types. The Deluxe package broadens the value proposition through included content and long-term progression. The overall experience emphasizes variety, speed and technical flexibility on Switch 2.",
+ "descriptionEn": "Codemasters' circuit racer arrives on Nintendo Switch 2 in a complete Deluxe Edition with the Driven to Glory story, a large career mode, event creator, and the released DLC package.\n\nDriven to Glory adds a live-action documentary-style narrative layer to the racing structure. Outside of the story mode, the larger career spans many disciplines, classes and event types. The Deluxe package broadens the value proposition through included content and long-term progression. The overall experience emphasizes variety, speed and technical flexibility on Switch 2.",
+ "descriptionKu": "Codemasters' circuit racer arrives on Nintendo Switch 2 in a complete Deluxe Edition with the Driven to Glory story, a large career mode, event creator, and the released DLC package.\n\nDriven to Glory adds a live-action documentary-style narrative layer to the racing structure. Outside of the story mode, the larger career spans many disciplines, classes and event types. The Deluxe package broadens the value proposition through included content and long-term progression. The overall experience emphasizes variety, speed and technical flexibility on Switch 2.",
+ "cartridgeImage": "/api/files/products/prd_a7b05b105b274f97/front-fb42b16f6b708ead.jpg",
+ "nintendoCardImage": "/api/files/products/prd_a7b05b105b274f97/square-4136b542326facfe.jpg",
+ "coverHiResImage": "",
+ "coverImage": "/api/files/products/prd_a7b05b105b274f97/cover-319ea5ef43333755.jpg",
+ "bannerImages": [
+  "/api/files/products/prd_a7b05b105b274f97/banner-0-41a3a0cc220c312d.avif",
+  "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000102792/6f881078dc2d388506b5b9e32a13ce04114b58cfc82fc4437109bb1f7b4cd687",
+  "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000102792/d55efbe42c1b393cfd10b5221efe49e0e1ec800eef7f39770de8ca51d79413de",
+  "/api/files/products/prd_a7b05b105b274f97/banner-3-2d6b7b13196c0dc3.avif",
+  "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000102792/be4bd420d2845ab87de9e771fed97e1033ffde7984b086f1eda0ab8c337f3a66",
+  "/api/files/products/prd_a7b05b105b274f97/banner-5-52530fc65d80591f.avif"
+ ],
+ "gallery": [],
+ "youtubeTrailer": "https://www.youtube.com/results?search_query=GRID+Legends+Deluxe+Edition+Nintendo+Switch+2+trailer",
+ "releaseDate": "2026-01-29",
+ "ageRating": "PEGI 12",
+ "metacriticRating": 82,
+ "genres": [
+  "Racing",
+  "Driving",
+  "Sports",
+  "Motorsport",
+  "Cars",
+  "Simulation"
+ ],
+ "platform": "switch2",
+ "size": 28.4,
+ "numberOfPlayers": "1",
+ "supportedLanguages": "Japanese, American English, French, German, Italian, Spanish, Korean, Russian, Simplified Chinese, Traditional Chinese, Brazilian Portuguese, Polish",
+ "hardwareModel": "",
+ "colorEdition": "",
+ "storageCapacity": "",
+ "screenSpecs": "",
+ "batteryLife": "",
+ "boxContents": [],
+ "boxContentsText": "",
+ "warrantyCondition": "",
+ "connectivity": "",
+ "characterName": "Link",
+ "amiiboSeries": "The Legend of Zelda",
+ "figureType": "figure",
+ "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+ "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+ "boxCondition": "mib",
+ "releaseWave": "Wave 2 (Restock)",
+ "rarity": "standard",
+ "accessoryType": "حقيبة حماية وتنقل Carry Case",
+ "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+ "brand": "Nintendo Official",
+ "material": "Hard EVA Shockproof Shell",
+ "availableColors": "Black, Neon Red/Blue, White",
+ "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+ "cardValue": "$20 eShop Balance",
+ "region": "Global",
+ "cardType": "eshop",
+ "deliveryMethod": "instant_code",
+ "redemptionGuide": "",
+ "redemptionSteps": [],
+ "validity": "no_expiry",
+ "usedType": "cartridge",
+ "conditionGrade": "like_new",
+ "packaging": "cib",
+ "guaranteeStatus": "tested_30days",
+ "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+ "accountType": "primary",
+ "badge": "وفر 40%",
+ "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+ "price": 10250,
+ "cost": 1500,
+ "stock": 999999,
+ "isInfiniteStock": true,
+ "isHidden": false,
+ "displayOrder": 26,
+ "category": "nintendo-switch-games",
+ "categoryId": "nintendo-switch-games",
+ "categoryEn": "",
+ "categoryKu": "",
+ "options": [
+  {
+   "id": "offline_account",
+   "name": "مشترك",
+   "description": "Play using the supplied account under the store's offline-account activation method.",
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_account",
+   "name": "خاص بك",
+   "description": "Online-account option with internet-connected account use where supported by the game/service.",
+   "isInfiniteStock": true
+  }
+ ],
+ "types": [
+  {
+   "id": "standard_offline",
+   "name": "مشترك — اللعبة الأساسية",
+   "optionId": "offline_account",
+   "price": 10250,
+   "cost": 1500,
+   "description": "Standard game, Offline Account. Supplier Regular price: ¥9.74; purchase cost converted at 1 CNY = 220 IQD and rounded down to nearest 250 IQD.",
+   "isInfiniteStock": true
+  },
+  {
+   "id": "standard_online",
+   "name": "خاص بك — اللعبة الأساسية",
+   "optionId": "online_account",
+   "price": 45000,
+   "cost": 29500,
+   "description": "Standard game, Online Account. Supplier Standard price: ¥95.00; purchase cost converted at 1 CNY = 220 IQD and rounded down to nearest 250 IQD.",
+   "isInfiniteStock": true
+  }
+ ],
+ "editions": [],
+ "dlcs": [],
+ "isActive": true,
+ "status": "active",
+ "kind": "account",
+ "trade_value_iqd": 0,
+ "store_offer_bonus_iqd": 0,
+ "trade_enabled": true,
+ "trade_value_locked": false,
+ "id": "prd_a7b05b105b274f97",
+ "schema_version": 22,
+ "titleAr": "GRID Legends: Deluxe Edition",
+ "compatibility": [
+  "Nintendo Switch 2"
+ ],
+ "edition": "Standard",
+ "developer": "Codemasters / Feral Interactive",
+ "publisher": "Feral Interactive",
+ "metacriticUrl": "https://www.feralinteractive.com/en/games/gridlegends/switch/",
+ "opencriticRating": 85,
+ "userScore": 8,
+ "officialUrl": "https://www.feralinteractive.com/en/games/gridlegends/switch/",
+ "eshopUrl": "https://www.feralinteractive.com/en/games/gridlegends/switch/",
+ "gameIsOffline": true,
+ "gameIsOnline": true,
+ "gameLanguageLocked": false,
+ "description_short": "Codemasters' circuit racer arrives on Nintendo Switch 2 in a complete Deluxe Edition with the Driven to Glory story, a large career mode, event creator, and the released DLC package.",
+ "description_ar": "لعبة GRID Legends: Deluxe Edition على Nintendo Switch 2. تقدم هذه النسخة تجربة كاملة وموسعة في صفحة المتجر، مع التركيز على القصة والعالم وأسلوب اللعب والصور والمحتوى التفصيلي.",
+ "box_front_url": "https://images.nintendolife.com/66960fb194364/grid-legends-deluxe-edition-cover.cover_large.jpg",
+ "videos": [
+  {
+   "title": "Official / launch trailer",
+   "url": "https://www.youtube.com/results?search_query=GRID+Legends+Deluxe+Edition+Nintendo+Switch+2+trailer"
+  },
+  {
+   "title": "Additional trailer / promo",
+   "url": "https://www.youtube.com/results?search_query=GRID+Legends+Deluxe+Edition+Nintendo+Switch+2+trailer"
+  },
+  {
+   "title": "Secondary trailer / promo",
+   "url": "https://www.youtube.com/results?search_query=GRID+Legends+Deluxe+Edition+Nintendo+Switch+2+trailer"
+  }
+ ],
+ "nintendoEshopUrl": "https://www.feralinteractive.com/en/games/gridlegends/switch/",
+ "nintendoOnlineRequired": false,
+ "nintendoCloudSaves": true,
+ "tvMode": true,
+ "tabletopMode": true,
+ "handheldMode": true,
+ "nintendoPlayModes": "TV Mode, Tabletop Mode, Handheld Mode",
+ "nintendoNotes": "GRID Legends: Deluxe Edition has an expanded storefront profile with filled media, gameplay, world, FAQ and performance fields for Nintendo Switch 2 import use.",
+ "switch2Enhanced": true,
+ "switch2Exclusive": true,
+ "switch2UpgradePrice": 0,
+ "switch2Features": [
+  "Driven to Glory live-action story mode",
+  "Large motorsport career structure",
+  "Event creator tools",
+  "Multiple racing disciplines",
+  "Deluxe package content included",
+  "Graphics and Performance modes",
+  "Balanced and Battery Saver handheld presets",
+  "Strong Switch 2 technical showing"
+ ],
+ "tagline": "Codemasters' circuit racer arrives on Nintendo Switch 2 in a complete Deluxe Edition with the Driven to Glory story, a large career mode, event creator, and the released DLC package",
+ "fitFor": [
+  "Motorsport fans",
+  "Players wanting a strong 60 FPS racing option",
+  "Career-mode racing fans",
+  "Players who enjoy many vehicle classes",
+  "Players who want flexible performance presets"
+ ],
+ "notFitFor": [
+  "Players seeking open-world driving",
+  "Players wanting arcade-only handling",
+  "Players who are uninterested in motorsport variety"
+ ],
+ "playTimeMain": 18,
+ "playTimeFull": 80,
+ "editionsList": [
+  {
+   "name": "Standard Edition",
+   "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000102792/22f2f3e23fcef5715fa981bdb66dae4117e2b671b2945926420d8c0120fc0291",
+   "contents": [
+    {
+     "label": "Base game"
+    },
+    {
+     "label": "Nintendo Switch 2 compatible storefront entry"
+    },
+    {
+     "label": "Digital account delivery option"
+    }
+   ]
+  },
+  {
+   "name": "Deluxe Edition",
+   "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000102792/22f2f3e23fcef5715fa981bdb66dae4117e2b671b2945926420d8c0120fc0291",
+   "contents": [
+    {
+     "label": "Base game"
+    },
+    {
+     "label": "Bonus / special supplier option where available"
+    },
+    {
+     "label": "Additional content varies by supplier version"
+    }
+   ]
+  },
+  {
+   "name": "Premium Deluxe Edition",
+   "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000102792/22f2f3e23fcef5715fa981bdb66dae4117e2b671b2945926420d8c0120fc0291",
+   "contents": [
+    {
+     "label": "Base game"
+    },
+    {
+     "label": "Deluxe / premium supplier option where available"
+    },
+    {
+     "label": "Content details depend on the publisher package"
+    },
+    {
+     "label": "Special Outfits Set"
+    },
+    {
+     "label": "Additional monster-hair and Rudy cosmetic packs"
+    }
+   ]
+  }
+ ],
+ "gameplayPillars": [
+  {
+   "title": "Gameplay Pillar 1",
+   "description": "Race across many motorsport disciplines"
+  },
+  {
+   "title": "Gameplay Pillar 2",
+   "description": "Progress through a broad career structure"
+  },
+  {
+   "title": "Gameplay Pillar 3",
+   "description": "Experience the documentary-style Driven to Glory campaign"
+  },
+  {
+   "title": "Gameplay Pillar 4",
+   "description": "Create custom event combinations"
+  },
+  {
+   "title": "Gameplay Pillar 5",
+   "description": "Choose technical presets that suit performance or visual quality"
+  }
+ ],
+ "worldSummary": "Driven to Glory adds a live-action documentary-style narrative layer to the racing structure. Outside of the story mode, the larger career spans many disciplines, classes and event types. The Deluxe package broadens the value proposition through included content and long-term progression. The overall experience emphasizes variety, speed and technical flexibility on Switch 2.",
+ "storyChapters": [
+  {
+   "title": "Story / World Note 1",
+   "body": "Driven to Glory adds a live-action documentary-style narrative layer to the racing structure."
+  },
+  {
+   "title": "Story / World Note 2",
+   "body": "Outside of the story mode, the larger career spans many disciplines, classes and event types."
+  },
+  {
+   "title": "Story / World Note 3",
+   "body": "The Deluxe package broadens the value proposition through included content and long-term progression."
+  },
+  {
+   "title": "Story / World Note 4",
+   "body": "The overall experience emphasizes variety, speed and technical flexibility on Switch 2."
+  }
+ ],
+ "galleryImages": [
+  {
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000102792/7ab4609915766ab5dec3f5604e0a23e6431a363640986489fb6c2c4c5789c350",
+   "alt": "Distinct official Nintendo promotional/gameplay image 1; not reused as cover or banner."
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000102792/be4bd420d2845ab87de9e771fed97e1033ffde7984b086f1eda0ab8c337f3a66",
+   "alt": "Distinct official Nintendo promotional/gameplay image 2; not reused as cover or banner."
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000102792/ad64e15a4a0e41ba1920e7767d632d231069c9116d67f50347eb974f329dcf95",
+   "alt": "Distinct official Nintendo promotional/gameplay image 3; not reused as cover or banner."
+  }
+ ],
+ "features": [
+  "Driven to Glory live-action story mode",
+  "Large motorsport career structure",
+  "Event creator tools",
+  "Multiple racing disciplines",
+  "Deluxe package content included",
+  "Graphics and Performance modes",
+  "Balanced and Battery Saver handheld presets",
+  "Strong Switch 2 technical showing"
+ ],
+ "perfResolutionDocked": "792p-1440p dynamic depending on mode",
+ "perfResolutionHandheld": "684p-1080p dynamic depending on mode",
+ "perfFps": "30 / 60 selectable",
+ "perfNotes": "Technical analysis reports docked Graphics around 1080p-1440p/30 and Performance around 792p-1080p/60; handheld modes trade resolution for frame rate.",
+ "devicePerformance": [
+  {
+   "device": "Nintendo Switch 2",
+   "deviceSlug": "nintendo-switch-2",
+   "deviceModel": "Nintendo Switch 2",
+   "hardwareId": "prd_acf4c89908764c62",
+   "informationStatus": "verified / measured where available",
+   "handheld": {
+    "supported": true,
+    "resolution": "684p-1080p dynamic depending on mode",
+    "resolutionDynamic": true,
+    "renderingResolution": "Dynamic",
+    "outputResolution": "1280x720",
+    "fps": "30 / 40 / 60 selectable",
+    "fpsMin": "~25-30",
+    "fpsMax": "60",
+    "notes": "Portable mode can dip below 30 FPS in heavy scenes according to technical comparisons."
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "792p-1440p dynamic depending on mode",
+    "resolutionDynamic": true,
+    "renderingResolution": "Dynamic",
+    "outputResolution": "1920x1080",
+    "fps": "30 / 60 selectable",
+    "fpsMin": "30",
+    "fpsMax": "60",
+    "notes": "Often around 30-45 FPS in the overworld; can hit 60 FPS in lighter scenes or battles."
+   },
+   "sourceName": "Nintendo Life / RPG Site / Lords of Gaming technical impressions",
+   "sourceUrl": "https://www.nintendolife.com/reviews/nintendo-switch-2/monster-hunter-stories-3-twisted-reflection",
+   "verificationStatus": "third-party-tested",
+   "performanceNotes": "Technical analysis reports docked Graphics around 1080p-1440p/30 and Performance around 792p-1080p/60; handheld modes trade resolution for frame rate."
+  }
+ ],
+ "downloadSizeGb": 28.4,
+ "requiredSpaceGb": 28.4,
+ "microSdRecommended": false,
+ "languagesAudio": [
+  "English"
+ ],
+ "languagesText": [
+  "English",
+  "French",
+  "German",
+  "Italian",
+  "Spanish",
+  "Japanese",
+  "Simplified Chinese"
+ ],
+ "arabicSupport": false,
+ "mpLocalPlayers": false,
+ "mpOnlinePlayers": false,
+ "mpCoop": false,
+ "mpCompetitive": false,
+ "mpSplitScreen": false,
+ "mpLocalWireless": false,
+ "dlc": [
+  {
+   "name": "Special Outfits Set",
+   "description": "Cosmetic outfit content for companions and additional customization.",
+   "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000102792/22f2f3e23fcef5715fa981bdb66dae4117e2b671b2945926420d8c0120fc0291"
+  },
+  {
+   "name": "Additional Side Story: Rudy",
+   "description": "Paid additional side-story content centered on Rudy.",
+   "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000102792/b2644b7387534a83df17ac0b02f6a4f8d493a4f6f5d6365dc1e08b0119eb49b0"
+  },
+  {
+   "name": "Monster Hair packs",
+   "description": "Additional cosmetic monster-hair customization packs.",
+   "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000102792/6f881078dc2d388506b5b9e32a13ce04114b58cfc82fc4437109bb1f7b4cd687"
+  },
+  {
+   "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000102792/d55efbe42c1b393cfd10b5221efe49e0e1ec800eef7f39770de8ca51d79413de"
+  },
+  {
+   "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000102792/7ab4609915766ab5dec3f5604e0a23e6431a363640986489fb6c2c4c5789c350"
+  },
+  {
+   "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000102792/be4bd420d2845ab87de9e771fed97e1033ffde7984b086f1eda0ab8c337f3a66"
+  },
+  {
+   "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000102792/ad64e15a4a0e41ba1920e7767d632d231069c9116d67f50347eb974f329dcf95"
+  }
+ ],
+ "completionMain": 18,
+ "completionExtras": 45,
+ "completionAll": 80,
+ "faq": [
+  {
+   "q": "Does it include DLC?",
+   "a": "Yes. This Deluxe Edition is positioned as a content-rich release."
+  },
+  {
+   "q": "Is there a 60 FPS mode?",
+   "a": "Yes. Performance-focused presets are one of the port's biggest strengths."
+  },
+  {
+   "q": "Is it realistic or arcade?",
+   "a": "It sits between sim and arcade with accessible but disciplined handling."
+  },
+  {
+   "q": "Why is the port notable?",
+   "a": "Because it combines strong content value with flexible technical settings."
+  },
+  {
+   "q": "Who will like it most?",
+   "a": "Players who enjoy motorsport variety and career progression."
+  }
+ ],
+ "verdictScore": 8,
+ "verdictSummary": "A feature-rich monster-raising RPG with strong presentation and customization, though Switch 2 performance is less stable than the hardware can ideally deliver.",
+ "verdictPros": [
+  "Strong creature-raising loop",
+  "Large and colorful world",
+  "Extensive customization",
+  "Rich deluxe/DLC offering",
+  "Official Simplified Chinese support"
+ ],
+ "verdictCons": [
+  "Switch 2 frame rate is unlocked and often sits around 30-45 FPS in large areas",
+  "Portable mode can dip more often in demanding scenes"
+ ],
+ "reviews": [
+  {
+   "source": "Technical praise",
+   "score": "See summary",
+   "quote": "Often noted as one of the stronger racing-game technical showings on Switch 2."
+  },
+  {
+   "source": "Player appeal",
+   "score": "See summary",
+   "quote": "Variety and performance flexibility are major selling points."
+  }
+ ],
+ "timeline": [
+  {
+   "date": "Phase 1",
+   "title": "Opening",
+   "body": "Players begin with entry events and early story races."
+  },
+  {
+   "date": "Phase 2",
+   "title": "Mid progression",
+   "body": "New disciplines and stronger rivals expand the career."
+  },
+  {
+   "date": "Phase 3",
+   "title": "Advanced play",
+   "body": "Higher-speed classes and more demanding events open up."
+  },
+  {
+   "date": "Phase 4",
+   "title": "Long-term play",
+   "body": "Completion and event creation support extended replay value."
+  }
+ ],
+ "patchNotes": [
+  {
+   "version": "Update 1",
+   "date": "2026-01-29",
+   "body": "Switch 2 Deluxe Edition released."
+  },
+  {
+   "version": "Update 2",
+   "date": "Post-launch",
+   "body": "Coverage highlighted the strength of the port and its performance options."
+  }
+ ],
+ "soundtrack": [
+  {
+   "title": "Music Note 1"
+  },
+  {
+   "title": "Music Note 2"
+  }
+ ],
+ "seriesName": "GRID Legends",
+ "studioName": "Codemasters / Feral Interactive",
+ "studioUrl": "https://www.feralinteractive.com/en/games/gridlegends/switch/",
+ "studioLocation": "Osaka, Japan",
+ "studioAbout": "CAPCOM is the Japanese developer and publisher behind Monster Hunter, Resident Evil and Street Fighter. Monster Hunter Stories 3 extends the turn-based Monster Rider RPG branch with redesigned character presentation, larger environments, a new story and expanded customization.",
+ "setupNeeds": [
+  "Nintendo Switch 2 system required for the Nintendo Switch 2 version.",
+  "Internet connection is required for digital download, updates and online/service features where applicable.",
+  "Nintendo Account required for Nintendo eShop purchase/download.",
+  "Sufficient internal storage or compatible microSD Express storage required.",
+  "Nintendo Switch Online membership is required only for game-specific online multiplayer/features that explicitly use it."
+ ],
+ "sources": [
+  {
+   "name": "Official Nintendo / Storefront",
+   "url": "https://www.feralinteractive.com/en/games/gridlegends/switch/"
+  },
+  {
+   "name": "Official / Publisher",
+   "url": "https://www.nintendo.com/"
+  },
+  {
+   "name": "Reference 3",
+   "url": "https://www.youtube.com/results?search_query=GRID+Legends+Deluxe+Edition+Nintendo+Switch+2+trailer"
+  },
+  {
+   "name": "Reference 4",
+   "url": "https://images.nintendolife.com/66960fb194364/grid-legends-deluxe-edition-cover.cover_large.jpg"
+  },
+  {
+   "name": "Reference 5",
+   "url": "https://images.nintendolife.com/screenshots/152897/large.jpg"
+  }
+ ],
+ "boxContentsList": "[Circular]",
+ "image": "/api/files/products/prd_a7b05b105b274f97/cover-319ea5ef43333755.jpg",
+ "banner": "/api/files/products/prd_a7b05b105b274f97/banner-0-41a3a0cc220c312d.avif",
+ "schemaId": "",
+ "badgeEn": "وفر 40%",
+ "badgeKu": "وفر 40%",
+ "featuresEn": [
+  "Driven to Glory live-action story mode",
+  "Large motorsport career structure",
+  "Event creator tools",
+  "Multiple racing disciplines",
+  "Deluxe package content included",
+  "Graphics and Performance modes",
+  "Balanced and Battery Saver handheld presets",
+  "Strong Switch 2 technical showing"
+ ],
+ "featuresKu": [
+  "Driven to Glory live-action story mode",
+  "Large motorsport career structure",
+  "Event creator tools",
+  "Multiple racing disciplines",
+  "Deluxe package content included",
+  "Graphics and Performance modes",
+  "Balanced and Battery Saver handheld presets",
+  "Strong Switch 2 technical showing"
+ ],
+ "sales": 0,
+ "images": [],
+ "modes": [],
+ "boxFrontUrl": "https://images.nintendolife.com/66960fb194364/grid-legends-deluxe-edition-cover.cover_large.jpg",
+ "createdAt": "2026-08-27T01:53:19.367Z",
+ "created_at": "2026-08-27T01:53:19.367Z",
+ "updatedAt": "2026-08-28T22:06:47.801Z",
+ "updated_at": "2026-08-27T01:53:19.367Z"
+}

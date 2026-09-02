@@ -1,0 +1,366 @@
+{
+ "title": "Go-Go Town! – Nintendo Switch 2 Edition",
+ "titleEn": "Go-Go Town! – Nintendo Switch 2 Edition",
+ "titleKu": "",
+ "slug": "go-go-town-nintendo-switch-2-edition-switch-2",
+ "description": "Go-Go Town! – Nintendo Switch 2 Edition upgrades Prideful Sloth’s town-building simulation for newer hardware. Nintendo specifically lists enhanced resolution at 1080p, a higher frame rate of 60 fps, and enhanced visuals. The game retains local and online two-player co-op and the full mayor-driven building and logistics loop.",
+ "descriptionEn": "Go-Go Town! – Nintendo Switch 2 Edition upgrades Prideful Sloth’s town-building simulation for newer hardware. Nintendo specifically lists enhanced resolution at 1080p, a higher frame rate of 60 fps, and enhanced visuals. The game retains local and online two-player co-op and the full mayor-driven building and logistics loop.",
+ "descriptionKu": "",
+ "cartridgeImage": "",
+ "nintendoCardImage": "/api/files/products/prd_cddf0823d4eb4a54/square-card-f70effd437f78f13.webp",
+ "coverHiResImage": "",
+ "coverImage": "/api/files/products/prd_cddf0823d4eb4a54/cover-1f08becc49e06e9f.webp",
+ "bannerImages": [
+  ""
+ ],
+ "gallery": [],
+ "youtubeTrailer": "https://www.nintendo.com/us/store/products/go-go-town-nintendo-switch-2-edition-switch-2/",
+ "releaseDate": "2026-07-16",
+ "ageRating": "ESRB E10+ / PEGI 3",
+ "metacriticRating": 82,
+ "genres": [
+  "Simulation",
+  "Strategy"
+ ],
+ "platform": "switch2",
+ "size": "1.3 GB",
+ "numberOfPlayers": "Single system (1-2) / Online (1-2)",
+ "supportedLanguages": "English, Japanese, French, Spanish, German",
+ "hardwareModel": "",
+ "colorEdition": "",
+ "storageCapacity": "",
+ "screenSpecs": "",
+ "batteryLife": "",
+ "boxContents": [],
+ "boxContentsText": "",
+ "warrantyCondition": "",
+ "connectivity": "",
+ "characterName": "Link",
+ "amiiboSeries": "The Legend of Zelda",
+ "figureType": "figure",
+ "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+ "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+ "boxCondition": "mib",
+ "releaseWave": "Wave 2 (Restock)",
+ "rarity": "standard",
+ "accessoryType": "حقيبة حماية وتنقل Carry Case",
+ "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+ "brand": "Nintendo Official",
+ "material": "Hard EVA Shockproof Shell",
+ "availableColors": "Black, Neon Red/Blue, White",
+ "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+ "cardValue": "$20 eShop Balance",
+ "region": "Global",
+ "cardType": "eshop",
+ "deliveryMethod": "instant_code",
+ "redemptionGuide": "",
+ "redemptionSteps": [],
+ "validity": "no_expiry",
+ "usedType": "cartridge",
+ "conditionGrade": "like_new",
+ "packaging": "cib",
+ "guaranteeStatus": "tested_30days",
+ "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+ "accountType": "primary",
+ "badge": "وفر 40%",
+ "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+ "price": 5000,
+ "cost": 2250,
+ "stock": 999999,
+ "isInfiniteStock": true,
+ "isHidden": true,
+ "displayOrder": 0,
+ "category": "nintendo-switch-games",
+ "categoryId": "nintendo-switch-games",
+ "categoryEn": "",
+ "categoryKu": "",
+ "options": [
+  {
+   "id": "offline_account",
+   "name": "مشترك",
+   "description": "مشترك",
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_account",
+   "name": "خاص بك",
+   "description": "خاص بك",
+   "stock": 9999,
+   "isInfiniteStock": true
+  }
+ ],
+ "types": [
+  {
+   "id": "offline_base",
+   "name": "مشترك — اللعبة الأساسية",
+   "optionId": "offline_account",
+   "price": 5000,
+   "cost": 2250,
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_base",
+   "name": "خاص بك — اللعبة الأساسية",
+   "optionId": "online_account",
+   "price": 28000,
+   "cost": 23000,
+   "stock": 9999,
+   "isInfiniteStock": true
+  }
+ ],
+ "editions": [],
+ "dlcs": [],
+ "isActive": true,
+ "status": "Active",
+ "kind": "account",
+ "trade_value_iqd": 12500,
+ "store_offer_bonus_iqd": 2250,
+ "trade_enabled": true,
+ "trade_value_locked": false,
+ "id": "prd_cddf0823d4eb4a54",
+ "schema_version": 24,
+ "titleAr": "غو-غو تاون! – إصدار Nintendo Switch 2",
+ "compatibility": [
+  "Nintendo Switch 2",
+  "Separate Nintendo Switch product may exist"
+ ],
+ "edition": "Standard",
+ "developer": "Prideful Sloth Pty Ltd",
+ "publisher": "Prideful Sloth",
+ "seriesName": "Go-Go Town! – Nintendo Switch 2 Edition",
+ "opencriticRating": 83,
+ "userScore": 8.2,
+ "switch2UpgradePrice": 0,
+ "officialUrl": "https://www.nintendo.com/us/store/products/go-go-town-nintendo-switch-2-edition-switch-2/",
+ "eshopUrl": "https://www.nintendo.com/us/store/products/go-go-town-nintendo-switch-2-edition-switch-2/",
+ "gameIsOffline": true,
+ "gameIsOnline": true,
+ "gameLanguageLocked": false,
+ "description_short": "The enhanced Switch 2 Edition of Go-Go Town! with 1080p resolution, 60 fps, and improved visuals.",
+ "description_ar": "نسخة Nintendo Switch 2 المحسنة من Go-Go Town!، وتدعم رسميًا دقة 1080p ومعدل 60 إطارًا وتحسينات بصرية، مع نفس بناء المدينة والتعاون المحلي والأونلاين.",
+ "galleryImages": [
+  {
+   "url": "/api/files/products/prd_cddf0823d4eb4a54/gallery-1-cabb023ad7c4961e.webp",
+   "alt": "Go-Go Town! – Nintendo Switch 2 Edition screenshot 1"
+  },
+  {
+   "url": "/api/files/products/prd_cddf0823d4eb4a54/gallery-2-896be24d012776a8.webp",
+   "alt": "Go-Go Town! – Nintendo Switch 2 Edition screenshot 2"
+  },
+  {
+   "url": "/api/files/products/prd_cddf0823d4eb4a54/gallery-3-033a622509d6a6fa.webp",
+   "alt": "Go-Go Town! – Nintendo Switch 2 Edition screenshot 3"
+  },
+  {
+   "url": "/api/files/products/prd_cddf0823d4eb4a54/gallery-4-9aab28a9dd60bc47.webp",
+   "alt": "Go-Go Town! – Nintendo Switch 2 Edition screenshot 4"
+  },
+  {
+   "url": "/api/files/products/prd_cddf0823d4eb4a54/gallery-5-897a2811936a21d1.webp",
+   "alt": "Go-Go Town! – Nintendo Switch 2 Edition screenshot 5"
+  },
+  {
+   "url": "/api/files/products/prd_cddf0823d4eb4a54/gallery-6-0f23b189750e89df.webp",
+   "alt": "Go-Go Town! – Nintendo Switch 2 Edition screenshot 6"
+  }
+ ],
+ "tvMode": true,
+ "tabletopMode": true,
+ "handheldMode": true,
+ "nintendoPlayModes": "TV mode / Tabletop mode / Handheld mode",
+ "nintendoCloudSaves": true,
+ "nintendoGameKeyCard": false,
+ "switch2Enhanced": true,
+ "switch2Exclusive": true,
+ "nintendoNotes": "Platform and package information verified against the official product/source page for Go-Go Town! – Nintendo Switch 2 Edition.",
+ "tagline": "Build your town with sharper visuals and smoother 60 fps.",
+ "fitFor": [
+  "Fans of the listed genres",
+  "Players who value the game’s core mechanics",
+  "Players looking for this platform version",
+  "Collectors or storefront users comparing platform editions"
+ ],
+ "notFitFor": [
+  "Players who dislike the listed genre",
+  "Players seeking a different platform entry",
+  "Players who require unsupported multiplayer modes",
+  "Players expecting a different edition package"
+ ],
+ "playTimeMain": 20,
+ "playTimeFull": 60,
+ "gameplayPillars": [
+  {
+   "title": "1080p enhanced resolution",
+   "description": "Nintendo lists 1080p as a Switch 2 Edition enhancement."
+  },
+  {
+   "title": "60 fps",
+   "description": "The Switch 2 Edition officially supports a higher 60 fps frame rate."
+  },
+  {
+   "title": "Enhanced visuals",
+   "description": "Visual presentation is upgraded on Switch 2."
+  },
+  {
+   "title": "Local and online co-op",
+   "description": "Two players can collaborate in both local and online play."
+  },
+  {
+   "title": "Hands-on mayor simulation",
+   "description": "The central town-building and logistics gameplay remains intact."
+  }
+ ],
+ "worldSummary": "Go-Go Town! – Nintendo Switch 2 Edition upgrades Prideful Sloth’s town-building simulation for newer hardware. Nintendo specifically lists enhanced resolution at 1080p, a higher frame rate of 60 fps, and enhanced visuals. The game retains local and online two-player co-op and the full mayor-driven building and logistics loop.",
+ "storyChapters": [
+  {
+   "title": "Take office as mayor",
+   "body": "The player begins with a town that needs direction."
+  },
+  {
+   "title": "Build the basics",
+   "body": "Roads, homes, and services create the foundation."
+  },
+  {
+   "title": "Grow the economy",
+   "body": "Businesses, workers, and logistics expand the settlement."
+  },
+  {
+   "title": "Share the chaos in co-op",
+   "body": "A second mayor can join locally or online."
+  },
+  {
+   "title": "Create a thriving town",
+   "body": "The goal is a functional, personalized community."
+  }
+ ],
+ "features": [
+  "1080p Switch 2 enhancement",
+  "60 fps",
+  "Enhanced visuals",
+  "Local and online co-op",
+  "1.3 GB download size"
+ ],
+ "perfResolutionHandheld": "1080p",
+ "perfResolutionDocked": "1080p",
+ "perfFps": "60",
+ "perfHdr": false,
+ "perfNotes": "Official Switch 2 Edition features: 1080p, 60 fps, enhanced visuals.",
+ "devicePerformance": [
+  {
+   "device": "Nintendo Switch 2",
+   "deviceSlug": "nintendo-switch-2",
+   "deviceModel": "Nintendo Switch 2",
+   "hardwareId": "nintendo-switch-2",
+   "informationStatus": "Available",
+   "handheld": {
+    "supported": true,
+    "resolution": "1080p",
+    "resolutionDynamic": false,
+    "renderingResolution": "1080p",
+    "outputResolution": "1080p",
+    "fps": "60",
+    "fpsMin": "60",
+    "fpsMax": "60",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "Handheld",
+    "notes": "Official Switch 2 Edition features: 1080p, 60 fps, enhanced visuals."
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "1080p",
+    "resolutionDynamic": false,
+    "renderingResolution": "1080p",
+    "outputResolution": "1080p",
+    "fps": "60",
+    "fpsMin": "60",
+    "fpsMax": "60",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "TV / Docked",
+    "notes": "Official Switch 2 Edition features: 1080p, 60 fps, enhanced visuals."
+   },
+   "modes": [
+    {
+     "name": "Default",
+     "handheldResolution": "1080p",
+     "handheldFps": "60",
+     "tvResolution": "1080p",
+     "tvFps": "60",
+     "hdr": false,
+     "vrr": false,
+     "notes": "Official Switch 2 Edition features: 1080p, 60 fps, enhanced visuals."
+    }
+   ],
+   "performanceNotes": "Official Switch 2 Edition features: 1080p, 60 fps, enhanced visuals."
+  },
+  {
+   "device": "Nintendo Switch",
+   "deviceSlug": "nintendo-switch",
+   "deviceModel": "Nintendo Switch",
+   "hardwareId": "nintendo-switch",
+   "informationStatus": "Unavailable for this product entry",
+   "unavailableReason": "This product file belongs to a different Nintendo platform entry.",
+   "handheld": {
+    "supported": false,
+    "resolution": "Not Supported",
+    "fps": "Not Supported"
+   },
+   "tv": {
+    "supported": false,
+    "resolution": "Not Supported",
+    "fps": "Not Supported"
+   },
+   "performanceNotes": "Not supported for this product entry."
+  }
+ ],
+ "faq": [
+  {
+   "q": "What improves on Switch 2?",
+   "a": "Nintendo lists 1080p resolution, 60 fps, and enhanced visuals."
+  },
+  {
+   "q": "How many players are supported?",
+   "a": "1-2 locally and 1-2 online."
+  },
+  {
+   "q": "When did the Switch 2 Edition release?",
+   "a": "Nintendo lists July 16, 2026 in the US store."
+  },
+  {
+   "q": "What is the file size?",
+   "a": "Nintendo lists 1.3 GB."
+  },
+  {
+   "q": "Why is this a separate file?",
+   "a": "It is a distinct Switch 2 Edition with its own pricing and enhancements."
+  }
+ ],
+ "mpLocalPlayers": true,
+ "mpOnlinePlayers": true,
+ "mpCoop": true,
+ "mpCompetitive": false,
+ "mpLocalWireless": false,
+ "mpSplitScreen": true,
+ "sources": [
+  {
+   "name": "Official product / publisher page",
+   "url": "https://www.nintendo.com/us/store/products/go-go-town-nintendo-switch-2-edition-switch-2/"
+  },
+  {
+   "name": "Metacritic",
+   "url": "https://www.metacritic.com/search/go-go-town-nintendo-switch-2-edition/"
+  }
+ ],
+ "boxContentsList": [],
+ "image": "",
+ "banner": "",
+ "schemaId": "",
+ "batchImport": true,
+ "createdAt": "2026-08-28T18:48:55.273Z",
+ "updatedAt": "2026-08-28T18:48:55.273Z"
+}

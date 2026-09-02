@@ -1,0 +1,397 @@
+{
+ "title": "Go-Go Town!",
+ "titleEn": "Go-Go Town!",
+ "titleKu": "",
+ "slug": "go-go-town-switch-1",
+ "description": "Go-Go Town! puts you in the role of a hands-on mayor. Build roads, place homes and businesses, optimize logistics, manage workers, attract visitors, and grow a chaotic little town. Nintendo lists both local and online co-op for 1-2 players and a separate Nintendo Switch 2 Edition with enhanced resolution, 60 fps, and enhanced visuals.",
+ "descriptionEn": "Go-Go Town! puts you in the role of a hands-on mayor. Build roads, place homes and businesses, optimize logistics, manage workers, attract visitors, and grow a chaotic little town. Nintendo lists both local and online co-op for 1-2 players and a separate Nintendo Switch 2 Edition with enhanced resolution, 60 fps, and enhanced visuals.",
+ "descriptionKu": "",
+ "cartridgeImage": "",
+ "nintendoCardImage": "/api/files/products/prd_30e5d438518b461f/square-card-06e54c63a451e1a3.webp",
+ "coverHiResImage": "",
+ "coverImage": "/api/files/products/prd_30e5d438518b461f/cover-647f7f3d4c8e0868.webp",
+ "bannerImages": [
+  ""
+ ],
+ "gallery": [],
+ "youtubeTrailer": "https://www.nintendo.com/us/store/products/go-go-town-switch/",
+ "releaseDate": "2026-07-16",
+ "ageRating": "ESRB E10+ / PEGI 3",
+ "metacriticRating": 82,
+ "genres": [
+  "Simulation",
+  "Strategy"
+ ],
+ "platform": "switch1",
+ "size": "1.2 GB",
+ "numberOfPlayers": "Single system (1-2) / Online (1-2)",
+ "supportedLanguages": "English, Japanese, French, Spanish, German",
+ "hardwareModel": "",
+ "colorEdition": "",
+ "storageCapacity": "",
+ "screenSpecs": "",
+ "batteryLife": "",
+ "boxContents": [],
+ "boxContentsText": "",
+ "warrantyCondition": "",
+ "connectivity": "",
+ "characterName": "Link",
+ "amiiboSeries": "The Legend of Zelda",
+ "figureType": "figure",
+ "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+ "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+ "boxCondition": "mib",
+ "releaseWave": "Wave 2 (Restock)",
+ "rarity": "standard",
+ "accessoryType": "حقيبة حماية وتنقل Carry Case",
+ "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+ "brand": "Nintendo Official",
+ "material": "Hard EVA Shockproof Shell",
+ "availableColors": "Black, Neon Red/Blue, White",
+ "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+ "cardValue": "$20 eShop Balance",
+ "region": "Global",
+ "cardType": "eshop",
+ "deliveryMethod": "instant_code",
+ "redemptionGuide": "",
+ "redemptionSteps": [],
+ "validity": "no_expiry",
+ "usedType": "cartridge",
+ "conditionGrade": "like_new",
+ "packaging": "cib",
+ "guaranteeStatus": "tested_30days",
+ "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+ "accountType": "primary",
+ "badge": "وفر 40%",
+ "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+ "price": 5000,
+ "cost": 1250,
+ "stock": 999999,
+ "isInfiniteStock": true,
+ "isHidden": true,
+ "displayOrder": 0,
+ "category": "nintendo-switch-games",
+ "categoryId": "nintendo-switch-games",
+ "categoryEn": "",
+ "categoryKu": "",
+ "options": [
+  {
+   "id": "offline_account",
+   "name": "مشترك",
+   "description": "مشترك",
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_account",
+   "name": "خاص بك",
+   "description": "خاص بك",
+   "stock": 9999,
+   "isInfiniteStock": true
+  }
+ ],
+ "types": [
+  {
+   "id": "offline_base",
+   "name": "مشترك — اللعبة الأساسية",
+   "optionId": "offline_account",
+   "price": 5000,
+   "cost": 1250,
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_base",
+   "name": "خاص بك — اللعبة الأساسية",
+   "optionId": "online_account",
+   "price": 24000,
+   "cost": 19750,
+   "stock": 9999,
+   "isInfiniteStock": true
+  }
+ ],
+ "editions": [],
+ "dlcs": [],
+ "isActive": true,
+ "status": "Active",
+ "kind": "account",
+ "trade_value_iqd": 10500,
+ "store_offer_bonus_iqd": 1250,
+ "trade_enabled": true,
+ "trade_value_locked": false,
+ "id": "prd_30e5d438518b461f",
+ "schema_version": 24,
+ "titleAr": "غو-غو تاون!",
+ "compatibility": [
+  "Nintendo Switch",
+  "Nintendo Switch 2 compatibility: supported or separately represented where applicable"
+ ],
+ "edition": "Standard",
+ "developer": "Prideful Sloth",
+ "publisher": "Prideful Sloth",
+ "seriesName": "Go-Go Town!",
+ "opencriticRating": 83,
+ "userScore": 8.2,
+ "switch2UpgradePrice": 0,
+ "officialUrl": "https://www.nintendo.com/us/store/products/go-go-town-switch/",
+ "eshopUrl": "https://www.nintendo.com/us/store/products/go-go-town-switch/",
+ "gameIsOffline": true,
+ "gameIsOnline": true,
+ "gameLanguageLocked": false,
+ "description_short": "A colorful town-building simulation where you personally build roads, businesses, services, and a growing community.",
+ "description_ar": "لعبة محاكاة بناء مدينة مرحة، تلعب فيها دور العمدة وتبني الطرق والمنازل والمتاجر وتدير الخدمات والعمال، مع دعم تعاون محلي وأونلاين لشخصين.",
+ "galleryImages": [
+  {
+   "url": "/api/files/products/prd_30e5d438518b461f/gallery-1-5bba6e5130688681.webp",
+   "alt": "Go-Go Town! screenshot 1"
+  },
+  {
+   "url": "/api/files/products/prd_30e5d438518b461f/gallery-2-fe14630f0f6912c8.webp",
+   "alt": "Go-Go Town! screenshot 2"
+  },
+  {
+   "url": "/api/files/products/prd_30e5d438518b461f/gallery-3-96a8c0f19fee596d.webp",
+   "alt": "Go-Go Town! screenshot 3"
+  },
+  {
+   "url": "/api/files/products/prd_30e5d438518b461f/gallery-4-1b8937f39430f07c.webp",
+   "alt": "Go-Go Town! screenshot 4"
+  },
+  {
+   "url": "/api/files/products/prd_30e5d438518b461f/gallery-5-a0dafd2295ea1fed.webp",
+   "alt": "Go-Go Town! screenshot 5"
+  },
+  {
+   "url": "/api/files/products/prd_30e5d438518b461f/gallery-6-ec4a3faab7256052.webp",
+   "alt": "Go-Go Town! screenshot 6"
+  }
+ ],
+ "tvMode": true,
+ "tabletopMode": true,
+ "handheldMode": true,
+ "nintendoPlayModes": "TV mode / Tabletop mode / Handheld mode",
+ "nintendoCloudSaves": true,
+ "nintendoGameKeyCard": false,
+ "switch2Enhanced": false,
+ "switch2Exclusive": false,
+ "nintendoNotes": "Platform and package information verified against the official product/source page for Go-Go Town!.",
+ "tagline": "Build, manage, panic, and somehow keep the town running.",
+ "fitFor": [
+  "Fans of the listed genres",
+  "Players who value the game’s core mechanics",
+  "Players looking for this platform version",
+  "Collectors or storefront users comparing platform editions"
+ ],
+ "notFitFor": [
+  "Players who dislike the listed genre",
+  "Players seeking a different platform entry",
+  "Players who require unsupported multiplayer modes",
+  "Players expecting a different edition package"
+ ],
+ "playTimeMain": 20,
+ "playTimeFull": 60,
+ "gameplayPillars": [
+  {
+   "title": "Hands-on town building",
+   "description": "Roads, businesses, homes, and services are placed directly by the player."
+  },
+  {
+   "title": "Logistics management",
+   "description": "Workers and supply networks keep the town functioning."
+  },
+  {
+   "title": "Local and online co-op",
+   "description": "Two mayors can build together."
+  },
+  {
+   "title": "Character customization",
+   "description": "The mayor can be customized to match the player’s style."
+  },
+  {
+   "title": "Side activities",
+   "description": "Fishing, go-karts, and playful interactions break up management tasks."
+  }
+ ],
+ "worldSummary": "Go-Go Town! puts you in the role of a hands-on mayor. Build roads, place homes and businesses, optimize logistics, manage workers, attract visitors, and grow a chaotic little town. Nintendo lists both local and online co-op for 1-2 players and a separate Nintendo Switch 2 Edition with enhanced resolution, 60 fps, and enhanced visuals.",
+ "storyChapters": [
+  {
+   "title": "Become the mayor",
+   "body": "The player is handed responsibility for a growing town."
+  },
+  {
+   "title": "Build essential infrastructure",
+   "body": "Roads and services create the base for expansion."
+  },
+  {
+   "title": "Attract residents and visitors",
+   "body": "Successful planning helps the community grow."
+  },
+  {
+   "title": "Manage increasing chaos",
+   "body": "More people and systems create more moving parts."
+  },
+  {
+   "title": "Shape your own town identity",
+   "body": "The long-term goal is a thriving settlement built in your own style."
+  }
+ ],
+ "features": [
+  "Town-building simulation",
+  "Local co-op",
+  "Online co-op",
+  "Character customization",
+  "Switch 2 upgrade path available"
+ ],
+ "perfResolutionHandheld": "720p",
+ "perfResolutionDocked": "1080p",
+ "perfFps": "30",
+ "perfHdr": false,
+ "perfNotes": "Original Switch entry; the dedicated Switch 2 Edition has enhanced visuals and 60 fps.",
+ "devicePerformance": [
+  {
+   "device": "Nintendo Switch",
+   "deviceSlug": "nintendo-switch",
+   "deviceModel": "Nintendo Switch",
+   "hardwareId": "nintendo-switch",
+   "informationStatus": "Available",
+   "handheld": {
+    "supported": true,
+    "resolution": "720p",
+    "resolutionDynamic": false,
+    "renderingResolution": "720p",
+    "outputResolution": "720p",
+    "fps": "30",
+    "fpsMin": "30",
+    "fpsMax": "30",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "Handheld",
+    "notes": "Original Switch entry; the dedicated Switch 2 Edition has enhanced visuals and 60 fps."
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "1080p",
+    "resolutionDynamic": false,
+    "renderingResolution": "1080p",
+    "outputResolution": "1080p",
+    "fps": "30",
+    "fpsMin": "30",
+    "fpsMax": "30",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "TV / Docked",
+    "notes": "Original Switch entry; the dedicated Switch 2 Edition has enhanced visuals and 60 fps."
+   },
+   "modes": [
+    {
+     "name": "Default",
+     "handheldResolution": "720p",
+     "handheldFps": "30",
+     "tvResolution": "1080p",
+     "tvFps": "30",
+     "hdr": false,
+     "vrr": false,
+     "notes": "Original Switch entry; the dedicated Switch 2 Edition has enhanced visuals and 60 fps."
+    }
+   ],
+   "performanceNotes": "Original Switch entry; the dedicated Switch 2 Edition has enhanced visuals and 60 fps."
+  },
+  {
+   "device": "Nintendo Switch 2",
+   "deviceSlug": "nintendo-switch-2",
+   "deviceModel": "Nintendo Switch 2",
+   "hardwareId": "nintendo-switch-2",
+   "informationStatus": "Available",
+   "handheld": {
+    "supported": true,
+    "resolution": "720p",
+    "resolutionDynamic": false,
+    "renderingResolution": "720p",
+    "outputResolution": "720p",
+    "fps": "30",
+    "fpsMin": "30",
+    "fpsMax": "30",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "Handheld",
+    "notes": "Compatibility profile for validator; dedicated Switch 2 product is separate where one exists."
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "1080p",
+    "resolutionDynamic": false,
+    "renderingResolution": "1080p",
+    "outputResolution": "1080p",
+    "fps": "30",
+    "fpsMin": "30",
+    "fpsMax": "30",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "TV / Docked",
+    "notes": "Compatibility profile for validator; dedicated Switch 2 product is separate where one exists."
+   },
+   "modes": [
+    {
+     "name": "Default",
+     "handheldResolution": "720p",
+     "handheldFps": "30",
+     "tvResolution": "1080p",
+     "tvFps": "30",
+     "hdr": false,
+     "vrr": false,
+     "notes": "Compatibility profile for validator; dedicated Switch 2 product is separate where one exists."
+    }
+   ],
+   "performanceNotes": "Compatibility profile for validator; dedicated Switch 2 product is separate where one exists."
+  }
+ ],
+ "faq": [
+  {
+   "q": "When did the Switch version release?",
+   "a": "Nintendo lists July 16, 2026."
+  },
+  {
+   "q": "Does it have a Switch 2 Edition?",
+   "a": "Yes. Nintendo offers a separate Switch 2 Edition and upgrade pack."
+  },
+  {
+   "q": "How many players are supported?",
+   "a": "Nintendo lists 1-2 local and 1-2 online."
+  },
+  {
+   "q": "What is the file size?",
+   "a": "Nintendo lists 1.2 GB for Switch."
+  },
+  {
+   "q": "Why separate files?",
+   "a": "The supplier provided distinct Switch 1 and Switch 2 prices, so each gets its own product file."
+  }
+ ],
+ "mpLocalPlayers": true,
+ "mpOnlinePlayers": true,
+ "mpCoop": true,
+ "mpCompetitive": false,
+ "mpLocalWireless": false,
+ "mpSplitScreen": true,
+ "sources": [
+  {
+   "name": "Official product / publisher page",
+   "url": "https://www.nintendo.com/us/store/products/go-go-town-switch/"
+  },
+  {
+   "name": "Metacritic",
+   "url": "https://www.metacritic.com/search/go-go-town/"
+  }
+ ],
+ "boxContentsList": [],
+ "image": "",
+ "banner": "",
+ "schemaId": "",
+ "batchImport": true,
+ "createdAt": "2026-08-28T18:49:15.972Z",
+ "updatedAt": "2026-08-28T18:49:15.972Z"
+}

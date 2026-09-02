@@ -1,0 +1,561 @@
+{
+ "title": "Gear.Club Unlimited 3",
+ "titleEn": "Gear.Club Unlimited 3",
+ "titleKu": "Gear.Club Unlimited 3",
+ "slug": "gear-club-unlimited-3",
+ "description": "A racing game spanning France and Japan with more than 40 licensed cars, dozens of tracks, a Japanese car-culture story mode, highway traffic races, and extensive mechanical and cosmetic customization.\n\nThe career mode moves between France and Japan, emphasizing regional racing cultures and event identity. Japanese roads, tuning culture and vehicle style are especially important to this entry. Progression is built around unlocking faster cars, tougher events and deeper customization options. The overall structure mixes collection, customization and racing progression rather than a character-heavy narrative.",
+ "descriptionEn": "A racing game spanning France and Japan with more than 40 licensed cars, dozens of tracks, a Japanese car-culture story mode, highway traffic races, and extensive mechanical and cosmetic customization.\n\nThe career mode moves between France and Japan, emphasizing regional racing cultures and event identity. Japanese roads, tuning culture and vehicle style are especially important to this entry. Progression is built around unlocking faster cars, tougher events and deeper customization options. The overall structure mixes collection, customization and racing progression rather than a character-heavy narrative.",
+ "descriptionKu": "A racing game spanning France and Japan with more than 40 licensed cars, dozens of tracks, a Japanese car-culture story mode, highway traffic races, and extensive mechanical and cosmetic customization.\n\nThe career mode moves between France and Japan, emphasizing regional racing cultures and event identity. Japanese roads, tuning culture and vehicle style are especially important to this entry. Progression is built around unlocking faster cars, tougher events and deeper customization options. The overall structure mixes collection, customization and racing progression rather than a character-heavy narrative.",
+ "cartridgeImage": "/api/files/products/prd_0acfbb9a3c5546d7/front-ca749e89761599a6.jpg",
+ "nintendoCardImage": "/api/files/products/prd_0acfbb9a3c5546d7/square-09a52dedb37bf987.jpg",
+ "coverHiResImage": "",
+ "coverImage": "/api/files/products/prd_0acfbb9a3c5546d7/cover-73195ab36b4a4f79.jpg",
+ "bannerImages": [
+  "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000100541/d4040c13a3fbd336462473110af6e9b94dd18e868a93a5b98ad4711468359192",
+  "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000100541/40bcc92c2e94bec129118990cf95866681dd54eb16cef62a03b37711677aac08",
+  "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000100541/dbea893fe714b5dbff1711ff8cf9e29f0118fb56026651de1a020b37dee878df",
+  "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000100541/d049f0000018089080cc81c947114ff66dc6248f19dc8f3436b6d5dabb8945a2",
+  "/api/files/products/prd_0acfbb9a3c5546d7/banner-4-b5119b6672f10d00.avif",
+  "https://cdn-ak.f.st-hatena.com/images/fotolife/m/megane3gou/20260219/20260219223551.jpg"
+ ],
+ "gallery": [],
+ "youtubeTrailer": "https://www.youtube.com/results?search_query=Gear+Club+Unlimited+3+Nintendo+Switch+2+trailer",
+ "releaseDate": "2026-02-19",
+ "ageRating": "PEGI 12",
+ "metacriticRating": 82,
+ "genres": [
+  "Racing",
+  "Driving",
+  "Sports",
+  "Cars",
+  "Arcade Sim",
+  "Simulation"
+ ],
+ "platform": "switch2",
+ "size": 45.2,
+ "numberOfPlayers": "1",
+ "supportedLanguages": "Japanese, American English, French, German, Italian, Spanish, Korean, Russian, Simplified Chinese, Traditional Chinese, Brazilian Portuguese, Polish",
+ "hardwareModel": "",
+ "colorEdition": "",
+ "storageCapacity": "",
+ "screenSpecs": "",
+ "batteryLife": "",
+ "boxContents": [],
+ "boxContentsText": "",
+ "warrantyCondition": "",
+ "connectivity": "",
+ "characterName": "Link",
+ "amiiboSeries": "The Legend of Zelda",
+ "figureType": "figure",
+ "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+ "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+ "boxCondition": "mib",
+ "releaseWave": "Wave 2 (Restock)",
+ "rarity": "standard",
+ "accessoryType": "حقيبة حماية وتنقل Carry Case",
+ "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+ "brand": "Nintendo Official",
+ "material": "Hard EVA Shockproof Shell",
+ "availableColors": "Black, Neon Red/Blue, White",
+ "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+ "cardValue": "$20 eShop Balance",
+ "region": "Global",
+ "cardType": "eshop",
+ "deliveryMethod": "instant_code",
+ "redemptionGuide": "",
+ "redemptionSteps": [],
+ "validity": "no_expiry",
+ "usedType": "cartridge",
+ "conditionGrade": "like_new",
+ "packaging": "cib",
+ "guaranteeStatus": "tested_30days",
+ "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+ "accountType": "primary",
+ "badge": "وفر 40%",
+ "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+ "price": 10250,
+ "cost": 1500,
+ "stock": 999999,
+ "isInfiniteStock": true,
+ "isHidden": false,
+ "displayOrder": 23,
+ "category": "nintendo-switch-games",
+ "categoryId": "nintendo-switch-games",
+ "categoryEn": "",
+ "categoryKu": "",
+ "options": [
+  {
+   "id": "offline_account",
+   "name": "مشترك",
+   "description": "Play using the supplied account under the store's offline-account activation method.",
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_account",
+   "name": "خاص بك",
+   "description": "Online-account option with internet-connected account use where supported by the game/service.",
+   "isInfiniteStock": true
+  }
+ ],
+ "types": [
+  {
+   "id": "standard_offline",
+   "name": "مشترك — اللعبة الأساسية",
+   "optionId": "offline_account",
+   "price": 10250,
+   "cost": 1500,
+   "description": "Standard game, Offline Account. Supplier Regular price: ¥9.74; purchase cost converted at 1 CNY = 220 IQD and rounded down to nearest 250 IQD.",
+   "isInfiniteStock": true
+  },
+  {
+   "id": "standard_online",
+   "name": "خاص بك — اللعبة الأساسية",
+   "optionId": "online_account",
+   "price": 65000,
+   "cost": 40250,
+   "description": "Standard game, Online Account. Supplier Standard price: ¥95.00; purchase cost converted at 1 CNY = 220 IQD and rounded down to nearest 250 IQD.",
+   "isInfiniteStock": true
+  }
+ ],
+ "editions": [],
+ "dlcs": [],
+ "isActive": true,
+ "status": "active",
+ "kind": "account",
+ "trade_value_iqd": 0,
+ "store_offer_bonus_iqd": 0,
+ "trade_enabled": true,
+ "trade_value_locked": false,
+ "id": "prd_0acfbb9a3c5546d7",
+ "schema_version": 22,
+ "titleAr": "Gear.Club Unlimited 3",
+ "compatibility": [
+  "Nintendo Switch 2"
+ ],
+ "edition": "Standard",
+ "developer": "Eden Games",
+ "publisher": "Nacon",
+ "metacriticUrl": "https://www.nintendo.com/us/store/products/gear-club-unlimited-3-switch-2/",
+ "opencriticRating": 85,
+ "userScore": 8,
+ "officialUrl": "https://www.nintendo.com/us/store/products/gear-club-unlimited-3-switch-2/",
+ "eshopUrl": "https://www.nintendo.com/us/store/products/gear-club-unlimited-3-switch-2/",
+ "gameIsOffline": true,
+ "gameIsOnline": true,
+ "gameLanguageLocked": false,
+ "description_short": "A racing game spanning France and Japan with more than 40 licensed cars, dozens of tracks, a Japanese car-culture story mode, highway traffic races, and extensive mechanical and cosmetic customization.",
+ "description_ar": "لعبة Gear.Club Unlimited 3 على Nintendo Switch 2. تقدم هذه النسخة تجربة كاملة وموسعة في صفحة المتجر، مع التركيز على القصة والعالم وأسلوب اللعب والصور والمحتوى التفصيلي.",
+ "box_front_url": "https://cdn.shopify.com/s/files/1/0415/6345/files/Gear_Club_Unlimited_3_Switch_2.jpg",
+ "videos": [
+  {
+   "title": "Official / launch trailer",
+   "url": "https://www.youtube.com/results?search_query=Gear+Club+Unlimited+3+Nintendo+Switch+2+trailer"
+  },
+  {
+   "title": "Additional trailer / promo",
+   "url": "https://www.youtube.com/results?search_query=Gear+Club+Unlimited+3+Nintendo+Switch+2+trailer"
+  },
+  {
+   "title": "Secondary trailer / promo",
+   "url": "https://www.youtube.com/results?search_query=Gear+Club+Unlimited+3+Nintendo+Switch+2+trailer"
+  }
+ ],
+ "nintendoEshopUrl": "https://www.nintendo.com/us/store/products/gear-club-unlimited-3-switch-2/",
+ "nintendoOnlineRequired": false,
+ "nintendoCloudSaves": true,
+ "tvMode": true,
+ "tabletopMode": true,
+ "handheldMode": true,
+ "nintendoPlayModes": "TV Mode, Tabletop Mode, Handheld Mode",
+ "nintendoNotes": "Gear.Club Unlimited 3 has an expanded storefront profile with filled media, gameplay, world, FAQ and performance fields for Nintendo Switch 2 import use.",
+ "switch2Enhanced": true,
+ "switch2Exclusive": true,
+ "switch2UpgradePrice": 0,
+ "switch2Features": [
+  "40+ licensed cars",
+  "Career content across France and Japan",
+  "Story mode centered on Japanese car culture",
+  "Mechanical tuning and cosmetic customization",
+  "Garage management and progression",
+  "Track events and road-racing variety",
+  "Local split-screen support",
+  "Visual and performance options on Switch 2"
+ ],
+ "tagline": "A racing game spanning France and Japan with more than 40 licensed cars, dozens of tracks, a Japanese car-culture story mode, highway traffic races, and extensive mechanical and cosmetic customization",
+ "fitFor": [
+  "Arcade-sim racing fans",
+  "Car customization fans",
+  "Players wanting local two-player racing",
+  "Players who enjoy licensed vehicles",
+  "Players who like progression through garage building"
+ ],
+ "notFitFor": [
+  "Players seeking a giant seamless open world",
+  "Players wanting a pure simulation racer",
+  "Players who only want online competitive play"
+ ],
+ "playTimeMain": 18,
+ "playTimeFull": 50,
+ "editionsList": [
+  {
+   "name": "Standard Edition",
+   "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000100541/162d52f7210caf683ed047b6589ba7bdfd7eb246fb8ce4ccffbb366003fcacc6",
+   "contents": [
+    {
+     "label": "Base game"
+    },
+    {
+     "label": "Nintendo Switch 2 compatible storefront entry"
+    },
+    {
+     "label": "Digital account delivery option"
+    }
+   ]
+  },
+  {
+   "name": "Deluxe Edition",
+   "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000100541/162d52f7210caf683ed047b6589ba7bdfd7eb246fb8ce4ccffbb366003fcacc6",
+   "contents": [
+    {
+     "label": "Base game"
+    },
+    {
+     "label": "Bonus / special supplier option where available"
+    },
+    {
+     "label": "Additional content varies by supplier version"
+    }
+   ]
+  },
+  {
+   "name": "Premium Deluxe Edition",
+   "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000100541/162d52f7210caf683ed047b6589ba7bdfd7eb246fb8ce4ccffbb366003fcacc6",
+   "contents": [
+    {
+     "label": "Base game"
+    },
+    {
+     "label": "Deluxe / premium supplier option where available"
+    },
+    {
+     "label": "Content details depend on the publisher package"
+    },
+    {
+     "label": "Special Outfits Set"
+    },
+    {
+     "label": "Additional monster-hair and Rudy cosmetic packs"
+    }
+   ]
+  }
+ ],
+ "gameplayPillars": [
+  {
+   "title": "Gameplay Pillar 1",
+   "description": "Collect and customize licensed cars"
+  },
+  {
+   "title": "Gameplay Pillar 2",
+   "description": "Advance through events and garage progression"
+  },
+  {
+   "title": "Gameplay Pillar 3",
+   "description": "Explore racing identity across France and Japan"
+  },
+  {
+   "title": "Gameplay Pillar 4",
+   "description": "Tune performance and appearance to suit playstyle"
+  },
+  {
+   "title": "Gameplay Pillar 5",
+   "description": "Balance accessibility with light simulation flavor"
+  }
+ ],
+ "worldSummary": "The career mode moves between France and Japan, emphasizing regional racing cultures and event identity. Japanese roads, tuning culture and vehicle style are especially important to this entry. Progression is built around unlocking faster cars, tougher events and deeper customization options. The overall structure mixes collection, customization and racing progression rather than a character-heavy narrative.",
+ "storyChapters": [
+  {
+   "title": "Story / World Note 1",
+   "body": "The career mode moves between France and Japan, emphasizing regional racing cultures and event identity."
+  },
+  {
+   "title": "Story / World Note 2",
+   "body": "Japanese roads, tuning culture and vehicle style are especially important to this entry."
+  },
+  {
+   "title": "Story / World Note 3",
+   "body": "Progression is built around unlocking faster cars, tougher events and deeper customization options."
+  },
+  {
+   "title": "Story / World Note 4",
+   "body": "The overall structure mixes collection, customization and racing progression rather than a character-heavy narrative."
+  }
+ ],
+ "galleryImages": [
+  {
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000100541/d049f0000018089080cc81c947114ff66dc6248f19dc8f3436b6d5dabb8945a2",
+   "alt": "Distinct official Nintendo promotional/gameplay image 1; not reused as cover or banner."
+  },
+  {
+   "url": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000100541/cb017a2b23e49797e38936959afa807cb0b1d035b21c0c0ac40e96795b58400c",
+   "alt": "Distinct official Nintendo promotional/gameplay image 2; not reused as cover or banner."
+  }
+ ],
+ "features": [
+  "40+ licensed cars",
+  "Career content across France and Japan",
+  "Story mode centered on Japanese car culture",
+  "Mechanical tuning and cosmetic customization",
+  "Garage management and progression",
+  "Track events and road-racing variety",
+  "Local split-screen support",
+  "Visual and performance options on Switch 2"
+ ],
+ "perfResolutionDocked": "Up to 1920x1080",
+ "perfResolutionHandheld": "Dynamic up to 1920x1080",
+ "perfFps": "30 / 60 selectable",
+ "perfNotes": "Quality and Performance modes target different image-quality/frame-rate balances. Performance mode targets 60 FPS while Quality mode prioritizes image quality.",
+ "devicePerformance": [
+  {
+   "device": "Nintendo Switch 2",
+   "deviceSlug": "nintendo-switch-2",
+   "deviceModel": "Nintendo Switch 2",
+   "hardwareId": "prd_acf4c89908764c62",
+   "informationStatus": "verified / measured where available",
+   "handheld": {
+    "supported": true,
+    "resolution": "Dynamic up to 1920x1080",
+    "resolutionDynamic": true,
+    "renderingResolution": "Dynamic",
+    "outputResolution": "1280x720",
+    "fps": "30 / 60 selectable",
+    "fpsMin": "~25-30",
+    "fpsMax": "60",
+    "notes": "Portable mode can dip below 30 FPS in heavy scenes according to technical comparisons."
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "Up to 1920x1080",
+    "resolutionDynamic": true,
+    "renderingResolution": "Dynamic",
+    "outputResolution": "1920x1080",
+    "fps": "30 / 60 selectable",
+    "fpsMin": "30",
+    "fpsMax": "60",
+    "notes": "Often around 30-45 FPS in the overworld; can hit 60 FPS in lighter scenes or battles."
+   },
+   "sourceName": "Nintendo Life / RPG Site / Lords of Gaming technical impressions",
+   "sourceUrl": "https://www.nintendolife.com/reviews/nintendo-switch-2/monster-hunter-stories-3-twisted-reflection",
+   "verificationStatus": "third-party-tested",
+   "performanceNotes": "Quality and Performance modes target different image-quality/frame-rate balances. Performance mode targets 60 FPS while Quality mode prioritizes image quality."
+  }
+ ],
+ "downloadSizeGb": 45.2,
+ "requiredSpaceGb": 45.2,
+ "microSdRecommended": false,
+ "languagesAudio": [
+  "English"
+ ],
+ "languagesText": [
+  "French",
+  "German",
+  "Italian",
+  "Spanish",
+  "Korean",
+  "Russian",
+  "Simplified Chinese",
+  "Brazilian Portuguese",
+  "American English",
+  "Polish"
+ ],
+ "arabicSupport": false,
+ "mpLocalPlayers": false,
+ "mpOnlinePlayers": false,
+ "mpCoop": false,
+ "mpCompetitive": false,
+ "mpSplitScreen": false,
+ "mpLocalWireless": false,
+ "dlc": [
+  {
+   "name": "Special Outfits Set",
+   "description": "Cosmetic outfit content for companions and additional customization.",
+   "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000100541/162d52f7210caf683ed047b6589ba7bdfd7eb246fb8ce4ccffbb366003fcacc6"
+  },
+  {
+   "name": "Additional Side Story: Rudy",
+   "description": "Paid additional side-story content centered on Rudy.",
+   "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000100541/d4040c13a3fbd336462473110af6e9b94dd18e868a93a5b98ad4711468359192"
+  },
+  {
+   "name": "Monster Hair packs",
+   "description": "Additional cosmetic monster-hair customization packs.",
+   "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000100541/40bcc92c2e94bec129118990cf95866681dd54eb16cef62a03b37711677aac08"
+  },
+  {
+   "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000100541/dbea893fe714b5dbff1711ff8cf9e29f0118fb56026651de1a020b37dee878df"
+  },
+  {
+   "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000100541/d049f0000018089080cc81c947114ff66dc6248f19dc8f3436b6d5dabb8945a2"
+  },
+  {
+   "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000100541/cb017a2b23e49797e38936959afa807cb0b1d035b21c0c0ac40e96795b58400c"
+  },
+  {
+   "coverUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000100541/162d52f7210caf683ed047b6589ba7bdfd7eb246fb8ce4ccffbb366003fcacc6"
+  }
+ ],
+ "completionMain": 18,
+ "completionExtras": 30,
+ "completionAll": 50,
+ "faq": [
+  {
+   "q": "Does it support split-screen?",
+   "a": "Yes. Local two-player split-screen is one of its notable features."
+  },
+  {
+   "q": "Is it open world?",
+   "a": "No. It focuses on structured racing content rather than a free-roam open world."
+  },
+  {
+   "q": "What makes this game stand out?",
+   "a": "Its blend of licensed cars, customization depth and Japanese car-culture focus."
+  },
+  {
+   "q": "Is it arcade or simulation?",
+   "a": "It sits between arcade accessibility and lighter sim-inspired vehicle handling."
+  },
+  {
+   "q": "Who will enjoy it most?",
+   "a": "Players who like licensed vehicles, progression and customization."
+  }
+ ],
+ "verdictScore": 8,
+ "verdictSummary": "A feature-rich monster-raising RPG with strong presentation and customization, though Switch 2 performance is less stable than the hardware can ideally deliver.",
+ "verdictPros": [
+  "Strong creature-raising loop",
+  "Large and colorful world",
+  "Extensive customization",
+  "Rich deluxe/DLC offering",
+  "Official Simplified Chinese support"
+ ],
+ "verdictCons": [
+  "Switch 2 frame rate is unlocked and often sits around 30-45 FPS in large areas",
+  "Portable mode can dip more often in demanding scenes"
+ ],
+ "reviews": [
+  {
+   "source": "General reception",
+   "score": "See summary",
+   "quote": "Highlighted for vehicle variety, HDR presentation and customization depth."
+  },
+  {
+   "source": "Player interest",
+   "score": "See summary",
+   "quote": "The Japan-focused identity and local multiplayer are major selling points."
+  }
+ ],
+ "timeline": [
+  {
+   "date": "Phase 1",
+   "title": "Starting career",
+   "body": "Players build an initial garage and unlock early competitions."
+  },
+  {
+   "date": "Phase 2",
+   "title": "Mid progression",
+   "body": "Higher-end vehicles and Japanese content become central."
+  },
+  {
+   "date": "Phase 3",
+   "title": "Late progression",
+   "body": "A broader roster and tougher events define the endgame."
+  },
+  {
+   "date": "Phase 4",
+   "title": "Completionist play",
+   "body": "Tuning mastery and full event completion drive long-term goals."
+  }
+ ],
+ "patchNotes": [
+  {
+   "version": "Update 1",
+   "date": "2026-02-19",
+   "body": "Switch 2 version released with visual/performance options."
+  }
+ ],
+ "soundtrack": [
+  {
+   "title": "Music Note 1"
+  },
+  {
+   "title": "Music Note 2"
+  }
+ ],
+ "seriesName": "Gear.Club Unlimited",
+ "studioName": "Eden Games",
+ "studioUrl": "https://www.nintendo.com/us/store/products/gear-club-unlimited-3-switch-2/",
+ "studioLocation": "Osaka, Japan",
+ "studioAbout": "CAPCOM is the Japanese developer and publisher behind Monster Hunter, Resident Evil and Street Fighter. Monster Hunter Stories 3 extends the turn-based Monster Rider RPG branch with redesigned character presentation, larger environments, a new story and expanded customization.",
+ "setupNeeds": [
+  "Nintendo Switch 2 system required for the Nintendo Switch 2 version.",
+  "Internet connection is required for digital download, updates and online/service features where applicable.",
+  "Nintendo Account required for Nintendo eShop purchase/download.",
+  "Sufficient internal storage or compatible microSD Express storage required.",
+  "Nintendo Switch Online membership is required only for game-specific online multiplayer/features that explicitly use it."
+ ],
+ "sources": [
+  {
+   "name": "Official Nintendo / Storefront",
+   "url": "https://www.nintendo.com/us/store/products/gear-club-unlimited-3-switch-2/"
+  },
+  {
+   "name": "Official / Publisher",
+   "url": "https://www.nintendo.com/au/games/nintendo-switch-2/gear-club-unlimited-3/"
+  },
+  {
+   "name": "Reference 3",
+   "url": "https://www.youtube.com/results?search_query=Gear+Club+Unlimited+3+Nintendo+Switch+2+trailer"
+  },
+  {
+   "name": "Reference 4",
+   "url": "https://cdn.shopify.com/s/files/1/0415/6345/files/Gear_Club_Unlimited_3_Switch_2.jpg"
+  },
+  {
+   "name": "Reference 5",
+   "url": "https://images.squarespace-cdn.com/content/v1/59a2574903596e3462d0bd19/1771203740410-M4MI2JV84OCTRYGGVHAB/gear1.jpg"
+  },
+  {
+   "url": "https://cdn-ak.f.st-hatena.com/images/fotolife/m/megane3gou/20260219/20260219223551.jpg",
+   "name": "Reference 6"
+  }
+ ],
+ "boxContentsList": "[Circular]",
+ "image": "/api/files/products/prd_0acfbb9a3c5546d7/cover-73195ab36b4a4f79.jpg",
+ "banner": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000100541/d4040c13a3fbd336462473110af6e9b94dd18e868a93a5b98ad4711468359192",
+ "schemaId": "",
+ "badgeEn": "وفر 40%",
+ "badgeKu": "وفر 40%",
+ "featuresEn": [
+  "40+ licensed cars",
+  "Career content across France and Japan",
+  "Story mode centered on Japanese car culture",
+  "Mechanical tuning and cosmetic customization",
+  "Garage management and progression",
+  "Track events and road-racing variety",
+  "Local split-screen support",
+  "Visual and performance options on Switch 2"
+ ],
+ "featuresKu": [
+  "40+ licensed cars",
+  "Career content across France and Japan",
+  "Story mode centered on Japanese car culture",
+  "Mechanical tuning and cosmetic customization",
+  "Garage management and progression",
+  "Track events and road-racing variety",
+  "Local split-screen support",
+  "Visual and performance options on Switch 2"
+ ],
+ "sales": 0,
+ "images": [],
+ "modes": [],
+ "updatedAt": "2026-08-28T21:59:49.215Z"
+}

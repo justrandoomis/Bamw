@@ -1,0 +1,495 @@
+{
+ "title": "Fitness Boxing 3: Your Personal Trainer — Nintendo Switch 2 Edition",
+ "titleEn": "Fitness Boxing 3: Your Personal Trainer — Nintendo Switch 2 Edition",
+ "titleKu": "",
+ "slug": "fitness-boxing-3-your-personal-trainer-nintendo-switch-2-edition-switch-2",
+ "description": "The Switch 2 Edition enhances resolution and frame rate, adds Advanced Scoring, Boost Up, CameraPlay support, and local GameShare while keeping the core boxing workout system. The Switch 2 Edition starts from the established Fitness Boxing 3 workout structure. GameShare allows local workout sharing to another compatible Nintendo system.",
+ "descriptionEn": "The Switch 2 Edition enhances resolution and frame rate, adds Advanced Scoring, Boost Up, CameraPlay support, and local GameShare while keeping the core boxing workout system. The Switch 2 Edition starts from the established Fitness Boxing 3 workout structure. GameShare allows local workout sharing to another compatible Nintendo system.",
+ "descriptionKu": "",
+ "cartridgeImage": "/api/files/products/prd_7c8bc4a553ff4edd/front-box-de4cc1207bd1ce0e.webp",
+ "nintendoCardImage": "/api/files/products/prd_7c8bc4a553ff4edd/square-card-595dc3ff40f63283.webp",
+ "coverHiResImage": "/api/files/products/prd_7c8bc4a553ff4edd/3d-wrap-7aeb86067f57750b.webp",
+ "coverImage": "/api/files/products/prd_7c8bc4a553ff4edd/cover-139ea70e390b25d2.webp",
+ "bannerImages": [
+  "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000120066/3f31c12f8fdc1988c9e6fff6993b7c4e61662aa39bc1b702947249b2edb1de32",
+  "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000120066/484dbc1d6dc1a5dc39b1f814bcb5391d79fb39fc7f5660e272e4c309b17de83f",
+  "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000120066/f24f10aaab870df6ab31c8c576df29a022f411c95047920945edef011bbcfd1f",
+  "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000120066/0227b403402d0e94bb08b1c2db83dc61b0163e18053e022922b935dc78583634",
+  "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000120066/705e59b7c52cad88c0c37d75dd4ed83ef23a52c280d7c2bc7c3f4d5f5d3d59cc"
+ ],
+ "gallery": [],
+ "youtubeTrailer": "",
+ "releaseDate": "2026-07-16",
+ "ageRating": "ESRB E — In-Game Purchases",
+ "metacriticRating": "85",
+ "genres": [
+  "Sports",
+  "Training",
+  "Fitness"
+ ],
+ "platform": "switch2",
+ "size": 10,
+ "numberOfPlayers": "Single system (1-2) / GameShare local",
+ "supportedLanguages": "Official supported language list varies by region; see the publisher page linked in Sources.",
+ "hardwareModel": "",
+ "colorEdition": "",
+ "storageCapacity": "",
+ "screenSpecs": "",
+ "batteryLife": "",
+ "boxContents": [],
+ "boxContentsText": "",
+ "warrantyCondition": "",
+ "connectivity": "",
+ "characterName": "Link",
+ "amiiboSeries": "The Legend of Zelda",
+ "figureType": "figure",
+ "inGameUnlock": "فتح زي أسطوري وأسلحة نادرة داخل لعبة Tears of the Kingdom",
+ "compatibleGames": "Super Smash Bros. Ultimate, Zelda: Tears of the Kingdom, Mario Kart 8",
+ "boxCondition": "mib",
+ "releaseWave": "Wave 2 (Restock)",
+ "rarity": "standard",
+ "accessoryType": "حقيبة حماية وتنقل Carry Case",
+ "compatibleDevices": "Nintendo Switch OLED / Switch V2 / Switch Lite",
+ "brand": "Nintendo Official",
+ "material": "Hard EVA Shockproof Shell",
+ "availableColors": "Black, Neon Red/Blue, White",
+ "keyFeatures": "مقاوم للصدمات والماء، يتسع لـ 10 أشرطة ألعاب، مقبض مريح",
+ "cardValue": "$20 eShop Balance",
+ "region": "Global",
+ "cardType": "eshop",
+ "deliveryMethod": "instant_code",
+ "redemptionGuide": "",
+ "redemptionSteps": [],
+ "validity": "no_expiry",
+ "usedType": "cartridge",
+ "conditionGrade": "like_new",
+ "packaging": "cib",
+ "guaranteeStatus": "tested_30days",
+ "conditionNotes": "تم الفحص والتعقيم 100%، عمل مثالي بدون أي خدوش أو مشاكل",
+ "accountType": "primary",
+ "badge": "وفر 40%",
+ "bundleGamesSummary": "حزمة ألعاب مختارة بحساب كامل وجاهز",
+ "price": 10250,
+ "cost": 5750,
+ "stock": 999999,
+ "isInfiniteStock": true,
+ "isHidden": true,
+ "displayOrder": 0,
+ "category": "nintendo-switch-games",
+ "categoryId": "nintendo-switch-games",
+ "categoryEn": "",
+ "categoryKu": "",
+ "options": [
+  {
+   "id": "offline_account",
+   "name": "مشترك",
+   "description": "مشترك",
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_account",
+   "name": "خاص بك",
+   "description": "خاص بك",
+   "stock": 9999,
+   "isInfiniteStock": true
+  }
+ ],
+ "types": [
+  {
+   "id": "offline_base",
+   "name": "مشترك — اللعبة الأساسية",
+   "optionId": "offline_account",
+   "price": 10250,
+   "cost": 5750,
+   "stock": 9999,
+   "isInfiniteStock": true
+  },
+  {
+   "id": "online_base",
+   "name": "خاص بك — اللعبة الأساسية",
+   "optionId": "online_account",
+   "price": 40250,
+   "cost": 31500,
+   "stock": 9999,
+   "isInfiniteStock": true
+  }
+ ],
+ "editions": [],
+ "dlcs": [],
+ "isActive": true,
+ "status": "Active",
+ "kind": "account",
+ "trade_value_iqd": 17250,
+ "store_offer_bonus_iqd": 3000,
+ "trade_enabled": true,
+ "trade_value_locked": false,
+ "id": "prd_7c8bc4a553ff4edd",
+ "schema_version": 24,
+ "titleAr": "فيتنس بوكسينغ 3 — إصدار نينتندو سويتش 2",
+ "compatibility": [
+  "Nintendo Switch 2",
+  "Nintendo Switch 1 version exists separately"
+ ],
+ "edition": "Standard / Store Variants",
+ "developer": "Imagineer",
+ "publisher": "Nintendo",
+ "seriesName": "Fitness Boxing 3",
+ "price_usd": 59.99,
+ "officialUrl": "https://www.nintendo.com/us/store/products/fitness-boxing-3-your-personal-trainer-nintendo-switch-2-edition-switch-2/",
+ "eshopUrl": "https://www.nintendo.com/us/store/products/fitness-boxing-3-your-personal-trainer-nintendo-switch-2-edition-switch-2/",
+ "gameIsOffline": true,
+ "gameIsOnline": false,
+ "gameLanguageLocked": false,
+ "description_short": "The Switch 2 Edition enhances resolution and frame rate, adds Advanced Scoring, Boost Up, CameraPlay support, and local GameShare while keeping the core boxing workout system.",
+ "description_ar": "فيتنس بوكسينغ 3 — إصدار نينتندو سويتش 2 — The Switch 2 Edition enhances resolution and frame rate, adds Advanced Scoring, Boost Up, CameraPlay support, and local GameShare while keeping the core boxing workout system.",
+ "box_front_url": "https://assets.nintendo.com/image/upload/ar_3:4,c_fit,g_auto,w_1000/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000120066/6ec83542de00a10ef871eb3a3dff9238e57c1782f5453e0079dd36ed90cff665",
+ "languagesText": [
+  "See official supported languages on the linked Nintendo/publisher product page"
+ ],
+ "languagesAudio": [
+  "Audio language availability varies by title and region; see official product information"
+ ],
+ "tvMode": true,
+ "tabletopMode": true,
+ "handheldMode": false,
+ "nintendoPlayModes": "TV / Tabletop",
+ "nintendoOnlineRequired": false,
+ "nintendoCloudSaves": true,
+ "nintendoGameKeyCard": false,
+ "nintendoPhysicalNeedsDownload": false,
+ "switch2Enhanced": true,
+ "switch2Exclusive": false,
+ "nintendoNotes": "Platform, release, player-count, storage, compatibility, and feature statements in this import are grounded in the official Nintendo/publisher pages listed under Sources. Store package prices are user-supplied storefront values, not assumed MSRP.",
+ "editionsList": [
+  {
+   "name": "Regular / Offline",
+   "coverUrl": "https://assets.nintendo.com/image/upload/ar_3:4,c_fit,g_auto,w_1000/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000120066/6ec83542de00a10ef871eb3a3dff9238e57c1782f5453e0079dd36ed90cff665",
+   "contents": [
+    {
+     "label": "Regular / Offline store package"
+    },
+    {
+     "label": "Offline account access"
+    },
+    {
+     "label": "Infinite stock by default"
+    }
+   ]
+  },
+  {
+   "name": "Standard / Online",
+   "coverUrl": "https://assets.nintendo.com/image/upload/ar_1:1,c_fill,g_auto,w_1000/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000120066/6ec83542de00a10ef871eb3a3dff9238e57c1782f5453e0079dd36ed90cff665",
+   "contents": [
+    {
+     "label": "Standard / Online store package"
+    },
+    {
+     "label": "Online account access"
+    },
+    {
+     "label": "Infinite stock by default"
+    }
+   ]
+  }
+ ],
+ "gameplayPillars": [
+  {
+   "title": "Enhanced performance",
+   "description": "Nintendo explicitly states that the Switch 2 Edition increases resolution and frame rate.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000120066/3f31c12f8fdc1988c9e6fff6993b7c4e61662aa39bc1b702947249b2edb1de32"
+  },
+  {
+   "title": "Advanced Scoring Mode",
+   "description": "A new scoring option evaluates hit timing more strictly.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000120066/484dbc1d6dc1a5dc39b1f814bcb5391d79fb39fc7f5660e272e4c309b17de83f"
+  },
+  {
+   "title": "Boost Up workouts",
+   "description": "Workout speed can gradually increase round by round for added challenge.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000120066/f24f10aaab870df6ab31c8c576df29a022f411c95047920945edef011bbcfd1f"
+  },
+  {
+   "title": "CameraPlay support",
+   "description": "Compatible camera use can show the player’s movements on screen during workouts.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000120066/0227b403402d0e94bb08b1c2db83dc61b0163e18053e022922b935dc78583634"
+  },
+  {
+   "title": "GameShare local",
+   "description": "Owners can share the game locally with another Nintendo Switch or Switch 2 system for supported sessions.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000120066/705e59b7c52cad88c0c37d75dd4ed83ef23a52c280d7c2bc7c3f4d5f5d3d59cc"
+  }
+ ],
+ "worldSummary": "The Switch 2 Edition enhances resolution and frame rate, adds Advanced Scoring, Boost Up, CameraPlay support, and local GameShare while keeping the core boxing workout system. The Switch 2 Edition starts from the established Fitness Boxing 3 workout structure. GameShare allows local workout sharing to another compatible Nintendo system.",
+ "storyChapters": [
+  {
+   "title": "Upgrade the training setup",
+   "body": "The Switch 2 Edition starts from the established Fitness Boxing 3 workout structure.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000120066/484dbc1d6dc1a5dc39b1f814bcb5391d79fb39fc7f5660e272e4c309b17de83f"
+  },
+  {
+   "title": "Use improved scoring",
+   "body": "Advanced Scoring rewards more precise timing and encourages better technique.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000120066/f24f10aaab870df6ab31c8c576df29a022f411c95047920945edef011bbcfd1f"
+  },
+  {
+   "title": "Increase intensity",
+   "body": "Boost Up can progressively accelerate a workout to raise the challenge.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000120066/0227b403402d0e94bb08b1c2db83dc61b0163e18053e022922b935dc78583634"
+  },
+  {
+   "title": "Add CameraPlay",
+   "body": "Compatible camera support brings visual feedback into the training experience.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000120066/705e59b7c52cad88c0c37d75dd4ed83ef23a52c280d7c2bc7c3f4d5f5d3d59cc"
+  },
+  {
+   "title": "Share a workout locally",
+   "body": "GameShare allows local workout sharing to another compatible Nintendo system.",
+   "imageUrl": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000120066/3f31c12f8fdc1988c9e6fff6993b7c4e61662aa39bc1b702947249b2edb1de32"
+  }
+ ],
+ "features": [
+  "Enhanced resolution and frame rate",
+  "Advanced Scoring Mode",
+  "Boost Up feature",
+  "CameraPlay support",
+  "Local GameShare"
+ ],
+ "perfResolutionDocked": "Enhanced resolution — exact official number not published",
+ "perfResolutionHandheld": "Not Supported",
+ "perfFps": "0",
+ "perfHdr": false,
+ "playTimeMain": 0,
+ "completionMain": 0,
+ "completionExtras": 0,
+ "faq": [
+  {
+   "q": "When was the Switch 2 Edition released?",
+   "a": "Nintendo lists July 16, 2026."
+  },
+  {
+   "q": "What is the file size?",
+   "a": "Nintendo lists 10 GB for the Switch 2 Edition."
+  },
+  {
+   "q": "Does it support Handheld mode?",
+   "a": "No. Nintendo lists TV and Tabletop modes."
+  },
+  {
+   "q": "Can original owners upgrade?",
+   "a": "Yes. Nintendo sells a separate Switch 2 Edition Upgrade Pack."
+  },
+  {
+   "q": "What does GameShare do?",
+   "a": "It can share supported local play to another Nintendo Switch or Switch 2 system."
+  }
+ ],
+ "verdictScore": 8.5,
+ "verdictPros": [
+  "Clear enhancements over Switch 1",
+  "Advanced scoring improves training feedback",
+  "CameraPlay is a useful new option",
+  "GameShare expands local access",
+  "Higher resolution/frame-rate profile"
+ ],
+ "verdictCons": [
+  "Requires Joy-Con motion play",
+  "Handheld mode remains unsupported",
+  "CameraPlay needs compatible hardware",
+  "Workout value depends on personal routine consistency",
+  "Upgrade is a separate product for original owners"
+ ],
+ "timeline": [
+  {
+   "date": "2026-07-16",
+   "title": "Released on target Nintendo platform"
+  }
+ ],
+ "patchNotes": [
+  {
+   "version": "Current retail build",
+   "date": "2026-08-27"
+  }
+ ],
+ "studioName": "Imagineer",
+ "studioUrl": "https://www.nintendo.com/us/store/products/fitness-boxing-3-your-personal-trainer-nintendo-switch-2-edition-switch-2/",
+ "studioLocation": "See publisher/developer profile",
+ "sources": [
+  {
+   "name": "Official Nintendo / publisher product page",
+   "url": "https://www.nintendo.com/us/store/products/fitness-boxing-3-your-personal-trainer-nintendo-switch-2-edition-switch-2/"
+  }
+ ],
+ "downloadSizeGb": 10,
+ "requiredSpaceGb": 10,
+ "microSdRecommended": true,
+ "storageNotes": "Storage requirements follow the official product listing where a final numeric size is published; upcoming titles may require a later refresh when final size is posted.",
+ "mpLocalPlayers": true,
+ "mpOnlinePlayers": false,
+ "mpCoop": true,
+ "mpCompetitive": false,
+ "mpLocalWireless": false,
+ "mpSplitScreen": true,
+ "dlc": [
+  {
+   "name": "Downloadable / additional content status",
+   "description": "Optional music/cosmetic packs remain available; the Switch 2 Upgrade Pack is a migration path from the original version."
+  }
+ ],
+ "devicePerformance": [
+  {
+   "device": "Nintendo Switch 2",
+   "deviceSlug": "nintendo-switch-2",
+   "deviceModel": "Nintendo Switch 2",
+   "hardwareId": "nintendo-switch-2",
+   "informationStatus": "Available",
+   "handheld": {
+    "supported": false,
+    "resolution": "Not Supported",
+    "resolutionDynamic": false,
+    "renderingResolution": "Not Supported",
+    "outputResolution": "Not Supported",
+    "fps": "Enhanced frame rate — exact official number not published",
+    "fpsMin": "Enhanced frame rate — exact official number not published",
+    "fpsMax": "Enhanced frame rate — exact official number not published",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "Handheld",
+    "notes": "Nintendo confirms enhanced resolution and frame rate but does not publish exact resolution/FPS figures on the product page."
+   },
+   "tv": {
+    "supported": true,
+    "resolution": "Enhanced resolution — exact official number not published",
+    "resolutionDynamic": false,
+    "renderingResolution": "Enhanced resolution — exact official number not published",
+    "outputResolution": "Enhanced resolution — exact official number not published",
+    "fps": "Enhanced frame rate — exact official number not published",
+    "fpsMin": "Enhanced frame rate — exact official number not published",
+    "fpsMax": "Enhanced frame rate — exact official number not published",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "TV / Docked",
+    "notes": "Nintendo confirms enhanced resolution and frame rate but does not publish exact resolution/FPS figures on the product page."
+   },
+   "modes": [
+    {
+     "name": "Primary documented/compatibility profile",
+     "handheldResolution": "Not Supported",
+     "handheldFps": "Enhanced frame rate — exact official number not published",
+     "tvResolution": "Enhanced resolution — exact official number not published",
+     "tvFps": "Enhanced frame rate — exact official number not published",
+     "hdr": false,
+     "vrr": false,
+     "notes": "Nintendo confirms enhanced resolution and frame rate but does not publish exact resolution/FPS figures on the product page."
+    }
+   ],
+   "upscaling": "Game / system-specific scaling where applicable",
+   "rayTracing": false,
+   "rayTracingMode": "Not Supported",
+   "loadingTime": "Scene-dependent",
+   "loadingNotes": "Loading time varies by scene, save state, storage, version, and patch.",
+   "gameVersion": "Current listed version",
+   "patchVersion": "Current available update",
+   "testedDate": "2026-08-27",
+   "sourceName": "Official product / compatibility information",
+   "sourceUrl": "https://www.nintendo.com/us/store/products/fitness-boxing-3-your-personal-trainer-nintendo-switch-2-edition-switch-2/",
+   "performanceNotes": "Nintendo confirms enhanced resolution and frame rate but does not publish exact resolution/FPS figures on the product page."
+  },
+  {
+   "device": "Nintendo Switch",
+   "deviceSlug": "nintendo-switch",
+   "deviceModel": "Nintendo Switch",
+   "hardwareId": "nintendo-switch",
+   "informationStatus": "Available",
+   "handheld": {
+    "supported": false,
+    "resolution": "Not Supported",
+    "resolutionDynamic": false,
+    "renderingResolution": "Not Supported",
+    "outputResolution": "Not Supported",
+    "fps": "Not Supported",
+    "fpsMin": "Not Supported",
+    "fpsMax": "Not Supported",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "Handheld",
+    "notes": "This file is for the native Switch 2 Edition. The original Switch 1 version is a separate product."
+   },
+   "tv": {
+    "supported": false,
+    "resolution": "Not Supported",
+    "resolutionDynamic": false,
+    "renderingResolution": "Not Supported",
+    "outputResolution": "Not Supported",
+    "fps": "Not Supported",
+    "fpsMin": "Not Supported",
+    "fpsMax": "Not Supported",
+    "refreshRate": "60",
+    "hdr": false,
+    "vrr": false,
+    "mode": "TV / Docked",
+    "notes": "This file is for the native Switch 2 Edition. The original Switch 1 version is a separate product."
+   },
+   "modes": [
+    {
+     "name": "Primary documented/compatibility profile",
+     "handheldResolution": "Not Supported",
+     "handheldFps": "Not Supported",
+     "tvResolution": "Not Supported",
+     "tvFps": "Not Supported",
+     "hdr": false,
+     "vrr": false,
+     "notes": "This file is for the native Switch 2 Edition. The original Switch 1 version is a separate product."
+    }
+   ],
+   "upscaling": "Game / system-specific scaling where applicable",
+   "rayTracing": false,
+   "rayTracingMode": "Not Supported",
+   "loadingTime": "Scene-dependent",
+   "loadingNotes": "Loading time varies by scene, save state, storage, version, and patch.",
+   "gameVersion": "Current listed version",
+   "patchVersion": "Current available update",
+   "testedDate": "2026-08-27",
+   "sourceName": "Official product / compatibility information",
+   "sourceUrl": "https://www.nintendo.com/us/store/products/fitness-boxing-3-your-personal-trainer-121188/",
+   "performanceNotes": "This file is for the native Switch 2 Edition. The original Switch 1 version is a separate product."
+  }
+ ],
+ "switch2UpgradePrice": 0,
+ "galleryImages": [
+  {
+   "url": "/api/files/products/prd_7c8bc4a553ff4edd/gallery-1-05992017faa06e20.webp",
+   "alt": "Fitness Boxing 3: Your Personal Trainer — Nintendo Switch 2 Edition screenshot 1"
+  },
+  {
+   "url": "/api/files/products/prd_7c8bc4a553ff4edd/gallery-2-de252daaba08b72c.webp",
+   "alt": "Fitness Boxing 3: Your Personal Trainer — Nintendo Switch 2 Edition screenshot 2"
+  },
+  {
+   "url": "/api/files/products/prd_7c8bc4a553ff4edd/gallery-3-b652558e839eda07.webp",
+   "alt": "Fitness Boxing 3: Your Personal Trainer — Nintendo Switch 2 Edition screenshot 3"
+  },
+  {
+   "url": "/api/files/products/prd_7c8bc4a553ff4edd/gallery-4-0da0ad45e3ca6501.webp",
+   "alt": "Fitness Boxing 3: Your Personal Trainer — Nintendo Switch 2 Edition screenshot 4"
+  },
+  {
+   "url": "/api/files/products/prd_7c8bc4a553ff4edd/gallery-5-eff85a3d8e120fea.webp",
+   "alt": "Fitness Boxing 3: Your Personal Trainer — Nintendo Switch 2 Edition screenshot 5"
+  },
+  {
+   "url": "/api/files/products/prd_7c8bc4a553ff4edd/gallery-6-b036177d8e2a28a3.webp",
+   "alt": "Fitness Boxing 3: Your Personal Trainer — Nintendo Switch 2 Edition screenshot 6"
+  }
+ ],
+ "boxContentsList": [],
+ "image": "https://assets.nintendo.com/image/upload/ar_16:9,c_fill,g_auto,w_1600/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000120066/e78baa00848a9c8c0a67d493ad416b21e5280c785578455edefdcb7a0a7102db",
+ "banner": "https://assets.nintendo.com/image/upload/ar_16%3A9%2Cb_auto%3Aborder%2Cc_lpad/b_white/f_auto/q_auto/dpr_1.5/store/software/switch2/70010000120066/3f31c12f8fdc1988c9e6fff6993b7c4e61662aa39bc1b702947249b2edb1de32",
+ "schemaId": "",
+ "batchImport": true,
+ "createdAt": "2026-08-28T18:42:53.882Z",
+ "updatedAt": "2026-08-28T18:42:53.882Z"
+}
