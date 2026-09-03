@@ -669,6 +669,30 @@ export const Route = createFileRoute("/api/chat")({
               }
             }
 
+            /*
+              Tell the admins. This is the point of the escalation, and until
+              now it was the one admin-facing event that notified nobody: the
+              thread was flagged `needsAdmin` and everyone waited for the
+              customer to say something else.
+
+              Fire and forget — a Telegram outage must not turn a customer's
+              request for help into an error on their screen.
+            */
+            void (async () => {
+              try {
+                const { notifyAdminHumanSupportRequest } = await import(
+                  "@/lib/telegram-notifications.server"
+                );
+                await notifyAdminHumanSupportRequest({
+                  threadId: humanThread.id,
+                  user: { id: user.id, name: user.name, username: user.username },
+                  lastUserText: humanThread.lastMessagePreview ?? "",
+                });
+              } catch (err) {
+                console.error("[chat:human_support_notify_failed]", err);
+              }
+            })();
+
             return json({
               success: true,
               isAvailable: true,
