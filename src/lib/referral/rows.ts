@@ -8,8 +8,8 @@
  */
 
 import {
-  isAttributionStatus,
   isRewardStatus,
+  normalizeAttributionStatus,
   type ReferralAttributionStatus,
   type ReferralRewardStatus,
 } from "./status";
@@ -223,7 +223,7 @@ export function toReferralAttribution(row: ReferralAttributionRow): ReferralAttr
     ipHash: optionalText(row.ip_hash),
     // An unreadable status is treated as blocked rather than as the permissive
     // default: a row we cannot classify must never pay anybody.
-    status: isAttributionStatus(status) ? status : "blocked",
+    status: normalizeAttributionStatus(status),
     capturedAt: text(row.captured_at),
     expiresAt: text(row.expires_at),
     boundAt: optionalText(row.bound_at),

@@ -25,6 +25,11 @@ import { isAwaitingRelease, releaseDayISO } from "./release";
 import { resolveUnitPrice } from "./productPricing";
 import { resolveReferralForCheckout } from "./referral/checkout.server";
 import {
+  bindReferrerIfUnbound,
+  claimFirstReferralDiscount,
+  releaseReferralDiscount,
+} from "./referral/binding.server";
+import {
   insertRewardStatement,
   markAttributionConverted,
 } from "./referral/rewards.server";
@@ -403,7 +408,16 @@ export async function createOrderForUser(
   });
 
   const referralQuote = referralDecision?.quote;
-  const referralDiscount = referralQuote?.applicable ? referralQuote.buyerDiscountIqd : 0;
+
+  /*
+    The order's id, generated here rather than further down, because the claim
+    below records which order spent the member's one lifetime discount and
+    needs something to record.
+  */
+  const orderId = randomId("ord");
+
+  /* What the referral is worth if it is the discount that gets used. */
+  const quotedReferralDiscount = referralQuote?.applicable ? referralQuote.buyerDiscountIqd : 0;
 
   /*
     The coupon, validated but not yet spent.
@@ -484,11 +498,45 @@ export async function createOrderForUser(
     both come off and the total is floored at the cart's value.
   */
   let useCoupon = Boolean(couponCandidate);
-  let useReferral = referralDiscount > 0;
+  let useReferral = quotedReferralDiscount > 0;
   if (useCoupon && useReferral && !referralDecision?.settings.stackWithCoupon) {
-    if ((couponCandidate?.discount ?? 0) >= referralDiscount) useReferral = false;
+    if ((couponCandidate?.discount ?? 0) >= quotedReferralDiscount) useReferral = false;
     else useCoupon = false;
   }
+
+  /*
+    Take the discount, once, for ever — or find it already taken.
+
+    This is the whole of the concurrency rule and of the permanence rule, in
+    one conditional UPDATE. Two checkouts running at the same moment both saw
+    "not used yet" when they were quoted; only one of them can satisfy
+    `referral_discount_used_at IS NULL` in the write, so only one discounts and
+    the other simply pays full price. The same statement writes
+    `referred_by_user_id` under `IS NULL`, which is what makes the referrer
+    permanent: a later link finds the column filled and cannot move it.
+
+    When the discount is already spent there is still work to do — the referrer
+    earns 5% on this order too — so the binding is made sure of and the reward
+    goes ahead without a discount. That is the second-order case from the
+    rules: the buyer pays 10,000 and the referrer is still paid 500.
+  */
+  let referralClaimed = false;
+  if (referralQuote?.applicable && referralQuote.referrerUserId) {
+    if (useReferral && referralQuote.buyerDiscountAvailable && referralQuote.buyerDiscountIqd > 0) {
+      const claim = await claimFirstReferralDiscount({
+        userId: user.id,
+        referrerUserId: referralQuote.referrerUserId,
+        orderId,
+        now,
+      });
+      referralClaimed = claim.claimed;
+    } else {
+      await bindReferrerIfUnbound(user.id, referralQuote.referrerUserId);
+    }
+  }
+  const referralDiscount = referralClaimed ? referralQuote!.buyerDiscountIqd : 0;
+  // A claim that did not land means no discount, whatever the quote said.
+  if (!referralClaimed) useReferral = false;
 
   if (useCoupon && couponCandidate) {
     /*
@@ -518,8 +566,18 @@ export async function createOrderForUser(
   if (useReferral) discountAmount += referralDiscount;
   discountAmount = Math.min(discountAmount, itemsTotal);
 
+  /*
+    Recorded whenever anything is owed, which since the rules changed is no
+    longer the same as "a discount was given".
+
+    Deliberately not conditioned on `useReferral`: that flag now means only
+    "the buyer's half was taken", and it is false on every order after the
+    first and on any order where a coupon was worth more. The referrer earns
+    5% of the qualifying products either way — that is the rule — so tying the
+    reward to the discount would have silently stopped paying them.
+  */
   const appliedReferral =
-    useReferral && referralQuote?.applicable
+    referralQuote?.applicable && (referralClaimed || referralQuote.referrerRewardIqd > 0)
       ? {
           ...(referralQuote.referralCode ? { code: referralQuote.referralCode } : {}),
           ...(referralQuote.referralCodeId ? { referralCodeId: referralQuote.referralCodeId } : {}),
@@ -529,9 +587,11 @@ export async function createOrderForUser(
           productId: referralQuote.productId ?? "",
           ...(referralQuote.productTitle ? { productTitle: referralQuote.productTitle } : {}),
           originalPriceIqd: referralQuote.originalPriceIqd,
-          buyerDiscountIqd: referralQuote.buyerDiscountIqd,
+          // What was actually taken off, which is zero unless this checkout
+          // won the claim above.
+          buyerDiscountIqd: referralDiscount,
           referrerRewardIqd: referralQuote.referrerRewardIqd,
-          buyerPercentBps: referralQuote.buyerPercentBps,
+          buyerPercentBps: referralClaimed ? referralQuote.buyerPercentBps : 0,
           referrerPercentBps: referralQuote.referrerPercentBps,
           rewardStatus: "eligible" as const,
           riskVerdict: referralQuote.riskVerdict,
@@ -552,6 +612,9 @@ export async function createOrderForUser(
     if (couponClaimed) {
       await releaseCouponUse({ ...couponClaimed, releaseGlobal: true }).catch(() => {});
     }
+    // Same for the referral: a discount claimed for an order that cannot be
+    // paid for must not be the one the member is allowed once in their life.
+    if (referralClaimed) await releaseReferralDiscount(orderId);
     throw new Error("insufficient_balance");
   }
 
@@ -573,7 +636,6 @@ export async function createOrderForUser(
   );
   const total = finalItemsTotal + (needsAddress ? deliveryPrice : 0);
 
-  const orderId = randomId("ord");
   const threadId = randomId("thr");
   const code = `BN-${Date.now().toString().slice(-6)}`;
   const walletTxId = needsWalletPayment ? randomId("wlt") : undefined;

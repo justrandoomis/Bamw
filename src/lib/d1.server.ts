@@ -229,8 +229,19 @@ const SCHEMA: string[] = [
     settings TEXT NOT NULL DEFAULT '{}', addresses TEXT NOT NULL DEFAULT '[]',
     favorites TEXT NOT NULL DEFAULT '[]', wallet_balance REAL NOT NULL DEFAULT 0,
     banana_balance INTEGER NOT NULL DEFAULT 0, banana_locked INTEGER NOT NULL DEFAULT 0,
+    -- Who brought this member in, and whether they have spent their one
+    -- lifetime referral discount. On the member rather than on the attribution
+    -- because that is where the rules live: the discount is once per account
+    -- for ever, and the referrer keeps earning on every later order, long
+    -- after the link, the cookie and the attribution row have expired. An
+    -- attribution is how a binding is established; this is the binding.
+    -- referred_by_user_id is written once and never rewritten: the claim
+    -- guards on it being NULL, so a second link cannot take a member off the
+    -- person who actually brought them.
+    referred_by_user_id TEXT, referral_discount_used_at TEXT, first_referral_order_id TEXT,
     created_at TEXT NOT NULL)`,
   `CREATE UNIQUE INDEX IF NOT EXISTS users_email_idx ON users (email)`,
+  `CREATE INDEX IF NOT EXISTS users_referred_by_idx ON users (referred_by_user_id)`,
   `CREATE INDEX IF NOT EXISTS users_provider_idx ON users (provider, provider_id)`,
   `CREATE TABLE IF NOT EXISTS orders (id TEXT PRIMARY KEY, code TEXT NOT NULL, user_id TEXT NOT NULL,
     doc TEXT NOT NULL, status TEXT NOT NULL DEFAULT 'pending', payment_status TEXT NOT NULL DEFAULT 'unpaid',
@@ -1002,6 +1013,10 @@ const SCHEMA_PATCHES: string[] = [
   `CREATE UNIQUE INDEX IF NOT EXISTS wallet_transactions_ref_idx ON wallet_transactions (reference_type, reference_id) WHERE reference_type IS NOT NULL AND reference_id IS NOT NULL`,
   `ALTER TABLE users ADD COLUMN friend_id TEXT`,
   `ALTER TABLE users ADD COLUMN email_verified_at TEXT`,
+  `ALTER TABLE users ADD COLUMN referred_by_user_id TEXT`,
+  `ALTER TABLE users ADD COLUMN referral_discount_used_at TEXT`,
+  `ALTER TABLE users ADD COLUMN first_referral_order_id TEXT`,
+  `CREATE INDEX IF NOT EXISTS users_referred_by_idx ON users (referred_by_user_id)`,
   `ALTER TABLE legacy_claims ADD COLUMN attempts INTEGER NOT NULL DEFAULT 1`,
   `ALTER TABLE legacy_claims ADD COLUMN last_error_code TEXT`,
   `ALTER TABLE legacy_claims ADD COLUMN updated_at TEXT`,
@@ -1624,6 +1639,9 @@ const USERS_COLUMNS: Record<string, string> = {
   favorites: "TEXT NOT NULL DEFAULT '[]'",
   friend_id: "TEXT",
   email_verified_at: "TEXT",
+  referred_by_user_id: "TEXT",
+  referral_discount_used_at: "TEXT",
+  first_referral_order_id: "TEXT",
   wallet_balance: "REAL NOT NULL DEFAULT 0",
   banana_balance: "INTEGER NOT NULL DEFAULT 0",
   banana_locked: "INTEGER NOT NULL DEFAULT 0",
@@ -1873,7 +1891,7 @@ export function ensureCouponsSchema(): Promise<void> {
 // Bumped whenever SCHEMA_PATCHES gains a statement existing databases need.
 // The stamp below short-circuits the bootstrap, so a new patch is invisible to
 // already-deployed databases until this number moves.
-const RUNTIME_SCHEMA_VERSION = 21;
+const RUNTIME_SCHEMA_VERSION = 22;
 
 async function runSchemaStatements(
   db: D1Like,

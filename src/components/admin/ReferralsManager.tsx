@@ -68,7 +68,6 @@ interface AdminSettings {
   maxRewardIqd: number;
   linkTtlDays: number;
   eligibleCategories: string[];
-  firstPurchaseOnly: boolean;
   stackWithCoupon: boolean;
   holdDays: number;
   dailyInviteLimit: number;
@@ -641,11 +640,18 @@ export default function ReferralsManager() {
             تشغيل نظام الإحالة
           </label>
 
+          <p className="rounded-xl border border-border bg-background px-3 py-2 text-[11px] font-bold text-muted-foreground">
+            مكافأة صاحب الإحالة ثابتة 5% من قيمة المنتجات المؤهلة، على أول طلب
+            وعلى كل طلب بعده. خصم المشتري 10% مرة واحدة فقط طوال عمر الحساب.
+          </p>
+
           <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {(
               [
                 ["buyerPercent", "نسبة خصم المشتري (%)"],
-                ["referrerPercent", "نسبة مكافأة صاحب الإحالة (%)"],
+                // The referrer's share is fixed at 5% in code, so there is no
+                // field for it: an input that cannot change the payout would
+                // only invite somebody to try.
                 ["maxRewardIqd", "الحد الأقصى للمكافأة (د.ع)"],
                 ["linkTtlDays", "مدة صلاحية رابط الإحالة (يوم)"],
                 ["holdDays", "مدة تعليق المكافأة (يوم)"],
@@ -672,16 +678,13 @@ export default function ReferralsManager() {
             ))}
           </div>
 
+          {/*
+            "أول عملية شراء فقط" used to be a switch here and is now a rule:
+            the buyer's discount is once per account for ever, and the
+            referrer earns on every order after it. Neither half is
+            configurable, so a control for it would do nothing.
+          */}
           <div className="flex flex-wrap gap-4">
-            <label className="flex items-center gap-2 text-[13px] text-foreground">
-              <input
-                type="checkbox"
-                checked={settings.firstPurchaseOnly}
-                onChange={(event) => patchSettings({ firstPurchaseOnly: event.target.checked })}
-                className="h-4 w-4"
-              />
-              أول عملية شراء فقط
-            </label>
             <label className="flex items-center gap-2 text-[13px] text-foreground">
               <input
                 type="checkbox"

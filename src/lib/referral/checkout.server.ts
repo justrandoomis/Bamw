@@ -22,11 +22,49 @@ import {
 } from "./service.server";
 import { checkProgrammeLimits, recordRiskEvent } from "./risk.server";
 import type { ReferralAttribution } from "./rows";
+import { referralBinding } from "./binding.server";
 
 export interface ReferralCheckoutDecision {
   quote: ReferralQuote;
   attribution: ReferralAttribution;
   settings: ReferralSettings;
+}
+
+/**
+ * A stand-in attribution for a member who is already bound.
+ *
+ * Not written to the database and never will be: it exists so the quote, the
+ * risk assessment and the limits all take the same argument whether the
+ * referral arrived on a cookie today or was settled a year ago. The id is
+ * empty, which is what keeps it out of every `WHERE id = ?` downstream.
+ */
+function boundAttribution(
+  buyerId: string,
+  binding: { referrerUserId: string; firstOrderId: string },
+  now?: Date,
+): ReferralAttribution {
+  const stamp = (now ?? new Date()).toISOString();
+  return {
+    id: "",
+    referrerUserId: binding.referrerUserId,
+    referredUserId: buyerId,
+    referralCodeId: "",
+    productId: "",
+    guestSessionHash: "",
+    deviceHash: null,
+    ipHash: null,
+    status: "pending",
+    capturedAt: stamp,
+    // Far enough ahead that the expiry check cannot refuse a standing binding:
+    // a permanent relationship does not expire, only a link does.
+    expiresAt: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toISOString(),
+    boundAt: stamp,
+    convertedOrderId: binding.firstOrderId || null,
+    convertedAt: null,
+    riskScore: 0,
+    blockedReason: null,
+    updatedAt: stamp,
+  };
 }
 
 /**
@@ -68,7 +106,42 @@ export async function resolveReferralForCheckout(params: {
     }).catch(() => undefined);
   }
 
-  const attribution = await activeAttribution(request, params.buyer);
+  /*
+    Two ways a referral reaches this checkout.
+
+    The cookie is how a *first* order finds one. Every order after that has no
+    cookie and no live attribution — the link was clicked once, months ago —
+    and yet the referrer is still owed 5%. So when there is no attribution the
+    member's permanent binding is used instead, and a stand-in attribution is
+    built from it purely so the rest of this path has one shape to work with.
+
+    Its status is `pending`, meaning the relationship is live — which it is,
+    permanently. It does *not* mean a discount is waiting: that is decided by
+    `referral_discount_used_at` on the member, which the quote reads for
+    itself. Marking this `used` instead would have been the more literal
+    reading and was wrong, because `isAttributionUsable` refuses a `used` row
+    outright and the quote would never have been reached at all — no reward on
+    any order after the first, which is the rule this exists to serve.
+  */
+  const binding = await referralBinding(params.buyer.id);
+  const bound = binding.referrerUserId
+    ? boundAttribution(params.buyer.id, binding, params.now)
+    : undefined;
+  const live = await activeAttribution(request, params.buyer);
+
+  /*
+    A binding cannot be replaced, and the fallback is the binding — not
+    nothing.
+
+    Once a member belongs to somebody, any attribution naming anyone else is
+    ignored and the standing relationship is used in its place. Refusing the
+    whole referral instead would have been the easy reading of rule 4 and is
+    wrong twice over: it would let a stale cookie, or a link the member opened
+    out of curiosity, quietly stop paying the person who actually brought them
+    in — punishing the referrer for something the buyer clicked.
+  */
+  const attribution =
+    bound && (!live || live.referrerUserId !== binding.referrerUserId) ? bound : live;
   if (!attribution) return undefined;
 
   const identity = await requestIdentity(request);

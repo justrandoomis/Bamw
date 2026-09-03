@@ -302,22 +302,12 @@ async function telegramIdentity(party: RiskParty): Promise<string> {
   }
 }
 
-/** Does the buyer already have a referral reward behind them? */
-async function hasEarnedBefore(buyerUserId: string): Promise<boolean> {
-  const row = await d1First<{ total?: number }>(
-    `SELECT COUNT(*) AS total FROM referral_rewards
-      WHERE buyer_user_id = ? AND status IN ('pending', 'approved')`,
-    buyerUserId,
-  );
-  return Number(row?.total ?? 0) > 0;
-}
-
 /** A referred B before: paying B for referring A back closes the loop. */
 async function isCircular(referrerUserId: string, buyerUserId: string): Promise<boolean> {
   const row = await d1First<{ total?: number }>(
     `SELECT COUNT(*) AS total FROM referral_attributions
       WHERE referrer_user_id = ? AND referred_user_id = ?
-        AND status IN ('captured', 'eligible', 'converted')`,
+        AND status IN ('pending', 'reserved', 'used', 'captured', 'eligible', 'converted')`,
     buyerUserId,
     referrerUserId,
   );
@@ -469,9 +459,18 @@ export async function checkProgrammeLimits(
   const now = input.now ?? new Date();
   const reasons: ReferralRiskReason[] = [];
 
-  if (input.settings.firstPurchaseOnly && (await hasEarnedBefore(input.buyerUserId))) {
-    reasons.push("not_first_purchase");
-  }
+  /*
+    "First purchase only" used to refuse the whole referral once a member had
+    earned their referrer anything, and it is gone.
+
+    It was the right rule when a referral was a single event. It is the wrong
+    one now: the referrer earns 5% of every qualifying order the member ever
+    places, so a check that refused the second order refused the rule. What
+    survives of it is the part that was always about the *buyer* — the 10% is
+    once per account for ever — and that is enforced where it belongs, by
+    `referral_discount_used_at` on the member, atomically, at the moment the
+    discount is claimed.
+  */
 
   if (input.settings.dailyInviteLimit > 0) {
     const invites = await invitesToday(input.referrerUserId, now);

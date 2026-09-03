@@ -19,6 +19,7 @@ import { resolveUnitPrice } from "../productPricing";
 import { findProductByIdOrSlug, getProductSlug } from "../productRouting";
 import type { Product, User } from "../types";
 import { readReferralSettings, type ReferralSettings } from "./config";
+import { hasSpentDiscount, referralBinding } from "./binding.server";
 import {
   generateReferralCode,
   normalizeReferralAlias,
@@ -43,7 +44,7 @@ import {
   referralHash,
   type DeviceHints,
 } from "./identity.server";
-import { referralAmounts } from "./money";
+import { referralAmounts, REFERRER_PERCENT_BPS, toIqd } from "./money";
 import { toReferralAttribution, toReferralCode, type ReferralAttribution, type ReferralCode } from "./rows";
 import {
   assessReferralRisk,
@@ -423,15 +424,16 @@ export async function captureAttribution(params: {
        id, referrer_user_id, referred_user_id, referral_code_id, product_id,
        guest_session_hash, device_hash, ip_hash, status, captured_at, expires_at,
        bound_at, risk_score, updated_at
-     ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, 'captured', ?, ?, ?, ?, ?)
+     ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, 'pending', ?, ?, ?, ?, ?)
      ON CONFLICT(guest_session_hash, referral_code_id, product_id) DO UPDATE SET
        expires_at = excluded.expires_at,
        device_hash = excluded.device_hash,
        ip_hash = excluded.ip_hash,
        referred_user_id = COALESCE(referral_attributions.referred_user_id, excluded.referred_user_id),
        bound_at = COALESCE(referral_attributions.bound_at, excluded.bound_at),
-       status = CASE WHEN referral_attributions.status IN ('blocked', 'converted')
-                     THEN referral_attributions.status ELSE 'captured' END,
+       status = CASE WHEN referral_attributions.status IN
+                       ('rejected', 'blocked', 'used', 'converted', 'reserved')
+                     THEN referral_attributions.status ELSE 'pending' END,
        updated_at = excluded.updated_at`,
     attributionId,
     referrer.id,
@@ -456,7 +458,7 @@ export async function captureAttribution(params: {
     productId,
   );
   const attribution = stored?.["id"] ? toReferralAttribution(stored) : undefined;
-  if (!attribution || attribution.status === "blocked") return refuse();
+  if (!attribution || attribution.status === "rejected") return refuse();
 
   const token: AttributionToken = {
     attributionId: attribution.id,
@@ -527,7 +529,7 @@ export async function activeAttribution(
   if (viewer?.id) {
     const row = await d1First<Record<string, unknown>>(
       `SELECT * FROM referral_attributions
-        WHERE referred_user_id = ? AND status IN ('captured', 'eligible')
+        WHERE referred_user_id = ? AND status IN ('pending', 'captured', 'eligible')
         ORDER BY captured_at DESC LIMIT 1`,
       viewer.id,
     );
@@ -546,8 +548,12 @@ export function isAttributionUsable(
   viewerId?: string,
   now = Date.now(),
 ): boolean {
-  if (attribution.status === "blocked" || attribution.status === "expired") return false;
-  if (attribution.status === "converted") return false;
+  if (attribution.status === "rejected" || attribution.status === "expired") return false;
+  /*
+    `used` is spent and `reserved` belongs to an order being placed right now;
+    neither is a discount this cart may take.
+  */
+  if (attribution.status === "used" || attribution.status === "reserved") return false;
   const expiry = Date.parse(attribution.expiresAt);
   if (Number.isFinite(expiry) && expiry <= now) return false;
   /*
@@ -587,7 +593,7 @@ export async function bindAttributionToUser(request: Request, userId: string): P
     );
     if (!row?.["id"]) return;
     const attribution = toReferralAttribution(row);
-    if (attribution.status === "converted" || attribution.status === "blocked") return;
+    if (attribution.status === "used" || attribution.status === "rejected") return;
     if (attribution.referredUserId && attribution.referredUserId !== userId) return;
 
     const settings = await getReferralSettings();
@@ -640,10 +646,10 @@ export async function bindAttributionToUser(request: Request, userId: string): P
       `UPDATE referral_attributions
           SET referred_user_id = ?, bound_at = COALESCE(bound_at, ?), status = ?,
               risk_score = ?, blocked_reason = ?, updated_at = ?
-        WHERE id = ? AND status IN ('captured', 'eligible')`,
+        WHERE id = ? AND status IN ('pending', 'captured', 'eligible')`,
       userId,
       now,
-      verdict.blocked ? "blocked" : "eligible",
+      verdict.blocked ? "rejected" : "pending",
       verdict.score,
       verdict.blocked ? verdict.verdict : null,
       now,
@@ -674,12 +680,48 @@ export function forgetAttributionCookie(request: Request): string {
   return clearAttributionCookie(request);
 }
 
+/**
+ * The public name to show for a referrer, resolved on the server.
+ *
+ * Only ever a username — the handle the member already shows publicly. Never
+ * their real name, their email or their phone, and never the text that came in
+ * on a link: a display name taken from a URL is a display name an attacker
+ * chooses. The code is the fallback when an account has no username, because
+ * showing something the member can verify beats showing nothing.
+ */
+export async function referrerPublicName(
+  referrerUserId: string,
+): Promise<{ username: string } | null> {
+  if (!referrerUserId) return null;
+  const [user, codeRow] = await Promise.all([
+    findUserById(referrerUserId),
+    d1First<Record<string, unknown>>(
+      `SELECT code, username_alias FROM referral_codes WHERE user_id = ? LIMIT 1`,
+      referrerUserId,
+    ),
+  ]);
+  const username =
+    normalizeReferralAlias(user?.username) ||
+    String(codeRow?.["username_alias"] ?? "") ||
+    String(codeRow?.["code"] ?? "");
+  return username ? { username } : null;
+}
+
 /* -------------------------------------------------------------------------- */
 /* Quoting                                                                    */
 /* -------------------------------------------------------------------------- */
 
 export interface ReferralQuoteLine extends ReferralLineSelection {
   title?: string;
+}
+
+/** One qualifying line, and what it is worth to each side. */
+export interface ReferralQuoteItem {
+  productId: string;
+  productTitle: string;
+  /** Catalogue price for the selection, times quantity. */
+  lineTotalIqd: number;
+  quantity: number;
 }
 
 export interface ReferralQuote {
@@ -689,13 +731,31 @@ export interface ReferralQuote {
   referrerAlias?: string;
   referralCodeId?: string;
   referralCode?: string;
+  /** The first qualifying line, kept for the order record and the admin trail. */
   productId?: string;
   productTitle?: string;
+  /** Every qualifying line in the cart. The reward is paid on all of them. */
+  items: ReferralQuoteItem[];
+  /**
+   * The qualifying value of the order, before the referral discount.
+   *
+   * Both sides are taken from this: the buyer's 10% and the referrer's 5%. A
+   * coupon has already come off it — the referral pays on what the shop is
+   * actually selling — but the referral's own discount has not, which is what
+   * makes 10,000 dinars discount 1,000 and pay 500 rather than 450.
+   */
   originalPriceIqd: number;
   buyerDiscountIqd: number;
   referrerRewardIqd: number;
   buyerPercentBps: number;
   referrerPercentBps: number;
+  /**
+   * False once the member has spent their one lifetime discount.
+   *
+   * The referrer still earns — that is the whole point of the rule — so a
+   * quote can be `applicable` with a reward and a zero discount.
+   */
+  buyerDiscountAvailable: boolean;
   riskScore: number;
   riskVerdict: string;
   reasons: ReferralRiskReason[];
@@ -704,11 +764,13 @@ export interface ReferralQuote {
 
 const EMPTY_QUOTE: ReferralQuote = {
   applicable: false,
+  items: [],
   originalPriceIqd: 0,
   buyerDiscountIqd: 0,
   referrerRewardIqd: 0,
   buyerPercentBps: 0,
   referrerPercentBps: 0,
+  buyerDiscountAvailable: false,
   riskScore: 0,
   riskVerdict: "none",
   reasons: [],
@@ -750,20 +812,24 @@ export async function quoteReferral(params: {
       | undefined;
 
   /*
-    Which line earns.
+    Every line that earns, not just one.
 
-    A link shared for a specific game only pays on that game. A general link
-    pays on the first eligible line — "first" by the order the cart sends,
-    which is the order the member sees, so the answer is never surprising.
+    The referrer is paid 5% of the qualifying value of the *order*, so a cart
+    with three offline accounts in it earns on all three. Excluded lines — a
+    top-up card, an accessory, anything the rules keep out — contribute
+    nothing, which is how delivery, taxes and wallet top-ups stay out of the
+    base without needing a rule of their own: they are simply never eligible
+    lines.
+
+    A link shared for a specific game still narrows this to that game;
+    `evaluateReferralLine` enforces it per line.
   */
-  let chosen:
-    | {
-        line: ReferralQuoteLine;
-        product: Record<string, unknown>;
-        buyerBps: number;
-        referrerBps: number;
-      }
-    | undefined;
+  const qualifying: {
+    line: ReferralQuoteLine;
+    product: Record<string, unknown>;
+    lineTotalIqd: number;
+    quantity: number;
+  }[] = [];
   /** Why the last line that was looked at did not qualify, for the log. */
   let ineligibleReason: ReferralIneligibleReason | undefined;
   for (const line of params.lines) {
@@ -774,20 +840,34 @@ export async function quoteReferral(params: {
       line,
       ...(attribution.productId ? { sharedProductId: attribution.productId } : {}),
     });
-    if (decision.eligible && product) {
-      chosen = {
-        line,
-        product,
-        buyerBps: decision.buyerPercentBps,
-        referrerBps: decision.referrerPercentBps,
-      };
-      break;
+    if (!decision.eligible || !product) {
+      ineligibleReason = decision.reason ?? ineligibleReason;
+      continue;
     }
-    ineligibleReason = decision.reason ?? ineligibleReason;
+    const priced = resolveUnitPrice(product, {
+      optionId: line.optionId ?? null,
+      typeId: line.typeId ?? null,
+      editionId: line.editionId ?? null,
+      dlcIds: line.dlcIds ?? null,
+    });
+    const unitPrice = priced.unitPrice > 0 ? priced.unitPrice : Number(line.unitPriceIqd);
+    /*
+      Quantity counts here, unlike in the first version of the programme.
+      Two copies of a game are two sales, and the rule pays on the value of the
+      qualifying products in the order rather than on one copy of one of them.
+    */
+    const quantity = Math.max(1, Math.min(99, Math.floor(Number(line.quantity) || 1)));
+    const lineTotalIqd = toIqd(unitPrice) * quantity;
+    if (lineTotalIqd <= 0) {
+      ineligibleReason = ineligibleReason ?? "no_price";
+      continue;
+    }
+    qualifying.push({ line, product, lineTotalIqd, quantity });
   }
-  if (!chosen) {
+  if (!qualifying.length) {
     return { ...EMPTY_QUOTE, riskVerdict: ineligibleReason ?? "no_eligible_line" };
   }
+  const chosen = qualifying[0]!;
 
   const verdict: ReferralRiskVerdict = await assessReferralRisk({
     settings,
@@ -815,34 +895,33 @@ export async function quoteReferral(params: {
   });
 
   /*
-    The price is the catalogue's, for exactly one copy of what was actually
-    chosen.
+    The qualifying value of the order: every eligible line, at the catalogue's
+    price for what was actually chosen, times quantity.
 
-    Resolved through `resolveUnitPrice`, the same function checkout charges by.
-    Reading `product.price` here instead — which is what this did — priced the
-    reward off the record's headline figure while the line was charged at the
-    option, type, edition and add-on price the customer picked. An offline
-    account with DLC is precisely the selection the programme exists for, and
-    it is precisely the one whose price is not the headline one, so the
-    discount shown and taken was a percentage of a number nobody was paying.
-
-    Quantity does not multiply the offer: the programme pays on the referred
-    purchase, not on however many copies somebody put in the basket, so a line
-    of ten earns the same as a line of one.
+    Prices come from `resolveUnitPrice`, the same function checkout charges by,
+    so the discount shown and the discount taken are percentages of the number
+    the customer is actually paying — an offline account with DLC does not cost
+    the record's headline price, and it is the selection this programme exists
+    for.
   */
-  const priced = resolveUnitPrice(chosen.product, {
-    optionId: chosen.line.optionId ?? null,
-    typeId: chosen.line.typeId ?? null,
-    editionId: chosen.line.editionId ?? null,
-    dlcIds: chosen.line.dlcIds ?? null,
-  });
-  // The line's own figure is the last resort only: a request deliberately
-  // zeroes it, so it is reached when the catalogue has no price at all.
-  const unitPrice = priced.unitPrice > 0 ? priced.unitPrice : Number(chosen.line.unitPriceIqd);
+  const originalPriceIqd = qualifying.reduce((sum, entry) => sum + entry.lineTotalIqd, 0);
+
+  /*
+    Whether the buyer's half is still available.
+
+    Once in a lifetime, per account, and it is the *account* that remembers —
+    not the link, not the cookie, not this attribution. The referrer's 5% is
+    unaffected: it is paid on this order and on every qualifying order the
+    member places afterwards, which is exactly the case where the discount is
+    already spent and the reward is not.
+  */
+  const binding = await referralBinding(params.buyer.id);
+  const buyerDiscountAvailable = !hasSpentDiscount(binding);
+
   const amounts = referralAmounts({
-    originalPriceIqd: unitPrice,
-    buyerPercentBps: chosen.buyerBps,
-    referrerPercentBps: chosen.referrerBps,
+    originalPriceIqd,
+    buyerPercentBps: buyerDiscountAvailable ? settings.buyerPercentBps : 0,
+    referrerPercentBps: REFERRER_PERCENT_BPS,
     maxRewardIqd: settings.maxRewardIqd,
   });
 
@@ -856,7 +935,13 @@ export async function quoteReferral(params: {
   const blocked = verdict.blocked || verdict.reasons.includes("code_inactive");
 
   return {
-    applicable: !blocked && amounts.buyerDiscountIqd > 0,
+    /*
+      Applicable when *anything* is owed, which since the rules changed is no
+      longer the same as "there is a discount". A member on their second order
+      takes nothing off their own bill and still earns their referrer 5%, and
+      that quote has to be applicable or the reward is never written.
+    */
+    applicable: !blocked && (amounts.buyerDiscountIqd > 0 || amounts.referrerRewardIqd > 0),
     attributionId: attribution.id,
     referrerUserId: referrer.id,
     referrerAlias:
@@ -864,11 +949,18 @@ export async function quoteReferral(params: {
     ...(codeRow ? { referralCodeId: codeRow.id, referralCode: codeRow.code } : {}),
     productId: String(chosen.product["id"] ?? ""),
     productTitle: String(chosen.product["title"] ?? ""),
+    items: qualifying.map((entry) => ({
+      productId: String(entry.product["id"] ?? ""),
+      productTitle: String(entry.product["title"] ?? ""),
+      lineTotalIqd: entry.lineTotalIqd,
+      quantity: entry.quantity,
+    })),
     originalPriceIqd: amounts.originalPriceIqd,
     buyerDiscountIqd: blocked ? 0 : amounts.buyerDiscountIqd,
     referrerRewardIqd: blocked ? 0 : amounts.referrerRewardIqd,
     buyerPercentBps: amounts.buyerPercentBps,
     referrerPercentBps: amounts.referrerPercentBps,
+    buyerDiscountAvailable: !blocked && buyerDiscountAvailable,
     riskScore: verdict.score,
     riskVerdict: verdict.verdict,
     reasons: verdict.reasons,

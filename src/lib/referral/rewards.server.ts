@@ -132,8 +132,8 @@ export async function markAttributionConverted(
   const now = new Date().toISOString();
   await d1Run(
     `UPDATE referral_attributions
-        SET status = 'converted', converted_order_id = ?, converted_at = ?, updated_at = ?
-      WHERE id = ? AND status IN ('captured', 'eligible')`,
+        SET status = 'used', converted_order_id = ?, converted_at = ?, updated_at = ?
+      WHERE id = ? AND status IN ('pending', 'reserved', 'captured', 'eligible')`,
     orderId,
     now,
     now,

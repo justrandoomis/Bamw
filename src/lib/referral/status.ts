@@ -8,13 +8,52 @@
  * order does — and must never be paid twice for the same order line.
  */
 
-/** Where an attribution can be in its life. */
+/**
+ * Where an attribution can be in its life.
+ *
+ * - `pending`  — captured, or a code typed in, with no qualifying order yet.
+ * - `reserved` — held for an order being placed right now, so two checkouts
+ *                running at once cannot both spend the one lifetime discount.
+ * - `used`     — the first qualifying order completed and the discount is gone.
+ * - `rejected` — refused: abuse, or the purchase was never eligible.
+ *
+ * `expired` is kept because an attribution can simply run out of time without
+ * ever having been any of the above.
+ */
 export type ReferralAttributionStatus =
-  | "captured"
-  | "eligible"
-  | "converted"
-  | "blocked"
+  | "pending"
+  | "reserved"
+  | "used"
+  | "rejected"
   | "expired";
+
+/**
+ * The names the first version of the programme wrote, and what each means now.
+ *
+ * Rows written before this change still hold these, and rewriting them in a
+ * migration would be a data change for no gain — reading them through this map
+ * is exact and costs nothing.
+ */
+const LEGACY_ATTRIBUTION_STATUS: Record<string, ReferralAttributionStatus> = {
+  captured: "pending",
+  eligible: "pending",
+  converted: "used",
+  blocked: "rejected",
+};
+
+/** A stored status, old or new, as one of the four current names. */
+export function normalizeAttributionStatus(value: unknown): ReferralAttributionStatus {
+  const text = typeof value === "string" ? value.trim() : "";
+  if ((ATTRIBUTION_STATUSES as readonly string[]).includes(text)) {
+    return text as ReferralAttributionStatus;
+  }
+  const legacy = LEGACY_ATTRIBUTION_STATUS[text];
+  /*
+    An unreadable status is `rejected`, never `pending`: a row nobody can
+    interpret must not be worth a discount.
+  */
+  return legacy ?? "rejected";
+}
 
 /** Where a reward can be in its life. */
 export type ReferralRewardStatus =
@@ -26,10 +65,10 @@ export type ReferralRewardStatus =
   | "expired";
 
 export const ATTRIBUTION_STATUSES: readonly ReferralAttributionStatus[] = [
-  "captured",
-  "eligible",
-  "converted",
-  "blocked",
+  "pending",
+  "reserved",
+  "used",
+  "rejected",
   "expired",
 ];
 
@@ -62,10 +101,15 @@ const ATTRIBUTION_TRANSITIONS: Record<
   ReferralAttributionStatus,
   readonly ReferralAttributionStatus[]
 > = {
-  captured: ["eligible", "converted", "blocked", "expired"],
-  eligible: ["converted", "blocked", "expired"],
-  converted: ["blocked"],
-  blocked: [],
+  /*
+    `reserved` can go back to `pending`: an order that is abandoned or
+    cancelled before it completes must hand the discount back, or a customer
+    loses it to a sale that never happened.
+  */
+  pending: ["reserved", "used", "rejected", "expired"],
+  reserved: ["used", "pending", "rejected", "expired"],
+  used: ["rejected"],
+  rejected: [],
   expired: [],
 };
 

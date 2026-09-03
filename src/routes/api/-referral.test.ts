@@ -194,6 +194,64 @@ describe("GET /api/referral", () => {
     expect(raw).not.toContain("Pixel 8");
     expect(raw).not.toMatch(/device_hash|ip_hash|deviceHash|ipHash/);
   });
+
+  it("offers the field to a member who has never used a referral", async () => {
+    viewer = { id: "usr_buy", name: "علي", email: "ali@example.com", username: "ali", isAdmin: false };
+    const body = await (
+      await handlers().GET({
+        request: new Request("https://banan.to/api/referral", { headers: new Headers(HEADERS) }),
+      })
+    ).json();
+
+    expect(body.canApply).toBe(true);
+    expect(body.discountUsed).toBe(false);
+    expect(body.supporting).toBeNull();
+  });
+
+  it("stops offering it once the discount has been used", async () => {
+    /*
+      The visibility rule, decided on the database and nowhere else. Once the
+      discount is spent the cart shows no field — not a disabled one — because
+      a second code cannot give a second discount or move the referrer.
+    */
+    db.raw
+      .prepare(
+        `UPDATE users SET referral_discount_used_at = ?, first_referral_order_id = 'ord_1',
+                referred_by_user_id = 'usr_ref' WHERE id = 'usr_buy'`,
+      )
+      .run(new Date().toISOString());
+    viewer = { id: "usr_buy", name: "علي", email: "ali@example.com", username: "ali", isAdmin: false };
+
+    const body = await (
+      await handlers().GET({
+        request: new Request("https://banan.to/api/referral", { headers: new Headers(HEADERS) }),
+      })
+    ).json();
+
+    expect(body.canApply).toBe(false);
+    expect(body.discountUsed).toBe(true);
+    // The relationship is still named — that member keeps earning 5%.
+    expect(body.supporting).toEqual({ username: "sami" });
+  });
+
+  it("names the referrer from the server, not from anything a link carried", async () => {
+    db.raw
+      .prepare(`UPDATE users SET referred_by_user_id = 'usr_ref' WHERE id = 'usr_buy'`)
+      .run();
+    viewer = { id: "usr_buy", name: "علي", email: "ali@example.com", username: "ali", isAdmin: false };
+
+    const body = await (
+      await handlers().GET({
+        request: new Request("https://banan.to/api/referral", { headers: new Headers(HEADERS) }),
+      })
+    ).json();
+
+    // The public username only: no real name, no email, no phone.
+    expect(body.supporting).toEqual({ username: "sami" });
+    const raw = JSON.stringify(body.supporting);
+    expect(raw).not.toContain("سامي");
+    expect(raw).not.toContain("sami@example.com");
+  });
 });
 
 describe("POST /api/referral", () => {
