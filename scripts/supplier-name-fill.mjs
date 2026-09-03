@@ -50,11 +50,14 @@ import path from "node:path";
 import { hkNameIndex, matchSupplierName } from "./lib/supplier-name-source.mjs";
 import {
   baseTitle,
+  editionFallbacks,
   entitiesUrl,
+  isVideoGame,
   pickWikidataName,
   searchUrl,
-  editionFallbacks,
+  titleMatches,
 } from "./lib/supplier-name-wikidata.mjs";
+import { langlinkUrl, readLanglink } from "./lib/supplier-name-wikipedia.mjs";
 
 const HK_INDEX = "data/nintendo-hong-kong-languages.json";
 const UPDATED_BY = "supplier-name-fill";
@@ -256,6 +259,39 @@ async function resolveFromWikidata(englishTitle) {
   return null;
 }
 
+/* ------------------------------------------- Wikipedia, for what Wikidata misses */
+/*
+  A Wikidata label and a Chinese Wikipedia article are different things, and
+  plenty of games have the second without the first. The identity check is
+  borrowed rather than skipped: the English article names its Wikidata item, and
+  that item goes through the same two tests the Wikidata source uses. `Stray` is
+  a disambiguation page and `Hades` is a Greek god; following either would put a
+  god's name on a game order.
+*/
+async function resolveFromWikipedia(englishTitle) {
+  const title = baseTitle(englishTitle);
+  if (!title) return null;
+
+  const got = await fetchJson(langlinkUrl(title));
+  if (!got.ok) return { failed: true, why: `wikipedia HTTP ${got.status}` };
+  const link = readLanglink(got.json);
+  if (!link) return null;
+
+  await pause(150);
+  const entity = await fetchJson(entitiesUrl([link.itemId]));
+  if (!entity.ok) return { failed: true, why: `entities HTTP ${entity.status}` };
+
+  const item = entity.json?.entities?.[link.itemId];
+  if (!item || !isVideoGame(item) || !titleMatches(item, title)) return null;
+
+  return {
+    name: link.zhTitle,
+    lang: "zh-wikipedia",
+    itemId: link.itemId,
+    sourceUrl: link.sourceUrl,
+  };
+}
+
 /* ------------------------------------------------------------------- the pass */
 const table = await app.d1All(
   "SELECT name FROM sqlite_master WHERE type = 'table' AND name = 'product_admin_metadata'",
@@ -269,6 +305,7 @@ if (!table.length) {
 const report = [];
 let fromHongKong = 0;
 let fromWikidata = 0;
+let fromWikipedia = 0;
 let noSource = 0;
 let unreachable = 0;
 let written = 0;
@@ -290,6 +327,12 @@ for (const game of games) {
     else if (wd) found = { ...wd, source: `Wikidata ${wd.itemId} (${wd.lang})` };
     await pause(150);
   }
+  if (!found && !failure) {
+    const wp = await resolveFromWikipedia(english);
+    if (wp?.failed) failure = wp.why;
+    else if (wp) found = { ...wp, source: `Chinese Wikipedia (${wp.itemId})` };
+    await pause(150);
+  }
 
   if (!found) {
     if (failure) {
@@ -300,13 +343,14 @@ for (const game of games) {
     noSource += 1;
     const why =
       hkHit.outcome === "latin_name"
-        ? "Hong Kong sells it in Latin, and Wikidata has no Chinese name for it"
-        : "no Chinese name in either source";
+        ? "Hong Kong sells it in Latin, and neither Wikidata nor Wikipedia names it in Chinese"
+        : "no Chinese name in any source";
     report.push({ id, english, outcome: why, filled: false });
     continue;
   }
 
   if (found.source === "Nintendo Hong Kong") fromHongKong += 1;
+  else if (found.source.startsWith("Chinese Wikipedia")) fromWikipedia += 1;
   else fromWikidata += 1;
 
   const check = app.checkSupplierNameZh(found.name, english);
@@ -349,12 +393,13 @@ say("");
 say(`games in this pass: ${games.length}`);
 say(`  from Nintendo Hong Kong: ${fromHongKong}`);
 say(`  from Wikidata: ${fromWikidata}`);
+say(`  from Chinese Wikipedia: ${fromWikipedia}`);
 say(`  no source, left empty: ${noSource}`);
 say(`  could not ask, left untouched: ${unreachable}`);
 say(`  rows written: ${written}`);
 say("");
 say("Names are never printed here. Read them in the admin screen, which is the only place they are meant to be readable.");
 
-if (fromHongKong + fromWikidata + noSource + unreachable !== games.length) {
+if (fromHongKong + fromWikidata + fromWikipedia + noSource + unreachable !== games.length) {
   throw new Error("the tallies do not add up to the number of games — refusing to report a pass that lost rows");
 }
