@@ -71,11 +71,20 @@ jobs:
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          CLOUDFLARE_D1_DATABASE_ID: ${{ secrets.CLOUDFLARE_D1_DATABASE_ID }}
+          D1_DATABASE_ID: ${{ secrets.CLOUDFLARE_D1_DATABASE_ID }}
           # Passed through the environment, never interpolated into the shell.
           APPLY: ${{ inputs.apply }}
           LIMIT: ${{ inputs.limit }}
         run: |
+          # `CLOUDFLARE_D1_DATABASE_ID` is not a secret this repository has set,
+          # so the database it points at is read out of `wrangler.jsonc` — the
+          # same fallback `catalogue-review.yml` uses, and the same database the
+          # Worker itself is bound to.
+          if [ -z "$D1_DATABASE_ID" ]; then
+            D1_DATABASE_ID=$(node -e "const s=require('fs').readFileSync('wrangler.jsonc','utf8');console.log(/\"database_id\":\s*\"([0-9a-f-]+)\"/.exec(s)[1])")
+            export D1_DATABASE_ID
+            echo "D1_DATABASE_ID taken from wrangler.jsonc"
+          fi
           args=""
           if [ "$APPLY" = "true" ]; then args="$args --apply"; fi
           if [ -n "$LIMIT" ]; then args="$args --limit=$LIMIT"; fi
