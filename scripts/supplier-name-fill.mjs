@@ -64,6 +64,12 @@ const UPDATED_BY = "supplier-name-fill";
 const flag = (name, fallback) =>
   (process.argv.find((a) => a.startsWith(`--${name}=`)) ?? `--${name}=${fallback}`).split("=")[1];
 const APPLY = process.argv.includes("--apply");
+/*
+  Turns "every game has a name" from a number in a report into a gate. Without
+  it a run that silently left a third of the shelf empty exits 0 and looks like
+  a success.
+*/
+const REQUIRE_COMPLETE = process.argv.includes("--require-complete");
 const LIMIT = Number(flag("limit", "0"));
 const OFFSET = Math.max(0, Number(flag("offset", "0")) || 0);
 const ONLY = flag("only", "")
@@ -392,4 +398,14 @@ say("Names are never printed here. Read them in the admin screen, which is the o
 
 if (fromCurated + fromHongKong + fromWikidata + noSource + unreachable !== games.length) {
   throw new Error("the tallies do not add up to the number of games — refusing to report a pass that lost rows");
+}
+
+if (REQUIRE_COMPLETE && (noSource > 0 || unreachable > 0)) {
+  say("");
+  for (const row of report) {
+    if (!row.filled) say(`  still empty: ${row.english || row.id}`);
+  }
+  throw new Error(
+    `${noSource + unreachable} of ${games.length} games have no Chinese name — the fill is not complete`,
+  );
 }
