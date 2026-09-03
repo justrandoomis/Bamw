@@ -10,6 +10,7 @@
  */
 
 import { isOfflineAccountSelection } from "../offlineAccount";
+import { resolveUnitPrice } from "../productPricing";
 import { getProductCategory, type CategoryType } from "../productSection";
 import type { ReferralSettings } from "./config";
 import { percentToBps, toBps } from "./money";
@@ -61,6 +62,13 @@ export interface ReferralLineSelection {
   optionName?: string | null;
   typeId?: string | null;
   typeName?: string | null;
+  /*
+    The edition and the add-ons, which decide the price as much as the option
+    does — an offline account *with DLC* is the selection this programme was
+    written for, and it does not cost the record's headline price.
+  */
+  editionId?: string | null;
+  dlcIds?: readonly string[] | null;
   offerKind?: string | null;
 }
 
@@ -187,14 +195,22 @@ export function evaluateReferralLine(params: {
   }
 
   /*
-    The price is the catalogue's.
+    The price is the catalogue's, for what was actually chosen.
 
     Read from the product rather than the line on purpose: callers that reach
     here from a request deliberately zero the line's price so a browser cannot
     influence it, and judging eligibility on that zero would refuse every
-    referral applied from the cart.
+    referral applied from the cart. Resolved through the same function that
+    prices the quote and charges the order, so a product priced only on its
+    options — nothing on the record's `price` field — is not read as having no
+    price and refused.
   */
-  const catalogPrice = Number(product["price"] ?? 0);
+  const catalogPrice = resolveUnitPrice(product, {
+    optionId: line.optionId ?? null,
+    typeId: line.typeId ?? null,
+    editionId: line.editionId ?? null,
+    dlcIds: line.dlcIds ?? null,
+  }).unitPrice;
   if (!(catalogPrice > 0) && !(Number(line.unitPriceIqd) > 0)) {
     return { ...rated, reason: "no_price" };
   }
