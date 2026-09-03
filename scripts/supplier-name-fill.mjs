@@ -268,13 +268,12 @@ async function resolveFromWikidata(englishTitle) {
   a disambiguation page and `Hades` is a Greek god; following either would put a
   god's name on a game order.
 */
+
 /* Why this source refused, counted by step. No titles, no names — just tallies. */
 const wikipediaRefusals = new Map();
 
-async function resolveFromWikipedia(englishTitle) {
-  const title = baseTitle(englishTitle);
-  if (!title) return null;
-
+/** One title against English Wikipedia, and the borrowed identity check. */
+async function askWikipedia(title) {
   const got = await fetchJson(langlinkUrl(title));
   if (!got.ok) return { failed: true, why: `wikipedia HTTP ${got.status}` };
 
@@ -311,6 +310,29 @@ async function resolveFromWikipedia(englishTitle) {
     itemId: link.itemId,
     sourceUrl: link.sourceUrl,
   };
+}
+
+async function resolveFromWikipedia(englishTitle) {
+  const title = baseTitle(englishTitle);
+  if (!title) return null;
+
+  const first = await askWikipedia(title);
+  if (first) return first;
+
+  /*
+    The same second question the Wikidata source asks, and leaving it out here
+    was an oversight worth 26 of the 51 games this source refused: English
+    Wikipedia has no article called `Cyberpunk 2077: Ultimate Edition`, and one
+    called `Cyberpunk 2077`. The full title still goes first, for the same
+    reason — some editions have an article of their own.
+  */
+  for (const candidate of editionFallbacks(title).slice(0, 3)) {
+    await pause(150);
+    const next = await askWikipedia(candidate);
+    if (next?.failed) return next;
+    if (next) return { ...next, searchedAs: candidate };
+  }
+  return null;
 }
 
 /* ------------------------------------------------------------------- the pass */
