@@ -23,7 +23,7 @@
 import { env } from "./env.server";
 import { getAdminTelegramChatId } from "./telegram-notifications.server";
 
-export type AdminNotificationKind = "order" | "wallet" | "support";
+export type AdminNotificationKind = "order" | "wallet" | "support" | "general";
 
 export interface AdminRoute {
   chatId: string;
@@ -57,35 +57,45 @@ const PREFIX: Record<AdminNotificationKind, string> = {
   order: "🧾 الطلبات",
   wallet: "💳 المحفظة",
   support: "💬 الدعم",
-};
-
-const TOPIC_VAR: Record<AdminNotificationKind, string> = {
-  order: "TELEGRAM_ORDERS_TOPIC_ID",
-  wallet: "TELEGRAM_WALLET_TOPIC_ID",
-  support: "TELEGRAM_SUPPORT_TOPIC_ID",
+  general: "📢 عام",
 };
 
 /**
  * The destination for one kind of admin notification.
  *
- * Falls back to the single admin chat when no group is configured, so the
- * shop keeps being notified between this shipping and the secret being set.
+ * Three answers in order, and the order is the point:
+ *
+ *   1. what the group taught us, via `/bind_*`;
+ *   2. what the environment says, so a deployment can be pinned;
+ *   3. the single admin chat, so the shop keeps being notified while neither
+ *      of the first two has an answer yet.
+ *
+ * The binding wins over the environment because it is the one a person proved
+ * by sending a message from inside the topic. A stale `TELEGRAM_*_TOPIC_ID`
+ * left over from an earlier group would otherwise quietly outrank it.
  */
-export function adminRoute(kind: AdminNotificationKind): AdminRoute {
-  const group = read("TELEGRAM_ADMIN_GROUP_ID");
-  if (!group) {
+export async function adminRoute(kind: AdminNotificationKind): Promise<AdminRoute> {
+  const { readBindings, envBinding } = await import("./telegram-bindings.server");
+
+  const bindings = await readBindings();
+  const bound = bindings.get(kind);
+  const from = bound
+    ? { chatId: bound.chatId, messageThreadId: bound.messageThreadId }
+    : envBinding(kind);
+
+  if (!from?.chatId) {
     return { chatId: getAdminTelegramChatId(), prefix: PREFIX[kind], isGroup: false };
   }
-  const thread = topicId(TOPIC_VAR[kind]);
+
   return {
-    chatId: group,
-    ...(thread ? { messageThreadId: thread } : {}),
+    chatId: from.chatId,
+    ...(from.messageThreadId ? { messageThreadId: from.messageThreadId } : {}),
     /*
       No prefix inside a topic. The topic's own name already says which kind
       this is, and a repeated header costs the first line of every card in a
       list people scan quickly.
     */
-    prefix: thread ? "" : PREFIX[kind],
+    prefix: from.messageThreadId ? "" : PREFIX[kind],
     isGroup: true,
   };
 }

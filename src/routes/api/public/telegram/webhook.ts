@@ -178,6 +178,29 @@ async function handleUpdate(update: any) {
   const fromId = msg.from?.id || chatId;
   const text = String(msg.text || "").trim();
 
+  /*
+    Group traffic, handled before the private-only gate below drops it.
+
+    That gate is right for the member flow — a bot that answers in a group is a
+    bot anyone can make talk — but the admin group is where the operators now
+    work, and everything they send there arrived here and was thrown away. The
+    binding commands and the support replies both live in this branch.
+  */
+  if (msg.chat.type === "group" || msg.chat.type === "supergroup") {
+    const { handleBindingCommand } = await import("@/lib/telegram-binding-commands.server");
+    const bind = await handleBindingCommand(msg);
+    if (bind.handled) {
+      if (bind.reason !== "bound") {
+        console.warn("[telegram:bind] refused", { reason: bind.reason });
+      }
+      return;
+    }
+
+    const { handleAdminGroupReply } = await import("@/lib/telegram-support-reply.server");
+    await handleAdminGroupReply(msg, update?.update_id);
+    return;
+  }
+
   if (msg.chat.type !== "private" || String(msg.from?.id) !== String(chatId)) return;
 
   // Operator commands run before the member flow — including the channel

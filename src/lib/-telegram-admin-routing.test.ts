@@ -27,6 +27,18 @@ vi.mock("./telegram-notifications.server", () => ({
   getAdminTelegramChatId: () => "6404042791",
 }));
 
+/*
+  No bindings in this file. `adminRoute` asks D1 first now — an admin sending
+  `/bind_wallet` in a topic is a better answer than a secret somebody typed —
+  and falls through to the environment when there are none, which is what these
+  cases exercise.
+*/
+vi.mock("./d1.server", () => ({
+  d1All: async () => [],
+  d1First: async () => undefined,
+  d1Run: async () => undefined,
+}));
+
 let routing: typeof import("./telegram-admin-routing.server");
 
 beforeEach(async () => {
@@ -42,7 +54,7 @@ describe("adminRoute", () => {
       silently stops notifying anybody the instant it ships is worse than the
       problem it fixes.
     */
-    const route = routing.adminRoute("order");
+    const route = await routing.adminRoute("order");
     expect(route.chatId).toBe("6404042791");
     expect(route.isGroup).toBe(false);
     expect(route.messageThreadId).toBeUndefined();
@@ -57,13 +69,13 @@ describe("adminRoute", () => {
     vi.resetModules();
     routing = await import("./telegram-admin-routing.server");
 
-    expect(routing.adminRoute("order")).toMatchObject({
+    expect(await routing.adminRoute("order")).toMatchObject({
       chatId: "-1001234567890",
       messageThreadId: 11,
       isGroup: true,
     });
-    expect(routing.adminRoute("wallet").messageThreadId).toBe(22);
-    expect(routing.adminRoute("support").messageThreadId).toBe(33);
+    expect((await routing.adminRoute("wallet")).messageThreadId).toBe(22);
+    expect((await routing.adminRoute("support")).messageThreadId).toBe(33);
   });
 
   it("drops the prefix inside a topic and keeps it without one", async () => {
@@ -74,9 +86,9 @@ describe("adminRoute", () => {
     vi.resetModules();
     routing = await import("./telegram-admin-routing.server");
 
-    expect(routing.adminRoute("order").prefix).toBe("");
+    expect((await routing.adminRoute("order")).prefix).toBe("");
     // No topic configured for wallet: the prefix is what separates them.
-    const wallet = routing.adminRoute("wallet");
+    const wallet = await routing.adminRoute("wallet");
     expect(wallet.messageThreadId).toBeUndefined();
     expect(wallet.prefix).toContain("المحفظة");
     expect(routing.withRoutePrefix(wallet, "x")).toContain("المحفظة");
@@ -89,7 +101,7 @@ describe("adminRoute", () => {
     SECRETS["TELEGRAM_ORDERS_TOPIC_ID"] = "-1001234567890";
     vi.resetModules();
     routing = await import("./telegram-admin-routing.server");
-    expect(routing.adminRoute("order").messageThreadId).toBeUndefined();
+    expect((await routing.adminRoute("order")).messageThreadId).toBeUndefined();
   });
 });
 

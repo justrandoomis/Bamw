@@ -114,13 +114,20 @@ function buildInlineAppButton(text: string, startParam: string, fallbackPath = "
  * customer's message — the send is a notification about the thing, not the
  * thing itself.
  */
+export interface AdminNotificationResult {
+  ok: boolean;
+  /** Where it landed, so a reply to it can be traced back. */
+  chatId?: string;
+  messageId?: number;
+}
+
 export async function sendAdminNotification(
   kind: AdminNotificationKind,
   text: string,
   options: Record<string, unknown> = {},
-): Promise<boolean> {
-  const route = adminRoute(kind);
-  if (!route.chatId) return false;
+): Promise<AdminNotificationResult> {
+  const route = await adminRoute(kind);
+  if (!route.chatId) return { ok: false };
 
   /*
     A group is forwardable, searchable, and joined by whoever is added next.
@@ -131,7 +138,7 @@ export async function sendAdminNotification(
   const forbidden = findForbiddenSecret(text);
   if (forbidden) {
     console.error("[telegram:admin_notification_blocked]", { kind, forbidden });
-    return false;
+    return { ok: false };
   }
 
   try {
@@ -142,18 +149,32 @@ export async function sendAdminNotification(
     });
     if (!res.ok) {
       console.warn("[telegram:admin_notification_failed]", { kind, error: res.error });
+      return { ok: false };
     }
-    return res.ok;
+    /*
+      The message id is what a reply in Telegram carries back, and it is the
+      only thing that can say which customer an admin is answering. Discarding
+      it — which this used to do, returning a bare boolean — is what made
+      replying from Telegram impossible.
+    */
+    const messageId = Number(
+      (res as { result?: { message_id?: unknown } }).result?.message_id,
+    );
+    return {
+      ok: true,
+      chatId: route.chatId,
+      ...(Number.isSafeInteger(messageId) && messageId > 0 ? { messageId } : {}),
+    };
   } catch (err) {
     console.error("[telegram:admin_notification_threw]", { kind, err });
-    return false;
+    return { ok: false };
   }
 }
 
 export async function notifyAdminNewOrder(params: {
   order: Order;
   user: { id: string; name?: string; phone?: string; email?: string; username?: string };
-}): Promise<boolean> {
+}): Promise<AdminNotificationResult> {
   const { order, user } = params;
 
   const hasDigital = order.items.some(
@@ -212,9 +233,9 @@ export async function notifyAdminCustomerMessage(params: {
   thread: { id: string; subject?: string; orderId?: string; chatType?: string };
   message: { text?: string; imageUrl?: string; senderRole: string };
   user: { id: string; name?: string; phone?: string; username?: string };
-}): Promise<boolean> {
+}): Promise<AdminNotificationResult> {
   const { thread, message, user } = params;
-  if (message.senderRole !== "user") return false;
+  if (message.senderRole !== "user") return { ok: false };
 
 
   const customerName = escapeHtml(user.name || user.username || "عميل بنانا");
@@ -236,7 +257,30 @@ export async function notifyAdminCustomerMessage(params: {
     `/chat?threadId=${thread.id}`,
   );
 
-  return sendAdminNotification("support", messageText, { reply_markup: replyMarkup });
+  const sent = await sendAdminNotification("support", messageText, {
+    reply_markup: replyMarkup,
+  });
+
+  /*
+    Remember which customer this card is about.
+
+    `reply_to_message.message_id` is the only thing an admin's reply in Telegram
+    carries that says which conversation they are answering. Without this row a
+    reply has nowhere to go, and guessing from the topic would send one customer
+    another customer's answer.
+  */
+  if (sent.ok && sent.chatId && sent.messageId) {
+    const { rememberSupportLink } = await import("./telegram-support-reply.server");
+    await rememberSupportLink({
+      telegramChatId: sent.chatId,
+      telegramMessageId: sent.messageId,
+      conversationId: thread.id,
+      userId: user.id,
+      ...(thread.orderId ? { orderId: thread.orderId } : {}),
+    });
+  }
+
+  return sent;
 }
 
 /**
@@ -297,7 +341,7 @@ export async function notifyAdminHumanSupportRequest(params: {
   user: { id: string; name?: string; username?: string };
   /** What the customer was talking about when they asked. Optional. */
   lastUserText?: string;
-}): Promise<boolean> {
+}): Promise<AdminNotificationResult> {
   const { threadId, user } = params;
   const who = escapeHtml(user.name || user.username || user.id);
 
@@ -334,7 +378,7 @@ export async function notifyAdminWalletTopUp(params: {
   method: string;
   user: { id: string; name?: string; phone?: string };
   proofUrl?: string;
-}): Promise<boolean> {
+}): Promise<AdminNotificationResult> {
   const { requestId, amount, method, user, proofUrl } = params;
 
   const customerName = escapeHtml(user.name || "عميل بنانا");
@@ -365,10 +409,11 @@ export async function notifyAdminWalletTopUp(params: {
 /**
  * Notify Admin when a user submits a game request.
  */
+/* Game requests are an administrative ask, not an order. They go to General. */
 export async function notifyAdminGameRequest(params: {
   request: ProductRequest;
   user: { id: string; name?: string; phone?: string };
-}): Promise<boolean> {
+}): Promise<AdminNotificationResult> {
   const { request, user } = params;
 
   const customerName = escapeHtml(user.name || "عميل بنانا");
@@ -390,7 +435,7 @@ export async function notifyAdminGameRequest(params: {
     `/admin`,
   );
 
-  return sendAdminNotification("order", messageText, { reply_markup: replyMarkup });
+  return sendAdminNotification("general", messageText, { reply_markup: replyMarkup });
 }
 
 /**
@@ -403,7 +448,7 @@ export async function notifyAdminDiscTrade(params: {
   finalIqd?: number | null;
   isCustom?: boolean;
   user: { id: string; name?: string; phone?: string };
-}): Promise<boolean> {
+}): Promise<AdminNotificationResult> {
   const { tradeId, gameName, platform, finalIqd, isCustom, user } = params;
 
   const customerName = escapeHtml(user.name || "عميل بنانا");
@@ -426,7 +471,7 @@ export async function notifyAdminDiscTrade(params: {
     `/trade`,
   );
 
-  return sendAdminNotification("order", messageText, { reply_markup: replyMarkup });
+  return sendAdminNotification("general", messageText, { reply_markup: replyMarkup });
 }
 
 /**
@@ -444,7 +489,7 @@ export async function notifyAdminUsedListing(params: {
   conditionGrade?: string | null;
   usedType?: string | null;
   user: { id: string; name?: string; phone?: string };
-}): Promise<boolean> {
+}): Promise<AdminNotificationResult> {
   const { listingId, title, priceIqd, conditionGrade, usedType, user } = params;
 
   const messageText =
@@ -458,7 +503,7 @@ export async function notifyAdminUsedListing(params: {
 
   const replyMarkup = buildInlineAppButton(`🔍 مراجعة العرض`, `used_${listingId}`, `/admin`);
 
-  return sendAdminNotification("order", messageText, { reply_markup: replyMarkup });
+  return sendAdminNotification("general", messageText, { reply_markup: replyMarkup });
 }
 
 /* =========================================================================

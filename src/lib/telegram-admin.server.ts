@@ -62,12 +62,59 @@ export function isAdminPrivateMessage(message: unknown): boolean {
  * who tapped, which is not necessarily the person the message was sent to — an
  * operator's message forwarded into a group would otherwise let anyone there
  * press "approve".
+ *
+ * `adminGroupId` widens it to exactly one group and no other. Without it this
+ * refused every press outside a private chat, which was correct while the
+ * notifications went to a private chat and becomes a silent outage the moment
+ * they go to the group: every "approve" on a top-up would answer "هذا الزر لم
+ * يعد متاحاً" and no top-up would ever be credited again.
+ *
+ * Being in the group is still not authority. The presser's own Telegram id has
+ * to be an operator's, which is what stops anyone the owner adds to the group
+ * from approving payments.
  */
-export function isAdminCallback(callback: unknown): boolean {
+export function isAdminCallback(callback: unknown, adminGroupId?: string): boolean {
   const query = callback as
-    | { from?: { id?: unknown; is_bot?: boolean }; message?: { chat?: { type?: string } } }
+    | {
+        from?: { id?: unknown; is_bot?: boolean };
+        message?: { chat?: { id?: unknown; type?: string } };
+      }
     | undefined;
   if (!query?.from || query.from.is_bot) return false;
-  if (query.message?.chat && query.message.chat.type !== "private") return false;
+  const chat = query.message?.chat;
+  if (chat && chat.type !== "private" && !isAdminGroupChat(chat, adminGroupId)) return false;
   return isTelegramAdmin(query.from.id);
+}
+
+/** Is this chat the one group the shop has bound its admin topics to? */
+export function isAdminGroupChat(
+  chat: { id?: unknown; type?: string } | undefined,
+  adminGroupId?: string,
+): boolean {
+  const wanted = String(adminGroupId ?? "").trim();
+  if (!wanted) return false;
+  if (chat?.type !== "group" && chat?.type !== "supergroup") return false;
+  return String(chat?.id ?? "").trim() === wanted;
+}
+
+/**
+ * An operator acting in the admin group.
+ *
+ * The private-chat rule cannot be reused here: it demands `chat.id === from.id`,
+ * which is what proves a private chat belongs to its sender and is never true
+ * in a group. What proves it here instead is that the chat is the one bound
+ * group and the sender is an operator.
+ */
+export function isAdminGroupMessage(message: unknown, adminGroupId?: string): boolean {
+  const msg = message as
+    | { chat?: { id?: unknown; type?: string }; from?: { id?: unknown; is_bot?: boolean } }
+    | undefined;
+  if (!msg?.from || msg.from.is_bot) return false;
+  if (!isAdminGroupChat(msg.chat, adminGroupId)) return false;
+  return isTelegramAdmin(msg.from.id);
+}
+
+/** An operator acting anywhere the bot accepts administration: private, or the group. */
+export function isAdminActor(message: unknown, adminGroupId?: string): boolean {
+  return isAdminPrivateMessage(message) || isAdminGroupMessage(message, adminGroupId);
 }
