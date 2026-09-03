@@ -4,18 +4,22 @@
  *
  * ## Where the name comes from
  *
- * Nintendo's own Hong Kong catalogue, which publishes a Chinese name per SKU
- * and is the only source here that can be pointed at afterwards. A machine
- * translation is not a source, and a name nobody can trace back is worse than
- * a blank: a blank shows up in the admin report as work to do, while a wrong
- * name gets an order placed for the wrong game.
+ * Two sources, in this order, and nothing else. A machine translation is not a
+ * source: a name nobody can trace back is worse than a blank, because a blank
+ * shows up in the admin report as work to do while a wrong name gets an order
+ * placed for the wrong game.
  *
- * The match is on the English title, normalised the same way
- * `scripts/lib/region-language.mjs` normalises it for the language audit —
- * punctuation, trademark signs and case removed — and on the Latin name a
- * Chinese title carries in brackets. A game with no entry in that catalogue is
- * reported as `missing` and left alone. It is never filled in from the English
- * title, and never guessed at.
+ * 1. **Nintendo Hong Kong**, the storefront the game is actually sold from,
+ *    matched on the English title the way the language audit matches it.
+ * 2. **Wikidata**, for everything the first cannot reach — which is nearly all
+ *    of it. Hong Kong writes its Chinese-named games in Chinese on every field
+ *    and our catalogue is titled in English, so the first run against
+ *    production matched 0 of 143 games. Wikidata is reachable from an English
+ *    title by construction, publishes `zh-hans` separately from `zh-hant`, and
+ *    gives a URL per item that a person can open and check.
+ *
+ * A game neither source answers for is left empty and reported. It is never
+ * filled in from the English title, and never guessed at.
  *
  * ## Every row is written `needs_review`
  *
@@ -44,6 +48,12 @@ import { readFileSync } from "node:fs";
 import path from "node:path";
 
 import { hkNameIndex, matchSupplierName } from "./lib/supplier-name-source.mjs";
+import {
+  baseTitle,
+  entitiesUrl,
+  pickWikidataName,
+  searchUrl,
+} from "./lib/supplier-name-wikidata.mjs";
 
 const HK_INDEX = "data/nintendo-hong-kong-languages.json";
 const UPDATED_BY = "supplier-name-fill";
@@ -133,6 +143,56 @@ if (!Array.isArray(hk?.titles) || !hk.titles.length) {
 const byTitle = hkNameIndex(hk.titles);
 say(`Hong Kong catalogue entries: ${hk.titles.length} · index keys: ${byTitle.size} · built ${hk.builtAt}`);
 
+/* ------------------------------------------------------- Wikidata, by title */
+/*
+  Nintendo Hong Kong is the better source and reaches almost none of this
+  shelf: it writes its Chinese-named games in Chinese on every field, our
+  catalogue is titled in English, and the first run against production matched
+  0 of 143. Wikidata is reachable from an English title by construction, and
+  every rule in `supplier-name-wikidata.mjs` is a way of refusing a wrong item.
+*/
+const UA =
+  "bananto-supplier-names/1.0 (https://github.com/justrandoomis/Bamw) node-fetch";
+
+async function fetchJson(url, timeout = 20_000) {
+  const ctl = new AbortController();
+  const timer = setTimeout(() => ctl.abort(), timeout);
+  try {
+    const res = await fetch(url, {
+      headers: { "user-agent": UA, accept: "application/json" },
+      signal: ctl.signal,
+    });
+    if (!res.ok) return null;
+    return await res.json();
+  } catch {
+    return null;
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
+/* Wikidata asks for an unhurried caller; this is two requests a game. */
+const pause = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+async function resolveFromWikidata(englishTitle) {
+  const title = baseTitle(englishTitle);
+  if (!title) return null;
+
+  const found = await fetchJson(searchUrl(title));
+  const ids = (found?.search ?? []).map((hit) => hit?.id).filter(Boolean).slice(0, 5);
+  if (!ids.length) return null;
+
+  await pause(150);
+  const got = await fetchJson(entitiesUrl(ids));
+  if (!got?.entities) return null;
+
+  /*
+    Matched against the base title, not the shelf title: `Hollow Knight switch 1`
+    is this shop's way of saying which console, and no item is named that.
+  */
+  return pickWikidataName(got.entities, title);
+}
+
 /* ------------------------------------------------------------------- the pass */
 const table = await app.d1All(
   "SELECT name FROM sqlite_master WHERE type = 'table' AND name = 'product_admin_metadata'",
@@ -144,37 +204,56 @@ if (!table.length) {
 }
 
 const report = [];
-let matched = 0;
-let noChineseName = 0;
-let notInCatalogue = 0;
+let fromHongKong = 0;
+let fromWikidata = 0;
+let noSource = 0;
 let written = 0;
 
 for (const game of games) {
   const id = String(game.id);
   const english = String(game.titleEn || game.title || "").trim();
-  const hit = matchSupplierName(game, byTitle);
 
-  if (hit.outcome === "not_in_catalogue") {
-    notInCatalogue += 1;
-    report.push({ id, slug: game.slug ?? "", english, outcome: "not in Nintendo Hong Kong's catalogue" });
+  /*
+    Nintendo's own storefront first, whenever it can be reached: it is the
+    catalogue the game is actually sold from. Wikidata answers for the rest.
+  */
+  const hkHit = matchSupplierName(game, byTitle);
+  let found = hkHit.outcome === "found" ? { ...hkHit, source: "Nintendo Hong Kong" } : null;
+  if (!found) {
+    const wd = await resolveFromWikidata(english);
+    if (wd) found = { ...wd, source: `Wikidata ${wd.itemId} (${wd.lang})` };
+    await pause(150);
+  }
+
+  if (!found) {
+    noSource += 1;
+    const why =
+      hkHit.outcome === "latin_name"
+        ? "Hong Kong sells it in Latin, and Wikidata has no Chinese name for it"
+        : "no Chinese name in either source";
+    report.push({ id, english, outcome: why, filled: false });
     continue;
   }
-  if (hit.outcome === "latin_name") {
-    noChineseName += 1;
-    report.push({ id, slug: game.slug ?? "", english, outcome: "Hong Kong sells it under a Latin name" });
-    continue;
-  }
 
-  matched += 1;
-  const check = app.checkSupplierNameZh(hit.name, english);
-  const outcome = check.ok ? "candidate found" : `candidate found (${check.reason})`;
-  report.push({ id, slug: game.slug ?? "", english, outcome });
+  if (found.source === "Nintendo Hong Kong") fromHongKong += 1;
+  else fromWikidata += 1;
+
+  const check = app.checkSupplierNameZh(found.name, english);
+  const note = check.ok ? "" : ` — ${check.reason}`;
+  const searched = baseTitle(english);
+  const asked = searched === english ? "" : ` [searched as "${searched}"]`;
+  report.push({
+    id,
+    english,
+    outcome: `${found.source}${note}${asked}`,
+    filled: true,
+  });
 
   if (APPLY) {
     await app.writeSupplierNameZh({
       productId: id,
-      supplierNameZhCn: hit.name,
-      sourceUrl: hit.sourceUrl,
+      supplierNameZhCn: found.name,
+      sourceUrl: found.sourceUrl,
       /*
         Never `verified`. This matched a title against a catalogue; it did not
         check the name against the supplier's own listing, which is what that
@@ -193,17 +272,17 @@ say("");
 say(APPLY ? "APPLIED" : "DRY RUN — nothing was written");
 say("");
 for (const row of report) {
-  say(`${row.outcome === "not in Nintendo Hong Kong's catalogue" ? "·" : "✓"} ${row.english || row.slug || row.id} — ${row.outcome}`);
+  say(`${row.filled ? "\u2713" : "\u00b7"} ${row.english || row.id} \u2014 ${row.outcome}`);
 }
 say("");
 say(`games: ${games.length}`);
-say(`  candidate found: ${matched}`);
-say(`  Hong Kong sells under a Latin name: ${noChineseName}`);
-say(`  not in Hong Kong's catalogue: ${notInCatalogue}`);
+say(`  from Nintendo Hong Kong: ${fromHongKong}`);
+say(`  from Wikidata: ${fromWikidata}`);
+say(`  no source, left empty: ${noSource}`);
 say(`  rows written: ${written}`);
 say("");
 say("Names are never printed here. Read them in the admin screen, which is the only place they are meant to be readable.");
 
-if (matched + noChineseName + notInCatalogue !== games.length) {
+if (fromHongKong + fromWikidata + noSource !== games.length) {
   throw new Error("the tallies do not add up to the number of games — refusing to report a pass that lost rows");
 }
