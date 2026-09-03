@@ -1,0 +1,98 @@
+# Fills the Chinese supplier name for the games in the catalogue.
+#
+# Dry run by default. `apply` is a separate input that has to be chosen, and it
+# writes to exactly one table — `product_admin_metadata`. No product document,
+# price, cost, stock, option, type, trade-in value or order is written.
+#
+# The log carries product ids, English titles and counts. It never carries a
+# Chinese name: this repository is public, and the name is admin-only by
+# design. The names are read back in the admin screen, behind `requireAdmin`.
+name: Supplier names
+
+on:
+  workflow_dispatch:
+    inputs:
+      apply:
+        description: "Write the rows. Leave off for a dry run that reports what would be written."
+        type: boolean
+        default: false
+      limit:
+        description: "How many games this run should look at (blank = all)"
+        required: false
+        default: ""
+      offset:
+        description: "Skip this many games first, so a long fill can be run in batches"
+        required: false
+        default: ""
+  # Runs when the fill itself is pushed to the working branch, so the dry-run
+  # report is available without waiting for it to reach `main`. A push can only
+  # ever dry-run: `apply` comes from `inputs`, which a push does not carry.
+  push:
+    branches: [claude/gaming-platform-issues-keb1be]
+    paths:
+      - .github/workflows/supplier-names.yml
+      - scripts/supplier-name-fill.mjs
+      - scripts/lib/supplier-name-source.mjs
+      - scripts/lib/supplier-name-wikidata.mjs
+
+permissions:
+  contents: read
+
+concurrency:
+  group: supplier-names
+  cancel-in-progress: false
+
+jobs:
+  fill:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      # Node 22 ships npm 10, which cannot install this project: resolving
+      # vitest's peer set crashes its dependency solver. See `ci.yml`.
+      - run: npm install -g npm@11.19.1
+
+      - run: npm ci --no-audit --no-fund
+
+      # Belt and braces. Actions masks values referenced through `secrets.*`
+      # already; this also masks them if a tool prints one itself.
+      - name: Mask identifiers
+        env:
+          ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          DATABASE_ID: ${{ secrets.CLOUDFLARE_D1_DATABASE_ID }}
+        run: |
+          echo "::add-mask::$ACCOUNT_ID"
+          echo "::add-mask::$DATABASE_ID"
+
+      - name: Fill the supplier names
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          D1_DATABASE_ID: ${{ secrets.CLOUDFLARE_D1_DATABASE_ID }}
+          # Passed through the environment, never interpolated into the shell.
+          APPLY: ${{ inputs.apply }}
+          LIMIT: ${{ inputs.limit }}
+          OFFSET: ${{ inputs.offset }}
+        run: |
+          # `CLOUDFLARE_D1_DATABASE_ID` is not a secret this repository has set,
+          # so the database it points at is read out of `wrangler.jsonc` — the
+          # same fallback `catalogue-review.yml` uses, and the same database the
+          # Worker itself is bound to.
+          if [ -z "$D1_DATABASE_ID" ]; then
+            D1_DATABASE_ID=$(node -e "const s=require('fs').readFileSync('wrangler.jsonc','utf8');console.log(/\"database_id\":\s*\"([0-9a-f-]+)\"/.exec(s)[1])")
+            export D1_DATABASE_ID
+            echo "D1_DATABASE_ID taken from wrangler.jsonc"
+          fi
+          args=""
+          if [ "$APPLY" = "true" ]; then args="$args --apply"; fi
+          if [ -n "$LIMIT" ]; then args="$args --limit=$LIMIT"; fi
+          if [ -n "$OFFSET" ]; then args="$args --offset=$OFFSET"; fi
+          node scripts/supplier-name-fill.mjs $args
