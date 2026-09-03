@@ -380,7 +380,14 @@ export async function handleAdminCallback(callback: any): Promise<boolean> {
   const data = String(callback?.data ?? "");
   if (!data.startsWith("rq:") && !data.startsWith("adm:")) return false;
 
-  if (!isAdminCallback(callback)) {
+  /*
+    The group the shop has bound its topics to, so a press there counts. Without
+    it every approve and reject in the group is refused — which is where they
+    all are, now that the notifications carrying these buttons go to the group.
+  */
+  const { boundGroupId } = await import("./telegram-bindings.server");
+  const adminGroup = await boundGroupId();
+  if (!isAdminCallback(callback, adminGroup)) {
     if (callback?.id) {
       await answerCallbackQuery(callback.id, { text: "هذا الزر لم يعد متاحاً." });
     }

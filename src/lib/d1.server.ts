@@ -493,6 +493,54 @@ const SCHEMA: string[] = [
     updated_at TEXT NOT NULL)`,
   `CREATE INDEX IF NOT EXISTS product_admin_metadata_status_idx
      ON product_admin_metadata (supplier_name_zh_verification_status)`,
+
+  /*
+    Where each kind of admin notification goes, learned from the group rather
+    than configured. A `message_thread_id` is not a number Telegram shows
+    anyone, so asking the owner for four of them means asking them to inspect
+    raw updates — and a typo would bind the wallet topic to the order topic
+    with nothing to say so until money landed in the wrong place. An admin
+    sending `/bind_wallet` in the topic carries both numbers already, proven.
+
+    One row per kind, so re-binding moves the traffic instead of duplicating it.
+  */
+  `CREATE TABLE IF NOT EXISTS telegram_topic_bindings (
+    kind TEXT PRIMARY KEY,
+    chat_id TEXT NOT NULL,
+    message_thread_id INTEGER,
+    bound_by TEXT,
+    bound_at TEXT NOT NULL)`,
+
+  /*
+    The thread a support notification belongs to, so a reply in Telegram can
+    find its way back to the right conversation and the right member.
+
+    Keyed by the message id the bot posted in the group: that is what
+    `reply_to_message.message_id` carries, and it is the only thing linking an
+    admin's reply to the customer it answers. Without it a reply has nowhere to
+    go, and guessing from the topic would send one customer another's answer.
+  */
+  `CREATE TABLE IF NOT EXISTS telegram_support_links (
+    telegram_chat_id TEXT NOT NULL,
+    telegram_message_id INTEGER NOT NULL,
+    conversation_id TEXT NOT NULL,
+    user_id TEXT NOT NULL,
+    order_id TEXT,
+    created_at TEXT NOT NULL,
+    PRIMARY KEY (telegram_chat_id, telegram_message_id))`,
+  `CREATE INDEX IF NOT EXISTS telegram_support_links_conversation_idx
+     ON telegram_support_links (conversation_id)`,
+
+  /*
+    Updates already acted on, so a Telegram retry cannot credit a wallet twice
+    or post the same reply again. Telegram retries an update whenever the
+    webhook does not answer 200 quickly enough, which is exactly when the
+    handler is slow because it is doing the work.
+  */
+  `CREATE TABLE IF NOT EXISTS telegram_processed_updates (
+    update_id TEXT PRIMARY KEY,
+    kind TEXT NOT NULL,
+    processed_at TEXT NOT NULL)`,
   `CREATE TABLE IF NOT EXISTS product_requests (
     id TEXT PRIMARY KEY, user_id TEXT NOT NULL, request_type TEXT NOT NULL,
     product_name TEXT NOT NULL, game_id TEXT, platform TEXT, product_category TEXT,
@@ -1920,7 +1968,7 @@ export function ensureCouponsSchema(): Promise<void> {
 // Bumped whenever SCHEMA_PATCHES gains a statement existing databases need.
 // The stamp below short-circuits the bootstrap, so a new patch is invisible to
 // already-deployed databases until this number moves.
-const RUNTIME_SCHEMA_VERSION = 23;
+const RUNTIME_SCHEMA_VERSION = 24;
 
 async function runSchemaStatements(
   db: D1Like,
