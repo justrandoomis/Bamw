@@ -464,6 +464,35 @@ const SCHEMA: string[] = [
   `CREATE INDEX IF NOT EXISTS referral_identity_links_hash_idx ON referral_identity_links (kind, identity_hash)`,
   `CREATE TABLE IF NOT EXISTS referral_blocklist (
     user_id TEXT PRIMARY KEY, reason TEXT, blocked_by TEXT, created_at TEXT NOT NULL)`,
+  /*
+    Admin-only facts about a product, kept out of the product document.
+
+    The Chinese supplier name is what an order is actually placed with, and it
+    must never reach a customer, a public API, the search index or a cached
+    page. It could have been a field on the product with a name on the redaction
+    list — but every public path would then have to remember to strip it, and
+    the one that forgets is the one that leaks. In its own table it is excluded
+    by construction: `toPublicProduct` never sees it because `getStore` never
+    loads it.
+
+    `verification_status` is the gate the import rules turn on:
+      - `verified`      a source was checked and agrees
+      - `needs_review`  a name exists but nobody has confirmed it
+      - `missing`       no name yet
+    A product imported without a verified name stays hidden until an admin
+    fills it in.
+  */
+  `CREATE TABLE IF NOT EXISTS product_admin_metadata (
+    product_id TEXT PRIMARY KEY,
+    supplier_name_zh_cn TEXT,
+    supplier_name_zh_source_url TEXT,
+    supplier_name_zh_verification_status TEXT NOT NULL DEFAULT 'missing',
+    supplier_name_zh_verified_at TEXT,
+    updated_by TEXT,
+    created_at TEXT NOT NULL,
+    updated_at TEXT NOT NULL)`,
+  `CREATE INDEX IF NOT EXISTS product_admin_metadata_status_idx
+     ON product_admin_metadata (supplier_name_zh_verification_status)`,
   `CREATE TABLE IF NOT EXISTS product_requests (
     id TEXT PRIMARY KEY, user_id TEXT NOT NULL, request_type TEXT NOT NULL,
     product_name TEXT NOT NULL, game_id TEXT, platform TEXT, product_category TEXT,
@@ -1891,7 +1920,7 @@ export function ensureCouponsSchema(): Promise<void> {
 // Bumped whenever SCHEMA_PATCHES gains a statement existing databases need.
 // The stamp below short-circuits the bootstrap, so a new patch is invisible to
 // already-deployed databases until this number moves.
-const RUNTIME_SCHEMA_VERSION = 22;
+const RUNTIME_SCHEMA_VERSION = 23;
 
 async function runSchemaStatements(
   db: D1Like,

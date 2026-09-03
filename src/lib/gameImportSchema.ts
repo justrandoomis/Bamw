@@ -67,6 +67,28 @@ export const GAME_IMPORT_SCHEMA: FieldDef[] = [
   { key: "name", type: "string", target: "title", required: true, description: "اسم اللعبة" },
   { key: "title", type: "string", target: "title", description: "اسم اللعبة (بديل لـ name)" },
   { key: "title_ar", type: "string", target: "titleAr", description: "اسم اللعبة بالعربية" },
+  /*
+    The Chinese supplier name — admin and fulfilment only.
+
+    `target` is deliberately a name nothing on the product document uses:
+    the value is lifted out of the parsed record by the importer and written
+    to `product_admin_metadata`, which no public serializer reads. It is
+    declared here so the template asks for it and the parser accepts it, not
+    so it can live on the product.
+  */
+  {
+    key: "supplier_name_zh_cn",
+    type: "string",
+    target: "supplierNameZhCn",
+    description:
+      "الاسم الصيني المبسّط لدى المورّد — إداري وسري، لا يظهر للعميل إطلاقاً",
+  },
+  {
+    key: "supplier_name_zh_source_url",
+    type: "string",
+    target: "supplierNameZhSourceUrl",
+    description: "رابط مصدر الاسم الصيني (نينتندو الرسمي أو الناشر)",
+  },
   { key: "name_ar", type: "string", target: "titleAr", description: "اسم اللعبة بالعربية" },
   {
     key: "slug",

@@ -84,6 +84,7 @@ import { Route as ApiAdminImportGameRouteImport } from './routes/api.admin.impor
 import { Route as ApiAdminKnowledgeBaseRouteImport } from './routes/api/admin/knowledge-base'
 import { Route as ApiAdminMigrateImagesRouteImport } from './routes/api/admin/migrate-images'
 import { Route as ApiAdminOrdersRouteImport } from './routes/api/admin.orders'
+import { Route as ApiAdminProductMetadataRouteImport } from './routes/api/admin/product-metadata'
 import { Route as ApiAdminProductsRouteImport } from './routes/api/admin/products'
 import { Route as ApiAdminPurgeRouteImport } from './routes/api/admin/purge'
 import { Route as ApiAdminReferralsRouteImport } from './routes/api/admin/referrals'
@@ -503,6 +504,11 @@ const ApiAdminOrdersRoute = ApiAdminOrdersRouteImport.update({
   path: '/api/admin/orders',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiAdminProductMetadataRoute = ApiAdminProductMetadataRouteImport.update({
+  id: '/api/admin/product-metadata',
+  path: '/api/admin/product-metadata',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ApiAdminProductsRoute = ApiAdminProductsRouteImport.update({
   id: '/api/admin/products',
   path: '/api/admin/products',
@@ -811,6 +817,7 @@ export interface FileRoutesByFullPath {
   '/api/admin/knowledge-base': typeof ApiAdminKnowledgeBaseRoute
   '/api/admin/migrate-images': typeof ApiAdminMigrateImagesRoute
   '/api/admin/orders': typeof ApiAdminOrdersRoute
+  '/api/admin/product-metadata': typeof ApiAdminProductMetadataRoute
   '/api/admin/products': typeof ApiAdminProductsRouteWithChildren
   '/api/admin/purge': typeof ApiAdminPurgeRoute
   '/api/admin/referrals': typeof ApiAdminReferralsRoute
@@ -931,6 +938,7 @@ export interface FileRoutesByTo {
   '/api/admin/knowledge-base': typeof ApiAdminKnowledgeBaseRoute
   '/api/admin/migrate-images': typeof ApiAdminMigrateImagesRoute
   '/api/admin/orders': typeof ApiAdminOrdersRoute
+  '/api/admin/product-metadata': typeof ApiAdminProductMetadataRoute
   '/api/admin/products': typeof ApiAdminProductsRouteWithChildren
   '/api/admin/purge': typeof ApiAdminPurgeRoute
   '/api/admin/referrals': typeof ApiAdminReferralsRoute
@@ -1052,6 +1060,7 @@ export interface FileRoutesById {
   '/api/admin/knowledge-base': typeof ApiAdminKnowledgeBaseRoute
   '/api/admin/migrate-images': typeof ApiAdminMigrateImagesRoute
   '/api/admin/orders': typeof ApiAdminOrdersRoute
+  '/api/admin/product-metadata': typeof ApiAdminProductMetadataRoute
   '/api/admin/products': typeof ApiAdminProductsRouteWithChildren
   '/api/admin/purge': typeof ApiAdminPurgeRoute
   '/api/admin/referrals': typeof ApiAdminReferralsRoute
@@ -1174,6 +1183,7 @@ export interface FileRouteTypes {
     | '/api/admin/knowledge-base'
     | '/api/admin/migrate-images'
     | '/api/admin/orders'
+    | '/api/admin/product-metadata'
     | '/api/admin/products'
     | '/api/admin/purge'
     | '/api/admin/referrals'
@@ -1294,6 +1304,7 @@ export interface FileRouteTypes {
     | '/api/admin/knowledge-base'
     | '/api/admin/migrate-images'
     | '/api/admin/orders'
+    | '/api/admin/product-metadata'
     | '/api/admin/products'
     | '/api/admin/purge'
     | '/api/admin/referrals'
@@ -1414,6 +1425,7 @@ export interface FileRouteTypes {
     | '/api/admin/knowledge-base'
     | '/api/admin/migrate-images'
     | '/api/admin/orders'
+    | '/api/admin/product-metadata'
     | '/api/admin/products'
     | '/api/admin/purge'
     | '/api/admin/referrals'
@@ -1535,6 +1547,7 @@ export interface RootRouteChildren {
   ApiAdminKnowledgeBaseRoute: typeof ApiAdminKnowledgeBaseRoute
   ApiAdminMigrateImagesRoute: typeof ApiAdminMigrateImagesRoute
   ApiAdminOrdersRoute: typeof ApiAdminOrdersRoute
+  ApiAdminProductMetadataRoute: typeof ApiAdminProductMetadataRoute
   ApiAdminProductsRoute: typeof ApiAdminProductsRouteWithChildren
   ApiAdminPurgeRoute: typeof ApiAdminPurgeRoute
   ApiAdminReferralsRoute: typeof ApiAdminReferralsRoute
@@ -2095,6 +2108,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiAdminOrdersRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/admin/product-metadata': {
+      id: '/api/admin/product-metadata'
+      path: '/api/admin/product-metadata'
+      fullPath: '/api/admin/product-metadata'
+      preLoaderRoute: typeof ApiAdminProductMetadataRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api/admin/products': {
       id: '/api/admin/products'
       path: '/api/admin/products'
@@ -2537,6 +2557,7 @@ const rootRouteChildren: RootRouteChildren = {
   ApiAdminKnowledgeBaseRoute: ApiAdminKnowledgeBaseRoute,
   ApiAdminMigrateImagesRoute: ApiAdminMigrateImagesRoute,
   ApiAdminOrdersRoute: ApiAdminOrdersRoute,
+  ApiAdminProductMetadataRoute: ApiAdminProductMetadataRoute,
   ApiAdminProductsRoute: ApiAdminProductsRouteWithChildren,
   ApiAdminPurgeRoute: ApiAdminPurgeRoute,
   ApiAdminReferralsRoute: ApiAdminReferralsRoute,
