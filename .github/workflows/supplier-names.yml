@@ -91,8 +91,13 @@ jobs:
             export D1_DATABASE_ID
             echo "D1_DATABASE_ID taken from wrangler.jsonc"
           fi
+          # `--require-complete` makes "every game has a name" a gate: the run
+          # fails, and names the games, rather than reporting a number nobody
+          # reads. It is only meaningful over the whole shelf, so a batch run
+          # is exempt.
           args=""
           if [ "$APPLY" = "true" ]; then args="$args --apply"; fi
+          if [ -z "$LIMIT" ] && [ -z "$OFFSET" ]; then args="$args --require-complete"; fi
           if [ -n "$LIMIT" ]; then args="$args --limit=$LIMIT"; fi
           if [ -n "$OFFSET" ]; then args="$args --offset=$OFFSET"; fi
           node scripts/supplier-name-fill.mjs $args

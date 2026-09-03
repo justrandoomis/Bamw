@@ -20,6 +20,8 @@ import { toast } from "sonner";
 import type { Order } from "@/lib/types";
 import type { DeliveryItemStatus } from "@/lib/digital-delivery-state";
 
+import { SupplierNameCopy, copySilently } from "./SupplierNameCopy";
+
 interface DeliveryItemView {
   id: string;
   orderId: string;
@@ -144,48 +146,6 @@ async function readJsonResponse(response: Response): Promise<DeliveryActionRespo
     throw new Error(payload.error || payload.code || "تعذر حفظ بيانات التسليم في D1");
   }
   return payload;
-}
-
-/**
- * Put text on the clipboard without telling anybody.
- *
- * No icon, no tooltip, no toast, no change of colour: an admin clicks the game
- * name and the Chinese supplier name is on the clipboard. The point is speed
- * during fulfilment — a confirmation would be one more thing to dismiss on
- * every line of every order.
- *
- * `navigator.clipboard` needs a secure context and is refused outright by some
- * mobile browsers inside a modal, so the textarea path is kept as the
- * fallback. It is deliberately off-screen rather than hidden: an element with
- * `display:none` cannot be selected, which is why the obvious version of this
- * trick silently does nothing on Safari.
- */
-async function copySilently(text: string): Promise<boolean> {
-  if (!text) return false;
-  try {
-    if (navigator.clipboard?.writeText) {
-      await navigator.clipboard.writeText(text);
-      return true;
-    }
-  } catch {
-    // Denied or unavailable — fall through rather than give up.
-  }
-  try {
-    const area = document.createElement("textarea");
-    area.value = text;
-    area.setAttribute("readonly", "");
-    area.style.position = "fixed";
-    area.style.top = "-1000px";
-    area.style.opacity = "0";
-    document.body.appendChild(area);
-    area.select();
-    area.setSelectionRange(0, text.length);
-    const ok = document.execCommand("copy");
-    document.body.removeChild(area);
-    return ok;
-  } catch {
-    return false;
-  }
 }
 
 /** The parts of a selection worth a line on a card, already joined. */
@@ -435,27 +395,29 @@ export function AccountToolsModal({
     [orderItemById],
   );
 
-  /**
-   * Copy the Chinese supplier name, silently.
-   *
-   * When there is no Chinese name the English title is *not* copied as a
-   * fallback: an order placed against an English title is an order placed for
-   * the wrong thing. Nothing goes on the clipboard and the gap is logged for
-   * an admin to fill in.
-   */
-  const copySupplierName = useCallback(
-    async (orderItemId: string | null) => {
+  const supplierNameFor = useCallback(
+    (orderItemId: string | null) => {
       const item = orderItemId ? orderItemById.get(orderItemId) : undefined;
-      const name = item?.supplierNameZhCn ?? "";
-      if (!name) {
-        console.warn("[delivery:supplier_name_zh_missing]", {
-          orderItemId,
-          productId: item?.productId ?? "",
-          productTitle: item?.productTitle ?? "",
-        });
-        return;
-      }
-      await copySilently(name);
+      return item?.supplierNameZhCn ?? "";
+    },
+    [orderItemById],
+  );
+
+  /**
+   * A game with no Chinese name yet.
+   *
+   * Logged, never shown. The admin is mid-delivery and cannot act on it there;
+   * an error on the screen would be noise, and copying the English title
+   * instead would place the order for the wrong game.
+   */
+  const reportMissingSupplierName = useCallback(
+    (orderItemId: string | null) => {
+      const item = orderItemId ? orderItemById.get(orderItemId) : undefined;
+      console.warn("[delivery:supplier_name_zh_missing]", {
+        orderItemId,
+        productId: item?.productId ?? "",
+        productTitle: item?.productTitle ?? "",
+      });
     },
     [orderItemById],
   );
@@ -609,9 +571,20 @@ export function AccountToolsModal({
     }
   };
 
+  /*
+    The credentials copy, which is the loud one on purpose — it has a button, a
+    tick and a toast, because an admin handing over an account needs to know it
+    landed. It goes through the same helper as the silent one only for the
+    fallback: `navigator.clipboard` is refused inside a modal on mobile Safari,
+    and this used to throw there and report success by showing the toast anyway.
+  */
   const copyValue = async (value: string, key: string) => {
     if (!value) return;
-    await navigator.clipboard.writeText(value);
+    const ok = await copySilently(value);
+    if (!ok) {
+      toast.error("تعذّر النسخ، انسخه يدويًا");
+      return;
+    }
     setCopied(key);
     toast.success("تم النسخ");
     setTimeout(() => setCopied(null), 1400);
@@ -811,29 +784,13 @@ export function AccountToolsModal({
                           : "border-border bg-card hover:bg-muted/50"
                       }`}
                     >
-                      <span
-                        role="button"
-                        tabIndex={0}
-                        onClick={(event) => {
-                          /*
-                            The name copies; it does not select the card.
-                            Without stopping the event it would bubble to the
-                            chip's own onClick and an admin trying to copy
-                            would change what they are looking at.
-                          */
-                          event.stopPropagation();
-                          void copySupplierName(item.orderItemId);
-                        }}
-                        onKeyDown={(event) => {
-                          if (event.key !== "Enter" && event.key !== " ") return;
-                          event.preventDefault();
-                          event.stopPropagation();
-                          void copySupplierName(item.orderItemId);
-                        }}
+                      <SupplierNameCopy
+                        supplierName={supplierNameFor(item.orderItemId)}
+                        onMissing={() => reportMissingSupplierName(item.orderItemId)}
                         className="block truncate text-[11px] font-bold text-foreground"
                       >
                         {item.productTitle}
-                      </span>
+                      </SupplierNameCopy>
                       <span className="mt-0.5 block text-[10px] text-muted-foreground">
                         #{item.slotNumber || 1} • {STATUS_LABEL[item.status]}
                       </span>
@@ -845,6 +802,9 @@ export function AccountToolsModal({
                       {selectionFor(item.orderItemId) ? (
                         <span className="mt-0.5 block truncate text-[10px] font-bold text-primary">
                           {selectionFor(item.orderItemId)}
+                          {quantityFor(item.orderItemId) > 1
+                            ? ` ×${quantityFor(item.orderItemId)}`
+                            : ""}
                         </span>
                       ) : null}
                     </button>
@@ -866,19 +826,13 @@ export function AccountToolsModal({
                           before — no icon, no tooltip, no colour change: the
                           only thing that happens is the clipboard.
                         */}
-                        <span
-                          role="button"
-                          tabIndex={0}
-                          onClick={() => void copySupplierName(selected.orderItemId)}
-                          onKeyDown={(event) => {
-                            if (event.key !== "Enter" && event.key !== " ") return;
-                            event.preventDefault();
-                            void copySupplierName(selected.orderItemId);
-                          }}
+                        <SupplierNameCopy
+                          supplierName={supplierNameFor(selected.orderItemId)}
+                          onMissing={() => reportMissingSupplierName(selected.orderItemId)}
                           className="min-w-0 truncate"
                         >
                           {selected.productTitle}
-                        </span>
+                        </SupplierNameCopy>
                       </div>
                       {/*
                         The selection, from the order's own snapshot — not from

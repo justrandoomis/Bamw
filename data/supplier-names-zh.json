@@ -1,0 +1,734 @@
+{
+  "note": "The Chinese name each game is ordered under at the supplier. Keyed by the shelf title exactly as the catalogue carries it. `source` is where the name was read; `status` is verified only where that source is the publisher, Nintendo, or a Chinese encyclopaedia entry for this exact game and edition. `latin: true` marks a game the Chinese market itself sells under a Latin name — asking a supplier for a Chinese one would not find it.",
+  "names": {
+    "1-2-Switch": {
+      "zh": "1-2-Switch",
+      "latin": true,
+      "source": "https://www.nintendo.com/hk/switch/1-2-switch/",
+      "status": "verified"
+    },
+    "A Plague Tale: Innocence - Cloud Version": {
+      "zh": "瘟疫传说：无罪 云版本",
+      "source": "https://indienova.com/game/a-plague-tale-innocence",
+      "status": "needs_review"
+    },
+    "Arcade Archives VS. SUPER MARIO BROS.": {
+      "zh": "Arcade Archives VS. 超级马力欧兄弟 (Arcade Archives VS. SUPER MARIO BROS.)",
+      "source": "https://www.arcadearchives.com/en/title/aca-061/",
+      "status": "needs_review"
+    },
+    "Assassin's Creed Shadows": {
+      "zh": "刺客信条：影",
+      "source": "https://baike.baidu.com/item/%E5%88%BA%E5%AE%A2%E4%BF%A1%E6%9D%A1%EF%BC%9A%E5%BD%B1/64413535",
+      "status": "verified"
+    },
+    "Bayonetta": {
+      "zh": "猎天使魔女",
+      "source": "https://baike.baidu.com/item/%E7%8C%8E%E5%A4%A9%E4%BD%BF%E9%AD%94%E5%A5%B3/4494528",
+      "status": "verified"
+    },
+    "Bayonetta 2": {
+      "zh": "猎天使魔女2",
+      "source": "https://zh.wikipedia.org/zh-cn/%E7%8C%8E%E5%A4%A9%E4%BD%BF%E9%AD%94%E5%A5%B3%E7%B3%BB%E5%88%97",
+      "status": "verified"
+    },
+    "Bayonetta 3": {
+      "zh": "猎天使魔女3",
+      "source": "https://baike.baidu.com/item/%E7%8C%8E%E5%A4%A9%E4%BD%BF%E9%AD%94%E5%A5%B33/16023481",
+      "status": "verified"
+    },
+    "Bayonetta Origins: Cereza and the Lost Demon": {
+      "zh": "贝优妮塔 起源：瑟蕾莎与迷失的恶魔",
+      "source": "https://zh.wikipedia.org/zh-cn/%E7%8C%8E%E5%A4%A9%E4%BD%BF%E9%AD%94%E5%A5%B3%E7%B3%BB%E5%88%97",
+      "status": "verified"
+    },
+    "BRAVELY DEFAULT FLYING FAIRY HD Remaster": {
+      "zh": "勇气默示录 FLYING FAIRY HD Remaster",
+      "source": "https://store.steampowered.com/app/2833580/BRAVELY_DEFAULT_FLYING_FAIRY_HD_Remaster/?l=schinese",
+      "status": "verified"
+    },
+    "Cuphead": {
+      "zh": "茶杯头",
+      "source": "https://store.steampowered.com/app/268910/Cuphead/?l=schinese",
+      "status": "verified"
+    },
+    "Cyberpunk 2077: Ultimate Edition [Switch 2]": {
+      "zh": "赛博朋克2077：终极版",
+      "source": "https://baike.baidu.com/item/%E8%B5%9B%E5%8D%9A%E6%9C%8B%E5%85%8B2077%EF%BC%9A%E7%BB%88%E6%9E%81%E7%89%88/65551339",
+      "status": "verified"
+    },
+    "DAVE THE DIVER – Nintendo Switch 2 Edition": {
+      "zh": "潜水员戴夫 Nintendo Switch 2 版",
+      "source": "https://ec.nintendo.com/HK/zh/titles/70010000111456",
+      "status": "verified"
+    },
+    "DELTARUNE": {
+      "zh": "三角符文",
+      "source": "https://zh.deltarune.wiki/w/%E4%B8%89%E8%A7%92%E7%AC%A6%E6%96%87_(%E5%82%B3%E8%AA%AA)",
+      "status": "verified"
+    },
+    "Devil May Cry 5 Devil Hunter Edition": {
+      "zh": "鬼泣5 恶魔猎人版",
+      "source": "https://www.nintendo.com/us/store/products/devil-may-cry-5-devil-hunter-edition-switch-2/",
+      "status": "needs_review"
+    },
+    "Donkey Kong Bananza [Switch 2]": {
+      "zh": "咚奇刚 蕉力全开",
+      "source": "https://www.nintendo.com/tw/games/switch2/aaaca/",
+      "status": "verified"
+    },
+    "Dragon Ball: Sparking! ZERO [Switch 2]": {
+      "zh": "七龙珠 电光炸裂！ZERO",
+      "source": "https://store.playstation.com/zh-hans-hk/concept/10007902",
+      "status": "verified"
+    },
+    "DYNASTY WARRIORS: ORIGINS": {
+      "zh": "真·三国无双 起源",
+      "source": "https://store.steampowered.com/dlc/2384580/DYNASTY_WARRIORS_ORIGINS/?l=schinese",
+      "status": "verified"
+    },
+    "EA SPORTS FC 24": {
+      "zh": "EA SPORTS FC 24",
+      "latin": true,
+      "source": "https://zh.wikipedia.org/zh-hans/EA_Sports_FC%E7%B3%BB%E5%88%97",
+      "status": "verified"
+    },
+    "EA SPORTS FC 25": {
+      "zh": "EA SPORTS FC 25",
+      "latin": true,
+      "source": "https://zh.wikipedia.org/zh-hans/EA_Sports_FC%E7%B3%BB%E5%88%97",
+      "status": "verified"
+    },
+    "EA SPORTS FC 26 switch 1": {
+      "zh": "EA SPORTS FC 26 (Nintendo Switch)",
+      "latin": true,
+      "source": "https://zh.wikipedia.org/zh-hans/EA_Sports_FC%E7%B3%BB%E5%88%97",
+      "status": "needs_review"
+    },
+    "EA SPORTS FC 26 switch 2": {
+      "zh": "EA SPORTS FC 26 (Nintendo Switch 2)",
+      "latin": true,
+      "source": "https://zh.wikipedia.org/zh-hans/EA_Sports_FC%E7%B3%BB%E5%88%97",
+      "status": "needs_review"
+    },
+    "EA SPORTS FC 27 switch 1": {
+      "zh": "EA SPORTS FC 27 (Nintendo Switch)",
+      "latin": true,
+      "source": "https://zh.wikipedia.org/zh-hans/EA_Sports_FC%E7%B3%BB%E5%88%97",
+      "status": "needs_review"
+    },
+    "EA SPORTS FC 27 switch 2": {
+      "zh": "EA SPORTS FC 27 (Nintendo Switch 2)",
+      "latin": true,
+      "source": "https://zh.wikipedia.org/zh-hans/EA_Sports_FC%E7%B3%BB%E5%88%97",
+      "status": "needs_review"
+    },
+    "EA SPORTS FIFA 23 Nintendo Switch Legacy Edition": {
+      "zh": "EA SPORTS FIFA 23 Nintendo Switch 传承版",
+      "latin": true,
+      "source": "https://www.nintendo.com/us/whatsnew/available-now-ea-sports-fifa-23-nintendo-switch-legacy-edition/",
+      "status": "needs_review"
+    },
+    "eFootball Kick-Off!": {
+      "zh": "eFootball 实况足球 Kick-Off!",
+      "latin": true,
+      "source": "https://store.steampowered.com/app/1665460/eFootball/?l=schinese",
+      "status": "needs_review"
+    },
+    "ELDEN RING Tarnished Edition": {
+      "zh": "艾尔登法环 褪色者版",
+      "source": "https://heavyarm-asia.com/product/switch-2-elden-ring-tarnished-edition-english-chinese-%E8%89%BE%E7%88%BE%E7%99%BB%E6%B3%95%E7%92%B0-%E8%A4%AA%E8%89%B2%E8%80%85%E7%89%88/",
+      "status": "needs_review"
+    },
+    "Everybody 1-2-Switch!": {
+      "zh": "大家一起 1-2-Switch",
+      "source": "https://indienova.com/game/everybody-1-2-switch",
+      "status": "verified"
+    },
+    "Fallout 4: Anniversary Edition": {
+      "zh": "辐射4：周年纪念版",
+      "source": "https://www.gamersky.com/news/202510/2034046.shtml",
+      "status": "verified"
+    },
+    "FANTASY LIFE i: The Girl Who Steals Time": {
+      "zh": "幻想生活i 转圈圈的龙和偷取时间的少女",
+      "source": "https://www.gamersky.com/z/fantasyltfei/",
+      "status": "verified"
+    },
+    "FATAL FRAME II: Crimson Butterfly REMAKE": {
+      "zh": "零 ～红蝶～ 重制版",
+      "source": "https://indienova.com/game/fatal-frame-ii-crimson-butterfly-remake",
+      "status": "verified"
+    },
+    "FIFA 22 Nintendo Switch Legacy Edition": {
+      "zh": "FIFA 22 Nintendo Switch 传承版",
+      "latin": true,
+      "source": "https://zh.wikipedia.org/zh-hans/EA_Sports_FC%E7%B3%BB%E5%88%97",
+      "status": "needs_review"
+    },
+    "FINAL FANTASY TACTICS - The Ivalice Chronicles — Nintendo Switch 2 Edition": {
+      "zh": "最终幻想战略版：伊瓦利斯编年史 Nintendo Switch 2 版",
+      "source": "https://www.gamersky.com/z/final-fantasy-tactics-re/",
+      "status": "needs_review"
+    },
+    "FINAL FANTASY VI": {
+      "zh": "最终幻想6 像素复刻版",
+      "source": "https://ku.gamersky.com/2022/ff6/",
+      "status": "needs_review"
+    },
+    "FINAL FANTASY VII REMAKE INTERGRADE": {
+      "zh": "最终幻想7 重制版 INTERGRADE",
+      "source": "https://store.steampowered.com/app/1462040/FINAL_FANTASY_VII_REMAKE_INTERGRADE/?l=schinese",
+      "status": "verified"
+    },
+    "FINAL FANTASY VIII Remastered": {
+      "zh": "最终幻想8 重制版",
+      "source": "https://wap.gamersky.com/ku/final-fantasy-8-remake/",
+      "status": "needs_review"
+    },
+    "FINAL FANTASY XII THE ZODIAC AGE": {
+      "zh": "最终幻想12：黄道年代",
+      "source": "https://baike.baidu.com/item/%E6%9C%80%E7%BB%88%E5%B9%BB%E6%83%B312%EF%BC%9A%E9%BB%84%E9%81%93%E5%B9%B4%E4%BB%A3/22022564",
+      "status": "verified"
+    },
+    "Fitness Boxing 3: Your Personal Trainer": {
+      "zh": "健身拳击3：您的私人教练",
+      "source": "https://indienova.com/game/fitness-boxing-3-your-personal-trainer",
+      "status": "verified"
+    },
+    "Fitness Boxing 3: Your Personal Trainer — Nintendo Switch 2 Edition": {
+      "zh": "健身拳击3：您的私人教练 Nintendo Switch 2 版",
+      "source": "https://indienova.com/game/fitness-boxing-3-your-personal-trainer",
+      "status": "needs_review"
+    },
+    "Gear.Club Unlimited 3": {
+      "zh": "Gear.Club Unlimited 3",
+      "latin": true,
+      "source": "https://store.steampowered.com/app/3659460/GearClub_Unlimited_3/",
+      "status": "verified"
+    },
+    "Go-Go Town!": {
+      "zh": "Go-Go Town!",
+      "latin": true,
+      "source": "https://store.steampowered.com/app/2195120/GoGo_Town/",
+      "status": "verified"
+    },
+    "Go-Go Town! – Nintendo Switch 2 Edition": {
+      "zh": "Go-Go Town! (Nintendo Switch 2)",
+      "latin": true,
+      "source": "https://www.nintendo.com/us/store/products/go-go-town-nintendo-switch-2-edition-switch-2/",
+      "status": "needs_review"
+    },
+    "GRID Legends: Deluxe Edition": {
+      "zh": "超级房车赛 传奇 豪华版",
+      "source": "https://indienova.com/game/grid-legends-deluxe-edition",
+      "status": "verified"
+    },
+    "Hades": {
+      "zh": "哈迪斯",
+      "source": "https://store.steampowered.com/app/1145360/Hades/?l=schinese",
+      "status": "verified"
+    },
+    "Hades II – Nintendo Switch 2 Edition": {
+      "zh": "哈迪斯2 Nintendo Switch 2 版",
+      "source": "https://www.gamersky.com/z/hades2/",
+      "status": "needs_review"
+    },
+    "HITMAN World of Assassination - Signature Edition": {
+      "zh": "杀手：暗杀世界 签名版",
+      "source": "https://store.playstation.com/zh-hans-hk/product/UP4572-PPSA01768_00-WOADELUXEEDITION",
+      "status": "needs_review"
+    },
+    "Hogwarts Legacy": {
+      "zh": "霍格沃茨之遗",
+      "source": "https://store.steampowered.com/app/990080/_/?l=schinese",
+      "status": "verified"
+    },
+    "Hollow Knight switch 1": {
+      "zh": "空洞骑士",
+      "source": "https://hkss.huijiwiki.com/wiki/%E9%A6%96%E9%A1%B5",
+      "status": "verified"
+    },
+    "Hollow Knight: Silksong": {
+      "zh": "空洞骑士：丝之歌",
+      "source": "https://store.steampowered.com/app/1030300/Hollow_Knight_Silksong/?l=schinese",
+      "status": "verified"
+    },
+    "Hyrule Warriors: Age of Calamity": {
+      "zh": "塞尔达无双 灾厄启示录",
+      "source": "https://baike.baidu.com/item/%E5%A1%9E%E5%B0%94%E8%BE%BE%E6%97%A0%E5%8F%8C%EF%BC%9A%E7%81%BE%E5%8E%84%E9%BB%98%E7%A4%BA%E5%BD%95/63373838",
+      "status": "verified"
+    },
+    "Hyrule Warriors: Age of Imprisonment [Switch 2]": {
+      "zh": "ZELDA无双 封印战记",
+      "source": "https://www.nintendo.com/zh-hans-hk/games/switch2/aagab/",
+      "status": "verified"
+    },
+    "Hyrule Warriors: Definitive Edition": {
+      "zh": "塞尔达无双 海拉鲁全明星 DX",
+      "source": "https://zh.wikipedia.org/zh-hans/%E8%96%A9%E7%88%BE%E9%81%94%E7%84%A1%E9%9B%99",
+      "status": "needs_review"
+    },
+    "It Takes Two": {
+      "zh": "双人成行",
+      "source": "https://zh.wikipedia.org/zh-hans/%E5%8F%8C%E4%BA%BA%E6%88%90%E8%A1%8C",
+      "status": "verified"
+    },
+    "JUST DANCE 2026 EDITION": {
+      "zh": "舞力全开2026",
+      "source": "https://zh.wikipedia.org/wiki/%E8%88%9E%E5%8A%9B%E5%85%A8%E5%BC%802026",
+      "status": "verified"
+    },
+    "Kirby Air Riders": {
+      "zh": "星之卡比 气垫大战",
+      "source": "https://zh.wikipedia.org/zh-hans/%E6%98%9F%E4%B9%8B%E5%8D%A1%E6%AF%94%E7%B3%BB%E5%88%97",
+      "status": "verified"
+    },
+    "Layers of Fear: The Final Masterpiece Edition": {
+      "zh": "层层恐惧：最终杰作版",
+      "source": "https://indienova.com/game/layers-of-fear--1",
+      "status": "needs_review"
+    },
+    "Lies of P: Complete Edition": {
+      "zh": "匹诺曹的谎言：完全版",
+      "source": "https://baike.baidu.com/item/%E5%8C%B9%E8%AF%BA%E6%9B%B9%E7%9A%84%E8%B0%8E%E8%A8%80%EF%BC%9A%E5%AE%8C%E5%85%A8%E7%89%88/68451854",
+      "status": "verified"
+    },
+    "Little Nightmares I & II Bundle": {
+      "zh": "小小梦魇1+2 合集",
+      "source": "https://store.playstation.com/zh-hans-hk/product/HP5028-PPSA02215_00-LN1LN2BUNDLE0000",
+      "status": "verified"
+    },
+    "Little Nightmares III": {
+      "zh": "小小梦魇3",
+      "source": "https://store.steampowered.com/app/1392860/Little_Nightmares_III/?l=schinese",
+      "status": "verified"
+    },
+    "Luigi's Mansion 3": {
+      "zh": "路易吉洋馆3",
+      "source": "https://zh.moegirl.org.cn/%E8%B7%AF%E6%98%93%E5%90%89%E6%B4%8B%E9%A6%863",
+      "status": "verified"
+    },
+    "Mario & Sonic at the Olympic Games Tokyo 2020": {
+      "zh": "马力欧&索尼克 AT 2020东京奥运",
+      "source": "https://baike.baidu.com/item/%E9%A9%AC%E5%8A%9B%E6%AC%A7&%E7%B4%A2%E5%B0%BC%E5%85%8B%20AT%202020%E4%B8%9C%E4%BA%AC%E5%A5%A5%E8%BF%90/23696673",
+      "status": "verified"
+    },
+    "Mario + Rabbids Kingdom Battle": {
+      "zh": "马力欧+疯狂兔子 王国之战",
+      "source": "https://www.nintendoswitch.com.cn/software/70010000039538",
+      "status": "verified"
+    },
+    "Mario + Rabbids Sparks of Hope": {
+      "zh": "马力欧+疯狂兔子 星耀之愿",
+      "source": "https://zh.moegirl.org.cn/%E9%A9%AC%E5%8A%9B%E6%AC%A7+%E7%96%AF%E7%8B%82%E5%85%94%E5%AD%90_%E6%98%9F%E8%80%80%E4%B9%8B%E6%84%BF",
+      "status": "verified"
+    },
+    "Mario Golf: Super Rush": {
+      "zh": "马力欧高尔夫 超级冲冲冲",
+      "source": "https://baike.baidu.com/item/%E9%A9%AC%E5%8A%9B%E6%AC%A7%E9%AB%98%E5%B0%94%E5%A4%AB%EF%BC%9A%E8%B6%85%E7%BA%A7%E5%86%B2%E5%86%B2%E5%86%B2/56074938",
+      "status": "verified"
+    },
+    "Mario Kart 8 Deluxe": {
+      "zh": "马力欧卡丁车8 豪华版",
+      "source": "https://www.nintendoswitch.com.cn/software/70010000027090",
+      "status": "verified"
+    },
+    "Mario Kart World [Switch 2]": {
+      "zh": "马力欧卡丁车世界",
+      "source": "https://zh.moegirl.org.cn/%E9%A9%AC%E5%8A%9B%E6%AC%A7%E5%8D%A1%E4%B8%81%E8%BD%A6%E4%B8%96%E7%95%8C",
+      "status": "verified"
+    },
+    "Mario Party Superstars": {
+      "zh": "马力欧派对 超级巨星",
+      "source": "https://zh.moegirl.org.cn/%E9%A9%AC%E5%8A%9B%E6%AC%A7%E6%B4%BE%E5%AF%B9_%E8%B6%85%E7%BA%A7%E5%B7%A8%E6%98%9F",
+      "status": "verified"
+    },
+    "Mario Strikers: Battle League": {
+      "zh": "马力欧激战前锋 战斗联赛",
+      "source": "https://zh.wikipedia.org/zh-hans/%E7%91%AA%E5%88%A9%E6%AD%90%E6%BF%80%E6%88%B0%E5%89%8D%E9%8B%92_%E6%88%B0%E9%AC%A5%E8%81%AF%E8%B3%BD",
+      "status": "verified"
+    },
+    "Mario Tennis Aces": {
+      "zh": "马力欧网球 王牌高手",
+      "source": "https://zh.wikipedia.org/zh-hans/%E7%91%AA%E5%88%A9%E6%AD%90%E7%B6%B2%E7%90%83_%E7%8E%8B%E7%89%8C%E9%AB%98%E6%89%8B",
+      "status": "verified"
+    },
+    "Mario Tennis Fever": {
+      "zh": "马力欧网球 狂热",
+      "source": "https://zh.wikipedia.org/zh-hans/%E7%91%AA%E5%88%A9%E6%AD%90%E7%B6%B2%E7%90%83_%E7%8E%8B%E7%89%8C%E9%AB%98%E6%89%8B",
+      "status": "needs_review"
+    },
+    "Mario vs. Donkey Kong": {
+      "zh": "马力欧vs.咚奇刚",
+      "source": "https://baike.baidu.com/item/%E9%A9%AC%E5%8A%9B%E6%AC%A7vs.%E5%92%9A%E5%A5%87%E5%88%9A/63496287",
+      "status": "verified"
+    },
+    "Metroid Dread": {
+      "zh": "密特罗德 生存恐惧",
+      "source": "https://baike.baidu.com/item/%E5%AF%86%E7%89%B9%E7%BD%97%E5%BE%B7%EF%BC%9A%E7%94%9F%E5%AD%98%E6%81%90%E6%83%A7/58268960",
+      "status": "verified"
+    },
+    "Minecraft": {
+      "zh": "我的世界",
+      "source": "https://zh.minecraft.wiki/?variant=zh-cn",
+      "status": "verified"
+    },
+    "Monster Hunter Stories 3: Twisted Reflection": {
+      "zh": "怪物猎人物语3：命运双影",
+      "source": "https://www.gamersky.com/z/mhstories2/",
+      "status": "needs_review"
+    },
+    "New Super Mario Bros. U Deluxe": {
+      "zh": "新 超级马力欧兄弟U 豪华版",
+      "source": "https://www.nintendoswitch.com.cn/new_super_mario_bros_u_deluxe/pc/index.html",
+      "status": "verified"
+    },
+    "NieR:Automata The End of YoRHa Edition": {
+      "zh": "尼尔：机械纪元 寄叶版",
+      "source": "https://www.gamersky.com/z/nierautomata/",
+      "status": "needs_review"
+    },
+    "Nintendo Switch 2 Welcome Tour": {
+      "zh": "Nintendo Switch 2 欢迎旅行",
+      "source": "https://zh.moegirl.org.cn/%E4%BB%BB%E5%A4%A9%E5%A0%82%E5%AE%98%E6%96%B9%E4%B8%AD%E6%96%87%E5%8C%96%E6%B8%B8%E6%88%8F%E5%88%97%E8%A1%A8",
+      "status": "needs_review"
+    },
+    "Nintendo Switch Sports": {
+      "zh": "Nintendo Switch 运动",
+      "source": "https://indienova.com/game/nintendo-switch-sports",
+      "status": "verified"
+    },
+    "Paper Mario: The Origami King": {
+      "zh": "纸片马力欧：折纸国王",
+      "source": "https://baike.baidu.com/item/%E7%BA%B8%E7%89%87%E9%A9%AC%E5%8A%9B%E6%AC%A7%EF%BC%9A%E6%8A%98%E7%BA%B8%E5%9B%BD%E7%8E%8B/50087104",
+      "status": "verified"
+    },
+    "Paper Mario: The Thousand-Year Door": {
+      "zh": "纸片马力欧RPG：千年之门",
+      "source": "https://m.163.com/dy/article/J2SU4K9B0546ADLC.html",
+      "status": "verified"
+    },
+    "Persona 3 Portable": {
+      "zh": "女神异闻录3 携带版",
+      "source": "https://megamitensei.fandom.com/zh/wiki/%E5%A5%B3%E7%A5%9E%E5%BC%82%E9%97%BB%E5%BD%95%E7%B3%BB%E5%88%97",
+      "status": "verified"
+    },
+    "Persona 3 Reload [Switch 2]": {
+      "zh": "女神异闻录3 Reload",
+      "source": "https://store.steampowered.com/app/2161700/Persona_3_Reload/?l=schinese",
+      "status": "verified"
+    },
+    "Persona 4 Arena Ultimax": {
+      "zh": "女神异闻录4 无敌究极后桥背摔",
+      "source": "https://zh.wikipedia.org/zh-hans/%E5%A5%B3%E7%A5%9E%E7%95%B0%E8%81%9E%E9%8C%84%E7%B3%BB%E5%88%97",
+      "status": "needs_review"
+    },
+    "Persona 4 Golden": {
+      "zh": "女神异闻录4 黄金版",
+      "source": "https://megamitensei.fandom.com/zh/wiki/%E5%A5%B3%E7%A5%9E%E5%BC%82%E9%97%BB%E5%BD%95%E7%B3%BB%E5%88%97",
+      "status": "verified"
+    },
+    "Persona 5 Royal": {
+      "zh": "女神异闻录5 皇家版",
+      "source": "https://megamitensei.fandom.com/zh/wiki/%E5%A5%B3%E7%A5%9E%E5%BC%82%E9%97%BB%E5%BD%95%E7%B3%BB%E5%88%97",
+      "status": "verified"
+    },
+    "Persona 5 Strikers": {
+      "zh": "女神异闻录5 乱战：魅影攻手",
+      "source": "https://zh.wikipedia.org/zh-hans/%E5%A5%B3%E7%A5%9E%E7%95%B0%E8%81%9E%E9%8C%845_%E4%BA%82%E6%88%B0_%E9%AD%85%E5%BD%B1%E6%94%BB%E6%89%8B",
+      "status": "verified"
+    },
+    "Persona 5 Tactica": {
+      "zh": "女神异闻录5 战略版",
+      "source": "https://asia.sega.com/p5t/cn/",
+      "status": "verified"
+    },
+    "Phoenix Wright: Ace Attorney Trilogy": {
+      "zh": "逆转裁判123 成步堂精选集",
+      "source": "https://baike.baidu.com/item/%E9%80%86%E8%BD%AC%E8%A3%81%E5%88%A4123%EF%BC%9A%E6%88%90%E6%AD%A5%E5%A0%82%E7%B2%BE%E9%80%89%E9%9B%86/23309625",
+      "status": "verified"
+    },
+    "Pikmin 1+2": {
+      "zh": "皮克敏1+2",
+      "source": "https://zh.wikipedia.org/zh-hans/%E7%9A%AE%E5%85%8B%E6%95%8F%E7%B3%BB%E5%88%97",
+      "status": "verified"
+    },
+    "Pikmin 3 Deluxe": {
+      "zh": "皮克敏3 豪华版",
+      "source": "https://indienova.com/game/pikmin-3-deluxe",
+      "status": "verified"
+    },
+    "Pikmin 4": {
+      "zh": "皮克敏4",
+      "source": "https://zh.moegirl.org.cn/%E7%9A%AE%E5%85%8B%E6%95%8F4",
+      "status": "verified"
+    },
+    "Pokémon Pokopia [Switch 2]": {
+      "zh": "宝可梦Pokopia",
+      "source": "https://baike.baidu.com/item/%E5%AE%9D%E5%8F%AF%E6%A2%A6Pokopia/66759701",
+      "status": "verified"
+    },
+    "PRAGMATA": {
+      "zh": "PRAGMATA",
+      "latin": true,
+      "source": "https://store.playstation.com/en-hk/product/UP0102-PPSA02530_00-PRAGMATA00000000",
+      "status": "verified"
+    },
+    "RAIDOU Remastered: The Mystery of the Soulless Army": {
+      "zh": "葛叶雷道 复刻版：超力兵团奇谭",
+      "source": "https://www.91switch.com/articles/1478",
+      "status": "needs_review"
+    },
+    "Red Dead Redemption": {
+      "zh": "荒野大镖客：救赎",
+      "source": "https://zh.wikipedia.org/wiki/%E8%8D%92%E9%87%8E%E5%A4%A7%E9%95%96%E5%AE%A2%EF%BC%9A%E6%95%91%E8%B5%8E",
+      "status": "verified"
+    },
+    "Resident Evil Requiem [Switch 2]": {
+      "zh": "生化危机 安魂曲",
+      "source": "https://zh.wikipedia.org/zh-cn/%E6%83%A1%E9%9D%88%E5%8F%A4%E5%A0%A1_%E5%AE%89%E9%AD%82%E6%9B%B2",
+      "status": "verified"
+    },
+    "Rise of the Tomb Raider: 20 Year Celebration": {
+      "zh": "古墓丽影：崛起 20周年纪念版",
+      "source": "https://www.vgtime.com/game/4388.jhtml",
+      "status": "verified"
+    },
+    "Rotwood": {
+      "zh": "熔炉密林",
+      "source": "https://indienova.com/game/rotwood",
+      "status": "verified"
+    },
+    "Shadow Tactics: Blades of the Shogun": {
+      "zh": "影子战术：将军之刃",
+      "source": "https://baike.baidu.com/item/%E5%BD%B1%E5%AD%90%E6%88%98%E6%9C%AF%EF%BC%9A%E5%B0%86%E5%86%9B%E4%B9%8B%E5%88%83/20597478",
+      "status": "verified"
+    },
+    "Splatoon 3": {
+      "zh": "斯普拉遁3",
+      "source": "https://zh.wikipedia.org/zh-hans/%E6%96%AF%E6%99%AE%E6%8B%89%E9%81%81%E7%B3%BB%E5%88%97",
+      "status": "verified"
+    },
+    "Splatoon Raiders": {
+      "zh": "斯普拉遁 涂击队",
+      "source": "https://baike.baidu.com/item/%E6%96%AF%E6%99%AE%E6%8B%89%E9%81%81%CD%8F%20%E6%B6%82%E5%87%BB%E9%98%9F/67834602",
+      "status": "verified"
+    },
+    "Split Fiction": {
+      "zh": "双影奇境",
+      "source": "https://www.gameants.com/article-3803-1.html",
+      "status": "verified"
+    },
+    "Star Wars Outlaws Gold Edition": {
+      "zh": "星球大战：亡命之徒 黄金版",
+      "source": "https://store.playstation.com/zh-hans-hk/product/JP0001-PPSA08262_00-ULTIMATEDITION00",
+      "status": "needs_review"
+    },
+    "Stray": {
+      "zh": "迷失",
+      "source": "https://zh.wikipedia.org/zh-hans/%E8%BF%B7%E5%A4%B1_(%E6%B8%B8%E6%88%8F)",
+      "status": "verified"
+    },
+    "Stray switch 2": {
+      "zh": "迷失 (Nintendo Switch 2)",
+      "source": "https://zh.wikipedia.org/zh-hans/%E8%BF%B7%E5%A4%B1_(%E6%B8%B8%E6%88%8F)",
+      "status": "needs_review"
+    },
+    "Street Fighter 6: Years 1-2 Fighters Edition [Switch 2]": {
+      "zh": "街头霸王6 第1-2年格斗家版",
+      "source": "https://baike.baidu.com/item/%E8%A1%97%E5%A4%B4%E9%9C%B8%E7%8E%8B6/57343271",
+      "status": "needs_review"
+    },
+    "Super Mario 3D World + Bowser's Fury": {
+      "zh": "超级马力欧 3D世界 + 狂怒世界",
+      "source": "https://zh.wikipedia.org/zh-hans/%E8%B6%85%E7%B4%9A%E7%91%AA%E5%88%A9%E6%AD%903D%E4%B8%96%E7%95%8C+%E7%8B%82%E6%80%92%E4%B8%96%E7%95%8C",
+      "status": "verified"
+    },
+    "Super Mario Bros. Wonder": {
+      "zh": "超级马力欧兄弟 惊奇",
+      "source": "https://baike.baidu.com/item/%E8%B6%85%E7%BA%A7%E9%A9%AC%E5%8A%9B%E6%AC%A7%E5%85%84%E5%BC%9F%EF%BC%9A%E6%83%8A%E5%A5%87/63121811",
+      "status": "verified"
+    },
+    "Super Mario Bros.™ Wonder – Nintendo Switch™ 2 Edition + Meetup in Bellabel Park": {
+      "zh": "超级马力欧兄弟 惊奇 Nintendo Switch 2 版 + 百花公园大集合",
+      "source": "https://baike.baidu.com/item/%E8%B6%85%E7%BA%A7%E9%A9%AC%E5%8A%9B%E6%AC%A7%E5%85%84%E5%BC%9F%EF%BC%9A%E6%83%8A%E5%A5%87/63121811",
+      "status": "needs_review"
+    },
+    "Super Mario Galaxy + Super Mario Galaxy 2": {
+      "zh": "超级马力欧银河1+2 合集",
+      "source": "https://ku.gamersky.com/2025/super-mario-galaxy1-2/",
+      "status": "verified"
+    },
+    "Super Mario Odyssey": {
+      "zh": "超级马力欧 奥德赛",
+      "source": "https://baike.baidu.com/item/%E8%B6%85%E7%BA%A7%E9%A9%AC%E5%8A%9B%E6%AC%A7%EF%BC%9A%E5%A5%A5%E5%BE%B7%E8%B5%9B/49843629",
+      "status": "verified"
+    },
+    "Super Mario Party": {
+      "zh": "超级马力欧派对",
+      "source": "https://zh.moegirl.org.cn/%E8%B6%85%E7%BA%A7_%E9%A9%AC%E5%8A%9B%E6%AC%A7%E6%B4%BE%E5%AF%B9",
+      "status": "verified"
+    },
+    "Super Mario Party Jamboree": {
+      "zh": "超级马力欧派对 空前盛会",
+      "source": "https://ku.gamersky.com/2024/super-mario-party-jamboree/",
+      "status": "verified"
+    },
+    "Super Mario Party Jamboree – Nintendo Switch 2 Edition + Jamboree TV": {
+      "zh": "超级马力欧派对 空前盛会 Nintendo Switch 2 版 + 空前盛会TV",
+      "source": "https://ec.nintendo.com/HK/zh/titles/70010000096828",
+      "status": "verified"
+    },
+    "Super Mario RPG": {
+      "zh": "超级马力欧RPG",
+      "source": "https://zh.wikipedia.org/zh-cn/%E8%B6%85%E7%BA%A7%E9%A9%AC%E5%8A%9B%E6%AC%A7RPG",
+      "status": "verified"
+    },
+    "Super Smash Bros. Ultimate": {
+      "zh": "任天堂明星大乱斗 特别版",
+      "source": "https://zh.moegirl.org.cn/%E4%BB%BB%E5%A4%A9%E5%A0%82%E6%98%8E%E6%98%9F%E5%A4%A7%E4%B9%B1%E6%96%97_%E7%89%B9%E5%88%AB%E7%89%88",
+      "status": "verified"
+    },
+    "The Binding of Isaac: Afterbirth +": {
+      "zh": "以撒的结合：重生 胎衣+",
+      "source": "https://isaac.huijiwiki.com/wiki/%E9%A6%96%E9%A1%B5",
+      "status": "needs_review"
+    },
+    "The Hundred Line: Last Defense Academy": {
+      "zh": "百日战纪 -最终防卫学园-",
+      "source": "https://store.steampowered.com/app/3014080/HUNDRED_LINE/?l=schinese",
+      "status": "verified"
+    },
+    "The Legend of Zelda: Breath of the Wild switch 1": {
+      "zh": "塞尔达传说 旷野之息",
+      "source": "https://zh.wikipedia.org/wiki/%E5%A1%9E%E5%B0%94%E8%BE%BE%E4%BC%A0%E8%AF%B4_%E6%97%B7%E9%87%8E%E4%B9%8B%E6%81%AF",
+      "status": "verified"
+    },
+    "The Legend of Zelda: Breath of the Wild – Nintendo Switch 2 Edition": {
+      "zh": "塞尔达传说 旷野之息 Nintendo Switch 2 版",
+      "source": "https://zh.wikipedia.org/wiki/%E5%A1%9E%E5%B0%94%E8%BE%BE%E4%BC%A0%E8%AF%B4_%E6%97%B7%E9%87%8E%E4%B9%8B%E6%81%AF",
+      "status": "needs_review"
+    },
+    "The Legend of Zelda: Echoes of Wisdom": {
+      "zh": "塞尔达传说 智慧的再现",
+      "source": "https://baike.baidu.com/item/%E5%A1%9E%E5%B0%94%E8%BE%BE%E4%BC%A0%E8%AF%B4%CD%8F%20%E6%99%BA%E6%85%A7%E7%9A%84%E5%86%8D%E7%8E%B0/66924086",
+      "status": "verified"
+    },
+    "The Legend of Zelda: Link's Awakening": {
+      "zh": "塞尔达传说 织梦岛",
+      "source": "https://baike.baidu.com/item/%E5%A1%9E%E5%B0%94%E8%BE%BE%E4%BC%A0%E8%AF%B4%EF%BC%9A%E7%BB%87%E6%A2%A6%E5%B2%9B/23292271",
+      "status": "verified"
+    },
+    "The Legend of Zelda: Skyward Sword HD": {
+      "zh": "塞尔达传说 御天之剑HD",
+      "source": "https://www.gcores.com/articles/134120",
+      "status": "verified"
+    },
+    "The Legend of Zelda: Tears of the Kingdom switch 1": {
+      "zh": "塞尔达传说 王国之泪",
+      "source": "https://zh.wikipedia.org/wiki/%E8%96%A9%E7%88%BE%E9%81%94%E5%82%B3%E8%AA%AA_%E7%8E%8B%E5%9C%8B%E4%B9%8B%E6%B7%9A",
+      "status": "verified"
+    },
+    "The Legend of Zelda: Tears of the Kingdom — Nintendo Switch 2 Edition": {
+      "zh": "塞尔达传说 王国之泪 Nintendo Switch 2 版",
+      "source": "https://zh.wikipedia.org/wiki/%E8%96%A9%E7%88%BE%E9%81%94%E5%82%B3%E8%AA%AA_%E7%8E%8B%E5%9C%8B%E4%B9%8B%E6%B7%9A",
+      "status": "needs_review"
+    },
+    "The Witcher 3: Wild Hunt — Complete Edition": {
+      "zh": "巫师3：狂猎 完全版",
+      "source": "https://baike.baidu.com/item/%E5%B7%AB%E5%B8%883%EF%BC%9A%E7%8B%82%E7%8C%8E%E5%AE%8C%E5%85%A8%E7%89%88/23574201",
+      "status": "verified"
+    },
+    "The Witcher 3: Wild Hunt — Remastered": {
+      "zh": "巫师3：狂猎 重制版",
+      "source": "https://www.gamersky.com/news/202608/2196150.shtml",
+      "status": "verified"
+    },
+    "Tomb Raider: Definitive Edition switch 1&2": {
+      "zh": "古墓丽影 终极版",
+      "source": "https://www.vgtime.com/game/4388.jhtml",
+      "status": "needs_review"
+    },
+    "Tomodachi Life: Living the Dream": {
+      "zh": "Tomodachi Life 朋友收集 梦想生活",
+      "source": "https://zh.wikipedia.org/zh-cn/Tomodachi_Life_%E6%9C%8B%E5%8F%8B%E6%94%B6%E9%9B%86_%E5%A4%A2%E6%83%B3%E7%94%9F%E6%B4%BB",
+      "status": "verified"
+    },
+    "Two Point Museum": {
+      "zh": "双点博物馆",
+      "source": "https://store.steampowered.com/app/2185060/Two_Point_Museum/?l=schinese",
+      "status": "verified"
+    },
+    "Unravel Two": {
+      "zh": "毛线小精灵2",
+      "source": "https://www.d3x7.com/7772.html",
+      "status": "verified"
+    },
+    "Warhammer 40,000: Rogue Trader": {
+      "zh": "战锤40K：行商浪人",
+      "source": "https://zh.wikipedia.org/zh-hans/%E6%88%B0%E9%8E%9A40K%EF%BC%9A%E8%A1%8C%E5%95%86%E6%B5%AA%E4%BA%BA",
+      "status": "verified"
+    },
+    "Wolfenstein II: The New Colossus": {
+      "zh": "德军总部2：新巨人",
+      "source": "https://baike.baidu.com/item/%E5%BE%B7%E5%86%9B%E6%80%BB%E9%83%A82%EF%BC%9A%E6%96%B0%E5%B7%A8%E4%BA%BA/22027856",
+      "status": "verified"
+    },
+    "WORLD OF FINAL FANTASY MAXIMA": {
+      "zh": "最终幻想世界 Maxima",
+      "source": "https://indienova.com/game/world-of-final-fantasy-maxima",
+      "status": "verified"
+    },
+    "Xenoblade Chronicles 2": {
+      "zh": "异度神剑2",
+      "source": "https://baike.baidu.com/item/%E5%BC%82%E5%BA%A6%E7%A5%9E%E5%89%912/22164383",
+      "status": "verified"
+    },
+    "Xenoblade Chronicles 2 – Nintendo Switch 2 Edition": {
+      "zh": "异度神剑2 Nintendo Switch 2 版",
+      "source": "https://baike.baidu.com/item/%E5%BC%82%E5%BA%A6%E7%A5%9E%E5%89%912/22164383",
+      "status": "needs_review"
+    },
+    "Xenoblade Chronicles 3": {
+      "zh": "异度神剑3",
+      "source": "https://zh.wikipedia.org/zh-hans/%E5%BC%82%E5%BA%A6%E7%A5%9E%E5%89%91%E7%B3%BB%E5%88%97",
+      "status": "verified"
+    },
+    "Xenoblade Chronicles 3 – Nintendo Switch 2 Edition": {
+      "zh": "异度神剑3 Nintendo Switch 2 版",
+      "source": "https://zh.wikipedia.org/zh-hans/%E5%BC%82%E5%BA%A6%E7%A5%9E%E5%89%91%E7%B3%BB%E5%88%97",
+      "status": "needs_review"
+    },
+    "Xenoblade Chronicles X: Definitive Edition": {
+      "zh": "异度神剑X 终极版",
+      "source": "https://ku.gamersky.com/2025/xenoblade-x-definitive-edition/",
+      "status": "verified"
+    },
+    "Xenoblade Chronicles X: Definitive Edition – Nintendo Switch 2 Edition": {
+      "zh": "异度神剑X 终极版 Nintendo Switch 2 版",
+      "source": "https://ku.gamersky.com/2025/xenoblade-x-definitive-edition/",
+      "status": "needs_review"
+    },
+    "Xenoblade Chronicles: Definitive Edition": {
+      "zh": "异度神剑 终极版",
+      "source": "https://play.163.com/article/158912.html",
+      "status": "verified"
+    },
+    "Xenoblade Chronicles: Definitive Edition – Nintendo Switch 2 Edition": {
+      "zh": "异度神剑 终极版 Nintendo Switch 2 版",
+      "source": "https://play.163.com/article/158912.html",
+      "status": "needs_review"
+    },
+    "Yoshi and the Mysterious Book": {
+      "zh": "耀西与不可思议的图鉴",
+      "source": "https://zh.wikipedia.org/zh-hans/%E8%80%80%E8%A5%BF%E8%88%87%E4%B8%8D%E5%8F%AF%E6%80%9D%E8%AD%B0%E7%9A%84%E5%9C%96%E9%91%91",
+      "status": "verified"
+    },
+    "Ys X: Proud Nordics": {
+      "zh": "伊苏X -诺曼荣光-",
+      "source": "https://store.steampowered.com/app/3821790/Ys_X_Proud_Nordics/?l=schinese",
+      "status": "verified"
+    }
+  }
+}

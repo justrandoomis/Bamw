@@ -47,21 +47,29 @@ import { build } from "esbuild";
 import { readFileSync } from "node:fs";
 import path from "node:path";
 
+import { curatedIndex, curatedNameFor } from "./lib/supplier-name-curated.mjs";
 import { hkNameIndex, matchSupplierName } from "./lib/supplier-name-source.mjs";
 import {
   baseTitle,
+  editionFallbacks,
   entitiesUrl,
   pickWikidataName,
   searchUrl,
-  editionFallbacks,
 } from "./lib/supplier-name-wikidata.mjs";
 
+const CURATED = "data/supplier-names-zh.json";
 const HK_INDEX = "data/nintendo-hong-kong-languages.json";
 const UPDATED_BY = "supplier-name-fill";
 
 const flag = (name, fallback) =>
   (process.argv.find((a) => a.startsWith(`--${name}=`)) ?? `--${name}=${fallback}`).split("=")[1];
 const APPLY = process.argv.includes("--apply");
+/*
+  Turns "every game has a name" from a number in a report into a gate. Without
+  it a run that silently left a third of the shelf empty exits 0 and looks like
+  a success.
+*/
+const REQUIRE_COMPLETE = process.argv.includes("--require-complete");
 const LIMIT = Number(flag("limit", "0"));
 const OFFSET = Math.max(0, Number(flag("offset", "0")) || 0);
 const ONLY = flag("only", "")
@@ -140,6 +148,17 @@ if (OFFSET > 0 || LIMIT > 0) {
   say(`this batch: ${games.length} — from ${OFFSET + 1} to ${OFFSET + games.length}`);
 }
 if (!games.length) throw new Error("no games matched — refusing to report an empty pass as a fill");
+
+/* ------------------------------------------------- the curated names, first */
+const curatedFile = JSON.parse(readFileSync(CURATED, "utf8"));
+const { byTitle: curated, problems: curatedProblems } = curatedIndex(curatedFile);
+if (curatedProblems.length) {
+  for (const problem of curatedProblems) say(`curated entry refused — ${problem}`);
+  throw new Error(
+    `${curatedProblems.length} curated entries are malformed — refusing to write a half-read file`,
+  );
+}
+say(`curated names: ${Object.keys(curatedFile.names ?? {}).length}`);
 
 /* --------------------------------------------- Nintendo Hong Kong, by title */
 /*
@@ -267,6 +286,7 @@ if (!table.length) {
 }
 
 const report = [];
+let fromCurated = 0;
 let fromHongKong = 0;
 let fromWikidata = 0;
 let noSource = 0;
@@ -278,11 +298,24 @@ for (const game of games) {
   const english = String(game.titleEn || game.title || "").trim();
 
   /*
-    Nintendo's own storefront first, whenever it can be reached: it is the
+    The curated name first. It is the only source that knows which *edition* and
+    which console this line is, and those are what a supplier is handed. The
+    automated sources answer for the base game and cannot tell the Switch 1
+    release from the Switch 2 one.
+  */
+  const pick = curatedNameFor(game, curated);
+  let found = pick
+    ? { name: pick.name, sourceUrl: pick.sourceUrl, wants: pick.status, source: "curated" }
+    : null;
+
+  /*
+    Then Nintendo's own storefront, whenever it can be reached: it is the
     catalogue the game is actually sold from. Wikidata answers for the rest.
   */
-  const hkHit = matchSupplierName(game, byTitle);
-  let found = hkHit.outcome === "found" ? { ...hkHit, source: "Nintendo Hong Kong" } : null;
+  const hkHit = found ? { outcome: "skipped" } : matchSupplierName(game, byTitle);
+  if (!found && hkHit.outcome === "found") {
+    found = { ...hkHit, source: "Nintendo Hong Kong" };
+  }
   let failure = "";
   if (!found) {
     const wd = await resolveFromWikidata(english);
@@ -301,12 +334,13 @@ for (const game of games) {
     const why =
       hkHit.outcome === "latin_name"
         ? "Hong Kong sells it in Latin, and Wikidata has no Chinese name for it"
-        : "no Chinese name in either source";
+        : "no Chinese name in any source";
     report.push({ id, english, outcome: why, filled: false });
     continue;
   }
 
-  if (found.source === "Nintendo Hong Kong") fromHongKong += 1;
+  if (found.source === "curated") fromCurated += 1;
+  else if (found.source === "Nintendo Hong Kong") fromHongKong += 1;
   else fromWikidata += 1;
 
   const check = app.checkSupplierNameZh(found.name, english);
@@ -330,7 +364,13 @@ for (const game of games) {
         check the name against the supplier's own listing, which is what that
         status claims.
       */
-      status: "needs_review",
+      /*
+        `verified` only where the curated entry claims it, which means a person
+        checked that name against a source they named. Everything the automated
+        sources found stays `needs_review` — matching a title against a
+        catalogue is not the same as checking a supplier's own listing.
+      */
+      status: found.wants === "verified" ? "verified" : "needs_review",
       englishTitle: english,
       updatedBy: UPDATED_BY,
     });
@@ -347,6 +387,7 @@ for (const row of report) {
 }
 say("");
 say(`games in this pass: ${games.length}`);
+say(`  from the curated list: ${fromCurated}`);
 say(`  from Nintendo Hong Kong: ${fromHongKong}`);
 say(`  from Wikidata: ${fromWikidata}`);
 say(`  no source, left empty: ${noSource}`);
@@ -355,6 +396,16 @@ say(`  rows written: ${written}`);
 say("");
 say("Names are never printed here. Read them in the admin screen, which is the only place they are meant to be readable.");
 
-if (fromHongKong + fromWikidata + noSource + unreachable !== games.length) {
+if (fromCurated + fromHongKong + fromWikidata + noSource + unreachable !== games.length) {
   throw new Error("the tallies do not add up to the number of games — refusing to report a pass that lost rows");
+}
+
+if (REQUIRE_COMPLETE && (noSource > 0 || unreachable > 0)) {
+  say("");
+  for (const row of report) {
+    if (!row.filled) say(`  still empty: ${row.english || row.id}`);
+  }
+  throw new Error(
+    `${noSource + unreachable} of ${games.length} games have no Chinese name — the fill is not complete`,
+  );
 }
