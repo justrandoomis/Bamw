@@ -17,7 +17,11 @@ on:
         type: boolean
         default: false
       limit:
-        description: "Only look at the first N games (blank = all)"
+        description: "How many games this run should look at (blank = all)"
+        required: false
+        default: ""
+      offset:
+        description: "Skip this many games first, so a long fill can be run in batches"
         required: false
         default: ""
   # Runs when the fill itself is pushed to the working branch, so the dry-run
@@ -76,6 +80,7 @@ jobs:
           # Passed through the environment, never interpolated into the shell.
           APPLY: ${{ inputs.apply }}
           LIMIT: ${{ inputs.limit }}
+          OFFSET: ${{ inputs.offset }}
         run: |
           # `CLOUDFLARE_D1_DATABASE_ID` is not a secret this repository has set,
           # so the database it points at is read out of `wrangler.jsonc` — the
@@ -89,4 +94,5 @@ jobs:
           args=""
           if [ "$APPLY" = "true" ]; then args="$args --apply"; fi
           if [ -n "$LIMIT" ]; then args="$args --limit=$LIMIT"; fi
+          if [ -n "$OFFSET" ]; then args="$args --offset=$OFFSET"; fi
           node scripts/supplier-name-fill.mjs $args

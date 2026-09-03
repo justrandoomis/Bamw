@@ -63,6 +63,7 @@ const flag = (name, fallback) =>
   (process.argv.find((a) => a.startsWith(`--${name}=`)) ?? `--${name}=${fallback}`).split("=")[1];
 const APPLY = process.argv.includes("--apply");
 const LIMIT = Number(flag("limit", "0"));
+const OFFSET = Math.max(0, Number(flag("offset", "0")) || 0);
 const ONLY = flag("only", "")
   .split(",")
   .map((s) => s.trim())
@@ -125,9 +126,19 @@ let games = [...live.values()]
 if (ONLY.length) {
   games = games.filter((g) => ONLY.includes(String(g.id)) || ONLY.includes(String(g.slug)));
 }
+/*
+  Offset before limit, so a long fill can be done in batches that each finish
+  inside a job's lifetime. The order is the stable one this list is already
+  sorted by, so batch 2 picks up exactly where batch 1 stopped.
+*/
+const total = games.length;
+if (OFFSET > 0) games = games.slice(OFFSET);
 if (LIMIT > 0) games = games.slice(0, LIMIT);
 
-say(`games in the catalogue: ${games.length}`);
+say(`games in the catalogue: ${total}`);
+if (OFFSET > 0 || LIMIT > 0) {
+  say(`this batch: ${games.length} — from ${OFFSET + 1} to ${OFFSET + games.length}`);
+}
 if (!games.length) throw new Error("no games matched — refusing to report an empty pass as a fill");
 
 /* --------------------------------------------- Nintendo Hong Kong, by title */
@@ -169,7 +180,7 @@ const pause = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
   So a transport failure is carried through as a failure, retried first, and
   named separately in the tally.
 */
-async function fetchJson(url, { timeout = 20_000, attempts = 3 } = {}) {
+async function fetchJson(url, { timeout = 12_000, attempts = 2 } = {}) {
   for (let attempt = 1; attempt <= attempts; attempt += 1) {
     const ctl = new AbortController();
     const timer = setTimeout(() => ctl.abort(), timeout);
@@ -230,7 +241,13 @@ async function resolveFromWikidata(englishTitle) {
     answer with the wrong product; asking second finds `The Witcher 3: Wild
     Hunt`, which has no `Complete Edition` item at all.
   */
-  for (const candidate of editionFallbacks(title)) {
+  /*
+    Bounded. Every candidate is two requests against an API that rate-limits,
+    and the difference between the third reading of an edition suffix and the
+    fifth is not worth a job that runs out of time before it finishes the
+    shelf.
+  */
+  for (const candidate of editionFallbacks(title).slice(0, 3)) {
     await pause(150);
     const next = await askWikidata(candidate);
     if (next?.failed) return next;
@@ -329,7 +346,7 @@ for (const row of report) {
   say(`${row.filled ? "\u2713" : "\u00b7"} ${row.english || row.id} \u2014 ${row.outcome}`);
 }
 say("");
-say(`games: ${games.length}`);
+say(`games in this pass: ${games.length}`);
 say(`  from Nintendo Hong Kong: ${fromHongKong}`);
 say(`  from Wikidata: ${fromWikidata}`);
 say(`  no source, left empty: ${noSource}`);
