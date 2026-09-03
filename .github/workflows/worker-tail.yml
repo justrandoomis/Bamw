@@ -48,7 +48,7 @@ jobs:
       # exactly when it was needed.
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           cache: npm
       - run: npm install -g npm@11.19.1
       - run: npm ci --no-audit --no-fund
@@ -74,9 +74,9 @@ jobs:
 
           echo "--- requesting https://banan.to${{ inputs.path || '/api/health' }} ---"
           curl -sS -m 30 -o /dev/null -w "HTTP %{http_code}\n" \
-            -A "bananto-tail-probe" "https://banan.to${{ inputs.path || '/api/health' }}" || true
+            "https://banan.to${{ inputs.path || '/api/health' }}" || true
           curl -sS -m 30 -o /dev/null -w "HTTP %{http_code}\n" \
-            -A "bananto-tail-probe" "https://banan.to/" || true
+            "https://banan.to/" || true
 
           sleep "${{ inputs.seconds || '45' }}"
           kill "$TAIL_PID" 2>/dev/null || true
