@@ -992,6 +992,15 @@ export interface Thread {
   last_admin_activity_at?: string;
   humanRequested?: boolean;
 
+  /**
+   * When an assistant thread drops out of the member's list.
+   *
+   * Derived from `chatType` and `lastMessageAt` on every read and write —
+   * never authored — so it cannot go stale against the kind. Absent means the
+   * thread keeps for ever, which is every order thread and every conversation
+   * that reached a person.
+   */
+  expiresAt?: string;
   lastMessageAt: string;
   lastMessagePreview?: string;
   userLastReadAt?: string;

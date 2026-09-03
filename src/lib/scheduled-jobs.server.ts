@@ -7,7 +7,8 @@ import {
   createAuditLog,
   createNotification,
 } from "./db.server";
-import type { BananaBot, BananaMarketOffer } from "./types";
+import type { BananaBot, BananaMarketOffer, Thread } from "./types";
+import { hasExpired } from "./thread-lifecycle";
 import {
   toBananaBot,
   toBananaMarketOffer,
@@ -345,6 +346,67 @@ export async function processReleaseAlerts(now = new Date()) {
  * the wallet transaction, so a second pass over the same reward inserts
  * nothing.
  */
+/**
+ * Delete the assistant's expired conversations.
+ *
+ * The member's list already hides them — `listThreadsByUser` filters on read
+ * — so this is the part that actually reclaims the rows. Deleting rather than
+ * hiding for ever is the point: an assistant conversation from six months ago
+ * is noise the member never asked to keep.
+ *
+ * Everything protective lives in `isExpirable`, and the SQL below does not
+ * repeat it: rows are read, judged by the same function the UI uses, and only
+ * then deleted. A `WHERE chatType = ...` here would be a second copy of the
+ * rule that could drift from the first — and the failure mode of drift is a
+ * deleted support ticket.
+ */
+export async function processExpiredBotThreads(): Promise<{
+  scanned: number;
+  deleted: number;
+}> {
+  const result = { scanned: 0, deleted: 0 };
+  try {
+    /*
+      Bounded per run. A sweep that tries to delete everything at once on a
+      backlog is a sweep that times out and deletes nothing; the next minute's
+      run takes the next batch.
+    */
+    const rows = await d1All<{ id: string; doc: string }>(
+      `SELECT id, doc FROM threads ORDER BY last_message_at ASC LIMIT 200`,
+    );
+    result.scanned = rows.length;
+
+    const doomed: string[] = [];
+    for (const row of rows) {
+      let thread: Thread | undefined;
+      try {
+        thread = JSON.parse(row.doc) as Thread;
+      } catch {
+        // An unreadable thread is never deleted: it cannot be shown to be
+        // expendable, and this job only removes what it can prove.
+        continue;
+      }
+      if (thread && hasExpired(thread)) doomed.push(row.id);
+    }
+
+    for (const id of doomed) {
+      /*
+        Messages first. A thread row without its messages is a broken
+        conversation; messages without their thread are invisible rows that
+        nothing will ever clean up.
+      */
+      await d1Run(`DELETE FROM messages WHERE thread_id = ?`, id).catch(() => undefined);
+      await d1Run(`DELETE FROM threads WHERE id = ?`, id).catch(() => undefined);
+      result.deleted += 1;
+    }
+  } catch (error) {
+    console.warn("[cron:expired_bot_threads_failed]", {
+      error: error instanceof Error ? error.message : String(error),
+    });
+  }
+  return result;
+}
+
 export async function processHeldReferralRewards() {
   try {
     const { dueHeldRewards, approveRewardsForOrder } = await import("./referral/rewards.server");

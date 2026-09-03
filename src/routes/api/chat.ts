@@ -652,9 +652,20 @@ export const Route = createFileRoute("/api/chat")({
 
               humanThread = await saveThread({
                 ...humanThread,
+                /*
+                  The kind changes with the escalation, not just the mode.
+
+                  `chatType` is what the expiry reads and what the badge in the
+                  member's history shows. A conversation handed to a person
+                  that stayed `AUTOMATED_SUPPORT` would keep saying "مساعد آلي"
+                  and would be swept away by the 24-hour rule with the rest of
+                  the bot's threads.
+                */
+                chatType: "GENERAL_SUPPORT",
                 mode: humanThread.mode === "ADMIN_ACTIVE" ? "ADMIN_ACTIVE" : "WAITING_FOR_ADMIN",
                 aiPaused: true,
                 needsAdmin: true,
+                humanRequested: true,
                 lastMessageAt: now,
               });
 

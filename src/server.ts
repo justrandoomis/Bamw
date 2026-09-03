@@ -10,6 +10,7 @@ import {
   processBotTrading,
   processDigitalDeliveryMaintenance,
   processReleaseAlerts,
+  processExpiredBotThreads,
   processHeldReferralRewards,
 } from "./lib/scheduled-jobs.server";
 
@@ -85,6 +86,9 @@ export default {
       processBotTrading(),
       processReleaseAlerts(),
       processHeldReferralRewards(),
+      // Sweep the assistant's expired conversations. Bounded per run, and
+      // it judges each row with the same function the UI filters by.
+      processExpiredBotThreads(),
     ]);
     for (const result of results) {
       if (result.status === "rejected") {
