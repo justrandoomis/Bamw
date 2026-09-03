@@ -16,6 +16,13 @@
 # re-running the job.
 name: Deploy
 
+# A run that only uploaded a version and a run that actually served it are the
+# same word in the Actions list, and both go green. That is how a "successful
+# Deploy" can leave production exactly as it was — `mode` defaults to `preview`,
+# so a dispatch with no inputs uploads and shifts no traffic. Naming the mode in
+# the run title is what makes the two distinguishable at a glance.
+run-name: Deploy — ${{ inputs.rollback_to && 'rollback' || inputs.mode || 'preview' }}
+
 on:
   workflow_dispatch:
     inputs:
