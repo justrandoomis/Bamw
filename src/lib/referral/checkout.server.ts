@@ -80,6 +80,7 @@ export async function resolveReferralForCheckout(params: {
     ...(params.products ? { products: params.products } : {}),
     identity: {
       deviceHash: identity.deviceHash,
+      deviceIdHash: identity.deviceIdHash,
       ipHash: identity.ipHash,
       sessionHash: identity.sessionHash,
     },

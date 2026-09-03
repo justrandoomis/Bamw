@@ -289,7 +289,21 @@ if (!tables.includes("referral_risk_events")) {
     } catch {
       meta = {};
     }
-    const reasons = Array.isArray(meta.reasons) ? meta.reasons.map(String) : [];
+    /*
+      Two shapes, both of them a refusal.
+
+      `reasons` is what the anti-abuse checks cited. `verdict` is what the
+      eligibility rules concluded — a purchase that was never in the programme
+      — and it arrives as a comma-joined string with `reasons` empty, so a
+      report that read only the array would be blind to exactly the refusal a
+      customer meets most often.
+    */
+    const cited = Array.isArray(meta.reasons) ? meta.reasons.map(String) : [];
+    const verdict = String(meta.verdict ?? "")
+      .split(",")
+      .map((part) => part.trim())
+      .filter((part) => part && part !== "clear");
+    const reasons = [...new Set([...cited, ...verdict])];
     for (const reason of reasons) reasonTally.set(reason, (reasonTally.get(reason) ?? 0) + 1);
     // A refusal carrying exactly one reason is one this signal caused alone —
     // the honest measure of a check's false-positive cost.

@@ -87,7 +87,31 @@ interface ListPayload {
     discountIqd: number;
   };
   blocked: { userId: string; name: string; username: string; reason: string; createdAt: string }[];
+  refusals: AdminRefusal[];
   settings: AdminSettings;
+}
+
+/**
+ * A referral that was refused and never became a reward.
+ *
+ * Until this existed the owner could not see one at all: the table on this
+ * screen is built from `referral_rewards`, and a code refused before checkout
+ * never gets that far. The only record was a risk event nothing displayed —
+ * so "my link does not work" had no answer anywhere in the admin.
+ */
+interface AdminRefusal {
+  id: string;
+  eventType: string;
+  riskScore: number;
+  createdAt: string;
+  orderId: string | null;
+  orderCode: string;
+  referrerName: string;
+  referrerUsername: string;
+  buyerName: string;
+  buyerUsername: string;
+  stage: string;
+  reasons: string[];
 }
 
 interface DetailPayload {
@@ -123,7 +147,8 @@ const STATUS_TONE: Record<string, string> = {
 /** Every anti-abuse reason, in the admin's language. */
 const REASON_LABEL: Record<string, string> = {
   self_referral: "إحالة ذاتية",
-  same_device: "نفس الجهاز",
+  same_device: "نفس نوع الجهاز",
+  same_device_id: "نفس الجهاز",
   same_ip: "نفس عنوان الشبكة",
   same_phone: "نفس رقم الهاتف",
   same_email: "نفس البريد",
@@ -139,6 +164,29 @@ const REASON_LABEL: Record<string, string> = {
   monthly_reward_cap: "تجاوز الحد الشهري للمكافآت",
   attribution_expired: "انتهت صلاحية الإحالة",
   clear: "لا توجد ملاحظات",
+  /*
+    The other half of "refused": nothing was wrong with the two members, the
+    purchase itself was never in the programme. These arrive by a different
+    route and read identically to the customer, so the admin screen has to be
+    able to tell them apart.
+  */
+  programme_disabled: "البرنامج متوقف",
+  product_excluded: "المنتج خارج البرنامج",
+  category_excluded: "القسم خارج البرنامج",
+  kind_excluded: "نوع المنتج غير مؤهل",
+  marketplace_item: "منتج من السوق وليس من المتجر",
+  not_offline_account: "الخصم للحسابات الأوفلاين فقط",
+  no_price: "لا يوجد سعر للمنتج",
+  not_the_shared_product: "ليست اللعبة التي تمت مشاركتها",
+  no_eligible_line: "لا توجد لعبة مؤهلة في السلة",
+};
+
+/** Which stage refused it, in the admin's language. */
+const REFUSAL_EVENT_LABEL: Record<string, string> = {
+  capture_blocked: "عند فتح الرابط",
+  bind_blocked: "عند تسجيل الدخول",
+  checkout_not_applicable: "عند الدفع — غير مؤهلة",
+  checkout_limit_blocked: "عند الدفع — تجاوز الحدود",
 };
 
 function verdictLabels(verdict: string | null): string[] {
@@ -501,6 +549,51 @@ export default function ReferralsManager() {
                       .join("، ")}
                   </span>
                 ) : null}
+              </li>
+            ))}
+          </ol>
+        </section>
+      ) : null}
+
+      {/* Refusals that never became a reward */}
+      {data?.refusals?.length ? (
+        <section className="rounded-2xl border border-border bg-card p-4">
+          <h3 className="mb-1 text-sm font-black text-foreground">محاولات لم تُقبل</h3>
+          <p className="mb-3 text-[11px] font-bold text-muted-foreground">
+            العميل يرى جملة واحدة فقط عند الرفض. هنا السبب الحقيقي لكل محاولة.
+          </p>
+          <ol className="space-y-2">
+            {data.refusals.map((entry) => (
+              <li
+                key={entry.id}
+                className="flex flex-wrap items-center gap-x-2 gap-y-1 rounded-xl border border-border bg-background px-3 py-2 text-[11px]"
+              >
+                <span className="font-black text-foreground">
+                  {REFUSAL_EVENT_LABEL[entry.eventType] ?? entry.eventType}
+                </span>
+                {entry.referrerName || entry.referrerUsername ? (
+                  <span className="text-muted-foreground">
+                    صاحب الرابط: {entry.referrerName || entry.referrerUsername}
+                  </span>
+                ) : null}
+                {entry.buyerName || entry.buyerUsername ? (
+                  <span className="text-muted-foreground">
+                    الصديق: {entry.buyerName || entry.buyerUsername}
+                  </span>
+                ) : (
+                  <span className="text-muted-foreground">الصديق: زائر</span>
+                )}
+                {entry.orderCode ? (
+                  <span className="text-muted-foreground">الطلب: {entry.orderCode}</span>
+                ) : null}
+                {entry.reasons.length ? (
+                  <span className="rounded-full border border-amber-500/25 bg-amber-500/10 px-2 py-0.5 font-bold text-amber-700 dark:text-amber-300">
+                    {entry.reasons.map((reason) => REASON_LABEL[reason] ?? reason).join("، ")}
+                  </span>
+                ) : null}
+                <span className="ms-auto text-muted-foreground">
+                  {new Date(entry.createdAt).toLocaleString("en-GB")}
+                </span>
               </li>
             ))}
           </ol>
