@@ -422,6 +422,84 @@ describe("the attribution and the account", () => {
     expect(row["bound_at"]).toBeTruthy();
   });
 
+  it("blocks at sign-in when the browser turns out to be the referrer's", async () => {
+    /*
+      The narrow case the bind-time check exists for, and the only one it can
+      reach: capture happens on a browser with nothing against it, and the
+      device becomes the referrer's only *afterwards* — a shared phone where
+      the owner signs in between the friend clicking the link and the friend
+      making an account.
+
+      A capture refused on the device never reaches here at all: it writes no
+      attribution, so there is nothing to bind. Which is why this sequence,
+      not the obvious one, is what proves the argument is being passed.
+
+      The address rule is off so only the device can be the cause.
+    */
+    db.raw.prepare(`UPDATE store_kv SET value = ? WHERE key = 'store'`).run(
+      JSON.stringify({
+        categories: [{ id: "cat_nintendo", title: "ألعاب" }],
+        settings: {
+          referral: { enabled: true, buyerPercent: 10, referrerPercent: 10, blockSameIp: false },
+        },
+      }),
+    );
+    store.invalidateStoreCache();
+
+    // 1. A clean browser opens the link. Nothing links it to anybody yet.
+    const code = await referrerCode();
+    const capture = await service.captureAttribution({
+      request: request(BUYER_DEVICE),
+      codeInput: code,
+      productRef: "super-mario-odyssey",
+    });
+    expect(capture.ok).toBe(true);
+    const jar = cookieJar(capture.setCookies);
+
+    // 2. The referrer signs in on that same browser, which attaches its
+    //    `bnt_did` cookie to their account.
+    const shared = await service.requestIdentity(request({ ...BUYER_DEVICE, cookies: jar }));
+    await service.bindIdentitiesToUser(REFERRER.id, shared);
+
+    /*
+      3. The friend makes their account on it — days later, so the guest
+         session cookie is gone and a fresh one is issued.
+
+      Dropping it is what makes this test about the device at all. With the
+      session cookie still in hand, `same_session` refuses on its own and the
+      device reading changes nothing; without it, the only thing left tying the
+      two together is the device — the coarse header reading, which corroborates
+      but cannot decide, and the `bnt_did` cookie, which can.
+    */
+    const laterJar = jar.filter((pair) => !pair.startsWith("bnt_ref_sid="));
+    await service.bindAttributionToUser(
+      request({ ...BUYER_DEVICE, cookies: laterJar }),
+      BUYER.id,
+    );
+
+    /*
+      The *bind* event specifically, not every event in the table: an
+      assertion across all of them would pass on a reason some earlier stage
+      recorded, whether or not this call looked at the cookie at all.
+    */
+    const bindEvent = db.raw
+      .prepare(
+        `SELECT event_type, metadata FROM referral_risk_events
+          WHERE event_type IN ('bound', 'bind_blocked') ORDER BY created_at DESC LIMIT 1`,
+      )
+      .get() as Record<string, unknown> | undefined;
+    expect(bindEvent?.["event_type"]).toBe("bind_blocked");
+    const bindReasons =
+      (JSON.parse(String(bindEvent?.["metadata"] ?? "{}")) as { reasons?: string[] }).reasons ?? [];
+    expect(bindReasons).toContain("same_device_id");
+
+    // And the attribution is left blocked rather than eligible.
+    const row = db.raw.prepare(`SELECT status FROM referral_attributions`).get() as
+      | Record<string, unknown>
+      | undefined;
+    expect(row?.["status"]).toBe("blocked");
+  });
+
   it("is still in force after browsing on, with the cookie the only thing carried", async () => {
     const code = await referrerCode();
     const capture = await service.captureAttribution({
