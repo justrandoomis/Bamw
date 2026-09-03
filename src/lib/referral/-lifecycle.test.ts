@@ -122,6 +122,7 @@ let service: typeof import("@/lib/referral/service.server");
 let rewards: typeof import("@/lib/referral/rewards.server");
 let orders: typeof import("@/lib/orders.server");
 let completion: typeof import("@/lib/order-completion.server");
+let binding: typeof import("@/lib/referral/binding.server");
 
 beforeAll(async () => {
   const { ensureSchema } = await import("@/lib/d1.server");
@@ -131,6 +132,7 @@ beforeAll(async () => {
   rewards = await import("@/lib/referral/rewards.server");
   orders = await import("@/lib/orders.server");
   completion = await import("@/lib/order-completion.server");
+  binding = await import("@/lib/referral/binding.server");
 });
 
 interface SeedUser {
@@ -269,6 +271,14 @@ const BUYER: SeedUser = {
   username: "ali",
   walletBalance: 500_000,
 };
+/** Somebody else's link, for proving a binding cannot be moved. */
+const THIRD_PARTY: SeedUser = {
+  id: "usr_third",
+  name: "زينب",
+  email: "zainab@example.com",
+  phone: "+9647703333333",
+  username: "zainab",
+};
 
 /** The referrer's own device and address, as recorded when they got their link. */
 const REFERRER_DEVICE = {
@@ -350,7 +360,7 @@ describe("opening a referral link", () => {
     expect(rows).toHaveLength(1);
     expect(rows[0]!["referrer_user_id"]).toBe(REFERRER.id);
     expect(rows[0]!["product_id"]).toBe(GAME.id);
-    expect(rows[0]!["status"]).toBe("captured");
+    expect(rows[0]!["status"]).toBe("pending");
 
     // The cookie is signed, not a readable blob of the referrer's id.
     const attribution = capture.setCookies.find((cookie) => cookie.startsWith("bnt_ref="));
@@ -418,7 +428,7 @@ describe("the attribution and the account", () => {
       unknown
     >;
     expect(row["referred_user_id"]).toBe(BUYER.id);
-    expect(row["status"]).toBe("eligible");
+    expect(row["status"]).toBe("pending");
     expect(row["bound_at"]).toBeTruthy();
   });
 
@@ -497,7 +507,7 @@ describe("the attribution and the account", () => {
     const row = db.raw.prepare(`SELECT status FROM referral_attributions`).get() as
       | Record<string, unknown>
       | undefined;
-    expect(row?.["status"]).toBe("blocked");
+    expect(row?.["status"]).toBe("rejected");
   });
 
   it("is still in force after browsing on, with the cookie the only thing carried", async () => {
@@ -543,7 +553,7 @@ describe("what the referral is worth", () => {
     return service.quoteReferral({ buyer, attribution: attribution!, lines });
   }
 
-  it("takes 10% off a 10,000 dinar game and owes the referrer 1,000", async () => {
+  it("takes 10% off a 10,000 dinar game and owes the referrer 500", async () => {
     const quote = await quoteFor([
       {
         productId: GAME.id,
@@ -555,10 +565,11 @@ describe("what the referral is worth", () => {
       },
     ]);
 
+    // The worked example from the rules: 10,000 in, 1,000 off, 500 earned.
     expect(quote.applicable).toBe(true);
     expect(quote.originalPriceIqd).toBe(10_000);
     expect(quote.buyerDiscountIqd).toBe(1_000);
-    expect(quote.referrerRewardIqd).toBe(1_000);
+    expect(quote.referrerRewardIqd).toBe(500);
     expect(quote.referrerAlias).toBe("sami");
   });
 
@@ -579,7 +590,13 @@ describe("what the referral is worth", () => {
     expect(quote.buyerDiscountIqd).toBe(1_000);
   });
 
-  it("pays on one copy however many are in the basket", async () => {
+  it("pays on every copy in the basket", async () => {
+    /*
+      The first version of the programme paid on one copy however many were
+      bought. The rules now say 5% of the qualifying *products in the order*,
+      so ten copies of a 10,000 dinar game is a 100,000 dinar qualifying value:
+      10,000 off for the buyer and 5,000 for the referrer.
+    */
     const quote = await quoteFor([
       {
         productId: GAME.id,
@@ -591,8 +608,9 @@ describe("what the referral is worth", () => {
       },
     ]);
 
-    expect(quote.buyerDiscountIqd).toBe(1_000);
-    expect(quote.referrerRewardIqd).toBe(1_000);
+    expect(quote.originalPriceIqd).toBe(100_000);
+    expect(quote.buyerDiscountIqd).toBe(10_000);
+    expect(quote.referrerRewardIqd).toBe(5_000);
   });
 
   it("refuses an online account: the offer is for offline ones", async () => {
@@ -642,7 +660,7 @@ describe("what the referral is worth", () => {
     expect(quote.applicable).toBe(true);
     expect(quote.originalPriceIqd).toBe(24_000);
     expect(quote.buyerDiscountIqd).toBe(2_400);
-    expect(quote.referrerRewardIqd).toBe(2_400);
+    expect(quote.referrerRewardIqd).toBe(1_200);
   });
 
   it("counts the add-ons the customer is paying for", async () => {
@@ -899,7 +917,7 @@ describe("who a referral must not pay", () => {
     const row = db.raw
       .prepare(`SELECT status, blocked_reason FROM referral_attributions WHERE referrer_user_id = ?`)
       .get(BUYER.id) as Record<string, unknown> | undefined;
-    expect(row?.["status"]).toBe("blocked");
+    expect(row?.["status"]).toBe("rejected");
     expect(String(row?.["blocked_reason"] ?? "")).toContain("circular_referral");
 
     // And nothing usable is left for the return trip.
@@ -1001,7 +1019,7 @@ describe("the order, the wallet and the reward", () => {
     expect(order.total).toBe(9_000);
     expect(order.referral?.originalPriceIqd).toBe(10_000);
     expect(order.referral?.buyerDiscountIqd).toBe(1_000);
-    expect(order.referral?.referrerRewardIqd).toBe(1_000);
+    expect(order.referral?.referrerRewardIqd).toBe(500);
     expect(order.referral?.referrerUserId).toBe(REFERRER.id);
     expect(order.referral?.referredUserId).toBe(BUYER.id);
     expect(order.referral?.productId).toBe(GAME.id);
@@ -1031,12 +1049,12 @@ describe("the order, the wallet and the reward", () => {
     });
 
     expect(rewardRow(order.id)?.["status"]).toBe("approved");
-    expect(balanceOf(REFERRER.id)).toBe(1_000);
+    expect(balanceOf(REFERRER.id)).toBe(500);
 
     const ledger = walletRows(REFERRER.id);
     expect(ledger).toHaveLength(1);
     expect(ledger[0]!["kind"]).toBe("referral_reward");
-    expect(ledger[0]!["amount"]).toBe(1_000);
+    expect(ledger[0]!["amount"]).toBe(500);
     expect(String(ledger[0]!["description"])).toContain("مكافأة إحالة");
     // The idempotency key: the order and the game.
     expect(ledger[0]!["reference_type"]).toBe("referral_reward");
@@ -1129,16 +1147,177 @@ describe("the order, the wallet and the reward", () => {
     expect(Number(total["total"])).toBe(1);
   });
 
-  it("cannot be spent twice: a second order gets no referral", async () => {
+  it("marks the attribution used once the first qualifying order lands", async () => {
     const { order } = await buyThroughReferral();
     expect(order.referral).toBeDefined();
 
-    // The attribution is spent, so the same cookie buys nothing more.
     const attribution = db.raw
       .prepare(`SELECT status, converted_order_id FROM referral_attributions`)
       .get() as Record<string, unknown>;
-    expect(attribution["status"]).toBe("converted");
+    expect(attribution["status"]).toBe("used");
     expect(attribution["converted_order_id"]).toBe(order.id);
+  });
+
+  /* ------------------------------------------------------------------ rules */
+
+  /** A second order by the same member, with the cookie long gone. */
+  async function buyAgain() {
+    const buyer = (await store.findUserById(BUYER.id))!;
+    return orders.createOrderForUser(
+      buyer,
+      [OFFLINE_LINE],
+      undefined,
+      undefined,
+      true,
+      undefined,
+      undefined,
+      "checkout_web",
+      undefined,
+      // A bare request: no referral cookie at all, which is what a customer
+      // coming back weeks later actually has.
+      { request: request({ ...BUYER_DEVICE, url: "https://banan.to/cart" }) },
+    );
+  }
+
+  it("first order: 10% off for the buyer and 5% for the referrer", async () => {
+    const { order } = await buyThroughReferral();
+
+    expect(order.referral?.originalPriceIqd).toBe(10_000);
+    expect(order.referral?.buyerDiscountIqd).toBe(1_000);
+    expect(order.total).toBe(9_000);
+    expect(order.referral?.referrerRewardIqd).toBe(500);
+  });
+
+  it("second order: no discount for the buyer, still 5% for the referrer", async () => {
+    /*
+      The rule the whole rework exists for. The buyer's 10% is once per
+      account for ever; the referrer keeps earning on everything that member
+      buys afterwards. The second order carries no cookie — the relationship
+      is remembered on the account, not on the browser.
+    */
+    await buyThroughReferral();
+    const second = await buyAgain();
+
+    expect(second.total).toBe(10_000);
+    expect(second.discountAmount ?? 0).toBe(0);
+    expect(second.referral?.buyerDiscountIqd).toBe(0);
+    expect(second.referral?.referrerRewardIqd).toBe(500);
+    expect(second.referral?.referrerUserId).toBe(REFERRER.id);
+  });
+
+  it("binds the referrer permanently, and a different link cannot replace them", async () => {
+    await buyThroughReferral();
+
+    const bound = db.raw
+      .prepare(`SELECT referred_by_user_id FROM users WHERE id = ?`)
+      .get(BUYER.id) as Record<string, unknown>;
+    expect(bound["referred_by_user_id"]).toBe(REFERRER.id);
+
+    /*
+      A third member shares their own link and the buyer opens it. Nothing
+      about the binding may move: the 5% on every later order stays with the
+      person who actually brought them in.
+    */
+    seedUser({ ...THIRD_PARTY });
+    const otherCode = await service.getOrCreateReferralCode(
+      (await store.findUserById(THIRD_PARTY.id))!,
+    );
+    const capture = await service.captureAttribution({
+      request: request(BUYER_DEVICE),
+      codeInput: otherCode!.code,
+      productRef: "super-mario-odyssey",
+      viewer: (await store.findUserById(BUYER.id))!,
+    });
+    const jar = cookieJar(capture.setCookies);
+    await service.bindAttributionToUser(request({ ...BUYER_DEVICE, cookies: jar }), BUYER.id);
+
+    const after = db.raw
+      .prepare(`SELECT referred_by_user_id FROM users WHERE id = ?`)
+      .get(BUYER.id) as Record<string, unknown>;
+    expect(after["referred_by_user_id"]).toBe(REFERRER.id);
+
+    // And the next order still pays the original referrer, not the new link.
+    const third = await buyAgain();
+    expect(third.referral?.referrerUserId).toBe(REFERRER.id);
+    expect(third.referral?.buyerDiscountIqd).toBe(0);
+  });
+
+  it("two orders placed at once cannot both take the one discount", async () => {
+    /*
+      Both checkouts are quoted before either writes, so both see an unused
+      discount. Only the one that satisfies `referral_discount_used_at IS NULL`
+      in its own UPDATE may take it.
+    */
+    const code = await referrerCode();
+    await referrerVisits();
+    const capture = await service.captureAttribution({
+      request: request(BUYER_DEVICE),
+      codeInput: code,
+      productRef: "super-mario-odyssey",
+    });
+    const jar = cookieJar(capture.setCookies);
+    const checkoutRequest = request({ ...BUYER_DEVICE, cookies: jar, url: "https://banan.to/cart" });
+    await service.bindAttributionToUser(checkoutRequest, BUYER.id);
+    const buyer = (await store.findUserById(BUYER.id))!;
+
+    const place = () =>
+      orders.createOrderForUser(
+        buyer,
+        [OFFLINE_LINE],
+        undefined,
+        undefined,
+        true,
+        undefined,
+        undefined,
+        "checkout_web",
+        undefined,
+        { request: checkoutRequest },
+      );
+
+    const [a, b] = await Promise.all([place(), place()]);
+
+    const discounts = [a, b].map((order) => order.referral?.buyerDiscountIqd ?? 0);
+    expect(discounts.filter((value) => value > 0)).toHaveLength(1);
+    expect(discounts).toContain(1_000);
+    expect(discounts).toContain(0);
+
+    // Both still earn the referrer their 5%: two sales, two rewards.
+    expect(a.referral?.referrerRewardIqd).toBe(500);
+    expect(b.referral?.referrerRewardIqd).toBe(500);
+
+    // And exactly one order is recorded as the one that spent the discount.
+    const binding = db.raw
+      .prepare(`SELECT first_referral_order_id FROM users WHERE id = ?`)
+      .get(BUYER.id) as Record<string, unknown>;
+    expect([a.id, b.id]).toContain(binding["first_referral_order_id"]);
+  });
+
+  it("hands the discount back when the first order is cancelled", async () => {
+    const { order } = await buyThroughReferral();
+    expect(order.referral?.buyerDiscountIqd).toBe(1_000);
+
+    await rewards.reverseRewardsForOrder({
+      order: { id: order.id, code: order.code },
+      refundedIqd: order.total,
+      paidIqd: order.total,
+      reason: "order_cancelled",
+    });
+    await binding.releaseReferralDiscount(order.id);
+
+    /*
+      The discount comes back — the member never had the sale it paid for —
+      but the binding does not move. Whoever brought them in still brought
+      them in.
+    */
+    const row = db.raw
+      .prepare(
+        `SELECT referral_discount_used_at, first_referral_order_id, referred_by_user_id
+           FROM users WHERE id = ?`,
+      )
+      .get(BUYER.id) as Record<string, unknown>;
+    expect(row["referral_discount_used_at"]).toBeNull();
+    expect(row["first_referral_order_id"]).toBeNull();
+    expect(row["referred_by_user_id"]).toBe(REFERRER.id);
   });
 
   it("pays nothing for a cancelled order", async () => {
@@ -1163,7 +1342,7 @@ describe("the order, the wallet and the reward", () => {
       note: "done",
       message: "تم إكمال الطلب",
     });
-    expect(balanceOf(REFERRER.id)).toBe(1_000);
+    expect(balanceOf(REFERRER.id)).toBe(500);
 
     await rewards.reverseRewardsForOrder({
       order: { id: order.id, code: order.code },
@@ -1178,7 +1357,7 @@ describe("the order, the wallet and the reward", () => {
     const ledger = walletRows(REFERRER.id);
     expect(ledger).toHaveLength(2);
     expect(ledger[1]!["kind"]).toBe("referral_reversal");
-    expect(ledger[1]!["amount"]).toBe(-1_000);
+    expect(ledger[1]!["amount"]).toBe(-500);
   });
 
   it("reverses only the refunded share of a partial refund", async () => {
@@ -1198,9 +1377,10 @@ describe("the order, the wallet and the reward", () => {
       reason: "partial_refund",
     });
 
-    expect(balanceOf(REFERRER.id)).toBe(500);
+    // Half of a 500 dinar reward, rounded up: 250 back, 250 kept.
+    expect(balanceOf(REFERRER.id)).toBe(250);
     const row = rewardRow(order.id);
-    expect(row?.["reversed_amount_iqd"]).toBe(500);
+    expect(row?.["reversed_amount_iqd"]).toBe(250);
     // Still approved: half of it is still earned.
     expect(row?.["status"]).toBe("approved");
   });
@@ -1279,12 +1459,26 @@ describe("a coupon and a referral in the same cart", () => {
     // 2,500 + 1,000 would be stacking; it is not.
     expect(order.discountAmount).not.toBe(3_500);
     expect(order.couponCode).toBe("BIG25");
-    expect(order.referral).toBeUndefined();
-    // The referral was not spent, so it is still available.
-    const attribution = db.raw
-      .prepare(`SELECT status FROM referral_attributions`)
-      .get() as Record<string, unknown>;
-    expect(attribution["status"]).not.toBe("converted");
+
+    /*
+      The referrer is still paid.
+
+      Under the first version of the programme a coupon that beat the referral
+      meant the referral did not happen at all, and this expected no referral
+      on the order. The rules now pay the referrer 5% of the qualifying
+      products whatever discount the buyer ended up taking — their half is not
+      conditional on the buyer's half — so the order carries a referral with a
+      reward and no discount.
+    */
+    expect(order.referral?.buyerDiscountIqd).toBe(0);
+    expect(order.referral?.referrerRewardIqd).toBe(500);
+
+    // And the buyer's once-in-a-lifetime discount is untouched, so their next
+    // order can still take it.
+    const binding = db.raw
+      .prepare(`SELECT referral_discount_used_at FROM users WHERE id = ?`)
+      .get(BUYER.id) as Record<string, unknown>;
+    expect(binding["referral_discount_used_at"]).toBeNull();
   });
 
   it("keeps the referral when it beats the coupon, and leaves the coupon unspent", async () => {
@@ -1508,7 +1702,7 @@ describe("only one referral can touch an order", () => {
     });
   });
 
-  it("does not let a second checkout re-use a spent referral", async () => {
+  it("does not let a second checkout re-use a spent discount, but still pays the referrer", async () => {
     const code = await referrerCode();
     const capture = await service.captureAttribution({
       request: request(BUYER_DEVICE),
@@ -1537,10 +1731,19 @@ describe("only one referral can touch an order", () => {
     const second = await buy();
 
     expect(first.referral?.buyerDiscountIqd).toBe(1_000);
-    expect(second.referral).toBeUndefined();
+    /*
+      The discount is spent and the second order pays full price. The referral
+      itself is still recorded, because the referrer is owed 5% of this order
+      too — under the old rules there was nothing here at all, and that is the
+      behaviour the rules replaced.
+    */
+    expect(second.referral?.buyerDiscountIqd).toBe(0);
+    expect(second.referral?.referrerRewardIqd).toBe(500);
     expect(second.total).toBe(10_000);
+
+    // One reward per order, and two orders.
     expect(db.raw.prepare(`SELECT COUNT(*) AS total FROM referral_rewards`).get()).toEqual({
-      total: 1,
+      total: 2,
     });
   });
 });

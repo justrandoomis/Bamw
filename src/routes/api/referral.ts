@@ -6,7 +6,7 @@ import { consumeRateLimit, rateLimitResponse } from "@/lib/rate-limit.server";
 import { getSessionUser, requireUser } from "@/lib/session.server";
 import { getStore } from "@/lib/db.server";
 import { readReferralSettings } from "@/lib/referral/config";
-import { bpsToPercent } from "@/lib/referral/money";
+import { bpsToPercent, REFERRER_PERCENT_BPS } from "@/lib/referral/money";
 import { withCookies } from "@/lib/referral/cookies.server";
 import {
   activeAttribution,
@@ -16,11 +16,17 @@ import {
   quoteReferral,
   referralShareInfo,
   referralStats,
+  referrerPublicName,
   requestIdentity,
   REFERRAL_REFUSAL_MESSAGE,
   type ReferralQuoteLine,
 } from "@/lib/referral/service.server";
 import { recordRiskEvent } from "@/lib/referral/risk.server";
+import {
+  canStillUseReferral,
+  hasSpentDiscount,
+  referralBinding,
+} from "@/lib/referral/binding.server";
 import type { DeviceHints } from "@/lib/referral/identity.server";
 
 /**
@@ -143,9 +149,11 @@ export const Route = createFileRoute("/api/referral")({
           const terms = {
             enabled: settings.enabled,
             buyerPercent: bpsToPercent(settings.buyerPercentBps),
-            referrerPercent: bpsToPercent(settings.referrerPercentBps),
+            // Fixed at 5% in code, not read from the settings: the rule is
+            // that it is fixed, and the stored value is from an older one.
+            referrerPercent: bpsToPercent(REFERRER_PERCENT_BPS),
             linkTtlDays: settings.linkTtlDays,
-            firstPurchaseOnly: settings.firstPurchaseOnly,
+            firstPurchaseOnly: true,
             stackWithCoupon: settings.stackWithCoupon,
             maxRewardIqd: settings.maxRewardIqd,
           };
@@ -171,16 +179,39 @@ export const Route = createFileRoute("/api/referral")({
               ) as Record<string, unknown> | undefined)
             : undefined;
 
-          const [share, stats] = await Promise.all([
+          const [share, stats, binding] = await Promise.all([
             referralShareInfo(viewer, url.origin, productRecord),
             referralStats(viewer.id),
+            referralBinding(viewer.id),
           ]);
+
+          /*
+            What the cart is allowed to show.
+
+            `canApply` is the whole of the field's visibility rule and it is
+            decided here, on the database, because the browser must not be the
+            one deciding whether a discount is still available. Once a member
+            has spent the discount or been bound to somebody, the field is gone
+            for good — not disabled, not greyed out: a second code can change
+            nothing at all, so offering one would be a lie.
+
+            `supporting` is the public username of whoever they are with, and
+            it is the *server's* answer, resolved from the binding or from the
+            live attribution — never the text out of the link.
+          */
+          const supportingUserId = binding.referrerUserId || attribution?.referrerUserId || "";
+          const supporting = supportingUserId
+            ? await referrerPublicName(supportingUserId)
+            : null;
 
           return withCookies(
             json({
               terms,
               share: share ?? null,
               stats,
+              canApply: canStillUseReferral(binding),
+              discountUsed: hasSpentDiscount(binding),
+              supporting,
               attribution: attribution
                 ? { productId: attribution.productId, expiresAt: attribution.expiresAt }
                 : null,

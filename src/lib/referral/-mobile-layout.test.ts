@@ -87,6 +87,39 @@ describe("the referral screens on a 320px phone", () => {
     expect(source).toMatch(/min-w-0 flex-1/);
   });
 
+  it("keeps the cart's referral sheet inside the narrowest phone", () => {
+    /*
+      A modal is the one thing that can overflow while every other element on
+      the page behaves: it is positioned against the viewport, not against the
+      page's own padding. Three properties together are what stop it —
+      `w-full` so it never demands more than it is given, `max-w-*` so it stops
+      growing on a desktop, and padding on the *backdrop* so it can never sit
+      flush against the edge on a 320px screen.
+    */
+    const source = read("src/components/referral/ReferralCartField.tsx");
+    const backdrop = source.indexOf('role="dialog"');
+    expect(backdrop).toBeGreaterThan(-1);
+    const sheet = source.slice(backdrop, backdrop + 1600);
+    expect(sheet).toMatch(/fixed inset-0[^"]*\bp-4\b/);
+    expect(sheet).toMatch(/w-full max-w-sm/);
+    // And it opens from the bottom on a phone, centred from `sm:` up.
+    expect(sheet).toMatch(/items-end[^"]*sm:items-center/);
+  });
+
+  it("offers the referral as a text button, not a second field", () => {
+    /*
+      The rule from the design: quieter than the coupon box above it, and no
+      card of its own, so it cannot crowd the summary. A control that grew back
+      into a full-width input would be the regression.
+    */
+    const source = read("src/components/referral/ReferralCartField.tsx");
+    const button = source.indexOf('id="referral-open-btn"');
+    expect(button).toBeGreaterThan(-1);
+    const markup = source.slice(button, button + 400);
+    expect(markup).toMatch(/text-\[1[12]px\]/);
+    expect(markup).not.toMatch(/\bw-full\b/);
+  });
+
   it("keeps the admin table scrolling inside its own container", () => {
     const source = read("src/components/admin/ReferralsManager.tsx");
     const table = source.indexOf("<table");

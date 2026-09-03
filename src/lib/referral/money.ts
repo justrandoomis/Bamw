@@ -15,6 +15,25 @@ export const BPS_DENOMINATOR = 10_000;
 /** The programme's default rate for both sides: 10%. */
 export const DEFAULT_PERCENT_BPS = 1_000;
 
+/**
+ * The buyer's discount: 10%, and only on their first qualifying order, ever.
+ */
+export const BUYER_PERCENT_BPS = 1_000;
+
+/**
+ * The referrer's share: 5%, fixed.
+ *
+ * Fixed in code rather than read from the store settings because the rule is
+ * that it is fixed. Production still carries a `referrerPercentBps` of 1000
+ * from the programme's first version; leaving that readable would have paid
+ * 10% while the rule said 5%, so the setting is no longer consulted for this
+ * side and the admin screen no longer offers it.
+ *
+ * Unlike the buyer's discount this is paid on *every* qualifying order the
+ * referred member ever places, not only the first.
+ */
+export const REFERRER_PERCENT_BPS = 500;
+
 /** Largest order line this arithmetic will accept, as a sanity bound. */
 const MAX_PRICE_IQD = 1_000_000_000;
 

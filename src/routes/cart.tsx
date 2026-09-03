@@ -904,9 +904,6 @@ function CartPage() {
           </section>
         )}
 
-        {/* Referral code — دعوة صديق */}
-        <ReferralCartField lines={lines} onChange={setReferral} />
-
         {/* Coupon Code Section */}
         <section className="bg-[var(--card)] p-4 rounded-3xl border border-border space-y-3 shadow-xs">
           <div className="flex items-center justify-between">
@@ -1029,6 +1026,16 @@ function CartPage() {
             </p>
           )}
         </section>
+
+        {/*
+          Referral — دعوة صديق.
+
+          Directly under the coupon box and outside it, with no card of its
+          own: it is a text button, or one small line saying who the member is
+          with, and it must read as the quieter of the two. It renders nothing
+          at all once the discount has been spent and there is nobody to name.
+        */}
+        <ReferralCartField lines={lines} onChange={setReferral} />
 
         {/* Requirement 3: Detailed Order Breakdown / Summary */}
         <section className="bg-[var(--card)] p-4 rounded-3xl border border-border shadow-xs space-y-3">
