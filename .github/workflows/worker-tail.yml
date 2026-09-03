@@ -109,11 +109,21 @@ jobs:
               ? fs.readFileSync("tail.jsonl", "utf8").split("\n").filter(Boolean)
               : [];
             if (!lines.length) { console.log("(no tail events captured)"); process.exit(0); }
-            // Printed once, so the shape is read rather than assumed: the
-            // previous run guessed at these field names and every event came
-            // out as "?" with no url and no status.
-            console.log("first event keys:", Object.keys(JSON.parse(lines[0])).join(", "));
-            console.log("first event:", lines[0].slice(0, 600));
+            // Printed once, so the shape is read rather than assumed: an
+            // earlier run guessed at these field names and every event came
+            // out as "?" with no url and no status. wrangler opens with a
+            // plain-text banner, so this takes the first line that is JSON
+            // rather than the first line — parsing the banner threw and took
+            // the whole step down after the capture had already succeeded.
+            const firstJson = lines.find((l) => {
+              try { JSON.parse(l); return true; } catch { return false; }
+            });
+            if (firstJson) {
+              console.log("first event keys:", Object.keys(JSON.parse(firstJson)).join(", "));
+              console.log("first event:", firstJson.slice(0, 600));
+            } else {
+              console.log("no line in the capture parsed as JSON; first line was:", lines[0].slice(0, 200));
+            }
             let shown = 0;
             for (const line of lines) {
               let e; try { e = JSON.parse(line); } catch { continue; }
