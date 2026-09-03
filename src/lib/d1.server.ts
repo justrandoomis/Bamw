@@ -1970,21 +1970,52 @@ export function ensureCouponsSchema(): Promise<void> {
 // already-deployed databases until this number moves.
 const RUNTIME_SCHEMA_VERSION = 24;
 
+/**
+ * Run schema statements in as few round trips as the database allows.
+ *
+ * Every statement here is idempotent — `CREATE ... IF NOT EXISTS`, or an
+ * `ALTER` already filtered against the live columns — so a statement that runs
+ * twice is a no-op and a batch that rolls back has cost only time.
+ *
+ * Time is the whole point. A round trip to D1 from the Worker measures around
+ * 150 ms, which is nothing once and thirty seconds across two hundred
+ * statements. In compatibility mode a chunk of forty used to fall back to
+ * forty individual statements the moment any one of them failed, and on a
+ * production database some always do: an index in the base schema can name a
+ * column that a preserved legacy table has never had. One tolerated failure
+ * therefore cost forty round trips, and several chunks of it wedged the whole
+ * bootstrap.
+ *
+ * Bisecting instead isolates the failures in a logarithmic number of trips.
+ */
 async function runSchemaStatements(
   db: D1Like,
   statements: string[],
   tolerateExistingErrors: boolean,
 ) {
-  for (let offset = 0; offset < statements.length; offset += 40) {
-    const chunk = statements.slice(offset, offset + 40);
+  const runChunk = async (chunk: string[]): Promise<void> => {
+    if (!chunk.length) return;
+
     if (db.batch) {
       try {
         await db.batch(chunk.map((sql) => db.prepare(sql)));
-        continue;
+        return;
       } catch (error) {
         if (!tolerateExistingErrors) throw error;
+        /*
+          Split rather than serialise. The half that is clean goes through in
+          one trip; only the half carrying the bad statement is split again.
+        */
+        if (chunk.length > 1) {
+          const mid = chunk.length >> 1;
+          await runChunk(chunk.slice(0, mid));
+          await runChunk(chunk.slice(mid));
+          return;
+        }
       }
     }
+
+    /* A single statement, or no batch support at all. */
     for (const sql of chunk) {
       try {
         await db.prepare(sql).run();
@@ -1992,6 +2023,53 @@ async function runSchemaStatements(
         if (!tolerateExistingErrors) throw error;
       }
     }
+  };
+
+  for (let offset = 0; offset < statements.length; offset += 40) {
+    await runChunk(statements.slice(offset, offset + 40));
+  }
+}
+
+/**
+ * Every table's columns in one query, instead of one `PRAGMA` per table.
+ *
+ * `SCHEMA_PATCHES` is filtered against the columns a table already has, and
+ * asking table by table cost a round trip each. `pragma_table_info` is a
+ * table-valued function in SQLite, so the same question joins against
+ * `sqlite_master` and answers in a single trip.
+ *
+ * Returns undefined if the database will not answer that way, and the caller
+ * falls back to asking one table at a time.
+ */
+async function readAllTableColumns(db: D1Like): Promise<Map<string, Set<string>> | undefined> {
+  try {
+    const rows =
+      (
+        await db
+          .prepare(
+            `SELECT m.name AS tbl, p.name AS col
+               FROM sqlite_master m
+               JOIN pragma_table_info(m.name) p
+              WHERE m.type = 'table'`,
+          )
+          .all()
+      ).results ?? [];
+    if (!rows.length) return undefined;
+    const byTable = new Map<string, Set<string>>();
+    for (const row of rows) {
+      const table = String((row as D1Row)["tbl"] ?? "");
+      const column = String((row as D1Row)["col"] ?? "");
+      if (!table || !column) continue;
+      let columns = byTable.get(table);
+      if (!columns) {
+        columns = new Set<string>();
+        byTable.set(table, columns);
+      }
+      columns.add(column);
+    }
+    return byTable;
+  } catch {
+    return undefined;
   }
 }
 
@@ -2000,25 +2078,32 @@ export function ensureSchema(): Promise<void> {
   if (!db) return Promise.resolve();
   if (!schemaPromise) {
     schemaPromise = (async () => {
-      await db
-        .prepare(
-          `CREATE TABLE IF NOT EXISTS app_schema_meta (key TEXT PRIMARY KEY, value TEXT NOT NULL)`,
-        )
-        .run();
-      // Always guarantee base store tables exist regardless of schema meta
+      /*
+        The three tables nothing else can proceed without, in one round trip
+        rather than three. Every D1-backed request in the app waits behind this
+        on a cold isolate, so its cost is paid on every cold start for ever.
+      */
+      const BASE_TABLES = [
+        `CREATE TABLE IF NOT EXISTS app_schema_meta (key TEXT PRIMARY KEY, value TEXT NOT NULL)`,
+        `CREATE TABLE IF NOT EXISTS store_kv (key TEXT PRIMARY KEY, value TEXT NOT NULL, updated_at TEXT NOT NULL)`,
+        `CREATE TABLE IF NOT EXISTS store_rev (rev INTEGER PRIMARY KEY, updated_at TEXT NOT NULL)`,
+      ];
       try {
-        await db
-          .prepare(
-            `CREATE TABLE IF NOT EXISTS store_kv (key TEXT PRIMARY KEY, value TEXT NOT NULL, updated_at TEXT NOT NULL)`,
-          )
-          .run();
-        await db
-          .prepare(
-            `CREATE TABLE IF NOT EXISTS store_rev (rev INTEGER PRIMARY KEY, updated_at TEXT NOT NULL)`,
-          )
-          .run();
+        await runSchemaStatements(db, BASE_TABLES, false);
       } catch (e) {
         console.warn("[d1:base_store_tables_ensure_failed]", e);
+        /*
+          `app_schema_meta` is read a few lines below and the store tables are
+          the catalogue itself, so a failure here is worth one more attempt
+          statement by statement before giving up on the whole bootstrap.
+        */
+        for (const sql of BASE_TABLES) {
+          try {
+            await db.prepare(sql).run();
+          } catch {
+            /* Reported above; the read that needs it will say so in its own terms. */
+          }
+        }
       }
 
       const installed = await db
@@ -2037,7 +2122,12 @@ export function ensureSchema(): Promise<void> {
       await runSchemaStatements(db, SCHEMA, true);
 
       const remainingPatches: string[] = [];
-      const tableColumns = new Map<string, Set<string>>();
+      /*
+        Asked once for the whole database. This used to be one `PRAGMA
+        table_info` per table as each was first mentioned — twenty-nine round
+        trips before a single patch could be decided on.
+      */
+      const tableColumns = (await readAllTableColumns(db)) ?? new Map<string, Set<string>>();
       for (const sql of SCHEMA_PATCHES) {
         const alter = /^ALTER TABLE ([A-Za-z0-9_]+) ADD COLUMN ([A-Za-z0-9_]+)/i.exec(sql.trim());
         if (!alter) {
@@ -2048,6 +2138,11 @@ export function ensureSchema(): Promise<void> {
         const column = alter[2]!;
         let columns = tableColumns.get(table);
         if (!columns) {
+          /*
+            Either the single query could not be used, or it could and this
+            table was not in the answer. Both mean the same thing here: ask
+            for this one table rather than assume anything about it.
+          */
           const rows = (await db.prepare(`PRAGMA table_info(${table})`).all()).results ?? [];
           columns = new Set(rows.map((row) => String((row as D1Row)["name"] ?? "")));
           tableColumns.set(table, columns);
@@ -2058,6 +2153,30 @@ export function ensureSchema(): Promise<void> {
         }
       }
       await runSchemaStatements(db, remainingPatches, true);
+
+      /*
+        The schema is in place. Record that now, before the housekeeping below.
+
+        This write used to come last, after three best-effort maintenance
+        queries — a full scan of `orders` among them. Between "the schema is
+        correct" and "the database says so" sat some ten seconds of work that
+        nothing depends on, and an isolate that did not live that long left the
+        stamp unwritten. The next request then ran the entire bootstrap again,
+        and so did the one after it: the stamp could never be written because
+        writing it was always the last thing on a list nobody finished.
+
+        Every D1-backed request in the app waits on this function, so that is
+        not a slow bootstrap, it is the site down — which is exactly what a
+        bump to 24 did. Housekeeping is idempotent and runs on the cron as
+        well, so it belongs after the stamp, where at worst it is skipped.
+      */
+      await db
+        .prepare(
+          `INSERT INTO app_schema_meta (key, value) VALUES ('runtime_schema_version', ?)
+         ON CONFLICT(key) DO UPDATE SET value = excluded.value`,
+        )
+        .bind(String(RUNTIME_SCHEMA_VERSION))
+        .run();
 
       /*
         Report the suspect orders. Do not delete them.
@@ -2154,13 +2273,6 @@ export function ensureSchema(): Promise<void> {
         console.warn("[d1:game_device_performance_dedupe_skipped]", err);
       }
 
-      await db
-        .prepare(
-          `INSERT INTO app_schema_meta (key, value) VALUES ('runtime_schema_version', ?)
-         ON CONFLICT(key) DO UPDATE SET value = excluded.value`,
-        )
-        .bind(String(RUNTIME_SCHEMA_VERSION))
-        .run();
     })().catch((error) => {
       schemaPromise = undefined;
       throw error;

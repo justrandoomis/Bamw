@@ -73,9 +73,24 @@ jobs:
           sleep 12
 
           echo "--- requesting https://banan.to${{ inputs.path || '/api/health' }} ---"
-          UA="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0 Safari/537.36"
-          curl -sS -m 60 -o /dev/null -w "HTTP %{http_code} in %{time_total}s\n" \
-            -A "$UA" "https://banan.to${{ inputs.path || '/api/health' }}" || true
+          # `curl` is challenged at the edge whatever user agent it sends —
+          # both probes answered 403 without reaching the Worker. Node's fetch
+          # is what `deployment-state.mjs` uses, and it gets a 200.
+          node -e '
+            (async () => {
+              for (const p of [process.argv[1], "/"]) {
+                const t = Date.now();
+                try {
+                  const res = await fetch("https://banan.to" + p);
+                  const body = await res.text();
+                  console.log(p + " -> HTTP " + res.status + " in " + (Date.now() - t) + "ms");
+                  if (p.startsWith("/api/")) console.log("   " + body.slice(0, 300));
+                } catch (e) {
+                  console.log(p + " -> unreachable after " + (Date.now() - t) + "ms: " + e.message);
+                }
+              }
+            })();
+          ' "${{ inputs.path || '/api/health' }}" || true
           curl -sS -m 60 -o /dev/null -w "HTTP %{http_code} in %{time_total}s\n" \
             -A "$UA" "https://banan.to/" || true
 
@@ -94,6 +109,11 @@ jobs:
               ? fs.readFileSync("tail.jsonl", "utf8").split("\n").filter(Boolean)
               : [];
             if (!lines.length) { console.log("(no tail events captured)"); process.exit(0); }
+            // Printed once, so the shape is read rather than assumed: the
+            // previous run guessed at these field names and every event came
+            // out as "?" with no url and no status.
+            console.log("first event keys:", Object.keys(JSON.parse(lines[0])).join(", "));
+            console.log("first event:", lines[0].slice(0, 600));
             let shown = 0;
             for (const line of lines) {
               let e; try { e = JSON.parse(line); } catch { continue; }
