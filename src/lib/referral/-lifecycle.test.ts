@@ -257,9 +257,11 @@ async function referrerCode(): Promise<string> {
 }
 
 /** Put the referrer's device and address on record, as their own visit does. */
-async function referrerVisits() {
+async function referrerVisits(): Promise<string[]> {
   const identity = await service.requestIdentity(request(REFERRER_DEVICE));
   await service.bindIdentitiesToUser(REFERRER.id, identity);
+  // The `bnt_did` cookie this visit issued — the precise reading of "device".
+  return cookieJar(identity.setCookies);
 }
 
 beforeEach(async () => {
@@ -632,13 +634,25 @@ describe("who a referral must not pay", () => {
     expect(result.reasons).toContain("same_device");
   });
 
-  it("refuses the referrer's own address", async () => {
-    // A different phone, the same home connection.
+  it("allows a different phone on the referrer's connection, and still notes it", async () => {
+    /*
+      An address on its own is not a person. An Iraqi mobile carrier puts
+      thousands of unrelated subscribers behind one, so refusing on it alone
+      refuses bystanders — which is what production did before this: a
+      referral was recorded refused for `same_ip` with nothing else agreeing.
+      The signal is kept, and it corroborates rather than decides.
+    */
     const result = await attempt({
       device: { ip: REFERRER_DEVICE.ip, userAgent: BUYER_DEVICE.userAgent },
     });
+    expect(result.applied).toBe(true);
+  });
+
+  it("refuses the same connection *and* the same kind of phone together", async () => {
+    // Neither is a person on its own; the two agreeing is enough.
+    const result = await attempt({ device: REFERRER_DEVICE });
     expect(result.applied).toBe(false);
-    expect(result.reasons).toContain("same_ip");
+    expect(result.reasons).toEqual(expect.arrayContaining(["same_device", "same_ip"]));
   });
 
   it("refuses two accounts whose numbers are one subscriber spelled twice", async () => {
@@ -1436,10 +1450,14 @@ describe("two people behind one network address", () => {
     });
   }
 
-  it("is refused while the rule is on, which is the default", async () => {
+  it("is allowed, because an address is not a person", async () => {
+    /*
+      This is the false refusal the production log recorded: a visitor with
+      nothing against them but a shared address. The check still runs and the
+      reason is still written for the admin — it just no longer refuses alone.
+    */
     const capture = await captureFromSameNetwork();
-    expect(capture.ok).toBe(false);
-    expect(capture.reasons).toContain("same_ip");
+    expect(capture.ok).toBe(true);
   });
 
   it("is allowed once the admin switches the rule off", async () => {
@@ -1458,7 +1476,16 @@ describe("two people behind one network address", () => {
     expect(capture.reasons ?? []).not.toContain("same_ip");
   });
 
-  it("keeps refusing the referrer's own device even with the rule off", async () => {
+  it("keeps refusing the referrer's actual device even with the rule off", async () => {
+    /*
+      The sharp reading of "device" is the `bnt_did` cookie, and it is the one
+      that still refuses on its own. The header fingerprint cannot: on the
+      production database a single one of those covered three separate
+      accounts, because on iOS Safari it reduces to a version-stripped user
+      agent and a language — the same value for every Iraqi customer holding
+      an iPhone. Carrying the referrer's cookie here is a browser that really
+      is theirs, and that is refused with the address rule switched off.
+    */
     db.raw.prepare(`UPDATE store_kv SET value = ? WHERE key = 'store'`).run(
       JSON.stringify({
         settings: {
@@ -1468,16 +1495,43 @@ describe("two people behind one network address", () => {
     );
     store.invalidateStoreCache();
 
-    await referrerVisits();
+    const referrerCookies = await referrerVisits();
     const code = await referrerCode();
     const capture = await service.captureAttribution({
-      request: request(REFERRER_DEVICE),
+      // A different address and a different phone: only the cookie is shared.
+      request: request({ ...BUYER_DEVICE, cookies: referrerCookies }),
       codeInput: code,
       productRef: "super-mario-odyssey",
     });
 
-    // The device check is the sharper of the two and is not switchable.
     expect(capture.ok).toBe(false);
-    expect(capture.reasons).toContain("same_device");
+    expect(capture.reasons).toContain("same_device_id");
+  });
+
+  it("does not refuse a stranger for merely holding the same model of phone", async () => {
+    /*
+      The other half of the same rule. Same handset, same browser, same
+      language — a different person, a different connection, no shared cookie.
+      Before this that was a refusal.
+    */
+    db.raw.prepare(`UPDATE store_kv SET value = ? WHERE key = 'store'`).run(
+      JSON.stringify({
+        categories: [{ id: "cat_nintendo", title: "ألعاب" }],
+        settings: {
+          referral: { enabled: true, buyerPercent: 10, referrerPercent: 10 },
+        },
+      }),
+    );
+    store.invalidateStoreCache();
+
+    await referrerVisits();
+    const code = await referrerCode();
+    const capture = await service.captureAttribution({
+      request: request({ userAgent: REFERRER_DEVICE.userAgent, ip: "37.236.99.99" }),
+      codeInput: code,
+      productRef: "super-mario-odyssey",
+    });
+
+    expect(capture.ok).toBe(true);
   });
 });

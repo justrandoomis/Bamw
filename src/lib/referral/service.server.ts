@@ -219,7 +219,10 @@ export interface RequestIdentity {
   sessionId: string;
   deviceId: string;
   sessionHash: string;
+  /** The coarse reading: a browser class derived from the request headers. */
   deviceHash: string;
+  /** The precise reading: the `bnt_did` cookie, hashed. */
+  deviceIdHash: string;
   ipHash: string;
   /** `Set-Cookie` values the caller must attach to its response. */
   setCookies: string[];
@@ -237,20 +240,20 @@ export async function requestIdentity(
     hashIpForReferral(request),
   ]);
   /*
-    Two readings of "device", folded into one value.
+    Two readings of "device", kept apart.
 
     The cookie half is precise but can be deleted; the request half survives
-    that but changes when the browser is replaced. Combining them would make
-    the result as fragile as the weaker of the two, so the *request* reading is
-    the identity, and the cookie reading is recorded alongside it as a second
-    row (see `bindIdentitiesToUser`) — either one matching is enough.
+    that but cannot tell two customers holding the same phone model apart.
+    Folding them into one value would mean trusting the weaker one as if it
+    were the stronger, which is what refused honest referrals in production, so
+    each is carried and recorded under its own identity kind.
   */
-  void deviceFromCookie;
   return {
     sessionId: cookies.sessionId,
     deviceId: cookies.deviceId,
     sessionHash,
     deviceHash: deviceFromRequest,
+    deviceIdHash: deviceFromCookie,
     ipHash,
     setCookies: cookies.setCookies,
   };
@@ -269,13 +272,12 @@ export async function bindIdentitiesToUser(
   identity: RequestIdentity,
 ): Promise<void> {
   if (!userId) return;
-  const cookieDeviceHash = await referralHash("device-id", identity.deviceId);
   await rememberRequestIdentities(userId, {
     deviceHash: identity.deviceHash,
+    deviceIdHash: identity.deviceIdHash,
     ipHash: identity.ipHash,
     sessionHash: identity.sessionHash,
   });
-  await rememberRequestIdentities(userId, { deviceHash: cookieDeviceHash });
 }
 
 export interface CaptureResult {
@@ -366,6 +368,7 @@ export async function captureAttribution(params: {
         }
       : {}),
     buyerDeviceHash: identity.deviceHash,
+    buyerDeviceIdHash: identity.deviceIdHash,
     buyerIpHash: identity.ipHash,
     buyerSessionHash: identity.sessionHash,
   });
@@ -706,7 +709,7 @@ export async function quoteReferral(params: {
   lines: ReferralQuoteLine[];
   settings?: ReferralSettings;
   products?: Product[];
-  identity?: { deviceHash: string; ipHash: string; sessionHash: string };
+  identity?: { deviceHash: string; deviceIdHash?: string; ipHash: string; sessionHash: string };
   now?: Date;
 }): Promise<ReferralQuote> {
   const settings = params.settings ?? (await getReferralSettings());
@@ -782,6 +785,7 @@ export async function quoteReferral(params: {
       telegramId: params.buyer.telegramId ?? null,
     },
     buyerDeviceHash: params.identity?.deviceHash ?? null,
+    buyerDeviceIdHash: params.identity?.deviceIdHash ?? null,
     buyerIpHash: params.identity?.ipHash ?? null,
     buyerSessionHash: params.identity?.sessionHash ?? null,
     attributionDeviceHash: attribution.deviceHash,

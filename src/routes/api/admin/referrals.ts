@@ -91,6 +91,80 @@ function toAdminRow(row: RewardListRow) {
   };
 }
 
+/**
+ * Refusals that never became a reward.
+ *
+ * The customer is told one sentence and the reason goes to
+ * `referral_risk_events` — which the reward table could not show, because a
+ * refused code never becomes an order and so never becomes a reward row. That
+ * left the only record of a refusal in a table nothing displayed, and the
+ * owner with no way to answer "why did my link not work?".
+ *
+ * `reward_id IS NULL` is the whole filter: an event attached to a reward is
+ * already visible on that reward's own trail.
+ */
+const REFUSAL_EVENT_TYPES = [
+  "capture_blocked",
+  "bind_blocked",
+  "checkout_not_applicable",
+  "checkout_limit_blocked",
+] as const;
+
+const REFUSALS_SQL = `
+  SELECT e.id, e.event_type, e.risk_score, e.metadata, e.created_at,
+         e.order_id, e.attribution_id,
+         e.referrer_user_id, e.buyer_user_id,
+         referrer.name AS referrer_name, referrer.username AS referrer_username,
+         buyer.name AS buyer_name, buyer.username AS buyer_username,
+         o.code AS order_code
+    FROM referral_risk_events e
+    LEFT JOIN users referrer ON referrer.id = e.referrer_user_id
+    LEFT JOIN users buyer ON buyer.id = e.buyer_user_id
+    LEFT JOIN orders o ON o.id = e.order_id
+   WHERE e.reward_id IS NULL
+     AND e.event_type IN (${REFUSAL_EVENT_TYPES.map((type) => `'${type}'`).join(", ")})
+   ORDER BY e.created_at DESC
+   LIMIT ?
+`;
+
+/**
+ * One refused attempt, with nothing identifying in it.
+ *
+ * The hashes are dropped exactly as they are on the reward trail, and the
+ * reasons come out of the metadata JSON: `reasons` when an anti-abuse check
+ * refused it, `verdict` when the purchase itself was never eligible — an
+ * accessory, a marketplace listing, or a selection that is not an offline
+ * account. Both are needed, because those two refusals arrive by different
+ * routes and read identically to the customer.
+ */
+function toRefusalRow(row: Record<string, unknown>) {
+  const event = toReferralRiskEvent(row);
+  const metadata = event.metadata ?? {};
+  const listed = Array.isArray(metadata["reasons"])
+    ? (metadata["reasons"] as unknown[]).map((value) => String(value)).filter(Boolean)
+    : [];
+  const verdict = String(metadata["verdict"] ?? "")
+    .split(",")
+    .map((part) => part.trim())
+    .filter(Boolean);
+  return {
+    id: event.id,
+    eventType: event.eventType,
+    riskScore: event.riskScore,
+    createdAt: event.createdAt,
+    orderId: event.orderId ?? null,
+    orderCode: String(row["order_code"] ?? ""),
+    referrerName: String(row["referrer_name"] ?? ""),
+    referrerUsername: String(row["referrer_username"] ?? ""),
+    buyerName: String(row["buyer_name"] ?? ""),
+    buyerUsername: String(row["buyer_username"] ?? ""),
+    stage: String(metadata["stage"] ?? ""),
+    // Deduplicated: a reason can be cited by both the check list and the
+    // verdict string, and showing it twice reads as two separate refusals.
+    reasons: Array.from(new Set([...listed, ...verdict])),
+  };
+}
+
 export const Route = createFileRoute("/api/admin/referrals")({
   server: {
     handlers: {
@@ -190,6 +264,15 @@ export const Route = createFileRoute("/api/admin/referrals")({
               ORDER BY b.created_at DESC LIMIT 100`,
           );
 
+          /*
+            The refusals that produced no reward row.
+
+            Unfiltered by the search box on purpose: the point of this list is
+            the question "why is nobody's code working?", which is asked with
+            nothing to search by.
+          */
+          const refusals = await d1All<Record<string, unknown>>(REFUSALS_SQL, limit);
+
           return json({
             rewards: rows.filter((row) => row["id"]).map(toAdminRow),
             totals: {
@@ -206,6 +289,7 @@ export const Route = createFileRoute("/api/admin/referrals")({
               reason: String(row["reason"] ?? ""),
               createdAt: String(row["created_at"] ?? ""),
             })),
+            refusals: refusals.filter((row) => row["id"]).map(toRefusalRow),
             settings: settingsForForm,
           });
         }),

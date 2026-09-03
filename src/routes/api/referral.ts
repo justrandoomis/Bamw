@@ -20,6 +20,7 @@ import {
   REFERRAL_REFUSAL_MESSAGE,
   type ReferralQuoteLine,
 } from "@/lib/referral/service.server";
+import { recordRiskEvent } from "@/lib/referral/risk.server";
 import type { DeviceHints } from "@/lib/referral/identity.server";
 
 /**
@@ -246,6 +247,35 @@ export const Route = createFileRoute("/api/referral")({
             const lines = toQuoteLines(data.lines);
             if (attribution && lines.length) {
               quote = await quoteReferral({ buyer: viewer, attribution, lines });
+              /*
+                A refusal the anti-abuse checks did not cause.
+
+                The code is fine and so are the two members; the purchase
+                itself is not in the programme — an accessory, a marketplace
+                listing, or a selection that is not an offline account. It
+                reads to the customer exactly like every other refusal, and
+                until this it was the one kind that left no record at all:
+                nothing here becomes an order, so nothing here becomes a
+                reward, and the admin screen had nothing to show.
+
+                Recorded here rather than in `quoteReferral`, which re-runs on
+                every edit to the cart — this path is a deliberate act by the
+                customer and is rate limited to twelve attempts a quarter hour.
+              */
+              if (!quote.applicable) {
+                await recordRiskEvent({
+                  attributionId: attribution.id,
+                  referrerUserId: attribution.referrerUserId,
+                  buyerUserId: viewer.id,
+                  eventType: "checkout_not_applicable",
+                  riskScore: quote.riskScore,
+                  metadata: {
+                    reasons: quote.reasons,
+                    verdict: quote.riskVerdict,
+                    stage: "apply",
+                  },
+                });
+              }
             }
           }
 
@@ -301,6 +331,7 @@ export const Route = createFileRoute("/api/referral")({
             lines,
             identity: {
               deviceHash: identity.deviceHash,
+              deviceIdHash: identity.deviceIdHash,
               ipHash: identity.ipHash,
               sessionHash: identity.sessionHash,
             },

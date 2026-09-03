@@ -178,6 +178,15 @@ beforeEach(() => {
   admin = { id: "usr_admin", isAdmin: true };
 });
 
+/** The refusal rows the list hands back, as this file reads them. */
+interface RefusalRow {
+  id: string;
+  eventType: string;
+  reasons: string[];
+  referrerName: string;
+  buyerName: string;
+}
+
 describe("the queue", () => {
   it("lists rewards with the anti-abuse verdict as flags, not as hashes", async () => {
     seedReward();
@@ -228,6 +237,68 @@ describe("the queue", () => {
     expect(body.events[0].deviceHash).toBeUndefined();
     expect(body.events[0].ipHash).toBeUndefined();
     expect(JSON.stringify(body)).not.toContain("device_hash_value");
+  });
+
+  it("shows refusals that never became a reward, with the reason and no hashes", async () => {
+    /*
+      The gap this closes. A code refused at the link or in the cart never
+      becomes an order, so it never becomes a reward — and the queue is built
+      from rewards, which left the owner with no way to see why a referral had
+      been turned down. The reason was written, to a table nothing displayed.
+    */
+    db.raw
+      .prepare(
+        `INSERT INTO referral_risk_events
+          (id, attribution_id, reward_id, order_id, referrer_user_id, buyer_user_id,
+           event_type, risk_score, device_hash, ip_hash, metadata, created_at)
+         VALUES (?, ?, NULL, ?, 'usr_ref', ?, ?, ?, 'device_hash_value', 'ip_hash_value', ?, ?)`,
+      )
+      .run("rre_a", "rat_1", null, "usr_buy", "capture_blocked", 60,
+           '{"reasons":["same_device","same_ip"],"stage":"capture"}', now);
+    // The other shape: eligible members, a purchase that is not in the
+    // programme. Its reason arrives as `verdict`, not in the `reasons` array.
+    db.raw
+      .prepare(
+        `INSERT INTO referral_risk_events
+          (id, attribution_id, reward_id, order_id, referrer_user_id, buyer_user_id,
+           event_type, risk_score, metadata, created_at)
+         VALUES (?, ?, NULL, NULL, 'usr_ref', ?, ?, 0, ?, ?)`,
+      )
+      .run("rre_b", "rat_1", "usr_buy", "checkout_not_applicable",
+           '{"reasons":[],"verdict":"not_offline_account","stage":"apply"}', now);
+
+    const res = await get();
+    const body = await res.json();
+
+    expect(body.refusals).toHaveLength(2);
+    const byId = Object.fromEntries(
+      (body.refusals as RefusalRow[]).map((row) => [row.id, row]),
+    );
+    expect(byId["rre_a"].reasons).toEqual(["same_device", "same_ip"]);
+    expect(byId["rre_a"].referrerName).toBe("سامي");
+    expect(byId["rre_a"].buyerName).toBe("علي");
+    expect(byId["rre_b"].reasons).toEqual(["not_offline_account"]);
+    expect(byId["rre_b"].eventType).toBe("checkout_not_applicable");
+
+    const raw = JSON.stringify(body.refusals);
+    expect(raw).not.toContain("device_hash_value");
+    expect(raw).not.toContain("ip_hash_value");
+  });
+
+  it("leaves events that already belong to a reward out of the refusals list", async () => {
+    // They are on that reward's own trail; listing them twice reads as two
+    // separate refusals of one referral.
+    seedReward();
+    db.raw
+      .prepare(
+        `INSERT INTO referral_risk_events
+          (id, attribution_id, reward_id, order_id, event_type, risk_score, metadata, created_at)
+         VALUES ('rre_c','rat_1','rrw_1','ord_1','capture_blocked', 90, '{"reasons":["same_phone"]}', ?)`,
+      )
+      .run(now);
+
+    const body = await (await get()).json();
+    expect(body.refusals).toHaveLength(0);
   });
 
   it("is closed to anyone who is not an admin", async () => {

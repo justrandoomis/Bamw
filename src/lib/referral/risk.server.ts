@@ -25,6 +25,7 @@ import { contactHashes, type ContactHashes } from "./identity.server";
 export type ReferralRiskReason =
   | "self_referral"
   | "same_device"
+  | "same_device_id"
   | "same_ip"
   | "same_phone"
   | "same_email"
@@ -43,15 +44,15 @@ export type ReferralRiskReason =
 /**
  * What each signal costs.
  *
- * Every one of these is on its own enough to refuse — they are all listed in
- * the programme's rules as prohibitions, not as hints — so the score is for
- * the admin's triage queue, not for the decision. It is what "Risk score" in
- * the admin screen shows and what sorts the review list.
+ * The score is the admin's triage order. Whether a referral is *refused* is
+ * decided by `riskVerdict` below, from the strength of the signals rather than
+ * from this number.
  */
 const WEIGHTS: Record<ReferralRiskReason, number> = {
   self_referral: 100,
-  same_device: 90,
-  same_ip: 70,
+  same_device: 60,
+  same_device_id: 95,
+  same_ip: 40,
   same_phone: 90,
   same_email: 90,
   same_telegram: 90,
@@ -79,18 +80,65 @@ export function scoreReasons(reasons: readonly ReferralRiskReason[]): number {
   return reasons.reduce((worst, reason) => Math.max(worst, WEIGHTS[reason] ?? 10), 0);
 }
 
+/**
+ * Signals that identify a *person*, and signals that only narrow one down.
+ *
+ * Two of these could not tell people apart, and production proved it. On the
+ * live database, one device hash stood for three different accounts and two
+ * more stood for two each — out of twelve members in total — and one referral
+ * had been refused for `same_ip` with nothing else agreeing:
+ *
+ * - `same_device` is the fingerprint derived from the request headers, and it
+ *   is a browser *class* rather than a device. On iOS Safari, which sends no
+ *   `Sec-CH-UA-*` headers, it reduces to a version-stripped user agent and a
+ *   language — identical for every Iraqi customer on an iPhone reading Arabic.
+ * - `same_ip` is an address, and an Iraqi mobile carrier puts thousands of
+ *   unrelated subscribers behind a handful of them.
+ *
+ * So they corroborate rather than decide: either one alone is not a refusal,
+ * both together are. Everything else names a person — the same account, the
+ * same browser session, the same device cookie, the same phone, email or
+ * Telegram — and any one of those still refuses on its own.
+ *
+ * `same_device_id` is the precise reading of "device", from the `bnt_did`
+ * cookie. It can be deleted, which is why the coarse reading exists; it cannot
+ * be shared by two customers, which is why this one still decides.
+ */
+const CORROBORATING_REASONS: ReadonlySet<ReferralRiskReason> = new Set([
+  "same_device",
+  "same_ip",
+]);
+
+/** How many corroborating signals have to agree before they refuse together. */
+const CORROBORATION_THRESHOLD = 2;
+
 export function riskVerdict(reasons: readonly ReferralRiskReason[]): ReferralRiskVerdict {
   const unique = Array.from(new Set(reasons));
+  const corroborating = unique.filter((reason) => CORROBORATING_REASONS.has(reason));
+  const decisive = unique.length - corroborating.length;
   return {
-    blocked: unique.length > 0,
+    /*
+      Every reason still travels — the admin screen shows all of them, and the
+      score is still the worst of them — but a refusal needs either one signal
+      that names a person or two that agree.
+    */
+    blocked: decisive > 0 || corroborating.length >= CORROBORATION_THRESHOLD,
     score: scoreReasons(unique),
     reasons: unique,
     verdict: unique.length ? unique.join(",") : "clear",
   };
 }
 
-/** The kinds of identity the programme tracks against an account. */
-export type IdentityKind = "device" | "ip" | "session";
+/**
+ * The kinds of identity the programme tracks against an account.
+ *
+ * `device` and `device_id` are the two readings of one thing and are kept
+ * apart on purpose: folded into a single kind, a match could not say whether
+ * it had found the customer's own device cookie or merely another customer
+ * holding the same phone model, and the weaker reading would have to be
+ * trusted like the stronger one. That is what refused honest referrals.
+ */
+export type IdentityKind = "device" | "device_id" | "ip" | "session";
 
 export interface RiskParty {
   id: string;
@@ -106,6 +154,12 @@ export interface AssessReferralInput {
   buyer?: RiskParty;
   /** The buyer's identities right now, already hashed. */
   buyerDeviceHash?: string | null;
+  /**
+   * The `bnt_did` cookie's hash. Only the current request carries it — the
+   * attribution row has no column for it — so unlike the others there is no
+   * second, remembered value to compare.
+   */
+  buyerDeviceIdHash?: string | null;
   buyerIpHash?: string | null;
   buyerSessionHash?: string | null;
   /** What was recorded when the link was opened. */
@@ -156,11 +210,17 @@ export async function rememberIdentity(
 /** Remember every identity this request carries, in one go. */
 export async function rememberRequestIdentities(
   userId: string,
-  identities: { deviceHash?: string | null; ipHash?: string | null; sessionHash?: string | null },
+  identities: {
+    deviceHash?: string | null;
+    deviceIdHash?: string | null;
+    ipHash?: string | null;
+    sessionHash?: string | null;
+  },
 ): Promise<void> {
   if (!userId) return;
   await Promise.all([
     rememberIdentity(userId, "device", identities.deviceHash),
+    rememberIdentity(userId, "device_id", identities.deviceIdHash),
     rememberIdentity(userId, "ip", identities.ipHash),
     rememberIdentity(userId, "session", identities.sessionHash),
   ]).catch((error) => {
@@ -317,8 +377,9 @@ export async function assessReferralRisk(
     the ones recorded when the link was opened, against everything the
     *referrer's* account has ever been seen under.
   */
-  const [sameDevice, sameIp, sameSession] = await Promise.all([
+  const [sameDevice, sameDeviceId, sameIp, sameSession] = await Promise.all([
     identityBelongsTo(referrerId, "device", [input.buyerDeviceHash, input.attributionDeviceHash]),
+    identityBelongsTo(referrerId, "device_id", [input.buyerDeviceIdHash]),
     identityBelongsTo(referrerId, "ip", [input.buyerIpHash, input.attributionIpHash]),
     identityBelongsTo(referrerId, "session", [
       input.buyerSessionHash,
@@ -326,12 +387,13 @@ export async function assessReferralRisk(
     ]),
   ]);
   if (sameDevice) reasons.push("same_device");
+  if (sameDeviceId) reasons.push("same_device_id");
   /*
-    The address check is the one the admin can switch off, because it is the
-    one that catches bystanders: a mobile carrier can put thousands of
-    unrelated subscribers behind a single public address, and two friends on
-    the same home connection are the ordinary case rather than the suspicious
-    one. On by default, as specified.
+    The address check is the one the admin can switch off, and — with
+    `same_device` — one of the two that only corroborate: a mobile carrier can
+    put thousands of unrelated subscribers behind a single public address, and
+    two friends on one home connection are the ordinary case rather than the
+    suspicious one. On by default, as specified.
   */
   if (sameIp && input.settings.blockSameIp) reasons.push("same_ip");
   if (sameSession) reasons.push("same_session");
