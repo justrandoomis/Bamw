@@ -1,4 +1,5 @@
 import { tr, useI18n } from "@/i18n";
+import { threadKind } from "@/lib/thread-lifecycle";
 import { toast } from "sonner";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { AnimatePresence, motion } from "motion/react";
@@ -3490,10 +3491,21 @@ export default function ChatView({
 
                 <div className="space-y-3">
                   {threads.map((thread, idx) => {
-                    const isAi = thread.chatType === "AUTOMATED_SUPPORT";
-                    const isHuman = thread.chatType === "GENERAL_SUPPORT";
-                    const isOrder = Boolean(thread.orderId) || thread.chatType === "ORDER_SUPPORT";
+                    /*
+                      One classifier, shared with the server.
+
+                      These four booleans were derived here independently and
+                      the badge tested `isAi` first — so a thread that was the
+                      bot's *and* attached to an order showed "🤖 مساعد آلي"
+                      while `threadKind` called it an order. The kind now comes
+                      from the same function the expiry uses, which is the only
+                      way the label and the deletion rule cannot disagree.
+                    */
+                    const kind = threadKind(thread);
+                    const isOrder = kind === "order";
                     const isDelivery = thread.chatType === "DELIVERY";
+                    const isAi = kind === "bot";
+                    const isHuman = kind === "human_support";
 
                     return (
                       <motion.button
@@ -3546,13 +3558,13 @@ export default function ChatView({
                                     : "bg-emerald-500/15 text-emerald-700 dark:text-emerald-400"
                             }`}
                           >
-                            {isAi
-                              ? "🤖 مساعد آلي"
-                              : isHuman
-                                ? "👤 دعم الإدارة"
-                                : isDelivery
-                                  ? "⚡ تسليم"
-                                  : "📦 طلب"}
+                            {isOrder
+                              ? isDelivery
+                                ? "⚡ تسليم"
+                                : "📦 طلب"
+                              : isAi
+                                ? "🤖 مساعد آلي"
+                                : "👤 دعم الإدارة"}
                           </span>
                         </span>
                       </motion.button>

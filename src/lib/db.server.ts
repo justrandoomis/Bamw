@@ -2,6 +2,7 @@ import type { Product } from "./types";
 import { randomAvatar, randomDisplayName } from "./avatars";
 import { readMessageRow } from "./chat-message-row";
 import { DELIVERY_OTP_TTL_MINUTES, deliveryOtpExpiry } from "./delivery-otp";
+import { expiryFor, hasExpired } from "./thread-lifecycle";
 import { randomId, hashPassword } from "./crypto.server";
 import {
   d1All as d1RawAll,
@@ -2225,6 +2226,17 @@ function normalizeThread(thread: Thread): Thread {
       thread.chatType = "GENERAL_SUPPORT";
     }
   }
+  /*
+    The expiry is derived here, not authored anywhere.
+
+    Deriving it means every message that lands recomputes it for free, and no
+    write can leave a thread carrying an expiry that no longer matches its
+    kind — which is the state that would delete a conversation somebody was
+    still having. Absent means "keeps for ever", unambiguously.
+  */
+  const expires = expiryFor(thread);
+  if (expires) thread.expiresAt = expires;
+  else delete thread.expiresAt;
   return thread;
 }
 
@@ -2258,10 +2270,18 @@ export async function listThreadsByUser(userId: string): Promise<Thread[]> {
       `SELECT doc FROM threads WHERE user_id = ? ORDER BY last_message_at DESC`,
       userId,
     );
-    return rows.map((r) => normalizeThread(parse<Thread>(r.doc, {} as Thread)));
+    /*
+      Expired assistant threads are filtered on read as well as swept by the
+      cron, so the member's list is right the moment the clock passes rather
+      than the next time the job happens to run. Only bot threads can be
+      expired at all — see `thread-lifecycle.ts`.
+    */
+    return rows
+      .map((r) => normalizeThread(parse<Thread>(r.doc, {} as Thread)))
+      .filter((thread) => !hasExpired(thread));
   }
   const all = await listThreads();
-  return all.filter((t) => t.userId === userId);
+  return all.filter((t) => t.userId === userId && !hasExpired(t));
 }
 
 export async function saveThread(thread: Thread): Promise<Thread> {

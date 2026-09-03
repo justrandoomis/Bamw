@@ -150,11 +150,24 @@ export async function processInactivityAndQueue(): Promise<void> {
             },
           });
 
+          /*
+            The mode goes back to the assistant; the *kind* does not.
+
+            This used to rewrite `chatType` to `AUTOMATED_SUPPORT`, which
+            retroactively relabelled a conversation somebody had with a person
+            as a conversation with the bot — the badge in the member's history
+            changed under them, and the record of a human support ticket
+            stopped existing as one.
+
+            It matters far more now that bot threads expire after 24 hours and
+            are then deleted: a human support conversation relabelled here
+            would have been swept away with them. `chatType` is what the
+            expiry reads, so it is what must stay true.
+          */
           await saveThread({
             ...thread,
             status: "closed",
             mode: "AI_ACTIVE",
-            chatType: "AUTOMATED_SUPPORT",
             aiPaused: false,
             needsAdmin: false,
             humanRequested: false,

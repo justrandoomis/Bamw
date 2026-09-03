@@ -1,6 +1,13 @@
 import { env } from "./env.server";
 import { readOrderItemSelection, selectionSummary } from "./orderItemSelection";
 import {
+  adminRoute,
+  findForbiddenSecret,
+  routeOptions,
+  withRoutePrefix,
+  type AdminNotificationKind,
+} from "./telegram-admin-routing.server";
+import {
   sendTelegramMessage,
   escapeHtml,
   telegramMiniAppDeepLink,
@@ -96,13 +103,58 @@ function buildInlineAppButton(text: string, startParam: string, fallbackPath = "
 /**
  * Notify Admin when a customer places a new order (especially digital accounts).
  */
+/**
+ * Send one admin notification to wherever its kind belongs.
+ *
+ * Every admin notification goes through here, so the routing, the topic, the
+ * prefix and the secret check are decided once rather than in eight places
+ * that would drift.
+ *
+ * Never throws. A Telegram outage must not fail an order, a top-up or a
+ * customer's message — the send is a notification about the thing, not the
+ * thing itself.
+ */
+export async function sendAdminNotification(
+  kind: AdminNotificationKind,
+  text: string,
+  options: Record<string, unknown> = {},
+): Promise<boolean> {
+  const route = adminRoute(kind);
+  if (!route.chatId) return false;
+
+  /*
+    A group is forwardable, searchable, and joined by whoever is added next.
+    A message carrying a password, a one-time code or a key is dropped rather
+    than trimmed: one that has to be censored to be sent was assembled wrongly,
+    and sending the censored half would hide that.
+  */
+  const forbidden = findForbiddenSecret(text);
+  if (forbidden) {
+    console.error("[telegram:admin_notification_blocked]", { kind, forbidden });
+    return false;
+  }
+
+  try {
+    const res = await sendTelegramMessage(route.chatId, withRoutePrefix(route, text), {
+      parse_mode: "HTML",
+      ...routeOptions(route),
+      ...options,
+    });
+    if (!res.ok) {
+      console.warn("[telegram:admin_notification_failed]", { kind, error: res.error });
+    }
+    return res.ok;
+  } catch (err) {
+    console.error("[telegram:admin_notification_threw]", { kind, err });
+    return false;
+  }
+}
+
 export async function notifyAdminNewOrder(params: {
   order: Order;
   user: { id: string; name?: string; phone?: string; email?: string; username?: string };
 }): Promise<boolean> {
   const { order, user } = params;
-  const adminChatId = getAdminTelegramChatId();
-  if (!adminChatId) return false;
 
   const hasDigital = order.items.some(
     (item) => !["hardware", "physical", "accessory", "device"].includes(item.kind),
@@ -150,16 +202,7 @@ export async function notifyAdminNewOrder(params: {
     `/orders/${order.id}`,
   );
 
-  try {
-    const res = await sendTelegramMessage(adminChatId, messageText, {
-      parse_mode: "HTML",
-      reply_markup: replyMarkup,
-    });
-    return res.ok;
-  } catch (err) {
-    console.error("[telegram:notifyAdminNewOrder] failed", err);
-    return false;
-  }
+  return sendAdminNotification("order", messageText, { reply_markup: replyMarkup });
 }
 
 /**
@@ -173,8 +216,6 @@ export async function notifyAdminCustomerMessage(params: {
   const { thread, message, user } = params;
   if (message.senderRole !== "user") return false;
 
-  const adminChatId = getAdminTelegramChatId();
-  if (!adminChatId) return false;
 
   const customerName = escapeHtml(user.name || user.username || "عميل بنانا");
   const textContent = escapeHtml(message.text || (message.imageUrl ? "📸 [صورة / مرفق]" : ""));
@@ -195,16 +236,7 @@ export async function notifyAdminCustomerMessage(params: {
     `/chat?threadId=${thread.id}`,
   );
 
-  try {
-    const res = await sendTelegramMessage(adminChatId, messageText, {
-      parse_mode: "HTML",
-      reply_markup: replyMarkup,
-    });
-    return res.ok;
-  } catch (err) {
-    console.error("[telegram:notifyAdminCustomerMessage] failed", err);
-    return false;
-  }
+  return sendAdminNotification("support", messageText, { reply_markup: replyMarkup });
 }
 
 /**
@@ -251,6 +283,51 @@ export function buildRechargeReviewKeyboard(requestId: string) {
   };
 }
 
+/**
+ * A customer asked to speak to a person.
+ *
+ * This was the one admin-facing event that notified nobody at all. The
+ * escalation created a `GENERAL_SUPPORT` thread with `needsAdmin: true` and
+ * returned, and an admin only found out if the customer then typed something
+ * into it — so a request that went unanswered looked, from the shop's side,
+ * exactly like a request that was never made.
+ */
+export async function notifyAdminHumanSupportRequest(params: {
+  threadId: string;
+  user: { id: string; name?: string; username?: string };
+  /** What the customer was talking about when they asked. Optional. */
+  lastUserText?: string;
+}): Promise<boolean> {
+  const { threadId, user } = params;
+  const who = escapeHtml(user.name || user.username || user.id);
+
+  /*
+    A short excerpt, not the conversation. Enough for whoever picks it up to
+    know what they are walking into; not so much that the group becomes a
+    copy of the customer's messages.
+  */
+  const excerpt = (params.lastUserText ?? "").trim().slice(0, 200);
+  const excerptLine = excerpt ? `\n\n💬 <i>${escapeHtml(excerpt)}</i>` : "";
+
+  const text =
+    `🙋 <b>طلب تحدث مع الدعم البشري</b>\n\n` +
+    `👤 <b>العميل:</b> ${who}\n` +
+    `🔗 <b>المحادثة:</b> <code>${escapeHtml(threadId)}</code>` +
+    excerptLine;
+
+  return sendAdminNotification(
+    "support",
+    text,
+    {
+      reply_markup: buildInlineAppButton(
+        "💬 فتح المحادثة",
+        `thread_${threadId}`,
+        `/admin/inbox?thread=${encodeURIComponent(threadId)}`,
+      ),
+    },
+  );
+}
+
 export async function notifyAdminWalletTopUp(params: {
   requestId: string;
   amount: number;
@@ -259,8 +336,6 @@ export async function notifyAdminWalletTopUp(params: {
   proofUrl?: string;
 }): Promise<boolean> {
   const { requestId, amount, method, user, proofUrl } = params;
-  const adminChatId = getAdminTelegramChatId();
-  if (!adminChatId) return false;
 
   const customerName = escapeHtml(user.name || "عميل بنانا");
   const methodLabel =
@@ -284,16 +359,7 @@ export async function notifyAdminWalletTopUp(params: {
 
   const replyMarkup = buildRechargeReviewKeyboard(requestId);
 
-  try {
-    const res = await sendTelegramMessage(adminChatId, messageText, {
-      parse_mode: "HTML",
-      reply_markup: replyMarkup,
-    });
-    return res.ok;
-  } catch (err) {
-    console.error("[telegram:notifyAdminWalletTopUp] failed", err);
-    return false;
-  }
+  return sendAdminNotification("wallet", messageText, { reply_markup: replyMarkup });
 }
 
 /**
@@ -304,8 +370,6 @@ export async function notifyAdminGameRequest(params: {
   user: { id: string; name?: string; phone?: string };
 }): Promise<boolean> {
   const { request, user } = params;
-  const adminChatId = getAdminTelegramChatId();
-  if (!adminChatId) return false;
 
   const customerName = escapeHtml(user.name || "عميل بنانا");
   const messageText =
@@ -326,16 +390,7 @@ export async function notifyAdminGameRequest(params: {
     `/admin`,
   );
 
-  try {
-    const res = await sendTelegramMessage(adminChatId, messageText, {
-      parse_mode: "HTML",
-      reply_markup: replyMarkup,
-    });
-    return res.ok;
-  } catch (err) {
-    console.error("[telegram:notifyAdminGameRequest] failed", err);
-    return false;
-  }
+  return sendAdminNotification("order", messageText, { reply_markup: replyMarkup });
 }
 
 /**
@@ -350,8 +405,6 @@ export async function notifyAdminDiscTrade(params: {
   user: { id: string; name?: string; phone?: string };
 }): Promise<boolean> {
   const { tradeId, gameName, platform, finalIqd, isCustom, user } = params;
-  const adminChatId = getAdminTelegramChatId();
-  if (!adminChatId) return false;
 
   const customerName = escapeHtml(user.name || "عميل بنانا");
   const valuationText = finalIqd
@@ -373,16 +426,7 @@ export async function notifyAdminDiscTrade(params: {
     `/trade`,
   );
 
-  try {
-    const res = await sendTelegramMessage(adminChatId, messageText, {
-      parse_mode: "HTML",
-      reply_markup: replyMarkup,
-    });
-    return res.ok;
-  } catch (err) {
-    console.error("[telegram:notifyAdminDiscTrade] failed", err);
-    return false;
-  }
+  return sendAdminNotification("order", messageText, { reply_markup: replyMarkup });
 }
 
 /**
@@ -402,8 +446,6 @@ export async function notifyAdminUsedListing(params: {
   user: { id: string; name?: string; phone?: string };
 }): Promise<boolean> {
   const { listingId, title, priceIqd, conditionGrade, usedType, user } = params;
-  const adminChatId = getAdminTelegramChatId();
-  if (!adminChatId) return false;
 
   const messageText =
     `🏷️ <b>عرض قطعة مستعملة بانتظار المراجعة</b> 🍌\n\n` +
@@ -416,16 +458,7 @@ export async function notifyAdminUsedListing(params: {
 
   const replyMarkup = buildInlineAppButton(`🔍 مراجعة العرض`, `used_${listingId}`, `/admin`);
 
-  try {
-    const res = await sendTelegramMessage(adminChatId, messageText, {
-      parse_mode: "HTML",
-      reply_markup: replyMarkup,
-    });
-    return res.ok;
-  } catch (err) {
-    console.error("[telegram:notifyAdminUsedListing] failed", err);
-    return false;
-  }
+  return sendAdminNotification("order", messageText, { reply_markup: replyMarkup });
 }
 
 /* =========================================================================

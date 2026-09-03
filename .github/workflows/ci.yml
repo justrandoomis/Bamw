@@ -44,41 +44,24 @@ jobs:
         with:
           persist-credentials: false
 
-      # No `cache: npm`. It keys the cache off a lockfile, and this repository
-      # commits none — `package-lock.json` is on line 44 of `.gitignore`, so
-      # the runner checks out a tree without one and `setup-node` fails before
-      # a single gate has run. The release job has never set it, which is why
-      # that one survives.
       - uses: actions/setup-node@v4
         with:
           node-version: 22
+          cache: npm
 
-      # `npm install`, not `npm ci`, and deliberately: it is exactly what the
-      # release job runs, and the point of this gate is that "passed CI" means
-      # "can be deployed". Installing differently here would break that.
-      #
-      # `npm ci` is what ought to be used and cannot be, because there is no
-      # lockfile to install from — see the step below.
-      - run: npm install --no-audit --no-fund
+      # Node 22 ships npm 10, and npm 10 cannot install this project at all:
+      # resolving vitest's peer set crashes its dependency solver outright
+      # ("Cannot read properties of null (reading 'edgesOut')"), and it also
+      # rejects a lockfile that carries optional platform packages for other
+      # operating systems. npm 11 handles both. Pinned rather than `npm@11`
+      # so a future npm release cannot quietly change how the shop installs.
+      - run: npm install -g npm@11.19.1
 
-      # Not a gate, a standing notice.
-      #
-      # `package-lock.json` is ignored, so every install here and in the
-      # release resolves `package.json` from scratch: two deploys of the same
-      # commit can install different transitive versions, and an upstream
-      # patch release lands on the shop without anyone choosing it. Committing
-      # a lockfile is the fix, and it is a dependency change that deserves its
-      # own commit rather than riding along inside a CI one.
-      - name: Reproducible install (advisory)
-        continue-on-error: true
-        run: |
-          if [ -f package-lock.json ] && git ls-files --error-unmatch package-lock.json >/dev/null 2>&1; then
-            echo "a lockfile is committed — installs are reproducible"
-          else
-            echo "::warning title=No committed lockfile::package-lock.json is \
-          gitignored, so every install re-resolves package.json and two builds \
-          of the same commit can differ"
-          fi
+      # `npm ci`, from the committed lockfile: the same resolved tree on every
+      # run, here and in the release job, so "passed CI" means "can be
+      # deployed". It also fails loudly if package.json and the lockfile have
+      # drifted apart, which `npm install` would silently paper over.
+      - run: npm ci --no-audit --no-fund
 
       # The four gates, in the order that fails cheapest first. Each is its own
       # step so a red run names what broke without anyone opening the log.
