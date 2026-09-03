@@ -56,6 +56,23 @@ export const PRIVATE_PRODUCT_FIELDS = new Set([
   "dataConfidence",
   "modelInfo",
   "rawData",
+  /*
+    The Chinese supplier name and its provenance.
+
+    These live in `product_admin_metadata` and are never loaded into a product
+    document, so in the ordinary course of things this list never sees them.
+    They are here as the second lock: an import that ever writes one of these
+    onto the product itself would otherwise publish the name orders are placed
+    with, and the shop's margin with it.
+  */
+  "supplier_name_zh_cn",
+  "supplierNameZhCn",
+  "supplier_name_zh_source_url",
+  "supplierNameZhSourceUrl",
+  "supplier_name_zh_verification_status",
+  "supplierNameZhVerificationStatus",
+  "supplier_name_zh_verified_at",
+  "supplierNameZhVerifiedAt",
 ]);
 
 /**

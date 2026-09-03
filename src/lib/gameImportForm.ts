@@ -282,7 +282,17 @@ export function buildProductSavePayload(
 }
 
 export type BatchGameImport =
-  { ok: true; payload: Record<string, any> } | { ok: false; reason: string };
+  | {
+      ok: true;
+      payload: Record<string, any>;
+      /**
+       * The Chinese supplier name, carried beside the payload and never
+       * inside it — the payload is what reaches `saveProduct` and therefore
+       * every public response.
+       */
+      supplierNameZh: { name: string; sourceUrl: string };
+    }
+  | { ok: false; reason: string };
 
 /**
  * One template file from a batch archive, ready for the save endpoint.
@@ -292,9 +302,30 @@ export type BatchGameImport =
  * endpoint is told this is a batch run so a taken slug produces a flagged copy
  * instead of a refusal.
  */
+/**
+ * Take the Chinese supplier name off a parsed form.
+ *
+ * Deletes as it reads. A value left on the form is a value that reaches
+ * `saveProduct`, and from there every public serializer — the exact leak the
+ * separate `product_admin_metadata` table exists to make impossible. It has to
+ * travel through the form because that is how the parser hands anything over;
+ * it must not stay there.
+ */
+export function extractSupplierNameZh(form: Record<string, unknown>): {
+  name: string;
+  sourceUrl: string;
+} {
+  const name = String(form["supplierNameZhCn"] ?? "").trim();
+  const sourceUrl = String(form["supplierNameZhSourceUrl"] ?? "").trim();
+  delete form["supplierNameZhCn"];
+  delete form["supplierNameZhSourceUrl"];
+  return { name, sourceUrl };
+}
+
 export function buildBatchGameImport(rawText: string, categoryId: string): BatchGameImport {
   const parsed = parseGameImport(rawText);
   const form = applyGameImportToForm(createBlankProductForm(categoryId), parsed.data);
+  const supplierNameZh = extractSupplierNameZh(form);
 
   /*
     The name comes first. A file with no name is not a game, and every other
@@ -390,6 +421,12 @@ export function buildBatchGameImport(rawText: string, categoryId: string): Batch
       isHidden: true,
       batchImport: true,
     },
+    /*
+      Carried beside the payload, never inside it. The caller writes this to
+      `product_admin_metadata`; nothing that reaches `saveProduct` knows it
+      exists.
+    */
+    supplierNameZh,
   };
 }
 
@@ -422,8 +459,16 @@ export function buildBatchSchemaImport(
     return { ok: false, reason: "الملف لا يحتوي اسم المنتج (name=)" };
   }
 
+  /*
+    Hardware, amiibo and the rest do not carry a Chinese supplier name today —
+    but the strip runs here too, so the day a schema gains the field it cannot
+    ride into the product payload unnoticed.
+  */
+  const supplierNameZh = extractSupplierNameZh(form);
+
   return {
     ok: true,
+    supplierNameZh,
     payload: {
       ...buildProductSavePayload(form, schema),
       isHidden: true,
