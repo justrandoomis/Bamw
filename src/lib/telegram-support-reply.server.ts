@@ -28,6 +28,7 @@ import { appendMessage } from "./db.server";
 import { d1First, d1Run } from "./d1.server";
 import { isAdminGroupMessage } from "./telegram-admin.server";
 import { boundGroupId } from "./telegram-bindings.server";
+import { env } from "./env.server";
 
 export interface SupportLink {
   telegramChatId: string;
@@ -157,10 +158,39 @@ export async function handleAdminGroupReply(
   const link = await readSupportLink(group, repliedTo);
   if (!link) return "unknown_message";
 
+  const { attachmentOf, storeTelegramAttachment } = await import("./telegram-attachments.server");
+  const attachment = attachmentOf(msg);
   const body = replyText(msg);
-  if (!body) return "empty";
+
+  /* Text or a file. A reply that is neither has nothing to deliver. */
+  if (!body && !attachment) return "empty";
 
   if (!(await claimUpdate(updateId, "support_reply"))) return "duplicate";
+
+  let imageUrl = "";
+  if (attachment) {
+    const stored = await storeTelegramAttachment({
+      fileId: attachment.fileId,
+      declaredSize: attachment.declaredSize,
+      conversationId: link.conversationId,
+      botToken: env("TELEGRAM_BOT_TOKEN") || "",
+    });
+    if (stored.ok && stored.url) {
+      imageUrl = stored.url;
+    } else {
+      /*
+        Logged, not surfaced. The admin is in Telegram and the customer is on
+        the site; an error in either place would be a message from the shop
+        about the shop's own plumbing. The text still goes through, which is
+        the part the customer was waiting for.
+      */
+      console.warn("[telegram:attachment_refused]", {
+        conversationId: link.conversationId,
+        refusal: stored.refusal,
+      });
+      if (!body) return "empty";
+    }
+  }
 
   /*
     `appendMessage` broadcasts `message.created` through the realtime durable
@@ -170,8 +200,16 @@ export async function handleAdminGroupReply(
   await appendMessage(link.conversationId, {
     threadId: link.conversationId,
     senderRole: "admin",
-    kind: "text",
-    body: { text: body },
+    kind: imageUrl ? "image" : "text",
+    body: {
+      ...(body ? { text: body } : {}),
+      /*
+        The shop's own path, never Telegram's. Telegram's file URL carries the
+        bot token in it and expires, so putting one in a customer's
+        conversation would leak the bot and then rot.
+      */
+      ...(imageUrl ? { imageUrl } : {}),
+    },
     senderName: text(msg?.from?.first_name) || "الإدارة",
   });
 
