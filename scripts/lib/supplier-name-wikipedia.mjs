@@ -36,10 +36,15 @@ export const zhArticleUrl = (title) =>
  * belongs to — in one request.
  *
  * `redirects=1` is what makes an alternate spelling find the article at all.
- * `variant=zh-cn` asks for the Simplified reading of the linked title; where
- * MediaWiki does not honour it the name arrives Traditional and
- * `checkSupplierNameZh` flags it for review, which is the right outcome rather
- * than a silent one.
+ *
+ * There is deliberately no `variant=zh-cn` here. A variant has to be one of the
+ * queried wiki's own, and English has none — asking English Wikipedia for a
+ * Chinese variant is an invalid request, which is what the first version of
+ * this did. It returned an error object for every game and the reader saw no
+ * pages, so the whole source reported zero finds and looked like an honest
+ * answer. The linked title arrives in whichever variant the Chinese article is
+ * written in; a Traditional one is flagged by `checkSupplierNameZh`, which is
+ * the right outcome rather than a silent one.
  */
 export function langlinkUrl(title) {
   const params = new URLSearchParams({
@@ -49,7 +54,6 @@ export function langlinkUrl(title) {
     lllang: "zh",
     ppprop: "wikibase_item",
     redirects: "1",
-    variant: "zh-cn",
     format: "json",
     formatversion: "2",
     origin: "*",
@@ -65,6 +69,14 @@ export function langlinkUrl(title) {
  * article is the game rather than the god it is named after.
  */
 export function readLanglink(json) {
+  /*
+    An API-level error arrives as HTTP 200 with an `error` object and no
+    `query`, so it has to be told apart from an honest empty answer here — the
+    same distinction the transport layer already makes for a 429. Reading it as
+    "no Chinese name" is how a broken request becomes a permanent blank.
+  */
+  if (json?.error) return { failed: true, why: String(json.error.code ?? "api error") };
+
   const page = (json?.query?.pages ?? [])[0];
   if (!page || page.missing) return null;
 

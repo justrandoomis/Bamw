@@ -275,6 +275,7 @@ async function resolveFromWikipedia(englishTitle) {
   const got = await fetchJson(langlinkUrl(title));
   if (!got.ok) return { failed: true, why: `wikipedia HTTP ${got.status}` };
   const link = readLanglink(got.json);
+  if (link?.failed) return { failed: true, why: `wikipedia ${link.why}` };
   if (!link) return null;
 
   await pause(150);

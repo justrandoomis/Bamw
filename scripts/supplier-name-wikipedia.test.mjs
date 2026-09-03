@@ -19,8 +19,14 @@ describe("langlinkUrl", () => {
     expect(url.searchParams.get("redirects")).toBe("1");
   });
 
-  it("asks for the Simplified reading of the linked title", () => {
-    expect(url.searchParams.get("variant")).toBe("zh-cn");
+  it("asks English Wikipedia for no variant of its own language", () => {
+    /*
+      A variant has to be one of the queried wiki's own and English has none, so
+      `variant=zh-cn` here is an invalid request. The first version sent it, got
+      an error object back for every game, and reported zero finds — which read
+      exactly like an honest answer.
+    */
+    expect(url.searchParams.get("variant")).toBeNull();
   });
 });
 
@@ -50,6 +56,11 @@ describe("readLanglink", () => {
       itemId: "Q28134476",
       sourceUrl: zhArticleUrl("空洞骑士"),
     });
+  });
+
+  it("reports an API error as a failure, not as an absent name", () => {
+    const out = readLanglink({ error: { code: "invalidvariant", info: "..." } });
+    expect(out).toEqual({ failed: true, why: "invalidvariant" });
   });
 
   it("refuses an article that does not exist", () => {
