@@ -196,6 +196,19 @@ async function handleUpdate(update: any) {
       return;
     }
 
+    /*
+      Before the reply path: `/selftest` is a command, not a reply to a
+      customer, and it must not be forwarded to anyone.
+    */
+    const { handleSelfTestCommand } = await import("@/lib/telegram-selftest.server");
+    const selftest = await handleSelfTestCommand(msg);
+    if (selftest.handled) {
+      if (selftest.reason !== "sent") {
+        console.warn("[telegram:selftest] refused", { reason: selftest.reason });
+      }
+      return;
+    }
+
     const { handleAdminGroupReply } = await import("@/lib/telegram-support-reply.server");
     await handleAdminGroupReply(msg, update?.update_id);
     return;
