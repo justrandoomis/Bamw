@@ -178,6 +178,15 @@ beforeEach(() => {
   admin = { id: "usr_admin", isAdmin: true };
 });
 
+/** The refusal rows the list hands back, as this file reads them. */
+interface RefusalRow {
+  id: string;
+  eventType: string;
+  reasons: string[];
+  referrerName: string;
+  buyerName: string;
+}
+
 describe("the queue", () => {
   it("lists rewards with the anti-abuse verdict as flags, not as hashes", async () => {
     seedReward();
@@ -263,7 +272,7 @@ describe("the queue", () => {
 
     expect(body.refusals).toHaveLength(2);
     const byId = Object.fromEntries(
-      (body.refusals as { id: string }[]).map((row) => [row.id, row]),
+      (body.refusals as RefusalRow[]).map((row) => [row.id, row]),
     );
     expect(byId["rre_a"].reasons).toEqual(["same_device", "same_ip"]);
     expect(byId["rre_a"].referrerName).toBe("سامي");
