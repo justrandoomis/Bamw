@@ -577,7 +577,6 @@ export async function bindAttributionToUser(request: Request, userId: string): P
     if (!user) return;
 
     const identity = await requestIdentity(request);
-    await bindIdentitiesToUser(userId, identity);
 
     const token = await readAttributionCookie(request);
     if (!token) return;
@@ -609,6 +608,14 @@ export async function bindAttributionToUser(request: Request, userId: string): P
             telegramId: user.telegramId ?? null,
           },
           buyerDeviceHash: identity.deviceHash,
+          /*
+            The precise device reading was missing here, and this is the one
+            moment it matters most: signing in is the first time the two sides
+            can be compared at all, and a second account created on the phone
+            that owns the link is exactly what it catches. Capture and the
+            checkout quote both passed it; this call did not.
+          */
+          buyerDeviceIdHash: identity.deviceIdHash,
           buyerIpHash: identity.ipHash,
           buyerSessionHash: identity.sessionHash,
           attributionDeviceHash: attribution.deviceHash,
@@ -616,6 +623,17 @@ export async function bindAttributionToUser(request: Request, userId: string): P
           attributionExpiresAt: attribution.expiresAt,
         })
       : { blocked: true, score: 100, reasons: ["code_inactive"], verdict: "code_inactive" };
+
+    /*
+      Recorded after the verdict, as at capture.
+
+      Here it changes no outcome — these rows are written under the *buyer's*
+      account and every check asks what the *referrer's* account has been seen
+      under — but "assess, then remember" is the order that cannot be wrong,
+      and having one call site follow it and another not is how the wrong one
+      gets copied.
+    */
+    await bindIdentitiesToUser(userId, identity);
 
     const now = new Date().toISOString();
     await d1Run(
