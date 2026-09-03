@@ -42,13 +42,16 @@ jobs:
         with:
           persist-credentials: false
 
-      # No `cache: npm` and `npm install` rather than `npm ci`, for the reason
-      # spelled out in `ci.yml`: this repository commits no lockfile.
       - uses: actions/setup-node@v4
         with:
           node-version: 22
+          cache: npm
 
-      - run: npm install --no-audit --no-fund
+      # Node 22 ships npm 10, which cannot install this project: resolving
+      # vitest's peer set crashes its dependency solver. See `ci.yml`.
+      - run: npm install -g npm@11.19.1
+
+      - run: npm ci --no-audit --no-fund
 
       # Belt and braces. Actions masks values referenced through `secrets.*`
       # already; this also masks them if a tool prints one itself.

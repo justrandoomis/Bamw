@@ -38,7 +38,11 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - run: npm install --no-audit --no-fund
+          cache: npm
+      # Node 22 ships npm 10, which cannot install this project: resolving
+      # vitest's peer set crashes its dependency solver. See `ci.yml`.
+      - run: npm install -g npm@11.19.1
+      - run: npm ci --no-audit --no-fund
       - name: Mask identifiers
         env:
           ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
