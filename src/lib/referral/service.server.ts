@@ -15,6 +15,7 @@
 import { randomId } from "../crypto.server";
 import { d1All, d1First, d1Run } from "../d1.server";
 import { findUserById, getStore } from "../db.server";
+import { resolveUnitPrice } from "../productPricing";
 import { findProductByIdOrSlug, getProductSlug } from "../productRouting";
 import type { Product, User } from "../types";
 import { readReferralSettings, type ReferralSettings } from "./config";
@@ -796,13 +797,30 @@ export async function quoteReferral(params: {
   });
 
   /*
-    The price is the catalogue's, for exactly one copy.
+    The price is the catalogue's, for exactly one copy of what was actually
+    chosen.
+
+    Resolved through `resolveUnitPrice`, the same function checkout charges by.
+    Reading `product.price` here instead — which is what this did — priced the
+    reward off the record's headline figure while the line was charged at the
+    option, type, edition and add-on price the customer picked. An offline
+    account with DLC is precisely the selection the programme exists for, and
+    it is precisely the one whose price is not the headline one, so the
+    discount shown and taken was a percentage of a number nobody was paying.
 
     Quantity does not multiply the offer: the programme pays on the referred
     purchase, not on however many copies somebody put in the basket, so a line
     of ten earns the same as a line of one.
   */
-  const unitPrice = Number(chosen.product["price"] ?? chosen.line.unitPriceIqd);
+  const priced = resolveUnitPrice(chosen.product, {
+    optionId: chosen.line.optionId ?? null,
+    typeId: chosen.line.typeId ?? null,
+    editionId: chosen.line.editionId ?? null,
+    dlcIds: chosen.line.dlcIds ?? null,
+  });
+  // The line's own figure is the last resort only: a request deliberately
+  // zeroes it, so it is reached when the catalogue has no price at all.
+  const unitPrice = priced.unitPrice > 0 ? priced.unitPrice : Number(chosen.line.unitPriceIqd);
   const amounts = referralAmounts({
     originalPriceIqd: unitPrice,
     buyerPercentBps: chosen.buyerBps,

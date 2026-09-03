@@ -383,6 +383,14 @@ export async function createOrderForUser(
       optionName: (item.meta as Record<string, unknown> | undefined)?.["optionName"] as string | null,
       typeId: (item.meta as Record<string, unknown> | undefined)?.["typeId"] as string | null,
       typeName: (item.meta as Record<string, unknown> | undefined)?.["typeName"] as string | null,
+      /*
+        The edition and the add-ons travel too, so the referral prices the copy
+        the customer is actually buying. Without them an offline account with
+        DLC was discounted by a percentage of the record's headline price
+        rather than of what the line was charged.
+      */
+      editionId: (item.meta as Record<string, unknown> | undefined)?.["editionId"] as string | null,
+      dlcIds: (item.meta as Record<string, unknown> | undefined)?.["dlcIds"] as string[] | null,
       title: item.title,
     })),
     storeSettings: store.settings,

@@ -45,6 +45,8 @@ interface IncomingLine {
   optionName?: unknown;
   typeId?: unknown;
   typeName?: unknown;
+  editionId?: unknown;
+  dlcIds?: unknown;
   offerKind?: unknown;
   title?: unknown;
 }
@@ -72,6 +74,14 @@ function toQuoteLines(raw: unknown): ReferralQuoteLine[] {
         optionName: line.optionName === undefined ? null : String(line.optionName),
         typeId: line.typeId === undefined ? null : String(line.typeId),
         typeName: line.typeName === undefined ? null : String(line.typeName),
+        editionId: line.editionId === undefined ? null : String(line.editionId),
+        /*
+          Ids only, capped, and resolved against the stored product like every
+          other part of the selection — an id naming no add-on adds nothing.
+        */
+        dlcIds: Array.isArray(line.dlcIds)
+          ? line.dlcIds.slice(0, 20).map((id) => String(id)).filter(Boolean)
+          : null,
         offerKind: line.offerKind === undefined ? null : String(line.offerKind),
         title: line.title === undefined ? undefined : String(line.title),
       },

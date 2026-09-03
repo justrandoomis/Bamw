@@ -66,6 +66,37 @@ const GAME = {
   ],
 };
 
+/**
+ * A game whose offline account does *not* cost the record's headline price,
+ * and which sells add-ons on top.
+ *
+ * `GAME` cannot show this: its offline option is priced the same as its base,
+ * so pricing the reward off either gives the same answer and a wrong reading
+ * looks right. Here every number is different, and deliberately so: base
+ * 30,000, offline option 24,000, add-on +5,000. An add-on of 6,000 would have
+ * summed back to the headline 30,000, and the add-on test would then have
+ * passed against the bug it exists to catch.
+ */
+const PRICED_BY_OPTION = {
+  id: "prd_zelda",
+  title: "The Legend of Zelda",
+  titleEn: "The Legend of Zelda",
+  slug: "the-legend-of-zelda",
+  price: 30_000,
+  cost: 12_000,
+  stock: 99,
+  kind: "account",
+  category: "cat_nintendo",
+  status: "نشط",
+  isActive: true,
+  releaseDate: "2023-05-12",
+  options: [
+    { id: "offline_account", name: "حساب أوفلاين", price: 24_000 },
+    { id: "online_account", name: "حساب أونلاين", price: 34_000 },
+  ],
+  dlcs: [{ id: "dlc_expansion", name: "حزمة التوسعة", price: 5_000 }],
+};
+
 /** A gift card: priced, sellable, and never part of the programme. */
 const GIFT_CARD = {
   id: "prd_eshop",
@@ -180,7 +211,7 @@ function seedCatalogue() {
     }),
     "now",
   );
-  insert.run("store:products", JSON.stringify([GAME, GIFT_CARD]), "now");
+  insert.run("store:products", JSON.stringify([GAME, PRICED_BY_OPTION, GIFT_CARD]), "now");
   db.raw.prepare(`INSERT INTO store_rev (rev, updated_at) VALUES (1, 'now')`).run();
   store.invalidateStoreCache();
 }
@@ -412,12 +443,16 @@ describe("the attribution and the account", () => {
 /* -------------------------------------------------------------------------- */
 
 describe("what the referral is worth", () => {
-  async function quoteFor(lines: Parameters<typeof service.quoteReferral>[0]["lines"]) {
+  /** `sharedSlug` is the game the link was for — the quote is tied to it. */
+  async function quoteFor(
+    lines: Parameters<typeof service.quoteReferral>[0]["lines"],
+    sharedSlug = "super-mario-odyssey",
+  ) {
     const code = await referrerCode();
     const capture = await service.captureAttribution({
       request: request(BUYER_DEVICE),
       codeInput: code,
-      productRef: "super-mario-odyssey",
+      productRef: sharedSlug,
     });
     const jar = cookieJar(capture.setCookies);
     await service.bindAttributionToUser(request({ ...BUYER_DEVICE, cookies: jar }), BUYER.id);
@@ -510,6 +545,59 @@ describe("what the referral is worth", () => {
     ]);
     expect(quote.applicable).toBe(true);
     expect(quote.buyerDiscountIqd).toBe(1_000);
+  });
+
+  it("discounts the option's price, not the record's headline price", async () => {
+    /*
+      The offline account costs 24,000 while the record says 30,000. Ten per
+      cent of the wrong one is 3,000; of the right one, 2,400.
+    */
+    const quote = await quoteFor([
+      {
+        productId: PRICED_BY_OPTION.id,
+        kind: "account",
+        quantity: 1,
+        unitPriceIqd: 0,
+        optionId: "offline_account",
+      },
+    ], PRICED_BY_OPTION.slug);
+    expect(quote.applicable).toBe(true);
+    expect(quote.originalPriceIqd).toBe(24_000);
+    expect(quote.buyerDiscountIqd).toBe(2_400);
+    expect(quote.referrerRewardIqd).toBe(2_400);
+  });
+
+  it("counts the add-ons the customer is paying for", async () => {
+    // 24,000 + 5,000 = 29,000, and ten per cent of that is 2,900.
+    const quote = await quoteFor([
+      {
+        productId: PRICED_BY_OPTION.id,
+        kind: "account",
+        quantity: 1,
+        unitPriceIqd: 0,
+        optionId: "offline_account",
+        dlcIds: ["dlc_expansion"],
+      },
+    ], PRICED_BY_OPTION.slug);
+    expect(quote.applicable).toBe(true);
+    expect(quote.originalPriceIqd).toBe(29_000);
+    expect(quote.buyerDiscountIqd).toBe(2_900);
+  });
+
+  it("ignores an add-on id the product does not have", async () => {
+    // Ids are resolved against the record; a made-up one adds nothing.
+    const quote = await quoteFor([
+      {
+        productId: PRICED_BY_OPTION.id,
+        kind: "account",
+        quantity: 1,
+        unitPriceIqd: 0,
+        optionId: "offline_account",
+        dlcIds: ["dlc_invented_by_the_browser"],
+      },
+    ], PRICED_BY_OPTION.slug);
+    expect(quote.originalPriceIqd).toBe(24_000);
+    expect(quote.buyerDiscountIqd).toBe(2_400);
   });
 
   it("refuses an eShop card, which is not in the programme", async () => {

@@ -44,6 +44,15 @@ function toWireLines(lines: CartLine[]) {
     optionName: String(line.optionName ?? line.meta?.["optionName"] ?? ""),
     typeId: String(line.typeId ?? line.meta?.["typeId"] ?? ""),
     typeName: String(line.typeName ?? line.meta?.["typeName"] ?? ""),
+    /*
+      The edition and the add-ons decide the price too. Sending the selection
+      without them let the preview quote a percentage of the record's headline
+      price while checkout charged the resolved one.
+    */
+    editionId: String(line.editionId ?? line.meta?.["editionId"] ?? ""),
+    dlcIds: Array.isArray(line.meta?.["dlcIds"])
+      ? (line.meta["dlcIds"] as unknown[]).map((id) => String(id))
+      : [],
     offerKind: String(line.offerKind ?? ""),
     title: String(line.title ?? ""),
   }));
