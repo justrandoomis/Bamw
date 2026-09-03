@@ -47,18 +47,17 @@ import { build } from "esbuild";
 import { readFileSync } from "node:fs";
 import path from "node:path";
 
+import { curatedIndex, curatedNameFor } from "./lib/supplier-name-curated.mjs";
 import { hkNameIndex, matchSupplierName } from "./lib/supplier-name-source.mjs";
 import {
   baseTitle,
   editionFallbacks,
   entitiesUrl,
-  isVideoGame,
   pickWikidataName,
   searchUrl,
-  titleMatches,
 } from "./lib/supplier-name-wikidata.mjs";
-import { langlinkUrl, readLanglink } from "./lib/supplier-name-wikipedia.mjs";
 
+const CURATED = "data/supplier-names-zh.json";
 const HK_INDEX = "data/nintendo-hong-kong-languages.json";
 const UPDATED_BY = "supplier-name-fill";
 
@@ -143,6 +142,17 @@ if (OFFSET > 0 || LIMIT > 0) {
   say(`this batch: ${games.length} — from ${OFFSET + 1} to ${OFFSET + games.length}`);
 }
 if (!games.length) throw new Error("no games matched — refusing to report an empty pass as a fill");
+
+/* ------------------------------------------------- the curated names, first */
+const curatedFile = JSON.parse(readFileSync(CURATED, "utf8"));
+const { byTitle: curated, problems: curatedProblems } = curatedIndex(curatedFile);
+if (curatedProblems.length) {
+  for (const problem of curatedProblems) say(`curated entry refused — ${problem}`);
+  throw new Error(
+    `${curatedProblems.length} curated entries are malformed — refusing to write a half-read file`,
+  );
+}
+say(`curated names: ${Object.keys(curatedFile.names ?? {}).length}`);
 
 /* --------------------------------------------- Nintendo Hong Kong, by title */
 /*
@@ -259,82 +269,6 @@ async function resolveFromWikidata(englishTitle) {
   return null;
 }
 
-/* ------------------------------------------- Wikipedia, for what Wikidata misses */
-/*
-  A Wikidata label and a Chinese Wikipedia article are different things, and
-  plenty of games have the second without the first. The identity check is
-  borrowed rather than skipped: the English article names its Wikidata item, and
-  that item goes through the same two tests the Wikidata source uses. `Stray` is
-  a disambiguation page and `Hades` is a Greek god; following either would put a
-  god's name on a game order.
-*/
-
-/* Why this source refused, counted by step. No titles, no names — just tallies. */
-const wikipediaRefusals = new Map();
-
-/** One title against English Wikipedia, and the borrowed identity check. */
-async function askWikipedia(title) {
-  const got = await fetchJson(langlinkUrl(title));
-  if (!got.ok) return { failed: true, why: `wikipedia HTTP ${got.status}` };
-
-  const link = readLanglink(got.json);
-  if (!link.ok) {
-    if (link.failed) return { failed: true, why: `wikipedia ${link.reason}` };
-    wikipediaRefusals.set(link.reason, (wikipediaRefusals.get(link.reason) ?? 0) + 1);
-    return null;
-  }
-
-  await pause(150);
-  const entity = await fetchJson(entitiesUrl([link.itemId]));
-  if (!entity.ok) return { failed: true, why: `entities HTTP ${entity.status}` };
-
-  const item = entity.json?.entities?.[link.itemId];
-  /*
-    Counted rather than lumped together. These two are the borrowed identity
-    check — the article's Wikidata item must read as a game and answer to the
-    same title — and if this source keeps reporting nothing, the tally says
-    whether it is finding no articles or refusing the ones it finds.
-  */
-  let refusal = "";
-  if (!item) refusal = "item_not_returned";
-  else if (!isVideoGame(item)) refusal = "item_is_not_a_game";
-  else if (!titleMatches(item, title)) refusal = "item_answers_to_another_name";
-  if (refusal) {
-    wikipediaRefusals.set(refusal, (wikipediaRefusals.get(refusal) ?? 0) + 1);
-    return null;
-  }
-
-  return {
-    name: link.zhTitle,
-    lang: "zh-wikipedia",
-    itemId: link.itemId,
-    sourceUrl: link.sourceUrl,
-  };
-}
-
-async function resolveFromWikipedia(englishTitle) {
-  const title = baseTitle(englishTitle);
-  if (!title) return null;
-
-  const first = await askWikipedia(title);
-  if (first) return first;
-
-  /*
-    The same second question the Wikidata source asks, and leaving it out here
-    was an oversight worth 26 of the 51 games this source refused: English
-    Wikipedia has no article called `Cyberpunk 2077: Ultimate Edition`, and one
-    called `Cyberpunk 2077`. The full title still goes first, for the same
-    reason — some editions have an article of their own.
-  */
-  for (const candidate of editionFallbacks(title).slice(0, 3)) {
-    await pause(150);
-    const next = await askWikipedia(candidate);
-    if (next?.failed) return next;
-    if (next) return { ...next, searchedAs: candidate };
-  }
-  return null;
-}
-
 /* ------------------------------------------------------------------- the pass */
 const table = await app.d1All(
   "SELECT name FROM sqlite_master WHERE type = 'table' AND name = 'product_admin_metadata'",
@@ -346,9 +280,9 @@ if (!table.length) {
 }
 
 const report = [];
+let fromCurated = 0;
 let fromHongKong = 0;
 let fromWikidata = 0;
-let fromWikipedia = 0;
 let noSource = 0;
 let unreachable = 0;
 let written = 0;
@@ -358,22 +292,29 @@ for (const game of games) {
   const english = String(game.titleEn || game.title || "").trim();
 
   /*
-    Nintendo's own storefront first, whenever it can be reached: it is the
+    The curated name first. It is the only source that knows which *edition* and
+    which console this line is, and those are what a supplier is handed. The
+    automated sources answer for the base game and cannot tell the Switch 1
+    release from the Switch 2 one.
+  */
+  const pick = curatedNameFor(game, curated);
+  let found = pick
+    ? { name: pick.name, sourceUrl: pick.sourceUrl, wants: pick.status, source: "curated" }
+    : null;
+
+  /*
+    Then Nintendo's own storefront, whenever it can be reached: it is the
     catalogue the game is actually sold from. Wikidata answers for the rest.
   */
-  const hkHit = matchSupplierName(game, byTitle);
-  let found = hkHit.outcome === "found" ? { ...hkHit, source: "Nintendo Hong Kong" } : null;
+  const hkHit = found ? { outcome: "skipped" } : matchSupplierName(game, byTitle);
+  if (!found && hkHit.outcome === "found") {
+    found = { ...hkHit, source: "Nintendo Hong Kong" };
+  }
   let failure = "";
   if (!found) {
     const wd = await resolveFromWikidata(english);
     if (wd?.failed) failure = wd.why;
     else if (wd) found = { ...wd, source: `Wikidata ${wd.itemId} (${wd.lang})` };
-    await pause(150);
-  }
-  if (!found && !failure) {
-    const wp = await resolveFromWikipedia(english);
-    if (wp?.failed) failure = wp.why;
-    else if (wp) found = { ...wp, source: `Chinese Wikipedia (${wp.itemId})` };
     await pause(150);
   }
 
@@ -386,14 +327,14 @@ for (const game of games) {
     noSource += 1;
     const why =
       hkHit.outcome === "latin_name"
-        ? "Hong Kong sells it in Latin, and neither Wikidata nor Wikipedia names it in Chinese"
+        ? "Hong Kong sells it in Latin, and Wikidata has no Chinese name for it"
         : "no Chinese name in any source";
     report.push({ id, english, outcome: why, filled: false });
     continue;
   }
 
-  if (found.source === "Nintendo Hong Kong") fromHongKong += 1;
-  else if (found.source.startsWith("Chinese Wikipedia")) fromWikipedia += 1;
+  if (found.source === "curated") fromCurated += 1;
+  else if (found.source === "Nintendo Hong Kong") fromHongKong += 1;
   else fromWikidata += 1;
 
   const check = app.checkSupplierNameZh(found.name, english);
@@ -417,7 +358,13 @@ for (const game of games) {
         check the name against the supplier's own listing, which is what that
         status claims.
       */
-      status: "needs_review",
+      /*
+        `verified` only where the curated entry claims it, which means a person
+        checked that name against a source they named. Everything the automated
+        sources found stays `needs_review` — matching a title against a
+        catalogue is not the same as checking a supplier's own listing.
+      */
+      status: found.wants === "verified" ? "verified" : "needs_review",
       englishTitle: english,
       updatedBy: UPDATED_BY,
     });
@@ -434,21 +381,15 @@ for (const row of report) {
 }
 say("");
 say(`games in this pass: ${games.length}`);
+say(`  from the curated list: ${fromCurated}`);
 say(`  from Nintendo Hong Kong: ${fromHongKong}`);
 say(`  from Wikidata: ${fromWikidata}`);
-say(`  from Chinese Wikipedia: ${fromWikipedia}`);
 say(`  no source, left empty: ${noSource}`);
 say(`  could not ask, left untouched: ${unreachable}`);
-if (wikipediaRefusals.size) {
-  say("  why Chinese Wikipedia refused:");
-  for (const [reason, count] of [...wikipediaRefusals].sort((a, b) => b[1] - a[1])) {
-    say(`    ${reason}: ${count}`);
-  }
-}
 say(`  rows written: ${written}`);
 say("");
 say("Names are never printed here. Read them in the admin screen, which is the only place they are meant to be readable.");
 
-if (fromHongKong + fromWikidata + fromWikipedia + noSource + unreachable !== games.length) {
+if (fromCurated + fromHongKong + fromWikidata + noSource + unreachable !== games.length) {
   throw new Error("the tallies do not add up to the number of games — refusing to report a pass that lost rows");
 }

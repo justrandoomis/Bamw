@@ -2,50 +2,55 @@
  * @vitest-environment node
  */
 /**
- * The rules the silent copy has to keep, asserted against the source.
+ * That the prep tool uses the shared copy in *both* places, and nowhere else.
  *
- * The behaviour itself is a clipboard write inside a modal, which is exactly
- * what a jsdom test cannot observe honestly. What *can* be held is the shape:
- * no icon, no label, no tooltip, no toast, the Chinese name never rendered,
- * the click not selecting the card, and — the one that costs money — no
- * fallback to the English title.
+ * The behaviour is tested in `SupplierNameCopy.test.tsx`, by clicking it. What
+ * is left for this file is the thing a behavioural test cannot see: that the
+ * modal has not grown a second, hand-rolled copy somewhere, which is exactly
+ * how the detail card came to be missing `stopPropagation` while the chip a
+ * thousand lines above it had one.
  */
 
 import { describe, expect, it } from "vitest";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 
-const source = readFileSync(
-  join(import.meta.dirname, "AccountToolsModal.tsx"),
-  "utf8",
-);
+const source = readFileSync(join(import.meta.dirname, "AccountToolsModal.tsx"), "utf8");
 
-describe("the silent copy on the game name", () => {
-  it("never falls back to the English title", () => {
+/**
+ * Comments blanked, so prose about a call is not read as one.
+ *
+ * The comment explaining why the credentials copy borrows the fallback names
+ * `navigator.clipboard`, and the first version of the assertion below counted
+ * that as a use of it.
+ */
+const code = source
+  .replace(/\/\*[\s\S]*?\*\//g, (m) => " ".repeat(m.length))
+  .replace(/(^|[^:])\/\/[^\n]*/g, (m) => " ".repeat(m.length));
+
+describe("the game name in the prep tool", () => {
+  it("uses the shared copy in both places it appears", () => {
+    /* The short card in the strip, and the opened delivery-item card. */
+    const uses = source.match(/<SupplierNameCopy\b/g) ?? [];
+    expect(uses).toHaveLength(2);
+  });
+
+  it("has no copy of the clipboard logic of its own", () => {
     /*
-      The rule that matters commercially. An order placed against an English
-      title is an order placed for the wrong thing, so when there is no Chinese
-      name nothing is copied and the gap is logged instead.
+      Both copies in this tool go through `copySilently` — the silent one on the
+      game name and the loud one on the credentials, which keeps its button and
+      its toast but borrows the fallback. `navigator.clipboard` is refused
+      inside a modal on mobile Safari, and the credentials copy used to throw
+      there and then show the success toast anyway.
     */
-    const fn = source.slice(source.indexOf("const copySupplierName"));
-    const body = fn.slice(0, fn.indexOf("[orderItemById]"));
-    expect(body).toContain("if (!name)");
-    expect(body).toContain("supplier_name_zh_missing");
-    expect(body).not.toMatch(/name\s*\|\|\s*item\?\.productTitle/);
-    expect(body).not.toMatch(/\?\?\s*item\?\.productTitle/);
+    expect(code).not.toContain("navigator.clipboard");
+    expect(code).not.toContain("execCommand");
   });
 
-  it("says nothing to the admin: no toast, no tooltip, no label", () => {
-    const copyRegion = source.slice(source.indexOf("async function copySilently"));
-    const upToComponent = copyRegion.slice(0, copyRegion.indexOf("export function"));
-    expect(upToComponent).not.toMatch(/toast\./);
-    expect(upToComponent).not.toMatch(/title=/);
-  });
-
-  it("does not render the Chinese name anywhere", () => {
+  it("never renders the Chinese name", () => {
     /*
-      It is copied, never shown. The only place it may appear in this file is
-      as a field read for the clipboard.
+      It is copied, never shown. The only place the field may appear is as a
+      value handed to the component that copies it.
     */
     const renders = source.match(/\{[^}]*supplierNameZhCn[^}]*\}/g) ?? [];
     for (const render of renders) {
@@ -53,23 +58,17 @@ describe("the silent copy on the game name", () => {
     }
   });
 
-  it("stops the click from selecting the card", () => {
-    // The chip is itself the selector; without this an admin trying to copy
-    // would change what they are looking at.
-    const chip = source.slice(source.indexOf("{item.productTitle}") - 1400);
-    expect(chip.slice(0, 1400)).toContain("event.stopPropagation()");
-  });
-
-  it("keeps a fallback for browsers that refuse the clipboard API", () => {
+  it("shows what was sold beside the name, from the order's own snapshot", () => {
     /*
-      `navigator.clipboard` needs a secure context and is refused outright by
-      some mobile browsers inside a modal. The textarea is positioned
-      off-screen rather than hidden on purpose: an element with display:none
-      cannot be selected, which is why the obvious version of this silently
-      does nothing on Safari.
+      An offline account and an online one are different products behind the
+      same title, and the edition and console decide which SKU to order. All of
+      it comes from `orderItems`, which is the snapshot taken at purchase — not
+      from the product as it stands today, which an admin can edit.
     */
-    expect(source).toContain("document.execCommand(\"copy\")");
-    expect(source).toContain('area.style.position = "fixed"');
-    expect(source).not.toContain('area.style.display = "none"');
+    expect(source).toContain("selectionFor(item.orderItemId)");
+    expect(source).toContain("selectionFor(selected.orderItemId)");
+    expect(source).toContain("quantityFor(item.orderItemId)");
+    expect(source).toContain("quantityFor(selected.orderItemId)");
+    expect(source).toContain("orderItemById");
   });
 });
