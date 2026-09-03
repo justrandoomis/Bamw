@@ -183,6 +183,23 @@ describe("the bootstrap a schema bump runs", () => {
     expect(chunkMates.length).toBeLessThan(10);
   });
 
+  it("costs a bounded number of round trips", async () => {
+    /*
+      Counted, not estimated. Against this same fake the bootstrap as it stood
+      when the site went down took 133 round trips; it takes 59 now. At the
+      145 ms round trip `/api/health` measured in production that is 19.3 s
+      against 8.6 s — and the 19.3 s bought nothing, because the stamp that
+      ends it came only after three unbounded scans of the orders table.
+
+      The bound is loose on purpose. It is here to fail if the batching or the
+      bisection is undone, not to police a handful of statements.
+    */
+    const { trips, db } = fakeD1((sql) => /orders_user_idx|users_referred_by_idx/i.test(sql));
+    const mod = await loadWith(db);
+    await mod.ensureSchema();
+    expect(trips.length).toBeLessThan(80);
+  });
+
   it("does not run the bump twice when two callers arrive together", async () => {
     /* Both get the same promise; the work happens once. */
     const { trips, db } = fakeD1();
