@@ -1079,10 +1079,20 @@ export async function createOrderForUser(
     console.error("[order:thread_message_failed]", err);
   }
 
-  // Notify Telegram Admin and User (Safe)
+  /*
+    Tell the admins, through the outbox.
+
+    The queue takes it off the checkout request — a slow Telegram response was
+    up to ten seconds of a customer waiting to see their order — and gives the
+    send a retry it never had. The dedupe key is the order id, so a retried
+    queue delivery cannot produce a second notification for one order.
+
+    Falls back to sending inline where there is no queue binding, and either
+    way the failure is swallowed: an order that exists must not be reported as
+    failed because a message about it could not be delivered.
+  */
   try {
-    const { notifyAdminNewOrder } = await import("./telegram-notifications.server");
-    await notifyAdminNewOrder({
+    const notifyPayload = {
       order,
       user: {
         id: user.id,
@@ -1091,7 +1101,19 @@ export async function createOrderForUser(
         email: user.email,
         username: user.username,
       },
-    });
+    };
+    const { enqueueNotification } = await import("./notification-outbox.server");
+    await enqueueNotification(
+      {
+        type: "telegram_admin_new_order",
+        payload: notifyPayload,
+        dedupeKey: `order:${order.id}`,
+      },
+      async () => {
+        const { notifyAdminNewOrder } = await import("./telegram-notifications.server");
+        return notifyAdminNewOrder(notifyPayload);
+      },
+    );
   } catch (err) {
     console.error("[order:admin_telegram_notify_failed]", err);
   }

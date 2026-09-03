@@ -117,17 +117,33 @@ export const Route = createFileRoute("/api/wallet")({
               bananCode: data.bananCode,
             });
 
-            // Notify admin via Telegram (Safe)
+            /*
+              Through the outbox, keyed on the request id: a re-submitted form
+              or a retried queue delivery is the same top-up, and the admin
+              group should hear about it once.
+            */
             try {
-              const { notifyAdminWalletTopUp } =
-                await import("@/lib/telegram-notifications.server");
-              await notifyAdminWalletTopUp({
+              const topUpPayload = {
                 requestId: req.id,
                 amount: req.amount,
                 method: req.method,
                 proofUrl: req.proofUrl,
                 user: { id: user.id, name: user.name, phone: user.phone },
-              });
+              };
+              const { enqueueNotification } = await import("@/lib/notification-outbox.server");
+              await enqueueNotification(
+                {
+                  type: "telegram_admin_wallet_topup",
+                  payload: topUpPayload,
+                  dedupeKey: `wallet_topup:${req.id}`,
+                },
+                async () => {
+                  const { notifyAdminWalletTopUp } = await import(
+                    "@/lib/telegram-notifications.server"
+                  );
+                  return notifyAdminWalletTopUp(topUpPayload);
+                },
+              );
             } catch (err) {
               console.warn("Failed to notify admin on wallet top up", err);
             }
