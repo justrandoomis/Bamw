@@ -44,16 +44,21 @@ export function curatedIndex(file) {
       continue;
     }
     /*
-      Some games are sold under a Latin name in the Chinese market too —
-      `1-2-Switch` is called that on Nintendo's own Hong Kong and Taiwan pages,
-      and a supplier asked for it in Chinese would not know what was meant. The
-      entry says `latin: true` for those, so a deliberate Latin name is allowed
-      and a mistyped one is still caught. It is a claim about the game, made
-      once, in a file a person reads — not a silent fallback to the English
-      title, which is a different thing and never happens.
+      Every name carries Chinese, with no exception and no flag to opt out of it.
+      A handful of games have no Chinese title at all — `1-2-Switch` is called
+      that on Nintendo's own Hong Kong and Taiwan pages, `Go-Go Town!` on every
+      Chinese listing — and an earlier version let those through as bare Latin
+      under a `latin: true` flag. That is a value a supplier cannot act on: it
+      looks exactly like the English title nobody meant to send.
+
+      What goes in the field instead says so, in Chinese:
+      `Go-Go Town!（中国区官方沿用英文名）` — the name China actually uses, and a
+      note that this is why. The official Latin title is untouched; it lives on
+      the product's own `titleEn`, which is what the admin reads on the card.
+      No invented translation is ever presented as an official one.
     */
-    if (!HAN.test(name) && entry?.latin !== true) {
-      problems.push(`${title}: no Chinese in the name, and it is not marked latin`);
+    if (!HAN.test(name)) {
+      problems.push(`${title}: the name carries no Chinese at all`);
       continue;
     }
     if (!source) {
@@ -65,7 +70,7 @@ export function curatedIndex(file) {
       continue;
     }
 
-    const record = { name, sourceUrl: source, status, title, latin: entry?.latin === true };
+    const record = { name, sourceUrl: source, status, title };
     byTitle.set(title, record);
     const key = comparableTitle(title);
     if (key && !byTitle.has(key)) byTitle.set(key, record);

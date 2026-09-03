@@ -49,16 +49,31 @@ describe("the curated names file", () => {
     }
   });
 
-  it("marks a Latin name as Latin rather than sneaking it past the check", () => {
+  it("carries Chinese in every single name", () => {
     /*
-      `1-2-Switch` is called that on Nintendo's own Hong Kong and Taiwan pages,
-      and `PRAGMATA` on the PlayStation Store's Chinese listing. Those are the
-      names a supplier knows them by. The flag is what tells them apart from a
-      row where somebody pasted the English title into the Chinese column.
+      No exception and no flag to opt out. A handful of games have no Chinese
+      title — `1-2-Switch`, `Go-Go Town!`, the EA SPORTS FC line — and an
+      earlier version let those through as bare Latin. That is a value a
+      supplier cannot act on: it looks exactly like the English title nobody
+      meant to send. Those say so in Chinese instead, which is a name *and* an
+      explanation, and stay needs_review because an operational label is not a
+      published title.
     */
     for (const [title, entry] of Object.entries(file.names)) {
-      if (HAN.test(String(entry.zh))) continue;
-      expect(entry.latin, `${title}: no Chinese and not marked latin`).toBe(true);
+      expect(HAN.test(String(entry.zh)), `${title}: ${entry.zh}`).toBe(true);
+      expect(entry.latin, `${title}: the latin escape hatch is gone`).toBeUndefined();
+    }
+  });
+
+  it("says so in Chinese where China has no Chinese title, and does not call it official", () => {
+    const kept = Object.entries(file.names).filter(([, entry]) =>
+      String(entry.zh).includes("中国区官方沿用英文名"),
+    );
+    expect(kept.length).toBeGreaterThan(0);
+    for (const [title, entry] of kept) {
+      expect(entry.status, `${title}: an operational label is never verified`).toBe(
+        "needs_review",
+      );
     }
   });
 

@@ -1,11 +1,10 @@
 {
-  "note": "The Chinese name each game is ordered under at the supplier. Keyed by the shelf title exactly as the catalogue carries it. `source` is where the name was read; `status` is verified only where that source is the publisher, Nintendo, or a Chinese encyclopaedia entry for this exact game and edition. `latin: true` marks a game the Chinese market itself sells under a Latin name — asking a supplier for a Chinese one would not find it.",
+  "note": "The Chinese name each game is ordered under at the supplier. Keyed by the shelf title exactly as the catalogue carries it — the official Latin title stays on the product's own titleEn and is never edited here. `source` is where the name was read; `status` is verified only where that source is the publisher, Nintendo, an official store listing or a Chinese encyclopaedia entry for this exact game and edition. Where China genuinely has no Chinese title, the value says so in Chinese — `英文名（中国区官方沿用英文名）` — rather than presenting an invented translation as official, and stays needs_review because it is an operational label, not a published title.",
   "names": {
     "1-2-Switch": {
-      "zh": "1-2-Switch",
-      "latin": true,
+      "zh": "1-2-Switch（中国区官方沿用英文名）",
       "source": "https://www.nintendo.com/hk/switch/1-2-switch/",
-      "status": "verified"
+      "status": "needs_review"
     },
     "A Plague Tale: Innocence - Cloud Version": {
       "zh": "瘟疫传说：无罪 云版本",
@@ -13,7 +12,7 @@
       "status": "needs_review"
     },
     "Arcade Archives VS. SUPER MARIO BROS.": {
-      "zh": "Arcade Archives VS. 超级马力欧兄弟 (Arcade Archives VS. SUPER MARIO BROS.)",
+      "zh": "Arcade Archives VS. 超级马力欧兄弟",
       "source": "https://www.arcadearchives.com/en/title/aca-061/",
       "status": "needs_review"
     },
@@ -88,52 +87,44 @@
       "status": "verified"
     },
     "EA SPORTS FC 24": {
-      "zh": "EA SPORTS FC 24",
-      "latin": true,
+      "zh": "EA SPORTS FC 24（中国区官方沿用英文名）",
       "source": "https://zh.wikipedia.org/zh-hans/EA_Sports_FC%E7%B3%BB%E5%88%97",
-      "status": "verified"
+      "status": "needs_review"
     },
     "EA SPORTS FC 25": {
-      "zh": "EA SPORTS FC 25",
-      "latin": true,
+      "zh": "EA SPORTS FC 25（中国区官方沿用英文名）",
       "source": "https://zh.wikipedia.org/zh-hans/EA_Sports_FC%E7%B3%BB%E5%88%97",
-      "status": "verified"
+      "status": "needs_review"
     },
     "EA SPORTS FC 26 switch 1": {
-      "zh": "EA SPORTS FC 26 (Nintendo Switch)",
-      "latin": true,
+      "zh": "EA SPORTS FC 26（中国区官方沿用英文名，Nintendo Switch）",
       "source": "https://zh.wikipedia.org/zh-hans/EA_Sports_FC%E7%B3%BB%E5%88%97",
       "status": "needs_review"
     },
     "EA SPORTS FC 26 switch 2": {
-      "zh": "EA SPORTS FC 26 (Nintendo Switch 2)",
-      "latin": true,
+      "zh": "EA SPORTS FC 26（中国区官方沿用英文名，Nintendo Switch 2）",
       "source": "https://zh.wikipedia.org/zh-hans/EA_Sports_FC%E7%B3%BB%E5%88%97",
       "status": "needs_review"
     },
     "EA SPORTS FC 27 switch 1": {
-      "zh": "EA SPORTS FC 27 (Nintendo Switch)",
-      "latin": true,
+      "zh": "EA SPORTS FC 27（中国区官方沿用英文名，Nintendo Switch）",
       "source": "https://zh.wikipedia.org/zh-hans/EA_Sports_FC%E7%B3%BB%E5%88%97",
       "status": "needs_review"
     },
     "EA SPORTS FC 27 switch 2": {
-      "zh": "EA SPORTS FC 27 (Nintendo Switch 2)",
-      "latin": true,
+      "zh": "EA SPORTS FC 27（中国区官方沿用英文名，Nintendo Switch 2）",
       "source": "https://zh.wikipedia.org/zh-hans/EA_Sports_FC%E7%B3%BB%E5%88%97",
       "status": "needs_review"
     },
     "EA SPORTS FIFA 23 Nintendo Switch Legacy Edition": {
-      "zh": "EA SPORTS FIFA 23 Nintendo Switch 传承版",
-      "latin": true,
-      "source": "https://www.nintendo.com/us/whatsnew/available-now-ea-sports-fifa-23-nintendo-switch-legacy-edition/",
+      "zh": "EA SPORTS FIFA 23 Nintendo Switch 传承版（中国区官方沿用英文名）",
+      "source": "https://zh.wikipedia.org/zh-hans/EA_Sports_FC%E7%B3%BB%E5%88%97",
       "status": "needs_review"
     },
     "eFootball Kick-Off!": {
-      "zh": "eFootball 实况足球 Kick-Off!",
-      "latin": true,
-      "source": "https://store.steampowered.com/app/1665460/eFootball/?l=schinese",
-      "status": "needs_review"
+      "zh": "实况足球 eFootball（Kick-Off! 版本）",
+      "source": "https://zh.wikipedia.org/zh-hans/%E5%AE%9E%E5%86%B5%E8%B6%B3%E7%90%83%E7%B3%BB%E5%88%97",
+      "status": "verified"
     },
     "ELDEN RING Tarnished Edition": {
       "zh": "艾尔登法环 褪色者版",
@@ -161,8 +152,7 @@
       "status": "verified"
     },
     "FIFA 22 Nintendo Switch Legacy Edition": {
-      "zh": "FIFA 22 Nintendo Switch 传承版",
-      "latin": true,
+      "zh": "FIFA 22 Nintendo Switch 传承版（中国区官方沿用英文名）",
       "source": "https://zh.wikipedia.org/zh-hans/EA_Sports_FC%E7%B3%BB%E5%88%97",
       "status": "needs_review"
     },
@@ -202,20 +192,17 @@
       "status": "needs_review"
     },
     "Gear.Club Unlimited 3": {
-      "zh": "Gear.Club Unlimited 3",
-      "latin": true,
-      "source": "https://store.steampowered.com/app/3659460/GearClub_Unlimited_3/",
-      "status": "verified"
+      "zh": "极速俱乐部 无限3",
+      "source": "https://baike.baidu.com/item/%E6%9E%81%E9%80%9F%E4%BF%B1%E4%B9%90%E9%83%A8/22087815",
+      "status": "needs_review"
     },
     "Go-Go Town!": {
-      "zh": "Go-Go Town!",
-      "latin": true,
+      "zh": "Go-Go Town!（中国区官方沿用英文名）",
       "source": "https://store.steampowered.com/app/2195120/GoGo_Town/",
-      "status": "verified"
+      "status": "needs_review"
     },
     "Go-Go Town! – Nintendo Switch 2 Edition": {
-      "zh": "Go-Go Town! (Nintendo Switch 2)",
-      "latin": true,
+      "zh": "Go-Go Town!（中国区官方沿用英文名，Nintendo Switch 2 版）",
       "source": "https://www.nintendo.com/us/store/products/go-go-town-nintendo-switch-2-edition-switch-2/",
       "status": "needs_review"
     },
@@ -470,10 +457,9 @@
       "status": "verified"
     },
     "PRAGMATA": {
-      "zh": "PRAGMATA",
-      "latin": true,
-      "source": "https://store.playstation.com/en-hk/product/UP0102-PPSA02530_00-PRAGMATA00000000",
-      "status": "verified"
+      "zh": "识质存在",
+      "source": "https://baike.baidu.com/item/%E8%AF%86%E8%B4%A8%E5%AD%98%E5%9C%A8/66335889",
+      "status": "needs_review"
     },
     "RAIDOU Remastered: The Mystery of the Soulless Army": {
       "zh": "葛叶雷道 复刻版：超力兵团奇谭",
