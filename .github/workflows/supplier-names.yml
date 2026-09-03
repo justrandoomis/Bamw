@@ -34,6 +34,9 @@ on:
       - scripts/supplier-name-fill.mjs
       - scripts/lib/supplier-name-source.mjs
       - scripts/lib/supplier-name-wikidata.mjs
+      - scripts/lib/supplier-name-curated.mjs
+      - scripts/supplier-name-audit.mjs
+      - data/supplier-names-zh.json
 
 permissions:
   contents: read
@@ -101,3 +104,21 @@ jobs:
           if [ -n "$LIMIT" ]; then args="$args --limit=$LIMIT"; fi
           if [ -n "$OFFSET" ]; then args="$args --offset=$OFFSET"; fi
           node scripts/supplier-name-fill.mjs $args
+
+      # Reconciles the three counts by product id and slug, and — with
+      # `apply` — deletes metadata rows whose product no longer exists. It
+      # runs after the fill so the rows it audits are the ones just written.
+      - name: Reconcile the counts
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          D1_DATABASE_ID: ${{ secrets.CLOUDFLARE_D1_DATABASE_ID }}
+          APPLY: ${{ inputs.apply }}
+        run: |
+          if [ -z "$D1_DATABASE_ID" ]; then
+            D1_DATABASE_ID=$(node -e "const s=require('fs').readFileSync('wrangler.jsonc','utf8');console.log(/\"database_id\":\s*\"([0-9a-f-]+)\"/.exec(s)[1])")
+            export D1_DATABASE_ID
+          fi
+          args=""
+          if [ "$APPLY" = "true" ]; then args="--apply"; fi
+          node scripts/supplier-name-audit.mjs $args
