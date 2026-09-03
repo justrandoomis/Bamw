@@ -2167,8 +2167,17 @@ export function ensureSchema(): Promise<void> {
 
         Every D1-backed request in the app waits on this function, so that is
         not a slow bootstrap, it is the site down — which is exactly what a
-        bump to 24 did. Housekeeping is idempotent and runs on the cron as
-        well, so it belongs after the stamp, where at worst it is skipped.
+        bump to 24 did.
+
+        The housekeeping still runs, on this same isolate, immediately below.
+        Moving it after the stamp only changes which of the two is lost when an
+        isolate dies partway, and losing housekeeping is much the cheaper of
+        the two: all three blocks are backfills for rows written before their
+        invariant was enforced at the point of change — the orders audit only
+        logs, `order_queue` rows are released by every transition that ends an
+        order, and a unique index now keeps one active
+        `game_device_performance` row per game and console. Losing the stamp
+        costs the shop.
       */
       await db
         .prepare(
