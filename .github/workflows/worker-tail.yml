@@ -73,10 +73,11 @@ jobs:
           sleep 12
 
           echo "--- requesting https://banan.to${{ inputs.path || '/api/health' }} ---"
-          curl -sS -m 30 -o /dev/null -w "HTTP %{http_code}\n" \
-            "https://banan.to${{ inputs.path || '/api/health' }}" || true
-          curl -sS -m 30 -o /dev/null -w "HTTP %{http_code}\n" \
-            "https://banan.to/" || true
+          UA="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0 Safari/537.36"
+          curl -sS -m 60 -o /dev/null -w "HTTP %{http_code} in %{time_total}s\n" \
+            -A "$UA" "https://banan.to${{ inputs.path || '/api/health' }}" || true
+          curl -sS -m 60 -o /dev/null -w "HTTP %{http_code} in %{time_total}s\n" \
+            -A "$UA" "https://banan.to/" || true
 
           sleep "${{ inputs.seconds || '45' }}"
           kill "$TAIL_PID" 2>/dev/null || true
@@ -98,8 +99,16 @@ jobs:
               let e; try { e = JSON.parse(line); } catch { continue; }
               const exceptions = e.exceptions ?? [];
               const logs = e.logs ?? [];
-              if (!exceptions.length && !logs.length) continue;
-              console.log("---", e.outcome ?? "?", e.event?.request?.url ?? "");
+              const ms = e.event?.response?.timing?.endTime && e.eventTimestamp
+                ? e.event.response.timing.endTime - e.eventTimestamp
+                : undefined;
+              console.log(
+                "---",
+                e.outcome ?? "?",
+                e.event?.response?.status ?? "",
+                ms !== undefined ? ms + "ms" : "",
+                String(e.event?.request?.url ?? "").slice(0, 120),
+              );
               for (const x of exceptions) {
                 console.log("  EXCEPTION:", x.name, "-", x.message);
                 if (x.stack) console.log(String(x.stack).split("\n").slice(0, 12).join("\n"));
@@ -107,9 +116,9 @@ jobs:
               for (const l of logs.slice(0, 6)) {
                 console.log("  LOG:", l.level, String(JSON.stringify(l.message)).slice(0, 500));
               }
-              if (++shown >= 12) break;
+              if (++shown >= 40) break;
             }
-            if (!shown) console.log("(events captured, but none carried an exception or a log)");
+            if (!shown) console.log("(no events in the window)");
           '
 
       - name: Upload the raw tail
