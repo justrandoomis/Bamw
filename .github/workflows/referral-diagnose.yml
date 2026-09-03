@@ -1,0 +1,79 @@
+# Read the referral programme's own refusal log out of production.
+#
+# A refused referral tells the customer one sentence and nothing more — naming
+# the check that caught someone tells them which one to change — so the reason
+# is written to `referral_risk_events` instead. This workflow is how that table
+# gets read when the owner reports a refusal they cannot explain.
+#
+# Read-only by construction: the script refuses any SQL statement that is not a
+# single SELECT. It deploys nothing and applies no migration. Its report never
+# prints a hash, an address, a device or a contact detail, so the artifact is
+# safe to keep.
+name: Referral diagnosis (read-only)
+
+on:
+  workflow_dispatch:
+    inputs:
+      days:
+        description: "How many days of risk events to read (default 30)"
+        required: false
+        default: "30"
+  # Runs when the diagnostic itself is pushed to the working branch, so the
+  # report is available without waiting for it to reach `main`.
+  push:
+    branches: [claude/gaming-platform-issues-keb1be]
+    paths:
+      - .github/workflows/referral-diagnose.yml
+      - scripts/referral-diagnose.mjs
+
+permissions:
+  contents: read
+
+concurrency:
+  group: referral-diagnosis
+  cancel-in-progress: true
+
+jobs:
+  diagnose:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      # No `cache: npm` and `npm install` rather than `npm ci`, for the reason
+      # spelled out in `ci.yml`: this repository commits no lockfile.
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - run: npm install --no-audit --no-fund
+
+      # Belt and braces. Actions masks values referenced through `secrets.*`
+      # already; this also masks them if a tool prints one itself.
+      - name: Mask identifiers
+        env:
+          ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          DATABASE_ID: ${{ secrets.CLOUDFLARE_D1_DATABASE_ID }}
+        run: |
+          echo "::add-mask::$ACCOUNT_ID"
+          echo "::add-mask::$DATABASE_ID"
+
+      - name: Read-only referral diagnosis
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          CLOUDFLARE_D1_DATABASE_ID: ${{ secrets.CLOUDFLARE_D1_DATABASE_ID }}
+          # Passed through the environment, never interpolated into the shell.
+          DAYS: ${{ inputs.days }}
+        run: |
+          node scripts/referral-diagnose.mjs --days "${DAYS:-30}"
+
+      - name: Upload the report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: referral-diagnosis
+          path: referral-diagnosis.md
+          if-no-files-found: warn
