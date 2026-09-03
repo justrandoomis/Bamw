@@ -18,6 +18,13 @@ on:
         description: "Path to request while listening"
         type: string
         default: "/api/health"
+  # Runs when this diagnostic is itself pushed to the incident branch, so a
+  # live fault can be read now rather than after a merge to the default branch.
+  # Nothing else in the repository triggers it.
+  push:
+    branches: [claude/gaming-platform-issues-keb1be]
+    paths:
+      - .github/workflows/worker-tail.yml
 
 permissions:
   contents: read
@@ -34,10 +41,17 @@ jobs:
       - uses: actions/checkout@v4
         with:
           persist-credentials: false
-      - uses: oven-sh/setup-bun@v2
+      # npm, from the committed lockfile. This job used to open with
+      # `bun install --frozen-lockfile`, and there has been no bun lockfile
+      # since the tree moved to npm — so every run died on its third step and
+      # the one tool that can read a Worker's real exception was unusable
+      # exactly when it was needed.
+      - uses: actions/setup-node@v4
         with:
-          bun-version: latest
-      - run: bun install --frozen-lockfile
+          node-version: 22
+          cache: npm
+      - run: npm install -g npm@11.19.1
+      - run: npm ci --no-audit --no-fund
       - name: Mask identifiers
         env:
           ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
@@ -52,19 +66,35 @@ jobs:
           # Start the tail first, so the request that follows is inside the
           # window. `|| true` on the whole thing: a tail that cannot attach is
           # worth reporting, not worth failing the job over.
-          bunx wrangler tail pixel-cart-cloud \
+          npx wrangler tail pixel-cart-cloud \
             --config wrangler.jsonc \
             --format json > tail.jsonl 2>tail.err &
           TAIL_PID=$!
           sleep 12
 
-          echo "--- requesting https://banan.to${{ inputs.path }} ---"
-          curl -sS -m 30 -o /dev/null -w "HTTP %{http_code}\n" \
-            -A "bananto-tail-probe" "https://banan.to${{ inputs.path }}" || true
-          curl -sS -m 30 -o /dev/null -w "HTTP %{http_code}\n" \
-            -A "bananto-tail-probe" "https://banan.to/" || true
+          echo "--- requesting https://banan.to${{ inputs.path || '/api/health' }} ---"
+          # `curl` is challenged at the edge whatever user agent it sends —
+          # both probes answered 403 without reaching the Worker. Node's fetch
+          # is what `deployment-state.mjs` uses, and it gets a 200.
+          node -e '
+            (async () => {
+              for (const p of [process.argv[1], "/"]) {
+                const t = Date.now();
+                try {
+                  const res = await fetch("https://banan.to" + p);
+                  const body = await res.text();
+                  console.log(p + " -> HTTP " + res.status + " in " + (Date.now() - t) + "ms");
+                  if (p.startsWith("/api/")) console.log("   " + body.slice(0, 300));
+                } catch (e) {
+                  console.log(p + " -> unreachable after " + (Date.now() - t) + "ms: " + e.message);
+                }
+              }
+            })();
+          ' "${{ inputs.path || '/api/health' }}" || true
+          curl -sS -m 60 -o /dev/null -w "HTTP %{http_code} in %{time_total}s\n" \
+            -A "$UA" "https://banan.to/" || true
 
-          sleep "${{ inputs.seconds }}"
+          sleep "${{ inputs.seconds || '45' }}"
           kill "$TAIL_PID" 2>/dev/null || true
           sleep 2
 
@@ -79,13 +109,36 @@ jobs:
               ? fs.readFileSync("tail.jsonl", "utf8").split("\n").filter(Boolean)
               : [];
             if (!lines.length) { console.log("(no tail events captured)"); process.exit(0); }
+            // Printed once, so the shape is read rather than assumed: an
+            // earlier run guessed at these field names and every event came
+            // out as "?" with no url and no status. wrangler opens with a
+            // plain-text banner, so this takes the first line that is JSON
+            // rather than the first line — parsing the banner threw and took
+            // the whole step down after the capture had already succeeded.
+            const firstJson = lines.find((l) => {
+              try { JSON.parse(l); return true; } catch { return false; }
+            });
+            if (firstJson) {
+              console.log("first event keys:", Object.keys(JSON.parse(firstJson)).join(", "));
+              console.log("first event:", firstJson.slice(0, 600));
+            } else {
+              console.log("no line in the capture parsed as JSON; first line was:", lines[0].slice(0, 200));
+            }
             let shown = 0;
             for (const line of lines) {
               let e; try { e = JSON.parse(line); } catch { continue; }
               const exceptions = e.exceptions ?? [];
               const logs = e.logs ?? [];
-              if (!exceptions.length && !logs.length) continue;
-              console.log("---", e.outcome ?? "?", e.event?.request?.url ?? "");
+              const ms = e.event?.response?.timing?.endTime && e.eventTimestamp
+                ? e.event.response.timing.endTime - e.eventTimestamp
+                : undefined;
+              console.log(
+                "---",
+                e.outcome ?? "?",
+                e.event?.response?.status ?? "",
+                ms !== undefined ? ms + "ms" : "",
+                String(e.event?.request?.url ?? "").slice(0, 120),
+              );
               for (const x of exceptions) {
                 console.log("  EXCEPTION:", x.name, "-", x.message);
                 if (x.stack) console.log(String(x.stack).split("\n").slice(0, 12).join("\n"));
@@ -93,9 +146,9 @@ jobs:
               for (const l of logs.slice(0, 6)) {
                 console.log("  LOG:", l.level, String(JSON.stringify(l.message)).slice(0, 500));
               }
-              if (++shown >= 12) break;
+              if (++shown >= 40) break;
             }
-            if (!shown) console.log("(events captured, but none carried an exception or a log)");
+            if (!shown) console.log("(no events in the window)");
           '
 
       - name: Upload the raw tail
