@@ -1,4 +1,5 @@
 import { env } from "./env.server";
+import { readOrderItemSelection, selectionSummary } from "./orderItemSelection";
 import {
   sendTelegramMessage,
   escapeHtml,
@@ -113,7 +114,18 @@ export async function notifyAdminNewOrder(params: {
         ? "📦 منتج فيزيائي"
         : "🎮 حساب رقمي / لعبة";
       const edition = item.edition ? ` (${item.edition})` : "";
-      return `${index + 1}. <b>${escapeHtml(item.title)}</b>${edition} — <i>${kindLabel}</i>\n   الكمية: ${item.quantity || 1} | السعر: ${item.unitPrice.toLocaleString()} د.ع`;
+      /*
+        The option, the type and the console, from the order's own snapshot.
+
+        The message named the game and nothing else, so whoever picked it up
+        had to open the order to find out whether it was the offline account
+        or the online one — which is the single thing they need before they
+        can start. `readOrderItemSelection` coerces every value, so an object
+        stored in `meta` cannot print as "[object Object]" here.
+      */
+      const selection = selectionSummary(readOrderItemSelection(item.meta));
+      const selectionLine = selection ? `\n   ${escapeHtml(selection)}` : "";
+      return `${index + 1}. <b>${escapeHtml(item.title)}</b>${edition} — <i>${kindLabel}</i>${selectionLine}\n   الكمية: ${item.quantity || 1} | السعر: ${item.unitPrice.toLocaleString()} د.ع`;
     })
     .join("\n");
 

@@ -56,6 +56,15 @@ interface DeliveryStateView {
     productTitle: string;
     kind: string;
     quantity: number;
+    selection: {
+      optionName: string;
+      typeName: string;
+      platform: string;
+      editionId: string;
+      dlcCount: number;
+    };
+    /** Admin-only. Copied to the clipboard, never rendered. */
+    supplierNameZhCn: string;
   }>;
   deliveryItems: DeliveryItemView[];
   progress: {
@@ -135,6 +144,65 @@ async function readJsonResponse(response: Response): Promise<DeliveryActionRespo
     throw new Error(payload.error || payload.code || "تعذر حفظ بيانات التسليم في D1");
   }
   return payload;
+}
+
+/**
+ * Put text on the clipboard without telling anybody.
+ *
+ * No icon, no tooltip, no toast, no change of colour: an admin clicks the game
+ * name and the Chinese supplier name is on the clipboard. The point is speed
+ * during fulfilment — a confirmation would be one more thing to dismiss on
+ * every line of every order.
+ *
+ * `navigator.clipboard` needs a secure context and is refused outright by some
+ * mobile browsers inside a modal, so the textarea path is kept as the
+ * fallback. It is deliberately off-screen rather than hidden: an element with
+ * `display:none` cannot be selected, which is why the obvious version of this
+ * trick silently does nothing on Safari.
+ */
+async function copySilently(text: string): Promise<boolean> {
+  if (!text) return false;
+  try {
+    if (navigator.clipboard?.writeText) {
+      await navigator.clipboard.writeText(text);
+      return true;
+    }
+  } catch {
+    // Denied or unavailable — fall through rather than give up.
+  }
+  try {
+    const area = document.createElement("textarea");
+    area.value = text;
+    area.setAttribute("readonly", "");
+    area.style.position = "fixed";
+    area.style.top = "-1000px";
+    area.style.opacity = "0";
+    document.body.appendChild(area);
+    area.select();
+    area.setSelectionRange(0, text.length);
+    const ok = document.execCommand("copy");
+    document.body.removeChild(area);
+    return ok;
+  } catch {
+    return false;
+  }
+}
+
+/** The parts of a selection worth a line on a card, already joined. */
+function selectionLine(selection: {
+  optionName: string;
+  typeName: string;
+  platform: string;
+  dlcCount: number;
+}): string {
+  return [
+    selection.optionName,
+    selection.typeName,
+    selection.platform,
+    selection.dlcCount > 0 ? `+${selection.dlcCount} إضافة` : "",
+  ]
+    .filter(Boolean)
+    .join(" • ");
 }
 
 export function AccountToolsModal({
@@ -339,6 +407,58 @@ export function AccountToolsModal({
     [deliveryState?.deliveryItems, selectedId],
   );
   const selectedDraft = selected ? drafts[selected.id] : undefined;
+
+  /*
+    A delivery item names its order item; the order item carries the selection
+    and the Chinese name. One index, so the three lookups below are not three
+    scans per card.
+  */
+  const orderItemById = useMemo(() => {
+    const map = new Map<string, NonNullable<typeof deliveryState>["orderItems"][number]>();
+    for (const item of deliveryState?.orderItems ?? []) map.set(item.id, item);
+    return map;
+  }, [deliveryState?.orderItems]);
+
+  const selectionFor = useCallback(
+    (orderItemId: string | null) => {
+      const item = orderItemId ? orderItemById.get(orderItemId) : undefined;
+      return item ? selectionLine(item.selection) : "";
+    },
+    [orderItemById],
+  );
+
+  const quantityFor = useCallback(
+    (orderItemId: string | null) => {
+      const item = orderItemId ? orderItemById.get(orderItemId) : undefined;
+      return item?.quantity ?? 1;
+    },
+    [orderItemById],
+  );
+
+  /**
+   * Copy the Chinese supplier name, silently.
+   *
+   * When there is no Chinese name the English title is *not* copied as a
+   * fallback: an order placed against an English title is an order placed for
+   * the wrong thing. Nothing goes on the clipboard and the gap is logged for
+   * an admin to fill in.
+   */
+  const copySupplierName = useCallback(
+    async (orderItemId: string | null) => {
+      const item = orderItemId ? orderItemById.get(orderItemId) : undefined;
+      const name = item?.supplierNameZhCn ?? "";
+      if (!name) {
+        console.warn("[delivery:supplier_name_zh_missing]", {
+          orderItemId,
+          productId: item?.productId ?? "",
+          productTitle: item?.productTitle ?? "",
+        });
+        return;
+      }
+      await copySilently(name);
+    },
+    [orderItemById],
+  );
   const mappedItems = useMemo(
     () => deliveryState?.deliveryItems.filter((item) => Boolean(item.orderItemId)) || [],
     [deliveryState?.deliveryItems],
@@ -648,6 +768,16 @@ export function AccountToolsModal({
                               >
                                 {target.productTitle}{" "}
                                 {target.slotNumber ? `#${target.slotNumber}` : ""}
+                                {/*
+                                  Two lines of the same game — one offline, one
+                                  online — are identical by title, and that is
+                                  exactly when a wrong mapping gets confirmed.
+                                */}
+                                {selectionFor(target.orderItemId) ? (
+                                  <span className="mt-0.5 block text-[9px] font-bold">
+                                    {selectionFor(target.orderItemId)}
+                                  </span>
+                                ) : null}
                               </button>
                             ))
                           ) : (
@@ -681,12 +811,42 @@ export function AccountToolsModal({
                           : "border-border bg-card hover:bg-muted/50"
                       }`}
                     >
-                      <span className="block truncate text-[11px] font-bold text-foreground">
+                      <span
+                        role="button"
+                        tabIndex={0}
+                        onClick={(event) => {
+                          /*
+                            The name copies; it does not select the card.
+                            Without stopping the event it would bubble to the
+                            chip's own onClick and an admin trying to copy
+                            would change what they are looking at.
+                          */
+                          event.stopPropagation();
+                          void copySupplierName(item.orderItemId);
+                        }}
+                        onKeyDown={(event) => {
+                          if (event.key !== "Enter" && event.key !== " ") return;
+                          event.preventDefault();
+                          event.stopPropagation();
+                          void copySupplierName(item.orderItemId);
+                        }}
+                        className="block truncate text-[11px] font-bold text-foreground"
+                      >
                         {item.productTitle}
                       </span>
                       <span className="mt-0.5 block text-[10px] text-muted-foreground">
                         #{item.slotNumber || 1} • {STATUS_LABEL[item.status]}
                       </span>
+                      {/*
+                        What was actually sold. The title alone is not enough
+                        to prepare an account: an offline account and an online
+                        one are different products behind the same name.
+                      */}
+                      {selectionFor(item.orderItemId) ? (
+                        <span className="mt-0.5 block truncate text-[10px] font-bold text-primary">
+                          {selectionFor(item.orderItemId)}
+                        </span>
+                      ) : null}
                     </button>
                   ))}
                 </div>
@@ -700,8 +860,39 @@ export function AccountToolsModal({
                         اسم اللعبة من D1
                       </span>
                       <div className="mt-1 flex items-center gap-1.5 text-sm font-black text-foreground">
-                        <Gamepad2 className="h-4 w-4 text-primary" />
-                        {selected.productTitle}
+                        <Gamepad2 className="h-4 w-4 shrink-0 text-primary" />
+                        {/*
+                          Same silent copy as the chip. Identical styling to
+                          before — no icon, no tooltip, no colour change: the
+                          only thing that happens is the clipboard.
+                        */}
+                        <span
+                          role="button"
+                          tabIndex={0}
+                          onClick={() => void copySupplierName(selected.orderItemId)}
+                          onKeyDown={(event) => {
+                            if (event.key !== "Enter" && event.key !== " ") return;
+                            event.preventDefault();
+                            void copySupplierName(selected.orderItemId);
+                          }}
+                          className="min-w-0 truncate"
+                        >
+                          {selected.productTitle}
+                        </span>
+                      </div>
+                      {/*
+                        The selection, from the order's own snapshot — not from
+                        the product as it stands today, so editing a product
+                        cannot change what an old order says was sold.
+                      */}
+                      {selectionFor(selected.orderItemId) ? (
+                        <div className="mt-1 text-[11px] font-bold text-primary">
+                          {selectionFor(selected.orderItemId)}
+                        </div>
+                      ) : null}
+                      <div className="mt-0.5 text-[10px] text-muted-foreground">
+                        الكمية: {quantityFor(selected.orderItemId)} • رقم العنصر:{" "}
+                        <span dir="ltr">{selected.orderItemId ?? "—"}</span>
                       </div>
                     </div>
                     <span className="rounded-full border border-border bg-card px-2.5 py-1 text-[10px] font-bold text-muted-foreground">

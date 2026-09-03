@@ -1,4 +1,5 @@
 import React from "react";
+import { readOrderItemSelection, selectionSummary } from "@/lib/orderItemSelection";
 import {
   X,
   ShoppingBag,
@@ -165,10 +166,23 @@ export function OrderPreviewDrawer({
                     </div>
                   </div>
 
-                  {item.meta?.editionId && (
+                  {/*
+                    The selection, read through the same coercing reader the
+                    fulfilment cards use.
+
+                    This printed `meta.editionId` raw under a label reading
+                    "النسخة / النوع" — the wrong value under the right label.
+                    And `meta` comes from the checkout request, which
+                    type-checks nothing inside a line, so an object stored
+                    there rendered as the literal "[object Object]" on an
+                    admin's screen.
+                  */}
+                  {selectionSummary(readOrderItemSelection(item.meta)) && (
                     <div className="text-[11px] text-muted-foreground">
                       النسخة / النوع:{" "}
-                      <span className="font-semibold text-foreground">{item.meta?.editionId}</span>
+                      <span className="font-semibold text-foreground">
+                        {selectionSummary(readOrderItemSelection(item.meta))}
+                      </span>
                     </div>
                   )}
 

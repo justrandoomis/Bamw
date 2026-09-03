@@ -448,6 +448,13 @@ export interface OrderItemMatchTarget {
   title: string;
   quantity: number;
   kind?: string;
+  /**
+   * What was actually sold on this line, for the admin who has to read the
+   * match. Two lines of the same game — one offline, one online — are
+   * indistinguishable by title alone, which is exactly when a wrong mapping
+   * gets confirmed.
+   */
+  selectionLabel?: string;
 }
 
 export interface MatchedAccountResult {

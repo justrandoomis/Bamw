@@ -64,6 +64,11 @@ describe("no statement can outgrow D1's parameter limit", () => {
       // recorded at capture — and sliced to MAX_IDENTITY_COMPARISONS in the
       // source, so the bound does not depend on what the callers pass.
       "src/lib/referral/risk.server.ts:wanted": "sliced to a constant",
+      // The distinct products on one order, sliced to
+      // MAX_SUPPLIER_NAME_LOOKUPS in the source. Checkout caps a cart at
+      // fifty lines, so the slice is never reached — it is there so the
+      // bound belongs to the statement rather than to a rule elsewhere.
+      "src/lib/order-delivery-items.server.ts:productIds": "sliced to a constant",
     };
 
     const unknown = found.filter((entry) => !(`${entry.file}:${entry.source}` in KNOWN));
