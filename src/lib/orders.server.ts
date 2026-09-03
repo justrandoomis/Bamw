@@ -254,8 +254,36 @@ async function validateLine(
       optionName: selectedOption ? String(selectedOption.name ?? "") : null,
       typeId: selectedType ? String(selectedType.id) : null,
       typeName: selectedType ? String(selectedType.name ?? "") : null,
+      /*
+        The platform, snapshotted like everything else here.
+
+        An order line had no record of which console it was for, so the
+        fulfilment screen could not say — and reading it back off the product
+        later would let an edit to the catalogue rewrite what an old order
+        says was sold. Taken from the product now, at the moment of sale.
+      */
+      platform: productPlatform(product as unknown as Record<string, unknown>),
     },
   };
+}
+
+/**
+ * Which console this product is for, as the catalogue records it.
+ *
+ * Two spellings exist in the data — a `platform` field and a `switch2Enhanced`
+ * flag — and `hub.ts` already reconciles them for the storefront. The same
+ * reconciliation is needed here so the fulfilment screen and the shop agree.
+ */
+function productPlatform(product: Record<string, unknown>): string {
+  const declared = String(product["platform"] ?? "").trim();
+  if (declared) return declared;
+  const switch2 = product["switch2"];
+  const isSwitch2Edition =
+    switch2 && typeof switch2 === "object" && !Array.isArray(switch2)
+      ? Boolean((switch2 as Record<string, unknown>)["isSwitch2Edition"])
+      : false;
+  if (isSwitch2Edition || product["switch2Enhanced"] === true) return "switch2";
+  return "";
 }
 
 const idempotencyCache = new Map<string, { order: Order; at: number }>();

@@ -1,5 +1,21 @@
 import { DELIVERY_OTP_TTL_MINUTES, deliveryOtpExpiry } from "./delivery-otp";
 import {
+  readOrderItemSelection,
+  selectionSummary,
+  type OrderItemSelection,
+} from "./orderItemSelection";
+
+/**
+ * How many products one supplier-name lookup may ask about.
+ *
+ * D1 refuses a statement carrying more than a hundred bound parameters, and a
+ * placeholder list built from an array is exactly how that limit gets found in
+ * production rather than in a test. Checkout already caps a cart at fifty
+ * lines, so this is never reached — it is here so the bound is a property of
+ * this statement rather than a property of a rule somewhere else.
+ */
+const MAX_SUPPLIER_NAME_LOOKUPS = 50;
+import {
   ACCOUNT_GAME_MATCH_MIN_CONFIDENCE,
   matchAccountsToOrder,
   parseAccountPaste,
@@ -320,6 +336,14 @@ interface CanonicalOrderItemRow {
   product_title: string;
   kind: string;
   quantity: number;
+  /*
+    The selection, which this query has always stored and never read back.
+    `order_items.metadata_json` holds the option, the type, the edition and the
+    add-ons exactly as they were at checkout — and until now the delivery
+    screen selected five columns that did not include it, so an admin
+    preparing an account could not tell an offline account from an online one.
+  */
+  metadata_json: string | null;
 }
 
 export interface AdminDeliveryItem {
@@ -359,6 +383,18 @@ export interface DeliveryOrderState {
     productTitle: string;
     kind: string;
     quantity: number;
+    /** What was actually bought — read from the checkout snapshot. */
+    selection: OrderItemSelection;
+    /**
+     * The Chinese supplier name, for the silent copy on the fulfilment card.
+     *
+     * This state is only ever built behind `requireAdmin`, and the field is
+     * read from `product_admin_metadata` rather than from the product, so it
+     * cannot travel on any public response. Empty when nobody has recorded
+     * one yet — and the copy is then refused rather than falling back to the
+     * English title, which would place the wrong order.
+     */
+    supplierNameZhCn: string;
   }>;
   deliveryItems: AdminDeliveryItem[];
   progress: DeliveryProgress;
@@ -436,12 +472,36 @@ export async function getDeliveryOrderState(
 
   const [canonicalItems, rows] = await Promise.all([
     d1All<CanonicalOrderItemRow>(
-      `SELECT id, product_id, product_title, kind, quantity
+      `SELECT id, product_id, product_title, kind, quantity, metadata_json
        FROM order_items WHERE order_id = ? ORDER BY created_at ASC, id ASC`,
       order.id,
     ),
     deliveryRows(order.id),
   ]);
+
+  /*
+    The Chinese names for everything on this order, in one query.
+
+    Read here rather than per card so the fulfilment screen makes one round
+    trip, and read from the admin table rather than the catalogue so there is
+    no path by which it could reach a customer.
+  */
+  const productIds = [
+    ...new Set(canonicalItems.map((item) => item.product_id).filter(Boolean)),
+  ].slice(0, MAX_SUPPLIER_NAME_LOOKUPS);
+  const supplierNames = new Map<string, string>();
+  if (productIds.length) {
+    const placeholders = productIds.map(() => "?").join(", ");
+    const metaRows = await d1All<Record<string, unknown>>(
+      `SELECT product_id, supplier_name_zh_cn FROM product_admin_metadata
+        WHERE product_id IN (${placeholders})`,
+      ...productIds,
+    ).catch(() => []);
+    for (const row of metaRows) {
+      const name = String(row["supplier_name_zh_cn"] ?? "").trim();
+      if (name) supplierNames.set(String(row["product_id"]), name);
+    }
+  }
 
   for (const item of canonicalItems) {
     if (!validCanonicalTitle(item.product_title)) {
@@ -468,6 +528,8 @@ export async function getDeliveryOrderState(
       productTitle: item.product_title,
       kind: item.kind,
       quantity: Number(item.quantity || 1),
+      selection: readOrderItemSelection(item.metadata_json),
+      supplierNameZhCn: supplierNames.get(item.product_id) ?? "",
     })),
     deliveryItems,
     progress: calculateDeliveryProgress(deliveryItems),
@@ -514,6 +576,7 @@ export async function saveQuickPaste(orderId: string, rawText: string): Promise<
       title: item.product_title,
       quantity: Number(item.quantity || 1),
       kind: item.kind,
+      selectionLabel: selectionSummary(readOrderItemSelection(item.metadata_json)),
     }));
   const matches = matchAccountsToOrder(parsed.accounts, targets);
   const rows = await deliveryRows(order.id);

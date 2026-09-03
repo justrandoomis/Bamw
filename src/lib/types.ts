@@ -754,6 +754,13 @@ export interface OrderItem {
     optionName?: string | null | undefined;
     typeId?: string | null | undefined;
     typeName?: string | null | undefined;
+    /**
+     * Which console, snapshotted at the sale.
+     *
+     * Absent on orders placed before it was recorded; the fulfilment screens
+     * simply omit the line rather than guessing from today's catalogue.
+     */
+    platform?: string | null | undefined;
   };
   /** account items only */
   deliveryEmail?: string;
