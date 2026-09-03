@@ -53,6 +53,7 @@ import {
   entitiesUrl,
   pickWikidataName,
   searchUrl,
+  editionFallbacks,
 } from "./lib/supplier-name-wikidata.mjs";
 
 const HK_INDEX = "data/nintendo-hong-kong-languages.json";
@@ -154,43 +155,88 @@ say(`Hong Kong catalogue entries: ${hk.titles.length} · index keys: ${byTitle.s
 const UA =
   "bananto-supplier-names/1.0 (https://github.com/justrandoomis/Bamw) node-fetch";
 
-async function fetchJson(url, timeout = 20_000) {
-  const ctl = new AbortController();
-  const timer = setTimeout(() => ctl.abort(), timeout);
-  try {
-    const res = await fetch(url, {
-      headers: { "user-agent": UA, accept: "application/json" },
-      signal: ctl.signal,
-    });
-    if (!res.ok) return null;
-    return await res.json();
-  } catch {
-    return null;
-  } finally {
-    clearTimeout(timer);
-  }
-}
-
 /* Wikidata asks for an unhurried caller; this is two requests a game. */
 const pause = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
-async function resolveFromWikidata(englishTitle) {
-  const title = baseTitle(englishTitle);
-  if (!title) return null;
+/*
+  A request that failed and a game with no Chinese name are not the same
+  finding, and the first version of this returned `null` for both. That is the
+  worst shape this report can take: it would print "no Chinese name in either
+  source" for a game whose name Wikidata holds perfectly well, and an admin
+  reading the report would go and type it in by hand for nothing — or worse,
+  trust the report and leave the game empty.
 
+  So a transport failure is carried through as a failure, retried first, and
+  named separately in the tally.
+*/
+async function fetchJson(url, { timeout = 20_000, attempts = 3 } = {}) {
+  for (let attempt = 1; attempt <= attempts; attempt += 1) {
+    const ctl = new AbortController();
+    const timer = setTimeout(() => ctl.abort(), timeout);
+    try {
+      const res = await fetch(url, {
+        headers: { "user-agent": UA, accept: "application/json" },
+        signal: ctl.signal,
+      });
+      if (res.ok) return { ok: true, json: await res.json() };
+      /* 429 and 5xx are worth waiting out; a 400 will say the same thing twice. */
+      if (res.status !== 429 && res.status < 500) return { ok: false, status: res.status };
+      if (attempt < attempts) await pause(1_000 * attempt);
+    } catch (err) {
+      if (attempt < attempts) await pause(1_000 * attempt);
+      else return { ok: false, status: 0, error: String(err?.message ?? err) };
+    } finally {
+      clearTimeout(timer);
+    }
+  }
+  return { ok: false, status: 429 };
+}
+
+/**
+ * One game against Wikidata.
+ *
+ * Returns the hit, `null` for "asked and there is nothing", or
+ * `{ failed: true }` for "could not ask" — which the caller reports as its own
+ * outcome rather than as an empty answer.
+ */
+async function askWikidata(title) {
   const found = await fetchJson(searchUrl(title));
-  const ids = (found?.search ?? []).map((hit) => hit?.id).filter(Boolean).slice(0, 5);
+  if (!found.ok) return { failed: true, why: `search HTTP ${found.status}` };
+  const ids = (found.json?.search ?? []).map((hit) => hit?.id).filter(Boolean).slice(0, 5);
   if (!ids.length) return null;
 
   await pause(150);
   const got = await fetchJson(entitiesUrl(ids));
-  if (!got?.entities) return null;
+  if (!got.ok) return { failed: true, why: `entities HTTP ${got.status}` };
+  if (!got.json?.entities) return null;
 
+  return pickWikidataName(got.json.entities, title);
+}
+
+async function resolveFromWikidata(englishTitle) {
   /*
     Matched against the base title, not the shelf title: `Hollow Knight switch 1`
     is this shop's way of saying which console, and no item is named that.
   */
-  return pickWikidataName(got.entities, title);
+  const title = baseTitle(englishTitle);
+  if (!title) return null;
+
+  const first = await askWikidata(title);
+  if (first) return first;
+
+  /*
+    Only now the edition comes off. Wikidata has its own item for `Xenoblade
+    Chronicles: Definitive Edition`, and asking for the base game first would
+    answer with the wrong product; asking second finds `The Witcher 3: Wild
+    Hunt`, which has no `Complete Edition` item at all.
+  */
+  for (const candidate of editionFallbacks(title)) {
+    await pause(150);
+    const next = await askWikidata(candidate);
+    if (next?.failed) return next;
+    if (next) return { ...next, searchedAs: candidate };
+  }
+  return null;
 }
 
 /* ------------------------------------------------------------------- the pass */
@@ -207,6 +253,7 @@ const report = [];
 let fromHongKong = 0;
 let fromWikidata = 0;
 let noSource = 0;
+let unreachable = 0;
 let written = 0;
 
 for (const game of games) {
@@ -219,13 +266,20 @@ for (const game of games) {
   */
   const hkHit = matchSupplierName(game, byTitle);
   let found = hkHit.outcome === "found" ? { ...hkHit, source: "Nintendo Hong Kong" } : null;
+  let failure = "";
   if (!found) {
     const wd = await resolveFromWikidata(english);
-    if (wd) found = { ...wd, source: `Wikidata ${wd.itemId} (${wd.lang})` };
+    if (wd?.failed) failure = wd.why;
+    else if (wd) found = { ...wd, source: `Wikidata ${wd.itemId} (${wd.lang})` };
     await pause(150);
   }
 
   if (!found) {
+    if (failure) {
+      unreachable += 1;
+      report.push({ id, english, outcome: `could not ask Wikidata — ${failure}`, filled: false });
+      continue;
+    }
     noSource += 1;
     const why =
       hkHit.outcome === "latin_name"
@@ -240,7 +294,7 @@ for (const game of games) {
 
   const check = app.checkSupplierNameZh(found.name, english);
   const note = check.ok ? "" : ` — ${check.reason}`;
-  const searched = baseTitle(english);
+  const searched = found.searchedAs ?? baseTitle(english);
   const asked = searched === english ? "" : ` [searched as "${searched}"]`;
   report.push({
     id,
@@ -279,10 +333,11 @@ say(`games: ${games.length}`);
 say(`  from Nintendo Hong Kong: ${fromHongKong}`);
 say(`  from Wikidata: ${fromWikidata}`);
 say(`  no source, left empty: ${noSource}`);
+say(`  could not ask, left untouched: ${unreachable}`);
 say(`  rows written: ${written}`);
 say("");
 say("Names are never printed here. Read them in the admin screen, which is the only place they are meant to be readable.");
 
-if (fromHongKong + fromWikidata + noSource !== games.length) {
+if (fromHongKong + fromWikidata + noSource + unreachable !== games.length) {
   throw new Error("the tallies do not add up to the number of games — refusing to report a pass that lost rows");
 }

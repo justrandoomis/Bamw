@@ -29,6 +29,7 @@ on:
       - .github/workflows/supplier-names.yml
       - scripts/supplier-name-fill.mjs
       - scripts/lib/supplier-name-source.mjs
+      - scripts/lib/supplier-name-wikidata.mjs
 
 permissions:
   contents: read

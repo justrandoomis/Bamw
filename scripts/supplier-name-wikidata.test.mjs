@@ -9,6 +9,7 @@ import {
   pickWikidataName,
   searchUrl,
   titleMatches,
+  editionFallbacks,
 } from "./lib/supplier-name-wikidata.mjs";
 
 /** A Wikidata item, cut down to the fields this module reads. */
@@ -75,6 +76,68 @@ describe("baseTitle", () => {
   });
 });
 
+describe("editionFallbacks", () => {
+  /*
+    Every title here is a real one from the catalogue that the first pass came
+    back empty for. These are second questions — none of them is what gets
+    asked first.
+  */
+  const first = (title) => editionFallbacks(title)[0];
+
+  it("cuts at the separator when the title has one", () => {
+    expect(first("Cyberpunk 2077: Ultimate Edition")).toBe("Cyberpunk 2077");
+    expect(first("The Witcher 3: Wild Hunt — Complete Edition")).toBe("The Witcher 3: Wild Hunt");
+    expect(first("Fallout 4: Anniversary Edition")).toBe("Fallout 4");
+    expect(first("Lies of P: Complete Edition")).toBe("Lies of P");
+    expect(first("HITMAN World of Assassination - Signature Edition")).toBe(
+      "HITMAN World of Assassination",
+    );
+  });
+
+  it("cuts at the last separator, not the first", () => {
+    /* `The Witcher 3:` is part of the name; the `—` is where the edition starts. */
+    expect(first("The Witcher 3: Wild Hunt — Complete Edition")).not.toBe("The Witcher 3");
+  });
+
+  it("does not read a colon inside a word as a separator", () => {
+    /* `NieR:Automata` is the game's name, and cutting there would ask for `NieR`. */
+    expect(editionFallbacks("NieR:Automata The End of YoRHa Edition")).not.toContain("NieR");
+  });
+
+  it("offers each length when there is no punctuation to go by", () => {
+    /* No rule says how much of this is the edition, so every reading is offered
+       and the whole-title match decides which one is a real game. */
+    const out = editionFallbacks("Star Wars Outlaws Gold Edition");
+    expect(out).toContain("Star Wars Outlaws");
+    expect(out[0]).toBe("Star Wars Outlaws Gold");
+
+    expect(editionFallbacks("ELDEN RING Tarnished Edition")).toContain("ELDEN RING");
+    expect(editionFallbacks("EA SPORTS FIFA 23 Nintendo Switch Legacy Edition")).toContain(
+      "EA SPORTS FIFA 23",
+    );
+    expect(editionFallbacks("Devil May Cry 5 Devil Hunter Edition")).toContain("Devil May Cry 5");
+    expect(editionFallbacks("JUST DANCE 2026 EDITION")).toContain("JUST DANCE 2026");
+  });
+
+  it("takes a trailing remaster off", () => {
+    expect(editionFallbacks("The Witcher 3: Wild Hunt — Remastered")).toContain(
+      "The Witcher 3: Wild Hunt",
+    );
+  });
+
+  it("offers nothing when there is nothing to strip", () => {
+    /* The caller uses an empty list to mean "no second attempt". */
+    expect(editionFallbacks("Super Mario Odyssey")).toEqual([]);
+    expect(editionFallbacks("Splatoon 3")).toEqual([]);
+    expect(editionFallbacks("")).toEqual([]);
+  });
+
+  it("never offers an empty title, however short the input", () => {
+    expect(editionFallbacks("Edition")).toEqual([]);
+    for (const candidate of editionFallbacks("Gold Edition")) expect(candidate).not.toBe("");
+  });
+});
+
 describe("the request URLs", () => {
   it("searches English items only", () => {
     const url = new URL(searchUrl("Splatoon 3"));
@@ -101,6 +164,19 @@ describe("isVideoGame", () => {
   it("refuses an item with no such claim", () => {
     expect(isVideoGame(item({ en: ["Splatoon 3"], game: false }))).toBe(false);
     expect(isVideoGame({})).toBe(false);
+  });
+
+  it("accepts a remaster typed by its platform rather than as a video game", () => {
+    /*
+      Remasters and editions are routinely typed as `video game remaster` and
+      not as `video game`, and those are exactly the products on this shelf.
+      The platform claim never decides alone — the title must still match.
+    */
+    const remaster = {
+      labels: { en: { value: "The Witcher 3: Wild Hunt" } },
+      claims: { P400: [{ mainsnak: { datavalue: { value: { id: "Q19610114" } } } }] },
+    };
+    expect(isVideoGame(remaster)).toBe(true);
   });
 });
 

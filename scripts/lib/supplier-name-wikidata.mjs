@@ -15,7 +15,8 @@
  *
  * So every rule here is a way of refusing a wrong item:
  *
- *   - the item must be an instance of a video game;
+ *   - the item must read as a video game — an instance of one, or something
+ *     carrying a platform claim, which is how remasters and editions are typed;
  *   - its English label or one of its English aliases must match the title we
  *     asked for, whole, under the same normalisation the language audit uses;
  *   - the Chinese label must actually be Chinese.
@@ -35,6 +36,8 @@ const HAN = /[一-鿿㐀-䶿豈-﫿]/;
 /** `instance of` → `video game`. The one claim that says this is a game. */
 const P_INSTANCE_OF = "P31";
 const Q_VIDEO_GAME = "Q7889";
+/* `platform` — the console or system a piece of software runs on. */
+const P_PLATFORM = "P400";
 
 const API = "https://www.wikidata.org/w/api.php";
 
@@ -86,6 +89,55 @@ export function searchUrl(title, limit = 5) {
   return `${API}?${params}`;
 }
 
+/**
+ * Titles to try after the full one has found nothing.
+ *
+ * Wikidata has its own item for `Xenoblade Chronicles: Definitive Edition`, so
+ * the full title is always asked first and this is only ever the second
+ * question. `The Witcher 3: Wild Hunt — Complete Edition` has no item of its
+ * own; `The Witcher 3: Wild Hunt` does.
+ *
+ * Several candidates rather than one, because there is no rule that says how
+ * much of `EA SPORTS FIFA 23 Nintendo Switch Legacy Edition` is the edition.
+ * That is safe here and would not be in a looser design: `pickWikidataName`
+ * demands a whole-title match, so a candidate that is not a real game's name
+ * matches nothing at all. A wrong guess costs a request, not a wrong name.
+ *
+ * Returns [] when there is nothing else to try, so the caller can tell "asked
+ * and there is nothing" from "not asked yet".
+ */
+export function editionFallbacks(text) {
+  const full = String(text ?? "").trim();
+  const out = [];
+  const add = (candidate) => {
+    const value = String(candidate ?? "")
+      .trim()
+      .replace(/[\s:\-–—]+$/, "")
+      .trim();
+    if (value && value !== full && !out.includes(value)) out.push(value);
+  };
+
+  /* A separator written as one: `Title: Edition`, `Title — Edition`. Greedy, so
+     it finds the last, which is what keeps `The Witcher 3:` out of the cut. */
+  const sep = full.match(/^(.*\S)(?::\s|\s[-–—]\s)(\S.*)$/);
+  if (sep && /\beditions?\b/i.test(sep[2])) add(sep[1]);
+
+  /* No punctuation to help — `Star Wars Outlaws Gold Edition`. */
+  const words = full.split(/\s+/);
+  if (/^editions?$/i.test(words[words.length - 1] ?? "")) {
+    for (let drop = 1; drop <= 5; drop += 1) {
+      if (words.length - drop < 1) break;
+      add(words.slice(0, words.length - drop).join(" "));
+    }
+  }
+
+  /* Not an edition word, but it behaves like one. */
+  const remaster = full.match(/^(.*\S)(?::\s|\s[-–—]\s|\s)(?:HD\s+)?Remastere?d?$/i);
+  if (remaster) add(remaster[1]);
+
+  return out;
+}
+
 export function entitiesUrl(ids) {
   const params = new URLSearchParams({
     action: "wbgetentities",
@@ -98,10 +150,20 @@ export function entitiesUrl(ids) {
   return `${API}?${params}`;
 }
 
-/** Is this item an instance of a video game? */
+/**
+ * Is this item a video game?
+ *
+ * `instance of → video game` is the ordinary shape and the one to prefer. It is
+ * not the only one: remasters, remakes and expansions are often typed as those
+ * instead, and refusing them would drop exactly the editions this shop sells.
+ * `platform` is the second reading — a claim only software carries — and it is
+ * safe here because it never decides alone: the English title still has to
+ * match this item whole.
+ */
 export function isVideoGame(entity) {
   const claims = entity?.claims?.[P_INSTANCE_OF] ?? [];
-  return claims.some((claim) => claim?.mainsnak?.datavalue?.value?.id === Q_VIDEO_GAME);
+  if (claims.some((claim) => claim?.mainsnak?.datavalue?.value?.id === Q_VIDEO_GAME)) return true;
+  return Boolean(entity?.claims?.[P_PLATFORM]?.length);
 }
 
 /** Every English name this item answers to — its label and its aliases. */
