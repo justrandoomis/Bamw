@@ -268,22 +268,42 @@ async function resolveFromWikidata(englishTitle) {
   a disambiguation page and `Hades` is a Greek god; following either would put a
   god's name on a game order.
 */
+/* Why this source refused, counted by step. No titles, no names — just tallies. */
+const wikipediaRefusals = new Map();
+
 async function resolveFromWikipedia(englishTitle) {
   const title = baseTitle(englishTitle);
   if (!title) return null;
 
   const got = await fetchJson(langlinkUrl(title));
   if (!got.ok) return { failed: true, why: `wikipedia HTTP ${got.status}` };
+
   const link = readLanglink(got.json);
-  if (link?.failed) return { failed: true, why: `wikipedia ${link.why}` };
-  if (!link) return null;
+  if (!link.ok) {
+    if (link.failed) return { failed: true, why: `wikipedia ${link.reason}` };
+    wikipediaRefusals.set(link.reason, (wikipediaRefusals.get(link.reason) ?? 0) + 1);
+    return null;
+  }
 
   await pause(150);
   const entity = await fetchJson(entitiesUrl([link.itemId]));
   if (!entity.ok) return { failed: true, why: `entities HTTP ${entity.status}` };
 
   const item = entity.json?.entities?.[link.itemId];
-  if (!item || !isVideoGame(item) || !titleMatches(item, title)) return null;
+  /*
+    Counted rather than lumped together. These two are the borrowed identity
+    check — the article's Wikidata item must read as a game and answer to the
+    same title — and if this source keeps reporting nothing, the tally says
+    whether it is finding no articles or refusing the ones it finds.
+  */
+  let refusal = "";
+  if (!item) refusal = "item_not_returned";
+  else if (!isVideoGame(item)) refusal = "item_is_not_a_game";
+  else if (!titleMatches(item, title)) refusal = "item_answers_to_another_name";
+  if (refusal) {
+    wikipediaRefusals.set(refusal, (wikipediaRefusals.get(refusal) ?? 0) + 1);
+    return null;
+  }
 
   return {
     name: link.zhTitle,
@@ -397,6 +417,12 @@ say(`  from Wikidata: ${fromWikidata}`);
 say(`  from Chinese Wikipedia: ${fromWikipedia}`);
 say(`  no source, left empty: ${noSource}`);
 say(`  could not ask, left untouched: ${unreachable}`);
+if (wikipediaRefusals.size) {
+  say("  why Chinese Wikipedia refused:");
+  for (const [reason, count] of [...wikipediaRefusals].sort((a, b) => b[1] - a[1])) {
+    say(`    ${reason}: ${count}`);
+  }
+}
 say(`  rows written: ${written}`);
 say("");
 say("Names are never printed here. Read them in the admin screen, which is the only place they are meant to be readable.");

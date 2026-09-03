@@ -62,11 +62,18 @@ export function langlinkUrl(title) {
 }
 
 /**
- * What one `langlinkUrl` response holds, or null.
+ * What one `langlinkUrl` response holds.
  *
- * Returns `{ zhTitle, itemId }`. Both are required: without the Chinese title
- * there is no name, and without the item id there is no way to check that the
- * article is the game rather than the god it is named after.
+ * Returns `{ ok: true, zhTitle, itemId, sourceUrl }`, or `{ ok: false, reason }`
+ * naming the step that refused. The reason is the point: this source reported
+ * zero finds across fifty-three games twice running, and "null" cannot tell
+ * "English Wikipedia has no such article" from "the article has no Chinese one"
+ * from "I sent a malformed request". A tally of reasons answers that in one
+ * run; guessing at it does not.
+ *
+ * Both a Chinese title and an item id are required. Without the title there is
+ * no name, and without the item there is no way to check that the article is
+ * the game rather than the god it is named after.
  */
 export function readLanglink(json) {
   /*
@@ -75,16 +82,18 @@ export function readLanglink(json) {
     same distinction the transport layer already makes for a 429. Reading it as
     "no Chinese name" is how a broken request becomes a permanent blank.
   */
-  if (json?.error) return { failed: true, why: String(json.error.code ?? "api error") };
+  if (json?.error) return { ok: false, failed: true, reason: String(json.error.code ?? "api error") };
 
   const page = (json?.query?.pages ?? [])[0];
-  if (!page || page.missing) return null;
+  if (!page) return { ok: false, reason: "no_page_in_response" };
+  if (page.missing) return { ok: false, reason: "no_english_article" };
 
   const zhTitle = String(page.langlinks?.[0]?.title ?? "").trim();
-  if (!zhTitle || !HAN.test(zhTitle)) return null;
+  if (!zhTitle) return { ok: false, reason: "no_chinese_article" };
+  if (!HAN.test(zhTitle)) return { ok: false, reason: "chinese_article_named_in_latin" };
 
   const itemId = String(page.pageprops?.wikibase_item ?? "").trim();
-  if (!/^Q\d+$/.test(itemId)) return null;
+  if (!/^Q\d+$/.test(itemId)) return { ok: false, reason: "no_wikidata_item" };
 
-  return { zhTitle, itemId, sourceUrl: zhArticleUrl(zhTitle) };
+  return { ok: true, zhTitle, itemId, sourceUrl: zhArticleUrl(zhTitle) };
 }

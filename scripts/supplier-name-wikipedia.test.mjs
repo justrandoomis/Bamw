@@ -52,6 +52,7 @@ describe("readLanglink", () => {
       }),
     );
     expect(out).toEqual({
+      ok: true,
       zhTitle: "空洞骑士",
       itemId: "Q28134476",
       sourceUrl: zhArticleUrl("空洞骑士"),
@@ -60,35 +61,39 @@ describe("readLanglink", () => {
 
   it("reports an API error as a failure, not as an absent name", () => {
     const out = readLanglink({ error: { code: "invalidvariant", info: "..." } });
-    expect(out).toEqual({ failed: true, why: "invalidvariant" });
+    expect(out).toEqual({ ok: false, failed: true, reason: "invalidvariant" });
   });
 
-  it("refuses an article that does not exist", () => {
-    expect(readLanglink(response({ title: "Nothing", missing: true }))).toBeNull();
-    expect(readLanglink({})).toBeNull();
-  });
-
-  it("refuses an article with no Chinese link", () => {
+  /*
+    Each refusal names its own step. This source reported zero finds across
+    fifty-three games twice running, and a bare `null` could not say whether it
+    was finding no articles or refusing the ones it found.
+  */
+  it("names the step that refused", () => {
+    expect(readLanglink({}).reason).toBe("no_page_in_response");
+    expect(readLanglink(response({ title: "Nothing", missing: true })).reason).toBe(
+      "no_english_article",
+    );
     expect(
-      readLanglink(response({ title: "Rotwood", pageprops: { wikibase_item: "Q1" } })),
-    ).toBeNull();
+      readLanglink(response({ title: "Rotwood", pageprops: { wikibase_item: "Q1" } })).reason,
+    ).toBe("no_chinese_article");
   });
 
-  it("refuses a Chinese link that is not in Chinese", () => {
+  it("refuses a Chinese link that is not in Chinese, and says so", () => {
     /*
       Chinese Wikipedia keeps the Latin name for a good many games — its
       Minecraft article is called Minecraft. That is not a supplier name, and
       returning it would put the English title on the clipboard by the back door.
     */
-    expect(
-      readLanglink(
-        response({
-          title: "Minecraft",
-          langlinks: [{ lang: "zh", title: "Minecraft" }],
-          pageprops: { wikibase_item: "Q49740" },
-        }),
-      ),
-    ).toBeNull();
+    const out = readLanglink(
+      response({
+        title: "Minecraft",
+        langlinks: [{ lang: "zh", title: "Minecraft" }],
+        pageprops: { wikibase_item: "Q49740" },
+      }),
+    );
+    expect(out.ok).toBe(false);
+    expect(out.reason).toBe("chinese_article_named_in_latin");
   });
 
   it("refuses an article with no Wikidata item", () => {
@@ -96,17 +101,17 @@ describe("readLanglink", () => {
       The item is how the article is checked to be the game rather than the god
       it is named after. Without one there is nothing to check against.
     */
-    expect(
-      readLanglink(response({ title: "Hades", langlinks: [{ lang: "zh", title: "哈迪斯" }] })),
-    ).toBeNull();
-    expect(
-      readLanglink(
-        response({
-          title: "Hades",
-          langlinks: [{ lang: "zh", title: "哈迪斯" }],
-          pageprops: { wikibase_item: "not-an-item" },
-        }),
-      ),
-    ).toBeNull();
+    for (const page of [
+      { title: "Hades", langlinks: [{ lang: "zh", title: "哈迪斯" }] },
+      {
+        title: "Hades",
+        langlinks: [{ lang: "zh", title: "哈迪斯" }],
+        pageprops: { wikibase_item: "not-an-item" },
+      },
+    ]) {
+      const out = readLanglink(response(page));
+      expect(out.ok).toBe(false);
+      expect(out.reason).toBe("no_wikidata_item");
+    }
   });
 });
