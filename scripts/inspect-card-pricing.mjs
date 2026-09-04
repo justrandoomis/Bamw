@@ -88,6 +88,21 @@ if (TARGET === "--all") {
     if (before === after) continue;
     affected.push({ slug: String(p.slug ?? p.id), title: String(p.title ?? ""), before, after, base: p.price });
   }
+  /*
+    The same question for the picture: `coverImage` is the detail page's
+    primary cover by contract and was missing from the gallery order, so the
+    gift-card editor's only output was never on screen. Adding it changes the
+    lead image wherever the two fields differ — that set is listed too.
+  */
+  const coverMoves = [];
+  for (const p of products) {
+    if (!p?.id || p._deleted) continue;
+    const cover = typeof p.coverImage === "string" ? p.coverImage.trim() : "";
+    const main = typeof p.mainImage === "string" ? p.mainImage.trim() : "";
+    if (!cover || cover === main) continue;
+    coverMoves.push({ slug: String(p.slug ?? p.id), title: String(p.title ?? ""), hasMain: Boolean(main) });
+  }
+
   say(`# Products whose two type-lists disagree — ${affected.length} of ${products.length}`);
   say();
   if (!affected.length) {
@@ -106,6 +121,18 @@ if (TARGET === "--all") {
       say();
     }
   }
+  say();
+  say(`# Products whose lead gallery image moves to \`coverImage\` — ${coverMoves.length} of ${products.length}`);
+  say();
+  if (!coverMoves.length) {
+    say("None. No product has a `coverImage` that differs from its `mainImage`.");
+  } else {
+    for (const row of coverMoves) {
+      say(`- \`${row.slug}\` — ${row.title}${row.hasMain ? "" : " _(had no mainImage at all)_"}`);
+    }
+  }
+  say();
+
   writeFileSync("card-pricing.md", lines.join("\n") + "\n");
   process.exit(0);
 }
