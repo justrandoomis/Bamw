@@ -1,0 +1,1010 @@
+[
+  {
+    "id": "login_method_1",
+    "slug": "login-method-1",
+    "category": "login",
+    "sort_order": 1,
+    "published": true,
+    "title_ar": "تسجيل الدخول — الطريقة الأولى (بالبريد وكلمة المرور)",
+    "title_en": "Sign in — method 1 (e-mail and password)",
+    "description_ar": "الطريقة الأساسية لإضافة مستخدم حساب اللعبة على الجهاز. الخطوات نفسها لخيار Offline وخيار Online؛ الاختلاف يأتي لاحقاً عند التشغيل.",
+    "estimated_time": "٥ دقائق",
+    "steps": [
+      {
+        "id": "step_01",
+        "title_ar": "تأكد من اتصال Nintendo Switch بالإنترنت",
+        "description_ar": "الاتصال مطلوب لإتمام تسجيل الدخول والتحقق من الحساب.",
+        "sort_order": 1,
+        "images": [
+          {
+            "id": "img_01",
+            "url": "",
+            "hint": "أضف صورة الخطوة ١ — شاشة إعدادات الإنترنت (Internet Settings)",
+            "alt": "",
+            "caption": "",
+            "sort_order": 1
+          }
+        ]
+      },
+      {
+        "id": "step_02",
+        "title_ar": "افتح Nintendo eShop من الشاشة الرئيسية",
+        "description_ar": "أيقونة الحقيبة البرتقالية في الشريط السفلي للشاشة الرئيسية.",
+        "sort_order": 2,
+        "images": [
+          {
+            "id": "img_01",
+            "url": "",
+            "hint": "أضف صورة الخطوة ٢ — أيقونة Nintendo eShop في الشاشة الرئيسية",
+            "alt": "",
+            "caption": "",
+            "sort_order": 1
+          }
+        ]
+      },
+      {
+        "id": "step_03",
+        "title_ar": "في شاشة المستخدم اضغط علامة +",
+        "description_ar": "تظهر قائمة مستخدمي الجهاز؛ اختر علامة + لإنشاء مستخدم جديد.",
+        "sort_order": 3,
+        "images": [
+          {
+            "id": "img_01",
+            "url": "",
+            "hint": "أضف صورة الخطوة ٣ — شاشة اختيار المستخدم مع علامة +",
+            "alt": "",
+            "caption": "",
+            "sort_order": 1
+          }
+        ]
+      },
+      {
+        "id": "step_04",
+        "title_ar": "اختر Create New User",
+        "description_ar": "لا تستخدم مستخدمك الشخصي؛ حساب اللعبة يحتاج مستخدماً خاصاً به.",
+        "sort_order": 4,
+        "images": [
+          {
+            "id": "img_01",
+            "url": "",
+            "hint": "أضف صورة الخطوة ٤ — زر Create New User",
+            "alt": "",
+            "caption": "",
+            "sort_order": 1
+          }
+        ]
+      },
+      {
+        "id": "step_05",
+        "title_ar": "اختر أي صورة رمزية",
+        "description_ar": "الاختيار شكلي بالكامل ولا يؤثر على الحساب.",
+        "sort_order": 5,
+        "images": [
+          {
+            "id": "img_01",
+            "url": "",
+            "hint": "أضف صورة الخطوة ٥ — شاشة اختيار الصورة الرمزية",
+            "alt": "",
+            "caption": "",
+            "sort_order": 1
+          }
+        ]
+      },
+      {
+        "id": "step_06",
+        "title_ar": "اكتب أي اسم للمستخدم واضغط OK",
+        "description_ar": "اسم واضح مثل Game يسهّل عليك التمييز لاحقاً.",
+        "sort_order": 6,
+        "images": [
+          {
+            "id": "img_01",
+            "url": "",
+            "hint": "أضف صورة الخطوة ٦ — لوحة كتابة اسم المستخدم",
+            "alt": "",
+            "caption": "",
+            "sort_order": 1
+          }
+        ]
+      },
+      {
+        "id": "step_07",
+        "title_ar": "راجع المستخدم واضغط OK",
+        "description_ar": "تظهر شاشة تأكيد ببيانات المستخدم الجديد.",
+        "sort_order": 7,
+        "images": [
+          {
+            "id": "img_01",
+            "url": "",
+            "hint": "أضف صورة الخطوة ٧ — شاشة تأكيد إنشاء المستخدم",
+            "alt": "",
+            "caption": "",
+            "sort_order": 1
+          }
+        ]
+      },
+      {
+        "id": "step_08",
+        "title_ar": "اختر Link a Nintendo Account",
+        "description_ar": "هنا يُربط المستخدم الجديد بحساب Nintendo الذي أرسله المتجر.",
+        "sort_order": 8,
+        "images": [
+          {
+            "id": "img_01",
+            "url": "",
+            "hint": "أضف صورة الخطوة ٨ — زر Link a Nintendo Account",
+            "alt": "",
+            "caption": "",
+            "sort_order": 1
+          }
+        ]
+      },
+      {
+        "id": "step_09",
+        "title_ar": "اختر Other Sign-In Methods أسفل رمز QR",
+        "description_ar": "لا تحتاج مسح QR؛ الخيار السفلي يفتح إدخال البريد وكلمة المرور.",
+        "sort_order": 9,
+        "images": [
+          {
+            "id": "img_01",
+            "url": "",
+            "hint": "أضف صورة الخطوة ٩ — شاشة QR مع خيار Other Sign-In Methods",
+            "alt": "",
+            "caption": "",
+            "sort_order": 1
+          }
+        ]
+      },
+      {
+        "id": "step_10",
+        "title_ar": "أدخل البريد أو Sign-in ID وكلمة المرور اللذين أرسلهما المتجر",
+        "description_ar": "انسخ البيانات كما وصلتك حرفاً بحرف، بدون مسافة زائدة في البداية أو النهاية.",
+        "sort_order": 10,
+        "images": [
+          {
+            "id": "img_01",
+            "url": "",
+            "hint": "أضف صورة الخطوة ١٠ — حقول البريد وكلمة المرور",
+            "alt": "",
+            "caption": "",
+            "sort_order": 1
+          }
+        ],
+        "warning_ar": "لا تستخدم بريدك الشخصي، ولا تضغط Forgot your password."
+      },
+      {
+        "id": "step_11",
+        "title_ar": "اضغط OK من لوحة المفاتيح ثم Sign In",
+        "description_ar": "يبدأ الجهاز بالتحقق من البيانات مع Nintendo.",
+        "sort_order": 11,
+        "images": [
+          {
+            "id": "img_01",
+            "url": "",
+            "hint": "أضف صورة الخطوة ١١ — زر Sign In",
+            "alt": "",
+            "caption": "",
+            "sort_order": 1
+          }
+        ]
+      },
+      {
+        "id": "step_12",
+        "title_ar": "إذا ظهر طلب رمز تحقق، أرسل صورة كاملة وواضحة للشاشة في محادثة الطلب",
+        "description_ar": "الرمز يصل إلى بريد الحساب الذي يملكه المتجر، فنحن من يقرأه لك.",
+        "sort_order": 12,
+        "images": [
+          {
+            "id": "img_01",
+            "url": "",
+            "hint": "أضف صورة الخطوة ١٢ — شاشة طلب Verification code",
+            "alt": "",
+            "caption": "",
+            "sort_order": 1
+          }
+        ],
+        "note_ar": "أرسل الصورة داخل محادثة الطلب نفسها حتى تصل للأدمن المسؤول عن طلبك."
+      },
+      {
+        "id": "step_13",
+        "title_ar": "ابق في الشاشة ولا تضغط رجوع أو إلغاء",
+        "description_ar": "الخروج من الشاشة قد يُلغي الرمز ويعيدك إلى البداية.",
+        "sort_order": 13,
+        "images": [
+          {
+            "id": "img_01",
+            "url": "",
+            "hint": "أضف صورة الخطوة ١٣ — شاشة الانتظار داخل Verification code",
+            "alt": "",
+            "caption": "",
+            "sort_order": 1
+          }
+        ]
+      },
+      {
+        "id": "step_14",
+        "title_ar": "أدخل الرمز في Verification code واضغط Verify",
+        "description_ar": "الرمز مكوّن من أرقام؛ أدخله كما أرسله لك الأدمن.",
+        "sort_order": 14,
+        "images": [
+          {
+            "id": "img_01",
+            "url": "",
+            "hint": "أضف صورة الخطوة ١٤ — إدخال الرمز وزر Verify",
+            "alt": "",
+            "caption": "",
+            "sort_order": 1
+          }
+        ]
+      },
+      {
+        "id": "step_15",
+        "title_ar": "اضغط Link لربط الحساب",
+        "description_ar": "هذه الخطوة هي التي تربط حساب Nintendo بالمستخدم على جهازك.",
+        "sort_order": 15,
+        "images": [
+          {
+            "id": "img_01",
+            "url": "",
+            "hint": "أضف صورة الخطوة ١٥ — زر Link",
+            "alt": "",
+            "caption": "",
+            "sort_order": 1
+          }
+        ]
+      },
+      {
+        "id": "step_16",
+        "title_ar": "اضغط OK للعودة إلى الشاشة الرئيسية",
+        "description_ar": "اكتمل تسجيل الدخول. تابع بعدها حسب خيار طلبك: Offline أو Online.",
+        "sort_order": 16,
+        "images": [
+          {
+            "id": "img_01",
+            "url": "",
+            "hint": "أضف صورة الخطوة ١٦ — شاشة اكتمال الربط",
+            "alt": "",
+            "caption": "",
+            "sort_order": 1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "login_method_2",
+    "slug": "login-method-2",
+    "category": "login",
+    "sort_order": 2,
+    "published": true,
+    "title_ar": "تسجيل الدخول — الطريقة الثانية (رمز من ٨ أحرف)",
+    "title_en": "Sign in — method 2 (8-character access code)",
+    "description_ar": "الجهاز يعرض رمزاً من ٨ أحرف، ترسله لنا فنكمل الدخول من طرفنا. استخدمها عندما يطلب منك الأدمن ذلك.",
+    "estimated_time": "٣ دقائق",
+    "steps": [
+      {
+        "id": "step_01",
+        "title_ar": "اضغط Add User أو علامة +",
+        "description_ar": "من شاشة اختيار المستخدم على الجهاز.",
+        "sort_order": 1,
+        "images": [
+          {
+            "id": "img_01",
+            "url": "",
+            "hint": "أضف صورة الخطوة ١ — شاشة المستخدمين مع Add User",
+            "alt": "",
+            "caption": "",
+            "sort_order": 1
+          }
+        ]
+      },
+      {
+        "id": "step_02",
+        "title_ar": "أنشئ مستخدماً جديداً",
+        "description_ar": "صورة رمزية واسم من اختيارك، مثل الطريقة الأولى.",
+        "sort_order": 2,
+        "images": [
+          {
+            "id": "img_01",
+            "url": "",
+            "hint": "أضف صورة الخطوة ٢ — إنشاء مستخدم جديد",
+            "alt": "",
+            "caption": "",
+            "sort_order": 1
+          }
+        ]
+      },
+      {
+        "id": "step_03",
+        "title_ar": "اختر Link a Nintendo Account",
+        "description_ar": "ثم انتظر ظهور شاشة رمز QR.",
+        "sort_order": 3,
+        "images": [
+          {
+            "id": "img_01",
+            "url": "",
+            "hint": "أضف صورة الخطوة ٣ — زر Link a Nintendo Account",
+            "alt": "",
+            "caption": "",
+            "sort_order": 1
+          }
+        ]
+      },
+      {
+        "id": "step_04",
+        "title_ar": "اضغط Can’t scan the QR code?",
+        "description_ar": "الخيار أسفل مربع الـQR.",
+        "sort_order": 4,
+        "images": [
+          {
+            "id": "img_01",
+            "url": "",
+            "hint": "أضف صورة الخطوة ٤ — خيار Can’t scan the QR code؟",
+            "alt": "",
+            "caption": "",
+            "sort_order": 1
+          }
+        ]
+      },
+      {
+        "id": "step_05",
+        "title_ar": "سيظهر Access code مكوّن من ٨ أحرف",
+        "description_ar": "هذا هو الرمز الذي نحتاجه منك.",
+        "sort_order": 5,
+        "images": [
+          {
+            "id": "img_01",
+            "url": "",
+            "hint": "أضف صورة الخطوة ٥ — شاشة Access code من ٨ أحرف",
+            "alt": "",
+            "caption": "",
+            "sort_order": 1
+          }
+        ]
+      },
+      {
+        "id": "step_06",
+        "title_ar": "اكتب الرمز يدوياً بأحرف إنجليزية كبيرة وأرسله للأدمن داخل محادثة الطلب",
+        "description_ar": "اكتبه كما يظهر تماماً. الأحرف الكبيرة مهمة.",
+        "sort_order": 6,
+        "images": [
+          {
+            "id": "img_01",
+            "url": "",
+            "hint": "أضف صورة الخطوة ٦ — الرمز كما يظهر على الشاشة",
+            "alt": "",
+            "caption": "",
+            "sort_order": 1
+          }
+        ],
+        "warning_ar": "اكتب الرمز كما يظهر وبأحرف إنجليزية كبيرة. مغادرة الشاشة قد تُلغي الرمز."
+      },
+      {
+        "id": "step_07",
+        "title_ar": "ابقَ في الصفحة وانتظر",
+        "description_ar": "نكمل الدخول من طرفنا بينما الشاشة مفتوحة عندك.",
+        "sort_order": 7,
+        "images": [
+          {
+            "id": "img_01",
+            "url": "",
+            "hint": "أضف صورة الخطوة ٧ — شاشة الانتظار بعد إرسال الرمز",
+            "alt": "",
+            "caption": "",
+            "sort_order": 1
+          }
+        ]
+      },
+      {
+        "id": "step_08",
+        "title_ar": "لا تضغط Back ولا تخرج حتى يخبرك الأدمن باكتمال الدخول",
+        "description_ar": "الخروج يُبطل الرمز وتضطر لإعادة الخطوات من البداية.",
+        "sort_order": 8,
+        "images": [
+          {
+            "id": "img_01",
+            "url": "",
+            "hint": "أضف صورة الخطوة ٨ — شاشة اكتمال الدخول",
+            "alt": "",
+            "caption": "",
+            "sort_order": 1
+          }
+        ]
+      }
+    ],
+    "note_ar": "سجّل الدخول بهذه الطريقة. اكتب أحرف الكود الإنجليزية يدوياً وبأحرف كبيرة وأرسلها لنا. ابقَ في هذه الصفحة وانتظر، ولا تضغط رجوع ولا تخرج."
+  },
+  {
+    "id": "resend_verification",
+    "slug": "resend-verification",
+    "category": "verification",
+    "sort_order": 3,
+    "published": true,
+    "title_ar": "إعادة إرسال رمز التحقق",
+    "title_en": "Resend the verification code",
+    "description_ar": "لا تستخدم هذه الخطوات إلا بطلب الأدمن. الضغط على Resend من تلقاء نفسك قد يُبطل الرمز الذي بيدنا.",
+    "estimated_time": "دقيقة",
+    "steps": [
+      {
+        "id": "step_01",
+        "title_ar": "اضغط Haven’t received the e-mail?",
+        "description_ar": "الخيار يظهر أسفل شاشة إدخال رمز التحقق.",
+        "sort_order": 1,
+        "images": [
+          {
+            "id": "img_01",
+            "url": "",
+            "hint": "أضف صورة الخطوة ١ — زر Haven’t received the e-mail؟",
+            "alt": "",
+            "caption": "",
+            "sort_order": 1
+          }
+        ]
+      },
+      {
+        "id": "step_02",
+        "title_ar": "اضغط Resend في النافذة",
+        "description_ar": "تظهر نافذة صغيرة فيها زر إعادة الإرسال.",
+        "sort_order": 2,
+        "images": [
+          {
+            "id": "img_01",
+            "url": "",
+            "hint": "أضف صورة الخطوة ٢ — زر Resend داخل النافذة",
+            "alt": "",
+            "caption": "",
+            "sort_order": 1
+          }
+        ]
+      },
+      {
+        "id": "step_03",
+        "title_ar": "ابقَ في شاشة Verification code",
+        "description_ar": "لا تنتقل إلى أي شاشة أخرى أثناء الانتظار.",
+        "sort_order": 3,
+        "images": [
+          {
+            "id": "img_01",
+            "url": "",
+            "hint": "أضف صورة الخطوة ٣ — شاشة Verification code أثناء الانتظار",
+            "alt": "",
+            "caption": "",
+            "sort_order": 1
+          }
+        ]
+      },
+      {
+        "id": "step_04",
+        "title_ar": "لا تضغط Cancel أو Close أو رجوع",
+        "description_ar": "أي منها يُلغي العملية ويُبطل الرمز.",
+        "sort_order": 4,
+        "images": [
+          {
+            "id": "img_01",
+            "url": "",
+            "hint": "أضف صورة الخطوة ٤ — أزرار Cancel وClose التي يجب تجنبها",
+            "alt": "",
+            "caption": "",
+            "sort_order": 1
+          }
+        ]
+      },
+      {
+        "id": "step_05",
+        "title_ar": "أخبر الأدمن بأن إعادة الإرسال تمت",
+        "description_ar": "حتى يتابع البريد وينتظر الرسالة الجديدة.",
+        "sort_order": 5,
+        "images": [
+          {
+            "id": "img_01",
+            "url": "",
+            "hint": "أضف صورة الخطوة ٥ — رسالة تأكيد داخل محادثة الطلب",
+            "alt": "",
+            "caption": "",
+            "sort_order": 1
+          }
+        ]
+      },
+      {
+        "id": "step_06",
+        "title_ar": "انتظر الرمز الجديد وأدخله",
+        "description_ar": "سيصلك الرمز من الأدمن داخل محادثة الطلب.",
+        "sort_order": 6,
+        "images": [
+          {
+            "id": "img_01",
+            "url": "",
+            "hint": "أضف صورة الخطوة ٦ — إدخال الرمز الجديد",
+            "alt": "",
+            "caption": "",
+            "sort_order": 1
+          }
+        ]
+      }
+    ],
+    "warning_ar": "لا تضغط Resend عدة مرات؛ قد تُبطل الرمز السابق أو تؤخر الرسالة. الرمز صالح لمدة ساعة من وقت إرساله."
+  },
+  {
+    "id": "online_license",
+    "slug": "online-license",
+    "category": "license",
+    "sort_order": 4,
+    "published": true,
+    "title_ar": "Online License — رخصة التشغيل عبر الإنترنت",
+    "title_en": "Online License",
+    "description_ar": "غالباً يكون Online License مفعّلاً تلقائياً. افحصه فقط إذا طلب الأدمن ذلك أو لم تعمل اللعبة.",
+    "estimated_time": "دقيقتان",
+    "steps": [
+      {
+        "id": "step_01",
+        "title_ar": "افتح System Settings",
+        "description_ar": "أيقونة الترس في الشريط السفلي للشاشة الرئيسية.",
+        "sort_order": 1,
+        "images": [
+          {
+            "id": "img_01",
+            "url": "",
+            "hint": "أضف صورة الخطوة ١ — أيقونة System Settings",
+            "alt": "",
+            "caption": "",
+            "sort_order": 1
+          }
+        ]
+      },
+      {
+        "id": "step_02",
+        "title_ar": "اختر Users",
+        "description_ar": "من القائمة الجانبية في الإعدادات.",
+        "sort_order": 2,
+        "images": [
+          {
+            "id": "img_01",
+            "url": "",
+            "hint": "أضف صورة الخطوة ٢ — قسم Users داخل الإعدادات",
+            "alt": "",
+            "caption": "",
+            "sort_order": 1
+          }
+        ]
+      },
+      {
+        "id": "step_03",
+        "title_ar": "اختر مستخدم حساب اللعبة الذي أرسله المتجر، وليس حسابك الشخصي",
+        "description_ar": "المستخدم الذي أنشأته وربطته بحساب اللعبة.",
+        "sort_order": 3,
+        "images": [
+          {
+            "id": "img_01",
+            "url": "",
+            "hint": "أضف صورة الخطوة ٣ — قائمة المستخدمين واختيار حساب اللعبة",
+            "alt": "",
+            "caption": "",
+            "sort_order": 1
+          }
+        ],
+        "warning_ar": "اختيار حسابك الشخصي هنا لا يفيد ولا يشغّل اللعبة."
+      },
+      {
+        "id": "step_04",
+        "title_ar": "افتح Online License Settings",
+        "description_ar": "ضمن صفحة المستخدم المختار.",
+        "sort_order": 4,
+        "images": [
+          {
+            "id": "img_01",
+            "url": "",
+            "hint": "أضف صورة الخطوة ٤ — خيار Online License Settings",
+            "alt": "",
+            "caption": "",
+            "sort_order": 1
+          }
+        ]
+      },
+      {
+        "id": "step_05",
+        "title_ar": "اجعل Use Online License على On",
+        "description_ar": "هذا هو الإعداد الوحيد المطلوب في هذه الصفحة.",
+        "sort_order": 5,
+        "images": [
+          {
+            "id": "img_01",
+            "url": "",
+            "hint": "أضف صورة الخطوة ٥ — مفتاح Use Online License على On",
+            "alt": "",
+            "caption": "",
+            "sort_order": 1
+          }
+        ]
+      },
+      {
+        "id": "step_06",
+        "title_ar": "ارجع ولا تغيّر إعداداً آخر",
+        "description_ar": "أي تغيير إضافي على هذا المستخدم قد يعطّل اللعبة.",
+        "sort_order": 6,
+        "images": [
+          {
+            "id": "img_01",
+            "url": "",
+            "hint": "أضف صورة الخطوة ٦ — العودة من الإعدادات",
+            "alt": "",
+            "caption": "",
+            "sort_order": 1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "download_game",
+    "slug": "download-game",
+    "category": "download",
+    "sort_order": 5,
+    "published": true,
+    "title_ar": "تحميل اللعبة",
+    "title_en": "Download the game",
+    "description_ar": "بعد اكتمال تسجيل الدخول، تُحمّل اللعبة من Virtual Game Cards باستخدام مستخدم حساب اللعبة.",
+    "estimated_time": "حسب سرعة الإنترنت",
+    "steps": [
+      {
+        "id": "step_01",
+        "title_ar": "ارجع إلى الشاشة الرئيسية",
+        "description_ar": "اخرج من eShop والإعدادات.",
+        "sort_order": 1,
+        "images": [
+          {
+            "id": "img_01",
+            "url": "",
+            "hint": "أضف صورة الخطوة ١ — الشاشة الرئيسية",
+            "alt": "",
+            "caption": "",
+            "sort_order": 1
+          }
+        ]
+      },
+      {
+        "id": "step_02",
+        "title_ar": "افتح Virtual Game Cards بجانب الإعدادات",
+        "description_ar": "الأيقونة في الشريط السفلي، قرب أيقونة الترس.",
+        "sort_order": 2,
+        "images": [
+          {
+            "id": "img_01",
+            "url": "",
+            "hint": "أضف صورة الخطوة ٢ — أيقونة Virtual Game Cards",
+            "alt": "",
+            "caption": "",
+            "sort_order": 1
+          }
+        ]
+      },
+      {
+        "id": "step_03",
+        "title_ar": "اختر مستخدم حساب اللعبة الذي أرسله المتجر",
+        "description_ar": "الألعاب تظهر تحت المستخدم الذي يملك ترخيصها.",
+        "sort_order": 3,
+        "images": [
+          {
+            "id": "img_01",
+            "url": "",
+            "hint": "أضف صورة الخطوة ٣ — اختيار المستخدم داخل Virtual Game Cards",
+            "alt": "",
+            "caption": "",
+            "sort_order": 1
+          }
+        ]
+      },
+      {
+        "id": "step_04",
+        "title_ar": "اختر اللعبة",
+        "description_ar": "ستجدها ضمن قائمة بطاقات الألعاب لهذا المستخدم.",
+        "sort_order": 4,
+        "images": [
+          {
+            "id": "img_01",
+            "url": "",
+            "hint": "أضف صورة الخطوة ٤ — اللعبة داخل قائمة البطاقات",
+            "alt": "",
+            "caption": "",
+            "sort_order": 1
+          }
+        ]
+      },
+      {
+        "id": "step_05",
+        "title_ar": "افتح Options",
+        "description_ar": "قائمة الخيارات الخاصة بالبطاقة المختارة.",
+        "sort_order": 5,
+        "images": [
+          {
+            "id": "img_01",
+            "url": "",
+            "hint": "أضف صورة الخطوة ٥ — قائمة Options",
+            "alt": "",
+            "caption": "",
+            "sort_order": 1
+          }
+        ]
+      },
+      {
+        "id": "step_06",
+        "title_ar": "اضغط Download Data",
+        "description_ar": "إذا ظهر Load on This System قبله، اختره أولاً ثم تابع.",
+        "sort_order": 6,
+        "images": [
+          {
+            "id": "img_01",
+            "url": "",
+            "hint": "أضف صورة الخطوة ٦ — خيار Download Data",
+            "alt": "",
+            "caption": "",
+            "sort_order": 1
+          }
+        ]
+      },
+      {
+        "id": "step_07",
+        "title_ar": "انتظر اكتمال التنزيل",
+        "description_ar": "يمكنك متابعة التقدّم من الشاشة الرئيسية.",
+        "sort_order": 7,
+        "images": [
+          {
+            "id": "img_01",
+            "url": "",
+            "hint": "أضف صورة الخطوة ٧ — شريط تقدّم التنزيل",
+            "alt": "",
+            "caption": "",
+            "sort_order": 1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "offline_play",
+    "slug": "offline-play",
+    "category": "play",
+    "sort_order": 6,
+    "published": true,
+    "title_ar": "تشغيل لعبة Offline",
+    "title_en": "Playing an Offline-account game",
+    "description_ar": "خيار Offline يحتاج الإنترنت لحظة فتح اللعبة فقط، ثم تلعب بدون اتصال.",
+    "estimated_time": "دقيقتان",
+    "steps": [
+      {
+        "id": "step_01",
+        "title_ar": "أوقف وضع الطيران واتصل بالإنترنت",
+        "description_ar": "الاتصال مطلوب للتحقق عند فتح اللعبة.",
+        "sort_order": 1,
+        "images": [
+          {
+            "id": "img_01",
+            "url": "",
+            "hint": "أضف صورة الخطوة ١ — إيقاف Airplane Mode",
+            "alt": "",
+            "caption": "",
+            "sort_order": 1
+          }
+        ]
+      },
+      {
+        "id": "step_02",
+        "title_ar": "افتح اللعبة باستخدام مستخدم حساب اللعبة",
+        "description_ar": "وليس مستخدمك الشخصي.",
+        "sort_order": 2,
+        "images": [
+          {
+            "id": "img_01",
+            "url": "",
+            "hint": "أضف صورة الخطوة ٢ — فتح اللعبة من مستخدم حساب اللعبة",
+            "alt": "",
+            "caption": "",
+            "sort_order": 1
+          }
+        ]
+      },
+      {
+        "id": "step_03",
+        "title_ar": "انتظر حتى تدخل واجهة اللعبة فعلياً",
+        "description_ar": "شاشة القائمة الرئيسية للعبة، لا شاشة التحميل.",
+        "sort_order": 3,
+        "images": [
+          {
+            "id": "img_01",
+            "url": "",
+            "hint": "أضف صورة الخطوة ٣ — واجهة اللعبة بعد اكتمال الفتح",
+            "alt": "",
+            "caption": "",
+            "sort_order": 1
+          }
+        ],
+        "warning_ar": "لا تشغّل وضع الطيران قبل دخول اللعبة بالكامل."
+      },
+      {
+        "id": "step_04",
+        "title_ar": "اضغط مطولاً زر Home",
+        "description_ar": "تظهر قائمة سريعة فيها Airplane Mode.",
+        "sort_order": 4,
+        "images": [
+          {
+            "id": "img_01",
+            "url": "",
+            "hint": "أضف صورة الخطوة ٤ — القائمة السريعة بعد الضغط المطوّل",
+            "alt": "",
+            "caption": "",
+            "sort_order": 1
+          }
+        ]
+      },
+      {
+        "id": "step_05",
+        "title_ar": "فعّل Airplane Mode مباشرة",
+        "description_ar": "من القائمة السريعة نفسها، دون إغلاق اللعبة.",
+        "sort_order": 5,
+        "images": [
+          {
+            "id": "img_01",
+            "url": "",
+            "hint": "أضف صورة الخطوة ٥ — تفعيل Airplane Mode",
+            "alt": "",
+            "caption": "",
+            "sort_order": 1
+          }
+        ]
+      },
+      {
+        "id": "step_06",
+        "title_ar": "أكمل اللعب دون اتصال",
+        "description_ar": "اللعبة تعمل الآن بلا إنترنت.",
+        "sort_order": 6,
+        "images": [
+          {
+            "id": "img_01",
+            "url": "",
+            "hint": "أضف صورة الخطوة ٦ — اللعبة أثناء وضع الطيران",
+            "alt": "",
+            "caption": "",
+            "sort_order": 1
+          }
+        ]
+      }
+    ],
+    "warning_ar": "لا تحذف مستخدم حساب اللعبة. البقاء متصلاً أثناء اللعب قد يؤدي إلى خروج الجلسة إذا استُخدم الحساب في مكان آخر."
+  },
+  {
+    "id": "online_play",
+    "slug": "online-play",
+    "category": "play",
+    "sort_order": 7,
+    "published": true,
+    "title_ar": "تشغيل لعبة Online",
+    "title_en": "Playing an Online-account game",
+    "description_ar": "تسجيل الحساب وتحميل اللعبة يتبعان الخطوات الأساسية نفسها. بعد إعداد اللعبة تستطيع اللعب من حسابك الشخصي الأساسي.",
+    "estimated_time": "دقيقتان",
+    "steps": [
+      {
+        "id": "step_01",
+        "title_ar": "أكمل تسجيل الدخول وتحميل اللعبة كما في الأدلة السابقة",
+        "description_ar": "لا فرق في هاتين الخطوتين بين Offline وOnline.",
+        "sort_order": 1,
+        "images": [
+          {
+            "id": "img_01",
+            "url": "",
+            "hint": "أضف صورة الخطوة ١ — اكتمال التحميل",
+            "alt": "",
+            "caption": "",
+            "sort_order": 1
+          }
+        ]
+      },
+      {
+        "id": "step_02",
+        "title_ar": "شغّل اللعبة من حسابك الشخصي الأساسي",
+        "description_ar": "بعد اكتمال الإعداد، اختر مستخدمك أنت عند فتح اللعبة.",
+        "sort_order": 2,
+        "images": [
+          {
+            "id": "img_01",
+            "url": "",
+            "hint": "أضف صورة الخطوة ٢ — اختيار المستخدم الشخصي عند فتح اللعبة",
+            "alt": "",
+            "caption": "",
+            "sort_order": 1
+          }
+        ]
+      },
+      {
+        "id": "step_03",
+        "title_ar": "ابقَ متصلاً بالإنترنت حسب دعم اللعبة",
+        "description_ar": "اللعب أونلاين يتبع دعم اللعبة واشتراك Nintendo Switch Online الذي تطلبه.",
+        "sort_order": 3,
+        "images": [
+          {
+            "id": "img_01",
+            "url": "",
+            "hint": "أضف صورة الخطوة ٣ — اللعب مع الاتصال",
+            "alt": "",
+            "caption": "",
+            "sort_order": 1
+          }
+        ]
+      },
+      {
+        "id": "step_04",
+        "title_ar": "أبقِ مستخدم حساب اللعبة على الجهاز",
+        "description_ar": "حذفه يُفقد الترخيص، ومعه اللعبة.",
+        "sort_order": 4,
+        "images": [
+          {
+            "id": "img_01",
+            "url": "",
+            "hint": "أضف صورة الخطوة ٤ — مستخدم حساب اللعبة باقياً في قائمة المستخدمين",
+            "alt": "",
+            "caption": "",
+            "sort_order": 1
+          }
+        ],
+        "warning_ar": "يمنع تغيير بيانات مستخدم حساب اللعبة أو إعداداته."
+      }
+    ]
+  },
+  {
+    "id": "option_vs_edition",
+    "slug": "option-vs-edition",
+    "category": "basics",
+    "sort_order": 8,
+    "published": true,
+    "title_ar": "الخيار ليس الإصدار",
+    "title_en": "The account option is not the game edition",
+    "description_ar": "خيار التشغيل شيء، وإصدار اللعبة شيء آخر تماماً. الخلط بينهما هو أكثر سوء فهم يصلنا.",
+    "steps": [
+      {
+        "id": "step_01",
+        "title_ar": "خيار التشغيل: Offline Account أو Online Account",
+        "description_ar": "يحدد كيف تُشغّل اللعبة على جهازك، ولا علاقة له بمحتواها.",
+        "sort_order": 1,
+        "images": [
+          {
+            "id": "img_01",
+            "url": "",
+            "hint": "أضف صورة الخطوة ١ — خيار الحساب كما يظهر في صفحة المنتج",
+            "alt": "",
+            "caption": "",
+            "sort_order": 1
+          }
+        ]
+      },
+      {
+        "id": "step_02",
+        "title_ar": "الإصدار: Standard أو Deluxe أو Complete أو Ultimate أو DLC",
+        "description_ar": "يحدد محتوى اللعبة وما تشمله من إضافات.",
+        "sort_order": 2,
+        "images": [
+          {
+            "id": "img_01",
+            "url": "",
+            "hint": "أضف صورة الخطوة ٢ — قائمة الإصدارات في صفحة المنتج",
+            "alt": "",
+            "caption": "",
+            "sort_order": 1
+          }
+        ]
+      },
+      {
+        "id": "step_03",
+        "title_ar": "لا يعني Online أن الإصدار Deluxe، ولا يعني Offline أنه Standard",
+        "description_ar": "محتوى DLC يتبع الإصدار المذكور في طلبك وحده.",
+        "sort_order": 3,
+        "images": [
+          {
+            "id": "img_01",
+            "url": "",
+            "hint": "أضف صورة الخطوة ٣ — ملخص الطلب موضّحاً الخيار والإصدار معاً",
+            "alt": "",
+            "caption": "",
+            "sort_order": 1
+          }
+        ]
+      }
+    ]
+  }
+]

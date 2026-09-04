@@ -36,6 +36,18 @@ const arg = (name, fallback) => {
 };
 const HOURS = Number(arg("hours", "12"));
 const NEEDLE = arg("needle", "telegram");
+/*
+  Exception mode.
+
+  The prefix allowlist below exists because a Worker's logs are full of
+  customer data, and a diagnostic that prints them is a leak. An *unhandled*
+  exception is a different kind of record: its name, its message and its stack
+  are facts about our code, and a page that answers 500 with an empty body
+  cannot be diagnosed from anything else. So this mode prints only the
+  exception fields — never a log line — and still masks digit runs, because a
+  message can quote an id it was handed.
+*/
+const EXCEPTIONS_ONLY = process.argv.includes("--exceptions");
 
 const SECRETS = [TOKEN, ACCOUNT].filter((v) => v && v.length >= 8);
 const redactSecrets = (t) => SECRETS.reduce((s, x) => s.split(x).join("«redacted»"), String(t ?? ""));
@@ -75,7 +87,7 @@ const body = {
     filters: [
       { key: "$metadata.service", operation: "eq", type: "string", value: SCRIPT_NAME },
     ],
-    needle: { value: NEEDLE, isRegex: false, matchCase: false },
+    ...(EXCEPTIONS_ONLY ? {} : { needle: { value: NEEDLE, isRegex: false, matchCase: false } }),
   },
   timeframe: { from, to },
 };
@@ -108,7 +120,11 @@ if (!res.ok || payload?.success === false) {
 }
 
 const events = payload?.result?.events?.events ?? payload?.result?.events ?? [];
-say(`# Worker logs — last ${HOURS}h, matching '${NEEDLE}' — READ ONLY`);
+say(
+  EXCEPTIONS_ONLY
+    ? `# Worker exceptions — last ${HOURS}h — READ ONLY`
+    : `# Worker logs — last ${HOURS}h, matching '${NEEDLE}' — READ ONLY`,
+);
 say();
 say(`${events.length} event(s) returned.`);
 say();
@@ -131,6 +147,25 @@ for (const event of events) {
       : Array.isArray(message)
         ? message.map((m) => (typeof m === "string" ? m : JSON.stringify(m))).join(" ")
         : JSON.stringify(message ?? raw);
+
+  if (EXCEPTIONS_ONLY) {
+    const outcome = raw?.$workers?.outcome ?? raw?.outcome ?? "";
+    const exception =
+      raw?.$workers?.event?.error ??
+      raw?.$workers?.exception ??
+      raw?.exception ??
+      (outcome && outcome !== "ok" ? { name: outcome, message: "" } : null);
+    if (!exception) continue;
+    const name = exception?.name ?? exception?.type ?? "exception";
+    const detail = exception?.message ?? exception?.reason ?? "";
+    const stack = exception?.stack ?? "";
+    const path = raw?.$workers?.event?.request?.url ?? raw?.url ?? "";
+    say(`${stamp.slice(0, 19)}Z  ${scrub(name)}: ${scrub(detail).slice(0, 300)}`);
+    if (path) say(`                     ↳ ${scrub(String(path)).slice(0, 200)}`);
+    if (stack) say(`                     ↳ ${scrub(String(stack)).replace(/\n/g, " | ").slice(0, 600)}`);
+    shown += 1;
+    continue;
+  }
 
   if (!ALLOWED.some((prefix) => flat.includes(prefix))) continue;
   say(`${stamp.slice(0, 19)}Z  ${scrub(flat).slice(0, 400)}`);
@@ -167,7 +202,26 @@ if (shown === 0) {
     const raw = event?.source ?? event;
     const message = raw?.message ?? "";
     const flat = typeof message === "string" ? message : JSON.stringify(message);
-    if (!ALLOWED.some((prefix) => flat.includes(prefix))) continue;
+    if (EXCEPTIONS_ONLY) {
+    const outcome = raw?.$workers?.outcome ?? raw?.outcome ?? "";
+    const exception =
+      raw?.$workers?.event?.error ??
+      raw?.$workers?.exception ??
+      raw?.exception ??
+      (outcome && outcome !== "ok" ? { name: outcome, message: "" } : null);
+    if (!exception) continue;
+    const name = exception?.name ?? exception?.type ?? "exception";
+    const detail = exception?.message ?? exception?.reason ?? "";
+    const stack = exception?.stack ?? "";
+    const path = raw?.$workers?.event?.request?.url ?? raw?.url ?? "";
+    say(`${stamp.slice(0, 19)}Z  ${scrub(name)}: ${scrub(detail).slice(0, 300)}`);
+    if (path) say(`                     ↳ ${scrub(String(path)).slice(0, 200)}`);
+    if (stack) say(`                     ↳ ${scrub(String(stack)).replace(/\n/g, " | ").slice(0, 600)}`);
+    shown += 1;
+    continue;
+  }
+
+  if (!ALLOWED.some((prefix) => flat.includes(prefix))) continue;
     say(scrub(JSON.stringify(event, null, 2)).slice(0, 2000));
     say();
   }
