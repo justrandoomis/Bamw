@@ -961,19 +961,17 @@ export const Route = createFileRoute("/api/chat")({
               inactivityReminders: [],
             });
 
-            // Notify user in Telegram (Safe)
-            try {
-              const { notifyUserAdminMessage } =
-                await import("@/lib/telegram-notifications.server");
-              await notifyUserAdminMessage({
-                userId: current.userId,
-                threadId: current.id,
-                messageText: data.text || "أرسل الدعم مرفقاً جديداً",
-                adminName: user.name || "فريق الإدارة",
-              });
-            } catch (err) {
-              console.warn("[chat:notify_user_failed]", err);
-            }
+            /*
+              The member has already been told.
+
+              `appendMessage` sends a Telegram message for any admin-authored
+              message, and this route added a second one — so one reply typed
+              in the inbox reached the member twice. That notification carries
+              the button now, so nothing is lost by dropping the duplicate; and
+              putting it there rather than here means a reply sent from the
+              Telegram group, or a delivered account, gets the same button
+              instead of a bare line.
+            */
 
             return json({
               message,

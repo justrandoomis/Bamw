@@ -2741,10 +2741,36 @@ export async function appendMessage(
           what arrived and sends them to the app to read it.
         */
         const preview = memberMessagePreview({ kind: full.kind, body: full.body });
+        /*
+          One message, with a way back into the conversation.
+
+          `POST /api/chat` used to send a second Telegram message of its own
+          right after this one, so a single admin reply arrived twice — this
+          one plain, and that one carrying the button. There is no reason for
+          two, and the button belongs on the notification every admin message
+          produces rather than on the one route that happened to add it: a
+          reply sent from the Telegram group, or a delivered account, went
+          through this path alone and had no way back.
+        */
+        const { telegramMiniAppDeepLink } = await import("./telegram.server");
         await sendTelegramMessage(
           memberChatId,
           `💬 <b>رسالة جديدة من الدعم</b>\n\nفي محادثة: ${escapeHtml(String(thread.subject ?? ""))}\n\n${escapeHtml(preview)}`,
-          { parse_mode: "HTML" },
+          {
+            parse_mode: "HTML",
+            reply_markup: {
+              inline_keyboard: [
+                [
+                  {
+                    text: "💬 فتح المحادثة",
+                    url: telegramMiniAppDeepLink(
+                      thread.orderId ? `order_${thread.orderId}` : `chat_${threadId}`,
+                    ),
+                  },
+                ],
+              ],
+            },
+          },
         );
       }
     }
