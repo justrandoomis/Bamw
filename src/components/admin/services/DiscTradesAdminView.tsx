@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+import { toast } from "sonner";
 import {
   RefreshCw,
   Search,
@@ -63,13 +64,29 @@ export default function DiscTradesAdminView() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ action: "admin_update", trade_id: vars.id, ...vars }),
       });
-      if (!res.ok) throw new Error("Failed to update");
-      return res.json();
+      const payload = await res.json().catch(() => ({}));
+      /*
+        The server's own words, not "Failed to update".
+
+        Every refusal this endpoint makes is a sentence written for the person
+        clicking — "لا يمكن إرسال العرض قبل إدخال السعر واعتماده", "انتقال غير
+        مسموح: …". Throwing a generic message discarded all of it, and with no
+        `onError` at all the button simply did nothing: the admin pressed
+        "اعتماد السعر" on an unpriced request and watched the screen stay
+        exactly as it was, with no way to learn why.
+      */
+      if (!res.ok) {
+        throw new Error(
+          String((payload as { error?: string })?.error || "تعذّر حفظ التعديل، حاول مرة أخرى."),
+        );
+      }
+      return payload;
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["admin_disc_trades"] });
       setEditingId(null);
     },
+    onError: (error: Error) => toast.error(error.message),
   });
 
   const trades = data?.items || [];
@@ -222,14 +239,22 @@ function TradeCard({ trade, isEditing, onEdit, onCancel, onSave, isSaving, t }: 
   const normStatus = normalizeTradeStatus(trade.status) as TradeStatus;
   const pricing = readTradePricing(trade);
   const primaryAction = tradePrimaryAction(normStatus);
-  const [status, setStatus] = useState<string>(normStatus);
   const [adminValuation, setAdminValuation] = useState(
     trade.approved_iqd ?? trade.admin_valuation_iqd ?? trade.valuation_iqd ?? "",
   );
   const [adminNotes, setAdminNotes] = useState(trade.admin_notes || "");
   const isCustom = !trade.game_id || trade.game_id === "custom";
 
-  const handleSave = (nextStatus: string = status) => {
+  /*
+    The current status is the default, not a remembered one.
+
+    This used to default to a `useState` initialised from the prop when the
+    card first mounted. The list refetches, so a request the customer accepted
+    two minutes ago still carried its old status in that state — and "حفظ فقط",
+    which is meant to save a price and a note, sent it back and rewound the
+    request to a stage it had already passed.
+  */
+  const handleSave = (nextStatus: string = normStatus) => {
     onSave({
       status: nextStatus,
       approved_iqd:
@@ -566,6 +591,46 @@ function TradeCard({ trade, isEditing, onEdit, onCancel, onSave, isSaving, t }: 
               workflow, and taking it is what moves the status — there is no
               way to set a status the work has not reached.
             */}
+            {/*
+              Abandoning a request, which the server has always allowed and no
+              screen offered.
+
+              `canTransition` lets an admin reject or cancel at any point before
+              a trade is finished, and the card had one button: the next step.
+              So a disc that turned out to be unsellable, or a customer who
+              changed their mind, left a request sitting in the queue for ever —
+              and the member was never told why nothing happened. The note is
+              required because it is the only thing they will be shown.
+            */}
+            {normStatus !== "completed" &&
+              normStatus !== "rejected" &&
+              normStatus !== "cancelled" && (
+                <>
+                  <button
+                    onClick={() => {
+                      if (!adminNotes.trim()) {
+                        window.alert(t("اكتب سبب الرفض في ملاحظات الإدارة أولاً — العميل سيقرأه."));
+                        return;
+                      }
+                      if (window.confirm(t("رفض هذا الطلب نهائياً؟"))) handleSave("rejected");
+                    }}
+                    disabled={isSaving}
+                    className="px-4 py-2 text-sm font-bold text-rose-600 border border-rose-500/30 rounded-xl hover:bg-rose-500/10 transition-colors disabled:opacity-40"
+                  >
+                    {t("رفض الطلب")}
+                  </button>
+                  <button
+                    onClick={() => {
+                      if (window.confirm(t("إلغاء هذا الطلب؟"))) handleSave("cancelled");
+                    }}
+                    disabled={isSaving}
+                    className="px-4 py-2 text-sm font-bold text-muted-foreground border border-border rounded-xl hover:bg-background transition-colors disabled:opacity-40"
+                  >
+                    {t("إلغاء الطلب")}
+                  </button>
+                </>
+              )}
+
             {primaryAction && (
               <button
                 onClick={runPrimaryAction}

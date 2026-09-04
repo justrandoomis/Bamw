@@ -110,3 +110,50 @@ describe("the admin trade card", () => {
     expect(TRADE_STATUSES).toContain("priced");
   });
 });
+
+describe("three things the pricing screen could not do", () => {
+  const view = readFileSync(
+    resolve(process.cwd(), "src/components/admin/services/DiscTradesAdminView.tsx"),
+    "utf8",
+  );
+  const code = view.replace(/\/\*[\s\S]*?\*\//g, "");
+
+  it("cannot rewind a request to a stage it has already passed", () => {
+    /*
+      The card kept the status in `useState`, initialised when it first
+      mounted. The list refetches, so a request the customer accepted two
+      minutes ago still carried its old status there — and "حفظ فقط", which
+      exists to save a price and a note, sent it back.
+    */
+    expect(code).not.toContain("const [status, setStatus]");
+    expect(code).toContain("handleSave = (nextStatus: string = normStatus)");
+  });
+
+  it("can refuse a request, which the server has always allowed", () => {
+    expect(code).toContain("رفض الطلب");
+    expect(code).toContain('handleSave("rejected")');
+    expect(code).toContain("إلغاء الطلب");
+    expect(code).toContain('handleSave("cancelled")');
+  });
+
+  it("makes the admin write the reason the customer will read", () => {
+    expect(code).toContain("اكتب سبب الرفض في ملاحظات الإدارة أولاً");
+  });
+
+  it("offers neither once the trade is finished", () => {
+    expect(code).toContain('normStatus !== "completed"');
+    expect(code).toContain('normStatus !== "rejected"');
+    expect(code).toContain('normStatus !== "cancelled"');
+  });
+
+  it("says why a save was refused instead of doing nothing", () => {
+    /*
+      Every refusal this endpoint makes is a sentence written for the person
+      clicking. `throw new Error("Failed to update")` discarded all of them,
+      and with no `onError` the button simply did nothing.
+    */
+    expect(code).not.toContain('throw new Error("Failed to update")');
+    expect(code).toContain("payload as { error?: string }");
+    expect(code).toContain("onError: (error: Error) => toast.error(error.message)");
+  });
+});
