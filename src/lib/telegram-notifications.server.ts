@@ -689,10 +689,17 @@ export async function notifyAdminDiscTrade(params: {
     (isCustom ? `⚠️ <i>إضافة يدوية تتطلب تسعيراً ومراجعة</i>\n` : "") +
     `\nاضغط أدناه لمعاينة صور القرص وتأكيد المقايضة 👇`;
 
+  /*
+    `/disc_trade`, which is the route that exists.
+
+    `/trade` has never been a page. The button was the one way from this alert
+    to the request it announces, and it opened a 404 — so pricing a disc meant
+    finding the admin screen by hand and matching the id from the message.
+  */
   const replyMarkup = buildInlineAppButton(
     `💿 معاينة المقايضة في MiniApp`,
     `trade_${tradeId}`,
-    `/trade`,
+    `/disc_trade`,
   );
 
   return sendAdminNotification("general", messageText, { reply_markup: replyMarkup });
