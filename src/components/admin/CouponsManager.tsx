@@ -32,6 +32,26 @@ import {
   DialogFooter,
 } from "@/components/ui/dialog";
 
+
+/**
+ * An instant, as the wall-clock string `datetime-local` speaks.
+ *
+ * The input's value is *local* time with no zone, and both dates were being
+ * written into it with `toISOString().slice(0, 16)` — which is UTC. An admin in
+ * Baghdad who set a coupon to expire at 23:00 saw 20:00 when they reopened it,
+ * and saving again wrote 20:00 as the new local time: every edit moved the
+ * expiry three hours earlier. Writing back out is already correct — `new
+ * Date("...T23:00")` reads a bare string as local — so only this direction was
+ * wrong.
+ */
+function toDateTimeLocal(value?: string): string {
+  if (!value) return "";
+  const at = new Date(value);
+  if (Number.isNaN(at.getTime())) return "";
+  const pad = (n: number) => String(n).padStart(2, "0");
+  return `${at.getFullYear()}-${pad(at.getMonth() + 1)}-${pad(at.getDate())}T${pad(at.getHours())}:${pad(at.getMinutes())}`;
+}
+
 export default function CouponsManager() {
   const queryClient = useQueryClient();
   const [isAdding, setIsAdding] = useState(false);
@@ -52,6 +72,7 @@ export default function CouponsManager() {
     oncePerUserLifetime: false,
     offlineAccountOnly: false,
     eligibleProducts: [],
+    eligibleUsers: [],
     startAt: "",
     expirationAt: "",
   });
@@ -65,6 +86,25 @@ export default function CouponsManager() {
     queryKey: ["store-products-list"],
     queryFn: () => api.store(),
   });
+
+  /*
+    The members list, for the "who may use this" picker.
+
+    `eligible_users` holds account ids, which nobody knows by heart — the field
+    existed in the row, in the mapper and in the rule that enforces it, and the
+    only way to fill it was to call the API by hand. Searching a name, an email
+    or a phone and storing the id is what makes the restriction usable.
+  */
+  const { data: usersData } = useQuery({
+    queryKey: ["admin-users-for-coupons"],
+    queryFn: () => adminApi.getUsers(),
+  });
+  const membersList = useMemo(
+    () => (usersData?.users || []) as Array<Record<string, any>>,
+    [usersData?.users],
+  );
+  const [productSearch, setProductSearch] = useState("");
+  const [memberSearch, setMemberSearch] = useState("");
 
   const productsList = useMemo(() => {
     return (storeData?.products || []) as Product[];
@@ -128,6 +168,7 @@ export default function CouponsManager() {
       oncePerUserLifetime: false,
       offlineAccountOnly: false,
       eligibleProducts: [],
+      eligibleUsers: [],
       startAt: "",
       expirationAt: "",
     });
@@ -251,6 +292,16 @@ export default function CouponsManager() {
               }
             })()
           : coupon.eligibleProducts || [],
+      eligibleUsers:
+        typeof coupon.eligible_users === "string"
+          ? (() => {
+              try {
+                return JSON.parse(coupon.eligible_users);
+              } catch {
+                return [];
+              }
+            })()
+          : coupon.eligibleUsers || [],
     });
     setEditingId(coupon.id);
     setIsAdding(true);
@@ -838,7 +889,7 @@ export default function CouponsManager() {
                 <input
                   type="datetime-local"
                   className="w-full bg-background border border-border rounded-xl px-3 py-2 text-xs"
-                  value={form.startAt ? new Date(form.startAt).toISOString().slice(0, 16) : ""}
+                  value={toDateTimeLocal(form.startAt)}
                   onChange={(e) =>
                     setForm({
                       ...form,
@@ -856,9 +907,7 @@ export default function CouponsManager() {
                 <input
                   type="datetime-local"
                   className="w-full bg-background border border-border rounded-xl px-3 py-2 text-xs"
-                  value={
-                    form.expirationAt ? new Date(form.expirationAt).toISOString().slice(0, 16) : ""
-                  }
+                  value={toDateTimeLocal(form.expirationAt)}
                   onChange={(e) =>
                     setForm({
                       ...form,
@@ -996,10 +1045,154 @@ export default function CouponsManager() {
                     السماح بالدمج مع عروض أخرى
                   </span>
                   <p className="text-xs text-muted-foreground">
-                    إذا كان غير مفعل، يمنع تطبيق كوبونات أخرى في نفس الطلب.
+                    يسمح بجمع خصم الكوبون مع خصم دعوة صديق في نفس الطلب. إذا كان غير مفعل، يُطبَّق
+                    الأكبر منهما فقط ولا يُستهلك الآخر.
                   </p>
                 </div>
               </label>
+
+              {/*
+                Which products the coupon covers.
+
+                The field was in the form's state, in the row and in the rule —
+                and had no control anywhere in this dialog, so the only way to
+                scope a coupon to a product was to call the API by hand. It
+                also used to be a pass/fail gate: one eligible line let the
+                coupon through and the percentage was then taken off the whole
+                basket. It is now taken off the covered lines only, which is
+                what makes this picker safe to hand an admin.
+              */}
+              <div className="space-y-2 pt-2 border-t border-border">
+                <label className="text-xs font-bold text-foreground">
+                  المنتجات المشمولة (اختياري — اتركه فارغاً ليشمل كل السلة)
+                </label>
+                <input
+                  type="text"
+                  placeholder="ابحث عن منتج…"
+                  className="w-full bg-background border border-border rounded-xl px-3 py-2 text-xs"
+                  value={productSearch}
+                  onChange={(e) => setProductSearch(e.target.value)}
+                />
+                {(form.eligibleProducts?.length ?? 0) > 0 && (
+                  <p className="text-[11px] text-muted-foreground">
+                    الخصم يُحتسب على قيمة هذه المنتجات وحدها، لا على مجموع السلة.
+                  </p>
+                )}
+                <div className="max-h-40 overflow-y-auto rounded-xl border border-border divide-y divide-border">
+                  {productsList
+                    .filter((product) => {
+                      const needle = productSearch.trim().toLowerCase();
+                      if (!needle) return (form.eligibleProducts ?? []).some(
+                        (id) => String(id) === String(product.id),
+                      );
+                      return `${product.title ?? ""} ${(product as any).titleEn ?? ""} ${product.id}`
+                        .toLowerCase()
+                        .includes(needle);
+                    })
+                    .slice(0, 40)
+                    .map((product) => {
+                      const chosen = (form.eligibleProducts ?? []).some(
+                        (id) => String(id) === String(product.id),
+                      );
+                      return (
+                        <label
+                          key={String(product.id)}
+                          className="flex items-center gap-2 px-3 py-2 cursor-pointer hover:bg-muted/50"
+                        >
+                          <input
+                            type="checkbox"
+                            className="w-4 h-4 rounded border-border"
+                            checked={chosen}
+                            onChange={(e) =>
+                              setForm({
+                                ...form,
+                                eligibleProducts: e.target.checked
+                                  ? [...(form.eligibleProducts ?? []), String(product.id)]
+                                  : (form.eligibleProducts ?? []).filter(
+                                      (id) => String(id) !== String(product.id),
+                                    ),
+                              })
+                            }
+                          />
+                          <span className="text-xs text-foreground truncate">
+                            {product.title || (product as any).titleEn || String(product.id)}
+                          </span>
+                        </label>
+                      );
+                    })}
+                  {productSearch.trim() === "" && (form.eligibleProducts?.length ?? 0) === 0 && (
+                    <p className="px-3 py-2 text-[11px] text-muted-foreground">
+                      اكتب للبحث. بدون اختيار، الكوبون يشمل كل السلة.
+                    </p>
+                  )}
+                </div>
+              </div>
+
+              {/*
+                Which accounts may use it. `checkCoupon` has always refused a
+                member outside this list; nothing could put anyone into it.
+              */}
+              <div className="space-y-2">
+                <label className="text-xs font-bold text-foreground">
+                  الحسابات المسموح لها (اختياري — اتركه فارغاً ليكون متاحاً للجميع)
+                </label>
+                <input
+                  type="text"
+                  placeholder="ابحث بالاسم أو البريد أو رقم الهاتف…"
+                  className="w-full bg-background border border-border rounded-xl px-3 py-2 text-xs"
+                  value={memberSearch}
+                  onChange={(e) => setMemberSearch(e.target.value)}
+                />
+                <div className="max-h-40 overflow-y-auto rounded-xl border border-border divide-y divide-border">
+                  {membersList
+                    .filter((member) => {
+                      const needle = memberSearch.trim().toLowerCase();
+                      if (!needle)
+                        return (form.eligibleUsers ?? []).some(
+                          (id) => String(id) === String(member.id),
+                        );
+                      return `${member.name ?? ""} ${member.email ?? ""} ${member.phone ?? ""} ${member.id}`
+                        .toLowerCase()
+                        .includes(needle);
+                    })
+                    .slice(0, 40)
+                    .map((member) => {
+                      const chosen = (form.eligibleUsers ?? []).some(
+                        (id) => String(id) === String(member.id),
+                      );
+                      return (
+                        <label
+                          key={String(member.id)}
+                          className="flex items-center gap-2 px-3 py-2 cursor-pointer hover:bg-muted/50"
+                        >
+                          <input
+                            type="checkbox"
+                            className="w-4 h-4 rounded border-border"
+                            checked={chosen}
+                            onChange={(e) =>
+                              setForm({
+                                ...form,
+                                eligibleUsers: e.target.checked
+                                  ? [...(form.eligibleUsers ?? []), String(member.id)]
+                                  : (form.eligibleUsers ?? []).filter(
+                                      (id) => String(id) !== String(member.id),
+                                    ),
+                              })
+                            }
+                          />
+                          <span className="text-xs text-foreground truncate">
+                            {member.name || member.email || member.phone || String(member.id)}
+                          </span>
+                        </label>
+                      );
+                    })}
+                  {memberSearch.trim() === "" && (form.eligibleUsers?.length ?? 0) === 0 && (
+                    <p className="px-3 py-2 text-[11px] text-muted-foreground">
+                      اكتب للبحث. بدون اختيار، الكوبون متاح لكل الأعضاء.
+                    </p>
+                  )}
+                </div>
+              </div>
             </div>
 
             <DialogFooter className="pt-4 flex items-center justify-between sm:justify-between gap-3">
