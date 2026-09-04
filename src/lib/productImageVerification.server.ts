@@ -15,10 +15,22 @@ export const SINGLE_IMAGE_FIELDS = [
   "frontCover",
   "backCover",
   "spineCover",
+  /*
+    These four were never ingested, so whatever URL an importer wrote stayed
+    live. The Nintendo gift card is still serving `listingImage`,
+    `thumbnailImage` and `frontImage` straight from a retailer's CDN, and its
+    `lifestyleImages` from another one — images the shop does not own, cannot
+    resize, and which break the day either host changes a path. Ingestion
+    copies them into our own storage like every other role.
+  */
+  "listingImage",
+  "thumbnailImage",
+  "frontImage",
 ] as const;
 
 export const ARRAY_IMAGE_FIELDS = [
   "gallery",
+  "galleryImages",
   "screenshots",
   "hardwareImages",
   "accessoriesImages",
@@ -26,6 +38,7 @@ export const ARRAY_IMAGE_FIELDS = [
   "amiiboImages",
   "usedImages",
   "bundleImages",
+  "lifestyleImages",
 ] as const;
 
 /**
@@ -173,16 +186,25 @@ export async function sanitizeAndVerifyProductImages(
     );
   }
 
-  // 4. Ensure automatic square derivative fallback if nintendoCardImage is missing but cartridgeImage/coverImage exists
-  if (!cloned.nintendoCardImage) {
-    if (cloned.cartridgeImage) {
-      cloned.nintendoCardImage = cloned.cartridgeImage;
-    } else if (cloned.coverImage) {
-      cloned.nintendoCardImage = cloned.coverImage;
-    } else if (cloned.mainImage) {
-      cloned.nintendoCardImage = cloned.mainImage;
-    }
-  }
+  /*
+    4. No square card is manufactured from the box cover any more.
+
+    This step used to copy `cartridgeImage`, `coverImage` or `mainImage` into
+    `nintendoCardImage` whenever that field was empty — and `auditMediaRoles`,
+    twenty lines below, then reported the very duplicate this had just
+    created. The pipeline produced the fault and filed the complaint about it.
+
+    The copy did not help anything either. A box cover is tall and a square
+    card is square, so the homepage strip filled with tall boxes letterboxed
+    into square windows, and the record no longer said which images the
+    product actually had: three fields holding one file, indistinguishable in
+    an admin form where each is its own box.
+
+    Leaving the field empty is the truth, and it is what `auditMediaRoles`
+    reports as `missing-square-card` — a warning naming a product that needs a
+    real square image, which is something somebody can act on. Nothing already
+    saved changes: this only stops the next save from inventing one.
+  */
 
   /*
     Role warnings, after the URLs are settled.

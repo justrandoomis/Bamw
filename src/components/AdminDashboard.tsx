@@ -119,6 +119,23 @@ import { ImageMigrationPanel } from "./admin/ImageMigrationPanel";
 import { AdminErrorBoundary } from "./admin/AdminErrorBoundary";
 import { adminApi, fileToDataUrl } from "@/lib/api";
 import { notifyCatalogChanged } from "@/lib/catalog-cache";
+
+/**
+ * The image-role warnings a save came back with.
+ *
+ * `sanitizeAndVerifyProductImages` has produced these on every save since it
+ * was written and every caller discarded them, so the one place they were
+ * meant to be seen — in front of the person who just saved, and can still fix
+ * it — never saw one. They are advisory: the save has already succeeded by
+ * the time these appear.
+ */
+function reportMediaWarnings(warnings: unknown) {
+  if (!Array.isArray(warnings)) return;
+  for (const warning of warnings.slice(0, 4)) {
+    if (typeof warning !== "string" || !warning.trim()) continue;
+    toast(warning, { icon: "⚠️", duration: 8000 });
+  }
+}
 import mascot from "@/assets/bananto_logo.webp.asset.json";
 import { useAuth } from "@/hooks/useAuth";
 import { getDefaultRadioTracks } from "@/config/publicAssets";
@@ -2198,6 +2215,7 @@ function ListingsView({
         }
 
         toast.success(t("admin.saved") || "تم الحفظ بنجاح", { id: "save-product" });
+        reportMediaWarnings(result?.mediaWarnings);
         notifyCatalogChanged(result?.catalogVersion);
 
         // Update local state

@@ -71,6 +71,11 @@ const INTERNAL_PATTERNS: RegExp[] = [
     match — only a line that is stating a figure.
   */
   /سعر\s*البيع\s*[:：]/,
+  /\bselling\s*price\s*[:：]/i,
+  /\bmerchant\s+pricing\b/i,
+  /\bcalculated\s+as\b.*\b(?:IQD|USD|CNY)\b/i,
+  /\b\d[\d,.]*\s*IQD\s+per\s+(?:USD|CNY|EUR)\b/i,
+  /\bper\s+USD\b/i,
   /سعر\s*الشراء\s*[:：]/,
   /(?:التكلفة|الكلفة)\s*[:：]/,
   /(?:هامش\s+)?الربح\s*[:：]/,
