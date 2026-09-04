@@ -16,6 +16,15 @@ export interface FaqCategory {
 export interface FaqItem {
   id: string;
   category_id: string;
+  /*
+    Where the full explanation lives.
+
+    The answers here are deliberately short — three sentences a customer reads
+    on a phone. Anything longer belongs in the guide or the policy clause that
+    owns it, and this is the link to it. Without it the FAQ either repeats
+    those pages, which then drift apart, or stops short of the answer.
+  */
+  more_href?: string;
   question_ar: string;
   question_en?: string;
   question_tr?: string;
@@ -35,6 +44,16 @@ export interface PolicySection {
   /** Stable URL fragment, so an order card can link straight to a clause. */
   anchor?: string;
   images?: ContentImage[];
+  /*
+    One sentence for the summary at the top of the page.
+
+    A policy nobody reads protects nobody. The clauses that decide whether
+    somebody keeps their game — do not delete the user, no refund after the
+    account is sent — have to be readable before the reader gives up, and the
+    full text is a click away under the same anchor.
+  */
+  summary_ar?: string;
+  summary_en?: string;
   title_ar: string;
   title_en?: string;
   title_tr?: string;

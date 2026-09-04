@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Reveal } from "@/components/motion/reveal";
 import { SolutionSteps } from "./solution-steps";
 import { ProblemFigure } from "./problem-figure";
+import { ContentGallery } from "@/components/content/ContentGallery";
 import { CATEGORY_MAP, type Problem, type ProblemImage } from "@/lib/problems/types";
 import { highlight } from "@/lib/search/highlight";
 
@@ -83,6 +84,13 @@ export function ProblemSection({
               <ProblemFigure image={image} onOpen={onOpenImage} />
             </Reveal>
           ))}
+
+          {/*
+            The screenshots the shop owner uploads, beside the illustrations
+            committed to this repository. Renders nothing at all while the
+            slots are empty, which is the state every problem starts in.
+          */}
+          <ContentGallery images={problem.slots} />
         </div>
 
         {/* ── Explanation + solution ───────────────────────────────── */}
@@ -107,6 +115,39 @@ export function ProblemSection({
           </Reveal>
 
           <SolutionSteps steps={problem.steps} baseDelay={170} />
+
+          {/*
+            What not to do, and when to stop.
+
+            Every one of these entries has an action that makes the situation
+            unrecoverable — deleting the user, pressing "Forgot your password",
+            retrying a wrong password until the account locks. Listing the fix
+            without listing those leaves the customer to find them.
+          */}
+          {(problem.avoid?.length ?? 0) > 0 && (
+            <Reveal delay={200} className="mt-5">
+              <div className="rounded-2xl border border-rose-500/30 bg-rose-500/5 p-4">
+                <h4 className="flex items-center gap-2 text-base font-extrabold text-foreground">
+                  <span aria-hidden>⛔</span>
+                  ما لا يجب فعله
+                </h4>
+                <ul className="mt-2 list-disc space-y-1 ps-5 text-[0.95rem] leading-relaxed text-muted-foreground">
+                  {problem.avoid!.map((line) => (
+                    <li key={line}>{line}</li>
+                  ))}
+                </ul>
+              </div>
+            </Reveal>
+          )}
+
+          {problem.contactAdminWhen && (
+            <Reveal delay={210} className="mt-4">
+              <p className="rounded-2xl border border-primary/30 bg-primary/5 p-4 text-[0.95rem] leading-relaxed text-foreground">
+                <span className="font-extrabold">متى تتواصل معنا: </span>
+                {problem.contactAdminWhen}
+              </p>
+            </Reveal>
+          )}
 
           {problem.relatedErrors.length > 0 && (
             <Reveal delay={220} className="mt-5">

@@ -5,7 +5,9 @@
     "title": "الحساب لا يسجّل الدخول",
     "description": "إذا ما گدرت تدخل إلى حسابك في Banana أو في Nintendo Account، اتبع الخطوات التالية وراح ترجع لحسابك خلال دقيقة.",
     "category": "accounts",
-    "alsoIn": ["errors"],
+    "alsoIn": [
+      "errors"
+    ],
     "cause": "غالبًا يصير هذا لأن كلمة المرور تغيّرت من جهاز ثاني، أو لأن الجلسة القديمة انتهت صلاحيتها، أو لأن الحساب مربوط ببريد إلكتروني ما عاد تستخدمه. أحيانًا يكون السبب بسيط جدًا: لوحة المفاتيح على لغة غير متوقعة أو Caps Lock شغّال.",
     "keywords": [
       "تسجيل الدخول",
@@ -72,9 +74,21 @@
       }
     ],
     "relatedGames": [],
-    "relatedProducts": ["Banana Account", "Nintendo Account"],
-    "relatedErrors": ["AUTH_401", "SIGN_IN_FAILED"],
-    "arabicKeywords": ["حساب", "دخول", "كلمة مرور", "تحقق", "بريد"],
+    "relatedProducts": [
+      "Banana Account",
+      "Nintendo Account"
+    ],
+    "relatedErrors": [
+      "AUTH_401",
+      "SIGN_IN_FAILED"
+    ],
+    "arabicKeywords": [
+      "حساب",
+      "دخول",
+      "كلمة مرور",
+      "تحقق",
+      "بريد"
+    ],
     "englishKeywords": [
       "login",
       "log in",
@@ -93,7 +107,12 @@
       "2fa",
       "verification code"
     ],
-    "kurdishKeywords": ["چوونەژوورەوە", "هەژمار", "وشەی نهێنی", "ناتوانم بچمە ژوورەوە"],
+    "kurdishKeywords": [
+      "چوونەژوورەوە",
+      "هەژمار",
+      "وشەی نهێنی",
+      "ناتوانم بچمە ژوورەوە"
+    ],
     "solutionId": "SOLUTION_LOGIN_001",
     "priority": 100,
     "featured": true,
@@ -105,9 +124,20 @@
     "title": "رمز الخطأ 2813-0999 عند الشراء من eShop",
     "description": "يظهر هذا الخطأ عند محاولة إتمام عملية شراء أو تحديث في متجر Nintendo eShop. غالبًا يكون مؤقتًا وله حل مباشر.",
     "category": "errors",
-    "alsoIn": ["games", "payment"],
+    "alsoIn": [
+      "games",
+      "payment"
+    ],
     "cause": "الخطأ 2813 يعني أن الجهاز ما گدر يكمّل الاتصال بخوادم المتجر. الأسباب الشائعة: صيانة مؤقتة في خوادم Nintendo، أو شبكة تحجب منافذ معينة (شبكات الشركات والمقاهي)، أو معلومات دفع منتهية على الحساب.",
-    "keywords": ["خطأ", "كود خطأ", "رمز خطأ", "eshop", "متجر", "شراء", "2813"],
+    "keywords": [
+      "خطأ",
+      "كود خطأ",
+      "رمز خطأ",
+      "eshop",
+      "متجر",
+      "شراء",
+      "2813"
+    ],
     "aliases": [
       "طلع لي ايرور",
       "يطلع خطأ",
@@ -155,9 +185,23 @@
       }
     ],
     "relatedGames": [],
-    "relatedProducts": ["Nintendo Switch", "Nintendo eShop"],
-    "relatedErrors": ["2813-0999", "2813-1000", "2618-0516", "9001-0026"],
-    "arabicKeywords": ["خطأ", "متجر", "شراء", "اتصال", "صيانة"],
+    "relatedProducts": [
+      "Nintendo Switch",
+      "Nintendo eShop"
+    ],
+    "relatedErrors": [
+      "2813-0999",
+      "2813-1000",
+      "2618-0516",
+      "9001-0026"
+    ],
+    "arabicKeywords": [
+      "خطأ",
+      "متجر",
+      "شراء",
+      "اتصال",
+      "صيانة"
+    ],
     "englishKeywords": [
       "error",
       "error code",
@@ -171,7 +215,12 @@
       "payment error",
       "connection error"
     ],
-    "kurdishKeywords": ["هەڵە", "کۆدی هەڵە", "کڕین", "فرۆشگا"],
+    "kurdishKeywords": [
+      "هەڵە",
+      "کۆدی هەڵە",
+      "کڕین",
+      "فرۆشگا"
+    ],
     "solutionId": "SOLUTION_2813",
     "priority": 95,
     "featured": true,
@@ -183,9 +232,21 @@
     "title": "اللعبة لا تعمل أو تتوقف فجأة",
     "description": "اللعبة ما تفتح، أو تفتح وتطلع للشاشة الرئيسية بعد ثوانٍ؟ هذه الخطوات تحل أغلب الحالات بدون فقدان بياناتك.",
     "category": "games",
-    "alsoIn": ["errors", "switch"],
+    "alsoIn": [
+      "errors",
+      "switch"
+    ],
     "cause": "أغلب حالات توقّف اللعبة سببها بيانات محفوظة تالفة في ذاكرة التخزين المؤقت، أو نسخة لعبة قديمة تحتاج تحديثًا، أو شريط لعبة عليه غبار يقطع الاتصال بالقارئ.",
-    "keywords": ["لعبة", "ما تشتغل", "تتوقف", "تعلق", "تطفي", "كراش", "شريط اللعبة", "تحديث"],
+    "keywords": [
+      "لعبة",
+      "ما تشتغل",
+      "تتوقف",
+      "تعلق",
+      "تطفي",
+      "كراش",
+      "شريط اللعبة",
+      "تحديث"
+    ],
     "aliases": [
       "اللعبة ما تشتغل",
       "اللعبه ماتشتغل",
@@ -253,9 +314,22 @@
       "Animal Crossing",
       "Pokemon"
     ],
-    "relatedProducts": ["Nintendo Switch", "Game Card"],
-    "relatedErrors": ["2002-4153", "2016-0641", "GAME_CRASH"],
-    "arabicKeywords": ["لعبة", "شريط", "تعليق", "تحديث", "قراءة"],
+    "relatedProducts": [
+      "Nintendo Switch",
+      "Game Card"
+    ],
+    "relatedErrors": [
+      "2002-4153",
+      "2016-0641",
+      "GAME_CRASH"
+    ],
+    "arabicKeywords": [
+      "لعبة",
+      "شريط",
+      "تعليق",
+      "تحديث",
+      "قراءة"
+    ],
     "englishKeywords": [
       "game",
       "game not working",
@@ -268,7 +342,11 @@
       "card not read",
       "software closed"
     ],
-    "kurdishKeywords": ["یاری", "یاری کار ناکات", "ڕاوەستان"],
+    "kurdishKeywords": [
+      "یاری",
+      "یاری کار ناکات",
+      "ڕاوەستان"
+    ],
     "solutionId": "SOLUTION_GAME_001",
     "priority": 92,
     "featured": true,
@@ -280,9 +358,19 @@
     "title": "الطلب لم يصل أو حالته لا تتحدّث",
     "description": "طلبك ما وصل بالوقت المتوقع، أو حالته واقفة على «قيد التجهيز» من فترة؟ هذه الخطوات تعطيك صورة واضحة خلال دقائق.",
     "category": "orders",
-    "alsoIn": ["shipping"],
+    "alsoIn": [
+      "shipping"
+    ],
     "cause": "حالة الطلب تتحدث عند كل نقطة فحص لدى شركة الشحن، ومو بشكل لحظي. الوقوف على حالة واحدة يوم أو يومين طبيعي، خصوصًا في العطل الرسمية وفي فترة العروض. أحيانًا يكون الطلب مقسّمًا على أكثر من شحنة، فتصل قطعة قبل الباقي.",
-    "keywords": ["طلب", "طلبية", "ما وصل", "متأخر", "حالة الطلب", "قيد التجهيز", "إلغاء"],
+    "keywords": [
+      "طلب",
+      "طلبية",
+      "ما وصل",
+      "متأخر",
+      "حالة الطلب",
+      "قيد التجهيز",
+      "إلغاء"
+    ],
     "aliases": [
       "طلبي ما وصل",
       "الطلب متأخر",
@@ -292,7 +380,11 @@
       "ماكو تحديث للطلب",
       "الطلب ملغي؟"
     ],
-    "symptoms": ["حالة الطلب ما تغيّرت من أيام", "وصلني جزء من الطلب فقط", "ما وصلني إيميل تأكيد"],
+    "symptoms": [
+      "حالة الطلب ما تغيّرت من أيام",
+      "وصلني جزء من الطلب فقط",
+      "ما وصلني إيميل تأكيد"
+    ],
     "images": [
       {
         "src": "/illustrations/order-tracking-card.svg",
@@ -326,9 +418,20 @@
       }
     ],
     "relatedGames": [],
-    "relatedProducts": ["Banana Store", "طلبات"],
-    "relatedErrors": ["ORDER_PENDING", "ORDER_STUCK"],
-    "arabicKeywords": ["طلب", "توصيل", "تأخير", "حالة"],
+    "relatedProducts": [
+      "Banana Store",
+      "طلبات"
+    ],
+    "relatedErrors": [
+      "ORDER_PENDING",
+      "ORDER_STUCK"
+    ],
+    "arabicKeywords": [
+      "طلب",
+      "توصيل",
+      "تأخير",
+      "حالة"
+    ],
     "englishKeywords": [
       "order",
       "my order",
@@ -340,7 +443,11 @@
       "pending",
       "processing"
     ],
-    "kurdishKeywords": ["داواکاری", "داواکارییەکەم نەگەیشت", "دواکەوتن"],
+    "kurdishKeywords": [
+      "داواکاری",
+      "داواکارییەکەم نەگەیشت",
+      "دواکەوتن"
+    ],
     "solutionId": "SOLUTION_ORDER_001",
     "priority": 88,
     "featured": true,
@@ -352,9 +459,19 @@
     "title": "جهاز Nintendo Switch لا يشتغل",
     "description": "الشاشة سوداء وما في أي استجابة؟ في أغلب الحالات الجهاز مو خربان — بس يحتاج إعادة تشغيل قسرية.",
     "category": "switch",
-    "alsoIn": ["hardware"],
+    "alsoIn": [
+      "hardware"
+    ],
     "cause": "لما تفرغ البطارية تمامًا، يدخل الجهاز في وضع حماية ويحتاج شحنًا لمدة كافية قبل أن يستجيب. وأحيانًا يتجمّد النظام فتبقى الشاشة سوداء رغم أن الجهاز شغّال فعليًا.",
-    "keywords": ["ما يشتغل", "شاشة سوداء", "ما يفتح", "بطارية", "شحن", "معلق", "متجمد"],
+    "keywords": [
+      "ما يشتغل",
+      "شاشة سوداء",
+      "ما يفتح",
+      "بطارية",
+      "شحن",
+      "معلق",
+      "متجمد"
+    ],
     "aliases": [
       "الجهاز ما يشتغل",
       "الجهاز مايشتغل",
@@ -413,9 +530,22 @@
       }
     ],
     "relatedGames": [],
-    "relatedProducts": ["Nintendo Switch", "Switch Lite", "Switch OLED"],
-    "relatedErrors": ["NO_POWER", "BLACK_SCREEN"],
-    "arabicKeywords": ["جهاز", "يشتغل", "شاشة", "بطارية", "شحن"],
+    "relatedProducts": [
+      "Nintendo Switch",
+      "Switch Lite",
+      "Switch OLED"
+    ],
+    "relatedErrors": [
+      "NO_POWER",
+      "BLACK_SCREEN"
+    ],
+    "arabicKeywords": [
+      "جهاز",
+      "يشتغل",
+      "شاشة",
+      "بطارية",
+      "شحن"
+    ],
     "englishKeywords": [
       "switch not working",
       "not turning on",
@@ -427,7 +557,11 @@
       "frozen",
       "hard reset"
     ],
-    "kurdishKeywords": ["ئامێرەکە کار ناکات", "شاشەی ڕەش", "باتری"],
+    "kurdishKeywords": [
+      "ئامێرەکە کار ناکات",
+      "شاشەی ڕەش",
+      "باتری"
+    ],
     "solutionId": "SOLUTION_SWITCH_001",
     "priority": 86,
     "featured": true,
@@ -439,9 +573,21 @@
     "title": "عملية الدفع مرفوضة",
     "description": "البطاقة انرفضت رغم وجود رصيد؟ في العادة السبب إعداد بسيط في تطبيق البنك، مو مشكلة في المتجر.",
     "category": "payment",
-    "alsoIn": ["orders", "errors"],
+    "alsoIn": [
+      "orders",
+      "errors"
+    ],
     "cause": "أغلب البنوك تمنع الشراء عبر الإنترنت افتراضيًا، أو تمنع الشراء بالعملات الأجنبية، إلى أن تفعّله بنفسك من التطبيق. كذلك تُرفض العملية إذا كان الاسم أو العنوان المُدخل مختلفًا عن المسجّل لدى البنك.",
-    "keywords": ["دفع", "بطاقة", "فيزا", "ماستر كارد", "رفض", "مرفوضة", "رصيد", "بنك"],
+    "keywords": [
+      "دفع",
+      "بطاقة",
+      "فيزا",
+      "ماستر كارد",
+      "رفض",
+      "مرفوضة",
+      "رصيد",
+      "بنك"
+    ],
     "aliases": [
       "الدفع ما يشتغل",
       "البطاقة مرفوضة",
@@ -490,9 +636,23 @@
       }
     ],
     "relatedGames": [],
-    "relatedProducts": ["Visa", "Mastercard", "Banana Store"],
-    "relatedErrors": ["PAYMENT_DECLINED", "CARD_DECLINED", "3DS_FAILED"],
-    "arabicKeywords": ["دفع", "بطاقة", "بنك", "رفض", "رصيد"],
+    "relatedProducts": [
+      "Visa",
+      "Mastercard",
+      "Banana Store"
+    ],
+    "relatedErrors": [
+      "PAYMENT_DECLINED",
+      "CARD_DECLINED",
+      "3DS_FAILED"
+    ],
+    "arabicKeywords": [
+      "دفع",
+      "بطاقة",
+      "بنك",
+      "رفض",
+      "رصيد"
+    ],
     "englishKeywords": [
       "payment",
       "payment failed",
@@ -505,7 +665,11 @@
       "3d secure",
       "otp"
     ],
-    "kurdishKeywords": ["پارەدان", "کارتەکە ڕەتکرایەوە", "بانک"],
+    "kurdishKeywords": [
+      "پارەدان",
+      "کارتەکە ڕەتکرایەوە",
+      "بانک"
+    ],
     "solutionId": "SOLUTION_PAY_001",
     "priority": 82,
     "featured": false,
@@ -517,9 +681,19 @@
     "title": "رقم التتبع لا يعمل",
     "description": "وصلك رقم تتبع لكن الموقع يقول «غير موجود»؟ عادةً المسألة مسألة وقت، وأحيانًا موقع تتبع خاطئ.",
     "category": "shipping",
-    "alsoIn": ["orders"],
+    "alsoIn": [
+      "orders"
+    ],
     "cause": "رقم التتبع يُصدر لحظة طباعة البوليصة، لكنه ما يصير فعّالًا إلا بعد أول مسح فعلي للطرد في مركز الفرز — وهذا ممكن يستغرق من 6 إلى 24 ساعة. وأحيانًا يكون الرقم لشركة شحن غير التي تبحث فيها.",
-    "keywords": ["تتبع", "شحن", "رقم التتبع", "شحنة", "توصيل", "مندوب", "بوليصة"],
+    "keywords": [
+      "تتبع",
+      "شحن",
+      "رقم التتبع",
+      "شحنة",
+      "توصيل",
+      "مندوب",
+      "بوليصة"
+    ],
     "aliases": [
       "التتبع ما يشتغل",
       "رقم التتبع غلط",
@@ -567,9 +741,19 @@
       }
     ],
     "relatedGames": [],
-    "relatedProducts": ["شحن", "توصيل"],
-    "relatedErrors": ["TRACKING_NOT_FOUND"],
-    "arabicKeywords": ["تتبع", "شحنة", "توصيل", "مندوب"],
+    "relatedProducts": [
+      "شحن",
+      "توصيل"
+    ],
+    "relatedErrors": [
+      "TRACKING_NOT_FOUND"
+    ],
+    "arabicKeywords": [
+      "تتبع",
+      "شحنة",
+      "توصيل",
+      "مندوب"
+    ],
     "englishKeywords": [
       "tracking",
       "tracking number",
@@ -581,7 +765,11 @@
       "courier",
       "parcel"
     ],
-    "kurdishKeywords": ["بەدواداچوون", "گەیاندن", "ژمارەی بەدواداچوون"],
+    "kurdishKeywords": [
+      "بەدواداچوون",
+      "گەیاندن",
+      "ژمارەی بەدواداچوون"
+    ],
     "solutionId": "SOLUTION_SHIP_001",
     "priority": 78,
     "featured": true,
@@ -593,9 +781,19 @@
     "title": "عصا التحكم تتحرك لحالها (Joy-Con Drift)",
     "description": "الشخصية تمشي بدون ما تلمس شي؟ هذي مشكلة معروفة باسم Drift ولها حل منزلي بسيط قبل الصيانة.",
     "category": "hardware",
-    "alsoIn": ["switch"],
+    "alsoIn": [
+      "switch"
+    ],
     "cause": "مع الوقت يدخل غبار دقيق تحت قاعدة العصا فيلامس حسّاس الحركة ويرسل إشارة مستمرة. أحيانًا يكون السبب مجرد معايرة (Calibration) انحرفت بعد سقوط خفيف.",
-    "keywords": ["عصا", "دريفت", "تتحرك لحالها", "جوي كون", "معايرة", "تحكم", "يد"],
+    "keywords": [
+      "عصا",
+      "دريفت",
+      "تتحرك لحالها",
+      "جوي كون",
+      "معايرة",
+      "تحكم",
+      "يد"
+    ],
     "aliases": [
       "الجويكون خربان",
       "العصا تتحرك بروحها",
@@ -652,9 +850,21 @@
       }
     ],
     "relatedGames": [],
-    "relatedProducts": ["Joy-Con", "Pro Controller", "Nintendo Switch"],
-    "relatedErrors": ["JOYCON_DRIFT", "STICK_CALIBRATION"],
-    "arabicKeywords": ["عصا", "تحكم", "معايرة", "انحراف"],
+    "relatedProducts": [
+      "Joy-Con",
+      "Pro Controller",
+      "Nintendo Switch"
+    ],
+    "relatedErrors": [
+      "JOYCON_DRIFT",
+      "STICK_CALIBRATION"
+    ],
+    "arabicKeywords": [
+      "عصا",
+      "تحكم",
+      "معايرة",
+      "انحراف"
+    ],
     "englishKeywords": [
       "joycon",
       "joy-con",
@@ -666,7 +876,10 @@
       "moving by itself",
       "controller not working"
     ],
-    "kurdishKeywords": ["کۆنترۆڵەر", "دەستەکە کار ناکات"],
+    "kurdishKeywords": [
+      "کۆنترۆڵەر",
+      "دەستەکە کار ناکات"
+    ],
     "solutionId": "SOLUTION_HW_001",
     "priority": 76,
     "featured": false,
@@ -678,9 +891,19 @@
     "title": "لا تظهر الصورة على التلفزيون عند استخدام الدوك",
     "description": "الجهاز شغّال لكن التلفزيون يقول «لا توجد إشارة»؟ الترتيب الصحيح للتوصيل يحل أغلب الحالات.",
     "category": "hardware",
-    "alsoIn": ["switch"],
+    "alsoIn": [
+      "switch"
+    ],
     "cause": "الدوك يحتاج طاقة كافية قبل أن يبدأ إخراج الصورة، ولذلك ترتيب توصيل الكيبلات مهم فعلًا. كذلك بعض كيبلات HDMI الرخيصة ما تنقل الإشارة بثبات، وبعض التلفزيونات تحتاج اختيار مدخل HDMI الصحيح يدويًا.",
-    "keywords": ["دوك", "تلفزيون", "شاشة", "hdmi", "لا توجد إشارة", "صورة", "توصيل"],
+    "keywords": [
+      "دوك",
+      "تلفزيون",
+      "شاشة",
+      "hdmi",
+      "لا توجد إشارة",
+      "صورة",
+      "توصيل"
+    ],
     "aliases": [
       "ما تطلع الصورة على التلفزيون",
       "التلفزيون ما يعرض",
@@ -728,9 +951,21 @@
       }
     ],
     "relatedGames": [],
-    "relatedProducts": ["Nintendo Switch Dock", "HDMI", "Nintendo Switch"],
-    "relatedErrors": ["NO_SIGNAL", "HDMI_FAIL"],
-    "arabicKeywords": ["دوك", "تلفزيون", "إشارة", "كيبل"],
+    "relatedProducts": [
+      "Nintendo Switch Dock",
+      "HDMI",
+      "Nintendo Switch"
+    ],
+    "relatedErrors": [
+      "NO_SIGNAL",
+      "HDMI_FAIL"
+    ],
+    "arabicKeywords": [
+      "دوك",
+      "تلفزيون",
+      "إشارة",
+      "كيبل"
+    ],
     "englishKeywords": [
       "dock",
       "no signal",
@@ -740,7 +975,11 @@
       "not showing on tv",
       "docked mode"
     ],
-    "kurdishKeywords": ["تەلەفزیۆن", "وێنە نییە", "دۆک"],
+    "kurdishKeywords": [
+      "تەلەفزیۆن",
+      "وێنە نییە",
+      "دۆک"
+    ],
     "solutionId": "SOLUTION_HW_002",
     "priority": 70,
     "featured": false,
@@ -752,9 +991,20 @@
     "title": "كود اللعبة الرقمي غير مقبول",
     "description": "اشتريت كودًا رقميًا والمتجر يرفضه؟ في الغالب المشكلة في منطقة الحساب، مو في الكود نفسه.",
     "category": "games",
-    "alsoIn": ["errors", "accounts"],
+    "alsoIn": [
+      "errors",
+      "accounts"
+    ],
     "cause": "الأكواد الرقمية مرتبطة بمنطقة معينة، والكود ما يُقبل إلا على حساب من نفس المنطقة. وسبب شائع ثانٍ هو الخلط بين الحروف والأرقام المتشابهة عند الكتابة اليدوية.",
-    "keywords": ["كود", "رمز", "كود رقمي", "eshop", "استرداد", "منطقة", "ريجن"],
+    "keywords": [
+      "كود",
+      "رمز",
+      "كود رقمي",
+      "eshop",
+      "استرداد",
+      "منطقة",
+      "ريجن"
+    ],
     "aliases": [
       "الكود ما ينقبل",
       "الكود ما يشتغل",
@@ -801,10 +1051,26 @@
         "hint": "لا تنشر الكود في مكان عام — أرسله فقط عبر تذكرة الدعم."
       }
     ],
-    "relatedGames": ["Nintendo Switch Online", "Digital Games"],
-    "relatedProducts": ["eShop Card", "Digital Code", "Gift Card"],
-    "relatedErrors": ["CODE_INVALID", "CODE_USED", "REGION_MISMATCH"],
-    "arabicKeywords": ["كود", "رمز", "منطقة", "متجر"],
+    "relatedGames": [
+      "Nintendo Switch Online",
+      "Digital Games"
+    ],
+    "relatedProducts": [
+      "eShop Card",
+      "Digital Code",
+      "Gift Card"
+    ],
+    "relatedErrors": [
+      "CODE_INVALID",
+      "CODE_USED",
+      "REGION_MISMATCH"
+    ],
+    "arabicKeywords": [
+      "كود",
+      "رمز",
+      "منطقة",
+      "متجر"
+    ],
     "englishKeywords": [
       "code",
       "digital code",
@@ -816,7 +1082,10 @@
       "gift card",
       "already used"
     ],
-    "kurdishKeywords": ["کۆد", "کۆدەکە کار ناکات"],
+    "kurdishKeywords": [
+      "کۆد",
+      "کۆدەکە کار ناکات"
+    ],
     "solutionId": "SOLUTION_GAME_002",
     "priority": 68,
     "featured": false,
@@ -828,9 +1097,20 @@
     "title": "تحميل اللعبة بطيء أو متوقف",
     "description": "التحميل واقف على نسبة ثابتة من ساعات؟ هذه الخطوات تحرّره وتضاعف السرعة في أغلب الحالات.",
     "category": "errors",
-    "alsoIn": ["switch", "games"],
+    "alsoIn": [
+      "switch",
+      "games"
+    ],
     "cause": "الجهاز يخفّض أولوية التحميل بشكل كبير وأنت داخل لعبة، كما أن وضع السكون مع تحميل نشط يبطّئه. وتقنيًا، اتصال 5GHz أسرع بكثير من 2.4GHz لكن مداه أقصر.",
-    "keywords": ["تحميل", "بطيء", "متوقف", "انترنت", "واي فاي", "سرعة", "تحديث"],
+    "keywords": [
+      "تحميل",
+      "بطيء",
+      "متوقف",
+      "انترنت",
+      "واي فاي",
+      "سرعة",
+      "تحديث"
+    ],
     "aliases": [
       "التحميل بطيء",
       "التنزيل واقف",
@@ -878,9 +1158,20 @@
       }
     ],
     "relatedGames": [],
-    "relatedProducts": ["Nintendo Switch", "Nintendo eShop"],
-    "relatedErrors": ["DOWNLOAD_STUCK", "2137-8006"],
-    "arabicKeywords": ["تحميل", "سرعة", "شبكة", "واي فاي"],
+    "relatedProducts": [
+      "Nintendo Switch",
+      "Nintendo eShop"
+    ],
+    "relatedErrors": [
+      "DOWNLOAD_STUCK",
+      "2137-8006"
+    ],
+    "arabicKeywords": [
+      "تحميل",
+      "سرعة",
+      "شبكة",
+      "واي فاي"
+    ],
     "englishKeywords": [
       "download",
       "download slow",
@@ -891,7 +1182,11 @@
       "internet slow",
       "update stuck"
     ],
-    "kurdishKeywords": ["داگرتن", "خاو", "ئینتەرنێت"],
+    "kurdishKeywords": [
+      "داگرتن",
+      "خاو",
+      "ئینتەرنێت"
+    ],
     "solutionId": "SOLUTION_NET_001",
     "priority": 62,
     "featured": false,
@@ -903,9 +1198,19 @@
     "title": "نسيت رمز الرقابة الأبوية",
     "description": "الجهاز يطلب رمز الرقابة الأبوية وما تتذكره؟ في طريقة رسمية لاستعادته بدون فقدان أي بيانات.",
     "category": "other",
-    "alsoIn": ["switch", "accounts"],
+    "alsoIn": [
+      "switch",
+      "accounts"
+    ],
     "cause": "رمز الرقابة الأبوية منفصل تمامًا عن كلمة مرور الحساب، وكثير من الناس يضبطونه مرة واحدة عند شراء الجهاز وينسونه. ولأنه يقيّد المحتوى ووقت اللعب، النظام ما يسمح بتجاوزه إلا برمز استرداد رسمي.",
-    "keywords": ["رقابة أبوية", "رمز", "بن كود", "قفل", "حظر", "وقت اللعب"],
+    "keywords": [
+      "رقابة أبوية",
+      "رمز",
+      "بن كود",
+      "قفل",
+      "حظر",
+      "وقت اللعب"
+    ],
     "aliases": [
       "نسيت الرمز",
       "نسيت البن",
@@ -953,9 +1258,20 @@
       }
     ],
     "relatedGames": [],
-    "relatedProducts": ["Nintendo Switch", "Parental Controls"],
-    "relatedErrors": ["PARENTAL_LOCK", "PIN_FORGOTTEN"],
-    "arabicKeywords": ["رقابة", "رمز", "قفل", "أطفال"],
+    "relatedProducts": [
+      "Nintendo Switch",
+      "Parental Controls"
+    ],
+    "relatedErrors": [
+      "PARENTAL_LOCK",
+      "PIN_FORGOTTEN"
+    ],
+    "arabicKeywords": [
+      "رقابة",
+      "رمز",
+      "قفل",
+      "أطفال"
+    ],
     "englishKeywords": [
       "parental control",
       "parental",
@@ -966,10 +1282,465 @@
       "master key",
       "restriction"
     ],
-    "kurdishKeywords": ["چاودێری دایک و باوک", "کۆدی نهێنی", "قوفڵ"],
+    "kurdishKeywords": [
+      "چاودێری دایک و باوک",
+      "کۆدی نهێنی",
+      "قوفڵ"
+    ],
     "solutionId": "SOLUTION_OTHER_001",
     "priority": 55,
     "featured": false,
+    "published": true
+  },
+  {
+    "id": "RELOGIN_REQUIRED",
+    "emoji": "🔑",
+    "title": "يطلب منك تسجيل الدخول مجدداً إلى حساب Nintendo",
+    "description": "تظهر إحدى الرسالتين عند فتح اللعبة: «Can’t play this software right now» أو «Sign in to your Nintendo Account again». اللعبة سليمة والحساب سليم؛ الجهاز يريد التحقق من الترخيص مرة أخرى.",
+    "category": "accounts",
+    "alsoIn": [
+      "games"
+    ],
+    "cause": "ترخيص اللعبة يُتحقق منه عبر الإنترنت من وقت لآخر. إذا كان الجهاز في وضع الطيران، أو انقطع الاتصال، أو استُخدم الحساب على جهاز آخر، يطلب النظام تسجيل الدخول من جديد قبل السماح بالتشغيل.",
+    "keywords": [
+      "تسجيل الدخول",
+      "الدخول مجدداً",
+      "sign in again",
+      "can't play",
+      "الترخيص"
+    ],
+    "aliases": [
+      "يطلب مني الدخول كل مرة",
+      "ما يشتغل ويطلب باسورد",
+      "sign in to your nintendo account again"
+    ],
+    "symptoms": [
+      "رسالة Can’t play this software right now عند فتح اللعبة",
+      "رسالة Sign in to your Nintendo Account again",
+      "اللعبة كانت تعمل ثم توقفت بعد وضع الطيران"
+    ],
+    "images": [],
+    "slots": [
+      {
+        "id": "img_01",
+        "url": "",
+        "hint": "أضف صورة رسالة Can’t play this software right now",
+        "alt": "",
+        "caption": "",
+        "sort_order": 1
+      },
+      {
+        "id": "img_02",
+        "url": "",
+        "hint": "أضف صورة رسالة Sign in to your Nintendo Account again",
+        "alt": "",
+        "caption": "",
+        "sort_order": 2
+      }
+    ],
+    "steps": [
+      {
+        "title": "أوقف Airplane Mode واتصل بالإنترنت",
+        "detail": "التحقق يحتاج اتصالاً لحظياً. من القائمة السريعة بالضغط المطوّل على زر Home.",
+        "slots": [
+          {
+            "id": "img_01",
+            "url": "",
+            "hint": "أضف صورة إيقاف Airplane Mode من القائمة السريعة",
+            "alt": "",
+            "caption": "",
+            "sort_order": 1
+          }
+        ]
+      },
+      {
+        "title": "اضغط OK على الرسالة",
+        "detail": "ينقلك الجهاز مباشرة إلى شاشة تسجيل الدخول.",
+        "slots": [
+          {
+            "id": "img_01",
+            "url": "",
+            "hint": "أضف صورة زر OK على الرسالة",
+            "alt": "",
+            "caption": "",
+            "sort_order": 1
+          }
+        ]
+      },
+      {
+        "title": "أدخل نفس كلمة مرور حساب اللعبة التي أرسلها المتجر",
+        "detail": "ليست كلمة مرور حسابك الشخصي. انسخها كما وصلتك تماماً.",
+        "hint": "إذا لم تعد تجدها، اطلبها من الأدمن داخل محادثة الطلب بدل تجربة كلمات مختلفة.",
+        "slots": [
+          {
+            "id": "img_01",
+            "url": "",
+            "hint": "أضف صورة شاشة إدخال كلمة المرور",
+            "alt": "",
+            "caption": "",
+            "sort_order": 1
+          }
+        ]
+      },
+      {
+        "title": "أكمل تسجيل الدخول",
+        "detail": "انتظر حتى تعود إلى اللعبة أو إلى الشاشة الرئيسية.",
+        "slots": [
+          {
+            "id": "img_01",
+            "url": "",
+            "hint": "أضف صورة اكتمال تسجيل الدخول",
+            "alt": "",
+            "caption": "",
+            "sort_order": 1
+          }
+        ]
+      },
+      {
+        "title": "إذا ظهر رمز تحقق، أرسل صورة كاملة للشاشة للأدمن وانتظر",
+        "detail": "الرمز يصل إلى بريد يملكه المتجر، فنحن من يقرأه لك. ابقَ في الشاشة.",
+        "slots": [
+          {
+            "id": "img_01",
+            "url": "",
+            "hint": "أضف صورة شاشة Verification code",
+            "alt": "",
+            "caption": "",
+            "sort_order": 1
+          }
+        ]
+      },
+      {
+        "title": "بعد النجاح طبّق تعليمات خيارك",
+        "detail": "خيار Offline: ادخل اللعبة ثم فعّل وضع الطيران. خيار Online: ابقَ متصلاً.",
+        "slots": [
+          {
+            "id": "img_01",
+            "url": "",
+            "hint": "أضف صورة اللعبة بعد عودتها للعمل",
+            "alt": "",
+            "caption": "",
+            "sort_order": 1
+          }
+        ]
+      }
+    ],
+    "avoid": [
+      "لا تضغط Forgot your password — تغيير كلمة المرور يُفقدك الوصول ويُسقط الضمان.",
+      "لا تكرر إدخال كلمة مرور خاطئة كثيراً؛ قد يُقفل الحساب مؤقتاً.",
+      "لا تحذف مستخدم حساب اللعبة، ولا تعيد ضبط الجهاز.",
+      "لا تنشئ حساباً جديداً أو تغيّر البريد."
+    ],
+    "contactAdminWhen": "إذا ظهرت رسالة Incorrect password، أو طُلب رمز تحقق، أو تكررت الرسالة بعد نجاح الدخول — افتح محادثة الطلب وأرسل صورة كاملة للشاشة.",
+    "relatedGames": [],
+    "relatedProducts": [],
+    "relatedErrors": [
+      "CANT_PLAY",
+      "SIGN_IN_AGAIN",
+      "INCORRECT_PASSWORD"
+    ],
+    "arabicKeywords": [
+      "تسجيل الدخول مجدداً",
+      "كلمة المرور غير صحيحة",
+      "الترخيص",
+      "وضع الطيران"
+    ],
+    "englishKeywords": [
+      "cant play this software right now",
+      "sign in to your nintendo account again",
+      "incorrect password"
+    ],
+    "kurdishKeywords": [],
+    "priority": 95,
+    "featured": true,
+    "published": true
+  },
+  {
+    "id": "INTERNET_CODES",
+    "emoji": "📶",
+    "title": "رموز خطأ مرتبطة بالاتصال مثل 2124-8006 و2810-1006",
+    "description": "رموز تظهر عند تعذّر الوصول إلى خدمة Nintendo. المثالان أعلاه مرتبطان عادةً بالشبكة أو بإعدادات DNS، وليس بالحساب ولا باللعبة.",
+    "category": "errors",
+    "alsoIn": [
+      "accounts"
+    ],
+    "cause": "الجهاز لم يتمكن من الوصول إلى خوادم Nintendo. الأسباب الشائعة: انقطاع الاتصال، شبكة تحجب الخدمة، أو إعداد DNS يدوي غير صحيح على الجهاز.",
+    "keywords": [
+      "2124-8006",
+      "2810-1006",
+      "خطأ اتصال",
+      "DNS",
+      "الإنترنت"
+    ],
+    "aliases": [
+      "ما يتصل بالانترنت",
+      "خطأ شبكة",
+      "ماكو نت على السويج"
+    ],
+    "symptoms": [
+      "تعذّر الاتصال بالخدمة",
+      "لا تُعرض صفحة eShop",
+      "الرمز يظهر عند تسجيل الدخول"
+    ],
+    "images": [],
+    "slots": [
+      {
+        "id": "img_01",
+        "url": "",
+        "hint": "أضف صورة رسالة الخطأ 2124-8006 كما تظهر على الجهاز",
+        "alt": "",
+        "caption": "",
+        "sort_order": 1
+      },
+      {
+        "id": "img_02",
+        "url": "",
+        "hint": "أضف صورة رسالة الخطأ 2810-1006 كما تظهر على الجهاز",
+        "alt": "",
+        "caption": "",
+        "sort_order": 2
+      }
+    ],
+    "steps": [
+      {
+        "title": "أوقف Airplane Mode",
+        "detail": "تأكد أن وضع الطيران غير مفعّل قبل أي شيء آخر.",
+        "slots": [
+          {
+            "id": "img_01",
+            "url": "",
+            "hint": "أضف صورة حالة Airplane Mode",
+            "alt": "",
+            "caption": "",
+            "sort_order": 1
+          }
+        ]
+      },
+      {
+        "title": "تحقق من اتصال الإنترنت",
+        "detail": "System Settings ← Internet ← Test Connection.",
+        "slots": [
+          {
+            "id": "img_01",
+            "url": "",
+            "hint": "أضف صورة Test Connection ونتيجتها",
+            "alt": "",
+            "caption": "",
+            "sort_order": 1
+          }
+        ]
+      },
+      {
+        "title": "اضغط Retry",
+        "detail": "أعد المحاولة مرة واحدة قبل تغيير أي إعداد.",
+        "slots": [
+          {
+            "id": "img_01",
+            "url": "",
+            "hint": "أضف صورة زر Retry",
+            "alt": "",
+            "caption": "",
+            "sort_order": 1
+          }
+        ]
+      },
+      {
+        "title": "افصل الشبكة وأعد الاتصال",
+        "detail": "من إعدادات الإنترنت، انسَ الشبكة ثم اتصل بها من جديد.",
+        "slots": [
+          {
+            "id": "img_01",
+            "url": "",
+            "hint": "أضف صورة إعدادات الشبكة",
+            "alt": "",
+            "caption": "",
+            "sort_order": 1
+          }
+        ]
+      },
+      {
+        "title": "جرّب شبكة Wi-Fi أخرى أو Hotspot من هاتف آخر",
+        "detail": "هذه الخطوة تفصل مشكلة الشبكة عن مشكلة الجهاز أو الحساب.",
+        "hint": "إذا نجح الاتصال على شبكة أخرى فالمشكلة في الشبكة الأولى، غالباً حجب أو DNS.",
+        "slots": [
+          {
+            "id": "img_01",
+            "url": "",
+            "hint": "أضف صورة الاتصال بشبكة أخرى",
+            "alt": "",
+            "caption": "",
+            "sort_order": 1
+          }
+        ]
+      },
+      {
+        "title": "إذا استمر الخطأ على شبكة أخرى، أرسل صورة كاملة يظهر فيها Error Code",
+        "detail": "أرسلها داخل محادثة الطلب حتى نتابعها معك.",
+        "slots": [
+          {
+            "id": "img_01",
+            "url": "",
+            "hint": "أضف صورة الشاشة كاملة مع رمز الخطأ",
+            "alt": "",
+            "caption": "",
+            "sort_order": 1
+          }
+        ]
+      }
+    ],
+    "avoid": [
+      "لا تحذف مستخدم حساب اللعبة.",
+      "لا تغيّر كلمة مرور الحساب.",
+      "لا تفترض أن كل Error Code سببه الإنترنت — الرموز المشابهة لهذين المثالين فقط هي المرتبطة عادةً بالشبكة أو DNS."
+    ],
+    "contactAdminWhen": "إذا ظهر الرمز نفسه على أكثر من شبكة، أو ظهر أثناء تسجيل الدخول لا أثناء اللعب.",
+    "relatedGames": [],
+    "relatedProducts": [],
+    "relatedErrors": [
+      "2124-8006",
+      "2810-1006"
+    ],
+    "arabicKeywords": [
+      "خطأ اتصال",
+      "الشبكة",
+      "دي إن إس"
+    ],
+    "englishKeywords": [
+      "connection error",
+      "dns",
+      "cannot connect"
+    ],
+    "kurdishKeywords": [],
+    "priority": 85,
+    "featured": true,
+    "published": true
+  },
+  {
+    "id": "VERIFICATION_CODE",
+    "emoji": "✉️",
+    "title": "مشاكل رمز التحقق: لم يصل، انتهت صلاحيته، أو أُلغي",
+    "description": "رمز التحقق يصل إلى بريد الحساب الذي يملكه المتجر، فنحن من نقرأه ونرسله لك. هذه الحالات الأربع تغطي كل ما قد يحدث.",
+    "category": "accounts",
+    "cause": "الرمز صالح لمدة ساعة من وقت إرساله، ويُبطَل إذا خرجت من شاشة Verification code أو إذا طُلب رمز جديد. الضغط على Resend عدة مرات يُبطل الرمز الذي بيدنا بالفعل.",
+    "keywords": [
+      "رمز التحقق",
+      "verification code",
+      "resend",
+      "لم يصل الرمز"
+    ],
+    "aliases": [
+      "ما وصلني الكود",
+      "الكود منتهي",
+      "يطلب رمز"
+    ],
+    "symptoms": [
+      "شاشة Verification code لا تقبل الرمز",
+      "الرمز وصل متأخراً",
+      "خرجت من الشاشة ورجعت"
+    ],
+    "images": [],
+    "slots": [
+      {
+        "id": "img_01",
+        "url": "",
+        "hint": "أضف صورة شاشة Verification code",
+        "alt": "",
+        "caption": "",
+        "sort_order": 1
+      }
+    ],
+    "steps": [
+      {
+        "title": "الرمز لم يصل بعد",
+        "detail": "انتظر داخل الشاشة. الرسالة قد تتأخر دقائق. أخبر الأدمن أنك في انتظارها ولا تخرج من الشاشة.",
+        "hint": "لا تضغط Resend من نفسك — قد تُبطل رمزاً وصلنا بالفعل.",
+        "slots": [
+          {
+            "id": "img_01",
+            "url": "",
+            "hint": "أضف صورة شاشة الانتظار",
+            "alt": "",
+            "caption": "",
+            "sort_order": 1
+          }
+        ]
+      },
+      {
+        "title": "الرمز انتهت صلاحيته",
+        "detail": "الرمز صالح ساعة واحدة من وقت إرساله. أخبر الأدمن ليطلب واحداً جديداً.",
+        "slots": [
+          {
+            "id": "img_01",
+            "url": "",
+            "hint": "أضف صورة رسالة رفض الرمز",
+            "alt": "",
+            "caption": "",
+            "sort_order": 1
+          }
+        ]
+      },
+      {
+        "title": "الأدمن طلب منك الضغط على Resend",
+        "detail": "عندها فقط: اضغط Haven’t received the e-mail؟ ثم Resend، وابقَ في الشاشة. راجع دليل إعادة الإرسال.",
+        "slots": [
+          {
+            "id": "img_01",
+            "url": "",
+            "hint": "أضف صورة زر Haven’t received the e-mail؟",
+            "alt": "",
+            "caption": "",
+            "sort_order": 1
+          },
+          {
+            "id": "img_02",
+            "url": "",
+            "hint": "أضف صورة زر Resend",
+            "alt": "",
+            "caption": "",
+            "sort_order": 2
+          }
+        ]
+      },
+      {
+        "title": "خرجت من الشاشة فأُلغي الرمز",
+        "detail": "أعد خطوات تسجيل الدخول من البداية، وابقَ في الشاشة هذه المرة حتى يصلك الرمز.",
+        "slots": [
+          {
+            "id": "img_01",
+            "url": "",
+            "hint": "أضف صورة العودة إلى بداية تسجيل الدخول",
+            "alt": "",
+            "caption": "",
+            "sort_order": 1
+          }
+        ]
+      }
+    ],
+    "avoid": [
+      "لا تضغط Resend إلا بطلب الأدمن.",
+      "لا تضغط Cancel أو Close أو رجوع أثناء انتظار الرمز.",
+      "لا تحاول تغيير بريد الحساب أو كلمة مروره."
+    ],
+    "contactAdminWhen": "في كل الحالات الأربع: أخبرنا داخل محادثة الطلب وأرسل صورة كاملة للشاشة.",
+    "relatedGames": [],
+    "relatedProducts": [],
+    "relatedErrors": [
+      "VERIFICATION_CODE",
+      "CODE_EXPIRED"
+    ],
+    "arabicKeywords": [
+      "رمز",
+      "كود التحقق",
+      "بريد"
+    ],
+    "englishKeywords": [
+      "verification code",
+      "resend",
+      "havent received the email"
+    ],
+    "kurdishKeywords": [],
+    "priority": 90,
+    "featured": true,
     "published": true
   }
 ]

@@ -205,6 +205,32 @@ export function FaqEditor({ categories, faq, onChangeCategories, onChangeFaq }: 
                       onChange={(e) => updateFaq(f.id, "answer_ar", e.target.value)}
                       className="w-full border border-border rounded-lg px-3 py-2 bg-background focus:border-primary outline-none text-sm min-h-[80px]"
                     />
+                    <p className="mt-1 text-[11px] text-muted-foreground">
+                      {t(
+                        "اكتب جواباً قصيراً. الشرح الكامل يعيش في الدليل أو السياسة، ورابطه في الحقل التالي.",
+                      )}
+                    </p>
+                  </div>
+                  <div>
+                    {/*
+                      Where the long answer lives.
+
+                      Writing it here as well means two copies of every rule,
+                      and the copy nobody remembers to update is the one a
+                      customer reads. Same-origin only — an FAQ answer is not a
+                      place from which to send somebody off the site.
+                    */}
+                    <label className="block text-xs font-bold mb-1">
+                      {t("رابط الشرح الكامل (داخل الموقع)")}
+                    </label>
+                    <input
+                      type="text"
+                      dir="ltr"
+                      value={(f as { more_href?: string }).more_href || ""}
+                      onChange={(e) => updateFaq(f.id, "more_href" as never, e.target.value)}
+                      placeholder="/account_guides#login-method-1"
+                      className="w-full border border-border rounded-lg px-3 py-2 bg-background focus:border-primary outline-none text-sm font-mono"
+                    />
                   </div>
                 </div>
                 <button

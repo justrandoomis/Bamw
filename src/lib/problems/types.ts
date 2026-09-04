@@ -6,6 +6,8 @@
  * component changes, no layout changes.
  */
 
+import type { ContentImage } from "../content";
+
 export const CATEGORY_IDS = [
   "games",
   "accounts",
@@ -51,6 +53,15 @@ export interface SolutionStep {
   detail?: string;
   /** Optional aside rendered as a tip under the step. */
   hint?: string;
+  /*
+    Admin-managed picture slots for this step.
+
+    Separate from `images` below, which are files committed to this repository
+    with known dimensions. These are declared empty by a shipped entry — the
+    screenshot of the error dialog, the button to press — and filled by the
+    shop owner from the admin screen. An unfilled slot renders nothing.
+  */
+  slots?: ContentImage[];
 }
 
 export interface Problem {
@@ -69,6 +80,12 @@ export interface Problem {
   aliases: string[];
   symptoms: string[];
   images: ProblemImage[];
+  /** Admin-managed slots for the problem itself, usually the error screen. */
+  slots?: ContentImage[];
+  /** What the customer must not do — the part that loses an account. */
+  avoid?: string[];
+  /** When to stop and ask a person instead of trying again. */
+  contactAdminWhen?: string;
   steps: SolutionStep[];
   relatedGames: string[];
   relatedProducts: string[];
