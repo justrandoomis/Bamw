@@ -11,6 +11,40 @@ import { LEGACY_TR } from "./i18n.tr";
  * else, so no one sees a flash of untranslated text.
  */
 export const translations: Record<string, { en: string; ku: string; tr?: string }> = {
+  /*
+    The four help pages.
+
+    Their content is authored in Arabic and carries optional `_en`/`_ku`
+    fields an admin can fill; these are the page's own chrome — headings,
+    placeholders, the jump labels — which belong to the app rather than to
+    the copy, and so follow the language switcher like the rest of it.
+  */
+  "الأسئلة الشائعة": { en: "Frequently Asked Questions", ku: "پرسیارە باوەکان" },
+  "دليل الحساب والتشغيل": { en: "Account & Play Guide", ku: "ڕێنمایی هەژمار و یاریکردن" },
+  "اتبع الخطوات حسب الخيار الموجود في طلبك. لا تحذف مستخدم حساب اللعبة، ولا تغيّر بيانات الحساب، ولا تضغط Forgot your password. عند طلب رمز تحقق، أرسل صورة كاملة للشاشة داخل محادثة الطلب وانتظر تعليمات الأدمن.": { en: "Follow the steps for the option on your order. Do not delete the game account user, do not change the account details, and do not press Forgot your password. If a verification code is requested, send a full screenshot inside your order chat and wait for staff instructions.", ku: "هەنگاوەکان بەپێی ئەو هەڵبژاردنەی لە داواکاریەکەتدایە جێبەجێ بکە. بەکارهێنەری هەژماری یاری مەسڕەوە، زانیاری هەژمار مەگۆڕە، و Forgot your password دامەگرە. ئەگەر کۆدی پشتڕاستکردنەوە داوا کرا، وێنەی تەواوی شاشەکە بنێرە ناو گفتوگۆی داواکارییەکەت و چاوەڕێی ڕێنمایی بەڕێوەبەر بکە." },
+  "تسجيل الدخول مشترك بين Offline وOnline؛ الاختلاف يظهر عند تشغيل اللعبة فقط.": { en: "Signing in is the same for Offline and Online; the difference only appears when you play.", ku: "چوونەژوورەوە بۆ Offline و Online وەک یەکە؛ جیاوازییەکە تەنها لە کاتی یاریکردندا دەردەکەوێت." },
+  "أقسام الدليل": { en: "Guide sections", ku: "بەشەکانی ڕێنمایی" },
+  "طرق تسجيل الدخول": { en: "Sign-in methods", ku: "ڕێگاکانی چوونەژوورەوە" },
+  "تحميل اللعبة": { en: "Download the game", ku: "داگرتنی یارییەکە" },
+  "تشغيل حساب Offline": { en: "Playing an Offline account", ku: "یاریکردن بە هەژماری Offline" },
+  "تشغيل حساب Online": { en: "Playing an Online account", ku: "یاریکردن بە هەژماری Online" },
+  "الخيار والإصدار": { en: "Option vs edition", ku: "هەڵبژاردن بەرامبەر وەشان" },
+  "لا توجد أدلة منشورة حالياً.": { en: "No guides are published yet.", ku: "هێشتا هیچ ڕێنماییەک بڵاو نەکراوەتەوە." },
+  "سياسة المتجر": { en: "Store policy", ku: "سیاسەتی فرۆشگا" },
+  "الملخص": { en: "Summary", ku: "کورتە" },
+  "ملخص السياسة": { en: "Policy summary", ku: "کورتەی سیاسەت" },
+  "الإصدار": { en: "Version", ku: "وەشان" },
+  "آخر تحديث": { en: "Last updated", ku: "دوایین نوێکردنەوە" },
+  "لا توجد بنود منشورة حالياً.": { en: "No clauses are published yet.", ku: "هێشتا هیچ بڕگەیەک بڵاو نەکراوەتەوە." },
+  "أجوبة قصيرة، ورابط للشرح الكامل في الدليل أو السياسة.": { en: "Short answers, with a link to the full explanation in the guide or the policy.", ku: "وەڵامی کورت، لەگەڵ بەستەرێک بۆ ڕوونکردنەوەی تەواو لە ڕێنمایی یان سیاسەتدا." },
+  "ابحث عن سؤال…": { en: "Search for a question…", ku: "بەدوای پرسیارێکدا بگەڕێ…" },
+  "ابحث في الأسئلة الشائعة": { en: "Search the FAQ", ku: "لە پرسیارە باوەکاندا بگەڕێ" },
+  "لا يوجد سؤال يطابق بحثك.": { en: "No question matches your search.", ku: "هیچ پرسیارێک لەگەڵ گەڕانەکەت ناگونجێت." },
+  "أسئلة أخرى": { en: "Other questions", ku: "پرسیاری تر" },
+  "الشرح الكامل": { en: "Full explanation", ku: "ڕوونکردنەوەی تەواو" },
+  "ما لا يجب فعله": { en: "What not to do", ku: "ئەوەی نابێت بیکەیت" },
+  "متى تتواصل معنا": { en: "When to contact us", ku: "کەی پەیوەندیمان پێوە بکەیت" },
+  "افتح محادثة طلبك": { en: "Open your order chat", ku: "گفتوگۆی داواکارییەکەت بکەرەوە" },
   "جديد ومتصدر: منتجات": { en: "New & Trending", ku: "Nû û Trend" },
   "الخدمات الأكثر شعبية": { en: "Most Popular Services", ku: "Xizmetên Navdar" },
   "جميع المنتجات: الأعلى تقييماً": { en: "Top Rated Products", ku: "Berhemên Baş" },

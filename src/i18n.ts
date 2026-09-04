@@ -121,6 +121,23 @@ export function tr(key: string) {
   return useI18n.getState().t(key);
 }
 
+/**
+ * The active language, read the same way {@link tr} reads its copy.
+ *
+ * `useI18n((s) => s.lang)` is the wrong tool during server rendering: the store
+ * hook resolves through React's server snapshot, which is the value the store
+ * was created with rather than the one it holds now — so a page rendered for an
+ * English reader picked its *content* fields with "ar" while its chrome, which
+ * goes through `t()` and reads `getState()`, came out in English. Half a
+ * translated page is harder to notice than none of one.
+ *
+ * Reading the store directly is safe for the same reason `tr` is: the whole
+ * tree remounts when the language changes (see `src/routes/__root.tsx`).
+ */
+export function currentLang(): Language {
+  return useI18n.getState().lang;
+}
+
 /* --------------------------- key-based translation -------------------------- */
 
 /**

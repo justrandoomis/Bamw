@@ -5,6 +5,7 @@ import { Reveal } from "@/components/motion/reveal";
 import { SolutionSteps } from "./solution-steps";
 import { ProblemFigure } from "./problem-figure";
 import { ContentGallery } from "@/components/content/ContentGallery";
+import { useI18n } from "@/i18n";
 import { CATEGORY_MAP, type Problem, type ProblemImage } from "@/lib/problems/types";
 import { highlight } from "@/lib/search/highlight";
 
@@ -32,6 +33,7 @@ export function ProblemSection({
   matchedTokens?: string[];
   isTargeted?: boolean;
 }) {
+  const t = useI18n((state) => state.t);
   const category = CATEGORY_MAP[problem.category];
   const imageOnRight = index % 2 === 0;
 
@@ -129,7 +131,7 @@ export function ProblemSection({
               <div className="rounded-2xl border border-rose-500/30 bg-rose-500/5 p-4">
                 <h4 className="flex items-center gap-2 text-base font-extrabold text-foreground">
                   <span aria-hidden>⛔</span>
-                  ما لا يجب فعله
+                  {t("ما لا يجب فعله")}
                 </h4>
                 <ul className="mt-2 list-disc space-y-1 ps-5 text-[0.95rem] leading-relaxed text-muted-foreground">
                   {problem.avoid!.map((line) => (
@@ -143,7 +145,7 @@ export function ProblemSection({
           {problem.contactAdminWhen && (
             <Reveal delay={210} className="mt-4">
               <p className="rounded-2xl border border-primary/30 bg-primary/5 p-4 text-[0.95rem] leading-relaxed text-foreground">
-                <span className="font-extrabold">متى تتواصل معنا: </span>
+                <span className="font-extrabold">{t("متى تتواصل معنا")}: </span>
                 {problem.contactAdminWhen}
               </p>
             </Reveal>
