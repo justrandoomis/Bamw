@@ -25,21 +25,27 @@ jobs:
         with:
           ref: ${{ github.event.pull_request.head.sha }}
           persist-credentials: false
-      - uses: oven-sh/setup-bun@v2
+      # npm, from the committed lockfile. These jobs opened with
+      # `bun install --frozen-lockfile`, and there has been no bun lockfile
+      # since the tree moved to npm — so every one of them died on its install
+      # step, taking the audit and repair tooling with it.
+      - uses: actions/setup-node@v4
         with:
-          bun-version: latest
-      - run: bun install --frozen-lockfile
+          node-version: 22
+          cache: npm
+      - run: npm install -g npm@11.19.1
+      - run: npm ci --no-audit --no-fund
       - name: Typecheck
-        run: bun run typecheck
+        run: npm run typecheck
       - name: Tests
         if: always()
-        run: bun run test
+        run: npm run test
       - name: Lint
         if: always()
-        run: bun run lint
+        run: npm run lint
       - name: Production build
         if: always()
-        run: bun run build
+        run: npm run build
 
   visual:
     runs-on: ubuntu-latest
@@ -57,22 +63,29 @@ jobs:
           ref: ${{ github.event.pull_request.head.sha }}
           path: restored
           persist-credentials: false
-      - uses: oven-sh/setup-bun@v2
+      - uses: actions/setup-node@v4
         with:
-          bun-version: latest
+          node-version: 22
+      - run: npm install -g npm@11.19.1
+      # Both trees, from each one's own committed lockfile. The baseline
+      # checkout can predate the move to npm, so it falls back to a plain
+      # install rather than failing the comparison outright.
       - name: Install both trees
         run: |
-          cd baseline
-          bun install --frozen-lockfile
-          cd ../restored
-          bun install --frozen-lockfile
+          for tree in baseline restored; do
+            if [ -f "$tree/package-lock.json" ]; then
+              (cd "$tree" && npm ci --no-audit --no-fund)
+            else
+              (cd "$tree" && npm install --no-audit --no-fund)
+            fi
+          done
       - name: Capture before and after at the acceptance viewports
         shell: bash
         run: |
           set -euo pipefail
-          (cd baseline && bunx vite dev --host 127.0.0.1 --port 4173 > ../baseline.log 2>&1) &
+          (cd baseline && npx vite dev --host 127.0.0.1 --port 4173 > ../baseline.log 2>&1) &
           baseline_pid=$!
-          (cd restored && bunx vite dev --host 127.0.0.1 --port 4174 > ../restored.log 2>&1) &
+          (cd restored && npx vite dev --host 127.0.0.1 --port 4174 > ../restored.log 2>&1) &
           restored_pid=$!
           trap 'kill "$baseline_pid" "$restored_pid" 2>/dev/null || true' EXIT
           for port in 4173 4174; do
