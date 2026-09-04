@@ -56,7 +56,7 @@ jobs:
         run: |
           node scripts/edge-challenge-rate.mjs \
             --base "${SMOKE_ORIGIN:-https://banan.to}" \
-            --samples 6 \
+            --samples 3 \
             --json challenge-rate.json
 
       - name: Fail if either check did

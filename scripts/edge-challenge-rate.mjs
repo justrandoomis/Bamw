@@ -14,8 +14,17 @@
  * rather than the site is worse than no monitor.
  *
  * So this measures the rate rather than papering over it. Each path is sampled
- * several times, sequentially, with a real phone's headers, and the counts are
+ * a few times, sequentially, with a real phone's headers, and the counts are
  * printed per path and in total.
+ *
+ * ## Why it is slow on purpose
+ *
+ * The first version fired forty-eight requests in thirty-seven seconds from one
+ * address and reported that 100% were challenged. That number was worthless:
+ * a burst from a single IP is itself enough to raise a bot score, so the tool
+ * was measuring its own impatience. A customer opening a help page is one
+ * request every several seconds at most, so the default pacing is that — and
+ * the answer means something.
  *
  * Usage:
  *   node scripts/edge-challenge-rate.mjs [--base https://banan.to]
@@ -37,8 +46,9 @@ const BASE = (args.base ?? process.env.SMOKE_ORIGIN ?? "https://banan.to").repla
 const PATHS = (
   args.paths ?? "/,/add_game,/disc_trade,/problem,/account_guides,/faq,/policy,/support"
 ).split(",");
-const SAMPLES = Number(args.samples ?? 6);
-const GAP = Number(args.gap ?? 700);
+const SAMPLES = Number(args.samples ?? 3);
+/** Seconds apart, not milliseconds: see "Why it is slow on purpose" above. */
+const GAP = Number(args.gap ?? 6000);
 
 /** A phone, because that is what the shop's customers are on. */
 const BROWSER_HEADERS = {
@@ -95,9 +105,15 @@ console.log(
 );
 if (totalChallenged) {
   console.log(
-    "A customer has no retry: that share of visits sees the verification screen," +
-      " not the shop. This is a Cloudflare edge setting (Bot Fight Mode / a WAF" +
-      " managed rule / Under Attack), not application code.",
+    "A customer has no retry: a challenged request is a page that did not open." +
+      " This is a Cloudflare edge setting (Bot Fight Mode / a WAF managed rule /" +
+      " Under Attack), not application code.",
+  );
+  console.log(
+    "Read the rate as a floor, not a forecast: these requests come from a data" +
+      " centre address, which scores worse than a phone on a home or mobile" +
+      " network. It shows the rule is challenging ordinary browser requests; it" +
+      " does not say what share of real customers are caught.",
   );
 }
 
