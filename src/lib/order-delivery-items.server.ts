@@ -987,6 +987,33 @@ export async function recordDeliveryProof(input: {
     throw error;
   }
 
+  /*
+    Tell somebody the member has proved the sign-in.
+
+    This is the step the shop is waiting for: the verification code cannot be
+    sent until it arrives. The proof was posted to the order thread as a
+    message from the *member*, and `appendMessage` pushes to Telegram only for
+    admin-authored messages — so the one action that unblocks the order
+    notified nobody, and the customer sat looking at a screen that said the
+    code was coming.
+
+    After the record is written, and swallowing its own failure: a Telegram
+    outage must not undo a proof the member has already sent.
+  */
+  try {
+    const { sendAdminNotification } = await import("./telegram-notifications.server");
+    const { escapeHtml } = await import("./telegram.server");
+    await sendAdminNotification(
+      "order",
+      `📸 <b>وصلت صورة إثبات تسجيل الدخول</b>\n\n` +
+        `🔖 <b>رقم الطلب:</b> <code>${escapeHtml(String(order.code ?? order.id))}</code>\n` +
+        `🎮 <b>المنتج:</b> ${escapeHtml(String(row.product_title ?? ""))}\n` +
+        `\n▶️ العميل بانتظار رمز التحقق.`,
+    );
+  } catch (error) {
+    console.warn("[delivery:proof_notify_failed]", { orderId: order.id, error });
+  }
+
   order = {
     ...order,
     updatedAt: now,

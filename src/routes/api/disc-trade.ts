@@ -354,8 +354,9 @@ export const Route = createFileRoute("/api/disc-trade")({
               payout_credited: number | null;
               preferred_trade: string | null;
               payout_type: string | null;
+              selections: string | null;
             }>(
-              `SELECT id, status, user_id, valuation_iqd, final_iqd, admin_valuation_iqd, approved_iqd, payout_credited, preferred_trade, payout_type FROM disc_trades WHERE id = ?`,
+              `SELECT id, status, user_id, valuation_iqd, final_iqd, admin_valuation_iqd, approved_iqd, payout_credited, preferred_trade, payout_type, selections FROM disc_trades WHERE id = ?`,
               tradeId,
             );
             if (!trade) return json({ error: "طلب المقايضة غير موجود" }, { status: 404 });
@@ -470,7 +471,59 @@ export const Route = createFileRoute("/api/disc-trade")({
                   ),
                 );
 
-                if (creditAmount > 0) {
+                /*
+                  How the customer asked to be paid.
+
+                  `selections` first: the form hardcodes `payout_type` to store
+                  credit and sends it for every request, so the column says
+                  store credit even for the members who picked cash — and the
+                  quote they accepted was calculated from that choice. Settling
+                  from the column pays a cash request in store credit, which is
+                  the customer's money in a form they cannot take out of the
+                  shop.
+                */
+                const payoutMethod =
+                  payoutMethodOf(trade.selections) ??
+                  (trade.payout_type === "cash" ? "cash" : "store_credit");
+
+                if (creditAmount > 0 && payoutMethod === "cash") {
+                  /*
+                    Cash is handed over by a person, so the money does not move
+                    here — but the trade still has to stop being payable, or
+                    the next status change credits a wallet for a debt already
+                    settled at the counter. The row is marked settled with the
+                    method recorded, and both sides are told: the customer what
+                    to expect, the shop that somebody owes a payment.
+                  */
+                  await d1Run(
+                    `UPDATE disc_trades SET payout_credited = 1, payout_credited_at = ?, payout_amount_credited = ?, payout_type = 'cash' WHERE id = ? AND (payout_credited IS NULL OR payout_credited = 0)`,
+                    now(),
+                    creditAmount,
+                    trade.id,
+                  );
+                  await appendStatus(tradeId, "completed", "system", "تسوية نقدية");
+                  await notify(
+                    `✅ اكتملت مقايضتك. المبلغ ${creditAmount.toLocaleString()} د.ع يُسلَّم نقداً حسب اختيارك، وليس رصيداً في المحفظة.`,
+                    trade.user_id,
+                  );
+                  try {
+                    const { sendAdminNotification } = await import(
+                      "@/lib/telegram-notifications.server"
+                    );
+                    /*
+                      The wallet topic, because this is a payment the shop
+                      owes — the same place a top-up verdict goes. There is no
+                      "trade" kind, and inventing one would route it to the
+                      general topic where money notices get lost.
+                    */
+                    await sendAdminNotification(
+                      "wallet",
+                      `💵 مقايضة مكتملة بالدفع النقدي\nالمبلغ: ${creditAmount.toLocaleString()} د.ع\nرقم الطلب: ${trade.id.slice(-6)}\nسلّم المبلغ نقداً — لم يُضف أي رصيد للمحفظة.`,
+                    );
+                  } catch (err) {
+                    console.error("[trade:cash_payout_notify_failed]", err);
+                  }
+                } else if (creditAmount > 0) {
                   try {
                     // Execute atomic batch: Mark trade as credited, insert transaction, update wallet
                     await d1Batch([

@@ -19,6 +19,7 @@ import {
   Sparkles,
   Trash2,
   Wallet,
+  Banknote,
   X,
   ShieldCheck,
   HelpCircle,
@@ -134,7 +135,16 @@ function DiscTradePage() {
   const [photos, setPhotos] = useState<string[]>([]);
   const [uploading, setUploading] = useState(false);
   const [notes, setNotes] = useState("");
-  const payout = "store_credit";
+  /*
+    The customer's own answer, not a constant.
+
+    This was `const payout = "store_credit"` and was sent for every request, so
+    the column said store credit on every row — including the rows where the
+    member picked cash in the condition step, and where the quote they accepted
+    was calculated from that choice. Settlement now reads the selection, and so
+    does this: one answer, in one place.
+  */
+  const payout = selections["payout_method"] === "cash" ? "cash" : "store_credit";
   const [accepted, setAccepted] = useState(false);
   const [submittedId, setSubmittedId] = useState<string | null>(null);
   const fileRef = useRef<HTMLInputElement>(null);
@@ -1274,19 +1284,35 @@ function DiscTradePage() {
                         </div>
                       </div>
 
-                      {tr.payout_credited === 1 && (
-                        <div className="flex items-center justify-between p-3 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-600 dark:text-emerald-400 text-xs font-bold">
-                          <span className="flex items-center gap-1.5">
-                            <Wallet className="w-4 h-4" />
+                      {/*
+                        Said the way the member was actually paid.
+
+                        This announced "credited to your wallet" for every
+                        settled trade, including the cash ones — telling
+                        somebody their money is somewhere it is not, and
+                        sending them to a wallet page that would not show it.
+                      */}
+                      {tr.payout_credited === 1 &&
+                        (tr.payoutMethod === "cash" || tr.payout_type === "cash" ? (
+                          <div className="flex items-center gap-1.5 p-3 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-600 dark:text-emerald-400 text-xs font-bold">
+                            <Banknote className="w-4 h-4" />
                             {lang === "ar"
-                              ? `تم إيداع مبلغ المقايضة (${Number(tr.payout_amount_credited ?? pricing.approvedIqd ?? 0).toLocaleString()} د.ع) في محفظتك بنجاح!`
-                              : `Trade payout of ${Number(tr.payout_amount_credited ?? pricing.approvedIqd ?? 0).toLocaleString()} IQD credited to your wallet!`}
-                          </span>
-                          <a href="/wallet" className="underline hover:opacity-80">
-                            {lang === "ar" ? "عرض المحفظة" : "View Wallet"}
-                          </a>
-                        </div>
-                      )}
+                              ? `اكتملت المقايضة. مبلغ ${Number(tr.payout_amount_credited ?? pricing.approvedIqd ?? 0).toLocaleString()} د.ع يُسلَّم نقداً حسب اختيارك.`
+                              : `Trade complete. ${Number(tr.payout_amount_credited ?? pricing.approvedIqd ?? 0).toLocaleString()} IQD is paid in cash, as you chose.`}
+                          </div>
+                        ) : (
+                          <div className="flex items-center justify-between p-3 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-600 dark:text-emerald-400 text-xs font-bold">
+                            <span className="flex items-center gap-1.5">
+                              <Wallet className="w-4 h-4" />
+                              {lang === "ar"
+                                ? `تم إيداع مبلغ المقايضة (${Number(tr.payout_amount_credited ?? pricing.approvedIqd ?? 0).toLocaleString()} د.ع) في محفظتك بنجاح!`
+                                : `Trade payout of ${Number(tr.payout_amount_credited ?? pricing.approvedIqd ?? 0).toLocaleString()} IQD credited to your wallet!`}
+                            </span>
+                            <a href="/wallet" className="underline hover:opacity-80">
+                              {lang === "ar" ? "عرض المحفظة" : "View Wallet"}
+                            </a>
+                          </div>
+                        ))}
 
                       {terminal ? (
                         <p className="text-sm text-muted-foreground bg-muted/40 p-3 rounded-xl">

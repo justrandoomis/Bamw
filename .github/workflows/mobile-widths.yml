@@ -1,0 +1,81 @@
+# Can any page be scrolled sideways on a phone?
+#
+# A page that overflows horizontally does not merely gain a scrollbar: mobile
+# Safari zooms the whole document out to fit `scrollWidth`, which is what
+# produces the "empty band down one side with everything shifted" look — and in
+# an RTL layout the band lands on the left. Because the symptom is a zoom it
+# reads as a styling problem, and `overflow-x: hidden` hides the scrollbar
+# while keeping the shrink-to-fit. The checker refuses that shortcut.
+#
+# Runs against a preview server built from the branch, so a regression is
+# caught before it is deployed rather than found on somebody's phone.
+name: Mobile widths
+
+on:
+  workflow_dispatch:
+    inputs:
+      paths:
+        description: "Comma-separated paths to check"
+        type: string
+        default: "/,/policy,/faq,/account_guides,/problem,/cart,/games"
+  push:
+    branches: ["claude/**"]
+    paths:
+      - "src/**"
+      - "scripts/check-horizontal-overflow.mjs"
+      - ".github/workflows/mobile-widths.yml"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: mobile-widths-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  widths:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm install -g npm@11.19.1
+      - run: npm ci --no-audit --no-fund
+
+      # `playwright-core` carries no installer, so the browser comes from the
+      # `playwright` package's CLI, pinned to the same version.
+      - name: Install Chromium
+        run: npx --yes playwright@1.62.1 install --with-deps chromium
+
+      - name: Start the app
+        run: |
+          npm run dev > dev.log 2>&1 &
+          for _ in $(seq 1 60); do
+            if curl -sf -o /dev/null http://localhost:3000/; then echo "up"; exit 0; fi
+            sleep 2
+          done
+          echo "the dev server never answered"; tail -40 dev.log; exit 1
+
+      - name: Check the widths in the acceptance criteria
+        env:
+          PATHS: ${{ inputs.paths }}
+        run: |
+          node scripts/check-horizontal-overflow.mjs \
+            --base http://localhost:3000 \
+            --widths 320,360,375,390,430,768 \
+            --paths "${PATHS:-/,/policy,/faq,/account_guides,/problem,/cart,/games}" \
+            --json overflow.json
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: mobile-widths
+          path: |
+            overflow.json
+            dev.log
+          if-no-files-found: warn
