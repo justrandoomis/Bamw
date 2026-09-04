@@ -16,6 +16,7 @@ import {
   telegramPublicOrigin,
 } from "./telegram.server";
 import { d1First } from "./d1.server";
+import { normalizePhone } from "./phone";
 import type { Order, ProductRequest, User } from "./types";
 
 /**
@@ -68,6 +69,40 @@ export async function getUserTelegramChatId(userId: string): Promise<string | un
     if (user?.telegram_id) return String(user.telegram_id);
   } catch {
     // Deployments without the legacy column: not an error, just nothing here.
+  }
+
+  /*
+    The member is linked, and the link is filed under a phone.
+
+    `telegram_links.user_id` is not always a user id. Someone who verifies
+    Telegram before their account exists is filed under the owner key
+    `guest:<phone>`, and `adoptGuestTelegramLink` re-keys it when they sign in.
+    That adoption runs on the OTP paths only, so a member who arrived another
+    way keeps a row nothing will ever look up: linked as far as they can tell,
+    and unreachable. Production is carrying such a row right now.
+
+    Matching the member's own phone against the link's is the same criterion
+    `adoptGuestTelegramLink` already uses to recognise their row, so this
+    recognises exactly what adoption would have — without waiting for a sign-in
+    that may never happen, and without rewriting anybody's data.
+  */
+  try {
+    const owner = await d1First<{ phone?: string | null }>(
+      "SELECT phone FROM users WHERE id = ?",
+      userId,
+    );
+    const phone = owner?.phone ? normalizePhone(String(owner.phone)) : undefined;
+    if (phone) {
+      const byPhone = await d1First<{ telegram_chat_id: string | number }>(
+        `SELECT telegram_chat_id FROM telegram_links
+          WHERE telegram_phone = ? AND telegram_chat_id IS NOT NULL
+          ORDER BY updated_at DESC LIMIT 1`,
+        phone,
+      );
+      if (byPhone?.telegram_chat_id) return String(byPhone.telegram_chat_id);
+    }
+  } catch (err) {
+    console.warn("[telegram:notify] phone-keyed link lookup failed:", err);
   }
 
   return undefined;

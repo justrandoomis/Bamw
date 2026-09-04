@@ -69,3 +69,43 @@ describe("per-user Telegram notifications", () => {
     expect(linksAt).toBeLessThan(legacyAt === -1 ? Number.MAX_SAFE_INTEGER : legacyAt);
   });
 });
+
+/**
+ * The link a lookup by user id will never find.
+ *
+ * `telegram_links.user_id` is not always a user id. Someone who verifies
+ * Telegram before their account exists is filed under `guest:<phone>`, and
+ * `adoptGuestTelegramLink` re-keys the row when they sign in — on the OTP
+ * paths only. A member who arrived any other way keeps a row nothing looks up:
+ * linked as far as they can tell, silent forever. Production is carrying one.
+ */
+describe("a link filed under a phone rather than a user id", () => {
+  it("is still found, by the same criterion adoption uses", () => {
+    const helper = readFileSync("src/lib/telegram-notifications.server.ts", "utf8");
+    const body = helper.slice(
+      helper.indexOf("export async function getUserTelegramChatId"),
+      helper.indexOf("function buildInlineAppButton"),
+    );
+    expect(body).toContain("telegram_phone = ?");
+    expect(body).toContain("normalizePhone");
+  });
+
+  it("is only reached after the two lookups that name the user directly", () => {
+    /*
+      Order matters. A row keyed to this member's own id is the authoritative
+      answer; the phone is how an unadopted row is recognised, and must never
+      outrank it — two accounts that once shared a number would otherwise send
+      one member's messages to the other.
+    */
+    const helper = readFileSync("src/lib/telegram-notifications.server.ts", "utf8");
+    const byUserId = helper.indexOf("FROM telegram_links WHERE user_id = ?");
+    const byPhone = helper.indexOf("telegram_phone = ?");
+    expect(byUserId).toBeGreaterThan(-1);
+    expect(byPhone).toBeGreaterThan(byUserId);
+  });
+
+  it("never returns a link that carries no chat id", () => {
+    const helper = readFileSync("src/lib/telegram-notifications.server.ts", "utf8");
+    expect(helper).toContain("telegram_chat_id IS NOT NULL");
+  });
+});
