@@ -54,6 +54,26 @@ const PAGES = [
     path: "/problem",
     must: ["banan", "Can’t play this software right now", "2124-8006", "ما لا يجب فعله"],
   },
+  /*
+    The three service cards, which this list has never covered.
+
+    "خدمات وإرشادات المتجر" on the home page is seven cards, and only four of
+    them were checked here — the four help pages. The other three are the
+    *services*, and a 404 on one of them was invisible to every check the shop
+    has: the smoke was green because it never asked.
+  */
+  {
+    path: "/add_game",
+    must: ["banan", "طلب خاص", "ابحث عن اللعبة أولاً"],
+  },
+  {
+    path: "/disc_trade",
+    must: ["banan", "لعبتك القديمة", "كيف تتم عملية المقايضة؟"],
+  },
+  {
+    path: "/support",
+    must: ["banan", "مركز الدعم والمساعدة", "support@banan.to"],
+  },
 ];
 
 const ANCHORS = [
