@@ -50,6 +50,6 @@ jobs:
       - run: npm ci --no-audit --no-fund
       - name: Probe
         env:
-          TITLES: ${{ inputs.titles || '["Katana ZERO","Shovel Knight: Treasure Trove","Shovel Knight Dig","TRIANGLE STRATEGY"]' }}
-          PLATFORM: ${{ inputs.platform || 'switch1' }}
+          TITLES: ${{ inputs.titles }}
+          PLATFORM: ${{ inputs.platform }}
         run: node scripts/game-source-probe.mjs --titles="$TITLES" --platform="$PLATFORM"

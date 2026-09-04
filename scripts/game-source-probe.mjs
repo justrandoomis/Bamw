@@ -27,9 +27,29 @@ const arg = (name, fallback = "") => {
   return hit ? hit.slice(name.length + 3) : fallback;
 };
 
-const titles = arg("title") ? [arg("title")] : JSON.parse(arg("titles", "[]"));
-const platform = arg("platform", "switch1");
-if (!titles.length) throw new Error("give --title=... or --titles='[\"a\",\"b\"]'");
+/* The first four of the batch, so a push with no inputs still probes something. */
+const DEFAULT_TITLES = [
+  "Katana ZERO",
+  "Shovel Knight: Treasure Trove",
+  "Shovel Knight Dig",
+  "TRIANGLE STRATEGY",
+];
+
+function requestedTitles() {
+  if (arg("title")) return [arg("title")];
+  const raw = arg("titles", "").trim();
+  if (!raw) return DEFAULT_TITLES;
+  try {
+    const parsed = JSON.parse(raw);
+    return Array.isArray(parsed) && parsed.length ? parsed : DEFAULT_TITLES;
+  } catch {
+    /* A bare title passed without JSON quoting is still a usable request. */
+    return [raw];
+  }
+}
+
+const titles = requestedTitles();
+const platform = arg("platform", "") || "switch1";
 
 for (const title of titles) {
   console.log("=".repeat(70));
