@@ -52,11 +52,32 @@ async function fetchPage(path) {
       // A real browser's first request for a pasted link: no referrer, HTML only.
       accept: "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
       "accept-language": "ar,en;q=0.8",
-      "user-agent": "bananto-page-smoke/1.0",
+      /*
+        A browser's user agent, because the site sits behind bot protection and
+        a self-identifying script is challenged: the first `/policy` fetch of
+        the previous run came back 403 and the same URL answered 200 three
+        seconds later. A smoke test that reports the shield rather than the
+        site is worse than no smoke test.
+      */
+      "user-agent":
+        "Mozilla/5.0 (Linux; Android 13; SM-G991B) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0 Mobile Safari/537.36",
     },
   });
-  const body = res.status === 200 ? await res.text() : "";
+  /*
+    The body of a failure is read too. A 500 from the app carries its own
+    error page, and that page usually names the throw — which is the whole
+    difference between "the page is broken" and knowing which line broke it.
+  */
+  const body = await res.text().catch(() => "");
   return { res, body, ms: Date.now() - started };
+}
+
+/** One retry for the statuses a shield returns, never for the app's own. */
+async function fetchPageWithRetry(path) {
+  const first = await fetchPage(path);
+  if (first.res.status !== 403 && first.res.status !== 429) return first;
+  await new Promise((resolve) => setTimeout(resolve, 3000));
+  return fetchPage(path);
 }
 
 say(`# Page smoke — ${ORIGIN}`);
@@ -65,10 +86,17 @@ say();
 for (const page of PAGES) {
   say(`## ${page.path}`);
   try {
-    const { res, body, ms } = await fetchPage(page.path);
+    const { res, body, ms } = await fetchPageWithRetry(page.path);
     say(`- status ${res.status} in ${ms}ms`);
     if (res.status !== 200) {
       fail(`expected 200, got ${res.status}${res.headers.get("location") ? ` → ${res.headers.get("location")}` : ""}`);
+      const excerpt = body
+        .replace(/<script[\s\S]*?<\/script>/gi, " ")
+        .replace(/<[^>]+>/g, " ")
+        .replace(/\s+/g, " ")
+        .trim()
+        .slice(0, 700);
+      if (excerpt) say(`  body: ${excerpt}`);
     } else {
       for (const needle of page.must) {
         if (!body.includes(needle)) fail(`the response does not mention ${JSON.stringify(needle)}`);
@@ -97,7 +125,7 @@ for (const path of ANCHORS) {
   */
   const [bare] = path.split("#");
   try {
-    const { res } = await fetchPage(bare);
+    const { res } = await fetchPageWithRetry(bare);
     say(`- \`${path}\` → ${res.status}`);
     if (res.status !== 200) fail(`${bare} answered ${res.status}`);
   } catch (err) {
