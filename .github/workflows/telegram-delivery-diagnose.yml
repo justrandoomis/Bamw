@@ -18,6 +18,7 @@ on:
     branches: ["claude/**"]
     paths:
       - "scripts/telegram-delivery-diagnose.mjs"
+      - "scripts/worker-logs-query.mjs"
       - ".github/workflows/telegram-delivery-diagnose.yml"
 
 permissions:
@@ -57,3 +58,9 @@ jobs:
             export D1_DATABASE_ID
           fi
           node scripts/telegram-delivery-diagnose.mjs
+
+      - name: Read what production logged
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: node scripts/worker-logs-query.mjs --hours 12 --needle telegram
