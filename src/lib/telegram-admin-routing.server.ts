@@ -134,6 +134,41 @@ const FORBIDDEN_PATTERNS: { name: string; pattern: RegExp }[] = [
 ];
 
 /**
+ * The same text with anything that looks like a secret taken out.
+ *
+ * ## Why this exists beside the guard below
+ *
+ * {@link findForbiddenSecret} drops the whole notification, and that is right
+ * for a body the shop composed: one that has to be censored to be sent was
+ * assembled wrongly, and sending the censored half would hide that.
+ *
+ * It is wrong for a customer's own words. Those are interpolated into the
+ * support and escalation cards, so a member who writes "كلمة المرور: 1234" in
+ * a message asking for help tripped the guard, and the *entire* notification
+ * was dropped — the admin was never told that customer had written in at all.
+ * A member typing about a password is not a bug in the shop's code; it is a
+ * customer needing help, and silently losing them is the worst outcome
+ * available.
+ *
+ * So untrusted text is scrubbed on the way in, at the boundary where it
+ * enters, and the guard keeps its drop semantics for everything the shop
+ * writes itself.
+ */
+export function redactSecrets(text: string): string {
+  let out = text;
+  for (const { pattern } of FORBIDDEN_PATTERNS) {
+    /*
+      Rebuilt as a global so every occurrence goes, not just the first. The
+      shared patterns are not global — `findForbiddenSecret` only needs to know
+      whether one exists — and reusing a `/g` regex across calls would carry
+      `lastIndex` between them.
+    */
+    out = out.replace(new RegExp(pattern.source, `${pattern.flags}g`), "«محذوف»");
+  }
+  return out;
+}
+
+/**
  * Is this message safe to put in the admin group?
  *
  * Returns the name of what it found, or nothing. The caller drops the message

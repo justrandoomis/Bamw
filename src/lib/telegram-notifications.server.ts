@@ -3,6 +3,7 @@ import { readOrderItemSelection, selectionSummary } from "./orderItemSelection";
 import {
   adminRoute,
   findForbiddenSecret,
+  redactSecrets,
   routeOptions,
   withRoutePrefix,
   type AdminRoute,
@@ -356,7 +357,17 @@ export async function notifyAdminCustomerMessage(params: {
     "شوف الصورة" and attaches a receipt sends both. The admin was told the
     sentence and never that anything came with it.
   */
-  const textContent = escapeHtml(message.text || "");
+  /*
+    Scrubbed before it is embedded, not judged after.
+
+    A member who writes "كلمة المرور: 1234" while asking for help tripped
+    `findForbiddenSecret` on the assembled body, and the guard drops the whole
+    notification — so the admin was never told that customer had written in at
+    all. Their words are untrusted input, and the boundary is the place to
+    clean them; the guard keeps dropping anything the shop itself composed
+    wrongly.
+  */
+  const textContent = escapeHtml(redactSecrets(message.text || ""));
   const attachmentLine = message.imageUrl ? "\n📸 <i>مرفق صورة</i>" : "";
   const threadSubject = escapeHtml(thread.subject || "محادثة الدعم");
 
@@ -561,7 +572,8 @@ export async function notifyAdminHumanSupportRequest(params: {
     know what they are walking into; not so much that the group becomes a
     copy of the customer's messages.
   */
-  const excerpt = (params.lastUserText ?? "").trim().slice(0, 200);
+  /* Same reason as the support card: the customer wrote this, so it is scrubbed. */
+  const excerpt = redactSecrets((params.lastUserText ?? "").trim()).slice(0, 200);
   const excerptLine = excerpt ? `\n\n💬 <i>${escapeHtml(excerpt)}</i>` : "";
 
   const text =
@@ -630,10 +642,11 @@ export async function notifyAdminGameRequest(params: {
   const customerName = escapeHtml(user.name || "عميل بنانا");
   const messageText =
     `🎯 <b>طلب توفير لعبة / منتج جديد!</b> 🍌\n\n` +
-    `🕹️ <b>اسم اللعبة / المنتج:</b> <b>${escapeHtml(request.productName)}</b>\n` +
+    `🕹️ <b>اسم اللعبة / المنتج:</b> <b>${escapeHtml(redactSecrets(request.productName))}</b>\n` +
     `📱 <b>المنصة:</b> ${escapeHtml(request.platform || "Nintendo Switch")}\n` +
     `👤 <b>العميل:</b> ${customerName} (<code>${escapeHtml(user.phone || user.id)}</code>)\n` +
-    (request.notes ? `📝 <b>ملاحظات:</b> ${escapeHtml(request.notes)}\n` : "") +
+    /* The member typed these notes, so they are scrubbed like any other. */
+    (request.notes ? `📝 <b>ملاحظات:</b> ${escapeHtml(redactSecrets(request.notes))}\n` : "") +
     `\nيمكنك مراجعة الطلب وتحديث حالته للعميل 👇`;
 
   const replyMarkup = buildInlineAppButton(
