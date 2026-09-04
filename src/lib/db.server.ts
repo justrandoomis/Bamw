@@ -21,7 +21,8 @@ import {
 } from "./product-index.server";
 import { sendWhatsappMessage } from "./whatsapp.server";
 import { getUserTelegramChatId } from "./telegram-notifications.server";
-import { sendTelegramMessage } from "./telegram.server";
+import { escapeHtml, sendTelegramMessage } from "./telegram.server";
+import { memberMessagePreview } from "./memberMessagePreview";
 import { isOwnerAccount } from "./owner-auth.server";
 import {
   type AdminAvailabilityConfig,
@@ -2725,9 +2726,25 @@ export async function appendMessage(
       /* Same field, same silence — the member was never told the shop replied. */
       const memberChatId = await getUserTelegramChatId(String(thread.userId ?? ""));
       if (memberChatId) {
+        /*
+          What the message actually is.
+
+          This read `body["text"] || "أرسل صورة"`, and that fallback is right
+          for exactly one kind: an attachment with no caption. Every other
+          admin-authored kind keeps its content in named fields and carries no
+          `text` — a delivered account is `{email, password, title}`, a
+          verification code is `{code, expiresAt}` — so the buyer whose game
+          account had just arrived was told, on Telegram, that the shop had
+          sent them a picture. Worse than silence: silence sends them to look.
+
+          The value itself stays out of Telegram. `memberMessagePreview` names
+          what arrived and sends them to the app to read it.
+        */
+        const preview = memberMessagePreview({ kind: full.kind, body: full.body });
         await sendTelegramMessage(
           memberChatId,
-          `💬 *رسالة جديدة من الدعم*\n\nفي محادثة: ${thread.subject}\n\n"${full.body["text"] || "أرسل صورة"}"`,
+          `💬 <b>رسالة جديدة من الدعم</b>\n\nفي محادثة: ${escapeHtml(String(thread.subject ?? ""))}\n\n${escapeHtml(preview)}`,
+          { parse_mode: "HTML" },
         );
       }
     }
