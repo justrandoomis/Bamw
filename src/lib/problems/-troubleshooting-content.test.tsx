@@ -15,14 +15,24 @@
  * placeholder, and never the note written for whoever uploads it.
  */
 import { describe, expect, it } from "vitest";
+import { readFileSync } from "node:fs";
+import { resolve } from "node:path";
 import { renderToStaticMarkup } from "react-dom/server";
 import { getPublishedProblems } from "./repository";
 import { applyProblemOverrides, countCategories } from "./merge";
 import { ProblemSolutionView } from "@/components/problem-solution/problem-solution-view";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 const problems = await getPublishedProblems();
+/*
+  The page's closing call to action asks whether the reader has an order open,
+  so rendering it needs the provider the app root supplies. Rendering without
+  one is the mistake this wrapper exists to avoid repeating in a test.
+*/
 const html = renderToStaticMarkup(
-  <ProblemSolutionView problems={problems} counts={countCategories(problems)} />,
+  <QueryClientProvider client={new QueryClient()}>
+    <ProblemSolutionView problems={problems} counts={countCategories(problems)} />
+  </QueryClientProvider>,
 );
 
 describe("the shipped troubleshooting content", () => {
@@ -152,5 +162,43 @@ describe("one malformed entry", () => {
     */
     expect(problems.length).toBeGreaterThan(10);
     expect(() => countCategories(problems)).not.toThrow();
+  });
+});
+
+describe("the button for somebody the page did not help", () => {
+  const cta = readFileSync(
+    resolve(process.cwd(), "src/components/problem-solution/help-cta.tsx"),
+    "utf8",
+  );
+
+  it("no longer mails a domain that does not exist", () => {
+    /*
+      `mailto:support@banana.example` — a customer who read the whole page,
+      found nothing, and pressed the one button offered reached a mail client
+      addressed to nowhere.
+    */
+    // Prose about the old address is not the old address.
+    const code = cta.replace(/\/\*[\s\S]*?\*\//g, "");
+    expect(code).not.toContain("banana.example");
+    expect(code).not.toContain("mailto:");
+  });
+
+  it("opens the conversation that already knows what they bought", () => {
+    expect(cta).toContain("`/orders/${openOrder.id}`");
+    expect(cta).toContain("افتح محادثة طلبك");
+  });
+
+  it("falls back to human support when there is no order", () => {
+    expect(cta).toContain('"/support"');
+  });
+
+  it("keeps working for a visitor who is not signed in", () => {
+    // The page is public; a refused orders request must not break it.
+    expect(cta).toContain("retry: false");
+    expect(cta).toContain("data?.orders ?? []");
+  });
+
+  it("ignores orders that are already finished", () => {
+    expect(cta).toContain('["completed", "cancelled"]');
   });
 });
