@@ -4,7 +4,7 @@ import PageHeader from "@/components/PageHeader";
 import { PolicyView } from "@/components/policy/PolicyView";
 import { loadSiteContent } from "@/lib/content.functions";
 import { resolvePolicy } from "@/lib/sitePolicy";
-import type { PolicyData } from "@/lib/content";
+import { stripAdminNotes, type PolicyData } from "@/lib/content";
 
 export const Route = createFileRoute("/policy")({
   head: () => ({
@@ -34,7 +34,8 @@ export const Route = createFileRoute("/policy")({
     } catch (error) {
       console.error("[policy:store_unreadable]", error);
     }
-    return { policy: resolvePolicy(stored) };
+    // Admin-only slot notes never enter the hydration payload.
+    return { policy: stripAdminNotes(resolvePolicy(stored)) };
   },
   component: PolicyPage,
 });

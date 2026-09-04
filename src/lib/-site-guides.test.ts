@@ -208,3 +208,69 @@ describe("what links here", () => {
     }
   });
 });
+
+describe("what leaves the server", () => {
+  it("carries no note written for whoever uploads the screenshot", async () => {
+    /*
+      Rendering it nowhere was not enough. A loader's return value is
+      serialised into the page for hydration, so `hint` travelled to every
+      visitor inside the JSON even though no element printed it — the live
+      smoke test found it on two pages the day the guides shipped.
+    */
+    const { stripAdminNotes } = await import("./content");
+    const payload = JSON.stringify(stripAdminNotes(applyGuideOverrides(shippedGuides(), [])));
+    expect(payload).not.toContain("hint");
+    expect(payload).not.toContain("أضف صورة");
+  });
+
+  it("carries no slot the shop owner has not filled", async () => {
+    /*
+      A slot with no file is a message from the shop to itself about work still
+      to do — and page weight for everybody else. The control below shows the
+      unstripped document does hold them, so this is testing the strip rather
+      than an empty input.
+    */
+    const { stripAdminNotes } = await import("./content");
+    const raw = JSON.stringify(applyGuideOverrides(shippedGuides(), []));
+    expect(raw).toContain('"url":""');
+    expect(JSON.stringify(stripAdminNotes(applyGuideOverrides(shippedGuides(), [])))).not.toContain(
+      '"url":""',
+    );
+  });
+
+  it("keeps a slot once it has a picture in it", async () => {
+    const { stripAdminNotes } = await import("./content");
+    const kept = stripAdminNotes([
+      { id: "a", url: "/api/files/guides/x.webp", hint: "داخلي", alt: "شاشة", sort_order: 1 },
+      { id: "b", url: "", hint: "لم تُرفع", alt: "", sort_order: 2 },
+    ]);
+    expect(kept).toHaveLength(1);
+    expect(kept[0]).toEqual({
+      id: "a",
+      url: "/api/files/guides/x.webp",
+      alt: "شاشة",
+      sort_order: 1,
+    });
+  });
+
+  it("leaves ordinary content untouched", async () => {
+    const { stripAdminNotes } = await import("./content");
+    expect(stripAdminNotes({ title_ar: "عنوان", steps: [{ id: "s", title_ar: "خطوة" }] })).toEqual({
+      title_ar: "عنوان",
+      steps: [{ id: "s", title_ar: "خطوة" }],
+    });
+  });
+
+  it("is applied by every page that serves this content", () => {
+    for (const route of [
+      "src/routes/account_guides.tsx",
+      "src/routes/policy.tsx",
+      "src/routes/problem.tsx",
+      "src/routes/faq.tsx",
+    ]) {
+      expect(readFileSync(resolve(process.cwd(), route), "utf8"), route).toContain(
+        "stripAdminNotes",
+      );
+    }
+  });
+});

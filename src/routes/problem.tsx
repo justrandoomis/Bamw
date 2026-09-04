@@ -4,6 +4,7 @@ import { ProblemSolutionView } from "@/components/problem-solution/problem-solut
 import { getPublishedProblems } from "@/lib/problems/repository";
 import { applyProblemOverrides, countCategories } from "@/lib/problems/merge";
 import { loadSiteContent } from "@/lib/content.functions";
+import { stripAdminNotes } from "@/lib/content";
 import type { Problem } from "@/lib/problems/types";
 
 export const Route = createFileRoute("/problem")({
@@ -50,7 +51,8 @@ export const Route = createFileRoute("/problem")({
       console.error("[problem:overrides_unmergeable]", error);
     }
 
-    return { problems, counts: countCategories(problems) };
+    // Admin-only slot notes never enter the hydration payload.
+    return { problems: stripAdminNotes(problems), counts: countCategories(problems) };
   },
   component: ProblemPage,
 });
