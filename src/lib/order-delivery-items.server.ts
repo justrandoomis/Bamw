@@ -1542,6 +1542,26 @@ async function completeDeliveredOrder(
       error,
     });
   }
+
+  /*
+    The one message a finished digital order ever sends the customer.
+
+    This whole module — the path every account and code purchase takes — had
+    no notification of any kind. Both ways in end here: the customer pressing
+    confirm, and the timer completing it for them an hour later. Either way
+    they were told nothing, and the rating card posted just above went into a
+    conversation they had already closed.
+
+    Best-effort and last, so a Telegram outage cannot undo a completion that
+    has already been written.
+  */
+  try {
+    const { sendReviewInvitation } = await import("./review-reward.server");
+    await sendReviewInvitation(next, { now });
+  } catch (error) {
+    console.warn("[delivery:review_invite_failed]", { orderId: order.id, error });
+  }
+
   return next;
 }
 
