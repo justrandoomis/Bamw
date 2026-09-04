@@ -138,6 +138,29 @@ if (!versions.ok) {
 }
 say();
 
+/* -------------------------------------------- 2b. which version is serving */
+/*
+  A version uploaded and a version serving traffic are different things, and
+  Workers Builds reports both as success. "Is the fix live?" is answered by the
+  deployment that actually carries traffic, not by the newest upload.
+*/
+const deployments = await api(`/accounts/${ACCOUNT}/workers/scripts/${SCRIPT_NAME}/deployments`);
+if (!deployments.ok) {
+  say(`  could not read deployments (HTTP ${deployments.status}).`);
+} else {
+  const items = deployments.body?.result?.deployments ?? [];
+  const current = items[0];
+  if (!current) {
+    say("  no deployment recorded.");
+  } else {
+    const carrying = (current.versions ?? [])
+      .map((v) => `${String(v.version_id ?? "").slice(0, 8)} @${v.percentage ?? 100}%`)
+      .join(", ");
+    say(`  serving now: ${carrying || "—"} · ${current.created_on ?? "?"} · source ${current.source ?? "?"}`);
+  }
+}
+say();
+
 /* ------------------------------------------------------------------ 3. queue */
 say("## 3. The notification queue");
 const queues = await api(`/accounts/${ACCOUNT}/queues`);
