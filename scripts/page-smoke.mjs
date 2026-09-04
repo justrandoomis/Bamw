@@ -1,0 +1,124 @@
+#!/usr/bin/env node
+/**
+ * Does the live site actually serve these pages? Read-only, over HTTP.
+ *
+ * The four help pages are the ones a customer is sent to from an order, a
+ * delivery card or a support reply, and a link that 404s there costs a sale
+ * and a support ticket at the same time. The claim "the route exists" is a
+ * claim about the repository; this asks the deployed site.
+ *
+ * Each page is fetched the way a customer reaches it:
+ *
+ *  - cold, with no referrer, which is what a pasted link or a refresh does —
+ *    the case a single-page app gets wrong when its fallback is missing;
+ *  - with an anchor, which must not change what the server returns;
+ *  - signed out, since none of these pages may require an account.
+ *
+ * And one path that does not exist, because a fallback that answers 200 for
+ * everything is not a fix — it is a site with no 404.
+ *
+ * Usage: node scripts/page-smoke.mjs [origin]
+ */
+const ORIGIN = (process.argv[2] || process.env.SMOKE_ORIGIN || "https://banan.to").replace(/\/$/, "");
+
+/** A page, and a string that proves the page rendered rather than the shell. */
+const PAGES = [
+  { path: "/policy", must: ["السياس", "banan"] },
+  { path: "/faq", must: ["الأسئلة", "banan"] },
+  { path: "/account_guides", must: ["banan"] },
+  { path: "/problem", must: ["banan"] },
+];
+
+const ANCHORS = ["/policy#warranty", "/account_guides#login", "/problem#login"];
+
+const lines = [];
+const say = (t = "") => {
+  lines.push(t);
+  console.log(t);
+};
+
+let failures = 0;
+const fail = (message) => {
+  failures += 1;
+  say(`  ✗ ${message}`);
+};
+
+async function fetchPage(path) {
+  const url = `${ORIGIN}${path}`;
+  const started = Date.now();
+  const res = await fetch(url, {
+    redirect: "manual",
+    headers: {
+      // A real browser's first request for a pasted link: no referrer, HTML only.
+      accept: "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+      "accept-language": "ar,en;q=0.8",
+      "user-agent": "bananto-page-smoke/1.0",
+    },
+  });
+  const body = res.status === 200 ? await res.text() : "";
+  return { res, body, ms: Date.now() - started };
+}
+
+say(`# Page smoke — ${ORIGIN}`);
+say();
+
+for (const page of PAGES) {
+  say(`## ${page.path}`);
+  try {
+    const { res, body, ms } = await fetchPage(page.path);
+    say(`- status ${res.status} in ${ms}ms`);
+    if (res.status !== 200) {
+      fail(`expected 200, got ${res.status}${res.headers.get("location") ? ` → ${res.headers.get("location")}` : ""}`);
+    } else {
+      for (const needle of page.must) {
+        if (!body.includes(needle)) fail(`the response does not mention ${JSON.stringify(needle)}`);
+      }
+      /*
+        A shell with no content is a 200 that still fails the customer. These
+        pages render server-side, so their text is in the first response —
+        which is also what a search engine and a link preview see.
+      */
+      if (body.length < 2000) fail(`response is only ${body.length} bytes — the shell, not the page`);
+      if (/\[object Object\]/.test(body)) fail("the page renders [object Object]");
+      if (/\bundefined\b\s*<\//.test(body)) fail("the page renders a bare `undefined`");
+    }
+  } catch (err) {
+    fail(`request threw: ${err instanceof Error ? err.message : String(err)}`);
+  }
+  say();
+}
+
+say(`## anchors`);
+for (const path of ANCHORS) {
+  /*
+    The fragment never reaches the server, so this proves the *path* still
+    answers when a customer is deep-linked to a section — which is how every
+    link from an order card is written.
+  */
+  const [bare] = path.split("#");
+  try {
+    const { res } = await fetchPage(bare);
+    say(`- \`${path}\` → ${res.status}`);
+    if (res.status !== 200) fail(`${bare} answered ${res.status}`);
+  } catch (err) {
+    fail(`${bare}: ${err instanceof Error ? err.message : String(err)}`);
+  }
+}
+say();
+
+say(`## a path that does not exist`);
+try {
+  const { res } = await fetchPage("/definitely-not-a-page-9f3a2b");
+  say(`- status ${res.status}`);
+  if (res.status !== 404) {
+    fail(`an unknown path answered ${res.status} — a fallback that answers everything is a site with no 404`);
+  }
+} catch (err) {
+  fail(`request threw: ${err instanceof Error ? err.message : String(err)}`);
+}
+say();
+
+say(failures === 0 ? "## All checks passed." : `## ${failures} check(s) failed.`);
+const { writeFileSync } = await import("node:fs");
+writeFileSync("page-smoke.md", lines.join("\n") + "\n");
+if (failures > 0) process.exitCode = 1;
