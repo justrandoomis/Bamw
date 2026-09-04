@@ -12,7 +12,7 @@ on:
       product:
         description: "Product id or slug"
         required: true
-        default: "nintendo-eshop-gift-card-5-usd-usa"
+        default: "--all"
   push:
     branches: ["claude/**"]
     paths:
@@ -51,7 +51,7 @@ jobs:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           PRODUCT: ${{ inputs.product }}
-        run: node scripts/inspect-card-pricing.mjs "${PRODUCT:-nintendo-eshop-gift-card-5-usd-usa}"
+        run: node scripts/inspect-card-pricing.mjs "${PRODUCT:---all}"
       - uses: actions/upload-artifact@v4
         if: always()
         with:

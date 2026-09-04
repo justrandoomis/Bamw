@@ -29,6 +29,7 @@ import {
   resolveTypeStandardDescription,
 } from "../productOptionDescriptions";
 import type { FieldDef, ProductSchema } from "./types";
+import { pricingTypeRows } from "@/lib/productPricing";
 
 type Record_ = Record<string, unknown>;
 
@@ -771,10 +772,21 @@ export function buildProductView(
         return item;
       })
       .filter((o) => o.name),
-    variants: (list<Record_>(p["variants"]).length > 0
-      ? list<Record_>(p["variants"])
-      : list<Record_>(p["types"])
-    )
+    /*
+      The same list the till prices from — see `pricingTypeRows`.
+
+      This read `variants` before `types`, which is the opposite of what
+      `resolveUnitPrice` charges from, so a record carrying both showed a price
+      the shop would not honour. The live $5 eShop card held
+      `variants[0].price = 7000` from an old import beside a `types` row with
+      no price of its own; the page printed 7,000, the server billed 7,500, and
+      no edit in the admin moved it, because nothing the admin writes touches
+      `variants`.
+
+      A display that disagrees with the till is worse than a wrong display: it
+      is a customer told one price and charged another.
+    */
+    variants: list<Record_>(pricingTypeRows(p as never))
       .map((v) => {
         const item: VariantItem = { name: str(v["name"]) };
         const variantId = str(v["id"]);

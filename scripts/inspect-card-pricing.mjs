@@ -45,6 +45,8 @@ function d1(sql) {
   return (Array.isArray(parsed) ? parsed[0] : parsed)?.results ?? [];
 }
 
+const list = (value) => (Array.isArray(value) ? value : []);
+
 const lines = [];
 const say = (t = "") => {
   lines.push(t);
@@ -62,6 +64,51 @@ for (const key of numbered.length ? numbered : ["store:products"]) {
   raw += d1(`SELECT value FROM store_kv WHERE key = '${key.replace(/'/g, "''")}'`)?.[0]?.value ?? "";
 }
 const products = JSON.parse(raw || "[]");
+
+/*
+  `--all`: every product whose two type-lists disagree.
+
+  Aligning the displays with the till changes which number some products print,
+  and a price is commercial data — so the set that moves is listed before
+  anything ships, rather than discovered on the storefront.
+*/
+if (TARGET === "--all") {
+  const affected = [];
+  for (const p of products) {
+    if (!p?.id || p._deleted) continue;
+    const types = list(p.types);
+    const variants = list(p.variants);
+    if (!types.length || !variants.length) continue;
+    const key = (rows) =>
+      rows
+        .map((r) => `${String(r?.name ?? "")}=${r?.price === "" || r?.price == null ? "-" : r.price}`)
+        .join(" | ");
+    const before = key(variants);
+    const after = key(types);
+    if (before === after) continue;
+    affected.push({ slug: String(p.slug ?? p.id), title: String(p.title ?? ""), before, after, base: p.price });
+  }
+  say(`# Products whose two type-lists disagree — ${affected.length} of ${products.length}`);
+  say();
+  if (!affected.length) {
+    say("None. Every product's `types` and `variants` already say the same thing.");
+  } else {
+    say("`variants` is what the page printed until now; `types` is what the admin edits");
+    say("and what the server charges. Where they differ, the page was showing a price the");
+    say("shop would not honour.");
+    say();
+    for (const row of affected) {
+      say(`## ${row.title}`);
+      say();
+      say(`- slug: \`${row.slug}\` · base price: **${row.base ?? "—"}**`);
+      say(`- was shown from \`variants\`: ${row.before}`);
+      say(`- now shown from \`types\`: ${row.after}`);
+      say();
+    }
+  }
+  writeFileSync("card-pricing.md", lines.join("\n") + "\n");
+  process.exit(0);
+}
 
 let doc = products.find((p) => String(p?.id) === TARGET || String(p?.slug) === TARGET);
 let source = "aggregate";
@@ -91,7 +138,6 @@ if (!doc) {
   process.exit(1);
 }
 
-const list = (value) => (Array.isArray(value) ? value : []);
 const priceOf = (row) => {
   const v = row?.price;
   if (v === "" || v === null || v === undefined) return "— (inherits)";
