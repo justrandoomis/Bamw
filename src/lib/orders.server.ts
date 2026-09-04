@@ -34,6 +34,7 @@ import {
   insertRewardStatement,
   markAttributionConverted,
 } from "./referral/rewards.server";
+import { memberAllowsNotification } from "./notification-preferences.server";
 import type {
   Address,
   Order,
@@ -1142,7 +1143,11 @@ export async function createOrderForUser(
     `user.telegramId` were left behind. This is one of them.
   */
   const buyerChatId = await getUserTelegramChatId(String(user.id ?? ""));
-  if (buyerChatId) {
+  // The member's own preference, from `/telegram/notifications`. The order is
+  // created either way — this is only whether Telegram says so.
+  const wantsOrderPush =
+    buyerChatId && (await memberAllowsNotification(String(user.id ?? ""), "orders"));
+  if (buyerChatId && wantsOrderPush) {
     try {
       const { telegramMiniAppDeepLink } = await import("./telegram.server");
       await sendTelegramMessage(

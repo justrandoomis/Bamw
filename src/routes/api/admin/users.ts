@@ -10,6 +10,7 @@ import {
 } from "@/lib/db.server";
 import { toPublicUser } from "@/lib/db.server";
 import { body, guard, json } from "@/lib/http.server";
+import { membersByIds, searchMembers } from "@/lib/member-lookup.server";
 import { requireAdmin } from "@/lib/session.server";
 
 export const Route = createFileRoute("/api/admin/users")({
@@ -24,6 +25,33 @@ export const Route = createFileRoute("/api/admin/users")({
           if (userId) {
             const logs = await listUserTransactions(userId);
             return json({ logs });
+          }
+
+          /*
+            Resolve one member without downloading the shop.
+
+            The coupon screen's "who may use this" picker fetched this
+            endpoint's default response — every account, with every name,
+            email, phone, wallet balance and saved address — and matched the
+            operator's typing against it in the browser, to fill a list that
+            shows at most forty rows. Answering the search here sends back the
+            matches and nothing else, and what is not sent cannot leak from the
+            screen that received it.
+
+            The default response is untouched: the members admin screen reads
+            it, and narrowing it here would break that.
+          */
+          const search = url.searchParams.get("q");
+          if (search !== null) {
+            return json({ members: await searchMembers(search) });
+          }
+
+          // The members behind a saved list of ids, so a restricted coupon can
+          // show who it is restricted to instead of a row of opaque ids.
+          const idsParam = url.searchParams.get("ids");
+          if (idsParam !== null) {
+            const ids = idsParam.split(",").map((id) => id.trim()).filter(Boolean).slice(0, 200);
+            return json({ members: await membersByIds(ids) });
           }
 
           const users = await listAllUsers();

@@ -1,3 +1,5 @@
+import type { NotificationPreferences } from "./notification-preferences";
+
 export type ProductKind =
   | "account"
   | "offline_account"
@@ -346,6 +348,14 @@ export interface UserSettings {
   liteMotion?: boolean;
   musicTrack?: string;
   currency?: string;
+  /**
+   * Which Telegram messages this member has asked to receive.
+   *
+   * Absent means the defaults in `notification-preferences.ts`, which are all
+   * on: every one of these messages is delivered today, and an unset
+   * preference must not silently switch one off.
+   */
+  notifications?: NotificationPreferences;
 }
 
 export interface Address {
@@ -1190,3 +1200,19 @@ export type ChatRealtimeEvent =
         thread?: Thread;
       };
     };
+
+/**
+ * The least that identifies a member, for an admin picker.
+ *
+ * Deliberately not `PublicUser`: a picker needs to tell two members apart, and
+ * a wallet balance or a saved address does not help with that. What is not
+ * sent to the browser cannot leak from the screen that received it.
+ */
+export interface MemberMatch {
+  id: string;
+  name: string;
+  email: string;
+  phone?: string;
+  memberNo?: string;
+  username?: string;
+}

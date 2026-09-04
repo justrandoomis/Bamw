@@ -69,10 +69,20 @@ describe("no statement can outgrow D1's parameter limit", () => {
       // fifty lines, so the slice is never reached — it is there so the
       // bound belongs to the statement rather than to a rule elsewhere.
       "src/lib/order-delivery-items.server.ts:productIds": "sliced to a constant",
-      // The trade requests on one admin page (LIMIT 200) and the distinct
-      // games among them, both split by chunkForParams so each statement fits
-      // whatever the page size becomes.
+      // The trade requests on one admin page — capped at MAX_PAGE_SIZE in
+      // disc-trade-page.ts — and the distinct games among them, both split by
+      // chunkForParams so each statement fits whatever the page size becomes.
       "src/routes/api/disc-trade.ts:group": "chunked",
+      // The status aliases for one filter, and the full list of names the
+      // normaliser knows. Both are derived from LEGACY_STATUS_MAP, a literal
+      // in the source — about twenty parameters, and not a function of how
+      // many trades exist.
+      "src/lib/disc-trade-page.ts:aliases": "fixed width",
+      "src/lib/disc-trade-page.ts:KNOWN_STATUSES": "fixed width",
+      // The accounts one coupon is restricted to. A coupon may name as many as
+      // the operator picks, so the ids are split by chunkForParams and each
+      // group is checked by assertBoundParameters before it runs.
+      "src/lib/member-lookup.server.ts:group": "chunked",
     };
 
     const unknown = found.filter((entry) => !(`${entry.file}:${entry.source}` in KNOWN));

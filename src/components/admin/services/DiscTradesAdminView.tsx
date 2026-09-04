@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+import React, { useEffect, useState } from "react";
+import { useInfiniteQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { toast } from "sonner";
 import {
   RefreshCw,
@@ -20,6 +20,7 @@ import {
   ListFilter,
   ArrowLeftRight,
   Wallet,
+  ChevronDown,
 } from "lucide-react";
 import { useI18n } from "@/i18n";
 import { readTradePricing } from "@/lib/trade-pricing";
@@ -48,13 +49,43 @@ export default function DiscTradesAdminView() {
   const [filterStatus, setFilterStatus] = useState("all");
   const [editingId, setEditingId] = useState<string | null>(null);
 
-  const { data, isLoading } = useQuery({
-    queryKey: ["admin_disc_trades"],
-    queryFn: async () => {
-      const res = await fetch("/api/disc-trade?scope=admin");
+  /*
+    The search reaches the database now, so it is not sent on every keystroke.
+
+    250ms is long enough that typing "زيلدا" is one request rather than five,
+    and short enough that the list feels like it is answering the box.
+  */
+  const [debouncedSearch, setDebouncedSearch] = useState("");
+  useEffect(() => {
+    const timer = setTimeout(() => setDebouncedSearch(searchTerm.trim()), 250);
+    return () => clearTimeout(timer);
+  }, [searchTerm]);
+
+  /*
+    Pages, not the newest two hundred.
+
+    This screen asked for `scope=admin` and nothing else, took the two hundred
+    rows the endpoint capped at, and filtered them in the browser. A shop with
+    more than two hundred trades could not reach the older ones at all, and the
+    status filter searched only that window — so "بانتظار المراجعة" could come
+    back empty while trades sat waiting for a price.
+
+    Both now happen in the database, over every trade, and the cursor walks
+    back through the rest.
+  */
+  const { data, isLoading, fetchNextPage, hasNextPage, isFetchingNextPage } = useInfiniteQuery({
+    queryKey: ["admin_disc_trades", filterStatus, debouncedSearch],
+    initialPageParam: "",
+    queryFn: async ({ pageParam }) => {
+      const params = new URLSearchParams({ scope: "admin", limit: "50" });
+      if (filterStatus !== "all") params.set("status", filterStatus);
+      if (debouncedSearch) params.set("q", debouncedSearch);
+      if (pageParam) params.set("cursor", String(pageParam));
+      const res = await fetch(`/api/disc-trade?${params.toString()}`);
       if (!res.ok) throw new Error("Failed");
       return res.json();
     },
+    getNextPageParam: (lastPage: { nextCursor?: string | null }) => lastPage?.nextCursor ?? undefined,
   });
 
   const updateTrade = useMutation({
@@ -89,21 +120,13 @@ export default function DiscTradesAdminView() {
     onError: (error: Error) => toast.error(error.message),
   });
 
-  const trades = data?.items || [];
-  const filtered = trades.filter((r: any) => {
-    const norm = normalizeTradeStatus(r.status);
-    if (filterStatus !== "all" && norm !== filterStatus) return false;
-    if (searchTerm) {
-      const s = searchTerm.toLowerCase();
-      return (
-        r.game_name?.toLowerCase().includes(s) ||
-        r.id?.toLowerCase().includes(s) ||
-        r.user_id?.toLowerCase().includes(s) ||
-        r.platform?.toLowerCase().includes(s)
-      );
-    }
-    return true;
-  });
+  /*
+    The server answered the filter and the search, so nothing is re-filtered
+    here: doing it again over the loaded pages is what hid the older trades in
+    the first place, and a second copy of the predicate is a second place for
+    it to drift.
+  */
+  const trades: any[] = (data?.pages ?? []).flatMap((page: any) => page?.items ?? []);
 
   return (
     <div className="p-8 space-y-6">
@@ -128,7 +151,8 @@ export default function DiscTradesAdminView() {
             }`}
           >
             <ListFilter className="w-4 h-4" />
-            {t("طلبات الاستبدال")} ({trades.length})
+            {t("طلبات الاستبدال")} ({trades.length}
+            {hasNextPage ? "+" : ""})
           </button>
           <button
             type="button"
@@ -210,7 +234,7 @@ export default function DiscTradesAdminView() {
             </div>
           ) : (
             <div className="space-y-4">
-              {filtered.map((trade: any) => (
+              {trades.map((trade: any) => (
                 <TradeCard
                   key={trade.id}
                   trade={trade}
@@ -222,10 +246,25 @@ export default function DiscTradesAdminView() {
                   t={t}
                 />
               ))}
-              {filtered.length === 0 && (
+              {trades.length === 0 && (
                 <div className="text-center py-16 text-muted-foreground bg-card border border-border rounded-2xl">
                   {t("لا توجد مقايضات تطابق بحثك.")}
                 </div>
+              )}
+              {hasNextPage && (
+                <button
+                  type="button"
+                  onClick={() => void fetchNextPage()}
+                  disabled={isFetchingNextPage}
+                  className="w-full py-3 rounded-2xl border border-border bg-card text-sm font-bold flex items-center justify-center gap-2 hover:border-primary disabled:opacity-60"
+                >
+                  {isFetchingNextPage ? (
+                    <Loader2 className="w-4 h-4 animate-spin" />
+                  ) : (
+                    <ChevronDown className="w-4 h-4" />
+                  )}
+                  {t("عرض المزيد")}
+                </button>
               )}
             </div>
           )}

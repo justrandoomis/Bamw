@@ -1010,15 +1010,36 @@ export const Route = createFileRoute("/api/chat")({
           const hasAttachment = Boolean(data.imageUrl);
 
           if (!isAutomatedThread || hasAttachment) {
-            // Notify Admin in Telegram about customer message (Safe)
+            /*
+              Through the outbox, keyed on the message's own id.
+
+              This send used to be inline and fire-and-forget: a Telegram
+              timeout or a 429 meant the admin was never told a customer had
+              written in, with no retry and no trace. The message id is the
+              identity of the thing being announced — `appendMessage` already
+              collapses a double-submitted form onto one id via
+              `clientMessageId` — so a retried queue delivery announces it once.
+            */
             try {
-              const { notifyAdminCustomerMessage } =
-                await import("@/lib/telegram-notifications.server");
-              await notifyAdminCustomerMessage({
+              const messagePayload = {
                 thread: current,
-                message: { text: data.text, imageUrl: data.imageUrl, senderRole: "user" },
+                message: { text: data.text, imageUrl: data.imageUrl, senderRole: "user" as const },
                 user: { id: user.id, name: user.name, phone: user.phone, username: user.username },
-              });
+              };
+              const { enqueueNotification } = await import("@/lib/notification-outbox.server");
+              await enqueueNotification(
+                {
+                  type: "telegram_admin_customer_message",
+                  payload: messagePayload,
+                  dedupeKey: `chat_message:${message.id}`,
+                },
+                async () => {
+                  const { notifyAdminCustomerMessage } = await import(
+                    "@/lib/telegram-notifications.server"
+                  );
+                  return notifyAdminCustomerMessage(messagePayload);
+                },
+              );
             } catch (err) {
               console.warn("[chat:notify_admin_failed]", err);
             }

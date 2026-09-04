@@ -7,6 +7,7 @@ import type {
   ChatType,
   AdminAvailabilityStatus,
   AdminAvailabilityConfig,
+  MemberMatch,
 } from "./types";
 
 /** One queued account in a bulk preparation batch (mirrors the server shape). */
@@ -713,6 +714,19 @@ export const adminApi = {
   deleteCoupon: (id: string) =>
     request<{ success: boolean }>(`/api/admin/coupons?id=${id}`, { method: "DELETE" }),
   getUsers: () => request<{ users: any[]; rechargeRequests: any[] }>("/api/admin/users"),
+  /*
+    One member, by what an operator knows about them — a name, an email, a
+    phone as they read it off a message. Answered by the database, so the
+    picker that uses it no longer needs the whole members table in the browser.
+  */
+  searchMembers: (term: string) =>
+    request<{ members: MemberMatch[] }>(`/api/admin/users?q=${encodeURIComponent(term)}`),
+  membersByIds: (ids: string[]) =>
+    ids.length === 0
+      ? Promise.resolve({ members: [] as MemberMatch[] })
+      : request<{ members: MemberMatch[] }>(
+          `/api/admin/users?ids=${encodeURIComponent(ids.join(","))}`,
+        ),
   createBananCode: (value: number, count = 1) =>
     request<{ success: boolean; codes: any[]; code: any }>("/api/admin/banana", {
       method: "POST",

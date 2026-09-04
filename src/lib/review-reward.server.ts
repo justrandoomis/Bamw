@@ -35,6 +35,7 @@ import { d1First, d1Run } from "./d1.server";
 import { getUserTelegramChatId } from "./telegram-notifications.server";
 import { escapeHtml, sendTelegramMessage, telegramMiniAppDeepLink } from "./telegram.server";
 import type { Order } from "./types";
+import { memberAllowsNotification } from "./notification-preferences.server";
 
 /** What the code is worth, in Iraqi dinars. */
 export const REWARD_AMOUNT_IQD = 1000;
@@ -236,6 +237,16 @@ export async function sendReviewInvitation(
 
     const chatId = await getUserTelegramChatId(userId);
     if (!chatId) return false;
+
+    /*
+      Filed under orders, not promotions.
+
+      The message carries a discount code, but what it is *for* is telling the
+      customer their order is complete and how to rate it. A member who
+      switched promotional messages off would otherwise stop being told their
+      orders had finished, which is not what that switch says it does.
+    */
+    if (!(await memberAllowsNotification(userId, "orders"))) return false;
 
     const reward = await issueReviewReward(order, options);
 
