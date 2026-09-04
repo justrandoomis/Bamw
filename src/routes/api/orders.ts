@@ -33,15 +33,37 @@ import { redactMessageForMember, redactOrderHistoryForMember } from "@/lib/redac
 import { completeOrder } from "@/lib/order-completion.server";
 import { isOwnUploadUrl } from "@/lib/uploads";
 
-function redactItems(items: OrderItem[]) {
-  return items.map(({ deliveryPasswordEnc: _hidden, ...item }) => ({
+function redactItems(items: OrderItem[], viewer: OrderViewer) {
+  return items.map(({ deliveryPasswordEnc: _hidden, unitCost, ...item }) => ({
     ...item,
+    /*
+      The acquisition cost of the line, kept from the buyer.
+
+      `unitCost` is snapshotted onto every order line at checkout so that
+      re-pricing a product cannot rewrite the margin on orders already placed
+      — it is bookkeeping, and it was being handed to the customer who bought
+      the line, on every read of their own order. The admin dashboard's profit
+      chain is computed from these same lines, so it cannot simply be dropped:
+      the audience decides.
+    */
+    ...(viewer.isAdmin && unitCost !== undefined ? { unitCost } : {}),
     hasStagedPassword: Boolean(_hidden),
   }));
 }
 
-export function redactOrder(order: Order) {
-  return { ...order, items: redactItems(order!.items) };
+/**
+ * Who is being answered.
+ *
+ * Required rather than optional, so that adding a route which returns an order
+ * is a decision about its audience. An optional flag defaulting either way is
+ * a call site that can be written without thinking about it, and this one was.
+ */
+export interface OrderViewer {
+  isAdmin?: boolean;
+}
+
+export function redactOrder(order: Order, viewer: OrderViewer) {
+  return { ...order, items: redactItems(order!.items, viewer) };
 }
 
 async function canTransition(oldStatus: string, newStatus: string, kind: string): Promise<boolean> {
@@ -77,7 +99,7 @@ export const Route = createFileRoute("/api/orders")({
             );
 
             return json({
-              order: redactOrder(order!),
+              order: redactOrder(order!, user),
               thread,
               messages: user.isAdmin ? messages : messages.map(redactMessageForMember),
               history: user.isAdmin ? history : history.map(redactOrderHistoryForMember),
@@ -92,7 +114,7 @@ export const Route = createFileRoute("/api/orders")({
             user.isAdmin && url.searchParams.get("all")
               ? await listOrders()
               : await listOrdersByUser(user.id);
-          return json({ orders: orders.map(redactOrder) });
+          return json({ orders: orders.map((row) => redactOrder(row, user)) });
         }),
       POST: async ({ request }) =>
         guard(async () => {
@@ -142,7 +164,7 @@ export const Route = createFileRoute("/api/orders")({
                   : {}),
               },
             );
-            return json({ order: redactOrder(order!) });
+            return json({ order: redactOrder(order!, user) });
           } catch (error) {
             console.error("[api:orders:create_failed]", error);
             /*
@@ -255,7 +277,7 @@ export const Route = createFileRoute("/api/orders")({
               userId: user.id,
             });
             const next = await getOrder(order!.id);
-            return json({ order: redactOrder(next || order) });
+            return json({ order: redactOrder(next || order, user) });
           }
 
           /**
@@ -277,7 +299,7 @@ export const Route = createFileRoute("/api/orders")({
               return json({
                 released: null,
                 waiting: true,
-                order: redactOrder(order!),
+                order: redactOrder(order!, user),
                 message:
                   "الحساب التالي يُرسل من سجل delivery_item مستقل عندما يصبح جاهزًا لدى الإدارة",
               });
@@ -307,7 +329,7 @@ export const Route = createFileRoute("/api/orders")({
               released: nextAccount ? nextAccount.seq : null,
               waiting: !nextAccount && progress.staged === 0 && progress.sent === 0,
               progress,
-              order: redactOrder((await getOrder(order!.id)) ?? order),
+              order: redactOrder((await getOrder(order!.id)) ?? order, user),
             });
           }
 
@@ -319,7 +341,7 @@ export const Route = createFileRoute("/api/orders")({
 
             try {
               const next = await confirmDeliveredOrder(order!.id, user.id);
-              return json({ order: redactOrder(next!) });
+              return json({ order: redactOrder(next!, user) });
             } catch (error: any) {
               const code = error instanceof Error ? error.message : "confirm_failed";
               const status = code === "ORDER_HAS_OPEN_DELIVERY_ISSUE" ? 409 : 400;
@@ -345,7 +367,7 @@ export const Route = createFileRoute("/api/orders")({
             note: "تم تأكيد الاستلام من قبل العميل",
             message: "✅ تم استلام الطلب وتأكيده بنجاح من قبل العميل.",
           });
-          return json({ order: redactOrder(confirmed.order) });
+          return json({ order: redactOrder(confirmed.order, user) });
           if (data.action === "report_delivery_issue") {
             if (order!.userId !== user.id) return json({ error: "forbidden" }, { status: 403 });
             try {
@@ -355,7 +377,7 @@ export const Route = createFileRoute("/api/orders")({
                 deliveryItemId: data.deliveryItemId,
                 reason: data.reason,
               });
-              return json({ order: redactOrder(next!) });
+              return json({ order: redactOrder(next!, user) });
             } catch (error: any) {
               const code = error instanceof Error ? error.message : (error?.message || "delivery_issue_failed");
               return json({ error: code }, { status: 409 });
@@ -368,7 +390,7 @@ export const Route = createFileRoute("/api/orders")({
             const { claimOrderTask } = await import("@/lib/orders.server");
             await claimOrderTask(data.orderId, user.id);
             const next = await getOrder(data.orderId);
-            return json({ order: redactOrder(next!) });
+            return json({ order: redactOrder(next!, user) });
           }
 
           if (data.action === "complete") {
@@ -376,7 +398,7 @@ export const Route = createFileRoute("/api/orders")({
             const { completeOrderTask } = await import("@/lib/orders.server");
             await completeOrderTask(data.orderId, user.id);
             const next = await getOrder(data.orderId);
-            return json({ order: redactOrder(next!) });
+            return json({ order: redactOrder(next!, user) });
           }
 
           // Only admin can change status manually
@@ -422,7 +444,7 @@ export const Route = createFileRoute("/api/orders")({
             updatedAt: new Date().toISOString(),
           };
           await saveOrder(next!);
-          return json({ order: redactOrder(next!) });
+          return json({ order: redactOrder(next!, user) });
         }),
       DELETE: async ({ request }) =>
         guard(async () => {

@@ -117,7 +117,17 @@ function publicStore(
     products: (store.products ?? [])
       .filter((product) => isVisibleToPublic(product))
       .map((product) => publicProduct(product) as StoreDoc["products"][number]),
-    bundles: (store.bundles ?? []).filter((b) => b.isActive !== false),
+    /*
+      Redacted, then filtered — not filtered from the raw store.
+
+      The spread above redacts the whole document, and this line then replaced
+      `bundles` with the original array, quietly undoing that work for the one
+      collection it names. A bundle carries the products it is made of, so
+      whatever a product would not have shown was reachable through here.
+    */
+    bundles: (
+      (redactPrivateKeys(store.bundles ?? []) ?? []) as NonNullable<StoreDoc["bundles"]>
+    ).filter((b) => b?.isActive !== false),
     quickReplies: [],
     autoReplies: {},
     adminPresence: { online: availability?.isAvailable ?? false },

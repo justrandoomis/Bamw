@@ -34,6 +34,7 @@
 import {
   CUSTOMER_TEXT_FIELDS,
   INTERNAL_FIELD_NAMES,
+  customerSafeParagraph,
   customerSafeText,
 } from "./internalMetadata";
 import {
@@ -84,8 +85,27 @@ export const PRIVATE_PRODUCT_FIELDS = new Set([
 const PRIVATE_KEY_PATTERN =
   /(?:password|passwd|secret|token|credential|service.?role|api.?key|private.?key|webhook|supplier|wholesale|internal|raw.?data|model.?info|data.?confidence|cost)/i;
 
-/** Nested collections that describe purchasable variants of a product. */
-const VARIANT_COLLECTIONS = ["types", "options", "variants", "editions", "editionsList"] as const;
+/**
+ * Nested collections that describe purchasable variants of a product.
+ *
+ * `dlcs` and `dlc` belong here for the same reason the rest do: they are rows
+ * a customer reads, written by the same importer, from the same template, and
+ * they were the only purchasable collection whose text was never checked —
+ * key-filtered, so a `cost` field would have gone, but a cost *sentence* in a
+ * `description` would not.
+ */
+const VARIANT_COLLECTIONS = [
+  "types",
+  "options",
+  "variants",
+  "editions",
+  "editionsList",
+  "dlcs",
+  "dlc",
+] as const;
+
+/** Keys that address a row rather than say anything to a customer. */
+const IDENTITY_KEYS = new Set(["id", "key", "slug", "order", "sort", "sortOrder", "index"]);
 
 function isPrivateKey(key: string): boolean {
   return INTERNAL_FIELD_NAMES.has(key) || PRIVATE_KEY_PATTERN.test(key);
@@ -138,18 +158,34 @@ function publicVariant(row: unknown, collection?: string): unknown {
       continue;
     }
 
-    // `contents` rows carry their own labels, and those are printed too.
-    if (key === "contents" && Array.isArray(value)) {
-      const contents = value
-        .map((item) => (item && typeof item === "object" ? publicVariant(item, "contents") : item))
+    /*
+      Any array of rows nested inside a variant, not only `contents`.
+
+      `contents` was named because it was the one the editions comparison
+      printed. But an importer writes what the template offers, and a variant
+      can carry `perks`, `includes`, `features` or anything else a later
+      template adds — each of them rows a customer reads, and each of them was
+      key-filtered but never text-checked. Naming one collection meant the next
+      one added was unprotected by default. Recursing over all of them means a
+      collection nobody anticipated is safe on the day it appears.
+    */
+    if (Array.isArray(value) && value.some((item) => item && typeof item === "object")) {
+      out[key] = value
+        .map((item) => (item && typeof item === "object" ? publicVariant(item, key) : item))
         .filter((item) => {
           if (typeof item === "string") return customerSafeText(item) !== undefined;
           if (!item || typeof item !== "object") return Boolean(item);
           const record = item as Record<string, unknown>;
-          // A content row with nothing left to say is not a row.
-          return Object.keys(record).length > 0 && (record["label"] ?? record["value"]) !== undefined;
+          /*
+            A row with nothing left to say is not a row.
+
+            An id, a sort key and a slug are how a row is addressed, not what
+            it tells anyone. A row stripped down to those has had its only
+            customer-facing text removed as internal, and rendering it leaves
+            a blank line where a feature used to be.
+          */
+          return Object.keys(record).some((key) => !IDENTITY_KEYS.has(key));
         });
-      out[key] = contents;
       continue;
     }
 
@@ -182,6 +218,26 @@ export function toPublicProduct(product: Record<string, unknown>): Record<string
   );
 
   const redacted = redactPrivateKeys(withoutPrivateTop) as Record<string, unknown>;
+
+  /*
+    The product's own description, held to the same standard as its variants'.
+
+    Only the variants were ever text-checked, because a variant description was
+    where the supplier cost rule turned up. The top-level description comes out
+    of the same importer and the same template, and a bookkeeping line written
+    there was printed to every visitor unread.
+
+    Filtered by line rather than dropped whole: a stray figure must not take a
+    product's entire page copy with it.
+  */
+  for (const field of CUSTOMER_TEXT_FIELDS) {
+    if (!(field in redacted)) continue;
+    const value = redacted[field];
+    if (typeof value !== "string") continue;
+    const safe = customerSafeParagraph(value);
+    if (safe === undefined) delete redacted[field];
+    else redacted[field] = safe;
+  }
 
   for (const collection of VARIANT_COLLECTIONS) {
     const rows = redacted[collection];
