@@ -13,6 +13,8 @@
  * a half-translated guide readable: the English it has, the Arabic it does not.
  */
 import { beforeAll, describe, expect, it } from "vitest";
+import { readFileSync } from "node:fs";
+import { resolve } from "node:path";
 import { renderToStaticMarkup } from "react-dom/server";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ensureLanguageAssets, useI18n } from "@/i18n";
@@ -166,10 +168,7 @@ describe("the FAQ search", () => {
       A member reading in English may still type the Arabic word they know the
       feature by, and the keywords are written in both.
     */
-    const view = require("node:fs").readFileSync(
-      require("node:path").resolve(process.cwd(), "src/components/faq/FaqView.tsx"),
-      "utf8",
-    );
+    const view = readFileSync(resolve(process.cwd(), "src/components/faq/FaqView.tsx"), "utf8");
     expect(view).toContain("item.question_en");
     expect(view).toContain("item.answer_en");
   });
