@@ -43,6 +43,16 @@ const PATHS = (
   "/,/add_game,/disc_trade,/problem,/account_guides,/faq,/policy,/support"
 ).split(",");
 const SETTLE = Number(args.settle ?? 4000);
+/**
+ * A user agent to present.
+ *
+ * Cloudflare's bot protection answers a default headless Chromium with a
+ * "Performing security verification" interstitial, which is a 403 and no page
+ * at all. Being able to send a real phone's user agent is what separates "the
+ * checker is being challenged" from "every visitor is being challenged" —
+ * a distinction worth having before anyone changes a firewall setting.
+ */
+const UA = args.ua ? decodeURIComponent(args.ua) : "";
 
 /**
  * How much visible text counts as "the page rendered something of its own".
@@ -75,7 +85,10 @@ const browser = await chromium.launch({
 const results = [];
 
 for (const path of PATHS) {
-  const page = await browser.newPage({ viewport: { width: 390, height: 844 } });
+  const page = await browser.newPage({
+    viewport: { width: 390, height: 844 },
+    ...(UA ? { userAgent: UA } : {}),
+  });
   const errors = [];
   const badResponses = [];
 

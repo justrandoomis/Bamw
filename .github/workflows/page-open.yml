@@ -20,6 +20,10 @@ on:
         description: "Comma-separated paths"
         type: string
         default: "/,/add_game,/disc_trade,/problem,/account_guides,/faq,/policy,/support"
+      ua:
+        description: "User agent to present (URL-encoded); blank uses the default"
+        type: string
+        default: ""
   # Same as `page-smoke`: a new or edited checker runs itself, so it can be used
   # from a branch without first being merged to main.
   push:
@@ -63,10 +67,12 @@ jobs:
         env:
           ORIGIN: ${{ inputs.origin }}
           PATHS: ${{ inputs.paths }}
+          UA: ${{ inputs.ua }}
         run: |
           node scripts/page-open-check.mjs \
             --base "${ORIGIN:-https://banan.to}" \
             --paths "${PATHS:-/,/add_game,/disc_trade,/problem,/account_guides,/faq,/policy,/support}" \
+            ${UA:+--ua "$UA"} \
             --json page-open.json
 
       - uses: actions/upload-artifact@v4
