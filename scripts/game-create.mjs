@@ -160,34 +160,55 @@ async function keyArtFrom(officialUrl, prefix, seenHashes, notes) {
 
 const slugify = (s) => String(s).toLowerCase().trim().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
 
-/** Every field the product page needs filled, checked on the document itself. */
+/**
+ * What must be true before a product is written, and what is merely absent.
+ *
+ * The two are not the same thing and collapsing them was wrong. A product with
+ * no price, no cost, or `isHidden` unset is dangerous and must not be written.
+ * A product whose square artwork Nintendo never published is complete as far as
+ * the source goes — refusing to create it does not produce the missing image,
+ * it just means the game is not in the shop.
+ *
+ * So blocking problems stop the write, and gaps are recorded on the product
+ * under `_dataGaps` where the owner can see exactly what is missing and why,
+ * rather than being silently absent or silently invented.
+ */
 function validate(doc, priced) {
-  const problems = [];
-  const need = {
-    title: "English name", titleEn: "English name", slug: "slug", platform: "platform",
-    description: "description", developer: "developer", publisher: "publisher",
-    releaseDate: "release date", ageRating: "age rating", nsuid: "Nintendo nsuid",
-    cartridgeImage: "front box cover", nintendoCardImage: "square image", coverImage: "wide cover",
+  const blocking = [];
+  const gaps = [];
+
+  /* Identity, money and safety. Nothing here can be sourced later. */
+  const required = {
+    title: "English name", slug: "slug", platform: "platform",
+    description: "description", publisher: "publisher", releaseDate: "release date",
+    nsuid: "Nintendo nsuid", cartridgeImage: "front box cover", coverImage: "detail cover",
   };
-  for (const [k, label] of Object.entries(need)) {
-    const v = doc[k];
-    if (v === undefined || v === null || String(v).trim() === "") problems.push(`empty: ${label} (${k})`);
+  for (const [k, label] of Object.entries(required)) {
+    if (String(doc[k] ?? "").trim() === "") blocking.push(`${label} (${k})`);
   }
-  for (const [k, label] of [["genres", "genres"], ["supportedLanguages", "languages"], ["galleryImages", "gallery"]]) {
-    if (!Array.isArray(doc[k]) || doc[k].length === 0) problems.push(`empty: ${label} (${k})`);
-  }
-  if (doc.isHidden !== true) problems.push("NOT HIDDEN — refusing to write a product that would be live");
-  if (!Array.isArray(doc.options) || !doc.options.length) problems.push("empty: purchase options");
-  if (!Array.isArray(doc.types) || !doc.types.length) problems.push("empty: edition variants");
-  if (!(Number(doc.cost) > 0)) problems.push("empty: base cost");
-  if (!(Number(doc.price) > 0)) problems.push("empty: base price");
+  if (!Array.isArray(doc.galleryImages) || doc.galleryImages.length === 0) blocking.push("gallery (galleryImages)");
+  if (doc.isHidden !== true) blocking.push("NOT HIDDEN — refusing to write a product that would be live");
+  if (!Array.isArray(doc.options) || !doc.options.length) blocking.push("purchase options");
+  if (!Array.isArray(doc.types) || !doc.types.length) blocking.push("edition variants");
+  if (!(Number(doc.cost) > 0)) blocking.push("base cost");
+  if (!(Number(doc.price) > 0)) blocking.push("base price");
   for (const t of doc.types ?? []) {
-    if (!(Number(t.cost) > 0)) problems.push(`variant "${t.name}": no cost`);
-    if (!(Number(t.price) > 0)) problems.push(`variant "${t.name}": no price`);
-    if (!t.optionId) problems.push(`variant "${t.name}": not bound to an account option`);
+    if (!(Number(t.cost) > 0)) blocking.push(`variant "${t.name}": no cost`);
+    if (!(Number(t.price) > 0)) blocking.push(`variant "${t.name}": no price`);
+    if (!t.optionId) blocking.push(`variant "${t.name}": not bound to an account option`);
   }
-  problems.push(...checkPricing(priced));
-  return problems;
+  blocking.push(...checkPricing(priced));
+
+  /* Present in some store records and not others. Recorded, never invented. */
+  if (String(doc.developer ?? "").trim() === "") gaps.push("developer — the store record does not name one");
+  if (String(doc.nintendoCardImage ?? "").trim() === "") gaps.push("square artwork — Nintendo publishes none for this title");
+  if (!Array.isArray(doc.genres) || !doc.genres.length) gaps.push("genres — the store record lists none");
+  if (!Array.isArray(doc.supportedLanguages) || !doc.supportedLanguages.length) gaps.push("languages — the store record lists none");
+  if (String(doc.ageRating ?? "").trim() === "") gaps.push("age rating — the store record gives none");
+  const banners = Array.isArray(doc.bannerImages) ? doc.bannerImages.length : 0;
+  if (banners < 6) gaps.push(`key art — ${banners} of 6 wide banners found on official sources`);
+
+  return { blocking, gaps };
 }
 
 async function buildOne(entry, existingSlugs) {
@@ -226,11 +247,21 @@ async function buildOne(entry, existingSlugs) {
   }
   const banners = await keyArtFrom(meta.officialUrl, prefix, seen, notes);
 
-  /* The wide cover is key art, never a screenshot. Without key art there is no
-     honest wide image, and the field is reported empty rather than filled with
-     a shot. */
-  const wide = banners[0] ?? null;
-  const bannerRest = banners.slice(1);
+  /*
+    Roles, as `nintendoImages.ts` defines them — it owns this decision, and its
+    rule is that no banner goes into a cover slot and no screenshot goes into
+    either.
+
+      front-box    -> cartridgeImage   the vertical retail packshot
+      detail-cover -> coverImage       the detail page's primary cover
+      banner       -> bannerImage      wide key art, never a cover
+
+    `coverImage` is a cover, not key art: the first version put the game's
+    banner there, which is exactly the substitution the resolver exists to
+    prevent. Nintendo publishes one product image, and both cover roles mean a
+    cover, so both point at that one stored object rather than storing it twice.
+  */
+  const banner = banners[0] ?? null;
 
   const priced = priceVariants(entry.variants, entry.demandTier);
   const offline = priced.filter((v) => v.account === "offline");
@@ -266,8 +297,15 @@ async function buildOne(entry, existingSlugs) {
     isInfiniteStock: true, stock: 999999,
     cartridgeImage: front?.url ?? "",
     nintendoCardImage: square?.url ?? "",
-    coverImage: wide?.url ?? "",
-    bannerImages: bannerRest.map((b) => b.url),
+    coverImage: front?.url ?? "",
+    /*
+      Both spellings, because two different surfaces read two different fields:
+      the role resolver reads `bannerImage`, and the details view rotates
+      through `bannerImages`. Writing only the plural — which is what the import
+      schema targets — leaves the resolver's banner role empty.
+    */
+    bannerImage: banner?.url ?? "",
+    bannerImages: banners.map((b) => b.url),
     galleryImages: gallery.map((g) => ({ url: g.url })),
     description: meta.description ?? "",
     tagline: meta.tagline ?? "",
@@ -294,23 +332,27 @@ async function buildOne(entry, existingSlugs) {
     createdAt: now, created_at: now, updatedAt: now, updated_at: now,
   };
 
-  const problems = validate(doc, priced);
+  const { blocking, gaps } = validate(doc, priced);
+  /* Recorded on the product, so a gap is visible to whoever opens it rather
+     than looking like a field nobody filled in. */
+  if (gaps.length) doc._dataGaps = gaps;
 
   say(`  resolved   : ${p.name} · nsuid ${meta.nsuid} · ${meta.publisher ?? "?"} / ${meta.developer ?? "?"}`);
   say(`  slug       : ${slug}`);
   say(`  released   : ${meta.releaseDate ?? "?"} · ${(meta.genres ?? []).join(", ")} · ${meta.ageRating ?? "?"} · ${(meta.supportedLanguages ?? []).length} languages`);
-  say(`  images     : front ${front ? "yes" : "MISSING"} · square ${square ? "yes" : "MISSING"} · gallery ${gallery.length} · wide cover ${wide ? "yes" : "MISSING"} · banners ${bannerRest.length}`);
+  say(`  images     : front ${front ? "yes" : "MISSING"} · square ${square ? "yes" : "MISSING"} · gallery ${gallery.length} · banners ${banners.length}/6`);
   say("  pricing    :");
   for (const v of priced) {
     say(`    ${v.account.padEnd(8)}${v.name.padEnd(22)}cost ${String(v.cost).padStart(7)} -> ${String(v.price).padStart(7)}  (+${v.margin})`);
   }
   for (const n of notes) say(`  note       : ${n}`);
-  if (problems.length) {
-    say(`  VALIDATION FAILED (${problems.length}):`);
-    for (const x of problems) say(`    ✗ ${x}`);
-    return { ok: false, reason: "validation", problems, notes };
+  for (const g of gaps) say(`  gap        : ${g}`);
+  if (blocking.length) {
+    say(`  BLOCKED (${blocking.length}):`);
+    for (const x of blocking) say(`    ✗ ${x}`);
+    return { ok: false, reason: "validation", problems: blocking, notes };
   }
-  say("  validation : passed");
+  say(`  validation : passed${gaps.length ? ` (with ${gaps.length} recorded gap${gaps.length > 1 ? "s" : ""})` : ""}`);
 
   if (!APPLY) { say("  (dry run — nothing written)"); return { ok: true, doc, dry: true, notes }; }
 
