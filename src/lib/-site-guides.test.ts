@@ -11,6 +11,8 @@
  * the pattern the troubleshooting entries already use.
  */
 import { describe, expect, it } from "vitest";
+import { readFileSync } from "node:fs";
+import { resolve } from "node:path";
 import { applyGuideOverrides, guideAnchor, guideSteps, shippedGuides } from "./siteGuides";
 import { filledImages } from "./content";
 
@@ -175,5 +177,34 @@ describe("the anchor a link points at", () => {
   it("is unique across the manual", () => {
     const anchors = guides.map(guideAnchor);
     expect(new Set(anchors).size).toBe(anchors.length);
+  });
+});
+
+describe("what links here", () => {
+  const source = (file: string) =>
+    readFileSync(resolve(process.cwd(), file), "utf8");
+
+  it("the delivery card opens the sign-in steps, not the top of the manual", () => {
+    /*
+      The customer holding that card has an account and needs step one of
+      sixteen. A link to the page heading is the same as not linking.
+    */
+    expect(source("src/components/chat/AccountCard.tsx")).toContain(
+      '/account_guides#login-method-1',
+    );
+  });
+
+  it("the verification-code notice links to the explanation beside it", () => {
+    expect(source("src/components/chat/AccountCard.tsx")).toContain(
+      "/account_guides#resend-verification",
+    );
+  });
+
+  it("every anchor those links use actually exists", () => {
+    const card = source("src/components/chat/AccountCard.tsx");
+    const anchors = new Set(shippedGuides().map(guideAnchor));
+    for (const match of card.matchAll(/\/account_guides#([a-z0-9-]+)/g)) {
+      expect(anchors, match[1]).toContain(match[1]);
+    }
   });
 });

@@ -328,8 +328,16 @@ export function AccountCard({
       {card.type === "credentials" && delivery && itemId ? (
         <div className="space-y-2 border-t border-border/60 pt-2">
           {/* Quick Action: Login Instructions Guide */}
+          {/*
+            Straight to the sign-in steps, not the top of the manual.
+
+            The customer holding this card has an account and needs step one of
+            sixteen. Sending them to a page heading and letting them find it is
+            the same as not linking. Signing in is identical for both account
+            options, so one anchor is correct for every order.
+          */}
           <a
-            href="/account_guides"
+            href="/account_guides#login-method-1"
             target="_blank"
             rel="noreferrer"
             className="flex items-center justify-center gap-1.5 w-full rounded-xl bg-blue-500/10 hover:bg-blue-500/20 text-blue-700 dark:text-blue-400 border border-blue-500/20 py-2 px-3 text-[11px] font-bold transition-colors cursor-pointer"
@@ -354,6 +362,19 @@ export function AccountCard({
                   ? "يجب إرفاق صورة تثبت تسجيل الدخول إلى الحساب قبل طلب كود التحقق. صوّر شاشة الحساب داخل الجهاز بوضوح دون قص."
                   : "You must attach a screenshot proving sign-in before requesting the verification code."}
               </span>
+              {/*
+                The code is the step this notice is about, so its explanation
+                belongs beside it — what to do while waiting, why not to press
+                Resend, and that the code lasts an hour.
+              */}
+              <a
+                href="/account_guides#resend-verification"
+                target="_blank"
+                rel="noreferrer"
+                className="mt-1 block font-bold underline underline-offset-4"
+              >
+                {locale === "ar" ? "شرح رمز التحقق" : "About the verification code"}
+              </a>
             </div>
           </div>
 
