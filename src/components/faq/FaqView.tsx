@@ -2,8 +2,9 @@
 
 import { useMemo, useState } from "react";
 import { ChevronLeft, Search } from "lucide-react";
-import type { FaqCategory, FaqItem } from "@/lib/content";
+import { localized, type FaqCategory, type FaqItem } from "@/lib/content";
 import { faqMoreHref } from "@/lib/siteFaq";
+import { currentLang, useI18n } from "@/i18n";
 
 /**
  * Short answers, and a link to whoever owns the long one.
@@ -25,6 +26,8 @@ export function FaqView({
   categories: FaqCategory[];
   items: FaqItem[];
 }) {
+  const t = useI18n((state) => state.t);
+  const lang = currentLang();
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState("all");
 
@@ -33,7 +36,14 @@ export function FaqView({
     return items.filter((item) => {
       if (category !== "all" && item.category_id !== category) return false;
       if (!needle) return true;
-      return `${item.question_ar} ${item.answer_ar} ${item.keywords ?? ""}`
+      /*
+        Searched in every language the answer has, not only the one on screen.
+        A member reading in English may still type the Arabic word they know
+        the feature by — and the keywords are written in both.
+      */
+      return `${item.question_ar} ${item.answer_ar} ${item.question_en ?? ""} ${
+        item.answer_en ?? ""
+      } ${item.keywords ?? ""}`
         .toLowerCase()
         .includes(needle);
     });
@@ -57,10 +67,10 @@ export function FaqView({
     <div className="mx-auto w-full max-w-3xl px-4 pb-24 pt-6 sm:px-6">
       <header className="mb-5">
         <h1 className="text-2xl font-black leading-tight text-foreground sm:text-3xl">
-          الأسئلة الشائعة
+          {t("الأسئلة الشائعة")}
         </h1>
         <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-          أجوبة قصيرة، ورابط للشرح الكامل في الدليل أو السياسة.
+          {t("أجوبة قصيرة، ورابط للشرح الكامل في الدليل أو السياسة.")}
         </p>
       </header>
 
@@ -73,8 +83,8 @@ export function FaqView({
           type="search"
           value={query}
           onChange={(event) => setQuery(event.target.value)}
-          placeholder="ابحث عن سؤال…"
-          aria-label="ابحث في الأسئلة الشائعة"
+          placeholder={t("ابحث عن سؤال…")}
+          aria-label={t("ابحث في الأسئلة الشائعة")}
           className="w-full rounded-xl border border-border bg-card py-2.5 pe-10 ps-3 text-sm outline-none focus:border-primary"
         />
       </div>
@@ -82,7 +92,7 @@ export function FaqView({
       {categories.length > 0 && (
         <div className="mb-6 flex flex-wrap gap-2">
           <Chip active={category === "all"} onClick={() => setCategory("all")}>
-            الكل
+            {t("الكل")}
           </Chip>
           {categories.map((entry) => (
             <Chip
@@ -90,7 +100,7 @@ export function FaqView({
               active={category === entry.id}
               onClick={() => setCategory(entry.id)}
             >
-              {entry.name_ar}
+              {localized(entry, "name", lang)}
             </Chip>
           ))}
         </div>
@@ -98,17 +108,19 @@ export function FaqView({
 
       {grouped.length === 0 && orphans.length === 0 && (
         <p className="rounded-xl border border-border bg-card p-6 text-center text-sm text-muted-foreground">
-          لا يوجد سؤال يطابق بحثك.
+          {t("لا يوجد سؤال يطابق بحثك.")}
         </p>
       )}
 
       <div className="space-y-8">
         {grouped.map((group) => (
           <section key={group.category.id}>
-            <h2 className="mb-2 text-sm font-black text-foreground">{group.category.name_ar}</h2>
+            <h2 className="mb-2 text-sm font-black text-foreground">
+              {localized(group.category, "name", lang)}
+            </h2>
             <div className="divide-y divide-border overflow-hidden rounded-2xl border border-border bg-card">
               {group.questions.map((item) => (
-                <Answer key={item.id} item={item} />
+                <Answer key={item.id} item={item} lang={lang} label={t("الشرح الكامل")} />
               ))}
             </div>
           </section>
@@ -116,10 +128,10 @@ export function FaqView({
 
         {orphans.length > 0 && (
           <section>
-            <h2 className="mb-2 text-sm font-black text-foreground">أسئلة أخرى</h2>
+            <h2 className="mb-2 text-sm font-black text-foreground">{t("أسئلة أخرى")}</h2>
             <div className="divide-y divide-border overflow-hidden rounded-2xl border border-border bg-card">
               {orphans.map((item) => (
-                <Answer key={item.id} item={item} />
+                <Answer key={item.id} item={item} lang={lang} label={t("الشرح الكامل")} />
               ))}
             </div>
           </section>
@@ -154,24 +166,26 @@ function Chip({
   );
 }
 
-function Answer({ item }: { item: FaqItem }) {
+function Answer({ item, lang, label }: { item: FaqItem; lang: string; label: string }) {
   const more = faqMoreHref(item);
   return (
     <details id={item.id} className="group scroll-mt-24 px-4 py-3">
       <summary className="flex cursor-pointer list-none items-start justify-between gap-3 text-sm font-bold text-foreground marker:content-['']">
-        <span className="min-w-0">{item.question_ar}</span>
+        <span className="min-w-0">{localized(item, "question", lang)}</span>
         <ChevronLeft
           className="mt-0.5 h-4 w-4 shrink-0 text-muted-foreground transition-transform group-open:-rotate-90"
           aria-hidden
         />
       </summary>
-      <div className="mt-2 text-xs leading-relaxed text-muted-foreground">{item.answer_ar}</div>
+      <div className="mt-2 text-xs leading-relaxed text-muted-foreground">
+        {localized(item, "answer", lang)}
+      </div>
       {more && (
         <a
           href={more}
           className="mt-2 inline-flex items-center gap-1 text-xs font-bold text-primary hover:underline"
         >
-          الشرح الكامل
+          {label}
           <ChevronLeft className="h-3 w-3" aria-hidden />
         </a>
       )}

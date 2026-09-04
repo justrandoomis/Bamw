@@ -1,7 +1,8 @@
 "use client";
 
 import { ShieldAlert } from "lucide-react";
-import type { PolicyData, PolicySection } from "@/lib/content";
+import { localized, type PolicyData, type PolicySection } from "@/lib/content";
+import { currentLang, useI18n } from "@/i18n";
 import { policyAnchor } from "@/lib/sitePolicy";
 import { ContentGallery } from "@/components/content/ContentGallery";
 
@@ -21,25 +22,27 @@ import { ContentGallery } from "@/components/content/ContentGallery";
  * links to its own anchor. The full text is one tap away and unchanged.
  */
 export function PolicyView({ policy }: { policy: PolicyData }) {
+  const t = useI18n((state) => state.t);
+  const lang = currentLang();
   const sections = policy.sections ?? [];
-  const summarised = sections.filter((section) => section.summary_ar?.trim());
+  const summarised = sections.filter((section) => localized(section, "summary", lang).trim());
 
   return (
     <div className="mx-auto w-full max-w-3xl px-4 pb-24 pt-6 sm:px-6">
       <header className="mb-6">
         <h1 className="text-2xl font-black leading-tight text-foreground sm:text-3xl">
-          {policy.title_ar || "سياسة المتجر"}
+          {localized(policy, "title", lang) || t("سياسة المتجر")}
         </h1>
-        {policy.subtitle_ar && (
+        {localized(policy, "subtitle", lang) && (
           <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-            {policy.subtitle_ar}
+            {localized(policy, "subtitle", lang)}
           </p>
         )}
         {(policy.version || policy.last_updated) && (
           <p className="mt-2 text-[11px] text-muted-foreground">
-            {policy.version ? `الإصدار ${policy.version}` : ""}
+            {policy.version ? `${t("الإصدار")} ${policy.version}` : ""}
             {policy.version && policy.last_updated ? " · " : ""}
-            {policy.last_updated ? `آخر تحديث ${policy.last_updated}` : ""}
+            {policy.last_updated ? `${t("آخر تحديث")} ${policy.last_updated}` : ""}
           </p>
         )}
       </header>
@@ -52,8 +55,8 @@ export function PolicyView({ policy }: { policy: PolicyData }) {
       )}
 
       {summarised.length > 0 && (
-        <nav aria-label="ملخص السياسة" className="mb-8 rounded-2xl border border-border bg-card p-4">
-          <h2 className="mb-3 text-sm font-black text-foreground">الملخص</h2>
+        <nav aria-label={t("ملخص السياسة")} className="mb-8 rounded-2xl border border-border bg-card p-4">
+          <h2 className="mb-3 text-sm font-black text-foreground">{t("الملخص")}</h2>
           <ul className="space-y-2.5">
             {summarised.map((section) => (
               <li key={section.id} className="text-xs leading-relaxed">
@@ -61,9 +64,12 @@ export function PolicyView({ policy }: { policy: PolicyData }) {
                   href={`#${policyAnchor(section)}`}
                   className="font-bold text-foreground underline decoration-primary/40 underline-offset-4 hover:text-primary"
                 >
-                  {section.title_ar}
+                  {localized(section, "title", lang)}
                 </a>
-                <span className="text-muted-foreground"> — {section.summary_ar}</span>
+                <span className="text-muted-foreground">
+                  {" — "}
+                  {localized(section, "summary", lang)}
+                </span>
               </li>
             ))}
           </ul>
@@ -72,7 +78,7 @@ export function PolicyView({ policy }: { policy: PolicyData }) {
 
       <div className="space-y-8">
         {sections.map((section) => (
-          <PolicyClause key={section.id} section={section} />
+          <PolicyClause key={section.id} section={section} lang={lang} />
         ))}
       </div>
 
@@ -84,14 +90,14 @@ export function PolicyView({ policy }: { policy: PolicyData }) {
 
       {sections.length === 0 && (
         <p className="rounded-xl border border-border bg-card p-6 text-center text-sm text-muted-foreground">
-          لا توجد بنود منشورة حالياً.
+          {t("لا توجد بنود منشورة حالياً.")}
         </p>
       )}
     </div>
   );
 }
 
-function PolicyClause({ section }: { section: PolicySection }) {
+function PolicyClause({ section, lang }: { section: PolicySection; lang: string }) {
   return (
     <section
       id={policyAnchor(section)}
@@ -100,7 +106,7 @@ function PolicyClause({ section }: { section: PolicySection }) {
       }`}
     >
       <h2 className="text-base font-black leading-snug text-foreground sm:text-lg">
-        {section.title_ar}
+        {localized(section, "title", lang)}
       </h2>
 
       {/*
@@ -109,7 +115,7 @@ function PolicyClause({ section }: { section: PolicySection }) {
         source, which on a 360px screen pushes the text off its own column.
       */}
       <div className="mt-2 whitespace-pre-line break-words text-sm leading-relaxed text-muted-foreground">
-        {section.body_ar}
+        {localized(section, "body", lang)}
       </div>
 
       <ContentGallery images={section.images} />

@@ -814,13 +814,16 @@ export function mergeContent(partial: unknown): ContentDoc {
 }
 
 /** Picks the localized variant of a field with an Arabic fallback. */
-export function localized(
-  obj: Record<string, unknown> | undefined | null,
-  key: string,
-  lang = "ar",
-): string {
+export function localized(obj: object | undefined | null, key: string, lang = "ar"): string {
+  /*
+    `object` rather than an index signature, because the callers pass declared
+    interfaces — `GuideItem`, `PolicySection` — and TypeScript will not assign
+    one of those to `Record<string, unknown>`. Widening here beats scattering a
+    cast at every call site.
+  */
   if (!obj) return "";
-  return String(obj[`${key}_${lang}`] || obj[`${key}_ar`] || "");
+  const row = obj as Record<string, unknown>;
+  return String(row[`${key}_${lang}`] || row[`${key}_ar`] || "");
 }
 
 /** Active options sorted for rendering. */
