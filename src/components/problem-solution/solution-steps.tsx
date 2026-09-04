@@ -2,6 +2,7 @@
 
 import { Reveal } from "@/components/motion/reveal";
 import type { SolutionStep } from "@/lib/problems/types";
+import { ContentGallery } from "@/components/content/ContentGallery";
 
 /**
  * The numbered solution. Each step reveals as it enters the viewport, with a
@@ -45,6 +46,9 @@ export function SolutionSteps({
                 {step.detail}
               </p>
             )}
+            {/* Empty until the shop owner uploads the screenshot; then a figure. */}
+            <ContentGallery images={step.slots} />
+
             {step.hint && (
               <p className="mt-2.5 flex gap-2 rounded-xl border border-primary/30 bg-primary/10 px-3 py-2 text-sm leading-relaxed text-muted-foreground">
                 <span aria-hidden className="shrink-0">
