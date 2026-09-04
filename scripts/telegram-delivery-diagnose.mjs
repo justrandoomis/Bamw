@@ -269,6 +269,76 @@ if (!buyers.error) {
 }
 say();
 
+/* ------------------------------------- 6b. linked, but reachable? */
+say("## 6b. Links that exist but cannot be used");
+/*
+  A member can finish the Telegram flow and still be unreachable, because
+  `telegram_links.user_id` is not always a user id. Anonymous signups share the
+  owner key `guest:<phone>` and are re-keyed later by `adoptGuestTelegramLink`;
+  if that never runs, the row is real, the member sees themselves as linked, and
+  `getUserTelegramChatId(user.id)` finds nothing.
+*/
+const guestKeyed = await ask(
+  `SELECT COUNT(*) AS n FROM telegram_links WHERE user_id LIKE 'guest:%'`,
+);
+if (!guestKeyed.error) {
+  const n = Number(guestKeyed.rows[0]?.n ?? 0);
+  say(`  links still keyed to a guest phone rather than a user: ${n}`);
+  if (n > 0) {
+    note(
+      `${n} Telegram link(s) are keyed \`guest:<phone>\` instead of a user id. Those members ` +
+        "are linked as far as they can tell, and no per-user message can reach them.",
+    );
+  }
+}
+
+const orphaned = await ask(
+  `SELECT COUNT(*) AS n
+     FROM telegram_links l
+     LEFT JOIN users u ON u.id = l.user_id
+    WHERE u.id IS NULL AND l.user_id NOT LIKE 'guest:%'`,
+);
+if (!orphaned.error) {
+  const n = Number(orphaned.rows[0]?.n ?? 0);
+  say(`  links whose user_id matches no user at all: ${n}`);
+  if (n > 0) note(`${n} Telegram link(s) point at a user id that does not exist.`);
+}
+
+const unverified = await ask(`SELECT COUNT(*) AS n FROM telegram_links WHERE verified != 1`);
+if (!unverified.error) say(`  links marked unverified: ${unverified.rows[0]?.n ?? 0}`);
+
+const noChat = await ask(
+  `SELECT COUNT(*) AS n FROM telegram_links WHERE telegram_chat_id IS NULL OR telegram_chat_id = 0`,
+);
+if (!noChat.error) {
+  const n = Number(noChat.rows[0]?.n ?? 0);
+  say(`  links with no chat id: ${n}`);
+  if (n > 0) note(`${n} Telegram link(s) carry no chat id, so there is no address to send to.`);
+}
+
+/*
+  The half-finished flow: a verification session that got as far as knowing the
+  member's chat id, and never became a link. From the member's side the bot
+  answered them, so they believe they are connected.
+*/
+const stranded = await ask(
+  `SELECT COUNT(*) AS n
+     FROM telegram_verification_sessions s
+     LEFT JOIN telegram_links l ON l.telegram_chat_id = s.telegram_chat_id
+    WHERE s.telegram_chat_id IS NOT NULL AND l.telegram_chat_id IS NULL`,
+);
+if (!stranded.error) {
+  const n = Number(stranded.rows[0]?.n ?? 0);
+  say(`  verification sessions that knew a chat id but never became a link: ${n}`);
+  if (n > 0) {
+    note(
+      `${n} member(s) got far enough for the bot to know their chat id and never got a link row — ` +
+        "the flow stops before the contact share, and they have no reason to think it did.",
+    );
+  }
+}
+say();
+
 /* ------------------------------------------------- 7. what production wrote down */
 say("## 7. Refusals production recorded");
 const failures = await ask(
