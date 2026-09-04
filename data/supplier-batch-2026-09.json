@@ -482,7 +482,7 @@
       "title": "Onimusha",
       "zh": "鬼武者",
       "platform": "switch1",
-      "_ambiguous": "Owner listed this as 'the four-option edition', same Chinese name as n=20 (Onimusha: Warlords). Which Nintendo title it is must be settled before it is created.",
+      "_ambiguous": "needs_identity_review. Same Chinese name as n=20 (Onimusha: Warlords) but a four-rung ladder: Regular 1,540 / Deluxe 6,380 / Complete 26,180 / Ultimate 42,680. Capcom's only current four-edition Onimusha is Way of the Sword, whose tiers are Standard / Deluxe / Premium Deluxe — no Complete and no Ultimate — and that is n=23 already, on Switch 2. No Onimusha title on Nintendo matches this ladder, so which game it is cannot be proven and nothing is created for it.",
       "variants": [
         {
           "name": "Regular / 普通版",
@@ -532,7 +532,7 @@
       "n": 23,
       "title": "Onimusha: Way of the Sword",
       "zh": "鬼武者：剑之道",
-      "platform": "switch1",
+      "platform": "switch2",
       "variants": [
         {
           "name": "Regular / 普通版",
@@ -556,7 +556,8 @@
         }
       ],
       "demandTier": "major",
-      "demandReason": "New mainline Capcom action title"
+      "demandReason": "New mainline Capcom action title",
+      "platformNote": "Switch 2 only — Nintendo UK lists it under Nintendo Switch 2 games and every retailer sells the Switch 2 SKU; no Switch 1 version exists. Released 2026-09-04. The owner did not state a console and it had been defaulted to switch1, which identityMatch would have refused."
     },
     {
       "n": 24,
