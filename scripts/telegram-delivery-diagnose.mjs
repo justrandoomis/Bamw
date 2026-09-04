@@ -269,6 +269,35 @@ if (!buyers.error) {
 }
 say();
 
+/* ------------------------------------------------- 7. what production wrote down */
+say("## 7. Refusals production recorded");
+const failures = await ask(
+  `SELECT kind, route, error_code, description, failed_at
+     FROM telegram_send_failures
+    ORDER BY id DESC
+    LIMIT 10`,
+);
+if (failures.error) {
+  /*
+    Absent until the release carrying the table is live and something has
+    failed since. That is not itself a problem — it only means this section
+    cannot answer yet.
+  */
+  say("  no telegram_send_failures table yet — the release carrying it is not live,");
+  say("  or nothing has failed since it shipped.");
+} else if (failures.rows.length === 0) {
+  say("  none recorded.");
+} else {
+  for (const row of failures.rows) {
+    say(
+      `  ${String(row.failed_at).slice(0, 19)}Z  ${String(row.kind).padEnd(8)}` +
+        ` ${String(row.route ?? "?").padEnd(18)} ${row.error_code ?? ""} ${row.description ?? ""}`,
+    );
+  }
+  note(`${failures.rows.length} refusal(s) recorded — the newest is the one to read.`);
+}
+say();
+
 /* ------------------------------------------------------------------ verdict */
 say("## Verdict");
 if (problems.length === 0) {

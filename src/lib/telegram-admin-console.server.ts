@@ -355,12 +355,18 @@ async function sendPendingRequests(chatId: number): Promise<void> {
             { text: "✅ موافقة فورية", callback_data: `rq:ok:${request.id}` },
             { text: "❌ رفض", callback_data: `rq:no:${request.id}` },
           ],
+          /*
+            A link, not a `web_app` button. The console answers wherever the
+            operator typed the command, and that is often the admin group,
+            where Telegram refuses a `web_app` button — and refuses the whole
+            message with it. `sendTelegramMessage` converts one bound for a
+            group anyway; writing it as a link here means the two paths do not
+            differ in what they intend to send.
+          */
           [
             {
               text: "🔍 مراجعة في التطبيق",
-              web_app: {
-                url: `${origin}/telegram/wallet-review?request=${encodeURIComponent(request.id)}`,
-              },
+              url: `${origin}/telegram/wallet-review?request=${encodeURIComponent(request.id)}`,
             },
           ],
         ],

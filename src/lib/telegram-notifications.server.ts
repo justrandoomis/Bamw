@@ -5,8 +5,10 @@ import {
   findForbiddenSecret,
   routeOptions,
   withRoutePrefix,
+  type AdminRoute,
   type AdminNotificationKind,
 } from "./telegram-admin-routing.server";
+import { recordSendFailure } from "./telegram-send-log.server";
 import {
   sendTelegramMessage,
   escapeHtml,
@@ -119,6 +121,26 @@ export interface AdminNotificationResult {
   /** Where it landed, so a reply to it can be traced back. */
   chatId?: string;
   messageId?: number;
+  /**
+   * Nothing was due, as opposed to something being lost.
+   *
+   * A notification for an event that does not warrant one is not a failure,
+   * and the queue must not retry it five times before giving up.
+   */
+  skipped?: boolean;
+}
+
+/**
+ * How to name a destination in a diagnostics table.
+ *
+ * Not the chat id and not a hash of it. The only thing the table is ever
+ * asked is which of the three destinations was chosen — the group with a
+ * topic, the group without one, or the single private chat the routing falls
+ * back to — and that answer needs no identifier at all.
+ */
+function routeLabel(route: AdminRoute): string {
+  if (!route.isGroup) return "legacy-private-chat";
+  return route.messageThreadId ? "group-topic" : "group-no-topic";
 }
 
 export async function sendAdminNotification(
@@ -138,6 +160,11 @@ export async function sendAdminNotification(
   const forbidden = findForbiddenSecret(text);
   if (forbidden) {
     console.error("[telegram:admin_notification_blocked]", { kind, forbidden });
+    await recordSendFailure({
+      kind,
+      route: routeLabel(route),
+      description: `blocked: ${forbidden}`,
+    });
     return { ok: false };
   }
 
@@ -148,7 +175,29 @@ export async function sendAdminNotification(
       ...options,
     });
     if (!res.ok) {
-      console.warn("[telegram:admin_notification_failed]", { kind, error: res.error });
+      /*
+        `res.error` is only set for the failures this app invents — a missing
+        token, a timeout, a socket error. A refusal from Telegram itself
+        arrives as `error_code` and `description`, and logging `error` alone
+        printed `{ kind: "wallet", error: undefined }`: the one line naming
+        which notification was lost said nothing about why. "Bad Request:
+        chat not found" and "bot was kicked from the supergroup chat" are
+        different problems with different fixes, and neither survived.
+      */
+      console.warn("[telegram:admin_notification_failed]", {
+        kind,
+        status: res.status,
+        error_code: res.error_code,
+        description: res.description,
+        error: res.error,
+      });
+      await recordSendFailure({
+        kind,
+        route: routeLabel(route),
+        ...(typeof res.status === "number" ? { status: res.status } : {}),
+        ...(typeof res.error_code === "number" ? { errorCode: res.error_code } : {}),
+        description: res.description ?? res.error,
+      });
       return { ok: false };
     }
     /*
@@ -167,6 +216,11 @@ export async function sendAdminNotification(
     };
   } catch (err) {
     console.error("[telegram:admin_notification_threw]", { kind, err });
+    await recordSendFailure({
+      kind,
+      route: routeLabel(route),
+      description: `threw: ${err instanceof Error ? err.message : String(err)}`,
+    });
     return { ok: false };
   }
 }
@@ -235,7 +289,12 @@ export async function notifyAdminCustomerMessage(params: {
   user: { id: string; name?: string; phone?: string; username?: string };
 }): Promise<AdminNotificationResult> {
   const { thread, message, user } = params;
-  if (message.senderRole !== "user") return { ok: false };
+  /*
+    Only a customer's own message is worth telling the admins about. Nothing
+    failed here, so it is marked skipped: the queue's retry exists for a
+    notification that was lost, not for one that was never due.
+  */
+  if (message.senderRole !== "user") return { ok: false, skipped: true };
 
 
   const customerName = escapeHtml(user.name || user.username || "عميل بنانا");
@@ -294,6 +353,13 @@ export async function notifyAdminCustomerMessage(params: {
  * and a direct approve that settles the request from the message itself without
  * opening anything. Every one of them is checked against the operator's own
  * Telegram id when it is used — these buttons carry no authority of their own.
+ *
+ * The `web_app` button stays a `web_app` button here. It only works in a
+ * private chat, and Telegram refuses the entire message rather than the button
+ * when it is sent anywhere else — which is what silenced every top-up
+ * notification once they moved into the admin group. `sendTelegramMessage`
+ * converts it to a plain link when the destination is a group, so the private
+ * chat keeps the inline Mini App and the group gets the same page as a link.
  */
 export function buildRechargeReviewKeyboard(requestId: string) {
   const origin = telegramPublicOrigin();

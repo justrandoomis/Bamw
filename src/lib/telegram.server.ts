@@ -190,6 +190,57 @@ export async function checkChannelSubscription(
  * it or the text actually contains supported HTML tags — an unparsable body
  * must never be the reason a message fails.
  */
+/**
+ * Is this destination a group, a supergroup or a channel?
+ *
+ * Telegram gives every one of them a negative id and every user a positive
+ * one, and a channel can also be addressed by `@username`. The routing module
+ * already depends on the same invariant.
+ */
+function isGroupChat(chatId: string | number): boolean {
+  const raw = String(chatId).trim();
+  if (raw.startsWith("@")) return true;
+  const parsed = Number(raw);
+  return Number.isFinite(parsed) ? parsed < 0 : false;
+}
+
+/**
+ * The same keyboard, with the buttons a group cannot carry made into ones it
+ * can.
+ *
+ * `web_app` buttons exist only in a private chat with the bot. Sending one to
+ * a group does not drop the button — Telegram refuses the entire message with
+ * `Bad Request: BUTTON_TYPE_INVALID`, so the notification is lost whole.
+ *
+ * That is what stopped every admin notification the day the shop's
+ * notifications moved from one person's private chat into the admin group.
+ * The top-up card carries a "review in the app" `web_app` button, and it had
+ * always worked, because until then it had only ever been sent to a private
+ * chat.
+ *
+ * A Mini App opened from a `web_app` button and the same page opened from a
+ * `url` button are the same page, so the conversion loses the inline frame
+ * and nothing else.
+ */
+export function groupSafeReplyMarkup(markup: unknown): unknown {
+  const keyboard = (markup as { inline_keyboard?: unknown })?.inline_keyboard;
+  if (!Array.isArray(keyboard)) return markup;
+
+  let changed = false;
+  const rows = keyboard.map((row) =>
+    (Array.isArray(row) ? row : []).map((button) => {
+      const webApp = (button as { web_app?: { url?: unknown } })?.web_app;
+      const url = typeof webApp?.url === "string" ? webApp.url : "";
+      if (!url) return button;
+      changed = true;
+      const { web_app: _dropped, ...rest } = button as Record<string, unknown>;
+      return { ...rest, url };
+    }),
+  );
+
+  return changed ? { ...(markup as object), inline_keyboard: rows } : markup;
+}
+
 export async function sendTelegramMessage(
   chatId: string | number,
   text: string,
@@ -197,7 +248,30 @@ export async function sendTelegramMessage(
 ): Promise<TelegramResponse> {
   const payload: Record<string, unknown> = { chat_id: chatId, text, ...options };
   if (!("parse_mode" in options) && looksLikeHtml(text)) payload["parse_mode"] = "HTML";
-  return callTelegram("sendMessage", payload);
+  if (payload["reply_markup"] && isGroupChat(chatId)) {
+    payload["reply_markup"] = groupSafeReplyMarkup(payload["reply_markup"]);
+  }
+
+  const res = await callTelegram("sendMessage", payload);
+
+  /*
+    A notification is worth more than its buttons.
+
+    If Telegram still refuses the keyboard — a button type this does not know
+    about, or one added later — the message is sent again without it rather
+    than lost. Whoever is waiting on it gets the order, the top-up or the
+    customer's message, and loses a shortcut.
+  */
+  if (!res.ok && payload["reply_markup"] && /BUTTON/i.test(res.description ?? "")) {
+    console.warn("[telegram:keyboard_rejected]", {
+      description: res.description,
+      retrying_without_buttons: true,
+    });
+    const { reply_markup: _rejected, ...withoutButtons } = payload;
+    return callTelegram("sendMessage", withoutButtons);
+  }
+
+  return res;
 }
 
 /** Bot identity — used by diagnostics and health checks. */
