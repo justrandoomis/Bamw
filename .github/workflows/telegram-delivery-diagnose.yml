@@ -1,0 +1,59 @@
+# READ ONLY — why a Telegram notification did not arrive.
+#
+# The bindings are correct, so the failure is after routing. This asks
+# production directly: is the release live, does the queue have a consumer,
+# has the consumer ever processed a message, was there anything to notify
+# about since the topics were bound, and can a per-user message be addressed
+# at all.
+#
+# Every statement is a SELECT or a GET. It writes nothing and sends no
+# Telegram message. It prints no chat id, thread id, name, phone or order
+# code — a six-character fingerprint tells two chats apart without
+# disclosing either.
+name: Telegram delivery diagnose
+
+on:
+  workflow_dispatch:
+  push:
+    branches: ["claude/**"]
+    paths:
+      - "scripts/telegram-delivery-diagnose.mjs"
+      - ".github/workflows/telegram-delivery-diagnose.yml"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: telegram-delivery-diagnose
+  cancel-in-progress: false
+
+jobs:
+  diagnose:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm install -g npm@11.19.1
+      - run: npm ci --no-audit --no-fund
+
+      - name: Mask identifiers
+        env:
+          ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: echo "::add-mask::$ACCOUNT_ID"
+
+      - name: Ask production
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          if [ -z "$D1_DATABASE_ID" ]; then
+            D1_DATABASE_ID=$(node -e "const s=require('fs').readFileSync('wrangler.jsonc','utf8');console.log(/\"database_id\":\s*\"([0-9a-f-]+)\"/.exec(s)[1])")
+            export D1_DATABASE_ID
+          fi
+          node scripts/telegram-delivery-diagnose.mjs
