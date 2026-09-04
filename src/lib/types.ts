@@ -1190,3 +1190,19 @@ export type ChatRealtimeEvent =
         thread?: Thread;
       };
     };
+
+/**
+ * The least that identifies a member, for an admin picker.
+ *
+ * Deliberately not `PublicUser`: a picker needs to tell two members apart, and
+ * a wallet balance or a saved address does not help with that. What is not
+ * sent to the browser cannot leak from the screen that received it.
+ */
+export interface MemberMatch {
+  id: string;
+  name: string;
+  email: string;
+  phone?: string;
+  memberNo?: string;
+  username?: string;
+}

@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { toast } from "sonner";
 import {
@@ -23,7 +23,7 @@ import {
 } from "lucide-react";
 import { adminApi, api } from "@/lib/api";
 import { getCouponRemainingTime } from "@/lib/coupons";
-import type { Coupon, DiscountType, Product } from "@/lib/types";
+import type { Coupon, DiscountType, MemberMatch, Product } from "@/lib/types";
 import {
   Dialog,
   DialogContent,
@@ -87,24 +87,64 @@ export default function CouponsManager() {
     queryFn: () => api.store(),
   });
 
-  /*
-    The members list, for the "who may use this" picker.
-
-    `eligible_users` holds account ids, which nobody knows by heart — the field
-    existed in the row, in the mapper and in the rule that enforces it, and the
-    only way to fill it was to call the API by hand. Searching a name, an email
-    or a phone and storing the id is what makes the restriction usable.
-  */
-  const { data: usersData } = useQuery({
-    queryKey: ["admin-users-for-coupons"],
-    queryFn: () => adminApi.getUsers(),
-  });
-  const membersList = useMemo(
-    () => (usersData?.users || []) as Array<Record<string, any>>,
-    [usersData?.users],
-  );
   const [productSearch, setProductSearch] = useState("");
   const [memberSearch, setMemberSearch] = useState("");
+
+  /*
+    The "who may use this" picker.
+
+    `eligible_users` holds account ids, which nobody knows by heart — searching
+    a name, an email or a phone and storing the id is what makes the
+    restriction usable. That search used to run in the browser over
+    `adminApi.getUsers()`: the entire members table, every name, email, phone,
+    wallet balance and saved address in the shop, downloaded on every open of
+    this screen to fill a list that shows a couple of dozen rows.
+
+    It is answered by the database now and only the matches come back. Two
+    queries, because they answer different questions: what the operator is
+    typing, and who the coupon is already restricted to — the second is what
+    lets the saved list show names instead of a row of opaque ids.
+  */
+  const [debouncedMemberSearch, setDebouncedMemberSearch] = useState("");
+  useEffect(() => {
+    const timer = setTimeout(() => setDebouncedMemberSearch(memberSearch.trim()), 250);
+    return () => clearTimeout(timer);
+  }, [memberSearch]);
+
+  const { data: memberSearchData, isFetching: isSearchingMembers } = useQuery({
+    queryKey: ["admin-member-search", debouncedMemberSearch],
+    queryFn: () => adminApi.searchMembers(debouncedMemberSearch),
+    enabled: debouncedMemberSearch.length > 0,
+  });
+
+  const chosenIds = useMemo(
+    () => (form.eligibleUsers ?? []).map((id) => String(id)),
+    [form.eligibleUsers],
+  );
+  const { data: chosenMembersData } = useQuery({
+    queryKey: ["admin-members-by-id", chosenIds.join(",")],
+    queryFn: () => adminApi.membersByIds(chosenIds),
+    enabled: chosenIds.length > 0,
+  });
+
+  /*
+    What the picker lists: the search results when there is a term, and the
+    already-chosen members when there is not — so opening a restricted coupon
+    shows who it is restricted to without typing anything.
+  */
+  const membersList = useMemo<MemberMatch[]>(() => {
+    const results = debouncedMemberSearch
+      ? (memberSearchData?.members ?? [])
+      : (chosenMembersData?.members ?? []);
+    const chosen = chosenMembersData?.members ?? [];
+    // A chosen member who does not match the current term still needs their
+    // checkbox on screen, or unticking them means clearing the box first.
+    const byId = new Map(results.map((member) => [member.id, member]));
+    for (const member of chosen) {
+      if (!byId.has(member.id)) byId.set(member.id, member);
+    }
+    return [...byId.values()];
+  }, [debouncedMemberSearch, memberSearchData?.members, chosenMembersData?.members]);
 
   const productsList = useMemo(() => {
     return (storeData?.products || []) as Product[];
@@ -1144,49 +1184,45 @@ export default function CouponsManager() {
                   onChange={(e) => setMemberSearch(e.target.value)}
                 />
                 <div className="max-h-40 overflow-y-auto rounded-xl border border-border divide-y divide-border">
-                  {membersList
-                    .filter((member) => {
-                      const needle = memberSearch.trim().toLowerCase();
-                      if (!needle)
-                        return (form.eligibleUsers ?? []).some(
-                          (id) => String(id) === String(member.id),
-                        );
-                      return `${member.name ?? ""} ${member.email ?? ""} ${member.phone ?? ""} ${member.id}`
-                        .toLowerCase()
-                        .includes(needle);
-                    })
-                    .slice(0, 40)
-                    .map((member) => {
-                      const chosen = (form.eligibleUsers ?? []).some(
-                        (id) => String(id) === String(member.id),
-                      );
-                      return (
-                        <label
-                          key={String(member.id)}
-                          className="flex items-center gap-2 px-3 py-2 cursor-pointer hover:bg-muted/50"
-                        >
-                          <input
-                            type="checkbox"
-                            className="w-4 h-4 rounded border-border"
-                            checked={chosen}
-                            onChange={(e) =>
-                              setForm({
-                                ...form,
-                                eligibleUsers: e.target.checked
-                                  ? [...(form.eligibleUsers ?? []), String(member.id)]
-                                  : (form.eligibleUsers ?? []).filter(
-                                      (id) => String(id) !== String(member.id),
-                                    ),
-                              })
-                            }
-                          />
-                          <span className="text-xs text-foreground truncate">
-                            {member.name || member.email || member.phone || String(member.id)}
-                          </span>
-                        </label>
-                      );
-                    })}
-                  {memberSearch.trim() === "" && (form.eligibleUsers?.length ?? 0) === 0 && (
+                  {membersList.map((member) => {
+                    const chosen = chosenIds.includes(String(member.id));
+                    return (
+                      <label
+                        key={String(member.id)}
+                        className="flex items-center gap-2 px-3 py-2 cursor-pointer hover:bg-muted/50"
+                      >
+                        <input
+                          type="checkbox"
+                          className="w-4 h-4 rounded border-border"
+                          checked={chosen}
+                          onChange={(e) =>
+                            setForm({
+                              ...form,
+                              eligibleUsers: e.target.checked
+                                ? [...(form.eligibleUsers ?? []), String(member.id)]
+                                : (form.eligibleUsers ?? []).filter(
+                                    (id) => String(id) !== String(member.id),
+                                  ),
+                            })
+                          }
+                        />
+                        <span className="text-xs text-foreground truncate">
+                          {member.name || member.email || member.phone || String(member.id)}
+                        </span>
+                      </label>
+                    );
+                  })}
+                  {isSearchingMembers && (
+                    <p className="px-3 py-2 text-[11px] text-muted-foreground">جارِ البحث…</p>
+                  )}
+                  {!isSearchingMembers &&
+                    debouncedMemberSearch !== "" &&
+                    membersList.length === 0 && (
+                      <p className="px-3 py-2 text-[11px] text-muted-foreground">
+                        لا يوجد عضو يطابق هذا البحث.
+                      </p>
+                    )}
+                  {memberSearch.trim() === "" && chosenIds.length === 0 && (
                     <p className="px-3 py-2 text-[11px] text-muted-foreground">
                       اكتب للبحث. بدون اختيار، الكوبون متاح لكل الأعضاء.
                     </p>
