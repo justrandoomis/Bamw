@@ -1,5 +1,5 @@
-import { env } from "./env.server";
 import { readOrderItemSelection, selectionSummary } from "./orderItemSelection";
+import { telegramAdminIds } from "./telegram-admin.server";
 import {
   adminRoute,
   findForbiddenSecret,
@@ -21,16 +21,23 @@ import { normalizePhone } from "./phone";
 import type { Order, ProductRequest, User } from "./types";
 
 /**
- * Primary admin Telegram Chat ID:
- * Uses environment variable TELEGRAM_ADMIN_CHAT_ID, falling back to 6404042791 (@levo_4li).
+ * Primary admin Telegram Chat ID.
+ *
+ * `TELEGRAM_ADMIN_CHAT_ID` may name several operators, comma separated — that
+ * is what `telegramAdminIds()` has always documented and what authorisation
+ * reads. This function did not: it returned the raw setting, so an owner who
+ * added a second operator turned every fallback notification into a send to
+ * the chat id `"111111111, 222222222"`, which Telegram answers with "Bad
+ * Request: chat not found". Every order, top-up and support message would have
+ * been lost for as long as the admin group binding was missing — and the
+ * fallback exists precisely for when it is missing.
+ *
+ * So the parsing rule lives in one place now, and the first configured
+ * operator is the primary. Falls back to 6404042791 (@levo_4li) so a fresh
+ * deployment still notifies somebody.
  */
 export function getAdminTelegramChatId(): string {
-  const configured = (
-    env("TELEGRAM_ADMIN_CHAT_ID") ||
-    process.env.TELEGRAM_ADMIN_CHAT_ID ||
-    ""
-  ).trim();
-  return configured || "6404042791";
+  return telegramAdminIds()[0] ?? "6404042791";
 }
 
 /**

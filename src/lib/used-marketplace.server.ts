@@ -733,7 +733,7 @@ export async function transitionListing(
   }
 
   await notifySeller(listing, to, options);
-  if (to === "SUBMITTED") await notifyStore(listing);
+  if (to === "SUBMITTED") await notifyStore(listing, now);
 
   if (options.actorUserId) {
     await createAuditLog(
@@ -792,21 +792,41 @@ async function notifySeller(
  * into every module that touches a listing, and swallowed on failure for the
  * same reason as the seller notice: the status change is the transaction.
  */
-async function notifyStore(listing: UsedListing) {
+async function notifyStore(listing: UsedListing, submittedAt: string) {
   try {
-    const [{ notifyAdminUsedListing }, { findUserById }] = await Promise.all([
-      import("./telegram-notifications.server"),
+    const [{ findUserById }, { enqueueNotification }] = await Promise.all([
       import("./db.server"),
+      import("./notification-outbox.server"),
     ]);
     const seller = await findUserById(listing.sellerUserId);
-    await notifyAdminUsedListing({
+    const listingPayload = {
       listingId: listing.id,
       title: listing.title,
       priceIqd: listing.priceIqd,
       conditionGrade: listing.conditionGrade,
       usedType: listing.usedType,
       user: { id: listing.sellerUserId, name: seller?.name, phone: seller?.phone },
-    });
+    };
+    /*
+      Keyed on the submission, not the listing.
+
+      A listing can be submitted, rejected, edited and submitted again — three
+      genuinely separate things for the store to look at. `submittedAt` is the
+      transition's own timestamp, stamped once in `transitionListing` and
+      shared with the event row, so a retried queue delivery of one submission
+      carries the same key while a later re-submission gets its own.
+    */
+    await enqueueNotification(
+      {
+        type: "telegram_admin_used_listing",
+        payload: listingPayload,
+        dedupeKey: `used_listing_submitted:${listing.id}:${submittedAt}`,
+      },
+      async () => {
+        const { notifyAdminUsedListing } = await import("./telegram-notifications.server");
+        return notifyAdminUsedListing(listingPayload);
+      },
+    );
   } catch (error) {
     console.error("[used-marketplace] telling the store failed", listing.id, error);
   }

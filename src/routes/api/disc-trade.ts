@@ -691,17 +691,34 @@ export const Route = createFileRoute("/api/disc-trade")({
             );
           }
 
-          // Notify Admin in Telegram with MiniApp Deep Link
+          /*
+            Through the outbox, keyed on the trade id. A trade the admin is
+            never told about is a customer waiting on a price that nobody knows
+            to set, so this send is retried rather than lost to one timeout.
+          */
           try {
-            const { notifyAdminDiscTrade } = await import("@/lib/telegram-notifications.server");
-            await notifyAdminDiscTrade({
+            const tradePayload = {
               tradeId,
               gameName: game?.title ?? gameName,
               platform,
               finalIqd: quote?.final_iqd,
               isCustom,
               user: { id: user.id, name: user.name, phone: user.phone },
-            });
+            };
+            const { enqueueNotification } = await import("@/lib/notification-outbox.server");
+            await enqueueNotification(
+              {
+                type: "telegram_admin_disc_trade",
+                payload: tradePayload,
+                dedupeKey: `disc_trade:${tradeId}`,
+              },
+              async () => {
+                const { notifyAdminDiscTrade } = await import(
+                  "@/lib/telegram-notifications.server"
+                );
+                return notifyAdminDiscTrade(tradePayload);
+              },
+            );
           } catch (err) {
             console.warn("Failed to notify admin on disc trade", err);
           }

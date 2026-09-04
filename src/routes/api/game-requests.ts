@@ -121,13 +121,30 @@ export const Route = createFileRoute("/api/game-requests")({
             row.updatedAt,
           );
 
-          // Notify the admin Telegram chat
+          /*
+            Through the outbox, keyed on the request id: a re-submitted form is
+            the same request, and a Telegram failure is retried rather than
+            losing the only notice that somebody asked for a game.
+          */
           try {
-            const { notifyAdminGameRequest } = await import("@/lib/telegram-notifications.server");
-            await notifyAdminGameRequest({
+            const requestPayload = {
               request: row,
               user: { id: user.id, name: user.name, phone: user.phone },
-            });
+            };
+            const { enqueueNotification } = await import("@/lib/notification-outbox.server");
+            await enqueueNotification(
+              {
+                type: "telegram_admin_game_request",
+                payload: requestPayload,
+                dedupeKey: `game_request:${row.id}`,
+              },
+              async () => {
+                const { notifyAdminGameRequest } = await import(
+                  "@/lib/telegram-notifications.server"
+                );
+                return notifyAdminGameRequest(requestPayload);
+              },
+            );
           } catch (e) {
             console.warn("Failed to dispatch admin notification", e);
           }
