@@ -1724,6 +1724,37 @@ export async function openDeliveryIssue(input: {
       });
     }
   }
+
+  /*
+    Tell the admins a customer has raised a problem.
+
+    This function stops the auto-complete clock, marks the thread escalated and
+    sets `needsAdmin` — and told nobody. Until now that was academic, because
+    the route reaching it was unreachable: an unconditional `completeOrder`
+    above it meant "the code does not work" completed the order instead. With
+    that door closed, the report actually happens, and an order sitting in
+    `delivery_issue` with the timer stopped is precisely the state that needs a
+    person and will otherwise sit there indefinitely.
+
+    Best-effort and last: the issue is already recorded, and a Telegram outage
+    must not undo a customer's report.
+  */
+  try {
+    const { sendAdminNotification } = await import("./telegram-notifications.server");
+    const { escapeHtml } = await import("./telegram.server");
+    const { redactSecrets } = await import("./telegram-admin-routing.server");
+    const reason = input.reason?.trim();
+    await sendAdminNotification(
+      "order",
+      `⚠️ <b>بلاغ مشكلة في التسليم</b>\n\n` +
+        `🔖 <b>رقم الطلب:</b> <code>${escapeHtml(String(next.code ?? order.code ?? ""))}</code>\n` +
+        (reason ? `📝 <b>السبب:</b> <i>${escapeHtml(redactSecrets(reason))}</i>\n` : "") +
+        `\n⏸️ تم إيقاف الإكمال التلقائي — الطلب بانتظار تدخل الإدارة.`,
+    );
+  } catch (error) {
+    console.warn("[delivery:issue_notify_failed]", { orderId: order.id, error });
+  }
+
   return next;
 }
 

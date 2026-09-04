@@ -101,6 +101,48 @@ describe("the admin complete_order action", () => {
   });
 });
 
+describe("the delivery issue the customer can now open", () => {
+  const delivery = readFileSync(
+    resolve(process.cwd(), "src/lib/order-delivery-items.server.ts"),
+    "utf8",
+  );
+
+  it("reaches an admin", () => {
+    /*
+      `openDeliveryIssue` stops the auto-complete clock, escalates the thread
+      and sets `needsAdmin` — and told nobody. That was academic while the
+      route reaching it was unreachable. Now that it is reachable, an order
+      sitting in `delivery_issue` with the timer stopped is exactly the state
+      that waits for a person and would otherwise wait forever.
+    */
+    const fn = delivery.slice(
+      delivery.indexOf("export async function openDeliveryIssue"),
+      delivery.indexOf("export async function maybeAutoCompleteDeliveredOrder"),
+    );
+    expect(fn).toContain('sendAdminNotification(\n      "order"');
+  });
+
+  it("scrubs the reason the customer typed", () => {
+    const fn = delivery.slice(
+      delivery.indexOf("export async function openDeliveryIssue"),
+      delivery.indexOf("export async function maybeAutoCompleteDeliveredOrder"),
+    );
+    expect(fn).toContain("redactSecrets(reason)");
+  });
+
+  it("cannot undo the report by failing", () => {
+    const fn = delivery.slice(
+      delivery.indexOf("export async function openDeliveryIssue"),
+      delivery.indexOf("export async function maybeAutoCompleteDeliveredOrder"),
+    );
+    // After the record is written, and swallowing its own failure.
+    expect(fn.indexOf("INSERT INTO order_delivery_issues")).toBeLessThan(
+      fn.indexOf("sendAdminNotification"),
+    );
+    expect(fn).toContain("issue_notify_failed");
+  });
+});
+
 describe("every block comment in both routes closes", () => {
   /*
     The generalisation of the second bug. An unterminated `/*` does not fail to
