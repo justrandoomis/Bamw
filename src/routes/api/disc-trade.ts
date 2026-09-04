@@ -21,6 +21,11 @@ import {
 import { redactDiscTradeForMember } from "@/lib/redaction";
 import { describeSelections, payoutMethodOf } from "@/lib/tradeConditionView";
 import { chunkForParams } from "@/lib/sql-params";
+import {
+  adminTradePageQuery,
+  takePage,
+  DEFAULT_PAGE_SIZE,
+} from "@/lib/disc-trade-page";
 
 interface TradeBody extends Record<string, unknown> {
   action?: string;
@@ -98,15 +103,24 @@ export const Route = createFileRoute("/api/disc-trade")({
             await requireAdmin(request);
             const rawStatus = url.searchParams.get("status") || "";
             const filterStatus = rawStatus ? normalizeTradeStatus(rawStatus) : "";
-            const rows = filterStatus
-              ? await d1All<Record<string, any>>(
-                  `SELECT * FROM disc_trades WHERE status = ? OR (status = 'pending' AND ? = 'waiting_review') ORDER BY created_at DESC LIMIT 200`,
-                  filterStatus,
-                  filterStatus,
-                )
-              : await d1All<Record<string, any>>(
-                  `SELECT * FROM disc_trades ORDER BY created_at DESC LIMIT 200`,
-                );
+
+            /*
+              A page of trades, not the newest two hundred.
+
+              The statement and the cursor live in `disc-trade-page.ts`, which
+              documents why they are shaped the way they are and is tested
+              against real SQLite with more rows than the old cap.
+            */
+            const page = adminTradePageQuery({
+              status: filterStatus,
+              cursor: url.searchParams.get("cursor") ?? "",
+              limit: Number(url.searchParams.get("limit") ?? DEFAULT_PAGE_SIZE),
+              search: url.searchParams.get("q") ?? "",
+            });
+            const { items: rows, hasMore, nextCursor } = takePage(
+              await d1All<Record<string, any>>(page.sql, ...page.binds),
+              page.limit,
+            );
 
             /*
               Everything the shop owner needs to put a price on the disc.
@@ -192,7 +206,7 @@ export const Route = createFileRoute("/api/disc-trade")({
                 coverUrl: game?.["cover_url"] ?? null,
               };
             });
-            return json({ items: normalizedRows });
+            return json({ items: normalizedRows, nextCursor, hasMore });
           }
 
           const user = await requireUser(request);
