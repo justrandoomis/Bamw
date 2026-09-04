@@ -32,6 +32,30 @@ const ORIGIN = (process.argv[2] || process.env.SMOKE_ORIGIN || "https://banan.to
  * exist if the content is really being served.
  */
 const PAGES = [
+  /*
+    The home page, and the seven cards of "خدمات وإرشادات المتجر".
+
+    Every one of those pages answers 200 to a direct request, and the shop
+    still reports 404s. A page that serves and a card that reaches it are two
+    different claims, and only the first was ever checked: if the strip renders
+    with a link the router does not know, tapping it is a 404 in the browser
+    while every server-side check stays green.
+
+    So the hrefs are asserted where a customer actually meets them.
+  */
+  {
+    path: "/",
+    must: [
+      "خدمات وإرشادات المتجر",
+      'href="/add_game"',
+      'href="/disc_trade"',
+      'href="/problem"',
+      'href="/account_guides"',
+      'href="/faq"',
+      'href="/policy"',
+      'href="/support"',
+    ],
+  },
   {
     path: "/policy",
     must: ["السياس", "banan", "ضمان الحظر", 'id="no-delete"', 'id="no-refund"', "الملخص"],
