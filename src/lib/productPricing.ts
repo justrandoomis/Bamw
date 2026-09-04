@@ -59,6 +59,42 @@ export function initialOptionId(
 }
 
 /**
+ * The variant the details page should open on, when the variants are what
+ * price this product.
+ *
+ * `initialOptionId` has always existed and looks only at options. Gift cards
+ * price their denominations on `variants` — the import schema gives an option
+ * no price field at all — so nothing was ever preselected for them: the page
+ * opened with every denomination chip unset and the record's base price in the
+ * header, while the card beside it printed the cheapest denomination. Two
+ * numbers for one product, which reads as the shop changing its price between
+ * two clicks. The module's own contract above says both surfaces must agree;
+ * without this it could not hold for any product priced on its variants.
+ *
+ * Empty when the options carry prices, because then the options lead and
+ * preselecting a variant would move the price off the option the page opened
+ * on. Empty, too, when no variant is priced: there is nothing to agree with.
+ */
+export function initialVariantName(
+  variants: readonly { name: string; price?: number | undefined }[],
+  basePrice: number,
+  options: readonly { price?: number | undefined }[] = [],
+): string {
+  if (options.some((option) => typeof option.price === "number" && option.price > 0)) return "";
+
+  const priced = variants.filter(
+    (variant) => typeof variant.price === "number" && variant.price > 0 && variant.name,
+  ) as { name: string; price: number }[];
+  if (priced.length === 0) return "";
+
+  if (basePrice > 0) {
+    const match = priced.find((variant) => variant.price === basePrice);
+    if (match) return match.name;
+  }
+  return priced.reduce((min, variant) => (variant.price < min.price ? variant : min)).name;
+}
+
+/**
  * The price a listing card prints for this product — the same amount the
  * details page shows the moment it opens.
  */

@@ -1,0 +1,70 @@
+# READ ONLY — what a customer actually receives for one product.
+#
+# Written to answer the gift-card report from the record rather than from a
+# screenshot: which price each surface reads, what each description literally
+# says, and which URL sits in which image role.
+#
+# It runs one SELECT and writes nothing. Everything printed goes through
+# `toPublicProduct` first — the same serializer the storefront answers
+# through — so cost and supplier fields cannot reach the log through an
+# oversight here.
+name: Product anatomy (read-only)
+
+on:
+  workflow_dispatch:
+    inputs:
+      needle:
+        description: "Slug, title or category fragment"
+        required: true
+        default: "gift"
+  push:
+    branches: ["claude/**"]
+    paths:
+      - "scripts/product-public-anatomy.mjs"
+      - ".github/workflows/product-anatomy.yml"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: product-anatomy
+  cancel-in-progress: true
+
+jobs:
+  anatomy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm install -g npm@11.19.1
+      - run: npm ci --no-audit --no-fund
+
+      - name: Mask identifiers
+        env:
+          ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: echo "::add-mask::$ACCOUNT_ID"
+
+      - name: Read the record
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          NEEDLE: ${{ inputs.needle }}
+        run: |
+          if [ -z "$D1_DATABASE_ID" ]; then
+            D1_DATABASE_ID=$(node -e "const s=require('fs').readFileSync('wrangler.jsonc','utf8');console.log(/\"database_id\":\s*\"([0-9a-f-]+)\"/.exec(s)[1])")
+            export D1_DATABASE_ID
+          fi
+          node scripts/product-public-anatomy.mjs "${NEEDLE:-gift}" 4
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: product-public-anatomy
+          path: product-public-anatomy.md
+          if-no-files-found: warn

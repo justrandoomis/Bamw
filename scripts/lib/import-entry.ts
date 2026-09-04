@@ -16,6 +16,13 @@ export { parseGameImport } from "@/lib/gameImportParser";
 export { buildBatchGameImport } from "@/lib/gameImportForm";
 export { mergeProductUpdate, destructiveUpdateLog, oversizedMediaLog } from "@/lib/productMergeGuard";
 export { d1All, d1Run } from "@/lib/d1.server";
+/*
+  The serializer the storefront answers through. A script that prints a
+  product to a CI log prints it through this, so cost and supplier fields
+  cannot reach the log by an oversight in the script.
+*/
+export { toPublicProduct } from "@/lib/public-product.server";
+export { auditMediaRoles } from "@/lib/mediaRoleAudit";
 export {
   mapSupplierCosts,
   priceGame,

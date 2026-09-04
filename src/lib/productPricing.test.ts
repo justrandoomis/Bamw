@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { initialOptionId, listingPrice } from "./productPricing";
+import { initialOptionId, initialVariantName, listingPrice } from "./productPricing";
 
 describe("listingPrice", () => {
   it("keeps the base price when the product has no priced options", () => {
@@ -90,5 +90,67 @@ describe("initialOptionId", () => {
         0,
       ),
     ).toBe("usd10");
+  });
+});
+
+/**
+ * A gift card prices its denominations on `variants`, and the import schema
+ * gives an option no price field at all. So `initialOptionId` — which looks
+ * only at options — had nothing to select, the details header fell through to
+ * the record's base price, and the card beside it printed the cheapest
+ * denomination. The module's contract says both surfaces agree on one number;
+ * for any product priced on its variants, it could not.
+ */
+describe("initialVariantName", () => {
+  const denominations = [
+    { name: "5 USD", price: 7000 },
+    { name: "10 USD", price: 13500 },
+    { name: "20 USD", price: 26000 },
+  ];
+
+  it("opens on the denomination the card prints", () => {
+    // listingPrice picks the cheapest when no denomination matches the base.
+    expect(initialVariantName(denominations, 7500)).toBe("5 USD");
+    expect(
+      listingPrice({ price: 7500, variants: denominations }),
+    ).toBe(7000);
+  });
+
+  it("prefers the denomination priced exactly at the base price", () => {
+    expect(initialVariantName(denominations, 13500)).toBe("10 USD");
+    expect(listingPrice({ price: 13500, variants: denominations })).toBe(13500);
+  });
+
+  it("selects nothing when the options carry the prices", () => {
+    /*
+      Then the options lead, `initialOptionId` has already chosen, and
+      preselecting a denomination would move the price off it.
+    */
+    expect(initialVariantName(denominations, 7500, [{ price: 9000 }])).toBe("");
+  });
+
+  it("selects nothing when no denomination is priced", () => {
+    expect(initialVariantName([{ name: "Standard" }, { name: "Deluxe" }], 7500)).toBe("");
+  });
+
+  it("ignores a nameless row, which cannot be selected by name", () => {
+    expect(initialVariantName([{ name: "", price: 100 }, { name: "5 USD", price: 7000 }], 0)).toBe(
+      "5 USD",
+    );
+  });
+});
+
+describe("the two surfaces agree", () => {
+  it("card price and opening details price are the same number", () => {
+    const product = {
+      price: 7500,
+      variants: [
+        { name: "5 USD", price: 7000 },
+        { name: "10 USD", price: 13500 },
+      ],
+    };
+    const opened = initialVariantName(product.variants, product.price, []);
+    const shownOnPage = product.variants.find((v) => v.name === opened)?.price ?? product.price;
+    expect(shownOnPage).toBe(listingPrice(product));
   });
 });
