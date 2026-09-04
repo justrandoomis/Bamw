@@ -185,6 +185,44 @@ export function filledImages(
   return [...list].sort((a, b) => a.sort_order - b.sort_order);
 }
 
+/**
+ * The same value with every admin-only note removed, and every empty slot
+ * dropped, at any depth.
+ *
+ * Rendering the note nowhere is not enough. A route loader's return value is
+ * serialised into the page for hydration, so `hint` — "أضف صورة الخطوة ٣" —
+ * travelled to every visitor inside the JSON even though no element printed
+ * it. The live smoke test found it on two pages the day the guides shipped.
+ *
+ * Empty slots go with it: a slot with no file is a message from the shop to
+ * itself about work still to do, and it has no business in a customer's page
+ * weight either.
+ *
+ * Applied at each loader, so the boundary where content becomes public is one
+ * place rather than every component that happens to render it.
+ */
+export function stripAdminNotes<T>(value: T): T {
+  if (Array.isArray(value)) {
+    return value
+      .filter((item) => !isEmptySlot(item))
+      .map((item) => stripAdminNotes(item)) as unknown as T;
+  }
+  if (!value || typeof value !== "object") return value;
+  const out: Record<string, unknown> = {};
+  for (const [key, child] of Object.entries(value as Record<string, unknown>)) {
+    if (key === "hint") continue;
+    out[key] = stripAdminNotes(child);
+  }
+  return out as T;
+}
+
+/** A picture slot the shop owner has not filled yet. */
+function isEmptySlot(value: unknown): boolean {
+  if (!value || typeof value !== "object") return false;
+  const row = value as Record<string, unknown>;
+  return "url" in row && "sort_order" in row && !String(row["url"] ?? "").trim();
+}
+
 export interface GuideStep {
   id: string;
   title_ar: string;

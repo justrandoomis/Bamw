@@ -8,7 +8,7 @@ import {
   shippedFaqCategories,
   shippedFaqItems,
 } from "@/lib/siteFaq";
-import type { FaqCategory, FaqItem } from "@/lib/content";
+import { stripAdminNotes, type FaqCategory, type FaqItem } from "@/lib/content";
 
 export const Route = createFileRoute("/faq")({
   head: ({ loaderData }) => ({
@@ -63,10 +63,10 @@ export const Route = createFileRoute("/faq")({
       console.error("[faq:store_unreadable]", error);
     }
 
-    return {
+    return stripAdminNotes({
       categories: mergeFaq(shippedFaqCategories(), storedCategories),
       items: mergeFaq(shippedFaqItems(), storedItems),
-    };
+    });
   },
   component: FaqPage,
 });

@@ -21,15 +21,47 @@
  */
 const ORIGIN = (process.argv[2] || process.env.SMOKE_ORIGIN || "https://banan.to").replace(/\/$/, "");
 
-/** A page, and a string that proves the page rendered rather than the shell. */
+/**
+ * A page, and strings that prove *this* page rendered — not the shell, and not
+ * the previous release.
+ *
+ * A status of 200 says the route answers. It says nothing about whether the
+ * content reached it: the four help pages spent months returning 200 with an
+ * empty state, because they rendered whatever an admin had typed and an admin
+ * had typed nothing. So each entry names a sentence and an anchor that only
+ * exist if the content is really being served.
+ */
 const PAGES = [
-  { path: "/policy", must: ["السياس", "banan"] },
-  { path: "/faq", must: ["الأسئلة", "banan"] },
-  { path: "/account_guides", must: ["banan"] },
-  { path: "/problem", must: ["banan"] },
+  {
+    path: "/policy",
+    must: ["السياس", "banan", "ضمان الحظر", 'id="no-delete"', 'id="no-refund"', "الملخص"],
+  },
+  {
+    path: "/faq",
+    must: ["الأسئلة", "banan", "ما الفرق بين Offline وOnline؟", "/policy#warranty"],
+  },
+  {
+    path: "/account_guides",
+    must: [
+      "banan",
+      'id="login-method-1"',
+      'id="offline-play"',
+      "Link a Nintendo Account",
+      "Download Data",
+    ],
+  },
+  {
+    path: "/problem",
+    must: ["banan", "Can’t play this software right now", "2124-8006", "ما لا يجب فعله"],
+  },
 ];
 
-const ANCHORS = ["/policy#warranty", "/account_guides#login", "/problem#login"];
+const ANCHORS = [
+  "/policy#no-delete",
+  "/account_guides#login-method-1",
+  "/account_guides#resend-verification",
+  "/problem#RELOGIN_REQUIRED",
+];
 
 const lines = [];
 const say = (t = "") => {
@@ -115,6 +147,14 @@ for (const page of PAGES) {
       */
       if (body.length < 2000) fail(`response is only ${body.length} bytes — the shell, not the page`);
       if (/\[object Object\]/.test(body)) fail("the page renders [object Object]");
+      /*
+        The note written for whoever uploads a screenshot. It is stored beside
+        every empty slot and must never be rendered to a customer — finding it
+        in the HTML means the admin's side of the editor has leaked onto the
+        shop's side.
+      */
+      if (body.includes("أضف صورة")) fail("an admin-only image note reached the page");
+      if (/<img[^>]+src=["']["']/.test(body)) fail("the page renders an image with no source");
       if (/\bundefined\b\s*<\//.test(body)) fail("the page renders a bare `undefined`");
     }
   } catch (err) {

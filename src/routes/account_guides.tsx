@@ -4,7 +4,7 @@ import PageHeader from "@/components/PageHeader";
 import { GuidesView } from "@/components/account-guides/GuidesView";
 import { loadSiteContent } from "@/lib/content.functions";
 import { applyGuideOverrides, shippedGuides } from "@/lib/siteGuides";
-import type { GuideItem } from "@/lib/content";
+import { stripAdminNotes, type GuideItem } from "@/lib/content";
 
 export const Route = createFileRoute("/account_guides")({
   head: () => ({
@@ -47,11 +47,17 @@ export const Route = createFileRoute("/account_guides")({
       console.error("[guides:overrides_unreadable]", error);
     }
 
+    /*
+      Stripped here, at the boundary where this becomes public. A loader's
+      return value is serialised into the page for hydration, so the note
+      saying which screenshot belongs in a slot would travel to every visitor
+      inside the JSON even though no element prints it.
+    */
     try {
-      return { guides: applyGuideOverrides(base, overrides) };
+      return { guides: stripAdminNotes(applyGuideOverrides(base, overrides)) };
     } catch (error) {
       console.error("[guides:unmergeable]", error);
-      return { guides: base };
+      return { guides: stripAdminNotes(base) };
     }
   },
   component: GuidesPage,
