@@ -13,6 +13,8 @@
  * link preview, and for the browser's own find-in-page.
  */
 import { describe, expect, it } from "vitest";
+import { readFileSync } from "node:fs";
+import { resolve } from "node:path";
 import { renderToStaticMarkup } from "react-dom/server";
 import { PolicyView } from "./PolicyView";
 import { resolvePolicy, shippedPolicySections, mergePolicySections } from "@/lib/sitePolicy";
@@ -130,5 +132,34 @@ describe("what the shop has already written", () => {
 describe("an empty picture slot on a clause", () => {
   it("renders nothing", () => {
     expect(html).not.toContain("<img");
+  });
+});
+
+describe("what checkout shows before payment", () => {
+  const cart = readFileSync(resolve(process.cwd(), "src/routes/cart.tsx"), "utf8");
+
+  it("still requires the policy to be accepted", () => {
+    // Enforced on the server too, not only by the tick box.
+    expect(cart).toContain("acceptedTerms");
+    expect(
+      readFileSync(resolve(process.cwd(), "src/lib/orders.server.ts"), "utf8"),
+    ).toContain('throw new Error("terms_required")');
+  });
+
+  it("names the two clauses a customer breaks by accident", () => {
+    /*
+      A tick box beside a link to a long document is consent in form only.
+      These two decide whether somebody keeps their game, and the moment to
+      read them is before paying.
+    */
+    expect(cart).toContain("/policy#no-delete");
+    expect(cart).toContain("/policy#no-refund");
+  });
+
+  it("points at anchors that exist", () => {
+    const anchors = new Set(policy.sections.map((section) => section.anchor));
+    for (const match of cart.matchAll(/\/policy#([a-z0-9-]+)/g)) {
+      expect(anchors, match[1]).toContain(match[1]);
+    }
   });
 });

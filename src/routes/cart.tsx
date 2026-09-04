@@ -1186,6 +1186,36 @@ function CartPage() {
                   "بالنقر على إتمام الدفع، يتم خصم قيمة الطلب فوراً من محفظتك وبدء تجهيز الحسابات عبر الدعم.",
                 )}
               </span>
+              {/*
+                The two clauses that decide whether somebody keeps their game,
+                named here rather than left nine screens inside the policy.
+
+                A tick box next to a link to a long document is consent in
+                form only. These are the rules a customer breaks by accident —
+                deleting the account user, expecting a refund after the
+                credentials are sent — and the moment to read them is before
+                paying, not after.
+              */}
+              <span className="text-muted-foreground text-[11px] block mt-1">
+                {tr("أهم بندين: ")}
+                <a
+                  href="/policy#no-delete"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-bold text-foreground underline underline-offset-4"
+                >
+                  {tr("لا تحذف مستخدم حساب اللعبة")}
+                </a>
+                <span>{tr(" · ")}</span>
+                <a
+                  href="/policy#no-refund"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-bold text-foreground underline underline-offset-4"
+                >
+                  {tr("لا استرجاع بعد تسليم الحساب")}
+                </a>
+              </span>
             </div>
           </div>
         </section>
