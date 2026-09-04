@@ -372,13 +372,28 @@ for (const record of selected) {
   which is why a repair that only writes the overlay looks like it did nothing
   for as long as the cache lives.
 */
-if (APPLY && written > 0) {
+if (APPLY) {
+  /*
+    `binds`, not `params`.
+
+    There are two `d1Batch` in this repository: the one in `db.server.ts` reads
+    `params`, and the one re-exported from `d1.server.ts` reads `binds`. This
+    script bundles the second and was written against the first, so every
+    statement ran with zero bindings — after all eight products had already
+    been written and verified. The rows were repaired and the revision never
+    moved, which is the one failure mode that looks like the repair did
+    nothing.
+
+    Unconditional on APPLY, too. Skipping the bump when nothing was written
+    means a re-run after exactly this failure finds every product already
+    clean and leaves the caches holding the copy it just fixed.
+  */
   const current = await app.d1All("SELECT MAX(rev) as rev FROM store_rev");
   const next = Number(current?.[0]?.rev ?? 0) + 1;
   const stamp = new Date().toISOString();
   await app.d1Batch([
-    { sql: "INSERT INTO store_rev (rev, updated_at) VALUES (?, ?)", params: [next, stamp] },
-    { sql: "DELETE FROM store_rev WHERE rev < ?", params: [next] },
+    { sql: "INSERT INTO store_rev (rev, updated_at) VALUES (?, ?)", binds: [next, stamp] },
+    { sql: "DELETE FROM store_rev WHERE rev < ?", binds: [next] },
   ]);
   say(`Catalogue revision bumped to ${next} — caches now see the repaired copy.`);
   say();
