@@ -1,0 +1,72 @@
+# Creates the September supplier batch as HIDDEN products, one game at a time.
+#
+# Dry run by default. With `apply`, the only statements it runs are an INSERT of
+# one new product's overlay row under a freshly generated id, and one row in
+# `product_admin_metadata` for that product's Chinese supplier name. It reads
+# existing products only to learn which slugs are taken. No existing product is
+# modified, and nothing is ever published — every document is built hidden and
+# checked again after the write.
+#
+# This runs here rather than from the working sandbox because the sandbox's
+# egress proxy refuses nintendo.com, so the artwork and the facts cannot be
+# fetched there at all.
+name: Game create
+
+on:
+  workflow_dispatch:
+    inputs:
+      apply:
+        description: "Write the products (leave unchecked for a dry run)"
+        type: boolean
+        default: false
+      only:
+        description: "Comma-separated game numbers from the batch file, e.g. 1,2"
+        default: ""
+  push:
+    branches: [claude/gaming-platform-issues-keb1be]
+    paths:
+      - .github/workflows/game-create.yml
+      - scripts/game-create.mjs
+      - scripts/lib/batch-pricing.mjs
+      - scripts/lib/keyart.mjs
+
+permissions:
+  contents: read
+
+concurrency:
+  group: game-create
+  cancel-in-progress: false
+
+jobs:
+  create:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm install -g npm@11.19.1
+      - run: npm ci --no-audit --no-fund
+      - name: Mask identifiers
+        env:
+          ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: echo "::add-mask::$ACCOUNT_ID"
+      - name: Build
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          APPLY: ${{ inputs.apply }}
+          ONLY: ${{ inputs.only }}
+        run: |
+          if [ -z "$D1_DATABASE_ID" ]; then
+            D1_DATABASE_ID=$(node -e "const s=require('fs').readFileSync('wrangler.jsonc','utf8');console.log(/\"database_id\":\s*\"([0-9a-f-]+)\"/.exec(s)[1])")
+            export D1_DATABASE_ID
+          fi
+          args=""
+          if [ "$APPLY" = "true" ]; then args="--apply"; fi
+          if [ -n "$ONLY" ]; then args="$args --only=$ONLY"; fi
+          node scripts/game-create.mjs $args

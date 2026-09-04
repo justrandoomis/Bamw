@@ -39,11 +39,13 @@ jobs:
         with:
           persist-credentials: false
 
-      - uses: oven-sh/setup-bun@v2
+      # npm, from the committed lockfile — see the note in the other jobs.
+      - uses: actions/setup-node@v4
         with:
-          bun-version: latest
-
-      - run: bun install --frozen-lockfile
+          node-version: 22
+          cache: npm
+      - run: npm install -g npm@11.19.1
+      - run: npm ci --no-audit --no-fund
 
       # Belt and braces. Secrets referenced through `secrets.*` are masked by
       # Actions already; this also masks them if a tool prints them itself.
