@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Plus, Trash2, GripVertical, Sparkles, ShieldCheck } from "lucide-react";
 import { useI18n } from "@/i18n";
+import { ImageSlotsEditor } from "../../ImageSlotsEditor";
 import type { PolicyData, PolicySection } from "@/lib/content";
 import ServiceImportModal from "../ServiceImportModal";
 import type { PolicyParseResultData, ServiceParseResult } from "@/lib/servicesImport";
@@ -160,11 +161,62 @@ export function PolicyEditor({ policy, onChange, label }: PolicyEditorProps) {
                 </div>
               </div>
               <div>
+                {/*
+                  One sentence, shown in the summary at the top of the page.
+
+                  The clauses that decide whether somebody keeps their game sat
+                  nine screens down a wall of prose. A customer who reads only
+                  the summary must still learn not to delete the account.
+                */}
+                <label className="block text-xs font-bold mb-1">
+                  {t("ملخص القسم — سطر واحد يظهر أعلى الصفحة")}
+                </label>
+                <input
+                  type="text"
+                  value={sec.summary_ar || ""}
+                  onChange={(e) => updateSection(sec.id, "summary_ar", e.target.value)}
+                  placeholder={t("جملة واحدة تلخّص البند")}
+                  className="w-full border border-border rounded-lg px-3 py-2 bg-background focus:border-primary outline-none text-sm"
+                />
+              </div>
+              <div>
+                {/*
+                  The fragment an order card, a support reply or the FAQ links
+                  to. Changing it breaks every link already written, so it is
+                  edited deliberately rather than derived from the title.
+                */}
+                <label className="block text-xs font-bold mb-1">
+                  {t("مُعرّف الرابط (Anchor) — تغييره يكسر الروابط القديمة")}
+                </label>
+                <input
+                  type="text"
+                  dir="ltr"
+                  value={sec.anchor || ""}
+                  onChange={(e) =>
+                    updateSection(
+                      sec.id,
+                      "anchor",
+                      e.target.value.replace(/[^a-z0-9-]/gi, "").toLowerCase(),
+                    )
+                  }
+                  placeholder="warranty"
+                  className="w-full border border-border rounded-lg px-3 py-2 bg-background focus:border-primary outline-none text-sm font-mono"
+                />
+              </div>
+              <div>
                 <label className="block text-xs font-bold mb-1">{t("نص القسم")}</label>
                 <textarea
                   value={sec.body_ar || ""}
                   onChange={(e) => updateSection(sec.id, "body_ar", e.target.value)}
                   className="w-full border border-border rounded-lg px-3 py-2 bg-background focus:border-primary outline-none min-h-[100px] text-sm"
+                />
+              </div>
+              <div>
+                <ImageSlotsEditor
+                  images={sec.images}
+                  onChange={(images) => updateSection(sec.id, "images", images)}
+                  folder="pages"
+                  label={t("صور البند (اختياري)")}
                 />
               </div>
             </div>

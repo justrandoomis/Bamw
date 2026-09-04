@@ -16,6 +16,7 @@ import { useI18n } from "@/i18n";
 import type { GuideItem, GuideStep } from "@/lib/content";
 import ServiceImportModal from "../ServiceImportModal";
 import { ImageUploadField } from "../../ImageUploadField";
+import { ImageSlotsEditor } from "../../ImageSlotsEditor";
 import type { ServiceParseResult } from "@/lib/servicesImport";
 
 interface GuidesEditorProps {
@@ -325,12 +326,23 @@ export function GuidesEditor({ guides, onChange }: GuidesEditorProps) {
                               />
                             </div>
                             <div className="sm:col-span-2">
-                              <ImageUploadField
-                                label={t("صورة توضيحية للخطوة")}
-                                value={step.image || ""}
-                                onChange={(url) => updateStep(guide.id, step.id, { image: url })}
+                              {/*
+                                Slots, not one field.
+
+                                A step often needs two pictures — the button to
+                                press and the dialog it opens — and one field
+                                could hold neither with a caption nor an alt
+                                text. Each slot also carries a note saying
+                                which screenshot belongs there, which is what
+                                makes fifty-six of them fillable at all.
+                              */}
+                              <ImageSlotsEditor
+                                images={step.images}
+                                onChange={(images) =>
+                                  updateStep(guide.id, step.id, { images })
+                                }
                                 folder="guides"
-                                aspect="video"
+                                label={t("صور الخطوة")}
                               />
                             </div>
                             <div>

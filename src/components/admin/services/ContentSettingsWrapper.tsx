@@ -7,6 +7,9 @@ import { PolicyEditor } from "./editors/PolicyEditor";
 import { FaqEditor } from "./editors/FaqEditor";
 import { GuidesEditor } from "./editors/GuidesEditor";
 import { SupportEditor } from "./editors/SupportEditor";
+import { applyGuideOverrides, shippedGuides } from "@/lib/siteGuides";
+import { mergePolicySections, shippedPolicySections } from "@/lib/sitePolicy";
+import { mergeFaq, shippedFaqCategories, shippedFaqItems } from "@/lib/siteFaq";
 
 export default function ContentSettingsWrapper({ type }: { type: string }) {
   const t = useI18n((s) => s.t);
@@ -25,10 +28,32 @@ export default function ContentSettingsWrapper({ type }: { type: string }) {
     },
   });
 
+  /*
+    The editor is seeded with what the *page* shows, not with what the store
+    happens to hold.
+
+    Guides, policy clauses and questions all ship in this repository and are
+    overlaid by the store. Handing the editor only the store's copy meant the
+    shop owner opened "إرشادات الحساب" to an empty screen while the live site
+    showed eight guides — nothing to edit, and no way to reach the fifty-six
+    image slots waiting for their screenshots.
+
+    Seeding with the merged list also makes the first save meaningful: it
+    writes the whole list back as the overlay, and merging it again is a no-op.
+  */
   useEffect(() => {
-    if (originalContent) {
-      setContentState(JSON.parse(JSON.stringify(originalContent))); // deep clone
-    }
+    if (!originalContent) return;
+    const clone = JSON.parse(JSON.stringify(originalContent)) as ContentDoc;
+    setContentState({
+      ...clone,
+      guides: applyGuideOverrides(shippedGuides(), clone.guides),
+      policy: {
+        ...clone.policy,
+        sections: mergePolicySections(shippedPolicySections(), clone.policy?.sections),
+      },
+      faqCategories: mergeFaq(shippedFaqCategories(), clone.faqCategories),
+      faq: mergeFaq(shippedFaqItems(), clone.faq),
+    });
   }, [originalContent]);
 
   const saveMutation = useMutation({
