@@ -1,0 +1,64 @@
+# Does each page actually open in a browser, on the live site?
+#
+# `page-smoke` asks the server over HTTP. That proves the route answers and the
+# content reached it, and it cannot see the failure a customer describes as "the
+# page doesn't open": the HTML arrives, hydration throws, React unmounts, and a
+# blank screen sits under a perfectly good 200.
+#
+# So this drives a real browser against the deployed site — the sandbox these
+# sessions run in has no route to banan.to, and a runner does.
+name: Page open
+
+on:
+  workflow_dispatch:
+    inputs:
+      origin:
+        description: "Origin to test"
+        type: string
+        default: "https://banan.to"
+      paths:
+        description: "Comma-separated paths"
+        type: string
+        default: "/,/add_game,/disc_trade,/problem,/account_guides,/faq,/policy,/support"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: page-open
+  cancel-in-progress: true
+
+jobs:
+  open:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci --no-audit --no-fund
+
+      # `playwright-core` carries no installer, so the browser comes from the
+      # `playwright` package's CLI, pinned to the same version.
+      - name: Install Chromium
+        run: npx --yes playwright@1.62.1 install --with-deps chromium
+
+      - name: Open every page
+        env:
+          ORIGIN: ${{ inputs.origin }}
+          PATHS: ${{ inputs.paths }}
+        run: |
+          node scripts/page-open-check.mjs \
+            --base "${ORIGIN:-https://banan.to}" \
+            --paths "${PATHS:-/,/add_game,/disc_trade,/problem,/account_guides,/faq,/policy,/support}" \
+            --json page-open.json
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: page-open
+          path: page-open.json
