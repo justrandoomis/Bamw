@@ -1,0 +1,58 @@
+# What the Worker actually threw. Read-only.
+#
+# /problem answers 500 with an empty body in 28ms — too fast to have reached
+# D1, and with nothing in the response to read. An empty 500 means the throw
+# escaped before the app could render its own error page, so the only record of
+# it is the runtime's.
+#
+# This prints exception fields only — name, message, stack, the URL — never a
+# log line, because a Worker's logs carry customer data and a diagnostic that
+# prints them is a leak. Digit runs are masked even here.
+name: Worker exceptions
+
+on:
+  workflow_dispatch:
+    inputs:
+      hours:
+        description: "How far back to look"
+        type: string
+        default: "2"
+  push:
+    branches: ["claude/**"]
+    paths:
+      - ".github/workflows/worker-exceptions.yml"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: worker-exceptions
+  cancel-in-progress: true
+
+jobs:
+  exceptions:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Make the page fail, so there is something to read
+        run: |
+          curl -s -o /dev/null -w "/problem -> %{http_code}\n" \
+            -H 'user-agent: Mozilla/5.0 (Linux; Android 13) AppleWebKit/537.36 Chrome/122.0 Mobile Safari/537.36' \
+            https://banan.to/problem || true
+          sleep 12
+      - name: Mask identifiers
+        env:
+          ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: echo "::add-mask::$ACCOUNT_ID"
+      - name: Read the exceptions
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          HOURS: ${{ inputs.hours }}
+        run: node scripts/worker-logs-query.mjs --exceptions --hours "${HOURS:-2}"

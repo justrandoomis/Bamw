@@ -1,0 +1,49 @@
+# Does the live site serve the help pages? Read-only, over HTTP.
+#
+# The sandbox these sessions run in has no route to banan.to, so "the page
+# works" could only ever be a claim about the repository. A runner has open
+# egress, so this asks the deployed site instead — cold, signed out, with no
+# referrer, which is exactly what a pasted link and a refresh do.
+name: Page smoke
+
+on:
+  workflow_dispatch:
+    inputs:
+      origin:
+        description: "Origin to test"
+        type: string
+        default: "https://banan.to"
+  push:
+    branches: ["claude/**"]
+    paths:
+      - "scripts/page-smoke.mjs"
+      - ".github/workflows/page-smoke.yml"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: page-smoke
+  cancel-in-progress: true
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Smoke
+        env:
+          SMOKE_ORIGIN: ${{ inputs.origin }}
+        run: node scripts/page-smoke.mjs "${SMOKE_ORIGIN:-https://banan.to}"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: page-smoke
+          path: page-smoke.md
+          if-no-files-found: warn

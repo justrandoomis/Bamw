@@ -393,6 +393,7 @@ say();
 
 /* ------------------------------------------------------------------ verdict */
 say("## Verdict");
+say(`  (checked against the release merged as 8879808)`);
 if (problems.length === 0) {
   say("  Nothing in production contradicts the notification path.");
   say("  The remaining possibility is Telegram itself refusing the send, which");

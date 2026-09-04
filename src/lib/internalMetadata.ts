@@ -72,6 +72,20 @@ const INTERNAL_PATTERNS: RegExp[] = [
   */
   /سعر\s*البيع\s*[:：]/,
   /\bselling\s*price\s*[:：]/i,
+  /*
+    The same figure stated without a colon, which is how the gift-card rows
+    write it: "20 USD face value; selling price 28000 IQD at the
+    merchant-defined rate of 1400 IQD/USD". A number immediately after the
+    words is bookkeeping — prose about what a game is worth does not read
+    that way.
+  */
+  /\bselling\s+price\s+\d/i,
+  /\bmerchant[-\s]?defined\s+rate\b/i,
+  /\bIQD\s*\/\s*(?:USD|CNY|EUR)\b/i,
+  /\bacquisition\s+cost\b/i,
+  /\bmerchant\s+stock\b/i,
+  // An instruction to whoever fulfils the order, not to the person buying.
+  /\bdisclose\b[^.]*\bbefore\s+sale\b/i,
   /\bmerchant\s+pricing\b/i,
   /\bcalculated\s+as\b.*\b(?:IQD|USD|CNY)\b/i,
   /\b\d[\d,.]*\s*IQD\s+per\s+(?:USD|CNY|EUR)\b/i,
@@ -97,44 +111,112 @@ const INTERNAL_PATTERNS: RegExp[] = [
  * empty, and the caller drops them for their own reasons.
  */
 export function looksLikeInternalNote(value: unknown): boolean {
-  if (typeof value !== "string") return false;
-  const text = value.trim();
-  if (!text) return false;
-  return INTERNAL_PATTERNS.some((pattern) => pattern.test(text));
+  return internalNoteReason(value) !== undefined;
 }
 
 /**
- * The string, or `undefined` when it is internal bookkeeping.
+ * Which pattern decided, as its source text — or `undefined` for clean text.
+ *
+ * The detector is deliberately biased toward calling text internal, and a
+ * biased rule needs to be able to say why: a false positive silently deletes a
+ * sentence a customer was meant to read, and "the filter removed it" is not a
+ * reviewable answer. The repair tool prints this beside every line it drops.
+ */
+export function internalNoteReason(value: unknown): string | undefined {
+  if (typeof value !== "string") return undefined;
+  const text = value.trim();
+  if (!text) return undefined;
+  return INTERNAL_PATTERNS.find((pattern) => pattern.test(text))?.source;
+}
+
+/**
+ * One line, split where a sentence ends.
+ *
+ * The delimiter stays with the sentence it closes, so re-joining the survivors
+ * with a single space produces readable prose.
+ */
+function sentencesOf(line: string): string[] {
+  return line.split(/(?<=[.!?؟。])\s+/);
+}
+
+/**
+ * The sentences of one line that a customer may read, re-joined.
+ *
+ * Filtering whole lines was too coarse for how these records are actually
+ * written. The gift cards keep a paragraph like:
+ *
+ *     "US code balances do not expire … No physical card, console, pictured
+ *      game or accessory is included. Actual merchant stock and supplier
+ *      acquisition cost still require confirmation."
+ *
+ * — four sentences of genuine customer policy and one note to ourselves. A
+ * line filter removes all five, so the fix for a leak silently deleted the
+ * terms the buyer needed. The variant rows are worse: their one line carries
+ * the cost derivation *and* the "no coupon applies to this product" exclusion,
+ * so the customer lost the exclusion too.
+ *
+ * Sentence granularity keeps what was written for the buyer. It only works
+ * because each bookkeeping sentence trips a pattern on its own — a sentence
+ * that stated a rate only by sitting next to one would now survive, which is
+ * why the patterns above name the rate forms these records use.
+ */
+function customerSafeLine(line: string): string {
+  return sentencesOf(line)
+    .filter((sentence) => !looksLikeInternalNote(sentence))
+    .join(" ")
+    .trim();
+}
+
+/**
+ * The string with its internal sentences removed, or `undefined` when nothing
+ * is left.
  *
  * Returning `undefined` rather than an empty string matters: an empty string
  * would still render as a blank row in the editions comparison, which is the
  * kind of "fixed it" that leaves a visible hole.
  */
 export function customerSafeText(value: unknown): string | undefined {
-  if (typeof value !== "string") return undefined;
-  const text = value.trim();
-  if (!text || looksLikeInternalNote(text)) return undefined;
-  return text;
+  return customerSafeParagraph(value);
 }
 
 /**
- * The same text with only its internal lines removed.
+ * The sentences {@link customerSafeParagraph} would remove, and why.
  *
- * {@link customerSafeText} drops the whole value, which is right for a
- * variant's one-line sub-caption: what is left of "converted to IQD using 1
- * CNY = 220" is nothing worth printing. It is wrong for a product's own
- * description, where a single stray bookkeeping line would take the entire
- * page copy with it — a blank product page is not a smaller problem than the
- * line it removed.
+ * For the repair tool, which rewrites the stored copy rather than filtering it
+ * on the way out: a removal that changes production data has to be reviewable
+ * before it is applied, and "the filter took it" is not a review.
+ */
+export function internalSentences(value: unknown): Array<{ sentence: string; reason: string }> {
+  if (typeof value !== "string") return [];
+  const out: Array<{ sentence: string; reason: string }> = [];
+  for (const line of value.split(/\r?\n/)) {
+    for (const sentence of sentencesOf(line)) {
+      const reason = internalNoteReason(sentence);
+      if (reason !== undefined) out.push({ sentence, reason });
+    }
+  }
+  return out;
+}
+
+/**
+ * The same rule over a multi-line value, line by line.
  *
- * So a paragraph is filtered by line. Returns `undefined` when nothing
- * survives, so callers can omit the field rather than render an empty one.
+ * A line whose sentences are all internal is dropped rather than left blank,
+ * so a removed heading does not leave a gap where a paragraph used to be.
+ * Returns `undefined` when nothing survives, so callers can omit the field
+ * instead of rendering an empty one — a blank product page is not a smaller
+ * problem than the line it replaced.
  */
 export function customerSafeParagraph(value: unknown): string | undefined {
   if (typeof value !== "string") return undefined;
   const kept = value
     .split(/\r?\n/)
-    .filter((line) => !looksLikeInternalNote(line))
+    .map((line) => (line.trim() ? customerSafeLine(line) : line))
+    .filter((line, index, all) => {
+      if (line.trim()) return true;
+      // Keep a blank line only where it still separates two kept paragraphs.
+      return index > 0 && index < all.length - 1 && Boolean(all[index - 1]?.trim());
+    })
     .join("\n")
     .trim();
   return kept || undefined;

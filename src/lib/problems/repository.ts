@@ -12,74 +12,106 @@ import { CATEGORY_IDS, type CategoryId, type Problem, problemCategories } from "
 
 const CATEGORY_SET = new Set<string>(CATEGORY_IDS);
 
-/** Guards against a bad hand-edit of the JSON reaching the UI. */
-function assertValid(entry: Problem, index: number): Problem {
+/**
+ * The entries, whatever shape the bundler handed us.
+ *
+ * `import raw from "…json"` is an array under Vitest and an array under Vite's
+ * dev server. It is not guaranteed to be one in every build: a JSON module can
+ * arrive as its namespace object, and `{ default: [...] }.map` throws
+ * immediately — before any I/O, with nothing logged, which is exactly the
+ * shape of the failure this page had in production. `/problem` answered 500 in
+ * 28 ms with an empty body while every other page was fine, and no local run
+ * could reproduce it because locally the import is already an array.
+ *
+ * Reading both shapes costs one line and removes the whole class.
+ */
+function entriesOf(value: unknown): Problem[] {
+  if (Array.isArray(value)) return value as Problem[];
+  const wrapped = (value as { default?: unknown } | null)?.default;
+  return Array.isArray(wrapped) ? (wrapped as Problem[]) : [];
+}
+
+/**
+ * Why one bad entry no longer takes the page down.
+ *
+ * These checks are worth having: they catch a hand-edit that would render a
+ * broken card or hijack another problem's search ranking. Throwing was the
+ * wrong response to failing one. This module is imported by a route loader, so
+ * a throw here is a 500 on the whole troubleshooting page — every problem
+ * unreachable because one of them has a bad id, at the moment a customer is
+ * looking for help.
+ *
+ * A rejected entry is skipped and named in the log instead. The page keeps the
+ * eleven that are fine.
+ */
+function problemFault(entry: Problem, index: number): string | null {
   const where = `content/problems.json[${index}]`;
 
-  if (!entry.id || !/^[A-Z0-9_]+$/.test(entry.id)) {
-    throw new Error(
-      `${where}: "id" must be an uppercase slug (used as the URL hash), got "${entry.id}"`,
-    );
+  if (!entry?.id || !/^[A-Z0-9_]+$/.test(entry.id)) {
+    return `${where}: "id" must be an uppercase slug (used as the URL hash), got "${entry?.id}"`;
   }
-  if (!CATEGORY_SET.has(entry.category)) {
-    throw new Error(`${where}: unknown category "${entry.category}"`);
-  }
+  if (!CATEGORY_SET.has(entry.category)) return `${where}: unknown category "${entry.category}"`;
   for (const extra of entry.alsoIn ?? []) {
-    if (!CATEGORY_SET.has(extra)) {
-      throw new Error(`${where}: unknown category in alsoIn "${extra}"`);
-    }
+    if (!CATEGORY_SET.has(extra)) return `${where}: unknown category in alsoIn "${extra}"`;
   }
-  if (entry.steps.length === 0) {
-    throw new Error(`${where}: a problem must have at least one solution step`);
+  if (!Array.isArray(entry.steps) || entry.steps.length === 0) {
+    return `${where}: a problem must have at least one solution step`;
   }
-  for (const image of entry.images) {
-    if (!image.alt.trim()) {
-      throw new Error(`${where}: image "${image.src}" is missing alt text`);
-    }
+  for (const image of entry.images ?? []) {
+    if (!image?.alt?.trim()) return `${where}: image "${image?.src}" is missing alt text`;
   }
-  return entry;
+  return null;
 }
 
 async function loadProblems(): Promise<Problem[]> {
-  const entries = raw as unknown as Problem[];
+  const entries = entriesOf(raw);
   const seen = new Set<string>();
   const images = new Map<string, string>();
+  const kept: Problem[] = [];
 
-  const allIds = new Set(entries.map((entry) => entry.id));
+  const allIds = new Set(entries.map((entry) => entry?.id));
 
-  return entries.map((entry, index) => {
-    const problem = assertValid(entry, index);
+  for (const [index, entry] of entries.entries()) {
+    const fault = problemFault(entry, index);
+    if (fault) {
+      console.warn(`[problems:skipped] ${fault}`);
+      continue;
+    }
+    const problem = entry;
 
     if (seen.has(problem.id)) {
-      throw new Error(`Duplicate problem id "${problem.id}"`);
+      console.warn(`[problems:skipped] duplicate problem id "${problem.id}"`);
+      continue;
     }
     seen.add(problem.id);
 
     // `relatedErrors` is scored as literal error codes at the highest weight,
     // so another problem's ID in there silently hijacks that problem's search
     // ranking. Cross-references do not belong in this field.
-    for (const code of problem.relatedErrors) {
+    for (const code of problem.relatedErrors ?? []) {
       if (code !== problem.id && allIds.has(code)) {
-        throw new Error(
-          `"${problem.id}" lists the problem ID "${code}" in relatedErrors. That field is for error codes users type, not cross-references.`,
+        console.warn(
+          `[problems:related_error_is_an_id] "${problem.id}" lists "${code}" in relatedErrors; that field is for codes a customer types, not cross-references.`,
         );
       }
     }
 
     // An image belongs to exactly one problem. Reusing a "close enough"
     // illustration across problems is the failure mode this guards against.
-    for (const image of problem.images) {
+    for (const image of problem.images ?? []) {
       const owner = images.get(image.src);
       if (owner && owner !== problem.id) {
-        throw new Error(
-          `Image "${image.src}" is used by both "${owner}" and "${problem.id}". Each problem needs its own image.`,
+        console.warn(
+          `[problems:shared_image] "${image.src}" is used by both "${owner}" and "${problem.id}".`,
         );
       }
       images.set(image.src, problem.id);
     }
 
-    return problem;
-  });
+    kept.push(problem);
+  }
+
+  return kept;
 }
 
 /** Published problems, most important first. */

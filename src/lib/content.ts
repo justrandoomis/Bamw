@@ -32,6 +32,9 @@ export interface FaqItem {
 
 export interface PolicySection {
   id: string;
+  /** Stable URL fragment, so an order card can link straight to a clause. */
+  anchor?: string;
+  images?: ContentImage[];
   title_ar: string;
   title_en?: string;
   title_tr?: string;
@@ -117,6 +120,52 @@ export interface SupportData {
   channels: SupportChannel[];
 }
 
+/**
+ * One picture in an admin-managed slot.
+ *
+ * A slot exists before its picture does. `url` is empty until the shop owner
+ * uploads one, and that empty state is the point: the admin screen renders a
+ * dashed box captioned with `hint` — "أضف صورة الخطوة ١ — فتح Nintendo eShop" —
+ * so it is obvious what is missing, while the public page renders nothing at
+ * all. Not a placeholder, not a broken image, not a gap where a figure would
+ * be: the element is absent.
+ *
+ * `hint` is written for whoever uploads and is never shown to a customer.
+ * `alt` is written for whoever cannot see the picture and always is.
+ */
+export interface ContentImage {
+  id: string;
+  /** Empty while the slot is waiting to be filled. */
+  url: string;
+  /** Admin-facing: which picture belongs here. Never rendered publicly. */
+  hint?: string;
+  alt: string;
+  alt_en?: string;
+  caption?: string;
+  caption_en?: string;
+  sort_order: number;
+}
+
+/**
+ * Every filled picture of a slot list, in order.
+ *
+ * Two things at once: it drops the empty slots, which is what keeps a
+ * half-finished guide from showing holes to a customer, and it folds in the
+ * single `image` field the older shape used so no picture already uploaded is
+ * lost when a step gains a gallery.
+ */
+export function filledImages(
+  images: ContentImage[] | undefined,
+  legacy?: string,
+  legacyAlt?: string,
+): ContentImage[] {
+  const list = (images ?? []).filter((image) => Boolean(image?.url?.trim()));
+  if (list.length === 0 && legacy?.trim()) {
+    return [{ id: "legacy", url: legacy.trim(), alt: legacyAlt ?? "", sort_order: 0 }];
+  }
+  return [...list].sort((a, b) => a.sort_order - b.sort_order);
+}
+
 export interface GuideStep {
   id: string;
   title_ar: string;
@@ -125,7 +174,10 @@ export interface GuideStep {
   description_ar: string;
   description_en?: string;
   description_tr?: string;
+  /** Legacy single picture. `images` supersedes it; both are read. */
   image?: string;
+  /** Ordered slots, filled and empty. */
+  images?: ContentImage[];
   video?: string;
   note_ar?: string;
   note_en?: string;
@@ -138,6 +190,7 @@ export interface GuideStep {
 
 export interface GuideItem {
   id: string;
+  /** Also the URL fragment: `/account_guides#<slug>`. */
   slug: string;
   title_ar: string;
   title_en?: string;
@@ -152,6 +205,16 @@ export interface GuideItem {
   difficulty?: string;
   sort_order: number;
   published: boolean;
+  /*
+    A note or a warning that belongs to the whole guide rather than to one of
+    its steps — "the code is valid for one hour", "never delete the game
+    account user". Printing those inside a single step buries the one sentence
+    that decides whether somebody loses their game.
+  */
+  note_ar?: string;
+  note_en?: string;
+  warning_ar?: string;
+  warning_en?: string;
   steps: GuideStep[];
 }
 
@@ -355,8 +418,22 @@ export interface ProblemEntry {
   category: string;
   cause?: string;
   keywords?: string[];
+  /** Legacy single picture. `images` supersedes it; both are read. */
   imageUrl?: string;
-  steps?: { title: string; description: string }[];
+  /** Ordered slots for the problem itself — the error screen, usually. */
+  images?: ContentImage[];
+  /*
+    A step carries its own slots. The screen a customer is looking at changes
+    at every step of a fix, and one picture for the whole problem cannot show
+    both the button to press and the dialog it opens.
+  */
+  steps?: { title: string; description: string; images?: ContentImage[] }[];
+  /** What the customer must not do — the part that loses an account. */
+  avoid?: string[];
+  /** When to stop and ask a person instead. */
+  contactAdminWhen?: string;
+  /** Error codes a customer may literally type into the search box. */
+  errorCodes?: string[];
   published?: boolean;
 }
 

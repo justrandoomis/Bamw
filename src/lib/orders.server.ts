@@ -523,12 +523,23 @@ export async function createOrderForUser(
 
     When both are in play the buyer gets whichever is worth more and the other
     is simply not applied — the coupon is not claimed, so it stays available,
-    and the referral is not spent. The admin can turn stacking on, in which case
-    both come off and the total is floored at the cart's value.
+    and the referral is not spent. Stacking is allowed by the shop-wide
+    referral setting, or by the coupon's own "قابل للتجميع" flag: that
+    checkbox was written to the row, mapped, and shown back in the admin list,
+    and nothing had ever read it at checkout. Either switch is enough, so a
+    shop that turned stacking on globally keeps the behaviour it has, and a
+    coupon ticked individually now does what the tick says.
+
+    A coupon worth nothing is never *used*. It used to be: the candidate
+    existed, so `claimCouponUse` ran, so a member's one lifetime redemption
+    was spent on a discount of zero.
   */
-  let useCoupon = Boolean(couponCandidate);
+  let useCoupon = (couponCandidate?.discount ?? 0) > 0;
   let useReferral = quotedReferralDiscount > 0;
-  if (useCoupon && useReferral && !referralDecision?.settings.stackWithCoupon) {
+  const stackingAllowed = Boolean(
+    referralDecision?.settings.stackWithCoupon || couponCandidate?.coupon.isStackable,
+  );
+  if (useCoupon && useReferral && !stackingAllowed) {
     if ((couponCandidate?.discount ?? 0) >= quotedReferralDiscount) useReferral = false;
     else useCoupon = false;
   }

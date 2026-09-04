@@ -586,7 +586,18 @@ export const Route = createFileRoute("/api/disc-trade")({
             String(data["condition"] || "like_new"),
             data["notes"] ? String(data["notes"]) : null,
             data["photo_url"] ? String(data["photo_url"]) : null,
-            data["payout_type"] ? String(data["payout_type"]) : null,
+            /*
+              The customer's own answer, not the form's constant.
+
+              `disc_trade.tsx` holds `const payout = "store_credit"` and sends
+              it for everyone, so this column has said store credit on every
+              row ever written — including the rows where the member chose cash
+              in the condition step, and where the quote was calculated from
+              that choice. Settling from the column pays a cash request in
+              store credit, which is the customer's money in the wrong form.
+            */
+            payoutMethodOf(selections) ??
+              (data["payout_type"] ? String(data["payout_type"]) : null),
             JSON.stringify(selections),
             quote?.base_iqd ?? null,
             quote?.final_iqd ?? null,
@@ -605,13 +616,23 @@ export const Route = createFileRoute("/api/disc-trade")({
           const images = Array.isArray(data["images"])
             ? (data["images"] as { kind?: string; url: string }[])
             : [];
-          for (const img of images) {
+          /*
+            The first photo is the one the card leads with.
+
+            `disc_trade.tsx` sends `photos.map((url) => ({ url }))` with no
+            kind, so every row was stored as "other" and the admin gallery had
+            no way to tell the cover shot from the close-up of the scratch. The
+            same URL is also written to `photo_url`, which is the field the
+            list view reads, so naming the first one "primary" makes the two
+            agree instead of guessing.
+          */
+          for (const [index, img] of images.entries()) {
             if (!img?.url) continue;
             await d1Run(
               `INSERT INTO disc_trade_images (id, trade_id, kind, url, created_at) VALUES (?,?,?,?,?)`,
               randomId("dti"),
               tradeId,
-              img.kind || "other",
+              img.kind || (index === 0 ? "primary" : "detail"),
               img.url,
               stamp,
             );
