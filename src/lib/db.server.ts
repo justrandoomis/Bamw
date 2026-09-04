@@ -23,6 +23,8 @@ import { sendWhatsappMessage } from "./whatsapp.server";
 import { getUserTelegramChatId } from "./telegram-notifications.server";
 import { escapeHtml, sendTelegramMessage } from "./telegram.server";
 import { memberMessagePreview } from "./memberMessagePreview";
+import { allowsNotification } from "./notification-preferences";
+import { memberAllowsNotification } from "./notification-preferences.server";
 import { isOwnerAccount } from "./owner-auth.server";
 import {
   type AdminAvailabilityConfig,
@@ -1324,7 +1326,15 @@ export async function updateStore(mutate: (current: StoreDoc) => StoreDoc | void
       never been sent to anyone. The link lives in `telegram_links`, which is
       what `getUserTelegramChatId` reads.
     */
-    const withFavourites = users.filter((u) => u.favorites?.length);
+    /*
+      A price alert is a promotional message, and a member who has switched
+      those off in `/telegram/notifications` does not get one. Decided from the
+      rows already in hand — these users are loaded above, so honouring the
+      preference costs no extra query.
+    */
+    const withFavourites = users.filter(
+      (u) => u.favorites?.length && allowsNotification(u.settings, "promotions"),
+    );
     const chatIds = new Map<string, string>();
     for (const u of withFavourites) {
       const chatId = await getUserTelegramChatId(String(u.id ?? ""));
@@ -2725,7 +2735,15 @@ export async function appendMessage(
     if (full.senderRole === "admin") {
       /* Same field, same silence — the member was never told the shop replied. */
       const memberChatId = await getUserTelegramChatId(String(thread.userId ?? ""));
-      if (memberChatId) {
+      /*
+        A support reply is a message, and a member who has switched those off in
+        `/telegram/notifications` does not get the Telegram push. The reply is
+        still written to the thread and still shown in the app — this guards the
+        notification, never the message.
+      */
+      const wantsMessages =
+        memberChatId && (await memberAllowsNotification(String(thread.userId ?? ""), "messages"));
+      if (memberChatId && wantsMessages) {
         /*
           What the message actually is.
 
@@ -3234,6 +3252,8 @@ async function notifyRechargeVerdict(
   try {
     const chatId = await getUserTelegramChatId(String(userId ?? ""));
     if (!chatId) return;
+    // The screen files payment under "تحديثات الطلبات — حالة الدفع".
+    if (!(await memberAllowsNotification(String(userId ?? ""), "orders"))) return;
     const figure = Number.isFinite(amount) ? Math.round(amount).toLocaleString() : "";
     const text =
       verdict === "approved"

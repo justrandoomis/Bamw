@@ -1,4 +1,5 @@
 import { readOrderItemSelection, selectionSummary } from "./orderItemSelection";
+import { memberAllowsNotification } from "./notification-preferences.server";
 import { telegramAdminIds } from "./telegram-admin.server";
 import {
   adminRoute,
@@ -760,6 +761,8 @@ export async function notifyUserAdminMessage(params: {
   const { userId, threadId, messageText, adminName } = params;
   const userChatId = await getUserTelegramChatId(userId);
   if (!userChatId) return false;
+  // The member's own preference, from `/telegram/notifications`.
+  if (!(await memberAllowsNotification(userId, "messages"))) return false;
 
   const text =
     `💬 <b>رد جديد من فريق دعم بنانا ستور</b> 🍌\n\n` +
@@ -802,6 +805,7 @@ export async function notifyUserOrderStatus(params: {
   const { userId, order, statusText, credentialsDelivered } = params;
   const userChatId = await getUserTelegramChatId(userId);
   if (!userChatId) return false;
+  if (!(await memberAllowsNotification(userId, "orders"))) return false;
 
   let text = "";
   if (credentialsDelivered) {

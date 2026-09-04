@@ -1,3 +1,5 @@
+import type { NotificationPreferences } from "./notification-preferences";
+
 export type ProductKind =
   | "account"
   | "offline_account"
@@ -346,6 +348,14 @@ export interface UserSettings {
   liteMotion?: boolean;
   musicTrack?: string;
   currency?: string;
+  /**
+   * Which Telegram messages this member has asked to receive.
+   *
+   * Absent means the defaults in `notification-preferences.ts`, which are all
+   * on: every one of these messages is delivered today, and an unset
+   * preference must not silently switch one off.
+   */
+  notifications?: NotificationPreferences;
 }
 
 export interface Address {

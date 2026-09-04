@@ -3,6 +3,10 @@ import { createFileRoute } from "@tanstack/react-router";
 import { randomId } from "@/lib/crypto.server";
 import { findUserByUsername, getUsers, toPublicUser, updateUser } from "@/lib/db.server";
 import { body, guard, json } from "@/lib/http.server";
+import {
+  readNotificationPreferences,
+  sanitizeNotificationPreferences,
+} from "@/lib/notification-preferences";
 import { requireUser } from "@/lib/session.server";
 import type { Address, Gender, UserSettings } from "@/lib/types";
 
@@ -134,7 +138,25 @@ export const Route = createFileRoute("/api/profile")({
                 ? { profileCompletedAt: new Date().toISOString() }
                 : {}),
               ...(data.avatar !== undefined ? { avatar: data.avatar } : {}),
-              settings: { ...user.settings, ...(data.settings ?? {}) },
+              /*
+                Notification preferences are the three switchable booleans and
+                nothing else. This merge is wholesale, so without the filter a
+                client could store any shape it liked under `notifications` —
+                and `readNotificationPreferences` would have to keep defending
+                against it on every send.
+              */
+              settings: {
+                ...user.settings,
+                ...(data.settings ?? {}),
+                ...(data.settings?.notifications !== undefined
+                  ? {
+                      notifications: {
+                        ...readNotificationPreferences(user.settings),
+                        ...sanitizeNotificationPreferences(data.settings.notifications),
+                      },
+                    }
+                  : {}),
+              },
               addresses,
               favorites,
               ...(data.friendId !== undefined ? { friendId: data.friendId } : {}),
