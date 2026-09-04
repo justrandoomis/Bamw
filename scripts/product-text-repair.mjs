@@ -320,8 +320,14 @@ for (const record of selected) {
   for as long as the cache lives.
 */
 if (APPLY && written > 0) {
-  const rev = await app.bumpCatalogVersion();
-  say(`Catalogue revision bumped to ${rev} — caches now see the repaired copy.`);
+  const current = await app.d1All("SELECT MAX(rev) as rev FROM store_rev");
+  const next = Number(current?.[0]?.rev ?? 0) + 1;
+  const stamp = new Date().toISOString();
+  await app.d1Batch([
+    { sql: "INSERT INTO store_rev (rev, updated_at) VALUES (?, ?)", params: [next, stamp] },
+    { sql: "DELETE FROM store_rev WHERE rev < ?", params: [next] },
+  ]);
+  say(`Catalogue revision bumped to ${next} — caches now see the repaired copy.`);
   say();
 }
 
