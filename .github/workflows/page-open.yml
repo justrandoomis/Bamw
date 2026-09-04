@@ -20,6 +20,13 @@ on:
         description: "Comma-separated paths"
         type: string
         default: "/,/add_game,/disc_trade,/problem,/account_guides,/faq,/policy,/support"
+  # Same as `page-smoke`: a new or edited checker runs itself, so it can be used
+  # from a branch without first being merged to main.
+  push:
+    branches: ["claude/**"]
+    paths:
+      - "scripts/page-open-check.mjs"
+      - ".github/workflows/page-open.yml"
 
 permissions:
   contents: read
