@@ -47,6 +47,11 @@ jobs:
         with:
           node-version: 22
           cache: npm
+      # The lockfile carries platform-specific optional dependencies that the
+      # runner's default npm 10 refuses on Linux (`EBADPLATFORM` on
+      # `@cloudflare/workerd-darwin-64`). Every other workflow here upgrades
+      # first for the same reason.
+      - run: npm install -g npm@11.19.1
       - run: npm ci --no-audit --no-fund
 
       # `playwright-core` carries no installer, so the browser comes from the
