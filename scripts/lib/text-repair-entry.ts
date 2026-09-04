@@ -14,7 +14,7 @@
  */
 export { d1All, d1Run, d1Batch } from "@/lib/d1.server";
 export {
-  looksLikeInternalNote,
-  internalNoteReason,
+  customerSafeParagraph,
+  internalSentences,
   CUSTOMER_TEXT_FIELDS,
 } from "@/lib/internalMetadata";

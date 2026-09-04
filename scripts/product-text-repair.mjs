@@ -137,25 +137,32 @@ function cleanDocument(node, trail, productId) {
   const out = {};
   for (const [key, value] of Object.entries(node)) {
     if (typeof value === "string" && TEXT_FIELDS.has(key)) {
-      const kept = [];
-      const dropped = [];
-      for (const line of value.split(/\r?\n/)) {
-        const reason = app.internalNoteReason(line);
-        if (reason !== undefined) dropped.push({ line, reason });
-        else kept.push(line);
-      }
-      if (dropped.length === 0) {
+      /*
+        The application's own serializer decides, not a second copy of the
+        rule here. After this runs the stored copy is byte-for-byte what
+        `toPublicProduct` would have emitted, so the admin's view of the
+        product and the customer's finally agree — which is the whole point:
+        the owner reported the same line twice as unfixed because the filter
+        exempts them.
+      */
+      const next = app.customerSafeParagraph(value);
+      if (next === value) {
         out[key] = value;
         continue;
       }
-      const next = kept.join("\n").replace(/\n{3,}/g, "\n\n").trim();
-      changes.push({ productId, path: `${trail}.${key}`, dropped, empty: next.length === 0 });
+      const dropped = app.internalSentences(value);
+      changes.push({
+        productId,
+        path: `${trail}.${key}`,
+        dropped,
+        empty: next === undefined,
+      });
       /*
         An emptied field is deleted rather than written as "". A blank string
         still renders as an empty paragraph, and a missing field lets the page
         fall back to whatever it uses when there is no description.
       */
-      if (next) out[key] = next;
+      if (next !== undefined) out[key] = next;
       continue;
     }
     if (Array.isArray(value) && ROW_COLLECTIONS.has(key)) {
@@ -309,10 +316,12 @@ for (const record of selected) {
   }
 
   for (const change of mine) {
-    say(`- \`${change.path || "(root)"}\` — ${change.dropped.length} line(s) removed${change.empty ? ", field now empty and deleted" : ""}`);
-    for (const { line, reason } of change.dropped) {
+    say(
+      `- \`${change.path || "(root)"}\` — ${change.dropped.length} sentence(s) removed${change.empty ? ", field now empty and deleted" : ""}`,
+    );
+    for (const { sentence, reason } of change.dropped) {
       say(`    · matched /${reason}/`);
-      say(`      ${maskFigures(line).slice(0, 400)}`);
+      say(`      ${maskFigures(sentence).slice(0, 400)}`);
     }
   }
 
