@@ -20,6 +20,7 @@ import {
   readProductIndexFingerprints,
 } from "./product-index.server";
 import { sendWhatsappMessage } from "./whatsapp.server";
+import { getUserTelegramChatId } from "./telegram-notifications.server";
 import { sendTelegramMessage } from "./telegram.server";
 import { isOwnerAccount } from "./owner-auth.server";
 import {
@@ -1316,13 +1317,25 @@ export async function updateStore(mutate: (current: StoreDoc) => StoreDoc | void
 
   if (repriced.length > 0) {
     const users = await getUsers();
-    const watchers = users.filter((u) => u.telegramId && u.favorites?.length);
+    /*
+      Filtering on `u.telegramId` selected nobody: the `users` table has no
+      telegram column, so the field is always undefined and this alert has
+      never been sent to anyone. The link lives in `telegram_links`, which is
+      what `getUserTelegramChatId` reads.
+    */
+    const withFavourites = users.filter((u) => u.favorites?.length);
+    const chatIds = new Map<string, string>();
+    for (const u of withFavourites) {
+      const chatId = await getUserTelegramChatId(String(u.id ?? ""));
+      if (chatId) chatIds.set(String(u.id), chatId);
+    }
+    const watchers = withFavourites.filter((u) => chatIds.has(String(u.id)));
     for (const product of repriced) {
       const before = previousPrices.get(String(product.id));
       for (const watcher of watchers) {
         if (!watcher.favorites?.includes(product.id)) continue;
         await sendTelegramMessage(
-          watcher.telegramId!,
+          chatIds.get(String(watcher.id))!,
           `🔔 *تنبيه تغيير السعر*\n\nتغير سعر المنتج *${product.title}* الذي تتابعه.\n\nالسعر السابق: ${before} IQD\nالسعر الجديد: ${product.price} IQD`,
         );
       }
@@ -2709,10 +2722,11 @@ export async function appendMessage(
   const thread = await getThread(threadId);
   if (thread) {
     if (full.senderRole === "admin") {
-      const user = await findUserById(thread.userId);
-      if (user?.telegramId) {
+      /* Same field, same silence — the member was never told the shop replied. */
+      const memberChatId = await getUserTelegramChatId(String(thread.userId ?? ""));
+      if (memberChatId) {
         await sendTelegramMessage(
-          user.telegramId,
+          memberChatId,
           `💬 *رسالة جديدة من الدعم*\n\nفي محادثة: ${thread.subject}\n\n"${full.body["text"] || "أرسل صورة"}"`,
         );
       }
