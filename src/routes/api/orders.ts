@@ -30,7 +30,6 @@ import { requireUser } from "@/lib/session.server";
 import { consumeRateLimit, rateLimitResponse } from "@/lib/rate-limit.server";
 import type { Address, Order, OrderItem } from "@/lib/types";
 import { redactMessageForMember, redactOrderHistoryForMember } from "@/lib/redaction";
-import { completeOrder } from "@/lib/order-completion.server";
 import { isOwnUploadUrl } from "@/lib/uploads";
 
 function redactItems(items: OrderItem[], viewer: OrderViewer) {
@@ -356,18 +355,24 @@ export const Route = createFileRoute("/api/orders")({
           }
 
           /*
-              Same owner as the admin button and the hour-long timer, so the
-              three cannot write different versions of "completed" — and a
-              customer who taps twice does not get two completion cards and two
-              rating requests.
-            */
-          const confirmed = await completeOrder(order, {
-            by: user.id,
-            role: "USER",
-            note: "تم تأكيد الاستلام من قبل العميل",
-            message: "✅ تم استلام الطلب وتأكيده بنجاح من قبل العميل.",
-          });
-          return json({ order: redactOrder(confirmed.order, user) });
+            A `completeOrder` used to sit here with no `if` around it, followed
+            by a `return`. It had no action of its own: `confirm_received`
+            above returns on both its branches, so this could only ever be
+            reached by something else — and then it completed that order and
+            returned, making every handler below unreachable.
+
+            Which is to say: a customer pressing "the code does not work"
+            (`report_delivery_issue`, sent by ChatView) closed their order as
+            completed instead of opening an issue. `claim` and `complete` did
+            nothing for staff. An admin changing a status completed the order
+            instead, skipping `canTransition` and the guard that refuses to
+            complete a digital order before the customer confirms. The address
+            write never ran.
+
+            Completion has one owner — `completeOrder`, reached through
+            `confirmDeliveredOrder` for a digital order and through the admin
+            route otherwise — and this was a second, unguarded door into it.
+          */
           if (data.action === "report_delivery_issue") {
             if (order!.userId !== user.id) return json({ error: "forbidden" }, { status: 403 });
             try {

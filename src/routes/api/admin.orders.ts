@@ -771,7 +771,21 @@ export const Route = createFileRoute("/api/admin/orders")({
             }
             case "complete_order": {
               /*
-                One owner, and idempotent.
+                A digital order is not the admin's to finish by hand.
+
+                This guard was here, and it was lost to a block comment that
+                never closed: one opened above it to delete the old inline
+                completion swallowed the guard along with it, and did not end
+                until fifty lines later. Everything in between — including this
+                — stopped being code, silently, while the file still read as
+                though the check were there.
+
+                `completeOrder` does not check delivery state, so nothing
+                replaced it. Without it an admin pressing "complete" on an
+                order whose OTPs have not all gone out closes it anyway, and
+                the customer loses both the items still owed to them and the
+                window in which they could have reported a bad one.
+              */
               const delivery = await getDeliveryOrderState(order);
               if (delivery.progress.total > 0) {
                 return json(
@@ -782,57 +796,16 @@ export const Route = createFileRoute("/api/admin/orders")({
                   { status: 409 },
                 );
               }
-              const updatedItems = order.items.map((it) => ({
-                ...it,
-                completedAt: it.completedAt || now,
-                deliveredAt: it.deliveredAt || now,
-              }));
 
-              next = {
-                ...order,
-                status: "completed",
-                completedAt: now,
-                items: updatedItems,
-                updatedAt: now,
-              };
+              /*
+                One owner, and idempotent.
 
-              // 1. Mark task in order queue completed
-              try {
-                await d1Run(
-                  `UPDATE order_queue SET status = 'completed', updated_at = ? WHERE order_id = ?`,
-                  now,
-                  order.id,
-                );
-
-                await d1Run(
-                  `INSERT INTO order_status_history (id, order_id, old_status, new_status, changed_by, note, created_at)
-                   VALUES (?, ?, ?, 'completed', ?, 'تم تأكيد اكتمال الطلب من قبل الإدارة', ?)`,
-                  randomId("osh"),
-                  order.id,
-                  order.status,
-                  admin.id,
-                  now,
-                );
-
-                await d1Run(
-                  `INSERT INTO order_status_history_v2 (
-                    id, order_id, old_status, new_status, changed_by_user_id, changed_by_role, reason, created_at
-                  ) VALUES (?, ?, ?, 'completed', ?, 'ADMIN', 'Admin finalized order completion', ?)`,
-                  randomId("oshv2"),
-                  order.id,
-                  order.status,
-                  admin.id,
-                  now,
-                );
-              } catch (err) {
-                console.error("[admin:complete_order:history_failed]", err);
-              }
-
-                This used to write `completedAt: now` and post both the
-                completion card and the rating request every time it ran, so a
-                double-click sent the customer the same two messages twice and
-                moved the completion time. `completeOrder` returns the order
-                untouched when it is already finished.
+                The body that used to sit here wrote `completedAt: now` and
+                posted both the completion card and the rating request every
+                time it ran, so a double-click sent the customer the same two
+                messages twice and moved the completion time. `completeOrder`
+                returns the order untouched when it is already finished, and
+                writes the status history itself.
               */
               const result = await completeOrder(order, {
                 by: admin.id,
