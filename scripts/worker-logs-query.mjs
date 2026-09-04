@@ -134,6 +134,20 @@ for (const event of events) {
 
   if (!ALLOWED.some((prefix) => flat.includes(prefix))) continue;
   say(`${stamp.slice(0, 19)}Z  ${scrub(flat).slice(0, 400)}`);
+
+  /*
+    `console.error("...", { error_code, description })` logs two arguments,
+    and the second is the one that says what Telegram actually refused. It
+    arrives beside the message rather than inside it, so printing the message
+    alone gives "sendMessage failed" and no reason — which is the same dead
+    end this whole script exists to get past.
+  */
+  const detail = raw?.$workers?.event?.additionalMessages ?? raw?.additionalMessages ?? [];
+  for (const extra of Array.isArray(detail) ? detail : [detail]) {
+    if (extra === undefined || extra === null) continue;
+    const rendered = typeof extra === "string" ? extra : JSON.stringify(extra);
+    say(`                     ↳ ${scrub(rendered).slice(0, 400)}`);
+  }
   shown += 1;
 }
 
@@ -142,4 +156,19 @@ if (shown === 0) {
   say();
   say("The shape of one raw event, with digits removed, so the filter can be corrected:");
   say(scrub(JSON.stringify(events[0] ?? {}, null, 2)).slice(0, 1500));
+} else if (process.argv.includes("--raw")) {
+  /*
+    Only ever for events that already passed the prefix filter, so this cannot
+    become a way to print a customer's message by asking for it.
+  */
+  say();
+  say("── raw, for the events above, digits removed ──");
+  for (const event of events) {
+    const raw = event?.source ?? event;
+    const message = raw?.message ?? "";
+    const flat = typeof message === "string" ? message : JSON.stringify(message);
+    if (!ALLOWED.some((prefix) => flat.includes(prefix))) continue;
+    say(scrub(JSON.stringify(event, null, 2)).slice(0, 2000));
+    say();
+  }
 }
