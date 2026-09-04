@@ -37,9 +37,16 @@ const say = (t = "") => {
   console.log(t);
 };
 
-let failures = 0;
+/*
+  Every failure is also kept for a block at the very end.
+
+  A CI log is read from its tail, and the upload step that follows this script
+  is long enough to push the interesting lines out of view — which is how two
+  runs went by knowing only how many checks failed, not which.
+*/
+const failed = [];
 const fail = (message) => {
-  failures += 1;
+  failed.push(message);
   say(`  ✗ ${message}`);
 };
 
@@ -146,7 +153,13 @@ try {
 }
 say();
 
-say(failures === 0 ? "## All checks passed." : `## ${failures} check(s) failed.`);
+if (failed.length === 0) {
+  say("## All checks passed.");
+} else {
+  say(`## ${failed.length} check(s) failed`);
+  say();
+  for (const message of failed) say(`- ${message}`);
+}
 const { writeFileSync } = await import("node:fs");
 writeFileSync("page-smoke.md", lines.join("\n") + "\n");
-if (failures > 0) process.exitCode = 1;
+if (failed.length > 0) process.exitCode = 1;
