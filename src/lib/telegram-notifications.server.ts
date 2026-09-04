@@ -187,12 +187,27 @@ export async function sendAdminNotification(
   if (!route.chatId) return { ok: false };
 
   /*
+    Telegram refuses a message over 4096 characters, and refuses it whole.
+
+    A customer's own text is interpolated into these bodies, and the chat input
+    accepts up to 4000 characters — so one long message pushed the notification
+    past the limit and the admin was told nothing at all. Trimming costs the
+    tail of a message the admin can still open in the app; not trimming costs
+    the whole notification.
+  */
+  const TELEGRAM_MESSAGE_LIMIT = 4096;
+  const body =
+    text.length > TELEGRAM_MESSAGE_LIMIT
+      ? `${text.slice(0, TELEGRAM_MESSAGE_LIMIT - 40)}\n\n… <i>(اختُصرت)</i>`
+      : text;
+
+  /*
     A group is forwardable, searchable, and joined by whoever is added next.
     A message carrying a password, a one-time code or a key is dropped rather
     than trimmed: one that has to be censored to be sent was assembled wrongly,
     and sending the censored half would hide that.
   */
-  const forbidden = findForbiddenSecret(text);
+  const forbidden = findForbiddenSecret(body);
   if (forbidden) {
     console.error("[telegram:admin_notification_blocked]", { kind, forbidden });
     await recordSendFailure({
@@ -204,7 +219,7 @@ export async function sendAdminNotification(
   }
 
   try {
-    const res = await sendTelegramMessage(route.chatId, withRoutePrefix(route, text), {
+    const res = await sendTelegramMessage(route.chatId, withRoutePrefix(route, body), {
       parse_mode: "HTML",
       ...routeOptions(route),
       ...options,
@@ -425,6 +440,22 @@ async function forwardAttachmentToAdmin(
   if (!chatId) return;
   const path = String(imageUrl).split("?")[0] ?? "";
   if (!path.startsWith("/api/files/")) return;
+
+  /*
+    A video is not a photo, and `sendPhoto` refuses one.
+
+    The member's picker offers mp4, webm and mov, so this path really does see
+    them. Telling the admin where to watch it beats a refusal that leaves the
+    card saying an attachment arrived and never showing it.
+  */
+  const { isVideoUploadUrl } = await import("./uploads");
+  if (isVideoUploadUrl(path)) {
+    await sendAdminNotification(
+      "support",
+      `🎬 ${escapeHtml(customerName)} أرسل مقطع فيديو — افتحه من لوحة الإدارة.`,
+    );
+    return;
+  }
 
   const { readBinary } = await import("./storage.server");
   const stored = await readBinary(`files/${path.slice("/api/files/".length)}`);
