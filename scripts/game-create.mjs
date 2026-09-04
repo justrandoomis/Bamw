@@ -322,7 +322,9 @@ async function buildOne(entry, existingSlugs) {
     galleryImages: gallery.map((g) => ({ url: g.url })),
     description: meta.description ?? "",
     tagline: meta.tagline ?? "",
-    developer: meta.developer ?? "",
+    /* Nintendo's record names a developer for some titles and not others. A
+       researched one is used only where the store has nothing to say. */
+    developer: meta.developer || entry.developer || "",
     publisher: meta.publisher ?? "",
     releaseDate: meta.releaseDate ?? "",
     genres: meta.genres ?? [],
@@ -432,10 +434,22 @@ say(`catalogue already holds ${existingSlugs.size} slugs and ${existingNsuids.si
 
 const done = [], failed = [];
 for (const entry of games) {
-  if (entry._ambiguous) {
+  /*
+    Two reasons not to build a game, and they are different things.
+
+    `_ambiguous` means the title could name more than one real product, so
+    creating one would be a coin toss between two games. `_unavailable` means
+    the research established there is no such product on the US eShop at all —
+    a supplier line with nothing on Nintendo to attach it to.
+
+    Both are recorded with their reason rather than dropped quietly, because a
+    supplier line that cannot be sold is something the owner needs to see.
+  */
+  if (entry._ambiguous || entry._unavailable) {
+    const why = entry._ambiguous ? "needs_identity_review" : "not on the US eShop";
     say(`\n${"=".repeat(72)}\n${entry.n}. ${entry.title} [${entry.platform}]`);
-    say(`  SKIPPED — needs_identity_review: ${entry._ambiguous}`);
-    failed.push({ n: entry.n, title: entry.title, reason: "needs_identity_review" });
+    say(`  SKIPPED — ${why}: ${entry._ambiguous ?? entry._unavailable}`);
+    failed.push({ n: entry.n, title: entry.title, reason: why });
     continue;
   }
   try {

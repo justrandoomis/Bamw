@@ -104,13 +104,14 @@
         }
       ],
       "demandTier": "niche",
-      "demandReason": "The base game, long superseded by Treasure Trove"
+      "demandReason": "The base game, long superseded by Treasure Trove",
+      "_ambiguous": "needs_identity_review. The researcher found no listing titled exactly \"Shovel Knight\" and concluded it does not exist; the verifier showed the 2014 game was renamed, not delisted, and sells today as \"Shovel Knight: Shovel of Hope\". But the verifier itself offers two readings — the original campaign, or the full package, which is \"Shovel Knight: Treasure Trove\" and is already n=2 in this batch. The supplier's Standard 1,936 / Deluxe 12,540 matches neither cleanly, and Nintendo sells no edition tiers for either. Identity is not proven, so nothing is created."
     },
     {
       "n": 5,
-      "title": "Tales of Arise: Beyond the Dawn Edition",
+      "title": "Tales of ARISE - Beyond the Dawn Edition",
       "zh": "破晓传说",
-      "platform": "switch1",
+      "platform": "switch2",
       "variants": [
         {
           "name": "Regular / 普通版",
@@ -124,7 +125,8 @@
         }
       ],
       "demandTier": "standard",
-      "demandReason": "Major JRPG series, but this Switch edition arrived late and discounts"
+      "demandReason": "Major JRPG series, but this Switch edition arrived late and discounts",
+      "titleNote": "Nintendo prints ARISE in capitals and separates with a hyphen, not the colon the retailers use. Switch 2 only — the game was never ported to Switch 1."
     },
     {
       "n": 6,
@@ -144,7 +146,9 @@
         }
       ],
       "demandTier": "standard",
-      "demandReason": "Dedicated farming-RPG following, steady rather than broad"
+      "demandReason": "Dedicated farming-RPG following, steady rather than broad",
+      "developer": "Hakama Inc.",
+      "developerSource": "researched and independently verified; Nintendo's store record names only the publisher"
     },
     {
       "n": 7,
@@ -204,7 +208,8 @@
         }
       ],
       "demandTier": "niche",
-      "demandReason": "Niche 2D action series with a small following"
+      "demandReason": "Niche 2D action series with a small following",
+      "_unavailable": "No Nintendo Switch 2 version exists. The research found only the Switch 1 release, which is the other n=8 entry. The supplier's Switch 2 line has no product to attach to."
     },
     {
       "n": 9,
@@ -245,7 +250,8 @@
         }
       ],
       "demandTier": "niche",
-      "demandReason": "Obscure visual novel with little western presence"
+      "demandReason": "Obscure visual novel with little western presence",
+      "_unavailable": "Not sold on the US eShop. 冬园的祭奠 has no US Nintendo listing under this or any English title the research could establish."
     },
     {
       "n": 11,
@@ -265,13 +271,15 @@
         }
       ],
       "demandTier": "major",
-      "demandReason": "Square Enix HD-2D, well known and holds its price"
+      "demandReason": "Square Enix HD-2D, well known and holds its price",
+      "developer": "Artdink",
+      "developerSource": "researched and independently verified; Nintendo's store record names only the publisher"
     },
     {
       "n": 12,
       "title": "The Adventures of Elliot: The Millennium Tales",
       "zh": "艾略特的千年物语",
-      "platform": "switch1",
+      "platform": "switch2",
       "variants": [
         {
           "name": "Regular / 普通版",
@@ -299,7 +307,7 @@
     },
     {
       "n": 13,
-      "title": "Trails in the Sky the 2nd",
+      "title": "Trails in the Sky 2nd Chapter",
       "zh": "空之轨迹 the 2nd",
       "platform": "switch1",
       "variants": [
@@ -315,7 +323,8 @@
         }
       ],
       "demandTier": "standard",
-      "demandReason": "Falcom remake; strong core following, limited reach"
+      "demandReason": "Falcom remake; strong core following, limited reach",
+      "titleNote": "Nintendo prints \"2nd Chapter\", not \"the 2nd\"."
     },
     {
       "n": 14,
@@ -335,13 +344,14 @@
         }
       ],
       "demandTier": "standard",
-      "demandReason": "Recognised franchise returning, unproven in this form"
+      "demandReason": "Recognised franchise returning, unproven in this form",
+      "_unavailable": "Not sold on the US eShop. No listing for Danganronpa 2x2 could be established on Nintendo's US store."
     },
     {
       "n": 15,
-      "title": "NOBUNAGA'S AMBITION: Awakening – Complete Edition",
+      "title": "NOBUNAGA'S AMBITION: Awakening Complete Edition",
       "zh": "信长之野望：新生 威力加强版",
-      "platform": "switch1",
+      "platform": "switch2",
       "variants": [
         {
           "name": "Regular / 普通版",
@@ -355,13 +365,14 @@
         }
       ],
       "demandTier": "niche",
-      "demandReason": "Historical strategy for a specialist audience"
+      "demandReason": "Historical strategy for a specialist audience",
+      "titleNote": "Nintendo prints no dash before Complete Edition."
     },
     {
       "n": 16,
       "title": "Star Fox",
       "zh": "星际火狐",
-      "platform": "switch1",
+      "platform": "switch2",
       "variants": [
         {
           "name": "Regular / 普通版",
@@ -375,7 +386,8 @@
         }
       ],
       "demandTier": "major",
-      "demandReason": "Nintendo first-party IP"
+      "demandReason": "Nintendo first-party IP",
+      "titleNote": "The standalone Star Fox listing is a Switch 2 product."
     },
     {
       "n": 17,
@@ -395,7 +407,9 @@
         }
       ],
       "demandTier": "standard",
-      "demandReason": "Popular Atelier arc bundled as a trilogy"
+      "demandReason": "Popular Atelier arc bundled as a trilogy",
+      "developer": "Gust",
+      "developerSource": "researched and independently verified; Nintendo's store record names only the publisher"
     },
     {
       "n": 17,
@@ -415,7 +429,9 @@
         }
       ],
       "demandTier": "standard",
-      "demandReason": "Popular Atelier arc bundled as a trilogy"
+      "demandReason": "Popular Atelier arc bundled as a trilogy",
+      "developer": "Gust",
+      "developerSource": "researched and independently verified; Nintendo's store record names only the publisher"
     },
     {
       "n": 18,
@@ -607,7 +623,9 @@
         }
       ],
       "demandTier": "major",
-      "demandReason": "Nintendo first-party, holds its price"
+      "demandReason": "Nintendo first-party, holds its price",
+      "developer": "Tantalus Media",
+      "developerSource": "researched and independently verified; Nintendo's store record names only the publisher"
     }
   ]
 }
