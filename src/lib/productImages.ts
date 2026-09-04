@@ -159,22 +159,8 @@ export function productImageUrl(
  * `Object.keys` order so two products with the same fields always present them
  * the same way.
  */
-/*
-  `cover` leads, and its absence here was a bug with a customer-visible face.
-
-  `coverImage` is, by the role contract in `nintendoImages.ts`, "the product
-  detail page's primary cover" — and it was the one role this list never
-  named. The gift-card editor writes exactly that field and nothing else, so
-  an owner replacing a card's artwork wrote to a key no gallery read: the
-  upload succeeded, the record changed, and the page kept showing whatever
-  `mainImage` held from the original import. "I cannot change the main
-  picture" was literally true.
-
-  The rest of the order is unchanged, so a product with no `coverImage` leads
-  with `mainImage` exactly as before.
-*/
 export const GALLERY_FIELD_ORDER: readonly (keyof typeof FIELDS | "closeUp" | "back" | "left" | "right" | "packagingBack")[] =
-  ["cover", "main", "front", "back", "left", "right", "closeUp", "packagingFront", "packagingBack", "listing"];
+  ["main", "front", "back", "left", "right", "closeUp", "packagingFront", "packagingBack", "listing"];
 
 const EXTRA_FIELDS: Record<string, readonly string[]> = {
   back: ["backImage", "back_image"],

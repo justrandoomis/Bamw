@@ -2138,7 +2138,32 @@ export default function AdminProductEditor({
                   imageType="giftcard-main"
                   label="صورة بطاقة الشحن (Card Artwork)"
                   value={formData.coverImage || formData.cardArtwork || formData.mainImage || ""}
-                  onChange={(url) => handleChange("coverImage", url)}
+                  /*
+                    Both names, because this one control owns both roles.
+
+                    A card's artwork is its detail cover *and* its hero image,
+                    and the two systems that render it read different keys:
+                    `nintendoImages` resolves `detail-cover` from `coverImage`,
+                    while `productGalleryImages` — which builds the product
+                    page's gallery — leads with `mainImage` and never looks at
+                    `coverImage` at all.
+
+                    This wrote `coverImage` only. So replacing a card's picture
+                    changed the record and left the page showing whatever
+                    `mainImage` held from the original import: the upload
+                    worked, the screen did not, and there was nothing in the
+                    admin that could reach the stale field.
+
+                    Writing both keeps one control honest about the two keys it
+                    reads. The alternative — teaching the gallery to lead with
+                    `coverImage` — moves the lead image on some thirty games
+                    that have a cover and no `mainImage`, which is a change
+                    nobody asked for.
+                  */
+                  onChange={(url) => {
+                    handleChange("coverImage", url);
+                    handleChange("mainImage", url);
+                  }}
                   aspect="square"
                   folder="giftcards"
                   helperText="صورة بطاقة التعبئة والقيمة المالية."

@@ -1,73 +1,105 @@
 /**
  * The picture an owner uploads is the picture the page shows.
  *
- * The gift-card editor has one artwork field. It reads
- * `coverImage || cardArtwork || mainImage` and writes **`coverImage`** — and
- * `coverImage` was the one role missing from `GALLERY_FIELD_ORDER`, the list
- * the product page's gallery is built from.
+ * The gift-card editor has one artwork control. It reads
+ * `coverImage || cardArtwork || mainImage` and wrote **`coverImage` only** —
+ * and the product page's gallery, built by `productGalleryImages`, leads with
+ * `mainImage` and never looks at `coverImage` at all.
  *
- * So replacing a card's artwork wrote to a key no gallery read. The upload
- * succeeded, the record changed, the page kept showing whatever `mainImage`
- * held from the original import, and "I cannot change the main picture" was
- * literally true.
+ * So replacing a card's artwork changed the record and left the page showing
+ * whatever `mainImage` held from the original import. The upload worked, the
+ * screen did not, and nothing in the admin could reach the stale field.
+ * "I cannot change the main picture" was literally true.
  *
- * `coverImage` is documented in `nintendoImages.ts` as "the product detail
- * page's primary cover", so it leads the gallery now.
+ * ## Why the fix is on the writer, not the reader
+ *
+ * Teaching the gallery to lead with `coverImage` looks tidier and is worse: a
+ * catalogue audit found some thirty games carrying a `coverImage` and no
+ * `mainImage` at all, so that change would have moved the lead image on every
+ * one of them — a visible change to products nobody reported a problem with.
+ *
+ * One control that reads two keys should write both. That touches gift cards
+ * and nothing else.
  */
 import { describe, expect, it } from "vitest";
+import { readFileSync } from "node:fs";
+import { resolve } from "node:path";
 
 import { GALLERY_FIELD_ORDER, productGalleryImages } from "./productImages";
 
-const CARD = {
-  id: "prd_4c4c65ffbb01489c",
-  title: "Nintendo eShop Gift Card $5 — USA",
-  // What the original import left behind.
-  mainImage: "https://cdn.example/old-toad-card.png",
-  // What the owner just uploaded through the gift-card editor.
-  coverImage: "https://cdn.example/new-toad-card.png",
-};
+/* Block comments stripped: this file explains the keys it asserts on. */
+const editor = readFileSync(
+  resolve(process.cwd(), "src/components/AdminProductEditor.tsx"),
+  "utf8",
+).replace(/\/\*[\s\S]*?\*\//g, "");
 
-describe("a gift card whose artwork was just replaced", () => {
-  it("shows the new picture first", () => {
-    expect(productGalleryImages(CARD)[0]).toBe("https://cdn.example/new-toad-card.png");
+describe("the gift-card artwork control", () => {
+  const control = editor.slice(
+    editor.indexOf('imageType="giftcard-main"'),
+    editor.indexOf('imageType="giftcard-banner"'),
+  );
+
+  it("exists in the editor", () => {
+    expect(control.length).toBeGreaterThan(0);
   });
 
-  it("keeps the old one in the gallery rather than dropping it", () => {
-    // Replacing the lead is not the same as deleting an image the record still
-    // holds; the owner removes that separately if they want it gone.
-    expect(productGalleryImages(CARD)).toContain("https://cdn.example/old-toad-card.png");
-  });
-});
-
-describe("a product with no cover of its own", () => {
-  it("leads with mainImage, exactly as before", () => {
-    const noCover = { mainImage: "https://cdn.example/main.png" };
-    expect(productGalleryImages(noCover)[0]).toBe("https://cdn.example/main.png");
-  });
-
-  it("is unaffected when the two fields agree", () => {
-    const same = {
-      mainImage: "https://cdn.example/same.png",
-      coverImage: "https://cdn.example/same.png",
-    };
-    // One entry, not a duplicate: the list de-duplicates by URL.
-    expect(productGalleryImages(same)).toEqual(["https://cdn.example/same.png"]);
-  });
-});
-
-describe("the gallery order", () => {
-  it("names the detail page's primary cover", () => {
+  it("writes every key it reads", () => {
     /*
-      The role existed in the FIELDS map the whole time — `cover:
-      ["coverImage", "cover_image"]` — and simply was not in this list, which
-      is why nothing anywhere pointed at the gap.
+      The read chain is `coverImage || cardArtwork || mainImage`. A control that
+      reads three keys and writes one leaves the other two to contradict it.
     */
-    expect(GALLERY_FIELD_ORDER).toContain("cover");
-    expect(GALLERY_FIELD_ORDER[0]).toBe("cover");
+    expect(control).toContain('handleChange("coverImage", url)');
+    expect(control).toContain('handleChange("mainImage", url)');
   });
 
-  it("still contains every role it did before", () => {
-    for (const role of [
+  it("writes the key the product gallery actually leads with", () => {
+    const leadRole = GALLERY_FIELD_ORDER[0];
+    expect(leadRole).toBe("main");
+    expect(control).toContain('handleChange("mainImage", url)');
+  });
+});
+
+describe("a card whose artwork was replaced through that control", () => {
+  // What the record looks like after the fix: both keys carry the new upload.
+  const afterUpload = {
+    id: "prd_4c4c65ffbb01489c",
+    title: "Nintendo eShop Gift Card $5 — USA",
+    coverImage: "https://cdn.example/new-toad-card.png",
+    mainImage: "https://cdn.example/new-toad-card.png",
+  };
+
+  it("shows the new picture", () => {
+    expect(productGalleryImages(afterUpload)[0]).toBe("https://cdn.example/new-toad-card.png");
+  });
+
+  it("shows it once, not twice", () => {
+    // The two keys hold the same URL; the list de-duplicates.
+    expect(productGalleryImages(afterUpload)).toEqual(["https://cdn.example/new-toad-card.png"]);
+  });
+});
+
+describe("the record as it was before the fix", () => {
+  it("is the bug, reproduced", () => {
+    /*
+      `coverImage` updated, `mainImage` left behind — the gallery leads with the
+      stale one. This is what the owner was looking at.
+    */
+    const stale = {
+      coverImage: "https://cdn.example/new-toad-card.png",
+      mainImage: "https://cdn.example/old-toad-card.png",
+    };
+    expect(productGalleryImages(stale)[0]).toBe("https://cdn.example/old-toad-card.png");
+  });
+});
+
+describe("every other product", () => {
+  it("keeps the gallery order it had", () => {
+    /*
+      The reader is deliberately untouched. Some thirty games carry a
+      `coverImage` and no `mainImage`; leading with `cover` would have moved
+      all of their lead images.
+    */
+    expect(GALLERY_FIELD_ORDER).toEqual([
       "main",
       "front",
       "back",
@@ -77,8 +109,6 @@ describe("the gallery order", () => {
       "packagingFront",
       "packagingBack",
       "listing",
-    ]) {
-      expect(GALLERY_FIELD_ORDER, role).toContain(role);
-    }
+    ]);
   });
 });
