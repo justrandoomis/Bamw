@@ -3118,6 +3118,21 @@ export async function approveRechargeRequest(
   );
 
   const settled = await getRechargeRequest(requestId);
+
+  /*
+    Tell the member their money arrived.
+
+    Neither settling function said anything to anybody through any channel —
+    not Telegram, not even an in-app row. The shop is told the moment a top-up
+    request arrives, and the member who sent the receipt was never told the
+    verdict, so the only way to find out their wallet had been credited was to
+    keep opening the app and looking.
+
+    Best-effort and after the credit: a message about money already in the
+    wallet must not be able to fail the crediting of it.
+  */
+  void notifyRechargeVerdict(existing.userId, "approved", finalAmount);
+
   return {
     ok: true,
     ...(settled ? { request: settled } : {}),
@@ -3163,12 +3178,52 @@ export async function rejectRechargeRequest(
     return { ok: false, reason: "already_settled", request: await getRechargeRequest(requestId) };
   }
 
+  /* And the same when it is refused — see the note in the approval above. */
+  void notifyRechargeVerdict(existing.userId, "rejected", Number(existing.amount ?? 0));
+
   return {
     ok: true,
     ...((await getRechargeRequest(requestId))
       ? { request: (await getRechargeRequest(requestId))! }
       : {}),
   };
+}
+
+/**
+ * What the member is told about their top-up.
+ *
+ * Never throws and is never awaited by the settling functions: the wallet has
+ * already been credited or the request already refused by the time this runs,
+ * and neither outcome may be undone by a Telegram failure.
+ *
+ * The amount is stated because the credited figure can differ from the one
+ * requested — a bonus, or a correction the reviewer made — and a member seeing
+ * a different number in their wallet with no explanation is a support ticket.
+ */
+async function notifyRechargeVerdict(
+  userId: string,
+  verdict: "approved" | "rejected",
+  amount: number,
+): Promise<void> {
+  try {
+    const chatId = await getUserTelegramChatId(String(userId ?? ""));
+    if (!chatId) return;
+    const figure = Number.isFinite(amount) ? Math.round(amount).toLocaleString() : "";
+    const text =
+      verdict === "approved"
+        ? `✅ <b>تمت إضافة رصيدك</b>\n\nتمت الموافقة على طلب تعبئة المحفظة${
+            figure ? ` بمبلغ <b>${figure} د.ع</b>` : ""
+          }.\nالرصيد متاح الآن في محفظتك.`
+        : `❌ <b>لم تتم الموافقة على طلب التعبئة</b>\n\n${
+            figure ? `المبلغ: <b>${figure} د.ع</b>\n` : ""
+          }راجع الإيصال وتواصل مع الدعم إذا كنت تعتقد أن هناك خطأ.`;
+    await sendTelegramMessage(chatId, text, { parse_mode: "HTML" });
+  } catch (error) {
+    console.warn("[wallet:recharge_verdict_notify_failed]", {
+      verdict,
+      error: error instanceof Error ? error.message : String(error),
+    });
+  }
 }
 
 export async function consumeBananCode(

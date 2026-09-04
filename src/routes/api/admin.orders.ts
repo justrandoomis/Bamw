@@ -581,6 +581,36 @@ export const Route = createFileRoute("/api/admin/orders")({
                 // Ignore audit log error
               }
 
+              /*
+                Tell the customer their order was cancelled, and their money
+                returned.
+
+                This case returns here, hundreds of lines before the
+                notification block at the end of the handler, and its own
+                thread message is `senderRole: "system"` — which the chat's
+                own Telegram push ignores, since that only fires for an admin
+                message. So a wallet-paid order could be cancelled and refunded
+                with the member told through no channel at all: the money
+                simply reappeared, and they found out by opening the app.
+
+                Best-effort and after the refund, like every other notification
+                here.
+              */
+              try {
+                const { notifyUserOrderStatus } = await import(
+                  "@/lib/telegram-notifications.server"
+                );
+                await notifyUserOrderStatus({
+                  userId: order.userId,
+                  order: next,
+                  statusText: wasPaidByWallet
+                    ? `ملغى ❌ — تمت إعادة ${Math.round(refundAmount).toLocaleString()} د.ع إلى محفظتك`
+                    : "ملغى ❌",
+                });
+              } catch (err) {
+                console.warn("[admin:cancel_order:notify_failed]", err);
+              }
+
               return json({ order: redactOrder(next, ADMIN_VIEWER), success: true });
             }
             case "direct_send_credentials": {
@@ -850,17 +880,51 @@ export const Route = createFileRoute("/api/admin/orders")({
               data.action === "complete_order" ||
               data.action === "set_payment"
             ) {
+              /*
+                Every order status, so no raw English enum can leak.
+
+                The map was missing `pending`, `awaiting_customer_confirmation`
+                and `delivery_issue` — all real values of `OrderStatus` — and
+                the `|| next.status` fallback printed the identifier itself
+                into an Arabic message. It also carried `paid`, which is a
+                payment status and not an order one, so that entry could never
+                match anything.
+              */
               const statusMap: Record<string, string> = {
-                paid: "تم تأكيد الدفع ✅",
+                pending: "بانتظار المعالجة ⏳",
                 processing: "قيد التجهيز ⏳",
                 delivering: "جاري التسليم 🚀",
+                awaiting_customer_confirmation: "بانتظار تأكيد استلامك ✅",
+                delivery_issue: "هناك مشكلة في التسليم — نعمل عليها 🛠️",
                 completed: "مكتمل بنجاح 🎉",
                 cancelled: "ملغى ❌",
               };
+
+              /*
+                `set_payment` changes the PAYMENT status and leaves the order's
+                own status untouched, so reporting `next.status` told the
+                customer something unrelated to what just happened — a rejected
+                receipt was answered with "قيد التجهيز ⏳", which affirmatively
+                contradicts it.
+              */
+              const paymentMap: Record<string, string> = {
+                paid: "تم تأكيد الدفع ✅",
+                unpaid: "بانتظار الدفع ⏳",
+                pending: "بانتظار مراجعة الدفع ⏳",
+                rejected: "لم يتم قبول إثبات الدفع ❌",
+                refunded: "تمت إعادة المبلغ ↩️",
+              };
+
+              const statusText =
+                data.action === "set_payment"
+                  ? (paymentMap[String(next.paymentStatus)] ??
+                    "تم تحديث حالة الدفع")
+                  : (statusMap[next.status] ?? "تم تحديث حالة طلبك");
+
               await notifyUserOrderStatus({
                 userId: next.userId,
                 order: next,
-                statusText: statusMap[next.status] || next.status,
+                statusText,
               });
             }
           } catch (err) {
