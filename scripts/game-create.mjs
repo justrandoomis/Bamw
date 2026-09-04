@@ -224,12 +224,25 @@ async function buildOne(entry, existingSlugs) {
   const p = resolved.product;
   const meta = metadataFrom(p) ?? {};
 
+  /* Already here. Checked on Nintendo's own id before anything is downloaded. */
+  const nsuid = String(meta.nsuid ?? "").trim();
+  if (nsuid && existingNsuids.has(nsuid)) {
+    say(`  ALREADY IN THE CATALOGUE — nsuid ${nsuid} is present; nothing created`);
+    return { ok: false, reason: "already exists", notes };
+  }
+  if (existingTitleKeys.has(titleKey(p.name ?? entry.title, entry.platform))) {
+    say(`  ALREADY IN THE CATALOGUE — a product with this title and console is present; nothing created`);
+    return { ok: false, reason: "already exists", notes };
+  }
+
   const id = `prd_${randomUUID().replace(/-/g, "").slice(0, 16)}`;
   const base = slugify(entry.title);
   let slug = base;
   if (existingSlugs.has(slug)) slug = `${base}-${entry.platform === "switch2" ? "switch-2" : "switch-1"}`;
   if (existingSlugs.has(slug)) { say(`  SLUG TAKEN: ${slug}`); return { ok: false, reason: "slug", notes }; }
   existingSlugs.add(slug);
+  if (nsuid) existingNsuids.add(nsuid);
+  existingTitleKeys.add(titleKey(p.name ?? entry.title, entry.platform));
 
   const seen = new Map();
 
@@ -383,14 +396,39 @@ const games = batch.games.filter((g) => !only || only.has(g.n));
 
 say(`${games.length} entries to build. ${APPLY ? "APPLYING." : "Dry run — nothing will be written."}`);
 
+/*
+  What is already in the catalogue, so a second run adds nothing.
+
+  Without this, running with --apply twice creates every game twice: the id is
+  freshly generated each time, and the slug check would see the first run's
+  slug taken and quietly build "katana-zero-switch-1" beside "katana-zero".
+  Two products for one game, both hidden, both priced, and no way to tell which
+  the shop should sell.
+
+  `nsuid` is Nintendo's own identifier for the exact product and console, which
+  makes it the right key; title and platform together are the fallback for rows
+  that predate it.
+*/
 const existingSlugs = new Set();
+const existingNsuids = new Set();
+const existingTitleKeys = new Set();
+const titleKey = (title, platform) =>
+  `${String(title ?? "").toLowerCase().replace(/[^a-z0-9]+/g, "")}::${String(platform ?? "").toLowerCase()}`;
+
+function indexProduct(d) {
+  if (!d) return;
+  if (d.slug) existingSlugs.add(String(d.slug));
+  if (d.nsuid) existingNsuids.add(String(d.nsuid).trim());
+  const t = d.titleEn || d.title;
+  if (t) existingTitleKeys.add(titleKey(t, d.platform));
+}
 for (const row of d1Read("SELECT value FROM store_kv WHERE key LIKE 'store:product:%'")) {
-  try { const d = JSON.parse(String(row.value)); if (d?.slug) existingSlugs.add(String(d.slug)); } catch { /* not ours to fix */ }
+  try { indexProduct(JSON.parse(String(row.value))); } catch { /* not ours to fix */ }
 }
 for (const row of d1Read("SELECT value FROM store_kv WHERE key = 'store:products' OR key LIKE 'store:products#%'")) {
-  try { for (const d of JSON.parse(String(row.value))) if (d?.slug) existingSlugs.add(String(d.slug)); } catch { /* ditto */ }
+  try { for (const d of JSON.parse(String(row.value))) indexProduct(d); } catch { /* ditto */ }
 }
-say(`${existingSlugs.size} slugs already in the catalogue.`);
+say(`catalogue already holds ${existingSlugs.size} slugs and ${existingNsuids.size} nsuids.`);
 
 const done = [], failed = [];
 for (const entry of games) {
