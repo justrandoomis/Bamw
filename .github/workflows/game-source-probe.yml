@@ -1,0 +1,48 @@
+# READ ONLY — what Nintendo actually has for a game.
+#
+# The sandbox this repository is worked on from cannot reach nintendo.com: its
+# egress proxy answers 403 to the CONNECT. A runner can, so the question of
+# what artwork and metadata really exist for a title is answered here rather
+# than assumed anywhere else.
+#
+# It resolves each title through the same `identityMatch` the importer uses —
+# exact title, matching console generation — and prints what the store record
+# carries, by role. It writes nothing: no D1, no R2, no product.
+name: Game source probe
+
+on:
+  workflow_dispatch:
+    inputs:
+      titles:
+        description: 'JSON array of exact titles, e.g. ["Katana ZERO"]'
+        required: true
+      platform:
+        description: "switch1 or switch2"
+        default: "switch1"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: game-source-probe
+  cancel-in-progress: false
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm install -g npm@11.19.1
+      - run: npm ci --no-audit --no-fund
+      - name: Probe
+        env:
+          TITLES: ${{ inputs.titles }}
+          PLATFORM: ${{ inputs.platform }}
+        run: node scripts/game-source-probe.mjs --titles="$TITLES" --platform="$PLATFORM"
