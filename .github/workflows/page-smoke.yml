@@ -17,6 +17,7 @@ on:
     branches: ["claude/**"]
     paths:
       - "scripts/page-smoke.mjs"
+      - "scripts/edge-challenge-rate.mjs"
       - ".github/workflows/page-smoke.yml"
 
 permissions:
@@ -38,12 +39,37 @@ jobs:
         with:
           node-version: 22
       - name: Smoke
+        id: smoke
+        continue-on-error: true
         env:
           SMOKE_ORIGIN: ${{ inputs.origin }}
         run: node scripts/page-smoke.mjs "${SMOKE_ORIGIN:-https://banan.to}"
+
+      # How often the shield answers instead of the shop. Runs even when the
+      # smoke above failed, because a challenge is the likeliest reason it did
+      # — and the rate is the number the owner needs to act on.
+      - name: Security-challenge rate
+        id: challenge
+        continue-on-error: true
+        env:
+          SMOKE_ORIGIN: ${{ inputs.origin }}
+        run: |
+          node scripts/edge-challenge-rate.mjs \
+            --base "${SMOKE_ORIGIN:-https://banan.to}" \
+            --samples 6 \
+            --json challenge-rate.json
+
+      - name: Fail if either check did
+        if: steps.smoke.outcome == 'failure' || steps.challenge.outcome == 'failure'
+        run: |
+          echo "smoke=${{ steps.smoke.outcome }} challenge=${{ steps.challenge.outcome }}"
+          exit 1
+
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: page-smoke
-          path: page-smoke.md
+          path: |
+            page-smoke.md
+            challenge-rate.json
           if-no-files-found: warn
