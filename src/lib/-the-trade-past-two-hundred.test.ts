@@ -140,13 +140,80 @@ describe("a filter the database answers", () => {
   });
 
   it("still matches rows written before the status was renamed", () => {
+    /*
+      The route normalises the filter before it gets here, so the value is
+      always a current `TradeStatus` — and the column holds whatever name was
+      current when the row was written. `pending`, `submitted` and
+      `waiting_review` all mean "no price yet".
+
+      A `WHERE status = 'awaiting_pricing'` would answer "بانتظار التسعير" with
+      only the rows written since the rename, and quietly hide every older
+      trade still waiting for a price. That is worse than the cap this change
+      is about: those trades would be missing from the one filter the shop
+      opens the screen to use.
+    */
+    const legacy = ["pending", "submitted", "waiting_review"];
+    for (const [index, status] of legacy.entries()) {
+      db.prepare(
+        `INSERT INTO disc_trades (id, user_id, game_name, platform, status, created_at)
+         VALUES (?, ?, ?, ?, ?, ?)`,
+      ).run(`t-legacy-${index}`, "u-legacy", "Legacy", "switch", status, "2026-01-01T00:00:00.000Z");
+    }
+    const { seen } = walkAll({ status: "awaiting_pricing", limit: 20 });
+    for (const [index] of legacy.entries()) {
+      expect(seen, legacy[index]).toContain(`t-legacy-${index}`);
+    }
+    db.prepare(`DELETE FROM disc_trades WHERE user_id = 'u-legacy'`).run();
+  });
+
+  it("maps the other renamed names onto the status they mean", () => {
+    const rows: [string, string, string][] = [
+      ["t-received", "received", "inspecting"],
+      ["t-coupon", "coupon_issued", "completed"],
+      ["t-cash", "cash_paid", "completed"],
+      ["t-offer", "offer_sent", "awaiting_customer_approval"],
+      ["t-autocancel", "auto_cancelled", "cancelled"],
+    ];
+    for (const [id, stored] of rows) {
+      db.prepare(
+        `INSERT INTO disc_trades (id, user_id, game_name, platform, status, created_at)
+         VALUES (?, ?, ?, ?, ?, ?)`,
+      ).run(id, "u-legacy", "Legacy", "switch", stored, "2026-01-01T00:00:00.000Z");
+    }
+    for (const [id, stored, normalized] of rows) {
+      expect(walkAll({ status: normalized, limit: 20 }).seen, `${stored} → ${normalized}`).toContain(
+        id,
+      );
+    }
+    db.prepare(`DELETE FROM disc_trades WHERE user_id = 'u-legacy'`).run();
+  });
+
+  it("keeps a trade whose status nobody recognises findable", () => {
+    /*
+      `normalizeTradeStatus` sends an unknown or empty status to
+      `awaiting_pricing`, and a request in a state nobody recognises is exactly
+      one that still needs a price. Dropping it out of that filter would leave
+      it findable only by scrolling the whole unfiltered list.
+    */
+    for (const [index, stored] of ["", "some_future_status"].entries()) {
+      db.prepare(
+        `INSERT INTO disc_trades (id, user_id, game_name, platform, status, created_at)
+         VALUES (?, ?, ?, ?, ?, ?)`,
+      ).run(`t-odd-${index}`, "u-odd", "Odd", "switch", stored, "2026-01-01T00:00:00.000Z");
+    }
     db.prepare(
       `INSERT INTO disc_trades (id, user_id, game_name, platform, status, created_at)
        VALUES (?, ?, ?, ?, ?, ?)`,
-    ).run("t-legacy", "u-legacy", "Legacy", "switch", "pending", "2026-01-01T00:00:00.000Z");
-    const { seen } = walkAll({ status: "waiting_review", limit: 20 });
-    expect(seen).toContain("t-legacy");
-    db.prepare(`DELETE FROM disc_trades WHERE id = 't-legacy'`).run();
+    ).run("t-odd-null", "u-odd", "Odd", "switch", null, "2026-01-01T00:00:00.000Z");
+    const { seen } = walkAll({ status: "awaiting_pricing", limit: 20 });
+    expect(seen).toContain("t-odd-0");
+    expect(seen).toContain("t-odd-1");
+    expect(seen).toContain("t-odd-null");
+    // And they do not leak into a filter they have nothing to do with.
+    const done = walkAll({ status: "completed", limit: 20 }).seen;
+    expect(done).not.toContain("t-odd-0");
+    expect(done).not.toContain("t-odd-null");
+    db.prepare(`DELETE FROM disc_trades WHERE user_id = 'u-odd'`).run();
   });
 
   it("searches an Arabic game name, which LIKE would not fold on its own", () => {

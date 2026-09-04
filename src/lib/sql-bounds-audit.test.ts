@@ -73,6 +73,12 @@ describe("no statement can outgrow D1's parameter limit", () => {
       // disc-trade-page.ts — and the distinct games among them, both split by
       // chunkForParams so each statement fits whatever the page size becomes.
       "src/routes/api/disc-trade.ts:group": "chunked",
+      // The status aliases for one filter, and the full list of names the
+      // normaliser knows. Both are derived from LEGACY_STATUS_MAP, a literal
+      // in the source — about twenty parameters, and not a function of how
+      // many trades exist.
+      "src/lib/disc-trade-page.ts:aliases": "fixed width",
+      "src/lib/disc-trade-page.ts:KNOWN_STATUSES": "fixed width",
       // The accounts one coupon is restricted to. A coupon may name as many as
       // the operator picks, so the ids are split by chunkForParams and each
       // group is checked by assertBoundParameters before it runs.

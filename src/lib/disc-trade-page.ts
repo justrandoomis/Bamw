@@ -26,6 +26,34 @@
  * skips the second one or returns the first one again forever.
  */
 
+import { LEGACY_STATUS_MAP, type TradeStatus } from "./trade-calc";
+
+/**
+ * Every value the `status` column may hold that means this status.
+ *
+ * The column stores the name that was current when the row was written, and
+ * `normalizeTradeStatus` maps eight previous-generation names onto today's
+ * nine — `pending`, `submitted` and `waiting_review` all mean "no price yet",
+ * `received` means "inspecting", `coupon_issued` and `cash_paid` mean "done".
+ *
+ * The browser filter this replaced normalised each row before comparing, so it
+ * saw all of them. A `WHERE status = ?` against the normalised name would not:
+ * it would answer "بانتظار التسعير" with only the rows written since the
+ * rename, and quietly hide every older trade still waiting for a price. So the
+ * aliases are derived from the same map the normaliser reads, rather than
+ * written out again here where they could drift.
+ */
+export function statusAliases(status: string): string[] {
+  const names = new Set<string>([status]);
+  for (const [alias, target] of Object.entries(LEGACY_STATUS_MAP)) {
+    if (target === status) names.add(alias);
+  }
+  return [...names];
+}
+
+/** Every name the normaliser recognises, in any generation. */
+const KNOWN_STATUSES: string[] = [...new Set(Object.keys(LEGACY_STATUS_MAP))];
+
 /** The page a request asked for, clamped to what the endpoint will serve. */
 export const MAX_PAGE_SIZE = 200;
 export const DEFAULT_PAGE_SIZE = 50;
@@ -82,10 +110,25 @@ export function adminTradePageQuery(request: TradePageRequest): TradePageQuery {
   const binds: unknown[] = [];
 
   if (request.status) {
-    // `pending` is the pre-normalisation name for `waiting_review`; rows
-    // written before the rename still carry it.
-    where.push("(status = ? OR (status = 'pending' AND ? = 'waiting_review'))");
-    binds.push(request.status, request.status);
+    const aliases = statusAliases(request.status);
+    const placeholders = aliases.map(() => "?").join(",");
+    if (request.status === ("awaiting_pricing" satisfies TradeStatus)) {
+      /*
+        `normalizeTradeStatus` sends anything it does not recognise — an
+        unknown name, an empty column — to `awaiting_pricing`, and a trade in a
+        state nobody recognises is exactly one that still needs a price. The
+        browser filter included those rows; this keeps them rather than leaving
+        them findable only by scrolling the unfiltered list.
+      */
+      const unknown = KNOWN_STATUSES.map(() => "?").join(",");
+      where.push(
+        `(status IN (${placeholders}) OR status IS NULL OR status = '' OR status NOT IN (${unknown}))`,
+      );
+      binds.push(...aliases, ...KNOWN_STATUSES);
+    } else {
+      where.push(`status IN (${placeholders})`);
+      binds.push(...aliases);
+    }
   }
 
   const cursor = parseCursor(request.cursor);
