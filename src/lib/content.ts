@@ -205,6 +205,16 @@ export interface GuideItem {
   difficulty?: string;
   sort_order: number;
   published: boolean;
+  /*
+    A note or a warning that belongs to the whole guide rather than to one of
+    its steps — "the code is valid for one hour", "never delete the game
+    account user". Printing those inside a single step buries the one sentence
+    that decides whether somebody loses their game.
+  */
+  note_ar?: string;
+  note_en?: string;
+  warning_ar?: string;
+  warning_en?: string;
   steps: GuideStep[];
 }
 

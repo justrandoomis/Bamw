@@ -202,26 +202,7 @@ if (shown === 0) {
     const raw = event?.source ?? event;
     const message = raw?.message ?? "";
     const flat = typeof message === "string" ? message : JSON.stringify(message);
-    if (EXCEPTIONS_ONLY) {
-    const outcome = raw?.$workers?.outcome ?? raw?.outcome ?? "";
-    const exception =
-      raw?.$workers?.event?.error ??
-      raw?.$workers?.exception ??
-      raw?.exception ??
-      (outcome && outcome !== "ok" ? { name: outcome, message: "" } : null);
-    if (!exception) continue;
-    const name = exception?.name ?? exception?.type ?? "exception";
-    const detail = exception?.message ?? exception?.reason ?? "";
-    const stack = exception?.stack ?? "";
-    const path = raw?.$workers?.event?.request?.url ?? raw?.url ?? "";
-    say(`${stamp.slice(0, 19)}Z  ${scrub(name)}: ${scrub(detail).slice(0, 300)}`);
-    if (path) say(`                     ↳ ${scrub(String(path)).slice(0, 200)}`);
-    if (stack) say(`                     ↳ ${scrub(String(stack)).replace(/\n/g, " | ").slice(0, 600)}`);
-    shown += 1;
-    continue;
-  }
-
-  if (!ALLOWED.some((prefix) => flat.includes(prefix))) continue;
+    if (!ALLOWED.some((prefix) => flat.includes(prefix))) continue;
     say(scrub(JSON.stringify(event, null, 2)).slice(0, 2000));
     say();
   }
