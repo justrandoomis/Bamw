@@ -19,7 +19,8 @@ import {
 } from "lucide-react";
 import BinanceTopUpSection from "@/components/BinanceTopUpSection";
 import { toast } from "sonner";
-import { api, fileToDataUrl } from "@/lib/api";
+import { api, uploadFileWithProgress } from "@/lib/api";
+import { prepareImageForUpload } from "@/lib/imageForUpload";
 
 const METHOD_DETAILS: Record<string, { label: string; icon: any; color: string }> = {
   binance: { label: "Binance Pay (فوري)", icon: Zap, color: "bg-amber-400 text-black font-black" },
@@ -118,15 +119,47 @@ export function TopUpModal({
 
   const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
+    /*
+      Cleared immediately, so picking the same photo again fires `change`.
+
+      A browser does not fire it when the selection is identical to the current
+      value, so after a failure the obvious next move — tap, choose that same
+      receipt — did nothing at all, and the modal looked frozen.
+    */
+    e.target.value = "";
     if (!file) return;
     setIsUploading(true);
     try {
-      const dataUrl = await fileToDataUrl(file);
-      const res = await api.upload(dataUrl, "wallets");
+      /*
+        Scaled down here, and sent as a file rather than as text.
+
+        This read the whole photo into a base64 data URL and posted it inside a
+        JSON body. Base64 inflates by a third, the server refuses a body over
+        20 MB, and a current phone hands the page an 8–15 MB, 48-megapixel
+        JPEG — so an ordinary receipt photo failed, and retrying failed the
+        same way for the same reason. Every one of those megabytes was wasted
+        on a picture that gets read, not enlarged.
+
+        `prepareImageForUpload` also re-encodes, which is what makes an iPhone
+        photo work: HEIC has no decoder on the server, and Safari — where HEIC
+        comes from — decodes it natively.
+      */
+      const prepared = await prepareImageForUpload(file);
+      const res = await uploadFileWithProgress(prepared, "wallets");
       setProofUrl(res.url);
       toast.success("تم رفع صورة الإثبات بنجاح");
     } catch (err) {
-      toast.error("فشل رفع الصورة، يرجى المحاولة مرة أخرى");
+      /*
+        The server's own reason. It says whether the format cannot be read, the
+        hourly limit is spent, or storage did not confirm the write — and all
+        of it used to be replaced by "try again", which is advice that does not
+        work for any of them.
+      */
+      const reason =
+        err instanceof Error && err.message
+          ? err.message
+          : "فشل رفع الصورة، يرجى المحاولة مرة أخرى";
+      toast.error(reason);
     } finally {
       setIsUploading(false);
     }

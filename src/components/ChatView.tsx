@@ -1,6 +1,7 @@
 import { tr, useI18n } from "@/i18n";
 import { threadKind } from "@/lib/thread-lifecycle";
 import { toast } from "sonner";
+import { prepareImageForUpload } from "@/lib/imageForUpload";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { AnimatePresence, motion } from "motion/react";
 import {
@@ -1747,9 +1748,18 @@ export default function ChatView({
   };
 
   // Handle direct file attachment with real progress percentage
-  const attachWithProgress = async (file: File) => {
-    if (!file) return;
+  const attachWithProgress = async (rawFile: File) => {
+    if (!rawFile) return;
     setShowAttachments(false);
+
+    /*
+      Scaled down before anything else, for the same reason the wallet receipt
+      is: a current phone hands the page an 8–15 MB, 48-megapixel photo, and
+      none of that size survives being looked at in a chat bubble. Re-encoding
+      is also what makes an iPhone HEIC work — Safari decodes it, the Worker
+      cannot. Returns the original untouched if any of that is unavailable.
+    */
+    const file = await prepareImageForUpload(rawFile);
 
     const tempId = `upload-${Date.now()}`;
     const objectUrl = URL.createObjectURL(file);
