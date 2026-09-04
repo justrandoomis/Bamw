@@ -250,8 +250,39 @@ export const Route = createFileRoute("/api/upload")({
           const hashArray = Array.from(new Uint8Array(hashBuffer));
           const hashHex = hashArray.map((b) => b.toString(16).padStart(2, "0")).join("").substring(0, 16);
 
+          /*
+            Never store a file the rest of the app will refuse.
+
+            The WebP conversion is best-effort, and it fails outright for HEIC
+            and HEIF — sharp has no decoder in the Worker and the jsquash
+            fallback handles only JPEG, PNG and WebP. When it failed the
+            original mime survived and the file was stored as `.heic`. The
+            upload answered 200 with a URL, and the very next call, `POST
+            /api/chat`, ran `isOwnUploadUrl` on it, which allows only formats a
+            browser can actually display — and returned `400 invalid_image`.
+
+            So the member's photo uploaded successfully and then failed to
+            send, with no reason given. That is "فشل في ارسال الصورة", and it
+            is every iPhone photo picked through Files rather than the camera
+            roll, because iOS only transcodes HEIC on the way out of the latter.
+
+            Refusing here says so plainly and at the step that can explain it.
+            Storing it would leave an object in R2 that nothing can reference.
+          */
+          const SERVABLE_IMAGE = /^(png|jpg|jpeg|webp|gif)$/i;
           let key: string;
           const ext = MIME_EXT[mime] || (mime === "image/webp" ? "webp" : "bin");
+          if (mime.startsWith("image/") && !SERVABLE_IMAGE.test(ext)) {
+            return json(
+              {
+                error: "unsupported_image_format",
+                message:
+                  "تعذر تحويل هذه الصورة. جرّب اختيارها من الاستوديو مباشرة، أو أرسلها بصيغة JPG أو PNG.",
+                format: ext,
+              },
+              { status: 415 },
+            );
+          }
 
           const isProductCatalogFolder =
             /^(products|covers|cartridges|banners|cards|hardware|amiibo|accessories|bundles|used|giftcards|categories)$/i.test(

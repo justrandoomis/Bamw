@@ -333,7 +333,16 @@ export async function notifyAdminCustomerMessage(params: {
 
 
   const customerName = escapeHtml(user.name || user.username || "عميل بنانا");
-  const textContent = escapeHtml(message.text || (message.imageUrl ? "📸 [صورة / مرفق]" : ""));
+  /*
+    An attachment is announced even when it arrives with a caption.
+
+    This read `message.text || (imageUrl ? "📸 …" : "")`, so the placeholder
+    was reachable only when there was no text — and a customer who writes
+    "شوف الصورة" and attaches a receipt sends both. The admin was told the
+    sentence and never that anything came with it.
+  */
+  const textContent = escapeHtml(message.text || "");
+  const attachmentLine = message.imageUrl ? "\n📸 <i>مرفق صورة</i>" : "";
   const threadSubject = escapeHtml(thread.subject || "محادثة الدعم");
 
   const messageText =
@@ -341,7 +350,7 @@ export async function notifyAdminCustomerMessage(params: {
     `👤 <b>المرسل:</b> ${customerName} (<code>${escapeHtml(user.phone || user.id)}</code>)\n` +
     `📂 <b>الموضوع:</b> ${threadSubject}\n` +
     (thread.orderId ? `🔖 <b>مرتبط بطلب:</b> <code>${escapeHtml(thread.orderId)}</code>\n` : "") +
-    `\n📝 <b>نص الرسالة:</b>\n<i>${textContent}</i>\n\n` +
+    `\n📝 <b>نص الرسالة:</b>\n<i>${textContent || "—"}</i>${attachmentLine}\n\n` +
     `اضغط على الزر للرد على العميل مباشرة في MiniApp 👇`;
 
   const startParam = thread.orderId ? `order_${thread.orderId}` : `chat_${thread.id}`;
@@ -354,6 +363,30 @@ export async function notifyAdminCustomerMessage(params: {
   const sent = await sendAdminNotification("support", messageText, {
     reply_markup: replyMarkup,
   });
+
+  /*
+    And the picture itself.
+
+    Until now the entire representation of a customer's attachment in Telegram
+    was the string "📸 [صورة / مرفق]" — no photo, and not even the URL, so
+    there was nothing to tap. A repo-wide search for `sendPhoto` found nothing:
+    the outbound side had no photo primitive at all, while the inbound one
+    (a photo an admin sends from Telegram) was fully built.
+
+    The bytes are uploaded rather than a link handed over, because the file
+    lives behind a session guard Telegram cannot pass — and making it publicly
+    readable to solve that would publish every customer's receipt.
+
+    After the card, and never instead of it: the card carries who and which
+    conversation, and a photo that fails to send must not take that with it.
+  */
+  if (sent.ok && message.imageUrl) {
+    try {
+      await forwardAttachmentToAdmin(sent.chatId, message.imageUrl, customerName);
+    } catch (err) {
+      console.warn("[telegram:attachment_forward_failed]", err);
+    }
+  }
 
   /*
     Remember which customer this card is about.
@@ -375,6 +408,52 @@ export async function notifyAdminCustomerMessage(params: {
   }
 
   return sent;
+}
+
+/**
+ * Put a customer's attachment in the admin's Telegram, as a picture.
+ *
+ * The stored URL is `/api/files/<folder>/<owner>/<name>` and the object key is
+ * the same path under `files/`. Reading it back and uploading the bytes is
+ * what makes it viewable without making it public.
+ */
+async function forwardAttachmentToAdmin(
+  chatId: string | undefined,
+  imageUrl: string,
+  customerName: string,
+): Promise<void> {
+  if (!chatId) return;
+  const path = String(imageUrl).split("?")[0] ?? "";
+  if (!path.startsWith("/api/files/")) return;
+
+  const { readBinary } = await import("./storage.server");
+  const stored = await readBinary(`files/${path.slice("/api/files/".length)}`);
+  if (!stored?.bytes?.length) return;
+
+  /*
+    Telegram refuses a photo over 10 MB. Every member upload is converted to
+    WebP well under that, so this is a guard rather than an expectation — and
+    losing the picture silently would put us back where we started.
+  */
+  if (stored.bytes.length > 10 * 1024 * 1024) {
+    await sendAdminNotification(
+      "support",
+      `📎 مرفق من ${customerName} أكبر من أن يُرسل في تليكرام — افتحه من لوحة الإدارة.`,
+    );
+    return;
+  }
+
+  const { sendTelegramPhoto } = await import("./telegram.server");
+  const route = await adminRoute("support");
+  const res = await sendTelegramPhoto(chatId, stored.bytes, {
+    mime: stored.mime,
+    filename: path.split("/").pop() || "attachment",
+    caption: `📸 مرفق من ${customerName}`,
+    ...(route.messageThreadId ? { messageThreadId: route.messageThreadId } : {}),
+  });
+  if (!res.ok) {
+    console.warn("[telegram:attachment_photo_failed]", { description: res.description });
+  }
 }
 
 /**
