@@ -66,9 +66,12 @@ export const Route = createFileRoute("/api/admin/products/save/finalize")({
             updatedAt: nowIso,
             updated_at: nowIso,
           };
+          /* Advisory, and reported — see the note in products.$productId.ts. */
+          let mediaWarnings: string[] = [];
           try {
             const imgVerification = await sanitizeAndVerifyProductImages(productToSave);
             productToSave = { ...productToSave, ...imgVerification.product };
+            mediaWarnings = imgVerification.warnings ?? [];
           } catch (imgErr) {
             console.warn(
               "[sanitizeAndVerifyProductImages] Non-blocking media ingestion fallback:",
@@ -232,6 +235,7 @@ export const Route = createFileRoute("/api/admin/products/save/finalize")({
             success: true,
             product: JSON.parse(verifyRows[0]?.value || "{}"),
             catalogVersion: await getCatalogVersion(),
+            ...(mediaWarnings.length ? { mediaWarnings } : {}),
           });
         }),
     },

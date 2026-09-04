@@ -285,6 +285,19 @@ async function buildOne(entry, existingSlugs) {
   if (offline.length) options.push({ ...optOffline, price: offline[0].price, cost: offline[0].cost, isInfiniteStock: true });
   if (online.length) options.push({ ...optOnline, price: online[0].price, cost: online[0].cost, isInfiniteStock: true });
 
+  /*
+    `description` is read by the buyer; `internalNote` is not.
+
+    The pricing rationale was going into `description`, which the editions
+    comparison prints beside the price — so "10,000 floor plus 2,000 for a
+    standard title, on a 20,112 cost" would have shown a customer the supplier
+    cost and the margin. The schema warns about this in as many words, having
+    been burned by an extraction run that filled the same field with the
+    supplier conversion rule.
+
+    The customer gets a sentence about what they are buying. The reasoning goes
+    where only staff can read it.
+  */
   const types = priced.map((v) => ({
     id: `typ_${randomUUID().replace(/-/g, "").slice(0, 12)}`,
     name: v.name,
@@ -292,7 +305,11 @@ async function buildOne(entry, existingSlugs) {
     price: v.price,
     cost: v.cost,
     isInfiniteStock: true,
-    description: v.reason,
+    description:
+      v.account === "offline"
+        ? "حساب أوفلاين — يُستخدم للعب دون اتصال بعد الإعداد."
+        : "حساب أونلاين — يدعم اللعب عبر الإنترنت.",
+    internalNote: v.reason,
   }));
 
   const now = new Date().toISOString();

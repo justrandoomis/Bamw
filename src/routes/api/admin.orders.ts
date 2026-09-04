@@ -32,6 +32,14 @@ import { requireAdmin } from "@/lib/session.server";
 import type { Order, OrderItem, OrderStatus, PaymentStatus } from "@/lib/types";
 import { redactOrder } from "./orders";
 
+/*
+  This module is behind the admin guard from end to end, and the profit chain
+  on the dashboard is computed from the cost snapshot on each order line. The
+  audience is stated once here rather than repeated at each call, so it reads
+  as a property of the route rather than a flag somebody remembered to pass.
+*/
+const ADMIN_VIEWER = { isAdmin: true } as const;
+
 type Action =
   | "stage_account_batch"
   | "release_next_account"
@@ -122,7 +130,7 @@ export const Route = createFileRoute("/api/admin/orders")({
             console.warn("[admin.orders:cleanup_warn]", e),
           );
           const orders = await listOrders();
-          return json({ orders: orders.map(redactOrder) });
+          return json({ orders: orders.map((row) => redactOrder(row, ADMIN_VIEWER)) });
         }),
       DELETE: async ({ request }) =>
         guard(async () => {
@@ -573,7 +581,7 @@ export const Route = createFileRoute("/api/admin/orders")({
                 // Ignore audit log error
               }
 
-              return json({ order: redactOrder(next), success: true });
+              return json({ order: redactOrder(next, ADMIN_VIEWER), success: true });
             }
             case "direct_send_credentials": {
               if (!data.itemId || !data.email || !data.password) {
@@ -889,7 +897,7 @@ export const Route = createFileRoute("/api/admin/orders")({
           return json({
             success: true,
             message: "تمت العملية بنجاح",
-            order: redactOrder(next),
+            order: redactOrder(next, ADMIN_VIEWER),
           });
         }),
     },

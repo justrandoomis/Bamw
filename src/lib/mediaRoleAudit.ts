@@ -51,7 +51,10 @@ export interface MediaRoleIssue {
     | "missing-square-card"
     | "duplicate-banner"
     | "duplicate-gallery"
-    | "gallery-reuses-cover";
+    | "gallery-reuses-cover"
+    | "duplicate-listing-image"
+    | "foreign-image-host"
+    | "empty-image-slot";
   /** Arabic, because that is what the admin panel shows. */
   message: string;
   severity: "warning";
@@ -168,6 +171,92 @@ export function auditMediaRoles(product: Record<string, unknown> | null | undefi
       severity: "warning",
       message: `${gallery.length} صورة في المعرض لكن ${uniqueGallery.size} مختلفة فقط — لا تكرر نفس اللقطة لملء الخانات.`,
     });
+  }
+
+  /*
+    The listing trio.
+
+    `listingImage`, `thumbnailImage` and `frontImage` are not among the four
+    Nintendo roles above, so nothing checked them — and the gift card holds one
+    file in all three. They are different sizes in different places: a grid
+    tile, a small thumbnail, and the front of the card. One picture doing all
+    three is a picture that is wrong in at least two of them.
+  */
+  const LISTING_TRIO = ["listingImage", "thumbnailImage", "frontImage"] as const;
+  const trio = LISTING_TRIO.map((field) => ({ field, url: firstValue(product, [field]) })).filter(
+    (entry) => entry.url,
+  );
+  const distinctTrio = new Set(trio.map((entry) => entry.url!.split("?")[0]!.toLowerCase()));
+  if (trio.length > 1 && distinctTrio.size < trio.length) {
+    issues.push({
+      code: "duplicate-listing-image",
+      severity: "warning",
+      message: `نفس الصورة في ${trio.length} خانات (${trio.map((e) => e.field).join("، ")}) — لكل خانة مقاس ومكان مختلف.`,
+    });
+  }
+
+  /*
+    An image the shop does not own.
+
+    An importer that pastes a retailer's URL leaves the storefront serving a
+    picture from someone else's CDN: it cannot be resized, it is not covered
+    by our caching, and it disappears the day that host changes a path. Every
+    image is meant to be ingested into our own storage.
+  */
+  const ALL_IMAGE_FIELDS = [
+    ...ROLES.flatMap((role) => role.fields),
+    ...LISTING_TRIO,
+    "image",
+    "mainImage",
+    "cardArtwork",
+  ];
+  const OURS = /^(?:\/|https?:\/\/(?:[a-z0-9-]+\.)*(?:banan\.to|r2\.dev|cloudflarestorage\.com|nintendo\.(?:com|net|co\.jp)|nintendo-europe\.com))/i;
+  const foreign = new Set<string>();
+  for (const field of ALL_IMAGE_FIELDS) {
+    const value = product[field];
+    if (typeof value !== "string") continue;
+    const url = value.trim();
+    if (url.length > 2 && !OURS.test(url)) foreign.add(new URL(url, "https://banan.to").hostname);
+  }
+  for (const list of ["galleryImages", "gallery", "bannerImages", "lifestyleImages", "screenshots"]) {
+    for (const url of listOf(product[list])) {
+      if (!OURS.test(url)) {
+        try {
+          foreign.add(new URL(url, "https://banan.to").hostname);
+        } catch {
+          /* Not a URL at all: reported by the empty-slot check instead. */
+        }
+      }
+    }
+  }
+  for (const host of foreign) {
+    if (host === "banan.to") continue;
+    issues.push({
+      code: "foreign-image-host",
+      severity: "warning",
+      message: `صورة مستضافة خارج تخزين المتجر (${host}) — انسخها إلى تخزيننا، وإلا ستتعطل عند تغيير ذلك الموقع لمسارها.`,
+    });
+  }
+
+  /*
+    A slot holding an empty string is not an empty slot.
+
+    It counts toward the length of the array everywhere that counts frames, so
+    a carousel advertises a picture it has nothing to show for.
+  */
+  for (const list of ["galleryImages", "gallery", "bannerImages", "lifestyleImages", "screenshots"]) {
+    const value = product[list];
+    if (!Array.isArray(value)) continue;
+    const blanks = value.filter(
+      (entry) => entry === null || entry === undefined || (typeof entry === "string" && !entry.trim()),
+    ).length;
+    if (blanks > 0) {
+      issues.push({
+        code: "empty-image-slot",
+        severity: "warning",
+        message: `«${list}» فيه ${blanks} خانة فارغة — احذفها بدل تركها، لأنها تُحسب كصورة في العدّاد.`,
+      });
+    }
   }
 
   // A screenshot standing in for a cover is the failure the roles exist to stop.

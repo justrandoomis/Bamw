@@ -67,7 +67,44 @@ if (overlay) {
     source = "overlay";
   }
 }
-if (!doc) throw new Error(`no product matching ${TARGET}`);
+/*
+  A miss used to end the run with the target echoed back, which tells you the
+  slug you already typed and nothing about the one you wanted. Product slugs
+  are not guessable — "nintendo-eshop-gift-card-5-usa" is a perfectly sensible
+  guess and is not what the catalogue calls it — so a miss now answers the
+  question that was actually being asked: which products are near this?
+*/
+if (!doc) {
+  const needle = TARGET.toLowerCase().replace(/[^a-z0-9]+/g, "");
+  const near = products
+    .filter((p) => p?.id && !p._deleted)
+    .map((p) => ({
+      slug: String(p.slug ?? ""),
+      title: String(p.title ?? p.titleEn ?? ""),
+      id: String(p.id),
+    }))
+    .filter((p) => {
+      const hay = `${p.slug}${p.title}`.toLowerCase().replace(/[^a-z0-9]+/g, "");
+      /* Any run of four or more characters in common is enough to be worth showing. */
+      for (let i = 0; i + 4 <= needle.length; i++) {
+        if (hay.includes(needle.slice(i, i + 4))) return true;
+      }
+      return false;
+    })
+    .slice(0, 40);
+
+  say(`# no product matching \`${TARGET}\``);
+  say();
+  if (near.length) {
+    say(`${near.length} product${near.length > 1 ? "s" : ""} whose slug or title looks related:`);
+    say();
+    for (const p of near) say(`- \`${p.slug}\` — ${p.title}`);
+  } else {
+    say("Nothing in the catalogue resembles it.");
+  }
+  writeFileSync("inspect-product.md", lines.join("\n") + "\n");
+  process.exit(1);
+}
 
 const total = JSON.stringify(doc).length;
 say(`# ${doc.title ?? TARGET}`);

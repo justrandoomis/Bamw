@@ -47,7 +47,7 @@ import { isAwaitingRelease } from "@/lib/release";
 import type { ProductKind } from "@/lib/types";
 import { showAddToCartToast } from "@/utils/cart-toast";
 import { resolvePurchaseImage } from "@/lib/nintendoImages";
-import { initialOptionId } from "@/lib/productPricing";
+import { initialOptionId, initialVariantName } from "@/lib/productPricing";
 
 import {
   AmiiboFunctionalityBlock,
@@ -112,8 +112,31 @@ function DetailsBody({
     otherwise. Landing on an arbitrary first option showed a different price
     two seconds after the card's.
   */
-  const [optionId, setOptionId] = useState(() => initialOptionId(view.options, view.price));
-  const [variantName, setVariantName] = useState("");
+  const firstOptionId = initialOptionId(view.options, view.price);
+  const [optionId, setOptionId] = useState(firstOptionId);
+  /*
+    And on the denomination the card priced, when the denominations are what
+    price this product.
+
+    A gift card's prices live on `variants`; the import schema gives an option
+    no price at all. So nothing was preselected here, the header fell through
+    to the record's base price, and the card beside it printed the cheapest
+    denomination — two different numbers for one product, one of them changing
+    the moment a chip was clicked.
+  */
+  const [variantName, setVariantName] = useState(() =>
+    initialVariantName(
+      /*
+        Only the denominations belonging to the option the page opened on.
+        Preselecting one that belongs to a different option would leave
+        `selectedVariant` unmatched and the header back on the base price —
+        the same fault, arrived at from the other side.
+      */
+      view.variants.filter((variant) => !variant.optionId || variant.optionId === firstOptionId),
+      view.price,
+      view.options,
+    ),
+  );
   const [quantity, setQuantity] = useState(1);
 
   const selectedOption = view.options.find((o) => o.id === optionId);

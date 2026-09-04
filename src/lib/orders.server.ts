@@ -12,6 +12,7 @@ import {
   d1All,
   createAuditLog,
 } from "./db.server";
+import { getUserTelegramChatId } from "./telegram-notifications.server";
 import { sendTelegramMessage } from "./telegram.server";
 import {
   checkCoupon,
@@ -1118,11 +1119,23 @@ export async function createOrderForUser(
     console.error("[order:admin_telegram_notify_failed]", err);
   }
 
-  if (user.telegramId) {
+  /*
+    `user.telegramId` is always undefined: the `users` table has no telegram
+    column and nothing writes one onto the object, so this guard never fired
+    and the buyer was never told their order existed. Silently — an `if` that
+    is false is not an error.
+
+    This is the bug `getUserTelegramChatId` was written to fix. Its own comment
+    says every per-user message in the app depended on the lookup and none of
+    them reached anybody; the helper was corrected and the direct readers of
+    `user.telegramId` were left behind. This is one of them.
+  */
+  const buyerChatId = await getUserTelegramChatId(String(user.id ?? ""));
+  if (buyerChatId) {
     try {
       const { telegramMiniAppDeepLink } = await import("./telegram.server");
       await sendTelegramMessage(
-        user.telegramId,
+        buyerChatId,
         `✅ <b>تم إنشاء طلبك بنجاح</b>\n\nرقم الطلب: <code>${code}</code>\nالإجمالي: <b>${total.toLocaleString()} د.ع</b>\n\nاضغط أدناه لمتابعة طلبك مباشرة في تليكرام 👇`,
         {
           parse_mode: "HTML",

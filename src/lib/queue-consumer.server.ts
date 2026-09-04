@@ -96,12 +96,33 @@ function envelopeOf(body: any): { type: string; payload: any; dedupeKey?: string
   };
 }
 
+/**
+ * Turn a notification that did not send into a thrown error.
+ *
+ * The queue was built to retry a failed notification, and it never retried
+ * one: the notify functions swallow their failures and return `{ ok: false }`,
+ * so `dispatch` returned normally, the message was marked processed and
+ * acknowledged, and a Telegram timeout or a 429 lost the notification for
+ * good on the first attempt. Every notification this queue exists to protect
+ * was unprotected.
+ *
+ * A skipped notification is not a failure — nothing was due — so it passes.
+ */
+async function mustDeliver(
+  what: string,
+  send: Promise<{ ok: boolean; skipped?: boolean }>,
+): Promise<void> {
+  const result = await send;
+  if (result.ok || result.skipped) return;
+  throw new Error(`${what} was not delivered`);
+}
+
 async function dispatch(type: string, payload: any, queueName: string): Promise<void> {
   switch (type) {
     case "telegram_admin_new_order":
     case "notify_admin_order":
       if (!payload?.order || !payload?.user) throw new Error("Missing order or user");
-      await notifyAdminNewOrder(payload);
+      await mustDeliver("the new-order notification", notifyAdminNewOrder(payload));
       return;
 
     case "telegram_admin_customer_message":
@@ -109,7 +130,7 @@ async function dispatch(type: string, payload: any, queueName: string): Promise<
       if (!payload?.thread || !payload?.message || !payload?.user) {
         throw new Error("Missing thread, message, or user");
       }
-      await notifyAdminCustomerMessage(payload);
+      await mustDeliver("the customer-message notification", notifyAdminCustomerMessage(payload));
       return;
 
     case "telegram_admin_wallet_topup":
@@ -117,26 +138,26 @@ async function dispatch(type: string, payload: any, queueName: string): Promise<
       if (!payload?.requestId || !payload?.amount || !payload?.user) {
         throw new Error("Missing wallet top-up fields");
       }
-      await notifyAdminWalletTopUp(payload);
+      await mustDeliver("the wallet top-up notification", notifyAdminWalletTopUp(payload));
       return;
 
     case "telegram_admin_game_request":
       if (!payload?.request || !payload?.user) throw new Error("Missing game request fields");
-      await notifyAdminGameRequest(payload);
+      await mustDeliver("the game-request notification", notifyAdminGameRequest(payload));
       return;
 
     case "telegram_admin_disc_trade":
       if (!payload?.tradeId || !payload?.gameName || !payload?.user) {
         throw new Error("Missing disc trade fields");
       }
-      await notifyAdminDiscTrade(payload);
+      await mustDeliver("the disc-trade notification", notifyAdminDiscTrade(payload));
       return;
 
     case "telegram_admin_used_listing":
       if (!payload?.listingId || !payload?.title || !payload?.user) {
         throw new Error("Missing used listing fields");
       }
-      await notifyAdminUsedListing(payload);
+      await mustDeliver("the used-listing notification", notifyAdminUsedListing(payload));
       return;
 
     case "telegram_user_admin_message":

@@ -70,3 +70,15 @@ jobs:
           if [ "$APPLY" = "true" ]; then args="--apply"; fi
           if [ -n "$ONLY" ]; then args="$args --only=$ONLY"; fi
           node scripts/game-create.mjs $args
+
+      # A product written straight into `store_kv` has no `product_index` row,
+      # and the admin listing reads that index — so the games exist and the
+      # list cannot see them. The API's own POST refreshes the row in the same
+      # request for exactly this reason; writing the row directly skips it.
+      # Rebuilding after an apply is what closes that gap.
+      - name: Rebuild the product index
+        if: inputs.apply == true
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: node scripts/rebuild-index.mjs --apply

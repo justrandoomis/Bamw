@@ -163,9 +163,21 @@ export const Route = createFileRoute("/api/admin/products/$productId")({
             console.warn("[autoTranslateProduct] Translation fallback triggered:", transErr);
           }
 
+          /*
+            The role warnings travel back with the save.
+
+            `sanitizeAndVerifyProductImages` has computed them on every save
+            since it was written, and every caller took `.product` and dropped
+            `.warnings` on the floor. The module's own docblock says the check
+            belongs at save time "where a human can still fix it" — which only
+            holds if the human is told. They are advisory: nothing here blocks
+            a save.
+          */
+          let mediaWarnings: string[] = [];
           try {
             const verification = await sanitizeAndVerifyProductImages(productToSave);
             productToSave = verification.product as Product;
+            mediaWarnings = verification.warnings ?? [];
           } catch (imgErr) {
             console.warn("[sanitizeAndVerifyProductImages] Image verification non-blocking fallback:", imgErr);
           }
@@ -204,7 +216,12 @@ export const Route = createFileRoute("/api/admin/products/$productId")({
               );
               await syncGameDevicePerformance(saved, hardware);
             }
-            return json({ success: true, product: saved, catalogVersion: await getCatalogVersion() });
+            return json({
+              success: true,
+              product: saved,
+              catalogVersion: await getCatalogVersion(),
+              ...(mediaWarnings.length ? { mediaWarnings } : {}),
+            });
           } catch (dbErr: any) {
             console.error("[UpdateProduct:DatabaseError]", dbErr);
             return json(

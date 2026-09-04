@@ -57,6 +57,30 @@ const INTERNAL_PATTERNS: RegExp[] = [
   /سعر\s+الصرف/,
   /التحويل\s+إلى\s+الدينار/,
 
+  /*
+    Pricing bookkeeping written into a customer-facing field.
+
+    The gift card's denomination row carried "سعر البيع: 7,000 د.ع" as stored
+    copy, printed beside a header showing a different number — because a
+    price written into prose is a price nothing ever updates. The template
+    puts `variant.N.description` directly beneath `variant.N.price` and
+    `variant.N.cost`, which is the same adjacency that put a cost derivation
+    into `type.N.description`.
+
+    Each requires the colon, so ordinary prose about a game's value does not
+    match — only a line that is stating a figure.
+  */
+  /سعر\s*البيع\s*[:：]/,
+  /\bselling\s*price\s*[:：]/i,
+  /\bmerchant\s+pricing\b/i,
+  /\bcalculated\s+as\b.*\b(?:IQD|USD|CNY)\b/i,
+  /\b\d[\d,.]*\s*IQD\s+per\s+(?:USD|CNY|EUR)\b/i,
+  /\bper\s+USD\b/i,
+  /سعر\s*الشراء\s*[:：]/,
+  /(?:التكلفة|الكلفة)\s*[:：]/,
+  /(?:هامش\s+)?الربح\s*[:：]/,
+  /\b(?:cost|profit|margin|markup)\s*[:：]\s*\d/i,
+
   // Import/extraction bookkeeping.
   /\bextraction\b/i,
   /\bimport\s+(?:note|rule|mapping)\b/i,
@@ -91,6 +115,29 @@ export function customerSafeText(value: unknown): string | undefined {
   const text = value.trim();
   if (!text || looksLikeInternalNote(text)) return undefined;
   return text;
+}
+
+/**
+ * The same text with only its internal lines removed.
+ *
+ * {@link customerSafeText} drops the whole value, which is right for a
+ * variant's one-line sub-caption: what is left of "converted to IQD using 1
+ * CNY = 220" is nothing worth printing. It is wrong for a product's own
+ * description, where a single stray bookkeeping line would take the entire
+ * page copy with it — a blank product page is not a smaller problem than the
+ * line it removed.
+ *
+ * So a paragraph is filtered by line. Returns `undefined` when nothing
+ * survives, so callers can omit the field rather than render an empty one.
+ */
+export function customerSafeParagraph(value: unknown): string | undefined {
+  if (typeof value !== "string") return undefined;
+  const kept = value
+    .split(/\r?\n/)
+    .filter((line) => !looksLikeInternalNote(line))
+    .join("\n")
+    .trim();
+  return kept || undefined;
 }
 
 /**
