@@ -97,10 +97,22 @@ const INTERNAL_PATTERNS: RegExp[] = [
  * empty, and the caller drops them for their own reasons.
  */
 export function looksLikeInternalNote(value: unknown): boolean {
-  if (typeof value !== "string") return false;
+  return internalNoteReason(value) !== undefined;
+}
+
+/**
+ * Which pattern decided, as its source text — or `undefined` for clean text.
+ *
+ * The detector is deliberately biased toward calling text internal, and a
+ * biased rule needs to be able to say why: a false positive silently deletes a
+ * sentence a customer was meant to read, and "the filter removed it" is not a
+ * reviewable answer. The repair tool prints this beside every line it drops.
+ */
+export function internalNoteReason(value: unknown): string | undefined {
+  if (typeof value !== "string") return undefined;
   const text = value.trim();
-  if (!text) return false;
-  return INTERNAL_PATTERNS.some((pattern) => pattern.test(text));
+  if (!text) return undefined;
+  return INTERNAL_PATTERNS.find((pattern) => pattern.test(text))?.source;
 }
 
 /**

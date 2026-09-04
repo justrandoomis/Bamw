@@ -13,4 +13,8 @@
  * moved from the script with the two statements `bumpCatalogVersion` runs.
  */
 export { d1All, d1Run, d1Batch } from "@/lib/d1.server";
-export { looksLikeInternalNote, CUSTOMER_TEXT_FIELDS } from "@/lib/internalMetadata";
+export {
+  looksLikeInternalNote,
+  internalNoteReason,
+  CUSTOMER_TEXT_FIELDS,
+} from "@/lib/internalMetadata";

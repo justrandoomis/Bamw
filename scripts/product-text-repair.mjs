@@ -55,6 +55,7 @@ const argOf = (name, fallback = "") => {
 };
 const APPLY = process.argv.includes("--apply");
 const AUDIT = process.argv.includes("--audit");
+const GREP = argOf("grep");
 const NEEDLE = argOf("needle").toLowerCase();
 const IDS = argOf("ids").split(",").map((s) => s.trim()).filter(Boolean);
 if (!NEEDLE && IDS.length === 0) throw new Error("pass --needle= or --ids=");
@@ -139,7 +140,8 @@ function cleanDocument(node, trail, productId) {
       const kept = [];
       const dropped = [];
       for (const line of value.split(/\r?\n/)) {
-        if (app.looksLikeInternalNote(line)) dropped.push(line);
+        const reason = app.internalNoteReason(line);
+        if (reason !== undefined) dropped.push({ line, reason });
         else kept.push(line);
       }
       if (dropped.length === 0) {
@@ -170,10 +172,20 @@ function skeleton(doc) {
   const walk = (node) => {
     if (Array.isArray(node)) return node.map(walk);
     if (!node || typeof node !== "object") return node;
+    /*
+      Text keys are dropped from the skeleton, not blanked.
+
+      A field whose every line was bookkeeping is deleted rather than written
+      as "" — an empty string still renders as a blank paragraph. Blanking the
+      key here made that deletion look like a structural change, and the first
+      dry run refused all eight cards for a difference the repair is supposed
+      to make.
+    */
     return Object.fromEntries(
       Object.keys(node)
+        .filter((k) => !TEXT_FIELDS.has(k))
         .sort()
-        .map((k) => [k, TEXT_FIELDS.has(k) && typeof node[k] === "string" ? "" : walk(node[k])]),
+        .map((k) => [k, walk(node[k])]),
     );
   };
   return createHash("sha256").update(JSON.stringify(walk(doc))).digest("hex");
@@ -241,6 +253,29 @@ const selected = aggregate
   .map(live)
   .filter(Boolean);
 
+/**
+ * Every string in the raw record containing a phrase, with its path.
+ *
+ * For faults that are not bookkeeping and cannot be found by a rule — a typo
+ * in a product name, a sentence in the wrong language — where the only
+ * question is which field holds it.
+ */
+function grepRecord(node, needle, trail, hits) {
+  if (Array.isArray(node)) {
+    node.forEach((item, i) => grepRecord(item, needle, `${trail}[${i}]`, hits));
+    return hits;
+  }
+  if (!node || typeof node !== "object") return hits;
+  for (const [key, value] of Object.entries(node)) {
+    if (typeof value === "string") {
+      if (value.toLowerCase().includes(needle)) hits.push({ path: `${trail}.${key}`, value });
+    } else if (value && typeof value === "object") {
+      grepRecord(value, needle, `${trail}.${key}`, hits);
+    }
+  }
+  return hits;
+}
+
 say(`# Stored-copy repair — ${APPLY ? "APPLY" : "dry run"}`);
 say();
 say(`Products selected: ${selected.length}`);
@@ -259,6 +294,12 @@ for (const record of selected) {
   say(`## ${record.title ?? record.titleEn ?? id}`);
   say(`- id \`${id}\` · slug \`${record.slug ?? ""}\``);
 
+  if (GREP) {
+    const hits = grepRecord(record, GREP.toLowerCase(), "", []);
+    say(`- \`${GREP}\` appears in ${hits.length} field(s)`);
+    for (const hit of hits) say(`    · \`${hit.path}\` = ${maskFigures(hit.value).slice(0, 300)}`);
+  }
+
   if (mine.length === 0) {
     say("- stored copy already carries no bookkeeping line — nothing to write");
     if (AUDIT) reportText(cleaned);
@@ -269,7 +310,10 @@ for (const record of selected) {
 
   for (const change of mine) {
     say(`- \`${change.path || "(root)"}\` — ${change.dropped.length} line(s) removed${change.empty ? ", field now empty and deleted" : ""}`);
-    for (const line of change.dropped) say(`    · ${maskFigures(line).slice(0, 200)}`);
+    for (const { line, reason } of change.dropped) {
+      say(`    · matched /${reason}/`);
+      say(`      ${maskFigures(line).slice(0, 400)}`);
+    }
   }
 
   if (AUDIT) reportText(cleaned);

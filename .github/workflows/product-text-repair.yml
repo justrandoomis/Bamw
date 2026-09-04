@@ -23,6 +23,10 @@ on:
         description: "Comma-separated product ids or slugs (overrides the needle)"
         type: string
         default: ""
+      grep:
+        description: "Also report every field containing this phrase (e.g. a typo)"
+        type: string
+        default: ""
       audit:
         description: "Also print every customer-facing string, in full"
         type: boolean
@@ -77,6 +81,7 @@ jobs:
           IDS: ${{ inputs.ids }}
           APPLY: ${{ inputs.apply }}
           AUDIT: ${{ inputs.audit }}
+          GREP: ${{ inputs.grep }}
         run: |
           if [ -z "$CLOUDFLARE_D1_DATABASE_ID" ]; then
             CLOUDFLARE_D1_DATABASE_ID=$(node -e "const s=require('fs').readFileSync('wrangler.jsonc','utf8');console.log(/\"database_id\":\s*\"([0-9a-f-]+)\"/.exec(s)[1])")
@@ -87,6 +92,7 @@ jobs:
           if [ -n "$IDS" ]; then args="--ids=$IDS"; else args="--needle=${NEEDLE:-gift}"; fi
           # A push runs the audit and never writes; only a dispatch can apply.
           if [ "$AUDIT" != "false" ]; then args="$args --audit"; fi
+          if [ -n "$GREP" ]; then args="$args --grep=$GREP"; fi
           if [ "$APPLY" = "true" ]; then args="$args --apply"; fi
           echo "mode: $args"
           node scripts/product-text-repair.mjs $args

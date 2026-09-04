@@ -224,7 +224,8 @@ export type CouponRefusal =
   | "not_eligible"
   | "no_eligible_products"
   | "no_offline_account_item"
-  | "digital_only";
+  | "digital_only"
+  | "no_discount";
 
 /**
  * Filter items in the cart that match the coupon eligibility constraints.
@@ -255,6 +256,30 @@ export function getEligibleItems(coupon: Coupon, items: CouponCheckItem[]): Coup
     list = list.filter((it) => it.categoryId && allowedCats.has(String(it.categoryId)));
   }
   return list;
+}
+
+/**
+ * Is this coupon restricted to *some* of a cart rather than all of it?
+ *
+ * `single_item_percent` and an offline-account coupon have always been
+ * single-unit and are handled on their own path. These are the restrictions
+ * that select a subset of lines and were then discounted as if they had
+ * selected the whole cart.
+ */
+export function isProductScoped(coupon: Coupon): boolean {
+  return (
+    (coupon.eligibleProducts?.length ?? 0) > 0 ||
+    (coupon.eligibleCategories?.length ?? 0) > 0 ||
+    coupon.onlyDigitalProducts === true
+  );
+}
+
+/** What the lines a coupon actually covers are worth, at cart prices. */
+export function eligibleSubtotal(coupon: Coupon, items: CouponCheckItem[]): number {
+  return getEligibleItems(coupon, items).reduce(
+    (sum, item) => sum + Math.max(0, item.unitPrice ?? 0) * Math.max(1, item.quantity ?? 1),
+    0,
+  );
 }
 
 /**
@@ -362,10 +387,35 @@ export function checkCoupon(
       targetItem = [...eligible].sort((a, b) => (b.unitPrice || 0) - (a.unitPrice || 0))[0];
     }
 
+    if (worthNothing(input)) return { ok: false, reason: "no_discount" };
     return { ok: true, targetProduct: targetItem };
   }
 
+  if (worthNothing(input)) return { ok: false, reason: "no_discount" };
   return { ok: true };
+}
+
+/**
+ * A coupon that passes every rule and is worth zero.
+ *
+ * Checkout spent one of the member's uses for it anyway: the candidate was
+ * built from `couponDiscount`, `useCoupon` was `Boolean(candidate)` rather
+ * than anything about the amount, and `claimCouponUse` ran. The member lost
+ * their one redemption of a "once per account" coupon and got nothing off —
+ * and the cart had shown them a discount of 0 without saying why.
+ *
+ * Refusing it here means both surfaces agree: the cart explains it, and
+ * checkout never reaches the claim.
+ */
+function worthNothing(input: CouponCheckInput): boolean {
+  if (input.items.length === 0) return false;
+  const { discount } = couponDiscount(
+    input.coupon,
+    input.orderAmount,
+    input.items,
+    input.targetProductId,
+  );
+  return discount <= 0;
 }
 
 /**
@@ -434,10 +484,27 @@ export function couponDiscount(
     };
   }
 
+  /*
+    A coupon for one product discounts that product, not the cart around it.
+
+    `eligibleProducts`, `eligibleCategories` and `onlyDigitalProducts` were
+    only ever a pass/fail gate: a cart containing one eligible line let the
+    coupon through, and the discount was then taken against `orderAmount` —
+    the whole basket. "20% off Mario Kart" took 20% off a gift card sitting
+    beside it. The gate is unchanged; what moved is the amount the percentage
+    is a percentage *of*.
+
+    Only when the caller passed the cart. `couponDiscount` is also called with
+    no items, and there is nothing to scope to then — the order total is the
+    only figure in the room.
+  */
+  const scoped = items.length > 0 && isProductScoped(coupon);
+  const base_amount = scoped ? Math.min(eligibleSubtotal(coupon, items), orderAmount) : orderAmount;
+
   const base =
     coupon.discountType === "percentage"
-      ? Math.floor(orderAmount * (coupon.discountValue / 100))
-      : coupon.discountValue;
+      ? Math.floor(base_amount * (coupon.discountValue / 100))
+      : Math.min(coupon.discountValue, base_amount);
   const capped =
     coupon.maxDiscountAmount !== undefined ? Math.min(base, coupon.maxDiscountAmount) : base;
 
@@ -460,4 +527,5 @@ export const COUPON_REFUSAL_MESSAGE: Record<CouponRefusal, string> = {
   no_offline_account_item:
     "هذا الكوبون يُطبَّق فقط على لعبة Nintendo مشتراة بخيار «حساب أوفلاين»، ولا توجد في سلتك لعبة بهذا الخيار",
   digital_only: "هذا الكوبون صالح فقط للمنتجات الرقمية.",
+  no_discount: "هذا الكوبون لا يخصم شيئاً على محتويات سلتك الحالية",
 };
