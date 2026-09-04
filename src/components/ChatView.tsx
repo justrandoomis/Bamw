@@ -1,6 +1,7 @@
 import { tr, useI18n } from "@/i18n";
 import { threadKind } from "@/lib/thread-lifecycle";
 import { toast } from "sonner";
+import { prepareImageForUpload } from "@/lib/imageForUpload";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { AnimatePresence, motion } from "motion/react";
 import {
@@ -90,6 +91,16 @@ export type DisplayMessage = {
   createdAt?: string;
   status?: MessageStatus;
   uploadProgress?: number;
+  /**
+   * Why a send failed, in the member's language.
+   *
+   * The server answers with a precise reason — the format cannot be converted,
+   * the hourly upload limit is spent, storage did not confirm the write — and
+   * the catch used to discard all of it. A dropped packet and an unsupported
+   * photo then looked identical, and the only report a member could make was
+   * "sending the image fails".
+   */
+  failureReason?: string;
 };
 
 /**
@@ -1701,6 +1712,18 @@ export default function ChatView({
   // Retry sending a failed message
   const handleRetry = async (msg: DisplayMessage) => {
     if (!threadId) return;
+    /*
+      A retry that carries a `blob:` URL is a retry that cannot work: it is a
+      handle to a file in this tab's memory, and `isOwnUploadUrl` refuses it.
+      The bubble adopts the stored URL as soon as the upload returns, so this
+      only trips when the upload itself never finished — in which case the
+      member needs to attach the file again, not press retry forever.
+    */
+    const pendingImage = msg.payload?.["imageUrl"];
+    if (typeof pendingImage === "string" && pendingImage.startsWith("blob:")) {
+      toast.error("لم يكتمل رفع الصورة. أعد إرفاقها من جديد.");
+      return;
+    }
     setServerMessages((prev) =>
       prev.map((m) => (m.id === msg.id ? { ...m, status: "sending" } : m)),
     );
@@ -1714,17 +1737,29 @@ export default function ChatView({
       setServerMessages((prev) =>
         prev.map((m) => (m.id === msg.id ? ({ ...res.message, status: "sent" } as any) : m)),
       );
-    } catch {
+    } catch (err) {
+      const reason =
+        err instanceof Error && err.message ? err.message : "تعذر الإرسال. حاول مرة أخرى.";
+      toast.error(reason);
       setServerMessages((prev) =>
-        prev.map((m) => (m.id === msg.id ? { ...m, status: "failed" } : m)),
+        prev.map((m) => (m.id === msg.id ? { ...m, status: "failed", failureReason: reason } : m)),
       );
     }
   };
 
   // Handle direct file attachment with real progress percentage
-  const attachWithProgress = async (file: File) => {
-    if (!file) return;
+  const attachWithProgress = async (rawFile: File) => {
+    if (!rawFile) return;
     setShowAttachments(false);
+
+    /*
+      Scaled down before anything else, for the same reason the wallet receipt
+      is: a current phone hands the page an 8–15 MB, 48-megapixel photo, and
+      none of that size survives being looked at in a chat bubble. Re-encoding
+      is also what makes an iPhone HEIC work — Safari decodes it, the Worker
+      cannot. Returns the original untouched if any of that is unavailable.
+    */
+    const file = await prepareImageForUpload(rawFile);
 
     const tempId = `upload-${Date.now()}`;
     const objectUrl = URL.createObjectURL(file);
@@ -1751,6 +1786,19 @@ export default function ChatView({
           );
         });
 
+        /*
+          The stored URL replaces the local `blob:` one as soon as it exists.
+
+          Retry sends `msg.payload.imageUrl`, and this bubble carried the
+          object URL created for the preview. If the send then failed, every
+          retry posted `blob:https://banan.to/...` — which `isOwnUploadUrl`
+          refuses — so the button could never do anything but fail again. The
+          preview keeps working: the stored file is the same picture.
+        */
+        setServerMessages((prev) =>
+          prev.map((m) => (m.id === tempId ? { ...m, payload: { imageUrl: url } } : m)),
+        );
+
         const res = await api.sendMessage({
           threadId,
           imageUrl: url,
@@ -1764,20 +1812,50 @@ export default function ChatView({
           ),
         );
       } catch (err) {
+        /*
+          Say why. The server sends a precise reason — the format cannot be
+          converted, the hourly upload limit is spent, storage did not confirm
+          the write — and all of it was being discarded, so a dropped packet
+          and an unsupported photo looked identical to the member and produced
+          the same unactionable report.
+        */
+        const reason =
+          err instanceof Error && err.message ? err.message : "تعذر إرسال الصورة. حاول مرة أخرى.";
+        toast.error(reason);
         setServerMessages((prev) =>
-          prev.map((m) => (m.id === tempId ? { ...m, status: "failed" } : m)),
+          prev.map((m) => (m.id === tempId ? { ...m, status: "failed", failureReason: reason } : m)),
         );
       }
     } else {
-      pushLocal({
-        id: tempId,
-        sender: "user",
-        text: "مرفق",
-        type: "image",
-        payload: { imageUrl: objectUrl },
-        status: "sent",
-        createdAt: new Date().toISOString(),
-      });
+      /*
+        No conversation open yet.
+
+        This used to render the picture from the local blob URL, mark it
+        "sent", and make no request at all — nothing in storage, nothing in the
+        messages table, no notification. The member watched their own file
+        appear and be lost on reload. Typing text in the very same state
+        creates a thread and sends, so the two halves of one composer
+        disagreed.
+      */
+      if (!user) {
+        toast.error("سجّل الدخول أولاً لإرسال صورة.");
+        return;
+      }
+      try {
+        const created = await createThread.mutateAsync({
+          subject: "محادثة المساعد الآلي",
+          chatType: "AUTOMATED_SUPPORT",
+        });
+        const newThreadId = created?.thread?.id;
+        if (!newThreadId) throw new Error("تعذر بدء المحادثة.");
+        setThreadId(newThreadId);
+        const { url } = await uploadFileWithProgress(file, "chat");
+        await api.sendMessage({ threadId: newThreadId, imageUrl: url, text: "مرفق" });
+      } catch (err) {
+        const reason =
+          err instanceof Error && err.message ? err.message : "تعذر إرسال الصورة. حاول مرة أخرى.";
+        toast.error(reason);
+      }
     }
   };
 
@@ -2710,10 +2788,21 @@ export default function ChatView({
                       {msg.status === "failed" && (
                         <button
                           onClick={() => handleRetry(msg)}
-                          className="absolute inset-0 flex flex-col items-center justify-center bg-red-950/70 text-white cursor-pointer"
+                          className="absolute inset-0 flex flex-col items-center justify-center gap-1 bg-red-950/70 px-3 text-center text-white cursor-pointer"
                         >
-                          <RotateCcw className="h-6 w-6 mb-1" />
+                          <RotateCcw className="h-6 w-6" />
                           <span className="text-xs font-bold">{tr("إعادة المحاولة")}</span>
+                          {/*
+                            The reason, where the failure is. A retry that
+                            cannot succeed — an unsupported format, a spent
+                            upload limit — should say so rather than invite an
+                            eleventh identical attempt.
+                          */}
+                          {msg.failureReason && (
+                            <span className="line-clamp-3 text-[10px] font-medium leading-tight opacity-90">
+                              {msg.failureReason}
+                            </span>
+                          )}
                         </button>
                       )}
                     </div>
@@ -3078,6 +3167,14 @@ export default function ChatView({
             className="hidden"
             onChange={(event) => {
               const file = event.target.files?.[0];
+              /*
+                Cleared so picking the same photo again fires `change`. A
+                browser does not fire it when the selection is identical, so
+                after a failure the obvious retry — tap the paperclip, choose
+                that photo — did nothing at all. The sign-in-proof input in
+                this same file already resets itself.
+              */
+              event.target.value = "";
               if (file) void attachWithProgress(file);
             }}
           />

@@ -21,7 +21,8 @@ import {
 } from "./product-index.server";
 import { sendWhatsappMessage } from "./whatsapp.server";
 import { getUserTelegramChatId } from "./telegram-notifications.server";
-import { sendTelegramMessage } from "./telegram.server";
+import { escapeHtml, sendTelegramMessage } from "./telegram.server";
+import { memberMessagePreview } from "./memberMessagePreview";
 import { isOwnerAccount } from "./owner-auth.server";
 import {
   type AdminAvailabilityConfig,
@@ -2725,9 +2726,51 @@ export async function appendMessage(
       /* Same field, same silence — the member was never told the shop replied. */
       const memberChatId = await getUserTelegramChatId(String(thread.userId ?? ""));
       if (memberChatId) {
+        /*
+          What the message actually is.
+
+          This read `body["text"] || "أرسل صورة"`, and that fallback is right
+          for exactly one kind: an attachment with no caption. Every other
+          admin-authored kind keeps its content in named fields and carries no
+          `text` — a delivered account is `{email, password, title}`, a
+          verification code is `{code, expiresAt}` — so the buyer whose game
+          account had just arrived was told, on Telegram, that the shop had
+          sent them a picture. Worse than silence: silence sends them to look.
+
+          The value itself stays out of Telegram. `memberMessagePreview` names
+          what arrived and sends them to the app to read it.
+        */
+        const preview = memberMessagePreview({ kind: full.kind, body: full.body });
+        /*
+          One message, with a way back into the conversation.
+
+          `POST /api/chat` used to send a second Telegram message of its own
+          right after this one, so a single admin reply arrived twice — this
+          one plain, and that one carrying the button. There is no reason for
+          two, and the button belongs on the notification every admin message
+          produces rather than on the one route that happened to add it: a
+          reply sent from the Telegram group, or a delivered account, went
+          through this path alone and had no way back.
+        */
+        const { telegramMiniAppDeepLink } = await import("./telegram.server");
         await sendTelegramMessage(
           memberChatId,
-          `💬 *رسالة جديدة من الدعم*\n\nفي محادثة: ${thread.subject}\n\n"${full.body["text"] || "أرسل صورة"}"`,
+          `💬 <b>رسالة جديدة من الدعم</b>\n\nفي محادثة: ${escapeHtml(String(thread.subject ?? ""))}\n\n${escapeHtml(preview)}`,
+          {
+            parse_mode: "HTML",
+            reply_markup: {
+              inline_keyboard: [
+                [
+                  {
+                    text: "💬 فتح المحادثة",
+                    url: telegramMiniAppDeepLink(
+                      thread.orderId ? `order_${thread.orderId}` : `chat_${threadId}`,
+                    ),
+                  },
+                ],
+              ],
+            },
+          },
         );
       }
     }
@@ -3101,6 +3144,21 @@ export async function approveRechargeRequest(
   );
 
   const settled = await getRechargeRequest(requestId);
+
+  /*
+    Tell the member their money arrived.
+
+    Neither settling function said anything to anybody through any channel —
+    not Telegram, not even an in-app row. The shop is told the moment a top-up
+    request arrives, and the member who sent the receipt was never told the
+    verdict, so the only way to find out their wallet had been credited was to
+    keep opening the app and looking.
+
+    Best-effort and after the credit: a message about money already in the
+    wallet must not be able to fail the crediting of it.
+  */
+  void notifyRechargeVerdict(existing.userId, "approved", finalAmount);
+
   return {
     ok: true,
     ...(settled ? { request: settled } : {}),
@@ -3146,12 +3204,52 @@ export async function rejectRechargeRequest(
     return { ok: false, reason: "already_settled", request: await getRechargeRequest(requestId) };
   }
 
+  /* And the same when it is refused — see the note in the approval above. */
+  void notifyRechargeVerdict(existing.userId, "rejected", Number(existing.amount ?? 0));
+
   return {
     ok: true,
     ...((await getRechargeRequest(requestId))
       ? { request: (await getRechargeRequest(requestId))! }
       : {}),
   };
+}
+
+/**
+ * What the member is told about their top-up.
+ *
+ * Never throws and is never awaited by the settling functions: the wallet has
+ * already been credited or the request already refused by the time this runs,
+ * and neither outcome may be undone by a Telegram failure.
+ *
+ * The amount is stated because the credited figure can differ from the one
+ * requested — a bonus, or a correction the reviewer made — and a member seeing
+ * a different number in their wallet with no explanation is a support ticket.
+ */
+async function notifyRechargeVerdict(
+  userId: string,
+  verdict: "approved" | "rejected",
+  amount: number,
+): Promise<void> {
+  try {
+    const chatId = await getUserTelegramChatId(String(userId ?? ""));
+    if (!chatId) return;
+    const figure = Number.isFinite(amount) ? Math.round(amount).toLocaleString() : "";
+    const text =
+      verdict === "approved"
+        ? `✅ <b>تمت إضافة رصيدك</b>\n\nتمت الموافقة على طلب تعبئة المحفظة${
+            figure ? ` بمبلغ <b>${figure} د.ع</b>` : ""
+          }.\nالرصيد متاح الآن في محفظتك.`
+        : `❌ <b>لم تتم الموافقة على طلب التعبئة</b>\n\n${
+            figure ? `المبلغ: <b>${figure} د.ع</b>\n` : ""
+          }راجع الإيصال وتواصل مع الدعم إذا كنت تعتقد أن هناك خطأ.`;
+    await sendTelegramMessage(chatId, text, { parse_mode: "HTML" });
+  } catch (error) {
+    console.warn("[wallet:recharge_verdict_notify_failed]", {
+      verdict,
+      error: error instanceof Error ? error.message : String(error),
+    });
+  }
 }
 
 export async function consumeBananCode(

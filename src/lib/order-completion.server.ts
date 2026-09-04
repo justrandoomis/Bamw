@@ -229,6 +229,25 @@ export async function completeOrder(
     }
   }
 
+  /*
+    And tell them, where they actually are.
+
+    The rating card above lives in the website conversation. A customer who
+    finished their purchase and closed the app never sees it, which is why the
+    shop was getting no ratings: the request was posted somewhere nobody was
+    looking. This sends the same invitation to Telegram, with the steps to
+    reach the card and the reward for using it.
+
+    Best-effort, and after the order is already saved: a thank-you must not be
+    able to fail the completion that earned it.
+  */
+  try {
+    const { sendReviewInvitation } = await import("./review-reward.server");
+    await sendReviewInvitation(next, { now: options.now ?? undefined });
+  } catch (err) {
+    console.warn("[order-completion:review_invite_failed]", { orderId: order.id }, err);
+  }
+
   return { order: next, changed: true };
 }
 

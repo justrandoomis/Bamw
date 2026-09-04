@@ -333,8 +333,39 @@ export class ChatRealtimeDO {
     return new Response("Not Found", { status: 404 });
   }
 
+  /**
+   * Send one event to every subscriber, named.
+   *
+   * This wrote `data: …` with no `event:` line. Per the SSE spec a frame with
+   * no event field is dispatched as "message", and the client registers only
+   * named listeners — `message.created`, `thread.updated`, `typing.update` and
+   * the rest — so not one of them ever fired.
+   *
+   * It went unnoticed because there are two streams. The in-process fallback
+   * in `api/chat.ts` writes `event: ${type}` and works; the Durable Object is
+   * the one production binds. So the admin inbox updated live on a developer's
+   * machine and never once in the shop: a customer's message, and the image
+   * with it, arrived only when somebody reloaded.
+   *
+   * The name is read from the payload's own `type`, which every producer here
+   * already sets, and falls back to "message" — the default the spec would
+   * have used anyway — rather than dropping an event this cannot name.
+   */
   private pushEvent(data: string) {
-    const encoded = new TextEncoder().encode(`data: ${data}\n\n`);
+    let name = "message";
+    try {
+      const parsed = JSON.parse(data) as { type?: unknown };
+      if (typeof parsed?.type === "string" && parsed.type.trim()) {
+        /*
+          An event name may not contain a newline: one would end the field and
+          let a crafted `type` inject frames of its own.
+        */
+        name = parsed.type.replace(/[\r\n]/g, "").slice(0, 64);
+      }
+    } catch {
+      /* Not JSON: send it as the default event rather than losing it. */
+    }
+    const encoded = new TextEncoder().encode(`event: ${name}\ndata: ${data}\n\n`);
     for (const subscriber of this.subscribers) {
       try {
         subscriber.enqueue(encoded);

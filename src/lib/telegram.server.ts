@@ -274,6 +274,85 @@ export async function sendTelegramMessage(
   return res;
 }
 
+/**
+ * Send a picture, as bytes, rather than a link to one.
+ *
+ * The shop's own uploads live behind a session guard — `/api/files/chat/...`
+ * answers 404 without a cookie — so Telegram cannot fetch a customer's
+ * attachment by URL, and the URL is relative anyway. Uploading the bytes is
+ * the only way the admin sees the picture, and it is also the right one: the
+ * file never becomes publicly readable to make it viewable in Telegram.
+ *
+ * `sendPhoto` re-encodes and caps the long side at 1280, which is fine for a
+ * receipt or a screenshot; a file Telegram will not accept as a photo is worth
+ * falling back on rather than losing, so the caller is told and can send the
+ * caption alone.
+ */
+export async function sendTelegramPhoto(
+  chatId: string | number,
+  bytes: Uint8Array,
+  options: {
+    filename?: string;
+    mime?: string;
+    caption?: string;
+    parseMode?: string;
+    messageThreadId?: number;
+  } = {},
+): Promise<TelegramResponse> {
+  const token = env("TELEGRAM_BOT_TOKEN");
+  if (!token) {
+    console.error("[telegram:error] sendPhoto failed: TELEGRAM_BOT_TOKEN_MISSING");
+    return { ok: false, error: "TELEGRAM_BOT_TOKEN_MISSING" };
+  }
+
+  const form = new FormData();
+  form.append("chat_id", String(chatId));
+  if (options.caption) {
+    /* Telegram caps a caption at 1024 characters and rejects the whole send over it. */
+    form.append("caption", options.caption.slice(0, 1024));
+    form.append("parse_mode", options.parseMode ?? "HTML");
+  }
+  if (options.messageThreadId) form.append("message_thread_id", String(options.messageThreadId));
+  form.append(
+    "photo",
+    new Blob([bytes as unknown as BlobPart], { type: options.mime || "image/jpeg" }),
+    options.filename || "photo.jpg",
+  );
+
+  try {
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 20000);
+    const response = await fetch(`${telegramApiHost()}/bot${token}/sendPhoto`, {
+      method: "POST",
+      body: form,
+      signal: controller.signal,
+    });
+    clearTimeout(timeoutId);
+
+    let data: TelegramResponse;
+    try {
+      data = (await response.json()) as TelegramResponse;
+    } catch {
+      data = { ok: false, description: "INVALID_JSON_RESPONSE" };
+    }
+    data.status = response.status;
+    if (!data.ok) {
+      console.error("[telegram:error] sendPhoto failed", {
+        status: response.status,
+        error_code: data.error_code,
+        description: data.description,
+      });
+    }
+    return data;
+  } catch (error: any) {
+    console.error(
+      "[telegram:error] sendPhoto network failure",
+      error?.name === "AbortError" ? "TIMEOUT" : String(error),
+    );
+    return { ok: false, error: error?.name === "AbortError" ? "TIMEOUT" : "NETWORK_ERROR" };
+  }
+}
+
 /** Bot identity — used by diagnostics and health checks. */
 export async function getMe(): Promise<TelegramResponse> {
   return callTelegram("getMe");

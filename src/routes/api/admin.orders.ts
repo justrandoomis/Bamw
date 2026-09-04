@@ -581,6 +581,36 @@ export const Route = createFileRoute("/api/admin/orders")({
                 // Ignore audit log error
               }
 
+              /*
+                Tell the customer their order was cancelled, and their money
+                returned.
+
+                This case returns here, hundreds of lines before the
+                notification block at the end of the handler, and its own
+                thread message is `senderRole: "system"` — which the chat's
+                own Telegram push ignores, since that only fires for an admin
+                message. So a wallet-paid order could be cancelled and refunded
+                with the member told through no channel at all: the money
+                simply reappeared, and they found out by opening the app.
+
+                Best-effort and after the refund, like every other notification
+                here.
+              */
+              try {
+                const { notifyUserOrderStatus } = await import(
+                  "@/lib/telegram-notifications.server"
+                );
+                await notifyUserOrderStatus({
+                  userId: order.userId,
+                  order: next,
+                  statusText: wasPaidByWallet
+                    ? `ملغى ❌ — تمت إعادة ${Math.round(refundAmount).toLocaleString()} د.ع إلى محفظتك`
+                    : "ملغى ❌",
+                });
+              } catch (err) {
+                console.warn("[admin:cancel_order:notify_failed]", err);
+              }
+
               return json({ order: redactOrder(next, ADMIN_VIEWER), success: true });
             }
             case "direct_send_credentials": {
@@ -771,7 +801,21 @@ export const Route = createFileRoute("/api/admin/orders")({
             }
             case "complete_order": {
               /*
-                One owner, and idempotent.
+                A digital order is not the admin's to finish by hand.
+
+                This guard was here, and it was lost to a block comment that
+                never closed: one opened above it to delete the old inline
+                completion swallowed the guard along with it, and did not end
+                until fifty lines later. Everything in between — including this
+                — stopped being code, silently, while the file still read as
+                though the check were there.
+
+                `completeOrder` does not check delivery state, so nothing
+                replaced it. Without it an admin pressing "complete" on an
+                order whose OTPs have not all gone out closes it anyway, and
+                the customer loses both the items still owed to them and the
+                window in which they could have reported a bad one.
+              */
               const delivery = await getDeliveryOrderState(order);
               if (delivery.progress.total > 0) {
                 return json(
@@ -782,57 +826,16 @@ export const Route = createFileRoute("/api/admin/orders")({
                   { status: 409 },
                 );
               }
-              const updatedItems = order.items.map((it) => ({
-                ...it,
-                completedAt: it.completedAt || now,
-                deliveredAt: it.deliveredAt || now,
-              }));
 
-              next = {
-                ...order,
-                status: "completed",
-                completedAt: now,
-                items: updatedItems,
-                updatedAt: now,
-              };
+              /*
+                One owner, and idempotent.
 
-              // 1. Mark task in order queue completed
-              try {
-                await d1Run(
-                  `UPDATE order_queue SET status = 'completed', updated_at = ? WHERE order_id = ?`,
-                  now,
-                  order.id,
-                );
-
-                await d1Run(
-                  `INSERT INTO order_status_history (id, order_id, old_status, new_status, changed_by, note, created_at)
-                   VALUES (?, ?, ?, 'completed', ?, 'تم تأكيد اكتمال الطلب من قبل الإدارة', ?)`,
-                  randomId("osh"),
-                  order.id,
-                  order.status,
-                  admin.id,
-                  now,
-                );
-
-                await d1Run(
-                  `INSERT INTO order_status_history_v2 (
-                    id, order_id, old_status, new_status, changed_by_user_id, changed_by_role, reason, created_at
-                  ) VALUES (?, ?, ?, 'completed', ?, 'ADMIN', 'Admin finalized order completion', ?)`,
-                  randomId("oshv2"),
-                  order.id,
-                  order.status,
-                  admin.id,
-                  now,
-                );
-              } catch (err) {
-                console.error("[admin:complete_order:history_failed]", err);
-              }
-
-                This used to write `completedAt: now` and post both the
-                completion card and the rating request every time it ran, so a
-                double-click sent the customer the same two messages twice and
-                moved the completion time. `completeOrder` returns the order
-                untouched when it is already finished.
+                The body that used to sit here wrote `completedAt: now` and
+                posted both the completion card and the rating request every
+                time it ran, so a double-click sent the customer the same two
+                messages twice and moved the completion time. `completeOrder`
+                returns the order untouched when it is already finished, and
+                writes the status history itself.
               */
               const result = await completeOrder(order, {
                 by: admin.id,
@@ -877,17 +880,51 @@ export const Route = createFileRoute("/api/admin/orders")({
               data.action === "complete_order" ||
               data.action === "set_payment"
             ) {
+              /*
+                Every order status, so no raw English enum can leak.
+
+                The map was missing `pending`, `awaiting_customer_confirmation`
+                and `delivery_issue` — all real values of `OrderStatus` — and
+                the `|| next.status` fallback printed the identifier itself
+                into an Arabic message. It also carried `paid`, which is a
+                payment status and not an order one, so that entry could never
+                match anything.
+              */
               const statusMap: Record<string, string> = {
-                paid: "تم تأكيد الدفع ✅",
+                pending: "بانتظار المعالجة ⏳",
                 processing: "قيد التجهيز ⏳",
                 delivering: "جاري التسليم 🚀",
+                awaiting_customer_confirmation: "بانتظار تأكيد استلامك ✅",
+                delivery_issue: "هناك مشكلة في التسليم — نعمل عليها 🛠️",
                 completed: "مكتمل بنجاح 🎉",
                 cancelled: "ملغى ❌",
               };
+
+              /*
+                `set_payment` changes the PAYMENT status and leaves the order's
+                own status untouched, so reporting `next.status` told the
+                customer something unrelated to what just happened — a rejected
+                receipt was answered with "قيد التجهيز ⏳", which affirmatively
+                contradicts it.
+              */
+              const paymentMap: Record<string, string> = {
+                paid: "تم تأكيد الدفع ✅",
+                unpaid: "بانتظار الدفع ⏳",
+                pending: "بانتظار مراجعة الدفع ⏳",
+                rejected: "لم يتم قبول إثبات الدفع ❌",
+                refunded: "تمت إعادة المبلغ ↩️",
+              };
+
+              const statusText =
+                data.action === "set_payment"
+                  ? (paymentMap[String(next.paymentStatus)] ??
+                    "تم تحديث حالة الدفع")
+                  : (statusMap[next.status] ?? "تم تحديث حالة طلبك");
+
               await notifyUserOrderStatus({
                 userId: next.userId,
                 order: next,
-                statusText: statusMap[next.status] || next.status,
+                statusText,
               });
             }
           } catch (err) {

@@ -19,6 +19,8 @@ import {
   matchGame,
 } from "@/lib/game-catalog.server";
 import { redactDiscTradeForMember } from "@/lib/redaction";
+import { describeSelections, payoutMethodOf } from "@/lib/tradeConditionView";
+import { chunkForParams } from "@/lib/sql-params";
 
 interface TradeBody extends Record<string, unknown> {
   action?: string;
@@ -106,10 +108,90 @@ export const Route = createFileRoute("/api/disc-trade")({
                   `SELECT * FROM disc_trades ORDER BY created_at DESC LIMIT 200`,
                 );
 
-            const normalizedRows = rows.map((r) => ({
-              ...r,
-              status: normalizeTradeStatus(r.status),
-            }));
+            /*
+              Everything the shop owner needs to put a price on the disc.
+
+              The row alone carries none of it. `selections` is a JSON string
+              the client cannot read through its own `typeof === "object"`
+              guard; the values inside it are rule keys, whose Arabic labels
+              live in `trade_rules`; every photo after the first sits in
+              `disc_trade_images`, which nothing had ever SELECTed; and the
+              catalogue's own valuation — the number a manual price is judged
+              against — was joined for the member's view and not for the
+              admin's. Resolved here, once, rather than asked of the client.
+            */
+            const rules = (await listTradeRules()) as unknown as TradeRule[];
+
+            /*
+              Both lookups are `IN (...)` over up to 200 rows, and D1 accepts
+              fewer bound variables than that. `chunkForParams` splits each
+              into statements that fit — the same guard the product index uses,
+              and the one `sql-bounds-audit.test.ts` exists to make sure a new
+              dynamic statement cannot skip.
+            */
+            const ids = rows.map((r) => String(r["id"] ?? "")).filter(Boolean);
+            const photos = new Map<string, { url: string; kind: string }[]>();
+            for (const group of chunkForParams(ids, 1)) {
+              const placeholders = group.map(() => "?").join(",");
+              const imageRows = await d1All<Record<string, any>>(
+                `SELECT trade_id, url, kind FROM disc_trade_images
+                  WHERE trade_id IN (${placeholders}) ORDER BY created_at`,
+                ...group,
+              );
+              for (const row of imageRows) {
+                const key = String(row["trade_id"] ?? "");
+                const url = String(row["url"] ?? "");
+                if (!key || !url) continue;
+                photos.set(key, [
+                  ...(photos.get(key) ?? []),
+                  { url, kind: String(row["kind"] ?? "other") },
+                ]);
+              }
+            }
+
+            const catalogue = new Map<string, Record<string, any>>();
+            const gameIds = [
+              ...new Set(rows.map((r) => String(r["game_id"] ?? "")).filter(Boolean)),
+            ];
+            for (const group of chunkForParams(gameIds, 1)) {
+              const placeholders = group.map(() => "?").join(",");
+              const catalogueRows = await d1All<Record<string, any>>(
+                `SELECT game_id, title, trade_value_iqd, store_offer_bonus_iqd, cover_url
+                   FROM game_catalog WHERE game_id IN (${placeholders})`,
+                ...group,
+              );
+              for (const row of catalogueRows) {
+                catalogue.set(String(row["game_id"] ?? ""), row);
+              }
+            }
+
+            const normalizedRows = rows.map((r) => {
+              const id = String(r["id"] ?? "");
+              const game = catalogue.get(String(r["game_id"] ?? ""));
+              const gallery = photos.get(id) ?? [];
+              const first = r["photo_url"] ? String(r["photo_url"]) : "";
+              return {
+                ...r,
+                status: normalizeTradeStatus(r.status),
+                /* Finished labels, in the order the customer answered them. */
+                conditionAnswers: describeSelections(r["selections"], rules),
+                /*
+                  Every photo, the thumbnail included and never duplicated. The
+                  close-up of the scratch is usually the one that decides the
+                  price, and it was the one nobody could see.
+                */
+                photos: [
+                  ...(first ? [{ url: first, kind: "primary" }] : []),
+                  ...gallery.filter((p) => p.url !== first),
+                ],
+                /* What the customer actually asked for, not the hardcoded column. */
+                payoutMethod: payoutMethodOf(r["selections"]),
+                catalogTitle: game?.["title"] ?? null,
+                catalogValuationIqd: game?.["trade_value_iqd"] ?? null,
+                catalogBonusIqd: game?.["store_offer_bonus_iqd"] ?? null,
+                coverUrl: game?.["cover_url"] ?? null,
+              };
+            });
             return json({ items: normalizedRows });
           }
 

@@ -961,19 +961,17 @@ export const Route = createFileRoute("/api/chat")({
               inactivityReminders: [],
             });
 
-            // Notify user in Telegram (Safe)
-            try {
-              const { notifyUserAdminMessage } =
-                await import("@/lib/telegram-notifications.server");
-              await notifyUserAdminMessage({
-                userId: current.userId,
-                threadId: current.id,
-                messageText: data.text || "أرسل الدعم مرفقاً جديداً",
-                adminName: user.name || "فريق الإدارة",
-              });
-            } catch (err) {
-              console.warn("[chat:notify_user_failed]", err);
-            }
+            /*
+              The member has already been told.
+
+              `appendMessage` sends a Telegram message for any admin-authored
+              message, and this route added a second one — so one reply typed
+              in the inbox reached the member twice. That notification carries
+              the button now, so nothing is lost by dropping the duplicate; and
+              putting it there rather than here means a reply sent from the
+              Telegram group, or a delivered account, gets the same button
+              instead of a bare line.
+            */
 
             return json({
               message,
@@ -992,12 +990,27 @@ export const Route = createFileRoute("/api/chat")({
 
           const isAutomatedThread = current.chatType === "AUTOMATED_SUPPORT" && !isOrderOrDelivery;
 
-          if (!isAutomatedThread) {
-            // Customer is sending message in order or human support thread
-            current.lastUserMessageAt = message.createdAt;
-            current = await handleCustomerQueueReentry(current);
+          /*
+            An attachment always reaches a person.
 
-            // Notify Admin in Telegram about customer message in order/human support (Safe)
+            The admin was told about a customer's message only when the thread
+            was an order or a human-support one. The paperclip lives in the
+            assistant thread too — it is where a member with no open
+            conversation lands — and an image sent there notified nobody at
+            all. Worse, the assistant answers it with "سأحوّل الصورة والرمز
+            للإدارة الآن": the promise is made in `support/images.ts`, which
+            sets `escalate: true` in the reply body, and nothing on the server
+            has ever read that flag.
+
+            A screenshot of an error or a photo of a receipt is not something
+            an assistant can settle. So an attachment is announced whatever
+            thread it arrives in, while the queue re-entry and availability
+            handling below stay where they belong.
+          */
+          const hasAttachment = Boolean(data.imageUrl);
+
+          if (!isAutomatedThread || hasAttachment) {
+            // Notify Admin in Telegram about customer message (Safe)
             try {
               const { notifyAdminCustomerMessage } =
                 await import("@/lib/telegram-notifications.server");
@@ -1009,6 +1022,12 @@ export const Route = createFileRoute("/api/chat")({
             } catch (err) {
               console.warn("[chat:notify_admin_failed]", err);
             }
+          }
+
+          if (!isAutomatedThread) {
+            // Customer is sending message in order or human support thread
+            current.lastUserMessageAt = message.createdAt;
+            current = await handleCustomerQueueReentry(current);
 
             // Check availability to notify user if sending to offline admin
             const availability = await getAdminAvailabilityStatus();

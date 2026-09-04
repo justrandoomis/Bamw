@@ -139,6 +139,18 @@ async function handleUpdate(update: any) {
         });
       }
 
+      /*
+        The whole reason the member is here.
+
+        They pressed "ربط حساب تلغرام" on the site, opened the deep link, and
+        were stopped by the subscription gate — which carried their link token
+        into this button. Confirming the subscription and then only opening the
+        app is what left them believing they had linked. Resume the token
+        first; the welcome below is for a member who arrived with no token to
+        resume.
+      */
+      if (await resumeLinkToken(chatId, callback.from, target)) return;
+
       await sendTelegramMessage(
         chatId,
         "🎉 أهلاً بك في بنانتو! 🍌\n\nتم التحقق من اشتراكك في القناة بنجاح.\nيمكنك الآن فتح التطبيق أو ربط حسابك بالموقع.",
@@ -261,39 +273,7 @@ async function handleUpdate(update: any) {
       return;
     }
 
-    const token = /^[A-Za-z0-9_-]{8,128}$/.test(tokenCandidate) ? tokenCandidate : null;
-    if (token) {
-      const { bindSessionChat } = await import("@/lib/telegram-link.server");
-      const session = await bindSessionChat(token, String(msg.from?.id), chatId);
-
-      if (session) {
-        // 1. Send the Mini App button for verified launch
-        await sendTelegramMessage(chatId, "مرحباً بك! افتح تطبيق إثبات الملكية لإكمال التحقق. 🍌", {
-          reply_markup: {
-            inline_keyboard: [
-              [{ text: "🍌 فتح إثبات الملكية", web_app: { url: telegramWebAppUrl(token) } }],
-            ],
-          },
-        });
-
-        // 2. Send the native contact sharing button as a persistent fallback
-        await sendTelegramMessage(
-          chatId,
-          "إذا واجهت مشكلة في التطبيق، يمكنك مشاركة رقمك مباشرة من الزر أدناه لإتمام التحقق فوراً:",
-          {
-            reply_markup: {
-              keyboard: [[{ text: "📱 مشاركة رقم هاتفي مباشرة", request_contact: true }]],
-              resize_keyboard: true,
-              one_time_keyboard: true,
-            },
-          },
-        );
-        return;
-      }
-
-      await handleLinkToken(chatId, msg.from, token);
-      return;
-    }
+    if (await resumeLinkToken(chatId, msg.from, tokenCandidate)) return;
 
     await sendTelegramMessage(
       chatId,
@@ -333,6 +313,71 @@ async function handleUpdate(update: any) {
       { parse_mode: "HTML" },
     );
   }
+}
+
+/**
+ * Continue an account link from wherever the member ended up.
+ *
+ * The linking flow is `/start <token>`, and the `@banan_to` subscription gate
+ * sits in front of it. A member who is not yet in the channel never reaches
+ * the handler: the gate answers with a subscribe prompt, carries the token
+ * into a `verify_sub_<token>` button, and the callback that button fires
+ * confirms membership, says "✅ تم التحقق من اشتراكك بنجاح" — and opens the
+ * app. The token it was carrying is dropped there. Nothing is written to
+ * `telegram_links`, the challenge expires unused, and the member has been
+ * told, in as many words, that it worked.
+ *
+ * That is why members report being linked while no message ever reaches them.
+ *
+ * So the token's handling lives here, and both entry points call it: `/start`
+ * for a member already in the channel, and the subscription callback for one
+ * who has just joined. Returns false when there is no token to resume, so the
+ * caller can fall through to its ordinary welcome.
+ */
+async function resumeLinkToken(
+  chatId: number,
+  from: any,
+  tokenCandidate: string | undefined,
+): Promise<boolean> {
+  const token =
+    tokenCandidate && /^[A-Za-z0-9_-]{8,128}$/.test(tokenCandidate) ? tokenCandidate : null;
+  /*
+    "main" is the placeholder the gate uses when `/start` carried no parameter
+    at all. It matches the token shape, and treating it as one would answer a
+    plain visitor with a verification screen for a session that does not exist.
+  */
+  if (!token || token === "main") return false;
+
+  const { bindSessionChat } = await import("@/lib/telegram-link.server");
+  const session = await bindSessionChat(token, String(from?.id), chatId);
+
+  if (session) {
+    // 1. Send the Mini App button for verified launch
+    await sendTelegramMessage(chatId, "مرحباً بك! افتح تطبيق إثبات الملكية لإكمال التحقق. 🍌", {
+      reply_markup: {
+        inline_keyboard: [
+          [{ text: "🍌 فتح إثبات الملكية", web_app: { url: telegramWebAppUrl(token) } }],
+        ],
+      },
+    });
+
+    // 2. Send the native contact sharing button as a persistent fallback
+    await sendTelegramMessage(
+      chatId,
+      "إذا واجهت مشكلة في التطبيق، يمكنك مشاركة رقمك مباشرة من الزر أدناه لإتمام التحقق فوراً:",
+      {
+        reply_markup: {
+          keyboard: [[{ text: "📱 مشاركة رقم هاتفي مباشرة", request_contact: true }]],
+          resize_keyboard: true,
+          one_time_keyboard: true,
+        },
+      },
+    );
+    return true;
+  }
+
+  await handleLinkToken(chatId, from, token);
+  return true;
 }
 
 async function handleLinkToken(chatId: number, from: any, token: string) {
