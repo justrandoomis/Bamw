@@ -69,6 +69,10 @@ describe("no statement can outgrow D1's parameter limit", () => {
       // fifty lines, so the slice is never reached — it is there so the
       // bound belongs to the statement rather than to a rule elsewhere.
       "src/lib/order-delivery-items.server.ts:productIds": "sliced to a constant",
+      // The trade requests on one admin page (LIMIT 200) and the distinct
+      // games among them, both split by chunkForParams so each statement fits
+      // whatever the page size becomes.
+      "src/routes/api/disc-trade.ts:group": "chunked",
     };
 
     const unknown = found.filter((entry) => !(`${entry.file}:${entry.source}` in KNOWN));

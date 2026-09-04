@@ -31,6 +31,7 @@ import {
   normalizeTradeStatus,
   CATEGORY_LABEL_AR,
   type TradeStatus,
+  TRADE_STATUSES,
 } from "@/lib/trade-calc";
 import { DiscTradePageEditor } from "./editors/DiscTradePageEditor";
 import TradeRulesManager from "./TradeRulesManager";
@@ -165,17 +166,24 @@ export default function DiscTradesAdminView() {
               onChange={(e) => setFilterStatus(e.target.value)}
               className="bg-card border border-border rounded-xl px-4 py-2 text-sm focus:border-primary focus:outline-none font-bold"
             >
+              {/*
+                Built from the statuses that exist, rather than typed out.
+
+                These options were the previous generation of names —
+                waiting_review, waiting_shipment, received, approved,
+                coupon_issued, cash_paid. `normalizeTradeStatus` maps every one
+                of them away, so six of the nine could never match a row and
+                selecting one emptied the list. Worse, there was no option for
+                `awaiting_pricing` or `priced` — the two states a request
+                waiting for a price actually sits in, which is what the shop
+                owner opens this screen to find.
+              */}
               <option value="all">{t("كل الحالات")}</option>
-              <option value="waiting_review">{t("بانتظار المراجعة")}</option>
-              <option value="waiting_shipment">{t("بانتظار الشحن/التسليم")}</option>
-              <option value="received">{t("تم الاستلام")}</option>
-              <option value="inspecting">{t("قيد الفحص")}</option>
-              <option value="approved">{t("تمت الموافقة")}</option>
-              <option value="coupon_issued">{t("تم إصدار الكوبون")}</option>
-              <option value="cash_paid">{t("تم الدفع نقداً")}</option>
-              <option value="completed">{t("مكتملة ومودعة")}</option>
-              <option value="rejected">{t("مرفوضة")}</option>
-              <option value="cancelled">{t("ملغاة")}</option>
+              {TRADE_STATUSES.map((status) => (
+                <option key={status} value={status}>
+                  {t(TRADE_STATUS_LABEL_AR[status])}
+                </option>
+              ))}
             </select>
           </div>
 
@@ -338,8 +346,15 @@ function TradeCard({ trade, isEditing, onEdit, onCancel, onSave, isSaving, t }: 
           <span className="block text-xs font-bold text-muted-foreground mb-1">
             {t("نوع التعويض")}
           </span>
+          {/*
+            `preferred_trade` is store credit on every row: the form hardcodes
+            it and sends it regardless. The customer's real answer is the
+            `payout_method` they picked in the condition step — and it is the
+            one the quote was calculated from, so settling on the column would
+            pay a cash request in store credit.
+          */}
           <div className="text-sm font-bold flex items-center gap-1">
-            {trade.preferred_trade === "cash" ? (
+            {(trade.payoutMethod ?? trade.preferred_trade) === "cash" ? (
               t("نقداً")
             ) : (
               <span className="text-emerald-600 dark:text-emerald-400">
@@ -357,54 +372,106 @@ function TradeCard({ trade, isEditing, onEdit, onCancel, onSave, isSaving, t }: 
 
       {/* Selections & Details Info */}
       <div className="flex flex-wrap gap-4 items-start text-xs">
-        {trade.selections && typeof trade.selections === "object" && (
+        {/*
+          The disc's condition, which is the whole reason this screen exists.
+
+          This panel used to be unreachable. `selections` arrives from D1 as
+          the JSON *string* it was written as, and the guard here asked for
+          `typeof === "object"` — never true — so the shop owner was asked to
+          price a disc with nothing on screen about the disc. Under that, the
+          stored values are rule keys, so even parsed it would have printed
+          `cart_scratched`. The server resolves both now and sends finished
+          labels with the percentage each answer moves the price.
+        */}
+        {Array.isArray(trade.conditionAnswers) && trade.conditionAnswers.length > 0 && (
           <div className="flex-1 bg-muted/40 p-3 rounded-xl space-y-1">
             <span className="font-bold text-muted-foreground block mb-1">
               {t("خيارات الحالة:")}
             </span>
             <div className="flex flex-wrap gap-2">
-              {Object.entries(trade.selections).map(([k, v]: [string, any]) => (
+              {trade.conditionAnswers.map((answer: any) => (
                 <span
-                  key={k}
+                  key={answer.category}
                   className="bg-background border border-border px-2 py-1 rounded-lg text-foreground font-medium"
                 >
-                  <span className="text-muted-foreground">{CATEGORY_LABEL_AR[k] || k}: </span>
-                  <strong>{String(v)}</strong>
+                  <span className="text-muted-foreground">{answer.categoryLabel}: </span>
+                  <strong>{answer.valueLabel}</strong>
+                  {Number(answer.percent) !== 0 && (
+                    <span
+                      className={`text-[10px] font-bold mr-1 ${
+                        Number(answer.percent) > 0 ? "text-emerald-500" : "text-rose-500"
+                      }`}
+                    >
+                      {Number(answer.percent) > 0 ? "+" : ""}
+                      {Number(answer.percent)}%
+                    </span>
+                  )}
                 </span>
               ))}
             </div>
           </div>
         )}
 
-        {/* Uploaded User Photo */}
-        {trade.photo_url && (
+        {/*
+          Every photo the customer sent, not just the first.
+
+          They may upload up to five. The rest went into `disc_trade_images`,
+          a table nothing in the repository had ever read — so the close-up of
+          the scratch, usually the one shot that decides the price, was in the
+          database and unreachable. `photos` carries them all now, thumbnail
+          included and never twice.
+        */}
+        {Array.isArray(trade.photos) && trade.photos.length > 0 && (
           <div className="flex items-center gap-2 bg-muted/40 p-2 rounded-xl">
-            <a
-              href={trade.photo_url}
-              target="_blank"
-              rel="noreferrer"
-              className="relative group w-14 h-14 rounded-lg overflow-hidden border border-border flex-shrink-0"
-            >
-              <img
-                src={trade.photo_url}
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform"
-                alt=""
-              />
-              <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 flex items-center justify-center text-white transition-opacity">
-                <ExternalLink className="w-3.5 h-3.5" />
-              </div>
-            </a>
-            <div className="text-[11px] text-muted-foreground">
-              <span className="font-bold text-foreground block">{t("صورة مرفقة")}</span>
-              <a
-                href={trade.photo_url}
-                target="_blank"
-                rel="noreferrer"
-                className="text-primary hover:underline"
-              >
-                {t("عرض بحجم كامل")}
-              </a>
+            <div className="flex gap-1.5 flex-wrap">
+              {trade.photos.map((photo: any, index: number) => (
+                <a
+                  key={`${photo.url}-${index}`}
+                  href={photo.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="relative group w-14 h-14 rounded-lg overflow-hidden border border-border flex-shrink-0"
+                >
+                  <img
+                    src={photo.url}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform"
+                    alt=""
+                  />
+                  <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 flex items-center justify-center text-white transition-opacity">
+                    <ExternalLink className="w-3.5 h-3.5" />
+                  </div>
+                </a>
+              ))}
             </div>
+            <div className="text-[11px] text-muted-foreground">
+              <span className="font-bold text-foreground block">
+                {trade.photos.length > 1
+                  ? `${trade.photos.length} ${t("صور مرفقة")}`
+                  : t("صورة مرفقة")}
+              </span>
+              <span>{t("اضغط أي صورة لعرضها بالحجم الكامل")}</span>
+            </div>
+          </div>
+        )}
+
+        {/*
+          What the catalogue says the disc is worth, beside what the customer
+          is being offered. A manual price is a judgement, and it was being
+          asked for with no reference number on the screen.
+        */}
+        {(trade.catalogValuationIqd !== null && trade.catalogValuationIqd !== undefined) && (
+          <div className="bg-muted/40 p-3 rounded-xl">
+            <span className="font-bold text-muted-foreground block mb-1">
+              {t("قيمة الكتالوج المرجعية")}
+            </span>
+            <div className="text-sm font-bold text-foreground">
+              {Number(trade.catalogValuationIqd).toLocaleString()} {t("د.ع")}
+            </div>
+            {Number(trade.catalogBonusIqd) > 0 && (
+              <div className="text-[11px] text-muted-foreground">
+                +{Number(trade.catalogBonusIqd).toLocaleString()} {t("بونص رصيد المتجر")}
+              </div>
+            )}
           </div>
         )}
       </div>
