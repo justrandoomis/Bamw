@@ -19,6 +19,13 @@ on:
       platform:
         description: "switch1 or switch2"
         default: "switch1"
+  # Runs when the probe itself is pushed to the working branch, so a title can
+  # be checked before this file reaches the default branch.
+  push:
+    branches: [claude/gaming-platform-issues-keb1be]
+    paths:
+      - .github/workflows/game-source-probe.yml
+      - scripts/game-source-probe.mjs
 
 permissions:
   contents: read
@@ -43,6 +50,6 @@ jobs:
       - run: npm ci --no-audit --no-fund
       - name: Probe
         env:
-          TITLES: ${{ inputs.titles }}
-          PLATFORM: ${{ inputs.platform }}
+          TITLES: ${{ inputs.titles || '["Katana ZERO","Shovel Knight: Treasure Trove","Shovel Knight Dig","TRIANGLE STRATEGY"]' }}
+          PLATFORM: ${{ inputs.platform || 'switch1' }}
         run: node scripts/game-source-probe.mjs --titles="$TITLES" --platform="$PLATFORM"
