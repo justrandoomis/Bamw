@@ -22,6 +22,7 @@ import {
   customerOptionName,
   customerTypeName,
   mapSupplierCosts,
+  readyTierPricing,
   normalizeNintendoAccountPricing,
   priceGame,
   type AccountKind,
@@ -344,21 +345,56 @@ export function buildBatchGameImport(rawText: string, categoryId: string): Batch
     return { ok: false, reason: `${first.key}: ${first.message}` };
   }
 
-  const slug = String(form.slug ?? "").trim();
-  const demand = demandTierFor(slug);
-  if (!slug || demand.defaulted) {
-    return { ok: false, reason: `لا توجد فئة طلب موثقة للعبة: ${slug || form.title}` };
-  }
+  const sourceTypes = Array.isArray(form.types) ? form.types : [];
 
+  /*
+    The file's own prices first; the demand tier only when it has none.
+
+    This used to refuse outright — «لا توجد فئة طلب موثقة للعبة» — for any slug
+    absent from `nintendoDemandTiers.ts`, and the refusal was both wider and
+    more damaging than that description suggests. It looked the tier up by
+    `form.slug`, and the template ships `slug=` blank: the schema calls it
+    optional, says it is generated automatically, and the *endpoint* generates
+    it from the English title, downstream of here. So on every file an operator
+    actually writes the lookup key was the empty string, `!slug` was true, and
+    the import was refused whether or not the game was in the table.
+
+    The suite did not show it because its fixture puts
+    `slug=super-smash-bros-ultimate` — a real entry — on every game it imports,
+    Zelda and Metroid alike.
+
+    A demand tier is a pricing input, so it now decides only pricing, and only
+    when the file leaves pricing to be decided. `readyTierPricing` takes the
+    numbers the file states when it states them properly; a file in the legacy
+    supplier shape, where `price` is what the copy cost rather than what a
+    customer pays, still goes to the engine, which is the whole reason the
+    engine exists. An unknown game prices as `standard` — which is what
+    `demandTierFor` has always returned for one — instead of not importing.
+  */
+  /*
+    The console is checked whatever prices the file carries.
+
+    Only the engine needs it — it picks the band an offline account is placed
+    in — so moving the check into the fallback was tempting and wrong: it is
+    also the field that says which machine the game runs on, which every
+    surface reads, and dropping the check let `platform=ps5` through onto a
+    product that then rendered as a Switch 1 title everywhere.
+  */
   const platform: Platform | null =
     form.platform === "switch1" ? "switch1" : form.platform === "switch2" ? "switch2" : null;
   if (!platform) {
     return { ok: false, reason: `منصة غير صالحة للتسعير: ${String(form.platform ?? "")}` };
   }
 
-  const sourceTypes = Array.isArray(form.types) ? form.types : [];
-  const costs = mapSupplierCosts(sourceTypes);
-  const pricing = priceGame(costs, platform, demand.tier);
+  let pricing = readyTierPricing(sourceTypes);
+
+  if (!pricing) {
+    const slug = String(form.slug ?? "").trim();
+    const demand = demandTierFor(slug);
+    const costs = mapSupplierCosts(sourceTypes);
+    pricing = priceGame(costs, platform, demand.tier);
+  }
+
   if (
     pricing.needsReview.length > 0 ||
     pricing.productPrice === undefined ||
