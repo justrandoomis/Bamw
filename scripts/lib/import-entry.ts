@@ -26,6 +26,12 @@ export { auditMediaRoles } from "@/lib/mediaRoleAudit";
 export {
   mapSupplierCosts,
   priceGame,
+  /*
+    So the report can say which of the two priced a file, rather than the
+    script deciding that for itself from the numbers that came back — which is
+    a second implementation of the rule by another name.
+  */
+  readyTierPricing,
   customerOptionName,
   customerTypeName,
   isExtrasRow,

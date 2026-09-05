@@ -292,15 +292,25 @@ function parseWithRecovery(raw) {
 /* --------------------------------------------------------------- pricing */
 
 /**
- * Replaces the template's monetary fields with priced ones.
+ * The pricing engine's own reading of a template, for the report.
  *
- * The archive writes supplier figures into `price`, so a product built straight
- * from a template sells at cost. This rebuilds `options`, `types` and the base
- * `price`/`cost` from the pricing engine: supplier numbers become costs,
- * selling prices are calculated per tier, and the customer-facing wording is
- * the store's Arabic rather than the supplier's.
+ * This used to *replace* the payload's monetary fields, and that made sense
+ * while the engine was the only thing that priced: a product built straight
+ * from a template sold at cost, because the archive writes supplier figures
+ * into `price`.
  *
- * Returns the reasons alongside, so a run can be read rather than trusted.
+ * `buildBatchGameImport` prices its own payload now, and reads the file's
+ * stated prices when it has them — so re-deriving here no longer repeats that
+ * work, it overrides it. On the eight corrected templates in the archive the
+ * two disagree, and the engine is the one that is wrong: for
+ * `16-mario-golf-super-rush` it reads the online row's 25,000 cost as a copy of
+ * the offline row's 25,000 *price*, takes the 35,000 selling price as the cost
+ * instead, and marks that up to 45,000. The builder records 35,000 over a
+ * 25,000 cost, which is what the file says.
+ *
+ * So this reports and no longer rewrites. `unprofitable` is read off the
+ * payload that will actually be written, which is the only place the guarantee
+ * means anything.
  */
 function applyPricing(payload, templateText, slug) {
   const costs = app.mapSupplierCosts(templateTypes(templateText));
@@ -308,49 +318,31 @@ function applyPricing(payload, templateText, slug) {
   const { tier, defaulted } = app.demandTierFor(slug);
   const pricing = app.priceGame(costs, platform, tier);
 
-  const notes = [];
-  if (defaulted) notes.push(`no demand tier for \`${slug}\` — priced as standard`);
-  notes.push(...pricing.needsReview.map((r) => `COST_NEEDS_REVIEW: ${r}`));
+  const rows = Array.isArray(payload.types) ? payload.types : [];
+  /*
+    Did the file price itself? The builder's answer, asked the same way it
+    asked it, rather than guessed from the numbers that came back.
+  */
+  const fromFile = Boolean(app.readyTierPricing(rows));
 
-  /* Nothing is written at or below what it cost to acquire. */
-  const unprofitable = pricing.tiers.filter((t) => t.price <= t.cost);
-  for (const t of unprofitable) {
-    notes.push(`UNPROFITABLE: ${t.account}/${t.content} price ${t.price} <= cost ${t.cost}`);
+  const notes = [];
+  if (fromFile) {
+    notes.push("priced from the file's own type rows — the demand tier was not used");
+  } else {
+    if (defaulted) notes.push(`no demand tier for \`${slug}\` — priced as standard`);
+    notes.push(...pricing.needsReview.map((r) => `COST_NEEDS_REVIEW: ${r}`));
   }
 
-  const accounts = [...new Set(pricing.tiers.map((t) => t.account))];
-  const options = accounts.map((account) => ({
-    id: `${account}_account`,
-    name: app.customerOptionName(account),
-    description: app.customerOptionName(account),
-    stock: 9999,
-    isInfiniteStock: true,
-  }));
+  /*
+    Nothing is written at or below what it cost to acquire — read off the rows
+    that will actually be written, whichever path priced them.
+  */
+  const unprofitable = rows.filter((t) => Number(t.price) <= Number(t.cost));
+  for (const t of unprofitable) {
+    notes.push(`UNPROFITABLE: ${t.id} price ${t.price} <= cost ${t.cost}`);
+  }
 
-  const built = pricing.tiers.map((t) => ({
-    id: `${t.account}_${t.content}`,
-    name: app.customerTypeName(t.account, t.content),
-    optionId: `${t.account}_account`,
-    price: t.price,
-    cost: t.cost,
-    stock: 9999,
-    isInfiniteStock: true,
-  }));
-
-  return {
-    payload: {
-      ...payload,
-      options,
-      types: built,
-      price: pricing.productPrice ?? 0,
-      cost: pricing.productCost ?? 0,
-    },
-    pricing,
-    costs,
-    tier,
-    notes,
-    unprofitable,
-  };
+  return { payload, pricing, costs, tier, fromFile, notes, unprofitable };
 }
 
 /**
@@ -457,14 +449,41 @@ if (PREVIEW) {
   if (priced.costs.unmapped.length) say(`\nUnmapped rows: ${priced.costs.unmapped.join("; ")}`);
   say();
 
-  say(`### Calculated selling prices`);
+  /*
+    What will actually be written, which is not always what the engine would
+    have chosen. A file that states its own prices is taken at its word, and
+    the engine's reading of the same rows is printed underneath so the two can
+    be compared rather than confused.
+  */
+  say(`### Selling prices — as they will be written`);
   say();
-  say(`| customer sees | sale price | cost | profit | reasoning |`);
-  say(`| --- | ---: | ---: | ---: | --- |`);
-  for (const t of priced.pricing.tiers) {
-    say(`| ${app.customerTypeName(t.account, t.content)} | ${t.price.toLocaleString()} | ${t.cost.toLocaleString()} | ${t.margin.toLocaleString()} | ${t.reason} |`);
+  say(
+    priced.fromFile
+      ? `Taken from the file's own \`type.N.price\` / \`type.N.cost\`.`
+      : `Calculated by the pricing engine — the file states no ready prices.`,
+  );
+  say();
+  say(`| customer sees | sale price | cost | profit |`);
+  say(`| --- | ---: | ---: | ---: |`);
+  for (const t of Array.isArray(priced.payload.types) ? priced.payload.types : []) {
+    const price = Number(t.price) || 0;
+    const cost = Number(t.cost) || 0;
+    say(`| ${t.name ?? t.id} | ${price.toLocaleString()} | ${cost.toLocaleString()} | ${(price - cost).toLocaleString()} |`);
   }
   say();
+
+  if (priced.fromFile) {
+    say(`<details><summary>What the engine would have said instead</summary>`);
+    say();
+    say(`| customer sees | sale price | cost | profit | reasoning |`);
+    say(`| --- | ---: | ---: | ---: | --- |`);
+    for (const t of priced.pricing.tiers) {
+      say(`| ${app.customerTypeName(t.account, t.content)} | ${t.price.toLocaleString()} | ${t.cost.toLocaleString()} | ${t.margin.toLocaleString()} | ${t.reason} |`);
+    }
+    say();
+    say(`</details>`);
+    say();
+  }
   const media = await buildMedia(
     {
       id: priced.payload.id,
