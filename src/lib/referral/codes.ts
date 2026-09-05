@@ -89,5 +89,15 @@ export function referralLink(params: {
   if (params.productSlug) {
     return `${origin}/product/${encodeURIComponent(params.productSlug)}?ref=${encodeURIComponent(ref)}`;
   }
-  return `${origin}/refer?ref=${encodeURIComponent(ref)}`;
+  /*
+    The shop's front door, not the referral page.
+
+    This pointed at `/refer`, which is the *referrer's* own screen — "invite a
+    friend, here is your link". A friend who followed an invitation arrived at
+    a page telling them to invite somebody, with nothing to buy on it, and the
+    discount they had just earned sitting invisibly in a cookie. The capture
+    runs on whatever page they land on, so the landing may as well be the one
+    with the games on it.
+  */
+  return `${origin}/?ref=${encodeURIComponent(ref)}`;
 }

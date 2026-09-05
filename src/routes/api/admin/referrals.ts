@@ -165,6 +165,19 @@ function toRefusalRow(row: Record<string, unknown>) {
   };
 }
 
+/**
+ * A number the caller actually sent, or the programme's own value.
+ *
+ * `Number(value) || fallback` looks equivalent and is not: it cannot tell an
+ * absent field from an explicit zero, and a settings form that omits a field
+ * would silently reset it.
+ */
+function numberOr(value: unknown, fallback: number): number {
+  if (value === undefined || value === null || value === "") return fallback;
+  const parsed = Number(value);
+  return Number.isFinite(parsed) ? parsed : fallback;
+}
+
 export const Route = createFileRoute("/api/admin/referrals")({
   server: {
     handlers: {
@@ -420,8 +433,36 @@ export const Route = createFileRoute("/api/admin/referrals")({
                   : DEFAULT_REFERRAL_SETTINGS.eligibleCategories,
                 firstPurchaseOnly: incoming["firstPurchaseOnly"] !== false,
                 stackWithCoupon: incoming["stackWithCoupon"] === true,
-                holdDays: Math.max(0, Math.min(90, Number(incoming["holdDays"]) || 0)),
-                dailyInviteLimit: Math.max(0, Number(incoming["dailyInviteLimit"]) || 0),
+                /*
+                  An absent field keeps the programme's value; only a number
+                  the admin actually sent changes it.
+
+                  `Number(x) || 0` cannot tell "not in this form" from "the
+                  admin typed zero", and answered zero to both — so the first
+                  save from a screen that does not render the hold field would
+                  have quietly set the three-day hold to none, and paid every
+                  referrer the moment an order completed. The same shape was
+                  about to do it to the daily invite limit.
+                */
+                holdDays: Math.max(
+                  0,
+                  Math.min(90, numberOr(incoming["holdDays"], DEFAULT_REFERRAL_SETTINGS.holdDays)),
+                ),
+                dailyInviteLimit: Math.max(
+                  0,
+                  numberOr(
+                    incoming["dailyInviteLimit"],
+                    DEFAULT_REFERRAL_SETTINGS.dailyInviteLimit,
+                  ),
+                ),
+                restrictToSharedProduct:
+                  incoming["restrictToSharedProduct"] === undefined
+                    ? DEFAULT_REFERRAL_SETTINGS.restrictToSharedProduct
+                    : incoming["restrictToSharedProduct"] === true,
+                offlineAccountsOnly:
+                  incoming["offlineAccountsOnly"] === undefined
+                    ? DEFAULT_REFERRAL_SETTINGS.offlineAccountsOnly
+                    : incoming["offlineAccountsOnly"] === true,
                 dailyRewardCapIqd: toIqd(incoming["dailyRewardCapIqd"]),
                 monthlyRewardCapIqd: toIqd(incoming["monthlyRewardCapIqd"]),
                 blockSameIp: incoming["blockSameIp"] !== false,

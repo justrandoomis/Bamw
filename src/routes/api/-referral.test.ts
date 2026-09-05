@@ -185,7 +185,13 @@ describe("GET /api/referral", () => {
     const body = await res.json();
 
     expect(body.share.code).toMatch(/^[A-Z0-9]{6,16}$/);
-    expect(body.share.link).toContain("/refer?ref=");
+    /*
+      The shop's front door, not `/refer` — that is the referrer's own invite
+      screen, and a friend who followed an invitation used to land on a page
+      telling them to invite somebody, with nothing to buy on it.
+    */
+    expect(body.share.link).toContain("/?ref=");
+    expect(body.share.link).not.toContain("/refer?ref=");
     expect(body.stats.invites).toBe(0);
 
     // Nothing about the device or the address travels back.

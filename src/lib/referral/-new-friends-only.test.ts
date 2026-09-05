@@ -240,3 +240,54 @@ describe("what each side gets", () => {
     expect(DEFAULT_REFERRAL_SETTINGS.eligibleCategories).not.toContain("gift_card");
   });
 });
+
+describe("the invitation itself", () => {
+  it("lands the friend on the shop, not on the referrer's own invite page", async () => {
+    const { referralLink } = await import("./codes");
+    /*
+      It pointed at `/refer` — the *referrer's* screen, "invite a friend, here
+      is your link". A friend who followed an invitation arrived at a page
+      telling them to invite somebody, with nothing to buy on it.
+    */
+    const link = referralLink({ origin: "https://banan.to", code: "ABC123" });
+    expect(link).toBe("https://banan.to/?ref=ABC123");
+    expect(link).not.toContain("/refer");
+  });
+
+  it("still deep-links to a product when the link was shared from one", async () => {
+    const { referralLink } = await import("./codes");
+    expect(
+      referralLink({ origin: "https://banan.to", code: "ABC123", productSlug: "super-mario-odyssey" }),
+    ).toBe("https://banan.to/product/super-mario-odyssey?ref=ABC123");
+  });
+
+  it("carries the code on the parameter the capture actually reads", async () => {
+    const { referralLink } = await import("./codes");
+    // `ReferralCapture` reads `?ref`; a link on any other name captures nothing.
+    expect(referralLink({ origin: "https://banan.to", code: "ABC123" })).toContain("?ref=");
+  });
+});
+
+describe("saving the settings from the admin screen", () => {
+  it("does not reset a field the form did not send", async () => {
+    const { readReferralSettings, DEFAULT_REFERRAL_SETTINGS } = await import("./config");
+    /*
+      The save built its payload with `Number(x) || 0`, which cannot tell "not
+      in this form" from "the admin typed zero". The first save from a screen
+      that does not render the hold field would have set the three-day hold to
+      none and paid every referrer the moment an order completed.
+
+      This asserts the reader's side of the same contract: a settings block
+      that omits a key keeps the programme's value for it.
+    */
+    const saved = readReferralSettings({ referral: { enabled: true, buyerPercent: 10 } });
+    expect(saved.holdDays).toBe(DEFAULT_REFERRAL_SETTINGS.holdDays);
+    expect(saved.holdDays).toBe(3);
+    expect(saved.dailyInviteLimit).toBe(DEFAULT_REFERRAL_SETTINGS.dailyInviteLimit);
+  });
+
+  it("still honours an explicit zero", async () => {
+    const { readReferralSettings } = await import("./config");
+    expect(readReferralSettings({ referral: { holdDays: 0 } }).holdDays).toBe(0);
+  });
+});
