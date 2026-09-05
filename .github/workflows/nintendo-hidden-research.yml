@@ -1,0 +1,35 @@
+name: Nintendo hidden catalogue research
+on:
+  push:
+    branches: [codex/nintendo-hidden-research-20260905]
+    paths:
+      - .github/workflows/nintendo-hidden-research.yml
+      - scripts/nintendo-hidden-research.mjs
+permissions:
+  contents: read
+concurrency:
+  group: nintendo-hidden-research-20260905
+  cancel-in-progress: false
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Inspect catalogue access and matching records
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          CLOUDFLARE_D1_DATABASE_ID: ${{ secrets.CLOUDFLARE_D1_DATABASE_ID }}
+        run: node scripts/nintendo-hidden-research.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nintendo-hidden-access-audit
+          path: nintendo-hidden-access-audit.json
+          retention-days: 7
