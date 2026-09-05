@@ -18,6 +18,10 @@ try {
     if (!response.ok || result.success === false) throw new Error(`Cloudflare request failed: HTTP ${response.status}; codes ${(result.errors || []).map(e=>e.code).join(',')}`);
     return result.result;
   };
+  const stats=await call(`d1/database/${db}/query`,{sql:"SELECT count(*) AS row_count FROM store_kv"});
+  report.storeKvRows=stats.flatMap(x=>x.results||[]);
+  const schema=await call(`d1/database/${db}/query`,{sql:"SELECT name FROM sqlite_master WHERE type='table' AND (name LIKE '%product%' OR name LIKE '%store%')"});
+  report.productTableNames=schema.flatMap(x=>x.results||[]);
   const results = await call(`d1/database/${db}/query`, { sql: "SELECT key, value FROM store_kv WHERE key='store:products' OR key LIKE 'store:products#%' OR key LIKE 'store:product:%' ORDER BY key" });
   const rows = results.flatMap(x=>x.results || []);
   report.d1Accessible = true;
@@ -29,13 +33,19 @@ try {
     const p=JSON.parse(row.value);
     if (p._deleted) live.delete(p.id); else if(p.id) live.set(p.id,p);
   }
+  report.catalogueRows=rows.length;
+  report.liveProducts=live.size;
+  if(report.productTableNames.some(x=>x.name==='product_index')){
+    const idx=await call(`d1/database/${db}/query`,{sql:"SELECT count(*) AS row_count FROM product_index"});
+    report.productIndexRows=idx.flatMap(x=>x.results||[]);
+  }
   const pattern = /katana|shovel|tales.of.arise|rune.factory.4|vesperia|luminous.avenger|virche|fuyuzono|winter.*sacrifice|triangle.strategy|elliot|sky.*2nd|danganronpa.*2|nobunaga|star.fox|ryza|divinity|onimusha|crash.bandicoot|titans.of.the.tide|luigi.*mansion.2/i;
   for (const p of live.values()) {
     if (!pattern.test(`${p.title} ${p.titleEn} ${p.slug}`)) continue;
     report.products.push({ id:p.id,title:p.titleEn||p.title,slug:p.slug,platform:p.platform,isHidden:p.isHidden===true,nsuid:p.nsuid||'',frontCover:p.cartridgeImage||'',square:p.nintendoCardImage||'',cover:p.coverImage||'',banners:p.bannerImages||[],gallery:p.galleryImages||p.gallery||[],hasDescription:!!p.description,hasPerformance:!!p.devicePerformance });
   }
   try { await call('r2/buckets/bananto-private'); report.r2Accessible=true; } catch(e) { report.r2Error=e.message; }
-  console.log(JSON.stringify({ d1Accessible:report.d1Accessible,r2Accessible:report.r2Accessible,matchingProducts:report.products.length }));
+  console.log(JSON.stringify({ ...report,products:report.products.map(p=>({id:p.id,title:p.title,platform:p.platform,isHidden:p.isHidden})),matchingProducts:report.products.length }));
 } catch (e) {
   report.error = e.message;
   console.error(report.error);
