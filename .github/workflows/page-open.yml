@@ -1,0 +1,82 @@
+# Does each page actually open in a browser, on the live site?
+#
+# `page-smoke` asks the server over HTTP. That proves the route answers and the
+# content reached it, and it cannot see the failure a customer describes as "the
+# page doesn't open": the HTML arrives, hydration throws, React unmounts, and a
+# blank screen sits under a perfectly good 200.
+#
+# So this drives a real browser against the deployed site — the sandbox these
+# sessions run in has no route to banan.to, and a runner does.
+name: Page open
+
+on:
+  workflow_dispatch:
+    inputs:
+      origin:
+        description: "Origin to test"
+        type: string
+        default: "https://banan.to"
+      paths:
+        description: "Comma-separated paths"
+        type: string
+        default: "/,/add_game,/disc_trade,/problem,/account_guides,/faq,/policy,/support"
+      ua:
+        description: "User agent to present (URL-encoded); blank uses the default"
+        type: string
+        default: ""
+  # Same as `page-smoke`: a new or edited checker runs itself, so it can be used
+  # from a branch without first being merged to main.
+  push:
+    branches: ["claude/**"]
+    paths:
+      - "scripts/page-open-check.mjs"
+      - ".github/workflows/page-open.yml"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: page-open
+  cancel-in-progress: true
+
+jobs:
+  open:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      # The lockfile carries platform-specific optional dependencies that the
+      # runner's default npm 10 refuses on Linux (`EBADPLATFORM` on
+      # `@cloudflare/workerd-darwin-64`). Every other workflow here upgrades
+      # first for the same reason.
+      - run: npm install -g npm@11.19.1
+      - run: npm ci --no-audit --no-fund
+
+      # `playwright-core` carries no installer, so the browser comes from the
+      # `playwright` package's CLI, pinned to the same version.
+      - name: Install Chromium
+        run: npx --yes playwright@1.62.1 install --with-deps chromium
+
+      - name: Open every page
+        env:
+          ORIGIN: ${{ inputs.origin }}
+          PATHS: ${{ inputs.paths }}
+          UA: ${{ inputs.ua }}
+        run: |
+          node scripts/page-open-check.mjs \
+            --base "${ORIGIN:-https://banan.to}" \
+            --paths "${PATHS:-/,/add_game,/disc_trade,/problem,/account_guides,/faq,/policy,/support}" \
+            ${UA:+--ua "$UA"} \
+            --json page-open.json
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: page-open
+          path: page-open.json

@@ -95,6 +95,30 @@ export function initialVariantName(
 }
 
 /**
+ * The list that prices a product's sub-types, under either of its two names.
+ *
+ * `types` is the current name and `variants` the older one, and until now
+ * three readers each had their own rule for choosing between them:
+ *
+ *   - {@link resolveUnitPrice}, which is what the server charges, read
+ *     `types` when the key was an array and `variants` otherwise;
+ *   - `buildProductView`, which the product page renders from, read
+ *     `variants` first;
+ *   - {@link listingPrice}, which prints the storefront card, read `variants`
+ *     and never looked at `types` at all.
+ *
+ * A record carrying both therefore showed one price on the card, another on
+ * the page, and was billed a third. One rule, in one place, is what stops
+ * that: the rule is `resolveUnitPrice`'s, because the till is the one that
+ * cannot be wrong, and the two displays now follow it rather than differ
+ * from it.
+ */
+export function pricingTypeRows(product: Row | null | undefined): unknown {
+  if (!product || typeof product !== "object") return undefined;
+  return Array.isArray(product["types"]) ? product["types"] : product["variants"];
+}
+
+/**
  * The price a listing card prints for this product — the same amount the
  * details page shows the moment it opens.
  */
@@ -102,7 +126,7 @@ export function listingPrice(product: Row | null | undefined): number {
   if (!product || typeof product !== "object") return 0;
   const base = toAmount(product["price"]);
   const optionRows = pricedRows(product["options"]);
-  const rows = optionRows.length ? optionRows : pricedRows(product["variants"]);
+  const rows = optionRows.length ? optionRows : pricedRows(pricingTypeRows(product));
   if (rows.length === 0) return base > 0 ? base : 0;
   if (base > 0 && rows.some((row) => row.price === base)) return base;
   return rows.reduce((min, row) => (row.price < min.price ? row : min)).price;
@@ -184,12 +208,9 @@ export function resolveUnitPrice(
   };
   if (!product || typeof product !== "object") return empty;
 
-  /*
-    `types` is the current name and `variants` the older one. Both are read,
-    the same way `validateLine` has always read them, so a record written by
-    either generation of the editor prices correctly.
-  */
-  const typeRows = Array.isArray(product["types"]) ? product["types"] : product["variants"];
+  // `types` under either of its names — see `pricingTypeRows`. This is the
+  // rule; the two display readers follow it.
+  const typeRows = pricingTypeRows(product);
   const selectedType = rowById(typeRows, selection.typeId);
   const selectedOption = rowById(product["options"], selection.optionId);
   const selectedEdition = rowById(product["editions"], selection.editionId);

@@ -32,6 +32,30 @@ const ORIGIN = (process.argv[2] || process.env.SMOKE_ORIGIN || "https://banan.to
  * exist if the content is really being served.
  */
 const PAGES = [
+  /*
+    The home page, and the seven cards of "خدمات وإرشادات المتجر".
+
+    Every one of those pages answers 200 to a direct request, and the shop
+    still reports 404s. A page that serves and a card that reaches it are two
+    different claims, and only the first was ever checked: if the strip renders
+    with a link the router does not know, tapping it is a 404 in the browser
+    while every server-side check stays green.
+
+    So the hrefs are asserted where a customer actually meets them.
+  */
+  {
+    path: "/",
+    must: [
+      "خدمات وإرشادات المتجر",
+      'href="/add_game"',
+      'href="/disc_trade"',
+      'href="/problem"',
+      'href="/account_guides"',
+      'href="/faq"',
+      'href="/policy"',
+      'href="/support"',
+    ],
+  },
   {
     path: "/policy",
     must: ["السياس", "banan", "ضمان الحظر", 'id="no-delete"', 'id="no-refund"', "الملخص"],
@@ -53,6 +77,26 @@ const PAGES = [
   {
     path: "/problem",
     must: ["banan", "Can’t play this software right now", "2124-8006", "ما لا يجب فعله"],
+  },
+  /*
+    The three service cards, which this list has never covered.
+
+    "خدمات وإرشادات المتجر" on the home page is seven cards, and only four of
+    them were checked here — the four help pages. The other three are the
+    *services*, and a 404 on one of them was invisible to every check the shop
+    has: the smoke was green because it never asked.
+  */
+  {
+    path: "/add_game",
+    must: ["banan", "طلب خاص", "ابحث عن اللعبة أولاً"],
+  },
+  {
+    path: "/disc_trade",
+    must: ["banan", "لعبتك القديمة", "كيف تتم عملية المقايضة؟"],
+  },
+  {
+    path: "/support",
+    must: ["banan", "مركز الدعم والمساعدة", "support@banan.to"],
   },
 ];
 
@@ -111,10 +155,27 @@ async function fetchPage(path) {
   return { res, body, ms: Date.now() - started };
 }
 
-/** One retry for the statuses a shield returns, never for the app's own. */
+/**
+ * One retry for the statuses a shield returns, never for the app's own — and
+ * the challenge is *counted*, not forgotten.
+ *
+ * This used to return the second answer and say nothing about the first, so a
+ * run in which every page had to be asked twice reported the same clean green
+ * as a run in which none did. That is precisely the failure a customer
+ * reports as "the page doesn't open": they tap a card, Cloudflare answers
+ * "Performing security verification", and there is no retry three seconds
+ * later on their phone.
+ *
+ * The retry stays, so one challenge does not fail a release on its own. What
+ * changed is that the smoke report can no longer come back green without
+ * saying how many pages were challenged on the way.
+ */
+const challenged = [];
+
 async function fetchPageWithRetry(path) {
   const first = await fetchPage(path);
   if (first.res.status !== 403 && first.res.status !== 429) return first;
+  challenged.push(`${path} (${first.res.status})`);
   await new Promise((resolve) => setTimeout(resolve, 3000));
   return fetchPage(path);
 }
@@ -193,8 +254,33 @@ try {
 }
 say();
 
+/*
+  The shield, reported rather than swallowed.
+
+  Every page here was reachable on the second ask, and a customer does not get
+  a second ask — so a run that had to retry is not the same as a run that did
+  not, and it must not print the same sentence.
+*/
+if (challenged.length > 0) {
+  say(`## ${challenged.length} page(s) were challenged before they were served`);
+  say();
+  for (const entry of challenged) say(`- ${entry}`);
+  say();
+  say(
+    "A customer has no retry: a challenged request is a page that did not open." +
+      " Measure the rate with `scripts/edge-challenge-rate.mjs`. The setting is" +
+      " Cloudflare's (Bot Fight Mode, a WAF managed rule, or Under Attack mode)," +
+      " not the application's.",
+  );
+  say();
+}
+
 if (failed.length === 0) {
-  say("## All checks passed.");
+  say(
+    challenged.length === 0
+      ? "## All checks passed."
+      : "## Every page was served, but only after a security challenge.",
+  );
 } else {
   say(`## ${failed.length} check(s) failed`);
   say();
