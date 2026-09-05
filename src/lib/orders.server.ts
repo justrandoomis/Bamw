@@ -827,8 +827,19 @@ export async function createOrderForUser(
     Marking the attribution converted is what stops the same referral
     discounting a second order — the row can only move out of `captured` or
     `eligible` once, so a repeated checkout finds nothing left to apply.
+
+    Only when the discount was actually taken, though. This ran on every order
+    carrying a referral, and since the rules changed that is no longer the same
+    thing: the referrer earns on every qualifying order, so an order where the
+    buyer's half was not taken — their second order, or a first order where a
+    coupon was worth at least as much and won — still records a referral.
+    Marking those `used` retired an attribution that had never given anybody a
+    discount, and the customer's own referral page then showed the invitation
+    as converted with nothing taken off. What makes the discount once-in-a-
+    lifetime is `referral_discount_used_at` on the member, which only a
+    successful claim writes; this row is not a second copy of that fact.
   */
-  if (appliedReferral) {
+  if (referralClaimed && appliedReferral) {
     await markAttributionConverted(appliedReferral.attributionId ?? null, orderId);
   }
 

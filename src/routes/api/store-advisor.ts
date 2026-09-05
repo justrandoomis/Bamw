@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { GoogleGenAI } from "@google/genai";
 import { getStore, listOrders } from "@/lib/db.server";
+import type { Order } from "@/lib/types";
 import { d1All, ensureSchema, getD1 } from "@/lib/d1.server";
 import { body, guard, json } from "@/lib/http.server";
 import { requireAdmin } from "@/lib/session.server";
@@ -29,7 +30,16 @@ interface AdvisorResult {
 
 async function gatherLiveStoreData() {
   const store = await getStore();
-  const orders = await listOrders().catch(() => []);
+  /*
+    Typed on the failure branch as well as the success one.
+
+    `catch(() => [])` gives back `Order[] | never[]`, and every `orders.filter`
+    below then reads its callback parameter as `never` — so the counts on the
+    advisor's dashboard depended on nothing worse than which order TypeScript
+    happened to resolve the modules in. Naming the type on both branches is
+    what makes them one array.
+  */
+  const orders: Order[] = await listOrders().catch(() => []);
 
   let reviews: any[] = [];
   if (getD1()) {

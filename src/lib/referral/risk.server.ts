@@ -36,6 +36,14 @@ export type ReferralRiskReason =
   | "buyer_blocked"
   | "code_inactive"
   | "not_first_purchase"
+  /*
+    The person following the link already had an account.
+
+    Not an abuse signal — an honest long-standing customer trips it — but it
+    belongs in this list because it is a reason a referral was refused, and the
+    admin trail reads its reasons from here.
+  */
+  | "not_new_customer"
   | "daily_invite_limit"
   | "daily_reward_cap"
   | "monthly_reward_cap"
@@ -62,6 +70,9 @@ const WEIGHTS: Record<ReferralRiskReason, number> = {
   buyer_blocked: 100,
   code_inactive: 100,
   not_first_purchase: 40,
+  // Zero: it refuses the referral without accusing anybody of anything, so it
+  // must not push a member up the admin's abuse triage list.
+  not_new_customer: 0,
   daily_invite_limit: 50,
   daily_reward_cap: 30,
   monthly_reward_cap: 30,

@@ -400,6 +400,62 @@ export async function captureAttribution(params: {
     return refuse(verdict.reasons);
   }
 
+  /*
+    A link opened by somebody who is already signed in.
+
+    The new-customer rule used to be enforced in one place only — the moment a
+    session is established — which is the moment a *guest* who followed a link
+    signs up or signs in. It is not the only way in. A member who is already
+    signed in and clicks a friend's link never establishes a session, so
+    nothing re-checked them: the attribution was written against their account
+    with `bound_at` set, and the cart found it and took ten per cent off. The
+    same hole let a code typed into the cart through, because that path applies
+    it by calling this function with the buyer attached.
+
+    So the rule is asked here too, against the record, at the moment of the
+    click: an account that existed before this link was opened, or belongs to
+    another referrer, or has bought before, is refused and nothing is written.
+    A guest is not asked — there is no account to ask about yet, and the check
+    at sign-in is what covers them.
+
+    Passing the referrer is what keeps the friend this link already brought in
+    from being refused by their own binding when they open the link a second
+    time.
+  */
+  if (params.viewer?.id) {
+    const { checkReferredAccountIsNew } = await import("./binding.server");
+    const newAccount = await checkReferredAccountIsNew(
+      params.viewer.id,
+      new Date().toISOString(),
+      referrer.id,
+    );
+    if (!newAccount.ok) {
+      await recordRiskEvent({
+        eventType: "capture_blocked",
+        referrerUserId: referrer.id,
+        buyerUserId: params.viewer.id,
+        riskScore: verdict.score,
+        deviceHash: identity.deviceHash,
+        ipHash: identity.ipHash,
+        metadata: { stage: "capture", notNewAccount: newAccount.reason ?? "unknown_account" },
+      });
+      return {
+        ok: false,
+        setCookies: identity.setCookies,
+        /*
+          Named, unlike the anti-abuse refusals.
+
+          Nothing is given away by saying it — the customer knows perfectly
+          well whether they already had an account — and the alternative is a
+          long-standing customer reading "this could not be applied" and
+          concluding the shop is broken.
+        */
+        message: "كود الإحالة مخصص للمستخدمين الجدد فقط — حسابك مسجّل لدينا من قبل.",
+        reasons: ["not_new_customer"],
+      };
+    }
+  }
+
   const store = await getStore();
   const product = params.productRef
     ? (findProductByIdOrSlug(store?.products as unknown[], params.productRef) as
@@ -695,7 +751,11 @@ export async function bindAttributionToUser(request: Request, userId: string): P
     const { checkReferredAccountIsNew, bindReferrerIfUnbound } = await import("./binding.server");
     const newAccount = verdict.blocked
       ? { ok: false, reason: undefined }
-      : await checkReferredAccountIsNew(userId, attribution.capturedAt);
+      : await checkReferredAccountIsNew(
+          userId,
+          attribution.capturedAt,
+          attribution.referrerUserId,
+        );
 
     const refused = verdict.blocked || !newAccount.ok;
 
