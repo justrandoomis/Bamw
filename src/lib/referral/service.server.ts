@@ -514,6 +514,20 @@ export async function activeAttribution(
   request: Request,
   viewer?: User,
 ): Promise<ReferralAttribution | undefined> {
+  /*
+    Who brought this member in, if anyone already has.
+
+    Once an account carries a referrer it is that person's, permanently — the
+    shop's rule is that the referrer is recorded when the friend registers and
+    stands from then on. So a newer link opened later cannot re-point an
+    existing member at somebody else, and, just as importantly, the cart cannot
+    promise a discount to one referrer while the order credits another: that
+    disagreement is what a customer sees as a price that changes at checkout.
+  */
+  const boundReferrerId = viewer?.id ? (await referralBinding(viewer.id)).referrerUserId : "";
+  const belongsToBoundReferrer = (attribution: ReferralAttribution) =>
+    !boundReferrerId || attribution.referrerUserId === boundReferrerId;
+
   const token = await readAttributionCookie(request);
   if (token) {
     const row = await d1First<Record<string, unknown>>(
@@ -522,7 +536,9 @@ export async function activeAttribution(
     );
     if (row?.["id"]) {
       const attribution = toReferralAttribution(row);
-      if (isAttributionUsable(attribution, viewer?.id)) return attribution;
+      if (isAttributionUsable(attribution, viewer?.id) && belongsToBoundReferrer(attribution)) {
+        return attribution;
+      }
     }
   }
 
@@ -532,6 +548,31 @@ export async function activeAttribution(
         WHERE referred_user_id = ? AND status IN ('pending', 'captured', 'eligible')
         ORDER BY captured_at DESC LIMIT 1`,
       viewer.id,
+    );
+    if (row?.["id"]) {
+      const attribution = toReferralAttribution(row);
+      if (isAttributionUsable(attribution, viewer.id) && belongsToBoundReferrer(attribution)) {
+        return attribution;
+      }
+    }
+  }
+
+  /*
+    Bound, but the cookie is gone or names somebody else.
+
+    This is the ordinary case the shop asked for: a friend registers through a
+    link on one phone and comes back a week later on another. Nothing in the
+    browser remembers, and the account does — so the attribution is found by
+    the referrer the account carries rather than by a cookie.
+  */
+  if (viewer?.id && boundReferrerId) {
+    const row = await d1First<Record<string, unknown>>(
+      `SELECT * FROM referral_attributions
+        WHERE referred_user_id = ? AND referrer_user_id = ?
+          AND status IN ('pending', 'captured', 'eligible')
+        ORDER BY captured_at DESC LIMIT 1`,
+      viewer.id,
+      boundReferrerId,
     );
     if (row?.["id"]) {
       const attribution = toReferralAttribution(row);
@@ -641,6 +682,23 @@ export async function bindAttributionToUser(request: Request, userId: string): P
     */
     await bindIdentitiesToUser(userId, identity);
 
+    /*
+      The programme is for new customers, and this is where that is decided.
+
+      Signing in is the first moment there is an account to judge, so it is the
+      only place the rule can be enforced: the person who followed the link
+      must not have had an account when they followed it. A long-standing
+      customer opening a friend's link is refused here — the attribution is
+      marked rejected and no referrer is recorded, so nothing downstream can
+      pay out on it.
+    */
+    const { checkReferredAccountIsNew, bindReferrerIfUnbound } = await import("./binding.server");
+    const newAccount = verdict.blocked
+      ? { ok: false, reason: undefined }
+      : await checkReferredAccountIsNew(userId, attribution.capturedAt);
+
+    const refused = verdict.blocked || !newAccount.ok;
+
     const now = new Date().toISOString();
     await d1Run(
       `UPDATE referral_attributions
@@ -649,22 +707,41 @@ export async function bindAttributionToUser(request: Request, userId: string): P
         WHERE id = ? AND status IN ('pending', 'captured', 'eligible')`,
       userId,
       now,
-      verdict.blocked ? "rejected" : "pending",
+      refused ? "rejected" : "pending",
       verdict.score,
-      verdict.blocked ? verdict.verdict : null,
+      verdict.blocked ? verdict.verdict : (newAccount.reason ?? null),
       now,
       attribution.id,
     );
 
+    /*
+      The referrer is recorded on the account *now*, not at the first purchase.
+
+      `bindReferrerIfUnbound` has always existed for exactly this — its own
+      comment says "a member who is not buying yet" — and was wired only into
+      checkout. So `users.referred_by_user_id` stayed NULL from signup until an
+      order completed, and a friend who registered through a link and came back
+      a week later on a different device arrived with nothing to connect them
+      to the person who brought them: the cookie was the only thread, and
+      cookies do not survive a new phone.
+    */
+    if (!refused) {
+      await bindReferrerIfUnbound(userId, attribution.referrerUserId);
+    }
+
     await recordRiskEvent({
       attributionId: attribution.id,
-      eventType: verdict.blocked ? "bind_blocked" : "bound",
+      eventType: refused ? "bind_blocked" : "bound",
       referrerUserId: attribution.referrerUserId,
       buyerUserId: userId,
       riskScore: verdict.score,
       deviceHash: identity.deviceHash,
       ipHash: identity.ipHash,
-      metadata: { reasons: verdict.reasons, stage: "bind" },
+      metadata: {
+        reasons: verdict.reasons,
+        stage: "bind",
+        ...(newAccount.reason ? { notNewAccount: newAccount.reason } : {}),
+      },
     });
   } catch (error) {
     // Signing in must never fail because a referral could not be moved.

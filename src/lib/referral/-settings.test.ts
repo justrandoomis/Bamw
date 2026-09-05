@@ -45,7 +45,26 @@ describe("reading the settings", () => {
     expect(DEFAULT_REFERRAL_SETTINGS.linkTtlDays).toBe(30);
     expect(DEFAULT_REFERRAL_SETTINGS.firstPurchaseOnly).toBe(true);
     expect(DEFAULT_REFERRAL_SETTINGS.stackWithCoupon).toBe(false);
-    expect(DEFAULT_REFERRAL_SETTINGS.eligibleCategories).toEqual(["game"]);
+    /*
+      Every section the shop sells, except the top-up cards: at 7,500 against a
+      6,800 cost, ten per cent to the buyer and ten to the referrer is 1,500
+      against a 700 margin, so a referred card would be sold at a loss. The
+      card's own copy already says it is excluded from every promotion.
+    */
+    expect(DEFAULT_REFERRAL_SETTINGS.eligibleCategories).toEqual([
+      "game",
+      "hardware",
+      "amiibo",
+      "accessory",
+      "used",
+      "bundle",
+    ]);
+    expect(DEFAULT_REFERRAL_SETTINGS.eligibleCategories).not.toContain("gift_card");
+    // Three days of hold, then the order must also be complete.
+    expect(DEFAULT_REFERRAL_SETTINGS.holdDays).toBe(3);
+    // The two rules that made the offer almost unreachable, now off.
+    expect(DEFAULT_REFERRAL_SETTINGS.restrictToSharedProduct).toBe(false);
+    expect(DEFAULT_REFERRAL_SETTINGS.offlineAccountsOnly).toBe(false);
   });
 
   it("reads whole percent from the admin form and basis points from storage", () => {
@@ -73,7 +92,7 @@ describe("reading the settings", () => {
 
   it("refuses an empty category list, which would silently disable the programme", () => {
     expect(readReferralSettings({ referral: { eligibleCategories: [] } }).eligibleCategories).toEqual(
-      ["game"],
+      DEFAULT_REFERRAL_SETTINGS.eligibleCategories,
     );
     expect(
       readReferralSettings({ referral: { eligibleCategories: ["game", "bundle", "nonsense"] } })
@@ -102,9 +121,23 @@ describe("which line earns", () => {
     expect(verdict.buyerPercentBps).toBe(1000);
   });
 
-  it("refuses the online account", () => {
+  it("pays on an online account too, now the offer is not offline-only", () => {
+    /*
+      This rule refused every online account, every physical item and every
+      card, so the offer survived only on an offline-account line of the exact
+      shared game — which is why the code looked dead.
+    */
     const verdict = evaluateReferralLine({
       settings,
+      product: GAME,
+      line: { ...OFFLINE, optionId: "online_account", typeId: "standard_online" },
+    });
+    expect(verdict.eligible).toBe(true);
+  });
+
+  it("still refuses one when the shop turns the offline-only rule back on", () => {
+    const verdict = evaluateReferralLine({
+      settings: { ...settings, offlineAccountsOnly: true },
       product: GAME,
       line: { ...OFFLINE, optionId: "online_account", typeId: "standard_online" },
     });
@@ -172,9 +205,20 @@ describe("which line earns", () => {
     expect(verdict.referrerPercentBps).toBe(500);
   });
 
-  it("pays only on the game the link was shared for", () => {
+  it("pays on any eligible game, not only the one the link was shared for", () => {
+    // A referral brings a customer to the shop, not to one shelf of it.
     const verdict = evaluateReferralLine({
       settings,
+      product: GAME,
+      line: OFFLINE,
+      sharedProductId: "prd_other",
+    });
+    expect(verdict.eligible).toBe(true);
+  });
+
+  it("still narrows to the shared product when the shop asks for it", () => {
+    const verdict = evaluateReferralLine({
+      settings: { ...settings, restrictToSharedProduct: true },
       product: GAME,
       line: OFFLINE,
       sharedProductId: "prd_other",

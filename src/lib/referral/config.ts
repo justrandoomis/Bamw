@@ -27,9 +27,34 @@ export interface ReferralSettings {
   eligibleCategories: CategoryType[];
   /** Only the friend's first completed purchase earns. */
   firstPurchaseOnly: boolean;
+  /**
+   * Restrict the offer to the exact product the link was shared from.
+   *
+   * The first version of the programme required this and hardcoded it, so a
+   * friend who followed a link to one game and bought another was refused —
+   * with the same unhelpful sentence as an abuser. Off by default now: a
+   * referral brings a customer to the shop, not to one shelf of it.
+   */
+  restrictToSharedProduct: boolean;
+  /**
+   * Restrict the offer to offline-account selections.
+   *
+   * Also hardcoded in the first version, and the single narrowest rule in the
+   * programme: every online account, every physical item and every card was
+   * refused. Off by default.
+   */
+  offlineAccountsOnly: boolean;
   /** May a referral and a coupon both come off one order? */
   stackWithCoupon: boolean;
-  /** Days a reward is held at `pending` before it may be approved. */
+  /**
+   * Days a reward is held at `pending` before it may be approved.
+   *
+   * The hold and the order both have to clear: `approveRewardsForOrder` skips
+   * a reward whose `hold_until` is still in the future, and `dueHeldRewards`
+   * — which the scheduled job drains — only picks up rewards whose order has
+   * reached `completed`. So "three days *and* the order is finished", not
+   * whichever comes first.
+   */
   holdDays: number;
   /** How many friends one member may bring in per day. */
   dailyInviteLimit: number;
@@ -59,10 +84,30 @@ export const DEFAULT_REFERRAL_SETTINGS: ReferralSettings = {
   referrerPercentBps: DEFAULT_PERCENT_BPS,
   maxRewardIqd: 0,
   linkTtlDays: 30,
-  eligibleCategories: ["game"],
+  /*
+    Everything the shop sells, except the top-up cards.
+
+    This was `["game"]` alone, which refused a referral on hardware, amiibo,
+    accessories, used items and bundles — most of the catalogue.
+
+    Gift cards stay out, and not as an oversight: the $5 card sells at 7,500
+    against a 6,800 cost, so ten per cent to the buyer and ten to the referrer
+    is 1,500 against a 700 margin — every referred card would be sold at a
+    loss. The shop already says so on the card itself ("مستثناة من جميع العروض
+    الترويجية والتخفيضات"), and this keeps the code and that promise agreeing.
+  */
+  eligibleCategories: ["game", "hardware", "amiibo", "accessory", "used", "bundle"],
   firstPurchaseOnly: true,
   stackWithCoupon: false,
-  holdDays: 0,
+  restrictToSharedProduct: false,
+  offlineAccountsOnly: false,
+  /*
+    Three days, as the shop asks: the referrer's ten per cent sits in their
+    wallet as pending and becomes spendable once the hold has passed and the
+    order is complete. It was zero, which paid the moment an order completed
+    and left nothing to claw back if it unravelled afterwards.
+  */
+  holdDays: 3,
   dailyInviteLimit: 50,
   dailyRewardCapIqd: 0,
   monthlyRewardCapIqd: 0,
@@ -205,6 +250,14 @@ export function readReferralSettings(storeSettings: unknown): ReferralSettings {
     stackWithCoupon: readBoolean(
       merged["stackWithCoupon"] ?? merged["referralStackWithCoupon"],
       DEFAULT_REFERRAL_SETTINGS.stackWithCoupon,
+    ),
+    restrictToSharedProduct: readBoolean(
+      merged["restrictToSharedProduct"] ?? merged["referralRestrictToSharedProduct"],
+      DEFAULT_REFERRAL_SETTINGS.restrictToSharedProduct,
+    ),
+    offlineAccountsOnly: readBoolean(
+      merged["offlineAccountsOnly"] ?? merged["referralOfflineAccountsOnly"],
+      DEFAULT_REFERRAL_SETTINGS.offlineAccountsOnly,
     ),
     holdDays: Math.min(
       90,

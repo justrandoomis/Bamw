@@ -84,9 +84,17 @@ export interface ClaimResult {
  * A single conditional UPDATE, and the whole of the concurrency rule. Two
  * checkouts running at once both read "not used yet"; only one of them can
  * satisfy `referral_discount_used_at IS NULL` in the write, so only one gets
- * the discount and the other is told there is none. The same statement writes
- * `referred_by_user_id` under `IS NULL`, which is what makes the binding
- * permanent — a later link finds the column already set and cannot move it.
+ * the discount and the other is told there is none.
+ *
+ * The referrer guard reads "NULL, or already this same referrer". It used to
+ * be `IS NULL` alone, which was right only while nothing recorded a referrer
+ * before checkout — and the moment signup began recording one (which is what
+ * the shop asks for: bound when they register, not when they first buy) that
+ * clause could never be satisfied and every referred order silently lost its
+ * discount. Accepting the same referrer keeps both guarantees that mattered:
+ * a *different* link still cannot take a member off the person who brought
+ * them, and `referral_discount_used_at IS NULL` is still the one that decides
+ * a race.
  *
  * Both guards are in the WHERE clause rather than checked first in JavaScript,
  * because a check and a write that are not the same statement are a race.
@@ -109,11 +117,12 @@ export async function claimFirstReferralDiscount(params: {
               referred_by_user_id = COALESCE(referred_by_user_id, ?)
         WHERE id = ?
           AND referral_discount_used_at IS NULL
-          AND referred_by_user_id IS NULL`,
+          AND (referred_by_user_id IS NULL OR referred_by_user_id = ?)`,
       now,
       orderId,
       referrerUserId,
       userId,
+      referrerUserId,
     );
     /*
       Read back rather than trusting a driver's change count: D1 adapters
@@ -155,6 +164,84 @@ export async function releaseReferralDiscount(orderId: string): Promise<void> {
       error: error instanceof Error ? error.message : String(error),
     });
   });
+}
+
+/**
+ * Was this account brand new when it followed the link?
+ *
+ * The programme is for bringing *new* customers in, so the only person a
+ * referral may pay for is one who had no account at the moment they clicked.
+ * Three ways an account fails that, and each is checked against the record
+ * rather than trusted from the browser:
+ *
+ *   1. the account already existed when the link was opened — the surest
+ *      signal there is, because it is the literal statement of the rule;
+ *   2. the account is already bound to a referrer — one member is brought in
+ *      by one person, for ever, and a second link cannot take them off the
+ *      first;
+ *   3. the account has ordered before — a returning customer, whatever their
+ *      row says about referrers.
+ *
+ * A missing or unparseable `created_at` is treated as *not* new. An account
+ * whose age cannot be established is exactly the case where paying out would
+ * be a guess, and refusing costs a discount while paying wrongly costs money
+ * and the rule.
+ */
+export interface NewReferralCheck {
+  ok: boolean;
+  reason?: "account_predates_link" | "already_referred" | "existing_customer" | "unknown_account";
+}
+
+export async function checkReferredAccountIsNew(
+  userId: string,
+  capturedAt: string,
+): Promise<NewReferralCheck> {
+  if (!userId) return { ok: false, reason: "unknown_account" };
+  try {
+    const row = await d1First<Record<string, unknown>>(
+      `SELECT created_at, referred_by_user_id FROM users WHERE id = ? LIMIT 1`,
+      userId,
+    );
+    if (!row) return { ok: false, reason: "unknown_account" };
+
+    if (text(row["referred_by_user_id"])) return { ok: false, reason: "already_referred" };
+
+    const created = Date.parse(String(row["created_at"] ?? ""));
+    const clicked = Date.parse(capturedAt);
+    if (!Number.isFinite(created)) return { ok: false, reason: "unknown_account" };
+    /*
+      A little slack, because the two stamps are written by different requests.
+
+      Registration captures and creates within seconds of each other, and the
+      attribution is always written first — but clock skew between isolates,
+      and a visitor who lands and signs up in one motion, can put the account a
+      moment "before" the click. Thirty seconds is far below the time any real
+      returning customer's account predates a link by, and comfortably above
+      any skew.
+    */
+    const SLACK_MS = 30_000;
+    if (Number.isFinite(clicked) && created < clicked - SLACK_MS) {
+      return { ok: false, reason: "account_predates_link" };
+    }
+
+    const priorOrder = await d1First<Record<string, unknown>>(
+      `SELECT id FROM orders WHERE user_id = ? LIMIT 1`,
+      userId,
+    );
+    if (priorOrder?.["id"]) return { ok: false, reason: "existing_customer" };
+
+    return { ok: true };
+  } catch (error) {
+    /*
+      A failed lookup refuses. Everywhere else in this shop a failed check
+      allows, because the cost is a message nobody reads; here the cost is
+      money paid on a rule that was never established.
+    */
+    console.warn("[referral:new_account_check_failed]", {
+      error: error instanceof Error ? error.message : String(error),
+    });
+    return { ok: false, reason: "unknown_account" };
+  }
 }
 
 /**

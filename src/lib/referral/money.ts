@@ -21,18 +21,19 @@ export const DEFAULT_PERCENT_BPS = 1_000;
 export const BUYER_PERCENT_BPS = 1_000;
 
 /**
- * The referrer's share: 5%, fixed.
+ * The referrer's share: 10%, fixed.
  *
  * Fixed in code rather than read from the store settings because the rule is
- * that it is fixed. Production still carries a `referrerPercentBps` of 1000
- * from the programme's first version; leaving that readable would have paid
- * 10% while the rule said 5%, so the setting is no longer consulted for this
- * side and the admin screen no longer offers it.
+ * that it is fixed — one number, in one place, that cannot be moved by a
+ * mis-typed field in an admin form. It was 5% under the previous rules; the
+ * shop has set it to ten, matching the friend's discount, so a referral now
+ * costs the shop twenty per cent of the first order and ten of every one
+ * after.
  *
  * Unlike the buyer's discount this is paid on *every* qualifying order the
  * referred member ever places, not only the first.
  */
-export const REFERRER_PERCENT_BPS = 500;
+export const REFERRER_PERCENT_BPS = 1_000;
 
 /** Largest order line this arithmetic will accept, as a sanity bound. */
 const MAX_PRICE_IQD = 1_000_000_000;
