@@ -360,10 +360,13 @@ export function priceGame(costs: SupplierCosts, platform: Platform, tier: Demand
 /**
  * The prices the file already states, when it states them properly.
  *
- * The shipped template asks the operator for a ready price — its own comment
- * on the type block says the tiers are added «بسعرها الجاهز من الملف», with
- * their ready price from the file — and when a file carries one there is
- * nothing for the pricing engine to decide. Read them and use them.
+ * When a file carries a real price there is nothing for the pricing engine to
+ * decide, so read it and use it. The template's guidance on this is thinner
+ * than it should be — the one place it mentions a stated price is the DLC
+ * clause on the type block, «تُضاف dlc_offline / dlc_online بسعرها الجاهز من
+ * الملف» — but the shape is unmistakable when it is there: eight of the
+ * seventy-six archive files carry offline rows whose price and cost differ,
+ * and those are the corrected ones.
  *
  * The care is in telling a ready price from the thing that merely looks like
  * one. The legacy archive this module was written for put a single supplier
@@ -413,14 +416,27 @@ export function readyTierPricing(types: readonly TemplateType[]): GamePricing | 
     for an online row whose `cost` appears on the offline side — and this is
     the same test, used to decide the file is not ready rather than which field
     to read.
+
+    Costs only, unlike `mapSupplierCosts`, which also collects the offline
+    `price`. What gets copied into an online row is the offline *cost*, and in
+    a legacy file the offline price is that same number anyway, so nothing is
+    lost by leaving it out. Including it costs a great deal: an online account
+    that happens to cost what the offline one sells for — 25,000 either side,
+    which is an ordinary thing for a shop to arrive at — would look like a
+    copy, and the whole file's prices would be thrown away for it.
+
+    It stays a fingerprint, not a proof. An operator who corrects the offline
+    cost and leaves a stale online row behind defeats it, because nothing in
+    the file distinguishes last month's offline cost from this month's. What it
+    reliably catches is the untouched legacy shape, which is what the archive
+    is full of: ninety of the ninety-five online rows in it carry a cost that
+    also appears on the offline side.
   */
-  const offlineAmounts = new Set<number>();
+  const offlineCosts = new Set<number>();
   for (const { row, account } of rows) {
     if (account !== "offline") continue;
     const cost = num(row.cost);
-    const price = num(row.price);
-    if (cost !== null) offlineAmounts.add(cost);
-    if (price !== null) offlineAmounts.add(price);
+    if (cost !== null) offlineCosts.add(cost);
   }
 
   const tiers: PricedTier[] = [];
@@ -429,7 +445,7 @@ export function readyTierPricing(types: readonly TemplateType[]): GamePricing | 
     const price = num(row.price);
     const cost = num(row.cost);
     if (price === null || cost === null || price <= cost) return undefined;
-    if (account === "online" && offlineAmounts.has(cost)) return undefined;
+    if (account === "online" && offlineCosts.has(cost)) return undefined;
     const key = `${account}_${content}`;
     // Two rows claiming one tier: the file disagrees with itself.
     if (seen.has(key)) return undefined;
@@ -455,6 +471,73 @@ export function readyTierPricing(types: readonly TemplateType[]): GamePricing | 
   if (!offlineBase || !at("online", "base")) return undefined;
 
   /*
+    Past this point the file *is* the priced one, so anything still wrong with
+    it is reported rather than quietly handed to the engine. Falling back here
+    would price the game off its supplier costs and silently ignore the numbers
+    the operator wrote, which is the one outcome worse than refusing.
+  */
+  const needsReview: string[] = [];
+
+  /*
+    A number that cannot be a price.
+
+    `12.000` is how a great many people write twelve thousand, and it reaches
+    here as the number 12 — the parser reads it with `Number()`, and `1.250`
+    likewise arrives as 1.25. Both clear every test above: positive, a margin
+    between them, no legacy fingerprint. The engine never had to think about it
+    because it only ever read these fields as costs and then priced from its
+    own bands; a stated price goes on the shelf as written, so a mistyped one
+    puts a game on the shelf at twelve dinars.
+
+    Whole dinars, because this shop has no subunit — every price it sets lands
+    on a step of 250 — and a floor of a thousand, which no game here has ever
+    been near. It is a typo guard, not a view about what a game is worth: the
+    operator's own number stands everywhere above it.
+  */
+  for (const tier of tiers) {
+    const where = `${tier.account}/${tier.content}`;
+    if (!Number.isInteger(tier.price) || !Number.isInteger(tier.cost)) {
+      needsReview.push(
+        `${where} — سعر أو تكلفة ليست رقماً صحيحاً (${tier.price} / ${tier.cost})؛ ربما كُتب فاصل الآلاف بنقطة`,
+      );
+    } else if (tier.price < 1_000) {
+      needsReview.push(
+        `${where} — السعر ${tier.price} أقل من أن يكون سعر بيع؛ ربما كُتب فاصل الآلاف بنقطة`,
+      );
+    }
+  }
+
+  /*
+    Extras on one account and not the other, which the engine already refuses.
+    A game whose offline account offers the DLC edition and whose online
+    account does not is a half-filled file far more often than it is a real
+    offer, and the customer sees the asymmetry as a missing option.
+  */
+  if (Boolean(at("offline", "extras")) !== Boolean(at("online", "extras"))) {
+    needsReview.push("extras — أحد الحسابين فيه نسخة بإضافات والآخر لا");
+  }
+
+  /*
+    Extras cheaper than the base they extend.
+
+    The tiers are told apart by their order within an account — first row is
+    the base, second is the extras, which is the archive's one stable contract
+    — so a file listing its DLC row first comes out with the labels swapped:
+    the dearer row named «عادي» and the cheaper one named «مع الإضافات». The
+    engine could not produce that because it derived the extras price from the
+    base; a file that states both can, and the prices are the evidence.
+  */
+  for (const account of ["offline", "online"] as const) {
+    const base = at(account, "base");
+    const extras = at(account, "extras");
+    if (base && extras && extras.price <= base.price) {
+      needsReview.push(
+        `${account} — نسخة الإضافات (${extras.price}) ليست أغلى من العادية (${base.price})؛ ربما ترتيب الصفوف معكوس`,
+      );
+    }
+  }
+
+  /*
     Canonical order, not file order: offline before online, base before extras.
     The caller turns this list straight into the product's `types`, so the
     order is the order a customer sees the tiers in.
@@ -471,7 +554,7 @@ export function readyTierPricing(types: readonly TemplateType[]): GamePricing | 
     tiers: ordered,
     productPrice: offlineBase.price,
     productCost: offlineBase.cost,
-    needsReview: [],
+    needsReview,
   };
 }
 

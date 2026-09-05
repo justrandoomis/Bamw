@@ -209,6 +209,159 @@ type.2.cost=1750
   });
 });
 
+describe("numbers that cannot be prices", () => {
+  /*
+    Found by an adversarial review of this change, and every one of them is a
+    hazard the engine never had: it only ever read these fields as costs and
+    priced from its own bands, so a nonsense number produced a sane price. A
+    stated price goes on the shelf as written.
+  */
+  const rows = (offline: string, online: string) => `
+type.1.id=standard_offline
+type.1.name=النسخة القياسية
+type.1.option_id=offline_account
+${offline}
+
+type.2.id=standard_online
+type.2.name=النسخة القياسية
+type.2.option_id=online_account
+${online}
+`;
+
+  it("refuses a thousands separator written as a full stop", () => {
+    /*
+      `12.000` is how a great many people write twelve thousand, and `Number()`
+      reads it as twelve. It clears every other test — positive, a margin, no
+      legacy fingerprint — and would put a game on the shelf at twelve dinars.
+    */
+    const built = buildBatchGameImport(
+      template(
+        "Dotted Thousands",
+        rows("type.1.price=12.000\ntype.1.cost=1.250", "type.2.price=20.000\ntype.2.cost=10.000"),
+      ),
+      "cat_nintendo",
+    );
+    expect(built.ok).toBe(false);
+    if (built.ok) return;
+    expect(built.reason).toContain("فاصل الآلاف");
+  });
+
+  it("refuses a price no game could carry", () => {
+    const built = buildBatchGameImport(
+      template(
+        "Too Cheap",
+        rows("type.1.price=800\ntype.1.cost=400", "type.2.price=20000\ntype.2.cost=10000"),
+      ),
+      "cat_nintendo",
+    );
+    expect(built.ok).toBe(false);
+  });
+
+  it("refuses a file whose extras tier is cheaper than the tier it extends", () => {
+    /*
+      The tiers are told apart by their order within an account, so a file
+      listing its DLC row first comes out with the labels swapped — the dearer
+      row named «عادي» and the cheaper one «مع الإضافات». The prices are the
+      evidence, and only a file that states them can show it.
+    */
+    const inverted = `
+type.1.id=dlc_offline
+type.1.name=مع الإضافات
+type.1.option_id=offline_account
+type.1.price=30000
+type.1.cost=9000
+
+type.2.id=standard_offline
+type.2.name=النسخة القياسية
+type.2.option_id=offline_account
+type.2.price=20000
+type.2.cost=6000
+
+type.3.id=standard_online
+type.3.name=النسخة القياسية
+type.3.option_id=online_account
+type.3.price=40000
+type.3.cost=28000
+
+type.4.id=dlc_online
+type.4.name=مع الإضافات
+type.4.option_id=online_account
+type.4.price=52000
+type.4.cost=33000
+`;
+    const built = buildBatchGameImport(template("Rows Reversed", inverted), "cat_nintendo");
+    expect(built.ok).toBe(false);
+    if (built.ok) return;
+    expect(built.reason).toContain("معكوس");
+  });
+
+  it("refuses extras on one account and not the other, as the engine does", () => {
+    const lopsided = `
+type.1.id=standard_offline
+type.1.name=النسخة القياسية
+type.1.option_id=offline_account
+type.1.price=20000
+type.1.cost=6000
+
+type.2.id=dlc_offline
+type.2.name=مع الإضافات
+type.2.option_id=offline_account
+type.2.price=30000
+type.2.cost=9000
+
+type.3.id=standard_online
+type.3.name=النسخة القياسية
+type.3.option_id=online_account
+type.3.price=40000
+type.3.cost=28000
+`;
+    const built = buildBatchGameImport(template("Lopsided", lopsided), "cat_nintendo");
+    expect(built.ok).toBe(false);
+  });
+
+  it("keeps checking the console even when the file prices itself", () => {
+    /*
+      Only the engine needs the platform, so it was tempting to ask for it only
+      there. It is also the field that says which machine the game runs on.
+    */
+    const built = buildBatchGameImport(
+      template("Wrong Console").replace("platform=switch1", "platform=ps5"),
+      "cat_nintendo",
+    );
+    expect(built.ok).toBe(false);
+    if (!built.ok) expect(built.reason).toContain("منصة");
+  });
+
+  it("does not mistake an online cost that equals the offline price for a copy", () => {
+    /*
+      The legacy fingerprint is a copy of the offline *cost*. Matching against
+      the offline price as well would throw away a perfectly ordinary file —
+      an online account costing what the offline one sells for is a number a
+      shop arrives at honestly.
+    */
+    const coincidence = `
+type.1.id=standard_offline
+type.1.name=النسخة القياسية
+type.1.option_id=offline_account
+type.1.price=25000
+type.1.cost=18000
+
+type.2.id=standard_online
+type.2.name=النسخة القياسية
+type.2.option_id=online_account
+type.2.price=40000
+type.2.cost=25000
+`;
+    const built = buildBatchGameImport(template("Honest Coincidence", coincidence), "cat_nintendo");
+    expect(built.ok).toBe(true);
+    if (!built.ok) return;
+    expect(typesOf(built.payload)).toMatchObject({
+      offline_base: { price: 25_000, cost: 18_000 },
+      online_base: { price: 40_000, cost: 25_000 },
+    });
+  });
+});
+
 describe("what still refuses", () => {
   it("refuses a file with no name", () => {
     const built = buildBatchGameImport("this file has no fields at all", "cat_nintendo");

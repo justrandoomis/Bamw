@@ -371,20 +371,24 @@ export function buildBatchGameImport(rawText: string, categoryId: string): Batch
     engine exists. An unknown game prices as `standard` — which is what
     `demandTierFor` has always returned for one — instead of not importing.
   */
+  /*
+    The console is checked whatever prices the file carries.
+
+    Only the engine needs it — it picks the band an offline account is placed
+    in — so moving the check into the fallback was tempting and wrong: it is
+    also the field that says which machine the game runs on, which every
+    surface reads, and dropping the check let `platform=ps5` through onto a
+    product that then rendered as a Switch 1 title everywhere.
+  */
+  const platform: Platform | null =
+    form.platform === "switch1" ? "switch1" : form.platform === "switch2" ? "switch2" : null;
+  if (!platform) {
+    return { ok: false, reason: `منصة غير صالحة للتسعير: ${String(form.platform ?? "")}` };
+  }
+
   let pricing = readyTierPricing(sourceTypes);
 
   if (!pricing) {
-    /*
-      The console only matters here. It selects the band the engine places an
-      offline account in, so a file that carries its own prices never needed it
-      — and was refused for it anyway.
-    */
-    const platform: Platform | null =
-      form.platform === "switch1" ? "switch1" : form.platform === "switch2" ? "switch2" : null;
-    if (!platform) {
-      return { ok: false, reason: `منصة غير صالحة للتسعير: ${String(form.platform ?? "")}` };
-    }
-
     const slug = String(form.slug ?? "").trim();
     const demand = demandTierFor(slug);
     const costs = mapSupplierCosts(sourceTypes);
