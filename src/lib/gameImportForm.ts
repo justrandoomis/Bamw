@@ -351,15 +351,25 @@ export function buildBatchGameImport(rawText: string, categoryId: string): Batch
     The file's own prices first; the demand tier only when it has none.
 
     This used to refuse outright — «لا توجد فئة طلب موثقة للعبة» — for any slug
-    absent from `nintendoDemandTiers.ts`, and the refusal was both wider and
-    more damaging than that description suggests. It looked the tier up by
-    `form.slug`, and the template ships `slug=` blank: the schema calls it
-    optional, says it is generated automatically, and the *endpoint* generates
-    it from the English title, downstream of here. So on every file an operator
-    actually writes the lookup key was the empty string, `!slug` was true, and
-    the import was refused whether or not the game was in the table.
+    absent from `nintendoDemandTiers.ts`, which meant every new title: the
+    table's 151 entries were built for one curated archive, and a game had to
+    be added to it by hand before it could be imported at all.
 
-    The suite did not show it because its fixture puts
+    There was a second way to trip the same gate, and it is the one that made
+    the refusal look inexplicable. The tier was looked up by `form.slug`, and
+    the shipped template leaves `slug=` blank — the schema calls it optional,
+    «سيتم توليده تلقائياً إذا كان فارغاً», and the *endpoint* generates it from
+    the English title, downstream of here. So a file started from the template
+    was refused with the same sentence about demand tiers even when the game
+    was in the table, because the key looked up was the empty string.
+
+    Both are gone. To be exact about which was biting: the 76 files in
+    `import-sources/nintendo-2026-08` all carry a filled slug and all 76 are in
+    the table, so they imported before this change and still do. It is the file
+    written from the template, for a game nobody has catalogued yet, that could
+    not get in — which is the case this whole path exists to serve.
+
+    The suite did not show either, because its fixture puts
     `slug=super-smash-bros-ultimate` — a real entry — on every game it imports,
     Zelda and Metroid alike.
 
