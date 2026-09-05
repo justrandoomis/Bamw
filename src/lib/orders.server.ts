@@ -430,6 +430,7 @@ export async function createOrderForUser(
     })),
     storeSettings: store.settings,
     products: store.products,
+    bundles: (store.bundles ?? []) as unknown as Record<string, unknown>[],
     ...(referralContext?.referralCode ? { explicitCode: referralContext.referralCode } : {}),
   }).catch((error) => {
     // A referral that could not be resolved must never lose the sale.

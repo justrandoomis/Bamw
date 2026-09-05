@@ -110,6 +110,25 @@ const GIFT_CARD = {
   isActive: true,
 };
 
+/**
+ * A bundle: sold from `store.bundles`, not from `store.products`.
+ *
+ * That is the whole point of it being here. A bundle line carries the bundle's
+ * id as its `productId`, and the programme only ever looked in the product
+ * list — so `bundle` sat in the eligible categories doing nothing at all.
+ */
+const BUNDLE = {
+  id: "bnd_starter",
+  title: "حزمة البداية",
+  price: 25_000,
+  cost: 10_000,
+  gameIds: [] as string[],
+  isActive: true,
+  stock: 10,
+};
+
+const BUNDLE_LINE = { productId: BUNDLE.id, quantity: 1 };
+
 const OFFLINE_LINE = {
   productId: GAME.id,
   quantity: 1,
@@ -209,6 +228,7 @@ function seedCatalogue() {
     "store",
     JSON.stringify({
       categories: [{ id: "cat_nintendo", title: "ألعاب" }],
+      bundles: [BUNDLE],
       settings: { referral: { enabled: true, buyerPercent: 10, referrerPercent: 10, holdDays: 0 } },
     }),
     "now",
@@ -2178,5 +2198,47 @@ describe("an order that was not paid from the wallet still pays the referrer", (
       .prepare(`SELECT status FROM referral_rewards WHERE order_id = ?`)
       .get(order.id) as Record<string, unknown>;
     expect(row["status"]).toBe("eligible");
+  });
+});
+
+/* -------------------------------------------------------------------------- */
+/* 19. The bundle the programme could not see                                 */
+/* -------------------------------------------------------------------------- */
+
+describe("a bundle earns like anything else in the shop", () => {
+  it("finds the bundle, discounts it and pays the referrer", async () => {
+    /*
+      `bundle` has been in the eligible categories since the rules were
+      widened, and could never have done anything: a bundle line carries the
+      bundle's id, bundles live in `store.bundles`, and the lookup only ever
+      searched `store.products`. Every bundle was refused as
+      `product_excluded` — the one refusal that reads like the admin took the
+      product out of the programme by hand.
+    */
+    const code = await referrerCode();
+    const capture = await service.captureAttribution({
+      request: request(BUYER_DEVICE),
+      codeInput: code,
+    });
+    const jar = cookieJar(capture.setCookies);
+    await service.bindAttributionToUser(request({ ...BUYER_DEVICE, cookies: jar }), BUYER.id);
+
+    const order = await orders.createOrderForUser(
+      (await store.findUserById(BUYER.id))!,
+      [BUNDLE_LINE],
+      undefined,
+      undefined,
+      true,
+      undefined,
+      undefined,
+      "checkout_web",
+      undefined,
+      { request: request({ ...BUYER_DEVICE, cookies: jar }) },
+    );
+
+    // 25,000 at ten per cent each way.
+    expect(order.discountAmount).toBe(2_500);
+    expect(order.referral?.referrerRewardIqd).toBe(2_500);
+    expect(order.referral?.referrerUserId).toBe(REFERRER.id);
   });
 });

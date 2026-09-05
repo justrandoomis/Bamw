@@ -145,21 +145,43 @@ describe("which line earns", () => {
     expect(verdict.reason).toBe("not_offline_account");
   });
 
-  it("refuses hardware, cards, accessories and used stock", () => {
+  /*
+    This test used to assert the opposite, and it was agreeing with a bug.
+
+    The settings list hardware, amiibo, accessories, used stock and bundles as
+    eligible categories, and `EXCLUDED_KINDS` refused all five *by kind* — so
+    the whitelist could not change the outcome it appeared to control, and this
+    test called that correct. The kind list is structural impossibilities only
+    now, and the category list is the dial.
+
+    Cards are still refused, and twice over: their category is not in the list,
+    and their margin could not take the giveaway even if it were.
+  */
+  it("takes the category whitelist at its word", () => {
     for (const [category, kind] of [
       ["cat_hardware", "hardware"],
-      ["cat_gift_cards", "digital_code"],
       ["cat_accessories", "accessory"],
       ["cat_used", "used"],
       ["cat_amiibo", "collectible"],
     ] as [string, string][]) {
       const verdict = evaluateReferralLine({
         settings,
-        product: { ...GAME, category, kind },
+        // A 60% margin: comfortably clear of the twenty per cent given away.
+        product: { ...GAME, category, kind, cost: 4_000 },
         line: { ...OFFLINE, kind },
       });
-      expect(verdict.eligible).toBe(false);
+      expect(verdict.eligible).toBe(true);
     }
+  });
+
+  it("refuses a category the shop has taken out", () => {
+    const verdict = evaluateReferralLine({
+      settings,
+      product: { ...GAME, category: "cat_gift_cards", kind: "digital_code" },
+      line: { ...OFFLINE, kind: "digital_code" },
+    });
+    expect(verdict.eligible).toBe(false);
+    expect(verdict.reason).toBe("category_excluded");
   });
 
   it("refuses a wallet top-up or a subscription however it is filed", () => {

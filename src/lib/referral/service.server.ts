@@ -927,6 +927,8 @@ export async function quoteReferral(params: {
   lines: ReferralQuoteLine[];
   settings?: ReferralSettings;
   products?: Product[];
+  /** Sold from their own list, and eligible on the same terms as anything else. */
+  bundles?: Record<string, unknown>[];
   identity?: { deviceHash: string; deviceIdHash?: string; ipHash: string; sessionHash: string };
   now?: Date;
 }): Promise<ReferralQuote> {
@@ -941,12 +943,38 @@ export async function quoteReferral(params: {
   const referrer = await findUserById(attribution.referrerUserId);
   if (!referrer) return { ...EMPTY_QUOTE, reasons: ["code_inactive"] };
 
-  const products =
-    params.products ?? ((await getStore())?.products as Product[] | undefined) ?? [];
-  const productOf = (id: string | number) =>
-    products.find((entry) => String(entry.id) === String(id)) as
-      | (Product & Record<string, unknown>)
-      | undefined;
+  /*
+    The catalogue is only read when the caller has not already got it.
+
+    Checkout has the whole store in hand and passes both lists, so the ordinary
+    path adds no read; a caller that passes neither still works.
+  */
+  const store = params.products && params.bundles ? undefined : await getStore();
+  const products = params.products ?? ((store?.products as Product[] | undefined) ?? []);
+  /*
+    Bundles are sold from their own list, and the programme never looked in it.
+
+    A bundle line carries the bundle's id as its `productId`, and bundles live
+    in `store.bundles` rather than `store.products` — so this lookup found
+    nothing, `evaluateReferralLine` was handed `undefined`, and every bundle was
+    refused as `product_excluded`. The `bundle` entry in the category whitelist
+    has therefore never been able to do anything.
+
+    The bundle is given the category its own section uses, because
+    `getProductCategory` has nothing else to go on: a bundle record carries no
+    `category` field, so without this it would read as a game and be judged by
+    the game rule.
+  */
+  const bundles =
+    params.bundles ?? ((store?.bundles as Record<string, unknown>[] | undefined) ?? []);
+  const productOf = (id: string | number) => {
+    const found = products.find((entry) => String(entry.id) === String(id));
+    if (found) return found as Product & Record<string, unknown>;
+    const bundle = bundles.find((entry) => String(entry["id"] ?? "") === String(id));
+    if (!bundle) return undefined;
+    return { ...bundle, kind: "bundle", category: "cat_bundles" } as unknown as Product &
+      Record<string, unknown>;
+  };
 
   /*
     Every line that earns, not just one.

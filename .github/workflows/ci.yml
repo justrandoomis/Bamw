@@ -23,7 +23,19 @@ name: CI
 on:
   pull_request:
   push:
-    branches: [main]
+    # `main`, and the branches work is done on.
+    #
+    # The pull-request trigger is the one that matters and it cannot be relied
+    # on alone: on 5 Sep, PR #47 took four pushes and a close-and-reopen without
+    # GitHub delivering a single `pull_request` event, so the branch carried no
+    # gate at all while `Mobile widths` and the read-only inspectors — both
+    # `push` — ran on every one of those commits. A gate that silently does not
+    # run is worse than no gate, because the pull request looks unblocked.
+    #
+    # Running on the branch push as well costs a duplicate run per commit while
+    # a pull request is open, and buys a gate that does not depend on one event
+    # type being delivered.
+    branches: [main, "claude/**"]
 
 permissions:
   contents: read

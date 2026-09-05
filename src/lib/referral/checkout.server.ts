@@ -81,6 +81,7 @@ export async function resolveReferralForCheckout(params: {
   lines: ReferralQuoteLine[];
   storeSettings?: unknown;
   products?: Product[];
+  bundles?: Record<string, unknown>[];
   /** A code typed into the cart's field, when the cookie has none. */
   explicitCode?: string | undefined;
   now?: Date;
@@ -151,6 +152,7 @@ export async function resolveReferralForCheckout(params: {
     lines: params.lines,
     settings,
     ...(params.products ? { products: params.products } : {}),
+    ...(params.bundles ? { bundles: params.bundles } : {}),
     identity: {
       deviceHash: identity.deviceHash,
       deviceIdHash: identity.deviceIdHash,
