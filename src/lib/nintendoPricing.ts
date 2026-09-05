@@ -84,13 +84,65 @@ const num = (v: unknown): number | null => {
  * A slot left undefined means the archive did not state it. That is reported,
  * never filled from the other account or the other tier.
  */
-export function mapSupplierCosts(types: readonly TemplateType[]): SupplierCosts {
-  const out: SupplierCosts = { unmapped: [] };
-  const offlineAmounts = new Set<number>();
+/** A template row placed against the account and tier it describes. */
+export interface ClassifiedRow {
+  row: TemplateType;
+  account: AccountKind;
+  content: ContentKind;
+}
+
+/**
+ * Which account and tier each row is for.
+ *
+ * Supplier names are not edition semantics. In several sports templates the
+ * first online row is called "Complete" while it is the base online
+ * counterpart to the first offline row; a lone Wolfenstein row is called
+ * "Deluxe" even though no second tier exists. The archive's stable contract is
+ * row order per account: first = base, second = extras. Name matching is only
+ * a fallback for a malformed row that was not present in that group.
+ *
+ * Shared, because two readers of the same rows that classify them differently
+ * is how a product ends up with the offline tier's price on the online tier —
+ * the class of fault this file already exists to prevent.
+ */
+export function classifyTemplateRows(types: readonly TemplateType[]): {
+  rows: ClassifiedRow[];
+  unmapped: string[];
+} {
+  const rows: ClassifiedRow[] = [];
+  const unmapped: string[] = [];
   const rowsByAccount = {
     offline: types.filter((type) => type.optionId === "offline_account"),
     online: types.filter((type) => type.optionId === "online_account"),
   };
+  for (const type of types) {
+    const account: AccountKind | null =
+      type.optionId === "offline_account"
+        ? "offline"
+        : type.optionId === "online_account"
+          ? "online"
+          : null;
+    if (!account) {
+      unmapped.push(`${type.name ?? type.id ?? "?"} — no recognisable option`);
+      continue;
+    }
+    const rowIndex = rowsByAccount[account].indexOf(type);
+    const content: ContentKind =
+      rowIndex >= 0
+        ? rowIndex === 0
+          ? "base"
+          : "extras"
+        : isExtrasRow(type.name)
+          ? "extras"
+          : "base";
+    rows.push({ row: type, account, content });
+  }
+  return { rows, unmapped };
+}
+
+export function mapSupplierCosts(types: readonly TemplateType[]): SupplierCosts {
+  const out: SupplierCosts = { unmapped: [] };
+  const offlineAmounts = new Set<number>();
 
   for (const type of types) {
     if (type.optionId !== "offline_account") continue;
@@ -100,36 +152,10 @@ export function mapSupplierCosts(types: readonly TemplateType[]): SupplierCosts 
     if (price !== null) offlineAmounts.add(price);
   }
 
-  for (const type of types) {
-    const account: AccountKind | null =
-      type.optionId === "offline_account"
-        ? "offline"
-        : type.optionId === "online_account"
-          ? "online"
-          : null;
-    if (!account) {
-      out.unmapped.push(`${type.name ?? type.id ?? "?"} — no recognisable option`);
-      continue;
-    }
-    const accountRows = rowsByAccount[account];
-    const rowIndex = accountRows.indexOf(type);
-    /*
-      Supplier names are not edition semantics. In several sports templates
-      the first online row is called "Complete" while it is the base online
-      counterpart to the first offline row; a lone Wolfenstein row is called
-      "Deluxe" even though no second tier exists. The archive's stable contract
-      is row order per account: first = base, second = extras. Name matching is
-      only a fallback for a malformed row that was not present in that group.
-    */
-    const content: ContentKind =
-      rowIndex >= 0
-        ? rowIndex === 0
-          ? "base"
-          : "extras"
-        : isExtrasRow(type.name)
-          ? "extras"
-          : "base";
+  const classified = classifyTemplateRows(types);
+  out.unmapped.push(...classified.unmapped);
 
+  for (const { row: type, account, content } of classified.rows) {
     /*
       Most legacy rows copied the corresponding offline cost into online
       `cost`, while putting the real online acquisition figure in `price`.
@@ -328,6 +354,124 @@ export function priceGame(costs: SupplierCosts, platform: Platform, tier: Demand
     productPrice: offlineBasePrice,
     productCost: offlineBase,
     needsReview,
+  };
+}
+
+/**
+ * The prices the file already states, when it states them properly.
+ *
+ * The shipped template asks the operator for a ready price — its own comment
+ * on the type block says the tiers are added «بسعرها الجاهز من الملف», with
+ * their ready price from the file — and when a file carries one there is
+ * nothing for the pricing engine to decide. Read them and use them.
+ *
+ * The care is in telling a ready price from the thing that merely looks like
+ * one. The legacy archive this module was written for put a single supplier
+ * number into *both* fields of an offline row:
+ *
+ *     type.1  Regular / Offline   option=offline  price=1750   cost=1750
+ *
+ * `price` there is what the copy cost to buy, not what a customer pays, and
+ * honouring it would sell the game at cost — the shop giving away its whole
+ * margin on every game an operator imported. So a row counts as ready-priced
+ * only when it states both numbers and they leave a margin: `price > cost`.
+ * A row whose price equals its cost is the legacy duplication, and a file
+ * containing one is handed to the engine instead.
+ *
+ * All or nothing, per file. A file half in one shape and half in the other is
+ * not a file anybody wrote on purpose, and mixing the two readings within one
+ * product is how a game ends up with a real price on one tier and a supplier
+ * number on another.
+ *
+ * Returns `undefined` when the file is not ready-priced, which is the caller's
+ * signal to price it the old way.
+ */
+export function readyTierPricing(types: readonly TemplateType[]): GamePricing | undefined {
+  const { rows, unmapped } = classifyTemplateRows(types);
+  // A row that could not even be placed against an account is not a file to
+  // take numbers from on trust.
+  if (unmapped.length > 0 || rows.length === 0) return undefined;
+
+  /*
+    Every amount the offline rows mention, which is how the legacy copy is
+    recognised on an online row.
+
+    `price > cost` alone is not enough to call an online row ready-priced. The
+    legacy shape puts the real online acquisition figure in `price` and a copy
+    of the *offline* cost in `cost`:
+
+        type.3  Standard / Online  option=online  price=25000  cost=1750
+
+    — which passes `price > cost` comfortably while being the opposite of a
+    priced tier: 25,000 is what the copy costs, and the 1,750 beside it belongs
+    to a different account entirely. A file half-corrected, offline rows given
+    real prices and online rows left alone, would otherwise be read as ready
+    and the online tier sold at exactly what it cost, showing a 23,250 margin
+    that does not exist.
+
+    `mapSupplierCosts` already knows this signal — it is why it prefers `price`
+    for an online row whose `cost` appears on the offline side — and this is
+    the same test, used to decide the file is not ready rather than which field
+    to read.
+  */
+  const offlineAmounts = new Set<number>();
+  for (const { row, account } of rows) {
+    if (account !== "offline") continue;
+    const cost = num(row.cost);
+    const price = num(row.price);
+    if (cost !== null) offlineAmounts.add(cost);
+    if (price !== null) offlineAmounts.add(price);
+  }
+
+  const tiers: PricedTier[] = [];
+  const seen = new Set<string>();
+  for (const { row, account, content } of rows) {
+    const price = num(row.price);
+    const cost = num(row.cost);
+    if (price === null || cost === null || price <= cost) return undefined;
+    if (account === "online" && offlineAmounts.has(cost)) return undefined;
+    const key = `${account}_${content}`;
+    // Two rows claiming one tier: the file disagrees with itself.
+    if (seen.has(key)) return undefined;
+    seen.add(key);
+    tiers.push({
+      account,
+      content,
+      price,
+      cost,
+      margin: price - cost,
+      reason: "priced in the import file",
+    });
+  }
+
+  /*
+    The same coverage the engine insists on, so that what a file must contain
+    does not quietly depend on which of the two paths read it. Both accounts,
+    base tier each.
+  */
+  const at = (account: AccountKind, content: ContentKind) =>
+    tiers.find((tier) => tier.account === account && tier.content === content);
+  const offlineBase = at("offline", "base");
+  if (!offlineBase || !at("online", "base")) return undefined;
+
+  /*
+    Canonical order, not file order: offline before online, base before extras.
+    The caller turns this list straight into the product's `types`, so the
+    order is the order a customer sees the tiers in.
+  */
+  const order: [AccountKind, ContentKind][] = [
+    ["offline", "base"],
+    ["offline", "extras"],
+    ["online", "base"],
+    ["online", "extras"],
+  ];
+  const ordered = order.map(([account, content]) => at(account, content)).filter(Boolean) as PricedTier[];
+
+  return {
+    tiers: ordered,
+    productPrice: offlineBase.price,
+    productCost: offlineBase.cost,
+    needsReview: [],
   };
 }
 
