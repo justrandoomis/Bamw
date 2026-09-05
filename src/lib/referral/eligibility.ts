@@ -167,7 +167,16 @@ export function evaluateReferralLine(params: {
   const kind = String(line.kind ?? product["kind"] ?? "").trim().toLowerCase();
   if (kind && EXCLUDED_KINDS.has(kind)) return { ...rated, reason: "kind_excluded" };
 
+  /*
+    The shared-product rule, now a setting and off by default.
+
+    A link shared from a game's page records that game, and this refused every
+    other purchase — so a friend who followed a link, looked around, and bought
+    something else was told the code could not be applied. A referral brings a
+    customer to the shop, not to one shelf of it.
+  */
   if (
+    settings.restrictToSharedProduct &&
     params.sharedProductId &&
     String(params.sharedProductId) !== String(line.productId)
   ) {
@@ -175,13 +184,19 @@ export function evaluateReferralLine(params: {
   }
 
   /*
-    The offline-account rule.
+    The offline-account rule, now a setting and off by default.
+
+    This was the narrowest rule in the programme: every online account, every
+    piece of hardware, every amiibo and every used item failed it, so the offer
+    survived only on an offline-account line of the exact shared game. Left on,
+    it is the single likeliest reason a referral code appears not to work.
 
     Read from the identifiers the line actually carries — never from text on
     the page — by the same resolver the offline-only coupons use, so the two
     features cannot disagree about what an offline account is.
   */
   if (
+    settings.offlineAccountsOnly &&
     !isOfflineAccountSelection({
       optionId: line.optionId ?? null,
       optionName: line.optionName ?? null,
