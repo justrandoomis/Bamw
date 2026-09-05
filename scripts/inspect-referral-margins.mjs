@@ -56,20 +56,34 @@ const say = (t = "") => {
 /* --------------------------- the catalogue -------------------------------- */
 
 /*
-  Products live in one aggregate row per page, plus per-product overlay rows.
-  The aggregate is what the storefront reads, so it is what the programme sees.
+  The catalogue is one JSON array split across numbered rows.
+
+  `store:products#000`, `#001` … are *fragments of one string*, not an array
+  each: the value is chopped at a byte boundary that lands wherever it lands,
+  so a row on its own is not valid JSON. They are concatenated in key order and
+  parsed once. Reading them as separate documents parses nothing and reports an
+  empty catalogue — which reads exactly like a shop with no products in it.
+
+  This is the aggregate the storefront serves. Per-product `store:product:<id>`
+  overlay rows exist too; the aggregate is what a customer is priced from, so
+  it is what the programme sees.
 */
-const rows = d1(
-  "SELECT key, value FROM store_kv WHERE key = 'store:products' OR key LIKE 'store:products#%'",
-);
-const products = [];
-for (const row of rows) {
-  try {
-    const parsed = JSON.parse(row.value);
-    if (Array.isArray(parsed)) products.push(...parsed);
-  } catch {
-    // A page that will not parse is a separate problem; it is not this one.
-  }
+const keys = d1(
+  "SELECT key FROM store_kv WHERE key = 'store:products' OR key LIKE 'store:products#%' ORDER BY key",
+).map((row) => String(row.key));
+const numbered = keys.filter((key) => /^store:products#\d+$/.test(key));
+
+let raw = "";
+for (const key of numbered.length ? numbered : ["store:products"]) {
+  raw += d1(`SELECT value FROM store_kv WHERE key = '${key.replace(/'/g, "''")}'`)?.[0]?.value ?? "";
+}
+
+let products = [];
+try {
+  const parsed = JSON.parse(raw);
+  if (Array.isArray(parsed)) products = parsed;
+} catch (error) {
+  say(`_the catalogue would not parse: ${String(error).slice(0, 120)}_`);
 }
 
 /** The same category resolution the programme uses, in the shape a script can. */
