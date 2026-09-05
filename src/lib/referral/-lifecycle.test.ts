@@ -110,6 +110,25 @@ const GIFT_CARD = {
   isActive: true,
 };
 
+/**
+ * A bundle: sold from `store.bundles`, not from `store.products`.
+ *
+ * That is the whole point of it being here. A bundle line carries the bundle's
+ * id as its `productId`, and the programme only ever looked in the product
+ * list — so `bundle` sat in the eligible categories doing nothing at all.
+ */
+const BUNDLE = {
+  id: "bnd_starter",
+  title: "حزمة البداية",
+  price: 25_000,
+  cost: 10_000,
+  gameIds: [] as string[],
+  isActive: true,
+  stock: 10,
+};
+
+const BUNDLE_LINE = { productId: BUNDLE.id, quantity: 1 };
+
 const OFFLINE_LINE = {
   productId: GAME.id,
   quantity: 1,
@@ -209,6 +228,7 @@ function seedCatalogue() {
     "store",
     JSON.stringify({
       categories: [{ id: "cat_nintendo", title: "ألعاب" }],
+      bundles: [BUNDLE],
       settings: { referral: { enabled: true, buyerPercent: 10, referrerPercent: 10, holdDays: 0 } },
     }),
     "now",
@@ -1649,7 +1669,19 @@ describe("only one referral can touch an order", () => {
       productRef: "super-mario-odyssey",
       viewer: (await store.findUserById(BUYER.id))!,
     });
-    expect(capture2.ok).toBe(true);
+    /*
+      Refused at the door, and this is where the answer moved to.
+
+      The second link used to be captured and then quietly overruled further
+      down — `activeAttribution` ignored an attribution naming anybody but the
+      bound referrer, so the outcome was right and the member was told their
+      new code had been applied when it had not. Now the capture itself asks
+      whether this account is new to the programme, and an account that already
+      belongs to somebody is not: nothing is written, no second attribution
+      exists, and the member reads the true answer.
+    */
+    expect(capture2.ok).toBe(false);
+    expect(capture2.reasons).toContain("not_new_customer");
     jar = cookieJar(capture2.setCookies, jar);
 
     /*
@@ -1913,5 +1945,300 @@ describe("two people behind one network address", () => {
     });
 
     expect(capture.ok).toBe(true);
+  });
+});
+
+/* -------------------------------------------------------------------------- */
+/* 17. New customers only, asked at the door                                  */
+/* -------------------------------------------------------------------------- */
+
+/** Backdate an account, which `seedUser` always creates as "just now". */
+function accountCreated(userId: string, offsetMs: number) {
+  db.raw
+    .prepare(`UPDATE users SET created_at = ? WHERE id = ?`)
+    .run(new Date(Date.now() + offsetMs).toISOString(), userId);
+}
+
+describe("the code is for new customers, and the door is where that is decided", () => {
+  /*
+    The rule used to be enforced in one place: the moment a session is
+    established. That is the right place for a *guest* who follows a link and
+    then signs up or signs in — and it is not the only way in. A member who is
+    already signed in and taps a friend's link never establishes a session, so
+    nothing re-checked them: the attribution was written against their account
+    and the cart took ten per cent off an order from a customer the shop
+    already had. The same hole took a code typed into the cart, because that
+    path applies it by calling the very same capture.
+  */
+  it("refuses a customer who already had an account when they opened the link", async () => {
+    const code = await referrerCode();
+    accountCreated(BUYER.id, -90 * 24 * 60 * 60 * 1000);
+
+    const capture = await service.captureAttribution({
+      request: request(BUYER_DEVICE),
+      codeInput: code,
+      productRef: "super-mario-odyssey",
+      viewer: (await store.findUserById(BUYER.id))!,
+    });
+
+    expect(capture.ok).toBe(false);
+    expect(capture.reasons).toContain("not_new_customer");
+    // Named, not hidden behind the one generic sentence: nothing is given away
+    // by telling somebody they already have an account.
+    expect(capture.message).toContain("للمستخدمين الجدد");
+
+    // And nothing was written: no attribution, so nothing downstream to find.
+    const rows = db.raw.prepare(`SELECT id FROM referral_attributions`).all();
+    expect(rows).toHaveLength(0);
+  });
+
+  it("still captures for a guest, who has no account to disqualify them", async () => {
+    const code = await referrerCode();
+    accountCreated(BUYER.id, -90 * 24 * 60 * 60 * 1000);
+
+    const capture = await service.captureAttribution({
+      request: request(BUYER_DEVICE),
+      codeInput: code,
+      productRef: "super-mario-odyssey",
+    });
+
+    expect(capture.ok).toBe(true);
+    // The sign-in check is what covers them, and it refuses the same account.
+    const jar = cookieJar(capture.setCookies);
+    await service.bindAttributionToUser(request({ ...BUYER_DEVICE, cookies: jar }), BUYER.id);
+    const row = db.raw
+      .prepare(`SELECT status, blocked_reason FROM referral_attributions LIMIT 1`)
+      .get() as Record<string, unknown>;
+    expect(row["status"]).toBe("rejected");
+    expect(row["blocked_reason"]).toBe("account_predates_link");
+  });
+
+  it("earns nothing when an existing customer types the code into the cart", async () => {
+    const code = await referrerCode();
+    accountCreated(BUYER.id, -90 * 24 * 60 * 60 * 1000);
+
+    const order = await orders.createOrderForUser(
+      (await store.findUserById(BUYER.id))!,
+      [OFFLINE_LINE],
+      undefined,
+      undefined,
+      true,
+      undefined,
+      undefined,
+      "checkout_web",
+      undefined,
+      { request: request(BUYER_DEVICE), referralCode: code },
+    );
+
+    expect(order.referral).toBeUndefined();
+    expect(order.discountAmount).toBeUndefined();
+    expect(order.total).toBe(10_000);
+    expect(db.raw.prepare(`SELECT id FROM referral_rewards`).all()).toHaveLength(0);
+  });
+
+  it("lets the friend it already brought in open the same link again", async () => {
+    /*
+      The friend's own row now names a referrer and, after their first order,
+      has an order behind it — which is what the two rules above disqualify an
+      account for. Asked without knowing whose link this is, the check refuses
+      the very person the programme paid for.
+    */
+    const code = await referrerCode();
+    const first = await service.captureAttribution({
+      request: request(BUYER_DEVICE),
+      codeInput: code,
+      productRef: "super-mario-odyssey",
+    });
+    const jar = cookieJar(first.setCookies);
+    await service.bindAttributionToUser(request({ ...BUYER_DEVICE, cookies: jar }), BUYER.id);
+    expect((await binding.referralBinding(BUYER.id)).referrerUserId).toBe(REFERRER.id);
+
+    // A week later, on the same link, now signed in.
+    accountCreated(BUYER.id, -7 * 24 * 60 * 60 * 1000);
+    const again = await service.captureAttribution({
+      request: request({ ...BUYER_DEVICE, cookies: jar }),
+      codeInput: code,
+      productRef: "super-mario-odyssey",
+      viewer: (await store.findUserById(BUYER.id))!,
+    });
+    expect(again.ok).toBe(true);
+  });
+
+  it("does not reject a bound friend's attribution when they sign in again", async () => {
+    /*
+      Signing in runs the new-customer check, and after a successful signup the
+      friend's row says two things that read as a disqualification: it names a
+      referrer, and it will soon have an order behind it. Refusing on that
+      marked the attribution `rejected` — the programme taking the discount
+      back from the friend it had just given it to, for the crime of signing
+      out and in again inside the link's thirty days.
+    */
+    const code = await referrerCode();
+    const capture = await service.captureAttribution({
+      request: request(BUYER_DEVICE),
+      codeInput: code,
+      productRef: "super-mario-odyssey",
+    });
+    const jar = cookieJar(capture.setCookies);
+    const signIn = () =>
+      service.bindAttributionToUser(request({ ...BUYER_DEVICE, cookies: jar }), BUYER.id);
+
+    await signIn();
+    await signIn();
+    await signIn();
+
+    const row = db.raw
+      .prepare(`SELECT status FROM referral_attributions LIMIT 1`)
+      .get() as Record<string, unknown>;
+    expect(row["status"]).toBe("pending");
+
+    // And the discount is still there to be taken.
+    const order = await orders.createOrderForUser(
+      (await store.findUserById(BUYER.id))!,
+      [OFFLINE_LINE],
+      undefined,
+      undefined,
+      true,
+      undefined,
+      undefined,
+      "checkout_web",
+      undefined,
+      { request: request({ ...BUYER_DEVICE, cookies: jar }) },
+    );
+    expect(order.discountAmount).toBe(1_000);
+  });
+});
+
+/* -------------------------------------------------------------------------- */
+/* 18. A reward nothing was paying                                            */
+/* -------------------------------------------------------------------------- */
+
+describe("an order that was not paid from the wallet still pays the referrer", () => {
+  /*
+    A reward is written `eligible` when the order is not settled on the spot —
+    which is every order that is not paid from the wallet: cash on delivery, a
+    transfer, anything the admin confirms afterwards. The only thing that ever
+    moved it on to `pending` was the admin pressing *set payment → paid*, and
+    `approveRewardsForOrder` skips anything that is not `pending` while the
+    scheduled job only selects `pending`. So an admin who marked a cash order
+    completed without first marking it paid — the ordinary way a cash order is
+    closed — left the reward at `eligible` for ever. The referrer was never
+    paid, and nothing anywhere said so.
+  */
+  it("pays a reward left at eligible once the order completes", async () => {
+    const code = await referrerCode();
+    const capture = await service.captureAttribution({
+      request: request(BUYER_DEVICE),
+      codeInput: code,
+      productRef: "super-mario-odyssey",
+    });
+    const jar = cookieJar(capture.setCookies);
+    await service.bindAttributionToUser(request({ ...BUYER_DEVICE, cookies: jar }), BUYER.id);
+
+    /*
+      A physical line, so the order needs an address and is not settled from
+      the wallet — which is exactly what writes the reward as `eligible`.
+    */
+    const order = await orders.createOrderForUser(
+      (await store.findUserById(BUYER.id))!,
+      [OFFLINE_LINE],
+      undefined,
+      undefined,
+      true,
+      undefined,
+      undefined,
+      "checkout_web",
+      undefined,
+      { request: request({ ...BUYER_DEVICE, cookies: jar }) },
+    );
+
+    // Force the unpaid shape: the reward as a cash order writes it.
+    db.raw
+      .prepare(`UPDATE referral_rewards SET status = 'eligible', hold_until = NULL WHERE order_id = ?`)
+      .run(order.id);
+
+    const before = (await store.findUserById(REFERRER.id))!.walletBalance ?? 0;
+    const result = await rewards.approveRewardsForOrder({ ...order, status: "completed" });
+
+    expect(result.approved).toBe(1);
+    expect(result.creditedIqd).toBe(1_000);
+    const after = (await store.findUserById(REFERRER.id))!.walletBalance ?? 0;
+    expect(after - before).toBe(1_000);
+  });
+
+  it("leaves it alone while the order is not complete", async () => {
+    const code = await referrerCode();
+    const capture = await service.captureAttribution({
+      request: request(BUYER_DEVICE),
+      codeInput: code,
+      productRef: "super-mario-odyssey",
+    });
+    const jar = cookieJar(capture.setCookies);
+    await service.bindAttributionToUser(request({ ...BUYER_DEVICE, cookies: jar }), BUYER.id);
+
+    const order = await orders.createOrderForUser(
+      (await store.findUserById(BUYER.id))!,
+      [OFFLINE_LINE],
+      undefined,
+      undefined,
+      true,
+      undefined,
+      undefined,
+      "checkout_web",
+      undefined,
+      { request: request({ ...BUYER_DEVICE, cookies: jar }) },
+    );
+    db.raw
+      .prepare(`UPDATE referral_rewards SET status = 'eligible' WHERE order_id = ?`)
+      .run(order.id);
+
+    const result = await rewards.approveRewardsForOrder({ ...order, status: "processing" });
+    expect(result.approved).toBe(0);
+    const row = db.raw
+      .prepare(`SELECT status FROM referral_rewards WHERE order_id = ?`)
+      .get(order.id) as Record<string, unknown>;
+    expect(row["status"]).toBe("eligible");
+  });
+});
+
+/* -------------------------------------------------------------------------- */
+/* 19. The bundle the programme could not see                                 */
+/* -------------------------------------------------------------------------- */
+
+describe("a bundle earns like anything else in the shop", () => {
+  it("finds the bundle, discounts it and pays the referrer", async () => {
+    /*
+      `bundle` has been in the eligible categories since the rules were
+      widened, and could never have done anything: a bundle line carries the
+      bundle's id, bundles live in `store.bundles`, and the lookup only ever
+      searched `store.products`. Every bundle was refused as
+      `product_excluded` — the one refusal that reads like the admin took the
+      product out of the programme by hand.
+    */
+    const code = await referrerCode();
+    const capture = await service.captureAttribution({
+      request: request(BUYER_DEVICE),
+      codeInput: code,
+    });
+    const jar = cookieJar(capture.setCookies);
+    await service.bindAttributionToUser(request({ ...BUYER_DEVICE, cookies: jar }), BUYER.id);
+
+    const order = await orders.createOrderForUser(
+      (await store.findUserById(BUYER.id))!,
+      [BUNDLE_LINE],
+      undefined,
+      undefined,
+      true,
+      undefined,
+      undefined,
+      "checkout_web",
+      undefined,
+      { request: request({ ...BUYER_DEVICE, cookies: jar }) },
+    );
+
+    // 25,000 at ten per cent each way.
+    expect(order.discountAmount).toBe(2_500);
+    expect(order.referral?.referrerRewardIqd).toBe(2_500);
+    expect(order.referral?.referrerUserId).toBe(REFERRER.id);
   });
 });

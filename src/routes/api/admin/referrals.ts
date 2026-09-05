@@ -11,7 +11,12 @@ import {
   toReferralRiskEvent,
   type ReferralRewardRow,
 } from "@/lib/referral/rows";
-import { approveRewardsForOrder, blockReward, reverseRewardsForOrder } from "@/lib/referral/rewards.server";
+import {
+  approveRewardsForOrder,
+  blockReward,
+  markRewardsPending,
+  reverseRewardsForOrder,
+} from "@/lib/referral/rewards.server";
 import type { CategoryType } from "@/lib/productSection";
 
 /**
@@ -343,8 +348,15 @@ export const Route = createFileRoute("/api/admin/referrals")({
                 Clearing the hold is what "approve now" means — the automatic
                 pass refuses a reward whose hold has not expired, and an admin
                 pressing the button is deciding it has.
+
+                The same is true of the payment state. A reward still sitting
+                at `eligible` — an order that was never marked paid — is
+                skipped by the automatic pass, so without this the button did
+                nothing at all and said it had succeeded. An admin approving a
+                reward by hand is deciding the order is settled.
               */
               await d1Run(`UPDATE referral_rewards SET hold_until = NULL WHERE id = ?`, rewardId);
+              if (reward.status === "eligible") await markRewardsPending(reward.orderId);
               const result = await approveRewardsForOrder(order);
               await audit("referral_reward", rewardId, { ...result, reason });
               return json({ ok: result.approved > 0, ...result });

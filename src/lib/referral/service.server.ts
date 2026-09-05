@@ -400,6 +400,62 @@ export async function captureAttribution(params: {
     return refuse(verdict.reasons);
   }
 
+  /*
+    A link opened by somebody who is already signed in.
+
+    The new-customer rule used to be enforced in one place only — the moment a
+    session is established — which is the moment a *guest* who followed a link
+    signs up or signs in. It is not the only way in. A member who is already
+    signed in and clicks a friend's link never establishes a session, so
+    nothing re-checked them: the attribution was written against their account
+    with `bound_at` set, and the cart found it and took ten per cent off. The
+    same hole let a code typed into the cart through, because that path applies
+    it by calling this function with the buyer attached.
+
+    So the rule is asked here too, against the record, at the moment of the
+    click: an account that existed before this link was opened, or belongs to
+    another referrer, or has bought before, is refused and nothing is written.
+    A guest is not asked — there is no account to ask about yet, and the check
+    at sign-in is what covers them.
+
+    Passing the referrer is what keeps the friend this link already brought in
+    from being refused by their own binding when they open the link a second
+    time.
+  */
+  if (params.viewer?.id) {
+    const { checkReferredAccountIsNew } = await import("./binding.server");
+    const newAccount = await checkReferredAccountIsNew(
+      params.viewer.id,
+      new Date().toISOString(),
+      referrer.id,
+    );
+    if (!newAccount.ok) {
+      await recordRiskEvent({
+        eventType: "capture_blocked",
+        referrerUserId: referrer.id,
+        buyerUserId: params.viewer.id,
+        riskScore: verdict.score,
+        deviceHash: identity.deviceHash,
+        ipHash: identity.ipHash,
+        metadata: { stage: "capture", notNewAccount: newAccount.reason ?? "unknown_account" },
+      });
+      return {
+        ok: false,
+        setCookies: identity.setCookies,
+        /*
+          Named, unlike the anti-abuse refusals.
+
+          Nothing is given away by saying it — the customer knows perfectly
+          well whether they already had an account — and the alternative is a
+          long-standing customer reading "this could not be applied" and
+          concluding the shop is broken.
+        */
+        message: "كود الإحالة مخصص للمستخدمين الجدد فقط — حسابك مسجّل لدينا من قبل.",
+        reasons: ["not_new_customer"],
+      };
+    }
+  }
+
   const store = await getStore();
   const product = params.productRef
     ? (findProductByIdOrSlug(store?.products as unknown[], params.productRef) as
@@ -695,7 +751,11 @@ export async function bindAttributionToUser(request: Request, userId: string): P
     const { checkReferredAccountIsNew, bindReferrerIfUnbound } = await import("./binding.server");
     const newAccount = verdict.blocked
       ? { ok: false, reason: undefined }
-      : await checkReferredAccountIsNew(userId, attribution.capturedAt);
+      : await checkReferredAccountIsNew(
+          userId,
+          attribution.capturedAt,
+          attribution.referrerUserId,
+        );
 
     const refused = verdict.blocked || !newAccount.ok;
 
@@ -867,6 +927,8 @@ export async function quoteReferral(params: {
   lines: ReferralQuoteLine[];
   settings?: ReferralSettings;
   products?: Product[];
+  /** Sold from their own list, and eligible on the same terms as anything else. */
+  bundles?: Record<string, unknown>[];
   identity?: { deviceHash: string; deviceIdHash?: string; ipHash: string; sessionHash: string };
   now?: Date;
 }): Promise<ReferralQuote> {
@@ -881,12 +943,38 @@ export async function quoteReferral(params: {
   const referrer = await findUserById(attribution.referrerUserId);
   if (!referrer) return { ...EMPTY_QUOTE, reasons: ["code_inactive"] };
 
-  const products =
-    params.products ?? ((await getStore())?.products as Product[] | undefined) ?? [];
-  const productOf = (id: string | number) =>
-    products.find((entry) => String(entry.id) === String(id)) as
-      | (Product & Record<string, unknown>)
-      | undefined;
+  /*
+    The catalogue is only read when the caller has not already got it.
+
+    Checkout has the whole store in hand and passes both lists, so the ordinary
+    path adds no read; a caller that passes neither still works.
+  */
+  const store = params.products && params.bundles ? undefined : await getStore();
+  const products = params.products ?? ((store?.products as Product[] | undefined) ?? []);
+  /*
+    Bundles are sold from their own list, and the programme never looked in it.
+
+    A bundle line carries the bundle's id as its `productId`, and bundles live
+    in `store.bundles` rather than `store.products` — so this lookup found
+    nothing, `evaluateReferralLine` was handed `undefined`, and every bundle was
+    refused as `product_excluded`. The `bundle` entry in the category whitelist
+    has therefore never been able to do anything.
+
+    The bundle is given the category its own section uses, because
+    `getProductCategory` has nothing else to go on: a bundle record carries no
+    `category` field, so without this it would read as a game and be judged by
+    the game rule.
+  */
+  const bundles =
+    params.bundles ?? ((store?.bundles as Record<string, unknown>[] | undefined) ?? []);
+  const productOf = (id: string | number) => {
+    const found = products.find((entry) => String(entry.id) === String(id));
+    if (found) return found as Product & Record<string, unknown>;
+    const bundle = bundles.find((entry) => String(entry["id"] ?? "") === String(id));
+    if (!bundle) return undefined;
+    return { ...bundle, kind: "bundle", category: "cat_bundles" } as unknown as Product &
+      Record<string, unknown>;
+  };
 
   /*
     Every line that earns, not just one.

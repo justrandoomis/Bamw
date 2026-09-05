@@ -176,8 +176,8 @@ export async function releaseReferralDiscount(orderId: string): Promise<void> {
  *
  *   1. the account already existed when the link was opened — the surest
  *      signal there is, because it is the literal statement of the rule;
- *   2. the account is already bound to a referrer — one member is brought in
- *      by one person, for ever, and a second link cannot take them off the
+ *   2. the account is already bound to *somebody else* — one member is brought
+ *      in by one person, for ever, and a second link cannot take them off the
  *      first;
  *   3. the account has ordered before — a returning customer, whatever their
  *      row says about referrers.
@@ -186,6 +186,17 @@ export async function releaseReferralDiscount(orderId: string): Promise<void> {
  * whose age cannot be established is exactly the case where paying out would
  * be a guess, and refusing costs a discount while paying wrongly costs money
  * and the rule.
+ *
+ * `referrerUserId` is the person the link belongs to, and passing it is what
+ * separates "already somebody else's friend" from "already *this* person's
+ * friend". Without it every check after the first sign-in refuses: the friend
+ * who registered through the link now carries a referrer, so rule 2 catches
+ * them, and rule 3 catches them the moment they have ordered once. Both are
+ * the programme refusing the very relationship it just created — a friend who
+ * signs out and back in during the link's thirty days would have had their
+ * attribution marked `rejected` and their discount taken away. When the row
+ * already names this same referrer the question is settled: it was answered
+ * when the binding was written, and it is not asked twice.
  */
 export interface NewReferralCheck {
   ok: boolean;
@@ -195,6 +206,7 @@ export interface NewReferralCheck {
 export async function checkReferredAccountIsNew(
   userId: string,
   capturedAt: string,
+  referrerUserId?: string,
 ): Promise<NewReferralCheck> {
   if (!userId) return { ok: false, reason: "unknown_account" };
   try {
@@ -204,7 +216,12 @@ export async function checkReferredAccountIsNew(
     );
     if (!row) return { ok: false, reason: "unknown_account" };
 
-    if (text(row["referred_by_user_id"])) return { ok: false, reason: "already_referred" };
+    const boundTo = text(row["referred_by_user_id"]);
+    if (boundTo) {
+      // Already this person's friend: settled, and not re-litigated.
+      if (referrerUserId && boundTo === referrerUserId) return { ok: true };
+      return { ok: false, reason: "already_referred" };
+    }
 
     const created = Date.parse(String(row["created_at"] ?? ""));
     const clicked = Date.parse(capturedAt);

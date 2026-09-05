@@ -88,6 +88,44 @@ describe("who the offer is for", () => {
     expect(check.reason).toBe("existing_customer");
   });
 
+  /*
+    The friend this link already brought in.
+
+    Every rule above reads the friend's own row, and after a successful signup
+    that row says two things that look exactly like a disqualification: it
+    names a referrer, and — once they have bought once — it has an order behind
+    it. Asked without knowing whose link this is, the check refuses the very
+    person the programme just paid for. That is not hypothetical: the check
+    runs again on every sign-in, so a friend who signed out and back in inside
+    the link's thirty days had their attribution marked `rejected` and their
+    discount taken away by the programme's own rule.
+
+    Naming the referrer is what separates "already somebody's friend" from
+    "already *this* person's friend".
+  */
+  it("does not refuse the friend it already bound to this same referrer", async () => {
+    seed("usr_friend", iso(-2 * HOUR), "usr_referrer");
+    expect(
+      await checkReferredAccountIsNew("usr_friend", iso(-3 * HOUR), "usr_referrer"),
+    ).toEqual({ ok: true });
+  });
+
+  it("still refuses them when the link belongs to somebody else", async () => {
+    seed("usr_friend", iso(-2 * HOUR), "usr_referrer");
+    const check = await checkReferredAccountIsNew("usr_friend", iso(0), "usr_rival");
+    expect(check.ok).toBe(false);
+    expect(check.reason).toBe("already_referred");
+  });
+
+  it("does not refuse a bound friend for having bought before", async () => {
+    // Their second order, months later: still their referrer's, still earning.
+    seed("usr_friend", iso(-60 * 24 * HOUR), "usr_referrer");
+    db.prepare(`INSERT INTO orders (id, user_id) VALUES ('ord_9', 'usr_friend')`).run();
+    expect(
+      await checkReferredAccountIsNew("usr_friend", iso(0), "usr_referrer"),
+    ).toEqual({ ok: true });
+  });
+
   it("refuses an account it cannot age", async () => {
     /*
       Everywhere else in this shop a failed check allows, because the cost is a

@@ -178,6 +178,33 @@ export interface ApproveResult {
  */
 export async function approveRewardsForOrder(order: Order): Promise<ApproveResult> {
   const result: ApproveResult = { approved: 0, creditedIqd: 0, skipped: 0 };
+
+  /*
+    A completed order is a paid order, and its reward is owed.
+
+    `eligible` means "the order was not paid at the moment it was placed" —
+    which is every order that is not settled from the wallet: cash on delivery,
+    a transfer, anything the admin confirms afterwards. The only thing that
+    ever moved such a reward on to `pending` was the admin pressing *set
+    payment → paid*, and an admin who marks an order completed without first
+    marking it paid — the ordinary way a cash order is closed — left the reward
+    at `eligible` for ever: this function skips anything that is not `pending`,
+    and the scheduled job only selects `pending`. The referrer was never paid
+    and nothing anywhere said so.
+
+    So completion promotes it. The hold is untouched and still has to pass, and
+    `markRewardsPending` is `WHERE status = 'eligible'`, so a reward that is
+    already `pending`, `approved`, `blocked` or `reversed` is not disturbed.
+  */
+  if (order.status === "completed") {
+    await markRewardsPending(order.id).catch((error) => {
+      console.warn("[referral:promote_eligible_failed]", {
+        orderId: order.id,
+        error: error instanceof Error ? error.message : String(error),
+      });
+    });
+  }
+
   const rewards = await rewardsForOrder(order.id);
   if (!rewards.length) return result;
 
