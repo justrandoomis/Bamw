@@ -25,16 +25,18 @@ on:
   push:
     # `main`, and the branches work is done on.
     #
-    # The pull-request trigger is the one that matters and it cannot be relied
-    # on alone: on 5 Sep, PR #47 took four pushes and a close-and-reopen without
-    # GitHub delivering a single `pull_request` event, so the branch carried no
-    # gate at all while `Mobile widths` and the read-only inspectors — both
-    # `push` — ran on every one of those commits. A gate that silently does not
-    # run is worse than no gate, because the pull request looks unblocked.
+    # The pull-request trigger is the one that matters, and it does not fire on
+    # a pull request that cannot be merged: the run needs a merge ref, and a
+    # conflicted branch has none. PR #47 was conflicted from the moment it was
+    # opened — `main` carried #46 as a squash of the two commits the branch
+    # still had — so four pushes and a close-and-reopen produced no CI run at
+    # all, while `Mobile widths` and the read-only inspectors, both `push`, ran
+    # on every one of those commits. Nothing said so. The pull request simply
+    # looked unblocked, which is worse than a red one.
     #
     # Running on the branch push as well costs a duplicate run per commit while
-    # a pull request is open, and buys a gate that does not depend on one event
-    # type being delivered.
+    # a pull request is open, and buys a gate that still checks the code when
+    # the merge ref is exactly what is missing.
     branches: [main, "claude/**"]
 
 permissions:
