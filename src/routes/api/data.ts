@@ -80,6 +80,30 @@ const LIST_FIELDS = [
   "frontImage",
   "packagingFrontImage",
   "thumbnailImage",
+  /*
+    A gift card's own artwork, and the snake_case spellings.
+
+    `productImages.ts` promises to read both spellings of every role — the
+    import parser writes camelCase, and rows created before the schema system
+    are snake_case — and this projection carried only the camelCase half. So
+    the home page, which fetches `?slim=1`, and the category page, which
+    fetches the whole record, could resolve the same pre-schema product
+    differently. `cardArtwork` was missing outright, which is why a card
+    imported with its artwork and nothing else showed a picture in one place
+    and a placeholder in the other.
+
+    A field that is absent costs nothing: the projection below copies a key
+    only when the product has it.
+  */
+  "cardArtwork",
+  "card_artwork",
+  "listing_image",
+  "main_image",
+  "cover_image",
+  "front_image",
+  "packaging_front_image",
+  "thumbnail_image",
+  "cartridge_image",
   "brand",
   "releaseDate",
   "release_date",
