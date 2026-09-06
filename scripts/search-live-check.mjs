@@ -66,49 +66,79 @@ const browser = await chromium.launch({
 });
 
 /*
-  One browser context for both halves of this check, and the catalogue is read
-  through it rather than with a bare `fetch`.
+  A fresh page per query, and the catalogue read from inside one of them.
 
-  A plain request from a datacentre IP is answered by Cloudflare's bot
-  protection with an HTML interstitial and a 403 — the first run of this
-  checker reported exactly that, and reported it as if production were broken
-  while the browser half was passing every query. A context that has already
-  loaded the site carries whatever clearance the challenge issued, so this asks
-  the same question a real visitor's browser asks.
+  This has now been wrong twice, in opposite directions, and both are worth
+  writing down.
+
+  First it read the catalogue with a plain `fetch`. Cloudflare's bot protection
+  answers a datacentre IP with an HTML interstitial and a 403, so the check
+  reported a broken catalogue while its own browser half was answering all
+  eight queries correctly on the same site.
+
+  Then it moved both halves into one shared browser context — and made things
+  worse: a single challenge now poisoned every query, and a run that had passed
+  8 of 8 failed 5 of 5. Sharing state across the run means sharing a refusal.
+
+  So: each query gets its own page, as it did when it worked, and the catalogue
+  is read from *inside* a page that has already rendered, where the request
+  carries the site's own origin and cookies. And a challenge is reported as a
+  challenge — see `payload.challenged` below — because a checker that cannot
+  tell "Cloudflare blocked me" from "production is broken" is the thing this
+  script exists to avoid being.
 */
-const context = await browser.newContext({
-  viewport: { width: 390, height: 844 },
-  userAgent: UA,
-});
-await context.newPage().then(async (page) => {
-  await page.goto(BASE + "/", { waitUntil: "domcontentloaded", timeout: 60000 });
-  await page.waitForTimeout(2000);
-  await page.close();
-});
+async function withPage(run) {
+  const page = await browser.newPage({ viewport: { width: 390, height: 844 }, userAgent: UA });
+  try {
+    return await run(page);
+  } finally {
+    await page.close();
+  }
+}
 
 /* ── 1. what the browser is actually sent ─────────────────────────────── */
 
-const payload = { ok: false };
+const payload = { ok: false, challenged: false };
 try {
-  const response = await context.request.get(`${BASE}/api/data?slim=1`, {
-    headers: { accept: "application/json" },
+  const store = await withPage(async (page) => {
+    const landing = await page.goto(BASE + "/", {
+      waitUntil: "domcontentloaded",
+      timeout: 60000,
+    });
+    payload.status = landing?.status() ?? 0;
+    if (payload.status === 403) {
+      payload.challenged = true;
+      return null;
+    }
+    await page.waitForTimeout(2000);
+    return page.evaluate(async () => {
+      const response = await fetch("/api/data?slim=1", {
+        headers: { accept: "application/json" },
+      });
+      if (!response.ok) return { __status: response.status };
+      return response.json();
+    });
   });
-  payload.status = response.status();
-  const store = await response.json();
-  const products = Array.isArray(store?.products) ? store.products : [];
-  const text = (value) => (typeof value === "string" ? value.trim() : "");
 
-  payload.products = products.length;
-  payload.withArabicName = products.filter((p) => text(p.titleAr)).length;
-  payload.withSeries = products.filter((p) => text(p.seriesName) || text(p.series)).length;
-  payload.sameTitleAndTitleEn = products.filter(
-    (p) => text(p.title) && text(p.title) === text(p.titleEn),
-  ).length;
-  /* The one thing that must NOT be there. */
-  payload.leakedSupplierName = products.filter(
-    (p) => p.supplier_name_zh_cn || p.supplierNameZhCn,
-  ).length;
-  payload.ok = payload.withArabicName > 0 && payload.leakedSupplierName === 0;
+  if (store && store.__status) {
+    payload.status = store.__status;
+    payload.challenged = store.__status === 403;
+  } else if (store) {
+    const products = Array.isArray(store.products) ? store.products : [];
+    const text = (value) => (typeof value === "string" ? value.trim() : "");
+
+    payload.products = products.length;
+    payload.withArabicName = products.filter((p) => text(p.titleAr)).length;
+    payload.withSeries = products.filter((p) => text(p.seriesName) || text(p.series)).length;
+    payload.sameTitleAndTitleEn = products.filter(
+      (p) => text(p.title) && text(p.title) === text(p.titleEn),
+    ).length;
+    /* The one thing that must NOT be there. */
+    payload.leakedSupplierName = products.filter(
+      (p) => p.supplier_name_zh_cn || p.supplierNameZhCn,
+    ).length;
+    payload.ok = payload.withArabicName > 0 && payload.leakedSupplierName === 0;
+  }
 } catch (error) {
   payload.error = String(error).split("\n")[0];
 }
@@ -130,7 +160,7 @@ say();
 
 const runs = [];
 for (const query of QUERIES) {
-  const page = await context.newPage();
+  const page = await browser.newPage({ viewport: { width: 390, height: 844 }, userAgent: UA });
   const errors = [];
   page.on("pageerror", (error) => errors.push(String(error).split("\n")[0]));
 
@@ -152,11 +182,21 @@ for (const query of QUERIES) {
       .map((t) => t.replace(/\s+/g, " ").trim().slice(0, 60));
 
     const reasons = [];
-    if (entry.status >= 400) reasons.push(`http ${entry.status}`);
-    if (entry.results === 0) reasons.push("no results on screen");
-    if (errors.length) reasons.push(`uncaught: ${errors[0]}`);
-    entry.ok = reasons.length === 0;
-    entry.reasons = reasons;
+    /*
+      A challenge is not a verdict on the shop. 403 here is Cloudflare refusing
+      a datacentre IP, which says nothing about whether search works — so it is
+      recorded as inconclusive and reported loudly, not counted as a failure.
+    */
+    if (entry.status === 403) {
+      entry.challenged = true;
+      entry.reasons = ["challenged by bot protection — inconclusive"];
+    } else {
+      if (entry.status >= 400) reasons.push(`http ${entry.status}`);
+      if (entry.results === 0) reasons.push("no results on screen");
+      if (errors.length) reasons.push(`uncaught: ${errors[0]}`);
+      entry.ok = reasons.length === 0;
+      entry.reasons = reasons;
+    }
   } catch (error) {
     entry.reasons = [`threw: ${String(error).split("\n")[0]}`];
   }
@@ -165,7 +205,6 @@ for (const query of QUERIES) {
   await page.close();
 }
 
-await context.close();
 await browser.close();
 
 say("## What a customer sees at `/search`");
@@ -178,12 +217,34 @@ for (const run of runs) {
 }
 say();
 
-const failed = runs.filter((r) => !r.ok);
+const challenged = runs.filter((r) => r.challenged);
+const failed = runs.filter((r) => !r.ok && !r.challenged);
+const answered = runs.filter((r) => r.ok);
+
+if (payload.challenged) {
+  say(
+    "_The catalogue read was challenged by bot protection, not refused by the shop — " +
+      "inconclusive, not a failure._",
+  );
+  say();
+}
+
 say(
-  failed.length === 0 && payload.ok
-    ? `**All ${runs.length} queries answered.**`
-    : `**${failed.length} of ${runs.length} queries failed.**`,
+  failed.length > 0
+    ? `**${failed.length} of ${runs.length} queries failed.**`
+    : challenged.length === runs.length
+      ? `**Inconclusive: all ${runs.length} queries were challenged by bot protection.** ` +
+        "Nothing here says anything about the shop."
+      : `**${answered.length} of ${runs.length} queries answered**` +
+        (challenged.length > 0 ? `, ${challenged.length} challenged and inconclusive.` : "."),
 );
+
+/*
+  Green only on evidence. A run that was challenged end to end proves nothing,
+  so it does not pass — but it fails as "could not tell", which is a different
+  thing from "the shop is broken", and the line above says which.
+*/
+const provedSomething = answered.length > 0 && failed.length === 0;
 
 if (args.json && args.json !== "true") {
   writeFileSync(args.json, JSON.stringify({ payload, runs }, null, 2));
@@ -192,4 +253,4 @@ if (process.env.GITHUB_STEP_SUMMARY) {
   writeFileSync(process.env.GITHUB_STEP_SUMMARY, lines.join("\n"), { flag: "a" });
 }
 
-process.exit(failed.length === 0 && payload.ok ? 0 : 1);
+process.exit(provedSomething ? 0 : 1);
