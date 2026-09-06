@@ -49,19 +49,51 @@ const say = (text = "") => {
   console.log(text);
 };
 
-/* ── 1. what the browser is actually sent ─────────────────────────────── */
-
 say("# Search, on the live site");
 say();
 say(`\`${BASE}\` — read-only.`);
 say();
 
+const executablePath =
+  process.env.CHROMIUM_PATH ??
+  (process.env.PLAYWRIGHT_BROWSERS_PATH
+    ? `${process.env.PLAYWRIGHT_BROWSERS_PATH}/chromium-1194/chrome-linux/chrome`
+    : undefined);
+
+const browser = await chromium.launch({
+  ...(executablePath ? { executablePath } : {}),
+  args: ["--no-sandbox"],
+});
+
+/*
+  One browser context for both halves of this check, and the catalogue is read
+  through it rather than with a bare `fetch`.
+
+  A plain request from a datacentre IP is answered by Cloudflare's bot
+  protection with an HTML interstitial and a 403 — the first run of this
+  checker reported exactly that, and reported it as if production were broken
+  while the browser half was passing every query. A context that has already
+  loaded the site carries whatever clearance the challenge issued, so this asks
+  the same question a real visitor's browser asks.
+*/
+const context = await browser.newContext({
+  viewport: { width: 390, height: 844 },
+  userAgent: UA,
+});
+await context.newPage().then(async (page) => {
+  await page.goto(BASE + "/", { waitUntil: "domcontentloaded", timeout: 60000 });
+  await page.waitForTimeout(2000);
+  await page.close();
+});
+
+/* ── 1. what the browser is actually sent ─────────────────────────────── */
+
 const payload = { ok: false };
 try {
-  const response = await fetch(`${BASE}/api/data?slim=1`, {
-    headers: { "user-agent": UA, accept: "application/json" },
+  const response = await context.request.get(`${BASE}/api/data?slim=1`, {
+    headers: { accept: "application/json" },
   });
-  payload.status = response.status;
+  payload.status = response.status();
   const store = await response.json();
   const products = Array.isArray(store?.products) ? store.products : [];
   const text = (value) => (typeof value === "string" ? value.trim() : "");
@@ -96,23 +128,9 @@ say();
 
 /* ── 2. what a customer sees ──────────────────────────────────────────── */
 
-const executablePath =
-  process.env.CHROMIUM_PATH ??
-  (process.env.PLAYWRIGHT_BROWSERS_PATH
-    ? `${process.env.PLAYWRIGHT_BROWSERS_PATH}/chromium-1194/chrome-linux/chrome`
-    : undefined);
-
-const browser = await chromium.launch({
-  ...(executablePath ? { executablePath } : {}),
-  args: ["--no-sandbox"],
-});
-
 const runs = [];
 for (const query of QUERIES) {
-  const page = await browser.newPage({
-    viewport: { width: 390, height: 844 },
-    userAgent: UA,
-  });
+  const page = await context.newPage();
   const errors = [];
   page.on("pageerror", (error) => errors.push(String(error).split("\n")[0]));
 
@@ -147,6 +165,7 @@ for (const query of QUERIES) {
   await page.close();
 }
 
+await context.close();
 await browser.close();
 
 say("## What a customer sees at `/search`");
