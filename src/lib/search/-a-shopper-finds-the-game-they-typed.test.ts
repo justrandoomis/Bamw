@@ -319,3 +319,64 @@ describe("the plumbing", () => {
     expect(first?.matched.sort()).toEqual(["kart", "mario"]);
   });
 });
+
+describe("a word the catalogue spells differently", () => {
+  /*
+    The catalogue's own words, with nothing Arabic in the sections. This is the
+    case that breaks a search which scores «سويتش» and «switch» as two separate
+    words the customer asked for: the product can only ever have one of them,
+    so requiring both finds nothing and averaging the two halves the score.
+  */
+  const ENGLISH_ONLY = [
+    {
+      id: "h1",
+      titleEn: "Nintendo Switch 2 Console",
+      categoryTitle: "Hardware",
+      kind: "hardware",
+      brand: "Nintendo",
+      sales: 4,
+    },
+    {
+      id: "c1",
+      titleEn: "Nintendo eShop Gift Card 50 USD",
+      categoryTitle: "Gift Cards",
+      kind: "gift_card",
+      brand: "Nintendo",
+      sales: 2,
+    },
+  ];
+  const find = (query: string) =>
+    searchCatalogue(ENGLISH_ONLY, query).map((row) => String(row.product["id"]));
+
+  it("«سويتش» reaches a console named only in English", () => {
+    expect(find("سويتش")).toContain("h1");
+  });
+
+  it("«كارت» reaches a card named only in English", () => {
+    expect(find("كارت")).toContain("c1");
+  });
+
+  it("«جهاز» reaches the hardware shelf", () => {
+    expect(find("جهاز")).toContain("h1");
+  });
+
+  it("still refuses a word that means nothing here", () => {
+    expect(find("غسالة")).toEqual([]);
+  });
+
+  it("scores the catalogue's own spelling above the synonym that reached it", () => {
+    const viaSynonym = searchCatalogue(ENGLISH_ONLY, "سويتش")[0]?.score ?? 0;
+    const viaTheWordItself = searchCatalogue(ENGLISH_ONLY, "switch")[0]?.score ?? 0;
+    expect(viaTheWordItself).toBeGreaterThan(viaSynonym);
+  });
+});
+
+describe("a multi-word abbreviation is a phrase, not a bag of words", () => {
+  it("«botw» does not answer with the other Zelda for having «of» and «the»", () => {
+    expect(ids("botw")).toEqual(["p2"]);
+  });
+
+  it("«totk» likewise", () => {
+    expect(ids("totk")).toEqual(["p1"]);
+  });
+});

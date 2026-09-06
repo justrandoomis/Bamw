@@ -21,7 +21,7 @@
  * expansion adds — are allowed to miss.
  */
 
-import { normalize, squash, tokenizeQuery, type QueryToken } from "./normalize";
+import { normalize, squash, stem, tokenizeQuery, type QueryToken } from "./normalize";
 import { buildField, matchQuality, type IndexedField } from "./relevance";
 
 /**
@@ -33,9 +33,16 @@ import { buildField, matchQuality, type IndexedField } from "./relevance";
  * that appear on no product at all.
  */
 const PRODUCT_SYNONYMS: Record<string, string[]> = {
-  // Abbreviations no title contains.
-  botw: ["breath of the wild", "زيلدا"],
-  totk: ["tears of the kingdom", "زيلدا"],
+  /*
+    Abbreviations no title contains.
+
+    Deliberately narrow. «botw» meant «breath of the wild» *and* «زيلدا» at
+    first, which made the abbreviation match both Zelda games exactly as well
+    as each other — the Arabic titles already make «زيلدا» find the pair, and
+    the whole value of an abbreviation is that it names one game.
+  */
+  botw: ["breath of the wild"],
+  totk: ["tears of the kingdom"],
   ac: ["animal crossing"],
   smash: ["super smash bros", "سماش"],
   mk: ["mario kart"],
@@ -153,9 +160,63 @@ export function buildProductIndex(
   });
 }
 
+/**
+ * One word the customer typed, with the words it also means.
+ *
+ * The distinction matters because «سويتش» and «switch» are not two things the
+ * customer asked for — they are one thing, spelled two ways, and only one of
+ * them is in the catalogue. Scoring them as separate words halves the score of
+ * a product that has the only spelling it could have; requiring both to land
+ * finds nothing at all.
+ */
+interface QueryWord {
+  token: QueryToken;
+  /**
+   * What else this word means, one entry per synonym — and a synonym is a
+   * phrase, not a bag of words. «botw» means «breath of the wild», which a
+   * product either is or is not; scoring its four words independently let a
+   * different Zelda game claim the abbreviation on the strength of «of» and
+   * «the».
+   */
+  alternatives: QueryToken[][];
+}
+
+/**
+ * Group the expansion back under the words it came from.
+ *
+ * `tokenizeQuery` returns one flat list and marks what it invented, which is
+ * all the troubleshooting search needs. Here it is not enough: a shop has to
+ * know *which* typed word a synonym stands in for, so that word can be counted
+ * as answered when its synonym is the spelling the catalogue happens to use.
+ */
+function planQuery(rawQuery: string): QueryWord[] {
+  const tokens = tokenizeQuery(rawQuery, PRODUCT_SYNONYMS);
+  const byValue = new Map(tokens.map((token) => [token.value, token]));
+
+  return tokens
+    .filter((token) => !token.derived)
+    .map((token) => {
+      const alternatives: QueryToken[][] = [];
+      const seen = new Set<string>();
+      for (const seed of [token.value, token.stem, stem(token.value)]) {
+        for (const synonym of PRODUCT_SYNONYMS[seed] ?? []) {
+          const normalized = normalize(synonym);
+          if (!normalized || seen.has(normalized)) continue;
+          seen.add(normalized);
+          const parts = normalized
+            .split(" ")
+            .map((part) => byValue.get(part))
+            .filter((part): part is QueryToken => Boolean(part) && part !== token);
+          if (parts.length > 0) alternatives.push(parts);
+        }
+      }
+      return { token, alternatives };
+    });
+}
+
 function scoreProduct(
   entry: IndexedProduct,
-  tokens: QueryToken[],
+  words: QueryWord[],
   squashedQuery: string,
 ): { score: number; matched: string[]; missedTyped: boolean } {
   let weighted = 0;
@@ -163,7 +224,7 @@ function scoreProduct(
   let missedTyped = false;
   const matched: string[] = [];
 
-  for (const token of tokens) {
+  const bestFor = (token: QueryToken) => {
     let best = 0;
     for (const indexed of entry.fields) {
       const quality = matchQuality(token, indexed);
@@ -171,20 +232,41 @@ function scoreProduct(
       const value = quality * indexed.weight;
       if (value > best) best = value;
     }
+    return best;
+  };
+
+  for (const { token, alternatives } of words) {
+    let best = bestFor(token);
+    /*
+      A synonym is worth a shade less than the word itself: «كارت» reaching a
+      gift card through «card» is a good answer, and the product actually
+      titled «كارت» is a better one.
+
+      A multi-word synonym is scored across its own words, and the filler in it
+      is left out of that average — «breath of the wild» is answered by
+      «breath» and «wild», and a game that has only «of» and «the» has not
+      answered it at all.
+    */
+    for (const phrase of alternatives) {
+      const carrying = phrase.filter((part) => !part.weak);
+      const parts = carrying.length > 0 ? carrying : phrase;
+      const mean = parts.reduce((total, part) => total + bestFor(part), 0) / parts.length;
+      const value = mean * 0.85;
+      if (value > best) best = value;
+    }
 
     /*
-      A word the customer typed and this product does not have anywhere. The
-      product is out — not merely ranked lower — which is what keeps «mario
-      kart» from returning every Mario game. Words the expansion invented, and
-      filler like «the», are not held against it.
+      A word the customer typed that this product has nowhere, under any of its
+      spellings. The product is out — not merely ranked lower — which is what
+      keeps «mario kart» from returning every Mario game. Filler like «the» is
+      not held against it.
     */
-    if (best === 0 && !token.derived && !token.weak) missedTyped = true;
+    if (best === 0 && !token.weak) missedTyped = true;
 
-    if (token.derived) best *= 0.85;
-    const weight = token.weak ? 0.2 : token.derived ? 0.5 : 1;
+    const weight = token.weak ? 0.2 : 1;
     weighted += best * weight;
     totalWeight += weight;
-    if (best >= 0.5 && !token.derived) matched.push(token.value);
+    if (best >= 0.5) matched.push(token.value);
   }
 
   if (totalWeight === 0) return { score: 0, matched, missedTyped };
@@ -230,12 +312,12 @@ export function searchProducts(
   rawQuery: string,
   { threshold = 0.32, limit = 24, relaxedThreshold = 0.45 }: ProductSearchOptions = {},
 ): ProductSearchResult[] {
-  const tokens = tokenizeQuery(rawQuery, PRODUCT_SYNONYMS);
-  if (tokens.length === 0) return [];
+  const words = planQuery(rawQuery);
+  if (words.length === 0) return [];
   const squashedQuery = squash(rawQuery);
 
   const scored = index
-    .map((entry) => ({ entry, ...scoreProduct(entry, tokens, squashedQuery) }))
+    .map((entry) => ({ entry, ...scoreProduct(entry, words, squashedQuery) }))
     .sort(
       (a, b) =>
         b.score - a.score ||
