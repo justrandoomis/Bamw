@@ -72,7 +72,11 @@ export default function BundlesManager({
     Fetched once, cached by React Query. `products` is still used as the first
     paint so the picker is never empty while this is in flight.
   */
-  const { data: catalogueStore, isPending: catalogueLoading } = useQuery({
+  const {
+    data: catalogueStore,
+    isPending: catalogueLoading,
+    isError: catalogueFailed,
+  } = useQuery({
     queryKey: ["admin", "bundle-catalogue"],
     queryFn: ({ signal }) => adminApi.catalogue(signal),
     /*
@@ -344,7 +348,14 @@ export default function BundlesManager({
         {(filteredBundles || [])
           .filter((bundle) => bundle && typeof bundle === "object")
           .map((bundle) => {
-            const games = getBundleGames(bundle, products);
+            /*
+              The same catalogue the editor picks from.
+
+              Read against the fifty-row page, a bundle under-reported itself:
+              a card said «3 ألعاب» for a bundle of five because two of them
+              were not on the page this component happened to be handed.
+            */
+            const games = getBundleGames(bundle, catalogue);
             const isActive = bundle.isActive !== false;
             const gameCount = games.length || (Array.isArray(bundle.gameIds) ? bundle.gameIds.length : 0);
 
@@ -704,10 +715,21 @@ export default function BundlesManager({
                   game had no way to tell whether it was missing from the shop or
                   merely missing from this list.
                 */}
-                <p className="text-[10px] text-muted-foreground">
-                  {catalogueLoading && catalogue === products
-                    ? "جارٍ تحميل كامل الكتالوج..."
-                    : `البحث في ${pickerGames.length} منتجًا من كامل الكتالوج، بما فيها المخفية`}
+                <p
+                  className={`text-[10px] ${catalogueFailed ? "font-bold text-amber-600" : "text-muted-foreground"}`}
+                >
+                  {/*
+                    When the catalogue does not arrive this falls back to the
+                    page it was handed, which is the reported bug again. It says
+                    so rather than claiming to be searching the whole shop — an
+                    admin who is told «not found» deserves to know which of the
+                    two it means.
+                  */}
+                  {catalogueFailed
+                    ? `تعذّر تحميل كامل الكتالوج — يُعرض ${pickerGames.length} منتجًا فقط من الصفحة المحمَّلة`
+                    : catalogueLoading
+                      ? "جارٍ تحميل كامل الكتالوج..."
+                      : `البحث في ${pickerGames.length} منتجًا من كامل الكتالوج، بما فيها المخفية`}
                   {gameSearch.trim() ? ` — ${searchHits.length} نتيجة` : ""}
                   {filteredPickerGames.length > visiblePickerGames.length
                     ? ` (يُعرض أول ${visiblePickerGames.length}؛ اكتب للتضييق)`
@@ -739,7 +761,9 @@ export default function BundlesManager({
                 )}
 
                 {/* Available Games Scroll List */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 max-h-72 overflow-y-auto p-1 no-scrollbar">
+                {/* The scrollbar is kept: this list is now the whole catalogue,
+                    and a hidden scrollbar on it reads as "that is all there is". */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 max-h-72 overflow-y-auto p-1">
                   {visiblePickerGames.map((game) => {
                     const isSelected = editingBundle.gameIds?.some(
                       (id) => String(id) === String(game.id),

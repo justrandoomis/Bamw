@@ -380,3 +380,32 @@ describe("a multi-word abbreviation is a phrase, not a bag of words", () => {
     expect(ids("totk")).toEqual(["p1"]);
   });
 });
+
+describe("the words the shared table knows", () => {
+  /*
+    `tokenizeQuery` expands from the shop's table AND the shared one. When the
+    scorer read only the shop's, every word the shared table covers produced
+    tokens nothing then counted: the typed word matched no product, its
+    synonyms were not treated as standing in for it, and the query came back
+    empty. A synonym the tokenizer invents and the scorer ignores is worse than
+    no synonym at all.
+  */
+  const ACCESSORIES = [
+    { id: "a1", titleEn: "Joy-Con (L)/(R) Pair", categoryTitle: "Accessories", kind: "accessory" },
+    { id: "a2", titleEn: "Nintendo Switch Dock Set", categoryTitle: "Accessories", kind: "accessory" },
+  ];
+  const find = (query: string) =>
+    searchCatalogue(ACCESSORIES, query).map((row) => String(row.product["id"]));
+
+  it("«جويكون» reaches the Joy-Con", () => {
+    expect(find("جويكون")).toContain("a1");
+  });
+
+  it("«دوك» reaches the dock", () => {
+    expect(find("دوك")).toContain("a2");
+  });
+
+  it("and a word neither table knows still returns nothing", () => {
+    expect(find("غسالة")).toEqual([]);
+  });
+});

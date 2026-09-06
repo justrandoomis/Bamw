@@ -208,7 +208,8 @@ describe("the struck-through price", () => {
     // `p3` cannot be priced. The admin's own figure must survive.
     catalogue.mockRejectedValue(new Error("offline"));
     await openEditor();
-    await screen.findByText(/البحث في 2 منتجًا/);
+    // And it says so, rather than claiming to be searching the whole shop.
+    await screen.findByText(/تعذّر تحميل كامل الكتالوج/);
     type("splatoon");
     fireEvent.click(await screen.findByText("Splatoon 3"));
     fireEvent.click(screen.getByText("حفظ التعديلات"));
@@ -226,5 +227,22 @@ describe("the struck-through price", () => {
     // p3 (50003) + p4 (50004)
     expect(saved.originalPrice).toBe(100007);
     expect(saved.gameIds.map(String).sort()).toEqual(["p3", "p4"]);
+  });
+});
+
+describe("when the catalogue does not arrive", () => {
+  it("says so instead of quietly becoming the bug again", async () => {
+    catalogue.mockRejectedValue(new Error("offline"));
+    await openEditor();
+    await screen.findByText(/تعذّر تحميل كامل الكتالوج/);
+    expect(screen.queryByText(/من كامل الكتالوج، بما فيها المخفية/)).toBeNull();
+  });
+});
+
+describe("the bundle card in the list", () => {
+  it("counts the games the bundle actually has, not the ones on the loaded page", async () => {
+    renderManager();
+    // p3 is in the bundle and not in the two-row page it was handed.
+    await screen.findByText(/Tears of the Kingdom/);
   });
 });

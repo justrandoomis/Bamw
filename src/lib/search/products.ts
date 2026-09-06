@@ -21,7 +21,7 @@
  * expansion adds — are allowed to miss.
  */
 
-import { normalize, squash, tokenizeQuery, type QueryToken } from "./normalize";
+import { normalize, squash, SYNONYMS, tokenizeQuery, type QueryToken } from "./normalize";
 import { buildField, matchQuality, type IndexedField } from "./relevance";
 
 /**
@@ -199,7 +199,17 @@ function planQuery(rawQuery: string): QueryWord[] {
       const alternatives: QueryToken[][] = [];
       const seen = new Set<string>();
       for (const seed of [token.value, token.stem]) {
-        for (const synonym of PRODUCT_SYNONYMS[seed] ?? []) {
+        /*
+          Both tables, because `tokenizeQuery` expands from both.
+
+          Reading only the product table here left the words the shared table
+          knows — «جويكون» for a Joy-Con, «دوك» for a dock — generating tokens
+          that nothing then scored: the typed word matched no product, its
+          synonyms were not counted as standing in for it, and the query came
+          back empty. A synonym the tokenizer invents and the scorer ignores is
+          worse than no synonym at all.
+        */
+        for (const synonym of [...(SYNONYMS[seed] ?? []), ...(PRODUCT_SYNONYMS[seed] ?? [])]) {
           const normalized = normalize(synonym);
           if (!normalized || seen.has(normalized)) continue;
           seen.add(normalized);
