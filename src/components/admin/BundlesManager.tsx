@@ -25,7 +25,7 @@ import { toast } from "sonner";
 import type { AccountBundle, Product } from "@/lib/types";
 import { adminApi, fileToDataUrl } from "@/lib/api";
 import { getBundleGames } from "@/lib/bundles";
-import { isProductHidden } from "@/lib/purchasable";
+import { isProductHidden, isVisibleToPublic } from "@/lib/purchasable";
 import { buildProductIndex, searchProducts } from "@/lib/search/products";
 
 /** How many picker rows are rendered at once. */
@@ -133,27 +133,63 @@ export default function BundlesManager({
   /*
     What the admin sees in the list.
 
-    The games already in the bundle come first and are never filtered out — a
-    picker that hides what you have already chosen is a picker you cannot undo
-    a choice in. Below them, the search results; and with an empty box, the
-    rest of the catalogue rather than an arbitrary first thirty.
+    With an empty box the games already in the bundle come first: a picker that
+    buries what you have chosen is one you cannot review.
 
-    The search is the storefront's own engine (src/lib/search/products.ts), so
-    «زيلدا» finds the game here for the same reason it does on the shop.
+    While a search is running they do NOT come first, and getting that wrong
+    reproduced the original complaint on top of the fix. Pinning the whole
+    selection unconditionally meant that in a bundle of a dozen games, typing a
+    name put twelve non-matching rows above the one match — row thirteen of a
+    two-column box that shows about ten. The admin sees no match, does not
+    scroll, and reports «البحث لا يجد اللعبة» again, correctly.
+
+    So a search shows its matches first, selected or not — the row already
+    carries a tick when it is chosen — and the chosen games that do NOT match
+    go underneath. The chip row above is the always-available way to unselect,
+    so nothing is lost by ordering honestly.
   */
-  const { searchHits, filteredPickerGames } = useMemo(() => {
+  const { matchCount, filteredPickerGames } = useMemo(() => {
     const chosen = pickerGames.filter((p) => selectedIds.has(String(p.id)));
     const query = gameSearch.trim();
-    const hits = query
-      ? searchProducts(pickerIndex, query, { limit: PICKER_SEARCH_LIMIT })
-          .map((row) => row.product as unknown as Product)
-          .filter((p) => !selectedIds.has(String(p.id)))
-      : pickerGames.filter((p) => !selectedIds.has(String(p.id)));
-    return {
-      searchHits: hits,
-      filteredPickerGames: [...chosen, ...hits],
-    };
+
+    if (!query) {
+      const rest = pickerGames.filter((p) => !selectedIds.has(String(p.id)));
+      return { matchCount: pickerGames.length, filteredPickerGames: [...chosen, ...rest] };
+    }
+
+    /*
+      The engine's own hits, before anything is removed. This is the number
+      printed as « — N نتيجة» and the one the empty state is decided on:
+      counting matches *after* dropping the ones already chosen told the admin
+      «لا توجد لعبة تطابق «زيلدا»» while the Zelda row sat pinned above it, on
+      the same screen. That is the picker calling a game it is displaying
+      unfindable.
+    */
+    const hits = searchProducts(pickerIndex, query, { limit: PICKER_SEARCH_LIMIT }).map(
+      (row) => row.product as unknown as Product,
+    );
+    const hitIds = new Set(hits.map((p) => String(p.id)));
+    const chosenAndUnmatched = chosen.filter((p) => !hitIds.has(String(p.id)));
+    return { matchCount: hits.length, filteredPickerGames: [...hits, ...chosenAndUnmatched] };
   }, [pickerGames, pickerIndex, gameSearch, selectedIds]);
+
+  /*
+    Games in this bundle that a customer will not see inside it.
+
+    The picker deliberately offers hidden products — the importer creates every
+    game hidden, so they are exactly what an admin comes here for. But the
+    public catalogue filters hidden products out, and a bundle's contents are
+    resolved by intersecting its `gameIds` with that already-filtered array
+    (src/lib/bundles.ts). So a hidden game is saved into the bundle, shows in
+    this editor, and is simply absent from the bundle on the storefront.
+
+    Nothing here changes that — visibility is the owner's decision and this
+    must not touch it. It says it out loud instead, next to the choice.
+  */
+  const hiddenInBundle = useMemo(
+    () => catalogue.filter((p) => selectedIds.has(String(p.id)) && !isVisibleToPublic(p)),
+    [catalogue, selectedIds],
+  );
 
   /*
     Rows are capped, the search is not.
@@ -738,11 +774,28 @@ export default function BundlesManager({
                     : catalogueLoading
                       ? "جارٍ تحميل كامل الكتالوج..."
                       : `البحث في ${pickerGames.length} منتجًا من كامل الكتالوج، بما فيها المخفية`}
-                  {gameSearch.trim() ? ` — ${searchHits.length} نتيجة` : ""}
+                  {gameSearch.trim() ? ` — ${matchCount} نتيجة` : ""}
                   {filteredPickerGames.length > visiblePickerGames.length
                     ? ` (يُعرض أول ${visiblePickerGames.length}؛ اكتب للتضييق)`
                     : ""}
                 </p>
+
+                {/*
+                  A hidden game is saved into the bundle and then absent from
+                  it on the storefront. The admin decides what is hidden; this
+                  only refuses to let that happen silently.
+                */}
+                {hiddenInBundle.length > 0 ? (
+                  <p className="rounded-xl border border-amber-500/30 bg-amber-500/10 px-3 py-2 text-[11px] font-bold text-amber-700">
+                    {hiddenInBundle.length} من الألعاب المختارة مخفية — ستُحفظ داخل البندل لكن
+                    الزبون لن يراها في محتوياته حتى تُظهرها:{" "}
+                    {hiddenInBundle
+                      .map((p) => p.titleEn || p.title || String(p.id))
+                      .slice(0, 4)
+                      .join("، ")}
+                    {hiddenInBundle.length > 4 ? " …" : ""}
+                  </p>
+                ) : null}
 
                 {/* Selected Games Chips */}
                 {editingBundle.gameIds && editingBundle.gameIds.length > 0 && (
@@ -834,11 +887,11 @@ export default function BundlesManager({
                   })}
 
                   {/*
-                    About the search, not about the list: the games already in
-                    the bundle stay pinned above, so counting them here would
-                    turn "nothing matched" into silence.
+                    Decided on the engine's raw hits. Counting matches after
+                    removing the ones already chosen made the picker announce
+                    «لا توجد لعبة تطابق X» about a game it was displaying.
                   */}
-                  {gameSearch.trim() && searchHits.length === 0 && !catalogueLoading ? (
+                  {gameSearch.trim() && matchCount === 0 && !catalogueLoading ? (
                     <p className="col-span-full py-6 text-center text-xs text-muted-foreground">
                       لا توجد لعبة تطابق «{gameSearch.trim()}»
                     </p>
