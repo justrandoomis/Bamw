@@ -21,7 +21,7 @@
  * expansion adds — are allowed to miss.
  */
 
-import { normalize, squash, stem, tokenizeQuery, type QueryToken } from "./normalize";
+import { normalize, squash, tokenizeQuery, type QueryToken } from "./normalize";
 import { buildField, matchQuality, type IndexedField } from "./relevance";
 
 /**
@@ -198,7 +198,7 @@ function planQuery(rawQuery: string): QueryWord[] {
     .map((token) => {
       const alternatives: QueryToken[][] = [];
       const seen = new Set<string>();
-      for (const seed of [token.value, token.stem, stem(token.value)]) {
+      for (const seed of [token.value, token.stem]) {
         for (const synonym of PRODUCT_SYNONYMS[seed] ?? []) {
           const normalized = normalize(synonym);
           if (!normalized || seen.has(normalized)) continue;
