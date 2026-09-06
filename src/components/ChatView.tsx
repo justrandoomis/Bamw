@@ -51,6 +51,7 @@ import { useChatRealtime } from "@/hooks/useChatRealtime";
 import { api, uploadFileWithProgress, walletApi } from "@/lib/api";
 import { isVideoUrl } from "@/lib/uploads";
 import { supportAnswer, type SupportContext } from "@/lib/support";
+import { buildProductIndex, searchProducts } from "@/lib/search/products";
 import { getSmartCustomerSuggestions } from "@/lib/support/contextual-suggestions";
 import { viewHistoryForSupport } from "@/lib/view-history";
 import type {
@@ -243,15 +244,29 @@ function ProductSelectionView({
     }
   }, [products]);
 
+  /*
+    The product list a customer searches to ask about something.
+
+    It was `String(titleEn || english_name || title).includes(searchQuery)`,
+    with no `toLowerCase` anywhere — so «zelda» found nothing while «Zelda»
+    found the game, and an Arabic query found nothing at all, because the
+    Arabic name is in `titleAr`. Same engine as the storefront's search now,
+    which is where the folding, the typo tolerance and the Arabic live.
+  */
+  const productIndex = useMemo(
+    () => buildProductIndex(products as unknown as Record<string, unknown>[]),
+    [products],
+  );
+
   const getProducts = () => {
-    if (tab === "search")
-      return products
-        .filter((product) =>
-          String((product.titleEn || product.english_name || product.title) ?? "").includes(
-            searchQuery,
-          ),
-        )
-        .slice(0, 30);
+    if (tab === "search") {
+      // An empty box browses, as it did before: the tab is a list first and a
+      // search second.
+      if (!searchQuery.trim()) return products.slice(0, 30);
+      return searchProducts(productIndex, searchQuery, { limit: 30 }).map(
+        (row) => row.product as unknown as Product,
+      );
+    }
     if (tab === "fav")
       return products.filter((product) =>
         favorites.some((id) => String(id) === String(product.id)),

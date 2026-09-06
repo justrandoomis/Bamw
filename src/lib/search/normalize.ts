@@ -163,7 +163,7 @@ export function isWeakToken(token: string): boolean {
  * expanding the query in both directions is enough to connect "login problem"
  * and "الحساب ما يدخل" to the same entry.
  */
-const SYNONYMS: Record<string, string[]> = {
+export const SYNONYMS: Record<string, string[]> = {
   // — colloquial Arabic → standard
   يشتغل: ["يعمل", "working", "work"],
   تشتغل: ["يعمل", "working", "work"],

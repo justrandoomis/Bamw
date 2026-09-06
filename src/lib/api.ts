@@ -655,6 +655,23 @@ export const adminApi = {
   store: () => request<StoreDoc>("/api/data"),
 
   /**
+   * The whole catalogue, as an admin sees it, in the listing projection.
+   *
+   * `/api/admin/products` answers a *page* — fifty rows of `product_index`,
+   * which carries `title` and `title_en` and no Arabic name at all. Any admin
+   * tool that has to search or pick across the catalogue (the bundle game
+   * picker) therefore could not see two thirds of the shop, and could not
+   * search the third it saw in the language the shop is written in.
+   *
+   * This is `/api/data?slim=1`, which for an admin skips the public filter and
+   * so carries hidden products — the ones just imported, which are exactly the
+   * ones an admin is looking for — and carries `titleAr`. The response is
+   * `private, no-store`, and it must never be written to `localStorage`.
+   */
+  catalogue: (signal?: AbortSignal) =>
+    request<StoreDoc>("/api/data?slim=1", signal ? { signal } : undefined),
+
+  /**
    * Per-line delivery state for one order.
    *
    * The delivery tool reads this when it opens and writes it as the admin

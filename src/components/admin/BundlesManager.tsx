@@ -1,4 +1,5 @@
 import React, { useState, useMemo } from "react";
+import { useQuery } from "@tanstack/react-query";
 import NintendoCover from "@/components/NintendoCover";
 import {
   Layers,
@@ -22,8 +23,21 @@ import {
 } from "lucide-react";
 import { toast } from "sonner";
 import type { AccountBundle, Product } from "@/lib/types";
-import { fileToDataUrl } from "@/lib/api";
+import { adminApi, fileToDataUrl } from "@/lib/api";
 import { getBundleGames } from "@/lib/bundles";
+import { isProductHidden } from "@/lib/purchasable";
+import { buildProductIndex, searchProducts } from "@/lib/search/products";
+
+/** How many picker rows are rendered at once. */
+const PICKER_ROWS = 60;
+/*
+  How many hits the search may return, which is deliberately larger.
+
+  The count printed under the box is the number of matches, so it must be the
+  real one: searching at the render cap would print "60 نتيجة" for a query that
+  matched a hundred, which is a cap wearing a count's clothes.
+*/
+const PICKER_SEARCH_LIMIT = 500;
 
 interface BundlesManagerProps {
   bundles: AccountBundle[];
@@ -53,25 +67,105 @@ export default function BundlesManager({
     );
   }, [bundles, search]);
 
-  // Switch products list for game picker
-  const purchasableGames = useMemo(() => {
-    return products.filter(
-      (p) =>
-        p.isActive !== false &&
-        p.kind !== "hardware" &&
-        p.kind !== "accessory" &&
-        p.kind !== "device",
-    );
-  }, [products]);
+  /*
+    The whole catalogue, not the page the products table happens to be on.
 
-  const filteredPickerGames = useMemo(() => {
-    if (!gameSearch.trim()) return purchasableGames.slice(0, 30);
-    const q = gameSearch.toLowerCase().trim();
-    return purchasableGames.filter(
-      (p) =>
-        (p.title || "").toLowerCase().includes(q) || (p.titleEn || "").toLowerCase().includes(q),
-    );
-  }, [purchasableGames, gameSearch]);
+    `products` is what AdminDashboard holds, and that is one page of fifty rows
+    from `/api/admin/products` (AdminDashboard.tsx:192, :520-560). The shop has
+    around 150 products, so two thirds of them were never in this component at
+    all — which is why a game that had just been imported could not be found
+    here, and why a bundle already containing such a game showed it as
+    «لعبة #id» with no name.
+
+    Fetched once, cached by React Query. `products` is still used as the first
+    paint so the picker is never empty while this is in flight.
+  */
+  const {
+    data: catalogueStore,
+    isPending: catalogueLoading,
+    isError: catalogueFailed,
+  } = useQuery({
+    queryKey: ["admin", "bundle-catalogue"],
+    queryFn: ({ signal }) => adminApi.catalogue(signal),
+    /*
+      Re-read every time this tab is opened. The admin who opens it has usually
+      just imported the games they came here to bundle, and a cached list is
+      the same "the game I added is not here" with a different cause.
+      `staleTime` still spares the keystrokes in between.
+    */
+    refetchOnMount: "always",
+    staleTime: 60_000,
+  });
+
+  const catalogue: Product[] = useMemo(() => {
+    const loaded = (catalogueStore?.products ?? []) as Product[];
+    return loaded.length > 0 ? loaded : products;
+  }, [catalogueStore?.products, products]);
+
+  /*
+    Everything that can go in a bundle — including what is hidden.
+
+    A hidden product is not an ineligible one: the games an admin is building a
+    bundle out of are frequently the ones just imported, and the importer saves
+    them hidden on purpose. Excluding them hid exactly the products this picker
+    exists to find. They are shown, and labelled, so the choice is informed
+    rather than made for the admin.
+  */
+  const pickerGames = useMemo(
+    () =>
+      catalogue.filter(
+        (p) => p.kind !== "hardware" && p.kind !== "accessory" && p.kind !== "device",
+      ),
+    [catalogue],
+  );
+
+  /* Built once per catalogue; folding 150 products on every keystroke stutters. */
+  const pickerIndex = useMemo(
+    () => buildProductIndex(pickerGames as unknown as Record<string, unknown>[]),
+    [pickerGames],
+  );
+
+  const selectedIds = useMemo(
+    () => new Set((editingBundle?.gameIds ?? []).map((id) => String(id))),
+    [editingBundle?.gameIds],
+  );
+
+  /*
+    What the admin sees in the list.
+
+    The games already in the bundle come first and are never filtered out — a
+    picker that hides what you have already chosen is a picker you cannot undo
+    a choice in. Below them, the search results; and with an empty box, the
+    rest of the catalogue rather than an arbitrary first thirty.
+
+    The search is the storefront's own engine (src/lib/search/products.ts), so
+    «زيلدا» finds the game here for the same reason it does on the shop.
+  */
+  const { searchHits, filteredPickerGames } = useMemo(() => {
+    const chosen = pickerGames.filter((p) => selectedIds.has(String(p.id)));
+    const query = gameSearch.trim();
+    const hits = query
+      ? searchProducts(pickerIndex, query, { limit: PICKER_SEARCH_LIMIT })
+          .map((row) => row.product as unknown as Product)
+          .filter((p) => !selectedIds.has(String(p.id)))
+      : pickerGames.filter((p) => !selectedIds.has(String(p.id)));
+    return {
+      searchHits: hits,
+      filteredPickerGames: [...chosen, ...hits],
+    };
+  }, [pickerGames, pickerIndex, gameSearch, selectedIds]);
+
+  /*
+    Rows are capped, the search is not.
+
+    The search reads the whole catalogue and the chosen games are always at the
+    front, so nothing the admin has picked can fall off the end. This cap only
+    stops a hundred and forty cover images being requested at once, and the
+    line under the box says both the true number of matches and when only some
+    of them are drawn — the old cap of thirty was applied to the *search* and
+    said nothing, which is how a game could be in the shop and unfindable here.
+  */
+  const visiblePickerGames = filteredPickerGames.slice(0, PICKER_ROWS);
 
   const handleStartCreate = () => {
     setEditingBundle({
@@ -181,14 +275,26 @@ export default function BundlesManager({
       nextIds = [...currentIds, gameId];
     }
 
-    // Auto-calculate sum of selected games prices to give admin smart price guidance
-    const selectedGames = products.filter((p) => nextIds.some((id) => String(id) === String(p.id)));
-    const totalOriginal = selectedGames.reduce((acc, g) => acc + (Number(g.price) || 0), 0);
+    /*
+      The "sum of the individual prices" hint, recomputed from the selection.
+
+      This writes `originalPrice`, which is the number the customer sees struck
+      through — commercial data. It used to be summed over `products`, the
+      fifty-row page, so any selected game that was not on that page silently
+      contributed nothing and the strike-through price fell by its price the
+      next time the admin touched anything. Now it is summed over the whole
+      catalogue, and if even one selected game cannot be resolved the figure is
+      left exactly as the admin set it rather than replaced with a wrong one.
+    */
+    const resolved = catalogue.filter((p) => nextIds.some((id) => String(id) === String(p.id)));
+    const everyGameResolved = resolved.length === nextIds.length;
+    const totalOriginal = resolved.reduce((acc, g) => acc + (Number(g.price) || 0), 0);
 
     setEditingBundle({
       ...editingBundle,
       gameIds: nextIds,
-      originalPrice: totalOriginal > 0 ? totalOriginal : editingBundle.originalPrice,
+      originalPrice:
+        everyGameResolved && totalOriginal > 0 ? totalOriginal : editingBundle.originalPrice,
     });
   };
 
@@ -250,7 +356,14 @@ export default function BundlesManager({
         {(filteredBundles || [])
           .filter((bundle) => bundle && typeof bundle === "object")
           .map((bundle) => {
-            const games = getBundleGames(bundle, products);
+            /*
+              The same catalogue the editor picks from.
+
+              Read against the fifty-row page, a bundle under-reported itself:
+              a card said «3 ألعاب» for a bundle of five because two of them
+              were not on the page this component happened to be handed.
+            */
+            const games = getBundleGames(bundle, catalogue);
             const isActive = bundle.isActive !== false;
             const gameCount = games.length || (Array.isArray(bundle.gameIds) ? bundle.gameIds.length : 0);
 
@@ -600,16 +713,42 @@ export default function BundlesManager({
                     type="text"
                     value={gameSearch}
                     onChange={(e) => setGameSearch(e.target.value)}
-                    placeholder="ابحث عن لعبة من قسم ننتندو سويتش لإضافتها للبندل..."
+                    placeholder="ابحث بالاسم العربي أو الإنجليزي — زيلدا، ماريو كارت، zelda..."
                     className="w-full pr-8 pl-3 py-1.5 text-xs bg-background rounded-xl border border-border focus:border-red-500 focus:outline-none"
                   />
                 </div>
+
+                {/*
+                  What is actually being searched. An admin who could not find a
+                  game had no way to tell whether it was missing from the shop or
+                  merely missing from this list.
+                */}
+                <p
+                  className={`text-[10px] ${catalogueFailed ? "font-bold text-amber-600" : "text-muted-foreground"}`}
+                >
+                  {/*
+                    When the catalogue does not arrive this falls back to the
+                    page it was handed, which is the reported bug again. It says
+                    so rather than claiming to be searching the whole shop — an
+                    admin who is told «not found» deserves to know which of the
+                    two it means.
+                  */}
+                  {catalogueFailed
+                    ? `تعذّر تحميل كامل الكتالوج — يُعرض ${pickerGames.length} منتجًا فقط من الصفحة المحمَّلة`
+                    : catalogueLoading
+                      ? "جارٍ تحميل كامل الكتالوج..."
+                      : `البحث في ${pickerGames.length} منتجًا من كامل الكتالوج، بما فيها المخفية`}
+                  {gameSearch.trim() ? ` — ${searchHits.length} نتيجة` : ""}
+                  {filteredPickerGames.length > visiblePickerGames.length
+                    ? ` (يُعرض أول ${visiblePickerGames.length}؛ اكتب للتضييق)`
+                    : ""}
+                </p>
 
                 {/* Selected Games Chips */}
                 {editingBundle.gameIds && editingBundle.gameIds.length > 0 && (
                   <div className="flex flex-wrap gap-1.5 p-2 bg-background rounded-xl border border-border/60">
                     {editingBundle.gameIds.map((gameId) => {
-                      const game = products.find((p) => String(p.id) === String(gameId));
+                      const game = catalogue.find((p) => String(p.id) === String(gameId));
                       return (
                         <span
                           key={gameId}
@@ -630,14 +769,18 @@ export default function BundlesManager({
                 )}
 
                 {/* Available Games Scroll List */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 max-h-48 overflow-y-auto p-1 no-scrollbar">
-                  {filteredPickerGames.map((game) => {
+                {/* The scrollbar is kept: this list is now the whole catalogue,
+                    and a hidden scrollbar on it reads as "that is all there is". */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 max-h-72 overflow-y-auto p-1">
+                  {visiblePickerGames.map((game) => {
                     const isSelected = editingBundle.gameIds?.some(
                       (id) => String(id) === String(game.id),
                     );
                     return (
                       <div
                         key={game.id}
+                        data-testid="picker-row"
+                        data-id={String(game.id)}
                         onClick={() => toggleGameSelection(game.id)}
                         className={`p-2 rounded-xl border cursor-pointer flex items-center gap-2.5 transition-all ${
                           isSelected
@@ -666,14 +809,40 @@ export default function BundlesManager({
                         </div>
 
                         <div className="flex-1 min-w-0">
-                          <p className="font-bold text-xs truncate text-foreground">{game.title}</p>
+                          <p className="font-bold text-xs truncate text-foreground">
+                            {game.titleEn || game.title}
+                          </p>
+                          {/* The name the admin searched by, when it is not the one above. */}
+                          {(game as { titleAr?: string }).titleAr &&
+                          (game as { titleAr?: string }).titleAr !== (game.titleEn || game.title) ? (
+                            <p className="text-[10px] text-muted-foreground truncate" dir="rtl">
+                              {(game as { titleAr?: string }).titleAr}
+                            </p>
+                          ) : null}
                           <span className="text-[10px] text-muted-foreground font-mono">
                             {game.price ? `${Number(game.price).toLocaleString()} د.ع` : "مجاني"}
                           </span>
+                          {/* Shown, not hidden from the admin — but never as a surprise. */}
+                          {isProductHidden(game) ? (
+                            <span className="ms-1.5 inline-flex items-center rounded-md bg-amber-500/15 px-1.5 py-0.5 text-[9px] font-bold text-amber-700">
+                              مخفي
+                            </span>
+                          ) : null}
                         </div>
                       </div>
                     );
                   })}
+
+                  {/*
+                    About the search, not about the list: the games already in
+                    the bundle stay pinned above, so counting them here would
+                    turn "nothing matched" into silence.
+                  */}
+                  {gameSearch.trim() && searchHits.length === 0 && !catalogueLoading ? (
+                    <p className="col-span-full py-6 text-center text-xs text-muted-foreground">
+                      لا توجد لعبة تطابق «{gameSearch.trim()}»
+                    </p>
+                  ) : null}
                 </div>
               </div>
 
