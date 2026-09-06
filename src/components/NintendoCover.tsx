@@ -23,6 +23,8 @@
 import { useCallback, useEffect, useState } from "react";
 
 import { useImageTrim } from "@/hooks/useImageTrim";
+import { resolveProductImage } from "@/lib/productImages";
+import { getProductCategory } from "@/lib/productSection";
 import { cdnImage, buildSrcSet } from "@/lib/img";
 import { trimToImageStyle } from "@/lib/imageTrim";
 import {
@@ -59,6 +61,61 @@ export interface NintendoCoverProps {
 }
 
 /**
+ * Which resolver owns this product's picture.
+ *
+ * A gift card is not a Nintendo box, and `productImages.ts` says so in its
+ * first line: hardware, accessories, amiibo, gift cards, used items and
+ * bundles are served from there, not from the box-art roles. Every tile in the
+ * shop renders through this component, though, and this component asked
+ * `resolveNintendoImage` for all of them — so a gift card on the home page was
+ * resolved as `front-box`, which is `cartridgeImage` and does not contain
+ * `coverImage` at all.
+ *
+ * That is why the owner could not change a card's picture. The Card Artwork
+ * control writes `coverImage` and `mainImage`; the tile read `cartridgeImage`,
+ * which no gift-card control writes. On the live catalogue every card's
+ * `cartridgeImage` held a *previous* upload of the same artwork — a
+ * `giftcard-main-…` file with a different hash from the current one — so the
+ * picture looked right and never moved, however many times it was replaced.
+ *
+ * Scoped to gift cards deliberately. Measured against the live catalogue: this
+ * changes seven of the eight cards, which is the point, and one hardware
+ * product, which is not — so hardware, amiibo, accessories, used stock and
+ * bundles keep the resolver they have until somebody reports a problem with
+ * them. A banner is left alone either way: a card's region banner is a
+ * different picture from its artwork, and the roles that carry it are the ones
+ * that already work.
+ */
+const ARTWORK_USAGES: ReadonlySet<string> = new Set([
+  "square-card",
+  "front-box",
+  "front-cover",
+  "detail-cover",
+  "listing-card",
+  "bundle-card",
+  "cart",
+  "toast",
+]);
+
+function resolveCoverFor(
+  product: Record<string, unknown> | null | undefined,
+  usage: NintendoImageUsage,
+): ReturnType<typeof resolveNintendoImage> {
+  if (product && typeof product === "object" && ARTWORK_USAGES.has(usage)) {
+    if (getProductCategory(product) === "gift_card") {
+      const context = usage === "detail-cover" ? "hero" : "listing";
+      const resolved = resolveProductImage(product, context);
+      return {
+        url: resolved.url,
+        isPlaceholder: resolved.isPlaceholder,
+        fallbackUrls: resolved.fallbackUrls,
+      } as ReturnType<typeof resolveNintendoImage>;
+    }
+  }
+  return resolveNintendoImage(product, usage);
+}
+
+/**
  * Resolves the artwork plus its crop box, measuring the file only when nothing
  * already knows the answer.
  */
@@ -67,7 +124,7 @@ export function useNintendoCover(
   usage: NintendoImageUsage,
   activeRawUrlOverride?: string,
 ) {
-  const resolved = resolveNintendoImage(product, usage);
+  const resolved = resolveCoverFor(product, usage);
   const rawUrl = activeRawUrlOverride || resolved.url;
   const targetWidth =
     usage === "square-card"
@@ -110,7 +167,7 @@ export function NintendoCover({
   fetchPriority,
   onClick,
 }: NintendoCoverProps) {
-  const resolved = resolveNintendoImage(product, usage);
+  const resolved = resolveCoverFor(product, usage);
   const candidateUrls = [resolved.url, ...(resolved.fallbackUrls || [])].filter(
     (u) => Boolean(u) && u !== NINTENDO_IMAGE_PLACEHOLDER
   );

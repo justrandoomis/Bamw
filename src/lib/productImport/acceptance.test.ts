@@ -40,13 +40,34 @@ describe("every fixture satisfies its category's required fields", () => {
 });
 
 describe("every fixture resolves an image for every storefront context", () => {
+  /*
+    The hero comes from a named single-image role — never a gallery frame and
+    never the placeholder. That is the rule; `main` was merely the answer it
+    always happened to give while one chain served every category.
+
+    A gift card leads with its own artwork now, because its artwork *is* the
+    product: `cover_image` when the owner has uploaded one, `card_artwork` from
+    the import when they have not. Asserting the field name rather than the
+    property would fail here for a card doing exactly the right thing.
+  */
+  const HERO_ROLES = ["cover", "artwork", "main", "front", "packagingFront"];
+
   it.each(FIXTURE_IDS)("%s", (id) => {
     const product = FIXTURES[id]!.product;
     for (const context of ["listing", "hero", "thumbnail"] as const) {
       // No placeholder, and never a gallery frame standing in for the hero.
       expect(resolveProductImage(product, context).isPlaceholder).toBe(false);
     }
-    expect(resolveProductImage(product, "hero").source).toBe("main");
+    expect(HERO_ROLES).toContain(resolveProductImage(product, "hero").source);
+  });
+
+  it("gives a gift card its own artwork as the hero, not a shared photograph", () => {
+    const card = FIXTURES["gift_card"]!.product;
+    expect(resolveProductImage(card, "hero").source).toBe("artwork");
+    // And every other fixture still leads with its main photograph.
+    for (const id of FIXTURE_IDS.filter((each) => each !== "gift_card")) {
+      expect(resolveProductImage(FIXTURES[id]!.product, "hero").source).toBe("main");
+    }
   });
 });
 

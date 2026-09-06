@@ -35,6 +35,7 @@
 import { d1All, d1BatchRun, d1First } from "./d1.server";
 import { assertBoundParameters, chunkForParams } from "./sql-params";
 import { requiresPerformanceReview } from "./devicePerformance";
+import { resolveProductImage } from "./productImages";
 import { categoryFilterAliases, isGameProduct } from "./productSection";
 import { lastModifiedAt, sortableName, sortableNameKey, type ProductSort } from "./productSort";
 import { isProductHidden } from "./purchasable";
@@ -124,21 +125,45 @@ const numberOrNull = (value: unknown): number | null => {
  * A thumbnail chain, never a banner or a screenshot — the admin row should look
  * like the product, and picking a different field here from the storefront's is
  * how the same product ended up with two faces.
+ *
+ * That is exactly what it had been doing. This was a hand-written order of its
+ * own — `listingImage`, then `cartridgeImage`, then `mainImage` — which agreed
+ * with the storefront's chain by coincidence rather than by construction, and
+ * stopped agreeing the moment a category needed a different one. A gift card
+ * showed a retailer's listing photograph in the admin table while the shop
+ * showed the artwork the owner had uploaded: one product, two faces, which is
+ * the thing this comment was written to prevent.
+ *
+ * It asks the storefront's resolver now, so there is one answer to the
+ * question — but only for the products that resolver is the authority for.
+ * `productImages` says so in its first line: Nintendo Switch Games are served
+ * from `nintendoImages` and its roles, and a game here carries a
+ * `cartridgeImage` that the non-game chain has never heard of. Routing games
+ * through it would have quietly moved the picture on every game in the table
+ * to fix a gift card, which is the trade this file already refused once.
+ *
+ * So games keep the order they had, exactly, and everything else asks the
+ * resolver. `cartridgeImage` and `imageUrl` remain the tail for both: older
+ * spellings neither chain carries, and a row with only one of them should
+ * still show something rather than nothing.
  */
+const LEGACY_IMAGE_FIELDS = ["cartridgeImage", "image", "imageUrl"] as const;
+
 function listingImage(product: Row): string {
-  for (const field of [
-    "listingImage",
-    "cartridgeImage",
-    "mainImage",
-    "image",
-    "coverImage",
-    "frontImage",
-    "imageUrl",
-  ]) {
-    const value = product[field];
-    if (typeof value === "string" && value.trim().length > 3) return value.trim();
+  const read = (fields: readonly string[]) => {
+    for (const field of fields) {
+      const value = product[field];
+      if (typeof value === "string" && value.trim().length > 3) return value.trim();
+    }
+    return "";
+  };
+
+  if (isGameProduct(product)) {
+    return read(["listingImage", "cartridgeImage", "mainImage", "image", "coverImage", "frontImage", "imageUrl"]);
   }
-  return "";
+
+  const resolved = resolveProductImage(product as Record<string, unknown>, "listing");
+  return resolved.isPlaceholder ? read(LEGACY_IMAGE_FIELDS) : resolved.url;
 }
 
 /** Projects one catalogue product onto its listing row. */
