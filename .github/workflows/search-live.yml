@@ -1,0 +1,76 @@
+# Does the live shop find a game when somebody types its Arabic name?
+#
+# Two questions, and the feature stands or falls on both: does the catalogue
+# the browser receives carry `titleAr`, and does `/search?q=…` put results on
+# the screen? The second needs a real browser, because the page is rendered by
+# the client — and the sandbox these sessions run in has no route to banan.to,
+# while a runner does.
+#
+# Read-only. Titles and counts only; no price, no cost, no stock, no supplier
+# name — and it asserts the supplier name is *absent* from the public payload.
+name: Search live
+
+on:
+  workflow_dispatch:
+    inputs:
+      origin:
+        description: "Origin to test"
+        type: string
+        default: "https://banan.to"
+      queries:
+        description: "Comma-separated queries to run"
+        type: string
+        default: "زيلدا,ماريو كارت,سوبر ماريو,بطاقة شحن,mario kart,zelda"
+  # Dispatch only, unlike the other live checkers.
+  #
+  # They run themselves on a branch push so a new check can be used before it
+  # is merged. This one asks whether a *released* change is live, so running it
+  # on the branch that carries the change would fail by definition — and paint
+  # the pull request red for doing its job. Merge, release, then dispatch it.
+
+permissions:
+  contents: read
+
+concurrency:
+  group: search-live
+  cancel-in-progress: true
+
+jobs:
+  search:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      # The lockfile carries platform-specific optional dependencies that the
+      # runner's default npm 10 refuses on Linux (`EBADPLATFORM` on
+      # `@cloudflare/workerd-darwin-64`). Every other workflow here upgrades
+      # first for the same reason.
+      - run: npm install -g npm@11.19.1
+      - run: npm ci --no-audit --no-fund
+
+      # `playwright-core` carries no installer, so the browser comes from the
+      # `playwright` package's CLI, pinned to the same version.
+      - name: Install Chromium
+        run: npx --yes playwright@1.62.1 install --with-deps chromium
+
+      - name: Search the live shop
+        env:
+          ORIGIN: ${{ inputs.origin }}
+          QUERIES: ${{ inputs.queries }}
+        run: |
+          node scripts/search-live-check.mjs \
+            --base "${ORIGIN:-https://banan.to}" \
+            --queries "${QUERIES:-زيلدا,ماريو كارت,سوبر ماريو,بطاقة شحن,mario kart,zelda}" \
+            --json search-live.json
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: search-live
+          path: search-live.json

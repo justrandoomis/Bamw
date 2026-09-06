@@ -274,8 +274,19 @@ export interface QueryToken {
   derived: boolean;
 }
 
-/** Splits a raw query into scored, expanded tokens. */
-export function tokenizeQuery(raw: string): QueryToken[] {
+/**
+ * Splits a raw query into scored, expanded tokens.
+ *
+ * `extraSynonyms` lets a second catalogue bring its own vocabulary without
+ * putting it in everyone's way. The map above is the troubleshooting one —
+ * «باسورد», «درفت», «ايرور» — and a shop searching for games has no use for
+ * it, while «زيلدا» and «كارت» would be noise in a help search. Each catalogue
+ * passes what it knows; neither pollutes the other.
+ */
+export function tokenizeQuery(
+  raw: string,
+  extraSynonyms?: Record<string, string[]>,
+): QueryToken[] {
   const base = normalize(raw);
   if (!base) return [];
 
@@ -303,7 +314,7 @@ export function tokenizeQuery(raw: string): QueryToken[] {
   // so a run-together phrase like "مايشتغل" still finds its synonyms.
   const expansionSeeds = [...words, ...words.map(stem), base.replace(/ /g, "")];
   for (const seed of expansionSeeds) {
-    for (const synonym of SYNONYMS[seed] ?? []) {
+    for (const synonym of [...(SYNONYMS[seed] ?? []), ...(extraSynonyms?.[seed] ?? [])]) {
       for (const part of normalize(synonym).split(" ")) {
         push(part, true);
       }

@@ -11,6 +11,29 @@ import { LEGACY_TR } from "./i18n.tr";
  * else, so no one sees a flash of untranslated text.
  */
 export const translations: Record<string, { en: string; ku: string; tr?: string }> = {
+  /* Search: the header box, and the results page it opens. */
+  "الألعاب": { en: "Games", ku: "یارییەکان" },
+  "الأجهزة": { en: "Consoles", ku: "ئامێرەکان" },
+  "الملحقات": { en: "Accessories", ku: "پێداویستییەکان" },
+  "أميبو": { en: "amiibo", ku: "amiibo" },
+  "بطاقات الشحن": { en: "Gift cards", ku: "کارتەکانی بارکردن" },
+  "المستعمل": { en: "Pre-owned", ku: "بەکارهێنراو" },
+  "الحزم": { en: "Bundles", ku: "پاکێجەکان" },
+  "بحث ذكي عن الألعاب...": { en: "Smart game search...", ku: "گەڕانی زیرەک بۆ یارییەکان..." },
+  "ابحث عن لعبة أو بطاقة أو جهاز...": { en: "Search for a game, a card or a console...", ku: "گەڕان بۆ یاری، کارت یان ئامێر..." },
+  "عرض كل النتائج": { en: "See all results", ku: "هەموو ئەنجامەکان ببینە" },
+  "لا توجد نتائج": { en: "No results", ku: "هیچ ئەنجامێک نییە" },
+  "البحث": { en: "Search", ku: "گەڕان" },
+  "مسح البحث": { en: "Clear search", ku: "سڕینەوەی گەڕان" },
+  "اكتب اسم اللعبة التي تبحث عنها": { en: "Type the name of the game you are looking for", ku: "ناوی ئەو یارییە بنووسە کە بەدوایدا دەگەڕێیت" },
+  "جارٍ البحث...": { en: "Searching...", ku: "گەڕان..." },
+  "لا توجد نتائج لـ": { en: "No results for", ku: "هیچ ئەنجامێک نییە بۆ" },
+  "نتيجة لـ": { en: "results for", ku: "ئەنجام بۆ" },
+  "كل النتائج": { en: "All results", ku: "هەموو ئەنجامەکان" },
+  "لم نجد ما يطابق بحثك": { en: "Nothing matched your search", ku: "هیچ شتێک لەگەڵ گەڕانەکەت نەگونجا" },
+  "ابحث في المتجر": { en: "Search the store", ku: "لە فرۆشگا بگەڕێ" },
+  "جرّب اسمًا أقصر أو الاسم بالإنجليزية": { en: "Try a shorter name, or the English one", ku: "ناوێکی کورتتر یان ناوی ئینگلیزی تاقی بکەرەوە" },
+  "اكتب اسم اللعبة، أو جرّب أحد الاقتراحات": { en: "Type a game's name, or try one of the suggestions", ku: "ناوی یارییەک بنووسە، یان یەکێک لە پێشنیارەکان تاقی بکەرەوە" },
   /*
     The four help pages.
 

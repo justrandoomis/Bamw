@@ -1,13 +1,15 @@
 import type { Problem } from "@/lib/problems/types";
+import { normalize, squash, tokenizeQuery, type QueryToken } from "./normalize";
+/*
+  The field matching is shared with the product search; the weights, the
+  aggregation and the cutoffs below are this catalogue's own. See relevance.ts
+  for why the line is drawn there.
+*/
 import {
-  editDistance,
-  normalize,
-  squash,
-  stem,
-  tokenizeQuery,
-  typoBudget,
-  type QueryToken,
-} from "./normalize";
+  buildField as sharedBuildField,
+  matchQuality,
+  type IndexedField,
+} from "./relevance";
 
 /**
  * Relevance search over the troubleshooting catalogue.
@@ -16,15 +18,6 @@ import {
  * with colloquial and cross-language synonyms, then scored against every
  * indexed field of every problem with typo tolerance.
  */
-
-interface IndexedField {
-  /** Normalised tokens of every value in this field. */
-  tokens: string[];
-  stems: string[];
-  /** All values joined and stripped of spaces, for run-together matching. */
-  squashed: string;
-  weight: number;
-}
 
 export interface IndexedProblem {
   problem: Problem;
@@ -58,18 +51,7 @@ const WEIGHTS = {
 } as const;
 
 function buildField(values: string[], weight: number): IndexedField {
-  const tokens: string[] = [];
-  for (const value of values) {
-    const normalized = normalize(value);
-    if (!normalized) continue;
-    tokens.push(...normalized.split(" "));
-  }
-  return {
-    tokens,
-    stems: tokens.map(stem),
-    squashed: values.map(squash).join(" "),
-    weight,
-  };
+  return sharedBuildField(values, weight, normalize, squash);
 }
 
 export function buildIndex(problems: Problem[]): IndexedProblem[] {
@@ -109,39 +91,6 @@ export function buildIndex(problems: Problem[]): IndexedProblem[] {
       errorCodes: problem.relatedErrors.map(squash),
     };
   });
-}
-
-/** Best match quality (0–1) for one query token inside one field. */
-function matchQuality(token: QueryToken, field: IndexedField): number {
-  if (field.tokens.length === 0) return 0;
-
-  const { value, stem: tokenStem } = token;
-
-  if (field.tokens.includes(value)) return 1;
-  if (field.stems.includes(tokenStem)) return 0.95;
-
-  if (value.length >= 3) {
-    for (const candidate of field.tokens) {
-      if (candidate.startsWith(value) || value.startsWith(candidate)) {
-        return 0.88;
-      }
-    }
-    // Run-together forms: "مايشتغل" inside "…ماتشتغلاللعبه…"
-    if (field.squashed.includes(value)) return 0.76;
-  }
-
-  const budget = typoBudget(value.length);
-  if (budget === 0) return 0;
-
-  let best = 0;
-  for (const candidate of field.tokens) {
-    const distance = editDistance(value, candidate, budget);
-    if (distance > budget) continue;
-    const quality = 0.82 - 0.18 * (distance - 1);
-    if (quality > best) best = quality;
-    if (best >= 0.82) break;
-  }
-  return best;
 }
 
 /** How much a token contributes to the final average. */

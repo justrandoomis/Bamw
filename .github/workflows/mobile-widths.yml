@@ -17,7 +17,7 @@ on:
       paths:
         description: "Comma-separated paths to check"
         type: string
-        default: "/,/policy,/faq,/account_guides,/problem,/cart,/games"
+        default: "/,/policy,/faq,/account_guides,/problem,/cart,/games,/search?q=mario"
   push:
     branches: ["claude/**"]
     paths:
@@ -68,7 +68,7 @@ jobs:
           node scripts/check-horizontal-overflow.mjs \
             --base http://localhost:3000 \
             --widths 320,360,375,390,430,768 \
-            --paths "${PATHS:-/,/policy,/faq,/account_guides,/problem,/cart,/games}" \
+            --paths "${PATHS:-/,/policy,/faq,/account_guides,/problem,/cart,/games,/search?q=mario}" \
             --json overflow.json
 
       - uses: actions/upload-artifact@v4
