@@ -75,6 +75,13 @@ export default function BundlesManager({
   const { data: catalogueStore, isPending: catalogueLoading } = useQuery({
     queryKey: ["admin", "bundle-catalogue"],
     queryFn: ({ signal }) => adminApi.catalogue(signal),
+    /*
+      Re-read every time this tab is opened. The admin who opens it has usually
+      just imported the games they came here to bundle, and a cached list is
+      the same "the game I added is not here" with a different cause.
+      `staleTime` still spares the keystrokes in between.
+    */
+    refetchOnMount: "always",
     staleTime: 60_000,
   });
 
