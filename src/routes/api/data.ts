@@ -37,9 +37,25 @@ const LIST_FIELDS = [
   "id",
   "title",
   "titleEn",
+  /*
+    The Arabic name.
+
+    Every screen of this shop is Arabic, 133 of the 150 products carry an
+    Arabic name, and none of them travelled in this payload — so a customer
+    typing «زيلدا» was searching a catalogue of English strings and got
+    nothing. `title` and `titleEn` hold the same English string on every
+    product (`buildProductSavePayload` writes `titleEn || title` into both),
+    which is why the omission was invisible: the listing looked bilingual
+    because the *interface* was, not the data.
+  */
+  "titleAr",
   "english_name",
   "subtitle",
   "slug",
+  /* The series a game belongs to — how a customer asks for the next Zelda. */
+  "seriesName",
+  "seriesNameEn",
+  "series",
   "price",
   "status",
   "isActive",

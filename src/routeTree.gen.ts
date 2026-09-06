@@ -25,6 +25,7 @@ import { Route as PolicyRouteImport } from './routes/policy'
 import { Route as ProblemRouteImport } from './routes/problem'
 import { Route as ProfileRouteImport } from './routes/profile'
 import { Route as ReferRouteImport } from './routes/refer'
+import { Route as SearchRouteImport } from './routes/search'
 import { Route as SupportRouteImport } from './routes/support'
 import { Route as UsedRouteImport } from './routes/used'
 import { Route as WalletRouteImport } from './routes/wallet'
@@ -207,6 +208,11 @@ const ProfileRoute = ProfileRouteImport.update({
 const ReferRoute = ReferRouteImport.update({
   id: '/refer',
   path: '/refer',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SearchRoute = SearchRouteImport.update({
+  id: '/search',
+  path: '/search',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SupportRoute = SupportRouteImport.update({
@@ -758,6 +764,7 @@ export interface FileRoutesByFullPath {
   '/problem': typeof ProblemRoute
   '/profile': typeof ProfileRoute
   '/refer': typeof ReferRoute
+  '/search': typeof SearchRoute
   '/support': typeof SupportRoute
   '/used': typeof UsedRoute
   '/wallet': typeof WalletRoute
@@ -879,6 +886,7 @@ export interface FileRoutesByTo {
   '/problem': typeof ProblemRoute
   '/profile': typeof ProfileRoute
   '/refer': typeof ReferRoute
+  '/search': typeof SearchRoute
   '/support': typeof SupportRoute
   '/used': typeof UsedRoute
   '/wallet': typeof WalletRoute
@@ -1001,6 +1009,7 @@ export interface FileRoutesById {
   '/problem': typeof ProblemRoute
   '/profile': typeof ProfileRoute
   '/refer': typeof ReferRoute
+  '/search': typeof SearchRoute
   '/support': typeof SupportRoute
   '/used': typeof UsedRoute
   '/wallet': typeof WalletRoute
@@ -1124,6 +1133,7 @@ export interface FileRouteTypes {
     | '/problem'
     | '/profile'
     | '/refer'
+    | '/search'
     | '/support'
     | '/used'
     | '/wallet'
@@ -1245,6 +1255,7 @@ export interface FileRouteTypes {
     | '/problem'
     | '/profile'
     | '/refer'
+    | '/search'
     | '/support'
     | '/used'
     | '/wallet'
@@ -1366,6 +1377,7 @@ export interface FileRouteTypes {
     | '/problem'
     | '/profile'
     | '/refer'
+    | '/search'
     | '/support'
     | '/used'
     | '/wallet'
@@ -1488,6 +1500,7 @@ export interface RootRouteChildren {
   ProblemRoute: typeof ProblemRoute
   ProfileRoute: typeof ProfileRoute
   ReferRoute: typeof ReferRoute
+  SearchRoute: typeof SearchRoute
   SupportRoute: typeof SupportRoute
   UsedRoute: typeof UsedRoute
   WalletRoute: typeof WalletRoute
@@ -1693,6 +1706,13 @@ declare module '@tanstack/react-router' {
       path: '/refer'
       fullPath: '/refer'
       preLoaderRoute: typeof ReferRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/search': {
+      id: '/search'
+      path: '/search'
+      fullPath: '/search'
+      preLoaderRoute: typeof SearchRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/support': {
@@ -2498,6 +2518,7 @@ const rootRouteChildren: RootRouteChildren = {
   ProblemRoute: ProblemRoute,
   ProfileRoute: ProfileRoute,
   ReferRoute: ReferRoute,
+  SearchRoute: SearchRoute,
   SupportRoute: SupportRoute,
   UsedRoute: UsedRoute,
   WalletRoute: WalletRoute,
