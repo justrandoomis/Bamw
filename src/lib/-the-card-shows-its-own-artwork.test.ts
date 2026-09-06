@@ -152,3 +152,35 @@ describe("the admin table and the shop show one product with one face", () => {
     expect(toIndexRow(game as never).image).toBe(game.cartridgeImage);
   });
 });
+
+describe("the picture survives the trip to the home page", () => {
+  /*
+    The home page fetches `/api/data?slim=1`, which copies a fixed list of
+    fields off each product. A field the resolver reads and the projection
+    omits is a field the home page cannot resolve from — so the two pages
+    disagree about the same product, and no amount of fixing the resolver
+    shows up on the one the owner is looking at.
+  */
+  it("carries every field the non-game resolver reads", async () => {
+    const source = await import("node:fs").then((fs) =>
+      fs.readFileSync("src/routes/api/data.ts", "utf8"),
+    );
+    const listFields = source.slice(
+      source.indexOf("const LIST_FIELDS = ["),
+      source.indexOf("] as const;", source.indexOf("const LIST_FIELDS = [")),
+    );
+    for (const field of [
+      "coverImage",
+      "cardArtwork",
+      "card_artwork",
+      "listingImage",
+      "listing_image",
+      "mainImage",
+      "main_image",
+      "cover_image",
+      "cartridgeImage",
+    ]) {
+      expect(listFields).toContain(`"${field}"`);
+    }
+  });
+});
