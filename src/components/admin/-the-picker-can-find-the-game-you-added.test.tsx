@@ -246,3 +246,20 @@ describe("the bundle card in the list", () => {
     await screen.findByText(/Tears of the Kingdom/);
   });
 });
+
+describe("the row cap", () => {
+  it("counts every match, and only draws the first sixty", async () => {
+    /* Eighty games, all matching «mario», so the cap is in play. */
+    const many = Array.from({ length: 80 }, (_, i) =>
+      game(100 + i, `Super Mario Game ${i}`, `سوبر ماريو ${i}`),
+    );
+    catalogue.mockResolvedValue({ products: [...WHOLE_CATALOGUE, ...many] });
+    await openEditor();
+    await screen.findByText(/البحث في 85 منتجًا/);
+    type("mario");
+    // The count is the true number of matches, not the number of rows drawn.
+    await screen.findByText(/— 8[0-9] نتيجة/);
+    await screen.findByText(/يُعرض أول 60/);
+    expect(rowIds().length).toBe(60);
+  });
+});

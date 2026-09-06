@@ -28,8 +28,16 @@ import { getBundleGames } from "@/lib/bundles";
 import { isProductHidden } from "@/lib/purchasable";
 import { buildProductIndex, searchProducts } from "@/lib/search/products";
 
-/** How many picker rows are rendered at once. The search is not capped. */
+/** How many picker rows are rendered at once. */
 const PICKER_ROWS = 60;
+/*
+  How many hits the search may return, which is deliberately larger.
+
+  The count printed under the box is the number of matches, so it must be the
+  real one: searching at the render cap would print "60 نتيجة" for a query that
+  matched a hundred, which is a cap wearing a count's clothes.
+*/
+const PICKER_SEARCH_LIMIT = 500;
 
 interface BundlesManagerProps {
   bundles: AccountBundle[];
@@ -137,7 +145,7 @@ export default function BundlesManager({
     const chosen = pickerGames.filter((p) => selectedIds.has(String(p.id)));
     const query = gameSearch.trim();
     const hits = query
-      ? searchProducts(pickerIndex, query, { limit: PICKER_ROWS })
+      ? searchProducts(pickerIndex, query, { limit: PICKER_SEARCH_LIMIT })
           .map((row) => row.product as unknown as Product)
           .filter((p) => !selectedIds.has(String(p.id)))
       : pickerGames.filter((p) => !selectedIds.has(String(p.id)));
@@ -153,9 +161,9 @@ export default function BundlesManager({
     The search reads the whole catalogue and the chosen games are always at the
     front, so nothing the admin has picked can fall off the end. This cap only
     stops a hundred and forty cover images being requested at once, and the
-    line under the box says when it is in effect — the old cap of thirty was
-    applied to the *search* and said nothing, which is how a game could be in
-    the shop and unfindable here.
+    line under the box says both the true number of matches and when only some
+    of them are drawn — the old cap of thirty was applied to the *search* and
+    said nothing, which is how a game could be in the shop and unfindable here.
   */
   const visiblePickerGames = filteredPickerGames.slice(0, PICKER_ROWS);
 
