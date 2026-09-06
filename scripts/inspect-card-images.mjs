@@ -73,6 +73,13 @@ const isCard = (p) => {
 
 /** The field names each role reads, newest spelling first — as `productImages`. */
 const FIELDS = {
+  /*
+    What the home page actually reads. `ProductStrip` does not use the `image`
+    its caller computes — it renders `NintendoCover` with the default
+    `front-box` role, and that role is `cartridgeImage` first. No gift-card
+    admin control writes it.
+  */
+  frontBox: ["cartridgeImage", "cartridge_image", "front_image", "frontImage", "box_front_url", "boxFrontUrl", "front_box_cover"],
   listing: ["listingImage", "listing_image"],
   main: ["mainImage", "main_image"],
   front: ["frontImage", "front_image"],
@@ -105,13 +112,71 @@ say(`${cards.length} gift card(s) of ${products.length} products.`);
 say();
 say("## Fields present on each card");
 say();
-say("| card | listingImage | mainImage | coverImage | cardArtwork |");
+say("| card | cartridgeImage (home page) | listingImage | mainImage | coverImage |");
 say("|---|---|---|---|---|");
 for (const p of cards) {
   say(
-    `| ${String(p.title ?? p.slug ?? p.id).slice(0, 34)} | ${tail(readRole(p, "listing"))} | ` +
-      `${tail(readRole(p, "main"))} | ${tail(readRole(p, "cover"))} | ${tail(readRole(p, "artwork"))} |`,
+    `| ${String(p.title ?? p.slug ?? p.id).slice(0, 30)} | ${tail(readRole(p, "frontBox"))} | ` +
+      `${tail(readRole(p, "listing"))} | ${tail(readRole(p, "main"))} | ${tail(readRole(p, "cover"))} |`,
   );
+}
+say();
+
+/*
+  The blast radius of routing non-game products away from the box-art role.
+
+  Every non-game product currently renders on the home page through
+  `front-box` — `cartridgeImage` — and would render through the listing chain
+  instead. This counts, per category, how many would change picture.
+*/
+const isGame = (p) => {
+  const hay = `${p.category ?? ""} ${p.categoryId ?? ""} ${p.kind ?? ""}`.toLowerCase();
+  if (/gift|card|eshop|بطاق/.test(hay)) return false;
+  if (/amiibo|bundle|used|مستعمل|accessor|ملحق|hardware|device|console|جهاز|حزم/.test(hay)) return false;
+  return true;
+};
+const categoryOf = (p) => {
+  const hay = `${p.category ?? ""} ${p.categoryId ?? ""} ${p.kind ?? ""}`.toLowerCase();
+  if (/gift|card|eshop|بطاق/.test(hay)) return "gift_card";
+  if (/amiibo/.test(hay)) return "amiibo";
+  if (/bundle|حزم/.test(hay)) return "bundle";
+  if (/used|مستعمل/.test(hay)) return "used";
+  if (/accessor|ملحق/.test(hay)) return "accessory";
+  if (/hardware|device|console|جهاز/.test(hay)) return "hardware";
+  return "game";
+};
+/** The gift-card listing chain as this change would define it. */
+const listingChain = (p) =>
+  categoryOf(p) === "gift_card"
+    ? ["cover", "artwork", "main", "listing", "front", "packagingFront"]
+    : ["listing", "main", "front", "packagingFront"];
+
+const nonGames = products.filter((p) => !isGame(p));
+const moved = new Map();
+for (const p of nonGames) {
+  const now = readRole(p, "frontBox");
+  let next = null;
+  for (const role of listingChain(p)) {
+    const hit = readRole(p, role);
+    if (hit) { next = hit; break; }
+  }
+  const key = categoryOf(p);
+  const bucket = moved.get(key) ?? { total: 0, changes: 0, gainsPicture: 0, losesPicture: 0 };
+  bucket.total += 1;
+  if (now !== next) {
+    bucket.changes += 1;
+    if (!now && next) bucket.gainsPicture += 1;
+    if (now && !next) bucket.losesPicture += 1;
+  }
+  moved.set(key, bucket);
+}
+
+say("## If the home page stopped resolving non-games through the box-art role");
+say();
+say("| category | products | picture would change | gains one | loses one |");
+say("|---|---:|---:|---:|---:|");
+for (const [key, b] of [...moved].sort((a, b) => b[1].total - a[1].total)) {
+  say(`| ${key} | ${b.total} | ${b.changes} | ${b.gainsPicture} | ${b.losesPicture} |`);
 }
 say();
 

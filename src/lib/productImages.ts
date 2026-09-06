@@ -25,12 +25,17 @@
  * | details background | `cover_image → banner_image → main_image` |
  * | thumbnail | `thumbnail_image → listing_image → main_image` |
  *
+ * A gift card is the one exception, and `CATEGORY_CHAINS` below says why: its
+ * artwork is the product, so `cover_image` — the field the admin's Card
+ * Artwork control writes — leads every one of its chains.
+ *
  * A banner never enters a hero or a listing card, and a hero never falls back
  * to a gallery screenshot — those are the substitutions that made one product
  * look like four different products across the store.
  */
 
 import { isUsableImageUrl, NINTENDO_IMAGE_PLACEHOLDER } from "./nintendoImages";
+import { getProductCategory, type CategoryType } from "./productSection";
 
 export type ProductImageContext = "listing" | "hero" | "background" | "thumbnail";
 
@@ -57,6 +62,13 @@ const FIELDS = {
   front: ["frontImage", "front_image"],
   packagingFront: ["packagingFrontImage", "packaging_front_image"],
   cover: ["coverImage", "cover_image"],
+  /*
+    A gift card's own artwork. The import schema writes `card_artwork` and the
+    admin control reads `cardArtwork`, and until now no chain in this file
+    mentioned it — so a card imported with its artwork and nothing else showed
+    a placeholder.
+  */
+  artwork: ["cardArtwork", "card_artwork"],
   banner: ["bannerImage", "banner_image"],
   thumbnail: ["thumbnailImage", "thumbnail_image"],
 } as const;
@@ -68,6 +80,45 @@ const CHAINS: Record<ProductImageContext, readonly (keyof typeof FIELDS)[]> = {
   background: ["cover", "banner", "main"],
   thumbnail: ["thumbnail", "listing", "main"],
 };
+
+/**
+ * Categories whose picture is not a photograph of an object.
+ *
+ * A console, an accessory or a used cartridge has a listing photograph that is
+ * genuinely a different picture from its cover — taken for the grid, framed
+ * for it — so `listing_image` leading the chain is right for them and stays.
+ *
+ * A gift card has no such thing. Its artwork *is* the product: the same square
+ * appears on the tile, the hero and the thumbnail, and the admin has exactly
+ * one control for it — «صورة بطاقة الشحن (Card Artwork)» — which writes
+ * `coverImage`. So for a card the chain leads with what that control writes,
+ * and the imported `listing_image` becomes what it always should have been: a
+ * fallback for a card whose artwork nobody has uploaded yet.
+ *
+ * This is why the owner could not change a card's picture. Every one of the
+ * eight cards live on 6 Sep carried a `listingImage` pointing at a retailer's
+ * CDN — a URL the shop does not own and no admin screen can reach — and it
+ * outranked the artwork on every upload. Two earlier fixes went at the writer
+ * and neither could have worked, because the reader was never going to ask.
+ */
+const CATEGORY_CHAINS: Partial<
+  Record<CategoryType, Partial<Record<ProductImageContext, readonly (keyof typeof FIELDS)[]>>>
+> = {
+  gift_card: {
+    listing: ["cover", "artwork", "main", "listing", "front", "packagingFront"],
+    hero: ["cover", "artwork", "main", "front", "listing"],
+    thumbnail: ["thumbnail", "cover", "artwork", "main", "listing"],
+  },
+};
+
+/** The chain for this product on this surface: its category's, or the default. */
+function chainFor(
+  product: Record<string, unknown>,
+  context: ProductImageContext,
+): readonly (keyof typeof FIELDS)[] {
+  const override = CATEGORY_CHAINS[getProductCategory(product)]?.[context];
+  return override ?? CHAINS[context];
+}
 
 /**
  * Contexts allowed to reach the gallery as a last resort.
@@ -128,7 +179,7 @@ export function resolveProductImage(
     candidates.push({ url, source });
   };
 
-  for (const step of CHAINS[context]) push(readField(product, FIELDS[step]), step);
+  for (const step of chainFor(product, context)) push(readField(product, FIELDS[step]), step);
   if (GALLERY_LAST_RESORT.has(context)) {
     for (const frame of galleryFrames(product)) push(frame, "gallery");
   }
