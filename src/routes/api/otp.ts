@@ -76,9 +76,24 @@ export const Route = createFileRoute("/api/otp")({
           try {
             const data = await body<OtpBody>(request);
 
+            /*
+              The send budget is counted per channel.
+
+              It used to be one bucket named `otp-send` for a phone number,
+              consumed before the message was attempted. So when WhatsApp was
+              down, a customer's eight retries emptied the budget and the next
+              request was refused with 429 — including the Telegram one, which
+              would have worked. The channel that is broken must not spend the
+              allowance of the channel that is not.
+            */
+            const sendChannel = data.action === "send" ? (data.channel ?? "telegram") : "";
             const throttle = await consumeRateLimit(
               request,
-              data.action === "telegram_init" ? "telegram-init" : `otp-${data.action ?? "verify"}`,
+              data.action === "telegram_init"
+                ? "telegram-init"
+                : data.action === "send"
+                  ? `otp-send-${sendChannel}`
+                  : `otp-${data.action ?? "verify"}`,
               data.action === "send" ? 8 : 15,
               15 * 60,
               String(data.phone ?? data.memberId ?? data.sessionId ?? "").slice(0, 160),
@@ -368,11 +383,41 @@ export const Route = createFileRoute("/api/otp")({
                 telegramChatId ? { chatId: telegramChatId } : undefined,
               );
 
-              if (!result.success)
+              if (!result.success) {
+                /*
+                  Say what the customer can actually do.
+
+                  The screen offers WhatsApp and Telegram side by side, and the
+                  route already answers the "WhatsApp is not configured" case
+                  with exactly this hint. The *delivery failed* case — which is
+                  what a rejected provider credential produces — carried no hint
+                  at all, so the customer was told «يرجى المحاولة لاحقاً» about a
+                  failure that no amount of waiting resolves, with the working
+                  channel one tap away and unmentioned.
+                */
+                const canUseTelegramInstead =
+                  targetChannel === "whatsapp" &&
+                  (result.errorCode === "WHATSAPP_SEND_FAILED" ||
+                    result.errorCode === "WASENDER_AUTH_FAILED" ||
+                    result.errorCode === "WASENDER_UNAVAILABLE");
+
                 return json(
-                  { error: result.error, errorCode: result.errorCode, retryAfter: result.retryAfter },
+                  {
+                    error: canUseTelegramInstead
+                      ? "تعذّر إرسال رمز التحقق عبر واتساب."
+                      : result.error,
+                    errorCode: result.errorCode,
+                    retryAfter: result.retryAfter,
+                    ...(canUseTelegramInstead
+                      ? {
+                          hint: "يرجى اختيار التحقق عبر تلغرام لتأكيد حسابك عبر البوت الرسمي.",
+                          fallbackChannel: "telegram",
+                        }
+                      : {}),
+                  },
                   { status: result.retryAfter ? 429 : 400 },
                 );
+              }
 
               return json({
                 sent: true,

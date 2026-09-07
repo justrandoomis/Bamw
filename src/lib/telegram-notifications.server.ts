@@ -844,3 +844,43 @@ export async function notifyUserOrderStatus(params: {
     return false;
   }
 }
+
+/**
+ * Tells the owner that WhatsApp verification has stopped working.
+ *
+ * Signup can die silently. The provider rejects the store's credential, every
+ * customer who picks WhatsApp is told to «try later», the failure is written
+ * to a Worker log nobody reads, and the first the owner hears of it is a
+ * customer complaining — which is exactly how the outage this was written for
+ * came to light.
+ *
+ * Deliberately narrow about what it carries: the failure kind and the HTTP
+ * status the provider answered with. No API key, no phone number, no code, no
+ * customer identity — a message about broken authentication must not become a
+ * second place credentials live.
+ */
+export async function notifyAdminOtpChannelDown(params: {
+  channel: "whatsapp" | "telegram";
+  errorCode?: string;
+  status?: number;
+}): Promise<AdminNotificationResult> {
+  const { channel, errorCode, status } = params;
+
+  /*
+    A rejected credential and a provider outage need different actions from the
+    owner, so they are not collapsed into one sentence.
+  */
+  const rejected = status === 401 || status === 403;
+  const cause = rejected
+    ? "المزوّد رفض مفتاح الخدمة (401/403) — تحقّق من اشتراك WaSender، ومن أن جلسة واتساب ما زالت متصلة، أو جدّد المفتاح."
+    : "المزوّد لم يقبل الإرسال — قد تكون الخدمة متوقفة مؤقتاً.";
+
+  const text =
+    `🚨 <b>تعطّل إرسال رمز التحقق عبر ${channel === "whatsapp" ? "واتساب" : "تلغرام"}</b>\n\n` +
+    `${cause}\n\n` +
+    `📟 <b>الرمز:</b> <code>${escapeHtml(errorCode ?? "UNKNOWN")}</code>` +
+    (status ? `\n🌐 <b>حالة المزوّد:</b> <code>${status}</code>` : "") +
+    `\n\n✅ التسجيل عبر تلغرام ما زال يعمل، والزبائن يُوجَّهون إليه تلقائياً.`;
+
+  return sendAdminNotification("general", text);
+}

@@ -185,6 +185,37 @@ async function loadAll(): Promise<OtpRecord[]> {
   return readJson<OtpRecord[]>(OTP_STORAGE_KEY, []);
 }
 
+/**
+ * Last time this isolate told the owner WhatsApp verification was down.
+ *
+ * A Worker runs many isolates, so this bounds the noise rather than
+ * guaranteeing exactly one message — which is the honest description. The
+ * alternative, a row written per failed send, costs a database write on every
+ * attempt during an outage to save a handful of duplicate alerts, and the
+ * owner needs to be told loudly once, not accounted to the message.
+ */
+let lastChannelDownAlertAt = 0;
+const CHANNEL_DOWN_ALERT_EVERY_MS = 30 * 60 * 1000;
+
+/**
+ * Tells the owner the channel is down, at most once per window per isolate.
+ *
+ * Never awaited by the request: a customer waiting on a signup form must not
+ * also wait on a Telegram round-trip, and a failed alert must not turn one
+ * broken channel into a broken response.
+ */
+async function alertOwnerOnce(errorCode?: string, status?: number): Promise<void> {
+  const now = Date.now();
+  if (now - lastChannelDownAlertAt < CHANNEL_DOWN_ALERT_EVERY_MS) return;
+  lastChannelDownAlertAt = now;
+  try {
+    const { notifyAdminOtpChannelDown } = await import("./telegram-notifications.server");
+    await notifyAdminOtpChannelDown({ channel: "whatsapp", errorCode, status });
+  } catch {
+    /* The alert is a courtesy; it must never be the reason a signup fails. */
+  }
+}
+
 async function insert(record: OtpRecord) {
   if (await d1Ready()) {
     await d1Run(
@@ -249,16 +280,35 @@ async function markConsumed(id: string): Promise<boolean> {
   return claimed;
 }
 
-async function purge(phone: string, purpose: OtpPurpose) {
+/**
+ * Drops every code for this number and purpose, and every expired code.
+ *
+ * `keepId` is the code that has just been delivered. Callers now purge *after*
+ * a send succeeds rather than before it, so without this the sweep would
+ * delete the very code it was called to make current.
+ */
+async function purge(phone: string, purpose: OtpPurpose, keepId?: string) {
   if (await d1Ready()) {
-    await d1Run(`DELETE FROM otp_codes WHERE phone = ? AND purpose = ?`, phone, purpose);
+    if (keepId) {
+      await d1Run(
+        `DELETE FROM otp_codes WHERE phone = ? AND purpose = ? AND id != ?`,
+        phone,
+        purpose,
+        keepId,
+      );
+    } else {
+      await d1Run(`DELETE FROM otp_codes WHERE phone = ? AND purpose = ?`, phone, purpose);
+    }
     await d1Run(`DELETE FROM otp_codes WHERE expires_at < ?`, new Date().toISOString());
     return;
   }
   const now = Date.now();
   await mutateJson<OtpRecord[]>(OTP_STORAGE_KEY, [], (current) =>
     current.filter(
-      (row) => !(row.phone === phone && row.purpose === purpose) && Date.parse(row.expiresAt) > now,
+      (row) =>
+        (row.id === keepId ||
+          !(row.phone === phone && row.purpose === purpose)) &&
+        Date.parse(row.expiresAt) > now,
     ),
   );
 }
@@ -658,10 +708,10 @@ export async function sendVerificationCode(
   const code = generateSecureOtpCode();
   const codeHash = await computeOtpHash(code, key, purpose);
 
-  // 5. Invalidate previous codes and store new record
+  // 5. Store the new record. Previous codes are invalidated only once this one
+  //    has actually been delivered — see step 7.
   const id = randomId("otp");
   const expiresAt = new Date(Date.now() + OTP_TTL_MS).toISOString();
-  await purge(key, purpose);
   await insert({
     id,
     user_id: userId,
@@ -679,7 +729,15 @@ export async function sendVerificationCode(
   const wsRes = await sendWhatsappOtp(canonicalPhone, code);
 
   if (!wsRes.success) {
-    // Roll back stored code so user isn't stuck with an unreceived active code
+    void alertOwnerOnce(wsRes.errorCode, wsRes.status);
+    /*
+      Roll back the stored code so the customer is not holding one they never
+      received — and, because the purge now runs only after a delivery, the code
+      they were sent *before* this attempt is still valid. Invalidating the old
+      one first meant a failed resend took a working code with it: the customer
+      asked for a new code, got nothing, and lost the one already on their
+      phone.
+    */
     await remove(id);
     console.error(
       `[otp:whatsapp] delivery failed for purpose=${purpose} phone=${maskPhoneForLog(canonicalPhone)} error=${wsRes.error}`,
@@ -692,6 +750,9 @@ export async function sendVerificationCode(
       delivered: false,
     };
   }
+
+  // 7. Delivered. Now the older codes for this number can go.
+  await purge(key, purpose, id);
 
   return {
     success: true,
