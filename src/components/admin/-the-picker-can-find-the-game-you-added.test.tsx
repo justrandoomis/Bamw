@@ -15,13 +15,29 @@
  *  3. it matched `title.includes(q) || titleEn.includes(q)`, and production
  *     has `title === titleEn === the English string`, so an Arabic query
  *     matched nothing;
- *  4. it dropped `isActive === false`, which is how a freshly imported game —
- *     saved hidden on purpose — was excluded from the picker that exists to
- *     find it.
+ *  4. and, worst of all, its source carried no Arabic name to match. The rows
+ *     `/api/admin/products` returns are `ProductIndexRow`, which has `title`
+ *     and `titleEn` and no `titleAr` at all — so no client-side fix could have
+ *     rescued an Arabic query from that endpoint.
  *
  * There is a fifth, quieter one: `originalPrice` — the struck-through price a
  * customer sees — was re-summed from that fifty-row page on every toggle, so
  * a selected game that was not on the page silently stopped counting.
+ *
+ * ## A cause that was recorded and is not real
+ *
+ * The commit that shipped this fix also blamed `isActive !== false` for
+ * excluding freshly imported games. It did not exclude anything.
+ * `ProductIndexRow` has no `isActive` field (product-index.server.ts:170-210,
+ * :488-512), so `p.isActive !== false` was vacuously true for every row the
+ * picker ever saw. The importer marks a new game with `isHidden: true`
+ * (gameImportForm.ts), which that filter never looked at.
+ *
+ * Hidden products still matter, for a different reason the fix now handles:
+ * the public catalogue filters them out, and a bundle's contents are resolved
+ * against that filtered array — so a hidden game is saved into the bundle and
+ * then absent from it on the storefront. The picker says so rather than
+ * letting it happen quietly.
  */
 import { cleanup, fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
@@ -29,8 +45,13 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 const catalogue = vi.fn();
 
+const createPlaceholder = vi.fn();
+
 vi.mock("@/lib/api", () => ({
-  adminApi: { catalogue: () => catalogue() },
+  adminApi: {
+    catalogue: () => catalogue(),
+    createPlaceholderGame: (name: string) => createPlaceholder(name),
+  },
   fileToDataUrl: async () => "data:,",
 }));
 vi.mock("@/components/NintendoCover", () => ({
@@ -65,7 +86,8 @@ const WHOLE_CATALOGUE = [
   game(3, "The Legend of Zelda: Tears of the Kingdom", "أسطورة زيلدا: دموع المملكة"),
   game(4, "Mario Kart 8 Deluxe", "ماريو كارت ٨ ديلوكس"),
   // Just imported: saved hidden on purpose, and the one the admin is looking for.
-  game(5, "Metroid Prime 4: Beyond", "ميترويد برايم ٤", { isHidden: true, isActive: false }),
+  // Production shape for a freshly imported game: `isHidden`, and nothing else.
+  game(5, "Metroid Prime 4: Beyond", "ميترويد برايم ٤", { isHidden: true }),
   game(6, "Nintendo Switch 2 Console", "جهاز نينتندو سويتش ٢", { kind: "hardware" }),
 ];
 
@@ -121,6 +143,10 @@ beforeEach(() => {
   onSaveBundles.mockClear();
   catalogue.mockReset();
   catalogue.mockResolvedValue({ products: WHOLE_CATALOGUE });
+  createPlaceholder.mockReset();
+  createPlaceholder.mockImplementation(async (name: string) => ({
+    product: { id: `prd_${name.replace(/\W+/g, "_").toLowerCase()}` },
+  }));
 });
 afterEach(cleanup);
 
@@ -261,5 +287,166 @@ describe("the row cap", () => {
     await screen.findByText(/— 8[0-9] نتيجة/);
     await screen.findByText(/يُعرض أول 60/);
     expect(rowIds().length).toBe(60);
+  });
+});
+
+describe("searching a bundle that already has games in it", () => {
+  /*
+    The two ways the fix reproduced the very bug it fixed. Both were found by
+    an adversarial read of the shipped code, and both are the owner's sentence
+    read literally: «لا يبحث عن الالعاب المضافه».
+  */
+  const MANY = Array.from({ length: 12 }, (_, i) =>
+    game(200 + i, `Filler Game ${i}`, `لعبة ${i}`),
+  );
+  const CROWDED = {
+    ...BUNDLE,
+    gameIds: MANY.map((g) => g.id),
+  };
+
+  function renderCrowded() {
+    const client = new QueryClient({ defaultOptions: { queries: { retry: false, gcTime: 0 } } });
+    return render(
+      <QueryClientProvider client={client}>
+        <BundlesManager
+          bundles={[CROWDED] as never}
+          products={ONE_PAGE as never}
+          onSaveBundles={onSaveBundles}
+        />
+      </QueryClientProvider>,
+    );
+  }
+
+  it("puts the match first, not below a dozen games already chosen", async () => {
+    catalogue.mockResolvedValue({ products: [...WHOLE_CATALOGUE, ...MANY] });
+    renderCrowded();
+    fireEvent.click(screen.getByTitle("تعديل البندل"));
+    await screen.findByText(/البحث في 17 منتجًا/);
+    type("ماريو كارت");
+    await screen.findByText("Mario Kart 8 Deluxe");
+    // Row zero. Before this, it was row thirteen of a box that shows about ten.
+    expect(rowIds()[0]).toBe("p4");
+  });
+
+  it("does not call a game it is displaying unfindable", async () => {
+    await openEditor();
+    await screen.findByText(/البحث في 5 منتجًا/);
+    // p3 — Tears of the Kingdom — is already in the bundle.
+    type("زيلدا");
+    await screen.findByText(/— 1 نتيجة/);
+    expect(screen.queryByText(/لا توجد لعبة تطابق/)).toBeNull();
+  });
+});
+
+describe("a hidden game inside a bundle", () => {
+  it("warns that the customer will not see it in the bundle's contents", async () => {
+    await openEditor();
+    await screen.findByText(/البحث في 5 منتجًا/);
+    type("metroid");
+    fireEvent.click(await screen.findByText("Metroid Prime 4: Beyond"));
+    await screen.findByText(/من الألعاب المختارة مخفية/);
+  });
+
+  it("says nothing when every chosen game is live", async () => {
+    await openEditor();
+    await screen.findByText(/البحث في 5 منتجًا/);
+    expect(screen.queryByText(/من الألعاب المختارة مخفية/)).toBeNull();
+  });
+});
+
+describe("pulling the games out of the description", () => {
+  /*
+    The list was always written above the picker. These are the owner's words
+    turned into buttons: read it, tick what the shop has, mark in red what it
+    does not, and create those as hidden rows on save so the bundle points at
+    something real.
+  */
+  const DESCRIBED = {
+    ...BUNDLE,
+    gameIds: [],
+    descriptionEn: [
+      "1. Mario Kart 8 Deluxe",
+      "2. The Legend of Zelda: Tears of the Kingdom",
+      "3. Hollow Knight: Silksong",
+    ].join("\n"),
+  };
+
+  function renderDescribed() {
+    const client = new QueryClient({ defaultOptions: { queries: { retry: false, gcTime: 0 } } });
+    return render(
+      <QueryClientProvider client={client}>
+        <BundlesManager
+          bundles={[DESCRIBED] as never}
+          products={ONE_PAGE as never}
+          onSaveBundles={onSaveBundles}
+        />
+      </QueryClientProvider>,
+    );
+  }
+
+  async function openAndPull() {
+    renderDescribed();
+    fireEvent.click(screen.getByTitle("تعديل البندل"));
+    await screen.findByText(/البحث في 5 منتجًا/);
+    fireEvent.click(screen.getByText(/جلب الألعاب من الوصف/));
+  }
+
+  it("ticks the games the shop carries, without a single manual search", async () => {
+    await openAndPull();
+    // p4 Mario Kart 8 Deluxe and p3 Tears of the Kingdom.
+    await waitFor(() => expect(rowIds().slice(0, 2).sort()).toEqual(["p3", "p4"]));
+  });
+
+  it("marks the one the shop does not carry in red, and says what will happen", async () => {
+    await openAndPull();
+    await screen.findByText(/غير متوفرة — ستُنشأ مخفية/);
+    expect(screen.getByText("Hollow Knight: Silksong")).toBeTruthy();
+  });
+
+  it("creates it hidden, by name only, and links it to the bundle on save", async () => {
+    await openAndPull();
+    await screen.findByText(/غير متوفرة/);
+    fireEvent.click(screen.getByText("حفظ التعديلات"));
+
+    await waitFor(() => expect(createPlaceholder).toHaveBeenCalledWith("Hollow Knight: Silksong"));
+    await waitFor(() => expect(onSaveBundles).toHaveBeenCalled());
+
+    const saved = onSaveBundles.mock.calls.at(-1)?.[0]?.[0];
+    expect(saved.gameIds.map(String)).toContain("prd_hollow_knight_silksong");
+    // And the name travels with it, so the bundle page has something to print.
+    expect(saved.pendingGames).toContainEqual({
+      id: "prd_hollow_knight_silksong",
+      name: "Hollow Knight: Silksong",
+    });
+  });
+
+  it("creates nothing when every game in the description is already in the shop", async () => {
+    renderDescribed();
+    fireEvent.click(screen.getByTitle("تعديل البندل"));
+    await screen.findByText(/البحث في 5 منتجًا/);
+    type("ماريو كارت");
+    fireEvent.click(await screen.findByText("Mario Kart 8 Deluxe"));
+    fireEvent.click(screen.getByText("حفظ التعديلات"));
+    await waitFor(() => expect(onSaveBundles).toHaveBeenCalled());
+    expect(createPlaceholder).not.toHaveBeenCalled();
+  });
+});
+
+describe("the bundle's own settings", () => {
+  it("can be given a stock that never runs out", async () => {
+    await openEditor();
+    fireEvent.click(screen.getByLabelText(/مخزون لا نهائي/));
+    fireEvent.click(screen.getByText("حفظ التعديلات"));
+    await waitFor(() => expect(onSaveBundles).toHaveBeenCalled());
+    expect(onSaveBundles.mock.calls.at(-1)?.[0]?.[0].isInfiniteStock).toBe(true);
+  });
+
+  it("offers an online account, not only an offline one", async () => {
+    await openEditor();
+    const options = Array.from(
+      screen.getByDisplayValue(/حساب/).querySelectorAll("option"),
+    ).map((o) => (o as HTMLOptionElement).value);
+    expect(options).toContain("offline");
+    expect(options).toContain("online");
   });
 });

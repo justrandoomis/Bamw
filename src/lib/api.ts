@@ -827,6 +827,30 @@ export const adminApi = {
       listings: any[];
       topUsers: any[];
     }>("/api/admin/banana"),
+  /**
+   * A game the shop does not carry yet, created from a bundle's description.
+   *
+   * Hidden and unpriced on purpose: it exists so the bundle can point at
+   * something real and so the admin has a row to fill in, not so it can be
+   * sold. `isProductPriced` refuses a zero price, so it cannot reach a
+   * customer before somebody finishes it.
+   */
+  createPlaceholderGame: (name: string) =>
+    request<{ success?: boolean; product?: { id: string }; id?: string }>(
+      "/api/admin/products",
+      {
+        method: "POST",
+        body: JSON.stringify({
+          title: name,
+          titleEn: name,
+          price: 0,
+          isHidden: true,
+          category: "cat_nintendo",
+          categoryId: "cat_nintendo",
+        }),
+      },
+    ),
+
   saveBananaMarketConfig: (config: Record<string, unknown>) =>
     request<{ success: boolean; marketConfig: any }>("/api/admin/banana", {
       method: "POST",

@@ -133,6 +133,19 @@ const LIST_FIELDS = [
   "sales",
   "displayOrder",
   "isHidden",
+  /*
+    The legacy spellings of hidden.
+
+    `isProductHidden` recognises five — `isHidden`, `is_hidden`, `hidden`,
+    `visibility`, `status` — and this projection carried three of them, so a
+    pre-schema row hidden through `is_hidden` alone arrived at any admin tool
+    looking visible. The bundle picker labels hidden games «مخفي» precisely so
+    the admin is not surprised, and that label is only as good as the flags it
+    can see. Absent fields cost nothing: the projection copies a key only when
+    the product has it, and the public filter runs before this.
+  */
+  "is_hidden",
+  "hidden",
   "visibility",
   "options",
   "types",

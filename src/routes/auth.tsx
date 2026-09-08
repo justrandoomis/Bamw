@@ -349,6 +349,8 @@ function SignUpCard({
   const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | undefined>(externalError);
+  /** The server said another channel can carry this code. Offer it explicitly. */
+  const [fallbackOffered, setFallbackOffered] = useState(false);
   const [hint, setHint] = useState<string | undefined>(undefined);
 
   useEffect(() => {
@@ -401,6 +403,19 @@ function SignUpCard({
           } else {
             setError(err.message);
             setHint(err.hint);
+            /*
+              A failure the server says another channel can carry.
+
+              The two channel buttons sit on this card, and a customer whose
+              WhatsApp code never arrives was told «حاول لاحقاً» with the
+              working channel one tap away and unmentioned. Selecting it for
+              them is not enough on its own — it must be visible that the
+              choice moved — so the button below says what will happen.
+            */
+            if (err.fallbackChannel === "telegram") {
+              setChannel("telegram");
+              setFallbackOffered(true);
+            }
           }
         },
       },
@@ -410,6 +425,21 @@ function SignUpCard({
   return (
     <CardWrapper title={tr("إنشاء حساب جديد")} subtitle="NEW ACCOUNT" logo={mascotAsset.url}>
       <ErrorMsg error={error} hint={hint} />
+
+      {error && fallbackOffered ? (
+        <button
+          type="button"
+          onClick={() => {
+            setError(undefined);
+            setHint(undefined);
+            setFallbackOffered(false);
+            handleSubmit(null, "telegram");
+          }}
+          className="mb-4 w-full rounded-2xl border-2 border-ink-base bg-surface-2 px-4 py-3 text-[14px] font-black text-ink-base transition-transform active:scale-95"
+        >
+          {tr("إرسال الرمز عبر تلغرام بدلاً من ذلك")}
+        </button>
+      ) : null}
 
       {needsLinking ? (
         <div className="space-y-6">
@@ -464,7 +494,13 @@ function SignUpCard({
         <div className="grid grid-cols-2 gap-4 mb-8">
           <button
             type="button"
-            onClick={() => setChannel("whatsapp")}
+            onClick={() => {
+              // The error on screen was about the other channel.
+              setError(undefined);
+              setHint(undefined);
+              setFallbackOffered(false);
+              setChannel("whatsapp");
+            }}
             disabled={!!needsLinking}
             className={`relative flex flex-col items-center justify-center p-5 border-2 transition-all duration-300 outline outline-[3px] outline-offset-[-6px] ${
               channel === "whatsapp"
@@ -484,7 +520,12 @@ function SignUpCard({
 
           <button
             type="button"
-            onClick={() => setChannel("telegram")}
+            onClick={() => {
+              setError(undefined);
+              setHint(undefined);
+              setFallbackOffered(false);
+              setChannel("telegram");
+            }}
             disabled={!!needsLinking}
             className={`relative flex flex-col items-center justify-center p-5 border-2 transition-all duration-300 outline outline-[3px] outline-offset-[-6px] ${
               channel === "telegram"

@@ -88,6 +88,22 @@ function BundleDetailPage() {
     return getBundleGames(bundle, products);
   }, [bundle, products]);
 
+  /*
+    Games in this bundle that are not on the shelf yet.
+
+    A title the description named and the shop did not carry was created as a
+    hidden catalogue row with nothing but its name, for the admin to finish.
+    Hidden means the public catalogue does not carry it, so it cannot resolve
+    into a card — but the customer was still promised it, so it is listed by
+    name. The moment the admin publishes the record it resolves like any other
+    game and drops out of this list on its own.
+  */
+  const notYetListed = useMemo(() => {
+    if (!bundle?.pendingGames?.length) return [];
+    const resolved = new Set(games.map((g) => String(g.id)));
+    return bundle.pendingGames.filter((p) => !resolved.has(String(p.id)));
+  }, [bundle, games]);
+
   const savings = useMemo(() => {
     if (!bundle) return { amount: 0, percentage: 0 };
     return getBundleSavings(bundle, products);
@@ -456,7 +472,8 @@ function BundleDetailPage() {
             <div>
               <h2 className="text-xl sm:text-2xl font-black text-foreground flex items-center gap-2">
                 <Gamepad2 className="w-6 h-6 text-red-500" />
-                الألعاب المتضمنة في هذا البندل ({games.length || bundle.gameIds.length} ألعاب)
+                الألعاب المتضمنة في هذا البندل (
+                {games.length + notYetListed.length || bundle.gameIds.length} ألعاب)
               </h2>
               <p className="text-xs text-muted-foreground mt-0.5">
                 انقر على أي لعبة للانتقال إلى صفحة تفاصيلها ومعرفة قصتها ومميزاتها
@@ -465,6 +482,33 @@ function BundleDetailPage() {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4" dir="ltr">
+            {/*
+              Named, not linked. The page for one of these does not exist yet —
+              offering a click that leads nowhere is worse than showing the
+              title the bundle promises and saying it is on its way.
+            */}
+            {notYetListed.map((pendingGame) => (
+              <div
+                key={pendingGame.id}
+                className="p-3.5 rounded-2xl bg-card border border-dashed border-border/80 flex items-center gap-3.5"
+              >
+                <div className="w-16 h-20 rounded-xl bg-muted/40 shrink-0 flex items-center justify-center border border-border/50">
+                  <Gamepad2 className="w-5 h-5 text-muted-foreground/60" />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <span className="text-[10px] font-bold px-1.5 py-0.5 rounded-md bg-red-500/10 text-red-600">
+                    متضمنة بالبندل
+                  </span>
+                  <p className="font-bold text-sm text-foreground truncate mt-1" dir="auto">
+                    {pendingGame.name}
+                  </p>
+                  <p className="text-[11px] text-muted-foreground mt-0.5">
+                    صفحة التفاصيل قيد الإعداد
+                  </p>
+                </div>
+              </div>
+            ))}
+
             {games.map((game, idx) => (
               <div
                 key={game.id || idx}

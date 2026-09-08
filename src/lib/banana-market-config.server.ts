@@ -51,6 +51,27 @@ function num(value: unknown, fallback: number): number {
   return Number.isFinite(n) ? n : fallback;
 }
 
+/**
+ * A price, or the fallback — where zero is not a price.
+ *
+ * `raw.basePrice ?? settings.bananaOpeningPrice` keeps a stored zero, because
+ * `??` only steps over null and undefined. A legacy settings document holding
+ * `bananaOpeningPrice: 0` therefore made the base price zero, `spotPriceAt`
+ * multiplied by it, and the whole market read 0.00 to every customer with no
+ * way for the admin to correct it — the panel that sets these values could not
+ * save them either (its route had no handler), so the shop was pinned at a
+ * price nobody had chosen.
+ *
+ * A market cannot run at zero, so a non-positive stored value is treated as
+ * absent rather than obeyed. Saving a real one through the admin panel now
+ * refuses a non-positive base price outright, so this only ever catches what
+ * is already in the database.
+ */
+function price(value: unknown, fallback: number): number {
+  const n = Number(value);
+  return Number.isFinite(n) && n > 0 ? n : fallback;
+}
+
 export async function getMarketConfig(): Promise<BananaMarketConfig> {
   const store = await getStore();
   const settings = (store.settings ?? {}) as Record<string, unknown>;
@@ -58,9 +79,12 @@ export async function getMarketConfig(): Promise<BananaMarketConfig> {
   const d = DEFAULT_MARKET_CONFIG;
 
   const config: BananaMarketConfig = {
-    basePrice: num(raw["basePrice"] ?? settings["bananaOpeningPrice"], d.basePrice),
-    minPrice: num(raw["minPrice"], d.minPrice),
-    maxPrice: num(raw["maxPrice"], d.maxPrice),
+    basePrice: price(
+      price(raw["basePrice"], 0) || settings["bananaOpeningPrice"],
+      d.basePrice,
+    ),
+    minPrice: price(raw["minPrice"], d.minPrice),
+    maxPrice: price(raw["maxPrice"], d.maxPrice),
     commissionPercent: num(raw["commissionPercent"], d.commissionPercent),
     volatilityPercent: num(raw["volatilityPercent"], d.volatilityPercent),
     botsEnabled: raw["botsEnabled"] === undefined ? d.botsEnabled : Boolean(raw["botsEnabled"]),

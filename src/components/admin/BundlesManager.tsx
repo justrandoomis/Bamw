@@ -25,8 +25,9 @@ import { toast } from "sonner";
 import type { AccountBundle, Product } from "@/lib/types";
 import { adminApi, fileToDataUrl } from "@/lib/api";
 import { getBundleGames } from "@/lib/bundles";
-import { isProductHidden } from "@/lib/purchasable";
+import { isProductHidden, isVisibleToPublic } from "@/lib/purchasable";
 import { buildProductIndex, searchProducts } from "@/lib/search/products";
+import { extractBundleGames, type BundleGameMatch } from "@/lib/bundleGameExtraction";
 
 /** How many picker rows are rendered at once. */
 const PICKER_ROWS = 60;
@@ -54,6 +55,13 @@ export default function BundlesManager({
   const [editingBundle, setEditingBundle] = useState<AccountBundle | null>(null);
   const [isCreating, setIsCreating] = useState(false);
   const [gameSearch, setGameSearch] = useState("");
+  /*
+    The last read of the description: what each line resolved to, and what it
+    did not. Kept on screen after the button runs so the admin can see the
+    reasoning rather than just the result.
+  */
+  const [matches, setMatches] = useState<BundleGameMatch[] | null>(null);
+  const [savingPlaceholders, setSavingPlaceholders] = useState(false);
 
   // Filtered bundle list
   const filteredBundles = useMemo(() => {
@@ -133,27 +141,63 @@ export default function BundlesManager({
   /*
     What the admin sees in the list.
 
-    The games already in the bundle come first and are never filtered out — a
-    picker that hides what you have already chosen is a picker you cannot undo
-    a choice in. Below them, the search results; and with an empty box, the
-    rest of the catalogue rather than an arbitrary first thirty.
+    With an empty box the games already in the bundle come first: a picker that
+    buries what you have chosen is one you cannot review.
 
-    The search is the storefront's own engine (src/lib/search/products.ts), so
-    «زيلدا» finds the game here for the same reason it does on the shop.
+    While a search is running they do NOT come first, and getting that wrong
+    reproduced the original complaint on top of the fix. Pinning the whole
+    selection unconditionally meant that in a bundle of a dozen games, typing a
+    name put twelve non-matching rows above the one match — row thirteen of a
+    two-column box that shows about ten. The admin sees no match, does not
+    scroll, and reports «البحث لا يجد اللعبة» again, correctly.
+
+    So a search shows its matches first, selected or not — the row already
+    carries a tick when it is chosen — and the chosen games that do NOT match
+    go underneath. The chip row above is the always-available way to unselect,
+    so nothing is lost by ordering honestly.
   */
-  const { searchHits, filteredPickerGames } = useMemo(() => {
+  const { matchCount, filteredPickerGames } = useMemo(() => {
     const chosen = pickerGames.filter((p) => selectedIds.has(String(p.id)));
     const query = gameSearch.trim();
-    const hits = query
-      ? searchProducts(pickerIndex, query, { limit: PICKER_SEARCH_LIMIT })
-          .map((row) => row.product as unknown as Product)
-          .filter((p) => !selectedIds.has(String(p.id)))
-      : pickerGames.filter((p) => !selectedIds.has(String(p.id)));
-    return {
-      searchHits: hits,
-      filteredPickerGames: [...chosen, ...hits],
-    };
+
+    if (!query) {
+      const rest = pickerGames.filter((p) => !selectedIds.has(String(p.id)));
+      return { matchCount: pickerGames.length, filteredPickerGames: [...chosen, ...rest] };
+    }
+
+    /*
+      The engine's own hits, before anything is removed. This is the number
+      printed as « — N نتيجة» and the one the empty state is decided on:
+      counting matches *after* dropping the ones already chosen told the admin
+      «لا توجد لعبة تطابق «زيلدا»» while the Zelda row sat pinned above it, on
+      the same screen. That is the picker calling a game it is displaying
+      unfindable.
+    */
+    const hits = searchProducts(pickerIndex, query, { limit: PICKER_SEARCH_LIMIT }).map(
+      (row) => row.product as unknown as Product,
+    );
+    const hitIds = new Set(hits.map((p) => String(p.id)));
+    const chosenAndUnmatched = chosen.filter((p) => !hitIds.has(String(p.id)));
+    return { matchCount: hits.length, filteredPickerGames: [...hits, ...chosenAndUnmatched] };
   }, [pickerGames, pickerIndex, gameSearch, selectedIds]);
+
+  /*
+    Games in this bundle that a customer will not see inside it.
+
+    The picker deliberately offers hidden products — the importer creates every
+    game hidden, so they are exactly what an admin comes here for. But the
+    public catalogue filters hidden products out, and a bundle's contents are
+    resolved by intersecting its `gameIds` with that already-filtered array
+    (src/lib/bundles.ts). So a hidden game is saved into the bundle, shows in
+    this editor, and is simply absent from the bundle on the storefront.
+
+    Nothing here changes that — visibility is the owner's decision and this
+    must not touch it. It says it out loud instead, next to the choice.
+  */
+  const hiddenInBundle = useMemo(
+    () => catalogue.filter((p) => selectedIds.has(String(p.id)) && !isVisibleToPublic(p)),
+    [catalogue, selectedIds],
+  );
 
   /*
     Rows are capped, the search is not.
@@ -191,12 +235,14 @@ export default function BundlesManager({
     });
     setIsCreating(true);
     setGameSearch("");
+    setMatches(null);
   };
 
   const handleStartEdit = (bundle: AccountBundle) => {
     setEditingBundle(JSON.parse(JSON.stringify(bundle)));
     setIsCreating(false);
     setGameSearch("");
+    setMatches(null);
   };
 
   const handleDelete = (id: string) => {
@@ -227,7 +273,7 @@ export default function BundlesManager({
     toast.success("تم تكرار البندل بنجاح");
   };
 
-  const handleSaveForm = (e: React.FormEvent) => {
+  const handleSaveForm = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!editingBundle) return;
 
@@ -236,14 +282,66 @@ export default function BundlesManager({
       return;
     }
 
-    if (!editingBundle.gameIds || editingBundle.gameIds.length === 0) {
+    const pending = (matches ?? []).filter((m) => m.status === "missing");
+
+    if (
+      (!editingBundle.gameIds || editingBundle.gameIds.length === 0) &&
+      pending.length === 0
+    ) {
       toast.error("يرجى اختيار لعبة واحدة على الأقل في البندل");
       return;
     }
 
+    /*
+      Games the description names and the shop does not carry.
+
+      They become real rows now — hidden, unpriced, in the Nintendo Switch
+      games section, carrying nothing but the name — so the bundle can point at
+      something and the admin has somewhere to finish the record later. This
+      happens on save and never while typing: a row in the catalogue is not
+      something to create on a keystroke.
+
+      A name that fails to create does not fail the save. The bundle keeps the
+      games that did resolve, and the admin is told which ones to add by hand,
+      rather than losing the whole edit to one bad row.
+    */
+    const createdIds: string[] = [];
+    const createdPending: { id: string; name: string }[] = [];
+    if (pending.length > 0) {
+      setSavingPlaceholders(true);
+      const failed: string[] = [];
+      for (const item of pending) {
+        try {
+          const res = await adminApi.createPlaceholderGame(item.line);
+          const id = res?.product?.id ?? res?.id;
+          if (id) {
+            createdIds.push(String(id));
+            createdPending.push({ id: String(id), name: item.line });
+          } else failed.push(item.line);
+        } catch {
+          failed.push(item.line);
+        }
+      }
+      setSavingPlaceholders(false);
+      if (failed.length > 0) {
+        toast.error(`تعذّر إنشاء ${failed.length} لعبة: ${failed.slice(0, 3).join("، ")}`);
+      }
+      if (createdIds.length > 0) {
+        toast.success(`أُنشئت ${createdIds.length} لعبة مخفية بالاسم فقط — أكمل بياناتها لاحقاً`);
+      }
+    }
+
     const now = new Date().toISOString();
+    const gameIds = [...(editingBundle.gameIds ?? []), ...createdIds];
     const updatedItem: AccountBundle = {
       ...editingBundle,
+      gameIds,
+      /*
+        Kept so the bundle page has a name to print for a row that is still
+        hidden. Entries whose product has since been published resolve through
+        the catalogue instead, so the list only ever shrinks.
+      */
+      pendingGames: [...(editingBundle.pendingGames ?? []), ...createdPending],
       price: Number(editingBundle.price) || 0,
       originalPrice: Number(editingBundle.originalPrice) || 0,
       stock: Number(editingBundle.stock) || 0,
@@ -296,6 +394,47 @@ export default function BundlesManager({
       originalPrice:
         everyGameResolved && totalOriginal > 0 ? totalOriginal : editingBundle.originalPrice,
     });
+  };
+
+  /**
+   * Read the games out of the description the admin already wrote.
+   *
+   * The list was always there — «1. Mario Kart 8 Deluxe», «2. Xenoblade
+   * Chronicles 2» — and the admin then searched the catalogue for each title
+   * by hand. This makes the selection say what the description says.
+   *
+   * It replaces the selection rather than adding to it, because the
+   * description is what the customer is being sold; a stale tick left over
+   * from an earlier draft is a game in the bundle that the description does
+   * not promise. Every row stays tickable afterwards, so a wrong reading is
+   * one click to fix.
+   */
+  const pullGamesFromDescription = () => {
+    if (!editingBundle) return;
+    const text = String(editingBundle.descriptionEn || editingBundle.description || "");
+    if (!text.trim()) {
+      toast.error("اكتب وصف البندل أولاً — الألعاب تُقرأ منه");
+      return;
+    }
+
+    const found = extractBundleGames(text, pickerGames as unknown as Record<string, unknown>[]);
+    if (found.length === 0) {
+      toast.error("لم أجد أسطر ألعاب في الوصف");
+      return;
+    }
+
+    setMatches(found);
+    const ids = found
+      .filter((m) => m.product)
+      .map((m) => String((m.product as Record<string, unknown>)["id"]));
+    setEditingBundle({ ...editingBundle, gameIds: ids });
+
+    const missing = found.filter((m) => m.status === "missing").length;
+    toast.success(
+      missing === 0
+        ? `تم اختيار ${ids.length} لعبة من الوصف`
+        : `تم اختيار ${ids.length} لعبة — و${missing} غير متوفرة ستُنشأ مخفية عند الحفظ`,
+    );
   };
 
   const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -483,7 +622,7 @@ export default function BundlesManager({
 
               {/* Bottom: Stock & Fast Action */}
               <div className="pt-2 border-t border-border/60 flex items-center justify-between text-xs text-muted-foreground">
-                <span>المخزون: {bundle.stock ?? 0}</span>
+                <span>المخزون: {bundle.isInfiniteStock ? "∞" : (bundle.stock ?? 0)}</span>
                 {bundle.badge && (
                   <span className="text-[10px] font-bold text-amber-600 bg-amber-500/10 px-2 py-0.5 rounded-md">
                     {bundle.badge}
@@ -629,6 +768,7 @@ export default function BundlesManager({
                     <option value="secondary">حساب فرعي (Secondary)</option>
                     <option value="full">حساب كامل (Full Account)</option>
                     <option value="offline">حساب أوفلاين (Offline)</option>
+                    <option value="online">حساب أونلاين (Online)</option>
                   </select>
                 </div>
 
@@ -637,12 +777,28 @@ export default function BundlesManager({
                   <input
                     type="number"
                     min={0}
+                    disabled={editingBundle.isInfiniteStock === true}
                     value={editingBundle.stock ?? 20}
                     onChange={(e) =>
                       setEditingBundle({ ...editingBundle, stock: Number(e.target.value) })
                     }
-                    className="w-full px-3.5 py-2.5 rounded-xl border border-border bg-background focus:border-red-500 focus:outline-none font-mono"
+                    className={`w-full px-3.5 py-2.5 rounded-xl border border-border bg-background focus:border-red-500 focus:outline-none font-mono ${
+                      editingBundle.isInfiniteStock ? "opacity-40" : ""
+                    }`}
                   />
+                  {/* The number stays as the admin left it, so turning this off
+                      restores the quantity rather than asking for it again. */}
+                  <label className="flex items-center gap-2 pt-1 text-xs font-bold text-muted-foreground cursor-pointer">
+                    <input
+                      type="checkbox"
+                      checked={editingBundle.isInfiniteStock === true}
+                      onChange={(e) =>
+                        setEditingBundle({ ...editingBundle, isInfiniteStock: e.target.checked })
+                      }
+                      className="w-4 h-4 accent-red-500"
+                    />
+                    مخزون لا نهائي ∞
+                  </label>
                 </div>
               </div>
 
@@ -706,6 +862,65 @@ export default function BundlesManager({
                   ) : null}
                 </div>
 
+                {/*
+                  The list is already written above. This reads it.
+                */}
+                <div className="flex flex-wrap items-center gap-2">
+                  <button
+                    type="button"
+                    onClick={pullGamesFromDescription}
+                    className="px-3.5 py-2 rounded-xl bg-foreground text-background font-black text-xs active:scale-95 transition-transform"
+                  >
+                    ⚡ جلب الألعاب من الوصف
+                  </button>
+                  {matches ? (
+                    <button
+                      type="button"
+                      onClick={() => setMatches(null)}
+                      className="px-3 py-2 rounded-xl border border-border text-xs font-bold text-muted-foreground"
+                    >
+                      إخفاء النتيجة
+                    </button>
+                  ) : null}
+                  <span className="text-[10px] text-muted-foreground">
+                    يقرأ الأسطر المرقّمة من وصف البندل ويطابقها بالكتالوج
+                  </span>
+                </div>
+
+                {matches ? (
+                  <div className="rounded-2xl border border-border bg-background p-3 space-y-1.5 max-h-56 overflow-y-auto">
+                    {matches.map((m, i) => (
+                      <div
+                        key={`${m.line}-${i}`}
+                        className="flex items-center justify-between gap-3 text-xs"
+                      >
+                        <span className="truncate font-bold text-foreground">{m.line}</span>
+                        {m.product ? (
+                          <span className="shrink-0 inline-flex items-center gap-1 text-emerald-600 font-bold">
+                            ✓{" "}
+                            <span className="truncate max-w-[16rem]" dir="ltr">
+                              {String(
+                                (m.product as Record<string, unknown>)["titleEn"] ??
+                                  (m.product as Record<string, unknown>)["title"] ??
+                                  "",
+                              )}
+                            </span>
+                          </span>
+                        ) : (
+                          /*
+                            Red, and it says what will happen. The admin is
+                            choosing to create a row in the catalogue, so they
+                            are told that before they press save, not after.
+                          */
+                          <span className="shrink-0 inline-flex items-center gap-1 rounded-lg bg-red-500/10 px-2 py-0.5 text-red-600 font-black">
+                            ● غير متوفرة — ستُنشأ مخفية
+                          </span>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                ) : null}
+
                 {/* Search in Games */}
                 <div className="relative">
                   <Search className="w-3.5 h-3.5 absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
@@ -738,11 +953,28 @@ export default function BundlesManager({
                     : catalogueLoading
                       ? "جارٍ تحميل كامل الكتالوج..."
                       : `البحث في ${pickerGames.length} منتجًا من كامل الكتالوج، بما فيها المخفية`}
-                  {gameSearch.trim() ? ` — ${searchHits.length} نتيجة` : ""}
+                  {gameSearch.trim() ? ` — ${matchCount} نتيجة` : ""}
                   {filteredPickerGames.length > visiblePickerGames.length
                     ? ` (يُعرض أول ${visiblePickerGames.length}؛ اكتب للتضييق)`
                     : ""}
                 </p>
+
+                {/*
+                  A hidden game is saved into the bundle and then absent from
+                  it on the storefront. The admin decides what is hidden; this
+                  only refuses to let that happen silently.
+                */}
+                {hiddenInBundle.length > 0 ? (
+                  <p className="rounded-xl border border-amber-500/30 bg-amber-500/10 px-3 py-2 text-[11px] font-bold text-amber-700">
+                    {hiddenInBundle.length} من الألعاب المختارة مخفية — ستُحفظ داخل البندل لكن
+                    الزبون لن يراها في محتوياته حتى تُظهرها:{" "}
+                    {hiddenInBundle
+                      .map((p) => p.titleEn || p.title || String(p.id))
+                      .slice(0, 4)
+                      .join("، ")}
+                    {hiddenInBundle.length > 4 ? " …" : ""}
+                  </p>
+                ) : null}
 
                 {/* Selected Games Chips */}
                 {editingBundle.gameIds && editingBundle.gameIds.length > 0 && (
@@ -834,11 +1066,11 @@ export default function BundlesManager({
                   })}
 
                   {/*
-                    About the search, not about the list: the games already in
-                    the bundle stay pinned above, so counting them here would
-                    turn "nothing matched" into silence.
+                    Decided on the engine's raw hits. Counting matches after
+                    removing the ones already chosen made the picker announce
+                    «لا توجد لعبة تطابق X» about a game it was displaying.
                   */}
-                  {gameSearch.trim() && searchHits.length === 0 && !catalogueLoading ? (
+                  {gameSearch.trim() && matchCount === 0 && !catalogueLoading ? (
                     <p className="col-span-full py-6 text-center text-xs text-muted-foreground">
                       لا توجد لعبة تطابق «{gameSearch.trim()}»
                     </p>
@@ -858,9 +1090,14 @@ export default function BundlesManager({
 
                 <button
                   type="submit"
-                  className="px-6 py-2.5 rounded-xl bg-red-500 hover:bg-red-600 text-white font-bold text-xs shadow-sm hover:shadow-md transition-all cursor-pointer"
+                  disabled={savingPlaceholders}
+                  className="px-6 py-2.5 rounded-xl bg-red-500 hover:bg-red-600 disabled:opacity-60 text-white font-bold text-xs shadow-sm hover:shadow-md transition-all cursor-pointer"
                 >
-                  {isCreating ? "إنشاء البندل وحفظه" : "حفظ التعديلات"}
+                  {savingPlaceholders
+                    ? "جارٍ إنشاء الألعاب الناقصة..."
+                    : isCreating
+                      ? "إنشاء البندل وحفظه"
+                      : "حفظ التعديلات"}
                 </button>
               </div>
             </form>
