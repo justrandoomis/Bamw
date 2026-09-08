@@ -123,12 +123,25 @@ export function resolveBundleUnitPrice(
   return { unitPrice: base + (extra > 0 ? extra : 0), option };
 }
 
+/**
+ * How much the bundle saves against buying the games separately.
+ *
+ * `paying` is what the customer is actually about to be charged, which is not
+ * always `bundle.price`: an account option adds to it. Measured against the
+ * base, a bundle bought as the dearer account claimed a saving larger than the
+ * one it gives. Defaults to the bundle's own price, so a caller with no
+ * selection to hand gets what it always got.
+ */
 export function getBundleSavings(
   bundle: AccountBundle,
   products: Product[],
+  paying?: number,
 ): { amount: number; percentage: number } {
   const original = getBundleOriginalTotal(bundle, products);
-  const current = Number(bundle.price) || 0;
+  const current =
+    Number.isFinite(paying as number) && (paying as number) > 0
+      ? (paying as number)
+      : Number(bundle.price) || 0;
   if (original <= current) {
     return { amount: 0, percentage: 0 };
   }

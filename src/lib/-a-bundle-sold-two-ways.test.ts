@@ -17,6 +17,7 @@ import { describe, expect, it } from "vitest";
 import {
   bundleAccountLabel,
   bundleAccountOptions,
+  getBundleSavings,
   resolveBundleUnitPrice,
   sumBundleGamePrices,
   UNPRICED_GAME_VALUE,
@@ -150,5 +151,33 @@ describe("the sum of the individual prices", () => {
 
   it("is zero for a bundle with no games, rather than a number nobody meant", () => {
     expect(sumBundleGamePrices(bundle({ gameIds: [] }), products)).toBe(0);
+  });
+});
+
+describe("the saving on screen", () => {
+  const products = [
+    { id: "g1", price: 30000 },
+    { id: "g2", price: 30000 },
+  ] as unknown as Product[];
+
+  it("is measured against what the customer will actually pay", () => {
+    /*
+      Sixty thousand of games. Offline costs 35000 and saves 25000; online
+      costs 40000 and saves 20000. Measured against the base price the online
+      buyer would have been promised the offline buyer's saving.
+    */
+    const b = bundle({ gameIds: ["g1", "g2"], originalPrice: 60000 });
+    expect(getBundleSavings(b, products, 35000).amount).toBe(25000);
+    expect(getBundleSavings(b, products, 40000).amount).toBe(20000);
+  });
+
+  it("falls back to the bundle price when no selection is handed in", () => {
+    const b = bundle({ gameIds: ["g1", "g2"], originalPrice: 60000 });
+    expect(getBundleSavings(b, products).amount).toBe(25000);
+  });
+
+  it("claims no saving when the option costs more than the games do separately", () => {
+    const b = bundle({ gameIds: ["g1"], price: 35000, originalPrice: 0 });
+    expect(getBundleSavings(b, products, 90000)).toEqual({ amount: 0, percentage: 0 });
   });
 });

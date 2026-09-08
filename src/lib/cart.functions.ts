@@ -1,7 +1,7 @@
 import { createServerFn } from "@tanstack/react-start";
 import { getRequest } from "@tanstack/react-start/server";
 import { z } from "zod";
-import { d1All, d1Run, d1First, randomId } from "@/lib/db.server";
+import { d1All, d1Run, randomId } from "@/lib/db.server";
 import { requireAppAuth, authed } from "@/lib/auth.middleware";
 
 async function logActivity(params: any) {

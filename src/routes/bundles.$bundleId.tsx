@@ -107,16 +107,6 @@ function BundleDetailPage() {
     return bundle.pendingGames.filter((p) => !resolved.has(String(p.id)));
   }, [bundle, games]);
 
-  const savings = useMemo(() => {
-    if (!bundle) return { amount: 0, percentage: 0 };
-    return getBundleSavings(bundle, products);
-  }, [bundle, products]);
-
-  const originalTotal = useMemo(() => {
-    if (!bundle) return 0;
-    return getBundleOriginalTotal(bundle, products);
-  }, [bundle, products]);
-
   /*
     The ways this bundle can be bought.
 
@@ -148,6 +138,17 @@ function BundleDetailPage() {
     if (!bundle) return 0;
     return resolveBundleUnitPrice(bundle, { optionId: selectedOptionId }).unitPrice;
   }, [bundle, selectedOptionId]);
+
+  const savings = useMemo(() => {
+    if (!bundle) return { amount: 0, percentage: 0 };
+    /* Against what is being charged, not against the base — see getBundleSavings. */
+    return getBundleSavings(bundle, products, livePrice);
+  }, [bundle, products, livePrice]);
+
+  const originalTotal = useMemo(() => {
+    if (!bundle) return 0;
+    return getBundleOriginalTotal(bundle, products);
+  }, [bundle, products]);
 
   const accountInfo = useMemo(() => {
     const chosen = accountOptions.find((option) => String(option.id) === selectedOptionId);
