@@ -44,7 +44,7 @@
  */
 import { build } from "esbuild";
 import { chromium } from "playwright-core";
-import { rmSync, writeFileSync } from "node:fs";
+import { readFileSync, rmSync, writeFileSync } from "node:fs";
 import path from "node:path";
 
 const args = Object.fromEntries(
@@ -223,10 +223,34 @@ async function readFromD1() {
       ["CLOUDFLARE_D1_DATABASE_ID", Boolean(process.env["CLOUDFLARE_D1_DATABASE_ID"])],
     ]),
   );
-  const haveDatabase =
-    Boolean(process.env["D1_DATABASE_ID"]) || Boolean(process.env["CLOUDFLARE_D1_DATABASE_ID"]);
-  if (!process.env.CLOUDFLARE_API_TOKEN || !process.env.CLOUDFLARE_ACCOUNT_ID || !haveDatabase) {
+  /*
+    The database id is not a secret, and there is no repository secret holding
+    it — both spellings came back absent. It is committed in wrangler.jsonc,
+    which is where wrangler itself reads it to deploy, so read it from there
+    rather than asking the owner to add a secret for a value already in the
+    tree. Matched by pattern because the file is JSONC: comments and trailing
+    commas, which JSON.parse refuses.
+  */
+  if (!process.env["D1_DATABASE_ID"] && !process.env["CLOUDFLARE_D1_DATABASE_ID"]) {
+    try {
+      const config = readFileSync(path.resolve("wrangler.jsonc"), "utf8");
+      const found = config.match(/"database_id"\s*:\s*"([0-9a-fA-F-]{36})"/);
+      if (found) {
+        process.env["D1_DATABASE_ID"] = found[1];
+        out.d1DatabaseFrom = "wrangler.jsonc";
+      }
+    } catch {
+      /* No config to read: the check below reports what is missing. */
+    }
+  }
+
+  out.d1Credentials["D1_DATABASE_ID"] = Boolean(process.env["D1_DATABASE_ID"]);
+  if (!process.env.CLOUDFLARE_API_TOKEN || !process.env.CLOUDFLARE_ACCOUNT_ID) {
     out.d1Error = "missing credentials: " + JSON.stringify(out.d1Credentials);
+    return;
+  }
+  if (!process.env["D1_DATABASE_ID"]) {
+    out.d1Error = "no database id, in the environment or in wrangler.jsonc";
     return;
   }
   const outfile = path.resolve(".banana-bundle.mjs");
@@ -438,6 +462,7 @@ say(
       d1ActiveOffers: out.d1ActiveOffers ?? null,
       d1Error: out.d1Error ?? null,
       d1Credentials: out.d1Credentials ?? null,
+      d1DatabaseFrom: out.d1DatabaseFrom ?? null,
       source: out.source,
       pageStatus: out.status ?? null,
       apiStatus: out.apiStatus ?? null,
