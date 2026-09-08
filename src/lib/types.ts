@@ -303,6 +303,25 @@ export interface AccountBundle {
   gameIds: (string | number)[];
   accountType?: "primary" | "secondary" | "full" | "offline" | "online";
   stock?: number;
+  /**
+   * Stock that never runs out — the number is ignored while this is on.
+   *
+   * Named as `Product.isInfiniteStock` is, so the two mean the same thing in
+   * both places rather than one shop having two words for it.
+   */
+  isInfiniteStock?: boolean;
+  /**
+   * Games named in the description that the shop did not carry, with the
+   * hidden catalogue row created for each.
+   *
+   * The name is kept here because the row itself is hidden: the public
+   * catalogue does not carry it, so the bundle page would otherwise have an id
+   * and nothing to print. Once the admin fills the record in and publishes it,
+   * the product resolves normally through `getBundleGames`, the real card
+   * replaces the plain name, and this entry stops being rendered — the bundle
+   * updates itself with no second edit.
+   */
+  pendingGames?: { id: string; name: string }[];
   isActive: boolean;
   badge?: string;
   badgeEn?: string;

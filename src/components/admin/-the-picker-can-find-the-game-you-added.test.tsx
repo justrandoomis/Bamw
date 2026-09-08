@@ -45,8 +45,13 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 const catalogue = vi.fn();
 
+const createPlaceholder = vi.fn();
+
 vi.mock("@/lib/api", () => ({
-  adminApi: { catalogue: () => catalogue() },
+  adminApi: {
+    catalogue: () => catalogue(),
+    createPlaceholderGame: (name: string) => createPlaceholder(name),
+  },
   fileToDataUrl: async () => "data:,",
 }));
 vi.mock("@/components/NintendoCover", () => ({
@@ -138,6 +143,10 @@ beforeEach(() => {
   onSaveBundles.mockClear();
   catalogue.mockReset();
   catalogue.mockResolvedValue({ products: WHOLE_CATALOGUE });
+  createPlaceholder.mockReset();
+  createPlaceholder.mockImplementation(async (name: string) => ({
+    product: { id: `prd_${name.replace(/\W+/g, "_").toLowerCase()}` },
+  }));
 });
 afterEach(cleanup);
 
@@ -342,5 +351,102 @@ describe("a hidden game inside a bundle", () => {
     await openEditor();
     await screen.findByText(/البحث في 5 منتجًا/);
     expect(screen.queryByText(/من الألعاب المختارة مخفية/)).toBeNull();
+  });
+});
+
+describe("pulling the games out of the description", () => {
+  /*
+    The list was always written above the picker. These are the owner's words
+    turned into buttons: read it, tick what the shop has, mark in red what it
+    does not, and create those as hidden rows on save so the bundle points at
+    something real.
+  */
+  const DESCRIBED = {
+    ...BUNDLE,
+    gameIds: [],
+    descriptionEn: [
+      "1. Mario Kart 8 Deluxe",
+      "2. The Legend of Zelda: Tears of the Kingdom",
+      "3. Hollow Knight: Silksong",
+    ].join("\n"),
+  };
+
+  function renderDescribed() {
+    const client = new QueryClient({ defaultOptions: { queries: { retry: false, gcTime: 0 } } });
+    return render(
+      <QueryClientProvider client={client}>
+        <BundlesManager
+          bundles={[DESCRIBED] as never}
+          products={ONE_PAGE as never}
+          onSaveBundles={onSaveBundles}
+        />
+      </QueryClientProvider>,
+    );
+  }
+
+  async function openAndPull() {
+    renderDescribed();
+    fireEvent.click(screen.getByTitle("تعديل البندل"));
+    await screen.findByText(/البحث في 5 منتجًا/);
+    fireEvent.click(screen.getByText(/جلب الألعاب من الوصف/));
+  }
+
+  it("ticks the games the shop carries, without a single manual search", async () => {
+    await openAndPull();
+    // p4 Mario Kart 8 Deluxe and p3 Tears of the Kingdom.
+    await waitFor(() => expect(rowIds().slice(0, 2).sort()).toEqual(["p3", "p4"]));
+  });
+
+  it("marks the one the shop does not carry in red, and says what will happen", async () => {
+    await openAndPull();
+    await screen.findByText(/غير متوفرة — ستُنشأ مخفية/);
+    expect(screen.getByText("Hollow Knight: Silksong")).toBeTruthy();
+  });
+
+  it("creates it hidden, by name only, and links it to the bundle on save", async () => {
+    await openAndPull();
+    await screen.findByText(/غير متوفرة/);
+    fireEvent.click(screen.getByText("حفظ التعديلات"));
+
+    await waitFor(() => expect(createPlaceholder).toHaveBeenCalledWith("Hollow Knight: Silksong"));
+    await waitFor(() => expect(onSaveBundles).toHaveBeenCalled());
+
+    const saved = onSaveBundles.mock.calls.at(-1)?.[0]?.[0];
+    expect(saved.gameIds.map(String)).toContain("prd_hollow_knight_silksong");
+    // And the name travels with it, so the bundle page has something to print.
+    expect(saved.pendingGames).toContainEqual({
+      id: "prd_hollow_knight_silksong",
+      name: "Hollow Knight: Silksong",
+    });
+  });
+
+  it("creates nothing when every game in the description is already in the shop", async () => {
+    renderDescribed();
+    fireEvent.click(screen.getByTitle("تعديل البندل"));
+    await screen.findByText(/البحث في 5 منتجًا/);
+    type("ماريو كارت");
+    fireEvent.click(await screen.findByText("Mario Kart 8 Deluxe"));
+    fireEvent.click(screen.getByText("حفظ التعديلات"));
+    await waitFor(() => expect(onSaveBundles).toHaveBeenCalled());
+    expect(createPlaceholder).not.toHaveBeenCalled();
+  });
+});
+
+describe("the bundle's own settings", () => {
+  it("can be given a stock that never runs out", async () => {
+    await openEditor();
+    fireEvent.click(screen.getByLabelText(/مخزون لا نهائي/));
+    fireEvent.click(screen.getByText("حفظ التعديلات"));
+    await waitFor(() => expect(onSaveBundles).toHaveBeenCalled());
+    expect(onSaveBundles.mock.calls.at(-1)?.[0]?.[0].isInfiniteStock).toBe(true);
+  });
+
+  it("offers an online account, not only an offline one", async () => {
+    await openEditor();
+    const options = Array.from(
+      screen.getByDisplayValue(/حساب/).querySelectorAll("option"),
+    ).map((o) => (o as HTMLOptionElement).value);
+    expect(options).toContain("offline");
+    expect(options).toContain("online");
   });
 });
