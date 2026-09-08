@@ -403,6 +403,30 @@ if (out.source === null && out.challenged) {
   }
 }
 
+/*
+  One line, last, saying what was actually established.
+
+  The table above scrolls out of a truncated log tail, and three runs in a row
+  were read without ever seeing whether the direct database read worked. This
+  is the line to look at.
+*/
+say();
+say(
+  "SUMMARY " +
+    JSON.stringify({
+      d1Price: out.d1Price ?? null,
+      d1BasePrice: out.d1BasePrice ?? null,
+      d1ActiveOffers: out.d1ActiveOffers ?? null,
+      d1Error: out.d1Error ?? null,
+      source: out.source,
+      pageStatus: out.status ?? null,
+      apiStatus: out.apiStatus ?? null,
+      apiChallenged,
+      screenShowsZeroPrice: out.screenShowsZeroPrice ?? null,
+      ok: out.ok,
+    }),
+);
+
 if (args.json && args.json !== "true") writeFileSync(args.json, JSON.stringify(out, null, 2));
 if (process.env.GITHUB_STEP_SUMMARY) {
   writeFileSync(process.env.GITHUB_STEP_SUMMARY, lines.join("\n"), { flag: "a" });
