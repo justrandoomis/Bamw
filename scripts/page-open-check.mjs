@@ -52,7 +52,20 @@ const SETTLE = Number(args.settle ?? 4000);
  * checker is being challenged" from "every visitor is being challenged" —
  * a distinction worth having before anyone changes a firewall setting.
  */
-const UA = args.ua ? decodeURIComponent(args.ua) : "";
+const PHONE_UA =
+  "Mozilla/5.0 (iPhone; CPU iPhone OS 17_5 like Mac OS X) AppleWebKit/605.1.15 " +
+  "(KHTML, like Gecko) Version/17.5 Mobile/15E148 Safari/604.1";
+
+/*
+  A phone's user agent by default, not an empty one.
+
+  The comment above has always said a default headless Chromium gets the
+  "Performing security verification" interstitial — and the default was to send
+  exactly that, so every run from a runner reported five of five pages broken
+  when the shop was fine. `--ua ""` still opts back into the bare agent, which
+  is the way to ask "is everyone being challenged, or only a robot?"
+*/
+const UA = args.ua === undefined ? PHONE_UA : decodeURIComponent(args.ua);
 
 /**
  * How much visible text counts as "the page rendered something of its own".
@@ -115,8 +128,28 @@ for (const path of PATHS) {
     entry.sample = text.slice(0, 180);
 
     const reasons = [];
+    /*
+      A challenge is not a verdict on the page. Cloudflare refusing this IP
+      says nothing about whether the page works, so it is named as what it is
+      and counted apart from real failures.
+    */
+    if (entry.status === 403 && /security verification|Just a moment/i.test(text)) {
+      entry.challenged = true;
+      entry.reasons = ["challenged by bot protection — inconclusive"];
+      entry.errors = [...new Set(errors)].slice(0, 6);
+      results.push(entry);
+      console.log(`skip  ${path.padEnd(18)} challenged by bot protection`);
+      await page.close();
+      continue;
+    }
     if (entry.status >= 400) reasons.push(`http ${entry.status}`);
-    if (entry.finalPath !== path) reasons.push(`redirected to ${entry.finalPath}`);
+    /*
+      Compare a path with a path. `pathname` never carries a query string, so
+      testing it against `/search?q=zelda` reported a redirect that had not
+      happened — and marked a page that had rendered ten results as broken.
+    */
+    const wantedPath = new URL(BASE + path).pathname;
+    if (entry.finalPath !== wantedPath) reasons.push(`redirected to ${entry.finalPath}`);
     if (text.length < CHROME_TEXT) reasons.push(`blank (${text.length} chars of text)`);
     if (CRASH_MARKERS.test(text)) reasons.push("crash screen");
     // An uncaught exception is what blanks a hydrated page, so it fails here
@@ -150,8 +183,23 @@ await browser.close();
 
 if (args.json) writeFileSync(args.json, JSON.stringify({ base: BASE, results }, null, 2));
 
-const failed = results.filter((entry) => !entry.ok);
+const challenged = results.filter((entry) => entry.challenged);
+const failed = results.filter((entry) => !entry.ok && !entry.challenged);
+const opened = results.filter((entry) => entry.ok);
+
 console.log(
-  failed.length ? `\n${failed.length} of ${results.length} pages did not open.` : "\nEvery page opened.",
+  failed.length
+    ? `\n${failed.length} of ${results.length} pages did not open.`
+    : challenged.length === results.length
+      ? `\nInconclusive: all ${results.length} pages were challenged by bot protection. ` +
+        "Nothing here says anything about the site."
+      : `\n${opened.length} of ${results.length} pages opened` +
+        (challenged.length ? `, ${challenged.length} challenged and inconclusive.` : "."),
 );
-process.exit(failed.length ? 1 : 0);
+
+/*
+  Green only on evidence. A run that was challenged end to end proves nothing,
+  so it does not pass — but it fails as "could not tell", which the line above
+  distinguishes from "the site is broken".
+*/
+process.exit(opened.length > 0 && failed.length === 0 ? 0 : 1);

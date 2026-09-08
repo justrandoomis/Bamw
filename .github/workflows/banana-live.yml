@@ -1,0 +1,69 @@
+# Is the Banana Market priced, on the live site?
+#
+# The reported symptom was «موزة واحدة $0.00» to every customer. Two causes
+# were found — an admin route with no handlers, and a stored zero that survived
+# `??` — and only production can say whether the price is real now.
+#
+# Read-only: prices and counts, never a balance or a member. Dispatch-only, for
+# the same reason as `search-live`: it asks whether a released change is live,
+# so running it on the branch that carries the change would fail by definition.
+name: Banana live
+
+on:
+  workflow_dispatch:
+    inputs:
+      origin:
+        description: "Origin to test"
+        type: string
+        default: "https://banan.to"
+  # Dispatch only, unlike the other live checkers.
+  #
+  # They run themselves on a branch push so a new check can be used before it
+  # is merged. This one asks whether a *released* change is live, so running it
+  # on the branch that carries the change would fail by definition — and paint
+  # the pull request red for doing its job. Merge, release, then dispatch it.
+
+permissions:
+  contents: read
+
+concurrency:
+  group: banana-live
+  cancel-in-progress: true
+
+jobs:
+  search:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      # The lockfile carries platform-specific optional dependencies that the
+      # runner's default npm 10 refuses on Linux (`EBADPLATFORM` on
+      # `@cloudflare/workerd-darwin-64`). Every other workflow here upgrades
+      # first for the same reason.
+      - run: npm install -g npm@11.19.1
+      - run: npm ci --no-audit --no-fund
+
+      # `playwright-core` carries no installer, so the browser comes from the
+      # `playwright` package's CLI, pinned to the same version.
+      - name: Install Chromium
+        run: npx --yes playwright@1.62.1 install --with-deps chromium
+
+      - name: Read the live market
+        env:
+          ORIGIN: ${{ inputs.origin }}
+        run: |
+          node scripts/banana-live-check.mjs \
+            --base "${ORIGIN:-https://banan.to}" \
+            --json banana-live.json
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: banana-live
+          path: banana-live.json
