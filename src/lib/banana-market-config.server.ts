@@ -146,6 +146,21 @@ function hash01(bucket: number, salt: number): number {
   return ((x >>> 0) % 100000) / 100000;
 }
 
+/**
+ * The precision the market prices at, and the smallest price it can express.
+ *
+ * `spotPriceAt` rounds to three decimals below, so any band under 0.0005
+ * renders as 0.000 to every customer however carefully it was configured.
+ * Exported so the admin save can refuse such a band using the same number the
+ * pricing uses, rather than a second opinion about what "too small" means.
+ */
+export const PRICE_STEP = 0.001;
+
+/** The lowest price that does not round to nothing. */
+export function roundsToZero(value: number): boolean {
+  return !(Math.round(value * 1000) / 1000 > 0);
+}
+
 /** Spot price for a given timestamp — same for everyone, clamped to admin bounds. */
 export function spotPriceAt(config: BananaMarketConfig, at: number = Date.now()): number {
   const bucket = Math.floor(at / BUCKET_MS);

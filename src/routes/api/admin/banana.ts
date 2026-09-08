@@ -13,6 +13,8 @@ import {
   getBananaBalance,
   saveMarketConfig,
 } from "@/lib/banana.server";
+/* The same numbers the pricing uses, so the refusal cannot disagree with it. */
+import { PRICE_STEP, roundsToZero } from "@/lib/banana-market-config.server";
 import {
   createBananCodesBatch,
   deleteBananCode,
@@ -157,6 +159,48 @@ export const Route = createFileRoute("/api/admin/banana")({
             }
             if (!(merged.basePrice > 0)) {
               return json({ error: "السعر الأساسي يجب أن يكون أكبر من صفر" }, { status: 400 });
+            }
+            /*
+              The comment above promised this check and the code never made it.
+              Production is in exactly the state it describes: a base of 0.0004
+              against a ceiling of 0.0003, so `spotPriceAt` clamps every price
+              to the ceiling and the base the admin set means nothing.
+            */
+            if (merged.basePrice < merged.minPrice || merged.basePrice > merged.maxPrice) {
+              return json(
+                {
+                  error:
+                    `السعر الأساسي (${merged.basePrice}) خارج حدوده: ` +
+                    `أدنى ${merged.minPrice} وأعلى ${merged.maxPrice}. ` +
+                    "المحرك يحصر السعر داخل الحدين، فالقيمة خارجهما لا أثر لها.",
+                },
+                { status: 400 },
+              );
+            }
+            /*
+              A band that rounds to nothing.
+
+              `spotPriceAt` rounds to three decimals, so a ceiling below 0.0005
+              prices at 0.000 for every customer no matter what the base says —
+              which is the «موزة واحدة $0.00» that was reported. Refused with
+              the smallest usable number rather than saved and left to puzzle
+              the admin, who sees a price they set and a market showing zero.
+            */
+            for (const [label, value] of [
+              ["السعر الأساسي", merged.basePrice],
+              ["أدنى سعر", merged.minPrice],
+              ["أعلى سعر", merged.maxPrice],
+            ] as const) {
+              if (roundsToZero(value)) {
+                return json(
+                  {
+                    error:
+                      `${label} (${value}) يُقرَّب إلى صفر عند دقة السوق. ` +
+                      `أصغر قيمة قابلة للعرض هي ${PRICE_STEP}.`,
+                  },
+                  { status: 400 },
+                );
+              }
             }
             if (merged.botMinQuantity > merged.botMaxQuantity) {
               return json({ error: "أقل كمية للبوت أكبر من أكبر كمية" }, { status: 400 });

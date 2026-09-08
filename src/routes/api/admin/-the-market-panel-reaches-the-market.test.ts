@@ -70,7 +70,11 @@ const post = async (payload: unknown) => {
   return { status: res.status, body: (await res.json()) as any };
 };
 
-const run = (sql: string, ...args: unknown[]) => db.prepare(sql).bind(...args).run();
+const run = (sql: string, ...args: unknown[]) =>
+  db
+    .prepare(sql)
+    .bind(...args)
+    .run();
 
 beforeEach(async () => {
   admin = { id: "usr_admin", isAdmin: true };
@@ -167,6 +171,64 @@ describe("the engine settings the owner types", () => {
   it("refuses a base price of zero — the value that emptied the market", async () => {
     const { status } = await post({ action: "save_market_config", config: { basePrice: 0 } });
     expect(status).toBe(400);
+  });
+
+  /*
+    Read off production, not invented.
+
+    banana-live read the live database through the Cloudflare API: a base of
+    0.0004 inside a band of 0.0001 to 0.0003, against defaults of 0.24 / 0.1 /
+    1. `spotPriceAt` clamps to the ceiling and rounds to three decimals, so
+    0.0003 becomes 0.000 — the «موزة واحدة $0.00» every customer was shown.
+    Two separate faults let that be saved, and both are checked here.
+  */
+  it("refuses a base price outside its own band — the comment promised this and the code did not", async () => {
+    const { status, body } = await post({
+      action: "save_market_config",
+      config: { basePrice: 0.0004, minPrice: 0.0001, maxPrice: 0.0003 },
+    });
+    expect(status).toBe(400);
+    expect(body.error).toContain("خارج حدوده");
+  });
+
+  it("refuses a band that rounds to nothing at the market's own precision", async () => {
+    const { status, body } = await post({
+      action: "save_market_config",
+      config: { basePrice: 0.0002, minPrice: 0.0001, maxPrice: 0.0003 },
+    });
+    expect(status).toBe(400);
+    expect(body.error).toContain("يُقرَّب إلى صفر");
+    // The message names the smallest usable value rather than only refusing.
+    expect(body.error).toContain("0.001");
+  });
+
+  it("accepts the smallest band that does price above zero", async () => {
+    const { status, body } = await post({
+      action: "save_market_config",
+      config: { basePrice: 0.001, minPrice: 0.001, maxPrice: 0.002 },
+    });
+    expect(status).toBe(200);
+    expect(body.marketConfig.basePrice).toBe(0.001);
+  });
+
+  it("still accepts a base sitting exactly on its floor or its ceiling", async () => {
+    /* The bound check is inclusive: a base equal to either end is inside. */
+    expect(
+      (
+        await post({
+          action: "save_market_config",
+          config: { basePrice: 0.05, minPrice: 0.05, maxPrice: 5 },
+        })
+      ).status,
+    ).toBe(200);
+    expect(
+      (
+        await post({
+          action: "save_market_config",
+          config: { basePrice: 5, minPrice: 0.05, maxPrice: 5 },
+        })
+      ).status,
+    ).toBe(200);
   });
 
   it("keeps the economy settings the panel did not send", async () => {
