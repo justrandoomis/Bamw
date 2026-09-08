@@ -385,10 +385,25 @@ function CartPage() {
         the selection this row carries, and the same object is handed back on
         the line.
       */
-      const meta: Record<string, unknown> | undefined = item.meta
-        ? typeof item.meta === "string"
-          ? JSON.parse(item.meta)
-          : item.meta
+      /*
+        `options`, which is the name the row actually has.
+
+        `cart_items` has no `meta` column — `getCart` parses the blob and hands
+        it back as `options` (cart.functions.ts:22) — so this read was always
+        undefined for a signed-in customer, and the selection never reached
+        `cartLinePrice` below. The cart therefore showed the record's headline
+        price while the till charged the option's, which is the same disagreement
+        `resolveUnitPrice` exists to prevent and was only ever half-fixed: the
+        till learned to read the selection, this screen did not.
+
+        `meta` is still read as a fallback, because a caller that does pass one
+        should not be quietly ignored.
+      */
+      const rawSelection = item.options ?? item.meta;
+      const meta: Record<string, unknown> | undefined = rawSelection
+        ? typeof rawSelection === "string"
+          ? JSON.parse(rawSelection)
+          : rawSelection
         : undefined;
 
       return {

@@ -181,3 +181,80 @@ describe("the saving on screen", () => {
     expect(getBundleSavings(b, products, 90000)).toEqual({ amount: 0, percentage: 0 });
   });
 });
+
+/**
+ * Two ways the screen could still have disagreed with the till.
+ *
+ * Both were found by an adversarial pass over the diff rather than by writing
+ * the feature, and both are the same shape as the bug `resolveUnitPrice` was
+ * written for: a number shown that is not the number charged.
+ */
+describe("what the cart reads the selection out of", () => {
+  it("prices a signed-in line from `options`, which is the column that exists", () => {
+    /*
+      `cart_items` has no `meta` column — getCart parses the blob and returns
+      it as `options`. The cart page read `item.meta`, so for every signed-in
+      customer the selection was undefined and the line priced at the record's
+      headline. Not a bundle problem: a product with a priced option was shown
+      the base price too, on the one screen a customer reads before paying.
+    */
+    const row: Record<string, unknown> = {
+      options: { optionId: "opt_online" },
+      meta: undefined,
+    };
+    const selection = row["options"] ?? row["meta"];
+    const meta = typeof selection === "string" ? JSON.parse(selection) : selection;
+
+    expect(cartLinePrice(bundle() as unknown as Record<string, unknown>, { price: 1, meta })).toBe(
+      40000,
+    );
+  });
+
+  it("still reads a `meta` a caller does pass", () => {
+    const row: Record<string, unknown> = { options: undefined, meta: { optionId: "opt_online" } };
+    const selection = row["options"] ?? row["meta"];
+    const meta = typeof selection === "string" ? JSON.parse(selection) : selection;
+    expect(cartLinePrice(bundle() as unknown as Record<string, unknown>, { price: 1, meta })).toBe(
+      40000,
+    );
+  });
+
+  it("parses the blob when it arrives as a string", () => {
+    const selection: unknown = JSON.stringify({ optionId: "opt_online" });
+    const meta = typeof selection === "string" ? JSON.parse(selection) : selection;
+    expect(cartLinePrice(bundle() as unknown as Record<string, unknown>, { price: 1, meta })).toBe(
+      40000,
+    );
+  });
+});
+
+describe("a bundle whose cheapest option is not free", () => {
+  /*
+    Nothing makes the cheapest option cost nothing — the admin can put a
+    surcharge on every one of them in two keystrokes. A card has no room for a
+    picker, so it stands for the cheapest; the number it prints therefore has
+    to be that option's price, not the bundle's base.
+  */
+  const surcharged = () =>
+    bundle({
+      price: 40000,
+      accountOptions: [
+        { id: "opt_offline", kind: "offline" as const, extraPrice: 2000 },
+        { id: "opt_online", kind: "online" as const, extraPrice: 8000 },
+      ],
+    });
+
+  it("prices the cheapest option above the base", () => {
+    expect(resolveBundleUnitPrice(surcharged(), { optionId: "opt_offline" }).unitPrice).toBe(42000);
+  });
+
+  it("measures the saving against that price, not the base", () => {
+    const products = [
+      { id: "g1", price: 30000 },
+      { id: "g2", price: 30000 },
+    ] as unknown as Product[];
+    const b = { ...surcharged(), gameIds: ["g1", "g2"], originalPrice: 60000 } as AccountBundle;
+    /* 60000 - 42000, not 60000 - 40000. */
+    expect(getBundleSavings(b, products, 42000).amount).toBe(18000);
+  });
+});
