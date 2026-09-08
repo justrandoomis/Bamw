@@ -125,6 +125,12 @@ const DRAFT = {
   quantity: 1,
   conditionNotes: "خدش بسيط على الظهر ولا توجد مشاكل في الشاشة",
   photos: [`/api/files/uploads/${SELLER}/one.webp`],
+  /*
+    A listing must carry one way to reach the seller. The whole section is a
+    buyer contacting a seller directly, so one without a contact is one nobody
+    can answer — and the fee would have been taken for it.
+  */
+  contact: { telegram: "@ali_gamer" },
 } as const;
 
 const balanceOf = (raw: DatabaseSync) =>

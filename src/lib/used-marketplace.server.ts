@@ -18,6 +18,7 @@
 import { d1All, d1BatchRun, d1First, d1Run, d1RunChanges, getD1 } from "./d1.server";
 import { createAuditLog, createNotification, getStore, randomId, updateStore } from "./db.server";
 import { isOwnUploadUrl } from "./uploads";
+import { normalizeContact } from "./contact-links";
 import {
   ACTIVE_STATUSES,
   DEFAULT_USED_CONFIG,
@@ -56,6 +57,8 @@ const SCHEMA_STATEMENTS = [
     is_returned INTEGER NOT NULL DEFAULT 0,
     description TEXT,
     condition_notes TEXT,
+    usage_period_months REAL,
+    warranty_months REAL,
     defects_json TEXT NOT NULL DEFAULT '[]',
     price_iqd REAL NOT NULL DEFAULT 0,
     quantity INTEGER NOT NULL DEFAULT 1,
@@ -98,6 +101,20 @@ const SCHEMA_STATEMENTS = [
   `CREATE INDEX IF NOT EXISTS used_listing_events_listing_idx ON used_listing_events (listing_id, created_at)`,
 ] as const;
 
+/**
+ * Columns added to a table that already exists.
+ *
+ * `CREATE TABLE IF NOT EXISTS` above does nothing to a database already
+ * carrying listings, so these are how a live `used_listings` gets the two
+ * numbers a second-hand buyer asks for first. SQLite has no
+ * `ADD COLUMN IF NOT EXISTS`, so a second application fails and is swallowed —
+ * the same shape `SCHEMA_PATCHES` uses in d1.server.ts.
+ */
+const SCHEMA_PATCH_STATEMENTS = [
+  `ALTER TABLE used_listings ADD COLUMN usage_period_months REAL`,
+  `ALTER TABLE used_listings ADD COLUMN warranty_months REAL`,
+] as const;
+
 let schemaPromise: Promise<void> | undefined;
 
 function requireD1() {
@@ -109,6 +126,10 @@ export async function ensureUsedMarketplaceSchema(): Promise<void> {
   if (!schemaPromise) {
     schemaPromise = (async () => {
       for (const sql of SCHEMA_STATEMENTS) await d1Run(sql);
+      for (const sql of SCHEMA_PATCH_STATEMENTS) {
+        // Expected to fail once applied — see SCHEMA_PATCH_STATEMENTS.
+        await d1Run(sql).catch(() => undefined);
+      }
     })().catch((error) => {
       // A failed bootstrap must not be cached as done, or every later request
       // in this isolate would query tables that were never created.
@@ -155,6 +176,8 @@ export interface UsedListing {
   isReturned: boolean;
   description: string | null;
   conditionNotes: string | null;
+  usagePeriodMonths: number | null;
+  warrantyMonths: number | null;
   defects: string[];
   priceIqd: number;
   quantity: number;
@@ -205,6 +228,13 @@ function mapListing(row: Record<string, any>): UsedListing {
     isReturned: Number(row.is_returned ?? 0) === 1,
     description: row.description ? String(row.description) : null,
     conditionNotes: row.condition_notes ? String(row.condition_notes) : null,
+    /*
+      Read as null when absent rather than zero: "used for 0 months" and "the
+      seller did not say" are different answers, and a listing written before
+      these columns existed has no answer at all.
+    */
+    usagePeriodMonths: row.usage_period_months == null ? null : Number(row.usage_period_months),
+    warrantyMonths: row.warranty_months == null ? null : Number(row.warranty_months),
     defects: parseJson<string[]>(row.defects_json, []),
     priceIqd: Number(row.price_iqd ?? 0),
     quantity: Number(row.quantity ?? 1),
@@ -322,6 +352,8 @@ export interface DraftFields {
   quantity?: number;
   photos?: string[];
   contact?: Record<string, string>;
+  usagePeriodMonths?: number | null;
+  warrantyMonths?: number | null;
 }
 
 /**
@@ -350,6 +382,19 @@ function clean(value: unknown): string | null {
   return text ? text : null;
 }
 
+/**
+ * A month count, or null for "the seller did not say".
+ *
+ *零 is a real answer — a console with no warranty left — so an empty box has
+ * to be distinguishable from a typed zero, which is why this returns null
+ * rather than 0 for nothing.
+ */
+function months(value: unknown): number | null {
+  if (value === null || value === undefined || String(value).trim() === "") return null;
+  const n = Number(value);
+  return Number.isFinite(n) && n >= 0 ? n : null;
+}
+
 export async function createDraft(sellerUserId: string, fields: DraftFields): Promise<UsedListing> {
   await ensureUsedMarketplaceSchema();
   const config = await getUsedConfig();
@@ -362,9 +407,10 @@ export async function createDraft(sellerUserId: string, fields: DraftFields): Pr
   await d1Run(
     `INSERT INTO used_listings (
        id, seller_user_id, canonical_product_id, title, title_en, used_type, platform,
-       condition_grade, packaging, guarantee, description, condition_notes, defects_json,
+       condition_grade, packaging, guarantee, description, condition_notes,
+       usage_period_months, warranty_months, defects_json,
        price_iqd, quantity, media_json, contact_json, status, created_at, updated_at
-     ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'DRAFT', ?, ?)`,
+     ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'DRAFT', ?, ?)`,
     id,
     sellerUserId,
     clean(fields.canonicalProductId),
@@ -377,11 +423,23 @@ export async function createDraft(sellerUserId: string, fields: DraftFields): Pr
     clean(fields.guarantee),
     clean(fields.description),
     clean(fields.conditionNotes),
+    months(fields.usagePeriodMonths),
+    months(fields.warrantyMonths),
     JSON.stringify((fields.defects ?? []).map((d) => String(d)).filter(Boolean)),
     Number(fields.priceIqd ?? 0),
     Number(fields.quantity ?? 1),
     JSON.stringify(ownPhotos(fields.photos, sellerUserId, config.maxPhotos)),
-    JSON.stringify(fields.contact ?? {}),
+    /*
+      Normalised, not stored as typed.
+
+      Photos two lines up go through `ownPhotos` before they are trusted; the
+      contact map went in raw — any key, any value up to 200 characters, no
+      shape check anywhere in the stack. It ends up in an `href` on a public
+      page, so it is cleaned at the point it is written: `normalizeContact`
+      keeps only the channels it recognises, and only handles it could build a
+      link from.
+    */
+    JSON.stringify(normalizeContact(fields.contact as Record<string, unknown> | undefined)),
     now,
     now,
   );
@@ -415,6 +473,7 @@ export async function updateDraft(
     `UPDATE used_listings SET
        canonical_product_id = ?, title = ?, title_en = ?, used_type = ?, platform = ?,
        condition_grade = ?, packaging = ?, guarantee = ?, description = ?, condition_notes = ?,
+       usage_period_months = ?, warranty_months = ?,
        defects_json = ?, price_iqd = ?, quantity = ?, media_json = ?, contact_json = ?,
        updated_at = ?
      WHERE id = ? AND seller_user_id = ?`,
@@ -430,6 +489,10 @@ export async function updateDraft(
     fields.guarantee === undefined ? listing.guarantee : clean(fields.guarantee),
     fields.description === undefined ? listing.description : clean(fields.description),
     fields.conditionNotes === undefined ? listing.conditionNotes : clean(fields.conditionNotes),
+    fields.usagePeriodMonths === undefined
+      ? listing.usagePeriodMonths
+      : months(fields.usagePeriodMonths),
+    fields.warrantyMonths === undefined ? listing.warrantyMonths : months(fields.warrantyMonths),
     JSON.stringify(
       fields.defects === undefined
         ? listing.defects
@@ -438,7 +501,12 @@ export async function updateDraft(
     fields.priceIqd === undefined ? listing.priceIqd : Number(fields.priceIqd),
     fields.quantity === undefined ? listing.quantity : Number(fields.quantity),
     JSON.stringify(photos),
-    JSON.stringify(fields.contact === undefined ? listing.contact : fields.contact),
+    /* Normalised on edit too — see the note on the insert. */
+    JSON.stringify(
+      fields.contact === undefined
+        ? listing.contact
+        : normalizeContact(fields.contact as Record<string, unknown>),
+    ),
     now,
     listingId,
     sellerUserId,
@@ -649,6 +717,14 @@ export async function transitionListing(
         quantity: listing.quantity,
         conditionNotes: listing.conditionNotes,
         photos: listing.photos,
+        /*
+          Validated from the stored row, not from the request that triggered
+          the submit — the seller's last save is what is being published, and
+          this gate exists precisely so the request cannot claim otherwise.
+        */
+        usagePeriodMonths: listing.usagePeriodMonths,
+        warrantyMonths: listing.warrantyMonths,
+        contact: listing.contact,
       },
       config,
     );

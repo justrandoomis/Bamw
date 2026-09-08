@@ -17,6 +17,7 @@ import {
   PACKAGING_VALUES,
   USED_TYPE_VALUES,
 } from "./productImport/usedSchema";
+import { normalizeContact } from "./contact-links";
 
 export { CONDITION_GRADE_VALUES, GUARANTEE_VALUES, PACKAGING_VALUES, USED_TYPE_VALUES };
 
@@ -138,7 +139,12 @@ export interface UsedMarketplaceConfig {
 export const DEFAULT_USED_CONFIG: UsedMarketplaceConfig = {
   enabled: true,
   listingFeeIqd: 1000,
-  listingDurationDays: 7,
+  /*
+    A month, which is what the owner asked a listing to live for. It was seven
+    days: the fee buys a window, and a window that closes in a week made a
+    seller pay four times to sell one console.
+  */
+  listingDurationDays: 30,
   maxActiveListingsPerSeller: 10,
   maxPhotos: 8,
   minPriceIqd: 1000,
@@ -243,6 +249,12 @@ export interface ListingDraftInput {
   quantity?: unknown;
   conditionNotes?: unknown;
   photos?: unknown;
+  /** How long the seller owned and used it, in months. */
+  usagePeriodMonths?: unknown;
+  /** Months of manufacturer warranty still to run, if any. */
+  warrantyMonths?: unknown;
+  /** How to reach the seller — see contact-links.ts for the shapes accepted. */
+  contact?: unknown;
 }
 
 export interface ValidationIssue {
@@ -309,6 +321,43 @@ export function validateForSubmission(
     issues.push({
       field: "conditionNotes",
       message: "صف حالة القطعة بصدق (الخدوش وعلامات الاستخدام)",
+    });
+  }
+
+  /*
+    Two numbers a second-hand buyer asks before anything else, and neither had
+    a home: how long it was used, and what warranty is left. Optional, because
+    an honest "I do not know" is better than a made-up number — but bounded, so
+    a slip of the keyboard cannot advertise a console used for four hundred
+    years.
+  */
+  if (input.usagePeriodMonths != null && String(input.usagePeriodMonths) !== "") {
+    const months = Number(input.usagePeriodMonths);
+    if (!Number.isFinite(months) || months < 0 || months > 600) {
+      issues.push({ field: "usagePeriodMonths", message: "مدة الاستخدام بالأشهر بين 0 و 600" });
+    }
+  }
+  if (input.warrantyMonths != null && String(input.warrantyMonths) !== "") {
+    const months = Number(input.warrantyMonths);
+    if (!Number.isFinite(months) || months < 0 || months > 120) {
+      issues.push({ field: "warrantyMonths", message: "الضمان المتبقي بالأشهر بين 0 و 120" });
+    }
+  }
+
+  /*
+    At least one way to reach the seller.
+
+    The whole point of the section is that a buyer contacts the seller
+    directly, so a listing with no contact is a listing nobody can answer — and
+    the fee would have been taken for it. `normalizeContact` keeps only handles
+    it could build a link from, so a box filled with something unusable counts
+    as empty here rather than passing the check and drawing no button later.
+  */
+  const contact = normalizeContact(input.contact as Record<string, unknown> | undefined);
+  if (Object.keys(contact).length === 0) {
+    issues.push({
+      field: "contact",
+      message: "أضف وسيلة تواصل واحدة على الأقل (تلغرام، واتساب، رقم، فيسبوك أو إنستغرام)",
     });
   }
 

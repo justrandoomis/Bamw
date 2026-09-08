@@ -26,6 +26,8 @@ const complete = {
   quantity: 1,
   conditionNotes: "خدش بسيط على الظهر ولا توجد مشاكل في الشاشة",
   photos: ["/api/files/uploads/usr_a/one.webp"],
+  /* One way to reach the seller is now part of being complete. */
+  contact: { telegram: "@ali_gamer" },
 };
 
 describe("the state machine", () => {
@@ -76,9 +78,14 @@ describe("the listing fee", () => {
 });
 
 describe("the config", () => {
-  it("defaults to 1,000 IQD for 7 days", () => {
+  it("defaults to 1,000 IQD for a month", () => {
+    /*
+      Seven days until the owner set the window to a month. The fee buys a
+      publication window, so the two numbers belong together: at a week, a
+      seller paid four times to sell one console.
+    */
     expect(DEFAULT_USED_CONFIG.listingFeeIqd).toBe(1000);
-    expect(DEFAULT_USED_CONFIG.listingDurationDays).toBe(7);
+    expect(DEFAULT_USED_CONFIG.listingDurationDays).toBe(30);
   });
 
   it("takes admin overrides", () => {
@@ -150,5 +157,79 @@ describe("expiry", () => {
 
   it("refuses a publication timestamp it cannot read", () => {
     expect(() => expiryFrom("not a date", 7)).toThrow("invalid_published_at");
+  });
+});
+
+/**
+ * What a second-hand buyer asks before anything else.
+ *
+ * The section is a buyer reaching a seller directly, so a listing nobody can
+ * answer is not a listing — and the fee would have been taken for it. The two
+ * numbers are optional, because an honest "I do not know" beats a made-up
+ * figure, but bounded so a slip cannot advertise a console used for four
+ * hundred years.
+ */
+describe("reaching the seller, and the two numbers", () => {
+  it("refuses a listing with no way to contact the seller", () => {
+    const issues = validateForSubmission({ ...complete, contact: {} }, DEFAULT_USED_CONFIG);
+    expect(issues.map((i) => i.field)).toContain("contact");
+  });
+
+  it("refuses one whose only contact is unusable", () => {
+    /* Not a handle, not a number: it would have drawn no button. */
+    const issues = validateForSubmission(
+      { ...complete, contact: { whatsapp: "call me" } },
+      DEFAULT_USED_CONFIG,
+    );
+    expect(issues.map((i) => i.field)).toContain("contact");
+  });
+
+  it("accepts any one of the channels", () => {
+    for (const contact of [
+      { telegram: "ali_gamer" },
+      { whatsapp: "07701234567" },
+      { phone: "07701234567" },
+      { instagram: "ali.gamer" },
+      { facebook: "ali.gamer.99" },
+    ]) {
+      expect(validateForSubmission({ ...complete, contact }, DEFAULT_USED_CONFIG)).toEqual([]);
+    }
+  });
+
+  it("leaves the two numbers optional", () => {
+    expect(
+      validateForSubmission(
+        { ...complete, usagePeriodMonths: undefined, warrantyMonths: "" },
+        DEFAULT_USED_CONFIG,
+      ),
+    ).toEqual([]);
+  });
+
+  it("takes a real usage period and a real warranty", () => {
+    expect(
+      validateForSubmission(
+        { ...complete, usagePeriodMonths: 7, warrantyMonths: 5 },
+        DEFAULT_USED_CONFIG,
+      ),
+    ).toEqual([]);
+  });
+
+  it("keeps zero, which is a real answer — no warranty left", () => {
+    expect(validateForSubmission({ ...complete, warrantyMonths: 0 }, DEFAULT_USED_CONFIG)).toEqual(
+      [],
+    );
+  });
+
+  it("refuses a usage period nobody could have", () => {
+    const issues = validateForSubmission(
+      { ...complete, usagePeriodMonths: 5000 },
+      DEFAULT_USED_CONFIG,
+    );
+    expect(issues.map((i) => i.field)).toContain("usagePeriodMonths");
+  });
+
+  it("refuses a negative warranty", () => {
+    const issues = validateForSubmission({ ...complete, warrantyMonths: -3 }, DEFAULT_USED_CONFIG);
+    expect(issues.map((i) => i.field)).toContain("warrantyMonths");
   });
 });
