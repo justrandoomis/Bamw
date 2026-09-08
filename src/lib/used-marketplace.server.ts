@@ -113,6 +113,41 @@ const SCHEMA_STATEMENTS = [
 const SCHEMA_PATCH_STATEMENTS = [
   `ALTER TABLE used_listings ADD COLUMN usage_period_months REAL`,
   `ALTER TABLE used_listings ADD COLUMN warranty_months REAL`,
+  /*
+    The contact trail, and the question it eventually asks.
+
+    A buyer pressing a contact button is the only signal this section gets that
+    a sale might be happening — nothing goes through the till, so the shop
+    never learns the outcome unless it asks. `first_contact_at` starts the
+    three-day clock; `sold_prompt_at` records that the seller was asked, so
+    they are asked once rather than every time the cron runs.
+  */
+  `ALTER TABLE used_listings ADD COLUMN first_contact_at TEXT`,
+  `ALTER TABLE used_listings ADD COLUMN contact_clicks INTEGER NOT NULL DEFAULT 0`,
+  `ALTER TABLE used_listings ADD COLUMN sold_prompt_at TEXT`,
+  `ALTER TABLE used_listings ADD COLUMN sold_prompt_answer TEXT`,
+] as const;
+
+/** Reports left by people looking at a listing, for an admin to act on. */
+const REPORT_SCHEMA_STATEMENTS = [
+  `CREATE TABLE IF NOT EXISTS used_listing_reports (
+    id TEXT PRIMARY KEY,
+    listing_id TEXT NOT NULL,
+    reporter_user_id TEXT NOT NULL,
+    reason TEXT NOT NULL,
+    note TEXT,
+    handled_at TEXT,
+    handled_by_user_id TEXT,
+    created_at TEXT NOT NULL
+  )`,
+  `CREATE INDEX IF NOT EXISTS used_listing_reports_listing_idx ON used_listing_reports (listing_id, created_at DESC)`,
+  `CREATE INDEX IF NOT EXISTS used_listing_reports_open_idx ON used_listing_reports (handled_at, created_at DESC)`,
+  /*
+    One report per person per listing. A viewer who feels strongly is not a
+    queue of complaints, and without this an admin's list would be as long as
+    somebody was willing to click.
+  */
+  `CREATE UNIQUE INDEX IF NOT EXISTS used_listing_reports_once_idx ON used_listing_reports (listing_id, reporter_user_id)`,
 ] as const;
 
 let schemaPromise: Promise<void> | undefined;
@@ -126,6 +161,7 @@ export async function ensureUsedMarketplaceSchema(): Promise<void> {
   if (!schemaPromise) {
     schemaPromise = (async () => {
       for (const sql of SCHEMA_STATEMENTS) await d1Run(sql);
+      for (const sql of REPORT_SCHEMA_STATEMENTS) await d1Run(sql);
       for (const sql of SCHEMA_PATCH_STATEMENTS) {
         // Expected to fail once applied — see SCHEMA_PATCH_STATEMENTS.
         await d1Run(sql).catch(() => undefined);
@@ -178,6 +214,10 @@ export interface UsedListing {
   conditionNotes: string | null;
   usagePeriodMonths: number | null;
   warrantyMonths: number | null;
+  firstContactAt: string | null;
+  contactClicks: number;
+  soldPromptAt: string | null;
+  soldPromptAnswer: string | null;
   defects: string[];
   priceIqd: number;
   quantity: number;
@@ -235,6 +275,10 @@ function mapListing(row: Record<string, any>): UsedListing {
     */
     usagePeriodMonths: row.usage_period_months == null ? null : Number(row.usage_period_months),
     warrantyMonths: row.warranty_months == null ? null : Number(row.warranty_months),
+    firstContactAt: row.first_contact_at ? String(row.first_contact_at) : null,
+    contactClicks: Number(row.contact_clicks ?? 0),
+    soldPromptAt: row.sold_prompt_at ? String(row.sold_prompt_at) : null,
+    soldPromptAnswer: row.sold_prompt_answer ? String(row.sold_prompt_answer) : null,
     defects: parseJson<string[]>(row.defects_json, []),
     priceIqd: Number(row.price_iqd ?? 0),
     quantity: Number(row.quantity ?? 1),
@@ -951,6 +995,257 @@ export async function expireDueListings(limit = 100): Promise<{ expired: string[
     }
   }
   return { expired };
+}
+
+/* ------------------------- contact, sale, reports ------------------------- */
+
+/** How long after the first contact the seller is asked whether it sold. */
+export const SOLD_PROMPT_AFTER_DAYS = 3;
+
+/** The answers the seller may give. */
+export const SOLD_ANSWERS = ["sold", "still_available"] as const;
+export type SoldAnswer = (typeof SOLD_ANSWERS)[number];
+
+/**
+ * A buyer pressed one of the seller's contact buttons.
+ *
+ * Nothing about a private sale goes through the till, so this press is the
+ * only sign the shop ever gets that one might be happening — and it is what
+ * starts the three-day clock before the seller is asked how it went.
+ *
+ * The count is a tally, not an audience measure: it is deliberately not tied
+ * to who pressed it, because the point is the seller's prompt, and keeping a
+ * record of which member looked at whose listing would be collecting something
+ * nobody needs. `first_contact_at` is written once — the clock runs from the
+ * first interest, not the most recent — so a listing being pressed daily still
+ * asks its question on day three.
+ */
+export async function recordContactClick(listingId: string): Promise<void> {
+  await ensureUsedMarketplaceSchema();
+  const now = new Date().toISOString();
+  await d1Run(
+    `UPDATE used_listings
+        SET contact_clicks = contact_clicks + 1,
+            first_contact_at = COALESCE(first_contact_at, ?)
+      WHERE id = ? AND status = 'APPROVED'`,
+    now,
+    listingId,
+  );
+}
+
+/**
+ * Asks every seller whose listing was contacted three days ago how it went.
+ *
+ * Runs on the cron beside `expireDueListings`. Two guards keep it to one
+ * question per listing: `sold_prompt_at IS NULL` means it has not been asked,
+ * and the same column is stamped inside the same statement that claims the
+ * row, so a second cron tick a minute later finds nothing to do.
+ *
+ * Not asking is the default. A seller who never answers keeps their listing
+ * until the window closes on its own, which is what the owner asked for — the
+ * question is a courtesy, not a condition of staying up.
+ */
+export async function promptSellersAboutSales(limit = 100): Promise<{ asked: string[] }> {
+  await ensureUsedMarketplaceSchema();
+  const now = Date.now();
+  const due = new Date(now - SOLD_PROMPT_AFTER_DAYS * 24 * 3600 * 1000).toISOString();
+  const rows = await d1All<{ id: string; seller_user_id: string; title: string }>(
+    `SELECT id, seller_user_id, title FROM used_listings
+      WHERE status = 'APPROVED'
+        AND first_contact_at IS NOT NULL
+        AND first_contact_at <= ?
+        AND sold_prompt_at IS NULL
+      ORDER BY first_contact_at ASC LIMIT ?`,
+    due,
+    Math.min(Math.max(limit, 1), 500),
+  );
+
+  const asked: string[] = [];
+  const stamp = new Date(now).toISOString();
+  for (const row of rows) {
+    try {
+      /*
+        Stamped before the notification, and conditional on still being unset.
+        Cloudflare Cron is at-least-once, so two overlapping runs can select
+        the same row; the one whose UPDATE changes nothing sends nothing.
+      */
+      const claimed = await d1RunChanges(
+        `UPDATE used_listings SET sold_prompt_at = ? WHERE id = ? AND sold_prompt_at IS NULL`,
+        stamp,
+        String(row.id),
+      );
+      if (!claimed) continue;
+
+      await createNotification(
+        String(row.seller_user_id),
+        "هل بعت القطعة؟",
+        `تواصل معك مشترٍ بخصوص «${String(row.title ?? "")}». إذا بِعتها أخبِرنا لنخفي العرض، وإن كانت ما زالت متاحة اتركه كما هو.`,
+        "/used",
+        "used_marketplace",
+      );
+      asked.push(String(row.id));
+    } catch (error) {
+      console.error("[used-marketplace] asking a seller about a sale failed", row.id, error);
+    }
+  }
+  return { asked };
+}
+
+/**
+ * The seller's answer to that question.
+ *
+ * "Sold" pauses the listing rather than marking it SOLD. SOLD in this table
+ * means the shop sold it — it carries `sold_order_id` and only an admin or the
+ * system may set it — and a private sale arranged over Telegram is not that.
+ * Pausing is a move the seller already owns, it takes the item off the shop
+ * immediately, which is what the owner asked for, and it leaves the admin free
+ * to record the outcome properly.
+ */
+export async function answerSoldPrompt(
+  sellerUserId: string,
+  listingId: string,
+  answer: SoldAnswer,
+): Promise<UsedListing> {
+  await ensureUsedMarketplaceSchema();
+  if (!(SOLD_ANSWERS as readonly string[]).includes(answer)) {
+    throw new UsedMarketError("UNKNOWN_ANSWER");
+  }
+  const listing = await getListing(listingId);
+  if (!listing) throw new UsedMarketError("LISTING_NOT_FOUND");
+  if (listing.sellerUserId !== sellerUserId) throw new UsedMarketError("NOT_YOUR_LISTING");
+
+  await d1Run(
+    `UPDATE used_listings SET sold_prompt_answer = ?, updated_at = ? WHERE id = ? AND seller_user_id = ?`,
+    answer,
+    new Date().toISOString(),
+    listingId,
+    sellerUserId,
+  );
+
+  if (answer === "sold" && listing.status === "APPROVED") {
+    return transitionListing(listingId, "PAUSED", {
+      actor: "seller",
+      actorUserId: sellerUserId,
+      note: "أبلغ البائع أنه باع القطعة",
+    });
+  }
+
+  const updated = await getListing(listingId);
+  if (!updated) throw new UsedMarketError("LISTING_NOT_FOUND");
+  return updated;
+}
+
+/** Why somebody is reporting a listing. */
+export const REPORT_REASONS = ["already_sold", "no_reply", "wrong_details", "other"] as const;
+export type ReportReason = (typeof REPORT_REASONS)[number];
+
+export const REPORT_REASON_LABEL_AR: Record<ReportReason, string> = {
+  already_sold: "القطعة مباعة",
+  no_reply: "البائع لا يرد",
+  wrong_details: "المعلومات غير صحيحة",
+  other: "سبب آخر",
+};
+
+/**
+ * Somebody looking at a listing says something is wrong with it.
+ *
+ * Reports do not change the listing. A seller who stops answering and a seller
+ * whose listing a rival wants taken down look identical from here, so the
+ * decision stays with a person: this records the complaint and tells the
+ * admins, and hiding the listing is a hand they play.
+ *
+ * One report per person per listing, enforced by a unique index rather than a
+ * read-then-write, so two taps cannot become two rows.
+ */
+export async function reportListing(
+  reporterUserId: string,
+  listingId: string,
+  reason: ReportReason,
+  note?: string,
+): Promise<{ recorded: boolean }> {
+  await ensureUsedMarketplaceSchema();
+  if (!(REPORT_REASONS as readonly string[]).includes(reason)) {
+    throw new UsedMarketError("UNKNOWN_REPORT_REASON");
+  }
+  const listing = await getListing(listingId);
+  if (!listing) throw new UsedMarketError("LISTING_NOT_FOUND");
+  /* Reporting your own listing is not a report; it is a request to pause it. */
+  if (listing.sellerUserId === reporterUserId) throw new UsedMarketError("YOUR_OWN_LISTING");
+
+  const now = new Date().toISOString();
+  try {
+    await d1Run(
+      `INSERT INTO used_listing_reports (id, listing_id, reporter_user_id, reason, note, created_at)
+       VALUES (?, ?, ?, ?, ?, ?)`,
+      randomId("ulr"),
+      listingId,
+      reporterUserId,
+      reason,
+      clean(note),
+      now,
+    );
+  } catch {
+    // The unique index refused a second report from the same person. Their
+    // first one already reached the admins, so this is not a failure to report.
+    return { recorded: false };
+  }
+
+  await createAuditLog(
+    reporterUserId,
+    "used_listing_reported",
+    "used_listing",
+    listingId,
+    undefined,
+    undefined,
+    { reason },
+  );
+  return { recorded: true };
+}
+
+/** Open reports, newest first, for the admin screen. */
+export async function listOpenReports(limit = 100): Promise<
+  {
+    id: string;
+    listingId: string;
+    listingTitle: string;
+    listingStatus: string;
+    reporterUserId: string;
+    reason: string;
+    note: string | null;
+    createdAt: string;
+  }[]
+> {
+  await ensureUsedMarketplaceSchema();
+  const rows = await d1All<Record<string, unknown>>(
+    `SELECT r.id, r.listing_id, r.reporter_user_id, r.reason, r.note, r.created_at,
+            l.title AS listing_title, l.status AS listing_status
+       FROM used_listing_reports r
+       JOIN used_listings l ON l.id = r.listing_id
+      WHERE r.handled_at IS NULL
+      ORDER BY r.created_at DESC LIMIT ?`,
+    Math.min(Math.max(limit, 1), 500),
+  );
+  return rows.map((row) => ({
+    id: String(row["id"]),
+    listingId: String(row["listing_id"]),
+    listingTitle: String(row["listing_title"] ?? ""),
+    listingStatus: String(row["listing_status"] ?? ""),
+    reporterUserId: String(row["reporter_user_id"]),
+    reason: String(row["reason"]),
+    note: row["note"] ? String(row["note"]) : null,
+    createdAt: String(row["created_at"]),
+  }));
+}
+
+/** An admin has dealt with a report, whatever they decided to do about it. */
+export async function resolveReport(adminUserId: string, reportId: string): Promise<void> {
+  await ensureUsedMarketplaceSchema();
+  await d1Run(
+    `UPDATE used_listing_reports SET handled_at = ?, handled_by_user_id = ? WHERE id = ? AND handled_at IS NULL`,
+    new Date().toISOString(),
+    adminUserId,
+    reportId,
+  );
 }
 
 export { DEFAULT_USED_CONFIG };

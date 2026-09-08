@@ -529,3 +529,200 @@ describe("the per-seller cap", () => {
     expect(await countActiveListings(SELLER)).toBe(0);
   });
 });
+
+/**
+ * What happens after a buyer presses a contact button.
+ *
+ * A private sale never touches the till, so the shop only learns an item might
+ * have gone by asking — and it only knows to ask because somebody pressed a
+ * button. These hold the three-day clock, the once-only question, and the
+ * seller's answer.
+ */
+describe("the contact button, and asking whether it sold", () => {
+  const DAY = 24 * 3600 * 1000;
+
+  async function published(balance = 10_000) {
+    const mod = await setup({ balance });
+    const draft = await mod.createDraft(SELLER, DRAFT as never);
+    await mod.transitionListing(draft.id, "SUBMITTED", {
+      actor: "seller",
+      actorUserId: SELLER,
+      policyAccepted: true,
+    });
+    await mod.transitionListing(draft.id, "APPROVED", { actor: "admin", actorUserId: "usr_admin" });
+    return { ...mod, id: draft.id };
+  }
+
+  /** Backdates the first contact, so the three days have passed. */
+  function agedContact(raw: DatabaseSync, id: string, daysAgo: number) {
+    raw
+      .prepare(`UPDATE used_listings SET first_contact_at = ? WHERE id = ?`)
+      .run(new Date(Date.now() - daysAgo * DAY).toISOString(), id);
+  }
+
+  it("counts a press and starts the clock", async () => {
+    const { recordContactClick, getListing, id } = await published();
+    await recordContactClick(id);
+    const listing = await getListing(id);
+    expect(listing?.contactClicks).toBe(1);
+    expect(listing?.firstContactAt).toBeTruthy();
+  });
+
+  it("keeps the clock running from the first press, not the latest", async () => {
+    const { recordContactClick, getListing, id } = await published();
+    await recordContactClick(id);
+    const first = (await getListing(id))?.firstContactAt;
+    await recordContactClick(id);
+    const listing = await getListing(id);
+    expect(listing?.contactClicks).toBe(2);
+    expect(listing?.firstContactAt).toBe(first);
+  });
+
+  it("does not start a clock on a listing that is not published", async () => {
+    const mod = await setup({ balance: 10_000 });
+    const draft = await mod.createDraft(SELLER, DRAFT as never);
+    await mod.recordContactClick(draft.id);
+    expect((await mod.getListing(draft.id))?.firstContactAt).toBeNull();
+  });
+
+  it("asks nobody before three days have passed", async () => {
+    const { recordContactClick, promptSellersAboutSales, id } = await published();
+    await recordContactClick(id);
+    expect((await promptSellersAboutSales()).asked).toEqual([]);
+  });
+
+  it("asks the seller once the three days are up", async () => {
+    const { recordContactClick, promptSellersAboutSales, raw, id } = await published();
+    await recordContactClick(id);
+    agedContact(raw, id, 4);
+
+    expect((await promptSellersAboutSales()).asked).toEqual([id]);
+    expect(notifications.at(-1)).toMatchObject({ userId: SELLER, title: "هل بعت القطعة؟" });
+  });
+
+  it("asks once, however many times the cron runs", async () => {
+    /* Cloudflare Cron is at-least-once and this job runs every minute. */
+    const { recordContactClick, promptSellersAboutSales, raw, id } = await published();
+    await recordContactClick(id);
+    agedContact(raw, id, 4);
+
+    await promptSellersAboutSales();
+    const after = notifications.length;
+    expect((await promptSellersAboutSales()).asked).toEqual([]);
+    expect(notifications).toHaveLength(after);
+  });
+
+  it("asks nobody about a listing no one has contacted", async () => {
+    const { promptSellersAboutSales } = await published();
+    expect((await promptSellersAboutSales()).asked).toEqual([]);
+  });
+
+  it("takes the listing off the shop when the seller says it sold", async () => {
+    const { recordContactClick, answerSoldPrompt, id } = await published();
+    await recordContactClick(id);
+    const listing = await answerSoldPrompt(SELLER, id, "sold");
+    /*
+      PAUSED, not SOLD. SOLD means the shop sold it — it carries an order id
+      and only an admin may set it — and a sale arranged over Telegram is not
+      that. Pausing takes it off the shop, which is what was asked for.
+    */
+    expect(listing.status).toBe("PAUSED");
+    expect(listing.soldPromptAnswer).toBe("sold");
+  });
+
+  it("leaves it up when the seller says it is still available", async () => {
+    const { recordContactClick, answerSoldPrompt, id } = await published();
+    await recordContactClick(id);
+    const listing = await answerSoldPrompt(SELLER, id, "still_available");
+    expect(listing.status).toBe("APPROVED");
+    expect(listing.soldPromptAnswer).toBe("still_available");
+  });
+
+  it("lets nobody but the seller answer for them", async () => {
+    const { answerSoldPrompt, id } = await published();
+    await expect(answerSoldPrompt("usr_someone_else", id, "sold")).rejects.toThrow(
+      "NOT_YOUR_LISTING",
+    );
+  });
+
+  it("leaves a listing up when its seller never answers", async () => {
+    /*
+      The owner's rule: no reply is not a reason to take it down. The window it
+      was paid for is what ends it.
+    */
+    const { recordContactClick, promptSellersAboutSales, getListing, raw, id } = await published();
+    await recordContactClick(id);
+    agedContact(raw, id, 10);
+    await promptSellersAboutSales();
+    expect((await getListing(id))?.status).toBe("APPROVED");
+  });
+});
+
+/**
+ * Reporting a listing.
+ *
+ * A seller who has stopped answering and a seller whose rival wants them gone
+ * look identical from here, so a report records a complaint and tells an admin
+ * — it never changes the listing itself.
+ */
+describe("reporting a listing", () => {
+  async function published() {
+    const mod = await setup({ balance: 10_000 });
+    const draft = await mod.createDraft(SELLER, DRAFT as never);
+    await mod.transitionListing(draft.id, "SUBMITTED", {
+      actor: "seller",
+      actorUserId: SELLER,
+      policyAccepted: true,
+    });
+    await mod.transitionListing(draft.id, "APPROVED", { actor: "admin", actorUserId: "usr_admin" });
+    return { ...mod, id: draft.id };
+  }
+
+  it("records a report and shows it to the admin", async () => {
+    const { reportListing, listOpenReports, id } = await published();
+    expect(await reportListing("usr_buyer", id, "no_reply")).toEqual({ recorded: true });
+    const reports = await listOpenReports();
+    expect(reports).toHaveLength(1);
+    expect(reports[0]).toMatchObject({ listingId: id, reason: "no_reply" });
+  });
+
+  it("does not change the listing", async () => {
+    const { reportListing, getListing, id } = await published();
+    await reportListing("usr_buyer", id, "already_sold");
+    expect((await getListing(id))?.status).toBe("APPROVED");
+  });
+
+  it("takes one report per person, not one per tap", async () => {
+    const { reportListing, listOpenReports, id } = await published();
+    await reportListing("usr_buyer", id, "no_reply");
+    expect(await reportListing("usr_buyer", id, "no_reply")).toEqual({ recorded: false });
+    expect(await listOpenReports()).toHaveLength(1);
+  });
+
+  it("takes one from each of two different people", async () => {
+    const { reportListing, listOpenReports, id } = await published();
+    await reportListing("usr_one", id, "no_reply");
+    await reportListing("usr_two", id, "already_sold");
+    expect(await listOpenReports()).toHaveLength(2);
+  });
+
+  it("refuses a seller reporting their own listing", async () => {
+    const { reportListing, id } = await published();
+    await expect(reportListing(SELLER, id, "no_reply")).rejects.toThrow("YOUR_OWN_LISTING");
+  });
+
+  it("refuses a reason it does not know", async () => {
+    const { reportListing, id } = await published();
+    await expect(reportListing("usr_buyer", id, "because" as never)).rejects.toThrow(
+      "UNKNOWN_REPORT_REASON",
+    );
+  });
+
+  it("drops a report off the admin list once it is dealt with", async () => {
+    const { reportListing, listOpenReports, resolveReport, id } = await published();
+    await reportListing("usr_buyer", id, "no_reply");
+    const [report] = await listOpenReports();
+    await resolveReport("usr_admin", report!.id);
+    expect(await listOpenReports()).toEqual([]);
+  });
+});

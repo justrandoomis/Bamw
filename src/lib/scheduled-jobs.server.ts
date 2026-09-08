@@ -218,6 +218,28 @@ export async function processAutoScheduledTasks() {
   } catch (err) {
     console.error("[scheduled-jobs] expiring used listings failed:", err);
   }
+
+  /*
+    5. Ask a seller whether the item sold, three days after somebody contacted
+       them about it.
+
+    A private sale never touches the till, so a contact button being pressed is
+    the only sign the shop gets that one might be happening — and without
+    asking, a sold item sits in the section until its window closes. Asking is
+    all it does: a seller who does not answer keeps their listing to the end of
+    the month they paid for.
+
+    Each listing is asked once. The claim and the stamp are the same statement,
+    which matters because Cloudflare Cron is at-least-once and this runs every
+    minute alongside the rest.
+  */
+  try {
+    const { promptSellersAboutSales } = await import("./used-marketplace.server");
+    const result = await promptSellersAboutSales();
+    if (result.asked.length) console.log("[scheduled-jobs:used-sold-prompt]", result.asked.length);
+  } catch (err) {
+    console.error("[scheduled-jobs] asking sellers about sales failed:", err);
+  }
 }
 
 /**
