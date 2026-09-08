@@ -21,15 +21,31 @@
  *     — it says what the server computed, not what the screen shows — but it
  *     answers when the page is challenged.
  *
- * So the page is tried first and given time to clear a challenge on its own,
- * and the API is the fallback rather than the primary. Inconclusive is
- * reported only when *both* are refused: a challenge is still never counted as
- * a verdict on the shop.
+ * Both of those turned out to be challenged from a runner: the page passes,
+ * and then `/api/banana` comes back 403 with `cf-mitigated: challenge` and
+ * Cloudflare's "Just a moment..." HTML. So the market renders `$0.00` for this
+ * client — which is the reported symptom, arrived at by a cause that has
+ * nothing to do with the shop. A checker that stopped there would report the
+ * bug as live every time.
+ *
+ * So there is a third route, and it is the authoritative one:
+ *
+ *  3. production's own D1, read through the Cloudflare API with the same
+ *     credentials the deploy uses, and priced by the application's own
+ *     `getMarketConfig` and `spotPriceAt`. No edge in between, so nothing to
+ *     challenge — and it computes the price the way the customer's page does
+ *     rather than reading a number out of a row.
+ *
+ * The screen reading is kept as corroboration, but a `$0.00` observed while
+ * the API was challenged is explicitly *not* evidence of the bug, and is
+ * reported as such.
  *
  * Usage: node scripts/banana-live-check.mjs [--base https://banan.to]
  */
+import { build } from "esbuild";
 import { chromium } from "playwright-core";
-import { writeFileSync } from "node:fs";
+import { rmSync, writeFileSync } from "node:fs";
+import path from "node:path";
 
 const args = Object.fromEntries(
   process.argv
@@ -184,6 +200,64 @@ if (out.source === null) {
   }
 }
 
+/*
+  Production's own database, priced by production's own code.
+
+  This is the only route with no edge in front of it, so it is the one that can
+  actually answer the question. It runs when the deploy credentials are present
+  and is skipped silently otherwise, so the script still works against a local
+  origin.
+*/
+async function readFromD1() {
+  if (!process.env.CLOUDFLARE_API_TOKEN || !process.env.CLOUDFLARE_ACCOUNT_ID) return;
+  const outfile = path.resolve(".banana-bundle.mjs");
+  try {
+    await build({
+      entryPoints: ["scripts/lib/import-entry.ts"],
+      outfile,
+      bundle: true,
+      format: "esm",
+      platform: "node",
+      target: "node22",
+      logLevel: "silent",
+      alias: { "@": path.resolve("src") },
+      external: ["cloudflare:workers", "node:async_hooks", "node:crypto", "sharp"],
+    });
+    const app = await import(outfile);
+    const reach = await app.d1All("SELECT count(*) AS n FROM store_kv");
+    if (!reach.length) throw new Error("D1 unreachable — refusing to report on nothing");
+
+    const config = await app.getMarketConfig();
+    out.d1Price = app.spotPriceAt(config);
+    out.d1Change24h = app.changePercent24h(config);
+    out.d1BasePrice = Number(config?.basePrice ?? 0);
+    const offers = await app.d1All(
+      "SELECT count(*) AS n FROM banana_market_offers WHERE status = 'active'",
+    );
+    out.d1ActiveOffers = Number(offers?.[0]?.n ?? 0);
+  } catch (error) {
+    out.d1Error = String(error).split("\n")[0];
+  } finally {
+    rmSync(outfile, { force: true });
+  }
+}
+
+await readFromD1();
+
+/*
+  D1 is the authority when it answered. The browser could only ever say what
+  this IP was allowed to see.
+*/
+if (Number.isFinite(out.d1Price)) {
+  if (out.source === null) {
+    out.source = "d1";
+    out.price = out.d1Price;
+    out.change24h = out.d1Change24h;
+    out.listings = out.d1ActiveOffers;
+  }
+  out.ok = out.d1Price > 0;
+}
+
 /** Pull only prices and counts out of a snapshot — never a balance or a member. */
 function readSnapshot(target, snapshot) {
   target.price = Number(snapshot?.price ?? 0);
@@ -195,7 +269,30 @@ function readSnapshot(target, snapshot) {
   target.ok = target.price > 0 && !target.chartAllZero;
 }
 
-const WHERE = { page: "من الصفحة", api: "من الواجهة العامة" };
+/*
+  Did Cloudflare refuse this, or did the app?
+
+  `cf-mitigated` is Cloudflare saying so itself, and the interstitial's own
+  HTML says it when the header is stripped. Either one means the refusal is
+  about this client, not about the market.
+*/
+function isChallenge(status, type, mitigated, body) {
+  if (!status || status === 200) return false;
+  if (mitigated) return true;
+  if (CHALLENGE.test(body || "")) return true;
+  return status === 403 && /text\/html/i.test(type || "");
+}
+
+const apiChallenged = isChallenge(out.apiStatus, out.apiType, out.apiMitigated, out.apiBody);
+const directChallenged = isChallenge(
+  out.directApiStatus,
+  out.directApiType,
+  out.directApiMitigated,
+  out.directApiBody,
+);
+out.apiChallenged = apiChallenged || directChallenged;
+
+const WHERE = { page: "من الصفحة", api: "من الواجهة العامة", d1: "من قاعدة البيانات مباشرة" };
 
 say("| fact | value |");
 say("|---|---:|");
@@ -211,6 +308,11 @@ say(
 );
 say(`| مصدر القراءة | ${out.source ? WHERE[out.source] : "—"} |`);
 say(`| نص الصفحة (حروف) | ${out.screenTextLength ?? "—"} |`);
+say(`| **السعر من D1 مباشرة** | ${Number.isFinite(out.d1Price) ? out.d1Price : "—"} |`);
+say(`| \`basePrice\` المخزّن | ${Number.isFinite(out.d1BasePrice) ? out.d1BasePrice : "—"} |`);
+say(`| تغيّر 24 ساعة (D1) | ${Number.isFinite(out.d1Change24h) ? out.d1Change24h : "—"}% |`);
+say(`| عروض نشطة (D1) | ${out.d1ActiveOffers ?? "—"} |`);
+if (out.d1Error) say(`| قراءة D1 | فشلت: ${out.d1Error} |`);
 say();
 if (out.apiStatus && out.apiStatus !== 200) {
   say(`**\`/api/banana\` من داخل الصفحة رفض بـ ${out.apiStatus}.**`);
@@ -240,15 +342,27 @@ if (out.source === null && out.challenged) {
     "_Challenged by bot protection on the page and refused on the API — inconclusive, " +
       "not a verdict on the shop._",
   );
-} else if (out.source === null) {
+} else if (out.source === null && out.apiChallenged) {
   /*
-    The page itself loaded. That rules out "this IP is being challenged at the
-    door" and leaves the API refusing on its own — which is what a customer
-    would experience as a market with no prices in it.
+    The page loaded and its API did not. That is still Cloudflare — it says so
+    in `cf-mitigated` — just applied to the API path rather than to the
+    document. The `$0.00` on screen follows from the page getting no data, so
+    it must not be read as the bug being live. Said plainly, because the last
+    version of this script drew the opposite conclusion from the same evidence.
   */
   say(
-    "**الصفحة فتحت (200) لكن `/api/banana` رفض. هذا ليس تحدّي بوتات على الصفحة — " +
-      "السوق يفتح بلا أسعار.** راجع الترويسات أعلاه لمعرفة من رفض.",
+    "_`/api/banana` رُفض بتحدّي بوتات (`cf-mitigated: challenge`) لهذا العنوان. " +
+      "الصفحة نفسها فتحت، و`$0.00` الظاهر عليها نتيجةٌ لهذا الرفض — وليس دليلاً " +
+      "على أن السعر صفر. غير حاسم._",
+  );
+} else if (out.source === null) {
+  /*
+    A refusal that is not a challenge is the app's own, and a market that opens
+    with no prices in it is exactly the reported fault.
+  */
+  say(
+    "**الصفحة فتحت (200) لكن `/api/banana` رفض بردٍّ ليس تحدّي بوتات. " +
+      "السوق يفتح بلا أسعار.** راجع الترويسات أعلاه.",
   );
 } else {
   say(

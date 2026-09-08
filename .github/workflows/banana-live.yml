@@ -54,9 +54,25 @@ jobs:
       - name: Install Chromium
         run: npx --yes playwright@1.62.1 install --with-deps chromium
 
+      # The account id is an identifier rather than a secret, but it appears in
+      # every Cloudflare API URL this job builds. Masked the same way every
+      # other read-only workflow here masks it.
+      - name: Mask identifiers
+        env:
+          ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: echo "::add-mask::$ACCOUNT_ID"
+
       - name: Read the live market
         env:
           ORIGIN: ${{ inputs.origin }}
+          # Cloudflare challenges /api/banana from a datacentre IP, so the
+          # browser half can only report what this runner was allowed to see.
+          # These let the check read production's own D1 with no edge in
+          # between and price it with the application's own code. Read-only:
+          # the script issues SELECTs through d1All and never calls d1Run.
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          D1_DATABASE_ID: ${{ secrets.CLOUDFLARE_D1_DATABASE_ID }}
         run: |
           node scripts/banana-live-check.mjs \
             --base "${ORIGIN:-https://banan.to}" \
