@@ -90,6 +90,16 @@ export interface ProductIndexPage {
     "none on this page" — which is worse than no number at all.
   */
   facets: ProductIndexFacets;
+  /*
+    Every row in the projection, ignoring the filter.
+
+    `total` counts what the current query matched, which is what a pager needs
+    and what "عرض 50 من أصل 73" should say. The admin header was showing that
+    same number labelled «منتج مسجل في D1» — the size of the catalogue — so
+    filtering to one category quietly restated how many products the shop has.
+    Costs nothing: it rides on the aggregate the chips already run.
+  */
+  catalogueTotal: number;
 }
 
 export interface ProductIndexQuery {
@@ -159,7 +169,15 @@ function listingImage(product: Row): string {
   };
 
   if (isGameProduct(product)) {
-    return read(["listingImage", "cartridgeImage", "mainImage", "image", "coverImage", "frontImage", "imageUrl"]);
+    return read([
+      "listingImage",
+      "cartridgeImage",
+      "mainImage",
+      "image",
+      "coverImage",
+      "frontImage",
+      "imageUrl",
+    ]);
   }
 
   const resolved = resolveProductImage(product as Record<string, unknown>, "listing");
@@ -598,8 +616,9 @@ export async function readProductIndexPage(query: ProductIndexQuery): Promise<Pr
       offset,
     ),
     // One aggregate row for all three chips, rather than three round trips.
-    d1First<{ hidden: number; unpriced: number; perf: number }>(
-      `SELECT SUM(hidden) AS hidden,
+    d1First<{ all_rows: number; hidden: number; unpriced: number; perf: number }>(
+      `SELECT COUNT(*) AS all_rows,
+              SUM(hidden) AS hidden,
               SUM(CASE WHEN price IS NULL OR price <= 0 THEN 1 ELSE 0 END) AS unpriced,
               SUM(performance_required) AS perf
          FROM product_index`,
@@ -613,6 +632,7 @@ export async function readProductIndexPage(query: ProductIndexQuery): Promise<Pr
     page,
     limit,
     hasMore: offset + rows.length < total,
+    catalogueTotal: Number(facetRow?.all_rows ?? total),
     facets: {
       hidden: Number(facetRow?.hidden ?? 0),
       unpriced: Number(facetRow?.unpriced ?? 0),

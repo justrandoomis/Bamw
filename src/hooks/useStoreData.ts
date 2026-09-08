@@ -103,7 +103,9 @@ async function fetchStoreData(): Promise<StoreData> {
 
       const json = (await res.json()) as StoreData;
       if (json && Array.isArray(json.products) && json.products.length > 0) {
-        console.log(`[HOME_REFRESH_SUCCESS] reqId=${reqId} duration=${elapsed}ms count=${json.products.length} catalog=${catalogVersion}`);
+        console.log(
+          `[HOME_REFRESH_SUCCESS] reqId=${reqId} duration=${elapsed}ms count=${json.products.length} catalog=${catalogVersion}`,
+        );
         if (mayKeepOnDevice(res)) {
           saveCachedStoreData(json, catalogVersion);
         } else {
@@ -121,7 +123,9 @@ async function fetchStoreData(): Promise<StoreData> {
         // If the server returned an empty products payload unexpectedly, fallback to cached snapshot
         const cached = getCachedStoreData();
         if (cached && Array.isArray(cached.products) && cached.products.length > 0) {
-          console.warn(`[HOME_REFRESH_EMPTY_FALLBACK] Server returned empty payload, retaining local cache.`);
+          console.warn(
+            `[HOME_REFRESH_EMPTY_FALLBACK] Server returned empty payload, retaining local cache.`,
+          );
           return cached;
         }
         return json || { products: [], categories: [], banners: [], bundles: [] };
@@ -183,4 +187,3 @@ export function useStoreData() {
     retryDelay: (attemptIndex) => Math.min(1000 * 2 ** attemptIndex, 4000),
   });
 }
-

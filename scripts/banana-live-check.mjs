@@ -213,7 +213,7 @@ async function readFromD1() {
   const outfile = path.resolve(".banana-bundle.mjs");
   try {
     await build({
-      entryPoints: ["scripts/lib/import-entry.ts"],
+      entryPoints: ["scripts/lib/banana-entry.ts"],
       outfile,
       bundle: true,
       format: "esm",
@@ -222,6 +222,30 @@ async function readFromD1() {
       logLevel: "silent",
       alias: { "@": path.resolve("src") },
       external: ["cloudflare:workers", "node:async_hooks", "node:crypto", "sharp"],
+      /*
+        TanStack Start's server core imports three specifiers that only the
+        app's own build can resolve. They arrive through `db.server` and are
+        never called here — the price is computed from the store document, not
+        by running a request handler — so they are resolved to an empty module
+        rather than left to fail the build.
+      */
+      plugins: [
+        {
+          name: "stub-start-virtuals",
+          setup(pluginBuild) {
+            const virtual =
+              /^(#tanstack-router-entry|#tanstack-start-entry|tanstack-start-manifest:)/;
+            pluginBuild.onResolve({ filter: virtual }, (a) => ({
+              path: a.path,
+              namespace: "start-virtual",
+            }));
+            pluginBuild.onLoad({ filter: /.*/, namespace: "start-virtual" }, () => ({
+              contents: "export default {}; export const getStartManifest = () => ({});",
+              loader: "js",
+            }));
+          },
+        },
+      ],
     });
     const app = await import(outfile);
     const reach = await app.d1All("SELECT count(*) AS n FROM store_kv");

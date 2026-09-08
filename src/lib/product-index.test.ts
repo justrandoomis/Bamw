@@ -473,3 +473,74 @@ describe("a save writes only what changed", () => {
     expect(await productIndexCount()).toBe(40);
   });
 });
+
+/**
+ * The catalogue's size, as distinct from the filter's.
+ *
+ * `total` counts what the current query matched — right for a pager, and what
+ * "عرض 50 من أصل 73" should say. The admin header was showing that same number
+ * under the label «منتج مسجل في D1», so narrowing to a category or typing a
+ * search quietly restated how many products the shop holds: «عرض 12 من أصل 12
+ * منتج مسجل في D1» on a catalogue of a hundred and forty.
+ *
+ * `catalogueTotal` is that second number. It rides on the aggregate the filter
+ * chips already run over the whole table, so it costs no extra round trip.
+ */
+describe("the catalogue total, beside the match count", () => {
+  it("counts every row while `total` counts the filtered ones", async () => {
+    await rebuildProductIndex(
+      [
+        ...Array.from({ length: 12 }, (_, i) =>
+          product({ id: `card_${i}`, categoryId: "cat_gift_cards" }),
+        ),
+        ...Array.from({ length: 128 }, (_, i) =>
+          product({ id: `game_${i}`, categoryId: "cat_nintendo" }),
+        ),
+      ],
+      1,
+    );
+
+    const filtered = await readProductIndexPage({ categoryId: "cat_gift_cards", limit: 50 });
+    expect(filtered.total).toBe(12);
+    expect(filtered.catalogueTotal).toBe(140);
+  });
+
+  it("is not moved by a search that matches one product", async () => {
+    await rebuildProductIndex(
+      [
+        product({ id: "prd_zelda", title: "The Legend of Zelda" }),
+        ...Array.from({ length: 40 }, () => product()),
+      ],
+      1,
+    );
+
+    const hit = await readProductIndexPage({ search: "zelda" });
+    expect(hit.total).toBe(1);
+    expect(hit.catalogueTotal).toBe(41);
+  });
+
+  it("is not moved by the hidden filter either", async () => {
+    await rebuildProductIndex(
+      [
+        ...Array.from({ length: 3 }, (_, i) => product({ id: `h_${i}`, isHidden: true })),
+        ...Array.from({ length: 20 }, () => product()),
+      ],
+      1,
+    );
+
+    const hidden = await readProductIndexPage({ hidden: true });
+    expect(hidden.total).toBe(3);
+    expect(hidden.catalogueTotal).toBe(23);
+  });
+
+  it("equals the match count when nothing is filtering", async () => {
+    await rebuildProductIndex(
+      Array.from({ length: 17 }, () => product()),
+      1,
+    );
+
+    const all = await readProductIndexPage({});
+    expect(all.total).toBe(17);
+    expect(all.catalogueTotal).toBe(17);
+  });
+});

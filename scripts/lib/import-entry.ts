@@ -14,19 +14,12 @@
  */
 export { parseGameImport } from "@/lib/gameImportParser";
 export { buildBatchGameImport } from "@/lib/gameImportForm";
-export { mergeProductUpdate, destructiveUpdateLog, oversizedMediaLog } from "@/lib/productMergeGuard";
+export {
+  mergeProductUpdate,
+  destructiveUpdateLog,
+  oversizedMediaLog,
+} from "@/lib/productMergeGuard";
 export { d1All, d1Run } from "@/lib/d1.server";
-/*
-  The market's own pricing, so a checker can ask what production would charge
-  rather than reimplement the formula.
-
-  The price is not a stored number: `spotPriceAt` walks the drift and the
-  volatility from a stored base, and the zero the customer saw came from a
-  fallback inside `getMarketConfig` rather than from anything in the database.
-  Reading `basePrice` out of `store_kv` would therefore have measured the wrong
-  thing — it has to be the application's own code, or it proves nothing.
-*/
-export { getMarketConfig, spotPriceAt, changePercent24h } from "@/lib/banana-market-config.server";
 /*
   The serializer the storefront answers through. A script that prints a
   product to a CI log prints it through this, so cost and supplier fields
