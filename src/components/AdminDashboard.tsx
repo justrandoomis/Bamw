@@ -2576,6 +2576,21 @@ function ListingsView({
                     : typeof p.titleEn === "string"
                       ? p.titleEn
                       : String(p.id || "");
+                /*
+                  The Arabic name, when the title above is not already it.
+
+                  On this catalogue `title` holds the English name for an
+                  imported game, so a table of a hundred and forty products
+                  read entirely in English to an admin who searches in Arabic.
+                  The projection carries `titleAr` now; showing it means the
+                  row says what was matched.
+                */
+                const arabicName =
+                  typeof p.titleAr === "string" &&
+                  p.titleAr.trim() &&
+                  p.titleAr.trim() !== safeTitle
+                    ? p.titleAr.trim()
+                    : "";
                 const catId =
                   typeof p.category === "string"
                     ? p.category
@@ -2600,6 +2615,11 @@ function ListingsView({
                   >
                     <td className="px-4 py-3 font-medium text-[var(--admin-ink)]">
                       {safeTitle}
+                      {arabicName ? (
+                        <span className="ms-2 text-[12px] font-normal text-muted-foreground">
+                          {arabicName}
+                        </span>
+                      ) : null}
                       {!isProductPriced(p) && (
                         <span className="ms-2 inline-block rounded-md bg-[var(--bad-bg)] px-2 py-0.5 text-[11px] font-bold text-[var(--brand-red-dark)]">
                           مخفي — بحاجة سعر/تكلفة

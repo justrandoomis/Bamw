@@ -209,7 +209,26 @@ if (out.source === null) {
   origin.
 */
 async function readFromD1() {
-  if (!process.env.CLOUDFLARE_API_TOKEN || !process.env.CLOUDFLARE_ACCOUNT_ID) return;
+  /*
+    Which credentials arrived — presence only, never a value.
+
+    `d1All` answers an empty array when it has no database rather than
+    throwing, so a missing secret and a healthy-but-empty table look identical
+    from the outside. That is how a run reported "D1 unreachable" three times
+    without saying which of the three names was absent.
+  */
+  const NEEDED = ["CLOUDFLARE_API_TOKEN", "CLOUDFLARE_ACCOUNT_ID", "D1_DATABASE_ID"];
+  out.d1Credentials = Object.fromEntries(
+    NEEDED.map((name) => [name, Boolean(process.env[name])]).concat([
+      ["CLOUDFLARE_D1_DATABASE_ID", Boolean(process.env["CLOUDFLARE_D1_DATABASE_ID"])],
+    ]),
+  );
+  const haveDatabase =
+    Boolean(process.env["D1_DATABASE_ID"]) || Boolean(process.env["CLOUDFLARE_D1_DATABASE_ID"]);
+  if (!process.env.CLOUDFLARE_API_TOKEN || !process.env.CLOUDFLARE_ACCOUNT_ID || !haveDatabase) {
+    out.d1Error = "missing credentials: " + JSON.stringify(out.d1Credentials);
+    return;
+  }
   const outfile = path.resolve(".banana-bundle.mjs");
   try {
     await build({
@@ -418,6 +437,7 @@ say(
       d1BasePrice: out.d1BasePrice ?? null,
       d1ActiveOffers: out.d1ActiveOffers ?? null,
       d1Error: out.d1Error ?? null,
+      d1Credentials: out.d1Credentials ?? null,
       source: out.source,
       pageStatus: out.status ?? null,
       apiStatus: out.apiStatus ?? null,
