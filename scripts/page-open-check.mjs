@@ -143,7 +143,13 @@ for (const path of PATHS) {
       continue;
     }
     if (entry.status >= 400) reasons.push(`http ${entry.status}`);
-    if (entry.finalPath !== path) reasons.push(`redirected to ${entry.finalPath}`);
+    /*
+      Compare a path with a path. `pathname` never carries a query string, so
+      testing it against `/search?q=zelda` reported a redirect that had not
+      happened — and marked a page that had rendered ten results as broken.
+    */
+    const wantedPath = new URL(BASE + path).pathname;
+    if (entry.finalPath !== wantedPath) reasons.push(`redirected to ${entry.finalPath}`);
     if (text.length < CHROME_TEXT) reasons.push(`blank (${text.length} chars of text)`);
     if (CRASH_MARKERS.test(text)) reasons.push("crash screen");
     // An uncaught exception is what blanks a hydrated page, so it fails here
