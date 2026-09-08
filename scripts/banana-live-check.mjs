@@ -297,7 +297,20 @@ async function readFromD1() {
     const config = await app.getMarketConfig();
     out.d1Price = app.spotPriceAt(config);
     out.d1Change24h = app.changePercent24h(config);
+    /*
+      The whole configured band, not just the base.
+
+      `spotPriceAt` clamps between minPrice and maxPrice, so a base that looks
+      wrong is only half the story: with the default floor of 0.1 a tiny base
+      would still price at 0.1. A computed zero therefore says something about
+      the bounds too, and reading one without the others explains nothing.
+
+      Admin configuration, not a member's data: prices and limits only.
+    */
     out.d1BasePrice = Number(config?.basePrice ?? 0);
+    out.d1MinPrice = Number(config?.minPrice ?? 0);
+    out.d1MaxPrice = Number(config?.maxPrice ?? 0);
+    out.d1Volatility = Number(config?.volatilityPercent ?? 0);
     const offers = await app.d1All(
       "SELECT count(*) AS n FROM banana_market_offers WHERE status = 'active'",
     );
@@ -459,6 +472,9 @@ say(
     JSON.stringify({
       d1Price: out.d1Price ?? null,
       d1BasePrice: out.d1BasePrice ?? null,
+      d1MinPrice: out.d1MinPrice ?? null,
+      d1MaxPrice: out.d1MaxPrice ?? null,
+      d1Volatility: out.d1Volatility ?? null,
       d1ActiveOffers: out.d1ActiveOffers ?? null,
       d1Error: out.d1Error ?? null,
       d1Credentials: out.d1Credentials ?? null,
