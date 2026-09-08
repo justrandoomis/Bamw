@@ -51,6 +51,12 @@ export interface ProductIndexRow {
   slug: string;
   title: string;
   titleEn: string;
+  /*
+    The Arabic name. On this catalogue `title` holds the English one for an
+    imported game, so without this the admin table had no Arabic text in it at
+    all — nothing to show, and nothing to search.
+  */
+  titleAr: string;
   category: string;
   categoryId: string;
   kind: string;
@@ -189,6 +195,16 @@ export function toIndexRow(product: Row): ProductIndexRow {
   const id = text(product["id"]) || String(product["id"] ?? "");
   const title = text(product["title"]);
   const titleEn = text(product["titleEn"]) || text(product["english_name"]);
+  /*
+    The Arabic name, which this projection never carried.
+
+    On this catalogue `title` holds the English name for an imported game, so
+    `sort_name` — built from `title || titleEn || slug` — is English end to
+    end, and an admin typing «زيلدا» into the products table matched nothing.
+    Both spellings are read because rows created before the schema system use
+    the snake_case one.
+  */
+  const titleAr = text(product["titleAr"]) || text(product["title_ar"]);
   const isLegacyGiftCard = Boolean(
     text(product["cardValue"]) ||
     text(product["card_value"]) ||
@@ -197,6 +213,7 @@ export function toIndexRow(product: Row): ProductIndexRow {
   );
   return {
     id,
+    titleAr,
     slug: text(product["slug"]) || id,
     title: title || titleEn || id,
     titleEn: titleEn || title || id,
@@ -244,6 +261,14 @@ function sortKeys(product: Row, row: ProductIndexRow) {
   const sortRelease = Number.isFinite(released) ? released : null;
   return {
     sortName: sortableNameKey(sortableName(product)),
+    /*
+      A second folded key, for searching only.
+
+      Deliberately *not* folded into `sort_name`: that column is the ORDER BY
+      key for the admin table, and mixing the Arabic name into it would
+      reorder the products the admin sees. This one is never sorted by.
+    */
+    sortNameAr: sortableNameKey(row.titleAr),
     sortUpdated: modified,
     sortRelease,
     /*
@@ -261,6 +286,7 @@ const COLUMNS = [
   "slug",
   "title",
   "title_en",
+  "title_ar",
   "category",
   "category_id",
   "kind",
@@ -279,6 +305,7 @@ const COLUMNS = [
   "created_at",
   "release_date",
   "sort_name",
+  "sort_name_ar",
   "sort_updated",
   "sort_release",
   "sort_rank",
@@ -294,6 +321,7 @@ function bindsFor(product: Row, rev: number): unknown[] {
     row.slug,
     row.title,
     row.titleEn,
+    row.titleAr,
     row.category,
     row.categoryId,
     row.kind,
@@ -312,6 +340,7 @@ function bindsFor(product: Row, rev: number): unknown[] {
     row.createdAt,
     row.releaseDate,
     keys.sortName,
+    keys.sortNameAr,
     keys.sortUpdated,
     keys.sortRelease,
     keys.sortRank,
@@ -509,6 +538,7 @@ function fromRow(row: Record<string, unknown>): ProductIndexRow {
     slug: String(row["slug"] ?? ""),
     title: String(row["title"] ?? ""),
     titleEn: String(row["title_en"] ?? ""),
+    titleAr: String(row["title_ar"] ?? ""),
     category: String(row["category"] ?? ""),
     categoryId: String(row["category_id"] ?? ""),
     kind: String(row["kind"] ?? ""),
@@ -549,9 +579,16 @@ export async function readProductIndexPage(query: ProductIndexQuery): Promise<Pr
   if (search) {
     // Matched against the same folded key the name column is sorted by, so an
     // Arabic search with a different alef still finds the product.
-    where.push("(sort_name LIKE ? OR slug LIKE ? OR id LIKE ?)");
+    /*
+      `sort_name_ar` is searched with the same folded needle as `sort_name`, so
+      «زيلدا» finds a product whose Arabic name is written with a different
+      alef or carries diacritics. A row projected before that column existed
+      holds an empty string and simply never matches, rather than erroring —
+      rebuild the index to fill them.
+    */
+    where.push("(sort_name LIKE ? OR sort_name_ar LIKE ? OR slug LIKE ? OR id LIKE ?)");
     const needle = "%" + sortableNameKey(search) + "%";
-    params.push(needle, "%" + search + "%", "%" + search + "%");
+    params.push(needle, needle, "%" + search + "%", "%" + search + "%");
   }
   if (text(query.categoryId)) {
     /*

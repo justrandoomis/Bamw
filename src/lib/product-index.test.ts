@@ -230,6 +230,13 @@ describe("filtering happens in SQL", () => {
   });
 
   it("searches Arabic through the same folded key", async () => {
+    /*
+      This passes on the fixture above because product `c` has its Arabic name
+      in `title`. Production does not look like that — an imported game holds
+      the English name there and the Arabic one in `titleAr` — so this test
+      alone was never evidence that an Arabic search worked on the real
+      catalogue. The block below uses the shape production has.
+    */
     const page = await readProductIndexPage({ search: "بطاقه" });
     expect(page.items.map((i) => i.id)).toEqual(["c"]);
   });
@@ -430,7 +437,14 @@ describe("a save writes only what changed", () => {
     // One INSERT OR REPLACE, and no DELETE of the whole table.
     expect(statements).toHaveLength(1);
     expect(statements[0]!.sql).toContain("INSERT OR REPLACE");
-    expect(statements[0]!.params).toHaveLength(27);
+    /*
+      One bind per column, counted off the statement rather than written down.
+      The literal here was 27, and adding the Arabic name failed this test for
+      the one reason it should not care about — how many columns there are.
+      What it is actually asserting is that a single row was written whole.
+    */
+    const columnCount = statements[0]!.sql.split("VALUES")[0]!.split(",").length;
+    expect(statements[0]!.params).toHaveLength(columnCount);
     expect(statements.some((s) => s.sql === "DELETE FROM product_index")).toBe(false);
   });
 
@@ -542,5 +556,84 @@ describe("the catalogue total, beside the match count", () => {
     const all = await readProductIndexPage({});
     expect(all.total).toBe(17);
     expect(all.catalogueTotal).toBe(17);
+  });
+});
+
+/**
+ * Searching the admin table in Arabic, on the shape production actually has.
+ *
+ * An imported game carries the English name in `title` and the Arabic one in
+ * `titleAr`. `sort_name` is built from `title || titleEn || slug`, so it was
+ * English end to end and «زيلدا» matched nothing — while the one Arabic search
+ * test in this file passed, because its fixture put the Arabic name in `title`.
+ *
+ * The Arabic name is now projected into its own column and searched with the
+ * same folded needle. Deliberately not folded into `sort_name`: that column
+ * orders the admin table, and mixing a second name into it would reorder the
+ * products the admin sees.
+ */
+describe("an Arabic search, on a catalogue named the way production names it", () => {
+  beforeEach(async () => {
+    await rebuildProductIndex(
+      [
+        product({
+          id: "zelda",
+          title: "The Legend of Zelda: Tears of the Kingdom",
+          titleEn: "The Legend of Zelda: Tears of the Kingdom",
+          titleAr: "أسطورة زيلدا: دموع المملكة",
+          categoryId: "cat_nintendo",
+        }),
+        product({
+          id: "mario",
+          title: "Super Mario Odyssey",
+          titleEn: "Super Mario Odyssey",
+          titleAr: "سوبر ماريو أوديسي",
+          categoryId: "cat_nintendo",
+        }),
+        product({
+          id: "legacy",
+          title: "Animal Crossing",
+          title_ar: "قطع الحيوانات",
+          categoryId: "cat_nintendo",
+        }),
+      ],
+      1,
+    );
+  });
+
+  it("finds a game by its Arabic name when the title is English", async () => {
+    const page = await readProductIndexPage({ search: "زيلدا" });
+    expect(page.items.map((i) => i.id)).toEqual(["zelda"]);
+  });
+
+  it("still finds it by the English name", async () => {
+    const page = await readProductIndexPage({ search: "zelda" });
+    expect(page.items.map((i) => i.id)).toEqual(["zelda"]);
+  });
+
+  it("folds the alef, so «اسطوره» finds «أسطورة»", async () => {
+    const page = await readProductIndexPage({ search: "اسطوره" });
+    expect(page.items.map((i) => i.id)).toEqual(["zelda"]);
+  });
+
+  it("reads the snake_case spelling a pre-schema row uses", async () => {
+    const page = await readProductIndexPage({ search: "الحيوانات" });
+    expect(page.items.map((i) => i.id)).toEqual(["legacy"]);
+  });
+
+  it("carries the Arabic name back on the row, so the table can show it", async () => {
+    const page = await readProductIndexPage({ search: "ماريو" });
+    expect(page.items[0]?.titleAr).toBe("سوبر ماريو أوديسي");
+  });
+
+  it("does not reorder the table — sorting by name is still the English one", async () => {
+    /*
+      The guard on the whole change. `sort_name` is untouched, so ordering by
+      name gives the same sequence it gave before the Arabic column existed:
+      Animal, Super, The — not the Arabic collation, which would put أسطورة
+      first.
+    */
+    const page = await readProductIndexPage({ sort: { field: "name", direction: "asc" } });
+    expect(page.items.map((i) => i.id)).toEqual(["legacy", "mario", "zelda"]);
   });
 });

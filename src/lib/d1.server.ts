@@ -870,6 +870,7 @@ const SCHEMA_PATCHES: string[] = [
      slug TEXT NOT NULL DEFAULT '',
      title TEXT NOT NULL DEFAULT '',
      title_en TEXT NOT NULL DEFAULT '',
+     title_ar TEXT NOT NULL DEFAULT '',
      category TEXT NOT NULL DEFAULT '',
      category_id TEXT NOT NULL DEFAULT '',
      kind TEXT NOT NULL DEFAULT '',
@@ -888,6 +889,7 @@ const SCHEMA_PATCHES: string[] = [
      created_at TEXT NOT NULL DEFAULT '',
      release_date TEXT NOT NULL DEFAULT '',
      sort_name TEXT NOT NULL DEFAULT '',
+     sort_name_ar TEXT NOT NULL DEFAULT '',
      sort_updated INTEGER,
      sort_release INTEGER,
      sort_rank INTEGER NOT NULL DEFAULT 0,
@@ -910,6 +912,19 @@ const SCHEMA_PATCHES: string[] = [
   `CREATE INDEX IF NOT EXISTS idx_pi_rank_asc ON product_index (display_order, sort_rank, id)`,
   `CREATE INDEX IF NOT EXISTS idx_pi_category ON product_index (category_id, display_order DESC)`,
   `CREATE INDEX IF NOT EXISTS idx_pi_hidden ON product_index (hidden, sort_updated DESC)`,
+  /*
+    The Arabic name, added to a table that already exists.
+
+    `CREATE TABLE IF NOT EXISTS` above is for a fresh database and does nothing
+    to one already carrying rows, so these two are how a live `product_index`
+    gets the columns. They fail once applied, which is what this list is for.
+
+    A row projected before they existed holds an empty string in both, so an
+    Arabic search finds nothing until the index is rebuilt — the columns are
+    filled by `bootstrapProductIndex` and by the next save of each product.
+  */
+  `ALTER TABLE product_index ADD COLUMN title_ar TEXT NOT NULL DEFAULT ''`,
+  `ALTER TABLE product_index ADD COLUMN sort_name_ar TEXT NOT NULL DEFAULT ''`,
   `CREATE TABLE IF NOT EXISTS store_kv (key TEXT PRIMARY KEY, value TEXT NOT NULL, updated_at TEXT NOT NULL)`,
   `CREATE TABLE IF NOT EXISTS store_rev (rev INTEGER PRIMARY KEY, updated_at TEXT NOT NULL)`,
   `ALTER TABLE users ADD COLUMN wallet_balance REAL NOT NULL DEFAULT 0`,
