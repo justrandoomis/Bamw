@@ -287,6 +287,24 @@ export interface Product extends Partial<GameMetadata> {
   [key: string]: unknown;
 }
 
+/** The kinds of account a bundle can be delivered as. */
+export type BundleAccountKind = "primary" | "secondary" | "full" | "offline" | "online";
+
+/**
+ * One way to buy a bundle, and what it adds to the price.
+ *
+ * `extraPrice` is an amount **on top of** the bundle price, not a replacement
+ * for it — which is why it is named for what it is. Zero is the ordinary case:
+ * the option the bundle is listed at.
+ */
+export interface BundleAccountOption {
+  id: string;
+  kind: BundleAccountKind;
+  /** Overrides the standard Arabic label when the admin wants their own words. */
+  label?: string;
+  extraPrice?: number;
+}
+
 export interface AccountBundle {
   id: string;
   title: string;
@@ -301,7 +319,24 @@ export interface AccountBundle {
   image?: string;
   banner?: string;
   gameIds: (string | number)[];
-  accountType?: "primary" | "secondary" | "full" | "offline" | "online";
+  /**
+   * The single account type this bundle is sold as.
+   *
+   * Kept because every bundle in the catalogue carries it and it is what the
+   * page badge reads. `accountOptions` supersedes it when present: a bundle
+   * that offers both an offline and an online account cannot say which it is
+   * in one scalar.
+   */
+  accountType?: BundleAccountKind;
+  /**
+   * The account types this bundle can be bought as, and what each costs extra.
+   *
+   * One bundle, several ways to receive it — an offline account at the listed
+   * price, an online one for a few thousand more. The surcharge lives on the
+   * record rather than in the cart, so a browser can name an option but never
+   * price one.
+   */
+  accountOptions?: BundleAccountOption[];
   stock?: number;
   /**
    * Stock that never runs out — the number is ignored while this is on.
@@ -680,12 +715,7 @@ export interface StoreNotification {
  * clawback is never mistaken for an order refund.
  */
 export type WalletTransactionKind =
-  | "deposit"
-  | "purchase"
-  | "refund"
-  | "admin_adjustment"
-  | "referral_reward"
-  | "referral_reversal";
+  "deposit" | "purchase" | "refund" | "admin_adjustment" | "referral_reward" | "referral_reversal";
 
 export interface WalletTransaction {
   id: string;

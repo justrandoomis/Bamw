@@ -23,6 +23,7 @@ import {
 } from "./coupons";
 import { claimCouponUse, readCouponUsage, releaseCouponUse } from "./coupon-usage.server";
 import { isAwaitingRelease, releaseDayISO } from "./release";
+import { bundleAccountLabel, resolveBundleUnitPrice } from "./bundles";
 import { resolveUnitPrice } from "./productPricing";
 import { resolveReferralForCheckout } from "./referral/checkout.server";
 import {
@@ -30,10 +31,7 @@ import {
   claimFirstReferralDiscount,
   releaseReferralDiscount,
 } from "./referral/binding.server";
-import {
-  insertRewardStatement,
-  markAttributionConverted,
-} from "./referral/rewards.server";
+import { insertRewardStatement, markAttributionConverted } from "./referral/rewards.server";
 import { memberAllowsNotification } from "./notification-preferences.server";
 import type {
   Address,
@@ -122,7 +120,20 @@ async function validateLine(
 
   if (!product && bundle) {
     if (bundle.isActive === false) return null;
-    const unitPrice = toNumber(bundle.price);
+    /*
+      The account the buyer picked, priced from the bundle record.
+
+      A bundle can be sold as more than one kind of account — an offline one at
+      the listed price, an online one for more — and this branch returns before
+      `resolveUnitPrice`, so it had no idea options existed. Only the id
+      travels: `resolveBundleUnitPrice` looks it up on the record, and an id
+      naming nothing prices as the bundle's own price rather than as whatever
+      arrived beside it. Same rule the product branch below applies, for the
+      same reason — a customer must not be shown one number and charged
+      another.
+    */
+    const bundlePricing = resolveBundleUnitPrice(bundle, { optionId: line.optionId ?? null });
+    const unitPrice = toNumber(bundlePricing.unitPrice);
     if (!Number.isFinite(unitPrice) || unitPrice <= 0 || isInvalidTitle(bundle.title)) {
       return null;
     }
@@ -144,10 +155,21 @@ async function validateLine(
       );
     }
 
+    /*
+      The chosen account named in the title, so the order, the invoice and the
+      Telegram card all say which one was bought. The product branch below does
+      the same with an edition; without it a fulfiller reading an order for a
+      bundle sold two ways cannot tell which to prepare.
+    */
+    const chosen = bundlePricing.option;
+    const bundleTitle = chosen
+      ? `${bundle.title.trim()} (${bundleAccountLabel(chosen)})`
+      : bundle.title.trim();
+
     return {
       id: randomId("itm"),
       productId: bundle.id,
-      title: bundle.title.trim(),
+      title: bundleTitle,
       ...(bundle.image ? { image: String(bundle.image) } : {}),
       kind: "bundle",
       quantity: Math.max(1, Math.min(99, Math.floor(Number(line.quantity) || 1))),
@@ -156,6 +178,9 @@ async function validateLine(
       unitCost: toNumber((bundle as any).cost),
       meta: {
         bundleGameIds: bundle.gameIds,
+        ...(chosen
+          ? { bundleOptionId: chosen.id, bundleOptionName: bundleAccountLabel(chosen) }
+          : {}),
       } as any,
     };
   }
@@ -415,7 +440,8 @@ export async function createOrderForUser(
       quantity: item.quantity,
       unitPriceIqd: item.unitPrice,
       optionId: (item.meta as Record<string, unknown> | undefined)?.["optionId"] as string | null,
-      optionName: (item.meta as Record<string, unknown> | undefined)?.["optionName"] as string | null,
+      optionName: (item.meta as Record<string, unknown> | undefined)?.["optionName"] as
+        string | null,
       typeId: (item.meta as Record<string, unknown> | undefined)?.["typeId"] as string | null,
       typeName: (item.meta as Record<string, unknown> | undefined)?.["typeName"] as string | null,
       /*
@@ -701,9 +727,7 @@ export async function createOrderForUser(
       ? {
           referral: {
             ...appliedReferral,
-            rewardStatus: (needsWalletPayment ? "pending" : "eligible") as
-              | "pending"
-              | "eligible",
+            rewardStatus: (needsWalletPayment ? "pending" : "eligible") as "pending" | "eligible",
           },
         }
       : {}),

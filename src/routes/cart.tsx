@@ -47,9 +47,7 @@ import { playSound } from "@/utils/audio";
 import { useCurrency } from "@/context/CurrencyContext";
 import { getCart, updateCartItem, removeCartItem } from "@/lib/cart.functions";
 import { cartLinePrice } from "@/lib/productPricing";
-import ReferralCartField, {
-  type ReferralCartState,
-} from "@/components/referral/ReferralCartField";
+import ReferralCartField, { type ReferralCartState } from "@/components/referral/ReferralCartField";
 
 /**
  * A cart line as the coupon rules need to see it.
@@ -346,17 +344,29 @@ function CartPage() {
     if (localLines && localLines.length > 0) {
       return localLines.map((l) => {
         const product = products.find((p) => String(p.id) === String(l.productId)) as any;
+        /*
+          A bundle is a catalogue record too.
+
+          This branch looked only in `products`, so a bundle line added while
+          signed out resolved to nothing and fell back to the price stored in
+          localStorage — the very thing the note above says the catalogue must
+          win over. Harmless while a bundle had one price; now that an account
+          option adds to it, the screen could show a figure the till would not
+          agree with. The signed-in branch below already reads both.
+        */
+        const entity =
+          product || (bundles.find((b) => String(b.id) === String(l.productId)) as any);
         return {
           ...l,
-          title: l.title || product?.titleEn || product?.english_name || product?.title || "منتج",
+          title: l.title || entity?.titleEn || entity?.english_name || entity?.title || "منتج",
           // The catalogue wins over the persisted line. A cart line is stored
           // in localStorage, so a picture chosen by an older build (or from a
           // field that has since been corrected) would otherwise be pinned
           // there forever — which is exactly how the cart ended up disagreeing
           // with the product page about the same purchase.
-          image: product ? resolvePurchaseImage(product).url : l.image || "",
-          source: product,
-          price: cartLinePrice(product, l),
+          image: entity ? resolvePurchaseImage(entity).url : l.image || "",
+          source: entity,
+          price: cartLinePrice(entity, l),
           /** What it cost when it was added, so a change can be pointed out. */
           addedAtPrice: Number(l.price) || 0,
         };
@@ -641,7 +651,11 @@ function CartPage() {
           the message names it and offers to take it out — the customer can
           then register for the launch alert on its page.
         */
-        const details = err as Error & { productTitle?: string; releaseDate?: string | null; productId?: string };
+        const details = err as Error & {
+          productTitle?: string;
+          releaseDate?: string | null;
+          productId?: string;
+        };
         const name = details.productTitle || "إحدى الألعاب";
         const when = details.releaseDate ? ` (تصدر في ${details.releaseDate})` : "";
         toast.error(`${name} لم تصدر بعد${when} — أزلها من السلة وفعّل التنبيه من صفحتها.`, {

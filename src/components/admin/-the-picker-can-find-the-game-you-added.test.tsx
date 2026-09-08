@@ -62,6 +62,7 @@ vi.mock("@/components/NintendoCover", () => ({
 vi.mock("sonner", () => ({ toast: { success: () => {}, error: () => {} } }));
 
 const BundlesManager = (await import("./BundlesManager")).default;
+const { UNPRICED_GAME_VALUE } = await import("@/lib/bundles");
 
 /* Titles are real games; prices and ids are fixture values. */
 const game = (n: number, en: string, ar: string, extra: Record<string, unknown> = {}) => ({
@@ -136,8 +137,7 @@ async function openEditor() {
 
 const pickerBox = () => screen.getByPlaceholderText(/ابحث بالاسم العربي/);
 const type = (value: string) => fireEvent.change(pickerBox(), { target: { value } });
-const rowIds = () =>
-  screen.queryAllByTestId("picker-row").map((el) => el.getAttribute("data-id"));
+const rowIds = () => screen.queryAllByTestId("picker-row").map((el) => el.getAttribute("data-id"));
 
 beforeEach(() => {
   onSaveBundles.mockClear();
@@ -229,9 +229,21 @@ describe("the games already in the bundle", () => {
 });
 
 describe("the struck-through price", () => {
-  it("is left alone when a selected game cannot be resolved", async () => {
-    // The catalogue never arrives, so only the two-row page is available and
-    // `p3` cannot be priced. The admin's own figure must survive.
+  it("values a game it cannot price at five thousand rather than abandoning the sum", async () => {
+    /*
+      This asserted the opposite until the owner replaced the rule.
+
+      The old behaviour was to leave the admin's own figure alone the moment
+      one selected game could not be resolved — a guard against summing over a
+      partial page and publishing a number that was wrong by a whole game. The
+      owner's rule removes the need for it: a game the shop has not priced is
+      worth five thousand, so there is a real number for every id and nothing
+      left to abandon over.
+
+      Here the catalogue never arrives, so only the two-row page is available
+      and `p3` cannot be priced. Splatoon 3 is on that page at its own price;
+      `p3` is not, so it counts as five thousand.
+    */
     catalogue.mockRejectedValue(new Error("offline"));
     await openEditor();
     // And it says so, rather than claiming to be searching the whole shop.
@@ -240,7 +252,21 @@ describe("the struck-through price", () => {
     fireEvent.click(await screen.findByText("Splatoon 3"));
     fireEvent.click(screen.getByText("حفظ التعديلات"));
     const saved = onSaveBundles.mock.calls.at(-1)?.[0]?.[0];
-    expect(saved.originalPrice).toBe(120000);
+    /*
+      Every id counted once: the games the page can price at their prices, and
+      the one it cannot at UNPRICED_GAME_VALUE. Derived from the fixture rather
+      than written down, so this says what the rule is instead of restating an
+      arithmetic result.
+    */
+    const priced = new Map(ONE_PAGE.map((row) => [String(row.id), Number(row.price) || 0]));
+    const expected = saved.gameIds.reduce(
+      (total: number, id: string | number) =>
+        total + (priced.get(String(id)) || UNPRICED_GAME_VALUE),
+      0,
+    );
+    expect(saved.originalPrice).toBe(expected);
+    // And it is a real sum, not the admin's untouched 120000.
+    expect(saved.originalPrice).not.toBe(120000);
   });
 
   it("is the sum of the selection once the whole catalogue is there", async () => {
@@ -296,9 +322,7 @@ describe("searching a bundle that already has games in it", () => {
     an adversarial read of the shipped code, and both are the owner's sentence
     read literally: «لا يبحث عن الالعاب المضافه».
   */
-  const MANY = Array.from({ length: 12 }, (_, i) =>
-    game(200 + i, `Filler Game ${i}`, `لعبة ${i}`),
-  );
+  const MANY = Array.from({ length: 12 }, (_, i) => game(200 + i, `Filler Game ${i}`, `لعبة ${i}`));
   const CROWDED = {
     ...BUNDLE,
     gameIds: MANY.map((g) => g.id),
@@ -443,9 +467,9 @@ describe("the bundle's own settings", () => {
 
   it("offers an online account, not only an offline one", async () => {
     await openEditor();
-    const options = Array.from(
-      screen.getByDisplayValue(/حساب/).querySelectorAll("option"),
-    ).map((o) => (o as HTMLOptionElement).value);
+    const options = Array.from(screen.getByDisplayValue(/حساب/).querySelectorAll("option")).map(
+      (o) => (o as HTMLOptionElement).value,
+    );
     expect(options).toContain("offline");
     expect(options).toContain("online");
   });

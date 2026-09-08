@@ -3,7 +3,13 @@ import { Link, useNavigate } from "@tanstack/react-router";
 import { motion } from "motion/react";
 import { Layers, ShoppingCart, Sparkles, ShieldCheck, Check, ArrowRight } from "lucide-react";
 import type { AccountBundle, Product } from "@/lib/types";
-import { getBundleGames, getBundleSavings, getAccountTypeInfo } from "@/lib/bundles";
+import {
+  bundleAccountOptions,
+  getBundleGames,
+  getBundleSavings,
+  getAccountTypeInfo,
+  resolveBundleUnitPrice,
+} from "@/lib/bundles";
 import { useCurrency } from "@/context/CurrencyContext";
 import { playSound } from "@/utils/audio";
 import { useCartStore } from "@/store/useCartStore";
@@ -53,13 +59,30 @@ export function BundleCard({ bundle, products, layout = "grid", onSelect }: Bund
         ? resolvePurchaseImage(games[0] as Record<string, unknown> | undefined).url
         : bundleArt.url;
 
+      /*
+        The cheapest way to buy it, picked for them.
+
+        A bundle sold as several kinds of account has no picker on a card —
+        there is no room for one and the card is a summary, not a checkout. So
+        the card adds the option the listed price belongs to, which is the
+        cheapest; the detail page is where the more expensive one is chosen.
+        Without an id the till would price the base and the cart would merge
+        two different accounts into one line.
+      */
+      const cheapest = [...bundleAccountOptions(bundle)].sort(
+        (a, b) => (Number(a.extraPrice) || 0) - (Number(b.extraPrice) || 0),
+      )[0];
+      const optionId = cheapest ? String(cheapest.id) : "";
+      const unitPrice = resolveBundleUnitPrice(bundle, { optionId }).unitPrice;
+
       addLocalCart({
         productId: bundle.id,
         title: bundle.titleEn || bundle.title,
         image: bundleImage,
-        price: bundle.price,
+        price: unitPrice,
         kind: "bundle",
         requiresAddress: false,
+        ...(optionId ? { optionId } : {}),
       });
 
       if (user) {
@@ -67,7 +90,7 @@ export function BundleCard({ bundle, products, layout = "grid", onSelect }: Bund
           data: {
             productId: String(bundle.id),
             quantity: 1,
-            options: { bundleGameIds: bundle.gameIds },
+            options: { bundleGameIds: bundle.gameIds, optionId },
           },
         });
         queryClient.invalidateQueries({ queryKey: ["cart"] });
