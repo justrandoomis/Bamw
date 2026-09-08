@@ -117,19 +117,40 @@ try {
     await page.waitForTimeout(5000);
     const snapshot = await page.evaluate(async () => {
       const res = await fetch("/api/banana?range=1D", { headers: { accept: "application/json" } });
-      if (!res.ok) return { __status: res.status };
+      if (!res.ok) {
+        /*
+          A refusal is only useful if you can tell who wrote it. Cloudflare
+          stamps a mitigated request with `cf-mitigated` and answers in HTML;
+          the Worker answers in JSON. Carry back enough to say which.
+        */
+        return {
+          __status: res.status,
+          __type: res.headers.get("content-type") || "",
+          __mitigated: res.headers.get("cf-mitigated") || "",
+          __body: (await res.text()).replace(/\s+/g, " ").slice(0, 200),
+        };
+      }
       return res.json();
     });
 
     if (snapshot?.__status) {
       out.apiStatus = snapshot.__status;
+      out.apiType = snapshot.__type;
+      out.apiMitigated = snapshot.__mitigated;
+      out.apiBody = snapshot.__body;
     } else {
       out.source = "page";
       readSnapshot(out, snapshot);
-      /* The screen the customer actually reads. */
-      const text = (await page.locator("body").innerText()).replace(/\s+/g, " ");
-      out.screenShowsZeroPrice = /\$\s*0\.00\b/.test(text);
     }
+    /*
+      The screen the customer actually reads — recorded whether or not the
+      snapshot came back, because a page that loaded and then got nothing from
+      its API is exactly the case worth seeing.
+    */
+    const text = (await page.locator("body").innerText()).replace(/\s+/g, " ");
+    out.screenShowsZeroPrice = /\$\s*0\.00\b/.test(text);
+    out.screenTextLength = text.length;
+    out.screenSample = text.slice(0, 240);
   }
 } catch (error) {
   out.error = String(error).split("\n")[0];
@@ -148,11 +169,15 @@ if (out.source === null) {
     const res = await fetch(`${BASE}/api/banana?range=1D`, {
       headers: { accept: "application/json", "user-agent": UA, "accept-language": LANG },
     });
-    out.apiStatus = res.status;
+    out.directApiStatus = res.status;
+    out.directApiType = res.headers.get("content-type") || "";
+    out.directApiMitigated = res.headers.get("cf-mitigated") || "";
     if (res.ok) {
       out.source = "api";
       readSnapshot(out, await res.json());
       out.challenged = false;
+    } else {
+      out.directApiBody = (await res.text()).replace(/\s+/g, " ").slice(0, 200);
     }
   } catch (error) {
     out.apiError = String(error).split("\n")[0];
@@ -185,15 +210,45 @@ say(
   `| الشاشة تعرض \`$0.00\` | ${out.screenShowsZeroPrice === undefined ? "— (لم تُقرأ الصفحة)" : out.screenShowsZeroPrice} |`,
 );
 say(`| مصدر القراءة | ${out.source ? WHERE[out.source] : "—"} |`);
+say(`| نص الصفحة (حروف) | ${out.screenTextLength ?? "—"} |`);
+say();
+if (out.apiStatus && out.apiStatus !== 200) {
+  say(`**\`/api/banana\` من داخل الصفحة رفض بـ ${out.apiStatus}.**`);
+  say(`- \`content-type\`: \`${out.apiType || "—"}\``);
+  say(`- \`cf-mitigated\`: \`${out.apiMitigated || "—"}\``);
+  say(`- الجسم: \`${out.apiBody || "—"}\``);
+  say();
+}
+if (out.directApiStatus && out.directApiStatus !== 200) {
+  say(`**\`/api/banana\` مباشرةً رفض بـ ${out.directApiStatus}.**`);
+  say(`- \`content-type\`: \`${out.directApiType || "—"}\``);
+  say(`- \`cf-mitigated\`: \`${out.directApiMitigated || "—"}\``);
+  say(`- الجسم: \`${out.directApiBody || "—"}\``);
+  say();
+}
+if (out.screenSample) {
+  say(`_على الشاشة:_ \`${out.screenSample}\``);
+  say();
+}
 if (errors.length) say(`\n_uncaught: ${[...new Set(errors)].slice(0, 3).join(" · ")}_`);
 if (out.error) say(`\n_page failed: ${out.error}_`);
 if (out.apiError) say(`\n_api failed: ${out.apiError}_`);
 say();
 
-if (out.source === null) {
+if (out.source === null && out.challenged) {
   say(
     "_Challenged by bot protection on the page and refused on the API — inconclusive, " +
       "not a verdict on the shop._",
+  );
+} else if (out.source === null) {
+  /*
+    The page itself loaded. That rules out "this IP is being challenged at the
+    door" and leaves the API refusing on its own — which is what a customer
+    would experience as a market with no prices in it.
+  */
+  say(
+    "**الصفحة فتحت (200) لكن `/api/banana` رفض. هذا ليس تحدّي بوتات على الصفحة — " +
+      "السوق يفتح بلا أسعار.** راجع الترويسات أعلاه لمعرفة من رفض.",
   );
 } else {
   say(

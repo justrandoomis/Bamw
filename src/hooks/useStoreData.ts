@@ -2,6 +2,7 @@ import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useEffect } from "react";
 
 import {
+  clearCatalogSnapshot,
   readCatalogSnapshot,
   rememberCatalogVersion,
   writeCatalogSnapshot,
@@ -46,6 +47,26 @@ function saveCachedStoreData(data: StoreData, version: number) {
   }
 }
 
+/**
+ * May this answer be kept on the device?
+ *
+ * `/api/data` answers admins and shoppers at the same URL, and the two
+ * payloads are not the same document. The admin one skips `publicStore`, so it
+ * carries hidden products, raw `options` and `types` rows with their `cost`
+ * and supplier fields, and unredacted settings — none of which `redactPrivateKeys`
+ * has been near. The snapshot written below then kept all of it in
+ * `localStorage`, where it outlived the session that fetched it.
+ *
+ * The server already marks those responses `private, no-store`, and the
+ * service worker already honours that (see the `mayStore` check in
+ * `public/sw.js`). This is the same rule in the one place that was still
+ * ignoring it, rather than a second opinion about who is an admin.
+ */
+function mayKeepOnDevice(response: Response): boolean {
+  const directive = response.headers.get("cache-control") || "";
+  return !/no-store|private/i.test(directive);
+}
+
 // In-flight fetch deduplicator
 let inFlightFetch: Promise<StoreData> | null = null;
 
@@ -83,7 +104,18 @@ async function fetchStoreData(): Promise<StoreData> {
       const json = (await res.json()) as StoreData;
       if (json && Array.isArray(json.products) && json.products.length > 0) {
         console.log(`[HOME_REFRESH_SUCCESS] reqId=${reqId} duration=${elapsed}ms count=${json.products.length} catalog=${catalogVersion}`);
-        saveCachedStoreData(json, catalogVersion);
+        if (mayKeepOnDevice(res)) {
+          saveCachedStoreData(json, catalogVersion);
+        } else {
+          /*
+            Not merely "don't write one" — drop whatever is already there. An
+            admin who signed in before this shipped has a snapshot of the
+            unredacted catalogue sitting in their browser, and a fix that only
+            stops new writes leaves it there for as long as the version stamp
+            keeps it valid.
+          */
+          clearCatalogSnapshot();
+        }
         return json;
       } else {
         // If the server returned an empty products payload unexpectedly, fallback to cached snapshot
