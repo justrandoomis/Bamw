@@ -22,9 +22,15 @@ import {
   ArrowRight,
 } from "lucide-react";
 import { toast } from "sonner";
-import type { AccountBundle, Product } from "@/lib/types";
+import type { AccountBundle, BundleAccountKind, BundleAccountOption, Product } from "@/lib/types";
 import { adminApi, fileToDataUrl } from "@/lib/api";
-import { getBundleGames } from "@/lib/bundles";
+import {
+  bundleAccountLabel,
+  bundleAccountOptions,
+  getBundleGames,
+  sumBundleGamePrices,
+  UNPRICED_GAME_VALUE,
+} from "@/lib/bundles";
 import { isProductHidden, isVisibleToPublic } from "@/lib/purchasable";
 import { buildProductIndex, searchProducts } from "@/lib/search/products";
 import { extractBundleGames, type BundleGameMatch } from "@/lib/bundleGameExtraction";
@@ -211,6 +217,60 @@ export default function BundlesManager({
   */
   const visiblePickerGames = filteredPickerGames.slice(0, PICKER_ROWS);
 
+  /*
+    The strike-through price, recomputed from the selection.
+
+    This used to live inside `toggleGameSelection`, so it only ran when a row
+    was ticked by hand: the description-extraction button replaced the whole
+    selection and left the old figure, and creating placeholders on save added
+    games the total never heard about. It is a function now, and every path
+    that changes `gameIds` calls it.
+
+    It also used to be abandoned entirely when a selected game could not be
+    resolved — the guard was there because summing over a fifty-row page made
+    the figure wrong. `sumBundleGamePrices` counts by id and values a game the
+    shop has not priced at five thousand, so there is nothing left to abandon
+    over and the number is a real sum of every game in the bundle.
+  */
+  const originalPriceFor = (ids: (string | number)[]): number =>
+    sumBundleGamePrices({ gameIds: ids } as AccountBundle, catalogue as unknown as Product[]);
+
+  const ACCOUNT_KINDS: BundleAccountKind[] = ["primary", "secondary", "full", "offline", "online"];
+
+  /** Adds one buyable account type to the bundle being edited. */
+  const addAccountOption = (kind: BundleAccountKind) => {
+    if (!editingBundle) return;
+    const existing = editingBundle.accountOptions ?? [];
+    if (existing.some((option) => option.kind === kind)) {
+      toast.error("هذا النوع مضاف بالفعل");
+      return;
+    }
+    const option: BundleAccountOption = {
+      id: `opt_${kind}_${existing.length + 1}`,
+      kind,
+      extraPrice: 0,
+    };
+    setEditingBundle({ ...editingBundle, accountOptions: [...existing, option] });
+  };
+
+  const updateAccountOption = (id: string, patch: Partial<BundleAccountOption>) => {
+    if (!editingBundle) return;
+    setEditingBundle({
+      ...editingBundle,
+      accountOptions: (editingBundle.accountOptions ?? []).map((option) =>
+        option.id === id ? { ...option, ...patch } : option,
+      ),
+    });
+  };
+
+  const removeAccountOption = (id: string) => {
+    if (!editingBundle) return;
+    setEditingBundle({
+      ...editingBundle,
+      accountOptions: (editingBundle.accountOptions ?? []).filter((option) => option.id !== id),
+    });
+  };
+
   const handleStartCreate = () => {
     setEditingBundle({
       id: `bnd_${Date.now()}`,
@@ -284,10 +344,7 @@ export default function BundlesManager({
 
     const pending = (matches ?? []).filter((m) => m.status === "missing");
 
-    if (
-      (!editingBundle.gameIds || editingBundle.gameIds.length === 0) &&
-      pending.length === 0
-    ) {
+    if ((!editingBundle.gameIds || editingBundle.gameIds.length === 0) && pending.length === 0) {
       toast.error("يرجى اختيار لعبة واحدة على الأقل في البندل");
       return;
     }
@@ -343,7 +400,16 @@ export default function BundlesManager({
       */
       pendingGames: [...(editingBundle.pendingGames ?? []), ...createdPending],
       price: Number(editingBundle.price) || 0,
-      originalPrice: Number(editingBundle.originalPrice) || 0,
+      /*
+        Recomputed one last time, with the placeholders just created counted in.
+
+        They are added to `gameIds` on this line and their catalogue rows carry
+        no price, so without this the games the admin has only named would be
+        the ones the strike-through total ignored — the exact case the five
+        thousand figure exists for. The admin's own number still wins if the
+        sum comes back empty, which only happens for a bundle with no games.
+      */
+      originalPrice: originalPriceFor(gameIds) || Number(editingBundle.originalPrice) || 0,
       stock: Number(editingBundle.stock) || 0,
       updatedAt: now,
       createdAt: editingBundle.createdAt || now,
@@ -374,25 +440,17 @@ export default function BundlesManager({
     }
 
     /*
-      The "sum of the individual prices" hint, recomputed from the selection.
-
-      This writes `originalPrice`, which is the number the customer sees struck
-      through — commercial data. It used to be summed over `products`, the
-      fifty-row page, so any selected game that was not on that page silently
-      contributed nothing and the strike-through price fell by its price the
-      next time the admin touched anything. Now it is summed over the whole
-      catalogue, and if even one selected game cannot be resolved the figure is
-      left exactly as the admin set it rather than replaced with a wrong one.
+      The "sum of the individual prices", which is the number the customer sees
+      struck through. Summed over the whole catalogue by `originalPriceFor`,
+      and a game the shop has not priced yet counts as five thousand rather
+      than as nothing.
     */
-    const resolved = catalogue.filter((p) => nextIds.some((id) => String(id) === String(p.id)));
-    const everyGameResolved = resolved.length === nextIds.length;
-    const totalOriginal = resolved.reduce((acc, g) => acc + (Number(g.price) || 0), 0);
+    const totalOriginal = originalPriceFor(nextIds);
 
     setEditingBundle({
       ...editingBundle,
       gameIds: nextIds,
-      originalPrice:
-        everyGameResolved && totalOriginal > 0 ? totalOriginal : editingBundle.originalPrice,
+      originalPrice: totalOriginal > 0 ? totalOriginal : editingBundle.originalPrice,
     });
   };
 
@@ -427,7 +485,18 @@ export default function BundlesManager({
     const ids = found
       .filter((m) => m.product)
       .map((m) => String((m.product as Record<string, unknown>)["id"]));
-    setEditingBundle({ ...editingBundle, gameIds: ids });
+    /*
+      The strike-through price follows the selection here too. It did not: this
+      button replaces the whole selection, and the total was only recomputed
+      when a row was ticked by hand — so pulling six games from the description
+      left the figure from whatever was selected before.
+    */
+    const totalOriginal = originalPriceFor(ids);
+    setEditingBundle({
+      ...editingBundle,
+      gameIds: ids,
+      originalPrice: totalOriginal > 0 ? totalOriginal : editingBundle.originalPrice,
+    });
 
     const missing = found.filter((m) => m.status === "missing").length;
     toast.success(
@@ -504,7 +573,8 @@ export default function BundlesManager({
             */
             const games = getBundleGames(bundle, catalogue);
             const isActive = bundle.isActive !== false;
-            const gameCount = games.length || (Array.isArray(bundle.gameIds) ? bundle.gameIds.length : 0);
+            const gameCount =
+              games.length || (Array.isArray(bundle.gameIds) ? bundle.gameIds.length : 0);
 
             return (
               <div
@@ -522,116 +592,118 @@ export default function BundlesManager({
                       <Layers className="w-3 h-3" />
                       {gameCount} ألعاب
                     </span>
-                  <span
-                    className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${
-                      bundle.accountType === "primary"
-                        ? "bg-emerald-500/10 text-emerald-600"
+                    <span
+                      className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${
+                        bundle.accountType === "primary"
+                          ? "bg-emerald-500/10 text-emerald-600"
+                          : bundle.accountType === "secondary"
+                            ? "bg-blue-500/10 text-blue-600"
+                            : "bg-purple-500/10 text-purple-600"
+                      }`}
+                    >
+                      {bundle.accountType === "primary"
+                        ? "رئيسي"
                         : bundle.accountType === "secondary"
-                          ? "bg-blue-500/10 text-blue-600"
-                          : "bg-purple-500/10 text-purple-600"
-                    }`}
-                  >
-                    {bundle.accountType === "primary"
-                      ? "رئيسي"
-                      : bundle.accountType === "secondary"
-                        ? "فرعي"
-                        : bundle.accountType === "full"
-                          ? "كامل"
-                          : "أوفلاين"}
-                  </span>
-                </div>
-
-                <div className="flex items-center gap-1">
-                  <button
-                    onClick={() => handleToggleActive(bundle)}
-                    className={`p-1.5 rounded-xl text-xs transition-colors ${
-                      isActive
-                        ? "text-emerald-600 hover:bg-emerald-500/10"
-                        : "text-muted-foreground hover:bg-muted"
-                    }`}
-                    title={isActive ? "تعطيل البندل" : "تفعيل البندل"}
-                  >
-                    {isActive ? <Eye className="w-4 h-4" /> : <EyeOff className="w-4 h-4" />}
-                  </button>
-
-                  <button
-                    onClick={() => handleDuplicate(bundle)}
-                    className="p-1.5 rounded-xl text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
-                    title="تكرار البندل"
-                  >
-                    <Copy className="w-4 h-4" />
-                  </button>
-
-                  <button
-                    onClick={() => handleStartEdit(bundle)}
-                    className="p-1.5 rounded-xl text-blue-600 hover:bg-blue-500/10 transition-colors"
-                    title="تعديل البندل"
-                  >
-                    <Edit2 className="w-4 h-4" />
-                  </button>
-
-                  <button
-                    onClick={() => handleDelete(bundle.id)}
-                    className="p-1.5 rounded-xl text-red-600 hover:bg-red-500/10 transition-colors"
-                    title="حذف البندل"
-                  >
-                    <Trash2 className="w-4 h-4" />
-                  </button>
-                </div>
-              </div>
-
-              {/* Middle: Image & Info */}
-              <div className="flex gap-3 items-center">
-                <div className="w-20 h-14 rounded-xl overflow-hidden bg-slate-900 shrink-0 border border-border/50">
-                  {bundle.image ? (
-                    <img
-                      src={bundle.image}
-                      alt={bundle.title}
-                      className="w-full h-full object-cover"
-                    />
-                  ) : games[0]?.image ? (
-                    <img
-                      src={games[0].image}
-                      alt={bundle.title}
-                      className="w-full h-full object-cover"
-                    />
-                  ) : (
-                    <div className="w-full h-full flex items-center justify-center text-muted-foreground">
-                      <Gamepad2 className="w-5 h-5" />
-                    </div>
-                  )}
-                </div>
-
-                <div className="flex-1 min-w-0">
-                  <h4 className="font-bold text-sm text-foreground line-clamp-1">{bundle.title}</h4>
-                  <p className="text-xs text-muted-foreground line-clamp-1 mt-0.5">
-                    {games.map((g) => g.title).join(", ") || "لا توجد ألعاب محددة"}
-                  </p>
-                  <div className="flex items-center gap-2 mt-1">
-                    <span className="font-black text-sm text-foreground">
-                      {Number(bundle.price).toLocaleString()} د.ع
+                          ? "فرعي"
+                          : bundle.accountType === "full"
+                            ? "كامل"
+                            : "أوفلاين"}
                     </span>
-                    {bundle.originalPrice && bundle.originalPrice > bundle.price && (
-                      <span className="text-[11px] line-through text-muted-foreground">
-                        {Number(bundle.originalPrice).toLocaleString()} د.ع
-                      </span>
-                    )}
+                  </div>
+
+                  <div className="flex items-center gap-1">
+                    <button
+                      onClick={() => handleToggleActive(bundle)}
+                      className={`p-1.5 rounded-xl text-xs transition-colors ${
+                        isActive
+                          ? "text-emerald-600 hover:bg-emerald-500/10"
+                          : "text-muted-foreground hover:bg-muted"
+                      }`}
+                      title={isActive ? "تعطيل البندل" : "تفعيل البندل"}
+                    >
+                      {isActive ? <Eye className="w-4 h-4" /> : <EyeOff className="w-4 h-4" />}
+                    </button>
+
+                    <button
+                      onClick={() => handleDuplicate(bundle)}
+                      className="p-1.5 rounded-xl text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
+                      title="تكرار البندل"
+                    >
+                      <Copy className="w-4 h-4" />
+                    </button>
+
+                    <button
+                      onClick={() => handleStartEdit(bundle)}
+                      className="p-1.5 rounded-xl text-blue-600 hover:bg-blue-500/10 transition-colors"
+                      title="تعديل البندل"
+                    >
+                      <Edit2 className="w-4 h-4" />
+                    </button>
+
+                    <button
+                      onClick={() => handleDelete(bundle.id)}
+                      className="p-1.5 rounded-xl text-red-600 hover:bg-red-500/10 transition-colors"
+                      title="حذف البندل"
+                    >
+                      <Trash2 className="w-4 h-4" />
+                    </button>
                   </div>
                 </div>
-              </div>
 
-              {/* Bottom: Stock & Fast Action */}
-              <div className="pt-2 border-t border-border/60 flex items-center justify-between text-xs text-muted-foreground">
-                <span>المخزون: {bundle.isInfiniteStock ? "∞" : (bundle.stock ?? 0)}</span>
-                {bundle.badge && (
-                  <span className="text-[10px] font-bold text-amber-600 bg-amber-500/10 px-2 py-0.5 rounded-md">
-                    {bundle.badge}
-                  </span>
-                )}
+                {/* Middle: Image & Info */}
+                <div className="flex gap-3 items-center">
+                  <div className="w-20 h-14 rounded-xl overflow-hidden bg-slate-900 shrink-0 border border-border/50">
+                    {bundle.image ? (
+                      <img
+                        src={bundle.image}
+                        alt={bundle.title}
+                        className="w-full h-full object-cover"
+                      />
+                    ) : games[0]?.image ? (
+                      <img
+                        src={games[0].image}
+                        alt={bundle.title}
+                        className="w-full h-full object-cover"
+                      />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center text-muted-foreground">
+                        <Gamepad2 className="w-5 h-5" />
+                      </div>
+                    )}
+                  </div>
+
+                  <div className="flex-1 min-w-0">
+                    <h4 className="font-bold text-sm text-foreground line-clamp-1">
+                      {bundle.title}
+                    </h4>
+                    <p className="text-xs text-muted-foreground line-clamp-1 mt-0.5">
+                      {games.map((g) => g.title).join(", ") || "لا توجد ألعاب محددة"}
+                    </p>
+                    <div className="flex items-center gap-2 mt-1">
+                      <span className="font-black text-sm text-foreground">
+                        {Number(bundle.price).toLocaleString()} د.ع
+                      </span>
+                      {bundle.originalPrice && bundle.originalPrice > bundle.price && (
+                        <span className="text-[11px] line-through text-muted-foreground">
+                          {Number(bundle.originalPrice).toLocaleString()} د.ع
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Bottom: Stock & Fast Action */}
+                <div className="pt-2 border-t border-border/60 flex items-center justify-between text-xs text-muted-foreground">
+                  <span>المخزون: {bundle.isInfiniteStock ? "∞" : (bundle.stock ?? 0)}</span>
+                  {bundle.badge && (
+                    <span className="text-[10px] font-bold text-amber-600 bg-amber-500/10 px-2 py-0.5 rounded-md">
+                      {bundle.badge}
+                    </span>
+                  )}
+                </div>
               </div>
-            </div>
-          );
-        })}
+            );
+          })}
 
         {filteredBundles.length === 0 && (
           <div className="col-span-full text-center py-12 bg-card rounded-3xl border border-border space-y-3">
@@ -753,6 +825,18 @@ export default function BundlesManager({
                     }
                     className="w-full px-3.5 py-2.5 rounded-xl border border-border bg-background focus:border-red-500 focus:outline-none font-mono"
                   />
+                  {/*
+                    It fills itself from the selection, and stays typeable.
+
+                    The field is written on every change to the game list, so
+                    leaving it alone is the normal way to use it — but an admin
+                    who wants a different struck-through number can still type
+                    one, and it survives until the selection changes again.
+                  */}
+                  <p className="text-[11px] text-muted-foreground leading-relaxed">
+                    يُحسب تلقائياً من مجموع الألعاب المختارة. اللعبة التي لم تُسعّر بعد تُحتسب بـ{" "}
+                    {UNPRICED_GAME_VALUE.toLocaleString()} د.ع.
+                  </p>
                 </div>
 
                 <div className="space-y-1.5">
@@ -770,6 +854,16 @@ export default function BundlesManager({
                     <option value="offline">حساب أوفلاين (Offline)</option>
                     <option value="online">حساب أونلاين (Online)</option>
                   </select>
+                  {/*
+                    The single type stays: it is what the card badge reads, and
+                    it is the one option a bundle has until a second is added
+                    below. The list wins once there is one.
+                  */}
+                  <p className="text-[11px] text-muted-foreground">
+                    {(editingBundle.accountOptions?.length ?? 0) > 0
+                      ? "الخيارات أدناه هي المعروضة للزبون — هذا الحقل للشارة فقط."
+                      : "أضف خيارات أدناه إذا كان البندل يُباع بأكثر من نوع حساب."}
+                  </p>
                 </div>
 
                 <div className="space-y-1.5">
@@ -799,6 +893,102 @@ export default function BundlesManager({
                     />
                     مخزون لا نهائي ∞
                   </label>
+                </div>
+              </div>
+
+              {/*
+                Several ways to buy one bundle.
+
+                An offline account at the listed price and an online one for a
+                few thousand more is one bundle with two options, not two
+                bundles. The number typed here is what the customer pays *on
+                top of* the bundle price, and the till reads it off this record
+                by id — nothing a browser sends can price an option.
+              */}
+              <div className="p-4 rounded-2xl bg-muted/30 border border-border/80 space-y-3">
+                <div className="flex items-center justify-between gap-2 flex-wrap">
+                  <label className="font-bold text-foreground text-sm">
+                    خيارات الحساب المتاحة للزبون
+                  </label>
+                  <span className="text-[11px] text-muted-foreground">
+                    التكلفة تُضاف على سعر البندل
+                  </span>
+                </div>
+
+                {(editingBundle.accountOptions ?? []).length === 0 ? (
+                  <p className="text-xs text-muted-foreground">
+                    لا خيارات — يُباع البندل بنوع الحساب المحدد أعلاه فقط.
+                  </p>
+                ) : (
+                  <div className="space-y-2">
+                    {(editingBundle.accountOptions ?? []).map((option) => (
+                      <div
+                        key={option.id}
+                        className="flex items-center gap-2 flex-wrap p-2.5 rounded-xl bg-background border border-border"
+                      >
+                        <select
+                          value={option.kind}
+                          onChange={(e) =>
+                            updateAccountOption(option.id, {
+                              kind: e.target.value as BundleAccountKind,
+                            })
+                          }
+                          className="px-2.5 py-2 rounded-lg border border-border bg-background text-xs font-bold focus:border-red-500 focus:outline-none"
+                        >
+                          {ACCOUNT_KINDS.map((kind) => (
+                            <option key={kind} value={kind}>
+                              {bundleAccountLabel({ id: kind, kind })}
+                            </option>
+                          ))}
+                        </select>
+
+                        <label className="flex items-center gap-1.5 text-xs font-bold text-muted-foreground">
+                          + تكلفة
+                          <input
+                            type="number"
+                            min={0}
+                            value={option.extraPrice ?? 0}
+                            onChange={(e) =>
+                              updateAccountOption(option.id, {
+                                extraPrice: Number(e.target.value) || 0,
+                              })
+                            }
+                            className="w-28 px-2.5 py-2 rounded-lg border border-border bg-background font-mono text-xs focus:border-red-500 focus:outline-none"
+                          />
+                          د.ع
+                        </label>
+
+                        <span className="text-xs font-mono text-foreground">
+                          ={" "}
+                          {(
+                            (Number(editingBundle.price) || 0) + (Number(option.extraPrice) || 0)
+                          ).toLocaleString()}{" "}
+                          د.ع
+                        </span>
+
+                        <button
+                          type="button"
+                          onClick={() => removeAccountOption(option.id)}
+                          className="ms-auto px-2.5 py-1.5 rounded-lg text-xs font-bold text-red-600 hover:bg-red-500/10"
+                        >
+                          حذف
+                        </button>
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+                <div className="flex flex-wrap gap-2">
+                  {ACCOUNT_KINDS.map((kind) => (
+                    <button
+                      key={kind}
+                      type="button"
+                      onClick={() => addAccountOption(kind)}
+                      className="px-3 py-1.5 rounded-xl border border-border bg-background text-[11px] font-bold text-muted-foreground hover:border-red-500/50 hover:text-foreground"
+                    >
+                      + {bundleAccountLabel({ id: kind, kind })}
+                    </button>
+                  ))}
                 </div>
               </div>
 
@@ -1046,7 +1236,8 @@ export default function BundlesManager({
                           </p>
                           {/* The name the admin searched by, when it is not the one above. */}
                           {(game as { titleAr?: string }).titleAr &&
-                          (game as { titleAr?: string }).titleAr !== (game.titleEn || game.title) ? (
+                          (game as { titleAr?: string }).titleAr !==
+                            (game.titleEn || game.title) ? (
                             <p className="text-[10px] text-muted-foreground truncate" dir="rtl">
                               {(game as { titleAr?: string }).titleAr}
                             </p>

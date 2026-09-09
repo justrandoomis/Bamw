@@ -261,6 +261,12 @@ export default function AdminDashboard() {
     "loading" | "loaded_with_data" | "loaded_empty" | "failed"
   >("loading");
   const [d1ProductCount, setD1ProductCount] = useState<number | null>(null);
+  /*
+    How many products the catalogue holds, as opposed to how many the current
+    filter matched. `d1ProductCount` is the match count — right for the pager,
+    wrong for a line that calls itself «منتج مسجل في D1».
+  */
+  const [catalogueProductCount, setCatalogueProductCount] = useState<number | null>(null);
 
   const [products, setProducts] = useState<any[]>([]);
   const [bundles, setBundles] = useState<AccountBundle[]>([]);
@@ -558,6 +564,7 @@ export default function AdminDashboard() {
       if (outcome.state === "loaded") {
         setProducts(outcome.products as any);
         setD1ProductCount(outcome.d1Count);
+        setCatalogueProductCount(outcome.catalogueTotal ?? null);
         setProductPage({ page: outcome.page, limit: outcome.limit, hasMore: outcome.hasMore });
         if (outcome.facets) setProductFacets(outcome.facets);
         setProductLoadStatus("loaded_with_data");
@@ -568,6 +575,7 @@ export default function AdminDashboard() {
       if (outcome.state === "empty") {
         setProducts([]);
         setD1ProductCount(outcome.d1Count);
+        setCatalogueProductCount(outcome.catalogueTotal ?? null);
         setProductPage({ page: outcome.page, limit: outcome.limit, hasMore: outcome.hasMore });
         if (outcome.facets) setProductFacets(outcome.facets);
         setProductLoadStatus("loaded_empty");
@@ -882,6 +890,7 @@ export default function AdminDashboard() {
             initialCategoryId={selectedCategoryId}
             loadStatus={productLoadStatus}
             d1ProductCount={d1ProductCount}
+            catalogueProductCount={catalogueProductCount}
             onRetry={retryDbLoad}
             isReloading={isReloading}
             loadError={dbError}
@@ -1769,6 +1778,7 @@ function ListingsView({
   initialCategoryId,
   loadStatus = "loaded_with_data",
   d1ProductCount,
+  catalogueProductCount,
   onRetry,
   isReloading,
   loadError,
@@ -1784,6 +1794,8 @@ function ListingsView({
   initialCategoryId?: string | null;
   loadStatus?: "loading" | "loaded_with_data" | "loaded_empty" | "failed";
   d1ProductCount?: number | null;
+  /** Rows in the catalogue, ignoring the filter. Absent on an older response. */
+  catalogueProductCount?: number | null;
   onRetry?: () => void;
   isReloading?: boolean;
   loadError?: string;
@@ -1920,6 +1932,16 @@ function ListingsView({
     rowCount: sortedProducts.length,
     isRefreshing,
   });
+
+  /*
+    What the current filter matched, and what the catalogue holds.
+
+    A server that has not shipped `catalogueTotal` yet sends nothing, and
+    falling back to the match count makes the header say only what it can stand
+    behind — the same sentence it always said, rather than a guess at a total.
+  */
+  const matchCount = d1ProductCount ?? products.length;
+  const catalogueCount = catalogueProductCount ?? matchCount;
 
   // Log product diagnostics to verify D1 single source of truth and active filters
   useEffect(() => {
@@ -2347,7 +2369,21 @@ function ListingsView({
                     failure gives no grounds for.
                   */
                   "تعذّر قراءة عدد المنتجات — لم تكتمل القراءة من D1"
-                : `عرض ${sortedProducts.length} من أصل ${d1ProductCount ?? products.length} منتج مسجل في D1`}
+                : /*
+                    Two different numbers, and the header was showing one under
+                    the other's name.
+
+                    `d1ProductCount` is how many rows the *current filter*
+                    matched. Labelled «منتج مسجل في D1» it read as the size of
+                    the catalogue, so picking a category or typing a search
+                    quietly restated how many products the shop has — «عرض 12
+                    من أصل 12 منتج مسجل في D1» on a shop holding a hundred and
+                    forty. The catalogue total is now its own number, and the
+                    match count is named as a match count when it differs.
+                  */
+                  matchCount === catalogueCount
+                  ? `عرض ${sortedProducts.length} من أصل ${catalogueCount} منتج مسجل في D1`
+                  : `عرض ${sortedProducts.length} من أصل ${matchCount} مطابقة — ${catalogueCount} منتج مسجل في D1`}
             {/* A refresh runs *over* the rows — the table is never blanked. */}
             {tableState.isRefreshing ? (
               <RefreshCw className="w-3 h-3 animate-spin text-primary" aria-label="جاري التحديث" />
@@ -2540,6 +2576,21 @@ function ListingsView({
                     : typeof p.titleEn === "string"
                       ? p.titleEn
                       : String(p.id || "");
+                /*
+                  The Arabic name, when the title above is not already it.
+
+                  On this catalogue `title` holds the English name for an
+                  imported game, so a table of a hundred and forty products
+                  read entirely in English to an admin who searches in Arabic.
+                  The projection carries `titleAr` now; showing it means the
+                  row says what was matched.
+                */
+                const arabicName =
+                  typeof p.titleAr === "string" &&
+                  p.titleAr.trim() &&
+                  p.titleAr.trim() !== safeTitle
+                    ? p.titleAr.trim()
+                    : "";
                 const catId =
                   typeof p.category === "string"
                     ? p.category
@@ -2564,6 +2615,11 @@ function ListingsView({
                   >
                     <td className="px-4 py-3 font-medium text-[var(--admin-ink)]">
                       {safeTitle}
+                      {arabicName ? (
+                        <span className="ms-2 text-[12px] font-normal text-muted-foreground">
+                          {arabicName}
+                        </span>
+                      ) : null}
                       {!isProductPriced(p) && (
                         <span className="ms-2 inline-block rounded-md bg-[var(--bad-bg)] px-2 py-0.5 text-[11px] font-bold text-[var(--brand-red-dark)]">
                           مخفي — بحاجة سعر/تكلفة

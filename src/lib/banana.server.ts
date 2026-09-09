@@ -49,6 +49,15 @@ export interface BananaListing {
 }
 
 export interface BananaSnapshot {
+  /*
+    The bounds the market enforces, so a refusal can name the number rather
+    than only say no. Sent by `marketLimits` in banana.server.ts.
+  */
+  minPrice: number;
+  maxPrice: number;
+  minListingQuantity: number;
+  maxListingQuantity: number;
+
   price: number;
   change24h: number;
   volume24h: number;
@@ -156,6 +165,7 @@ export async function getSnapshot(userId?: string, range = "1D"): Promise<Banana
       balance: bal.balance,
       locked: bal.locked,
       chart: await getChart(config, range),
+      ...marketLimits(config),
     };
   }
 
@@ -206,6 +216,24 @@ export async function getSnapshot(userId?: string, range = "1D"): Promise<Banana
     balance: bal.balance,
     locked: bal.locked,
     chart: await getChart(config, range),
+    ...marketLimits(config),
+  };
+}
+
+/**
+ * The bounds a member is trading inside, sent with the snapshot.
+ *
+ * Not secrets: they are the rules of the market, and the page needs them to
+ * say «أعلى سعر مسموح 5 د.ع» instead of «price_above_max». Prices and limits
+ * only — nothing about the shop's own money.
+ */
+function marketLimits(config: BananaMarketConfig) {
+  return {
+    minPrice: config.minPrice,
+    maxPrice: config.maxPrice,
+    minListingQuantity: config.minListingQuantity,
+    maxListingQuantity: config.maxListingQuantity,
+    promoRatePerMinute: config.promoRatePerMinute,
   };
 }
 
@@ -479,9 +507,11 @@ export async function getAdminBananaData() {
   const s = (store.settings ?? {}) as Record<string, unknown>;
   const marketConfig = await getMarketConfig();
 
-  const rewards = await d1All<any>(
-    `SELECT * FROM banana_redemption_offers ORDER BY created_at DESC`,
-  );
+  const rewards = (
+    await d1All<any>(
+      `SELECT * FROM banana_redemption_offers ORDER BY sort_order ASC, created_at DESC`,
+    )
+  ).map(toAdminReward);
   const redemptions = await d1All<any>(
     `SELECT r.*, u.name as user_name FROM banana_redemptions r JOIN users u ON r.user_id = u.id ORDER BY r.created_at DESC LIMIT 100`,
   );
@@ -583,36 +613,108 @@ export async function adminDeleteBot(id: string) {
   return { success: true };
 }
 
-export async function adminSaveReward(reward: any) {
-  const id = reward.id || `bre_${Date.now()}`;
-  const now = new Date().toISOString();
+/**
+ * The price in bananas, under either of the names it travels by.
+ *
+ * The form field is `cost` and this function read `bananaPrice`, so every save
+ * arrived as `Number(undefined)` — NaN — and the route refused it before it got
+ * here. Both names are read rather than one being renamed, because the reward
+ * list, the redemption screen and the storefront each picked their own.
+ */
+function rewardBananaPrice(reward: any): number {
+  const value = Number(reward?.bananaPrice ?? reward?.cost ?? reward?.banana_price);
+  return Number.isFinite(value) ? value : 0;
+}
 
-  if (reward.id) {
-    await d1Run(
-      `UPDATE banana_redemption_offers SET title = ?, description = ?, banana_price = ?, stock = ?, is_active = ?, updated_at = ? WHERE id = ?`,
-      reward.title,
-      reward.description,
-      reward.bananaPrice,
-      reward.stock,
-      reward.isActive ? 1 : 0,
-      now,
-      id,
-    );
-  } else {
-    await d1Run(
-      `INSERT INTO banana_redemption_offers (id, title, description, banana_price, stock, is_active, created_at, updated_at)
-       VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
-      id,
-      reward.title,
-      reward.description,
-      reward.bananaPrice,
-      reward.stock,
-      reward.isActive ? 1 : 0,
-      now,
-      now,
-    );
-  }
-  return { ...reward, id };
+/**
+ * Writes a reward, whether or not one with that id is already there.
+ *
+ * It used to choose between INSERT and UPDATE by asking whether the caller had
+ * sent an id — and the form generates one for a *new* reward before the admin
+ * has typed anything (`rw-x7f2q1`). So every new reward took the UPDATE branch,
+ * matched no row, changed nothing, and returned success. The admin pressed save
+ * and the reward simply never existed.
+ *
+ * An upsert asks the database instead of guessing. `ON CONFLICT` is decided by
+ * the row that is actually there, so the same statement is right for both cases
+ * and there is no read-then-write between them to race.
+ */
+export async function adminSaveReward(reward: any) {
+  const id = String(reward.id || `bre_${Date.now()}`);
+  const now = new Date().toISOString();
+  const price = rewardBananaPrice(reward);
+
+  await d1Run(
+    `INSERT INTO banana_redemption_offers
+       (id, title, description, banana_price, stock, is_active,
+        icon, category, coupon_value, coupon_type, reward_code, sort_order,
+        created_at, updated_at)
+     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+     ON CONFLICT(id) DO UPDATE SET
+       title = excluded.title,
+       description = excluded.description,
+       banana_price = excluded.banana_price,
+       stock = excluded.stock,
+       is_active = excluded.is_active,
+       icon = excluded.icon,
+       category = excluded.category,
+       coupon_value = excluded.coupon_value,
+       coupon_type = excluded.coupon_type,
+       reward_code = excluded.reward_code,
+       sort_order = excluded.sort_order,
+       updated_at = excluded.updated_at`,
+    id,
+    String(reward.title ?? "").trim(),
+    reward.description ?? null,
+    price,
+    Number(reward.stock ?? -1),
+    reward.isActive === false ? 0 : 1,
+    reward.icon ?? null,
+    reward.category ?? null,
+    Number(reward.couponValue ?? 0) || null,
+    reward.couponType ?? null,
+    reward.rewardCode ?? null,
+    Number(reward.sortOrder ?? 0) || 0,
+    now,
+    now,
+  );
+
+  const saved = await d1First<any>(`SELECT * FROM banana_redemption_offers WHERE id = ?`, id);
+  /*
+    Read back rather than echoing the request. A save that wrote nothing used to
+    return the caller's own object, so it looked identical to one that worked.
+  */
+  if (!saved) throw new BananaError("reward_not_stored");
+  return toAdminReward(saved);
+}
+
+/**
+ * One reward row, in the names the admin screen reads.
+ *
+ * `getAdminBananaData` returned `SELECT *` — raw snake_case — and the form
+ * reads `cost`, `icon`, `category`, `couponValue`, `isActive`. Not one of those
+ * exists on the row, so opening an existing reward to edit it filled the form
+ * with undefined and saving it back would have blanked the record.
+ */
+export function toAdminReward(row: any) {
+  return {
+    id: String(row.id),
+    title: String(row.title ?? ""),
+    description: row.description ?? "",
+    /* Both names, because the form reads one and the storefront the other. */
+    cost: Number(row.banana_price ?? 0),
+    bananaPrice: Number(row.banana_price ?? 0),
+    stock: Number(row.stock ?? -1),
+    isActive: Number(row.is_active ?? 1) === 1,
+    icon: row.icon ?? "🎁",
+    category: row.category ?? "vouchers",
+    couponValue: Number(row.coupon_value ?? 0),
+    couponType: row.coupon_type ?? "fixed",
+    rewardCode: row.reward_code ?? "",
+    sortOrder: Number(row.sort_order ?? 0),
+    createdAt: row.created_at ?? null,
+    updatedAt: row.updated_at ?? null,
+  };
 }
 
 export async function adminDeleteReward(id: string) {

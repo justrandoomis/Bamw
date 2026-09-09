@@ -7,14 +7,22 @@
  */
 
 import { createServerFn } from "@tanstack/react-start";
+import { buildContactLinks } from "./contact-links";
 import { z } from "zod";
 
 import { requireAdmin, requireAppAuth, authed } from "./auth.middleware";
 import { findUserById } from "./db.server";
 import {
+  REPORT_REASONS,
+  SOLD_ANSWERS,
   UsedMarketError,
+  answerSoldPrompt,
   createDraft,
   expireDueListings,
+  listOpenReports,
+  recordContactClick,
+  reportListing,
+  resolveReport,
   getListing,
   getUsedConfig,
   listListingEvents,
@@ -53,6 +61,17 @@ const draftFields = z.object({
   priceIqd: z.number().finite().nonnegative().optional(),
   quantity: z.number().int().min(1).max(99).optional(),
   photos: z.array(z.string().max(400)).max(20).optional(),
+  usagePeriodMonths: z.number().finite().min(0).max(600).nullish(),
+  warrantyMonths: z.number().finite().min(0).max(120).nullish(),
+  /*
+    Kept as a loose map at this boundary on purpose.
+
+    The keys are narrowed and the values validated by `normalizeContact` in the
+    storage layer, which is the one place that knows what a usable handle looks
+    like per channel. Narrowing here as well would mean two places to change
+    when a channel is added, and the stricter of the two is the one that builds
+    the link.
+  */
   contact: z.record(z.string().max(200)).optional(),
 });
 
@@ -74,10 +93,22 @@ function fail(error: unknown): { success: false; error: string; issues?: Validat
   return { success: false, error: "UNEXPECTED_ERROR" };
 }
 
-/** Strips the fields only the seller and the store may see. */
+/**
+ * Strips the fields only the seller and the store may see.
+ *
+ * The contact is the exception, and only once the listing is live. The whole
+ * point of the section is that a buyer reaches the seller directly, so a
+ * published listing carries its contact buttons — but as *links built here*
+ * from validated handles, never as the raw text the seller typed, and never
+ * before an admin has approved the listing. A draft, a rejected listing or one
+ * waiting in review carries nothing: those are visible only to their own
+ * seller, who does not need to be told their own number.
+ *
+ * The review and money fields stay hidden in every case.
+ */
 function publicView(listing: UsedListing) {
   const {
-    contact: _contact,
+    contact,
     reviewNotes: _reviewNotes,
     reviewedByUserId: _reviewedBy,
     feeAmount: _feeAmount,
@@ -86,7 +117,10 @@ function publicView(listing: UsedListing) {
     feePaidCycle: _feePaidCycle,
     ...rest
   } = listing;
-  return rest;
+  return {
+    ...rest,
+    contactLinks: listing.status === "APPROVED" ? buildContactLinks(contact) : [],
+  };
 }
 
 /* ------------------------------- storefront ------------------------------- */
@@ -314,3 +348,86 @@ export const saveUsedMarketplaceConfig = createServerFn({ method: "POST" })
 export const sweepExpiredUsedListings = createServerFn({ method: "POST" })
   .middleware([requireAdmin])
   .handler(async () => expireDueListings());
+
+/* --------------------- contact, the sale, and reports --------------------- */
+
+/**
+ * A viewer pressed one of the seller's contact buttons.
+ *
+ * Deliberately open to a signed-out visitor: the buttons are on a public page,
+ * and requiring an account to press one would put a login wall between a buyer
+ * and a seller for no gain. Nothing about who pressed it is recorded — the
+ * point is the seller's prompt three days later, and keeping a note of which
+ * member looked at whose listing would collect something nobody needs.
+ *
+ * It returns nothing to say. The press has already opened the seller's link in
+ * the browser; this is bookkeeping running beside it, and a failure here must
+ * not look to the buyer like the button did not work.
+ */
+export const noteUsedContactClick = createServerFn({ method: "POST" })
+  .validator(z.object({ listingId: z.string().max(64) }))
+  .handler(async ({ data }) => {
+    try {
+      await recordContactClick(data.listingId);
+    } catch (error) {
+      console.error("[used-marketplace] recording a contact click failed", error);
+    }
+    return { success: true as const };
+  });
+
+/** The seller's answer to "did you sell it?". */
+export const answerUsedSoldPrompt = createServerFn({ method: "POST" })
+  .middleware([requireAppAuth])
+  .validator(z.object({ listingId: z.string().max(64), answer: z.enum(SOLD_ANSWERS) }))
+  .handler(async ({ data, context }) => {
+    try {
+      const listing = await answerSoldPrompt(authed(context).userId, data.listingId, data.answer);
+      return { success: true as const, listing: publicView(listing) };
+    } catch (error) {
+      return fail(error);
+    }
+  });
+
+/**
+ * Somebody reports a listing.
+ *
+ * Signed in, unlike the contact click: a report asks an admin to spend
+ * attention on somebody else's listing, and one report per member per listing
+ * is the limit that makes that bearable. It changes nothing on its own.
+ */
+export const reportUsedListing = createServerFn({ method: "POST" })
+  .middleware([requireAppAuth])
+  .validator(
+    z.object({
+      listingId: z.string().max(64),
+      reason: z.enum(REPORT_REASONS),
+      note: z.string().max(500).optional(),
+    }),
+  )
+  .handler(async ({ data, context }) => {
+    try {
+      const result = await reportListing(
+        authed(context).userId,
+        data.listingId,
+        data.reason,
+        data.note,
+      );
+      return { success: true as const, recorded: result.recorded };
+    } catch (error) {
+      return fail(error);
+    }
+  });
+
+/** The reports an admin has not dealt with yet. */
+export const loadUsedReports = createServerFn({ method: "GET" })
+  .middleware([requireAdmin])
+  .handler(async () => ({ reports: await listOpenReports() }));
+
+/** An admin has dealt with a report, whatever they decided. */
+export const resolveUsedReport = createServerFn({ method: "POST" })
+  .middleware([requireAdmin])
+  .validator(z.object({ reportId: z.string().max(64) }))
+  .handler(async ({ data, context }) => {
+    await resolveReport(authed(context).userId, data.reportId);
+    return { success: true as const };
+  });

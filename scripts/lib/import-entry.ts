@@ -14,7 +14,11 @@
  */
 export { parseGameImport } from "@/lib/gameImportParser";
 export { buildBatchGameImport } from "@/lib/gameImportForm";
-export { mergeProductUpdate, destructiveUpdateLog, oversizedMediaLog } from "@/lib/productMergeGuard";
+export {
+  mergeProductUpdate,
+  destructiveUpdateLog,
+  oversizedMediaLog,
+} from "@/lib/productMergeGuard";
 export { d1All, d1Run } from "@/lib/d1.server";
 /*
   The serializer the storefront answers through. A script that prints a

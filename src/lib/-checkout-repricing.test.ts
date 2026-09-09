@@ -18,10 +18,13 @@ import { beforeEach, describe, expect, it, vi } from "vitest";
 /** The live catalogue. Tests mutate this between orders, as an admin would. */
 const catalogue: Record<string, unknown>[] = [];
 
+/** The bundle shelf, mutated the same way. */
+const shelf: Record<string, unknown>[] = [];
+
 const saved: Record<string, unknown>[] = [];
 
 vi.mock("./db.server", () => ({
-  getStore: vi.fn(async () => ({ products: catalogue, bundles: [], settings: {} })),
+  getStore: vi.fn(async () => ({ products: catalogue, bundles: shelf, settings: {} })),
   findUserById: vi.fn(async () => null),
   saveOrder: vi.fn(async (order: Record<string, unknown>) => {
     saved.push(order);
@@ -71,6 +74,8 @@ function seed(product: Record<string, unknown>) {
 
 beforeEach(() => {
   saved.length = 0;
+  // The shelf is per-test too: a bundle left over would sell in the next one.
+  shelf.length = 0;
   vi.clearAllMocks();
 });
 
@@ -191,5 +196,106 @@ describe("what the request may not decide", () => {
     await expect(
       createOrderForUser(buyer, [{ productId: "prd_1", quantity: 1 }] as never),
     ).rejects.toThrow("cart_empty");
+  });
+});
+
+/**
+ * A bundle sold as more than one kind of account.
+ *
+ * The bundle branch of `validateLine` returns before the product pricing above
+ * ever runs, so none of the option tests in this file covered it: it read
+ * `bundle.price` and nothing else. A bundle that can be bought as an offline
+ * account or, for more, an online one made that a real charge — the customer
+ * picking the dearer account and being billed for the cheaper.
+ */
+describe("the account the buyer picked, on a bundle", () => {
+  function shelve(bundle: Record<string, unknown>) {
+    shelf.length = 0;
+    shelf.push({
+      id: "bnd_1",
+      title: "بندل مغامرات السويتش",
+      price: 35_000,
+      gameIds: [],
+      isActive: true,
+      accountOptions: [
+        { id: "opt_offline", kind: "offline", extraPrice: 0 },
+        { id: "opt_online", kind: "online", extraPrice: 5_000 },
+      ],
+      ...bundle,
+    });
+  }
+
+  it("charges the surcharge for the option that has one", async () => {
+    shelve({});
+    const order = await createOrderForUser(buyer, [
+      { productId: "bnd_1", quantity: 1, optionId: "opt_online" },
+    ] as never);
+    expect(order.items[0]!.unitPrice).toBe(40_000);
+    expect(order.total).toBe(40_000);
+  });
+
+  it("charges the listed price for the option that adds nothing", async () => {
+    shelve({});
+    const order = await createOrderForUser(buyer, [
+      { productId: "bnd_1", quantity: 1, optionId: "opt_offline" },
+    ] as never);
+    expect(order.items[0]!.unitPrice).toBe(35_000);
+  });
+
+  it("charges the listed price when the request names no option", async () => {
+    shelve({});
+    const order = await createOrderForUser(buyer, [{ productId: "bnd_1", quantity: 1 }] as never);
+    expect(order.items[0]!.unitPrice).toBe(35_000);
+  });
+
+  it("ignores an option id the bundle does not have", async () => {
+    /* The whole point: only the id travels, and it resolves on the record. */
+    shelve({});
+    const order = await createOrderForUser(buyer, [
+      { productId: "bnd_1", quantity: 1, optionId: "opt_invented_by_the_browser" },
+    ] as never);
+    expect(order.items[0]!.unitPrice).toBe(35_000);
+  });
+
+  it("follows a surcharge the admin changes while the cart is open", async () => {
+    shelve({});
+    const before = await createOrderForUser(buyer, [
+      { productId: "bnd_1", quantity: 1, optionId: "opt_online" },
+    ] as never);
+    expect(before.items[0]!.unitPrice).toBe(40_000);
+
+    shelve({
+      accountOptions: [
+        { id: "opt_offline", kind: "offline", extraPrice: 0 },
+        { id: "opt_online", kind: "online", extraPrice: 9_000 },
+      ],
+    });
+    const after = await createOrderForUser(buyer, [
+      { productId: "bnd_1", quantity: 1, optionId: "opt_online" },
+    ] as never);
+    expect(after.items[0]!.unitPrice).toBe(44_000);
+  });
+
+  it("multiplies the surcharged price by the quantity", async () => {
+    shelve({});
+    const order = await createOrderForUser(buyer, [
+      { productId: "bnd_1", quantity: 2, optionId: "opt_online" },
+    ] as never);
+    expect(order.total).toBe(80_000);
+  });
+
+  it("names the account on the order, so the fulfiller knows which to prepare", async () => {
+    shelve({});
+    const order = await createOrderForUser(buyer, [
+      { productId: "bnd_1", quantity: 1, optionId: "opt_online" },
+    ] as never);
+    expect(order.items[0]!.title).toContain("Online");
+    expect((order.items[0]!.meta as Record<string, unknown>)["bundleOptionId"]).toBe("opt_online");
+  });
+
+  it("still sells a bundle saved before options existed, at its own price", async () => {
+    shelve({ accountOptions: undefined, accountType: "primary" });
+    const order = await createOrderForUser(buyer, [{ productId: "bnd_1", quantity: 1 }] as never);
+    expect(order.items[0]!.unitPrice).toBe(35_000);
   });
 });

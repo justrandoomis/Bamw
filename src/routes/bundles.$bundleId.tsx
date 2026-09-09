@@ -26,10 +26,13 @@ import AppShell from "@/components/AppShell";
 import { api } from "@/lib/api";
 import type { AccountBundle, Product } from "@/lib/types";
 import {
+  bundleAccountLabel,
+  bundleAccountOptions,
   getBundleGames,
   getBundleSavings,
   getAccountTypeInfo,
   getBundleOriginalTotal,
+  resolveBundleUnitPrice,
 } from "@/lib/bundles";
 import { useCurrency } from "@/context/CurrencyContext";
 import { playSound } from "@/utils/audio";
@@ -104,10 +107,43 @@ function BundleDetailPage() {
     return bundle.pendingGames.filter((p) => !resolved.has(String(p.id)));
   }, [bundle, games]);
 
+  /*
+    The ways this bundle can be bought.
+
+    A bundle saved before options existed reads as the one option it always
+    had, so this list is never empty and the picker below simply does not draw
+    itself when there is nothing to pick.
+  */
+  const accountOptions = useMemo(() => (bundle ? bundleAccountOptions(bundle) : []), [bundle]);
+
+  const [optionId, setOptionId] = useState<string>("");
+  /*
+    Default to the cheapest, and re-pin whenever the list changes.
+
+    Pre-selecting is what makes the headline price honest: the number beside
+    the button is the number the buyer is about to be charged, from the first
+    frame. The cheapest rather than the first, so the price shown before anyone
+    touches anything is the lowest this bundle can be had for.
+  */
+  const selectedOptionId = useMemo(() => {
+    if (accountOptions.some((option) => String(option.id) === optionId)) return optionId;
+    const cheapest = [...accountOptions].sort(
+      (a, b) => (Number(a.extraPrice) || 0) - (Number(b.extraPrice) || 0),
+    )[0];
+    return cheapest ? String(cheapest.id) : "";
+  }, [accountOptions, optionId]);
+
+  /* The same function the till prices with — see resolveBundleUnitPrice. */
+  const livePrice = useMemo(() => {
+    if (!bundle) return 0;
+    return resolveBundleUnitPrice(bundle, { optionId: selectedOptionId }).unitPrice;
+  }, [bundle, selectedOptionId]);
+
   const savings = useMemo(() => {
     if (!bundle) return { amount: 0, percentage: 0 };
-    return getBundleSavings(bundle, products);
-  }, [bundle, products]);
+    /* Against what is being charged, not against the base — see getBundleSavings. */
+    return getBundleSavings(bundle, products, livePrice);
+  }, [bundle, products, livePrice]);
 
   const originalTotal = useMemo(() => {
     if (!bundle) return 0;
@@ -115,8 +151,9 @@ function BundleDetailPage() {
   }, [bundle, products]);
 
   const accountInfo = useMemo(() => {
-    return getAccountTypeInfo(bundle?.accountType);
-  }, [bundle?.accountType]);
+    const chosen = accountOptions.find((option) => String(option.id) === selectedOptionId);
+    return getAccountTypeInfo(chosen ? chosen.kind : bundle?.accountType);
+  }, [accountOptions, selectedOptionId, bundle?.accountType]);
 
   const handleAddToCart = async (directCheckout = false) => {
     if (!bundle || isAdding) return;
@@ -129,9 +166,15 @@ function BundleDetailPage() {
         productId: bundle.id,
         title: bundle.titleEn || bundle.title,
         image: bundle.image || games[0]?.image || "",
-        price: bundle.price,
+        price: livePrice,
         kind: "bundle",
         requiresAddress: false,
+        /*
+          Which account was picked. The cart re-prices from the record through
+          the same resolver, so this is what it looks the surcharge up by — the
+          number above is for showing, never for charging.
+        */
+        ...(selectedOptionId ? { optionId: selectedOptionId } : {}),
       });
 
       if (user) {
@@ -139,7 +182,15 @@ function BundleDetailPage() {
           data: {
             productId: String(bundle.id),
             quantity: 1,
-            options: { bundleGameIds: bundle.gameIds },
+            /*
+              Inside `options`, which is where the endpoint keeps it: its
+              validator accepts productId, quantity and options only, so a
+              top-level field would be stripped before the handler saw it. The
+              cart reads the choice back out of this blob, and so does the row
+              matcher that decides whether this is a new line or one more of an
+              existing one.
+            */
+            options: { bundleGameIds: bundle.gameIds, optionId: selectedOptionId },
           },
         });
         queryClient.invalidateQueries({ queryKey: ["cart"] });
@@ -207,7 +258,13 @@ function BundleDetailPage() {
   }
 
   const walletBalance = user?.walletBalance ?? 0;
-  const isBalanceSufficient = walletBalance >= bundle.price;
+  /*
+    Enough for what is actually about to be charged.
+
+    Measured against `bundle.price`, so an account option that adds to it would
+    have promised «رصيد كافٍ للدفع» for a total the server then refuses.
+  */
+  const isBalanceSufficient = walletBalance >= livePrice;
 
   return (
     <AppShell currentView="store" onBack={() => navigate({ to: "/bundles" })}>
@@ -347,10 +404,11 @@ function BundleDetailPage() {
                       سعر البندل الكامل
                     </span>
                     <div className="flex items-baseline gap-2.5">
+                      {/* The price of the account chosen below, not the base. */}
                       <span className="text-2xl sm:text-3xl font-black text-foreground">
-                        {formatGenericPrice(bundle.price)}
+                        {formatGenericPrice(livePrice)}
                       </span>
-                      {originalTotal > bundle.price && (
+                      {originalTotal > livePrice && (
                         <span className="text-sm line-through text-muted-foreground">
                           {formatGenericPrice(originalTotal)}
                         </span>
@@ -369,6 +427,52 @@ function BundleDetailPage() {
                     </div>
                   )}
                 </div>
+
+                {/*
+                  Pick the account.
+
+                  Drawn only when there is a choice: a bundle sold one way
+                  should not ask a question with one answer.
+                */}
+                {accountOptions.length > 1 && (
+                  <div className="space-y-2">
+                    <span className="text-xs font-bold text-muted-foreground block">
+                      اختر نوع الحساب
+                    </span>
+                    <div
+                      className="grid grid-cols-1 gap-2"
+                      role="radiogroup"
+                      aria-label="نوع الحساب"
+                    >
+                      {accountOptions.map((option) => {
+                        const id = String(option.id);
+                        const isPicked = id === selectedOptionId;
+                        const extra = Number(option.extraPrice) || 0;
+                        return (
+                          <button
+                            key={id}
+                            type="button"
+                            role="radio"
+                            aria-checked={isPicked}
+                            onClick={() => setOptionId(id)}
+                            className={`w-full text-right px-3.5 py-2.5 rounded-2xl border transition-colors flex items-center justify-between gap-3 ${
+                              isPicked
+                                ? "border-red-500 bg-red-500/5 text-foreground"
+                                : "border-border bg-background text-muted-foreground hover:border-red-500/40"
+                            }`}
+                          >
+                            <span className="text-xs font-extrabold">
+                              {bundleAccountLabel(option)}
+                            </span>
+                            <span className="text-xs font-bold shrink-0">
+                              {extra > 0 ? `+ ${formatGenericPrice(extra)}` : "مشمول"}
+                            </span>
+                          </button>
+                        );
+                      })}
+                    </div>
+                  </div>
+                )}
 
                 {/* Account Type Explanation */}
                 <div className="p-3 rounded-xl bg-muted/50 border border-border/50 text-xs text-muted-foreground flex items-start gap-2">

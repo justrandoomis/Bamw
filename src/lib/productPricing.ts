@@ -16,6 +16,8 @@
  */
 
 import { toAmount } from "@/lib/purchasable";
+import { resolveBundleUnitPrice } from "@/lib/bundles";
+import type { AccountBundle } from "@/lib/types";
 
 type Row = Record<string, unknown>;
 
@@ -286,10 +288,7 @@ export interface CartLineLike {
  * altogether: checkout refuses such a line anyway, and showing what it used to
  * cost says more than showing nothing.
  */
-export function cartLinePrice(
-  product: Row | null | undefined,
-  line: CartLineLike,
-): number {
+export function cartLinePrice(product: Row | null | undefined, line: CartLineLike): number {
   const stored = toAmount(line.price);
   if (!product) return stored;
 
@@ -298,6 +297,23 @@ export function cartLinePrice(
     direct !== undefined && direct !== null && direct !== ""
       ? direct
       : ((meta[key] as string | undefined) ?? null);
+
+  /*
+    A bundle prices by its own rule.
+
+    `resolveUnitPrice` reads `options` and treats a priced one as a
+    *replacement* for the record's price. A bundle's account options are a
+    surcharge on top of it instead — an online account for a few thousand more
+    than the offline one — so running them through the product rule would
+    charge the surcharge as the whole price. `resolveBundleUnitPrice` is the
+    rule for those, and it is the same function the till uses.
+  */
+  if (Array.isArray((product as Row)["accountOptions"])) {
+    const { unitPrice: bundlePrice } = resolveBundleUnitPrice(product as unknown as AccountBundle, {
+      optionId: pick(line.optionId, "optionId") as string | null,
+    });
+    return bundlePrice > 0 ? bundlePrice : stored;
+  }
 
   const { unitPrice } = resolveUnitPrice(product, {
     optionId: pick(line.optionId, "optionId") as string | null,

@@ -1,7 +1,7 @@
 import { createServerFn } from "@tanstack/react-start";
 import { getRequest } from "@tanstack/react-start/server";
 import { z } from "zod";
-import { d1All, d1Run, d1First, randomId } from "@/lib/db.server";
+import { d1All, d1Run, randomId } from "@/lib/db.server";
 import { requireAppAuth, authed } from "@/lib/auth.middleware";
 
 async function logActivity(params: any) {
@@ -37,12 +37,38 @@ export const addToCart = createServerFn({ method: "POST" })
     const userId = authed(context).userId;
     const now = new Date().toISOString();
 
-    // Check if item exists
-    const existing = await d1First<{ id: string; quantity: number }>(
-      `SELECT id, quantity FROM cart_items WHERE user_id = ? AND product_id = ?`,
+    /*
+      An existing row for the *same choice*, not merely the same product.
+
+      This matched on the product alone, so a second option of the same product
+      incremented the first one's quantity and the selection that came with it
+      was thrown away — the customer picked the online account, the row still
+      said offline, and the till priced what the row said. A bundle sold as
+      both an offline and an online account makes that reachable in two clicks.
+
+      Matched in JS rather than in SQL because `options` is a JSON string
+      column: there are a handful of rows per customer per product, and reading
+      them is cheaper than making the query depend on the shape of that blob.
+    */
+    const wantedOption = String(
+      (input.options as Record<string, unknown> | undefined)?.["optionId"] ?? "",
+    );
+    const rows = await d1All<{ id: string; quantity: number; options: string }>(
+      `SELECT id, quantity, options FROM cart_items WHERE user_id = ? AND product_id = ?`,
       userId,
       input.productId,
     );
+    const existing = rows.find((row) => {
+      let stored = "";
+      try {
+        stored = String(
+          (JSON.parse(row.options || "{}") as Record<string, unknown>)["optionId"] ?? "",
+        );
+      } catch {
+        /* A row whose options will not parse matches only the no-option case. */
+      }
+      return stored === wantedOption;
+    });
 
     if (existing) {
       await d1Run(
@@ -123,7 +149,11 @@ export const removeCartItem = createServerFn({ method: "POST" })
   )
   .handler(async (args) => {
     const { data: input, context } = args;
-    await d1Run(`DELETE FROM cart_items WHERE id = ? AND user_id = ?`, input.id, authed(context).userId);
+    await d1Run(
+      `DELETE FROM cart_items WHERE id = ? AND user_id = ?`,
+      input.id,
+      authed(context).userId,
+    );
 
     // Log Activity
     await logActivity({

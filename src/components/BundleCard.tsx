@@ -3,7 +3,13 @@ import { Link, useNavigate } from "@tanstack/react-router";
 import { motion } from "motion/react";
 import { Layers, ShoppingCart, Sparkles, ShieldCheck, Check, ArrowRight } from "lucide-react";
 import type { AccountBundle, Product } from "@/lib/types";
-import { getBundleGames, getBundleSavings, getAccountTypeInfo } from "@/lib/bundles";
+import {
+  bundleAccountOptions,
+  getBundleGames,
+  getBundleSavings,
+  getAccountTypeInfo,
+  resolveBundleUnitPrice,
+} from "@/lib/bundles";
 import { useCurrency } from "@/context/CurrencyContext";
 import { playSound } from "@/utils/audio";
 import { useCartStore } from "@/store/useCartStore";
@@ -32,8 +38,32 @@ export function BundleCard({ bundle, products, layout = "grid", onSelect }: Bund
   const addToCartServer = useServerFn(addToCartFn);
 
   const games = getBundleGames(bundle, products);
-  const { amount: savingsAmount, percentage: savingsPercent } = getBundleSavings(bundle, products);
-  const accountInfo = getAccountTypeInfo(bundle.accountType);
+
+  /*
+    The option this card stands for, and its price.
+
+    A card has no room for a picker, so pressing «أضف للسلة» has to choose one
+    — the cheapest, which is the one the listed price belongs to. The catch is
+    that nothing makes the cheapest option free: the admin can give every
+    option a surcharge in two keystrokes. When that happens the card was
+    printing the bundle's base while adding, and charging, base + surcharge —
+    the card and the detail page disagreeing about the same purchase.
+
+    So the number shown and the number added come from the same call. Read
+    once here, used by the price, the saving and the button alike.
+  */
+  const cheapestOption = [...bundleAccountOptions(bundle)].sort(
+    (a, b) => (Number(a.extraPrice) || 0) - (Number(b.extraPrice) || 0),
+  )[0];
+  const cardOptionId = cheapestOption ? String(cheapestOption.id) : "";
+  const cardPrice = resolveBundleUnitPrice(bundle, { optionId: cardOptionId }).unitPrice;
+
+  const { amount: savingsAmount, percentage: savingsPercent } = getBundleSavings(
+    bundle,
+    products,
+    cardPrice,
+  );
+  const accountInfo = getAccountTypeInfo(cheapestOption?.kind ?? bundle.accountType);
 
   const [isAdding, setIsAdding] = React.useState(false);
   const [added, setAdded] = React.useState(false);
@@ -53,13 +83,27 @@ export function BundleCard({ bundle, products, layout = "grid", onSelect }: Bund
         ? resolvePurchaseImage(games[0] as Record<string, unknown> | undefined).url
         : bundleArt.url;
 
+      /*
+        The cheapest way to buy it, picked for them.
+
+        A bundle sold as several kinds of account has no picker on a card —
+        there is no room for one and the card is a summary, not a checkout. So
+        the card adds the option the listed price belongs to, which is the
+        cheapest; the detail page is where the more expensive one is chosen.
+        Without an id the till would price the base and the cart would merge
+        two different accounts into one line.
+      */
+      const optionId = cardOptionId;
+      const unitPrice = cardPrice;
+
       addLocalCart({
         productId: bundle.id,
         title: bundle.titleEn || bundle.title,
         image: bundleImage,
-        price: bundle.price,
+        price: unitPrice,
         kind: "bundle",
         requiresAddress: false,
+        ...(optionId ? { optionId } : {}),
       });
 
       if (user) {
@@ -67,7 +111,7 @@ export function BundleCard({ bundle, products, layout = "grid", onSelect }: Bund
           data: {
             productId: String(bundle.id),
             quantity: 1,
-            options: { bundleGameIds: bundle.gameIds },
+            options: { bundleGameIds: bundle.gameIds, optionId },
           },
         });
         queryClient.invalidateQueries({ queryKey: ["cart"] });
@@ -185,9 +229,9 @@ export function BundleCard({ bundle, products, layout = "grid", onSelect }: Bund
             <div>
               <div className="flex items-baseline gap-1">
                 <span className="font-extrabold text-sm sm:text-base text-foreground">
-                  {formatGenericPrice(bundle.price)}
+                  {formatGenericPrice(cardPrice)}
                 </span>
-                {bundle.originalPrice && bundle.originalPrice > bundle.price && (
+                {bundle.originalPrice && bundle.originalPrice > cardPrice && (
                   <span className="text-[10px] sm:text-xs line-through text-muted-foreground">
                     {formatGenericPrice(bundle.originalPrice)}
                   </span>
@@ -329,9 +373,9 @@ export function BundleCard({ bundle, products, layout = "grid", onSelect }: Bund
           <div>
             <div className="flex items-baseline gap-2">
               <span className="font-black text-lg sm:text-xl text-foreground">
-                {formatGenericPrice(bundle.price)}
+                {formatGenericPrice(cardPrice)}
               </span>
-              {bundle.originalPrice && bundle.originalPrice > bundle.price && (
+              {bundle.originalPrice && bundle.originalPrice > cardPrice && (
                 <span className="text-xs line-through text-muted-foreground">
                   {formatGenericPrice(bundle.originalPrice)}
                 </span>

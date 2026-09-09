@@ -70,7 +70,11 @@ const post = async (payload: unknown) => {
   return { status: res.status, body: (await res.json()) as any };
 };
 
-const run = (sql: string, ...args: unknown[]) => db.prepare(sql).bind(...args).run();
+const run = (sql: string, ...args: unknown[]) =>
+  db
+    .prepare(sql)
+    .bind(...args)
+    .run();
 
 beforeEach(async () => {
   admin = { id: "usr_admin", isAdmin: true };
@@ -169,6 +173,64 @@ describe("the engine settings the owner types", () => {
     expect(status).toBe(400);
   });
 
+  /*
+    Read off production, not invented.
+
+    banana-live read the live database through the Cloudflare API: a base of
+    0.0004 inside a band of 0.0001 to 0.0003, against defaults of 0.24 / 0.1 /
+    1. `spotPriceAt` clamps to the ceiling and rounds to three decimals, so
+    0.0003 becomes 0.000 — the «موزة واحدة $0.00» every customer was shown.
+    Two separate faults let that be saved, and both are checked here.
+  */
+  it("refuses a base price outside its own band — the comment promised this and the code did not", async () => {
+    const { status, body } = await post({
+      action: "save_market_config",
+      config: { basePrice: 0.0004, minPrice: 0.0001, maxPrice: 0.0003 },
+    });
+    expect(status).toBe(400);
+    expect(body.error).toContain("خارج حدوده");
+  });
+
+  it("refuses a band that rounds to nothing at the market's own precision", async () => {
+    const { status, body } = await post({
+      action: "save_market_config",
+      config: { basePrice: 0.0002, minPrice: 0.0001, maxPrice: 0.0003 },
+    });
+    expect(status).toBe(400);
+    expect(body.error).toContain("يُقرَّب إلى صفر");
+    // The message names the smallest usable value rather than only refusing.
+    expect(body.error).toContain("0.001");
+  });
+
+  it("accepts the smallest band that does price above zero", async () => {
+    const { status, body } = await post({
+      action: "save_market_config",
+      config: { basePrice: 0.001, minPrice: 0.001, maxPrice: 0.002 },
+    });
+    expect(status).toBe(200);
+    expect(body.marketConfig.basePrice).toBe(0.001);
+  });
+
+  it("still accepts a base sitting exactly on its floor or its ceiling", async () => {
+    /* The bound check is inclusive: a base equal to either end is inside. */
+    expect(
+      (
+        await post({
+          action: "save_market_config",
+          config: { basePrice: 0.05, minPrice: 0.05, maxPrice: 5 },
+        })
+      ).status,
+    ).toBe(200);
+    expect(
+      (
+        await post({
+          action: "save_market_config",
+          config: { basePrice: 5, minPrice: 0.05, maxPrice: 5 },
+        })
+      ).status,
+    ).toBe(200);
+  });
+
   it("keeps the economy settings the panel did not send", async () => {
     await post({ action: "save_settings", rewardRatePerIqd: 6.8, signupGrant: 500 });
     await post({ action: "save_settings", signupGrant: 750 });
@@ -219,7 +281,69 @@ describe("redemption rewards", () => {
       reward: { title: "جائزة", bananaPrice: 100, stock: 1, isActive: true },
     });
     await post({ action: "toggle_reward", rewardId: res.body.reward.id, isActive: false });
-    expect((await get()).body.rewards[0].is_active).toBe(0);
+    /*
+      `isActive`, not `is_active`. This asserted the raw column, which is the
+      shape that was the bug: the admin form reads `isActive`, `cost`, `icon`
+      and `couponValue`, and the panel handed it a database row with none of
+      those on it — so opening a reward to edit loaded a form full of blanks.
+    */
+    expect((await get()).body.rewards[0].isActive).toBe(false);
+  });
+
+  it("saves the price under the name the form actually sends", async () => {
+    /*
+      The form's field is `cost`. The route validated `bananaPrice` only, so
+      every real save from that screen was `Number(undefined)` and refused —
+      and with no onError anywhere on the panel, refused invisibly.
+    */
+    const res = await post({
+      action: "save_reward",
+      reward: { title: "كوبون", cost: 650000, stock: 50 },
+    });
+    expect(res.status).toBe(200);
+    expect(res.body.reward.cost).toBe(650000);
+  });
+
+  it("creates a reward whose id the form invented, instead of updating nothing", async () => {
+    /*
+      The form generates an id for a new reward before anything is typed, and
+      the writer chose INSERT or UPDATE by asking whether an id had been sent —
+      so a new reward updated a row that did not exist, changed nothing, and
+      returned success. The admin pressed save and it simply never appeared.
+    */
+    const res = await post({
+      action: "save_reward",
+      reward: { id: "rw-x7f2q1", title: "جائزة جديدة", cost: 2000, stock: 5 },
+    });
+    expect(res.status).toBe(200);
+    const rewards = (await get()).body.rewards;
+    expect(rewards.some((r: { id: string }) => r.id === "rw-x7f2q1")).toBe(true);
+  });
+
+  it("keeps the icon, the section and the coupon value the admin typed", async () => {
+    /* The table had no columns for any of these, so all three were dropped. */
+    await post({
+      action: "save_reward",
+      reward: {
+        id: "rw-icons",
+        title: "كوبون خصم",
+        cost: 1000,
+        icon: "🎁",
+        category: "vouchers",
+        couponValue: 1000,
+        couponType: "fixed",
+      },
+    });
+    const saved = (await get()).body.rewards.find((r: { id: string }) => r.id === "rw-icons");
+    expect(saved).toMatchObject({ icon: "🎁", category: "vouchers", couponValue: 1000 });
+  });
+
+  it("edits an existing reward rather than creating a second one", async () => {
+    await post({ action: "save_reward", reward: { id: "rw-edit", title: "الأولى", cost: 500 } });
+    await post({ action: "save_reward", reward: { id: "rw-edit", title: "بعد التعديل", cost: 900 } });
+    const rewards = (await get()).body.rewards.filter((r: { id: string }) => r.id === "rw-edit");
+    expect(rewards).toHaveLength(1);
+    expect(rewards[0]).toMatchObject({ title: "بعد التعديل", cost: 900 });
   });
 
   it("deletes one", async () => {

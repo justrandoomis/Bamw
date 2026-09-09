@@ -47,9 +47,7 @@ import { playSound } from "@/utils/audio";
 import { useCurrency } from "@/context/CurrencyContext";
 import { getCart, updateCartItem, removeCartItem } from "@/lib/cart.functions";
 import { cartLinePrice } from "@/lib/productPricing";
-import ReferralCartField, {
-  type ReferralCartState,
-} from "@/components/referral/ReferralCartField";
+import ReferralCartField, { type ReferralCartState } from "@/components/referral/ReferralCartField";
 
 /**
  * A cart line as the coupon rules need to see it.
@@ -346,17 +344,29 @@ function CartPage() {
     if (localLines && localLines.length > 0) {
       return localLines.map((l) => {
         const product = products.find((p) => String(p.id) === String(l.productId)) as any;
+        /*
+          A bundle is a catalogue record too.
+
+          This branch looked only in `products`, so a bundle line added while
+          signed out resolved to nothing and fell back to the price stored in
+          localStorage — the very thing the note above says the catalogue must
+          win over. Harmless while a bundle had one price; now that an account
+          option adds to it, the screen could show a figure the till would not
+          agree with. The signed-in branch below already reads both.
+        */
+        const entity =
+          product || (bundles.find((b) => String(b.id) === String(l.productId)) as any);
         return {
           ...l,
-          title: l.title || product?.titleEn || product?.english_name || product?.title || "منتج",
+          title: l.title || entity?.titleEn || entity?.english_name || entity?.title || "منتج",
           // The catalogue wins over the persisted line. A cart line is stored
           // in localStorage, so a picture chosen by an older build (or from a
           // field that has since been corrected) would otherwise be pinned
           // there forever — which is exactly how the cart ended up disagreeing
           // with the product page about the same purchase.
-          image: product ? resolvePurchaseImage(product).url : l.image || "",
-          source: product,
-          price: cartLinePrice(product, l),
+          image: entity ? resolvePurchaseImage(entity).url : l.image || "",
+          source: entity,
+          price: cartLinePrice(entity, l),
           /** What it cost when it was added, so a change can be pointed out. */
           addedAtPrice: Number(l.price) || 0,
         };
@@ -375,10 +385,25 @@ function CartPage() {
         the selection this row carries, and the same object is handed back on
         the line.
       */
-      const meta: Record<string, unknown> | undefined = item.meta
-        ? typeof item.meta === "string"
-          ? JSON.parse(item.meta)
-          : item.meta
+      /*
+        `options`, which is the name the row actually has.
+
+        `cart_items` has no `meta` column — `getCart` parses the blob and hands
+        it back as `options` (cart.functions.ts:22) — so this read was always
+        undefined for a signed-in customer, and the selection never reached
+        `cartLinePrice` below. The cart therefore showed the record's headline
+        price while the till charged the option's, which is the same disagreement
+        `resolveUnitPrice` exists to prevent and was only ever half-fixed: the
+        till learned to read the selection, this screen did not.
+
+        `meta` is still read as a fallback, because a caller that does pass one
+        should not be quietly ignored.
+      */
+      const rawSelection = item.options ?? item.meta;
+      const meta: Record<string, unknown> | undefined = rawSelection
+        ? typeof rawSelection === "string"
+          ? JSON.parse(rawSelection)
+          : rawSelection
         : undefined;
 
       return {
@@ -641,7 +666,11 @@ function CartPage() {
           the message names it and offers to take it out — the customer can
           then register for the launch alert on its page.
         */
-        const details = err as Error & { productTitle?: string; releaseDate?: string | null; productId?: string };
+        const details = err as Error & {
+          productTitle?: string;
+          releaseDate?: string | null;
+          productId?: string;
+        };
         const name = details.productTitle || "إحدى الألعاب";
         const when = details.releaseDate ? ` (تصدر في ${details.releaseDate})` : "";
         toast.error(`${name} لم تصدر بعد${when} — أزلها من السلة وفعّل التنبيه من صفحتها.`, {

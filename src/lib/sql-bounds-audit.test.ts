@@ -105,8 +105,19 @@ describe("no statement can outgrow D1's parameter limit", () => {
     const from = source.indexOf("export async function readProductIndexPage");
     const next = source.indexOf("\nexport ", from + 1);
     const readPage = source.slice(from, next === -1 ? undefined : next);
+    /*
+      Comments out first, then statements.
+
+      The scan pairs backticks to find template literals, and a comment that
+      quotes a column name in backticks — which the prose in this codebase does
+      constantly — opens a "literal" that runs on until the next backtick,
+      swallowing real SQL and whatever words happen to sit between. That is how
+      a sentence about an Arabic search failed the JOIN assertion. Stripping
+      comments first makes this test read the code it says it reads.
+    */
+    const code = readPage.replace(/\/\*[\s\S]*?\*\//g, " ").replace(/^\s*\/\/.*$/gm, " ");
     // SQL keywords, not JavaScript's `.join(` — matched inside the statements.
-    const statements = [...readPage.matchAll(/`([^`]*SELECT[^`]*)`/gi)]
+    const statements = [...code.matchAll(/`([^`]*SELECT[^`]*)`/gi)]
       // Interpolations are JavaScript, not SQL — `.join(",")` inside one is not
       // a SQL JOIN, and matching it would make this assert nothing useful.
       .map((m) => m[1]!.replace(/\$\{[^}]*\}/g, " ? "));

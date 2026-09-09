@@ -30,6 +30,12 @@ export interface PaginationFacts {
   hasMore: boolean;
   /** Chip counts over the whole catalogue; absent on an older response. */
   facets?: { hidden: number; unpriced: number; performanceRequired: number };
+  /*
+    Rows in the projection, ignoring the filter — `d1Count` is the match count.
+    Absent on an older response, and the header falls back to saying only what
+    it can stand behind rather than guessing.
+  */
+  catalogueTotal?: number;
 }
 
 export type ProductsPayloadVerdict =
@@ -81,6 +87,7 @@ export function interpretProductsPayload(payload: unknown): ProductsPayloadVerdi
     page?: unknown;
     limit?: unknown;
     hasMore?: unknown;
+    catalogueTotal?: unknown;
     error?: unknown;
   };
   // `items` is what the endpoint means; `products` is the name the admin page
@@ -109,7 +116,9 @@ export function interpretProductsPayload(payload: unknown): ProductsPayloadVerdi
   const page = Number(body.page);
   const limit = Number(body.limit);
   const facets = (payload as { facets?: unknown }).facets;
+  const catalogueTotal = Number(body.catalogueTotal);
   const pagination: PaginationFacts = {
+    ...(Number.isFinite(catalogueTotal) && catalogueTotal >= 0 ? { catalogueTotal } : {}),
     page: Number.isFinite(page) && page > 0 ? page : 1,
     limit: Number.isFinite(limit) && limit > 0 ? limit : products.length,
     ...(facets && typeof facets === "object"
@@ -214,6 +223,9 @@ export async function loadAdminProducts({
           limit: verdict.limit,
           hasMore: verdict.hasMore,
           ...(verdict.facets ? { facets: verdict.facets } : {}),
+          ...(verdict.catalogueTotal !== undefined
+            ? { catalogueTotal: verdict.catalogueTotal }
+            : {}),
           attempts: attempt + 1,
         };
       }
@@ -225,6 +237,9 @@ export async function loadAdminProducts({
           limit: verdict.limit,
           hasMore: verdict.hasMore,
           ...(verdict.facets ? { facets: verdict.facets } : {}),
+          ...(verdict.catalogueTotal !== undefined
+            ? { catalogueTotal: verdict.catalogueTotal }
+            : {}),
           attempts: attempt + 1,
         };
       }

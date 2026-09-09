@@ -247,6 +247,14 @@ export const Route = createFileRoute("/api/admin/products")({
             limit: page.limit,
             total: page.total,
             d1Count: page.total,
+            /*
+              How many rows the projection holds, ignoring the filter.
+
+              `total` is the match count, which the pager needs. The header
+              was labelling that same number «منتج مسجل في D1», so narrowing to
+              a category restated the size of the shop.
+            */
+            catalogueTotal: page.catalogueTotal,
             hasMore: page.hasMore,
             // Counts over the whole catalogue, for the filter chips.
             facets: page.facets,

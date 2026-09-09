@@ -1,4 +1,16 @@
-import type { AccountBundle, Product } from "./types";
+import type { AccountBundle, BundleAccountKind, BundleAccountOption, Product } from "./types";
+
+/**
+ * What a game with no price of its own is worth inside a bundle.
+ *
+ * A game named in the description that the shop does not carry yet gets a
+ * hidden placeholder row with no price, on purpose — the admin fills it in
+ * later. Counting that as zero made the "sum of the individual prices" fall by
+ * one game every time a placeholder was created, so a four-game bundle could
+ * advertise a smaller saving than a three-game one. The owner set this figure:
+ * a game the shop has not priced is counted at five thousand until it is.
+ */
+export const UNPRICED_GAME_VALUE = 5000;
 
 export function getBundleGames(bundle: AccountBundle, products: Product[]): Product[] {
   if (!bundle.gameIds || !Array.isArray(bundle.gameIds) || !products || !Array.isArray(products)) {
@@ -8,21 +20,128 @@ export function getBundleGames(bundle: AccountBundle, products: Product[]): Prod
   return products.filter((p) => idSet.has(String(p.id)));
 }
 
+/**
+ * The sum of what the games in a bundle cost separately.
+ *
+ * Every id in `gameIds` counts once, whether or not the catalogue at hand can
+ * resolve it. Three things made that not so:
+ *
+ *  - a game the customer's catalogue cannot see. Placeholders are hidden, and
+ *    the public catalogue drops hidden rows, so a bundle carrying one summed
+ *    over fewer games on the storefront than in the admin panel;
+ *  - a placeholder that *is* resolved but carries no price, which added zero;
+ *  - a pending entry, which was never summed at all.
+ *
+ * All three are the same case — a game the shop has not priced — and all three
+ * are now worth {@link UNPRICED_GAME_VALUE}. Counting by id rather than by
+ * resolved row is also what stops a game being counted twice once its
+ * placeholder is filled in and published.
+ */
+export function sumBundleGamePrices(bundle: AccountBundle, products: Product[]): number {
+  const ids = Array.isArray(bundle.gameIds) ? bundle.gameIds : [];
+  if (ids.length === 0) return 0;
+
+  const priceById = new Map<string, number>();
+  for (const product of products ?? []) {
+    priceById.set(String(product.id), Number(product.price) || 0);
+  }
+
+  let total = 0;
+  const counted = new Set<string>();
+  for (const id of ids) {
+    const key = String(id);
+    // A bundle listing the same game twice is one game, not two.
+    if (counted.has(key)) continue;
+    counted.add(key);
+    const price = priceById.get(key) ?? 0;
+    total += price > 0 ? price : UNPRICED_GAME_VALUE;
+  }
+  return total;
+}
+
 export function getBundleOriginalTotal(bundle: AccountBundle, products: Product[]): number {
   if (bundle.originalPrice && bundle.originalPrice > bundle.price) {
     return bundle.originalPrice;
   }
-  const games = getBundleGames(bundle, products);
-  const sum = games.reduce((acc, g) => acc + (Number(g.price) || 0), 0);
+  const sum = sumBundleGamePrices(bundle, products);
   return sum > bundle.price ? sum : Math.round(bundle.price * 1.4);
 }
 
+/**
+ * The ways this bundle can be bought.
+ *
+ * A bundle saved before options existed carries only `accountType`, so it is
+ * read as the single option it has always been. That keeps every existing
+ * bundle buyable and priced exactly as before — the list is never empty, so
+ * callers do not each need their own answer for "what if there are none".
+ */
+export function bundleAccountOptions(bundle: AccountBundle): BundleAccountOption[] {
+  const declared = Array.isArray(bundle.accountOptions) ? bundle.accountOptions : [];
+  const usable = declared.filter((option) => option && String(option.id ?? "").trim());
+  if (usable.length > 0) return usable;
+  const kind = (bundle.accountType ?? "primary") as BundleAccountKind;
+  return [{ id: `legacy_${kind}`, kind, extraPrice: 0 }];
+}
+
+/**
+ * What to call one option on screen and on the order.
+ *
+ * The admin's own words when they typed any, and otherwise the standard label
+ * for that kind — so an option added with nothing but a kind still reads as
+ * «حساب أوفلاين (Offline)» rather than as an id.
+ */
+export function bundleAccountLabel(option: BundleAccountOption): string {
+  const own = String(option.label ?? "").trim();
+  return own || getAccountTypeInfo(option.kind).label;
+}
+
+/**
+ * What one copy of this bundle costs, given the option the buyer picked.
+ *
+ * The bundle record is the source. Only the *id* of the option is read from
+ * the request; an id naming nothing on the record prices as the bundle's own
+ * price rather than as whatever was claimed alongside it. That is the rule
+ * `resolveUnitPrice` already applies to products, and it is here for the same
+ * reason: the storefront and the till must not be able to disagree.
+ */
+export function resolveBundleUnitPrice(
+  bundle: AccountBundle,
+  selection: { optionId?: string | number | null } = {},
+): { unitPrice: number; option: BundleAccountOption | null } {
+  const base = Number(bundle?.price) || 0;
+  const wanted =
+    selection.optionId === undefined || selection.optionId === null
+      ? ""
+      : String(selection.optionId);
+  if (!wanted) return { unitPrice: base, option: null };
+
+  const option = bundleAccountOptions(bundle).find((row) => String(row.id) === wanted);
+  if (!option) return { unitPrice: base, option: null };
+
+  const extra = Number(option.extraPrice) || 0;
+  // A negative surcharge would be a discount nobody typed. Ignored, not applied.
+  return { unitPrice: base + (extra > 0 ? extra : 0), option };
+}
+
+/**
+ * How much the bundle saves against buying the games separately.
+ *
+ * `paying` is what the customer is actually about to be charged, which is not
+ * always `bundle.price`: an account option adds to it. Measured against the
+ * base, a bundle bought as the dearer account claimed a saving larger than the
+ * one it gives. Defaults to the bundle's own price, so a caller with no
+ * selection to hand gets what it always got.
+ */
 export function getBundleSavings(
   bundle: AccountBundle,
   products: Product[],
+  paying?: number,
 ): { amount: number; percentage: number } {
   const original = getBundleOriginalTotal(bundle, products);
-  const current = Number(bundle.price) || 0;
+  const current =
+    Number.isFinite(paying as number) && (paying as number) > 0
+      ? (paying as number)
+      : Number(bundle.price) || 0;
   if (original <= current) {
     return { amount: 0, percentage: 0 };
   }
@@ -61,6 +180,19 @@ export function getAccountTypeInfo(type?: string): {
         label: "حساب أوفلاين (Offline)",
         description: "تحميل الألعاب كاملة واللعب بدون الحاجة لاتصال بالإنترنت",
         color: "bg-amber-500/10 text-amber-600 border-amber-500/20",
+      };
+    /*
+      The admin panel has offered this since before bundles had options, and
+      nothing here answered for it — so a bundle sold as an online account was
+      labelled «حساب رقمي أصلي» by the default below, on the card, on the page
+      and in the account-type explanation. Named now, in the same words the
+      admin picks it by.
+    */
+    case "online":
+      return {
+        label: "حساب أونلاين (Online)",
+        description: "اللعب أونلاين من الحساب المشترى مع الاتصال بالإنترنت وكل مزايا الشبكة",
+        color: "bg-sky-500/10 text-sky-600 border-sky-500/20",
       };
     default:
       return {

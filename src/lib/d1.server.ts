@@ -69,7 +69,9 @@ function restD1(): D1Like | undefined {
       rawText = await res.text();
     } catch (readErr) {
       console.error(`[d1:rest:read_error] status=${res.status}`, readErr);
-      throw new Error(`D1_REST_READ_ERROR: ${readErr instanceof Error ? readErr.message : String(readErr)}`);
+      throw new Error(
+        `D1_REST_READ_ERROR: ${readErr instanceof Error ? readErr.message : String(readErr)}`,
+      );
     }
 
     let payload: {
@@ -84,7 +86,9 @@ function restD1(): D1Like | undefined {
         `[d1:rest:json_parse_error] status=${res.status} length=${rawText.length} snippet=${rawText.slice(0, 100)}...${rawText.slice(-100)}`,
         parseErr,
       );
-      throw new Error(`D1_REST_INVALID_JSON (length: ${rawText.length}): ${parseErr instanceof Error ? parseErr.message : String(parseErr)}`);
+      throw new Error(
+        `D1_REST_INVALID_JSON (length: ${rawText.length}): ${parseErr instanceof Error ? parseErr.message : String(parseErr)}`,
+      );
     }
 
     if (!res.ok || payload.success === false) {
@@ -157,7 +161,11 @@ export function getD1(): D1Like | undefined {
 
   if (restConfigAvailable) {
     const nextCacheKey = `${envVar("CLOUDFLARE_ACCOUNT_ID")}:${envVar("D1_DATABASE_ID")}:${envVar("CLOUDFLARE_API_TOKEN")}`;
-    if (restCacheKey !== nextCacheKey || restCache === null || (!restCache && restConfigAvailable)) {
+    if (
+      restCacheKey !== nextCacheKey ||
+      restCache === null ||
+      (!restCache && restConfigAvailable)
+    ) {
       restCacheKey = nextCacheKey;
       restCache = restD1();
     }
@@ -870,6 +878,7 @@ const SCHEMA_PATCHES: string[] = [
      slug TEXT NOT NULL DEFAULT '',
      title TEXT NOT NULL DEFAULT '',
      title_en TEXT NOT NULL DEFAULT '',
+     title_ar TEXT NOT NULL DEFAULT '',
      category TEXT NOT NULL DEFAULT '',
      category_id TEXT NOT NULL DEFAULT '',
      kind TEXT NOT NULL DEFAULT '',
@@ -888,6 +897,7 @@ const SCHEMA_PATCHES: string[] = [
      created_at TEXT NOT NULL DEFAULT '',
      release_date TEXT NOT NULL DEFAULT '',
      sort_name TEXT NOT NULL DEFAULT '',
+     sort_name_ar TEXT NOT NULL DEFAULT '',
      sort_updated INTEGER,
      sort_release INTEGER,
      sort_rank INTEGER NOT NULL DEFAULT 0,
@@ -910,6 +920,19 @@ const SCHEMA_PATCHES: string[] = [
   `CREATE INDEX IF NOT EXISTS idx_pi_rank_asc ON product_index (display_order, sort_rank, id)`,
   `CREATE INDEX IF NOT EXISTS idx_pi_category ON product_index (category_id, display_order DESC)`,
   `CREATE INDEX IF NOT EXISTS idx_pi_hidden ON product_index (hidden, sort_updated DESC)`,
+  /*
+    The Arabic name, added to a table that already exists.
+
+    `CREATE TABLE IF NOT EXISTS` above is for a fresh database and does nothing
+    to one already carrying rows, so these two are how a live `product_index`
+    gets the columns. They fail once applied, which is what this list is for.
+
+    A row projected before they existed holds an empty string in both, so an
+    Arabic search finds nothing until the index is rebuilt — the columns are
+    filled by `bootstrapProductIndex` and by the next save of each product.
+  */
+  `ALTER TABLE product_index ADD COLUMN title_ar TEXT NOT NULL DEFAULT ''`,
+  `ALTER TABLE product_index ADD COLUMN sort_name_ar TEXT NOT NULL DEFAULT ''`,
   `CREATE TABLE IF NOT EXISTS store_kv (key TEXT PRIMARY KEY, value TEXT NOT NULL, updated_at TEXT NOT NULL)`,
   `CREATE TABLE IF NOT EXISTS store_rev (rev INTEGER PRIMARY KEY, updated_at TEXT NOT NULL)`,
   `ALTER TABLE users ADD COLUMN wallet_balance REAL NOT NULL DEFAULT 0`,
@@ -1429,6 +1452,20 @@ const SCHEMA_PATCHES: string[] = [
   `ALTER TABLE disc_trades ADD COLUMN payout_amount_credited INTEGER`,
   `ALTER TABLE banana_market_offers ADD COLUMN buyer_id TEXT`,
   `ALTER TABLE banana_redemption_offers ADD COLUMN updated_at TEXT`,
+  /*
+    What the reward form has always asked for and the table could never hold.
+
+    The admin types an icon, a section, a coupon value and a sort order, and
+    the row had columns for none of them — so every one of those was collected,
+    sent, and dropped on the floor. The coupon value is the worst of them: it
+    is what the reward is actually worth to the member who redeems it.
+  */
+  `ALTER TABLE banana_redemption_offers ADD COLUMN icon TEXT`,
+  `ALTER TABLE banana_redemption_offers ADD COLUMN category TEXT`,
+  `ALTER TABLE banana_redemption_offers ADD COLUMN coupon_value REAL`,
+  `ALTER TABLE banana_redemption_offers ADD COLUMN coupon_type TEXT`,
+  `ALTER TABLE banana_redemption_offers ADD COLUMN reward_code TEXT`,
+  `ALTER TABLE banana_redemption_offers ADD COLUMN sort_order INTEGER NOT NULL DEFAULT 0`,
   `ALTER TABLE legacy_users ADD COLUMN claim_started_at TEXT`,
   // Per-step checkpoints for claimLegacyAccount. Without them every read of
   // claim.<step>_done was undefined and every write was a no-op, so a claim
@@ -2281,7 +2318,6 @@ export function ensureSchema(): Promise<void> {
       } catch (err) {
         console.warn("[d1:game_device_performance_dedupe_skipped]", err);
       }
-
     })().catch((error) => {
       schemaPromise = undefined;
       throw error;

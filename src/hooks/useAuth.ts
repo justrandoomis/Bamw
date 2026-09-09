@@ -2,6 +2,7 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { toast } from "sonner";
 
 import { api } from "@/lib/api";
+import { clearCatalogSnapshot } from "@/lib/catalog-cache";
 import type { PublicUser } from "@/lib/types";
 
 export function useAuth() {
@@ -84,6 +85,24 @@ export function useAuth() {
     mutationFn: () => api.logout(),
     onSuccess: () => {
       queryClient.setQueryData(["me"], { user: null });
+    },
+    /*
+      The catalogue a session was shown does not belong to the next one.
+
+      `/api/data` answers admins and shoppers at the same URL, and the admin
+      answer carries hidden products and raw variant rows with their costs.
+      Two copies of it outlived the session that fetched it: the query cache,
+      whose `gcTime` is a day, and the `localStorage` snapshot. Signing out
+      cleared neither, so the shop that came back after an admin signed out on
+      a shared machine was still the admin's.
+
+      `onSettled` rather than `onSuccess`: a logout whose request failed may
+      still have cleared the cookie, and the cost of dropping these when it did
+      not is one refetch.
+    */
+    onSettled: () => {
+      clearCatalogSnapshot();
+      queryClient.removeQueries({ queryKey: ["store"] });
     },
   });
 

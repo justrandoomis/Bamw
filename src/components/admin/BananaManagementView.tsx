@@ -157,14 +157,62 @@ export function BananaManagementView() {
 
   // Notification / Feedback toast
   const [toastMessage, setToastMessage] = useState<string | null>(null);
+  /**
+   * The reason this band cannot produce a usable price, if there is one.
+   *
+   * Mirrors what the server refuses on save — a base outside its own bounds,
+   * and a band that rounds to nothing at the market's precision — so the admin
+   * reads the same sentence before pressing the button that they would have
+   * read after.
+   */
+  const marketPriceWarning = (() => {
+    const base = Number(marketForm.basePrice);
+    const min = Number(marketForm.minPrice);
+    const max = Number(marketForm.maxPrice);
+    if (![base, min, max].every((n) => Number.isFinite(n))) return null;
+
+    if (min > max) {
+      return `أدنى سعر (${min}) أكبر من أعلى سعر (${max}) — لا يوجد نطاق يمكن التسعير داخله.`;
+    }
+    if (base < min || base > max) {
+      return `السعر الأساسي (${base}) خارج حدوده: أدنى ${min} وأعلى ${max}. المحرك يحصر كل سعر داخل الحدين، فالقيمة خارجهما لا أثر لها — وهذا سبب بقاء السعر كما هو بعد الحفظ.`;
+    }
+    const roundsToZero = [base, min, max].find((n) => !(Math.round(n * 1000) / 1000 > 0));
+    if (roundsToZero !== undefined) {
+      return `القيمة ${roundsToZero} تُقرَّب إلى صفر عند دقة السوق (٣ خانات) — لذلك يظهر «موزة واحدة 0.000 د.ع». أصغر قيمة قابلة للعرض هي 0.001.`;
+    }
+    return null;
+  })();
+
   const showToast = (msg: string) => {
     setToastMessage(msg);
     setTimeout(() => setToastMessage(null), 3000);
   };
 
+  /**
+   * Says why a save did not happen.
+   *
+   * Not one mutation on this screen had an `onError`. The server refuses a
+   * market band it cannot price — a base outside its own floor and ceiling, or
+   * a band that rounds to nothing — and every one of those refusals arrived
+   * here and vanished: no toast, no message, the form still showing what was
+   * typed. From the admin's side the button did nothing, which is exactly how
+   * «إعدادات الادمن لا تعمل» looks from the outside.
+   *
+   * The server's own Arabic message is shown when there is one, because it
+   * names the field and the number rather than saying something went wrong.
+   */
+  const showFailure = (error: unknown) => {
+    const message =
+      error instanceof Error && error.message ? error.message : "تعذّر الحفظ — حاول مرة أخرى";
+    setToastMessage(`⚠️ ${message}`);
+    setTimeout(() => setToastMessage(null), 8000);
+  };
+
   // Mutations
   const saveSettingsMutation = useMutation({
     mutationFn: (settings: typeof settingsForm) => adminApi.saveBananaSettings(settings),
+    onError: showFailure,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["admin_banana_data"] });
       showToast("تم حفظ إعدادات الاقتصاد وسوق الموز بنجاح");
@@ -173,6 +221,7 @@ export function BananaManagementView() {
 
   const saveMarketConfigMutation = useMutation({
     mutationFn: (config: Record<string, any>) => adminApi.saveBananaMarketConfig(config),
+    onError: showFailure,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["admin_banana_data"] });
       showToast("تم تحديث محرك تسعير السوق");
@@ -181,6 +230,7 @@ export function BananaManagementView() {
 
   const saveBotMutation = useMutation({
     mutationFn: (bot: any) => adminApi.saveBananaBot(bot),
+    onError: showFailure,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["admin_banana_data"] });
       showToast("تم حفظ البوت");
@@ -189,6 +239,7 @@ export function BananaManagementView() {
 
   const deleteBotMutation = useMutation({
     mutationFn: (botId: string) => adminApi.deleteBananaBot(botId),
+    onError: showFailure,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["admin_banana_data"] });
       showToast("تم حذف البوت");
@@ -197,6 +248,7 @@ export function BananaManagementView() {
 
   const saveRewardMutation = useMutation({
     mutationFn: (reward: any) => adminApi.saveBananaReward(reward),
+    onError: showFailure,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["admin_banana_data"] });
       setRewardModalOpen(false);
@@ -207,6 +259,7 @@ export function BananaManagementView() {
 
   const deleteRewardMutation = useMutation({
     mutationFn: (rewardId: string) => adminApi.deleteBananaReward(rewardId),
+    onError: showFailure,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["admin_banana_data"] });
       showToast("تم حذف الجائزة");
@@ -216,6 +269,7 @@ export function BananaManagementView() {
   const toggleRewardMutation = useMutation({
     mutationFn: ({ rewardId, isActive }: { rewardId: string; isActive: boolean }) =>
       adminApi.toggleBananaReward(rewardId, isActive),
+    onError: showFailure,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["admin_banana_data"] });
     },
@@ -224,6 +278,7 @@ export function BananaManagementView() {
   const updateRedemptionMutation = useMutation({
     mutationFn: ({ id, status, adminNotes, deliveryCode }: any) =>
       adminApi.updateBananaRedemption(id, { status, adminNotes, deliveryCode }),
+    onError: showFailure,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["admin_banana_data"] });
       setSelectedRedemption(null);
@@ -233,6 +288,7 @@ export function BananaManagementView() {
 
   const cancelListingMutation = useMutation({
     mutationFn: (listingId: string) => adminApi.cancelBananaListing(listingId),
+    onError: showFailure,
     onSuccess: (res) => {
       queryClient.invalidateQueries({ queryKey: ["admin_banana_data"] });
       showToast(`تم إلغاء العرض وإرجاع ${res.refundedBananas} موزة لحساب البائع`);
@@ -242,6 +298,7 @@ export function BananaManagementView() {
   const adjustBalanceMutation = useMutation({
     mutationFn: ({ userId, amount, reason }: any) =>
       adminApi.adjustUserBanana(userId, amount, reason),
+    onError: showFailure,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["admin_banana_data"] });
       setAdjustModalOpen(false);
@@ -556,6 +613,25 @@ export function BananaManagementView() {
                 السعر الحالي: {(data?.livePrice ?? 0).toFixed(3)} د.ع
               </span>
             </div>
+
+            {/*
+              Why the price is what it is.
+
+              «السعر الحالي: 0.000 د.ع» sat above these boxes with nothing to
+              explain it, and the reason is not visible in any single field: the
+              engine clamps every price between the floor and the ceiling and
+              then rounds to three decimals, so a base of 250 under a ceiling of
+              0.0003 is priced at the ceiling and shown as zero. The admin sets
+              the base, sees no change, and concludes the settings do not work.
+
+              Checked against the numbers in the form rather than the saved
+              ones, so it answers before the save rather than after it.
+            */}
+            {marketPriceWarning && (
+              <div className="rounded-xl border border-amber-500/30 bg-amber-500/10 px-3.5 py-2.5 text-[11px] font-bold leading-relaxed text-amber-700 dark:text-amber-300">
+                {marketPriceWarning}
+              </div>
+            )}
 
             <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
               {MARKET_FIELDS.map((f) => (

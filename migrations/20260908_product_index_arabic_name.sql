@@ -1,0 +1,25 @@
+-- The Arabic name, in the admin products projection.
+--
+-- `sort_name` is built from `title || titleEn || slug`, and on this catalogue
+-- an imported game holds the English name in `title` — so the column an admin
+-- search matches against was English end to end, and typing «زيلدا» into the
+-- products table found nothing.
+--
+-- Two columns rather than one. `title_ar` is the name itself, so the table can
+-- show it; `sort_name_ar` is the same folded key `sort_name` uses, so a search
+-- still matches across a different alef, a ة, or diacritics.
+--
+-- Deliberately NOT folded into `sort_name`. That column is the ORDER BY key for
+-- the admin table, and mixing a second name into it would reorder the products
+-- the admin sees — see the ordering test in product-index.test.ts, which exists
+-- to hold that.
+--
+-- Existing rows keep an empty string in both until the projection is rebuilt,
+-- so an Arabic search finds nothing rather than erroring. `bootstrapProductIndex`
+-- fills them, as does the next save of each product.
+--
+-- The runtime applies these through SCHEMA_PATCHES in d1.server.ts as well;
+-- SQLite has no ADD COLUMN IF NOT EXISTS, so a second application fails
+-- harmlessly and is swallowed there.
+ALTER TABLE product_index ADD COLUMN title_ar TEXT NOT NULL DEFAULT '';
+ALTER TABLE product_index ADD COLUMN sort_name_ar TEXT NOT NULL DEFAULT '';
