@@ -2,11 +2,14 @@ import { describe, expect, it } from "vitest";
 
 import {
   DEFAULT_USED_CONFIG,
+  USED_TYPE_VALUES,
   allowedTransitions,
   canTransition,
+  clearFieldsNotFor,
   expiryFrom,
   feeIsDue,
   readUsedConfig,
+  sellerFieldsFor,
   validateForSubmission,
 } from "./used-marketplace";
 
@@ -231,5 +234,65 @@ describe("reaching the seller, and the two numbers", () => {
   it("refuses a negative warranty", () => {
     const issues = validateForSubmission({ ...complete, warrantyMonths: -3 }, DEFAULT_USED_CONFIG);
     expect(issues.map((i) => i.field)).toContain("warrantyMonths");
+  });
+});
+
+describe("the seller is only asked what the kind needs", () => {
+  it("asks a figurine about its box and nothing else", () => {
+    expect(sellerFieldsFor("collectible")).toEqual(["packaging"]);
+    expect(sellerFieldsFor("amiibo")).toEqual(["packaging"]);
+  });
+
+  it("asks a console about wear and warranty, and a cartridge about neither", () => {
+    expect(sellerFieldsFor("console")).toContain("usagePeriodMonths");
+    expect(sellerFieldsFor("console")).toContain("warrantyMonths");
+    expect(sellerFieldsFor("cartridge")).not.toContain("usagePeriodMonths");
+    expect(sellerFieldsFor("cartridge")).not.toContain("warrantyMonths");
+    // It still has a platform and a box.
+    expect(sellerFieldsFor("cartridge")).toEqual(["platform", "packaging"]);
+  });
+
+  it("asks nothing extra for a kind it does not know", () => {
+    expect(sellerFieldsFor("spaceship")).toEqual([]);
+    expect(sellerFieldsFor(undefined)).toEqual([]);
+    expect(sellerFieldsFor(7)).toEqual([]);
+  });
+
+  it("every kind in the vocabulary has a rule", () => {
+    // A kind added to the enum without a row here would silently be asked
+    // nothing at all, which reads as a short form rather than a bug.
+    for (const kind of USED_TYPE_VALUES) {
+      expect(sellerFieldsFor(kind).length).toBeGreaterThan(0);
+    }
+  });
+});
+
+describe("switching kind clears what is no longer asked", () => {
+  const filled = {
+    platform: "Switch",
+    packaging: "cib",
+    guarantee: "tested_7days",
+    usagePeriodMonths: "6",
+    warrantyMonths: "3",
+  };
+
+  it("blanks a warranty typed under جهاز once the kind becomes مجسم", () => {
+    const cleared = clearFieldsNotFor("collectible", filled);
+    expect(cleared.warrantyMonths).toBe("");
+    expect(cleared.usagePeriodMonths).toBe("");
+    expect(cleared.guarantee).toBe("");
+    expect(cleared.platform).toBe("");
+    // The one question a figurine is asked keeps its answer.
+    expect(cleared.packaging).toBe("cib");
+  });
+
+  it("leaves an answer alone when the new kind still asks for it", () => {
+    const cleared = clearFieldsNotFor("console", filled);
+    expect(cleared).toEqual(filled);
+  });
+
+  it("does not invent keys the form never had", () => {
+    const cleared = clearFieldsNotFor("collectible", { packaging: "loose" });
+    expect(Object.keys(cleared)).toEqual(["packaging"]);
   });
 });

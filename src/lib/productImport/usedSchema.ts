@@ -13,21 +13,34 @@ import {
   f,
   identityFields,
   mediaFields,
-  optionFields,
   physicalFields,
   relatedField,
   seoFields,
-  socialProofFields,
   fieldSourceFields,
   sourceField,
   specGroupField,
   warrantyFields,
-  setupStepsFields,
 } from "./shared";
 import type { FieldDef, ProductSchema } from "./types";
 
 const ITEM = "القطعة المستعملة";
 const CONDITION = "الحالة والفحص";
+
+/*
+  Which kinds a field belongs to.
+
+  The editor already knows how to hide a field that does not apply — it is how
+  a charger avoids being asked about Hall-effect sticks — but the used schema
+  never told it anything, so every kind was asked every question. A figurine
+  was asked for its platform, its previous owners and which inspection points
+  passed; a cartridge was asked how many months of warranty were left on it.
+
+  HARDWARE is the set that can be powered on, worn out and warranted. PLAYABLE
+  adds the cartridge: it has a platform and a box, but no service life worth
+  stating and nothing to inspect beyond «does it read».
+*/
+const HARDWARE = ["console", "controller", "accessory", "bundle"];
+const PLAYABLE = ["cartridge", ...HARDWARE];
 
 export const USED_TYPE_VALUES = [
   "cartridge",
@@ -35,6 +48,13 @@ export const USED_TYPE_VALUES = [
   "controller",
   "accessory",
   "amiibo",
+  /*
+    A figurine that is not an amiibo — a statue, a boxed figure, a keyring.
+    The owner listed «مجسم» beside game, device and accessory as one of the
+    things a member would come to sell, and every one of those was arriving
+    tagged `accessory` because there was nowhere else to put it.
+  */
+  "collectible",
   "bundle",
 ] as const;
 
@@ -70,20 +90,32 @@ const item: FieldDef[] = [
   f.str("original_title", "originalTitle", "الاسم الأصلي للقطعة/اللعبة — لا يُترجم", {
     group: ITEM,
   }),
-  f.str("platform", "platform", "المنصة (Nintendo Switch، Switch 2…)", {
-    specKey: "platform",
-    group: ITEM,
-  }),
-  f.str("serial_number", "serialNumber", "الرقم التسلسلي إن وُجد", { group: ITEM }),
-  f.num("usage_period_months", "usagePeriodMonths", "مدة الاستخدام السابقة", {
-    unit: "months",
-    specKey: "usagePeriodMonths",
-    group: ITEM,
-  }),
-  f.num("previous_owners", "previousOwners", "عدد الملاك السابقين", {
-    specKey: "previousOwners",
-    group: ITEM,
-  }),
+  {
+    ...f.str("platform", "platform", "المنصة (Nintendo Switch، Switch 2…)", {
+      specKey: "platform",
+      group: ITEM,
+    }),
+    showFor: PLAYABLE,
+  },
+  {
+    ...f.str("serial_number", "serialNumber", "الرقم التسلسلي إن وُجد", { group: ITEM }),
+    showFor: ["console", "controller"],
+  },
+  {
+    ...f.num("usage_period_months", "usagePeriodMonths", "مدة الاستخدام السابقة", {
+      unit: "months",
+      specKey: "usagePeriodMonths",
+      group: ITEM,
+    }),
+    showFor: HARDWARE,
+  },
+  {
+    ...f.num("previous_owners", "previousOwners", "عدد الملاك السابقين", {
+      specKey: "previousOwners",
+      group: ITEM,
+    }),
+    showFor: HARDWARE,
+  },
 ];
 
 const condition: FieldDef[] = [
@@ -111,6 +143,7 @@ const condition: FieldDef[] = [
     enumValues: GUARANTEE_VALUES,
     description: `الضمان بعد الفحص: ${GUARANTEE_VALUES.join(" / ")}`,
     group: CONDITION,
+    showFor: PLAYABLE,
   },
   f.text("condition_notes", "conditionNotes", "ملاحظات الحالة بصدق (خدوش، علامات استخدام…)", {
     group: CONDITION,
@@ -141,6 +174,7 @@ const condition: FieldDef[] = [
     templateCount: 5,
     description: "نقاط الفحص التي تمت (تشغيل، أزرار، شاشة، بطارية…)",
     group: CONDITION,
+    showFor: HARDWARE,
   },
 ];
 
@@ -152,6 +186,12 @@ export const USED_SCHEMA: ProductSchema = {
   categoryId: "cat_used",
   kind: "used",
   templateFile: "used-product-template.txt",
+  /*
+    Everything with a `showFor` above is read against this field, which is why
+    it is required: with no kind chosen the editor shows the shared fields only
+    and asks nothing kind-specific.
+  */
+  conditionalOn: "used_type",
   fields: classify(
     [
       ...identityFields("اسم القطعة المستعملة"),
@@ -162,10 +202,17 @@ export const USED_SCHEMA: ProductSchema = {
       specGroupField(),
       boxContentField(),
       ...warrantyFields(),
-      ...setupStepsFields(),
       ...mediaFields(),
-      ...optionFields(),
-      ...socialProofFields(),
+      /*
+        Setup steps, purchase options and critic scores are gone.
+
+        They describe a product the shop stocks: how to set a new console up,
+        which edition to buy, what the reviews said. A used listing is one
+        specific physical object somebody already owns — it has no variants to
+        pick between, and a critic score belongs on the game, not on this
+        scratched copy of it. Between them they were roughly a third of the
+        form the owner said had too much in it.
+      */
       relatedField(),
       sourceField(),
       ...fieldSourceFields(),
