@@ -1135,16 +1135,21 @@ export async function answerSoldPrompt(
   return updated;
 }
 
-/** Why somebody is reporting a listing. */
-export const REPORT_REASONS = ["already_sold", "no_reply", "wrong_details", "other"] as const;
-export type ReportReason = (typeof REPORT_REASONS)[number];
+/*
+  The report vocabulary lives in the rules module, not here.
 
-export const REPORT_REASON_LABEL_AR: Record<ReportReason, string> = {
-  already_sold: "القطعة مباعة",
-  no_reply: "البائع لا يرد",
-  wrong_details: "المعلومات غير صحيحة",
-  other: "سبب آخر",
-};
+  The button that files a report is on the public page, and importing anything
+  from this file to get at a list of labels would drag D1 into the browser
+  bundle. Re-exported so every existing importer keeps working.
+*/
+export {
+  REPORT_REASONS,
+  REPORT_REASON_LABEL_AR,
+  SOLD_ANSWER_LABEL_AR,
+  type ReportReason,
+} from "./used-marketplace";
+
+import { REPORT_REASONS, type ReportReason } from "./used-marketplace";
 
 /**
  * Somebody looking at a listing says something is wrong with it.

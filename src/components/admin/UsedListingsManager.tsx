@@ -9,6 +9,7 @@ import {
   Loader2,
   PauseCircle,
   RefreshCw,
+  Flag,
   Settings2,
   ShieldCheck,
   Tag,
@@ -16,7 +17,9 @@ import {
 } from "lucide-react";
 
 import {
+  loadUsedReports,
   loadUsedReviewQueue,
+  resolveUsedReport,
   reviewUsedListing,
   saveUsedMarketplaceConfig,
   sweepExpiredUsedListings,
@@ -24,6 +27,7 @@ import {
 import {
   CONDITION_LABEL_AR,
   GUARANTEE_LABEL_AR,
+  REPORT_REASON_LABEL_AR,
   PACKAGING_LABEL_AR,
   RETURNED_BADGE_AR,
   STATUS_LABEL_AR,
@@ -103,6 +107,11 @@ export default function UsedListingsManager() {
     onError: () => toast.error("تعذّر تنفيذ الإجراء"),
   });
 
+  const reports = useQuery({
+    queryKey: ["admin-used-reports"],
+    queryFn: () => loadUsedReports({ data: undefined as never }),
+  });
+
   const sweep = useMutation({
     mutationFn: () => sweepExpiredUsedListings({ data: undefined as never }),
     onSuccess: (result: any) => {
@@ -121,7 +130,7 @@ export default function UsedListingsManager() {
           </h2>
           <p className="text-xs text-muted-foreground">
             {config
-              ? `الرسوم ${iqd(config.listingFeeIqd)} لكل ${config.listingDurationDays} أيام · ${config.enabled ? "مُفعّل" : "متوقف"}`
+              ? `الرسوم ${iqd(config.listingFeeIqd)} لكل ${config.listingDurationDays} يوماً · ${config.enabled ? "مُفعّل" : "متوقف"}`
               : "…"}
           </p>
         </div>
@@ -155,6 +164,24 @@ export default function UsedListingsManager() {
       </div>
 
       {showConfig && config && <ConfigPanel config={config} onSaved={() => void refetch()} />}
+
+      <ReportsPanel
+        reports={reports.data?.reports ?? []}
+        onResolved={() => {
+          void reports.refetch();
+          void refetch();
+        }}
+        onOpenListing={(listingId, listingStatus) => {
+          /*
+            The filter has to move with it. A report is nearly always about a
+            published listing while the desk is sitting on the review queue, so
+            expanding the row alone expanded something that was not on screen —
+            the button did nothing, twice out of three.
+          */
+          if (listingStatus) setFilter(listingStatus as UsedListingStatus);
+          setExpanded(listingId);
+        }}
+      />
 
       <div className="flex flex-wrap gap-2">
         {(["queue", "APPROVED", "PAUSED", "SOLD", "EXPIRED", "REJECTED"] as const).map((key) => (
@@ -355,6 +382,88 @@ export default function UsedListingsManager() {
             </div>
           );
         })}
+      </div>
+    </div>
+  );
+}
+
+/**
+ * What members have reported, and nothing more.
+ *
+ * A report never hides a listing — a seller who has stopped answering and a
+ * seller a rival wants gone read the same from a database — so this panel
+ * shows the complaint and leaves the decision here, next to the buttons that
+ * can act on it. «تمت المعالجة» closes the report, whatever was decided about
+ * the listing, so the queue reflects attention paid rather than outcomes.
+ */
+function ReportsPanel({
+  reports,
+  onResolved,
+  onOpenListing,
+}: {
+  reports: any[];
+  onResolved: () => void;
+  onOpenListing: (listingId: string, listingStatus: string) => void;
+}) {
+  const resolve = useMutation({
+    mutationFn: (reportId: string) => resolveUsedReport({ data: { reportId } }),
+    onSuccess: () => {
+      toast.success("أُغلق البلاغ");
+      onResolved();
+    },
+    onError: () => toast.error("تعذّر إغلاق البلاغ"),
+  });
+
+  if (reports.length === 0) return null;
+
+  return (
+    <div className="rounded-xl border border-destructive/30 bg-destructive/5 p-4">
+      <h3 className="flex items-center gap-2 text-sm font-bold text-destructive">
+        <Flag className="h-4 w-4" />
+        بلاغات على العروض ({reports.length})
+      </h3>
+      <div className="mt-3 space-y-2">
+        {reports.map((report: any) => (
+          <div
+            key={report.id}
+            className="flex flex-wrap items-start justify-between gap-3 rounded-lg border border-border bg-card p-3"
+          >
+            <div className="min-w-0">
+              <p className="text-xs font-bold">
+                {report.listingTitle || report.listingId}
+                <span className="ms-2 font-normal text-muted-foreground">
+                  {REPORT_REASON_LABEL_AR[
+                    report.reason as keyof typeof REPORT_REASON_LABEL_AR
+                  ] ?? report.reason}
+                </span>
+              </p>
+              {report.note && (
+                <p className="mt-1 text-[11px] text-muted-foreground">{report.note}</p>
+              )}
+              <p className="mt-1 text-[11px] text-muted-foreground">
+                {String(report.createdAt ?? "").slice(0, 16).replace("T", " ")}
+              </p>
+            </div>
+            <div className="flex gap-2">
+              <button
+                type="button"
+                onClick={() => onOpenListing(String(report.listingId), String(report.listingStatus))}
+                className="rounded-lg border border-border px-3 py-1.5 text-xs font-bold hover:bg-muted"
+              >
+                <Eye className="inline h-3.5 w-3.5 ms-1" />
+                افتح العرض
+              </button>
+              <button
+                type="button"
+                disabled={resolve.isPending}
+                onClick={() => resolve.mutate(String(report.id))}
+                className="rounded-lg bg-foreground px-3 py-1.5 text-xs font-bold text-background disabled:opacity-40"
+              >
+                تمت المعالجة
+              </button>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );
