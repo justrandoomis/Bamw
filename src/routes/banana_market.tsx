@@ -35,6 +35,41 @@ const CARD =
   "overflow-hidden rounded-[24px] bg-foreground/5 backdrop-blur-3xl border-t border-l border-foreground/20 border-b border-r border-foreground/5 shadow-[inset_0_0_20px_rgba(255,255,255,0.02)] text-foreground";
 
 /**
+ * What went wrong, in words a customer can act on.
+ *
+ * Every refusal from the market arrives as a bare English code —
+ * `price_above_max`, `listing_expired`, `insufficient_funds` — and was printed
+ * straight onto the screen. A member who priced a banana above the ceiling read
+ * «price_above_max» and had no way to know a ceiling existed, let alone what it
+ * was. The limits are passed in so the sentence names the number, which is the
+ * difference between an error and an instruction.
+ */
+function marketErrorText(
+  error: unknown,
+  limits: { minPrice: number; maxPrice: number; minQty: number; maxQty: number },
+): string {
+  const code = error instanceof Error ? error.message : String(error ?? "");
+  const map: Record<string, string> = {
+    price_below_min: `أقل سعر مسموح ${dinars(limits.minPrice)} للموزة الواحدة.`,
+    price_above_max: `أعلى سعر مسموح ${dinars(limits.maxPrice)} للموزة الواحدة.`,
+    quantity_below_min: `أقل كمية للعرض ${limits.minQty.toLocaleString("en-US")} موزة.`,
+    quantity_above_max: `أكبر كمية للعرض ${limits.maxQty.toLocaleString("en-US")} موزة.`,
+    insufficient_balance: "رصيدك من الموز لا يكفي لهذا العرض.",
+    insufficient_funds: "رصيد محفظتك لا يكفي لإتمام الشراء.",
+    listing_not_found: "هذا العرض لم يعد موجوداً.",
+    /*
+      Bot offers are rebuilt every five minutes, so one left open on screen
+      goes stale. Says what to do rather than only that it failed.
+    */
+    listing_expired: "تغيّر سعر هذا العرض — أغلق النافذة وحدّث السوق ثم أعد المحاولة.",
+    cannot_buy_own_listing: "لا يمكنك شراء عرضك أنت.",
+    out_of_stock: "نفدت الكمية من هذه الجائزة.",
+    profile_incomplete: "أكمل بيانات حسابك أولاً لتتمكن من التداول.",
+  };
+  return map[code] ?? (code ? `تعذّر إتمام العملية (${code})` : "تعذّر إتمام العملية");
+}
+
+/**
  * A banana price, in the currency the market actually trades in.
  *
  * Every figure on this page was printed with a `$` in front of it, and the
@@ -115,6 +150,17 @@ function BananaMarketPage() {
   const promoRate = snapshot?.promoRatePerMinute ?? 2;
   const promoCost = isPromoted ? promoHours * 60 * promoRate : 0;
 
+  /*
+    The bounds the server enforces, so a refusal can name the number it refused
+    against instead of only saying no.
+  */
+  const limits = {
+    minPrice: snapshot?.minPrice ?? 0,
+    maxPrice: snapshot?.maxPrice ?? 0,
+    minQty: snapshot?.minListingQuantity ?? 0,
+    maxQty: snapshot?.maxListingQuantity ?? 0,
+  };
+
   /** Percentage of the sell price relative to the live market price. */
   const pricePct =
     price > 0 && Number(pricePer) > 0 ? Math.round(((Number(pricePer) - price) / price) * 100) : 0;
@@ -159,7 +205,7 @@ function BananaMarketPage() {
       setModal("success");
       setTimeout(() => setModal("none"), 1800);
     } catch (e) {
-      setError(e instanceof Error ? e.message : "تعذّر تنفيذ العملية");
+      setError(marketErrorText(e, limits));
     }
   };
 
@@ -178,7 +224,7 @@ function BananaMarketPage() {
       setModal("success");
       setTimeout(() => setModal("none"), 1800);
     } catch (e) {
-      setError(e instanceof Error ? e.message : "تعذّر إتمام الشراء");
+      setError(marketErrorText(e, limits));
     }
   };
 
@@ -187,7 +233,7 @@ function BananaMarketPage() {
     try {
       await act.mutateAsync({ action: "cancel_listing", id });
     } catch (e) {
-      setError(e instanceof Error ? e.message : "تعذّر إلغاء العرض");
+      setError(marketErrorText(e, limits));
     }
   };
 

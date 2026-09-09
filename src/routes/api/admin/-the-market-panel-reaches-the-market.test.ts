@@ -281,7 +281,69 @@ describe("redemption rewards", () => {
       reward: { title: "جائزة", bananaPrice: 100, stock: 1, isActive: true },
     });
     await post({ action: "toggle_reward", rewardId: res.body.reward.id, isActive: false });
-    expect((await get()).body.rewards[0].is_active).toBe(0);
+    /*
+      `isActive`, not `is_active`. This asserted the raw column, which is the
+      shape that was the bug: the admin form reads `isActive`, `cost`, `icon`
+      and `couponValue`, and the panel handed it a database row with none of
+      those on it — so opening a reward to edit loaded a form full of blanks.
+    */
+    expect((await get()).body.rewards[0].isActive).toBe(false);
+  });
+
+  it("saves the price under the name the form actually sends", async () => {
+    /*
+      The form's field is `cost`. The route validated `bananaPrice` only, so
+      every real save from that screen was `Number(undefined)` and refused —
+      and with no onError anywhere on the panel, refused invisibly.
+    */
+    const res = await post({
+      action: "save_reward",
+      reward: { title: "كوبون", cost: 650000, stock: 50 },
+    });
+    expect(res.status).toBe(200);
+    expect(res.body.reward.cost).toBe(650000);
+  });
+
+  it("creates a reward whose id the form invented, instead of updating nothing", async () => {
+    /*
+      The form generates an id for a new reward before anything is typed, and
+      the writer chose INSERT or UPDATE by asking whether an id had been sent —
+      so a new reward updated a row that did not exist, changed nothing, and
+      returned success. The admin pressed save and it simply never appeared.
+    */
+    const res = await post({
+      action: "save_reward",
+      reward: { id: "rw-x7f2q1", title: "جائزة جديدة", cost: 2000, stock: 5 },
+    });
+    expect(res.status).toBe(200);
+    const rewards = (await get()).body.rewards;
+    expect(rewards.some((r: { id: string }) => r.id === "rw-x7f2q1")).toBe(true);
+  });
+
+  it("keeps the icon, the section and the coupon value the admin typed", async () => {
+    /* The table had no columns for any of these, so all three were dropped. */
+    await post({
+      action: "save_reward",
+      reward: {
+        id: "rw-icons",
+        title: "كوبون خصم",
+        cost: 1000,
+        icon: "🎁",
+        category: "vouchers",
+        couponValue: 1000,
+        couponType: "fixed",
+      },
+    });
+    const saved = (await get()).body.rewards.find((r: { id: string }) => r.id === "rw-icons");
+    expect(saved).toMatchObject({ icon: "🎁", category: "vouchers", couponValue: 1000 });
+  });
+
+  it("edits an existing reward rather than creating a second one", async () => {
+    await post({ action: "save_reward", reward: { id: "rw-edit", title: "الأولى", cost: 500 } });
+    await post({ action: "save_reward", reward: { id: "rw-edit", title: "بعد التعديل", cost: 900 } });
+    const rewards = (await get()).body.rewards.filter((r: { id: string }) => r.id === "rw-edit");
+    expect(rewards).toHaveLength(1);
+    expect(rewards[0]).toMatchObject({ title: "بعد التعديل", cost: 900 });
   });
 
   it("deletes one", async () => {

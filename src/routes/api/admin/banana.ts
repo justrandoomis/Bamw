@@ -237,7 +237,13 @@ export const Route = createFileRoute("/api/admin/banana")({
             if (!String(reward.title ?? "").trim()) {
               return json({ error: "عنوان الجائزة مطلوب" }, { status: 400 });
             }
-            const price = Number(reward.bananaPrice);
+            /*
+              Under either name. The admin form's field is `cost`; this read
+              only `bananaPrice`, so every save was `Number(undefined)` — NaN —
+              and was refused here with a message no one ever saw, because not
+              one mutation on that screen had an onError.
+            */
+            const price = Number(reward.bananaPrice ?? reward.cost);
             if (!Number.isFinite(price) || price <= 0) {
               return json({ error: "سعر الجائزة بالموز غير صالح" }, { status: 400 });
             }

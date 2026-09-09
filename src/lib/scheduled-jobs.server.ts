@@ -34,27 +34,56 @@ export async function processBotTrading() {
   );
   if (!bots.length) return;
 
-  // 2. Get current market price
-  const marketPriceRow = await d1First<{ new_price: number }>(
-    `SELECT new_price FROM banana_price_history ORDER BY created_at DESC LIMIT 1`,
-  );
-  const marketPrice = marketPriceRow?.new_price || 0.005;
+  /*
+    2. The market price, from the engine rather than from a log of itself.
+
+    This read the newest row of `banana_price_history`, which is a record of
+    what the price *was*; the shop prices everything else through
+    `spotPriceAt(getMarketConfig())`. Two sources for one number, and the one
+    the bots used falls back to a hard-coded 0.005 whenever the history table is
+    empty — so on a fresh database the bots traded against a price nobody set.
+  */
+  const { getMarketConfig, spotPriceAt } = await import("./banana-market-config.server");
+  const marketConfig = await getMarketConfig();
+  const marketPrice = spotPriceAt(marketConfig);
+  /*
+    A market priced at nothing has no cheap offers, only free ones. Buying
+    against a zero spot would hand the bots every listing on the board for
+    nothing, so the job stands down until the price is real.
+  */
+  if (!(marketPrice > 0)) return;
 
   for (const bot of bots) {
-    // 3. Find cheap offers from users (Anti-Fraud: Check seller is not another bot)
+    /*
+      3. Offers cheaper than the market, per banana.
+
+      `price_iqd` is the *total* the seller wants — `createListing` writes
+      `quantity × pricePer` into it — and this compared that total against a
+      per-banana price. A thousand bananas at a fair price has a total in the
+      hundreds and the market price is a fraction of one dinar, so the test was
+      false for every listing that has ever existed: the bots have never bought
+      anything from anyone.
+
+      Dividing here rather than storing a second column, because the total is
+      what the seller is owed and the per-banana price is derived from it
+      everywhere else too (see `getSnapshot`).
+    */
     const offers = (
       await d1All<BananaMarketOfferRow>(
         `SELECT o.* FROM banana_market_offers o
        LEFT JOIN banana_bots b ON o.user_id = b.id
        WHERE o.status = 'active' AND b.id IS NULL
-       AND o.price_iqd <= ?`,
+       AND o.quantity > 0
+       AND (o.price_iqd / o.quantity) <= ?`,
         marketPrice,
       )
     ).map(toBananaMarketOffer);
 
     for (const offer of offers) {
       // Logic for price deviation and waiting period
-      const deviation = (marketPrice - offer.priceIqd) / marketPrice;
+      const offerPricePer = offer.quantity > 0 ? offer.priceIqd / offer.quantity : 0;
+      /* Per banana on both sides — the same unit error as the query above. */
+      const deviation = (marketPrice - offerPricePer) / marketPrice;
       const waitingMinutes = Math.max(10, 60 - deviation * 100); // 50% less -> 10min, 10% less -> 50min
 
       const offerTime = new Date(offer.createdAt).getTime();

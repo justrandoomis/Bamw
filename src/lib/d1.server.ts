@@ -69,7 +69,9 @@ function restD1(): D1Like | undefined {
       rawText = await res.text();
     } catch (readErr) {
       console.error(`[d1:rest:read_error] status=${res.status}`, readErr);
-      throw new Error(`D1_REST_READ_ERROR: ${readErr instanceof Error ? readErr.message : String(readErr)}`);
+      throw new Error(
+        `D1_REST_READ_ERROR: ${readErr instanceof Error ? readErr.message : String(readErr)}`,
+      );
     }
 
     let payload: {
@@ -84,7 +86,9 @@ function restD1(): D1Like | undefined {
         `[d1:rest:json_parse_error] status=${res.status} length=${rawText.length} snippet=${rawText.slice(0, 100)}...${rawText.slice(-100)}`,
         parseErr,
       );
-      throw new Error(`D1_REST_INVALID_JSON (length: ${rawText.length}): ${parseErr instanceof Error ? parseErr.message : String(parseErr)}`);
+      throw new Error(
+        `D1_REST_INVALID_JSON (length: ${rawText.length}): ${parseErr instanceof Error ? parseErr.message : String(parseErr)}`,
+      );
     }
 
     if (!res.ok || payload.success === false) {
@@ -157,7 +161,11 @@ export function getD1(): D1Like | undefined {
 
   if (restConfigAvailable) {
     const nextCacheKey = `${envVar("CLOUDFLARE_ACCOUNT_ID")}:${envVar("D1_DATABASE_ID")}:${envVar("CLOUDFLARE_API_TOKEN")}`;
-    if (restCacheKey !== nextCacheKey || restCache === null || (!restCache && restConfigAvailable)) {
+    if (
+      restCacheKey !== nextCacheKey ||
+      restCache === null ||
+      (!restCache && restConfigAvailable)
+    ) {
       restCacheKey = nextCacheKey;
       restCache = restD1();
     }
@@ -1444,6 +1452,20 @@ const SCHEMA_PATCHES: string[] = [
   `ALTER TABLE disc_trades ADD COLUMN payout_amount_credited INTEGER`,
   `ALTER TABLE banana_market_offers ADD COLUMN buyer_id TEXT`,
   `ALTER TABLE banana_redemption_offers ADD COLUMN updated_at TEXT`,
+  /*
+    What the reward form has always asked for and the table could never hold.
+
+    The admin types an icon, a section, a coupon value and a sort order, and
+    the row had columns for none of them — so every one of those was collected,
+    sent, and dropped on the floor. The coupon value is the worst of them: it
+    is what the reward is actually worth to the member who redeems it.
+  */
+  `ALTER TABLE banana_redemption_offers ADD COLUMN icon TEXT`,
+  `ALTER TABLE banana_redemption_offers ADD COLUMN category TEXT`,
+  `ALTER TABLE banana_redemption_offers ADD COLUMN coupon_value REAL`,
+  `ALTER TABLE banana_redemption_offers ADD COLUMN coupon_type TEXT`,
+  `ALTER TABLE banana_redemption_offers ADD COLUMN reward_code TEXT`,
+  `ALTER TABLE banana_redemption_offers ADD COLUMN sort_order INTEGER NOT NULL DEFAULT 0`,
   `ALTER TABLE legacy_users ADD COLUMN claim_started_at TEXT`,
   // Per-step checkpoints for claimLegacyAccount. Without them every read of
   // claim.<step>_done was undefined and every write was a no-op, so a claim
@@ -2296,7 +2318,6 @@ export function ensureSchema(): Promise<void> {
       } catch (err) {
         console.warn("[d1:game_device_performance_dedupe_skipped]", err);
       }
-
     })().catch((error) => {
       schemaPromise = undefined;
       throw error;

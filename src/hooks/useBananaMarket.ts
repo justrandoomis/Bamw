@@ -31,6 +31,15 @@ export type BananaReward = {
 };
 
 export type BananaSnapshot = {
+  /*
+    The bounds the market enforces, so a refusal can name the number rather
+    than only say no. Sent by `marketLimits` in banana.server.ts.
+  */
+  minPrice: number;
+  maxPrice: number;
+  minListingQuantity: number;
+  maxListingQuantity: number;
+
   price: number;
   changePct: number;
   chart: { time: string; t: string; price: number }[];
