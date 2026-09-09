@@ -34,6 +34,33 @@ export const Route = createFileRoute("/banana_market")({
 const CARD =
   "overflow-hidden rounded-[24px] bg-foreground/5 backdrop-blur-3xl border-t border-l border-foreground/20 border-b border-r border-foreground/5 shadow-[inset_0_0_20px_rgba(255,255,255,0.02)] text-foreground";
 
+/**
+ * A banana price, in the currency the market actually trades in.
+ *
+ * Every figure on this page was printed with a `$` in front of it, and the
+ * market has never been in dollars: the offers column is `price_iqd`, the bot
+ * floor it is compared against is `min_price_iqd`, and the admin panel calls
+ * the same number «السعر الأساسي (د.ع)». The shop's own default currency is
+ * IQD. So the sign was simply wrong, on every row a customer reads.
+ *
+ * Not `formatGenericPrice`: that guesses the unit from the magnitude — under
+ * 500 it treats the number as dollars and converts it — which is precisely
+ * backwards for a price that is a fraction of one dinar. The unit is known
+ * here, so it is stated rather than inferred.
+ *
+ * Three decimals below one dinar, because that is the precision the engine
+ * rounds to (`spotPriceAt`), and a price of 0.24 shown as «0 د.ع» would be the
+ * same lie in a different font.
+ */
+export function dinars(value: number | undefined | null): string {
+  const amount = Number(value) || 0;
+  const digits = amount !== 0 && Math.abs(amount) < 1 ? 3 : amount % 1 === 0 ? 0 : 2;
+  return `${amount.toLocaleString("en-US", {
+    minimumFractionDigits: digits,
+    maximumFractionDigits: digits,
+  })} د.ع`;
+}
+
 /** Full timestamp with seconds, shown faintly under the price in the tooltip. */
 function stampOf(iso: string | undefined) {
   if (!iso) return "";
@@ -55,7 +82,7 @@ function CustomTooltip({ active, payload }: any) {
     return (
       <div className="rounded-xl bg-foreground px-3 py-2 text-background shadow-xl ring-1 ring-white/10">
         <p className="text-sm font-semibold" dir="ltr">
-          ${Number(payload[0].value).toFixed(2)}
+          {dinars(Number(payload[0].value))}
         </p>
         {stamp && <p className="mt-0.5 text-[10px] font-medium opacity-60">{stamp}</p>}
       </div>
@@ -196,7 +223,7 @@ function BananaMarketPage() {
               <div className="text-3xl font-black tracking-tight">{tr("موزة واحدة")}</div>
               <div className="mt-1 flex items-baseline gap-3">
                 <span className="text-2xl font-black" dir="ltr">
-                  ${price.toFixed(2)}
+                  {dinars(price)}
                 </span>
                 <span
                   className={`flex items-center gap-1 rounded-full px-2 py-0.5 text-xs font-bold border ${
@@ -345,7 +372,7 @@ function BananaMarketPage() {
                         ${l.total.toLocaleString("en-US")}
                       </div>
                       <div className="mt-0.5 text-[10px] font-bold leading-tight text-foreground/60">
-                        ${l.pricePer.toFixed(2)} / موزة
+                        {dinars(l.pricePer)} / موزة
                       </div>
                       <div className="text-[10px] font-bold">
                         {l.isLive ? (
@@ -410,7 +437,7 @@ function BananaMarketPage() {
                         <span dir="ltr">{l.quantity.toLocaleString("en-US")}</span> 🍌
                       </div>
                       <div className="mt-0.5 text-[10px] font-bold text-emerald-600">
-                        <span dir="ltr">${l.pricePer.toFixed(2)}</span> / موزة •{" "}
+                        <span dir="ltr">{dinars(l.pricePer)}</span> / موزة •{" "}
                         {l.isPrivate ? "خاص" : "عام"}
                       </div>
                     </div>
@@ -517,7 +544,7 @@ function BananaMarketPage() {
                     </div>
                     <div className="flex items-center justify-between">
                       <span className="text-foreground/70">{tr("السعر لكل موزة")}</span>
-                      <span dir="ltr">${buying.pricePer.toFixed(2)}</span>
+                      <span dir="ltr">{dinars(buying.pricePer)}</span>
                     </div>
                     <div className="flex items-center justify-between">
                       <span className="text-foreground/70">{tr("مقارنة بسعر السوق")}</span>
@@ -550,7 +577,7 @@ function BananaMarketPage() {
                       </span>
                     </div>
                     <span className="text-sm font-black text-blue-600" dir="ltr">
-                      ${user?.walletBalance?.toFixed(2) || "0.00"}
+                      {dinars(user?.walletBalance)}
                     </span>
                   </div>
 
@@ -655,7 +682,7 @@ function BananaMarketPage() {
                   <div className="mt-4 flex items-center justify-between rounded-2xl bg-foreground/5 px-4 py-3">
                     <span className="text-sm font-bold">{tr("الإجمالي المتوقع")}</span>
                     <span className="text-sm font-black" dir="ltr">
-                      ${((Number(quantity) || 0) * (Number(pricePer) || 0)).toFixed(2)}
+                      {dinars((Number(quantity) || 0) * (Number(pricePer) || 0))}
                     </span>
                   </div>
 
