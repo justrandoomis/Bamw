@@ -29,12 +29,23 @@ interface Trip {
  * A batch fails as a whole if any statement in it fails — that is what makes
  * the difference between bisecting and serialising visible.
  */
-function fakeD1(failing: (sql: string) => boolean = () => false) {
+function fakeD1(
+  failing: (sql: string) => boolean = () => false,
+  options: {
+    installedVersion?: number;
+    columns?: Record<string, string[]>;
+  } = {},
+) {
   const trips: Trip[] = [];
-  const columnsOf = new Map<string, string[]>();
+  const columnsOf = new Map<string, string[]>(Object.entries(options.columns ?? {}));
 
   const answer = (sql: string) => {
-    if (/FROM app_schema_meta/i.test(sql)) return { results: [], first: undefined };
+    if (/FROM app_schema_meta/i.test(sql)) {
+      const row = options.installedVersion
+        ? { value: String(options.installedVersion) }
+        : undefined;
+      return { results: row ? [row] : [] };
+    }
     if (/pragma_table_info/i.test(sql)) {
       const rows: Record<string, string>[] = [];
       for (const [tbl, cols] of columnsOf) for (const col of cols) rows.push({ tbl, col });
@@ -51,12 +62,21 @@ function fakeD1(failing: (sql: string) => boolean = () => false) {
      column questions the bootstrap asks about what it has just made. */
   const record = (sql: string) => {
     const m = /CREATE TABLE IF NOT EXISTS (\w+)\s*\(([\s\S]*)\)/i.exec(sql);
-    if (!m) return;
-    const cols = m[2]!
-      .split(",")
-      .map((part) => /^\s*([A-Za-z_][A-Za-z0-9_]*)/.exec(part)?.[1] ?? "")
-      .filter((name) => name && !/^(PRIMARY|UNIQUE|FOREIGN|CHECK|CONSTRAINT)$/i.test(name));
-    columnsOf.set(m[1]!, [...new Set([...(columnsOf.get(m[1]!) ?? []), ...cols])]);
+    if (m && !columnsOf.has(m[1]!)) {
+      const cols = m[2]!
+        .split(",")
+        .map((part) => /^\s*([A-Za-z_][A-Za-z0-9_]*)/.exec(part)?.[1] ?? "")
+        .filter((name) => name && !/^(PRIMARY|UNIQUE|FOREIGN|CHECK|CONSTRAINT)$/i.test(name));
+      columnsOf.set(m[1]!, [...new Set(cols)]);
+      return;
+    }
+
+    const alter = /^ALTER TABLE (\w+) ADD COLUMN (\w+)/i.exec(sql.trim());
+    if (alter) {
+      const table = alter[1]!;
+      const column = alter[2]!;
+      columnsOf.set(table, [...new Set([...(columnsOf.get(table) ?? []), column])]);
+    }
   };
 
   const prepare = (sql: string) => ({
@@ -74,7 +94,7 @@ function fakeD1(failing: (sql: string) => boolean = () => false) {
     },
     first: async () => {
       trips.push({ kind: "single", sql: [sql] });
-      return undefined;
+      return answer(sql).results[0];
     },
   });
 
@@ -111,6 +131,39 @@ async function loadWith(db: unknown) {
 beforeEach(() => vi.resetModules());
 
 describe("the bootstrap a schema bump runs", () => {
+  it("widens a version-24 product index before the listing reads its Arabic columns", async () => {
+    /*
+      Version 24 was already stamped in production when `title_ar` and
+      `sort_name_ar` were added. If the runtime version is not bumped with the
+      patch, `ensureSchema()` returns at the stamp and `/api/admin/products`
+      immediately fails on its SELECT with "no such column: title_ar".
+
+      Model that exact database: the projection exists with the pre-Arabic
+      columns and the previous runtime version is installed. The next bootstrap
+      must execute both ALTERs before it records the new version.
+    */
+    const { trips, columnsOf, db } = fakeD1(() => false, {
+      installedVersion: 24,
+      columns: {
+        app_schema_meta: ["key", "value"],
+        product_index: ["id", "title", "title_en", "sort_name"],
+      },
+    });
+    const mod = await loadWith(db);
+    await mod.ensureSchema();
+
+    expect(columnsOf.get("product_index")).toEqual(
+      expect.arrayContaining(["title_ar", "sort_name_ar"]),
+    );
+    const flat = trips.flatMap((trip) => trip.sql);
+    expect(flat.some((sql) => /ALTER TABLE product_index ADD COLUMN title_ar/i.test(sql))).toBe(
+      true,
+    );
+    expect(
+      flat.some((sql) => /ALTER TABLE product_index ADD COLUMN sort_name_ar/i.test(sql)),
+    ).toBe(true);
+  });
+
   it("writes the version stamp before the housekeeping, not after", async () => {
     /*
       The ordering IS the fix. Between "the schema is correct" and "the

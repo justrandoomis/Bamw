@@ -2005,7 +2005,7 @@ export function ensureCouponsSchema(): Promise<void> {
 // Bumped whenever SCHEMA_PATCHES gains a statement existing databases need.
 // The stamp below short-circuits the bootstrap, so a new patch is invisible to
 // already-deployed databases until this number moves.
-const RUNTIME_SCHEMA_VERSION = 24;
+const RUNTIME_SCHEMA_VERSION = 25;
 
 /**
  * Run schema statements in as few round trips as the database allows.
