@@ -220,6 +220,91 @@ say(`\`product_index\`: **${Number(idx.n).toLocaleString("en-US")}** rows — ${
 say();
 
 /* ------------------------------------------------------------------ */
+/* 2b. What the customer's browser then does with it                    */
+/* ------------------------------------------------------------------ */
+
+/*
+  The storefront search runs in the browser over the whole catalogue: the
+  payload above is fetched, `buildProductIndex` walks every product, and
+  `searchProducts` runs on every keystroke. Both are on the main thread, and
+  the owner reports «الصفحة تتشنج».
+
+  Measured against a synthetic corpus this read 616 ms — but that corpus gave
+  all 1,706 products a full description, tags and genres, and the real one does
+  not: 1,530 of them are catalogue rows with a name and a price and nothing
+  else. So it is measured here against the bytes production actually served,
+  which is the only corpus whose shape is not a guess.
+
+  A runner's CPU is not a phone's. The numbers below are a floor: a mid-range
+  Android is roughly three to five times slower.
+*/
+say(`## What the browser does with that payload`);
+say();
+
+const slim = first["/api/data?slim=1"];
+if (!slim || slim.status !== 200) {
+  say(`- skipped: the slim payload did not come back 200.`);
+} else {
+  const searchBundle = path.resolve(".perf-probe-search.mjs");
+  await build({
+    entryPoints: ["src/lib/search/products.ts"],
+    outfile: searchBundle,
+    bundle: true,
+    format: "esm",
+    platform: "node",
+    target: "node22",
+    logLevel: "silent",
+    alias: { "@": path.resolve("src") },
+  });
+  const search = await import(searchBundle);
+
+  const body = await fetch(`${ORIGIN}/api/data?slim=1`, {
+    headers: { "user-agent": "bananto-perf/1.0" },
+  }).then((r) => r.text());
+
+  const parseAt = Date.now();
+  const doc = JSON.parse(body);
+  const parseMs = Date.now() - parseAt;
+  const products = Array.isArray(doc?.products) ? doc.products : [];
+
+  const median = (fn, runs = 5) => {
+    fn();
+    const times = [];
+    for (let r = 0; r < runs; r++) {
+      const at = performance.now();
+      fn();
+      times.push(performance.now() - at);
+    }
+    times.sort((a, b) => a - b);
+    return times[Math.floor(runs / 2)];
+  };
+
+  say(`Against the **real** payload: ${products.length.toLocaleString("en-US")} products, ${kb(body.length)}.`);
+  say();
+  say(`| step | ms on a runner |`);
+  say(`| --- | --- |`);
+  say(`| \`JSON.parse\` the payload | ${parseMs} |`);
+  const buildMs = median(() => search.buildProductIndex(products));
+  say(`| \`buildProductIndex\` | **${buildMs.toFixed(1)}** |`);
+
+  const index = search.buildProductIndex(products);
+  /*
+    Typed one letter at a time, because that is how a customer types and each
+    keystroke re-runs the whole search over the whole catalogue.
+  */
+  for (const query of ["z", "ma", "mario", "mario kart", "زيلدا", "كيربي", "غسالة"]) {
+    const ms = median(() => search.searchProducts(index, query, { limit: 6 }));
+    say(`| \`searchProducts(${JSON.stringify(query)})\` | ${ms.toFixed(1)} |`);
+  }
+  say();
+  say(
+    `> A mid-range phone is roughly three to five times slower than this runner. ` +
+      `The index is built once on first focus; the search runs on every keystroke.`,
+  );
+  say();
+}
+
+/* ------------------------------------------------------------------ */
 /* 3. Where the CPU goes                                               */
 /* ------------------------------------------------------------------ */
 

@@ -97,3 +97,4 @@ store-media-repair.md
 # The performance probe’s bundle and report.
 .perf-probe-bundle.mjs
 perf-probe.md
+.perf-probe-search.mjs
