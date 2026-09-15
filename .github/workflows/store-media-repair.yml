@@ -1,0 +1,65 @@
+# Takes the pasted photographs out of the shop document.
+#
+# Two bundles hold a base64 image in `image`, and `store:bundles` is 10.9 MB
+# because of it — which is why `/api/admin/store` was ended `exceededCpu` and
+# answered 503. `offloadInlineMedia` stops any new save doing this; nothing but
+# a write can undo the two already stored, and the admin page cannot do it
+# because the admin page is what is failing.
+#
+# DRY RUN unless `apply` is true. With `apply`, every picture is uploaded to R2
+# and read back before the document is touched — an upload that cannot be
+# verified stops the run with nothing written.
+name: Store media repair
+
+on:
+  workflow_dispatch:
+    inputs:
+      apply:
+        description: "Write the change (leave false to only report)"
+        type: boolean
+        default: false
+  push:
+    branches: [claude/gaming-platform-issues-keb1be]
+    paths:
+      - .github/workflows/store-media-repair.yml
+      - scripts/store-media-repair.mjs
+
+permissions:
+  contents: read
+
+concurrency:
+  group: store-media-repair
+  cancel-in-progress: false
+
+jobs:
+  repair:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm install -g npm@11.19.1
+      - run: npm ci --no-audit --no-fund
+      - name: Mask identifiers
+        env:
+          ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: echo "::add-mask::$ACCOUNT_ID"
+      - name: Repair
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          CLOUDFLARE_R2_BUCKET_NAME: bananto
+        run: |
+          node scripts/store-media-repair.mjs ${{ inputs.apply && '--apply' || '' }}
+      - name: Upload
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: store-media-repair
+          path: store-media-repair.md
+          if-no-files-found: warn

@@ -20,6 +20,7 @@ import {
   ShieldCheck,
   Zap,
   ArrowRight,
+  Loader2,
 } from "lucide-react";
 import { toast } from "sonner";
 import type { AccountBundle, BundleAccountKind, BundleAccountOption, Product } from "@/lib/types";
@@ -68,6 +69,7 @@ export default function BundlesManager({
   */
   const [matches, setMatches] = useState<BundleGameMatch[] | null>(null);
   const [savingPlaceholders, setSavingPlaceholders] = useState(false);
+  const [uploadingImage, setUploadingImage] = useState(false);
 
   // Filtered bundle list
   const filteredBundles = useMemo(() => {
@@ -506,15 +508,56 @@ export default function BundlesManager({
     );
   };
 
+  /**
+   * Uploads the picture and stores its address, not the picture.
+   *
+   * This used to put the `data:` URI straight on the bundle — so a four
+   * megabyte photo became a five and a half megabyte string inside
+   * `store:bundles`, read and re-parsed by every request that touches the
+   * store. Two of them took `/api/admin/store` over the Worker's CPU limit and
+   * the endpoint started answering 503.
+   *
+   * The server refuses an oversized inline image now regardless (see
+   * `offloadInlineMedia`), but doing it here means the admin gets a URL in the
+   * field, sees the upload succeed or fail on its own, and never posts
+   * megabytes of base64 through the save.
+   */
   const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file || !editingBundle) return;
+    setUploadingImage(true);
     try {
       const dataUrl = await fileToDataUrl(file);
-      setEditingBundle({ ...editingBundle, image: dataUrl });
+      const response = await fetch("/api/admin/assets", {
+        method: "POST",
+        credentials: "include",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ dataUrl, folder: "Images/Pages/" }),
+      });
+      // The status first: a 413 answered as HTML must not be read as JSON.
+      const raw = await response.text().catch(() => "");
+      let payload: { url?: string; error?: string } | null = null;
+      try {
+        payload = raw ? JSON.parse(raw) : null;
+      } catch {
+        payload = null;
+      }
+      if (!response.ok || !payload?.url) {
+        toast.error(
+          payload?.error === "file_too_large"
+            ? "الصورة كبيرة جداً — الحد ١٥ ميغابايت."
+            : payload?.error === "unsupported_media_type"
+              ? "صيغة غير مدعومة — استخدم JPG أو PNG أو WebP."
+              : `فشل رفع الصورة (HTTP ${response.status})`,
+        );
+        return;
+      }
+      setEditingBundle({ ...editingBundle, image: payload.url });
       toast.success("تم رفع الصورة بنجاح");
     } catch {
       toast.error("فشل رفع الصورة");
+    } finally {
+      setUploadingImage(false);
     }
   };
 
@@ -1020,10 +1063,15 @@ export default function BundlesManager({
                       className="flex-1 px-3.5 py-2.5 rounded-xl border border-border bg-background focus:border-red-500 focus:outline-none"
                     />
                     <label className="p-2.5 rounded-xl bg-muted hover:bg-muted/80 cursor-pointer text-muted-foreground hover:text-foreground border border-border flex items-center justify-center shrink-0">
-                      <Upload className="w-4 h-4" />
+                      {uploadingImage ? (
+                        <Loader2 className="w-4 h-4 animate-spin" />
+                      ) : (
+                        <Upload className="w-4 h-4" />
+                      )}
                       <input
                         type="file"
                         accept="image/*"
+                        disabled={uploadingImage}
                         onChange={handleImageUpload}
                         className="hidden"
                       />

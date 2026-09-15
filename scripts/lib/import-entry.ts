@@ -51,3 +51,22 @@ export {
 export { getProductCategory } from "@/lib/productSection";
 export { checkSupplierNameZh, writeSupplierNameZh } from "@/lib/productAdminMetadata.server";
 export { syncGameDevicePerformance } from "@/lib/devicePerformance.server";
+
+/*
+  The store's own write path, for the repair script.
+
+  A script that rewrites a section of the catalogue document has to go through
+  `updateStore` rather than composing its own SQL: that is where the revision
+  guard lives, where the chunking lives, and where the admin listing projection
+  is kept in step with the products it describes. A second implementation of
+  any of those in a script is how a repair becomes an incident.
+*/
+export { getStore, updateStore } from "@/lib/db.server";
+export {
+  contentName,
+  decodeDataUrl,
+  findInlineMedia,
+  replaceInlineMedia,
+  INLINE_MEDIA_LIMIT,
+} from "@/lib/inlineMedia";
+export { ALLOWED_PUBLIC_MIMES, validatePublicAssetMagic } from "@/lib/public-assets.server";

@@ -14,6 +14,7 @@ import { body, guard, json } from "@/lib/http.server";
 import { requireAdmin } from "@/lib/session.server";
 import { getSessionUser } from "@/lib/session.server";
 import { autoTranslateProduct, autoTranslateBundle } from "@/lib/translate.server";
+import { InlineMediaError, offloadInlineMedia } from "@/lib/inlineMedia.server";
 
 import { forceFullImport } from "@/lib/force-import.server";
 import { isProductHidden, isVisibleToPublic } from "@/lib/purchasable";
@@ -414,6 +415,50 @@ export const Route = createFileRoute("/api/data")({
 
           if (Array.isArray(patch.bundles)) {
             patch.bundles = await Promise.all(patch.bundles.map(autoTranslateBundle));
+          }
+
+          /*
+            Pictures go in the bucket, not in the document.
+
+            These three are the sections `/api/admin/store` reads on every cold
+            isolate, and a `data:` URI in one of them is the image itself,
+            base64, parsed again on every request. Two bundles saved with a
+            photo pasted into `image` made `store:bundles` 10.9 MB — a hundred
+            percent of it those two strings — and the runtime answered
+            `/api/admin/store` with `exceededCpu` and a 503. The catalogue
+            import running at the time got that 503 mid-batch, tried to parse
+            Cloudflare's HTML error page as JSON, and reported «The string did
+            not match the expected pattern», which is a sentence about none of
+            this.
+
+            A save that cannot move the picture is refused with a reason rather
+            than written: the admin can try again, and the shop stays up.
+            `products` is left out — it has its own media pipeline and its own
+            naming rules, and reusing this one would file a box art under
+            `Images/Pages`.
+          */
+          for (const section of ["bundles", "banners", "content"] as const) {
+            if (patch[section] === undefined) continue;
+            try {
+              const offloaded = await offloadInlineMedia(
+                patch[section],
+                section === "banners" ? "Images/Banners/" : "Images/Pages/",
+                section,
+              );
+              if (offloaded.moved > 0) {
+                console.info("[store:inline_media_offloaded]", {
+                  section,
+                  moved: offloaded.moved,
+                  bytes: offloaded.bytes,
+                });
+                (patch as Record<string, unknown>)[section] = offloaded.value;
+              }
+            } catch (err) {
+              if (err instanceof InlineMediaError) {
+                return json({ error: err.arabic, code: "INLINE_MEDIA" }, { status: 422 });
+              }
+              throw err;
+            }
           }
 
           const updated = await updateStore((prev) => ({
