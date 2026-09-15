@@ -8,42 +8,55 @@
  *
  * Three properties it is built around:
  *
- * **Idempotent.** A row is matched to an existing product by slug, and an
- * existing product is *updated*, never duplicated. Running the same file twice
- * changes nothing the second time; running an updated file changes only the
- * prices that moved. The owner can re-run it whenever the spreadsheet changes,
- * which is the only way a price list stays a price list.
+ * **Idempotent.** A row is matched to an existing product by slug, id or name,
+ * and an existing product is left alone, never duplicated. Running the same
+ * file twice changes nothing the second time, which is what makes resuming an
+ * interrupted run the same action as starting one.
  *
- * **Non-destructive.** An update overwrites the six columns the spreadsheet is
- * authoritative about and touches nothing else. A game somebody has since
- * written a description for, given a cover and set an online price on keeps all
- * of it — otherwise the first re-import would erase weeks of work, and that is
- * the kind of thing you discover afterwards.
+ * **Non-destructive.** A game already in the shop is where somebody decided it
+ * should be hidden, out of stock or priced differently, and the sheet does not
+ * get to overrule that. `refresh-prices` is the opt-in exception and touches
+ * two fields on listings this importer created — see `buildListing`.
  *
  * **Reversible in the safe direction.** `apply: false` is the default, so the
  * first thing the owner sees is a count of what *would* happen. Nothing is
  * written until they ask for it.
  *
- * It writes one `store:product:<id>` row per product plus one projection row —
- * the same granular path a single admin save takes — rather than rewriting the
- * whole catalogue document. Fifteen hundred products through the document path
- * would be fifteen hundred rewrites of a megabyte of JSON, each racing the
- * others for the store revision.
+ * ## One transaction per batch, not four hundred round trips
+ *
+ * The first version wrote each product as its own `store:product:<id>` overlay
+ * row, refreshed its projection row, and wrote its supplier name — three or
+ * four D1 round trips per product, awaited in order, a hundred products to a
+ * batch. Four hundred sequential round trips is a request the Worker holds open
+ * for as long as D1 takes to answer four hundred times, and it is not the only
+ * request the shop has to serve while it does. That run stopped at batch three
+ * and took `/api/admin/store` down with it.
+ *
+ * It also got heavier as it went. Overlay rows are only folded into the
+ * catalogue document by a full write, so every batch re-read and re-parsed
+ * every overlay the batches before it had written — and an interrupted run
+ * left them there, on the read path of the whole shop, until somebody ran a
+ * compaction that never came.
+ *
+ * So a batch is now one `updateStore` call: the store's own write path, which
+ * commits the catalogue and its projection in a single transaction and leaves
+ * nothing behind to compact. Four round trips instead of four hundred, and an
+ * interrupted run leaves a catalogue that is complete as far as it got.
  */
 
 import { createFileRoute } from "@tanstack/react-router";
 
 import { getStore, invalidateStoreCache, updateStore } from "@/lib/db.server";
-import { d1All, d1Run } from "@/lib/d1.server";
+import { d1All, d1Batch, d1Run } from "@/lib/d1.server";
 import { body, guard, json } from "@/lib/http.server";
 import { requireAdmin } from "@/lib/session.server";
-import { refreshProductIndexRow } from "@/lib/product-index.server";
-import { writeSupplierNameZh } from "@/lib/productAdminMetadata.server";
+import { supplierNameStatements } from "@/lib/productAdminMetadata.server";
 import { buildListing, type CatalogueRow, type ImportMode } from "@/lib/catalogueImport";
 import { categoryFilterAliases, resolveCategoryType } from "@/lib/productSection";
 import { assertBoundParameters, chunkForParams } from "@/lib/sql-params";
+import type { StoreDoc } from "@/lib/types";
 
-/** One request's worth. Fifty products is roughly a second of Worker time. */
+/** One request's worth. A hundred products is one transaction, not a hundred. */
 const MAX_BATCH = 100;
 
 type Outcome = "created" | "updated" | "skipped";
@@ -85,6 +98,153 @@ function resolveGamesCategory(categories: unknown): { id: string; title: string 
   return { id: "nintendo-switch-games", title: "ألعاب نينتندو سويتش" };
 }
 
+/** What one pass over a store snapshot decided. */
+interface Decision {
+  products: Record<string, unknown>[];
+  results: RowResult[];
+  created: number;
+  updated: number;
+  categoryId: string;
+  names: { productId: string; supplierNameZhCn: string; englishTitle: string }[];
+}
+
+/**
+ * Every row in the batch, decided against one snapshot of the catalogue.
+ *
+ * Pure, and re-runnable: `updateStore` re-reads the store and re-applies the
+ * mutation when another writer wins the revision, so the decision has to be a
+ * function of the snapshot it is handed rather than of one taken earlier. That
+ * is also what makes the preview honest — it is this same function, run and
+ * thrown away.
+ */
+function decide(current: StoreDoc, rows: CatalogueRow[], mode: ImportMode): Decision {
+  const products = [...((current.products ?? []) as unknown as Record<string, unknown>[])];
+  const category = resolveGamesCategory(current.categories);
+  const out: Decision = {
+    products,
+    results: [],
+    created: 0,
+    updated: 0,
+    categoryId: category.id,
+    names: [],
+  };
+
+  /*
+    One pass over the catalogue, not one lookup per row. A `find` per row over
+    seventeen hundred products is eighty-five thousand string comparisons per
+    batch, and there are sixteen batches.
+  */
+  const bySlug = new Map<string, number>();
+  const byId = new Map<string, number>();
+  const byTitle = new Map<string, number>();
+  for (let at = 0; at < products.length; at++) {
+    const product = products[at]!;
+    const slug = slugOf(product);
+    if (slug && !bySlug.has(slug)) bySlug.set(slug, at);
+    const id = String(product["id"] ?? "").trim();
+    if (id && !byId.has(id)) byId.set(id, at);
+
+    /*
+      Only games are looked up by title.
+
+      The title index exists to stop a second «Fire Emblem: Three Houses»
+      being created beside one an admin added by hand. It was built over every
+      product in the shop — hardware, accessories, amiibo, gift cards, bundles
+      — so a console accessory or a bundle that happens to share a name with a
+      game was taken as "the same game". That costs the row twice over: the
+      import declines to touch the accessory (rightly), and the game it was
+      supposed to create is never created, because the row has been answered.
+
+      A slug or id match still works across every kind, which is the precise
+      case: a collision there is a URL or key collision and a real conflict.
+    */
+    const isGame =
+      resolveCategoryType(
+        String(product["categoryId"] ?? ""),
+        String(product["category"] ?? product["categoryTitle"] ?? ""),
+        String(product["kind"] ?? ""),
+        String(product["schemaId"] ?? ""),
+      ) === "game";
+    if (!isGame) continue;
+
+    const title = String(product["titleEn"] ?? product["title"] ?? "")
+      .trim()
+      .toLowerCase();
+    if (title && !byTitle.has(title)) byTitle.set(title, at);
+  }
+
+  for (const row of rows) {
+    const name = String(row?.englishName ?? "").trim();
+    const line = Number(row?.line) || 0;
+    if (!name || !(Number(row?.offlinePriceIqd) > 0)) {
+      out.results.push({ line, name, outcome: "skipped", reason: "صف غير صالح" });
+      continue;
+    }
+
+    /*
+      Matched by slug, then by the id this importer would mint, then by name.
+
+      The slug is what a re-run of the same sheet produces, so it is the
+      reliable key. The id lookup closes the gap the first version left: a
+      listing whose slug was later corrected still owns `prd_cat_<slug>`, and
+      creating a second product under an id already in the catalogue is a
+      duplicate key, not a new game. The title lookup is what stops a second
+      «Fire Emblem: Three Houses» beside one an admin added by hand.
+    */
+    const desiredSlug = String(row.slug ?? "")
+      .trim()
+      .toLowerCase();
+    const at =
+      (desiredSlug ? bySlug.get(desiredSlug) : undefined) ??
+      (desiredSlug ? byId.get(`prd_cat_${desiredSlug}`) : undefined) ??
+      byTitle.get(name.toLowerCase());
+    const existing = at === undefined ? undefined : products[at];
+
+    const outcome = buildListing(row, {
+      categoryId: category.id,
+      categoryTitle: category.title,
+      mode,
+      ...(existing ? { existing } : {}),
+    });
+
+    if (outcome.action === "skip") {
+      out.results.push({ line, name, outcome: "skipped", reason: outcome.reason });
+      continue;
+    }
+
+    const id = String(outcome.product["id"]);
+    if (outcome.action === "create") {
+      products.push(outcome.product);
+      const added = products.length - 1;
+      if (desiredSlug) bySlug.set(desiredSlug, added);
+      byId.set(id, added);
+      byTitle.set(name.toLowerCase(), added);
+      out.created += 1;
+    } else {
+      products[at!] = outcome.product;
+      out.updated += 1;
+    }
+
+    /*
+      The Chinese name goes to its own admin-only table and never onto the
+      product. `getStore()` does not load that table, so there is no path by
+      which the storefront could serialise it — which is the whole reason it
+      lives there.
+    */
+    if (outcome.chineseName) {
+      out.names.push({ productId: id, supplierNameZhCn: outcome.chineseName, englishTitle: name });
+    }
+    out.results.push({
+      line,
+      name,
+      outcome: outcome.action === "create" ? "created" : "updated",
+      id,
+    });
+  }
+
+  return out;
+}
+
 export const Route = createFileRoute("/api/admin/catalogue-import")({
   server: {
     handlers: {
@@ -99,21 +259,14 @@ export const Route = createFileRoute("/api/admin/catalogue-import")({
           }>(request);
 
           /*
-            The last call of a run, and not an optional tidy-up.
+            Tidy-up for a run that predates the transactional write, and for
+            any other path that left granular overlays behind.
 
-            Each batch writes a `store:product:<id>` overlay row, which is the
-            granular save path a single admin edit takes — fast, incremental,
-            and safe to interrupt. But those rows are only *folded into* the
-            catalogue document by a full write, and until that happens
-            `loadStore` reads every one of them and re-parses it on every cold
-            start. Fifteen hundred of them is fifteen hundred extra rows and
-            fifteen hundred `JSON.parse` calls on the read path of the whole
-            shop.
-
-            So the run ends here: one full write of the aggregate (which by
-            then already contains everything the overlays hold, because
-            `loadStore` merged them to build it), then the overlays are
-            removed.
+            An overlay row is read and re-parsed by `loadStore` on every cold
+            start until a full write folds it into the catalogue document. This
+            endpoint no longer creates them, but production still holds the
+            ones an interrupted run left — so the sweep stays, and the client
+            calls it whether the run finished or stopped.
 
             The delete is narrowed by `updated_at`, not by key alone. An admin
             editing a product between the aggregate write and this statement
@@ -172,154 +325,62 @@ export const Route = createFileRoute("/api/admin/catalogue-import")({
           */
           const mode: ImportMode =
             payload?.mode === "refresh-prices" ? "refresh-prices" : "create-only";
-          const store = await getStore();
-          const category = resolveGamesCategory(store.categories);
 
           /*
-            One pass over the catalogue, not one lookup per row. A `find` per
-            row over seventeen hundred products is eighty-five thousand string
-            comparisons per batch, and there are sixteen batches.
+            Held outside the mutation so the response can report what the
+            *accepted* attempt decided. `updateStore` re-runs the callback
+            against a fresh snapshot when another writer wins the revision, and
+            the counts from a losing attempt describe a catalogue that was
+            never saved.
           */
-          const bySlug = new Map<string, Record<string, unknown>>();
-          const byTitle = new Map<string, Record<string, unknown>>();
-          for (const product of (store.products ?? []) as unknown as Record<string, unknown>[]) {
-            const slug = slugOf(product);
-            if (slug) bySlug.set(slug, product);
+          let decision: Decision | undefined;
 
-            /*
-              Only games are looked up by title.
-
-              The title index exists to stop a second «Fire Emblem: Three
-              Houses» being created beside one an admin added by hand. It was
-              built over every product in the shop — hardware, accessories,
-              amiibo, gift cards, bundles — so a console accessory or a bundle
-              that happens to share a name with a game was taken as "the same
-              game". That costs the row twice over: the import declines to
-              touch the accessory (rightly), and the game it was supposed to
-              create is never created, because the row has been answered.
-
-              A slug match still works across every kind, which is the precise
-              case: a slug collision is a URL collision and a real conflict.
-            */
-            const isGame =
-              resolveCategoryType(
-                String(product["categoryId"] ?? ""),
-                String(product["category"] ?? product["categoryTitle"] ?? ""),
-                String(product["kind"] ?? ""),
-                String(product["schemaId"] ?? ""),
-              ) === "game";
-            if (!isGame) continue;
-
-            const title = String(product["titleEn"] ?? product["title"] ?? "")
-              .trim()
-              .toLowerCase();
-            if (title) byTitle.set(title, product);
-          }
-
-          const results: RowResult[] = [];
-          let created = 0;
-          let updated = 0;
-
-          for (const row of rows) {
-            const name = String(row?.englishName ?? "").trim();
-            const line = Number(row?.line) || 0;
-            if (!name || !(Number(row?.offlinePriceIqd) > 0)) {
-              results.push({ line, name, outcome: "skipped", reason: "صف غير صالح" });
-              continue;
-            }
-
-            /*
-              Matched by slug first, then by name.
-
-              The slug is what a re-run of the same sheet produces, so it is
-              the reliable key. The title lookup is what stops the import from
-              creating a second «Fire Emblem: Three Houses» beside one an admin
-              added by hand under a different slug — and because an existing
-              product is now refused rather than overwritten, a wrong match
-              costs a skipped row the admin can see, not a product turned into
-              something it is not.
-            */
-            const desiredSlug = String(row.slug ?? "").trim().toLowerCase();
-            const existing =
-              (desiredSlug ? bySlug.get(desiredSlug) : undefined) ??
-              byTitle.get(name.toLowerCase()) ??
-              undefined;
-
-            const outcome = buildListing(row, {
-              categoryId: category.id,
-              categoryTitle: category.title,
-              mode,
-              ...(existing ? { existing } : {}),
+          if (apply) {
+            await updateStore((current) => {
+              decision = decide(current, rows, mode);
+              return { ...current, products: decision.products } as StoreDoc;
             });
-
-            if (outcome.action === "skip") {
-              results.push({ line, name, outcome: "skipped", reason: outcome.reason });
-              continue;
-            }
-
-            const id = String(outcome.product["id"]);
-
-            if (apply) {
-              try {
-                await d1Run(
-                  `INSERT INTO store_kv (key, value, updated_at) VALUES (?, ?, ?)
-                   ON CONFLICT(key) DO UPDATE SET value = excluded.value, updated_at = excluded.updated_at`,
-                  `store:product:${id}`,
-                  JSON.stringify(outcome.product),
-                  new Date().toISOString(),
-                );
-                await refreshProductIndexRow(outcome.product);
-
-                /*
-                  The Chinese name goes to its own admin-only table and never
-                  onto the product. `getStore()` does not load that table, so
-                  there is no path by which the storefront could serialise it —
-                  which is the whole reason it lives there.
-
-                  A failure here does not fail the import: the listing is
-                  sellable without the supplier's name for it, and losing the
-                  game over a metadata row would be the wrong trade.
-                */
-                if (outcome.chineseName) {
-                  try {
-                    await writeSupplierNameZh({
-                      productId: id,
-                      supplierNameZhCn: outcome.chineseName,
-                      englishTitle: name,
-                      updatedBy: admin.id,
-                    });
-                  } catch (metaErr) {
-                    console.warn("[catalogue-import] supplier name failed", id, metaErr);
-                  }
-                }
-              } catch (err) {
-                console.error("[catalogue-import] write failed", id, err);
-                results.push({
-                  line,
-                  name,
-                  outcome: "skipped",
-                  reason: "فشل الحفظ في قاعدة البيانات",
-                });
-                continue;
-              }
-            }
-
-            if (outcome.action === "create") created += 1;
-            else updated += 1;
-            results.push({ line, name, outcome: outcome.action === "create" ? "created" : "updated", id });
+            invalidateStoreCache();
+          } else {
+            decision = decide(await getStore(), rows, mode);
           }
 
-          if (apply) invalidateStoreCache();
+          const result = decision!;
+
+          /*
+            The supplier names, in one transaction after the products are
+            safely written.
+
+            A failure here does not fail the import: the listing is sellable
+            without the supplier's name for it, and losing a hundred games over
+            a metadata row would be the wrong trade. Re-running the import
+            writes them again.
+          */
+          let namesWritten = 0;
+          if (apply && result.names.length > 0) {
+            try {
+              const statements = supplierNameStatements(
+                result.names.map((entry) => ({ ...entry, updatedBy: admin.id })),
+              );
+              if (statements.length > 0) {
+                await d1Batch(statements.map((s) => ({ sql: s.sql, binds: s.params })));
+                namesWritten = result.names.length;
+              }
+            } catch (err) {
+              console.warn("[catalogue-import] supplier names failed", err);
+            }
+          }
 
           return json({
             success: true,
             apply,
-            categoryId: category.id,
+            categoryId: result.categoryId,
             mode,
-            created,
-            updated,
-            skipped: results.filter((r) => r.outcome === "skipped").length,
-            results,
+            created: result.created,
+            updated: result.updated,
+            skipped: result.results.filter((r) => r.outcome === "skipped").length,
+            namesWritten,
+            results: result.results,
           });
         }),
     },

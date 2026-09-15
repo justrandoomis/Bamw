@@ -23,6 +23,7 @@
  */
 
 import { d1All, d1First, d1Run } from "./d1.server";
+import { assertBoundParameters, chunkForParams } from "./sql-params";
 
 export type ZhVerificationStatus = "verified" | "needs_review" | "missing";
 
@@ -142,19 +143,29 @@ export interface WriteSupplierNameInput {
   now?: string;
 }
 
-/**
- * Record a Chinese name, its source and how well it is trusted.
- *
- * A name that fails the check is still stored — but as `needs_review`, never
- * as `verified`. Refusing to store it would lose the admin's work; marking it
- * verified would let an English title through as a supplier name.
- */
-export async function writeSupplierNameZh(
-  input: WriteSupplierNameInput,
-): Promise<{ ok: boolean; status: ZhVerificationStatus; reason?: ZhNameCheck["reason"] }> {
-  const productId = input.productId.trim();
-  if (!productId) return { ok: false, status: "missing" };
+/** The column list, shared by the single write and the bulk one. */
+const METADATA_INSERT = `INSERT INTO product_admin_metadata (
+       product_id, supplier_name_zh_cn, supplier_name_zh_source_url,
+       supplier_name_zh_verification_status, supplier_name_zh_verified_at,
+       updated_by, created_at, updated_at
+     ) VALUES`;
 
+const METADATA_CONFLICT = `ON CONFLICT(product_id) DO UPDATE SET
+       supplier_name_zh_cn = excluded.supplier_name_zh_cn,
+       supplier_name_zh_source_url = excluded.supplier_name_zh_source_url,
+       supplier_name_zh_verification_status = excluded.supplier_name_zh_verification_status,
+       supplier_name_zh_verified_at = excluded.supplier_name_zh_verified_at,
+       updated_by = excluded.updated_by,
+       updated_at = excluded.updated_at`;
+
+/** One row's worth of bound values, and the verdict that decided them. */
+function supplierNameRow(input: WriteSupplierNameInput): {
+  productId: string;
+  binds: unknown[];
+  check: ZhNameCheck;
+  status: ZhVerificationStatus;
+} {
+  const productId = input.productId.trim();
   const check = checkSupplierNameZh(input.supplierNameZhCn, input.englishTitle ?? "");
   const now = input.now ?? new Date().toISOString();
   const name = text(input.supplierNameZhCn).trim();
@@ -172,32 +183,75 @@ export async function writeSupplierNameZh(
       ? "verified"
       : "needs_review";
 
-  await d1Run(
-    `INSERT INTO product_admin_metadata (
-       product_id, supplier_name_zh_cn, supplier_name_zh_source_url,
-       supplier_name_zh_verification_status, supplier_name_zh_verified_at,
-       updated_by, created_at, updated_at
-     ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)
-     ON CONFLICT(product_id) DO UPDATE SET
-       supplier_name_zh_cn = excluded.supplier_name_zh_cn,
-       supplier_name_zh_source_url = excluded.supplier_name_zh_source_url,
-       supplier_name_zh_verification_status = excluded.supplier_name_zh_verification_status,
-       supplier_name_zh_verified_at = excluded.supplier_name_zh_verified_at,
-       updated_by = excluded.updated_by,
-       updated_at = excluded.updated_at`,
+  return {
     productId,
-    name,
-    text(input.sourceUrl).trim(),
+    check,
     status,
-    status === "verified" ? now : "",
-    text(input.updatedBy),
-    now,
-    now,
+    binds: [
+      productId,
+      name,
+      text(input.sourceUrl).trim(),
+      status,
+      status === "verified" ? now : "",
+      text(input.updatedBy),
+      now,
+      now,
+    ],
+  };
+}
+
+/** Bound values per row, so a caller can size a multi-row statement. */
+export const SUPPLIER_NAME_COLUMNS = 8;
+
+/**
+ * Record a Chinese name, its source and how well it is trusted.
+ *
+ * A name that fails the check is still stored — but as `needs_review`, never
+ * as `verified`. Refusing to store it would lose the admin's work; marking it
+ * verified would let an English title through as a supplier name.
+ */
+export async function writeSupplierNameZh(
+  input: WriteSupplierNameInput,
+): Promise<{ ok: boolean; status: ZhVerificationStatus; reason?: ZhNameCheck["reason"] }> {
+  const row = supplierNameRow(input);
+  if (!row.productId) return { ok: false, status: "missing" };
+
+  await d1Run(
+    `${METADATA_INSERT} (?, ?, ?, ?, ?, ?, ?, ?)\n     ${METADATA_CONFLICT}`,
+    ...row.binds,
   );
 
-  return check.ok
-    ? { ok: true, status }
-    : { ok: false, status, ...(check.reason ? { reason: check.reason } : {}) };
+  return row.check.ok
+    ? { ok: true, status: row.status }
+    : { ok: false, status: row.status, ...(row.check.reason ? { reason: row.check.reason } : {}) };
+}
+
+/**
+ * The same write for many products, as statements rather than round trips.
+ *
+ * A catalogue import carries a supplier name for every row it creates. Sending
+ * them one at a time is one D1 round trip per product on top of everything
+ * else the request is already doing — fifteen hundred of them across a run —
+ * and the Worker is holding the admin's request open the whole time. These go
+ * into the caller's transaction instead.
+ *
+ * Returns statements, not a promise: the caller decides which batch they
+ * belong to, and whether a failure should take the products down with it.
+ */
+export function supplierNameStatements(
+  inputs: readonly WriteSupplierNameInput[],
+): { sql: string; params: unknown[] }[] {
+  const rows = inputs.map(supplierNameRow).filter((row) => row.productId);
+  return chunkForParams(rows, SUPPLIER_NAME_COLUMNS).map((group) => {
+    const params = group.flatMap((row) => row.binds);
+    assertBoundParameters("product_admin_metadata.insert", params);
+    return {
+      sql:
+        `${METADATA_INSERT} ${group.map(() => "(?, ?, ?, ?, ?, ?, ?, ?)").join(", ")}\n` +
+        `     ${METADATA_CONFLICT}`,
+      params,
+    };
+  });
 }
 
 /**

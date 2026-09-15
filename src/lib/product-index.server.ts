@@ -224,6 +224,7 @@ export function toIndexRow(product: Row): ProductIndexRow {
     text(product["cardCurrency"]) ||
     text(product["card_currency"]),
   );
+  const bare = isBareListing(product);
   return {
     id,
     titleAr,
@@ -254,8 +255,17 @@ export function toIndexRow(product: Row): ProductIndexRow {
       Computed once at write time. The check walks a game's performance modes,
       so running it per row per request — which is what the browser filter did —
       is work the projection can do once instead.
+
+      Not asked of a listing that is still only a name and a price. A game the
+      supplier catalogue created has no description, no cover and no
+      performance record, and saying so twice — «بانتظار التفاصيل» *and*
+      «Performance review required» — adds nothing to the first. It was firing
+      on all 198 of them, which is a warning that means "this row exists"
+      rather than "look at this row". The flag returns the moment somebody
+      writes the game up.
     */
-    performanceRequired: isGameProduct(product) && requiresPerformanceReview(product),
+    performanceRequired:
+      isGameProduct(product) && !bare && requiresPerformanceReview(product),
     /*
       Also computed at write time, and for a sharper reason than cost: the
       listing row carries no `description` at all — see the comment on
@@ -263,7 +273,7 @@ export function toIndexRow(product: Row): ProductIndexRow {
       The browser would have had to guess, and the last flag it guessed at
       showed a warning on every Switch 2 game in the shop.
     */
-    bareListing: isBareListing(product),
+    bareListing: bare,
   };
 }
 
