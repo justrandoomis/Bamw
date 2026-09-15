@@ -26,8 +26,18 @@ export default {
     if (env?.ASSETS && typeof env.ASSETS.fetch === "function") {
       try {
         const pathname = new URL(request.url).pathname;
+        /*
+          An API path is never a static asset, whatever it ends in.
+
+          The extension test below matches `/api/files/covers/foo.webp`, so
+          every public product image was sent to the assets binding first, 404'd
+          there, and only then reached the route that serves it — one wasted
+          fetch on the busiest path in the shop (479 requests in a six-hour
+          sample, against 55 for everything under /assets).
+        */
         const isStaticAsset =
-          pathname.startsWith("/assets/") ||
+          !pathname.startsWith("/api/") &&
+          (pathname.startsWith("/assets/") ||
           pathname.startsWith("/illustrations/") ||
           pathname.startsWith("/textures/") ||
           pathname.startsWith("/templates/") ||
@@ -39,7 +49,7 @@ export default {
           pathname === "/latest.rss" ||
           /\.(?:js|css|png|jpg|jpeg|webp|svg|ico|json|woff2?|ttf|eot|wasm|map|txt)$/i.test(
             pathname,
-          );
+          ));
 
         if (isStaticAsset) {
           const assetResponse = await env.ASSETS.fetch(request);

@@ -4,6 +4,24 @@ import { guard } from "@/lib/http.server";
 import { readBinaryStream, readBinary } from "@/lib/storage.server";
 import { getSessionUser } from "@/lib/session.server";
 
+/*
+  Paths whose on-demand recovery has already been tried and failed.
+
+  Bounded so a flood of bad paths cannot grow it without limit: past the cap the
+  oldest entry goes, which at worst costs one repeated catalogue read rather
+  than unbounded memory.
+*/
+const recoveryFailed = new Set<string>();
+const MAX_REMEMBERED_FAILURES = 500;
+
+function rememberRecoveryFailure(path: string): void {
+  if (recoveryFailed.size >= MAX_REMEMBERED_FAILURES) {
+    const oldest = recoveryFailed.values().next().value;
+    if (oldest !== undefined) recoveryFailed.delete(oldest);
+  }
+  recoveryFailed.add(path);
+}
+
 export const Route = createFileRoute("/api/files/$")({
   server: {
     handlers: {
@@ -51,7 +69,24 @@ export const Route = createFileRoute("/api/files/$")({
               path.startsWith("covers/") ||
               path.startsWith("images/");
 
-            if (isProductMedia) {
+            /*
+              Recovery is attempted once per path, per isolate.
+
+              A missing object is usually missing for good — a filename that
+              moved, a product deleted, an upload that never landed — and this
+              branch loads the **entire catalogue** (3.8 MB of chunks, parsed,
+              with every product normalised) to look for a URL to re-fetch it
+              from. Without a memory of having failed, every retry of that image
+              by every browser on the page pays for it again: `/api/files/…` was
+              the busiest route in the shop at 479 requests in a six-hour
+              sample, with 66 of them cancelled.
+
+              Remembering the failure costs one string per dead path and turns
+              an unbounded cost into a one-off. It is per-isolate on purpose:
+              an isolate is short-lived, so an image genuinely restored later
+              is picked up by the next one rather than being denied for ever.
+            */
+            if (isProductMedia && !recoveryFailed.has(path)) {
               try {
                 const { getStore } = await import("@/lib/db.server");
                 const { fetchRemoteImage, readLimitedBody } = await import("@/lib/security.server");
@@ -136,8 +171,13 @@ export const Route = createFileRoute("/api/files/$")({
                 if (candidateUrls.length > 0 && candidateUrls[0]) {
                   return Response.redirect(candidateUrls[0], 302);
                 }
+                /*
+                  The catalogue was read and it had nothing to offer for this
+                  path. That answer will not change while this isolate lives.
+                */
+                rememberRecoveryFailure(path);
               } catch {
-                // Fallback
+                rememberRecoveryFailure(path);
               }
             }
 

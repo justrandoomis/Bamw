@@ -1285,10 +1285,26 @@ export async function getStore(): Promise<StoreDoc> {
 }
 
 export async function updateStore(mutate: (current: StoreDoc) => StoreDoc | void): Promise<StoreDoc> {
-  let current = await getStore();
-  let next = (mutate(current) ?? current) as StoreDoc;
+  /*
+    The snapshot that used to be taken here was thrown away.
 
-  if (await d1Ready()) {
+    This opened with `getStore()` and applied the mutation to it — and then the
+    retry loop below unconditionally re-read from D1 and re-applied on its very
+    first attempt, discarding both. So every write in the shop paid for **two**
+    full catalogue reads and **two** full mutation passes where one of each was
+    ever used. On the catalogue import that is two `ALL_ROWS_SQL` pulls of every
+    `store:products#NNN` chunk and two passes of `decide()` over the whole shop,
+    per batch, sixteen times.
+
+    The placeholder is safe because nothing reads these before the loop assigns
+    them: the loop runs at least once, and if it never saved, `store_write_conflict`
+    throws below before `storeCache` or the price diff is reached.
+  */
+  const usingD1 = await d1Ready();
+  let current: StoreDoc = usingD1 ? (emptyStore as StoreDoc) : await getStore();
+  let next: StoreDoc = usingD1 ? current : ((mutate(current) ?? current) as StoreDoc);
+
+  if (usingD1) {
     /*
       Read fresh, then write under the revision the read saw.
 
