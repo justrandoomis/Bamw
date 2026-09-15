@@ -42,6 +42,9 @@ const say = (t = "") => {
 
 const ORIGIN = process.env.SITE_ORIGIN || "https://banan.to";
 
+/** Digits are addresses here — ids, phone numbers, order codes. */
+const mask = (t) => redact(String(t ?? "")).replace(/\d{5,}/g, "«n»");
+
 /* ------------------------------------------------------------------ */
 /* 1. What production answers, and from where                          */
 /* ------------------------------------------------------------------ */
@@ -207,6 +210,102 @@ for (const r of big) say(`| \`${r.key}\` | ${Number(r.len).toLocaleString("en-US
 say();
 
 /* ------------------------------------------------------------------ */
+/* 2b. Whatever is making that read eleven megabytes                    */
+/* ------------------------------------------------------------------ */
+
+/*
+  Sizes and field names only, never a value.
+
+  The heavy sections are shop data — bundles, banners, page content — but a
+  `description` or a `note` in one is somebody's writing and a `data:` URI is
+  an image nobody needs to see in a CI log. What matters here is which field is
+  carrying the megabytes, and that is answered by its name and its length.
+*/
+const heavy = await app.d1All(
+  `SELECT key, value FROM store_kv
+     WHERE key LIKE 'store:bundles%' OR key LIKE 'store:banners%' OR key LIKE 'store:content%'
+     ORDER BY key ASC`,
+);
+const sections = new Map();
+for (const row of heavy) {
+  const section = String(row.key).split("#")[0];
+  sections.set(section, (sections.get(section) ?? "") + String(row.value ?? ""));
+}
+
+say(`## Which section carries the weight`);
+say();
+say(`| section | bytes | items |`);
+say(`| --- | --- | --- |`);
+const parsed = new Map();
+for (const [section, raw] of sections) {
+  let items = null;
+  try {
+    items = JSON.parse(raw);
+  } catch {
+    items = null;
+  }
+  if (Array.isArray(items)) parsed.set(section, items);
+  say(
+    `| \`${section}\` | ${raw.length.toLocaleString("en-US")} | ${
+      Array.isArray(items) ? items.length : "not an array"
+    } |`,
+  );
+}
+say();
+
+for (const [section, items] of parsed) {
+  if (!items.length) continue;
+  const sized = items
+    .map((item, i) => ({
+      id: String(item?.id ?? item?.slug ?? `#${i}`),
+      bytes: JSON.stringify(item ?? null).length,
+      item,
+    }))
+    .sort((a, b) => b.bytes - a.bytes);
+  const total = sized.reduce((sum, row) => sum + row.bytes, 0);
+  if (total < 200_000) continue;
+
+  say(`### \`${section}\` — the largest entries`);
+  say();
+  say(`| id | bytes |`);
+  say(`| --- | --- |`);
+  for (const row of sized.slice(0, 8)) {
+    say(`| \`${mask(row.id)}\` | ${row.bytes.toLocaleString("en-US")} |`);
+  }
+  say();
+
+  const worst = sized[0];
+  if (worst && worst.bytes > 50_000 && worst.item && typeof worst.item === "object") {
+    say(`The biggest one, field by field:`);
+    say();
+    say(`| field | bytes |`);
+    say(`| --- | --- |`);
+    const fields = Object.entries(worst.item)
+      .map(([field, value]) => [field, JSON.stringify(value ?? null).length])
+      .sort((a, b) => b[1] - a[1]);
+    for (const [field, bytes] of fields.slice(0, 12)) {
+      say(`| \`${mask(field)}\` | ${bytes.toLocaleString("en-US")} |`);
+    }
+    say();
+  }
+
+  /*
+    Inline images are the usual answer to "why is this section megabytes". A
+    `data:` URI in a stored document is the picture itself, base64, read and
+    re-parsed on every load of the whole section.
+  */
+  const raw = sections.get(section) ?? "";
+  const uris = raw.match(/"data:[^"]{200,}"/g) ?? [];
+  const uriBytes = uris.reduce((sum, uri) => sum + uri.length, 0);
+  say(
+    `Inline \`data:\` images in this section: **${uris.length}**, ` +
+      `**${uriBytes.toLocaleString("en-US")}** bytes ` +
+      `(**${raw.length ? Math.round((uriBytes / raw.length) * 100) : 0}%** of it).`,
+  );
+  say();
+}
+
+/* ------------------------------------------------------------------ */
 /* 3. The projection table, and the schema stamp                       */
 /* ------------------------------------------------------------------ */
 
@@ -266,7 +365,6 @@ const ACCOUNT = process.env.CLOUDFLARE_ACCOUNT_ID;
 const TOKEN = process.env.CLOUDFLARE_API_TOKEN;
 const WORKER = process.env.WORKER_NAME || "pixel-cart-cloud";
 const HOURS = Number(process.env.INCIDENT_HOURS || "24");
-const mask = (t) => redact(String(t ?? "")).replace(/\d{5,}/g, "«n»");
 
 say(`## Request outcomes the runtime recorded (last ${HOURS}h)`);
 say();
