@@ -179,6 +179,7 @@ export const Route = createFileRoute("/api/admin/products")({
                 : {}),
             ...(url.searchParams.get("unpriced") ? { onlyUnpriced: true } : {}),
             ...(url.searchParams.get("performance") ? { performanceRequired: true } : {}),
+            ...(url.searchParams.get("bare") ? { bareListing: true } : {}),
           };
 
           const queryStart = Date.now();
@@ -207,6 +208,7 @@ export const Route = createFileRoute("/api/admin/products")({
             query.hidden === undefined &&
             !query.onlyUnpriced &&
             !query.performanceRequired &&
+            !query.bareListing &&
             !query.categoryId &&
             page.page === 1;
 
@@ -219,6 +221,7 @@ export const Route = createFileRoute("/api/admin/products")({
             query.hidden === undefined &&
             !query.onlyUnpriced &&
             !query.performanceRequired &&
+            !query.bareListing &&
             page.page === 1;
           const shouldRepairCategory =
             isBareCategory && !attemptedCategoryProjectionRepairs.has(categoryRepairKey);

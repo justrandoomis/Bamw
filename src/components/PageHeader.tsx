@@ -1,4 +1,6 @@
 import { useNavigate, useRouter } from "@tanstack/react-router";
+
+import { useStoreData } from "@/hooks/useStoreData";
 import Header from "./Header";
 
 const viewToPath: Record<string, string> = {
@@ -19,6 +21,17 @@ const viewToPath: Record<string, string> = {
 export default function PageHeader({ view = "page" }: { view?: string }) {
   const navigate = useNavigate();
   const router = useRouter();
+  /*
+    The catalogue, so the search box in this header has something to search.
+
+    It was constructed without it, which was invisible while the box only
+    rendered on the home page — `AppShell` passes the products there. Now that
+    the box is on every page, a header with no catalogue would draw a search
+    field that silently answers nothing, which is worse than the spacer it
+    replaced. React Query serves the same cached `["store"]` entry the rest of
+    the app already holds, so this costs no extra request.
+  */
+  const { data: store } = useStoreData();
 
   const handleBack = () => {
     if (typeof window !== "undefined" && window.history.length > 1) {
@@ -37,5 +50,12 @@ export default function PageHeader({ view = "page" }: { view?: string }) {
     void navigate({ to: viewToPath[target] ?? "/" });
   };
 
-  return <Header currentView={view} onBack={handleBack} onNavigate={handleNavigate} />;
+  return (
+    <Header
+      currentView={view}
+      onBack={handleBack}
+      onNavigate={handleNavigate}
+      products={store?.products ?? []}
+    />
+  );
 }

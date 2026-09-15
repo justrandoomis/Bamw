@@ -29,7 +29,12 @@ export interface PaginationFacts {
   limit: number;
   hasMore: boolean;
   /** Chip counts over the whole catalogue; absent on an older response. */
-  facets?: { hidden: number; unpriced: number; performanceRequired: number };
+  facets?: {
+    hidden: number;
+    unpriced: number;
+    performanceRequired: number;
+    bareListing: number;
+  };
   /*
     Rows in the projection, ignoring the filter — `d1Count` is the match count.
     Absent on an older response, and the header falls back to saying only what
@@ -73,6 +78,17 @@ function normalizeRow(raw: Record<string, unknown>): AdminProductRow {
  */
 export function showsPerformanceWarning(row: Record<string, unknown>): boolean {
   return row["performanceRequired"] === true;
+}
+
+/**
+ * Whether this row is still only a name and a price.
+ *
+ * Read from the server for the same reason as the line above, and a sharper
+ * one: the projection row carries no `description` at all, so the browser
+ * could not answer this even if it wanted to.
+ */
+export function showsBareListingBadge(row: Record<string, unknown>): boolean {
+  return row["bareListing"] === true;
 }
 
 export function interpretProductsPayload(payload: unknown): ProductsPayloadVerdict {
@@ -313,6 +329,8 @@ export interface ProductsQuery {
   hidden?: boolean;
   unpriced?: boolean;
   performance?: boolean;
+  /** Only the listings that are still a name and a price. */
+  bare?: boolean;
   category?: string;
   sort?: { field: "updated" | "price" | "name" | "order"; direction: "asc" | "desc" };
 }

@@ -1,8 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useEffect, useMemo } from "react";
+import { AlertTriangle } from "lucide-react";
 
 import AppShell from "@/components/AppShell";
+import GameDetailsRequest from "@/components/GameDetailsRequest";
 import ProductReviews from "@/components/ProductReviews";
 
 import { CurrencyProvider } from "@/hub/context/CurrencyContext";
@@ -18,6 +20,8 @@ import { detectSchema } from "@/lib/productImport/registry";
 import { getProductCategory, schemaForSection } from "@/lib/productSection";
 import { findProductByIdOrSlug, getProductSlug } from "@/lib/productRouting";
 import { isProductPurchasable } from "@/lib/purchasable";
+import { isBareListing } from "@/lib/bareListing";
+import { useAuth } from "@/hooks/useAuth";
 import { recordView } from "@/lib/view-history";
 
 export const Route = createFileRoute("/product/$productId")({
@@ -43,6 +47,7 @@ export const Route = createFileRoute("/product/$productId")({
 function ProductPage() {
   const { productId } = Route.useParams();
   const navigate = useNavigate();
+  const { user } = useAuth();
 
   // 1. Instant cache access via shared store data
   const { data: storeData } = useStoreData();
@@ -81,6 +86,21 @@ function ProductPage() {
   */
   const section = useMemo(() => (product ? getProductCategory(product) : undefined), [product]);
   const isGame = section === "game";
+
+  /*
+    A listing that carries a name and a price and nothing else.
+
+    Derived rather than flagged — the same predicate the admin table counts
+    with — so the panel disappears by itself the moment the game is written up,
+    with nothing to remember to turn off. Judged on the *merged* record, which
+    means the instant answer from the cached listing can differ from the one a
+    second later when the full record arrives; that is correct, and the panel
+    appearing late is better than it appearing on a game that has a cover.
+  */
+  const isBare = useMemo(
+    () => (product ? isBareListing(product as Record<string, unknown>) : false),
+    [product],
+  );
 
   const schema = useMemo(
     () =>
@@ -146,6 +166,42 @@ function ProductPage() {
                     el?.scrollIntoView({ behavior: "smooth" });
                   }}
                 />
+                {/*
+                  Below the hub rather than inside it. The hub drops every
+                  section it has no data for, so on one of these listings it is
+                  already short — and the panel lands where the page ends
+                  instead of interrupting a layout built for a game with
+                  everything filled in.
+                */}
+                {/*
+                  Judged on its own, not folded into the panel below.
+
+                  The seventeen Japanese-only titles in the supplier catalogue
+                  are all bare listings today, so it would work either way — and
+                  would stop working the day somebody writes one of them up,
+                  taking the warning away with the panel. A customer buying a
+                  game they cannot read is a refund whatever else the page has.
+                */}
+                {product["englishSupport"] === false && (
+                  <div className="px-4 pb-4">
+                    <p className="mx-auto flex max-w-5xl items-start gap-2 rounded-2xl border border-amber-500/40 bg-amber-500/10 p-4 text-sm font-bold text-amber-700 dark:text-amber-300">
+                      <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0" />
+                      هذه اللعبة لا تدعم اللغة الإنجليزية — واجهتها ونصوصها يابانية أو صينية.
+                    </p>
+                  </div>
+                )}
+
+                {isBare && (
+                  <div className="px-4 pb-16">
+                    <GameDetailsRequest
+                      productId={String(product["id"] ?? productId)}
+                      productTitle={String(product["titleEn"] || product["title"] || "")}
+                      platform={String(product["platform"] ?? "")}
+                      isSignedIn={Boolean(user)}
+                      onSignIn={() => void navigate({ to: "/auth" })}
+                    />
+                  </div>
+                )}
               </div>
             </NotificationProvider>
           </UserProvider>

@@ -39,6 +39,7 @@ import { resolveProductImage } from "./productImages";
 import { categoryFilterAliases, isGameProduct } from "./productSection";
 import { lastModifiedAt, sortableName, sortableNameKey, type ProductSort } from "./productSort";
 import { isProductHidden } from "./purchasable";
+import { isBareListing } from "./bareListing";
 
 type Row = Record<string, unknown>;
 
@@ -76,12 +77,22 @@ export interface ProductIndexRow {
   releaseDate: string;
   /** A Switch 2 game whose performance data is still incomplete. */
   performanceRequired: boolean;
+  /*
+    Still only a name and a price.
+
+    Fifteen hundred supplier titles were published in that state on purpose, so
+    this is the difference between "the catalogue" and "the games that have
+    actually been written up" — and the only way to find the second kind in a
+    table of seventeen hundred rows.
+  */
+  bareListing: boolean;
 }
 
 export interface ProductIndexFacets {
   hidden: number;
   unpriced: number;
   performanceRequired: number;
+  bareListing: number;
 }
 
 export interface ProductIndexPage {
@@ -119,6 +130,8 @@ export interface ProductIndexQuery {
   hidden?: boolean;
   onlyUnpriced?: boolean;
   performanceRequired?: boolean;
+  /** Only the listings that are still a name and a price. */
+  bareListing?: boolean;
 }
 
 export const DEFAULT_PAGE_SIZE = 50;
@@ -243,6 +256,14 @@ export function toIndexRow(product: Row): ProductIndexRow {
       is work the projection can do once instead.
     */
     performanceRequired: isGameProduct(product) && requiresPerformanceReview(product),
+    /*
+      Also computed at write time, and for a sharper reason than cost: the
+      listing row carries no `description` at all — see the comment on
+      ProductIndexRow — so this question is unanswerable anywhere downstream.
+      The browser would have had to guess, and the last flag it guessed at
+      showed a warning on every Switch 2 game in the shop.
+    */
+    bareListing: isBareListing(product),
   };
 }
 
@@ -310,6 +331,7 @@ const COLUMNS = [
   "sort_release",
   "sort_rank",
   "performance_required",
+  "bare_listing",
   "rev",
 ] as const;
 
@@ -345,6 +367,7 @@ function bindsFor(product: Row, rev: number): unknown[] {
     keys.sortRelease,
     keys.sortRank,
     row.performanceRequired ? 1 : 0,
+    row.bareListing ? 1 : 0,
     rev,
   ];
 }
@@ -557,6 +580,7 @@ function fromRow(row: Record<string, unknown>): ProductIndexRow {
     createdAt: String(row["created_at"] ?? ""),
     releaseDate: String(row["release_date"] ?? ""),
     performanceRequired: Number(row["performance_required"] ?? 0) === 1,
+    bareListing: Number(row["bare_listing"] ?? 0) === 1,
   };
 }
 
@@ -639,6 +663,7 @@ export async function readProductIndexPage(query: ProductIndexQuery): Promise<Pr
   if (query.hidden === false) where.push("hidden = 0");
   if (query.onlyUnpriced) where.push("(price IS NULL OR price <= 0)");
   if (query.performanceRequired) where.push("performance_required = 1");
+  if (query.bareListing) where.push("bare_listing = 1");
 
   const whereSql = where.length ? "WHERE " + where.join(" AND ") : "";
   const sort = query.sort ?? { field: "order" as const, direction: "desc" as const };
@@ -652,12 +677,13 @@ export async function readProductIndexPage(query: ProductIndexQuery): Promise<Pr
       limit,
       offset,
     ),
-    // One aggregate row for all three chips, rather than three round trips.
-    d1First<{ all_rows: number; hidden: number; unpriced: number; perf: number }>(
+    // One aggregate row for every chip, rather than one round trip each.
+    d1First<{ all_rows: number; hidden: number; unpriced: number; perf: number; bare: number }>(
       `SELECT COUNT(*) AS all_rows,
               SUM(hidden) AS hidden,
               SUM(CASE WHEN price IS NULL OR price <= 0 THEN 1 ELSE 0 END) AS unpriced,
-              SUM(performance_required) AS perf
+              SUM(performance_required) AS perf,
+              SUM(bare_listing) AS bare
          FROM product_index`,
     ),
   ]);
@@ -674,6 +700,7 @@ export async function readProductIndexPage(query: ProductIndexQuery): Promise<Pr
       hidden: Number(facetRow?.hidden ?? 0),
       unpriced: Number(facetRow?.unpriced ?? 0),
       performanceRequired: Number(facetRow?.perf ?? 0),
+      bareListing: Number(facetRow?.bare ?? 0),
     },
   };
 }

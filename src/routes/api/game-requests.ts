@@ -67,11 +67,24 @@ export const Route = createFileRoute("/api/game-requests")({
             return json({ error: "اسم المنتج مطلوب" }, { status: 400 });
           }
 
-          // Duplicate detection
+          /*
+            Duplicate detection, per request *type*.
+
+            It used to key on the member and the product name alone, which was
+            right while every request meant the same thing — «please stock this
+            game». It stopped being right when a listing started offering three
+            different things to ask for about a game the shop already sells:
+            somebody who asked for the details of «Fire Emblem: Three Houses»
+            and then asked for an online account of it was told they had
+            already requested that product, and the second ask was lost.
+          */
           const existing = await d1First<{ id: string }>(
-            `SELECT id FROM product_requests WHERE user_id = ? AND product_name = ? AND status IN ('submitted', 'under_review', 'accepted', 'sourcing')`,
+            `SELECT id FROM product_requests
+              WHERE user_id = ? AND product_name = ? AND request_type = ?
+                AND status IN ('submitted', 'under_review', 'accepted', 'sourcing')`,
             user.id,
             productName,
+            requestType,
           );
           if (existing) {
             return json({ error: "لديك طلب مسبق قيد المراجعة لنفس المنتج" }, { status: 400 });

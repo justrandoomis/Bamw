@@ -288,7 +288,16 @@ function scoreProduct(
     thing they want, and it should sit above a product that merely contains
     both words apart.
   */
-  if (squashedQuery.length >= 3) {
+  /*
+    Applies from the first letter now, not the third.
+
+    It used to be fenced off below three characters, which removed the one
+    thing that makes a one-letter query useful: without it every game whose
+    name merely *contains* a word starting with «z» scored exactly as well as
+    Zelda, and the six shown were six arbitrary ones. The bonus is what turns
+    a broad match into a ranked answer.
+  */
+  if (squashedQuery.length >= 1) {
     for (const name of entry.nameBlob.split("|")) {
       if (name.startsWith(squashedQuery)) { score += 0.3; break; }
       if (name.includes(squashedQuery)) { score += 0.15; break; }

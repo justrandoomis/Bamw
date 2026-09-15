@@ -156,6 +156,7 @@ export const PRODUCT_INDEX_SCHEMA = [
      sort_release INTEGER,
      sort_rank INTEGER NOT NULL DEFAULT 0,
      performance_required INTEGER NOT NULL DEFAULT 0,
+     bare_listing INTEGER NOT NULL DEFAULT 0,
      rev INTEGER NOT NULL DEFAULT 0
    )`,
   `CREATE INDEX IF NOT EXISTS idx_pi_updated_desc ON product_index (sort_updated IS NULL, sort_updated DESC, id)`,

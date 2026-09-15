@@ -17,6 +17,7 @@ import {
 } from "lucide-react";
 import { useI18n } from "@/i18n";
 import type { ProductRequest } from "@/lib/types";
+import { gameRequestLabel } from "@/lib/gameDetailRequest";
 import { AddGamePageEditor } from "./editors/AddGamePageEditor";
 
 export default function ProductRequestsView() {
@@ -282,7 +283,7 @@ function RequestCard({
               {getStatusLabel(req.status)}
             </span>
             <span className="text-xs text-muted-foreground bg-muted px-2 py-0.5 rounded font-mono">
-              {req.requestType}
+              {gameRequestLabel(req.requestType) || req.requestType}
             </span>
           </div>
           <div className="text-sm text-muted-foreground flex items-center gap-4">

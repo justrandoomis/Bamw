@@ -902,6 +902,7 @@ const SCHEMA_PATCHES: string[] = [
      sort_release INTEGER,
      sort_rank INTEGER NOT NULL DEFAULT 0,
      performance_required INTEGER NOT NULL DEFAULT 0,
+     bare_listing INTEGER NOT NULL DEFAULT 0,
      rev INTEGER NOT NULL DEFAULT 0
    )`,
   // One index per column *and direction* the table can be ordered by, each
@@ -933,6 +934,14 @@ const SCHEMA_PATCHES: string[] = [
   */
   `ALTER TABLE product_index ADD COLUMN title_ar TEXT NOT NULL DEFAULT ''`,
   `ALTER TABLE product_index ADD COLUMN sort_name_ar TEXT NOT NULL DEFAULT ''`,
+  /*
+    «Still only a name and a price», for the same reason and with the same
+    caveat: a row projected before this column existed reads 0, so the chip
+    undercounts until the index is rebuilt or each product is saved again.
+    Undercounting is the safe direction — it hides work rather than inventing
+    it — but it is why the importer rebuilds the projection when it finishes.
+  */
+  `ALTER TABLE product_index ADD COLUMN bare_listing INTEGER NOT NULL DEFAULT 0`,
   `CREATE TABLE IF NOT EXISTS store_kv (key TEXT PRIMARY KEY, value TEXT NOT NULL, updated_at TEXT NOT NULL)`,
   `CREATE TABLE IF NOT EXISTS store_rev (rev INTEGER PRIMARY KEY, updated_at TEXT NOT NULL)`,
   `ALTER TABLE users ADD COLUMN wallet_balance REAL NOT NULL DEFAULT 0`,

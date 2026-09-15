@@ -272,6 +272,10 @@ export interface QueryToken {
   weak: boolean;
   /** True for tokens introduced by synonym expansion, not typed by the user. */
   derived: boolean;
+  /** The word in one alphabet, for matching a catalogue written in the other. */
+  phonetic: string;
+  /** Its consonants, for the short vowels Arabic does not write. Empty if too short. */
+  skeleton: string;
 }
 
 /**
@@ -302,6 +306,8 @@ export function tokenizeQuery(
       stem: stem(trimmed),
       weak: isWeakToken(trimmed),
       derived,
+      phonetic: phoneticKey(trimmed),
+      skeleton: consonantSkeleton(trimmed),
     });
   };
 
@@ -370,10 +376,143 @@ export function editDistance(a: string, b: string, limit: number): number {
   return prev[b.length]!;
 }
 
-/** How many edits we forgive for a token of this length. */
+/**
+ * How many edits we forgive for a token of this length.
+ *
+ * Three-letter words used to get nothing, and the consequence was larger than
+ * it sounds because the product search removes a listing when any typed word
+ * matches nothing at all: «ماريو كرت» — one slip in a four-letter word — did
+ * not rank Mario Kart lower, it dropped it, and the fallback pass then
+ * returned every Mario game instead of the one asked for. A word of three
+ * letters now gets one edit; two still gets none, because at two letters one
+ * edit is the whole word.
+ */
 export function typoBudget(length: number): number {
-  if (length <= 3) return 0;
+  if (length <= 2) return 0;
   if (length <= 5) return 1;
   if (length <= 9) return 2;
   return 3;
+}
+
+/* ------------------------------ across scripts ----------------------------- */
+
+/**
+ * Arabic letters, written in Latin ones.
+ *
+ * The shop's catalogue is in English and its customers type Arabic. That was
+ * survivable while every product carried an Arabic title beside the English
+ * one — «زيلدا» found Zelda because the *product* held both spellings. It
+ * stopped being survivable when fifteen hundred supplier titles arrived with
+ * an English name and nothing else: an Arabic query cannot reach any of them
+ * through a stored translation that does not exist.
+ *
+ * So the two alphabets are brought into one comparison space instead. The
+ * mapping is the one Iraqi customers actually use when they write a game's
+ * name in Arabic letters — ي as «i» and و as «o», which is what turns «ماريو»
+ * into exactly «mario» — rather than a scholarly romanisation, which would
+ * turn it into «maryw» and match nothing.
+ */
+const ARABIC_TO_LATIN: Record<string, string> = {
+  ا: "a",
+  ب: "b",
+  ت: "t",
+  ث: "th",
+  ج: "j",
+  ح: "h",
+  خ: "kh",
+  د: "d",
+  ذ: "th",
+  ر: "r",
+  ز: "z",
+  س: "s",
+  ش: "sh",
+  ص: "s",
+  ض: "d",
+  ط: "t",
+  ظ: "z",
+  ع: "a",
+  غ: "gh",
+  ف: "f",
+  ق: "q",
+  ك: "k",
+  ل: "l",
+  م: "m",
+  ن: "n",
+  ه: "h",
+  و: "o",
+  ي: "i",
+  ء: "",
+  // Letters Arabic lacks, as the keyboards that have them write them.
+  پ: "b",
+  چ: "ch",
+  ژ: "zh",
+  گ: "g",
+  ڤ: "f",
+};
+
+/**
+ * One comparison key for a word in either alphabet.
+ *
+ * Arabic is transliterated, then both sides are folded through the sound
+ * substitutions that separate how Arabic speakers spell an English name from
+ * how it is spelled: «p» is written ب and «v» is written ف, so both fold the
+ * same way from either direction. Doubled letters collapse, because Arabic
+ * does not double them.
+ */
+export function phoneticKey(input: string): string {
+  const folded = normalize(input);
+  if (!folded) return "";
+  let out = "";
+  for (const char of folded) {
+    out += ARABIC_TO_LATIN[char] ?? char;
+  }
+  /*
+    Order matters. The digraphs go first, because the single-letter rules below
+    would otherwise cut through them — «gh» is one sound, and turning its «g»
+    into a «j» leaves «jh», which is nothing.
+
+    `y` and `w` fold to `i` and `o` because that is what they are in Arabic:
+    ي and و are the same letters doing both jobs. Without it «kirby» and
+    «كيربي» stay one edit apart for no reason, and «switch» and «سويتش» two.
+  */
+  return out
+    .replace(/ph/g, "f")
+    .replace(/ck/g, "k")
+    .replace(/gh/g, "g")
+    .replace(/kh/g, "k")
+    .replace(/ch/g, "sh")
+    .replace(/th/g, "t")
+    .replace(/[cq]/g, "k")
+    .replace(/x/g, "ks")
+    .replace(/p/g, "b")
+    .replace(/v/g, "f")
+    .replace(/g/g, "j")
+    .replace(/y/g, "i")
+    .replace(/w/g, "o")
+    .replace(/(.)\1+/g, "$1")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+const VOWELS = /[aeiou]/g;
+
+/**
+ * The consonants of a phonetic key.
+ *
+ * Arabic writes short vowels only as marks, and nobody types the marks — so
+ * «سوبر» romanises to «sobr» while «super» stays «super», and no edit budget
+ * short enough to be safe will bridge that. Their consonants, though, are
+ * «sbr» both ways.
+ *
+ * Only used when at least three consonants survive: below that the skeleton
+ * stops identifying anything — «mario» reduces to «mr», which would match
+ * «Amir», «Mera» and «Mr. Driller» equally well.
+ */
+export const SKELETON_FLOOR = 3;
+
+export function consonantSkeleton(input: string): string {
+  const key = phoneticKey(input).replace(/\s+/g, "");
+  if (!key) return "";
+  const skeleton = key.replace(VOWELS, "");
+  return skeleton.length >= SKELETON_FLOOR ? skeleton : "";
 }

@@ -77,6 +77,7 @@ import { Route as TelegramWalletReviewRouteImport } from './routes/telegram/wall
 import { Route as ApiAdminAssetsRouteImport } from './routes/api/admin/assets'
 import { Route as ApiAdminBananaRouteImport } from './routes/api/admin/banana'
 import { Route as ApiAdminBinanceTopupsRouteImport } from './routes/api/admin/binance-topups'
+import { Route as ApiAdminCatalogueImportRouteImport } from './routes/api/admin/catalogue-import'
 import { Route as ApiAdminCouponsRouteImport } from './routes/api/admin/coupons'
 import { Route as ApiAdminDebugImageFetchRouteImport } from './routes/api/admin/debug-image-fetch'
 import { Route as ApiAdminDeliveryItemsRouteImport } from './routes/api/admin/delivery-items'
@@ -470,6 +471,11 @@ const ApiAdminBinanceTopupsRoute = ApiAdminBinanceTopupsRouteImport.update({
   path: '/api/admin/binance-topups',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiAdminCatalogueImportRoute = ApiAdminCatalogueImportRouteImport.update({
+  id: '/api/admin/catalogue-import',
+  path: '/api/admin/catalogue-import',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ApiAdminCouponsRoute = ApiAdminCouponsRouteImport.update({
   id: '/api/admin/coupons',
   path: '/api/admin/coupons',
@@ -816,6 +822,7 @@ export interface FileRoutesByFullPath {
   '/api/admin/assets': typeof ApiAdminAssetsRoute
   '/api/admin/banana': typeof ApiAdminBananaRoute
   '/api/admin/binance-topups': typeof ApiAdminBinanceTopupsRoute
+  '/api/admin/catalogue-import': typeof ApiAdminCatalogueImportRoute
   '/api/admin/coupons': typeof ApiAdminCouponsRoute
   '/api/admin/debug-image-fetch': typeof ApiAdminDebugImageFetchRoute
   '/api/admin/delivery-items': typeof ApiAdminDeliveryItemsRoute
@@ -938,6 +945,7 @@ export interface FileRoutesByTo {
   '/api/admin/assets': typeof ApiAdminAssetsRoute
   '/api/admin/banana': typeof ApiAdminBananaRoute
   '/api/admin/binance-topups': typeof ApiAdminBinanceTopupsRoute
+  '/api/admin/catalogue-import': typeof ApiAdminCatalogueImportRoute
   '/api/admin/coupons': typeof ApiAdminCouponsRoute
   '/api/admin/debug-image-fetch': typeof ApiAdminDebugImageFetchRoute
   '/api/admin/delivery-items': typeof ApiAdminDeliveryItemsRoute
@@ -1061,6 +1069,7 @@ export interface FileRoutesById {
   '/api/admin/assets': typeof ApiAdminAssetsRoute
   '/api/admin/banana': typeof ApiAdminBananaRoute
   '/api/admin/binance-topups': typeof ApiAdminBinanceTopupsRoute
+  '/api/admin/catalogue-import': typeof ApiAdminCatalogueImportRoute
   '/api/admin/coupons': typeof ApiAdminCouponsRoute
   '/api/admin/debug-image-fetch': typeof ApiAdminDebugImageFetchRoute
   '/api/admin/delivery-items': typeof ApiAdminDeliveryItemsRoute
@@ -1185,6 +1194,7 @@ export interface FileRouteTypes {
     | '/api/admin/assets'
     | '/api/admin/banana'
     | '/api/admin/binance-topups'
+    | '/api/admin/catalogue-import'
     | '/api/admin/coupons'
     | '/api/admin/debug-image-fetch'
     | '/api/admin/delivery-items'
@@ -1307,6 +1317,7 @@ export interface FileRouteTypes {
     | '/api/admin/assets'
     | '/api/admin/banana'
     | '/api/admin/binance-topups'
+    | '/api/admin/catalogue-import'
     | '/api/admin/coupons'
     | '/api/admin/debug-image-fetch'
     | '/api/admin/delivery-items'
@@ -1429,6 +1440,7 @@ export interface FileRouteTypes {
     | '/api/admin/assets'
     | '/api/admin/banana'
     | '/api/admin/binance-topups'
+    | '/api/admin/catalogue-import'
     | '/api/admin/coupons'
     | '/api/admin/debug-image-fetch'
     | '/api/admin/delivery-items'
@@ -1552,6 +1564,7 @@ export interface RootRouteChildren {
   ApiAdminAssetsRoute: typeof ApiAdminAssetsRoute
   ApiAdminBananaRoute: typeof ApiAdminBananaRoute
   ApiAdminBinanceTopupsRoute: typeof ApiAdminBinanceTopupsRoute
+  ApiAdminCatalogueImportRoute: typeof ApiAdminCatalogueImportRoute
   ApiAdminCouponsRoute: typeof ApiAdminCouponsRoute
   ApiAdminDebugImageFetchRoute: typeof ApiAdminDebugImageFetchRoute
   ApiAdminDeliveryItemsRoute: typeof ApiAdminDeliveryItemsRoute
@@ -2072,6 +2085,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiAdminBinanceTopupsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/admin/catalogue-import': {
+      id: '/api/admin/catalogue-import'
+      path: '/api/admin/catalogue-import'
+      fullPath: '/api/admin/catalogue-import'
+      preLoaderRoute: typeof ApiAdminCatalogueImportRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api/admin/coupons': {
       id: '/api/admin/coupons'
       path: '/api/admin/coupons'
@@ -2570,6 +2590,7 @@ const rootRouteChildren: RootRouteChildren = {
   ApiAdminAssetsRoute: ApiAdminAssetsRoute,
   ApiAdminBananaRoute: ApiAdminBananaRoute,
   ApiAdminBinanceTopupsRoute: ApiAdminBinanceTopupsRoute,
+  ApiAdminCatalogueImportRoute: ApiAdminCatalogueImportRoute,
   ApiAdminCouponsRoute: ApiAdminCouponsRoute,
   ApiAdminDebugImageFetchRoute: ApiAdminDebugImageFetchRoute,
   ApiAdminDeliveryItemsRoute: ApiAdminDeliveryItemsRoute,
