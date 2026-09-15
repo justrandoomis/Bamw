@@ -241,9 +241,19 @@ say();
 say(`## What the browser does with that payload`);
 say();
 
-const slim = first["/api/data?slim=1"];
-if (!slim || slim.status !== 200) {
-  say(`- skipped: the slim payload did not come back 200.`);
+/*
+  Fetched here rather than reused from the table above: the edge challenges a
+  datacentre IP often enough that one 403 up there would silently skip this
+  whole section, which is what it did on the first run.
+*/
+const slimBody = await fetch(`${ORIGIN}/api/data?slim=1`, {
+  headers: { "user-agent": "bananto-perf/1.0" },
+})
+  .then((r) => (r.ok ? r.text() : null))
+  .catch(() => null);
+
+if (!slimBody) {
+  say(`- skipped: the slim payload could not be fetched (the edge challenges this runner sometimes).`);
 } else {
   const searchBundle = path.resolve(".perf-probe-search.mjs");
   await build({
@@ -258,9 +268,7 @@ if (!slim || slim.status !== 200) {
   });
   const search = await import(searchBundle);
 
-  const body = await fetch(`${ORIGIN}/api/data?slim=1`, {
-    headers: { "user-agent": "bananto-perf/1.0" },
-  }).then((r) => r.text());
+  const body = slimBody;
 
   const parseAt = Date.now();
   const doc = JSON.parse(body);
