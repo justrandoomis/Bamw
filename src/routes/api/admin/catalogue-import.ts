@@ -40,7 +40,7 @@ import { requireAdmin } from "@/lib/session.server";
 import { refreshProductIndexRow } from "@/lib/product-index.server";
 import { writeSupplierNameZh } from "@/lib/productAdminMetadata.server";
 import { buildListing, type CatalogueRow, type ImportMode } from "@/lib/catalogueImport";
-import { categoryFilterAliases } from "@/lib/productSection";
+import { categoryFilterAliases, resolveCategoryType } from "@/lib/productSection";
 import { assertBoundParameters, chunkForParams } from "@/lib/sql-params";
 
 /** One request's worth. Fifty products is roughly a second of Worker time. */
@@ -185,6 +185,31 @@ export const Route = createFileRoute("/api/admin/catalogue-import")({
           for (const product of (store.products ?? []) as unknown as Record<string, unknown>[]) {
             const slug = slugOf(product);
             if (slug) bySlug.set(slug, product);
+
+            /*
+              Only games are looked up by title.
+
+              The title index exists to stop a second «Fire Emblem: Three
+              Houses» being created beside one an admin added by hand. It was
+              built over every product in the shop — hardware, accessories,
+              amiibo, gift cards, bundles — so a console accessory or a bundle
+              that happens to share a name with a game was taken as "the same
+              game". That costs the row twice over: the import declines to
+              touch the accessory (rightly), and the game it was supposed to
+              create is never created, because the row has been answered.
+
+              A slug match still works across every kind, which is the precise
+              case: a slug collision is a URL collision and a real conflict.
+            */
+            const isGame =
+              resolveCategoryType(
+                String(product["categoryId"] ?? ""),
+                String(product["category"] ?? product["categoryTitle"] ?? ""),
+                String(product["kind"] ?? ""),
+                String(product["schemaId"] ?? ""),
+              ) === "game";
+            if (!isGame) continue;
+
             const title = String(product["titleEn"] ?? product["title"] ?? "")
               .trim()
               .toLowerCase();

@@ -43,8 +43,14 @@ export interface CatalogueRow {
   */
   slug: string;
   englishName: string;
-  /** Admin-only. What a copy costs the shop. */
-  costIqd: number;
+  /*
+    Admin-only. What a copy costs the shop.
+
+    `null` means the sheet does not say — a file with no Cost column at all —
+    which is not the same as zero and must not be written over a cost the shop
+    already knows.
+  */
+  costIqd: number | null;
   /** Admin-only. What the supplier calls it. */
   chineseName: string;
   platform: "switch1" | "switch2";
@@ -174,13 +180,25 @@ function westernDigits(value: string): string {
     .replace(/[۰-۹]/g, (d) => String(d.charCodeAt(0) - 0x06f0));
 }
 
+/**
+ * A number from a spreadsheet cell, or NaN.
+ *
+ * The strip-then-`Number` this used to do reported **zero** for a cell with no
+ * digits in it, because `Number("")` is 0 rather than NaN. So «N/A», «-» and
+ * «غير معروف» in the Cost column all parsed as a cost of zero, the
+ * «التكلفة غير مقروءة» branch below became unreachable — and worse, the loss
+ * guard beneath it is fenced behind `cost > 0`, so it was skipped too. A row
+ * whose real cost is 12,000 against a sheet price of 9,000 is refused when the
+ * cost parses, and was imported and published at a loss when somebody had
+ * typed «N/A» instead.
+ */
 function money(value: string): number {
   // Thousands separators and a currency word are both common in this sheet.
   const cleaned = westernDigits(String(value ?? ""))
     .replace(/[,٬\s]/g, "")
     .replace(/[^0-9.]/g, "");
-  const n = Number(cleaned);
-  return Number.isFinite(n) ? n : NaN;
+  if (!/[0-9]/.test(cleaned)) return NaN;
+  return Number(cleaned);
 }
 
 function readPlatform(value: string): "switch1" | "switch2" | null {
@@ -285,14 +303,27 @@ export function parseCatalogueCsv(text: string): CatalogueParseResult {
     }
 
     /*
-      A missing cost is an issue, not a refusal. The listing still sells; what
-      it loses is the margin check, and the admin can see which rows lost it.
+      A cost cell with something unreadable in it refuses the row.
+
+      Not an issue-and-import. The margin rule below is the only protection
+      this file has against publishing at a loss, and it can only run on a cost
+      it could read — so importing the row anyway means publishing a price
+      nothing checked. An empty cell, or a file with no Cost column at all, is
+      a different thing: the sheet is not claiming a cost, and `null` says so.
     */
     const rawCost = cell(record, index.costIqd);
-    let cost = rawCost ? money(rawCost) : 0;
-    if (!Number.isFinite(cost) || cost < 0) {
-      issues.push({ line, name: englishName, message: "التكلفة غير صالحة — استُوردت بدون تكلفة" });
-      cost = 0;
+    let cost: number | null = null;
+    if (rawCost) {
+      const parsed = money(rawCost);
+      if (!Number.isFinite(parsed) || parsed < 0) {
+        issues.push({
+          line,
+          name: englishName,
+          message: `التكلفة «${rawCost}» غير مقروءة — لم تُستورد`,
+        });
+        continue;
+      }
+      cost = parsed;
     }
     /*
       A price at or below cost is refused outright, not imported and flagged.
@@ -303,7 +334,7 @@ export function parseCatalogueCsv(text: string): CatalogueParseResult {
       order, and fifteen hundred of them arriving at once is not something an
       admin will catch by reading a list.
     */
-    if (cost > 0 && price <= cost) {
+    if (cost !== null && cost > 0 && price <= cost) {
       issues.push({
         line,
         name: englishName,
@@ -523,7 +554,13 @@ export function buildListing(row: CatalogueRow, options: BuildOptions): BuildOut
       product: {
         ...existing,
         price: row.offlinePriceIqd,
-        cost: row.costIqd,
+        /*
+          Only when the sheet actually states one. A file with no Cost column
+          says nothing about cost, and writing a zero over a figure the shop
+          knows would lose it — and, since the loss guard reads the cost,
+          disarm the check on every later run too.
+        */
+        ...(row.costIqd !== null ? { cost: row.costIqd } : {}),
         accountPrice: row.offlinePriceIqd,
         updatedAt: new Date().toISOString(),
       },
@@ -556,7 +593,9 @@ export function buildListing(row: CatalogueRow, options: BuildOptions): BuildOut
     category: options.categoryTitle || options.categoryId,
     platform: row.platform,
     price: row.offlinePriceIqd,
-    cost: row.costIqd,
+    // A sheet that states no cost leaves the field at zero on a new listing:
+    // there is nothing to lose, and the admin fills it in.
+    cost: row.costIqd ?? 0,
 
     /*
       Infinite stock, because an account is not a shelf.

@@ -323,6 +323,89 @@ describe("running the import again", () => {
   });
 });
 
+describe("a line that appears twice in the sheet", () => {
+  const twice = parseCatalogueCsv(
+    [
+      HEADER,
+      "1,Absolute Fear,1496,名,Nintendo Switch,5000,نعم",
+      "2,Absolute Fear,1496,名,Nintendo Switch,5000,نعم",
+    ].join("\n"),
+  );
+
+  it("becomes one product, which is what the warning promises", () => {
+    /*
+      The modal tells the owner «سيُحفظ آخر صف فقط لكل اسم». That has to be
+      true. An earlier version of the slug assignment gave the two rows
+      different tags — `-ns1` and `-2` — so both were created, as two live
+      products with one title, two URLs and the same price, while the warning
+      said data would be dropped. In a 1,530-row export an accidentally
+      repeated line is exactly what that warning exists to catch.
+    */
+    const slugs = twice.rows.map((r) => r.slug);
+    expect(new Set(slugs).size).toBe(1);
+
+    const ids = twice.rows.map((r) => {
+      const outcome = buildListing(r, { categoryId: "nintendo-switch-games" });
+      return outcome.action === "skip" ? "" : String(outcome.product["id"]);
+    });
+    // One id, so the second write upserts over the first rather than adding.
+    expect(new Set(ids).size).toBe(1);
+  });
+
+  it("is still reported, so the owner knows the sheet has a repeat in it", () => {
+    expect(duplicateNames(twice.rows)).toEqual(["Absolute Fear"]);
+  });
+});
+
+describe("a cost the sheet does not state", () => {
+  it("refuses a row whose cost cell is unreadable rather than publishing it unchecked", () => {
+    /*
+      `money()` stripped non-digits and called `Number("")`, which is 0 — so
+      «N/A» parsed as a cost of zero, the «التكلفة غير صالحة» branch was
+      unreachable, and the loss guard below it is fenced behind `cost > 0` and
+      was skipped too. A row whose real cost is 12,000 against a price of 9,000
+      is refused when the cost parses, and was published at a loss when
+      somebody typed «N/A».
+    */
+    const result = parseCatalogueCsv(
+      [HEADER, "1,Mystery Cost,N/A,名,Nintendo Switch,9000,نعم"].join("\n"),
+    );
+    expect(result.rows).toEqual([]);
+    expect(result.issues[0]!.message).toContain("غير مقروءة");
+  });
+
+  it("treats an empty cost cell as «not stated», not as zero", () => {
+    const result = parseCatalogueCsv(
+      [HEADER, "1,No Cost Given,,名,Nintendo Switch,9000,نعم"].join("\n"),
+    );
+    expect(result.rows).toHaveLength(1);
+    expect(result.rows[0]!.costIqd).toBeNull();
+  });
+
+  it("never writes «not stated» over a cost the shop already knows", () => {
+    // A file with no Cost column says nothing about cost. Writing a zero would
+    // lose the figure and disarm the loss guard on every later run.
+    const row = parseCatalogueCsv(
+      ["English Name,Platform,Offline Price IQD", "Kirby,Nintendo Switch,9500"].join("\n"),
+    ).rows[0]!;
+    const existing = {
+      id: "prd_cat_kirby",
+      catalogueSource: CATALOGUE_SOURCE,
+      price: 9000,
+      cost: 1711.6,
+    };
+    const outcome = buildListing(row, {
+      categoryId: "nintendo-switch-games",
+      existing,
+      mode: "refresh-prices",
+    });
+    expect(outcome.action).toBe("update");
+    if (outcome.action !== "update") return;
+    expect(outcome.product["price"]).toBe(9500);
+    expect(outcome.product["cost"]).toBe(1711.6);
+  });
+});
+
 describe("a slug that does not move", () => {
   const build = (lines: string[]) =>
     Object.fromEntries(
