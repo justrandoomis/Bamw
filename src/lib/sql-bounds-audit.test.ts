@@ -83,6 +83,11 @@ describe("no statement can outgrow D1's parameter limit", () => {
       // the operator picks, so the ids are split by chunkForParams and each
       // group is checked by assertBoundParameters before it runs.
       "src/lib/member-lookup.server.ts:group": "chunked",
+      // The granular product rows an import left behind, deleted after the
+      // aggregate has absorbed them. There can be one per product in the
+      // catalogue, so the keys are split by chunkForParams and each group is
+      // checked by assertBoundParameters before it runs.
+      "src/routes/api/admin/catalogue-import.ts:keys": "chunked",
     };
 
     const unknown = found.filter((entry) => !(`${entry.file}:${entry.source}` in KNOWN));

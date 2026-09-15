@@ -39,6 +39,20 @@ export default function Header({
   products?: any[];
 }) {
   const isHome = currentView === "home";
+  /*
+    The search box belongs on every page, not only the home one.
+
+    It was `isHome ? <form/> : <div className="flex-1"/>` — so a customer
+    looking at a game, a category, their cart or the bundles list had a blank
+    spacer where the box is, and the only way to search was to go back to the
+    home page first. That is most of what "the search does not work" means in
+    practice: on the screen where you think of another game, there is no search
+    at all.
+
+    The one exception is `/search` itself, which has its own box and its own
+    query — two boxes disagreeing about what was typed is worse than one.
+  */
+  const showSearch = currentView !== "search";
   // The profile / settings menu belongs on every screen, not just a few.
   const showProfile = true;
 
@@ -100,13 +114,24 @@ export default function Header({
     150 products costs roughly twice what answering a query does, and paying
     that on every letter is what turns a search box into a stuttering one on a
     mid-range phone.
+
+    And not until the box is touched. That note was written about 150 products;
+    the catalogue is now about 1,710, and measured at 56ms to index on a
+    desktop — several times that on the phones most of this shop's customers
+    use. Paying it on every page load, for every visitor, including the ones
+    who never search, is the wrong trade now that the box is on every page.
+    Focus comes before the first keystroke, so the index is built by the time
+    there is anything to search for.
   */
+  const [searchArmed, setSearchArmed] = useState(false);
   const searchIndex = useMemo(
     () =>
-      buildProductIndex(
-        filterPurchasable<Record<string, unknown>>(products as Record<string, unknown>[]),
-      ),
-    [products],
+      searchArmed
+        ? buildProductIndex(
+            filterPurchasable<Record<string, unknown>>(products as Record<string, unknown>[]),
+          )
+        : [],
+    [products, searchArmed],
   );
 
   const searchResults = useMemo(() => {
@@ -289,7 +314,7 @@ export default function Header({
             </button>
           )}
 
-          {isHome ? (
+          {showSearch ? (
             <div
               className={`flex-1 relative transition-all duration-300 z-0 ${isMenuOpen ? "opacity-30 blur-sm !pointer-events-none [&_*]:!pointer-events-none" : "opacity-100"}`}
             >
@@ -316,7 +341,11 @@ export default function Header({
                   }
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  onFocus={() => setIsSearchFocused(true)}
+                  onFocus={() => {
+                    setIsSearchFocused(true);
+                    // Builds the index, once, the first time anyone means to search.
+                    setSearchArmed(true);
+                  }}
                   /* The delay lets a click on a result land before the list unmounts. */
                   onBlur={() => setTimeout(() => setIsSearchFocused(false), 200)}
                   onKeyDown={onSearchKeyDown}

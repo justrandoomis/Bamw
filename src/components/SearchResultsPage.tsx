@@ -113,7 +113,15 @@ export default function SearchResultsPage({ q = "" }: { q?: string }) {
   };
 
   return (
-    <AppShell currentView="store">
+    /*
+      «search», not «store».
+
+      This page has a search box of its own, holding the query that is in the
+      URL. The header's box is suppressed on exactly this view — and while this
+      said «store» the suppression never fired, so the page carried two boxes
+      that did not agree about what had been typed.
+    */
+    <AppShell currentView="search">
       <div className="min-h-screen bg-[var(--page)] px-4 pt-6 pb-24">
         <div className="mx-auto w-full max-w-6xl">
           <h1 className="sr-only">{t("البحث")}</h1>

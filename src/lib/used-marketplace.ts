@@ -398,8 +398,73 @@ export const USED_TYPE_LABEL_AR: Record<UsedType, string> = {
   controller: "يد تحكم",
   accessory: "ملحق",
   amiibo: "أميبو",
+  collectible: "مجسم",
   bundle: "حزمة",
 };
+
+/*
+  ---------------------------- the seller's form ----------------------------
+
+  A member selling one second-hand thing should be asked about that thing and
+  nothing else. The kind they pick decides which of the optional questions
+  appear; the rest — name, condition, price, quantity, honest notes, photos and
+  a way to reach them — is asked of everybody, because a listing without them
+  cannot be published whatever it is.
+
+  This lives here rather than in the form so it can be tested without a
+  browser, and so the same table can clear a field the seller can no longer
+  see. That mattering is not theoretical: without it, «الضمان متبق ٦ أشهر»
+  typed under جهاز stayed in the payload after switching to مجسم, and the
+  listing went out advertising a warranty on a statue.
+*/
+export const SELLER_OPTIONAL_FIELDS = [
+  "platform",
+  "packaging",
+  "guarantee",
+  "usagePeriodMonths",
+  "warrantyMonths",
+] as const;
+
+export type SellerOptionalField = (typeof SELLER_OPTIONAL_FIELDS)[number];
+
+const SELLER_FIELDS_BY_TYPE: Record<UsedType, readonly SellerOptionalField[]> = {
+  // A cartridge has a platform and a box, and no service life to speak of.
+  cartridge: ["platform", "packaging"],
+  console: ["platform", "packaging", "guarantee", "usagePeriodMonths", "warrantyMonths"],
+  controller: ["platform", "packaging", "guarantee", "usagePeriodMonths", "warrantyMonths"],
+  accessory: ["platform", "packaging", "guarantee", "usagePeriodMonths", "warrantyMonths"],
+  // Figures are asked about their box and nothing else — they are not tested,
+  // they carry no warranty, and they do not wear out with use.
+  amiibo: ["packaging"],
+  collectible: ["packaging"],
+  bundle: ["platform", "packaging", "guarantee", "usagePeriodMonths"],
+};
+
+/** The optional questions this kind is asked. An unknown kind is asked none. */
+export function sellerFieldsFor(usedType: unknown): readonly SellerOptionalField[] {
+  if (typeof usedType !== "string") return [];
+  return SELLER_FIELDS_BY_TYPE[usedType as UsedType] ?? [];
+}
+
+/**
+ * Blanks every optional answer the chosen kind does not ask for.
+ *
+ * Called when the kind changes, so what the seller can no longer see is not
+ * still in what gets sent. Fields the kind does ask about are left exactly as
+ * they were — switching between two kinds that both ask for a platform must
+ * not make the seller type it again.
+ */
+export function clearFieldsNotFor<T extends Partial<Record<SellerOptionalField, unknown>>>(
+  usedType: unknown,
+  form: T,
+): T {
+  const allowed = new Set(sellerFieldsFor(usedType));
+  const next = { ...form };
+  for (const key of SELLER_OPTIONAL_FIELDS) {
+    if (!allowed.has(key) && key in next) (next as Record<string, unknown>)[key] = "";
+  }
+  return next;
+}
 
 export const PACKAGING_LABEL_AR: Record<Packaging, string> = {
   cib: "كامل بعلبته",
@@ -414,6 +479,23 @@ export const GUARANTEE_LABEL_AR: Record<Guarantee, string> = {
   tested_7days: "مفحوص — ضمان 7 أيام",
   tested_only: "مفحوص بدون ضمان",
   as_is: "يُباع كما هو",
+};
+
+/** Why somebody is reporting a listing. */
+export const REPORT_REASONS = ["already_sold", "no_reply", "wrong_details", "other"] as const;
+export type ReportReason = (typeof REPORT_REASONS)[number];
+
+export const REPORT_REASON_LABEL_AR: Record<ReportReason, string> = {
+  already_sold: "القطعة مباعة",
+  no_reply: "البائع لا يرد",
+  wrong_details: "المعلومات غير صحيحة",
+  other: "سبب آخر",
+};
+
+/** The seller's two answers to «هل بعتها؟». */
+export const SOLD_ANSWER_LABEL_AR: Record<string, string> = {
+  sold: "نعم، بعتها",
+  still_available: "لا، ما زالت متوفرة",
 };
 
 /** The badge the storefront shows on an item the store took back. */

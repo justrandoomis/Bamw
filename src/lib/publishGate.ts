@@ -14,6 +14,7 @@
  */
 
 import { hiddenToggleState } from "./purchasable";
+import { CATALOGUE_SOURCE } from "./catalogueImport";
 
 export interface PublishCheck {
   ok: boolean;
@@ -76,14 +77,35 @@ export function checkPublishable(product: Record<string, unknown> | undefined): 
     missing.push("سعر بيع أعلى من التكلفة");
   }
 
-  if (!IMAGE_FIELDS.some((field) => usableImage(product[field]))) {
-    missing.push("صورة واحدة على الأقل");
-  }
+  /*
+    The picture and the description are waived for a price-list listing.
 
-  const description = DESCRIPTION_FIELDS.map((field) => text(product[field])).find(
-    (value) => value.length >= 40,
-  );
-  if (!description) missing.push("وصف لا يقل عن ٤٠ حرفاً");
+    Not a loophole — a decision the owner made and this file has to be told
+    about. Fifteen hundred supplier titles are published carrying a name and a
+    price on purpose, with a panel on the page saying so and offering to fetch
+    the details. The floor above was written for 61 half-researched records
+    that were hidden *because* nobody had decided what they were; these are the
+    opposite case, and the shop knows exactly what they are.
+
+    Without this, the gate became a trap rather than a guard: an admin who hid
+    one of them — supplier out of stock, say — could never put it back, because
+    restoring it counts as publishing and it would be refused for lacking
+    fields it was never meant to have.
+
+    The name and the margin are not waived. Those are the rules that stop a
+    product being sold at a loss or with no name, and they apply to every
+    product in the shop.
+  */
+  if (product["catalogueSource"] !== CATALOGUE_SOURCE) {
+    if (!IMAGE_FIELDS.some((field) => usableImage(product[field]))) {
+      missing.push("صورة واحدة على الأقل");
+    }
+
+    const description = DESCRIPTION_FIELDS.map((field) => text(product[field])).find(
+      (value) => value.length >= 40,
+    );
+    if (!description) missing.push("وصف لا يقل عن ٤٠ حرفاً");
+  }
 
   return { ok: missing.length === 0, missing };
 }

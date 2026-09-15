@@ -65,6 +65,15 @@ const LIST_FIELDS = [
   "categoryId",
   "categoryTitle",
   "schemaId",
+  /*
+    Whether the game has English in it.
+
+    Seventeen titles in the supplier catalogue do not — they are Japanese or
+    Chinese only, and the sheet says so. A customer who buys one expecting
+    English has bought the wrong thing, so the flag has to reach the page that
+    sells it, which means it has to be in this projection.
+  */
+  "englishSupport",
   "genre",
   "genres",
   "developer",

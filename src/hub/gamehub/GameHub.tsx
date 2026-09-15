@@ -3,7 +3,7 @@ import type { Game } from "@/hub/types";
 import { HubShell } from "./HubShell";
 import { Hero } from "./Hero";
 import { HubNav, StickyBuyBar, type NavItem } from "./Chrome";
-import { GlanceSection, FitSection } from "./Overview";
+import { hasOverviewFacts, GlanceSection, FitSection } from "./Overview";
 import { PricesSection } from "./Prices";
 import {
   LanguagesSection,
@@ -167,7 +167,13 @@ function buildNavItems(game: Game, t: ReturnType<typeof useI18n>["t"]): NavItem[
       (game.performance?.length ?? 0) > 0 || Boolean(game.nintendo?.runsOn.includes("switch2")),
       { id: "performance", label: t("performance.title") },
     ],
-    [true, { id: "overview", label: t("nav.overview") }],
+    /*
+      Was `true`. The section drops itself when the game has no facts to show —
+      which is now most of the catalogue — and a chip that scrolls to a section
+      that is not there is the exact failure the comment above this list
+      promises cannot happen.
+    */
+    [hasOverviewFacts(game), { id: "overview", label: t("nav.overview") }],
     [(game.editions?.length ?? 0) > 0, { id: "editions", label: t("nav.editions") }],
     [(game.gameplayPillars?.length ?? 0) > 0, { id: "gameplay", label: t("nav.gameplay") }],
     [(game.story?.length ?? 0) > 0, { id: "story", label: t("nav.story") }],

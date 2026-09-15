@@ -13,6 +13,7 @@ import {
   Users,
 } from "lucide-react";
 import { Link } from "@tanstack/react-router";
+import type { Game } from "@/hub/types";
 import { useHub } from "./hubContext";
 import { Section } from "@/hub/ui/Section";
 import { Panel } from "@/hub/ui/Panel";
@@ -43,6 +44,32 @@ function frameRateSummary(game: {
     }
   }
   return null;
+}
+
+/**
+ * Whether the overview has anything in it.
+ *
+ * Exported because the nav chip has to ask the same question. `buildNavItems`
+ * in GameHub.tsx listed «overview» with a hardcoded `true`, and the file's own
+ * header promises a chip can never scroll to a section that was dropped — so
+ * the moment this section learned to drop itself, that promise needed this.
+ *
+ * The platform is not counted: it is derived from `platforms`, which every
+ * game has, so counting it would mean the section is never empty.
+ */
+export function hasOverviewFacts(game: Game): boolean {
+  if (game.description) return true;
+  return Boolean(
+    game.genres?.length ||
+      game.multiplayer?.players ||
+      game.completion?.mainStoryHours ||
+      game.storage?.downloadSizeBytes?.value ||
+      game.languages?.length ||
+      game.releaseDate ||
+      game.userScore != null ||
+      game.ageRating ||
+      frameRateSummary(game),
+  );
 }
 
 export function GlanceSection() {
@@ -98,6 +125,24 @@ export function GlanceSection() {
 
   const description = game.description;
   const isLong = (description?.length ?? 0) > 320;
+
+  /*
+    Nothing to say, so nothing is said.
+
+    This section rendered its ten tiles whatever the game had, which was
+    invisible while every game in the shop had been researched — and became the
+    whole experience the day fifteen hundred titles were published carrying a
+    name and a price. The page opened on «نظرة سريعة» followed by ten boxes
+    reading «المعلومة غير متوفرة», which reads as a broken shop rather than an
+    honest one.
+
+    Every other section here already works this way — `PricesSection` returns
+    null with no offers, `FaqSection` with no faq — and the file's own header
+    calls it policy: the page shortens rather than showing empty panels. The
+    platform tile is excluded from the count because it is derived and always
+    present, so counting it would mean the section is never empty.
+  */
+  if (!hasOverviewFacts(game)) return null;
 
   return (
     <Section

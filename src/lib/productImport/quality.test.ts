@@ -143,6 +143,37 @@ describe("conditional fields drive what an admin is shown", () => {
   });
 });
 
+describe("the used editor asks each kind its own questions", () => {
+  const byKey = (key: string) => USED_SCHEMA.fields.find((f) => f.key === key)!;
+
+  it("does not ask a figurine for a platform, a warranty or an inspection", () => {
+    const figure = { usedType: "collectible" };
+    expect(fieldApplies(byKey("platform"), USED_SCHEMA, figure)).toBe(false);
+    expect(fieldApplies(byKey("guarantee_status"), USED_SCHEMA, figure)).toBe(false);
+    expect(fieldApplies(byKey("inspection_point"), USED_SCHEMA, figure)).toBe(false);
+    expect(fieldApplies(byKey("usage_period_months"), USED_SCHEMA, figure)).toBe(false);
+    // Its box is the one thing that does matter.
+    expect(fieldApplies(byKey("packaging"), USED_SCHEMA, figure)).toBe(true);
+  });
+
+  it("asks a console everything and a cartridge only what applies", () => {
+    const console_ = { usedType: "console" };
+    const cartridge = { usedType: "cartridge" };
+    expect(fieldApplies(byKey("usage_period_months"), USED_SCHEMA, console_)).toBe(true);
+    expect(fieldApplies(byKey("serial_number"), USED_SCHEMA, console_)).toBe(true);
+    expect(fieldApplies(byKey("usage_period_months"), USED_SCHEMA, cartridge)).toBe(false);
+    expect(fieldApplies(byKey("serial_number"), USED_SCHEMA, cartridge)).toBe(false);
+    expect(fieldApplies(byKey("platform"), USED_SCHEMA, cartridge)).toBe(true);
+  });
+
+  it("no longer asks a second-hand item about setup steps, options or critic scores", () => {
+    // They describe a product the shop stocks, not one object somebody owns.
+    for (const key of ["setup_step", "option", "variant", "review_score", "user_score"]) {
+      expect(USED_SCHEMA.fields.find((f) => f.key === key)).toBeUndefined();
+    }
+  });
+});
+
 describe("audience classification", () => {
   it("marks SEO and research fields internal, and product copy customer-facing", () => {
     const byKey = (key: string) => USED_SCHEMA.fields.find((f) => f.key === key)!;

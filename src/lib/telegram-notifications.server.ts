@@ -19,6 +19,7 @@ import {
 } from "./telegram.server";
 import { d1First } from "./d1.server";
 import { normalizePhone } from "./phone";
+import { gameRequestLabel } from "./gameDetailRequest";
 import type { Order, ProductRequest, User } from "./types";
 
 /**
@@ -648,8 +649,19 @@ export async function notifyAdminGameRequest(params: {
   const { request, user } = params;
 
   const customerName = escapeHtml(user.name || "عميل بنانا");
+  /*
+    What was actually asked for.
+
+    Every request used to arrive headed «طلب توفير لعبة» — a request to stock
+    something the shop does not sell — which was true while that was the only
+    kind. It is not any more: a listing published with a name and a price
+    carries three buttons, and «أضف تفاصيل اللعبة» on a game already on sale is
+    not a sourcing request. An admin reading a queue of them could not tell one
+    from another, or from a genuine «please stock this».
+  */
+  const heading = gameRequestLabel(request.requestType) || "طلب توفير لعبة / منتج";
   const messageText =
-    `🎯 <b>طلب توفير لعبة / منتج جديد!</b> 🍌\n\n` +
+    `🎯 <b>${escapeHtml(heading)}</b> 🍌\n\n` +
     `🕹️ <b>اسم اللعبة / المنتج:</b> <b>${escapeHtml(redactSecrets(request.productName))}</b>\n` +
     `📱 <b>المنصة:</b> ${escapeHtml(request.platform || "Nintendo Switch")}\n` +
     `👤 <b>العميل:</b> ${customerName} (<code>${escapeHtml(user.phone || user.id)}</code>)\n` +

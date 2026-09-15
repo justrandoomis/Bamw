@@ -233,28 +233,28 @@ tag.4=
 # القطعة المستعملة
 # =========================================
 
-# @required @customer @enum(cartridge|console|controller|accessory|amiibo|bundle)
-# نوع القطعة: cartridge / console / controller / accessory / amiibo / bundle [مطلوب لإتمام الاستيراد]
+# @required @customer @enum(cartridge|console|controller|accessory|amiibo|collectible|bundle)
+# نوع القطعة: cartridge / console / controller / accessory / amiibo / collectible / bundle [مطلوب لإتمام الاستيراد]
 used_type=
 
 # @recommended @customer @type(string)
 # الاسم الأصلي للقطعة/اللعبة — لا يُترجم
 original_title=
 
-# @recommended @customer @type(string)
-# المنصة (Nintendo Switch، Switch 2…)
+# @recommended @customer @conditional(cartridge|console|controller|accessory|bundle) @type(string)
+# المنصة (Nintendo Switch، Switch 2…) [يظهر عند accessory_type = cartridge أو console أو controller أو accessory أو bundle]
 platform=
 
-# @optional @internal @type(string)
-# الرقم التسلسلي إن وُجد
+# @optional @internal @conditional(console|controller) @type(string)
+# الرقم التسلسلي إن وُجد [يظهر عند accessory_type = console أو controller]
 serial_number=
 
-# @optional @customer @type(number) @unit(months)
-# مدة الاستخدام السابقة
+# @optional @customer @conditional(console|controller|accessory|bundle) @type(number) @unit(months)
+# مدة الاستخدام السابقة [يظهر عند accessory_type = console أو controller أو accessory أو bundle]
 usage_period_months=
 
-# @recommended @customer @type(number)
-# عدد الملاك السابقين
+# @recommended @customer @conditional(console|controller|accessory|bundle) @type(number)
+# عدد الملاك السابقين [يظهر عند accessory_type = console أو controller أو accessory أو bundle]
 previous_owners=
 
 # =========================================
@@ -269,8 +269,8 @@ condition_grade=
 # حالة التغليف: cib / boxed_no_manual / loose / sealed
 packaging=
 
-# @recommended @customer @enum(tested_30days|tested_14days|tested_7days|tested_only|as_is)
-# الضمان بعد الفحص: tested_30days / tested_14days / tested_7days / tested_only / as_is
+# @recommended @customer @conditional(cartridge|console|controller|accessory|bundle) @enum(tested_30days|tested_14days|tested_7days|tested_only|as_is)
+# الضمان بعد الفحص: tested_30days / tested_14days / tested_7days / tested_only / as_is [يظهر عند accessory_type = cartridge أو console أو controller أو accessory أو bundle]
 guarantee_status=
 
 # @required @customer @type(multiline)
@@ -298,8 +298,8 @@ defect.2=
 defect.3=
 defect.4=
 
-# @recommended @customer @repeatable @type(string)
-# نقاط الفحص التي تمت (تشغيل، أزرار، شاشة، بطارية…)
+# @recommended @customer @repeatable @conditional(console|controller|accessory|bundle) @type(string)
+# نقاط الفحص التي تمت (تشغيل، أزرار، شاشة، بطارية…) [يظهر عند accessory_type = console أو controller أو accessory أو bundle]
 inspection_point.1=
 inspection_point.2=
 inspection_point.3=
@@ -837,24 +837,6 @@ service_notes<<EOF
 EOF
 
 # =========================================
-# خطوات الاستخدام والتفعيل
-# =========================================
-
-# @optional @customer @repeatable @type(string)
-# خطوة واحدة في كل سطر (عدد غير محدود)
-setup_step.1=
-setup_step.2=
-setup_step.3=
-setup_step.4=
-setup_step.5=
-
-# @optional @customer @type(multiline)
-# شروط الاستخدام والقيود
-usage_terms<<EOF
-
-EOF
-
-# =========================================
 # الصور والوسائط
 # =========================================
 
@@ -1047,260 +1029,6 @@ document.3.url=
 # @optional @customer @type(string)
 # لغة المستند
 document.3.language=
-
-# =========================================
-# الخيارات والنسخ
-# =========================================
-
-# @optional @customer @repeatable @type(group)
-# خيارات المنتج الرئيسية (حساب أوفلاين، حساب أونلاين، اللون، السعة…)
-# @optional @customer @type(string)
-# معرّف الخيار (يُستخدم في variant.N.option_id)
-option.1.id=
-# @optional @customer @type(string)
-# اسم الخيار (مثال: حساب أوفلاين)
-option.1.name=
-# @optional @customer @type(string)
-# وصف الخيار
-option.1.description=
-# @optional @customer @type(url)
-# صورة الخيار
-option.1.image=
-
-# @optional @customer @type(string)
-# معرّف الخيار (يُستخدم في variant.N.option_id)
-option.2.id=
-# @optional @customer @type(string)
-# اسم الخيار (مثال: حساب أوفلاين)
-option.2.name=
-# @optional @customer @type(string)
-# وصف الخيار
-option.2.description=
-# @optional @customer @type(url)
-# صورة الخيار
-option.2.image=
-
-# @optional @customer @type(string)
-# معرّف الخيار (يُستخدم في variant.N.option_id)
-option.3.id=
-# @optional @customer @type(string)
-# اسم الخيار (مثال: حساب أوفلاين)
-option.3.name=
-# @optional @customer @type(string)
-# وصف الخيار
-option.3.description=
-# @optional @customer @type(url)
-# صورة الخيار
-option.3.image=
-
-# @optional @customer @repeatable @type(group)
-# الأنواع والإصدارات والأسعار (يمكن ربطها بخيار محدد أو تركها للكل)
-# @optional @customer @type(string)
-# اسم النوع/الإصدار (مثال: النسخة القياسية Standard / فاخر Deluxe)
-variant.1.name=
-# @optional @customer @type(string)
-# معرّف الخيار المرتبط (اتركه فارغاً ليكون متاحاً للكل)
-variant.1.option_id=
-# @optional @customer @type(number)
-# سعر هذا النوع (د.ع)
-variant.1.price=
-# @optional @customer @type(number)
-# تكلفة هذا النوع (د.ع)
-variant.1.cost=
-# @optional @customer @type(string)
-# محتويات أو وصف هذا الإصدار
-variant.1.description=
-# @optional @customer @type(string)
-# SKU الخاص بالنسخة
-variant.1.sku=
-# @optional @customer @type(string)
-# اللون
-variant.1.color=
-# @optional @customer @type(url)
-# صورة النسخة
-variant.1.image=
-
-# @optional @customer @type(string)
-# اسم النوع/الإصدار (مثال: النسخة القياسية Standard / فاخر Deluxe)
-variant.2.name=
-# @optional @customer @type(string)
-# معرّف الخيار المرتبط (اتركه فارغاً ليكون متاحاً للكل)
-variant.2.option_id=
-# @optional @customer @type(number)
-# سعر هذا النوع (د.ع)
-variant.2.price=
-# @optional @customer @type(number)
-# تكلفة هذا النوع (د.ع)
-variant.2.cost=
-# @optional @customer @type(string)
-# محتويات أو وصف هذا الإصدار
-variant.2.description=
-# @optional @customer @type(string)
-# SKU الخاص بالنسخة
-variant.2.sku=
-# @optional @customer @type(string)
-# اللون
-variant.2.color=
-# @optional @customer @type(url)
-# صورة النسخة
-variant.2.image=
-
-# @optional @customer @type(string)
-# اسم النوع/الإصدار (مثال: النسخة القياسية Standard / فاخر Deluxe)
-variant.3.name=
-# @optional @customer @type(string)
-# معرّف الخيار المرتبط (اتركه فارغاً ليكون متاحاً للكل)
-variant.3.option_id=
-# @optional @customer @type(number)
-# سعر هذا النوع (د.ع)
-variant.3.price=
-# @optional @customer @type(number)
-# تكلفة هذا النوع (د.ع)
-variant.3.cost=
-# @optional @customer @type(string)
-# محتويات أو وصف هذا الإصدار
-variant.3.description=
-# @optional @customer @type(string)
-# SKU الخاص بالنسخة
-variant.3.sku=
-# @optional @customer @type(string)
-# اللون
-variant.3.color=
-# @optional @customer @type(url)
-# صورة النسخة
-variant.3.image=
-
-# @optional @customer @repeatable @type(group)
-# الألوان القابلة للاختيار
-# @optional @customer @type(string)
-# اسم اللون
-color_option.1.name=
-# @optional @customer @type(string)
-# كود اللون #RRGGBB
-color_option.1.hex=
-# @optional @customer @type(url)
-# صورة اللون
-color_option.1.image=
-
-# @optional @customer @type(string)
-# اسم اللون
-color_option.2.name=
-# @optional @customer @type(string)
-# كود اللون #RRGGBB
-color_option.2.hex=
-# @optional @customer @type(url)
-# صورة اللون
-color_option.2.image=
-
-# @optional @customer @type(string)
-# اسم اللون
-color_option.3.name=
-# @optional @customer @type(string)
-# كود اللون #RRGGBB
-color_option.3.hex=
-# @optional @customer @type(url)
-# صورة اللون
-color_option.3.image=
-
-# =========================================
-# التقييمات والأسئلة
-# =========================================
-
-# @optional @customer @type(number)
-# متوسط تقييم النقاد (0-10)
-review_score=
-
-# @optional @customer @type(number)
-# تقييم المستخدمين (0-10)
-user_score=
-
-# @optional @customer @repeatable @type(group)
-# مراجعات مختارة
-# @optional @customer @type(string)
-# الجهة
-review.1.source=
-# @optional @customer @type(string)
-# الدرجة كما نشرتها الجهة
-review.1.score=
-# @optional @customer @type(multiline)
-# اقتباس
-review.1.quote<<EOF
-
-EOF
-# @optional @customer @type(url)
-# رابط المراجعة
-review.1.url=
-
-# @optional @customer @type(string)
-# الجهة
-review.2.source=
-# @optional @customer @type(string)
-# الدرجة كما نشرتها الجهة
-review.2.score=
-# @optional @customer @type(multiline)
-# اقتباس
-review.2.quote<<EOF
-
-EOF
-# @optional @customer @type(url)
-# رابط المراجعة
-review.2.url=
-
-# @optional @customer @type(string)
-# الجهة
-review.3.source=
-# @optional @customer @type(string)
-# الدرجة كما نشرتها الجهة
-review.3.score=
-# @optional @customer @type(multiline)
-# اقتباس
-review.3.quote<<EOF
-
-EOF
-# @optional @customer @type(url)
-# رابط المراجعة
-review.3.url=
-
-# @optional @customer @repeatable @type(string)
-# الإيجابيات
-pro.1=
-pro.2=
-pro.3=
-
-# @optional @customer @repeatable @type(string)
-# السلبيات
-con.1=
-con.2=
-con.3=
-
-# @optional @customer @repeatable @type(group)
-# الأسئلة الشائعة
-# @optional @customer @type(string)
-# السؤال
-faq.1.question=
-# @optional @customer @type(multiline)
-# الإجابة
-faq.1.answer<<EOF
-
-EOF
-
-# @optional @customer @type(string)
-# السؤال
-faq.2.question=
-# @optional @customer @type(multiline)
-# الإجابة
-faq.2.answer<<EOF
-
-EOF
-
-# @optional @customer @type(string)
-# السؤال
-faq.3.question=
-# @optional @customer @type(multiline)
-# الإجابة
-faq.3.answer<<EOF
-
-EOF
 
 # =========================================
 # منتجات ذات صلة

@@ -8,6 +8,7 @@ import {
   productsRequestKey,
   LOAD_ATTEMPTS,
   type ProductsQuery,
+  showsBareListingBadge,
   showsPerformanceWarning,
 } from "@/lib/adminProductsLoad";
 import {
@@ -84,6 +85,7 @@ import {
   Key,
   ShieldAlert,
   FileArchive,
+  FileSpreadsheet,
 } from "lucide-react";
 import { useNavigate } from "@tanstack/react-router";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
@@ -100,6 +102,7 @@ import { ChatMessage, Thread, StoreDoc, AccountBundle } from "@/lib/types";
 import { Sidebar, SidebarBody, SidebarLink } from "./ui/sidebar";
 import AdminProductEditor from "./AdminProductEditor";
 import AdminZipImportModal from "./admin/AdminZipImportModal";
+import CatalogueImportModal from "./admin/CatalogueImportModal";
 import { AdminMediaRepairModal } from "./admin/AdminMediaRepairModal";
 import KbEditor from "./admin/KbEditor";
 import ServicesManager from "./admin/ServicesManager";
@@ -355,6 +358,7 @@ export default function AdminDashboard() {
     hidden: 0,
     unpriced: 0,
     performanceRequired: 0,
+    bareListing: 0,
   });
   const [isReloading, setIsReloading] = useState(false);
 
@@ -519,6 +523,7 @@ export default function AdminDashboard() {
         request?.hidden ? "hidden" : "",
         request?.unpriced ? "unpriced" : "",
         request?.performance ? "performance" : "",
+        request?.bare ? "bare" : "",
         request?.category ?? "",
       ]
         .filter(Boolean)
@@ -539,6 +544,7 @@ export default function AdminDashboard() {
       if (request?.hidden) params.set("hidden", "1");
       if (request?.unpriced) params.set("unpriced", "1");
       if (request?.performance) params.set("performance", "1");
+      if (request?.bare) params.set("bare", "1");
       if (request?.category) params.set("category", request.category);
 
       /*
@@ -1803,7 +1809,12 @@ function ListingsView({
   /** Asks the server for a different page, order or filter. */
   onQuery?: (query: ProductsQuery) => void;
   pageInfo?: { page: number; limit: number; hasMore: boolean };
-  facets?: { hidden: number; unpriced: number; performanceRequired: number };
+  facets?: {
+    hidden: number;
+    unpriced: number;
+    performanceRequired: number;
+    bareListing: number;
+  };
   isRefreshing?: boolean;
 }) {
   const { t } = useTranslation();
@@ -1812,7 +1823,16 @@ function ListingsView({
   const [isOpeningEditor, setIsOpeningEditor] = useState<string | null>(null);
   const [isAdding, setIsAdding] = useState(false);
   const [onlyUnpriced, setOnlyUnpriced] = useState(false);
-  const [onlyMissingPerformance, setOnlyMissingPerformance] = useState(false);
+  /*
+    The chip the owner asked to have replaced.
+
+    «Missing Performance Data» named a handful of Switch 2 records. What the
+    table now has to separate is fifteen hundred supplier titles that carry a
+    name and a price and nothing else from the games that have actually been
+    written up — so that is the chip, and the performance warning stays as the
+    per-row badge it always was rather than disappearing with its button.
+  */
+  const [onlyBareListings, setOnlyBareListings] = useState(false);
   const [onlyHidden, setOnlyHidden] = useState(false);
   /*
     Read from storage, not reset to a default. Changing the search box or a
@@ -1827,6 +1847,7 @@ function ListingsView({
     writeProductSort(next);
   };
   const [showZipImport, setShowZipImport] = useState(false);
+  const [showCatalogueImport, setShowCatalogueImport] = useState(false);
   const [showMediaRepair, setShowMediaRepair] = useState(false);
   const [productToDelete, setProductToDelete] = useState<any | null>(null);
   const [isDeleting, setIsDeleting] = useState(false);
@@ -1850,7 +1871,7 @@ function ListingsView({
       resolveCategoryType(categoryId, category?.title, product.kind, product.schemaId) === "game"
     );
   };
-  const missingPerformanceCount = facets?.performanceRequired ?? 0;
+  const bareListingCount = facets?.bareListing ?? 0;
   /* The batch importer belongs to Nintendo Switch Games and nowhere else. */
   const sectionCategory = categories.find((item: any) => item.id === initialCategoryId);
   const isGamesSection =
@@ -1891,7 +1912,7 @@ function ListingsView({
           search: searchTerm,
           hidden: onlyHidden,
           unpriced: onlyUnpriced,
-          performance: onlyMissingPerformance,
+          bare: onlyBareListings,
           ...(initialCategoryId ? { category: initialCategoryId } : {}),
         });
       },
@@ -1904,7 +1925,7 @@ function ListingsView({
     searchTerm,
     onlyHidden,
     onlyUnpriced,
-    onlyMissingPerformance,
+    onlyBareListings,
     initialCategoryId,
   ]);
 
@@ -1953,7 +1974,7 @@ function ListingsView({
       activeFilters: {
         searchTerm: searchTerm || undefined,
         onlyUnpriced,
-        onlyMissingPerformance,
+        onlyBareListings,
         onlyHidden,
         initialCategoryId: initialCategoryId || "all",
       },
@@ -1966,7 +1987,7 @@ function ListingsView({
     sortedProducts.length,
     searchTerm,
     onlyUnpriced,
-    onlyMissingPerformance,
+    onlyBareListings,
     onlyHidden,
     initialCategoryId,
     loadStatus,
@@ -1975,7 +1996,7 @@ function ListingsView({
   const resetAllFilters = () => {
     setSearchTerm("");
     setOnlyUnpriced(false);
-    setOnlyMissingPerformance(false);
+    setOnlyBareListings(false);
     setOnlyHidden(false);
   };
 
@@ -2409,6 +2430,19 @@ function ListingsView({
                 <FileArchive className="w-4 h-4" />
                 استيراد مجموعة ألعاب
               </button>
+              {/*
+                The price list, as opposed to the ZIP of written-up templates
+                beside it. This one publishes a name and a price and nothing
+                else; that one imports games somebody has researched.
+              */}
+              <button
+                onClick={() => setShowCatalogueImport(true)}
+                className="rounded-full border border-border px-4 py-2 text-sm font-bold text-foreground flex items-center gap-2 transition-colors hover:bg-muted"
+                title="استيراد قائمة الأسعار: اسم اللعبة وسعرها فقط، تُنشر فوراً وتُكمَّل حقولها لاحقاً"
+              >
+                <FileSpreadsheet className="w-4 h-4" />
+                استيراد قائمة الأسعار
+              </button>
             </>
           )}
           <button
@@ -2440,10 +2474,11 @@ function ListingsView({
             {t("admin.unpriced")} ({unpricedCount})
           </button>
           <button
-            onClick={() => setOnlyMissingPerformance((value) => !value)}
-            className={`whitespace-nowrap rounded-md border px-3 py-1.5 text-[12px] font-bold transition-colors ${onlyMissingPerformance ? "border-amber-500 bg-amber-500/10 text-amber-700 dark:text-amber-300" : "border-border text-muted-foreground hover:border-black"}`}
+            onClick={() => setOnlyBareListings((value) => !value)}
+            title="ألعاب منشورة باسمها وسعرها فقط — بانتظار الصور والوصف وبقية الحقول"
+            className={`whitespace-nowrap rounded-md border px-3 py-1.5 text-[12px] font-bold transition-colors ${onlyBareListings ? "border-amber-500 bg-amber-500/10 text-amber-700 dark:text-amber-300" : "border-border text-muted-foreground hover:border-black"}`}
           >
-            Missing Performance Data ({missingPerformanceCount})
+            بانتظار التفاصيل ({bareListingCount})
           </button>
           <button
             onClick={() => setOnlyHidden((value) => !value)}
@@ -2630,6 +2665,16 @@ function ListingsView({
                           Performance review required
                         </span>
                       )}
+                      {/*
+                        The chip's row-level twin. The performance chip became
+                        this one, and a filter with no badge means a row gives
+                        no reason for being in the list it is in.
+                      */}
+                      {showsBareListingBadge(p) && (
+                        <span className="ms-2 inline-block rounded-md bg-sky-500/10 px-2 py-0.5 text-[11px] font-bold text-sky-700 dark:text-sky-300">
+                          بانتظار التفاصيل
+                        </span>
+                      )}
                       {isProductHidden(p) && (
                         <span className="ms-2 inline-block rounded-md bg-slate-500/10 px-2 py-0.5 text-[11px] font-bold text-slate-700 dark:text-slate-300">
                           مخفي
@@ -2721,7 +2766,7 @@ function ListingsView({
                     search: searchTerm,
                     hidden: onlyHidden,
                     unpriced: onlyUnpriced,
-                    performance: onlyMissingPerformance,
+                    bare: onlyBareListings,
                     ...(initialCategoryId ? { category: initialCategoryId } : {}),
                   })
                 }
@@ -2739,7 +2784,7 @@ function ListingsView({
                     search: searchTerm,
                     hidden: onlyHidden,
                     unpriced: onlyUnpriced,
-                    performance: onlyMissingPerformance,
+                    bare: onlyBareListings,
                     ...(initialCategoryId ? { category: initialCategoryId } : {}),
                   })
                 }
@@ -2826,6 +2871,19 @@ function ListingsView({
               return next;
             })
           }
+        />
+      )}
+
+      {showCatalogueImport && (
+        <CatalogueImportModal
+          onClose={() => setShowCatalogueImport(false)}
+          /*
+            Reload rather than splice. An import writes hundreds of rows at
+            once, and the table is a server-paginated projection — merging that
+            many products into the fifty on screen would show a page that is
+            neither page one nor the page the pager thinks it is on.
+          */
+          onImported={() => onRetry?.()}
         />
       )}
 

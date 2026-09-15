@@ -9,6 +9,7 @@ import {
   slugifyDevice,
 } from "@/lib/devicePerformance";
 import { isVisibleToPublic } from "@/lib/purchasable";
+import { searchCatalogue } from "@/lib/search/products";
 
 type LinkedGame = {
   id: string;
@@ -40,6 +41,31 @@ export const Route = createFileRoute("/api/hardware/$slug/games")({
           const wanted = slugifyDevice(params.slug);
           const store = await getStore();
 
+          /*
+            The compatibility list gets the shop's real search, not a substring
+            test on one field.
+
+            This line was the last place still doing what the header used to do
+            before `be7682c` — `title.toLowerCase().includes(search)` — with no
+            Arabic name, no folding, no tokenisation and no typo tolerance. So
+            a customer filtering the games that run on their console could type
+            «زيلدا», or «zelda» with one letter wrong, and be told the console
+            runs neither.
+
+            Matched by id: the search ranks the whole catalogue, and the loop
+            below then keeps the ones that are also compatible, so the two
+            filters compose instead of one overriding the other.
+          */
+          const searchHits = search
+            ? new Set(
+                searchCatalogue(
+                  (store.products || []) as unknown as Record<string, unknown>[],
+                  search,
+                  { limit: 400 },
+                ).map((hit) => String(hit.product["id"])),
+              )
+            : null;
+
           const games = (store.products || []).flatMap((product): LinkedGame[] => {
             if (!isVisibleToPublic(product)) return [];
             const performance = getDevicePerformanceList(product).find(
@@ -47,7 +73,7 @@ export const Route = createFileRoute("/api/hardware/$slug/games")({
             );
             if (!performance || !performanceMatches(performance, filters)) return [];
             const title = String(product.title || product.titleEn || "");
-            if (search && !title.toLowerCase().includes(search)) return [];
+            if (searchHits && !searchHits.has(String(product.id))) return [];
             return [
               {
                 id: String(product.id),
