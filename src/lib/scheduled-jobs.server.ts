@@ -53,32 +53,41 @@ export async function processBotTrading() {
   */
   if (!(marketPrice > 0)) return;
 
-  for (const bot of bots) {
-    /*
-      3. Offers cheaper than the market, per banana.
+  /*
+    3. Offers cheaper than the market, per banana.
 
-      `price_iqd` is the *total* the seller wants — `createListing` writes
-      `quantity × pricePer` into it — and this compared that total against a
-      per-banana price. A thousand bananas at a fair price has a total in the
-      hundreds and the market price is a fraction of one dinar, so the test was
-      false for every listing that has ever existed: the bots have never bought
-      anything from anyone.
+    `price_iqd` is the *total* the seller wants — `createListing` writes
+    `quantity × pricePer` into it — and this compared that total against a
+    per-banana price. A thousand bananas at a fair price has a total in the
+    hundreds and the market price is a fraction of one dinar, so the test was
+    false for every listing that has ever existed: the bots have never bought
+    anything from anyone.
 
-      Dividing here rather than storing a second column, because the total is
-      what the seller is owed and the per-banana price is derived from it
-      everywhere else too (see `getSnapshot`).
-    */
-    const offers = (
-      await d1All<BananaMarketOfferRow>(
-        `SELECT o.* FROM banana_market_offers o
+    Dividing here rather than storing a second column, because the total is
+    what the seller is owed and the per-banana price is derived from it
+    everywhere else too (see `getSnapshot`).
+
+    Asked once, not once per bot. This sat inside the loop below and mentions
+    no bot: every active bot re-ran the identical join, every minute, on a cron
+    that is already being killed for exceeding its CPU. Working from one list
+    is safe because `executeBotPurchase` claims each offer with a conditional
+    update and returns when the claim changes no rows — so a second bot
+    reaching an offer the first has taken finds it gone, exactly as it would
+    have with a freshly read list.
+  */
+  const offers = (
+    await d1All<BananaMarketOfferRow>(
+      `SELECT o.* FROM banana_market_offers o
        LEFT JOIN banana_bots b ON o.user_id = b.id
        WHERE o.status = 'active' AND b.id IS NULL
        AND o.quantity > 0
        AND (o.price_iqd / o.quantity) <= ?`,
-        marketPrice,
-      )
-    ).map(toBananaMarketOffer);
+      marketPrice,
+    )
+  ).map(toBananaMarketOffer);
+  if (!offers.length) return;
 
+  for (const bot of bots) {
     for (const offer of offers) {
       // Logic for price deviation and waiting period
       const offerPricePer = offer.quantity > 0 ? offer.priceIqd / offer.quantity : 0;

@@ -1,5 +1,6 @@
 import {
-  listThreads,
+  listOpenThreads,
+  findThreadByIdOrOrder,
   getThread,
   saveThread,
   appendMessage,
@@ -113,8 +114,15 @@ export async function processInactivityAndQueue(): Promise<void> {
   lastProcessedTime = nowMs;
 
   try {
-    const allThreads = await listThreads();
-    const openThreads = allThreads.filter((t) => t.status === "open" && t.mode !== "RESOLVED");
+    /*
+      Scoped in the query, not filtered afterwards.
+
+      This called `listThreads()` and kept the open ones — which reads the
+      document of every conversation the shop has ever had, closed ones
+      included, and parses each of them in the Worker. Every minute, growing
+      with the shop's whole history, to look at two fields.
+    */
+    const openThreads = await listOpenThreads();
 
     for (const thread of openThreads) {
       // 1. Check Regular Human Support (GENERAL_SUPPORT without Order)
@@ -193,7 +201,7 @@ export async function processInactivityAndQueue(): Promise<void> {
         // Check if there are active delivery items in D1
         let deliveryItems: Array<{ status: string; sent_at?: string; proof_received_at?: string }> =
           [];
-        if (thread.orderId && (await import("./d1.server").then(m => m.d1Ready()))) {
+        if (thread.orderId && (await import("./d1.server").then((m) => m.d1Ready()))) {
           try {
             deliveryItems = await d1All<{
               status: string;
@@ -397,11 +405,17 @@ export function isDigitalOrderPreparationThread(t: Thread): boolean {
  */
 export async function calculateQueueMetrics(threadOrOrderId: string): Promise<QueueMetrics> {
   const availability = await getAdminAvailabilityStatus();
-  const allThreads = await listThreads();
-
-  const targetThread = allThreads.find(
-    (t) => t.id === threadOrOrderId || t.orderId === threadOrOrderId,
-  );
+  /*
+    The queue is made of open threads, and the one being asked about may not be
+    one: a closed conversation can still ask for its metrics. So the queue is
+    read as the queue, and the subject is looked up by its own id — rather than
+    both being found by scanning every thread in the shop, on a customer's
+    request rather than on a cron.
+  */
+  const openThreads = await listOpenThreads();
+  const targetThread =
+    openThreads.find((t) => t.id === threadOrOrderId || t.orderId === threadOrOrderId) ??
+    (await findThreadByIdOrOrder(threadOrOrderId));
 
   const orderId =
     targetThread?.orderId ||
@@ -420,7 +434,7 @@ export async function calculateQueueMetrics(threadOrOrderId: string): Promise<Qu
     otp_sent_at?: string | null;
   }> = [];
 
-  if (orderId && (await import("./d1.server").then(m => m.d1Ready()))) {
+  if (orderId && (await import("./d1.server").then((m) => m.d1Ready()))) {
     try {
       deliveryRows = await d1All<{
         id: string;
@@ -488,8 +502,8 @@ export async function calculateQueueMetrics(threadOrOrderId: string): Promise<Qu
   }
 
   // Active queue threads: open and strictly digital orders requiring preparation/delivery
-  const queueThreads = allThreads.filter((t) => {
-    if (t.status !== "open" || t.mode === "RESOLVED" || isPureAutomatedThread(t)) return false;
+  const queueThreads = openThreads.filter((t) => {
+    if (isPureAutomatedThread(t)) return false;
     if (t.queueStatus === "snoozed") return false;
     return isDigitalOrderPreparationThread(t);
   });
