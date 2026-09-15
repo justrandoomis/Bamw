@@ -228,7 +228,7 @@ function scoreProduct(
   entry: IndexedProduct,
   words: QueryWord[],
   squashedQuery: string,
-): { score: number; matched: string[]; missedTyped: boolean } {
+): { score: number; rank: number; matched: string[]; missedTyped: boolean } {
   let weighted = 0;
   let totalWeight = 0;
   let missedTyped = false;
@@ -279,7 +279,7 @@ function scoreProduct(
     if (best >= 0.5) matched.push(token.value);
   }
 
-  if (totalWeight === 0) return { score: 0, matched, missedTyped };
+  if (totalWeight === 0) return { score: 0, rank: 0, matched, missedTyped };
   let score = weighted / totalWeight;
 
   /*
@@ -304,7 +304,16 @@ function scoreProduct(
     }
   }
 
-  return { score: Math.min(score, 1), matched, missedTyped };
+  /*
+    `rank` is the number this product is *ordered* by; `score` is the number
+    anybody is shown. They differ because the prefix bonus routinely pushes a
+    good match past 1, and clamping before the sort threw away exactly the
+    distinction the bonus exists to make: «m» gave «Metroid Prime 4» 0.80 + 0.30
+    and «Worms W.M.D» 1.00 + 0.15 — one is the game somebody wants and the
+    other has an «M» in an initialism — and after the clamp both were 1.00 and
+    the order fell to whatever sold more.
+  */
+  return { score: Math.min(score, 1), rank: score, matched, missedTyped };
 }
 
 export interface ProductSearchOptions {
@@ -318,6 +327,15 @@ export interface ProductSearchOptions {
    */
   relaxedThreshold?: number;
 }
+
+/**
+ * Above this, a strict match is an answer rather than a guess.
+ *
+ * 0.8 sits above the run-together rung (0.76) and the cross-script typo rung
+ * (0.70) and below a prefix (0.88): a result built only from approximations of
+ * what was typed does not get to be the only thing shown.
+ */
+const CONFIDENT_MATCH = 0.8;
 
 /**
  * Rank the catalogue against what somebody typed.
@@ -339,7 +357,7 @@ export function searchProducts(
     .map((entry) => ({ entry, ...scoreProduct(entry, words, squashedQuery) }))
     .sort(
       (a, b) =>
-        b.score - a.score ||
+        b.rank - a.rank ||
         b.entry.sales - a.entry.sales ||
         a.entry.displayOrder - b.entry.displayOrder,
     );
@@ -352,17 +370,43 @@ export function searchProducts(
     }));
 
   const strict = scored.filter((item) => !item.missedTyped && item.score >= threshold);
-  if (strict.length > 0) return take(strict);
 
   /*
-    Nothing matched every word. Rather than an empty page, the best partial
-    matches — at a distinctly higher bar, because this is the pass that can say
-    something silly. «mario kart 9» does not exist, and answering it with Mario
-    Kart 8 is the whole point; answering «غسالة» with anything is not, and a
-    score of 0.5 earned from one weak field is not reachable by a word the
-    catalogue has never seen.
+    The partial matches, at a distinctly higher bar — because this is the pass
+    that can say something silly. «mario kart 9» does not exist, and answering
+    it with Mario Kart 8 is the whole point; answering «غسالة» with anything is
+    not, and a score of 0.5 earned from one weak field is not reachable by a
+    word the catalogue has never seen.
   */
-  return take(scored.filter((item) => item.score >= relaxedThreshold));
+  const relaxed = scored.filter((item) => item.score >= relaxedThreshold);
+
+  /*
+    A confident strict hit answers alone. A shaky one gets company.
+
+    Two cases pull in opposite directions and the difference between them is
+    how *well* the strict pass matched, not how many rows it found.
+
+    «mario kart» matches Mario Kart 8 Deluxe on every word, exactly. Adding the
+    partial matches underneath turns one right answer into "every Mario game",
+    which is the thing the all-words rule exists to prevent.
+
+    «hollow knight» matches nothing exactly — the shop has four Hollow games
+    and no Hollow Knight. Every one of them misses «knight» and is struck out,
+    and since the two alphabets began sharing a comparison space, «Witch on the
+    Holy Night» clears the strict pass by itself: «holy»/«hollow» and
+    «night»/«knight» are each one edit apart once transliterated. One arguable
+    answer was suppressing four obvious ones.
+
+    So the bar is on the best strict score. Above it, the strict pass is an
+    answer and stands alone; below it, every word was matched only
+    approximately, which is exactly when the customer should also see what
+    matched the words they actually typed.
+  */
+  const bestStrict = strict.length > 0 ? strict[0]!.rank : 0;
+  if (bestStrict >= CONFIDENT_MATCH) return take(strict);
+
+  const seen = new Set(strict.map((item) => item.entry));
+  return take([...strict, ...relaxed.filter((item) => !seen.has(item.entry))]);
 }
 
 /** Index and search in one call, for a caller that has no index to keep. */

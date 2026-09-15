@@ -70,7 +70,7 @@ vi.mock("./whatsapp.server", () => ({ sendWhatsappMessage: async () => undefined
 vi.mock("./telegram.server", () => ({ sendTelegramMessage: async () => undefined }));
 
 import { PRODUCT_INDEX_SCHEMA } from "@/test/sqlite-d1";
-import { buildBareListing, parseCatalogueCsv } from "./catalogueImport";
+import { buildListing, parseCatalogueCsv } from "./catalogueImport";
 
 const store = await import("./db.server");
 
@@ -96,9 +96,10 @@ function listings(count: number) {
     { length: count },
     (_, i) => `Catalogue Game ${i},1500,名字 ${i},Nintendo Switch,9000,نعم`,
   );
-  return parseCatalogueCsv([HEADER, ...lines].join("\n")).rows.map(
-    (row) => buildBareListing(row, { categoryId: "nintendo-switch-games" }).product,
-  );
+  return parseCatalogueCsv([HEADER, ...lines].join("\n")).rows.flatMap((row) => {
+    const outcome = buildListing(row, { categoryId: "nintendo-switch-games" });
+    return outcome.action === "skip" ? [] : [outcome.product];
+  });
 }
 
 /** Exactly what a batch of the import does to the database. */

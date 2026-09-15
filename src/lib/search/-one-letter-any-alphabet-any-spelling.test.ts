@@ -46,6 +46,12 @@ const CATALOGUE = [
   { id: "c6", titleEn: "Pokemon Scarlet", price: 14750, isActive: true },
   { id: "c7", titleEn: "Xenoblade Chronicles 3", price: 10250, isActive: true },
   { id: "c8", titleEn: "Bayonetta 3", price: 9000, isActive: true },
+  // Folds to «worms w m d» — three of its tokens are single letters.
+  { id: "c9", titleEn: "Worms W.M.D", price: 9000, isActive: true, sales: 300 },
+  // Two Hollow games and no Hollow Knight, as the real catalogue has.
+  { id: "c10", titleEn: "Hollow Cocoon", price: 9000, isActive: true },
+  { id: "c11", titleEn: "Fate/hollow ataraxia", price: 9000, isActive: true },
+  { id: "c12", titleEn: "Witch on the Holy Night", price: 9000, isActive: true },
 ];
 
 const ALL = [...WRITTEN_UP, ...CATALOGUE] as unknown as Record<string, unknown>[];
@@ -78,6 +84,47 @@ describe("one letter is enough to start", () => {
   it("answers two letters, and narrows as the third is typed", () => {
     expect(ids("sp")).toContain("c4");
     expect(ids("spl")[0]).toBe("c4");
+  });
+});
+
+describe("one letter that is somebody else's initial", () => {
+  it("ranks the game that starts with the letter above an initialism", () => {
+    /*
+      «Worms W.M.D» folds to «worms w m d», so «m» matched one of its tokens
+      exactly and scored 1 — above «Metroid Dread», which merely begins with
+      the letter. That is backwards: the initial of an initialism is the
+      weakest evidence there is, and it was winning on the strength of a full
+      stop. It also had three hundred sales to break the tie with.
+    */
+    expect(ids("m")[0]).not.toBe("c9");
+    expect(ids("m").slice(0, 3)).toContain("c3");
+  });
+
+  it("still matches a digit exactly, because a digit is a real word", () => {
+    // «8» is a token of «Mario Kart 8 Deluxe» and matching it is right.
+    expect(ids("8")[0]).toBe("p2");
+  });
+});
+
+describe("a query nothing matches in full", () => {
+  it("shows the games that match the words that were typed", () => {
+    /*
+      The shop has two Hollow games and no Hollow Knight. Both miss «knight»
+      and are struck out by the all-words rule, and «Witch on the Holy Night»
+      then clears the strict pass alone — «holy»/«hollow» and «night»/«knight»
+      are each one edit apart once transliterated. One arguable answer was
+      suppressing both obvious ones.
+    */
+    const hits = ids("hollow knight");
+    expect(hits).toContain("c10");
+    expect(hits).toContain("c11");
+  });
+
+  it("does not top up a query that already has a confident answer", () => {
+    // The opposite pull, and the reason the top-up is gated on the best
+    // strict score rather than on how many rows it found.
+    expect(ids("mario kart")[0]).toBe("p2");
+    expect(ids("mario kart")).not.toContain("c5");
   });
 });
 

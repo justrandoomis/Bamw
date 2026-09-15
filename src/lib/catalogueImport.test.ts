@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 
 import {
-  buildBareListing,
+  buildListing,
   duplicateNames,
   parseCatalogueCsv,
   parseCsv,
@@ -125,7 +125,9 @@ describe("reading the sheet", () => {
       ].join("\n"),
     );
     expect(duplicateNames(result.rows)).toEqual([]);
-    expect(result.rows.map((r) => r.slug)).toEqual(["absolute-fear-ns1", "absolute-fear-ns2"]);
+    const slugs = result.rows.map((r) => r.slug);
+    expect(new Set(slugs).size).toBe(2);
+    for (const slug of slugs) expect(slug).toMatch(/^absolute-fear-[a-z0-9]{1,5}$/);
   });
 });
 
@@ -166,10 +168,12 @@ describe("two games, one slug", () => {
 
 describe("building a listing", () => {
   const row = parseCatalogueCsv(SHEET).rows[0]!;
-  const built = buildBareListing(row, {
+  const outcome = buildListing(row, {
     categoryId: "nintendo-switch-games",
     categoryTitle: "ألعاب نينتندو سويتش",
   });
+  if (outcome.action === "skip") throw new Error("a new row must not be skipped");
+  const built = outcome;
 
   it("is visible and buyable the moment it is written", () => {
     // The entire point: these go on sale in this state.
@@ -232,59 +236,128 @@ describe("building a listing", () => {
 
 describe("running the import again", () => {
   const row = parseCatalogueCsv(SHEET).rows[0]!;
-  const first = buildBareListing(row, { categoryId: "nintendo-switch-games" }).product;
+  const created = buildListing(row, { categoryId: "nintendo-switch-games" });
+  if (created.action === "skip") throw new Error("a new row must not be skipped");
+  const first = created.product;
 
-  it("produces the same id, so a second run updates rather than duplicates", () => {
-    const second = buildBareListing(row, { categoryId: "nintendo-switch-games" }).product;
-    expect(second["id"]).toBe(first["id"]);
-    expect(second["slug"]).toBe(first["slug"]);
+  it("produces the same id from the same name, so nothing is duplicated", () => {
+    const second = buildListing(row, { categoryId: "nintendo-switch-games" });
+    expect(second.action).toBe("create");
+    expect(second.action === "create" && second.product["id"]).toBe(first["id"]);
   });
 
-  it("keeps everything an admin has since written onto the game", () => {
+  it("leaves a game that is already in the shop completely alone", () => {
     /*
-      The property that makes this safe to re-run. Without it the first
-      re-import after somebody spent a week writing up covers and descriptions
-      would erase all of it — and that is the kind of thing discovered
-      afterwards.
+      The rule that makes a re-run safe, and the one the first draft of this
+      file broke. It rebuilt the record and spread it over the stored one,
+      which carried `isHidden: false`, `stock: 9999`, `status: "active"` and a
+      fresh `options` array along with the price — so an admin who took a game
+      off sale because the supplier ran out would find the next import had
+      quietly put it back on sale, in stock, at the sheet's price.
     */
+    const hiddenByAdmin = {
+      ...first,
+      isHidden: true,
+      isActive: false,
+      status: "غير نشط",
+      stock: 0,
+      isInfiniteStock: false,
+      price: 12000,
+      options: [{ id: OFFLINE_OPTION_ID, name: "حساب أوفلاين", price: 12000 }],
+    };
+    const again = buildListing(row, {
+      categoryId: "nintendo-switch-games",
+      existing: hiddenByAdmin,
+    });
+    expect(again.action).toBe("skip");
+    expect(again.action === "skip" && again.reason).toContain("لم يتغيّر");
+  });
+
+  it("refuses to touch a product somebody built by hand, whatever its name", () => {
+    // A bundle, a hardware product or a written-up game that happens to share
+    // a title must never be turned into a bare account listing by a
+    // spreadsheet. It is reported as skipped so the admin can see the clash.
+    const handMade = { id: "prd_manual", title: row.englishName, price: 25000, kind: "bundle" };
+    const outcome = buildListing(row, {
+      categoryId: "nintendo-switch-games",
+      existing: handMade,
+      mode: "refresh-prices",
+    });
+    expect(outcome.action).toBe("skip");
+    expect(outcome.action === "skip" && outcome.reason).toContain("يدوياً");
+  });
+
+  it("updates only the price and the cost when a refresh is asked for", () => {
     const edited = {
       ...first,
       coverImage: "https://cdn.example/kirby.webp",
       description: "وصف كتبه الأدمن",
       accountOnlineEnabled: true,
       accountOnlinePrice: 14000,
+      isHidden: true,
+      stock: 0,
       createdAt: "2026-01-01T00:00:00.000Z",
-    };
-    const again = buildBareListing({ ...row, offlinePriceIqd: 9500 }, {
-      categoryId: "nintendo-switch-games",
-      existing: edited,
-    }).product;
-
-    expect(again["coverImage"]).toBe("https://cdn.example/kirby.webp");
-    expect(again["description"]).toBe("وصف كتبه الأدمن");
-    expect(again["accountOnlineEnabled"]).toBe(true);
-    expect(again["accountOnlinePrice"]).toBe(14000);
-    // The six columns the sheet owns do move.
-    expect(again["price"]).toBe(9500);
-    // And the day it entered the shop does not.
-    expect(again["createdAt"]).toBe("2026-01-01T00:00:00.000Z");
-  });
-
-  it("does not add a second offline option to a game that already has one", () => {
-    const edited = {
-      ...first,
       options: [
         { id: OFFLINE_OPTION_ID, name: "حساب أوفلاين" },
         { id: "online_account", name: "حساب أونلاين", price: 14000 },
       ],
     };
-    const again = buildBareListing(row, {
-      categoryId: "nintendo-switch-games",
-      existing: edited,
-    }).product;
-    const options = again["options"] as Record<string, unknown>[];
-    expect(options.filter((o) => o["id"] === OFFLINE_OPTION_ID)).toHaveLength(1);
-    // The online option an admin added survives.
-    expect(options.some((o) => o["id"] === "online_account")).toBe(true);
+    const again = buildListing(
+      { ...row, offlinePriceIqd: 9500, costIqd: 1800 },
+      { categoryId: "nintendo-switch-games", existing: edited, mode: "refresh-prices" },
+    );
+    expect(again.action).toBe("update");
+    if (again.action !== "update") return;
+
+    expect(again.product["price"]).toBe(9500);
+    expect(again.product["cost"]).toBe(1800);
+
+    // And nothing else moved — not the work, not the state, not the options.
+    expect(again.product["coverImage"]).toBe("https://cdn.example/kirby.webp");
+    expect(again.product["description"]).toBe("وصف كتبه الأدمن");
+    expect(again.product["accountOnlinePrice"]).toBe(14000);
+    expect(again.product["isHidden"]).toBe(true);
+    expect(again.product["stock"]).toBe(0);
+    expect(again.product["createdAt"]).toBe("2026-01-01T00:00:00.000Z");
+    expect(again.product["options"]).toEqual(edited.options);
+  });
+});
+
+describe("a slug that does not move", () => {
+  const build = (lines: string[]) =>
+    Object.fromEntries(
+      parseCatalogueCsv([HEADER, ...lines].join("\n")).rows.map((r) => [r.englishName, r.slug]),
+    );
+
+  const a = "1,Railway Nippon! Real Pro,1927.2,名,Nintendo Switch 2,7000,نعم";
+  const b = "2,Railway Nippon! Real Pro (特快专通),3652,名,Nintendo Switch 2,9000,نعم";
+  const c = "3,Railway Nippon! Real Pro (超特急),2500,名,Nintendo Switch 2,8000,نعم";
+
+  it("does not change when a third colliding game is added to the sheet", () => {
+    /*
+      A positional counter would have. The third row sorts between the other
+      two, every tag after it shifts, their ids change — and the next import
+      creates fresh copies of two games that are already in the shop while the
+      originals sit there orphaned. The tag is derived from the name instead.
+    */
+    const before = build([a, b]);
+    const after = build([a, b, c]);
+    expect(after["Railway Nippon! Real Pro"]).toBe(before["Railway Nippon! Real Pro"]);
+    expect(after["Railway Nippon! Real Pro (特快专通)"]).toBe(
+      before["Railway Nippon! Real Pro (特快专通)"],
+    );
+  });
+
+  it("does not change when the sheet is re-sorted", () => {
+    expect(build([a, b, c])).toEqual(build([c, b, a]));
+  });
+
+  it("gives a title with no Latin letters a stable slug rather than a timestamp", () => {
+    // `sanitizeSlug` falls back to `Date.now()`, so every run would mint a new
+    // id for the same game and the shop would fill with copies of it.
+    const once = build(["1,最恐 青鬼,1496,名,Nintendo Switch,5000,نعم"]);
+    const twice = build(["1,最恐 青鬼,1496,名,Nintendo Switch,5000,نعم"]);
+    expect(once).toEqual(twice);
+    expect(Object.values(once)[0]).not.toMatch(/product-/);
   });
 });

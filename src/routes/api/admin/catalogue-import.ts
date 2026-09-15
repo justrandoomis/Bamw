@@ -39,7 +39,7 @@ import { body, guard, json } from "@/lib/http.server";
 import { requireAdmin } from "@/lib/session.server";
 import { refreshProductIndexRow } from "@/lib/product-index.server";
 import { writeSupplierNameZh } from "@/lib/productAdminMetadata.server";
-import { buildBareListing, type CatalogueRow } from "@/lib/catalogueImport";
+import { buildListing, type CatalogueRow, type ImportMode } from "@/lib/catalogueImport";
 import { categoryFilterAliases } from "@/lib/productSection";
 import { assertBoundParameters, chunkForParams } from "@/lib/sql-params";
 
@@ -95,6 +95,7 @@ export const Route = createFileRoute("/api/admin/catalogue-import")({
             rows?: CatalogueRow[];
             apply?: boolean;
             finalize?: boolean;
+            mode?: ImportMode;
           }>(request);
 
           /*
@@ -160,6 +161,17 @@ export const Route = createFileRoute("/api/admin/catalogue-import")({
           }
 
           const apply = payload?.apply === true;
+          /*
+            Create-only unless the run explicitly asks otherwise.
+
+            The importer is additive: a game already in the shop is left as it
+            is, whatever the sheet now says about it, because the shop is where
+            somebody decided it should be hidden, out of stock, or priced
+            differently. `refresh-prices` is opt-in and touches two fields on
+            listings this importer created — see `buildListing`.
+          */
+          const mode: ImportMode =
+            payload?.mode === "refresh-prices" ? "refresh-prices" : "create-only";
           const store = await getStore();
           const category = resolveGamesCategory(store.categories);
 
@@ -191,32 +203,36 @@ export const Route = createFileRoute("/api/admin/catalogue-import")({
               continue;
             }
 
-            const built = buildBareListing(row, {
-              categoryId: category.id,
-              categoryTitle: category.title,
-              existing: undefined,
-            });
-            const desiredSlug = String(built.product["slug"]);
-
             /*
               Matched by slug first, then by name.
 
-              The slug is what a re-import of the same sheet produces, so it is
+              The slug is what a re-run of the same sheet produces, so it is
               the reliable key. The title lookup is what stops the import from
               creating a second «Fire Emblem: Three Houses» beside one an admin
-              added by hand under a different slug — which is the duplicate
-              that would be hardest to notice and worst to have.
+              added by hand under a different slug — and because an existing
+              product is now refused rather than overwritten, a wrong match
+              costs a skipped row the admin can see, not a product turned into
+              something it is not.
             */
+            const desiredSlug = String(row.slug ?? "").trim().toLowerCase();
             const existing =
-              bySlug.get(desiredSlug) ?? byTitle.get(name.toLowerCase()) ?? undefined;
+              (desiredSlug ? bySlug.get(desiredSlug) : undefined) ??
+              byTitle.get(name.toLowerCase()) ??
+              undefined;
 
-            const final = buildBareListing(row, {
+            const outcome = buildListing(row, {
               categoryId: category.id,
               categoryTitle: category.title,
+              mode,
               ...(existing ? { existing } : {}),
             });
-            const id = String(final.product["id"]);
-            const outcome: Outcome = existing ? "updated" : "created";
+
+            if (outcome.action === "skip") {
+              results.push({ line, name, outcome: "skipped", reason: outcome.reason });
+              continue;
+            }
+
+            const id = String(outcome.product["id"]);
 
             if (apply) {
               try {
@@ -224,10 +240,10 @@ export const Route = createFileRoute("/api/admin/catalogue-import")({
                   `INSERT INTO store_kv (key, value, updated_at) VALUES (?, ?, ?)
                    ON CONFLICT(key) DO UPDATE SET value = excluded.value, updated_at = excluded.updated_at`,
                   `store:product:${id}`,
-                  JSON.stringify(final.product),
+                  JSON.stringify(outcome.product),
                   new Date().toISOString(),
                 );
-                await refreshProductIndexRow(final.product);
+                await refreshProductIndexRow(outcome.product);
 
                 /*
                   The Chinese name goes to its own admin-only table and never
@@ -239,11 +255,11 @@ export const Route = createFileRoute("/api/admin/catalogue-import")({
                   sellable without the supplier's name for it, and losing the
                   game over a metadata row would be the wrong trade.
                 */
-                if (row.chineseName) {
+                if (outcome.chineseName) {
                   try {
                     await writeSupplierNameZh({
                       productId: id,
-                      supplierNameZhCn: row.chineseName,
+                      supplierNameZhCn: outcome.chineseName,
                       englishTitle: name,
                       updatedBy: admin.id,
                     });
@@ -263,9 +279,9 @@ export const Route = createFileRoute("/api/admin/catalogue-import")({
               }
             }
 
-            if (outcome === "created") created += 1;
+            if (outcome.action === "create") created += 1;
             else updated += 1;
-            results.push({ line, name, outcome, id });
+            results.push({ line, name, outcome: outcome.action === "create" ? "created" : "updated", id });
           }
 
           if (apply) invalidateStoreCache();
@@ -274,6 +290,7 @@ export const Route = createFileRoute("/api/admin/catalogue-import")({
             success: true,
             apply,
             categoryId: category.id,
+            mode,
             created,
             updated,
             skipped: results.filter((r) => r.outcome === "skipped").length,

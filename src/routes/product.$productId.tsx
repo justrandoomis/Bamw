@@ -47,7 +47,15 @@ export const Route = createFileRoute("/product/$productId")({
 function ProductPage() {
   const { productId } = Route.useParams();
   const navigate = useNavigate();
-  const { user } = useAuth();
+  /*
+    `isLoading` matters here, not just `user`.
+
+    The session query resolves after first paint, so a signed-in customer who
+    presses a request button in that window looks signed out and gets bounced
+    to /auth. The panel is handed `undefined` while the answer is unknown and
+    waits instead of guessing.
+  */
+  const { user, isLoading: sessionLoading } = useAuth();
 
   // 1. Instant cache access via shared store data
   const { data: storeData } = useStoreData();
@@ -197,7 +205,7 @@ function ProductPage() {
                       productId={String(product["id"] ?? productId)}
                       productTitle={String(product["titleEn"] || product["title"] || "")}
                       platform={String(product["platform"] ?? "")}
-                      isSignedIn={Boolean(user)}
+                      isSignedIn={sessionLoading ? undefined : Boolean(user)}
                       onSignIn={() => void navigate({ to: "/auth" })}
                     />
                   </div>

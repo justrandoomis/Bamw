@@ -50,10 +50,21 @@ export const Route = createFileRoute("/api/game-requests")({
           if (!getD1()) return json({ error: "DB not ready" }, { status: 500 });
           await ensureSchema();
           const user = await requireUser(request);
+          /*
+            Eight a day was sized for one kind of request — «please stock this
+            game» — which nobody sends eight of. A listing published with a
+            name and a price now carries three buttons, on about fifteen
+            hundred pages, and a customer browsing the new catalogue can
+            legitimately ask about several games in one sitting. Eight would
+            have them told to come back tomorrow after three games.
+
+            Still a limit, and still per member per day: it is what stops one
+            account filling the admin queue overnight.
+          */
           const throttle = await consumeRateLimit(
             request,
             "product-request",
-            8,
+            40,
             24 * 60 * 60,
             user.id,
           );

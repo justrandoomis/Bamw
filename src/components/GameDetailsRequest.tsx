@@ -26,8 +26,14 @@ interface Props {
   productId: string;
   productTitle: string;
   platform?: string;
-  /** Signed out, the request cannot be attributed, so the panel says so. */
-  isSignedIn: boolean;
+  /*
+    Signed out, the request cannot be attributed, so the panel says so.
+
+    `undefined` means the session is still loading — distinct from `false`,
+    because bouncing a signed-in customer to /auth for pressing a button
+    fractionally too early is worse than a moment's wait.
+  */
+  isSignedIn: boolean | undefined;
   onSignIn: () => void;
 }
 
@@ -106,6 +112,10 @@ export default function GameDetailsRequest({
               type="button"
               disabled={done}
               onClick={() => {
+                if (isSignedIn === undefined) {
+                  toast.message("لحظة — نتحقق من حسابك");
+                  return;
+                }
                 if (!isSignedIn) {
                   toast.error("سجّل الدخول لإرسال الطلب");
                   onSignIn();

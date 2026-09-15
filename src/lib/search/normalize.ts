@@ -10,6 +10,22 @@
 /* Tashkeel, Quranic marks and tatweel carry no search meaning. */
 const DIACRITICS = /[ً-ٰٟۖ-ۭـ]/g;
 
+/*
+  Everything NFKD peeled off a letter.
+
+  `normalize` decomposes, and then turns anything that is not a letter or a
+  digit into a space — and a combining accent is neither. So «Pokémon» became
+  «poke mon», two tokens, and the fourteen Pokémon titles in the catalogue were
+  indexed under a name no customer types. The exact and prefix rungs could not
+  reach them at all; they survived only on the run-together rung, and an Arabic
+  query could not reach them by any rung, because «بوكيمون» transliterates to
+  one word and the index held two.
+
+  Eighteen names in the supplier sheet carry an accent. This is what makes them
+  searchable.
+*/
+const COMBINING_MARKS = /\p{M}/gu;
+
 /* Letters that users interchange freely across Arabic/Kurdish/Farsi keyboards. */
 const LETTER_FOLDS: Record<string, string> = {
   أ: "ا", // أ
@@ -54,6 +70,7 @@ export function normalize(input: string): string {
     .toLowerCase()
     .normalize("NFKD")
     .replace(DIACRITICS, "")
+    .replace(COMBINING_MARKS, "")
     .replace(LETTER_FOLD_RE, (char) => LETTER_FOLDS[char] ?? char)
     .replace(ARABIC_DIGITS, foldDigit)
     .replace(NON_WORD, " ")

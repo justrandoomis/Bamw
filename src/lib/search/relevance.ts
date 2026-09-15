@@ -57,7 +57,22 @@ export function matchQuality(token: QueryToken, field: IndexedField): number {
 
   const { value, stem: tokenStem } = token;
 
-  if (field.tokens.includes(value)) return 1;
+  if (field.tokens.includes(value)) {
+    /*
+      One letter that happens to be a whole token is punctuation, not a word.
+
+      «Worms W.M.D» folds to «worms w m d», so the query «m» matches a token
+      exactly and scored 1 — ahead of «Metroid Prime 4», which only *starts*
+      with an m. That is backwards: the initial of an initialism is the
+      weakest possible evidence, and the game whose name begins with the letter
+      is what somebody typing one letter is reaching for.
+
+      Digits are exempt. «8» is a real token of «Mario Kart 8 Deluxe» and
+      matching it exactly is exactly right.
+    */
+    if (value.length === 1 && !/[0-9]/.test(value)) return 0.5;
+    return 1;
+  }
   if (field.stems.includes(tokenStem)) return 0.95;
 
   if (value.length >= 3) {
@@ -116,6 +131,21 @@ export function matchQuality(token: QueryToken, field: IndexedField): number {
 
     Discounted harder than a same-script typo, because two lossy steps have
     been taken rather than one: the transliteration and then the edit.
+  */
+  /*
+    The same budget the alphabet it was written in would get, and no more.
+
+    One extra edit was tried, to reach the case transliteration loses on its
+    own: «فاير» becomes «fair» while «fire» stays «fire», two edits apart with
+    nobody having mistyped anything, so «فاير امبلم» finds none of the nine
+    Fire Emblem games while «fire emblem» finds all of them.
+
+    It was reverted, because the measurement over the real 1,530-game catalogue
+    was unambiguous: «غسالة» — a washing machine, the standing example of what
+    this shop must answer with nothing — came back with Salt and Sacrifice,
+    Sally Face and Gal Guardians. Answering a word the catalogue has never seen
+    is a worse failure than missing one spelling of a word it has, so the
+    Arabic spelling of «fire» is a limitation this rung does not cover.
   */
   const phoneticBudget = typoBudget(token.phonetic.length);
   if (token.phonetic && phoneticBudget > 0) {

@@ -24,8 +24,6 @@
  * rather than a preview that can disagree with what gets written.
  */
 
-import { sanitizeSlug } from "./productSlug";
-
 export interface CatalogueRow {
   /** The line number in the file, 1-based, for error messages. */
   line: number;
@@ -341,10 +339,45 @@ export function parseCatalogueCsv(text: string): CatalogueParseResult {
  * between the two games and the next import would create duplicates of both
  * instead of updating either.
  */
+/**
+ * A short, stable tag derived from the text itself.
+ *
+ * Used to separate two games whose names produce the same slug. A counter
+ * would have been simpler and wrong: it is assigned by position, so adding a
+ * third «Railway Nippon» to the sheet shifts the tag on the other two, their
+ * ids change, and the next import creates fresh copies of games that already
+ * exist while the originals stay behind. This depends only on the name, so it
+ * never moves.
+ */
+function nameTag(value: string): string {
+  let hash = 0x811c9dc5;
+  for (let i = 0; i < value.length; i += 1) {
+    hash ^= value.charCodeAt(i);
+    hash = Math.imul(hash, 0x01000193) >>> 0;
+  }
+  return hash.toString(36).slice(0, 5);
+}
+
+/**
+ * The slug for one row, with no knowledge of the rest of the file.
+ *
+ * `sanitizeSlug` falls back to `Date.now()` when a name has no Latin letters
+ * or digits at all — every run would mint a new id for the same game, and the
+ * shop would fill with copies. The sheet is mostly English, but it carries
+ * Japanese and Chinese titles, so this is reachable.
+ */
+function catalogueSlug(row: Pick<CatalogueRow, "englishName">): string {
+  const cleaned = row.englishName
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+  return cleaned || `game-${nameTag(row.englishName)}`;
+}
+
 function assignSlugs(rows: Array<Omit<CatalogueRow, "slug">>): CatalogueRow[] {
   const groups = new Map<string, Array<Omit<CatalogueRow, "slug">>>();
   for (const row of rows) {
-    const base = sanitizeSlug(row.englishName, row.englishName);
+    const base = catalogueSlug(row);
     const group = groups.get(base);
     if (group) group.push(row);
     else groups.set(base, [row]);
@@ -356,25 +389,27 @@ function assignSlugs(rows: Array<Omit<CatalogueRow, "slug">>): CatalogueRow[] {
       slugOf.set(group[0]!, base);
       continue;
     }
-    const ordered = [...group].sort(
-      (a, b) =>
-        a.englishName.localeCompare(b.englishName) || a.platform.localeCompare(b.platform),
-    );
-    const taken = new Set<string>();
-    for (const row of ordered) {
-      const byConsole = `${base}-${row.platform === "switch2" ? "ns2" : "ns1"}`;
-      let slug = taken.has(byConsole) ? "" : byConsole;
-      if (!slug) {
-        let n = 2;
-        while (taken.has(`${base}-${n}`)) n += 1;
-        slug = `${base}-${n}`;
-      }
-      taken.add(slug);
-      slugOf.set(row, slug);
+    /*
+      A tag from the row's own name and console, for every row in the group.
+
+      Not "console first, name tag on a clash": that reads better and moves.
+      Whoever came first got the clean `-ns2` and everyone else got a tag, so
+      re-sorting the sheet — or adding a third «Railway Nippon» — handed the
+      suffix to a different game. Its id would change, and the next import
+      would create a fresh copy of a game already in the shop while the
+      original sat there orphaned. My own test caught it.
+
+      Keyed on the name *and* the console because the sheet lists «Absolute
+      Fear -AOONI-» twice, once per machine, under one name — so the name
+      alone gives both rows the same tag and they collapse again. Two rows that
+      match on both are the same product, and sharing a slug is correct.
+    */
+    for (const row of group) {
+      slugOf.set(row, `${base}-${nameTag(`${row.englishName}|${row.platform}`)}`);
     }
   }
 
-  return rows.map((row) => ({ ...row, slug: slugOf.get(row) ?? sanitizeSlug(row.englishName, row.englishName) }));
+  return rows.map((row) => ({ ...row, slug: slugOf.get(row) ?? catalogueSlug(row) }));
 }
 
 /**
@@ -418,53 +453,102 @@ export interface BuiltListing {
 }
 
 /**
- * Turns one catalogue row into a listing.
+ * What a re-run is allowed to change on a game that already exists.
  *
- * `existing` is the product already in the catalogue under this slug, when
- * there is one. Re-running the import must update the price and the cost
- * rather than mint a second copy of the game — and it must **not** undo an
- * admin's work: anything already written onto the product is kept, and only
- * the six columns the spreadsheet is authoritative about are overwritten.
- * That is what makes this safe to run again every time the sheet changes.
+ * Nothing, by default. The importer is additive: it creates the games that are
+ * not in the shop and leaves the ones that are completely alone, which is what
+ * makes running it twice safe and what makes running it after a failure the
+ * obvious thing to do.
+ *
+ * `refreshPrices` is the deliberate exception, and it is deliberately narrow.
+ * It updates the price and the cost, and only on listings this importer
+ * created — nothing else, on nothing else. Everything the first draft of this
+ * file also overwrote was a standing rule broken:
+ *
+ *   - `isHidden` / `isActive` / `status`: an admin takes a game off sale
+ *     because the supplier ran out, and the next import quietly puts it back.
+ *   - `stock` / `isInfiniteStock`: same.
+ *   - `options`: an online account somebody priced by hand.
+ *   - `title`: a name somebody corrected.
+ *
+ * The comment at the top of this file claimed the update "touches nothing
+ * else" while the code wrote all of them, which is worse than either.
  */
-export function buildBareListing(
-  row: CatalogueRow,
-  options: { categoryId: string; categoryTitle?: string; existing?: Record<string, unknown> },
-): BuiltListing {
+export type ImportMode = "create-only" | "refresh-prices";
+
+export interface BuildOptions {
+  categoryId: string;
+  categoryTitle?: string;
+  /** The product already in the catalogue under this slug or name. */
+  existing?: Record<string, unknown>;
+  mode?: ImportMode;
+}
+
+export type BuildOutcome =
+  | { action: "create"; product: Record<string, unknown>; chineseName: string }
+  | { action: "update"; product: Record<string, unknown>; chineseName: string }
+  | { action: "skip"; reason: string };
+
+/**
+ * Turns one catalogue row into a listing, or declines to.
+ *
+ * A row with no matching product becomes a new one. A row that matches
+ * something already in the shop is refused unless the run asked for a price
+ * refresh *and* the match is a listing this importer made — a product somebody
+ * built by hand is never touched by a spreadsheet, whatever its name.
+ */
+export function buildListing(row: CatalogueRow, options: BuildOptions): BuildOutcome {
   // Resolved against the whole file by the parser; see `CatalogueRow.slug`.
-  const slug = row.slug || sanitizeSlug(row.englishName, row.englishName);
+  const slug = row.slug || catalogueSlug(row);
   const existing = options.existing;
-  const id = String(existing?.["id"] ?? `prd_cat_${slug}`).trim() || `prd_cat_${slug}`;
+
+  if (existing) {
+    const mine = existing["catalogueSource"] === CATALOGUE_SOURCE;
+    if (!mine) {
+      return {
+        action: "skip",
+        reason: "موجود مسبقاً كمنتج أُنشئ يدوياً — لم يُلمس",
+      };
+    }
+    if (options.mode !== "refresh-prices") {
+      return { action: "skip", reason: "موجود مسبقاً — لم يتغيّر شيء" };
+    }
+    /*
+      Two fields, by name, onto a copy. Not a spread of a freshly built record
+      over the stored one: that is how the first draft of this quietly carried
+      visibility, stock and options along with the price.
+    */
+    return {
+      action: "update",
+      product: {
+        ...existing,
+        price: row.offlinePriceIqd,
+        cost: row.costIqd,
+        accountPrice: row.offlinePriceIqd,
+        updatedAt: new Date().toISOString(),
+      },
+      chineseName: row.chineseName,
+    };
+  }
 
   /*
-    The offline option, preserved if the admin has already edited it.
-
-    It carries no price of its own: `resolveUnitPrice` treats an unpriced
-    option as "use the price above me", so the one number in the spreadsheet
-    stays the single source of the game's price instead of being copied into
-    two places that can then disagree.
+    The offline option carries no price of its own: `resolveUnitPrice` treats
+    an unpriced option as "use the price above me", so the one number in the
+    spreadsheet stays the single source of the game's price instead of being
+    copied into two places that can then disagree.
   */
-  const existingOptions = Array.isArray(existing?.["options"])
-    ? (existing!["options"] as Record<string, unknown>[])
-    : [];
-  const existingOffline = existingOptions.find((o) => o?.["id"] === OFFLINE_OPTION_ID);
   const offlineOption = {
-    ...existingOffline,
     id: OFFLINE_OPTION_ID,
     name: "حساب أوفلاين",
     description: "حساب مخصص للعب دون اتصال بعد إكمال خطوات التفعيل.",
     stock: 9999,
     isInfiniteStock: true,
   };
-  const options_ = existingOptions.some((o) => o?.["id"] === OFFLINE_OPTION_ID)
-    ? existingOptions.map((o) => (o?.["id"] === OFFLINE_OPTION_ID ? offlineOption : o))
-    : [offlineOption, ...existingOptions];
 
+  const now = new Date().toISOString();
   const product: Record<string, unknown> = {
-    // An admin's edits survive a re-import; the spreadsheet's columns do not.
-    ...(existing ?? {}),
-    id,
-    slug: String(existing?.["slug"] ?? slug),
+    id: `prd_cat_${slug}`,
+    slug,
     title: row.englishName,
     titleEn: row.englishName,
     kind: "game",
@@ -488,7 +572,7 @@ export function buildBareListing(
     accountEnabled: true,
     accountPrice: row.offlinePriceIqd,
     accountStock: 9999,
-    options: options_,
+    options: [offlineOption],
 
     isActive: true,
     isHidden: false,
@@ -496,16 +580,11 @@ export function buildBareListing(
 
     /** Shown to the customer: 17 of these titles have no English in them. */
     englishSupport: row.englishSupport,
-    /** Where this listing came from, so a re-import can recognise its own work. */
+    /** Where this listing came from, so a re-run can recognise its own work. */
     catalogueSource: CATALOGUE_SOURCE,
-    /*
-      The record did change, so it was updated now. `createdAt` is the one
-      stamp a re-import must not move — it is what tells the admin table which
-      games have been in the shop since the first import.
-    */
-    updatedAt: new Date().toISOString(),
-    createdAt: existing?.["createdAt"] ?? new Date().toISOString(),
+    updatedAt: now,
+    createdAt: now,
   };
 
-  return { product, chineseName: row.chineseName };
+  return { action: "create", product, chineseName: row.chineseName };
 }

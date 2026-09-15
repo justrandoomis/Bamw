@@ -60,6 +60,16 @@ export default function CatalogueImportModal({
   const [preview, setPreview] = useState<RunTotals | null>(null);
   const [applied, setApplied] = useState<RunTotals | null>(null);
   const [error, setError] = useState("");
+  /*
+    Off by default, and a separate decision from importing.
+
+    The import only ever adds games; a game already in the shop is left exactly
+    as it is, because the shop is where somebody decided it should be hidden,
+    out of stock, or priced differently. Ticking this lets the sheet move the
+    price and the cost of listings this importer created — and nothing else, on
+    nothing else.
+  */
+  const [refreshPrices, setRefreshPrices] = useState(false);
   const fileRef = useRef<HTMLInputElement>(null);
 
   const readFile = async (file: File) => {
@@ -102,7 +112,11 @@ export default function CatalogueImportModal({
           method: "POST",
           credentials: "include",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ rows: slice, apply }),
+          body: JSON.stringify({
+            rows: slice,
+            apply,
+            mode: refreshPrices ? "refresh-prices" : "create-only",
+          }),
         });
         payload = (await response.json()) as BatchResponse;
         if (!response.ok) throw new Error(payload?.error || `HTTP ${response.status}`);
@@ -198,7 +212,7 @@ export default function CatalogueImportModal({
             </h3>
             <p className="mt-1 text-xs text-muted-foreground">
               تُنشر كل لعبة باسمها وسعر حساب الأوفلاين فقط. الاسم الصيني والتكلفة للأدمن وحده،
-              ولا يظهران للعميل في أي مكان.
+              ولا يظهران للعميل في أي مكان. الاستيراد يضيف ولا يعدّل: أي لعبة موجودة تُترك كما هي.
             </p>
           </div>
           <button
@@ -281,13 +295,33 @@ export default function CatalogueImportModal({
               </div>
             )}
 
+            <label className="flex items-start gap-2 rounded-xl border border-border p-4 text-xs leading-relaxed">
+              <input
+                type="checkbox"
+                checked={refreshPrices}
+                disabled={busy || Boolean(applied)}
+                onChange={(event) => {
+                  setRefreshPrices(event.target.checked);
+                  // The preview described the other mode; it is no longer true.
+                  setPreview(null);
+                }}
+                className="mt-0.5"
+              />
+              <span>
+                <strong>حدِّث أسعار الألعاب الموجودة أيضاً.</strong> بدون هذا الخيار تُضاف الألعاب
+                الجديدة فقط ولا يُمسّ أي منتج موجود. مع تفعيله يُحدَّث سعر البيع والتكلفة للألعاب
+                التي أنشأها هذا الاستيراد فقط — ولا يتغيّر الإخفاء ولا المخزون ولا الخيارات ولا أي
+                منتج أضفته يدوياً.
+              </span>
+            </label>
+
             {preview && !applied && (
               <div className="rounded-xl border border-border bg-muted/40 p-4 text-sm">
                 <p className="font-bold">نتيجة الفحص — لم يُكتب شيء بعد</p>
                 <p className="mt-1 text-xs">
                   ستُنشأ {preview.created.toLocaleString("en-US")} لعبة جديدة، وسيُحدَّث{" "}
-                  {preview.updated.toLocaleString("en-US")} موجودة
-                  {preview.skipped ? `، وسيُتخطى ${preview.skipped}` : ""}.
+                  {preview.updated.toLocaleString("en-US")} موجودة، وسيُترك{" "}
+                  {preview.skipped.toLocaleString("en-US")} كما هو.
                 </p>
               </div>
             )}
@@ -300,8 +334,8 @@ export default function CatalogueImportModal({
                 </p>
                 <p className="mt-1 text-xs">
                   أُنشئت {applied.created.toLocaleString("en-US")} لعبة، وحُدّثت{" "}
-                  {applied.updated.toLocaleString("en-US")}
-                  {applied.skipped ? `، وتُخطيت ${applied.skipped}` : ""}.
+                  {applied.updated.toLocaleString("en-US")}، وتُركت{" "}
+                  {applied.skipped.toLocaleString("en-US")} كما هي.
                 </p>
                 {applied.failures.length > 0 && (
                   <ul className="mt-2 max-h-32 space-y-1 overflow-y-auto text-[11px]">
