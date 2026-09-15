@@ -70,7 +70,7 @@ mkdirSync(WORK_DIR, { recursive: true });
 
 const outfile = path.resolve(".store-media-bundle.mjs");
 await build({
-  entryPoints: ["scripts/lib/import-entry.ts"],
+  entryPoints: ["scripts/lib/store-media-entry.ts"],
   outfile,
   bundle: true,
   format: "esm",
@@ -79,6 +79,29 @@ await build({
   logLevel: "silent",
   alias: { "@": path.resolve("src") },
   external: ["cloudflare:workers", "node:async_hooks", "node:crypto", "sharp"],
+  /*
+    `updateStore` reaches TanStack Start's server core, whose three virtual
+    specifiers only the app's own build can resolve. Stubbing them is safe here
+    because nothing on this path runs a request handler — the server core is
+    reached by the import graph and never by a call.
+  */
+  plugins: [
+    {
+      name: "stub-start-virtuals",
+      setup(pluginBuild) {
+        const virtual =
+          /^(#tanstack-router-entry|#tanstack-start-entry|tanstack-start-manifest:)/;
+        pluginBuild.onResolve({ filter: virtual }, (a) => ({
+          path: a.path,
+          namespace: "start-virtual",
+        }));
+        pluginBuild.onLoad({ filter: /.*/, namespace: "start-virtual" }, () => ({
+          contents: "export default {}; export const getStartManifest = () => ({});",
+          loader: "js",
+        }));
+      },
+    },
+  ],
 });
 const app = await import(outfile);
 
