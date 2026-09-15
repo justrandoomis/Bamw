@@ -37,7 +37,11 @@ const QUERIES = (args.queries ?? "زيلدا,ماريو كارت,سوبر مار
   .split(",")
   .map((q) => q.trim())
   .filter(Boolean);
-const SETTLE = Number(args.settle ?? 5000);
+/*
+  How long to wait for the results to appear — a ceiling now, not a sleep.
+  The check proceeds the moment the page has something to say.
+*/
+const SETTLE = Number(args.settle ?? 15000);
 
 const UA =
   args.ua ??
@@ -169,7 +173,38 @@ for (const query of QUERIES) {
     const url = `${BASE}/search?q=${encodeURIComponent(query)}`;
     const response = await page.goto(url, { waitUntil: "domcontentloaded", timeout: 60000 });
     entry.status = response?.status() ?? 0;
-    await page.waitForTimeout(SETTLE);
+
+    /*
+      Wait for the page to have *decided*, not for a fixed interval.
+
+      This slept `SETTLE` milliseconds and then counted, and the count was a
+      coin toss: the results are rendered in the browser from a catalogue
+      fetched over the network, so five seconds is sometimes enough and
+      sometimes is not — and it is least often enough right after a release,
+      when every isolate is cold, which is exactly when this check gets run.
+
+      It reported three false failures in one afternoon that way. The evidence
+      that it was the checker and not the shop was in its own output: a row
+      reading `results: 0` while the same row listed «Mario Kart 8 Deluxe» as
+      the first hit. `count()` and `allInnerTexts()` run over the identical
+      locator four lines apart, and the render landed between them.
+
+      So it waits for the first result, or for the page to say there are none,
+      whichever comes first — and only then measures. A page that does neither
+      within the timeout is a real failure and still reads as zero.
+    */
+    await Promise.race([
+      page
+        .locator('a[href^="/product/"]')
+        .first()
+        .waitFor({ state: "attached", timeout: SETTLE })
+        .catch(() => {}),
+      page
+        .getByText(/لا توجد نتائج/)
+        .first()
+        .waitFor({ state: "attached", timeout: SETTLE })
+        .catch(() => {}),
+    ]);
 
     /* A result is a link to a product page. Counting those counts results. */
     entry.results = await page.locator('a[href^="/product/"]').count();
