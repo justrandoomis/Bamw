@@ -26,7 +26,7 @@
  */
 
 import { build } from "esbuild";
-import { writeFileSync } from "node:fs";
+import { readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
 
 const SECRETS = [process.env.CLOUDFLARE_API_TOKEN, process.env.CLOUDFLARE_ACCOUNT_ID].filter(
@@ -112,6 +112,20 @@ say();
 /* 2. What the store-metadata read now has to walk                     */
 /* ------------------------------------------------------------------ */
 
+/*
+  The database id comes from `wrangler.jsonc` when the environment has none.
+
+  It is committed there — it is the binding this Worker deploys against — and
+  the `CLOUDFLARE_D1_DATABASE_ID` secret these workflows pass is empty, which
+  is why this report's first run printed `undefined` for every count instead of
+  saying it could not reach the database.
+*/
+if (!process.env.D1_DATABASE_ID) {
+  const config = readFileSync("wrangler.jsonc", "utf8");
+  const found = /"database_id"\s*:\s*"([^"]+)"/.exec(config);
+  if (found) process.env.D1_DATABASE_ID = found[1];
+}
+
 const outfile = path.resolve(".diagnose-bundle.mjs");
 await build({
   entryPoints: ["scripts/lib/import-entry.ts"],
@@ -127,6 +141,15 @@ await build({
 const app = await import(outfile);
 
 const one = async (sql) => (await app.d1All(sql))[0] ?? {};
+const reachable = await app.d1All("SELECT count(*) AS n FROM store_kv").catch(() => []);
+if (!reachable.length) {
+  say(`## D1`);
+  say();
+  say(`**Unreachable from this runner** — no counts below would mean anything, so none are printed.`);
+  say(`Check \`CLOUDFLARE_API_TOKEN\` and that the token can read the \`bananto\` database.`);
+  writeFileSync("import-incident.md", lines.join("\n") + "\n");
+  process.exit(1);
+}
 const timed = async (sql) => {
   const at = Date.now();
   const rows = await app.d1All(sql);
@@ -265,7 +288,6 @@ if (!ACCOUNT || !TOKEN) {
           datasets: ["cloudflare-workers"],
           filters: [
             { key: "$metadata.service", operation: "eq", type: "string", value: WORKER },
-            { key: "$workers.outcome", operation: "neq", type: "string", value: "ok" },
           ],
         },
         timeframe: { from: to - HOURS * 3600 * 1000, to },
@@ -285,13 +307,18 @@ if (!ACCOUNT || !TOKEN) {
     say(`  - most likely the API token lacks \`Workers Observability: Read\`.`);
   } else {
     const events = payload?.result?.events?.events ?? payload?.result?.events ?? [];
-    say(`${events.length} invocation(s) that did not end \`ok\`.`);
+    say(`${events.length} invocation(s) read.`);
     say();
     const tally = new Map();
     const shown = [];
     for (const event of events) {
-      const src = event?.source ?? event;
-      const w = src?.$workers ?? {};
+      /*
+        `$workers` is a sibling of `source`, not a child of it. Reading it
+        through `event.source` — which exists, and holds the log line — lost
+        every runtime field and reported two hundred invocations as `unknown`.
+      */
+      const src = event ?? {};
+      const w = src?.$workers ?? src?.source?.$workers ?? {};
       const outcome = String(w?.outcome ?? src?.outcome ?? "unknown");
       let route = "";
       try {
@@ -303,7 +330,7 @@ if (!ACCOUNT || !TOKEN) {
       const err = w?.event?.error ?? w?.exception ?? src?.exception ?? null;
       const key = `${outcome} ${route} ${status}`;
       tally.set(key, (tally.get(key) ?? 0) + 1);
-      if (shown.length < 12) {
+      if (outcome !== "ok" && shown.length < 15) {
         shown.push({
           at: new Date(Number(event?.timestamp ?? 0)).toISOString().slice(0, 19),
           outcome,
