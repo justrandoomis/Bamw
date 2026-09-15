@@ -6,7 +6,7 @@
  * so every user sees exactly the same market at the same moment.
  */
 
-import { getStore, updateStore } from "./db.server";
+import { getStoreSettings, updateStore } from "./db.server";
 import { d1All, d1First, d1Run, d1Ready } from "./d1.server";
 
 export interface BananaMarketConfig {
@@ -73,8 +73,16 @@ function price(value: unknown, fallback: number): number {
 }
 
 export async function getMarketConfig(): Promise<BananaMarketConfig> {
-  const store = await getStore();
-  const settings = (store.settings ?? {}) as Record<string, unknown>;
+  /*
+    The settings, not the catalogue.
+
+    This read `getStore()` — 3.8 MB of chunks, parsed, with every product
+    normalised — to reach five numbers that live on the base `store` row. It is
+    called by `/api/banana` on every request and by `processBotTrading()` on
+    every firing of the every-minute cron, which is how one base price came to
+    be the Worker's largest single CPU cost. See `getStoreSettings`.
+  */
+  const settings = await getStoreSettings();
   const raw = (settings["bananaMarket"] ?? {}) as Record<string, unknown>;
   const d = DEFAULT_MARKET_CONFIG;
 

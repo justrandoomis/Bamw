@@ -1,4 +1,4 @@
-import { getStore } from "./db.server";
+import { getStoreSettings } from "./db.server";
 
 /**
  * USD → IQD conversion, read from the admin-configured store setting.
@@ -25,8 +25,13 @@ export function normalizeUsdIqdRate(value: unknown): number {
 }
 
 export async function getUsdIqdRate(): Promise<number> {
-  const store = await getStore();
-  return normalizeUsdIqdRate(store.settings?.["usdExchangeRate"]);
+  /*
+    One number, off the base `store` row. Reading it through `getStore()` meant
+    parsing the whole catalogue and normalising every product first — which is
+    most of the 162 ms `/api/exchange-rates` was measured at.
+  */
+  const settings = await getStoreSettings();
+  return normalizeUsdIqdRate(settings["usdExchangeRate"]);
 }
 
 /** Convert a USD amount to whole IQD. Rounded down so a rate change can never overpay. */

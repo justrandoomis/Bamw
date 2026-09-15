@@ -78,21 +78,60 @@ export default {
     await handleQueueBatch(batch, env);
   },
 
-  async scheduled(_event: any, env: any) {
+  /**
+   * Two schedules, and until now the handler could not tell them apart.
+   *
+   * `wrangler.jsonc` registers a minute trigger and a half-hour one, and this
+   * took `_event` — ignored — so every task ran on both. The half-hourly
+   * trigger was decoration, and the note above
+   * `processDigitalDeliveryMaintenance` ("keep this separate ... so the
+   * one-hour delivery deadline does not make every heavier scheduled scan run
+   * once per minute") described an intention the code did not carry out.
+   *
+   * Cloudflare's record of what that cost: over six hours the minute firing
+   * ended **`exceededCpu` 119 times** against 15 that finished. An isolate
+   * killed for exceeding CPU takes the requests sharing it with it, which is
+   * why `/api/data` and the catalogue import were being answered 503 by a shop
+   * whose own code was fine.
+   *
+   * What runs every minute is what a minute means something to: the chat
+   * queue's five-minute reminders, the one-hour delivery deadline, and the
+   * market bots, whose cadence is a commercial decision and not mine to
+   * change. What moves to the half hour is the work whose deadline is a day —
+   * and `processReleaseAlerts` above all, because it is the one that still
+   * reads the whole catalogue, and it now does so twice an hour instead of
+   * sixty times.
+   *
+   * Cron delivery is at-least-once and every task below is idempotent, so a
+   * doubled firing is not a doubled payout — see the notes on each.
+   */
+  async scheduled(event: any, env: any) {
     publishEnv(env);
-    const results = await Promise.allSettled([
-      processAutoScheduledTasks(),
-      processDigitalDeliveryMaintenance(),
-      processBotTrading(),
-      processReleaseAlerts(),
-      processHeldReferralRewards(),
-      // Sweep the assistant's expired conversations. Bounded per run, and
-      // it judges each row with the same function the UI filters by.
-      processExpiredBotThreads(),
-    ]);
+    const cron = String(event?.cron ?? "");
+    /*
+      An unrecognised cron runs the minute work rather than nothing. A
+      schedule added later and forgotten here should be too eager, not silent.
+    */
+    const halfHourly = cron.startsWith("*/30");
+
+    const tasks = halfHourly
+      ? [
+          processReleaseAlerts(),
+          processHeldReferralRewards(),
+          // Sweep the assistant's expired conversations. Bounded per run, and
+          // it judges each row with the same function the UI filters by.
+          processExpiredBotThreads(),
+        ]
+      : [
+          processAutoScheduledTasks(),
+          processDigitalDeliveryMaintenance(),
+          processBotTrading(),
+        ];
+
+    const results = await Promise.allSettled(tasks);
     for (const result of results) {
       if (result.status === "rejected") {
-        console.error("[worker:scheduled_error]", result.reason);
+        console.error("[worker:scheduled_error]", cron, result.reason);
       }
     }
   },

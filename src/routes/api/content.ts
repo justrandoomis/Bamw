@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-import { createAuditLog, getStore, updateStore } from "@/lib/db.server";
+import { createAuditLog, getStoreMeta, updateStore } from "@/lib/db.server";
 import { body, guard, json } from "@/lib/http.server";
 import { requireAdmin } from "@/lib/session.server";
 import { mergeContent, type ContentDoc } from "@/lib/content";
@@ -44,7 +44,8 @@ export const Route = createFileRoute("/api/content")({
     handlers: {
       GET: async () =>
         guard(async () => {
-          const store = (await getStore()) as StoreDoc & { content?: unknown };
+          /* The page copy only — see the note in `content.functions.ts`. */
+          const store = (await getStoreMeta()) as StoreDoc & { content?: unknown };
           return json(mergeContent(store.content), {
             headers: { "cache-control": "public, max-age=30, stale-while-revalidate=300" },
           });

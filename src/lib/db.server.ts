@@ -1172,6 +1172,34 @@ export async function getStoreMeta(): Promise<StoreDoc> {
   return storeMetaInFlight;
 }
 
+/**
+ * The shop's settings, without reading the shop's catalogue.
+ *
+ * `settings` lives on the base `store` row — it is not one of `HEAVY_SECTIONS`
+ * — so reading it never needed the products, and yet the two callers that want
+ * it most both went through `getStore()`.
+ *
+ * What that cost, measured from Cloudflare's own record over six hours:
+ * `getMarketConfig()` reads five numbers out of `settings.bananaMarket`, and
+ * `processBotTrading()` calls it on **every firing of the every-minute cron**.
+ * Each of those calls read 3.8 MB of catalogue chunks, parsed them, and ran
+ * `normalizeProductRecord` over 876 products — to find a base price. The cron
+ * ended `exceededCpu` **119 times** in that window against 15 that finished,
+ * and an isolate killed for exceeding CPU takes the requests sharing it down
+ * too: that is why `/api/data` and the catalogue import were being answered
+ * 503 by a shop whose own code was fine.
+ *
+ * `getUsdIqdRate()` did the same for one number.
+ *
+ * Staleness is the same bound `getStore()` already lives with — one minute, and
+ * `invalidateStoreCache()` clears this snapshot with the other.
+ */
+export async function getStoreSettings(): Promise<Record<string, unknown>> {
+  const meta = await getStoreMeta();
+  const settings = (meta.settings ?? {}) as Record<string, unknown>;
+  return settings;
+}
+
 export async function getStore(): Promise<StoreDoc> {
   const now = Date.now();
   // Captured because the awaits below mean the module-level cache could be
@@ -1305,6 +1333,22 @@ export async function updateStore(mutate: (current: StoreDoc) => StoreDoc | void
   }
 
   storeCache = { doc: next, at: Date.now() };
+  /*
+    The metadata snapshot is a projection of the rows just rewritten, so it has
+    to move with them.
+
+    `invalidateStoreCache()` says as much — "a write that invalidates one has to
+    invalidate the other or the two disagree" — but this line repoints the
+    catalogue cache without going through it, so `storeMetaCache` kept whatever
+    it last read. That was invisible while nothing read settings through the
+    metadata path; the moment `getMarketConfig()` did, an admin who saved a
+    banana base price of 0.31 read back 0.24 for the next minute. There is a
+    test for exactly that, and it failed.
+
+    Cleared rather than repointed: one query on the next read is a cheaper way
+    to be right than a second place that has to know what `skipProducts` omits.
+  */
+  invalidateStoreMetaCache();
 
   // Notification: Product Price Change.
   // Collect the changes first: the previous version called getUsers() — a full
