@@ -164,6 +164,38 @@ describe("the bootstrap a schema bump runs", () => {
     ).toBe(true);
   });
 
+  it("widens a version-25 product index before the listing reads bare_listing", async () => {
+    /*
+      The same fault as the test above, one release later, and it very nearly
+      shipped: `bare_listing` was added to `SCHEMA_PATCHES` while
+      `RUNTIME_SCHEMA_VERSION` stayed at 25 — which is the number already
+      stamped in production. `ensureSchema()` returns at the stamp, the ALTER
+      never runs, and `/api/admin/products` fails on its SELECT with "no such
+      column: bare_listing". The chip's `SUM(bare_listing)` aggregate and its
+      `bare_listing = 1` predicate go with it, so the admin products table
+      stops answering entirely.
+
+      Adding a column to that list and moving this number are one change. This
+      test is what says so out loud.
+    */
+    const { trips, columnsOf, db } = fakeD1(() => false, {
+      installedVersion: 25,
+      columns: {
+        app_schema_meta: ["key", "value"],
+        product_index: ["id", "title", "title_en", "title_ar", "sort_name", "sort_name_ar"],
+      },
+    });
+    const mod = await loadWith(db);
+    await mod.ensureSchema();
+
+    expect(columnsOf.get("product_index")).toEqual(expect.arrayContaining(["bare_listing"]));
+    expect(
+      trips
+        .flatMap((trip) => trip.sql)
+        .some((sql) => /ALTER TABLE product_index ADD COLUMN bare_listing/i.test(sql)),
+    ).toBe(true);
+  });
+
   it("writes the version stamp before the housekeeping, not after", async () => {
     /*
       The ordering IS the fix. Between "the schema is correct" and "the
