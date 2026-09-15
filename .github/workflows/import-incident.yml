@@ -1,0 +1,65 @@
+# Why the catalogue import stopped, and why /api/admin/store answers 503.
+#
+# READ ONLY. The script it runs issues SELECTs and unauthenticated GETs; it
+# deploys nothing and applies no migration. Delete this file once the incident
+# is closed.
+name: Import incident (read-only)
+
+on:
+  workflow_dispatch:
+    inputs:
+      hours:
+        description: "How far back to read the runtime's request outcomes"
+        type: string
+        default: "24"
+  # Runs when the diagnostic itself is pushed to the incident branch, so the
+  # report is available without waiting for a merge. Nothing else triggers it.
+  push:
+    branches: [claude/gaming-platform-issues-keb1be]
+    paths:
+      - .github/workflows/import-incident.yml
+      - scripts/import-incident-diagnose.mjs
+
+permissions:
+  contents: read
+
+concurrency:
+  group: import-incident
+  cancel-in-progress: true
+
+jobs:
+  diagnose:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm install -g npm@11.19.1
+      - run: npm ci --no-audit --no-fund
+      - name: Mask identifiers
+        env:
+          ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          DATABASE_ID: ${{ secrets.CLOUDFLARE_D1_DATABASE_ID }}
+        run: |
+          echo "::add-mask::$ACCOUNT_ID"
+          echo "::add-mask::$DATABASE_ID"
+      - name: Diagnose
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          CLOUDFLARE_D1_DATABASE_ID: ${{ secrets.CLOUDFLARE_D1_DATABASE_ID }}
+          D1_DATABASE_ID: ${{ secrets.CLOUDFLARE_D1_DATABASE_ID }}
+          INCIDENT_HOURS: ${{ inputs.hours || '24' }}
+        run: node scripts/import-incident-diagnose.mjs
+      - name: Upload
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: import-incident
+          path: import-incident.md
+          if-no-files-found: warn
