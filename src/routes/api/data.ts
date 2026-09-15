@@ -298,6 +298,60 @@ export const Route = createFileRoute("/api/data")({
             ? await getAdminAvailabilityConfig()
             : undefined;
 
+          /*
+            The validator first, and the catalogue only if it is needed.
+
+            The ETag used to be computed from the serialised payload — which
+            means a revalidation did every expensive thing a fresh response
+            does (read 3.8 MB of chunks, parse them, normalise 876 products,
+            serialise the lot) and then threw the body away and answered 304.
+            Measured against production: a conditional request took **399 ms to
+            return 0 bytes**, and this route was the Worker's single largest CPU
+            cost — 33 seconds of it over six hours, p50 505 ms, and eight
+            invocations killed with `exceededCpu`.
+
+            Everything the response depends on is cheap to read:
+
+            - `store_rev`, one indexed read of a one-row table, written by
+              `persistStore` inside the same transaction as the catalogue. It
+              moves on every mutation by construction, which is the property the
+              old comment wanted the payload hash for and did not need it to get.
+            - the admin's availability, already read above;
+            - the shape of the query, and whether the viewer is an admin, since
+              those pick which payload is built.
+
+            So the validator is built from those, compared, and a match answers
+            304 before `getStore()` is ever called.
+          */
+          const catalogVersion = await getCatalogVersion();
+          const shape = [
+            catalogVersion,
+            slim ? "slim" : "full",
+            page,
+            limit,
+            category ?? "",
+            viewer?.isAdmin ? "admin" : "public",
+            JSON.stringify(availability ?? null),
+            JSON.stringify(availabilityConfig ?? null),
+          ].join(":");
+          const etag = etagFor(shape);
+
+          if (request.headers.get("if-none-match") === etag) {
+            return new Response(null, {
+              status: 304,
+              headers: {
+                etag,
+                "cache-control": viewer?.isAdmin
+                  ? "private, no-store"
+                  : "public, max-age=0, s-maxage=5, must-revalidate",
+                "x-catalog-version": String(catalogVersion),
+                "x-cache-status": "revalidated",
+                "server-timing": `validator;dur=${Date.now() - startTime}`,
+                vary: "cookie",
+              },
+            });
+          }
+
           const store = await getStore();
           const duration = Date.now() - startTime;
 
@@ -349,17 +403,6 @@ export const Route = createFileRoute("/api/data")({
             payload = publicPayload(store, availability, slim, paginationOpts);
           }
           /*
-            The catalogue version rides on the response so a client can tell a
-            changed catalogue from an unchanged one, and so stale data can be
-            traced to a layer. It is `store_rev` — written by `persistStore` in
-            the same transaction as the catalogue, so every isolate and every
-            edge agrees on it. Folding it into the ETag means a mutation always
-            produces a new validator, even in the rare case where the serialised
-            payload is byte-identical.
-          */
-          const catalogVersion = await getCatalogVersion();
-          const etag = etagFor(`${catalogVersion}:${payload}`);
-          /*
             Only a catalogue with something in it is worth holding at the edge.
             A shop with no products has no traffic to protect, and if emptiness
             ever gets here by a route this file does not know about, five
@@ -389,10 +432,6 @@ export const Route = createFileRoute("/api/data")({
             "x-data-source": viewer?.isAdmin ? "d1:admin" : "d1:public",
             vary: "cookie",
           };
-          if (request.headers.get("if-none-match") === etag) {
-            headers["x-cache-status"] = "revalidated";
-            return new Response(null, { status: 304, headers });
-          }
           headers["x-cache-status"] = "fresh";
           return new Response(payload, { headers });
         }),

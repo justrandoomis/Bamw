@@ -8,8 +8,17 @@ import { mergeContent, type ContentDoc } from "./content";
  */
 export const loadSiteContent = createServerFn({ method: "GET" }).handler(
   async (): Promise<ContentDoc> => {
-    const { getStore } = await import("./db.server");
-    const store = (await getStore()) as { content?: unknown };
+    /*
+      The page copy, without the catalogue behind it.
+
+      `content` is a heavy section but it is not the products, and
+      `getStoreMeta()` reads everything except those. Through `getStore()` this
+      loader parsed 3.8 MB of catalogue and normalised every product to render
+      /policy and /account_guides — pages that mention no product at all, and
+      which were measured at 590 ms and 514 ms of CPU apiece.
+    */
+    const { getStoreMeta } = await import("./db.server");
+    const store = (await getStoreMeta()) as { content?: unknown };
     return mergeContent(store?.content);
   },
 );
