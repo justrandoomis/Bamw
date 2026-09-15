@@ -93,3 +93,7 @@ production-proof.md
 .store-media-repair/
 import-incident.md
 store-media-repair.md
+
+# The performance probe’s bundle and report.
+.perf-probe-bundle.mjs
+perf-probe.md
