@@ -239,14 +239,24 @@ if (String(process.env.CONSOLE_OVERVIEW || "true").toLowerCase() === "true") {
       }
       if (Array.isArray(products)) {
         const hidden = products.filter((p) => p?.hidden === true).length;
-        const bare = products.filter(
-          (p) => p?.bare_listing === true || p?.bareListing === true,
-        ).length;
+        const priced = products.filter((p) => Number(p?.price) > 0).length;
+        /*
+          Two stored facts, counted, and nothing derived.
+
+          This printed a "bare listings" count read from `bare_listing` — a
+          field that does not exist. `isBareListing()` decides it, from the
+          price, the image fields and a description floor, and the first report
+          this console produced duly said **0**, which reads like a finding and
+          was an artefact of asking for the wrong key. Re-deriving the rule here
+          would be a second implementation of it, which is how a report starts
+          disagreeing with the shop it describes. So the console counts what is
+          actually in the document and leaves the categories to the app.
+        */
         say(`### Catalogue`);
         say();
         say(`- products: **${products.length.toLocaleString("en-US")}**`);
         say(`- hidden: **${hidden.toLocaleString("en-US")}**`);
-        say(`- bare listings: **${bare.toLocaleString("en-US")}**`);
+        say(`- with a price above zero: **${priced.toLocaleString("en-US")}**`);
         say(
           `- assembled and parsed in **${Date.now() - at} ms** from ${chunks.rows.length} chunks`,
         );

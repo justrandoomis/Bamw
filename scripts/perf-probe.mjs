@@ -87,20 +87,15 @@ async function timed(pathname, headers = {}) {
       age: res.headers.get("age") || "",
       cfCache: res.headers.get("cf-cache-status") || "",
       timing: res.headers.get("server-timing") || "",
-      challenged: (res.headers.get("content-type") || "").includes("text/html") && res.status === 403,
+      challenged:
+        (res.headers.get("content-type") || "").includes("text/html") && res.status === 403,
     };
   } catch (err) {
     return { status: 0, error: String(err).slice(0, 120) };
   }
 }
 
-const ROUTES = [
-  "/api/data?slim=1",
-  "/api/data",
-  "/api/health",
-  "/",
-  "/search?q=zelda",
-];
+const ROUTES = ["/api/data?slim=1", "/api/data", "/api/health", "/", "/search?q=zelda"];
 
 say(`## What each request costs from a runner`);
 say();
@@ -115,9 +110,9 @@ for (const route of ROUTES) {
     continue;
   }
   say(
-    `| \`${route}\` | ${r.status}${r.challenged ? " (challenged)" : ""} | ${r.total} | ${
-      r.bytes.toLocaleString("en-US")
-    } (${kb(r.bytes)}) | ${r.encoding} | ${r.cfCache || "—"} | ${r.cache || "—"} |`,
+    `| \`${route}\` | ${r.status}${r.challenged ? " (challenged)" : ""} | ${r.total} | ${r.bytes.toLocaleString(
+      "en-US",
+    )} (${kb(r.bytes)}) | ${r.encoding} | ${r.cfCache || "—"} | ${r.cache || "—"} |`,
   );
   if (r.timing) say(`|   ↳ server-timing: ${mask(r.timing)} | | | | | | |`);
 }
@@ -135,13 +130,26 @@ say(`| path | status | ms | bytes | conditional (If-None-Match) |`);
 say(`| --- | --- | --- | --- | --- |`);
 for (const route of ["/api/data?slim=1", "/api/data"]) {
   const again = await timed(route);
-  const conditional = first[route]?.etag
-    ? await timed(route, { "if-none-match": first[route].etag })
-    : null;
+  /*
+    The ETag is taken from whichever of the two requests actually answered.
+
+    This read only the first response, and the first request to `?slim=1` is the
+    one the edge is most likely to challenge — a 403 carries no ETag, so the
+    report printed "no ETag offered" about a route that offers one perfectly
+    well. That is the tool inventing a finding out of its own failed request,
+    which is worse than printing nothing: it sent me looking for a caching bug
+    that was not there. The three cases are now distinct, and a challenge says
+    so in its own words.
+  */
+  const etag = again.etag || first[route]?.etag || "";
+  const conditional = etag ? await timed(route, { "if-none-match": etag }) : null;
+  const verdict = conditional
+    ? `${conditional.status} in ${conditional.total} ms, ${(conditional.bytes ?? 0).toLocaleString("en-US")} bytes`
+    : again.challenged || first[route]?.challenged
+      ? "not asked — the edge challenged this request"
+      : "no ETag on either response";
   say(
-    `| \`${route}\` | ${again.status} | ${again.total} | ${(again.bytes ?? 0).toLocaleString("en-US")} | ${
-      conditional ? `${conditional.status} in ${conditional.total} ms, ${(conditional.bytes ?? 0).toLocaleString("en-US")} bytes` : "no ETag offered"
-    } |`,
+    `| \`${route}\` | ${again.status} | ${again.total} | ${(again.bytes ?? 0).toLocaleString("en-US")} | ${verdict} |`,
   );
 }
 say();
@@ -199,8 +207,12 @@ say(`| what | value |`);
 say(`| --- | --- |`);
 say(`| \`store_kv\` rows | ${Number(kv.rows).toLocaleString("en-US")} |`);
 say(`| \`store_kv\` bytes | ${Number(kv.bytes).toLocaleString("en-US")} (${kb(kv.bytes)}) |`);
-say(`| catalogue chunks | ${kv.chunks} — ${Number(kv.chunkBytes).toLocaleString("en-US")} bytes (${kb(kv.chunkBytes)}) |`);
-say(`| per-product overlay rows | ${kv.overlays} — ${Number(kv.overlayBytes ?? 0).toLocaleString("en-US")} bytes |`);
+say(
+  `| catalogue chunks | ${kv.chunks} — ${Number(kv.chunkBytes).toLocaleString("en-US")} bytes (${kb(kv.chunkBytes)}) |`,
+);
+say(
+  `| per-product overlay rows | ${kv.overlays} — ${Number(kv.overlayBytes ?? 0).toLocaleString("en-US")} bytes |`,
+);
 say();
 say(
   `> Every cold isolate that calls \`getStore()\` reads the chunks *and* the overlays, ` +
@@ -216,7 +228,9 @@ const idx = (
        FROM product_index`,
   )
 )[0];
-say(`\`product_index\`: **${Number(idx.n).toLocaleString("en-US")}** rows — ${idx.bare} bare, ${idx.hidden} hidden.`);
+say(
+  `\`product_index\`: **${Number(idx.n).toLocaleString("en-US")}** rows — ${idx.bare} bare, ${idx.hidden} hidden.`,
+);
 say();
 
 /* ------------------------------------------------------------------ */
@@ -253,7 +267,9 @@ const slimBody = await fetch(`${ORIGIN}/api/data?slim=1`, {
   .catch(() => null);
 
 if (!slimBody) {
-  say(`- skipped: the slim payload could not be fetched (the edge challenges this runner sometimes).`);
+  say(
+    `- skipped: the slim payload could not be fetched (the edge challenges this runner sometimes).`,
+  );
 } else {
   const searchBundle = path.resolve(".perf-probe-search.mjs");
   await build({
@@ -287,7 +303,9 @@ if (!slimBody) {
     return times[Math.floor(runs / 2)];
   };
 
-  say(`Against the **real** payload: ${products.length.toLocaleString("en-US")} products, ${kb(body.length)}.`);
+  say(
+    `Against the **real** payload: ${products.length.toLocaleString("en-US")} products, ${kb(body.length)}.`,
+  );
   say();
   say(`| step | ms on a runner |`);
   say(`| --- | --- |`);
@@ -394,7 +412,9 @@ for (let w = 0; w < WINDOWS; w++) {
     }
     if (runtime?.eventType === "scheduled") route = `cron ${runtime?.event?.cron ?? ""}`;
     /* Asset and image paths carry a product id; the family is what matters. */
-    route = route.replace(/^\/api\/files\/.*/, "/api/files/…").replace(/^\/product\/.*/, "/product/…");
+    route = route
+      .replace(/^\/api\/files\/.*/, "/api/files/…")
+      .replace(/^\/product\/.*/, "/product/…");
     route = route || "(no path)";
 
     const cpu = Number(runtime?.cpuTimeMs ?? NaN);
@@ -418,7 +438,8 @@ if (refused) {
 say(`${read.toLocaleString("en-US")} invocations sampled.`);
 say();
 
-const pct = (sorted, p) => sorted[Math.min(sorted.length - 1, Math.floor((sorted.length * p) / 100))];
+const pct = (sorted, p) =>
+  sorted[Math.min(sorted.length - 1, Math.floor((sorted.length * p) / 100))];
 const rows = [...perRoute.entries()]
   .map(([route, cpus]) => {
     const sorted = cpus.slice().sort((a, b) => a - b);
@@ -438,7 +459,9 @@ say();
 say(`| route | n | p50 ms | p95 ms | max ms | total ms |`);
 say(`| --- | --- | --- | --- | --- | --- |`);
 for (const r of rows.slice(0, 25)) {
-  say(`| \`${mask(r.route)}\` | ${r.n} | ${r.p50} | ${r.p95} | ${r.max} | ${Math.round(r.total)} |`);
+  say(
+    `| \`${mask(r.route)}\` | ${r.n} | ${r.p50} | ${r.p95} | ${r.max} | ${Math.round(r.total)} |`,
+  );
 }
 say();
 say(`> \`total\` is the share of the Worker's whole CPU bill this route is responsible for.`);
