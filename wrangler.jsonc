@@ -36,6 +36,34 @@
   "observability": {
     "enabled": true,
   },
+
+  /*
+    The CPU ceiling, stated rather than inherited.
+
+    Cloudflare documents 30,000 ms as the default for a paid account, for both
+    a fetch handler and a cron under an hour. This Worker had no `limits` block
+    at all, and an absent block does not mean the default is in force: the limit
+    can also be set in the dashboard, where this repository cannot see it, and a
+    legacy Bundled plan caps at 50 ms regardless.
+
+    Something is killing roughly half of every-minute cron firings and nine
+    catalogue-import batches with `exceededCpu`, and the telemetry cannot say
+    what ceiling they hit — killed invocations report ~10 ms of CPU while
+    successful ones on the same Worker run at 65, 191 and 461 ms, so the
+    recorded figure is not the limit.
+
+    Writing the documented default here is an experiment with a prediction, not
+    a fix dressed up as one. If an override below the default was in force, this
+    restores it and the kills stop. If they continue, the ceiling was never the
+    constraint and the cause is isolate startup or the work itself — which is
+    worth knowing for certain, and costs one deploy to learn.
+
+    It cannot affect any data. The only thing it changes is how long a request
+    is allowed to compute before Cloudflare cuts it off.
+  */
+  "limits": {
+    "cpu_ms": 30000,
+  },
   "d1_databases": [
     {
       "binding": "bananto",

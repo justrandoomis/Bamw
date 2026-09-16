@@ -424,20 +424,23 @@ for (let w = 0; w < WINDOWS; w++) {
       const key = `${outcome} · ${route}`;
       kills.set(key, (kills.get(key) ?? 0) + 1);
       /*
-        How much CPU a killed invocation had spent when it was killed.
+        How much CPU a killed invocation had recorded when it died.
 
-        This counted the kills and dropped this number, which is why the report
-        could say `exceededCpu` thirty-one times against twenty that finished
-        and still not say what ceiling was being hit. A killed invocation's
-        reported CPU is approximately that ceiling, and the ceiling is the
-        whole question: Cloudflare's documented default for a paid account is
-        thirty seconds, but a dashboard-set `cpu_ms` overrides it and is
-        invisible to this repository, and a legacy Bundled plan caps at fifty
-        milliseconds.
+        This was added expecting it to be, approximately, the ceiling. It is
+        not, and the first run said so: killed invocations report a p50 of
+        **10 ms** while successful ones on the same Worker run at 65, 191, 353
+        and 461 ms. A number smaller than the successes cannot be the limit
+        they are under.
 
-        Read it against the successful column. If the successes top out just
-        below where the kills sit, the ceiling is there — and no amount of
-        shaving tens of milliseconds off a handler will help.
+        What it appears to be is the CPU charged to the *handler*, which for a
+        kill during isolate startup is almost nothing. The strongest evidence
+        is the row this produced for a static `.webp`: an asset served from the
+        ASSETS binding does no handler work at all, and it was killed for
+        exceeding CPU with 10 ms recorded.
+
+        So the column stays, because it is evidence — but it is evidence about
+        where the CPU is NOT, and the report says that rather than claiming a
+        ceiling it cannot see.
       */
       if (Number.isFinite(cpu)) {
         if (!killCpu.has(key)) killCpu.set(key, []);
@@ -505,10 +508,11 @@ if (kills.size === 0) {
   }
   say();
   say(
-    `> The CPU a killed invocation had spent when it was killed — approximately ` +
-      `the ceiling it hit. Compare it with the successful column above: if the ` +
-      `successes stop just short of where these sit, that is the limit, and it is ` +
-      `not the thirty seconds Cloudflare documents as the paid default.`,
+    `> CPU recorded against a killed invocation. This is **not** the ceiling: ` +
+      `these sit well *below* the successful figures above, so what the limit ` +
+      `is remains unmeasured. A kill at ~10 ms on a route that does no handler ` +
+      `work — a static asset, say — points at isolate startup rather than at ` +
+      `anything in this codebase's request path.`,
   );
 }
 say();
