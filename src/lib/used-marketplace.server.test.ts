@@ -85,7 +85,14 @@ let storeSettings: Record<string, unknown> = {};
 function mockDbServer() {
   vi.doMock("./db.server", () => ({
     randomId: (prefix: string) => `${prefix}_${(++sequence).toString(36).padStart(6, "0")}`,
+    /*
+      `getUsedConfig` reads settings without the catalogue attached — the full
+      `getStore()` parsed 3.8 MB of products to reach one key, on a path the
+      every-minute cron takes for each listing it retires. Both are here so the
+      fixture keeps answering whichever the code under test asks for.
+    */
     getStore: async () => ({ settings: storeSettings }),
+    getStoreSettings: async () => storeSettings,
     updateStore: async (fn: (store: any) => any) => {
       const next = fn({ settings: storeSettings });
       storeSettings = next.settings;

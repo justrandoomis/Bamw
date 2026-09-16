@@ -502,9 +502,9 @@ export async function redeemReward(userId: string, rewardId: string) {
 
 // Admin functions
 export async function getAdminBananaData() {
-  const { getStore } = await import("./db.server");
-  const store = await getStore();
-  const s = (store.settings ?? {}) as Record<string, unknown>;
+  /* Settings only — the admin panel has no use for the catalogue here. */
+  const { getStoreSettings } = await import("./db.server");
+  const s = await getStoreSettings();
   const marketConfig = await getMarketConfig();
 
   const rewards = (
