@@ -61,6 +61,26 @@ export interface CatalogueRow {
   offlinePriceIqd: number;
   /** Whether the game can be played in English. */
   englishSupport: boolean;
+
+  /*
+    Everything below arrived in a later sheet and is optional throughout.
+
+    An empty string means "the file says nothing about this", which is not the
+    same as "the file says it is empty" — and the difference decides whether a
+    refresh writes over something the shop already knows. Nothing here is ever
+    written when blank.
+  */
+  /** A picture of the game. The shop reads `coverImage` first of seven fields. */
+  coverUrl: string;
+  /** The eShop page the row was matched against. */
+  storeLink: string;
+  /** Nintendo's own product code. */
+  nsuid: string;
+  publisher: string;
+  /** Comma-separated, as the sheet writes them. */
+  languages: string;
+  /** The official title the supplier's name was matched to. */
+  matchedTitle: string;
 }
 
 export interface CatalogueParseIssue {
@@ -97,6 +117,20 @@ const COLUMN_ALIASES: Record<SheetColumn, string[]> = {
     "sellingprice",
   ],
   englishSupport: ["englishsupport", "english", "supportsenglish", "englang"],
+  /*
+    The columns a later sheet grew, all optional.
+
+    A file without them is still a valid file — the first fifteen hundred rows
+    arrived with none of these — so none of them can refuse a row. What they
+    carry is the artwork and the provenance a bare listing has been missing:
+    696 of the products in the shop have a name and a price and nothing else.
+  */
+  coverUrl: ["coverurl", "cover", "image", "imageurl", "coverimage", "boxart"],
+  storeLink: ["storelink", "store", "url", "link", "productlink", "eshoplink"],
+  nsuid: ["nsuid", "nsuids", "productcode"],
+  publisher: ["publisher", "developer", "studio"],
+  languages: ["languages", "language", "langs", "supportedlanguages"],
+  matchedTitle: ["matchedtitle", "officialtitle", "canonicaltitle"],
 };
 
 function headerKey(value: string): string {
@@ -257,6 +291,12 @@ export function parseCatalogueCsv(text: string): CatalogueParseResult {
     platform: columnOf("platform"),
     offlinePriceIqd: columnOf("offlinePriceIqd"),
     englishSupport: columnOf("englishSupport"),
+    coverUrl: columnOf("coverUrl"),
+    storeLink: columnOf("storeLink"),
+    nsuid: columnOf("nsuid"),
+    publisher: columnOf("publisher"),
+    languages: columnOf("languages"),
+    matchedTitle: columnOf("matchedTitle"),
   };
 
   const issues: CatalogueParseIssue[] = [];
@@ -356,6 +396,17 @@ export function parseCatalogueCsv(text: string): CatalogueParseResult {
       platform,
       offlinePriceIqd: price,
       englishSupport: readEnglishSupport(cell(record, index.englishSupport)),
+      /*
+        `cell()` returns "" for a column the file does not have and for a cell
+        the file left blank alike. Both mean the same thing to every reader
+        below: say nothing, write nothing.
+      */
+      coverUrl: cell(record, index.coverUrl),
+      storeLink: cell(record, index.storeLink),
+      nsuid: cell(record, index.nsuid),
+      publisher: cell(record, index.publisher),
+      languages: cell(record, index.languages),
+      matchedTitle: cell(record, index.matchedTitle),
     });
   }
 
@@ -510,7 +561,7 @@ export interface BuiltListing {
  * The comment at the top of this file claimed the update "touches nothing
  * else" while the code wrote all of them, which is worse than either.
  */
-export type ImportMode = "create-only" | "refresh-prices";
+export type ImportMode = "create-only" | "refresh-prices" | "refresh-content";
 
 export interface BuildOptions {
   categoryId: string;
@@ -546,6 +597,52 @@ export function buildListing(row: CatalogueRow, options: BuildOptions): BuildOut
         reason: "موجود مسبقاً كمنتج أُنشئ يدوياً — لم يُلمس",
       };
     }
+    /*
+      Content, and not a penny of it.
+
+      The owner's second sheet added artwork and provenance for games already
+      on sale, and asked for exactly one thing: bring those across, leave the
+      product alone "من حيث التكلفه والبيع" — the cost, the selling price, and
+      everything of that kind.
+
+      So this branch names the fields it writes, one at a time, onto a copy of
+      the stored product. It is deliberately not a spread of a freshly built
+      record over the existing one: that is the shape that carried visibility,
+      stock and options along with the price in the first draft of the refresh
+      below, and it would do it again here.
+
+      Every field is written only when the sheet actually says something. A
+      blank cell and an absent column both arrive as "" and both mean the sheet
+      is silent — and silence must never overwrite a title somebody corrected
+      by hand or a cover somebody uploaded.
+    */
+    if (options.mode === "refresh-content") {
+      const patch: Record<string, unknown> = {};
+      if (row.englishName) {
+        patch["title"] = row.englishName;
+        patch["titleEn"] = row.englishName;
+      }
+      /*
+        `coverImage` is the first of the seven fields `hasUsableImage` reads,
+        so writing it is what moves a listing out of «بانتظار التفاصيل».
+      */
+      if (row.coverUrl) patch["coverImage"] = row.coverUrl;
+      if (row.storeLink) patch["officialStoreUrl"] = row.storeLink;
+      if (row.nsuid) patch["nsuid"] = row.nsuid;
+      if (row.publisher) patch["publisher"] = row.publisher;
+      if (row.languages) patch["languages"] = row.languages;
+      if (row.matchedTitle) patch["canonicalTitle"] = row.matchedTitle;
+
+      if (Object.keys(patch).length === 0) {
+        return { action: "skip", reason: "الملف لا يضيف شيئاً لهذا المنتج" };
+      }
+      return {
+        action: "update",
+        product: { ...existing, ...patch, updatedAt: new Date().toISOString() },
+        chineseName: row.chineseName,
+      };
+    }
+
     if (options.mode !== "refresh-prices") {
       return { action: "skip", reason: "موجود مسبقاً — لم يتغيّر شيء" };
     }
@@ -621,6 +718,20 @@ export function buildListing(row: CatalogueRow, options: BuildOptions): BuildOut
     isActive: true,
     isHidden: false,
     status: "active",
+
+    /*
+      A new listing arrives with whatever the sheet knows about it.
+
+      The first run of this import had none of these columns, which is why 696
+      of the products in the shop are a name and a price and nothing else. A
+      row that carries a cover should not produce another one.
+    */
+    ...(row.coverUrl ? { coverImage: row.coverUrl } : {}),
+    ...(row.storeLink ? { officialStoreUrl: row.storeLink } : {}),
+    ...(row.nsuid ? { nsuid: row.nsuid } : {}),
+    ...(row.publisher ? { publisher: row.publisher } : {}),
+    ...(row.languages ? { languages: row.languages } : {}),
+    ...(row.matchedTitle ? { canonicalTitle: row.matchedTitle } : {}),
 
     /** Shown to the customer: 17 of these titles have no English in them. */
     englishSupport: row.englishSupport,

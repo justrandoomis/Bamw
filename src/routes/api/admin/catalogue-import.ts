@@ -167,7 +167,9 @@ export const Route = createFileRoute("/api/admin/catalogue-import")({
             listings this importer created — see `buildListing`.
           */
           const mode: ImportMode =
-            payload?.mode === "refresh-prices" ? "refresh-prices" : "create-only";
+            payload?.mode === "refresh-prices" || payload?.mode === "refresh-content"
+              ? payload.mode
+              : "create-only";
 
           /*
             Held outside the mutation so the response can report what the

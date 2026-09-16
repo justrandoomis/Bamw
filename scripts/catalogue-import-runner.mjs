@@ -26,12 +26,21 @@
  *
  * ## What it will not do
  *
- * `create-only` is the default and `--mode refresh-prices` is the only way past
- * it. In create-only, `buildListing` returns `action: "skip"` for every row that
- * matches an existing product, so no price, cost, stock level, hidden flag,
- * option, type, trade-in value or display order of anything already in the shop
- * can be touched. New products are created hidden, exactly as the route creates
- * them.
+ * `create-only` is the default, and it returns `action: "skip"` for every row
+ * matching an existing product — so nothing already in the shop can be touched
+ * at all. Two modes go further, and each is a separate, named decision:
+ *
+ *   - `refresh-content` writes the title, the cover, the publisher, the
+ *     languages, the store link and the NSUID, and provably nothing else. It
+ *     is what the owner's second sheet is for: bring the artwork across, leave
+ *     the product «نفسه من حيث التكلفه والبيع».
+ *   - `refresh-prices` writes the price and the cost, and nothing else.
+ *
+ * Neither touches stock, visibility, options, types, trade-in values or
+ * ordering, and a blank cell never overwrites anything — see
+ * `-a-content-refresh-cannot-move-money.test.ts`, which compares the whole
+ * stored product before and after and fails on any field outside the allowed
+ * set.
  *
  * Dry run is the default. `--apply` is a separate, deliberate word.
  *
@@ -87,8 +96,9 @@ say();
 say(`Run at ${new Date().toISOString()} — mode: **${APPLY ? "APPLY" : "dry run"}**, ${MODE}.`);
 say();
 
-if (MODE !== "create-only" && MODE !== "refresh-prices") {
-  say(`**Refused** — \`--mode\` must be \`create-only\` or \`refresh-prices\`.`);
+const MODES = ["create-only", "refresh-prices", "refresh-content"];
+if (!MODES.includes(MODE)) {
+  say(`**Refused** — \`--mode\` must be one of ${MODES.map((m) => `\`${m}\``).join(", ")}.`);
   finish(1);
 }
 if (!existsSync(FILE)) {

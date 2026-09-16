@@ -22,9 +22,9 @@ on:
         type: string
         default: "import-sources/catalogue.csv"
       mode:
-        description: "create-only leaves every existing product untouched"
+        description: "create-only: touch nothing existing · refresh-content: title+cover only, never money · refresh-prices: price+cost only"
         type: choice
-        options: [create-only, refresh-prices]
+        options: [create-only, refresh-content, refresh-prices]
         default: create-only
       apply:
         description: "Write. Leave off to see what it would do."
