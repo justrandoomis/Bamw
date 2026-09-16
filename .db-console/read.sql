@@ -2,39 +2,26 @@
 --
 -- READ ONLY. A push can never apply a write from here — the guard sees apply
 -- false on this path and refuses anything that is not SELECT, WITH, EXPLAIN or
--- PRAGMA. Writes go in `.db-console/apply.sql` under a run-once token, and are
--- run before these, so these describe the database that write leaves behind.
+-- PRAGMA.
+
+-- 1. Did the catalogue import land, and is the search index in step with it?
 --
--- Every statement ends its own line with a semicolon; that is how they are
--- separated.
-
--- 1. The two indexes the console applied. Asked again after the deploy,
---    because an index that exists and an index the planner chooses are not the
---    same claim.
-EXPLAIN QUERY PLAN
-SELECT id FROM product_reviews
- WHERE status = 'pending' AND review_due_at <= '2026-09-15T00:00:00.000Z' AND is_auto_review = 0;
-
-EXPLAIN QUERY PLAN
-UPDATE disc_trades SET status = 'cancelled', updated_at = '2026-09-15T00:00:00.000Z'
- WHERE status = 'pending' AND created_at <= '2026-09-08T00:00:00.000Z';
-
--- 2. The rate limiter's sweep.
---
--- This answered `SCAN security_rate_limits` before the deploy, and correctly
--- so: its index is created by `ensureTable()` at runtime, and that code was
--- still on the branch. After the deploy the first limited request creates it,
--- so `SEARCH … USING INDEX` here is the proof it shipped and ran — and a
--- second `SCAN` would mean the deploy did not reach this path.
-EXPLAIN QUERY PLAN
-SELECT key FROM security_rate_limits WHERE expires_at < 1757000000;
-
-SELECT name FROM sqlite_master
- WHERE type = 'index' AND tbl_name IN ('security_rate_limits', 'product_reviews', 'disc_trades')
- ORDER BY tbl_name, name;
-
--- 3. The write ledger. One row, one token, applied once.
-SELECT id, applied_at FROM console_runs ORDER BY applied_at DESC;
-
--- 4. The catalogue and the search index that has to describe it.
+-- The runner reported 1,275 -> 1,714 products, 439 created and 1,085 updated.
+-- `product_index` is a projection of the catalogue written in the same
+-- transaction, so a number that disagrees here means the projection fell
+-- behind and the storefront search would not find the new games.
 SELECT count(*) AS indexed FROM product_index;
+
+SELECT count(*) AS with_cover FROM product_index
+ WHERE bare = 0;
+
+-- 2. The catalogue document itself: chunk count and bytes after the import.
+SELECT count(*) AS total_rows,
+       SUM(CASE WHEN key = 'store:products' OR key LIKE 'store:products#%' THEN 1 ELSE 0 END) AS chunks,
+       SUM(CASE WHEN key LIKE 'store:product:%' THEN 1 ELSE 0 END) AS overlays,
+       SUM(LENGTH(value)) AS bytes
+  FROM store_kv;
+
+-- 3. The write ledger. The import token should be here exactly once, which is
+--    what stops a later push repeating a 1,524-row write.
+SELECT id, applied_at FROM console_runs ORDER BY applied_at DESC;
