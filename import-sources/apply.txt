@@ -1,4 +1,4 @@
-# The authorisation for a single import write. ARMED.
+# The authorisation for a single import write. SPENT — armed once, used once.
 #
 # This file is read by `scripts/catalogue-import-runner.mjs`. The first line
 # that is not blank and not a comment is a token; it is claimed in the
@@ -7,8 +7,9 @@
 # authorises exactly one run and then spends itself — a later push finds the
 # token already recorded and stays a dry run.
 #
-# The token at the bottom is live: the owner authorised this run in as many
-# words — «نفذ وانشر». It writes once and then spends itself.
+# The token below has been claimed in `console_runs` and cannot write again;
+# it is commented out as well so the file reads the way it behaves. The owner
+# authorised it in as many words — «نفذ وانشر» — and it ran at 17:20–17:32Z.
 #
 # ## What the dry run said this would do, and what was authorised
 #
@@ -27,6 +28,12 @@
 #             a Wii `deBlob` packshot on Densha de GO!!, a Just Dance portrait
 #             on Dance with Devils. Pass `--covers all` to import them anyway.
 #
-# Result if applied: 1,714 products, 548 of them with verified artwork.
+# And what it actually did, from the run's own table: all sixteen batches
+# succeeded, the product count rose monotonically with no batch losing a row,
+# 439 created and 1,085 updated, 1,275 -> 1,714 products. The dry run's figures
+# and the write's figures agree exactly.
+#
+# To authorise another run, write a NEW token below. Re-using this one does
+# nothing: the claim is already recorded.
 
-2026-09-16-catalogue-content-refresh
+# 2026-09-16-catalogue-content-refresh  (spent 2026-09-16T17:20Z)

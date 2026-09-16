@@ -105,7 +105,7 @@ function readCsv(text) {
   return rows;
 }
 
-const table = readCsv(readFileSync(FILE, "utf8").replace(/^﻿/, ""));
+const table = readCsv(readFileSync(FILE, "utf8").replace(/^\uFEFF/, ""));
 if (table.length < 2) {
   say(`**The file has no rows.**`);
   finish(1);
