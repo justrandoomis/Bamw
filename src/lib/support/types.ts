@@ -6,6 +6,8 @@
  * the database, never calls an external API and never sees admin-only data.
  */
 
+import type { ProductKind } from "../types";
+
 export type SupportLang = "ar" | "en" | "ku" | "tr";
 
 export type Confidence = "high" | "medium" | "low";
@@ -37,18 +39,12 @@ export interface SafeOrderItem {
   id: string;
   productId: string;
   title: string;
-  kind:
-    | "account"
-    | "offline_account"
-    | "online_account"
-    | "physical"
-    | "accessory"
-    | "hardware"
-    | "device"
-    | "collectible"
-    | "preorder"
-    | "digital_code"
-    | "bundle";
+  /*
+    The same union as the catalogue's, by reference rather than by hand. This
+    was a copy of `ProductKind` and the copy went stale the moment a new kind
+    was named — a type error in a file that only passes the value through.
+  */
+  kind: ProductKind;
   quantity: number;
   /** delivered account email — only present once it was sent to this user */
   deliveryEmail?: string;

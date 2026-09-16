@@ -90,6 +90,22 @@ const COVERS = arg("covers", "unique-only");
   that adds it is the reviewable record of who asked for it.
 */
 const APPLY_TOKEN_FILE = arg("apply-token-file", "import-sources/apply.txt");
+/*
+  The supplier names, and only the supplier names.
+
+  The import that published 1,714 games carried a Chinese name for every row
+  and wrote none of them: it handed `d1Batch` `{ sql, binds }` where that
+  function reads `s.params`, so every statement threw before it reached D1 and
+  a bare `catch {}` ate the error. The names have to be carried across on their
+  own now, and this is the narrowest possible way to do it — `decide` resolves
+  which product each row is, `updateStore` is never called, and the only table
+  written is `product_admin_metadata`. No product document is opened.
+
+  It has its own token file and its own ledger prefix so that authorising a
+  name backfill can never be mistaken for authorising a catalogue write.
+*/
+const NAMES_TOKEN_FILE = arg("names-token-file", "import-sources/names-apply.txt");
+const NAMES_ONLY = flag("names-only");
 const OUT = process.env.IMPORT_OUT || "catalogue-import-runner.md";
 
 const SECRETS = [process.env.CLOUDFLARE_API_TOKEN, process.env.CLOUDFLARE_ACCOUNT_ID].filter(
@@ -264,6 +280,109 @@ if (MODE === "create-only" && preview.updated > 0) {
   say(`do. Something has changed in \`buildListing\`; stopping rather than writing.`);
   finish(1);
 }
+/* ------------------------------------------------------------------ */
+/* The supplier names, on their own                                     */
+/* ------------------------------------------------------------------ */
+
+/*
+  Runs before the catalogue-write token is even looked at, and exits. A names
+  backfill and a catalogue import are never the same run.
+*/
+const namesToken =
+  existsSync(NAMES_TOKEN_FILE) &&
+  readFileSync(NAMES_TOKEN_FILE, "utf8")
+    .split("\n")
+    .map((l) => l.trim())
+    .find((l) => l && !l.startsWith("#"));
+
+if (NAMES_ONLY || namesToken) {
+  say(`## Supplier names only`);
+  say();
+  /*
+    `create-only` on purpose. It is the mode that returns `skip` for every row
+    matching a product the shop already has, so `decide` cannot propose a
+    single product change — and the names are collected from the resolved
+    product either way. Even if the write below were wrong, there is no
+    product write for it to be wrong about.
+  */
+  const resolved = app.decide(before, rows, "create-only");
+  const names = resolved.names ?? [];
+  say(`- rows in the file: **${rows.length.toLocaleString("en-US")}**`);
+  say(`- rows that resolve to a product in the shop: **${names.length.toLocaleString("en-US")}**`);
+  say(
+    `- rows the file names but the shop does not have: **${(rows.length - names.length).toLocaleString("en-US")}**`,
+  );
+  say();
+  if (resolved.created || resolved.updated) {
+    say(`**Refused** — create-only proposed ${resolved.created} creates and ${resolved.updated}`);
+    say(`updates. It must propose neither. Stopping rather than writing anything.`);
+    finish(1);
+  }
+
+  let claimed = NAMES_ONLY && APPLY;
+  if (!claimed && namesToken) {
+    await app.d1Run(
+      `CREATE TABLE IF NOT EXISTS console_runs (id TEXT PRIMARY KEY, applied_at INTEGER NOT NULL)`,
+    );
+    const rowsClaimed = await app
+      .d1All(
+        `INSERT INTO console_runs (id, applied_at) VALUES (?, ?)
+           ON CONFLICT(id) DO NOTHING RETURNING id`,
+        `names:${namesToken}`,
+        Math.floor(Date.now() / 1000),
+      )
+      .catch(() => []);
+    if (rowsClaimed.length) {
+      say(`Claimed \`${namesToken}\`. Writing names.`);
+      claimed = true;
+    } else {
+      say(`Token \`${namesToken}\` was used before. This run stays a dry run.`);
+    }
+    say();
+  }
+
+  if (!claimed) {
+    say(`Dry run. Nothing was written.`);
+    finish(0);
+  }
+
+  /*
+    The statements are built by the same function the admin route uses, and the
+    name itself is never printed — it is the supplier's, and private by the
+    owner's instruction. What is printed is how many landed.
+  */
+  const statements = app.supplierNameStatements(names);
+  let written = 0;
+  for (let at = 0; at < statements.length; at += 20) {
+    const group = statements.slice(at, at + 20);
+    try {
+      await app.d1Batch(group.map((st) => ({ sql: st.sql, binds: st.params })));
+      written += group.length;
+    } catch (err) {
+      say(
+        `**Stopped at statement ${at + 1} of ${statements.length}.** ${redact(String(err).slice(0, 300))}`,
+      );
+      say(`What was written before it stays written; re-running is an upsert and repeats safely.`);
+      finish(1);
+    }
+  }
+  /*
+    Read back rather than assume. A count is not a name, so nothing private is
+    printed — but "the write returned without throwing" is what the last import
+    believed too.
+  */
+  const [count] = await app
+    .d1All(
+      `SELECT count(*) AS n FROM product_admin_metadata
+        WHERE supplier_name_zh_cn IS NOT NULL AND length(trim(supplier_name_zh_cn)) > 0`,
+    )
+    .catch(() => [{ n: -1 }]);
+  say();
+  say(`Statements: **${written}** of ${statements.length}.`);
+  say(`Products in the shop that now carry a supplier name: **${count?.n ?? "unknown"}**.`);
+  finish(0);
+}
+
 /*
   Claimed against the same `console_runs` ledger the D1 console writes to, with
   the same statement: `ON CONFLICT DO NOTHING RETURNING id` hands a row only to
@@ -316,6 +435,9 @@ say(`| --- | --- | --- | --- | --- | --- |`);
 
 let created = 0;
 let updated = 0;
+let namesWritten = 0;
+let namesFailed = 0;
+let nameError = "";
 let last = beforeCount;
 
 for (let at = 0; at < rows.length; at += BATCH) {
@@ -339,15 +461,24 @@ for (let at = 0; at < rows.length; at += BATCH) {
   /*
     The supplier's Chinese name, through the same guarded writer the route uses.
     It is private by the owner's instruction and never printed here.
+
+    The `catch {}` that used to be here reported nothing, and that was the
+    defect whatever else is wrong: an import can finish green having written
+    not one name, and the first person to find out is an admin with an empty
+    copy button in front of a customer. A name is still not worth failing the
+    import over, so the count and the first error are printed at the end
+    instead.
   */
   if (decision?.names?.length) {
     try {
       const statements = app.supplierNameStatements(decision.names);
       if (statements.length) {
         await app.d1Batch(statements.map((s) => ({ sql: s.sql, binds: s.params })));
+        namesWritten += decision.names.length;
       }
-    } catch {
-      /* A supplier name is metadata; a failure here does not fail the import. */
+    } catch (err) {
+      namesFailed += decision.names.length;
+      if (!nameError) nameError = redact(String(err).slice(0, 200));
     }
   }
 
@@ -381,4 +512,12 @@ say(
 say(
   `Catalogue: ${beforeCount.toLocaleString("en-US")} → **${last.toLocaleString("en-US")}** products.`,
 );
-finish(0);
+/*
+  The supplier names, counted rather than assumed. The name itself is private
+  and is never printed; how many of them landed is not.
+*/
+say(
+  `Supplier names written: **${namesWritten.toLocaleString("en-US")}**` +
+    (namesFailed ? `, failed: **${namesFailed.toLocaleString("en-US")}** — ${nameError}` : `.`),
+);
+finish(namesFailed ? 1 : 0);

@@ -977,12 +977,39 @@ export function decide(current: StoreDoc, rows: CatalogueRow[], mode: ImportMode
       ...(existing ? { existing } : {}),
     });
 
+    /*
+      The Chinese name goes to its own admin-only table and never onto the
+      product. `getStore()` does not load that table, so there is no path by
+      which the storefront could serialise it — which is the whole reason it
+      lives there.
+
+      It is collected before the skip below, and that is the point. A row the
+      catalogue declines to write still names a product the shop has, and the
+      supplier's name for it is exactly what the admin needs at the counter.
+      Collecting it only on a create or an update meant `create-only` — the
+      safest mode, the one that touches nothing — could never carry a name to
+      a game already on sale.
+    */
+    const resolvedId =
+      outcome.action === "skip"
+        ? existing
+          ? String(existing["id"] ?? "")
+          : ""
+        : String(outcome.product["id"]);
+    if (row.chineseName && resolvedId) {
+      out.names.push({
+        productId: resolvedId,
+        supplierNameZhCn: row.chineseName,
+        englishTitle: name,
+      });
+    }
+
     if (outcome.action === "skip") {
       out.results.push({ line, name, outcome: "skipped", reason: outcome.reason });
       continue;
     }
 
-    const id = String(outcome.product["id"]);
+    const id = resolvedId;
     if (outcome.action === "create") {
       products.push(outcome.product);
       const added = products.length - 1;
@@ -995,15 +1022,6 @@ export function decide(current: StoreDoc, rows: CatalogueRow[], mode: ImportMode
       out.updated += 1;
     }
 
-    /*
-      The Chinese name goes to its own admin-only table and never onto the
-      product. `getStore()` does not load that table, so there is no path by
-      which the storefront could serialise it — which is the whole reason it
-      lives there.
-    */
-    if (outcome.chineseName) {
-      out.names.push({ productId: id, supplierNameZhCn: outcome.chineseName, englishTitle: name });
-    }
     out.results.push({
       line,
       name,

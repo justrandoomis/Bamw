@@ -1,6 +1,15 @@
 import type { NotificationPreferences } from "./notification-preferences";
 
 export type ProductKind =
+  /*
+    What the catalogue importer writes on every listing it publishes. It is a
+    category word rather than a delivery word, and it was absent from this
+    union for as long as the importer has existed — so nothing type-checked it
+    and the delivery code's allow-list quietly excluded it. It is named here
+    because that is what the stored data says; the fulfilment rule that used to
+    depend on this list is now a deny-list of the kinds that physically ship.
+  */
+  | "game"
   | "account"
   | "offline_account"
   | "online_account"

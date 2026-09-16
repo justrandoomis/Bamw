@@ -17,6 +17,7 @@ import { sendTelegramMessage } from "./telegram.server";
 import {
   checkCoupon,
   couponDiscount,
+  isPhysicalKind,
   rowToCoupon,
   type CouponCheckItem,
   type CouponRow,
@@ -699,9 +700,13 @@ export async function createOrderForUser(
     if (exception) deliveryPrice = toNumber(exception.price);
   }
 
-  const needsAddress = items.some((item) =>
-    ["hardware", "physical", "accessory", "device", "collectible"].includes(item.kind),
-  );
+  /*
+    The same five kinds that decide a delivery slot is not needed
+    (`isDigitalOrderKind`) and that a digital-only coupon refuses. Read from
+    one place so the two answers cannot drift: a kind that ships must never be
+    a kind the fulfilment code hands over as an account.
+  */
+  const needsAddress = items.some((item) => isPhysicalKind(item.kind));
   const total = finalItemsTotal + (needsAddress ? deliveryPrice : 0);
 
   const threadId = randomId("thr");

@@ -22,6 +22,7 @@ import {
   type OrderItemMatchTarget,
   type ParsedAccountLine,
 } from "./account-paste";
+import { isDigitalOrderKind } from "./delivery-kinds";
 import { decryptSecretValue, encryptSecretValue, randomId } from "./crypto.server";
 import {
   allExpectedDeliveryItemsDelivered,
@@ -35,17 +36,6 @@ import {
 import { d1All, d1First, d1Run, d1RunChanges, getD1 } from "./d1.server";
 import { appendMessage, d1Batch, getOrder, getThread, saveOrder, saveThread } from "./db.server";
 import type { Order, OrderItem } from "./types";
-
-const DIGITAL_KINDS = new Set([
-  "account",
-  "offline_account",
-  "online_account",
-  "bundle",
-  "preorder",
-  "digital_code",
-  "code",
-  "gift_card",
-]);
 
 const CODE_KINDS = new Set(["digital_code", "code", "gift_card"]);
 
@@ -131,7 +121,7 @@ export async function ensureDigitalDeliverySchema(): Promise<void> {
 }
 
 function isDigitalItem(item: OrderItem): boolean {
-  return DIGITAL_KINDS.has(String(item.kind || "account"));
+  return isDigitalOrderKind(String(item.kind || "account"));
 }
 
 function validCanonicalTitle(title: unknown): title is string {
@@ -564,13 +554,20 @@ export async function saveQuickPaste(orderId: string, rawText: string): Promise<
   const parsed = parseAccountPaste(rawText);
   if (!parsed.accounts.length) throw new Error("NO_CREDENTIALS_EXTRACTED");
 
+  /*
+    `metadata_json` is selected because line 579 reads it. It was missing from
+    this column list, so `readOrderItemSelection` was handed `undefined` on
+    every row and every target carried the default label — the matcher could
+    not tell an offline line from an online one of the same game. The read at
+    `getDeliveryOrderState` always selected it; this query had drifted.
+  */
   const canonicalItems = await d1All<CanonicalOrderItemRow>(
-    `SELECT id, product_id, product_title, kind, quantity
+    `SELECT id, product_id, product_title, kind, quantity, metadata_json
      FROM order_items WHERE order_id = ? ORDER BY created_at ASC, id ASC`,
     order.id,
   );
   const targets: OrderItemMatchTarget[] = canonicalItems
-    .filter((item) => DIGITAL_KINDS.has(item.kind))
+    .filter((item) => isDigitalOrderKind(String(item.kind || "account")))
     .map((item) => ({
       id: item.id,
       title: item.product_title,
