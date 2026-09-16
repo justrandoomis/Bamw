@@ -43,6 +43,10 @@ on:
     branches: [claude/gaming-platform-issues-keb1be]
     paths:
       - import-sources/catalogue.csv
+      # The authorisation file. Without this line a commit that arms the token
+      # changes nothing the workflow watches, so nothing runs — which is what
+      # happened the first time it was armed.
+      - import-sources/apply.txt
       - scripts/catalogue-import-runner.mjs
       - scripts/lib/catalogue-import-entry.ts
       - .github/workflows/catalogue-import.yml
