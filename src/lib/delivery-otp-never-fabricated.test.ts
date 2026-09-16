@@ -25,6 +25,7 @@ const DELIVERY_PATH = [
   "src/lib/order-delivery.server.ts",
   "src/lib/delivery-items.server.ts",
   "src/lib/delivery-items.ts",
+  "src/lib/delivery-kinds.ts",
   "src/lib/delivery-otp.ts",
   "src/lib/digital-delivery-state.ts",
   "src/lib/order-completion.server.ts",

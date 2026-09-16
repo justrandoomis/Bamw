@@ -10,6 +10,7 @@ import { useStoreData } from "@/hooks/useStoreData";
 import { GAME_GENRES } from "@/lib/genres";
 import { getNintendoMediaUrl } from "@/lib/nintendoImages";
 import { filterPurchasable } from "@/lib/purchasable";
+import { picturedFirst } from "@/lib/listingOrder";
 import { isGameProduct } from "@/lib/productSection";
 import { playSound } from "@/utils/audio";
 import { preloadGameCovers } from "@/lib/imagePreloader";
@@ -45,8 +46,14 @@ function GamesPage() {
 
   const { data: store, isPending } = useStoreData();
   const loaded = !isPending;
+  /*
+    Listed, but last. A game the supplier's sheet published with no artwork is
+    a real product at a real price and belongs on this page — behind every game
+    that has a cover, so a member scrolling the shelf sees the shop before the
+    placeholders. The home page leaves them out entirely; this page does not.
+  */
   const products: RawProduct[] = useMemo(
-    () => filterPurchasable<RawProduct>((store?.products ?? []) as RawProduct[]),
+    () => picturedFirst(filterPurchasable<RawProduct>((store?.products ?? []) as RawProduct[])),
     [store?.products],
   );
 

@@ -1,7 +1,7 @@
 import { tr, useI18n } from "@/i18n";
 import { threadKind } from "@/lib/thread-lifecycle";
 import { toast } from "sonner";
-import { prepareImageForUpload } from "@/lib/imageForUpload";
+import { prepareServableImage } from "@/lib/imageForUpload";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { AnimatePresence, motion } from "motion/react";
 import {
@@ -784,8 +784,12 @@ export default function ChatView({
     if (!initialOrderId) return;
     if (resolvedOrderThreadRef.current === initialOrderId) return;
 
-    const fromOrder = orders.find((order) => order.id === initialOrderId || order.code === initialOrderId)?.threadId;
-    const fromThreads = threads.find((thread) => thread.orderId === initialOrderId || thread.subject?.includes(initialOrderId))?.id;
+    const fromOrder = orders.find(
+      (order) => order.id === initialOrderId || order.code === initialOrderId,
+    )?.threadId;
+    const fromThreads = threads.find(
+      (thread) => thread.orderId === initialOrderId || thread.subject?.includes(initialOrderId),
+    )?.id;
     const target = fromOrder || fromThreads;
     if (target) {
       resolvedOrderThreadRef.current = initialOrderId;
@@ -877,7 +881,8 @@ export default function ChatView({
   }, [currentThread, threadId, initialOrderId, initialThreadId]);
 
   const currentOrder = useMemo(
-    () => (activeOrderId ? orders.find((o) => o.id === activeOrderId || o.code === activeOrderId) : null),
+    () =>
+      activeOrderId ? orders.find((o) => o.id === activeOrderId || o.code === activeOrderId) : null,
     [activeOrderId, orders],
   );
 
@@ -1774,7 +1779,39 @@ export default function ChatView({
       is also what makes an iPhone HEIC work — Safari decodes it, the Worker
       cannot. Returns the original untouched if any of that is unavailable.
     */
-    const file = await prepareImageForUpload(rawFile);
+    const { file, servable } = await prepareServableImage(rawFile);
+
+    /*
+      Refused here, before a byte leaves the phone.
+
+      An HEIC picked through «الملفات» rather than the camera roll cannot be
+      decoded by anything downstream, and what used to happen was the worst of
+      both: an optimistic bubble appeared, the whole photo uploaded over a
+      phone connection, and a minute later the member was shown the English
+      token «unsupported_image_format» with no bubble left and nothing to do.
+    */
+    if (!servable) {
+      toast.error(
+        "تعذر تحويل هذه الصورة على جهازك. أرسلها بصيغة JPG أو PNG، أو اخترها من الاستوديو بدل «الملفات».",
+      );
+      return;
+    }
+
+    /*
+      And a size the connection can actually carry. There was no limit here at
+      all: a member could start a 300 MB video upload, watch it crawl, and be
+      told only that it timed out.
+    */
+    const isVideoFile = (file.type || "").toLowerCase().startsWith("video/");
+    const MB = 1024 * 1024;
+    if (!isVideoFile && file.size > 10 * MB) {
+      toast.error("الصورة كبيرة جداً. حاول إرسالها من الاستوديو لتصغيرها.");
+      return;
+    }
+    if (isVideoFile && file.size > 50 * MB) {
+      toast.error("المقطع كبير جداً (أكثر من ٥٠ ميغابايت). أرسل مقطعاً أقصر.");
+      return;
+    }
 
     const tempId = `upload-${Date.now()}`;
     const objectUrl = URL.createObjectURL(file);
@@ -1838,7 +1875,9 @@ export default function ChatView({
           err instanceof Error && err.message ? err.message : "تعذر إرسال الصورة. حاول مرة أخرى.";
         toast.error(reason);
         setServerMessages((prev) =>
-          prev.map((m) => (m.id === tempId ? { ...m, status: "failed", failureReason: reason } : m)),
+          prev.map((m) =>
+            m.id === tempId ? { ...m, status: "failed", failureReason: reason } : m,
+          ),
         );
       }
     } else {

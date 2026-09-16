@@ -862,6 +862,23 @@ export type OrderStatus =
   | "completed"
   | "cancelled";
 
+/**
+ * Every state an order can be in, as values rather than only as a type.
+ *
+ * The queue needs the complement of the finished set, and a complement cannot
+ * be taken from a type that exists only at compile time. Listing them here
+ * means the day a state is added, it is added in one place.
+ */
+export const ORDER_STATUSES: readonly OrderStatus[] = [
+  "pending",
+  "processing",
+  "delivering",
+  "awaiting_customer_confirmation",
+  "delivery_issue",
+  "completed",
+  "cancelled",
+];
+
 /** Orders in these states are done as far as the admin queue is concerned. */
 export const ADMIN_FINISHED_ORDER_STATUSES: readonly OrderStatus[] = [
   "awaiting_customer_confirmation",

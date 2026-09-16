@@ -876,6 +876,11 @@ export interface Decision {
   updated: number;
   categoryId: string;
   names: { productId: string; supplierNameZhCn: string; englishTitle: string }[];
+  /**
+   * Rows that named a product another row in the same file had already named,
+   * with a different Chinese name. Neither is written — see `decide`.
+   */
+  nameConflicts: { productId: string; englishTitle: string; line: number }[];
 }
 
 /**
@@ -897,7 +902,25 @@ export function decide(current: StoreDoc, rows: CatalogueRow[], mode: ImportMode
     updated: 0,
     categoryId: category.id,
     names: [],
+    nameConflicts: [],
   };
+  /*
+    Which supplier name each product has already been given in this run.
+
+    Twelve English titles appear twice in the owner's sheet, each pair carrying
+    two *different* Chinese names — two supplier SKUs listed under one English
+    name. The title index below deliberately matches the second row onto the
+    first row's product, so both rows would write a name to the same row of
+    `product_admin_metadata` and the one that happened to be written last would
+    win. The admin would then copy that name to the supplier and be sent the
+    other edition of the game.
+
+    So the first name stands and the second is refused rather than guessed at.
+    A conflict is reported instead of resolved: which of the two is right is
+    not something this file can know, and a wrong supplier name is the exact
+    failure the copy button exists to prevent.
+  */
+  const nameByProduct = new Map<string, string>();
 
   /*
     One pass over the catalogue, not one lookup per row. A `find` per row over
@@ -997,11 +1020,17 @@ export function decide(current: StoreDoc, rows: CatalogueRow[], mode: ImportMode
           : ""
         : String(outcome.product["id"]);
     if (row.chineseName && resolvedId) {
-      out.names.push({
-        productId: resolvedId,
-        supplierNameZhCn: row.chineseName,
-        englishTitle: name,
-      });
+      const already = nameByProduct.get(resolvedId);
+      if (already === undefined) {
+        nameByProduct.set(resolvedId, row.chineseName);
+        out.names.push({
+          productId: resolvedId,
+          supplierNameZhCn: row.chineseName,
+          englishTitle: name,
+        });
+      } else if (already !== row.chineseName) {
+        out.nameConflicts.push({ productId: resolvedId, englishTitle: name, line });
+      }
     }
 
     if (outcome.action === "skip") {

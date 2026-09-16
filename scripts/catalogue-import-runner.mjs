@@ -275,6 +275,26 @@ say(
   `- leave alone: **${(rows.length - preview.created - preview.updated).toLocaleString("en-US")}**`,
 );
 say();
+/*
+  Two rows of the same sheet naming one product with two different Chinese
+  names. `decide` keeps the first and refuses the second rather than letting
+  the later write win silently, because the admin copies that name to the
+  supplier and the wrong one orders the wrong game. The English titles are
+  printed so they can be corrected in the sheet; the names themselves are not.
+*/
+if (preview.nameConflicts?.length) {
+  say(`### Supplier names that disagree`);
+  say();
+  say(`${preview.nameConflicts.length} row(s) name a product another row already named,`);
+  say(`with a different Chinese name. The first name stands; these are not written.`);
+  say();
+  say(`| line | English name |`);
+  say(`| --- | --- |`);
+  for (const conflict of preview.nameConflicts.slice(0, 40)) {
+    say(`| ${conflict.line} | ${String(conflict.englishTitle).replace(/\|/g, "\\|").slice(0, 70)} |`);
+  }
+  say();
+}
 if (MODE === "create-only" && preview.updated > 0) {
   say(`**Refused** — create-only decided to update ${preview.updated} rows, which it must never`);
   say(`do. Something has changed in \`buildListing\`; stopping rather than writing.`);

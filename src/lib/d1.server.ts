@@ -1193,6 +1193,15 @@ const SCHEMA_PATCHES: string[] = [
     place and this comment claiming otherwise.
   */
   `CREATE INDEX IF NOT EXISTS product_reviews_due_idx ON product_reviews (status, review_due_at)`,
+  /*
+    The queue, which is now built from the orders that are actually unfinished
+    rather than from every conversation that happens to still be open. That
+    question is `status IN ('pending','processing','delivering')`, asked on a
+    customer's poll, and the only indexes on this table are keyed on a member
+    or on an idempotency key — so it was a full scan of every order the shop
+    has ever taken.
+  */
+  `CREATE INDEX IF NOT EXISTS orders_status_idx ON orders (status, created_at DESC)`,
   `ALTER TABLE product_reviews ADD COLUMN approved_at TEXT`,
   `ALTER TABLE product_reviews ADD COLUMN approved_by TEXT`,
   `ALTER TABLE product_reviews ADD COLUMN updated_at TEXT`,
@@ -2035,7 +2044,7 @@ export function ensureCouponsSchema(): Promise<void> {
 // Bumped whenever SCHEMA_PATCHES gains a statement existing databases need.
 // The stamp below short-circuits the bootstrap, so a new patch is invisible to
 // already-deployed databases until this number moves.
-const RUNTIME_SCHEMA_VERSION = 26;
+const RUNTIME_SCHEMA_VERSION = 27;
 
 /**
  * Run schema statements in as few round trips as the database allows.

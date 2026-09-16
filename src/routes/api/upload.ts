@@ -8,6 +8,7 @@ import { requireAdmin, requireUser } from "@/lib/session.server";
 import { hasObject, writeBinary } from "@/lib/storage.server";
 import { consumeRateLimit, rateLimitResponse } from "@/lib/rate-limit.server";
 import { processImageToWebP, isWebP } from "@/lib/imageProcessor";
+import { isoBrandMime, ISO_BMFF_MIMES } from "@/lib/isoMedia";
 
 const MIME_EXT: Record<string, string> = {
   "image/png": "png",
@@ -57,12 +58,21 @@ function matchesMagic(bytes: Uint8Array, mime: string): boolean {
       (bytes[0] === 0x4d && bytes[1] === 0x4d && bytes[2] === 0x00 && bytes[3] === 0x2a)
     );
   }
-  if (mime === "image/avif" || mime === "image/heic" || mime === "image/heif") {
-    return new TextDecoder().decode(bytes.slice(4, 8)) === "ftyp";
-  }
-  // MP4 and QuickTime carry an ISO base-media `ftyp` box at offset 4.
-  if (mime === "video/mp4" || mime === "video/quicktime") {
-    return new TextDecoder().decode(bytes.slice(4, 8)) === "ftyp";
+  /*
+    AVIF, HEIC, MP4 and QuickTime are all ISO base-media files and all four
+    begin `....ftyp`. Testing only for that box made every one of them look
+    like whichever candidate the sniffer happened to try first — AVIF — so a
+    HEIC was called an AVIF and refused, and a video picked with no MIME type
+    was called an image, pushed into the WebP converter, and refused as an
+    unsupported *image*. A member sending a clip from their Files app got
+    «unsupported_image_format» for a video the picker had just offered them.
+
+    The brand at bytes 8..12 is what actually distinguishes them.
+  */
+  if (ISO_BMFF_MIMES.has(mime)) {
+    const brand = isoBrandMime(bytes);
+    // HEIC and HEIF are the same container; the brand table reports both as heic.
+    return mime === "image/heif" ? brand === "image/heic" : brand === mime;
   }
   // WebM/Matroska EBML header.
   if (mime === "video/webm") {
@@ -71,7 +81,15 @@ function matchesMagic(bytes: Uint8Array, mime: string): boolean {
   return true;
 }
 
-function sniffImageMime(bytes: Uint8Array): string | undefined {
+/**
+ * The type of a file whose own `type` was empty.
+ *
+ * iOS "Files" and several Android file managers hand a file over with no MIME
+ * type at all, and the caller then fell back to `image/jpeg` — so a video
+ * arrived at the image converter. Videos are named here so that fallback is
+ * reached only for something that really is neither.
+ */
+function sniffUploadMime(bytes: Uint8Array): string | undefined {
   for (const candidate of [
     "image/png",
     "image/jpeg",
@@ -79,16 +97,18 @@ function sniffImageMime(bytes: Uint8Array): string | undefined {
     "image/gif",
     "image/bmp",
     "image/tiff",
-    "image/avif",
-    "image/heic",
-    "image/heif",
+    "video/webm",
   ]) {
     if (matchesMagic(bytes, candidate)) return candidate;
   }
-  return undefined;
+  return isoBrandMime(bytes);
 }
 
-import { fetchRemoteImageWithRetry, sniffImageMimeType, ingestRemoteImage } from "@/lib/mediaIngest.server";
+import {
+  fetchRemoteImageWithRetry,
+  sniffImageMimeType,
+  ingestRemoteImage,
+} from "@/lib/mediaIngest.server";
 
 type RemoteImage = { ok: true; bytes: Uint8Array; mime: string } | { ok: false; error: string };
 
@@ -135,18 +155,29 @@ export const Route = createFileRoute("/api/upload")({
             const formImageType = formData.get("imageType");
 
             if (typeof formFolder === "string") targetFolder = formFolder;
-            if (typeof formProductId === "string") productId = formProductId.replace(/[^a-zA-Z0-9_-]/g, "");
-            if (typeof formImageType === "string") imageType = formImageType.replace(/[^a-zA-Z0-9_-]/g, "");
+            if (typeof formProductId === "string")
+              productId = formProductId.replace(/[^a-zA-Z0-9_-]/g, "");
+            if (typeof formImageType === "string")
+              imageType = formImageType.replace(/[^a-zA-Z0-9_-]/g, "");
 
             if (!file || !(file instanceof File)) {
               return json({ error: "missing_file" }, { status: 400 });
             }
 
-            mime = file.type || sniffImageMime(new Uint8Array(await file.slice(0, 32).arrayBuffer())) || "image/jpeg";
+            mime =
+              file.type ||
+              sniffUploadMime(new Uint8Array(await file.slice(0, 32).arrayBuffer())) ||
+              "image/jpeg";
             const buffer = await file.arrayBuffer();
             bytes = new Uint8Array(buffer);
           } else {
-            const { dataUrl, sourceUrl, folder, productId: jsonProdId, imageType: jsonImgType } = await body<{
+            const {
+              dataUrl,
+              sourceUrl,
+              folder,
+              productId: jsonProdId,
+              imageType: jsonImgType,
+            } = await body<{
               dataUrl?: string;
               sourceUrl?: string;
               folder?: string;
@@ -171,7 +202,8 @@ export const Route = createFileRoute("/api/upload")({
                 sourceUrl: sourceUrl.trim(),
                 productId: productId || "general",
                 field: imageType || "image",
-                expectedType: imageType === "wrap" ? "wrap" : imageType === "gallery" ? "gallery" : "general",
+                expectedType:
+                  imageType === "wrap" ? "wrap" : imageType === "gallery" ? "gallery" : "general",
                 highQuality: isHigh,
               });
 
@@ -183,7 +215,7 @@ export const Route = createFileRoute("/api/upload")({
                     attempts: result.attempts,
                     sourceHost: result.sourceHost,
                   },
-                  { status: 422 }
+                  { status: 422 },
                 );
               }
 
@@ -248,7 +280,10 @@ export const Route = createFileRoute("/api/upload")({
           // Compute SHA-256 hash for deduplication and structured naming
           const hashBuffer = await crypto.subtle.digest("SHA-256", new Uint8Array(bytes));
           const hashArray = Array.from(new Uint8Array(hashBuffer));
-          const hashHex = hashArray.map((b) => b.toString(16).padStart(2, "0")).join("").substring(0, 16);
+          const hashHex = hashArray
+            .map((b) => b.toString(16).padStart(2, "0"))
+            .join("")
+            .substring(0, 16);
 
           /*
             Never store a file the rest of the app will refuse.
@@ -269,7 +304,20 @@ export const Route = createFileRoute("/api/upload")({
             Refusing here says so plainly and at the step that can explain it.
             Storing it would leave an object in R2 that nothing can reference.
           */
-          const SERVABLE_IMAGE = /^(png|jpg|jpeg|webp|gif)$/i;
+          /*
+            AVIF is on this list because every current browser renders it, the
+            file server's own path rule already allows the extension, and a
+            phone that hands one over has nothing else to give. HEIC and HEIF
+            stay off it: nothing in this stack can decode them and nothing a
+            member owns can display them.
+
+            `isOwnUploadUrl` in lib/uploads.ts holds the matching list for what
+            a member may then reference in a message. The two must agree — when
+            they did not, a file uploaded 200 and the very next call refused it
+            with `invalid_image`, which is the two-step failure this block was
+            written about.
+          */
+          const SERVABLE_IMAGE = /^(png|jpg|jpeg|webp|gif|avif)$/i;
           let key: string;
           const ext = MIME_EXT[mime] || (mime === "image/webp" ? "webp" : "bin");
           if (mime.startsWith("image/") && !SERVABLE_IMAGE.test(ext)) {
@@ -304,13 +352,15 @@ export const Route = createFileRoute("/api/upload")({
 
           const isPrivateFolder =
             /^(chat|uploads|wallets|orders|support|receipts|documents)\//i.test(`${root}/`);
-          const cacheControl = isPrivateFolder ? "private, no-store" : "public, max-age=31536000, immutable";
+          const cacheControl = isPrivateFolder
+            ? "private, no-store"
+            : "public, max-age=31536000, immutable";
 
           // Deduplication: if exact content hash object already exists in R2, reuse it immediately
           const alreadyExists = await hasObject(key);
           if (!alreadyExists) {
             await writeBinary(key, bytes, mime, { cacheControl });
-            
+
             // Read-after-write verification
             const verified = await hasObject(key);
             if (!verified) {

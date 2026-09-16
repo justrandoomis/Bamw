@@ -92,16 +92,33 @@ async function attempt<T>(
     sqlError?: string;
   };
   if (!response.ok) {
+    /*
+      A 401 says one thing and it is not an error the member can act on by
+      reading it. The server answers `{ "error": "unauthorised" }`, this turned
+      that word straight into a toast, and a signed-out visitor tapping "شحن
+      الرصيد" was shown the English string «unauthorised» with nothing to do
+      about it.
+
+      So the status decides the wording, not the payload, and the flag below is
+      what lets a screen send the visitor to sign in instead of apologising to
+      them.
+    */
+    const unauthorized = response.status === 401;
     // Keep structured hints on the thrown error
-    const errorText =
-      data.message ||
-      (data.error && data.error !== "server_error" ? data.error : null) ||
-      data.details ||
-      data.sqlError ||
-      (data.error === "server_error"
-        ? "خطأ في السيرفر أو قاعدة البيانات"
-        : "حدث خطأ، حاول مرة أخرى");
-    const error = Object.assign(new Error(errorText), data);
+    const errorText = unauthorized
+      ? "سجّل الدخول للمتابعة"
+      : data.message ||
+        (data.error && data.error !== "server_error" ? data.error : null) ||
+        data.details ||
+        data.sqlError ||
+        (data.error === "server_error"
+          ? "خطأ في السيرفر أو قاعدة البيانات"
+          : "حدث خطأ، حاول مرة أخرى");
+    const error = Object.assign(new Error(errorText), data, {
+      message: errorText,
+      status: response.status,
+      unauthorized,
+    });
     throw error;
   }
   return data;
@@ -836,20 +853,17 @@ export const adminApi = {
    * customer before somebody finishes it.
    */
   createPlaceholderGame: (name: string) =>
-    request<{ success?: boolean; product?: { id: string }; id?: string }>(
-      "/api/admin/products",
-      {
-        method: "POST",
-        body: JSON.stringify({
-          title: name,
-          titleEn: name,
-          price: 0,
-          isHidden: true,
-          category: "cat_nintendo",
-          categoryId: "cat_nintendo",
-        }),
-      },
-    ),
+    request<{ success?: boolean; product?: { id: string }; id?: string }>("/api/admin/products", {
+      method: "POST",
+      body: JSON.stringify({
+        title: name,
+        titleEn: name,
+        price: 0,
+        isHidden: true,
+        category: "cat_nintendo",
+        categoryId: "cat_nintendo",
+      }),
+    }),
 
   saveBananaMarketConfig: (config: Record<string, unknown>) =>
     request<{ success: boolean; marketConfig: any }>("/api/admin/banana", {
@@ -925,6 +939,34 @@ export function fileToDataUrl(file: File) {
   });
 }
 
+/**
+ * What to tell a member when an upload is refused, in their own language.
+ *
+ * The codes are the server's, and every one of them has a thing the member can
+ * actually do about it. An unrecognised code falls through to the general
+ * sentence rather than being printed — printing it is how «unsupported_image_
+ * format» ended up on somebody's screen.
+ */
+function uploadErrorText(code: unknown, status: number): string {
+  switch (String(code ?? "")) {
+    case "unsupported_image_format":
+      return "تعذر تحويل هذه الصورة. أرسلها بصيغة JPG أو PNG، أو اخترها من الاستوديو بدل «الملفات».";
+    case "invalid_image":
+      return "هذه الصورة بصيغة لا يدعمها المتجر. جرّب JPG أو PNG.";
+    case "missing_file":
+      return "لم يصل أي ملف. اختر الصورة مرة أخرى.";
+    case "invalid_upload_folder":
+      return "تعذر حفظ الملف في مكانه الصحيح، حاول مرة أخرى.";
+    case "upload_storage_verification_failed":
+      return "لم يكتمل حفظ الصورة، أعد المحاولة.";
+    default:
+      if (status === 401 || status === 403) return "انتهت الجلسة. سجّل الدخول ثم أعد الإرسال.";
+      if (status === 413) return "الملف كبير جداً. أرسل صورة أصغر أو مقطعاً أقصر.";
+      if (status === 429) return "محاولات كثيرة خلال وقت قصير. انتظر قليلاً ثم أعد المحاولة.";
+      return "تعذر رفع الملف، حاول مرة أخرى.";
+  }
+}
+
 export function uploadFileWithProgress(
   file: File,
   folder = "chat",
@@ -954,21 +996,33 @@ export function uploadFileWithProgress(
           const data = JSON.parse(xhr.responseText);
           resolve(data);
         } catch {
-          reject(new Error("Invalid response from server"));
+          reject(new Error("تعذر فهم رد الخادم، حاول مرة أخرى."));
         }
       } else {
+        /*
+          The server writes an Arabic `message` beside its machine-readable
+          `error`, and this read the machine-readable one — so a member whose
+          photo was refused was shown the token «unsupported_image_format» and
+          left to work out what to do about it.
+        */
         try {
           const errData = JSON.parse(xhr.responseText);
-          reject(new Error(errData.error || `Upload failed with status ${xhr.status}`));
+          reject(new Error(errData.message || uploadErrorText(errData.error, xhr.status)));
         } catch {
-          reject(new Error(`Upload failed with status ${xhr.status}`));
+          reject(new Error(uploadErrorText(undefined, xhr.status)));
         }
       }
     };
 
-    xhr.onerror = () => reject(new Error("Upload network error"));
-    xhr.ontimeout = () => reject(new Error("Upload timed out"));
-    xhr.timeout = 60000;
+    xhr.onerror = () => reject(new Error("انقطع الاتصال أثناء الرفع، حاول مرة أخرى."));
+    xhr.ontimeout = () =>
+      reject(new Error("استغرق الرفع وقتاً طويلاً. تحقق من الاتصال أو أرسل ملفاً أصغر."));
+    /*
+      A minute is plenty for a photograph and nowhere near enough for a clip on
+      a phone connection — a member sending a short video watched the progress
+      bar reach ninety-odd percent and then be told it had timed out.
+    */
+    xhr.timeout = (file.type || "").toLowerCase().startsWith("video/") ? 180000 : 60000;
 
     xhr.send(formData);
   });

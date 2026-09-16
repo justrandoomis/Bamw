@@ -88,6 +88,11 @@ describe("no statement can outgrow D1's parameter limit", () => {
       // catalogue, so the keys are split by chunkForParams and each group is
       // checked by assertBoundParameters before it runs.
       "src/routes/api/admin/catalogue-import.ts:keys": "chunked",
+      // The order states that still count as work for the queue: the
+      // complement of ADMIN_FINISHED_ORDER_STATUSES within ORDER_STATUSES,
+      // both literals in types.ts. Seven states in total, so at most seven
+      // parameters, and not a function of how many orders the shop has taken.
+      "src/lib/db.server.ts:active": "fixed width",
     };
 
     const unknown = found.filter((entry) => !(`${entry.file}:${entry.source}` in KNOWN));

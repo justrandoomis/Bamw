@@ -11,8 +11,16 @@
  * so the check keeps the "must be your own file" rule and widens the folder set
  * to the ones members upload into.
  */
+/*
+  `avif` is here because `/api/upload` stores one: a phone that hands over an
+  AVIF has nothing else to give, and every current browser renders it. This
+  list and the upload route's `SERVABLE_IMAGE` are the same question asked at
+  two steps — when they disagreed, a file uploaded 200 and the very next call
+  refused it with `invalid_image`, and the member saw a photo that sent itself
+  and then vanished.
+*/
 const MEMBER_UPLOAD_URL =
-  /^\/api\/files\/(chat|uploads|orders|receipts|support|documents)\/(usr_[a-z0-9]+)\/[a-z0-9_-]{1,96}\.(png|jpe?g|webp|gif|mp4|webm|mov)$/i;
+  /^\/api\/files\/(chat|uploads|orders|receipts|support|documents)\/(usr_[a-z0-9]+)\/[a-z0-9_-]{1,96}\.(png|jpe?g|webp|gif|avif|mp4|webm|mov)$/i;
 
 const VIDEO_EXT = /^(mp4|webm|mov)$/i;
 

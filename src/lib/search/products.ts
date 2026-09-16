@@ -21,6 +21,7 @@
  * expansion adds — are allowed to miss.
  */
 
+import { hasListingPicture } from "../listingOrder";
 import { normalize, squash, SYNONYMS, tokenizeQuery, type QueryToken } from "./normalize";
 import { buildField, matchQuality, type IndexedField } from "./relevance";
 
@@ -96,6 +97,12 @@ export interface IndexedProduct {
   /** For the tie-break: what sells, and where the admin put it. */
   sales: number;
   displayOrder: number;
+  /**
+   * Whether a result card has anything to show. Two results that match the
+   * query equally well are not equally useful, and the one with a cover is the
+   * one somebody can recognise.
+   */
+  pictured: boolean;
 }
 
 export interface ProductSearchResult {
@@ -111,12 +118,13 @@ const list = (value: unknown): string[] =>
 
 const field = (values: string[], weight: number) => buildField(values, weight, normalize, squash);
 
-export function buildProductIndex(
-  products: readonly Record<string, unknown>[],
-): IndexedProduct[] {
+export function buildProductIndex(products: readonly Record<string, unknown>[]): IndexedProduct[] {
   return products.map((product) => {
-    const names = [text(product["titleEn"]), text(product["titleAr"]), text(product["english_name"])]
-      .filter(Boolean);
+    const names = [
+      text(product["titleEn"]),
+      text(product["titleAr"]),
+      text(product["english_name"]),
+    ].filter(Boolean);
     /*
       `title` only when it says something the English name does not. On this
       catalogue it never does, but a product edited by hand could, and a name
@@ -129,7 +137,10 @@ export function buildProductIndex(
       product,
       fields: [
         field(names, WEIGHTS.name),
-        field([text(product["subtitle"]), text(product["slug"]).replace(/-/g, " ")], WEIGHTS.subtitle),
+        field(
+          [text(product["subtitle"]), text(product["slug"]).replace(/-/g, " ")],
+          WEIGHTS.subtitle,
+        ),
         field(
           [
             ...list(product["seriesName"]),
@@ -140,7 +151,10 @@ export function buildProductIndex(
           ],
           WEIGHTS.franchise,
         ),
-        field([text(product["developer"]), text(product["publisher"]), text(product["brand"])], WEIGHTS.people),
+        field(
+          [text(product["developer"]), text(product["publisher"]), text(product["brand"])],
+          WEIGHTS.people,
+        ),
         field(
           [
             ...list(product["genre"]),
@@ -156,6 +170,7 @@ export function buildProductIndex(
       nameBlob: names.map(squash).join("|"),
       sales: Number(product["sales"]) || 0,
       displayOrder: Number(product["displayOrder"]) || 0,
+      pictured: hasListingPicture(product),
     };
   });
 }
@@ -299,8 +314,14 @@ function scoreProduct(
   */
   if (squashedQuery.length >= 1) {
     for (const name of entry.nameBlob.split("|")) {
-      if (name.startsWith(squashedQuery)) { score += 0.3; break; }
-      if (name.includes(squashedQuery)) { score += 0.15; break; }
+      if (name.startsWith(squashedQuery)) {
+        score += 0.3;
+        break;
+      }
+      if (name.includes(squashedQuery)) {
+        score += 0.15;
+        break;
+      }
     }
   }
 
@@ -355,9 +376,19 @@ export function searchProducts(
 
   const scored = index
     .map((entry) => ({ entry, ...scoreProduct(entry, words, squashedQuery) }))
+    /*
+      Rank still decides. Somebody typing an exact title must be given that
+      game whether or not the shop has artwork for it — a search is where a
+      member has said precisely what they want, and answering with something
+      else because the right answer has no picture would be the worse failure.
+
+      The picture only breaks a tie, ahead of what sells, so a shelf of equally
+      plausible matches leads with the ones a member can recognise.
+    */
     .sort(
       (a, b) =>
         b.rank - a.rank ||
+        Number(b.entry.pictured) - Number(a.entry.pictured) ||
         b.entry.sales - a.entry.sales ||
         a.entry.displayOrder - b.entry.displayOrder,
     );

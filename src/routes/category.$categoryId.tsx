@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import AppShell from "@/components/AppShell";
+import { picturedFirst } from "@/lib/listingOrder";
 import { api } from "@/lib/api";
 import { ProductCard } from "@/components/ProductCard";
 import { useState, useMemo, useEffect } from "react";
@@ -117,7 +118,8 @@ function CategoryPage() {
       }
       if (targetCat === "hardware" || targetCat === "cat_hardware") return resolved === "hardware";
       if (targetCat === "amiibo" || targetCat === "cat_amiibo") return resolved === "amiibo";
-      if (targetCat === "accessories" || targetCat === "cat_accessories") return resolved === "accessory";
+      if (targetCat === "accessories" || targetCat === "cat_accessories")
+        return resolved === "accessory";
       if (
         targetCat === "gift-cards" ||
         targetCat === "gift_cards" ||
@@ -296,7 +298,9 @@ function CategoryPage() {
         case "newest":
         default: {
           const getScore = (p: any) => {
-            const createTime = new Date(p.createdAt || p.created_at || p.updatedAt || p.updated_at || 0).getTime() || 0;
+            const createTime =
+              new Date(p.createdAt || p.created_at || p.updatedAt || p.updated_at || 0).getTime() ||
+              0;
             let rel = 0;
             const d =
               p.releaseDate ||
@@ -332,7 +336,13 @@ function CategoryPage() {
       }
     });
 
-    return filtered;
+    /*
+      Whatever the member chose to sort by, a listing with no artwork comes
+      after the ones that have it. A stable partition, so «الأرخص» is still
+      cheapest-first inside each group rather than being scrambled by a second
+      sort on a boolean.
+    */
+    return picturedFirst(filtered);
   }, [store?.products, categoryId, sortBy, platform, selectedGenre]);
 
   // Extract game images (screenshots, hero banners, wallpapers) and EXCLUDE cartridge images

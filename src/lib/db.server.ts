@@ -72,6 +72,7 @@ import type {
   AuditLog,
   StoreNotification,
 } from "./types";
+import { ADMIN_FINISHED_ORDER_STATUSES, ORDER_STATUSES } from "./types";
 
 /**
  * Executes multiple D1 statements in a single batch transaction.
@@ -2435,6 +2436,41 @@ export async function listOpenThreads(): Promise<Thread[]> {
   }
   const all = await listThreads();
   return all.filter((t) => t.status === "open" && t.mode !== "RESOLVED");
+}
+
+/**
+ * The orders that are still waiting for the admin to do something.
+ *
+ * A customer was shown «أنت السابع في الطابور» with nobody in front of them,
+ * and the reason was that the queue counted every open conversation carrying
+ * an order id. A conversation stays open long after its order is delivered —
+ * that is the point of it — so the queue grew by one with every order the shop
+ * ever completed and never shrank.
+ *
+ * The queue is a list of work, so it is built from the state of the work.
+ * `ADMIN_FINISHED_ORDER_STATUSES` already names the states that are done as
+ * far as the admin is concerned; this asks for their complement, positively,
+ * because `status IN (...)` can use an index and `NOT IN (...)` cannot.
+ *
+ * Returns the ids, not the orders: the caller needs set membership and nothing
+ * else, and reading whole order documents to answer a customer's poll is how
+ * this sort of thing got expensive in the first place.
+ */
+export async function listUnfinishedOrderIds(): Promise<Set<string>> {
+  const active = ORDER_STATUSES.filter((status) => !ADMIN_FINISHED_ORDER_STATUSES.includes(status));
+  if (await d1Ready()) {
+    const rows = await d1All<{ id: string }>(
+      `SELECT id FROM orders WHERE status IN (${active.map(() => "?").join(", ")})`,
+      ...active,
+    );
+    return new Set(rows.map((r) => String(r.id)));
+  }
+  const all = await listOrders();
+  return new Set(
+    all
+      .filter((order) => !ADMIN_FINISHED_ORDER_STATUSES.includes(order.status))
+      .map((order) => String(order.id)),
+  );
 }
 
 /**

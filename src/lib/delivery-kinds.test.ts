@@ -23,12 +23,18 @@ describe("which order lines get a delivery slot", () => {
       line: 1,
       englishName: "Test Game",
       chineseName: "测试游戏",
-      platform: "Switch",
+      platform: "switch1",
       costIqd: null,
       offlinePriceIqd: 10000,
-      englishSupport: "",
+      englishSupport: true,
       slug: "test-game",
-    } as CatalogueRow;
+      coverUrl: "",
+      storeLink: "",
+      nsuid: "",
+      publisher: "",
+      languages: "",
+      matchedTitle: "",
+    };
     const outcome = buildListing(row, {
       categoryId: "nintendo-switch-games",
       categoryTitle: "ألعاب",

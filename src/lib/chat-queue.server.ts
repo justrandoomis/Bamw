@@ -1,5 +1,6 @@
 import {
   listOpenThreads,
+  listUnfinishedOrderIds,
   findThreadByIdOrOrder,
   getThread,
   saveThread,
@@ -412,7 +413,10 @@ export async function calculateQueueMetrics(threadOrOrderId: string): Promise<Qu
     both being found by scanning every thread in the shop, on a customer's
     request rather than on a cron.
   */
-  const openThreads = await listOpenThreads();
+  const [openThreads, unfinishedOrderIds] = await Promise.all([
+    listOpenThreads(),
+    listUnfinishedOrderIds(),
+  ]);
   const targetThread =
     openThreads.find((t) => t.id === threadOrOrderId || t.orderId === threadOrOrderId) ??
     (await findThreadByIdOrOrder(threadOrOrderId));
@@ -501,10 +505,29 @@ export async function calculateQueueMetrics(threadOrOrderId: string): Promise<Qu
     }
   }
 
-  // Active queue threads: open and strictly digital orders requiring preparation/delivery
+  /*
+    The queue is the work still waiting, not the conversations still open.
+
+    A customer was shown «السابع في الطابور» with nobody in front of them. The
+    filter below asked only whether a thread carries an order id, and a
+    conversation stays open long after its order is delivered — so every order
+    the shop had ever completed was still standing in the queue, and the number
+    only ever grew.
+
+    So the order's own state decides. A thread whose order is completed,
+    cancelled, awaiting the customer's confirmation or sitting in a delivery
+    issue is no longer work the admin is about to reach, and it is not counted.
+    A thread with no order id at all is left as it was: there is no order to
+    ask about, and dropping it would empty the queue of the general-support
+    conversations that legitimately belong in it.
+  */
+  const isWaitingOnAdmin = (t: Thread): boolean =>
+    !t.orderId || unfinishedOrderIds.has(String(t.orderId));
+
   const queueThreads = openThreads.filter((t) => {
     if (isPureAutomatedThread(t)) return false;
     if (t.queueStatus === "snoozed") return false;
+    if (!isWaitingOnAdmin(t)) return false;
     return isDigitalOrderPreparationThread(t);
   });
 
@@ -538,9 +561,15 @@ export async function calculateQueueMetrics(threadOrOrderId: string): Promise<Qu
     null;
 
   if (index === -1) {
+    /*
+      Not in the queue. Either the conversation is not queue work at all, or —
+      and this is the case the old code got wrong — its own order is finished,
+      in which case telling the customer they are «الأول في الطابور» is as
+      wrong as telling them they are seventh.
+    */
     const isEligible = targetThread
-      ? isDigitalOrderPreparationThread(targetThread)
-      : Boolean(orderId);
+      ? isDigitalOrderPreparationThread(targetThread) && isWaitingOnAdmin(targetThread)
+      : Boolean(orderId) && unfinishedOrderIds.has(String(orderId));
 
     return {
       isQueueEligible: isEligible,
