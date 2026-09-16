@@ -166,7 +166,7 @@ export function VerificationOtpCard({
   return (
     <div
       dir={isAr ? "rtl" : "ltr"}
-      className="w-full max-w-[270px] sm:max-w-[290px] rounded-2xl border border-border/80 bg-[#FCF9F5] dark:bg-card text-foreground p-3.5 shadow-2xs space-y-2.5 transition-all text-right"
+      className="w-full max-w-[270px] sm:max-w-[290px] rounded-2xl border border-border/80 bg-[#FCF9F5] dark:bg-card text-foreground p-3.5 shadow-2xs space-y-2.5 transition-all text-start"
     >
       {/* 1. Header: Small Title */}
       <div className="flex items-center justify-between">
@@ -415,7 +415,7 @@ export function AccountCard({
               }
               className="flex flex-1 items-center justify-center gap-1.5 rounded-xl border border-border bg-card hover:bg-muted px-3 py-2 text-xs font-bold disabled:opacity-40 transition-transform active:scale-95 cursor-pointer text-foreground"
             >
-              <ArrowLeft className="h-3.5 w-3.5" />
+              <ArrowLeft className="h-3.5 w-3.5 rtl:-scale-x-100" />
               {locale === "ar" ? "التالي" : "Next"}
             </button>
           </div>

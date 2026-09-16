@@ -125,7 +125,7 @@ export function RatingCard({
                   }`}
                 />
               ))}
-              <span className="text-[11px] text-muted-foreground font-bold mr-1">({rating}/5)</span>
+              <span className="text-[11px] text-muted-foreground font-bold ms-1">({rating}/5)</span>
             </div>
             <p className="text-[10px] text-muted-foreground mt-1">
               {isAr
@@ -258,7 +258,7 @@ export function RatingCard({
             rows={2}
             className="w-full text-xs bg-background/80 border border-border rounded-xl px-3 py-2 text-foreground placeholder:text-muted-foreground focus:outline-hidden focus:ring-1 focus:ring-amber-500/50 resize-none"
           />
-          <MessageSquare className="w-3.5 h-3.5 absolute top-2.5 left-2.5 text-muted-foreground/50 pointer-events-none" />
+          <MessageSquare className="w-3.5 h-3.5 absolute top-2.5 end-2.5 text-muted-foreground/50 pointer-events-none" />
         </div>
 
         <button

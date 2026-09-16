@@ -277,15 +277,23 @@ export function DigitalOrderCard({
         </div>
 
         {/* Dynamic Queue & Admin Status Card (Replacing the old static 3-step stepper) */}
-        <div className="my-3 rounded-xl bg-[var(--surface-2)]/80 border border-[var(--line)] p-3 space-y-2.5">
-          <div className="flex items-center justify-between gap-2">
-            <div className="flex items-center gap-1.5 text-xs font-bold text-[var(--ink)]">
-              <Sparkles className="h-3.5 w-3.5 text-amber-600 dark:text-amber-400" />
-              <span>{isAr ? "حالة الطابور والتجهيز" : "Queue & Fulfillment Status"}</span>
+        <div className="my-3 rounded-xl bg-[var(--surface-2)]/80 border border-[var(--line)] p-2.5 space-y-2.5">
+          {/*
+            `flex-wrap` and `min-w-0`: the heading and the availability pill sat
+            in a row that could not wrap, on a card already four levels of
+            padding deep inside a 360px screen. Neither side could give way, so
+            the row pushed the card wider than the pane holding it.
+          */}
+          <div className="flex flex-wrap items-center justify-between gap-x-2 gap-y-1">
+            <div className="flex min-w-0 items-center gap-1.5 text-xs font-bold text-[var(--ink)]">
+              <Sparkles className="h-3.5 w-3.5 shrink-0 text-amber-600 dark:text-amber-400" />
+              <span className="truncate">
+                {isAr ? "حالة الطابور والتجهيز" : "Queue & Fulfillment Status"}
+              </span>
             </div>
 
             {/* Admin Availability Indicator */}
-            <div className="flex items-center gap-1 text-[11px] font-medium">
+            <div className="flex shrink-0 items-center gap-1 text-[11px] font-medium">
               <span
                 className={`h-2 w-2 rounded-full ${
                   adminStatus === "available"
@@ -311,7 +319,7 @@ export function DigitalOrderCard({
             </div>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+          <div className="grid grid-cols-1 gap-2 text-xs sm:grid-cols-2">
             {/* Position in Queue */}
             <div className="flex items-center gap-2 p-2 rounded-lg bg-card border border-[var(--line)]">
               <div className="h-7 w-7 rounded-lg bg-amber-500/10 text-amber-700 dark:text-amber-400 flex items-center justify-center shrink-0">
