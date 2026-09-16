@@ -1,6 +1,12 @@
 import { describe, expect, it } from "vitest";
 
-import { buildListing, CATALOGUE_SOURCE, type CatalogueRow } from "./catalogueImport";
+import {
+  buildListing,
+  CATALOGUE_SOURCE,
+  sharedCoverUrls,
+  withoutSharedCovers,
+  type CatalogueRow,
+} from "./catalogueImport";
 
 /**
  * The owner's second sheet brings artwork and provenance for games already on
@@ -257,5 +263,72 @@ describe("a new product created from a row that carries artwork", () => {
     });
     if (out.action !== "create") throw new Error("expected a create");
     expect("coverImage" in out.product).toBe(false);
+  });
+});
+
+describe("a cover that sits on more than one game", () => {
+  const withCover = (name: string, coverUrl: string): CatalogueRow =>
+    row({ englishName: name, slug: name.toLowerCase().replace(/\s+/g, "-"), coverUrl });
+
+  /*
+    The real shape from the owner's sheet: one Nintendo URL for a marathon game
+    landing on three railway ones, because the titles look alike.
+  */
+  it("is found when one URL carries two different names", () => {
+    const shared = sharedCoverUrls([
+      withCover("Railway Nippon! Real Pro", "https://x/NipponMarathon.jpg"),
+      withCover("Railway Nippon! Memorial", "https://x/NipponMarathon.jpg"),
+      withCover("Mario Kart World", "https://x/MarioKart.jpg"),
+    ]);
+    expect([...shared.keys()]).toEqual(["https://x/NipponMarathon.jpg"]);
+    expect(shared.get("https://x/NipponMarathon.jpg")).toHaveLength(2);
+  });
+
+  /*
+    The case that must NOT be flagged: a game listed once per console shares a
+    cover with itself, which is correct.
+  */
+  it("is not the same as one game listed twice", () => {
+    const shared = sharedCoverUrls([
+      withCover("Absolute Fear -AOONI-", "https://x/Aooni.jpg"),
+      withCover("Absolute Fear -AOONI-", "https://x/Aooni.jpg"),
+    ]);
+    expect(shared.size).toBe(0);
+  });
+
+  it("ignores case and surrounding space when comparing names", () => {
+    const shared = sharedCoverUrls([
+      withCover("  Mario Kart World ", "https://x/a.jpg"),
+      withCover("MARIO KART WORLD", "https://x/a.jpg"),
+    ]);
+    expect(shared.size).toBe(0);
+  });
+
+  it("takes the cover off the suspect rows and leaves everything else alone", () => {
+    const input = [
+      withCover("Dance with Devils", "https://x/justdance.png"),
+      withCover("JUST DANCE 2017", "https://x/justdance.png"),
+      withCover("Mario Kart World", "https://x/MarioKart.jpg"),
+    ];
+    const { rows: out, dropped } = withoutSharedCovers(input);
+    expect(dropped).toBe(2);
+    expect(out[0]!.coverUrl).toBe("");
+    expect(out[1]!.coverUrl).toBe("");
+    expect(out[2]!.coverUrl).toBe("https://x/MarioKart.jpg");
+    /* The price is not this function's business and must come through intact. */
+    expect(out[0]!.offlinePriceIqd).toBe(input[0]!.offlinePriceIqd);
+    expect(out[0]!.englishName).toBe("Dance with Devils");
+  });
+
+  it("returns the rows untouched when nothing is shared", () => {
+    const input = [withCover("A", "https://x/a.jpg"), withCover("B", "https://x/b.jpg")];
+    const { rows: out, dropped } = withoutSharedCovers(input);
+    expect(dropped).toBe(0);
+    expect(out[0]).toBe(input[0]);
+  });
+
+  it("does not treat rows with no cover as sharing one", () => {
+    const shared = sharedCoverUrls([withCover("A", ""), withCover("B", "")]);
+    expect(shared.size).toBe(0);
   });
 });

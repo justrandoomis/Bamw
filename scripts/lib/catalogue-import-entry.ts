@@ -23,6 +23,8 @@ export {
   parseCatalogueCsv,
   duplicateNames,
   decide,
+  sharedCoverUrls,
+  withoutSharedCovers,
   CATALOGUE_SOURCE,
   type CatalogueRow,
   type Decision,

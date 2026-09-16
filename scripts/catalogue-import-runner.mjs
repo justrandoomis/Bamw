@@ -74,6 +74,11 @@ const FILE = arg("file", "import-sources/catalogue.csv");
 const APPLY = flag("apply");
 const MODE = arg("mode", "create-only");
 const BATCH = Math.max(1, Math.min(Number(arg("batch", "100")), 250));
+/*
+  `unique-only` drops the cover from any row whose URL also sits on a different
+  game — a wrong picture is worse than none. `all` trusts the sheet.
+*/
+const COVERS = arg("covers", "unique-only");
 const OUT = process.env.IMPORT_OUT || "catalogue-import-runner.md";
 
 const SECRETS = [process.env.CLOUDFLARE_API_TOKEN, process.env.CLOUDFLARE_ACCOUNT_ID].filter(
@@ -169,6 +174,38 @@ if (parsed.issues.length) {
   }
   if (parsed.issues.length > 25) say(`| … | ${parsed.issues.length - 25} more |`);
 }
+/* ------------------------------------------------------------------ */
+/* Covers that sit on more than one game                               */
+/* ------------------------------------------------------------------ */
+
+let rows = parsed.rows;
+const { shared } = app.withoutSharedCovers(parsed.rows);
+if (shared.size) {
+  say();
+  say(`### ${shared.size} cover${shared.size === 1 ? "" : "s"} on more than one game`);
+  say();
+  say(`| games | cover |`);
+  say(`| --- | --- |`);
+  for (const [url, names] of [...shared].slice(0, 30)) {
+    say(`| ${names.join(" · ").replace(/\|/g, "\\|").slice(0, 90)} | \`…${url.slice(-52)}\` |`);
+  }
+  if (shared.size > 30) say(`| … | ${shared.size - 30} more |`);
+  say();
+  if (COVERS === "unique-only") {
+    const applied = app.withoutSharedCovers(parsed.rows);
+    rows = applied.rows;
+    say(
+      `Dropping the cover from **${applied.dropped}** row(s). Every link in this file ` +
+        `works, so these are not broken images — they are rows matched to the wrong ` +
+        `page, and the shop would show one game's artwork on another. A listing with ` +
+        `no picture falls back to the placeholder the shop designed.`,
+    );
+    say(`Pass \`--covers all\` to import them anyway.`);
+  } else {
+    say(`\`--covers all\` was given: these are being imported as the sheet has them.`);
+  }
+}
+
 const dupes = app.duplicateNames(parsed.rows);
 if (dupes.length) {
   say();
@@ -202,13 +239,13 @@ say();
 say(`- products: **${beforeCount.toLocaleString("en-US")}**`);
 say();
 
-const preview = app.decide(before, parsed.rows, MODE);
+const preview = app.decide(before, rows, MODE);
 say(`## What this run would do`);
 say();
 say(`- create: **${preview.created.toLocaleString("en-US")}**`);
 say(`- update: **${preview.updated.toLocaleString("en-US")}**`);
 say(
-  `- leave alone: **${(parsed.rows.length - preview.created - preview.updated).toLocaleString("en-US")}**`,
+  `- leave alone: **${(rows.length - preview.created - preview.updated).toLocaleString("en-US")}**`,
 );
 say();
 if (MODE === "create-only" && preview.updated > 0) {
@@ -234,8 +271,8 @@ let created = 0;
 let updated = 0;
 let last = beforeCount;
 
-for (let at = 0; at < parsed.rows.length; at += BATCH) {
-  const slice = parsed.rows.slice(at, at + BATCH);
+for (let at = 0; at < rows.length; at += BATCH) {
+  const slice = rows.slice(at, at + BATCH);
   const started = Date.now();
   let decision;
   try {

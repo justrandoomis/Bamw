@@ -745,6 +745,74 @@ export function buildListing(row: CatalogueRow, options: BuildOptions): BuildOut
 }
 
 /* ------------------------------------------------------------------ */
+/* Covers that belong to more than one game                            */
+/* ------------------------------------------------------------------ */
+
+/**
+ * The cover URLs in this file that sit on more than one *different* game.
+ *
+ * Not a check that a link works — every one of the 567 in the owner's sheet
+ * does. This is the failure that survives a link check: the sheet matched a
+ * title to the wrong eShop page, the URL resolves perfectly, and the shop shows
+ * the wrong box art on a product somebody is being asked to pay for.
+ *
+ * The sheet has 25 of them across 59 rows, and they are not subtle once the
+ * names are put side by side:
+ *
+ *   - `NipponMarathon` on all three «Railway Nippon!» games
+ *   - `OfficeLovers` on «DIABOLIK LOVERS» and «LoveR Kiss»
+ *   - a Wii-era `justdance` portrait on six Just Dance titles *and* on
+ *     «Dance with Devils», which is a visual novel
+ *
+ * Distinct *names* is the test, not distinct rows. A game listed twice in the
+ * sheet — «Absolute Fear -AOONI-» appears once per console — shares its cover
+ * with itself, and that is correct rather than suspect. Sixteen of the sheet's
+ * duplicate URLs are that case and keep their artwork.
+ *
+ * What the caller does with the answer is its own decision. The runner import
+ * drops the cover from these rows by default, because a listing with no picture
+ * falls back to the placeholder the shop designed, and that is plainly better
+ * than Just Dance artwork on an otome game.
+ */
+export function sharedCoverUrls(rows: readonly CatalogueRow[]): Map<string, string[]> {
+  const names = new Map<string, Set<string>>();
+  for (const row of rows) {
+    const url = (row.coverUrl || "").trim();
+    if (!url) continue;
+    const name = (row.englishName || "").trim().toLowerCase();
+    if (!names.has(url)) names.set(url, new Set());
+    names.get(url)!.add(name);
+  }
+  const shared = new Map<string, string[]>();
+  for (const [url, set] of names) {
+    if (set.size > 1) shared.set(url, [...set].sort());
+  }
+  return shared;
+}
+
+/**
+ * The same rows with the suspect covers taken off, and nothing else changed.
+ *
+ * Returns a new array; the rows that keep their cover are the same objects.
+ */
+export function withoutSharedCovers(rows: readonly CatalogueRow[]): {
+  rows: CatalogueRow[];
+  dropped: number;
+  shared: Map<string, string[]>;
+} {
+  const shared = sharedCoverUrls(rows);
+  if (shared.size === 0) return { rows: [...rows], dropped: 0, shared };
+  let dropped = 0;
+  const out = rows.map((row) => {
+    const url = (row.coverUrl || "").trim();
+    if (!url || !shared.has(url)) return row;
+    dropped += 1;
+    return { ...row, coverUrl: "" };
+  });
+  return { rows: out, dropped, shared };
+}
+
+/* ------------------------------------------------------------------ */
 /* Deciding a batch against a snapshot                                 */
 /* ------------------------------------------------------------------ */
 
