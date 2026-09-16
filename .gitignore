@@ -98,3 +98,5 @@ store-media-repair.md
 .perf-probe-bundle.mjs
 perf-probe.md
 .perf-probe-search.mjs
+.catalogue-import-bundle.mjs
+catalogue-import-runner.md

@@ -1,0 +1,290 @@
+#!/usr/bin/env node
+/**
+ * Finishing the supplier catalogue import from a runner, not a browser.
+ *
+ * The import posts a batch at a time to `/api/admin/catalogue-import`, and that
+ * is a Worker request. This shop is on the Cloudflare Workers **Free** plan —
+ * `wrangler deploy` said so itself, refusing a `limits` block with
+ * `CPU limits are not supported for the Free plan [code: 100328]` — and a
+ * catalogue write does not fit in the CPU a request on that plan is allowed.
+ * The owner's run died at batch 12 of 16 with an HTML 503, and nine
+ * `exceededCpu` kills for that route are in the telemetry.
+ *
+ * A GitHub Actions runner has no such ceiling. It can take as long as the work
+ * takes. So this does the same import, through the same code, from there.
+ *
+ * ## Same code, deliberately
+ *
+ * The rows are parsed by `parseCatalogueCsv` — the function the browser preview
+ * uses, so what a preview showed is what this does. Which existing product a
+ * row matches is decided by `decide` — the function the Worker route uses. The
+ * write goes through `updateStore` — the path the route writes through, with
+ * its revision guard, its 400 KB chunking and its admin-listing projection.
+ *
+ * None of that is reimplemented here. A second implementation of "which product
+ * is this row?" is how an import creates a duplicate of a game already on sale.
+ *
+ * ## What it will not do
+ *
+ * `create-only` is the default and `--mode refresh-prices` is the only way past
+ * it. In create-only, `buildListing` returns `action: "skip"` for every row that
+ * matches an existing product, so no price, cost, stock level, hidden flag,
+ * option, type, trade-in value or display order of anything already in the shop
+ * can be touched. New products are created hidden, exactly as the route creates
+ * them.
+ *
+ * Dry run is the default. `--apply` is a separate, deliberate word.
+ *
+ * ## The torn-write hazard, and why batches stay small
+ *
+ * Over the REST adapter a "batch" is a plain for-loop, not a transaction
+ * (`d1.server.ts`), and `persistStore` DELETEs the catalogue chunk rows before
+ * re-inserting them. A run interrupted between those two is a catalogue with
+ * missing chunks. So: the count of products is read back after every batch and
+ * the run stops on any decrease, rather than continuing to write on top of a
+ * catalogue that just lost rows.
+ *
+ * Usage:
+ *   node scripts/catalogue-import-runner.mjs --file import-sources/catalogue.csv
+ *   node scripts/catalogue-import-runner.mjs --file ... --apply
+ */
+
+import { build } from "esbuild";
+import { existsSync, readFileSync, writeFileSync } from "node:fs";
+import path from "node:path";
+
+const arg = (name, fallback) => {
+  const at = process.argv.indexOf(`--${name}`);
+  return at > -1 && process.argv[at + 1] && !process.argv[at + 1].startsWith("--")
+    ? process.argv[at + 1]
+    : fallback;
+};
+const flag = (name) => process.argv.includes(`--${name}`);
+
+const FILE = arg("file", "import-sources/catalogue.csv");
+const APPLY = flag("apply");
+const MODE = arg("mode", "create-only");
+const BATCH = Math.max(1, Math.min(Number(arg("batch", "100")), 250));
+const OUT = process.env.IMPORT_OUT || "catalogue-import-runner.md";
+
+const SECRETS = [process.env.CLOUDFLARE_API_TOKEN, process.env.CLOUDFLARE_ACCOUNT_ID].filter(
+  (v) => v && v.length >= 8,
+);
+const redact = (t) => SECRETS.reduce((s, x) => s.split(x).join("«redacted»"), String(t ?? ""));
+const lines = [];
+const say = (t = "") => {
+  const s = redact(t);
+  lines.push(s);
+  console.log(s);
+};
+const finish = (code) => {
+  writeFileSync(OUT, lines.join("\n") + "\n");
+  process.exit(code);
+};
+
+say(`# Catalogue import — from a runner`);
+say();
+say(`Run at ${new Date().toISOString()} — mode: **${APPLY ? "APPLY" : "dry run"}**, ${MODE}.`);
+say();
+
+if (MODE !== "create-only" && MODE !== "refresh-prices") {
+  say(`**Refused** — \`--mode\` must be \`create-only\` or \`refresh-prices\`.`);
+  finish(1);
+}
+if (!existsSync(FILE)) {
+  say(`**No catalogue file at \`${FILE}\`.**`);
+  say();
+  say(`The supplier list is not in this repository — it has only ever existed as a file`);
+  say(`uploaded to the admin modal in a browser. Commit it (or pass \`--file\`) and this`);
+  say(`finishes the import without anyone clicking through sixteen batches.`);
+  finish(1);
+}
+
+/*
+  The database id is committed in `wrangler.jsonc`; the
+  `CLOUDFLARE_D1_DATABASE_ID` secret in this repository is empty.
+*/
+if (!process.env.D1_DATABASE_ID) {
+  const found = /"database_id"\s*:\s*"([^"]+)"/.exec(readFileSync("wrangler.jsonc", "utf8"));
+  if (found) process.env.D1_DATABASE_ID = found[1];
+}
+
+const outfile = path.resolve(".catalogue-import-bundle.mjs");
+await build({
+  entryPoints: ["scripts/lib/catalogue-import-entry.ts"],
+  outfile,
+  bundle: true,
+  format: "esm",
+  platform: "node",
+  target: "node22",
+  logLevel: "silent",
+  alias: { "@": path.resolve("src") },
+  external: ["cloudflare:workers", "node:async_hooks", "node:crypto", "sharp"],
+  plugins: [
+    {
+      name: "stub-tanstack-start-virtuals",
+      setup(pluginBuild) {
+        /* Reached by the import graph, never by a call — see the entry's note. */
+        const virtual = /^(#tanstack-router-entry|#tanstack-start-entry|tanstack-start-manifest:)/;
+        pluginBuild.onResolve({ filter: virtual }, (a) => ({
+          path: a.path,
+          namespace: "start-virtual",
+        }));
+        pluginBuild.onLoad({ filter: /.*/, namespace: "start-virtual" }, () => ({
+          contents: "export default {}; export const getStartManifest = () => ({});",
+          loader: "js",
+        }));
+      },
+    },
+  ],
+});
+const app = await import(outfile);
+
+/* ------------------------------------------------------------------ */
+/* What the file says                                                  */
+/* ------------------------------------------------------------------ */
+
+const parsed = app.parseCatalogueCsv(readFileSync(FILE, "utf8"));
+say(`## The file`);
+say();
+say(`- \`${FILE}\``);
+say(`- valid rows: **${parsed.rows.length.toLocaleString("en-US")}**`);
+say(`- rows the parser refused: **${parsed.issues.length}**`);
+if (parsed.issues.length) {
+  say();
+  say(`| line | why |`);
+  say(`| --- | --- |`);
+  for (const issue of parsed.issues.slice(0, 25)) {
+    say(`| ${issue.line ?? "—"} | ${String(issue.message).replace(/\|/g, "\\|")} |`);
+  }
+  if (parsed.issues.length > 25) say(`| … | ${parsed.issues.length - 25} more |`);
+}
+const dupes = app.duplicateNames(parsed.rows);
+if (dupes.length) {
+  say();
+  say(`- names appearing more than once in the file: **${dupes.length}**`);
+}
+say();
+if (!parsed.rows.length) {
+  say(`Nothing to import.`);
+  finish(1);
+}
+
+/*
+  The database comes after the file on purpose: a malformed CSV is worth
+  reporting whether or not this runner can reach production, and that makes the
+  file checkable from anywhere the repository is.
+*/
+const reachable = await app.d1All("SELECT count(*) AS n FROM store_kv").catch(() => []);
+if (!reachable.length) {
+  say(`**D1 unreachable from this runner.** The file above was read; nothing was written.`);
+  finish(1);
+}
+
+/* ------------------------------------------------------------------ */
+/* What it would do                                                    */
+/* ------------------------------------------------------------------ */
+
+const before = await app.getStore();
+const beforeCount = (before.products ?? []).length;
+say(`## The catalogue now`);
+say();
+say(`- products: **${beforeCount.toLocaleString("en-US")}**`);
+say();
+
+const preview = app.decide(before, parsed.rows, MODE);
+say(`## What this run would do`);
+say();
+say(`- create: **${preview.created.toLocaleString("en-US")}**`);
+say(`- update: **${preview.updated.toLocaleString("en-US")}**`);
+say(
+  `- leave alone: **${(parsed.rows.length - preview.created - preview.updated).toLocaleString("en-US")}**`,
+);
+say();
+if (MODE === "create-only" && preview.updated > 0) {
+  say(`**Refused** — create-only decided to update ${preview.updated} rows, which it must never`);
+  say(`do. Something has changed in \`buildListing\`; stopping rather than writing.`);
+  finish(1);
+}
+if (!APPLY) {
+  say(`Dry run. Nothing was written. Re-run with \`--apply\` to write.`);
+  finish(0);
+}
+
+/* ------------------------------------------------------------------ */
+/* Writing                                                             */
+/* ------------------------------------------------------------------ */
+
+say(`## Writing`);
+say();
+say(`| batch | rows | created | updated | products after | ms |`);
+say(`| --- | --- | --- | --- | --- | --- |`);
+
+let created = 0;
+let updated = 0;
+let last = beforeCount;
+
+for (let at = 0; at < parsed.rows.length; at += BATCH) {
+  const slice = parsed.rows.slice(at, at + BATCH);
+  const started = Date.now();
+  let decision;
+  try {
+    await app.updateStore((current) => {
+      decision = app.decide(current, slice, MODE);
+      return { ...current, products: decision.products };
+    });
+    app.invalidateStoreCache();
+  } catch (err) {
+    say(`| ${at / BATCH + 1} | ${slice.length} | — | — | — | failed |`);
+    say();
+    say(`**Stopped:** ${redact(String(err).slice(0, 300))}`);
+    say(`What was written before this batch stays written; re-running skips it.`);
+    finish(1);
+  }
+
+  /*
+    The supplier's Chinese name, through the same guarded writer the route uses.
+    It is private by the owner's instruction and never printed here.
+  */
+  if (decision?.names?.length) {
+    try {
+      const statements = app.supplierNameStatements(decision.names);
+      if (statements.length) {
+        await app.d1Batch(statements.map((s) => ({ sql: s.sql, binds: s.params })));
+      }
+    } catch {
+      /* A supplier name is metadata; a failure here does not fail the import. */
+    }
+  }
+
+  created += decision?.created ?? 0;
+  updated += decision?.updated ?? 0;
+
+  const after = await app.getStore();
+  const count = (after.products ?? []).length;
+  say(
+    `| ${at / BATCH + 1} | ${slice.length} | ${decision?.created ?? 0} | ${decision?.updated ?? 0} | ${count.toLocaleString("en-US")} | ${Date.now() - started} |`,
+  );
+
+  /*
+    A REST "batch" is a for-loop, not a transaction, and `persistStore` deletes
+    the catalogue chunk rows before rewriting them. If the count ever falls, a
+    write was torn — and the worst thing to do then is write again on top of it.
+  */
+  if (count < last) {
+    say();
+    say(`**Stopped: the catalogue lost products.** ${last} before this batch, ${count} after.`);
+    say(`Nothing further is written. Check \`store_kv\` chunk rows before re-running.`);
+    finish(1);
+  }
+  last = count;
+}
+
+say();
+say(
+  `Created **${created.toLocaleString("en-US")}**, updated **${updated.toLocaleString("en-US")}**.`,
+);
+say(
+  `Catalogue: ${beforeCount.toLocaleString("en-US")} → **${last.toLocaleString("en-US")}** products.`,
+);
+finish(0);
