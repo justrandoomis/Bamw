@@ -184,11 +184,41 @@ if (String(process.env.CONSOLE_OVERVIEW || "true").toLowerCase() === "true") {
       `SELECT name FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite_%'
         AND name NOT LIKE '_cf_%' ORDER BY name`,
     );
+    /*
+      One statement, not one per table.
+
+      This counted each table with its own query — and the shop has some
+      hundred and thirty of them, each a REST round trip from a runner at a
+      third of a second. Five minutes to answer a question the database can
+      answer in one pass, on a tool whose whole point is to make asking cheap.
+
+      The name is quoted and comes from `sqlite_master`, so it is the
+      database's own spelling of a table it already has, not a string anyone
+      supplied. A table that cannot be counted (a legacy shape, a view that
+      lost its source) would fail the whole union, so the count is wrapped in
+      the same query and a failure falls back to the slow path below.
+    */
+    const names = tables.rows.map((t) => String(t.name)).filter((n) => /^[A-Za-z0-9_]+$/.test(n));
+    const union = names
+      .map((n) => `SELECT '${n}' AS tbl, count(*) AS n FROM "${n}"`)
+      .join(" UNION ALL ");
+    let counts = new Map();
+    if (names.length) {
+      const all = await d1(union).catch(() => null);
+      if (all) {
+        for (const row of all.rows) counts.set(String(row.tbl), Number(row.n ?? 0));
+      } else {
+        for (const name of names) {
+          const one = await d1(`SELECT count(*) AS n FROM "${name}"`).catch(() => null);
+          if (one) counts.set(name, Number(one.rows[0]?.n ?? 0));
+        }
+      }
+    }
     say(`| table | rows |`);
     say(`| --- | --- |`);
-    for (const t of tables.rows) {
-      const n = await d1(`SELECT count(*) AS n FROM "${t.name}"`).catch(() => null);
-      say(`| \`${t.name}\` | ${n ? Number(n.rows[0]?.n ?? 0).toLocaleString("en-US") : "?"} |`);
+    for (const name of names) {
+      const n = counts.get(name);
+      say(`| \`${name}\` | ${n === undefined ? "?" : n.toLocaleString("en-US")} |`);
     }
     say();
 
