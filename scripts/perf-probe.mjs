@@ -382,6 +382,8 @@ const now = Date.now();
 const span = Math.floor((HOURS * 3600 * 1000) / WINDOWS);
 const perRoute = new Map();
 const kills = new Map();
+/** How much CPU each killed invocation had spent — the ceiling, approximately. */
+const killCpu = new Map();
 let read = 0;
 let refused = "";
 
@@ -421,6 +423,26 @@ for (let w = 0; w < WINDOWS; w++) {
     if (outcome !== "ok") {
       const key = `${outcome} · ${route}`;
       kills.set(key, (kills.get(key) ?? 0) + 1);
+      /*
+        How much CPU a killed invocation had spent when it was killed.
+
+        This counted the kills and dropped this number, which is why the report
+        could say `exceededCpu` thirty-one times against twenty that finished
+        and still not say what ceiling was being hit. A killed invocation's
+        reported CPU is approximately that ceiling, and the ceiling is the
+        whole question: Cloudflare's documented default for a paid account is
+        thirty seconds, but a dashboard-set `cpu_ms` overrides it and is
+        invisible to this repository, and a legacy Bundled plan caps at fifty
+        milliseconds.
+
+        Read it against the successful column. If the successes top out just
+        below where the kills sit, the ceiling is there — and no amount of
+        shaving tens of milliseconds off a handler will help.
+      */
+      if (Number.isFinite(cpu)) {
+        if (!killCpu.has(key)) killCpu.set(key, []);
+        killCpu.get(key).push(cpu);
+      }
       continue;
     }
     if (!Number.isFinite(cpu)) continue;
@@ -472,11 +494,22 @@ say();
 if (kills.size === 0) {
   say(`None in the sample.`);
 } else {
-  say(`| outcome · route | count |`);
-  say(`| --- | --- |`);
+  say(`| outcome · route | count | cpu p50 | cpu max | cpu min |`);
+  say(`| --- | --- | --- | --- | --- |`);
   for (const [key, n] of [...kills.entries()].sort((a, b) => b[1] - a[1])) {
-    say(`| \`${mask(key)}\` | ${n} |`);
+    const cpus = (killCpu.get(key) ?? []).slice().sort((a, b) => a - b);
+    const p50 = cpus.length ? pct(cpus, 50) : "—";
+    const max = cpus.length ? cpus[cpus.length - 1] : "—";
+    const min = cpus.length ? cpus[0] : "—";
+    say(`| \`${mask(key)}\` | ${n} | ${p50} | ${max} | ${min} |`);
   }
+  say();
+  say(
+    `> The CPU a killed invocation had spent when it was killed — approximately ` +
+      `the ceiling it hit. Compare it with the successful column above: if the ` +
+      `successes stop just short of where these sit, that is the limit, and it is ` +
+      `not the thirty seconds Cloudflare documents as the paid default.`,
+  );
 }
 say();
 

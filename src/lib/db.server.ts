@@ -341,7 +341,27 @@ function fixDisplayUrl(url?: string | null): string | undefined {
   return trimmed;
 }
 
+/**
+ * Objects this function has itself produced.
+ *
+ * `loadStore` normalises every product on the way out of D1 (line ~705), then
+ * normalises the same objects again at the section sweep (~817), and
+ * `persistStore` normalises them a third time before writing (~976). Passes two
+ * and three run over records that pass one already produced: the function is a
+ * fixed point on its own output, so they cost a full rebuild of the catalogue —
+ * three per import batch — and change nothing.
+ *
+ * Identity is the check, not a flag on the record: nothing is written to the
+ * product, so nothing about what a product *contains* changes. Any object this
+ * function did not mint — a record straight from JSON.parse, a granular
+ * overlay, a listing `buildListing` just built, an admin's edited copy — is
+ * absent from the set and is normalised exactly as before. A `WeakSet` holds no
+ * strong reference, so a catalogue that goes out of scope is still collected.
+ */
+const alreadyNormalized = new WeakSet<object>();
+
 export function normalizeProductRecord(p: any): Product {
+  if (p && typeof p === "object" && alreadyNormalized.has(p)) return p as Product;
   if (!p || typeof p !== "object") {
     return {
       id: `prod_${Date.now()}`,
@@ -407,7 +427,7 @@ export function normalizeProductRecord(p: any): Product {
   const coverImage = fixDisplayUrl(p.coverImage);
   const image = fixDisplayUrl(p.image || boxFront || coverUrl || knownCover);
 
-  return {
+  const out = {
     ...p,
     id,
     title,
@@ -451,6 +471,8 @@ export function normalizeProductRecord(p: any): Product {
       ? { devicePerformance: dedupeDevicePerformance(getDevicePerformanceList(p)) }
       : {}),
   };
+  alreadyNormalized.add(out);
+  return out;
 }
 
 function chunkJson(value: unknown): string[] {

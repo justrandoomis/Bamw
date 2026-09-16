@@ -95,10 +95,28 @@ async function postBatch(payload: unknown): Promise<BatchAttempt> {
       400 is this batch being wrong and will be wrong again.
     */
     const retryable = response.status === 0 || response.status >= 500 || response.status === 429;
+    /*
+      Keep the number on Cloudflare's own error page.
+
+      The browser had it and threw it away for a generic sentence, which is why
+      the owner's screenshot of a failed batch could not say *why* the batch
+      failed. `1102` is "exceeded resource limits" — CPU or memory — and `1101`
+      is an exception the Worker threw; they call for opposite fixes, and the
+      page carries whichever it is. `cf-ray` identifies the exact request in
+      Cloudflare's own logs.
+
+      An error page has no product and no customer on it, so showing it here
+      keeps nothing it should not.
+    */
+    const cfCode = (raw.match(/Error\s*(\d{4})/) || [])[1] || "";
+    const ray = response.headers.get("cf-ray") || "";
+    const edge = [cfCode && `Cloudflare ${cfCode}`, ray && `ray ${ray}`]
+      .filter(Boolean)
+      .join(" · ");
     const detail =
       parsed?.error ||
       (raw.trimStart().startsWith("<")
-        ? "ردّ الخادم صفحة خطأ بدل البيانات"
+        ? `ردّ الخادم صفحة خطأ بدل البيانات${edge ? ` (${edge})` : ""}`
         : raw.slice(0, 120).trim());
     return {
       ok: false,
@@ -108,7 +126,12 @@ async function postBatch(payload: unknown): Promise<BatchAttempt> {
     };
   }
   if (!parsed) {
-    return { ok: false, status: response.status, message: "ردّ غير مفهوم من الخادم", retryable: true };
+    return {
+      ok: false,
+      status: response.status,
+      message: "ردّ غير مفهوم من الخادم",
+      retryable: true,
+    };
   }
   return { ok: true, payload: parsed };
 }
@@ -178,11 +201,7 @@ export default function CatalogueImportModal({
    * still runs the compaction — what was written stays written, and leaving the
    * granular rows behind is what makes the *next* load of the shop slower.
    */
-  const run = async (
-    rows: CatalogueRow[],
-    apply: boolean,
-    from = 0,
-  ): Promise<RunTotals | null> => {
+  const run = async (rows: CatalogueRow[], apply: boolean, from = 0): Promise<RunTotals | null> => {
     const totals: RunTotals = { created: 0, updated: 0, skipped: 0, failures: [] };
     const batches = Math.ceil(rows.length / BATCH_SIZE);
     setProgress({ done: from, total: batches });
@@ -302,8 +321,8 @@ export default function CatalogueImportModal({
               استيراد قائمة الألعاب من ملف CSV
             </h3>
             <p className="mt-1 text-xs text-muted-foreground">
-              تُنشر كل لعبة باسمها وسعر حساب الأوفلاين فقط. الاسم الصيني والتكلفة للأدمن وحده،
-              ولا يظهران للعميل في أي مكان. الاستيراد يضيف ولا يعدّل: أي لعبة موجودة تُترك كما هي.
+              تُنشر كل لعبة باسمها وسعر حساب الأوفلاين فقط. الاسم الصيني والتكلفة للأدمن وحده، ولا
+              يظهران للعميل في أي مكان. الاستيراد يضيف ولا يعدّل: أي لعبة موجودة تُترك كما هي.
             </p>
           </div>
           <button
@@ -347,8 +366,8 @@ export default function CatalogueImportModal({
               {dupes.length > 0 && (
                 <p className="mt-2 flex items-start gap-1.5 text-xs text-amber-700 dark:text-amber-300">
                   <AlertTriangle className="mt-0.5 h-3.5 w-3.5 shrink-0" />
-                  اسم مكرر في الملف ({dupes.length}): {dupes.slice(0, 5).join("، ")} — سيُحفظ آخر
-                  صف فقط لكل اسم.
+                  اسم مكرر في الملف ({dupes.length}): {dupes.slice(0, 5).join("، ")} — سيُحفظ آخر صف
+                  فقط لكل اسم.
                 </p>
               )}
             </div>
@@ -372,8 +391,8 @@ export default function CatalogueImportModal({
               <div className="rounded-xl border border-border p-4">
                 <p className="flex items-center gap-2 text-xs font-bold">
                   <Loader2 className="h-3.5 w-3.5 animate-spin" />
-                  {phase === "previewing" ? "جاري الفحص" : "جاري الاستيراد"} — دفعة{" "}
-                  {progress.done} من {progress.total}
+                  {phase === "previewing" ? "جاري الفحص" : "جاري الاستيراد"} — دفعة {progress.done}{" "}
+                  من {progress.total}
                 </p>
                 <div className="mt-2 h-1.5 w-full overflow-hidden rounded-full bg-muted">
                   <div
