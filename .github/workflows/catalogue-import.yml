@@ -12,7 +12,7 @@
 # anything already in the shop can change.
 name: Catalogue import (runner)
 
-run-name: Catalogue import — ${{ inputs.apply && 'APPLY' || 'dry run' }} · ${{ inputs.mode || 'create-only' }}
+run-name: Catalogue import — ${{ inputs.apply && 'APPLY' || 'dry run' }} · ${{ inputs.mode || 'refresh-content' }}
 
 on:
   workflow_dispatch:
@@ -34,6 +34,18 @@ on:
         description: "Rows per write"
         type: string
         default: "100"
+
+  # A dispatch is only accepted for a workflow on the default branch, so until
+  # this merges a push is the only way to exercise it. A push can never write:
+  # `apply` is an input, and an input a push does not supply is empty, so the
+  # run below is always a dry run.
+  push:
+    branches: [claude/gaming-platform-issues-keb1be]
+    paths:
+      - import-sources/catalogue.csv
+      - scripts/catalogue-import-runner.mjs
+      - scripts/lib/catalogue-import-entry.ts
+      - .github/workflows/catalogue-import.yml
 
 permissions:
   contents: read
@@ -71,7 +83,7 @@ jobs:
         run: |
           node scripts/catalogue-import-runner.mjs \
             --file "${{ inputs.file || 'import-sources/catalogue.csv' }}" \
-            --mode "${{ inputs.mode || 'create-only' }}" \
+            --mode "${{ inputs.mode || 'refresh-content' }}" \
             --batch "${{ inputs.batch || '100' }}" \
             ${{ inputs.apply && '--apply' || '' }}
       - name: Upload
