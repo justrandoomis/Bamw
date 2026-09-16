@@ -168,8 +168,36 @@ export function useStoreData() {
     queryKey: ["store"],
     queryFn: fetchStoreData,
     initialData: () => getCachedStoreData(),
+    /*
+      The snapshot from the device is for first paint and nothing else, so it
+      is stale the moment it is handed over. Without this, `staleTime` below
+      would make a restored snapshot count as fresh and the mount would issue
+      no request at all — which would leave an admin's cached catalogue sitting
+      on the device for the length of the window, and a shopper looking at
+      whatever the last visit left behind.
+    */
+    initialDataUpdatedAt: 0,
     placeholderData: (previousData) => previousData,
-    staleTime: 0,
+    /*
+      Fifteen seconds, which is a deliberate trade and not a rounding.
+
+      With `staleTime: 0` every component that mounts this hook — the root, the
+      home view, a product page — fired its own revalidation, and returning to
+      the tab fired another. That is a five-megabyte catalogue read per mount
+      on a cold isolate, for a payload that had not changed.
+
+      What it costs: the server is not itself stale for long. `getStore` holds
+      a snapshot for sixty seconds but re-checks `store_rev` whenever the
+      250 ms grace has passed, so an admin's price edit reaches the server's
+      answer in about a quarter of a second. This moves the *client's* worst
+      case from that to fifteen seconds, and only on listing cards — the
+      product page has its own query, and checkout re-prices from the
+      catalogue on the server, so nobody is ever charged a figure this window
+      let them see.
+
+      Focus still revalidates, so coming back to the tab is immediate.
+    */
+    staleTime: 15_000,
     gcTime: 24 * 60 * 60_000,
     refetchOnMount: true,
     refetchOnWindowFocus: true,

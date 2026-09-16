@@ -1,3 +1,4 @@
+import { catalogueCacheKey } from "@/lib/catalogueCacheKey";
 import { createFileRoute } from "@tanstack/react-router";
 
 import {
@@ -216,9 +217,10 @@ function slimStore(store: any, options?: { page?: number; limit?: number; catego
 
   if (options?.category) {
     const cat = options.category.toLowerCase();
-    products = products.filter((p: any) => 
-      String(p?.category || "").toLowerCase() === cat ||
-      String(p?.categoryId || "").toLowerCase() === cat
+    products = products.filter(
+      (p: any) =>
+        String(p?.category || "").toLowerCase() === cat ||
+        String(p?.categoryId || "").toLowerCase() === cat,
     );
   }
 
@@ -263,7 +265,7 @@ function publicPayload(
   store: StoreDoc,
   availability: AdminAvailabilityStatus | undefined,
   slim: boolean,
-  options?: { page?: number; limit?: number; category?: string }
+  options?: { page?: number; limit?: number; category?: string },
 ): string {
   const availabilityKey = JSON.stringify(availability ?? null);
   const currentVersion = getStoreCacheVersion();
@@ -286,6 +288,23 @@ function publicPayload(
   }
   if (slim) return (cache.slim ??= JSON.stringify(slimStore(cache.visible)));
   return (cache.full ??= JSON.stringify(cache.visible));
+}
+
+/**
+ * The Worker's shared cache, which the DOM's `CacheStorage` type does not name.
+ *
+ * `caches.default` is a Cloudflare extension: one cache per zone, shared by
+ * every isolate, with no `open()` call and no `vary` negotiation. This project
+ * does not install `@cloudflare/workers-types` — adding it to reach one
+ * property would change how every ambient global in the tree is typed — so the
+ * shape is named narrowly here instead.
+ *
+ * Returns undefined outside a Worker, which is what the test runner and a
+ * local Node process are, so the caller falls through to building the payload.
+ */
+function workerCache(): Cache | undefined {
+  const store = (globalThis as { caches?: { default?: Cache } }).caches;
+  return store?.default;
 }
 
 export const Route = createFileRoute("/api/data")({
@@ -383,6 +402,55 @@ export const Route = createFileRoute("/api/data")({
             });
           }
 
+          /*
+            The public catalogue, held in the Worker's own cache and keyed on
+            the revision that built it.
+
+            A cold isolate answering a shopper used to call `getStore()`: read
+            fourteen chunks out of D1, concatenate five megabytes of JSON, parse
+            it, normalise seventeen hundred products, then build the slim
+            payload — for a body that is byte-identical to the one the isolate
+            next door just built. The edge cache could not help, because one URL
+            answers admins and shoppers and so the response carries
+            `vary: cookie`.
+
+            This cache is inside the Worker, so `vary` does not apply to it and
+            the admin branch simply never reaches it.
+
+            It is keyed on `store_rev` rather than on a clock, and that is what
+            makes it safe rather than a bet. `persistStore` writes the next
+            revision into the *same* `d1Batch` as the catalogue chunks, so any
+            change to a price, a cost, a stock figure or a visibility flag moves
+            the revision, which moves the key, which means the entry built from
+            the old figures is never asked for again. There is no window in
+            which a cached body quotes a price the shop has changed.
+
+            Revision zero means the revision could not be read, and an answer
+            built without knowing which catalogue it came from is not one to
+            keep.
+          */
+          const cacheKeyUrl = catalogueCacheKey({
+            version: catalogVersion,
+            slim,
+            page,
+            limit,
+            category,
+            isAdmin: Boolean(viewer?.isAdmin),
+          });
+          const cacheKey = cacheKeyUrl ? new Request(cacheKeyUrl, { method: "GET" }) : null;
+
+          if (cacheKey) {
+            const cached = await workerCache()
+              ?.match(cacheKey)
+              .catch(() => undefined);
+            if (cached) {
+              const headers = new Headers(cached.headers);
+              headers.set("x-cache-status", "worker-hit");
+              headers.set("server-timing", `worker-cache;dur=${Date.now() - startTime}`);
+              return new Response(cached.body, { status: cached.status, headers });
+            }
+          }
+
           const store = await getStore();
           const duration = Date.now() - startTime;
 
@@ -415,12 +483,16 @@ export const Route = createFileRoute("/api/data")({
           }
 
           if (duration > 2000) {
-            console.warn(`[SLOW_REQUEST] /api/data reqId=${reqId} duration=${duration}ms url=${request.url}`);
+            console.warn(
+              `[SLOW_REQUEST] /api/data reqId=${reqId} duration=${duration}ms url=${request.url}`,
+            );
           } else {
-            console.log(`[PRODUCTS_FETCH_SUCCESS] reqId=${reqId} duration=${duration}ms productsCount=${store?.products?.length ?? 0}`);
+            console.log(
+              `[PRODUCTS_FETCH_SUCCESS] reqId=${reqId} duration=${duration}ms productsCount=${store?.products?.length ?? 0}`,
+            );
           }
 
-          const paginationOpts = (page > 0 || category) ? { page, limit, category } : undefined;
+          const paginationOpts = page > 0 || category ? { page, limit, category } : undefined;
 
           let payload: string;
           if (viewer?.isAdmin) {
@@ -464,7 +536,25 @@ export const Route = createFileRoute("/api/data")({
             vary: "cookie",
           };
           headers["x-cache-status"] = "fresh";
-          return new Response(payload, { headers });
+          const response = new Response(payload, { headers });
+
+          /*
+            Kept only when there is a catalogue worth keeping. An empty or
+            degraded answer is refused above; this is the second guard, so a
+            momentary emptiness reaching here by some route this file does not
+            know about cannot be pinned to a revision and handed to everyone.
+
+            The put is awaited rather than handed to `ctx.waitUntil`, because
+            `ctx` is not published to this layer — `server.ts` publishes `env`
+            and nothing else — and inventing a global to reach it would be a
+            worse trade than the few milliseconds this costs once per revision.
+          */
+          if (cacheKey && servesProducts) {
+            await workerCache()
+              ?.put(cacheKey, response.clone())
+              .catch(() => {});
+          }
+          return response;
         }),
 
       POST: async ({ request }) =>
