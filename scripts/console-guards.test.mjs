@@ -126,7 +126,22 @@ describe("what reaches the report", () => {
     expect(present("key", "store:products#003")).toBe("store:products#003");
   });
 
-  it("masks long digit runs, which here are identifiers", () => {
+  /*
+    The first report this console produced printed `store:content`'s size as
+    `«n»` — the one fact that row existed to give, masked as though a byte
+    count were somebody's phone number. A number SQLite returns as a number is
+    a count, a length or a timestamp; contact details arrive as text.
+  */
+  it("prints a large number in full rather than masking it as an identifier", () => {
+    expect(present("bytes", 10889492)).toBe("10889492");
+    expect(present("n", 1530)).toBe("1530");
+  });
+
+  it("still hides a number in a column whose name says it is private", () => {
+    expect(present("phone", 7701234567)).toMatch(/^«hidden»/);
+  });
+
+  it("masks long digit runs in text, which here are identifiers", () => {
     expect(present("slug", "order-1234567")).toBe("order-«n»");
   });
 

@@ -1031,6 +1031,13 @@ const SCHEMA_PATCHES: string[] = [
   // disc trades
   `CREATE TABLE IF NOT EXISTS disc_trades (id TEXT PRIMARY KEY, user_id TEXT NOT NULL, game_name TEXT NOT NULL, status TEXT NOT NULL DEFAULT 'pending', valuation_iqd INTEGER, created_at TEXT NOT NULL, updated_at TEXT NOT NULL)`,
   `CREATE INDEX IF NOT EXISTS disc_trades_user_idx ON disc_trades (user_id, created_at DESC)`,
+  /*
+    Same story as `product_reviews_due_idx`: the minute cron cancels trades
+    still pending after seven days, keyed on `(status, created_at)`, and the
+    only index here is keyed on the member. Production answered `SCAN
+    disc_trades`.
+  */
+  `CREATE INDEX IF NOT EXISTS disc_trades_pending_idx ON disc_trades (status, created_at)`,
   `ALTER TABLE disc_trades ADD COLUMN platform TEXT NOT NULL DEFAULT 'Nintendo Switch'`,
   `ALTER TABLE disc_trades ADD COLUMN condition TEXT NOT NULL DEFAULT 'like_new'`,
   `ALTER TABLE disc_trades ADD COLUMN notes TEXT`,
@@ -1172,6 +1179,20 @@ const SCHEMA_PATCHES: string[] = [
   `ALTER TABLE product_reviews ADD COLUMN instagram_proof_url TEXT`,
   `ALTER TABLE product_reviews ADD COLUMN is_auto_review INTEGER DEFAULT 0`,
   `ALTER TABLE product_reviews ADD COLUMN review_due_at TEXT`,
+  /*
+    The every-minute cron asks for the reviews that are due to auto-approve —
+    `status = 'pending' AND review_due_at <= ?` — and both indexes on this
+    table are keyed on somebody's id, so `EXPLAIN QUERY PLAN` in production
+    answered `SCAN product_reviews`: every review the shop has ever collected,
+    walked sixty times an hour to find the handful that are due.
+
+    It belongs here rather than beside those two, because `review_due_at` is
+    itself a patch. An index declared in the base schema would reference a
+    column that does not exist yet on a fresh database, and the bootstrap's
+    compatibility mode would skip it without complaint — leaving the scan in
+    place and this comment claiming otherwise.
+  */
+  `CREATE INDEX IF NOT EXISTS product_reviews_due_idx ON product_reviews (status, review_due_at)`,
   `ALTER TABLE product_reviews ADD COLUMN approved_at TEXT`,
   `ALTER TABLE product_reviews ADD COLUMN approved_by TEXT`,
   `ALTER TABLE product_reviews ADD COLUMN updated_at TEXT`,

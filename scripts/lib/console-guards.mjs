@@ -141,6 +141,13 @@ export function present(column, value, { preview = 220, redact = (t) => String(t
   if (value === null || value === undefined) return "—";
   const raw = typeof value === "object" ? JSON.stringify(value) : String(value);
   if (HIDDEN_COLUMN.test(String(column))) return `«hidden» (${raw.length} chars)`;
+  /*
+    A number that SQLite returned as a number is a count, a length or a
+    timestamp — never a phone number or an order code, which arrive as text.
+    The digit mask below was turning `store:content`'s size into `«n»` in the
+    first report this ran, which is the one fact that row was there to give.
+  */
+  if (typeof value === "number") return String(value);
   if (LOOKS_PRIVATE.some((re) => re.test(raw))) return `«looks private» (${raw.length} chars)`;
   const cut = raw.length > preview ? `${raw.slice(0, preview)}… (${raw.length} chars)` : raw;
   return maskDigits(redact(cut)).replace(/\|/g, "\\|").replace(/\s+/g, " ");

@@ -285,62 +285,28 @@ async function claimRunOnce(token) {
   return out.rows.length > 0;
 }
 
-let SQL = String(process.env.CONSOLE_SQL || "").trim();
-let APPLY_MODE = APPLY;
-
-/*
-  A pushed run has no form to type into, so its questions are committed in
-  `.db-console/read.sql`, and read whenever the run carried no SQL of its own.
-  Nothing about the file grants it anything: a write in there is refused
-  exactly as a dispatched one would be, because a push leaves `APPLY_MODE`
-  false and only the run-once file below can change that.
-*/
-const READ_FILE = process.env.CONSOLE_READ_FILE;
-if (!SQL && READ_FILE) {
+function read(path) {
   try {
-    SQL = readFileSync(READ_FILE, "utf8").trim();
+    return readFileSync(path, "utf8");
   } catch {
-    SQL = "";
+    return "";
   }
 }
 
-const APPLY_FILE = process.env.CONSOLE_APPLY_FILE;
-if (APPLY_FILE) {
-  let text = "";
-  try {
-    text = readFileSync(APPLY_FILE, "utf8");
-  } catch {
-    text = "";
-  }
-  const body = statementsIn(text.replace(/^\s*--[^\n]*$/gm, "")).join(";\n");
-  if (body.trim()) {
-    const token = (/--\s*run-once:\s*(\S+)/.exec(text) || [])[1];
-    say(`## Apply file \`${APPLY_FILE}\``);
-    say();
-    if (!token) {
-      failed = true;
-      say(`**Refused** — the file carries statements but no \`-- run-once: <id>\` header.`);
-      say(`Without one, a later push that touches this script would run them again.`);
-      say();
-    } else if (!(await claimRunOnce(token).catch(() => false))) {
-      say(`Token \`${token}\` was applied before. Nothing was run.`);
-      say();
-    } else {
-      say(`Claimed \`${token}\`. Running its statements with writes allowed.`);
-      say();
-      SQL = text;
-      APPLY_MODE = true;
-    }
-  }
-}
-
-if (SQL) {
-  say(`## SQL`);
+/**
+ * Runs one script's statements and prints what each did.
+ *
+ * `apply` is the caller's, never the script's: a file cannot talk its way into
+ * being allowed to write, only the run-once claim below can grant that.
+ */
+async function runStatements(heading, script, apply) {
+  const statements = statementsIn(script);
+  if (!statements.length) return;
+  say(`## ${heading}`);
   say();
-  const statements = statementsIn(SQL);
 
   for (const statement of statements) {
-    const why = refusal(statement, APPLY_MODE);
+    const why = refusal(statement, apply);
     say(`\`\`\`sql`);
     say(maskDigits(redact(statement)));
     say(`\`\`\``);
@@ -385,6 +351,44 @@ if (SQL) {
     }
   }
 }
+
+/*
+  The write goes first, so the questions after it are asked of the database it
+  leaves behind. A repair and the check that it worked in one run, rather than
+  a second push ninety seconds later to find out.
+*/
+const APPLY_FILE = process.env.CONSOLE_APPLY_FILE;
+if (APPLY_FILE) {
+  const text = read(APPLY_FILE);
+  /* Comments stripped first, so a file of nothing but prose counts as empty. */
+  if (statementsIn(text.replace(/^[ \t]*--[^\n]*$/gm, "")).length) {
+    const token = (/--\s*run-once:\s*(\S+)/.exec(text) || [])[1];
+    say(`## Apply file \`${APPLY_FILE}\``);
+    say();
+    if (!token) {
+      failed = true;
+      say(`**Refused** — the file carries statements but no \`-- run-once: <id>\` header.`);
+      say(`Without one, a later push that touches this script would run them again.`);
+      say();
+    } else if (!(await claimRunOnce(token).catch(() => false))) {
+      say(`Token \`${token}\` was applied before. Nothing was run.`);
+      say();
+    } else {
+      say(`Claimed \`${token}\`. Running its statements with writes allowed.`);
+      say();
+      await runStatements("Applied", text, true);
+    }
+  }
+}
+
+/*
+  A dispatched run types its SQL into the form. A pushed run has no form, so
+  its questions are committed in `.db-console/read.sql`. Neither is granted
+  anything by being in a file: `APPLY` is the dispatcher's tick box, and a push
+  leaves it false, so a write here is refused exactly as it would be inline.
+*/
+const asked = String(process.env.CONSOLE_SQL || "").trim() || read(process.env.CONSOLE_READ_FILE);
+await runStatements("SQL", asked, APPLY);
 
 /* --- 3. R2 ---------------------------------------------------------- */
 
