@@ -79,6 +79,17 @@ const BATCH = Math.max(1, Math.min(Number(arg("batch", "100")), 250));
   game — a wrong picture is worse than none. `all` trusts the sheet.
 */
 const COVERS = arg("covers", "unique-only");
+/*
+  A committed one-shot authorisation, for the same reason `.db-console` has one.
+
+  GitHub only accepts a `workflow_dispatch` for a workflow already on the
+  default branch, so until this merges the only trigger is a push — and a push
+  must never be able to write casually, or every later edit to this script would
+  re-import the catalogue. The token in this file is claimed in the database
+  before anything is written, so it authorises exactly one run, and the commit
+  that adds it is the reviewable record of who asked for it.
+*/
+const APPLY_TOKEN_FILE = arg("apply-token-file", "import-sources/apply.txt");
 const OUT = process.env.IMPORT_OUT || "catalogue-import-runner.md";
 
 const SECRETS = [process.env.CLOUDFLARE_API_TOKEN, process.env.CLOUDFLARE_ACCOUNT_ID].filter(
@@ -253,7 +264,43 @@ if (MODE === "create-only" && preview.updated > 0) {
   say(`do. Something has changed in \`buildListing\`; stopping rather than writing.`);
   finish(1);
 }
-if (!APPLY) {
+/*
+  Claimed against the same `console_runs` ledger the D1 console writes to, with
+  the same statement: `ON CONFLICT DO NOTHING RETURNING id` hands a row only to
+  the run that inserted it, so a second push finds the token spent and does
+  nothing.
+*/
+let apply = APPLY;
+if (!apply && existsSync(APPLY_TOKEN_FILE)) {
+  const token = readFileSync(APPLY_TOKEN_FILE, "utf8")
+    .split("\n")
+    .map((l) => l.trim())
+    .find((l) => l && !l.startsWith("#"));
+  if (token) {
+    say(`## Apply token`);
+    say();
+    await app.d1Run(
+      `CREATE TABLE IF NOT EXISTS console_runs (id TEXT PRIMARY KEY, applied_at INTEGER NOT NULL)`,
+    );
+    const claimed = await app
+      .d1All(
+        `INSERT INTO console_runs (id, applied_at) VALUES (?, ?)
+           ON CONFLICT(id) DO NOTHING RETURNING id`,
+        `import:${token}`,
+        Math.floor(Date.now() / 1000),
+      )
+      .catch(() => []);
+    if (claimed.length) {
+      say(`Claimed \`${token}\`. Writing.`);
+      apply = true;
+    } else {
+      say(`Token \`${token}\` was used before. This run stays a dry run.`);
+    }
+    say();
+  }
+}
+
+if (!apply) {
   say(`Dry run. Nothing was written. Re-run with \`--apply\` to write.`);
   finish(0);
 }
