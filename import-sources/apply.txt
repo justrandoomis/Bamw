@@ -1,4 +1,4 @@
-# The authorisation for a single import write. Empty on purpose.
+# The authorisation for a single import write. ARMED.
 #
 # This file is read by `scripts/catalogue-import-runner.mjs`. The first line
 # that is not blank and not a comment is a token; it is claimed in the
@@ -7,18 +7,10 @@
 # authorises exactly one run and then spends itself — a later push finds the
 # token already recorded and stays a dry run.
 #
-# As committed, there is no token here, so the import cannot write. That is
-# deliberate. GitHub only accepts a `workflow_dispatch` for a workflow already
-# on the default branch, so until `catalogue-import.yml` merges the only trigger
-# is a push, and a push that could write would re-import the catalogue every
-# time this script is edited afterwards.
+# The token at the bottom is live: the owner authorised this run in as many
+# words — «نفذ وانشر». It writes once and then spends itself.
 #
-# ## To authorise a run
-#
-# Uncomment the line at the bottom, or write a new token, and commit. The commit
-# is the record of who asked for it and what they were told it would do.
-#
-# ## What the last dry run said it would do
+# ## What the dry run said this would do, and what was authorised
 #
 # 2026-09-16T17:06Z, against a catalogue of 1,275 products, in `refresh-content`:
 #
@@ -37,4 +29,4 @@
 #
 # Result if applied: 1,714 products, 548 of them with verified artwork.
 
-# 2026-09-16-catalogue-content-refresh
+2026-09-16-catalogue-content-refresh
