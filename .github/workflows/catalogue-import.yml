@@ -66,6 +66,12 @@ jobs:
         with:
           node-version: 22
           cache: npm
+      # The lockfile carries a darwin-only workerd binary as an optional
+      # dependency, and the npm the runner ships with fails the whole install
+      # over it with EBADPLATFORM instead of skipping it. Every other workflow
+      # in this repository pins npm for exactly this reason; this one did not,
+      # and that is what the first run died on.
+      - run: npm install -g npm@11.19.1
       - run: npm ci --no-audit --no-fund
       - name: Mask identifiers
         env:
