@@ -466,9 +466,18 @@ export async function captureAttribution(params: {
     }
   }
 
-  const store = await getStore();
+  /*
+    The catalogue, only when a product was actually named.
+
+    This read it every time. Applying a code from the cart carries no product
+    reference at all, so the commonest use of this function paid for fourteen
+    chunks, five megabytes of JSON and seventeen hundred products normalised —
+    to look nothing up. On a cold isolate that is seconds; the deploy
+    verifier's `POST /api/referral`, which sends a code and no product, sat
+    unanswered until its connection was dropped.
+  */
   const product = params.productRef
-    ? (findProductByIdOrSlug(store?.products as unknown[], params.productRef) as
+    ? (findProductByIdOrSlug((await getStore())?.products as unknown[], params.productRef) as
         Record<string, unknown> | undefined)
     : undefined;
   const productId = product ? String(product["id"] ?? "") : "";

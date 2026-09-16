@@ -4,7 +4,7 @@ import { body, guard, json } from "@/lib/http.server";
 import { sessionSecretConfigured } from "@/lib/crypto.server";
 import { consumeRateLimit, rateLimitResponse } from "@/lib/rate-limit.server";
 import { getSessionUser, requireUser } from "@/lib/session.server";
-import { getStore } from "@/lib/db.server";
+import { getStore, getStoreSettings } from "@/lib/db.server";
 import { readReferralSettings } from "@/lib/referral/config";
 import { bpsToPercent, REFERRER_PERCENT_BPS } from "@/lib/referral/money";
 import { withCookies } from "@/lib/referral/cookies.server";
@@ -86,7 +86,10 @@ function toQuoteLines(raw: unknown): ReferralQuoteLine[] {
           other part of the selection — an id naming no add-on adds nothing.
         */
         dlcIds: Array.isArray(line.dlcIds)
-          ? line.dlcIds.slice(0, 20).map((id) => String(id)).filter(Boolean)
+          ? line.dlcIds
+              .slice(0, 20)
+              .map((id) => String(id))
+              .filter(Boolean)
           : null,
         offerKind: line.offerKind === undefined ? null : String(line.offerKind),
         title: line.title === undefined ? undefined : String(line.title),
@@ -139,8 +142,17 @@ export const Route = createFileRoute("/api/referral")({
           }
           const url = new URL(request.url);
           const viewer = await getSessionUser(request);
-          const store = await getStore();
-          const settings = readReferralSettings(store?.settings);
+          /*
+            The settings, not the shop.
+
+            This read the whole catalogue — fourteen chunks, five megabytes of
+            JSON, seventeen hundred products normalised — to reach one object of
+            referral percentages. On a cold isolate that is seconds, and the
+            deploy verifier's `POST /api/referral` sat unanswered long enough to
+            have its connection dropped. `getStoreMeta` loads the document with
+            `skipProducts`, so the catalogue is never assembled at all.
+          */
+          const settings = readReferralSettings(await getStoreSettings());
 
           const identity = await requestIdentity(request);
           if (viewer?.id) await bindIdentitiesToUser(viewer.id, identity);
@@ -172,10 +184,18 @@ export const Route = createFileRoute("/api/referral")({
             );
           }
 
+          /*
+            The catalogue, only when one product is actually being asked about.
+
+            A share link for a specific game needs that game's record; every
+            other call to this route does not, and used to pay for the whole
+            catalogue anyway.
+          */
           const product = url.searchParams.get("product");
           const productRecord = product
-            ? ((store?.products ?? []).find(
-                (entry) => String(entry.id) === product || String(entry.slug ?? "") === product,
+            ? ((((await getStore())?.products ?? []) as Record<string, unknown>[]).find(
+                (entry) =>
+                  String(entry["id"]) === product || String(entry["slug"] ?? "") === product,
               ) as Record<string, unknown> | undefined)
             : undefined;
 
@@ -200,9 +220,7 @@ export const Route = createFileRoute("/api/referral")({
             live attribution — never the text out of the link.
           */
           const supportingUserId = binding.referrerUserId || attribution?.referrerUserId || "";
-          const supporting = supportingUserId
-            ? await referrerPublicName(supportingUserId)
-            : null;
+          const supporting = supportingUserId ? await referrerPublicName(supportingUserId) : null;
 
           return withCookies(
             json({
@@ -354,7 +372,13 @@ export const Route = createFileRoute("/api/referral")({
             carries — so it is bounded like every other write. Generous enough
             that a member editing their cart never meets it.
           */
-          const throttle = await consumeRateLimit(request, "referral-quote", 60, 15 * 60, viewer.id);
+          const throttle = await consumeRateLimit(
+            request,
+            "referral-quote",
+            60,
+            15 * 60,
+            viewer.id,
+          );
           if (!throttle.allowed) return rateLimitResponse(throttle.retryAfter);
 
           const data = await body<{ lines?: unknown }>(request);
@@ -398,9 +422,7 @@ export const Route = createFileRoute("/api/referral")({
 
       /** Remove the referral before paying. */
       DELETE: async ({ request }) =>
-        guard(async () =>
-          withCookies(json({ ok: true }), [forgetAttributionCookie(request)]),
-        ),
+        guard(async () => withCookies(json({ ok: true }), [forgetAttributionCookie(request)])),
     },
   },
 });
