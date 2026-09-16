@@ -38,32 +38,32 @@
   },
 
   /*
-    The CPU ceiling, stated rather than inherited.
+    There is deliberately no `limits` block here, and the reason is the most
+    important fact about this Worker.
 
-    Cloudflare documents 30,000 ms as the default for a paid account, for both
-    a fetch handler and a cron under an hour. This Worker had no `limits` block
-    at all, and an absent block does not mean the default is in force: the limit
-    can also be set in the dashboard, where this repository cannot see it, and a
-    legacy Bundled plan caps at 50 ms regardless.
+    Setting one was an experiment: roughly half of every-minute cron firings
+    and nine catalogue-import batches were dying with `exceededCpu`, the
+    telemetry would not say what ceiling they hit, and Cloudflare documents
+    30,000 ms as the paid default. The deploy refused it:
 
-    Something is killing roughly half of every-minute cron firings and nine
-    catalogue-import batches with `exceededCpu`, and the telemetry cannot say
-    what ceiling they hit — killed invocations report ~10 ms of CPU while
-    successful ones on the same Worker run at 65, 191 and 461 ms, so the
-    recorded figure is not the limit.
+        CPU limits are not supported for the Free plan.
+        Switch to a paid plan ... to set CPU limits.  [code: 100328]
 
-    Writing the documented default here is an experiment with a prediction, not
-    a fix dressed up as one. If an override below the default was in force, this
-    restores it and the kills stop. If they continue, the ceiling was never the
-    constraint and the cause is isolate startup or the work itself — which is
-    worth knowing for certain, and costs one deploy to learn.
+    **This account is on the Workers Free plan, whose CPU limit is 10 ms per
+    invocation.** Every killed invocation in the telemetry reported exactly
+    10 ms of CPU — the every-minute cron, the catalogue import, `/api/chat`,
+    and a static `.webp` served straight from the ASSETS binding. A static file
+    does no handler work at all, so its kill was never about this codebase.
 
-    It cannot affect any data. The only thing it changes is how long a request
-    is allowed to compute before Cloudflare cuts it off.
+    That explains why three rounds of real optimisation barely moved the kill
+    rate: they removed tens of milliseconds from paths that have ten. Nothing
+    in this repository can make a server-rendered React route, or a write of a
+    five-megabyte catalogue, finish inside 10 ms of CPU.
+
+    So `limits` stays out until the plan changes — wrangler refuses the deploy
+    otherwise, and a repository that cannot deploy is worse than one that
+    cannot set a ceiling it is not allowed to have.
   */
-  "limits": {
-    "cpu_ms": 30000,
-  },
   "d1_databases": [
     {
       "binding": "bananto",
