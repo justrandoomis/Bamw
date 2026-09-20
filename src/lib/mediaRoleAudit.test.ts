@@ -83,7 +83,7 @@ describe("missing roles that break a specific surface", () => {
     void cartridgeImage;
     const issue = auditMediaRoles(noBox).find((i) => i.code === "missing-front-box");
     expect(issue).toBeDefined();
-    expect(issue!.message).toContain("/nintendo_games");
+    expect(issue!.message).toContain("المجسم ثلاثي الأبعاد");
   });
 
   it("warns about a missing square card and says where it shows", () => {
@@ -92,6 +92,7 @@ describe("missing roles that break a specific surface", () => {
     const issue = auditMediaRoles(noSquare).find((i) => i.code === "missing-square-card");
     expect(issue).toBeDefined();
     expect(issue!.message).toContain("ألعاب نينتندو سويتش");
+    expect(issue!.message).toContain("/nintendo_games");
   });
 });
 

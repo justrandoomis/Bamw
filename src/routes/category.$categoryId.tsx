@@ -3,14 +3,17 @@ import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import AppShell from "@/components/AppShell";
 import { api } from "@/lib/api";
 import { ProductCard } from "@/components/ProductCard";
+import { NintendoGameCard } from "@/components/NintendoGameCard";
 import { useState, useMemo, useEffect } from "react";
 import { useI18n } from "@/i18n";
+import { dirOf } from "@/lib/prefs";
 import { motion, AnimatePresence } from "motion/react";
 import { Filter, SortAsc, Calendar, Star, Tag, ChevronDown, Gamepad2 } from "lucide-react";
 import { cdnImage } from "@/lib/img";
 import { GAME_GENRES, genreLabel } from "@/lib/genres";
 import { getProductCategory, isGameProduct } from "@/lib/productSection";
 import { isVisibleToPublic } from "@/lib/purchasable";
+import { matchesNintendoPlatformFilter } from "@/lib/nintendoListing";
 
 export const Route = createFileRoute("/category/$categoryId")({
   component: CategoryPage,
@@ -78,7 +81,8 @@ function getProductGenres(p: any): string[] {
 function CategoryPage() {
   const { categoryId } = Route.useParams();
   const navigate = useNavigate();
-  const { t } = useI18n();
+  const { t, lang } = useI18n();
+  const direction = dirOf(lang);
 
   const [sortBy, setSortBy] = useState<SortOption>("newest");
   const [platform, setPlatform] = useState<PlatformOption>("all");
@@ -219,15 +223,7 @@ function CategoryPage() {
       if (!isCatMatch) return false;
 
       // Platform filter
-      if (platform !== "all") {
-        const pPlat = String(p.platform || "").toLowerCase();
-        if (platform === "switch1") {
-          if (pPlat !== "switch1" && pPlat !== "switch" && pPlat !== "both" && pPlat !== "")
-            return false;
-        } else if (platform === "switch2") {
-          if (pPlat !== "switch2" && pPlat !== "both") return false;
-        }
-      }
+      if (!matchesNintendoPlatformFilter(p, platform)) return false;
 
       // Genre filter
       if (selectedGenre !== "all") {
@@ -476,7 +472,7 @@ function CategoryPage() {
 
   return (
     <AppShell currentView="store" onBack={() => navigate({ to: "/" })}>
-      <div className="pb-24 bg-[var(--page)] min-h-screen" dir="rtl">
+      <div className="min-h-screen bg-[var(--page)] pb-24" dir={direction}>
         {/* Header Section / Banner Slideshow */}
         <div
           className={`relative pt-20 pb-10 px-6 overflow-hidden min-h-[260px] sm:min-h-[300px] flex items-center justify-center ${categoryInfo.bgColor}`}
@@ -543,7 +539,7 @@ function CategoryPage() {
                     <option value="price_desc">{t("السعر: من الأعلى")}</option>
                     <option value="rating">{t("التقييم")}</option>
                   </select>
-                  <ChevronDown className="w-3.5 h-3.5 text-muted-foreground absolute left-2.5 pointer-events-none" />
+                  <ChevronDown className="pointer-events-none absolute end-2.5 h-3.5 w-3.5 text-muted-foreground" />
                 </div>
 
                 {/* Platform selector pills */}
@@ -613,7 +609,9 @@ function CategoryPage() {
         </div>
 
         {/* Product Grid and Sidebar Filter */}
-        <div className="px-4 py-6 max-w-7xl mx-auto flex flex-col md:flex-row md:items-start gap-8">
+        <div
+          className={`mx-auto flex max-w-7xl flex-col gap-8 py-6 md:flex-row md:items-start ${isNintendoGames ? "px-3 sm:px-4" : "px-4"}`}
+        >
           {/* Desktop Sidebar Filter */}
           <div className="hidden md:block w-64 shrink-0 space-y-6 sticky top-24 z-10 self-start max-h-[calc(100vh-7rem)] overflow-y-auto no-scrollbar pb-2">
             <div className="bg-card/40 p-4 rounded-2xl border border-border/80">
@@ -624,7 +622,7 @@ function CategoryPage() {
               <div className="flex flex-col gap-1 max-h-[480px] overflow-y-auto no-scrollbar pe-1">
                 <button
                   onClick={() => setSelectedGenre("all")}
-                  className={`w-full text-right px-3.5 py-2 rounded-xl text-sm font-bold transition-all ${
+                  className={`w-full text-start px-3.5 py-2 rounded-xl text-sm font-bold transition-all ${
                     selectedGenre === "all"
                       ? "bg-red-500 text-white shadow-md shadow-red-500/20"
                       : "text-foreground hover:bg-card hover:translate-x-[-2px]"
@@ -638,7 +636,7 @@ function CategoryPage() {
                     <button
                       key={g.id}
                       onClick={() => setSelectedGenre(isSelected ? "all" : g.id)}
-                      className={`w-full text-right px-3.5 py-2 rounded-xl text-sm font-bold transition-all ${
+                      className={`w-full text-start px-3.5 py-2 rounded-xl text-sm font-bold transition-all ${
                         isSelected
                           ? "bg-red-500 text-white shadow-md shadow-red-500/20"
                           : "text-foreground hover:bg-card hover:translate-x-[-2px]"
@@ -665,7 +663,7 @@ function CategoryPage() {
                   <button
                     key={p.id}
                     onClick={() => setPlatform(p.id as PlatformOption)}
-                    className={`w-full text-right px-3.5 py-2 rounded-xl text-sm font-bold transition-all ${
+                    className={`w-full text-start px-3.5 py-2 rounded-xl text-sm font-bold transition-all ${
                       platform === p.id
                         ? "bg-foreground text-background shadow-md"
                         : "text-foreground hover:bg-card hover:translate-x-[-2px]"
@@ -679,32 +677,46 @@ function CategoryPage() {
           </div>
 
           {/* Product Cards Grid */}
-          <div className="flex-1">
+          <div className="min-w-0 flex-1">
             {isLoading ? (
-              <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-6" dir="ltr">
-                {[0, 1, 2, 3, 4, 5, 6, 7].map((i) => (
+              <div
+                className={
+                  isNintendoGames
+                    ? "grid grid-cols-3 gap-2 sm:grid-cols-4 sm:gap-3 lg:grid-cols-4 xl:grid-cols-5"
+                    : "grid grid-cols-2 gap-6 sm:grid-cols-2 lg:grid-cols-4"
+                }
+                dir={isNintendoGames ? direction : "ltr"}
+              >
+                {Array.from({ length: isNintendoGames ? 10 : 8 }, (_, i) => i).map((i) => (
                   <div
                     key={i}
-                    className="aspect-[3/4] bg-muted/20 rounded-2xl animate-pulse animate-skeleton-shimmer"
+                    className={`${isNintendoGames ? "aspect-[4/5] rounded-[14px]" : "aspect-[3/4] rounded-2xl"} animate-pulse animate-skeleton-shimmer bg-muted/20`}
                   />
                 ))}
               </div>
             ) : products.length > 0 ? (
               <div className="flex flex-col gap-6">
                 <div
-                  className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6"
-                  dir="ltr"
+                  className={
+                    isNintendoGames
+                      ? "grid grid-cols-3 gap-2 sm:grid-cols-4 sm:gap-3 lg:grid-cols-4 xl:grid-cols-5"
+                      : "grid grid-cols-2 gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-4"
+                  }
+                  dir={isNintendoGames ? direction : "ltr"}
                 >
-                  {products.map((p: any) => (
+                  {products.map((p: any, index: number) => (
                     <motion.div
                       key={p.id}
                       initial={{ opacity: 0, y: 10 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
+                      className="min-w-0"
                     >
-                      {/* /nintendo_games shows the vertical retail box, not
-                          the square card art the home strip uses. */}
-                      <ProductCard product={p} imageRole="front-box" />
+                      {isNintendoGames ? (
+                        <NintendoGameCard product={p} priority={index < 6} />
+                      ) : (
+                        <ProductCard product={p} imageRole="front-box" />
+                      )}
                     </motion.div>
                   ))}
                 </div>

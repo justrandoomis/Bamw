@@ -62,14 +62,14 @@ describe("each storefront surface renders its own semantic image", () => {
     expect(renderedSrc()).toBe(SQUARE);
   });
 
-  it("'أحدث إصدارات نينتندو' renders the Front Box Cover", () => {
+  it("a retail-box surface renders the Front Box Cover", () => {
     render(<NintendoCover product={fullyPopulated} usage="front-box" alt="x" />);
     expect(renderedSrc()).toBe(BOX);
   });
 
-  it("/nintendo_games renders the Front Box Cover", () => {
-    render(<NintendoCover product={fullyPopulated} usage="front-box" alt="x" />);
-    expect(renderedSrc()).toBe(BOX);
+  it("/nintendo_games renders the Square Card Image", () => {
+    render(<NintendoCover product={fullyPopulated} usage="square-card" alt="x" />);
+    expect(renderedSrc()).toBe(SQUARE);
   });
 
   it("the product detail cover renders the Cover Image", () => {
@@ -105,8 +105,8 @@ describe("a missing semantic image shows the placeholder, not another field", ()
     expect(renderedSrc()).toBe(NINTENDO_IMAGE_PLACEHOLDER);
   });
 
-  it("no box cover: the catalogue shows the placeholder, not the square card", () => {
-    render(<NintendoCover product={{ nintendoCardImage: SQUARE }} usage="front-box" alt="x" />);
+  it("no square card: the catalogue shows the placeholder, not the box cover", () => {
+    render(<NintendoCover product={{ cartridgeImage: BOX }} usage="square-card" alt="x" />);
     expect(renderedSrc()).toBe(NINTENDO_IMAGE_PLACEHOLDER);
   });
 

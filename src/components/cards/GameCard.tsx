@@ -10,12 +10,10 @@ import { getNintendoMedia, type NintendoMediaRole } from "@/lib/nintendoImages";
 /**
  * A game tile.
  *
- * The same component backs surfaces that want genuinely different pictures of
- * the same product — the home Switch strip wants square card art, the catalogue
- * and Latest releases want the vertical retail box — so the picture is not the
- * card's decision to make. `imageRole` is required at every Nintendo call site
- * and passed to the resolver verbatim; if that role has no artwork the card
- * shows the placeholder rather than borrowing another role's image.
+ * The same component can back surfaces that want genuinely different pictures
+ * of the same product, so the picture is not the card's decision to make.
+ * `imageRole` is passed to the resolver verbatim; if that role has no artwork
+ * the card shows the placeholder rather than borrowing another role's image.
  */
 export function GameCard({
   product,

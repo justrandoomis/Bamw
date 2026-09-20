@@ -54,9 +54,9 @@
  * never borrows from another.
  */
 export type NintendoMediaRole =
-  /** Compact platform card with a square-ish artwork window (home Switch strip). */
+  /** Compact game card with square artwork (home Switch strip and /nintendo_games). */
   | "square-card"
-  /** Vertical retail front box cover (Latest Nintendo releases, /nintendo_games). */
+  /** Vertical retail front box cover for box-art and case surfaces. */
   | "front-box"
   /** The product detail page's primary cover. */
   | "detail-cover"
