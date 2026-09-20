@@ -13,6 +13,36 @@ import {
 const errors = (raw: string) =>
   parseGameImport(raw).errors.filter((issue) => issue.severity === "error");
 
+describe("game sale price import", () => {
+  it("keeps before/after prices for the product, option and type", () => {
+    const result = parseGameImport(`
+schema_version=1
+name=Discounted Game
+platform=switch1
+price=9000
+original_price=15000
+option.1.id=offline_account
+option.1.name=Offline
+option.1.price=9000
+option.1.original_price=15000
+type.1.id=offline_extras
+type.1.name=Offline + DLC
+type.1.option_id=offline_account
+type.1.price=12500
+type.1.original_price=20000
+`);
+
+    expect(result.unknownFields).toEqual([]);
+    expect(result.data["originalPrice"]).toBe(15000);
+    expect(result.data["options"]).toEqual([
+      expect.objectContaining({ price: 9000, originalPrice: 15000 }),
+    ]);
+    expect(result.data["types"]).toEqual([
+      expect.objectContaining({ price: 12500, originalPrice: 20000 }),
+    ]);
+  });
+});
+
 describe("game device performance import", () => {
   it("keeps the generated template in sync with deeply nested fields", () => {
     const template = generateGameImportTemplate();

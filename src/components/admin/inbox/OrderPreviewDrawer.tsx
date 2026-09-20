@@ -23,7 +23,8 @@ interface OrderPreviewDrawerProps {
   onClose: () => void;
   order: Order | null;
   onClaim?: (orderId: string) => void;
-  onComplete?: (orderId: string) => void;
+  onComplete?: (orderId: string) => Promise<unknown> | void;
+  isCompleting?: boolean;
   onPrepare?: (orderId: string) => void;
   onOpenFullOrder?: () => void;
 }
@@ -34,6 +35,7 @@ export function OrderPreviewDrawer({
   order,
   onClaim,
   onComplete,
+  isCompleting = false,
   onPrepare,
   onOpenFullOrder,
 }: OrderPreviewDrawerProps) {
@@ -128,11 +130,12 @@ export function OrderPreviewDrawer({
               {order.status !== "completed" && onComplete && (
                 <button
                   type="button"
-                  onClick={() => onComplete(order.id)}
-                  className="flex-1 py-2 px-3 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-1.5 shadow-xs"
+                  onClick={() => void onComplete(order.id)}
+                  disabled={isCompleting}
+                  className="flex-1 py-2 px-3 bg-emerald-600 hover:bg-emerald-700 disabled:opacity-50 text-white rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-1.5 shadow-xs"
                 >
                   <CheckCircle2 className="w-4 h-4" />
-                  إكمال وتسليم الطلب
+                  {isCompleting ? "جارٍ الإكمال..." : "إكمال الطلب والانتقال للتالي"}
                 </button>
               )}
               {order.status !== "processing" && order.status !== "completed" && onPrepare && (

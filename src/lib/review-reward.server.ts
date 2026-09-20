@@ -31,7 +31,7 @@
  * it must not be able to fail the completion that earned it.
  */
 
-import { d1First, d1Run } from "./d1.server";
+import { d1First, d1Run, d1RunChanges, ensureCouponsSchema } from "./d1.server";
 import { getUserTelegramChatId } from "./telegram-notifications.server";
 import { escapeHtml, sendTelegramMessage, telegramMiniAppDeepLink } from "./telegram.server";
 import type { Order } from "./types";
@@ -77,7 +77,7 @@ let ledgerReady = false;
  * `order_id` is the primary key, so a second completion of the same order
  * cannot mint a second code however many paths call in.
  */
-async function ensureLedger(): Promise<void> {
+export async function ensureReviewRewardSchema(): Promise<void> {
   if (ledgerReady) return;
   await d1Run(`
     CREATE TABLE IF NOT EXISTS review_rewards (
@@ -89,6 +89,22 @@ async function ensureLedger(): Promise<void> {
       issued_at TEXT NOT NULL
     )
   `);
+  await d1Run(
+    `CREATE UNIQUE INDEX IF NOT EXISTS review_rewards_coupon_code_idx
+     ON review_rewards (coupon_code)`,
+  );
+  await d1Run(
+    `CREATE INDEX IF NOT EXISTS review_rewards_user_idx
+     ON review_rewards (user_id, issued_at DESC)`,
+  );
+  await d1Run(`
+    CREATE TABLE IF NOT EXISTS review_reward_notifications (
+      order_id TEXT PRIMARY KEY,
+      status TEXT NOT NULL,
+      attempted_at TEXT NOT NULL,
+      sent_at TEXT
+    )
+  `);
   ledgerReady = true;
 }
 
@@ -96,6 +112,140 @@ export interface ReviewReward {
   code: string;
   amountIqd: number;
   expiresAt: string;
+}
+
+interface RewardRow {
+  user_id: string;
+  coupon_code: string;
+  amount_iqd: number;
+  expires_at: string;
+  issued_at?: string;
+}
+
+const couponIdForOrder = (orderId: string) => `cpn_review_${orderId}`;
+
+async function ensureRewardCoupon(
+  orderId: string,
+  userId: string,
+  reward: ReviewReward,
+  issuedAt: string,
+): Promise<void> {
+  /*
+    The ledger is the durable entitlement; the coupon is its redeemable view.
+    If a Worker died between the two writes, any later read/submission repairs
+    the coupon with exactly the same code instead of minting a second reward.
+  */
+  const couponId = couponIdForOrder(orderId);
+  const repairedLegacyCoupon = await d1RunChanges(
+    `UPDATE coupons SET
+       discount_type = 'fixed', discount_value = ?, start_at = ?, expiration_at = ?,
+       usage_limit = 1, per_user_limit = 1, eligible_products = '[]',
+       eligible_categories = '[]', eligible_users = ?, min_order_amount = 0,
+       max_discount_amount = NULL, only_digital_products = 0, is_stackable = 0,
+       once_per_user_lifetime = 0
+     WHERE code = ? AND id IN (?, ?)`,
+    reward.amountIqd,
+    issuedAt,
+    reward.expiresAt,
+    JSON.stringify([userId]),
+    reward.code,
+    couponId,
+    `cpn_${reward.code}`,
+  );
+  if (repairedLegacyCoupon === 1) return;
+
+  await d1Run(
+    `INSERT INTO coupons (
+       id, code, discount_type, discount_value, start_at, expiration_at,
+       usage_limit, per_user_limit, eligible_products, eligible_categories,
+       eligible_users, min_order_amount, max_discount_amount, is_active,
+       only_digital_products, is_stackable, once_per_user_lifetime, created_at
+     ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+     ON CONFLICT(id) DO UPDATE SET
+       code = excluded.code,
+       discount_type = 'fixed',
+       discount_value = excluded.discount_value,
+       start_at = excluded.start_at,
+       expiration_at = excluded.expiration_at,
+       usage_limit = 1,
+       per_user_limit = 1,
+       eligible_products = '[]',
+       eligible_categories = '[]',
+       eligible_users = excluded.eligible_users,
+       min_order_amount = 0,
+       max_discount_amount = NULL,
+       only_digital_products = 0,
+       is_stackable = 0,
+       once_per_user_lifetime = 0`,
+    couponId,
+    reward.code,
+    "fixed",
+    reward.amountIqd,
+    issuedAt,
+    reward.expiresAt,
+    1,
+    1,
+    "[]",
+    "[]",
+    JSON.stringify([userId]),
+    0,
+    null,
+    1,
+    0,
+    0,
+    0,
+    issuedAt,
+  );
+}
+
+async function readReward(orderId: string): Promise<RewardRow | undefined> {
+  return d1First<RewardRow>(
+    `SELECT user_id, coupon_code, amount_iqd, expires_at, issued_at
+     FROM review_rewards WHERE order_id = ?`,
+    orderId,
+  );
+}
+
+async function claimInvitation(
+  orderId: string,
+  now: string,
+): Promise<"send" | "already_sent" | "busy"> {
+  const inserted = await d1RunChanges(
+    `INSERT OR IGNORE INTO review_reward_notifications
+       (order_id, status, attempted_at, sent_at)
+     VALUES (?, 'sending', ?, NULL)`,
+    orderId,
+    now,
+  );
+  if (inserted === 1) return "send";
+
+  const existing = await d1First<{ status: string; attempted_at: string }>(
+    `SELECT status, attempted_at FROM review_reward_notifications WHERE order_id = ?`,
+    orderId,
+  );
+  if (existing?.status === "sent") return "already_sent";
+
+  // A crashed Worker can leave a claim behind. Reclaim only after ten minutes;
+  // ordinary retries during the same completion stay silent.
+  const retryBefore = new Date(Date.parse(now) - 10 * 60 * 1000).toISOString();
+  const reclaimed = await d1RunChanges(
+    `UPDATE review_reward_notifications
+     SET status = 'sending', attempted_at = ?, sent_at = NULL
+     WHERE order_id = ? AND status != 'sent' AND attempted_at <= ?`,
+    now,
+    orderId,
+    retryBefore,
+  );
+  return reclaimed === 1 ? "send" : "busy";
+}
+
+async function releaseInvitationClaim(orderId: string, attemptedAt: string): Promise<void> {
+  await d1Run(
+    `DELETE FROM review_reward_notifications
+     WHERE order_id = ? AND status = 'sending' AND attempted_at = ?`,
+    orderId,
+    attemptedAt,
+  );
 }
 
 /**
@@ -110,21 +260,25 @@ export async function issueReviewReward(
 ): Promise<ReviewReward | null> {
   const userId = String(order.userId ?? "");
   const orderId = String(order.id ?? "");
-  if (!userId || !orderId) return null;
+  if (!userId || !orderId || order.status !== "completed") return null;
 
   try {
-    await ensureLedger();
+    await Promise.all([ensureReviewRewardSchema(), ensureCouponsSchema()]);
 
-    const existing = await d1First<{ coupon_code: string; amount_iqd: number; expires_at: string }>(
-      `SELECT coupon_code, amount_iqd, expires_at FROM review_rewards WHERE order_id = ?`,
-      orderId,
-    );
+    const existing = await readReward(orderId);
     if (existing?.coupon_code) {
-      return {
+      const reward = {
         code: existing.coupon_code,
         amountIqd: Number(existing.amount_iqd) || REWARD_AMOUNT_IQD,
         expiresAt: String(existing.expires_at),
       };
+      await ensureRewardCoupon(
+        orderId,
+        String(existing.user_id || userId),
+        reward,
+        String(existing.issued_at || options.now || new Date().toISOString()),
+      );
+      return reward;
     }
 
     const issuedAt = options.now ?? new Date().toISOString();
@@ -140,36 +294,9 @@ export async function issueReviewReward(
     for (let attempt = 0; attempt < 3; attempt += 1) {
       const code = mintCode();
       try {
-        await d1Run(
-          `INSERT INTO coupons (
-             id, code, discount_type, discount_value, start_at, expiration_at,
-             usage_limit, per_user_limit, eligible_products, eligible_categories,
-             eligible_users, min_order_amount, max_discount_amount, is_active,
-             only_digital_products, is_stackable, once_per_user_lifetime, created_at
-           ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`,
-          `cpn_${code}`,
-          code,
-          "fixed",
-          REWARD_AMOUNT_IQD,
-          issuedAt,
-          expiresAt,
-          /* One use in total, by one member: the one who earned it. */
-          1,
-          1,
-          "[]",
-          "[]",
-          JSON.stringify([userId]),
-          0,
-          null,
-          1,
-          0,
-          0,
-          0,
-          issuedAt,
-        );
-
-        await d1Run(
-          `INSERT INTO review_rewards (order_id, user_id, coupon_code, amount_iqd, expires_at, issued_at)
+        const inserted = await d1RunChanges(
+          `INSERT OR IGNORE INTO review_rewards
+             (order_id, user_id, coupon_code, amount_iqd, expires_at, issued_at)
            VALUES (?,?,?,?,?,?)`,
           orderId,
           userId,
@@ -178,8 +305,34 @@ export async function issueReviewReward(
           expiresAt,
           issuedAt,
         );
-
-        return { code, amountIqd: REWARD_AMOUNT_IQD, expiresAt };
+        const winner = await readReward(orderId);
+        if (!winner?.coupon_code) continue;
+        const reward = {
+          code: winner.coupon_code,
+          amountIqd: Number(winner.amount_iqd) || REWARD_AMOUNT_IQD,
+          expiresAt: String(winner.expires_at),
+        };
+        try {
+          await ensureRewardCoupon(
+            orderId,
+            String(winner.user_id || userId),
+            reward,
+            String(winner.issued_at || issuedAt),
+          );
+          return reward;
+        } catch (error) {
+          /* A fantastically unlikely code collision can be retried safely only
+             by the request that inserted this entitlement. A concurrent loser
+             must leave the winner's row alone and retry by reading it. */
+          if (inserted === 1 && winner.coupon_code === code) {
+            await d1Run(
+              `DELETE FROM review_rewards WHERE order_id = ? AND coupon_code = ?`,
+              orderId,
+              code,
+            ).catch(() => undefined);
+          }
+          throw error;
+        }
       } catch (error) {
         const message = error instanceof Error ? error.message : String(error);
         /*
@@ -188,16 +341,20 @@ export async function issueReviewReward(
           trying again with a new code.
         */
         if (/review_rewards/i.test(message)) {
-          const raced = await d1First<{ coupon_code: string; expires_at: string }>(
-            `SELECT coupon_code, expires_at FROM review_rewards WHERE order_id = ?`,
-            orderId,
-          );
+          const raced = await readReward(orderId);
           if (raced?.coupon_code) {
-            return {
+            const reward = {
               code: raced.coupon_code,
-              amountIqd: REWARD_AMOUNT_IQD,
+              amountIqd: Number(raced.amount_iqd) || REWARD_AMOUNT_IQD,
               expiresAt: String(raced.expires_at),
             };
+            await ensureRewardCoupon(
+              orderId,
+              String(raced.user_id || userId),
+              reward,
+              String(raced.issued_at || issuedAt),
+            );
+            return reward;
           }
         }
         if (attempt === 2) throw error;
@@ -231,9 +388,15 @@ export async function sendReviewInvitation(
   order: Order,
   options: { now?: string } = {},
 ): Promise<boolean> {
+  let invitationAttemptedAt = "";
   try {
     const userId = String(order.userId ?? "");
     if (!userId) return false;
+
+    /* The reward belongs to the completed order, not to Telegram. Mint it
+       before checking whether this member linked Telegram or enabled order
+       notices; otherwise those preferences silently erase the coupon. */
+    const reward = await issueReviewReward(order, options);
 
     const chatId = await getUserTelegramChatId(userId);
     if (!chatId) return false;
@@ -248,7 +411,10 @@ export async function sendReviewInvitation(
     */
     if (!(await memberAllowsNotification(userId, "orders"))) return false;
 
-    const reward = await issueReviewReward(order, options);
+    invitationAttemptedAt = options.now ?? new Date().toISOString();
+    const claim = await claimInvitation(String(order.id ?? ""), invitationAttemptedAt);
+    if (claim === "already_sent") return true;
+    if (claim === "busy") return false;
 
     const lines = [
       "🎉 <b>تم اكتمال طلبك بنجاح!</b>",
@@ -287,8 +453,23 @@ export async function sendReviewInvitation(
       },
     });
 
-    return res.ok;
+    if (res.ok) {
+      await d1Run(
+        `UPDATE review_reward_notifications
+         SET status = 'sent', sent_at = ?
+         WHERE order_id = ? AND status = 'sending' AND attempted_at = ?`,
+        invitationAttemptedAt,
+        order.id,
+        invitationAttemptedAt,
+      );
+      return true;
+    }
+    await releaseInvitationClaim(String(order.id ?? ""), invitationAttemptedAt);
+    return false;
   } catch (error) {
+    if (invitationAttemptedAt && order?.id) {
+      await releaseInvitationClaim(String(order.id), invitationAttemptedAt).catch(() => undefined);
+    }
     console.warn("[review-reward:invite_failed]", {
       orderId: order?.id,
       error: error instanceof Error ? error.message : String(error),

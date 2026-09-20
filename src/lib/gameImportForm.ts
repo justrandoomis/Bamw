@@ -29,6 +29,7 @@ import {
   type ContentKind,
   type Platform,
 } from "./nintendoPricing";
+import { normalizeProductCompareAtPrices } from "./productPricing";
 
 /** The state a brand new product form starts with. */
 export function createBlankProductForm(defaultCategoryId: string): Record<string, any> {
@@ -100,6 +101,7 @@ export function createBlankProductForm(defaultCategoryId: string): Record<string
     badge: "وفر 40%",
     bundleGamesSummary: "حزمة ألعاب مختارة بحساب كامل وجاهز",
     // Common
+    originalPrice: 0,
     price: 25000,
     cost: 18000,
     stock: 5,
@@ -205,7 +207,12 @@ export function buildProductSavePayload(
   formData: Record<string, any>,
   activeSchema?: { id?: string; kind?: string },
 ): Record<string, any> {
-  const normalizedFormData = normalizeNintendoAccountPricing(formData);
+  const normalizedFormData = normalizeProductCompareAtPrices(
+    normalizeNintendoAccountPricing(formData),
+  );
+  if (Array.isArray(normalizedFormData.types)) {
+    normalizedFormData.variants = normalizedFormData.types;
+  }
   const stableId =
     normalizedFormData.id || `prd_${safeRandomUUID().replace(/-/g, "").slice(0, 16)}`;
   const selectedCategoryId =
@@ -263,6 +270,7 @@ export function buildProductSavePayload(
     titleEn: normalizedFormData.titleEn || normalizedFormData.title,
     description: normalizedFormData.descriptionEn || normalizedFormData.description || "",
     descriptionEn: normalizedFormData.descriptionEn || normalizedFormData.description || "",
+    originalPrice: Number(normalizedFormData.originalPrice) || 0,
     price: Number(normalizedFormData.price) || 0,
     cost: Number(normalizedFormData.cost) || 0,
     stock: normalizedFormData.isInfiniteStock ? 999999 : Number(normalizedFormData.stock) || 0,

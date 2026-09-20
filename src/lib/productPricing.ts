@@ -21,9 +21,56 @@ import type { AccountBundle } from "@/lib/types";
 
 type Row = Record<string, unknown>;
 
-function pricedRows(value: unknown): { id: string; name: string; price: number }[] {
+interface PricedRow {
+  id: string;
+  name: string;
+  price: number;
+  originalPrice: number;
+  optionId: string;
+}
+
+function compareAtPrice(value: unknown, salePrice: number): number {
+  if (!Number.isFinite(salePrice) || salePrice <= 0) return 0;
+  const original = toAmount(value);
+  return Number.isFinite(original) && original > salePrice ? original : salePrice;
+}
+
+function storedCompareAtPrice(value: unknown): number {
+  if (value === null || value === undefined || value === "") return 0;
+  const amount = typeof value === "number" ? value : Number(value);
+  return Number.isFinite(amount) && amount > 0 ? amount : 0;
+}
+
+/** Canonicalise display-only compare-at prices before storing a product document. */
+export function normalizeProductCompareAtPrices<T extends Row>(product: T): T {
+  const next: Row = { ...product };
+  if (Object.prototype.hasOwnProperty.call(next, "originalPrice")) {
+    next["originalPrice"] = storedCompareAtPrice(next["originalPrice"]);
+  }
+
+  for (const key of ["options", "types", "variants", "editions", "dlcs"] as const) {
+    const rows = next[key];
+    if (!Array.isArray(rows)) continue;
+    next[key] = rows.map((entry) => {
+      if (!entry || typeof entry !== "object") return entry;
+      const row = { ...(entry as Row) };
+      if (
+        Object.prototype.hasOwnProperty.call(row, "originalPrice") ||
+        Object.prototype.hasOwnProperty.call(row, "original_price")
+      ) {
+        row["originalPrice"] = storedCompareAtPrice(row["originalPrice"] ?? row["original_price"]);
+        delete row["original_price"];
+      }
+      return row;
+    });
+  }
+
+  return next as T;
+}
+
+function pricedRows(value: unknown): PricedRow[] {
   if (!Array.isArray(value)) return [];
-  const rows: { id: string; name: string; price: number }[] = [];
+  const rows: PricedRow[] = [];
   for (const entry of value) {
     if (!entry || typeof entry !== "object") continue;
     const row = entry as Row;
@@ -33,6 +80,8 @@ function pricedRows(value: unknown): { id: string; name: string; price: number }
       id: String(row["id"] ?? ""),
       name: String(row["name"] ?? ""),
       price,
+      originalPrice: compareAtPrice(row["originalPrice"], price),
+      optionId: String(row["optionId"] ?? row["option_id"] ?? ""),
     });
   }
   return rows;
@@ -125,13 +174,56 @@ export function pricingTypeRows(product: Row | null | undefined): unknown {
  * details page shows the moment it opens.
  */
 export function listingPrice(product: Row | null | undefined): number {
-  if (!product || typeof product !== "object") return 0;
+  return listingPricing(product).unitPrice;
+}
+
+/**
+ * Both prices printed by a listing card.
+ *
+ * `unitPrice` remains the real amount checkout charges. `originalUnitPrice`
+ * is only the valid compare-at price belonging to that same base/option/type;
+ * it never participates in totals, coupons, referrals or wallet debits.
+ */
+export function listingPricing(
+  product: Row | null | undefined,
+): Pick<UnitPriceResult, "unitPrice" | "originalUnitPrice"> {
+  if (!product || typeof product !== "object") {
+    return { unitPrice: 0, originalUnitPrice: 0 };
+  }
+
   const base = toAmount(product["price"]);
   const optionRows = pricedRows(product["options"]);
   const rows = optionRows.length ? optionRows : pricedRows(pricingTypeRows(product));
-  if (rows.length === 0) return base > 0 ? base : 0;
-  if (base > 0 && rows.some((row) => row.price === base)) return base;
-  return rows.reduce((min, row) => (row.price < min.price ? row : min)).price;
+  if (rows.length === 0) {
+    return resolveUnitPrice(product);
+  }
+
+  const selected =
+    (base > 0 ? rows.find((row) => row.price === base) : undefined) ??
+    rows.reduce((min, row) => (row.price < min.price ? row : min));
+
+  // Old `variants` rows sometimes have no id. They can still lead a listing,
+  // even though checkout cannot select them by id; preserve that long-standing
+  // display fallback while all current admin-created rows use stable ids.
+  if (!selected.id) {
+    const inheritedOriginal =
+      selected.price === base
+        ? compareAtPrice(product["originalPrice"], selected.price)
+        : selected.price;
+    return {
+      unitPrice: selected.price,
+      originalUnitPrice: Math.max(selected.originalPrice, inheritedOriginal),
+    };
+  }
+
+  return resolveUnitPrice(product, {
+    ...(optionRows.length
+      ? { optionId: selected.id }
+      : {
+          typeId: selected.id,
+          ...(selected.optionId ? { optionId: selected.optionId } : {}),
+        }),
+  });
 }
 
 /** A cart line's selection, as every surface records it. */
@@ -145,6 +237,8 @@ export interface UnitPriceSelection {
 export interface UnitPriceResult {
   /** What one copy costs, resolved from the product record. */
   unitPrice: number;
+  /** Valid compare-at price for that exact selection; never an amount to charge. */
+  originalUnitPrice: number;
   /** Which part of the record decided it — for tests and the audit trail. */
   source: "type" | "option" | "edition" | "base";
   optionName: string | null;
@@ -168,6 +262,29 @@ function priceOf(row: Row | undefined): number {
   if (!row) return 0;
   const price = toAmount(row["price"]);
   return Number.isFinite(price) && price > 0 ? price : 0;
+}
+
+function pricePairOf(
+  row: Row | undefined,
+  inherited: { unitPrice: number; originalUnitPrice: number },
+): { unitPrice: number; originalUnitPrice: number } {
+  const unitPrice = priceOf(row);
+  if (unitPrice <= 0) return inherited;
+
+  const ownOriginal = compareAtPrice(row?.["originalPrice"], unitPrice);
+  /*
+    Imported Nintendo rows often repeat the product's base sale price. When
+    that repeated row has no compare-at value, it inherits the base one's
+    original price. A genuinely different row without an original price does
+    not borrow an unrelated discount from another tier.
+  */
+  const originalUnitPrice =
+    ownOriginal > unitPrice
+      ? ownOriginal
+      : inherited.unitPrice === unitPrice && inherited.originalUnitPrice > unitPrice
+        ? inherited.originalUnitPrice
+        : unitPrice;
+  return { unitPrice, originalUnitPrice };
 }
 
 function nameOf(row: Row | undefined): string | null {
@@ -202,6 +319,7 @@ export function resolveUnitPrice(
 ): UnitPriceResult {
   const empty: UnitPriceResult = {
     unitPrice: 0,
+    originalUnitPrice: 0,
     source: "base",
     optionName: null,
     typeName: null,
@@ -213,12 +331,34 @@ export function resolveUnitPrice(
   // `types` under either of its names — see `pricingTypeRows`. This is the
   // rule; the two display readers follow it.
   const typeRows = pricingTypeRows(product);
-  const selectedType = rowById(typeRows, selection.typeId);
   const selectedOption = rowById(product["options"], selection.optionId);
+  const requestedType = rowById(typeRows, selection.typeId);
+  const requestedTypeOptionId = String(
+    requestedType?.["optionId"] ?? requestedType?.["option_id"] ?? "",
+  ).trim();
+  const selectedOptionId = String(selectedOption?.["id"] ?? "").trim();
+  /*
+    A type may be global (no option / `all`) or belong to the selected option.
+    When checkout receives both ids, never let a valid type from a different
+    option override the option's price. Older cart lines sometimes contain a
+    type id without an option id, so that legacy shape remains valid.
+  */
+  const selectedType =
+    requestedType &&
+    (!selectedOptionId ||
+      !requestedTypeOptionId ||
+      requestedTypeOptionId === "all" ||
+      requestedTypeOptionId === selectedOptionId)
+      ? requestedType
+      : undefined;
   const selectedEdition = rowById(product["editions"], selection.editionId);
 
   const base = toAmount(product["price"]);
-  let unitPrice = Number.isFinite(base) && base > 0 ? base : 0;
+  let pair = {
+    unitPrice: Number.isFinite(base) && base > 0 ? base : 0,
+    originalUnitPrice: 0,
+  };
+  pair.originalUnitPrice = compareAtPrice(product["originalPrice"], pair.unitPrice);
   let source: UnitPriceResult["source"] = "base";
 
   /*
@@ -229,15 +369,15 @@ export function resolveUnitPrice(
     checks below are `> 0`.
   */
   if (priceOf(selectedEdition) > 0) {
-    unitPrice = priceOf(selectedEdition);
+    pair = pricePairOf(selectedEdition, pair);
     source = "edition";
   }
   if (priceOf(selectedOption) > 0) {
-    unitPrice = priceOf(selectedOption);
+    pair = pricePairOf(selectedOption, pair);
     source = "option";
   }
   if (priceOf(selectedType) > 0) {
-    unitPrice = priceOf(selectedType);
+    pair = pricePairOf(selectedType, pair);
     source = "type";
   }
 
@@ -247,14 +387,19 @@ export function resolveUnitPrice(
     for (const dlcId of selection.dlcIds) {
       const dlc = rowById(product["dlcs"], dlcId);
       if (!dlc) continue;
-      unitPrice += priceOf(dlc);
+      const dlcPrice = priceOf(dlc);
+      if (dlcPrice > 0) {
+        pair.unitPrice += dlcPrice;
+        pair.originalUnitPrice += compareAtPrice(dlc["originalPrice"], dlcPrice);
+      }
       const name = nameOf(dlc);
       if (name) dlcNames.push(name);
     }
   }
 
   return {
-    unitPrice,
+    unitPrice: pair.unitPrice,
+    originalUnitPrice: Math.max(pair.unitPrice, pair.originalUnitPrice),
     source,
     optionName: nameOf(selectedOption),
     typeName: nameOf(selectedType),

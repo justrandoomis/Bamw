@@ -59,4 +59,30 @@ describe("compact Nintendo game card", () => {
 
     expect(screen.queryByText("Nintendo Switch 2")).toBeNull();
   });
+
+  it("shows the selected tier's before/after prices without changing the charged price", () => {
+    render(
+      <NintendoGameCard
+        product={{
+          id: "metroid",
+          titleEn: "Metroid Prime 4",
+          price: 9000,
+          originalPrice: 15000,
+          options: [{ id: "offline", name: "Offline" }],
+          types: [
+            {
+              id: "offline_base",
+              optionId: "offline",
+              name: "Offline Standard",
+              price: 9000,
+              originalPrice: 15000,
+            },
+          ],
+        }}
+      />,
+    );
+
+    expect(screen.getByText("15,000 د.ع").className).toContain("line-through");
+    expect(screen.getByText("9,000 د.ع")).not.toBeNull();
+  });
 });

@@ -28,6 +28,7 @@ import {
   Headphones,
 } from "lucide-react";
 import { Thread, ChatMessage, ThreadMode, Order } from "@/lib/types";
+import { isFullyDigitalOrder } from "@/lib/delivery-kinds";
 import { api, type AdminReplySuggestion } from "@/lib/api";
 import { useQueryClient } from "@tanstack/react-query";
 import { MessageCard } from "./MessageCard";
@@ -121,6 +122,8 @@ interface ActiveConversationProps {
   onResumeQueue?: () => void;
   onSendQueueReminder?: (text?: string) => void;
   onRetryMessage?: (message: any) => void;
+  onCompleteOrder?: (orderId: string) => Promise<unknown> | void;
+  isCompletingOrder?: boolean;
   onDeliveryFinished?: (payload: {
     nextOrder?: { orderId: string; threadId?: string; code?: string; userName?: string };
   }) => void;
@@ -148,6 +151,8 @@ export function ActiveConversation({
   onResumeQueue,
   onSendQueueReminder,
   onRetryMessage,
+  onCompleteOrder,
+  isCompletingOrder = false,
   onDeliveryFinished,
   isSending = false,
 }: ActiveConversationProps) {
@@ -187,6 +192,7 @@ export function ActiveConversation({
     if (!isOrderConversation || !thread?.orderId) return null;
     return orders.find((o) => o && (o.id === thread.orderId || o.code === thread.orderId)) || null;
   }, [isOrderConversation, thread?.orderId, orders]);
+  const isDigitalLinkedOrder = Boolean(linkedOrder && isFullyDigitalOrder(linkedOrder.items));
 
   const handleScroll = () => {
     const container = messagesContainerRef.current;
@@ -412,6 +418,9 @@ export function ActiveConversation({
       color: "text-emerald-700 bg-emerald-500/10",
     },
   ];
+  const visibleThreadModes = isDigitalLinkedOrder
+    ? THREAD_MODES.filter((entry) => entry.mode !== "RESOLVED")
+    : THREAD_MODES;
 
   return (
     <ConversationErrorBoundary>
@@ -521,7 +530,7 @@ export function ActiveConversation({
                   <div className="px-2 py-1 text-[10px] font-bold text-muted-foreground uppercase tracking-wider">
                     تغيير حالة المحادثة
                   </div>
-                  {THREAD_MODES.map((m) => (
+                  {visibleThreadModes.map((m) => (
                     <button
                       key={m.mode}
                       onClick={() => {
@@ -552,30 +561,32 @@ export function ActiveConversation({
               <User className="w-4 h-4" />
             </button>
 
-            {/* Close/Resolve Button */}
-            <button
-              onClick={() => {
-                const newStatus = thread.status === "open" ? "closed" : "open";
-                onSetThreadStatus(newStatus);
-                toast.success(
-                  newStatus === "closed" ? "تم إغلاق التذكرة" : "تمت إعادة فتح التذكرة",
-                );
-              }}
-              className={`px-3 py-1.5 rounded-xl text-xs font-bold border transition-all flex items-center gap-1.5 cursor-pointer ${
-                thread.status === "open"
-                  ? "bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border-emerald-500/20 hover:bg-emerald-500/20"
-                  : "bg-muted text-muted-foreground border-border hover:bg-muted/80"
-              }`}
-            >
-              <CheckCircle2 className="w-3.5 h-3.5" />
-              <span>{thread.status === "open" ? "إغلاق التذكرة" : "إعادة الفتح"}</span>
-            </button>
+            {/* Closing an order conversation is a real order transition, not a ticket flag. */}
+            {!isDigitalLinkedOrder && (
+              <button
+                onClick={() => {
+                  const newStatus = thread.status === "open" ? "closed" : "open";
+                  onSetThreadStatus(newStatus);
+                  toast.success(
+                    newStatus === "closed" ? "تم إغلاق التذكرة" : "تمت إعادة فتح التذكرة",
+                  );
+                }}
+                className={`px-3 py-1.5 rounded-xl text-xs font-bold border transition-all flex items-center gap-1.5 cursor-pointer ${
+                  thread.status === "open"
+                    ? "bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border-emerald-500/20 hover:bg-emerald-500/20"
+                    : "bg-muted text-muted-foreground border-border hover:bg-muted/80"
+                }`}
+              >
+                <CheckCircle2 className="w-3.5 h-3.5" />
+                <span>{thread.status === "open" ? "إغلاق التذكرة" : "إعادة الفتح"}</span>
+              </button>
+            )}
           </div>
         </div>
 
         {/* 2. Order Context Strip (Strict: Only for Order Conversations) */}
         {isOrderConversation && (
-          <div className="p-2.5 px-4 bg-muted/25 border-b border-border flex items-center justify-between gap-3 shrink-0 text-xs">
+          <div className="p-2.5 px-4 bg-muted/25 border-b border-border flex flex-wrap items-center justify-between gap-3 shrink-0 text-xs">
             <div className="flex items-center gap-2 min-w-0 flex-wrap">
               <ShoppingBag className="w-4 h-4 text-blue-500 shrink-0" />
               <span className="font-mono font-bold text-foreground">
@@ -610,7 +621,28 @@ export function ActiveConversation({
               )}
             </div>
 
-            <div className="flex items-center gap-2 shrink-0">
+            <div className="flex flex-wrap items-center gap-2 shrink-0">
+              {onCompleteOrder &&
+                linkedOrder &&
+                isDigitalLinkedOrder &&
+                linkedOrder.status !== "completed" &&
+                linkedOrder.status !== "cancelled" && (
+                  <button
+                    type="button"
+                    onClick={() => void onCompleteOrder(linkedOrder.id)}
+                    disabled={isCompletingOrder}
+                    className="text-[11px] font-bold text-white bg-emerald-600 hover:bg-emerald-700 disabled:opacity-50 px-3 py-1.5 rounded-lg border border-emerald-700/20 transition-all flex items-center gap-1 cursor-pointer"
+                    title="متاح فقط بعد إرسال OTP أو الكود لجميع عناصر الطلب"
+                  >
+                    {isCompletingOrder ? (
+                      <RefreshCw className="w-3 h-3 animate-spin" />
+                    ) : (
+                      <CheckCircle2 className="w-3 h-3" />
+                    )}
+                    <span>إكمال الطلب والانتقال للتالي</span>
+                  </button>
+                )}
+
               {onSendQueueReminder && (
                 <button
                   type="button"
@@ -906,6 +938,8 @@ export function ActiveConversation({
             onClose={() => setIsAccountToolsOpen(false)}
             order={linkedOrder}
             defaultTab={accountToolsDefaultTab}
+            onCompleteOrder={onCompleteOrder}
+            isCompletingOrder={isCompletingOrder}
             onDeliveryFinished={onDeliveryFinished}
             onStateChanged={() => {
               void queryClient.invalidateQueries({ queryKey: ["admin-orders"] });
@@ -941,6 +975,8 @@ export function ActiveConversation({
             isOpen={isOrderDrawerOpen}
             onClose={() => setIsOrderDrawerOpen(false)}
             order={linkedOrder}
+            onComplete={isDigitalLinkedOrder ? onCompleteOrder : undefined}
+            isCompleting={isCompletingOrder}
             onOpenFullOrder={() => {
               if (linkedOrder && onNavigateToOrder) {
                 onNavigateToOrder(linkedOrder.id);

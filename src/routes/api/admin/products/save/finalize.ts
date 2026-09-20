@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { guard, body, json } from "@/lib/http.server";
 import { requireAdmin } from "@/lib/session.server";
 import { d1All, d1Run } from "@/lib/d1.server";
-import { getCatalogVersion, getStore, invalidateStoreCache } from "@/lib/db.server";
+import { bumpCatalogVersion, getStore, invalidateStoreCache } from "@/lib/db.server";
 import { sanitizeAndVerifyProductImages } from "@/lib/productImageVerification.server";
 import { syncGameDevicePerformance } from "@/lib/devicePerformance.server";
 import { normalizeGameDevicePerformance } from "@/lib/devicePerformance";
@@ -10,6 +10,7 @@ import { resolveCategoryType } from "@/lib/productSection";
 import { refreshProductIndexRow } from "@/lib/product-index.server";
 import { checkPublishable, isPublishing } from "@/lib/publishGate";
 import { applyHiddenIntent } from "@/lib/purchasable";
+import { normalizeProductCompareAtPrices } from "@/lib/productPricing";
 
 export const Route = createFileRoute("/api/admin/products/save/finalize")({
   server: {
@@ -18,7 +19,7 @@ export const Route = createFileRoute("/api/admin/products/save/finalize")({
         guard(async () => {
           await requireAdmin(request);
           const payload = await body<{ save_session_id: string }>(request);
-          
+
           if (!payload.save_session_id) {
             return json({ error: "Missing save_session_id" }, { status: 400 });
           }
@@ -28,7 +29,7 @@ export const Route = createFileRoute("/api/admin/products/save/finalize")({
           // Retrieve all chunks
           const rows = await d1All<{ key: string; value: string }>(
             `SELECT key, value FROM store_kv WHERE key LIKE ?`,
-            `staged_save:${sessionId}:%`
+            `staged_save:${sessionId}:%`,
           );
 
           if (rows.length === 0) {
@@ -66,6 +67,8 @@ export const Route = createFileRoute("/api/admin/products/save/finalize")({
             updatedAt: nowIso,
             updated_at: nowIso,
           };
+          productToSave = normalizeProductCompareAtPrices(productToSave);
+          if (Array.isArray(productToSave.types)) productToSave.variants = productToSave.types;
           /* Advisory, and reported — see the note in products.$productId.ts. */
           let mediaWarnings: string[] = [];
           try {
@@ -87,9 +90,7 @@ export const Route = createFileRoute("/api/admin/products/save/finalize")({
             const storeForNorm = await getStore();
             const categoriesForNorm = storeForNorm.categories || [];
             const catIdForNorm = String(productToSave.categoryId || productToSave.category || "");
-            const catForNorm = categoriesForNorm.find(
-              (c) => String(c.id || "") === catIdForNorm,
-            );
+            const catForNorm = categoriesForNorm.find((c) => String(c.id || "") === catIdForNorm);
             const sectionForNorm = resolveCategoryType(
               catIdForNorm,
               String(catForNorm?.title || catForNorm?.name || ""),
@@ -188,6 +189,7 @@ export const Route = createFileRoute("/api/admin/products/save/finalize")({
           // The admin listing reads product_index; keep its row in line with
           // the document just written or the list shows the old flags.
           await refreshProductIndexRow(productToSave as Record<string, unknown>);
+          const catalogVersion = await bumpCatalogVersion();
 
           // Sync game device performance in background/await safely
           try {
@@ -220,26 +222,27 @@ export const Route = createFileRoute("/api/admin/products/save/finalize")({
           } catch (perfErr) {
             console.error("[finalize:syncGameDevicePerformance:error]", perfErr);
           }
-          
+
           // Read-after-write verification
           const verifyRows = await d1All<{ key: string; value: string }>(
             `SELECT key, value FROM store_kv WHERE key = ?`,
-            `store:product:${productId}`
+            `store:product:${productId}`,
           );
-          
+
           if (verifyRows.length === 0) {
-            return json({ error: "Failed to verify product save (Read-after-write failed)" }, { status: 500 });
+            return json(
+              { error: "Failed to verify product save (Read-after-write failed)" },
+              { status: 500 },
+            );
           }
 
           return json({
             success: true,
             product: JSON.parse(verifyRows[0]?.value || "{}"),
-            catalogVersion: await getCatalogVersion(),
+            catalogVersion,
             ...(mediaWarnings.length ? { mediaWarnings } : {}),
           });
         }),
     },
   },
 });
-
-

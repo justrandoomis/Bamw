@@ -23,42 +23,77 @@ const GAME = {
   id: "prd_1",
   title: "لعبة",
   price: 10_000,
+  originalPrice: 15_000,
   options: [
-    { id: "offline_account", name: "حساب أوفلاين", price: 10_000 },
-    { id: "online_account", name: "حساب أونلاين", price: 14_000 },
+    {
+      id: "offline_account",
+      name: "حساب أوفلاين",
+      price: 10_000,
+      originalPrice: 15_000,
+    },
+    {
+      id: "online_account",
+      name: "حساب أونلاين",
+      price: 14_000,
+      originalPrice: 18_000,
+    },
   ],
   types: [
     { id: "standard_offline", name: "أوفلاين عادي", optionId: "offline_account" },
-    { id: "dlc_offline", name: "أوفلاين مع الإضافات", optionId: "offline_account", price: 12_500 },
+    {
+      id: "dlc_offline",
+      name: "أوفلاين مع الإضافات",
+      optionId: "offline_account",
+      price: 12_500,
+      originalPrice: 20_000,
+    },
   ],
   editions: [{ id: "ed_deluxe", name: "Deluxe", price: 18_000 }],
-  dlcs: [{ id: "dlc_pass", name: "Expansion Pass", price: 6_000 }],
+  dlcs: [{ id: "dlc_pass", name: "Expansion Pass", price: 6_000, originalPrice: 8_000 }],
 };
 
 describe("what one copy costs", () => {
   it("is the record's price when nothing is selected", () => {
-    const { unitPrice, source } = resolveUnitPrice(GAME, {});
+    const { unitPrice, originalUnitPrice, source } = resolveUnitPrice(GAME, {});
     expect(unitPrice).toBe(10_000);
+    expect(originalUnitPrice).toBe(15_000);
     expect(source).toBe("base");
   });
 
   it("is the option's price when an option is chosen", () => {
     // The bug: this used to charge 10,000 for a 14,000 option.
-    const { unitPrice, source, optionName } = resolveUnitPrice(GAME, {
+    const { unitPrice, originalUnitPrice, source, optionName } = resolveUnitPrice(GAME, {
       optionId: "online_account",
     });
     expect(unitPrice).toBe(14_000);
+    expect(originalUnitPrice).toBe(18_000);
     expect(source).toBe("option");
     expect(optionName).toBe("حساب أونلاين");
   });
 
   it("is the type's price when a priced type is chosen, over its option", () => {
-    const { unitPrice, source } = resolveUnitPrice(GAME, {
+    const { unitPrice, originalUnitPrice, source } = resolveUnitPrice(GAME, {
       optionId: "offline_account",
       typeId: "dlc_offline",
     });
     expect(unitPrice).toBe(12_500);
+    expect(originalUnitPrice).toBe(20_000);
     expect(source).toBe("type");
+  });
+
+  it("rejects a priced type that belongs to a different selected option", () => {
+    const result = resolveUnitPrice(GAME, {
+      optionId: "online_account",
+      typeId: "dlc_offline",
+    });
+
+    expect(result).toMatchObject({
+      unitPrice: 14_000,
+      originalUnitPrice: 18_000,
+      source: "option",
+      optionName: "حساب أونلاين",
+      typeName: null,
+    });
   });
 
   it("falls back to the option when the chosen type carries no price", () => {
@@ -93,12 +128,34 @@ describe("what one copy costs", () => {
   });
 
   it("adds add-ons on top of whichever price won", () => {
-    const { unitPrice, dlcNames } = resolveUnitPrice(GAME, {
+    const { unitPrice, originalUnitPrice, dlcNames } = resolveUnitPrice(GAME, {
       optionId: "online_account",
       dlcIds: ["dlc_pass"],
     });
     expect(unitPrice).toBe(20_000);
+    expect(originalUnitPrice).toBe(26_000);
     expect(dlcNames).toEqual(["Expansion Pass"]);
+  });
+
+  it("inherits the parent compare-at price when an unpriced type is selected", () => {
+    const result = resolveUnitPrice(GAME, {
+      optionId: "offline_account",
+      typeId: "standard_offline",
+    });
+    expect(result.unitPrice).toBe(10_000);
+    expect(result.originalUnitPrice).toBe(15_000);
+  });
+
+  it("does not borrow the base discount for a differently-priced row", () => {
+    const result = resolveUnitPrice(
+      {
+        price: 10_000,
+        originalPrice: 15_000,
+        types: [{ id: "online", name: "Online", price: 22_000 }],
+      },
+      { typeId: "online" },
+    );
+    expect(result).toMatchObject({ unitPrice: 22_000, originalUnitPrice: 22_000 });
   });
 
   it("reads `variants` too, which is what older records call `types`", () => {

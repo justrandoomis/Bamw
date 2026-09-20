@@ -384,6 +384,12 @@ export function Hero() {
                   <span className="num text-3xl font-extrabold tracking-tight text-good sm:text-4xl">
                     {formatConverted(bestOffer.offer.price)}
                   </span>
+                  {bestOffer.offer.listPrice &&
+                    bestOffer.offer.listPrice.amount > bestOffer.offer.price.amount && (
+                      <span className="num text-sm font-semibold muted line-through sm:text-base">
+                        {formatConverted(bestOffer.offer.listPrice)}
+                      </span>
+                    )}
                   {bestOffer.offer.discountPercent != null && (
                     <span className="num rounded bg-good/15 px-1.5 py-0.5 text-xs font-extrabold text-good">
                       −{bestOffer.offer.discountPercent}%
@@ -468,9 +474,7 @@ export function Hero() {
                 the horizontal scroll this layout has fought before.
               */}
               <div className="mt-3 flex">
-                <ShareAndEarnButton
-                  product={(game.rawProduct ?? {}) as Record<string, unknown>}
-                />
+                <ShareAndEarnButton product={(game.rawProduct ?? {}) as Record<string, unknown>} />
               </div>
             </div>
           </div>

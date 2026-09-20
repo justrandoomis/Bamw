@@ -114,6 +114,7 @@ export interface ExternalReviewItem {
 export interface OptionItem {
   id: string;
   name: string;
+  originalPrice?: number;
   price?: number;
   cost?: number;
   stock?: number;
@@ -134,6 +135,7 @@ export interface VariantItem {
   id?: string;
   name: string;
   optionId?: string;
+  originalPrice?: number;
   price?: number;
   cost?: number;
   stock?: number;
@@ -302,7 +304,6 @@ const IDENTITY_FIELDS: { target: string; key: string }[] = [
   { target: "region", key: "product.region" },
   { target: "countryOfOrigin", key: "product.countryOfOrigin" },
 ];
-
 
 /* ------------------------------- builders --------------------------------- */
 
@@ -517,7 +518,14 @@ const BLOCK_OWNED_TARGETS: Record<string, readonly string[]> = {
 
 /** Normalized key for spec de-duplication: case and separators do not count. */
 function specIdentity(label: string, value: string): string {
-  return `${label}`.trim().toLowerCase().replace(/[\s_-]+/g, "") + "\u0000" + value.trim().toLowerCase();
+  return (
+    `${label}`
+      .trim()
+      .toLowerCase()
+      .replace(/[\s_-]+/g, "") +
+    "\u0000" +
+    value.trim().toLowerCase()
+  );
 }
 
 export function buildProductView(
@@ -761,6 +769,12 @@ export function buildProductView(
           const amt = toAmount(o["price"]);
           if (amt > 0 || o["price"] === 0 || o["price"] === "0") item.price = amt;
         }
+        if (o["originalPrice"] != null && str(o["originalPrice"]) !== "") {
+          const amt = toAmount(o["originalPrice"]);
+          if (amt > 0 || o["originalPrice"] === 0 || o["originalPrice"] === "0") {
+            item.originalPrice = amt;
+          }
+        }
         if (o["cost"] != null && str(o["cost"]) !== "") {
           const amt = toAmount(o["cost"]);
           if (amt > 0 || o["cost"] === 0 || o["cost"] === "0") item.cost = amt;
@@ -796,6 +810,12 @@ export function buildProductView(
         if (v["price"] != null && str(v["price"]) !== "") {
           const amt = toAmount(v["price"]);
           if (amt > 0 || v["price"] === 0 || v["price"] === "0") item.price = amt;
+        }
+        if (v["originalPrice"] != null && str(v["originalPrice"]) !== "") {
+          const amt = toAmount(v["originalPrice"]);
+          if (amt > 0 || v["originalPrice"] === 0 || v["originalPrice"] === "0") {
+            item.originalPrice = amt;
+          }
         }
         if (v["cost"] != null && str(v["cost"]) !== "") {
           const amt = toAmount(v["cost"]);

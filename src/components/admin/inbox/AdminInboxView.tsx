@@ -491,6 +491,36 @@ export function AdminInboxView({ initialThreadId = null, onNavigateToOrder }: Ad
     },
   });
 
+  const completeDigitalMutation = useMutation({
+    mutationFn: ({ orderId, threadId }: { orderId: string; threadId?: string }) =>
+      api.adminOrderAction({
+        orderId,
+        threadId,
+        action: "complete_digital_and_next",
+      }),
+    onSuccess: (result) => {
+      void queryClient.invalidateQueries({ queryKey: ["admin-orders"] });
+      void queryClient.invalidateQueries({ queryKey: ["admin-threads"] });
+      void queryClient.invalidateQueries({ queryKey: ["orders"] });
+      const nextThreadId =
+        result.nextOrder?.threadId ||
+        threads.find((thread) => thread.orderId === result.nextOrder?.orderId)?.id;
+      if (nextThreadId) {
+        setSelectedThreadId(nextThreadId);
+        markReadMutation.mutate(nextThreadId);
+        toast.success(
+          `اكتمل الطلب وتم الانتقال للتالي ${result.nextOrder?.code ? `#${result.nextOrder.code}` : ""} ⏭️`,
+        );
+      } else {
+        setSelectedThreadId(null);
+        toast.success("اكتمل الطلب. لا توجد طلبات أخرى تحتاج تجهيزًا الآن 🎉");
+      }
+    },
+    onError: (error: unknown) => {
+      toast.error(error instanceof Error ? error.message : "تعذر إكمال الطلب الرقمي");
+    },
+  });
+
   // Hotkey support: Ctrl+K / Cmd+K to focus search input
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -596,6 +626,13 @@ export function AdminInboxView({ initialThreadId = null, onNavigateToOrder }: Ad
                   reminderMutation.mutate({ threadId: selectedThreadId, text });
                 }
               }}
+              onCompleteOrder={(orderId) =>
+                completeDigitalMutation.mutateAsync({
+                  orderId,
+                  threadId: selectedThreadId || undefined,
+                })
+              }
+              isCompletingOrder={completeDigitalMutation.isPending}
               onDeliveryFinished={({ nextOrder }) => {
                 void queryClient.invalidateQueries({ queryKey: ["admin-orders"] });
                 void queryClient.invalidateQueries({ queryKey: ["admin-threads"] });

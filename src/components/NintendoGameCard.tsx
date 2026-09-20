@@ -3,6 +3,7 @@ import { Link } from "@tanstack/react-router";
 import NintendoCover from "@/components/NintendoCover";
 import { useCurrency } from "@/context/CurrencyContext";
 import { isNintendoSwitch2Product } from "@/lib/nintendoListing";
+import { listingPricing } from "@/lib/productPricing";
 import { getProductSlug } from "@/lib/productRouting";
 
 export interface NintendoGameCardProps {
@@ -27,9 +28,15 @@ export function NintendoGameCard({
   const { formatIQDPrice } = useCurrency();
   const slug = getProductSlug(product) || String(product.id || "");
   const title = product.titleEn || product.english_name || product.title || "";
-  const price = Number(product.price) || 0;
+  const { unitPrice, originalUnitPrice } = listingPricing(product);
   const switch2 = isNintendoSwitch2Product(product);
-  const priceText = formatPrice ? formatPrice(product.price ?? 0) : formatIQDPrice(price);
+  const priceText = formatPrice ? formatPrice(unitPrice) : formatIQDPrice(unitPrice);
+  const originalPriceText =
+    originalUnitPrice > unitPrice
+      ? formatPrice
+        ? formatPrice(originalUnitPrice)
+        : formatIQDPrice(originalUnitPrice)
+      : "";
 
   return (
     <Link
@@ -70,11 +77,16 @@ export function NintendoGameCard({
           {title}
         </h3>
         <p
-          className="mt-auto break-words text-[11px] font-extrabold leading-tight text-foreground sm:text-xs"
+          className="mt-auto flex min-w-0 flex-wrap items-baseline gap-x-1 gap-y-0.5 break-words text-[11px] font-extrabold leading-tight text-foreground sm:text-xs"
           dir="ltr"
           title={priceText}
         >
-          {priceText}
+          {originalPriceText ? (
+            <span className="text-[9px] font-semibold text-muted-foreground line-through sm:text-[10px]">
+              {originalPriceText}
+            </span>
+          ) : null}
+          <span>{priceText}</span>
         </p>
       </div>
     </Link>
