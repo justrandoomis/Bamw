@@ -143,6 +143,15 @@ export function BundleCard({ bundle, products, layout = "grid", onSelect }: Bund
   };
 
   if (layout === "compact") {
+    /*
+      The compact card is the bundle shown on the home page. Its artwork is
+      chosen by the admin, so that image takes precedence over the generated
+      game collage. The collage remains the fallback for older bundles that
+      do not have their own usable image yet.
+    */
+    const hasBundleArtwork = !resolvePurchaseImage(bundle as unknown as Record<string, unknown>)
+      .isPlaceholder;
+
     return (
       <motion.div
         whileHover={{ y: -3, transition: { duration: 0.18 } }}
@@ -164,9 +173,19 @@ export function BundleCard({ bundle, products, layout = "grid", onSelect }: Bund
           )}
         </div>
 
-        {/* Visual Game Collage / Cover */}
+        {/* Admin-selected cover, with the existing game collage as fallback */}
         <div className="relative aspect-[16/10] w-full rounded-xl overflow-hidden bg-slate-900 mb-2 border border-border/40 group-hover:border-red-500/30 transition-colors">
-          {games.length >= 2 ? (
+          {hasBundleArtwork ? (
+            <NintendoCover
+              product={bundle as unknown as Record<string, unknown>}
+              usage="bundle-card"
+              ratio={null}
+              fit="cover"
+              alt={String(bundle.titleEn || bundle.title || "")}
+              className="w-full h-full"
+              imgClassName="group-hover:scale-105 transition-transform duration-300"
+            />
+          ) : games.length >= 2 ? (
             <div className="absolute inset-0 flex">
               {games.slice(0, 3).map((g, idx) => (
                 <div
@@ -188,7 +207,7 @@ export function BundleCard({ bundle, products, layout = "grid", onSelect }: Bund
             </div>
           ) : (
             <NintendoCover
-              product={(bundle.image ? bundle : games[0]) as unknown as Record<string, unknown>}
+              product={games[0] as unknown as Record<string, unknown>}
               usage="bundle-card"
               ratio={null}
               fit="cover"

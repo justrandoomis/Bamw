@@ -25,6 +25,7 @@ const DELIVERY_PATH = [
   "src/lib/order-delivery.server.ts",
   "src/lib/delivery-items.server.ts",
   "src/lib/delivery-items.ts",
+  "src/lib/delivery-kinds.ts",
   "src/lib/delivery-otp.ts",
   "src/lib/digital-delivery-state.ts",
   "src/lib/order-completion.server.ts",
@@ -50,9 +51,10 @@ describe("the delivery code is never fabricated", () => {
         if (GENERATORS.test(code)) offenders.push(`${file}:${index + 1}: ${line.trim()}`);
       }
     }
-    expect(offenders, `a code generator reached the delivery path:\n${offenders.join("\n")}`).toEqual(
-      [],
-    );
+    expect(
+      offenders,
+      `a code generator reached the delivery path:\n${offenders.join("\n")}`,
+    ).toEqual([]);
   });
 
   it("refuses to advance a delivery without a code somebody supplied", () => {

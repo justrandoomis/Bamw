@@ -20,6 +20,8 @@ import { body, guard, json } from "@/lib/http.server";
 import { evaluateOrderAutoCompletion } from "@/lib/orders.server";
 import { completeOrder, withDeliveryDeadline } from "@/lib/order-completion.server";
 import {
+  completeDigitalOrderAndNext,
+  ensureDigitalOrderQueueEntry,
   getDeliveryOrderState,
   mapUnmatchedDeliveryItem,
   saveDeliveryDraft,
@@ -62,6 +64,7 @@ type Action =
   | "mark_logged_in"
   | "mark_shipped"
   | "mark_delivered"
+  | "complete_digital_and_next"
   | "complete_order"
   | "send_discount";
 
@@ -270,6 +273,42 @@ export const Route = createFileRoute("/api/admin/orders")({
               });
               return json({ success: true, ...result });
             }
+            case "complete_digital_and_next": {
+              try {
+                const result = await completeDigitalOrderAndNext({
+                  orderId: order.id,
+                  adminId: admin.id,
+                  adminName,
+                  threadId: data.threadId,
+                  now,
+                });
+                return json({
+                  success: true,
+                  order: redactOrder(result.order, ADMIN_VIEWER),
+                  state: result.state,
+                  orderFinished: true,
+                  nextOrder: result.nextOrder,
+                });
+              } catch (error) {
+                const code = error instanceof Error ? error.message : "DIGITAL_COMPLETION_FAILED";
+                const message =
+                  code === "DELIVERY_ITEMS_NOT_TERMINAL"
+                    ? "لا يمكن إكمال الطلب قبل إرسال OTP أو الكود لكل عناصر التسليم."
+                    : code === "ORDER_NOT_FULLY_DIGITAL"
+                      ? "هذا الإجراء مخصص للطلبات الرقمية الكاملة فقط."
+                      : code === "THREAD_ORDER_MISMATCH"
+                        ? "المحادثة المفتوحة لا تتبع هذا الطلب. أعد تحميل الصفحة."
+                        : code === "ORDER_HAS_OPEN_DELIVERY_ISSUE"
+                          ? "لا يمكن إكمال الطلب قبل حل بلاغ التسليم المفتوح."
+                          : code === "ORDER_ALREADY_CANCELLED"
+                            ? "لا يمكن إكمال طلب ملغي."
+                            : "تعذر إكمال الطلب الرقمي والانتقال للطلب التالي.";
+                return json(
+                  { error: message, code },
+                  { status: code === "ORDER_NOT_FOUND" ? 404 : 409 },
+                );
+              }
+            }
             case "delete_order": {
               if (order.paymentStatus === "paid" && order.status !== "cancelled") {
                 return json(
@@ -309,9 +348,8 @@ export const Route = createFileRoute("/api/admin/orders")({
                 try {
                   const { markRewardsPending } = await import("@/lib/referral/rewards.server");
                   await markRewardsPending(order.id);
-                  const { notifyReferralPending } = await import(
-                    "@/lib/referral/notifications.server"
-                  );
+                  const { notifyReferralPending } =
+                    await import("@/lib/referral/notifications.server");
                   if (next.referral) await notifyReferralPending(next);
                 } catch (referralErr) {
                   console.warn("[set_payment:referral_pending_err]", referralErr);
@@ -333,14 +371,32 @@ export const Route = createFileRoute("/api/admin/orders")({
               break;
             }
             case "set_status": {
-              if (data.status === "completed" || data.status === "awaiting_customer_confirmation") {
+              if (data.status === "completed") {
                 const delivery = await getDeliveryOrderState(order);
                 if (delivery.progress.total > 0) {
                   return json(
                     {
                       error:
-                        "حالة الطلب الرقمي بعد التسليم تُحدد فقط من آخر OTP ثم تأكيد العميل أو مهلة الساعة",
+                        "استخدم زر «إكمال الطلب والانتقال للتالي» بعد تسليم جميع العناصر الرقمية.",
                     },
+                    { status: 409 },
+                  );
+                }
+                const result = await completeOrder(order, {
+                  by: admin.id,
+                  role: "ADMIN",
+                  note: "تم تغيير حالة الطلب إلى مكتمل من لوحة الإدارة",
+                  message: "تم تسليم وإكمال الطلب بنجاح ✅",
+                  now,
+                });
+                next = result.order;
+                break;
+              }
+              if (data.status === "awaiting_customer_confirmation") {
+                const delivery = await getDeliveryOrderState(order);
+                if (delivery.progress.total > 0) {
+                  return json(
+                    { error: "طلبات التسليم الرقمي تُغلق من إجراء الإكمال المخصص فقط." },
                     { status: 409 },
                   );
                 }
@@ -505,9 +561,8 @@ export const Route = createFileRoute("/api/admin/orders")({
                   reason: "order_cancelled",
                 });
                 if (reversal.reversed > 0) {
-                  const { notifyReferralReversed } = await import(
-                    "@/lib/referral/notifications.server"
-                  );
+                  const { notifyReferralReversed } =
+                    await import("@/lib/referral/notifications.server");
                   await notifyReferralReversed({ id: order.id });
                 }
               } catch (referralErr) {
@@ -597,9 +652,8 @@ export const Route = createFileRoute("/api/admin/orders")({
                 here.
               */
               try {
-                const { notifyUserOrderStatus } = await import(
-                  "@/lib/telegram-notifications.server"
-                );
+                const { notifyUserOrderStatus } =
+                  await import("@/lib/telegram-notifications.server");
                 await notifyUserOrderStatus({
                   userId: order.userId,
                   order: next,
@@ -871,6 +925,9 @@ export const Route = createFileRoute("/api/admin/orders")({
             updatedAt: now,
           };
           await saveOrder(next);
+          if (data.action === "set_payment" && next.paymentStatus === "paid") {
+            await ensureDigitalOrderQueueEntry(next);
+          }
 
           // Notify customer via Telegram (Safe)
           try {
@@ -917,8 +974,7 @@ export const Route = createFileRoute("/api/admin/orders")({
 
               const statusText =
                 data.action === "set_payment"
-                  ? (paymentMap[String(next.paymentStatus)] ??
-                    "تم تحديث حالة الدفع")
+                  ? (paymentMap[String(next.paymentStatus)] ?? "تم تحديث حالة الدفع")
                   : (statusMap[next.status] ?? "تم تحديث حالة طلبك");
 
               await notifyUserOrderStatus({

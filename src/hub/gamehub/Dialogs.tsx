@@ -16,6 +16,7 @@ import { useCartStore } from "@/store/useCartStore";
 import { useHub } from "./hubContext";
 import { showAddToCartToast } from "@/utils/cart-toast";
 import { resolvePurchaseImage } from "@/lib/nintendoImages";
+import { resolveUnitPrice } from "@/lib/productPricing";
 
 /** Cart labels for the admin offer kinds encoded in the offer id. */
 const OFFER_LABELS_AR: Record<string, string> = {
@@ -98,8 +99,8 @@ export function BuySheet({
     const matchingTypes = allTypes.filter(
       (t) => !t.optionId || t.optionId === "all" || t.optionId === optId,
     );
-    if (matchingTypes.length && !matchingTypes.some((t) => t.id === selectedTypeId)) {
-      setSelectedTypeId(matchingTypes[0]!.id);
+    if (!matchingTypes.some((t) => t.id === selectedTypeId)) {
+      setSelectedTypeId(matchingTypes[0]?.id ?? "");
     }
   };
 
@@ -117,8 +118,10 @@ export function BuySheet({
   );
   const chosen = candidates[0];
 
-  // Calculate unit price dynamically based on chosen Type -> Option -> Edition -> Ranked Offer
-  const unitPrice = useMemo(() => {
+  // One resolver decides both the charged price and its matching compare-at
+  // price. The fallback only serves hub records that have no raw catalogue
+  // product (for example an external preview).
+  const fallbackUnitPrice = useMemo(() => {
     if (selectedType?.price != null && Number(selectedType.price) > 0) {
       return Number(selectedType.price);
     }
@@ -134,7 +137,36 @@ export function BuySheet({
     return 0;
   }, [selectedType, selectedOption, chosenEdition, chosen]);
 
+  const resolvedPricing = useMemo(
+    () =>
+      game.rawProduct
+        ? resolveUnitPrice(game.rawProduct, {
+            optionId: selectedOptionId || null,
+            typeId: selectedTypeId || null,
+            editionId: selectedEdition || null,
+          })
+        : null,
+    [game.rawProduct, selectedOptionId, selectedTypeId, selectedEdition],
+  );
+  const unitPrice =
+    resolvedPricing && resolvedPricing.unitPrice > 0
+      ? resolvedPricing.unitPrice
+      : fallbackUnitPrice;
+  const fallbackOriginal = Number(
+    selectedType?.originalPrice ??
+      selectedOption?.originalPrice ??
+      chosenEdition?.listPrice?.amount ??
+      unitPrice,
+  );
+  const originalUnitPrice =
+    resolvedPricing && resolvedPricing.unitPrice > 0
+      ? resolvedPricing.originalUnitPrice
+      : fallbackOriginal > unitPrice
+        ? fallbackOriginal
+        : unitPrice;
+
   const total = convert(unitPrice, "IQD") * quantity;
+  const originalTotal = convert(originalUnitPrice, "IQD") * quantity;
 
   const isPhysical =
     selectedOption?.id === "lend" ||
@@ -184,8 +216,18 @@ export function BuySheet({
                     </div>
                     <div className="flex shrink-0 items-center gap-2">
                       {opt.price != null && (
-                        <span className="whitespace-nowrap text-xs sm:text-sm font-black text-foreground">
-                          {formatConverted({ amount: Number(opt.price), currency: "IQD" })}
+                        <span className="flex flex-col items-end whitespace-nowrap text-xs sm:text-sm">
+                          {Number(opt.originalPrice) > Number(opt.price) ? (
+                            <span className="text-[10px] font-semibold text-muted-foreground line-through">
+                              {formatConverted({
+                                amount: Number(opt.originalPrice),
+                                currency: "IQD",
+                              })}
+                            </span>
+                          ) : null}
+                          <span className="font-black text-foreground">
+                            {formatConverted({ amount: Number(opt.price), currency: "IQD" })}
+                          </span>
                         </span>
                       )}
                       {selected && <Check className="h-4 w-4 text-emerald-600 shrink-0" />}
@@ -237,8 +279,18 @@ export function BuySheet({
                     </div>
                     <div className="flex shrink-0 items-center gap-2">
                       {typ.price != null && (
-                        <span className="whitespace-nowrap text-xs sm:text-sm font-black text-foreground">
-                          {formatConverted({ amount: Number(typ.price), currency: "IQD" })}
+                        <span className="flex flex-col items-end whitespace-nowrap text-xs sm:text-sm">
+                          {Number(typ.originalPrice) > Number(typ.price) ? (
+                            <span className="text-[10px] font-semibold text-muted-foreground line-through">
+                              {formatConverted({
+                                amount: Number(typ.originalPrice),
+                                currency: "IQD",
+                              })}
+                            </span>
+                          ) : null}
+                          <span className="font-black text-foreground">
+                            {formatConverted({ amount: Number(typ.price), currency: "IQD" })}
+                          </span>
                         </span>
                       )}
                       {selected && <Check className="h-4 w-4 text-emerald-600 shrink-0" />}
@@ -290,8 +342,15 @@ export function BuySheet({
                     </div>
                     <div className="flex shrink-0 items-center gap-2">
                       {edition.msrp && (
-                        <span className="whitespace-nowrap text-xs sm:text-sm font-black text-foreground">
-                          {formatConverted(edition.msrp)}
+                        <span className="flex flex-col items-end whitespace-nowrap text-xs sm:text-sm">
+                          {edition.listPrice && edition.listPrice.amount > edition.msrp.amount ? (
+                            <span className="text-[10px] font-semibold text-muted-foreground line-through">
+                              {formatConverted(edition.listPrice)}
+                            </span>
+                          ) : null}
+                          <span className="font-black text-foreground">
+                            {formatConverted(edition.msrp)}
+                          </span>
                         </span>
                       )}
                       {selected && <Check className="h-4 w-4 text-emerald-600 shrink-0" />}
@@ -352,8 +411,15 @@ export function BuySheet({
       <div className="mt-5 border-t border-white/[0.07] pt-4">
         <div className="mb-3 flex items-baseline justify-between">
           <span className="text-sm font-bold">{t("prices.price")}</span>
-          <span className="num text-2xl font-extrabold text-good">
-            {formatAmount(total, currency)}
+          <span className="flex flex-wrap items-baseline justify-end gap-2">
+            {originalTotal > total ? (
+              <span className="num text-xs font-semibold text-muted-foreground line-through">
+                {formatAmount(originalTotal, currency)}
+              </span>
+            ) : null}
+            <span className="num text-2xl font-extrabold text-good">
+              {formatAmount(total, currency)}
+            </span>
           </span>
         </div>
         <button

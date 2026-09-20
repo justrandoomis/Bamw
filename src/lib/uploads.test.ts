@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { isOwnUploadUrl, isVideoUploadUrl, isVideoUrl } from "./uploads";
+import { isOwnReviewImageUrl, isOwnUploadUrl, isVideoUploadUrl, isVideoUrl } from "./uploads";
 
 const ME = "usr_member1";
 
@@ -12,7 +12,15 @@ const ME = "usr_member1";
  */
 describe("isOwnUploadUrl", () => {
   it("accepts the member's own uploads from the folders the app writes to", () => {
-    for (const folder of ["chat", "uploads", "orders", "receipts", "support", "documents"]) {
+    for (const folder of [
+      "chat",
+      "uploads",
+      "orders",
+      "receipts",
+      "support",
+      "documents",
+      "reviews",
+    ]) {
       expect(isOwnUploadUrl(`/api/files/${folder}/${ME}/f_abc123.png`, ME)).toBe(true);
     }
   });
@@ -75,5 +83,14 @@ describe("video attachments", () => {
 
   it("still refuses another member's video", () => {
     expect(isOwnUploadUrl(`/api/files/chat/usr_other/f_abc.mp4`, ME)).toBe(false);
+  });
+});
+
+describe("review images", () => {
+  it("accepts only the member's own still image in the reviews folder", () => {
+    expect(isOwnReviewImageUrl(`/api/files/reviews/${ME}/f_abc.webp`, ME)).toBe(true);
+    expect(isOwnReviewImageUrl(`/api/files/chat/${ME}/f_abc.webp`, ME)).toBe(false);
+    expect(isOwnReviewImageUrl(`/api/files/reviews/${ME}/f_abc.mp4`, ME)).toBe(false);
+    expect(isOwnReviewImageUrl(`/api/files/reviews/usr_other/f_abc.webp`, ME)).toBe(false);
   });
 });

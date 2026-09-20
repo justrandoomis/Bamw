@@ -21,6 +21,8 @@ import {
 export interface ProductOption {
   id: string;
   name: string;
+  /** Compare-at price shown crossed out when it is greater than `price`. */
+  originalPrice?: number | string;
   price?: number | string;
   cost?: number | string;
   /** Stock for this option; ignored while `isInfiniteStock` is set. */
@@ -33,6 +35,8 @@ export interface ProductTypeVariant {
   id: string;
   name: string;
   optionId?: string; // Empty or "all" = applies to all options, otherwise specific option ID
+  /** Compare-at price shown crossed out when it is greater than `price`. */
+  originalPrice?: number | string;
   price: number | string;
   cost?: number | string;
   /** Overrides the stock of the option this type belongs to when present. */
@@ -168,6 +172,7 @@ export function ProductOptionsEditor({
         id: optOfflineId,
         name: "حساب أوفلاين (Offline)",
         description: STANDARD_OPTION_DESCRIPTIONS.OFFLINE,
+        originalPrice: "",
         price: "",
         cost: "",
       },
@@ -175,6 +180,7 @@ export function ProductOptionsEditor({
         id: optOnlineId,
         name: "حساب أونلاين (Online)",
         description: STANDARD_OPTION_DESCRIPTIONS.ONLINE,
+        originalPrice: "",
         price: Number(basePrice || 25000) > 0 ? Number(basePrice || 25000) + 5000 : "",
         cost: Number(baseCost || 18000) > 0 ? Number(baseCost || 18000) + 3000 : "",
       },
@@ -185,6 +191,7 @@ export function ProductOptionsEditor({
         id: "typ_std_" + Date.now(),
         name: "النسخة القياسية Standard",
         optionId: "",
+        originalPrice: "",
         price: "",
         cost: "",
         description: STANDARD_TYPE_DESCRIPTIONS.BASE,
@@ -193,6 +200,7 @@ export function ProductOptionsEditor({
         id: "typ_dlx_" + Date.now(),
         name: "نسخة مع الإضافات Deluxe",
         optionId: "",
+        originalPrice: "",
         price: Number(basePrice || 25000) + 10000,
         cost: Number(baseCost || 18000) + 7000,
         description: STANDARD_TYPE_DESCRIPTIONS.DLC,
@@ -201,6 +209,7 @@ export function ProductOptionsEditor({
         id: "typ_ult_" + Date.now(),
         name: "النسخة الفاخرة Ultimate (خاص بالأوفلاين)",
         optionId: optOfflineId,
+        originalPrice: "",
         price: Number(basePrice || 25000) + 15000,
         cost: Number(baseCost || 18000) + 10000,
         description: STANDARD_TYPE_DESCRIPTIONS.DLC,
@@ -367,6 +376,7 @@ export function ProductOptionsEditor({
         ) : (
           <div className="space-y-2.5">
             {options.map((opt, idx) => {
+              const hasOriginalPrice = opt.originalPrice !== "" && opt.originalPrice != null;
               const hasCustomPrice = opt.price !== "" && opt.price != null;
               const hasCustomCost = opt.cost !== "" && opt.cost != null;
               return (
@@ -393,10 +403,32 @@ export function ProductOptionsEditor({
                       />
                     </div>
 
+                    {/* Compare-at price in IQD */}
+                    <div className="w-32">
+                      <label className="block text-[10px] text-muted-foreground mb-0.5 font-bold">
+                        قبل الخصم (د.ع)
+                      </label>
+                      <input
+                        type="number"
+                        min="0"
+                        value={opt.originalPrice ?? ""}
+                        onChange={(e) => updateOption(idx, "originalPrice", e.target.value)}
+                        placeholder="اختياري"
+                        className={cn(
+                          "w-full border rounded-lg px-2.5 py-1.5 text-xs outline-none bg-background font-bold",
+                          hasOriginalPrice
+                            ? "border-muted-foreground/40 text-muted-foreground"
+                            : "border-border text-foreground focus:border-foreground",
+                        )}
+                        dir="ltr"
+                        title="يظهر مشطوباً فقط عندما يكون أكبر من سعر البيع"
+                      />
+                    </div>
+
                     {/* Price in IQD */}
                     <div className="w-32">
                       <label className="block text-[10px] text-muted-foreground mb-0.5 font-bold flex items-center justify-between">
-                        <span>السعر (د.ع)</span>
+                        <span>بعد الخصم (د.ع)</span>
                         {!hasCustomPrice && (
                           <span className="text-[9px] text-muted-foreground/80 font-normal">
                             افتراضي
@@ -547,6 +579,8 @@ export function ProductOptionsEditor({
                 linkedOption && linkedOption.cost !== "" && linkedOption.cost != null
                   ? linkedOption.cost
                   : baseCost;
+              const hasOriginalPrice =
+                typeItem.originalPrice !== "" && typeItem.originalPrice != null;
               const hasCustomPrice = typeItem.price !== "" && typeItem.price != null;
               const hasCustomCost = typeItem.cost !== "" && typeItem.cost != null;
 
@@ -594,10 +628,32 @@ export function ProductOptionsEditor({
                       </select>
                     </div>
 
+                    {/* Compare-at price in IQD */}
+                    <div className="w-32">
+                      <label className="block text-[10px] text-muted-foreground mb-0.5 font-bold">
+                        قبل الخصم (د.ع)
+                      </label>
+                      <input
+                        type="number"
+                        min="0"
+                        value={typeItem.originalPrice ?? ""}
+                        onChange={(e) => updateType(idx, "originalPrice", e.target.value)}
+                        placeholder="اختياري"
+                        className={cn(
+                          "w-full border rounded-lg px-2.5 py-1.5 text-xs outline-none bg-background font-bold",
+                          hasOriginalPrice
+                            ? "border-muted-foreground/40 text-muted-foreground"
+                            : "border-border text-foreground focus:border-foreground",
+                        )}
+                        dir="ltr"
+                        title="يظهر مشطوباً فقط عندما يكون أكبر من سعر البيع"
+                      />
+                    </div>
+
                     {/* Price in IQD */}
                     <div className="w-32">
                       <label className="block text-[10px] text-muted-foreground mb-0.5 font-bold flex items-center justify-between">
-                        <span>السعر (د.ع)</span>
+                        <span>بعد الخصم (د.ع)</span>
                         {!hasCustomPrice && (
                           <span className="text-[9px] text-muted-foreground/80 font-normal">
                             افتراضي
@@ -729,6 +785,7 @@ export function ProductOptionsEditor({
                       opt.price !== "" && opt.price != null
                         ? Number(opt.price)
                         : Number(basePrice || 0);
+                    const originalPrice = Number(opt.originalPrice) || 0;
                     return (
                       <span
                         key={opt.id}
@@ -740,14 +797,21 @@ export function ProductOptionsEditor({
                         )}
                       >
                         <span>{opt.name || `خيار ${i + 1}`}</span>
-                        <span
-                          className={
-                            i === 0
-                              ? "text-emerald-300 font-mono text-[11px]"
-                              : "text-emerald-600 dark:text-emerald-400 font-mono text-[11px]"
-                          }
-                        >
-                          ({price.toLocaleString()} د.ع)
+                        <span className="flex items-center gap-1 font-mono text-[11px]">
+                          {originalPrice > price ? (
+                            <span className="line-through opacity-60">
+                              {originalPrice.toLocaleString()}
+                            </span>
+                          ) : null}
+                          <span
+                            className={
+                              i === 0
+                                ? "text-emerald-300"
+                                : "text-emerald-600 dark:text-emerald-400"
+                            }
+                          >
+                            ({price.toLocaleString()} د.ع)
+                          </span>
                         </span>
                       </span>
                     );
@@ -775,14 +839,22 @@ export function ProductOptionsEditor({
                         : Number(basePrice || 0);
                     const finalPrice =
                       t.price !== "" && t.price != null ? Number(t.price) : optPrice;
+                    const originalPrice = Number(t.originalPrice) || 0;
                     return (
                       <span
                         key={t.id}
                         className="px-2.5 py-1 rounded-lg text-[11px] font-bold bg-muted/80 text-foreground border border-border flex items-center gap-1"
                       >
                         <span>{t.name || `نوع ${i + 1}`}</span>
-                        <span className="text-emerald-600 dark:text-emerald-400 font-mono">
-                          ({finalPrice.toLocaleString()} د.ع)
+                        <span className="flex items-center gap-1 font-mono">
+                          {originalPrice > finalPrice ? (
+                            <span className="text-muted-foreground line-through">
+                              {originalPrice.toLocaleString()}
+                            </span>
+                          ) : null}
+                          <span className="text-emerald-600 dark:text-emerald-400">
+                            ({finalPrice.toLocaleString()} د.ع)
+                          </span>
                         </span>
                       </span>
                     );

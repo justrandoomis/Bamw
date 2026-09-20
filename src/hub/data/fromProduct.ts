@@ -166,8 +166,7 @@ function buildMedia(p: Record<string, unknown>, locale: "ar" | "en") {
     records. Reading just the legacy name left the trailer card empty on every
     imported game while the URL sat in the document.
   */
-  const trailerUrl =
-    str(p["trailerUrl"]) || str(p["youtubeTrailer"]) || str(p["trailer_url"]);
+  const trailerUrl = str(p["trailerUrl"]) || str(p["youtubeTrailer"]) || str(p["trailer_url"]);
   const videos: GameVideo[] = [
     ...(trailerUrl
       ? [
@@ -178,7 +177,9 @@ function buildMedia(p: Record<string, unknown>, locale: "ar" | "en") {
             embedUrl: youtubeEmbed(trailerUrl) ?? trailerUrl,
             // Without a poster the card paints an empty gradient rectangle at
             // the size it reserved. See `youtubeThumbnail`.
-            ...(youtubeThumbnail(trailerUrl) ? { thumbnailUrl: youtubeThumbnail(trailerUrl)! } : {}),
+            ...(youtubeThumbnail(trailerUrl)
+              ? { thumbnailUrl: youtubeThumbnail(trailerUrl)! }
+              : {}),
           },
         ]
       : []),
@@ -557,6 +558,7 @@ function buildEditions(p: Record<string, unknown>, locale: "ar" | "en"): GameEdi
       tier: "standard" as const,
       contents: contentsList,
       ...(hasNum(row["price"]) ? { msrp: money(num(row["price"])) } : {}),
+      ...(hasNum(row["originalPrice"]) ? { listPrice: money(num(row["originalPrice"])) } : {}),
       ...(str(row["coverUrl"] || row["image"])
         ? { coverUrl: str(row["coverUrl"] || row["image"]) }
         : {}),
@@ -771,12 +773,7 @@ function inferTimelineKind(
   fallback: TimelineEvent["kind"] = "update",
 ): TimelineEvent["kind"] {
   const s = strVal.toLowerCase();
-  if (
-    s.includes("announce") ||
-    s.includes("إعلان") ||
-    s.includes("اعلان") ||
-    s.includes("كشف")
-  )
+  if (s.includes("announce") || s.includes("إعلان") || s.includes("اعلان") || s.includes("كشف"))
     return "announcement";
   if (s.includes("trailer") || s.includes("تريلر") || s.includes("عرض")) return "trailer";
   if (s.includes("demo") || s.includes("تجريبي") || s.includes("نسخة تجريبية")) return "demo";
@@ -1055,9 +1052,7 @@ function buildSimilar(
       if (customReason) {
         reasons.push({ kind: "gameplay", text: customReason });
       } else {
-        const candGenres = Array.isArray(matched["genres"])
-          ? (matched["genres"] as string[])
-          : [];
+        const candGenres = Array.isArray(matched["genres"]) ? (matched["genres"] as string[]) : [];
         const sharedGenre = currentGenres.find((g) => candGenres.includes(g));
         if (currentSeries && str(matched["seriesName"] || matched["series"]) === currentSeries) {
           reasons.push({
@@ -1086,10 +1081,7 @@ function buildSimilar(
         } else {
           reasons.push({
             kind: "nintendo",
-            text:
-              locale === "en"
-                ? "Recommended Nintendo Switch title"
-                : "لعبة مميزة مقترحة",
+            text: locale === "en" ? "Recommended Nintendo Switch title" : "لعبة مميزة مقترحة",
           });
         }
       }
@@ -1120,9 +1112,7 @@ function buildSimilar(
         reasons.push({
           kind: "story",
           text:
-            locale === "en"
-              ? `Same series: ${currentSeries}`
-              : `من نفس السلسلة: ${currentSeries}`,
+            locale === "en" ? `Same series: ${currentSeries}` : `من نفس السلسلة: ${currentSeries}`,
         });
       }
 
@@ -1146,11 +1136,7 @@ function buildSimilar(
 
       // Developer match (+20)
       const candDev = str(cand["developer"] || cand["studioName"] || cand["developerEn"]);
-      if (
-        currentDeveloper &&
-        candDev &&
-        currentDeveloper.toLowerCase() === candDev.toLowerCase()
-      ) {
+      if (currentDeveloper && candDev && currentDeveloper.toLowerCase() === candDev.toLowerCase()) {
         score += 20;
         reasons.push({
           kind: "gameplay",
@@ -1172,10 +1158,7 @@ function buildSimilar(
         score += 10;
         reasons.push({
           kind: "nintendo",
-          text:
-            locale === "en"
-              ? `Published by ${currentPublisher}`
-              : `من نشر ${currentPublisher}`,
+          text: locale === "en" ? `Published by ${currentPublisher}` : `من نشر ${currentPublisher}`,
         });
       }
 
@@ -1311,6 +1294,7 @@ function buildCatalogOptions(p: Record<string, unknown>, locale: "ar" | "en") {
         return {
           id: str(opt["id"]) || `opt-${i}`,
           name,
+          originalPrice: num(opt["originalPrice"]) || undefined,
           price: num(opt["price"]) || undefined,
           cost: num(opt["cost"]) || undefined,
           description: desc || undefined,
@@ -1376,6 +1360,7 @@ function buildCatalogTypes(p: Record<string, unknown>, locale: "ar" | "en") {
         id: str(t["id"]) || `type-${i}`,
         name,
         optionId: str(t["optionId"]) || undefined,
+        originalPrice: num(t["originalPrice"]) || undefined,
         price: num(t["price"]) || undefined,
         cost: num(t["cost"]) || undefined,
         stock: num(t["stock"]) || undefined,
@@ -1405,25 +1390,45 @@ function buildOffers(
   const accountRegion = (REGIONS as readonly string[]).includes(named)
     ? (named as (typeof REGIONS)[number])
     : "JP";
-  return hubOffers.map((offer, i) => ({
-    id: `${offer.kind}-${i}`,
-    storeId: "banam",
-    storeName: locale === "en" ? "Bananto" : "بنانتو",
-    firstParty: true,
-    official: true,
-    region:
-      offer.kind === "account" || offer.kind === "accountOnline" ? accountRegion : ("SA" as const),
-    format: formatByKind[offer.kind],
-    platform,
-    price: money(offer.price),
-    availability: offer.available
-      ? "in-stock"
-      : offer.kind === "lend" && offer.preorder
-        ? "preorder"
-        : "out-of-stock",
-    updatedAt: now,
-    ...(offer.note ? { notes: offer.note } : {}), // Might need localization on offer.note later
-  }));
+  return hubOffers.map((offer, i) => {
+    const originalPrice =
+      offer.kind === "account"
+        ? num(p["originalPrice"])
+        : offer.kind === "accountOnline"
+          ? num(p["accountOnlineOriginalPrice"])
+          : offer.kind === "lend"
+            ? num(p["lendOriginalPrice"])
+            : num(p["discOriginalPrice"]);
+    const hasMarkdown = originalPrice > offer.price;
+
+    return {
+      id: `${offer.kind}-${i}`,
+      storeId: "banam",
+      storeName: locale === "en" ? "Bananto" : "بنانتو",
+      firstParty: true,
+      official: true,
+      region:
+        offer.kind === "account" || offer.kind === "accountOnline"
+          ? accountRegion
+          : ("SA" as const),
+      format: formatByKind[offer.kind],
+      platform,
+      price: money(offer.price),
+      ...(hasMarkdown
+        ? {
+            listPrice: money(originalPrice),
+            discountPercent: Math.round(((originalPrice - offer.price) / originalPrice) * 100),
+          }
+        : {}),
+      availability: offer.available
+        ? "in-stock"
+        : offer.kind === "lend" && offer.preorder
+          ? "preorder"
+          : "out-of-stock",
+      updatedAt: now,
+      ...(offer.note ? { notes: offer.note } : {}), // Might need localization on offer.note later
+    };
+  });
 }
 
 export function gameFromProduct(

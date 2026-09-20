@@ -6,6 +6,8 @@
  * the database, never calls an external API and never sees admin-only data.
  */
 
+import type { ProductKind } from "../types";
+
 export type SupportLang = "ar" | "en" | "ku" | "tr";
 
 export type Confidence = "high" | "medium" | "low";
@@ -37,18 +39,7 @@ export interface SafeOrderItem {
   id: string;
   productId: string;
   title: string;
-  kind:
-    | "account"
-    | "offline_account"
-    | "online_account"
-    | "physical"
-    | "accessory"
-    | "hardware"
-    | "device"
-    | "collectible"
-    | "preorder"
-    | "digital_code"
-    | "bundle";
+  kind: ProductKind;
   quantity: number;
   /** delivered account email — only present once it was sent to this user */
   deliveryEmail?: string;
@@ -81,18 +72,7 @@ export interface SafeProduct {
   title: string;
   titleEn?: string;
   price: number;
-  kind:
-    | "account"
-    | "offline_account"
-    | "online_account"
-    | "physical"
-    | "accessory"
-    | "hardware"
-    | "device"
-    | "collectible"
-    | "preorder"
-    | "digital_code"
-    | "bundle";
+  kind: ProductKind;
   genre?: string;
   publisher?: string;
   size?: string;

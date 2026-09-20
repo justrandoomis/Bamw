@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { CheckCircle2, EyeOff, ShieldCheck, Trash2 } from "lucide-react";
+import { toast } from "sonner";
 
 interface AdminReview {
   id: string;
@@ -8,6 +9,7 @@ interface AdminReview {
   order_id: string | null;
   rating: number;
   comment: string;
+  screenshot_url?: string | null;
   status: string;
   is_buyer?: number | boolean;
   created_at: string;
@@ -19,14 +21,18 @@ export default function ReviewsManager() {
   const [reviews, setReviews] = useState<AdminReview[]>([]);
   const [loading, setLoading] = useState(true);
   const [query, setQuery] = useState("");
-  const [filter, setFilter] = useState<"all" | "pending" | "approved" | "hidden">("pending");
+  const [filter, setFilter] = useState<"all" | "pending" | "approved" | "hidden">("all");
 
   const load = useCallback(async () => {
     setLoading(true);
     try {
       const res = await fetch("/api/reviews?scope=all", { credentials: "include" });
+      if (!res.ok) throw new Error("تعذر تحميل التقييمات");
       const data = (await res.json()) as { reviews?: AdminReview[] };
       setReviews(data.reviews ?? []);
+    } catch (error) {
+      setReviews([]);
+      toast.error(error instanceof Error ? error.message : "تعذر تحميل التقييمات");
     } finally {
       setLoading(false);
     }
@@ -37,12 +43,17 @@ export default function ReviewsManager() {
   }, [load]);
 
   const act = async (id: string, action: "approve" | "hide" | "delete") => {
-    await fetch("/api/reviews", {
+    const res = await fetch("/api/reviews", {
       method: "PATCH",
       credentials: "include",
       headers: { "content-type": "application/json" },
       body: JSON.stringify({ id, action }),
     });
+    if (!res.ok) {
+      const data = (await res.json().catch(() => ({}))) as { error?: string; message?: string };
+      toast.error(data.message || data.error || "تعذر تحديث التقييم");
+      return;
+    }
     await load();
   };
 
@@ -159,6 +170,22 @@ export default function ReviewsManager() {
               <p className="whitespace-pre-wrap text-sm text-foreground bg-[var(--page-2)] p-3 rounded-xl">
                 {r.comment || "— لا يوجد تعليق نصي —"}
               </p>
+
+              {r.screenshot_url && (
+                <a
+                  href={r.screenshot_url}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="block w-fit overflow-hidden rounded-xl border border-border"
+                >
+                  <img
+                    src={r.screenshot_url}
+                    alt="صورة مرفقة بالتقييم"
+                    loading="lazy"
+                    className="max-h-64 w-auto max-w-full object-contain"
+                  />
+                </a>
+              )}
 
               <div className="flex gap-2 pt-1">
                 {r.status !== "approved" && (

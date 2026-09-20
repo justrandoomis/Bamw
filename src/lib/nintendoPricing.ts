@@ -51,6 +51,8 @@ export interface TemplateType {
   name?: string;
   optionId?: string;
   price?: number | null;
+  /** Optional compare-at price; ignored by the supplier-cost pricing engine. */
+  originalPrice?: number | null;
   cost?: number | null;
   description?: string;
 }
@@ -548,7 +550,9 @@ export function readyTierPricing(types: readonly TemplateType[]): GamePricing | 
     ["online", "base"],
     ["online", "extras"],
   ];
-  const ordered = order.map(([account, content]) => at(account, content)).filter(Boolean) as PricedTier[];
+  const ordered = order
+    .map(([account, content]) => at(account, content))
+    .filter(Boolean) as PricedTier[];
 
   return {
     tiers: ordered,

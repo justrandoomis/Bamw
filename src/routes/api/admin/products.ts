@@ -1,5 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { getCatalogVersion, getStore, invalidateStoreCache, updateStore } from "@/lib/db.server";
+import {
+  bumpCatalogVersion,
+  getCatalogVersion,
+  getStore,
+  invalidateStoreCache,
+  updateStore,
+} from "@/lib/db.server";
 import {
   destructiveUpdateLog,
   mergeProductUpdate,
@@ -44,6 +50,7 @@ import { sanitizeSlug, uniqueSlug } from "@/lib/productSlug";
 import { checkPublishable, isPublishing } from "@/lib/publishGate";
 import { applyHiddenIntent } from "@/lib/purchasable";
 import { sanitizeAndVerifyProductImages } from "@/lib/productImageVerification.server";
+import { normalizeProductCompareAtPrices } from "@/lib/productPricing";
 
 function productSection(product: Partial<Product>, categories: Record<string, unknown>[]) {
   const categoryId = String(product.categoryId || product.category || "");
@@ -469,6 +476,8 @@ export const Route = createFileRoute("/api/admin/products")({
             updatedAt: nowIso,
             updated_at: nowIso,
           };
+          productToSave = normalizeProductCompareAtPrices(productToSave);
+          if (Array.isArray(productToSave.types)) productToSave.variants = productToSave.types;
 
           /*
             The spread above can carry hidden-state spellings from the payload
@@ -537,6 +546,7 @@ export const Route = createFileRoute("/api/admin/products")({
                 );
                 invalidateStoreCache();
                 await refreshProductIndexRow(imgVerification.product as Record<string, unknown>);
+                await bumpCatalogVersion();
               }
             } catch (imgErr) {
               console.warn("[BackgroundImgIngestError]", imgErr);
@@ -560,6 +570,7 @@ export const Route = createFileRoute("/api/admin/products")({
             // skips it leaves the list showing the old flags until a full
             // rebuild. One row, same request, before the success response.
             await refreshProductIndexRow(productToSave as unknown as Record<string, unknown>);
+            const catalogVersion = await bumpCatalogVersion();
 
             const saved = productToSave;
 
@@ -572,7 +583,7 @@ export const Route = createFileRoute("/api/admin/products")({
             return json({
               success: true,
               product: saved,
-              catalogVersion: await getCatalogVersion(),
+              catalogVersion,
             });
           } catch (dbErr: any) {
             const ref = errorRef();
@@ -634,7 +645,8 @@ export const Route = createFileRoute("/api/admin/products")({
           if (guard.rejectedMedia.length) {
             console.warn(oversizedMediaLog(productId, guard.rejectedMedia));
           }
-          const productToSave: Product = guard.merged;
+          const productToSave: Product = normalizeProductCompareAtPrices(guard.merged);
+          if (Array.isArray(productToSave.types)) productToSave.variants = productToSave.types;
 
           /*
             One performance record, owned by the platform's device. Whatever
@@ -706,6 +718,7 @@ export const Route = createFileRoute("/api/admin/products")({
             // skips it leaves the list showing the old flags until a full
             // rebuild. One row, same request, before the success response.
             await refreshProductIndexRow(productToSave as unknown as Record<string, unknown>);
+            const catalogVersion = await bumpCatalogVersion();
 
             // Background syncing for Game Device Performance (only if performance arrays changed)
             if (
@@ -723,7 +736,7 @@ export const Route = createFileRoute("/api/admin/products")({
             return json({
               success: true,
               product: productToSave,
-              catalogVersion: await getCatalogVersion(),
+              catalogVersion,
               ...(guard.blocked.length ? { blockedFields: guard.blocked } : {}),
               ...(guard.cleared.length ? { clearedFields: guard.cleared } : {}),
               ...(guard.rejectedMedia.length ? { rejectedMedia: guard.rejectedMedia } : {}),
@@ -915,7 +928,8 @@ export const Route = createFileRoute("/api/admin/products")({
           if (putGuard.rejectedMedia?.length) {
             console.warn(oversizedMediaLog(productId, putGuard.rejectedMedia));
           }
-          let productToSave: Product = putGuard.merged;
+          let productToSave: Product = normalizeProductCompareAtPrices(putGuard.merged);
+          if (Array.isArray(productToSave.types)) productToSave.variants = productToSave.types;
 
           if (productSection(productToSave, currentStore.categories || []) === "game") {
             productToSave.devicePerformance = normalizeGameDevicePerformance(
@@ -1010,6 +1024,7 @@ export const Route = createFileRoute("/api/admin/products")({
                 );
                 invalidateStoreCache();
                 await refreshProductIndexRow(imgVerification.product as Record<string, unknown>);
+                await bumpCatalogVersion();
               }
             } catch (imgErr) {
               console.warn("[BackgroundImgIngestError]", imgErr);
@@ -1032,6 +1047,7 @@ export const Route = createFileRoute("/api/admin/products")({
             // skips it leaves the list showing the old flags until a full
             // rebuild. One row, same request, before the success response.
             await refreshProductIndexRow(productToSave as unknown as Record<string, unknown>);
+            const catalogVersion = await bumpCatalogVersion();
 
             const saved = productToSave;
 
@@ -1044,7 +1060,7 @@ export const Route = createFileRoute("/api/admin/products")({
             return json({
               success: true,
               product: saved,
-              catalogVersion: await getCatalogVersion(),
+              catalogVersion,
             });
           } catch (dbErr: any) {
             const ref = errorRef();

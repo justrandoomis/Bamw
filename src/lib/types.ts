@@ -11,7 +11,10 @@ export type ProductKind =
   | "device"
   | "collectible"
   | "preorder"
-  | "digital_code";
+  | "digital_code"
+  | "code"
+  | "gift_card"
+  | "game";
 
 export function isAccountKind(kind?: string | null): boolean {
   return kind === "account" || kind === "offline_account" || kind === "online_account";
@@ -217,12 +220,16 @@ export interface ProductEdition {
   id: string;
   name: string;
   price: number;
+  /** Optional compare-at price; `price` remains the amount charged. */
+  originalPrice?: number;
 }
 
 export interface ProductDLC {
   id: string;
   name: string;
   price: number;
+  /** Optional compare-at price; `price` remains the amount charged. */
+  originalPrice?: number;
 }
 
 export interface Product extends Partial<GameMetadata> {
@@ -243,6 +250,8 @@ export interface Product extends Partial<GameMetadata> {
   featuresEn?: string[];
   featuresKu?: string[];
   price: number;
+  /** Price before the product's own markdown. Never used as the checkout price. */
+  originalPrice?: number;
   cost?: number;
   stock: number;
   status: string;

@@ -431,8 +431,11 @@ type.4.is_infinite_stock=true
       "is_infinite_stock=true",
       "is_hidden=false",
       "option.1.stock=",
+      "option.1.price=",
+      "option.1.original_price=",
       "option.2.is_infinite_stock=true",
       "type.1.stock=",
+      "type.1.original_price=",
       "type.4.is_infinite_stock=true",
     ]) {
       expect(template).toContain(line);

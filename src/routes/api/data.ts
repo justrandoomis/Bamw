@@ -57,11 +57,13 @@ const LIST_FIELDS = [
   "seriesName",
   "seriesNameEn",
   "series",
+  "originalPrice",
   "price",
   "status",
   "isActive",
   "kind",
   "platform",
+  "switch2Enhanced",
   "category",
   "categoryId",
   "categoryTitle",
@@ -86,6 +88,14 @@ const LIST_FIELDS = [
   "cartridgeImage",
   "cartridgeImageTrim",
   "nintendoCardImage",
+  "nintendoCardImageTrim",
+  // Legacy spellings still resolved by the square-card image contract. Home
+  // uses the slim payload, so these must travel with it or valid artwork would
+  // be ranked as missing and replaced by the placeholder there only.
+  "nintendo_card_image",
+  "squareGameImage",
+  "squareImage",
+  "square_card_image",
   "image",
   "coverImage",
   "coverImageTrim",
@@ -216,9 +226,10 @@ function slimStore(store: any, options?: { page?: number; limit?: number; catego
 
   if (options?.category) {
     const cat = options.category.toLowerCase();
-    products = products.filter((p: any) => 
-      String(p?.category || "").toLowerCase() === cat ||
-      String(p?.categoryId || "").toLowerCase() === cat
+    products = products.filter(
+      (p: any) =>
+        String(p?.category || "").toLowerCase() === cat ||
+        String(p?.categoryId || "").toLowerCase() === cat,
     );
   }
 
@@ -236,6 +247,11 @@ function slimStore(store: any, options?: { page?: number; limit?: number; catego
     products: products.map((p: any) => {
       const out: Record<string, unknown> = {};
       for (const key of LIST_FIELDS) if (p?.[key] !== undefined) out[key] = p[key];
+      // The listing card needs only this legacy Switch 2 flag, not the full
+      // switch2 detail object (which may contain a feature list).
+      if (p?.switch2?.isSwitch2Edition === true) {
+        out.switch2 = { isSwitch2Edition: true };
+      }
       return out;
     }),
   };
@@ -263,7 +279,7 @@ function publicPayload(
   store: StoreDoc,
   availability: AdminAvailabilityStatus | undefined,
   slim: boolean,
-  options?: { page?: number; limit?: number; category?: string }
+  options?: { page?: number; limit?: number; category?: string },
 ): string {
   const availabilityKey = JSON.stringify(availability ?? null);
   const currentVersion = getStoreCacheVersion();
@@ -415,12 +431,16 @@ export const Route = createFileRoute("/api/data")({
           }
 
           if (duration > 2000) {
-            console.warn(`[SLOW_REQUEST] /api/data reqId=${reqId} duration=${duration}ms url=${request.url}`);
+            console.warn(
+              `[SLOW_REQUEST] /api/data reqId=${reqId} duration=${duration}ms url=${request.url}`,
+            );
           } else {
-            console.log(`[PRODUCTS_FETCH_SUCCESS] reqId=${reqId} duration=${duration}ms productsCount=${store?.products?.length ?? 0}`);
+            console.log(
+              `[PRODUCTS_FETCH_SUCCESS] reqId=${reqId} duration=${duration}ms productsCount=${store?.products?.length ?? 0}`,
+            );
           }
 
-          const paginationOpts = (page > 0 || category) ? { page, limit, category } : undefined;
+          const paginationOpts = page > 0 || category ? { page, limit, category } : undefined;
 
           let payload: string;
           if (viewer?.isAdmin) {

@@ -159,6 +159,9 @@ size_gb=
 # السعر الأساسي بالدينار
 price=
 
+# السعر الأساسي قبل الخصم (اختياري، ويجب أن يكون أعلى من السعر الحالي)
+original_price=
+
 # السعر بالدينار العراقي
 price_iqd=
 
@@ -1817,6 +1820,8 @@ source.6.url=
 # خيارات المنتج الرئيسية — لكل لعبة خياران: option.1.id=offline_account (حساب أوفلاين) و option.2.id=online_account (حساب أونلاين)
 option.1.id=
 option.1.name=
+option.1.price=
+option.1.original_price=
 option.1.description=
 option.1.internal_note=
 option.1.stock=
@@ -1824,6 +1829,8 @@ option.1.stock=
 option.1.is_infinite_stock=true
 option.2.id=
 option.2.name=
+option.2.price=
+option.2.original_price=
 option.2.description=
 option.2.internal_note=
 option.2.stock=
@@ -1835,6 +1842,7 @@ type.1.id=
 type.1.name=
 type.1.option_id=
 type.1.price=
+type.1.original_price=
 type.1.cost=
 type.1.description=
 type.1.internal_note=
@@ -1845,6 +1853,7 @@ type.2.id=
 type.2.name=
 type.2.option_id=
 type.2.price=
+type.2.original_price=
 type.2.cost=
 type.2.description=
 type.2.internal_note=
@@ -1855,6 +1864,7 @@ type.3.id=
 type.3.name=
 type.3.option_id=
 type.3.price=
+type.3.original_price=
 type.3.cost=
 type.3.description=
 type.3.internal_note=
@@ -1865,6 +1875,7 @@ type.4.id=
 type.4.name=
 type.4.option_id=
 type.4.price=
+type.4.original_price=
 type.4.cost=
 type.4.description=
 type.4.internal_note=

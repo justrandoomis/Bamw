@@ -4,6 +4,7 @@ import StaggerItem from "./StaggerItem";
 import { useBatches } from "@/hooks/useBatches";
 import NintendoCover from "./NintendoCover";
 import type { NintendoMediaRole } from "@/lib/nintendoImages";
+import NintendoGameCard from "./NintendoGameCard";
 
 /**
  * How many cards in a strip are treated as above the fold.
@@ -72,6 +73,56 @@ export function CartridgeSkeleton() {
           className="shrink-0 w-[115px] h-[196px] bg-muted/20 rounded-2xl animate-pulse animate-skeleton-shimmer"
         />
       ))}
+    </div>
+  );
+}
+
+/**
+ * The square Nintendo game shelf used directly below the store services.
+ * Products are supplied in their final business order by HomeView; batching
+ * only limits initial DOM and image work and never repeats or omits a game.
+ */
+export function NintendoGameStrip({
+  products,
+  formatPrice,
+  direction,
+}: {
+  products: Record<string, any>[];
+  formatPrice: (value: number | string) => string;
+  direction: "ltr" | "rtl";
+}) {
+  const { visible, hasMore, sentinelRef, delayFor } = useBatches(products, 12, 250);
+
+  return (
+    <div
+      className="flex w-full max-w-full touch-pan-x snap-x snap-mandatory gap-2.5 overflow-x-auto overscroll-x-contain scroll-smooth px-4 pb-3 pt-1 no-scrollbar sm:gap-3 sm:px-8"
+      dir={direction}
+      aria-label="Nintendo Switch games"
+    >
+      {visible.map((product, index) => (
+        <StaggerItem
+          key={String(product.id ?? product.slug ?? index)}
+          className="shrink-0 snap-start"
+          delay={delayFor(index)}
+        >
+          <NintendoGameCard
+            product={product}
+            priority={index < PRIORITY_CARDS}
+            formatPrice={formatPrice}
+            className="w-[136px] sm:w-[158px]"
+          />
+        </StaggerItem>
+      ))}
+
+      {hasMore ? (
+        <div
+          ref={sentinelRef}
+          className="flex min-h-[190px] w-16 shrink-0 items-center justify-center"
+          aria-hidden="true"
+        >
+          <div className="h-6 w-6 animate-spin rounded-full border-2 border-border border-t-red-500" />
+        </div>
+      ) : null}
     </div>
   );
 }

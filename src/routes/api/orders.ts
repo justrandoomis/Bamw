@@ -384,7 +384,8 @@ export const Route = createFileRoute("/api/orders")({
               });
               return json({ order: redactOrder(next!, user) });
             } catch (error: any) {
-              const code = error instanceof Error ? error.message : (error?.message || "delivery_issue_failed");
+              const code =
+                error instanceof Error ? error.message : error?.message || "delivery_issue_failed";
               return json({ error: code }, { status: 409 });
             }
           }
@@ -426,6 +427,25 @@ export const Route = createFileRoute("/api/orders")({
             const firstKind = order!.items[0]?.kind || "account";
             if (!(await canTransition(order!.status, data.status as string, firstKind))) {
               return json({ error: "invalid_transition" }, { status: 400 });
+            }
+
+            if (data.status === "completed") {
+              const { updateOrderStatus } = await import("@/lib/orders.server");
+              let completed = await updateOrderStatus({
+                orderId: order!.id,
+                newStatus: "completed",
+                changedByUserId: user.id,
+                changedByRole: "ADMIN",
+                reason: data.note || "Order completed from the orders API",
+              });
+              if (data.address) {
+                completed = await saveOrder({
+                  ...completed,
+                  address: data.address,
+                  updatedAt: new Date().toISOString(),
+                });
+              }
+              return json({ order: redactOrder(completed, user) });
             }
 
             // Log history

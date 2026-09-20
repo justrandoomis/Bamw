@@ -103,6 +103,8 @@ export interface AccountToolsModalProps {
   onClose: () => void;
   order?: Order | null;
   defaultTab?: "credentials" | "card" | "otp" | "instructions";
+  onCompleteOrder?: (orderId: string) => Promise<unknown> | void;
+  isCompletingOrder?: boolean;
   onDeliveryFinished?: (payload: { nextOrder?: DeliveryActionResponse["nextOrder"] }) => void;
   onStateChanged?: () => void;
 }
@@ -170,6 +172,8 @@ export function AccountToolsModal({
   onClose,
   order,
   defaultTab = "credentials",
+  onCompleteOrder,
+  isCompletingOrder = false,
   onDeliveryFinished,
   onStateChanged,
 }: AccountToolsModalProps) {
@@ -429,6 +433,15 @@ export function AccountToolsModal({
     () => deliveryState?.deliveryItems.filter((item) => item.status === "needs_mapping") || [],
     [deliveryState?.deliveryItems],
   );
+  const canCompleteOrder = useMemo(() => {
+    const active = deliveryState?.deliveryItems.filter((item) => !item.archivedAt) || [];
+    const expected = active.filter((item) => Boolean(item.orderItemId));
+    return (
+      expected.length > 0 &&
+      active.every((item) => item.status !== "needs_mapping") &&
+      expected.every((item) => item.status === "otp_sent" || item.status === "completed")
+    );
+  }, [deliveryState?.deliveryItems]);
 
   const handleQuickPaste = useCallback(async () => {
     const rawText = quickPaste.trim();
@@ -1036,7 +1049,21 @@ export function AccountToolsModal({
           >
             إغلاق
           </button>
-          {selected && selectedDraft && isCodeKind(selected.kind) ? (
+          {canCompleteOrder && order && onCompleteOrder ? (
+            <button
+              type="button"
+              onClick={() => void onCompleteOrder(order.id)}
+              disabled={isCompletingOrder}
+              className="inline-flex items-center gap-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 px-5 py-2.5 text-xs font-bold text-white disabled:opacity-40 cursor-pointer"
+            >
+              {isCompletingOrder ? (
+                <Loader2 className="h-3.5 w-3.5 animate-spin" />
+              ) : (
+                <CheckCircle2 className="h-3.5 w-3.5" />
+              )}{" "}
+              إكمال الطلب والانتقال للتالي
+            </button>
+          ) : selected && selectedDraft && isCodeKind(selected.kind) ? (
             <button
               type="button"
               onClick={() => void sendCode()}

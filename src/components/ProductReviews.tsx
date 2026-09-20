@@ -1,13 +1,17 @@
 import { useCallback, useEffect, useState } from "react";
-import { CheckCircle2, Clock, Edit2, ShieldCheck, Star } from "lucide-react";
+import { CheckCircle2, Edit2, Loader2, ShieldCheck, Star, Upload, X } from "lucide-react";
 import { useAuth } from "@/hooks/useAuth";
 import { useI18n } from "@/i18n";
 import { playSound } from "@/utils/audio";
+import { api, fileToDataUrl } from "@/lib/api";
+import ReviewRewardCode, { type ReviewRewardData } from "@/components/reviews/ReviewRewardCode";
+import { toast } from "sonner";
 
 interface PublicReview {
   id: string;
   rating: number;
   comment: string;
+  screenshot_url?: string | null;
   created_at: string;
   is_buyer?: boolean;
   user_name?: string | null;
@@ -29,6 +33,9 @@ export default function ProductReviews({ productId }: { productId: string }) {
   const [saving, setSaving] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
   const [successMsg, setSuccessMsg] = useState("");
+  const [imageUrl, setImageUrl] = useState("");
+  const [isUploading, setIsUploading] = useState(false);
+  const [reward, setReward] = useState<ReviewRewardData | null>(null);
 
   const load = useCallback(async () => {
     try {
@@ -45,12 +52,28 @@ export default function ProductReviews({ productId }: { productId: string }) {
       if (data.myReview) {
         setRating(data.myReview.rating);
         setComment(data.myReview.comment);
+        setImageUrl(data.myReview.screenshot_url ?? "");
       }
       setSummary(data.summary ?? { count: 0, average: 0 });
     } catch {
       // ignore
     }
   }, [productId]);
+
+  const uploadImage = async (file?: File) => {
+    if (!file) return;
+    setIsUploading(true);
+    try {
+      const dataUrl = await fileToDataUrl(file);
+      const uploaded = await api.upload(dataUrl, "reviews");
+      setImageUrl(uploaded.url);
+      toast.success("تم رفع صورة التقييم");
+    } catch {
+      toast.error("فشل رفع صورة التقييم");
+    } finally {
+      setIsUploading(false);
+    }
+  };
 
   useEffect(() => {
     void load();
@@ -61,15 +84,17 @@ export default function ProductReviews({ productId }: { productId: string }) {
     setSuccessMsg("");
     try {
       playSound("select", 0.6);
-      await fetch("/api/reviews", {
+      const result = await api.fetch<{ reward?: ReviewRewardData | null }>("/api/reviews", {
         method: "POST",
-        credentials: "include",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify({ productId, rating, comment }),
+        // Always send the field: null deliberately removes an existing image.
+        body: JSON.stringify({ productId, rating, comment, imageUrl: imageUrl || null }),
       });
       setIsEditing(false);
-      setSuccessMsg("تم حفظ التقييم بنجاح، وسيظهر بعد موافقة الإدارة.");
+      setReward(result.reward ?? null);
+      setSuccessMsg("تم نشر تقييمك الموثق بنجاح.");
       await load();
+    } catch (error) {
+      toast.error(error instanceof Error ? error.message : "فشل حفظ التقييم");
     } finally {
       setSaving(false);
     }
@@ -123,16 +148,31 @@ export default function ProductReviews({ productId }: { productId: string }) {
                 </p>
               )}
 
+              {myReview.screenshot_url && (
+                <a
+                  href={myReview.screenshot_url}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="block w-fit overflow-hidden rounded-xl border border-border"
+                >
+                  <img
+                    src={myReview.screenshot_url}
+                    alt="صورة تقييمك"
+                    loading="lazy"
+                    className="h-24 w-24 object-cover"
+                  />
+                </a>
+              )}
+
               <div className="flex items-center gap-2 pt-1 text-xs">
-                {myReview.status === "pending" ? (
-                  <span className="flex items-center gap-1 text-amber-600 bg-amber-500/10 px-2.5 py-1 rounded-lg font-bold border border-amber-500/20">
-                    <Clock className="w-3.5 h-3.5" />
-                    قيد المراجعة في انتظار موافقة الإدارة
-                  </span>
-                ) : myReview.status === "approved" ? (
+                {myReview.status === "approved" ? (
                   <span className="flex items-center gap-1 text-emerald-600 bg-emerald-500/10 px-2.5 py-1 rounded-lg font-bold border border-emerald-500/20">
                     <CheckCircle2 className="w-3.5 h-3.5" />
                     منشور ومعتمد
+                  </span>
+                ) : myReview.status === "pending" ? (
+                  <span className="text-xs font-bold text-muted-foreground">
+                    تقييم قديم قيد المراجعة
                   </span>
                 ) : null}
               </div>
@@ -184,13 +224,45 @@ export default function ProductReviews({ productId }: { productId: string }) {
                 className="w-full rounded-xl border border-border bg-[var(--page-2)] p-3 text-sm outline-none focus:border-[var(--brand-red)] transition-colors"
               />
 
+              <div>
+                {imageUrl ? (
+                  <div className="relative h-24 w-24 overflow-hidden rounded-xl border border-border">
+                    <img src={imageUrl} alt="صورة التقييم" className="h-full w-full object-cover" />
+                    <button
+                      type="button"
+                      onClick={() => setImageUrl("")}
+                      className="absolute right-1 top-1 rounded-full bg-black/70 p-1 text-white"
+                      aria-label="حذف صورة التقييم"
+                    >
+                      <X className="h-3.5 w-3.5" />
+                    </button>
+                  </div>
+                ) : (
+                  <label className="inline-flex cursor-pointer items-center gap-2 rounded-xl border border-dashed border-border px-3 py-2 text-xs font-bold text-muted-foreground hover:bg-muted/30">
+                    {isUploading ? (
+                      <Loader2 className="h-4 w-4 animate-spin" />
+                    ) : (
+                      <Upload className="h-4 w-4" />
+                    )}
+                    <span>إرفاق صورة (اختياري)</span>
+                    <input
+                      type="file"
+                      accept="image/*"
+                      className="hidden"
+                      disabled={isUploading}
+                      onChange={(event) => void uploadImage(event.target.files?.[0])}
+                    />
+                  </label>
+                )}
+              </div>
+
               <div className="flex items-center justify-between">
                 <p className="text-[11px] text-muted-foreground">
-                  * سيتم فحص ومراجعة التقييم من قبل الإدارة قبل ظهوره لجميع اللاعبين.
+                  * يُنشر تقييم المشتري الموثق تلقائياً بعد اكتمال الطلب.
                 </p>
                 <button
                   onClick={() => void submit()}
-                  disabled={saving}
+                  disabled={saving || isUploading}
                   className="rounded-xl bg-[var(--brand-red)] px-5 py-2 text-sm font-bold text-white shadow-md active:scale-95 disabled:opacity-60 transition-all"
                 >
                   {saving ? "جاري الحفظ..." : myReview ? "تحديث التقييم" : "إرسال التقييم"}
@@ -200,9 +272,12 @@ export default function ProductReviews({ productId }: { productId: string }) {
           )}
 
           {successMsg && (
-            <p className="text-xs text-emerald-600 bg-emerald-500/10 p-2.5 rounded-xl border border-emerald-500/20 font-bold">
-              {successMsg}
-            </p>
+            <div className="space-y-2">
+              <p className="text-xs text-emerald-600 bg-emerald-500/10 p-2.5 rounded-xl border border-emerald-500/20 font-bold">
+                {successMsg}
+              </p>
+              {reward && <ReviewRewardCode reward={reward} />}
+            </div>
           )}
         </div>
       ) : (
@@ -253,6 +328,21 @@ export default function ProductReviews({ productId }: { productId: string }) {
                 <p className="whitespace-pre-wrap text-sm text-foreground leading-relaxed pt-1">
                   {r.comment}
                 </p>
+              )}
+              {r.screenshot_url && (
+                <a
+                  href={r.screenshot_url}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="block w-fit overflow-hidden rounded-xl border border-border"
+                >
+                  <img
+                    src={r.screenshot_url}
+                    alt="صورة مرفقة بالتقييم"
+                    loading="lazy"
+                    className="max-h-56 w-auto max-w-full object-cover"
+                  />
+                </a>
               )}
             </article>
           ))

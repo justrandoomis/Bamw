@@ -215,6 +215,44 @@ describe("gameFromProduct user score", () => {
   });
 });
 
+describe("gameFromProduct sale prices", () => {
+  it("preserves compare-at prices on account options and types", () => {
+    const game = gameFromProduct(
+      {
+        id: "sale-game",
+        title: "Sale Game",
+        price: 9000,
+        originalPrice: 15000,
+        stock: 10,
+        options: [
+          {
+            id: "offline_account",
+            name: "Offline",
+            price: 9000,
+            originalPrice: 15000,
+          },
+        ],
+        types: [
+          {
+            id: "offline_extras",
+            optionId: "offline_account",
+            name: "Offline + DLC",
+            price: 12500,
+            originalPrice: 20000,
+          },
+        ],
+      },
+      "en",
+    );
+
+    expect(game.options?.[0]).toMatchObject({ price: 9000, originalPrice: 15000 });
+    expect(game.types?.[0]).toMatchObject({ price: 12500, originalPrice: 20000 });
+    expect(game.offers?.[0]?.price.amount).toBe(9000);
+    expect(game.offers?.[0]?.listPrice?.amount).toBe(15000);
+    expect(game.offers?.[0]?.discountPercent).toBe(40);
+  });
+});
+
 describe("gameFromProduct languages", () => {
   it("reads the array-valued audio/text language fields the importer writes", () => {
     const game = gameFromProduct(
@@ -259,7 +297,12 @@ describe("gameFromProduct languages", () => {
 
 describe("gameFromProduct Arabic title", () => {
   it("shows the stored Arabic name on the Arabic page and the English one elsewhere", () => {
-    const p = { id: "t", titleEn: "Mario Kart World", title: "Mario Kart World", titleAr: "ماريو كارت وورلد" };
+    const p = {
+      id: "t",
+      titleEn: "Mario Kart World",
+      title: "Mario Kart World",
+      titleAr: "ماريو كارت وورلد",
+    };
     expect(gameFromProduct(p, "ar").title).toBe("ماريو كارت وورلد");
     expect(gameFromProduct(p, "en").title).toBe("Mario Kart World");
   });

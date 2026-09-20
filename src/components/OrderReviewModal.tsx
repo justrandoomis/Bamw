@@ -12,6 +12,7 @@ import {
 import { toast } from "sonner";
 import { api, fileToDataUrl } from "@/lib/api";
 import type { Order } from "@/lib/types";
+import ReviewRewardCode, { type ReviewRewardData } from "@/components/reviews/ReviewRewardCode";
 
 interface OrderReviewModalProps {
   order: Order;
@@ -40,6 +41,7 @@ export default function OrderReviewModal({
   const [isUploading, setIsUploading] = useState<boolean>(false);
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const [isSuccess, setIsSuccess] = useState<boolean>(false);
+  const [reward, setReward] = useState<ReviewRewardData | null>(null);
 
   const handleImageChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -69,7 +71,7 @@ export default function OrderReviewModal({
 
     try {
       setIsSubmitting(true);
-      await api.fetch("/api/reviews", {
+      const result = await api.fetch<{ reward?: ReviewRewardData | null }>("/api/reviews", {
         method: "POST",
         body: JSON.stringify({
           productId: selectedProductId,
@@ -80,6 +82,7 @@ export default function OrderReviewModal({
         }),
       });
 
+      setReward(result.reward ?? null);
       setIsSuccess(true);
       toast.success("شكراً لك! تم إرسال تقييمك بنجاح ⭐");
       onSubmitted?.();
@@ -147,6 +150,14 @@ export default function OrderReviewModal({
                     شكراً لثقتك بنا وتعاملك مع متجر بنانتو 🍌
                   </p>
                 </div>
+
+                {reward ? (
+                  <ReviewRewardCode reward={reward} />
+                ) : (
+                  <p className="rounded-xl bg-muted/40 p-3 text-xs text-muted-foreground">
+                    تم نشر تقييمك. إذا كان كود الطلب قد استُخدم أو انتهت صلاحيته فلن يُنشأ كود بديل.
+                  </p>
+                )}
 
                 {/* Instagram Promo Callout */}
                 <div className="mt-6 rounded-2xl border border-pink-500/20 bg-linear-to-br from-pink-500/5 to-purple-500/5 p-4 text-right space-y-3">

@@ -121,7 +121,7 @@ export function auditMediaRoles(product: Record<string, unknown> | null | undefi
       severity: "warning",
       roles: ["front-box"],
       message:
-        "لا يوجد غلاف علبة أمامي — ستظهر صورة بديلة في «أحدث إصدارات نينتندو» و /nintendo_games، وأيضاً مكان المجسم ثلاثي الأبعاد.",
+        "لا يوجد غلاف علبة أمامي — ستظهر صورة بديلة في الأسطح التي تعرض علبة اللعبة، وأيضاً مكان المجسم ثلاثي الأبعاد.",
     });
   }
 
@@ -131,7 +131,7 @@ export function auditMediaRoles(product: Record<string, unknown> | null | undefi
       severity: "warning",
       roles: ["square-card"],
       message:
-        "لا توجد صورة بطاقة مربعة — سيظهر شريط «ألعاب نينتندو سويتش» في الصفحة الرئيسية بصورة بديلة.",
+        "لا توجد صورة بطاقة مربعة — سيظهر قسم «ألعاب نينتندو سويتش» والكتالوج /nintendo_games بصورة بديلة.",
     });
   }
 

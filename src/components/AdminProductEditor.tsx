@@ -183,8 +183,10 @@ export default function AdminProductEditor({
     const generateId = () => "prd_" + crypto.randomUUID().replace(/-/g, "").slice(0, 16);
     if (product) {
       const data = {
-        id: product.id || generateId(),
+        // Hub-only fields fill gaps; the stored product remains authoritative.
+        ...(product.rawData || {}),
         ...product,
+        id: product.id || generateId(),
         titleEn: product.titleEn || product.title || "",
         titleKu: product.titleKu || "",
         descriptionEn: product.descriptionEn || product.description || "",
@@ -282,6 +284,7 @@ export default function AdminProductEditor({
         })),
         editions: product.editions || [],
         dlcs: product.dlcs || [],
+        originalPrice: Number(product.originalPrice) || 0,
         price: Number(product.price) || 0,
         cost: Number(product.cost) || 0,
         stock: Number(product.stock) || 0,
@@ -330,8 +333,6 @@ export default function AdminProductEditor({
               ? [product.banner]
               : [""],
         gallery: Array.isArray(product.gallery) ? product.gallery : [],
-        // Spread rawData to ensure all hub fields are available in state
-        ...(product.rawData || {}),
       };
       return data;
     }
@@ -2445,11 +2446,35 @@ export default function AdminProductEditor({
             </span>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+            {/* Original / compare-at price IQD */}
+            <div>
+              <label className="block text-xs font-bold text-foreground mb-1">
+                السعر قبل الخصم (د.ع):
+              </label>
+              <div className="relative">
+                <input
+                  type="number"
+                  min="0"
+                  step="250"
+                  className="w-full border border-border focus:border-foreground rounded-lg px-3 py-2 text-sm outline-none bg-background font-bold text-muted-foreground"
+                  value={formData.originalPrice || ""}
+                  onChange={(e) => handleChange("originalPrice", parseFloat(e.target.value) || 0)}
+                  placeholder="30000"
+                />
+                <span className="absolute left-3 top-1/2 -translate-y-1/2 text-xs font-bold text-muted-foreground">
+                  د.ع
+                </span>
+              </div>
+              <p className="text-[11px] text-muted-foreground mt-1">
+                اختياري؛ يظهر مشطوباً عندما يكون أعلى من سعر البيع.
+              </p>
+            </div>
+
             {/* Price IQD */}
             <div>
               <label className="block text-xs font-bold text-foreground mb-1">
-                سعر البيع بالدينار العراقي (د.ع):
+                سعر البيع بعد الخصم (د.ع):
                 <span className="text-red-500 mr-1">*</span>
               </label>
               <div className="relative">

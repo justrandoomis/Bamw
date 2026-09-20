@@ -39,15 +39,12 @@ import { navSections, resolveSections, type SectionDef } from "@/lib/productImpo
 import type { ProductSchema } from "@/lib/productImport/types";
 import { useCartStore } from "@/store/useCartStore";
 import { ReleaseAlertPanel } from "@/components/ReleaseAlertPanel";
-import {
-  ShareAndEarnButton,
-  ShareTermsNote,
-} from "@/components/referral/ShareAndEarnButton";
+import { ShareAndEarnButton, ShareTermsNote } from "@/components/referral/ShareAndEarnButton";
 import { isAwaitingRelease } from "@/lib/release";
 import type { ProductKind } from "@/lib/types";
 import { showAddToCartToast } from "@/utils/cart-toast";
 import { resolvePurchaseImage } from "@/lib/nintendoImages";
-import { initialOptionId, initialVariantName } from "@/lib/productPricing";
+import { initialOptionId, initialVariantName, resolveUnitPrice } from "@/lib/productPricing";
 
 import {
   AmiiboFunctionalityBlock,
@@ -145,7 +142,20 @@ function DetailsBody({
   const variantsForOption = view.variants.filter((v) => !v.optionId || v.optionId === optionId);
   const selectedVariant = variantsForOption.find((v) => v.name === variantName);
 
-  const effectivePrice = selectedVariant?.price ?? selectedOption?.price ?? view.price;
+  const resolvedPricing = resolveUnitPrice(product, {
+    optionId: selectedOption?.id ?? null,
+    typeId: selectedVariant?.id ?? null,
+  });
+  const effectivePrice =
+    resolvedPricing.unitPrice || selectedVariant?.price || selectedOption?.price || view.price;
+  const effectiveOriginalPrice =
+    resolvedPricing.originalUnitPrice > effectivePrice
+      ? resolvedPricing.originalUnitPrice
+      : effectivePrice;
+  const effectiveDiscountPercent =
+    effectiveOriginalPrice > effectivePrice
+      ? Math.round(((effectiveOriginalPrice - effectivePrice) / effectiveOriginalPrice) * 100)
+      : 0;
   const effectiveStock = view.isInfiniteStock
     ? Number.POSITIVE_INFINITY
     : (selectedVariant?.stock ?? selectedOption?.stock ?? view.stock);
@@ -248,14 +258,14 @@ function DetailsBody({
             <span className="text-3xl font-bold" dir="ltr">
               {formatIQDPrice(effectivePrice)}
             </span>
-            {view.originalPrice > effectivePrice ? (
+            {effectiveOriginalPrice > effectivePrice ? (
               <span className="text-lg text-muted-foreground line-through" dir="ltr">
-                {formatIQDPrice(view.originalPrice)}
+                {formatIQDPrice(effectiveOriginalPrice)}
               </span>
             ) : null}
-            {view.discountPercent > 0 ? (
+            {effectiveDiscountPercent > 0 ? (
               <span className="rounded-full bg-[var(--bad-bg,#fee)] px-2 py-0.5 text-[12px] font-bold text-[var(--brand-red-dark,#c00)]">
-                −{view.discountPercent}%
+                −{effectiveDiscountPercent}%
               </span>
             ) : null}
           </div>
@@ -315,12 +325,23 @@ function DetailsBody({
                         <span>{option.name}</span>
                         {option.price != null && option.price > 0 && (
                           <span
-                            className={`font-mono text-[11px] font-bold ${
-                              isSelected ? "text-primary" : "text-emerald-600 dark:text-emerald-400"
-                            }`}
+                            className="flex items-baseline gap-1 font-mono text-[11px]"
                             dir="ltr"
                           >
-                            ({formatIQDPrice(option.price)})
+                            {Number(option.originalPrice) > option.price ? (
+                              <span className="font-semibold text-muted-foreground line-through">
+                                {formatIQDPrice(Number(option.originalPrice))}
+                              </span>
+                            ) : null}
+                            <span
+                              className={`font-bold ${
+                                isSelected
+                                  ? "text-primary"
+                                  : "text-emerald-600 dark:text-emerald-400"
+                              }`}
+                            >
+                              ({formatIQDPrice(option.price)})
+                            </span>
                           </span>
                         )}
                       </div>
@@ -360,12 +381,23 @@ function DetailsBody({
                         <span>{variant.name}</span>
                         {variant.price != null && variant.price > 0 && (
                           <span
-                            className={`font-mono text-[11px] font-bold ${
-                              isSelected ? "text-primary" : "text-emerald-600 dark:text-emerald-400"
-                            }`}
+                            className="flex items-baseline gap-1 font-mono text-[11px]"
                             dir="ltr"
                           >
-                            ({formatIQDPrice(variant.price)})
+                            {Number(variant.originalPrice) > variant.price ? (
+                              <span className="font-semibold text-muted-foreground line-through">
+                                {formatIQDPrice(Number(variant.originalPrice))}
+                              </span>
+                            ) : null}
+                            <span
+                              className={`font-bold ${
+                                isSelected
+                                  ? "text-primary"
+                                  : "text-emerald-600 dark:text-emerald-400"
+                              }`}
+                            >
+                              ({formatIQDPrice(variant.price)})
+                            </span>
                           </span>
                         )}
                       </div>
@@ -387,39 +419,39 @@ function DetailsBody({
               <ReleaseAlertPanel product={product} lang={locale} />
             </div>
           ) : (
-          <div className="flex flex-wrap items-center gap-3 pt-2">
-            <div className="flex items-center rounded-xl border border-border">
+            <div className="flex flex-wrap items-center gap-3 pt-2">
+              <div className="flex items-center rounded-xl border border-border">
+                <button
+                  type="button"
+                  onClick={() => setQuantity((q) => Math.max(1, q - 1))}
+                  aria-label={t("common.previous")}
+                  className="p-2.5 transition hover:bg-muted"
+                >
+                  <Minus className="h-4 w-4" />
+                </button>
+                <span className="min-w-10 text-center text-[15px] font-bold" dir="ltr">
+                  {quantity}
+                </span>
+                <button
+                  type="button"
+                  onClick={() => setQuantity((q) => q + 1)}
+                  aria-label={t("common.next")}
+                  className="p-2.5 transition hover:bg-muted"
+                >
+                  <Plus className="h-4 w-4" />
+                </button>
+              </div>
+
               <button
                 type="button"
-                onClick={() => setQuantity((q) => Math.max(1, q - 1))}
-                aria-label={t("common.previous")}
-                className="p-2.5 transition hover:bg-muted"
+                onClick={handleAddToCart}
+                disabled={soldOut}
+                className="flex min-w-0 flex-1 items-center justify-center gap-2 rounded-xl bg-[var(--brand-red,#e11d48)] px-6 py-3 font-bold text-white shadow-sm transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50"
               >
-                <Minus className="h-4 w-4" />
-              </button>
-              <span className="min-w-10 text-center text-[15px] font-bold" dir="ltr">
-                {quantity}
-              </span>
-              <button
-                type="button"
-                onClick={() => setQuantity((q) => q + 1)}
-                aria-label={t("common.next")}
-                className="p-2.5 transition hover:bg-muted"
-              >
-                <Plus className="h-4 w-4" />
+                <ShoppingCart className="h-4 w-4" />
+                {t("product.addToCart")}
               </button>
             </div>
-
-            <button
-              type="button"
-              onClick={handleAddToCart}
-              disabled={soldOut}
-              className="flex min-w-0 flex-1 items-center justify-center gap-2 rounded-xl bg-[var(--brand-red,#e11d48)] px-6 py-3 font-bold text-white shadow-sm transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50"
-            >
-              <ShoppingCart className="h-4 w-4" />
-              {t("product.addToCart")}
-            </button>
-          </div>
           )}
 
           {/*

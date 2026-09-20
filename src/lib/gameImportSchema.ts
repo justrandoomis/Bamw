@@ -80,8 +80,7 @@ export const GAME_IMPORT_SCHEMA: FieldDef[] = [
     key: "supplier_name_zh_cn",
     type: "string",
     target: "supplierNameZhCn",
-    description:
-      "الاسم الصيني المبسّط لدى المورّد — إداري وسري، لا يظهر للعميل إطلاقاً",
+    description: "الاسم الصيني المبسّط لدى المورّد — إداري وسري، لا يظهر للعميل إطلاقاً",
   },
   {
     key: "supplier_name_zh_source_url",
@@ -137,7 +136,12 @@ export const GAME_IMPORT_SCHEMA: FieldDef[] = [
   { key: "status", type: "string", target: "status", description: "الحالة (نشط، قادم، غير متوفر)" },
   { key: "developer", type: "string", target: "developer", description: "المطور" },
   { key: "publisher", type: "string", target: "publisher", description: "الناشر" },
-  { key: "franchise", type: "string", target: "seriesName", description: "اسم السلسلة (صيغة قديمة)" },
+  {
+    key: "franchise",
+    type: "string",
+    target: "seriesName",
+    description: "اسم السلسلة (صيغة قديمة)",
+  },
   { key: "players_count", type: "string", target: "numberOfPlayers", description: "عدد اللاعبين" },
   { key: "players", type: "string", target: "numberOfPlayers", description: "عدد اللاعبين" },
   { key: "player_count", type: "string", target: "numberOfPlayers", description: "عدد اللاعبين" },
@@ -196,6 +200,12 @@ export const GAME_IMPORT_SCHEMA: FieldDef[] = [
   { key: "size", type: "string", target: "size", description: "حجم اللعبة" },
   { key: "size_gb", type: "number", target: "size", description: "حجم اللعبة بالجيجابايت" },
   { key: "price", type: "number", target: "price", description: "السعر الأساسي بالدينار" },
+  {
+    key: "original_price",
+    type: "number",
+    target: "originalPrice",
+    description: "السعر الأساسي قبل الخصم (اختياري، ويجب أن يكون أعلى من السعر الحالي)",
+  },
   { key: "price_iqd", type: "number", target: "price", description: "السعر بالدينار العراقي" },
   { key: "price_usd", type: "number", target: "price_usd", description: "السعر بالدولار الأمريكي" },
   { key: "cost", type: "number", target: "cost", description: "تكلفة المنتج" },
@@ -1079,6 +1089,18 @@ export const GAME_IMPORT_SCHEMA: FieldDef[] = [
     itemFields: {
       id: { key: "id", type: "string", target: "id" },
       name: { key: "name", type: "string", target: "name" },
+      price: {
+        key: "price",
+        type: "number",
+        target: "price",
+        description: "سعر بيع هذا الخيار بعد الخصم (اختياري عند تسعير الأنواع بدلاً منه)",
+      },
+      original_price: {
+        key: "original_price",
+        type: "number",
+        target: "originalPrice",
+        description: "سعر هذا الخيار قبل الخصم (اختياري)",
+      },
       /** Customer-facing. Pricing rules and supplier notes do not belong here. */
       description: {
         key: "description",
@@ -1117,6 +1139,12 @@ export const GAME_IMPORT_SCHEMA: FieldDef[] = [
       name: { key: "name", type: "string", target: "name" },
       option_id: { key: "option_id", type: "string", target: "optionId" },
       price: { key: "price", type: "number", target: "price" },
+      original_price: {
+        key: "original_price",
+        type: "number",
+        target: "originalPrice",
+        description: "سعر هذا النوع قبل الخصم (اختياري)",
+      },
       cost: { key: "cost", type: "number", target: "cost" },
       /*
         Customer-facing. This field sat directly under `cost` with no guidance
