@@ -55,7 +55,7 @@ const CATALOGUE = [
 ];
 
 const index = buildProductIndex(CATALOGUE);
-const hits = (query: string) => searchProducts(index, query, 20).map((row) => row.product["id"]);
+const hits = (query: string) => searchProducts(index, query, { limit: 20 }).map((row) => row.product["id"]);
 
 describe("an Arabic query finds the game it names", () => {
   it.each([

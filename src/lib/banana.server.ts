@@ -653,11 +653,23 @@ export async function getAdminBananaData() {
   const s = await getStoreSettings();
   const marketConfig = await getMarketConfig();
 
+  /*
+    How many wheel tickets each reward hands over, alongside the reward itself.
+
+    It is a second table because a redemption offer has no column for it, and
+    the admin screen has to be able to see the number it is editing — an
+    offer that silently sells tickets, with nothing on the card to say so, is
+    how the owner ends up unable to tell which one it is.
+  */
+  const { ticketOfferIds } = await import("./wheel.server");
+  const ticketOffers = await ticketOfferIds().catch(() => ({}) as Record<string, number>);
   const rewards = (
     await d1All<any>(
       `SELECT * FROM banana_redemption_offers ORDER BY sort_order ASC, created_at DESC`,
     )
-  ).map(toAdminReward);
+  )
+    .map(toAdminReward)
+    .map((reward) => ({ ...reward, ticketQuantity: Number(ticketOffers[reward.id] ?? 0) }));
   const redemptions = await d1All<any>(
     `SELECT r.*, u.name as user_name FROM banana_redemptions r JOIN users u ON r.user_id = u.id ORDER BY r.created_at DESC LIMIT 100`,
   );

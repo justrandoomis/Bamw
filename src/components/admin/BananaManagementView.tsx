@@ -31,6 +31,7 @@ import {
   DollarSign,
   UserCheck,
   Award,
+  Ticket,
 } from "lucide-react";
 
 const MARKET_FIELDS = [
@@ -133,7 +134,15 @@ export function BananaManagementView() {
     rewardCode: "",
     isActive: true,
     sortOrder: 0,
+    /* Wheel tickets this reward hands over. 0 means it is not a ticket offer. */
+    ticketQuantity: 0,
   });
+
+  // Grant-tickets Modal State
+  const [ticketModalOpen, setTicketModalOpen] = useState(false);
+  const [ticketUser, setTicketUser] = useState<any | null>(null);
+  const [ticketCount, setTicketCount] = useState("1");
+  const [ticketReason, setTicketReason] = useState("");
 
   // Redemption Details Modal State
   const [selectedRedemption, setSelectedRedemption] = useState<any | null>(null);
@@ -247,13 +256,53 @@ export function BananaManagementView() {
   });
 
   const saveRewardMutation = useMutation({
-    mutationFn: (reward: any) => adminApi.saveBananaReward(reward),
+    mutationFn: async (reward: any) => {
+      const result = await adminApi.saveBananaReward(reward);
+      /*
+        The ticket count lives in its own table, so it is its own write — and
+        it goes second deliberately: if the reward did not save there is no
+        offer for a ticket count to belong to.
+
+        Only when it actually changed. A blind write would send 0 for any
+        reward whose card was opened before the screen learned to read the
+        number, and 0 removes the offer from the wheel.
+      */
+      const offerId = String((result as any)?.reward?.id ?? reward.id ?? "").trim();
+      const before = Number(
+        (data?.rewards || []).find((r: any) => r.id === offerId)?.ticketQuantity ?? 0,
+      );
+      const after = Math.max(0, Math.floor(Number(reward.ticketQuantity) || 0));
+      if (offerId && after !== before) await adminApi.setBananaRewardTickets(offerId, after);
+      return result;
+    },
     onError: showFailure,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["admin_banana_data"] });
       setRewardModalOpen(false);
       setEditingReward(null);
       showToast("تم حفظ الجائزة بنجاح في قاعدة البيانات");
+    },
+  });
+
+  /*
+    «أو تعطى عن طريق الأدمن للمستخدمين». The reply says whether anything
+    actually moved: a repeat with the same reference is refused by the
+    ledger's unique index, and saying "done" to that would be a lie.
+  */
+  const grantTicketsMutation = useMutation({
+    mutationFn: ({ userId, quantity, reason, referenceId }: any) =>
+      adminApi.grantWheelTickets({ userId, quantity, reason, referenceId }),
+    onError: showFailure,
+    onSuccess: (result) => {
+      queryClient.invalidateQueries({ queryKey: ["admin_banana_data"] });
+      setTicketModalOpen(false);
+      setTicketCount("1");
+      setTicketReason("");
+      showToast(
+        result?.note
+          ? result.note
+          : `تم منح التذاكر — الرصيد الآن ${Number(result?.tickets ?? 0)} تذكرة`,
+      );
     },
   });
 
@@ -378,6 +427,7 @@ export function BananaManagementView() {
         rewardCode: r.rewardCode || "",
         isActive: r.isActive !== false,
         sortOrder: r.sortOrder || 0,
+        ticketQuantity: Number(r.ticketQuantity ?? 0),
       });
     } else {
       setEditingReward(null);
@@ -394,6 +444,7 @@ export function BananaManagementView() {
         rewardCode: "",
         isActive: true,
         sortOrder: (data?.rewards?.length || 0) + 1,
+        ticketQuantity: 0,
       });
     }
     setRewardModalOpen(true);
@@ -885,6 +936,15 @@ export function BananaManagementView() {
                       </span>
                     </div>
                   )}
+
+                  {Number(reward.ticketQuantity) > 0 && (
+                    <div className="mt-2 text-[11px] font-semibold text-violet-600 dark:text-violet-400 bg-violet-500/10 px-2.5 py-1 rounded-lg flex items-center gap-1.5">
+                      <Ticket className="w-3 h-3" />
+                      <span>
+                        تعطي {Number(reward.ticketQuantity)} تذكرة لعجلة الحظ
+                      </span>
+                    </div>
+                  )}
                 </div>
 
                 {/* Actions */}
@@ -1231,6 +1291,17 @@ export function BananaManagementView() {
                         >
                           تعديل الرصيد
                         </button>
+                        <button
+                          onClick={() => {
+                            setTicketUser(user);
+                            setTicketCount("1");
+                            setTicketReason("");
+                            setTicketModalOpen(true);
+                          }}
+                          className="ms-2 px-3 py-1.5 rounded-lg bg-violet-500/10 text-violet-700 dark:text-violet-400 hover:bg-violet-500/20 text-xs font-bold transition-colors"
+                        >
+                          منح تذاكر
+                        </button>
                       </td>
                     </tr>
                   ))}
@@ -1462,6 +1533,43 @@ export function BananaManagementView() {
                   </div>
                 </div>
               )}
+
+              {/*
+                Tickets, on every category rather than behind one.
+                A ticket offer is not a coupon and not a digital code — it is
+                whatever the owner decides to call it, and hiding the field
+                behind a category would mean the reward's name has to be
+                chosen before the thing it sells can be.
+              */}
+              <div className="p-3.5 rounded-xl bg-violet-500/10 border border-violet-500/20 space-y-2">
+                <div className="text-violet-700 dark:text-violet-400 font-bold flex items-center gap-1.5">
+                  <Ticket className="w-3.5 h-3.5" />
+                  <span>تذاكر عجلة الحظ</span>
+                </div>
+                <div>
+                  <label className="block mb-1 text-muted-foreground">
+                    كم تذكرة يحصل عليها المستخدم عند استبدال هذه الجائزة:
+                  </label>
+                  <input
+                    type="number"
+                    min={0}
+                    max={100}
+                    step="1"
+                    value={rewardForm.ticketQuantity}
+                    onChange={(e) =>
+                      setRewardForm({
+                        ...rewardForm,
+                        ticketQuantity: Math.max(0, parseInt(e.target.value) || 0),
+                      })
+                    }
+                    className="w-full p-2.5 rounded-lg border border-border bg-card font-bold text-xs outline-none"
+                  />
+                  <p className="text-[10px] text-muted-foreground mt-1 font-normal">
+                    اتركها صفراً إذا لم تكن هذه الجائزة تذاكر. سعر التذكرة بالموز هو سعر
+                    الجائزة نفسه في الأعلى.
+                  </p>
+                </div>
+              </div>
 
               {/* Special settings for digital codes */}
               {rewardForm.category === "digital" && (
@@ -1705,6 +1813,101 @@ export function BananaManagementView() {
                   <Check className="w-3 h-3" />
                 )}
                 تأكيد التعديل
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* MODAL: GRANT WHEEL TICKETS */}
+      {ticketModalOpen && ticketUser && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-in fade-in duration-200">
+          <div className="bg-card border border-border rounded-3xl p-6 md:p-8 max-w-sm w-full shadow-2xl space-y-4">
+            <div className="flex items-center justify-between border-b border-border pb-3">
+              <h3 className="font-black text-base">منح تذاكر عجلة الحظ</h3>
+              <button
+                onClick={() => setTicketModalOpen(false)}
+                className="p-1.5 rounded-full hover:bg-muted text-muted-foreground"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            </div>
+
+            <div className="space-y-3 text-xs font-bold">
+              <div className="p-3 rounded-xl bg-muted/40 border border-border">
+                <div className="text-muted-foreground">المستخدم:</div>
+                <div className="text-sm font-black text-foreground">
+                  {ticketUser.name || "مستخدم"}
+                </div>
+                <div className="mt-1 text-[11px] text-muted-foreground font-mono">
+                  {ticketUser.userId}
+                </div>
+              </div>
+
+              <div>
+                <label className="block mb-1">عدد التذاكر (من 1 إلى 100):</label>
+                <input
+                  type="number"
+                  min={1}
+                  max={100}
+                  step="1"
+                  value={ticketCount}
+                  onChange={(e) => setTicketCount(e.target.value)}
+                  className="w-full p-3 rounded-xl border border-border bg-card font-black text-sm outline-none focus:border-violet-500"
+                />
+              </div>
+
+              <div>
+                <label className="block mb-1">السبب / ملاحظة العملية:</label>
+                <input
+                  type="text"
+                  placeholder="مثال: مكافأة مسابقة، تعويض، إلخ..."
+                  value={ticketReason}
+                  onChange={(e) => setTicketReason(e.target.value)}
+                  className="w-full p-2.5 rounded-xl border border-border bg-card font-medium text-xs outline-none focus:border-violet-500"
+                />
+              </div>
+
+              <p className="text-[10px] text-muted-foreground font-normal leading-relaxed">
+                التذاكر تُمنح مرة واحدة لكل ضغطة. إذا ضغطت مرتين بالخطأ، الضغطة الثانية لن
+                تضيف شيئاً وسيظهر لك ذلك.
+              </p>
+            </div>
+
+            <div className="flex items-center justify-end gap-2 pt-3 border-t border-border">
+              <button
+                onClick={() => setTicketModalOpen(false)}
+                className="px-4 py-2 rounded-xl border border-border text-xs font-bold hover:bg-muted"
+              >
+                إلغاء
+              </button>
+              <button
+                onClick={() =>
+                  grantTicketsMutation.mutate({
+                    userId: ticketUser.userId,
+                    quantity: Math.floor(Number(ticketCount) || 0),
+                    reason: ticketReason || "منح إداري",
+                    /*
+                      A reference the admin's own press decides, so pressing
+                      twice on the same intention adds one grant and not two.
+                      The reason is part of it: a second, deliberate grant to
+                      the same member is a different note, and goes through.
+                    */
+                    referenceId: `admin:${ticketUser.userId}:${ticketCount}:${ticketReason}`,
+                  })
+                }
+                disabled={
+                  !(Number(ticketCount) >= 1 && Number(ticketCount) <= 100) ||
+                  grantTicketsMutation.isPending
+                }
+                className="px-5 py-2 rounded-xl bg-violet-600 hover:bg-violet-700 text-white font-black text-xs transition-colors disabled:opacity-50 flex items-center gap-2"
+              >
+                {grantTicketsMutation.isPending ? (
+                  <RefreshCw className="w-3 h-3 animate-spin" />
+                ) : (
+                  <Ticket className="w-3 h-3" />
+                )}
+                منح التذاكر
               </button>
             </div>
           </div>

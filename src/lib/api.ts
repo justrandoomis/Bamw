@@ -924,6 +924,33 @@ export const adminApi = {
       method: "POST",
       body: JSON.stringify({ action: "cancel_listing", listingId }),
     }),
+  /*
+    How many wheel tickets a redemption reward hands over. Zero removes it
+    from the wheel, which is why the argument is a number and not a flag.
+  */
+  setBananaRewardTickets: (offerId: string, ticketQuantity: number) =>
+    request<{ success: boolean; offerId: string; ticketQuantity: number }>("/api/admin/banana", {
+      method: "POST",
+      body: JSON.stringify({ action: "set_ticket_offer", offerId, ticketQuantity }),
+    }),
+  /*
+    The other way a member gets a ticket: the shop hands one over.
+    `referenceId` is what makes a double press harmless — the ledger's unique
+    index refuses the second one and the reply says it changed nothing.
+  */
+  grantWheelTickets: (payload: {
+    userId: string;
+    quantity: number;
+    reason?: string;
+    referenceId?: string;
+  }) =>
+    request<{ success: boolean; granted: boolean; tickets: number; note?: string }>(
+      "/api/admin/banana",
+      {
+        method: "POST",
+        body: JSON.stringify({ action: "grant_wheel_tickets", ...payload }),
+      },
+    ),
   adjustUserBanana: (userId: string, amount: number, reason?: string) =>
     request<{ success: boolean; userId: string; oldBalance: number; newBalance: number }>(
       "/api/admin/banana",
