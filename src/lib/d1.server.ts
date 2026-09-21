@@ -969,6 +969,15 @@ const SCHEMA_PATCHES: string[] = [
   `ALTER TABLE orders ADD COLUMN customer_confirmed_at TEXT`,
   `ALTER TABLE orders ADD COLUMN auto_completed_at TEXT`,
   `ALTER TABLE orders ADD COLUMN delivery_issue_opened_at TEXT`,
+  /*
+    When to ask for the review — thirty minutes after the last OTP, cleared as
+    soon as the ask goes out or the order completes. `ensureDigitalDeliverySchema`
+    adds the same column, but the canonical schema is what the storefront's
+    cold start runs and what `schema-coverage.test.ts` reads; a column declared
+    in only one of the two is a statement that fails on whichever path gets
+    there first.
+  */
+  `ALTER TABLE orders ADD COLUMN review_prompt_at TEXT`,
   `CREATE UNIQUE INDEX IF NOT EXISTS orders_idempotency_idx ON orders (idempotency_key) WHERE idempotency_key IS NOT NULL`,
   // migrations/0002_otp_phone.sql created otp_codes with only
   // (id, phone, purpose, code_hash, expires_at, attempts, created_at).

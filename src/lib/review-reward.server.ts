@@ -17,10 +17,16 @@
  *
  * ## What this does
  *
- * On completion, once per order: mint a code worth {@link REWARD_AMOUNT_IQD}
- * that only this customer can use, expires {@link REWARD_VALID_DAYS} days
- * later, and can be spent once. Then tell them, in Telegram, with the steps
- * and a button that opens the order.
+ * On completion it sends an invitation and nothing else — no code exists yet.
+ * The code is earned: the customer writes about the delivery, comments on the
+ * shop's pinned Instagram post, sends a screenshot of their own comment as
+ * proof, and an admin approves it. {@link issueApprovedReviewReward} is what
+ * that approval calls.
+ *
+ * Then, and only then, a code worth {@link REWARD_AMOUNT_IQD} that only this
+ * customer can use, expiring {@link REWARD_VALID_DAYS} days later, spendable
+ * once — and at most one per customer per {@link REWARD_COOLDOWN_DAYS} days,
+ * which is the owner's rule: the limit is the customer's week, not the order.
  *
  * The coupon engine already supported every part of that — `discount_type`
  * `fixed`, `eligible_users`, `expiration_at`, `usage_limit` — and
@@ -304,7 +310,17 @@ export async function issueReviewReward(
 ): Promise<ReviewReward | null> {
   const userId = String(order.userId ?? "");
   const orderId = String(order.id ?? "");
-  if (!userId || !orderId || order.status !== "completed") return null;
+  /*
+    `awaiting_customer_confirmation` counts as delivered here.
+
+    The reward is issued when an admin approves a review, and a review can be
+    submitted from the thirty-minute prompt — before the sixty-minute timer has
+    completed the order. Refusing on status alone would mean an approved review
+    silently minted nothing, with the admin told it had worked.
+  */
+  const delivered =
+    order.status === "completed" || order.status === "awaiting_customer_confirmation";
+  if (!userId || !orderId || !delivered) return null;
 
   try {
     await Promise.all([ensureReviewRewardSchema(), ensureCouponsSchema()]);
@@ -516,6 +532,225 @@ export async function sendReviewInvitation(
     }
     console.warn("[review-reward:invite_failed]", {
       orderId: order?.id,
+      error: error instanceof Error ? error.message : String(error),
+    });
+    return false;
+  }
+}
+
+/** The customer's week. One code per customer per seven days, not per order. */
+export const REWARD_COOLDOWN_DAYS = 7;
+
+export type ApprovedRewardOutcome =
+  | { ok: true; reward: ReviewReward; alreadyIssued: boolean }
+  | { ok: false; reason: "cooldown"; lastIssuedAt: string; nextEligibleAt: string }
+  | { ok: false; reason: "failed" };
+
+/** Seven days after `iso`, which is when that customer may earn again. */
+export function nextEligibleAfter(iso: string): string {
+  const parsed = Date.parse(iso);
+  if (Number.isNaN(parsed)) return iso;
+  return new Date(parsed + REWARD_COOLDOWN_DAYS * 24 * 60 * 60 * 1000).toISOString();
+}
+
+/**
+ * Issue the reward for an approved review, at most once per customer per week.
+ *
+ * The gate is a compare-and-set on `review_reward_cooldowns`, not a read
+ * followed by a write: two admins approving two reviews by the same customer
+ * in the same second must not both win, and a check-then-mint has a window
+ * between the two where they both would.
+ *
+ * The claim is taken *before* the coupon is minted, so a failed mint has to be
+ * rolled back or the customer is locked out for a week having received
+ * nothing. `prev_issued_at` is what the rollback restores, and every rollback
+ * statement is guarded on the claim's own timestamp so a concurrent winner is
+ * never undone by a loser's failure.
+ */
+export async function issueApprovedReviewReward(
+  order: Order,
+  options: { now?: string } = {},
+): Promise<ApprovedRewardOutcome> {
+  const userId = String(order.userId ?? "");
+  const orderId = String(order.id ?? "");
+  if (!userId || !orderId) return { ok: false, reason: "failed" };
+
+  const now = options.now ?? new Date().toISOString();
+
+  try {
+    await ensureReviewRewardSchema();
+
+    /*
+      An order that already has a reward returns it without touching the
+      cooldown. A second approval on the same order — a re-approve, a retry —
+      must not spend the customer's week again.
+    */
+    const existing = await readReward(orderId);
+    if (existing?.coupon_code) {
+      const reward = await issueReviewReward(order, { now });
+      return reward ? { ok: true, reward, alreadyIssued: true } : { ok: false, reason: "failed" };
+    }
+
+    const cutoff = new Date(
+      Date.parse(now) - REWARD_COOLDOWN_DAYS * 24 * 60 * 60 * 1000,
+    ).toISOString();
+
+    /*
+      Win the week, or learn that somebody else holds it. The `WHERE` on the
+      upsert is the whole gate: it fires only when the customer's last code is
+      at least seven days old.
+    */
+    const claimed = await d1RunChanges(
+      `INSERT INTO review_reward_cooldowns
+         (user_id, last_issued_at, prev_issued_at, last_coupon_code, last_order_id)
+       VALUES (?, ?, NULL, NULL, ?)
+       ON CONFLICT(user_id) DO UPDATE SET
+         prev_issued_at   = review_reward_cooldowns.last_issued_at,
+         last_issued_at   = excluded.last_issued_at,
+         last_coupon_code = NULL,
+         last_order_id    = excluded.last_order_id
+       WHERE review_reward_cooldowns.last_issued_at <= ?`,
+      userId,
+      now,
+      orderId,
+      cutoff,
+    );
+
+    if (claimed !== 1) {
+      const held = await d1First<{ last_issued_at?: string }>(
+        `SELECT last_issued_at FROM review_reward_cooldowns WHERE user_id = ?`,
+        userId,
+      );
+      /*
+        `d1First` answers with a truthy empty object when there is no binding,
+        so read the field rather than the row. Without a real timestamp there
+        is no honest cooldown to report.
+      */
+      const lastIssuedAt = String(held?.last_issued_at ?? "");
+      if (!lastIssuedAt) return { ok: false, reason: "failed" };
+      return {
+        ok: false,
+        reason: "cooldown",
+        lastIssuedAt,
+        nextEligibleAt: nextEligibleAfter(lastIssuedAt),
+      };
+    }
+
+    const reward = await issueReviewReward(order, { now });
+    if (!reward) {
+      await rollbackCooldownClaim(userId, orderId, now);
+      return { ok: false, reason: "failed" };
+    }
+
+    // Which code the week was spent on, for the admin panel and for support.
+    await d1Run(
+      `UPDATE review_reward_cooldowns
+       SET last_coupon_code = ?
+       WHERE user_id = ? AND last_order_id = ? AND last_issued_at = ?`,
+      reward.code,
+      userId,
+      orderId,
+      now,
+    ).catch(() => undefined);
+
+    return { ok: true, reward, alreadyIssued: false };
+  } catch (error) {
+    await rollbackCooldownClaim(userId, orderId, now).catch(() => undefined);
+    console.warn("[review-reward:approved_issue_failed]", {
+      orderId,
+      error: error instanceof Error ? error.message : String(error),
+    });
+    return { ok: false, reason: "failed" };
+  }
+}
+
+/**
+ * Give the week back after a claim that minted nothing.
+ *
+ * Two statements because the first-ever claim has no previous timestamp to
+ * restore — that row has to go rather than be rewound to null, which the
+ * NOT NULL column would refuse anyway. Both are guarded on the claim's own
+ * order and timestamp, so a claim that some other request won is left alone.
+ */
+async function rollbackCooldownClaim(
+  userId: string,
+  orderId: string,
+  claimedAt: string,
+): Promise<void> {
+  await d1Run(
+    `DELETE FROM review_reward_cooldowns
+     WHERE user_id = ? AND last_order_id = ? AND last_issued_at = ?
+       AND prev_issued_at IS NULL AND last_coupon_code IS NULL`,
+    userId,
+    orderId,
+    claimedAt,
+  );
+  await d1Run(
+    `UPDATE review_reward_cooldowns
+     SET last_issued_at = prev_issued_at, prev_issued_at = NULL, last_order_id = NULL
+     WHERE user_id = ? AND last_order_id = ? AND last_issued_at = ?
+       AND prev_issued_at IS NOT NULL AND last_coupon_code IS NULL`,
+    userId,
+    orderId,
+    claimedAt,
+  );
+}
+
+/** Which of the three triggers asked. Recorded so the owner can see what works. */
+export type ReviewPromptSource = "customer_confirmed" | "otp_timer" | "admin_manual" | "completed";
+
+/**
+ * Ask for the review, once per order, whichever trigger gets there first.
+ *
+ * The owner named three: the customer pressing «تم استلام», thirty minutes
+ * after the last OTP, and an admin completing the order by hand. They overlap
+ * by design — a customer who confirms at minute twenty-nine beats the timer —
+ * so the claim below is what keeps it to one message.
+ *
+ * `order_review_prompts` and not `review_reward_notifications`: the latter
+ * already reads 'sent' for every order completed since it shipped, so reusing
+ * it would suppress the new invitation for all of them.
+ */
+export async function promptForReview(
+  order: Order,
+  source: ReviewPromptSource,
+  options: { now?: string } = {},
+): Promise<boolean> {
+  const userId = String(order.userId ?? "");
+  const orderId = String(order.id ?? "");
+  if (!userId || !orderId) return false;
+
+  const now = options.now ?? new Date().toISOString();
+  try {
+    await ensureReviewRewardSchema();
+    const claimed = await d1RunChanges(
+      `INSERT OR IGNORE INTO order_review_prompts (order_id, user_id, prompted_at, trigger_source)
+       VALUES (?, ?, ?, ?)`,
+      orderId,
+      userId,
+      now,
+      source,
+    );
+    if (claimed !== 1) return false;
+
+    const sent = await sendReviewInvitation(order, { now });
+    if (!sent) {
+      /*
+        Give the claim back. A customer whose Telegram message failed — or who
+        has no chat id yet — must still be asked when the next trigger fires,
+        and a claim left behind would make this order silent forever.
+      */
+      await d1Run(
+        `DELETE FROM order_review_prompts WHERE order_id = ? AND prompted_at = ?`,
+        orderId,
+        now,
+      ).catch(() => undefined);
+    }
+    return sent;
+  } catch (error) {
+    console.warn("[review-reward:prompt_failed]", {
+      orderId,
+      source,
       error: error instanceof Error ? error.message : String(error),
     });
     return false;

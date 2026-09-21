@@ -27,6 +27,7 @@ import {
   allExpectedDeliveryItemsDelivered,
   autoCompleteAtFromLastOtp,
   calculateDeliveryProgress,
+  reviewPromptAtFromLastOtp,
   deliveryDraftStatus,
   nextReadyDeliveryItemId,
   type DeliveryItemStatus,
@@ -1378,6 +1379,13 @@ async function moveOrderToAwaitingConfirmation(
   );
   const effectiveLastOtpSentAt = finalOtp?.value || lastOtpSentAt;
   const autoCompleteAt = autoCompleteAtFromLastOtp(effectiveLastOtpSentAt);
+  /*
+    The last OTP is out, so the half-hour review clock starts here. It is a
+    separate timestamp from `auto_complete_at` on purpose: the customer is
+    asked for their review at thirty minutes whether or not they ever press
+    «تم استلام», and the order still completes itself at sixty.
+  */
+  const reviewPromptAt = reviewPromptAtFromLastOtp(effectiveLastOtpSentAt);
   const transitionAt = new Date().toISOString();
   const event = JSON.stringify({
     type: "delivery_completed",
@@ -1402,7 +1410,8 @@ async function moveOrderToAwaitingConfirmation(
            )
          ),
          status = 'awaiting_customer_confirmation',
-         last_otp_sent_at = ?, auto_complete_at = ?, delivery_issue_opened_at = NULL,
+         last_otp_sent_at = ?, auto_complete_at = ?, review_prompt_at = ?,
+         delivery_issue_opened_at = NULL,
          updated_at = ?
      WHERE id = ?
        AND json_extract(doc, '$.status') NOT IN (
@@ -1419,6 +1428,7 @@ async function moveOrderToAwaitingConfirmation(
     event,
     effectiveLastOtpSentAt,
     autoCompleteAt,
+    reviewPromptAt,
     transitionAt,
     order.id,
   );
@@ -1687,7 +1697,6 @@ export async function completeDigitalOrderManually(input: {
     archivedUnmappedItems,
   };
 }
-
 
 export async function sendDeliveryOtp(input: {
   orderId: string;
@@ -2141,10 +2150,11 @@ export async function maybeAutoCompleteDeliveredOrder(
 export async function processDueDeliveryAutoCompletions(
   now = new Date().toISOString(),
   limit = 100,
-): Promise<{ completed: number; reconciled: number; errors: number }> {
+): Promise<{ completed: number; reconciled: number; prompted: number; errors: number }> {
   await ensureDigitalDeliverySchema();
   let completed = 0;
   let reconciled = 0;
+  let prompted = 0;
   let errors = 0;
   // Repair queue visibility independently of the completion deadline. This
   // also covers a Worker retry after the atomic order transition succeeded but
@@ -2161,6 +2171,39 @@ export async function processDueDeliveryAutoCompletions(
        )`,
     now,
   );
+  /*
+    The half-hour review ask, the second of the owner's three triggers.
+
+    It rides this sweep rather than a job of its own: the minute firing is the
+    shop's most expensive scheduled work, and this is one indexed read against
+    a table the sweep already opens. The stamp is cleared before the message is
+    attempted, so a send that fails costs one ask rather than one per minute
+    forever — `promptForReview` holds the claim that decides whether anything
+    goes out at all.
+  */
+  const reviewDue = await d1All<{ id: string }>(
+    `SELECT id FROM orders
+     WHERE review_prompt_at IS NOT NULL
+       AND review_prompt_at <= ?
+       AND delivery_issue_opened_at IS NULL
+       AND json_extract(doc, '$.status') = 'awaiting_customer_confirmation'
+     ORDER BY review_prompt_at ASC LIMIT ?`,
+    now,
+    Math.min(limit, 25),
+  );
+  for (const row of reviewDue) {
+    try {
+      await d1Run(`UPDATE orders SET review_prompt_at = NULL WHERE id = ?`, row.id);
+      const order = await getOrder(row.id);
+      if (!order) continue;
+      const { promptForReview } = await import("./review-reward.server");
+      if (await promptForReview(order, "otp_timer", { now })) prompted += 1;
+    } catch (error) {
+      errors += 1;
+      console.error("[delivery:review_prompt_failed]", { orderId: row.id, error });
+    }
+  }
+
   const due = await d1All<{ id: string }>(
     `SELECT id FROM orders
      WHERE auto_complete_at IS NOT NULL
@@ -2225,5 +2268,5 @@ export async function processDueDeliveryAutoCompletions(
       });
     }
   }
-  return { completed, reconciled, errors };
+  return { completed, reconciled, prompted, errors };
 }

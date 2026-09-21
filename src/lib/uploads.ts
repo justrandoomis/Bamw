@@ -41,6 +41,22 @@ export function isOwnReviewImageUrl(url: string, userId: string): boolean {
   return Boolean(match && match[1] === userId);
 }
 
+/*
+  The delivery attachment on a two-step submission, which may be a short clip
+  as well as a photo — the customer is showing what arrived.
+
+  Kept separate from `isOwnReviewImageUrl` rather than widening it: the
+  Instagram proof is a screenshot and nothing else, and a check that accepted
+  video everywhere would quietly accept it there too.
+*/
+const REVIEW_MEDIA_URL =
+  /^\/api\/files\/reviews\/(usr_[a-z0-9]+)\/[a-z0-9_-]{1,96}\.(png|jpe?g|webp|gif|avif|mp4|webm|mov)$/i;
+
+export function isOwnReviewMediaUrl(url: string, userId: string): boolean {
+  const match = REVIEW_MEDIA_URL.exec(url);
+  return Boolean(match && match[1] === userId);
+}
+
 /** True when the member's own upload is a video rather than a still image. */
 export function isVideoUploadUrl(url: string): boolean {
   const match = MEMBER_UPLOAD_URL.exec(url);

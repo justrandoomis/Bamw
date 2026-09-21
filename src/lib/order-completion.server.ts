@@ -299,10 +299,28 @@ export async function completeOrder(
     able to fail the completion that earned it.
   */
   try {
-    const { sendReviewInvitation } = await import("./review-reward.server");
-    await sendReviewInvitation(next, { now: options.now ?? undefined });
+    const { promptForReview } = await import("./review-reward.server");
+    /*
+      Through the shared claim, not straight to the invitation. Completion is
+      one of three triggers the owner named — the customer confirming, the
+      thirty-minute timer after the last OTP, and an admin completing by hand —
+      and a customer who was already asked by the timer must not be asked twice
+      when the order then completes.
+    */
+    await promptForReview(next, "completed", { now: options.now ?? undefined });
   } catch (err) {
     console.warn("[order-completion:review_invite_failed]", { orderId: order.id }, err);
+  }
+
+  /*
+    The timer has nothing left to do: the order is finished and the invitation
+    above has been claimed. Clearing it also keeps the minute sweep's index
+    small, since only unfinished orders stay in it.
+  */
+  try {
+    await d1Run(`UPDATE orders SET review_prompt_at = NULL WHERE id = ?`, order.id);
+  } catch {
+    // The column may predate this deploy on a database that has not healed yet.
   }
 
   return { order: next, changed };

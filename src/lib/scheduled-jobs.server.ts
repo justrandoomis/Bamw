@@ -308,7 +308,7 @@ export async function processDigitalDeliveryMaintenance(now = new Date().toISOSt
   try {
     const { processDueDeliveryAutoCompletions } = await import("./order-delivery-items.server");
     const result = await processDueDeliveryAutoCompletions(now);
-    if (result.completed || result.reconciled || result.errors) {
+    if (result.completed || result.reconciled || result.prompted || result.errors) {
       console.log("[scheduled-jobs:digital-delivery]", result);
     }
   } catch (err) {

@@ -45,6 +45,7 @@ import { Route as ApiGameCatalogRouteImport } from './routes/api/game-catalog'
 import { Route as ApiGameRequestsRouteImport } from './routes/api/game-requests'
 import { Route as ApiHealthRouteImport } from './routes/api/health'
 import { Route as ApiImgRouteImport } from './routes/api/img'
+import { Route as ApiOrderReviewRouteImport } from './routes/api/order-review'
 import { Route as ApiOrdersRouteImport } from './routes/api/orders'
 import { Route as ApiOtpRouteImport } from './routes/api/otp'
 import { Route as ApiProductRouteImport } from './routes/api/product'
@@ -90,6 +91,7 @@ import { Route as ApiAdminProductMetadataRouteImport } from './routes/api/admin/
 import { Route as ApiAdminProductsRouteImport } from './routes/api/admin/products'
 import { Route as ApiAdminPurgeRouteImport } from './routes/api/admin/purge'
 import { Route as ApiAdminReferralsRouteImport } from './routes/api/admin/referrals'
+import { Route as ApiAdminReviewSubmissionsRouteImport } from './routes/api/admin/review-submissions'
 import { Route as ApiAdminStoreRouteImport } from './routes/api/admin/store'
 import { Route as ApiAdminUsersRouteImport } from './routes/api/admin/users'
 import { Route as ApiFilesSplatRouteImport } from './routes/api/files/$'
@@ -309,6 +311,11 @@ const ApiHealthRoute = ApiHealthRouteImport.update({
 const ApiImgRoute = ApiImgRouteImport.update({
   id: '/api/img',
   path: '/api/img',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiOrderReviewRoute = ApiOrderReviewRouteImport.update({
+  id: '/api/order-review',
+  path: '/api/order-review',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ApiOrdersRoute = ApiOrdersRouteImport.update({
@@ -536,6 +543,12 @@ const ApiAdminReferralsRoute = ApiAdminReferralsRouteImport.update({
   path: '/api/admin/referrals',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiAdminReviewSubmissionsRoute =
+  ApiAdminReviewSubmissionsRouteImport.update({
+    id: '/api/admin/review-submissions',
+    path: '/api/admin/review-submissions',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const ApiAdminStoreRoute = ApiAdminStoreRouteImport.update({
   id: '/api/admin/store',
   path: '/api/admin/store',
@@ -789,6 +802,7 @@ export interface FileRoutesByFullPath {
   '/api/game-requests': typeof ApiGameRequestsRoute
   '/api/health': typeof ApiHealthRoute
   '/api/img': typeof ApiImgRoute
+  '/api/order-review': typeof ApiOrderReviewRoute
   '/api/orders': typeof ApiOrdersRoute
   '/api/otp': typeof ApiOtpRoute
   '/api/product': typeof ApiProductRoute
@@ -835,6 +849,7 @@ export interface FileRoutesByFullPath {
   '/api/admin/products': typeof ApiAdminProductsRouteWithChildren
   '/api/admin/purge': typeof ApiAdminPurgeRoute
   '/api/admin/referrals': typeof ApiAdminReferralsRoute
+  '/api/admin/review-submissions': typeof ApiAdminReviewSubmissionsRoute
   '/api/admin/store': typeof ApiAdminStoreRoute
   '/api/admin/users': typeof ApiAdminUsersRoute
   '/api/files/$': typeof ApiFilesSplatRoute
@@ -912,6 +927,7 @@ export interface FileRoutesByTo {
   '/api/game-requests': typeof ApiGameRequestsRoute
   '/api/health': typeof ApiHealthRoute
   '/api/img': typeof ApiImgRoute
+  '/api/order-review': typeof ApiOrderReviewRoute
   '/api/orders': typeof ApiOrdersRoute
   '/api/otp': typeof ApiOtpRoute
   '/api/product': typeof ApiProductRoute
@@ -958,6 +974,7 @@ export interface FileRoutesByTo {
   '/api/admin/products': typeof ApiAdminProductsRouteWithChildren
   '/api/admin/purge': typeof ApiAdminPurgeRoute
   '/api/admin/referrals': typeof ApiAdminReferralsRoute
+  '/api/admin/review-submissions': typeof ApiAdminReviewSubmissionsRoute
   '/api/admin/store': typeof ApiAdminStoreRoute
   '/api/admin/users': typeof ApiAdminUsersRoute
   '/api/files/$': typeof ApiFilesSplatRoute
@@ -1036,6 +1053,7 @@ export interface FileRoutesById {
   '/api/game-requests': typeof ApiGameRequestsRoute
   '/api/health': typeof ApiHealthRoute
   '/api/img': typeof ApiImgRoute
+  '/api/order-review': typeof ApiOrderReviewRoute
   '/api/orders': typeof ApiOrdersRoute
   '/api/otp': typeof ApiOtpRoute
   '/api/product': typeof ApiProductRoute
@@ -1082,6 +1100,7 @@ export interface FileRoutesById {
   '/api/admin/products': typeof ApiAdminProductsRouteWithChildren
   '/api/admin/purge': typeof ApiAdminPurgeRoute
   '/api/admin/referrals': typeof ApiAdminReferralsRoute
+  '/api/admin/review-submissions': typeof ApiAdminReviewSubmissionsRoute
   '/api/admin/store': typeof ApiAdminStoreRoute
   '/api/admin/users': typeof ApiAdminUsersRoute
   '/api/files/$': typeof ApiFilesSplatRoute
@@ -1161,6 +1180,7 @@ export interface FileRouteTypes {
     | '/api/game-requests'
     | '/api/health'
     | '/api/img'
+    | '/api/order-review'
     | '/api/orders'
     | '/api/otp'
     | '/api/product'
@@ -1207,6 +1227,7 @@ export interface FileRouteTypes {
     | '/api/admin/products'
     | '/api/admin/purge'
     | '/api/admin/referrals'
+    | '/api/admin/review-submissions'
     | '/api/admin/store'
     | '/api/admin/users'
     | '/api/files/$'
@@ -1284,6 +1305,7 @@ export interface FileRouteTypes {
     | '/api/game-requests'
     | '/api/health'
     | '/api/img'
+    | '/api/order-review'
     | '/api/orders'
     | '/api/otp'
     | '/api/product'
@@ -1330,6 +1352,7 @@ export interface FileRouteTypes {
     | '/api/admin/products'
     | '/api/admin/purge'
     | '/api/admin/referrals'
+    | '/api/admin/review-submissions'
     | '/api/admin/store'
     | '/api/admin/users'
     | '/api/files/$'
@@ -1407,6 +1430,7 @@ export interface FileRouteTypes {
     | '/api/game-requests'
     | '/api/health'
     | '/api/img'
+    | '/api/order-review'
     | '/api/orders'
     | '/api/otp'
     | '/api/product'
@@ -1453,6 +1477,7 @@ export interface FileRouteTypes {
     | '/api/admin/products'
     | '/api/admin/purge'
     | '/api/admin/referrals'
+    | '/api/admin/review-submissions'
     | '/api/admin/store'
     | '/api/admin/users'
     | '/api/files/$'
@@ -1531,6 +1556,7 @@ export interface RootRouteChildren {
   ApiGameRequestsRoute: typeof ApiGameRequestsRoute
   ApiHealthRoute: typeof ApiHealthRoute
   ApiImgRoute: typeof ApiImgRoute
+  ApiOrderReviewRoute: typeof ApiOrderReviewRoute
   ApiOrdersRoute: typeof ApiOrdersRoute
   ApiOtpRoute: typeof ApiOtpRoute
   ApiProductRoute: typeof ApiProductRoute
@@ -1577,6 +1603,7 @@ export interface RootRouteChildren {
   ApiAdminProductsRoute: typeof ApiAdminProductsRouteWithChildren
   ApiAdminPurgeRoute: typeof ApiAdminPurgeRoute
   ApiAdminReferralsRoute: typeof ApiAdminReferralsRoute
+  ApiAdminReviewSubmissionsRoute: typeof ApiAdminReviewSubmissionsRoute
   ApiAdminStoreRoute: typeof ApiAdminStoreRoute
   ApiAdminUsersRoute: typeof ApiAdminUsersRoute
   ApiFilesSplatRoute: typeof ApiFilesSplatRoute
@@ -1859,6 +1886,13 @@ declare module '@tanstack/react-router' {
       path: '/api/img'
       fullPath: '/api/img'
       preLoaderRoute: typeof ApiImgRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/order-review': {
+      id: '/api/order-review'
+      path: '/api/order-review'
+      fullPath: '/api/order-review'
+      preLoaderRoute: typeof ApiOrderReviewRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/api/orders': {
@@ -2174,6 +2208,13 @@ declare module '@tanstack/react-router' {
       path: '/api/admin/referrals'
       fullPath: '/api/admin/referrals'
       preLoaderRoute: typeof ApiAdminReferralsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/admin/review-submissions': {
+      id: '/api/admin/review-submissions'
+      path: '/api/admin/review-submissions'
+      fullPath: '/api/admin/review-submissions'
+      preLoaderRoute: typeof ApiAdminReviewSubmissionsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/api/admin/store': {
@@ -2557,6 +2598,7 @@ const rootRouteChildren: RootRouteChildren = {
   ApiGameRequestsRoute: ApiGameRequestsRoute,
   ApiHealthRoute: ApiHealthRoute,
   ApiImgRoute: ApiImgRoute,
+  ApiOrderReviewRoute: ApiOrderReviewRoute,
   ApiOrdersRoute: ApiOrdersRoute,
   ApiOtpRoute: ApiOtpRoute,
   ApiProductRoute: ApiProductRoute,
@@ -2603,6 +2645,7 @@ const rootRouteChildren: RootRouteChildren = {
   ApiAdminProductsRoute: ApiAdminProductsRouteWithChildren,
   ApiAdminPurgeRoute: ApiAdminPurgeRoute,
   ApiAdminReferralsRoute: ApiAdminReferralsRoute,
+  ApiAdminReviewSubmissionsRoute: ApiAdminReviewSubmissionsRoute,
   ApiAdminStoreRoute: ApiAdminStoreRoute,
   ApiAdminUsersRoute: ApiAdminUsersRoute,
   ApiFilesSplatRoute: ApiFilesSplatRoute,
