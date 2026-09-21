@@ -964,7 +964,26 @@ export async function createOrderForUser(
     const bananaEligible = items.every((item) => !["hardware", "device"].includes(item.kind));
     if (bananaEligible && order.paymentStatus === "paid") {
       const rewardRate = toNumber(store.settings?.["banana_reward_rate"] || 6.8);
-      const bananaReward = Math.floor(itemsTotal * rewardRate);
+
+      /*
+        A prize is not a purchase.
+
+        Bananas are earned on `itemsTotal`, the price before any discount, and
+        for every other coupon that is the shop's existing rule — left alone
+        here. The wheel breaks it: a prize pays the whole price, so the order
+        costs nothing and would still mint bananas on the full amount. At the
+        default rate a 5,000-dinar win pays 34,000 bananas, which buys more
+        tickets than it cost to win, which wins more games. The wheel would
+        fund itself out of the shop.
+
+        So on a prize order — and only on one, recognised by the code the
+        wheel mints — the bananas are earned on what the member actually
+        paid. A win that covered the whole price earns nothing; a win against
+        a pricier edition still earns on the difference the member paid.
+      */
+      const isWheelPrize = String(appliedCoupon?.code ?? "").startsWith("WIN-");
+      const bananaBase = isWheelPrize ? finalItemsTotal : itemsTotal;
+      const bananaReward = Math.floor(bananaBase * rewardRate);
 
       const existingReward = await d1First(
         `SELECT id FROM banana_ledger WHERE user_id = ? AND reference_id = ? AND type = 'reward'`,
