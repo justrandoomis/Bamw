@@ -38,7 +38,13 @@ async function api(path, asText = false) {
   const res = await fetch(`https://api.cloudflare.com/client/v4${path}`, {
     headers: { Authorization: `Bearer ${TOKEN}` },
   });
-  if (asText) return { status: res.status, text: await res.text() };
+  if (asText) {
+    return {
+      status: res.status,
+      text: await res.text(),
+      type: res.headers.get("content-type") ?? "",
+    };
+  }
   const text = await res.text();
   try {
     return { status: res.status, body: JSON.parse(text) };
@@ -88,15 +94,39 @@ say();
   renames identifiers but never rewrites a string literal or an object key
   that is read dynamically.
 */
+/*
+  Strings that survive a build and a minifier, and that live in the *Worker*.
+
+  The first attempt at this list was wrong in two ways and the wrongness was
+  invisible, which is worse than a missing answer. Three of its eight entries
+  were client-side — the Arabic 401 is in `lib/api.ts`, the photo refusal is in
+  `ChatView.tsx` — so they are in the browser bundle the Worker serves as a
+  static asset, not in the Worker script at all. Two more were bare identifiers
+  (`listUnfinishedOrderIds`, `DIGITAL_ORDER_KINDS`), which a minifier renames
+  by design. Five of eight could never have matched whatever was deployed.
+
+  What is left is string literals emitted by server code: header values,
+  URL fragments, and object keys read dynamically from a field list.
+*/
+const CONTROL = [
+  /*
+    Present in every build of this app, from either branch, for years. If the
+    control does not match, the response is not the Worker's code and every
+    other row below is meaningless rather than negative.
+  */
+  { what: "`x-catalog-version` header", needle: "x-catalog-version" },
+  { what: "`catalog_unavailable` refusal", needle: "catalog_unavailable" },
+];
+
 const FINGERPRINTS = [
-  { tree: "claude", what: "Arabic 401 («سجّل الدخول للمتابعة»)", needle: "سجّل الدخول للمتابعة" },
-  { tree: "claude", what: "Worker cache hit header", needle: "worker-hit" },
-  { tree: "claude", what: "revision-keyed cache path", needle: "__catalogue/" },
-  { tree: "claude", what: "chat refuses an unconvertible photo", needle: "تعذر تحويل هذه الصورة على جهازك" },
-  { tree: "claude", what: "queue counts unfinished orders only", needle: "listUnfinishedOrderIds" },
-  { tree: "main", what: "square-card slim field `squareGameImage`", needle: "squareGameImage" },
-  { tree: "main", what: "square-card slim field `square_card_image`", needle: "square_card_image" },
-  { tree: "main", what: "allow-list `DIGITAL_ORDER_KINDS`", needle: "DIGITAL_ORDER_KINDS" },
+  { tree: "claude", what: "Worker cache hit header (`worker-hit`)", needle: "worker-hit" },
+  { tree: "claude", what: "revision-keyed cache path (`__catalogue/`)", needle: "__catalogue/" },
+  { tree: "claude", what: "`orders_status_idx`", needle: "orders_status_idx" },
+  { tree: "claude", what: "AVIF admitted to member uploads", needle: "gif|avif|mp4" },
+  { tree: "main", what: "slim field `squareGameImage`", needle: "squareGameImage" },
+  { tree: "main", what: "slim field `square_card_image`", needle: "square_card_image" },
+  { tree: "main", what: "slim field `nintendoCardImageTrim`", needle: "nintendoCardImageTrim" },
+  { tree: "main", what: "slim field `switch2Enhanced`", needle: "switch2Enhanced" },
 ];
 
 say(`## Fingerprints in the deployed bundle`);
@@ -133,7 +163,45 @@ if (!content) {
   say(`facts above still stand; only the fingerprinting below is unavailable.`);
 } else {
   const bundle = content.text;
+  say(`- content-type: \`${content.type || "—"}\``);
   say(`- bundle read: **${bundle.length.toLocaleString("en-US")}** characters`);
+
+  /*
+    A modules Worker comes back as multipart/form-data, one part per module.
+    The first read of this returned 31,990 characters for an application whose
+    built Worker is megabytes — so it was an envelope, not the code, and the
+    "no fingerprints found" it produced meant nothing at all. Listing the parts
+    is what makes that visible instead of quietly wrong.
+  */
+  const parts = [...bundle.matchAll(/name="([^"]+)"/g)].map((m) => m[1]);
+  if (parts.length) {
+    say(`- modules in the response: ${parts.map((n) => `\`${n}\``).join(", ")}`);
+  }
+  /*
+    The control decides whether anything below is worth reading. A response
+    that does not contain strings every build of this app emits is not this
+    app's code, and a table of "no" drawn from it would be a guess wearing a
+    verdict.
+  */
+  say();
+  const controlHits = CONTROL.filter((c) => bundle.includes(c.needle));
+  say(`| control | in the response |`);
+  say(`| --- | --- |`);
+  for (const c of CONTROL) say(`| ${c.what} | ${bundle.includes(c.needle) ? "**yes**" : "no"} |`);
+  say();
+  if (controlHits.length === 0) {
+    say(`**Refusing to draw a conclusion.** Not one string that every build of`);
+    say(`this app emits is in this response, so it is an envelope or a stub`);
+    say(`rather than the running code. The first 400 characters, so the shape`);
+    say(`can be seen:`);
+    say();
+    say("```");
+    say(redact(bundle.slice(0, 400)));
+    say("```");
+    writeFileSync("whats-live.md", lines.join("\n") + "\n");
+    process.exit(0);
+  }
+  say(`Control matched — this is the Worker's code, so the rows below mean something.`);
   say();
   say(`| tree | fingerprint | in the deployed bundle |`);
   say(`| --- | --- | --- |`);
