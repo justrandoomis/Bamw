@@ -592,9 +592,47 @@ for (const id of changedIds) {
   else unclaimed.push(`${id} → held by ${claim.conflictProductId ?? "something"}`);
 }
 
+/*
+  Let the square-card filler ask Nintendo again about what it moved.
+
+  The filler remembers a game it could not find so successive runs make
+  forward progress, and `no_listing_404` was often recorded for exactly the
+  reason this script has just repaired: the shop asked Nintendo for a Switch 2
+  page for a game Nintendo only publishes on Switch. That memory is now a
+  record of a question asked under a label that no longer exists, so it is
+  dropped for the products whose platform moved — and only for those. A
+  renamed title keeps its memory, because the filler already strips the
+  console bracket before it asks.
+
+  The table may not exist yet if the filler has never run; `IF EXISTS` is not
+  available for a DELETE, so a missing table is caught and ignored rather than
+  failing a write that has already succeeded.
+*/
+const replatformed = [...proposals.entries()]
+  .filter(([, entry]) => "platform" in entry)
+  .map(([id]) => id);
+let forgotten = 0;
+for (const id of replatformed) {
+  try {
+    await app.d1Run(`DELETE FROM square_card_attempts WHERE product_id = ?`, id);
+    forgotten += 1;
+  } catch {
+    // No such table, or no such row. Neither is a reason to report a failure.
+  }
+}
+
 say(`## Written`);
 say();
 say(`- products changed: **${written}**`);
+if (replatformed.length) {
+  const stillBare = replatformed.filter((id) => {
+    const product = afterById.get(id);
+    return product && !app.hasNintendoSquareCard(product);
+  }).length;
+  say(`- of them moved to another console: **${replatformed.length}**`);
+  say(`- of those still without a square picture, now worth asking about again: **${stillBare}**`);
+  say(`- square-card attempt rows dropped so the filler will retry: **${forgotten}**`);
+}
 say(`- read back and verified: **${verified}**`);
 say(`- identity rows re-claimed: **${reclaimed}** of ${changedIds.length}`);
 if (unclaimed.length) {
