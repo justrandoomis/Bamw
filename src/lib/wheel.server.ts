@@ -406,6 +406,9 @@ export async function spinWheel(input: {
     const couponCode = await issuePrizeCoupon({
       userId,
       productId: winner.candidate.id,
+      // The price the wheel itself offered — the server's catalogue read, not
+      // anything the browser sent.
+      price: Number(winner.candidate.price) || 0,
       issuedAt: now,
       expiresAt,
     });

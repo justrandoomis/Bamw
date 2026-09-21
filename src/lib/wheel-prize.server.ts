@@ -29,7 +29,32 @@ function mintCode(): string {
 }
 
 /**
- * A 100% coupon for one game, one member, one use.
+ * A coupon that pays for ONE copy of one game, for one member, once.
+ *
+ * ## Why this is a `fixed` coupon and not 100%
+ *
+ * It was `percentage` 100 on `eligible_products: [productId]`, which reads
+ * exactly like what was asked for and is not what it does. A product-scoped
+ * percentage is taken against `eligibleSubtotal`, and that is
+ * `unitPrice × quantity` — so the prize paid for however many copies of the
+ * won game were in the cart. `orders.server.ts` clamps a line's quantity to
+ * 1..99, which made a single spin worth up to ninety-nine free games.
+ *
+ * A `fixed` coupon worth the game's price cannot do that: the discount is
+ * `min(discountValue, eligibleSubtotal)`, so it is bounded by its own value
+ * whatever the quantity, and bounded by the cart when the cart is smaller.
+ * The bound is structural rather than a second field somebody has to
+ * remember to honour — which is the whole lesson of the bug.
+ *
+ * `max_discount_amount` is set to the same number anyway. It is redundant
+ * today and it is the field that keeps this bounded if the type ever changes
+ * back.
+ *
+ * The price is the one the wheel offered, read from the shop's own catalogue
+ * at the moment of the spin. If the owner raises that price inside the
+ * fourteen days, the winner pays the difference; if they lower it, the coupon
+ * still covers the whole thing. Pinning the amount is what makes the prize a
+ * game rather than a blank cheque against whatever that line costs later.
  *
  * `coupons.code` is UNIQUE, so a collision is retried — three attempts,
  * because a fourth would mean the CSPRNG is broken rather than unlucky.
@@ -37,10 +62,20 @@ function mintCode(): string {
 export async function issuePrizeCoupon(input: {
   userId: string;
   productId: string;
+  /** What the game cost when it was won. The prize is worth exactly this. */
+  price: number;
   issuedAt: string;
   expiresAt: string;
 }): Promise<string> {
   await ensureCouponsSchema();
+
+  /*
+    A prize with no price is not a prize, and a zero-value coupon would refuse
+    itself at checkout with a message about the cart. Refuse here instead,
+    where `spinWheel` turns it into a returned ticket.
+  */
+  const value = Math.floor(Number(input.price));
+  if (!Number.isFinite(value) || value <= 0) throw new Error("WHEEL_PRIZE_NO_PRICE");
 
   for (let attempt = 0; attempt < 3; attempt += 1) {
     const code = mintCode();
@@ -54,8 +89,8 @@ export async function issuePrizeCoupon(input: {
          ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`,
         `cpn_wheel_${code}`,
         code,
-        "percentage",
-        100,
+        "fixed",
+        value,
         input.issuedAt,
         input.expiresAt,
         1,
@@ -64,7 +99,8 @@ export async function issuePrizeCoupon(input: {
         "[]",
         JSON.stringify([input.userId]),
         0,
-        null,
+        // The same bound again, through the other lever. See the note above.
+        value,
         1,
         0,
         /*

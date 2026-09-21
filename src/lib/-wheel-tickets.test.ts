@@ -159,13 +159,22 @@ describe("spinning", () => {
     const coupon = db.raw
       .prepare(
         `SELECT discount_type, discount_value, usage_limit, per_user_limit,
-                eligible_products, eligible_users, is_stackable
+                eligible_products, eligible_users, is_stackable, max_discount_amount
          FROM coupons WHERE code = ?`,
       )
       .get(outcome.couponCode) as Record<string, unknown>;
 
-    expect(coupon.discount_type).toBe("percentage");
-    expect(coupon.discount_value).toBe(100);
+    /*
+      A fixed amount equal to the game's price, not 100%.
+
+      This assertion used to read `percentage` / 100, which is how the defect
+      survived: it is the literal description of "this game is free", and the
+      engine reads a product-scoped percentage against `unitPrice × quantity`.
+      See "the prize pays for one copy" below for what that cost.
+    */
+    expect(coupon.discount_type).toBe("fixed");
+    expect(coupon.discount_value).toBe(outcome.prize.price);
+    expect(coupon.max_discount_amount).toBe(outcome.prize.price);
     expect(coupon.usage_limit).toBe(1);
     expect(coupon.per_user_limit).toBe(1);
     expect(JSON.parse(String(coupon.eligible_products))).toEqual([outcome.prize.productId]);
@@ -303,5 +312,87 @@ describe("a write that fails half way", () => {
     });
     expect(again.granted).toBe(false);
     expect(await wheel.getTicketBalance("usr_a")).toBe(2);
+  });
+});
+
+/**
+ * What the prize is worth when the cart holds more than one copy.
+ *
+ * The coupon was `percentage` 100 restricted to the won product, which reads
+ * like "this game is free" and is not what the engine does with it: a
+ * product-scoped percentage is taken against `eligibleSubtotal`, and that is
+ * `unitPrice × quantity`. `orders.server.ts` clamps a line to 1..99, so one
+ * spin was worth up to ninety-nine free copies of the game it won.
+ *
+ * These run the real `couponDiscount` against the row the wheel actually
+ * writes, because the defect was entirely in how the shared engine reads that
+ * row — a test of the wheel's own logic would have passed either way.
+ */
+describe("the prize pays for one copy", () => {
+  const cartLine = (productId: string, unitPrice: number, quantity: number) => ({
+    productId,
+    title: "Won Game",
+    unitPrice,
+    quantity,
+    kind: "account",
+  });
+
+  const wonCoupon = async () => {
+    await wheel.grantTickets({ userId: "usr_a", quantity: 1, reason: "test", now: NOW });
+    const outcome = await wheel.spinWheel({ userId: "usr_a", candidates: GAMES, now: NOW });
+    if (!outcome.ok) throw new Error("the spin was supposed to win");
+    const row = db.raw
+      .prepare(`SELECT * FROM coupons WHERE code = ?`)
+      .get(outcome.couponCode) as Record<string, unknown>;
+    return { outcome, row };
+  };
+
+  it("covers the whole price of a single copy", async () => {
+    const { outcome, row } = await wonCoupon();
+    const { rowToCoupon, couponDiscount } = await import("./coupons");
+    const coupon = rowToCoupon(row);
+    const price = outcome.prize.price;
+    const items = [cartLine(outcome.prize.productId, price, 1)];
+
+    expect(couponDiscount(coupon, price, items).discount).toBe(price);
+  });
+
+  it("does not pay for the second copy, or the ninety-ninth", async () => {
+    const { outcome, row } = await wonCoupon();
+    const { rowToCoupon, couponDiscount } = await import("./coupons");
+    const coupon = rowToCoupon(row);
+    const price = outcome.prize.price;
+
+    for (const quantity of [2, 5, 99]) {
+      const items = [cartLine(outcome.prize.productId, price, quantity)];
+      const { discount } = couponDiscount(coupon, price * quantity, items);
+      expect(discount).toBe(price);
+    }
+  });
+
+  it("pays nothing towards the other things in the cart", async () => {
+    const { outcome, row } = await wonCoupon();
+    const { rowToCoupon, couponDiscount } = await import("./coupons");
+    const coupon = rowToCoupon(row);
+    const price = outcome.prize.price;
+    const items = [
+      cartLine(outcome.prize.productId, price, 1),
+      cartLine("some_other_game", 40_000, 2),
+    ];
+
+    expect(couponDiscount(coupon, price + 80_000, items).discount).toBe(price);
+  });
+
+  it("refuses to mint a prize with no price", async () => {
+    const { issuePrizeCoupon } = await import("./wheel-prize.server");
+    await expect(
+      issuePrizeCoupon({
+        userId: "usr_a",
+        productId: "cheap",
+        price: 0,
+        issuedAt: NOW,
+        expiresAt: NOW,
+      }),
+    ).rejects.toThrow(/WHEEL_PRIZE_NO_PRICE/);
   });
 });
