@@ -1,0 +1,115 @@
+# Finds the square cover for every game that has none, and gives it one.
+#
+# Dry run by default. `apply` is a separate input that has to be chosen, and
+# it writes exactly one field on a product — `nintendoCardImage`. No price,
+# cost, stock, hidden flag, option, type, trade-in value, display order or
+# sales figure is read for writing or written at all.
+#
+# The picture comes from Nintendo's own store record for that game and from
+# nowhere else. A game whose listing cannot be matched is reported and left
+# alone rather than filled with something that looked close.
+name: Square cards
+
+on:
+  workflow_dispatch:
+    inputs:
+      apply:
+        description: "Write the pictures. Leave off for a dry run that reports what would be written."
+        type: boolean
+        default: false
+      limit:
+        description: "How many games this run should look at (blank = all of them, which will not finish)"
+        required: false
+        default: "60"
+      offset:
+        description: "Skip this many first, so a long fill can be run in batches"
+        required: false
+        default: ""
+      only:
+        description: "Comma-separated product ids or slugs, to fill just those"
+        required: false
+        default: ""
+  # A new or edited filler dry-runs itself, so its hit rate can be measured
+  # from a branch without first being merged. A push carries no inputs, so
+  # `apply` is unreachable here and this trigger cannot write.
+  push:
+    branches: [claude/gaming-platform-issues-keb1be]
+    paths:
+      - .github/workflows/square-cards.yml
+      - scripts/square-card-fill.mjs
+      - scripts/lib/square-card-entry.ts
+      - scripts/lib/media-pipeline.mjs
+      - scripts/lib/media-candidates.mjs
+
+permissions:
+  contents: read
+
+# One at a time, and never cancel one half way: a cancelled run can leave
+# objects in R2 that no product points at.
+concurrency:
+  group: square-cards
+  cancel-in-progress: false
+
+jobs:
+  fill:
+    runs-on: ubuntu-latest
+    timeout-minutes: 55
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      # Node 22 ships npm 10, which cannot install this project: resolving
+      # vitest's peer set crashes its dependency solver. See `ci.yml`.
+      - run: npm install -g npm@11.19.1
+
+      - run: npm ci --no-audit --no-fund
+
+      # Belt and braces. Actions masks values referenced through `secrets.*`
+      # already; this also masks them if a tool prints one itself.
+      - name: Mask identifiers
+        env:
+          ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          DATABASE_ID: ${{ secrets.CLOUDFLARE_D1_DATABASE_ID }}
+        run: |
+          echo "::add-mask::$ACCOUNT_ID"
+          echo "::add-mask::$DATABASE_ID"
+
+      - name: Fill the square cards
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          CLOUDFLARE_D1_DATABASE_ID: ${{ secrets.CLOUDFLARE_D1_DATABASE_ID }}
+          CLOUDFLARE_R2_BUCKET_NAME: ${{ secrets.CLOUDFLARE_R2_BUCKET_NAME }}
+          # Passed through the environment, never interpolated into the shell.
+          APPLY: ${{ inputs.apply }}
+          LIMIT: ${{ inputs.limit }}
+          OFFSET: ${{ inputs.offset }}
+          ONLY: ${{ inputs.only }}
+        run: |
+          args=""
+          if [ "$APPLY" = "true" ]; then args="$args --apply"; fi
+          if [ -n "$LIMIT" ]; then args="$args --limit=$LIMIT"; fi
+          if [ -n "$OFFSET" ]; then args="$args --offset=$OFFSET"; fi
+          if [ -n "$ONLY" ]; then args="$args --only=$ONLY"; fi
+          # A push carries no `limit`, and the whole shelf does not fit in one
+          # job. The default keeps the self-dry-run to a measurable sample.
+          if [ -z "$LIMIT" ] && [ -z "$ONLY" ] && [ "$GITHUB_EVENT_NAME" = "push" ]; then
+            args="$args --limit=40"
+          fi
+          node scripts/square-card-fill.mjs $args
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: square-cards
+          path: square-cards.md
+
+      - name: Summary
+        if: always()
+        run: cat square-cards.md >> "$GITHUB_STEP_SUMMARY" || true

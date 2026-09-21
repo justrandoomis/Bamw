@@ -39,24 +39,45 @@ const slugForKey = (role, index) =>
     galleryImages: `gallery-${index}`,
   })[role] ?? role;
 
+/** The two roles cut out of the printed GameTDB sleeve rather than the eShop. */
+const WRAP_ROLES = new Set(["coverHiResImage", "cartridgeImage"]);
+
 /**
  * @param identity  {title, platform, slug, nsuid} — enough to resolve the game
- * @param deps      {sharp, r2, apply, log}
+ * @param deps      {sharp, r2, apply, log, roles}
+ *
+ * `roles` narrows the run to a subset of {@link ROLES}; it defaults to all of
+ * them, so an importer filling a new product is unaffected. Asking for one
+ * role is not an optimisation dressed up as an option: a repair that fills
+ * the square card must not also rewrite the cover, the banners and the
+ * gallery of a product whose owner only asked for the one missing picture.
+ * It also skips the GameTDB sleeve download when no role is cut from it,
+ * which is most of the wall clock for a single-role run.
+ *
  * @returns {Promise<{patch: object, report: object[], unresolved: string[], stored: number, failed: number}>}
  */
-export async function buildMedia(identity, { sharp, r2, apply = false, log = () => {} }) {
+export async function buildMedia(
+  identity,
+  { sharp, r2, apply = false, log = () => {}, roles = ROLES },
+) {
   const report = [];
   const unresolved = [];
   const patch = {};
   let stored = 0;
   let failed = 0;
 
+  /* Keep ROLES' order whatever order the caller listed them in. */
+  const wanted = ROLES.filter((role) => roles.includes(role));
+  if (!wanted.length) {
+    return { patch, report, unresolved: [], stored: 0, failed: 0, note: "no roles requested" };
+  }
+
   const resolved = await resolveProduct(identity);
   if (!resolved.product) {
     return {
       patch,
       report,
-      unresolved: [...ROLES],
+      unresolved: [...wanted],
       stored: 0,
       failed: 0,
       note: `no Nintendo store page resolved (${resolved.tried.join("; ")})`,
@@ -69,7 +90,7 @@ export async function buildMedia(identity, { sharp, r2, apply = false, log = () 
   let wrapBuffer = null;
   let frontBuffer = null;
   let wrapNote = "";
-  const tdbId = gameTdbId(product.productCode);
+  const tdbId = wanted.some((role) => WRAP_ROLES.has(role)) ? gameTdbId(product.productCode) : "";
   if (tdbId) {
     const wrap = await fetchWrap(tdbId);
     if (wrap) {
@@ -135,7 +156,7 @@ export async function buildMedia(identity, { sharp, r2, apply = false, log = () 
 
   /* ---- roles the eShop answers ---- */
   const candidates = candidatesFor(product);
-  for (const role of ROLES) {
+  for (const role of wanted) {
     if (patch[role]) continue;
     const list = candidates[role] ?? [];
     const kept = [];
