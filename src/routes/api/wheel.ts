@@ -5,6 +5,7 @@ import { getD1 } from "@/lib/d1.server";
 import { body, guard, json } from "@/lib/http.server";
 import { isGameProduct } from "@/lib/productSection";
 import { filterPurchasable } from "@/lib/purchasable";
+import { isAwaitingRelease } from "@/lib/release";
 import { consumeRateLimit, rateLimitResponse } from "@/lib/rate-limit.server";
 import { requireUser } from "@/lib/session.server";
 import { resolveProductImage } from "@/lib/productImages";
@@ -28,6 +29,36 @@ import {
  * whoever opens the developer tools.
  */
 
+/**
+ * Kinds that are not a game, whatever the product's category says.
+ *
+ * `isGameProduct` is the shop's classifier and it answers "game" by default:
+ * once a product carries any category id, `getProductCategory` decides from
+ * that id alone, and an id it does not recognise falls through to "game".
+ * Category ids created in the admin's الأقسام tab are `Date.now()` strings, so
+ * they recognise nothing — and a Nintendo Switch 2 console at 749,000 IQD
+ * filed under one is, to that function, a game.
+ *
+ * That default is load-bearing everywhere else: the imported catalogue stores
+ * Arabic category titles that match no alias either, and the storefront relies
+ * on them still being games. So the fix belongs here rather than in the
+ * classifier, where changing it would move every shelf in the shop.
+ *
+ * `kind` is the field the record itself carries, independent of whatever
+ * category it was later filed under.
+ */
+const NOT_A_GAME = new Set([
+  "hardware",
+  "device",
+  "accessory",
+  "amiibo",
+  "collectible",
+  "bundle",
+  "gift_card",
+  "digital_code",
+  "used",
+]);
+
 /** The games a spin can land on, in the shape the wheel needs. */
 async function candidates(): Promise<WheelCandidate[]> {
   const store = await getStore();
@@ -38,6 +69,13 @@ async function candidates(): Promise<WheelCandidate[]> {
   const list: WheelCandidate[] = [];
   for (const product of products) {
     if (!isGameProduct(product)) continue;
+    /*
+      Both gates, because they answer different questions. The classifier says
+      what shelf this belongs on; this says what the record calls itself. A
+      prize has to pass both — the wheel gives things away, so a wrong answer
+      here costs the shop a console.
+    */
+    if (NOT_A_GAME.has(String(product["kind"] ?? "").trim().toLowerCase())) continue;
     const price = Number(product["price"]);
     /*
       A price is required, and not only because the odds are priced. A product
@@ -45,6 +83,23 @@ async function candidates(): Promise<WheelCandidate[]> {
       winning one would hand out something nobody has valued.
     */
     if (!Number.isFinite(price) || price <= 0) continue;
+
+    /*
+      A game that has not come out yet cannot be a prize.
+
+      `filterPurchasable` does not exclude a pre-order — `isProductPriced`
+      whitelists the kind on purpose, because a pre-order is a real listing a
+      member may register interest in. Checkout is where the gate lives, and it
+      is the right place for it: `orders.server.ts` throws `AwaitingReleaseError`
+      for every line from every surface.
+
+      Which is exactly the problem. The wheel would happily land on one, spend
+      the ticket, mint the coupon and record the spin — and the member would
+      then be refused at the till, with a prize that expires in fourteen days
+      and a release date that may be further out than that. They lose the
+      ticket and get nothing, and no path anywhere gives it back.
+    */
+    if (isAwaitingRelease(product)) continue;
 
     /*
       Artwork is NOT required. Nine hundred and ninety-four of the catalogue's
