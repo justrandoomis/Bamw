@@ -337,6 +337,8 @@ let foundButRejected = 0;
 let unreachable = 0;
 /* Of the cards stored, how many the US store could not have given us. */
 let fromEurope = 0;
+/* Games neither Nintendo store has a Switch 2 row for, though we call them one. */
+let europeNoSwitch2 = 0;
 
 for (const [index, product] of missing.entries()) {
   if (outOfTime()) {
@@ -399,13 +401,36 @@ for (const [index, product] of missing.entries()) {
         Printing one sentence for both is what hid the bracket bug through a
         dry run and an apply, and reading the reasons is what found it.
       */
-      const tried = String(media.note)
-        .replace(/^no Nintendo store page resolved \(/, "")
-        .replace(/\)$/, "")
-        .split("; ")
-        .slice(-2)
+      /*
+        Split the note into its two halves before trimming either.
+
+        It reads `no Nintendo store page resolved (key → HTTP 404; key → …)`
+        and, when the European source also answered, `; europe: <reason>` after
+        the closing bracket. Stripping a trailing `)` no longer works once that
+        suffix exists, so the bracket was ending up mid-line and the keys and
+        the European reason were being cut apart at the wrong place — which is
+        how `HTTP 0)` reached the report.
+      */
+      const note = String(media.note);
+      const keysPart = /resolved \(([\s\S]*?)\)(?:; europe: |$)/.exec(note)?.[1] ?? note;
+      const europePart = /; europe: ([\s\S]*)$/.exec(note)?.[1] ?? "";
+      const tried = [
+        ...keysPart.split("; ").slice(-2),
+        ...(europePart ? [`europe: ${europePart}`] : []),
+      ]
         .join(" · ")
-        .slice(0, 150);
+        .slice(0, 170);
+
+      /*
+        The commonest European refusal, counted on its own.
+
+        "no Switch 2 row with this title" means this shop calls the game a
+        Switch 2 edition and Nintendo — in Europe as well as America — has
+        only a Switch 1 listing. It is the same finding as the US platform
+        rejection, from a second direction, and together they say the blocker
+        is our own label rather than Nintendo's catalogue.
+      */
+      if (/no Switch 2 row with this title/.test(europePart)) europeNoSwitch2 += 1;
       rows.push({ id, title, outcome: `no listing — ${tried || "no keys tried"}` });
       /*
         Read off the whole note, not the two lines printed above: a game can
@@ -521,6 +546,10 @@ say(
 say(
   `  - every request failed in transport, so Nintendo was never actually asked ` +
     `and nothing was remembered: **${unreachable}**`,
+);
+say(
+  `  - and of all of those, games NEITHER Nintendo store has a Switch 2 row for, ` +
+    `though this catalogue calls them a Switch 2 edition: **${europeNoSwitch2}**`,
 );
 say(`- listing found, no square asset: **${noSquare}**`);
 say(`- written to the catalogue: **${written}**`);
