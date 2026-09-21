@@ -71,6 +71,65 @@ const PRODUCT_SYNONYMS: Record<string, string[]> = {
   سويج: ["switch"],
   سويتش: ["switch"],
   نينتيندو: ["nintendo", "نينتندو"],
+
+  /*
+    Franchise names, in the Arabic a customer actually types.
+
+    ## Why this is here rather than in the scoring
+
+    Fifteen hundred games came from the supplier's sheet carrying one English
+    string and nothing else — no Arabic name on 1,546 of the catalogue's 1,714
+    rows. So every Arabic query has to cross scripts, and the only bridge is
+    `phoneticKey`, which romanises each side independently: «فاير» becomes
+    "fair" while "fire" stays "fire", two edits apart against a budget of one.
+    «فاير امبلم» returned nothing while five Fire Emblem games sat in the
+    catalogue. Measured, not assumed — along with «ون بيس», «ديزني», «سبونج
+    بوب», «ستريت فايتر» and «ماين كرافت», all at zero.
+
+    Three other repairs were tried first and each was measured to be worse:
+
+      - Widening the cross-script typo budget by one brings «غسالة» back —
+        Salt and Sacrifice, Sally Face, Gal Guardians — which is the exact
+        regression the revert at relevance.ts:135-149 already records.
+      - Folding the transliteration table harder (silent «gh», z→s) answers
+        «zelda» with METAL GEAR SOLID and «خبز» with two dozen games.
+      - Writing Arabic titles onto all 1,546 rows automatically is worse than
+        doing nothing for two-word franchises: an automatic pass writes the
+        one-word «مينكرافت» while the customer types «ماين كرافت», so
+        Minecraft went from no answer to a wrong answer with the real games
+        deleted.
+
+    A named alias costs nothing at index time, cannot fire on a word nobody
+    typed, and is the one lever measured to take these queries to their real
+    games while «غسالة» stays at zero. Each line is one franchise, and both
+    halves of a two-word name are listed because the all-words rule requires
+    every typed word to score somewhere on the product.
+  */
+  فاير: ["fire emblem"],
+  امبلم: ["fire emblem"],
+  ون: ["one piece"],
+  بيس: ["one piece"],
+  ديزني: ["disney"],
+  سبونج: ["spongebob"],
+  /*
+    «بوب» on its own is ambiguous — it is also how «pop» is written — and it
+    was left out at first for that reason. But the all-words rule deletes a
+    product when any typed word scores nothing, so «سبونج بوب» found nothing
+    at all until both halves were named. The ambiguity is the lesser cost.
+  */
+  بوب: ["spongebob"],
+  ستريت: ["street fighter"],
+  فايتر: ["street fighter", "fighter"],
+  ماين: ["minecraft"],
+  كرافت: ["minecraft"],
+  زيلدا: ["zelda"],
+  ماريو: ["mario"],
+  سونيك: ["sonic"],
+  كيربي: ["kirby"],
+  ناروتو: ["naruto"],
+  سبلاتون: ["splatoon"],
+  دراغون: ["dragon"],
+  دراجون: ["dragon"],
 };
 
 /** The ceiling one word can earn from each field. */
