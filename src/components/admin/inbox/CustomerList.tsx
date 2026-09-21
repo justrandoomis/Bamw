@@ -236,6 +236,14 @@ export function CustomerList({
         case "closed_tickets":
           matchesFilter = isClosed;
           break;
+        case "pending_reviews":
+          /*
+            Explicitly none. Submissions are not threads, so without this the
+            `default` below would show every conversation beside a panel that
+            is listing something else entirely.
+          */
+          matchesFilter = false;
+          break;
         case "all":
         default:
           matchesFilter = true;
@@ -471,10 +479,21 @@ export function CustomerList({
         ) : filteredThreads.length === 0 ? (
           <div className="p-10 text-center text-muted-foreground text-xs space-y-2">
             <MessageSquare className="w-8 h-8 mx-auto text-muted-foreground/30" />
-            <div className="font-semibold">لا توجد محادثات مطابقة</div>
-            <p className="text-[11px] text-muted-foreground/70">
-              جرب تغيير التصفية أو مسح كلمة البحث
-            </p>
+            {activeFilter === "pending_reviews" ? (
+              <>
+                <div className="font-semibold">التقييمات تظهر في اللوحة المجاورة</div>
+                <p className="text-[11px] text-muted-foreground/70">
+                  التقييم ليس محادثة، لذلك لا يظهر في هذه القائمة.
+                </p>
+              </>
+            ) : (
+              <>
+                <div className="font-semibold">لا توجد محادثات مطابقة</div>
+                <p className="text-[11px] text-muted-foreground/70">
+                  جرب تغيير التصفية أو مسح كلمة البحث
+                </p>
+              </>
+            )}
           </div>
         ) : (
           filteredThreads.map((t, index) => {

@@ -76,6 +76,36 @@ export const Route = createFileRoute("/api/order-review")({
             orderId,
           );
 
+          /*
+            An order placed before the snapshot table existed has no rows
+            there. `submitOrderReviewGroup` already falls back to the order
+            document; without the same fallback here the sheet would list no
+            products while the submission behind it covered several.
+          */
+          if (products.length === 0) {
+            const doc = await d1First<{ doc?: string }>(
+              `SELECT doc FROM orders WHERE id = ?`,
+              orderId,
+            );
+            try {
+              const parsed = JSON.parse(String(doc?.doc ?? "{}")) as {
+                items?: { productId?: unknown; title?: unknown; image?: unknown }[];
+              };
+              for (const item of parsed.items ?? []) {
+                const id = String(item.productId ?? "").trim();
+                if (!id) continue;
+                products.push({
+                  product_id: id,
+                  title: String(item.title ?? id),
+                  image_url: item.image ? String(item.image) : null,
+                });
+              }
+            } catch {
+              // A document that will not parse leaves the list empty, which
+              // the sheet renders as no products rather than as an error.
+            }
+          }
+
           const existing = await d1First<{
             review_group_id?: string | null;
             status?: string;
