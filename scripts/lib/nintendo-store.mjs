@@ -338,8 +338,26 @@ export function candidateKeys(doc) {
     if (slug && !bases.includes(slug)) bases.push(slug);
   };
 
+  /*
+    This shop's own platform bracket comes off first.
+
+    Fifteen hundred rows arrived from the supplier's sheet with the console in
+    square brackets — `9 R.I.P. [Switch]`, `Resident Evil Requiem [Switch 2]`.
+    Left on, the bracket becomes part of the slug and the shapes below then add
+    the console a second time: `9-r-i-p-switch-switch`, which is not a page.
+    The measured effect was exact — plain `9 R.I.P.` resolved and both of its
+    bracketed siblings did not.
+
+    Only a bracket that names a console is removed. `Absolute Fear -AOONI-
+    (最恐 -青鬼-)` keeps its parenthetical, because that is part of the name,
+    and `two` above has already read the bracket for the generation.
+  */
+  const withoutBracket = title.replace(/\s*[[(]\s*(?:nintendo\s*)?switch\s*2?\s*[\])]\s*$/i, "");
   // The edition suffix is dropped: it comes back as its own key shape below.
-  const withoutEdition = title.replace(/[-–—:]?\s*\bnintendo\s*switch\s*2\s*edition\b.*$/i, "");
+  const withoutEdition = withoutBracket.replace(
+    /[-–—:]?\s*\bnintendo\s*switch\s*2\s*edition\b.*$/i,
+    "",
+  );
   addBase(withoutEdition);
   // Console words removed, for the titles where they are packaging, not a name.
   addBase(

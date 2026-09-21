@@ -377,3 +377,34 @@ describe("familyFacts", () => {
     expect(facts).toEqual({});
   });
 });
+
+describe("this shop's own platform bracket", () => {
+  it("does not end up in the slug twice", () => {
+    /*
+      Measured against production: plain `9 R.I.P.` resolved and both
+      `9 R.I.P. [Switch]` and `9 R.I.P. [Switch 2]` did not. The bracket came
+      from the supplier's sheet, became part of the slug, and the key shapes
+      then appended the console again — `9-r-i-p-switch-switch`, which is not
+      a page Nintendo serves.
+    */
+    for (const title of ["9 R.I.P. [Switch]", "9 R.I.P."]) {
+      expect(candidateKeys({ title })).toContain("9-r-i-p-switch");
+    }
+    expect(candidateKeys({ title: "9 R.I.P. [Switch]" })).not.toContain("9-r-i-p-switch-switch");
+  });
+
+  it("reads the generation out of the bracket before removing it", () => {
+    const keys = candidateKeys({ title: "Resident Evil Requiem [Switch 2]" });
+    expect(keys[0]).toBe("resident-evil-requiem-switch-2");
+  });
+
+  it("leaves a parenthetical that is part of the name alone", () => {
+    /*
+      `Absolute Fear -AOONI- (最恐 -青鬼-)` resolved in the same run. Only a
+      bracket naming a console comes off; a title's own parenthetical is the
+      title.
+    */
+    const keys = candidateKeys({ title: "Absolute Fear -AOONI- (最恐 -青鬼-)" });
+    expect(keys.some((k) => k.startsWith("absolute-fear-aooni"))).toBe(true);
+  });
+});
