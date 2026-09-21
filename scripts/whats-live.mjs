@@ -101,9 +101,36 @@ const FINGERPRINTS = [
 
 say(`## Fingerprints in the deployed bundle`);
 say();
-const content = await api(`/accounts/${ACCOUNT}/workers/scripts/${SCRIPT}/content`, true);
-if (content.status !== 200) {
-  say(`- could not read the script (HTTP ${content.status}).`);
+
+/*
+  Three ways to ask for the code, because which one answers depends on how the
+  Worker was uploaded. A modules Worker refuses the old `/content` path with
+  405 — the method is not allowed there, which is not the same as the script
+  being missing — so the version-scoped endpoint is tried first and the plain
+  one is kept as the last resort.
+*/
+const ENDPOINTS = [
+  serving ? `/accounts/${ACCOUNT}/workers/scripts/${SCRIPT}/versions/${serving}/content` : null,
+  `/accounts/${ACCOUNT}/workers/scripts/${SCRIPT}/content/v2`,
+  `/accounts/${ACCOUNT}/workers/scripts/${SCRIPT}/content`,
+].filter(Boolean);
+
+let content = null;
+for (const endpoint of ENDPOINTS) {
+  const attempt = await api(endpoint, true);
+  const where = endpoint.replace(ACCOUNT, "«account»");
+  if (attempt.status === 200 && attempt.text) {
+    say(`- read from \`${where}\``);
+    content = attempt;
+    break;
+  }
+  say(`- \`${where}\` → HTTP ${attempt.status}`);
+}
+say();
+
+if (!content) {
+  say(`**Could not read the deployed script from any endpoint.** The deployment`);
+  say(`facts above still stand; only the fingerprinting below is unavailable.`);
 } else {
   const bundle = content.text;
   say(`- bundle read: **${bundle.length.toLocaleString("en-US")}** characters`);
