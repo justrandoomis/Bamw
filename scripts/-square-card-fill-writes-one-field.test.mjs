@@ -66,7 +66,24 @@ describe("what the fill is allowed to write", () => {
   });
 
   it("refuses to report a pass whose tallies do not add up", () => {
-    expect(FILL).toMatch(/filled \+ noPage \+ noSquare !== missing\.length/);
+    /*
+      Every game in the slice is accounted for by exactly one outcome —
+      filled, no listing, no square asset, or never reached because the
+      deadline stopped the loop. A run that loses rows must not exit 0.
+    */
+    expect(FILL).toMatch(
+      /filled \+ noPage \+ noSquare \+ stoppedEarly !== missing\.length/,
+    );
+  });
+
+  it("stops before the job's timeout can discard what it collected", () => {
+    /*
+      The document is written once at the end, which is right everywhere
+      except at the boundary: a run killed by the timeout loses every picture
+      it had found but not yet stored.
+    */
+    expect(FILL).toMatch(/const outOfTime = \(\) =>/);
+    expect(FILL).toMatch(/if \(outOfTime\(\)\) \{/);
   });
 });
 

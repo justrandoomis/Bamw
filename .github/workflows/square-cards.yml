@@ -29,6 +29,10 @@ on:
         description: "Comma-separated product ids or slugs, to fill just those"
         required: false
         default: ""
+      deadline_minutes:
+        description: "Stop and write what has been collected after this many minutes, so the job timeout cannot discard a run's work"
+        required: false
+        default: "42"
   # A new or edited filler dry-runs itself, so its hit rate can be measured
   # from a branch without first being merged. A push carries no inputs, so
   # `apply` is unreachable here and this trigger cannot write.
@@ -91,12 +95,16 @@ jobs:
           LIMIT: ${{ inputs.limit }}
           OFFSET: ${{ inputs.offset }}
           ONLY: ${{ inputs.only }}
+          DEADLINE: ${{ inputs.deadline_minutes }}
         run: |
           args=""
           if [ "$APPLY" = "true" ]; then args="$args --apply"; fi
           if [ -n "$LIMIT" ]; then args="$args --limit=$LIMIT"; fi
           if [ -n "$OFFSET" ]; then args="$args --offset=$OFFSET"; fi
           if [ -n "$ONLY" ]; then args="$args --only=$ONLY"; fi
+          # A push carries no inputs; the job's 55 minutes still need a margin
+          # for the write, the artifact and the summary.
+          args="$args --deadline-minutes=${DEADLINE:-42}"
           # A push carries no `limit`, and the whole shelf does not fit in one
           # job. The default keeps the self-dry-run to a measurable sample.
           if [ -z "$LIMIT" ] && [ -z "$ONLY" ] && [ "$GITHUB_EVENT_NAME" = "push" ]; then

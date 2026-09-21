@@ -67,6 +67,19 @@ const APPLY = process.argv.includes("--apply");
 const flag = (name, fallback) =>
   (process.argv.find((a) => a.startsWith(`--${name}=`)) ?? `--${name}=${fallback}`).split("=")[1];
 const LIMIT = Math.max(0, Number(flag("limit", "0")) || 0);
+/*
+  Stop before the job does.
+
+  Fifteen hundred games at roughly a second each is longer than one run, and a
+  run killed by the job timeout loses every picture it had collected but not
+  yet written — the document is written once at the end, which is the right
+  trade everywhere except here. So the loop watches the clock and stops early
+  enough to write what it has.
+*/
+const DEADLINE_MINUTES = Math.max(0, Number(flag("deadline-minutes", "0")) || 0);
+const STARTED_AT = Date.now();
+const outOfTime = () =>
+  DEADLINE_MINUTES > 0 && Date.now() - STARTED_AT > DEADLINE_MINUTES * 60_000;
 const OFFSET = Math.max(0, Number(flag("offset", "0")) || 0);
 const ONLY = flag("only", "")
   .split(",")
@@ -195,8 +208,14 @@ const rows = [];
 let filled = 0;
 let noPage = 0;
 let noSquare = 0;
+let stoppedEarly = 0;
 
 for (const [index, product] of missing.entries()) {
+  if (outOfTime()) {
+    stoppedEarly = missing.length - index;
+    say(`<!-- stopped after ${index} of ${missing.length}: the deadline was reached -->`);
+    break;
+  }
   const id = String(product.id ?? "");
   const title = String(product.titleEn || product.title || product.english_name || "");
 
@@ -247,7 +266,13 @@ for (const [index, product] of missing.entries()) {
     id,
     title,
     outcome: `${shape?.width}×${shape?.height}${APPLY ? ", stored in R2" : ", not stored (dry run)"}`,
-    url: String(url),
+    /*
+      The listing the picture came from, printed for every row. `identityMatch`
+      is what stops a game lending its artwork to one with a similar name, and
+      the only way to check that it worked is to be able to read which page
+      each picture was taken from.
+    */
+    from: String(media.resolvedUrl ?? "").replace("https://www.nintendo.com", ""),
   });
 
   if ((index + 1) % 25 === 0) say(`<!-- ${index + 1} of ${missing.length} -->`);
@@ -287,10 +312,10 @@ if (APPLY && patches.size > 0) {
 }
 
 /* ----------------------------------------------------------------- the report */
-say(`| game | outcome |`);
-say(`| --- | --- |`);
+say(`| game | outcome | taken from |`);
+say(`| --- | --- | --- |`);
 for (const row of rows) {
-  say(`| ${row.title || row.id} | ${row.outcome} |`);
+  say(`| ${row.title || row.id} | ${row.outcome} | ${row.from ? `\`${row.from}\`` : "—"} |`);
 }
 say();
 say(`- given a square card: **${filled}**`);
@@ -298,10 +323,16 @@ say(`- no Nintendo listing matched: **${noPage}**`);
 say(`- listing found, no square asset: **${noSquare}**`);
 say(`- written to the catalogue: **${written}**`);
 say(`- still without one after this run: **${totalMissing - written}**`);
+if (stoppedEarly > 0) {
+  say(
+    `- **stopped ${stoppedEarly} short of the end of this slice** at the ${DEADLINE_MINUTES}-minute ` +
+      `deadline. What was collected up to that point has been written; run it again to continue.`,
+  );
+}
 say();
 if (!APPLY) say(`Nothing was written. Re-run with \`apply\` to store these.`);
 
-if (filled + noPage + noSquare !== missing.length) {
+if (filled + noPage + noSquare + stoppedEarly !== missing.length) {
   say(`**The tallies do not add up to the number of games — refusing to report a pass that lost rows.**`);
   finish(1);
 }
