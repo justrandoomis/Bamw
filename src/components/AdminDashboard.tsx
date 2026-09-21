@@ -109,6 +109,7 @@ import ServicesManager from "./admin/ServicesManager";
 import ServicesDiscTradesAdminView from "./admin/services/DiscTradesAdminView";
 import TradePriceManager from "./admin/TradePriceManager";
 import ReviewsManager from "./admin/ReviewsManager";
+import MissingSquareImagesView from "./admin/MissingSquareImagesView";
 import BundlesManager from "./admin/BundlesManager";
 import { BananaManagementView } from "./admin/BananaManagementView";
 import CouponsManager from "./admin/CouponsManager";
@@ -802,6 +803,9 @@ export default function AdminDashboard() {
     { id: "music", icon: Music, label: "الموسيقى" },
     { id: "messages", icon: MessageSquare, label: "الدعم والمحادثات" },
 
+    // The square-image queue, beside the other catalogue chores rather than
+    // buried in the product editor it deliberately avoids.
+    { id: "missing_square_images", icon: ImageIcon, label: "ألعاب بلا صورة مربعة" },
     { id: "reviews", icon: Star, label: "تقييمات الأعضاء" },
     { id: "game_requests", icon: Sparkles, label: "طلبات الألعاب" },
     { id: "used_listings", icon: Tag, label: "سوق المستعمل والمسترجع" },
@@ -927,6 +931,8 @@ export default function AdminDashboard() {
         return (
           <NotificationsView notifications={notifications} setNotifications={setNotifications} />
         );
+      case "missing_square_images":
+        return <MissingSquareImagesView />;
       case "reviews":
         return <ReviewsManager />;
 
@@ -1919,15 +1925,7 @@ function ListingsView({
       searchTerm ? 300 : 0,
     );
     return () => window.clearTimeout(timer);
-  }, [
-    onQuery,
-    sort,
-    searchTerm,
-    onlyHidden,
-    onlyUnpriced,
-    onlyBareListings,
-    initialCategoryId,
-  ]);
+  }, [onQuery, sort, searchTerm, onlyHidden, onlyUnpriced, onlyBareListings, initialCategoryId]);
 
   const filteredProducts = (products || []).filter((p: any) => p && typeof p === "object");
 

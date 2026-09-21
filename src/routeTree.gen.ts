@@ -88,6 +88,7 @@ import { Route as ApiAdminHealthRouteImport } from './routes/api/admin/health'
 import { Route as ApiAdminImportGameRouteImport } from './routes/api.admin.import-game'
 import { Route as ApiAdminKnowledgeBaseRouteImport } from './routes/api/admin/knowledge-base'
 import { Route as ApiAdminMigrateImagesRouteImport } from './routes/api/admin/migrate-images'
+import { Route as ApiAdminMissingSquareImagesRouteImport } from './routes/api/admin/missing-square-images'
 import { Route as ApiAdminOrdersRouteImport } from './routes/api/admin.orders'
 import { Route as ApiAdminProductMetadataRouteImport } from './routes/api/admin/product-metadata'
 import { Route as ApiAdminProductsRouteImport } from './routes/api/admin/products'
@@ -530,6 +531,12 @@ const ApiAdminMigrateImagesRoute = ApiAdminMigrateImagesRouteImport.update({
   path: '/api/admin/migrate-images',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiAdminMissingSquareImagesRoute =
+  ApiAdminMissingSquareImagesRouteImport.update({
+    id: '/api/admin/missing-square-images',
+    path: '/api/admin/missing-square-images',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const ApiAdminOrdersRoute = ApiAdminOrdersRouteImport.update({
   id: '/api/admin/orders',
   path: '/api/admin/orders',
@@ -858,6 +865,7 @@ export interface FileRoutesByFullPath {
   '/api/admin/import-game': typeof ApiAdminImportGameRoute
   '/api/admin/knowledge-base': typeof ApiAdminKnowledgeBaseRoute
   '/api/admin/migrate-images': typeof ApiAdminMigrateImagesRoute
+  '/api/admin/missing-square-images': typeof ApiAdminMissingSquareImagesRoute
   '/api/admin/orders': typeof ApiAdminOrdersRoute
   '/api/admin/product-metadata': typeof ApiAdminProductMetadataRoute
   '/api/admin/products': typeof ApiAdminProductsRouteWithChildren
@@ -985,6 +993,7 @@ export interface FileRoutesByTo {
   '/api/admin/import-game': typeof ApiAdminImportGameRoute
   '/api/admin/knowledge-base': typeof ApiAdminKnowledgeBaseRoute
   '/api/admin/migrate-images': typeof ApiAdminMigrateImagesRoute
+  '/api/admin/missing-square-images': typeof ApiAdminMissingSquareImagesRoute
   '/api/admin/orders': typeof ApiAdminOrdersRoute
   '/api/admin/product-metadata': typeof ApiAdminProductMetadataRoute
   '/api/admin/products': typeof ApiAdminProductsRouteWithChildren
@@ -1113,6 +1122,7 @@ export interface FileRoutesById {
   '/api/admin/import-game': typeof ApiAdminImportGameRoute
   '/api/admin/knowledge-base': typeof ApiAdminKnowledgeBaseRoute
   '/api/admin/migrate-images': typeof ApiAdminMigrateImagesRoute
+  '/api/admin/missing-square-images': typeof ApiAdminMissingSquareImagesRoute
   '/api/admin/orders': typeof ApiAdminOrdersRoute
   '/api/admin/product-metadata': typeof ApiAdminProductMetadataRoute
   '/api/admin/products': typeof ApiAdminProductsRouteWithChildren
@@ -1242,6 +1252,7 @@ export interface FileRouteTypes {
     | '/api/admin/import-game'
     | '/api/admin/knowledge-base'
     | '/api/admin/migrate-images'
+    | '/api/admin/missing-square-images'
     | '/api/admin/orders'
     | '/api/admin/product-metadata'
     | '/api/admin/products'
@@ -1369,6 +1380,7 @@ export interface FileRouteTypes {
     | '/api/admin/import-game'
     | '/api/admin/knowledge-base'
     | '/api/admin/migrate-images'
+    | '/api/admin/missing-square-images'
     | '/api/admin/orders'
     | '/api/admin/product-metadata'
     | '/api/admin/products'
@@ -1496,6 +1508,7 @@ export interface FileRouteTypes {
     | '/api/admin/import-game'
     | '/api/admin/knowledge-base'
     | '/api/admin/migrate-images'
+    | '/api/admin/missing-square-images'
     | '/api/admin/orders'
     | '/api/admin/product-metadata'
     | '/api/admin/products'
@@ -1624,6 +1637,7 @@ export interface RootRouteChildren {
   ApiAdminImportGameRoute: typeof ApiAdminImportGameRoute
   ApiAdminKnowledgeBaseRoute: typeof ApiAdminKnowledgeBaseRoute
   ApiAdminMigrateImagesRoute: typeof ApiAdminMigrateImagesRoute
+  ApiAdminMissingSquareImagesRoute: typeof ApiAdminMissingSquareImagesRoute
   ApiAdminOrdersRoute: typeof ApiAdminOrdersRoute
   ApiAdminProductMetadataRoute: typeof ApiAdminProductMetadataRoute
   ApiAdminProductsRoute: typeof ApiAdminProductsRouteWithChildren
@@ -2215,6 +2229,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiAdminMigrateImagesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/admin/missing-square-images': {
+      id: '/api/admin/missing-square-images'
+      path: '/api/admin/missing-square-images'
+      fullPath: '/api/admin/missing-square-images'
+      preLoaderRoute: typeof ApiAdminMissingSquareImagesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api/admin/orders': {
       id: '/api/admin/orders'
       path: '/api/admin/orders'
@@ -2682,6 +2703,7 @@ const rootRouteChildren: RootRouteChildren = {
   ApiAdminImportGameRoute: ApiAdminImportGameRoute,
   ApiAdminKnowledgeBaseRoute: ApiAdminKnowledgeBaseRoute,
   ApiAdminMigrateImagesRoute: ApiAdminMigrateImagesRoute,
+  ApiAdminMissingSquareImagesRoute: ApiAdminMissingSquareImagesRoute,
   ApiAdminOrdersRoute: ApiAdminOrdersRoute,
   ApiAdminProductMetadataRoute: ApiAdminProductMetadataRoute,
   ApiAdminProductsRoute: ApiAdminProductsRouteWithChildren,
