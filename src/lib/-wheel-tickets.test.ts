@@ -119,7 +119,7 @@ describe("spinning", () => {
 
   it("cannot be overdrawn by spinning more times than it has tickets", async () => {
     await wheel.grantTickets({ userId: "usr_a", quantity: 2, reason: "test", now: NOW });
-    const outcomes = [];
+    const outcomes: Awaited<ReturnType<typeof wheel.spinWheel>>[] = [];
     for (let attempt = 0; attempt < 5; attempt += 1) {
       outcomes.push(await wheel.spinWheel({ userId: "usr_a", candidates: GAMES, now: NOW }));
     }

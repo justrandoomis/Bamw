@@ -28,6 +28,8 @@ export type BananaReward = {
   couponValue?: number;
   couponType?: string;
   rewardCode?: string;
+  /** Set only on a wheel-ticket offer: how many tickets it hands over. */
+  ticketQuantity?: number;
 };
 
 export type BananaSnapshot = {

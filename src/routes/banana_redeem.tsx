@@ -26,6 +26,8 @@ export const Route = createFileRoute("/banana_redeem")({
 
 const CATEGORIES = [
   { id: "all", label: "الكل" },
+  // Tickets first: they are the one reward that leads somewhere else.
+  { id: "wheel_ticket", label: "🎟️ تذاكر عجلة الحظ" },
   { id: "vouchers", label: "🎟️ قسائم وخصومات" },
   { id: "digital", label: "🎮 بطاقات وشحن" },
   { id: "physical", label: "🕹️ هدايا واكسسوارات" },
@@ -139,19 +141,26 @@ function BananaRedeemPage() {
                     <div className="flex items-start justify-between">
                       <div className="text-3xl">{r.icon}</div>
                       <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-foreground/10 text-foreground/70">
-                        {r.category === "vouchers"
-                          ? "قسيمة خصم"
-                          : r.category === "digital"
-                            ? "بطاقة رقمية"
-                            : r.category === "physical"
-                              ? "منتج حقيقي"
-                              : "ميزة"}
+                        {r.category === "wheel_ticket"
+                          ? `${r.ticketQuantity ?? 1} تذكرة`
+                          : r.category === "vouchers"
+                            ? "قسيمة خصم"
+                            : r.category === "digital"
+                              ? "بطاقة رقمية"
+                              : r.category === "physical"
+                                ? "منتج حقيقي"
+                                : "ميزة"}
                       </span>
                     </div>
                     <h3 className="mt-2 text-sm font-bold leading-snug">{r.title}</h3>
                     {r.description && (
                       <p className="mt-1 text-xs text-foreground/60 line-clamp-2">
                         {r.description}
+                      </p>
+                    )}
+                    {r.category === "wheel_ticket" && (
+                      <p className="mt-2 w-fit rounded bg-amber-500/10 px-2 py-0.5 text-[10px] font-bold text-amber-700 dark:text-amber-400">
+                        تُستخدم في عجلة الحظ لربح لعبة عشوائية
                       </p>
                     )}
                     {r.couponValue && r.couponValue > 0 && (
