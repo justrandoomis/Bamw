@@ -205,3 +205,103 @@ describe("ticket offers", () => {
     expect(await wheel.ticketQuantityForOffer("offer_1")).toBe(0);
   });
 });
+
+/**
+ * The two windows between a write that succeeded and the one after it.
+ *
+ * D1 has no interactive transaction on this path, so every pair of statements
+ * here has a gap in the middle, and what matters is what a member is left
+ * holding when the process dies inside one. Both of these were real: the code
+ * to close the first existed and had no caller, and the second had no code at
+ * all.
+ *
+ * A trigger that aborts is how the second statement is made to fail on
+ * demand. It is closer to the real failure than a mocked rejection, because
+ * the first statement really has committed by the time it fires.
+ */
+describe("a write that fails half way", () => {
+  const abort = (table: string) =>
+    db.raw.exec(
+      `CREATE TRIGGER boom_${table} BEFORE INSERT ON ${table} BEGIN SELECT RAISE(ABORT, 'boom'); END;`,
+    );
+  const unabort = (table: string) => db.raw.exec(`DROP TRIGGER IF EXISTS boom_${table}`);
+
+  it("takes the prize coupon back when the spin cannot be recorded", async () => {
+    await wheel.grantTickets({ userId: "usr_a", quantity: 1, reason: "test", now: NOW });
+    abort("wheel_spins");
+    try {
+      const outcome = await wheel.spinWheel({ userId: "usr_a", candidates: GAMES, now: NOW });
+      expect(outcome.ok).toBe(false);
+    } finally {
+      unabort("wheel_spins");
+    }
+
+    /*
+      The whole point. Without the revoke the member walks away with a live
+      100%-off coupon for a real game AND their ticket, and nothing anywhere
+      records that a spin happened.
+    */
+    const left = db.raw
+      .prepare(`SELECT COUNT(*) AS n FROM coupons WHERE code LIKE 'WIN-%'`)
+      .get() as { n: number };
+    expect(left.n).toBe(0);
+
+    // The ticket does come back — they did not get their turn.
+    expect(await wheel.getTicketBalance("usr_a")).toBe(1);
+    expect(await wheel.recentSpins("usr_a", 10)).toHaveLength(0);
+  });
+
+  it("lets a grant be retried when the balance never got written", async () => {
+    abort("wheel_tickets");
+    try {
+      await expect(
+        wheel.grantTickets({
+          userId: "usr_a",
+          quantity: 2,
+          reason: "admin",
+          referenceId: "ref-1",
+          now: NOW,
+        }),
+      ).rejects.toThrow();
+    } finally {
+      unabort("wheel_tickets");
+    }
+
+    expect(await wheel.getTicketBalance("usr_a")).toBe(0);
+
+    /*
+      The claim must have been given back. If it were still held, this second
+      call — the admin pressing the button again after an error — would be
+      refused as a duplicate and the member would never get the tickets.
+    */
+    const retry = await wheel.grantTickets({
+      userId: "usr_a",
+      quantity: 2,
+      reason: "admin",
+      referenceId: "ref-1",
+      now: NOW,
+    });
+    expect(retry.granted).toBe(true);
+    expect(await wheel.getTicketBalance("usr_a")).toBe(2);
+  });
+
+  it("still refuses a genuine duplicate", async () => {
+    // The release above must not have weakened the thing it is guarding.
+    await wheel.grantTickets({
+      userId: "usr_a",
+      quantity: 2,
+      reason: "admin",
+      referenceId: "ref-2",
+      now: NOW,
+    });
+    const again = await wheel.grantTickets({
+      userId: "usr_a",
+      quantity: 2,
+      reason: "admin",
+      referenceId: "ref-2",
+      now: NOW,
+    });
+    expect(again.granted).toBe(false);
+    expect(await wheel.getTicketBalance("usr_a")).toBe(2);
+  });
+});

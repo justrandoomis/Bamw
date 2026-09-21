@@ -235,17 +235,68 @@ try {
   reviewOk = false;
 }
 
+/*
+  The wheel, and the queue for the missing square images.
+
+  Same shape as the review checks above and for the same reason: a route that
+  is not in the bundle answers 404, one that is answers 401 because it asked
+  who you are before it did anything. `/wheel` is the positive control — it is
+  a page a guest may open, so a 200 means the new client bundle is the one
+  being served, not merely that an API file exists.
+
+  These cannot be asked about a member's ticket balance or a real spin without
+  a session, and a release verifier has no business holding one. What they can
+  prove is that the code is live, which is what this file is for.
+*/
+let wheelOk = true;
+try {
+  const wheelApi = await probe("/api/wheel");
+  const squareQueue = await probe("/api/admin/missing-square-images");
+  const wheelPage = await probe("/wheel");
+
+  const report = (label, result, ok, why) => {
+    if (result.challenged) {
+      say(`- \`${label}\` → challenged by the edge (inconclusive, not a deploy failure)`);
+      return;
+    }
+    if (!ok) wheelOk = false;
+    say(`- \`${label}\` → HTTP ${result.status}${ok ? ` (${why})` : " (unexpected)"}`);
+  };
+
+  report(
+    "GET /api/wheel",
+    wheelApi,
+    wheelApi.status === 401,
+    "guest refused — the wheel's server half is deployed",
+  );
+  report(
+    "GET /api/admin/missing-square-images",
+    squareQueue,
+    squareQueue.status === 401 || squareQueue.status === 403,
+    "guest refused — the square-image queue is deployed",
+  );
+  report(
+    "GET /wheel",
+    wheelPage,
+    wheelPage.status === 200,
+    "the spin page is routed — the new client bundle is live",
+  );
+} catch (error) {
+  say(`- wheel endpoints → unreachable: ${String(error?.message || error)}`);
+  wheelOk = false;
+}
+
 const healthy = health?.ok === true && body.status === "OK";
 say();
 say(
-  healthy && homeOk && referralOk && reviewOk
+  healthy && homeOk && referralOk && reviewOk && wheelOk
     ? `**verified: the deployed site is healthy**`
     : `**FAILED**`,
 );
 
 writeFileSync("deployment-verification.md", lines.join("\n") + "\n");
 
-if (!healthy || !homeOk || !referralOk || !reviewOk) {
+if (!healthy || !homeOk || !referralOk || !reviewOk || !wheelOk) {
   console.error("deployment verification failed");
   process.exit(1);
 }

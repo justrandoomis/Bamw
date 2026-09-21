@@ -225,15 +225,36 @@ export async function grantTickets(input: {
     );
   }
 
-  await d1Run(
-    `INSERT INTO wheel_tickets (user_id, balance, updated_at) VALUES (?, ?, ?)
-     ON CONFLICT(user_id) DO UPDATE SET
-       balance = wheel_tickets.balance + excluded.balance,
-       updated_at = excluded.updated_at`,
-    userId,
-    quantity,
-    now,
-  );
+  try {
+    await d1Run(
+      `INSERT INTO wheel_tickets (user_id, balance, updated_at) VALUES (?, ?, ?)
+       ON CONFLICT(user_id) DO UPDATE SET
+         balance = wheel_tickets.balance + excluded.balance,
+         updated_at = excluded.updated_at`,
+      userId,
+      quantity,
+      now,
+    );
+  } catch (error) {
+    /*
+      The claim above is what makes a repeat harmless, and it is written
+      before the balance because it has to be — checking first and writing
+      after is not atomic across two statements. The cost is this window: a
+      reference claimed and no tickets credited, which would make every
+      retry of that same grant a no-op forever.
+
+      So the claim is given back. The member has no tickets either way; the
+      difference is whether pressing the button again can fix it.
+    */
+    if (input.referenceId) {
+      await d1Run(
+        `DELETE FROM wheel_ticket_ledger WHERE reference_id = ? AND user_id = ?`,
+        input.referenceId,
+        userId,
+      ).catch(() => undefined);
+    }
+    throw error;
+  }
 
   return { granted: true, balance: await getTicketBalance(userId) };
 }
@@ -364,6 +385,15 @@ export async function spinWheel(input: {
     return { ok: false, reason: "no_ticket", ticketsLeft: await getTicketBalance(userId) };
   }
 
+  /*
+    The code minted for this spin, remembered so the failure path can take it
+    back. Between the mint and the `wheel_spins` row there is a window where a
+    member holds a live 100%-off coupon for a spin that never happened — and
+    the catch below hands their ticket back too, so the cost of losing that
+    window is a free game AND another turn.
+  */
+  let mintedCode = "";
+
   try {
     const winner = pickWeighted(input.candidates);
     if (!winner) throw new Error("WHEEL_NO_WINNER");
@@ -379,6 +409,7 @@ export async function spinWheel(input: {
       issuedAt: now,
       expiresAt,
     });
+    mintedCode = couponCode;
 
     const spinId = randomId("spin");
     await d1Run(
@@ -410,6 +441,24 @@ export async function spinWheel(input: {
       ticketsLeft: await getTicketBalance(userId),
     };
   } catch (error) {
+    /*
+      The prize goes back first, then the ticket.
+
+      `revokePrizeCoupon` was written for this and had no caller, which is the
+      quietest kind of missing line: every test passed, the happy path was
+      right, and the only way to see it was to ask what a member is left
+      holding when the spin row fails to write. The answer was a working
+      coupon for a free game, plus the ticket, plus no record that either
+      happened.
+
+      Order matters. Revoking first means that if the process dies between the
+      two, the member has lost a ticket — recoverable, and visible in the
+      ledger. The other order leaves the shop giving away a game.
+    */
+    if (mintedCode) {
+      const { revokePrizeCoupon } = await import("./wheel-prize.server");
+      await revokePrizeCoupon(mintedCode).catch(() => undefined);
+    }
     /*
       The ticket goes back. A member who span and got an error has not had
       their turn, and the alternative — keeping the ticket because the code
