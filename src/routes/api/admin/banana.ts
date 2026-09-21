@@ -293,6 +293,62 @@ export const Route = createFileRoute("/api/admin/banana")({
             return json({ success: true, refundedBananas: 0 });
           }
 
+          /*
+            Tickets, granted by hand.
+
+            «أو تعطى عن طريق الأدمن للمستخدمين» — the second of the two ways a
+            member can get a ticket. Bananas are the first and they go through
+            the redemption screen; this is the shop simply handing one over.
+
+            `referenceId` is what makes it safe to press twice: the ledger has
+            a unique index on it, so a repeated grant with the same reference
+            adds nothing and says so.
+          */
+          if (action === "grant_wheel_tickets") {
+            const userId = String(data.userId ?? "").trim();
+            const quantity = Math.floor(Number(data.quantity));
+            if (!userId) return json({ error: "معرّف المستخدم مطلوب" }, { status: 400 });
+            if (!Number.isFinite(quantity) || quantity <= 0 || quantity > 100) {
+              return json({ error: "عدد التذاكر يجب أن يكون بين 1 و 100" }, { status: 400 });
+            }
+
+            const { grantTickets } = await import("@/lib/wheel.server");
+            const reference = String(data.referenceId ?? "").trim();
+            const result = await grantTickets({
+              userId,
+              quantity,
+              reason: `admin_grant:${String(data.reason ?? "").slice(0, 120)}`,
+              ...(reference ? { referenceId: reference } : {}),
+            });
+
+            return json({
+              success: true,
+              granted: result.granted,
+              tickets: result.balance,
+              // Said plainly rather than silently: a second press changed nothing.
+              ...(result.granted ? {} : { note: "تم منح هذه التذاكر سابقاً بنفس المرجع" }),
+            });
+          }
+
+          /*
+            Turn a redemption offer into a ticket offer, or back.
+
+            The banana price stays where the admin already sets prices — on the
+            offer itself. This only records how many tickets that offer hands
+            over, which is the one thing the redemption table cannot hold.
+          */
+          if (action === "set_ticket_offer") {
+            const offerId = String(data.offerId ?? "").trim();
+            const quantity = Math.floor(Number(data.ticketQuantity ?? 0));
+            if (!offerId) return json({ error: "معرّف المكافأة مطلوب" }, { status: 400 });
+            if (!Number.isFinite(quantity) || quantity < 0 || quantity > 100) {
+              return json({ error: "عدد التذاكر غير صالح" }, { status: 400 });
+            }
+            const { setTicketOffer } = await import("@/lib/wheel.server");
+            await setTicketOffer(offerId, quantity);
+            return json({ success: true, offerId, ticketQuantity: quantity });
+          }
+
           if (action === "adjust_balance") {
             const userId = String(data.userId ?? "").trim();
             const amount = Number(data.amount);
