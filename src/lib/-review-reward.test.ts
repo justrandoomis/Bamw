@@ -295,11 +295,16 @@ describe("every completion path reaches the invitation", () => {
     */
     expect(reward).toContain("INSERT OR IGNORE INTO order_review_prompts");
 
-    // The customer confirming, and an admin completing by hand, both land in
-    // the completion service.
-    expect(read("src/lib/order-completion.server.ts")).toContain(
-      'promptForReview(next, "completed"',
-    );
+    /*
+      The customer confirming, and an admin completing by hand, both land in
+      the completion service — and it names which one it was, so the recorded
+      trigger says something. "completed" for all three would have answered
+      nothing about which of them reaches customers.
+    */
+    const completion = read("src/lib/order-completion.server.ts");
+    expect(completion).toContain("await promptForReview(");
+    expect(completion).toContain('options.role === "USER" ? "customer_confirmed"');
+    expect(completion).toContain('"admin_manual"');
     // The thirty-minute timer is its own trigger, and does not wait for
     // completion.
     expect(read("src/lib/order-delivery-items.server.ts")).toContain(

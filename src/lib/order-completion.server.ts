@@ -307,7 +307,16 @@ export async function completeOrder(
       and a customer who was already asked by the timer must not be asked twice
       when the order then completes.
     */
-    await promptForReview(next, "completed", { now: options.now ?? undefined });
+    /*
+      Name the trigger truthfully. `order_review_prompts.trigger_source` is
+      how the owner can see which of the three actually reaches customers —
+      "completed" for every one of them would have answered nothing.
+    */
+    await promptForReview(
+      next,
+      options.role === "USER" ? "customer_confirmed" : options.auto ? "completed" : "admin_manual",
+      { now: options.now ?? undefined },
+    );
   } catch (err) {
     console.warn("[order-completion:review_invite_failed]", { orderId: order.id }, err);
   }
