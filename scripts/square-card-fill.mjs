@@ -280,6 +280,20 @@ let filled = 0;
 let noPage = 0;
 let noSquare = 0;
 let stoppedEarly = 0;
+/*
+  The two halves of "no listing", counted apart.
+
+  They are different problems with different answers. Every key answering 404
+  means Nintendo's US store has no page under any name this builds — a delisted
+  game, a region-exclusive, or a key shape unknown here, and no amount of
+  re-running finds it. A page that answered 200 and was then refused is a
+  disagreement about which product it is, and the commonest one is the
+  catalogue calling a game a Switch 2 edition when Nintendo's listing is
+  Switch 1. That is a fact about this shop's own data, and it is worth a
+  number rather than an impression.
+*/
+let allKeys404 = 0;
+let foundButRejected = 0;
 
 for (const [index, product] of missing.entries()) {
   if (outOfTime()) {
@@ -343,6 +357,13 @@ for (const [index, product] of missing.entries()) {
         .join(" · ")
         .slice(0, 150);
       rows.push({ id, title, outcome: `no listing — ${tried || "no keys tried"}` });
+      /*
+        Read off the whole note, not the two lines printed above: a game can
+        404 on one key and be refused on another, and it is the refusal that
+        says something.
+      */
+      if (/, rejected:/.test(String(media.note))) foundButRejected += 1;
+      else allKeys404 += 1;
       await remember(id, "no_listing");
     } else {
       noSquare += 1;
@@ -417,6 +438,11 @@ for (const row of rows) {
 say();
 say(`- given a square card: **${filled}**`);
 say(`- no Nintendo listing matched: **${noPage}**`);
+say(`  - every key answered 404 — not on Nintendo's US store: **${allKeys404}**`);
+say(
+  `  - a page was found and refused, usually because this shop calls the game a ` +
+    `Switch 2 edition and Nintendo's listing is Switch 1: **${foundButRejected}**`,
+);
 say(`- listing found, no square asset: **${noSquare}**`);
 say(`- written to the catalogue: **${written}**`);
 say(`- still without one after this run: **${totalMissing - written}**`);
