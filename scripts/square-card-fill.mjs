@@ -247,7 +247,25 @@ for (const [index, product] of missing.entries()) {
     const rejected = media.report.find((r) => r.role === ROLE && !r.ok);
     if (media.note) {
       noPage += 1;
-      rows.push({ id, title, outcome: "no Nintendo listing matched" });
+      /*
+        Say which keys were tried and what each answered, not just that
+        nothing matched.
+
+        `buildMedia` already carries it — `resolveProduct` records a line per
+        url key, distinguishing "HTTP 404" from "200, rejected: title X is not
+        Y". Those are completely different problems: the first is a key this
+        does not know how to build, the second is a page found and refused.
+        Printing one sentence for both is what hid the bracket bug through a
+        dry run and an apply, and reading the reasons is what found it.
+      */
+      const tried = String(media.note)
+        .replace(/^no Nintendo store page resolved \(/, "")
+        .replace(/\)$/, "")
+        .split("; ")
+        .slice(-2)
+        .join(" · ")
+        .slice(0, 150);
+      rows.push({ id, title, outcome: `no listing — ${tried || "no keys tried"}` });
     } else {
       noSquare += 1;
       rows.push({
