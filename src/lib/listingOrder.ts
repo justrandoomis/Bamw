@@ -23,6 +23,7 @@
  * move on the next load with no edit to the product at all.
  */
 import { hasUsableImage } from "./bareListing";
+import { hasNintendoSquareCard } from "./nintendoListing";
 
 /** Does this record have artwork a listing card can actually show? */
 export function hasListingPicture(product: unknown): boolean {
@@ -50,4 +51,35 @@ export function picturedFirst<T>(products: readonly T[]): T[] {
 /** Only the ones with artwork — for the front page, where nobody went looking. */
 export function onlyPictured<T>(products: readonly T[]): T[] {
   return products.filter((product) => hasListingPicture(product));
+}
+
+/**
+ * The same list again, with the square-card games first.
+ *
+ * A second, stricter question than {@link picturedFirst}, and the difference
+ * is the whole point. `hasListingPicture` is true of a game that has a retail
+ * box cover, because a box cover is a picture. But the cartridge card's label
+ * window is square, and `getNintendoMedia(product, "square-card")` deliberately
+ * refuses to squeeze a tall box into it — so that game draws a placeholder on
+ * the cartridge shelf while passing the any-picture test with flying colours.
+ * Sorting the cartridge platform by `picturedFirst` alone would therefore do
+ * nothing at all for exactly the games the owner is pointing at.
+ *
+ * Compose it OUTSIDE `picturedFirst`, not inside:
+ *
+ *     squareCardFirst(picturedFirst(games))
+ *
+ * Both are stable partitions, so that order yields square art, then games with
+ * some other picture, then the ones with no picture at all — and whatever the
+ * member chose to sort by survives inside each group.
+ */
+export function squareCardFirst<T>(products: readonly T[]): T[] {
+  const square: T[] = [];
+  const rest: T[] = [];
+  for (const product of products) {
+    const record =
+      product && typeof product === "object" ? (product as Record<string, unknown>) : null;
+    (record && hasNintendoSquareCard(record) ? square : rest).push(product);
+  }
+  return rest.length === 0 ? [...products] : [...square, ...rest];
 }

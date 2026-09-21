@@ -10,7 +10,7 @@ import { useStoreData } from "@/hooks/useStoreData";
 import { GAME_GENRES } from "@/lib/genres";
 import { getNintendoMediaUrl } from "@/lib/nintendoImages";
 import { filterPurchasable } from "@/lib/purchasable";
-import { picturedFirst } from "@/lib/listingOrder";
+import { picturedFirst, squareCardFirst } from "@/lib/listingOrder";
 import { isGameProduct } from "@/lib/productSection";
 import { playSound } from "@/utils/audio";
 import { preloadGameCovers } from "@/lib/imagePreloader";
@@ -63,22 +63,31 @@ function GamesPage() {
     }
   }, [products]);
 
+  /*
+    Square art first on the cartridge platform.
+
+    `products` above is already `picturedFirst`, but that asks a different
+    question: a game with a retail box cover and no square art passes it and
+    still draws a placeholder here, because the cartridge label window is
+    square and `getNintendoMediaUrl(p, "square-card")` refuses to squeeze a
+    tall box into it. Partitioning again, outside the first one, gives square
+    art, then other pictures, then nothing — «الألعاب التي ليس لها صورة مربعة
+    تكون في الأخير».
+  */
   const games: (CartridgeGame & { genres: string[] })[] = useMemo(
     () =>
-      products
-        .filter((p) => isGameProduct(p))
-        .map((p) => ({
-          id: p["id"],
-          title: p["titleEn"] || p["english_name"] || p["title"],
-          subtitle: p["developer"] || p["publisher"] || "Nintendo Switch",
-          image: getNintendoMediaUrl(p, "square-card"),
-          // The cartridge label window reads `nintendo_card_image` when the
-          // record has one, so hand it the whole record rather than a URL.
-          source: p,
-          rating: p["metacriticRating"] ?? null,
-          platform: p["platform"],
-          genres: Array.isArray(p["genres"]) ? (p["genres"] as string[]) : [],
-        })),
+      squareCardFirst(products.filter((p) => isGameProduct(p))).map((p) => ({
+        id: p["id"],
+        title: p["titleEn"] || p["english_name"] || p["title"],
+        subtitle: p["developer"] || p["publisher"] || "Nintendo Switch",
+        image: getNintendoMediaUrl(p, "square-card"),
+        // The cartridge label window reads `nintendo_card_image` when the
+        // record has one, so hand it the whole record rather than a URL.
+        source: p,
+        rating: p["metacriticRating"] ?? null,
+        platform: p["platform"],
+        genres: Array.isArray(p["genres"]) ? (p["genres"] as string[]) : [],
+      })),
 
     [products],
   );

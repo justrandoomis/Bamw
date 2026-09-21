@@ -7,7 +7,7 @@ import { useCurrency } from "../context/CurrencyContext";
 import { BananaIcon } from "./Icons";
 import { Headset, CreditCard, Wallet, Star, Trophy, Sparkles } from "lucide-react";
 import { playSound, preloadSound } from "../utils/audio";
-import { onlyPictured } from "@/lib/listingOrder";
+import { onlyPictured, squareCardFirst } from "@/lib/listingOrder";
 import { filterPurchasable } from "@/lib/purchasable";
 import { getProductCategory, isGameProduct } from "@/lib/productSection";
 import { productImageUrl } from "@/lib/productImages";
@@ -374,9 +374,15 @@ export default function HomeView({
             <div className="relative mb-6 mt-2 min-h-[200px] w-full max-w-full">
               <LazySection placeholder={<CartridgeSkeleton />}>
                 <CartridgeStrip
-                  games={adminProducts
-                    .filter((p) => isGameProduct(p))
-                    .map((p) => ({
+                  /*
+                    Square art first here too. `adminProducts` is already
+                    `onlyPictured`, so nothing artwork-less reaches the front
+                    page at all — but a box-cover-only game still draws a
+                    placeholder in this square window, and it belongs behind
+                    the ones that fill it.
+                  */
+                  games={squareCardFirst(adminProducts.filter((p) => isGameProduct(p))).map(
+                    (p) => ({
                       id: p.id,
                       slug: p.slug,
                       title: p.titleEn || p.english_name || p.title || "Game",
@@ -386,7 +392,8 @@ export default function HomeView({
                       subtitle: p.developer || p.publisher || "Nintendo Switch",
                       rating: p.metacriticRating ?? null,
                       platform: p.platform,
-                    }))}
+                    }),
+                  )}
                   clickedId={clickedCartridgeId}
                   onSelect={(game: any) => {
                     if (clickedCartridgeId != null) return;

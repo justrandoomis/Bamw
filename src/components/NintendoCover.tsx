@@ -146,7 +146,10 @@ export function useNintendoCover(
     side, so nothing that relied on it loses its crop.
   */
   const serverTrimmed = usageWantsTrim(usage);
-  const proxied = cdnImage(rawUrl, { width: targetWidth, ...(serverTrimmed ? { trim: true } : {}) });
+  const proxied = cdnImage(rawUrl, {
+    width: targetWidth,
+    ...(serverTrimmed ? { trim: true } : {}),
+  });
   const { trim, naturalAspect } = useImageTrim(
     proxied,
     serverTrimmed ? undefined : resolved.trim,
@@ -169,7 +172,7 @@ export function NintendoCover({
 }: NintendoCoverProps) {
   const resolved = resolveCoverFor(product, usage);
   const candidateUrls = [resolved.url, ...(resolved.fallbackUrls || [])].filter(
-    (u) => Boolean(u) && u !== NINTENDO_IMAGE_PLACEHOLDER
+    (u) => Boolean(u) && u !== NINTENDO_IMAGE_PLACEHOLDER,
   );
 
   const [candidateIndex, setCandidateIndex] = useState(0);
@@ -178,7 +181,7 @@ export function NintendoCover({
   const { src, rawUrl, trim, naturalAspect, serverTrimmed } = useNintendoCover(
     product,
     usage,
-    activeRawUrl
+    activeRawUrl,
   );
 
   const [failed, setFailed] = useState(false);
@@ -237,9 +240,10 @@ export function NintendoCover({
     !showPlaceholder && rawUrl ? buildSrcSet(rawUrl, "avif", [240, 480, 800], srcSetOptions) : "";
   const webpSrcSet =
     !showPlaceholder && rawUrl ? buildSrcSet(rawUrl, "webp", [240, 480, 800], srcSetOptions) : "";
-  const sizesAttr = usage === "square-card"
-    ? "(max-width: 640px) 180px, 320px"
-    : "(max-width: 640px) 240px, (max-width: 1024px) 480px, 800px";
+  const sizesAttr =
+    usage === "square-card"
+      ? "(max-width: 640px) 180px, 320px"
+      : "(max-width: 640px) 240px, (max-width: 1024px) 480px, 800px";
 
   const imgStyle: React.CSSProperties =
     !showPlaceholder && trim
@@ -254,10 +258,37 @@ export function NintendoCover({
 
   return (
     <div
-      className={`relative flex items-center justify-center overflow-hidden bg-muted/20 ${className}`}
+      /*
+        `@container` so the caption below can ask how big THIS frame is. The
+        same component draws a 40px avatar and a full-width hero, and a
+        sentence in the 40px one would be a smear of clipped glyphs.
+      */
+      className={`@container relative flex items-center justify-center overflow-hidden bg-muted/20 ${className}`}
       style={frameRatio ? { aspectRatio: String(frameRatio) } : undefined}
       {...(onClick ? { onClick } : {})}
     >
+      {/*
+        «لم يتم إضافة الصورة بعد» — said, not implied.
+
+        Nine hundred and ninety-seven products in the catalogue have no
+        artwork, and until now each one showed the same dark "artwork pending"
+        SVG with nothing to explain it: a shopper read it as a broken shop, and
+        the owner asked for the words instead of a blank square.
+
+        It keys off `showPlaceholder`, which is the same flag that decided to
+        draw the placeholder at all — so a product whose image URL exists but
+        404s gets the explanation too, rather than a silent grey box. Baking
+        the text into the shared SVG would not work: that file is 360×500 and
+        square surfaces centre-crop it, which would cut the sentence in half.
+      */}
+      {showPlaceholder && (
+        <span
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-x-0 bottom-0 z-10 hidden bg-black/55 px-1.5 py-1 text-center text-[10px] font-bold leading-tight text-white/90 @[6rem]:block"
+        >
+          لم يتم إضافة الصورة بعد
+        </span>
+      )}
       <div className="relative overflow-hidden" style={windowStyle}>
         {!showPlaceholder && (avifSrcSet || webpSrcSet) ? (
           <picture className="contents">
