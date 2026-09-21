@@ -50,6 +50,8 @@ interface CustomerListProps {
   searchTerm: string;
   onChangeSearchTerm: (term: string) => void;
   isLoading?: boolean;
+  /** Review submissions waiting for a decision — counted server-side, not from threads. */
+  pendingReviewCount?: number;
 }
 
 export function CustomerList({
@@ -62,6 +64,7 @@ export function CustomerList({
   searchTerm,
   onChangeSearchTerm,
   isLoading = false,
+  pendingReviewCount = 0,
 }: CustomerListProps) {
   // Map orders for fast lookup
   const orderMap = useMemo(() => {
@@ -92,6 +95,11 @@ export function CustomerList({
       escalated: 0,
       completed_orders: 0,
       closed_tickets: 0,
+      /*
+        Always zero here, and deliberately so: submissions are not threads, so
+        this loop cannot count them. The pill reads the server's count instead.
+      */
+      pending_reviews: 0,
     };
 
     for (const t of threads) {
@@ -315,6 +323,11 @@ export function CustomerList({
     { id: "waiting_admin", label: "بانتظار الإدارة" },
     { id: "escalated", label: "المصعّدة", color: "text-purple-600 bg-purple-500/10" },
     { id: "closed_tickets", label: "تذاكر مغلقة" },
+    {
+      id: "pending_reviews",
+      label: "التقييمات بحاجة إلى موافقة",
+      color: "text-amber-700 bg-amber-500/15",
+    },
   ];
 
   return (
@@ -414,7 +427,11 @@ export function CustomerList({
         {/* Secondary Filter Pills */}
         <div className="flex gap-1.5 overflow-x-auto no-scrollbar pb-0.5">
           {SUB_FILTERS.map((f) => {
-            const count = filterCounts[f.id] || 0;
+            /*
+              The review count comes from the server, not from `threads`: a
+              submission has no conversation to be counted in.
+            */
+            const count = f.id === "pending_reviews" ? pendingReviewCount : filterCounts[f.id] || 0;
             const isSelected = activeFilter === f.id;
             return (
               <button

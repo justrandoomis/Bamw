@@ -16,7 +16,13 @@ export type InboxFilter =
   | "waiting_admin"
   | "escalated"
   | "completed_orders"
-  | "closed_tickets";
+  | "closed_tickets"
+  /*
+    Not a thread filter. Review submissions are not conversations, so this one
+    swaps the panel for the approval list rather than narrowing the threads —
+    it lives beside the others because that is where the admin already looks.
+  */
+  | "pending_reviews";
 
 export interface FilterOption {
   id: InboxFilter;

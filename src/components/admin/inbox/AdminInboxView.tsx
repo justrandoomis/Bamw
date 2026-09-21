@@ -22,6 +22,7 @@ import {
 import { CustomerList } from "./CustomerList";
 import { ActiveConversation, ConversationErrorBoundary } from "./ActiveConversation";
 import { ManualCompletionDialog } from "./ManualCompletionDialog";
+import { ReviewApprovalPanel } from "./ReviewApprovalPanel";
 import { AdminAvailabilityBar } from "./AdminAvailabilityBar";
 import { InboxFilter } from "./types";
 import { toast } from "sonner";
@@ -498,6 +499,17 @@ export function AdminInboxView({ initialThreadId = null, onNavigateToOrder }: Ad
     },
   });
 
+  /*
+    Only the count, so the pill has a number before the panel is ever opened.
+    It shares its cache key with the panel, so approving a card updates both.
+  */
+  const { data: reviewSubmissions } = useQuery({
+    queryKey: ["admin-review-submissions"],
+    queryFn: () => api.fetch<{ groups: unknown[]; count: number }>("/api/admin/review-submissions"),
+    refetchInterval: 120_000,
+    staleTime: 60_000,
+  });
+
   const completeDigitalMutation = useMutation({
     mutationFn: ({ orderId, threadId }: { orderId: string; threadId?: string }) =>
       api.adminOrderAction({
@@ -638,101 +650,110 @@ export function AdminInboxView({ initialThreadId = null, onNavigateToOrder }: Ad
               searchTerm={searchTerm}
               onChangeSearchTerm={setSearchTerm}
               isLoading={isThreadsLoading}
+              pendingReviewCount={reviewSubmissions?.count ?? 0}
             />
           </div>
 
           {/* Column 2: Active Conversation Main Area (Center/Right on Desktop: 1fr) */}
           <div
             className={`flex-1 h-full min-w-0 bg-card flex flex-col ${
-              !selectedThreadId ? "hidden md:flex" : "flex"
+              !selectedThreadId && activeFilter !== "pending_reviews" ? "hidden md:flex" : "flex"
             }`}
             style={{ direction: "rtl" }}
           >
-            <ActiveConversation
-              thread={selectedThread}
-              messages={liveMessages}
-              orders={orders}
-              isLoadingMessages={isMessagesLoading && liveMessages.length === 0}
-              isCustomerOnline={isCustomerOnline}
-              isCustomerTyping={isCustomerTyping}
-              customerLastReadAt={customerLastReadAt}
-              hasMore={hasMore}
-              isLoadingOlder={isLoadingOlder}
-              onLoadOlder={handleLoadOlder}
-              onBackToList={() => setSelectedThreadId(null)}
-              onNavigateToOrder={onNavigateToOrder}
-              onRetryMessage={handleRetryMessage}
-              onSendMessage={(payload) => {
-                if (selectedThreadId) {
-                  sendMutation.mutate({
-                    threadId: selectedThreadId,
-                    clientMessageId:
-                      (payload as any).clientMessageId ||
-                      `admin-msg-${Date.now()}-${Math.random().toString(36).slice(2, 7)}`,
-                    ...payload,
-                  });
+            {activeFilter === "pending_reviews" ? (
+              /*
+                A submission is not a conversation, so it gets the panel rather
+                than a thread that does not exist.
+              */
+              <ReviewApprovalPanel />
+            ) : (
+              <ActiveConversation
+                thread={selectedThread}
+                messages={liveMessages}
+                orders={orders}
+                isLoadingMessages={isMessagesLoading && liveMessages.length === 0}
+                isCustomerOnline={isCustomerOnline}
+                isCustomerTyping={isCustomerTyping}
+                customerLastReadAt={customerLastReadAt}
+                hasMore={hasMore}
+                isLoadingOlder={isLoadingOlder}
+                onLoadOlder={handleLoadOlder}
+                onBackToList={() => setSelectedThreadId(null)}
+                onNavigateToOrder={onNavigateToOrder}
+                onRetryMessage={handleRetryMessage}
+                onSendMessage={(payload) => {
+                  if (selectedThreadId) {
+                    sendMutation.mutate({
+                      threadId: selectedThreadId,
+                      clientMessageId:
+                        (payload as any).clientMessageId ||
+                        `admin-msg-${Date.now()}-${Math.random().toString(36).slice(2, 7)}`,
+                      ...payload,
+                    });
+                  }
+                }}
+                onSetThreadMode={(mode) => {
+                  if (selectedThreadId) {
+                    modeMutation.mutate({ threadId: selectedThreadId, mode });
+                  }
+                }}
+                onSetThreadStatus={(status) => {
+                  if (selectedThreadId) {
+                    statusMutation.mutate({ threadId: selectedThreadId, status });
+                  }
+                }}
+                onSkipQueue={() => {
+                  if (selectedThreadId) {
+                    skipQueueMutation.mutate(selectedThreadId);
+                  }
+                }}
+                onResumeQueue={() => {
+                  if (selectedThreadId) {
+                    resumeQueueMutation.mutate(selectedThreadId);
+                  }
+                }}
+                onSendQueueReminder={(text) => {
+                  if (selectedThreadId) {
+                    reminderMutation.mutate({ threadId: selectedThreadId, text });
+                  }
+                }}
+                onCompleteOrder={(orderId) =>
+                  completeDigitalMutation.mutateAsync({
+                    orderId,
+                    threadId: selectedThreadId || undefined,
+                  })
                 }
-              }}
-              onSetThreadMode={(mode) => {
-                if (selectedThreadId) {
-                  modeMutation.mutate({ threadId: selectedThreadId, mode });
+                isCompletingOrder={completeDigitalMutation.isPending}
+                onCompleteOrderManually={(order) =>
+                  setManualCompletion({
+                    orderId: order.orderId,
+                    code: order.code,
+                    ...(typeof order.pendingCount === "number"
+                      ? { pendingCount: order.pendingCount }
+                      : {}),
+                    ...(typeof order.unmappedCount === "number"
+                      ? { unmappedCount: order.unmappedCount }
+                      : {}),
+                  })
                 }
-              }}
-              onSetThreadStatus={(status) => {
-                if (selectedThreadId) {
-                  statusMutation.mutate({ threadId: selectedThreadId, status });
-                }
-              }}
-              onSkipQueue={() => {
-                if (selectedThreadId) {
-                  skipQueueMutation.mutate(selectedThreadId);
-                }
-              }}
-              onResumeQueue={() => {
-                if (selectedThreadId) {
-                  resumeQueueMutation.mutate(selectedThreadId);
-                }
-              }}
-              onSendQueueReminder={(text) => {
-                if (selectedThreadId) {
-                  reminderMutation.mutate({ threadId: selectedThreadId, text });
-                }
-              }}
-              onCompleteOrder={(orderId) =>
-                completeDigitalMutation.mutateAsync({
-                  orderId,
-                  threadId: selectedThreadId || undefined,
-                })
-              }
-              isCompletingOrder={completeDigitalMutation.isPending}
-              onCompleteOrderManually={(order) =>
-                setManualCompletion({
-                  orderId: order.orderId,
-                  code: order.code,
-                  ...(typeof order.pendingCount === "number"
-                    ? { pendingCount: order.pendingCount }
-                    : {}),
-                  ...(typeof order.unmappedCount === "number"
-                    ? { unmappedCount: order.unmappedCount }
-                    : {}),
-                })
-              }
-              onDeliveryFinished={({ nextOrder }) => {
-                void queryClient.invalidateQueries({ queryKey: ["admin-orders"] });
-                void queryClient.invalidateQueries({ queryKey: ["admin-threads"] });
-                void queryClient.invalidateQueries({ queryKey: ["orders"] });
-                if (nextOrder?.threadId) {
-                  setSelectedThreadId(nextOrder.threadId);
-                  toast.success(
-                    `تم الانتقال إلى الطلب التالي ${nextOrder.code ? `#${nextOrder.code}` : ""} ⏭️`,
-                  );
-                } else {
-                  setSelectedThreadId(null);
-                  toast.success("لا توجد طلبات أخرى تحتاج تجهيزًا الآن 🎉");
-                }
-              }}
-              isSending={sendMutation.isPending}
-            />
+                onDeliveryFinished={({ nextOrder }) => {
+                  void queryClient.invalidateQueries({ queryKey: ["admin-orders"] });
+                  void queryClient.invalidateQueries({ queryKey: ["admin-threads"] });
+                  void queryClient.invalidateQueries({ queryKey: ["orders"] });
+                  if (nextOrder?.threadId) {
+                    setSelectedThreadId(nextOrder.threadId);
+                    toast.success(
+                      `تم الانتقال إلى الطلب التالي ${nextOrder.code ? `#${nextOrder.code}` : ""} ⏭️`,
+                    );
+                  } else {
+                    setSelectedThreadId(null);
+                    toast.success("لا توجد طلبات أخرى تحتاج تجهيزًا الآن 🎉");
+                  }
+                }}
+                isSending={sendMutation.isPending}
+              />
+            )}
           </div>
         </div>
       </div>
