@@ -84,9 +84,7 @@ export async function fetchBinary(url, { timeoutMs = 45_000, retries = 2 } = {})
 }
 
 function nextData(html) {
-  const m = html.match(
-    /<script[^>]*id="__NEXT_DATA__"[^>]*>([\s\S]*?)<\/script>/,
-  );
+  const m = html.match(/<script[^>]*id="__NEXT_DATA__"[^>]*>([\s\S]*?)<\/script>/);
   if (!m) return null;
   try {
     return JSON.parse(m[1]);
@@ -229,7 +227,11 @@ export function metadataFrom(product) {
 
   const langs = Array.isArray(product.supportedLanguages) ? product.supportedLanguages : [];
   put("supportedLanguages", langs);
-  if (langs.length) put("arabicSupport", langs.some((l) => /arabic/i.test(String(l))));
+  if (langs.length)
+    put(
+      "arabicSupport",
+      langs.some((l) => /arabic/i.test(String(l))),
+    );
 
   const description = htmlToText(product['description({"html":true})'] ?? product.description);
   put("description", description);
@@ -263,7 +265,9 @@ export function metadataFrom(product) {
     Metroid Prime 4 is 26.35 GB on one and 27.66 GB on the other. Taking the
     first row would put the wrong download size on one of the two editions.
   */
-  const wantRom = isSwitch2(product.platform?.code ?? product.platform?.label ?? "") ? "BEE" : "HAC";
+  const wantRom = isSwitch2(product.platform?.code ?? product.platform?.label ?? "")
+    ? "BEE"
+    : "HAC";
   const romSizes = product.softwareDetails?.romSizes ?? [];
   const rom =
     romSizes.find((r) => r?.totalRomSize && r.platform === wantRom) ??
@@ -327,7 +331,10 @@ const bareTitle = (title) =>
       .replace(PLATFORM_BRACKET, "")
       .replace(/[-–—:]\s*nintendo\s*switch\s*2\s*edition.*$/i, "")
       .replace(/\bnintendo\s*switch\s*2\s*edition\b/gi, "")
-      .replace(/\b(standard|deluxe|digital|physical|complete|definitive|gold|ultimate)\s+edition\b/gi, "")
+      .replace(
+        /\b(standard|deluxe|digital|physical|complete|definitive|gold|ultimate)\s+edition\b/gi,
+        "",
+      )
       .replace(/\bswitch\s*2\b/gi, "")
       .replace(/\bnintendo\s*switch\b/gi, ""),
   );
@@ -423,7 +430,6 @@ export function apolloProducts(html) {
   return { nodes, state };
 }
 
-
 /**
  * Scores a candidate node against the stored product.
  *
@@ -467,9 +473,14 @@ export function identityMatch(doc, node) {
   if (want !== got) return { ok: false, reason: `title "${node.name}" is not "${doc.title}"` };
 
   const wantTwo = isSwitch2(`${doc.platform ?? ""} ${doc.title ?? ""} ${doc.slug ?? ""}`);
-  const gotTwo = isSwitch2(`${node.platform?.label ?? node.platform?.code ?? ""} ${node.name ?? ""}`);
+  const gotTwo = isSwitch2(
+    `${node.platform?.label ?? node.platform?.code ?? ""} ${node.name ?? ""}`,
+  );
   if (wantTwo !== gotTwo) {
-    return { ok: false, reason: `platform generation differs (stored ${wantTwo ? "Switch 2" : "Switch"}, page ${gotTwo ? "Switch 2" : "Switch"})` };
+    return {
+      ok: false,
+      reason: `platform generation differs (stored ${wantTwo ? "Switch 2" : "Switch"}, page ${gotTwo ? "Switch 2" : "Switch"})`,
+    };
   }
   /*
     A stored nsuid that disagrees with the page is usually a regional id — the
@@ -521,7 +532,9 @@ export async function resolveProduct(doc, seen = new Set()) {
 
     const { nodes, state } = apolloProducts(body);
     const own = nodes.find((n) => String(n.urlKey ?? "") === key);
-    const ownVerdict = own ? identityMatch(doc, own) : { ok: false, reason: "the page has no node for this url key" };
+    const ownVerdict = own
+      ? identityMatch(doc, own)
+      : { ok: false, reason: "the page has no node for this url key" };
 
     // A sibling worth hopping to: it matches, and it is more of a product than
     // whatever this page is about — an nsuid where the page's own node has none.
@@ -536,7 +549,16 @@ export async function resolveProduct(doc, seen = new Set()) {
     );
     if (better) {
       tried.push(`${key} → ${status}, hopping to the software listing ${better.urlKey}`);
-      const hop = await resolveProduct({ ...doc, slug: "", nintendoEshopUrl: `${STORE}/${better.urlKey}/`, eshopUrl: "", officialUrl: "" }, seen);
+      const hop = await resolveProduct(
+        {
+          ...doc,
+          slug: "",
+          nintendoEshopUrl: `${STORE}/${better.urlKey}/`,
+          eshopUrl: "",
+          officialUrl: "",
+        },
+        seen,
+      );
       if (hop.product) return { ...hop, tried: [...tried, ...hop.tried] };
       tried.push(...hop.tried);
     }
@@ -559,10 +581,23 @@ export async function resolveProduct(doc, seen = new Set()) {
 
     // The right edition may be a different member of the family on this page.
     const sibling = nodes.find(
-      (n) => n.urlKey && String(n.urlKey) !== key && !seen.has(String(n.urlKey)) && identityMatch(doc, n).ok,
+      (n) =>
+        n.urlKey &&
+        String(n.urlKey) !== key &&
+        !seen.has(String(n.urlKey)) &&
+        identityMatch(doc, n).ok,
     );
     if (sibling) {
-      const hop = await resolveProduct({ ...doc, slug: "", nintendoEshopUrl: `${STORE}/${sibling.urlKey}/`, eshopUrl: "", officialUrl: "" }, seen);
+      const hop = await resolveProduct(
+        {
+          ...doc,
+          slug: "",
+          nintendoEshopUrl: `${STORE}/${sibling.urlKey}/`,
+          eshopUrl: "",
+          officialUrl: "",
+        },
+        seen,
+      );
       if (hop.product) return { ...hop, tried: [...tried, ...hop.tried] };
       tried.push(...hop.tried);
     }
@@ -606,4 +641,123 @@ export function familyFacts(product, family = []) {
     out.switch2Exclusive = false;
   }
   return out;
+}
+
+/* ------------------------------------------------- which console, not which page */
+
+/**
+ * The title as written, with only this shop's own noise removed.
+ *
+ * Deliberately NOT `bareTitle`. That one strips "Nintendo Switch 2 Edition"
+ * so a Switch 2 Edition page can be found from a Switch 1 url key, which is
+ * right when the question is "is this the same game?" and catastrophic when
+ * the question is "which console is this game on?": every cross-generation
+ * title has an Edition sibling in its page cache, and reading that sibling as
+ * evidence would say every such game is a Switch 2 product.
+ *
+ * A Switch 2 Edition is a separate SKU with its own price, and the shop may
+ * legitimately stock the Switch 1 game, the Edition, or both. So the Edition
+ * words stay in the comparison, and a row only counts as evidence about a
+ * product whose own title carries them too.
+ */
+export function editionAwareTitle(title) {
+  return normalizeTitle(
+    String(title ?? "")
+      .replace(/[™®©]/g, "")
+      .replace(PLATFORM_BRACKET, ""),
+  );
+}
+
+/** The console a store node is for, read from its own platform field and name. */
+export function nodeGeneration(node) {
+  const platform = `${node?.platform?.label ?? ""} ${node?.platform?.code ?? ""}`;
+  return isSwitch2(`${platform} ${node?.name ?? ""}`) ? "switch2" : "switch1";
+}
+
+/**
+ * Url keys to probe when the question is which console, not which page.
+ *
+ * `candidateKeys` orders its shapes by the generation the product CLAIMS,
+ * which is the claim under test here — asking it would mean trusting the
+ * answer to decide the question. So both shapes are asked for every base, in
+ * a fixed order, and the product's own platform field is not consulted.
+ */
+export function generationKeys(doc) {
+  const title = String(doc.title ?? doc.name ?? "");
+  const stored = [doc.nintendoEshopUrl, doc.eshopUrl, doc.officialUrl]
+    .map((u) => String(u ?? "").match(/nintendo\.com\/[^\s"']*\/store\/products\/([^/?#]+)/i)?.[1])
+    .filter(Boolean);
+
+  const bases = [];
+  const addBase = (text) => {
+    const slug = slugifyTitle(text);
+    if (slug && !bases.includes(slug)) bases.push(slug);
+  };
+
+  const withoutBracket = title.replace(PLATFORM_BRACKET, "");
+  addBase(withoutBracket);
+  addBase(
+    withoutBracket
+      .replace(/\bnintendo\s*switch\s*2\b/gi, "")
+      .replace(/\bnintendo\s*switch\b/gi, "")
+      .replace(/\bswitch\s*2\b/gi, ""),
+  );
+  const fromSlug = String(doc.slug ?? "").replace(/-switch(-2)?$/, "");
+  if (fromSlug) addBase(fromSlug);
+
+  const keys = [...stored];
+  for (const base of bases) {
+    for (const shape of [`${base}-switch`, `${base}-switch-2`]) {
+      if (!keys.includes(shape)) keys.push(shape);
+    }
+  }
+  return keys.filter(Boolean).slice(0, 8);
+}
+
+/**
+ * Which consoles Nintendo of America lists this exact title on.
+ *
+ * `complete` is the field that matters. A request that never arrived is not
+ * an answer, and the audit must never read a transport failure as "Nintendo
+ * does not have the Switch 2 version" — that is precisely how a correct label
+ * would get flipped to a wrong one. Any HTTP 0 among the probes marks the
+ * evidence incomplete and the caller refuses to write on it.
+ */
+export async function probeGenerations(doc) {
+  const wanted = editionAwareTitle(doc.title ?? doc.name);
+  const tried = [];
+  const found = new Map();
+  let complete = true;
+  if (!wanted)
+    return { generations: [], complete: false, tried: ["no comparable title"], rows: [] };
+
+  for (const key of generationKeys(doc)) {
+    if (found.size >= 2) break;
+    const { status, body } = await fetchText(`${STORE}/${key}/`);
+    if (!body) {
+      if (status === 0) complete = false;
+      tried.push(`${key} → HTTP ${status}`);
+      continue;
+    }
+    const { nodes } = apolloProducts(body);
+    const hits = nodes.filter((n) => editionAwareTitle(n?.name) === wanted);
+    for (const node of hits) {
+      const generation = nodeGeneration(node);
+      if (!found.has(generation)) {
+        found.set(generation, { urlKey: String(node.urlKey ?? ""), name: String(node.name ?? "") });
+      }
+    }
+    tried.push(
+      hits.length
+        ? `${key} → ${status}, ${hits.map((n) => `${n.name} [${nodeGeneration(n)}]`).join(", ")}`
+        : `${key} → ${status}, no node with this exact title`,
+    );
+  }
+
+  return {
+    generations: [...found.keys()].sort(),
+    complete,
+    tried,
+    rows: [...found.entries()].map(([generation, node]) => ({ generation, ...node })),
+  };
 }

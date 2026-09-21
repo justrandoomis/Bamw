@@ -1,0 +1,133 @@
+# Corrects the console a game is filed under, and takes the supplier's console
+# bracket out of its name.
+#
+# Dry run by default. `apply` is a separate input that has to be chosen, and it
+# writes exactly three fields on a product: `platform`, `title` and `titleEn`.
+# No price, cost, stock, hidden flag, option, type, trade-in value, display
+# order or sales figure is read for writing or written at all — the script
+# asserts the patch before the write and compares every other field after it.
+#
+# A label moves only where a Nintendo catalogue positively lists the exact
+# title on the other console and neither catalogue lists it on the stored one.
+# A game neither store carries is left alone.
+name: Labels and platforms
+
+on:
+  workflow_dispatch:
+    inputs:
+      apply:
+        description: "Write the corrections. Leave off for a dry run that reports what would change."
+        type: boolean
+        default: false
+      limit:
+        description: "How many games this run should look at (0 = all of them; blank is replaced by the default)"
+        required: false
+        default: "120"
+      offset:
+        description: "Skip this many first, so a long audit can be run in batches"
+        required: false
+        default: ""
+      only:
+        description: "Comma-separated product ids or slugs, to audit just those"
+        required: false
+        default: ""
+      titles:
+        description: "Take the console bracket out of names"
+        type: boolean
+        default: true
+      platforms:
+        description: "Correct the console a game is filed under"
+        type: boolean
+        default: true
+      deadline_minutes:
+        description: "Stop and write what has been decided after this many minutes, so the job timeout cannot discard a run's work"
+        required: false
+        default: "42"
+  # A new or edited audit dry-runs itself, so its verdicts can be read from a
+  # branch before anything is written. A push carries no inputs, so `apply` is
+  # unreachable here and this trigger cannot write.
+  push:
+    branches: [claude/gaming-platform-issues-keb1be]
+    paths:
+      - .github/workflows/platform-audit.yml
+      - scripts/platform-audit.mjs
+      - scripts/lib/platform-audit-entry.ts
+      - scripts/lib/platform-verdict.mjs
+      - scripts/lib/nintendo-eu-search.mjs
+      - scripts/lib/nintendo-store.mjs
+
+permissions:
+  contents: read
+
+# One at a time, and never cancel one half way: a cancelled apply can leave the
+# catalogue document written and the identity index not yet re-claimed.
+concurrency:
+  group: platform-audit
+  cancel-in-progress: false
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 55
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      # Node 22 ships npm 10, which cannot install this project: resolving
+      # vitest's peer set crashes its dependency solver. See `ci.yml`.
+      - run: npm install -g npm@11.19.1
+
+      - run: npm ci --no-audit --no-fund
+
+      - name: Mask identifiers
+        env:
+          ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          DATABASE_ID: ${{ secrets.CLOUDFLARE_D1_DATABASE_ID }}
+        run: |
+          echo "::add-mask::$ACCOUNT_ID"
+          echo "::add-mask::$DATABASE_ID"
+
+      - name: Audit the labels and the platforms
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          CLOUDFLARE_D1_DATABASE_ID: ${{ secrets.CLOUDFLARE_D1_DATABASE_ID }}
+          # Passed through the environment, never interpolated into the shell.
+          APPLY: ${{ inputs.apply }}
+          LIMIT: ${{ inputs.limit }}
+          OFFSET: ${{ inputs.offset }}
+          ONLY: ${{ inputs.only }}
+          TITLES: ${{ inputs.titles }}
+          PLATFORMS: ${{ inputs.platforms }}
+          DEADLINE: ${{ inputs.deadline_minutes }}
+        run: |
+          args=""
+          if [ "$APPLY" = "true" ]; then args="$args --apply"; fi
+          if [ -n "$LIMIT" ]; then args="$args --limit=$LIMIT"; fi
+          if [ -n "$OFFSET" ]; then args="$args --offset=$OFFSET"; fi
+          if [ -n "$ONLY" ]; then args="$args --only=$ONLY"; fi
+          if [ "$TITLES" = "false" ]; then args="$args --no-titles"; fi
+          if [ "$PLATFORMS" = "false" ]; then args="$args --no-platforms"; fi
+          args="$args --deadline-minutes=${DEADLINE:-42}"
+          # A push carries no `limit`, and the whole shelf does not fit in one
+          # job. The default keeps the self-dry-run to a measurable sample.
+          if [ -z "$LIMIT" ] && [ -z "$ONLY" ] && [ "$GITHUB_EVENT_NAME" = "push" ]; then
+            args="$args --limit=120"
+          fi
+          node scripts/platform-audit.mjs $args
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: platform-audit
+          path: platform-audit.md
+
+      - name: Summary
+        if: always()
+        run: cat platform-audit.md >> "$GITHUB_STEP_SUMMARY" || true

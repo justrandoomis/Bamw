@@ -101,3 +101,9 @@ perf-probe.md
 .catalogue-import-bundle.mjs
 catalogue-import-runner.md
 catalogue-covers.md
+
+# Bundles and reports produced by the square-card fill and the label audit.
+.square-card-bundle.mjs
+square-cards.md
+.platform-audit-bundle.mjs
+platform-audit.md

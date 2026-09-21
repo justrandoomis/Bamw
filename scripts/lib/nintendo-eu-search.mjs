@@ -53,14 +53,17 @@ const isSwitch2Row = (row) => {
 };
 
 /**
- * The square art Nintendo Europe holds for this exact game, or null.
+ * Every row in the European catalogue whose title is EXACTLY this game's.
  *
- * @param title     the shelf title, bracket and all
- * @param wantTwo   true when this shop's line is a Switch 2 edition
- * @param fetchJson injected so the caller owns timeouts and retries
+ * Split out of `searchEuropeSquare` so the platform audit can ask a different
+ * question of the same rows — "which consoles does Nintendo list this title
+ * on?" — without a second, subtly different notion of what counts as the same
+ * game. One exact-title rule, two callers.
  */
-export async function searchEuropeSquare(title, wantTwo, fetchJson) {
-  const bare = String(title ?? "").replace(PLATFORM_BRACKET, "").trim();
+export async function europeRows(title, fetchJson) {
+  const bare = String(title ?? "")
+    .replace(PLATFORM_BRACKET, "")
+    .trim();
   const wanted = normalizeTitle(bare);
   if (!wanted) return { ok: false, reason: "no comparable title" };
 
@@ -69,7 +72,7 @@ export async function searchEuropeSquare(title, wantTwo, fetchJson) {
 
   const url =
     `${ENDPOINT}?q=${encodeURIComponent(query)}` +
-    `&fq=${encodeURIComponent('type:GAME AND *:*')}` +
+    `&fq=${encodeURIComponent("type:GAME AND *:*")}` +
     `&rows=24&wt=json`;
 
   const found = await fetchJson(url);
@@ -85,6 +88,44 @@ export async function searchEuropeSquare(title, wantTwo, fetchJson) {
   */
   const exact = docs.filter((row) => normalizeTitle(row?.title) === wanted);
   if (exact.length === 0) return { ok: false, reason: "no row with this exact title" };
+  return { ok: true, rows: exact };
+}
+
+/**
+ * Which console generations Nintendo of Europe lists this exact title on.
+ *
+ * The one question `searchEuropeSquare` cannot answer, because it takes the
+ * generation as an input and refuses anything that disagrees with it. Here the
+ * generation IS the answer, so nothing is filtered by it.
+ *
+ * A "Nintendo Switch 2 Edition" is a different title, not a different console
+ * row for the same one, so it cannot reach this list: its name carries those
+ * words and the exact-title rule above rejects it against a plain title. That
+ * is deliberate — an edition is a separate SKU and must not be read as
+ * evidence that the plain game is a Switch 2 product.
+ *
+ * @returns {{ok: true, generations: string[], rows: object[]}} | {ok: false, reason: string}
+ */
+export async function searchEuropeGenerations(title, fetchJson) {
+  const found = await europeRows(title, fetchJson);
+  if (!found.ok) return found;
+  const generations = [
+    ...new Set(found.rows.map((row) => (isSwitch2Row(row) ? "switch2" : "switch1"))),
+  ].sort();
+  return { ok: true, generations, rows: found.rows };
+}
+
+/**
+ * The square art Nintendo Europe holds for this exact game, or null.
+ *
+ * @param title     the shelf title, bracket and all
+ * @param wantTwo   true when this shop's line is a Switch 2 edition
+ * @param fetchJson injected so the caller owns timeouts and retries
+ */
+export async function searchEuropeSquare(title, wantTwo, fetchJson) {
+  const found = await europeRows(title, fetchJson);
+  if (!found.ok) return found;
+  const exact = found.rows;
 
   const sameGeneration = exact.filter((row) => isSwitch2Row(row) === Boolean(wantTwo));
   if (sameGeneration.length === 0) {
