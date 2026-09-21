@@ -66,6 +66,29 @@ export interface BananaSnapshot {
   balance: number;
   locked: number;
   chart: { time: string; t: string; price: number }[];
+  /*
+    The redemption catalogue.
+
+    It was missing here while `useBananaMarket` declared it and both the
+    redeem screen and the home rewards strip read it — so `rewards` was always
+    undefined and the whole «استرداد الموز» catalogue rendered empty no matter
+    what the admin put in it. Tickets are sold from that screen, so this had
+    to be true before a ticket could be bought at all.
+  */
+  rewards: BananaRedeemOffer[];
+}
+
+/** One redemption offer, in the shape the redeem screen already expects. */
+export interface BananaRedeemOffer {
+  id: string;
+  title: string;
+  cost: number;
+  stock: number;
+  icon: string;
+  category: string;
+  description?: string;
+  /** How many wheel tickets this offer gives. Absent unless it is a ticket. */
+  ticketQuantity?: number;
 }
 
 export const getBananaBalance = getUserBananaBalance;
@@ -165,6 +188,7 @@ export async function getSnapshot(userId?: string, range = "1D"): Promise<Banana
       balance: bal.balance,
       locked: bal.locked,
       chart: await getChart(config, range),
+      rewards: [],
       ...marketLimits(config),
     };
   }
@@ -205,10 +229,13 @@ export async function getSnapshot(userId?: string, range = "1D"): Promise<Banana
     since,
   );
 
+  const rewards = await readRedeemOffers();
+
   return {
     price,
     change24h: changePercent24h(config),
     volume24h: Number(volumeRow?.v ?? 0),
+    rewards,
     listings: [...bots, ...userListings.filter((l) => l.userId !== userId)].sort(
       (a, b) => a.pricePer - b.pricePer,
     ),
@@ -218,6 +245,66 @@ export async function getSnapshot(userId?: string, range = "1D"): Promise<Banana
     chart: await getChart(config, range),
     ...marketLimits(config),
   };
+}
+
+/**
+ * The redemption catalogue, as the redeem screen wants it.
+ *
+ * Only what is live: inactive offers, ones whose window has not opened or has
+ * closed, and ones that have sold out are not choices a member can make, and
+ * listing them would be the shop advertising something it will then refuse.
+ * `stock = -1` is the table's way of saying unlimited.
+ */
+async function readRedeemOffers(): Promise<BananaRedeemOffer[]> {
+  try {
+    const now = new Date().toISOString();
+    const rows = await d1All<{
+      id: string;
+      title: string;
+      description: string | null;
+      image_url: string | null;
+      banana_price: number;
+      stock: number | null;
+    }>(
+      `SELECT id, title, description, image_url, banana_price, stock
+       FROM banana_redemption_offers
+       WHERE is_active = 1
+         AND (stock IS NULL OR stock < 0 OR stock > 0)
+         AND (start_date IS NULL OR start_date = '' OR start_date <= ?)
+         AND (end_date IS NULL OR end_date = '' OR end_date >= ?)
+       ORDER BY banana_price ASC
+       LIMIT 60`,
+      now,
+      now,
+    );
+    if (rows.length === 0) return [];
+
+    const { ticketOfferIds } = await import("./wheel.server");
+    const tickets = await ticketOfferIds().catch(() => ({}) as Record<string, number>);
+
+    return rows.map((row) => {
+      const ticketQuantity = tickets[row.id];
+      return {
+        id: row.id,
+        title: row.title,
+        cost: Number(row.banana_price) || 0,
+        stock: Number(row.stock ?? -1),
+        icon: row.image_url || (ticketQuantity ? "🎟️" : "🎁"),
+        category: ticketQuantity ? "wheel_ticket" : "reward",
+        ...(row.description ? { description: row.description } : {}),
+        ...(ticketQuantity ? { ticketQuantity } : {}),
+      };
+    });
+  } catch (error) {
+    /*
+      A broken catalogue must not take the market page down with it. The
+      snapshot carries the price, the balance and the listings too, and a
+      member who came to trade should not meet an error because a reward row
+      is malformed.
+    */
+    console.warn("[banana:redeem_offers_failed]", error);
+    return [];
+  }
 }
 
 /**
@@ -487,15 +574,74 @@ export async function redeemReward(userId: string, rewardId: string) {
     rewardId,
   );
 
-  // Create redemption log
+  /*
+    The redemption log, with the column it is actually declared with.
+
+    This INSERT named a `status` column the table does not have and omitted
+    `cost`, which is `INTEGER NOT NULL` with no default (d1.server.ts:293-294).
+    So every redemption against a real D1 threw a constraint error — *after*
+    `debitBananaBalance` had already taken the bananas, and the throw reached
+    the route as a 500 rather than anything a member could act on. Bananas
+    went in, nothing came out, and no row recorded it.
+  */
   const rid = `brd_${Date.now()}`;
-  await d1Run(
-    `INSERT INTO banana_redemptions (id, user_id, reward_id, status, created_at) VALUES (?, ?, ?, 'pending', ?)`,
-    rid,
-    userId,
-    rewardId,
-    new Date().toISOString(),
-  );
+  const loggedAt = new Date().toISOString();
+  try {
+    await d1Run(
+      `INSERT INTO banana_redemptions (id, user_id, reward_id, cost, created_at)
+       VALUES (?, ?, ?, ?, ?)`,
+      rid,
+      userId,
+      rewardId,
+      Number(reward.banana_price) || 0,
+      loggedAt,
+    );
+  } catch (error) {
+    /*
+      The log is not worth the member's bananas. If it cannot be written the
+      redemption is put back rather than silently swallowed — the credit is
+      idempotent, so a retry cannot double it.
+    */
+    await creditBananaBalance(userId, Number(reward.banana_price) || 0, {
+      reason: `Redemption refund: ${reward.title}`,
+      kind: "refund",
+      idempotencyKey: `refund_${rid}`,
+    }).catch(() => undefined);
+    await d1Run(
+      `UPDATE banana_redemption_offers SET stock = CASE WHEN stock >= 0 THEN stock + 1 ELSE stock END WHERE id = ?`,
+      rewardId,
+    ).catch(() => undefined);
+    throw new BananaError("redemption_not_recorded");
+  }
+
+  /*
+    A wheel ticket is a redemption like any other: the admin sets its banana
+    price on the same screen as every other reward, and this is where that
+    purchase turns into a ticket. `rid` is the idempotency reference, so a
+    retried redemption cannot mint a second ticket.
+  */
+  const { grantTickets, ticketQuantityForOffer } = await import("./wheel.server");
+  const quantity = await ticketQuantityForOffer(rewardId).catch(() => 0);
+  if (quantity > 0) {
+    const granted = await grantTickets({
+      userId,
+      quantity,
+      reason: "redemption",
+      referenceId: rid,
+      now: loggedAt,
+    }).catch(() => ({ granted: false, balance: 0 }));
+
+    if (!granted.granted) {
+      await creditBananaBalance(userId, Number(reward.banana_price) || 0, {
+        reason: `Ticket refund: ${reward.title}`,
+        kind: "refund",
+        idempotencyKey: `refund_${rid}`,
+      }).catch(() => undefined);
+      throw new BananaError("ticket_not_granted");
+    }
+
+    return { success: true, redemptionId: rid, tickets: granted.balance };
+  }
 
   return { success: true, redemptionId: rid };
 }

@@ -60,6 +60,7 @@ import { Route as ApiTrackRouteImport } from './routes/api/track'
 import { Route as ApiTranslateRouteImport } from './routes/api/translate'
 import { Route as ApiUploadRouteImport } from './routes/api/upload'
 import { Route as ApiWalletRouteImport } from './routes/api/wallet'
+import { Route as ApiWheelRouteImport } from './routes/api/wheel'
 import { Route as BundleBundleIdRouteImport } from './routes/bundle.$bundleId'
 import { Route as BundlesIndexRouteImport } from './routes/bundles.index'
 import { Route as BundlesBundleIdRouteImport } from './routes/bundles.$bundleId'
@@ -386,6 +387,11 @@ const ApiUploadRoute = ApiUploadRouteImport.update({
 const ApiWalletRoute = ApiWalletRouteImport.update({
   id: '/api/wallet',
   path: '/api/wallet',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiWheelRoute = ApiWheelRouteImport.update({
+  id: '/api/wheel',
+  path: '/api/wheel',
   getParentRoute: () => rootRouteImport,
 } as any)
 const BundleBundleIdRoute = BundleBundleIdRouteImport.update({
@@ -817,6 +823,7 @@ export interface FileRoutesByFullPath {
   '/api/translate': typeof ApiTranslateRoute
   '/api/upload': typeof ApiUploadRoute
   '/api/wallet': typeof ApiWalletRouteWithChildren
+  '/api/wheel': typeof ApiWheelRoute
   '/bundle/$bundleId': typeof BundleBundleIdRoute
   '/bundles/$bundleId': typeof BundlesBundleIdRoute
   '/category/$categoryId': typeof CategoryCategoryIdRoute
@@ -942,6 +949,7 @@ export interface FileRoutesByTo {
   '/api/translate': typeof ApiTranslateRoute
   '/api/upload': typeof ApiUploadRoute
   '/api/wallet': typeof ApiWalletRouteWithChildren
+  '/api/wheel': typeof ApiWheelRoute
   '/bundle/$bundleId': typeof BundleBundleIdRoute
   '/bundles/$bundleId': typeof BundlesBundleIdRoute
   '/category/$categoryId': typeof CategoryCategoryIdRoute
@@ -1068,6 +1076,7 @@ export interface FileRoutesById {
   '/api/translate': typeof ApiTranslateRoute
   '/api/upload': typeof ApiUploadRoute
   '/api/wallet': typeof ApiWalletRouteWithChildren
+  '/api/wheel': typeof ApiWheelRoute
   '/bundle/$bundleId': typeof BundleBundleIdRoute
   '/bundles/$bundleId': typeof BundlesBundleIdRoute
   '/category/$categoryId': typeof CategoryCategoryIdRoute
@@ -1195,6 +1204,7 @@ export interface FileRouteTypes {
     | '/api/translate'
     | '/api/upload'
     | '/api/wallet'
+    | '/api/wheel'
     | '/bundle/$bundleId'
     | '/bundles/$bundleId'
     | '/category/$categoryId'
@@ -1320,6 +1330,7 @@ export interface FileRouteTypes {
     | '/api/translate'
     | '/api/upload'
     | '/api/wallet'
+    | '/api/wheel'
     | '/bundle/$bundleId'
     | '/bundles/$bundleId'
     | '/category/$categoryId'
@@ -1445,6 +1456,7 @@ export interface FileRouteTypes {
     | '/api/translate'
     | '/api/upload'
     | '/api/wallet'
+    | '/api/wheel'
     | '/bundle/$bundleId'
     | '/bundles/$bundleId'
     | '/category/$categoryId'
@@ -1571,6 +1583,7 @@ export interface RootRouteChildren {
   ApiTranslateRoute: typeof ApiTranslateRoute
   ApiUploadRoute: typeof ApiUploadRoute
   ApiWalletRoute: typeof ApiWalletRouteWithChildren
+  ApiWheelRoute: typeof ApiWheelRoute
   BundleBundleIdRoute: typeof BundleBundleIdRoute
   BundlesBundleIdRoute: typeof BundlesBundleIdRoute
   CategoryCategoryIdRoute: typeof CategoryCategoryIdRoute
@@ -1991,6 +2004,13 @@ declare module '@tanstack/react-router' {
       path: '/api/wallet'
       fullPath: '/api/wallet'
       preLoaderRoute: typeof ApiWalletRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/wheel': {
+      id: '/api/wheel'
+      path: '/api/wheel'
+      fullPath: '/api/wheel'
+      preLoaderRoute: typeof ApiWheelRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/bundle/$bundleId': {
@@ -2613,6 +2633,7 @@ const rootRouteChildren: RootRouteChildren = {
   ApiTranslateRoute: ApiTranslateRoute,
   ApiUploadRoute: ApiUploadRoute,
   ApiWalletRoute: ApiWalletRouteWithChildren,
+  ApiWheelRoute: ApiWheelRoute,
   BundleBundleIdRoute: BundleBundleIdRoute,
   BundlesBundleIdRoute: BundlesBundleIdRoute,
   CategoryCategoryIdRoute: CategoryCategoryIdRoute,
