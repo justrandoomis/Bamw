@@ -87,6 +87,14 @@ const ORDER_DELIVERY_COLUMNS = [
   "customer_confirmed_at TEXT",
   "auto_completed_at TEXT",
   "delivery_issue_opened_at TEXT",
+  /*
+    When to ask this customer to rate the order.
+
+    Stamped from the same last-OTP timestamp that sets `auto_complete_at`, in
+    the same statement, so the two clocks cannot drift: the invitation is due
+    thirty minutes after the last code went out, the auto-completion sixty.
+  */
+  "review_prompt_at TEXT",
 ] as const;
 
 let deliverySchemaPromise: Promise<void> | undefined;
@@ -113,6 +121,15 @@ export async function ensureDigitalDeliverySchema(): Promise<void> {
           if (!/duplicate column|already exists/i.test(message)) throw error;
         }
       }
+      /*
+        After the loop, never in a migration file: an index cannot be created
+        against a column the migration did not add, and this column is added
+        here.
+      */
+      await d1Run(
+        `CREATE INDEX IF NOT EXISTS orders_review_prompt_due_idx
+           ON orders (review_prompt_at) WHERE review_prompt_at IS NOT NULL`,
+      );
     })().catch((error) => {
       deliverySchemaPromise = undefined;
       throw error;

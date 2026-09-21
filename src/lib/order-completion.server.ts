@@ -344,18 +344,29 @@ export async function reconcileCompletedOrderReviewFollowups(
        FROM orders AS o
        WHERE o.status = 'completed'
      )
+     /*
+       The missing-invitation branch, and only that.
+
+       This used to also match "reward.order_id IS NULL" -- an order with no
+       reward row. That was a sound question while completion minted a reward:
+       a missing row meant a missed completion. It stopped being sound the
+       moment the coupon became something an admin issues after approving a
+       review, because then nearly every completed order the shop has ever
+       taken has no reward row, forever, and this cron would re-run the whole
+       completion path on a fresh batch of them every single minute.
+
+       The OR made the removal clean: the remaining branch asks the question
+       that is still worth asking — was this customer ever invited to rate the
+       order — and answers it from the message that invitation writes.
+     */
      SELECT completed_orders.id, completed_orders.thread_id
      FROM completed_orders
-     LEFT JOIN review_rewards AS reward ON reward.order_id = completed_orders.id
-     WHERE reward.order_id IS NULL
-        OR (
-          completed_orders.thread_id IS NOT NULL
-          AND NOT EXISTS (
-            SELECT 1 FROM messages AS message
-            WHERE message.thread_id = completed_orders.thread_id
-              AND message.client_message_id = 'order-review-request-' || completed_orders.id
-          )
-        )
+     WHERE completed_orders.thread_id IS NOT NULL
+       AND NOT EXISTS (
+         SELECT 1 FROM messages AS message
+         WHERE message.thread_id = completed_orders.thread_id
+           AND message.client_message_id = 'order-review-request-' || completed_orders.id
+       )
      ORDER BY completed_orders.id ASC
      LIMIT ?`,
     boundedLimit,

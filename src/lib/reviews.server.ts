@@ -1,3 +1,4 @@
+import type { ReviewStatus } from "./types";
 import { d1All, d1First, d1Run, getD1 } from "./d1.server";
 import type { Order } from "./types";
 
@@ -11,6 +12,10 @@ export interface ProductReviewRow {
   screenshot_url: string | null;
   instagram_proof_url: string | null;
   status: string;
+  /** The submission this row belongs to; one per product, shared across them. */
+  review_group_id: string | null;
+  /** Why an admin refused it. A rejection keeps the row rather than deleting it. */
+  rejection_reason: string | null;
   is_auto_review: number | boolean;
   review_due_at: string | null;
   approved_at: string | null;
@@ -34,6 +39,8 @@ const REVIEW_TABLE = `CREATE TABLE IF NOT EXISTS product_reviews (
   review_due_at TEXT,
   approved_at TEXT,
   approved_by TEXT,
+  review_group_id TEXT,
+  rejection_reason TEXT,
   created_at TEXT NOT NULL,
   updated_at TEXT
 )`;
@@ -49,6 +56,18 @@ const REVIEW_COLUMNS: Record<string, string> = {
   review_due_at: "TEXT",
   approved_at: "TEXT",
   approved_by: "TEXT",
+  /*
+    The submission a row belongs to.
+
+    One review submission covers every product in the order — the owner's rule
+    is that the same comment appears on all of them — so the rows are written
+    one per product and tied together by this id. It is what lets an admin
+    approve a three-game order with one statement instead of three, and what
+    tells the auto-publish cron that a row is not its business.
+  */
+  review_group_id: "TEXT",
+  /** Why an admin refused it. Kept, so a rejection is never a silent delete. */
+  rejection_reason: "TEXT",
   created_at: "TEXT NOT NULL DEFAULT ''",
   updated_at: "TEXT",
 };
@@ -82,6 +101,24 @@ export function ensureReviewsSchema(): Promise<void> {
         .prepare(
           `CREATE INDEX IF NOT EXISTS product_reviews_order_idx
            ON product_reviews (order_id, product_id, user_id)`,
+        )
+        .run();
+      await db
+        .prepare(
+          `CREATE INDEX IF NOT EXISTS product_reviews_group_idx
+           ON product_reviews (review_group_id)`,
+        )
+        .run();
+      /*
+        The admin queue asks a status-only question — which submissions are
+        waiting for me — and neither index above can answer it:
+        `product_reviews_product_status_idx` leads with the product and
+        `product_reviews_order_idx` with the order.
+      */
+      await db
+        .prepare(
+          `CREATE INDEX IF NOT EXISTS product_reviews_status_created_idx
+           ON product_reviews (status, created_at DESC)`,
         )
         .run();
     })().catch((error) => {
@@ -204,6 +241,24 @@ export async function publishVerifiedReview(input: {
   comment: string;
   /** Undefined preserves existing media; null explicitly removes it. */
   screenshotUrl?: string | null;
+  /**
+   * The customer's screenshot of their own Instagram comment.
+   *
+   * It was missing from the INSERT and from the conflict update, so a fresh
+   * row wrote NULL over it — the admin's only evidence disappearing at the
+   * moment the row was written.
+   */
+  instagramProofUrl?: string | null;
+  /** The submission this row belongs to. One per product, shared across them. */
+  reviewGroupId?: string | null;
+  /**
+   * Where the row lands. Defaults to the published state this function has
+   * always written, so every existing caller behaves exactly as before; the
+   * two-step submission passes `awaiting_admin` and no approver.
+   */
+  status?: ReviewStatus;
+  approvedBy?: string | null;
+  isAutoReview?: boolean;
   now?: string;
 }): Promise<ProductReviewRow> {
   await ensureReviewsSchema();
@@ -224,12 +279,29 @@ export async function publishVerifiedReview(input: {
   const id = existing?.id || (await stableReviewId(input.userId, input.orderId, input.productId));
   const screenshotUrl =
     input.screenshotUrl === undefined ? (existing?.screenshot_url ?? null) : input.screenshotUrl;
+  const instagramProofUrl =
+    input.instagramProofUrl === undefined
+      ? (existing?.instagram_proof_url ?? null)
+      : input.instagramProofUrl;
+  const reviewGroupId =
+    input.reviewGroupId === undefined ? (existing?.review_group_id ?? null) : input.reviewGroupId;
+  const status: ReviewStatus = input.status ?? "approved";
+  const published = status === "approved";
+  /*
+    An approver is only stamped on a row that is actually approved. A row that
+    is waiting for an admin must carry no approval timestamp at all, or the
+    admin queue and the customer's own view would both read it as settled.
+  */
+  const approvedBy = published ? (input.approvedBy ?? "system:verified_purchase") : null;
+  const approvedAt = published ? now : null;
+  const isAutoReview = input.isAutoReview === true ? 1 : 0;
 
   await d1Run(
     `INSERT INTO product_reviews (
        id, product_id, user_id, order_id, rating, comment, screenshot_url,
-       status, is_auto_review, review_due_at, approved_at, approved_by, created_at, updated_at
-     ) VALUES (?, ?, ?, ?, ?, ?, ?, 'approved', 0, NULL, ?, 'system:verified_purchase', ?, ?)
+       instagram_proof_url, review_group_id, status, is_auto_review, review_due_at,
+       approved_at, approved_by, rejection_reason, created_at, updated_at
+     ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NULL, ?, ?, NULL, ?, ?)
      ON CONFLICT(id) DO UPDATE SET
        product_id = excluded.product_id,
        user_id = excluded.user_id,
@@ -237,11 +309,15 @@ export async function publishVerifiedReview(input: {
        rating = excluded.rating,
        comment = excluded.comment,
        screenshot_url = excluded.screenshot_url,
-       status = 'approved',
-       is_auto_review = 0,
+       instagram_proof_url = excluded.instagram_proof_url,
+       review_group_id = excluded.review_group_id,
+       status = excluded.status,
+       is_auto_review = excluded.is_auto_review,
        review_due_at = NULL,
        approved_at = excluded.approved_at,
        approved_by = excluded.approved_by,
+       /* A resubmission clears the old refusal rather than carrying it. */
+       rejection_reason = NULL,
        updated_at = excluded.updated_at`,
     id,
     input.productId,
@@ -250,7 +326,12 @@ export async function publishVerifiedReview(input: {
     input.rating,
     input.comment,
     screenshotUrl,
-    now,
+    instagramProofUrl,
+    reviewGroupId,
+    status,
+    isAutoReview,
+    approvedAt,
+    approvedBy,
     existing?.created_at || now,
     now,
   );
@@ -283,8 +364,19 @@ export async function reconcilePendingVerifiedReviews(
   await ensureReviewsSchema();
   const boundedLimit = Math.max(1, Math.min(100, Math.floor(limit) || 25));
   const rows = await d1All<ProductReviewRow>(
+    /*
+      Legacy rows only.
+
+      This runs every minute, publishes what it finds as approved, and used to
+      mint a 1,000 IQD coupon for it. A review submitted through the two-step
+      popup matches neither predicate — it carries `awaiting_admin` and a
+      `review_group_id` — and the two guards are deliberately redundant: each
+      one holds if the other is ever edited away. Without them the admin's
+      approval queue empties itself within sixty seconds, with the coupons
+      already spent and nothing on screen explaining why.
+    */
     `SELECT * FROM product_reviews
-     WHERE status = 'pending' AND review_due_at IS NULL
+     WHERE status = 'pending' AND review_due_at IS NULL AND review_group_id IS NULL
      ORDER BY created_at ASC LIMIT ?`,
     boundedLimit,
   );
@@ -307,8 +399,11 @@ export async function reconcilePendingVerifiedReviews(
         comment: String(row.comment || "").slice(0, 1200),
         screenshotUrl: row.screenshot_url || null,
       });
-      const { issueReviewReward } = await import("./review-reward.server");
-      await issueReviewReward(purchase.order);
+      /*
+        No reward here. A code is the admin's decision now, taken on a
+        submission that carries proof — never something a cron hands out for a
+        row it happened to find.
+      */
       result.published += 1;
     } catch (error) {
       result.errors += 1;

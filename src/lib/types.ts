@@ -483,7 +483,16 @@ export interface User {
   bananaLocked?: number;
 }
 
-export type ReviewStatus = "pending" | "approved" | "rejected";
+/**
+ * Where a review sits.
+ *
+ * `awaiting_admin` is the state the two-step submission writes, and it is
+ * deliberately NOT `pending`: the every-minute reconciliation cron selects
+ * `status = 'pending'`, publishes the row as approved and mints a coupon, so a
+ * submission written as `pending` would be approved and paid within sixty
+ * seconds — with the admin's queue empty and nothing on screen explaining why.
+ */
+export type ReviewStatus = "pending" | "awaiting_admin" | "approved" | "rejected";
 
 export interface ProductReview {
   id: string;
@@ -496,6 +505,10 @@ export interface ProductReview {
   instagramProofUrl?: string;
   status: ReviewStatus;
   isAutoReview: boolean;
+  /** The submission this row belongs to; one per product, shared across them. */
+  reviewGroupId?: string;
+  /** Why an admin refused it. A rejection keeps the row rather than deleting it. */
+  rejectionReason?: string;
   reviewDueAt?: string;
   approvedAt?: string;
   approvedBy?: string;
@@ -1007,6 +1020,8 @@ export type MessageKind =
   | "shipping_update"
   | "order_completed"
   | "review_request"
+  /** A submitted review waiting for an admin, rendered as a compact card. */
+  | "review_submitted"
   | "discount_code"
   | "digital_order_card";
 

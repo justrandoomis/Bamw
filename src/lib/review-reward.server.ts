@@ -105,6 +105,50 @@ export async function ensureReviewRewardSchema(): Promise<void> {
       sent_at TEXT
     )
   `);
+  /*
+    The weekly gate.
+
+    One row per customer, not one per reward: the rule is about the customer's
+    week, and a table that grows with every code issued would have to be
+    aggregated to answer the only question anyone asks of it.
+
+    `prev_issued_at` is what makes a failed mint recoverable. The claim is
+    taken before the coupon is written, so if the coupon write then fails the
+    customer would be locked out for a week having received nothing; the
+    rollback restores the previous timestamp rather than deleting the row, and
+    is guarded on the code so a concurrent winner is never rolled back.
+
+    Mirrored here as well as in the migration for the reason this file already
+    documents: a database that never received the migration must self-heal.
+    Deliberately without bumping any schema version — that is what wedged
+    production once.
+  */
+  await d1Run(`
+    CREATE TABLE IF NOT EXISTS review_reward_cooldowns (
+      user_id          TEXT PRIMARY KEY,
+      last_issued_at   TEXT NOT NULL,
+      prev_issued_at   TEXT,
+      last_coupon_code TEXT,
+      last_order_id    TEXT
+    )
+  `);
+  /*
+    Which orders have already been invited to review, so that the three
+    triggers — the customer confirming, the thirty-minute timer, and the admin
+    completing by hand — send exactly one invitation between them.
+
+    NOT `review_reward_notifications`: production rows there already read
+    'sent' for every order completed since that table shipped, so reusing it
+    would silently suppress the new invitation for all of them.
+  */
+  await d1Run(`
+    CREATE TABLE IF NOT EXISTS order_review_prompts (
+      order_id       TEXT PRIMARY KEY,
+      user_id        TEXT NOT NULL,
+      prompted_at    TEXT NOT NULL,
+      trigger_source TEXT NOT NULL
+    )
+  `);
   ledgerReady = true;
 }
 
@@ -393,11 +437,17 @@ export async function sendReviewInvitation(
     const userId = String(order.userId ?? "");
     if (!userId) return false;
 
-    /* The reward belongs to the completed order, not to Telegram. Mint it
-       before checking whether this member linked Telegram or enabled order
-       notices; otherwise those preferences silently erase the coupon. */
-    const reward = await issueReviewReward(order, options);
+    /*
+      No coupon is minted here any more.
 
+      This used to mint one on completion, unconditionally, once per order. The
+      owner's rule is that the code is earned: the customer rates the order,
+      comments on the shop's Instagram post, sends a screenshot of their own
+      comment as proof, an admin approves it, and only then is a code issued —
+      at most one per customer per week, not one per order.
+
+      So this function is now purely an invitation.
+    */
     const chatId = await getUserTelegramChatId(userId);
     if (!chatId) return false;
 
@@ -416,28 +466,22 @@ export async function sendReviewInvitation(
     if (claim === "already_sent") return true;
     if (claim === "busy") return false;
 
+    /*
+      The steps describe the popup, because that is where the code is earned.
+      No code appears in this message: there is none to show yet.
+    */
     const lines = [
       "🎉 <b>تم اكتمال طلبك بنجاح!</b>",
       "",
       `🔖 <b>رقم الطلب:</b> <code>${escapeHtml(String(order.code ?? ""))}</code>`,
       "",
-      "⭐ <b>قيّم تجربتك واحصل على مكافأتك</b>",
+      `⭐ <b>يرجى التقييم للحصول على كود خصم ${REWARD_AMOUNT_IQD.toLocaleString()} دينار</b>`,
       "",
       "1️⃣ اضغط الزر بالأسفل لفتح طلبك.",
-      "2️⃣ اختر عدد النجوم من بطاقة التقييم في المحادثة.",
-      "3️⃣ اكتب رأيك بالخدمة (اختياري) ثم أرسل.",
+      "2️⃣ اكتب رأيك بتسليم المنتجات وأرفق صورة أو مقطعاً.",
+      "3️⃣ علّق على منشور الإنستغرام المثبّت، وأرفق صورة تعليقك.",
+      "4️⃣ بعد موافقة الإدارة يصلك الكود.",
     ];
-
-    if (reward) {
-      lines.push(
-        "",
-        "🎁 <b>كود خصم خاص بك</b>",
-        `<code>${escapeHtml(reward.code)}</code>`,
-        `بقيمة <b>${reward.amountIqd.toLocaleString()} د.ع</b> على طلبك القادم.`,
-        `صالح حتى <b>${shortDate(reward.expiresAt)}</b> — ${REWARD_VALID_DAYS} أيام من الآن.`,
-        "الكود مخصص لحسابك وحده ويُستخدم مرة واحدة.",
-      );
-    }
 
     const res = await sendTelegramMessage(chatId, lines.join("\n"), {
       parse_mode: "HTML",

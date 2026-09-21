@@ -207,38 +207,47 @@ describe("the invitation", () => {
     expect(button.web_app).toBeUndefined();
   });
 
-  it("states the amount, the expiry date and that the code is theirs alone", async () => {
+  it("asks for the review and names the prize, without handing over a code", async () => {
+    /*
+      The contract changed, and this is the sentence that changed it: the code
+      is no longer minted on completion. The customer is told what rating the
+      order is worth and what to do; the code itself exists only after they
+      submit proof and an admin approves it.
+    */
     const { sendReviewInvitation } = await import("./review-reward.server");
     await sendReviewInvitation(ORDER, { now: "2026-09-04T00:00:00.000Z" });
 
     const text = sent[0]!.text;
+    expect(text).toContain("يرجى التقييم");
     expect(text).toContain("1,000");
-    expect(text).toContain("2026-09-11");
-    expect(text).toContain("مخصص لحسابك");
+    expect(text).toContain("منشور الإنستغرام");
+    expect(text).toContain("بعد موافقة الإدارة");
+    // No code, and none of the phrasing that used to accompany one.
+    expect(text).not.toMatch(/REV-/);
+    expect(text).not.toContain("مخصص لحسابك");
   });
 
-  it("still congratulates the customer when no code could be minted", async () => {
+  it("mints nothing at all — not a coupon, not a ledger row", async () => {
     /*
-      The order really is finished. Telling them nothing because the reward
-      failed would be the worse of the two outcomes.
+      The owner's objection in one assertion. An invitation that quietly paid
+      out is what made the reward automatic; a customer must now earn it.
     */
-    insertFails = (sql) => (sql.includes("INSERT INTO coupons") ? "D1 is down" : null);
     const { sendReviewInvitation } = await import("./review-reward.server");
-    await sendReviewInvitation(ORDER);
+    await sendReviewInvitation(ORDER, { now: "2026-09-04T00:00:00.000Z" });
 
-    expect(sent).toHaveLength(1);
-    expect(sent[0]!.text).toContain("تم اكتمال طلبك");
-    expect(sent[0]!.text).not.toContain("كود خصم");
+    // The fixture starts it null, so falsy is the honest assertion here.
+    expect(ledger).toBeFalsy();
+    expect(couponInsert()).toBeUndefined();
   });
 
-  it("mints the reward even when the member has not linked Telegram", async () => {
+  it("is still sent when the member has not linked Telegram — and still mints nothing", async () => {
     telegramChatId = null;
     const { sendReviewInvitation } = await import("./review-reward.server");
 
     await expect(sendReviewInvitation(ORDER)).resolves.toBe(false);
 
-    expect(ledger?.coupon_code).toMatch(/^REV-/);
-    expect(couponInsert()).toBeDefined();
+    expect(ledger).toBeFalsy();
+    expect(couponInsert()).toBeUndefined();
     expect(sent).toHaveLength(0);
   });
 
