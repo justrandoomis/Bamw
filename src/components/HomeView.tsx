@@ -12,17 +12,19 @@ import { filterPurchasable } from "@/lib/purchasable";
 import { getProductCategory, isGameProduct } from "@/lib/productSection";
 import { productImageUrl } from "@/lib/productImages";
 import { listingPrice } from "@/lib/productPricing";
-import { CartridgeStrip, ProductStrip, CartridgeSkeleton } from "./ProductStrips";
+import {
+  CartridgeStrip,
+  ProductStrip,
+  CartridgeSkeleton,
+  NintendoGameStrip,
+} from "./ProductStrips";
 import { BundleStrip } from "./BundleStrip";
 import type { AccountBundle } from "@/lib/types";
 import { rankByPreference } from "@/lib/recommend";
 import { useAuth } from "@/hooks/useAuth";
 import { cdnImage } from "@/lib/img";
-import {
-  getNintendoMediaUrl,
-  NINTENDO_IMAGE_PLACEHOLDER,
-  resolveNintendoImageUrl,
-} from "@/lib/nintendoImages";
+import { getNintendoMediaUrl, resolveNintendoImageUrl } from "@/lib/nintendoImages";
+import { sortNintendoGamesForHome } from "@/lib/nintendoListing";
 import { preloadGameCovers, preloadImage, preload3DBoxAssets } from "@/lib/imagePreloader";
 import { LazySection } from "./LazySection";
 import NintendoNews from "./NintendoNews";
@@ -83,7 +85,7 @@ export default function HomeView({
     "Latest Nintendo releases" were rendering to shoppers. The workaround
     further down (`t(k) === k ? "…" : t(k)`) was the symptom.
   */
-  const { t } = useTranslation();
+  const { t, dir } = useTranslation();
   const { formatGenericPrice } = useCurrency();
 
   const { data: store, isPending, isError, refetch, isFetching } = useStoreData();
@@ -109,6 +111,15 @@ export default function HomeView({
         user?.preferredGenres,
       ),
     [store?.products, user?.preferredGenres],
+  );
+  const nintendoGames: any[] = useMemo(
+    () =>
+      sortNintendoGamesForHome(
+        filterPurchasable<any>(Array.isArray(store?.products) ? store.products : []).filter(
+          (product) => isGameProduct(product),
+        ),
+      ),
+    [store?.products],
   );
   const adminCategories: any[] = Array.isArray(store?.categories) ? store.categories : [];
 
@@ -315,20 +326,49 @@ export default function HomeView({
           </Suspense>
         </SectionErrorBoundary>
 
-        {/* Section 1: Cartridge Shelf (Nintendo Switch Games) */}
+        {/* Section 1: Square Nintendo Switch game cards */}
+        <SectionErrorBoundary sectionName="NintendoGameShelf">
+          <LazySection>
+            <section className="mt-2 w-full max-w-full">
+              <div className="mb-3 flex items-center justify-between gap-2 px-4 sm:px-8">
+                <h3 className="truncate text-xl font-bold text-foreground">
+                  {t("home.nintendoSwitchGames")}
+                </h3>
+                <Link
+                  to="/category/$categoryId"
+                  params={{ categoryId: "nintendo_games" }}
+                  className="shrink-0 px-2 py-1 text-sm font-bold text-orange-500 transition-colors hover:text-orange-600"
+                >
+                  {t("common.viewAll")}
+                </Link>
+              </div>
+
+              <NintendoGameStrip
+                products={nintendoGames}
+                formatPrice={formatGenericPrice}
+                direction={dir}
+              />
+            </section>
+          </LazySection>
+        </SectionErrorBoundary>
+
+        {/* Section 2: Account Bundles (Horizontal Strip) */}
+        <SectionErrorBoundary sectionName="BundleStrip">
+          <LazySection>
+            <BundleStrip
+              bundles={(store?.bundles ?? []) as AccountBundle[]}
+              products={store?.products ?? []}
+            />
+          </LazySection>
+        </SectionErrorBoundary>
+
+        {/* Section 3: Existing cartridge shelf, moved without changing its cards or order */}
         <SectionErrorBoundary sectionName="CartridgeShelf">
           <section className="relative mt-2 pb-2 w-full max-w-full">
             <div className="mb-3 px-4 sm:px-8 flex items-center justify-between">
               <h3 className="truncate text-xl font-bold text-foreground">
                 {t("home.nintendoSwitchGames")}
               </h3>
-              <Link
-                to="/category/$categoryId"
-                params={{ categoryId: "nintendo_games" }}
-                className="text-orange-500 hover:text-orange-600 px-2 py-1 text-sm font-bold transition-colors"
-              >
-                {t("common.viewAll")}
-              </Link>
             </div>
 
             <div className="relative mb-6 mt-2 min-h-[200px] w-full max-w-full">
@@ -341,10 +381,6 @@ export default function HomeView({
                       slug: p.slug,
                       title: p.titleEn || p.english_name || p.title || "Game",
                       price: p.price ?? 0,
-                      // "ألعاب نينتندو سويتش" is the square-card surface: the
-                      // cartridge label window is wider than it is tall and is
-                      // cut for square art. A vertical box cover here is the
-                      // bug this section was reported for.
                       image: getNintendoMediaUrl(p, "square-card"),
                       source: p,
                       subtitle: p.developer || p.publisher || "Nintendo Switch",
@@ -369,135 +405,6 @@ export default function HomeView({
               </div>
             </div>
           </section>
-        </SectionErrorBoundary>
-
-        {/* Section 2: Account Bundles (Horizontal Strip) */}
-        <SectionErrorBoundary sectionName="BundleStrip">
-          <LazySection>
-            <BundleStrip
-              bundles={(store?.bundles ?? []) as AccountBundle[]}
-              products={store?.products ?? []}
-            />
-          </LazySection>
-        </SectionErrorBoundary>
-
-        {/* Section 3: Latest Nintendo Games Added by Release Date */}
-        <SectionErrorBoundary sectionName="LatestReleases">
-          <LazySection>
-            <section className="mt-2 w-full max-w-full">
-              <div className="flex items-center justify-between gap-2 mb-4 px-4 sm:px-8">
-                <div className="flex items-center gap-2">
-                  <h3 className="text-xl font-bold text-foreground">
-                    {t("home.latestNintendoGames")}
-                  </h3>
-                  <span className="bg-red-500 text-white text-[10px] px-2 py-0.5 rounded-full font-bold">
-                    New
-                  </span>
-                </div>
-              </div>
-
-              <div dir="ltr" className="w-full max-w-full">
-                <ProductStrip
-                  products={adminProducts
-                    .filter((p) => isGameProduct(p))
-                    .sort((a, b) => {
-                      const getVal = (p: any) => {
-                        try {
-                          const created =
-                            new Date(
-                              p.createdAt || p.created_at || p.updatedAt || p.updated_at || 0,
-                            ).getTime() || 0;
-                          let rel = 0;
-                          const d =
-                            p.releaseDate ||
-                            p.release_date ||
-                            p.metadata?.releaseDate ||
-                            p.metadata?.release_date ||
-                            p.releaseYear ||
-                            p.release_year;
-                          if (d) {
-                            const dStr = String(d).trim();
-                            const ymdMatch = dStr.match(/^(\d{4})[-/.](\d{1,2})[-/.](\d{1,2})/);
-                            if (ymdMatch && ymdMatch[1] && ymdMatch[2] && ymdMatch[3]) {
-                              rel =
-                                new Date(
-                                  `${ymdMatch[1]}-${ymdMatch[2].padStart(2, "0")}-${ymdMatch[3].padStart(2, "0")}`,
-                                ).getTime() || 0;
-                            } else {
-                              const dmMatch = dStr.match(/^(\d{1,2})[-/.](\d{1,2})[-/.](\d{4})/);
-                              if (dmMatch && dmMatch[1] && dmMatch[2] && dmMatch[3]) {
-                                rel =
-                                  new Date(
-                                    `${dmMatch[3]}-${dmMatch[2].padStart(2, "0")}-${dmMatch[1].padStart(2, "0")}`,
-                                  ).getTime() || 0;
-                              } else {
-                                const parsed = new Date(dStr).getTime();
-                                if (!isNaN(parsed) && parsed > 0) rel = parsed;
-                                else {
-                                  const yearMatch = dStr.match(/\b(20\d{2}|19\d{2})\b/);
-                                  if (yearMatch)
-                                    rel = new Date(`${yearMatch[0]}-01-01`).getTime() || 0;
-                                }
-                              }
-                            }
-                          }
-                          return Math.max(created, rel);
-                        } catch {
-                          return 0;
-                        }
-                      };
-
-                      const valA = getVal(a);
-                      const valB = getVal(b);
-
-                      if (valA !== valB) return valB - valA;
-                      return String(b.id || "").localeCompare(String(a.id || ""));
-                    })
-                    .slice(0, 16)
-                    .map((p) => {
-                      const getYear = (val: any) => {
-                        const dateStr = String(val || "");
-                        const match = dateStr.match(/\b(20\d{2}|19\d{2})\b/);
-                        return match ? match[0] : null;
-                      };
-                      const year = getYear(
-                        p.releaseDate ||
-                          p.release_date ||
-                          p.metadata?.releaseDate ||
-                          p.metadata?.release_date ||
-                          p.releaseYear ||
-                          p.release_year,
-                      );
-
-                      return {
-                        id: p.id,
-                        title: p.titleEn || p.english_name || p.title || "Game",
-                        price: p.price ?? 0,
-                        // Latest Nintendo releases shows the vertical retail
-                        // box, never the square card art.
-                        image: getNintendoMediaUrl(p, "front-box"),
-                        source: p,
-                        subtitle: year
-                          ? `${year} · ${p.developer || p.publisher || ""}`
-                          : p.releaseDate ||
-                            p.release_date ||
-                            p.developer ||
-                            p.publisher ||
-                            "Nintendo Switch",
-                        rating: p.metacriticRating ?? null,
-                        platform: p.platform,
-                      };
-                    })}
-                  onSelect={(product: any) => onGameClick(product)}
-                  formatPrice={formatGenericPrice}
-                  onPress={() => playSound("bumper_end", 0.6)}
-                  ratingIcon={<BananaIcon className="w-3 h-3 sm:w-4 sm:h-4" solid />}
-                  imageRole="front-box"
-                  loading={isPending && adminProducts.length === 0}
-                />
-              </div>
-            </section>
-          </LazySection>
         </SectionErrorBoundary>
 
         {/* Dynamic / Custom Categories */}

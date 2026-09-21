@@ -210,19 +210,35 @@ async function executeBotPurchase(bot: BananaBot, offer: BananaMarketOffer, now:
 export async function processAutoScheduledTasks() {
   const now = new Date().toISOString();
 
-  // 1. Auto Review (Pending reviews due for auto-completion)
-  const pendingReviews = await d1All<{ id: string }>(
-    `SELECT id FROM product_reviews WHERE status = 'pending' AND review_due_at <= ? AND is_auto_review = 0`,
-    now,
-  );
+  /*
+    Reviews are published synchronously only after the API proves a completed
+    purchase. Do not turn checkout-time placeholders into invented five-star
+    reviews: those rows have no customer rating or comment, and the former job
+    overwrote both with `5 / Auto Review` three days after checkout whether the
+    order completed or not. Existing pending rows remain visible to staff for
+    cleanup; no new placeholders are created by the repaired checkout path.
+  */
 
-  for (const rev of pendingReviews) {
-    await d1Run(
-      `UPDATE product_reviews SET status = 'approved', rating = 5, comment = 'Auto Review', is_auto_review = 1, approved_at = ?, approved_by = 'system', updated_at = ? WHERE id = ?`,
-      now,
-      now,
-      rev.id,
-    );
+  // Repair a bounded batch of older completions that missed their review card
+  // or durable reward. The service is idempotent, so cron retries are safe.
+  try {
+    const { reconcileCompletedOrderReviewFollowups } = await import("./order-completion.server");
+    const repaired = await reconcileCompletedOrderReviewFollowups(now, 25);
+    if (repaired.repaired || repaired.errors) {
+      console.log("[scheduled-jobs:review-followups]", repaired);
+    }
+  } catch (err) {
+    console.error("[scheduled-jobs] review follow-up repair failed:", err);
+  }
+
+  try {
+    const { reconcilePendingVerifiedReviews } = await import("./reviews.server");
+    const reviews = await reconcilePendingVerifiedReviews(25);
+    if (reviews.published || reviews.errors) {
+      console.log("[scheduled-jobs:verified-reviews]", reviews);
+    }
+  } catch (err) {
+    console.error("[scheduled-jobs] verified review reconciliation failed:", err);
   }
 
   // 2. Disc Trade Inactivity (7d after creation if still pending/not shipped)

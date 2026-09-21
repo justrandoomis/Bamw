@@ -18,6 +18,7 @@ import { releaseProductIdentity } from "@/lib/product-identity.server";
 import { resolveCategoryType } from "@/lib/productSection";
 
 import { sanitizeAndVerifyProductImages } from "@/lib/productImageVerification.server";
+import { normalizeProductCompareAtPrices } from "@/lib/productPricing";
 
 function productSection(product: Partial<Product>, categories: Record<string, unknown>[]) {
   const categoryId = String(product.categoryId || product.category || "");
@@ -140,6 +141,8 @@ export const Route = createFileRoute("/api/admin/products/$productId")({
             isActive: payload.isActive !== false,
             categoryId: payload.categoryId || (payload as any).category || "cat_nintendo",
           };
+          productToSave = normalizeProductCompareAtPrices(productToSave);
+          if (Array.isArray(productToSave.types)) productToSave.variants = productToSave.types;
 
           if (productSection(productToSave, currentStore.categories || []) === "game") {
             const performanceIssues = validateGameDevicePerformance(
@@ -179,7 +182,10 @@ export const Route = createFileRoute("/api/admin/products/$productId")({
             productToSave = verification.product as Product;
             mediaWarnings = verification.warnings ?? [];
           } catch (imgErr) {
-            console.warn("[sanitizeAndVerifyProductImages] Image verification non-blocking fallback:", imgErr);
+            console.warn(
+              "[sanitizeAndVerifyProductImages] Image verification non-blocking fallback:",
+              imgErr,
+            );
           }
 
           if (productSection(productToSave, currentStore.categories || []) === "game") {

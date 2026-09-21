@@ -342,12 +342,12 @@ describe("the storefront surfaces named in the media contract", () => {
     expect(getNintendoMediaUrl(game, "square-card")).toBe(SQUARE);
   });
 
-  it("'أحدث إصدارات نينتندو' shows the front box cover", () => {
+  it("a retail-box surface shows the front box cover", () => {
     expect(getNintendoMediaUrl(game, "front-box")).toBe(COVER);
   });
 
-  it("/nintendo_games shows the front box cover", () => {
-    expect(getNintendoMediaUrl(game, "front-box")).toBe(COVER);
+  it("/nintendo_games shows the square card image", () => {
+    expect(getNintendoMediaUrl(game, "square-card")).toBe(SQUARE);
   });
 
   it("the product detail cover shows the cover image", () => {

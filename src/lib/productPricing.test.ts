@@ -1,6 +1,12 @@
 import { describe, expect, it } from "vitest";
 
-import { initialOptionId, initialVariantName, listingPrice } from "./productPricing";
+import {
+  initialOptionId,
+  initialVariantName,
+  listingPrice,
+  listingPricing,
+  normalizeProductCompareAtPrices,
+} from "./productPricing";
 
 describe("listingPrice", () => {
   it("keeps the base price when the product has no priced options", () => {
@@ -48,6 +54,61 @@ describe("listingPrice", () => {
       options: [null, "junk", { id: "x", name: "X", price: "not-a-number" }],
     };
     expect(listingPrice(product as never)).toBe(12500);
+  });
+
+  it("returns the before/after pair belonging to the listed type", () => {
+    const product = {
+      price: 9000,
+      originalPrice: 14000,
+      options: [{ id: "offline", name: "Offline" }],
+      types: [
+        {
+          id: "offline_base",
+          optionId: "offline",
+          name: "Offline Standard",
+          price: 9000,
+          originalPrice: 14000,
+        },
+        {
+          id: "offline_dlc",
+          optionId: "offline",
+          name: "Offline + DLC",
+          price: 12500,
+          originalPrice: 18000,
+        },
+      ],
+    };
+
+    expect(listingPricing(product)).toMatchObject({ unitPrice: 9000, originalUnitPrice: 14000 });
+  });
+
+  it("never presents a compare-at price that is not above the sale price", () => {
+    expect(listingPricing({ price: 12000, originalPrice: 10000 })).toMatchObject({
+      unitPrice: 12000,
+      originalUnitPrice: 12000,
+    });
+  });
+});
+
+describe("persisted compare-at prices", () => {
+  it("turns admin strings into finite numeric values and rejects invalid amounts", () => {
+    expect(
+      normalizeProductCompareAtPrices({
+        originalPrice: "15000",
+        options: [
+          { id: "offline", originalPrice: "18000" },
+          { id: "online", originalPrice: -1 },
+        ],
+        types: [{ id: "extras", original_price: "not-a-number" }],
+      }),
+    ).toMatchObject({
+      originalPrice: 15_000,
+      options: [
+        { id: "offline", originalPrice: 18_000 },
+        { id: "online", originalPrice: 0 },
+      ],
+      types: [{ id: "extras", originalPrice: 0 }],
+    });
   });
 });
 
@@ -111,9 +172,7 @@ describe("initialVariantName", () => {
   it("opens on the denomination the card prints", () => {
     // listingPrice picks the cheapest when no denomination matches the base.
     expect(initialVariantName(denominations, 7500)).toBe("5 USD");
-    expect(
-      listingPrice({ price: 7500, variants: denominations }),
-    ).toBe(7000);
+    expect(listingPrice({ price: 7500, variants: denominations })).toBe(7000);
   });
 
   it("prefers the denomination priced exactly at the base price", () => {
@@ -134,9 +193,15 @@ describe("initialVariantName", () => {
   });
 
   it("ignores a nameless row, which cannot be selected by name", () => {
-    expect(initialVariantName([{ name: "", price: 100 }, { name: "5 USD", price: 7000 }], 0)).toBe(
-      "5 USD",
-    );
+    expect(
+      initialVariantName(
+        [
+          { name: "", price: 100 },
+          { name: "5 USD", price: 7000 },
+        ],
+        0,
+      ),
+    ).toBe("5 USD");
   });
 });
 

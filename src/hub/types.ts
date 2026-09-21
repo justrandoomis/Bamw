@@ -310,6 +310,8 @@ export interface GameEdition {
   description?: string;
   contents: EditionContentItem[];
   msrp?: Money;
+  /** Optional compare-at price for this edition. */
+  listPrice?: Money;
   coverUrl?: string;
   /** Marks the edition the buying guide recommends and why. */
   recommendation?: {
@@ -676,6 +678,8 @@ export interface Game {
   options?: Array<{
     id: string;
     name: string;
+    /** Compare-at price; `price` is still the amount charged. */
+    originalPrice?: number;
     price?: number;
     cost?: number;
     description?: string;
@@ -686,6 +690,8 @@ export interface Game {
     id: string;
     name: string;
     optionId?: string;
+    /** Compare-at price; `price` is still the amount charged. */
+    originalPrice?: number;
     price?: number;
     cost?: number;
     stock?: number;

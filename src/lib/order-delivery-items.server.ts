@@ -22,7 +22,6 @@ import {
   type OrderItemMatchTarget,
   type ParsedAccountLine,
 } from "./account-paste";
-import { isDigitalOrderKind } from "./delivery-kinds";
 import { decryptSecretValue, encryptSecretValue, randomId } from "./crypto.server";
 import {
   allExpectedDeliveryItemsDelivered,
@@ -35,6 +34,8 @@ import {
 } from "./digital-delivery-state";
 import { d1All, d1First, d1Run, d1RunChanges, getD1 } from "./d1.server";
 import { appendMessage, d1Batch, getOrder, getThread, saveOrder, saveThread } from "./db.server";
+import { DIGITAL_ORDER_KINDS, isDigitalOrderKind, isFullyDigitalOrder } from "./delivery-kinds";
+import { completeOrder } from "./order-completion.server";
 import type { Order, OrderItem } from "./types";
 
 const CODE_KINDS = new Set(["digital_code", "code", "gift_card"]);
@@ -120,8 +121,114 @@ export async function ensureDigitalDeliverySchema(): Promise<void> {
   await deliverySchemaPromise;
 }
 
+const QUEUE_TERMINAL_ORDER_STATUSES = new Set([
+  "awaiting_customer_confirmation",
+  "delivery_issue",
+  "completed",
+  "cancelled",
+]);
+
+async function resolveOrderThreadId(order: Order): Promise<string | undefined> {
+  if (order.threadId) return order.threadId;
+  const row = await d1First<{ id: string }>(
+    `SELECT id FROM threads WHERE order_id = ? ORDER BY last_message_at DESC LIMIT 1`,
+    order.id,
+  );
+  return row?.id;
+}
+
+/**
+ * Make a paid digital order visible to fulfilment, including legacy game
+ * orders created while checkout did not recognise `kind: "game"`.
+ */
+export async function ensureDigitalOrderQueueEntry(order: Order): Promise<boolean> {
+  if (
+    order.paymentStatus !== "paid" ||
+    QUEUE_TERMINAL_ORDER_STATUSES.has(order.status) ||
+    !isFullyDigitalOrder(order.items)
+  ) {
+    return false;
+  }
+
+  const now = new Date().toISOString();
+  await d1Run(
+    `INSERT INTO order_queue (id, order_id, status, created_at, updated_at)
+     VALUES (?, ?, 'waiting', ?, ?)
+     ON CONFLICT(order_id) DO UPDATE SET
+       status = CASE
+         WHEN order_queue.status = 'completed' THEN 'waiting'
+         ELSE order_queue.status
+       END,
+       updated_at = excluded.updated_at`,
+    `queue:${order.id}`,
+    order.id,
+    order.createdAt || now,
+    now,
+  );
+
+  const threadId = await resolveOrderThreadId(order);
+  const thread = threadId ? await getThread(threadId) : undefined;
+  if (
+    thread &&
+    (thread.status === "closed" || thread.mode === "RESOLVED" || thread.queueStatus === "completed")
+  ) {
+    await saveThread({
+      ...thread,
+      status: "open",
+      mode: "ORDER_PREPARATION",
+      needsAdmin: true,
+      queueStatus: "queued",
+      queueEnteredAt: thread.queueEnteredAt || now,
+      lastMessageAt: thread.lastMessageAt || now,
+    });
+  }
+  return true;
+}
+
+async function repairActiveDigitalOrderQueues(limit = 500): Promise<void> {
+  const candidates = await d1All<{ id: string }>(
+    `SELECT o.id
+     FROM orders AS o
+     LEFT JOIN order_queue AS q ON q.order_id = o.id
+     WHERE o.payment_status = 'paid'
+       AND o.status NOT IN (
+         'awaiting_customer_confirmation','delivery_issue','completed','cancelled'
+       )
+       AND (q.order_id IS NULL OR q.status = 'completed')
+       AND json_array_length(
+         json_extract(CASE WHEN json_valid(o.doc) THEN o.doc ELSE '{"items":[]}' END, '$.items')
+       ) > 0
+       AND NOT EXISTS (
+         SELECT 1
+         FROM json_each(
+           CASE WHEN json_valid(o.doc) THEN o.doc ELSE '{"items":[]}' END,
+           '$.items'
+         ) AS item
+         WHERE lower(trim(COALESCE(json_extract(item.value, '$.kind'), 'account')))
+           NOT IN (SELECT lower(value) FROM json_each(?))
+       )
+     ORDER BY o.created_at ASC
+     LIMIT ?`,
+    JSON.stringify(DIGITAL_ORDER_KINDS),
+    limit,
+  );
+  for (const candidate of candidates) {
+    try {
+      const order = await getOrder(candidate.id);
+      if (order) await ensureDigitalOrderQueueEntry(order);
+    } catch (error) {
+      // One damaged legacy order must not prevent the rest of the queue from
+      // being repaired or stop the admin from advancing to the next order.
+      console.error("[delivery:queue_repair_failed]", {
+        orderId: candidate.id,
+        error: error instanceof Error ? error.message : String(error),
+      });
+    }
+  }
+}
+
 function isDigitalItem(item: OrderItem): boolean {
-  return isDigitalOrderKind(String(item.kind || "account"));
+  return isDigitalOrderKind(item.kind || "account");
 }
 
 function validCanonicalTitle(title: unknown): title is string {
@@ -292,6 +399,8 @@ export async function ensureOrderDeliveryRecords(order: Order): Promise<void> {
     });
     throw new Error("DELIVERY_PRODUCT_RELATION_MISSING");
   }
+
+  await ensureDigitalOrderQueueEntry(order);
 }
 
 interface DeliveryRow {
@@ -567,7 +676,7 @@ export async function saveQuickPaste(orderId: string, rawText: string): Promise<
     order.id,
   );
   const targets: OrderItemMatchTarget[] = canonicalItems
-    .filter((item) => isDigitalOrderKind(String(item.kind || "account")))
+    .filter((item) => isDigitalOrderKind(item.kind))
     .map((item) => ({
       id: item.id,
       title: item.product_title,
@@ -1076,13 +1185,20 @@ async function syncThreadToDeliveryState(
   if (!order.threadId) return;
   const thread = await getThread(order.threadId);
   if (!thread) return;
-  const needsAdmin = deliveryStateNeedsAdmin(state);
+  const readyForCompletion = allExpectedDeliveryItemsDelivered(state.deliveryItems);
+  const needsAdmin = readyForCompletion || deliveryStateNeedsAdmin(state);
   const hasProof = state.deliveryItems.some(
     (item) => !item.archivedAt && item.status === "proof_received",
   );
   await saveThread({
     ...thread,
-    mode: needsAdmin ? (hasProof ? "WAITING_FOR_ADMIN" : "ORDER_PREPARATION") : "WAITING_FOR_USER",
+    mode: readyForCompletion
+      ? "ORDER_PREPARATION"
+      : needsAdmin
+        ? hasProof
+          ? "WAITING_FOR_ADMIN"
+          : "ORDER_PREPARATION"
+        : "WAITING_FOR_USER",
     needsAdmin,
     lastAdminMessageAt: now,
     lastMessageAt: now,
@@ -1093,6 +1209,13 @@ export async function getNextActionableQueuedOrder(
   excludeOrderId?: string,
   staffId?: string,
 ): Promise<{ orderId: string; threadId?: string; code?: string; userName?: string } | undefined> {
+  try {
+    await repairActiveDigitalOrderQueues();
+  } catch (error) {
+    console.error("[delivery:queue_repair_scan_failed]", {
+      error: error instanceof Error ? error.message : String(error),
+    });
+  }
   const rows = await d1All<{
     order_id: string;
     assigned_staff_id: string | null;
@@ -1109,26 +1232,115 @@ export async function getNextActionableQueuedOrder(
   for (const row of rows) {
     if (excludeOrderId && row.order_id === excludeOrderId) continue;
     if (row.assigned_staff_id && staffId && row.assigned_staff_id !== staffId) continue;
-    const order = await getOrder(row.order_id);
-    if (!order) continue;
-    if (
-      order.status === "awaiting_customer_confirmation" ||
-      order.status === "delivery_issue" ||
-      order.status === "completed" ||
-      order.status === "cancelled"
-    ) {
-      continue;
+    try {
+      const order = await getOrder(row.order_id);
+      if (!order) continue;
+      if (order.paymentStatus !== "paid" || !isFullyDigitalOrder(order.items)) continue;
+      if (
+        order.status === "awaiting_customer_confirmation" ||
+        order.status === "delivery_issue" ||
+        order.status === "completed" ||
+        order.status === "cancelled"
+      ) {
+        continue;
+      }
+      await ensureOrderDeliveryRecords(order);
+      const threadId = await resolveOrderThreadId(order);
+      return {
+        orderId: order.id,
+        ...(threadId ? { threadId } : {}),
+        ...(order.code ? { code: order.code } : {}),
+        ...(order.userName ? { userName: order.userName } : {}),
+      };
+    } catch (error) {
+      console.error("[delivery:next_queue_candidate_failed]", {
+        orderId: row.order_id,
+        error: error instanceof Error ? error.message : String(error),
+      });
     }
-    await ensureOrderDeliveryRecords(order);
-    if (await strictDeliveryIsComplete(order.id)) continue;
-    return {
-      orderId: order.id,
-      ...(order.threadId ? { threadId: order.threadId } : {}),
-      ...(order.code ? { code: order.code } : {}),
-      ...(order.userName ? { userName: order.userName } : {}),
-    };
   }
   return undefined;
+}
+
+export interface CompleteDigitalOrderResult extends DeliveryActionResult {
+  order: Order;
+}
+
+/**
+ * The sole admin transition from a fully delivered digital order to complete.
+ * The terminal-state and issue checks happen server-side; the button is only a
+ * convenient trigger and cannot close an order that still owes an item.
+ */
+export async function completeDigitalOrderAndNext(input: {
+  orderId: string;
+  adminId: string;
+  adminName: string;
+  threadId?: string;
+  now?: string;
+}): Promise<CompleteDigitalOrderResult> {
+  let order = await getOrder(input.orderId);
+  if (!order) throw new Error("ORDER_NOT_FOUND");
+  if (order.status === "cancelled") throw new Error("ORDER_ALREADY_CANCELLED");
+  if (!isFullyDigitalOrder(order.items)) throw new Error("ORDER_NOT_FULLY_DIGITAL");
+
+  const linkedThreadId = await resolveOrderThreadId(order);
+  if (input.threadId && linkedThreadId && input.threadId !== linkedThreadId) {
+    throw new Error("THREAD_ORDER_MISMATCH");
+  }
+  if (!order.threadId && linkedThreadId) order = { ...order, threadId: linkedThreadId };
+
+  await ensureOrderDeliveryRecords(order);
+  if (order.status === "delivery_issue" || order.deliveryIssueOpenedAt) {
+    throw new Error("ORDER_HAS_OPEN_DELIVERY_ISSUE");
+  }
+  if (await hasOpenDeliveryIssue(order.id)) {
+    throw new Error("ORDER_HAS_OPEN_DELIVERY_ISSUE");
+  }
+  if (!(await strictDeliveryIsComplete(order.id))) {
+    throw new Error("DELIVERY_ITEMS_NOT_TERMINAL");
+  }
+
+  const now = input.now || new Date().toISOString();
+  const completed = await completeOrder(order, {
+    by: input.adminId,
+    role: "ADMIN",
+    note: "تم إكمال الطلب الرقمي بعد تسليم جميع العناصر",
+    message: `✅ تم تسليم وإكمال الطلب بنجاح بواسطة ${input.adminName || "الإدارة"}.`,
+    now,
+  });
+  order = completed.order;
+
+  await d1Run(
+    `UPDATE order_delivery_items
+     SET status = 'completed', completed_at = COALESCE(completed_at, ?),
+         updated_at = ?, revision = revision + 1
+     WHERE order_id = ? AND archived_at IS NULL AND status = 'otp_sent'`,
+    now,
+    now,
+    order.id,
+  );
+
+  const threadId = linkedThreadId;
+  const thread = threadId ? await getThread(threadId) : undefined;
+  if (thread) {
+    await saveThread({
+      ...thread,
+      status: "closed",
+      mode: "RESOLVED",
+      needsAdmin: false,
+      queueStatus: "completed",
+      lastAdminMessageAt: now,
+      lastMessageAt: now,
+    });
+  }
+
+  const state = await getDeliveryOrderState(order);
+  return {
+    order,
+    state,
+    orderFinished: true,
+    nextOrder: await getNextActionableQueuedOrder(order.id, input.adminId),
+  };
 }
 
 async function moveOrderToAwaitingConfirmation(
@@ -1331,23 +1543,13 @@ export async function sendDeliveryOtp(input: {
   };
   await saveOrder(order);
 
-  let orderFinished = false;
-  let nextOrder: Awaited<ReturnType<typeof getNextActionableQueuedOrder>>;
-  const allDelivered = await strictDeliveryIsComplete(order.id);
-  if (allDelivered) {
-    const completion = await moveOrderToAwaitingConfirmation(order, input.adminId, now);
-    order = completion.order;
-    nextOrder = completion.nextOrder;
-    orderFinished = order.status === "awaiting_customer_confirmation";
-  }
   const state = await getDeliveryOrderState(order);
-  if (!orderFinished) await syncThreadToDeliveryState(order, state, now);
+  await syncThreadToDeliveryState(order, state, now);
   const nextReady = nextReadyDeliveryItemId(state.deliveryItems, row.id);
   return {
     state,
-    orderFinished,
+    orderFinished: false,
     ...(nextReady ? { nextReadyDeliveryItemId: nextReady } : {}),
-    ...(nextOrder ? { nextOrder } : {}),
   };
 }
 
@@ -1428,44 +1630,14 @@ export async function sendDigitalDeliveryCode(input: {
     ],
   };
   await saveOrder(order);
-  let orderFinished = false;
-  let nextOrder: Awaited<ReturnType<typeof getNextActionableQueuedOrder>>;
-  if (await strictDeliveryIsComplete(order.id)) {
-    const completion = await moveOrderToAwaitingConfirmation(order, input.adminId, now);
-    order = completion.order;
-    nextOrder = completion.nextOrder;
-    orderFinished = order.status === "awaiting_customer_confirmation";
-  }
   const state = await getDeliveryOrderState(order);
-  if (!orderFinished) await syncThreadToDeliveryState(order, state, now);
+  await syncThreadToDeliveryState(order, state, now);
   const nextReady = nextReadyDeliveryItemId(state.deliveryItems, row.id);
   return {
     state,
-    orderFinished,
+    orderFinished: false,
     ...(nextReady ? { nextReadyDeliveryItemId: nextReady } : {}),
-    ...(nextOrder ? { nextOrder } : {}),
   };
-}
-
-async function appendRatingRequest(order: Order, now: string): Promise<void> {
-  if (!order.threadId || order.ratingCardSentAt) return;
-  await appendMessage(order.threadId, {
-    senderRole: "assistant",
-    senderName: "الدعم الآلي",
-    kind: "review_request",
-    clientMessageId: `delivery-review-${order.id}`,
-    body: {
-      orderId: order.id,
-      orderCode: order.code,
-      items: order.items.map((item) => ({
-        id: item.id,
-        title: item.title,
-        image: item.image,
-        productId: item.productId,
-      })),
-      text: "نسعد جداً بتقييمك لتجربة الشراء وجودة الخدمة ⭐",
-    },
-  });
 }
 
 async function completeDeliveredOrder(
@@ -1474,26 +1646,9 @@ async function completeDeliveredOrder(
   actorId: string,
   now = new Date().toISOString(),
 ): Promise<Order> {
-  if (order.status === "completed") return order;
   if (await hasOpenDeliveryIssue(order.id)) throw new Error("ORDER_HAS_OPEN_DELIVERY_ISSUE");
   if (!(await strictDeliveryIsComplete(order.id))) throw new Error("ITEMS_NOT_FULLY_DELIVERED");
-  if (order.threadId) {
-    await appendMessage(order.threadId, {
-      senderRole: mode === "customer" ? "user" : "system",
-      kind: "order_completed",
-      clientMessageId: `delivery-completed-${mode}-${order.id}`,
-      body: {
-        code: order.code,
-        confirmedByCustomer: mode === "customer",
-        autoCompleted: mode === "auto",
-        text:
-          mode === "customer"
-            ? "✅ تم استلام الطلب وتأكيده بنجاح من قبل العميل."
-            : "✅ تم إكمال الطلب تلقائياً بعد انتهاء مهلة التأكيد البالغة 60 دقيقة.",
-      },
-    });
-  }
-  await appendRatingRequest(order, now);
+
   await d1Run(
     `UPDATE order_delivery_items
      SET status = 'completed', completed_at = COALESCE(completed_at, ?),
@@ -1503,38 +1658,21 @@ async function completeDeliveredOrder(
     now,
     order.id,
   );
-  await d1Run(
-    `UPDATE order_queue SET status = 'completed', updated_at = ? WHERE order_id = ?`,
+
+  const completed = await completeOrder(order, {
+    by: actorId,
+    role: mode === "customer" ? "USER" : "SYSTEM",
+    note:
+      mode === "customer" ? "تم تأكيد الاستلام من العميل" : "إكمال تلقائي بعد 60 دقيقة من آخر OTP",
+    message:
+      mode === "customer"
+        ? "✅ تم استلام الطلب وتأكيده بنجاح من قبل العميل."
+        : "✅ تم إكمال الطلب تلقائياً بعد انتهاء مهلة التأكيد البالغة 60 دقيقة.",
+    auto: mode === "auto",
     now,
-    order.id,
-  );
-  const next: Order = {
-    ...order,
-    status: "completed",
-    completedAt: now,
-    autoCompleteAt: undefined,
-    customerConfirmedAt: mode === "customer" ? now : order.customerConfirmedAt,
-    autoCompletedAt: mode === "auto" ? now : order.autoCompletedAt,
-    ratingCardSentAt: order.ratingCardSentAt || now,
-    items: order.items.map((item) => ({
-      ...item,
-      completedAt: item.completedAt || now,
-      deliveredAt: item.deliveredAt || now,
-    })),
-    updatedAt: now,
-    events: [
-      ...(order.events || []),
-      {
-        type: mode === "customer" ? "customer_confirmed" : "order_auto_completed",
-        at: now,
-        payload: {
-          by: actorId,
-          reason: mode === "auto" ? "60_minute_timeout" : undefined,
-        },
-      },
-    ],
-  };
-  await saveOrder(next);
+  });
+  const next = completed.order;
+
   try {
     await d1Run(
       `UPDATE orders
@@ -1548,44 +1686,6 @@ async function completeDeliveredOrder(
   } catch (error) {
     console.warn("[delivery:normalized_completion_timestamps_failed]", error);
   }
-  try {
-    await d1Run(
-      `INSERT INTO order_status_history
-        (id, order_id, old_status, new_status, changed_by, note, created_at)
-       VALUES (?, ?, ?, 'completed', ?, ?, ?)`,
-      randomId("osh"),
-      order.id,
-      order.status,
-      actorId,
-      mode === "customer" ? "تم تأكيد الاستلام من العميل" : "إكمال تلقائي بعد 60 دقيقة من آخر OTP",
-      now,
-    );
-  } catch (error) {
-    console.error("[delivery:completion_history_failed]", {
-      orderId: order.id,
-      error,
-    });
-  }
-
-  /*
-    The one message a finished digital order ever sends the customer.
-
-    This whole module — the path every account and code purchase takes — had
-    no notification of any kind. Both ways in end here: the customer pressing
-    confirm, and the timer completing it for them an hour later. Either way
-    they were told nothing, and the rating card posted just above went into a
-    conversation they had already closed.
-
-    Best-effort and last, so a Telegram outage cannot undo a completion that
-    has already been written.
-  */
-  try {
-    const { sendReviewInvitation } = await import("./review-reward.server");
-    await sendReviewInvitation(next, { now });
-  } catch (error) {
-    console.warn("[delivery:review_invite_failed]", { orderId: order.id, error });
-  }
-
   return next;
 }
 

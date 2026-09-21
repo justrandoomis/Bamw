@@ -1,23 +1,19 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-import { randomId } from "@/lib/crypto.server";
-import { d1All, d1Run, ensureSchema, getD1 } from "@/lib/d1.server";
+import { d1All, d1First, d1Run, ensureSchema, getD1 } from "@/lib/d1.server";
 import { body, guard, json } from "@/lib/http.server";
+import { issueReviewReward } from "@/lib/review-reward.server";
+import {
+  ensureReviewsSchema,
+  findCompletedPurchase,
+  publishVerifiedReview,
+  type ProductReviewRow,
+} from "@/lib/reviews.server";
 import { getSessionUser, requireAdmin, requireUser } from "@/lib/session.server";
 import { consumeRateLimit, rateLimitResponse } from "@/lib/rate-limit.server";
+import { isOwnReviewImageUrl } from "@/lib/uploads";
 
-interface ReviewRow {
-  id: string;
-  product_id: string;
-  user_id: string;
-  order_id: string | null;
-  rating: number;
-  comment: string;
-  status: string;
-  is_buyer?: number | boolean;
-  created_at: string;
-  user_name?: string | null;
-}
+type ReviewRow = ProductReviewRow & { is_buyer?: number | boolean };
 
 const clean = (value: unknown, max: number) =>
   typeof value === "string" ? value.trim().slice(0, max) : "";
@@ -34,6 +30,7 @@ export const Route = createFileRoute("/api/reviews")({
         guard(async () => {
           if (!getD1()) return json({ reviews: [], summary: { count: 0, average: 0 } });
           await ensureSchema();
+          await ensureReviewsSchema();
           const url = new URL(request.url);
           const productId = url.searchParams.get("productId");
           const scope = url.searchParams.get("scope");
@@ -46,7 +43,7 @@ export const Route = createFileRoute("/api/reviews")({
             rows = await d1All<ReviewRow>(
               `SELECT r.*, u.name AS user_name FROM product_reviews r
                LEFT JOIN users u ON u.id = r.user_id
-               WHERE r.product_id = ? AND r.status = 'approved'
+               WHERE r.product_id = ? AND r.status = 'approved' AND r.review_due_at IS NULL
                ORDER BY r.created_at DESC LIMIT 100`,
               productId,
             );
@@ -55,7 +52,8 @@ export const Route = createFileRoute("/api/reviews")({
               const myRows = await d1All<ReviewRow>(
                 `SELECT r.*, u.name AS user_name FROM product_reviews r
                  LEFT JOIN users u ON u.id = r.user_id
-                 WHERE r.product_id = ? AND r.user_id = ? LIMIT 1`,
+                 WHERE r.product_id = ? AND r.user_id = ? AND r.review_due_at IS NULL
+                 ORDER BY r.created_at DESC LIMIT 1`,
                 productId,
                 user.id,
               );
@@ -72,7 +70,9 @@ export const Route = createFileRoute("/api/reviews")({
             );
           } else if (user) {
             rows = await d1All<ReviewRow>(
-              `SELECT * FROM product_reviews WHERE user_id = ? ORDER BY created_at DESC LIMIT 100`,
+              `SELECT * FROM product_reviews
+               WHERE user_id = ? AND review_due_at IS NULL
+               ORDER BY created_at DESC LIMIT 100`,
               user.id,
             );
           }
@@ -89,8 +89,9 @@ export const Route = createFileRoute("/api/reviews")({
                 product_id: row.product_id,
                 rating: row.rating,
                 comment: row.comment,
+                screenshot_url: row.screenshot_url ?? null,
                 created_at: row.created_at,
-                is_buyer: Boolean(row.is_buyer || row.order_id),
+                is_buyer: row.approved_by === "system:verified_purchase",
                 user_name: row.user_name ?? null,
               }))
             : rows;
@@ -103,8 +104,9 @@ export const Route = createFileRoute("/api/reviews")({
                   product_id: myReview.product_id,
                   rating: myReview.rating,
                   comment: myReview.comment,
+                  screenshot_url: myReview.screenshot_url ?? null,
                   status: myReview.status,
-                  is_buyer: Boolean(myReview.is_buyer || myReview.order_id),
+                  is_buyer: myReview.approved_by === "system:verified_purchase",
                   created_at: myReview.created_at,
                   user_name: myReview.user_name ?? null,
                 }
@@ -113,7 +115,7 @@ export const Route = createFileRoute("/api/reviews")({
           });
         }),
 
-      /** Member posts (or updates) a review for a product, defaulting to pending status. */
+      /** A completed-order buyer posts (or updates) a verified review. */
       POST: async ({ request }) =>
         guard(async () => {
           const user = await requireUser(request);
@@ -127,53 +129,81 @@ export const Route = createFileRoute("/api/reviews")({
           if (!throttle.allowed) return rateLimitResponse(throttle.retryAfter);
           if (!getD1()) return json({ error: "قاعدة البيانات غير متاحة" }, { status: 503 });
           await ensureSchema();
+          await ensureReviewsSchema();
           const input = await body<Record<string, unknown>>(request);
           const productId = clean(input["productId"], 120);
-          const rating = Math.max(1, Math.min(5, Math.round(Number(input["rating"]) || 0)));
+          const rawRating = Number(input["rating"]);
+          const rating = Number.isFinite(rawRating) ? Math.round(rawRating) : 0;
           const comment = clean(input["comment"], 1200);
-          if (!productId || !rating) {
+          const requestedOrderId = clean(input["orderId"], 80);
+          const imageWasProvided =
+            Object.prototype.hasOwnProperty.call(input, "imageUrl") ||
+            Object.prototype.hasOwnProperty.call(input, "screenshotUrl");
+          const screenshotUrl = clean(input["imageUrl"] ?? input["screenshotUrl"], 1000);
+          if (!productId || rating < 1 || rating > 5) {
             return json({ error: "المنتج والتقييم مطلوبان" }, { status: 400 });
           }
+          if (imageWasProvided && screenshotUrl && !isOwnReviewImageUrl(screenshotUrl, user.id)) {
+            return json({ error: "صورة التقييم غير صالحة" }, { status: 400 });
+          }
 
-          // Check if user is a verified buyer of this product.
-          // The order payload lives in the `doc` column; `orders.items` does not
-          // exist, so this query used to raise "no such column" and turn every
-          // review submission into a 500.
-          const orderMatch = await d1All<{ id: string }>(
-            `SELECT id FROM orders WHERE user_id = ? AND (doc LIKE ? OR doc LIKE ?) LIMIT 1`,
+          const purchase = await findCompletedPurchase(
             user.id,
-            `%"productId":"${productId}"%`,
-            `%"productId":${productId}%`,
-          );
-          const isBuyer = orderMatch.length > 0 ? 1 : 0;
-          const orderId = orderMatch[0]?.id || clean(input["orderId"], 80) || null;
-
-          // Replace existing review to ensure 1 review per user
-          await d1Run(
-            `DELETE FROM product_reviews WHERE product_id = ? AND user_id = ?`,
             productId,
-            user.id,
+            requestedOrderId || undefined,
           );
+          if (!purchase.ok) {
+            const status = purchase.reason === "order_not_completed" ? 409 : 403;
+            const message =
+              purchase.reason === "order_not_completed"
+                ? "يمكن نشر التقييم بعد اكتمال الطلب فقط"
+                : purchase.reason === "product_not_in_order"
+                  ? "هذا المنتج غير موجود في الطلب المحدد"
+                  : "التقييم الموثق متاح فقط لمشتري المنتج بعد اكتمال الطلب";
+            return json({ error: purchase.reason, message }, { status });
+          }
 
-          await d1Run(
-            `INSERT INTO product_reviews (id, product_id, user_id, order_id, rating, comment, status, created_at)
-             VALUES (?, ?, ?, ?, ?, ?, 'pending', ?)`,
-            randomId("rev"),
+          const review = await publishVerifiedReview({
+            userId: user.id,
+            orderId: purchase.order.id,
             productId,
-            user.id,
-            orderId,
             rating,
             comment,
-            new Date().toISOString(),
-          );
-          return json({ ok: true, status: "pending", isBuyer: Boolean(isBuyer) });
+            ...(imageWasProvided ? { screenshotUrl: screenshotUrl || null } : {}),
+          });
+
+          /*
+            Completion normally issues this reward. Calling the same idempotent
+            function here repairs an older/missed completion and, crucially,
+            returns the real code to the website instead of hiding it in a
+            Telegram-only message.
+          */
+          const reward = await issueReviewReward(purchase.order);
+
+          return json({
+            ok: true,
+            status: "approved",
+            isBuyer: true,
+            review: {
+              id: review.id,
+              product_id: review.product_id,
+              order_id: review.order_id,
+              rating: review.rating,
+              comment: review.comment,
+              screenshot_url: review.screenshot_url,
+              status: review.status,
+              created_at: review.created_at,
+            },
+            reward,
+          });
         }),
 
       /** Admin moderation: approve / hide / delete. */
       PATCH: async ({ request }) =>
         guard(async () => {
-          await requireAdmin(request);
+          const admin = await requireAdmin(request);
           await ensureSchema();
+          await ensureReviewsSchema();
           const input = await body<Record<string, unknown>>(request);
           const id = clean(input["id"], 80);
           const action = clean(input["action"], 20);
@@ -181,9 +211,39 @@ export const Route = createFileRoute("/api/reviews")({
           if (action === "delete") {
             await d1Run(`DELETE FROM product_reviews WHERE id = ?`, id);
           } else {
+            const review = await d1First<ProductReviewRow>(
+              `SELECT * FROM product_reviews WHERE id = ?`,
+              id,
+            );
+            if (action !== "hide" && review) {
+              const purchase = await findCompletedPurchase(
+                review.user_id,
+                review.product_id,
+                review.order_id || undefined,
+              );
+              if (purchase.ok) {
+                await publishVerifiedReview({
+                  userId: review.user_id,
+                  orderId: purchase.order.id,
+                  productId: review.product_id,
+                  rating: Math.max(1, Math.min(5, Math.round(Number(review.rating) || 0))),
+                  comment: review.comment || "",
+                  screenshotUrl: review.screenshot_url || null,
+                });
+                await issueReviewReward(purchase.order);
+                return json({ ok: true, verified: true });
+              }
+            }
+            const nextStatus = action === "hide" ? "hidden" : "approved";
+            const approvedAt = nextStatus === "approved" ? new Date().toISOString() : null;
             await d1Run(
-              `UPDATE product_reviews SET status = ? WHERE id = ?`,
-              action === "hide" ? "hidden" : "approved",
+              `UPDATE product_reviews
+               SET status = ?, approved_at = ?, approved_by = ?, updated_at = ?
+               WHERE id = ?`,
+              nextStatus,
+              approvedAt,
+              nextStatus === "approved" ? `admin:${admin.id}` : null,
+              new Date().toISOString(),
               id,
             );
           }

@@ -34,6 +34,7 @@ import {
 } from "./referral/binding.server";
 import { insertRewardStatement, markAttributionConverted } from "./referral/rewards.server";
 import { memberAllowsNotification } from "./notification-preferences.server";
+import { isFullyDigitalOrder } from "./delivery-kinds";
 import type {
   Address,
   Order,
@@ -669,11 +670,7 @@ export async function createOrderForUser(
       : undefined;
 
   const finalItemsTotal = Math.max(0, itemsTotal - discountAmount);
-  const needsWalletPayment = items.every((item) =>
-    ["account", "offline_account", "online_account", "bundle", "preorder", "digital_code"].includes(
-      item.kind,
-    ),
-  );
+  const needsWalletPayment = isFullyDigitalOrder(items);
 
   if (needsWalletPayment && (user.walletBalance || 0) < finalItemsTotal) {
     // The coupon use was claimed a moment ago; give it back rather than
@@ -1001,26 +998,6 @@ export async function createOrderForUser(
     console.error("[order:banana_ledger_failed]", err);
   }
 
-  // Create Review Placeholder (Safe)
-  try {
-    const reviewDueAt = new Date(Date.now() + 3 * 24 * 60 * 60 * 1000).toISOString();
-    for (const item of items) {
-      await d1Run(
-        `INSERT INTO product_reviews (id, product_id, user_id, order_id, status, is_auto_review, review_due_at, created_at, updated_at)
-         VALUES (?, ?, ?, ?, 'pending', 0, ?, ?, ?)`,
-        randomId("rev"),
-        item.productId,
-        user.id,
-        orderId,
-        reviewDueAt,
-        now,
-        now,
-      );
-    }
-  } catch (err) {
-    console.error("[order:review_placeholder_failed]", err);
-  }
-
   // Initial status history (Safe)
   try {
     await d1Run(
@@ -1048,7 +1025,7 @@ export async function createOrderForUser(
   if (needsWalletPayment) {
     try {
       await d1Run(
-        `INSERT INTO order_queue (id, order_id, status, created_at, updated_at)
+        `INSERT OR IGNORE INTO order_queue (id, order_id, status, created_at, updated_at)
          VALUES (?, ?, 'waiting', ?, ?)`,
         randomId("que"),
         orderId,
@@ -1268,17 +1245,24 @@ export async function completeOrderTask(orderId: string, staffId: string): Promi
 
   const order = await getOrder(orderId);
   if (order) {
-    const { getDeliveryOrderState } = await import("./order-delivery-items.server");
+    const { completeDigitalOrderAndNext, getDeliveryOrderState } =
+      await import("./order-delivery-items.server");
     const delivery = await getDeliveryOrderState(order);
     if (delivery.progress.total > 0) {
-      throw new Error("digital_orders_complete_only_after_customer_confirmation_or_server_timeout");
+      await completeDigitalOrderAndNext({
+        orderId: order.id,
+        adminId: staffId,
+        adminName: "الإدارة",
+      });
+      return true;
     }
-    await updateOrderStatus({
-      orderId,
-      newStatus: "completed",
-      changedByUserId: staffId,
-      changedByRole: "ADMIN",
-      reason: "Order completed by staff",
+    const { completeOrder } = await import("./order-completion.server");
+    await completeOrder(order, {
+      by: staffId,
+      role: "ADMIN",
+      note: "Order completed by staff",
+      message: "تم تسليم وإكمال الطلب بنجاح ✅",
+      now,
     });
   }
 
@@ -1305,6 +1289,31 @@ export async function updateOrderStatus(params: {
 
   const oldStatus = order.status;
   const now = new Date().toISOString();
+
+  if (newStatus === "completed") {
+    if (isFullyDigitalOrder(order.items)) {
+      const { getDeliveryOrderState } = await import("./order-delivery-items.server");
+      const delivery = await getDeliveryOrderState(order);
+      if (delivery.progress.total > 0) {
+        throw new Error("digital_orders_require_verified_delivery_completion");
+      }
+    }
+    const { completeOrder } = await import("./order-completion.server");
+    const completed = await completeOrder(order, {
+      by: changedByUserId,
+      role: changedByRole === "USER" ? "USER" : changedByRole === "SYSTEM" ? "SYSTEM" : "ADMIN",
+      note: reason || "Order status changed to completed",
+      message: "تم تسليم وإكمال الطلب بنجاح ✅",
+      now,
+    });
+    await createAuditLog(changedByUserId, "update_order_status", "order", orderId, {
+      oldStatus,
+      newStatus,
+      reason,
+      metadata,
+    });
+    return completed.order;
+  }
 
   const next: Order = {
     ...order,

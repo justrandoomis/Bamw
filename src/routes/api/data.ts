@@ -58,11 +58,13 @@ const LIST_FIELDS = [
   "seriesName",
   "seriesNameEn",
   "series",
+  "originalPrice",
   "price",
   "status",
   "isActive",
   "kind",
   "platform",
+  "switch2Enhanced",
   "category",
   "categoryId",
   "categoryTitle",
@@ -87,6 +89,14 @@ const LIST_FIELDS = [
   "cartridgeImage",
   "cartridgeImageTrim",
   "nintendoCardImage",
+  "nintendoCardImageTrim",
+  // Legacy spellings still resolved by the square-card image contract. Home
+  // uses the slim payload, so these must travel with it or valid artwork would
+  // be ranked as missing and replaced by the placeholder there only.
+  "nintendo_card_image",
+  "squareGameImage",
+  "squareImage",
+  "square_card_image",
   "image",
   "coverImage",
   "coverImageTrim",
@@ -238,6 +248,11 @@ function slimStore(store: any, options?: { page?: number; limit?: number; catego
     products: products.map((p: any) => {
       const out: Record<string, unknown> = {};
       for (const key of LIST_FIELDS) if (p?.[key] !== undefined) out[key] = p[key];
+      // The listing card needs only this legacy Switch 2 flag, not the full
+      // switch2 detail object (which may contain a feature list).
+      if (p?.switch2?.isSwitch2Edition === true) {
+        out.switch2 = { isSwitch2Edition: true };
+      }
       return out;
     }),
   };

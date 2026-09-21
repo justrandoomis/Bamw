@@ -20,6 +20,7 @@ import { describe, expect, it, vi, beforeEach } from "vitest";
 
 const statements: { sql: string; args: unknown[] }[] = [];
 let ledger: Record<string, any> | null = null;
+let notification: Record<string, any> | null = null;
 let insertFails: ((sql: string) => string | null) | null = null;
 
 vi.mock("./d1.server", () => ({
@@ -27,13 +28,51 @@ vi.mock("./d1.server", () => ({
     const failure = insertFails?.(sql);
     if (failure) throw new Error(failure);
     statements.push({ sql, args });
+    if (/UPDATE review_reward_notifications/.test(sql) && notification) {
+      notification = { ...notification, status: "sent", sent_at: args[0] };
+    }
+    if (/DELETE FROM review_reward_notifications/.test(sql)) notification = null;
+    if (/DELETE FROM review_rewards/.test(sql)) ledger = null;
     return {};
   },
-  d1First: async (sql: string) => (/FROM review_rewards/.test(sql) ? ledger : null),
+  d1RunChanges: async (sql: string, ...args: unknown[]) => {
+    const failure = insertFails?.(sql);
+    if (failure) throw new Error(failure);
+    statements.push({ sql, args });
+    if (/INSERT OR IGNORE INTO review_rewards/.test(sql)) {
+      if (ledger) return 0;
+      ledger = {
+        user_id: args[1],
+        coupon_code: args[2],
+        amount_iqd: args[3],
+        expires_at: args[4],
+        issued_at: args[5],
+      };
+      return 1;
+    }
+    if (/INSERT OR IGNORE INTO review_reward_notifications/.test(sql)) {
+      if (notification) return 0;
+      notification = { status: "sending", attempted_at: args[1] };
+      return 1;
+    }
+    return 0;
+  },
+  d1First: async (sql: string) => {
+    if (/FROM review_rewards/.test(sql)) return ledger;
+    if (/FROM review_reward_notifications/.test(sql)) return notification;
+    return null;
+  },
+  d1All: async () => [],
+  ensureCouponsSchema: async () => undefined,
 }));
 
+let telegramChatId: string | null = "555000111";
 vi.mock("./telegram-notifications.server", () => ({
-  getUserTelegramChatId: async () => "555000111",
+  getUserTelegramChatId: async () => telegramChatId,
+}));
+
+vi.mock("./notification-preferences.server", () => ({
+  memberAllowsNotification: async () => true,
 }));
 
 const sent: { chatId: string | number; text: string; options: any }[] = [];
@@ -50,6 +89,7 @@ const ORDER = {
   id: "ord_1",
   code: "BNT-1234",
   userId: "usr_9",
+  status: "completed",
   items: [],
 } as any;
 
@@ -57,6 +97,8 @@ beforeEach(() => {
   statements.length = 0;
   sent.length = 0;
   ledger = null;
+  notification = null;
+  telegramChatId = "555000111";
   insertFails = null;
   vi.resetModules();
 });
@@ -117,15 +159,19 @@ describe("the reward code", () => {
 describe("minting is once per order", () => {
   it("returns the existing code rather than a second one", async () => {
     ledger = {
+      user_id: "usr_9",
       coupon_code: "REV-ABCDEFGH",
       amount_iqd: 1000,
       expires_at: "2026-09-11T00:00:00.000Z",
+      issued_at: "2026-09-04T00:00:00.000Z",
     };
     const { issueReviewReward } = await import("./review-reward.server");
     const reward = await issueReviewReward(ORDER);
 
     expect(reward?.code).toBe("REV-ABCDEFGH");
-    expect(couponInsert()).toBeUndefined();
+    // The durable entitlement is authoritative. Re-ensuring its coupon repairs
+    // a coupon row that may have been lost without ever minting a second code.
+    expect(couponInsert()!.args[1]).toBe("REV-ABCDEFGH");
   });
 
   it("never lets a failure become the order's problem", async () => {
@@ -184,21 +230,41 @@ describe("the invitation", () => {
     expect(sent[0]!.text).toContain("تم اكتمال طلبك");
     expect(sent[0]!.text).not.toContain("كود خصم");
   });
+
+  it("mints the reward even when the member has not linked Telegram", async () => {
+    telegramChatId = null;
+    const { sendReviewInvitation } = await import("./review-reward.server");
+
+    await expect(sendReviewInvitation(ORDER)).resolves.toBe(false);
+
+    expect(ledger?.coupon_code).toMatch(/^REV-/);
+    expect(couponInsert()).toBeDefined();
+    expect(sent).toHaveLength(0);
+  });
+
+  it("does not send a second Telegram invitation when completion is retried", async () => {
+    const { sendReviewInvitation } = await import("./review-reward.server");
+
+    await sendReviewInvitation(ORDER, { now: "2026-09-04T00:00:00.000Z" });
+    await sendReviewInvitation(ORDER, { now: "2026-09-04T00:01:00.000Z" });
+
+    expect(sent).toHaveLength(1);
+  });
 });
 
-describe("both completion paths invite the customer", () => {
+describe("every completion path reaches the invitation", () => {
   it.each([
-    ["src/lib/order-completion.server.ts", "the admin, customer and timer path"],
-    ["src/lib/order-delivery-items.server.ts", "the digital-delivery path"],
-  ])("%s calls sendReviewInvitation", async (file) => {
+    ["src/lib/order-completion.server.ts", "sendReviewInvitation("],
+    ["src/lib/order-delivery-items.server.ts", "completeOrder("],
+  ])("%s delegates to the central completion flow", async (file, call) => {
     const { readFileSync } = await import("node:fs");
     const { resolve } = await import("node:path");
     const text = readFileSync(resolve(process.cwd(), file), "utf8");
     /*
-      Two independent completion paths exist, each with its own rating card.
-      Wiring one and not the other is how half the customers would keep
-      hearing nothing.
+      Digital delivery must enter the central completion service, and that
+      service owns the invitation. Keeping a single owner prevents one path
+      from silently drifting away from the other.
     */
-    expect(text).toContain("sendReviewInvitation(");
+    expect(text).toContain(call);
   });
 });

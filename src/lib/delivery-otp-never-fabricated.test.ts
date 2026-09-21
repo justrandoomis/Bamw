@@ -51,9 +51,10 @@ describe("the delivery code is never fabricated", () => {
         if (GENERATORS.test(code)) offenders.push(`${file}:${index + 1}: ${line.trim()}`);
       }
     }
-    expect(offenders, `a code generator reached the delivery path:\n${offenders.join("\n")}`).toEqual(
-      [],
-    );
+    expect(
+      offenders,
+      `a code generator reached the delivery path:\n${offenders.join("\n")}`,
+    ).toEqual([]);
   });
 
   it("refuses to advance a delivery without a code somebody supplied", () => {

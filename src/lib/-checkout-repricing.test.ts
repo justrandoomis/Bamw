@@ -170,6 +170,29 @@ describe("the option the buyer picked", () => {
     ] as never);
     expect(order.items[0]!.unitPrice).toBe(10_000);
   });
+
+  it("never charges the compare-at price for a discounted type", async () => {
+    seed({
+      price: 10_000,
+      originalPrice: 15_000,
+      options: [{ id: "offline", name: "Offline", price: 10_000, originalPrice: 15_000 }],
+      types: [
+        {
+          id: "offline_dlc",
+          name: "Offline + DLC",
+          optionId: "offline",
+          price: 12_500,
+          originalPrice: 20_000,
+        },
+      ],
+    });
+
+    const order = await createOrderForUser(buyer, [
+      { productId: "prd_1", quantity: 2, optionId: "offline", typeId: "offline_dlc" },
+    ] as never);
+    expect(order.items[0]!.unitPrice).toBe(12_500);
+    expect(order.total).toBe(25_000);
+  });
 });
 
 describe("what the request may not decide", () => {

@@ -1,6 +1,8 @@
 import React, { useState } from "react";
-import { Star, CheckCircle, Send, MessageSquare, Sparkles, Loader2 } from "lucide-react";
+import { Star, CheckCircle, Send, MessageSquare, Sparkles, Loader2, Upload, X } from "lucide-react";
 import { toast } from "sonner";
+import { api, fileToDataUrl } from "@/lib/api";
+import ReviewRewardCode, { type ReviewRewardData } from "@/components/reviews/ReviewRewardCode";
 
 export interface RatingCardProps {
   orderId?: string;
@@ -41,6 +43,12 @@ export function RatingCard({
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [selectedProductId, setSelectedProductId] = useState(() =>
+    items[0]?.productId === undefined ? "" : String(items[0].productId),
+  );
+  const [imageUrl, setImageUrl] = useState("");
+  const [isUploading, setIsUploading] = useState(false);
+  const [reward, setReward] = useState<ReviewRewardData | null>(null);
 
   const isAr = locale === "ar";
   const starLabels = isAr ? STAR_LABELS_AR : STAR_LABELS_EN;
@@ -55,6 +63,21 @@ export function RatingCard({
     }
   };
 
+  const uploadImage = async (file?: File) => {
+    if (!file) return;
+    setIsUploading(true);
+    try {
+      const dataUrl = await fileToDataUrl(file);
+      const uploaded = await api.upload(dataUrl, "reviews");
+      setImageUrl(uploaded.url);
+      toast.success(isAr ? "تم رفع صورة التقييم" : "Review image uploaded");
+    } catch {
+      toast.error(isAr ? "فشل رفع الصورة" : "Image upload failed");
+    } finally {
+      setIsUploading(false);
+    }
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!rating) {
@@ -64,7 +87,11 @@ export function RatingCard({
 
     setIsSubmitting(true);
     try {
-      const firstProductId = items[0]?.productId ? String(items[0].productId) : "general";
+      const productId =
+        selectedProductId || (items[0]?.productId ? String(items[0].productId) : "");
+      if (!productId) {
+        throw new Error(isAr ? "تعذر تحديد منتج الطلب" : "Could not identify the order product");
+      }
       const fullComment = [
         comment.trim(),
         selectedTags.length > 0 ? `(${selectedTags.join(" | ")})` : "",
@@ -76,10 +103,11 @@ export function RatingCard({
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          productId: firstProductId,
+          productId,
           rating,
           comment: fullComment,
           orderId,
+          imageUrl: imageUrl || undefined,
         }),
       });
 
@@ -88,6 +116,11 @@ export function RatingCard({
         throw new Error(data?.error || (isAr ? "فشل إرسال التقييم" : "Failed to submit review"));
       }
 
+      const data = (await res.json().catch(() => ({}))) as {
+        reward?: ReviewRewardData | null;
+      };
+
+      setReward(data.reward ?? null);
       setIsSubmitted(true);
       toast.success(isAr ? "شكراً جزيلاً لتقييمك! ⭐" : "Thank you for your rating! ⭐");
       onSubmitted?.(rating, fullComment);
@@ -134,6 +167,11 @@ export function RatingCard({
             </p>
           </div>
         </div>
+        {reward && (
+          <div className="mt-3">
+            <ReviewRewardCode reward={reward} />
+          </div>
+        )}
       </div>
     );
   }
@@ -170,20 +208,36 @@ export function RatingCard({
       {/* Items Preview if available */}
       {items.length > 0 && (
         <div className="flex items-center gap-2 p-2 rounded-xl bg-muted/40 border border-border/50">
-          {items[0]?.image && (
+          {items.find((item) => String(item.productId ?? "") === selectedProductId)?.image && (
             <img
-              src={items[0].image}
-              alt={items[0].title || "Product"}
+              src={items.find((item) => String(item.productId ?? "") === selectedProductId)?.image}
+              alt={
+                items.find((item) => String(item.productId ?? "") === selectedProductId)?.title ||
+                "Product"
+              }
               className="w-8 h-8 rounded-lg object-cover bg-muted shrink-0"
             />
           )}
           <div className="flex-1 min-w-0">
-            <span className="text-[11px] font-bold text-foreground truncate block">
-              {items[0]?.title}
-            </span>
-            {items.length > 1 && (
-              <span className="text-[10px] text-muted-foreground">
-                {isAr ? `+ ${items.length - 1} عناصر أخرى` : `+ ${items.length - 1} other items`}
+            {items.length > 1 ? (
+              <select
+                value={selectedProductId}
+                onChange={(event) => setSelectedProductId(event.target.value)}
+                className="w-full rounded-lg border border-border bg-background px-2 py-1 text-[11px] font-bold text-foreground"
+                aria-label={isAr ? "اختر المنتج المراد تقييمه" : "Choose product to review"}
+              >
+                {items.map((item) => (
+                  <option
+                    key={item.id || String(item.productId)}
+                    value={String(item.productId ?? "")}
+                  >
+                    {item.title}
+                  </option>
+                ))}
+              </select>
+            ) : (
+              <span className="text-[11px] font-bold text-foreground truncate block">
+                {items[0]?.title}
               </span>
             )}
           </div>
@@ -261,9 +315,45 @@ export function RatingCard({
           <MessageSquare className="w-3.5 h-3.5 absolute top-2.5 end-2.5 text-muted-foreground/50 pointer-events-none" />
         </div>
 
+        <div>
+          {imageUrl ? (
+            <div className="relative h-16 w-16 overflow-hidden rounded-xl border border-border">
+              <img
+                src={imageUrl}
+                alt={isAr ? "صورة التقييم" : "Review"}
+                className="h-full w-full object-cover"
+              />
+              <button
+                type="button"
+                onClick={() => setImageUrl("")}
+                className="absolute right-1 top-1 rounded-full bg-black/70 p-1 text-white"
+                aria-label={isAr ? "حذف الصورة" : "Remove image"}
+              >
+                <X className="h-3 w-3" />
+              </button>
+            </div>
+          ) : (
+            <label className="flex cursor-pointer items-center justify-center gap-1.5 rounded-xl border border-dashed border-border py-2 text-[10px] font-bold text-muted-foreground hover:bg-muted/30">
+              {isUploading ? (
+                <Loader2 className="h-3.5 w-3.5 animate-spin" />
+              ) : (
+                <Upload className="h-3.5 w-3.5" />
+              )}
+              <span>{isAr ? "إرفاق صورة (اختياري)" : "Attach image (optional)"}</span>
+              <input
+                type="file"
+                accept="image/*"
+                className="hidden"
+                disabled={isUploading}
+                onChange={(event) => void uploadImage(event.target.files?.[0])}
+              />
+            </label>
+          )}
+        </div>
+
         <button
           type="submit"
-          disabled={isSubmitting || !rating}
+          disabled={isSubmitting || isUploading || !rating}
           className="w-full py-2.5 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 disabled:opacity-50 text-white rounded-xl text-xs font-bold transition-all shadow-xs flex items-center justify-center gap-1.5 cursor-pointer"
         >
           {isSubmitting ? (

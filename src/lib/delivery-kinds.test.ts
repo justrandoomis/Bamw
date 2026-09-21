@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 
 import { isPhysicalKind } from "./coupons";
-import { isDigitalOrderKind } from "./delivery-kinds";
+import { DIGITAL_ORDER_KINDS, isDigitalOrderKind, isFullyDigitalOrder } from "./delivery-kinds";
 import { buildListing, type CatalogueRow } from "./catalogueImport";
 
 /*
@@ -104,5 +104,53 @@ describe("which order lines get a delivery slot", () => {
     expect(isDigitalOrderKind(" Hardware ")).toBe(false);
     expect(isDigitalOrderKind("ACCESSORY")).toBe(false);
     expect(isDigitalOrderKind(" Game ")).toBe(true);
+  });
+});
+
+/*
+  The other branch's tests for the same file, kept. Both fixed this fault, and
+  the cases each one chose to pin are worth keeping whichever rule survived.
+*/
+describe("an order taken as a whole", () => {
+  it("is fully digital when every line is handed over", () => {
+    expect(isFullyDigitalOrder([{ kind: "game" }])).toBe(true);
+    expect(isFullyDigitalOrder([{ kind: "game" }, { kind: "account" }])).toBe(true);
+  });
+
+  it("is not, as soon as one line ships", () => {
+    expect(isFullyDigitalOrder([{ kind: "game" }, { kind: "hardware" }])).toBe(false);
+  });
+
+  it("is not, when there are no lines at all", () => {
+    /*
+      An empty order is not "fully digital" — it is nothing, and treating it as
+      digital would hand it a fulfilment path it has no items for.
+    */
+    expect(isFullyDigitalOrder([])).toBe(false);
+    expect(isFullyDigitalOrder(null)).toBe(false);
+    expect(isFullyDigitalOrder(undefined)).toBe(false);
+  });
+});
+
+describe("the named list and the rule", () => {
+  it("agree: every kind the list names is one the rule admits", () => {
+    /*
+      `DIGITAL_ORDER_KINDS` describes the rule rather than defining it — the
+      delivery query binds it as a JSON list — so the two must not drift. An
+      unlisted kind is still digital; a listed kind that the rule refused would
+      be a contradiction.
+    */
+    for (const kind of DIGITAL_ORDER_KINDS) {
+      expect(isDigitalOrderKind(kind), kind).toBe(true);
+    }
+  });
+
+  it("names the kind the catalogue import writes", () => {
+    expect([...DIGITAL_ORDER_KINDS]).toContain("game");
+  });
+
+  it("reads a missing kind as an account, because legacy purchases have none", () => {
+    expect(isDigitalOrderKind(null)).toBe(true);
+    expect(isDigitalOrderKind(undefined)).toBe(true);
   });
 });
