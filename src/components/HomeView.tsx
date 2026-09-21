@@ -29,6 +29,7 @@ import { preloadGameCovers, preloadImage, preload3DBoxAssets } from "@/lib/image
 import { LazySection } from "./LazySection";
 import NintendoNews from "./NintendoNews";
 import { HomeBananaMarket } from "./HomeBananaMarket";
+import { HomeGameZone } from "./HomeGameZone";
 import { StoreServices } from "./StoreServices";
 import { SectionErrorBoundary } from "./SectionErrorBoundary";
 
@@ -667,6 +668,16 @@ export default function HomeView({
             >
               <HomeBananaMarket />
             </Suspense>
+          </LazySection>
+        </SectionErrorBoundary>
+
+        {/*
+          Section 9.5: Games & Prizes — «فوق الأخبار وتحت سوق الموز», exactly
+          where the owner put it.
+        */}
+        <SectionErrorBoundary sectionName="HomeGameZone">
+          <LazySection>
+            <HomeGameZone />
           </LazySection>
         </SectionErrorBoundary>
 

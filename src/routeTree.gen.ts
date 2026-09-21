@@ -29,6 +29,7 @@ import { Route as SearchRouteImport } from './routes/search'
 import { Route as SupportRouteImport } from './routes/support'
 import { Route as UsedRouteImport } from './routes/used'
 import { Route as WalletRouteImport } from './routes/wallet'
+import { Route as WheelRouteImport } from './routes/wheel'
 import { Route as AdminIndexRouteImport } from './routes/admin.index'
 import { Route as AdminImportRouteImport } from './routes/admin.import'
 import { Route as AdminOrdersRouteImport } from './routes/admin.orders'
@@ -232,6 +233,11 @@ const UsedRoute = UsedRouteImport.update({
 const WalletRoute = WalletRouteImport.update({
   id: '/wallet',
   path: '/wallet',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WheelRoute = WheelRouteImport.update({
+  id: '/wheel',
+  path: '/wheel',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AdminIndexRoute = AdminIndexRouteImport.update({
@@ -793,6 +799,7 @@ export interface FileRoutesByFullPath {
   '/support': typeof SupportRoute
   '/used': typeof UsedRoute
   '/wallet': typeof WalletRoute
+  '/wheel': typeof WheelRoute
   '/admin/import': typeof AdminImportRoute
   '/admin/orders': typeof AdminOrdersRoute
   '/api/admin-wipe': typeof ApiAdminWipeRoute
@@ -919,6 +926,7 @@ export interface FileRoutesByTo {
   '/support': typeof SupportRoute
   '/used': typeof UsedRoute
   '/wallet': typeof WalletRoute
+  '/wheel': typeof WheelRoute
   '/admin/import': typeof AdminImportRoute
   '/admin/orders': typeof AdminOrdersRoute
   '/api/admin-wipe': typeof ApiAdminWipeRoute
@@ -1046,6 +1054,7 @@ export interface FileRoutesById {
   '/support': typeof SupportRoute
   '/used': typeof UsedRoute
   '/wallet': typeof WalletRoute
+  '/wheel': typeof WheelRoute
   '/admin/import': typeof AdminImportRoute
   '/admin/orders': typeof AdminOrdersRoute
   '/api/admin-wipe': typeof ApiAdminWipeRoute
@@ -1174,6 +1183,7 @@ export interface FileRouteTypes {
     | '/support'
     | '/used'
     | '/wallet'
+    | '/wheel'
     | '/admin/import'
     | '/admin/orders'
     | '/api/admin-wipe'
@@ -1300,6 +1310,7 @@ export interface FileRouteTypes {
     | '/support'
     | '/used'
     | '/wallet'
+    | '/wheel'
     | '/admin/import'
     | '/admin/orders'
     | '/api/admin-wipe'
@@ -1426,6 +1437,7 @@ export interface FileRouteTypes {
     | '/support'
     | '/used'
     | '/wallet'
+    | '/wheel'
     | '/admin/import'
     | '/admin/orders'
     | '/api/admin-wipe'
@@ -1553,6 +1565,7 @@ export interface RootRouteChildren {
   SupportRoute: typeof SupportRoute
   UsedRoute: typeof UsedRoute
   WalletRoute: typeof WalletRoute
+  WheelRoute: typeof WheelRoute
   AdminImportRoute: typeof AdminImportRoute
   AdminOrdersRoute: typeof AdminOrdersRoute
   ApiAdminWipeRoute: typeof ApiAdminWipeRoute
@@ -1787,6 +1800,13 @@ declare module '@tanstack/react-router' {
       path: '/wallet'
       fullPath: '/wallet'
       preLoaderRoute: typeof WalletRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/wheel': {
+      id: '/wheel'
+      path: '/wheel'
+      fullPath: '/wheel'
+      preLoaderRoute: typeof WheelRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/admin/': {
@@ -2603,6 +2623,7 @@ const rootRouteChildren: RootRouteChildren = {
   SupportRoute: SupportRoute,
   UsedRoute: UsedRoute,
   WalletRoute: WalletRoute,
+  WheelRoute: WheelRoute,
   AdminImportRoute: AdminImportRoute,
   AdminOrdersRoute: AdminOrdersRoute,
   ApiAdminWipeRoute: ApiAdminWipeRoute,
