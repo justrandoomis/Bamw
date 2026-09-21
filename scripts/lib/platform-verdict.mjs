@@ -123,21 +123,67 @@ export function platformVerdict({ ours, evidence = [], complete = true, isEditio
  */
 export function titleVerdict(title, platform) {
   const raw = String(title ?? "");
+  if (!raw) return { action: "keep" };
   const match = CONSOLE_BRACKET.exec(raw);
-  if (!match) return { action: "keep" };
 
-  const bracket = match[1] ? "switch2" : "switch1";
-  if (platform !== "both" && bracket !== platform) {
-    return {
-      action: "report",
-      reason: `the name says ${bracket === "switch2" ? "Switch 2" : "Switch"} but the product is ${platform}`,
-    };
+  if (match) {
+    const bracket = match[1] ? "switch2" : "switch1";
+    if (platform !== "both" && bracket !== platform) {
+      return {
+        action: "report",
+        reason: `the name says ${bracket === "switch2" ? "Switch 2" : "Switch"} but the product is ${platform}`,
+      };
+    }
   }
 
-  const stripped = raw.replace(CONSOLE_BRACKET, "").replace(/\s+/g, " ").trim();
-  if (!stripped) return { action: "keep", reason: "the bracket is the whole name" };
-  if (stripped === raw) return { action: "keep" };
-  return { action: "rename", to: stripped, reason: "the console belongs in the platform field" };
+  /*
+    The bracket, then the spacing. Collapsing runs of whitespace and trimming
+    the ends is safe in a way nothing else here is: `normalizeProductTitle`
+    already collapses whitespace before it builds an identity key, so a
+    whitespace-only change cannot move a product onto a different key and
+    cannot collide with anything. It is still put through the same collision
+    check as every other correction, because the rule should not depend on
+    that remaining true.
+  */
+  const withoutBracket = match ? raw.replace(CONSOLE_BRACKET, "") : raw;
+  const tidied = withoutBracket.replace(/\s+/g, " ").trim();
+
+  if (!tidied) return { action: "keep", reason: "there would be no name left" };
+  if (tidied === raw) return { action: "keep" };
+  return {
+    action: "rename",
+    to: tidied,
+    reason: match
+      ? "the console belongs in the platform field"
+      : "the name carries stray whitespace",
+  };
+}
+
+/**
+ * Faults in a name worth a person's eye, reported and never acted on.
+ *
+ * Each of these has more than one plausible repair, and choosing between them
+ * is a judgement about a shop's own copy rather than something a rule can
+ * settle. `Ã©` may be a mangled `é` or may be what the publisher actually
+ * wrote; an all-capitals title may be shouting or may be the logo. So they are
+ * counted and listed, and the stored name stands.
+ */
+export function titleFlags(title) {
+  const raw = String(title ?? "");
+  const flags = [];
+  if (!raw.trim()) return ["empty"];
+  // The classic UTF-8-read-as-Latin-1 signatures.
+  if (/[ÃÂ]\s*[\u0080-\u00BF]|â€|ï»¿|\uFFFD/.test(raw)) flags.push("mojibake");
+  // The console as prose rather than as a bracket: "Foo for Nintendo Switch".
+  if (/\b(?:for|on)\s+(?:the\s+)?nintendo\s+switch\s*2?\s*$/i.test(raw)) {
+    flags.push("console in prose");
+  }
+  const letters = raw.replace(/[^\p{L}]/gu, "");
+  if (letters.length >= 6 && /\p{Lu}/u.test(letters) && !/\p{Ll}/u.test(letters)) {
+    flags.push("all capitals");
+  }
+  if (/\[[^\]]*\]/.test(raw.replace(CONSOLE_BRACKET, ""))) flags.push("another bracket");
+  return flags;
 }
 
 /**

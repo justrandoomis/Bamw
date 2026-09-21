@@ -66,6 +66,7 @@ import {
   declaresSwitch2Edition,
   platformVerdict,
   settleCollisions,
+  titleFlags,
   titleVerdict,
 } from "./lib/platform-verdict.mjs";
 
@@ -274,6 +275,7 @@ async function gatherEvidence(product, stored) {
 /* ------------------------------------------------------------- the decisions */
 const proposals = new Map(); // id -> { product, platform?, title?, titleEn?, why: [] }
 const reports = [];
+const flags = [];
 const unchanged = [];
 let asked = 0;
 let unaskable = 0;
@@ -335,6 +337,16 @@ for (const product of queue) {
   */
   if (DO_TITLES) {
     for (const field of ["title", "titleEn"]) {
+      /*
+        Reported and never acted on. Each of these has more than one plausible
+        repair and choosing between them is a judgement about the shop's own
+        copy — `PokÃ©mon` may be a mangled `é` or may be what the publisher
+        wrote — so they are listed and the stored name stands.
+      */
+      for (const flagged of titleFlags(product[field])) {
+        if (flagged === "empty") continue;
+        flags.push({ id, label, field, flagged, value: String(product[field] ?? "") });
+      }
       const verdict = titleVerdict(product[field], platform);
       if (verdict.action === "rename") {
         why.push(`${field} "${product[field]}" → "${verdict.to}": ${verdict.reason}`);
@@ -420,6 +432,23 @@ if (reports.length) {
       say(`- **${row.label}** — ${row.reason}${row.detail ? `  \n  _${row.detail}_` : ""}`);
     }
     if (rows.length > 80) say(`- _…and ${rows.length - 80} more._`);
+    say();
+  }
+}
+
+if (flags.length) {
+  say(`## Names worth a person's eye, reported and not changed`);
+  say();
+  const byFlag = new Map();
+  for (const row of flags) {
+    if (!byFlag.has(row.flagged)) byFlag.set(row.flagged, []);
+    byFlag.get(row.flagged).push(row);
+  }
+  for (const [flagged, rows] of byFlag) {
+    say(`### ${flagged} (${rows.length})`);
+    say();
+    for (const row of rows.slice(0, 40)) say(`- \`${row.field}\` — ${row.value}`);
+    if (rows.length > 40) say(`- _…and ${rows.length - 40} more._`);
     say();
   }
 }

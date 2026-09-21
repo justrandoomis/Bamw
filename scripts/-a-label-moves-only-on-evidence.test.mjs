@@ -16,6 +16,7 @@ import {
   declaresSwitch2Edition,
   platformVerdict,
   settleCollisions,
+  titleFlags,
   titleVerdict,
 } from "./lib/platform-verdict.mjs";
 
@@ -275,5 +276,35 @@ describe("the collision check, which is the last refusal", () => {
     expect(dropped).toEqual([]);
     expect(preexisting).toHaveLength(1);
     expect(preexisting[0].ids.sort()).toEqual(["a", "b"]);
+  });
+});
+
+describe("names reported rather than repaired", () => {
+  it("flags the UTF-8-read-as-Latin-1 signature without proposing a repair", () => {
+    expect(titleFlags("PokÃ©mon")).toContain("mojibake");
+    expect(titleVerdict("PokÃ©mon", "switch1").action).toBe("keep");
+  });
+
+  it("flags the console written as prose", () => {
+    expect(titleFlags("Some Game for Nintendo Switch")).toContain("console in prose");
+  });
+
+  it("does not call a CJK title all capitals", () => {
+    /*
+      Those scripts have no case at all, and an uppercase test that ignores
+      that would flag every Japanese title in the catalogue.
+    */
+    expect(titleFlags("最恐 青鬼 の 世界")).toEqual([]);
+  });
+
+  it("tidies stray whitespace, which cannot change an identity", () => {
+    /*
+      `normalizeProductTitle` collapses whitespace before it builds a key, so
+      this rename cannot move a product onto a different one.
+    */
+    expect(titleVerdict("  Foo   Bar  ", "switch1")).toMatchObject({
+      action: "rename",
+      to: "Foo Bar",
+    });
   });
 });
