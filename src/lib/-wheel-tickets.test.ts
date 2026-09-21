@@ -396,3 +396,84 @@ describe("the prize pays for one copy", () => {
     ).rejects.toThrow(/WHEEL_PRIZE_NO_PRICE/);
   });
 });
+
+/**
+ * Failures that must not undo work that already succeeded.
+ *
+ * Each of these is the same mistake in a different place: a read taken for
+ * the screen, placed where a failure on it looks like a failure of the thing
+ * it was reporting on. The cost is never the missing number — it is the
+ * rollback that follows.
+ */
+describe("a read that fails after the work is done", () => {
+  it("keeps the prize when only the closing balance cannot be read", async () => {
+    await wheel.grantTickets({ userId: "usr_a", quantity: 1, reason: "test", now: NOW });
+    /*
+      Exactly `getTicketBalance`'s own SELECT is made to fail, at the binding,
+      so every write the spin performs still lands. Failing the whole table
+      would stop the spin before it started and prove nothing about the
+      ordering this is here to hold.
+    */
+    const realPrepare = db.prepare;
+    db.prepare = ((sql: string) => {
+      if (/SELECT balance FROM wheel_tickets/.test(sql)) throw new Error("boom");
+      return realPrepare.call(db, sql);
+    }) as typeof db.prepare;
+    try {
+      const outcome = await wheel.spinWheel({ userId: "usr_a", candidates: GAMES, now: NOW });
+      // The spin happened; a failing balance read must not turn it into a loss.
+      expect(outcome.ok).toBe(true);
+    } finally {
+      db.prepare = realPrepare;
+    }
+
+    const coupons = db.raw
+      .prepare(`SELECT COUNT(*) AS n FROM coupons WHERE code LIKE 'WIN-%'`)
+      .get() as { n: number };
+    expect(coupons.n).toBe(1);
+    expect(await wheel.recentSpins("usr_a", 10)).toHaveLength(1);
+  });
+});
+
+describe("one reference, many members", () => {
+  it("grants a shared campaign reference to every one of them", async () => {
+    /*
+      The index was `UNIQUE (reference_id)` across the table, which reads as
+      "this grant happens once" and means "once in the whole shop". A single
+      campaign reference handed to a list of members granted the first and
+      reported "already granted" for all the rest.
+    */
+    for (const userId of ["usr_a", "usr_b", "usr_c"]) {
+      const result = await wheel.grantTickets({
+        userId,
+        quantity: 1,
+        reason: "campaign",
+        referenceId: "eid-2026",
+        now: NOW,
+      });
+      expect(result.granted).toBe(true);
+    }
+    for (const userId of ["usr_a", "usr_b", "usr_c"]) {
+      expect(await wheel.getTicketBalance(userId)).toBe(1);
+    }
+  });
+
+  it("still refuses the same member twice under that reference", async () => {
+    await wheel.grantTickets({
+      userId: "usr_a",
+      quantity: 1,
+      reason: "campaign",
+      referenceId: "eid-2026",
+      now: NOW,
+    });
+    const again = await wheel.grantTickets({
+      userId: "usr_a",
+      quantity: 1,
+      reason: "campaign",
+      referenceId: "eid-2026",
+      now: NOW,
+    });
+    expect(again.granted).toBe(false);
+    expect(await wheel.getTicketBalance("usr_a")).toBe(1);
+  });
+});

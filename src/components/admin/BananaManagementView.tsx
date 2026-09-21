@@ -143,6 +143,17 @@ export function BananaManagementView() {
   const [ticketUser, setTicketUser] = useState<any | null>(null);
   const [ticketCount, setTicketCount] = useState("1");
   const [ticketReason, setTicketReason] = useState("");
+  /*
+    One value per opening of the dialog, so the reference identifies THIS
+    press and not "a grant that looks like this one".
+
+    It was built from the member, the count and the reason, which makes a
+    double-click harmless and also makes the second deliberate grant
+    impossible: one ticket with no reason typed produces the same reference
+    for the rest of that member's life, and the ledger refuses it forever
+    with "already granted". A count and a note are not an identity.
+  */
+  const [ticketPress, setTicketPress] = useState("");
 
   // Redemption Details Modal State
   const [selectedRedemption, setSelectedRedemption] = useState<any | null>(null);
@@ -298,6 +309,7 @@ export function BananaManagementView() {
       setTicketModalOpen(false);
       setTicketCount("1");
       setTicketReason("");
+      setTicketPress("");
       showToast(
         result?.note
           ? result.note
@@ -1296,6 +1308,9 @@ export function BananaManagementView() {
                             setTicketUser(user);
                             setTicketCount("1");
                             setTicketReason("");
+                            setTicketPress(
+                              `press_${Date.now().toString(36)}_${Math.random().toString(36).slice(2, 10)}`,
+                            );
                             setTicketModalOpen(true);
                           }}
                           className="ms-2 px-3 py-1.5 rounded-lg bg-violet-500/10 text-violet-700 dark:text-violet-400 hover:bg-violet-500/20 text-xs font-bold transition-colors"
@@ -1888,12 +1903,11 @@ export function BananaManagementView() {
                     quantity: Math.floor(Number(ticketCount) || 0),
                     reason: ticketReason || "منح إداري",
                     /*
-                      A reference the admin's own press decides, so pressing
-                      twice on the same intention adds one grant and not two.
-                      The reason is part of it: a second, deliberate grant to
-                      the same member is a different note, and goes through.
+                      This opening of the dialog. Two clicks on the button
+                      below share it and grant once; closing and opening the
+                      dialog again is a new intention and grants again.
                     */
-                    referenceId: `admin:${ticketUser.userId}:${ticketCount}:${ticketReason}`,
+                    referenceId: `admin:${ticketUser.userId}:${ticketPress}`,
                   })
                 }
                 disabled={

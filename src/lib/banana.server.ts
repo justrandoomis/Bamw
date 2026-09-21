@@ -554,6 +554,44 @@ export async function buyListing(userId: string, listingId: string) {
   return { success: true, commission };
 }
 
+/**
+ * Put a redemption back: the bananas, and the stock that was spent on it.
+ *
+ * Three paths could fail after the debit and each one had written its own
+ * version of this — the first restored the stock, the second did not, and a
+ * third silently did nothing at all. A member who lost their bananas to a
+ * failed ticket grant also lost one unit of stock that nobody received, and
+ * a reward with ten in stock could reach zero having delivered none.
+ *
+ * `creditBananaBalance` really is idempotent on `idempotencyKey` (unlike the
+ * debit, whose key is only the transaction's id), so calling this twice for
+ * one redemption cannot pay the member twice.
+ */
+async function refundRedemption(
+  userId: string,
+  reward: { banana_price?: unknown; title?: unknown; id?: unknown },
+  rid: string,
+  reason: string,
+): Promise<void> {
+  await creditBananaBalance(userId, Number(reward.banana_price) || 0, {
+    reason,
+    kind: "refund",
+    idempotencyKey: `refund_${rid}`,
+  }).catch(() => undefined);
+  await d1Run(
+    `UPDATE banana_redemption_offers SET stock = CASE WHEN stock >= 0 THEN stock + 1 ELSE stock END WHERE id = ?`,
+    String(reward.id ?? ""),
+  ).catch(() => undefined);
+  /*
+    And the row itself, so the member is not shown a redemption they were
+    refunded for. Deleted by its own id, which is this redemption and no
+    other.
+  */
+  await d1Run(`DELETE FROM banana_redemptions WHERE id = ? AND user_id = ?`, rid, userId).catch(
+    () => undefined,
+  );
+}
+
 export async function redeemReward(userId: string, rewardId: string) {
   const reward = await d1First<any>(
     `SELECT * FROM banana_redemption_offers WHERE id = ? AND is_active = 1`,
@@ -584,7 +622,19 @@ export async function redeemReward(userId: string, rewardId: string) {
     the route as a 500 rather than anything a member could act on. Bananas
     went in, nothing came out, and no row recorded it.
   */
-  const rid = `brd_${Date.now()}`;
+  /*
+    A millisecond is not an identity.
+
+    `rid` is the `banana_redemptions` primary key, the ticket grant's
+    idempotency reference, and the key both refunds are written under. Built
+    from `Date.now()` alone, two members redeeming in the same millisecond
+    computed the same one — and on a Worker that is not a remote possibility,
+    it is what a popular reward looks like at launch. The second INSERT would
+    fail on the primary key, and the refund that followed would be written
+    under the first member's key.
+  */
+  const { randomId } = await import("./crypto.server");
+  const rid = randomId("brd");
   const loggedAt = new Date().toISOString();
   try {
     await d1Run(
@@ -621,7 +671,30 @@ export async function redeemReward(userId: string, rewardId: string) {
     retried redemption cannot mint a second ticket.
   */
   const { grantTickets, ticketQuantityForOffer } = await import("./wheel.server");
-  const quantity = await ticketQuantityForOffer(rewardId).catch(() => 0);
+
+  /*
+    A lookup that failed and an offer that sells no tickets are not the same
+    thing, and `.catch(() => 0)` made them one. A transient error here read as
+    "this reward is not a ticket offer", so the member's bananas were taken,
+    the redemption was recorded, no tickets were granted, and the reply said
+    `success: true`. Nothing anywhere would have said otherwise.
+
+    It is asked again once, because the usual cause is a single dropped
+    request; if it still cannot be answered the redemption is put back rather
+    than guessed at.
+  */
+  let quantity = 0;
+  try {
+    quantity = await ticketQuantityForOffer(rewardId);
+  } catch {
+    try {
+      quantity = await ticketQuantityForOffer(rewardId);
+    } catch {
+      await refundRedemption(userId, reward, rid, "Ticket lookup refund");
+      throw new BananaError("ticket_not_granted");
+    }
+  }
+
   if (quantity > 0) {
     const granted = await grantTickets({
       userId,
@@ -632,11 +705,7 @@ export async function redeemReward(userId: string, rewardId: string) {
     }).catch(() => ({ granted: false, balance: 0 }));
 
     if (!granted.granted) {
-      await creditBananaBalance(userId, Number(reward.banana_price) || 0, {
-        reason: `Ticket refund: ${reward.title}`,
-        kind: "refund",
-        idempotencyKey: `refund_${rid}`,
-      }).catch(() => undefined);
+      await refundRedemption(userId, reward, rid, `Ticket refund: ${reward.title}`);
       throw new BananaError("ticket_not_granted");
     }
 

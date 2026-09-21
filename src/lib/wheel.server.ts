@@ -114,9 +114,22 @@ export function ensureWheelSchema(): Promise<void> {
           created_at   TEXT NOT NULL
         )
       `);
+      /*
+        Unique per MEMBER and reference, not per reference.
+
+        The first version was `UNIQUE (reference_id)` across the whole table,
+        which reads as "this grant happens once" and means "this grant happens
+        once in the shop". One campaign reference handed to fifty members
+        would grant the first and silently refuse the other forty-nine, each
+        of them reported back as "already granted".
+
+        The old index is dropped rather than left beside the new one: it is
+        the constraint, so leaving it in place would leave the bug in place.
+      */
+      await d1Run(`DROP INDEX IF EXISTS wheel_ticket_ledger_ref_idx`).catch(() => undefined);
       await d1Run(
-        `CREATE UNIQUE INDEX IF NOT EXISTS wheel_ticket_ledger_ref_idx
-           ON wheel_ticket_ledger (reference_id) WHERE reference_id IS NOT NULL`,
+        `CREATE UNIQUE INDEX IF NOT EXISTS wheel_ticket_ledger_user_ref_idx
+           ON wheel_ticket_ledger (user_id, reference_id) WHERE reference_id IS NOT NULL`,
       );
       await d1Run(
         `CREATE INDEX IF NOT EXISTS wheel_ticket_ledger_user_idx
@@ -256,7 +269,13 @@ export async function grantTickets(input: {
     throw error;
   }
 
-  return { granted: true, balance: await getTicketBalance(userId) };
+  /*
+    Same rule as the spin. The tickets are in the member's balance by now, and
+    the caller treats a thrown error as "not granted" and refunds the bananas
+    — so letting this last SELECT throw would hand the member both the
+    tickets and their money back.
+  */
+  return { granted: true, balance: await getTicketBalance(userId).catch(() => 0) };
 }
 
 /**
@@ -430,6 +449,19 @@ export async function spinWheel(input: {
       now,
     );
 
+    /*
+      Past this point the spin has happened: the coupon is minted and the
+      `wheel_spins` row is committed. The closing balance is a number for the
+      screen, and it used to be read inside the try as the last expression of
+      the return — so a transient failure on that one SELECT fell into the
+      catch below, which revokes the prize and hands the ticket back for a
+      spin that fully succeeded. The member would be left with a spin row
+      pointing at a coupon that no longer exists.
+
+      So it is read where it cannot do that, and a failure to read it costs
+      the screen a number rather than costing the member their prize.
+    */
+    const ticketsLeft = await getTicketBalance(userId).catch(() => 0);
     return {
       ok: true,
       spinId,
@@ -441,7 +473,7 @@ export async function spinWheel(input: {
       },
       couponCode,
       expiresAt,
-      ticketsLeft: await getTicketBalance(userId),
+      ticketsLeft,
     };
   } catch (error) {
     /*
