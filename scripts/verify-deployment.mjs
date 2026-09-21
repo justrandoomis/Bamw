@@ -151,17 +151,70 @@ try {
   say(`- \`POST /api/referral\` → unreachable: ${String(error?.message || error)}`);
 }
 
+/*
+  Is the review that earns the code actually deployed?
+
+  Three checks, and each one distinguishes "deployed" from "routed". A route
+  that is not in the bundle answers 404; one that is answers 401 because it
+  asked who you are first. And `/api/content` is the positive control: it is
+  public, it returns the merged content document, and `reviewPrompt` only
+  exists in that document if the deployed `mergeContent` is the new one. A
+  release that somehow served the old bundle would pass the two 401s — the
+  paths would still be absent — but it cannot fake this.
+*/
+let reviewOk = false;
+try {
+  const [sheet, admin, content] = await Promise.all([
+    fetch(`${ORIGIN}/api/order-review?orderId=zzzzzzzz`, {
+      headers: { "user-agent": "bananto-deploy-verify" },
+    }),
+    fetch(`${ORIGIN}/api/admin/review-submissions`, {
+      headers: { "user-agent": "bananto-deploy-verify" },
+    }),
+    fetch(`${ORIGIN}/api/content`, { headers: { "user-agent": "bananto-deploy-verify" } }),
+  ]);
+
+  // A guest is refused, not 404'd: `requireUser` and `requireAdmin` throw a
+  // 401 Response, which means the handler ran.
+  const sheetOk = sheet.status === 401;
+  const adminOk = admin.status === 401 || admin.status === 403;
+
+  const contentText = await content.text();
+  const contentOk = content.ok && contentText.includes("reviewPrompt");
+
+  reviewOk = sheetOk && adminOk && contentOk;
+  say(
+    `- \`GET /api/order-review\` → HTTP ${sheet.status}${
+      sheetOk ? " (guest refused — the route is deployed)" : " (unexpected)"
+    }`,
+  );
+  say(
+    `- \`GET /api/admin/review-submissions\` → HTTP ${admin.status}${
+      adminOk ? " (guest refused — the route is deployed)" : " (unexpected)"
+    }`,
+  );
+  say(
+    `- \`GET /api/content\` → HTTP ${content.status}${
+      contentOk
+        ? " (carries `reviewPrompt` — the new content document is live)"
+        : " (no `reviewPrompt`: an older bundle is serving)"
+    }`,
+  );
+} catch (error) {
+  say(`- review endpoints → unreachable: ${String(error?.message || error)}`);
+}
+
 const healthy = health?.ok === true && body.status === "OK";
 say();
 say(
-  healthy && homeOk && referralOk
+  healthy && homeOk && referralOk && reviewOk
     ? `**verified: the deployed site is healthy**`
     : `**FAILED**`,
 );
 
 writeFileSync("deployment-verification.md", lines.join("\n") + "\n");
 
-if (!healthy || !homeOk || !referralOk) {
+if (!healthy || !homeOk || !referralOk || !reviewOk) {
   console.error("deployment verification failed");
   process.exit(1);
 }
