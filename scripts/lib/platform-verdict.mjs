@@ -88,10 +88,24 @@ export function platformVerdict({ ours, evidence = [], complete = true, isEditio
   }
   if (isEdition) return { action: "flip", to: "switch2", reason: "a Nintendo Switch 2 Edition" };
 
+  /*
+    "both" is not a console, so `seen` can never contain it and the check above
+    cannot vindicate it. It is vindicated by Nintendo carrying the title on
+    both consoles — which the first dry run found for RAIDOU Remastered and
+    which this reported as a fault until it did.
+
+    When Nintendo carries only one, the label still stands. Nearly every Switch
+    1 game is playable on a Switch 2, so a shop selling one for both consoles
+    is making a commercial statement about what it will sell, not a claim about
+    Nintendo's catalogue, and that is the owner's to make.
+  */
   if (ours === "both") {
+    if (seen.length > 1) {
+      return { action: "keep", reason: "Nintendo lists this title on both consoles" };
+    }
     return {
       action: "report",
-      reason: `the shop sells this for both consoles; Nintendo lists it only on ${seen.join(" and ")}`,
+      reason: `the shop sells this for both consoles; Nintendo lists it only on ${seen[0] === "switch2" ? "Nintendo Switch 2" : "Nintendo Switch"}`,
     };
   }
   if (seen.length === 1) {

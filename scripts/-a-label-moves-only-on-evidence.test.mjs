@@ -67,8 +67,24 @@ describe("when it may not", () => {
   });
 
   it("reports rather than flips a product the shop sells for both consoles", () => {
+    /*
+      Nearly every Switch 1 game is playable on a Switch 2, so "both" is a
+      statement about what the shop will sell, not a claim about Nintendo's
+      catalogue. That is the owner's to make.
+    */
     const verdict = platformVerdict({ ours: "both", evidence: ["switch1"] });
     expect(verdict.action).toBe("report");
+  });
+
+  it('vindicates "both" when Nintendo really does carry both', () => {
+    /*
+      Measured, and the reason this test exists: the first dry run reported
+      RAIDOU Remastered as a fault — "Nintendo lists it only on switch1 and
+      switch2" — because `seen` can never contain the word "both" and the
+      vindication check above therefore could not see it.
+    */
+    const verdict = platformVerdict({ ours: "both", evidence: ["switch1", "switch2"] });
+    expect(verdict.action).toBe("keep");
   });
 });
 
