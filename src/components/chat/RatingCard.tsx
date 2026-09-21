@@ -40,7 +40,7 @@ export function RatingCard({
     <>
       <div
         dir={isAr ? "rtl" : "ltr"}
-        className="my-2 w-full max-w-md space-y-3 rounded-2xl border border-amber-500/30 bg-gradient-to-b from-card via-card to-amber-500/5 p-4 text-foreground shadow-sm"
+        className="my-2 w-full max-w-md space-y-2.5 rounded-2xl border border-amber-500/30 bg-gradient-to-b from-card via-card to-amber-500/5 p-3 text-foreground shadow-sm sm:space-y-3 sm:p-4"
       >
         <div className="flex items-center justify-between border-b border-border/70 pb-2.5">
           <div className="flex items-center gap-2">

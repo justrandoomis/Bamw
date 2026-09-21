@@ -225,7 +225,7 @@ export function DigitalOrderCard({
       <div
         id={`digital-order-card-${code}`}
         dir={isAr ? "rtl" : "ltr"}
-        className="w-full max-w-lg my-3 rounded-[22px] border border-[var(--line)] bg-card text-[var(--ink)] p-4 sm:p-5 shadow-xs transition-all animate-in fade-in slide-in-from-bottom-2 duration-300"
+        className="w-full max-w-lg my-2.5 rounded-[22px] border border-[var(--line)] bg-card text-[var(--ink)] p-3 shadow-xs transition-all animate-in fade-in slide-in-from-bottom-2 duration-300 sm:my-3 sm:p-5"
       >
         {/* Top Header: Order Code, Status badge & Copy */}
         <div className="flex items-center justify-between gap-3 pb-3 border-b border-[var(--line)]">

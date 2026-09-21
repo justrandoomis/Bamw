@@ -2375,7 +2375,7 @@ export default function ChatView({
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder={tr("بحث في المحادثة...")}
                 autoFocus
-                className={`h-10 w-full rounded-xl border border-[var(--line)] bg-card px-9 text-xs font-medium text-[var(--ink)] focus:border-[var(--ink)] focus:outline-none ${"text-start"}`}
+                className={`h-10 w-full rounded-xl border border-[var(--line)] bg-card px-9 text-[16px] font-medium text-[var(--ink)] focus:border-[var(--ink)] focus:outline-none sm:text-xs ${"text-start"}`}
               />
               <Search className="absolute start-3 h-4 w-4 text-[var(--muted-ink)]" />
               {searchQuery && (
@@ -3009,13 +3009,13 @@ export default function ChatView({
                     </div>
                   ) : (
                     <div
-                      className={`flex max-w-[85%] flex-col gap-1 ${
+                      className={`flex max-w-[80%] flex-col gap-1 sm:max-w-[85%] ${
                         isMine ? "items-end" : "items-start"
                       }`}
                     >
                       <div
                         dir="auto"
-                        className={`overflow-hidden break-words whitespace-pre-wrap rounded-2xl px-4 py-2.5 text-[14.5px] font-medium leading-[1.45] shadow-xs ${
+                        className={`overflow-hidden break-words whitespace-pre-wrap rounded-2xl px-3 py-2 text-[13.5px] font-medium leading-[1.45] shadow-xs sm:px-4 sm:py-2.5 sm:text-[14.5px] ${
                           isMine
                             ? `bg-[var(--ink)] text-[var(--surface-2)] ${startsRun ? "rounded-se-[4px]" : ""}`
                             : `border border-white/50 bg-card/85 text-[var(--ink)] backdrop-blur-xs ${startsRun ? "rounded-ss-[4px]" : ""}`
@@ -3366,7 +3366,17 @@ export default function ChatView({
                       ? tr("اكتب رسالتك للدعم...")
                       : tr("اسألني أي شيء")
                 }
-                className={`h-full w-full bg-transparent ${"ps-[44px] pe-4"} text-[13px] font-medium text-[var(--ink)] placeholder-[var(--muted-ink)] focus:outline-none`}
+                /*
+                  16px on a phone, not 13.
+
+                  iOS Safari zooms the whole page when a focused field is
+                  smaller than 16px, and it does not zoom back out. That is
+                  what «تضغط على بعض الأزرار والمحادثات الفقاعات تبدو كبيرة
+                  جدا» actually is: nothing grew, the page did. Shrinking this
+                  further would have made it worse. Desktop keeps the compact
+                  13px, where no such rule exists.
+                */
+                className={`h-full w-full bg-transparent ${"ps-[44px] pe-4"} text-[16px] font-medium text-[var(--ink)] placeholder-[var(--muted-ink)] focus:outline-none sm:text-[13px]`}
               />
             )}
             <button

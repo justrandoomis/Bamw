@@ -166,7 +166,7 @@ export function VerificationOtpCard({
   return (
     <div
       dir={isAr ? "rtl" : "ltr"}
-      className="w-full max-w-[270px] sm:max-w-[290px] rounded-2xl border border-border/80 bg-[#FCF9F5] dark:bg-card text-foreground p-3.5 shadow-2xs space-y-2.5 transition-all text-start"
+      className="w-full max-w-[250px] sm:max-w-[290px] rounded-2xl border border-border/80 bg-[#FCF9F5] dark:bg-card text-foreground p-3 sm:p-3.5 shadow-2xs space-y-2 sm:space-y-2.5 transition-all text-start"
     >
       {/* 1. Header: Small Title */}
       <div className="flex items-center justify-between">
@@ -279,7 +279,7 @@ export function AccountCard({
   return (
     <div
       dir={locale === "ar" ? "rtl" : "ltr"}
-      className="w-full max-w-[320px] space-y-3 rounded-2xl border border-border/70 bg-card/90 text-foreground p-3.5 shadow-2xs"
+      className="w-full max-w-[300px] space-y-2.5 rounded-2xl border border-border/70 bg-card/90 text-foreground p-3 shadow-2xs sm:max-w-[320px] sm:space-y-3 sm:p-3.5"
     >
       <div className="flex items-center justify-between border-b border-border/60 pb-2">
         <div className="flex items-center gap-2">

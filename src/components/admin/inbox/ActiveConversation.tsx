@@ -948,7 +948,12 @@ export function ActiveConversation({
                 }}
                 placeholder="اكتب ردك هنا..."
                 rows={1}
-                className="w-full resize-none rounded-xl border border-border bg-background px-3.5 py-2.5 text-xs text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary max-h-32 min-h-[38px]"
+                /*
+                  16px on a phone. Below that iOS Safari zooms the whole page
+                  on focus and never zooms back — the admin's half of the same
+                  «المحادثة تبدو كبيرة جدا» complaint.
+                */
+                className="w-full resize-none rounded-xl border border-border bg-background px-3.5 py-2.5 text-[16px] text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary max-h-32 min-h-[38px] sm:text-xs"
               />
             </div>
 
