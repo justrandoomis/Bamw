@@ -153,10 +153,20 @@ export const Route = createFileRoute("/api/wheel")({
             });
           }
 
+          /*
+            The refund is reported, not assumed. `returnTicket` can fail for
+            the same reason the spin did, and a member told their ticket came
+            back who then finds it did not has been lied to about something
+            they paid for. The second sentence asks them to contact support
+            instead of asking them to try again with a ticket they no longer
+            have.
+          */
           const messages: Record<string, string> = {
             no_ticket: "لا توجد لديك تذاكر. استبدل الموز بتذكرة أولاً.",
             no_candidates: "لا توجد ألعاب متاحة في العجلة الآن.",
-            failed: "تعذرت الإدارة. أُعيدت تذكرتك، حاول مرة أخرى.",
+            failed: outcome.ticketReturned
+              ? "تعذرت الإدارة. أُعيدت تذكرتك، حاول مرة أخرى."
+              : "تعذرت الإدارة ولم نتمكن من إعادة تذكرتك تلقائياً. تواصل مع الدعم وسنعيدها لك.",
           };
           return json(
             {

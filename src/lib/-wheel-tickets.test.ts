@@ -241,6 +241,12 @@ describe("a write that fails half way", () => {
     try {
       const outcome = await wheel.spinWheel({ userId: "usr_a", candidates: GAMES, now: NOW });
       expect(outcome.ok).toBe(false);
+      /*
+        And the outcome says the refund happened, because the screen repeats
+        it to the member. The route used to print «أُعيدت تذكرتك» whatever
+        this was — which is the one sentence that must not be guessed.
+      */
+      if (!outcome.ok) expect(outcome.ticketReturned).toBe(true);
     } finally {
       unabort("wheel_spins");
     }

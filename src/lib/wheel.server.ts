@@ -306,14 +306,21 @@ async function claimTicket(userId: string, now: string): Promise<boolean> {
   return true;
 }
 
-/** Give a claimed ticket back, when the spin could not finish. */
-async function returnTicket(userId: string, now: string): Promise<void> {
-  await d1Run(
+/**
+ * Give a claimed ticket back, when the spin could not finish.
+ *
+ * Reports whether it worked, because the member is told about it. The screen
+ * said «أُعيدت تذكرتك» whatever happened here, which is the one sentence that
+ * must not be guessed: a member who is told their ticket came back and finds
+ * it did not has been lied to about something they paid for.
+ */
+async function returnTicket(userId: string, now: string): Promise<boolean> {
+  const returned = await d1RunChanges(
     `UPDATE wheel_tickets SET balance = balance + ?, updated_at = ? WHERE user_id = ?`,
     TICKET_COST_PER_SPIN,
     now,
     userId,
-  ).catch(() => undefined);
+  ).catch(() => 0);
   await d1Run(
     `INSERT INTO wheel_ticket_ledger (id, user_id, delta, reason, reference_id, created_at)
      VALUES (?, ?, ?, 'spin_refund', NULL, ?)`,
@@ -322,6 +329,7 @@ async function returnTicket(userId: string, now: string): Promise<void> {
     TICKET_COST_PER_SPIN,
     now,
   ).catch(() => undefined);
+  return returned === 1;
 }
 
 export interface WheelCandidate {
@@ -376,7 +384,13 @@ export type SpinOutcome =
       expiresAt: string;
       ticketsLeft: number;
     }
-  | { ok: false; reason: "no_ticket" | "no_candidates" | "failed"; ticketsLeft: number };
+  | {
+      ok: false;
+      reason: "no_ticket" | "no_candidates" | "failed";
+      ticketsLeft: number;
+      /** Only on "failed": whether the ticket really did come back. */
+      ticketReturned?: boolean;
+    };
 
 /**
  * Spend a ticket and win a game.
@@ -499,12 +513,18 @@ export async function spinWheel(input: {
       their turn, and the alternative — keeping the ticket because the code
       threw — is the shop charging for nothing.
     */
-    await returnTicket(userId, now);
+    const ticketReturned = await returnTicket(userId, now);
     console.warn("[wheel:spin_failed]", {
       userId,
+      ticketReturned,
       error: error instanceof Error ? error.message : String(error),
     });
-    return { ok: false, reason: "failed", ticketsLeft: await getTicketBalance(userId) };
+    return {
+      ok: false,
+      reason: "failed",
+      ticketsLeft: await getTicketBalance(userId).catch(() => 0),
+      ticketReturned,
+    };
   }
 }
 
