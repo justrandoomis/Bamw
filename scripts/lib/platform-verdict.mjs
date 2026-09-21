@@ -21,6 +21,32 @@
 /** `[Switch]`, `[Switch 2]`, `(Nintendo Switch)` — the supplier's console column. */
 export const CONSOLE_BRACKET = /\s*[[(]\s*(?:nintendo\s*)?switch\s*(2?)\s*[\])]\s*$/i;
 
+/**
+ * `[4:03]`, `[0:43 Switch 2]`, `[2:00 ¥14.64]`, `[1:21 狂乱命运]`.
+ *
+ * Found by the first full sweep of the names, and not previously known to be
+ * there: twenty-eight products carry a video timestamp in their title, and
+ * next to the timestamp sits whatever cell the scrape ran into — the console,
+ * a Chinese name, or a price in yuan.
+ *
+ * None of it is part of a game's name, and two kinds of it should never have
+ * been on a public page at all. `¥14.64` is a supplier cost. `狂乱命运` is the
+ * Chinese supplier name, which this shop keeps deliberately out of the public
+ * product API, off the product page, out of the public HTML, out of the cache
+ * and out of search — and it is sitting in the product's title.
+ *
+ * The timestamp is what makes this safe to match: a real title does not carry
+ * `m:ss` in square brackets. `Absolute Fear -AOONI- (最恐 -青鬼-)` keeps its
+ * parenthetical, because there is no timestamp in it.
+ */
+export const TIMESTAMP_BRACKET = /\s*\[\s*\d{1,2}:\d{2}(?:\s+([^\]]*?))?\s*\]\s*/;
+
+/** The fragment beside a timestamp, when it is only naming the console. */
+const CONSOLE_WORD = /^(?:nintendo\s*)?switch\s*(2?)$/i;
+
+/** A fragment that should never have reached a customer: a cost, or the supplier's name. */
+const SUPPLIER_FRAGMENT = /[¥$€£]|[\u3400-\u9FFF\u3040-\u30FF]/;
+
 /** "Nintendo Switch 2 Edition" — a separate SKU, never a synonym for the console. */
 const EDITION = /nintendo\s*switch\s*2\s*edition/i;
 
@@ -138,7 +164,40 @@ export function platformVerdict({ ours, evidence = [], complete = true, isEditio
 export function titleVerdict(title, platform) {
   const raw = String(title ?? "");
   if (!raw) return { action: "keep" };
-  const match = CONSOLE_BRACKET.exec(raw);
+
+  /*
+    The scraped timestamp comes off first, because in several titles it IS the
+    console bracket — `Chained Together [0:43 Switch 2]` — and the plain
+    console pattern below cannot see it behind the `0:43`.
+  */
+  let working = raw;
+  let leaked = "";
+  const stamp = TIMESTAMP_BRACKET.exec(working);
+  if (stamp) {
+    const fragment = String(stamp[1] ?? "").trim();
+    const console = CONSOLE_WORD.exec(fragment);
+    if (console) {
+      /*
+        The fragment names a console, so it is the same claim the plain bracket
+        makes and it is held to the same rule: a bracket that disagrees with
+        the platform is the last record of a disagreement, and deleting it
+        would destroy the evidence rather than settle it. It carries no cost
+        and no supplier name, so holding it costs nothing.
+      */
+      const bracket = console[1] ? "switch2" : "switch1";
+      if (platform !== "both" && bracket !== platform) {
+        return {
+          action: "report",
+          reason: `the name says ${bracket === "switch2" ? "Switch 2" : "Switch"} but the product is ${platform}`,
+        };
+      }
+    } else if (SUPPLIER_FRAGMENT.test(fragment)) {
+      leaked = fragment;
+    }
+    working = working.replace(TIMESTAMP_BRACKET, " ");
+  }
+
+  const match = CONSOLE_BRACKET.exec(working);
 
   if (match) {
     const bracket = match[1] ? "switch2" : "switch1";
@@ -159,7 +218,7 @@ export function titleVerdict(title, platform) {
     check as every other correction, because the rule should not depend on
     that remaining true.
   */
-  const withoutBracket = match ? raw.replace(CONSOLE_BRACKET, "") : raw;
+  const withoutBracket = match ? working.replace(CONSOLE_BRACKET, "") : working;
   const tidied = withoutBracket.replace(/\s+/g, " ").trim();
 
   if (!tidied) return { action: "keep", reason: "there would be no name left" };
@@ -167,9 +226,14 @@ export function titleVerdict(title, platform) {
   return {
     action: "rename",
     to: tidied,
-    reason: match
-      ? "the console belongs in the platform field"
-      : "the name carries stray whitespace",
+    ...(leaked ? { leaked } : {}),
+    reason: leaked
+      ? `a scraped timestamp, and beside it "${leaked}" — supplier data, on a public name`
+      : stamp
+        ? "a scraped video timestamp is not part of the name"
+        : match
+          ? "the console belongs in the platform field"
+          : "the name carries stray whitespace",
   };
 }
 
@@ -196,7 +260,8 @@ export function titleFlags(title) {
   if (letters.length >= 6 && /\p{Lu}/u.test(letters) && !/\p{Ll}/u.test(letters)) {
     flags.push("all capitals");
   }
-  if (/\[[^\]]*\]/.test(raw.replace(CONSOLE_BRACKET, ""))) flags.push("another bracket");
+  const leftover = raw.replace(CONSOLE_BRACKET, "").replace(TIMESTAMP_BRACKET, " ");
+  if (/\[[^\]]*\]/.test(leftover)) flags.push("another bracket");
   return flags;
 }
 

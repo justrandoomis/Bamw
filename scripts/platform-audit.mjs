@@ -276,6 +276,7 @@ async function gatherEvidence(product, stored) {
 const proposals = new Map(); // id -> { product, platform?, title?, titleEn?, why: [] }
 const reports = [];
 const flags = [];
+const leaks = [];
 const unchanged = [];
 let asked = 0;
 let unaskable = 0;
@@ -351,6 +352,9 @@ for (const product of queue) {
       if (verdict.action === "rename") {
         why.push(`${field} "${product[field]}" → "${verdict.to}": ${verdict.reason}`);
         proposals.set(id, { ...(proposals.get(id) ?? {}), [field]: verdict.to });
+        if (verdict.leaked) {
+          leaks.push({ id, field, leaked: verdict.leaked, was: String(product[field] ?? "") });
+        }
       } else if (verdict.action === "report") {
         reports.push({ id, label, kind: field, reason: verdict.reason, detail: "" });
       }
@@ -434,6 +438,22 @@ if (reports.length) {
     if (rows.length > 80) say(`- _…and ${rows.length - 80} more._`);
     say();
   }
+}
+
+if (leaks.length) {
+  /*
+    First, because it is the only thing in this report that is a disclosure
+    rather than an untidiness. A price in yuan is a supplier cost; a Chinese
+    name is the `supplier_name_zh_cn` this shop keeps out of the public
+    product API, off the product page, out of the public HTML, out of the
+    cache and out of search — and it is in the product's public title.
+  */
+  say(`## Supplier data found in a public name`);
+  say();
+  say(`Each of these is removed by the correction above.`);
+  say();
+  for (const row of leaks) say(`- \`${row.leaked}\` in \`${row.field}\` — ${row.was}`);
+  say();
 }
 
 if (flags.length) {

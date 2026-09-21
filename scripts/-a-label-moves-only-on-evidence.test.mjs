@@ -324,3 +324,52 @@ describe("names reported rather than repaired", () => {
     });
   });
 });
+
+describe("the scraped timestamp, and what came with it", () => {
+  /*
+    Found by the first full sweep of the names and not previously known to be
+    there: twenty-eight products carry a video timestamp in their title, and
+    next to it sits whatever cell the scrape ran into.
+  */
+  it("takes a bare timestamp out of a name", () => {
+    expect(
+      titleVerdict("Atelier Ryza: Ever Darkness & the Secret Hideout [4:03]", "switch1"),
+    ).toMatchObject({
+      action: "rename",
+      to: "Atelier Ryza: Ever Darkness & the Secret Hideout",
+    });
+  });
+
+  it("takes a supplier cost off a public name, and says that is what it was", () => {
+    const verdict = titleVerdict("Pokémon Sword / Shield [0:10 ¥8.76]", "switch1");
+    expect(verdict).toMatchObject({
+      action: "rename",
+      to: "Pokémon Sword / Shield",
+      leaked: "¥8.76",
+    });
+  });
+
+  it("takes the Chinese supplier name off a public name", () => {
+    /*
+      `supplier_name_zh_cn` is kept out of the public product API, off the
+      product page, out of the public HTML, out of the cache and out of
+      search. It was in the title.
+    */
+    const verdict = titleVerdict("DIABOLIK LOVERS [1:21 狂乱命运]", "switch1");
+    expect(verdict).toMatchObject({ action: "rename", to: "DIABOLIK LOVERS", leaked: "狂乱命运" });
+  });
+
+  it("sees the console hiding behind a timestamp, and holds it to the same rule", () => {
+    /*
+      `Chained Together [0:43 Switch 2]` — the plain console pattern cannot
+      match behind the `0:43`, so without this the disagreement would go
+      unnoticed and the bracket would be stripped as though it said nothing.
+    */
+    expect(titleVerdict("Chained Together [0:43 Switch 2]", "switch2").action).toBe("rename");
+    expect(titleVerdict("Chained Together [0:43 Switch 2]", "switch1").action).toBe("report");
+  });
+
+  it("leaves a parenthetical with no timestamp in it alone", () => {
+    expect(titleVerdict("Absolute Fear -AOONI- (最恐 -青鬼-)", "switch1").action).toBe("keep");
+  });
+});
