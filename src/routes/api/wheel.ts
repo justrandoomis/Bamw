@@ -102,6 +102,19 @@ async function candidates(): Promise<WheelCandidate[]> {
     if (isAwaitingRelease(product)) continue;
 
     /*
+      Nor one the shop has run out of.
+
+      The same shape of fault as the pre-order: the storefront refuses to add
+      a sold-out line to the cart, so the prize is a code the member cannot
+      spend and a ticket nobody gives back. Unknown stock is not "sold out" —
+      most of the imported catalogue carries none, and reading absence as zero
+      would empty the wheel.
+    */
+    const stock = Number(product["stock"]);
+    const infiniteStock = product["isInfiniteStock"] === true || stock < 0;
+    if (!infiniteStock && Number.isFinite(stock) && stock <= 0) continue;
+
+    /*
       Artwork is NOT required. Nine hundred and ninety-four of the catalogue's
       games arrived from the supplier's sheet with no cover, and they are
       overwhelmingly the 5,000-dinar games — which is precisely the bucket the

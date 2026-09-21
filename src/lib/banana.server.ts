@@ -597,7 +597,15 @@ export async function redeemReward(userId: string, rewardId: string) {
     `SELECT * FROM banana_redemption_offers WHERE id = ? AND is_active = 1`,
     rewardId,
   );
-  if (!reward) throw new BananaError("reward_not_found");
+  /*
+    A field, not the row.
+
+    `d1First` answers with a truthy empty object when there is no D1 binding,
+    so `if (!reward)` was true of "the reward exists" and of "there is no
+    database" alike. The second case then read `reward.banana_price` as
+    undefined and handed `NaN` to the debit.
+  */
+  if (!reward?.id) throw new BananaError("reward_not_found");
   if (reward.stock === 0) throw new BananaError("out_of_stock");
 
   const res = await debitBananaBalance(userId, reward.banana_price, {

@@ -80,7 +80,41 @@ describe("so the wheel asks a second question", () => {
     expect(SOURCE).toMatch(/if \(isAwaitingRelease\(product\)\) continue;/);
   });
 
+  it("will not hand out a game the shop has run out of", () => {
+    /*
+      The same shape as the pre-order: the storefront refuses a sold-out line
+      at the cart, so the prize would be a code that cannot be spent.
+    */
+    expect(SOURCE).toMatch(/if \(!infiniteStock && Number\.isFinite\(stock\) && stock <= 0\) continue;/);
+  });
+
+  it("does not read unknown stock as sold out", () => {
+    /*
+      Most of the imported catalogue carries no stock field at all. Treating
+      absence as zero would empty the wheel — `Number(undefined)` is NaN, and
+      the finite check is what keeps those games in.
+    */
+    expect(SOURCE).toContain("Number.isFinite(stock)");
+    expect(SOURCE).toMatch(/infiniteStock =\s*product\["isInfiniteStock"\] === true \|\| stock < 0/);
+  });
+
   it("still requires a price, so nothing unvalued is given away", () => {
     expect(SOURCE).toMatch(/if \(!Number\.isFinite\(price\) \|\| price <= 0\) continue;/);
+  });
+});
+
+describe("the redemption reads a field, not the row", () => {
+  it("cannot mistake a missing database for a real reward", () => {
+    /*
+      `d1First` answers with a truthy empty object when there is no D1
+      binding, so `if (!reward)` was true of "the reward exists" and of "there
+      is no database" alike — and the second then read `banana_price` as
+      undefined and handed NaN to the debit. It is the documented trap in this
+      codebase and it had caught this line.
+    */
+    const banana = readFileSync(resolve(process.cwd(), "src/lib/banana.server.ts"), "utf8")
+      .replace(/\/\*[\s\S]*?\*\//g, " ")
+      .replace(/^\s*\/\/.*$/gm, " ");
+    expect(banana).toMatch(/if \(!reward\?\.id\) throw new BananaError\("reward_not_found"\)/);
   });
 });
