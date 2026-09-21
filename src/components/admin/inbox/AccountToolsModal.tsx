@@ -21,6 +21,7 @@ import type { Order } from "@/lib/types";
 import type { DeliveryItemStatus } from "@/lib/digital-delivery-state";
 
 import { SupplierNameCopy, copySilently } from "./SupplierNameCopy";
+import type { ManualCompletionRequest } from "./types";
 
 interface DeliveryItemView {
   id: string;
@@ -104,6 +105,12 @@ export interface AccountToolsModalProps {
   order?: Order | null;
   defaultTab?: "credentials" | "card" | "otp" | "instructions";
   onCompleteOrder?: (orderId: string) => Promise<unknown> | void;
+  /*
+    The manual door. This surface is the only one that has the delivery state
+    loaded, so it is the only one that can tell the dialog how many slots will
+    be forced and how many unmapped rows will be archived.
+  */
+  onCompleteOrderManually?: (order: ManualCompletionRequest) => void;
   isCompletingOrder?: boolean;
   onDeliveryFinished?: (payload: { nextOrder?: DeliveryActionResponse["nextOrder"] }) => void;
   onStateChanged?: () => void;
@@ -173,6 +180,7 @@ export function AccountToolsModal({
   order,
   defaultTab = "credentials",
   onCompleteOrder,
+  onCompleteOrderManually,
   isCompletingOrder = false,
   onDeliveryFinished,
   onStateChanged,
@@ -441,6 +449,19 @@ export function AccountToolsModal({
       active.every((item) => item.status !== "needs_mapping") &&
       expected.every((item) => item.status === "otp_sent" || item.status === "completed")
     );
+  }, [deliveryState?.deliveryItems]);
+
+  /*
+    The slots the manual door would force to `completed` — the same set the
+    strict button is refusing over. Shown in the confirmation so the admin
+    reads the number before typing the order code, not after.
+  */
+  const pendingExpectedCount = useMemo(() => {
+    const active = deliveryState?.deliveryItems.filter((item) => !item.archivedAt) || [];
+    return active.filter(
+      (item) =>
+        Boolean(item.orderItemId) && item.status !== "otp_sent" && item.status !== "completed",
+    ).length;
   }, [deliveryState?.deliveryItems]);
 
   const handleQuickPaste = useCallback(async () => {
@@ -1049,57 +1070,82 @@ export function AccountToolsModal({
           >
             إغلاق
           </button>
-          {canCompleteOrder && order && onCompleteOrder ? (
-            <button
-              type="button"
-              onClick={() => void onCompleteOrder(order.id)}
-              disabled={isCompletingOrder}
-              className="inline-flex items-center gap-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 px-5 py-2.5 text-xs font-bold text-white disabled:opacity-40 cursor-pointer"
-            >
-              {isCompletingOrder ? (
-                <Loader2 className="h-3.5 w-3.5 animate-spin" />
-              ) : (
-                <CheckCircle2 className="h-3.5 w-3.5" />
-              )}{" "}
-              إكمال الطلب والانتقال للتالي
-            </button>
-          ) : selected && selectedDraft && isCodeKind(selected.kind) ? (
-            <button
-              type="button"
-              onClick={() => void sendCode()}
-              disabled={
-                !selectedDraft.username.trim() ||
-                LOCKED_STATUSES.has(selected.status) ||
-                busyId === selected.id
-              }
-              className="inline-flex items-center gap-1.5 rounded-xl bg-foreground px-5 py-2.5 text-xs font-bold text-background disabled:opacity-40 cursor-pointer"
-            >
-              {busyId === selected.id ? (
-                <Loader2 className="h-3.5 w-3.5 animate-spin" />
-              ) : (
-                <Ticket className="h-3.5 w-3.5" />
-              )}{" "}
-              إرسال كود هذا العنصر
-            </button>
-          ) : selected ? (
-            <button
-              type="button"
-              onClick={() => void sendCredentials()}
-              disabled={
-                selected.status !== "ready" ||
-                busyId === selected.id ||
-                Boolean(savingIds[selected.id])
-              }
-              className="inline-flex items-center gap-1.5 rounded-xl bg-foreground px-5 py-2.5 text-xs font-bold text-background disabled:opacity-40 cursor-pointer"
-            >
-              {busyId === selected.id ? (
-                <Loader2 className="h-3.5 w-3.5 animate-spin" />
-              ) : (
-                <Send className="h-3.5 w-3.5" />
-              )}{" "}
-              إرسال الحساب المحدد
-            </button>
-          ) : null}
+          <div className="flex items-center gap-2">
+            {/*
+              Offered whenever the strict button is refusing — that refusal is
+              exactly the state an admin who delivered by hand lands in, and
+              without this the order has no way out of the tool.
+            */}
+            {order && onCompleteOrderManually && !canCompleteOrder ? (
+              <button
+                type="button"
+                onClick={() =>
+                  onCompleteOrderManually({
+                    orderId: order.id,
+                    code: order.code || order.id,
+                    pendingCount: pendingExpectedCount,
+                    unmappedCount: unmappedItems.length,
+                  })
+                }
+                disabled={isCompletingOrder}
+                className="inline-flex items-center gap-1.5 rounded-xl border border-amber-500/30 bg-amber-500/15 px-3.5 py-2.5 text-xs font-bold text-amber-700 dark:text-amber-300 hover:bg-amber-500/25 disabled:opacity-40 cursor-pointer"
+                title="للطلبات التي سلّمتها بنفسك خارج الأداة"
+              >
+                <ShieldCheck className="h-3.5 w-3.5" /> إكمال يدوي
+              </button>
+            ) : null}
+            {canCompleteOrder && order && onCompleteOrder ? (
+              <button
+                type="button"
+                onClick={() => void onCompleteOrder(order.id)}
+                disabled={isCompletingOrder}
+                className="inline-flex items-center gap-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 px-5 py-2.5 text-xs font-bold text-white disabled:opacity-40 cursor-pointer"
+              >
+                {isCompletingOrder ? (
+                  <Loader2 className="h-3.5 w-3.5 animate-spin" />
+                ) : (
+                  <CheckCircle2 className="h-3.5 w-3.5" />
+                )}{" "}
+                إكمال الطلب والانتقال للتالي
+              </button>
+            ) : selected && selectedDraft && isCodeKind(selected.kind) ? (
+              <button
+                type="button"
+                onClick={() => void sendCode()}
+                disabled={
+                  !selectedDraft.username.trim() ||
+                  LOCKED_STATUSES.has(selected.status) ||
+                  busyId === selected.id
+                }
+                className="inline-flex items-center gap-1.5 rounded-xl bg-foreground px-5 py-2.5 text-xs font-bold text-background disabled:opacity-40 cursor-pointer"
+              >
+                {busyId === selected.id ? (
+                  <Loader2 className="h-3.5 w-3.5 animate-spin" />
+                ) : (
+                  <Ticket className="h-3.5 w-3.5" />
+                )}{" "}
+                إرسال كود هذا العنصر
+              </button>
+            ) : selected ? (
+              <button
+                type="button"
+                onClick={() => void sendCredentials()}
+                disabled={
+                  selected.status !== "ready" ||
+                  busyId === selected.id ||
+                  Boolean(savingIds[selected.id])
+                }
+                className="inline-flex items-center gap-1.5 rounded-xl bg-foreground px-5 py-2.5 text-xs font-bold text-background disabled:opacity-40 cursor-pointer"
+              >
+                {busyId === selected.id ? (
+                  <Loader2 className="h-3.5 w-3.5 animate-spin" />
+                ) : (
+                  <Send className="h-3.5 w-3.5" />
+                )}{" "}
+                إرسال الحساب المحدد
+              </button>
+            ) : null}
+          </div>
         </div>
       </div>
     </div>

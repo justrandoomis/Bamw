@@ -21,6 +21,7 @@ import {
 } from "@/lib/support.functions";
 import { CustomerList } from "./CustomerList";
 import { ActiveConversation, ConversationErrorBoundary } from "./ActiveConversation";
+import { ManualCompletionDialog } from "./ManualCompletionDialog";
 import { AdminAvailabilityBar } from "./AdminAvailabilityBar";
 import { InboxFilter } from "./types";
 import { toast } from "sonner";
@@ -35,6 +36,12 @@ export function AdminInboxView({ initialThreadId = null, onNavigateToOrder }: Ad
   const queryClient = useQueryClient();
   const [selectedThreadId, setSelectedThreadId] = useState<string | null>(initialThreadId);
   const [activeFilter, setActiveFilter] = useState<InboxFilter>("order_queue");
+  const [manualCompletion, setManualCompletion] = useState<{
+    orderId: string;
+    code: string;
+    pendingCount?: number;
+    unmappedCount?: number;
+  } | null>(null);
   const [searchTerm, setSearchTerm] = useState("");
   const [, startTransition] = useTransition();
 
@@ -521,6 +528,71 @@ export function AdminInboxView({ initialThreadId = null, onNavigateToOrder }: Ad
     },
   });
 
+  /*
+    The manual door. Same landing as the strict one — invalidate, hop to the
+    next order — but it is a different action on the server, it asks for the
+    order code and a reason, and it never records an OTP as sent.
+  */
+  const completeDigitalManualMutation = useMutation({
+    mutationFn: ({
+      orderId,
+      threadId,
+      reason,
+      confirmText,
+    }: {
+      orderId: string;
+      threadId?: string;
+      reason: string;
+      confirmText: string;
+    }) =>
+      api.adminOrderAction({
+        orderId,
+        threadId,
+        reason,
+        confirmText,
+        action: "complete_digital_manual",
+      }),
+    onSuccess: (result) => {
+      setManualCompletion(null);
+      void queryClient.invalidateQueries({ queryKey: ["admin-orders"] });
+      void queryClient.invalidateQueries({ queryKey: ["admin-threads"] });
+      void queryClient.invalidateQueries({ queryKey: ["orders"] });
+
+      // Say exactly what moved, so the admin can see the action matched what
+      // the dialog promised.
+      const forced = Array.isArray(result.forcedDeliveryItems)
+        ? result.forcedDeliveryItems.length
+        : 0;
+      const archived = Array.isArray(result.archivedUnmappedItems)
+        ? result.archivedUnmappedItems.length
+        : 0;
+      const detail = [forced ? `${forced} عنصر تسليم` : "", archived ? `${archived} سطر مؤرشف` : ""]
+        .filter(Boolean)
+        .join(" • ");
+
+      const nextThreadId =
+        result.nextOrder?.threadId ||
+        threads.find((thread) => thread.orderId === result.nextOrder?.orderId)?.id;
+      if (nextThreadId) {
+        setSelectedThreadId(nextThreadId);
+        markReadMutation.mutate(nextThreadId);
+        toast.success(
+          `تم الإكمال اليدوي${detail ? ` (${detail})` : ""} والانتقال للتالي ${
+            result.nextOrder?.code ? `#${result.nextOrder.code}` : ""
+          } ⏭️`,
+        );
+      } else {
+        setSelectedThreadId(null);
+        toast.success(
+          `تم الإكمال اليدوي${detail ? ` (${detail})` : ""}. لا توجد طلبات أخرى تحتاج تجهيزًا الآن 🎉`,
+        );
+      }
+    },
+    onError: (error: unknown) => {
+      toast.error(error instanceof Error ? error.message : "تعذر إكمال الطلب يدوياً");
+    },
+  });
+
   // Hotkey support: Ctrl+K / Cmd+K to focus search input
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -633,6 +705,18 @@ export function AdminInboxView({ initialThreadId = null, onNavigateToOrder }: Ad
                 })
               }
               isCompletingOrder={completeDigitalMutation.isPending}
+              onCompleteOrderManually={(order) =>
+                setManualCompletion({
+                  orderId: order.orderId,
+                  code: order.code,
+                  ...(typeof order.pendingCount === "number"
+                    ? { pendingCount: order.pendingCount }
+                    : {}),
+                  ...(typeof order.unmappedCount === "number"
+                    ? { unmappedCount: order.unmappedCount }
+                    : {}),
+                })
+              }
               onDeliveryFinished={({ nextOrder }) => {
                 void queryClient.invalidateQueries({ queryKey: ["admin-orders"] });
                 void queryClient.invalidateQueries({ queryKey: ["admin-threads"] });
@@ -652,6 +736,28 @@ export function AdminInboxView({ initialThreadId = null, onNavigateToOrder }: Ad
           </div>
         </div>
       </div>
+
+      <ManualCompletionDialog
+        isOpen={Boolean(manualCompletion)}
+        onClose={() => setManualCompletion(null)}
+        orderCode={manualCompletion?.code || ""}
+        isBusy={completeDigitalManualMutation.isPending}
+        {...(typeof manualCompletion?.pendingCount === "number"
+          ? { pendingCount: manualCompletion.pendingCount }
+          : {})}
+        {...(typeof manualCompletion?.unmappedCount === "number"
+          ? { unmappedCount: manualCompletion.unmappedCount }
+          : {})}
+        onConfirm={({ reason, confirmText }) => {
+          if (!manualCompletion) return;
+          return completeDigitalManualMutation.mutateAsync({
+            orderId: manualCompletion.orderId,
+            threadId: selectedThreadId || undefined,
+            reason,
+            confirmText,
+          });
+        }}
+      />
     </ConversationErrorBoundary>
   );
 }

@@ -1486,6 +1486,209 @@ async function moveOrderToAwaitingConfirmation(
   };
 }
 
+/** What a manual completion did, beyond completing the order. */
+export interface ManualCompletionResult extends CompleteDigitalOrderResult {
+  /** Delivery slots forced terminal, with the status each came from. */
+  forcedDeliveryItems: { id: string; from: string }[];
+  /** Unmatched pasted lines archived out of the way, by id. */
+  archivedUnmappedItems: string[];
+}
+
+/**
+ * Complete a digital order the admin delivered by hand.
+ *
+ * ## Why this exists
+ *
+ * `completeDigitalOrderAndNext` refuses unless every delivery slot reached
+ * `otp_sent` or `completed`, and only two functions can put a row in either
+ * state — both of which require the code or OTP to travel through the tool. An
+ * admin who sent the code over WhatsApp, or read it down the phone, leaves the
+ * slots at `sent` or `ready` forever, and the button then refuses for the rest
+ * of the order's life with «لا يمكن إكمال الطلب قبل إرسال OTP أو الكود لكل
+ * عناصر التسليم». There is no path out: nothing anywhere moves those rows on.
+ *
+ * ## Why it is a separate function and not a flag
+ *
+ * A `force` parameter on the strict path would leave every assertion about
+ * that path green while gutting what they assert — the guard would still be
+ * *present*, just skipped. A second door can be read, audited and tested as
+ * the exception it is.
+ *
+ * ## What it does not weaken
+ *
+ * Every guard the strict path applies is applied here, in the same order and
+ * unchanged. An open delivery complaint is exactly when nobody may force-close,
+ * so both issue checks stay.
+ *
+ * And it writes `completed`, never `otp_sent` — it sets no `otp_sent_at`, no
+ * `sent_at`, and touches neither `username` nor `password_enc`. The database
+ * must never end up claiming a code went out through the tool when it did not;
+ * that guarantee is what `delivery-otp-never-fabricated.test.ts` exists to
+ * hold, and a manual completion is an admin asserting the customer was served,
+ * not a record of a message this system sent.
+ *
+ * ## What it asks of the admin
+ *
+ * The order's own code, typed, and a reason of at least ten characters. The
+ * code rather than a generic word because a generic word becomes muscle memory
+ * across orders; the reason because this is the one path that closes an order
+ * the system could not verify, and six months later somebody will want to know
+ * why. The reason is redacted before it is stored, so a pasted credential
+ * cannot reach the audit trail.
+ */
+export async function completeDigitalOrderManually(input: {
+  orderId: string;
+  adminId: string;
+  adminName: string;
+  reason: string;
+  confirmText: string;
+  threadId?: string;
+  now?: string;
+}): Promise<ManualCompletionResult> {
+  let order = await getOrder(input.orderId);
+  if (!order) throw new Error("ORDER_NOT_FOUND");
+  if (order.status === "cancelled") throw new Error("ORDER_ALREADY_CANCELLED");
+  if (!isFullyDigitalOrder(order.items)) throw new Error("ORDER_NOT_FULLY_DIGITAL");
+
+  const confirmText = String(input.confirmText ?? "").trim();
+  if (!confirmText || confirmText !== String(order.code ?? "").trim()) {
+    throw new Error("MANUAL_COMPLETION_CONFIRMATION_MISMATCH");
+  }
+  const reason = String(input.reason ?? "").trim();
+  if (reason.length < 10 || reason.length > 500) {
+    throw new Error("MANUAL_COMPLETION_REASON_REQUIRED");
+  }
+
+  const linkedThreadId = await resolveOrderThreadId(order);
+  if (input.threadId && linkedThreadId && input.threadId !== linkedThreadId) {
+    throw new Error("THREAD_ORDER_MISMATCH");
+  }
+  if (!order.threadId && linkedThreadId) order = { ...order, threadId: linkedThreadId };
+
+  await ensureOrderDeliveryRecords(order);
+
+  /*
+    Idempotency before any write: a double-clicked button must not append a
+    second completion message or a second audit row.
+  */
+  if (order.status === "completed") {
+    return {
+      order,
+      state: await getDeliveryOrderState(order),
+      orderFinished: true,
+      nextOrder: await getNextActionableQueuedOrder(order.id, input.adminId),
+      forcedDeliveryItems: [],
+      archivedUnmappedItems: [],
+    };
+  }
+
+  if (order.status === "delivery_issue" || order.deliveryIssueOpenedAt) {
+    throw new Error("ORDER_HAS_OPEN_DELIVERY_ISSUE");
+  }
+  if (await hasOpenDeliveryIssue(order.id)) {
+    throw new Error("ORDER_HAS_OPEN_DELIVERY_ISSUE");
+  }
+
+  const now = input.now || new Date().toISOString();
+  const rows = await deliveryRows(order.id);
+
+  /*
+    Pasted lines that matched no order item. They are not "expected" rows, but
+    `allExpectedDeliveryItemsDelivered` refuses while any of them is present,
+    so they are archived out of the way rather than left to block the admin who
+    is already stuck. Archiving keeps the row and its contents; nothing is
+    deleted.
+  */
+  const archivedUnmappedItems = rows
+    .filter((row) => !row.archived_at && !row.order_item_id && row.status === "needs_mapping")
+    .map((row) => row.id);
+  if (archivedUnmappedItems.length) {
+    await d1Run(
+      `UPDATE order_delivery_items
+         SET archived_at = ?, updated_at = ?, revision = revision + 1
+       WHERE order_id = ? AND archived_at IS NULL AND order_item_id IS NULL
+         AND status = 'needs_mapping'`,
+      now,
+      now,
+      order.id,
+    );
+  }
+
+  const forcedDeliveryItems = rows
+    .filter(
+      (row) =>
+        !row.archived_at &&
+        row.order_item_id &&
+        row.status !== "otp_sent" &&
+        row.status !== "completed",
+    )
+    .map((row) => ({ id: row.id, from: row.status }));
+  if (forcedDeliveryItems.length) {
+    /*
+      `completed`, never `otp_sent`. This is also what stops a late proof
+      upload reopening the order: `recordDeliveryProof` accepts only a row that
+      is `sent` or `proof_received`, and would otherwise set a closed thread
+      back to needing an admin minutes after it was closed.
+    */
+    await d1Run(
+      `UPDATE order_delivery_items
+         SET status = 'completed', completed_at = COALESCE(completed_at, ?),
+             updated_at = ?, revision = revision + 1
+       WHERE order_id = ? AND archived_at IS NULL AND order_item_id IS NOT NULL
+         AND status NOT IN ('otp_sent', 'completed')`,
+      now,
+      now,
+      order.id,
+    );
+  }
+
+  /*
+    Re-asked after the two writes above, and still refused if false. What
+    survives is the one case those writes cannot fix — an order with no
+    expected delivery rows at all — and that should still not complete here.
+  */
+  if (!(await strictDeliveryIsComplete(order.id))) {
+    throw new Error("DELIVERY_ITEMS_NOT_TERMINAL");
+  }
+
+  const { redactSecrets } = await import("./telegram-admin-routing.server");
+  const safeReason = redactSecrets(reason);
+
+  const completed = await completeOrder(order, {
+    by: input.adminId,
+    role: "ADMIN",
+    note: `إكمال يدوي: ${safeReason}`,
+    message:
+      "✅ تم إكمال الطلب يدوياً من قبل الإدارة بعد تسليم العناصر خارج النظام.\n" +
+      "إذا لم يعمل الكود، راسلنا هنا مباشرة وسنعالج الأمر.",
+    now,
+  });
+  order = completed.order;
+
+  const thread = linkedThreadId ? await getThread(linkedThreadId) : undefined;
+  if (thread) {
+    await saveThread({
+      ...thread,
+      status: "closed",
+      mode: "RESOLVED",
+      needsAdmin: false,
+      queueStatus: "completed",
+      lastAdminMessageAt: now,
+      lastMessageAt: now,
+    });
+  }
+
+  return {
+    order,
+    state: await getDeliveryOrderState(order),
+    orderFinished: true,
+    nextOrder: await getNextActionableQueuedOrder(order.id, input.adminId),
+    forcedDeliveryItems,
+    archivedUnmappedItems,
+  };
+}
+
+
 export async function sendDeliveryOtp(input: {
   orderId: string;
   deliveryItemId: string;

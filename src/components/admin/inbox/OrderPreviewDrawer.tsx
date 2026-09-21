@@ -16,6 +16,7 @@ import {
   Check,
 } from "lucide-react";
 import { Order } from "@/lib/types";
+import type { ManualCompletionRequest } from "./types";
 import { toast } from "sonner";
 
 interface OrderPreviewDrawerProps {
@@ -24,6 +25,8 @@ interface OrderPreviewDrawerProps {
   order: Order | null;
   onClaim?: (orderId: string) => void;
   onComplete?: (orderId: string) => Promise<unknown> | void;
+  /** The manual door, for an order handed over outside the delivery tool. */
+  onCompleteManually?: (order: ManualCompletionRequest) => void;
   isCompleting?: boolean;
   onPrepare?: (orderId: string) => void;
   onOpenFullOrder?: () => void;
@@ -35,6 +38,7 @@ export function OrderPreviewDrawer({
   order,
   onClaim,
   onComplete,
+  onCompleteManually,
   isCompleting = false,
   onPrepare,
   onOpenFullOrder,
@@ -138,6 +142,22 @@ export function OrderPreviewDrawer({
                   {isCompleting ? "جارٍ الإكمال..." : "إكمال الطلب والانتقال للتالي"}
                 </button>
               )}
+              {order.status !== "completed" &&
+                order.status !== "cancelled" &&
+                onCompleteManually && (
+                  <button
+                    type="button"
+                    onClick={() =>
+                      onCompleteManually({ orderId: order.id, code: order.code || order.id })
+                    }
+                    disabled={isCompleting}
+                    className="flex-1 py-2 px-3 border border-amber-500/30 bg-amber-500/15 hover:bg-amber-500/25 disabled:opacity-50 text-amber-700 dark:text-amber-300 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-1.5"
+                    title="للطلبات التي سلّمتها بنفسك خارج الأداة"
+                  >
+                    <ShieldCheck className="w-4 h-4" />
+                    إكمال يدوي
+                  </button>
+                )}
               {order.status !== "processing" && order.status !== "completed" && onPrepare && (
                 <button
                   type="button"

@@ -449,6 +449,10 @@ export const api = {
       orderFinished?: boolean;
       nextReadyDeliveryItemId?: string;
       nextOrder?: { orderId: string; threadId?: string; code?: string; userName?: string };
+      /* Returned by `complete_digital_manual`: which slots were forced, and
+         from what state. Ids only — never what was in them. */
+      forcedDeliveryItems?: { id: string; from: string }[];
+      archivedUnmappedItems?: string[];
     }>("/api/admin/orders", {
       method: "POST",
       body: JSON.stringify(payload),

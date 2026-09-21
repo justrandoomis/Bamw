@@ -52,3 +52,15 @@ export interface InstructionsPayload {
   text: string;
   steps?: string[];
 }
+
+/**
+ * What a surface hands up when the admin asks to complete an order by hand.
+ * The counts are optional: only the delivery tool has the state loaded, and a
+ * dialog that guessed a count would be worse than one that stays quiet.
+ */
+export interface ManualCompletionRequest {
+  orderId: string;
+  code: string;
+  pendingCount?: number;
+  unmappedCount?: number;
+}

@@ -26,6 +26,7 @@ import {
   ExternalLink,
   Bot,
   Headphones,
+  ShieldCheck,
 } from "lucide-react";
 import { Thread, ChatMessage, ThreadMode, Order } from "@/lib/types";
 import { isFullyDigitalOrder } from "@/lib/delivery-kinds";
@@ -36,6 +37,7 @@ import { AccountToolsModal } from "./AccountToolsModal";
 import { QuickRepliesModal } from "./QuickRepliesModal";
 import { CustomerDetailsDrawer } from "./CustomerDetailsDrawer";
 import { OrderPreviewDrawer } from "./OrderPreviewDrawer";
+import type { ManualCompletionRequest } from "./types";
 import { toast } from "sonner";
 import {
   normalizeMessage,
@@ -123,6 +125,12 @@ interface ActiveConversationProps {
   onSendQueueReminder?: (text?: string) => void;
   onRetryMessage?: (message: any) => void;
   onCompleteOrder?: (orderId: string) => Promise<unknown> | void;
+  /*
+    The manual door, deliberately separate from `onCompleteOrder`. It carries
+    the order code because the confirmation asks the admin to type it, and the
+    counts when the caller knows them, so the dialog can say what it will do.
+  */
+  onCompleteOrderManually?: (order: ManualCompletionRequest) => void;
   isCompletingOrder?: boolean;
   onDeliveryFinished?: (payload: {
     nextOrder?: { orderId: string; threadId?: string; code?: string; userName?: string };
@@ -152,6 +160,7 @@ export function ActiveConversation({
   onSendQueueReminder,
   onRetryMessage,
   onCompleteOrder,
+  onCompleteOrderManually,
   isCompletingOrder = false,
   onDeliveryFinished,
   isSending = false,
@@ -643,6 +652,34 @@ export function ActiveConversation({
                   </button>
                 )}
 
+              {/*
+                A second, separate button. The strict one above refuses an
+                order whose delivery slots never went terminal — which is the
+                whole point of it — so an order handed over by phone or
+                WhatsApp needs its own way out, clearly labelled as manual.
+              */}
+              {onCompleteOrderManually &&
+                linkedOrder &&
+                isDigitalLinkedOrder &&
+                linkedOrder.status !== "completed" &&
+                linkedOrder.status !== "cancelled" && (
+                  <button
+                    type="button"
+                    onClick={() =>
+                      onCompleteOrderManually({
+                        orderId: linkedOrder.id,
+                        code: linkedOrder.code || linkedOrder.id,
+                      })
+                    }
+                    disabled={isCompletingOrder}
+                    className="text-[11px] font-bold text-amber-700 dark:text-amber-300 bg-amber-500/15 hover:bg-amber-500/25 disabled:opacity-50 px-3 py-1.5 rounded-lg border border-amber-500/30 transition-all flex items-center gap-1 cursor-pointer"
+                    title="للطلبات التي سلّمتها بنفسك خارج الأداة — يطلب رقم الطلب وسبباً مكتوباً"
+                  >
+                    <ShieldCheck className="w-3 h-3" />
+                    <span>إكمال يدوي</span>
+                  </button>
+                )}
+
               {onSendQueueReminder && (
                 <button
                   type="button"
@@ -939,6 +976,7 @@ export function ActiveConversation({
             order={linkedOrder}
             defaultTab={accountToolsDefaultTab}
             onCompleteOrder={onCompleteOrder}
+            onCompleteOrderManually={onCompleteOrderManually}
             isCompletingOrder={isCompletingOrder}
             onDeliveryFinished={onDeliveryFinished}
             onStateChanged={() => {
@@ -976,6 +1014,7 @@ export function ActiveConversation({
             onClose={() => setIsOrderDrawerOpen(false)}
             order={linkedOrder}
             onComplete={isDigitalLinkedOrder ? onCompleteOrder : undefined}
+            onCompleteManually={isDigitalLinkedOrder ? onCompleteOrderManually : undefined}
             isCompleting={isCompletingOrder}
             onOpenFullOrder={() => {
               if (linkedOrder && onNavigateToOrder) {
