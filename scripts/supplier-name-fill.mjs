@@ -387,6 +387,33 @@ for (const game of games) {
         ? "Hong Kong sells it in Latin, and Wikidata has no Chinese name for it"
         : "no Chinese name in any source";
     report.push({ id, english, outcome: why, filled: false });
+
+    /*
+      A row with no name, rather than no row.
+
+      A game absent from `product_admin_metadata` is absent from the admin
+      screen that lists what still needs a name — so "nobody has found one"
+      and "nobody has looked" are the same thing there, and the game that
+      most needs attention is the one that cannot be seen. `writeSupplierNameZh`
+      stores an empty name as `missing`, which is what that status is for.
+
+      It does not hide the game from a later run: `--missing-only` skips a
+      row whose name is a non-empty string, and this one's is empty.
+
+      And it is what lets the audit's reconciliation mean something. Two games
+      were deliberately left unnamed in the curated file — the candidates were
+      a Hong Kong lexical form and a machine paraphrase — and with no rows at
+      all the count came up two short and failed a gate that was right to
+      fire and had nothing to point at.
+    */
+    if (APPLY) {
+      await app.writeSupplierNameZh({
+        productId: id,
+        supplierNameZhCn: "",
+        englishTitle: english,
+        updatedBy: UPDATED_BY,
+      });
+    }
     continue;
   }
 
