@@ -29,6 +29,10 @@ on:
         description: "Comma-separated product ids or slugs, to fill just those"
         required: false
         default: ""
+      retry_failed:
+        description: "Ask again about games already asked about and not found. Off by default, so each run spends its budget on games never tried."
+        type: boolean
+        default: false
       deadline_minutes:
         description: "Stop and write what has been collected after this many minutes, so the job timeout cannot discard a run's work"
         required: false
@@ -96,6 +100,7 @@ jobs:
           OFFSET: ${{ inputs.offset }}
           ONLY: ${{ inputs.only }}
           DEADLINE: ${{ inputs.deadline_minutes }}
+          RETRY_FAILED: ${{ inputs.retry_failed }}
         run: |
           args=""
           if [ "$APPLY" = "true" ]; then args="$args --apply"; fi
@@ -105,6 +110,7 @@ jobs:
           # A push carries no inputs; the job's 55 minutes still need a margin
           # for the write, the artifact and the summary.
           args="$args --deadline-minutes=${DEADLINE:-42}"
+          if [ "$RETRY_FAILED" = "true" ]; then args="$args --retry-failed"; fi
           # A push carries no `limit`, and the whole shelf does not fit in one
           # job. The default keeps the self-dry-run to a measurable sample.
           if [ -z "$LIMIT" ] && [ -z "$ONLY" ] && [ "$GITHUB_EVENT_NAME" = "push" ]; then

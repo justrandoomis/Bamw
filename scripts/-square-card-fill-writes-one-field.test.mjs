@@ -103,3 +103,41 @@ describe("one role costs one role's work", () => {
     expect(PIPELINE).toMatch(/const wanted = ROLES\.filter\(\(role\) => roles\.includes\(role\)\)/);
   });
 });
+
+describe("successive runs make forward progress", () => {
+  it("remembers a game Nintendo answered nothing for", () => {
+    /*
+      Measured before this existed: the second apply run wrote twenty-eight
+      cards in forty-two minutes. The list is ordered by id and the four
+      hundred games that failed the first run sit all through the front of it,
+      so the run re-asked about games Nintendo does not have and barely
+      reached the ones it had never seen.
+    */
+    expect(FILL).toContain("square_card_attempts");
+    expect(FILL).toMatch(/await remember\(id, "no_listing"\)/);
+    expect(FILL).toMatch(/await remember\(id, "no_square_asset"\)/);
+  });
+
+  it("does not remember a request that simply failed", () => {
+    /*
+      A timeout or a rate limit says nothing about whether Nintendo has the
+      game. A run that remembered its own network faults would skip games it
+      never actually asked about — which is worse than the problem, because it
+      is invisible.
+    */
+    const thrown = FILL.slice(FILL.indexOf("} catch (err) {"));
+    const untilContinue = thrown.slice(0, thrown.indexOf("continue;"));
+    expect(untilContinue).not.toContain("remember(");
+  });
+
+  it("writes nothing to that memory on a dry run", () => {
+    // Otherwise a dry run teaches the next apply to skip.
+    expect(FILL).toMatch(/async function remember\([\s\S]{0,80}?if \(!APPLY\) return;/);
+  });
+
+  it("lets the memory be overridden and lets it go stale", () => {
+    // Nintendo does add listings; a "no" is not forever.
+    expect(FILL).toContain("--retry-failed");
+    expect(FILL).toMatch(/STALE_DAYS/);
+  });
+});

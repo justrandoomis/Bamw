@@ -77,6 +77,22 @@ const LIMIT = Math.max(0, Number(flag("limit", "0")) || 0);
   enough to write what it has.
 */
 const DEADLINE_MINUTES = Math.max(0, Number(flag("deadline-minutes", "0")) || 0);
+/*
+  Try the games that have not been tried yet.
+
+  Measured, which is the only reason this exists: the second apply run wrote
+  twenty-eight cards in forty-two minutes. The list is ordered by id and the
+  four hundred games that failed the first run sit all through the front of
+  it, so the run spent its whole budget re-asking Nintendo about games
+  Nintendo does not have, and barely reached the five hundred it had never
+  seen. At that rate the catalogue never finishes.
+
+  So a failure is remembered. `--retry-failed` ignores the memory, and
+  `--stale-days` decides when a remembered failure is old enough to be worth
+  asking about again — Nintendo does add listings.
+*/
+const RETRY_FAILED = process.argv.includes("--retry-failed");
+const STALE_DAYS = Math.max(0, Number(flag("stale-days", "30")) || 0);
 const STARTED_AT = Date.now();
 const outOfTime = () =>
   DEADLINE_MINUTES > 0 && Date.now() - STARTED_AT > DEADLINE_MINUTES * 60_000;
@@ -183,12 +199,44 @@ if (ONLY.length) {
   cannot.
 */
 missing.sort((a, b) => String(a.id).localeCompare(String(b.id)));
+
+/*
+  The memory of what has already been asked and answered "no".
+
+  Created here rather than in the Worker's schema: nothing in the application
+  reads it, it exists only so successive runs of this script make forward
+  progress, and adding it to the runtime bootstrap would put a migration in
+  front of a repair.
+*/
+await app.d1Run(`
+  CREATE TABLE IF NOT EXISTS square_card_attempts (
+    product_id   TEXT PRIMARY KEY,
+    outcome      TEXT NOT NULL,
+    attempted_at TEXT NOT NULL
+  )
+`);
+
+let skippedTried = 0;
+if (!RETRY_FAILED) {
+  const cutoff = new Date(Date.now() - STALE_DAYS * 24 * 60 * 60 * 1000).toISOString();
+  const tried = new Set(
+    (
+      await app.d1All(`SELECT product_id FROM square_card_attempts WHERE attempted_at > ?`, cutoff)
+    ).map((row) => String(row.product_id)),
+  );
+  const before = missing.length;
+  missing = missing.filter((p) => !tried.has(String(p.id)));
+  skippedTried = before - missing.length;
+}
 if (OFFSET > 0) missing = missing.slice(OFFSET);
 if (LIMIT > 0) missing = missing.slice(0, LIMIT);
 
 say(`- products in the catalogue: **${products.length}**`);
 say(`- of them games: **${games.length}**`);
 say(`- games with no square card: **${totalMissing}**`);
+if (skippedTried > 0) {
+  say(`- asked about before and still unanswered, skipped: **${skippedTried}**`);
+}
 say(`- this run looks at: **${missing.length}**${OFFSET ? ` (from ${OFFSET + 1})` : ""}`);
 say();
 
@@ -202,6 +250,29 @@ if (!missing.length) {
 }
 
 /* ----------------------------------------------------------------- the pass */
+/**
+ * Record that this game was asked about and Nintendo had nothing.
+ *
+ * Only on a real answer — a page that does not exist, or one that exists and
+ * carries no square asset. A thrown request is not an answer and is never
+ * written here, because a run that remembers its own timeouts stops asking
+ * about games it never reached.
+ *
+ * Dry runs write nothing, so a dry run cannot teach the next apply to skip.
+ */
+async function remember(productId, outcome) {
+  if (!APPLY) return;
+  await app
+    .d1Run(
+      `INSERT INTO square_card_attempts (product_id, outcome, attempted_at) VALUES (?, ?, ?)
+       ON CONFLICT(product_id) DO UPDATE SET outcome = excluded.outcome, attempted_at = excluded.attempted_at`,
+      productId,
+      outcome,
+      new Date().toISOString(),
+    )
+    .catch(() => undefined);
+}
+
 const r2 = createR2(BUCKET, { tmpDir: ".square-card-tmp", log: () => {} });
 const patches = new Map(); // product id -> square card URL
 const rows = [];
@@ -234,6 +305,12 @@ for (const [index, product] of missing.entries()) {
   } catch (err) {
     rows.push({ id, title, outcome: `failed: ${String(err?.message ?? err).slice(0, 70)}` });
     noPage += 1;
+    /*
+      Deliberately NOT remembered. This branch is a thrown error — a network
+      fault, a timeout, a rate limit — which says nothing about whether
+      Nintendo has the game. Remembering it would teach the run to skip a game
+      it never actually asked about.
+    */
     continue;
   }
 
@@ -266,6 +343,7 @@ for (const [index, product] of missing.entries()) {
         .join(" · ")
         .slice(0, 150);
       rows.push({ id, title, outcome: `no listing — ${tried || "no keys tried"}` });
+      await remember(id, "no_listing");
     } else {
       noSquare += 1;
       rows.push({
@@ -273,6 +351,7 @@ for (const [index, product] of missing.entries()) {
         title,
         outcome: rejected ? `no square asset — ${rejected.reason}` : "no square asset on the page",
       });
+      await remember(id, "no_square_asset");
     }
     continue;
   }
