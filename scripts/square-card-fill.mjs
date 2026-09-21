@@ -219,9 +219,22 @@ await app.d1Run(`
 let skippedTried = 0;
 if (!RETRY_FAILED) {
   const cutoff = new Date(Date.now() - STALE_DAYS * 24 * 60 * 60 * 1000).toISOString();
+  /*
+    Only the two outcomes that are answers.
+
+    Named precisely on purpose. An earlier run wrote a generic `no_listing`
+    for every unresolved game, including ones whose every request had failed
+    in transport — so those rows do not match these names, are not skipped,
+    and are asked about again and recorded properly. The mistake retires
+    itself rather than needing a migration to undo.
+  */
   const tried = new Set(
     (
-      await app.d1All(`SELECT product_id FROM square_card_attempts WHERE attempted_at > ?`, cutoff)
+      await app.d1All(
+        `SELECT product_id FROM square_card_attempts
+         WHERE outcome IN ('no_listing_404', 'no_square_asset') AND attempted_at > ?`,
+        cutoff,
+      )
     ).map((row) => String(row.product_id)),
   );
   const before = missing.length;
@@ -294,6 +307,7 @@ let stoppedEarly = 0;
 */
 let allKeys404 = 0;
 let foundButRejected = 0;
+let unreachable = 0;
 
 for (const [index, product] of missing.entries()) {
   if (outOfTime()) {
@@ -362,9 +376,32 @@ for (const [index, product] of missing.entries()) {
         404 on one key and be refused on another, and it is the refusal that
         says something.
       */
-      if (/, rejected:/.test(String(media.note))) foundButRejected += 1;
-      else allKeys404 += 1;
-      await remember(id, "no_listing");
+      /*
+        `HTTP 0` is the shape `fetchText` reports when the request itself
+        failed — a timeout, a reset, a rate limit — and it is not an answer
+        about whether Nintendo has the game.
+
+        This is the guard I wrote for the `catch` branch and then left a hole
+        beside: `resolveProduct` does not throw when every key fails in
+        transport, it returns a note, so those games were being recorded as
+        "Nintendo has nothing" and skipped for a month. `Prison Architect`
+        is in the fourth run's report reading `HTTP 0 · HTTP 0`.
+      */
+      const keyLines = String(media.note).split("; ");
+      const rejected404 = /, rejected:/.test(String(media.note));
+      const everyKeyUnreachable =
+        keyLines.length > 0 && keyLines.every((line) => /→ HTTP 0\b/.test(line));
+
+      if (rejected404) {
+        foundButRejected += 1;
+        await remember(id, "no_listing_404");
+      } else if (everyKeyUnreachable) {
+        unreachable += 1;
+        // Not remembered. We never actually asked.
+      } else {
+        allKeys404 += 1;
+        await remember(id, "no_listing_404");
+      }
     } else {
       noSquare += 1;
       rows.push({
@@ -442,6 +479,10 @@ say(`  - every key answered 404 — not on Nintendo's US store: **${allKeys404}*
 say(
   `  - a page was found and refused, usually because this shop calls the game a ` +
     `Switch 2 edition and Nintendo's listing is Switch 1: **${foundButRejected}**`,
+);
+say(
+  `  - every request failed in transport, so Nintendo was never actually asked ` +
+    `and nothing was remembered: **${unreachable}**`,
 );
 say(`- listing found, no square asset: **${noSquare}**`);
 say(`- written to the catalogue: **${written}**`);

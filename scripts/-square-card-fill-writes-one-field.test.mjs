@@ -114,8 +114,32 @@ describe("successive runs make forward progress", () => {
       reached the ones it had never seen.
     */
     expect(FILL).toContain("square_card_attempts");
-    expect(FILL).toMatch(/await remember\(id, "no_listing"\)/);
+    expect(FILL).toMatch(/await remember\(id, "no_listing_404"\)/);
     expect(FILL).toMatch(/await remember\(id, "no_square_asset"\)/);
+  });
+
+  it("does not remember a game whose every request failed in transport", () => {
+    /*
+      The hole beside the guard below. `resolveProduct` does not throw when
+      every url key fails in transport — it returns a note reading `HTTP 0` —
+      so those games were being recorded as "Nintendo has nothing" and skipped
+      for a month without ever having been asked. The fourth apply run has
+      `Prison Architect` in its report reading `HTTP 0 · HTTP 0`.
+    */
+    expect(FILL).toMatch(/everyKeyUnreachable/);
+    expect(FILL).toMatch(/\/→ HTTP 0\\b\//);
+    const branch = FILL.slice(FILL.indexOf("} else if (everyKeyUnreachable) {"));
+    expect(branch.slice(0, branch.indexOf("} else {"))).not.toContain("remember(");
+  });
+
+  it("skips only the outcomes that are answers, so the old generic rows retire", () => {
+    /*
+      Rows written before that fix say `no_listing` and may be contaminated.
+      Naming the two real outcomes means those rows no longer match, are asked
+      about again, and are recorded properly — no migration needed to undo a
+      mistake.
+    */
+    expect(FILL).toMatch(/outcome IN \('no_listing_404', 'no_square_asset'\)/);
   });
 
   it("does not remember a request that simply failed", () => {
