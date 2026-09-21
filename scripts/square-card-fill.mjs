@@ -62,6 +62,7 @@ import { createR2 } from "./lib/r2-store.mjs";
 
 /** The one role this script exists to fill. */
 const ROLE = "nintendoCardImage";
+const UA = "bananto-square-cards/1.0 (https://github.com/justrandoomis/Bamw)";
 
 const APPLY = process.argv.includes("--apply");
 const flag = (name, fallback) =>
@@ -286,6 +287,32 @@ async function remember(productId, outcome) {
     .catch(() => undefined);
 }
 
+/**
+ * One JSON request against Nintendo of Europe, with the same manners the
+ * Wikidata lookup uses: a timeout, one retry, and a failure reported as a
+ * failure rather than as an empty answer.
+ */
+async function euSearch(url) {
+  for (let attempt = 1; attempt <= 2; attempt += 1) {
+    const ctl = new AbortController();
+    const timer = setTimeout(() => ctl.abort(), 12_000);
+    try {
+      const res = await fetch(url, {
+        headers: { accept: "application/json", "user-agent": UA },
+        signal: ctl.signal,
+      });
+      if (res.ok) return { ok: true, json: await res.json() };
+      if (res.status !== 429 && res.status < 500) return { ok: false, status: res.status };
+    } catch {
+      /* fall through to the retry */
+    } finally {
+      clearTimeout(timer);
+    }
+    if (attempt === 1) await new Promise((wake) => setTimeout(wake, 800));
+  }
+  return { ok: false, status: 0 };
+}
+
 const r2 = createR2(BUCKET, { tmpDir: ".square-card-tmp", log: () => {} });
 const patches = new Map(); // product id -> square card URL
 const rows = [];
@@ -308,6 +335,8 @@ let stoppedEarly = 0;
 let allKeys404 = 0;
 let foundButRejected = 0;
 let unreachable = 0;
+/* Of the cards stored, how many the US store could not have given us. */
+let fromEurope = 0;
 
 for (const [index, product] of missing.entries()) {
   if (outOfTime()) {
@@ -327,8 +356,15 @@ for (const [index, product] of missing.entries()) {
         platform: product.platform,
         slug: product.slug,
         nsuid: product.nsuid,
+        /*
+          Read here rather than inside the search, so one rule decides it.
+          The bracket, the platform field and the title all carry the
+          generation in this catalogue, and the url-key path already reads
+          all three.
+        */
+        wantsSwitch2: /switch\s*2/i.test(`${product.platform ?? ""} ${title} ${product.slug ?? ""}`),
       },
-      { sharp, r2, apply: APPLY, roles: [ROLE], log: () => {} },
+      { sharp, r2, apply: APPLY, roles: [ROLE], log: () => {}, euSearch },
     );
   } catch (err) {
     rows.push({ id, title, outcome: `failed: ${String(err?.message ?? err).slice(0, 70)}` });
@@ -415,6 +451,7 @@ for (const [index, product] of missing.entries()) {
   }
 
   const shape = media.report.find((r) => r.role === ROLE && r.ok);
+  if (String(media.resolvedUrl ?? "").startsWith("Nintendo of Europe")) fromEurope += 1;
   patches.set(id, String(url));
   filled += 1;
   rows.push({
@@ -474,6 +511,7 @@ for (const row of rows) {
 }
 say();
 say(`- given a square card: **${filled}**`);
+say(`  - of those, found only on Nintendo of Europe: **${fromEurope}**`);
 say(`- no Nintendo listing matched: **${noPage}**`);
 say(`  - every key answered 404 — not on Nintendo's US store: **${allKeys404}**`);
 say(

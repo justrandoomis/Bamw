@@ -16,6 +16,7 @@ import { createHash } from "node:crypto";
 import { candidatesFor, validateCandidate } from "./media-candidates.mjs";
 import { cropFrontPanel, fetchWrap, gameTdbId } from "./gametdb-source.mjs";
 import { resolveProduct } from "./nintendo-store.mjs";
+import { searchEuropeSquare } from "./nintendo-eu-search.mjs";
 
 /** Roles in the order they are filled, so the dedup check is deterministic. */
 export const ROLES = [
@@ -58,7 +59,7 @@ const WRAP_ROLES = new Set(["coverHiResImage", "cartridgeImage"]);
  */
 export async function buildMedia(
   identity,
-  { sharp, r2, apply = false, log = () => {}, roles = ROLES },
+  { sharp, r2, apply = false, log = () => {}, roles = ROLES, euSearch = null },
 ) {
   const report = [];
   const unresolved = [];
@@ -72,37 +73,12 @@ export async function buildMedia(
     return { patch, report, unresolved: [], stored: 0, failed: 0, note: "no roles requested" };
   }
 
-  const resolved = await resolveProduct(identity);
-  if (!resolved.product) {
-    return {
-      patch,
-      report,
-      unresolved: [...wanted],
-      stored: 0,
-      failed: 0,
-      note: `no Nintendo store page resolved (${resolved.tried.join("; ")})`,
-    };
-  }
-  const product = resolved.product;
+  /*
+    Defined before the lookup, because both paths store through it: the US
+    store's candidates and — when that store has no page at all — Europe's
+    square card. It closes over nothing the lookup produces.
+  */
   const accepted = new Map(); // content hash -> role that took it
-
-  /* ---- the printed sleeve, which the eShop never carries ---- */
-  let wrapBuffer = null;
-  let frontBuffer = null;
-  let wrapNote = "";
-  const tdbId = wanted.some((role) => WRAP_ROLES.has(role)) ? gameTdbId(product.productCode) : "";
-  if (tdbId) {
-    const wrap = await fetchWrap(tdbId);
-    if (wrap) {
-      wrapBuffer = wrap.buffer;
-      wrapNote = `GameTDB coverfullHQ ${wrap.region} (${wrap.url})`;
-      try {
-        frontBuffer = await cropFrontPanel(wrap.buffer, sharp);
-      } catch (err) {
-        log(`front panel crop failed: ${String(err).slice(0, 80)}`);
-      }
-    }
-  }
 
   const put = async (role, buffer, index, note, sourceUrl) => {
     let out;
@@ -144,6 +120,98 @@ export async function buildMedia(
     return `/api/${key}`;
   };
 
+  const resolved = await resolveProduct(identity);
+  if (!resolved.product) {
+    /*
+      Europe, but only for the square card and only when the US store had
+      nothing.
+
+      Measured: 308 games have no US page under any key this builds, and they
+      are not a guessing problem — a European or Japanese release simply is
+      not there. Nintendo of Europe's own catalogue carries `image_url_sq_s`
+      for many of them, which is the same role from the same company.
+
+      Second, not first. A url key that resolves is a stronger claim than a
+      title that matches, and this only runs where that claim could not be
+      made. The proposed URL then goes through `validateCandidate` and `put`
+      like every other candidate — fetched, decoded, measured square,
+      converted, uploaded and read back. Nothing is written on the strength
+      of a search result.
+    */
+    if (euSearch && wanted.includes("nintendoCardImage")) {
+      const hit = await searchEuropeSquare(identity.title, identity.wantsSwitch2, euSearch);
+      if (hit.ok) {
+        const verdict = await validateCandidate(
+          { url: hit.url, provenance: hit.provenance },
+          "nintendoCardImage",
+          sharp,
+        );
+        if (verdict.ok && verdict.shapeOk) {
+          const ref = await put(
+            "nintendoCardImage",
+            verdict.buffer,
+            1,
+            hit.provenance,
+            hit.url,
+          );
+          if (ref) {
+            patch.nintendoCardImage = ref;
+            return {
+              patch,
+              report,
+              unresolved: wanted.filter((role) => role !== "nintendoCardImage"),
+              stored,
+              failed,
+              resolvedUrl: `Nintendo of Europe · ${hit.matchedTitle}`,
+            };
+          }
+        } else {
+          report.push({
+            role: "nintendoCardImage",
+            ok: false,
+            reason: verdict.reason || `europe: ${verdict.shape ?? verdict.kind}`,
+            source: hit.url,
+          });
+        }
+      }
+      return {
+        patch,
+        report,
+        unresolved: [...wanted],
+        stored,
+        failed,
+        note: `no Nintendo store page resolved (${resolved.tried.join("; ")}); europe: ${hit.ok ? "stored nothing" : hit.reason}`,
+      };
+    }
+
+    return {
+      patch,
+      report,
+      unresolved: [...wanted],
+      stored: 0,
+      failed: 0,
+      note: `no Nintendo store page resolved (${resolved.tried.join("; ")})`,
+    };
+  }
+  const product = resolved.product;
+
+  /* ---- the printed sleeve, which the eShop never carries ---- */
+  let wrapBuffer = null;
+  let frontBuffer = null;
+  let wrapNote = "";
+  const tdbId = wanted.some((role) => WRAP_ROLES.has(role)) ? gameTdbId(product.productCode) : "";
+  if (tdbId) {
+    const wrap = await fetchWrap(tdbId);
+    if (wrap) {
+      wrapBuffer = wrap.buffer;
+      wrapNote = `GameTDB coverfullHQ ${wrap.region} (${wrap.url})`;
+      try {
+        frontBuffer = await cropFrontPanel(wrap.buffer, sharp);
+      } catch (err) {
+        log(`front panel crop failed: ${String(err).slice(0, 80)}`);
+      }
+    }
+  }
   /* ---- roles the sleeve answers ---- */
   if (wrapBuffer) {
     const wrapRef = await put("coverHiResImage", wrapBuffer, 0, wrapNote, wrapNote);
