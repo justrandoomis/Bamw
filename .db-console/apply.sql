@@ -36,9 +36,11 @@ CREATE TABLE IF NOT EXISTS review_reward_cooldowns (
   last_order_id    TEXT
 );
 
--- Seeded from the ledger that already exists: 27 rewards across 23 customers,
--- so each one's week is measured from their real last code rather than from
--- zero.
+-- Seeded from the ledger that already exists, so each customer's week is
+-- measured from their real last code rather than from zero. It wrote 24 rows
+-- against 24 distinct customers in `review_rewards` — a read forty minutes
+-- earlier had said 23, and the difference is one more auto-minted code in
+-- between, which is the behaviour this change stops.
 --
 -- The WHERE before GROUP BY is required for SQLite to parse
 -- INSERT...SELECT...ON CONFLICT at all. MAX(a, b) is the two-argument scalar
