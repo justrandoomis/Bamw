@@ -300,12 +300,31 @@ export function metadataFrom(product) {
 /* --------------------------------------------------- identity and resolution */
 
 /** Edition wording differs between our titles and Nintendo's; compare the game. */
+/**
+ * This shop's own console bracket: `[Switch]`, `[Switch 2]`, `(Nintendo Switch)`.
+ *
+ * Only at the end, and only inside a bracket. A bare "switch" is left alone
+ * because it is a word in real titles — `1-2-Switch`, `Nintendo Switch Sports`
+ * — and removing it from those would make them match the wrong pages.
+ */
+const PLATFORM_BRACKET = /\s*[[(]\s*(?:nintendo\s*)?switch\s*2?\s*[\])]\s*$/i;
+
 const bareTitle = (title) =>
   normalizeTitle(
     String(title ?? "")
       // Before the platform words are stripped: Nintendo writes "Switch™ 2",
       // and a mark sitting inside the phrase stops it matching.
       .replace(/[™®©]/g, "")
+      /*
+        The bracket comes off here too, not only when building the url key.
+
+        `candidateKeys` already dropped it, so `9 R.I.P. [Switch]` found the
+        right page — and then `identityMatch` refused it, because the rules
+        below strip "nintendo switch" and "switch 2" but not a bare
+        "[Switch]": "9ripswitch" is not "9rip". Half a fix reads exactly like
+        no fix in the report, and that is what the first apply run showed.
+      */
+      .replace(PLATFORM_BRACKET, "")
       .replace(/[-–—:]\s*nintendo\s*switch\s*2\s*edition.*$/i, "")
       .replace(/\bnintendo\s*switch\s*2\s*edition\b/gi, "")
       .replace(/\b(standard|deluxe|digital|physical|complete|definitive|gold|ultimate)\s+edition\b/gi, "")
@@ -352,7 +371,7 @@ export function candidateKeys(doc) {
     (最恐 -青鬼-)` keeps its parenthetical, because that is part of the name,
     and `two` above has already read the bracket for the generation.
   */
-  const withoutBracket = title.replace(/\s*[[(]\s*(?:nintendo\s*)?switch\s*2?\s*[\])]\s*$/i, "");
+  const withoutBracket = title.replace(PLATFORM_BRACKET, "");
   // The edition suffix is dropped: it comes back as its own key shape below.
   const withoutEdition = withoutBracket.replace(
     /[-–—:]?\s*\bnintendo\s*switch\s*2\s*edition\b.*$/i,

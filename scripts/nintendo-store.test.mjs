@@ -408,3 +408,40 @@ describe("this shop's own platform bracket", () => {
     expect(keys.some((k) => k.startsWith("absolute-fear-aooni"))).toBe(true);
   });
 });
+
+describe("the bracket comes off the title that is compared, too", () => {
+  const page = { name: "9 R.I.P.", platform: { label: "Nintendo Switch" } };
+
+  it("accepts the page the url key already found", () => {
+    /*
+      The first apply run is what exposed this. `candidateKeys` dropped the
+      bracket and reached `/us/store/products/9-r-i-p-switch/` — the same page
+      the unbracketed row matched — and `identityMatch` then refused it,
+      because its own rules strip "nintendo switch" and "switch 2" but not a
+      bare "[Switch]". "9ripswitch" is not "9rip". Half the fix read exactly
+      like none of it.
+    */
+    expect(identityMatch({ title: "9 R.I.P. [Switch]" }, page).ok).toBe(true);
+    expect(identityMatch({ title: "9 R.I.P." }, page).ok).toBe(true);
+  });
+
+  it("still refuses the Switch 2 edition a Switch 1 page", () => {
+    // Not a miss to be fixed: they are different editions with different SKUs.
+    const verdict = identityMatch({ title: "9 R.I.P. [Switch 2]" }, page);
+    expect(verdict.ok).toBe(false);
+    expect(verdict.reason).toMatch(/platform generation differs/);
+  });
+
+  it("leaves a title whose own name contains the word alone", () => {
+    /*
+      Only a bracketed console at the end is removed. `1-2-Switch` and
+      `Nintendo Switch Sports` are real names, and stripping the word from
+      them would point each at some other game's page.
+    */
+    for (const title of ["1-2-Switch", "Nintendo Switch Sports"]) {
+      const self = { name: title, platform: { label: "Nintendo Switch" } };
+      expect(identityMatch({ title }, self).ok).toBe(true);
+      expect(identityMatch({ title }, page).ok).toBe(false);
+    }
+  });
+});

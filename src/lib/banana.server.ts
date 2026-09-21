@@ -5,7 +5,7 @@
  * Balance updates must use src/lib/banana-balance.server.ts.
  */
 
-import { d1All, d1First, d1Run, d1Ready, d1BatchRun } from "./d1.server";
+import { d1All, d1First, d1Run, d1RunChanges, d1Ready, d1BatchRun } from "./d1.server";
 import {
   getUserBananaBalance,
   creditBananaBalance,
@@ -607,10 +607,48 @@ export async function redeemReward(userId: string, rewardId: string) {
 
   if (!res.success) throw new BananaError(res.error || "insufficient_balance");
 
-  await d1Run(
-    `UPDATE banana_redemption_offers SET stock = CASE WHEN stock > 0 THEN stock - 1 ELSE stock END WHERE id = ?`,
-    rewardId,
-  );
+  /*
+    The stock claim, and it has to be a claim rather than a subtraction.
+
+    It was `SET stock = CASE WHEN stock > 0 THEN stock - 1 ELSE stock END`,
+    which cannot fail and cannot say no. Two members who both read `stock = 1`
+    a moment apart both passed the check above, both paid, and the second
+    UPDATE wrote 0 over 0 and reported success — one unit, sold twice.
+    `changes` alone does not help either: SQLite counts a row whose WHERE
+    matched even when the value written was identical, so the guard belongs
+    in the WHERE.
+
+    It was also the one statement after the debit with no catch and no
+    compensation. A transient failure here left the bananas gone, nothing
+    recorded, and a 500 at the member.
+
+    Unlimited stock is `-1`, which is the schema default and what most
+    rewards carry. It is not decremented at all — `stock > 0` would match
+    nothing and a run that read that as "sold out" would refuse every
+    unlimited reward in the shop.
+  */
+  const unlimitedStock = Number(reward.stock) < 0;
+  if (!unlimitedStock) {
+    const claimed = await d1RunChanges(
+      `UPDATE banana_redemption_offers SET stock = stock - 1 WHERE id = ? AND stock > 0`,
+      rewardId,
+    ).catch(() => -1);
+
+    if (claimed !== 1) {
+      /*
+        Either somebody took the last one between the check and here, or the
+        statement failed. The bananas have already gone, so they come back
+        either way; only the message differs, because one is a fact about the
+        shop and the other is a fault.
+      */
+      await creditBananaBalance(userId, Number(reward.banana_price) || 0, {
+        reason: `Redemption refund: ${reward.title}`,
+        kind: "refund",
+        idempotencyKey: `refund_stock_${userId}_${rewardId}_${Date.now()}`,
+      }).catch(() => undefined);
+      throw new BananaError(claimed === 0 ? "out_of_stock" : "redemption_not_recorded");
+    }
+  }
 
   /*
     The redemption log, with the column it is actually declared with.

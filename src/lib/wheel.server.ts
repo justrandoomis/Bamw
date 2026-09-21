@@ -253,18 +253,38 @@ export async function grantTickets(input: {
       The claim above is what makes a repeat harmless, and it is written
       before the balance because it has to be — checking first and writing
       after is not atomic across two statements. The cost is this window: a
-      reference claimed and no tickets credited, which would make every
-      retry of that same grant a no-op forever.
+      reference claimed and no tickets credited, which would make every retry
+      of that same grant a no-op forever.
 
-      So the claim is given back. The member has no tickets either way; the
-      difference is whether pressing the button again can fix it.
+      Giving the claim back unconditionally is not the answer, and it was the
+      first one here. "The statement threw" does not mean "the statement did
+      not run": on the REST transport the error can come out of reading the
+      response, after Cloudflare has already executed the write. Release the
+      claim then, and the admin's retry adds the tickets a second time —
+      which on this path is free games.
+
+      So the credit is checked rather than assumed. The ledger is the record
+      of what was promised and `wheel_tickets.balance` is the running total;
+      if they agree, the credit landed and the claim must stand. They can
+      only be compared if both can be read, and when they cannot the claim
+      stays — an ambiguous grant is left for a human to settle rather than
+      resolved in the direction that pays out twice.
     */
     if (input.referenceId) {
-      await d1Run(
-        `DELETE FROM wheel_ticket_ledger WHERE reference_id = ? AND user_id = ?`,
-        input.referenceId,
-        userId,
-      ).catch(() => undefined);
+      const landed = await creditLanded(userId).catch(() => null);
+      if (landed === false) {
+        await d1Run(
+          `DELETE FROM wheel_ticket_ledger WHERE reference_id = ? AND user_id = ?`,
+          input.referenceId,
+          userId,
+        ).catch(() => undefined);
+      } else {
+        console.warn("[wheel:grant_ambiguous]", {
+          userId,
+          referenceId: input.referenceId,
+          landed,
+        });
+      }
     }
     throw error;
   }
@@ -276,6 +296,34 @@ export async function grantTickets(input: {
     tickets and their money back.
   */
   return { granted: true, balance: await getTicketBalance(userId).catch(() => 0) };
+}
+
+/**
+ * Did the balance credit land?
+ *
+ * `true` when `wheel_tickets.balance` already equals the ledger's running
+ * total, `false` when it is short by exactly what the ledger says is owed,
+ * and `null` when the question could not be asked. Only a definite `false`
+ * is safe to roll a claim back on.
+ */
+async function creditLanded(userId: string): Promise<boolean | null> {
+  const owed = await d1First<{ total?: number }>(
+    `SELECT COALESCE(SUM(delta), 0) AS total FROM wheel_ticket_ledger WHERE user_id = ?`,
+    userId,
+  );
+  const held = await d1First<{ balance?: number }>(
+    `SELECT balance FROM wheel_tickets WHERE user_id = ?`,
+    userId,
+  );
+  /*
+    `d1First` answers with a truthy empty object when there is no binding, so
+    both are read as fields. A missing `wheel_tickets` row is a real zero — a
+    member who has never held a ticket — while a missing `total` means the
+    sum could not be computed and the comparison is worthless.
+  */
+  if (owed?.total === undefined || owed?.total === null) return null;
+  const balance = Number(held?.balance ?? 0) || 0;
+  return balance === Number(owed.total);
 }
 
 /**
