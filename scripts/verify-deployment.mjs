@@ -158,50 +158,81 @@ try {
   that is not in the bundle answers 404; one that is answers 401 because it
   asked who you are first. And `/api/content` is the positive control: it is
   public, it returns the merged content document, and `reviewPrompt` only
-  exists in that document if the deployed `mergeContent` is the new one. A
-  release that somehow served the old bundle would pass the two 401s — the
-  paths would still be absent — but it cannot fake this.
+  exists in that document if the deployed `mergeContent` is the new one.
+
+  ## The edge challenge, and why this does not fail on one
+
+  The first version of this fired all three at once with `Promise.all`, and a
+  release was failed by it: Cloudflare answered every one with a 403 «Just a
+  moment...» interstitial, having already challenged the health check's first
+  attempt from the same runner IP. Three simultaneous requests from a data
+  centre is what a bot looks like.
+
+  So they run one at a time, and a challenge is not a verdict. It means the
+  question could not be asked — which is neither a pass nor a failure, and
+  saying otherwise in either direction would be a lie. A challenged check is
+  reported as inconclusive and does not fail the deploy; the same judgement
+  the `/` check above already makes.
 */
-let reviewOk = false;
+const CHALLENGE = /Just a moment|cf-browser-verification|__cf_chl/i;
+
+/** One request, retried past an edge challenge, reported honestly either way. */
+async function probe(path) {
+  for (let attempt = 0; attempt < 3; attempt += 1) {
+    if (attempt > 0) await new Promise((wake) => setTimeout(wake, 2500));
+    try {
+      const res = await fetch(`${ORIGIN}${path}`, {
+        headers: { "user-agent": "bananto-deploy-verify" },
+      });
+      const text = await res.text();
+      if (res.status === 403 && CHALLENGE.test(text)) continue;
+      return { status: res.status, text, challenged: false };
+    } catch (error) {
+      if (attempt === 2)
+        return { status: 0, text: String(error?.message || error), challenged: false };
+    }
+  }
+  return { status: 403, text: "", challenged: true };
+}
+
+let reviewOk = true;
 try {
-  const [sheet, admin, content] = await Promise.all([
-    fetch(`${ORIGIN}/api/order-review?orderId=zzzzzzzz`, {
-      headers: { "user-agent": "bananto-deploy-verify" },
-    }),
-    fetch(`${ORIGIN}/api/admin/review-submissions`, {
-      headers: { "user-agent": "bananto-deploy-verify" },
-    }),
-    fetch(`${ORIGIN}/api/content`, { headers: { "user-agent": "bananto-deploy-verify" } }),
-  ]);
+  const sheet = await probe("/api/order-review?orderId=zzzzzzzz");
+  const admin = await probe("/api/admin/review-submissions");
+  const content = await probe("/api/content");
+
+  const report = (label, result, ok, why) => {
+    if (result.challenged) {
+      say(`- \`${label}\` → challenged by the edge (inconclusive, not a deploy failure)`);
+      return;
+    }
+    if (!ok) reviewOk = false;
+    say(`- \`${label}\` → HTTP ${result.status}${ok ? ` (${why})` : " (unexpected)"}`);
+  };
 
   // A guest is refused, not 404'd: `requireUser` and `requireAdmin` throw a
   // 401 Response, which means the handler ran.
-  const sheetOk = sheet.status === 401;
-  const adminOk = admin.status === 401 || admin.status === 403;
-
-  const contentText = await content.text();
-  const contentOk = content.ok && contentText.includes("reviewPrompt");
-
-  reviewOk = sheetOk && adminOk && contentOk;
-  say(
-    `- \`GET /api/order-review\` → HTTP ${sheet.status}${
-      sheetOk ? " (guest refused — the route is deployed)" : " (unexpected)"
-    }`,
+  report(
+    "GET /api/order-review",
+    sheet,
+    sheet.status === 401,
+    "guest refused — the route is deployed",
   );
-  say(
-    `- \`GET /api/admin/review-submissions\` → HTTP ${admin.status}${
-      adminOk ? " (guest refused — the route is deployed)" : " (unexpected)"
-    }`,
+  report(
+    "GET /api/admin/review-submissions",
+    admin,
+    admin.status === 401 || admin.status === 403,
+    "guest refused — the route is deployed",
   );
-  say(
-    `- \`GET /api/content\` → HTTP ${content.status}${
-      contentOk
-        ? " (carries `reviewPrompt` — the new content document is live)"
-        : " (no `reviewPrompt`: an older bundle is serving)"
-    }`,
+  report(
+    "GET /api/content",
+    content,
+    content.status === 200 && content.text.includes("reviewPrompt"),
+    "carries `reviewPrompt` — the new content document is live",
   );
 } catch (error) {
   say(`- review endpoints → unreachable: ${String(error?.message || error)}`);
+  reviewOk = false;
 }
 
 const healthy = health?.ok === true && body.status === "OK";
