@@ -47,12 +47,17 @@ const OPEN = Number(args.open ?? 2);
 /**
  * A wall-clock ceiling on the browser half.
  *
- * The first run of this hung: banan.to is slow enough that a 90-second
- * navigation budget, spent twice on each of fourteen games, outlived the job
- * itself — so the runner was killed holding an unwritten report, and a check
- * that cannot finish has verified nothing at all. Now the clock is the thing
- * that stops it, the report is written either way, and how many games were
- * opened against how many were planned is printed rather than implied.
+ * NOT because a run hung — one did not. I cancelled the first run believing it
+ * had, having read elapsed time from a sandbox whose clock does not track the
+ * runner's; GitHub's own timestamps said two minutes. The bound is here on its
+ * own merits, which the misreading only made me look at: fourteen games × two
+ * navigations × a 90-second budget is 42 minutes of permission inside a job
+ * that is allowed 30, so a slow enough site really can end the job before the
+ * report is written — and a check that cannot finish has verified nothing.
+ *
+ * Now the clock stops it, the report is written either way, and the number of
+ * games opened is printed beside the number planned, so a short run says so
+ * instead of looking like a complete pass.
  */
 const DEADLINE_MS = Number(args.deadline ?? 9) * 60_000;
 /** One navigation's budget. Long enough for a slow page, short enough to lose. */
