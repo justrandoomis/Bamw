@@ -465,6 +465,37 @@ if (!outliers.length) {
     );
   }
   if (outliers.length > 40) say(`| … | ${outliers.length - 40} أخرى | | | | |`);
+
+  /*
+    EVERY TIER OF EVERY LARGE-MOVE PRODUCT, SIDE BY SIDE.
+
+    A move is held because its COST is in question, and a cost can only be
+    judged against the other costs on the same product: an online account
+    costs more than an offline one, and an add-ons edition more than a plain
+    one. The row on its own says "1,750" and settles nothing; the product's
+    four rows together say whether 1,750 belongs to this tier or to another.
+
+    This is the table the owner needs to answer the question the hold asks,
+    and it is bounded — a handful of products, at most six rows each.
+  */
+  say();
+  say(`### تكاليف هذه المنتجات كاملة`);
+  say();
+  const seenProducts = new Set();
+  for (const row of outliers.slice(0, 40)) {
+    if (seenProducts.has(row.result.id)) continue;
+    seenProducts.add(row.result.id);
+    say();
+    say(`**${label(row.result)}**`);
+    say();
+    say(`| الطبقة | اسمها | التكلفة | السعر | الربح الحالي |`);
+    say(`| --- | --- | --- | --- | --- |`);
+    for (const p of row.result.proposals) {
+      say(
+        `| \`${p.kind}\` | ${tierName(p)} | ${money(p.cost)} | ${money(p.oldPrice)} | ${money(Number(p.oldPrice) - Number(p.cost))} |`,
+      );
+    }
+  }
 }
 say();
 
