@@ -180,15 +180,28 @@ export const Route = createFileRoute("/api/wheel")({
           }
 
           if (outcome.ok) {
+            /*
+              A win is an ORDER now, not a code to go and spend.
+
+              The coupon is sent ONLY when the order could not be written —
+              the fallback path, which is what the wheel did before prizes
+              became orders. Sending both would be telling a member they have
+              a game and also a way to get it free, which is one prize
+              described two ways and an invitation to ask which is real.
+            */
+            const wonAsOrder = Boolean(outcome.giftOrder);
             return json({
               ok: true,
               won: true,
               spinId: outcome.spinId,
               prize: outcome.prize,
-              couponCode: outcome.couponCode,
-              expiresAt: outcome.expiresAt,
+              ...(wonAsOrder
+                ? { giftOrder: outcome.giftOrder }
+                : { couponCode: outcome.couponCode, expiresAt: outcome.expiresAt }),
               tickets: outcome.ticketsLeft,
-              message: "مبروك! ربحت لعبة 🎉",
+              message: wonAsOrder
+                ? "مبروك! ربحت لعبة 🎉 وأنشأنا لك طلب الهدية"
+                : "مبروك! ربحت لعبة 🎉",
             });
           }
 

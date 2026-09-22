@@ -185,6 +185,12 @@ export function ensureWheelSchema(): Promise<void> {
           created_at    TEXT NOT NULL
         )
       `);
+      /*
+        The gift order a win created. Added rather than replacing
+        `coupon_code`, because every prize issued before this is a coupon and
+        those members still hold them.
+      */
+      await d1Run(`ALTER TABLE wheel_spins ADD COLUMN order_id TEXT`).catch(() => undefined);
       await d1Run(
         `CREATE INDEX IF NOT EXISTS wheel_spins_user_idx
            ON wheel_spins (user_id, created_at DESC)`,
@@ -481,6 +487,18 @@ export type SpinOutcome =
       won: true;
       spinId: string;
       prize: { productId: string; title: string; price: number; image: string | null };
+      /**
+       * The gift order the win created — see `wheel-gift-order.server.ts`.
+       *
+       * The owner asked for a prize to BE an order rather than a coupon the
+       * member has to go and spend. Absent only when the order could not be
+       * written, in which case the coupon below is what they hold.
+       */
+      giftOrder?: { orderId: string; code: string; threadId: string };
+      /**
+       * The 100%-off coupon, for a win the gift order could not be created
+       * for — and for every win issued before prizes became orders.
+       */
       couponCode: string;
       expiresAt: string;
       ticketsLeft: number;
@@ -589,6 +607,23 @@ export async function spinWheel(input: {
       Date.parse(now) + PRIZE_VALID_DAYS * 24 * 60 * 60 * 1000,
     ).toISOString();
 
+    /*
+      The coupon is minted FIRST and kept, even though the prize is now an
+      order.
+
+      It is the rollback the whole spin already depends on. Between here and
+      the committed `wheel_spins` row there is a window in which a member holds
+      a prize for a spin that has no record, and `revokePrizeCoupon` is what
+      closes it — a coupon can be taken back, and it is the one thing in this
+      function that can. So it stays as the anchor, and the gift order is
+      created after the row is safe.
+
+      A member never sees both: the order is what the screen shows when it
+      exists, and the coupon is what they are left holding when it does not.
+      A 100%-off coupon on a game they have already been given as an order is
+      the one thing that would cost the shop twice, so creating the order
+      revokes it.
+    */
     const { issuePrizeCoupon } = await import("./wheel-prize.server");
     const couponCode = await issuePrizeCoupon({
       userId,
@@ -630,6 +665,75 @@ export async function spinWheel(input: {
       the screen a number rather than costing the member their prize.
     */
     const ticketsLeft = await getTicketBalance(userId).catch(() => 0);
+
+    /*
+      The prize becomes a real order: «يتم عمل طلب لا مباشرة».
+
+      After the spin row, never before. Everything above this line can still be
+      rolled back; an order cannot be, and a member who has been given a game
+      and then has it taken away because a later step failed is worse off than
+      one whose spin simply errored.
+
+      If it fails the member keeps the coupon and the prize still stands —
+      which is exactly what the wheel did before this, so the fallback is a
+      known-good path rather than an untested one. Logged, because a wheel
+      quietly falling back to coupons is a thing the owner needs to know about.
+    */
+    let giftOrder: { orderId: string; code: string; threadId: string } | null = null;
+    try {
+      const { createWheelGiftOrder } = await import("./wheel-gift-order.server");
+      giftOrder = await createWheelGiftOrder({
+        userId,
+        productId: winner.candidate.id,
+        title: winner.candidate.title,
+        price: Number(winner.candidate.price) || 0,
+        spinId,
+        now,
+      });
+    } catch (error) {
+      console.error("[wheel:gift_order_failed]", {
+        userId,
+        spinId,
+        productId: winner.candidate.id,
+        error: error instanceof Error ? error.message : String(error),
+      });
+    }
+
+    if (giftOrder) {
+      /*
+        One prize, once. The member has the game as an order, so the coupon
+        that would give them a second copy for nothing is taken back — and
+        `mintedCode` is cleared so the failure path below cannot revoke a code
+        that is already gone.
+      */
+      try {
+        const { revokePrizeCoupon } = await import("./wheel-prize.server");
+        await revokePrizeCoupon(couponCode);
+        mintedCode = "";
+      } catch (error) {
+        /*
+          The order exists and that is the prize. A coupon left live is a
+          second free copy of one game — worth saying loudly, not worth
+          undoing the order for.
+        */
+        console.error("[wheel:prize_coupon_not_revoked]", {
+          userId,
+          spinId,
+          orderId: giftOrder.orderId,
+          error: error instanceof Error ? error.message : String(error),
+        });
+      }
+
+      await d1Run(
+        `UPDATE wheel_spins SET order_id = ? WHERE id = ?`,
+        giftOrder.orderId,
+        spinId,
+      ).catch((error) => {
+        // The order is the prize; the link is bookkeeping.
+        console.error("[wheel:spin_order_link_failed]", { spinId, error: String(error) });
+      });
+    }
+
     return {
       ok: true,
       won: true,
@@ -640,6 +744,7 @@ export async function spinWheel(input: {
         price: Number(winner.candidate.price) || 0,
         image: winner.candidate.image ?? null,
       },
+      ...(giftOrder ? { giftOrder } : {}),
       couponCode,
       expiresAt,
       ticketsLeft,

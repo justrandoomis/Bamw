@@ -998,6 +998,16 @@ export interface Order {
   updatedAt: string;
   events: { type: string; at: string; payload?: unknown }[];
   source?: string;
+  /**
+   * A prize, not a sale.
+   *
+   * The wheel awards a game by creating a real order at nothing — see
+   * `wheel-gift-order.server.ts`. Without a marker, a member and an admin both
+   * see a game sold for zero with no explanation, and the shop's own profit
+   * report cannot tell a gift apart from a mistake. Every surface that shows
+   * an order reads this to say «هدية».
+   */
+  isGift?: boolean;
   checkoutSessionId?: string;
   paymentReference?: string;
   idempotencyKey?: string;

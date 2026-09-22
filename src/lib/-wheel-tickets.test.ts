@@ -22,6 +22,30 @@ vi.mock("./env.server", () => ({
   publishEnv: () => undefined,
 }));
 
+/*
+  The gift order, under this test's control.
+
+  A win now creates a real order and revokes the coupon that would have been a
+  second free copy — see `wheel-gift-order.server.ts`. The coupon path did not
+  go away: it is what a member is left holding when the order cannot be
+  written, and it is still the shop's rollback for the window between minting a
+  prize and committing the spin row. Both need testing, and which one happens
+  is decided by whether the order succeeds — so that is the thing this file
+  gets to set.
+
+  Default OFF, so the coupon assertions below read as what they are: the
+  fallback, exercised deliberately, not a happy path that happens to still work.
+*/
+let giftOrderResult: { orderId: string; code: string; threadId: string } | null = null;
+let giftOrderCalls = 0;
+vi.mock("./wheel-gift-order.server", () => ({
+  WHEEL_GIFT_SOURCE: "wheel_prize",
+  createWheelGiftOrder: async () => {
+    giftOrderCalls += 1;
+    return giftOrderResult;
+  },
+}));
+
 let wheel: typeof import("./wheel.server");
 
 const NOW = "2026-09-21T12:00:00.000Z";
@@ -38,6 +62,8 @@ beforeAll(async () => {
 });
 
 beforeEach(() => {
+  giftOrderResult = null;
+  giftOrderCalls = 0;
   for (const table of ["wheel_tickets", "wheel_ticket_ledger", "wheel_spins", "coupons"]) {
     db.raw.exec(`DELETE FROM ${table}`);
   }
@@ -657,5 +683,83 @@ describe("«حظ أوفر» — a spin that wins nothing", () => {
     expect(outcome.ok).toBe(false);
     if (outcome.ok) return;
     expect(outcome.reason).toBe("no_ticket");
+  });
+});
+
+/*
+  «يتم عمل طلب لا مباشرة» — the prize is an order, and the coupon that would
+  have been a second free copy of the same game is taken back.
+*/
+describe("a win becomes an order", () => {
+  it("reports the order, and revokes the coupon that would double the gift", async () => {
+    giftOrderResult = { orderId: "ord_gift", code: "BN-G-ABC123", threadId: "thr_gift" };
+    await wheel.grantTickets({ userId: "usr_a", quantity: 1, reason: "test", now: NOW });
+
+    const outcome = await wheel.spinWheel({
+      odds: ALWAYS_WINS,
+      userId: "usr_a",
+      candidates: GAMES,
+      now: NOW,
+    });
+
+    expect(outcome.ok).toBe(true);
+    if (!outcome.ok || !outcome.won) return;
+    expect(giftOrderCalls).toBe(1);
+    expect(outcome.giftOrder?.orderId).toBe("ord_gift");
+
+    /*
+      The coupon is GONE. A member holding a 100%-off coupon for a game they
+      have already been given as an order is the one outcome that costs the
+      shop twice.
+    */
+    const coupon = db.raw
+      .prepare(`SELECT is_active FROM coupons WHERE code = ?`)
+      .get(outcome.couponCode) as { is_active?: number } | undefined;
+    expect(coupon?.is_active ?? 0).toBe(0);
+  });
+
+  it("records the order against the spin that won it", async () => {
+    giftOrderResult = { orderId: "ord_linked", code: "BN-G-LINK01", threadId: "thr_linked" };
+    await wheel.grantTickets({ userId: "usr_a", quantity: 1, reason: "test", now: NOW });
+
+    const outcome = await wheel.spinWheel({
+      odds: ALWAYS_WINS,
+      userId: "usr_a",
+      candidates: GAMES,
+      now: NOW,
+    });
+    if (!outcome.ok || !outcome.won) throw new Error("expected a win");
+
+    const row = db.raw
+      .prepare(`SELECT order_id FROM wheel_spins WHERE id = ?`)
+      .get(outcome.spinId) as { order_id?: string } | undefined;
+    expect(row?.order_id).toBe("ord_linked");
+  });
+
+  it("keeps the prize as a live coupon when the order cannot be written", async () => {
+    /*
+      The fallback, and the reason it is worth keeping: a member who has been
+      told they won must not be left with nothing because a later write
+      failed. This is what the wheel did before prizes became orders, so it is
+      a known-good path rather than an untested one.
+    */
+    giftOrderResult = null;
+    await wheel.grantTickets({ userId: "usr_a", quantity: 1, reason: "test", now: NOW });
+
+    const outcome = await wheel.spinWheel({
+      odds: ALWAYS_WINS,
+      userId: "usr_a",
+      candidates: GAMES,
+      now: NOW,
+    });
+    if (!outcome.ok || !outcome.won) throw new Error("expected a win");
+
+    expect(outcome.giftOrder).toBeUndefined();
+    const coupon = db.raw
+      .prepare(`SELECT is_active FROM coupons WHERE code = ?`)
+      .get(outcome.couponCode) as { is_active?: number } | undefined;
+    expect(coupon?.is_active).toBe(1);
+    // And the ticket is still spent: the spin happened and the prize is real.
+    expect(await wheel.getTicketBalance("usr_a")).toBe(0);
   });
 });

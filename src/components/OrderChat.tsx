@@ -6,6 +6,7 @@ import {
   CheckCircle2,
   Copy,
   Gamepad2,
+  Gift,
   ImagePlus,
   BookOpen,
   Send,
@@ -640,6 +641,17 @@ export default function OrderChat({
           </p>
         </div>
         <div className="flex items-center gap-2">
+          {/*
+            A gift says so. Without it a member — and an admin — sees a game
+            sold for nothing with no explanation, and the most likely reading
+            of that is a mistake rather than a prize.
+          */}
+          {(order as any)?.isGift ? (
+            <span className="inline-flex shrink-0 items-center gap-1 rounded-full bg-amber-500/15 px-2.5 py-1 text-[10px] font-black text-amber-700 dark:text-amber-300">
+              <Gift className="h-3 w-3" aria-hidden="true" />
+              هدية
+            </span>
+          ) : null}
           {/*
             The guides, one tap away from the conversation that needs them.
 

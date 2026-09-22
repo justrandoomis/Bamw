@@ -48,6 +48,8 @@ interface SpinResult {
   /** False on «حظ أوفر» — the spin happened, the ticket is spent, nothing won. */
   won?: boolean;
   prize?: { productId: string; title: string; price: number; image: string | null };
+  /** The gift order the win created — the prize itself, not a way to get it. */
+  giftOrder?: { orderId: string; code: string; threadId: string };
   couponCode?: string;
   expiresAt?: string;
   tickets?: number;
@@ -468,7 +470,32 @@ export function WheelPage() {
                   {tr("مبروك! ربحت")}
                 </p>
                 <p className="text-base font-bold text-foreground">{result.prize.title}</p>
-                {result.couponCode ? (
+                {/*
+                  The prize IS the order. Nothing to copy, nothing to spend,
+                  nothing to do before a date — «يتم عمل طلب لا مباشرة». The
+                  coupon below is the fallback for a win whose order could not
+                  be written, and a member sees one or the other, never both.
+                */}
+                {result.giftOrder ? (
+                  <>
+                    <p className="text-[12px] text-muted-foreground">
+                      {tr("أنشأنا لك طلب الهدية. سعرها")}{" "}
+                      <span className="font-black text-foreground">{tr("صفر دينار")}</span>{" "}
+                      {tr("ولا حاجة لأي دفع.")}
+                    </p>
+                    <p className="rounded-xl bg-background px-4 py-2.5 font-mono text-base font-black tracking-widest text-foreground">
+                      {result.giftOrder.code}
+                    </p>
+                    <Link
+                      to="/orders/$orderId"
+                      params={{ orderId: result.giftOrder.orderId }}
+                      className="inline-flex items-center justify-center gap-1.5 rounded-2xl bg-foreground px-5 py-2.5 text-[13px] font-bold text-background"
+                    >
+                      <Gift className="h-4 w-4" />
+                      {tr("افتح طلب الهدية")}
+                    </Link>
+                  </>
+                ) : result.couponCode ? (
                   <>
                     <p className="text-[12px] text-muted-foreground">
                       {tr("استخدم هذا الكود عند الشراء ليصبح سعر اللعبة صفراً:")}
