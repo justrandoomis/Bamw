@@ -18,6 +18,16 @@
  * and the zero that was reported came from a fallback inside `getMarketConfig`
  * rather than from any row. A check that read `basePrice` out of D1 would have
  * measured the wrong thing.
+ *
+ * The same reasoning brings the board and the wheel in. Neither is stored: the
+ * bots' offers are generated per bucket from the spot price, and the wheel's
+ * odds are a set of weights over whatever games the catalogue holds right now.
+ * A checker that reimplemented either would be reporting on a shop that does
+ * not exist.
  */
 export { d1All } from "@/lib/d1.server";
 export { getMarketConfig, spotPriceAt, changePercent24h } from "@/lib/banana-market-config.server";
+export { getBotListings } from "@/lib/banana.server";
+export { getWheelOdds } from "@/lib/wheel.server";
+export { wheelCandidates } from "@/lib/wheel-pool.server";
+export { oddsBreakdown, tierCounts, LOSING_LABEL } from "@/lib/wheel-odds";

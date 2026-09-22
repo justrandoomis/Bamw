@@ -122,7 +122,19 @@ function botHash(seed: string, salt: number): number {
  * Market-maker offers generated from the admin-managed banana_bots rows.
  * Prices float around the live spot price within the configured volatility.
  */
-async function getBotListings(config: BananaMarketConfig, spot: number): Promise<BananaListing[]> {
+/*
+  Exported so the live check can ask production what its board looks like.
+
+  The reported fault was a market «ميت» — a price of zero and no bots buying —
+  and the board is generated, not stored: there is no table a check could read
+  to find out what a customer sees. Reimplementing the generation in the
+  checker would report on a market the shop does not have, which is how the
+  stale per-bot floors went unseen in the first place.
+*/
+export async function getBotListings(
+  config: BananaMarketConfig,
+  spot: number,
+): Promise<BananaListing[]> {
   if (!config.botsEnabled || config.botCount <= 0) return [];
   if (!(await d1Ready())) return [];
 

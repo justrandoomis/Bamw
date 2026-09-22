@@ -130,7 +130,12 @@ describe("the winner is decided on the server", () => {
       The spin is called with the server's own list. A body-supplied pool
       would let anyone name the prize they wanted.
     */
-    expect(route).toContain("candidates: await candidates()");
+    expect(route).toMatch(/candidates:\s*await wheelCandidates\(\)/);
     expect(route).not.toMatch(/candidates:\s*(input|data|body)/);
+    /*
+      And `wheelCandidates` takes no argument, so there is nowhere for a body
+      to enter even if a later edit passed one — the pool reads the catalogue.
+    */
+    expect(route).not.toMatch(/wheelCandidates\([^)]/);
   });
 });

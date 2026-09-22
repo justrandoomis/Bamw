@@ -94,6 +94,40 @@ export function weightForPriceIn(
 }
 
 /**
+ * Which band a price falls in, by POSITION.
+ *
+ * The caller used to match a game to its band by comparing label strings,
+ * which was fine while the bands were a module constant and stopped being fine
+ * the moment an admin could rename one: two bands named the same merge into a
+ * single row, and every game in the second is counted twice or not at all.
+ *
+ * `-1` for an empty set of bands, so a caller cannot silently file every game
+ * under band zero.
+ */
+export function tierIndexFor(tiers: readonly WheelTier[], price: number): number {
+  const value = Number.isFinite(price) ? Number(price) : Number.POSITIVE_INFINITY;
+  const found = tiers.findIndex((tier) => tier.upTo === null || value <= tier.upTo);
+  if (found >= 0) return found;
+  return tiers.length ? tiers.length - 1 : -1;
+}
+
+/**
+ * How many of these games sit in each band, in the order the bands are given.
+ *
+ * `oddsBreakdown` takes exactly this array, and both the wheel screen and the
+ * live check need it from the same code — a second copy in the checker would
+ * report percentages the shop does not serve.
+ */
+export function tierCounts(tiers: readonly WheelTier[], prices: readonly number[]): number[] {
+  const counts = tiers.map(() => 0);
+  for (const price of prices) {
+    const index = tierIndexFor(tiers, Number(price));
+    if (index >= 0) counts[index] += 1;
+  }
+  return counts;
+}
+
+/**
  * The weight a losing outcome needs to hold `losingPercent` of the wheel.
  *
  * Derived rather than typed, for the reason in the header: a chance is what a
