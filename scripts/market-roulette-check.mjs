@@ -15,6 +15,18 @@
  * awards a prize, so a verification that spun would be creating commercial
  * data to prove a page renders. Every assertion below is about what is DRAWN.
  *
+ * AND BECAUSE IT SIGNS IN AS NOBODY, IT CANNOT SEE EVERYTHING.
+ *
+ * `GET /api/roulette` requires a session, so a signed-out visitor gets no
+ * pool, no strip and no odds rows — by design, not by fault. Anything that
+ * needs a member is therefore recorded as «تحتاج جلسة» and counted apart from
+ * the failures: a check that could not run must not be reported as a pass, and
+ * it must not be reported as a defect either. Both would be untrue.
+ *
+ * What is left is still decisive, because none of these strings exist on the
+ * OLD market or the OLD wheel: the page headings, the sections, the 1–10
+ * ticket selector, the absence of the listing form, and the two redirects.
+ *
  * What it checks, one per thing the owner asked for:
  *
  *   1. `/banana_market` is one page — the price, the chart's five ranges, the
@@ -134,11 +146,23 @@ const bodyText = async () => (await page.locator("body").innerText().catch(() =>
 const here = async () => await page.evaluate(() => window.location.pathname);
 
 let failures = 0;
+let skipped = 0;
 const results = [];
 /** One assertion, recorded either way, so the table shows the whole picture. */
 const check = (name, ok, detail = "") => {
   results.push({ name, ok, detail });
   if (!ok) failures += 1;
+};
+/**
+ * Something only a signed-in member can see.
+ *
+ * Recorded and shown, but not counted as a failure — and never as a pass. The
+ * summary names how many there were, so a run that verified less than it
+ * looks like cannot be mistaken for a full one.
+ */
+const needsSession = (name, detail = "") => {
+  results.push({ name, skip: true, detail });
+  skipped += 1;
 };
 
 // ─── 1 & 2. The market ────────────────────────────────────────────────────
@@ -155,9 +179,14 @@ check(
   ["1H", "4H", "12H", "1D", "7D"].every((r) => market.includes(r)),
   ["1H", "4H", "12H", "1D", "7D"].filter((r) => !market.includes(r)).join(" ") || "كلها",
 );
-check("قسم التذاكر", /تذكرة|تذاكر/.test(market));
-check("رفّ الاستبدال", /استبدال|المكافآت|استبدل/.test(market));
-check("زر البيع للمتجر", /بيع/.test(market));
+/*
+  The three buttons the owner named, by their exact labels. «بيع» on its own
+  matched the OLD marketplace too, which would have made this look verified
+  when nothing had shipped.
+*/
+check("زر «بيع الموز»", market.includes("بيع الموز"));
+check("قسم «تذاكر عجلة الحظ»", market.includes("تذاكر عجلة الحظ"));
+check("زر «الاستبدال»", market.includes("الاستبدال"));
 
 /*
   The removal, checked as a removal. «أوقف endpoints/actions التي تسمح بإنشاء
@@ -177,8 +206,10 @@ if (!wheel.trim()) {
 say(`- طول نص الروليت: ${wheel.length} حرفًا`);
 
 check("العنوان «روليت بنانتو»", wheel.includes("روليت بنانتو"));
-check("جدول الاحتمالات", /فرصك بـ/.test(wheel));
-check("صف الخسارة معروض", /لا شيء|خسارة|حظ/.test(wheel));
+check("قسم الاحتمالات", wheel.includes("فرصك بـ"));
+/* «قبل تشغيل الروليت يستطيع المستخدم اختيار 1..10 تذاكر». */
+check("منتقي عدد التذاكر", wheel.includes("عدد التذاكر لهذه الدورة"));
+check("رصيد التذاكر معروض", wheel.includes("التذاكر") && wheel.includes("الموز"));
 
 /*
   The odds must be real percentages of one hundred — «عرض النسبة الفعلية
@@ -194,7 +225,7 @@ if (percents.length >= 2) {
     `${percents.length} نسبة`,
   );
 } else {
-  check("النسب معروضة", false, `وجدت ${percents.length} فقط`);
+  needsSession("مجموع النسب = 100%", "الصفوف لا تُرسم لزائر غير مسجّل");
 }
 
 /*
@@ -208,7 +239,20 @@ const strip = await page
   .locator('[aria-label*="شريط"], [aria-label*="strip" i], [aria-label*="Prize" i]')
   .count()
   .catch(() => 0);
-check("شريط الروليت موجود", strip > 0, `${strip} عنصر`);
+if (strip > 0) {
+  check("شريط الروليت موجود", true, `${strip} عنصر`);
+} else if (wheel.includes("لا توجد ألعاب متاحة في الروليت")) {
+  /*
+    The pool is empty for a visitor with no session, and the page says so in
+    its own words rather than drawing a blank box. That IS the correct
+    signed-out rendering, so it is a pass for the section and a skip for the
+    strip — not a silent success for either.
+  */
+  check("قسم الروليت يرسم حالته الفارغة بنصّها", true);
+  needsSession("شريط الروليت", "المجمّع فارغ بدون جلسة");
+} else {
+  check("شريط الروليت موجود", false, "لا شريط ولا رسالة فراغ");
+}
 
 // ─── 4. The two old addresses ─────────────────────────────────────────────
 for (const old of ["/banana_buy", "/banana_redeem"]) {
@@ -224,7 +268,8 @@ say();
 say(`| الفحص | النتيجة | ملاحظة |`);
 say(`| --- | :---: | --- |`);
 for (const r of results) {
-  say(`| ${r.name} | ${r.ok ? "✓" : "✗"} | ${r.detail || ""} |`);
+  const mark = r.skip ? "—" : r.ok ? "✓" : "✗";
+  say(`| ${r.name} | ${mark} | ${r.detail || ""} |`);
 }
 say();
 
@@ -232,7 +277,12 @@ say();
   The denominator, last and on its own line, because these logs are read as a
   TAIL and a count with nothing to divide it by is not a measurement.
 */
-const passed = results.length - failures;
-say(`## ${passed} من ${results.length} فحصًا نجح على ${ORIGIN}`);
+const checkable = results.length - skipped;
+const passed = checkable - failures;
+say(`## ${passed} من ${checkable} فحصًا نجح على ${ORIGIN}`);
+if (skipped > 0) {
+  say();
+  say(`و${skipped} فحصًا لم يُجرَ لأنه يحتاج حسابًا مسجّلًا — لم يُحتسب نجاحًا ولا فشلًا.`);
+}
 flush();
 if (failures > 0) process.exit(1);
