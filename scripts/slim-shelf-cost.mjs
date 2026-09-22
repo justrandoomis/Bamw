@@ -408,11 +408,37 @@ say();
 say(`## 6. الرف نفسه — products that would change category`);
 say();
 
+/*
+  Two projections, on purpose.
+
+  `slimOf` is the projection as it stands, which now CARRIES these fields
+  because the fix landed before this ran — so a zero from it says only that
+  the fix is in place. The question worth answering is the other one: how many
+  products would have moved WITHOUT it. `beforeOf` is the same projection with
+  the four names removed, and the difference between the two is what the fix
+  is actually worth.
+
+  Reporting only the first number would be a measurement that can never fail,
+  which is not a measurement.
+*/
+const ADDED_BY_THE_FIX = ["coverHiResImage", "category_id", "category_title", "schema_id"];
+const beforeOf = (p) => {
+  const out = {};
+  for (const key of SLIM) {
+    if (ADDED_BY_THE_FIX.includes(key)) continue;
+    if (p?.[key] !== undefined) out[key] = p[key];
+  }
+  return out;
+};
+
 const moved = [];
+const wouldHaveMoved = [];
 for (const p of all) {
   const full = String(getProductCategory(p) ?? "");
   const thin = String(getProductCategory(slimOf(p)) ?? "");
+  const before = String(getProductCategory(beforeOf(p)) ?? "");
   if (full !== thin) moved.push({ p, full, thin });
+  if (full !== before) wouldHaveMoved.push({ p, full, thin: before });
 }
 
 const CATEGORY_FIELDS = [
@@ -428,7 +454,20 @@ say(`\`getProductCategory\` reads: ${CATEGORY_FIELDS.join(", ")} (and \`schema.i
 say(`Of those, the slim projection drops: **${CATEGORY_FIELDS.filter((f) => !SLIM.has(f)).join(", ") || "none"}**.`);
 say();
 say(`Checked all **${all.length}** products.`);
-say(`Products that would land on a DIFFERENT shelf: **${moved.length}**`);
+say(`Products that land on a DIFFERENT shelf, as the projection stands: **${moved.length}**`);
+say(`Products that WOULD have, without the fields this fix added: **${wouldHaveMoved.length}**`);
+say();
+if (wouldHaveMoved.length) {
+  say(`| id | title | full record | without the fix |`);
+  say(`| --- | --- | --- | --- |`);
+  for (const row of wouldHaveMoved.slice(0, 60)) {
+    say(
+      `| ${row.p.id} | ${String(row.p.titleEn || row.p.title || "").slice(0, 40)} | ${row.full} | **${row.thin}** |`,
+    );
+  }
+  if (wouldHaveMoved.length > 60) say(`| … | ${wouldHaveMoved.length - 60} more | | |`);
+  say();
+}
 if (moved.length) {
   say();
   say(`| id | title | full record | under slim |`);
