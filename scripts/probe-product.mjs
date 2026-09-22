@@ -191,6 +191,63 @@ if (WRITE) {
       ? "**الكتابة ثبتت.**"
       : "**الكتابة لم تثبت — السعر عاد كما كان.**",
   );
+  say();
+
+  /*
+    What is actually IN the database, byte for byte.
+
+    `updateStore` patched one row, threw nothing, and a fresh read returned the
+    old price. Everything above this point is the application talking to
+    itself; these are the rows. The catalogue is stored as JSON split across
+    `store:products` and `store:products#NNN`, so the question is simply which
+    chunks mention this id and what price sits beside it in each.
+
+    A single id in two chunks would explain all of it: the loader returns one
+    copy, the mutator patches that one, and the reader keeps finding the other.
+  */
+  say("## الصفوف الخام في `store_kv`");
+  say();
+  const rows = await app.d1All(
+    "SELECT key, length(value) AS n FROM store_kv WHERE key LIKE 'store:products%' ORDER BY key",
+  );
+  say(`- أجزاء الكتالوج المخزّنة: **${rows.length}**`);
+  for (const row of rows)
+    say(`  - \`${row.key}\` — ${Number(row.n).toLocaleString("en-US")} حرفًا`);
+  say();
+
+  let hits = 0;
+  for (const row of rows) {
+    const full = await app.d1All("SELECT value FROM store_kv WHERE key = ? LIMIT 1", row.key);
+    const value = String(full?.[0]?.value ?? "");
+    if (!value.includes(ID)) continue;
+    hits += 1;
+    /*
+      Print only this product's own fragment, and only its pricing fields. The
+      chunk holds the whole catalogue including supplier data, and none of that
+      belongs in a log.
+    */
+    let from = 0;
+    let seen = 0;
+    while (true) {
+      const at = value.indexOf(ID, from);
+      if (at < 0) break;
+      seen += 1;
+      const window = value.slice(Math.max(0, at - 200), at + 400);
+      const price = window.match(/"price"\s*:\s*("?[\d.]+"?)/);
+      const cost = window.match(/"cost"\s*:\s*("?[\d.]+"?)/);
+      say(
+        `- \`${row.key}\` ذكر رقم ${seen}: \`price\` = \`${price?.[1] ?? "—"}\`، ` +
+          `\`cost\` = \`${cost?.[1] ?? "—"}\``,
+      );
+      from = at + ID.length;
+    }
+  }
+  say();
+  say(
+    hits === 1
+      ? "المعرّف موجود في جزء واحد فقط."
+      : `**المعرّف موجود في ${hits} أجزاء — وهذا يفسّر كتابةً تُلمَس وقراءةً تخالفها.**`,
+  );
 }
 
 rmSync(outfile, { force: true });
