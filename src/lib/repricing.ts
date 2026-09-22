@@ -252,3 +252,101 @@ export function decisionProblem(decision: RepriceDecision): string | null {
   }
   return null;
 }
+
+/* ------------------------------------------------------------------ *
+ * The online account, and the DLC increase.
+ *
+ * «في خيار الاونلاين اجعل الربح 10 الف اقل شي و اعلى شي 15 الف، سواء كان
+ *  عادي او مع الاضافات.»
+ * «وdlc للحساب الاوفلاين تكون الزياده على العادي حسب فرقها عن العادي.»
+ *
+ * These are a different rule from the offline price above, and deliberately a
+ * separate function: the offline price is floored and capped on its own cost,
+ * while an online account is priced on ITS own cost — the two options of one
+ * product carry different costs, and a sample from production shows an online
+ * option at cost 27,500 against a game whose offline cost is 1,750.
+ * ------------------------------------------------------------------ */
+
+/** IQD. «اجعل الربح 10 الف اقل شي» for an online account. */
+export const ONLINE_MIN_MARGIN = 10_000;
+/** IQD. «و اعلى شي 15 الف» */
+export const ONLINE_MAX_MARGIN = 15_000;
+
+/**
+ * What an online account should cost, given what it cost the shop.
+ *
+ * The band is on the PROFIT, not the price, so the answer moves with the cost
+ * rather than being a number typed once and left behind — which is how the
+ * market's bot floors came to quote nineteen hundred times the spot price.
+ *
+ * A price already inside the band is left exactly where it is. The owner set
+ * these by hand and a rule that nudged every one of them to a computed value
+ * would be overwriting judgement with arithmetic for no gain.
+ */
+export function onlinePriceFor(cost: number, current: number): number {
+  const c = Number(cost);
+  const now = Number(current);
+  if (!Number.isFinite(c) || c <= 0) return now;
+  const floor = ceilThousand(c + ONLINE_MIN_MARGIN);
+  const ceiling = floorThousand(c + ONLINE_MAX_MARGIN);
+  /*
+    A band narrower than one thousand cannot hold a whole-thousand price. It
+    cannot happen with a 5,000-wide band, but the guard is here because the
+    alternative is silently returning a floor above the ceiling.
+  */
+  if (ceiling < floor) return floor;
+  if (!Number.isFinite(now) || now <= 0) return floor;
+  if (now < floor) return floor;
+  if (now > ceiling) return ceiling;
+  return now;
+}
+
+/**
+ * How much a DLC edition adds to the offline price.
+ *
+ * The owner gave three worked examples, and they do not describe a
+ * multiplier — they describe a ladder that flattens as the difference grows:
+ *
+ *   «اذا كان ١٧٠٠ عادي و ٢٠٠٠ مع الاضافات الفرق هو ٣٠٠ اذا الزياده تكون
+ *    ١٠٠٠ دينار»                                    → 300  costs → +1,000
+ *   «اذا كان مثلا فرق في التكلفه ١٠٠٠ تكون الزياده ٢٠٠٠ اي الضعف تقريبا»
+ *                                                    → 1,000 costs → +2,000
+ *   «لكن لو كان مثلا الفرق في التكلفه ٣٠٠٠ نجعل الزياده هي ٥٠٠٠ وليس ٦٠٠٠»
+ *                                                    → 3,000 costs → +5,000
+ *
+ * Doubling holds at the bottom and is abandoned at the top on purpose: «لتكون
+ * منطقيه». Above 3,000 the increase stops growing, because a DLC that adds
+ * more to the bill than the game costs is not an add-on anyone buys.
+ *
+ * The three anchors are exact. The steps BETWEEN them are interpolation, and
+ * they are laid out as a visible table rather than a formula so the owner can
+ * read the one they care about and say it is wrong.
+ */
+export const DLC_LADDER: ReadonlyArray<{ upToCostDiff: number; increase: number }> = [
+  { upToCostDiff: 500, increase: 1_000 },
+  { upToCostDiff: 1_000, increase: 2_000 },
+  { upToCostDiff: 2_000, increase: 3_000 },
+  { upToCostDiff: 2_500, increase: 4_000 },
+  { upToCostDiff: Number.POSITIVE_INFINITY, increase: 5_000 },
+];
+
+/**
+ * The price of the DLC edition, from the offline price and the cost gap.
+ *
+ * `costDiff` is what the edition with the add-ons costs the shop MINUS what
+ * the plain offline account costs it. A negative or absent gap adds nothing:
+ * an edition that costs no more is not a more expensive product.
+ */
+export function dlcIncreaseFor(costDiff: number): number {
+  const diff = Number(costDiff);
+  if (!Number.isFinite(diff) || diff <= 0) return 0;
+  const step = DLC_LADDER.find((row) => diff <= row.upToCostDiff);
+  return step ? step.increase : 5_000;
+}
+
+/** The DLC edition's price: the offline price plus its rung of the ladder. */
+export function dlcPriceFor(offlinePrice: number, costDiff: number): number {
+  const base = Number(offlinePrice);
+  if (!Number.isFinite(base) || base <= 0) return 0;
+  return base + dlcIncreaseFor(costDiff);
+}

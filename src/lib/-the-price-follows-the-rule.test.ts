@@ -344,3 +344,99 @@ describe("the rules are stable", () => {
     }
   });
 });
+
+describe("«في خيار الاونلاين اجعل الربح 10 الف اقل شي و اعلى شي 15 الف»", () => {
+  it("brings a 17,500 profit down to the 15,000 ceiling", async () => {
+    /*
+      Mario Kart World's online option, read from production: cost 27,500,
+      priced 45,000 — a profit of 17,500, above the band. The ceiling puts it
+      at 42,500... which is not a whole thousand, so the rule floors to 42,000.
+    */
+    const { onlinePriceFor } = await import("@/lib/repricing");
+    const price = onlinePriceFor(27_500, 45_000);
+    expect(price - 27_500).toBeLessThanOrEqual(15_000);
+    expect(price - 27_500).toBeGreaterThanOrEqual(10_000);
+  });
+
+  it("lifts a thin online margin up to 10,000", async () => {
+    const { onlinePriceFor } = await import("@/lib/repricing");
+    expect(onlinePriceFor(20_000, 25_000) - 20_000).toBeGreaterThanOrEqual(10_000);
+  });
+
+  it("leaves a price already inside the band exactly where the owner put it", async () => {
+    /*
+      The owner set these by hand. A rule that nudged every one of them to a
+      computed value would be overwriting judgement with arithmetic for no gain.
+    */
+    const { onlinePriceFor } = await import("@/lib/repricing");
+    expect(onlinePriceFor(27_500, 40_000)).toBe(40_000);
+    expect(onlinePriceFor(27_500, 38_000)).toBe(38_000);
+  });
+
+  it("keeps every result a whole thousand and inside the band, across real costs", async () => {
+    const { onlinePriceFor, ONLINE_MIN_MARGIN, ONLINE_MAX_MARGIN } =
+      await import("@/lib/repricing");
+    for (const cost of [5_000, 12_500, 20_000, 27_500, 31_000, 44_000, 60_000]) {
+      for (const current of [0, 10_000, 30_000, 45_000, 90_000]) {
+        const price = onlinePriceFor(cost, current);
+        expect(price % 1_000).toBe(0);
+        const margin = price - cost;
+        expect(margin).toBeGreaterThanOrEqual(ONLINE_MIN_MARGIN);
+        expect(margin).toBeLessThanOrEqual(ONLINE_MAX_MARGIN);
+      }
+    }
+  });
+});
+
+describe("«الزياده على العادي حسب فرقها عن العادي» — the DLC ladder", () => {
+  it("hits all three of the owner's worked examples exactly", async () => {
+    const { dlcIncreaseFor } = await import("@/lib/repricing");
+    // «١٧٠٠ عادي و ٢٠٠٠ مع الاضافات، الفرق ٣٠٠، الزياده ١٠٠٠»
+    expect(dlcIncreaseFor(2_000 - 1_700)).toBe(1_000);
+    // «فرق في التكلفه ١٠٠٠ تكون الزياده ٢٠٠٠ اي الضعف تقريبا»
+    expect(dlcIncreaseFor(1_000)).toBe(2_000);
+    // «فرق في التكلفه ٣٠٠٠ نجعل الزياده ٥٠٠٠ وليس ٦٠٠٠»
+    expect(dlcIncreaseFor(3_000)).toBe(5_000);
+  });
+
+  it("stops growing above 3,000 — «لتكون منطقيه»", async () => {
+    /*
+      Doubling is abandoned at the top on purpose. A DLC that adds more to the
+      bill than the game itself costs is not an add-on anyone buys.
+    */
+    const { dlcIncreaseFor } = await import("@/lib/repricing");
+    expect(dlcIncreaseFor(3_000)).toBe(5_000);
+    expect(dlcIncreaseFor(6_000)).toBe(5_000);
+    expect(dlcIncreaseFor(20_000)).toBe(5_000);
+  });
+
+  it("adds nothing when the edition costs no more than the plain account", async () => {
+    const { dlcIncreaseFor } = await import("@/lib/repricing");
+    expect(dlcIncreaseFor(0)).toBe(0);
+    expect(dlcIncreaseFor(-500)).toBe(0);
+    expect(dlcIncreaseFor(Number.NaN)).toBe(0);
+  });
+
+  it("never goes down as the cost gap grows", async () => {
+    // A bigger gap must never cost the customer less. Ladders invite this bug.
+    const { dlcIncreaseFor } = await import("@/lib/repricing");
+    let previous = 0;
+    for (let diff = 0; diff <= 8_000; diff += 100) {
+      const increase = dlcIncreaseFor(diff);
+      expect(increase).toBeGreaterThanOrEqual(previous);
+      previous = increase;
+    }
+  });
+
+  it("prices the DLC edition from the offline price, not from its own cost", async () => {
+    /*
+      «الزياده على العادي» — on top of the ordinary offline price. A game whose
+      offline account sells at 8,000 with a 1,000 cost gap is 10,000 with the
+      add-ons, whatever the DLC itself cost.
+    */
+    const { dlcPriceFor } = await import("@/lib/repricing");
+    expect(dlcPriceFor(8_000, 1_000)).toBe(10_000);
+    expect(dlcPriceFor(5_000, 300)).toBe(6_000);
+    expect(dlcPriceFor(12_000, 4_000)).toBe(17_000);
+  });
+});
