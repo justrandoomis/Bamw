@@ -286,17 +286,94 @@ try {
   wheelOk = false;
 }
 
+/*
+  Is the shop serving a supplier's price to a customer?
+
+  Not a question about the deployed code — it is a question about the
+  catalogue the deployed code is serving, which is why it is asked here, at
+  the public hostname, rather than in a unit test. Four product titles carried
+  a scraped video timestamp with the supplier's cost in yuan beside it
+  (`Pokémon Sword / Shield [0:10 ¥8.76]`) and one carried the Chinese supplier
+  name, which this shop keeps out of the public product API, off the product
+  page, out of the public HTML, out of the cache and out of search. They were
+  in the title, and the title is on the shelf.
+
+  A yuan mark on its own is not the test: the Nintendo eShop Japan Gift Card
+  is denominated in yen and `¥500` is what the customer is buying. The
+  supplier's prices are to the fen, so a decimal fraction is what separates
+  them.
+
+  A console bracket left in a name is counted but does not fail the check.
+  Some of those cannot be removed without merging two products' identities,
+  and that is a decision for the shop's owner; failing every future release
+  over it would only teach people to ignore this line.
+*/
+const SUPPLIER_PRICE = /(?:¥|￥)\s*\d+\.\d|(?:CNY|RMB|人民币)\s*\d/i;
+const CONSOLE_BRACKET = /[[(]\s*(?:nintendo\s*)?switch\s*2?\s*[\])]\s*$/i;
+
+let catalogueOk = true;
+try {
+  const res = await fetch(`${ORIGIN}/api/data`, {
+    headers: { "user-agent": "bananto-deploy-verify", accept: "application/json" },
+    redirect: "follow",
+  });
+  const text = await res.text();
+  let payload = null;
+  try {
+    payload = JSON.parse(text);
+  } catch {
+    payload = null;
+  }
+
+  if (!res.ok || !payload) {
+    // Unreachable or not JSON is inconclusive, not a deploy failure: the other
+    // checks above already say whether the site is up.
+    say(`- \`/api/data\` → HTTP ${res.status}, not readable as JSON (inconclusive)`);
+  } else {
+    const prices = [];
+    const walk = (node, path) => {
+      if (typeof node === "string") {
+        if (SUPPLIER_PRICE.test(node)) prices.push(`${path}: ${node.slice(0, 80)}`);
+        return;
+      }
+      if (Array.isArray(node)) {
+        node.forEach((item, index) => walk(item, `${path}[${index}]`));
+        return;
+      }
+      if (node && typeof node === "object") {
+        for (const [key, value] of Object.entries(node)) walk(value, path ? `${path}.${key}` : key);
+      }
+    };
+    walk(payload, "");
+
+    const products = Array.isArray(payload?.products) ? payload.products : [];
+    const brackets = products.filter((product) =>
+      [product?.title, product?.titleEn].some((name) => CONSOLE_BRACKET.test(String(name ?? ""))),
+    ).length;
+
+    say(`- \`/api/data\` → HTTP ${res.status}, **${products.length}** products`);
+    say(
+      `- a supplier's price reaching a customer: **${prices.length}**` +
+        (prices.length ? ` — ${prices.slice(0, 5).join("; ")}` : " (none)"),
+    );
+    say(`- names still carrying a console bracket: **${brackets}** (reported, not a failure)`);
+    if (prices.length) catalogueOk = false;
+  }
+} catch (error) {
+  say(`- \`/api/data\` → unreachable: ${String(error?.message || error)} (inconclusive)`);
+}
+
 const healthy = health?.ok === true && body.status === "OK";
 say();
 say(
-  healthy && homeOk && referralOk && reviewOk && wheelOk
+  healthy && homeOk && referralOk && reviewOk && wheelOk && catalogueOk
     ? `**verified: the deployed site is healthy**`
     : `**FAILED**`,
 );
 
 writeFileSync("deployment-verification.md", lines.join("\n") + "\n");
 
-if (!healthy || !homeOk || !referralOk || !reviewOk || !wheelOk) {
+if (!healthy || !homeOk || !referralOk || !reviewOk || !wheelOk || !catalogueOk) {
   console.error("deployment verification failed");
   process.exit(1);
 }
