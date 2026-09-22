@@ -14,7 +14,15 @@ describe("listingPrice", () => {
     expect(listingPrice({ price: 25000, options: [{ id: "a", name: "A" }] })).toBe(25000);
   });
 
-  it("keeps the base price when a priced option carries the same amount", () => {
+  it("leads with the cheapest option even when one is priced at the base", () => {
+    /*
+      «السعر الذي اريده ان يظهر على البطاقه يجب ان يكون سعر ارخص خيار في المنتج»
+
+      This asserted 38,000, because the $20 denomination carried exactly the
+      base price. A gift card's card should read from its cheapest
+      denomination, which is also a price the customer can really pay, and the
+      details page opens on that same $10.
+    */
     const product = {
       price: 38000,
       options: [
@@ -22,7 +30,7 @@ describe("listingPrice", () => {
         { id: "usd20", name: "$20", price: 38000 },
       ],
     };
-    expect(listingPrice(product)).toBe(38000);
+    expect(listingPrice(product)).toBe(20000);
   });
 
   it("leads with the cheapest priced option when the base price is not one of them", () => {
@@ -175,9 +183,15 @@ describe("initialVariantName", () => {
     expect(listingPrice({ price: 7500, variants: denominations })).toBe(7000);
   });
 
-  it("prefers the denomination priced exactly at the base price", () => {
-    expect(initialVariantName(denominations, 13500)).toBe("10 USD");
-    expect(listingPrice({ price: 13500, variants: denominations })).toBe(13500);
+  it("opens on the cheapest denomination, not the one priced at the base", () => {
+    // Same sentence, same reason: «ارخص خيار في المنتج». The page and the card
+    // still agree — they just agree on the cheaper one now.
+    const opened = initialVariantName(denominations, 13500);
+    const cheapest = denominations
+      .filter((v) => typeof v.price === "number" && v.price > 0)
+      .reduce((min, v) => (v.price! < min.price! ? v : min));
+    expect(opened).toBe(cheapest.name);
+    expect(listingPrice({ price: 13500, variants: denominations })).toBe(cheapest.price);
   });
 
   it("selects nothing when the options carry the prices", () => {

@@ -138,7 +138,14 @@ describe("what the card prints", () => {
     expect(listingPricing({ id: "p", price: 8000 }).unitPrice).toBe(8000);
   });
 
-  it("leaves option-priced products to the option rules", () => {
+  it("leads with the cheapest option, not the one priced at the base", () => {
+    /*
+      «السعر الذي اريده ان يظهر على البطاقه يجب ان يكون سعر ارخص خيار في المنتج»
+
+      This asserted 25,000 — the base, because an option carried exactly that
+      amount. The owner has since said plainly that the card must show the
+      cheapest option, and 15,000 is a price this product really sells at.
+    */
     const withOptions = {
       id: "prd_opt",
       price: 25000,
@@ -147,7 +154,7 @@ describe("what the card prints", () => {
         { id: "o_big", name: "20$", price: 25000 },
       ],
     };
-    expect(listingPricing(withOptions).unitPrice).toBe(25000);
+    expect(listingPricing(withOptions).unitPrice).toBe(15000);
   });
 });
 
@@ -268,5 +275,65 @@ describe("the card and the till agree", () => {
     );
     expect(category).not.toContain("return (Number(a.price) || 0) - (Number(b.price) || 0);");
     expect(category).not.toContain("return (Number(b.price) || 0) - (Number(a.price) || 0);");
+  });
+});
+
+/**
+ * AND THEN HE SAID WHICH HE ACTUALLY MEANT.
+ *
+ *   «اريد يعرض ارخص خيار ( ليش اجباري سعر اوفلاين )
+ *    السعر الذي اريده ان يظهر على البطاقه يجب ان يكون سعر ارخص خيار في المنتج»
+ *
+ * The rule above preferred the ordinary offline account BY TIER, whatever it
+ * cost, because his first message named that tier: «اجعل السعر الارخص يعرض
+ * افتراضيا في البطاقه ( حساب اوفلاين عادي )». I read the parenthesis as the
+ * rule when it was an example — what he asked for from the start was «السعر
+ * الارخص», and on the games he was looking at the offline account simply WAS
+ * the cheapest.
+ *
+ * On a product where it is not, the old rule printed the dearer number. These
+ * are that case.
+ */
+describe("the cheapest option, whichever tier it belongs to", () => {
+  it("shows the online row when it is cheaper than the offline one", () => {
+    /*
+      Deliberately inverted against every other fixture in this file. Nothing
+      in the rule may care which tier a row is; only what it costs.
+    */
+    const inverted = {
+      id: "prd_inverted",
+      title: "A game whose offline account costs more",
+      price: 40000,
+      types: [
+        { id: "t_offline", name: "حساب أوفلاين", price: 30000, cost: 2000 },
+        { id: "t_online", name: "حساب أونلاين", price: 18000, cost: 9000 },
+      ],
+    };
+    expect(listingPricing(inverted).unitPrice).toBe(18000);
+    expect(initialTypeId(inverted)).toBe("t_online");
+  });
+
+  it("still shows the offline row when it IS the cheapest, which is the usual case", () => {
+    expect(listingPricing(bothTiers).unitPrice).toBe(12000);
+    expect(initialTypeId(bothTiers)).toBe("t_offline");
+  });
+
+  it("shows the base price when the base undercuts every row", () => {
+    // `resolveUnitPrice` with nothing selected charges the base, so the base is
+    // itself an option — and on these 65 games it is the cheapest one.
+    expect(listingPricing(onlineOnly).unitPrice).toBe(12000);
+    expect(initialTypeId(onlineOnly)).toBe("");
+  });
+
+  it("never prints a price the customer cannot pay", () => {
+    /*
+      The whole contract, run over every fixture: whatever the card prints, the
+      selection the page opens on must charge exactly that.
+    */
+    for (const product of [onlineOnly, bothTiers]) {
+      const typeId = initialTypeId(product);
+      const charged = resolveUnitPrice(product, typeId ? { typeId } : {});
+      expect(charged.unitPrice, product.id).toBe(listingPricing(product).unitPrice);
+    }
   });
 });

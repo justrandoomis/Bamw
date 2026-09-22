@@ -457,6 +457,62 @@ if (biggest.length) {
   say();
 }
 
+/* ------------------------------------------------------------------ *
+ * THE DEAREST CARDS, AND WHY.
+ *
+ * The owner, with a screenshot of the shelf: «مازالت تعطي سعر اللعبه اونلاين».
+ * Super Mario Odyssey read 35,000 beside a Zelda at 7,000. Under the rule he
+ * has now given — «ارخص خيار في المنتج» — the card already shows the cheapest
+ * thing on the product, so a card still reading 35,000 means the product has
+ * nothing cheaper ON it: the online price is sitting in the base field and the
+ * offline account is not an option at all.
+ *
+ * That is a fault in the RECORD, not in the card, and the two need telling
+ * apart before either is touched. So every game whose cheapest option is above
+ * 12,000 is listed with its cost, its base, and every row it has.
+ * ------------------------------------------------------------------ */
+const stillDear = [];
+for (const product of games) {
+  const { unitPrice } = app.listingPricing(product);
+  if (!(Number(unitPrice) > 12_000)) continue;
+  const rows = app.classifyTiers(app.pricingTypeRows(product)) ?? [];
+  stillDear.push({
+    title: String(product.title || product.titleEn || ""),
+    cost: Number(product.cost ?? product.costPrice ?? 0) || 0,
+    base: Number(product.price ?? 0) || 0,
+    mirror: Number(product.accountPrice ?? 0) || 0,
+    shown: Number(unitPrice) || 0,
+    rows: rows
+      .filter((t) => Number(t.price) > 0)
+      .map((t) => `${t.kind}:${Number(t.price).toLocaleString("en-US")}`),
+  });
+}
+stillDear.sort((a, b) => b.shown - a.shown);
+
+say("## أغلى البطاقات — ولماذا بقيت غالية");
+say();
+say(`ألعاب سعرها المعروض فوق 12,000: **${stillDear.length}**`);
+say();
+say("| اللعبة | التكلفة | الأساس | النسخة | المعروض | الصفوف المسعّرة |");
+say("| --- | ---: | ---: | ---: | ---: | --- |");
+for (const row of stillDear.slice(0, 40)) {
+  say(
+    `| ${row.title.slice(0, 40)} | ${row.cost.toLocaleString("en-US")} | ` +
+      `${row.base.toLocaleString("en-US")} | ${row.mirror.toLocaleString("en-US")} | ` +
+      `**${row.shown.toLocaleString("en-US")}** | ${row.rows.join(" · ") || "—"} |`,
+  );
+}
+if (stillDear.length > 40) say(`| …و${stillDear.length - 40} غيرها | | | | | |`);
+say();
+/*
+  The one that decides what to do: a game with NO priced row has nothing
+  cheaper for the card to lead with, so its base price is the whole story.
+*/
+const noRows = stillDear.filter((row) => row.rows.length === 0);
+say(`- منها بلا أي صف مسعّر (الأساس هو كل ما لديها): **${noRows.length}**`);
+say(`- منها تكلفتها فوق 10,000 (فالأساس سعر أونلاين فعلًا): **${stillDear.filter((r) => r.cost > 10_000).length}**`);
+say();
+
 rmSync(outfile, { force: true });
 
 say("## الخلاصة");
