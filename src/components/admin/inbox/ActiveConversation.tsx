@@ -35,6 +35,7 @@ import { useQueryClient } from "@tanstack/react-query";
 import { MessageCard } from "./MessageCard";
 import { AccountToolsModal } from "./AccountToolsModal";
 import { QuickRepliesModal } from "./QuickRepliesModal";
+import { SendGuideButton } from "./SendGuideButton";
 import { CustomerDetailsDrawer } from "./CustomerDetailsDrawer";
 import { OrderPreviewDrawer } from "./OrderPreviewDrawer";
 import type { ManualCompletionRequest } from "./types";
@@ -906,6 +907,19 @@ export function ActiveConversation({
                   <span>أداة تسليم الطلب (حسابات / أكواد)</span>
                 </button>
               )}
+
+              {/*
+                Send the steps of one login method, with a button on the
+                message that opens that method. See SendGuideButton: the server
+                renders the steps from the guide the shop publishes, so this
+                control only names which one.
+              */}
+              {isOrderConversation && (linkedOrder?.id || thread.orderId) ? (
+                <SendGuideButton
+                  orderId={String(linkedOrder?.id || thread.orderId)}
+                  threadId={thread.id}
+                />
+              ) : null}
 
               {/* Quick Replies */}
               <button

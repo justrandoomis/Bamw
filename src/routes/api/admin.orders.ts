@@ -89,6 +89,8 @@ interface AdminOrderBody {
   /** Manual completion: the order's own code, typed by the admin. */
   confirmText?: string;
   text?: string;
+  /** `send_instructions`: which published guide's steps to send. */
+  guideId?: string;
   title?: string;
   clientMessageId?: string;
   /** Bulk-prepared accounts for one order line. */
@@ -373,8 +375,7 @@ export const Route = createFileRoute("/api/admin/orders")({
                   archivedUnmappedItems: result.archivedUnmappedItems,
                 });
               } catch (error) {
-                const code =
-                  error instanceof Error ? error.message : "MANUAL_COMPLETION_FAILED";
+                const code = error instanceof Error ? error.message : "MANUAL_COMPLETION_FAILED";
                 const message =
                   code === "MANUAL_COMPLETION_CONFIRMATION_MISMATCH"
                     ? "اكتب رقم الطلب بالضبط لتأكيد الإكمال اليدوي."
@@ -901,11 +902,46 @@ export const Route = createFileRoute("/api/admin/orders")({
               return json({ success: true, ...result });
             }
             case "send_instructions": {
+              /*
+                With `guideId`, the steps come from the guide the shop actually
+                publishes — resolved HERE, not sent by the browser.
+
+                The admin used to retype the same fifteen steps into every
+                order, and they got shorter as the evening got longer. Now they
+                pick a method and the server renders it, so what a member reads
+                is what the shop publishes and the message carries a button
+                back to that method's own place on /account_guides.
+
+                Resolved server-side for the plain reason that a browser must
+                not be able to put arbitrary text in the shop's voice, or link
+                a member to a guide that does not exist. Without `guideId` this
+                is exactly what it was: the admin's own words.
+              */
+              let instructionBody: Record<string, unknown> = { text: data.text ?? "" };
+              const guideId = String(data.guideId ?? "").trim();
+              if (guideId) {
+                const { mergeContent } = await import("@/lib/content");
+                const { getStoreMeta } = await import("@/lib/db.server");
+                const { applyGuideOverrides, shippedGuides } = await import("@/lib/siteGuides");
+                const { guideMessageBody } = await import("@/lib/guideMessage");
+
+                const meta = (await getStoreMeta()) as { content?: unknown };
+                const guides = applyGuideOverrides(
+                  shippedGuides(),
+                  mergeContent(meta?.content).guides ?? [],
+                );
+                const guide = guides.find((item) => item.id === guideId);
+                if (!guide) {
+                  return json({ error: "الشرح غير موجود أو غير منشور" }, { status: 404 });
+                }
+                instructionBody = { ...guideMessageBody(guide) };
+              }
+
               await appendMessage(order.threadId, {
                 senderRole: "admin",
                 senderName: adminName,
                 kind: "instructions",
-                body: { text: data.text ?? "" },
+                body: instructionBody,
               });
               break;
             }

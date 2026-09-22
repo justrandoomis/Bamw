@@ -18,6 +18,7 @@ import { toast } from "sonner";
 
 import { api, fileToDataUrl } from "@/lib/api";
 import { bubbleSide } from "@/lib/chatSides";
+import { readGuideMessage } from "@/lib/guideMessage";
 import { isAccountKind, type ChatMessage, type Order, type OrderItem } from "@/lib/types";
 import OrderReviewModal from "@/components/OrderReviewModal";
 import { AccountBatchPanel } from "@/components/admin/AccountBatchPanel";
@@ -403,6 +404,36 @@ function MessageBody({ message, order }: { message: ChatMessage; order: Order })
           <p>✅ تم إكمال الطلب {String(message.body["code"] ?? "")} بنجاح!</p>
         </div>
       );
+    case "instructions": {
+      /*
+        The steps, and a way back to the method they came from.
+
+        The text is what the member reads without leaving the conversation;
+        the button is for the step that needs the pictures, and it deep-links
+        to THAT method rather than the top of a page with six on it. An older
+        instructions message, or one the admin typed themselves, carries no
+        anchor and gets no button — never a button to nowhere.
+      */
+      const guide = readGuideMessage(message.body);
+      if (!guide)
+        return <p className="whitespace-pre-wrap">{String(message.body["text"] ?? "")}</p>;
+      return (
+        <div className="space-y-2.5">
+          <p className="whitespace-pre-wrap">{guide.text}</p>
+          {guide.href ? (
+            <a
+              href={guide.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 rounded-xl border border-border bg-background px-3 py-2 text-[11px] font-bold text-foreground transition-colors hover:border-[var(--brand-red)]/40 hover:text-[var(--brand-red)]"
+            >
+              <BookOpen className="h-3.5 w-3.5" aria-hidden="true" />
+              <span>{guide.guideTitle}</span>
+            </a>
+          ) : null}
+        </div>
+      );
+    }
     default:
       return <p className="whitespace-pre-wrap">{String(message.body["text"] ?? "")}</p>;
   }
