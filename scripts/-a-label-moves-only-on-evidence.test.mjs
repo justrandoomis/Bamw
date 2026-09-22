@@ -17,6 +17,7 @@ import {
   platformVerdict,
   settleCollisions,
   settleWithFallback,
+  switch2Claims,
   titleFlags,
   titleVerdict,
 } from "./lib/platform-verdict.mjs";
@@ -494,5 +495,43 @@ describe("the second chance, for a rename that exists to remove a disclosure", (
     expect(refused).toEqual([]);
     expect(rescued).toEqual([]);
     expect(proposals.get("a").title).toBe("Game");
+  });
+});
+
+describe("what else says Switch 2, after the platform has moved", () => {
+  /*
+    `isNintendoSwitch2Product` decides the badge from four things, and
+    `platform` is only the first. A correction that moved only the platform
+    would leave the shelf saying the thing it just corrected — the same shape
+    of half-fix as stripping the console bracket from the url key but not from
+    the title.
+  */
+  it("finds nothing on a product that only ever said Switch 1", () => {
+    expect(switch2Claims({ platform: "switch1", tags: ["Action", "RPG"] })).toEqual([]);
+  });
+
+  it("names the edition flag, the enhancement flag and the tags", () => {
+    const claims = switch2Claims({
+      switch2: { isSwitch2Edition: true },
+      switch2Enhanced: true,
+      tags: ["Action", "Switch 2 Edition"],
+    });
+    expect(claims).toContain("switch2.isSwitch2Edition");
+    expect(claims).toContain("switch2Enhanced");
+    expect(claims).toContain('tag "Switch 2 Edition"');
+  });
+
+  it("reads tags stored as one delimited string, as the badge does", () => {
+    expect(switch2Claims({ tags: "Action;Nintendo Switch 2;RPG" })).toEqual([
+      'tag "Nintendo Switch 2"',
+    ]);
+  });
+
+  it("does not mistake a tag that merely contains the words", () => {
+    /*
+      The same anchored pattern the badge uses. "Switch 2 games we like" is
+      somebody's shelf label, not a console claim.
+    */
+    expect(switch2Claims({ tags: ["Switch 2 games we like"] })).toEqual([]);
   });
 });

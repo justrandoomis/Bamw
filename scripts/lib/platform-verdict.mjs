@@ -406,3 +406,43 @@ export function settleWithFallback(products, proposals, weaker, keysOf) {
     preexisting: first.preexisting,
   };
 }
+
+/**
+ * Everything on a product that still says "Nintendo Switch 2", besides `platform`.
+ *
+ * Moving a game's platform does not on its own move the badge on its card.
+ * `isNintendoSwitch2Product` reads four things, and `platform` is only the
+ * first: a `switch2.isSwitch2Edition` flag, a `switch2Enhanced` flag, and any
+ * tag matching a Switch-2 pattern will each keep the badge on by themselves.
+ *
+ * So a correction that touched only `platform` could leave a game filed under
+ * Switch 1 and still shown as a Switch 2 product — a half-correction that
+ * reads exactly like none, which is the same shape of mistake the bracket fix
+ * made once already.
+ *
+ * This names them; it does not change them, and the caller must not either
+ * without deciding each on its own terms. `switch2Enhanced` in particular is
+ * a true statement about a Switch 1 cartridge — that it runs better on newer
+ * hardware — and clearing it because the platform moved would delete a fact.
+ * That `isNintendoSwitch2Product` reads it as a console is a question about
+ * that function, not about the data.
+ */
+const SWITCH2_TAG =
+  /^(?:nintendo[\s_-]*)?switch[\s_-]*2(?:[\s_-]*(?:edition|exclusive|enhanced))?$/i;
+
+export function switch2Claims(product) {
+  const claims = [];
+  const switch2 = product?.switch2;
+  if (switch2 && typeof switch2 === "object" && switch2.isSwitch2Edition === true) {
+    claims.push("switch2.isSwitch2Edition");
+  }
+  if (product?.switch2Enhanced === true) claims.push("switch2Enhanced");
+  if (product?.switch2Exclusive === true) claims.push("switch2Exclusive");
+
+  const rawTags = product?.tags;
+  const tags = Array.isArray(rawTags) ? rawTags.map(String) : String(rawTags ?? "").split(/[,;|]/);
+  for (const tag of tags) {
+    if (SWITCH2_TAG.test(tag.trim())) claims.push(`tag "${tag.trim()}"`);
+  }
+  return claims;
+}

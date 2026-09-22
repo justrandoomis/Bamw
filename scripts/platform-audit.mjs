@@ -66,6 +66,7 @@ import {
   declaresSwitch2Edition,
   platformVerdict,
   settleWithFallback,
+  switch2Claims,
   titleFlags,
   titleVerdict,
 } from "./lib/platform-verdict.mjs";
@@ -550,6 +551,46 @@ if (publicLeaks.length) {
   say();
 }
 
+/* -------------------------------------- what still says Switch 2 after a move */
+/*
+  A half-correction reads exactly like none.
+
+  `isNintendoSwitch2Product` decides the badge on a game's card from four
+  things, and `platform` is only the first. A game moved to Switch 1 whose
+  `switch2Enhanced` flag or `Switch 2` tag is still set keeps the badge, and
+  the shelf goes on saying the thing this run just corrected.
+
+  Reported, not changed, and for two different reasons. A tag is a label and
+  correcting it is within what was asked — but it is also free text an admin
+  may have typed for their own purposes, and deleting it on a rule is not
+  something to do before seeing how many there are. `switch2Enhanced` is
+  different again: it is a TRUE statement about a Switch 1 cartridge, that it
+  runs better on newer hardware, and clearing it because the platform moved
+  would delete a fact. That `isNintendoSwitch2Product` reads it as a console
+  is a question about that function.
+*/
+const lingering = [];
+for (const [id, entry] of proposals) {
+  if (entry.platform !== "switch1") continue;
+  const claims = switch2Claims(entry.product ?? before.get(id));
+  if (claims.length) {
+    lingering.push({ id, label: String(entry.product?.title ?? id), claims });
+  }
+}
+
+if (lingering.length) {
+  say(`## Moved to Switch 1, but still saying Switch 2 elsewhere`);
+  say();
+  say(`Reported only. Each of these keeps the Switch 2 badge on the game's card`);
+  say(`however the platform reads, because \`isNintendoSwitch2Product\` reads them too.`);
+  say();
+  for (const row of lingering.slice(0, 60)) {
+    say(`- **${row.label}** — ${row.claims.join(", ")}`);
+  }
+  if (lingering.length > 60) say(`- _…and ${lingering.length - 60} more._`);
+  say();
+}
+
 if (leaks.length) {
   /*
     First, because it is the only thing in this report that is a disclosure
@@ -607,6 +648,7 @@ say();
 say(`- games looked at: **${asked}** of ${games.length}`);
 say(`- products this run would change: **${proposals.size}**`);
 say(`  - moved to another console: **${platformMoves}**`);
+say(`    - of those, still saying Switch 2 in a tag or a flag: **${lingering.length}**`);
 say(`  - renamed: **${renames}**`);
 say(`- supplier data taken out of a public name: **${leaks.length}**`);
 say(`- a supplier's price still reaching a customer elsewhere: **${publicLeaks.length}**`);
