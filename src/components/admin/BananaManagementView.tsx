@@ -81,8 +81,23 @@ function toBotPayload(bot: any) {
 export function BananaManagementView() {
   const queryClient = useQueryClient();
   const [activeTab, setActiveTab] = useState<
-    "rewards" | "redemptions" | "listings" | "settings" | "wallets" | "market"
+    "rewards" | "redemptions" | "listings" | "settings" | "wallets" | "market" | "wheel"
   >("rewards");
+
+  /*
+    The wheel's bands, its losing chance and what a ticket costs.
+
+    Seeded empty and filled from the server once the query lands — never from a
+    local default. The market form's own defaults taught that lesson: pressing
+    save before the GET resolves writes the component's guesses over the shop's
+    real numbers.
+  */
+  const [wheelForm, setWheelForm] = useState<{
+    tiers: { upTo: number | null; weight: number; label: string }[];
+    losingPercent: number;
+    ticketPriceBananas: number;
+  } | null>(null);
+  const [wheelError, setWheelError] = useState("");
 
   const [marketForm, setMarketForm] = useState<Record<string, any>>(DEFAULT_MARKET);
 
@@ -118,6 +133,25 @@ export function BananaManagementView() {
   React.useEffect(() => {
     if (data?.marketConfig) setMarketForm({ ...DEFAULT_MARKET, ...data.marketConfig });
   }, [data?.marketConfig]);
+
+  /*
+    Filled from the server, never from a local default, and only once — an
+    admin mid-edit must not have their typing replaced by a refetch.
+  */
+  React.useEffect(() => {
+    const odds = (data as Record<string, any> | undefined)?.["wheelOdds"];
+    if (odds && !wheelForm) {
+      setWheelForm({
+        tiers: (odds.tiers ?? []).map((tier: any) => ({
+          upTo: tier.upTo ?? null,
+          weight: Number(tier.weight ?? 0),
+          label: String(tier.label ?? ""),
+        })),
+        losingPercent: Number(odds.losingPercent ?? 0),
+        ticketPriceBananas: Number(odds.ticketPriceBananas ?? 0),
+      });
+    }
+  }, [data, wheelForm]);
 
   // Reward Modal State
   const [rewardModalOpen, setRewardModalOpen] = useState(false);
@@ -246,6 +280,26 @@ export function BananaManagementView() {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["admin_banana_data"] });
       showToast("تم تحديث محرك تسعير السوق");
+    },
+  });
+
+  const saveWheelOddsMutation = useMutation({
+    mutationFn: (odds: NonNullable<typeof wheelForm>) => adminApi.saveWheelOdds(odds),
+    onError: (error: unknown) => {
+      /*
+        The server's own sentence, not a generic one. Every refusal names which
+        number is wrong and why — «حدود الفئات يجب أن تكون تصاعدية», «نسبة حظ
+        أوفر يجب أن تكون بين 0 و 95» — and replacing that with "failed" would
+        throw away the only thing that tells the owner what to change.
+      */
+      setWheelError(
+        error instanceof Error && error.message ? error.message : "تعذّر الحفظ — حاول مرة أخرى",
+      );
+    },
+    onSuccess: () => {
+      setWheelError("");
+      queryClient.invalidateQueries({ queryKey: ["admin_banana_data"] });
+      showToast("تم حفظ نسب عجلة الحظ وسعر التذكرة");
     },
   });
 
@@ -662,6 +716,17 @@ export function BananaManagementView() {
         >
           <Sliders className="w-4 h-4" />
           إعدادات الاقتصاد وقواعد السوق
+        </button>
+        <button
+          onClick={() => setActiveTab("wheel")}
+          className={`flex items-center gap-2 px-4 py-2.5 rounded-xl font-bold text-xs transition-all shrink-0 ${
+            activeTab === "wheel"
+              ? "bg-black text-white dark:bg-white dark:text-black shadow-sm"
+              : "bg-muted/40 text-muted-foreground hover:text-foreground"
+          }`}
+        >
+          <Ticket className="w-4 h-4" />
+          عجلة الحظ — النسب وسعر التذكرة
         </button>
       </div>
 
@@ -1338,6 +1403,150 @@ export function BananaManagementView() {
       )}
 
       {/* TAB 5: ECONOMY & MARKET SETTINGS */}
+      {/* TAB: THE WHEEL — bands, the losing chance, and what a ticket costs */}
+      {activeTab === "wheel" && (
+        <div className="w-full bg-card border border-border rounded-2xl p-6 space-y-6 shadow-sm">
+          <div>
+            <h2 className="text-lg font-bold">عجلة الحظ — النسب والتقسيمات</h2>
+            <p className="text-xs text-muted-foreground mt-1 font-medium">
+              فئات الأسعار، وزن كل فئة، نسبة «حظ أوفر»، وسعر التذكرة بالموز.
+            </p>
+          </div>
+
+          {!wheelForm ? (
+            <p className="text-xs text-muted-foreground">جارِ التحميل…</p>
+          ) : (
+            <div className="space-y-5">
+              <div>
+                <label className="block text-xs font-bold mb-1.5">
+                  سعر التذكرة الواحدة (🍌 موزة):
+                </label>
+                <input
+                  type="number"
+                  min={0}
+                  step={1}
+                  value={wheelForm.ticketPriceBananas}
+                  onChange={(e) =>
+                    setWheelForm({
+                      ...wheelForm,
+                      ticketPriceBananas: parseInt(e.target.value) || 0,
+                    })
+                  }
+                  className="w-full p-3 rounded-xl border border-border bg-muted/40 font-bold text-sm outline-none focus:border-amber-500 transition-colors"
+                />
+                <p className="text-[11px] text-muted-foreground mt-1">
+                  {wheelForm.ticketPriceBananas > 0 ? (
+                    <>
+                      الزبون يدفع{" "}
+                      <span className="font-bold text-amber-500">
+                        {wheelForm.ticketPriceBananas.toLocaleString("en-US")} موزة
+                      </span>{" "}
+                      مقابل دورة واحدة.
+                    </>
+                  ) : (
+                    <span className="font-bold text-amber-600">
+                      صفر يعني أن التذاكر غير معروضة للبيع — لن يتمكن أحد من الشراء حتى تحدد سعرًا.
+                    </span>
+                  )}
+                </p>
+              </div>
+
+              <div>
+                <label className="block text-xs font-bold mb-1.5">
+                  نسبة «حظ أوفر» — الدورة التي لا تربح شيئًا (%):
+                </label>
+                <input
+                  type="number"
+                  min={0}
+                  max={95}
+                  step={1}
+                  value={wheelForm.losingPercent}
+                  onChange={(e) =>
+                    setWheelForm({ ...wheelForm, losingPercent: parseFloat(e.target.value) || 0 })
+                  }
+                  className="w-full p-3 rounded-xl border border-border bg-muted/40 font-bold text-sm outline-none focus:border-amber-500 transition-colors"
+                />
+                <p className="text-[11px] text-muted-foreground mt-1">
+                  من كل 100 دورة،{" "}
+                  <span className="font-bold text-amber-500">
+                    {Math.round(wheelForm.losingPercent)}
+                  </span>{" "}
+                  لا تربح لعبة. التذكرة تُخصم في كل الحالات.
+                </p>
+              </div>
+
+              <div>
+                <label className="block text-xs font-bold mb-2">فئات الأسعار وأوزانها:</label>
+                <div className="space-y-2">
+                  {wheelForm.tiers.map((tier, index) => (
+                    <div
+                      key={index}
+                      className="grid grid-cols-[1fr_auto_auto] gap-2 items-center bg-muted/30 rounded-xl p-2"
+                    >
+                      <input
+                        value={tier.label}
+                        onChange={(e) => {
+                          const tiers = [...wheelForm.tiers];
+                          tiers[index] = { ...tier, label: e.target.value };
+                          setWheelForm({ ...wheelForm, tiers });
+                        }}
+                        placeholder="الاسم"
+                        className="p-2 rounded-lg border border-border bg-background font-bold text-xs outline-none focus:border-amber-500"
+                      />
+                      <input
+                        type="number"
+                        value={tier.upTo ?? ""}
+                        onChange={(e) => {
+                          const tiers = [...wheelForm.tiers];
+                          tiers[index] = {
+                            ...tier,
+                            upTo: e.target.value === "" ? null : parseInt(e.target.value) || 0,
+                          };
+                          setWheelForm({ ...wheelForm, tiers });
+                        }}
+                        placeholder="بلا حد"
+                        title="أعلى سعر في هذه الفئة — اتركه فارغًا للفئة الأخيرة"
+                        className="w-28 p-2 rounded-lg border border-border bg-background font-bold text-xs outline-none focus:border-amber-500"
+                      />
+                      <input
+                        type="number"
+                        min={0}
+                        value={tier.weight}
+                        onChange={(e) => {
+                          const tiers = [...wheelForm.tiers];
+                          tiers[index] = { ...tier, weight: parseFloat(e.target.value) || 0 };
+                          setWheelForm({ ...wheelForm, tiers });
+                        }}
+                        title="الوزن — كلما زاد زادت فرصة كل لعبة في هذه الفئة"
+                        className="w-20 p-2 rounded-lg border border-border bg-background font-bold text-xs outline-none focus:border-amber-500"
+                      />
+                    </div>
+                  ))}
+                </div>
+                <p className="text-[11px] text-muted-foreground mt-2">
+                  الوزن لكل <span className="font-bold">لعبة</span> وليس للفئة: فرصة الفئة = وزنها ×
+                  عدد ألعابها. اترك الحد الأعلى فارغًا في الفئة الأخيرة لتشمل كل ما فوقها.
+                </p>
+              </div>
+
+              {wheelError && (
+                <p className="text-xs font-bold text-red-500 bg-red-500/10 rounded-xl p-3">
+                  {wheelError}
+                </p>
+              )}
+
+              <button
+                onClick={() => saveWheelOddsMutation.mutate(wheelForm)}
+                disabled={saveWheelOddsMutation.isPending}
+                className="w-full bg-black dark:bg-white text-white dark:text-black rounded-xl p-3.5 font-bold text-sm disabled:opacity-60"
+              >
+                {saveWheelOddsMutation.isPending ? "…" : "✓ حفظ نسب العجلة وسعر التذكرة"}
+              </button>
+            </div>
+          )}
+        </div>
+      )}
+
       {activeTab === "settings" && (
         <div className="w-full bg-card border border-border rounded-2xl p-6 space-y-6 shadow-sm">
           <div>
