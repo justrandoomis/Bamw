@@ -17,6 +17,7 @@
 
 import { toAmount } from "@/lib/purchasable";
 import { resolveBundleUnitPrice } from "@/lib/bundles";
+import { classifyTier } from "@/lib/tierPricing";
 import type { AccountBundle } from "@/lib/types";
 
 type Row = Record<string, unknown>;
@@ -66,6 +67,58 @@ export function normalizeProductCompareAtPrices<T extends Row>(product: T): T {
   }
 
   return next as T;
+}
+
+/**
+ * The ordinary offline account's row, when the product has one.
+ *
+ * «اجعل السعر الارخص يعرض افتراضيا في البطاقه ( حساب اوفلاين عادي ) المشكله
+ * يعرض سعر حساب الاونلاين» — the owner, about /category/nintendo_games.
+ *
+ * The selection below was pure arithmetic: the row priced at the base, else the
+ * cheapest row. Nothing in it knew what an account tier IS, and the catalogue
+ * punishes that. Measured on the live shop: 65 games carry exactly ONE priced
+ * row and it is an ONLINE account, while the ordinary offline account's price
+ * sits in `price` — Zelda: Tears of the Kingdom (Switch 2 Edition) has a `price`
+ * of 12,000 and one row at 42,000. "Cheapest row" has only the 42,000 to choose
+ * from, so the card printed it.
+ *
+ * `classifyTier` is the shop's own vocabulary for this — the same function the
+ * pricing rules use to decide which of the owner's four rules a tier follows —
+ * so the question is asked of it rather than answered again here.
+ */
+export function ordinaryOfflineRow(value: unknown): Row | undefined {
+  if (!Array.isArray(value)) return undefined;
+  for (const entry of value) {
+    if (!entry || typeof entry !== "object") continue;
+    const row = entry as Row;
+    if (toAmount(row["price"]) <= 0) continue;
+    if (classifyTier(row as Parameters<typeof classifyTier>[0]).kind === "offline_base") {
+      return row;
+    }
+  }
+  return undefined;
+}
+
+/**
+ * What the ordinary offline account costs when it is NOT a row: the record's
+ * own `price`, and deliberately NOT `accountPrice`.
+ *
+ * `readOffers` prices the «حساب أوفلاين» offer as `accountPrice || price`, and
+ * copying that expression here was the first attempt. It is wrong, and wrong in
+ * exactly the way this whole change exists to fix: `resolveUnitPrice` with no
+ * tier selected returns `price`, so `price` is what checkout charges. A card
+ * printing `accountPrice` while the till charged `price` would be a third
+ * number in a story that already had two too many.
+ *
+ * So the card shows what the customer pays. Where the two fields disagree it is
+ * `readOffers` that is out of step, which is a fault about the OFFER and not
+ * about the card — worth measuring on its own rather than papering over here by
+ * advertising a number nothing charges.
+ */
+function baseChargedPrice(product: Row): number {
+  const base = toAmount(product["price"]);
+  return Number.isFinite(base) && base > 0 ? base : 0;
 }
 
 function pricedRows(value: unknown): PricedRow[] {
@@ -193,9 +246,54 @@ export function listingPricing(
 
   const base = toAmount(product["price"]);
   const optionRows = pricedRows(product["options"]);
-  const rows = optionRows.length ? optionRows : pricedRows(pricingTypeRows(product));
+  const typeRows = pricingTypeRows(product);
+  const rows = optionRows.length ? optionRows : pricedRows(typeRows);
   if (rows.length === 0) {
     return resolveUnitPrice(product);
+  }
+
+  /*
+    THE ORDINARY OFFLINE ACCOUNT LEADS.
+
+    Asked first, and of the tiers rather than of the prices, because the owner
+    named the tier and not a number: «اجعل السعر الارخص يعرض افتراضيا في
+    البطاقه ( حساب اوفلاين عادي )». It is also the cheapest on every product
+    that has one, so this does not contradict "cheapest" — it decides the case
+    where "cheapest" has nothing right to choose from.
+  */
+  if (!optionRows.length) {
+    const offlineRow = ordinaryOfflineRow(typeRows);
+    if (offlineRow) {
+      const id = String(offlineRow["id"] ?? "");
+      if (id) {
+        const optionId = String(offlineRow["optionId"] ?? offlineRow["option_id"] ?? "");
+        return resolveUnitPrice(product, {
+          typeId: id,
+          ...(optionId && optionId !== "all" ? { optionId } : {}),
+        });
+      }
+    }
+
+    /*
+      NO OFFLINE ROW, AND THE ROWS THAT EXIST ARE DEARER THAN THE ACCOUNT.
+
+      This is the measured case: 65 games whose only priced row is an online
+      account, with the ordinary offline account's price in `accountPrice` /
+      `price`. The card led with the online row because it was the only row.
+
+      Leading with the account is only honest if the page sells it: `readOffers`
+      was asked about all 65 on production and every one offers it, cheaper, and
+      available to buy right now. Zero without one.
+
+      The number is the record's `price`, because that is what
+      `resolveUnitPrice` charges when no tier is selected — see
+      `baseChargedPrice` for why it is not `accountPrice`.
+    */
+    const account = baseChargedPrice(product);
+    const cheapestRow = rows.reduce((min, row) => (row.price < min.price ? row : min));
+    if (account > 0 && account < cheapestRow.price) {
+      return resolveUnitPrice(product);
+    }
   }
 
   const selected =

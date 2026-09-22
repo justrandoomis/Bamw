@@ -3,6 +3,7 @@ import { Link } from "@tanstack/react-router";
 import { Star, Sparkles } from "lucide-react";
 import NintendoCover from "@/components/NintendoCover";
 import { useCurrency } from "@/context/CurrencyContext";
+import { listingPricing } from "@/lib/productPricing";
 import { getProductSlug } from "@/lib/productRouting";
 import { preloadImage } from "@/lib/imagePreloader";
 import { getNintendoMedia, type NintendoMediaRole } from "@/lib/nintendoImages";
@@ -28,7 +29,14 @@ export function GameCard({
   const slug = getProductSlug(product) || String(product.id || "");
   const title = product.titleEn || product.english_name || product.title || "";
   const subtitle = product.developer || product.publisher || product.category || "";
-  const price = Number(product.price) || 0;
+  /*
+    The same price the other card shows, and the same one the buy sheet opens
+    on. This read `product.price` raw, which is neither: a product priced
+    through its tiers has a `price` that no customer is ever charged, and one
+    whose only tier is an online account has a `price` the card was hiding.
+    `listingPricing` is the one rule all three surfaces read.
+  */
+  const { unitPrice: price } = listingPricing(product);
   const rating = product.metacriticRating ?? product.rating;
   const isSwitch2 =
     product.platform === "switch2" ||
@@ -93,12 +101,15 @@ export function GameCard({
         <div>
           <h4
             className="line-clamp-2 text-sm font-bold leading-snug text-foreground transition-colors group-hover:text-primary sm:text-base"
-            title={title} dir="auto"
+            title={title}
+            dir="auto"
           >
             {title}
           </h4>
           {subtitle ? (
-            <p className="mt-0.5 truncate text-xs text-muted-foreground" dir="auto">{subtitle}</p>
+            <p className="mt-0.5 truncate text-xs text-muted-foreground" dir="auto">
+              {subtitle}
+            </p>
           ) : null}
         </div>
 

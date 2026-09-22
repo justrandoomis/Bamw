@@ -16,7 +16,7 @@ import { useCartStore } from "@/store/useCartStore";
 import { useHub } from "./hubContext";
 import { showAddToCartToast } from "@/utils/cart-toast";
 import { resolvePurchaseImage } from "@/lib/nintendoImages";
-import { resolveUnitPrice } from "@/lib/productPricing";
+import { ordinaryOfflineRow, resolveUnitPrice } from "@/lib/productPricing";
 
 /** Cart labels for the admin offer kinds encoded in the offer id. */
 const OFFER_LABELS_AR: Record<string, string> = {
@@ -64,7 +64,9 @@ export function BuySheet({
   const editions = game.editions ?? [];
 
   const [selectedOptionId, setSelectedOptionId] = useState<string>(() => options[0]?.id ?? "");
-  const [selectedTypeId, setSelectedTypeId] = useState<string>("");
+  const [selectedTypeId, setSelectedTypeId] = useState<string>(() =>
+    String(ordinaryOfflineRow(game.types ?? [])?.["id"] ?? ""),
+  );
   const [selectedEdition, setSelectedEdition] = useState<string>(
     () => editionId ?? editions[0]?.id ?? "",
   );
@@ -86,7 +88,23 @@ export function BuySheet({
       const initialTypes = initialOpt
         ? allTypes.filter((t) => !t.optionId || t.optionId === "all" || t.optionId === initialOpt)
         : allTypes;
-      setSelectedTypeId(initialTypes[0]?.id ?? "");
+      /*
+        OPEN ON THE ORDINARY OFFLINE ACCOUNT, NOT ON WHICHEVER ROW IS FIRST.
+
+        This was `initialTypes[0]`, which is array order — and array order is
+        the order the admin happened to add the tiers in. On a product whose
+        rows are «حساب أونلاين» then «حساب أوفلاين», the sheet opened on the
+        dearer one; on the 65 products whose only row is online, it opened on
+        that row while the card beside it now leads with the cheaper offline
+        account, and the two would disagree.
+
+        `ordinaryOfflineRow` is the same function the card asks, so the sheet
+        opens on the tier the card advertised. An empty selection is not a
+        fallback failure: `resolveUnitPrice` with no type returns the base
+        offline account, which is exactly what the card showed in that case.
+      */
+      const offlineRow = ordinaryOfflineRow(initialTypes);
+      setSelectedTypeId(String(offlineRow?.["id"] ?? initialTypes[0]?.id ?? ""));
       setSelectedEdition(editionId ?? editions[0]?.id ?? "");
       setQuantity(1);
     }
