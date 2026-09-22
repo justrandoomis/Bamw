@@ -11,4 +11,15 @@
  * these exports were added to the shared entry.
  */
 export { d1All } from "@/lib/d1.server";
-export { getStore } from "@/lib/db.server";
+export { getStore, updateStore } from "@/lib/db.server";
+export {
+  decisionProblem,
+  repriceAll,
+  repriceOne,
+  skipReason,
+  CHEAP_CEILING,
+  CHEAP_FLOOR,
+  COST_SPLIT,
+  DEAR_FLOOR,
+  MIN_MARGIN,
+} from "@/lib/repricing";

@@ -1,0 +1,89 @@
+# The owner's pricing rules, applied to the catalogue.
+#
+# Dry run unless `apply` is ticked, and the rules themselves live in
+# `src/lib/repricing.ts` under 36 tests. A push runs the dry run only: `apply`
+# is a dispatch input and there is no path from a push to a write.
+#
+# `price` is the only field the script may touch. Every other key of every
+# changed product is compared byte for byte after the write, and one difference
+# fails the run — cost, stock, hidden, options, types and display order are the
+# owner's data and this has no business in any of them.
+name: Reprice
+
+run-name: Reprice — ${{ inputs.apply && 'APPLY' || 'dry run' }}
+
+on:
+  workflow_dispatch:
+    inputs:
+      apply:
+        description: "Write the new prices. Leave off for a dry run."
+        type: boolean
+        default: false
+      only:
+        description: "One product id, to try a single price first"
+        type: string
+        default: ""
+      limit:
+        description: "Write at most this many (blank = all)"
+        type: string
+        default: ""
+  push:
+    branches: [claude/gaming-platform-issues-keb1be]
+    paths:
+      - .github/workflows/reprice.yml
+      - scripts/reprice.mjs
+      - src/lib/repricing.ts
+
+permissions:
+  contents: read
+
+# Never two at once, and never cancelled half-way: a cancelled run could leave
+# the store document written and the read-back verification unperformed.
+concurrency:
+  group: reprice
+  cancel-in-progress: false
+
+jobs:
+  reprice:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm install -g npm@11.19.1
+      - run: npm ci --no-audit --no-fund
+
+      # The rules are the product here. A run that would write prices while
+      # their own tests fail is a run that must not start.
+      - name: The rules must pass their tests first
+        run: npx vitest run "src/lib/-the-price-follows-the-rule.test.ts"
+
+      - name: Mask identifiers
+        env:
+          ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: echo "::add-mask::$ACCOUNT_ID"
+
+      - name: Reprice
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          D1_DATABASE_ID: ${{ secrets.CLOUDFLARE_D1_DATABASE_ID }}
+          APPLY: ${{ inputs.apply && '--apply' || '' }}
+          ONLY: ${{ inputs.only }}
+          LIMIT: ${{ inputs.limit }}
+        run: |
+          node scripts/reprice.mjs $APPLY \
+            ${ONLY:+--only "$ONLY"} \
+            ${LIMIT:+--limit "$LIMIT"} \
+            --json reprice.json
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: reprice
+          path: reprice.json
