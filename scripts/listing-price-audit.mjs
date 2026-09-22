@@ -406,4 +406,19 @@ say(`- ألعاب بسعر واحد: **${singles.length}**`);
 say(`- منها فوق 20,000: **${singles.filter((s) => s.shown > 20_000).length}**`);
 say(`- منها فوق 12,000: **${singles.filter((s) => s.shown > 12_000).length}**`);
 say(`- **سعر الصف يخالف \`price\`: ${disagree.length}**`);
+/*
+  LAST, because a job log is read as a tail.
+
+  These four decide whether the fix is honest. If the product page does not
+  actually offer the cheaper offline account, putting its price on the card
+  would advertise a number the customer cannot pay — worse than the fault.
+*/
+say(`- منها صفها الوحيد حساب أونلاين: **${online.length}**`);
+say(
+  `- ومنها صفحة المنتج تعرض حساب أوفلاين أرخص: **${online.filter((s) => s.offlineOffered && s.offlineOfferPrice > 0 && s.offlineOfferPrice < s.rowPrice).length}**`,
+);
+say(
+  `- ومتاح للشراء الآن: **${online.filter((s) => s.offlineAvailable && s.offlineOfferPrice > 0 && s.offlineOfferPrice < s.rowPrice).length}**`,
+);
+say(`- بلا أي عرض أوفلاين: **${online.filter((s) => !s.offlineOffered).length}**`);
 flush();
