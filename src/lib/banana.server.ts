@@ -614,6 +614,29 @@ async function buyBotListing(userId: string, listingId: string) {
       binds: [listing.total, listing.total, userId],
     },
     {
+      /*
+        THE LINE THAT EXPLAINS THE MONEY.
+
+        This batch moved a member's balance and wrote nothing to
+        `wallet_transactions`, which is what «كشف المحفظة» renders. Money left
+        and the statement had no row for it — the same complaint as a purchase
+        not being deducted, arriving from the other direction: the member sees
+        a smaller balance and cannot find out why.
+
+        Chained on `changes() = 1` like every ledger row in this codebase, so
+        it can never record a transfer the debit did not make.
+      */
+      sql: `INSERT INTO wallet_transactions (id, user_id, kind, amount, description, order_id, created_at)
+            SELECT ?, ?, 'purchase', ?, ?, '', ? WHERE changes() = 1`,
+      binds: [
+        `wtx_bnm_${Date.now().toString(36)}_${Math.random().toString(36).slice(2, 10)}`,
+        userId,
+        -listing.total,
+        `شراء ${listing.quantity} موزة من السوق`.slice(0, 180),
+        now,
+      ],
+    },
+    {
       sql: `UPDATE banana_bots SET budget_iqd = budget_iqd + ?, updated_at = ? WHERE id = ?`,
       binds: [listing.total, now, botId],
     },
@@ -663,8 +686,32 @@ export async function buyListing(userId: string, listingId: string) {
       binds: [offer.price_iqd, offer.price_iqd, userId],
     },
     {
+      /* The buyer's side of the statement — see `buyBotListing` above. */
+      sql: `INSERT INTO wallet_transactions (id, user_id, kind, amount, description, order_id, created_at)
+            SELECT ?, ?, 'purchase', ?, ?, '', ? WHERE changes() = 1`,
+      binds: [
+        `wtx_bnm_${Date.now().toString(36)}_${Math.random().toString(36).slice(2, 10)}`,
+        userId,
+        -offer.price_iqd,
+        `شراء ${offer.quantity} موزة من عضو`.slice(0, 180),
+        new Date().toISOString(),
+      ],
+    },
+    {
       sql: `UPDATE users SET wallet_balance = wallet_balance + ? WHERE id = ?`,
       binds: [sellerPayout, offer.user_id],
+    },
+    {
+      /* And the seller's, so a payout is as traceable as a payment. */
+      sql: `INSERT INTO wallet_transactions (id, user_id, kind, amount, description, order_id, created_at)
+            SELECT ?, ?, 'payout', ?, ?, '', ? WHERE changes() = 1`,
+      binds: [
+        `wtx_bnm_${Date.now().toString(36)}_${Math.random().toString(36).slice(2, 10)}`,
+        offer.user_id,
+        sellerPayout,
+        `بيع ${offer.quantity} موزة${commission > 0 ? ` (بعد عمولة ${commission})` : ""}`.slice(0, 180),
+        new Date().toISOString(),
+      ],
     },
     // Locked banana reduction for seller
     {

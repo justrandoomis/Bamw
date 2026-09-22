@@ -175,8 +175,27 @@ export function rowToCoupon(row: CouponRow | any): Coupon {
   };
 }
 
-/** Item kinds a digital-only coupon must refuse. */
-const PHYSICAL_KINDS = ["hardware", "physical", "accessory", "device", "collectible"];
+/**
+ * Item kinds that go in a box.
+ *
+ * Three answers are read from this one list, and they have to agree: whether a
+ * digital-only coupon refuses the line, whether the order needs a shipping
+ * address (`needsAddress`), and whether fulfilment hands the line over rather
+ * than shipping it (`isDigitalOrderKind`, which is the negation of this).
+ *
+ * `used` was missing. A used game is a second-hand DISC — the used-goods
+ * importer writes `kind: "used"` (productImport/usedSchema.ts:187) and the
+ * whole section exists for physical items members sell on. Because the list is
+ * a deny-list, anything absent from it reads as digital, so a used disc was
+ * treated as a handover: the buyer was never asked for an address, the order
+ * recorded `needsAddress: false`, no delivery fee was charged, and the line
+ * arrived on the accounts queue where staff have nothing to hand over and
+ * nowhere to post it. The customer paid and could not be sent the thing.
+ *
+ * It is one word, and it fixes the address, the fee and the routing together,
+ * because all three read this list.
+ */
+const PHYSICAL_KINDS = ["hardware", "physical", "accessory", "device", "collectible", "used"];
 
 export function isPhysicalKind(kind: string | undefined): boolean {
   return PHYSICAL_KINDS.includes(String(kind ?? "").toLowerCase());
