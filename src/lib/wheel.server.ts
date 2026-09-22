@@ -40,6 +40,16 @@
 import { d1All, d1First, d1Run, d1RunChanges, getD1 } from "./d1.server";
 import { randomId } from "./crypto.server";
 
+import {
+  DEFAULT_TIERS,
+  LOSING_LABEL,
+  losingWeightFor,
+  normalizeWheelOdds,
+  weightForPriceIn,
+  type WheelOdds,
+  type WheelTier,
+} from "./wheel-odds";
+
 /** One spin, one ticket. */
 export const TICKET_COST_PER_SPIN = 1;
 
@@ -59,21 +69,48 @@ export const PRIZE_VALID_DAYS = 14;
  * landing in the cheapest tier and about one spin in a hundred thousand
  * landing on the most expensive game in the shop.
  */
-export const PRIZE_WEIGHTS: ReadonlyArray<{ upTo: number; weight: number; label: string }> = [
-  { upTo: 5_000, weight: 100, label: "≤ 5,000" },
-  { upTo: 10_000, weight: 30, label: "5,001 – 10,000" },
-  { upTo: 20_000, weight: 8, label: "10,001 – 20,000" },
-  { upTo: 40_000, weight: 2, label: "20,001 – 40,000" },
-  { upTo: Number.POSITIVE_INFINITY, weight: 1, label: "> 40,000" },
-];
+/**
+ * The bands the wheel ships with.
+ *
+ * Kept as the default the admin's own set falls back to, and as the shape the
+ * existing odds tests assert against. The editable set lives in the store
+ * settings and is read through `getWheelOdds`; `Number.POSITIVE_INFINITY` is
+ * gone from the top band because `JSON.stringify` turns it into `null`, so a
+ * saved set came back with no upper bound at all.
+ */
+export const PRIZE_WEIGHTS: ReadonlyArray<{ upTo: number; weight: number; label: string }> =
+  DEFAULT_TIERS.map((tier) => ({
+    upTo: tier.upTo ?? Number.POSITIVE_INFINITY,
+    weight: tier.weight,
+    label: tier.label,
+  }));
 
 export function weightForPrice(price: number): { weight: number; label: string } {
-  const value = Number.isFinite(price) ? price : Number.POSITIVE_INFINITY;
-  for (const tier of PRIZE_WEIGHTS) {
-    if (value <= tier.upTo) return { weight: tier.weight, label: tier.label };
-  }
-  const last = PRIZE_WEIGHTS[PRIZE_WEIGHTS.length - 1]!;
-  return { weight: last.weight, label: last.label };
+  return weightForPriceIn(DEFAULT_TIERS, price);
+}
+
+/**
+ * The odds this shop is actually running, admin-set.
+ *
+ * Read from the store settings and repaired on the way out, for the same
+ * reason the market's price band is: an unusable set stored today would make
+ * every member's spin fail, and refusing the next save does nothing about it.
+ */
+export async function getWheelOdds(): Promise<WheelOdds> {
+  const { getStoreSettings } = await import("./db.server");
+  const settings = await getStoreSettings().catch(() => ({}) as Record<string, unknown>);
+  return normalizeWheelOdds(settings["wheel"]);
+}
+
+/** Store a set of odds. The caller validates with `wheelOddsProblem` first. */
+export async function saveWheelOdds(patch: Partial<WheelOdds>): Promise<WheelOdds> {
+  const { updateStore } = await import("./db.server");
+  const next = normalizeWheelOdds({ ...(await getWheelOdds()), ...patch });
+  await updateStore((store) => ({
+    ...store,
+    settings: { ...(store.settings ?? {}), wheel: next },
+  }));
+  return next;
 }
 
 let schemaReady: Promise<void> | undefined;
@@ -398,10 +435,11 @@ export interface WheelCandidate {
 export function pickWeighted(
   candidates: readonly WheelCandidate[],
   randomUnit?: () => number,
+  tiers: readonly WheelTier[] = DEFAULT_TIERS,
 ): { candidate: WheelCandidate; weightLabel: string } | null {
   if (candidates.length === 0) return null;
 
-  const weights = candidates.map((candidate) => weightForPrice(Number(candidate.price)));
+  const weights = candidates.map((candidate) => weightForPriceIn(tiers, Number(candidate.price)));
   const total = weights.reduce((sum, tier) => sum + tier.weight, 0);
   if (total <= 0) return null;
 
@@ -425,7 +463,22 @@ function cryptoUnit(): number {
 
 export type SpinOutcome =
   | {
+      /**
+       * «حظ أوفر» — the spin happened, the ticket is spent, nothing was won.
+       *
+       * A distinct shape rather than a null prize, so every reader has to
+       * decide what to do about it instead of dereferencing a prize that is
+       * not there. No coupon is minted, no prize row is written, and the
+       * ticket does NOT come back: a losing spin is a spin.
+       */
       ok: true;
+      won: false;
+      spinId: string;
+      ticketsLeft: number;
+    }
+  | {
+      ok: true;
+      won: true;
       spinId: string;
       prize: { productId: string; title: string; price: number; image: string | null };
       couponCode: string;
@@ -451,6 +504,16 @@ export async function spinWheel(input: {
   userId: string;
   candidates: readonly WheelCandidate[];
   now?: string;
+  /*
+    The odds, and the draw, from the caller — which is the server, exactly as
+    `candidates` already is. Nothing a browser sends reaches either.
+
+    Injectable for one reason beyond tidiness: with a losing chance in the
+    wheel, a test that spins and expects a prize is a coin flip. A test that
+    passes its own odds is a test.
+  */
+  odds?: WheelOdds;
+  randomUnit?: () => number;
 }): Promise<SpinOutcome> {
   const userId = String(input.userId ?? "");
   if (!userId) return { ok: false, reason: "failed", ticketsLeft: 0 };
@@ -476,7 +539,50 @@ export async function spinWheel(input: {
   let mintedCode = "";
 
   try {
-    const winner = pickWeighted(input.candidates);
+    /*
+      Lose first, and against the same pool the odds screen prints.
+
+      The losing chance is a chance, not a weight — see `wheel-odds.ts` for why
+      — so it is turned into a weight against the total weight of the games on
+      offer, and the draw is one roll across both. Rolling a separate coin
+      first would make every percentage the wheel screen shows a lie, because
+      the game bands would then be shares of what is left rather than shares
+      of the wheel.
+    */
+    const odds = input.odds ?? (await getWheelOdds().catch(() => normalizeWheelOdds(undefined)));
+    const draw = input.randomUnit ?? cryptoUnit;
+    const gameWeight = input.candidates.reduce(
+      (sum, candidate) => sum + weightForPriceIn(odds.tiers, Number(candidate.price)).weight,
+      0,
+    );
+    const losingWeight = losingWeightFor(gameWeight, odds.losingPercent);
+
+    if (losingWeight > 0 && draw() * (gameWeight + losingWeight) >= gameWeight) {
+      const spinId = randomId("spin");
+      /*
+        Recorded, so a member asking «أين ذهبت تذكرتي» has an answer and the
+        admin can see how the wheel is actually running. `product_id` is empty
+        and the coupon is null, which is what `listSpins` filters on so a loss
+        never appears in «جوائزك السابقة» as a blank prize.
+      */
+      await d1Run(
+        `INSERT INTO wheel_spins
+           (id, user_id, product_id, product_title, product_price, weight_label, coupon_code, expires_at, created_at)
+         VALUES (?,?,'','',0,?,NULL,NULL,?)`,
+        spinId,
+        userId,
+        LOSING_LABEL,
+        now,
+      );
+      return {
+        ok: true,
+        won: false,
+        spinId,
+        ticketsLeft: await getTicketBalance(userId).catch(() => 0),
+      };
+    }
+
+    const winner = pickWeighted(input.candidates, input.randomUnit, odds.tiers);
     if (!winner) throw new Error("WHEEL_NO_WINNER");
 
     const expiresAt = new Date(
@@ -526,6 +632,7 @@ export async function spinWheel(input: {
     const ticketsLeft = await getTicketBalance(userId).catch(() => 0);
     return {
       ok: true,
+      won: true,
       spinId,
       prize: {
         productId: winner.candidate.id,
@@ -590,7 +697,9 @@ export async function recentSpins(userId: string, limit = 10) {
     created_at: string;
   }>(
     `SELECT id, product_id, product_title, product_price, coupon_code, expires_at, created_at
-     FROM wheel_spins WHERE user_id = ? ORDER BY created_at DESC LIMIT ?`,
+     FROM wheel_spins
+     WHERE user_id = ? AND product_id <> ''
+     ORDER BY created_at DESC LIMIT ?`,
     userId,
     Math.max(1, Math.min(50, limit)),
   );

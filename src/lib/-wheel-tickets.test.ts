@@ -10,6 +10,7 @@
 import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { createSqliteD1, type FakeD1 } from "@/test/sqlite-d1";
+import { DEFAULT_WHEEL_ODDS } from "./wheel-odds";
 
 const db: FakeD1 = createSqliteD1();
 (globalThis as Record<string, unknown>)["__WHEEL_TEST_D1__"] = db;
@@ -42,6 +43,14 @@ beforeEach(() => {
   }
   db.reset();
 });
+
+/*
+  These tests are about the ticket lifecycle, not the odds. The wheel now has a
+  losing outcome, so a spin that expects a prize without saying so is a coin
+  flip — the odds are passed in explicitly to keep every assertion here about
+  the thing it is actually testing.
+*/
+const ALWAYS_WINS = { ...DEFAULT_WHEEL_ODDS, losingPercent: 0 };
 
 describe("tickets", () => {
   it("starts everyone at zero", async () => {
@@ -88,7 +97,12 @@ describe("tickets", () => {
 
   it("records every movement, so a missing ticket has an explanation", async () => {
     await wheel.grantTickets({ userId: "usr_a", quantity: 1, reason: "admin_grant", now: NOW });
-    await wheel.spinWheel({ userId: "usr_a", candidates: GAMES, now: NOW });
+    await wheel.spinWheel({
+      odds: ALWAYS_WINS,
+      userId: "usr_a",
+      candidates: GAMES,
+      now: NOW,
+    });
 
     const ledger = db.raw
       .prepare(`SELECT delta, reason FROM wheel_ticket_ledger WHERE user_id = ? ORDER BY rowid`)
@@ -101,16 +115,26 @@ describe("tickets", () => {
 describe("spinning", () => {
   it("costs exactly one ticket and returns a prize", async () => {
     await wheel.grantTickets({ userId: "usr_a", quantity: 2, reason: "test", now: NOW });
-    const outcome = await wheel.spinWheel({ userId: "usr_a", candidates: GAMES, now: NOW });
+    const outcome = await wheel.spinWheel({
+      odds: ALWAYS_WINS,
+      userId: "usr_a",
+      candidates: GAMES,
+      now: NOW,
+    });
 
     expect(outcome.ok).toBe(true);
-    if (!outcome.ok) return;
+    if (!outcome.ok || !outcome.won) return;
     expect(GAMES.some((game) => game.id === outcome.prize.productId)).toBe(true);
     expect(outcome.ticketsLeft).toBe(1);
   });
 
   it("refuses with no ticket, and takes nothing", async () => {
-    const outcome = await wheel.spinWheel({ userId: "usr_a", candidates: GAMES, now: NOW });
+    const outcome = await wheel.spinWheel({
+      odds: ALWAYS_WINS,
+      userId: "usr_a",
+      candidates: GAMES,
+      now: NOW,
+    });
     expect(outcome.ok).toBe(false);
     if (outcome.ok) return;
     expect(outcome.reason).toBe("no_ticket");
@@ -121,7 +145,14 @@ describe("spinning", () => {
     await wheel.grantTickets({ userId: "usr_a", quantity: 2, reason: "test", now: NOW });
     const outcomes: Awaited<ReturnType<typeof wheel.spinWheel>>[] = [];
     for (let attempt = 0; attempt < 5; attempt += 1) {
-      outcomes.push(await wheel.spinWheel({ userId: "usr_a", candidates: GAMES, now: NOW }));
+      outcomes.push(
+        await wheel.spinWheel({
+          odds: ALWAYS_WINS,
+          userId: "usr_a",
+          candidates: GAMES,
+          now: NOW,
+        }),
+      );
     }
     expect(outcomes.filter((outcome) => outcome.ok)).toHaveLength(2);
     expect(await wheel.getTicketBalance("usr_a")).toBe(0);
@@ -134,8 +165,18 @@ describe("spinning", () => {
     */
     await wheel.grantTickets({ userId: "usr_a", quantity: 1, reason: "test", now: NOW });
     const [first, second] = await Promise.all([
-      wheel.spinWheel({ userId: "usr_a", candidates: GAMES, now: NOW }),
-      wheel.spinWheel({ userId: "usr_a", candidates: GAMES, now: NOW }),
+      wheel.spinWheel({
+        odds: ALWAYS_WINS,
+        userId: "usr_a",
+        candidates: GAMES,
+        now: NOW,
+      }),
+      wheel.spinWheel({
+        odds: ALWAYS_WINS,
+        userId: "usr_a",
+        candidates: GAMES,
+        now: NOW,
+      }),
     ]);
     expect([first.ok, second.ok].filter(Boolean)).toHaveLength(1);
     expect(await wheel.getTicketBalance("usr_a")).toBe(0);
@@ -143,7 +184,12 @@ describe("spinning", () => {
 
   it("gives the ticket back when there is nothing to win", async () => {
     await wheel.grantTickets({ userId: "usr_a", quantity: 1, reason: "test", now: NOW });
-    const outcome = await wheel.spinWheel({ userId: "usr_a", candidates: [], now: NOW });
+    const outcome = await wheel.spinWheel({
+      odds: ALWAYS_WINS,
+      userId: "usr_a",
+      candidates: [],
+      now: NOW,
+    });
 
     expect(outcome.ok).toBe(false);
     // Refused before the ticket was ever claimed, so nothing to refund.
@@ -152,9 +198,14 @@ describe("spinning", () => {
 
   it("issues a coupon that pays for exactly that game, for exactly that member", async () => {
     await wheel.grantTickets({ userId: "usr_a", quantity: 1, reason: "test", now: NOW });
-    const outcome = await wheel.spinWheel({ userId: "usr_a", candidates: GAMES, now: NOW });
+    const outcome = await wheel.spinWheel({
+      odds: ALWAYS_WINS,
+      userId: "usr_a",
+      candidates: GAMES,
+      now: NOW,
+    });
     expect(outcome.ok).toBe(true);
-    if (!outcome.ok) return;
+    if (!outcome.ok || !outcome.won) return;
 
     const coupon = db.raw
       .prepare(
@@ -186,7 +237,12 @@ describe("spinning", () => {
   it("writes one spin row per win, with the code on it", async () => {
     await wheel.grantTickets({ userId: "usr_a", quantity: 3, reason: "test", now: NOW });
     for (let n = 0; n < 3; n += 1) {
-      await wheel.spinWheel({ userId: "usr_a", candidates: GAMES, now: NOW });
+      await wheel.spinWheel({
+        odds: ALWAYS_WINS,
+        userId: "usr_a",
+        candidates: GAMES,
+        now: NOW,
+      });
     }
     const spins = await wheel.recentSpins("usr_a", 10);
     expect(spins).toHaveLength(3);
@@ -195,7 +251,12 @@ describe("spinning", () => {
 
   it("keeps one member's tickets away from another's", async () => {
     await wheel.grantTickets({ userId: "usr_a", quantity: 1, reason: "test", now: NOW });
-    const outcome = await wheel.spinWheel({ userId: "usr_b", candidates: GAMES, now: NOW });
+    const outcome = await wheel.spinWheel({
+      odds: ALWAYS_WINS,
+      userId: "usr_b",
+      candidates: GAMES,
+      now: NOW,
+    });
     expect(outcome.ok).toBe(false);
     expect(await wheel.getTicketBalance("usr_a")).toBe(1);
   });
@@ -239,7 +300,12 @@ describe("a write that fails half way", () => {
     await wheel.grantTickets({ userId: "usr_a", quantity: 1, reason: "test", now: NOW });
     abort("wheel_spins");
     try {
-      const outcome = await wheel.spinWheel({ userId: "usr_a", candidates: GAMES, now: NOW });
+      const outcome = await wheel.spinWheel({
+        odds: ALWAYS_WINS,
+        userId: "usr_a",
+        candidates: GAMES,
+        now: NOW,
+      });
       expect(outcome.ok).toBe(false);
       /*
         And the outcome says the refund happened, because the screen repeats
@@ -345,8 +411,13 @@ describe("the prize pays for one copy", () => {
 
   const wonCoupon = async () => {
     await wheel.grantTickets({ userId: "usr_a", quantity: 1, reason: "test", now: NOW });
-    const outcome = await wheel.spinWheel({ userId: "usr_a", candidates: GAMES, now: NOW });
-    if (!outcome.ok) throw new Error("the spin was supposed to win");
+    const outcome = await wheel.spinWheel({
+      odds: ALWAYS_WINS,
+      userId: "usr_a",
+      candidates: GAMES,
+      now: NOW,
+    });
+    if (!outcome.ok || !outcome.won) throw new Error("the spin was supposed to win");
     const row = db.raw
       .prepare(`SELECT * FROM coupons WHERE code = ?`)
       .get(outcome.couponCode) as Record<string, unknown>;
@@ -426,7 +497,12 @@ describe("a read that fails after the work is done", () => {
       return realPrepare.call(db, sql);
     }) as typeof db.prepare;
     try {
-      const outcome = await wheel.spinWheel({ userId: "usr_a", candidates: GAMES, now: NOW });
+      const outcome = await wheel.spinWheel({
+        odds: ALWAYS_WINS,
+        userId: "usr_a",
+        candidates: GAMES,
+        now: NOW,
+      });
       // The spin happened; a failing balance read must not turn it into a loss.
       expect(outcome.ok).toBe(true);
     } finally {
@@ -481,5 +557,105 @@ describe("one reference, many members", () => {
     });
     expect(again.granted).toBe(false);
     expect(await wheel.getTicketBalance("usr_a")).toBe(1);
+  });
+});
+
+describe("«حظ أوفر» — a spin that wins nothing", () => {
+  /*
+    The owner asked for a losing outcome whose chance is higher than the
+    cheapest band's. Until now every spin that reached `pickWeighted` minted a
+    coupon, so there was nothing to lose with.
+
+    A loss must cost the ticket. A losing spin that refunded would be a free
+    re-roll, which is not a chance of losing at all.
+  */
+  const ALWAYS_LOSES = { ...DEFAULT_WHEEL_ODDS, losingPercent: 90 };
+  /** The draw, forced to the far end of the range, where the losing weight sits. */
+  const lose = () => 0.999999999;
+
+  it("spends the ticket and mints no coupon", async () => {
+    await wheel.grantTickets({ userId: "usr_l", quantity: 1, reason: "test", referenceId: "l1" });
+
+    const outcome = await wheel.spinWheel({
+      odds: ALWAYS_LOSES,
+      randomUnit: lose,
+      userId: "usr_l",
+      candidates: GAMES,
+      now: NOW,
+    });
+
+    expect(outcome.ok).toBe(true);
+    if (!outcome.ok) return;
+    expect(outcome.won).toBe(false);
+    expect(outcome.ticketsLeft).toBe(0);
+
+    const coupons = db.raw.prepare(`SELECT COUNT(*) AS n FROM coupons`).get() as { n: number };
+    expect(coupons.n).toBe(0);
+  });
+
+  it("records the spin, so the ticket is accounted for", async () => {
+    await wheel.grantTickets({ userId: "usr_l", quantity: 1, reason: "test", referenceId: "l2" });
+    await wheel.spinWheel({
+      odds: ALWAYS_LOSES,
+      randomUnit: lose,
+      userId: "usr_l",
+      candidates: GAMES,
+      now: NOW,
+    });
+
+    const row = db.raw
+      .prepare(`SELECT product_id, coupon_code, weight_label FROM wheel_spins WHERE user_id = ?`)
+      .get("usr_l") as Record<string, unknown>;
+    expect(row.product_id).toBe("");
+    expect(row.coupon_code).toBeNull();
+    expect(String(row.weight_label)).toContain("حظ");
+  });
+
+  it("does not show a loss in «جوائزك السابقة» as a blank prize", async () => {
+    await wheel.grantTickets({ userId: "usr_l", quantity: 2, reason: "test", referenceId: "l3" });
+    await wheel.spinWheel({
+      odds: ALWAYS_LOSES,
+      randomUnit: lose,
+      userId: "usr_l",
+      candidates: GAMES,
+      now: NOW,
+    });
+    await wheel.spinWheel({
+      odds: ALWAYS_WINS,
+      userId: "usr_l",
+      candidates: GAMES,
+      now: NOW,
+    });
+
+    const spins = await wheel.recentSpins("usr_l", 10);
+    expect(spins).toHaveLength(1);
+    expect(spins[0]!.product_id).not.toBe("");
+  });
+
+  it("still wins when the draw lands in the games", async () => {
+    await wheel.grantTickets({ userId: "usr_w", quantity: 1, reason: "test", referenceId: "w1" });
+    const outcome = await wheel.spinWheel({
+      odds: ALWAYS_LOSES,
+      randomUnit: () => 0,
+      userId: "usr_w",
+      candidates: GAMES,
+      now: NOW,
+    });
+    expect(outcome.ok).toBe(true);
+    if (!outcome.ok || !outcome.won) throw new Error("the draw at zero should win");
+    expect(outcome.couponCode).toBeTruthy();
+  });
+
+  it("cannot be spun without a ticket, losing or not", async () => {
+    const outcome = await wheel.spinWheel({
+      odds: ALWAYS_LOSES,
+      randomUnit: lose,
+      userId: "usr_broke",
+      candidates: GAMES,
+      now: NOW,
+    });
+    expect(outcome.ok).toBe(false);
+    if (outcome.ok) return;
+    expect(outcome.reason).toBe("no_ticket");
   });
 });

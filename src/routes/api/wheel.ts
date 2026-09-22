@@ -11,13 +11,13 @@ import { requireUser } from "@/lib/session.server";
 import { resolveProductImage } from "@/lib/productImages";
 import {
   PRIZE_VALID_DAYS,
-  PRIZE_WEIGHTS,
   getTicketBalance,
+  getWheelOdds,
   recentSpins,
   spinWheel,
-  weightForPrice,
   type WheelCandidate,
 } from "@/lib/wheel.server";
+import { oddsBreakdown } from "@/lib/wheel-odds";
 
 /**
  * عجلة الحظ.
@@ -75,7 +75,14 @@ async function candidates(): Promise<WheelCandidate[]> {
       prize has to pass both — the wheel gives things away, so a wrong answer
       here costs the shop a console.
     */
-    if (NOT_A_GAME.has(String(product["kind"] ?? "").trim().toLowerCase())) continue;
+    if (
+      NOT_A_GAME.has(
+        String(product["kind"] ?? "")
+          .trim()
+          .toLowerCase(),
+      )
+    )
+      continue;
     const price = Number(product["price"]);
     /*
       A price is required, and not only because the odds are priced. A product
@@ -167,13 +174,27 @@ export const Route = createFileRoute("/api/wheel")({
             rather than a promise — the count is what the catalogue holds right
             now.
           */
-          const odds = PRIZE_WEIGHTS.map((tier) => {
-            const inTier = pool.filter(
-              (candidate) => weightForPrice(candidate.price).label === tier.label,
-            ).length;
-            return { label: tier.label, weight: tier.weight, games: inTier };
-          });
-          const totalWeight = odds.reduce((sum, tier) => sum + tier.weight * tier.games, 0);
+          /*
+            Counted by POSITION, not by label.
+
+            This matched each game to its band by comparing label strings,
+            which was fine while the bands were a module constant and stops
+            being fine the moment an admin can edit one: two bands named the
+            same would merge into one row and every game in the second would
+            be counted twice or not at all. `oddsBreakdown` works from the
+            index, and «حظ أوفر» is one of the rows it returns — so the
+            percentages a member reads include the chance of winning nothing.
+          */
+          const wheelOdds = await getWheelOdds();
+          const counts = wheelOdds.tiers.map(
+            (_, index) =>
+              pool.filter(
+                (candidate) =>
+                  wheelOdds.tiers.findIndex(
+                    (tier) => tier.upTo === null || Number(candidate.price) <= tier.upTo,
+                  ) === index,
+              ).length,
+          );
 
           return json({
             tickets,
@@ -181,10 +202,8 @@ export const Route = createFileRoute("/api/wheel")({
             candidates: faces,
             spins,
             prizeValidDays: PRIZE_VALID_DAYS,
-            odds: odds.map((tier) => ({
-              ...tier,
-              chance: totalWeight > 0 ? (tier.weight * tier.games) / totalWeight : 0,
-            })),
+            ticketPriceBananas: wheelOdds.ticketPriceBananas,
+            odds: oddsBreakdown(wheelOdds, counts),
           });
         }),
 
@@ -209,9 +228,30 @@ export const Route = createFileRoute("/api/wheel")({
 
           const outcome = await spinWheel({ userId: user.id, candidates: await candidates() });
 
+          /*
+            «حظ أوفر» — a spin that happened and won nothing.
+
+            Reported as `ok` with `won: false`, because the spin succeeded: the
+            ticket was spent, the draw was made, the answer was no prize. It is
+            not an error and must not be shown as one, and no coupon exists to
+            send. The ticket does NOT come back — that is what makes it a
+            losing chance rather than a free re-roll.
+          */
+          if (outcome.ok && !outcome.won) {
+            return json({
+              ok: true,
+              won: false,
+              spinId: outcome.spinId,
+              prize: null,
+              tickets: outcome.ticketsLeft,
+              message: "حظ أوفر في المرة القادمة 🍀",
+            });
+          }
+
           if (outcome.ok) {
             return json({
               ok: true,
+              won: true,
               spinId: outcome.spinId,
               prize: outcome.prize,
               couponCode: outcome.couponCode,
