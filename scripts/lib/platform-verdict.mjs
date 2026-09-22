@@ -446,3 +446,71 @@ export function switch2Claims(product) {
   }
   return claims;
 }
+
+/**
+ * The tags left over when a game stops being a Switch 2 product.
+ *
+ * Not cosmetic, and this is the finding that made it a write rather than a
+ * report. `matchesNintendoPlatformFilter` (nintendoListing.ts:88) asks
+ * `isNintendoSwitch2Product` first, and that function returns true for a tag
+ * matching the Switch 2 pattern whatever `platform` says. So a game moved to
+ * Switch 1 with such a tag still on it is returned `false` for the Switch 1
+ * tab and `true` for the Switch 2 tab: it disappears from the shelf it belongs
+ * on and stays on the one it does not. Correcting the platform alone would
+ * have made the catalogue worse, not better.
+ *
+ * Only an exact console tag is removed, on the same anchored pattern the badge
+ * matches with — so "Switch 2 games we like", somebody's shelf label, is left
+ * alone. Nothing is ever added, nothing is reordered, and the result is always
+ * a strict subset of what was there.
+ *
+ * `null` means there is nothing to do. The stored shape is preserved: an array
+ * comes back an array, a delimited string comes back a string joined with the
+ * delimiter it arrived with, because the reader splits on any of `,;|` and a
+ * changed delimiter would silently re-cut somebody's tags.
+ */
+export function tagsWithoutSwitch2(product) {
+  const raw = product?.tags;
+  if (Array.isArray(raw)) {
+    const kept = raw.filter((tag) => !SWITCH2_TAG.test(String(tag).trim()));
+    return kept.length === raw.length ? null : kept;
+  }
+  if (typeof raw === "string" && raw.trim()) {
+    const delimiter = /[,;|]/.exec(raw)?.[0];
+    if (!delimiter) return SWITCH2_TAG.test(raw.trim()) ? "" : null;
+    const parts = raw.split(/[,;|]/);
+    const kept = parts.filter((tag) => !SWITCH2_TAG.test(tag.trim()));
+    return kept.length === parts.length ? null : kept.join(delimiter);
+  }
+  return null;
+}
+
+/**
+ * Is `next` the same list as `before`, minus only console tags?
+ *
+ * The assertion the write is held to, rather than a promise that the function
+ * above behaves. Nothing may be added, nothing may be renamed, and every
+ * entry that disappeared must have been a console tag.
+ */
+export function tagRemovalIsSafe(before, next) {
+  const list = (value) =>
+    Array.isArray(value)
+      ? value.map(String)
+      : typeof value === "string"
+        ? value.trim()
+          ? value.split(/[,;|]/)
+          : []
+        : [];
+  if (Array.isArray(before) !== Array.isArray(next)) return false;
+
+  const was = list(before);
+  const now = list(next);
+  const remaining = was.slice();
+  for (const tag of now) {
+    const at = remaining.indexOf(tag);
+    // Present, and exactly as many times as before: nothing added or renamed.
+    if (at === -1) return false;
+    remaining.splice(at, 1);
+  }
+  return remaining.every((tag) => SWITCH2_TAG.test(String(tag).trim()));
+}

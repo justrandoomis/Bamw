@@ -18,6 +18,8 @@ import {
   settleCollisions,
   settleWithFallback,
   switch2Claims,
+  tagRemovalIsSafe,
+  tagsWithoutSwitch2,
   titleFlags,
   titleVerdict,
 } from "./lib/platform-verdict.mjs";
@@ -533,5 +535,60 @@ describe("what else says Switch 2, after the platform has moved", () => {
       somebody's shelf label, not a console claim.
     */
     expect(switch2Claims({ tags: ["Switch 2 games we like"] })).toEqual([]);
+  });
+});
+
+describe("the tag that would hide a corrected game", () => {
+  /*
+    The finding that turned a report into a write. `matchesNintendoPlatformFilter`
+    asks `isNintendoSwitch2Product` first, and that returns true for a matching
+    tag whatever `platform` says — so a game moved to Switch 1 with the tag
+    still on it is refused by the Switch 1 tab and kept by the Switch 2 tab.
+  */
+  it("removes an exact console tag", () => {
+    expect(tagsWithoutSwitch2({ tags: ["Action", "Switch 2 Edition", "RPG"] })).toEqual([
+      "Action",
+      "RPG",
+    ]);
+  });
+
+  it("keeps the delimiter a string of tags arrived with", () => {
+    /*
+      The reader splits on any of `,;|`. Rejoining with a different one would
+      silently re-cut somebody's tags into different tags.
+    */
+    expect(tagsWithoutSwitch2({ tags: "Action;Nintendo Switch 2;RPG" })).toBe("Action;RPG");
+  });
+
+  it("says there is nothing to do when no tag names a console", () => {
+    expect(tagsWithoutSwitch2({ tags: ["Action", "RPG"] })).toBeNull();
+    expect(tagsWithoutSwitch2({})).toBeNull();
+  });
+
+  it("leaves a shelf label that merely contains the words", () => {
+    expect(tagsWithoutSwitch2({ tags: ["Switch 2 games we like"] })).toBeNull();
+  });
+
+  it("refuses a change that adds, renames, or drops a real tag", () => {
+    expect(tagRemovalIsSafe(["A"], ["A", "B"])).toBe(false);
+    expect(tagRemovalIsSafe(["Action"], ["Actions"])).toBe(false);
+    expect(tagRemovalIsSafe(["Action", "RPG"], ["Action"])).toBe(false);
+  });
+
+  it("accepts a change that removes only console tags", () => {
+    expect(tagRemovalIsSafe(["Action", "Switch 2", "RPG"], ["Action", "RPG"])).toBe(true);
+  });
+
+  it("refuses a change that turns a list into a string", () => {
+    expect(tagRemovalIsSafe(["Action", "Switch 2"], "Action")).toBe(false);
+  });
+
+  it("keeps a duplicate tag that was there twice", () => {
+    /*
+      Counted, not set-compared: dropping one of two identical tags is still
+      dropping a tag.
+    */
+    expect(tagRemovalIsSafe(["Action", "Action", "Switch 2"], ["Action"])).toBe(false);
+    expect(tagRemovalIsSafe(["Action", "Action", "Switch 2"], ["Action", "Action"])).toBe(true);
   });
 });

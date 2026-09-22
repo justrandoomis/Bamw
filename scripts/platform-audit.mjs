@@ -67,12 +67,24 @@ import {
   platformVerdict,
   settleWithFallback,
   switch2Claims,
+  tagRemovalIsSafe,
+  tagsWithoutSwitch2,
   titleFlags,
   titleVerdict,
 } from "./lib/platform-verdict.mjs";
 
-/** Every field this script is allowed to touch. Nothing else may enter a patch. */
-const WRITABLE = ["platform", "title", "titleEn"];
+/**
+ * Every field this script is allowed to touch. Nothing else may enter a patch.
+ *
+ * `tags` is here for one narrow reason, and only ever to REMOVE from. A tag
+ * matching the Switch 2 pattern makes `isNintendoSwitch2Product` true whatever
+ * `platform` says, and `matchesNintendoPlatformFilter` then returns false for
+ * the Switch 1 tab and true for the Switch 2 tab — so a game whose platform
+ * this run corrects, with such a tag still on it, vanishes from the shelf it
+ * belongs on and stays on the one it does not. Correcting the platform alone
+ * would have made the catalogue worse than leaving it wrong.
+ */
+const WRITABLE = ["platform", "title", "titleEn", "tags"];
 
 const APPLY = process.argv.includes("--apply");
 const DO_TITLES = !process.argv.includes("--no-titles");
@@ -368,7 +380,22 @@ for (const product of queue) {
   }
 
   if (platform !== stored) {
-    proposals.set(id, { ...(proposals.get(id) ?? {}), platform });
+    const patch = { platform };
+    /*
+      Only alongside a move to Switch 1, and only ever a removal. A game the
+      evidence leaves alone keeps every tag it has, and a game moved TO Switch
+      2 has no contradicting tag to remove.
+    */
+    if (platform === "switch1") {
+      const tags = tagsWithoutSwitch2(product);
+      if (tags !== null && tagRemovalIsSafe(product.tags, tags)) {
+        patch.tags = tags;
+        why.push(
+          `tags: the console tag contradicted the corrected platform, and would have hidden this game from the Switch 1 shelf`,
+        );
+      }
+    }
+    proposals.set(id, { ...(proposals.get(id) ?? {}), ...patch });
   }
   const entry = proposals.get(id);
   if (entry) {
@@ -742,6 +769,16 @@ for (const [id] of proposals) {
     finish(1);
   }
   const now = patched(was);
+  /*
+    `tags` is writable but not freely writable. Everything else on the list is
+    replaced outright and the value was decided by a rule with a test behind
+    it; a tag list is somebody's own data, so the write is held to the subset
+    rule here as well as where it was built.
+  */
+  if ("tags" in (proposals.get(id) ?? {}) && !tagRemovalIsSafe(was.tags, now.tags)) {
+    say(`**The tag change for ${id} is not a removal of console tags — refusing.**`);
+    finish(1);
+  }
   for (const key of new Set([...Object.keys(was), ...Object.keys(now)])) {
     if (WRITABLE.includes(key)) continue;
     if (JSON.stringify(was[key] ?? null) !== JSON.stringify(now[key] ?? null)) {
