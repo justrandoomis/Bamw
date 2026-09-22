@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { Gift, Loader2, Ticket } from "lucide-react";
@@ -26,6 +26,8 @@ export const Route = createFileRoute("/wheel")({
 
 interface WheelState {
   tickets: number;
+  /** The member's banana balance, so the screen can say what a ticket leaves. */
+  bananas?: number;
   poolSize: number;
   candidates: { id: string; title: string; image: string | null }[];
   spins: {
@@ -51,6 +53,13 @@ interface SpinResult {
   tickets?: number;
 }
 
+interface PurchaseResult {
+  ok?: boolean;
+  tickets?: number;
+  /** The balance AFTER the purchase, straight from the ledger that debited it. */
+  bananas?: number;
+}
+
 const shortDate = (iso: string | null) => {
   if (!iso) return "";
   const parsed = new Date(iso);
@@ -66,11 +75,17 @@ const shortDate = (iso: string | null) => {
  * Pretending otherwise would mean the browser choosing, and the browser is
  * not a place to decide who gets a game worth money.
  */
-function WheelPage() {
+export function WheelPage() {
   const queryClient = useQueryClient();
   const reduceMotion = useReducedMotion();
   const [spinning, setSpinning] = useState(false);
   const [result, setResult] = useState<SpinResult | null>(null);
+  /*
+    Nothing is deducted until this has been answered. Buying a ticket spends
+    real bananas the member worked for, and a single tap on a button that sits
+    directly under the wheel is not consent to spend them.
+  */
+  const [confirmingPurchase, setConfirmingPurchase] = useState(false);
 
   const { data, isLoading, error } = useQuery({
     queryKey: ["wheel-summary"],
@@ -84,7 +99,7 @@ function WheelPage() {
   */
   const buy = useMutation({
     mutationFn: (quantity: number) =>
-      api.fetch<{ ok?: boolean; tickets?: number }>("/api/wheel", {
+      api.fetch<PurchaseResult>("/api/wheel", {
         method: "POST",
         body: JSON.stringify({
           action: "buy_ticket",
@@ -98,6 +113,7 @@ function WheelPage() {
         }),
       }),
     onSuccess: () => {
+      setConfirmingPurchase(false);
       /*
         `["wheel-summary"]`, which is the key this page's query actually uses.
         `["wheel"]` matched nothing, so a bought ticket never appeared and the
@@ -105,6 +121,11 @@ function WheelPage() {
         pressed — and would reasonably press again.
       */
       void queryClient.invalidateQueries({ queryKey: ["wheel-summary"] });
+      /*
+        The wallet is shown in several places at once; the chip above is only
+        one of them. Whatever else reads the balance should see the new one.
+      */
+      void queryClient.invalidateQueries({ queryKey: ["banana-summary"] });
     },
   });
 
@@ -134,11 +155,51 @@ function WheelPage() {
     },
   });
 
+  /*
+    Escape closes it, as every dialog on the web should — but not while the
+    purchase is in flight, because closing then would hide the outcome of a
+    charge that is already happening.
+  */
+  const purchasePending = buy.isPending;
+  useEffect(() => {
+    if (!confirmingPurchase) return;
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape" && !purchasePending) setConfirmingPurchase(false);
+    };
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [confirmingPurchase, purchasePending]);
+
   const tickets = data?.tickets ?? 0;
   const ticketPrice = Number(data?.ticketPriceBananas ?? 0);
+  const bananas = Number(data?.bananas ?? 0);
+  const affordable = ticketPrice > 0 && bananas >= ticketPrice;
+  const remainingAfter = Math.max(0, bananas - ticketPrice);
 
   return (
     <div className="mx-auto w-full max-w-2xl px-4 pb-16 pt-6" dir="rtl">
+      {/*
+        The balance, where the member can see it before they decide.
+
+        This screen asks for bananas and never said how many there were, so
+        deciding whether to buy a ticket meant leaving the wheel to go and look.
+        `justify-start` inside a `dir="rtl"` page puts it at the TOP RIGHT,
+        which is where the owner asked for it and where the eye starts reading.
+      */}
+      {!error && !isLoading ? (
+        <div className="mb-3 flex justify-start">
+          <Link
+            to="/banana_redeem"
+            aria-label={`${tr("رصيدك")}: ${bananas.toLocaleString("en-US")} ${tr("موزة")}`}
+            className="inline-flex items-center gap-1.5 rounded-full border border-amber-500/30 bg-amber-500/10 px-3 py-1.5 text-[12px] font-black text-foreground transition-colors hover:border-amber-500/60"
+          >
+            <span aria-hidden="true">🍌</span>
+            <span className="tabular-nums">{bananas.toLocaleString("en-US")}</span>
+            <span className="font-bold text-muted-foreground">{tr("موزة")}</span>
+          </Link>
+        </div>
+      ) : null}
+
       <header className="mb-5 space-y-1.5 text-center">
         <h1 className="text-2xl font-black tracking-[-0.02em] text-foreground">
           {tr("عجلة الحظ")}
@@ -227,7 +288,11 @@ function WheelPage() {
                   </p>
                   <button
                     type="button"
-                    onClick={() => buy.mutate(1)}
+                    onClick={() => {
+                      // A failure from a previous attempt is not this one's news.
+                      buy.reset();
+                      setConfirmingPurchase(true);
+                    }}
                     disabled={buy.isPending}
                     className="inline-block rounded-2xl bg-foreground px-6 py-3 text-[13px] font-bold text-background disabled:opacity-50"
                   >
@@ -256,6 +321,116 @@ function WheelPage() {
               )}
             </div>
           )}
+
+          {/*
+            Nothing is deducted until this is answered.
+
+            The owner asked for a confirmation before the bananas go, and the
+            reason is plain enough on the screen it guards: «اشترِ تذكرة» sits
+            directly beneath the wheel, one thumb-width from «دوّر العجلة», and
+            it spends a balance the member earned. So the dialog states the
+            price, the balance and what is left afterwards — the three figures
+            someone needs to say yes — and the mutation is not called until
+            they do.
+
+            The figures are the server's. The chip and this dialog read the
+            same `bananas` the purchase itself debits, so they cannot disagree
+            with the charge.
+          */}
+          <AnimatePresence>
+            {confirmingPurchase ? (
+              <motion.div
+                className="fixed inset-0 z-50 flex items-end justify-center bg-black/50 p-4 backdrop-blur-sm sm:items-center"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.2 }}
+                role="presentation"
+                onClick={() => {
+                  if (!buy.isPending) setConfirmingPurchase(false);
+                }}
+              >
+                <motion.div
+                  role="dialog"
+                  aria-modal="true"
+                  aria-labelledby="wheel-buy-title"
+                  dir="rtl"
+                  className="w-full max-w-sm space-y-4 rounded-3xl border border-border bg-card p-5 shadow-2xl"
+                  initial={reduceMotion ? { opacity: 0 } : { opacity: 0, y: 24, scale: 0.97 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={reduceMotion ? { opacity: 0 } : { opacity: 0, y: 24, scale: 0.97 }}
+                  transition={
+                    reduceMotion
+                      ? { duration: 0.15 }
+                      : { type: "spring", bounce: 0, visualDuration: 0.3 }
+                  }
+                  onClick={(event) => event.stopPropagation()}
+                >
+                  <h2
+                    id="wheel-buy-title"
+                    className="text-center text-base font-black text-foreground"
+                  >
+                    {tr("تأكيد شراء التذكرة")}
+                  </h2>
+
+                  <dl className="space-y-2 rounded-2xl bg-muted/40 p-3.5 text-[13px]">
+                    <div className="flex items-center justify-between gap-3">
+                      <dt className="font-bold text-muted-foreground">{tr("سعر التذكرة")}</dt>
+                      <dd className="font-black tabular-nums text-foreground">
+                        {ticketPrice.toLocaleString("en-US")} {tr("موزة")}
+                      </dd>
+                    </div>
+                    <div className="flex items-center justify-between gap-3">
+                      <dt className="font-bold text-muted-foreground">{tr("رصيدك الآن")}</dt>
+                      <dd className="font-black tabular-nums text-foreground">
+                        {bananas.toLocaleString("en-US")} {tr("موزة")}
+                      </dd>
+                    </div>
+                    <div className="flex items-center justify-between gap-3 border-t border-border pt-2">
+                      <dt className="font-bold text-muted-foreground">{tr("الرصيد بعد الشراء")}</dt>
+                      <dd className="font-black tabular-nums text-foreground">
+                        {affordable ? remainingAfter.toLocaleString("en-US") : "—"}{" "}
+                        {affordable ? tr("موزة") : ""}
+                      </dd>
+                    </div>
+                  </dl>
+
+                  {affordable ? null : (
+                    <p className="text-center text-[12px] font-bold text-red-500">
+                      {tr("رصيد الموز لا يكفي.")}
+                    </p>
+                  )}
+
+                  {buy.isError ? (
+                    <p className="text-center text-[12px] font-bold text-red-500">
+                      {buy.error instanceof Error && buy.error.message
+                        ? buy.error.message
+                        : tr("تعذّر الشراء")}
+                    </p>
+                  ) : null}
+
+                  <div className="flex gap-2.5">
+                    <button
+                      type="button"
+                      onClick={() => setConfirmingPurchase(false)}
+                      disabled={buy.isPending}
+                      className="flex-1 rounded-2xl border border-border bg-background px-4 py-3 text-[13px] font-bold text-foreground disabled:opacity-50"
+                    >
+                      {tr("إلغاء")}
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => buy.mutate(1)}
+                      disabled={buy.isPending || !affordable}
+                      className="flex-1 rounded-2xl bg-amber-500 px-4 py-3 text-[13px] font-black text-amber-950 transition-transform active:scale-[0.98] disabled:opacity-50"
+                    >
+                      {buy.isPending ? tr("...") : tr("تأكيد الشراء")}
+                    </button>
+                  </div>
+                </motion.div>
+              </motion.div>
+            ) : null}
+          </AnimatePresence>
 
           <AnimatePresence>
             {result?.ok && !result.prize ? (

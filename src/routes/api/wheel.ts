@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 
+import { getUserBananaBalance } from "@/lib/banana-balance.server";
 import { getD1 } from "@/lib/d1.server";
 import { body, guard, json } from "@/lib/http.server";
 import { consumeRateLimit, rateLimitResponse } from "@/lib/rate-limit.server";
@@ -34,11 +35,19 @@ export const Route = createFileRoute("/api/wheel")({
         guard(async () => {
           const user = await requireUser(request);
           if (!getD1()) {
-            return json({ tickets: 0, candidates: [], spins: [], odds: [] });
+            return json({ tickets: 0, bananas: 0, candidates: [], spins: [], odds: [] });
           }
 
-          const [tickets, pool, spins] = await Promise.all([
+          const [tickets, wallet, pool, spins] = await Promise.all([
             getTicketBalance(user.id),
+            /*
+              The member's banana balance, so the wheel can show it beside the
+              ticket price instead of making them leave the screen to find out
+              whether they can afford one. It is the same canonical figure the
+              purchase itself debits — read here, not recomputed — so the chip
+              and the charge can never disagree.
+            */
+            getUserBananaBalance(user.id),
             wheelCandidates(),
             recentSpins(user.id, 10),
           ]);
@@ -80,6 +89,7 @@ export const Route = createFileRoute("/api/wheel")({
 
           return json({
             tickets,
+            bananas: wallet.balance,
             poolSize: pool.length,
             candidates: faces,
             spins,

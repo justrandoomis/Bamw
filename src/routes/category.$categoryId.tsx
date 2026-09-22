@@ -5,12 +5,13 @@ import { freshnessScore, releaseTime } from "@/lib/listingSort";
 import { useStoreData } from "@/hooks/useStoreData";
 import { ProductCard } from "@/components/ProductCard";
 import { NintendoGameCard } from "@/components/NintendoGameCard";
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo } from "react";
 import { useI18n } from "@/i18n";
 import { dirOf } from "@/lib/prefs";
-import { motion, AnimatePresence } from "motion/react";
-import { Filter, SortAsc, Calendar, Star, Tag, ChevronDown, Gamepad2 } from "lucide-react";
-import { cdnImage } from "@/lib/img";
+import { Tag, ChevronDown, Gamepad2 } from "lucide-react";
+import { CategoryBannerSlideshow } from "@/components/CategoryBannerSlideshow";
+import { categoryBannerPool } from "@/lib/categoryBanners";
+import { useProgressiveList } from "@/hooks/useProgressiveList";
 import { GAME_GENRES, genreLabel } from "@/lib/genres";
 import { getProductCategory, isGameProduct } from "@/lib/productSection";
 import { isVisibleToPublic } from "@/lib/purchasable";
@@ -88,8 +89,6 @@ function CategoryPage() {
   const [sortBy, setSortBy] = useState<SortOption>("newest");
   const [platform, setPlatform] = useState<PlatformOption>("all");
   const [selectedGenre, setSelectedGenre] = useState<string>("all");
-  const [showFilters, setShowFilters] = useState(false);
-  const [currentBannerIndex, setCurrentBannerIndex] = useState(0);
 
   /*
     The slim catalogue, through the app's own hook.
@@ -317,144 +316,40 @@ function CategoryPage() {
     return picturedFirst(filtered);
   }, [store?.products, categoryId, sortBy, platform, selectedGenre]);
 
-  // Extract game images (screenshots, hero banners, wallpapers) and EXCLUDE cartridge images
-  const productBanners = useMemo(() => {
-    if (!store?.products) return [];
+  /*
+    The pictures behind the header, bounded to a poolful.
 
-    const targetCat = categoryId.toLowerCase();
-    const categoryProducts = store.products.filter((p: any) => {
-      const pCat = String(p.category || p.categoryId || "").toLowerCase();
-      const pKind = String(p.kind || "").toLowerCase();
+    This built a Set of EVERY screenshot, gallery image, hero and wallpaper URL
+    across every product in the category — on the games shelf that is thousands
+    of strings — and then an effect preloaded all of them at once with
+    `new Image()`, each `onload` writing to a `loadedBannerIndices` map that no
+    part of the render ever read. Thousands of requests and thousands of full
+    page re-renders, for a value nobody used, on a page that also had 1,714
+    product cards mounted.
 
-      const isMatch =
-        pCat === targetCat ||
-        pKind === targetCat ||
-        categoryId === "all" ||
-        (targetCat === "nintendo_games" &&
-          (pCat === "cat_nintendo" ||
-            pCat === "nintendo-switch-games" ||
-            pKind === "nintendo-switch-games"));
-      return isMatch;
-    });
+    `categoryBannerPool` keeps the same eligibility rules and samples them down
+    to two dozen, and the slideshow below fetches only the picture it is about
+    to show.
+  */
+  const productBanners = useMemo(
+    () => categoryBannerPool(store?.products, categoryId),
+    [store?.products, categoryId],
+  );
 
-    const isCartridgeLike = (url?: string | null) => {
-      if (!url || typeof url !== "string") return true;
-      const lower = url.toLowerCase();
-      return (
-        lower.includes("cartridge") ||
-        lower.includes("/cartridges/") ||
-        lower.includes("cart_") ||
-        lower.includes("cover_thumb")
-      );
-    };
-
-    const bannerSet = new Set<string>();
-
-    // 1. Gather all screenshots, gallery images, and hero banners from products
-    categoryProducts.forEach((p: any) => {
-      const candidates: (string | undefined | null)[] = [
-        p.banner,
-        p.bannerImage,
-        p.heroImage,
-        p.keyArt,
-        p.wallpaper,
-        p.background,
-      ];
-
-      if (Array.isArray(p.gallery)) {
-        p.gallery.forEach((g: any) => {
-          candidates.push(typeof g === "string" ? g : g?.url);
-        });
-      } else if (typeof p.gallery === "string") {
-        p.gallery.split(",").forEach((s: string) => {
-          candidates.push(s.trim());
-        });
-      }
-
-      if (Array.isArray(p.galleryImages)) {
-        p.galleryImages.forEach((img: any) => {
-          candidates.push(typeof img === "string" ? img : img?.url);
-        });
-      }
-
-      if (Array.isArray(p.screenshots)) {
-        p.screenshots.forEach((s: any) => {
-          candidates.push(typeof s === "string" ? s : s?.imageUrl || s?.url);
-        });
-      }
-
-      if (Array.isArray(p.metadata?.images?.screenshots)) {
-        p.metadata.images.screenshots.forEach((s: any) => {
-          candidates.push(s?.imageUrl || s?.url);
-        });
-      }
-
-      if (Array.isArray(p.metadata?.screenshots)) {
-        p.metadata.screenshots.forEach((s: any) => {
-          candidates.push(typeof s === "string" ? s : s?.imageUrl || s?.url);
-        });
-      }
-
-      candidates.forEach((img) => {
-        if (typeof img === "string" && img.length > 5 && !isCartridgeLike(img)) {
-          bannerSet.add(img);
-        }
-      });
-    });
-
-    const list = Array.from(bannerSet);
-    // Shuffle the list
-    for (let i = list.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      const temp = list[i];
-      list[i] = list[j] as string;
-      list[j] = temp as string;
-    }
-
-    // High quality fallback game wallpapers if none found
-    if (list.length === 0) {
-      return [];
-    }
-
-    return list;
-  }, [store?.products, store?.banners, categoryId]);
-
-  // Preload next images and ensure smooth transition only when next image is loaded
-  const [loadedBannerIndices, setLoadedBannerIndices] = useState<Record<number, boolean>>({});
-
-  // Preload all banners when the list is populated
-  useEffect(() => {
-    if (productBanners.length === 0) return;
-    productBanners.forEach((url, idx) => {
-      if (!url) return;
-      const img = new Image();
-      img.src = cdnImage(url);
-      img.onload = () => {
-        setLoadedBannerIndices((prev) => ({ ...prev, [idx]: true }));
-      };
-    });
-  }, [productBanners]);
-
-  // Fast switching timer: switches to the next preloaded image
-  useEffect(() => {
-    if (productBanners.length <= 1) return;
-    const interval = setInterval(() => {
-      setCurrentBannerIndex((prev) => {
-        const nextIndex = (prev + 1) % productBanners.length;
-        // Preload next image actively
-        const nextUrl = productBanners[nextIndex];
-        if (nextUrl) {
-          const nextImg = new Image();
-          nextImg.src = cdnImage(nextUrl);
-          nextImg.onload = () => {
-            setLoadedBannerIndices((loaded) => ({ ...loaded, [nextIndex]: true }));
-          };
-        }
-        return nextIndex;
-      });
-    }, 2500);
-    return () => clearInterval(interval);
-  }, [productBanners]);
+  /*
+    A screenful at a time, growing as the member scrolls, never shrinking.
+    See useProgressiveList: mounting all 1,714 cards at once is where both the
+    scroll stutter and the "the products load again when I scroll back up"
+    came from.
+  */
+  const {
+    visible: visibleProducts,
+    sentinelRef,
+    done: allShown,
+  } = useProgressiveList(products, {
+    initial: isNintendoGames ? 60 : 24,
+    step: isNintendoGames ? 45 : 20,
+  });
 
   return (
     <AppShell currentView="store" onBack={() => navigate({ to: "/" })}>
@@ -465,30 +360,7 @@ function CategoryPage() {
         >
           {/* Background Game Slideshow */}
           <div className="absolute inset-0 z-0 select-none overflow-hidden">
-            {productBanners.length > 0 ? (
-              <div className="relative w-full h-full">
-                <AnimatePresence initial={false}>
-                  <motion.img
-                    key={currentBannerIndex}
-                    src={cdnImage(productBanners[currentBannerIndex])}
-                    alt="Game Gameplay Banner"
-                    className="absolute inset-0 w-full h-full object-cover"
-                    initial={{ x: "-100%" }}
-                    animate={{ x: 0 }}
-                    exit={{ x: "100%" }}
-                    transition={{ duration: 0.8, ease: "easeInOut" }}
-                    loading="eager"
-                    decoding="sync"
-                  />
-                </AnimatePresence>
-                {/* Clean dark tint for text contrast only, without bottom blur gradient */}
-                <div className="absolute inset-0 bg-black/40 z-10 pointer-events-none" />
-              </div>
-            ) : (
-              <div className="absolute inset-0 opacity-10 pointer-events-none">
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white/20 to-transparent" />
-              </div>
-            )}
+            <CategoryBannerSlideshow banners={productBanners} />
           </div>
 
           <div className="relative z-10 max-w-7xl mx-auto flex flex-col items-center text-center">
@@ -690,22 +562,35 @@ function CategoryPage() {
                   }
                   dir={isNintendoGames ? direction : "ltr"}
                 >
-                  {products.map((p: any, index: number) => (
-                    <motion.div
-                      key={p.id}
-                      initial={{ opacity: 0, y: 10 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      className="min-w-0"
-                    >
+                  {/*
+                    A plain div with a CSS reveal, not a `motion.div` with
+                    `whileInView`. That wrapper installed an
+                    IntersectionObserver PER CARD — 1,714 of them on this shelf,
+                    all live while the member scrolls — to do what one CSS
+                    animation on mount does for nothing. With the window above
+                    growing a screenful at a time, a card mounts just before it
+                    is reached, so the reveal still happens where it used to.
+                  */}
+                  {visibleProducts.map((p: any, index: number) => (
+                    <div key={p.id} className="min-w-0 animate-fade-up">
                       {isNintendoGames ? (
                         <NintendoGameCard product={p} priority={index < 6} />
                       ) : (
                         <ProductCard product={p} imageRole="front-box" />
                       )}
-                    </motion.div>
+                    </div>
                   ))}
                 </div>
+
+                {allShown ? null : (
+                  <div ref={sentinelRef} className="flex justify-center py-6">
+                    <span className="sr-only">{t("جاري تحميل المزيد")}</span>
+                    <div
+                      className="h-6 w-6 animate-spin rounded-full border-2 border-border border-t-red-500"
+                      aria-hidden="true"
+                    />
+                  </div>
+                )}
               </div>
             ) : (
               <div className="text-center py-24 bg-card rounded-3xl border border-dashed border-border px-6">
