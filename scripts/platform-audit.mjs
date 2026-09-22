@@ -89,6 +89,8 @@ const WRITABLE = ["platform", "title", "titleEn", "tags"];
 const APPLY = process.argv.includes("--apply");
 const DO_TITLES = !process.argv.includes("--no-titles");
 const DO_PLATFORMS = !process.argv.includes("--no-platforms");
+/** Rebuild `product_identity` from the catalogue, after a rename moved identities. */
+const REINDEX = process.argv.includes("--reindex");
 const flag = (name, fallback) =>
   (process.argv.find((a) => a.startsWith(`--${name}=`)) ?? `--${name}=${fallback}`).split("=")[1];
 const LIMIT = Math.max(0, Number(flag("limit", "0")) || 0);
@@ -721,6 +723,33 @@ if (refused.length) {
   say();
 }
 
+/*
+  Put the whole index back in step, on request.
+
+  A rename moves a product's identity, and any row left behind refuses that
+  identity to the product that now holds it. `reindexProductIdentities` is the
+  application's own repair — it claims what it can and reports what it cannot,
+  touching no product — so a run can restore the index after a rename without
+  needing to know which rows went stale.
+*/
+if (REINDEX) {
+  if (!APPLY) {
+    say(`**--reindex needs --apply; nothing was done.**`);
+    finish(0);
+  }
+  const result = await app.reindexProductIdentities(products);
+  say(`## The identity index, rebuilt`);
+  say();
+  say(`- rows claimed: **${result.indexed}** of ${products.length} products`);
+  say(
+    `- products left unindexed (a duplicate already holds the identity): **${result.unindexed.length}**`,
+  );
+  for (const row of result.unindexed.slice(0, 40)) {
+    say(`  - ${row.productId} — ${row.title}`);
+  }
+  say();
+}
+
 if (!APPLY) {
   say(`**Dry run. Nothing was written.**`);
   finish(0);
@@ -867,7 +896,16 @@ const unclaimed = [];
 for (const id of changedIds) {
   const product = afterById.get(id);
   if (!product) continue;
-  const claim = await app.claimProductIdentity(product);
+  /*
+    Checked against the live catalogue, not against the index alone.
+
+    The index can hold a row for a product whose document says something else,
+    and such a row refuses the identity to whoever really holds it — naming a
+    product id an admin cannot find anywhere. The first apply hit exactly that:
+    nineteen rows re-claimed and one refused by a holder that the catalogue
+    check releases as the orphan it is.
+  */
+  const claim = await app.claimProductIdentityAgainstCatalogue(product, afterList);
   if (claim.ok) reclaimed += 1;
   else unclaimed.push(`${id} → held by ${claim.conflictProductId ?? "something"}`);
 }

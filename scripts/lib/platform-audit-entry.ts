@@ -20,7 +20,23 @@
  */
 export { d1All, d1Run } from "@/lib/d1.server";
 export { getStore, updateStore } from "@/lib/db.server";
-export { claimProductIdentity } from "@/lib/product-identity.server";
+/*
+  The catalogue-aware claim, not the bare one.
+
+  `claimProductIdentity` asks only the `product_identity` table, and that table
+  can hold a row for a product whose document says something else — a rename
+  that never re-indexed, a delete that never released. Such a row then refuses
+  the identity to whoever really holds it, naming a product id an admin cannot
+  find. The first apply hit exactly that: nineteen rows re-claimed, one refused
+  by a holder the catalogue check would have released.
+
+  `reindexProductIdentities` is the repair for a whole catalogue, exposed so a
+  run can put the index back in step after any rename.
+*/
+export {
+  claimProductIdentityAgainstCatalogue,
+  reindexProductIdentities,
+} from "@/lib/product-identity.server";
 export {
   findConflictingProduct,
   normalizeProductPlatform,

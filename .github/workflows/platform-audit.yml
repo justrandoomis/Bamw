@@ -39,6 +39,10 @@ on:
         description: "Correct the console a game is filed under"
         type: boolean
         default: true
+      reindex:
+        description: "Rebuild the product_identity index from the catalogue (needs apply). Use after a rename moved identities."
+        type: boolean
+        default: false
       deadline_minutes:
         description: "Stop and write what has been decided after this many minutes, so the job timeout cannot discard a run's work"
         required: false
@@ -105,6 +109,7 @@ jobs:
           ONLY: ${{ inputs.only }}
           TITLES: ${{ inputs.titles }}
           PLATFORMS: ${{ inputs.platforms }}
+          REINDEX: ${{ inputs.reindex }}
           DEADLINE: ${{ inputs.deadline_minutes }}
         run: |
           args=""
@@ -114,6 +119,7 @@ jobs:
           if [ -n "$ONLY" ]; then args="$args --only=$ONLY"; fi
           if [ "$TITLES" = "false" ]; then args="$args --no-titles"; fi
           if [ "$PLATFORMS" = "false" ]; then args="$args --no-platforms"; fi
+          if [ "$REINDEX" = "true" ]; then args="$args --reindex"; fi
           args="$args --deadline-minutes=${DEADLINE:-42}"
           # A push carries no `limit`, and the whole shelf does not fit in one
           # job. The default keeps the self-dry-run to a measurable sample.
