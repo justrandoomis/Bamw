@@ -16,6 +16,17 @@ on:
         description: "How many rows of the worst-difference table to print"
         required: false
         default: "40"
+  # A new or edited audit runs itself. Two reasons, and both matter here:
+  # GitHub will not accept a `workflow_dispatch` for a workflow it has never
+  # seen run on this branch, and a read-only report has nothing to gate — the
+  # script has no write path at all, so a push cannot do any harm with it.
+  push:
+    branches: [claude/gaming-platform-issues-keb1be]
+    paths:
+      - .github/workflows/listing-price-audit.yml
+      - scripts/listing-price-audit.mjs
+      - src/lib/productPricing.ts
+      - src/lib/tierPricing.ts
 
 permissions:
   contents: read
