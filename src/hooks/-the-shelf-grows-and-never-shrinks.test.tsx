@@ -84,6 +84,11 @@ const count = () => Number(screen.getByTestId("count").textContent);
 beforeEach(() => {
   FakeObserver.reset();
   (globalThis as any).IntersectionObserver = FakeObserver;
+  try {
+    sessionStorage.clear();
+  } catch {
+    /* jsdom without storage; the tests below cover that case explicitly. */
+  }
 });
 
 afterEach(() => {
@@ -208,5 +213,63 @@ describe("a shelf that grows a screenful at a time", () => {
     render(<Shelf items={[]} />);
     expect(count()).toBe(0);
     expect(screen.getByTestId("done").textContent).toBe("true");
+  });
+});
+
+describe("coming back to a shelf you were already down", () => {
+  it("re-renders what was rendered, so the browser can restore the scroll", () => {
+    /*
+      A grow-only window is not enough by itself. A member who scrolls 800
+      cards down, taps a game and presses BACK arrives at a page rendering
+      sixty — nothing for the browser to restore a scroll position against,
+      and they land at the top of a shelf they had walked half of. Worse than
+      the complaint this hook exists to answer, and it would only have shown
+      up on a real phone.
+    */
+    const { unmount } = render(<Shelf items={list(1714)} />);
+    reach();
+    reach();
+    reach();
+    expect(count()).toBe(14);
+
+    unmount(); // tapped a product
+    render(<Shelf items={list(1714)} />); // pressed back
+    expect(count()).toBe(14);
+  });
+
+  it("does not carry one shelf's depth onto a different shelf", () => {
+    const { unmount } = render(
+      <Shelf items={list(1714)} resetKey="nintendo_games|newest|all|all" />,
+    );
+    reach();
+    reach();
+    expect(count()).toBe(11);
+    unmount();
+
+    render(<Shelf items={list(1714, "b")} resetKey="nintendo_games|price_asc|all|all" />);
+    expect(count()).toBe(5);
+  });
+
+  it("renders a first page when the browser refuses storage entirely", () => {
+    /*
+      A private window, or blocked site data, makes the accessor itself throw
+      — not return null. A shelf must render either way, and this is the case
+      that would have thrown during render rather than degrading.
+    */
+    const real = Object.getOwnPropertyDescriptor(window, "sessionStorage");
+    Object.defineProperty(window, "sessionStorage", {
+      configurable: true,
+      get() {
+        throw new Error("blocked");
+      },
+    });
+    try {
+      render(<Shelf items={list(40)} />);
+      expect(count()).toBe(5);
+      reach();
+      expect(count()).toBe(8);
+    } finally {
+      if (real) Object.defineProperty(window, "sessionStorage", real);
+    }
   });
 });

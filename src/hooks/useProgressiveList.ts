@@ -46,7 +46,49 @@ export function useProgressiveList<T>(
   */
   const rootMargin = options?.rootMargin ?? "1200px 0px";
 
-  const [count, setCount] = useState(initial);
+  /*
+    How far this shelf was opened, remembered across a visit.
+
+    A grow-only window is not enough on its own. A member who scrolls 800
+    cards down, taps a game and presses BACK arrives at a page that renders
+    sixty — so there is nothing for the browser to restore the scroll position
+    against, and they land at the top of a shelf they had walked half of. That
+    is a worse version of the complaint this hook exists to answer, and it
+    would only have shown up on a real phone.
+
+    So the depth is remembered per shelf, for the length of the session.
+    Returning re-renders what was already rendered, which is a cost the member
+    has already paid once and whose images are already in the browser's cache;
+    leaving them stranded at the top is not cheaper, it is just cheaper for us.
+
+    sessionStorage and not localStorage: this is where you were a minute ago,
+    not a preference. Every access is wrapped, because a private window or
+    blocked site data makes the accessor itself throw, and a shelf must render
+    either way.
+  */
+  const storageKey = options?.resetKey ? `bn:shelf-depth:${options.resetKey}` : "";
+
+  /*
+    The `typeof` check is INSIDE the try, which is not a style choice.
+
+    `typeof sessionStorage` reads the property, and a browser that blocks site
+    data throws from the getter itself rather than leaving it undefined — so a
+    guard written outside the try throws during render and takes the whole
+    shelf with it. Caught by the test that exists for exactly this case, after
+    I wrote it the wrong way round first.
+  */
+  const remembered = (): number => {
+    if (!storageKey) return initial;
+    try {
+      if (typeof sessionStorage === "undefined") return initial;
+      const saved = Number(sessionStorage.getItem(storageKey));
+      return Number.isFinite(saved) && saved > initial ? saved : initial;
+    } catch {
+      return initial;
+    }
+  };
+
+  const [count, setCount] = useState(remembered);
 
   /*
     Reset on a NEW SHELF — never merely on a new array.
@@ -72,8 +114,29 @@ export function useProgressiveList<T>(
   const previousKey = useRef(resetKey);
   if (previousKey.current !== resetKey) {
     previousKey.current = resetKey;
-    if (count !== initial) setCount(initial);
+    /*
+      A shelf the member has already been down keeps its depth; one they have
+      not starts at the top. Changing the sort and changing it back should not
+      make them walk the shelf again.
+    */
+    const restored = remembered();
+    if (count !== restored) setCount(restored);
   }
+
+  /*
+    Written on every change rather than on unmount: `beforeunload` and unmount
+    handlers are not guaranteed to run on a mobile browser, which is exactly
+    the browser this matters on.
+  */
+  useEffect(() => {
+    if (!storageKey) return;
+    try {
+      if (typeof sessionStorage === "undefined") return;
+      sessionStorage.setItem(storageKey, String(count));
+    } catch {
+      /* Private window, blocked site data. The shelf still works. */
+    }
+  }, [storageKey, count]);
 
   const done = count >= items.length;
 
