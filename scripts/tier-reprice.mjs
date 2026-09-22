@@ -545,25 +545,20 @@ const digest = () => {
   say(`- طبقات لم تُعرَف ولن تُمَس: **${unknownTiers}**`);
 };
 
-if (!APPLY) {
-  say(`**تشغيل جاف. لم يُكتب شيء.**`);
-  const frozen = moving.filter(({ result }) => overlayIds.has(result.id));
-  say();
-  say(
-    `منتجات ستتحرك ولها صف \`store:product:<id>\` منفصل (يجب أن يُكتب هو لا الكتل): **${frozen.length}**`,
-  );
+if (!moving.length) {
+  say("**لا شيء ليُكتب.**");
   digest();
   rmSync(outfile, { force: true });
   flush();
   process.exit(0);
 }
 
-if (!moving.length) {
-  say("**لا شيء ليُكتب.**");
-  rmSync(outfile, { force: true });
-  flush();
-  process.exit(0);
-}
+/* Named before the rehearsal fills it, because the report below reads it. */
+const brokenMirrorReport = [];
+const titleOf = (id) => {
+  const hit = moving.find(({ result }) => result.id === id);
+  return hit ? label(hit.result) : id;
+};
 
 /* ------------------------------------------------------------- the rehearsal */
 
@@ -595,6 +590,7 @@ for (const { result } of moving) {
     .filter((p) => p.changed)
     .map((p) => ({
       index: p.index,
+      kind: p.kind,
       id: String(p.id ?? ""),
       name: String(p.name ?? ""),
       cost: Number(p.cost),
@@ -605,6 +601,73 @@ for (const { result } of moving) {
 }
 
 const byId = new Map(products.map((p) => [String(p["id"] ?? ""), p]));
+
+/*
+  THE OFFLINE PRICE IS STORED FOUR TIMES, AND THE PAGE READS THE COPY THIS
+  SCRIPT WAS NOT WRITING.
+
+  A game's headline — the hero, the sticky buy bar that follows the customer
+  down the page, the closing call to action — comes from `readOffers`
+  (src/lib/hub.ts:228), which reads `accountPrice` and falls back to `price`.
+  Neither is derived from `types` at read time: `gameImportForm.ts:466-469`
+  writes `form.variants = types; form.price = pricing.productPrice;` ONCE at
+  import, where `productPrice` is the plain offline tier's price
+  (`nintendoPricing.ts:559`), and nothing recomputes them afterwards.
+
+  So a write to `types[i].price` alone would have put two different numbers on
+  one screen: the hero reading 9,000 while the editions table lower down the
+  same page, the category card, the buy sheet and the till all read 8,000. And
+  where a rule RAISES a price, the customer would be shown the old lower one
+  and charged the new higher one. A cart line with no `typeId` falls back to
+  `product.price` at the till, so that customer would be charged 9,000 against
+  an advertised 8,000.
+
+  These are not four prices. They are one price written in four places, and
+  moving one of them is the bug. So the mirrors move with the tier —
+
+    · `price`        the fallback headline, and the till's own fallback
+    · `accountPrice` the headline when it is present, preferred over `price`
+    · `variants[j]`  the same list under its older name; every admin save
+                     mirrors `variants = types`, and `resolveUnitPrice` reads
+                     it whenever `types` is not an array
+
+  — and only when they still AGREE with the tier they mirror. A product whose
+  mirror already disagrees is already inconsistent, in a way this script did
+  not cause and cannot read the owner's mind about; it is named in section 3b
+  and left entirely alone rather than given a second disagreement on top of
+  the first.
+*/
+const numOf = (v) => {
+  if (typeof v === "number") return Number.isFinite(v) ? v : 0;
+  const n = Number.parseFloat(String(v ?? "").replace(/[^0-9.]/g, ""));
+  return Number.isFinite(n) ? n : 0;
+};
+
+/**
+ * Every copy of a price this product keeps, and what each should become.
+ *
+ * Returns `{ scalars, brokenMirrors }`. `scalars` is field → new value for the
+ * product-level copies. `brokenMirrors` describes a copy that does not agree
+ * with the tier it mirrors, which disqualifies the whole product.
+ */
+const mirrorsFor = (doc, changes) => {
+  const scalars = new Map();
+  const brokenMirrors = [];
+  const offline = changes.find((c) => c.kind === "offline_base");
+  if (!offline) return { scalars, brokenMirrors };
+
+  for (const field of ["price", "accountPrice"]) {
+    if (!(field in doc)) continue;
+    const held = numOf(doc[field]);
+    if (held === 0) continue; // never set; `readOffers` falls through to the next
+    if (held !== offline.oldPrice) {
+      brokenMirrors.push({ field, held, tier: offline.oldPrice });
+      continue;
+    }
+    scalars.set(field, offline.newPrice);
+  }
+  return { scalars, brokenMirrors };
+};
 
 /** The same four fields the rules saw, read off a raw row by the same function. */
 const identity = (row) => {
@@ -644,12 +707,46 @@ const resolveTargets = (id, doc, changes) => {
   return targets;
 };
 
-/** A product with the wanted tier prices applied, and nothing else changed. */
-const patchProduct = (before, targets) => {
-  const types = (Array.isArray(before["types"]) ? before["types"] : []).map((tier, index) =>
-    targets.has(index) ? { ...tier, price: targets.get(index) } : tier,
+/**
+ * The same identity match against `variants`, the older name for the same list.
+ *
+ * A missing or unmatched row is NOT an error: `variants` is a mirror, and a
+ * product that never had one simply keeps three copies of its price instead of
+ * four. An AMBIGUOUS one would be, so a row moves only when exactly one
+ * candidate carries that tier.
+ */
+const resolveVariants = (doc, changes) => {
+  const rows = Array.isArray(doc?.["variants"]) ? doc["variants"] : null;
+  const out = new Map();
+  if (!rows) return out;
+  const keys = rows.map((row) => identity(row));
+  for (const change of changes) {
+    const want = `${change.id}\u0000${change.name}\u0000${change.cost}\u0000${change.oldPrice}`;
+    const hits = [];
+    for (let i = 0; i < keys.length; i += 1) if (keys[i] === want) hits.push(i);
+    if (hits.length === 1 && !out.has(hits[0])) out.set(hits[0], change.newPrice);
+  }
+  return out;
+};
+
+/**
+ * A product with the wanted tier prices applied, and nothing else changed.
+ *
+ * `edit` is `{ targets, variants, scalars }` — the tier rows by index, the
+ * `variants` rows by index, and the product-level copies of the same price.
+ */
+const patchProduct = (before, edit) => {
+  const next = { ...before };
+  next.types = (Array.isArray(before["types"]) ? before["types"] : []).map((tier, index) =>
+    edit.targets.has(index) ? { ...tier, price: edit.targets.get(index) } : tier,
   );
-  return { ...before, types };
+  if (Array.isArray(before["variants"]) && edit.variants.size) {
+    next.variants = before["variants"].map((row, index) =>
+      edit.variants.has(index) ? { ...row, price: edit.variants.get(index) } : row,
+    );
+  }
+  for (const [field, value] of edit.scalars) next[field] = value;
+  return next;
 };
 
 /*
@@ -660,10 +757,9 @@ const patchProduct = (before, targets) => {
   never rehearsed. Every overlay row is fetched here so the rehearsal below
   sees exactly what will be written.
 */
-const overlayWrites = [...wanted.keys()].filter((id) => overlayIds.has(id));
-const chunkWrites = [...wanted.keys()].filter((id) => !overlayIds.has(id));
+const overlayCandidates = [...wanted.keys()].filter((id) => overlayIds.has(id));
 const rawOverlay = new Map();
-for (const id of overlayWrites) {
+for (const id of overlayCandidates) {
   const rows = await app.d1All("SELECT value FROM store_kv WHERE key = ?", `store:product:${id}`);
   let stored = null;
   try {
@@ -691,43 +787,131 @@ const plan = new Map();
 for (const [id, changes] of wanted) {
   const source = rawOverlay.get(id) ?? byId.get(id);
   if (!source) fail(`${id} ليس في الكتالوج`);
+
+  /*
+    A product whose headline already disagrees with the tier it mirrors is
+    dropped here, before anything is planned for it. Its pricing is already
+    inconsistent in a way this run did not cause; adding a second disagreement
+    on top would be guessing which of two numbers the owner meant.
+  */
+  const { scalars, brokenMirrors } = mirrorsFor(source, changes);
+  if (brokenMirrors.length) {
+    brokenMirrorReport.push({ id, title: titleOf(id), brokenMirrors });
+    continue;
+  }
+
   const targets = resolveTargets(id, source, changes);
-  plan.set(id, targets);
+  const edit = { targets, variants: resolveVariants(source, changes), scalars };
+  plan.set(id, edit);
 
   const before = JSON.parse(JSON.stringify(source));
-  const patched = patchProduct(source, targets);
+  const patched = patchProduct(source, edit);
 
   for (const key of new Set([...Object.keys(before), ...Object.keys(patched)])) {
-    if (key === "types") continue;
+    if (key === "types" || key === "variants") continue;
+    if (scalars.has(key)) {
+      if (Number(patched[key]) !== Number(scalars.get(key))) {
+        fail(`البروفة: ${id}.${key} لم يُضبط على ${scalars.get(key)}`);
+      }
+      continue;
+    }
     if (JSON.stringify(before[key] ?? null) !== JSON.stringify(patched[key] ?? null)) {
       fail(`البروفة: ${id}.${key} تغيّر، وهذا السكربت لا يملك تغييره`);
     }
   }
 
-  const beforeTiers = Array.isArray(before["types"]) ? before["types"] : [];
-  const afterTiers = patched["types"];
-  if (beforeTiers.length !== afterTiers.length) fail(`البروفة: ${id}.types غيّر طوله`);
-  if (!afterTiers.length) fail(`البروفة: ${id}.types صار فارغًا`);
-  for (let i = 0; i < beforeTiers.length; i += 1) {
-    for (const key of new Set([
-      ...Object.keys(beforeTiers[i] ?? {}),
-      ...Object.keys(afterTiers[i] ?? {}),
-    ])) {
-      if (key === "price" && targets.has(i)) continue;
-      if (
-        JSON.stringify(beforeTiers[i]?.[key] ?? null) !== JSON.stringify(afterTiers[i]?.[key] ?? null)
-      ) {
-        fail(`البروفة: ${id}.types[${i}].${key} تغيّر، وهذا السكربت لا يملك تغييره`);
+  /* `types` and `variants` are checked the same way, row by row and key by key. */
+  for (const [list, moved] of [
+    ["types", targets],
+    ["variants", edit.variants],
+  ]) {
+    const beforeRows = Array.isArray(before[list]) ? before[list] : null;
+    const afterRows = Array.isArray(patched[list]) ? patched[list] : null;
+    if (list === "types") {
+      if (!afterRows?.length) fail(`البروفة: ${id}.types صار فارغًا`);
+    }
+    if (!beforeRows || !afterRows) continue;
+    if (beforeRows.length !== afterRows.length) fail(`البروفة: ${id}.${list} غيّر طوله`);
+    for (let i = 0; i < beforeRows.length; i += 1) {
+      for (const key of new Set([
+        ...Object.keys(beforeRows[i] ?? {}),
+        ...Object.keys(afterRows[i] ?? {}),
+      ])) {
+        if (key === "price" && moved.has(i)) continue;
+        if (
+          JSON.stringify(beforeRows[i]?.[key] ?? null) !== JSON.stringify(afterRows[i]?.[key] ?? null)
+        ) {
+          fail(`البروفة: ${id}.${list}[${i}].${key} تغيّر، وهذا السكربت لا يملك تغييره`);
+        }
+      }
+      if (moved.has(i) && Number(afterRows[i].price) !== Number(moved.get(i))) {
+        fail(`البروفة: ${id}.${list}[${i}].price لم يُضبط`);
       }
     }
-    if (targets.has(i) && Number(afterTiers[i].price) !== Number(targets.get(i))) {
-      fail(`البروفة: ${id}.types[${i}].price لم يُضبط`);
-    }
   }
+
   /* Every change asked for landed somewhere. */
   if (targets.size !== changes.length) {
     fail(`البروفة: ${id} — ${changes.length} تغييرًا مطلوبًا و${targets.size} فقط وجدت مكانها`);
   }
+}
+
+/* The products dropped for a broken mirror are no longer this run's to write. */
+for (const row of brokenMirrorReport) wanted.delete(row.id);
+
+/* --------------------------------------------- 3b. copies of the same price */
+
+/*
+  Reported for both a dry run and an apply, because it is the number that
+  decides whether the write is safe at all.
+*/
+say(`## 3ب. نسخ السعر الأخرى`);
+say();
+say(
+  `سعر الأوفلاين العادي مخزَّن أكثر من مرة: في \`types\`، وفي \`variants\`، وفي \`price\` و\`accountPrice\` على المنتج نفسه — وواجهة صفحة اللعبة تقرأ \`accountPrice\` ثم \`price\`، لا \`types\`. لذلك تتحرك كلها معًا، وإلا عُرض رقم وحُوسب رقم آخر.`,
+);
+say();
+let mirrorScalars = 0;
+let mirrorVariantRows = 0;
+for (const edit of plan.values()) {
+  mirrorScalars += edit.scalars.size;
+  mirrorVariantRows += edit.variants.size;
+}
+say(`- حقول \`price\`/\`accountPrice\` ستتحرك مع طبقتها: **${mirrorScalars}**`);
+say(`- صفوف \`variants\` ستتحرك مع طبقتها: **${mirrorVariantRows}**`);
+say(
+  `- منتجات **استُبعدت** لأن نسختها لا تطابق طبقتها أصلًا: **${brokenMirrorReport.length}**`,
+);
+say();
+if (brokenMirrorReport.length) {
+  say(`| المنتج | الحقل | القيمة المخزّنة | سعر طبقة الأوفلاين |`);
+  say(`| --- | --- | --- | --- |`);
+  for (const row of brokenMirrorReport.slice(0, 40)) {
+    for (const m of row.brokenMirrors) {
+      say(`| ${row.title} | \`${m.field}\` | ${money(m.held)} | ${money(m.tier)} |`);
+    }
+  }
+  say();
+  say(
+    `هذه المنتجات غير متّسقة قبل هذا التشغيل، ولم يسبّبه. تُترك كما هي بالكامل — تصحيح السعر فيها يحتاج قرارك: أيّ الرقمين هو الصحيح.`,
+  );
+} else {
+  say(`كل النسخ متطابقة مع طبقاتها.`);
+}
+say();
+
+if (!APPLY) {
+  say(`**تشغيل جاف. لم يُكتب شيء.**`);
+  const frozen = moving.filter(({ result }) => overlayIds.has(result.id));
+  say();
+  say(
+    `منتجات ستتحرك ولها صف \`store:product:<id>\` منفصل (يجب أن يُكتب هو لا الكتل): **${frozen.length}**`,
+  );
+  say(`البروفة تمّت على المستند الذي سيُكتب فعلًا، ونجحت.`);
+  digest();
+  rmSync(outfile, { force: true });
+  flush();
+  process.exit(0);
 }
 
 /* ------------------------------------------------------------------ the write */
@@ -741,6 +925,13 @@ for (const [id, changes] of wanted) {
   changes nothing a shopper will ever see. So each product is written where it
   actually lives.
 */
+/*
+  From `plan`, not from `wanted` as it was before the rehearsal: a product
+  dropped for a broken mirror must not appear in either list.
+*/
+const overlayWrites = [...plan.keys()].filter((id) => overlayIds.has(id));
+const chunkWrites = [...plan.keys()].filter((id) => !overlayIds.has(id));
+
 say(`## 6. الكتابة`);
 say();
 say(`- عبر صفوف \`store:product:<id>\`: **${overlayWrites.length}**`);
@@ -831,8 +1022,20 @@ for (const [id, changes] of wanted) {
     continue;
   }
 
+  const scalars = plan.get(id)?.scalars ?? new Map();
   for (const key of new Set([...Object.keys(was ?? {}), ...Object.keys(now)])) {
-    if (key === "types") continue;
+    if (key === "types" || key === "variants") continue;
+    if (scalars.has(key)) {
+      /*
+        The page's headline, read back from D1. Verified by VALUE and not
+        merely allowed to differ: this is the number the customer sees, and
+        the whole reason the tier write alone was unsafe.
+      */
+      if (Number(now[key]) !== Number(scalars.get(key))) {
+        faults.push(`${id}.${key} = ${now[key]}، والمتوقع ${scalars.get(key)}`);
+      }
+      continue;
+    }
     if (JSON.stringify(was?.[key] ?? null) !== JSON.stringify(now[key] ?? null)) {
       faults.push(`${id}.${key} تغيّر، وهذا السكربت لا يملك تغييره`);
     }
