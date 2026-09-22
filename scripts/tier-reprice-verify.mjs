@@ -1,26 +1,34 @@
 /**
- * Did the repricing reach banan.to? READ ONLY, over HTTPS, no database.
+ * Did the repricing reach banan.to? READ ONLY, through a real browser.
  *
  * «لا تقل «تم» بناءً على Build فقط؛ المطلوب تحقق وظيفي كامل على الإنتاج.»
  *
  * A write verified against D1 proves the database changed. It does not prove
  * the shop changed: the catalogue is cached in the Worker and at the edge, and
- * the page reads a copy of the price that lives outside `types`. So this asks
- * the running site, and checks two things that can only both be true if the
- * repricing actually landed:
+ * the page reads a copy of the price that does not live in `types` at all.
  *
- *   1. the rules are SATISFIED by what is being served — nothing still wants
- *      to move, apart from what was deliberately held;
- *   2. every product serves ONE price — the number in `types[offline_base]`,
- *      which the till charges, equals `price`/`accountPrice`, which the page
- *      headline shows.
+ * WHY A BROWSER. Plain `fetch` from a runner is answered 403 with Cloudflare's
+ * «Just a moment...» interstitial — on `/api/data`, and on `/`, `/games` and
+ * `/category/nintendo_games` too, five attempts each with a phone's user agent
+ * and a browser's Accept. That challenge is a piece of JavaScript; the only
+ * thing that passes it is something that runs JavaScript. So this drives real
+ * Chrome, lets it solve the challenge exactly as a shopper's phone does, and
+ * only then reads the catalogue — from inside the page, so the request carries
+ * the clearance the browser just earned.
  *
- * The second is the one that matters to a customer, and it is measured against
- * the same denominator as before the run so a zero cannot be vacuous.
+ * Two questions, both of which must come out right if the repricing landed:
+ *
+ *   1. are the rules SATISFIED by what is served — does anything still want to
+ *      move, apart from what was deliberately held;
+ *   2. does every product serve ONE price — `accountPrice`/`price`, which the
+ *      page headline shows, against `types[offline_base].price`, which the till
+ *      charges, counted against the same denominator as before the run so a
+ *      low number cannot be vacuous.
  */
 import { build } from "esbuild";
-import { rmSync, writeFileSync } from "node:fs";
+import { existsSync, rmSync, writeFileSync } from "node:fs";
 import path from "node:path";
+import { chromium } from "playwright-core";
 
 const ORIGIN = process.env.ORIGIN || "https://banan.to";
 
@@ -42,6 +50,14 @@ const numOf = (v) => {
   return Number.isFinite(n) ? n : 0;
 };
 
+const stop = (message, code = 1) => {
+  say();
+  say(`**${message}**`);
+  flush();
+  rmSync(path.resolve("tier-reprice-verify.bundle.mjs"), { force: true });
+  process.exit(code);
+};
+
 const outfile = path.resolve("tier-reprice-verify.bundle.mjs");
 await build({
   entryPoints: [path.resolve("scripts/lib/pricing-entry.ts")],
@@ -57,149 +73,100 @@ const app = await import(`file://${outfile}`);
 
 say(`# هل وصل التسعير إلى banan.to؟`);
 say();
-say(`المصدر: \`${ORIGIN}/api/data\` — ما يخدمه الموقع فعلًا، لا قاعدة البيانات.`);
+say(`المصدر: متصفّح حقيقي يفتح \`${ORIGIN}\` ويقرأ الكتالوج من داخل الصفحة.`);
 say();
 
 /*
-  A BROWSER'S HEADERS, BECAUSE THE SHOP ANSWERS BROWSERS.
-
-  The first attempt sent node's default headers and got 403 with an empty body
-  from every path — not the route refusing (its GET handler has no auth at all)
-  but Cloudflare refusing the caller. Asking as a shopper asks is the only way
-  to measure what a shopper is served.
+  The runner's own Chrome, not a downloaded one. `ubuntu-latest` ships Google
+  Chrome, and `playwright-core` will drive any Chromium given its path — which
+  avoids pinning a browser build against this repository's playwright version.
 */
-const BROWSER = {
-  /*
-    A BROWSER'S HEADERS, AND A BROWSER'S ACCEPT.
+const CANDIDATES = [
+  process.env.CHROME_PATH,
+  "/usr/bin/google-chrome",
+  "/usr/bin/google-chrome-stable",
+  "/usr/bin/chromium-browser",
+  "/usr/bin/chromium",
+  "/opt/pw-browsers/chromium",
+].filter(Boolean);
+const executablePath = CANDIDATES.find((p) => existsSync(p));
+if (!executablePath) stop(`لا يوجد متصفّح على هذا المُشغّل. لم أتحقق من الإنتاج.`);
+say(`- المتصفّح: \`${executablePath}\``);
 
-    `accept: application/json` from a runner was answered with Cloudflare's
-    «Just a moment...» challenge page under a 403. `scripts/page-smoke.mjs`
-    already documents the same shield on this origin — "the first `/policy`
-    fetch of the previous run came back 403 and the same URL answered 200
-    three seconds later" — and gets through by asking for HTML with a phone's
-    user agent. The route does not content-negotiate, so it answers JSON
-    either way; only the shield reads these.
-  */
-  accept: "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
-  "accept-language": "ar,en;q=0.8",
-  "user-agent":
+const browser = await chromium.launch({
+  executablePath,
+  args: ["--no-sandbox", "--disable-dev-shm-usage"],
+});
+const context = await browser.newContext({
+  locale: "ar",
+  viewport: { width: 390, height: 844 },
+  userAgent:
     "Mozilla/5.0 (Linux; Android 13; SM-G991B) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0 Mobile Safari/537.36",
-};
+});
+const page = await context.newPage();
 
-const SHIELD = new Set([403, 429, 503]);
-const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
-
-/** One URL, retried only for the shield's own statuses, never for the app's. */
-const read = async (url) => {
-  for (let attempt = 1; attempt <= 5; attempt += 1) {
-    const res = await fetch(url, { headers: BROWSER });
-    if (res.ok) return res;
-    const body = await res.text().catch(() => "");
-    const challenged = SHIELD.has(res.status) && /just a moment|cf-browser|challenge/i.test(body);
-    say(
-      `- \`${url.replace(ORIGIN, "")}\` محاولة ${attempt} → **${res.status} ${res.statusText}**${challenged ? " — درع Cloudflare" : body ? ` — ${body.slice(0, 140).replace(/\s+/g, " ")}` : ""}`,
-    );
-    if (!SHIELD.has(res.status)) return null;
-    await sleep(attempt * 3000);
+let landed = "";
+for (const path_ of ["/", "/games"]) {
+  try {
+    const res = await page.goto(`${ORIGIN}${path_}`, {
+      waitUntil: "domcontentloaded",
+      timeout: 90_000,
+    });
+    /* The challenge resolves itself; wait for a title that is not it. */
+    await page
+      .waitForFunction(
+        () => !/just a moment|أمهلنا|checking your browser/i.test(document.title || ""),
+        undefined,
+        { timeout: 60_000 },
+      )
+      .catch(() => {});
+    const title = await page.title();
+    say(`- \`${path_}\` → **${res?.status() ?? "—"}** · العنوان: «${title.slice(0, 60)}»`);
+    if (!/just a moment|checking your browser/i.test(title)) {
+      landed = path_;
+      break;
+    }
+  } catch (error) {
+    say(`- \`${path_}\` → تعذّر الفتح: ${String(error).slice(0, 140)}`);
   }
-  return null;
-};
+}
+if (!landed) {
+  await browser.close().catch(() => {});
+  stop(`لم أتجاوز درع Cloudflare بالمتصفّح. لم أتحقق من الإنتاج، ولن أقول إن التحقق تم.`);
+}
 
 /*
-  THE PAGE, NOT THE API.
-
-  Five attempts at `/api/data` came back 403 with Cloudflare's «Just a moment»
-  challenge, at three, six, nine and twelve seconds apart. The shield is on the
-  `/api/` prefix: `scripts/page-smoke.mjs` reaches `/policy`, `/faq` and the
-  rest of the site with these same headers and is answered 200.
-
-  Which is the better check anyway. The question is not what an endpoint holds,
-  it is what a shopper is SENT — and a shopper is sent a rendered page. So the
-  catalogue is read out of the storefront's own HTML, where the server has
-  already put the products it will render.
+  Read from INSIDE the page. The clearance the browser just earned rides on the
+  request, so this is the same call the shop's own JavaScript makes.
 */
-const productsFromHtml = (html) => {
-  /*
-    The SSR payload, taken by balanced braces rather than by a regex.
-
-    A product record contains nested objects, so `{...}` cannot be matched by
-    any regular expression. Each `{"id":"prd_` is walked forward counting
-    braces, respecting strings and escapes, and parsed.
-  */
-  const found = [];
-  const seen = new Set();
-  const needle = /\{\\?"id\\?":\\?"(prd_[A-Za-z0-9_-]+)\\?"/g;
-  let hit;
-  while ((hit = needle.exec(html))) {
-    if (seen.has(hit[1])) continue;
-    let depth = 0;
-    let inString = false;
-    let escaped = false;
-    let end = -1;
-    for (let i = hit.index; i < html.length && i < hit.index + 200_000; i += 1) {
-      const ch = html[i];
-      if (escaped) { escaped = false; continue; }
-      if (ch === "\\") { escaped = true; continue; }
-      if (ch === '"') { inString = !inString; continue; }
-      if (inString) continue;
-      if (ch === "{") depth += 1;
-      else if (ch === "}") {
-        depth -= 1;
-        if (depth === 0) { end = i + 1; break; }
-      }
+const payload = await page.evaluate(async () => {
+  const attempt = async (url) => {
+    try {
+      const res = await fetch(url, { headers: { accept: "application/json" } });
+      if (!res.ok) return { url, status: res.status };
+      return { url, status: res.status, body: await res.json() };
+    } catch (error) {
+      return { url, status: 0, error: String(error) };
     }
-    if (end < 0) continue;
-    const slice = html.slice(hit.index, end);
-    for (const text of [slice, slice.replace(/\\"/g, '"').replace(/\\\\/g, "\\")]) {
-      try {
-        const parsed = JSON.parse(text);
-        if (parsed && typeof parsed === "object" && String(parsed.id ?? "").startsWith("prd_")) {
-          found.push(parsed);
-          seen.add(hit[1]);
-        }
-        break;
-      } catch {
-        /* try the unescaped form next */
-      }
-    }
-  }
-  return found;
-};
+  };
+  const slim = await attempt("/api/data?slim=1");
+  if (slim.body) return slim;
+  return await attempt("/api/data");
+});
+await browser.close().catch(() => {});
 
-const PAGES = ["/", "/games", "/category/nintendo_games"];
-const products = [];
-const byId = new Map();
-for (const path_ of PAGES) {
-  const res = await read(`${ORIGIN}${path_}`);
-  if (!res) continue;
-  const html = await res.text();
-  const found = productsFromHtml(html);
-  let fresh = 0;
-  for (const p of found) {
-    const id = String(p.id ?? "");
-    if (!id || byId.has(id)) continue;
-    byId.set(id, p);
-    products.push(p);
-    fresh += 1;
-  }
-  say(
-    `- \`${path_}\` → **${res.status}** · ${(html.length / 1024).toFixed(0)} كيلوبايت · منتجات مقروءة: **${found.length}** (جديدة: ${fresh})`,
-  );
-}
+say(`- \`${payload.url}\` من داخل الصفحة → **${payload.status}**`);
 say();
-if (!products.length) {
-  say(`**لم أستخرج أي منتج من صفحات الموقع.** لم أتحقق من الإنتاج، ولن أقول إن التحقق تم.`);
-  flush();
-  rmSync(outfile, { force: true });
-  process.exit(1);
-}
-say(`- منتجات قرأتها من صفحات الموقع: **${products.length}**`);
+if (!payload.body) stop(`لم أستطع قراءة الكتالوج من الموقع. لم أتحقق من الإنتاج.`);
 
-const withTiers = products.filter(
-  (p) => Array.isArray(p?.types) && p.types.length > 0,
-);
+const store = payload.body?.store ?? payload.body;
+const products = Array.isArray(store?.products) ? store.products : [];
+say(`- منتجات يخدمها الموقع: **${products.length}**`);
+
+const withTiers = products.filter((p) => Array.isArray(p?.types) && p.types.length > 0);
 say(`- منها تحمل طبقات \`types\`: **${withTiers.length}**`);
 say();
+if (!withTiers.length) stop(`الموقع لا يخدم أي منتج بطبقات — لا يمكن التحقق.`);
 
 /* 1. Are the rules satisfied by what is live? */
 const stillMoving = [];
@@ -211,9 +178,7 @@ for (const product of withTiers) {
     schemaId: String(product.schemaId ?? product.schema_id ?? ""),
     types: product.types,
   });
-  for (const p of result.proposals) {
-    if (p.changed) stillMoving.push({ title: result.title, p });
-  }
+  for (const p of result.proposals) if (p.changed) stillMoving.push({ title: result.title, p });
 }
 
 say(`## 1. هل القواعد مستقرة على ما يُخدَم؟`);
@@ -230,29 +195,43 @@ if (stillMoving.length) {
   }
   if (stillMoving.length > 40) say(`| … | ${stillMoving.length - 40} أخرى | | | |`);
   say();
+  say(
+    `المتوقع هنا طبقتا Super Smash Bros. Ultimate وحدهما — محجوزتان لأن تكلفتهما موضع شك. أي شيء آخر يعني أن الكتابة لم تصل.`,
+  );
+  say();
 }
 
 /* 2. Does the page show what the till charges? */
 let oneNumber = 0;
-let twoNumbers = 0;
 const mismatched = [];
+let variantsPresent = 0;
+let variantsStale = 0;
 for (const product of withTiers) {
   const tiers = app.classifyTiers(product.types);
   const offline = app.tierOf(tiers, "offline_base");
   if (!offline || offline.price <= 0) continue;
   const shown = numOf(product.accountPrice) || numOf(product.price);
   if (shown <= 0) continue;
-  if (shown === offline.price) {
-    oneNumber += 1;
-    continue;
+  if (shown === offline.price) oneNumber += 1;
+  else {
+    mismatched.push({
+      title: String(product.title || product.titleEn || ""),
+      id: String(product.id ?? ""),
+      shown,
+      charged: offline.price,
+    });
   }
-  twoNumbers += 1;
-  mismatched.push({
-    title: String(product.title || product.titleEn || ""),
-    id: String(product.id ?? ""),
-    shown,
-    charged: offline.price,
-  });
+  /*
+    `variants` is the older name for the same list, and `resolveUnitPrice`
+    falls back to it whenever `types` is not an array. Nothing serves it while
+    `types` holds, so this is counted rather than fixed — a number to know, not
+    a live fault.
+  */
+  if (Array.isArray(product.variants) && product.variants.length) {
+    variantsPresent += 1;
+    const mirror = app.tierOf(app.classifyTiers(product.variants), "offline_base");
+    if (mirror && mirror.price > 0 && mirror.price !== offline.price) variantsStale += 1;
+  }
 }
 
 say(`## 2. هل يُعرض السعر الذي يُحاسَب به؟`);
@@ -262,7 +241,8 @@ say(
 );
 say();
 say(`- يعرض ويحاسب بالرقم نفسه: **${oneNumber}**`);
-say(`- يعرض رقمًا ويحاسب بآخر: **${twoNumbers}**`);
+say(`- يعرض رقمًا ويحاسب بآخر: **${mismatched.length}**`);
+say(`- يحمل \`variants\` كذلك: **${variantsPresent}** · منها متأخرة عن \`types\`: **${variantsStale}**`);
 say();
 if (mismatched.length) {
   mismatched.sort((a, b) => Math.abs(b.charged - b.shown) - Math.abs(a.charged - a.shown));
@@ -283,15 +263,9 @@ say();
 say(`- منتجات بطبقات على الموقع: **${withTiers.length}**`);
 say(`- طبقات ما زالت تريد الحركة: **${stillMoving.length}**`);
 say(`- تعرض وتحاسب بالرقم نفسه: **${oneNumber}**`);
-say(`- تعرض رقمًا وتحاسب بآخر: **${twoNumbers}**`);
+say(`- تعرض رقمًا وتحاسب بآخر: **${mismatched.length}**`);
+say(`- \`variants\` متأخرة عن \`types\`: **${variantsStale}** من ${variantsPresent}`);
 
 flush();
 rmSync(outfile, { force: true });
-
-/*
-  The held tiers are expected to still want to move — their cost is wrong and
-  that is the point. So a non-zero `stillMoving` is not on its own a failure;
-  it is reported and read. What WOULD be a failure is the site refusing to
-  answer, which is handled above.
-*/
 process.exit(0);
