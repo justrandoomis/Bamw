@@ -126,4 +126,4 @@ jobs:
 
       - name: Summary
         if: always()
-        run: cat square-cards.md >> "$GITHUB_STEP_SUMMARY" || true
+        run: tail -c 4000 square-cards.md | tee -a "$GITHUB_STEP_SUMMARY" || true
