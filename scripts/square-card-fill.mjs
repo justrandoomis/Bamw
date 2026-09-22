@@ -369,6 +369,16 @@ for (const [index, product] of missing.entries()) {
         */
         canonicalTitle: product.canonicalTitle,
         /*
+          THE SQUARE COVER THE SHOP ALREADY HAS FOR THIS ROW.
+
+          `catalogueImport` stores the supplier sheet's `Cover URL` here, and
+          411 of the 607 rows that carry one point at Nintendo's own square
+          directories. The filler has been asking two stores about games whose
+          answer was already on the record. `sheetSquareCover` decides whether
+          it is square art or a packshot; the pipeline still measures it.
+        */
+        sheetCover: product.coverImage,
+        /*
           Read here rather than inside the search, so one rule decides it.
           The bracket, the platform field and the title all carry the
           generation in this catalogue, and the url-key path already reads

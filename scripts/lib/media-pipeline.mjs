@@ -17,6 +17,7 @@ import { candidatesFor, validateCandidate } from "./media-candidates.mjs";
 import { cropFrontPanel, fetchWrap, gameTdbId } from "./gametdb-source.mjs";
 import { resolveProduct } from "./nintendo-store.mjs";
 import { searchEuropeSquare } from "./nintendo-eu-search.mjs";
+import { sheetSquareCover } from "./nintendo-sheet-cover.mjs";
 
 /** Roles in the order they are filled, so the dedup check is deterministic. */
 export const ROLES = [
@@ -119,6 +120,67 @@ export async function buildMedia(
     });
     return `/api/${key}`;
   };
+
+  /*
+    THE SQUARE COVER THE SHOP ALREADY OWNS.
+
+    FIRST, ahead of every request, because it is the strongest identity there
+    is: not a url key that resolves, not a title that matches, but the media
+    URL the supplier sheet carries for THIS row, stored on the record by
+    `catalogueImport`. There is no search and so no chance of returning a
+    different game — and no request to Nintendo at all when it works.
+
+    Measured on `import-sources/catalogue.csv`: 411 of the 607 rows with a
+    cover URL point at Nintendo's own square directories. The filler asked
+    Nintendo's US store and then Europe about those games and often got
+    nothing, while the answer sat in the shop's own record.
+
+    `sheetSquareCover` refuses a packshot, a non-Nintendo host and this shop's
+    own R2 references — see that module for why each one matters — and the
+    proposal still goes through `validateCandidate`, which fetches it and
+    MEASURES it. A directory name is a claim, not a measurement.
+  */
+  if (wanted.includes("nintendoCardImage") && !patch.nintendoCardImage) {
+    const sheet = sheetSquareCover(identity.sheetCover);
+    if (sheet) {
+      const verdict = await validateCandidate(sheet, "nintendoCardImage", sharp);
+      if (verdict.ok && verdict.shapeOk) {
+        const ref = await put(
+          "nintendoCardImage",
+          verdict.buffer,
+          1,
+          sheet.provenance,
+          sheet.url,
+        );
+        if (ref) {
+          patch.nintendoCardImage = ref;
+          const left = wanted.filter((role) => role !== "nintendoCardImage");
+          /*
+            Nothing else was asked for, so nothing else needs a request. The
+            filler asks for this role alone, and this is what turns a
+            forty-minute batch into a fast one.
+          */
+          if (!left.length) {
+            return {
+              patch,
+              report,
+              unresolved: [],
+              stored,
+              failed,
+              resolvedUrl: "the supplier sheet's own Nintendo square cover",
+            };
+          }
+        }
+      } else {
+        report.push({
+          role: "nintendoCardImage",
+          ok: false,
+          reason: verdict.reason || `sheet cover: ${verdict.shape ?? verdict.kind}`,
+          source: sheet.url,
+        });
+      }
+    }
+  }
 
   const resolved = await resolveProduct(identity);
   if (!resolved.product) {
