@@ -340,6 +340,55 @@ function setCachedOrder(key: string | undefined, order: Order) {
   }
 }
 
+/**
+ * How many bananas one dinar of spending mints.
+ *
+ * TWO admin screens write `bananaPerDinar`, and they mean OPPOSITE things.
+ * The banana panel's «معدل كسب الموز لكل 1 دينار» means bananas earned per
+ * dinar — the mint rate — and its save writes `banana_reward_rate` too. The
+ * pricing screen's «سعر الموزة مقابل الدينار (للمستخدم)» means the dinar
+ * VALUE of one banana, the inverse, for redemption; it defaults the field to
+ * 1 and writes the whole settings object back.
+ *
+ * I made `bananaPerDinar` the first key this function reads. Before that it
+ * was inert here and the collision cost nothing; after it, saving the pricing
+ * screen set the mint rate. At its default of 1 a 50,000-dinar order mints
+ * 50,000 bananas instead of 340,000. Typed as a per-banana price of 1,000 it
+ * mints 50,000,000 on one order — more than three times every banana in
+ * existence. `??` made it worse than `||` ever was, because `??` does not step
+ * over a stored 0 or an empty string.
+ *
+ * So `banana_reward_rate` is authoritative: only the banana panel writes it,
+ * and that panel means the mint rate by it. `bananaPerDinar` survives as a
+ * fallback for a shop that last saved before the panel wrote both.
+ *
+ * Both ends are guarded. A non-positive or unparseable rate falls through
+ * rather than being obeyed — the guard the `||`→`??` change quietly removed.
+ * And a rate above the ceiling is refused outright: nothing between an admin's
+ * text input and `users.banana_balance` checked the size of the number, and a
+ * mistyped one is indistinguishable from a deliberate one after the fact.
+ */
+const DEFAULT_BANANA_REWARD_RATE = 6.8;
+/** Bananas per dinar. Fifteen times the default is already implausible. */
+const MAX_BANANA_REWARD_RATE = 100;
+
+export function bananaRewardRate(settings: Record<string, unknown> | undefined): number {
+  const usable = (value: unknown): number => {
+    const n = toNumber(value);
+    if (!Number.isFinite(n) || n <= 0) return 0;
+    if (n > MAX_BANANA_REWARD_RATE) {
+      console.error("[orders:banana_rate_rejected]", { rate: n, max: MAX_BANANA_REWARD_RATE });
+      return 0;
+    }
+    return n;
+  };
+  return (
+    usable(settings?.["banana_reward_rate"]) ||
+    usable(settings?.["bananaPerDinar"]) ||
+    DEFAULT_BANANA_REWARD_RATE
+  );
+}
+
 export async function createOrderForUser(
   user: User,
   lines: CheckoutLine[],
@@ -974,14 +1023,12 @@ export async function createOrderForUser(
         other value did nothing at all, and the panel went on displaying the
         number it had saved.
 
-        The panel's key wins, because it is the one a person can edit. The
-        legacy key is still read behind it so a shop that only ever had that
-        one keeps its rate, and the save writes both so they cannot drift
-        apart again.
+        `banana_reward_rate` wins, and `bananaPerDinar` is only the legacy
+        fallback. I had it the other way round, and it was a mint waiting to
+        happen — see `bananaRewardRate` for what that key means on the other
+        admin screen.
       */
-      const rewardRate = toNumber(
-        store.settings?.["bananaPerDinar"] ?? store.settings?.["banana_reward_rate"] ?? 6.8,
-      );
+      const rewardRate = bananaRewardRate(store.settings);
 
       /*
         A prize is not a purchase.

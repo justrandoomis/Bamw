@@ -5264,7 +5264,6 @@ function PricingSettingsView() {
   const settings = store?.settings || {};
 
   const [form, setForm] = useState({
-    bananaPerDinar: Number(settings["bananaPerDinar"] || 1),
     dinarPerBanana: Number(settings["dinarPerBanana"] || 1000),
     usdExchangeRate: Number(settings["usdExchangeRate"] || 1500),
     deliveryBase: Number(settings["deliveryBase"] || 5000),
@@ -5276,7 +5275,6 @@ function PricingSettingsView() {
   useEffect(() => {
     if (settings) {
       setForm({
-        bananaPerDinar: Number(settings["bananaPerDinar"] || 1),
         dinarPerBanana: Number(settings["dinarPerBanana"] || 1000),
         usdExchangeRate: Number(settings["usdExchangeRate"] || 1500),
         deliveryBase: Number(settings["deliveryBase"] || 5000),
@@ -5290,7 +5288,17 @@ function PricingSettingsView() {
   const handleSave = async () => {
     setIsSaving(true);
     try {
-      await adminApi.saveStore({ settings: { ...settings, ...form } });
+      /*
+        Only the keys this screen owns.
+
+        `{ ...settings, ...form }` sent a client-side snapshot of the WHOLE
+        settings document back, so this screen rewrote every setting in the
+        shop on every save — including ones another admin had just changed,
+        and including the banana earn rate. Worse, `settings` is
+        `store?.settings || {}`: with the query unresolved it is empty, and the
+        save replaced the entire settings object with this form's few keys.
+      */
+      await adminApi.saveStore({ settings: { ...form } });
       toast.success("تم حفظ إعدادات السعر بنجاح");
       refetch();
     } catch (e) {
@@ -5332,18 +5340,6 @@ function PricingSettingsView() {
 
       <div className="bg-white p-8 rounded-3xl border border-border shadow-sm space-y-6">
         <div className="grid md:grid-cols-2 gap-6">
-          <div className="space-y-2">
-            <label className="text-sm font-black">سعر الموزة مقابل الدينار (للمستخدم)</label>
-            <div className="text-[10px] text-muted-foreground leading-tight mb-1">
-              تستخدم لتحويل رصيد الموز المكتسب إلى قيمة شرائية (د.ع)
-            </div>
-            <input
-              type="number"
-              value={form.bananaPerDinar}
-              onChange={(e) => setForm({ ...form, bananaPerDinar: Number(e.target.value) })}
-              className="w-full p-3 rounded-xl bg-muted/50 border border-border outline-none focus:border-black"
-            />
-          </div>
           <div className="space-y-2">
             <label className="text-sm font-black">كل دينار كم موزة يحصل عليها المستخدم؟</label>
             <div className="text-[10px] text-muted-foreground leading-tight mb-1">
