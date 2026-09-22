@@ -85,6 +85,10 @@ interface DeliveryActionResponse {
   state?: DeliveryStateView;
   orderFinished?: boolean;
   nextReadyDeliveryItemId?: string;
+  /** The next account was SENT by the same call, not merely selected. */
+  sentNextCredentials?: boolean;
+  /** The account after that, if the chained send found another ready. */
+  followingReadyDeliveryItemId?: string;
   nextOrder?: {
     orderId: string;
     threadId?: string;
@@ -584,13 +588,28 @@ export function AccountToolsModal({
       if (result.state) applyState(result.state);
       setOtpById((value) => ({ ...value, [selected.id]: "" }));
       onStateChanged?.();
+      /*
+        Four outcomes, and they call for different things from the admin, so
+        they get four different sentences rather than one that covers them
+        all. The server decides which happened — see sendDeliveryOtp — and
+        this only reports it.
+      */
       if (result.orderFinished) {
-        toast.success("تم إرسال آخر OTP وإخراج الطلب من طابور التجهيز");
+        toast.success("تم إرسال آخر OTP واكتمل الطلب وخرج من طابور التجهيز");
         onDeliveryFinished?.({ nextOrder: result.nextOrder });
         onClose();
-      } else if (result.nextReadyDeliveryItemId) {
+      } else if (result.sentNextCredentials && result.nextReadyDeliveryItemId) {
+        // Already with the member. The admin's next job is its OTP, not its send.
         setSelectedId(result.nextReadyDeliveryItemId);
-        toast.success("تم إرسال OTP والانتقال إلى اللعبة الجاهزة التالية");
+        toast.success("تم إرسال OTP، وأُرسل الحساب الجاهز التالي للعميل مباشرة");
+      } else if (result.nextReadyDeliveryItemId) {
+        /*
+          The chained send did not happen — the slot stopped being ready
+          between the OTP and the attempt. Selected, not sent, and said so,
+          because "sent" and "ready to send" are not the same screen.
+        */
+        setSelectedId(result.nextReadyDeliveryItemId);
+        toast.success("تم إرسال OTP. الحساب التالي جاهز — راجعه ثم أرسله.");
       } else {
         toast.success("تم إرسال OTP لهذا الحساب. الطلب ينتظر بقية العناصر.");
       }

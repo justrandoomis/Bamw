@@ -66,6 +66,7 @@ const NOW = "2026-09-20T12:00:00.000Z";
 let completeOrder: typeof import("./order-completion.server").completeOrder;
 let completeDigitalOrderAndNext: typeof import("./order-delivery-items.server").completeDigitalOrderAndNext;
 let completeDigitalOrderManually: typeof import("./order-delivery-items.server").completeDigitalOrderManually;
+let sendDeliveryOtp: typeof import("./order-delivery-items.server").sendDeliveryOtp;
 let ensureDigitalDeliverySchema: typeof import("./order-delivery-items.server").ensureDigitalDeliverySchema;
 let getOrder: typeof import("./db.server").getOrder;
 
@@ -179,6 +180,7 @@ beforeAll(async () => {
   const deliveryModule = await import("./order-delivery-items.server");
   completeDigitalOrderAndNext = deliveryModule.completeDigitalOrderAndNext;
   completeDigitalOrderManually = deliveryModule.completeDigitalOrderManually;
+  sendDeliveryOtp = deliveryModule.sendDeliveryOtp;
   ensureDigitalDeliverySchema = deliveryModule.ensureDigitalDeliverySchema;
   await ensureDigitalDeliverySchema();
   ({ completeOrder } = await import("./order-completion.server"));
@@ -763,5 +765,153 @@ describe("the strict door cannot grow a bypass", () => {
     expect(body).toContain("status = 'completed'");
     expect(body).not.toContain("otp_sent_at =");
     expect(body).not.toMatch(/status = 'otp_sent'/);
+  });
+});
+
+/*
+  What happens in the gap between one account and the next.
+
+  The owner asked for two things, and both are about that gap. When another
+  account is already prepared, the member should get it STRAIGHT after this
+  OTP, instead of waiting for the admin to come back to the tool — the gap was
+  minutes on a busy evening and the member spent them watching a queue. And
+  when the OTP was the last one, the order is finished, so it should finish
+  rather than sit in the queue until somebody notices.
+
+  The rule underneath both, and the thing these tests are really for: the OTP
+  has already gone out and cannot be taken back, so NOTHING that follows may
+  undo it or report it as a failure.
+*/
+describe("the OTP that ends one account, and what follows it", () => {
+  /** An order with `slots` games, every slot waiting on its OTP. */
+  async function seedAwaitingOtp(id: string, slots: number) {
+    const value = order({ id, threadId: `thr-${id}`, kinds: Array(slots).fill("game") });
+    seedOrder(value);
+    seedThread(`thr-${id}`, id);
+    await ensureDigitalDeliverySchema();
+    const { ensureOrderDeliveryRecords } = await import("./order-delivery-items.server");
+    await ensureOrderDeliveryRecords(value);
+    db.raw
+      .prepare(
+        `UPDATE order_delivery_items
+         SET status = 'proof_received', sent_at = ?, proof_received_at = ?
+         WHERE order_id = ?`,
+      )
+      .run(NOW, NOW, id);
+    return value;
+  }
+
+  const rows = (orderId: string) =>
+    db.raw
+      .prepare(
+        `SELECT id, status FROM order_delivery_items
+         WHERE order_id = ? AND archived_at IS NULL ORDER BY slot_number`,
+      )
+      .all(orderId) as Array<{ id: string; status: string }>;
+
+  it("completes the order when the LAST OTP goes out", async () => {
+    await seedAwaitingOtp("last", 1);
+    const [only] = rows("last");
+
+    const result = await sendDeliveryOtp({
+      orderId: "last",
+      deliveryItemId: only!.id,
+      code: "123456",
+      adminId: "adm-1",
+      adminName: "Admin",
+    });
+
+    expect(result.orderFinished).toBe(true);
+    expect((await getOrder("last"))?.status).toBe("completed");
+  });
+
+  it("does NOT complete the order while another slot still owes its OTP", async () => {
+    await seedAwaitingOtp("partial", 2);
+    const [first] = rows("partial");
+
+    const result = await sendDeliveryOtp({
+      orderId: "partial",
+      deliveryItemId: first!.id,
+      code: "123456",
+      adminId: "adm-1",
+      adminName: "Admin",
+    });
+
+    expect(result.orderFinished).toBeFalsy();
+    expect((await getOrder("partial"))?.status).not.toBe("completed");
+    // And the OTP it was asked to send is the one thing that definitely happened.
+    expect(rows("partial")[0]?.status).toBe("otp_sent");
+  });
+
+  it("never reports the OTP as failed because what follows it failed", async () => {
+    /*
+      The order is fully digital and its last slot reaches a terminal state, so
+      the completion attempt runs — and it is made to fail by opening a
+      delivery issue, which `completeDigitalOrderAndNext` refuses outright.
+      The OTP must still be sent, recorded, and reported as a success.
+    */
+    await seedAwaitingOtp("blocked", 1);
+    const [only] = rows("blocked");
+    const blocked = await getOrder("blocked");
+    const { saveOrder } = await import("./db.server");
+    await saveOrder({ ...blocked!, deliveryIssueOpenedAt: NOW });
+
+    const result = await sendDeliveryOtp({
+      orderId: "blocked",
+      deliveryItemId: only!.id,
+      code: "123456",
+      adminId: "adm-1",
+      adminName: "Admin",
+    });
+
+    expect(result.orderFinished).toBeFalsy();
+    expect(rows("blocked")[0]?.status).toBe("otp_sent");
+    expect((await getOrder("blocked"))?.status).not.toBe("completed");
+  });
+
+  it("still refuses to send an OTP for a slot that has no proof", async () => {
+    /*
+      The guard this whole path rests on, asserted again next to the new
+      behaviour: chaining a send and closing an order are things that happen
+      AFTER a legitimate OTP, and must not become a way to reach either
+      without one.
+    */
+    await seedAwaitingOtp("noproof", 1);
+    const [only] = rows("noproof");
+    db.raw
+      .prepare(
+        `UPDATE order_delivery_items SET status = 'ready', proof_received_at = NULL WHERE id = ?`,
+      )
+      .run(only!.id);
+
+    await expect(
+      sendDeliveryOtp({
+        orderId: "noproof",
+        deliveryItemId: only!.id,
+        code: "123456",
+        adminId: "adm-1",
+        adminName: "Admin",
+      }),
+    ).rejects.toThrow("DELIVERY_PROOF_REQUIRED");
+
+    expect(rows("noproof")[0]?.status).toBe("ready");
+    expect((await getOrder("noproof"))?.status).not.toBe("completed");
+  });
+
+  it("refuses an empty code, before anything else happens", async () => {
+    await seedAwaitingOtp("empty", 1);
+    const [only] = rows("empty");
+
+    await expect(
+      sendDeliveryOtp({
+        orderId: "empty",
+        deliveryItemId: only!.id,
+        code: "   ",
+        adminId: "adm-1",
+        adminName: "Admin",
+      }),
+    ).rejects.toThrow("OTP_REQUIRED");
+
+    expect(rows("empty")[0]?.status).toBe("proof_received");
   });
 });

@@ -968,6 +968,16 @@ export interface DeliveryActionResult {
     code?: string;
     userName?: string;
   };
+  /**
+   * The account named by `nextReadyDeliveryItemId` was sent by this call.
+   *
+   * The admin needs to know which of two things happened: the tool moved them
+   * to the next account, or the member already has it. Those call for
+   * different next actions, and one toast cannot say both.
+   */
+  sentNextCredentials?: boolean;
+  /** The account after that one, if the chained send found another ready. */
+  followingReadyDeliveryItemId?: string;
 }
 
 export async function sendDeliveryCredentials(input: {
@@ -1775,11 +1785,89 @@ export async function sendDeliveryOtp(input: {
   const state = await getDeliveryOrderState(order);
   await syncThreadToDeliveryState(order, state, now);
   const nextReady = nextReadyDeliveryItemId(state.deliveryItems, row.id);
-  return {
-    state,
-    orderFinished: false,
-    ...(nextReady ? { nextReadyDeliveryItemId: nextReady } : {}),
-  };
+
+  /*
+    The OTP has gone out and cannot be taken back. Everything below is the
+    NEXT step, and nothing below is allowed to undo it: each branch is caught
+    and reported, never thrown, because an admin whose OTP succeeded must not
+    be told it failed.
+
+    The owner asked for two things here, and both are about the gap between
+    one account and the next. When another account is already prepared, the
+    member should get it straight after this OTP instead of waiting for the
+    admin to come back to the tool and press send again — the gap was minutes
+    on a busy evening, and the member spent them watching a queue. And when
+    this was the LAST OTP, the order is finished, so it should finish.
+  */
+  if (nextReady) {
+    try {
+      const chained = await sendDeliveryCredentials({
+        orderId: order.id,
+        deliveryItemId: nextReady,
+        adminId: input.adminId,
+        adminName: input.adminName,
+        ...(input.threadId ? { threadId: input.threadId } : {}),
+      });
+      return {
+        state: chained.state,
+        orderFinished: false,
+        nextReadyDeliveryItemId: nextReady,
+        sentNextCredentials: true,
+        ...(chained.nextReadyDeliveryItemId
+          ? { followingReadyDeliveryItemId: chained.nextReadyDeliveryItemId }
+          : {}),
+      };
+    } catch (error) {
+      /*
+        The next account was ready a moment ago and is not now — another admin
+        took it, or its draft changed under us. The OTP still went out, so say
+        what happened and leave the slot selected for a human.
+      */
+      console.error("[delivery:auto_send_next_failed]", {
+        orderId: order.id,
+        deliveryItemId: nextReady,
+        error: error instanceof Error ? error.message : String(error),
+      });
+      return { state, orderFinished: false, nextReadyDeliveryItemId: nextReady };
+    }
+  }
+
+  /*
+    No account left to send. If every slot has reached a terminal state and
+    nothing is disputed, this WAS the last OTP and the order is done.
+
+    `completeDigitalOrderAndNext` re-checks all of that itself — the strict
+    terminal check, the open-issue check, the fully-digital check — so this is
+    not a second opinion about whether the order may close. It is the same
+    door, opened at the moment the condition became true instead of waiting
+    for someone to notice and press it.
+  */
+  try {
+    if (await strictDeliveryIsComplete(order.id)) {
+      const finished = await completeDigitalOrderAndNext({
+        orderId: order.id,
+        adminId: input.adminId,
+        adminName: input.adminName,
+        ...(input.threadId ? { threadId: input.threadId } : {}),
+      });
+      return {
+        state: finished.state,
+        orderFinished: true,
+        ...(finished.nextOrder ? { nextOrder: finished.nextOrder } : {}),
+      };
+    }
+  } catch (error) {
+    /*
+      Not a failure of this action. The order stays open, the admin still has
+      the completion button, and the OTP is unaffected.
+    */
+    console.error("[delivery:auto_complete_failed]", {
+      orderId: order.id,
+      error: error instanceof Error ? error.message : String(error),
+    });
+  }
+
+  return { state, orderFinished: false };
 }
 
 export async function sendDigitalDeliveryCode(input: {
