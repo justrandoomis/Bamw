@@ -58,14 +58,65 @@ describe("what it refuses", () => {
     expect(found.reason).toMatch(/exact title/);
   });
 
-  it("refuses a Switch 1 listing to a Switch 2 line", async () => {
+  /*
+    REVERSED, DELIBERATELY, AND KEPT HERE WITH ITS REASON.
+
+    This used to assert the opposite: that a Switch 1 listing is refused to a
+    line this shop calls a Switch 2 edition. It was a reasonable rule and the
+    catalogue measured it. Of forty games re-asked about, ten were FOUND and
+    then refused at exactly this branch, and eighteen of the six hundred
+    without a picture have no Switch 2 row in EITHER Nintendo store — while
+    this shop calls them Switch 2 editions. All of them were left with no
+    image at all.
+
+    A generation is not an edition. «Standard» and «Deluxe» are two different
+    products and the test below still refuses to choose between them; the
+    Switch 1 and Switch 2 listings of one game are one game, and Nintendo
+    ships the same square key art for both. Taking it is not a guess, and an
+    empty card is not the safer answer — it is only the emptier one.
+  */
+  it("takes the Switch 1 key art for a Switch 2 line when that is the only listing", async () => {
     const found = await searchEuropeSquare(
       "Some Game",
       true,
       answer([row("Some Game", "https://img/x.jpg", ["Nintendo Switch"])]),
     );
+    expect(found.ok).toBe(true);
+    expect(found.url).toBe("https://img/x.jpg");
+    // And it says so, so nothing pretends the listing was the other one.
+    expect(found.provenance).toMatch(/same game, same key art/);
+  });
+
+  it("still prefers the row of the generation actually asked for", async () => {
+    const found = await searchEuropeSquare(
+      "Some Game",
+      true,
+      answer([
+        row("Some Game", "https://img/one.jpg", ["Nintendo Switch"]),
+        row("Some Game", "https://img/two.jpg", ["Nintendo Switch 2"]),
+      ]),
+    );
+    expect(found.ok).toBe(true);
+    expect(found.url).toBe("https://img/two.jpg");
+    expect(found.provenance).not.toMatch(/same game, same key art/);
+  });
+
+  it("refuses when the other generation itself has two editions", async () => {
+    /*
+      The crossing is allowed; the guessing is not. Two Switch 1 rows for a
+      Switch 2 line is still a standard and a deluxe with nothing to tell them
+      apart.
+    */
+    const found = await searchEuropeSquare(
+      "Some Game",
+      true,
+      answer([
+        row("Some Game", "https://img/a.jpg", ["Nintendo Switch"]),
+        row("Some Game", "https://img/b.jpg", ["Nintendo Switch"]),
+      ]),
+    );
     expect(found.ok).toBe(false);
-    expect(found.reason).toMatch(/Switch 2 row/);
+    expect(found.reason).toMatch(/share this exact title/);
   });
 
   it("refuses when two rows share the title, because it cannot tell them apart", async () => {

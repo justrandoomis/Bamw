@@ -127,7 +127,32 @@ export async function searchEuropeSquare(title, wantTwo, fetchJson) {
   if (!found.ok) return found;
   const exact = found.rows;
 
-  const sameGeneration = exact.filter((row) => isSwitch2Row(row) === Boolean(wantTwo));
+  let sameGeneration = exact.filter((row) => isSwitch2Row(row) === Boolean(wantTwo));
+  let crossedGeneration = false;
+  if (sameGeneration.length === 0) {
+    /*
+      THE OTHER GENERATION'S ROW, WHEN IT IS THE ONLY ONE THERE.
+
+      Measured: of forty games re-asked about, ten were FOUND and then refused
+      right here — this shop calls the game a Switch 2 edition and Nintendo
+      lists only the Switch 1 one — and eighteen of the six hundred have no
+      Switch 2 row in either store at all. Every one of them is left with no
+      picture whatsoever.
+
+      A generation is not an edition. «Standard» and «Deluxe» are two different
+      products and the rule below rightly refuses to guess between them; the
+      Switch 1 and Switch 2 listings of one game are the same game with the
+      same key art, and Nintendo ships the same square asset for both. Taking
+      it is not a guess — and a game with no image at all is not the safer
+      answer, it is just the emptier one.
+
+      Still one row or nothing: if the other generation has two editions, this
+      is as unable to choose between them as before. And the provenance says
+      which listing the picture came from, so nothing pretends otherwise.
+    */
+    sameGeneration = exact;
+    crossedGeneration = true;
+  }
   if (sameGeneration.length === 0) {
     return { ok: false, reason: `no ${wantTwo ? "Switch 2" : "Switch"} row with this title` };
   }
@@ -147,7 +172,11 @@ export async function searchEuropeSquare(title, wantTwo, fetchJson) {
   return {
     ok: true,
     url: square.startsWith("//") ? `https:${square}` : square,
-    provenance: `Nintendo of Europe catalogue, square key art for "${row.title}"`,
+    provenance: crossedGeneration
+      ? `Nintendo of Europe catalogue, square key art for "${row.title}" — the ${
+          isSwitch2Row(row) ? "Switch 2" : "Switch"
+        } listing, this shop calls it the ${wantTwo ? "Switch 2" : "Switch"} edition; same game, same key art`
+      : `Nintendo of Europe catalogue, square key art for "${row.title}"`,
     matchedTitle: String(row.title ?? ""),
   };
 }
