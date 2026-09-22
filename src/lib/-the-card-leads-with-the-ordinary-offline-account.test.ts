@@ -31,6 +31,7 @@ import path from "node:path";
 import { describe, expect, it } from "vitest";
 
 import {
+  initialOptionId,
   initialTypeId,
   initialVariantName,
   listingPricing,
@@ -138,7 +139,14 @@ describe("what the card prints", () => {
     expect(listingPricing({ id: "p", price: 8000 }).unitPrice).toBe(8000);
   });
 
-  it("leaves option-priced products to the option rules", () => {
+  it("leads with the cheapest option, not the one priced at the base", () => {
+    /*
+      «السعر الذي اريده ان يظهر على البطاقه يجب ان يكون سعر ارخص خيار في المنتج»
+
+      This asserted 25,000 — the base, because an option carried exactly that
+      amount. The owner has since said plainly that the card must show the
+      cheapest option, and 15,000 is a price this product really sells at.
+    */
     const withOptions = {
       id: "prd_opt",
       price: 25000,
@@ -147,7 +155,7 @@ describe("what the card prints", () => {
         { id: "o_big", name: "20$", price: 25000 },
       ],
     };
-    expect(listingPricing(withOptions).unitPrice).toBe(25000);
+    expect(listingPricing(withOptions).unitPrice).toBe(15000);
   });
 });
 
@@ -268,5 +276,118 @@ describe("the card and the till agree", () => {
     );
     expect(category).not.toContain("return (Number(a.price) || 0) - (Number(b.price) || 0);");
     expect(category).not.toContain("return (Number(b.price) || 0) - (Number(a.price) || 0);");
+  });
+});
+
+/**
+ * AND THEN HE SAID WHICH HE ACTUALLY MEANT.
+ *
+ *   «اريد يعرض ارخص خيار ( ليش اجباري سعر اوفلاين )
+ *    السعر الذي اريده ان يظهر على البطاقه يجب ان يكون سعر ارخص خيار في المنتج»
+ *
+ * The rule above preferred the ordinary offline account BY TIER, whatever it
+ * cost, because his first message named that tier: «اجعل السعر الارخص يعرض
+ * افتراضيا في البطاقه ( حساب اوفلاين عادي )». I read the parenthesis as the
+ * rule when it was an example — what he asked for from the start was «السعر
+ * الارخص», and on the games he was looking at the offline account simply WAS
+ * the cheapest.
+ *
+ * On a product where it is not, the old rule printed the dearer number. These
+ * are that case.
+ */
+describe("the cheapest option, whichever tier it belongs to", () => {
+  it("shows the online row when it is cheaper than the offline one", () => {
+    /*
+      Deliberately inverted against every other fixture in this file. Nothing
+      in the rule may care which tier a row is; only what it costs.
+    */
+    const inverted = {
+      id: "prd_inverted",
+      title: "A game whose offline account costs more",
+      price: 40000,
+      types: [
+        { id: "t_offline", name: "حساب أوفلاين", price: 30000, cost: 2000 },
+        { id: "t_online", name: "حساب أونلاين", price: 18000, cost: 9000 },
+      ],
+    };
+    expect(listingPricing(inverted).unitPrice).toBe(18000);
+    expect(initialTypeId(inverted)).toBe("t_online");
+  });
+
+  it("still shows the offline row when it IS the cheapest, which is the usual case", () => {
+    expect(listingPricing(bothTiers).unitPrice).toBe(12000);
+    expect(initialTypeId(bothTiers)).toBe("t_offline");
+  });
+
+  it("shows the base price when the base undercuts every row", () => {
+    // `resolveUnitPrice` with nothing selected charges the base, so the base is
+    // itself an option — and on these 65 games it is the cheapest one.
+    expect(listingPricing(onlineOnly).unitPrice).toBe(12000);
+    expect(initialTypeId(onlineOnly)).toBe("");
+  });
+
+  it("never prints a price the customer cannot pay", () => {
+    /*
+      The whole contract, run over every fixture: whatever the card prints, the
+      selection the page opens on must charge exactly that.
+    */
+    for (const product of [onlineOnly, bothTiers]) {
+      const typeId = initialTypeId(product);
+      const charged = resolveUnitPrice(product, typeId ? { typeId } : {});
+      expect(charged.unitPrice, product.id).toBe(listingPricing(product).unitPrice);
+    }
+  });
+});
+
+/**
+ * THE SIX GAMES ON THE OWNER'S SCREEN, in their real shape.
+ *
+ * Read off the live catalogue, not invented: each carries a correct offline
+ * base price — the repricing set it — and exactly ONE priced option, which is
+ * the online account. The card printed the option, because the base was only
+ * ever compared against the type ROWS and never against the options.
+ */
+describe("a lone online OPTION does not become the card's price", () => {
+  const real = [
+    { id: "prd_odyssey", title: "Super Mario Odyssey", base: 8000, online: 35000 },
+    { id: "prd_mkworld", title: "Mario Kart World [Switch 2]", base: 9000, online: 45000 },
+    { id: "prd_jamboree", title: "Super Mario Party Jamboree", base: 7000, online: 55000 },
+    { id: "prd_cyberpunk", title: "Cyberpunk 2077: Ultimate Edition", base: 7000, online: 45000 },
+    { id: "prd_pragmata", title: "PRAGMATA", base: 8000, online: 45000 },
+    { id: "prd_requiem", title: "Resident Evil Requiem", base: 12000, online: 75000 },
+  ].map((game) => ({
+    id: game.id,
+    title: game.title,
+    price: game.base,
+    options: [{ id: "o_online", name: "Online Account", price: game.online }],
+    expected: game.base,
+  }));
+
+  it("shows the offline base, not the online option", () => {
+    for (const product of real) {
+      expect(listingPricing(product).unitPrice, product.title).toBe(product.expected);
+    }
+  });
+
+  it("opens the page on no option at all, which is what charges that price", () => {
+    for (const product of real) {
+      const optionId = initialOptionId(product.options, product.price);
+      expect(optionId, product.title).toBe("");
+      expect(
+        resolveUnitPrice(product, optionId ? { optionId } : {}).unitPrice,
+        product.title,
+      ).toBe(product.expected);
+    }
+  });
+
+  it("but takes the option the moment the option is the cheaper one", () => {
+    const upgradeIsCheaper = {
+      id: "prd_x",
+      title: "A game whose option undercuts its base",
+      price: 30000,
+      options: [{ id: "o_deal", name: "A cheaper edition", price: 9000 }],
+    };
+    expect(listingPricing(upgradeIsCheaper).unitPrice).toBe(9000);
+    expect(initialOptionId(upgradeIsCheaper.options, upgradeIsCheaper.price)).toBe("o_deal");
   });
 });

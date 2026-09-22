@@ -141,9 +141,31 @@ function pricedRows(value: unknown): PricedRow[] {
 }
 
 /**
- * The option id the details page should open on: the option priced exactly at
- * the base price when one exists, the cheapest priced option otherwise, and
- * the first option as the legacy fallback when none carry a price.
+ * The option id the details page should open on — the cheapest thing on offer,
+ * which is sometimes no option at all.
+ *
+ * MEASURED ON THE LIVE SHOP, because this is where the owner's complaint
+ * actually lived. Six games carry exactly one priced option and it is the
+ * ONLINE account, while the base price is the offline one:
+ *
+ *   Super Mario Odyssey          base 8,000    option «Online Account» 35,000
+ *   Mario Kart World             base 9,000    option «حساب أونلاين»   45,000
+ *   Super Mario Party Jamboree   base 7,000    option «Online Account» 55,000
+ *   Cyberpunk 2077 Ultimate      base 7,000    option «حساب أونلاين»   45,000
+ *   PRAGMATA                     base 8,000    option «حساب أونلاين»   45,000
+ *   Resident Evil Requiem        base 12,000   option «Online Account» 75,000
+ *
+ * The base prices are right — the repricing set them — and the card printed
+ * the option anyway, because this preferred an option over the base in every
+ * case. «مازالت تعطي سعر اللعبه اونلاين», exactly.
+ *
+ * So the base competes: it is what `resolveUnitPrice` charges with nothing
+ * selected, which makes "no option" a real and buyable choice, and on these
+ * six it is the cheap one. An empty answer is therefore an answer, not a
+ * failure to find one.
+ *
+ * The first option is still the fallback when NO option carries a price: those
+ * are labels rather than prices, and one of them has to be shown.
  */
 export function initialOptionId(
   options: readonly { id: string; price?: number | undefined }[],
@@ -155,11 +177,9 @@ export function initialOptionId(
     price: number;
   }[];
   if (priced.length === 0) return options[0]!.id;
-  if (basePrice > 0) {
-    const match = priced.find((o) => o.price === basePrice);
-    if (match) return match.id;
-  }
-  return priced.reduce((min, o) => (o.price < min.price ? o : min)).id;
+  const cheapest = priced.reduce((min, o) => (o.price < min.price ? o : min));
+  if (basePrice > 0 && basePrice < cheapest.price) return "";
+  return cheapest.id;
 }
 
 /**
@@ -205,19 +225,22 @@ export function initialVariantName(
 /**
  * THE ONE SELECTION RULE, so the three surfaces cannot each have their own.
  *
- * `listingPricing` chose the row the card prints, `initialVariantName` chose
- * the one the details page opened on, and the buy sheet chose a third way — and
- * the three disagreed on exactly the products the owner kept reporting. This is
- * that rule, written once:
+ * THE CHEAPEST THING THE CUSTOMER CAN BUY. The owner, after seeing the first
+ * version of this:
  *
- *   1. the ordinary offline account, when the product has one — «حساب اوفلاين
- *      عادي», which is the tier the owner named rather than a number;
- *   2. otherwise the row priced at the record's base;
- *   3. otherwise NOTHING, when the base undercuts every row — `resolveUnitPrice`
- *      with no selection returns the base, which is what the card printed and
- *      what checkout charges, so an unset selection is the honest answer and any
- *      row would be dearer than advertised;
- *   4. otherwise the cheapest row.
+ *   «اريد يعرض ارخص خيار ( ليش اجباري سعر اوفلاين )
+ *    السعر الذي اريده ان يظهر على البطاقه يجب ان يكون سعر ارخص خيار في المنتج»
+ *
+ * The first version preferred the ordinary offline account BY TIER, whatever it
+ * cost, because his earlier words named that tier — «اجعل السعر الارخص يعرض
+ * افتراضيا في البطاقه ( حساب اوفلاين عادي )». Reading the parenthesis as the
+ * rule rather than as an example was the mistake: what he wanted throughout was
+ * «السعر الارخص», and the offline account was simply the cheapest one on the
+ * games he was looking at. Where it is not, he wants the cheaper one shown.
+ *
+ * So: the cheapest priced row, and nothing else. The base price is compared
+ * against it by `listingPricing`, which is where the base actually lives;
+ * returning nothing here means the base wins.
  *
  * Returns the row itself, because one caller wants its id and another its name.
  */
@@ -230,16 +253,15 @@ function initialPricedRow(value: unknown, basePrice: number): Row | undefined {
   }
   if (!priced.length) return undefined;
 
-  const offline = ordinaryOfflineRow(priced);
-  if (offline) return offline;
-
   const priceOfRow = (row: Row) => toAmount(row["price"]);
   const cheapest = priced.reduce((min, row) => (priceOfRow(row) < priceOfRow(min) ? row : min));
-  if (basePrice > 0) {
-    const match = priced.find((row) => priceOfRow(row) === basePrice);
-    if (match) return match;
-    if (basePrice < priceOfRow(cheapest)) return undefined;
-  }
+  /*
+    The base undercuts every row, so nothing is selected: `resolveUnitPrice`
+    with no selection returns the base, which is then both the cheapest thing
+    on the product and the thing checkout charges. Selecting a row here would
+    advertise a price dearer than the product's own.
+  */
+  if (basePrice > 0 && basePrice < priceOfRow(cheapest)) return undefined;
   return cheapest;
 }
 
@@ -305,7 +327,6 @@ export function listingPricing(
     return { unitPrice: 0, originalUnitPrice: 0 };
   }
 
-  const base = toAmount(product["price"]);
   const optionRows = pricedRows(product["options"]);
   const typeRows = pricingTypeRows(product);
   const rows = optionRows.length ? optionRows : pricedRows(typeRows);
@@ -314,52 +335,34 @@ export function listingPricing(
   }
 
   /*
-    THE ORDINARY OFFLINE ACCOUNT LEADS.
+    THE CHEAPEST THING THE CUSTOMER CAN BUY, AND NOTHING ELSE.
 
-    Asked first, and of the tiers rather than of the prices, because the owner
-    named the tier and not a number: «اجعل السعر الارخص يعرض افتراضيا في
-    البطاقه ( حساب اوفلاين عادي )». It is also the cheapest on every product
-    that has one, so this does not contradict "cheapest" — it decides the case
-    where "cheapest" has nothing right to choose from.
+      «اريد يعرض ارخص خيار ( ليش اجباري سعر اوفلاين )
+       السعر الذي اريده ان يظهر على البطاقه يجب ان يكون سعر ارخص خيار في المنتج»
+
+    The base price is one of the options: `resolveUnitPrice` with no selection
+    charges it, so a product whose base undercuts every row is cheapest at the
+    base and the card says so with nothing selected. Otherwise the cheapest row
+    wins and the card resolves THROUGH it, so the number printed is the number
+    that row is actually charged at.
+
+    This used to prefer the ordinary offline account by tier, whatever it cost.
+    That read his earlier parenthesis — «( حساب اوفلاين عادي )» — as the rule
+    instead of as an example of the cheapest, and on a product where the
+    offline account is not the cheapest it printed the dearer price. He has
+    since said plainly which he meant.
   */
-  if (!optionRows.length) {
-    const offlineRow = ordinaryOfflineRow(typeRows);
-    if (offlineRow) {
-      const id = String(offlineRow["id"] ?? "");
-      if (id) {
-        const optionId = String(offlineRow["optionId"] ?? offlineRow["option_id"] ?? "");
-        return resolveUnitPrice(product, {
-          typeId: id,
-          ...(optionId && optionId !== "all" ? { optionId } : {}),
-        });
-      }
-    }
+  const base = baseChargedPrice(product);
+  const cheapestRow = rows.reduce((min, row) => (row.price < min.price ? row : min));
+  if (base > 0 && base < cheapestRow.price) return resolveUnitPrice(product);
 
-    /*
-      NO OFFLINE ROW, AND THE ROWS THAT EXIST ARE DEARER THAN THE ACCOUNT.
-
-      This is the measured case: 65 games whose only priced row is an online
-      account, with the ordinary offline account's price in `accountPrice` /
-      `price`. The card led with the online row because it was the only row.
-
-      Leading with the account is only honest if the page sells it: `readOffers`
-      was asked about all 65 on production and every one offers it, cheaper, and
-      available to buy right now. Zero without one.
-
-      The number is the record's `price`, because that is what
-      `resolveUnitPrice` charges when no tier is selected — see
-      `baseChargedPrice` for why it is not `accountPrice`.
-    */
-    const account = baseChargedPrice(product);
-    const cheapestRow = rows.reduce((min, row) => (row.price < min.price ? row : min));
-    if (account > 0 && account < cheapestRow.price) {
-      return resolveUnitPrice(product);
-    }
-  }
-
-  const selected =
-    (base > 0 ? rows.find((row) => row.price === base) : undefined) ??
-    rows.reduce((min, row) => (row.price < min.price ? row : min));
+  /*
+    The cheapest row. It used to prefer the row priced exactly at the base —
+    which, on a product whose base is the dearer online price, printed the
+    dearer one and is the fault being fixed. Where a row does sit at the base
+    it is the cheapest anyway and nothing changes.
+  */
+  const selected = rows.reduce((min, row) => (row.price < min.price ? row : min));
 
   // Old `variants` rows sometimes have no id. They can still lead a listing,
   // even though checkout cannot select them by id; preserve that long-standing
