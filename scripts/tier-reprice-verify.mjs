@@ -105,28 +105,95 @@ const read = async (url) => {
   return null;
 };
 
-/* `?slim=1` first: the same prices, a fraction of the payload. */
-let doc = null;
-for (const url of [`${ORIGIN}/api/data?slim=1`, `${ORIGIN}/api/data`]) {
-  const res = await read(url);
+/*
+  THE PAGE, NOT THE API.
+
+  Five attempts at `/api/data` came back 403 with Cloudflare's «Just a moment»
+  challenge, at three, six, nine and twelve seconds apart. The shield is on the
+  `/api/` prefix: `scripts/page-smoke.mjs` reaches `/policy`, `/faq` and the
+  rest of the site with these same headers and is answered 200.
+
+  Which is the better check anyway. The question is not what an endpoint holds,
+  it is what a shopper is SENT — and a shopper is sent a rendered page. So the
+  catalogue is read out of the storefront's own HTML, where the server has
+  already put the products it will render.
+*/
+const productsFromHtml = (html) => {
+  /*
+    The SSR payload, taken by balanced braces rather than by a regex.
+
+    A product record contains nested objects, so `{...}` cannot be matched by
+    any regular expression. Each `{"id":"prd_` is walked forward counting
+    braces, respecting strings and escapes, and parsed.
+  */
+  const found = [];
+  const seen = new Set();
+  const needle = /\{\\?"id\\?":\\?"(prd_[A-Za-z0-9_-]+)\\?"/g;
+  let hit;
+  while ((hit = needle.exec(html))) {
+    if (seen.has(hit[1])) continue;
+    let depth = 0;
+    let inString = false;
+    let escaped = false;
+    let end = -1;
+    for (let i = hit.index; i < html.length && i < hit.index + 200_000; i += 1) {
+      const ch = html[i];
+      if (escaped) { escaped = false; continue; }
+      if (ch === "\\") { escaped = true; continue; }
+      if (ch === '"') { inString = !inString; continue; }
+      if (inString) continue;
+      if (ch === "{") depth += 1;
+      else if (ch === "}") {
+        depth -= 1;
+        if (depth === 0) { end = i + 1; break; }
+      }
+    }
+    if (end < 0) continue;
+    const slice = html.slice(hit.index, end);
+    for (const text of [slice, slice.replace(/\\"/g, '"').replace(/\\\\/g, "\\")]) {
+      try {
+        const parsed = JSON.parse(text);
+        if (parsed && typeof parsed === "object" && String(parsed.id ?? "").startsWith("prd_")) {
+          found.push(parsed);
+          seen.add(hit[1]);
+        }
+        break;
+      } catch {
+        /* try the unescaped form next */
+      }
+    }
+  }
+  return found;
+};
+
+const PAGES = ["/", "/games", "/category/nintendo_games"];
+const products = [];
+const byId = new Map();
+for (const path_ of PAGES) {
+  const res = await read(`${ORIGIN}${path_}`);
   if (!res) continue;
+  const html = await res.text();
+  const found = productsFromHtml(html);
+  let fresh = 0;
+  for (const p of found) {
+    const id = String(p.id ?? "");
+    if (!id || byId.has(id)) continue;
+    byId.set(id, p);
+    products.push(p);
+    fresh += 1;
+  }
   say(
-    `- \`${url.replace(ORIGIN, "")}\` → **${res.status}** · \`x-catalog-version: ${res.headers.get("x-catalog-version") ?? "—"}\` · \`x-cache-status: ${res.headers.get("x-cache-status") ?? "—"}\``,
+    `- \`${path_}\` → **${res.status}** · ${(html.length / 1024).toFixed(0)} كيلوبايت · منتجات مقروءة: **${found.length}** (جديدة: ${fresh})`,
   );
-  doc = await res.json().catch(() => null);
-  if (doc) break;
-  say(`  (رُدّ بنجاح لكن بغير JSON)`);
 }
 say();
-if (!doc) {
-  say(`**تعذّرت القراءة من الموقع.** لم أتحقق من الإنتاج، ولن أقول إن التحقق تم.`);
+if (!products.length) {
+  say(`**لم أستخرج أي منتج من صفحات الموقع.** لم أتحقق من الإنتاج، ولن أقول إن التحقق تم.`);
   flush();
   rmSync(outfile, { force: true });
   process.exit(1);
 }
-const store = doc?.store ?? doc;
-const products = Array.isArray(store?.products) ? store.products : [];
-say(`- منتجات يخدمها الموقع: **${products.length}**`);
+say(`- منتجات قرأتها من صفحات الموقع: **${products.length}**`);
 
 const withTiers = products.filter(
   (p) => Array.isArray(p?.types) && p.types.length > 0,
