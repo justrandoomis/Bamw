@@ -31,6 +31,7 @@ import path from "node:path";
 import { describe, expect, it } from "vitest";
 
 import {
+  initialOptionId,
   initialTypeId,
   initialVariantName,
   listingPricing,
@@ -335,5 +336,58 @@ describe("the cheapest option, whichever tier it belongs to", () => {
       const charged = resolveUnitPrice(product, typeId ? { typeId } : {});
       expect(charged.unitPrice, product.id).toBe(listingPricing(product).unitPrice);
     }
+  });
+});
+
+/**
+ * THE SIX GAMES ON THE OWNER'S SCREEN, in their real shape.
+ *
+ * Read off the live catalogue, not invented: each carries a correct offline
+ * base price — the repricing set it — and exactly ONE priced option, which is
+ * the online account. The card printed the option, because the base was only
+ * ever compared against the type ROWS and never against the options.
+ */
+describe("a lone online OPTION does not become the card's price", () => {
+  const real = [
+    { id: "prd_odyssey", title: "Super Mario Odyssey", base: 8000, online: 35000 },
+    { id: "prd_mkworld", title: "Mario Kart World [Switch 2]", base: 9000, online: 45000 },
+    { id: "prd_jamboree", title: "Super Mario Party Jamboree", base: 7000, online: 55000 },
+    { id: "prd_cyberpunk", title: "Cyberpunk 2077: Ultimate Edition", base: 7000, online: 45000 },
+    { id: "prd_pragmata", title: "PRAGMATA", base: 8000, online: 45000 },
+    { id: "prd_requiem", title: "Resident Evil Requiem", base: 12000, online: 75000 },
+  ].map((game) => ({
+    id: game.id,
+    title: game.title,
+    price: game.base,
+    options: [{ id: "o_online", name: "Online Account", price: game.online }],
+    expected: game.base,
+  }));
+
+  it("shows the offline base, not the online option", () => {
+    for (const product of real) {
+      expect(listingPricing(product).unitPrice, product.title).toBe(product.expected);
+    }
+  });
+
+  it("opens the page on no option at all, which is what charges that price", () => {
+    for (const product of real) {
+      const optionId = initialOptionId(product.options, product.price);
+      expect(optionId, product.title).toBe("");
+      expect(
+        resolveUnitPrice(product, optionId ? { optionId } : {}).unitPrice,
+        product.title,
+      ).toBe(product.expected);
+    }
+  });
+
+  it("but takes the option the moment the option is the cheaper one", () => {
+    const upgradeIsCheaper = {
+      id: "prd_x",
+      title: "A game whose option undercuts its base",
+      price: 30000,
+      options: [{ id: "o_deal", name: "A cheaper edition", price: 9000 }],
+    };
+    expect(listingPricing(upgradeIsCheaper).unitPrice).toBe(9000);
+    expect(initialOptionId(upgradeIsCheaper.options, upgradeIsCheaper.price)).toBe("o_deal");
   });
 });

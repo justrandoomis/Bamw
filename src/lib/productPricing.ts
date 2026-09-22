@@ -141,9 +141,31 @@ function pricedRows(value: unknown): PricedRow[] {
 }
 
 /**
- * The option id the details page should open on: the option priced exactly at
- * the base price when one exists, the cheapest priced option otherwise, and
- * the first option as the legacy fallback when none carry a price.
+ * The option id the details page should open on — the cheapest thing on offer,
+ * which is sometimes no option at all.
+ *
+ * MEASURED ON THE LIVE SHOP, because this is where the owner's complaint
+ * actually lived. Six games carry exactly one priced option and it is the
+ * ONLINE account, while the base price is the offline one:
+ *
+ *   Super Mario Odyssey          base 8,000    option «Online Account» 35,000
+ *   Mario Kart World             base 9,000    option «حساب أونلاين»   45,000
+ *   Super Mario Party Jamboree   base 7,000    option «Online Account» 55,000
+ *   Cyberpunk 2077 Ultimate      base 7,000    option «حساب أونلاين»   45,000
+ *   PRAGMATA                     base 8,000    option «حساب أونلاين»   45,000
+ *   Resident Evil Requiem        base 12,000   option «Online Account» 75,000
+ *
+ * The base prices are right — the repricing set them — and the card printed
+ * the option anyway, because this preferred an option over the base in every
+ * case. «مازالت تعطي سعر اللعبه اونلاين», exactly.
+ *
+ * So the base competes: it is what `resolveUnitPrice` charges with nothing
+ * selected, which makes "no option" a real and buyable choice, and on these
+ * six it is the cheap one. An empty answer is therefore an answer, not a
+ * failure to find one.
+ *
+ * The first option is still the fallback when NO option carries a price: those
+ * are labels rather than prices, and one of them has to be shown.
  */
 export function initialOptionId(
   options: readonly { id: string; price?: number | undefined }[],
@@ -155,11 +177,9 @@ export function initialOptionId(
     price: number;
   }[];
   if (priced.length === 0) return options[0]!.id;
-  if (basePrice > 0) {
-    const match = priced.find((o) => o.price === basePrice);
-    if (match) return match.id;
-  }
-  return priced.reduce((min, o) => (o.price < min.price ? o : min)).id;
+  const cheapest = priced.reduce((min, o) => (o.price < min.price ? o : min));
+  if (basePrice > 0 && basePrice < cheapest.price) return "";
+  return cheapest.id;
 }
 
 /**
@@ -307,7 +327,6 @@ export function listingPricing(
     return { unitPrice: 0, originalUnitPrice: 0 };
   }
 
-  const base = toAmount(product["price"]);
   const optionRows = pricedRows(product["options"]);
   const typeRows = pricingTypeRows(product);
   const rows = optionRows.length ? optionRows : pricedRows(typeRows);
@@ -333,11 +352,9 @@ export function listingPricing(
     offline account is not the cheapest it printed the dearer price. He has
     since said plainly which he meant.
   */
-  if (!optionRows.length) {
-    const base = baseChargedPrice(product);
-    const cheapestRow = rows.reduce((min, row) => (row.price < min.price ? row : min));
-    if (base > 0 && base < cheapestRow.price) return resolveUnitPrice(product);
-  }
+  const base = baseChargedPrice(product);
+  const cheapestRow = rows.reduce((min, row) => (row.price < min.price ? row : min));
+  if (base > 0 && base < cheapestRow.price) return resolveUnitPrice(product);
 
   /*
     The cheapest row. It used to prefer the row priced exactly at the base —

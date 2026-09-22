@@ -137,7 +137,9 @@ describe("initialOptionId", () => {
     ).toBe("offline");
   });
 
-  it("opens on the option priced at the base price", () => {
+  it("opens on the cheapest option even when another matches the base price", () => {
+    // «السعر الذي اريده ان يظهر على البطاقه يجب ان يكون سعر ارخص خيار في المنتج».
+    // This asserted `usd20` because it carried exactly the base price.
     expect(
       initialOptionId(
         [
@@ -146,7 +148,22 @@ describe("initialOptionId", () => {
         ],
         38000,
       ),
-    ).toBe("usd20");
+    ).toBe("usd10");
+  });
+
+  it("opens on NO option when the base price undercuts every one of them", () => {
+    /*
+      The six games the owner was looking at. Each carries one priced option —
+      the ONLINE account — over a cheaper offline base, and the page used to
+      open on it. `resolveUnitPrice` with nothing selected charges the base, so
+      an empty answer here is a real and buyable choice, not a failure.
+    */
+    expect(initialOptionId([{ id: "online", price: 35000 }], 8000)).toBe("");
+    expect(initialOptionId([{ id: "online", price: 45000 }], 9000)).toBe("");
+  });
+
+  it("still opens on the option when the option is the cheaper one", () => {
+    expect(initialOptionId([{ id: "cheap", price: 5000 }], 9000)).toBe("cheap");
   });
 
   it("opens on the cheapest priced option otherwise", () => {
