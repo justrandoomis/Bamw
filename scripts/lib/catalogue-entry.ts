@@ -11,7 +11,7 @@
  * these exports were added to the shared entry.
  */
 export { d1All } from "@/lib/d1.server";
-export { getStore, updateStore } from "@/lib/db.server";
+export { getStore, invalidateStoreCache, updateStore } from "@/lib/db.server";
 export {
   decisionProblem,
   repriceAll,

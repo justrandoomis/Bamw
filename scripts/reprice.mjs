@@ -306,8 +306,18 @@ await app.updateStore((current) => {
 });
 
 /*
-  Read back, field by field. The write is not believed; it is checked.
+  Read back, field by field, FROM D1 — not from this process's own memory.
+
+  `updateStore` seeds `storeCache` with the document it just wrote, and
+  `getStore()` serves that cache for up to a minute. So the read-back was
+  reading back what this process had just put in its own memory: it would have
+  confirmed a write that never reached the database, which is exactly what
+  happened. One product of a hundred and five came back at its old price on a
+  fresh run minutes later, while this check had reported no faults at all.
+
+  A verification that can only agree with itself is not a verification.
 */
+app.invalidateStoreCache();
 const afterStore = await app.getStore();
 const afterList = Array.isArray(afterStore?.products) ? afterStore.products : [];
 const afterById = new Map(afterList.map((p) => [String(p["id"] ?? ""), p]));
@@ -335,7 +345,46 @@ for (const [id, price] of wanted) {
 
 rmSync(outfile, { force: true });
 
+/*
+  The last word: run the rules again over what the database actually holds.
+
+  Field-by-field equality says the write landed. It does not say the catalogue
+  now satisfies the rules — a product missed entirely by the write would not
+  appear in `wanted` and would sail through the loop above. The rules are
+  idempotent by test, so a correct apply leaves nothing to do; anything still
+  moving is a product this run failed to move.
+*/
+const settled = app
+  .repriceAll(
+    afterList.map((product) => ({
+      id: String(product["id"] ?? ""),
+      title: String(product["title"] || product["titleEn"] || ""),
+      kind: String(product["kind"] ?? ""),
+      schemaId: String(product["schemaId"] ?? product["schema_id"] ?? ""),
+      cost: num(product["cost"]) ?? num(product["costPrice"]) ?? num(product["baseCost"]),
+      price: num(product["price"]) ?? num(product["basePrice"]),
+    })),
+  )
+  .filter((d) => d.changed);
+
 say(`## كُتب: **${written}** · تُحقّق منه حقلًا بحقل: **${verified}**`);
+say();
+if (settled.length) {
+  say(`### ما زال **${settled.length}** منتجًا خارج القاعدة بعد الكتابة`);
+  say();
+  say("| اللعبة | التكلفة | ما زال | المطلوب |");
+  say("|---|---:|---:|---:|");
+  for (const d of settled.slice(0, 40)) {
+    say(
+      `| ${d.title.slice(0, 44)} | ${(d.cost ?? 0).toLocaleString("en-US")} | ` +
+        `${d.oldPrice?.toLocaleString("en-US")} | ${d.newPrice?.toLocaleString("en-US")} |`,
+    );
+  }
+  say();
+  for (const d of settled) faults.push(`${d.id} ما زال ${d.oldPrice}، والمطلوب ${d.newPrice}`);
+} else {
+  say("**الكتالوج كله مطابق للقواعد.**");
+}
 say();
 /*
   Name them.
