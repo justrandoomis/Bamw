@@ -302,49 +302,40 @@ export function onlinePriceFor(cost: number, current: number): number {
 }
 
 /**
- * How much a DLC edition adds to the offline price.
+ * How much the edition WITH the add-ons costs above the plain one.
  *
- * The owner gave three worked examples, and they do not describe a
- * multiplier — they describe a ladder that flattens as the difference grows:
+ * Not a ladder — a formula, and the owner's own numbers determine it exactly.
+ * Doubling holds while the gap is small, and above it the increase settles to
+ * the gap plus two thousand:
  *
- *   «اذا كان ١٧٠٠ عادي و ٢٠٠٠ مع الاضافات الفرق هو ٣٠٠ اذا الزياده تكون
- *    ١٠٠٠ دينار»                                    → 300  costs → +1,000
- *   «اذا كان مثلا فرق في التكلفه ١٠٠٠ تكون الزياده ٢٠٠٠ اي الضعف تقريبا»
- *                                                    → 1,000 costs → +2,000
- *   «لكن لو كان مثلا الفرق في التكلفه ٣٠٠٠ نجعل الزياده هي ٥٠٠٠ وليس ٦٠٠٠»
- *                                                    → 3,000 costs → +5,000
+ *     increase = max(1,000, min(2 × gap, gap + 2,000))
  *
- * Doubling holds at the bottom and is abandoned at the top on purpose: «لتكون
- * منطقيه». Above 3,000 the increase stops growing, because a DLC that adds
- * more to the bill than the game costs is not an add-on anyone buys.
+ * The two arms cross at a gap of 2,000, where both give 4,000. Every figure
+ * the owner has given is reproduced by it, and none was fitted afterwards:
  *
- * The three anchors are exact. The steps BETWEEN them are interpolation, and
- * they are laid out as a visible table rather than a formula so the owner can
- * read the one they care about and say it is wrong.
- */
-export const DLC_LADDER: ReadonlyArray<{ upToCostDiff: number; increase: number }> = [
-  { upToCostDiff: 500, increase: 1_000 },
-  { upToCostDiff: 1_000, increase: 2_000 },
-  { upToCostDiff: 2_000, increase: 3_000 },
-  { upToCostDiff: 2_500, increase: 4_000 },
-  { upToCostDiff: Number.POSITIVE_INFINITY, increase: 5_000 },
-];
-
-/**
- * The price of the DLC edition, from the offline price and the cost gap.
+ *   gap    300 → 1,000   «اذا كان ١٧٠٠ عادي و ٢٠٠٠ مع الاضافات ... الزياده ١٠٠٠»
+ *   gap  1,000 → 2,000   «فرق في التكلفه ١٠٠٠ تكون الزياده ٢٠٠٠ اي الضعف»
+ *   gap  2,000 → 4,000   online 26,000 → 30,000 in the worked example
+ *   gap  3,000 → 5,000   «نجعل الزياده هي ٥٠٠٠ ... وليس ٦٠٠٠»
+ *   gap  5,000 → 7,000   offline 8,000 → 15,000 in the worked example
+ *   gap 10,000 → 12,000  «فرق التكلفه ١٠٠٠٠ يكون زياده السعر ١٢٠٠٠»
  *
- * `costDiff` is what the edition with the add-ons costs the shop MINUS what
- * the plain offline account costs it. A negative or absent gap adds nothing:
- * an edition that costs no more is not a more expensive product.
+ * The first version of this was a ladder that stopped at 5,000, because
+ * «نجعل الزياده هي ٥٠٠٠ لتكون منطقيه» read as a cap. It was not a cap: «انا لا
+ * اقصد ان تتوقف ... انا اقصد تكون زياده ٢٠٠٠ فقط». A cap would have sold a
+ * 10,000-dinar add-on for five, which is the shop paying the customer to take
+ * it.
+ *
+ * The floor of 1,000 is what keeps a trivial gap from pricing at nothing: at
+ * a gap of 300 the doubling arm gives 600, and the owner asked for 1,000.
  */
 export function dlcIncreaseFor(costDiff: number): number {
   const diff = Number(costDiff);
   if (!Number.isFinite(diff) || diff <= 0) return 0;
-  const step = DLC_LADDER.find((row) => diff <= row.upToCostDiff);
-  return step ? step.increase : 5_000;
+  return Math.max(1_000, Math.min(2 * diff, diff + 2_000));
 }
 
-/** The DLC edition's price: the offline price plus its rung of the ladder. */
+/** The edition's price: the plain price plus what the add-ons are worth. */
 export function dlcPriceFor(offlinePrice: number, costDiff: number): number {
   const base = Number(offlinePrice);
   if (!Number.isFinite(base) || base <= 0) return 0;

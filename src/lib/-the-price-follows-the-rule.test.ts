@@ -388,26 +388,47 @@ describe("«في خيار الاونلاين اجعل الربح 10 الف اق�
   });
 });
 
-describe("«الزياده على العادي حسب فرقها عن العادي» — the DLC ladder", () => {
-  it("hits all three of the owner's worked examples exactly", async () => {
+describe("«الزياده على العادي حسب فرقها عن العادي» — the add-ons", () => {
+  it("reproduces every number the owner has given, and none was fitted after", async () => {
     const { dlcIncreaseFor } = await import("@/lib/repricing");
     // «١٧٠٠ عادي و ٢٠٠٠ مع الاضافات، الفرق ٣٠٠، الزياده ١٠٠٠»
     expect(dlcIncreaseFor(2_000 - 1_700)).toBe(1_000);
     // «فرق في التكلفه ١٠٠٠ تكون الزياده ٢٠٠٠ اي الضعف تقريبا»
     expect(dlcIncreaseFor(1_000)).toBe(2_000);
-    // «فرق في التكلفه ٣٠٠٠ نجعل الزياده ٥٠٠٠ وليس ٦٠٠٠»
+    // «فرق ٣٠٠٠ نجعل الزياده ٥٠٠٠ وليس ٦٠٠٠»
     expect(dlcIncreaseFor(3_000)).toBe(5_000);
+    // «فرق التكلفه ١٠٠٠٠ يكون زياده السعر على العادي ١٢٠٠٠»
+    expect(dlcIncreaseFor(10_000)).toBe(12_000);
   });
 
-  it("stops growing above 3,000 — «لتكون منطقيه»", async () => {
+  it("does NOT stop at 5,000 — that reading was wrong", async () => {
     /*
-      Doubling is abandoned at the top on purpose. A DLC that adds more to the
-      bill than the game itself costs is not an add-on anyone buys.
+      The first version capped the increase at 5,000, because «نجعل الزياده هي
+      ٥٠٠٠ لتكون منطقيه» read as a ceiling. It was not one: «انا لا اقصد ان
+      تتوقف ... انا اقصد تكون زياده ٢٠٠٠ فقط». A cap would have sold a
+      10,000-dinar add-on for five, which is the shop paying the customer to
+      take it.
     */
     const { dlcIncreaseFor } = await import("@/lib/repricing");
-    expect(dlcIncreaseFor(3_000)).toBe(5_000);
-    expect(dlcIncreaseFor(6_000)).toBe(5_000);
-    expect(dlcIncreaseFor(20_000)).toBe(5_000);
+    expect(dlcIncreaseFor(6_000)).toBe(8_000);
+    expect(dlcIncreaseFor(10_000)).toBe(12_000);
+    expect(dlcIncreaseFor(20_000)).toBe(22_000);
+  });
+
+  it("doubles while the gap is small and settles to gap + 2,000 above it", async () => {
+    const { dlcIncreaseFor } = await import("@/lib/repricing");
+    // The two arms cross at 2,000, where both give 4,000.
+    expect(dlcIncreaseFor(1_500)).toBe(3_000);
+    expect(dlcIncreaseFor(2_000)).toBe(4_000);
+    expect(dlcIncreaseFor(2_500)).toBe(4_500);
+  });
+
+  it("never lets a trivial gap price at nothing", async () => {
+    // At a gap of 300 the doubling arm gives 600; the owner asked for 1,000.
+    const { dlcIncreaseFor } = await import("@/lib/repricing");
+    expect(dlcIncreaseFor(1)).toBe(1_000);
+    expect(dlcIncreaseFor(300)).toBe(1_000);
+    expect(dlcIncreaseFor(499)).toBe(1_000);
   });
 
   it("adds nothing when the edition costs no more than the plain account", async () => {
@@ -418,25 +439,63 @@ describe("«الزياده على العادي حسب فرقها عن العاد
   });
 
   it("never goes down as the cost gap grows", async () => {
-    // A bigger gap must never cost the customer less. Ladders invite this bug.
     const { dlcIncreaseFor } = await import("@/lib/repricing");
     let previous = 0;
-    for (let diff = 0; diff <= 8_000; diff += 100) {
+    for (let diff = 0; diff <= 30_000; diff += 100) {
       const increase = dlcIncreaseFor(diff);
       expect(increase).toBeGreaterThanOrEqual(previous);
       previous = increase;
     }
   });
 
-  it("prices the DLC edition from the offline price, not from its own cost", async () => {
+  it("always earns more on the edition than the add-ons cost", async () => {
     /*
-      «الزياده على العادي» — on top of the ordinary offline price. A game whose
-      offline account sells at 8,000 with a 1,000 cost gap is 10,000 with the
-      add-ons, whatever the DLC itself cost.
+      The point of the whole rule. Whatever the gap, the price rises by more
+      than the cost did — so the edition with the add-ons is never the line
+      that loses money.
     */
-    const { dlcPriceFor } = await import("@/lib/repricing");
-    expect(dlcPriceFor(8_000, 1_000)).toBe(10_000);
-    expect(dlcPriceFor(5_000, 300)).toBe(6_000);
-    expect(dlcPriceFor(12_000, 4_000)).toBe(17_000);
+    const { dlcIncreaseFor } = await import("@/lib/repricing");
+    for (let diff = 100; diff <= 30_000; diff += 100) {
+      expect(dlcIncreaseFor(diff)).toBeGreaterThan(diff);
+    }
+  });
+});
+
+describe("the owner's worked example, end to end", () => {
+  it("prices all four lines of one game exactly as the owner priced them", async () => {
+    /*
+      «سعر اللعبه اوفلاين عادي ٨٠٠٠ تكلفه ٢٠٠٠
+       سعر اللعبه اوفلاين مع الاضافات ١٥٠٠٠ تكلفه ٧٠٠٠ (فرق ٥٠٠٠)
+       سعر اللعبه اونلاين عادي ٢٦٠٠٠ تكلفه ١٦٠٠٠
+       سعر اللعبه اونلاين مع الاضافات ٣٠٠٠٠ تكلفه ١٨٠٠٠ (فرق ٢٠٠٠)»
+
+      Four prices, given as a whole product rather than as rules, and the
+      rules have to land on all four or they are not the owner's rules.
+    */
+    const { dlcPriceFor, onlinePriceFor, repriceOne } = await import("@/lib/repricing");
+
+    // Offline, plain: cost 2,000 is inside the cheap band, and 8,000 stands.
+    const offline = repriceOne({
+      id: "p",
+      title: "لعبة",
+      kind: "game",
+      cost: 2_000,
+      price: 8_000,
+    });
+    expect(offline.newPrice).toBe(8_000);
+    expect(offline.changed).toBe(false);
+
+    // Offline with the add-ons: a 5,000 cost gap adds 7,000.
+    expect(dlcPriceFor(8_000, 7_000 - 2_000)).toBe(15_000);
+
+    // Online, plain: cost 16,000 priced at 26,000 is a profit of exactly 10,000.
+    expect(onlinePriceFor(16_000, 26_000)).toBe(26_000);
+
+    // Online with the add-ons: a 2,000 cost gap adds 4,000, giving 30,000...
+    expect(dlcPriceFor(26_000, 18_000 - 16_000)).toBe(30_000);
+    // ...and that price is inside the online profit band on its own cost.
+    expect(onlinePriceFor(18_000, 30_000)).toBe(30_000);
+    expect(30_000 - 18_000).toBeGreaterThanOrEqual(10_000);
+    expect(30_000 - 18_000).toBeLessThanOrEqual(15_000);
   });
 });
