@@ -896,6 +896,18 @@ export async function getAdminBananaData() {
       signupGrant: Number(s["bananaSignupGrant"] ?? 500),
     },
     marketConfig,
+    /*
+      The wheel's bands, its losing chance and what a ticket costs, so the
+      panel can show the owner the numbers it is asking them to edit rather
+      than a form with nothing in it.
+    */
+    wheelOdds: await (async () => {
+      const { getWheelOdds } = await import("./wheel.server");
+      return getWheelOdds().catch(async () => {
+        const { normalizeWheelOdds } = await import("./wheel-odds");
+        return normalizeWheelOdds(undefined);
+      });
+    })(),
     livePrice: spotPriceAt(marketConfig),
     bots,
     rewards,

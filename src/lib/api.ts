@@ -874,6 +874,16 @@ export const adminApi = {
       method: "POST",
       body: JSON.stringify({ action: "save_market_config", config }),
     }),
+  /** «حظ أوفر», the price bands and what a ticket costs — all one save. */
+  saveWheelOdds: (odds: {
+    tiers?: { upTo: number | null; weight: number; label: string }[];
+    losingPercent?: number;
+    ticketPriceBananas?: number;
+  }) =>
+    request<{ success: boolean; wheelOdds: any }>("/api/admin/banana", {
+      method: "POST",
+      body: JSON.stringify({ action: "save_wheel_odds", odds }),
+    }),
   saveBananaBot: (bot: any) =>
     request<{ success: boolean; id: string }>("/api/admin/banana", {
       method: "POST",
