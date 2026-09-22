@@ -276,7 +276,7 @@ function CartItemCard({
 
 function CartPage() {
   const navigate = useNavigate();
-  const { user } = useAuth();
+  const { user, refetch: refreshMe } = useAuth();
   const queryClient = useQueryClient();
   const { formatIQDPrice } = useCurrency();
   const {
@@ -642,9 +642,26 @@ function CartPage() {
       // Generate new key for subsequent sessions
       idempotencyKeyRef.current = crypto.randomUUID();
       queryClient.invalidateQueries({ queryKey: ["cart"] });
-      queryClient.invalidateQueries({ queryKey: ["auth"] });
-      queryClient.invalidateQueries({ queryKey: ["orders"] });
-      queryClient.invalidateQueries({ queryKey: ["threads"] });
+      /*
+        THE BALANCE ON SCREEN, AFTER THE MONEY HAS MOVED.
+
+        This invalidated `["auth"]`, and no query is registered under that key.
+        The member's balance comes from `useAuth`, whose query key is `["me"]`
+        (src/hooks/useAuth.ts:11) with `staleTime: Infinity` and
+        refetchOnWindowFocus, refetchOnMount and refetchOnReconnect all off —
+        so nothing would ever refetch it on its own either.
+
+        The effect: checkout debited the wallet correctly, atomically, in the
+        database, and the card on screen went on showing the number from before
+        the purchase until a hard reload. Which reads, to anyone watching it,
+        as the wallet not being charged at all.
+
+        `useAuth`'s own `refetch()` already refreshes `["me"]`, `["wallet"]`,
+        `["banana-balance"]`, the orders and the threads together, so it is
+        called rather than a fourth list of keys being written here to drift
+        out of step with it.
+      */
+      void refreshMe();
       playSound("bumper_end", 0.7);
       toast.success("تم تأكيد الطلب والدفع بنجاح!");
       void navigate({ to: "/chat", search: { initialOrderId: order.id } });

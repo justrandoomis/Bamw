@@ -1596,6 +1596,27 @@ function rowToUser(row: UserRow): User {
   };
 }
 
+/**
+ * Write a user row — everything about them EXCEPT their money.
+ *
+ * `wallet_balance`, `banana_balance` and `banana_locked` are set when the row
+ * is created and are never written again from here. They used to be in the
+ * `DO UPDATE SET` clause, bound from an in-memory snapshot, and `updateUser`
+ * is a read-modify-write of the whole row — so ANY save of anything about a
+ * member rewrote their balance to whatever it had been when that request
+ * started.
+ *
+ * That is a hole a customer can drive through. Save a profile field in one tab
+ * while buying a game in another: checkout debits the balance correctly and
+ * atomically, the profile save then puts the pre-purchase number back, and the
+ * game is already delivered. Nothing in the debit is wrong; it is simply
+ * overwritten afterwards by a request that had no business touching money.
+ *
+ * Money moves through the paths built for it, each of which changes the column
+ * RELATIVE to itself under a guard — `adjustUserWalletBalance`, the checkout
+ * batch in `orders.server.ts`, `creditBananaBalance`. A snapshot can never win
+ * a race against a relative update, because it never takes part in one.
+ */
 async function upsertUserRow(user: User) {
   await d1Execute(
     `INSERT INTO users (id, name, username, member_no, email, email_verified_at, phone, phone_verified_at, password_hash, avatar,
@@ -1614,10 +1635,7 @@ async function upsertUserRow(user: User) {
        is_admin = excluded.is_admin, provider = excluded.provider,
        provider_id = excluded.provider_id, settings = excluded.settings,
         addresses = excluded.addresses, favorites = excluded.favorites,
-        friend_id = excluded.friend_id,
-        wallet_balance = excluded.wallet_balance,
-        banana_balance = excluded.banana_balance,
-        banana_locked = excluded.banana_locked`,
+        friend_id = excluded.friend_id`,
     user.id,
     user.name,
     user.username ?? null,
@@ -3099,6 +3117,30 @@ export async function createWalletTransaction(
  * update did not apply, so the ledger can never record a transfer that did not
  * happen.
  */
+/**
+ * Add bananas to a member, relative to whatever the column holds now.
+ *
+ * The two banana-code redemptions did this through `updateUser`, which is a
+ * read-modify-write of the whole user row — the one thing `upsertUserRow` no
+ * longer does for money. Redeeming two codes at once would have had the second
+ * overwrite the first; now each adds to the stored value.
+ */
+export async function addBananaBalance(userId: string, amount: number): Promise<void> {
+  if (!Number.isFinite(amount) || amount === 0) return;
+  if (await d1Ready()) {
+    await d1Run(`UPDATE users SET banana_balance = COALESCE(banana_balance, 0) + ? WHERE id = ?`, amount, userId);
+    return;
+  }
+  // JSON driver (local sandbox): no SQL, and no concurrency to lose to either.
+  const users = await readJson<User[]>(USERS_KEY, []);
+  await writeJson(
+    USERS_KEY,
+    users.map((u) =>
+      u.id === userId ? { ...u, bananaBalance: (Number(u.bananaBalance) || 0) + amount } : u,
+    ),
+  );
+}
+
 export async function adjustUserWalletBalance(
   userId: string,
   amount: number,
@@ -3522,12 +3564,7 @@ export async function consumeBananCode(
     const dinarPerBanana = Number(store.settings?.["dinarPerBanana"] || 1000);
     if (dinarPerBanana > 0) {
       const bananasEarned = Math.floor(bc.value / dinarPerBanana);
-      if (bananasEarned > 0) {
-        await updateUser(userId, (u) => ({
-          ...u,
-          bananaBalance: (Number(u.bananaBalance) || 0) + bananasEarned,
-        }));
-      }
+      if (bananasEarned > 0) await addBananaBalance(userId, bananasEarned);
     }
 
     return { success: true, amount: bc.value, currency: "IQD" };
@@ -3564,12 +3601,7 @@ export async function consumeBananCode(
   const dinarPerBanana = Number(store.settings?.["dinarPerBanana"] || 1000);
   if (dinarPerBanana > 0) {
     const bananasEarned = Math.floor(targetCode.value / dinarPerBanana);
-    if (bananasEarned > 0) {
-      await updateUser(userId, (u) => ({
-        ...u,
-        bananaBalance: (Number(u.bananaBalance) || 0) + bananasEarned,
-      }));
-    }
+    if (bananasEarned > 0) await addBananaBalance(userId, bananasEarned);
   }
 
   return { success: true, amount: targetCode.value, currency: "IQD" };
