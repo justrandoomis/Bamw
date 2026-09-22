@@ -92,18 +92,19 @@ export const Route = createFileRoute("/api/admin/banana")({
             const patch: Record<string, unknown> = {};
             if (data.rewardRatePerIqd !== undefined) {
               patch["bananaPerDinar"] = Number(data.rewardRatePerIqd);
+              /*
+                Both names for one number, written together so they cannot
+                drift. `orders.server.ts` minted from `banana_reward_rate`
+                while this panel only ever wrote `bananaPerDinar`, so the earn
+                rate the owner set had no effect on what anyone earned.
+              */
+              patch["banana_reward_rate"] = Number(data.rewardRatePerIqd);
             }
             if (data.dinarPerBanana !== undefined) {
               patch["dinarPerBanana"] = Number(data.dinarPerBanana);
             }
             if (data.signupGrant !== undefined) {
               patch["bananaSignupGrant"] = Number(data.signupGrant);
-            }
-            if (Object.keys(patch).length > 0) {
-              await updateStore((store) => ({
-                ...store,
-                settings: { ...(store.settings ?? {}), ...patch },
-              }));
             }
 
             const enginePatch: Record<string, number> = {};
@@ -113,24 +114,41 @@ export const Route = createFileRoute("/api/admin/banana")({
             if (data.promoRatePerMinute !== undefined) {
               enginePatch["promoRatePerMinute"] = Number(data.promoRatePerMinute);
             }
+
             /*
-              Held to the same rules as the engine tab, because this is the
-              screen the owner actually uses. `save_market_config` below refuses
-              a base outside its band and a band that rounds to nothing; this
-              action wrote `basePrice` with nothing checked, which is how a base
-              of 0.0004 went into a shop whose ceiling was 0.0003 and killed the
-              market silently. One set of rules, both doors.
+              Everything checked before anything is written.
+
+              This form saves two halves — the store's settings and the market
+              engine's — and it used to write the first half and then refuse
+              the second. A rejected save had already changed the shop's earn
+              rate, and the admin saw only the error: a save that half
+              happened, reported as a save that did not.
+
+              The engine half is held to the same rules as the engine tab,
+              because this is the screen the owner actually uses.
+              `save_market_config` refuses a base outside its band and a band
+              that rounds to nothing; this action wrote `basePrice` with
+              nothing checked at all, which is how a base of 0.0004 went into a
+              shop whose ceiling was 0.0003 and killed the market silently. One
+              set of rules, both doors.
             */
-            if (Object.keys(enginePatch).length > 0) {
-              for (const [key, value] of Object.entries(enginePatch)) {
-                if (!Number.isFinite(value)) {
-                  return json({ error: `قيمة غير صالحة للحقل ${key}` }, { status: 400 });
-                }
+            for (const [key, value] of Object.entries({ ...patch, ...enginePatch })) {
+              if (!Number.isFinite(Number(value))) {
+                return json({ error: `قيمة غير صالحة للحقل ${key}` }, { status: 400 });
               }
+            }
+            if (Object.keys(enginePatch).length > 0) {
               const problem = marketConfigProblem({ ...(await getMarketConfig()), ...enginePatch });
               if (problem) return json({ error: problem }, { status: 400 });
-              await saveMarketConfig(enginePatch);
             }
+
+            if (Object.keys(patch).length > 0) {
+              await updateStore((store) => ({
+                ...store,
+                settings: { ...(store.settings ?? {}), ...patch },
+              }));
+            }
+            if (Object.keys(enginePatch).length > 0) await saveMarketConfig(enginePatch);
 
             const fresh = await getAdminBananaData();
             return json({ success: true, settings: fresh.settings });

@@ -963,7 +963,25 @@ export async function createOrderForUser(
   try {
     const bananaEligible = items.every((item) => !["hardware", "device"].includes(item.kind));
     if (bananaEligible && order.paymentStatus === "paid") {
-      const rewardRate = toNumber(store.settings?.["banana_reward_rate"] || 6.8);
+      /*
+        The rate the admin actually typed.
+
+        This read `banana_reward_rate`, and the admin panel writes
+        `bananaPerDinar` — two names for one number, and the only code that
+        mints bananas on a purchase was reading the one nothing writes. The
+        fault was invisible because the fallback is 6.8 and the owner's
+        setting is also 6.8: changing «معدل كسب الموز لكل 1 دينار» to any
+        other value did nothing at all, and the panel went on displaying the
+        number it had saved.
+
+        The panel's key wins, because it is the one a person can edit. The
+        legacy key is still read behind it so a shop that only ever had that
+        one keeps its rate, and the save writes both so they cannot drift
+        apart again.
+      */
+      const rewardRate = toNumber(
+        store.settings?.["bananaPerDinar"] ?? store.settings?.["banana_reward_rate"] ?? 6.8,
+      );
 
       /*
         A prize is not a purchase.

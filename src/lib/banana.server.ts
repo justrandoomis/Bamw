@@ -379,7 +379,18 @@ export async function createListing(
 
   if (!res.success) throw new BananaError(res.error || "insufficient_balance");
 
-  const id = `bmo_${Date.now()}`;
+  /*
+    A random id, not a timestamp.
+
+    `bmo_${Date.now()}` collides for two listings created in the same
+    millisecond — and the collision lands AFTER `debitBananaBalance` has
+    already taken the bananas, so the INSERT fails and the member is simply
+    poorer. It is not a theoretical race: a double-tapped publish button is
+    inside one millisecond often enough, and a test that creates three
+    listings in a loop hit it on the second.
+  */
+  const { randomId } = await import("./crypto.server");
+  const id = randomId("bmo");
   await d1BatchRun([
     {
       sql: `UPDATE users SET banana_locked = banana_locked + ? WHERE id = ?`,
@@ -408,45 +419,91 @@ export async function updateListing(
   data: { id: string; quantity: number; pricePer: number },
 ) {
   await assertListingWithinBounds(data.quantity, data.pricePer);
-  // Check ownership
 
-  const offer = await d1First<any>(
-    `SELECT * FROM banana_market_offers WHERE id = ? AND user_id = ?`,
+  /*
+    An ACTIVE listing, and the seller's own.
+
+    `cancelListing` below has always required `status = 'active'`; this did
+    not, and the two together printed bananas. Create a listing of N — the
+    balance falls by N and `banana_locked` rises by N. Cancel it — the locked
+    figure is released and the balance is credited back, correctly, and the
+    row survives at status 'cancelled' still saying `quantity = N`. Then edit
+    that cancelled row down: `diff` is negative, so the difference is credited
+    a SECOND time, out of nothing, against bananas that are no longer locked
+    against anything. Repeat for as much as you like.
+
+    Nothing about that needed a race or a special account. It is one ordinary
+    edit on a listing the seller had already cancelled.
+  */
+  const offer = await d1First<{ quantity: number }>(
+    `SELECT quantity FROM banana_market_offers
+     WHERE id = ? AND user_id = ? AND status = 'active'`,
     data.id,
     userId,
   );
   if (!offer) throw new BananaError("listing_not_found");
 
-  const diff = data.quantity - offer.quantity;
+  const diff = data.quantity - Number(offer.quantity);
+
+  /*
+    The bananas move only once the row has been claimed.
+
+    Two edits arriving together both read the same quantity, and without a
+    claim both would be refunded the same difference. The UPDATE names the
+    quantity it expects, so the second one changes no rows and is told the
+    listing moved under it — the same shape of guard `executeBotPurchase` uses
+    to claim an offer.
+
+    An increase is debited BEFORE the claim, because the seller may not have
+    the bananas and refusing is cheaper than undoing; if the claim then fails,
+    the debit is returned. A decrease is credited AFTER, so a failed claim
+    credits nothing.
+  */
   if (diff > 0) {
-    // Need more bananas
     const res = await debitBananaBalance(userId, diff, {
       reason: "Listing Update Increase",
       kind: "listing_fee",
     });
-    if (!res.success) throw new BananaError("insufficient_balance");
-    await d1Run(`UPDATE users SET banana_locked = banana_locked + ? WHERE id = ?`, diff, userId);
-  } else if (diff < 0) {
-    // Return some bananas
-    await creditBananaBalance(userId, Math.abs(diff), {
-      reason: "Listing Update Decrease",
-      kind: "refund",
-    });
-    await d1Run(
-      `UPDATE users SET banana_locked = MAX(0, banana_locked - ?) WHERE id = ?`,
-      Math.abs(diff),
-      userId,
-    );
+    if (!res.success) throw new BananaError(res.error || "insufficient_balance");
   }
 
-  await d1Run(
-    `UPDATE banana_market_offers SET quantity = ?, price_iqd = ?, locked_banana = ?, updated_at = ? WHERE id = ?`,
+  const claimed = await d1RunChanges(
+    `UPDATE banana_market_offers
+     SET quantity = ?, price_iqd = ?, locked_banana = ?, updated_at = ?
+     WHERE id = ? AND user_id = ? AND status = 'active' AND quantity = ?`,
     data.quantity,
     data.quantity * data.pricePer,
     data.quantity,
     new Date().toISOString(),
     data.id,
+    userId,
+    offer.quantity,
   );
+
+  if (!claimed) {
+    if (diff > 0) {
+      await creditBananaBalance(userId, diff, {
+        reason: "Listing Update Reverted",
+        kind: "refund",
+      });
+    }
+    throw new BananaError("listing_changed");
+  }
+
+  if (diff > 0) {
+    await d1Run(`UPDATE users SET banana_locked = banana_locked + ? WHERE id = ?`, diff, userId);
+  } else if (diff < 0) {
+    await d1Run(
+      `UPDATE users SET banana_locked = MAX(0, banana_locked - ?) WHERE id = ?`,
+      Math.abs(diff),
+      userId,
+    );
+    await creditBananaBalance(userId, Math.abs(diff), {
+      reason: "Listing Update Decrease",
+      kind: "refund",
+    });
+  }
+
   return { success: true };
 }
 
