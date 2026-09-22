@@ -30,6 +30,13 @@ import { build } from "esbuild";
 import { readFileSync, rmSync, writeFileSync } from "node:fs";
 import path from "node:path";
 
+import {
+  bumpAfterOverlayWrites,
+  overlayProductIds,
+  readOverlayProduct,
+  writeOverlayProduct,
+} from "./lib/store-overlay.mjs";
+
 const args = Object.fromEntries(
   process.argv
     .slice(2)
@@ -414,12 +421,52 @@ const wanted = new Map(moving.map((d) => [d.id, d.newPrice]));
   itself moved. Everything else is still refused by the rehearsal below.
 */
 const mirrorWanted = new Map(staleMirrors.map((row) => [row.id, Number(row.price)]));
-for (const id of new Set([...wanted.keys(), ...mirrorWanted.keys()])) {
-  const before = byId.get(id);
-  if (!before) fail(`${id} ليس في الكتالوج`);
-  const patched = { ...before };
+/*
+  WHICH PRODUCTS ARE NOT SERVED FROM THE CHUNKS AT ALL.
+
+  See `scripts/lib/store-overlay.mjs`. `updateStore` writes the chunked
+  catalogue; a product owning a `store:product:<id>` row is served from THAT
+  row and the chunk write is invisible. This script wrote only the chunks
+  until 2026-09-22, when its own read-back caught forty products sitting at
+  the price they started with.
+*/
+const overlayIds = await overlayProductIds(app);
+
+const touched = new Set([...wanted.keys(), ...mirrorWanted.keys()]);
+
+/*
+  The raw granular documents, read BEFORE the rehearsal.
+
+  The rehearsal must run against the document that will actually be written.
+  Rehearsing the normalized product from `getStore()` while writing the raw
+  row rehearses a document that never existed — which is how the one document
+  that can go wrong becomes the one never checked.
+*/
+const rawOverlay = new Map();
+for (const id of touched) {
+  if (!overlayIds.has(id)) continue;
+  const stored = await readOverlayProduct(app, id);
+  if (!stored) fail(`${id}: صف \`store:product:\` غير قابل للقراءة — لن أكتب فوقه`);
+  rawOverlay.set(id, stored);
+}
+
+const patchOne = (doc, id) => {
+  const patched = { ...doc };
   if (wanted.has(id)) patched.price = wanted.get(id);
   if (mirrorWanted.has(id)) patched.accountPrice = mirrorWanted.get(id);
+  return patched;
+};
+
+for (const id of touched) {
+  /*
+    The rehearsal runs on whichever document this product actually lives in —
+    the raw granular row when it has one, the merged catalogue product
+    otherwise. Both are held to the same rule: `price` and, only for a proved
+    stale mirror, `accountPrice`. Nothing else.
+  */
+  const before = rawOverlay.get(id) ?? byId.get(id);
+  if (!before) fail(`${id} ليس في الكتالوج`);
+  const patched = patchOne(before, id);
   const price = patched.price;
   for (const key of new Set([...Object.keys(before), ...Object.keys(patched)])) {
     if (key === "price" && wanted.has(id)) continue;
@@ -431,26 +478,38 @@ for (const id of new Set([...wanted.keys(), ...mirrorWanted.keys()])) {
   if (patched.price !== price) fail(`البروفة: ${id}.price لم يُضبط`);
 }
 
-let written = 0;
-await app.updateStore((current) => {
-  /*
-    Reset, because `updateStore` re-reads and re-applies on a revision
-    conflict, up to four times. A counter that only incremented would report
-    four times the products it changed.
-  */
-  written = 0;
-  const list = Array.isArray(current?.products) ? current.products : [];
-  const next = list.map((item) => {
-    const id = String(item?.id ?? "");
-    if (!wanted.has(id) && !mirrorWanted.has(id)) return item;
-    written += 1;
-    const patched = { ...item };
-    if (wanted.has(id)) patched.price = wanted.get(id);
-    if (mirrorWanted.has(id)) patched.accountPrice = mirrorWanted.get(id);
-    return patched;
+const overlayWrites = [...touched].filter((id) => overlayIds.has(id));
+const chunkWrites = [...touched].filter((id) => !overlayIds.has(id));
+say(`- عبر صفوف \`store:product:<id>\`: **${overlayWrites.length}**`);
+say(`- عبر كتل الكتالوج: **${chunkWrites.length}**`);
+say();
+
+for (const id of overlayWrites) {
+  await writeOverlayProduct(app, id, patchOne(rawOverlay.get(id), id));
+}
+/* The bare INSERT moves no revision, so the edge would serve the old price. */
+await bumpAfterOverlayWrites(app, overlayWrites.length);
+
+let written = overlayWrites.length;
+if (chunkWrites.length) {
+  const chunkSet = new Set(chunkWrites);
+  await app.updateStore((current) => {
+    /*
+      Reset, because `updateStore` re-reads and re-applies on a revision
+      conflict, up to four times. A counter that only incremented would report
+      four times the products it changed.
+    */
+    written = overlayWrites.length;
+    const list = Array.isArray(current?.products) ? current.products : [];
+    const next = list.map((item) => {
+      const id = String(item?.id ?? "");
+      if (!chunkSet.has(id)) return item;
+      written += 1;
+      return patchOne(item, id);
+    });
+    return { ...current, products: next };
   });
-  return { ...current, products: next };
-});
+}
 
 /*
   Read back, field by field, FROM D1 — not from this process's own memory.

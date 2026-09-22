@@ -30,6 +30,13 @@ import { build } from "esbuild";
 import { readFileSync, rmSync, writeFileSync } from "node:fs";
 import path from "node:path";
 
+import {
+  bumpAfterOverlayWrites,
+  overlayProductIds,
+  readOverlayProduct,
+  writeOverlayProduct,
+} from "./lib/store-overlay.mjs";
+
 const args = Object.fromEntries(
   process.argv
     .slice(2)
@@ -203,12 +210,7 @@ if (products.length < 100) fail(`الكتالوج أعاد ${products.length} م
   and nothing says why. Measured here rather than assumed, and the apply below
   writes whichever row actually wins for each product.
 */
-const overlayRows = await app.d1All(
-  "SELECT key FROM store_kv WHERE key LIKE 'store:product:%'",
-);
-const overlayIds = new Set(
-  overlayRows.map((row) => String(row.key).slice("store:product:".length)).filter(Boolean),
-);
+const overlayIds = await overlayProductIds(app);
 
 /* ------------------------------------------------------------- the proposals */
 
@@ -912,16 +914,8 @@ const patchProduct = (before, edit) => {
 const overlayCandidates = [...wanted.keys()].filter((id) => overlayIds.has(id));
 const rawOverlay = new Map();
 for (const id of overlayCandidates) {
-  const rows = await app.d1All("SELECT value FROM store_kv WHERE key = ?", `store:product:${id}`);
-  let stored = null;
-  try {
-    stored = rows?.[0]?.value ? JSON.parse(String(rows[0].value)) : null;
-  } catch {
-    stored = null;
-  }
-  if (!stored || String(stored.id ?? "") !== id) {
-    fail(`${id}: صف \`store:product:\` غير قابل للقراءة — لن أكتب فوقه`);
-  }
+  const stored = await readOverlayProduct(app, id);
+  if (!stored) fail(`${id}: صف \`store:product:\` غير قابل للقراءة — لن أكتب فوقه`);
   rawOverlay.set(id, stored);
 }
 
@@ -1146,14 +1140,7 @@ say(`- عبر كتل الكتالوج: **${chunkWrites.length}**`);
 say();
 
 for (const id of overlayWrites) {
-  const patched = patchProduct(rawOverlay.get(id), plan.get(id));
-  await app.d1Run(
-    "INSERT INTO store_kv (key, value, updated_at) VALUES (?, ?, ?)" +
-      " ON CONFLICT(key) DO UPDATE SET value = excluded.value, updated_at = excluded.updated_at",
-    `store:product:${id}`,
-    JSON.stringify(patched),
-    new Date().toISOString(),
-  );
+  await writeOverlayProduct(app, id, patchProduct(rawOverlay.get(id), plan.get(id)));
 }
 
 /*
@@ -1165,7 +1152,7 @@ for (const id of overlayWrites) {
   browser and the edge would go on serving the OLD price from a cache keyed on
   a version that did not change — a write that succeeded and that nobody sees.
 */
-if (overlayWrites.length) await app.bumpCatalogVersion();
+await bumpAfterOverlayWrites(app, overlayWrites.length);
 let written = 0;
 if (chunkWrites.length) {
   const chunkSet = new Set(chunkWrites);
