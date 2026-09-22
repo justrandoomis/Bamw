@@ -100,6 +100,17 @@ const LIST_FIELDS = [
   "image",
   "coverImage",
   "coverImageTrim",
+  /*
+    The high-resolution cover.
+
+    `hasUsableImage` — which decides whether a listing counts as having artwork,
+    and therefore whether it is shelved first or last — reads seven fields, and
+    this was the one that did not travel. Measured on the live catalogue today:
+    NO product relies on it alone, so nothing moves and nothing was mislabelled.
+    It is here because the contract this list keeps is "every field the listing
+    rules read", not "every field some product happens to use this week".
+  */
+  "coverHiResImage",
   "coverUrl",
   "box_front_url",
   "banner",

@@ -626,8 +626,20 @@ export function AdminInboxView({ initialThreadId = null, onNavigateToOrder }: Ad
         className="w-full h-full flex flex-col overflow-hidden bg-card"
         style={{ direction: "rtl" }}
       >
-        {/* Top Bar: Admin Availability Status & Scheduling */}
-        <AdminAvailabilityBar />
+        {/*
+          The availability bar belongs to the INBOX, not to a conversation.
+
+          On a phone the customer list and the conversation share the screen —
+          one hides while the other shows — but this bar sat above both, so
+          opening a customer put a working-hours scheduler on top of the
+          conversation and pushed the messages down. The owner asked for it out
+          of the conversation, and out is where it now is: still the first thing
+          on the inbox screen, gone the moment a customer is open, and unchanged
+          on desktop where the two columns are side by side and it heads both.
+        */}
+        <div className={selectedThreadId ? "hidden md:block" : "block"}>
+          <AdminAvailabilityBar />
+        </div>
 
         <div
           className="w-full flex-1 flex flex-col md:flex-row overflow-hidden"

@@ -20,6 +20,7 @@ import { toast } from "sonner";
 import type { Order } from "@/lib/types";
 import type { DeliveryItemStatus } from "@/lib/digital-delivery-state";
 
+import { PrepThumbnail } from "./PrepThumbnail";
 import { SupplierNameCopy, copySilently } from "./SupplierNameCopy";
 import type { ManualCompletionRequest } from "./types";
 
@@ -413,6 +414,28 @@ export function AccountToolsModal({
       return item?.supplierNameZhCn ?? "";
     },
     [orderItemById],
+  );
+
+  /*
+    The picture the ORDER recorded, not the one the catalogue holds today.
+
+    An order is a record of what was sold. Re-arting a product must not change
+    what an old order shows, for the same reason re-pricing one must not change
+    its margin — so this reads `order.items`, the snapshot taken at checkout,
+    and matches by the order-item id the delivery slot carries. The fallback on
+    `productId` covers orders whose slots predate that id.
+  */
+  const artworkFor = useCallback(
+    (orderItemId: string | null): { image: string; productId: string } => {
+      if (!orderItemId) return { image: "", productId: "" };
+      const byId = order?.items?.find((it) => String(it.id) === String(orderItemId));
+      if (byId) return { image: String(byId.image || ""), productId: String(byId.productId || "") };
+      const productId = orderItemById.get(orderItemId)?.productId;
+      if (!productId) return { image: "", productId: "" };
+      const byProduct = order?.items?.find((it) => String(it.productId) === String(productId));
+      return { image: String(byProduct?.image || ""), productId: String(productId) };
+    },
+    [order?.items, orderItemById],
   );
 
   /**
@@ -812,35 +835,48 @@ export function AccountToolsModal({
                       type="button"
                       key={item.id}
                       onClick={() => setSelectedId(item.id)}
-                      className={`min-w-[145px] rounded-xl border px-3 py-2 text-right transition-colors cursor-pointer ${
+                      className={`flex min-w-[185px] items-start gap-2 rounded-xl border px-3 py-2 text-right transition-colors cursor-pointer ${
                         selectedId === item.id
                           ? "border-primary bg-primary/10"
                           : "border-border bg-card hover:bg-muted/50"
                       }`}
                     >
-                      <SupplierNameCopy
-                        supplierName={supplierNameFor(item.orderItemId)}
-                        onMissing={() => reportMissingSupplierName(item.orderItemId)}
-                        className="block truncate text-[11px] font-bold text-foreground"
-                      >
-                        {item.productTitle}
-                      </SupplierNameCopy>
-                      <span className="mt-0.5 block text-[10px] text-muted-foreground">
-                        #{item.slotNumber || 1} • {STATUS_LABEL[item.status]}
-                      </span>
                       {/*
+                        No `productId` here on purpose: this chip is a button,
+                        and an anchor inside a button is invalid HTML that
+                        browsers resolve by dropping one of the two. The chip's
+                        own click selects the slot, which is what an admin
+                        reaching for it wants.
+                      */}
+                      <PrepThumbnail
+                        image={artworkFor(item.orderItemId).image}
+                        title={item.productTitle}
+                      />
+                      <span className="min-w-0 flex-1">
+                        <SupplierNameCopy
+                          supplierName={supplierNameFor(item.orderItemId)}
+                          onMissing={() => reportMissingSupplierName(item.orderItemId)}
+                          className="block truncate text-[11px] font-bold text-foreground"
+                        >
+                          {item.productTitle}
+                        </SupplierNameCopy>
+                        <span className="mt-0.5 block text-[10px] text-muted-foreground">
+                          #{item.slotNumber || 1} • {STATUS_LABEL[item.status]}
+                        </span>
+                        {/*
                         What was actually sold. The title alone is not enough
                         to prepare an account: an offline account and an online
                         one are different products behind the same name.
                       */}
-                      {selectionFor(item.orderItemId) ? (
-                        <span className="mt-0.5 block truncate text-[10px] font-bold text-primary">
-                          {selectionFor(item.orderItemId)}
-                          {quantityFor(item.orderItemId) > 1
-                            ? ` ×${quantityFor(item.orderItemId)}`
-                            : ""}
-                        </span>
-                      ) : null}
+                        {selectionFor(item.orderItemId) ? (
+                          <span className="mt-0.5 block truncate text-[10px] font-bold text-primary">
+                            {selectionFor(item.orderItemId)}
+                            {quantityFor(item.orderItemId) > 1
+                              ? ` ×${quantityFor(item.orderItemId)}`
+                              : ""}
+                          </span>
+                        ) : null}
+                      </span>
                     </button>
                   ))}
                 </div>
@@ -853,7 +889,18 @@ export function AccountToolsModal({
                       <span className="text-[10px] font-bold text-muted-foreground">
                         اسم اللعبة من D1
                       </span>
-                      <div className="mt-1 flex items-center gap-1.5 text-sm font-black text-foreground">
+                      <div className="mt-1 flex items-center gap-2 text-sm font-black text-foreground">
+                        {/*
+                          Here the thumbnail IS a link — this is a heading, not
+                          a button — so one tap opens the product page for a
+                          closer look at what is being prepared.
+                        */}
+                        <PrepThumbnail
+                          image={artworkFor(selected.orderItemId).image}
+                          productId={artworkFor(selected.orderItemId).productId}
+                          title={selected.productTitle}
+                          size="md"
+                        />
                         <Gamepad2 className="h-4 w-4 shrink-0 text-primary" />
                         {/*
                           Same silent copy as the chip. Identical styling to

@@ -595,14 +595,26 @@ export function ActiveConversation({
 
         {/* 2. Order Context Strip (Strict: Only for Order Conversations) */}
         {isOrderConversation && (
-          <div className="p-2.5 px-4 bg-muted/25 border-b border-border flex flex-wrap items-center justify-between gap-3 shrink-0 text-xs">
-            <div className="flex items-center gap-2 min-w-0 flex-wrap">
+          /*
+            One row that SCROLLS, not six rows that wrap.
+
+            `flex-wrap` on a strip with seven buttons in it turns a narrow
+            admin screen into a stack four rows deep, pushing the conversation
+            itself off the bottom — and the buttons that land on the last row
+            are the ones used least often, so the arrangement changes every
+            time the order does. The owner asked for it to scroll. `flex-nowrap`
+            with `overflow-x-auto` gives the strip its own axis: the order
+            context stays where it is, the actions stay in a fixed order, and
+            reaching the last one is a swipe rather than a taller header.
+          */
+          <div className="p-2.5 px-4 bg-muted/25 border-b border-border flex flex-nowrap items-center justify-between gap-3 shrink-0 text-xs overflow-x-auto no-scrollbar">
+            <div className="flex shrink-0 items-center gap-2">
               <ShoppingBag className="w-4 h-4 text-blue-500 shrink-0" />
               <span className="font-mono font-bold text-foreground">
                 #{linkedOrder?.code || (thread.orderId ? thread.orderId.slice(-6) : "")}
               </span>
               {linkedOrder?.items && linkedOrder.items.length > 0 && (
-                <span className="text-muted-foreground truncate max-w-xs">
+                <span className="truncate max-w-[10rem] text-muted-foreground sm:max-w-xs">
                   {linkedOrder.items.map((i) => i.title).join(", ")}
                 </span>
               )}
@@ -630,7 +642,7 @@ export function ActiveConversation({
               )}
             </div>
 
-            <div className="flex flex-wrap items-center gap-2 shrink-0">
+            <div className="flex flex-nowrap items-center gap-2 shrink-0">
               {onCompleteOrder &&
                 linkedOrder &&
                 isDigitalLinkedOrder &&
@@ -640,7 +652,7 @@ export function ActiveConversation({
                     type="button"
                     onClick={() => void onCompleteOrder(linkedOrder.id)}
                     disabled={isCompletingOrder}
-                    className="text-[11px] font-bold text-white bg-emerald-600 hover:bg-emerald-700 disabled:opacity-50 px-3 py-1.5 rounded-lg border border-emerald-700/20 transition-all flex items-center gap-1 cursor-pointer"
+                    className="shrink-0 whitespace-nowrap text-[11px] font-bold text-white bg-emerald-600 hover:bg-emerald-700 disabled:opacity-50 px-3 py-1.5 rounded-lg border border-emerald-700/20 transition-all flex items-center gap-1 cursor-pointer"
                     title="متاح فقط بعد إرسال OTP أو الكود لجميع عناصر الطلب"
                   >
                     {isCompletingOrder ? (
@@ -672,7 +684,7 @@ export function ActiveConversation({
                       })
                     }
                     disabled={isCompletingOrder}
-                    className="text-[11px] font-bold text-amber-700 dark:text-amber-300 bg-amber-500/15 hover:bg-amber-500/25 disabled:opacity-50 px-3 py-1.5 rounded-lg border border-amber-500/30 transition-all flex items-center gap-1 cursor-pointer"
+                    className="shrink-0 whitespace-nowrap text-[11px] font-bold text-amber-700 dark:text-amber-300 bg-amber-500/15 hover:bg-amber-500/25 disabled:opacity-50 px-3 py-1.5 rounded-lg border border-amber-500/30 transition-all flex items-center gap-1 cursor-pointer"
                     title="للطلبات التي سلّمتها بنفسك خارج الأداة — يطلب رقم الطلب وسبباً مكتوباً"
                   >
                     <ShieldCheck className="w-3 h-3" />
@@ -684,7 +696,7 @@ export function ActiveConversation({
                 <button
                   type="button"
                   onClick={() => onSendQueueReminder()}
-                  className="text-[11px] font-bold text-amber-700 dark:text-amber-300 bg-amber-500/15 hover:bg-amber-500/25 px-2.5 py-1 rounded-lg border border-amber-500/30 transition-all flex items-center gap-1 cursor-pointer"
+                  className="shrink-0 whitespace-nowrap text-[11px] font-bold text-amber-700 dark:text-amber-300 bg-amber-500/15 hover:bg-amber-500/25 px-2.5 py-1 rounded-lg border border-amber-500/30 transition-all flex items-center gap-1 cursor-pointer"
                   title="إرسال تنبيه للعميل لسرعة الرد وإكمال الطلب"
                 >
                   <Clock className="w-3 h-3" />
@@ -696,7 +708,7 @@ export function ActiveConversation({
                 <button
                   type="button"
                   onClick={onSkipQueue}
-                  className="text-[11px] font-bold text-muted-foreground hover:text-foreground bg-muted hover:bg-muted/80 px-2.5 py-1 rounded-lg border border-border transition-all flex items-center gap-1 cursor-pointer"
+                  className="shrink-0 whitespace-nowrap text-[11px] font-bold text-muted-foreground hover:text-foreground bg-muted hover:bg-muted/80 px-2.5 py-1 rounded-lg border border-border transition-all flex items-center gap-1 cursor-pointer"
                   title="نقل العميل لآخر الطابور لعدم الرد والانتقال للتالي"
                 >
                   <span>تخطي الدور ⏭️</span>
@@ -706,7 +718,7 @@ export function ActiveConversation({
               <button
                 type="button"
                 onClick={() => setIsOrderDrawerOpen(true)}
-                className="text-[11px] font-bold text-primary hover:underline px-2 py-1 rounded hover:bg-primary/5 cursor-pointer"
+                className="shrink-0 whitespace-nowrap text-[11px] font-bold text-primary hover:underline px-2 py-1 rounded hover:bg-primary/5 cursor-pointer"
               >
                 معاينة الطلب
               </button>
@@ -714,7 +726,7 @@ export function ActiveConversation({
                 <button
                   type="button"
                   onClick={() => onNavigateToOrder(linkedOrder?.id || thread.orderId!)}
-                  className="text-[11px] font-bold text-foreground bg-muted hover:bg-muted/80 px-2.5 py-1 rounded-lg flex items-center gap-1 border border-border cursor-pointer"
+                  className="shrink-0 whitespace-nowrap text-[11px] font-bold text-foreground bg-muted hover:bg-muted/80 px-2.5 py-1 rounded-lg flex items-center gap-1 border border-border cursor-pointer"
                   title="فتح صفحة إدارة الطلبات"
                 >
                   <span>إدارة الطلب</span>
