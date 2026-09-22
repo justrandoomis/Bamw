@@ -158,6 +158,40 @@ const mirrors = products
   .filter((row) => row.accountPrice !== null && row.accountPrice > 0);
 const disagreeing = mirrors.filter((row) => Number(row.accountPrice) !== Number(row.price));
 
+/*
+  Which disagreements are MINE to repair, proved rather than assumed.
+
+  A stale mirror and a deliberate difference look identical from here: both
+  are just two numbers that differ. But the rules are idempotent by test, so
+  there is a check that distinguishes them. If running the rules over the
+  MIRROR's value produces exactly the price the product carries now, then the
+  mirror is holding the pre-change number and this run is what moved the
+  other copy. Anything else is a difference that predates me, and the owner's
+  to decide — it is reported and left alone.
+*/
+const costOf = new Map(inputs.map((row) => [row.id, row.cost]));
+const kindOf = new Map(products.map((p) => [String(p["id"] ?? ""), p]));
+const staleMirrors = [];
+const foreignMirrors = [];
+for (const row of disagreeing) {
+  const product = kindOf.get(row.id);
+  const decision = product
+    ? app.repriceOne({
+        id: row.id,
+        title: row.title,
+        kind: String(product["kind"] ?? ""),
+        schemaId: String(product["schemaId"] ?? product["schema_id"] ?? ""),
+        cost: costOf.get(row.id) ?? null,
+        price: Number(row.accountPrice),
+      })
+    : null;
+  if (decision && !decision.skipped && Number(decision.newPrice) === Number(row.price)) {
+    staleMirrors.push(row);
+  } else {
+    foreignMirrors.push(row);
+  }
+}
+
 const decisions = app.repriceAll(inputs);
 
 /*
@@ -180,6 +214,8 @@ say("## سعر صفحة اللعبة مقابل سعر الصندوق");
 say();
 say(`- منتجات تحمل \`accountPrice\` (نسخة ثانية من سعر الأوفلاين): **${mirrors.length}**`);
 say(`- منها تختلف عن \`price\` الآن: **${disagreeing.length}**`);
+say(`  - نسخة قديمة خلّفها هذا التسعير (سأصلحها): **${staleMirrors.length}**`);
+say(`  - اختلاف سابق لي، لن أمسّه: **${foreignMirrors.length}**`);
 if (disagreeing.length) {
   say();
   say(
@@ -308,7 +344,7 @@ if (!APPLY) {
   process.exit(0);
 }
 
-if (!moving.length) {
+if (!moving.length && !staleMirrors.length) {
   say("**لا شيء ليُكتب.**");
   rmSync(outfile, { force: true });
   process.exit(0);
@@ -320,12 +356,24 @@ if (!moving.length) {
 */
 const byId = new Map(products.map((p) => [String(p["id"] ?? ""), p]));
 const wanted = new Map(moving.map((d) => [d.id, d.newPrice]));
-for (const [id, price] of wanted) {
+/*
+  The mirror repair rides along with the price write.
+
+  `accountPrice` is the only other field this script may touch, and only for
+  the products just proved to be holding a stale copy of a price this script
+  itself moved. Everything else is still refused by the rehearsal below.
+*/
+const mirrorWanted = new Map(staleMirrors.map((row) => [row.id, Number(row.price)]));
+for (const id of new Set([...wanted.keys(), ...mirrorWanted.keys()])) {
   const before = byId.get(id);
   if (!before) fail(`${id} ليس في الكتالوج`);
-  const patched = { ...before, price };
+  const patched = { ...before };
+  if (wanted.has(id)) patched.price = wanted.get(id);
+  if (mirrorWanted.has(id)) patched.accountPrice = mirrorWanted.get(id);
+  const price = patched.price;
   for (const key of new Set([...Object.keys(before), ...Object.keys(patched)])) {
-    if (key === "price") continue;
+    if (key === "price" && wanted.has(id)) continue;
+    if (key === "accountPrice" && mirrorWanted.has(id)) continue;
     if (JSON.stringify(before[key] ?? null) !== JSON.stringify(patched[key] ?? null)) {
       fail(`البروفة: ${id}.${key} تغيّر، وهذا السكربت لا يملك تغييره`);
     }
@@ -344,9 +392,12 @@ await app.updateStore((current) => {
   const list = Array.isArray(current?.products) ? current.products : [];
   const next = list.map((item) => {
     const id = String(item?.id ?? "");
-    if (!wanted.has(id)) return item;
+    if (!wanted.has(id) && !mirrorWanted.has(id)) return item;
     written += 1;
-    return { ...item, price: wanted.get(id) };
+    const patched = { ...item };
+    if (wanted.has(id)) patched.price = wanted.get(id);
+    if (mirrorWanted.has(id)) patched.accountPrice = mirrorWanted.get(id);
+    return patched;
   });
   return { ...current, products: next };
 });
@@ -369,19 +420,24 @@ const afterList = Array.isArray(afterStore?.products) ? afterStore.products : []
 const afterById = new Map(afterList.map((p) => [String(p["id"] ?? ""), p]));
 const faults = [];
 let verified = 0;
-for (const [id, price] of wanted) {
+for (const id of new Set([...wanted.keys(), ...mirrorWanted.keys()])) {
   const was = byId.get(id);
   const now = afterById.get(id);
   if (!now) {
     faults.push(`${id} اختفى من الكتالوج بعد الكتابة`);
     continue;
   }
-  if (Number(now["price"]) !== Number(price)) {
-    faults.push(`${id}.price = ${now["price"]}، والمتوقع ${price}`);
+  if (wanted.has(id) && Number(now["price"]) !== Number(wanted.get(id))) {
+    faults.push(`${id}.price = ${now["price"]}، والمتوقع ${wanted.get(id)}`);
+    continue;
+  }
+  if (mirrorWanted.has(id) && Number(now["accountPrice"]) !== Number(mirrorWanted.get(id))) {
+    faults.push(`${id}.accountPrice = ${now["accountPrice"]}، والمتوقع ${mirrorWanted.get(id)}`);
     continue;
   }
   for (const key of new Set([...Object.keys(was ?? {}), ...Object.keys(now)])) {
-    if (key === "price") continue;
+    if (key === "price" && wanted.has(id)) continue;
+    if (key === "accountPrice" && mirrorWanted.has(id)) continue;
     if (JSON.stringify(was?.[key] ?? null) !== JSON.stringify(now[key] ?? null)) {
       faults.push(`${id}.${key} تغيّر، وهذا السكربت لا يملك تغييره`);
     }
