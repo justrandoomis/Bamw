@@ -172,8 +172,24 @@ const pricesIn = (text) => {
 
 const cards = [];
 try {
+  /*
+    Wait for the shelf. The cards are rendered after hydration, and reading
+    the locator the instant the document fires `domcontentloaded` found twelve
+    links on one run and none on the next — a race, not a finding.
+  */
+  await page.waitForSelector('a[href^="/product/"]', { timeout: 30_000 }).catch(() => {});
+  await page.waitForTimeout(2500);
   const links = page.locator('a[href^="/product/"]');
   const count = await links.count();
+  say(`- روابط منتجات في الصفحة الرئيسية: **${count}**`);
+  /*
+    The first few, verbatim. A card with no price and a page with no cards are
+    the same zero, and only one of them is this script's fault.
+  */
+  for (let i = 0; i < Math.min(count, 3); i += 1) {
+    const sample = await links.nth(i).innerText().catch(() => "");
+    say(`  - عيّنة ${i + 1}: «${sample.replace(/\s+/g, " ").slice(0, 160)}»`);
+  }
   for (let i = 0; i < count; i += 1) {
     const link = links.nth(i);
     const href = await link.getAttribute("href").catch(() => null);
