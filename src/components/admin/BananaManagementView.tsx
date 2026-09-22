@@ -3,6 +3,22 @@ import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { adminApi } from "@/lib/api";
 import { formatPrice, roundPrice } from "@/lib/banana-price";
 import { LOSING_LABEL, oddsBreakdown, tierCounts } from "@/lib/wheel-odds";
+/*
+  The roulette's own labels and keys, taken from the engine rather than retyped
+  here. `roulette-odds.ts` reads no database and no clock — it is arithmetic and
+  constants — so the screen can share the engine's vocabulary without importing
+  a server module, and a bucket renamed there is renamed here.
+*/
+import {
+  DEFAULT_PRICE_BOUNDARY,
+  POPULARITY_LABELS,
+  PRIZE_BUCKETS,
+  type BucketKey,
+  type PopularityTier,
+  type PrizeBucketKey,
+} from "@/lib/roulette-odds";
+/* The catalogue search the bundle picker uses, so one box behaves the same in both. */
+import { buildProductIndex, searchProducts } from "@/lib/search/products";
 import {
   Sparkles,
   Gift,
@@ -34,6 +50,9 @@ import {
   UserCheck,
   Award,
   Ticket,
+  Dices,
+  Ban,
+  FileSearch,
 } from "lucide-react";
 
 const MARKET_FIELDS = [
@@ -63,6 +82,13 @@ const DEFAULT_MARKET = {
   minListingQuantity: 100,
   maxListingQuantity: 1000000,
   promoRatePerMinute: 2,
+  /*
+    On, like the server's own default. «تعطيل/تفعيل البيع المباشر عند الحاجة» —
+    and an absent field means a shop that has never been asked, not a closed
+    one, so a form that defaulted this to false would draw a closed window over
+    an open market for as long as the GET is in flight.
+  */
+  directSellEnabled: true,
 };
 
 function toBotPayload(bot: any) {
@@ -94,10 +120,217 @@ function pct(chance: number): string {
   return `${(value * 100).toFixed(1)}%`;
 }
 
+/** How many rows of the catalogue the classification list draws at once. */
+const ROULETTE_ROWS = 60;
+/** How deep the search itself goes — the cap above is on drawing, not on finding. */
+const ROULETTE_SEARCH_LIMIT = 500;
+
+/** The three tiers, in the order the owner reads them: least famous first. */
+const POPULARITY_ORDER: readonly PopularityTier[] = ["low", "medium", "high"];
+
+/**
+ * The two price bands, named once.
+ *
+ * A bucket key is `${tier}_${band}`, so the column headers are split out of the
+ * engine's own key rather than written again underneath it.
+ */
+const BAND_LABELS: Record<string, string> = { cheap: "سعر منخفض", premium: "سعر أعلى" };
+
+const BUCKET_COLUMNS = PRIZE_BUCKETS.map((key) => {
+  const [tier, band] = String(key).split("_");
+  return {
+    key,
+    tier: POPULARITY_LABELS[tier as PopularityTier] ?? tier,
+    band: BAND_LABELS[band ?? ""] ?? band ?? "",
+  };
+});
+
+/**
+ * Why a product is not in the prize pool, as the admin should read it.
+ *
+ * The reasons are `buildPool`'s own strings. An unknown one is printed raw
+ * rather than swallowed: a reason the shop starts skipping games for is exactly
+ * what this panel exists to surface, and a missing translation must not hide it.
+ */
+const SKIP_REASONS: Record<string, string> = {
+  excluded: "مستبعدة يدوياً من الروليت",
+  hidden: "مخفية في المتجر",
+  not_a_game: "ليست لعبة (أجهزة، اكسسوارات، بطاقات، مستعمل)",
+  bare_listing: "عرض بلا حساب يمكن تسليمه",
+  no_price: "بلا سعر",
+  no_id: "بلا معرّف",
+};
+
+/**
+ * Kinds the prize pool refuses outright, so the classification list does not
+ * offer rows that can never become a prize whatever tier they are given.
+ *
+ * The server decides — `isPrizeEligible` is the authority and it is the one
+ * that runs. This only keeps a screen for classifying GAMES from filling up
+ * with hardware.
+ */
+const NON_GAME_KINDS = [
+  "hardware",
+  "device",
+  "accessory",
+  "amiibo",
+  "collectible",
+  "gift_card",
+  "used",
+];
+
+/**
+ * A percentage, printed exactly as the server sent it.
+ *
+ * The digits follow the member's own wheel screen (`src/routes/wheel.tsx`) so
+ * the owner and the customer read the same number to the same precision — and
+ * the small buckets keep three decimals, because `high_premium` at one ticket
+ * is 0.010% and `0.0%` would tell the owner it never happens.
+ *
+ * Nothing here computes anything: «عرض النسبة الفعلية النهائية بعد
+ * normalization وليس weights مبهمة» means the screen's only job is to format.
+ */
+function percentText(percent: number): string {
+  const value = Number(percent);
+  if (!Number.isFinite(value)) return "—";
+  if (value >= 1) return `${value.toFixed(1)}%`;
+  return `${value.toFixed(value >= 0.1 ? 2 : 3)}%`;
+}
+
+/** The name an Iraqi admin is looking for, with the English one as a fallback. */
+function gameName(product: Record<string, unknown>): string {
+  for (const key of ["titleAr", "title", "titleEn", "english_name"]) {
+    const value = product[key];
+    if (typeof value === "string" && value.trim()) return value.trim();
+  }
+  return String(product["id"] ?? "");
+}
+
+/** The price the pool buckets a game by — `accountPrice` first, as the server reads it. */
+function gamePrice(product: Record<string, unknown>): number {
+  for (const key of ["accountPrice", "price"]) {
+    const raw = product[key];
+    const value = typeof raw === "number" ? raw : Number.parseFloat(String(raw ?? ""));
+    if (Number.isFinite(value) && value > 0) return value;
+  }
+  return 0;
+}
+
+/**
+ * Column headings for the audit tables, where there is a good Arabic word.
+ *
+ * The prize query is a `SELECT *`, so its columns are whatever that table
+ * holds today and the heading falls back to the column name. An audit screen
+ * that hid a column it had no translation for would be hiding evidence.
+ */
+const AUDIT_COLUMNS: Record<string, string> = {
+  id: "المعرّف",
+  user_id: "المستخدم",
+  spin_id: "الدورة",
+  prize_id: "الجائزة",
+  order_id: "الطلب",
+  request_id: "مرجع الطلب",
+  reference_id: "المرجع",
+  product_id: "اللعبة",
+  product_title: "اسم اللعبة",
+  product_price: "سعر اللعبة",
+  tickets: "التذاكر",
+  bucket: "الفئة",
+  status: "الحالة",
+  delta: "التغيير",
+  reason: "السبب",
+  quantity: "الكمية",
+  price_per_banana: "سعر الموزة",
+  proceeds_iqd: "المبلغ (د.ع)",
+  created_at: "التاريخ",
+  settled_at: "وقت التسوية",
+  won_at: "وقت الفوز",
+};
+
+/**
+ * One audit table: whatever the server returned, printed.
+ *
+ * Columns come from the rows themselves rather than from a list written here,
+ * because three of these four queries name their columns and the fourth does
+ * not — and an audit that silently drops a column the server added is worse
+ * than one with an untranslated heading.
+ *
+ * Every value is LTR inside its own cell: ids, amounts and timestamps read
+ * left to right even on a right-to-left page, and the sentence around them
+ * stays Arabic.
+ */
+function AuditTable({
+  title,
+  icon,
+  rows,
+}: {
+  title: string;
+  icon: React.ReactNode;
+  rows: Record<string, unknown>[];
+}) {
+  const columns = rows.length > 0 ? Object.keys(rows[0] ?? {}) : [];
+
+  return (
+    <div className="rounded-2xl border border-border bg-card overflow-hidden shadow-sm">
+      <div className="flex items-center justify-between gap-2 px-4 py-3 border-b border-border bg-muted/40">
+        <h4 className="font-black text-xs flex items-center gap-2">
+          {icon}
+          {title}
+        </h4>
+        <span className="text-[11px] font-bold text-muted-foreground">
+          <span dir="ltr">{rows.length}</span> صف
+        </span>
+      </div>
+
+      {rows.length === 0 ? (
+        <div className="text-center py-8 text-muted-foreground text-xs">لا توجد نتائج هنا.</div>
+      ) : (
+        /* The scroll lives in this box. A wide audit row must never widen the page. */
+        <div className="overflow-x-auto">
+          <table className="w-full text-right text-[11px] min-w-[560px]">
+            <thead className="bg-muted/30 border-b border-border text-muted-foreground font-bold">
+              <tr>
+                {columns.map((column) => (
+                  <th key={column} className="p-2.5 whitespace-nowrap">
+                    {AUDIT_COLUMNS[column] ?? column}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-border/60 font-medium">
+              {rows.map((row, index) => (
+                <tr key={String(row["id"] ?? index)} className="hover:bg-muted/30">
+                  {columns.map((column) => {
+                    const value = row[column];
+                    return (
+                      <td key={column} className="p-2.5 whitespace-nowrap font-mono" dir="ltr">
+                        {value === null || value === undefined || value === ""
+                          ? "—"
+                          : String(value)}
+                      </td>
+                    );
+                  })}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
+    </div>
+  );
+}
+
 export function BananaManagementView() {
   const queryClient = useQueryClient();
   const [activeTab, setActiveTab] = useState<
-    "rewards" | "redemptions" | "listings" | "settings" | "wallets" | "market" | "wheel"
+    | "rewards"
+    | "redemptions"
+    | "listings"
+    | "settings"
+    | "wallets"
+    | "market"
+    | "wheel"
+    | "roulette"
   >("rewards");
 
   /*
@@ -202,6 +435,132 @@ export function BananaManagementView() {
       losing: rows.find((row) => row.label === LOSING_LABEL) ?? null,
     };
   }, [data, wheelForm]);
+
+  /* --------------------------- the roulette ---------------------------- */
+
+  /*
+    The price line this preview was drawn on.
+
+    Empty means "the engine's own", which is what the roulette really runs on.
+    Typing a number here asks the server what the curve WOULD look like on a
+    different line — the route computes and returns, it stores nothing — so the
+    box says so rather than letting the owner think they have moved the shop.
+  */
+  const [boundaryInput, setBoundaryInput] = useState("");
+  const [boundaryApplied, setBoundaryApplied] = useState<number | null>(null);
+
+  const [gameSearch, setGameSearch] = useState("");
+  /*
+    What the server said after each save, by product id.
+
+    Not a copy of the database: there is no read action for these flags, and
+    inventing one in the browser would mean a tier drawn from an assumption. So
+    a row shows «غير مشهورة» — the tier every unclassified game already has on
+    the server — until a save comes back, and from then on it shows the reply.
+    The proof that a classification landed is the bucket counts in the table
+    above, which are refetched after every write.
+  */
+  const [savedFlags, setSavedFlags] = useState<
+    Record<string, { popularity?: PopularityTier; excluded?: boolean }>
+  >({});
+
+  /* The query the four audit tables belong to — typing is not searching. */
+  const [auditInput, setAuditInput] = useState("");
+  const [auditQuery, setAuditQuery] = useState("");
+
+  /*
+    Read only while the tab is open.
+
+    This walks the whole catalogue and rebuilds the pool on the server; it is
+    not something the five other tabs should pay for. Refetched after every
+    classification, because the bucket counts are the only honest confirmation
+    that a tier actually landed.
+  */
+  const rouletteOddsQuery = useQuery({
+    queryKey: ["admin_roulette_odds", boundaryApplied],
+    queryFn: () => adminApi.rouletteOdds(boundaryApplied ?? undefined),
+    enabled: activeTab === "roulette",
+    staleTime: 30_000,
+  });
+
+  /*
+    The catalogue, once, and only for this tab.
+
+    `adminApi.catalogue()` is what the bundle picker uses — `/api/data?slim=1`,
+    which for an admin carries hidden products and the Arabic name. The admin
+    products table holds one page of fifty rows, and a screen for classifying
+    1,707 games cannot be built on fifty of them.
+  */
+  const catalogueQuery = useQuery({
+    queryKey: ["admin", "roulette-catalogue"],
+    queryFn: ({ signal }) => adminApi.catalogue(signal),
+    enabled: activeTab === "roulette",
+    staleTime: 60_000,
+  });
+
+  const rouletteOdds = rouletteOddsQuery.data;
+
+  /*
+    The curve as a table reads it: one row per ticket count, the percentage
+    looked up by bucket key.
+
+    `oddsRows` sorts by size, which is right for a list and wrong for a grid —
+    a column has to mean the same thing in every row. Nothing is recomputed
+    here; the percentages are the server's own numbers, re-indexed.
+  */
+  const oddsRowsByTickets = useMemo(() => {
+    return (rouletteOdds?.curve ?? []).map((row) => ({
+      tickets: row.tickets,
+      percentOf: Object.fromEntries(row.rows.map((cell) => [cell.key, cell.percent])) as Record<
+        BucketKey,
+        number
+      >,
+    }));
+  }, [rouletteOdds]);
+
+  /*
+    Buckets with nothing in them, named by the server.
+
+    A bucket's population does not depend on how many tickets were bought, so
+    every entry in the curve carries the same list and the first one is the
+    whole answer.
+  */
+  const emptiedBuckets = (rouletteOdds?.curve?.[0]?.emptied ?? []) as PrizeBucketKey[];
+
+  /*
+    Games worth offering a tier to.
+
+    Hidden products are kept: the importer saves every game hidden, so they are
+    exactly the ones an owner sits down to classify — the pool will skip them
+    while they stay hidden, and the panel says so in the skipped list rather
+    than pretending they do not exist.
+  */
+  const rouletteGames = useMemo(() => {
+    const products = (catalogueQuery.data?.products ?? []) as unknown as Record<string, unknown>[];
+    return products.filter(
+      (product) => !NON_GAME_KINDS.includes(String(product["kind"] ?? "").toLowerCase()),
+    );
+  }, [catalogueQuery.data?.products]);
+
+  /* Built once per catalogue; folding 1,700 products on every keystroke stutters. */
+  const rouletteIndex = useMemo(() => buildProductIndex(rouletteGames), [rouletteGames]);
+
+  const matchedGames = useMemo(() => {
+    const query = gameSearch.trim();
+    if (!query) return rouletteGames;
+    return searchProducts(rouletteIndex, query, { limit: ROULETTE_SEARCH_LIMIT }).map(
+      (hit) => hit.product,
+    );
+  }, [gameSearch, rouletteGames, rouletteIndex]);
+
+  const visibleGames = matchedGames.slice(0, ROULETTE_ROWS);
+
+  const auditResults = useQuery({
+    queryKey: ["admin_roulette_audit", auditQuery],
+    queryFn: () => adminApi.rouletteAudit(auditQuery),
+    enabled: auditQuery.length > 0,
+    staleTime: 0,
+  });
 
   // Reward Modal State
   const [rewardModalOpen, setRewardModalOpen] = useState(false);
@@ -471,6 +830,70 @@ export function BananaManagementView() {
       setAdjustAmount("");
       setAdjustReason("");
       showToast("تم تعديل رصيد الموز للمستخدم بنجاح");
+    },
+  });
+
+  /*
+    One field, one write.
+
+    The route treats an omitted field as "leave it alone" — that is what lets a
+    tier and an exclusion be two separate commercial decisions — so pressing a
+    tier sends the tier and NOTHING else, and the switch sends the switch. The
+    reply is merged into `savedFlags` exactly as it arrives.
+  */
+  const setGameFlagsMutation = useMutation({
+    mutationFn: (payload: { productId: string; popularity?: PopularityTier; excluded?: boolean }) =>
+      adminApi.setRouletteGameFlags(payload),
+    onError: showFailure,
+    onSuccess: (result) => {
+      setSavedFlags((prev) => ({
+        ...prev,
+        [result.productId]: {
+          ...(prev[result.productId] ?? {}),
+          ...(result.popularity === undefined ? {} : { popularity: result.popularity }),
+          ...(result.excluded === undefined ? {} : { excluded: result.excluded }),
+        },
+      }));
+      queryClient.invalidateQueries({ queryKey: ["admin_roulette_odds"] });
+    },
+  });
+
+  /*
+    The same write, down a list.
+
+    «كل لعبة افتراضياً غير مشهورة» over seventeen hundred games is not a form
+    that classifies one product at a time: four of the six buckets are empty
+    today and stay empty until somebody marks the famous games, and doing that
+    one row at a time is how it never happens. So the search narrows — «mario»,
+    «zelda» — and one press gives every row on screen the same tier.
+
+    Sequential on purpose. Seventeen hundred parallel writes against one D1
+    database is a way to lose the lot; a loop that stops at the first refusal
+    and says how far it got is one the owner can resume.
+  */
+  const bulkClassifyMutation = useMutation({
+    mutationFn: async ({
+      productIds,
+      popularity,
+    }: {
+      productIds: string[];
+      popularity: PopularityTier;
+    }) => {
+      const done: string[] = [];
+      for (const productId of productIds) {
+        await adminApi.setRouletteGameFlags({ productId, popularity });
+        done.push(productId);
+        setSavedFlags((prev) => ({
+          ...prev,
+          [productId]: { ...(prev[productId] ?? {}), popularity },
+        }));
+      }
+      return { count: done.length, popularity };
+    },
+    onError: showFailure,
+    onSuccess: (result) => {
+      queryClient.invalidateQueries({ queryKey: ["admin_roulette_odds"] });
+      showToast(`تم تصنيف ${result.count} لعبة على أنها «${POPULARITY_LABELS[result.popularity]}»`);
     },
   });
 
@@ -778,6 +1201,17 @@ export function BananaManagementView() {
           <Ticket className="w-4 h-4" />
           عجلة الحظ — النسب وسعر التذكرة
         </button>
+        <button
+          onClick={() => setActiveTab("roulette")}
+          className={`flex items-center gap-2 px-4 py-2.5 rounded-xl font-bold text-xs transition-all shrink-0 ${
+            activeTab === "roulette"
+              ? "bg-black text-white dark:bg-white dark:text-black shadow-sm"
+              : "bg-muted/40 text-muted-foreground hover:text-foreground"
+          }`}
+        >
+          <Dices className="w-4 h-4" />
+          الروليت — النسب والألعاب والتدقيق
+        </button>
       </div>
 
       {/* TAB: MARKET ENGINE + BOTS */}
@@ -837,6 +1271,49 @@ export function BananaManagementView() {
                 />
                 تفعيل عروض البوتات في السوق
               </label>
+            </div>
+
+            {/*
+              «تعطيل/تفعيل البيع المباشر عند الحاجة».
+
+              Its own row rather than a third checkbox in the grid, because this
+              is not a pricing number: it is the only door between a member's
+              bananas and their money now that the member-to-member market is
+              gone, and closing it strands every balance in the shop. It is
+              drawn large enough to press on a phone and it says out loud what
+              each position does.
+            */}
+            <div className="rounded-xl border border-border bg-muted/20 p-3.5 flex flex-wrap items-center justify-between gap-3">
+              <div className="min-w-0">
+                <div className="text-xs font-black flex items-center gap-2">
+                  <DollarSign className="w-3.5 h-3.5 text-emerald-500" />
+                  البيع المباشر للمتجر
+                </div>
+                <p className="text-[11px] text-muted-foreground font-semibold mt-1 leading-relaxed">
+                  {marketForm.directSellEnabled === false
+                    ? "مغلق الآن — لا يستطيع أي مستخدم بيع موزه للمتجر، وزر البيع يختفي من صفحة السوق."
+                    : "مفتوح — يستطيع المستخدم بيع موزه للمتجر بسعر السوق مباشرة."}
+                </p>
+              </div>
+              <button
+                type="button"
+                onClick={() =>
+                  setMarketForm((prev) => ({
+                    ...prev,
+                    directSellEnabled: !(prev.directSellEnabled !== false),
+                  }))
+                }
+                aria-pressed={marketForm.directSellEnabled !== false}
+                className={`min-h-[44px] px-5 rounded-xl font-black text-xs transition-colors shrink-0 ${
+                  marketForm.directSellEnabled === false
+                    ? "bg-rose-500/10 text-rose-600 border border-rose-500/30"
+                    : "bg-emerald-500/10 text-emerald-600 border border-emerald-500/30"
+                }`}
+              >
+                {marketForm.directSellEnabled === false
+                  ? "مُعطَّل — اضغط للتفعيل"
+                  : "مُفعَّل — اضغط للتعطيل"}
+              </button>
             </div>
 
             <button
@@ -1672,6 +2149,460 @@ export function BananaManagementView() {
               </button>
             </div>
           )}
+        </div>
+      )}
+
+      {/*
+        TAB: THE ROULETTE — the real curve, the games behind it, and the audit.
+
+        Three cards rather than three screens, because they answer one another:
+        the table says four buckets are empty, the list is where the owner fills
+        them, and the search is how a single spin is explained afterwards. They
+        sit beside the wheel's own tab and the ticket controls it already has.
+      */}
+      {activeTab === "roulette" && (
+        <div className="space-y-6">
+          {/* ---- the odds, as the engine will really run them ---- */}
+          <div className="rounded-2xl border border-border bg-card p-5 space-y-4">
+            <div className="flex flex-col md:flex-row md:items-start justify-between gap-3">
+              <div className="min-w-0">
+                <h3 className="font-black text-sm flex items-center gap-2">
+                  <Dices className="w-4 h-4" />
+                  النسب الفعلية للروليت — من تذكرة واحدة إلى عشر
+                </h3>
+                <p className="text-xs text-muted-foreground mt-1 font-medium leading-relaxed">
+                  كل رقم في الجدول هو النسبة النهائية بعد إعادة التوزيع، كما يحسبها الخادم ويستخدمها
+                  في الدورة نفسها. لا أوزان هنا، ولا حساب داخل المتصفح.
+                </p>
+              </div>
+              <button
+                onClick={() => rouletteOddsQuery.refetch()}
+                disabled={rouletteOddsQuery.isFetching}
+                className="flex items-center gap-2 min-h-[44px] px-4 rounded-xl border border-border bg-card hover:bg-muted font-bold text-xs transition-colors shadow-sm disabled:opacity-50 shrink-0"
+              >
+                <RefreshCw
+                  className={`w-3.5 h-3.5 ${rouletteOddsQuery.isFetching ? "animate-spin" : ""}`}
+                />
+                إعادة حساب النسب
+              </button>
+            </div>
+
+            {rouletteOddsQuery.isLoading ? (
+              <p className="text-xs text-muted-foreground font-bold">جارِ حساب النسب…</p>
+            ) : rouletteOddsQuery.isError ? (
+              <p className="text-xs font-bold text-red-500 bg-red-500/10 rounded-xl p-3">
+                {rouletteOddsQuery.error instanceof Error && rouletteOddsQuery.error.message
+                  ? rouletteOddsQuery.error.message
+                  : "تعذّر حساب النسب — حاول مرة أخرى"}
+              </p>
+            ) : rouletteOdds ? (
+              <>
+                <div className="flex flex-wrap items-center gap-2">
+                  <span className="px-3 py-1.5 rounded-lg bg-muted/50 text-[11px] font-bold">
+                    ألعاب مؤهلة للجوائز:{" "}
+                    <span dir="ltr" className="text-amber-500 font-black">
+                      {rouletteOdds.poolSize.toLocaleString("en-US")}
+                    </span>
+                  </span>
+                  <span className="px-3 py-1.5 rounded-lg bg-muted/50 text-[11px] font-bold">
+                    حدّ فصل السعر:{" "}
+                    <span dir="ltr" className="text-amber-500 font-black">
+                      {rouletteOdds.priceBoundary.toLocaleString("en-US")}
+                    </span>{" "}
+                    د.ع
+                  </span>
+                </div>
+
+                {/*
+                  A what-if, said to be one.
+
+                  `roulette_odds` answers on whatever line it is given and saves
+                  nothing, so this moves the preview and not the shop. Labelling
+                  it anything else would be the panel promising a setting that
+                  does not exist.
+                */}
+                <div className="flex flex-wrap items-end gap-2">
+                  <label className="text-[11px] font-bold space-y-1">
+                    <span className="text-muted-foreground block">
+                      جرّب حدّ سعر آخر (معاينة فقط — لا يُحفظ):
+                    </span>
+                    <input
+                      type="number"
+                      min={1}
+                      step={500}
+                      dir="ltr"
+                      value={boundaryInput}
+                      onChange={(e) => setBoundaryInput(e.target.value)}
+                      placeholder={String(DEFAULT_PRICE_BOUNDARY)}
+                      className="w-36 min-h-[44px] px-3 rounded-xl bg-muted/40 border border-border outline-none font-bold text-xs focus:border-amber-500"
+                    />
+                  </label>
+                  <button
+                    onClick={() => {
+                      const value = Number(boundaryInput);
+                      setBoundaryApplied(Number.isFinite(value) && value > 0 ? value : null);
+                    }}
+                    className="min-h-[44px] px-4 rounded-xl bg-muted/60 hover:bg-muted font-bold text-xs"
+                  >
+                    اعرض النسب على هذا الحد
+                  </button>
+                  {boundaryApplied !== null && (
+                    <button
+                      onClick={() => {
+                        setBoundaryInput("");
+                        setBoundaryApplied(null);
+                      }}
+                      className="min-h-[44px] px-4 rounded-xl border border-border font-bold text-xs"
+                    >
+                      ارجع للحد الفعلي
+                    </button>
+                  )}
+                </div>
+
+                {/*
+                  The scroll belongs to this box.
+
+                  Ten rows by seven outcomes does not fit a 320px phone and must
+                  never try: a table that widens the document makes mobile
+                  Safari shrink the whole page to fit, which in RTL shows up as
+                  an empty band down the left of every screen in the panel.
+                */}
+                <div className="overflow-x-auto rounded-xl border border-border">
+                  <table className="w-full min-w-[760px] text-right text-[11px]">
+                    <thead className="bg-muted/50 border-b border-border text-muted-foreground font-bold">
+                      <tr>
+                        <th className="p-2.5 whitespace-nowrap">التذاكر</th>
+                        <th className="p-2.5 whitespace-nowrap">
+                          <div className="font-black text-foreground">حظ أوفر</div>
+                          <div className="text-[10px] font-semibold">لا تربح شيئاً</div>
+                        </th>
+                        {BUCKET_COLUMNS.map((column) => {
+                          const games = Number(rouletteOdds.population?.[column.key] ?? 0);
+                          return (
+                            <th key={column.key} className="p-2.5 whitespace-nowrap">
+                              <div className={games > 0 ? "text-foreground" : "text-rose-500"}>
+                                {column.tier}
+                              </div>
+                              <div className="text-[10px] font-semibold">{column.band}</div>
+                              <div className="text-[10px] font-semibold" dir="ltr">
+                                {games.toLocaleString("en-US")}
+                              </div>
+                            </th>
+                          );
+                        })}
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-border/60 font-medium">
+                      {oddsRowsByTickets.map((row) => (
+                        <tr key={row.tickets} className="hover:bg-muted/30 transition-colors">
+                          <td className="p-2.5 font-black" dir="ltr">
+                            {row.tickets}
+                          </td>
+                          <td className="p-2.5 font-bold tabular-nums" dir="ltr">
+                            {percentText(row.percentOf["lose"])}
+                          </td>
+                          {BUCKET_COLUMNS.map((column) => {
+                            const empty = Number(rouletteOdds.population?.[column.key] ?? 0) === 0;
+                            return (
+                              <td
+                                key={column.key}
+                                dir="ltr"
+                                className={`p-2.5 tabular-nums ${
+                                  empty ? "text-muted-foreground/60" : "text-amber-600 font-bold"
+                                }`}
+                              >
+                                {percentText(row.percentOf[column.key])}
+                              </td>
+                            );
+                          })}
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+
+                {emptiedBuckets.length > 0 && (
+                  <div className="rounded-xl border border-amber-500/30 bg-amber-500/10 px-3.5 py-2.5 text-[11px] font-bold leading-relaxed text-amber-700 dark:text-amber-300">
+                    فئات فارغة لا توجد فيها لعبة واحدة مؤهلة:{" "}
+                    {emptiedBuckets
+                      .map((key) => {
+                        const column = BUCKET_COLUMNS.find((entry) => entry.key === key);
+                        return column ? `«${column.tier} — ${column.band}»` : `«${key}»`;
+                      })
+                      .join("، ")}
+                    . نصيب كل فئة فارغة يُعاد توزيعه على الفئات التي تستطيع أن تدفع، بنسبها بينها،
+                    و«حظ أوفر» يحتفظ بنصيبه كما هو. الأرقام في الجدول أعلاه هي النسب بعد إعادة
+                    التوزيع وليست قبله — وتُملأ هذه الفئات من قائمة تصنيف الألعاب في الأسفل.
+                  </div>
+                )}
+
+                {Object.keys(rouletteOdds.skipped ?? {}).length > 0 && (
+                  <div className="rounded-xl border border-border bg-muted/20 p-3.5">
+                    <p className="text-[11px] font-black mb-2">ألعاب خارج الجوائز، ولماذا خرجت:</p>
+                    <div className="space-y-1">
+                      {Object.entries(rouletteOdds.skipped).map(([reason, count]) => (
+                        <div
+                          key={reason}
+                          className="flex items-center justify-between gap-2 text-[11px]"
+                        >
+                          <span className="text-muted-foreground">
+                            {SKIP_REASONS[reason] ?? reason}
+                          </span>
+                          <span dir="ltr" className="font-bold tabular-nums">
+                            {Number(count).toLocaleString("en-US")}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </>
+            ) : null}
+          </div>
+
+          {/* ---- classifying the catalogue ---- */}
+          <div className="rounded-2xl border border-border bg-card p-5 space-y-4">
+            <div>
+              <h3 className="font-black text-sm flex items-center gap-2">
+                <Award className="w-4 h-4" />
+                شهرة الألعاب والاستبعاد من الروليت
+              </h3>
+              {/*
+                The measurement, said on the screen rather than kept in a commit
+                message: 1,707 games are prize-eligible and not one of them has
+                been classified, so every game sits in «غير مشهورة» and four of
+                the six buckets are empty. This list is how that is fixed, and
+                it is why the search and the bulk button exist — a form that
+                classified one game at a time would never be finished.
+              */}
+              <p className="text-xs text-muted-foreground mt-1 font-medium leading-relaxed">
+                كل لعبة لم تُصنَّف بعد تُحسب «غير مشهورة» — ولهذا تظهر فئات فارغة في الجدول أعلاه.
+                ابحث عن اللعبة أو عن سلسلة كاملة، وحدّد الشهرة. الاستبعاد يخرج اللعبة من الجوائز دون
+                حذفها من المتجر.
+              </p>
+            </div>
+
+            <div className="relative">
+              <Search className="w-4 h-4 absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
+              <input
+                type="text"
+                placeholder="ابحث باسم اللعبة بالعربية أو بالإنجليزية..."
+                value={gameSearch}
+                onChange={(e) => setGameSearch(e.target.value)}
+                className="w-full min-h-[44px] pl-3 pr-9 rounded-xl border border-border bg-card text-xs font-medium focus:border-amber-500 outline-none"
+              />
+            </div>
+
+            {/*
+              One press for everything on screen.
+
+              Deliberately bound to the rows the admin can SEE — «صنّف كل
+              النتائج الظاهرة» over a search they have just read is a decision;
+              the same press over seventeen hundred unseen rows would not be.
+            */}
+            <div className="flex flex-wrap items-center gap-2">
+              <span className="text-[11px] font-bold text-muted-foreground">
+                صنّف كل النتائج الظاهرة (<span dir="ltr">{visibleGames.length}</span>) على أنها:
+              </span>
+              {POPULARITY_ORDER.map((tier) => (
+                <button
+                  key={tier}
+                  disabled={visibleGames.length === 0 || bulkClassifyMutation.isPending}
+                  onClick={() => {
+                    if (
+                      !confirm(
+                        `سيتم تصنيف ${visibleGames.length} لعبة على أنها «${POPULARITY_LABELS[tier]}». هل تريد المتابعة؟`,
+                      )
+                    ) {
+                      return;
+                    }
+                    bulkClassifyMutation.mutate({
+                      productIds: visibleGames.map((game) => String(game["id"])),
+                      popularity: tier,
+                    });
+                  }}
+                  className="min-h-[44px] px-4 rounded-xl bg-muted/60 hover:bg-muted font-bold text-xs disabled:opacity-50"
+                >
+                  {POPULARITY_LABELS[tier]}
+                </button>
+              ))}
+              {bulkClassifyMutation.isPending && (
+                <span className="flex items-center gap-1.5 text-[11px] font-bold text-muted-foreground">
+                  <RefreshCw className="w-3.5 h-3.5 animate-spin" />
+                  جارٍ الحفظ لعبة بعد لعبة…
+                </span>
+              )}
+            </div>
+
+            {catalogueQuery.isLoading ? (
+              <p className="text-xs text-muted-foreground font-bold">جارِ تحميل قائمة الألعاب…</p>
+            ) : catalogueQuery.isError ? (
+              <p className="text-xs font-bold text-red-500 bg-red-500/10 rounded-xl p-3">
+                تعذّر تحميل قائمة الألعاب — حاول التحديث.
+              </p>
+            ) : (
+              <>
+                <div className="space-y-2">
+                  {visibleGames.map((game) => {
+                    const productId = String(game["id"] ?? "");
+                    const flags = savedFlags[productId];
+                    const excluded = flags?.excluded === true;
+                    const price = gamePrice(game);
+                    return (
+                      <div
+                        key={productId}
+                        /* Named, like the bundle picker's rows, so a test can press one game's tier and not another's. */
+                        data-testid="roulette-game-row"
+                        data-id={productId}
+                        className={`rounded-xl border p-3 flex flex-wrap items-center gap-2 ${
+                          excluded ? "border-rose-500/30 bg-rose-500/5" : "border-border"
+                        }`}
+                      >
+                        <div className="min-w-[160px] flex-1">
+                          <div className="font-bold text-xs leading-snug">{gameName(game)}</div>
+                          <div className="text-[10px] text-muted-foreground font-semibold mt-0.5 flex items-center gap-2">
+                            <span dir="ltr">{price.toLocaleString("en-US")} د.ع</span>
+                            {flags?.popularity === undefined && (
+                              <span>· لم تُصنَّف بعد (تُحسب «غير مشهورة»)</span>
+                            )}
+                          </div>
+                        </div>
+
+                        <div className="flex items-center gap-1.5 flex-wrap">
+                          {POPULARITY_ORDER.map((tier) => {
+                            const chosen = flags?.popularity === tier;
+                            return (
+                              <button
+                                key={tier}
+                                onClick={() =>
+                                  /* Only the tier. An `excluded` sent alongside would overwrite a decision nobody touched. */
+                                  setGameFlagsMutation.mutate({ productId, popularity: tier })
+                                }
+                                disabled={setGameFlagsMutation.isPending}
+                                aria-pressed={chosen}
+                                className={`min-h-[44px] px-3 rounded-xl font-bold text-[11px] transition-colors disabled:opacity-60 ${
+                                  chosen
+                                    ? "bg-amber-500 text-black"
+                                    : "bg-muted/50 text-muted-foreground hover:text-foreground"
+                                }`}
+                              >
+                                {POPULARITY_LABELS[tier]}
+                              </button>
+                            );
+                          })}
+
+                          <button
+                            onClick={() =>
+                              /* Only the switch, for the same reason. */
+                              setGameFlagsMutation.mutate({ productId, excluded: !excluded })
+                            }
+                            disabled={setGameFlagsMutation.isPending}
+                            aria-pressed={excluded}
+                            title="استبعاد من الروليت"
+                            className={`min-h-[44px] px-3 rounded-xl font-bold text-[11px] flex items-center gap-1.5 transition-colors disabled:opacity-60 ${
+                              excluded
+                                ? "bg-rose-500/15 text-rose-600 border border-rose-500/30"
+                                : "bg-muted/50 text-muted-foreground hover:text-foreground"
+                            }`}
+                          >
+                            <Ban className="w-3.5 h-3.5" />
+                            {excluded ? "مستبعدة — اضغط للإرجاع" : "استبعاد من الروليت"}
+                          </button>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+
+                {visibleGames.length === 0 && (
+                  <div className="text-center py-10 bg-muted/20 rounded-2xl border border-dashed border-border text-muted-foreground text-xs">
+                    لا توجد لعبة مطابقة لبحثك.
+                  </div>
+                )}
+
+                {matchedGames.length > visibleGames.length && (
+                  <p className="text-[11px] text-muted-foreground font-bold">
+                    يُعرض <span dir="ltr">{visibleGames.length}</span> من{" "}
+                    <span dir="ltr">{matchedGames.length.toLocaleString("en-US")}</span> نتيجة —
+                    ضيّق البحث لترى البقية.
+                  </p>
+                )}
+              </>
+            )}
+          </div>
+
+          {/* ---- the audit ---- */}
+          <div className="rounded-2xl border border-border bg-card p-5 space-y-4">
+            <div>
+              <h3 className="font-black text-sm flex items-center gap-2">
+                <FileSearch className="w-4 h-4" />
+                تدقيق الروليت
+              </h3>
+              <p className="text-xs text-muted-foreground mt-1 font-medium leading-relaxed">
+                صندوق واحد لكل المعرّفات: الدورات، الجوائز، مبيعات الموز المباشرة، وحركة التذاكر.
+                للقراءة فقط.
+              </p>
+            </div>
+
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                setAuditQuery(auditInput.trim());
+              }}
+              className="flex flex-wrap items-center gap-2"
+            >
+              <div className="relative flex-1 min-w-[200px]">
+                <Search className="w-4 h-4 absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
+                <input
+                  type="text"
+                  placeholder="ابحث بمعرّف مستخدم أو دورة أو جائزة أو طلب"
+                  value={auditInput}
+                  onChange={(e) => setAuditInput(e.target.value)}
+                  className="w-full min-h-[44px] pl-3 pr-9 rounded-xl border border-border bg-card text-xs font-medium focus:border-amber-500 outline-none"
+                />
+              </div>
+              <button
+                type="submit"
+                disabled={!auditInput.trim() || auditResults.isFetching}
+                className="min-h-[44px] px-5 rounded-xl bg-black text-white dark:bg-white dark:text-black font-black text-xs disabled:opacity-50"
+              >
+                {auditResults.isFetching ? "جارٍ البحث…" : "ابحث"}
+              </button>
+            </form>
+
+            {auditResults.isError && (
+              <p className="text-xs font-bold text-red-500 bg-red-500/10 rounded-xl p-3">
+                {auditResults.error instanceof Error && auditResults.error.message
+                  ? auditResults.error.message
+                  : "تعذّر البحث — حاول مرة أخرى"}
+              </p>
+            )}
+
+            {auditQuery && auditResults.data && (
+              <div className="space-y-3">
+                <AuditTable
+                  title="الدورات"
+                  icon={<Dices className="w-3.5 h-3.5" />}
+                  rows={auditResults.data.spins ?? []}
+                />
+                <AuditTable
+                  title="الجوائز"
+                  icon={<Gift className="w-3.5 h-3.5" />}
+                  rows={auditResults.data.prizes ?? []}
+                />
+                <AuditTable
+                  title="مبيعات الموز المباشرة"
+                  icon={<DollarSign className="w-3.5 h-3.5" />}
+                  rows={auditResults.data.sales ?? []}
+                />
+                <AuditTable
+                  title="حركة التذاكر"
+                  icon={<Ticket className="w-3.5 h-3.5" />}
+                  rows={auditResults.data.tickets ?? []}
+                />
+              </div>
+            )}
+          </div>
         </div>
       )}
 
