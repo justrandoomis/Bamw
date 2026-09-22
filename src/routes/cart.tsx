@@ -702,6 +702,15 @@ function CartPage() {
       } else if (err.message === "insufficient_balance") {
         toast.error("رصيد المحفظة غير كافٍ لإتمام الدفع.");
         setShowInsufficientModal(true);
+      } else if (err.message === "cash_on_delivery_not_available") {
+        /*
+          The server refused the cash option. It should be unreachable — the
+          cart asks the same rule before showing the choice — but a tab left
+          open while a game was added in another one can still get here, and a
+          raw identifier in a toast is not an answer.
+        */
+        toast.error("الدفع عند الاستلام متاح للأجهزة والإكسسوارات فقط. أعد المحاولة بالدفع من المحفظة.");
+        setPayAtDoor(false);
       } else if (err.message === "product_not_released") {
         /*
           A game in this cart has not come out yet. It can only have got here
@@ -757,7 +766,15 @@ function CartPage() {
       return;
     }
 
-    if (!isBalanceSufficient) {
+    /*
+      A WALLET GUARD, ON THE WALLET PATH ONLY.
+
+      This read `!isBalanceSufficient` and refused, which would have blocked
+      the exact order cash on delivery exists for: a member with an empty
+      wallet buying a console they intend to pay the courier for. `canPlaceOrder`
+      is the same check on the wallet path and simply true at the door.
+    */
+    if (!canPlaceOrder) {
       playSound("Error", 0.5);
       setShowInsufficientModal(true);
       return;
@@ -1159,7 +1176,12 @@ function CartPage() {
               <span className="font-bold text-foreground">{tr("رصيد محفظتك الحالي")}:</span>
               <span
                 className={`font-black ${
-                  isBalanceSufficient
+                  /*
+                    Red means "not enough for this order". At the door the
+                    wallet is not paying for anything, so a short balance is
+                    not a problem and must not be coloured like one.
+                  */
+                  !payFromWallet || isBalanceSufficient
                     ? "text-emerald-600 dark:text-emerald-400"
                     : "text-rose-600 dark:text-rose-400"
                 }`}
@@ -1171,7 +1193,10 @@ function CartPage() {
             {/* Amount to be deducted */}
             <div className="pt-1 flex justify-between items-center">
               <span className="font-black text-foreground text-sm">
-                {tr("المبلغ المطلوب دفعه من المحفظة")}:
+                {payFromWallet
+                  ? tr("المبلغ المطلوب دفعه من المحفظة")
+                  : tr("المبلغ الذي تدفعه للمندوب عند الاستلام")}
+                :
               </span>
               <span className="font-black text-primary text-base">
                 {formatIQDPrice(totalPayable)}
@@ -1179,8 +1204,8 @@ function CartPage() {
             </div>
           </div>
 
-          {/* Insufficient Balance Notice */}
-          {!isBalanceSufficient && (
+          {/* Insufficient Balance Notice — a wallet problem, and only there */}
+          {payFromWallet && !isBalanceSufficient && (
             <div className="mt-3 p-3.5 bg-rose-500/10 border border-rose-500/25 rounded-2xl text-right space-y-2">
               <div className="flex items-center gap-2 text-rose-600 dark:text-rose-400 text-xs font-black">
                 <AlertCircle className="w-4 h-4 shrink-0" />
@@ -1325,7 +1350,7 @@ function CartPage() {
             </div>
             <div
               className={`font-black text-sm sm:text-base tracking-tight ${
-                isBalanceSufficient
+                !payFromWallet || isBalanceSufficient
                   ? "text-emerald-600 dark:text-emerald-400"
                   : "text-rose-600 dark:text-rose-400"
               }`}

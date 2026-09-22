@@ -53,8 +53,22 @@ export default tseslint.config(
     },
   },
   {
-    /* Runs inside `page.evaluate`, where the browser globals are the point. */
-    files: ["scripts/check-horizontal-overflow.mjs"],
+    /*
+      Runs inside `page.evaluate`, where the browser globals are the point.
+
+      Every script here drives a real Chrome and serialises a callback across
+      to it. `document` and `window` inside such a callback are not undefined
+      identifiers; they are the only things it can see. The list is explicit
+      rather than a `scripts/**` blanket, so a script that reaches for a
+      browser global while running in Node is still an error.
+    */
+    files: [
+      "scripts/banana-live-check.mjs",
+      "scripts/check-horizontal-overflow.mjs",
+      "scripts/search-live-check.mjs",
+      "scripts/tier-reprice-verify.mjs",
+      "scripts/ui-restoration-visual.mjs",
+    ],
     languageOptions: { globals: { ...globals.node, ...globals.browser } },
   },
   eslintPluginPrettier,
