@@ -109,6 +109,14 @@ export interface AccountToolsModalProps {
   onClose: () => void;
   order?: Order | null;
   defaultTab?: "credentials" | "card" | "otp" | "instructions";
+  /**
+   * Bumped by the inbox when the member does something on this thread.
+   *
+   * A number rather than a callback because the tool decides WHETHER to
+   * reload — it refuses while an action is in flight — and only the tool
+   * knows that.
+   */
+  deliveryRefreshKey?: number;
   onCompleteOrder?: (orderId: string) => Promise<unknown> | void;
   /*
     The manual door. This surface is the only one that has the delivery state
@@ -184,6 +192,7 @@ export function AccountToolsModal({
   onClose,
   order,
   defaultTab = "credentials",
+  deliveryRefreshKey = 0,
   onCompleteOrder,
   onCompleteOrderManually,
   isCompletingOrder = false,
@@ -262,6 +271,26 @@ export function AccountToolsModal({
   useEffect(() => {
     if (isOpen) void loadState();
   }, [isOpen, loadState]);
+
+  /*
+    Live, while it is open.
+
+    Delivery state changed under this screen all the time and the screen never
+    said so: the member uploads the login proof and the slot becomes eligible
+    for its OTP, but the tool kept showing «بانتظار الإثبات» until the admin
+    closed it and opened it again. `deliveryRefreshKey` is bumped by the inbox
+    whenever a realtime message arrives from the member on this thread, so the
+    reload happens for the reason it should — something actually changed —
+    rather than on a timer that is wrong in both directions.
+
+    Never while a field is being edited: `busyId` is set for the whole of an
+    action, and a reload mid-action would replace a draft the admin is still
+    typing with what the server last saw.
+  */
+  useEffect(() => {
+    if (!isOpen || !deliveryRefreshKey || busyId) return;
+    void loadState();
+  }, [isOpen, deliveryRefreshKey, busyId, loadState]);
 
   useEffect(
     () => () => {

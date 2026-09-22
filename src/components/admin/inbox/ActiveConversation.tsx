@@ -171,6 +171,18 @@ export function ActiveConversation({
   const [isDragging, setIsDragging] = useState(false);
 
   // Modals & Drawers state
+  /*
+    How many messages the member has sent in this thread.
+
+    A count, not a timestamp: it changes exactly once per message, it cannot
+    go backwards, and it is derived from the messages the socket already
+    delivers rather than from a second subscription.
+  */
+  const customerMessageCount = useMemo(
+    () => messages.filter((message) => message.senderRole === "user").length,
+    [messages],
+  );
+
   const [isAccountToolsOpen, setIsAccountToolsOpen] = useState(false);
   const [accountToolsDefaultTab, setAccountToolsDefaultTab] = useState<
     "credentials" | "otp" | "instructions"
@@ -1006,6 +1018,21 @@ export function ActiveConversation({
             onClose={() => setIsAccountToolsOpen(false)}
             order={linkedOrder}
             defaultTab={accountToolsDefaultTab}
+            /*
+              Live, while the tool is open.
+
+              Delivery state changes under that screen all the time and the
+              screen never said so: the member uploads the login proof and the
+              slot becomes eligible for its OTP, but the tool kept showing
+              «بانتظار الإثبات» until the admin closed it and opened it again.
+
+              The key counts the member's OWN messages in this thread, which
+              arrive over the realtime socket. So the reload happens for the
+              reason it should — the member did something — and not on a timer
+              that is wrong in both directions. The tool decides whether to
+              act on it; it refuses while an action is in flight.
+            */
+            deliveryRefreshKey={customerMessageCount}
             onCompleteOrder={onCompleteOrder}
             onCompleteOrderManually={onCompleteOrderManually}
             isCompletingOrder={isCompletingOrder}
