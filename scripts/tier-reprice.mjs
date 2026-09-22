@@ -93,6 +93,30 @@ await build({
   logLevel: "silent",
   alias: { "@": path.resolve("src") },
   external: ["cloudflare:workers", "node:async_hooks", "node:crypto", "sharp"],
+  /*
+    TanStack Start's server core imports three virtual modules that only the
+    app's own build can resolve. Stubbing them is safe here because nothing on
+    this path runs a request handler — the catalogue is read as a document.
+    The first run of this script died on exactly these three, because it was
+    written without the plugin that `reprice.mjs` has carried since it was
+    written for the same reason.
+  */
+  plugins: [
+    {
+      name: "stub-start-virtuals",
+      setup(pluginBuild) {
+        const virtual = /^(#tanstack-router-entry|#tanstack-start-entry|tanstack-start-manifest:)/;
+        pluginBuild.onResolve({ filter: virtual }, (a) => ({
+          path: a.path,
+          namespace: "start-virtual",
+        }));
+        pluginBuild.onLoad({ filter: /.*/, namespace: "start-virtual" }, () => ({
+          contents: "export default {}; export const getStartManifest = () => ({});",
+          loader: "js",
+        }));
+      },
+    },
+  ],
 });
 const app = await import(outfile);
 
