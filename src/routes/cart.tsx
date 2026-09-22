@@ -36,6 +36,7 @@ import { toast } from "sonner";
 import { validateCoupon } from "@/lib/reviews-coupons.functions";
 import AppShell from "@/components/AppShell";
 import { useAuth } from "@/hooks/useAuth";
+import { resolveDeliveryPrice } from "@/lib/delivery-fee";
 import { cashOnDeliveryAllowed } from "@/lib/payment-method";
 import { api } from "@/lib/api";
 import type { Address, Product, ProductKind, Order } from "@/lib/types";
@@ -461,9 +462,19 @@ function CartPage() {
   const subtotal = cartTotal(lines);
   const totalItemsCount = lines.reduce((sum, l) => sum + (l.quantity || 1), 0);
 
-  // Delivery calculation if physical hardware exists
-  const deliveryBase = Number(storeData?.settings?.["deliveryBase"] || 5000);
-  const deliveryPrice = needsAddress ? deliveryBase : 0;
+  /*
+    Delivery, from the same function the checkout uses.
+
+    This read `deliveryBase` alone and ignored the owner's per-city list, while
+    the server applied it — so an order to a city priced differently was shown
+    one fee and charged another, in the one line of the bill nobody checks.
+
+    It follows the city as it is typed, which is also what the checkout will
+    read off the same address a moment later.
+  */
+  const deliveryPrice = needsAddress
+    ? resolveDeliveryPrice(storeData?.settings as Record<string, unknown> | undefined, address.city)
+    : 0;
 
   // Coupon state
   const [couponCode, setCouponCode] = useState("");
@@ -709,7 +720,9 @@ function CartPage() {
           open while a game was added in another one can still get here, and a
           raw identifier in a toast is not an answer.
         */
-        toast.error("الدفع عند الاستلام متاح للأجهزة والإكسسوارات فقط. أعد المحاولة بالدفع من المحفظة.");
+        toast.error(
+          "الدفع عند الاستلام متاح للأجهزة والإكسسوارات فقط. أعد المحاولة بالدفع من المحفظة.",
+        );
         setPayAtDoor(false);
       } else if (err.message === "product_not_released") {
         /*

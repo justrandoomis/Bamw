@@ -73,7 +73,9 @@ describe("the method is resolved, never accepted", () => {
   it("only ever returns cash on delivery for a cart that may have it", () => {
     expect(resolvePaymentMethod("cash_on_delivery", [line("hardware")])).toBe("cash_on_delivery");
     expect(resolvePaymentMethod("cash_on_delivery", [line("game")])).toBe("wallet");
-    expect(resolvePaymentMethod("cash_on_delivery", [line("game"), line("hardware")])).toBe("wallet");
+    expect(resolvePaymentMethod("cash_on_delivery", [line("game"), line("hardware")])).toBe(
+      "wallet",
+    );
   });
 
   it("falls back to the wallet for anything it does not recognise", () => {
@@ -118,8 +120,12 @@ describe("the checkout refuses rather than quietly charging", () => {
   });
 
   it("decides from the server's own rule, not from the request", () => {
-    expect(orders).toContain('import { cashOnDeliveryAllowed, resolvePaymentMethod } from "./payment-method";');
-    expect(orders).toContain("const paymentMethod = resolvePaymentMethod(requestedPaymentMethod, items);");
+    expect(orders).toContain(
+      'import { cashOnDeliveryAllowed, resolvePaymentMethod } from "./payment-method";',
+    );
+    expect(orders).toContain(
+      "const paymentMethod = resolvePaymentMethod(requestedPaymentMethod, items);",
+    );
     expect(orders).toContain('const needsWalletPayment = paymentMethod === "wallet";');
   });
 
@@ -129,7 +135,9 @@ describe("the checkout refuses rather than quietly charging", () => {
 
   it("validates the field at the boundary before it reaches the checkout", () => {
     expect(ordersApi).toContain('import { isPaymentMethod } from "@/lib/payment-method";');
-    expect(ordersApi).toContain("isPaymentMethod(data.paymentMethod) ? data.paymentMethod : undefined");
+    expect(ordersApi).toContain(
+      "isPaymentMethod(data.paymentMethod) ? data.paymentMethod : undefined",
+    );
   });
 });
 
@@ -146,7 +154,7 @@ describe("a cash order is not asked to pay twice", () => {
     expect(orders).toContain('} else if (paymentMethod === "cash_on_delivery") {');
     const branch = orders.slice(
       orders.indexOf('} else if (paymentMethod === "cash_on_delivery") {'),
-      orders.indexOf('      const intro = store.adminPresence?.online'),
+      orders.indexOf("      const intro = store.adminPresence?.online"),
     );
     expect(branch).toContain("الدفع عند الاستلام");
     expect(branch).toContain("لم يُخصم من محفظتك شيء");
@@ -159,7 +167,9 @@ describe("a cash order is not asked to pay twice", () => {
 describe("the cart cannot offer what the server would refuse", () => {
   it("asks the same shared rule the server asks", () => {
     expect(cart).toContain('import { cashOnDeliveryAllowed } from "@/lib/payment-method";');
-    expect(cart).toContain("const codAllowed = cashOnDeliveryAllowed(lines.map((l) => ({ kind: l.kind })));");
+    expect(cart).toContain(
+      "const codAllowed = cashOnDeliveryAllowed(lines.map((l) => ({ kind: l.kind })));",
+    );
   });
 
   it("shows the choice only when the rule allows it", () => {

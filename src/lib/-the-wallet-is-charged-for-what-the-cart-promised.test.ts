@@ -46,7 +46,9 @@ describe("payment is not decided by what the order contains", () => {
   */
   it("charges every order except one the member chose to pay at the door", () => {
     expect(orders).toContain('const needsWalletPayment = paymentMethod === "wallet";');
-    expect(orders).toContain("const paymentMethod = resolvePaymentMethod(requestedPaymentMethod, items);");
+    expect(orders).toContain(
+      "const paymentMethod = resolvePaymentMethod(requestedPaymentMethod, items);",
+    );
   });
 
   it("still uses the digital question for fulfilment, where it belongs", () => {
@@ -62,7 +64,9 @@ describe("the amount taken is the amount the cart showed", () => {
     pays the courier on every delivery.
   */
   it("debits the order total, not the items subtotal", () => {
-    const debit = orders.slice(orders.indexOf("UPDATE users SET wallet_balance = wallet_balance - ?"));
+    const debit = orders.slice(
+      orders.indexOf("UPDATE users SET wallet_balance = wallet_balance - ?"),
+    );
     expect(debit.slice(0, 400)).toContain("params: [total, user.id, total]");
   });
 
@@ -135,6 +139,38 @@ describe("a cancellation gives back only what the wallet paid", () => {
 
   it("requires a payment row, or a payment reference without a ledger", () => {
     expect(adminOrders).toContain("paid without a wallet payment row — no automatic wallet refund");
-    expect(adminOrders).toContain('order.paymentStatus === "paid" && Boolean(order.paymentReference)');
+    expect(adminOrders).toContain(
+      'order.paymentStatus === "paid" && Boolean(order.paymentReference)',
+    );
+  });
+});
+
+describe("a payment that did not happen gives back what it claimed", () => {
+  /*
+    Both the coupon use and the referral discount are claimed before the money
+    is tried. The pre-flight balance check released both; the branch that finds
+    the debit did not apply released only the coupon, and a thrown error
+    released neither, because nothing wrapped the batch.
+
+    `referral_discount_used_at` is what makes the discount once per account FOR
+    EVER — so a member with two tabs open, whose second checkout lost the race
+    for the balance, lost the one discount of their life to an order that was
+    never created.
+  */
+  it("releases both claims from one place", () => {
+    expect(orders).toContain("const releaseCheckoutClaims = async () => {");
+    const helper = orders.slice(orders.indexOf("const releaseCheckoutClaims = async () => {"));
+    expect(helper.slice(0, 400)).toContain("releaseCouponUse");
+    expect(helper.slice(0, 400)).toContain("releaseReferralDiscount(orderId)");
+  });
+
+  it("calls it when the debit matched nothing", () => {
+    const guard = orders.slice(orders.indexOf("if (Number(payment[0]?.meta?.changes ?? 0) !== 1)"));
+    expect(guard.slice(0, 220)).toContain("await releaseCheckoutClaims();");
+    expect(guard.slice(0, 220)).toContain('throw new Error("insufficient_balance")');
+  });
+
+  it("calls it when the batch threw instead of answering", () => {
+    expect(orders).toContain("      await releaseCheckoutClaims();\n      throw err;");
   });
 });

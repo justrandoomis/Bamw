@@ -100,7 +100,7 @@ describe("a key another member already owns is dropped, not charged for", () => 
       orders.indexOf("SELECT user_id FROM orders WHERE idempotency_key = ? LIMIT 1"),
     );
     expect(branch.slice(0, 500)).toContain(
-      'if (owner && String(owner.user_id) !== String(user.id)) {',
+      "if (owner && String(owner.user_id) !== String(user.id)) {",
     );
     expect(branch.slice(0, 500)).toContain("cleanIdempotencyKey = undefined;");
     expect(branch.slice(0, 500)).toContain('console.warn("[order:idempotency_key_taken]"');
@@ -114,7 +114,8 @@ describe("a key another member already owns is dropped, not charged for", () => 
   });
 
   it("checks ownership only after the member's own order was not found", () => {
-    expect(orders.indexOf("SELECT doc FROM orders WHERE idempotency_key = ? AND user_id = ?")).
-      toBeLessThan(orders.indexOf("SELECT user_id FROM orders WHERE idempotency_key = ? LIMIT 1"));
+    expect(
+      orders.indexOf("SELECT doc FROM orders WHERE idempotency_key = ? AND user_id = ?"),
+    ).toBeLessThan(orders.indexOf("SELECT user_id FROM orders WHERE idempotency_key = ? LIMIT 1"));
   });
 });

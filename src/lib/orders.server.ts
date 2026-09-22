@@ -40,6 +40,7 @@ import { memberAllowsNotification } from "./notification-preferences.server";
   boolean and they are two now.
 */
 import { isFullyDigitalOrder } from "./delivery-kinds";
+import { resolveDeliveryPrice } from "./delivery-fee";
 import { cashOnDeliveryAllowed, resolvePaymentMethod } from "./payment-method";
 import type {
   Address,
@@ -859,18 +860,13 @@ export async function createOrderForUser(
   */
   const needsWalletPayment = paymentMethod === "wallet";
 
-  const deliveryBase = toNumber(store.settings?.["deliveryBase"] || 5000);
-  const deliveryExceptions = (
-    Array.isArray(store.settings?.["deliveryExceptions"])
-      ? store.settings["deliveryExceptions"]
-      : []
-  ) as { city: string; price: number }[];
-
-  let deliveryPrice = deliveryBase;
-  if (address?.city) {
-    const exception = deliveryExceptions.find((e) => e.city === address.city);
-    if (exception) deliveryPrice = toNumber(exception.price);
-  }
+  /*
+    The same function the cart calls, so the fee on the screen is the fee in
+    the bill. The cart used to show `deliveryBase` for every address while this
+    applied the city list, which meant a member in a city the owner had priced
+    differently was quoted one number and charged another.
+  */
+  const deliveryPrice = resolveDeliveryPrice(store.settings, address?.city);
 
   /*
     The same five kinds that decide a delivery slot is not needed
@@ -981,9 +977,33 @@ export async function createOrderForUser(
     : undefined;
 
   if (needsWalletPayment) {
-    const payment = await d1Batch([
-      {
-        /*
+    /*
+      GIVE THE CLAIMS BACK WHENEVER THE PAYMENT DOES NOT HAPPEN.
+
+      Both were claimed before the money was tried: `releaseCouponUse` puts a
+      single-use coupon back, and `releaseReferralDiscount` clears
+      `referral_discount_used_at` — the column that makes the discount once per
+      account FOR EVER. The pre-flight balance check releases both. The branch
+      that finds the debit did not apply released only the coupon, and a thrown
+      error released neither, because nothing wrapped the batch at all.
+
+      So a member with 10,000 and two tabs open, checking out two 8,000 carts
+      in the same second, lost the one referral discount of their life to the
+      tab that lost the race — with no order, no money moved and nothing on any
+      screen to explain it.
+    */
+    const releaseCheckoutClaims = async () => {
+      if (couponClaimed) {
+        await releaseCouponUse({ ...couponClaimed, releaseGlobal: true }).catch(() => {});
+      }
+      if (referralClaimed) await releaseReferralDiscount(orderId).catch(() => {});
+    };
+
+    let payment;
+    try {
+      payment = await d1Batch([
+        {
+          /*
           The condition belongs in the WHERE clause, not in a CASE.
 
           It was `SET wallet_balance = CASE WHEN wallet_balance >= ? THEN
@@ -999,48 +1019,52 @@ export async function createOrderForUser(
           skipped, the order is not written, and the guard reports what
           actually happened.
         */
-        sql: `UPDATE users SET wallet_balance = wallet_balance - ? WHERE id = ? AND wallet_balance >= ?`,
-        params: [total, user.id, total],
-      },
-      {
-        sql: `INSERT INTO wallet_transactions (id, user_id, kind, amount, description, order_id, created_at)
+          sql: `UPDATE users SET wallet_balance = wallet_balance - ? WHERE id = ? AND wallet_balance >= ?`,
+          params: [total, user.id, total],
+        },
+        {
+          sql: `INSERT INTO wallet_transactions (id, user_id, kind, amount, description, order_id, created_at)
                SELECT ?, ?, 'payment', ?, ?, ?, ? WHERE changes() = 1`,
-        params: [walletTxId, user.id, -total, `شراء طلب ${code}`, orderId, now],
-      },
-      {
-        sql: `INSERT INTO orders (
+          params: [walletTxId, user.id, -total, `شراء طلب ${code}`, orderId, now],
+        },
+        {
+          sql: `INSERT INTO orders (
                 id, code, user_id, doc, status, payment_status, total, created_at, updated_at,
                 idempotency_key, checkout_session_id, payment_reference, source, created_by
               ) SELECT ?, ?, ?, ?, 'processing', 'paid', ?, ?, ?, ?, ?, ?, ?, ? WHERE changes() = 1`,
-        params: [
-          order.id,
-          order.code,
-          order.userId,
-          JSON.stringify(order),
-          order.total,
-          now,
-          now,
-          order.idempotencyKey || null,
-          order.checkoutSessionId || null,
-          order.paymentReference || null,
-          order.source || "checkout_web",
-          order.createdBy || user.id,
-        ],
-      },
-      /*
+          params: [
+            order.id,
+            order.code,
+            order.userId,
+            JSON.stringify(order),
+            order.total,
+            now,
+            now,
+            order.idempotencyKey || null,
+            order.checkoutSessionId || null,
+            order.paymentReference || null,
+            order.source || "checkout_web",
+            order.createdBy || user.id,
+          ],
+        },
+        /*
         The reward is written in the same batch as the payment, chained to it by
         `changes() = 1` like every statement before it. A discount the buyer
         received and a reward the referrer is owed are two halves of one
         decision: they are committed together or not at all.
       */
-      ...(rewardStatement
-        ? [{ sql: rewardStatement.chainedSql, params: rewardStatement.params }]
-        : []),
-    ]);
+        ...(rewardStatement
+          ? [{ sql: rewardStatement.chainedSql, params: rewardStatement.params }]
+          : []),
+      ]);
+    } catch (err) {
+      // A constraint abort, a lost connection — the money did not move, so
+      // neither claim may stay spent.
+      await releaseCheckoutClaims();
+      throw err;
+    }
     if (Number(payment[0]?.meta?.changes ?? 0) !== 1) {
-      if (couponClaimed) {
-        await releaseCouponUse({ ...couponClaimed, releaseGlobal: true }).catch(() => {});
-      }
+      await releaseCheckoutClaims();
       throw new Error("insufficient_balance");
     }
   }
