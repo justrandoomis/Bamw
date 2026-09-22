@@ -215,7 +215,24 @@ for (const product of games) {
     customer is charged. Measured here rather than argued about.
   */
   const lead = priced[0];
+  /*
+    IS THE CHEAPER NUMBER EVEN FOR SALE?
+
+    The fix this report exists to justify is "lead with the ordinary offline
+    account". For the products where the only priced row is an ONLINE one, the
+    offline price lives in `price`/`accountPrice` — and leading with it is only
+    honest if the product page really offers it. `readOffers` is the function
+    that page calls, so it is the one asked here. An amount in a field nobody
+    renders is not an offer, and advertising it would be worse than the fault
+    being fixed.
+  */
+  const offers = app.readOffers(product) ?? [];
+  const accountOffer = offers.find((o) => o.kind === "account");
   singles.push({
+    offlineOffered: Boolean(accountOffer),
+    offlineOfferPrice: Number(accountOffer?.price) || 0,
+    offlineAvailable: Boolean(accountOffer?.available),
+    offerKinds: offers.map((o) => o.kind).join("+") || "—",
     id: String(product.id),
     title: String(product.titleEn || product.english_name || product.title || product.id),
     shown,
@@ -314,6 +331,26 @@ const disagree = singles.filter((s) => s.rowPrice > 0 && s.base > 0 && s.rowPric
 say(`- **سعر الصف يخالف \`price\` المسجّل: ${disagree.length}**`);
 say(`- منها صف الأسعار أغلى من \`price\`: **${disagree.filter((s) => s.rowPrice > s.base).length}**`);
 say(`- بلا صف أسعار إطلاقًا (السعر هو \`price\` نفسه): **${singles.filter((s) => s.rowPrice === 0).length}**`);
+say();
+const online = disagree.filter((s) => s.rowKind === "online_base" || s.rowKind === "online_extras");
+say(`- **منها صفها الوحيد هو حساب أونلاين: ${online.length}**`);
+say(`- منها صفحة المنتج تعرض فعلًا حساب أوفلاين أرخص: **${online.filter((s) => s.offlineOffered && s.offlineOfferPrice > 0 && s.offlineOfferPrice < s.rowPrice).length}**`);
+say(`- ومتاح للشراء الآن: **${online.filter((s) => s.offlineAvailable && s.offlineOfferPrice > 0 && s.offlineOfferPrice < s.rowPrice).length}**`);
+say(`- بلا عرض أوفلاين على الصفحة إطلاقًا: **${online.filter((s) => !s.offlineOffered).length}**`);
+say();
+if (online.length) {
+  const show = online.slice().sort((a, b) => b.rowPrice - a.rowPrice).slice(0, 25);
+  say("## صفّها الوحيد أونلاين — وماذا تعرض الصفحة");
+  say();
+  say("| اللعبة | البطاقة | صف الأونلاين | عرض الأوفلاين | متاح؟ | العروض |");
+  say("| --- | ---: | ---: | ---: | :---: | --- |");
+  for (const r of show) {
+    say(
+      `| ${label(r.title)} | ${money(r.shown)} | ${money(r.rowPrice)} | ${r.offlineOffered ? money(r.offlineOfferPrice) : "لا يوجد"} | ${r.offlineAvailable ? "نعم" : "لا"} | ${r.offerKinds} |`,
+    );
+  }
+  say();
+}
 say(`- منها سعرها يساوي سعر حساب الأونلاين المسجّل: **${singles.filter((s) => s.matchesOnline).length}**`);
 say(`- منها بلا تكلفة مسجّلة: **${singles.filter((s) => s.cost <= 0).length}**`);
 say();

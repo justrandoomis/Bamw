@@ -53,3 +53,9 @@ export {
   initialVariantName,
   pricingTypeRows,
 } from "@/lib/productPricing";
+/*
+  The offers the product page actually shows. A report that wants to know
+  whether a cheaper price is BUYABLE has to ask the same function the page asks
+  — an amount sitting in a field nobody renders is not an offer.
+*/
+export { readOffers } from "@/lib/hub";
