@@ -14,7 +14,7 @@ import {
   saveMarketConfig,
 } from "@/lib/banana.server";
 /* The same numbers the pricing uses, so the refusal cannot disagree with it. */
-import { PRICE_STEP, roundsToZero } from "@/lib/banana-market-config.server";
+import { getMarketConfig, marketConfigProblem } from "@/lib/banana-market-config.server";
 import {
   createBananCodesBatch,
   deleteBananCode,
@@ -113,7 +113,24 @@ export const Route = createFileRoute("/api/admin/banana")({
             if (data.promoRatePerMinute !== undefined) {
               enginePatch["promoRatePerMinute"] = Number(data.promoRatePerMinute);
             }
-            if (Object.keys(enginePatch).length > 0) await saveMarketConfig(enginePatch);
+            /*
+              Held to the same rules as the engine tab, because this is the
+              screen the owner actually uses. `save_market_config` below refuses
+              a base outside its band and a band that rounds to nothing; this
+              action wrote `basePrice` with nothing checked, which is how a base
+              of 0.0004 went into a shop whose ceiling was 0.0003 and killed the
+              market silently. One set of rules, both doors.
+            */
+            if (Object.keys(enginePatch).length > 0) {
+              for (const [key, value] of Object.entries(enginePatch)) {
+                if (!Number.isFinite(value)) {
+                  return json({ error: `قيمة غير صالحة للحقل ${key}` }, { status: 400 });
+                }
+              }
+              const problem = marketConfigProblem({ ...(await getMarketConfig()), ...enginePatch });
+              if (problem) return json({ error: problem }, { status: 400 });
+              await saveMarketConfig(enginePatch);
+            }
 
             const fresh = await getAdminBananaData();
             return json({ success: true, settings: fresh.settings });
@@ -147,67 +164,15 @@ export const Route = createFileRoute("/api/admin/banana")({
             if (c["botsEnabled"] !== undefined) patch["botsEnabled"] = Boolean(c["botsEnabled"]);
 
             /*
-              A floor above the ceiling, or a base outside its own bounds, is a
-              market nobody can list into. `getMarketConfig` silently repairs
-              the first of those on read; refusing here means the admin is told
-              rather than left wondering why the engine ignored them.
+              One set of rules, shared with `save_settings` above, so the two
+              doors into the same configuration cannot disagree about what a
+              usable market is. Refused rather than silently repaired: the
+              admin is told which number is wrong and why, instead of being
+              left to wonder why the engine ignored them.
             */
             const current = (await getAdminBananaData()).marketConfig;
-            const merged = { ...current, ...patch } as typeof current;
-            if (merged.minPrice > merged.maxPrice) {
-              return json({ error: "أدنى سعر أكبر من أعلى سعر" }, { status: 400 });
-            }
-            if (!(merged.basePrice > 0)) {
-              return json({ error: "السعر الأساسي يجب أن يكون أكبر من صفر" }, { status: 400 });
-            }
-            /*
-              The comment above promised this check and the code never made it.
-              Production is in exactly the state it describes: a base of 0.0004
-              against a ceiling of 0.0003, so `spotPriceAt` clamps every price
-              to the ceiling and the base the admin set means nothing.
-            */
-            if (merged.basePrice < merged.minPrice || merged.basePrice > merged.maxPrice) {
-              return json(
-                {
-                  error:
-                    `السعر الأساسي (${merged.basePrice}) خارج حدوده: ` +
-                    `أدنى ${merged.minPrice} وأعلى ${merged.maxPrice}. ` +
-                    "المحرك يحصر السعر داخل الحدين، فالقيمة خارجهما لا أثر لها.",
-                },
-                { status: 400 },
-              );
-            }
-            /*
-              A band that rounds to nothing.
-
-              `spotPriceAt` rounds to three decimals, so a ceiling below 0.0005
-              prices at 0.000 for every customer no matter what the base says —
-              which is the «موزة واحدة $0.00» that was reported. Refused with
-              the smallest usable number rather than saved and left to puzzle
-              the admin, who sees a price they set and a market showing zero.
-            */
-            for (const [label, value] of [
-              ["السعر الأساسي", merged.basePrice],
-              ["أدنى سعر", merged.minPrice],
-              ["أعلى سعر", merged.maxPrice],
-            ] as const) {
-              if (roundsToZero(value)) {
-                return json(
-                  {
-                    error:
-                      `${label} (${value}) يُقرَّب إلى صفر عند دقة السوق. ` +
-                      `أصغر قيمة قابلة للعرض هي ${PRICE_STEP}.`,
-                  },
-                  { status: 400 },
-                );
-              }
-            }
-            if (merged.botMinQuantity > merged.botMaxQuantity) {
-              return json({ error: "أقل كمية للبوت أكبر من أكبر كمية" }, { status: 400 });
-            }
-            if (merged.minListingQuantity > merged.maxListingQuantity) {
-              return json({ error: "أقل كمية للعرض أكبر من أكبر كمية" }, { status: 400 });
-            }
+            const problem = marketConfigProblem({ ...current, ...patch } as typeof current);
+            if (problem) return json({ error: problem }, { status: 400 });
 
             return json({ success: true, marketConfig: await saveMarketConfig(patch) });
           }

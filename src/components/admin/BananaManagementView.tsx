@@ -1,6 +1,7 @@
 import React, { useState, useMemo } from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { adminApi } from "@/lib/api";
+import { formatPrice, roundPrice } from "@/lib/banana-price";
 import {
   Sparkles,
   Gift,
@@ -673,7 +674,7 @@ export function BananaManagementView() {
                 <TrendingUp className="w-4 h-4" /> محرك تسعير سوق الموز
               </h3>
               <span className="text-xs font-bold text-muted-foreground">
-                السعر الحالي: {(data?.livePrice ?? 0).toFixed(3)} د.ع
+                السعر الحالي: {formatPrice(data?.livePrice ?? 0)} د.ع
               </span>
             </div>
 
@@ -742,8 +743,13 @@ export function BananaManagementView() {
                   const rand = (min: number, max: number, step = 1) =>
                     Math.round((min + Math.random() * (max - min)) / step) * step;
                   const base = Number(data?.livePrice ?? marketForm.basePrice ?? 1) || 1;
-                  const minPrice = Number((base * (0.6 + Math.random() * 0.25)).toFixed(3));
-                  const maxPrice = Number((base * (1.1 + Math.random() * 0.45)).toFixed(3));
+                  /*
+                    Rounded the way the engine rounds, not to three decimals.
+                    A base of 0.0004 through `toFixed(3)` gives a floor and a
+                    ceiling of 0.000, which is a band no price can sit inside.
+                  */
+                  const minPrice = roundPrice(base * (0.6 + Math.random() * 0.25));
+                  const maxPrice = roundPrice(base * (1.1 + Math.random() * 0.45));
                   const maxTrade = rand(1000, 20000, 500);
                   saveBotMutation.mutate({
                     name: `بوت ${(data?.bots?.length || 0) + 1}`,
@@ -952,9 +958,7 @@ export function BananaManagementView() {
                   {Number(reward.ticketQuantity) > 0 && (
                     <div className="mt-2 text-[11px] font-semibold text-violet-600 dark:text-violet-400 bg-violet-500/10 px-2.5 py-1 rounded-lg flex items-center gap-1.5">
                       <Ticket className="w-3 h-3" />
-                      <span>
-                        تعطي {Number(reward.ticketQuantity)} تذكرة لعجلة الحظ
-                      </span>
+                      <span>تعطي {Number(reward.ticketQuantity)} تذكرة لعجلة الحظ</span>
                     </div>
                   )}
                 </div>
@@ -1580,8 +1584,8 @@ export function BananaManagementView() {
                     className="w-full p-2.5 rounded-lg border border-border bg-card font-bold text-xs outline-none"
                   />
                   <p className="text-[10px] text-muted-foreground mt-1 font-normal">
-                    اتركها صفراً إذا لم تكن هذه الجائزة تذاكر. سعر التذكرة بالموز هو سعر
-                    الجائزة نفسه في الأعلى.
+                    اتركها صفراً إذا لم تكن هذه الجائزة تذاكر. سعر التذكرة بالموز هو سعر الجائزة
+                    نفسه في الأعلى.
                   </p>
                 </div>
               </div>
@@ -1884,8 +1888,8 @@ export function BananaManagementView() {
               </div>
 
               <p className="text-[10px] text-muted-foreground font-normal leading-relaxed">
-                التذاكر تُمنح مرة واحدة لكل ضغطة. إذا ضغطت مرتين بالخطأ، الضغطة الثانية لن
-                تضيف شيئاً وسيظهر لك ذلك.
+                التذاكر تُمنح مرة واحدة لكل ضغطة. إذا ضغطت مرتين بالخطأ، الضغطة الثانية لن تضيف
+                شيئاً وسيظهر لك ذلك.
               </p>
             </div>
 
