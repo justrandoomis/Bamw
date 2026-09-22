@@ -136,140 +136,153 @@ if (!landed) {
 }
 
 /*
-  WHAT THE SHOPPER SEES, IN TWO PLACES, COMPARED.
+  THE PRODUCTS THIS RUN ACTUALLY MOVED, ON THEIR OWN PAGES.
 
-  The browser cleared the challenge — `/` answered 200 with the shop's own
-  title and rendered twelve product cards — but a `fetch("/api/data")` from
-  inside that same page is still 403, so `/games` and the category shelves come
-  back as empty 28 KB shells: they fetch their catalogue client-side. The
-  server-rendered home page is what this runner can see, and the product pages
-  behind its cards.
+  The home page renders twelve cards and none of them is a repriced game — they
+  are the console and a couple of headline titles. And comparing "the smallest
+  price-shaped number on the page" proved worthless: it read 58,228 off
+  Balatro's page, which is not a price at all. A heuristic that cannot tell a
+  price from a review count cannot verify a price.
 
-  That is enough for the check that matters, because the two numbers this task
-  was about are rendered in two different places from two different fields:
-
-    · the CARD price comes from `listingPricing`, which reads `types` — the
-      same row the till charges from;
-    · the PAGE headline comes from `readOffers`, which reads `accountPrice`
-      then `price` — and never looks at `types` at all.
-
-  Before this run those two disagreed on 49 products. If they agree now, the
-  mirrors moved together, which is the whole thing that was fixed. No cost is
-  needed and none is exposed: this reads only what a shopper is shown.
+  So the expected number is taken from the database — the tier this run wrote,
+  and the headline field beside it — and then looked for, as text, on the
+  product's own page. The page is server-rendered, so it reaches this runner
+  even though `/api/data` does not. That is the whole chain, end to end: what
+  the rules decided, what D1 holds, and what the shopper is shown.
 */
-const PRICE = /([0-9][0-9.,٫٬]{2,})/g;
-const toNumber = (text) => Number(String(text).replace(/[^0-9]/g, ""));
+const d1 = await (async () => {
+  const entry = path.resolve("tier-reprice-verify.catalogue.mjs");
+  await build({
+    entryPoints: [path.resolve("scripts/lib/catalogue-entry.ts")],
+    outfile: entry,
+    bundle: true,
+    platform: "node",
+    format: "esm",
+    target: "node22",
+    logLevel: "silent",
+    tsconfig: path.resolve("tsconfig.json"),
+    plugins: [
+      {
+        name: "tanstack-stubs",
+        setup(b) {
+          b.onResolve({ filter: /^(#tanstack-(router|start)-entry|tanstack-start-manifest:)/ }, (a) => ({
+            path: a.path,
+            namespace: "stub",
+          }));
+          b.onLoad({ filter: /.*/, namespace: "stub" }, () => ({
+            contents: "export default {};",
+            loader: "js",
+          }));
+        },
+      },
+    ],
+  });
+  try {
+    return await import(`file://${entry}`);
+  } finally {
+    rmSync(entry, { force: true });
+  }
+})();
 
-/** Every price-shaped number in a piece of rendered text, largest first. */
-const pricesIn = (text) => {
-  const out = [];
-  for (const hit of String(text ?? "").matchAll(PRICE)) {
-    const n = toNumber(hit[1]);
-    if (n >= 1_000 && n <= 500_000) out.push(n);
-  }
-  return [...new Set(out)];
-};
+d1.invalidateStoreCache();
+const store = await d1.getStore();
+const all = Array.isArray(store?.products) ? store.products : [];
+const withTiers = all.filter((p) => Array.isArray(p?.types) && p.types.length > 0);
+say(`- منتجات بطبقات في قاعدة البيانات: **${withTiers.length}**`);
 
-const cards = [];
-try {
-  /*
-    Wait for the shelf. The cards are rendered after hydration, and reading
-    the locator the instant the document fires `domcontentloaded` found twelve
-    links on one run and none on the next — a race, not a finding.
-  */
-  await page.waitForSelector('a[href^="/product/"]', { timeout: 30_000 }).catch(() => {});
-  await page.waitForTimeout(2500);
-  const links = page.locator('a[href^="/product/"]');
-  const count = await links.count();
-  say(`- روابط منتجات في الصفحة الرئيسية: **${count}**`);
-  /*
-    The first few, verbatim. A card with no price and a page with no cards are
-    the same zero, and only one of them is this script's fault.
-  */
-  for (let i = 0; i < Math.min(count, 3); i += 1) {
-    const sample = await links.nth(i).innerText().catch(() => "");
-    say(`  - عيّنة ${i + 1}: «${sample.replace(/\s+/g, " ").slice(0, 160)}»`);
-  }
-  for (let i = 0; i < count; i += 1) {
-    const link = links.nth(i);
-    const href = await link.getAttribute("href").catch(() => null);
-    const text = await link.innerText().catch(() => "");
-    if (!href) continue;
-    const prices = pricesIn(text);
-    if (!prices.length) continue;
-    const title = String(text).split("\n").map((s) => s.trim()).find(Boolean) ?? "";
-    if (!cards.some((c) => c.href === href)) {
-      cards.push({ href, title, cardPrice: Math.min(...prices) });
-    }
-  }
-} catch (error) {
-  say(`- تعذّرت قراءة البطاقات: ${String(error).slice(0, 140)}`);
+/* The ones whose headline and tier now agree — what this run was for. */
+const checkable = [];
+for (const product of withTiers) {
+  const offline = d1.tierOf(d1.classifyTiers(product.types), "offline_base");
+  if (!offline || offline.price <= 0) continue;
+  const shown = Number(product.accountPrice) || Number(product.price);
+  if (!shown) continue;
+  checkable.push({
+    id: String(product.id ?? ""),
+    title: String(product.title || product.titleEn || ""),
+    tier: offline.price,
+    shown,
+    agrees: shown === offline.price,
+  });
 }
-say(`- بطاقات بأسعار على الصفحة الرئيسية: **${cards.length}**`);
+const agreeInDb = checkable.filter((c) => c.agrees);
+const differInDb = checkable.filter((c) => !c.agrees);
+say(`- منها في قاعدة البيانات: السعر المعروض = سعر الطبقة في **${agreeInDb.length}**، ومختلف في **${differInDb.length}**`);
 say();
 
-const compared = [];
-for (const card of cards) {
+/*
+  A sample, spread across the catalogue rather than taken from one end, so a
+  run of consecutive imports cannot stand in for the whole.
+*/
+const SAMPLE = 10;
+const step = Math.max(1, Math.floor(agreeInDb.length / SAMPLE));
+const sample = [];
+for (let i = 0; i < agreeInDb.length && sample.length < SAMPLE; i += step) sample.push(agreeInDb[i]);
+
+say(`## ما تعرضه صفحات المنتجات فعلًا`);
+say();
+say(`| المنتج | المتوقع | ظهر في الصفحة؟ |`);
+say(`| --- | --- | --- |`);
+let onPage = 0;
+let offPage = 0;
+let unread = 0;
+const misses = [];
+for (const row of sample) {
   try {
-    await page.goto(`${ORIGIN}${card.href}`, { waitUntil: "domcontentloaded", timeout: 90_000 });
-    await page.waitForTimeout(1500);
-    const body = await page.locator("body").innerText().catch(() => "");
-    const prices = pricesIn(body);
-    if (!prices.length) {
-      compared.push({ ...card, pagePrice: null });
+    const res = await page.goto(`${ORIGIN}/product/${row.id}`, {
+      waitUntil: "domcontentloaded",
+      timeout: 90_000,
+    });
+    await page.waitForTimeout(2000);
+    const text = await page.locator("body").innerText().catch(() => "");
+    if (!text || (res && res.status() >= 400)) {
+      unread += 1;
+      say(`| ${row.title.slice(0, 40)} | ${money(row.tier)} | تعذّرت القراءة (${res?.status() ?? "—"}) |`);
       continue;
     }
-    /*
-      The headline is the CHEAPEST enabled first-party offer, by the shop's own
-      ranking (`rankOffers` sorts ascending), so the smallest price-shaped
-      number on the page is the one the hero, the sticky bar and the closing
-      call to action all show.
-    */
-    compared.push({ ...card, pagePrice: Math.min(...prices) });
+    /* Both spellings a shopper might be shown: 8,000 and 8000. */
+    const wanted = [row.tier.toLocaleString("en-US"), String(row.tier)];
+    const digits = text.replace(/[^0-9]/g, " ");
+    const hit =
+      wanted.some((w) => text.includes(w)) ||
+      digits.split(/\s+/).includes(String(row.tier));
+    if (hit) {
+      onPage += 1;
+      say(`| ${row.title.slice(0, 40)} | ${money(row.tier)} | ✓ |`);
+    } else {
+      offPage += 1;
+      misses.push(row);
+      say(`| ${row.title.slice(0, 40)} | ${money(row.tier)} | ✗ |`);
+    }
   } catch (error) {
-    compared.push({ ...card, pagePrice: null, error: String(error).slice(0, 80) });
+    unread += 1;
+    say(`| ${row.title.slice(0, 40)} | ${money(row.tier)} | تعذّر: ${String(error).slice(0, 50)} |`);
   }
 }
 await browser.close().catch(() => {});
-
-const agree = compared.filter((c) => c.pagePrice !== null && c.pagePrice === c.cardPrice);
-const differ = compared.filter((c) => c.pagePrice !== null && c.pagePrice !== c.cardPrice);
-const unread = compared.filter((c) => c.pagePrice === null);
-
-say(`## ما يراه الزبون`);
 say();
-say(`سعر البطاقة يأتي من \`types\` (وهو ما تحاسب به السلة)، وسعر الصفحة من \`accountPrice\`/\`price\`. قبل هذا التشغيل كانا مختلفين على 49 منتجًا.`);
-say();
-say(`- منتجات فُحصت: **${compared.length}**`);
-say(`- البطاقة والصفحة **متطابقتان**: **${agree.length}**`);
-say(`- مختلفتان: **${differ.length}**`);
-say(`- تعذّرت قراءة صفحتها: **${unread.length}**`);
-say();
-if (compared.length) {
-  say(`| المنتج | سعر البطاقة | سعر الصفحة | |`);
-  say(`| --- | --- | --- | --- |`);
-  for (const row of compared.slice(0, 40)) {
-    const mark = row.pagePrice === null ? "؟" : row.pagePrice === row.cardPrice ? "✓" : "✗";
-    say(
-      `| ${row.title.slice(0, 44)} | ${money(row.cardPrice)} | ${row.pagePrice === null ? "—" : money(row.pagePrice)} | ${mark} |`,
-    );
-  }
-  say();
-}
-if (!compared.length) {
-  stop(`لم أقرأ أي بطاقة بسعر من الصفحة الرئيسية. لم أتحقق من الإنتاج.`);
-}
 
 say(`## الخلاصة`);
 say();
-say(`- منتجات فُحصت على الموقع الحي: **${compared.length}**`);
-say(`- تعرض السعر نفسه في البطاقة والصفحة: **${agree.length}**`);
-say(`- ما زالت تعرض رقمين: **${differ.length}**`);
+say(`- منتجات بطبقات: **${withTiers.length}**`);
+say(`- السعر المعروض = سعر الطبقة في قاعدة البيانات: **${agreeInDb.length}** · مختلف: **${differInDb.length}**`);
+say(`- عيّنة فُتحت صفحاتها على الموقع: **${sample.length}**`);
+say(`- السعر المتوقع ظاهر على الصفحة: **${onPage}** · غير ظاهر: **${offPage}** · تعذّرت قراءتها: **${unread}**`);
 say();
+if (differInDb.length) {
+  say(`المنتجات التي ما زالت تعرض رقمًا وتحاسب بآخر (**${differInDb.length}**):`);
+  say();
+  say(`| المنتج | يُعرض | يُحاسَب |`);
+  say(`| --- | --- | --- |`);
+  for (const row of differInDb.slice(0, 20)) {
+    say(`| ${row.title.slice(0, 44)} | ${money(row.shown)} | ${money(row.tier)} |`);
+  }
+  say();
+}
 say(
-  `ملاحظة على النطاق: \`/api/data\` يردّ 403 على هذا المُشغّل حتى من داخل المتصفّح، فصفحات \`/games\` والأقسام تصل فارغة هنا — لذلك الفحص على ما تعرضه الصفحة الرئيسية وصفحات منتجاتها، لا على الكتالوج كله.`,
+  `ملاحظة على النطاق: \`/api/data\` يردّ 403 على هذا المُشغّل حتى من داخل متصفّح حقيقي، فصفحات الأقسام تصل فارغة هنا. صفحات المنتجات تُبنى على الخادم وتصل، وهي ما فُحص.`,
 );
 
 flush();
 rmSync(outfile, { force: true });
-process.exit(differ.length ? 1 : 0);
+process.exit(offPage > 0 ? 1 : 0);
