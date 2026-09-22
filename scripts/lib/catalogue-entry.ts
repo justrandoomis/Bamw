@@ -59,3 +59,5 @@ export {
   — an amount sitting in a field nobody renders is not an offer.
 */
 export { readOffers } from "@/lib/hub";
+/* Which generation a listing belongs to — the cheap band's 8,000 rung. */
+export { isNintendoSwitch2Product } from "@/lib/nintendoListing";

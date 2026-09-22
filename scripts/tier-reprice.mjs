@@ -225,6 +225,8 @@ for (const product of products) {
     kind: String(product["kind"] ?? ""),
     schemaId: String(product["schemaId"] ?? product["schema_id"] ?? ""),
     types: product["types"],
+    /* «٨ العاب قويه، ٩ ... وسويتش ٢» — see `CHEAP_SWITCH2`. */
+    isSwitch2: app.isNintendoSwitch2Product(product),
   });
   results.push({ product, result });
 }
@@ -1368,6 +1370,8 @@ const settled = afterList
       kind: String(product["kind"] ?? ""),
       schemaId: String(product["schemaId"] ?? product["schema_id"] ?? ""),
       types: product["types"],
+      /* The same signal the first pass used, or the read-back disagrees. */
+      isSwitch2: app.isNintendoSwitch2Product(product),
     }),
   )
   .filter((result) => result.changed);

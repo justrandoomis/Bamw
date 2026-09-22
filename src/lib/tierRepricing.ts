@@ -132,6 +132,8 @@ export function repriceTiers(product: {
   kind?: string;
   schemaId?: string;
   types?: unknown;
+  /* The cheap band's 8,000 rung — see `CHEAP_SWITCH2` in `repricing.ts`. */
+  isSwitch2?: boolean;
 }): TierRepriceResult {
   const tiers = classifyTiers(product.types);
   const offlineBase = tierOf(tiers, "offline_base");
@@ -205,6 +207,16 @@ export function repriceTiers(product: {
       ...(product.schemaId !== undefined ? { schemaId: product.schemaId } : {}),
       cost: offlineBase.cost,
       price: offlineBase.price,
+      /*
+        THE SAME GENERATION THE ROW ITSELF IS PRICED ON.
+
+        This call decides the number the add-ons edition is built on, and it
+        used to omit `isSwitch2` while the `offline_base` branch below passed
+        it. So a Switch 2 game was proposed at 8,000 on its own row and its
+        add-ons edition was priced from 7,000 — the two inconsistent by
+        exactly the rung, on every Switch 2 title with an add-ons edition.
+      */
+      ...(product.isSwitch2 !== undefined ? { isSwitch2: product.isSwitch2 } : {}),
     };
     const decision = repriceOne(asProduct);
     if (!decision.skipped && Number.isFinite(Number(decision.newPrice))) {
@@ -225,6 +237,7 @@ export function repriceTiers(product: {
         ...(product.schemaId !== undefined ? { schemaId: product.schemaId } : {}),
         cost: tier.cost,
         price: tier.price,
+        ...(product.isSwitch2 !== undefined ? { isSwitch2: product.isSwitch2 } : {}),
       });
       if (decision.skipped) return held(tier, index, decision.skipped);
       const next = Number(decision.newPrice);

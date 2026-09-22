@@ -12,6 +12,22 @@
  * fitted to them afterwards — `dlcIncreaseFor` and `onlinePriceFor` were
  * derived from the sentences and then checked against these numbers.
  *
+ * THE FIRST LINE HAS SINCE BEEN OVERRULED BY ITS AUTHOR:
+ *
+ *   «اجعل السعر يعرض بحد اقصى ٩ الف بدلا من ١٢ ...
+ *    مثلا لعبه زيلدا botw او totk تكون ٨ الف سويتش ٢ ،و ٧ الف سويتش ١»
+ *
+ * Every 8,000 and 9,000 he has now named belongs to a Switch 2 title, and his
+ * only Switch 1 figure is 7,000 — for Breath of the Wild, the fourth
+ * best-selling Switch game there is. So the plain offline account of this
+ * example, which carries no Switch 2 marking, comes down to 7,000, and the
+ * add-ons edition built on it comes down with it. The two online lines are
+ * untouched: «قاعده الاونلاين تبقى كما هي».
+ *
+ * Each test below that moved says so above itself, and the Switch 2 version of
+ * the same example — where 8,000 and 15,000 still stand — is asserted beside
+ * it, so the example is not lost, only told which generation it was about.
+ *
  * The rest of the file is about the cases the example does not cover, which
  * is where money is actually lost: a tier that cannot be identified, an
  * add-ons edition with no plain edition to build on, costs that say the
@@ -37,15 +53,36 @@ const OWNERS_EXAMPLE = [
 
 describe("the owner's worked example, line by line", () => {
   const result = repriceTiers(game(OWNERS_EXAMPLE));
+  /* The same four rows, on the generation whose figures they still are. */
+  const switch2 = repriceTiers({ ...game(OWNERS_EXAMPLE), isSwitch2: true });
 
-  it("leaves the plain offline account at 8,000 on a cost of 2,000", () => {
+  /*
+    «مثلا لعبه زيلدا botw او totk تكون ٨ الف سويتش ٢ ،و ٧ الف سويتش ١»
+
+    A Switch 1 game caps at 7,000 however famous it is — that is his own
+    figure for Breath of the Wild. This example says nothing about its
+    generation, so it is a Switch 1 game and it moves.
+  */
+  it("brings the plain offline account down to 7,000 on a cost of 2,000", () => {
     const tier = at(result, "offline_base");
+    expect(tier?.newPrice).toBe(7_000);
+    expect(tier?.changed).toBe(true);
+  });
+
+  it("holds the very same example at 8,000 when the game IS a Switch 2 title", () => {
+    const tier = at(switch2, "offline_base");
     expect(tier?.newPrice).toBe(8_000);
     expect(tier?.changed).toBe(false);
   });
 
-  it("holds the add-ons edition at 15,000 — 8,000 plus 7,000 for a 5,000 cost gap", () => {
+  it("brings the add-ons edition to 14,000 — 7,000 plus 7,000 for a 5,000 cost gap", () => {
     const tier = at(result, "offline_extras");
+    expect(tier?.newPrice).toBe(14_000);
+    expect(tier?.changed).toBe(true);
+  });
+
+  it("holds the add-ons edition at 15,000 on Switch 2 — 8,000 plus the same 7,000", () => {
+    const tier = at(switch2, "offline_extras");
     expect(tier?.newPrice).toBe(15_000);
     expect(tier?.changed).toBe(false);
   });
@@ -62,13 +99,23 @@ describe("the owner's worked example, line by line", () => {
     expect(tier!.newPrice - tier!.cost).toBe(12_000);
   });
 
-  it("proposes no change at all to the example, which is the point of it", () => {
-    expect(result.changed).toBe(false);
+  it("moves the offline pair and leaves the two online lines exactly alone", () => {
+    expect(result.proposals.filter((p) => p.changed).map((p) => p.kind)).toEqual([
+      "offline_base",
+      "offline_extras",
+    ]);
   });
 
-  it("passes its own last gate on every tier", () => {
+  it("proposes no change at all on Switch 2, which is the point of the example", () => {
+    expect(switch2.changed).toBe(false);
+  });
+
+  it("passes its own last gate on every tier, on both generations", () => {
     for (const proposal of result.proposals) {
       expect(tierProblem(proposal, result), `${proposal.kind}`).toBeNull();
+    }
+    for (const proposal of switch2.proposals) {
+      expect(tierProblem(proposal, switch2), `switch2 ${proposal.kind}`).toBeNull();
     }
   });
 });
@@ -77,9 +124,9 @@ describe("the add-ons edition is priced from the plain one AFTER it moves", () =
   it("adds the increase to the NEW base price, not the old", () => {
     /*
       The base is 10,250 — a currency-conversion leftover — and the rules floor
-      it to 10,000. The add-ons edition must then be 10,000 + increase, not
-      10,250 + increase, or the two are inconsistent by exactly the amount the
-      base moved.
+      it to 10,000 and then cut it to the 7,000 rung. The add-ons edition must
+      then be 7,000 + increase, not 10,250 + increase, or the two are
+      inconsistent by exactly the amount the base moved.
     */
     const result = repriceTiers(
       game([
@@ -87,9 +134,9 @@ describe("the add-ons edition is priced from the plain one AFTER it moves", () =
         { id: "offline_extras", price: 99_000, cost: 4_000 },
       ]),
     );
-    expect(at(result, "offline_base")?.newPrice).toBe(10_000);
+    expect(at(result, "offline_base")?.newPrice).toBe(7_000);
     // gap 2,000 → increase max(1000, min(4000, 4000)) = 4,000.
-    expect(at(result, "offline_extras")?.newPrice).toBe(14_000);
+    expect(at(result, "offline_extras")?.newPrice).toBe(11_000);
   });
 
   it("brings an over-priced add-ons edition DOWN, which is what was asked for", () => {
@@ -100,7 +147,8 @@ describe("the add-ons edition is priced from the plain one AFTER it moves", () =
       ]),
     );
     // gap 300 → increase 1,000. «اذا كان ١٧٠٠ عادي و ٢٠٠٠ مع الاضافات ... الزياده ١٠٠٠»
-    expect(at(result, "offline_extras")?.newPrice).toBe(9_000);
+    // On the base's new 7,000 rung, so 8,000 and not the 9,000 of the old ceiling.
+    expect(at(result, "offline_extras")?.newPrice).toBe(8_000);
     expect(at(result, "offline_extras")?.changed).toBe(true);
   });
 
@@ -229,8 +277,16 @@ describe("the gate that stops a run", () => {
   });
 
   it("rejects an add-ons edition that does not cost more than the plain one", () => {
-    const bad = { ...at(ok, "offline_extras")!, newPrice: 8_000 };
-    expect(tierProblem(bad, ok)).toContain("لا يزيد على العادي");
+    /*
+      Run on Switch 2, where the plain row settles at 8,000 — above the add-ons
+      row's own cost of 7,000. On Switch 1 the plain row now settles at 7,000,
+      which IS that cost, so every price this check would refuse is already
+      refused by the cost check one line earlier and this rule could not be
+      reached at all.
+    */
+    const s2 = repriceTiers({ ...game(OWNERS_EXAMPLE), isSwitch2: true });
+    const bad = { ...at(s2, "offline_extras")!, newPrice: 8_000 };
+    expect(tierProblem(bad, s2)).toContain("لا يزيد على العادي");
   });
 
   it("says nothing about a tier that was skipped", () => {
@@ -288,7 +344,8 @@ describe("every add-ons price is a whole thousand", () => {
     );
     const extras = at(result, "offline_extras")!;
     expect(extras.newPrice % 1_000).toBe(0);
-    expect(extras.newPrice).toBe(14_000);
+    // Base 12,000 → floored to the 7,000 rung; gap 1,250 → increase 2,500 → 9,500 → 9,000.
+    expect(extras.newPrice).toBe(9_000);
     expect(tierProblem(extras, result)).toBeNull();
   });
 
@@ -346,7 +403,8 @@ describe("every add-ons price is a whole thousand", () => {
           { id: "offline_extras", price: 1, cost: 2_000 + gap },
         ]),
       );
-      expect(at(result, "offline_extras")?.newPrice, `gap ${gap}`).toBe(8_000 + increase);
+      // Built on the base's new 7,000 rung, not the 8,000 it used to keep.
+      expect(at(result, "offline_extras")?.newPrice, `gap ${gap}`).toBe(7_000 + increase);
     }
   });
 });
@@ -437,10 +495,10 @@ describe("each add-ons row is priced from its OWN cost gap", () => {
     const rows = result.proposals.filter((p) => p.kind === "offline_extras");
     expect(rows).toHaveLength(2);
 
-    // Gap 300 → increase 1,000 → 9,000.
-    expect(rows[0]!.newPrice).toBe(9_000);
-    // Gap 10,000 → increase 12,000 → 20,000. NOT 9,000.
-    expect(rows[1]!.newPrice).toBe(20_000);
+    // Gap 300 → increase 1,000 → 8,000, on the base's new 7,000 rung.
+    expect(rows[0]!.newPrice).toBe(8_000);
+    // Gap 10,000 → increase 12,000 → 19,000. NOT 8,000.
+    expect(rows[1]!.newPrice).toBe(19_000);
 
     // And neither is ever priced below its own cost.
     for (const row of rows) {
@@ -538,11 +596,13 @@ describe("an online tier carrying the offline account's cost", () => {
     expect(at(result, "online_base")?.skipped).toBeNull();
   });
 
-  it("leaves the owner's worked example untouched, as it always did", () => {
+  it("leaves the worked example's ONLINE rows untouched, as it always did", () => {
     // online 26,000 on cost 16,000, offline 8,000 on cost 2,000 — 16,000 > 2,000.
+    // «قاعده الاونلاين تبقى كما هي» — the new offline ladder does not reach here.
     const result = repriceTiers(game(OWNERS_EXAMPLE));
-    expect(result.changed).toBe(false);
     expect(at(result, "online_base")?.skipped).toBeNull();
+    expect(at(result, "online_base")?.changed).toBe(false);
+    expect(at(result, "online_extras")?.changed).toBe(false);
   });
 });
 
@@ -627,7 +687,8 @@ describe("a cost is read as it was written", () => {
     const tier = at(result, "offline_base");
     expect(tier?.cost).toBe(2_000);
     expect(tier?.oldPrice).toBe(8_500);
-    expect(tier?.newPrice).toBe(8_000);
+    // 8,500 → floored to 8,000 → cut to the 7,000 rung.
+    expect(tier?.newPrice).toBe(7_000);
   });
 
   it("does not read a dash inside a number as a minus sign", () => {
@@ -668,7 +729,7 @@ describe("a plain account that merely mentions something is still plain", () => 
         { id: "t2", name: "اوفلاين مع الاضافات", price: 15_000, cost: 7_000 },
       ]),
     );
-    expect(at(result, "offline_extras")?.newPrice).toBe(15_000);
+    expect(at(result, "offline_extras")?.newPrice).toBe(14_000);
   });
 
   it("and the singular «مع الاضافة» is too", () => {
@@ -716,7 +777,7 @@ describe("the account is recognised however it is spelled", () => {
 
 describe("a deluxe edition is not the ordinary offline account", () => {
   /*
-    The owner gave the 12,000 ceiling to «الحساب الاوفلاين العادي» — the
+    The owner gave the cheap band's ceiling to «الحساب الاوفلاين العادي» — the
     ORDINARY offline account — and to nothing else. The admin's own preset
     writes «النسخة الفاخرة Ultimate (خاص بالأوفلاين)», which names the offline
     account and carried no word this file called an add-on, so it was handed
@@ -731,7 +792,7 @@ describe("a deluxe edition is not the ordinary offline account", () => {
     expect(at(result, "offline_base")).toBeUndefined();
   });
 
-  it("is not cut to the ordinary account's 12,000 ceiling", () => {
+  it("is not cut to the ordinary account's ceiling", () => {
     const result = repriceTiers(game([{ ...ultimate, price: 30_000, cost: 1_800 }]));
     expect(result.proposals[0]?.newPrice).toBe(30_000);
     expect(result.changed).toBe(false);
@@ -744,9 +805,9 @@ describe("a deluxe edition is not the ordinary offline account", () => {
         { ...ultimate, price: 30_000, cost: 7_000 },
       ]),
     );
-    expect(at(result, "offline_base")?.newPrice).toBe(8_000);
-    // 8,000 + 7,000 for a 5,000 cost gap — the owner's own worked example.
-    expect(at(result, "offline_extras")?.newPrice).toBe(15_000);
+    expect(at(result, "offline_base")?.newPrice).toBe(7_000);
+    // 7,000 + 7,000 for a 5,000 cost gap — his worked example, on the new rung.
+    expect(at(result, "offline_extras")?.newPrice).toBe(14_000);
   });
 
   it("reads the preset's description when the name alone is ambiguous", () => {
@@ -756,13 +817,13 @@ describe("a deluxe edition is not the ordinary offline account", () => {
         { id: "b", name: "اوفلاين", description: "اللعبة مع الإضافات", price: 15_000, cost: 7_000 },
       ]),
     );
-    expect(at(result, "offline_extras")?.newPrice).toBe(15_000);
+    expect(at(result, "offline_extras")?.newPrice).toBe(14_000);
   });
 
   it("still says «بدون» means without, whatever the edition words say", () => {
     const result = repriceTiers(
       game([{ id: "t", name: "اوفلاين قياسي بدون الإضافات", price: 8_500, cost: 2_000 }]),
     );
-    expect(at(result, "offline_base")?.newPrice).toBe(8_000);
+    expect(at(result, "offline_base")?.newPrice).toBe(7_000);
   });
 });

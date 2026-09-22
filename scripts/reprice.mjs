@@ -133,6 +133,14 @@ const inputs = products.map((product) => ({
   schemaId: String(product["schemaId"] ?? product["schema_id"] ?? ""),
   cost: num(product["cost"]) ?? num(product["costPrice"]) ?? num(product["baseCost"]),
   price: num(product["price"]) ?? num(product["basePrice"]),
+  /*
+    The one thing that lifts a cheap-band game above 7,000: «٨ العاب قويه، ٩
+    العاب قويه جدا وسويتش ٢», and every 8,000 and 9,000 the owner named is a
+    Switch 2 title. Answered by the app's own detector, which reads the
+    platform, the `switch2` object, the enhanced flag and the tags — not by a
+    second guess at what a Switch 2 game looks like.
+  */
+  isSwitch2: app.isNintendoSwitch2Product(product),
 }));
 
 /*
@@ -183,6 +191,7 @@ for (const row of disagreeing) {
         schemaId: String(product["schemaId"] ?? product["schema_id"] ?? ""),
         cost: costOf.get(row.id) ?? null,
         price: Number(row.accountPrice),
+        isSwitch2: app.isNintendoSwitch2Product(product),
       })
     : null;
   if (decision && !decision.skipped && Number(decision.newPrice) === Number(row.price)) {
@@ -319,6 +328,47 @@ say("| السعر | ألعاب |");
 say("|---:|---:|");
 for (const [price, count] of [...after.entries()].sort((a, b) => a[0] - b[0])) {
   say(`| ${Number(price).toLocaleString("en-US")} | ${count.toLocaleString("en-US")} |`);
+}
+say();
+
+/*
+  THE FOUR GAMES THE OWNER PRICED BY NAME, AND WHERE THE RULES PUT THEM.
+
+    «مثلا لعبه زيلدا botw او totk تكون ٨ الف سويتش ٢ ،و ٧ الف سويتش ١
+     مثلا ماريو كارت ورلد ب٩ الف
+     دونكي كونك ب٨ الف»
+
+  Printed as a table rather than checked in code, because the answer depends on
+  what the catalogue actually says about each row's generation — and if the
+  Switch 2 detector is wrong about one of them, that is a fact to see before a
+  price is written, not an assertion to trip over afterwards.
+*/
+const NAMED_BY_OWNER = [
+  [/breath of the wild|أنفاس البرية/i, "زيلدا BOTW — ٨ سويتش ٢ / ٧ سويتش ١"],
+  [/tears of the kingdom|دموع المملكة/i, "زيلدا TOTK — ٨ سويتش ٢ / ٧ سويتش ١"],
+  [/mario kart world/i, "ماريو كارت ورلد — ٩"],
+  [/donkey kong/i, "دونكي كونك — ٨"],
+];
+const inputById = new Map(inputs.map((row) => [row.id, row]));
+say("## الألعاب التي سمّاها المالك");
+say();
+say("| اللعبة | ما قاله | سويتش ٢؟ | التكلفة | الآن | بعد القاعدة |");
+say("|---|---|:-:|---:|---:|---:|");
+for (const [pattern, said] of NAMED_BY_OWNER) {
+  const rows = decisions.filter((d) => pattern.test(d.title));
+  if (!rows.length) {
+    say(`| — | ${said} | | | | **غير موجودة في الكتالوج** |`);
+    continue;
+  }
+  for (const d of rows.slice(0, 6)) {
+    const input = inputById.get(d.id);
+    say(
+      `| ${d.title.slice(0, 40)} | ${said} | ${input?.isSwitch2 ? "نعم" : "لا"} | ` +
+        `${(d.cost ?? 0).toLocaleString("en-US")} | ` +
+        `${(d.oldPrice ?? 0).toLocaleString("en-US")} | ` +
+        `${d.skipped ? d.skipped : (d.newPrice ?? 0).toLocaleString("en-US")} |`,
+    );
+  }
 }
 say();
 

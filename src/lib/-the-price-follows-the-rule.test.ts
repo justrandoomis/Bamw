@@ -57,70 +57,93 @@ describe("«اذا كان سعر اللعبه ٥ او ٧ اتركها»", () => 
   });
 });
 
-describe("«اذا رايت سعر يستحق ان تنخفض مثلا من ٩ الى ٨ اعملها»", () => {
-  it("takes 9,000 down to 8,000", () => {
-    expect(priceOf({ price: 9_000 })).toBe(8_000);
+/*
+  REVERSED, AND BY THE OWNER'S OWN INSTRUCTION.
+
+  «اجعل السعر يعرض بحد اقصى ٩ الف بدلا من ١٢» — the cheap band's ceiling came
+  down from 12,000 to 9,000, and with it the whole shape of this band:
+
+    «الالعاب الاقل من ٢ الف تكون بحد اقصى ٩ الف
+     ( ٥ اغلبها وأكثرها، ٧ متوسط ، ٨ العاب قويه، ٩ العاب قويه جدا وسويتش ٢ )»
+
+  and four games he priced himself:
+
+    «زيلدا botw او totk تكون ٨ الف سويتش ٢ ،و ٧ الف سويتش ١
+     ماريو كارت ورلد ب٩ الف · دونكي كونك ب٨ الف»
+
+  Every 8,000 and 9,000 he named is a SWITCH 2 title, and his only Switch 1
+  figure is 7,000 — for Breath of the Wild, the fourth best-selling Switch game
+  there is. So the GENERATION is what lifts a price above 7,000, not the fame.
+
+  The old «من ٩ إلى ٨» rule is gone with the old ceiling: 9,000 is no longer a
+  price to talk down from, it is the top rung, and nothing reaches it but a
+  game he has named.
+*/
+describe("«بحد اقصى ٩ الف» — the ceiling the owner lowered", () => {
+  it("caps a Switch 1 game at 7,000", () => {
+    expect(priceOf({ price: 12_000 })).toBe(7_000);
+    expect(priceOf({ price: 40_000 })).toBe(7_000);
   });
 
-  it("does not take 8,000 down any further", () => {
-    expect(priceOf({ price: 8_000 })).toBe(8_000);
+  it("caps a Switch 2 game at 8,000", () => {
+    expect(priceOf({ price: 12_000, isSwitch2: true })).toBe(8_000);
+    expect(priceOf({ price: 40_000, isSwitch2: true })).toBe(8_000);
   });
 
-  it("does not invent the same move for 11,000 or 10,000", () => {
-    // The sentence gives one example. Reading it as "shave a thousand off
-    // everything" would cut the shop's income on a hundred and twenty games
-    // nobody asked about.
-    expect(priceOf({ price: 10_000 })).toBe(10_000);
-    expect(priceOf({ price: 11_000 })).toBe(11_000);
-    expect(priceOf({ price: 12_000 })).toBe(12_000);
-    expect(priceOf({ price: 6_000 })).toBe(6_000);
+  it("never reaches 9,000 except for a game the owner named", () => {
+    for (const isSwitch2 of [false, true]) {
+      for (const price of [9_000, 10_000, 12_000, 40_000]) {
+        expect(priceOf({ price, isSwitch2 })).toBeLessThanOrEqual(8_000);
+      }
+    }
+    expect(priceOf({ title: "Mario Kart World [Switch 2]", cost: 1_750, price: 45_000 })).toBe(
+      9_000,
+    );
+  });
+
+  it("never RAISES a game to its rung — «بحد اقصى» is a limit, not a target", () => {
+    // A game the owner put at 5,000 is a judgement, and cheaper is what he
+    // asked for. The rung can only ever bring a price down.
+    expect(priceOf({ price: 5_000, isSwitch2: true })).toBe(5_000);
+    expect(priceOf({ price: 6_000, isSwitch2: true })).toBe(6_000);
+  });
+
+  it("prices the four games the owner named, exactly as he named them", () => {
+    const cheap = { cost: 1_500, price: 45_000 };
+    expect(
+      priceOf({ ...cheap, title: "The Legend of Zelda: Breath of the Wild switch 1" }),
+    ).toBe(7_000);
+    expect(
+      priceOf({
+        ...cheap,
+        title: "The Legend of Zelda: Breath of the Wild – Nintendo Switch 2 Edition",
+        isSwitch2: true,
+      }),
+    ).toBe(8_000);
+    expect(
+      priceOf({ ...cheap, title: "The Legend of Zelda: Tears of the Kingdom switch 1" }),
+    ).toBe(7_000);
+    expect(priceOf({ ...cheap, title: "Mario Kart World", isSwitch2: true })).toBe(9_000);
+    expect(priceOf({ ...cheap, title: "Donkey Kong Bananza", isSwitch2: true })).toBe(8_000);
   });
 });
 
 describe("«لتكون ولتبدو ارخص للزبون» — the prices that are not whole thousands", () => {
-  it("rounds 10,250 down to 10,000", () => {
-    expect(priceOf({ price: 10_250 })).toBe(10_000);
-  });
-
-  it("rounds 8,500 down to 8,000", () => {
-    expect(priceOf({ price: 8_500 })).toBe(8_000);
-  });
-
-  it("rounds 7,500 down to 7,000", () => {
-    expect(priceOf({ price: 7_500 })).toBe(7_000);
-  });
-
-  it("rounds 11,500 down to 11,000", () => {
-    expect(priceOf({ price: 11_500 })).toBe(11_000);
+  it("rounds down to a whole thousand before the rung is applied", () => {
+    // Below the rung, the rounding is the only thing that moves the price.
+    expect(priceOf({ price: 6_250 })).toBe(6_000);
+    expect(priceOf({ price: 5_900 })).toBe(5_000);
   });
 
   it("rounds down and then caps, for 14,750", () => {
-    // Monster Hunter Stories 3, cost 2,000: 14,750 → 14,000 → the 12,000 cap.
-    expect(priceOf({ price: 14_750, cost: 2_000 })).toBe(12_000);
+    // Monster Hunter Stories 3, cost 2,000: 14,750 → 14,000 → the Switch 1 rung.
+    expect(priceOf({ price: 14_750, cost: 2_000 })).toBe(7_000);
   });
 
   it("never rounds up in the cheap band, because up is not cheaper", () => {
     for (const price of [5_500, 6_250, 8_750, 9_900, 11_999]) {
       expect(priceOf({ price })).toBeLessThanOrEqual(price);
     }
-  });
-});
-
-describe("«ولنقل ١٢ الف كحد اقصى في الالعاب القويه جدا»", () => {
-  it("brings Zelda down from 17,500 to 12,000", () => {
-    // The Legend of Zelda: Tears of the Kingdom — cost 1,500, priced 17,500.
-    expect(priceOf({ title: "Zelda: Tears of the Kingdom", cost: 1_500, price: 17_500 })).toBe(
-      12_000,
-    );
-  });
-
-  it("brings Mario Kart World down from 14,500 to 12,000", () => {
-    expect(priceOf({ title: "Mario Kart World", cost: 1_750, price: 14_500 })).toBe(12_000);
-  });
-
-  it("caps at 12,000 and not at 11,000 — the ceiling is a ceiling, not a target", () => {
-    expect(priceOf({ price: 13_000 })).toBe(CHEAP_CEILING);
-    expect(priceOf({ price: 40_000 })).toBe(CHEAP_CEILING);
   });
 });
 
@@ -138,46 +161,58 @@ describe("«يكون سعرها من 5000 فما فوق»", () => {
 });
 
 describe("«في الالعاب التي فوق 2001 اجعل الربح اقل شي هو 5000»", () => {
-  it("lifts a 2,142.8 game from 7,000 to 8,000", () => {
-    // Ten games sit at exactly this cost and price, short of the margin by 143.
-    expect(priceOf({ cost: 2_142.8, price: 7_000 })).toBe(8_000);
+  /*
+    THE HALF NOW ROUNDS DOWN, and the owner's own example is why:
+
+      «٧ الف اغلبها لو كانت مثلا سعر التكلفه ٢٥٠٠ يكون سعرها ٧ الف»
+
+    A cost of 2,500 wants 7,500 for a margin of exactly 5,000. Rounding that up
+    gave 8,000; he says 7,000. So a half goes down, the margin gives away at
+    most 500 on that one point, and this band lands where he wants it —
+    «٧ الف اغلبها», most of it at 7,000.
+  */
+  it("prices the owner's own example: a cost of 2,500 at 7,000", () => {
+    expect(priceOf({ cost: 2_500, price: 14_000 })).toBe(7_000);
   });
 
-  it("lifts Wo Long from 14,000 to 15,000", () => {
-    expect(priceOf({ title: "Wo Long", cost: 9_042, price: 14_000 })).toBe(15_000);
+  it("leaves a 2,142.8 game at 7,000, which now clears the rounded margin", () => {
+    // Ten games sit at exactly this cost. 7,142.8 rounds to 7,000.
+    expect(priceOf({ cost: 2_142.8, price: 7_000 })).toBe(7_000);
+  });
+
+  it("lifts Wo Long from 14,000 to 14,000 — 9,042 + 5,000 rounds down", () => {
+    expect(priceOf({ title: "Wo Long", cost: 9_042, price: 14_000 })).toBe(14_000);
   });
 
   it("lifts Stray from 8,000 to 9,000", () => {
-    expect(priceOf({ title: "Stray switch 2", cost: 3_500, price: 8_000 })).toBe(9_000);
+    // 3,500 + 5,000 = 8,500, and a half goes down — but 8,000 is under it, so
+    // the required floor of 8,000 is what binds. It stays at 8,000.
+    expect(priceOf({ title: "Stray switch 2", cost: 3_500, price: 8_000 })).toBe(8_000);
   });
 
   it("never prices a dear game below 7,000", () => {
     expect(priceOf({ cost: 2_001, price: 5_000 })).toBeGreaterThanOrEqual(DEAR_FLOOR);
   });
 
-  it("in practice starts at 8,000, because a whole thousand is what clears the margin", () => {
+  it("really does start at 7,000 now, as the sentence always said", () => {
     /*
-      «اجعل الربح اقل شي هو 5000، يعني الاسعار تبدأ من 7000 فما فوق» gives both
-      a rule and an illustration, and they do not quite meet. A cost of 2,001
-      needs 7,001 to earn 5,000, and 7,001 is not a price this shop writes —
-      the whole point of the rounding clause is that prices are whole
-      thousands. Rounding UP to 8,000 is the only way to honour the margin,
-      which is the rule; 7,000 was the illustration of where the band starts.
-
-      The rule wins, because it is the one stated as a requirement and because
-      rounding the other way sells ten real games at a loss against the
-      owner's own floor.
+      «اجعل الربح اقل شي هو 5000، يعني الاسعار تبدأ من 7000 فما فوق» gave a rule
+      and an illustration that did not meet: a cost of 2,001 needs 7,001 to earn
+      5,000, and rounding UP made the band start at 8,000 instead of the 7,000
+      he named. Rounding the half DOWN — which his 2,500 → 7,000 example
+      requires — reconciles them. The band starts at 7,000, in the arithmetic
+      and in the sentence.
     */
-    expect(priceOf({ cost: 2_001, price: 5_000 })).toBe(8_000);
-    expect(priceOf({ cost: 2_142.8, price: 7_000 })).toBe(8_000);
+    expect(priceOf({ cost: 2_001, price: 5_000 })).toBe(7_000);
+    expect(priceOf({ cost: 2_142.8, price: 7_000 })).toBe(7_000);
   });
 
-  it("keeps the margin at or above 5,000 for every cost in the band", () => {
+  it("gives away at most 500 of the margin, and only to the rounding", () => {
     for (const cost of [2_001, 2_142.8, 2_358.4, 2_574, 3_220.8, 3_652, 4_730, 5_808, 9_042]) {
       for (const price of [5_000, 7_000, 8_000, 10_250, 14_000]) {
         const decision = repriceOne(game({ cost, price }));
         expect(decision.skipped).toBeNull();
-        expect(Number(decision.newPrice) - cost).toBeGreaterThanOrEqual(MIN_MARGIN);
+        expect(Number(decision.newPrice) - cost).toBeGreaterThanOrEqual(MIN_MARGIN - 500);
       }
     }
   });
@@ -187,8 +222,18 @@ describe("«في الالعاب التي فوق 2001 اجعل الربح اقل 
     expect(priceOf({ cost: 9_042, price: 14_000 })).toBeGreaterThan(CHEAP_CEILING);
   });
 
-  it("leaves a dear game alone when it already earns enough and reads well", () => {
-    expect(repriceOne(game({ cost: 2_500, price: 10_000 })).changed).toBe(false);
+  /*
+    REVERSED. This band no longer leaves a dear price alone for earning enough.
+
+    «لو كانت مثلا سعر التكلفه ٢٥٠٠ يكون سعرها ٧ الف وهكذا» — «يكون سعرها» is
+    «its price IS», and «وهكذا» says the cost decides it. A cost-2,500 game at
+    10,000 was earning 7,500 and was left there by a floor, which is the exact
+    opposite of «اجعل الالعاب تكون سعرها ارخص».
+  */
+  it("brings a dear game DOWN to the rule's answer, not just up to it", () => {
+    const decision = repriceOne(game({ cost: 2_500, price: 10_000 }));
+    expect(decision.newPrice).toBe(7_000);
+    expect(decision.changed).toBe(true);
   });
 });
 
@@ -471,10 +516,20 @@ describe("the owner's worked example, end to end", () => {
 
       Four prices, given as a whole product rather than as rules, and the
       rules have to land on all four or they are not the owner's rules.
+
+      THE FIRST LINE HAS SINCE MOVED, on the owner's own instruction. He later
+      capped this band at 9,000 and put every figure above 7,000 behind a Switch
+      2 badge: «٧ الف سويتش ١» even for Breath of the Wild. So a plain offline
+      account on a Switch 1 game is 7,000 now, not the 8,000 of this example,
+      and the add-ons line that is built on it follows it down.
+
+      The other three lines are untouched, because the online band and the
+      add-ons arithmetic are exactly what they were — «قاعده الاونلاين تبقى كما
+      هي».
     */
     const { dlcPriceFor, onlinePriceFor, repriceOne } = await import("@/lib/repricing");
 
-    // Offline, plain: cost 2,000 is inside the cheap band, and 8,000 stands.
+    // Offline, plain: a Switch 1 game in the cheap band now tops out at 7,000.
     const offline = repriceOne({
       id: "p",
       title: "لعبة",
@@ -482,11 +537,25 @@ describe("the owner's worked example, end to end", () => {
       cost: 2_000,
       price: 8_000,
     });
-    expect(offline.newPrice).toBe(8_000);
-    expect(offline.changed).toBe(false);
+    expect(offline.newPrice).toBe(7_000);
+    expect(offline.changed).toBe(true);
 
-    // Offline with the add-ons: a 5,000 cost gap adds 7,000.
+    // The same game as a Switch 2 edition keeps the owner's original 8,000.
+    expect(
+      repriceOne({
+        id: "p",
+        title: "لعبة",
+        kind: "game",
+        cost: 2_000,
+        price: 8_000,
+        isSwitch2: true,
+      }).newPrice,
+    ).toBe(8_000);
+
+    // Offline with the add-ons: a 5,000 cost gap still adds 7,000, on top of
+    // whichever plain price the game now carries.
     expect(dlcPriceFor(8_000, 7_000 - 2_000)).toBe(15_000);
+    expect(dlcPriceFor(7_000, 7_000 - 2_000)).toBe(14_000);
 
     // Online, plain: cost 16,000 priced at 26,000 is a profit of exactly 10,000.
     expect(onlinePriceFor(16_000, 26_000)).toBe(26_000);
