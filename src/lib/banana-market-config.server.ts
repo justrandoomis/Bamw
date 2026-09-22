@@ -37,6 +37,15 @@ export interface BananaMarketConfig {
   maxListingQuantity: number;
   /** Cost per promoted minute (bananas). */
   promoRatePerMinute: number;
+  /**
+   * Whether a member may sell bananas straight to the shop.
+   *
+   * «تعطيل/تفعيل البيع المباشر عند الحاجة». Defaults to ON, and the default
+   * matters: this is the only way to turn bananas into money now that the
+   * member-to-member market is gone, so a missing field must not read as a
+   * closed market.
+   */
+  directSellEnabled: boolean;
 }
 
 export const DEFAULT_MARKET_CONFIG: BananaMarketConfig = {
@@ -52,6 +61,7 @@ export const DEFAULT_MARKET_CONFIG: BananaMarketConfig = {
   minListingQuantity: 100,
   maxListingQuantity: 1000000,
   promoRatePerMinute: 2,
+  directSellEnabled: true,
 };
 
 function num(value: unknown, fallback: number): number {
@@ -116,6 +126,13 @@ export async function getMarketConfig(): Promise<BananaMarketConfig> {
       raw["promoRatePerMinute"] ?? settings["bananaPromoRate"],
       d.promoRatePerMinute,
     ),
+    /*
+      Absent means ON. A stored `false` is obeyed; an unset field is a shop that
+      has never been asked, and answering "closed" there would silently strand
+      every member's bananas the day this ships.
+    */
+    directSellEnabled:
+      raw["directSellEnabled"] === undefined ? d.directSellEnabled : Boolean(raw["directSellEnabled"]),
   };
 
   return repairBand(config);

@@ -197,3 +197,112 @@ export async function debitBananaBalance(
   const updated = await getUserBananaBalance(userId);
   return { success: true, newBalance: updated.balance };
 }
+
+/**
+ * The same debit, made safe against two requests arriving at the same instant.
+ *
+ * ## What the ordinary debit cannot do
+ *
+ * `debitBananaBalance` looks its idempotency key up and then, if it is absent,
+ * debits. Two statements, and between them a window. Sequentially that window
+ * never opens and the key works exactly as advertised; concurrently BOTH
+ * requests find the key absent, BOTH pass the guarded `banana_balance >= ?`
+ * update — which is individually correct and has no idea another copy of
+ * itself is running — and the second one's ledger insert then fails on the
+ * primary key. The member has paid twice and one of the payments has no record.
+ *
+ * That is not hypothetical: it is what a concurrent-sell test produced, as a
+ * raw `UNIQUE constraint failed: banana_transactions.id` thrown out of a batch
+ * after the balance had already moved twice.
+ *
+ * ## How this closes it
+ *
+ * The LEDGER ROW IS THE CLAIM, and the debit is chained behind it:
+ *
+ *   1. insert the ledger row, whose id is the idempotency key. Two requests
+ *      race here and exactly one wins — the primary key decides, not a read;
+ *   2. debit, guarded on sufficiency AND on `changes() = 1`, so only the
+ *      winner's debit runs;
+ *   3. delete the claim again `WHERE changes() = 0` — the case where the
+ *      claim was won but the balance was too low, which must not leave a
+ *      ledger row for money that never moved.
+ *
+ * One batch, three statements, and no step depends on a transaction rolling
+ * back. The loser of the race is told it is a replay, which is the truth: the
+ * work its key names has been done, once.
+ *
+ * Kept as a separate function rather than replacing the original, because
+ * every existing caller's behaviour is pinned by tests written against the
+ * sequential path, and the difference only matters where a caller can really
+ * be raced. New money paths use this one.
+ */
+export async function debitBananaBalanceAtomic(
+  userId: string,
+  amount: number,
+  options: {
+    reason: string;
+    kind?: "spend" | "listing_fee" | "penalty" | "trade";
+    meta?: Record<string, unknown>;
+    /** Required here, unlike the original: without it there is nothing to claim. */
+    idempotencyKey: string;
+  },
+): Promise<{ success: boolean; newBalance: number; error?: string; replay?: boolean }> {
+  if (!userId || !(amount > 0) || !Number.isFinite(amount)) {
+    const current = await getUserBananaBalance(userId);
+    return { success: false, newBalance: current.balance, error: "invalid_amount" };
+  }
+  const txId = String(options.idempotencyKey ?? "");
+  if (!txId) {
+    const current = await getUserBananaBalance(userId);
+    return { success: false, newBalance: current.balance, error: "invalid_amount" };
+  }
+  if (!(await d1Ready())) return { success: true, newBalance: 0 };
+
+  const now = new Date().toISOString();
+  const kind = options.kind || "spend";
+  const metaJson = JSON.stringify({ reason: options.reason, ...options.meta });
+
+  let claimRefused = false;
+  try {
+    await d1BatchRun([
+      {
+        sql: `INSERT INTO banana_transactions (id, user_id, kind, amount, meta, created_at)
+              VALUES (?, ?, ?, ?, ?, ?)`,
+        binds: [txId, userId, kind, -amount, metaJson, now],
+      },
+      {
+        sql: `UPDATE users SET banana_balance = banana_balance - ?
+               WHERE id = ? AND banana_balance >= ? AND changes() = 1`,
+        binds: [amount, userId, amount],
+      },
+      {
+        /*
+          The claim, given back when the debit did not apply. `changes()` here
+          is the UPDATE's, so this deletes exactly when the balance was too
+          low — and never when the money moved.
+        */
+        sql: `DELETE FROM banana_transactions WHERE id = ? AND changes() = 0`,
+        binds: [txId],
+      },
+    ]);
+  } catch {
+    /* The primary key refused the claim: somebody else's copy of this got there. */
+    claimRefused = true;
+  }
+
+  const landed = await d1First<{ id?: string }>(
+    `SELECT id FROM banana_transactions WHERE id = ? LIMIT 1`,
+    txId,
+  ).catch(() => undefined);
+  const balance = (await getUserBananaBalance(userId)).balance;
+
+  if (landed?.id) {
+    /*
+      The row is there. Either this call wrote it or an identical one did, and
+      in both cases the amount has been taken exactly once — which is what the
+      caller needs to know.
+    */
+    return { success: true, newBalance: balance, replay: claimRefused };
+  }
+  return { success: false, newBalance: balance, error: "insufficient_balance" };
+}
