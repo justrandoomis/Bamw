@@ -300,6 +300,12 @@ export const api = {
     targetProductId?: string | number,
     /* A referral code the member typed. The server resolves and re-prices it. */
     referralCode?: string,
+    /*
+      «المحفظة» or «الدفع عند الاستلام». The server offers cash only when every
+      line is something a courier carries, and refuses this outright otherwise —
+      so sending it is asking, not choosing.
+    */
+    paymentMethod?: "wallet" | "cash_on_delivery",
   ) =>
     request<{ order: Order }>("/api/orders", {
       method: "POST",
@@ -311,6 +317,7 @@ export const api = {
         idempotencyKey,
         targetProductId,
         referralCode,
+        paymentMethod,
       }),
     }),
   setOrderAddress: (orderId: string, address: unknown) =>

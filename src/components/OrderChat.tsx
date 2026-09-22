@@ -637,7 +637,18 @@ export default function OrderChat({
               : (order as any)?.status === "delivering"
                 ? "قيد التسليم 📦"
                 : "قيد المعالجة ⏳"}{" "}
-            · {order.paymentStatus === "paid" ? "مدفوع من المحفظة" : "بانتظار الدفع"}
+            ·{" "}
+            {/*
+              «بانتظار الدفع» is true of an order awaiting a receipt and
+              misleading about one the member chose to pay at the door: nothing
+              is expected of them until the courier arrives, and this line was
+              the only thing on the screen telling them otherwise.
+            */}
+            {order.paymentStatus === "paid"
+              ? "مدفوع من المحفظة"
+              : order.paymentMethod === "cash_on_delivery"
+                ? "الدفع عند الاستلام"
+                : "بانتظار الدفع"}
           </p>
         </div>
         <div className="flex items-center gap-2">

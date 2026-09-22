@@ -14,6 +14,7 @@ import {
   randomId,
 } from "@/lib/db.server";
 import { body, guard, json } from "@/lib/http.server";
+import { isPaymentMethod } from "@/lib/payment-method";
 import {
   AwaitingReleaseError,
   createOrderForUser,
@@ -160,6 +161,12 @@ export const Route = createFileRoute("/api/orders")({
               request's own cookie and from the database.
             */
             referralCode?: string;
+            /*
+              «المحفظة» or «الدفع عند الاستلام». A request and nothing more:
+              `createOrderForUser` decides from the cart's own contents whether
+              cash is on offer at all, and refuses this outright when it is not.
+            */
+            paymentMethod?: string;
           }>(request);
           const throttle = await consumeRateLimit(request, "order-create", 15, 15 * 60, user.id);
           if (!throttle.allowed) return rateLimitResponse(throttle.retryAfter);
@@ -202,6 +209,7 @@ export const Route = createFileRoute("/api/orders")({
                   ? { referralCode: data.referralCode.trim().slice(0, 64) }
                   : {}),
               },
+              isPaymentMethod(data.paymentMethod) ? data.paymentMethod : undefined,
             );
             return json({ order: redactOrder(order!, user) });
           } catch (error) {

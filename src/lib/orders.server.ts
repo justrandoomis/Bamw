@@ -40,6 +40,7 @@ import { memberAllowsNotification } from "./notification-preferences.server";
   boolean and they are two now.
 */
 import { isFullyDigitalOrder } from "./delivery-kinds";
+import { cashOnDeliveryAllowed, resolvePaymentMethod } from "./payment-method";
 import type {
   Address,
   Order,
@@ -413,6 +414,13 @@ export async function createOrderForUser(
     referrer or its own discount.
   */
   referralContext?: { request?: Request; referralCode?: string },
+  /*
+    Wallet, or cash at the door. A REQUEST, not an instruction: the server
+    decides from the cart's own contents whether cash is on offer at all, and
+    a browser asking for it on a cart that cannot have it is refused rather
+    than quietly charged.
+  */
+  requestedPaymentMethod?: unknown,
 ): Promise<Order> {
   if (!user || !user.id || typeof user.id !== "string") {
     throw new Error("missing_user");
@@ -756,7 +764,44 @@ export async function createOrderForUser(
     to be the number the cart showed, or the shop pays the courier out of its
     own pocket on every delivery.
   */
-  const needsWalletPayment = true;
+  /*
+    CASH ON DELIVERY, AND ONLY WHERE THERE IS A DOOR.
+
+    `cashOnDeliveryAllowed` says yes only when every line is something a
+    courier carries. That limit is what makes the option safe: a digital
+    account is handed over in the chat as soon as the order is paid, so an
+    unpaid digital order is either given away or held forever. A mixed cart is
+    refused for the same reason from the other side — the game would wait on
+    the van.
+
+    Asking for cash on a cart that cannot have it is an error, not a fallback.
+    Falling back to the wallet would charge someone who had just chosen not to
+    be charged.
+  */
+  if (requestedPaymentMethod === "cash_on_delivery" && !cashOnDeliveryAllowed(items)) {
+    if (couponClaimed) {
+      await releaseCouponUse({ ...couponClaimed, releaseGlobal: true }).catch(() => {});
+    }
+    if (referralClaimed) await releaseReferralDiscount(orderId);
+    throw new Error("cash_on_delivery_not_available");
+  }
+  const paymentMethod = resolvePaymentMethod(requestedPaymentMethod, items);
+
+  /*
+    EVERY OTHER ORDER IS PAID FROM THE WALLET.
+
+    This was `isFullyDigitalOrder(items)`, and it is the hole the owner
+    reported: «عند شراء المنتج لا يخصم من المحفظة». One physical line made the
+    whole cart "not fully digital" and nothing was taken, while the cart screen
+    had promised «إتمام الدفع عبر المحفظة» and shown the balance it would
+    leave. Whether an order needs a delivery slot has nothing to do with
+    whether it has been paid for, and the two were one boolean.
+
+    They are three things now, and each is asked its own question: `needsAddress`
+    decides shipping, `isFullyDigitalOrder` decides fulfilment, and the money is
+    taken unless the member chose to pay at the door.
+  */
+  const needsWalletPayment = paymentMethod === "wallet";
 
   const deliveryBase = toNumber(store.settings?.["deliveryBase"] || 5000);
   const deliveryExceptions = (
@@ -785,7 +830,7 @@ export async function createOrderForUser(
     amount that will actually be taken — and the delivery fee is only known
     once the address has picked its city.
   */
-  if ((user.walletBalance || 0) < total) {
+  if (needsWalletPayment && (user.walletBalance || 0) < total) {
     // The coupon use was claimed a moment ago; give it back rather than
     // burning a member's single use on an order that never happened.
     if (couponClaimed) {
@@ -835,6 +880,7 @@ export async function createOrderForUser(
     paymentStatus: needsWalletPayment ? "paid" : "unpaid",
     needsAddress,
     ...(address ? { address } : {}),
+    paymentMethod,
     threadId,
     createdAt: now,
     updatedAt: now,
@@ -1216,6 +1262,28 @@ export async function createOrderForUser(
           currency: order.currency,
           paymentStatus: "paid",
           text: `🎮 تم تأكيد طلبك الرقمي (${order.code}) بنجاح!\nالمبلغ المدفوع من المحفظة: ${order.total.toLocaleString()} د.ع\nيقوم فريق الدعم حالياً بتجهيز بيانات الحساب والرمز وإرسالها لك في هذه المحادثة.`,
+        },
+      });
+    } else if (paymentMethod === "cash_on_delivery") {
+      /*
+        A CASH ORDER MUST NOT BE ASKED FOR A TRANSFER.
+
+        The `else` below opens with the shop's intro and then a
+        `payment_methods_card` — «أرسل المبلغ ثم ارفع صورة الإيصال هنا». That
+        card is right for an order awaiting a ZainCash receipt and exactly
+        wrong for one the member chose to pay at the door: they would be told
+        to transfer the money they had just elected to hand the courier, and
+        an uploaded receipt would then be waiting for an admin who has nothing
+        to approve.
+
+        So cash orders get their own confirmation, saying what is owed and to
+        whom. Nothing about the wallet, because nothing was taken from it.
+      */
+      await appendMessage(threadId, {
+        senderRole: "system",
+        kind: "system",
+        body: {
+          text: `✅ تم تأكيد طلبك (${code}).\nطريقة الدفع: الدفع عند الاستلام.\nالمبلغ المطلوب: ${total.toLocaleString()} د.ع تُسلَّم للمندوب عند وصول الطلب.\nلم يُخصم من محفظتك شيء. سنتابع تجهيز الطلب والشحن معك هنا.`,
         },
       });
     } else {

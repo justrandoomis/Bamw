@@ -1009,6 +1009,17 @@ export interface Order {
    */
   isGift?: boolean;
   checkoutSessionId?: string;
+  /**
+   * Wallet, or cash at the door.
+   *
+   * Absent on every order written before the choice existed, and those were
+   * all wallet orders — `paymentStatus` and the wallet ledger already say so,
+   * and nothing reads this field to decide whether money moved. It is here so
+   * that an order the courier must collect for can be told apart from one that
+   * is merely awaiting a transfer, on the admin's screen and in the member's
+   * own order card.
+   */
+  paymentMethod?: "wallet" | "cash_on_delivery";
   paymentReference?: string;
   idempotencyKey?: string;
   createdBy?: string;

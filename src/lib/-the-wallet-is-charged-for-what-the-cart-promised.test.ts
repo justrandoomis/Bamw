@@ -34,8 +34,19 @@ describe("payment is not decided by what the order contains", () => {
     expect(orders).not.toContain("const needsWalletPayment = isFullyDigitalOrder");
   });
 
-  it("charges every order", () => {
-    expect(orders).toContain("const needsWalletPayment = true;");
+  /*
+    REVERSED, AND ON PURPOSE.
+
+    This read `const needsWalletPayment = true;` — every order charged, which
+    is what closing the hole required while the wallet was the only way to pay.
+    The owner then asked for a second one: «الأجهزة والاكسسوارات اضف خيار لها
+    دفع عند الاستلام». So the answer is no longer a constant; it is the method
+    the SERVER resolved, and the point that mattered is preserved exactly —
+    what the cart CONTAINS still decides nothing about whether money is taken.
+  */
+  it("charges every order except one the member chose to pay at the door", () => {
+    expect(orders).toContain('const needsWalletPayment = paymentMethod === "wallet";');
+    expect(orders).toContain("const paymentMethod = resolvePaymentMethod(requestedPaymentMethod, items);");
   });
 
   it("still uses the digital question for fulfilment, where it belongs", () => {
@@ -60,7 +71,9 @@ describe("the amount taken is the amount the cart showed", () => {
   });
 
   it("checks the balance against the total, including delivery", () => {
-    expect(orders).toContain("if ((user.walletBalance || 0) < total)");
+    // Gated on `needsWalletPayment` since cash on delivery was added: a member
+    // paying the courier is not asked to hold the money in the wallet first.
+    expect(orders).toContain("if (needsWalletPayment && (user.walletBalance || 0) < total)");
     expect(orders).not.toContain("(user.walletBalance || 0) < finalItemsTotal");
   });
 });
@@ -91,9 +104,19 @@ describe("the insufficient-funds guard can actually fire", () => {
 });
 
 describe("the cart's promise is the one the server keeps", () => {
-  it("offers a wallet payment with no cash-on-delivery alternative", () => {
+  /*
+    This used to assert the cart offered NO cash-on-delivery alternative — the
+    evidence that a physical order silently going unpaid was a fault and not a
+    feature. The owner has since asked for the alternative to exist, so the
+    assertion that still matters is the narrower one: the wallet wording is
+    shown only when the wallet is what will be charged. The cash-on-delivery
+    rule itself is pinned in `-cash-at-the-door-only-where-there-is-a-door`.
+  */
+  it("promises the wallet only when the wallet is what pays", () => {
     expect(cart).toContain("إتمام الدفع عبر المحفظة");
     expect(cart).toContain("الرصيد المتبقي بعد الدفع");
+    expect(cart).toContain("const payFromWallet = !(codAllowed && payAtDoor);");
+    expect(cart).toContain("{payFromWallet ? (");
   });
 
   it("refreshes the balance it just spent", () => {
