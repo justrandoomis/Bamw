@@ -337,6 +337,22 @@ rmSync(outfile, { force: true });
 
 say(`## كُتب: **${written}** · تُحقّق منه حقلًا بحقل: **${verified}**`);
 say();
+/*
+  Name them.
+
+  A canary run writes the first few in catalogue order, and the tables above
+  are sorted for reading — so neither says WHICH prices moved on the live shop.
+  The owner has to be able to check them, and to put them back.
+*/
+say("| اللعبة | التكلفة | من | إلى |");
+say("|---|---:|---:|---:|");
+for (const d of moving) {
+  say(
+    `| ${d.title.slice(0, 46)} | ${(d.cost ?? 0).toLocaleString("en-US")} | ` +
+      `${d.oldPrice.toLocaleString("en-US")} | ${d.newPrice.toLocaleString("en-US")} |`,
+  );
+}
+say();
 if (faults.length) {
   say("### أخطاء بعد الكتابة");
   say();
