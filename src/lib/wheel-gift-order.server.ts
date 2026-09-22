@@ -42,6 +42,26 @@ export interface WheelGiftOrderInput {
   price: number;
   spinId: string;
   now?: string;
+  /*
+    THE THREE FIELDS THAT MAKE A RETRY HARMLESS.
+
+    This minted `randomId("ord")` unconditionally, which was right while the
+    only caller was the spin — a spin happens once and creates its order inside
+    its own guarded path. It is wrong for the import button, which a member can
+    press twice, whose request can be retried by a network, and which two tabs
+    can send at the same moment.
+
+    Given from the outside, all three are a function of the prize rather than of
+    the moment, so a second attempt writes the SAME row: `saveOrder` upserts on
+    `id`, `saveThread` upserts on `id`, and `orders.idempotency_key` carries a
+    UNIQUE index — three independent reasons a prize cannot become two orders.
+
+    Omitted, the old behaviour is unchanged, so the wheel's own path and its
+    tests keep working exactly as they did.
+  */
+  orderId?: string;
+  threadId?: string;
+  idempotencyKey?: string;
 }
 
 export interface WheelGiftOrder {
@@ -81,8 +101,8 @@ export async function createWheelGiftOrder(
 
   const user = await findUserById(userId).catch(() => undefined);
 
-  const orderId = randomId("ord");
-  const threadId = randomId("thr");
+  const orderId = String(input.orderId ?? "").trim() || randomId("ord");
+  const threadId = String(input.threadId ?? "").trim() || randomId("thr");
   /*
     `BN-G-` rather than `BN-`. An admin scanning the queue can see what this
     is before they open it, and a gift and a sale of the same game on the same
@@ -154,6 +174,7 @@ export async function createWheelGiftOrder(
     threadId,
     isGift: true,
     source: WHEEL_GIFT_SOURCE,
+    ...(input.idempotencyKey ? { idempotencyKey: input.idempotencyKey } : {}),
     createdAt: now,
     updatedAt: now,
     events: [
