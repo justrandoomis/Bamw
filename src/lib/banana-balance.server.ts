@@ -79,11 +79,18 @@ export async function creditBananaBalance(
       sql: `UPDATE users SET banana_balance = banana_balance + ? WHERE id = ?`,
       binds: [amount, userId],
     },
-    // 2. Keep banana_wallets in sync for backwards compatibility
-    {
-      sql: `UPDATE banana_wallets SET balance = balance + ?, updated_at = ? WHERE user_id = ?`,
-      binds: [amount, now, userId],
-    },
+    /*
+      `banana_wallets` was kept "in sync for backwards compatibility" with
+      nothing. Nothing in the repository has ever INSERTed a row into that
+      table, and nothing reads it — so this statement, and its sibling in the
+      debit below, matched zero rows on every single balance movement in the
+      shop's history.
+
+      Two statements per movement, on a Worker this repository documents
+      elsewhere as CPU-bound, to keep a table in sync with a table that is
+      empty. The table itself is left in place: dropping it is a schema change
+      that buys nothing, and an empty unused table costs nothing to keep.
+    */
     // 3. Ledger record in banana_transactions
     {
       sql: `INSERT INTO banana_transactions (id, user_id, kind, amount, meta, created_at)
@@ -178,10 +185,7 @@ export async function debitBananaBalance(
 
   await d1BatchRun([
     // Mirror wallet, kept in sync for backwards compatibility.
-    {
-      sql: `UPDATE banana_wallets SET balance = MAX(0, balance - ?), updated_at = ? WHERE user_id = ?`,
-      binds: [amount, now, userId],
-    },
+    // The debit's half of the same dead pair — see the credit above.
     // Ledger record.
     {
       sql: `INSERT INTO banana_transactions (id, user_id, kind, amount, meta, created_at)
