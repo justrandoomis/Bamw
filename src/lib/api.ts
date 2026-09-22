@@ -1,3 +1,10 @@
+/*
+  The roulette's own vocabulary, so the admin helpers below cannot drift from
+  the engine's keys. `roulette-odds.ts` is pure arithmetic and constants — it
+  reads no database and no clock — so naming its types here costs the browser
+  bundle nothing it did not already have.
+*/
+import type { BucketKey, PopularityTier, PrizeBucketKey } from "./roulette-odds";
 import type {
   ChatMessage,
   Order,
@@ -874,6 +881,12 @@ export const adminApi = {
         minListingQuantity: number;
         maxListingQuantity: number;
         promoRatePerMinute: number;
+        /*
+          «تعطيل/تفعيل البيع المباشر عند الحاجة». Sent by the server since the
+          shop started buying bananas back; the panel could not read it, so the
+          one switch that closes that window had nowhere to be drawn.
+        */
+        directSellEnabled: boolean;
       };
       livePrice: number;
       bots: any[];
@@ -995,6 +1008,86 @@ export const adminApi = {
         body: JSON.stringify({ action: "grant_wheel_tickets", ...payload }),
       },
     ),
+  /**
+   * The roulette's payout curve, as the engine will really run it.
+   *
+   * «عرض النسبة الفعلية النهائية بعد normalization وليس weights مبهمة» — so
+   * every number here is the server's own, already normalised and already
+   * redistributed away from the empty buckets. Nothing on the screen may
+   * recompute a percentage from these; it prints them.
+   *
+   * `priceBoundary` is a what-if: the route answers on the line it is given and
+   * stores nothing, so it moves the preview and not the roulette.
+   */
+  rouletteOdds: (priceBoundary?: number) =>
+    request<{
+      success: boolean;
+      priceBoundary: number;
+      poolSize: number;
+      /** Why games were dropped, by reason: `hidden`, `not_a_game`, `excluded`… */
+      skipped: Record<string, number>;
+      population: Record<PrizeBucketKey, number>;
+      curve: {
+        tickets: number;
+        rows: { key: BucketKey; label: string; percent: number; games: number }[];
+        emptied: PrizeBucketKey[];
+      }[];
+    }>("/api/admin/banana", {
+      method: "POST",
+      body: JSON.stringify({
+        action: "roulette_odds",
+        ...(priceBoundary === undefined ? {} : { priceBoundary }),
+      }),
+    }),
+
+  /**
+   * One game's popularity tier, or its membership of the prize pool.
+   *
+   * Only the field that changed is sent, and that is not a nicety: the route
+   * treats an omitted field as "leave it alone", so spreading a whole row here
+   * would make ticking a tier silently un-exclude a game the owner had taken
+   * out of the roulette on purpose.
+   */
+  setRouletteGameFlags: (payload: {
+    productId: string;
+    popularity?: PopularityTier;
+    excluded?: boolean;
+  }) =>
+    request<{
+      success: boolean;
+      productId: string;
+      /** Echoed back only when it was sent — the screen renders the reply. */
+      popularity?: PopularityTier;
+      excluded?: boolean;
+    }>("/api/admin/banana", {
+      method: "POST",
+      body: JSON.stringify({
+        action: "set_game_flags",
+        productId: payload.productId,
+        ...(payload.popularity === undefined ? {} : { popularity: payload.popularity }),
+        ...(payload.excluded === undefined ? {} : { excluded: payload.excluded }),
+      }),
+    }),
+
+  /**
+   * «البحث بالمستخدم، بـSpin ID، بـPrize ID، بـOrder ID» — one box, four tables.
+   *
+   * The admin holds an id and does not know which kind it is, so the search is
+   * one action and the server tries it against all four tables. Read-only.
+   */
+  rouletteAudit: (query: string) =>
+    request<{
+      success: boolean;
+      query: string;
+      spins: Record<string, unknown>[];
+      prizes: Record<string, unknown>[];
+      sales: Record<string, unknown>[];
+      tickets: Record<string, unknown>[];
+    }>("/api/admin/banana", {
+      method: "POST",
+      body: JSON.stringify({ action: "roulette_audit", query }),
+    }),
+
   adjustUserBanana: (userId: string, amount: number, reason?: string) =>
     request<{ success: boolean; userId: string; oldBalance: number; newBalance: number }>(
       "/api/admin/banana",
