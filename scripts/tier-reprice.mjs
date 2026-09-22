@@ -217,7 +217,49 @@ say();
 
 /* --------------------------------------------------------------- the changes */
 
-say(`## 2. ما سيتغيّر`);
+/*
+  The tiers this run cannot read, by name.
+
+  The summary says 74 of them, carrying 8.8 million in cost at an eight per
+  cent margin — the worst margins in the catalogue, and exactly the rows the
+  owner's rules exist to fix. Left untouched, because a rule applied to the
+  wrong tier is worse than no rule.
+
+  But "74 unknown" is not an answer, it is a number. If they are all one
+  spelling the classifier does not know, that is a one-line fix worth more
+  than every price this run moves. So: the distinct names, with counts, so the
+  next change is aimed rather than guessed.
+*/
+const unknownNames = new Map();
+for (const { result } of results) {
+  for (const p of result.proposals) {
+    if (p.kind !== "unknown") continue;
+    const label = `${p.id} | ${p.name}`.trim();
+    const seen = unknownNames.get(label) ?? { n: 0, cost: 0, price: 0 };
+    seen.n += 1;
+    seen.cost += Number(p.cost) || 0;
+    seen.price += Number(p.oldPrice) || 0;
+    unknownNames.set(label, seen);
+  }
+}
+
+say(`## 2. الطبقات التي لم يُعرَف نوعها`);
+say();
+if (!unknownNames.size) {
+  say(`لا شيء. كل طبقة معروفة.`);
+} else {
+  say(`أسماء مختلفة: **${unknownNames.size}** · طبقات: **${unknownTiers}**`);
+  say();
+  say(`| المعرّف \\| الاسم | عدد | مجموع التكلفة | مجموع السعر | الربح |`);
+  say(`| --- | --- | --- | --- | --- |`);
+  for (const [label, b] of [...unknownNames.entries()].sort((a, b) => b[1].n - a[1].n).slice(0, 40)) {
+    say(`| ${label || "(فارغ)"} | ${b.n} | ${money(b.cost)} | ${money(b.price)} | ${money(b.price - b.cost)} |`);
+  }
+  if (unknownNames.size > 40) say(`| … | ${unknownNames.size - 40} اسمًا آخر | | | |`);
+}
+say();
+
+say(`## 3. ما سيتغيّر`);
 say();
 if (!moving.length) {
   say(`لا شيء. كل الطبقات داخل قواعد المالك أصلًا.`);
@@ -265,7 +307,7 @@ for (const { result } of moving) {
 }
 outliers.sort((a, b) => b.ratio - a.ratio);
 
-say(`## 3. حركات كبيرة — راجع التكلفة قبل اعتمادها`);
+say(`## 4. حركات كبيرة — راجع التكلفة قبل اعتمادها`);
 say();
 say(
   `الشرط: تغيّر ${Math.round(BIG_MOVE_RATIO * 100)}% أو أكثر، أو ${money(BIG_MOVE_ABSOLUTE)} دينار أو أكثر. كلها تمر من البوابة — هذه ملاحظة على التكلفة لا على القاعدة.`,
@@ -454,7 +496,7 @@ for (const [id, perTier] of wanted) {
 const overlayWrites = [...wanted.keys()].filter((id) => overlayIds.has(id));
 const chunkWrites = [...wanted.keys()].filter((id) => !overlayIds.has(id));
 
-say(`## 4. الكتابة`);
+say(`## 5. الكتابة`);
 say();
 say(`- عبر صفوف \`store:product:<id>\`: **${overlayWrites.length}**`);
 say(`- عبر كتل الكتالوج: **${chunkWrites.length}**`);
