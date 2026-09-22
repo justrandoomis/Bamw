@@ -21,6 +21,7 @@ import {
   BUCKET_MS,
   type BananaMarketConfig,
 } from "./banana-market-config.server";
+import { roundPrice } from "./banana-price";
 
 export { getMarketConfig, saveMarketConfig, type BananaMarketConfig };
 
@@ -137,9 +138,20 @@ async function getBotListings(config: BananaMarketConfig, spot: number): Promise
 
   return bots.map((bot) => {
     const jitter = (botHash(bot.id, bucket) - 0.5) * 2 * amp;
-    let pricePer = Math.round(spot * (1 + jitter) * 1000) / 1000;
-    pricePer = Math.min(config.maxPrice, Math.max(config.minPrice, pricePer));
+    let pricePer = roundPrice(spot * (1 + jitter));
     if (bot.min_price_iqd) pricePer = Math.max(pricePer, bot.min_price_iqd);
+    /*
+      The market's band is the OUTER constraint, applied after the bot's own
+      floor rather than before it.
+
+      Production's six bots were seeded when the price was around 1 IQD and
+      carry floors from 0.643 to 0.769. The spot price is 0.0004. With the
+      clamp first and the bot's floor second, every bot listed at its own
+      stale floor — a board of offers priced nineteen hundred times the
+      market, which is a dead market with numbers on it. A per-bot floor is a
+      preference; the admin's floor and ceiling are the rule.
+    */
+    pricePer = roundPrice(Math.min(config.maxPrice, Math.max(config.minPrice, pricePer)));
 
     const span = Math.max(0, config.botMaxQuantity - config.botMinQuantity);
     let quantity = Math.round(config.botMinQuantity + botHash(bot.id, bucket + 991) * span);
@@ -210,7 +222,15 @@ export async function getSnapshot(userId?: string, range = "1D"): Promise<Banana
       avatar: o.user_avatar || "",
       verified: Boolean(o.user_username),
       quantity: o.quantity,
-      pricePer: Math.round(pricePer * 1000) / 1000,
+      /*
+        A member's own listing, at the precision the market actually prices at.
+
+        The one offer ever created in this shop was 430,000 bananas for 50.0047
+        IQD — 0.000116 per banana — and three decimals showed its owner a price
+        of 0.000 for their own sale. That is «البيع لا يعمل» seen from the
+        member's side: the listing existed and read as worthless.
+      */
+      pricePer: roundPrice(pricePer),
       total: o.price_iqd,
       isPrivate: false,
       isPromoted: false,

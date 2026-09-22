@@ -315,7 +315,9 @@ export async function getChart(config: BananaMarketConfig, range = "1D"): Promis
     out.push({
       time: label(at, spec.hours),
       t: at.toISOString(),
-      price: match ? Math.round(match.price * 1000) / 1000 : spotPriceAt(config, ts),
+      // The chart at the market's own precision; three decimals drew this
+      // shop's entire price history as a flat line along zero.
+      price: match ? roundPrice(match.price) : spotPriceAt(config, ts),
     });
   }
 
