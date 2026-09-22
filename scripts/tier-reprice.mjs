@@ -325,6 +325,43 @@ const payload = {
 };
 if (args.json && args.json !== "true") writeFileSync(args.json, JSON.stringify(payload, null, 2));
 
+/*
+  The digest, repeated at the END.
+
+  The cost table is the first thing in this report and the report is seventy
+  rows long, so from a job log — which is read as a tail — the numbers that
+  matter scroll off the top. Printing them again last costs nothing and is the
+  difference between reading this run and guessing at it.
+*/
+const digest = () => {
+  say();
+  say(`## الخلاصة`);
+  say();
+  say(`| الطبقة | عدد | مجموع التكلفة | مجموع السعر الحالي | الربح الحالي | ستتحرك |`);
+  say(`| --- | --- | --- | --- | --- | --- |`);
+  for (const [kind, b] of Object.entries(byKind).sort((a, b) => b[1].n - a[1].n)) {
+    say(
+      `| \`${kind}\` | ${b.n} | ${money(b.cost)} | ${money(b.price)} | ${money(b.price - b.cost)} | ${b.moving} |`,
+    );
+  }
+  say();
+  const before = moving.reduce(
+    (sum, { result }) =>
+      sum + result.proposals.filter((p) => p.changed).reduce((s, p) => s + Number(p.oldPrice), 0),
+    0,
+  );
+  const after = moving.reduce(
+    (sum, { result }) =>
+      sum + result.proposals.filter((p) => p.changed).reduce((s, p) => s + Number(p.newPrice), 0),
+    0,
+  );
+  say(`- منتجات تتحرك: **${moving.length}** من ${results.length} منتجًا يحمل طبقات`);
+  say(`- طبقات تتحرك: **${payload.changes.length}**`);
+  say(`- مجموع أسعارها قبل: **${money(before)}** → بعد: **${money(after)}** (${after >= before ? "+" : ""}${money(after - before)})`);
+  say(`- حركات كبيرة تستحق مراجعة التكلفة: **${outliers.length}**`);
+  say(`- طبقات لم تُعرَف ولن تُمَس: **${unknownTiers}**`);
+};
+
 if (!APPLY) {
   say(`**تشغيل جاف. لم يُكتب شيء.**`);
   const frozen = moving.filter(({ result }) => overlayIds.has(result.id));
@@ -332,6 +369,7 @@ if (!APPLY) {
   say(
     `منتجات ستتحرك ولها صف \`store:product:<id>\` منفصل (يجب أن يُكتب هو لا الكتل): **${frozen.length}**`,
   );
+  digest();
   rmSync(outfile, { force: true });
   flush();
   process.exit(0);
@@ -565,4 +603,5 @@ if (settled.length) {
 }
 
 say(`**تم. كل طبقة تحركت، وتحققت من D1، والقواعد مستقرة.**`);
+digest();
 flush();

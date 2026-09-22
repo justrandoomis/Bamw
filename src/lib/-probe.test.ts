@@ -1,48 +1,49 @@
 import { describe, expect, it } from "vitest";
-import { repriceTiers } from "./tierRepricing";
+import { normalizeProductRecord } from "./db.server";
 
-const brief = (r: any) =>
-  r.proposals.map((p: any) => `${p.kind} cost=${p.cost} ${p.oldPrice}->${p.newPrice} skipped=${p.skipped ?? "-"} reason=${p.reason}`);
+// exact copy of scripts/tier-reprice.mjs patchProduct
+const patchProduct = (before: any, perTier: Map<number, number>) => {
+  const types = (Array.isArray(before["types"]) ? before["types"] : []).map((tier: any, index: number) =>
+    perTier.has(index) ? { ...tier, price: perTier.get(index) } : tier,
+  );
+  return { ...before, types };
+};
 
-describe("probe", () => {
-  it("console", () => {
-    expect(brief(repriceTiers({
-      id: "prd_console", title: "Nintendo Switch 2 جهاز", kind: "hardware",
-      types: [
-        { id: "offline_base", name: "اوفلاين", cost: 1000, price: 5000 },
-        { id: "online_base", name: "اونلاين", cost: 27500, price: 30000 },
+describe("write probe", () => {
+  it("raw overlay row with only `variants`", () => {
+    const raw = {
+      id: "prd_v", title: "Game",
+      variants: [
+        { id: "offline_base", name: "اوفلاين", cost: 1000, price: 10250 },
+        { id: "online_base", name: "اونلاين", cost: 20000, price: 40000 },
       ],
-    }))).toEqual(["MARKER"]);
+    };
+    const normalized: any = normalizeProductRecord(raw);
+    const guardPasses = Array.isArray(normalized.types) && normalized.types.length > 0;
+    const patched = patchProduct(raw, new Map([[0, 10000]]));
+    const afterNormalized: any = normalizeProductRecord(patched);
+    expect({ guardPasses, patchedTypes: patched.types, afterTiers: afterNormalized.types.length,
+             variantsStillThere: (patched as any).variants.length }).toEqual("MARKER");
   });
-  it("giftcard", () => {
-    expect(brief(repriceTiers({
-      id: "prd_card", title: "Nintendo eShop Gift Card HK",
-      types: [{ id: "online_base", name: "اونلاين", cost: 17600, price: 18500 }],
-    }))).toEqual(["MARKER"]);
+
+  it("raw overlay row whose types array has a falsy hole", () => {
+    const raw = {
+      id: "prd_h", title: "Game",
+      types: [null, { id: "offline_base", name: "اوفلاين", cost: 1000, price: 10250 }],
+    };
+    const normalized: any = normalizeProductRecord(raw);
+    const patched: any = patchProduct(raw, new Map([[0, 10000]]));
+    expect({ normalizedFirstId: normalized.types[0]?.id, normalizedLen: normalized.types.length,
+             patched0: patched.types[0], patched1: patched.types[1] }).toEqual("MARKER");
   });
-  it("hardware extras", () => {
-    expect(brief(repriceTiers({
-      id: "prd_hw", title: "جهاز", kind: "hardware",
-      types: [
-        { id: "offline_base", name: "اوفلاين", cost: 1000, price: 5000 },
-        { id: "offline_extras", name: "اوفلاين مع الاضافات", cost: 3000, price: 6000 },
-      ],
-    }))).toEqual(["MARKER"]);
-  });
-  it("two dlc tiers", () => {
-    expect(brief(repriceTiers({
-      id: "prd_two_dlc", title: "Game",
-      types: [
-        { id: "offline_base", name: "اوفلاين", cost: 1000, price: 8000 },
-        { id: "offline_dlc1", name: "اوفلاين dlc 1", cost: 2000, price: 10000 },
-        { id: "offline_dlc2", name: "اوفلاين dlc 2", cost: 1500, price: 9000 },
-      ],
-    }))).toEqual(["MARKER"]);
-  });
-  it("outlier", () => {
-    expect(brief(repriceTiers({
-      id: "prd_out", title: "Console bundle",
-      types: [{ id: "online_base", name: "اونلاين", cost: 450000, price: 500000 }],
-    }))).toEqual(["MARKER"]);
+
+  it("variants mirror goes stale after the overlay write", () => {
+    const raw = {
+      id: "prd_m", title: "Game",
+      types: [{ id: "offline_base", name: "اوفلاين", cost: 1000, price: 10250 }],
+      variants: [{ id: "offline_base", name: "اوفلاين", cost: 1000, price: 10250 }],
+    };
+    const patched: any = patchProduct(raw, new Map([[0, 10000]]));
+    expect({ types: patched.types[0].price, variants: patched.variants[0].price }).toEqual("MARKER");
   });
 });
