@@ -15,6 +15,8 @@ import {
 } from "@/lib/banana.server";
 /* The same numbers the pricing uses, so the refusal cannot disagree with it. */
 import { getMarketConfig, marketConfigProblem } from "@/lib/banana-market-config.server";
+import { getWheelOdds, saveWheelOdds } from "@/lib/wheel.server";
+import { wheelOddsProblem } from "@/lib/wheel-odds";
 import {
   createBananCodesBatch,
   deleteBananCode,
@@ -193,6 +195,50 @@ export const Route = createFileRoute("/api/admin/banana")({
             if (problem) return json({ error: problem }, { status: 400 });
 
             return json({ success: true, marketConfig: await saveMarketConfig(patch) });
+          }
+
+          /* ------------------------------ the wheel ---------------------------- */
+
+          if (action === "save_wheel_odds") {
+            /*
+              Validated as the admin typed it, not as the reader would repair
+              it. `normalizeWheelOdds` sorts a jumbled set and substitutes the
+              shipped bands for an unusable one — which is right on the way
+              OUT of storage, and would silently swallow the mistake on the way
+              in. So the raw values are coerced to numbers and checked, and
+              only then saved.
+            */
+            const raw = (data.odds ?? {}) as Record<string, unknown>;
+            const current = await getWheelOdds();
+
+            const tiers = Array.isArray(raw["tiers"])
+              ? (raw["tiers"] as Record<string, unknown>[]).map((tier, index) => {
+                  const bound = tier?.["upTo"];
+                  return {
+                    upTo:
+                      bound === null || bound === undefined || bound === "" ? null : Number(bound),
+                    weight: Number(tier?.["weight"]),
+                    label: String(tier?.["label"] ?? `فئة ${index + 1}`),
+                  };
+                })
+              : current.tiers;
+
+            const candidate = {
+              tiers,
+              losingPercent:
+                raw["losingPercent"] === undefined
+                  ? current.losingPercent
+                  : Number(raw["losingPercent"]),
+              ticketPriceBananas:
+                raw["ticketPriceBananas"] === undefined
+                  ? current.ticketPriceBananas
+                  : Number(raw["ticketPriceBananas"]),
+            };
+
+            const problem = wheelOddsProblem(candidate);
+            if (problem) return json({ error: problem }, { status: 400 });
+
+            return json({ success: true, wheelOdds: await saveWheelOdds(candidate) });
           }
 
           /* ------------------------------- bots -------------------------------- */

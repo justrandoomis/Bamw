@@ -129,6 +129,32 @@ export async function debitBananaBalance(
   const kind = options.kind || "spend";
   const metaJson = JSON.stringify({ reason: options.reason, ...options.meta });
 
+  /*
+    The key, actually looked up.
+
+    `creditBananaBalance` above checks its `idempotencyKey` before doing
+    anything; this took the same option, used it only as the ledger row's id,
+    and never asked whether that row already existed. So an
+    "idempotent" debit was not one: a retried request — a double-tapped
+    button, a client retry on a timeout — took the bananas a second time and
+    failed on the ledger's primary key AFTER the balance had already moved.
+    Every caller that passed a key believed it was protected and none of them
+    were.
+
+    Checked before the guarded UPDATE, so a replay costs a read and changes
+    nothing.
+  */
+  if (options.idempotencyKey) {
+    const existing = await d1First<{ id: string }>(
+      `SELECT id FROM banana_transactions WHERE id = ? LIMIT 1`,
+      options.idempotencyKey,
+    );
+    if (existing) {
+      const already = await getUserBananaBalance(userId);
+      return { success: true, newBalance: already.balance };
+    }
+  }
+
   // The balance read above can go stale before the write lands, so the debit
   // carries its own `banana_balance >= ?` guard and is applied on its own. That
   // single guarded statement is what makes overdrawing and double-spending

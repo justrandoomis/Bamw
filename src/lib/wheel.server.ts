@@ -746,3 +746,91 @@ export async function ticketOfferIds(): Promise<Record<string, number>> {
   for (const row of rows) map[row.offer_id] = Number(row.ticket_quantity) || 1;
   return map;
 }
+
+/**
+ * Buy tickets with bananas, at the price the admin set.
+ *
+ * «أجعل سعر التذكرة تحدد أيضا يدويا من الإدارة في إدارة الألعاب في عجلة الحظ».
+ *
+ * Until now a ticket could only arrive through a redemption reward flagged as
+ * a ticket offer, or by an admin handing one out. Production has zero of the
+ * first and zero tickets in existence, so the wheel has never been spun by
+ * anybody — and there was no single price anywhere for the owner to set.
+ *
+ * ## The order, and why
+ *
+ * The bananas come out first and the tickets go in second, both under ONE
+ * reference. `grantTickets` is idempotent on (user, reference) and
+ * `creditBananaBalance` is idempotent on its own key, so a retried request
+ * credits the tickets once and no more. If the grant fails after the debit,
+ * the bananas go straight back under a reference derived from the same one —
+ * a member who paid and got nothing is the failure worth spending code on.
+ *
+ * The price is read HERE, from the server's own settings, never from the
+ * request. A quantity from the request is floored, bounded and re-multiplied,
+ * so a browser cannot ask for ten tickets at the price of one.
+ */
+export async function buyTickets(input: {
+  userId: string;
+  quantity: number;
+  now?: string;
+}): Promise<
+  | { ok: true; tickets: number; spent: number; balance: number }
+  | { ok: false; reason: "not_for_sale" | "bad_quantity" | "insufficient_bananas" | "failed" }
+> {
+  const userId = String(input.userId ?? "");
+  const quantity = Math.floor(Number(input.quantity));
+  if (!userId) return { ok: false, reason: "failed" };
+  /*
+    A cap as well as a floor. Without one a member could ask for a number
+    whose product with the price overflows past what the balance check can
+    meaningfully compare.
+  */
+  if (!Number.isFinite(quantity) || quantity <= 0 || quantity > 100) {
+    return { ok: false, reason: "bad_quantity" };
+  }
+
+  const odds = await getWheelOdds();
+  const price = Math.floor(Number(odds.ticketPriceBananas));
+  if (!Number.isFinite(price) || price <= 0) return { ok: false, reason: "not_for_sale" };
+
+  const cost = price * quantity;
+  const reference = randomId("tkb");
+
+  const { debitBananaBalance, creditBananaBalance } = await import("./banana-balance.server");
+  const paid = await debitBananaBalance(userId, cost, {
+    reason: `شراء ${quantity} تذكرة لعجلة الحظ`,
+    kind: "spend",
+    idempotencyKey: reference,
+    meta: { tickets: quantity, pricePerTicket: price },
+  });
+  if (!paid.success) {
+    return {
+      ok: false,
+      reason: paid.error === "insufficient_balance" ? "insufficient_bananas" : "failed",
+    };
+  }
+
+  try {
+    const granted = await grantTickets({
+      userId,
+      quantity,
+      reason: `شراء تذاكر (${price} موزة للتذكرة)`,
+      referenceId: reference,
+      ...(input.now ? { now: input.now } : {}),
+    });
+    if (!granted.granted) throw new Error("WHEEL_TICKETS_NOT_GRANTED");
+    return { ok: true, tickets: granted.balance, spent: cost, balance: paid.newBalance };
+  } catch {
+    /*
+      Paid and got nothing. The bananas go back under a reference derived from
+      the purchase's own, so a retry of THIS refund cannot double it either.
+    */
+    await creditBananaBalance(userId, cost, {
+      reason: "تعذّر إصدار التذاكر — إعادة الموز",
+      kind: "refund",
+      idempotencyKey: `${reference}:refund`,
+    }).catch(() => undefined);
+    return { ok: false, reason: "failed" };
+  }
+}

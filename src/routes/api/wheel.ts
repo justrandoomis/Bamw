@@ -11,6 +11,7 @@ import { requireUser } from "@/lib/session.server";
 import { resolveProductImage } from "@/lib/productImages";
 import {
   PRIZE_VALID_DAYS,
+  buyTickets,
   getTicketBalance,
   getWheelOdds,
   recentSpins,
@@ -222,9 +223,38 @@ export const Route = createFileRoute("/api/wheel")({
 
           if (!getD1()) return json({ error: "قاعدة البيانات غير متاحة" }, { status: 503 });
 
-          // Read, but only to reject an unknown action early. Nothing in the
-          // body reaches the prize decision.
-          await body<Record<string, unknown>>(request).catch(() => ({}));
+          // Nothing in the body reaches the prize decision. The one thing it
+          // may ask for is a ticket purchase, whose price is read from the
+          // server's own settings and never from the request.
+          const sent = await body<Record<string, unknown>>(request).catch(
+            () => ({}) as Record<string, unknown>,
+          );
+
+          if (String(sent["action"] ?? "") === "buy_ticket") {
+            const bought = await buyTickets({
+              userId: user.id,
+              quantity: Number(sent["quantity"] ?? 1),
+            });
+            if (bought.ok) {
+              return json({
+                ok: true,
+                tickets: bought.tickets,
+                spent: bought.spent,
+                bananas: bought.balance,
+                message: `تم شراء التذاكر ✅`,
+              });
+            }
+            const why: Record<string, string> = {
+              not_for_sale: "لم يحدد المتجر سعر التذكرة بعد.",
+              bad_quantity: "عدد التذاكر غير صالح.",
+              insufficient_bananas: "رصيد الموز لا يكفي.",
+              failed: "تعذّر إتمام الشراء. لم يُخصم شيء.",
+            };
+            return json(
+              { error: why[bought.reason] ?? why["failed"] },
+              { status: bought.reason === "insufficient_bananas" ? 400 : 400 },
+            );
+          }
 
           const outcome = await spinWheel({ userId: user.id, candidates: await candidates() });
 
