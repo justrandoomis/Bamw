@@ -215,6 +215,70 @@ if (WRITE) {
     say(`  - \`${row.key}\` — ${Number(row.n).toLocaleString("en-US")} حرفًا`);
   say();
 
+  /*
+    Does the stored catalogue parse at all?
+
+    `chunkJson` slices the serialised JSON at fixed 400,000-character offsets,
+    and `loadStore` sorts the parts, joins them and parses. If that parse
+    fails it does NOT fail the read — it falls through to `parseArraySafely`,
+    a scanner that salvages the items it can recognise and silently drops the
+    rest, behind a `console.warn` nobody reads.
+
+    That is a mechanism which could leave exactly one product stale or mangled
+    while every other product is fine, which is precisely the shape of this
+    fault. So: join the chunks the way the loader does, parse them the way the
+    loader tries to first, and say whether it works.
+  */
+  say("## هل يُقرأ المستند المخزّن أصلاً؟");
+  say();
+  const parts = [];
+  for (const row of rows) {
+    const m = String(row.key).match(/^store:products#(\d+)$/);
+    if (!m) continue;
+    const full = await app.d1All("SELECT value FROM store_kv WHERE key = ? LIMIT 1", row.key);
+    parts.push({ index: Number(m[1]), value: String(full?.[0]?.value ?? "") });
+  }
+  parts.sort((a, b) => a.index - b.index);
+  const joined = parts.map((p) => p.value).join("");
+  say(`- الطول المجموع: **${joined.length.toLocaleString("en-US")}** حرفًا`);
+
+  let parsed = null;
+  let parseError = null;
+  try {
+    parsed = JSON.parse(joined);
+  } catch (error) {
+    parseError = String(error).split("\n")[0];
+  }
+  if (parseError) {
+    say(`- \`JSON.parse\` على الأجزاء المدموجة: **فشل** — \`${parseError}\``);
+    say();
+    say(
+      "**هذا هو الجواب: المستند المخزّن ليس JSON صالحًا، والقارئ يعمل على مسار " +
+        "الإنقاذ الصامت. كل كتابة تمرّ من هنا تُعيد كتابة ما أنقذه القارئ، لا ما في " +
+        "قاعدة البيانات.**",
+    );
+  } else if (!Array.isArray(parsed)) {
+    say(`- \`JSON.parse\` نجح لكن الناتج ليس مصفوفة: \`${typeof parsed}\``);
+  } else {
+    say(`- \`JSON.parse\` نجح: **${parsed.length.toLocaleString("en-US")}** منتجًا في المستند`);
+    const stored = parsed.filter((p) => String(p?.id ?? "") === ID);
+    say(`- نسخ هذا المنتج داخل المستند المخزّن: **${stored.length}**`);
+    for (const [index, p] of stored.entries()) {
+      say(
+        `  - النسخة ${index + 1}: \`price\` = **${JSON.stringify(p.price)}**، ` +
+          `\`cost\` = ${JSON.stringify(p.cost)}`,
+      );
+    }
+    if (stored.some((p) => Number(p.price) === NEW_PRICE)) {
+      say();
+      say("**قاعدة البيانات تحمل السعر الجديد. إذن الكتابة وصلت، والخلل في القراءة.**");
+    } else {
+      say();
+      say("**قاعدة البيانات ما زالت تحمل السعر القديم. إذن الكتابة لم تصل.**");
+    }
+  }
+  say();
+
   let hits = 0;
   for (const row of rows) {
     const full = await app.d1All("SELECT value FROM store_kv WHERE key = ? LIMIT 1", row.key);
@@ -232,7 +296,10 @@ if (WRITE) {
       const at = value.indexOf(ID, from);
       if (at < 0) break;
       seen += 1;
-      const window = value.slice(Math.max(0, at - 200), at + 400);
+      // A product record runs to thousands of characters, so a small window
+      // finds a mention without its price. Widened, and read as evidence of
+      // WHERE the id appears rather than what it is priced at.
+      const window = value.slice(Math.max(0, at - 400), at + 4000);
       const price = window.match(/"price"\s*:\s*("?[\d.]+"?)/);
       const cost = window.match(/"cost"\s*:\s*("?[\d.]+"?)/);
       say(
