@@ -1098,7 +1098,36 @@ if (chunkWrites.length) {
       const id = String(item?.id ?? "");
       if (!chunkSet.has(id)) return item;
       written += 1;
-      return patchProduct(item, plan.get(id));
+      /*
+        RESOLVED AGAINST THE DOCUMENT IN FRONT OF US, EVERY TIME.
+
+        `updateStore` re-reads the catalogue and re-runs this mutator on a
+        revision conflict, up to four times, so `current` here is not
+        necessarily the document the plan's indices were computed from at the
+        start of the run. Reusing those indices is the same fault that was
+        just fixed on the overlay path, only harder to see because it needs a
+        concurrent write to show itself.
+
+        Matching by identity again costs nothing and cannot land on the wrong
+        row. If the tier is no longer there — someone else moved that price
+        while this ran — `resolveTargets` stops the run rather than guessing.
+      */
+      const changes = wanted.get(id);
+      const fresh = mirrorsFor(item, changes);
+      const planned = plan.get(id).scalars;
+      if (fresh.scalars.size !== planned.size) {
+        fail(`${id}: نسخ السعر تغيّرت أثناء التشغيل — لن أكتب فوقها`);
+      }
+      for (const [field, value] of planned) {
+        if (fresh.scalars.get(field) !== value) {
+          fail(`${id}.${field} تغيّر أثناء التشغيل — لن أكتب فوقه`);
+        }
+      }
+      return patchProduct(item, {
+        targets: resolveTargets(id, item, changes),
+        variants: resolveVariants(item, changes),
+        scalars: fresh.scalars,
+      });
     });
     return { ...current, products: next };
   });
