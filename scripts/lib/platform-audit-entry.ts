@@ -28,4 +28,14 @@ export {
   productIdentityKeys,
 } from "@/lib/product-identity";
 export { hasNintendoSquareCard, isNintendoSwitch2Product } from "@/lib/nintendoListing";
+/*
+  What a customer actually receives, so the sweep below can ask its question of
+  that rather than of the stored record. The title leak was found by reading
+  the stored titles; asking the same question of the public projection is the
+  only way to learn whether the same scrape put a supplier's price or a Chinese
+  supplier name anywhere else a customer can read — `toPublicProduct` already
+  drops the fields that are private by name and the lines that are plainly
+  bookkeeping, so whatever survives it is genuinely on the page.
+*/
+export { toPublicProduct } from "@/lib/public-product.server";
 export { isGameProduct } from "@/lib/productSection";

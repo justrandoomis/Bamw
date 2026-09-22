@@ -440,6 +440,67 @@ if (reports.length) {
   }
 }
 
+/* ----------------------------------------- supplier data anywhere a customer reads */
+/*
+  The question the titles raised, asked of every public field.
+
+  `¥8.76` and `狂乱命运` were in product titles because a scrape glued a cell
+  onto the name. The same scrape filled the rest of the record, so the honest
+  next question is whether it put a supplier's price or the Chinese supplier
+  name anywhere else a customer can read.
+
+  It is asked of `toPublicProduct`'s output, not of the stored record: that
+  function already drops the fields that are private by name and the lines that
+  are plainly supplier bookkeeping, so anything still carrying a yuan mark
+  after it is genuinely on the page. A game's own Japanese or Chinese name is
+  not a leak, so CJK on its own is not reported — only a currency mark, and
+  only the yuan and the renminbi sign this supplier prices in.
+
+  Report only. Nothing here is changed by this script, and the fields it names
+  are outside the three it may write.
+*/
+const CURRENCY = /(?:¥|CNY|RMB|人民币)\s*\d/i;
+const publicLeaks = [];
+const walk = (node, path, into) => {
+  if (typeof node === "string") {
+    if (CURRENCY.test(node)) into.push({ path, value: node.slice(0, 160) });
+    return;
+  }
+  if (Array.isArray(node)) {
+    node.forEach((item, index) => walk(item, `${path}[${index}]`, into));
+    return;
+  }
+  if (node && typeof node === "object") {
+    for (const [key, value] of Object.entries(node))
+      walk(value, path ? `${path}.${key}` : key, into);
+  }
+};
+for (const product of products) {
+  const found = [];
+  try {
+    walk(app.toPublicProduct(product), "", found);
+  } catch {
+    // A product the public serializer cannot read is a different fault, and
+    // not one this audit is entitled to act on.
+    continue;
+  }
+  for (const hit of found) {
+    publicLeaks.push({ id: String(product.id ?? ""), label: String(product.title ?? ""), ...hit });
+  }
+}
+
+if (publicLeaks.length) {
+  say(`## A supplier's price still reaching a customer, elsewhere in the record`);
+  say();
+  say(`Reported only. These fields are outside the three this script may write.`);
+  say();
+  for (const row of publicLeaks.slice(0, 60)) {
+    say(`- **${row.label}** \`${row.path}\` — ${row.value}`);
+  }
+  if (publicLeaks.length > 60) say(`- _…and ${publicLeaks.length - 60} more._`);
+  say();
+}
+
 if (leaks.length) {
   /*
     First, because it is the only thing in this report that is a disclosure
