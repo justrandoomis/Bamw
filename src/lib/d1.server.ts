@@ -1499,6 +1499,20 @@ const SCHEMA_PATCHES: string[] = [
   `ALTER TABLE disc_trades ADD COLUMN payout_credited_at TEXT`,
   `ALTER TABLE disc_trades ADD COLUMN payout_amount_credited INTEGER`,
   `ALTER TABLE banana_market_offers ADD COLUMN buyer_id TEXT`,
+  /*
+    «عرض خاص» and «تمييز العرض».
+
+    Both have been on the listing form the whole time — checkboxes, a duration
+    picker, a cost in bananas, and a publish button that refuses when the seller
+    cannot afford the promotion. `createListing` accepted all three fields and
+    its INSERT named none of them, because the columns did not exist: nothing
+    was charged, nothing was stored, and `getSnapshot` hardcoded both flags
+    false, so a seller who ticked «خاص» watched their listing come back labelled
+    «عام».
+  */
+  `ALTER TABLE banana_market_offers ADD COLUMN is_private INTEGER NOT NULL DEFAULT 0`,
+  `ALTER TABLE banana_market_offers ADD COLUMN is_promoted INTEGER NOT NULL DEFAULT 0`,
+  `ALTER TABLE banana_market_offers ADD COLUMN promoted_until TEXT`,
   `ALTER TABLE banana_redemption_offers ADD COLUMN updated_at TEXT`,
   /*
     What the reward form has always asked for and the table could never hold.

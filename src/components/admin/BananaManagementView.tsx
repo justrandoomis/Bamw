@@ -1311,13 +1311,23 @@ export function BananaManagementView() {
                       </td>
                       <td className="p-3.5">
                         {/*
-                          `is_promoted` and `is_private` are columns the table
-                          does not have either, so this could only ever print
-                          «عادي». The listing's own status is the thing that is
-                          actually recorded, so that is what is shown until the
-                          two flags are either stored or dropped.
+                          These read `is_promoted` / `is_private` in snake_case,
+                          which the server does not send — and before that the
+                          columns did not exist at all. Both are stored and
+                          charged for now, and arrive camelCased like every
+                          other field on the row.
                         */}
                         <div className="flex items-center gap-1.5 flex-wrap">
+                          {listing.isPromoted ? (
+                            <span className="px-2 py-0.5 rounded bg-amber-500/10 text-amber-600 font-bold text-[10px]">
+                              مميز ⭐
+                            </span>
+                          ) : null}
+                          {listing.isPrivate ? (
+                            <span className="px-2 py-0.5 rounded bg-muted text-muted-foreground font-bold text-[10px]">
+                              خاص 🔒
+                            </span>
+                          ) : null}
                           <span className="text-muted-foreground text-[11px]">
                             {listing.status === "sold"
                               ? "مُباع"

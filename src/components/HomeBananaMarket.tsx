@@ -68,11 +68,23 @@ export function HomeBananaMarket() {
 
                 <div className="flex items-center gap-2 mb-3">
                   <div className="relative">
-                    <img
-                      src={listing.avatar}
-                      alt={listing.user}
-                      className="w-8 h-8 rounded-full object-cover bg-muted ring-1 ring-background shadow-sm"
-                    />
+                    {/*
+                      A bot's avatar is «🤖» and a member's can be empty, and
+                      both were fed straight into `src` — so every bot offer on
+                      the home strip rendered a broken image. Both full-screen
+                      market pages already branch on this; this one did not.
+                    */}
+                    {listing.avatar?.startsWith("http") ? (
+                      <img
+                        src={listing.avatar}
+                        alt={listing.user}
+                        className="w-8 h-8 rounded-full object-cover bg-muted ring-1 ring-background shadow-sm"
+                      />
+                    ) : (
+                      <span className="flex h-8 w-8 items-center justify-center rounded-full bg-muted text-base ring-1 ring-background shadow-sm">
+                        {listing.avatar || "🍌"}
+                      </span>
+                    )}
                     {listing.verified && (
                       <div className="absolute -bottom-0.5 -right-0.5 bg-blue-500 text-white rounded-full p-[1px] border border-card shadow-sm">
                         <svg

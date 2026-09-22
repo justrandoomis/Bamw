@@ -739,7 +739,24 @@ export async function createOrderForUser(
     const claim = await claimCouponUse({
       couponId: couponCandidate.coupon.id,
       userId: user.id,
-      perUserLimit: couponCandidate.coupon.perUserLimit,
+      /*
+        A LIFETIME COUPON IS CLAIMED AT ONE, WHATEVER `perUserLimit` SAYS.
+
+        `checkCoupon` refuses a lifetime-only coupon once `userUses >= 1` —
+        «It caps the member at one use regardless of `perUserLimit`» — but that
+        is a READ, and this is the only statement that decides anything. The
+        claim was handed `perUserLimit`, so a coupon flagged lifetime-only with
+        a per-user limit of three was enforced at one by the validator and at
+        THREE by the claim.
+
+        Two checkouts in the same second both read `userUses = 0`, both pass the
+        validator, and both claim — 0→1 and 1→2 — and the member has used their
+        one-in-a-lifetime coupon twice. The atomic claim now carries the same
+        number the validator applies, so the race has nothing left to win.
+      */
+      perUserLimit: couponCandidate.coupon.oncePerUserLifetime
+        ? 1
+        : couponCandidate.coupon.perUserLimit,
       totalLimit: couponCandidate.coupon.usageLimit,
       now,
     });

@@ -124,6 +124,47 @@ async function executeBotPurchase(bot: BananaBot, offer: BananaMarketOffer, now:
   if (bot.budgetIqd < offer.priceIqd) return;
   if (bot.maxTradeBanana && offer.quantity > bot.maxTradeBanana) return;
 
+  /*
+    THE THREE LIMITS THE ADMIN SETS AND NOTHING READ.
+
+    `maxTradeBanana` above was the only one of four enforced. The other three
+    are stored, mapped onto the bot object and shown in the panel — «أقصى سعر
+    شراء», «الحد اليومي», «الحد الأقصى الكلي» — and bounded nothing at all, so
+    the numbers the owner types were decoration.
+
+    `maxPurchasePriceIqd` is a price PER BANANA: the panel derives it from the
+    live spot price (`roundPrice(base * (1.1 + …))`), not from an offer total.
+    So it is compared against this offer's unit price, and a zero-quantity
+    offer is refused rather than divided by.
+  */
+  const unitPrice = offer.quantity > 0 ? offer.priceIqd / offer.quantity : Infinity;
+  if (bot.maxPurchasePriceIqd && unitPrice > bot.maxPurchasePriceIqd) return;
+
+  /*
+    The two volume limits, counted from the offers this bot actually bought.
+
+    `buyer_id` is the source rather than the activity log: it is a real column
+    on a real row with the quantity beside it, and the cron writes it on every
+    close. The log's quantity lives inside a JSON blob.
+
+    Counted only when a limit is set, so an unlimited bot costs no query.
+  */
+  if (bot.dailyLimitBanana || bot.maxTotalBanana) {
+    const dayStart = new Date(now).toISOString().slice(0, 10);
+    const bought = await d1First<{ today: number; total: number }>(
+      `SELECT COALESCE(SUM(CASE WHEN updated_at >= ? THEN quantity ELSE 0 END), 0) AS today,
+              COALESCE(SUM(quantity), 0) AS total
+       FROM banana_market_offers
+       WHERE buyer_id = ? AND status = 'sold'`,
+      `${dayStart}T00:00:00.000Z`,
+      bot.id,
+    );
+    const today = Number(bought?.today ?? 0);
+    const total = Number(bought?.total ?? 0);
+    if (bot.dailyLimitBanana && today + offer.quantity > bot.dailyLimitBanana) return;
+    if (bot.maxTotalBanana && total + offer.quantity > bot.maxTotalBanana) return;
+  }
+
   // 1. Atomically Claim the offer first for the bot
   const claimRes = await d1Run(
     `UPDATE banana_market_offers SET status = 'processing', updated_at = ? WHERE id = ? AND status = 'active'`,

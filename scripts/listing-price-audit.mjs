@@ -313,6 +313,69 @@ if (sample.length) {
   say();
 }
 
+/* ------------------------------------------------------------ genre coverage */
+
+/*
+  «كل الالعاب اريد لها تنصيف حسب النوع genres».
+
+  The category page already filters by genre and already reads four different
+  places for one — `genres`, `genre`, `metadata.genres` and `tags`, in that
+  order. So before adding anything, the question is how many games that sweep
+  actually finds a genre on. A sidebar full of genre buttons over a catalogue
+  that mostly carries none is the same fault as the four empty reward tabs.
+
+  Deliberately the SAME four sources the page reads, so this counts what a
+  customer can actually filter by rather than what a field is called.
+*/
+const genresOf = (p) => {
+  const out = new Set();
+  const add = (v) => {
+    if (typeof v === "string" && v.trim()) out.add(v.trim().toLowerCase());
+  };
+  const fromList = (v) => {
+    if (Array.isArray(v)) v.forEach(add);
+    else if (typeof v === "string" && v.trim()) {
+      try {
+        const parsed = JSON.parse(v);
+        if (Array.isArray(parsed)) parsed.forEach(add);
+        else v.split(",").forEach(add);
+      } catch {
+        v.split(",").forEach(add);
+      }
+    }
+  };
+  fromList(p?.genres);
+  fromList(p?.genre);
+  fromList(p?.metadata?.genres);
+  if (Array.isArray(p?.tags)) p.tags.forEach(add);
+  return [...out];
+};
+
+const withGenres = games.map((p) => ({ id: String(p.id), genres: genresOf(p) }));
+const noGenre = withGenres.filter((g) => g.genres.length === 0);
+const oneGenre = withGenres.filter((g) => g.genres.length === 1);
+const manyGenres = withGenres.filter((g) => g.genres.length > 1);
+
+say("## التصنيف حسب النوع");
+say();
+say(`- ألعاب: **${games.length}**`);
+say(`- **بلا أي نوع: ${noGenre.length}**`);
+say(`- بنوع واحد فقط: **${oneGenre.length}**`);
+say(`- بأكثر من نوع: **${manyGenres.length}**`);
+say();
+
+const tally = new Map();
+for (const g of withGenres) for (const name of g.genres) tally.set(name, (tally.get(name) ?? 0) + 1);
+const top = [...tally.entries()].sort((a, b) => b[1] - a[1]).slice(0, 25);
+say(`- أنواع مختلفة مستعملة: **${tally.size}**`);
+say();
+if (top.length) {
+  say("| النوع | عدد الألعاب |");
+  say("| --- | ---: |");
+  for (const [name, n] of top) say(`| ${name} | ${n} |`);
+  say();
+}
+
 /* --------------------------------------------------- the single-price games */
 
 const BANDS = [
@@ -421,4 +484,5 @@ say(
   `- ومتاح للشراء الآن: **${online.filter((s) => s.offlineAvailable && s.offlineOfferPrice > 0 && s.offlineOfferPrice < s.rowPrice).length}**`,
 );
 say(`- بلا أي عرض أوفلاين: **${online.filter((s) => !s.offlineOffered).length}**`);
+say(`- ألعاب بلا أي نوع: **${noGenre.length}** من **${games.length}**`);
 flush();

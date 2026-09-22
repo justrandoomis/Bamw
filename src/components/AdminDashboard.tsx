@@ -4787,96 +4787,18 @@ function XCircle({ className }: { className?: string }) {
   );
 }
 
-function MarketSettingsView() {
-  const [rate, setRate] = React.useState(6.8);
-  const [price, setPrice] = React.useState(0.24);
-  const [promo, setPromo] = React.useState(2);
-  const [isSaving, setIsSaving] = React.useState(false);
+/*
+  `MarketSettingsView` lived here and was referenced by nothing.
 
-  React.useEffect(() => {
-    fetch("/api/banana/admin")
-      .then((res) => res.json())
-      .then((data) => {
-        setRate(data.rewardRate ?? 6.8);
-        setPrice(data.openingPrice ?? 0.24);
-        setPromo(data.promoRate ?? 2);
-      });
-  }, []);
+  It fetched `/api/banana/admin` — an endpoint that does not exist; the real
+  ones are `/api/banana` and `/api/admin/banana` — and POSTed to it to save
+  the reward rate, the banana price and the promo rate. Ninety lines shipped
+  to every admin, wired to a 404, and never rendered. The live editor for
+  those three settings is `BananaManagementView`.
 
-  const handleSave = async () => {
-    setIsSaving(true);
-    try {
-      await fetch("/api/banana/admin", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ rewardRate: rate, openingPrice: price, promoRate: promo }),
-      });
-      alert("تم حفظ إعدادات السوق بنجاح");
-    } catch (e) {
-      console.error(e);
-    } finally {
-      setIsSaving(false);
-    }
-  };
-
-  return (
-    <div className="w-full p-6 animate-in fade-in duration-300">
-      <h1 className="text-2xl font-bold mb-6">إعدادات سوق الموز</h1>
-      <div className="bg-card border border-border rounded-xl p-6 space-y-6 shadow-sm">
-        <div>
-          <label className="block text-sm font-bold mb-2">
-            عدد الموز المكتسب لكل 1 دينار عراقي:
-          </label>
-          <input
-            type="number"
-            step="0.1"
-            className="w-full p-3 rounded-lg border border-border bg-muted/50 focus:border-black outline-none transition-colors"
-            value={rate}
-            onChange={(e) => setRate(parseFloat(e.target.value))}
-          />
-          <p className="text-xs text-muted-foreground mt-1">
-            مثال: إذا أنفق المستخدم 1000 دينار، يحصل على {Math.round(rate * 1000)} موزة.
-          </p>
-        </div>
-
-        <div>
-          <label className="block text-sm font-bold mb-2">سعر الافتتاح للموز (دولار):</label>
-          <input
-            type="number"
-            step="0.01"
-            className="w-full p-3 rounded-lg border border-border bg-muted/50 focus:border-black outline-none transition-colors"
-            value={price}
-            onChange={(e) => setPrice(parseFloat(e.target.value))}
-          />
-        </div>
-
-        <div>
-          <label className="block text-sm font-bold mb-2">تكلفة الترويج (موزة/دقيقة):</label>
-          <input
-            type="number"
-            className="w-full p-3 rounded-lg border border-border bg-muted/50 focus:border-black outline-none transition-colors"
-            value={promo}
-            onChange={(e) => setPromo(parseInt(e.target.value))}
-          />
-        </div>
-
-        <button
-          onClick={handleSave}
-          disabled={isSaving}
-          className="w-full bg-black text-white font-bold py-3 rounded-lg hover:bg-zinc-800 transition-colors disabled:opacity-50 flex items-center justify-center gap-2"
-        >
-          {isSaving ? (
-            <RefreshCw className="w-4 h-4 animate-spin" />
-          ) : (
-            <Check className="w-4 h-4" />
-          )}
-          حفظ التغييرات
-        </button>
-      </div>
-    </div>
-  );
-}
-
+  Deleted rather than repaired: a second settings screen for the same three
+  numbers is how two screens come to disagree about them.
+*/
 function UsersManagementView() {
   const [search, setSearch] = useState("");
   const [selectedUserId, setSelectedUserId] = useState<string | null>(null);

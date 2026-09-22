@@ -1,4 +1,5 @@
 import { tr } from "@/i18n";
+import { marketErrorText } from "@/lib/banana-market-errors";
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
@@ -67,7 +68,19 @@ function BananaBuyPage() {
         setSelected(null);
       }, 1800);
     } catch (e) {
-      setError(e instanceof Error ? e.message : "تعذّر إكمال الشراء");
+      /*
+        The shared map, not a bare `e.message`. This screen printed the server's
+        own code at the member, so a refusal here read «insufficient_funds» —
+        the market page beside it has always translated the same codes.
+      */
+      setError(
+        marketErrorText(e, {
+          minPrice: snapshot?.minPrice ?? 0,
+          maxPrice: snapshot?.maxPrice ?? 0,
+          minQty: snapshot?.minListingQuantity ?? 0,
+          maxQty: snapshot?.maxListingQuantity ?? 0,
+        }),
+      );
     }
   };
 
