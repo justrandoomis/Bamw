@@ -65,6 +65,7 @@ export default tseslint.config(
     files: [
       "scripts/banana-live-check.mjs",
       "scripts/check-horizontal-overflow.mjs",
+      "scripts/cheapest-option-check.mjs",
       "scripts/search-live-check.mjs",
       "scripts/tier-reprice-verify.mjs",
       "scripts/ui-restoration-visual.mjs",

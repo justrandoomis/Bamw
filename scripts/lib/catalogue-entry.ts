@@ -61,3 +61,9 @@ export {
 export { readOffers } from "@/lib/hub";
 /* Which generation a listing belongs to — the cheap band's 8,000 rung. */
 export { isNintendoSwitch2Product } from "@/lib/nintendoListing";
+/*
+  The address a card links to. A live check that opens «the page the shopper
+  taps» has to build the same URL the card builds, and a script guessing at the
+  slug would be checking an address the shop does not use.
+*/
+export { getProductSlug } from "@/lib/productRouting";

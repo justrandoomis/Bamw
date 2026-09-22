@@ -1,0 +1,89 @@
+# Does the card on banan.to show the CHEAPEST option in the product?
+#
+# «السعر الذي اريده ان يظهر على البطاقه يجب ان يكون سعر ارخص خيار في المنتج»
+#
+# READ-ONLY, twice over: it reads the catalogue and it reads the site, and it
+# writes to neither. No price, cost, stock, hidden flag, option, type, trade-in
+# value, display order or sales figure is written by anything this runs.
+#
+# It exists because a green Deploy is not an answer to the owner's question.
+# «لا تقل «تم» بناءً على Build فقط؛ المطلوب تحقق وظيفي كامل على الإنتاج» — so
+# this opens the six games he was looking at, in a real browser, on the real
+# shop, and reads the number on the screen.
+name: Cheapest option check
+
+on:
+  workflow_dispatch:
+    inputs:
+      origin:
+        description: "Origin to read"
+        type: string
+        default: "https://banan.to"
+      open:
+        description: "How many extra failing games to open on the site, beyond the named six"
+        required: false
+        default: "8"
+  # A new or edited checker runs itself, so it can be used from a branch before
+  # it merges. It reads and never writes, so a push trigger risks nothing.
+  push:
+    branches: ["claude/**"]
+    paths:
+      - scripts/cheapest-option-check.mjs
+      - .github/workflows/cheapest-option-check.yml
+
+permissions:
+  contents: read
+
+concurrency:
+  group: cheapest-option-check
+  cancel-in-progress: true
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      # The runner's default npm 10 refuses this lockfile on Linux.
+      - run: npm install -g npm@11.19.1
+      - run: npm ci --no-audit --no-fund
+      # `playwright-core` carries no installer, so the browser comes from the
+      # `playwright` CLI, pinned to the same version `page-open` pins.
+      - name: Install Chromium
+        run: npx --yes playwright@1.62.1 install --with-deps chromium
+      - name: Mask identifiers
+        env:
+          ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          DATABASE_ID: ${{ secrets.CLOUDFLARE_D1_DATABASE_ID }}
+        run: |
+          echo "::add-mask::$ACCOUNT_ID"
+          echo "::add-mask::$DATABASE_ID"
+      - name: Read the catalogue, then read the screen
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          CLOUDFLARE_D1_DATABASE_ID: ${{ secrets.CLOUDFLARE_D1_DATABASE_ID }}
+          D1_DATABASE_ID: ${{ secrets.CLOUDFLARE_D1_DATABASE_ID }}
+          ORIGIN: ${{ inputs.origin }}
+          OPEN: ${{ inputs.open }}
+        run: |
+          node scripts/cheapest-option-check.mjs \
+            --origin "${ORIGIN:-https://banan.to}" \
+            --open "${OPEN:-8}"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cheapest-option-check
+          path: cheapest-option-check.md
+          if-no-files-found: warn
+      # LAST in the log, deliberately: a job log is read as a tail and the
+      # upload step prints thirty lines of its own after the script finishes.
+      - name: The numbers, last in the log
+        if: always()
+        run: tail -c 2000 cheapest-option-check.md || true
