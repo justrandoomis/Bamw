@@ -574,6 +574,19 @@ const settled = app
       schemaId: String(product["schemaId"] ?? product["schema_id"] ?? ""),
       cost: num(product["cost"]) ?? num(product["costPrice"]) ?? num(product["baseCost"]),
       price: num(product["price"]) ?? num(product["basePrice"]),
+      /*
+        THE SAME QUESTION THE PROPOSAL ASKED, OR THIS CHECK IS NOT THE RULES.
+
+        `inputs` above passes the generation and this did not, so every game
+        was re-checked as a Switch 1 title — and the rung for those is 7,000.
+        Ninety Switch 2 games sitting correctly at 8,000 were therefore
+        reported as «ما زال 8000، والمطلوب 7000» and failed a run that had
+        written exactly what it meant to.
+
+        A verification that asks a different question from the rule it is
+        verifying is not a verification; it is a second, worse rule.
+      */
+      isSwitch2: app.isNintendoSwitch2Product(product),
     })),
   )
   .filter((d) => d.changed);

@@ -168,6 +168,31 @@ describe("neither script keeps its own copy of this", () => {
     expect(reprice).toContain("await bumpAfterOverlayWrites(app, overlayWrites.length)");
   });
 
+  it("re-checks with the SAME generation the proposal was made with", () => {
+    /*
+      The second fault of the same apply, and a worse one because it accused
+      the write of a failure that had not happened.
+
+      `repriceAll` is asked twice: once to propose, once — after the write —
+      to prove the catalogue now satisfies the rules. The proposal passed
+      `isSwitch2` and the re-check did not, so every game was re-checked as a
+      Switch 1 title, whose rung is 7,000. Ninety Switch 2 games sitting
+      correctly at 8,000 came back as «ما زال 8000، والمطلوب 7000» and failed
+      a run that had written exactly what it meant to.
+
+      Counted rather than eyeballed: every place in the script that builds a
+      product for the rules must carry the generation, because a verification
+      that asks a different question from the rule it verifies is not a
+      verification.
+    */
+    // `app` and `.repriceAll(` are not always on one line.
+    const asks = reprice.match(/app\s*\.\s*reprice(All|One)\(/g) ?? [];
+    const flags = reprice.match(/isSwitch2:\s*app\.isNintendoSwitch2Product\(/g) ?? [];
+    expect(asks.length).toBeGreaterThan(1);
+    expect(flags.length, `${asks.length} calls to the rules, ${flags.length} carry the generation`)
+      .toBe(asks.length);
+  });
+
   it("and rehearses against the raw row, not the merged product", () => {
     // Rehearsing a normalized copy while writing the raw row rehearses a
     // document that never existed.
