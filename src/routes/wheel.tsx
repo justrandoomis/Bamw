@@ -86,10 +86,25 @@ function WheelPage() {
     mutationFn: (quantity: number) =>
       api.fetch<{ ok?: boolean; tickets?: number }>("/api/wheel", {
         method: "POST",
-        body: JSON.stringify({ action: "buy_ticket", quantity }),
+        body: JSON.stringify({
+          action: "buy_ticket",
+          quantity,
+          /*
+            One id per press. A network retry of this same press carries it
+            again and costs once; pressing the button a second time is a second
+            purchase and carries a new one.
+          */
+          requestId: crypto.randomUUID(),
+        }),
       }),
     onSuccess: () => {
-      void queryClient.invalidateQueries({ queryKey: ["wheel"] });
+      /*
+        `["wheel-summary"]`, which is the key this page's query actually uses.
+        `["wheel"]` matched nothing, so a bought ticket never appeared and the
+        member was left looking at the same «اشترِ تذكرة» button they had just
+        pressed — and would reasonably press again.
+      */
+      void queryClient.invalidateQueries({ queryKey: ["wheel-summary"] });
     },
   });
 

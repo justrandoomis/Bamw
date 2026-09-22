@@ -508,27 +508,54 @@ export async function updateListing(
 }
 
 export async function cancelListing(userId: string, listingId: string) {
-  const offer = await d1First<any>(
-    `SELECT * FROM banana_market_offers WHERE id = ? AND user_id = ? AND status = 'active'`,
+  const offer = await d1First<{ quantity: number }>(
+    `SELECT quantity FROM banana_market_offers
+     WHERE id = ? AND user_id = ? AND status = 'active'`,
     listingId,
     userId,
   );
   if (!offer) throw new BananaError("listing_not_found");
 
-  await d1BatchRun([
-    {
-      sql: `UPDATE banana_market_offers SET status = 'cancelled', updated_at = ? WHERE id = ?`,
-      binds: [new Date().toISOString(), listingId],
-    },
-    {
-      sql: `UPDATE users SET banana_locked = MAX(0, banana_locked - ?) WHERE id = ?`,
-      binds: [offer.quantity, userId],
-    },
-  ]);
+  /*
+    Claimed, then refunded — not read, then refunded.
 
-  await creditBananaBalance(userId, offer.quantity, {
+    The read and the write were two statements with a gap between them, and
+    both of two cancels arriving together passed the read. Each then released
+    the lock and credited the quantity, so one listing paid its owner twice.
+    `updateListing` got this guard when it was found to be printing bananas;
+    cancelling had the same shape and the same consequence.
+
+    The UPDATE is the claim: exactly one caller changes a row, and only that
+    caller goes on to move any bananas. It names the quantity it read, the way
+    `updateListing` does, because status alone is not enough — an edit that
+    shrinks the listing between the read and the claim refunds the difference
+    itself, and a cancel still holding the old figure would refund the whole
+    of it on top.
+  */
+  const claimed = await d1RunChanges(
+    `UPDATE banana_market_offers SET status = 'cancelled', updated_at = ?
+     WHERE id = ? AND user_id = ? AND status = 'active' AND quantity = ?`,
+    new Date().toISOString(),
+    listingId,
+    userId,
+    offer.quantity,
+  );
+  if (!claimed) throw new BananaError("listing_changed");
+
+  await d1Run(
+    `UPDATE users SET banana_locked = MAX(0, COALESCE(banana_locked, 0) - ?) WHERE id = ?`,
+    offer.quantity,
+    userId,
+  );
+  await creditBananaBalance(userId, Number(offer.quantity), {
     reason: "Listing Cancellation",
     kind: "refund",
+    /*
+      One refund per listing, whatever happens above. The claim already makes
+      a second caller impossible; this makes a second ATTEMPT by the same
+      caller — a retry after a timeout — impossible too.
+    */
+    idempotencyKey: `cancel:${listingId}`,
   });
   return { success: true };
 }

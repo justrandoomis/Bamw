@@ -90,9 +90,9 @@ describe("the price is the owner's", () => {
 
   it("follows the admin when the price changes", async () => {
     await priceAt(100);
-    await wheel.buyTickets({ userId: BUYER, quantity: 1 });
+    await wheel.buyTickets({ userId: BUYER, quantity: 1, requestId: "press-1" });
     await priceAt(900);
-    await wheel.buyTickets({ userId: BUYER, quantity: 1 });
+    await wheel.buyTickets({ userId: BUYER, quantity: 1, requestId: "press-2" });
     expect(await bananas()).toBe(10_000 - 100 - 900);
   });
 });
@@ -148,6 +148,56 @@ describe("what a member cannot do", () => {
     expect(first.success).toBe(true);
     expect(second.success).toBe(true);
     expect(await bananas()).toBe(9_500);
+  });
+});
+
+describe("one press, one purchase", () => {
+  /*
+    The key used to be `randomId("tkb")` — fresh on every call — so the
+    idempotency key it handed `debitBananaBalance` deduplicated against
+    nothing, and a double-tapped button charged twice and granted twice. An
+    idempotency key that differs every time is decoration.
+  */
+  it("charges once when the same press arrives twice", async () => {
+    await priceAt(400);
+    const first = await wheel.buyTickets({ userId: BUYER, quantity: 2, requestId: "press-a" });
+    const again = await wheel.buyTickets({ userId: BUYER, quantity: 2, requestId: "press-a" });
+
+    expect(first.ok).toBe(true);
+    expect(again.ok).toBe(true);
+    expect(await bananas()).toBe(10_000 - 800);
+    expect(await wheel.getTicketBalance(BUYER)).toBe(2);
+  });
+
+  it("does not refund a replay whose tickets already landed", async () => {
+    /*
+      `grantTickets` answers `granted: false` for BOTH "already granted" and
+      "nothing was inserted", and refunding on both is how a member keeps the
+      tickets and gets the bananas back. The two are told apart by asking the
+      ledger, not by guessing from a boolean that cannot carry the difference.
+    */
+    await priceAt(300);
+    await wheel.buyTickets({ userId: BUYER, quantity: 1, requestId: "press-b" });
+    const replay = await wheel.buyTickets({ userId: BUYER, quantity: 1, requestId: "press-b" });
+
+    expect(replay.ok).toBe(true);
+    expect(await bananas()).toBe(10_000 - 300);
+    expect(await wheel.getTicketBalance(BUYER)).toBe(1);
+  });
+
+  it("treats a different press as a different purchase", async () => {
+    await priceAt(300);
+    await wheel.buyTickets({ userId: BUYER, quantity: 1, requestId: "press-c" });
+    await wheel.buyTickets({ userId: BUYER, quantity: 1, requestId: "press-d" });
+    expect(await bananas()).toBe(10_000 - 600);
+    expect(await wheel.getTicketBalance(BUYER)).toBe(2);
+  });
+
+  it("still protects a client that sends no id at all", async () => {
+    await priceAt(250);
+    await wheel.buyTickets({ userId: BUYER, quantity: 1, now: "2026-09-22T04:00:00.000Z" });
+    await wheel.buyTickets({ userId: BUYER, quantity: 1, now: "2026-09-22T04:00:03.000Z" });
+    expect(await bananas()).toBe(10_000 - 250);
   });
 });
 

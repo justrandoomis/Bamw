@@ -173,3 +173,58 @@ describe("two listings in the same millisecond", () => {
     expect(await locked()).toBe(3_000);
   });
 });
+
+describe("cancelling twice, and cancelling around an edit", () => {
+  it("refunds one listing once, however many cancels arrive together", async () => {
+    /*
+      Cancelling read the row, then wrote it, with a gap in between. Both of
+      two cancels arriving together passed the read, and each went on to
+      release the lock and credit the quantity — one listing, paid twice.
+      `updateListing` was given a claim when it was found to be printing;
+      cancelling had the same shape and the same consequence.
+    */
+    const opening = await balance();
+    const created = await market.createListing(SELLER, { quantity: 8_000, pricePer: 0.2 });
+    expect(await balance()).toBe(opening - 8_000);
+
+    const settled = await Promise.allSettled([
+      market.cancelListing(SELLER, created.id),
+      market.cancelListing(SELLER, created.id),
+      market.cancelListing(SELLER, created.id),
+    ]);
+    expect(settled.filter((r) => r.status === "fulfilled")).toHaveLength(1);
+
+    expect(await balance()).toBe(opening);
+    expect(await locked()).toBe(0);
+  });
+
+  it("does not refund a figure an edit has already given back", async () => {
+    /*
+      The claim guarded status but not quantity. A cancel that read 8,000, and
+      a shrink to 1,000 that landed in between, each refunded what they held:
+      7,000 from the edit and 8,000 from the cancel, for a listing of 8,000.
+      The claim now names the quantity it read, so whichever lands second is
+      told the listing moved and moves nothing.
+    */
+    const opening = await balance();
+    const created = await market.createListing(SELLER, { quantity: 8_000, pricePer: 0.2 });
+
+    await Promise.allSettled([
+      market.cancelListing(SELLER, created.id),
+      market.updateListing(SELLER, { id: created.id, quantity: 1_000, pricePer: 0.2 }),
+    ]);
+
+    // Either order is legitimate; neither may hand back more than was taken.
+    expect(await balance()).toBeLessThanOrEqual(opening);
+    const remaining = opening - (await balance());
+    expect(await locked()).toBe(remaining);
+  });
+
+  it("refuses a cancel from someone who does not own the listing", async () => {
+    const opening = await balance();
+    const created = await market.createListing(SELLER, { quantity: 2_000, pricePer: 0.2 });
+    await expect(market.cancelListing("usr_someone_else", created.id)).rejects.toThrow();
+    expect(await balance()).toBe(opening - 2_000);
+    expect(await locked()).toBe(2_000);
+  });
+});

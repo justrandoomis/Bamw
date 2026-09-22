@@ -234,6 +234,9 @@ export const Route = createFileRoute("/api/wheel")({
             const bought = await buyTickets({
               userId: user.id,
               quantity: Number(sent["quantity"] ?? 1),
+              // One id per button press. The server still falls back to a
+              // time bucket when a client sends none.
+              requestId: String(sent["requestId"] ?? ""),
             });
             if (bought.ok) {
               return json({
@@ -244,16 +247,23 @@ export const Route = createFileRoute("/api/wheel")({
                 message: `تم شراء التذاكر ✅`,
               });
             }
+            /*
+              «لم يُخصم شيء» is a promise, and it was made on a path where the
+              bananas HAD been taken and only the tickets failed. The refund is
+              reported, not assumed: a member told their bananas came back who
+              then finds they did not has been lied to about something they
+              paid for, and the second sentence asks them to contact the shop
+              rather than to try again.
+            */
             const why: Record<string, string> = {
               not_for_sale: "لم يحدد المتجر سعر التذكرة بعد.",
               bad_quantity: "عدد التذاكر غير صالح.",
               insufficient_bananas: "رصيد الموز لا يكفي.",
-              failed: "تعذّر إتمام الشراء. لم يُخصم شيء.",
+              failed: "تعذّر إصدار التذاكر، وأُعيد الموز إلى رصيدك.",
+              failed_not_refunded:
+                "تعذّر إصدار التذاكر ولم تُعد الموز تلقائيًا. تواصل مع المتجر ومعك رقم حسابك.",
             };
-            return json(
-              { error: why[bought.reason] ?? why["failed"] },
-              { status: bought.reason === "insufficient_bananas" ? 400 : 400 },
-            );
+            return json({ error: why[bought.reason] ?? why["failed"] }, { status: 400 });
           }
 
           const outcome = await spinWheel({ userId: user.id, candidates: await candidates() });

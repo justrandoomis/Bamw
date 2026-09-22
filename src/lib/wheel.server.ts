@@ -774,9 +774,27 @@ export async function buyTickets(input: {
   userId: string;
   quantity: number;
   now?: string;
+  /**
+   * One id per button press, from the caller.
+   *
+   * A retry of the SAME press carries the same id and is deduplicated; a
+   * deliberate second purchase carries a new one and is a second purchase.
+   * Reusing an id deliberately gains nothing — no debit, no grant, the balance
+   * as it stands — so there is nothing to abuse by choosing it.
+   */
+  requestId?: string;
 }): Promise<
   | { ok: true; tickets: number; spent: number; balance: number }
-  | { ok: false; reason: "not_for_sale" | "bad_quantity" | "insufficient_bananas" | "failed" }
+  | {
+      ok: false;
+      reason:
+        | "not_for_sale"
+        | "bad_quantity"
+        | "insufficient_bananas"
+        | "failed"
+        /** Paid, no tickets, and the refund did not land either. */
+        | "failed_not_refunded";
+    }
 > {
   const userId = String(input.userId ?? "");
   const quantity = Math.floor(Number(input.quantity));
@@ -795,7 +813,32 @@ export async function buyTickets(input: {
   if (!Number.isFinite(price) || price <= 0) return { ok: false, reason: "not_for_sale" };
 
   const cost = price * quantity;
-  const reference = randomId("tkb");
+  /*
+    A reference that REPEATS for a repeat, which is the whole point.
+
+    This was `randomId("tkb")`, fresh on every call — so the idempotency key it
+    passed to `debitBananaBalance` deduplicated against nothing, and a
+    double-tapped button charged twice and granted twice. An idempotency key
+    that is different every time is not an idempotency key; it is decoration,
+    and the comment claiming a retry "credits the tickets once and no more" was
+    simply false.
+
+    Derived on the server from the member, the quantity and a ten-second
+    bucket, so nothing a browser sends can pick it. Two taps of one button land
+    in one bucket and cost once; two deliberate purchases ten seconds apart are
+    two purchases, and anyone wanting two tickets at once asks for two.
+  */
+  /*
+    The caller's id when there is one, and a ten-second bucket when there is
+    not, so an old client that sends nothing is still protected from a
+    double-tap. The id is bounded and stripped of anything but word characters
+    and dashes, because it becomes a database key.
+  */
+  const supplied = String(input.requestId ?? "")
+    .replace(/[^\w-]/g, "")
+    .slice(0, 64);
+  const bucket = Math.floor((input.now ? Date.parse(input.now) : Date.now()) / 10_000);
+  const reference = supplied ? `tkb_${userId}_${supplied}` : `tkb_${userId}_${quantity}_${bucket}`;
 
   const { debitBananaBalance, creditBananaBalance } = await import("./banana-balance.server");
   const paid = await debitBananaBalance(userId, cost, {
@@ -819,18 +862,51 @@ export async function buyTickets(input: {
       referenceId: reference,
       ...(input.now ? { now: input.now } : {}),
     });
-    if (!granted.granted) throw new Error("WHEEL_TICKETS_NOT_GRANTED");
+    /*
+      `granted: false` means two different things, and refunding on both is how
+      a member keeps the tickets AND gets the bananas back.
+
+      `grantTickets` returns false when its `INSERT OR IGNORE` changed no rows
+      — which happens when this reference was ALREADY granted, on an earlier
+      attempt whose tickets are sitting in the balance right now. That is a
+      replay, not a failure, and the honest answer is the balance as it stands.
+
+      It also returns false when nothing was inserted for a real reason. The
+      two are told apart by asking the ledger whether the row is there, rather
+      than by guessing from a boolean that cannot carry the difference.
+    */
+    if (!granted.granted) {
+      const landed = await d1First<{ delta: number }>(
+        `SELECT delta FROM wheel_ticket_ledger WHERE user_id = ? AND reference_id = ?`,
+        userId,
+        reference,
+      ).catch(() => null);
+      if (landed && Number(landed.delta) > 0) {
+        return {
+          ok: true,
+          tickets: await getTicketBalance(userId),
+          spent: cost,
+          balance: paid.newBalance,
+        };
+      }
+      throw new Error("WHEEL_TICKETS_NOT_GRANTED");
+    }
     return { ok: true, tickets: granted.balance, spent: cost, balance: paid.newBalance };
   } catch {
     /*
-      Paid and got nothing. The bananas go back under a reference derived from
-      the purchase's own, so a retry of THIS refund cannot double it either.
+      Paid and got nothing — the ledger has been asked and has no row. The
+      bananas go back under a reference derived from the purchase's own, so a
+      retry of THIS refund cannot double it either.
     */
-    await creditBananaBalance(userId, cost, {
+    const refunded = await creditBananaBalance(userId, cost, {
       reason: "تعذّر إصدار التذاكر — إعادة الموز",
       kind: "refund",
       idempotencyKey: `${reference}:refund`,
-    }).catch(() => undefined);
-    return { ok: false, reason: "failed" };
+    }).catch(() => ({ success: false, newBalance: 0 }));
+    /*
+      Reported, not assumed. A member told their bananas came back who then
+      finds they did not has been lied to about something they paid for.
+    */
+    return { ok: false, reason: refunded.success ? "failed" : "failed_not_refunded" };
   }
 }
