@@ -1,0 +1,71 @@
+# Which price a card shows, measured rather than reasoned about.
+#
+# READ-ONLY. It imports the same `listingPricing` the card calls and the same
+# `classifyTiers` the pricing rules use, asks them about every game in the live
+# catalogue, and counts the answers. It has no apply input and writes nothing.
+name: Listing price audit (read-only)
+
+on:
+  workflow_dispatch:
+    inputs:
+      only:
+        description: "One product id or slug, or blank for the whole catalogue"
+        required: false
+        default: ""
+      limit:
+        description: "How many rows of the worst-difference table to print"
+        required: false
+        default: "40"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: listing-price-audit
+  cancel-in-progress: true
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm install -g npm@11.19.1
+      - run: npm ci --no-audit --no-fund
+      - name: Mask identifiers
+        env:
+          ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          DATABASE_ID: ${{ secrets.CLOUDFLARE_D1_DATABASE_ID }}
+        run: |
+          echo "::add-mask::$ACCOUNT_ID"
+          echo "::add-mask::$DATABASE_ID"
+      - name: Audit
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          CLOUDFLARE_D1_DATABASE_ID: ${{ secrets.CLOUDFLARE_D1_DATABASE_ID }}
+          D1_DATABASE_ID: ${{ secrets.CLOUDFLARE_D1_DATABASE_ID }}
+          ONLY: ${{ inputs.only }}
+          LIMIT: ${{ inputs.limit }}
+        run: |
+          FLAGS=""
+          if [ -n "$ONLY" ]; then FLAGS="$FLAGS --only=$ONLY"; fi
+          if [ -n "$LIMIT" ] && [ "$LIMIT" != "0" ]; then FLAGS="$FLAGS --limit=$LIMIT"; fi
+          node scripts/listing-price-audit.mjs $FLAGS
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: listing-price-audit
+          path: listing-price-audit.md
+          if-no-files-found: warn
+      # LAST in the log, deliberately: a job log is read as a tail and the
+      # upload step prints thirty lines of its own after the script finishes.
+      - name: The numbers, last in the log
+        if: always()
+        run: tail -c 6000 listing-price-audit.md || true

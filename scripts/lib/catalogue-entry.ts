@@ -42,3 +42,14 @@ export {
 */
 export { repriceTiers, tierProblem } from "@/lib/tierRepricing";
 export { classifyTier, classifyTiers, extrasCostGap, tierOf } from "@/lib/tierPricing";
+/*
+  What a listing card and the details page lead with. Exported so a report can
+  measure the number a customer actually sees, rather than a second copy of the
+  selection rule living in a script and agreeing with nothing.
+*/
+export {
+  listingPricing,
+  initialOptionId,
+  initialVariantName,
+  pricingTypeRows,
+} from "@/lib/productPricing";
