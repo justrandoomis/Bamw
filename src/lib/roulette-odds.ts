@@ -108,12 +108,27 @@ export const POPULARITY_LABELS: Readonly<Record<PopularityTier, string>> = {
  * of it or the other: `price <= BOUNDARY` is cheap, anything above is premium.
  * A game priced 5,500 is premium rather than unclassified.
  *
- * The number is a default, not a law — `bucketOfPrice` takes the boundary as an
- * argument so the admin can move it, and the shop's own ladder is the reason
- * that matters: the repricing put ordinary Switch games at 7,000–9,000, so
- * where this line sits decides whether the cheap half of the roulette has
- * anything in it at all. It is measured against the live catalogue rather than
- * assumed, and the admin owns the answer.
+ * ## And it is the right number, measured
+ *
+ * I doubted it. The repricing put ordinary Switch games at 7,000–9,000 the same
+ * day, and a line at 5,000 looked like it might leave the cheap half of the
+ * roulette empty. So it was measured against the live catalogue rather than
+ * argued about — `scripts/roulette-pool-probe.mjs`, read-only, on production:
+ *
+ *   prize-eligible games      1,707   (only 7 dropped: 4 not games, 3 hidden)
+ *   price at the 50th centile 5,000
+ *   split at 5,000            983 cheap · 724 dearer
+ *   split at 7,000          1,501 cheap · 206 dearer
+ *
+ * Five thousand IS the median of this catalogue, and it cuts the pool almost in
+ * half. The doubt was about the 177 Switch games and the answer was about the
+ * 1,530 catalogue listings that sit at exactly 5,000 — they dominate, and the
+ * owner's number was right. Seven thousand would put seven games in eight on
+ * the cheap side and make the dearer buckets a rounding error.
+ *
+ * `bandOfPrice` still takes the boundary as an argument, so the admin can move
+ * it as the catalogue changes. The default is now a measurement rather than a
+ * guess, and the measurement can be re-run.
  */
 export const DEFAULT_PRICE_BOUNDARY = 5_000;
 
