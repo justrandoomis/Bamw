@@ -118,9 +118,7 @@ describe("this shop's own titles still match", () => {
   */
   it("does not let a shorter title capture a longer one", () => {
     expect(bestSellerRank("Mario Kart 8 Deluxe")).not.toBe(bestSellerRank("Mario Kart World"));
-    expect(bestSellerRank("Super Mario Party")).not.toBe(
-      bestSellerRank("Mario Party Superstars"),
-    );
+    expect(bestSellerRank("Super Mario Party")).not.toBe(bestSellerRank("Mario Party Superstars"));
   });
 });
 
@@ -131,7 +129,9 @@ describe("the shelf opens on it", () => {
   });
 
   it("offers it by name, and keeps the older orders", () => {
-    expect(category).toContain('<option value="best_sellers">{t("الأكثر مبيعًا عالميًا")}</option>');
+    expect(category).toContain(
+      '<option value="best_sellers">{t("الأكثر مبيعًا عالميًا")}</option>',
+    );
     expect(category).toContain('<option value="newest">{t("الأحدث")}</option>');
     expect(category).toContain('<option value="price_asc">');
   });

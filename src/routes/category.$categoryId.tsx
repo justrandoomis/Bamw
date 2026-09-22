@@ -31,12 +31,7 @@ export const Route = createFileRoute("/category/$categoryId")({
   a timestamp to the minute, which reads as no order at all.
 */
 type SortOption =
-  | "best_sellers"
-  | "newest"
-  | "price_asc"
-  | "price_desc"
-  | "rating"
-  | "release_date";
+  "best_sellers" | "newest" | "price_asc" | "price_desc" | "rating" | "release_date";
 type PlatformOption = "all" | "switch1" | "switch2";
 
 interface GenreItem {
