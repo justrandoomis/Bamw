@@ -301,4 +301,75 @@ for (const [field, n] of Object.entries(byField).sort((a, b) => b[1] - a[1])) {
 }
 say();
 
+/* 5 — the picture a NON-GAME card shows. */
+
+/*
+  `picturedFirst` decides the shelf ORDER and reads seven named fields, which
+  section 1 covered. `resolveProductImage(p, "listing")` decides WHICH PICTURE
+  IS DRAWN, and it has a last resort the other does not: a frame from the
+  product's gallery. `gallery`, `galleryImages`, `lifestyleImages` and `images`
+  are none of them in the projection — so a console or an accessory whose only
+  photograph lives in a gallery would keep its place on the shelf and show a
+  placeholder standing in it. Found by an adversarial reviewer's probe; counted
+  here, in the same way as everything above.
+*/
+const { resolveProductImage } = app;
+
+say(`## 5. صور البطاقات غير الألعاب — pictures a listing card would lose`);
+say();
+
+if (typeof resolveProductImage !== "function") {
+  say(`\`resolveProductImage\` is not exported from the bundle, so this section could`);
+  say(`not be measured. It is NOT a pass — do not read it as one.`);
+} else {
+  const NON_GAME = ["hardware", "accessory", "amiibo", "gift_card", "used"];
+  const nonGameOf = (p) => {
+    const cat = String(p?.category ?? p?.categoryId ?? "").toLowerCase();
+    const kind = String(p?.kind ?? "").toLowerCase();
+    for (const name of NON_GAME) {
+      if (cat.includes(name.replace("_", "")) || cat.includes(name) || kind.includes(name)) {
+        return name;
+      }
+    }
+    return "";
+  };
+
+  const lost = [];
+  const byCategory = {};
+  for (const p of all) {
+    const category = nonGameOf(p);
+    if (!category) continue;
+    byCategory[category] = (byCategory[category] ?? 0) + 1;
+    let full;
+    let thin;
+    try {
+      full = resolveProductImage(p, "listing");
+      thin = resolveProductImage(slimOf(p), "listing");
+    } catch {
+      continue;
+    }
+    if (!full?.isPlaceholder && thin?.isPlaceholder) lost.push({ p, category, full });
+  }
+
+  say(`Non-game products in production, by category:`);
+  say();
+  for (const [category, n] of Object.entries(byCategory).sort((a, b) => b[1] - a[1])) {
+    say(`- \`${category}\`: ${n}`);
+  }
+  say();
+  say(`Products whose listing card would fall back to a placeholder: **${lost.length}**`);
+  if (lost.length) {
+    say();
+    say(`| id | title | where the picture is |`);
+    say(`| --- | --- | --- |`);
+    for (const row of lost.slice(0, 60)) {
+      say(
+        `| ${row.p.id} | ${String(row.p.titleEn || row.p.title || "").slice(0, 50)} | \`${row.full.source ?? "?"}\` |`,
+      );
+    }
+    if (lost.length > 60) say(`| … | ${lost.length - 60} more | |`);
+  }
+}
+say();
+
 writeFileSync("slim-shelf-cost.md", `${lines.join("\n")}\n`);
