@@ -1,6 +1,7 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import AppShell from "@/components/AppShell";
 import { picturedFirst } from "@/lib/listingOrder";
+import { UNRANKED, bestSellerRank } from "@/lib/bestSellers";
 import { freshnessScore, releaseTime } from "@/lib/listingSort";
 import { useStoreData } from "@/hooks/useStoreData";
 import { ProductCard } from "@/components/ProductCard";
@@ -21,7 +22,21 @@ export const Route = createFileRoute("/category/$categoryId")({
   component: CategoryPage,
 });
 
-type SortOption = "newest" | "price_asc" | "price_desc" | "rating" | "release_date";
+/*
+  «اجعل الالعاب الاكثر مبيعا عالميا تظهر افتراضيا وليس ترتيب عشوائي»
+
+  `best_sellers` is new and is the default. `newest` is kept, because it is a
+  real thing a customer might want — it simply was not a sensible DEFAULT for a
+  catalogue where 1,530 games were imported in one batch and therefore all share
+  a timestamp to the minute, which reads as no order at all.
+*/
+type SortOption =
+  | "best_sellers"
+  | "newest"
+  | "price_asc"
+  | "price_desc"
+  | "rating"
+  | "release_date";
 type PlatformOption = "all" | "switch1" | "switch2";
 
 interface GenreItem {
@@ -86,7 +101,7 @@ function CategoryPage() {
   const { t, lang } = useI18n();
   const direction = dirOf(lang);
 
-  const [sortBy, setSortBy] = useState<SortOption>("newest");
+  const [sortBy, setSortBy] = useState<SortOption>("best_sellers");
   const [platform, setPlatform] = useState<PlatformOption>("all");
   const [selectedGenre, setSelectedGenre] = useState<string>("all");
 
@@ -286,12 +301,39 @@ function CategoryPage() {
     const keyed =
       sortBy === "release_date"
         ? new Map(filtered.map((p: any) => [p, releaseTime(p)]))
-        : sortBy === "newest" || !["price_asc", "price_desc", "rating"].includes(sortBy)
+        : sortBy === "newest" ||
+            !["best_sellers", "price_asc", "price_desc", "rating"].includes(sortBy)
           ? new Map(filtered.map((p: any) => [p, freshnessScore(p)]))
           : null;
 
+    /*
+      The best-seller rank, computed once per product for the same reason every
+      other sort key here is: the comparator runs about 29,270 times on this
+      shelf, and `bestSellerRank` folds and scans a title.
+
+      Freshness is the tiebreak, so the thousand-odd games the list does not
+      name keep the order they had before — this puts a head on the shelf, it
+      does not reshuffle the tail.
+    */
+    const ranked =
+      sortBy === "best_sellers"
+        ? new Map(
+            filtered.map((p: any) => [
+              p,
+              [bestSellerRank(p.titleEn || p.english_name || p.title), freshnessScore(p)] as const,
+            ]),
+          )
+        : null;
+
     filtered.sort((a: any, b: any) => {
       switch (sortBy) {
+        case "best_sellers": {
+          const [rankA, freshA] = ranked?.get(a) ?? [UNRANKED, 0];
+          const [rankB, freshB] = ranked?.get(b) ?? [UNRANKED, 0];
+          if (rankA !== rankB) return rankA - rankB;
+          if (freshA !== freshB) return freshB - freshA;
+          return String(b.id || "").localeCompare(String(a.id || ""));
+        }
         case "price_asc":
           return (Number(a.price) || 0) - (Number(b.price) || 0);
         case "price_desc":
@@ -403,6 +445,7 @@ function CategoryPage() {
                     aria-label={t("الفترة والترتيب")}
                     className="bg-card text-foreground border border-border rounded-full ps-3 pe-8 py-1.5 text-xs sm:text-sm font-bold focus:outline-none focus:ring-2 focus:ring-red-500/20 appearance-none cursor-pointer shadow-sm hover:border-foreground/30 transition-colors"
                   >
+                    <option value="best_sellers">{t("الأكثر مبيعًا عالميًا")}</option>
                     <option value="newest">{t("الأحدث")}</option>
                     <option value="release_date">{t("تاريخ الإصدار")}</option>
                     <option value="price_asc">{t("السعر: من الأقل")}</option>
@@ -617,7 +660,7 @@ function CategoryPage() {
                   onClick={() => {
                     setSelectedGenre("all");
                     setPlatform("all");
-                    setSortBy("newest");
+                    setSortBy("best_sellers");
                   }}
                   className="px-4 py-2 bg-red-500 text-white rounded-full text-xs font-bold hover:bg-red-600 transition-colors"
                 >

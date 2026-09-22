@@ -200,11 +200,31 @@ for (const product of games) {
   const shown = Number(unitPrice) || 0;
   if (shown <= 0) continue;
   const onlinePrice = Number(product.accountOnlinePrice) || 0;
+  /*
+    WHICH NUMBER IS THE PRICE, THOUGH.
+
+    The reprice dry run and this audit disagreed about the same catalogue: the
+    run saw nothing above 23,000 and proposed exactly one change, while the card
+    prints 55,000. They read different fields. `reprice.mjs` reads and writes
+    the product's own `price`; `listingPricing` — and `resolveUnitPrice`, which
+    is what the till charges — read a `types[]` row FIRST and fall back to
+    `price` only when there is none.
+
+    So a product can carry a `price` of 8,000 that every pricing rule has been
+    applied to, and a single tier row at 55,000 that the card shows and the
+    customer is charged. Measured here rather than argued about.
+  */
+  const lead = priced[0];
   singles.push({
     id: String(product.id),
     title: String(product.titleEn || product.english_name || product.title || product.id),
     shown,
+    base: Number(product.price) || 0,
     cost: Number(product.cost) || 0,
+    rowPrice: lead ? Number(lead.price) || 0 : 0,
+    rowCost: lead ? Number(lead.cost) || 0 : 0,
+    rowKind: lead ? lead.kind : "—",
+    rowName: lead ? String(lead.name ?? "") : "",
     onlineEnabled: Boolean(product.accountOnlineEnabled),
     matchesOnline: onlinePrice > 0 && shown === onlinePrice,
   });
@@ -290,6 +310,10 @@ const BANDS = [
 say("## الألعاب ذات السعر الواحد");
 say();
 say(`- عددها: **${singles.length}**`);
+const disagree = singles.filter((s) => s.rowPrice > 0 && s.base > 0 && s.rowPrice !== s.base);
+say(`- **سعر الصف يخالف \`price\` المسجّل: ${disagree.length}**`);
+say(`- منها صف الأسعار أغلى من \`price\`: **${disagree.filter((s) => s.rowPrice > s.base).length}**`);
+say(`- بلا صف أسعار إطلاقًا (السعر هو \`price\` نفسه): **${singles.filter((s) => s.rowPrice === 0).length}**`);
 say(`- منها سعرها يساوي سعر حساب الأونلاين المسجّل: **${singles.filter((s) => s.matchesOnline).length}**`);
 say(`- منها بلا تكلفة مسجّلة: **${singles.filter((s) => s.cost <= 0).length}**`);
 say();
@@ -307,14 +331,31 @@ const dearest = singles
   .slice(0, Number.isFinite(LIMIT) ? LIMIT : 40);
 say(`## أغلى ${dearest.length} لعبة بسعر واحد`);
 say();
-say("| اللعبة | السعر | التكلفة | الربح |");
-say("| --- | ---: | ---: | ---: |");
+say("| اللعبة | ما تعرضه البطاقة | `price` | سعر الصف | تكلفة الصف | الطبقة |");
+say("| --- | ---: | ---: | ---: | ---: | --- |");
 for (const r of dearest) {
   say(
-    `| ${label(r.title)} | ${money(r.shown)} | ${r.cost > 0 ? money(r.cost) : "—"} | ${r.cost > 0 ? money(r.shown - r.cost) : "—"} |`,
+    `| ${label(r.title)} | ${money(r.shown)} | ${r.base > 0 ? money(r.base) : "—"} | ${r.rowPrice > 0 ? money(r.rowPrice) : "—"} | ${r.rowCost > 0 ? money(r.rowCost) : "—"} | ${KIND_AR[r.rowKind] ?? r.rowKind} |`,
   );
 }
 say();
+
+const biggest = disagree
+  .slice()
+  .sort((a, b) => b.rowPrice - b.base - (a.rowPrice - a.base))
+  .slice(0, 25);
+if (biggest.length) {
+  say("## أكبر خلاف بين صف السعر و`price`");
+  say();
+  say("| اللعبة | `price` | سعر الصف | الفرق | اسم الصف |");
+  say("| --- | ---: | ---: | ---: | --- |");
+  for (const r of biggest) {
+    say(
+      `| ${label(r.title)} | ${money(r.base)} | ${money(r.rowPrice)} | ${money(r.rowPrice - r.base)} | ${r.rowName} |`,
+    );
+  }
+  say();
+}
 
 rmSync(outfile, { force: true });
 
@@ -327,4 +368,5 @@ say(`- تعرض غير سعر الأوفلاين العادي: **${notOffline.le
 say(`- ألعاب بسعر واحد: **${singles.length}**`);
 say(`- منها فوق 20,000: **${singles.filter((s) => s.shown > 20_000).length}**`);
 say(`- منها فوق 12,000: **${singles.filter((s) => s.shown > 12_000).length}**`);
+say(`- **سعر الصف يخالف \`price\`: ${disagree.length}**`);
 flush();
