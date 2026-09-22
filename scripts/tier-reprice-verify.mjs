@@ -136,31 +136,91 @@ if (!landed) {
 }
 
 /*
-  Read from INSIDE the page. The clearance the browser just earned rides on the
-  request, so this is the same call the shop's own JavaScript makes.
+  READ THE PAGE, NOT THE ENDPOINT.
+
+  The browser cleared the challenge — `/` answered 200 with the shop's own
+  title — but a `fetch("/api/data")` from inside that same page is still 403.
+  So the shield's rule is on the `/api/` prefix specifically, and it does not
+  matter: the storefront server-renders its products, and what is rendered is
+  precisely what a shopper is shown. Reading that is a better check than
+  reading the endpoint behind it.
 */
-const payload = await page.evaluate(async () => {
-  const attempt = async (url) => {
-    try {
-      const res = await fetch(url, { headers: { accept: "application/json" } });
-      if (!res.ok) return { url, status: res.status };
-      return { url, status: res.status, body: await res.json() };
-    } catch (error) {
-      return { url, status: 0, error: String(error) };
+const productsFromHtml = (html) => {
+  const found = [];
+  const seen = new Set();
+  const needle = /\{\\?"id\\?":\\?"(prd_[A-Za-z0-9_-]+)\\?"/g;
+  let hit;
+  while ((hit = needle.exec(html))) {
+    if (seen.has(hit[1])) continue;
+    /*
+      Balanced braces, not a regex: a product record contains nested objects,
+      and no regular expression can match `{...}`. Strings and escapes are
+      respected so a brace inside a title cannot end the record early.
+    */
+    let depth = 0;
+    let inString = false;
+    let escaped = false;
+    let end = -1;
+    for (let i = hit.index; i < html.length && i < hit.index + 200_000; i += 1) {
+      const ch = html[i];
+      if (escaped) { escaped = false; continue; }
+      if (ch === "\\") { escaped = true; continue; }
+      if (ch === '"') { inString = !inString; continue; }
+      if (inString) continue;
+      if (ch === "{") depth += 1;
+      else if (ch === "}") { depth -= 1; if (depth === 0) { end = i + 1; break; } }
     }
-  };
-  const slim = await attempt("/api/data?slim=1");
-  if (slim.body) return slim;
-  return await attempt("/api/data");
-});
+    if (end < 0) continue;
+    const slice = html.slice(hit.index, end);
+    for (const text of [slice, slice.replace(/\\"/g, '"').replace(/\\\\/g, "\\")]) {
+      try {
+        const parsed = JSON.parse(text);
+        if (parsed && typeof parsed === "object" && String(parsed.id ?? "").startsWith("prd_")) {
+          found.push(parsed);
+          seen.add(hit[1]);
+        }
+        break;
+      } catch {
+        /* try the unescaped form */
+      }
+    }
+  }
+  return found;
+};
+
+const products = [];
+const byId = new Map();
+for (const path_ of ["/", "/category/nintendo_games", "/games"]) {
+  try {
+    if (path_ !== landed) {
+      await page.goto(`${ORIGIN}${path_}`, { waitUntil: "domcontentloaded", timeout: 90_000 });
+    }
+    /* Let the shelf render — the cards are what carry the products. */
+    await page.waitForSelector('a[href^="/product/"]', { timeout: 30_000 }).catch(() => {});
+    const cards = await page.locator('a[href^="/product/"]').count().catch(() => 0);
+    const html = await page.content();
+    const found = productsFromHtml(html);
+    let fresh = 0;
+    for (const p of found) {
+      const id = String(p.id ?? "");
+      if (!id || byId.has(id)) continue;
+      byId.set(id, p);
+      products.push(p);
+      fresh += 1;
+    }
+    say(
+      `- \`${path_}\` → ${(html.length / 1024).toFixed(0)} كيلوبايت · بطاقات منتجات في الصفحة: **${cards}** · سجلات مقروءة: **${found.length}** (جديدة: ${fresh})`,
+    );
+  } catch (error) {
+    say(`- \`${path_}\` → تعذّر: ${String(error).slice(0, 140)}`);
+  }
+}
 await browser.close().catch(() => {});
-
-say(`- \`${payload.url}\` من داخل الصفحة → **${payload.status}**`);
 say();
-if (!payload.body) stop(`لم أستطع قراءة الكتالوج من الموقع. لم أتحقق من الإنتاج.`);
-
-const store = payload.body?.store ?? payload.body;
-const products = Array.isArray(store?.products) ? store.products : [];
+if (!products.length) {
+  stop(`لم أستخرج أي منتج من صفحات الموقع. لم أتحقق من الإنتاج، ولن أقول إن التحقق تم.`);
+}
+say(`- منتجات قرأتها من صفحات الموقع: **${products.length}**`);
 say(`- منتجات يخدمها الموقع: **${products.length}**`);
 
 const withTiers = products.filter((p) => Array.isArray(p?.types) && p.types.length > 0);
