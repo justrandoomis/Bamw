@@ -1,0 +1,55 @@
+# Which new source could actually answer for the games still without a card.
+#
+# READ-ONLY. It has no `apply` input and writes nothing, anywhere — not to the
+# catalogue, not to R2. It exists to put numbers under the owner's question
+# «أي مصدر آخر يجلب الصورة للعبة الصحيحة» before a line of source-fetching
+# code is written for any of them.
+name: Square source probe
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [claude/gaming-platform-issues-keb1be]
+    paths:
+      - .github/workflows/square-source-probe.yml
+      - scripts/square-source-probe.mjs
+      - scripts/lib/nintendo-sheet-cover.mjs
+
+permissions:
+  contents: read
+
+concurrency:
+  group: square-source-probe
+  cancel-in-progress: true
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm install -g npm@11.19.1
+      - run: npm ci --no-audit --no-fund
+      - name: Mask identifiers
+        env:
+          ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          DATABASE_ID: ${{ secrets.CLOUDFLARE_D1_DATABASE_ID }}
+        run: |
+          echo "::add-mask::$ACCOUNT_ID"
+          echo "::add-mask::$DATABASE_ID"
+      - name: Probe
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          CLOUDFLARE_D1_DATABASE_ID: ${{ secrets.CLOUDFLARE_D1_DATABASE_ID }}
+          D1_DATABASE_ID: ${{ secrets.CLOUDFLARE_D1_DATABASE_ID }}
+          # Absent until the owner creates one; the probe says so rather than
+          # guessing whether the source would work.
+          STEAMGRIDDB_API_KEY: ${{ secrets.STEAMGRIDDB_API_KEY }}
+        run: node scripts/square-source-probe.mjs
