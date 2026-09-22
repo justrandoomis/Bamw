@@ -26,11 +26,35 @@
  *      low number cannot be vacuous.
  */
 import { build } from "esbuild";
-import { existsSync, rmSync, writeFileSync } from "node:fs";
+import { existsSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { chromium } from "playwright-core";
 
 const ORIGIN = process.env.ORIGIN || "https://banan.to";
+
+/*
+  THE DATABASE ID, WHICH THE SECRET DOES NOT CARRY.
+
+  `CLOUDFLARE_D1_DATABASE_ID` is empty in this repository's Actions secrets —
+  the mask step prints a blank and warns it cannot mask an empty string. Every
+  working script here falls back to the id in `wrangler.jsonc`, which is the
+  same database the Worker itself binds. Without it `getStore()` answers an
+  empty catalogue, and the first run of this check reported "0 products" and
+  exited 0 — a pass that had verified nothing, which is the precise failure
+  this whole file exists to make impossible.
+*/
+if (!process.env["D1_DATABASE_ID"] && !process.env["CLOUDFLARE_D1_DATABASE_ID"]) {
+  try {
+    const config = readFileSync(path.resolve("wrangler.jsonc"), "utf8");
+    const found = config.match(/"database_id"\s*:\s*"([0-9a-fA-F-]{36})"/);
+    if (found) process.env["D1_DATABASE_ID"] = found[1];
+  } catch {
+    /* Reported by the guard below. */
+  }
+}
+if (!process.env["D1_DATABASE_ID"] && process.env["CLOUDFLARE_D1_DATABASE_ID"]) {
+  process.env["D1_DATABASE_ID"] = process.env["CLOUDFLARE_D1_DATABASE_ID"];
+}
 
 const lines = [];
 const say = (t = "") => {
@@ -188,7 +212,19 @@ d1.invalidateStoreCache();
 const store = await d1.getStore();
 const all = Array.isArray(store?.products) ? store.products : [];
 const withTiers = all.filter((p) => Array.isArray(p?.types) && p.types.length > 0);
-say(`- منتجات بطبقات في قاعدة البيانات: **${withTiers.length}**`);
+say(`- منتجات في قاعدة البيانات: **${all.length}** · منها بطبقات: **${withTiers.length}**`);
+/*
+  AN EMPTY CATALOGUE IS A BROKEN CHECK, NOT A RESULT.
+
+  The run before this one printed "0 products with tiers", checked nothing, and
+  exited 0. There are 179 products with tiers in this catalogue; zero means the
+  read failed, and a check that reports its own failure as a pass is worse than
+  no check.
+*/
+if (!withTiers.length) {
+  await browser.close().catch(() => {});
+  stop(`قرأت 0 منتجًا بطبقات من قاعدة البيانات — القراءة فشلت. لم أتحقق من الإنتاج.`);
+}
 
 /* The ones whose headline and tier now agree — what this run was for. */
 const checkable = [];
@@ -285,4 +321,8 @@ say(
 
 flush();
 rmSync(outfile, { force: true });
+/* Nothing opened is not success either. */
+if (!sample.length || onPage + offPage === 0) {
+  process.exit(1);
+}
 process.exit(offPage > 0 ? 1 : 0);
