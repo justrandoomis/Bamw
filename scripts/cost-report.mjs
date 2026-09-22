@@ -70,7 +70,8 @@ try {
       {
         name: "stub-start-virtuals",
         setup(pluginBuild) {
-          const virtual = /^(#tanstack-router-entry|#tanstack-start-entry|tanstack-start-manifest:)/;
+          const virtual =
+            /^(#tanstack-router-entry|#tanstack-start-entry|tanstack-start-manifest:)/;
           pluginBuild.onResolve({ filter: virtual }, (a) => ({
             path: a.path,
             namespace: "start-virtual",
@@ -151,6 +152,18 @@ for (const product of products) {
 }
 
 const games = rows.filter((row) => row.isGame);
+const notGames = rows.filter((row) => !row.isGame);
+/*
+  `kind` is the record's own word for itself, and it is not always filled in.
+  A console at 749,000 د.ع with a cost of 590,000 is not a game whatever the
+  field says, and leaving it in the bands puts a 590,000 cost in a histogram
+  the owner is reading to price games. Anything priced far above every game in
+  the shop is called out rather than quietly averaged in.
+*/
+const OUTLIER_PRICE = 100_000;
+const outliers = games.filter(
+  (row) => (row.price ?? 0) >= OUTLIER_PRICE || (row.cost ?? 0) >= OUTLIER_PRICE,
+);
 const priced = games.filter((row) => row.cost !== null && row.cost > 0);
 const noCost = games.filter((row) => row.cost === null || row.cost <= 0);
 
@@ -168,6 +181,28 @@ say();
 const byCost = new Map();
 for (const row of priced) byCost.set(row.cost, (byCost.get(row.cost) ?? 0) + 1);
 const distinct = [...byCost.entries()].sort((a, b) => b[1] - a[1] || a[0] - b[0]);
+
+if (notGames.length || outliers.length) {
+  say("## مستبعَد من الحساب");
+  say();
+  if (notGames.length) {
+    const kinds = new Map();
+    for (const row of notGames)
+      kinds.set(row.kind || "(بلا نوع)", (kinds.get(row.kind || "(بلا نوع)") ?? 0) + 1);
+    say(
+      `- ليست ألعابًا حسب \`kind\`: **${notGames.length}** — ` +
+        [...kinds.entries()].map(([kind, n]) => `${kind}: ${n}`).join("، "),
+    );
+  }
+  for (const row of outliers) {
+    say(
+      `- **${row.title.slice(0, 48)}** — تكلفة ${(row.cost ?? 0).toLocaleString("en-US")}، ` +
+        `سعر ${(row.price ?? 0).toLocaleString("en-US")}، \`kind\`: \`${row.kind || "—"}\` — ` +
+        "جهاز لا لعبة، ولا تنطبق عليه قواعد التسعير.",
+    );
+  }
+  say();
+}
 
 say("## كل تكلفة، وكم منتجًا يحملها");
 say();
@@ -240,8 +275,9 @@ const CHEAP_FLOOR = 5_000;
 const CHEAP_CEILING = 12_000;
 const MIN_MARGIN = 5_000;
 
-const cheap = priced.filter((row) => row.cost <= 2_000);
-const dear = priced.filter((row) => row.cost > 2_000);
+const forPricing = priced.filter((row) => !outliers.includes(row));
+const cheap = forPricing.filter((row) => row.cost <= 2_000);
+const dear = forPricing.filter((row) => row.cost > 2_000);
 
 const belowFloor = cheap.filter((row) => row.price !== null && row.price < CHEAP_FLOOR);
 const aboveCeiling = cheap.filter((row) => row.price !== null && row.price > CHEAP_CEILING);
@@ -269,6 +305,73 @@ say(
 say();
 say(`- ربحها الآن أقل من ${MIN_MARGIN.toLocaleString("en-US")} (سترتفع): **${thinMargin.length}**`);
 say();
+
+const naming = (row) => {
+  const margin = row.price === null ? null : row.price - row.cost;
+  return (
+    `| ${row.title.slice(0, 46)} | ${row.cost.toLocaleString("en-US")} | ` +
+    `${row.price === null ? "—" : row.price.toLocaleString("en-US")} | ` +
+    `${margin === null ? "—" : margin.toLocaleString("en-US")} |`
+  );
+};
+
+if (aboveCeiling.length) {
+  say("### تكلفتها ≤ 2,000 وسعرها فوق 12,000");
+  say();
+  say("هذه التي سينزل سعرها إن طُبّق السقف.");
+  say();
+  say("| اللعبة | التكلفة | السعر الآن | الربح الآن |");
+  say("|---|---:|---:|---:|");
+  for (const row of [...aboveCeiling].sort((a, b) => (b.price ?? 0) - (a.price ?? 0))) {
+    say(naming(row));
+  }
+  say();
+}
+
+if (thinMargin.length) {
+  say("### تكلفتها فوق 2,000 وربحها أقل من 5,000");
+  say();
+  say("هذه التي سيرتفع سعرها إن طُبّق أقل ربح.");
+  say();
+  say("| اللعبة | التكلفة | السعر الآن | الربح الآن | أقل سعر بالقاعدة |");
+  say("|---|---:|---:|---:|---:|");
+  for (const row of [...thinMargin].sort(
+    (a, b) => (a.price ?? 0) - (a.cost ?? 0) - ((b.price ?? 0) - (b.cost ?? 0)),
+  )) {
+    const margin = row.price === null ? null : row.price - row.cost;
+    say(
+      `| ${row.title.slice(0, 46)} | ${row.cost.toLocaleString("en-US")} | ` +
+        `${row.price === null ? "—" : row.price.toLocaleString("en-US")} | ` +
+        `${margin === null ? "—" : margin.toLocaleString("en-US")} | ` +
+        `${(row.cost + MIN_MARGIN).toLocaleString("en-US")} |`,
+    );
+  }
+  say();
+}
+
+/*
+  The prices that end in something other than a round thousand.
+
+  «اذا رايت سعر يستحق ان تنخفض مثلا من ٩ الى ٨ اعملها لتكون ولتبدو ارخص
+  للزبون» — a price of 10,250 or 14,750 is a conversion artefact rather than a
+  decision, and it is exactly the kind that reads as expensive. Listed so the
+  owner can see how many there are before anyone rounds anything.
+*/
+const unrounded = priced.filter((row) => row.price !== null && row.price % 1_000 !== 0);
+say(`### أسعار لا تنتهي بألف كامل: **${unrounded.length}**`);
+say();
+if (unrounded.length && unrounded.length <= 80) {
+  say("| اللعبة | التكلفة | السعر الآن | لو نُزّل لأقرب ألف |");
+  say("|---|---:|---:|---:|");
+  for (const row of [...unrounded].sort((a, b) => (b.price ?? 0) - (a.price ?? 0))) {
+    say(
+      `| ${row.title.slice(0, 46)} | ${row.cost.toLocaleString("en-US")} | ` +
+        `${row.price.toLocaleString("en-US")} | ` +
+        `${(Math.floor(row.price / 1_000) * 1_000).toLocaleString("en-US")} |`,
+    );
+  }
+  say();
+}
 
 if (dear.length && dear.length <= 60) {
   say("### الألعاب التي تكلفتها فوق 2,000");
@@ -313,6 +416,9 @@ say(
       thinMargin: thinMargin.length,
       withSales,
       withMetacritic,
+      notGames: notGames.length,
+      outliers: outliers.length,
+      unrounded: unrounded.length,
     }),
 );
 
