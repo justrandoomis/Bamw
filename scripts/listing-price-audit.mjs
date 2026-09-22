@@ -485,6 +485,15 @@ for (const product of games) {
     rows: rows
       .filter((t) => Number(t.price) > 0)
       .map((t) => `${t.kind}:${Number(t.price).toLocaleString("en-US")}`),
+    /*
+      THE OPTIONS, which the first version of this table left out and which is
+      where the answer turned out to be. A product with priced OPTIONS never
+      had its base compared against them, so an 8,000 base sat under a 35,000
+      option and the card printed 35,000.
+    */
+    options: (Array.isArray(product.options) ? product.options : [])
+      .filter((o) => Number(o?.price) > 0)
+      .map((o) => `${String(o?.name ?? o?.id ?? "?").slice(0, 26)}:${Number(o.price).toLocaleString("en-US")}`),
   });
 }
 stillDear.sort((a, b) => b.shown - a.shown);
@@ -493,16 +502,18 @@ say("## أغلى البطاقات — ولماذا بقيت غالية");
 say();
 say(`ألعاب سعرها المعروض فوق 12,000: **${stillDear.length}**`);
 say();
-say("| اللعبة | التكلفة | الأساس | النسخة | المعروض | الصفوف المسعّرة |");
-say("| --- | ---: | ---: | ---: | ---: | --- |");
+say("| اللعبة | التكلفة | الأساس | المعروض | الصفوف | الخيارات المسعّرة |");
+say("| --- | ---: | ---: | ---: | --- | --- |");
 for (const row of stillDear.slice(0, 40)) {
   say(
-    `| ${row.title.slice(0, 40)} | ${row.cost.toLocaleString("en-US")} | ` +
-      `${row.base.toLocaleString("en-US")} | ${row.mirror.toLocaleString("en-US")} | ` +
-      `**${row.shown.toLocaleString("en-US")}** | ${row.rows.join(" · ") || "—"} |`,
+    `| ${row.title.slice(0, 36)} | ${row.cost.toLocaleString("en-US")} | ` +
+      `${row.base.toLocaleString("en-US")} | **${row.shown.toLocaleString("en-US")}** | ` +
+      `${row.rows.join(" · ") || "—"} | ${row.options.join(" · ") || "—"} |`,
   );
 }
 if (stillDear.length > 40) say(`| …و${stillDear.length - 40} غيرها | | | | | |`);
+say();
+say(`- منها لها خيارات مسعّرة والأساس أرخص منها: **${stillDear.filter((r) => r.options.length > 0 && r.base > 0 && r.base < r.shown).length}**`);
 say();
 /*
   The one that decides what to do: a game with NO priced row has nothing
