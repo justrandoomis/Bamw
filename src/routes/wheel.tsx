@@ -37,10 +37,14 @@ interface WheelState {
   }[];
   prizeValidDays: number;
   odds: { label: string; weight: number; games: number; chance: number }[];
+  /** What the owner charges for one ticket. 0 means tickets are not for sale. */
+  ticketPriceBananas?: number;
 }
 
 interface SpinResult {
   ok?: boolean;
+  /** False on «حظ أوفر» — the spin happened, the ticket is spent, nothing won. */
+  won?: boolean;
   prize?: { productId: string; title: string; price: number; image: string | null };
   couponCode?: string;
   expiresAt?: string;
@@ -74,6 +78,21 @@ function WheelPage() {
     retry: false,
   });
 
+  /*
+    Buying a ticket. The price is NOT sent — the server reads its own setting —
+    so this can only ever ask for a quantity.
+  */
+  const buy = useMutation({
+    mutationFn: (quantity: number) =>
+      api.fetch<{ ok?: boolean; tickets?: number }>("/api/wheel", {
+        method: "POST",
+        body: JSON.stringify({ action: "buy_ticket", quantity }),
+      }),
+    onSuccess: () => {
+      void queryClient.invalidateQueries({ queryKey: ["wheel"] });
+    },
+  });
+
   const spin = useMutation({
     mutationFn: () => api.fetch<SpinResult>("/api/wheel", { method: "POST", body: "{}" }),
     onMutate: () => {
@@ -101,6 +120,7 @@ function WheelPage() {
   });
 
   const tickets = data?.tickets ?? 0;
+  const ticketPrice = Number(data?.ticketPriceBananas ?? 0);
 
   return (
     <div className="mx-auto w-full max-w-2xl px-4 pb-16 pt-6" dir="rtl">
@@ -175,17 +195,76 @@ function WheelPage() {
             </button>
           ) : (
             <div className="mx-auto max-w-sm space-y-2.5 text-center">
-              <p className="text-[12.5px] leading-relaxed text-muted-foreground">
-                {tr("لا توجد لديك تذاكر. التذاكر تُشترى بالموز من شاشة الاسترداد.")}
-              </p>
-              <Link
-                to="/banana_redeem"
-                className="inline-block rounded-2xl bg-foreground px-6 py-3 text-[13px] font-bold text-background"
-              >
-                {tr("استبدل الموز بتذكرة")}
-              </Link>
+              {/*
+                One button when the owner has set a price, and the redemption
+                screen when they have not. A price of zero is not a free
+                ticket — it means tickets are not on sale — so the button is
+                not offered rather than offered and refused.
+              */}
+              {ticketPrice > 0 ? (
+                <>
+                  <p className="text-[12.5px] leading-relaxed text-muted-foreground">
+                    {tr("لا توجد لديك تذاكر. التذكرة الواحدة بـ")}{" "}
+                    <span className="font-black text-foreground">
+                      {ticketPrice.toLocaleString("en-US")}
+                    </span>{" "}
+                    {tr("موزة")}.
+                  </p>
+                  <button
+                    type="button"
+                    onClick={() => buy.mutate(1)}
+                    disabled={buy.isPending}
+                    className="inline-block rounded-2xl bg-foreground px-6 py-3 text-[13px] font-bold text-background disabled:opacity-50"
+                  >
+                    {buy.isPending ? tr("...") : tr("اشترِ تذكرة")}
+                  </button>
+                  {buy.isError ? (
+                    <p className="text-[12px] font-bold text-red-500">
+                      {buy.error instanceof Error && buy.error.message
+                        ? buy.error.message
+                        : tr("تعذّر الشراء")}
+                    </p>
+                  ) : null}
+                </>
+              ) : (
+                <>
+                  <p className="text-[12.5px] leading-relaxed text-muted-foreground">
+                    {tr("لا توجد لديك تذاكر. التذاكر تُشترى بالموز من شاشة الاسترداد.")}
+                  </p>
+                  <Link
+                    to="/banana_redeem"
+                    className="inline-block rounded-2xl bg-foreground px-6 py-3 text-[13px] font-bold text-background"
+                  >
+                    {tr("استبدل الموز بتذكرة")}
+                  </Link>
+                </>
+              )}
             </div>
           )}
+
+          <AnimatePresence>
+            {result?.ok && !result.prize ? (
+              <motion.div
+                initial={reduceMotion ? { opacity: 0 } : { opacity: 0, y: 16, scale: 0.98 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{ type: "spring", bounce: 0.2, visualDuration: 0.4 }}
+                className="mt-6 space-y-2 rounded-3xl border border-border bg-muted/40 p-5 text-center"
+              >
+                {/*
+                  A spin that won nothing still happened, and the ticket is
+                  spent. Saying so is the whole of the honesty here: without
+                  this block the member pressed the button, watched their
+                  ticket disappear and was shown an empty screen.
+                */}
+                <p className="text-sm font-black text-foreground">
+                  {tr("حظ أوفر في المرة القادمة")}
+                </p>
+                <p className="text-[12px] text-muted-foreground">
+                  {tr("لم تربح هذه المرة. التذكرة استُخدمت.")}
+                </p>
+              </motion.div>
+            ) : null}
+          </AnimatePresence>
 
           <AnimatePresence>
             {result?.ok && result.prize ? (
@@ -226,23 +305,41 @@ function WheelPage() {
               */}
               <ul className="space-y-1.5">
                 {data.odds
-                  .filter((tier) => tier.games > 0)
-                  .map((tier) => (
-                    <li
-                      key={tier.label}
-                      className="flex items-center justify-between gap-3 rounded-xl border border-border bg-card px-3.5 py-2 text-[12px]"
-                    >
-                      <span className="font-bold text-foreground" dir="ltr">
-                        {tier.label} {tr("دينار")}
-                      </span>
-                      <span className="text-muted-foreground">
-                        {tier.games} {tr("لعبة")} ·{" "}
-                        {tier.chance >= 0.001
-                          ? `${(tier.chance * 100).toFixed(1)}%`
-                          : tr("نادرة جداً")}
-                      </span>
-                    </li>
-                  ))}
+                  /*
+                    A band with no games in it is noise; «حظ أوفر» has no games
+                    BY DEFINITION and is the one row a member most needs to
+                    see. Filtering on `games > 0` alone hid it, and the
+                    percentages on screen then did not add up to a hundred with
+                    nothing to explain the gap.
+                  */
+                  .filter((tier) => tier.games > 0 || tier.chance > 0)
+                  .map((tier, index) => {
+                    // A price band, or the losing segment, which is not a price.
+                    const isPrice = tier.games > 0 || /[0-9]/.test(tier.label);
+                    return (
+                      <li
+                        /*
+                          By position. A label stops being unique the moment an
+                          admin can rename a band, and two rows sharing a key
+                          is how React starts showing one band's numbers under
+                          another band's name.
+                        */
+                        key={`${index}-${tier.label}`}
+                        className="flex items-center justify-between gap-3 rounded-xl border border-border bg-card px-3.5 py-2 text-[12px]"
+                      >
+                        <span className="font-bold text-foreground" dir={isPrice ? "ltr" : "rtl"}>
+                          {tier.label}
+                          {isPrice ? ` ${tr("دينار")}` : ""}
+                        </span>
+                        <span className="text-muted-foreground">
+                          {tier.games > 0 ? `${tier.games} ${tr("لعبة")} · ` : ""}
+                          {tier.chance >= 0.001
+                            ? `${(tier.chance * 100).toFixed(1)}%`
+                            : tr("نادرة جداً")}
+                        </span>
+                      </li>
+                    );
+                  })}
               </ul>
             </section>
           ) : null}
