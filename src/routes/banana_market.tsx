@@ -9,6 +9,7 @@ import TextFlip from "@/components/TextFlip";
 import { lazyWithRetry } from "@/lib/lazyRetry";
 import { useBananaMarket, type BananaListing } from "@/hooks/useBananaMarket";
 import { playSound } from "@/utils/audio";
+import { PRICE_STEP, formatPrice, roundPrice } from "@/lib/banana-price";
 
 // recharts is the heaviest dependency on this route; keep it off the critical path.
 const BananaPriceChart = lazyWithRetry(() => import("@/components/BananaPriceChart"));
@@ -83,13 +84,18 @@ function marketErrorText(
  * backwards for a price that is a fraction of one dinar. The unit is known
  * here, so it is stated rather than inferred.
  *
- * Three decimals below one dinar, because that is the precision the engine
- * rounds to (`spotPriceAt`), and a price of 0.24 shown as «0 د.ع» would be the
- * same lie in a different font.
+ * Three decimals below one dinar was the precision the engine rounded to, and
+ * a price of 0.24 shown as «0 د.ع» would have been the same lie in a different
+ * font. But this shop's banana is worth 0.0004 د.ع, and three decimals told
+ * the same lie about THAT: every customer-facing price on this page read
+ * «0.000 د.ع». The decimals come from the magnitude now, the way
+ * `formatPrice` chooses them, so a sub-fils price is shown rather than
+ * rounded away.
  */
 export function dinars(value: number | undefined | null): string {
   const amount = Number(value) || 0;
-  const digits = amount !== 0 && Math.abs(amount) < 1 ? 3 : amount % 1 === 0 ? 0 : 2;
+  if (amount !== 0 && Math.abs(amount) < 1) return `${formatPrice(amount)} د.ع`;
+  const digits = amount % 1 === 0 ? 0 : 2;
   return `${amount.toLocaleString("en-US", {
     minimumFractionDigits: digits,
     maximumFractionDigits: digits,
@@ -165,8 +171,20 @@ function BananaMarketPage() {
   const pricePct =
     price > 0 && Number(pricePer) > 0 ? Math.round(((Number(pricePer) - price) / price) * 100) : 0;
 
+  /*
+    A quick-pick the server will actually accept.
+
+    This floored at 0.01 and rounded to two decimals. Against a ceiling of
+    0.0004 that made every quick-pick 0.01 — sixteen times the highest price
+    the market allows — so the slider could not produce a listable price at
+    all, and «نشر العرض» came back refused whatever the seller chose. The
+    market's own band is the floor and the ceiling now, and the rounding is
+    the engine's.
+  */
   const applyPricePct = (pct: number) => {
-    const next = Math.max(0.01, Math.round(price * (1 + pct / 100) * 100) / 100);
+    const floor = limits.minPrice > 0 ? limits.minPrice : PRICE_STEP;
+    const ceiling = limits.maxPrice > 0 ? limits.maxPrice : Number.POSITIVE_INFINITY;
+    const next = Math.min(ceiling, Math.max(floor, roundPrice(price * (1 + pct / 100))));
     setPricePer(String(next));
   };
 
