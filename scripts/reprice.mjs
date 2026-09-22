@@ -135,6 +135,29 @@ const inputs = products.map((product) => ({
   price: num(product["price"]) ?? num(product["basePrice"]),
 }));
 
+/*
+  The second copy of the offline price, and whether it still agrees.
+
+  `catalogueImport` writes the sheet's offline price into BOTH `price` and
+  `accountPrice` — two copies of one number — and `readOffers` in hub.ts reads
+  `num(p["accountPrice"]) || num(p["price"])`, the mirror FIRST. So the game
+  page's headline comes from `accountPrice` while the product card and the till
+  both price through `resolveUnitPrice`, which reads `price`.
+
+  A repricing that moves one and not the other therefore shows the customer one
+  number on the game page and charges another at checkout. This counts that,
+  because a number is the only honest way to say how bad it is.
+*/
+const mirrors = products
+  .map((product) => ({
+    id: String(product["id"] ?? ""),
+    title: String(product["title"] || product["titleEn"] || ""),
+    price: num(product["price"]),
+    accountPrice: num(product["accountPrice"]),
+  }))
+  .filter((row) => row.accountPrice !== null && row.accountPrice > 0);
+const disagreeing = mirrors.filter((row) => Number(row.accountPrice) !== Number(row.price));
+
 const decisions = app.repriceAll(inputs);
 
 /*
@@ -152,6 +175,29 @@ if (Number.isFinite(LIMIT)) moving = moving.slice(0, LIMIT);
 const down = moving.filter((d) => d.newPrice < d.oldPrice);
 const up = moving.filter((d) => d.newPrice > d.oldPrice);
 const revenueDelta = moving.reduce((sum, d) => sum + (d.newPrice - d.oldPrice), 0);
+
+say("## سعر صفحة اللعبة مقابل سعر الصندوق");
+say();
+say(`- منتجات تحمل \`accountPrice\` (نسخة ثانية من سعر الأوفلاين): **${mirrors.length}**`);
+say(`- منها تختلف عن \`price\` الآن: **${disagreeing.length}**`);
+if (disagreeing.length) {
+  say();
+  say(
+    "صفحة اللعبة تقرأ `accountPrice` أولًا، والبطاقة والدفع يقرآن `price`. " +
+      "فهذه المنتجات تعرض سعرًا وتتقاضى آخر.",
+  );
+  say();
+  say("| اللعبة | صفحة اللعبة | البطاقة والدفع |");
+  say("|---|---:|---:|");
+  for (const row of disagreeing.slice(0, 40)) {
+    say(
+      `| ${row.title.slice(0, 44)} | ${Number(row.accountPrice).toLocaleString("en-US")} | ` +
+        `${Number(row.price).toLocaleString("en-US")} |`,
+    );
+  }
+  if (disagreeing.length > 40) say(`| …و${disagreeing.length - 40} غيرها | | |`);
+}
+say();
 
 say("## باختصار");
 say();
