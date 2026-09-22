@@ -55,6 +55,7 @@ import { Route as ApiReferralRouteImport } from './routes/api/referral'
 import { Route as ApiReleaseAlertsRouteImport } from './routes/api/release-alerts'
 import { Route as ApiRevealPasswordRouteImport } from './routes/api/reveal-password'
 import { Route as ApiReviewsRouteImport } from './routes/api/reviews'
+import { Route as ApiRouletteRouteImport } from './routes/api/roulette'
 import { Route as ApiStoreAdvisorRouteImport } from './routes/api/store-advisor'
 import { Route as ApiTelegramRouteImport } from './routes/api/telegram'
 import { Route as ApiTrackRouteImport } from './routes/api/track'
@@ -364,6 +365,11 @@ const ApiRevealPasswordRoute = ApiRevealPasswordRouteImport.update({
 const ApiReviewsRoute = ApiReviewsRouteImport.update({
   id: '/api/reviews',
   path: '/api/reviews',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiRouletteRoute = ApiRouletteRouteImport.update({
+  id: '/api/roulette',
+  path: '/api/roulette',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ApiStoreAdvisorRoute = ApiStoreAdvisorRouteImport.update({
@@ -831,6 +837,7 @@ export interface FileRoutesByFullPath {
   '/api/release-alerts': typeof ApiReleaseAlertsRoute
   '/api/reveal-password': typeof ApiRevealPasswordRoute
   '/api/reviews': typeof ApiReviewsRoute
+  '/api/roulette': typeof ApiRouletteRoute
   '/api/store-advisor': typeof ApiStoreAdvisorRoute
   '/api/telegram': typeof ApiTelegramRoute
   '/api/track': typeof ApiTrackRoute
@@ -959,6 +966,7 @@ export interface FileRoutesByTo {
   '/api/release-alerts': typeof ApiReleaseAlertsRoute
   '/api/reveal-password': typeof ApiRevealPasswordRoute
   '/api/reviews': typeof ApiReviewsRoute
+  '/api/roulette': typeof ApiRouletteRoute
   '/api/store-advisor': typeof ApiStoreAdvisorRoute
   '/api/telegram': typeof ApiTelegramRoute
   '/api/track': typeof ApiTrackRoute
@@ -1088,6 +1096,7 @@ export interface FileRoutesById {
   '/api/release-alerts': typeof ApiReleaseAlertsRoute
   '/api/reveal-password': typeof ApiRevealPasswordRoute
   '/api/reviews': typeof ApiReviewsRoute
+  '/api/roulette': typeof ApiRouletteRoute
   '/api/store-advisor': typeof ApiStoreAdvisorRoute
   '/api/telegram': typeof ApiTelegramRoute
   '/api/track': typeof ApiTrackRoute
@@ -1218,6 +1227,7 @@ export interface FileRouteTypes {
     | '/api/release-alerts'
     | '/api/reveal-password'
     | '/api/reviews'
+    | '/api/roulette'
     | '/api/store-advisor'
     | '/api/telegram'
     | '/api/track'
@@ -1346,6 +1356,7 @@ export interface FileRouteTypes {
     | '/api/release-alerts'
     | '/api/reveal-password'
     | '/api/reviews'
+    | '/api/roulette'
     | '/api/store-advisor'
     | '/api/telegram'
     | '/api/track'
@@ -1474,6 +1485,7 @@ export interface FileRouteTypes {
     | '/api/release-alerts'
     | '/api/reveal-password'
     | '/api/reviews'
+    | '/api/roulette'
     | '/api/store-advisor'
     | '/api/telegram'
     | '/api/track'
@@ -1603,6 +1615,7 @@ export interface RootRouteChildren {
   ApiReleaseAlertsRoute: typeof ApiReleaseAlertsRoute
   ApiRevealPasswordRoute: typeof ApiRevealPasswordRoute
   ApiReviewsRoute: typeof ApiReviewsRoute
+  ApiRouletteRoute: typeof ApiRouletteRoute
   ApiStoreAdvisorRoute: typeof ApiStoreAdvisorRoute
   ApiTelegramRoute: typeof ApiTelegramRoute
   ApiTrackRoute: typeof ApiTrackRoute
@@ -1996,6 +2009,13 @@ declare module '@tanstack/react-router' {
       path: '/api/reviews'
       fullPath: '/api/reviews'
       preLoaderRoute: typeof ApiReviewsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/roulette': {
+      id: '/api/roulette'
+      path: '/api/roulette'
+      fullPath: '/api/roulette'
+      preLoaderRoute: typeof ApiRouletteRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/api/store-advisor': {
@@ -2669,6 +2689,7 @@ const rootRouteChildren: RootRouteChildren = {
   ApiReleaseAlertsRoute: ApiReleaseAlertsRoute,
   ApiRevealPasswordRoute: ApiRevealPasswordRoute,
   ApiReviewsRoute: ApiReviewsRoute,
+  ApiRouletteRoute: ApiRouletteRoute,
   ApiStoreAdvisorRoute: ApiStoreAdvisorRoute,
   ApiTelegramRoute: ApiTelegramRoute,
   ApiTrackRoute: ApiTrackRoute,
