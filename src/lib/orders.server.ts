@@ -34,6 +34,11 @@ import {
 } from "./referral/binding.server";
 import { insertRewardStatement, markAttributionConverted } from "./referral/rewards.server";
 import { memberAllowsNotification } from "./notification-preferences.server";
+/*
+  Still imported — for FULFILMENT, which is the question it actually answers.
+  It used to decide whether an order had been PAID for as well; those were one
+  boolean and they are two now.
+*/
 import { isFullyDigitalOrder } from "./delivery-kinds";
 import type {
   Address,
@@ -719,19 +724,39 @@ export async function createOrderForUser(
       : undefined;
 
   const finalItemsTotal = Math.max(0, itemsTotal - discountAmount);
-  const needsWalletPayment = isFullyDigitalOrder(items);
 
-  if (needsWalletPayment && (user.walletBalance || 0) < finalItemsTotal) {
-    // The coupon use was claimed a moment ago; give it back rather than
-    // burning a member's single use on an order that never happened.
-    if (couponClaimed) {
-      await releaseCouponUse({ ...couponClaimed, releaseGlobal: true }).catch(() => {});
-    }
-    // Same for the referral: a discount claimed for an order that cannot be
-    // paid for must not be the one the member is allowed once in their life.
-    if (referralClaimed) await releaseReferralDiscount(orderId);
-    throw new Error("insufficient_balance");
-  }
+  /*
+    EVERY ORDER IS PAID FROM THE WALLET.
+
+    This was `isFullyDigitalOrder(items)`, and it is the hole the owner
+    reported: «عند شراء المنتج لا يخصم من المحفظة».
+
+    One physical line — a console, an accessory, a used disc — made the whole
+    cart "not fully digital", and then this single flag decided THREE things at
+    once: whether to take the money, what `paymentStatus` to write, and whether
+    the referral reward was owed. So an order containing any physical item was
+    written `unpaid` and NOTHING was taken, while the cart had just shown the
+    member «رصيدك الحالي», «الرصيد المتبقي بعد الدفع: balance − total», a button
+    reading «إتمام الدفع عبر المحفظة» and, on success, «تم تأكيد الطلب والدفع
+    بنجاح». There is no branch in that screen for a physical cart, and no
+    cash-on-delivery option anywhere in it: the shop promised a wallet payment,
+    said it had succeeded, and took nothing. Add one cheap accessory to a cart
+    of games and the games go with it.
+
+    The gate was answering a different question from the one it was asked.
+    Whether an order needs a delivery slot or a shipping address has nothing to
+    do with whether it has been paid for, and the two were the same boolean.
+    They are separate now: `needsAddress` still decides shipping,
+    `isFullyDigitalOrder` still decides delivery slots where fulfilment asks
+    it, and payment is simply always taken.
+
+    AND FOR THE FULL AMOUNT. The debit was `finalItemsTotal`, which excludes
+    the delivery fee — harmless while only digital orders were charged, since
+    those have none. Now that a shipped order is charged, the number taken has
+    to be the number the cart showed, or the shop pays the courier out of its
+    own pocket on every delivery.
+  */
+  const needsWalletPayment = true;
 
   const deliveryBase = toNumber(store.settings?.["deliveryBase"] || 5000);
   const deliveryExceptions = (
@@ -754,6 +779,23 @@ export async function createOrderForUser(
   */
   const needsAddress = items.some((item) => isPhysicalKind(item.kind));
   const total = finalItemsTotal + (needsAddress ? deliveryPrice : 0);
+
+  /*
+    The balance check moved down here, because it has to be made against the
+    amount that will actually be taken — and the delivery fee is only known
+    once the address has picked its city.
+  */
+  if ((user.walletBalance || 0) < total) {
+    // The coupon use was claimed a moment ago; give it back rather than
+    // burning a member's single use on an order that never happened.
+    if (couponClaimed) {
+      await releaseCouponUse({ ...couponClaimed, releaseGlobal: true }).catch(() => {});
+    }
+    // Same for the referral: a discount claimed for an order that cannot be
+    // paid for must not be the one the member is allowed once in their life.
+    if (referralClaimed) await releaseReferralDiscount(orderId);
+    throw new Error("insufficient_balance");
+  }
 
   const threadId = randomId("thr");
   const code = `BN-${Date.now().toString().slice(-6)}`;
@@ -839,13 +881,29 @@ export async function createOrderForUser(
   if (needsWalletPayment) {
     const payment = await d1Batch([
       {
-        sql: `UPDATE users SET wallet_balance = CASE WHEN wallet_balance >= ? THEN wallet_balance - ? ELSE NULL END WHERE id = ?`,
-        params: [finalItemsTotal, finalItemsTotal, user.id],
+        /*
+          The condition belongs in the WHERE clause, not in a CASE.
+
+          It was `SET wallet_balance = CASE WHEN wallet_balance >= ? THEN
+          wallet_balance - ? ELSE NULL END`, which relies on the column's NOT
+          NULL constraint to abort the batch — so an overdraw surfaced as a raw
+          database error rather than «رصيد المحفظة غير كافٍ», and the
+          `changes() !== 1` guard below could never fire, because SQLite counts
+          a row as changed whenever the UPDATE matched it, whichever branch of
+          the CASE ran.
+
+          In the WHERE clause the statement simply matches nothing when the
+          money is not there: `changes()` is 0, every chained statement is
+          skipped, the order is not written, and the guard reports what
+          actually happened.
+        */
+        sql: `UPDATE users SET wallet_balance = wallet_balance - ? WHERE id = ? AND wallet_balance >= ?`,
+        params: [total, user.id, total],
       },
       {
         sql: `INSERT INTO wallet_transactions (id, user_id, kind, amount, description, order_id, created_at)
                SELECT ?, ?, 'payment', ?, ?, ?, ? WHERE changes() = 1`,
-        params: [walletTxId, user.id, -finalItemsTotal, `شراء طلب ${code}`, orderId, now],
+        params: [walletTxId, user.id, -total, `شراء طلب ${code}`, orderId, now],
       },
       {
         sql: `INSERT INTO orders (

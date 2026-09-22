@@ -236,8 +236,27 @@ describe("admin digital completion", () => {
 });
 
 describe("queue and completion ownership", () => {
-  it("uses the shared digital-kind classifier at checkout and repairs old queues", () => {
-    expect(orders).toContain("const needsWalletPayment = isFullyDigitalOrder(items)");
+  /*
+    REVERSED, DELIBERATELY.
+
+    This asserted that checkout decided whether to take the money from
+    `isFullyDigitalOrder(items)` — the same classifier the delivery queue uses.
+    Sharing it was the point, and sharing it was the bug: one boolean was
+    answering two unrelated questions, and the answer to «does this need a
+    delivery slot?» was being used for «has this been paid for?».
+
+    One physical line in the cart therefore made the whole order — games and
+    all — `unpaid`, with nothing taken from the wallet, while the cart screen
+    had just promised «إتمام الدفع عبر المحفظة» and shown the balance it was
+    about to reduce. That is the hole the owner reported.
+
+    The classifier still decides FULFILMENT, which is what it is for, and this
+    test still holds it in place for the queue. Payment is no longer one of its
+    jobs.
+  */
+  it("uses the shared digital-kind classifier for fulfilment, and not for payment", () => {
+    expect(orders).not.toContain("const needsWalletPayment = isFullyDigitalOrder(items)");
+    expect(orders).toContain("isFullyDigitalOrder(order.items)");
     expect(delivery).toContain("export async function ensureDigitalOrderQueueEntry");
     expect(delivery).toContain("repairActiveDigitalOrderQueues");
     expect(delivery).toContain("[delivery:next_queue_candidate_failed]");

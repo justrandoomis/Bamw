@@ -517,12 +517,43 @@ export const Route = createFileRoute("/api/admin/orders")({
                   wasPaidByWallet = true;
                   refundAmount = Math.abs(Number(payments[0]?.amount || 0));
                 } else if (order.paymentStatus === "paid") {
-                  wasPaidByWallet = true;
-                  refundAmount = Number(order.total || 0);
+                  /*
+                    MARKED PAID, BUT THE WALLET NEVER PAID IT.
+
+                    This used to credit the member the whole order total. An
+                    order can be `paid` without any wallet payment row — an
+                    admin pressing «تأكيد الدفع» for cash or ZainCash, or, until
+                    the fix in `orders.server.ts`, any order carrying a physical
+                    line, which was written `unpaid`, then confirmed by hand.
+                    Cancelling it put the full price INTO a wallet that had
+                    never been charged: money created out of nothing, repeatable
+                    for as long as someone kept ordering and cancelling.
+
+                    The ledger is the evidence. No payment row means the wallet
+                    did not pay, so there is nothing for it to get back, and a
+                    refund of cash is a separate act someone has to decide to
+                    make — the admin wallet adjustment exists for exactly that
+                    and records who granted it.
+                  */
+                  wasPaidByWallet = false;
+                  refundAmount = 0;
+                  console.warn("[order:cancel_no_wallet_payment]", {
+                    orderId: order.id,
+                    code: order.code,
+                    total: order.total,
+                    note: "paid without a wallet payment row — no automatic wallet refund",
+                  });
                 }
               } else {
-                wasPaidByWallet = order.paymentStatus === "paid";
-                refundAmount = Number(order.total || 0);
+                /*
+                  The JSON driver has no ledger to consult, so the same rule is
+                  applied the only way it can be there: a wallet payment leaves
+                  a `paymentReference`, and an order without one was not paid
+                  from the wallet.
+                */
+                wasPaidByWallet =
+                  order.paymentStatus === "paid" && Boolean(order.paymentReference);
+                refundAmount = wasPaidByWallet ? Number(order.total || 0) : 0;
               }
 
               // 2. Check Idempotency: has this order already received an order_refund transaction?
