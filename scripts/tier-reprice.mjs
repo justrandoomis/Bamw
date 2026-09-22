@@ -235,6 +235,59 @@ if (!moving.length) {
 }
 say();
 
+/*
+  The moves big enough that the owner should look at them by name.
+
+  Not a rule violation — every one of these passes the gate. It is a flag on
+  the COST that produced them: Super Smash Bros. Ultimate's online account is
+  recorded at a cost of 1,750, and the 10–15k band therefore says its price
+  should fall from 32,000 to 16,000. If that cost is right the rule is right.
+  If it is a data fault, the rule is about to halve the price of one of the
+  shop's best-known games on the strength of a typo.
+
+  «الدقه اهم شي». So they are listed, with the cost that drove them, rather
+  than being buried in a table of seventy rows.
+*/
+const BIG_MOVE_RATIO = 0.35;
+const BIG_MOVE_ABSOLUTE = 15_000;
+const outliers = [];
+for (const { result } of moving) {
+  for (const p of result.proposals) {
+    if (!p.changed) continue;
+    const from = Number(p.oldPrice);
+    const to = Number(p.newPrice);
+    if (!Number.isFinite(from) || from <= 0) continue;
+    const delta = Math.abs(to - from);
+    if (delta >= BIG_MOVE_ABSOLUTE || delta / from >= BIG_MOVE_RATIO) {
+      outliers.push({ result, p, delta, ratio: delta / from });
+    }
+  }
+}
+outliers.sort((a, b) => b.ratio - a.ratio);
+
+say(`## 3. حركات كبيرة — راجع التكلفة قبل اعتمادها`);
+say();
+say(
+  `الشرط: تغيّر ${Math.round(BIG_MOVE_RATIO * 100)}% أو أكثر، أو ${money(BIG_MOVE_ABSOLUTE)} دينار أو أكثر. كلها تمر من البوابة — هذه ملاحظة على التكلفة لا على القاعدة.`,
+);
+say();
+if (!outliers.length) {
+  say(`لا شيء. كل الحركات صغيرة.`);
+} else {
+  say(`عددها: **${outliers.length}**`);
+  say();
+  say(`| المنتج | الطبقة | التكلفة | من | إلى | التغيّر |`);
+  say(`| --- | --- | --- | --- | --- | --- |`);
+  for (const row of outliers.slice(0, 40)) {
+    const direction = row.p.newPrice > row.p.oldPrice ? "▲" : "▼";
+    say(
+      `| ${String(row.result.title).slice(0, 34)} | \`${row.p.kind}\` | ${money(row.p.cost)} | ${money(row.p.oldPrice)} | **${money(row.p.newPrice)}** | ${direction} ${Math.round(row.ratio * 100)}% |`,
+    );
+  }
+  if (outliers.length > 40) say(`| … | ${outliers.length - 40} أخرى | | | | |`);
+}
+say();
+
 /* The gate. Every proposal, before anything is written. */
 const problems = [];
 for (const { result } of moving) {
@@ -363,7 +416,7 @@ for (const [id, perTier] of wanted) {
 const overlayWrites = [...wanted.keys()].filter((id) => overlayIds.has(id));
 const chunkWrites = [...wanted.keys()].filter((id) => !overlayIds.has(id));
 
-say(`## 3. الكتابة`);
+say(`## 4. الكتابة`);
 say();
 say(`- عبر صفوف \`store:product:<id>\`: **${overlayWrites.length}**`);
 say(`- عبر كتل الكتالوج: **${chunkWrites.length}**`);
