@@ -22,7 +22,11 @@ on:
       open:
         description: "How many extra failing games to open on the site, beyond the named six"
         required: false
-        default: "8"
+        default: "2"
+      deadline:
+        description: "Minutes the browser half may spend before it stops and writes what it has"
+        required: false
+        default: "9"
   # A new or edited checker runs itself, so it can be used from a branch before
   # it merges. It reads and never writes, so a push trigger risks nothing.
   push:
@@ -41,7 +45,7 @@ concurrency:
 jobs:
   check:
     runs-on: ubuntu-latest
-    timeout-minutes: 25
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
         with:
@@ -72,10 +76,12 @@ jobs:
           D1_DATABASE_ID: ${{ secrets.CLOUDFLARE_D1_DATABASE_ID }}
           ORIGIN: ${{ inputs.origin }}
           OPEN: ${{ inputs.open }}
+          DEADLINE: ${{ inputs.deadline }}
         run: |
           node scripts/cheapest-option-check.mjs \
             --origin "${ORIGIN:-https://banan.to}" \
-            --open "${OPEN:-8}"
+            --open "${OPEN:-2}" \
+            --deadline "${DEADLINE:-9}"
       - uses: actions/upload-artifact@v4
         if: always()
         with:

@@ -42,8 +42,24 @@ const args = Object.fromEntries(
     .map((m) => [m[1], m[2] ?? "true"]),
 );
 const ORIGIN = String(args.origin ?? process.env.ORIGIN ?? "https://banan.to").replace(/\/$/, "");
-/** How many of the catalogue's own findings to open on the site. */
-const OPEN = Number(args.open ?? 8);
+/** How many of the catalogue's own findings to open BEYOND the named six. */
+const OPEN = Number(args.open ?? 2);
+/**
+ * A wall-clock ceiling on the browser half.
+ *
+ * The first run of this hung: banan.to is slow enough that a 90-second
+ * navigation budget, spent twice on each of fourteen games, outlived the job
+ * itself — so the runner was killed holding an unwritten report, and a check
+ * that cannot finish has verified nothing at all. Now the clock is the thing
+ * that stops it, the report is written either way, and how many games were
+ * opened against how many were planned is printed rather than implied.
+ */
+const DEADLINE_MS = Number(args.deadline ?? 9) * 60_000;
+/** One navigation's budget. Long enough for a slow page, short enough to lose. */
+const NAV_MS = Number(args.nav ?? 40) * 1_000;
+const SETTLE_MS = Number(args.settle ?? 2_500);
+const startedAt = Date.now();
+const timeLeft = () => DEADLINE_MS - (Date.now() - startedAt);
 
 const SECRETS = [process.env.CLOUDFLARE_API_TOKEN, process.env.CLOUDFLARE_ACCOUNT_ID].filter(
   (v) => v && v.length >= 8,
@@ -275,10 +291,10 @@ const challenged = (title) => /just a moment|checking your browser|أمهلنا/
 
 let reached = false;
 try {
-  const res = await page.goto(`${ORIGIN}/`, { waitUntil: "domcontentloaded", timeout: 90_000 });
+  const res = await page.goto(`${ORIGIN}/`, { waitUntil: "domcontentloaded", timeout: NAV_MS });
   await page
     .waitForFunction(() => !/just a moment|checking your browser/i.test(document.title || ""), undefined, {
-      timeout: 60_000,
+      timeout: 30_000,
     })
     .catch(() => {});
   reached = !challenged(await page.title()) && (res?.status() ?? 0) < 400;
@@ -308,7 +324,10 @@ let pageBad = 0;
 let pageUnread = 0;
 const misses = [];
 
+let opened = 0;
 for (const row of chosen) {
+  if (timeLeft() <= 0) break;
+  opened += 1;
   let cardCell = "تعذّرت القراءة";
   let pageCell = "تعذّرت القراءة";
 
@@ -316,11 +335,11 @@ for (const row of chosen) {
   try {
     await page.goto(`${ORIGIN}/search?q=${encodeURIComponent(row.title)}`, {
       waitUntil: "domcontentloaded",
-      timeout: 90_000,
+      timeout: NAV_MS,
     });
-    await page.waitForTimeout(3500);
+    await page.waitForTimeout(SETTLE_MS);
     const card = page.locator(`a[href*="/product/${row.slug}"]`).first();
-    const text = (await card.innerText({ timeout: 8000 }).catch(() => "")) || "";
+    const text = (await card.innerText({ timeout: 6_000 }).catch(() => "")) || "";
     const found = numbersIn(text);
     if (!text) {
       cardUnread += 1;
@@ -341,9 +360,9 @@ for (const row of chosen) {
   try {
     const res = await page.goto(`${ORIGIN}/product/${encodeURIComponent(row.slug)}`, {
       waitUntil: "domcontentloaded",
-      timeout: 90_000,
+      timeout: NAV_MS,
     });
-    await page.waitForTimeout(3500);
+    await page.waitForTimeout(SETTLE_MS);
     const text = (await page.locator("body").innerText().catch(() => "")) || "";
     if (!text || (res && res.status() >= 400)) {
       pageUnread += 1;
@@ -383,7 +402,7 @@ say(`## الخلاصة`);
 say();
 say(`- ألعاب قِيست: **${rows.length}**`);
 say(`- البطاقة = أرخص خيار قابل للشراء: **${rows.length - wrong.length}** · مخالفة: **${wrong.length}**`);
-say(`- فُتحت على الموقع: **${chosen.length}**`);
+say(`- كان المخطط فتحها: **${chosen.length}** · فُتحت فعلًا قبل انتهاء المهلة: **${opened}**`);
 say(`- بطاقة تعرض الرقم المتوقع: **${cardOk}** · لا تعرضه: **${cardBad}** · تعذّرت قراءتها: **${cardUnread}**`);
 say(`- صفحة تعرض الرقم المتوقع: **${pageOk}** · لا تعرضه: **${pageBad}** · تعذّرت قراءتها: **${pageUnread}**`);
 
