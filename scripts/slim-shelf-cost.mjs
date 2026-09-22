@@ -301,6 +301,17 @@ for (const [field, n] of Object.entries(byField).sort((a, b) => b[1] - a[1])) {
 }
 say();
 
+/*
+  The app's own category resolver, used by sections 5 and 6 below. Not a
+  string match: the first pass of section 5 compared raw `category`/`kind`
+  strings and found THREE non-game products in a catalogue of 1,714, which is
+  not a finding but a broken matcher.
+*/
+const { getProductCategory } = app;
+if (typeof getProductCategory !== "function") {
+  throw new Error("getProductCategory is not exported — refusing to report a count from a guess");
+}
+
 /* 5 — the picture a NON-GAME card shows. */
 
 /*
@@ -332,10 +343,6 @@ if (typeof resolveProductImage !== "function") {
     with `getProductCategory`, so this asks the same function the same
     question.
   */
-  const { getProductCategory } = app;
-  if (typeof getProductCategory !== "function") {
-    throw new Error("getProductCategory is not exported — refusing to report a count from a guess");
-  }
   const NON_GAME = new Set(["hardware", "accessory", "amiibo", "gift_card", "used"]);
   const nonGameOf = (p) => {
     const resolved = String(getProductCategory(p) ?? "");
@@ -380,6 +387,58 @@ if (typeof resolveProductImage !== "function") {
     }
     if (lost.length > 60) say(`| … | ${lost.length - 60} more | |`);
   }
+}
+say();
+
+/* 6 — which SHELF a product lands on. */
+
+/*
+  The strongest of the reviewer's findings, and the one I had not measured.
+
+  `getProductCategory` reads `category_id`, `category_title`, `schema_id` and
+  `schema.id` as well as their camelCase spellings — and `resolveCategoryType`
+  ends with `return "game"` when nothing resolves. So a pre-schema hardware or
+  accessory row carrying only `category_id` reads as hardware on the full
+  record and as a GAME on the slim one: not re-ordered within its shelf, but
+  standing on the wrong shelf entirely.
+
+  This asks the question directly, by running the app's own resolver over both
+  shapes of every product and comparing the answers.
+*/
+say(`## 6. الرف نفسه — products that would change category`);
+say();
+
+const moved = [];
+for (const p of all) {
+  const full = String(getProductCategory(p) ?? "");
+  const thin = String(getProductCategory(slimOf(p)) ?? "");
+  if (full !== thin) moved.push({ p, full, thin });
+}
+
+const CATEGORY_FIELDS = [
+  "category",
+  "categoryId",
+  "category_id",
+  "categoryTitle",
+  "category_title",
+  "schemaId",
+  "schema_id",
+];
+say(`\`getProductCategory\` reads: ${CATEGORY_FIELDS.join(", ")} (and \`schema.id\`).`);
+say(`Of those, the slim projection drops: **${CATEGORY_FIELDS.filter((f) => !SLIM.has(f)).join(", ") || "none"}**.`);
+say();
+say(`Checked all **${all.length}** products.`);
+say(`Products that would land on a DIFFERENT shelf: **${moved.length}**`);
+if (moved.length) {
+  say();
+  say(`| id | title | full record | under slim |`);
+  say(`| --- | --- | --- | --- |`);
+  for (const row of moved.slice(0, 60)) {
+    say(
+      `| ${row.p.id} | ${String(row.p.titleEn || row.p.title || "").slice(0, 40)} | ${row.full} | **${row.thin}** |`,
+    );
+  }
+  if (moved.length > 60) say(`| … | ${moved.length - 60} more | | |`);
 }
 say();
 

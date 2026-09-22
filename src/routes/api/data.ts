@@ -68,7 +68,24 @@ const LIST_FIELDS = [
   "category",
   "categoryId",
   "categoryTitle",
+  /*
+    The snake_case spellings, and why they belong here.
+
+    `getProductCategory` reads `category_id`, `category_title`, `schema_id`
+    and `schema.id` alongside the camelCase names — and `resolveCategoryType`
+    ends with `return "game"` when nothing resolves. A pre-schema hardware or
+    accessory row carrying only `category_id` therefore read as hardware from
+    the full record and as a GAME from this projection: not re-ordered within
+    its shelf, but standing on the wrong shelf entirely.
+
+    The same rule as `coverHiResImage` above: this list's contract is every
+    field the listing rules read, not every field some product happens to use
+    this week.
+  */
+  "category_id",
+  "category_title",
   "schemaId",
+  "schema_id",
   /*
     Whether the game has English in it.
 

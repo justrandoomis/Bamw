@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { AnimatePresence, motion } from "motion/react";
+import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 
 import { cdnImage } from "@/lib/img";
 
@@ -35,8 +35,24 @@ export function CategoryBannerSlideshow({
   interval = 2500,
 }: CategoryBannerSlideshowProps) {
   const [index, setIndex] = useState(0);
-  const indexRef = useRef(0);
-  indexRef.current = index;
+
+  /*
+    Reactive, and read in RENDER as well as in the effect below.
+
+    The first version of this asked `matchMedia` once inside the effect and
+    then enforced the answer imperatively — `start(); if (matches) stop();`.
+    That is not a rule, it is a correction, and the very next thing to call
+    `start()` undid it: `onVisibility` restarted the timer on any tab switch,
+    and a member who had asked for less motion got a full-bleed photograph
+    sliding across their screen every two and a half seconds for the rest of
+    the session. Four separate reviewers found it, which is four more than
+    would have found it in production.
+
+    The preference now gates the timer from INSIDE `start()`, where nothing
+    can step over it, and gates the slide itself as well — the timer was only
+    ever half of the motion.
+  */
+  const reduceMotion = useReducedMotion();
 
   // A new pool (new category) starts again at its first picture.
   const poolRef = useRef(banners);
@@ -63,14 +79,10 @@ export function CategoryBannerSlideshow({
     if (banners.length <= 1) return;
 
     /*
-      A hidden tab still runs its timers, and the browser throttles them into
-      bursts — so returning to the tab used to replay every flip it had
-      "missed" at once. Stop while hidden, resume on return.
+      Someone who asked for less motion gets the first picture, held still —
+      and the effect does not even install a timer to be re-armed later.
     */
-    const reducedMotion =
-      typeof window !== "undefined" && typeof window.matchMedia === "function"
-        ? window.matchMedia("(prefers-reduced-motion: reduce)")
-        : null;
+    if (reduceMotion) return;
 
     let timer: ReturnType<typeof setInterval> | null = null;
 
@@ -79,8 +91,18 @@ export function CategoryBannerSlideshow({
       timer = null;
     };
 
+    /*
+      Every guard lives HERE, in the one function that starts the timer, so
+      that no caller can start one the guards would have refused. The
+      visibility handler below is exactly such a caller, and it is how the
+      reduced-motion preference came to be defeated by a tab switch.
+
+      A hidden tab still runs its timers, and the browser throttles them into
+      bursts — so returning used to replay every flip it had "missed" at once.
+    */
     const start = () => {
       if (timer !== null) return;
+      if (reduceMotion) return;
       if (typeof document !== "undefined" && document.hidden) return;
       timer = setInterval(() => {
         setIndex((prev) => (prev + 1) % banners.length);
@@ -92,17 +114,11 @@ export function CategoryBannerSlideshow({
     start();
     document.addEventListener("visibilitychange", onVisibility);
 
-    // Someone who asked for less motion gets the first picture, held still.
-    const onMotionPreference = () => (reducedMotion?.matches ? stop() : start());
-    if (reducedMotion?.matches) stop();
-    reducedMotion?.addEventListener?.("change", onMotionPreference);
-
     return () => {
       stop();
       document.removeEventListener("visibilitychange", onVisibility);
-      reducedMotion?.removeEventListener?.("change", onMotionPreference);
     };
-  }, [banners, interval]);
+  }, [banners, interval, reduceMotion]);
 
   if (banners.length === 0) {
     return (
@@ -123,10 +139,16 @@ export function CategoryBannerSlideshow({
           alt=""
           aria-hidden="true"
           className="absolute inset-0 w-full h-full object-cover"
-          initial={{ x: "-100%" }}
-          animate={{ x: 0 }}
-          exit={{ x: "100%" }}
-          transition={{ duration: 0.8, ease: "easeInOut" }}
+          /*
+            The preference gates the SLIDE as well as the timer. Freezing the
+            interval and still translating a full-bleed photograph across the
+            screen for the one flip that does happen is half a fix — and it is
+            the half the member actually sees.
+          */
+          initial={reduceMotion ? { opacity: 0 } : { x: "-100%" }}
+          animate={reduceMotion ? { opacity: 1 } : { x: 0 }}
+          exit={reduceMotion ? { opacity: 0 } : { x: "100%" }}
+          transition={reduceMotion ? { duration: 0.2 } : { duration: 0.8, ease: "easeInOut" }}
           loading="eager"
           decoding="async"
           draggable={false}

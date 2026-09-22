@@ -77,6 +77,30 @@ describe("the slim projection and the listing rules agree", () => {
     );
   });
 
+  it("carries every field that decides which SHELF a product stands on", () => {
+    /*
+      The sharpest of the four, because it is not a re-ordering: a product
+      whose category resolves differently is on the wrong PAGE. And the
+      failure is silent and one-directional — `resolveCategoryType` ends with
+      `return "game"`, so anything this projection cannot resolve becomes a
+      game rather than becoming nothing.
+    */
+    const categoryFields = [
+      "category",
+      "categoryId",
+      "category_id",
+      "categoryTitle",
+      "category_title",
+      "schemaId",
+      "schema_id",
+    ];
+    const missing = categoryFields.filter((field) => !SLIM.has(field));
+    expect(
+      missing,
+      `getProductCategory reads these but the listing payload drops them, so a non-game would resolve to "game": ${missing.join(", ")}`,
+    ).toEqual([]);
+  });
+
   it("carries the fields the genre chips and the genre filter read", () => {
     const genreFields = ["genres", "genre", "tags"];
     const missing = genreFields.filter((field) => !SLIM.has(field));
