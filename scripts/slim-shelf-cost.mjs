@@ -41,7 +41,24 @@ const say = (t = "") => {
   console.log(safe);
 };
 
-process.env.D1_DATABASE_ID ||= process.env.CLOUDFLARE_D1_DATABASE_ID || "";
+/*
+  The database id comes from wrangler.jsonc when the secret is not set, which
+  is how every working script in this directory finds it — the first run of
+  this one died on `missing D1_DATABASE_ID` because it only looked at the
+  environment. The committed config IS the production binding.
+*/
+if (!process.env["D1_DATABASE_ID"] && !process.env["CLOUDFLARE_D1_DATABASE_ID"]) {
+  try {
+    const config = readFileSync(path.resolve("wrangler.jsonc"), "utf8");
+    const found = config.match(/"database_id"\s*:\s*"([0-9a-fA-F-]{36})"/);
+    if (found) process.env["D1_DATABASE_ID"] = found[1];
+  } catch {
+    /* Reported below as a missing id. */
+  }
+}
+if (!process.env["D1_DATABASE_ID"] && process.env["CLOUDFLARE_D1_DATABASE_ID"]) {
+  process.env["D1_DATABASE_ID"] = process.env["CLOUDFLARE_D1_DATABASE_ID"];
+}
 for (const key of ["CLOUDFLARE_ACCOUNT_ID", "CLOUDFLARE_API_TOKEN", "D1_DATABASE_ID"]) {
   if (!process.env[key]) throw new Error(`missing ${key}`);
 }
