@@ -69,28 +69,53 @@ say();
   to measure what a shopper is served.
 */
 const BROWSER = {
-  accept: "application/json, text/plain, */*",
-  "accept-language": "ar,en;q=0.9",
-  "cache-control": "no-cache",
+  /*
+    A BROWSER'S HEADERS, AND A BROWSER'S ACCEPT.
+
+    `accept: application/json` from a runner was answered with Cloudflare's
+    «Just a moment...» challenge page under a 403. `scripts/page-smoke.mjs`
+    already documents the same shield on this origin — "the first `/policy`
+    fetch of the previous run came back 403 and the same URL answered 200
+    three seconds later" — and gets through by asking for HTML with a phone's
+    user agent. The route does not content-negotiate, so it answers JSON
+    either way; only the shield reads these.
+  */
+  accept: "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+  "accept-language": "ar,en;q=0.8",
   "user-agent":
-    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+    "Mozilla/5.0 (Linux; Android 13; SM-G991B) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0 Mobile Safari/537.36",
+};
+
+const SHIELD = new Set([403, 429, 503]);
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
+/** One URL, retried only for the shield's own statuses, never for the app's. */
+const read = async (url) => {
+  for (let attempt = 1; attempt <= 5; attempt += 1) {
+    const res = await fetch(url, { headers: BROWSER });
+    if (res.ok) return res;
+    const body = await res.text().catch(() => "");
+    const challenged = SHIELD.has(res.status) && /just a moment|cf-browser|challenge/i.test(body);
+    say(
+      `- \`${url.replace(ORIGIN, "")}\` محاولة ${attempt} → **${res.status} ${res.statusText}**${challenged ? " — درع Cloudflare" : body ? ` — ${body.slice(0, 140).replace(/\s+/g, " ")}` : ""}`,
+    );
+    if (!SHIELD.has(res.status)) return null;
+    await sleep(attempt * 3000);
+  }
+  return null;
 };
 
 /* `?slim=1` first: the same prices, a fraction of the payload. */
-const ATTEMPTS = [`${ORIGIN}/api/data?slim=1`, `${ORIGIN}/api/data`];
 let doc = null;
-let served = "";
-for (const url of ATTEMPTS) {
-  const res = await fetch(url, { headers: BROWSER });
-  if (!res.ok) {
-    const body = await res.text().catch(() => "");
-    say(`- \`${url.replace(ORIGIN, "")}\` → **${res.status} ${res.statusText}**${body ? ` — ${body.slice(0, 200).replace(/\s+/g, " ")}` : " (بلا نص)"}`);
-    continue;
-  }
-  doc = await res.json();
-  served = url;
-  say(`- \`${url.replace(ORIGIN, "")}\` → **${res.status}** · \`x-catalog-version: ${res.headers.get("x-catalog-version") ?? "—"}\``);
-  break;
+for (const url of [`${ORIGIN}/api/data?slim=1`, `${ORIGIN}/api/data`]) {
+  const res = await read(url);
+  if (!res) continue;
+  say(
+    `- \`${url.replace(ORIGIN, "")}\` → **${res.status}** · \`x-catalog-version: ${res.headers.get("x-catalog-version") ?? "—"}\` · \`x-cache-status: ${res.headers.get("x-cache-status") ?? "—"}\``,
+  );
+  doc = await res.json().catch(() => null);
+  if (doc) break;
+  say(`  (رُدّ بنجاح لكن بغير JSON)`);
 }
 say();
 if (!doc) {
@@ -99,7 +124,6 @@ if (!doc) {
   rmSync(outfile, { force: true });
   process.exit(1);
 }
-void served;
 const store = doc?.store ?? doc;
 const products = Array.isArray(store?.products) ? store.products : [];
 say(`- منتجات يخدمها الموقع: **${products.length}**`);
