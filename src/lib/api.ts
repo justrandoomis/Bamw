@@ -124,6 +124,30 @@ async function attempt<T>(
   return data;
 }
 
+/**
+ * POSTs that must never be retried, and why each one is here.
+ *
+ * A timeout means the answer did not arrive. It does not mean the request did
+ * not happen — the server may have done the work and lost the reply. Retrying
+ * is therefore only safe where the second attempt cannot spend anything twice,
+ * and the rule was written with `/api/otp` alone in it while three other
+ * endpoints had grown the same problem.
+ *
+ * `/api/wheel`: a spin claims a ticket, and the claim carries no key the
+ * server could recognise a second time. A slow network on a spin costs the
+ * member a ticket they never watched being spent. (Buying tickets is safe —
+ * it sends a `requestId` — but the spin shares the route, and excluding the
+ * route is the honest boundary.)
+ *
+ * `/api/banana`: creating a market listing debits the seller's bananas and
+ * inserts a row, with no idempotency key anywhere on the path. A retry makes
+ * two listings and takes the bananas twice.
+ *
+ * Anything carrying an idempotency key — order creation does — is safe to
+ * retry and deliberately absent from this list.
+ */
+const NEVER_RETRY_POST = ["/api/otp", "/api/wheel", "/api/banana"];
+
 async function request<T>(url: string, init?: RequestInit, timeoutMs = 20000): Promise<T> {
   // A hung request must never leave the UI stuck on a loading screen,
   // but a single slow network hiccup should not fail the whole action either.
@@ -131,8 +155,8 @@ async function request<T>(url: string, init?: RequestInit, timeoutMs = 20000): P
     return await attempt<T>(url, init, timeoutMs);
   } catch (err) {
     if (err instanceof RequestTimeoutError && !init?.signal?.aborted) {
-      // Don't retry non-idempotent endpoints like OTP
-      if (url.includes("/api/otp") && init?.method === "POST") {
+      const method = String(init?.method ?? "GET").toUpperCase();
+      if (method === "POST" && NEVER_RETRY_POST.some((path) => url.includes(path))) {
         throw err;
       }
       return await attempt<T>(url, init, timeoutMs);
@@ -140,6 +164,9 @@ async function request<T>(url: string, init?: RequestInit, timeoutMs = 20000): P
     throw err;
   }
 }
+
+/** Exported for the test that holds this list to its reasons. */
+export const __NEVER_RETRY_POST = NEVER_RETRY_POST;
 
 export const api = {
   fetch: <T = any>(url: string, init?: RequestInit, timeoutMs = 20000) =>
