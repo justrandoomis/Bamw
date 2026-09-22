@@ -478,11 +478,35 @@ if (reports.length) {
   Report only. Nothing here is changed by this script, and the fields it names
   are outside the three it may write.
 */
-const CURRENCY = /(?:¥|CNY|RMB|人民币)\s*\d/i;
+/*
+  A supplier's price, and not a product's own.
+
+  The first sweep matched any yuan mark and reported 240 hits. Nearly all of
+  them were the Nintendo eShop Japan Gift Card's own denominations — `¥500`,
+  `¥1,000`, `Japan Nintendo eShop balance ¥2,500` — which is what the customer
+  is buying, printed exactly where it should be. Reporting those as a
+  disclosure was wrong, and a report that cries wolf about a product's own
+  price is worse than no report.
+
+  The supplier prices this shop actually pays are in yuan and to the fen:
+  `¥8.76`, `¥14.64`, `¥11.7`, `¥7.78`. A decimal fraction is what separates
+  them from a gift card's denomination, which is always round. So a fraction
+  is the test, and the round ones are counted separately and named for what
+  they almost certainly are.
+
+  A supplier price that happened to be round would be missed. That is the
+  trade, it is stated in the report, and the alternative — reporting every
+  yen figure in a Japanese gift card as a leak — hides the real ones in a
+  list nobody will read to the end.
+*/
+const SUPPLIER_PRICE = /(?:¥|￥)\s*\d+\.\d|(?:CNY|RMB|人民币)\s*\d/i;
+const DENOMINATION = /(?:¥|￥)\s*[\d,]+/;
 const publicLeaks = [];
+let denominations = 0;
 const walk = (node, path, into) => {
   if (typeof node === "string") {
-    if (CURRENCY.test(node)) into.push({ path, value: node.slice(0, 160) });
+    if (SUPPLIER_PRICE.test(node)) into.push({ path, value: node.slice(0, 160) });
+    else if (DENOMINATION.test(node)) denominations += 1;
     return;
   }
   if (Array.isArray(node)) {
@@ -512,6 +536,12 @@ if (publicLeaks.length) {
   say(`## A supplier's price still reaching a customer, elsewhere in the record`);
   say();
   say(`Reported only. These fields are outside the three this script may write.`);
+  say();
+  say(
+    `Matched on a decimal fraction, because that is what separates a supplier's` +
+      ` price in yuan from a gift card's own denomination. A supplier price that` +
+      ` happened to be round would be missed.`,
+  );
   say();
   for (const row of publicLeaks.slice(0, 60)) {
     say(`- **${row.label}** \`${row.path}\` — ${row.value}`);
@@ -580,6 +610,9 @@ say(`  - moved to another console: **${platformMoves}**`);
 say(`  - renamed: **${renames}**`);
 say(`- supplier data taken out of a public name: **${leaks.length}**`);
 say(`- a supplier's price still reaching a customer elsewhere: **${publicLeaks.length}**`);
+say(
+  `  - round yen figures, almost all a gift card's own denomination, not counted: **${denominations}**`,
+);
 say(`- corrections refused because they would collide: **${refused.length}**`);
 if (rescued.length) {
   say(
