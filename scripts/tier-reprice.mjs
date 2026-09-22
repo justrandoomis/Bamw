@@ -53,8 +53,7 @@ if (args.limit && args.limit !== "true") {
     process.exit(1);
   }
 }
-/* Large moves are HELD unless this run says otherwise — see section 5. */
-const INCLUDE_BIG_MOVES = args["include-big-moves"] === "true";
+
 
 const SECRETS = [process.env.CLOUDFLARE_API_TOKEN, process.env.CLOUDFLARE_ACCOUNT_ID].filter(
   (v) => v && v.length >= 8,
@@ -209,33 +208,59 @@ for (const product of products) {
   results.push({ product, result });
 }
 
-/* ----------------------------------------------------- the big-move hold */
+/* ------------------------------------------------- products with a bad cost */
 
 /*
-  A MOVE THIS LARGE IS A QUESTION ABOUT THE COST, AND IT IS NOT MINE TO ANSWER.
+  A LARGE MOVE IS NOT, BY ITSELF, A REASON TO HOLD.
 
-  Section 5 used to list these and then write them anyway — «كلها تمر من
-  البوابة» — which is a report pretending to be a gate. The owner's own words
-  on Super Smash Bros. Ultimate settled what they actually are: «السعر في
-  الsuper smash bros ultimate كان للاونلاين ، لكن التكلفه هي للاوفلاين». Its
-  online tier carries a cost of 1,750. The price of 32,000 is CORRECT; the
-  cost is not, and the rules were about to halve one of the shop's
-  best-known games on the strength of it, with every guard passing.
+  This ran for one iteration as a blanket hold on any move of 35% or 15,000
+  dinars, and the dry run showed what that actually caught: nine moves, of
+  which seven are the owner's own rules doing exactly what he asked for —
 
-  The ordering guard in `tierRepricing` cannot see it, and that is not a
-  fault in the guard: 1,750 is ABOVE Smash's own offline cost, so the two
-  numbers are in the right order and still the wrong numbers. No arithmetic
-  on a wrong cost produces a right price.
+    Paper Mario: The Origami King   20,000 → 12,000   «١٢ الف كحد اقصى في الالعاب القويه جدا»
+    Pokémon Pokopia (online)        65,000 → 46,000   «الربح 10 الف اقل شي و اعلى شي 15 الف»
+    DYNASTY WARRIORS (add-ons)      21,000 → 12,000   «تكون زياده ٢٠٠٠ فقط»
+    A Plague Tale (offline)          5,000 →  8,000   «الاسعار تبدأ من 7000 فما فوق»
+    Switch 2 Welcome Tour (online)   7,000 → 15,000   the online floor
 
-  So the threshold that already exists for review — 35%, or 15,000 dinars —
-  becomes the threshold for holding. The other 145 moves are written; these
-  are listed with their costs, and the owner decides. Nothing is invented:
-  the rule is unchanged, the held rows keep the price they have, and
-  `--include-big-moves` writes them once a cost has been checked.
+  Holding those would be refusing to do the thing that was asked, and keeping
+  margins far above the ceiling the owner set. The size of a move is a reason
+  to SHOW it, which section 5 does. It is not a reason to refuse it.
+
+  What is a reason to refuse is a COST that is known to be wrong, because no
+  arithmetic on a wrong cost produces a right price. There is exactly one such
+  product, and it is here because the owner said so, not because a threshold
+  inferred it.
+*/
+const COST_DISPUTED = [
+  {
+    match: /super\s*smash\s*bros/i,
+    why: "«السعر في الsuper smash bros ultimate كان للاونلاين ، لكن التكلفه هي للاوفلاين» — السعر الحالي صحيح، والتكلفة المسجّلة هي التي تحتاج تصحيحًا.",
+  },
+];
+
+const disputed = [];
+for (const { result } of results) {
+  const rule = COST_DISPUTED.find((row) => row.match.test(String(result.title ?? "")));
+  if (!rule) continue;
+  let held = 0;
+  for (const p of result.proposals) {
+    if (!p.changed) continue;
+    p.newPrice = p.oldPrice;
+    p.changed = false;
+    p.skipped = rule.why;
+    held += 1;
+  }
+  if (held) disputed.push({ result, why: rule.why, held });
+  result.changed = result.proposals.some((p) => p.changed);
+}
+
+/*
+  Reported all the same, because a move this size is the one an owner would
+  want to see before it happens even when the rules are right about it.
 */
 const BIG_MOVE_RATIO = 0.35;
 const BIG_MOVE_ABSOLUTE = 15_000;
-const BIG_MOVE_HOLD = `حركة كبيرة — راجع التكلفة أولًا (${Math.round(BIG_MOVE_RATIO * 100)}% أو ${money(BIG_MOVE_ABSOLUTE)})`;
 const bigMoves = [];
 for (const { result } of results) {
   for (const p of result.proposals) {
@@ -246,19 +271,7 @@ for (const { result } of results) {
     const delta = Math.abs(to - from);
     if (delta < BIG_MOVE_ABSOLUTE && delta / from < BIG_MOVE_RATIO) continue;
     bigMoves.push({ result, p, delta, ratio: delta / from, proposed: to });
-    if (INCLUDE_BIG_MOVES) continue;
-    /*
-      Held in place: the proposal keeps the price the product already has, so
-      every downstream reader — section 4, the gate, the write, the digest —
-      sees a row that does not move, with no second list to keep in step.
-    */
-    p.newPrice = p.oldPrice;
-    p.changed = false;
-    p.skipped = BIG_MOVE_HOLD;
   }
-}
-for (const { result } of results) {
-  result.changed = result.proposals.some((p) => p.changed);
 }
 bigMoves.sort((a, b) => b.ratio - a.ratio);
 
@@ -435,20 +448,14 @@ say();
 */
 const outliers = bigMoves;
 
-say(
-  INCLUDE_BIG_MOVES
-    ? `## 5. حركات كبيرة — ستُكتب (\`--include-big-moves\`)`
-    : `## 5. حركات كبيرة — محجوزة، لم تُكتب`,
-);
+say(`## 5. حركات كبيرة — ستُكتب، وهذه تكاليفها`);
 say();
 say(
   `الشرط: تغيّر ${Math.round(BIG_MOVE_RATIO * 100)}% أو أكثر، أو ${money(BIG_MOVE_ABSOLUTE)} دينار أو أكثر.`,
 );
 say();
 say(
-  INCLUDE_BIG_MOVES
-    ? `هذا التشغيل يكتبها بناءً على \`--include-big-moves\`.`
-    : `القاعدة تمرّ عليها، لكن حركة بهذا الحجم سؤال عن **التكلفة** لا عن السعر: سعر Super Smash Bros. Ultimate صحيح والتكلفة المسجّلة (1,750) هي تكلفة الأوفلاين. لذلك تبقى هذه الأسعار كما هي حتى تُراجَع تكلفتها، وبقية الحركات تُكتب. بعد إصلاح التكلفة أعد التشغيل، أو استخدم \`--include-big-moves\` لاعتمادها كما هي.`,
+  `كلها تطبيق مباشر لقواعدك: سقف 12,000 للألعاب القوية، وربح الأونلاين بين 10 و15 ألفًا، وزيادة الإضافات من فرق التكلفة، وأقل ربح 5,000 فوق تكلفة 2,000. حجم الحركة سبب لعرضها عليك، لا سبب لرفضها. التكاليف الكاملة تحتها لتراجعها — وإن كانت تكلفة أيٍّ منها خاطئة، قل لي وأُوقفه كما أوقفت Super Smash Bros. Ultimate.`,
 );
 say();
 if (!outliers.length) {
@@ -456,12 +463,12 @@ if (!outliers.length) {
 } else {
   say(`عددها: **${outliers.length}**`);
   say();
-  say(`| المنتج | الطبقة | اسم الطبقة | التكلفة | السعر الآن | القاعدة تقترح | التغيّر | الحالة |`);
-  say(`| --- | --- | --- | --- | --- | --- | --- | --- |`);
+  say(`| المنتج | الطبقة | اسم الطبقة | التكلفة | السعر الآن | القاعدة تقترح | التغيّر |`);
+  say(`| --- | --- | --- | --- | --- | --- | --- |`);
   for (const row of outliers.slice(0, 40)) {
     const direction = row.proposed > row.p.oldPrice ? "▲" : "▼";
     say(
-      `| ${label(row.result)} | \`${row.p.kind}\` | ${tierName(row.p)} | ${money(row.p.cost)} | ${money(row.p.oldPrice)} | **${money(row.proposed)}** | ${direction} ${Math.round(row.ratio * 100)}% | ${INCLUDE_BIG_MOVES ? "ستُكتب" : "محجوزة"} |`,
+      `| ${label(row.result)} | \`${row.p.kind}\` | ${tierName(row.p)} | ${money(row.p.cost)} | ${money(row.p.oldPrice)} | **${money(row.proposed)}** | ${direction} ${Math.round(row.ratio * 100)}% |`,
     );
   }
   if (outliers.length > 40) say(`| … | ${outliers.length - 40} أخرى | | | | |`);
@@ -495,6 +502,27 @@ if (!outliers.length) {
         `| \`${p.kind}\` | ${tierName(p)} | ${money(p.cost)} | ${money(p.oldPrice)} | ${money(Number(p.oldPrice) - Number(p.cost))} |`,
       );
     }
+  }
+}
+say();
+
+say(`## 5ب. تكلفة أكّدتَ أنها خاطئة — لم تُمَس`);
+say();
+if (!disputed.length) {
+  say(`لا شيء.`);
+} else {
+  for (const row of disputed) {
+    say(`**${label(row.result)}** — ${row.held} طبقة بقيت كما هي.`);
+    say();
+    say(`> ${row.why}`);
+    say();
+    say(`| الطبقة | اسمها | التكلفة المسجّلة | السعر (بقي) |`);
+    say(`| --- | --- | --- | --- |`);
+    for (const p of row.result.proposals) {
+      say(`| \`${p.kind}\` | ${tierName(p)} | ${money(p.cost)} | ${money(p.oldPrice)} |`);
+    }
+    say();
+    say(`صحّح التكلفة في لوحة الإدارة، وسيصحّح التشغيل التالي السعر من تلقائه.`);
   }
 }
 say();
@@ -569,8 +597,9 @@ const digest = () => {
   say(`- منتجات تتحرك: **${moving.length}** من ${results.length} منتجًا يحمل طبقات`);
   say(`- طبقات تتحرك: **${payload.changes.length}**`);
   say(`- مجموع أسعارها قبل: **${money(before)}** → بعد: **${money(after)}** (${after >= before ? "+" : ""}${money(after - before)})`);
+  say(`- حركات كبيرة (ستُكتب، تكاليفها في القسم 5): **${outliers.length}**`);
   say(
-    `- حركات كبيرة ${INCLUDE_BIG_MOVES ? "ستُكتب" : "**محجوزة** حتى تُراجع تكلفتها"}: **${outliers.length}**`,
+    `- طبقات محجوزة لأن تكلفتها موضع شك مؤكَّد منك: **${disputed.reduce((n, d) => n + d.held, 0)}** في ${disputed.length} منتجًا`,
   );
   say(`- طبقات أونلاين بتكلفة تبدو للأوفلاين (لم تُسعَّر): **${suspectCosts.length}**`);
   say(`- طبقات لم تُعرَف ولن تُمَس: **${unknownTiers}**`);

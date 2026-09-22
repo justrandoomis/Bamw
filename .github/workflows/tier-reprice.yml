@@ -21,10 +21,6 @@ on:
         description: "Stop after this many products that move (0 = no limit)"
         type: string
         default: "0"
-      include_big_moves:
-        description: "Also write the large moves (35%+ or 15,000+). Only after their COST has been checked."
-        type: boolean
-        default: false
   push:
     branches: [claude/gaming-platform-issues-keb1be]
     paths:
@@ -74,13 +70,11 @@ jobs:
           APPLY_INPUT: ${{ inputs.apply }}
           ONLY: ${{ inputs.only }}
           LIMIT: ${{ inputs.limit }}
-          BIG: ${{ inputs.include_big_moves }}
         run: |
           FLAGS=""
           if [ "$APPLY_INPUT" = "APPLY" ]; then FLAGS="$FLAGS --apply"; fi
           if [ -n "$ONLY" ]; then FLAGS="$FLAGS --only=$ONLY"; fi
           if [ -n "$LIMIT" ] && [ "$LIMIT" != "0" ]; then FLAGS="$FLAGS --limit=$LIMIT"; fi
-          if [ "$BIG" = "true" ]; then FLAGS="$FLAGS --include-big-moves"; fi
           node scripts/tier-reprice.mjs --json=tier-reprice.json $FLAGS
       - name: Upload the report and the undo list
         if: always()
