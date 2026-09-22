@@ -259,7 +259,50 @@ if (!unknownNames.size) {
 }
 say();
 
-say(`## 3. ما سيتغيّر`);
+/*
+  Costs that look like they belong to another tier.
+
+  The owner on Super Smash Bros. Ultimate: «السعر كان للاونلاين، لكن التكلفه
+  هي للاوفلاين». An online account costs MORE than the offline one, so a cost
+  at or below the offline tier's is not this tier's own — and the rules now
+  refuse to price from it.
+
+  Refusing is only half the job. The COST is what is wrong, and only the owner
+  can put it right, so every one is named here with both numbers side by side.
+  Fix the cost and the price follows on the next run.
+*/
+const suspectCosts = [];
+for (const { result } of results) {
+  for (const p of result.proposals) {
+    if (!p.skipped || !String(p.skipped).includes("تكلفة الأوفلاين")) continue;
+    const base = result.proposals.find((row) => row.kind === "offline_base");
+    suspectCosts.push({ result, p, baseCost: base ? base.cost : 0 });
+  }
+}
+
+say(`## 3. تكاليف تبدو موضوعة في الطبقة الخطأ`);
+say();
+say(
+  `حساب الأونلاين يكلّف أكثر من الأوفلاين. تكلفة أونلاين أقل من أو تساوي تكلفة الأوفلاين ليست تكلفة هذه الطبقة — لم تُسعَّر، وتحتاج إصلاح التكلفة لا السعر.`,
+);
+say();
+if (!suspectCosts.length) {
+  say(`لا شيء.`);
+} else {
+  say(`عددها: **${suspectCosts.length}**`);
+  say();
+  say(`| المنتج | الطبقة | تكلفة الأوفلاين | التكلفة المسجّلة هنا | السعر الحالي (لم يُمَس) |`);
+  say(`| --- | --- | --- | --- | --- |`);
+  for (const row of suspectCosts.slice(0, 40)) {
+    say(
+      `| ${String(row.result.title).slice(0, 34)} | \`${row.p.kind}\` | ${money(row.baseCost)} | **${money(row.p.cost)}** | ${money(row.p.oldPrice)} |`,
+    );
+  }
+  if (suspectCosts.length > 40) say(`| … | ${suspectCosts.length - 40} أخرى | | | |`);
+}
+say();
+
+say(`## 4. ما سيتغيّر`);
 say();
 if (!moving.length) {
   say(`لا شيء. كل الطبقات داخل قواعد المالك أصلًا.`);
@@ -307,7 +350,7 @@ for (const { result } of moving) {
 }
 outliers.sort((a, b) => b.ratio - a.ratio);
 
-say(`## 4. حركات كبيرة — راجع التكلفة قبل اعتمادها`);
+say(`## 5. حركات كبيرة — راجع التكلفة قبل اعتمادها`);
 say();
 say(
   `الشرط: تغيّر ${Math.round(BIG_MOVE_RATIO * 100)}% أو أكثر، أو ${money(BIG_MOVE_ABSOLUTE)} دينار أو أكثر. كلها تمر من البوابة — هذه ملاحظة على التكلفة لا على القاعدة.`,
@@ -401,6 +444,7 @@ const digest = () => {
   say(`- طبقات تتحرك: **${payload.changes.length}**`);
   say(`- مجموع أسعارها قبل: **${money(before)}** → بعد: **${money(after)}** (${after >= before ? "+" : ""}${money(after - before)})`);
   say(`- حركات كبيرة تستحق مراجعة التكلفة: **${outliers.length}**`);
+  say(`- طبقات أونلاين بتكلفة تبدو للأوفلاين (لم تُسعَّر): **${suspectCosts.length}**`);
   say(`- طبقات لم تُعرَف ولن تُمَس: **${unknownTiers}**`);
 };
 
@@ -496,7 +540,7 @@ for (const [id, perTier] of wanted) {
 const overlayWrites = [...wanted.keys()].filter((id) => overlayIds.has(id));
 const chunkWrites = [...wanted.keys()].filter((id) => !overlayIds.has(id));
 
-say(`## 5. الكتابة`);
+say(`## 6. الكتابة`);
 say();
 say(`- عبر صفوف \`store:product:<id>\`: **${overlayWrites.length}**`);
 say(`- عبر كتل الكتالوج: **${chunkWrites.length}**`);

@@ -469,3 +469,79 @@ describe("an online add-ons edition is never cheaper than the plain one", () => 
     expect(tierProblem(bad, result)).toContain("لا يزيد على العادي");
   });
 });
+
+/*
+  «السعر في الsuper smash bros ultimate كان للاونلاين ، لكن التكلفه هي
+  للاوفلاين» — the owner, on the largest move the first dry run proposed.
+*/
+describe("an online tier carrying the offline account's cost", () => {
+  it("is held, not priced — the real Super Smash Bros. Ultimate numbers", () => {
+    /*
+      Its online tier records a cost of 1,750. That is an offline cost in the
+      online tier's field. The PRICE of 32,000 is correct.
+
+      Left to the band, 1,750 + a 10,000 floor gives 16,000 and every guard
+      passes, because a 10,000 margin over 1,750 is a perfectly legal answer
+      to the wrong question. A correct price halved on the strength of a wrong
+      number is the exact failure «الدقه اهم شي» is about.
+    */
+    const result = repriceTiers(
+      game([
+        { id: "offline_base", price: 12_000, cost: 2_000 },
+        { id: "online_base", price: 32_000, cost: 1_750 },
+        { id: "online_extras", price: 45_000, cost: 3_000 },
+      ]),
+    );
+
+    const online = at(result, "online_base")!;
+    expect(online.newPrice).toBe(32_000);
+    expect(online.changed).toBe(false);
+    expect(online.skipped).toContain("تكلفة الأوفلاين");
+
+    // And the add-ons tier, whose 3,000 is also under the offline cost… no:
+    // 3,000 IS above 2,000, so it is priced. The rule is the ordering, not a
+    // guess at the amount, and it says nothing about a cost it cannot fault.
+    expect(at(result, "online_extras")?.skipped).toBeNull();
+  });
+
+  it("holds an online cost EQUAL to the offline one", () => {
+    const result = repriceTiers(
+      game([
+        { id: "offline_base", price: 8_000, cost: 2_000 },
+        { id: "online_base", price: 30_000, cost: 2_000 },
+      ]),
+    );
+    expect(at(result, "online_base")?.changed).toBe(false);
+    expect(at(result, "online_base")?.skipped).toBeTruthy();
+  });
+
+  it("prices an online tier whose cost is properly above the offline one", () => {
+    // The ordinary case must not be caught by the guard.
+    const result = repriceTiers(
+      game([
+        { id: "offline_base", price: 8_000, cost: 2_000 },
+        { id: "online_base", price: 20_000, cost: 16_000 },
+      ]),
+    );
+    expect(at(result, "online_base")?.newPrice).toBe(26_000);
+    expect(at(result, "online_base")?.skipped).toBeNull();
+  });
+
+  it("still prices an online tier when the product has no offline tier to compare with", () => {
+    /*
+      Nothing to check against is not the same as a fault. The guard is an
+      ordering test between two real numbers; with only one of them it has
+      nothing to say and must not invent a threshold.
+    */
+    const result = repriceTiers(game([{ id: "online_base", price: 20_000, cost: 16_000 }]));
+    expect(at(result, "online_base")?.newPrice).toBe(26_000);
+    expect(at(result, "online_base")?.skipped).toBeNull();
+  });
+
+  it("leaves the owner's worked example untouched, as it always did", () => {
+    // online 26,000 on cost 16,000, offline 8,000 on cost 2,000 — 16,000 > 2,000.
+    const result = repriceTiers(game(OWNERS_EXAMPLE));
+    expect(result.changed).toBe(false);
+    expect(at(result, "online_base")?.skipped).toBeNull();
+  });
+});

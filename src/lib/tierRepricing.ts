@@ -261,6 +261,36 @@ export function repriceTiers(product: {
       };
     }
 
+    /*
+      ONLINE, AND FIRST: is this cost even the online account's?
+
+      The owner, on Super Smash Bros. Ultimate: «السعر في الsuper smash bros
+      ultimate كان للاونلاين ، لكن التكلفه هي للاوفلاين». Its online tier
+      carries a cost of 1,750 — which is an offline cost, put in the online
+      tier's field. The price of 32,000 is correct; the cost is not.
+
+      Left alone, the band does what it is told and lands the price at 16,000:
+      a correct price halved on the strength of a wrong number, with every
+      guard passing, because a 10,000 margin over 1,750 is a perfectly legal
+      answer to the wrong question.
+
+      An online account costs MORE than the offline one — that is what makes
+      it the dearer tier. So a cost at or below the offline tier's cannot be
+      this tier's own, and a price computed from it is a guess. Held, and
+      reported, so the COST gets fixed and the price follows.
+
+      The test is the ordering, deliberately, and not a threshold on the
+      amount. «الدقه اهم شي», and "an online account should cost at least N"
+      would be a number I made up.
+    */
+    if (offlineBase && !tierSkip(offlineBase) && tier.cost <= offlineBase.cost) {
+      return held(
+        tier,
+        index,
+        `تكلفة الأونلاين ${tier.cost.toLocaleString("en-US")} ليست أعلى من تكلفة الأوفلاين ${offlineBase.cost.toLocaleString("en-US")} — تبدو تكلفة الأوفلاين وُضعت هنا`,
+      );
+    }
+
     // online_base and online_extras — the same band, «سواء كان عادي او مع الاضافات».
     const next = onlinePriceFor(tier.cost, tier.price);
     return {
