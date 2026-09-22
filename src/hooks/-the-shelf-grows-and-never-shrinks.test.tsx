@@ -50,12 +50,14 @@ function Shelf({
   items,
   initial = 5,
   step = 3,
+  resetKey = "nintendo_games|newest|all|all",
 }: {
   items: string[];
   initial?: number;
   step?: number;
+  resetKey?: string;
 }) {
-  const { visible, sentinelRef, done } = useProgressiveList(items, { initial, step });
+  const { visible, sentinelRef, done } = useProgressiveList(items, { initial, step, resetKey });
   return (
     <div>
       <p data-testid="count">{visible.length}</p>
@@ -143,14 +145,48 @@ describe("a shelf that grows a screenful at a time", () => {
     expect(count()).toBe(14);
   });
 
-  it("starts again at the top when the shelf itself changes", () => {
+  it("survives a refetch that hands it a brand-new array for the same shelf", () => {
+    /*
+      The regression this hook was written to prevent, and which its first
+      version would itself have caused.
+
+      `useStoreData` answers more than once per visit by design: the device's
+      snapshot paints first, the network's payload replaces it, and a window
+      focus or the fifteen-second staleness refetches again. Every one of
+      those hands the route a DIFFERENT array holding the same shelf. Keying
+      the reset on array identity threw a member who was 800 cards down back
+      to the first page a second after they started scrolling — which is
+      «تحمل المنتجات من جديد» word for word, the fault this window exists to
+      fix. Caught by an adversarial reviewer's probe, not by me.
+
+      The shelf is the category, the sort and the filters. A refetch changes
+      none of them.
+    */
     const { rerender } = render(<Shelf items={list(1714)} />);
+    reach();
+    reach();
+    reach();
+    expect(count()).toBe(14);
+
+    // Same shelf, new array — a refetch, or the snapshot giving way to the network.
+    rerender(<Shelf items={list(1714)} />);
+    expect(count()).toBe(14);
+
+    // And again, with a catalogue that genuinely grew by one product.
+    rerender(<Shelf items={[...list(1714), "a1714"]} />);
+    expect(count()).toBe(14);
+  });
+
+  it("starts again at the top when the shelf itself changes", () => {
+    const { rerender } = render(
+      <Shelf items={list(1714)} resetKey="nintendo_games|newest|all|all" />,
+    );
     reach();
     reach();
     expect(count()).toBe(11);
 
-    // A new sort or filter rebuilds the array: a different shelf, from the top.
-    rerender(<Shelf items={list(1714, "b")} />);
+    // A new sort, a new filter, a new category: a different shelf, from the top.
+    rerender(<Shelf items={list(1714, "b")} resetKey="nintendo_games|price_asc|all|all" />);
     expect(count()).toBe(5);
     expect(screen.getByTestId("last").textContent).toBe("b4");
   });

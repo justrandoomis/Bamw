@@ -1,20 +1,23 @@
 /**
  * «المحاذاة مكسورة على الشاشات الصغيرة».
  *
- * The chat is one 3,800-line component and its alignment was written with
- * physical CSS — `ml-auto`, `rounded-tr`, `left-3`. A physical property does
- * not mirror, so in Arabic the customer's own messages sat on the side their
- * writing starts from and the shop's sat opposite, with every bubble tail
- * pointing away from the bubble it belonged to. The file contradicted itself
- * in the same screen: the typing indicator used flexbox's logical
- * `justify-start` and landed on the other side from the incoming messages it
- * announces.
+ * A source audit rather than a render: these faults are class names, and a
+ * class name is exactly what a test can hold still.
  *
- * A source audit rather than a render: the fault is a class name, and a class
- * name is exactly what a test can hold still. Tailwind v4 ships the logical
- * utilities (`ms-`, `me-`, `ps-`, `pe-`, `start-`, `end-`, `text-start`,
- * `rounded-ss-`, `rounded-se-`), so there is no reason left to reach for a
- * physical one.
+ * TWO OF THESE TESTS USED TO SAY THE OPPOSITE, and the reversal is the point.
+ * This file once required the logical utilities everywhere — `ms-auto`,
+ * `rounded-se-` — reasoning that a member's own messages belong at "the side
+ * the reader finishes on", which under `dir="rtl"` is the LEFT. That is a
+ * coherent rule. It is not the shop's rule. The owner looked at the result and
+ * said «المرسل يجب أن يكون في اليمين والدعم في اليسار» — the sender on the
+ * right, the shop on the left — which is the arrangement their members already
+ * know from every messaging app they use, and which does not move with the
+ * language of the interface.
+ *
+ * So the side is now physical, decided once in src/lib/chatSides.ts, and these
+ * tests hold THAT. The rest of the file is unchanged: a property that already
+ * follows `dir` must not be flipped again on top, the header must fit a 360px
+ * phone, and a run of messages from one sender is one thought.
  */
 import { describe, expect, it } from "vitest";
 import { readFileSync } from "node:fs";
@@ -39,20 +42,26 @@ function linesMatching(pattern: RegExp): string[] {
 }
 
 describe("the conversation reads the same way round as the language", () => {
-  it("places a bubble with a logical margin, never a physical one", () => {
+  it("takes every bubble's side from the one shared rule", () => {
     /*
-      `ms-auto` is margin-inline-start, so «mine» is always the side the reader
-      finishes on. `ml-auto` is the physical left in both languages, which is
-      the bug.
+      Not "uses a physical class" — uses THE helper. The defect the owner
+      reported as «أحيانًا بعيدة عن الحافة» was three parts of the thread
+      each answering this question for themselves and two of them disagreeing,
+      so the test that matters is that nothing answers it locally any more.
     */
-    expect(chat).toContain('isMine ? "ms-auto me-0" : "me-auto ms-0"');
-    expect(linesMatching(/\b(ml-auto|mr-auto)\b/)).toEqual([]);
+    expect(chat).toContain('from "@/lib/chatSides"');
+    expect(linesMatching(/\b(ms-auto|me-auto)\b/)).toEqual([]);
+    expect(linesMatching(/isMine \? "items-end" : "items-start"/)).toEqual([]);
   });
 
-  it("draws a bubble tail on a logical corner, so it points at its own side", () => {
-    expect(chat).toContain("rounded-se-[4px]");
-    expect(chat).toContain("rounded-ss-[4px]");
-    expect(linesMatching(/\brounded-t[lr]-\[4px\]/)).toEqual([]);
+  it("draws a bubble tail on a physical corner, on the side the bubble is pinned to", () => {
+    /*
+      `rounded-ss-`/`rounded-se-` swap corners with the language while the
+      bubble no longer does, which would point every tail away from its own
+      speaker. `bubbleTail` returns `rounded-tr-`/`rounded-tl-`.
+    */
+    expect(chat).toContain("bubbleTail(");
+    expect(linesMatching(/\brounded-s[se]-\[4px\]/)).toEqual([]);
   });
 
   it("does not flip a property that already follows the direction", () => {

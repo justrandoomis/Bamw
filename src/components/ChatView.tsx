@@ -32,6 +32,7 @@ import {
   Sparkles,
   User,
   ArrowRight,
+  BookOpen,
   ArrowLeft,
   AlertCircle,
   RotateCcw,
@@ -49,6 +50,7 @@ import { useCurrency } from "@/context/CurrencyContext";
 import { useAuth } from "@/hooks/useAuth";
 import { useChatRealtime } from "@/hooks/useChatRealtime";
 import { api, uploadFileWithProgress, walletApi } from "@/lib/api";
+import { bubbleSide, bubbleTail } from "@/lib/chatSides";
 import { isVideoUrl } from "@/lib/uploads";
 import { supportAnswer, type SupportContext } from "@/lib/support";
 import { buildProductIndex, searchProducts } from "@/lib/search/products";
@@ -2221,6 +2223,28 @@ export default function ChatView({
 
         {/* Actions (Search + History) */}
         <div className="flex shrink-0 items-center gap-1.5">
+          {/*
+            The guides, one tap from the conversation that needs them.
+
+            A member being walked through signing in to a Nintendo account is
+            precisely the member who wants «شرح طرق تسجيل الدخول», and the only
+            way to reach it was to leave the order, find the menu and come back
+            — which on a phone means losing your place in a queue you are
+            watching. Quiet on purpose: the same size and weight as the search
+            and history buttons beside it, not a call to action.
+          */}
+          {isOrderMode && (
+            <a
+              href="/account_guides"
+              target="_blank"
+              rel="noopener noreferrer"
+              title={tr("شرح الحسابات وطرق تسجيل الدخول")}
+              aria-label={tr("شرح الحسابات وطرق تسجيل الدخول")}
+              className="flex h-9 w-9 items-center justify-center rounded-full border border-white/30 bg-card/80 text-[var(--ink)] shadow-xs transition-colors hover:bg-[var(--surface-3)] cursor-pointer"
+            >
+              <BookOpen className="h-4 w-4" strokeWidth={1.75} aria-hidden="true" />
+            </a>
+          )}
           {isHumanChat && (
             <button
               onClick={() => setIsSearching(!isSearching)}
@@ -2652,9 +2676,16 @@ export default function ChatView({
                 <span className="h-4 w-4 animate-spin rounded-full border-2 border-[var(--ink)] border-t-transparent" />
                 <span>{tr("جاري تحميل المحادثة...")}</span>
               </div>
-              <div className="flex w-3/4 me-auto animate-pulse flex-col gap-2 rounded-2xl bg-black/5 p-4 dark:bg-white/5" />
-              <div className="flex w-2/3 ms-auto animate-pulse flex-col gap-2 rounded-2xl bg-amber-500/10 p-4" />
-              <div className="flex w-1/2 me-auto animate-pulse flex-col gap-2 rounded-2xl bg-black/5 p-4 dark:bg-white/5" />
+              {/* The placeholders stand where the messages they stand in for will. */}
+              <div
+                className={`flex w-3/4 ${bubbleSide(false)} animate-pulse flex-col gap-2 rounded-2xl bg-black/5 p-4 dark:bg-white/5`}
+              />
+              <div
+                className={`flex w-2/3 ${bubbleSide(true)} animate-pulse flex-col gap-2 rounded-2xl bg-amber-500/10 p-4`}
+              />
+              <div
+                className={`flex w-1/2 ${bubbleSide(false)} animate-pulse flex-col gap-2 rounded-2xl bg-black/5 p-4 dark:bg-white/5`}
+              />
             </div>
           ) : (
             messages.map((msg, index) => {
@@ -2683,22 +2714,20 @@ export default function ChatView({
                   animate={{ opacity: 1, y: 0 }}
                   key={msg.id}
                   /*
-                    Logical margins, not physical ones.
+                    Physical margins, and see src/lib/chatSides.ts for why.
 
-                    `ml-auto` pins a bubble to the *physical* right whatever the
-                    reading direction, so in Arabic the customer's own messages
-                    sat on the right — the side their own writing starts from —
-                    and the shop's sat on the left. The file even disagreed with
-                    itself: the typing indicator for those same incoming messages
-                    used flexbox's logical `justify-start` and landed on the
-                    opposite side from the bubbles it belongs to.
-
-                    `ms-auto` is margin-inline-start, so «mine» is always the end
-                    of the line the reader finishes on, in either language.
+                    This file previously argued itself into `ms-auto`, on the
+                    grounds that the member's own messages belong at "the end of
+                    the line the reader finishes on". In Arabic that is the
+                    LEFT, and the owner's instruction is the other one: «المرسل
+                    يجب أن يكون في اليمين والدعم في اليسار» — the sender on the
+                    right, whatever the language. Everything in the thread now
+                    takes its side from the one helper, so the bubbles, the
+                    typing indicator and the skeletons cannot disagree again.
                   */
-                  className={`flex w-fit max-w-full ${startsRun ? "mt-3" : "mt-0.5"} ${
-                    isMine ? "ms-auto me-0" : "me-auto ms-0"
-                  } ${isHighlighted ? "animate-pulse rounded-2xl ring-2 ring-amber-500 p-0.5" : ""}`}
+                  className={`flex w-fit max-w-full ${startsRun ? "mt-3" : "mt-0.5"} ${bubbleSide(
+                    isMine,
+                  )} ${isHighlighted ? "animate-pulse rounded-2xl ring-2 ring-amber-500 p-0.5" : ""}`}
                 >
                   {msg.type === "digital_order_card" && msg.payload ? (
                     <DigitalOrderCard
@@ -3009,16 +3038,22 @@ export default function ChatView({
                     </div>
                   ) : (
                     <div
-                      className={`flex max-w-[80%] flex-col gap-1 sm:max-w-[85%] ${
-                        isMine ? "items-end" : "items-start"
-                      }`}
+                      /*
+                        `items-end`/`items-start` are logical as well, so the
+                        timestamp under an Arabic bubble used to sit under the
+                        far corner of the bubble it belongs to. The children
+                        pin themselves physically instead.
+                      */
+                      className="flex max-w-[80%] flex-col gap-1 sm:max-w-[85%]"
                     >
                       <div
                         dir="auto"
-                        className={`overflow-hidden break-words whitespace-pre-wrap rounded-2xl px-3 py-2 text-[13.5px] font-medium leading-[1.45] shadow-xs sm:px-4 sm:py-2.5 sm:text-[14.5px] ${
+                        className={`overflow-hidden break-words whitespace-pre-wrap rounded-2xl px-3 py-2 text-[13.5px] font-medium leading-[1.45] shadow-xs sm:px-4 sm:py-2.5 sm:text-[14.5px] ${bubbleSide(
+                          isMine,
+                        )} ${startsRun ? bubbleTail(isMine) : ""} ${
                           isMine
-                            ? `bg-[var(--ink)] text-[var(--surface-2)] ${startsRun ? "rounded-se-[4px]" : ""}`
-                            : `border border-white/50 bg-card/85 text-[var(--ink)] backdrop-blur-xs ${startsRun ? "rounded-ss-[4px]" : ""}`
+                            ? "bg-[var(--ink)] text-[var(--surface-2)]"
+                            : "border border-white/50 bg-card/85 text-[var(--ink)] backdrop-blur-xs"
                         }`}
                       >
                         {msg.sender === "ai" ? (
@@ -3043,7 +3078,11 @@ export default function ChatView({
                         is the thing anybody actually wants to know.
                       */}
                       {endsRun && (
-                        <div className="flex items-center gap-1 px-1 text-[10px] text-[var(--muted-ink)]">
+                        <div
+                          className={`flex w-fit items-center gap-1 px-1 text-[10px] text-[var(--muted-ink)] ${bubbleSide(
+                            isMine,
+                          )}`}
+                        >
                           {msg.createdAt && (
                             <span>
                               {new Date(msg.createdAt).toLocaleTimeString("ar", {
@@ -3081,9 +3120,14 @@ export default function ChatView({
             <motion.div
               initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
-              className="mt-3 flex justify-start"
+              className="mt-3 flex"
             >
-              <div className="flex max-w-[85%] items-center gap-1.5 rounded-2xl rounded-ss-[4px] border border-white/50 bg-card/80 px-4 py-3 text-[var(--ink)] shadow-xs backdrop-blur-xs">
+              {/* The shop is typing, so it stands where the shop's bubbles do. */}
+              <div
+                className={`flex max-w-[85%] items-center gap-1.5 rounded-2xl ${bubbleTail(
+                  false,
+                )} ${bubbleSide(false)} border border-white/50 bg-card/80 px-4 py-3 text-[var(--ink)] shadow-xs backdrop-blur-xs`}
+              >
                 <span className="text-[12px] font-medium text-[var(--muted-ink)]">
                   {isAutomatedThread ? "المساعد الآلي يفكر" : "الدعم يكتب"}
                 </span>

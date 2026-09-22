@@ -7,6 +7,7 @@ import {
   Copy,
   Gamepad2,
   ImagePlus,
+  BookOpen,
   Send,
   ShieldCheck,
   Sparkles,
@@ -16,6 +17,7 @@ import { useEffect, useRef, useState } from "react";
 import { toast } from "sonner";
 
 import { api, fileToDataUrl } from "@/lib/api";
+import { bubbleSide } from "@/lib/chatSides";
 import { isAccountKind, type ChatMessage, type Order, type OrderItem } from "@/lib/types";
 import OrderReviewModal from "@/components/OrderReviewModal";
 import { AccountBatchPanel } from "@/components/admin/AccountBatchPanel";
@@ -24,9 +26,18 @@ function Bubble({ message, children }: { message: ChatMessage; children: React.R
   const mine = message.senderRole === "user";
   const system = message.senderRole === "system";
   return (
-    <div className={`flex ${mine ? "justify-end" : "justify-start"}`}>
+    /*
+      Physical sides — see src/lib/chatSides.ts. `justify-end` follows the
+      reading direction, so on this Arabic screen the member's own messages
+      sat on the LEFT and the shop's on the right, the wrong way round from
+      what the owner asked for and from what the same member sees in every
+      other messaging app.
+    */
+    <div className="flex">
       <div
-        className={`max-w-[85%] rounded-2xl px-4 py-3 text-sm leading-relaxed shadow-xs ${
+        className={`max-w-[85%] rounded-2xl px-4 py-3 text-sm leading-relaxed shadow-xs ${bubbleSide(
+          mine,
+        )} ${
           system
             ? "border border-amber-200 bg-amber-50 text-amber-900 dark:bg-amber-950/30 dark:text-amber-200 dark:border-amber-900/50"
             : mine
@@ -597,19 +608,42 @@ export default function OrderChat({
             · {order.paymentStatus === "paid" ? "مدفوع من المحفظة" : "بانتظار الدفع"}
           </p>
         </div>
-        <div className="text-left">
-          <p className="text-sm font-bold text-[var(--brand-red)]">
-            {order.total.toLocaleString()} {order.currency}
-          </p>
-          {isCompleted && (
-            <button
-              onClick={() => setShowReviewModal(true)}
-              className="mt-0.5 inline-flex items-center gap-1 text-[11px] font-bold text-amber-600 dark:text-amber-400 hover:underline"
+        <div className="flex items-center gap-2">
+          {/*
+            The guides, one tap away from the conversation that needs them.
+
+            A member being walked through signing in to a Nintendo account is
+            exactly the member who wants «شرح طرق تسجيل الدخول», and the only
+            way to reach it was to leave the order, find the menu and come
+            back. Small and quiet on purpose — it sits beside the total, not
+            in front of it.
+          */}
+          {!isAdmin && (
+            <a
+              href="/account_guides"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="شرح الحسابات وطرق تسجيل الدخول"
+              aria-label="شرح الحسابات وطرق تسجيل الدخول"
+              className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-border/70 bg-muted/40 text-muted-foreground transition-colors hover:border-[var(--brand-red)]/40 hover:bg-[var(--brand-red)]/10 hover:text-[var(--brand-red)]"
             >
-              <Star className="h-3 w-3 fill-current" />
-              <span>تقييم الطلب</span>
-            </button>
+              <BookOpen className="h-4 w-4" aria-hidden="true" />
+            </a>
           )}
+          <div className="text-left">
+            <p className="text-sm font-bold text-[var(--brand-red)]">
+              {order.total.toLocaleString()} {order.currency}
+            </p>
+            {isCompleted && (
+              <button
+                onClick={() => setShowReviewModal(true)}
+                className="mt-0.5 inline-flex items-center gap-1 text-[11px] font-bold text-amber-600 dark:text-amber-400 hover:underline"
+              >
+                <Star className="h-3 w-3 fill-current" />
+                <span>تقييم الطلب</span>
+              </button>
+            )}
+          </div>
         </div>
       </div>
 

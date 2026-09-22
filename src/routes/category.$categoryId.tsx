@@ -349,6 +349,18 @@ function CategoryPage() {
   } = useProgressiveList(products, {
     initial: isNintendoGames ? 60 : 24,
     step: isNintendoGames ? 45 : 20,
+    /*
+      What counts as a DIFFERENT shelf — and nothing else does.
+
+      `products` is a fresh array every time the catalogue query answers, and
+      it answers on every visit: the device's snapshot paints first and the
+      network's replaces it, then a focus or the fifteen-second staleness
+      refetches again. Resetting on the array would throw a member who is 800
+      cards down back to the first sixty a second after they started
+      scrolling — «تحمل المنتجات من جديد» exactly, which is the fault this
+      window exists to fix.
+    */
+    resetKey: `${categoryId}|${sortBy}|${platform}|${selectedGenre}`,
   });
 
   return (

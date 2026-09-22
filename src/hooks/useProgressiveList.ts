@@ -34,7 +34,7 @@ export interface ProgressiveList<T> {
 
 export function useProgressiveList<T>(
   items: T[],
-  options?: { initial?: number; step?: number; rootMargin?: string },
+  options?: { initial?: number; step?: number; rootMargin?: string; resetKey?: string },
 ): ProgressiveList<T> {
   const initial = options?.initial ?? 48;
   const step = options?.step ?? 36;
@@ -49,15 +49,29 @@ export function useProgressiveList<T>(
   const [count, setCount] = useState(initial);
 
   /*
-    Reset on a NEW list. The route rebuilds `products` through a `useMemo`
-    keyed on the filters, so identity changes exactly when the shelf changes.
-    Done during render, not in an effect, so the first paint after a filter
-    change is already the first page — an effect would paint the old, longer
-    window for a frame first.
+    Reset on a NEW SHELF — never merely on a new array.
+
+    This first keyed the reset on the identity of `items`, and that was a bug
+    that would have reintroduced the very fault it was written to fix. The
+    route rebuilds `products` whenever the catalogue query answers, and the
+    catalogue query answers on every visit: `useStoreData` paints from the
+    device's snapshot first and then replaces it with the network's, and it
+    refetches on window focus and after fifteen seconds. Each of those hands
+    the route a different array holding the same shelf. A member 800 cards
+    down would have been thrown back to the first sixty — everything below
+    them unmounted — a second after they started scrolling. That is «تحمل
+    المنتجات من جديد», word for word, which is what the owner reported and
+    what this hook exists to stop.
+
+    So the caller says what a different shelf IS: the category, the sort and
+    the filters. A refetch does not change that string, and changing a filter
+    does. Done during render rather than in an effect, so the first paint
+    after a filter change is already the first page.
   */
-  const previousItems = useRef(items);
-  if (previousItems.current !== items) {
-    previousItems.current = items;
+  const resetKey = options?.resetKey ?? "";
+  const previousKey = useRef(resetKey);
+  if (previousKey.current !== resetKey) {
+    previousKey.current = resetKey;
     if (count !== initial) setCount(initial);
   }
 
