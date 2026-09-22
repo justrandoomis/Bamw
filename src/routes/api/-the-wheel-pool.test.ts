@@ -48,7 +48,13 @@ describe("the classifier really does default to game", () => {
 describe("so the wheel asks a second question", () => {
   it("refuses the kinds that are not a game whatever their category says", () => {
     expect(SOURCE).toContain("NOT_A_GAME");
-    expect(SOURCE).toMatch(/NOT_A_GAME\.has\(String\(product\["kind"\]/);
+    /*
+      Read with the whitespace collapsed. The guard is unchanged; the formatter
+      wrapped the expression across four lines when the file next changed, and
+      a source assertion that fails on a line break is testing the formatter
+      rather than the shop.
+    */
+    expect(SOURCE.replace(/\s+/g, "")).toContain('NOT_A_GAME.has(String(product["kind"]');
     for (const kind of [
       "hardware",
       "device",
