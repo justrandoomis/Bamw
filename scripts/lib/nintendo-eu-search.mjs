@@ -35,7 +35,7 @@
  * chain every other candidate goes through.
  */
 
-import { normalizeTitle } from "./nintendo-store.mjs";
+import { normalizeTitle, titleAlternatives } from "./nintendo-store.mjs";
 
 const ENDPOINT = "https://search.nintendo-europe.com/en/select";
 
@@ -64,31 +64,64 @@ export async function europeRows(title, fetchJson) {
   const bare = String(title ?? "")
     .replace(PLATFORM_BRACKET, "")
     .trim();
-  const wanted = normalizeTitle(bare);
-  if (!wanted) return { ok: false, reason: "no comparable title" };
-
-  const query = escapeSolr(bare).trim();
-  if (!query) return { ok: false, reason: "title has no searchable words" };
-
-  const url =
-    `${ENDPOINT}?q=${encodeURIComponent(query)}` +
-    `&fq=${encodeURIComponent("type:GAME AND *:*")}` +
-    `&rows=24&wt=json`;
-
-  const found = await fetchJson(url);
-  if (!found.ok) return { ok: false, reason: `search HTTP ${found.status ?? 0}` };
-
-  const docs = found.json?.response?.docs;
-  if (!Array.isArray(docs) || docs.length === 0) return { ok: false, reason: "no rows" };
+  if (!normalizeTitle(bare)) return { ok: false, reason: "no comparable title" };
 
   /*
-    Equality, not containment, and on the same normalisation the url-key path
-    uses. Relevance ranking is what makes a search dangerous here; an exact
-    title is the only thing worth acting on.
+    ONE SEARCH PER ALTERNATIVE, IN ORDER, AND THE FIRST THAT ANSWERS WINS.
+
+    «Pokémon Sword / Shield» is two games, and Europe has no row with that
+    exact title — so the whole row was refused with «no row with this exact
+    title» while both halves sat in the index.
+
+    Deliberately a loop and not one pooled search: pooling would put «Pokémon
+    Sword» and «Pokémon Shield» in `exact` together and trip the two-rows
+    refusal downstream, which reads several exact matches as an ambiguity it
+    must not guess at. Asked one at a time, each answer is unambiguous.
+
+    The whole title is always tried first, so nothing that resolves today stops
+    resolving, and the LAST failure's reason is what gets reported.
   */
-  const exact = docs.filter((row) => normalizeTitle(row?.title) === wanted);
-  if (exact.length === 0) return { ok: false, reason: "no row with this exact title" };
-  return { ok: true, rows: exact };
+  let lastReason = "no row with this exact title";
+  for (const candidate of titleAlternatives(bare)) {
+    const wanted = normalizeTitle(candidate);
+    if (!wanted) continue;
+
+    const query = escapeSolr(candidate).trim();
+    if (!query) {
+      lastReason = "title has no searchable words";
+      continue;
+    }
+
+    const url =
+      `${ENDPOINT}?q=${encodeURIComponent(query)}` +
+      `&fq=${encodeURIComponent("type:GAME AND *:*")}` +
+      `&rows=24&wt=json`;
+
+    const found = await fetchJson(url);
+    if (!found.ok) {
+      lastReason = `search HTTP ${found.status ?? 0}`;
+      continue;
+    }
+
+    const docs = found.json?.response?.docs;
+    if (!Array.isArray(docs) || docs.length === 0) {
+      lastReason = "no rows";
+      continue;
+    }
+
+    /*
+      Equality, not containment, and on the same normalisation the url-key path
+      uses. Relevance ranking is what makes a search dangerous here; an exact
+      title is the only thing worth acting on.
+    */
+    const exact = docs.filter((row) => normalizeTitle(row?.title) === wanted);
+    if (exact.length === 0) {
+      lastReason = "no row with this exact title";
+      continue;
+    }
+    return { ok: true, rows: exact };
+  }
+  return { ok: false, reason: lastReason };
 }
 
 /**
