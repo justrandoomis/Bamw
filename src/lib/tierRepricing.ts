@@ -34,6 +34,7 @@ import {
   dlcPriceFor,
   onlinePriceFor,
   repriceOne,
+  skipReason,
   ONLINE_MAX_MARGIN,
   ONLINE_MIN_MARGIN,
   type RepriceProduct,
@@ -110,7 +111,48 @@ export function repriceTiers(product: {
 }): TierRepriceResult {
   const tiers = classifyTiers(product.types);
   const offlineBase = tierOf(tiers, "offline_base");
-  const offlineExtras = tierOf(tiers, "offline_extras");
+
+  /*
+    IS THIS A GAME AT ALL? Asked once, for the whole product, before any tier
+    is priced.
+
+    This check used to reach only the plain offline tier, because it lives
+    inside `repriceOne` and only that branch called it. The online and add-ons
+    branches went straight to `onlinePriceFor` and `dlcPriceFor`. So a Nintendo
+    Switch 2 console — `kind: "hardware"`, an online tier at 300,000 on a cost
+    of 250,000 — was proposed at 265,000, because the online band says a profit
+    of 50,000 is too much. A thirty-five thousand dinar cut on a console, from
+    a module whose own documentation says it does not price hardware.
+
+    Found by an adversarial reviewer and reproduced before it was believed. It
+    is the exact shape of the owner's hard constraint: commercial data on
+    things that are not games is not this script's to touch.
+
+    `skipReason` also refuses gift cards, which are sold near face value, and
+    anything priced or costed above 100,000 — a device, not a game.
+  */
+  const productSkip = skipReason({
+    id: product.id,
+    title: product.title,
+    ...(product.kind !== undefined ? { kind: product.kind } : {}),
+    ...(product.schemaId !== undefined ? { schemaId: product.schemaId } : {}),
+    /*
+      A cost and a price that cannot themselves fail the check, because at the
+      product level there is no single one of either — a game has four. Only
+      the kind, the schema and the title decide anything here, and the
+      per-tier cost and price are checked by `tierSkip` below.
+    */
+    cost: 1,
+    price: 1,
+  });
+  if (productSkip) {
+    return {
+      id: product.id,
+      title: product.title,
+      proposals: tiers.map((tier, index) => held(tier, index, productSkip)),
+      changed: false,
+    };
+  }
 
   /*
     The plain offline price is computed FIRST and once, because the add-ons
@@ -173,7 +215,22 @@ export function repriceTiers(product: {
       if (!offlineBase || tierSkip(offlineBase)) {
         return held(tier, index, "لا توجد طبقة أوفلاين عادية تُبنى عليها");
       }
-      const gap = extrasCostGap(offlineBase, offlineExtras);
+      /*
+        THIS row's cost gap, not the first add-ons row's.
+
+        `tierOf` returns the first match, and this used to compute one gap
+        outside the loop and apply it to every add-ons row. A product with two
+        — a small add-on at cost 2,300 and the full edition at cost 12,000 —
+        priced BOTH from the first one's gap of 300, so the full edition came
+        out at 9,000 against a cost of 12,000. Three thousand dinars lost on
+        every sale, and the report would have printed the right cost beside
+        the wrong price.
+
+        The gate would have caught it (`price <= cost`) and stopped the run,
+        which is the gate earning its place — but a rule that has to be caught
+        by a gate is a broken rule.
+      */
+      const gap = extrasCostGap(offlineBase, tier);
       if (gap <= 0) {
         /*
           The add-ons cost the same as the plain edition, or less. That is a
@@ -254,13 +311,19 @@ export function tierProblem(proposal: TierProposal, result: TierRepriceResult): 
     if (margin > ONLINE_MAX_MARGIN) return `ربح الأونلاين ${margin} فوق ${ONLINE_MAX_MARGIN}`;
   }
 
-  if (proposal.kind === "offline_extras") {
-    /*
-      An add-ons edition priced at or below the plain one is the one shape of
-      this rule that would cost the shop money silently — the customer takes
-      the richer edition for the same money.
-    */
-    const base = result.proposals.find((p) => p.kind === "offline_base");
+  /*
+    An add-ons edition priced at or below its own plain edition is the one
+    shape of these rules that costs the shop money silently — the customer
+    takes the richer edition for the same money.
+
+    Checked for BOTH accounts. It used to be checked for the offline pair
+    only, and the online pair is priced by a band on the margin that knows
+    nothing about the other tier: an online add-ons edition whose cost is
+    close to the plain one's can land at or under it.
+  */
+  if (proposal.kind === "offline_extras" || proposal.kind === "online_extras") {
+    const plainKind = proposal.kind === "offline_extras" ? "offline_base" : "online_base";
+    const base = result.proposals.find((p) => p.kind === plainKind);
     if (base && !base.skipped && price <= Number(base.newPrice)) {
       return `سعر الإضافات ${price} لا يزيد على العادي ${base.newPrice}`;
     }

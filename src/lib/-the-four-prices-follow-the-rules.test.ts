@@ -350,3 +350,122 @@ describe("every add-ons price is a whole thousand", () => {
     }
   });
 });
+
+/*
+  Two faults an adversarial reviewer found in these rules, both reproduced
+  before they were believed, both mine. They are the reason this file exists.
+*/
+describe("things that are not games keep their prices", () => {
+  it("does not reprice a CONSOLE's online tier", () => {
+    /*
+      The worst of the two. `skipReason` — which refuses hardware, gift cards
+      and anything over 100,000 — lives inside `repriceOne`, and only the
+      plain offline branch called it. The online branch went straight to the
+      margin band, so a Nintendo Switch 2 at 300,000 on a cost of 250,000 was
+      proposed at 265,000: a thirty-five thousand dinar cut on a console, from
+      a module documented as not pricing hardware.
+    */
+    const result = repriceTiers({
+      id: "hw1",
+      title: "Nintendo Switch 2",
+      kind: "hardware",
+      types: [{ id: "online_base", price: 300_000, cost: 250_000 }],
+    });
+    expect(result.changed).toBe(false);
+    expect(result.proposals[0]?.newPrice).toBe(300_000);
+    expect(result.proposals[0]?.skipped).toBeTruthy();
+  });
+
+  it("does not reprice a gift card, which is sold near its face value", () => {
+    const result = repriceTiers({
+      id: "gc1",
+      title: "بطاقة شحن نينتندو 50 دولار",
+      kind: "game",
+      types: [
+        { id: "offline_base", price: 70_000, cost: 65_000 },
+        { id: "offline_extras", price: 75_000, cost: 68_000 },
+        { id: "online_base", price: 80_000, cost: 70_000 },
+      ],
+    });
+    expect(result.changed).toBe(false);
+    for (const proposal of result.proposals) {
+      expect(proposal.newPrice).toBe(proposal.oldPrice);
+      expect(proposal.skipped).toBeTruthy();
+    }
+  });
+
+  it("holds EVERY tier of an out-of-scope product, not just the offline one", () => {
+    // The shape of the bug: three of four tiers escaped the check.
+    const result = repriceTiers({
+      id: "hw2",
+      title: "Console bundle",
+      kind: "hardware",
+      types: [
+        { id: "offline_base", price: 200_000, cost: 150_000 },
+        { id: "offline_extras", price: 220_000, cost: 160_000 },
+        { id: "online_base", price: 240_000, cost: 180_000 },
+        { id: "online_extras", price: 260_000, cost: 190_000 },
+      ],
+    });
+    expect(result.proposals).toHaveLength(4);
+    expect(result.proposals.every((p) => p.skipped && !p.changed)).toBe(true);
+  });
+});
+
+describe("each add-ons row is priced from its OWN cost gap", () => {
+  it("does not price the second add-ons row from the first one's gap", () => {
+    /*
+      `tierOf` returns the FIRST match, and the gap was computed once outside
+      the loop. A game with a small add-on at cost 2,300 and a full edition at
+      cost 12,000 priced BOTH from the first gap of 300 — so the full edition
+      came out at 9,000 against a cost of 12,000. Three thousand dinars lost
+      on every sale.
+    */
+    const result = repriceTiers(
+      game([
+        { id: "offline_base", price: 8_000, cost: 2_000 },
+        { id: "offline_extras", name: "اوفلاين مع إضافة صغيرة", price: 9_000, cost: 2_300 },
+        {
+          id: "offline_extras_2",
+          name: "اوفلاين مع الاضافات الكاملة",
+          price: 20_000,
+          cost: 12_000,
+        },
+      ]),
+    );
+
+    const rows = result.proposals.filter((p) => p.kind === "offline_extras");
+    expect(rows).toHaveLength(2);
+
+    // Gap 300 → increase 1,000 → 9,000.
+    expect(rows[0]!.newPrice).toBe(9_000);
+    // Gap 10,000 → increase 12,000 → 20,000. NOT 9,000.
+    expect(rows[1]!.newPrice).toBe(20_000);
+
+    // And neither is ever priced below its own cost.
+    for (const row of rows) {
+      expect(row.newPrice, `${row.name}`).toBeGreaterThan(row.cost);
+      expect(tierProblem(row, result), `${row.name}`).toBeNull();
+    }
+  });
+});
+
+describe("an online add-ons edition is never cheaper than the plain one", () => {
+  it("is refused by the gate, the same as the offline pair", () => {
+    /*
+      The online tiers are priced by a band on the margin, and the band knows
+      nothing about the other tier — so when the two costs are close the
+      add-ons edition can land at or under the plain one. It was checked for
+      the offline pair only.
+    */
+    const result = repriceTiers(
+      game([
+        { id: "online_base", price: 30_000, cost: 16_000 },
+        { id: "online_extras", price: 30_000, cost: 16_000 },
+      ]),
+    );
+    const extras = result.proposals.find((p) => p.kind === "online_extras")!;
+    const bad = { ...extras, newPrice: 30_000 };
+    expect(tierProblem(bad, result)).toContain("لا يزيد على العادي");
+  });
+});

@@ -610,6 +610,18 @@ for (const [id, perTier] of wanted) {
 */
 const settled = afterList
   .filter((product) => Array.isArray(product?.["types"]) && product["types"].length > 0)
+  /*
+    Only the products THIS RUN was scoped to.
+
+    The gate re-runs the rules over the catalogue and fails if anything still
+    wants to move. Run against everything that is right; run with `--only` or
+    `--limit` it was certain to fail, because every product the flags excluded
+    still wants to move and always would. So `--apply --limit 5` would write
+    five products correctly, verify them, and then exit 1 — reporting a
+    successful write as a failure, which is the one thing a script that
+    touches prices must never do.
+  */
+  .filter((product) => wanted.has(String(product["id"] ?? "")))
   .map((product) =>
     app.repriceTiers({
       id: String(product["id"] ?? ""),
@@ -636,6 +648,8 @@ if (faults.length) {
 
 if (settled.length) {
   say(`## ما زال خارج القواعد بعد التطبيق — ${settled.length}`);
+  say();
+  say(`(من بين ${wanted.size} منتجًا كتبها هذا التشغيل)`);
   say();
   for (const result of settled.slice(0, 40)) {
     const which = result.proposals.filter((p) => p.changed).map((p) => p.kind).join(", ");
