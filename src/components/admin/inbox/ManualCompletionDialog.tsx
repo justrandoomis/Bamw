@@ -10,13 +10,33 @@ import { AlertTriangle, Loader2, ShieldCheck, X } from "lucide-react";
   down the phone has delivered the order, and the strict button will refuse
   it for the rest of that order's life.
 
-  So this asks for two things a misclick cannot produce — the order's own
-  code, typed out, and a written reason — and says plainly what the action
-  will and will not record.
+  It used to ask the admin to TYPE the order's code and then compose a reason
+  from nothing, and the owner asked for it to be «نعم أو لا». So it is: two
+  buttons, and nothing to type.
+
+  What was actually protective is kept. The dialog is still a deliberate
+  second action, not a one-tap button in a strip. The server still checks the
+  code against the order — the client sends the code it is already showing
+  instead of asking a human to copy it across, which tests the same thing and
+  tests it more reliably than a person retyping under time pressure. And a
+  reason is still recorded, prefilled with what this action IS and shown on
+  screen before «نعم» so nothing is written that the admin has not read; an
+  admin with more to say types over it.
+
+  What is not kept is the friction that was only friction.
 */
 
 export const MANUAL_REASON_MIN = 10;
 export const MANUAL_REASON_MAX = 500;
+
+/**
+ * What the audit records when the admin adds nothing of their own.
+ *
+ * True of every use of this door, long enough for the server's floor, and
+ * shown on screen before «نعم» — so it is a label for the action, not a
+ * sentence put into an admin's mouth.
+ */
+export const DEFAULT_MANUAL_REASON = "أكملت الإدارة الطلب يدوياً بعد تسليمه للعميل خارج الأداة.";
 
 export interface ManualCompletionDialogProps {
   isOpen: boolean;
@@ -39,18 +59,14 @@ export function ManualCompletionDialog({
   pendingCount,
   unmappedCount,
 }: ManualCompletionDialogProps) {
-  const [reason, setReason] = useState("");
-  const [confirmText, setConfirmText] = useState("");
+  const [reason, setReason] = useState(DEFAULT_MANUAL_REASON);
   const reasonRef = useRef<HTMLTextAreaElement | null>(null);
 
   // A fresh dialog every time: a reason typed for one order must never be
   // carried into the next one.
   useEffect(() => {
     if (!isOpen) return;
-    setReason("");
-    setConfirmText("");
-    const timer = setTimeout(() => reasonRef.current?.focus(), 60);
-    return () => clearTimeout(timer);
+    setReason(DEFAULT_MANUAL_REASON);
   }, [isOpen, orderCode]);
 
   useEffect(() => {
@@ -63,12 +79,15 @@ export function ManualCompletionDialog({
   }, [isOpen, isBusy, onClose]);
 
   const trimmedReason = reason.trim();
-  const reasonOk =
-    trimmedReason.length >= MANUAL_REASON_MIN && trimmedReason.length <= MANUAL_REASON_MAX;
-  // The server compares against the order code exactly; mirror it here rather
-  // than accepting something the server will then reject.
-  const codeOk = confirmText.trim() === orderCode;
-  const canConfirm = reasonOk && codeOk && !isBusy;
+  /*
+    An admin may clear the box; they may not send nothing. The recorded reason
+    falls back to the same default the box opened with, so the audit line is
+    never empty and never shorter than the server will take.
+  */
+  const recordedReason = (
+    trimmedReason.length >= MANUAL_REASON_MIN ? trimmedReason : DEFAULT_MANUAL_REASON
+  ).slice(0, MANUAL_REASON_MAX);
+  const canConfirm = !isBusy;
 
   const effect = useMemo(() => {
     const lines: string[] = [];
@@ -98,7 +117,7 @@ export function ManualCompletionDialog({
               <AlertTriangle className="h-4 w-4" />
             </div>
             <div className="min-w-0">
-              <h3 className="text-sm font-bold text-foreground">إكمال الطلب يدوياً</h3>
+              <h3 className="text-sm font-bold text-foreground">هل تريد إكمال الطلب يدوياً؟</h3>
               <p className="text-[11px] text-muted-foreground">
                 للطلبات التي سُلّمت خارج الأداة — #{orderCode}
               </p>
@@ -127,67 +146,60 @@ export function ManualCompletionDialog({
             ))}
           </div>
 
+          {/*
+            The reason is shown, not demanded. It opens with what this action
+            is, which is true of every use of this door and is what the audit
+            will carry — so an admin sees the line before they agree to it, and
+            one who has more to say types over it. Optional, because the owner
+            asked for نعم أو لا and a required essay is neither.
+          */}
           <label className="block space-y-1.5">
             <span className="text-[11px] font-bold text-foreground">
-              سبب الإكمال اليدوي (مطلوب)
+              السبب المسجَّل <span className="font-normal text-muted-foreground">(اختياري)</span>
             </span>
             <textarea
               ref={reasonRef}
               value={reason}
               onChange={(event) => setReason(event.target.value.slice(0, MANUAL_REASON_MAX))}
-              rows={3}
-              placeholder="مثال: أرسلت الكود للعميل عبر واتساب وأكد استلامه."
+              rows={2}
+              placeholder={DEFAULT_MANUAL_REASON}
               className="w-full resize-none rounded-xl border border-border bg-background px-3 py-2 text-xs leading-relaxed text-start outline-none focus:border-amber-500/60"
-            />
-            <span
-              className={`block text-[10px] font-bold ${
-                reasonOk ? "text-muted-foreground" : "text-amber-600 dark:text-amber-400"
-              }`}
-            >
-              {trimmedReason.length}/{MANUAL_REASON_MAX} — {MANUAL_REASON_MIN} أحرف على الأقل
-            </span>
-          </label>
-
-          <label className="block space-y-1.5">
-            <span className="text-[11px] font-bold text-foreground">
-              اكتب رقم الطلب <span className="font-mono">{orderCode}</span> للتأكيد
-            </span>
-            <input
-              dir="ltr"
-              value={confirmText}
-              onChange={(event) => setConfirmText(event.target.value)}
-              placeholder={orderCode}
-              autoComplete="off"
-              spellCheck={false}
-              className="w-full rounded-xl border border-border bg-background px-3 py-2 font-mono text-xs tracking-wide text-start outline-none focus:border-amber-500/60"
             />
           </label>
         </div>
 
-        <div className="flex shrink-0 items-center justify-between gap-3 border-t border-border bg-muted/20 p-4">
+        {/*
+          نعم or لا, and nothing to type.
+
+          The confirmation the server checks is the order's own code, and the
+          dialog has been showing it at the top the whole time — so it sends
+          that, rather than asking a human to copy a string from one line of
+          the same screen to another. The check the server performs is
+          unchanged.
+        */}
+        <div className="flex shrink-0 items-center gap-3 border-t border-border bg-muted/20 p-4">
           <button
             type="button"
             onClick={onClose}
             disabled={isBusy}
-            className="px-4 py-2 text-xs font-bold text-muted-foreground hover:text-foreground disabled:opacity-40 cursor-pointer"
+            className="flex-1 rounded-xl border border-border bg-background px-4 py-2.5 text-xs font-bold text-foreground hover:bg-muted disabled:opacity-40 cursor-pointer"
           >
-            إلغاء
+            لا
           </button>
           <button
             type="button"
             onClick={() =>
-              canConfirm &&
-              void onConfirm({ reason: trimmedReason, confirmText: confirmText.trim() })
+              canConfirm && void onConfirm({ reason: recordedReason, confirmText: orderCode })
             }
             disabled={!canConfirm}
-            className="inline-flex items-center gap-1.5 rounded-xl bg-amber-600 hover:bg-amber-700 px-5 py-2.5 text-xs font-bold text-white disabled:opacity-40 cursor-pointer"
+            className="inline-flex flex-1 items-center justify-center gap-1.5 rounded-xl bg-amber-600 hover:bg-amber-700 px-5 py-2.5 text-xs font-bold text-white disabled:opacity-40 cursor-pointer"
           >
             {isBusy ? (
               <Loader2 className="h-3.5 w-3.5 animate-spin" />
             ) : (
               <ShieldCheck className="h-3.5 w-3.5" />
             )}{" "}
-            تأكيد الإكمال اليدوي
+            نعم، أكمل الطلب
           </button>
         </div>
       </div>

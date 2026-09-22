@@ -665,21 +665,48 @@ describe("the strict door cannot grow a bypass", () => {
     expect(inboxView).toContain('action: "complete_digital_and_next"');
   });
 
-  it("asks for the order code and a reason before it will confirm", () => {
-    expect(manualDialog).toContain("MANUAL_REASON_MIN");
-    // The dialog mirrors the server rule rather than sending something the
-    // server will reject.
-    expect(manualDialog).toContain("confirmText.trim() === orderCode");
-    expect(manualDialog).toMatch(/canConfirm = reasonOk && codeOk/);
+  it("is a plain yes or no, and still cannot carry a credential", () => {
     /*
-      And it collects nothing but the reason and the code. The visible copy
-      does mention OTP — to say none was sent — so assert on the inputs, which
-      is the property that matters: no field here can carry a credential.
+      THIS TEST USED TO REQUIRE THE OPPOSITE, and the reversal is the owner's.
+
+      It demanded that the dialog make the admin TYPE the order's code and
+      compose a reason of at least ten characters, and that it refuse until
+      both were present. The owner asked for «نعم أو لا». So the typing is
+      gone, and what is asserted here is what was actually protective:
+
+        - the dialog is still a separate, deliberate step, not a button in a
+          strip — it renders and it asks;
+        - the confirmation the SERVER checks is unchanged. The client sends
+          the order code it has been displaying at the top of the dialog all
+          along, rather than asking a human to copy a string from one line of
+          one screen to another, which tests the same thing more reliably;
+        - a reason still reaches the audit, prefilled and visible before «نعم»
+          so nothing is recorded that the admin has not read, and never empty;
+        - and no field here can carry a credential. That is the guarantee this
+          door exists to keep, and it is the one thing that does not bend.
+    */
+    expect(manualDialog).toContain("نعم، أكمل الطلب");
+    expect(manualDialog).toContain(">\n            لا\n          </button>");
+    expect(manualDialog).toContain("confirmText: orderCode");
+    expect(manualDialog).toContain("DEFAULT_MANUAL_REASON");
+    expect(manualDialog).toContain("MANUAL_REASON_MIN");
+
+    // The server rule itself is untouched — the dialog cannot relax it.
+    expect(delivery).toContain(
+      'if (!confirmText || confirmText !== String(order.code ?? "").trim())',
+    );
+
+    /*
+      No credential, by construction. The visible copy does mention OTP — to
+      say that none was sent — so this asserts on the FIELDS, which is the
+      property that matters.
     */
     expect(manualDialog).not.toMatch(/type="password"/);
     const fields = manualDialog.match(/useState[^\n]*/g) || [];
     expect(fields.join("\n")).not.toMatch(/password|username|otp|code\b/i);
-    expect(manualDialog.match(/<input/g) || []).toHaveLength(1);
+    // One free-text box, for the reason, and no <input> at all any more.
+    expect(manualDialog.match(/<input/g) || []).toHaveLength(0);
+    expect(manualDialog.match(/<textarea/g) || []).toHaveLength(1);
   });
 
   it("keeps the manual function outside the slice the strict assertions read", () => {
