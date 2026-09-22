@@ -201,7 +201,17 @@ export async function buildMedia(
       of a search result.
     */
     if (euSearch && wanted.includes("nintendoCardImage")) {
-      const hit = await searchEuropeSquare(identity.title, identity.wantsSwitch2, euSearch);
+      const hit = await searchEuropeSquare(
+        identity.title,
+        identity.wantsSwitch2,
+        euSearch,
+        /*
+          Nintendo's own page for this row, when the sheet gave one. 346 of the
+          372 games still without a card carry it — the most widely held key
+          this shop has, and an exact pointer rather than a search term.
+        */
+        identity.officialStoreUrl,
+      );
       if (hit.ok) {
         const verdict = await validateCandidate(
           { url: hit.url, provenance: hit.provenance },

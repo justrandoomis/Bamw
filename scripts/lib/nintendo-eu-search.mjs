@@ -149,13 +149,116 @@ export async function searchEuropeGenerations(title, fetchJson) {
 }
 
 /**
+ * Nintendo's OWN page id for this row, taken from the store link the supplier
+ * sheet gave us.
+ *
+ * `https://www.nintendo.com/en-gb/Games/Nintendo-Switch-games/Pokemon-Scarlet-2179556.html`
+ * → `2179556`. Measured on `import-sources/catalogue.csv`: 1,469 of the 1,517
+ * rows with a store link end in one, and 346 of the games still missing a
+ * square card carry it.
+ */
+export function europeIdFromStoreUrl(storeUrl) {
+  const text = String(storeUrl ?? "");
+  if (!/nintendo\.com/i.test(text)) return "";
+  return text.match(/-(\d{5,9})\.html(?:[?#]|$)/)?.[1] ?? "";
+}
+
+/**
+ * The European row for Nintendo's own page id — identity without a title.
+ *
+ * THE POINT OF THIS. The title route has to refuse a great deal: a title that
+ * is not exactly equal, two rows sharing one title, a row on the other
+ * generation. Every one of those refusals is right, because a search ranks by
+ * relevance and relevance is how a game ends up wearing another game's art.
+ *
+ * The store link removes the search from the question. It is Nintendo's own
+ * URL for the exact row the importer matched, and the number at the end of it
+ * is Nintendo's own product id. A row whose `url` carries that id IS this
+ * game; there is nothing to rank and nothing to be wrong about.
+ *
+ * Two queries are tried because the index's field name for that id is not
+ * documented and this will not pretend to know it. Whichever query returns a
+ * row, the row is accepted ONLY when its own `url` ends in `-<id>.html`. So a
+ * query that matches for the wrong reason still cannot produce a wrong answer
+ * — the acceptance test is on the row, not on the query.
+ */
+export async function europeRowByStoreUrl(storeUrl, fetchJson) {
+  const id = europeIdFromStoreUrl(storeUrl);
+  if (!id) return { ok: false, reason: "no Nintendo page id in the store link" };
+
+  const wanted = new RegExp(`-${id}\\.html$`);
+  const queries = [
+    `${ENDPOINT}?q=${encodeURIComponent(id)}` +
+      `&fq=${encodeURIComponent("type:GAME AND *:*")}&rows=24&wt=json`,
+    `${ENDPOINT}?q=*%3A*` +
+      `&fq=${encodeURIComponent(`type:GAME AND url:*-${id}.html`)}&rows=8&wt=json`,
+  ];
+
+  let lastReason = "no row carries this Nintendo page id";
+  for (const url of queries) {
+    const found = await fetchJson(url);
+    if (!found.ok) {
+      lastReason = `search HTTP ${found.status ?? 0}`;
+      continue;
+    }
+    const docs = found.json?.response?.docs;
+    if (!Array.isArray(docs) || docs.length === 0) {
+      lastReason = "no rows";
+      continue;
+    }
+    /*
+      The acceptance test, and it is the whole guard: the row must be the page
+      the store link points at. Not similar to it, not ranked first for it.
+    */
+    const exact = docs.filter((row) => wanted.test(String(row?.url ?? "")));
+    if (exact.length === 1) return { ok: true, rows: exact };
+    if (exact.length > 1) {
+      lastReason = `${exact.length} rows share Nintendo's own page id`;
+      continue;
+    }
+  }
+  return { ok: false, reason: lastReason };
+}
+
+/**
  * The square art Nintendo Europe holds for this exact game, or null.
  *
  * @param title     the shelf title, bracket and all
  * @param wantTwo   true when this shop's line is a Switch 2 edition
  * @param fetchJson injected so the caller owns timeouts and retries
  */
-export async function searchEuropeSquare(title, wantTwo, fetchJson) {
+export async function searchEuropeSquare(title, wantTwo, fetchJson, storeUrl = "") {
+  /*
+    NINTENDO'S OWN PAGE FIRST, WHEN THE SHEET GAVE US ONE.
+
+    Measured on the live catalogue: 346 of the 372 games still without a square
+    card carry `officialStoreUrl`, against 3 with an nsuid and 0 with a product
+    code. It is by far the most widely held key this shop has, and it is an
+    exact pointer rather than a search term — so it goes ahead of the title,
+    for the same reason a url key goes ahead of a title everywhere else here.
+
+    A row found this way needs no generation filter and no
+    one-row-per-title rule: those exist to survive a relevance ranking, and
+    there is no ranking here. The id either names this row or it does not.
+  */
+  if (storeUrl) {
+    const byId = await europeRowByStoreUrl(storeUrl, fetchJson);
+    if (byId.ok) {
+      const row = byId.rows[0];
+      const square = String(row?.image_url_sq_s ?? "").trim();
+      if (square) {
+        return {
+          ok: true,
+          url: square.startsWith("//") ? `https:${square}` : square,
+          provenance:
+            `Nintendo of Europe, square key art from the store page the supplier sheet ` +
+            `names for this row — "${row.title}"`,
+          matchedTitle: String(row.title ?? ""),
+        };
+      }
+    }
+  }
+
   const found = await europeRows(title, fetchJson);
   if (!found.ok) return found;
   const exact = found.rows;
