@@ -574,6 +574,9 @@ const digest = () => {
   );
   say(`- طبقات أونلاين بتكلفة تبدو للأوفلاين (لم تُسعَّر): **${suspectCosts.length}**`);
   say(`- طبقات لم تُعرَف ولن تُمَس: **${unknownTiers}**`);
+  say(
+    `- منتجات تعرض سعرًا وتحاسب بآخر اليوم: **${aheadReport.length + brokenMirrorReport.length}** (منها **${aheadReport.length}** يصلحها هذا التشغيل)`,
+  );
 };
 
 if (!moving.length) {
@@ -586,6 +589,7 @@ if (!moving.length) {
 
 /* Named before the rehearsal fills it, because the report below reads it. */
 const brokenMirrorReport = [];
+const aheadReport = [];
 const titleOf = (id) => {
   const hit = moving.find(({ result }) => result.id === id);
   return hit ? label(hit.result) : id;
@@ -684,20 +688,45 @@ const numOf = (v) => {
 const mirrorsFor = (doc, changes) => {
   const scalars = new Map();
   const brokenMirrors = [];
+  const alreadyAhead = [];
   const offline = changes.find((c) => c.kind === "offline_base");
-  if (!offline) return { scalars, brokenMirrors };
+  if (!offline) return { scalars, brokenMirrors, alreadyAhead };
 
   for (const field of ["price", "accountPrice"]) {
     if (!(field in doc)) continue;
     const held = numOf(doc[field]);
     if (held === 0) continue; // never set; `readOffers` falls through to the next
-    if (held !== offline.oldPrice) {
-      brokenMirrors.push({ field, held, tier: offline.oldPrice });
+    if (held === offline.oldPrice) {
+      scalars.set(field, offline.newPrice);
       continue;
     }
-    scalars.set(field, offline.newPrice);
+    /*
+      ALREADY WHERE THE RULE IS GOING.
+
+      Measured on production, not assumed: on 40-odd of the moving products
+      this field ALREADY holds, to the dinar, the price these rules compute.
+      An earlier product-level repricing run wrote it and knew nothing about
+      `types`, so the page has been advertising the new, cheaper number while
+      the till went on charging the old one from the tier — Crash Bandicoot
+      shows 8,000 and bills 8,500; Donkey Kong Bananza shows 12,000 and bills
+      17,500.
+
+      There is nothing to write to the field and nothing to decide: the tier
+      is what is stale. Bringing `types` down to it ENDS an overcharge that is
+      live right now, and the customer sees no change at all, because the
+      number they were shown is the number they will finally be charged.
+
+      It is also the strongest evidence these rules are right that this task
+      has produced — they were derived from the owner's sentences, and they
+      reproduce a price a different run computed, on forty products, exactly.
+    */
+    if (held === offline.newPrice) {
+      alreadyAhead.push({ field, held, tier: offline.oldPrice });
+      continue;
+    }
+    brokenMirrors.push({ field, held, tier: offline.oldPrice, rule: offline.newPrice });
   }
-  return { scalars, brokenMirrors };
+  return { scalars, brokenMirrors, alreadyAhead };
 };
 
 /** The same four fields the rules saw, read off a raw row by the same function. */
@@ -825,11 +854,12 @@ for (const [id, changes] of wanted) {
     inconsistent in a way this run did not cause; adding a second disagreement
     on top would be guessing which of two numbers the owner meant.
   */
-  const { scalars, brokenMirrors } = mirrorsFor(source, changes);
+  const { scalars, brokenMirrors, alreadyAhead } = mirrorsFor(source, changes);
   if (brokenMirrors.length) {
     brokenMirrorReport.push({ id, title: titleOf(id), brokenMirrors });
     continue;
   }
+  if (alreadyAhead.length) aheadReport.push({ id, title: titleOf(id), alreadyAhead });
 
   const targets = resolveTargets(id, source, changes);
   const edit = { targets, variants: resolveVariants(source, changes), scalars };
@@ -911,20 +941,54 @@ for (const edit of plan.values()) {
 say(`- حقول \`price\`/\`accountPrice\` ستتحرك مع طبقتها: **${mirrorScalars}**`);
 say(`- صفوف \`variants\` ستتحرك مع طبقتها: **${mirrorVariantRows}**`);
 say(
-  `- منتجات **استُبعدت** لأن نسختها لا تطابق طبقتها أصلًا: **${brokenMirrorReport.length}**`,
+  `- منتجات **استُبعدت** لأن نسختها لا تطابق طبقتها ولا تطابق ما تقترحه القاعدة: **${brokenMirrorReport.length}**`,
+);
+say(
+  `- منتجات السعر المعروض فيها **يسبق** طبقاتها (يُعرض سعر ويُحاسَب آخر، الآن): **${aheadReport.length}**`,
 );
 say();
-if (brokenMirrorReport.length) {
-  say(`| المنتج | الحقل | القيمة المخزّنة | سعر طبقة الأوفلاين |`);
+
+if (aheadReport.length) {
+  say(`### السعر المعروض يسبق الطبقة — فرق يُحصّل اليوم`);
+  say();
+  say(
+    `هذه المنتجات يحمل حقلها \`price\`/\`accountPrice\` **نفس الرقم الذي تحسبه هذه القاعدة بالضبط**، بينما بقيت \`types\` على السعر القديم. تشغيل تسعير سابق حرّك سعر المنتج ولم يكن يعرف بالطبقات. النتيجة أن صفحة اللعبة تعرض السعر الجديد الأرخص، والسلة تحاسب بالسعر القديم الأغلى.`,
+  );
+  say();
+  say(`| المنتج | يُعرض | يُحاسَب اليوم | الفرق على كل عملية بيع |`);
   say(`| --- | --- | --- | --- |`);
+  let overcharge = 0;
+  for (const row of aheadReport.slice(0, 60)) {
+    const m = row.alreadyAhead[0];
+    const gap = Number(m.tier) - Number(m.held);
+    if (gap > 0) overcharge += gap;
+    say(
+      `| ${row.title} | ${money(m.held)} | ${money(m.tier)} | ${gap > 0 ? `+${money(gap)}` : money(gap)} |`,
+    );
+  }
+  if (aheadReport.length > 60) say(`| … | ${aheadReport.length - 60} أخرى | | |`);
+  say();
+  say(
+    `مجموع الفرق الذي يُحصَّل فوق السعر المعلن: **${money(overcharge)}** دينار على كل مجموعة مبيعات واحدة من هذه المنتجات. هذا التشغيل ينهيه: تنزل \`types\` إلى الرقم المعروض نفسه، فلا يرى الزبون أي تغيّر في السعر، ويدفع ما رآه.`,
+  );
+  say();
+}
+
+if (brokenMirrorReport.length) {
+  say(`### رقمان لا يتفقان، ولا أحدهما ما تقترحه القاعدة`);
+  say();
+  say(`| المنتج | الحقل | يُعرض | يُحاسَب | القاعدة تقترح |`);
+  say(`| --- | --- | --- | --- | --- |`);
   for (const row of brokenMirrorReport.slice(0, 40)) {
     for (const m of row.brokenMirrors) {
-      say(`| ${row.title} | \`${m.field}\` | ${money(m.held)} | ${money(m.tier)} |`);
+      say(
+        `| ${row.title} | \`${m.field}\` | ${money(m.held)} | ${money(m.tier)} | ${money(m.rule)} |`,
+      );
     }
   }
   say();
   say(
-    `هذه المنتجات غير متّسقة قبل هذا التشغيل، ولم يسبّبه. تُترك كما هي بالكامل — تصحيح السعر فيها يحتاج قرارك: أيّ الرقمين هو الصحيح.`,
+    `هذه أيضًا تعرض رقمًا وتحاسب بآخر اليوم، لكن الرقم المعروض ليس ما تقترحه القاعدة أيضًا — فثلاثة أرقام مختلفة، ولا يمكنني أن أختار بينها نيابةً عنك. تُركت كما هي بالكامل. قل لي أيّها الصحيح لكل واحد وأضبطه في التشغيل التالي.`,
   );
 } else {
   say(`كل النسخ متطابقة مع طبقاتها.`);
