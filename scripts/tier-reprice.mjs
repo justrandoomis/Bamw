@@ -145,6 +145,19 @@ const money = (n) => Number(n || 0).toLocaleString("en-US");
   row a reader would query was the one they could not identify. The tail of
   the id disambiguates when the visible names still collide.
 */
+/*
+  The tier's OWN name, beside its kind.
+
+  The report named the product and the kind but never the row, so «offline_base»
+  could be «اوفلاين عادي» or «النسخة الفاخرة Ultimate (خاص بالأوفلاين)» and the
+  owner could not tell which — which is exactly the pair that has to be told
+  apart, since the 12,000 ceiling belongs to one of them and not the other.
+*/
+const tierName = (p) => {
+  const name = String(p?.name ?? "").trim() || String(p?.id ?? "").trim();
+  return name.length > 34 ? `${name.slice(0, 33)}…` : name || "—";
+};
+
 const label = (result) => {
   const title = String(result?.title ?? "").trim();
   const id = String(result?.id ?? "");
@@ -390,13 +403,13 @@ say();
 if (!moving.length) {
   say(`لا شيء. كل الطبقات داخل قواعد المالك أصلًا.`);
 } else {
-  say(`| المنتج | الطبقة | التكلفة | من | إلى | الربح بعد | السبب |`);
-  say(`| --- | --- | --- | --- | --- | --- | --- |`);
+  say(`| المنتج | الطبقة | اسم الطبقة | التكلفة | من | إلى | الربح بعد | السبب |`);
+  say(`| --- | --- | --- | --- | --- | --- | --- | --- |`);
   for (const { product, result } of moving) {
     for (const p of result.proposals) {
       if (!p.changed) continue;
       say(
-        `| ${label(result)} | \`${p.kind}\` | ${money(p.cost)} | ${money(p.oldPrice)} | **${money(p.newPrice)}** | ${money(p.newPrice - p.cost)} | ${p.reason} |`,
+        `| ${label(result)} | \`${p.kind}\` | ${tierName(p)} | ${money(p.cost)} | ${money(p.oldPrice)} | **${money(p.newPrice)}** | ${money(p.newPrice - p.cost)} | ${p.reason} |`,
       );
     }
   }
@@ -443,12 +456,12 @@ if (!outliers.length) {
 } else {
   say(`عددها: **${outliers.length}**`);
   say();
-  say(`| المنتج | الطبقة | التكلفة | السعر الآن | القاعدة تقترح | التغيّر | الحالة |`);
-  say(`| --- | --- | --- | --- | --- | --- | --- |`);
+  say(`| المنتج | الطبقة | اسم الطبقة | التكلفة | السعر الآن | القاعدة تقترح | التغيّر | الحالة |`);
+  say(`| --- | --- | --- | --- | --- | --- | --- | --- |`);
   for (const row of outliers.slice(0, 40)) {
     const direction = row.proposed > row.p.oldPrice ? "▲" : "▼";
     say(
-      `| ${label(row.result)} | \`${row.p.kind}\` | ${money(row.p.cost)} | ${money(row.p.oldPrice)} | **${money(row.proposed)}** | ${direction} ${Math.round(row.ratio * 100)}% | ${INCLUDE_BIG_MOVES ? "ستُكتب" : "محجوزة"} |`,
+      `| ${label(row.result)} | \`${row.p.kind}\` | ${tierName(row.p)} | ${money(row.p.cost)} | ${money(row.p.oldPrice)} | **${money(row.proposed)}** | ${direction} ${Math.round(row.ratio * 100)}% | ${INCLUDE_BIG_MOVES ? "ستُكتب" : "محجوزة"} |`,
     );
   }
   if (outliers.length > 40) say(`| … | ${outliers.length - 40} أخرى | | | | |`);

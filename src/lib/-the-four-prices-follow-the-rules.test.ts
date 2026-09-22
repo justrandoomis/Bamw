@@ -713,3 +713,56 @@ describe("the account is recognised however it is spelled", () => {
     }
   });
 });
+
+describe("a deluxe edition is not the ordinary offline account", () => {
+  /*
+    The owner gave the 12,000 ceiling to «الحساب الاوفلاين العادي» — the
+    ORDINARY offline account — and to nothing else. The admin's own preset
+    writes «النسخة الفاخرة Ultimate (خاص بالأوفلاين)», which names the offline
+    account and carried no word this file called an add-on, so it was handed
+    the plain account's rules and an Ultimate edition at 30,000 came out at
+    12,000. `resolveTypeStandardDescription` has called that name the add-ons
+    edition all along.
+  */
+  const ultimate = { id: "t_ult", name: "النسخة الفاخرة Ultimate (خاص بالأوفلاين)" };
+
+  it("is not the plain offline account", () => {
+    const result = repriceTiers(game([{ ...ultimate, price: 30_000, cost: 1_800 }]));
+    expect(at(result, "offline_base")).toBeUndefined();
+  });
+
+  it("is not cut to the ordinary account's 12,000 ceiling", () => {
+    const result = repriceTiers(game([{ ...ultimate, price: 30_000, cost: 1_800 }]));
+    expect(result.proposals[0]?.newPrice).toBe(30_000);
+    expect(result.changed).toBe(false);
+  });
+
+  it("is priced from the cost gap when a plain offline row exists to build on", () => {
+    const result = repriceTiers(
+      game([
+        { id: "t_std", name: "القياسية Standard (خاص بالأوفلاين)", price: 8_000, cost: 2_000 },
+        { ...ultimate, price: 30_000, cost: 7_000 },
+      ]),
+    );
+    expect(at(result, "offline_base")?.newPrice).toBe(8_000);
+    // 8,000 + 7,000 for a 5,000 cost gap — the owner's own worked example.
+    expect(at(result, "offline_extras")?.newPrice).toBe(15_000);
+  });
+
+  it("reads the preset's description when the name alone is ambiguous", () => {
+    const result = repriceTiers(
+      game([
+        { id: "a", name: "اوفلاين", price: 8_000, cost: 2_000 },
+        { id: "b", name: "اوفلاين", description: "اللعبة مع الإضافات", price: 15_000, cost: 7_000 },
+      ]),
+    );
+    expect(at(result, "offline_extras")?.newPrice).toBe(15_000);
+  });
+
+  it("still says «بدون» means without, whatever the edition words say", () => {
+    const result = repriceTiers(
+      game([{ id: "t", name: "اوفلاين قياسي بدون الإضافات", price: 8_500, cost: 2_000 }]),
+    );
+    expect(at(result, "offline_base")?.newPrice).toBe(8_000);
+  });
+});

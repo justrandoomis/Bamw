@@ -24,6 +24,11 @@
  * would be applied confidently.
  */
 
+import {
+  resolveTypeStandardDescription,
+  STANDARD_TYPE_DESCRIPTIONS,
+} from "./productOptionDescriptions";
+
 export type TierKind = "offline_base" | "offline_extras" | "online_base" | "online_extras";
 
 export interface TierRow {
@@ -128,7 +133,33 @@ export function classifyTier(row: TierRow): ClassifiedTier {
 
   const online = ONLINE.test(subject);
   const offline = OFFLINE.test(subject);
-  const extras = EXTRAS.test(subject) && !EXTRAS_NEGATED.test(subject);
+
+  /*
+    AN EDITION IS NOT THE ORDINARY ACCOUNT.
+
+    The admin's own preset writes a type row «النسخة الفاخرة Ultimate (خاص
+    بالأوفلاين)». It names the offline account and carries no word this file
+    called an add-on, so it classified as the PLAIN offline account and was
+    handed the plain account's rules — including the 12,000 ceiling, which
+    the owner gave to the ordinary offline account and to nothing else:
+    «هذا التخفيض هو فقط للحساب الاوفلاين العادي او dlc». An Ultimate edition
+    at 30,000 came out at 12,000.
+
+    The repository already disagreed with this file about that exact name.
+    `resolveTypeStandardDescription` has called ultimate / deluxe / complete /
+    gold / expansion / «فاخر» / «شامل» the add-ons edition since long before
+    these rules existed, and it is the function the customer-facing
+    description is built from. So it is asked here rather than a second
+    vocabulary being written beside it — two lists of edition words is how
+    the shop comes to show one thing and charge by another.
+
+    It also reads the row's `description`, which is where the preset puts
+    «اللعبة مع الإضافات» when the name alone is ambiguous.
+  */
+  const edition = resolveTypeStandardDescription(subject, row?.description);
+  const negated = EXTRAS_NEGATED.test(subject);
+  const extras =
+    !negated && (EXTRAS.test(subject) || edition === STANDARD_TYPE_DESCRIPTIONS.DLC);
 
   /*
     Neither, or BOTH. A row naming both an online and an offline account is
