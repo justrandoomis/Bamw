@@ -9,7 +9,7 @@ import TextFlip from "@/components/TextFlip";
 import { lazyWithRetry } from "@/lib/lazyRetry";
 import { useBananaMarket, type BananaListing } from "@/hooks/useBananaMarket";
 import { playSound } from "@/utils/audio";
-import { PRICE_STEP, formatPrice, roundPrice } from "@/lib/banana-price";
+import { PRICE_STEP, dinars, formatPrice, roundPrice } from "@/lib/banana-price";
 
 // recharts is the heaviest dependency on this route; keep it off the critical path.
 const BananaPriceChart = lazyWithRetry(() => import("@/components/BananaPriceChart"));
@@ -68,38 +68,6 @@ function marketErrorText(
     profile_incomplete: "أكمل بيانات حسابك أولاً لتتمكن من التداول.",
   };
   return map[code] ?? (code ? `تعذّر إتمام العملية (${code})` : "تعذّر إتمام العملية");
-}
-
-/**
- * A banana price, in the currency the market actually trades in.
- *
- * Every figure on this page was printed with a `$` in front of it, and the
- * market has never been in dollars: the offers column is `price_iqd`, the bot
- * floor it is compared against is `min_price_iqd`, and the admin panel calls
- * the same number «السعر الأساسي (د.ع)». The shop's own default currency is
- * IQD. So the sign was simply wrong, on every row a customer reads.
- *
- * Not `formatGenericPrice`: that guesses the unit from the magnitude — under
- * 500 it treats the number as dollars and converts it — which is precisely
- * backwards for a price that is a fraction of one dinar. The unit is known
- * here, so it is stated rather than inferred.
- *
- * Three decimals below one dinar was the precision the engine rounded to, and
- * a price of 0.24 shown as «0 د.ع» would have been the same lie in a different
- * font. But this shop's banana is worth 0.0004 د.ع, and three decimals told
- * the same lie about THAT: every customer-facing price on this page read
- * «0.000 د.ع». The decimals come from the magnitude now, the way
- * `formatPrice` chooses them, so a sub-fils price is shown rather than
- * rounded away.
- */
-export function dinars(value: number | undefined | null): string {
-  const amount = Number(value) || 0;
-  if (amount !== 0 && Math.abs(amount) < 1) return `${formatPrice(amount)} د.ع`;
-  const digits = amount % 1 === 0 ? 0 : 2;
-  return `${amount.toLocaleString("en-US", {
-    minimumFractionDigits: digits,
-    maximumFractionDigits: digits,
-  })} د.ع`;
 }
 
 /** Full timestamp with seconds, shown faintly under the price in the tooltip. */

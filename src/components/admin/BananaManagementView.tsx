@@ -2,6 +2,7 @@ import React, { useState, useMemo } from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { adminApi } from "@/lib/api";
 import { formatPrice, roundPrice } from "@/lib/banana-price";
+import { LOSING_LABEL, oddsBreakdown, tierCounts } from "@/lib/wheel-odds";
 import {
   Sparkles,
   Gift,
@@ -78,6 +79,21 @@ function toBotPayload(bot: any) {
   };
 }
 
+/**
+ * A chance, as the owner reads it.
+ *
+ * `toFixed(1)` alone prints `0.0%` for a band that a member can still land on,
+ * which reads as "never" — and the rarest band in this catalogue is one game
+ * at weight 1 out of a pool of 115,969. A floor of «أقل من 0.1%» says small
+ * without saying impossible.
+ */
+function pct(chance: number): string {
+  const value = Number(chance);
+  if (!Number.isFinite(value) || value <= 0) return "0%";
+  if (value < 0.001) return "أقل من 0.1%";
+  return `${(value * 100).toFixed(1)}%`;
+}
+
 export function BananaManagementView() {
   const queryClient = useQueryClient();
   const [activeTab, setActiveTab] = useState<
@@ -151,6 +167,40 @@ export function BananaManagementView() {
         ticketPriceBananas: Number(odds.ticketPriceBananas ?? 0),
       });
     }
+  }, [data, wheelForm]);
+
+  /*
+    What the owner is actually setting, as percentages, while they type.
+
+    A weight is not a chance: a band's chance is its weight times the number of
+    games in it, and that multiplier runs from one game to nine hundred and
+    eighty-four across this catalogue. Typing 100 into the cheapest band and
+    120 into «حظ أوفر» reads as "a little more likely" and produces a
+    thousandth of it. «يستطيع تحديد النسب يدويا» is not served by a screen that
+    shows only weights, however carefully it is labelled.
+
+    Computed from the pool's prices with the wheel's own `tierCounts` and
+    `oddsBreakdown` — the same two functions `/api/wheel` serves the member
+    screen from — so what the owner reads here is what a member will read
+    there, for the bands as they are being typed rather than as they were last
+    saved.
+  */
+  const wheelPreview = useMemo(() => {
+    const prices = ((data as Record<string, any> | undefined)?.["wheelPoolPrices"] ??
+      []) as number[];
+    if (!wheelForm) return null;
+    const odds = {
+      tiers: wheelForm.tiers,
+      losingPercent: wheelForm.losingPercent,
+      ticketPriceBananas: wheelForm.ticketPriceBananas,
+    };
+    const rows = oddsBreakdown(odds, tierCounts(wheelForm.tiers, prices));
+    return {
+      poolSize: prices.length,
+      rows,
+      byTier: rows.slice(0, wheelForm.tiers.length),
+      losing: rows.find((row) => row.label === LOSING_LABEL) ?? null,
+    };
   }, [data, wheelForm]);
 
   // Reward Modal State
@@ -1473,6 +1523,19 @@ export function BananaManagementView() {
                   </span>{" "}
                   لا تربح لعبة. التذكرة تُخصم في كل الحالات.
                 </p>
+                {wheelPreview?.losing && wheelPreview.byTier[0] ? (
+                  <p
+                    className={`text-[11px] font-bold mt-1 ${
+                      wheelPreview.losing.chance > wheelPreview.byTier[0].chance
+                        ? "text-emerald-600"
+                        : "text-amber-600"
+                    }`}
+                  >
+                    {wheelPreview.losing.chance > wheelPreview.byTier[0].chance
+                      ? `«حظ أوفر» ${pct(wheelPreview.losing.chance)} — أعلى من «${wheelPreview.byTier[0].label}» (${pct(wheelPreview.byTier[0].chance)}).`
+                      : `«حظ أوفر» ${pct(wheelPreview.losing.chance)} — ما زالت أقل من «${wheelPreview.byTier[0].label}» (${pct(wheelPreview.byTier[0].chance)}).`}
+                  </p>
+                ) : null}
               </div>
 
               <div>
@@ -1520,6 +1583,15 @@ export function BananaManagementView() {
                         title="الوزن — كلما زاد زادت فرصة كل لعبة في هذه الفئة"
                         className="w-20 p-2 rounded-lg border border-border bg-background font-bold text-xs outline-none focus:border-amber-500"
                       />
+                      {wheelPreview?.byTier[index] ? (
+                        <p className="col-span-3 text-[11px] text-muted-foreground -mt-0.5">
+                          <span className="font-bold text-amber-500">
+                            {pct(wheelPreview.byTier[index].chance)}
+                          </span>{" "}
+                          من الدورات · {wheelPreview.byTier[index].games.toLocaleString("en-US")}{" "}
+                          لعبة في هذه الفئة
+                        </p>
+                      ) : null}
                     </div>
                   ))}
                 </div>
@@ -1527,6 +1599,41 @@ export function BananaManagementView() {
                   الوزن لكل <span className="font-bold">لعبة</span> وليس للفئة: فرصة الفئة = وزنها ×
                   عدد ألعابها. اترك الحد الأعلى فارغًا في الفئة الأخيرة لتشمل كل ما فوقها.
                 </p>
+
+                {wheelPreview && wheelPreview.poolSize > 0 ? (
+                  <div className="mt-3 rounded-xl border border-border bg-muted/20 p-3">
+                    <p className="text-[11px] font-bold mb-2">
+                      النتيجة على {wheelPreview.poolSize.toLocaleString("en-US")} لعبة في العجلة
+                      الآن:
+                    </p>
+                    <div className="space-y-1">
+                      {wheelPreview.rows.map((row, index) => (
+                        <div
+                          key={`${index}-${row.label}`}
+                          className="flex items-center justify-between gap-2 text-[11px]"
+                        >
+                          <span
+                            className={row.label === LOSING_LABEL ? "font-bold" : "text-foreground"}
+                          >
+                            {row.label}
+                          </span>
+                          <span className="flex items-center gap-2">
+                            <span className="text-muted-foreground">
+                              {row.games ? `${row.games.toLocaleString("en-US")} لعبة` : "—"}
+                            </span>
+                            <span className="font-bold text-amber-500 w-14 text-left">
+                              {pct(row.chance)}
+                            </span>
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                ) : (
+                  <p className="text-[11px] text-amber-600 font-bold mt-3">
+                    لا توجد ألعاب في العجلة الآن، فلا يمكن حساب النسب.
+                  </p>
+                )}
               </div>
 
               {wheelError && (

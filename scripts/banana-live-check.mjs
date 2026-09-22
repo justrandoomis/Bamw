@@ -329,6 +329,23 @@ async function readFromD1() {
 
       Prices and counts only — a bot is admin configuration, not a member.
     */
+    /*
+      What the screen would write for that price.
+
+      The number being right is half of it. The reported symptom was «يظهر سعر
+      صفر» — and the engine held 0.0004 the whole time, while `dinars()` printed
+      it to three decimals as «0.000 د.ع». A check that reads only the price
+      would have called that market healthy.
+
+      The page cannot be read from a runner: Cloudflare answers `/api/banana`
+      from a datacentre IP with a challenge, so the screen renders its empty
+      state and every number on it is zero for a reason that has nothing to do
+      with the shop. So the page's own formatter is called here, on the price
+      production is actually serving.
+    */
+    out.d1PriceAsShown = app.dinars(out.d1Price);
+    out.d1PriceShowsZero = /^0(\.0+)?\s/.test(out.d1PriceAsShown);
+
     const bots = await app.getBotListings(config, out.d1Price);
     out.d1BotListings = bots.length;
     out.d1BotPrices = bots.map((listing) => Number(listing.pricePer));
@@ -404,7 +421,7 @@ if (Number.isFinite(out.d1Price)) {
     Bots switched off is the owner's decision and passes. A board that is empty
     while they are switched on does not.
   */
-  const priceOk = out.d1Price > 0;
+  const priceOk = out.d1Price > 0 && out.d1PriceShowsZero === false;
   const boardOk = !out.d1BotsEnabled || (out.d1BotListings > 0 && out.d1BotsWithinBand);
   out.priceOk = priceOk;
   out.boardOk = boardOk;
@@ -471,6 +488,7 @@ say(
 say(`| مصدر القراءة | ${out.source ? WHERE[out.source] : "—"} |`);
 say(`| نص الصفحة (حروف) | ${out.screenTextLength ?? "—"} |`);
 say(`| **السعر من D1 مباشرة** | ${Number.isFinite(out.d1Price) ? out.d1Price : "—"} |`);
+say(`| **السعر كما يُكتب على الشاشة** | ${out.d1PriceAsShown ?? "—"} |`);
 say(`| \`basePrice\` المخزّن | ${Number.isFinite(out.d1BasePrice) ? out.d1BasePrice : "—"} |`);
 say(`| تغيّر 24 ساعة (D1) | ${Number.isFinite(out.d1Change24h) ? out.d1Change24h : "—"}% |`);
 say(`| عروض نشطة (D1) | ${out.d1ActiveOffers ?? "—"} |`);
@@ -557,7 +575,10 @@ if (out.source === null && out.challenged) {
   );
 } else {
   if (out.ok) {
-    say(`**سعر الموزة على الإنتاج: ${out.price} — ليس صفراً.**`);
+    say(
+      `**سعر الموزة على الإنتاج: ${out.price} — ليس صفراً، ويُكتب على الشاشة ` +
+        `«${out.d1PriceAsShown}».**`,
+    );
     if (out.d1BotsEnabled) {
       say();
       say(
@@ -570,6 +591,11 @@ if (out.source === null && out.challenged) {
       `**السعر ${out.price} لكن لوحة الشراء ${
         out.d1BotListings ? "خارج الحد المضبوط" : "فارغة"
       } — البوتات مفعّلة و${out.d1ActiveBots} منها نشط.**`,
+    );
+  } else if (out.d1Price > 0 && out.d1PriceShowsZero === true) {
+    say(
+      `**المحرّك يحمل ${out.d1Price} لكن الشاشة تكتبه «${out.d1PriceAsShown}» — ` +
+        "وهذا هو العطل المُبلَّغ عنه بعينه.**",
     );
   } else {
     say("**السعر ما زال صفراً أو المخطط مسطّح على الصفر.**");
@@ -608,6 +634,9 @@ say(
       apiStatus: out.apiStatus ?? null,
       apiChallenged,
       screenShowsZeroPrice: out.screenShowsZeroPrice ?? null,
+      d1PriceAsShown: out.d1PriceAsShown ?? null,
+      d1PriceShowsZero: out.d1PriceShowsZero ?? null,
+      d1BotCount: out.d1BotCount ?? null,
       d1ActiveBots: out.d1ActiveBots ?? null,
       d1BotListings: out.d1BotListings ?? null,
       d1BotsWithinBand: out.d1BotsWithinBand ?? null,

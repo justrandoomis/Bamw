@@ -16,7 +16,7 @@
  */
 import { describe, expect, it } from "vitest";
 
-import { dinars } from "./banana_market";
+import { dinars } from "@/lib/banana-price";
 import { PRICE_STEP, roundPrice } from "@/lib/banana-price";
 
 describe("what a price looks like on the market page", () => {

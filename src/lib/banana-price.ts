@@ -52,3 +52,29 @@ export function formatPrice(value: number): string {
   if (!Number.isFinite(n)) return "0.000";
   return n.toFixed(6).replace(/(\.\d{3}\d*?)0+$/, "$1");
 }
+
+/**
+ * A price with its currency, as every customer-facing surface writes it.
+ *
+ * Lived in `banana_market.tsx`, which put it out of reach of everything that
+ * is not that page — including the live check, which could read production's
+ * price but not what the screen would make of it. The reported symptom was a
+ * price of zero on the screen while the engine held 0.0004, so the formatter
+ * is half of the fault and a check that only reads the number cannot see it.
+ *
+ * Three decimals below one dinar was the precision the engine rounded to, and
+ * a price of 0.24 shown as «0 د.ع» would have been the same lie in a different
+ * font. But this shop's banana is worth 0.0004 د.ع, and three decimals told
+ * the same lie about THAT: every customer-facing price on the page read
+ * «0.000 د.ع». The decimals come from the magnitude now, the way `formatPrice`
+ * chooses them, so a sub-fils price is shown rather than rounded away.
+ */
+export function dinars(value: number | undefined | null): string {
+  const amount = Number(value) || 0;
+  if (amount !== 0 && Math.abs(amount) < 1) return `${formatPrice(amount)} د.ع`;
+  const digits = amount % 1 === 0 ? 0 : 2;
+  return `${amount.toLocaleString("en-US", {
+    minimumFractionDigits: digits,
+    maximumFractionDigits: digits,
+  })} د.ع`;
+}

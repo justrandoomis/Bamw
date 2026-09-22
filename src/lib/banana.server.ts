@@ -947,6 +947,34 @@ export async function getAdminBananaData() {
         return normalizeWheelOdds(undefined);
       });
     })(),
+    /*
+      The prices of every game the wheel can land on, and nothing else about
+      them.
+
+      «واجعل التحكم بالنسب والتقسيمات تكون من الإدارة بحيث يستطيع تحديد النسب
+      يدويا» — and a weight is not a percentage. The chance of a band is its
+      weight times the number of games in it, and in this catalogue that
+      multiplier ranges from one game to nine hundred and eighty-four: an owner
+      typing 100 into the cheapest band and 120 into «حظ أوفر» would reasonably
+      expect the second to be larger, and get a thousandth of it. A panel that
+      shows only weights cannot be used to set percentages, whatever it is
+      labelled.
+
+      So the panel is given the pool's prices and works the percentages out as
+      the owner types, with the wheel's own `tierCounts` and `oddsBreakdown`.
+      Prices rather than counts because the bands themselves are what is being
+      edited — a count computed here would be for the bands as they were saved,
+      not as they are being typed.
+
+      Prices only. Not a title, not an id, nothing that says which game is
+      which — it is a histogram, and it is the admin's own screen besides.
+    */
+    wheelPoolPrices: await (async () => {
+      const { wheelCandidates } = await import("./wheel-pool.server");
+      return wheelCandidates()
+        .then((pool) => pool.map((candidate) => Number(candidate.price)))
+        .catch(() => [] as number[]);
+    })(),
     livePrice: spotPriceAt(marketConfig),
     bots,
     rewards,
