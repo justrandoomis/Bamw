@@ -322,16 +322,24 @@ if (typeof resolveProductImage !== "function") {
   say(`\`resolveProductImage\` is not exported from the bundle, so this section could`);
   say(`not be measured. It is NOT a pass — do not read it as one.`);
 } else {
-  const NON_GAME = ["hardware", "accessory", "amiibo", "gift_card", "used"];
+  /*
+    `getProductCategory` — the app's own resolver, not a string match.
+
+    The first pass of this section matched raw `category`/`kind` strings and
+    found THREE non-game products in a catalogue of 1,714. That is not a
+    finding, it is a broken matcher, and its "0 products affected" would have
+    been a zero out of nothing. The category page decides what a product is
+    with `getProductCategory`, so this asks the same function the same
+    question.
+  */
+  const { getProductCategory } = app;
+  if (typeof getProductCategory !== "function") {
+    throw new Error("getProductCategory is not exported — refusing to report a count from a guess");
+  }
+  const NON_GAME = new Set(["hardware", "accessory", "amiibo", "gift_card", "used"]);
   const nonGameOf = (p) => {
-    const cat = String(p?.category ?? p?.categoryId ?? "").toLowerCase();
-    const kind = String(p?.kind ?? "").toLowerCase();
-    for (const name of NON_GAME) {
-      if (cat.includes(name.replace("_", "")) || cat.includes(name) || kind.includes(name)) {
-        return name;
-      }
-    }
-    return "";
+    const resolved = String(getProductCategory(p) ?? "");
+    return NON_GAME.has(resolved) ? resolved : "";
   };
 
   const lost = [];
@@ -356,6 +364,9 @@ if (typeof resolveProductImage !== "function") {
   for (const [category, n] of Object.entries(byCategory).sort((a, b) => b[1] - a[1])) {
     say(`- \`${category}\`: ${n}`);
   }
+  say();
+  const checked = Object.values(byCategory).reduce((sum, n) => sum + n, 0);
+  say(`Checked: **${checked}** non-game products of ${all.length} in the catalogue.`);
   say();
   say(`Products whose listing card would fall back to a placeholder: **${lost.length}**`);
   if (lost.length) {
