@@ -313,6 +313,30 @@ if (!reached) {
 }
 say();
 
+/**
+ * Move to a page the way a shopper does: INSIDE the app, not by asking for a
+ * new document.
+ *
+ * Cloudflare answers this runner 403 on `/product/<slug>` and `/search`, while
+ * serving `/` at 200 — so the first version of this check read six «تعذّرت
+ * القراءة (403)» and verified nothing on the screen. That is a fact about
+ * where the runner sits, not about the shop: a customer's phone is served
+ * these pages perfectly well.
+ *
+ * A shopper does not request those documents either. They land once, and every
+ * tap after that is the router swapping the view from a catalogue the browser
+ * already holds. `pushState` + `popstate` is exactly that transition — TanStack
+ * Router listens for it — so the page under test is the real one, rendered by
+ * the real code, with no second request for Cloudflare to refuse.
+ */
+const routeTo = async (path) => {
+  await page.evaluate((to) => {
+    window.history.pushState({}, "", to);
+    window.dispatchEvent(new PopStateEvent("popstate"));
+  }, path);
+  await page.waitForTimeout(SETTLE_MS);
+};
+
 /** Every price-shaped number inside one element's text. */
 const numbersIn = (text) =>
   Array.from(String(text ?? "").matchAll(/\d[\d,]{2,}/g))
@@ -338,11 +362,7 @@ for (const row of chosen) {
 
   /* The card, on the surface the owner photographed. */
   try {
-    await page.goto(`${ORIGIN}/search?q=${encodeURIComponent(row.title)}`, {
-      waitUntil: "domcontentloaded",
-      timeout: NAV_MS,
-    });
-    await page.waitForTimeout(SETTLE_MS);
+    await routeTo(`/search?q=${encodeURIComponent(row.title)}`);
     const card = page.locator(`a[href*="/product/${row.slug}"]`).first();
     const text = (await card.innerText({ timeout: 6_000 }).catch(() => "")) || "";
     const found = numbersIn(text);
@@ -363,15 +383,11 @@ for (const row of chosen) {
 
   /* And the page the card opens. */
   try {
-    const res = await page.goto(`${ORIGIN}/product/${encodeURIComponent(row.slug)}`, {
-      waitUntil: "domcontentloaded",
-      timeout: NAV_MS,
-    });
-    await page.waitForTimeout(SETTLE_MS);
+    await routeTo(`/product/${encodeURIComponent(row.slug)}`);
     const text = (await page.locator("body").innerText().catch(() => "")) || "";
-    if (!text || (res && res.status() >= 400)) {
+    if (!text) {
       pageUnread += 1;
-      pageCell = `تعذّرت القراءة (${res?.status() ?? "—"})`;
+      pageCell = "تعذّرت القراءة";
     } else if (numbersIn(text).includes(row.cheapest)) {
       pageOk += 1;
       pageCell = `✓ ${money(row.cheapest)}`;
