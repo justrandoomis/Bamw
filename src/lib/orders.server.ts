@@ -323,6 +323,30 @@ function productPlatform(product: Record<string, unknown>): string {
 
 const idempotencyCache = new Map<string, { order: Order; at: number }>();
 
+/*
+  AN IDEMPOTENCY KEY BELONGS TO THE MEMBER WHO SENT IT.
+
+  The key comes from the browser — `crypto.randomUUID()` in the cart, but a
+  request can carry any string at all — and it was the whole of the lookup:
+  the cache was keyed on it alone and the D1 read was
+  `WHERE idempotency_key = ?` with no owner. So the key was a claim on
+  whatever order had used it, from anybody.
+
+  Send `1` as the key and the first person ever to have used `1` has bought
+  you their order: their document comes back as yours, with their items, their
+  name, their phone and their address in it, no product is reserved, no coupon
+  or referral is spent, and — the part that makes it a money hole rather than
+  only a leak — the wallet is never touched, because a cache hit returns before
+  any of the payment path runs.
+
+  Scoping the key to the user closes both halves. The retry it exists for is
+  the same member sending the same request twice, which still matches.
+*/
+function scopedIdempotencyKey(userId: string, key?: string): string | undefined {
+  if (!key) return undefined;
+  return `${userId}\u0000${key}`;
+}
+
 function getCachedOrder(key?: string): Order | null {
   if (!key) return null;
   const entry = idempotencyCache.get(key);
@@ -430,30 +454,62 @@ export async function createOrderForUser(
     throw new Error("terms_required");
   }
 
-  const cleanIdempotencyKey = idempotencyKey?.trim() || undefined;
+  let cleanIdempotencyKey = idempotencyKey?.trim() || undefined;
 
   if (cleanIdempotencyKey) {
     // 1. Check in-memory cache
-    const existingMem = getCachedOrder(cleanIdempotencyKey);
+    const existingMem = getCachedOrder(scopedIdempotencyKey(user.id, cleanIdempotencyKey));
     if (existingMem) return existingMem;
 
-    // 2. Check D1 for existing order with this idempotency_key
+    // 2. Check D1 for existing order with this idempotency_key — the member's
+    //    own, by `user_id`, so a key cannot reach across accounts.
     try {
       const existingRow = await d1First<{ doc: string }>(
-        `SELECT doc FROM orders WHERE idempotency_key = ? LIMIT 1`,
+        `SELECT doc FROM orders WHERE idempotency_key = ? AND user_id = ? LIMIT 1`,
         cleanIdempotencyKey,
+        user.id,
       );
       if (existingRow) {
         const parsed = JSON.parse(existingRow.doc) as Order;
         if (parsed && parsed.id) {
-          setCachedOrder(cleanIdempotencyKey, parsed);
+          setCachedOrder(scopedIdempotencyKey(user.id, cleanIdempotencyKey), parsed);
           return parsed;
         }
       }
     } catch {
       // Ignored if query fails
     }
+
+    /*
+      3. Somebody else's key.
+
+      `orders_idempotency_idx` is UNIQUE on `idempotency_key` alone, across
+      every member. Now that a key no longer hands over another member's
+      order, a request carrying one that is already taken would run the whole
+      checkout — spending the coupon, debiting the wallet — and then fail to
+      insert, falling back to `saveOrder`'s degraded write.
+
+      So a taken key is simply dropped. The order is created normally without
+      one, which costs only the retry protection for that single request, and
+      the member is not made to pay for a string they did not choose.
+    */
+    try {
+      const owner = await d1First<{ user_id: string }>(
+        `SELECT user_id FROM orders WHERE idempotency_key = ? LIMIT 1`,
+        cleanIdempotencyKey,
+      );
+      if (owner && String(owner.user_id) !== String(user.id)) {
+        console.warn("[order:idempotency_key_taken]", { userId: user.id });
+        cleanIdempotencyKey = undefined;
+      }
+    } catch {
+      // Ignored if query fails
+    }
   }
+
+  // The cache key, which is the member's id and the key together — never the
+  // key on its own. See `scopedIdempotencyKey`.
+  const cacheKey = scopedIdempotencyKey(user.id, cleanIdempotencyKey);
 
   const store = await getStore();
   const items: OrderItem[] = [];
@@ -1072,8 +1128,8 @@ export async function createOrderForUser(
     console.error("[order:audit_log_failed]", err);
   }
 
-  if (cleanIdempotencyKey) {
-    setCachedOrder(cleanIdempotencyKey, order);
+  if (cacheKey) {
+    setCachedOrder(cacheKey, order);
   }
 
   // Snapshot Order Items (Safe)
@@ -1420,7 +1476,7 @@ export async function createOrderForUser(
     }
   }
 
-  setCachedOrder(idempotencyKey, order);
+  setCachedOrder(cacheKey, order);
 
   return order;
 }
